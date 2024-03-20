@@ -1,174 +1,206 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1692684ejb;
-        Tue, 19 Mar 2024 20:21:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUmSZFUhXt/W/c6vwOgnooq3rrdbHCeJU9xET3hnYpBUMXLsE5CwtkaHAito0OBpTJF953Pb51Cclzp7MoxCyIGKbIxqWnv
-X-Google-Smtp-Source: AGHT+IHjGP/QcM5wfe9hrUYij2AY2cbD0HLx/yNr8o/XfbnjA7DK0DCqeQGcPdaoocQ7lAk39Nwr
-X-Received: by 2002:ac8:7d51:0:b0:430:eeaa:5cfc with SMTP id h17-20020ac87d51000000b00430eeaa5cfcmr3242924qtb.44.1710904898791;
-        Tue, 19 Mar 2024 20:21:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710904898; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1799335ejb;
+        Wed, 20 Mar 2024 01:49:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVNckzVbmNuZNiirgvBWz5Cs+xTK7n3deb8CKSlHq7kHlQ5yaz4EKunSJUm121axfLdVLrQRLiokO6GAjzTM9Lik3pBb38m
+X-Received: by 2002:a2e:9092:0:b0:2d4:8db2:f79c with SMTP id l18-20020a2e9092000000b002d48db2f79cmr3149078ljg.50.1710924571592;
+        Wed, 20 Mar 2024 01:49:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710924571; cv=none;
         d=google.com; s=arc-20160816;
-        b=HOQSB84RZlzmaAgiPw2CORqKX11F94plyYpwqU/GG83rgRbCNKGGqc6H4A2Yfan0WG
-         PDYNAhnjrmM9FsW6dppF78eDJWoqcl4Lhi54HTQfPUqgF3obdRCcDLGaktQ9aL9wXEUN
-         FKOtSxCfCLS7IZdkLYK+cbTxf0j0i/h0KKPol+22fQeJQPXZZN4biORj+G3rX7r4hBj7
-         73NzTylu2cYBiE1viY7EGsc9brZLRGWdU7a1zyQdnGllQutSxajxsTyKb8RBbGT+cT4X
-         PelDz31jdzJLlW9S8jn0V8Yz7xDa8tdfc6x4XLyw8rui2PHHPb8UHzDbHkfZoQoiYiew
-         zb2Q==
+        b=WpKMCHpxGzYBBS37kGFmvydrm9eX2HsUX5p4alaWBqS5Y4EOHGoZ24w2RxNflVeRDy
+         mTH+Nyow9y5zALyKem/GpsdCt7EkaZxdjKZpwUCQGun4ld5EgT3ORYSE6aURJQL592fI
+         QG0AW1WTZEkTCrapxkbohTtNxx1Gt2EHWw/NhFTtgGAA+i1PjVjU98Cs6QeW1I4DMZ4Z
+         ay/J9vgetShN/eMltjcl86mz89QrhsKcWy/Q6CUtkvzJQ6EV7rlGTrM8txNoJn0JFPck
+         XzxAWu6JZZAMT1FPW0wjLWb0cPDsZMgM4yDrW2svHQKL1INW5x5fC7XhrO0RkntwVOrS
+         kZ8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=HfePhma0MElPSa079fy6VOH6nMsj3WD/Ihj20Nr1Pwg=;
-        fh=/MSHAyhUJiTYoT4ekOyS/HopHNLqBW111kC/699+MBU=;
-        b=zYnLXZbqMJL/U7F0gvCyO8DMTm8WB9tyG24s2Aeop36+oEw/KRUGv3fQ5+tlTCq1JG
-         4LuvODllCnnSn8wfla+KaSirxcQVahX0ge89I3BsWD/OQCjcC7Swoiw6f0KU38fW3U46
-         y/FfY86Lp0kUnoVX70XOys3gQQQqjyB6i5E3kyNTICDs1FD4xcy6SIRfr2rL4fFBEPGw
-         vAg7a5oNau94i0hXNpDTRTQ3jf720lPrfzgazhr+a6e1+j2Td27qYiL2yKUcRerYKnck
-         D90NUoP141SHrgXPDwpemsFNVVlHInvnjLs7EPWtpzYZi34M/80sX9a+Max+uYlQwiBB
-         AWLQ==;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=kwuMerZlqcLAvNCnbAMlpvDC6HUJgNIZLa8N/0Eyd9A=;
+        fh=IhemGSYO77ujpV7lX+Ko1c84rEr+dmWk6q67t6eVuHQ=;
+        b=oha+FKrxYwxDx+94VSzYxAu9V3kDUh6WNFMSuJb9ASZyaTTXRmw6nwUSwX7cyYJ79I
+         20DzNG/qlxJQGIAae6gazg+m8ZahvwIsHdTu1v49uU6zmAJD0+RKvf6HV/dqgGsvRAFi
+         k9HsibgOlLl5aq6Vqo3nqTqmLFTVabCcIMmENTRO9S7RtzaKEn02DsJxMMMuuOFmUr8m
+         YJydoEosR5vWGruechXi9cm5Nj4QYxViBdTriBjisWmr6s7UPhgegmNz0mPurlDlJ/IE
+         tWDNL00QcLJidA2m4TWm+QaiPL1vvPj5cL+NMximwqcAcQr0+zXvAr5WaUkdszOnm1MO
+         cf2A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n7-20020ac85a07000000b00430b0d12efbsi10519148qta.6.2024.03.19.20.21.38
+       dkim=pass header.i=@linaro.org header.s=google header.b=dpfxWzMK;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b3-20020a05600c150300b00412f02c35b4sor3798097wmg.5.2024.03.20.01.49.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Mar 2024 20:21:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 20 Mar 2024 01:49:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rmmWC-0006M1-6m; Tue, 19 Mar 2024 23:21:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rmmWA-0006Lb-AK; Tue, 19 Mar 2024 23:21:30 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rmmW7-0007N0-3K; Tue, 19 Mar 2024 23:21:30 -0400
-Received: from mail.maildlp.com (unknown [172.19.88.214])
- by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4Tzv2107Bfz1R7WW;
- Wed, 20 Mar 2024 11:18:49 +0800 (CST)
-Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 7CA6C1A016F;
- Wed, 20 Mar 2024 11:21:22 +0800 (CST)
-Received: from [10.67.109.254] (10.67.109.254) by
- kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Wed, 20 Mar 2024 11:21:21 +0800
-Message-ID: <62b8b76c-8aa0-762c-e1c5-7ca20822249f@huawei.com>
-Date: Wed, 20 Mar 2024 11:21:21 +0800
+       dkim=pass header.i=@linaro.org header.s=google header.b=dpfxWzMK;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1710924571; x=1711529371; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kwuMerZlqcLAvNCnbAMlpvDC6HUJgNIZLa8N/0Eyd9A=;
+        b=dpfxWzMKPQnWUeew50EKNk7hY6ARWZX0zmJenNaGvGwx4w9kwlpJtqflGh6ziI5TTE
+         Bxxy8pWqYyTmXgMiRsbq75mCC73tguRRY+pW+BFNsj4qWBfC8tPfebIpKSdvlYlfydgk
+         jR4BkEhCNV9fj7WO0ZvghR1WgKcyaKFW88fm2Z0bicCnUlfK7RJo4DCO5R/p8d7zaig7
+         pV7ZWYfUqtnRZRESZ32zNUAYnPdX9YgXpkfEJDx1o4DBND/klZnIgQ3P1v44/qFzu0Wo
+         sIjD5pllk5hMPjq6OFA3kHj/HhDDLRMEhZ0priT4ftiGBKqFvBomreqpEJKRYmkodhDZ
+         PlGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710924571; x=1711529371;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kwuMerZlqcLAvNCnbAMlpvDC6HUJgNIZLa8N/0Eyd9A=;
+        b=Let/oXq0zzOjie45Jah9XOpGQN9W3C+WWLlHGqkja4I5IZgzeUeettI7IOTrvkYfYX
+         VkQ6xW/MSNukeDcApww+CFhfnfhbbHkVVU6cVwQwnzsyLo0rx3CPSPs2jsOkGDrCTGeZ
+         c9xEteCT8hHdZFz8pJR0pXPyuaqefm1KpukXPFM1sxmwhpqDWt5jjGL53ChgupYuptCD
+         1GQyu0QnKdA4hWkPrkM2QaxVfV1Z94VpA1Z/sPiuX9vjJxy2GcpSGJjiiqfEqIwbdJjQ
+         HsU82PYWSDfx2mSFpYrjtUAZSDOrft85+vftmzDvO6B4wThLWFb4B9OJ98/21X8ju4J9
+         2jyA==
+X-Forwarded-Encrypted: i=1; AJvYcCX59BE6c9uTy17rczId1Hrd6yq0obqEMRjx8TVFORupJP5RVFzChUi9F3NsGz4OjLiB5VFdFMojgxDsTKeWn90b8M2saTmq
+X-Gm-Message-State: AOJu0YzZ6ZL2cAulmctJi9umIMv7hUbtkvh2eC5Oo62XKiAH9ZiN6m6H
+	74eD6w6ZnEr1BmiNViJc+Y9/cXfMxcRFA1kUiOJ8yPl6Eo3IQxFfhwF2XgbOPeh6Bg==
+X-Google-Smtp-Source: AGHT+IHSkoFSa35/gO5aSlD16MfDuLfO6YJoD+u/ttMKcTKifS2QAHoCMVymCuyWoM4o9l2KuqBODA==
+X-Received: by 2002:a05:600c:3b24:b0:414:6467:34a4 with SMTP id m36-20020a05600c3b2400b00414646734a4mr3648453wms.7.1710924571111;
+        Wed, 20 Mar 2024 01:49:31 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] ([176.176.156.105])
+        by smtp.gmail.com with ESMTPSA id fs11-20020a05600c3f8b00b00412e5f32591sm1500432wmb.28.2024.03.20.01.49.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 20 Mar 2024 01:49:30 -0700 (PDT)
+Message-ID: <4d748527-07d2-4cd1-91c8-77042d4d02c4@linaro.org>
+Date: Wed, 20 Mar 2024 09:49:27 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.2.0
-Subject: Re: [RFC PATCH v8 05/23] target/arm: Support MSR access to ALLINT
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-9.1 10/21] qapi: Make CpuModel* definitions target
+ agnostic
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: <eduardo@habkost.net>, <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, 
- <wangyanan55@huawei.com>, <richard.henderson@linaro.org>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-References: <20240318093546.2786144-1-ruanjinjie@huawei.com>
- <20240318093546.2786144-6-ruanjinjie@huawei.com>
- <CAFEAcA9LnJJDsC8WZzd2ZYGgwqYkbH-FmxKHy0CXKcS2tEonJA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9LnJJDsC8WZzd2ZYGgwqYkbH-FmxKHy0CXKcS2tEonJA@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.67.109.254]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=ruanjinjie@huawei.com;
- helo=szxga07-in.huawei.com
-X-Spam_score_int: -65
-X-Spam_score: -6.6
-X-Spam_bar: ------
-X-Spam_report: (-6.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.417,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cyolvXT43OVL
+To: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Cc: qemu-riscv@nongnu.org, Anton Johansson <anjo@rev.ng>,
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Claudio Fontana <cfontana@suse.de>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Zhao Liu <zhao1.liu@intel.com>, qemu-arm@nongnu.org,
+ Thomas Huth <thuth@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>
+References: <20240315130910.15750-1-philmd@linaro.org>
+ <20240315130910.15750-11-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240315130910.15750-11-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: FMLBX34fKz7g
 
-
-
-On 2024/3/20 1:30, Peter Maydell wrote:
-> On Mon, 18 Mar 2024 at 09:37, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
->>
->> Support ALLINT msr access as follow:
->>         mrs <xt>, ALLINT        // read allint
->>         msr ALLINT, <xt>        // write allint with imm
->>
->> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->> v5:
->> - Add Reviewed-by.
->> v4:
->> - Remove arm_is_el2_enabled() check in allint_check().
->> - Change to env->pstate instead of env->allint.
->> v3:
->> - Remove EL0 check in aa64_allint_access() which alreay checks in .access
->>   PL1_RW.
->> - Use arm_hcrx_el2_eff() in aa64_allint_access() instead of env->cp15.hcrx_el2.
->> - Make ALLINT msr access function controlled by aa64_nmi.
->> ---
->>  target/arm/helper.c | 34 ++++++++++++++++++++++++++++++++++
->>  1 file changed, 34 insertions(+)
->>
->> diff --git a/target/arm/helper.c b/target/arm/helper.c
->> index b19a0178ce..aa0151c775 100644
->> --- a/target/arm/helper.c
->> +++ b/target/arm/helper.c
->> @@ -4752,6 +4752,36 @@ static void aa64_daif_write(CPUARMState *env, const ARMCPRegInfo *ri,
->>      env->daif = value & PSTATE_DAIF;
->>  }
->>
->> +static void aa64_allint_write(CPUARMState *env, const ARMCPRegInfo *ri,
->> +                              uint64_t value)
->> +{
->> +    env->pstate = (env->pstate & ~PSTATE_ALLINT) | (value & PSTATE_ALLINT);
->> +}
->> +
->> +static uint64_t aa64_allint_read(CPUARMState *env, const ARMCPRegInfo *ri)
->> +{
->> +    return env->pstate & PSTATE_ALLINT;
->> +}
->> +
->> +static CPAccessResult aa64_allint_access(CPUARMState *env,
->> +                                         const ARMCPRegInfo *ri, bool isread)
->> +{
->> +    if (arm_current_el(env) == 1 && (arm_hcrx_el2_eff(env) & HCRX_TALLINT)) {
->> +        return CP_ACCESS_TRAP_EL2;
->> +    }
->> +    return CP_ACCESS_OK;
+On 15/3/24 14:08, Philippe Mathieu-Daudé wrote:
+> CpuModelInfo, CpuModelExpansionType and CpuModelCompareResult
+> are not restricted to any particular target. Define them in
+> machine.json to generate them once.
 > 
-> Forgot to note in my earlier email: HCRX_EL2.TALLINT traps
-> only writes to ALLINT, not reads, so the condition
-> here needs to also look at 'isread'.
-
-Thank you! I'll fix it.
-
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   qapi/machine-target.json | 78 ---------------------------------------
+>   qapi/machine.json        | 79 ++++++++++++++++++++++++++++++++++++++++
+>   2 files changed, 79 insertions(+), 78 deletions(-)
 > 
->> +}
-> 
-> thanks
-> -- PMM
+> diff --git a/qapi/machine-target.json b/qapi/machine-target.json
+> index 5f17b25d50..0412400df3 100644
+> --- a/qapi/machine-target.json
+> +++ b/qapi/machine-target.json
+> @@ -6,84 +6,6 @@
+>   
+>   { 'include': 'machine.json' }
+>   
+> -##
+> -# @CpuModelInfo:
+> -#
+> -# Virtual CPU model.
+> -#
+> -# A CPU model consists of the name of a CPU definition, to which delta
+> -# changes are applied (e.g. features added/removed). Most magic values
+> -# that an architecture might require should be hidden behind the name.
+> -# However, if required, architectures can expose relevant properties.
+> -#
+> -# @name: the name of the CPU definition the model is based on
+> -#
+> -# @props: a dictionary of QOM properties to be applied
+> -#
+> -# Since: 2.8
+> -##
+> -{ 'struct': 'CpuModelInfo',
+> -  'data': { 'name': 'str',
+> -            '*props': 'any' } }
+> -
+> -##
+> -# @CpuModelExpansionType:
+> -#
+> -# An enumeration of CPU model expansion types.
+> -#
+> -# @static: Expand to a static CPU model, a combination of a static
+> -#     base model name and property delta changes.  As the static base
+> -#     model will never change, the expanded CPU model will be the
+> -#     same, independent of QEMU version, machine type, machine
+> -#     options, and accelerator options.  Therefore, the resulting
+> -#     model can be used by tooling without having to specify a
+> -#     compatibility machine - e.g. when displaying the "host" model.
+> -#     The @static CPU models are migration-safe.
+> -#
+> -# @full: Expand all properties.  The produced model is not guaranteed
+> -#     to be migration-safe, but allows tooling to get an insight and
+> -#     work with model details.
+> -#
+> -# Note: When a non-migration-safe CPU model is expanded in static
+> -#     mode, some features enabled by the CPU model may be omitted,
+> -#     because they can't be implemented by a static CPU model
+> -#     definition (e.g. cache info passthrough and PMU passthrough in
+> -#     x86). If you need an accurate representation of the features
+> -#     enabled by a non-migration-safe CPU model, use @full.  If you
+> -#     need a static representation that will keep ABI compatibility
+> -#     even when changing QEMU version or machine-type, use @static
+> -#     (but keep in mind that some features may be omitted).
+> -#
+> -# Since: 2.8
+> -##
+> -{ 'enum': 'CpuModelExpansionType',
+> -  'data': [ 'static', 'full' ] }
+> -
+> -##
+> -# @CpuModelCompareResult:
+> -#
+> -# An enumeration of CPU model comparison results.  The result is
+> -# usually calculated using e.g. CPU features or CPU generations.
+> -#
+> -# @incompatible: If model A is incompatible to model B, model A is not
+> -#     guaranteed to run where model B runs and the other way around.
+> -#
+> -# @identical: If model A is identical to model B, model A is
+> -#     guaranteed to run where model B runs and the other way around.
+> -#
+> -# @superset: If model A is a superset of model B, model B is
+> -#     guaranteed to run where model A runs.  There are no guarantees
+> -#     about the other way.
+> -#
+> -# @subset: If model A is a subset of model B, model A is guaranteed to
+> -#     run where model B runs.  There are no guarantees about the other
+> -#     way.
+> -#
+> -# Since: 2.8
+> -##
+> -{ 'enum': 'CpuModelCompareResult',
+> -  'data': [ 'incompatible', 'identical', 'superset', 'subset' ] }
+
+Otherwise I'm getting when linking:
+
+   duplicate symbol '_CpuModelCompareResult_lookup'
+   duplicate symbol '_CpuModelExpansionType_lookup'

@@ -1,127 +1,126 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1568588ejb;
-        Tue, 19 Mar 2024 14:26:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWHWQBAcWEU800Fg8wqeWyAIS9iNtJHmVTWDhJnp+3sk4Gs79ocqeSec6VGQ7HIUv+tz5I1SGqLcHQaaMcyMTgo82KouTu6
-X-Google-Smtp-Source: AGHT+IEvf2QzhStNublkhoFmpTC6u4aNmvkTLA0YIHs4gv0skMcZi8C2xtlHSHMMxlxV1vbHg0yH
-X-Received: by 2002:a05:620a:4550:b0:78a:1611:7aa7 with SMTP id u16-20020a05620a455000b0078a16117aa7mr3760348qkp.37.1710883601848;
-        Tue, 19 Mar 2024 14:26:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710883601; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1718253ejb;
+        Tue, 19 Mar 2024 21:42:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXjA/2/T0Nq9Z63CzD+siNtD0tE0PL6f30S+ttM6dMkUBRV1xBnAfg3+CNX/QaOhZyE2I7umdnuiVYb2GofSjSiYXkDgl0k
+X-Google-Smtp-Source: AGHT+IFMZETcMyX/mVahD40tR1p1zkAn3Iv0SemkTbSDkOvr/61s6V+WvLACsKLLP5FrfoNH2aCU
+X-Received: by 2002:a05:620a:1922:b0:789:f57c:af99 with SMTP id bj34-20020a05620a192200b00789f57caf99mr13584752qkb.2.1710909763767;
+        Tue, 19 Mar 2024 21:42:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710909763; cv=none;
         d=google.com; s=arc-20160816;
-        b=KTSy1Tl/cs6DrznR5k/jooQnSmr8TZFitvs1faTWDV9Q7o8QkUyyFFFE4upQ4dKSbj
-         V1LQCDO2UeZNvSGRDf3wd4dJ8u+DCftWx7KTVdy6k62Fvs4Zi8/2gC52lAe0i+71PE6A
-         WeU7wRjktuB2vHQsym5NcuwnNm3JIMUjJxM0ef4cb61qU4Q0UuA9Xkz1RV9dk4/VJ71r
-         otmDXeghY1DWdbME2jApGA9zVvqaBSwO8w2v4hvueNRkZTO8NoTWTq9aRRJm6z9jQpLN
-         cqOHvzX9C6s34ohGhDkDH4y9wJ9u4mvCIe16iBxI3SbAlKnepw8HV7IPHoj0lsqg06q/
-         1GVg==
+        b=BSYZkeLrHa2F+xlZcMDGTDoLqmN2lD+OPMOfF+ly3dWsbBHQeLT7Ewq1TEnwyvJGOR
+         eZ8yQ6b51uWxW4uqSrrBY2zdDUSVDRUp0W8FjFc/ZGBd82r0/icglgwmIzgBzQCatHjZ
+         gsV3XQUm6aGDcyak7ANyWEuZo+m+nPPVxg5p32MdY8ztDglpvnjqzSprmgigjh9CIgsE
+         bmIGnk13q0vcJQvQyzA4Xp8bVTp45bHu9clDhVgMZpg2FQjXKF/Ya931kTmhiFsDcKT6
+         GpLWBk2AvxIfEFc3rsCUKzY764UvC5OSnlz3PLtTQxFqGD0kNYl82FYLjcE/77E+760p
+         14xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=TVAvmDIhpciLflBuRwbnPdYQ1vOHfHflpIuQkAt+cPE=;
-        fh=JslnqUCfKdshr6i7YahIrw9sttrlw4L9dXNsFGmwlxk=;
-        b=C3PWtgUlWlolowdLBhPkAwx9N0fiAMZk8y51jbmjysmBnUX0nqypc3Ap9nf43MpZNa
-         tvPEAQ+STZ8CY+A6jFKljHGd8n32NQ6fKCcjkJkxmDLThl9TwG7MVhBmDUmqHIJx50OF
-         fYYyHVVJrErXE2ulfrpPATngIwpgFlRSecZHS5RuWe7sZ5vH62buFoXKBUBiWxzMGVQM
-         fysWTdrAvgYHJbZuoDnkXdGVdBNf92hrOGo0bdAlLnz76jGn15TMswuSQc/FHg5PGnmA
-         00BngeJG3d/LoZG4uTrXvDIQEodkZjVkLlQbRFpN/Yna2+QPCxnX2Q+l24+pGL39lqqI
-         gk0g==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=AahSnFMfmGByonWDDLM06Y7TC1QB2DWs0dZmM73NJIA=;
+        fh=63QvGmfkuVximXaXOtCReZulooPRLz0vxW1IABxqpQc=;
+        b=FYiQy6RIf1CuNF75wMoLNx/XIhE51vWzWvuvoz5cTBGJtF6R8MqwdsbJ1u2f7VCj2j
+         S/IL6GPTAzoylM5FN1WCpFA7zdvFXBsC3KAJrm7kfMnwW+/0/V+qL0C2AnabGJJMX+pJ
+         Fi3pTv2FnNVibR9fZK37m1RquavaeMkc4EhbRIGNVjIa0CVwk2uESpw7CeclUosopEw5
+         bjfVq38LpUIA5EGWxsKF/BJma5N0ozrHpXnHCz3todR6vv+xWe0wPwIXuC7R6Qtsa33w
+         C1a/jtB1Fsyr+CVgIIItrxekFOtzfTgfgLXwfHH7WJzoq+DYdHMONy+NYHww0tQrlyRU
+         /rmQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=NxtjUuD7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=HhHiEi7U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h9-20020ac87d49000000b00430d6d3ba6csi4376194qtb.700.2024.03.19.14.26.41
+        by mx.google.com with ESMTPS id p15-20020a05620a112f00b00789f7f65089si6724325qkk.754.2024.03.19.21.42.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 19 Mar 2024 14:26:41 -0700 (PDT)
+        Tue, 19 Mar 2024 21:42:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=NxtjUuD7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=HhHiEi7U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rmgyd-0007be-Th; Tue, 19 Mar 2024 17:26:31 -0400
+	id 1rmnmA-0001yU-HH; Wed, 20 Mar 2024 00:42:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rmgyc-0007bE-RM
- for qemu-arm@nongnu.org; Tue, 19 Mar 2024 17:26:30 -0400
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rmnm9-0001yD-0i; Wed, 20 Mar 2024 00:42:05 -0400
+Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rmgyV-0001qB-AK
- for qemu-arm@nongnu.org; Tue, 19 Mar 2024 17:26:30 -0400
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-6e780830bdcso162434b3a.1
- for <qemu-arm@nongnu.org>; Tue, 19 Mar 2024 14:26:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rmnm7-0005zD-1S; Wed, 20 Mar 2024 00:42:04 -0400
+Received: by mail-vk1-xa31.google.com with SMTP id
+ 71dfb90a1353d-4d432122a2dso1609522e0c.0; 
+ Tue, 19 Mar 2024 21:42:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1710883582; x=1711488382; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=TVAvmDIhpciLflBuRwbnPdYQ1vOHfHflpIuQkAt+cPE=;
- b=NxtjUuD73Qa92/PGYVqzd7gaPdfy+KGVQgt3irb4pkcZnr7zaXgKw9ww/WziVDnvFa
- rVhBMahFUbZFe8XSreThPjovWYOWlzJ9CiJPAwqWT9A1FcTE9ppl+Zi7hnxYuoV/WfGd
- OsyRdvudIyoaPgLUP7AiLFisKSq2uzKa0iFjWe2gFLyTlIlPFX42g1xWp+eO1Lj2DvdH
- vV5DU9Q6gtvQ6dSZyrI60iK/UreNLTHUvucoOJ+2VegVTvxV1xKMN+0VgetXEDnp0NzB
- D2ShCM6OqhHtFLc2JDw6b5Z5vb4ZCIIDDeqKF83PKMMVIiHQACgnOGnaCNC8s5AHWjSL
- +Cfg==
+ d=gmail.com; s=20230601; t=1710909720; x=1711514520; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=AahSnFMfmGByonWDDLM06Y7TC1QB2DWs0dZmM73NJIA=;
+ b=HhHiEi7U8G48IWeZS4l1uBqgf8uiT5H+lYpsw6W9KVry7qV/WudDs+d9wu9t63RMFg
+ 8L3EOL+GcVVyCEXnbSlZVfwRaeQsd1JLLDq0PcaEkUFuoebIGgEHHon9v1DKBFcufJSL
+ pfwA6i3JQSJdVlXISYCccdXBZQY7RucF8AWp9lSfvt0/RJOPsvr9Qh5rHDm08C4w3Mf7
+ T5je2/2FnYv0voiiHvCqMNr/Dv7fJDA4U7gARtBHftVf9KRjEH6WhvEdK1+sRPEpXz3K
+ AxrR8DcrLread+jAbBTiaenSXLfTHpLXfrbLtDl+ekUfw9HqW6qQP3RNuRBfK5K1vRuK
+ DxBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710883582; x=1711488382;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=TVAvmDIhpciLflBuRwbnPdYQ1vOHfHflpIuQkAt+cPE=;
- b=JFW+Wjhi9IzE0OrctfQ4uV1CoJyihNtNi2oXQ9TlBDZVuQl+ockHfepNTpeS5Xr9r7
- 6A3xNZ/VFFBDsYCpZ8pVIiDJefYbpCTSjDNOtcY260F4EDmlJvvsaK2Qz+2h+XRrIZif
- cY35ugjY2L4Ooy9JVB2K8V7rRidxc6air8Y2q7pQMe7jS3Nzv+XqEKp1wGoa8vo3qDx3
- nw8uk7LtpqN43hAkMPXQaJqWPWwI10Vbirf+O8HqiNUpWgb9+eBV4pMUUeLf+YWymHMc
- hMTEeeQdz3s0iIZ/Dwb8hoYl1efuQZwuWs4mAViKk9SggalmH8Ply3tPSbxt5DGmm3QG
- Tssg==
+ d=1e100.net; s=20230601; t=1710909720; x=1711514520;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=AahSnFMfmGByonWDDLM06Y7TC1QB2DWs0dZmM73NJIA=;
+ b=IXvOvDyjDL4N+6zuELNk5h5S70hAuDKtH3uene205JPG8FLScb6oZytSP6YPduKEo+
+ VBg4bnhnMt6NJQB00/XvGttB5iDXishFfdOSzKGK2U2mNVcS4072azsqnP7WmFLY0gkO
+ tDE8Uq/addVwm6tSKvfKXz4kMOcJ2QYsGaMR8w0tNF8lakQ0ENMqZrwzndP0Rn+87EC3
+ rqna09c/eL9GNvTXhrvqW93xpIaattADJqiEdXEy/lzv162bY1UHqIZXOtLZgBjwBQ+S
+ 79nASn92xARxS0ifa2Em6TwjGmsMP1wvrLi8wyL6ESifSOnsdhzWLLg2lO36EVhtTeM1
+ gJnA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUcgzS7SFOFMn7eIBmp4gFoT2Fa1YzyZdPNE77QkmXkEGCNtjXdhHMSJfwOILngF4b9UhREWIaVDGSQKAnRw8AC/hhs
-X-Gm-Message-State: AOJu0YyXf7AfelXUxVqR9+CiCSLJGgKI9NjoWakl70lJQAUR7lPp1P7z
- HL+08FYcuY3QMHYL8wU6o5svgfAGk+gXxL5v74NYgkDJkot9boZR5TbBiFzA+ew=
-X-Received: by 2002:a05:6a21:3390:b0:1a3:5b82:dd07 with SMTP id
- yy16-20020a056a21339000b001a35b82dd07mr945747pzb.8.1710883581754; 
- Tue, 19 Mar 2024 14:26:21 -0700 (PDT)
-Received: from [192.168.68.110] ([177.94.15.159])
- by smtp.gmail.com with ESMTPSA id
- b30-20020aa78ede000000b006e6ca46cfe7sm4054145pfr.12.2024.03.19.14.26.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Mar 2024 14:26:21 -0700 (PDT)
-Message-ID: <d1d9a3b9-3c43-4cde-8aab-abb48fdd50ad@ventanamicro.com>
-Date: Tue, 19 Mar 2024 18:26:16 -0300
+ AJvYcCVut9Mc31rzF+vu608AV/p/qV/4J+gMCYlQYczUW2ckvLGGVj0yEABQ/oghy3WQmEZxvn+K6gPRSEyH1YVxws3lqNrWRIRzn8vw2ce62RiV/loNnRqqyV3hLgnXOuKp5hFuHSknItB34VHR77uVV2XfLw==
+X-Gm-Message-State: AOJu0Yx3eAL3/KfpQ0fwcWx4QM2YOliOrmy7D8af7MyJmSBYoFfoo2+l
+ aGPwcirChEhq6toUodiaissJcKuWGT3qI19O6iFhqkDa/sUKbNZ6ZRU88ThPOewFkCF8g/F/2Nu
+ ZzxHD2svkSblmHkhivqUoPvIt1xM=
+X-Received: by 2002:ac5:cb6f:0:b0:4d8:37eb:9562 with SMTP id
+ l15-20020ac5cb6f000000b004d837eb9562mr364065vkn.0.1710909719830; Tue, 19 Mar
+ 2024 21:41:59 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.1 19/27] target/riscv: Convert to
- TCGCPUOps::get_cpu_state()
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Anton Johansson <anjo@rev.ng>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-References: <20240319154258.71206-1-philmd@linaro.org>
- <20240319154258.71206-20-philmd@linaro.org>
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20240319154258.71206-20-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-pf1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20240116010930.43433-1-jeeheng.sia@starfivetech.com>
+ <20240116010930.43433-2-jeeheng.sia@starfivetech.com>
+ <49d0d8d3-c7fd-4039-aeed-6c31ba16557a@ventanamicro.com>
+ <CAKmqyKPE-ERHShmAJQH3VNc7XqOfOeKYYyCRswJSUwf7hqm1xA@mail.gmail.com>
+ <Zek4cO8ci2O38NFJ@sunil-laptop>
+ <b50a1d69-4978-4aa9-a30b-24f5c8f8d306@ventanamicro.com>
+In-Reply-To: <b50a1d69-4978-4aa9-a30b-24f5c8f8d306@ventanamicro.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 20 Mar 2024 14:41:33 +1000
+Message-ID: <CAKmqyKNaLLBqFnd+BoL+OK6REr95rOP6D5MNWR=hS+dqSYRQtg@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] hw/arm/virt-acpi-build.c: Migrate SPCR creation to
+ common location
+To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Cc: Sunil V L <sunilvl@ventanamicro.com>,
+ Sia Jee Heng <jeeheng.sia@starfivetech.com>, 
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
+ mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com, 
+ peter.maydell@linaro.org, shannon.zhaosl@gmail.com, palmer@dabbelt.com, 
+ alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com, 
+ zhiwei_liu@linux.alibaba.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a31;
+ envelope-from=alistair23@gmail.com; helo=mail-vk1-xa31.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,281 +135,204 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZlTgetgGsqV/
+X-TUID: xp43AUwavA5Z
 
+On Thu, Mar 7, 2024 at 7:22=E2=80=AFPM Daniel Henrique Barboza
+<dbarboza@ventanamicro.com> wrote:
+>
+>
+>
+> On 3/7/24 00:45, Sunil V L wrote:
+> > On Thu, Mar 07, 2024 at 11:33:25AM +1000, Alistair Francis wrote:
+> >> On Thu, Mar 7, 2024 at 4:59=E2=80=AFAM Daniel Henrique Barboza
+> >> <dbarboza@ventanamicro.com> wrote:
+> >>>
+> >>> Hi,
+> >>>
+> >>> This patch break check-qtest, most specifically 'bios-table'test', fo=
+r aarch64.
+> >>> I found this while running riscv-to-apply.next in the Gitlab pipeline=
+.
+> >>>
+> >>>
+> >>> Here's the output:
+> >>>
+> >>> $ make -j && QTEST_QEMU_BINARY=3D./qemu-system-aarch64 V=3D1 ./tests/=
+qtest/bios-tables-test
+> >>> TAP version 13
+> >>> # random seed: R02Sf0f2fa0a3fac5d540b1681c820621b7d
+> >>> # starting QEMU: exec ./qemu-system-aarch64 -qtest unix:/tmp/qtest-59=
+1353.sock -qtest-log /dev/null -chardev socket,path=3D/tmp/qtest-591353.qmp=
+,id=3Dchar0 -mon chardev=3Dchar0,mode=3Dcontrol -display none -audio none -=
+machine none -accel qtest
+> >>> 1..8
+> >>> # Start of aarch64 tests
+> >>> # Start of acpi tests
+> >>> # starting QEMU: exec ./qemu-system-aarch64 -qtest unix:/tmp/qtest-59=
+1353.sock -qtest-log /dev/null -chardev socket,path=3D/tmp/qtest-591353.qmp=
+,id=3Dchar0 -mon chardev=3Dchar0,mode=3Dcontrol -display none -audio none -=
+machine virt  -accel tcg -nodefaults -nographic -drive if=3Dpflash,format=
+=3Draw,file=3Dpc-bios/edk2-aarch64-code.fd,readonly=3Don -drive if=3Dpflash=
+,format=3Draw,file=3Dpc-bios/edk2-arm-vars.fd,snapshot=3Don -cdrom tests/da=
+ta/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2 -cpu cortex-a57 -smb=
+ios type=3D4,max-speed=3D2900,current-speed=3D2700 -accel qtest
+> >>> acpi-test: Warning! SPCR binary file mismatch. Actual [aml:/tmp/aml-9=
+G53J2], Expected [aml:tests/data/acpi/virt/SPCR].
+> >>> See source file tests/qtest/bios-tables-test.c for instructions on ho=
+w to update expected files.
+> >>> acpi-test: Warning! SPCR mismatch. Actual [asl:/tmp/asl-SR53J2.dsl, a=
+ml:/tmp/aml-9G53J2], Expected [asl:/tmp/asl-4Z33J2.dsl, aml:tests/data/acpi=
+/virt/SPCR].
+> >>>
+> >>> The diff is here:
+> >>>
+> >>> --- /tmp/asl-4Z33J2.dsl 2024-03-06 15:40:24.879879348 -0300
+> >>> +++ /tmp/asl-SR53J2.dsl 2024-03-06 15:40:24.877879347 -0300
+> >>> @@ -1,57 +1,49 @@
+> >>>    /*
+> >>>     * Intel ACPI Component Architecture
+> >>>     * AML/ASL+ Disassembler version 20220331 (64-bit version)
+> >>>     * Copyright (c) 2000 - 2022 Intel Corporation
+> >>>
+> >>> (...)
+> >>>
+> >>>    [000h 0000   4]                    Signature : "SPCR"    [Serial P=
+ort Console Redirection Table]
+> >>> -[004h 0004   4]                 Table Length : 00000050
+> >>> +[004h 0004   4]                 Table Length : 0000004F
+> >>>    [008h 0008   1]                     Revision : 02
+> >>> -[009h 0009   1]                     Checksum : B1
+> >>> +[009h 0009   1]                     Checksum : B2
+> >>>    [00Ah 0010   6]                       Oem ID : "BOCHS "
+> >>>
+> >>> (...)
+> >>>
+> >>> -[042h 0066   2]                PCI Vendor ID : FFFF
+> >>> +[042h 0066   2]                PCI Vendor ID : 00FF
+> >>>
+> >>>
+> >>> After inspecting the common helper and what the original ARM code was=
+ doing
+> >>> I found out that we're missing something down there:
+> >>>
+> >>>
+> >>> On 1/15/24 22:09, Sia Jee Heng wrote:
+> >>>> RISC-V should also generate the SPCR in a manner similar to ARM.
+> >>>> Therefore, instead of replicating the code, relocate this function
+> >>>> to the common AML build.
+> >>>>
+> >>>> Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+> >>>> ---
+> >>>>    hw/acpi/aml-build.c         | 51 ++++++++++++++++++++++++++++
+> >>>>    hw/arm/virt-acpi-build.c    | 68 +++++++++++++++-----------------=
+-----
+> >>>>    include/hw/acpi/acpi-defs.h | 33 ++++++++++++++++++
+> >>>>    include/hw/acpi/aml-build.h |  4 +++
+> >>>>    4 files changed, 115 insertions(+), 41 deletions(-)
+> >>>>
+> >>>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> >>>> index af66bde0f5..f3904650e4 100644
+> >>>> --- a/hw/acpi/aml-build.c
+> >>>> +++ b/hw/acpi/aml-build.c
+> >>>> @@ -1994,6 +1994,57 @@ static void build_processor_hierarchy_node(GA=
+rray *tbl, uint32_t flags,
+> >>>>        }
+> >>>>    }
+> >>>>
+> >>>> +void build_spcr(GArray *table_data, BIOSLinker *linker,
+> >>>> +                const AcpiSpcrData *f, const uint8_t rev,
+> >>>> +                const char *oem_id, const char *oem_table_id)
+> >>>> +{
+> >>>> +    AcpiTable table =3D { .sig =3D "SPCR", .rev =3D rev, .oem_id =
+=3D oem_id,
+> >>>> +                        .oem_table_id =3D oem_table_id };
+> >>>> +
+> >>>> +    acpi_table_begin(&table, table_data);
+> >>>> +    /* Interface type */
+> >>>> +    build_append_int_noprefix(table_data, f->interface_type, 1);
+> >>>> +    /* Reserved */
+> >>>> +    build_append_int_noprefix(table_data, 0, 3);
+> >>>> +    /* Base Address */
+> >>>> +    build_append_gas(table_data, f->base_addr.id, f->base_addr.widt=
+h,
+> >>>> +                     f->base_addr.offset, f->base_addr.size,
+> >>>> +                     f->base_addr.addr);
+> >>>> +    /* Interrupt type */
+> >>>> +    build_append_int_noprefix(table_data, f->interrupt_type, 1);
+> >>>> +    /* IRQ */
+> >>>> +    build_append_int_noprefix(table_data, f->pc_interrupt, 1);
+> >>>> +    /* Global System Interrupt */
+> >>>> +    build_append_int_noprefix(table_data, f->interrupt, 4);
+> >>>> +    /* Baud Rate */
+> >>>> +    build_append_int_noprefix(table_data, f->baud_rate, 1);
+> >>>> +    /* Parity */
+> >>>> +    build_append_int_noprefix(table_data, f->parity, 1);
+> >>>> +    /* Stop Bits */
+> >>>> +    build_append_int_noprefix(table_data, f->stop_bits, 1);
+> >>>> +    /* Flow Control */
+> >>>> +    build_append_int_noprefix(table_data, f->flow_control, 1);
+> >>>
+> >>> Here. We're missing the "Language" entry.
+> >>>
+> >>>
+> >>> This diff fixes the broken test:
+> >>>
+> >>>
+> >>> $ git diff
+> >>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> >>> index f3904650e4..6d4517cfbe 100644
+> >>> --- a/hw/acpi/aml-build.c
+> >>> +++ b/hw/acpi/aml-build.c
+> >>> @@ -2024,6 +2024,8 @@ void build_spcr(GArray *table_data, BIOSLinker =
+*linker,
+> >>>        build_append_int_noprefix(table_data, f->stop_bits, 1);
+> >>>        /* Flow Control */
+> >>>        build_append_int_noprefix(table_data, f->flow_control, 1);
+> >>> +    /* Language */
+> >>> +    build_append_int_noprefix(table_data, f->language, 1);
+> >>>        /* Terminal Type */
+> >>>        build_append_int_noprefix(table_data, f->terminal_type, 1);
+> >>>        /* PCI Device ID  */
+> >>
+> >> Thanks! I added this to the patch
+> >>
+> >>>
+> >>>
+> >>>
+> >>> As a side note, it seems like 'bios-table-test' isn't being run for R=
+ISC-V. Not sure if this
+> >>> is intentional or a foresight.
+> >>
+> >> I think you are looking for oversight :)
+> >>
+> >> I think it's just an oversight, not intentional.
+> >>
+> > Adding these test cases is WIP. Drew had already pointed this. Myself
+> > and Haibo are looking at it. But I doubt patches can be sent before 9.0
+> > deadlines. Can we add them post 9.0?
+>
+> I don't recall the last time I had to deal with a new test being added af=
+ter the
+> code freeze. It's not a new feature, it increases test coverage and it mi=
+ght find
+> bugs, so my guess is that it's fine.
+>
+> Alistair/Peter, any thoughts?
 
+It's probably a post 9.0 thing, especially as I have been sick the
+last week and am only just catching up.
 
-On 3/19/24 12:42, Philippe Mathieu-Daudé wrote:
-> Convert cpu_get_tb_cpu_state() to TCGCPUOps::get_cpu_state().
-> 
-> Note, now riscv_get_cpu_state() is restricted to TCG, and
-> is declared with static scope.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
+Alistair
 
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-
-
->   target/riscv/cpu.h                      |  3 -
->   target/riscv/cpu.c                      |  2 +-
->   target/riscv/cpu_helper.c               | 87 ------------------------
->   target/riscv/tcg/tcg-cpu.c              | 88 +++++++++++++++++++++++++
->   target/riscv/insn_trans/trans_rvv.c.inc |  2 +-
->   5 files changed, 90 insertions(+), 92 deletions(-)
-> 
-> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-> index 3b1a02b944..d00d1be235 100644
-> --- a/target/riscv/cpu.h
-> +++ b/target/riscv/cpu.h
-> @@ -704,9 +704,6 @@ static inline uint32_t vext_get_vlmax(uint32_t vlenb, uint32_t vsew,
->       return vlen >> (vsew + 3 - lmul);
->   }
->   
-> -void cpu_get_tb_cpu_state(CPURISCVState *env, vaddr *pc,
-> -                          uint64_t *cs_base, uint32_t *pflags);
-> -
->   void riscv_cpu_update_mask(CPURISCVState *env);
->   bool riscv_cpu_is_32bit(RISCVCPU *cpu);
->   
-> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-> index c160b9216b..ca537d0e0a 100644
-> --- a/target/riscv/cpu.c
-> +++ b/target/riscv/cpu.c
-> @@ -889,7 +889,7 @@ static vaddr riscv_cpu_get_pc(CPUState *cs)
->       RISCVCPU *cpu = RISCV_CPU(cs);
->       CPURISCVState *env = &cpu->env;
->   
-> -    /* Match cpu_get_tb_cpu_state. */
-> +    /* Match riscv_get_cpu_state. */
->       if (env->xl == MXL_RV32) {
->           return env->pc & UINT32_MAX;
->       }
-> diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-> index ce7322011d..e18a269358 100644
-> --- a/target/riscv/cpu_helper.c
-> +++ b/target/riscv/cpu_helper.c
-> @@ -25,7 +25,6 @@
->   #include "pmu.h"
->   #include "exec/exec-all.h"
->   #include "instmap.h"
-> -#include "tcg/tcg-op.h"
->   #include "trace.h"
->   #include "semihosting/common-semi.h"
->   #include "sysemu/cpu-timers.h"
-> @@ -62,92 +61,6 @@ int riscv_env_mmu_index(CPURISCVState *env, bool ifetch)
->   #endif
->   }
->   
-> -void cpu_get_tb_cpu_state(CPURISCVState *env, vaddr *pc,
-> -                          uint64_t *cs_base, uint32_t *pflags)
-> -{
-> -    RISCVCPU *cpu = env_archcpu(env);
-> -    RISCVExtStatus fs, vs;
-> -    uint32_t flags = 0;
-> -
-> -    *pc = env->xl == MXL_RV32 ? env->pc & UINT32_MAX : env->pc;
-> -    *cs_base = 0;
-> -
-> -    if (cpu->cfg.ext_zve32f) {
-> -        /*
-> -         * If env->vl equals to VLMAX, we can use generic vector operation
-> -         * expanders (GVEC) to accerlate the vector operations.
-> -         * However, as LMUL could be a fractional number. The maximum
-> -         * vector size can be operated might be less than 8 bytes,
-> -         * which is not supported by GVEC. So we set vl_eq_vlmax flag to true
-> -         * only when maxsz >= 8 bytes.
-> -         */
-> -
-> -        /* lmul encoded as in DisasContext::lmul */
-> -        int8_t lmul = sextract32(FIELD_EX64(env->vtype, VTYPE, VLMUL), 0, 3);
-> -        uint32_t vsew = FIELD_EX64(env->vtype, VTYPE, VSEW);
-> -        uint32_t vlmax = vext_get_vlmax(cpu->cfg.vlenb, vsew, lmul);
-> -        uint32_t maxsz = vlmax << vsew;
-> -        bool vl_eq_vlmax = (env->vstart == 0) && (vlmax == env->vl) &&
-> -                           (maxsz >= 8);
-> -        flags = FIELD_DP32(flags, TB_FLAGS, VILL, env->vill);
-> -        flags = FIELD_DP32(flags, TB_FLAGS, SEW, vsew);
-> -        flags = FIELD_DP32(flags, TB_FLAGS, LMUL,
-> -                           FIELD_EX64(env->vtype, VTYPE, VLMUL));
-> -        flags = FIELD_DP32(flags, TB_FLAGS, VL_EQ_VLMAX, vl_eq_vlmax);
-> -        flags = FIELD_DP32(flags, TB_FLAGS, VTA,
-> -                           FIELD_EX64(env->vtype, VTYPE, VTA));
-> -        flags = FIELD_DP32(flags, TB_FLAGS, VMA,
-> -                           FIELD_EX64(env->vtype, VTYPE, VMA));
-> -        flags = FIELD_DP32(flags, TB_FLAGS, VSTART_EQ_ZERO, env->vstart == 0);
-> -    } else {
-> -        flags = FIELD_DP32(flags, TB_FLAGS, VILL, 1);
-> -    }
-> -
-> -#ifdef CONFIG_USER_ONLY
-> -    fs = EXT_STATUS_DIRTY;
-> -    vs = EXT_STATUS_DIRTY;
-> -#else
-> -    flags = FIELD_DP32(flags, TB_FLAGS, PRIV, env->priv);
-> -
-> -    flags |= riscv_env_mmu_index(env, 0);
-> -    fs = get_field(env->mstatus, MSTATUS_FS);
-> -    vs = get_field(env->mstatus, MSTATUS_VS);
-> -
-> -    if (env->virt_enabled) {
-> -        flags = FIELD_DP32(flags, TB_FLAGS, VIRT_ENABLED, 1);
-> -        /*
-> -         * Merge DISABLED and !DIRTY states using MIN.
-> -         * We will set both fields when dirtying.
-> -         */
-> -        fs = MIN(fs, get_field(env->mstatus_hs, MSTATUS_FS));
-> -        vs = MIN(vs, get_field(env->mstatus_hs, MSTATUS_VS));
-> -    }
-> -
-> -    /* With Zfinx, floating point is enabled/disabled by Smstateen. */
-> -    if (!riscv_has_ext(env, RVF)) {
-> -        fs = (smstateen_acc_ok(env, 0, SMSTATEEN0_FCSR) == RISCV_EXCP_NONE)
-> -             ? EXT_STATUS_DIRTY : EXT_STATUS_DISABLED;
-> -    }
-> -
-> -    if (cpu->cfg.debug && !icount_enabled()) {
-> -        flags = FIELD_DP32(flags, TB_FLAGS, ITRIGGER, env->itrigger_enabled);
-> -    }
-> -#endif
-> -
-> -    flags = FIELD_DP32(flags, TB_FLAGS, FS, fs);
-> -    flags = FIELD_DP32(flags, TB_FLAGS, VS, vs);
-> -    flags = FIELD_DP32(flags, TB_FLAGS, XL, env->xl);
-> -    flags = FIELD_DP32(flags, TB_FLAGS, AXL, cpu_address_xl(env));
-> -    if (env->cur_pmmask != 0) {
-> -        flags = FIELD_DP32(flags, TB_FLAGS, PM_MASK_ENABLED, 1);
-> -    }
-> -    if (env->cur_pmbase != 0) {
-> -        flags = FIELD_DP32(flags, TB_FLAGS, PM_BASE_ENABLED, 1);
-> -    }
-> -
-> -    *pflags = flags;
-> -}
-> -
->   void riscv_cpu_update_mask(CPURISCVState *env)
->   {
->       target_ulong mask = 0, base = 0;
-> diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
-> index ab6db817db..934007673e 100644
-> --- a/target/riscv/tcg/tcg-cpu.c
-> +++ b/target/riscv/tcg/tcg-cpu.c
-> @@ -31,6 +31,7 @@
->   #include "hw/core/accel-cpu.h"
->   #include "hw/core/tcg-cpu-ops.h"
->   #include "tcg/tcg.h"
-> +#include "sysemu/cpu-timers.h"
->   
->   /* Hash that stores user set extensions */
->   static GHashTable *multi_ext_user_opts;
-> @@ -129,10 +130,97 @@ static void riscv_restore_state_to_opc(CPUState *cs,
->       env->bins = data[1];
->   }
->   
-> +static void riscv_get_cpu_state(CPURISCVState *env, vaddr *pc,
-> +                                uint64_t *cs_base, uint32_t *pflags)
-> +{
-> +    RISCVCPU *cpu = env_archcpu(env);
-> +    RISCVExtStatus fs, vs;
-> +    uint32_t flags = 0;
-> +
-> +    *pc = env->xl == MXL_RV32 ? env->pc & UINT32_MAX : env->pc;
-> +    *cs_base = 0;
-> +
-> +    if (cpu->cfg.ext_zve32f) {
-> +        /*
-> +         * If env->vl equals to VLMAX, we can use generic vector operation
-> +         * expanders (GVEC) to accerlate the vector operations.
-> +         * However, as LMUL could be a fractional number. The maximum
-> +         * vector size can be operated might be less than 8 bytes,
-> +         * which is not supported by GVEC. So we set vl_eq_vlmax flag to true
-> +         * only when maxsz >= 8 bytes.
-> +         */
-> +
-> +        /* lmul encoded as in DisasContext::lmul */
-> +        int8_t lmul = sextract32(FIELD_EX64(env->vtype, VTYPE, VLMUL), 0, 3);
-> +        uint32_t vsew = FIELD_EX64(env->vtype, VTYPE, VSEW);
-> +        uint32_t vlmax = vext_get_vlmax(cpu->cfg.vlenb, vsew, lmul);
-> +        uint32_t maxsz = vlmax << vsew;
-> +        bool vl_eq_vlmax = (env->vstart == 0) && (vlmax == env->vl) &&
-> +                           (maxsz >= 8);
-> +        flags = FIELD_DP32(flags, TB_FLAGS, VILL, env->vill);
-> +        flags = FIELD_DP32(flags, TB_FLAGS, SEW, vsew);
-> +        flags = FIELD_DP32(flags, TB_FLAGS, LMUL,
-> +                           FIELD_EX64(env->vtype, VTYPE, VLMUL));
-> +        flags = FIELD_DP32(flags, TB_FLAGS, VL_EQ_VLMAX, vl_eq_vlmax);
-> +        flags = FIELD_DP32(flags, TB_FLAGS, VTA,
-> +                           FIELD_EX64(env->vtype, VTYPE, VTA));
-> +        flags = FIELD_DP32(flags, TB_FLAGS, VMA,
-> +                           FIELD_EX64(env->vtype, VTYPE, VMA));
-> +        flags = FIELD_DP32(flags, TB_FLAGS, VSTART_EQ_ZERO, env->vstart == 0);
-> +    } else {
-> +        flags = FIELD_DP32(flags, TB_FLAGS, VILL, 1);
-> +    }
-> +
-> +#ifdef CONFIG_USER_ONLY
-> +    fs = EXT_STATUS_DIRTY;
-> +    vs = EXT_STATUS_DIRTY;
-> +#else
-> +    flags = FIELD_DP32(flags, TB_FLAGS, PRIV, env->priv);
-> +
-> +    flags |= riscv_env_mmu_index(env, 0);
-> +    fs = get_field(env->mstatus, MSTATUS_FS);
-> +    vs = get_field(env->mstatus, MSTATUS_VS);
-> +
-> +    if (env->virt_enabled) {
-> +        flags = FIELD_DP32(flags, TB_FLAGS, VIRT_ENABLED, 1);
-> +        /*
-> +         * Merge DISABLED and !DIRTY states using MIN.
-> +         * We will set both fields when dirtying.
-> +         */
-> +        fs = MIN(fs, get_field(env->mstatus_hs, MSTATUS_FS));
-> +        vs = MIN(vs, get_field(env->mstatus_hs, MSTATUS_VS));
-> +    }
-> +
-> +    /* With Zfinx, floating point is enabled/disabled by Smstateen. */
-> +    if (!riscv_has_ext(env, RVF)) {
-> +        fs = (smstateen_acc_ok(env, 0, SMSTATEEN0_FCSR) == RISCV_EXCP_NONE)
-> +             ? EXT_STATUS_DIRTY : EXT_STATUS_DISABLED;
-> +    }
-> +
-> +    if (cpu->cfg.debug && !icount_enabled()) {
-> +        flags = FIELD_DP32(flags, TB_FLAGS, ITRIGGER, env->itrigger_enabled);
-> +    }
-> +#endif
-> +
-> +    flags = FIELD_DP32(flags, TB_FLAGS, FS, fs);
-> +    flags = FIELD_DP32(flags, TB_FLAGS, VS, vs);
-> +    flags = FIELD_DP32(flags, TB_FLAGS, XL, env->xl);
-> +    flags = FIELD_DP32(flags, TB_FLAGS, AXL, cpu_address_xl(env));
-> +    if (env->cur_pmmask != 0) {
-> +        flags = FIELD_DP32(flags, TB_FLAGS, PM_MASK_ENABLED, 1);
-> +    }
-> +    if (env->cur_pmbase != 0) {
-> +        flags = FIELD_DP32(flags, TB_FLAGS, PM_BASE_ENABLED, 1);
-> +    }
-> +
-> +    *pflags = flags;
-> +}
-> +
->   static const TCGCPUOps riscv_tcg_ops = {
->       .initialize = riscv_translate_init,
->       .synchronize_from_tb = riscv_cpu_synchronize_from_tb,
->       .restore_state_to_opc = riscv_restore_state_to_opc,
-> +    .get_cpu_state = riscv_get_cpu_state,
->   
->   #ifndef CONFIG_USER_ONLY
->       .tlb_fill = riscv_cpu_tlb_fill,
-> diff --git a/target/riscv/insn_trans/trans_rvv.c.inc b/target/riscv/insn_trans/trans_rvv.c.inc
-> index e42728990e..3c16c4852b 100644
-> --- a/target/riscv/insn_trans/trans_rvv.c.inc
-> +++ b/target/riscv/insn_trans/trans_rvv.c.inc
-> @@ -578,7 +578,7 @@ static bool vext_check_slide(DisasContext *s, int vd, int vs2,
->   }
->   
->   /*
-> - * In cpu_get_tb_cpu_state(), set VILL if RVV was not present.
-> + * In riscv_get_cpu_state(), set VILL if RVV was not present.
->    * So RVV is also be checked in this function.
->    */
->   static bool vext_check_isa_ill(DisasContext *s)
+>
+>
+> Thanks,
+>
+> Daniel
+>
+>
+>
+>
+> >
+> > Thanks,
+> > Sunil

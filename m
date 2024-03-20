@@ -1,125 +1,98 @@
-Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1764328ejb;
-        Wed, 20 Mar 2024 00:10:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVUz+RlQrN4Udt22t0cSBpB/RdpwqwlGawAz2aJZpwhhmmLbjC6C9YToZGm5y0YGZAWQMOeeOKEdxdBT55mzFwVQD8uXg39
-X-Google-Smtp-Source: AGHT+IE1rEuf9oMjoEOSbGNJZQKUQnce45tDHMPUKp4J/DSIZLnUFY4kZTs26t0NYZ8rERopsAyg
-X-Received: by 2002:a05:620a:44d2:b0:789:e801:69d4 with SMTP id y18-20020a05620a44d200b00789e80169d4mr17864752qkp.66.1710918650870;
-        Wed, 20 Mar 2024 00:10:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1710918650; cv=none;
+Received: by 2002:a17:906:aa04:b0:a46:bbde:2c08 with SMTP id ko4csp1823433ejb;
+        Wed, 20 Mar 2024 02:50:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWRSbcEufwswMNgw4LnfqINp37ZSw8vVICQsGVOP+En1ZStqE8wZTW+Vw1SU61A+5Rqsym1h5ye55c0h5T/nVKl8Vke2iDz
+X-Google-Smtp-Source: AGHT+IF71TVYkkp1ulkkv3iPdAq/mxTqjOcd7wP/PkZnK8CfUftUg0+G5PLf5fG2MRDWFHFWLSAH
+X-Received: by 2002:a05:6214:420b:b0:696:36dc:4278 with SMTP id nd11-20020a056214420b00b0069636dc4278mr3933301qvb.33.1710928207516;
+        Wed, 20 Mar 2024 02:50:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1710928207; cv=none;
         d=google.com; s=arc-20160816;
-        b=BbaoaGWJgs3ZCe7kvjrqhI6p5sMOqAuKVxf03W1OnTE0TZPwY5DPcik5bpZxJNAXT8
-         a9l5oLtABeqs/snvVF/BSAoa34kmT3e2Gedpx8/f86uAmQFIFn6CSrtzMBMnH6qRPzYa
-         KxSem0cbeb/RO017MqkuD1RzJMWlN6gJ2Kba9NNfjBVbiy45t9E3c/Nc+xmyKHTPuoud
-         VSD2V/Ka2wItv6VCu3V7/JnJdL7jlg932s/t0eReBmC80tSTQaJMKOfTP+enki+kD81d
-         4nHB6cdydcpHQKLQ6vb97zMo2F6k44L4CEBgbl/HUABIA+wTZ5YcSzurSa56SdEIGrKX
-         d4dA==
+        b=kPfr+Wzj7otjd97qEruurv7m+sOyqyyX+jAwTmTvnIyRqIZue7zJ7V008up9ytfF0l
+         qo8xyJe8CaGDwYWM29oGbrPMvWoarRTAjcW2pvaOiUhzTWDkYU3Les7t0CdBKNKPx68x
+         zxO41oGFmRY1Pt187p2bQpceBn8UteZh1kSP5cHx1roqbBaqE/60kTeUoK11zY/VXyVv
+         Rv/kvOcghG6jaqM3kJkzq53DNP9i46QlH4Nez01dL6ZUETdzNPcko9EbqTUvRJeTP6Nb
+         gHKykJvlWVtk9wJb0vGbVmHdGaQ2wvCIPuT534S9Kl0td+FNAJTdHhxN+9ZjPVDBRcJj
+         cQMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=9TCCyf82sNabPMIvnlMd5F1b2YXxnDB1L4NUWQP6dko=;
-        fh=N8b0IeeOAO1o4K8O4hxqrdL0zwxCzbe5yr9TLr8J91Q=;
-        b=l4BVoOL3dyasGGi+6Y9RflgzuQJmEMC8O04NymvfgKKbGmzT0Sam84JSLmqkwftaEe
-         9GjOVpk2FC3nzzHbPTuH86eeBN1Z5fx5oK9uHhhkYKUOLn5dnnk/+6rkzAMQFEVcnUa2
-         YrURMnlamNxbByvOw75ad5x6caS26TtYolSFmG5wmgC2vppOtpW9BBiT0OyeTVlIFV39
-         XTreZhTw02YgX97T88NlqVhVmy7c2J/7nBrVzbD6naHU7fSqkv1Fid4eWAjg4iBBsGvF
-         MwYu+G673eo1zL+9ZOZYiEDthu826y18gcwWaVNQFZDEfn0YOrKFBf2JZJsXNPhVohY2
-         BXNw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=DaOCn82q9kV/RHC+Jyy5glsl9cnwkygvzX0a05g9ywE=;
+        fh=QW/sty6zuGe+f03KlxMuRqvloQv3QKHD/mcAgcSuAjc=;
+        b=PPLA+aMFAYO9FxC3pWPv8mQWfdgeV26AJw7GraC+AB/VT/iSbe4Ys6lDUMqHL82BZ6
+         xnqXO8tBA+A5SP1l/T3RFlPYRIMLcur40d0kUuyvo6oKFH7Hg46hALYlww0VQoPDBNNg
+         B3+scJnjy8sde8GSDKEOwec8pS325ClurZyg5yPViHqWOTz9ehDaB/SxRss/AYkshnIQ
+         nNeuzCYiF8TqPCUr5WDK/JyieTU8bNJNVIldN2oRfzXInmeu0b4HV5NW2xcHv2IMN7gA
+         Bn0drwQY8uKUG86znUpMcpsiiFWMKfAsF03nO72p5OF+2oA5jDFwLxHUyDtDvStM/A6Q
+         7jPg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vWht2Amm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id wl9-20020a05620a57c900b00789faaef7c7si6775169qkn.268.2024.03.20.00.10.50
+        by mx.google.com with ESMTPS id i7-20020ad45c67000000b00690d4ba4fd3si13033729qvh.398.2024.03.20.02.50.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Mar 2024 00:10:50 -0700 (PDT)
+        Wed, 20 Mar 2024 02:50:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vWht2Amm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rmq5M-0005hw-NQ; Wed, 20 Mar 2024 03:10:04 -0400
+	id 1rmsa0-000212-9s; Wed, 20 Mar 2024 05:49:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmq5K-0005g1-Md
- for qemu-arm@nongnu.org; Wed, 20 Mar 2024 03:10:02 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rmq5E-0007CZ-GW
- for qemu-arm@nongnu.org; Wed, 20 Mar 2024 03:10:02 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-a46ba1a05e0so414510366b.3
- for <qemu-arm@nongnu.org>; Wed, 20 Mar 2024 00:09:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710918594; x=1711523394; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=9TCCyf82sNabPMIvnlMd5F1b2YXxnDB1L4NUWQP6dko=;
- b=vWht2AmmWQWMTQMEWwEClP/BkrqueULLfmVba//3b7ws2MNW5kCaC/OdBfT5VMx5YT
- WrP7k0wE0ZEL/Dzt9p4CPDDtUrYMpJqqsLvmbLMfHFeet2zcT+FLJHPRcNdwBMcMcI6m
- IhG35nrJhW0iOY3tA8cTeyuLBY0m6cVgDFpizLmW1C5AD/lDaTBD0rgvQahTqF+5ziZL
- uMK+NgLPZuwryu1kLFuLqPbN7y/JwNP31X1gppVOaUg9LKPyHBNco0LiJ+px4Xk3qZn2
- dGCmoBQ9FJesR48Y5N8eoeX8gpBLYSGslnLy+1CapfBvYvaCfMyX3EZFKLjRPrnbL5HQ
- V5uw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710918594; x=1711523394;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9TCCyf82sNabPMIvnlMd5F1b2YXxnDB1L4NUWQP6dko=;
- b=RPrtlCuHGbYQoU4co8kSuzoLbeIc9kJHXX9ARrkTkkxom3yiZckqw2RSBe5z115aVQ
- E9lG/uJa5DeWgmvt7y0T0QsmXVL9hW29QdPX6NZdxzKbx20krkVnepe4Nq+5UG5fwm8i
- cpDTsMYNHKAoJiGQeWg0Ft7248QL/n7r1tjsIIZj2ZHEmrEdr53YIHMS3D/RsUPHxwgN
- xuxmeAT3srzcafdhRn3mdhSrDUZM4QcmfZiFzZAm3NMH5AvFO+Z4zDAUIs6tVaXLA5AW
- qONcAULDInezcpPsxSGTA/Y5mZZB62ssjxaP86K6+od0Qoukk/ctV1vOmG9MZhd8gExM
- JWEA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVF046/WDiVrKaG9acNO8smSXc5rKVU7SNV4KAB80IBqVtICi9s4E3reZH9G+uVY7g8Yldy8NJBQAqK800q0C6+4LTy
-X-Gm-Message-State: AOJu0Yxcf0Tvuj7vD0XrDh83NstXVwt5gYJlv8HEVnpzU82Z4kozffqE
- Ff8MeXnbAaFKDN8UPms8MC49fG4O/Y3y8nqc00dkebYxLAy4KkrblDg8PD+V0l4=
-X-Received: by 2002:a17:906:fcc6:b0:a46:2b87:9f38 with SMTP id
- qx6-20020a170906fcc600b00a462b879f38mr2718997ejb.29.1710918594489; 
- Wed, 20 Mar 2024 00:09:54 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.156.105])
- by smtp.gmail.com with ESMTPSA id
- st6-20020a170907c08600b00a46af639a77sm4151594ejc.172.2024.03.20.00.09.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 20 Mar 2024 00:09:54 -0700 (PDT)
-Message-ID: <c022abf3-0db9-4a17-9d53-f735368e6066@linaro.org>
-Date: Wed, 20 Mar 2024 08:09:51 +0100
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rmsZv-0001zb-DP; Wed, 20 Mar 2024 05:49:47 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rmsZp-0000MF-Rv; Wed, 20 Mar 2024 05:49:45 -0400
+Received: from mail.maildlp.com (unknown [172.19.163.17])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4V03dy3Bbcz1h39r;
+ Wed, 20 Mar 2024 17:47:02 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id 9A59F1A0172;
+ Wed, 20 Mar 2024 17:49:35 +0800 (CST)
+Received: from [10.67.109.254] (10.67.109.254) by
+ kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Wed, 20 Mar 2024 17:49:34 +0800
+Message-ID: <b26cbc2d-c048-354e-2c19-43dadef7b44a@huawei.com>
+Date: Wed, 20 Mar 2024 17:49:34 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.1 22/27] target/s390x: Convert to
- TCGCPUOps::get_cpu_state()
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [RFC PATCH v8 06/23] target/arm: Add support for Non-maskable
+ Interrupt
 Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- qemu-riscv@nongnu.org, Anton Johansson <anjo@rev.ng>,
- Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>
-References: <20240319154258.71206-1-philmd@linaro.org>
- <20240319154258.71206-23-philmd@linaro.org>
- <ad0792cc-a782-47d8-9a18-c66883d9f6d1@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <ad0792cc-a782-47d8-9a18-c66883d9f6d1@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+To: Peter Maydell <peter.maydell@linaro.org>, Richard Henderson
+ <richard.henderson@linaro.org>
+CC: <eduardo@habkost.net>, <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, 
+ <wangyanan55@huawei.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+References: <20240318093546.2786144-1-ruanjinjie@huawei.com>
+ <20240318093546.2786144-7-ruanjinjie@huawei.com>
+ <CAFEAcA_xSHAJnn0_O9=zGo9u8omzhuB_WvuMo9gf7wKt8OVDmw@mail.gmail.com>
+ <cb5d981a-6db4-479c-9eaa-bca49c40bc72@linaro.org>
+ <CAFEAcA9bKcu0FrfqRGg6bbtNX1kYR04_oian_5YXaduq_a3W3Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA9bKcu0FrfqRGg6bbtNX1kYR04_oian_5YXaduq_a3W3Q@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.67.109.254]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -65
+X-Spam_score: -6.6
+X-Spam_bar: ------
+X-Spam_report: (-6.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.417,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,35 +105,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P9nOFjqJ8xwJ
+X-TUID: hXxfMr+3ahY8
 
-On 19/3/24 22:05, Richard Henderson wrote:
-> On 3/19/24 05:42, Philippe Mathieu-Daudé wrote:
->> Convert cpu_get_tb_cpu_state() to TCGCPUOps::get_cpu_state().
+
+
+On 2024/3/20 3:26, Peter Maydell wrote:
+> On Tue, 19 Mar 2024 at 18:51, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
 >>
->> Note, now s390x_get_cpu_state() is restricted to TCG.
+>> On 3/19/24 07:28, Peter Maydell wrote:
+>>>>       switch (excp_idx) {
+>>>> +    case EXCP_NMI:
+>>>> +        pstate_unmasked = !allIntMask;
+>>>> +        break;
+>>>> +
+>>>> +    case EXCP_VNMI:
+>>>> +        if ((!(hcr_el2 & HCR_IMO) && !(hcr_el2 & HCR_FMO)) ||
+>>>> +             (hcr_el2 & HCR_TGE)) {
+>>>> +            /* VNMIs(VIRQs or VFIQs) are only taken when hypervized.  */
+>>>> +            return false;
+>>>> +        }
+>>>
+>>> VINMI and VFNMI aren't the same thing: do we definitely want to
+>>> merge them into one EXCP_VNMI ?
 >>
->> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
->> ---
->>   target/s390x/cpu.h            | 30 ------------------------------
->>   target/s390x/s390x-internal.h |  2 ++
->>   target/s390x/cpu.c            |  1 +
->>   target/s390x/tcg/mem_helper.c |  2 +-
->>   target/s390x/tcg/translate.c  | 23 +++++++++++++++++++++++
->>   5 files changed, 27 insertions(+), 31 deletions(-)
+>> We do not, which is why VFNMI is going through EXCP_VFIQ.  A previous version did, and I
+>> see the comment did not change to match the new implementation.
 > 
-> Why is the function in translate.c, not cpu.c (with or without ifdefs)?
+> Why do we put VFNMI through VFIQ, though? They're not
+> the same thing either... I think I would find this less
+> confusing if we implemented what the spec says and distinguished
+> all of (IRQ, FIQ, IRQ-with-superpriority and FIQ-with-superpriority).
 
-My understanding is target/foo/tcg/ is better for TCG-specific handlers,
-less #ifdef'ry and stubs. Then bar_helper.c are meant for TCG helpers
-(including "exec/helper-proto.h").
+Should there be separate VNMI lines and exceptions for the
+IRQ-with-superpriority and FIQ-with-superpriority ?
 
-Can you think of a better file (new name?) in tcg/ or do you rather
-keep it in the main cpu.c?
-
-Thanks,
-
-Phil.
-
+> 
+>>> The use of the _eff() versions of the functions here is
+>>> correct but it introduces a new case where we need to
+>>> reevaluate the status of the VNMI etc interrupt status:
+>>> when we change from Secure to NonSecure or when we change
+>>> SCR_EL3.EEL2 or SCR_EL3.HXEN. We either need to make sure
+>>> we reevaluate when we drop from EL3 to EL2 (which would be
+>>> OK since VINMI and VFNMI can't be taken at EL3 and none of
+>>> these bits can change except at EL3) or else make the calls
+>>> to reevaluate them when we write to SCR_EL3. At least, I don't
+>>> think we currently reevaluate these bits on an EL change.
+>>
+>> We re-evaluate these bits on EL change via gicv3_cpuif_el_change_hook.
+> 
+> Only if the GIC is connected to the VIRQ and VFIQ interrupt lines,
+> which it doesn't in theory have to be (though in practice it
+> usually will be). Plus it feels a bit fragile against
+> somebody deciding to put in a "this line hasn't changed state
+> so don't bother calling the handler again" optimization in the
+> future.
+> 
+> thanks
+> -- PMM

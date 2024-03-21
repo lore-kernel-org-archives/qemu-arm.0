@@ -1,102 +1,139 @@
-Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp604532ejv;
-        Thu, 21 Mar 2024 09:03:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVksQ4BjAljiu07wqVGSInADNQfbICyO50u3RELAuPjnHuiA1T2C/KEIxO6uDKE+Q2HfLBqOPW6Y3f0OkWGcGp4MrlMH5bk
-X-Google-Smtp-Source: AGHT+IGhhE5e23ZVatMONrN5Y5Z1zGmsjZH65Oz9DaQqlX70nyoC06gxPOo1OjEmjSrchuNzsift
-X-Received: by 2002:a2e:9a99:0:b0:2d4:3dfc:af88 with SMTP id p25-20020a2e9a99000000b002d43dfcaf88mr1828086lji.7.1711036991625;
-        Thu, 21 Mar 2024 09:03:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711036991; cv=none;
+Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp609611ejv;
+        Thu, 21 Mar 2024 09:08:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVqoY19s7sYfCsXEzXZHHK60r/VagSzoRAwmmeFJlKZIdHLVVKuO13/gzkasuCWkDvHY2s5hDE7BPFliKQx1QIs5TlpfF7t
+X-Google-Smtp-Source: AGHT+IFgJ0e/SLGOzWfHymcH62e9KkyFg26uP4mg+CEqoCIVHmjmTN/h7H64du9Rth75SWEBpqvL
+X-Received: by 2002:a67:fd0e:0:b0:476:c7f0:1938 with SMTP id f14-20020a67fd0e000000b00476c7f01938mr1402023vsr.5.1711037329894;
+        Thu, 21 Mar 2024 09:08:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711037329; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jqc4OBsnxtdj615wlwhyxaE4leJyKRZQSrYOA0lJEJycDah+C/D7OmqX7bNPbevpYZ
-         kpw0i26dWfbK11Tqczgf5jnCoFnm7c8ZKVtNaX/hb9LZzZ/1UeI0eheiEILGkaUC8SUI
-         dXlfX0T5JdW/9NjZzO1DKlIz/5AbYnzMq+ikgD2fdIt1vv1Zt5oda9zB2EvLjSw6o00p
-         M2FxbiFbfyIgsmW5DxOYizPB5EL1m+iH9HCodwo8FXTagIox2Cu7ywN8BnfMp5dHsCLv
-         7bpeBnZ9MrBcmt1pqySykdl76XV1t8mdleYOQgQcCgENxapfmEIwIH9pA1LBLGnpxdJh
-         Q2uQ==
+        b=dtnng2JKe+qS/i3BM4q0w/lNrNaZSjssz/GPfWuQV+ppDPAL+ZbeFAwD5EdvHltx3g
+         zuTwkA5xzW43XOJ8lBlXTCh/UkqvL16QXsEJdSeBRlyIoWhS3Q8hGogpo9zWLe3SxP4o
+         LnG2b5UgCME9zgaKJW9Jkc8XFoaXz8odi7A2zqgUgld02DVVUtYYy5qaLlan0zqXtzZG
+         vqolN8l/TFWWK/xv19q28dESj9eOb4MzDQEPy5kZpaKndgwyc+GakU+s2mNusgVPLIVq
+         vRTEM6spo3qS+9j/jhWgSDY/3l8AzF3JCJ/Et5II4kL/9aGfumbgM/oytrFEmnZ2008E
+         GWyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Qb6T0wX/a0zoWU83voW1zu0dyWTiTnln4IKFAYcZEIw=;
-        fh=pGgJAqI+7Db9U1jEkNoe2CR6YuPIXuOZTgSrKQr1Yh4=;
-        b=CzyTYhUz65Hoj5GzDp73KaeA100R8dmizN7/Yha03vnx4p9e7E1gy0MsUs99JKX9Je
-         jH6E0nnreAcwec7m7w602jx5BW9M6Ts4AyvZZBNHpK9RfGdnfocEz+++gqjQ+W5bPxT/
-         /D27+eObH3Z9gz7cAp5wlup80WSthawrLQQkc+Pa2kVaOnwTE/lz9nK0TumvYc1puy8P
-         8hnQrIG7Mde+sh/9cxSeNrAnZtLJyqhYuMWmPaGhzs1czI+QpZpwQYydXwjOryo/t0Qr
-         kOs2pWvYJsojUmFPRF90Xj9s2V2TpCLAeXJr/FcWr/I+M8qL/A0x78GlRDRkaLVJqK9+
-         PYaA==;
+         :mime-version:references:in-reply-to:date:cc:to:from:subject
+         :message-id:dkim-signature;
+        bh=nwNJakuMyWSK7rkCKFentytHbPa7vHV9BOo01hnT5rg=;
+        fh=6VxC57+4AR4tLFEIhzEP4N6RsPbUkNM3Lfk5a+oFWn0=;
+        b=ReXf7A49zG9TcRb+282cSQhStY716xZa24oayHvywAmra2o9hMXfxzGCOCB9FF1HDJ
+         6KCyjnpIlXNe4wJkvsRrdnBebJQ63ir2i7Mt21IwUUk4vKeLycuikFnRKt/rcAQAONYq
+         zGMynop8tdTderXNODLaOs9b99XZaisciPYHwUwp3vOeohJRNR9xZnbkUh42x8EZ50nB
+         Gjp27OthqJopaM/10QlwSMzwkFoiGJB7T1QUSdJ3OUrZp2m+ylV3cKvpH45bS3DYtffW
+         RmEkjPStSL7n0WjyEdgP1bl255xQP12K+N7VBq6WXlgZchYgSB+p+1V/VWnw94gns6ej
+         LmGA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UV76ezEo;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Fu72FVCi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t13-20020a5d42cd000000b0033ce8b2573dsi8487791wrr.332.2024.03.21.09.03.11
+        by mx.google.com with ESMTPS id g6-20020a056102158600b00474763ea315si27930vsv.393.2024.03.21.09.08.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Mar 2024 09:03:11 -0700 (PDT)
+        Thu, 21 Mar 2024 09:08:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UV76ezEo;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Fu72FVCi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rnKsZ-000266-0b; Thu, 21 Mar 2024 12:02:55 -0400
+	id 1rnKxn-0004Jd-Ds; Thu, 21 Mar 2024 12:08:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rnKsM-0001po-3A
- for qemu-arm@nongnu.org; Thu, 21 Mar 2024 12:02:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1rnKxm-0004JM-AD; Thu, 21 Mar 2024 12:08:18 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rnKsJ-0005bM-ST
- for qemu-arm@nongnu.org; Thu, 21 Mar 2024 12:02:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1711036958;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Qb6T0wX/a0zoWU83voW1zu0dyWTiTnln4IKFAYcZEIw=;
- b=UV76ezEoSOSlHhXHtb9GH10CmwMxEt2mv05WGEpjMV7zHgSqVHEZ56Z72Ofrfqyc2rhrR+
- IyFcpHud8UKxyBRdTu8PCNa7bMMgAhwn2ude2IGswXzfHIlNBcgAEwy9F9R7urKlC859wF
- DiWuGcJ9g9iLudpczbRAWJPm2EoT2vY=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-683-gzpTJzI3OaK3rCZM01VS9w-1; Thu, 21 Mar 2024 12:02:33 -0400
-X-MC-Unique: gzpTJzI3OaK3rCZM01VS9w-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CAC5B803C8C;
- Thu, 21 Mar 2024 16:02:16 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.39.194.108])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AE5A03C54;
- Thu, 21 Mar 2024 16:02:15 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: Glenn Miles <milesg@linux.vnet.ibm.com>
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH] misc/pca9554: Fix check of pin range value in property
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1rnKxk-00072z-AL; Thu, 21 Mar 2024 12:08:18 -0400
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 42LFUUBC023858; Thu, 21 Mar 2024 16:08:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ mime-version : content-transfer-encoding; s=pp1;
+ bh=nwNJakuMyWSK7rkCKFentytHbPa7vHV9BOo01hnT5rg=;
+ b=Fu72FVCiLkz65hMrsnYoZFzGlRALJx6dLzDM2oGR661KSyks6qaZhqshBuS/qZQQVtk4
+ AFe4kiD3KPpHwYDJlVM9258K0lkf643W9zoapmBeFRkx8A12AVkEMFtvuPuOQZNb0wL6
+ UMwIEImJ+n568Vaw+Ybm8iiWrvuxewVIofe/dtxE9M4FGEawGhXlabwybGHvlN7Gpr2k
+ GTVDQJdUSYyB6QOOK291fic4uA5t4oqE6hmhjLk77y86ylIP+oKknEA51VIaTVYaiujc
+ SgpOPUSidOlD2/qm2zlSmrEaj9qZaFTaCQliRoAYrkNliTzXxUPTLQaBV4QRW9cAvjA+ Zg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3x0n6wrmvq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 21 Mar 2024 16:08:11 +0000
+Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 42LG8BFv022036;
+ Thu, 21 Mar 2024 16:08:11 GMT
+Received: from ppma11.dal12v.mail.ibm.com
+ (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3x0n6wrmvn-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 21 Mar 2024 16:08:11 +0000
+Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 42LDukZF002815; Thu, 21 Mar 2024 16:08:10 GMT
+Received: from smtprelay07.dal12v.mail.ibm.com ([172.16.1.9])
+ by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3wwrf2wtgj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 21 Mar 2024 16:08:10 +0000
+Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
+ [10.241.53.105])
+ by smtprelay07.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 42LG87Ak47383134
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 21 Mar 2024 16:08:10 GMT
+Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E4F3658068;
+ Thu, 21 Mar 2024 16:08:07 +0000 (GMT)
+Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id CC3F05805D;
+ Thu, 21 Mar 2024 16:08:07 +0000 (GMT)
+Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
+ by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 21 Mar 2024 16:08:07 +0000 (GMT)
+Message-ID: <c383d6f489022a47c6a87a250f4d44938d9ede6b.camel@linux.vnet.ibm.com>
+Subject: Re: [PATCH] misc/pca9554: Fix check of pin range value in property
  accessors
-Date: Thu, 21 Mar 2024 17:01:54 +0100
-Message-ID: <20240321160154.901829-1-clg@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+From: Miles Glenn <milesg@linux.vnet.ibm.com>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Thu, 21 Mar 2024 11:08:07 -0500
+In-Reply-To: <20240321160154.901829-1-clg@redhat.com>
+References: <20240321160154.901829-1-clg@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
+Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: B3jzi-GSzQPl1U2D8Zyx97hZamK3y1Zm
+X-Proofpoint-ORIG-GUID: dlpMsCxE5Nc-ID67klwF-5E-y0_vurIe
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-03-21_10,2024-03-21_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011
+ lowpriorityscore=0 adultscore=0 impostorscore=0 mlxscore=0
+ priorityscore=1501 bulkscore=0 suspectscore=0 mlxlogscore=999 spamscore=0
+ phishscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.12.0-2403140000 definitions=main-2403210117
+Received-SPF: none client-ip=148.163.156.1;
+ envelope-from=milesg@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,46 +148,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wpHK/pzT+lmu
+X-TUID: 822+venOU3g1
 
-Coverity detected an "Integer handling" issue with the pin value :
+On Thu, 2024-03-21 at 17:01 +0100, Cédric Le Goater wrote:
+> Coverity detected an "Integer handling" issue with the pin value :
+> 
+>   In expression "state >> pin", right shifting "state" by more than 7
+>   bits always yields zero.  The shift amount, "pin", is as much as 8.
+> 
+> In practice, this should not happen because the properties "pin8" and
+> above are not created. Nevertheless, fix the range to avoid this
+> warning.
+> 
+> Fixes: CID 1534917
+> Fixes: de0c7d543bca ("misc: Add a pca9554 GPIO device model")
+> Cc: Glenn Miles <milesg@linux.vnet.ibm.com>
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> ---
+>  hw/misc/pca9554.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/misc/pca9554.c b/hw/misc/pca9554.c
+> index
+> 778b32e4430a8b618322c26b1b185ed3ead97cc4..5e31696797d9564666ece6fe177
+> 37ee2a9733e96 100644
+> --- a/hw/misc/pca9554.c
+> +++ b/hw/misc/pca9554.c
+> @@ -160,7 +160,7 @@ static void pca9554_get_pin(Object *obj, Visitor
+> *v, const char *name,
+>          error_setg(errp, "%s: error reading %s", __func__, name);
+>          return;
+>      }
+> -    if (pin < 0 || pin > PCA9554_PIN_COUNT) {
+> +    if (pin < 0 || pin >= PCA9554_PIN_COUNT) {
+>          error_setg(errp, "%s invalid pin %s", __func__, name);
+>          return;
+>      }
+> @@ -187,7 +187,7 @@ static void pca9554_set_pin(Object *obj, Visitor
+> *v, const char *name,
+>          error_setg(errp, "%s: error reading %s", __func__, name);
+>          return;
+>      }
+> -    if (pin < 0 || pin > PCA9554_PIN_COUNT) {
+> +    if (pin < 0 || pin >= PCA9554_PIN_COUNT) {
+>          error_setg(errp, "%s invalid pin %s", __func__, name);
+>          return;
+>      }
 
-  In expression "state >> pin", right shifting "state" by more than 7
-  bits always yields zero.  The shift amount, "pin", is as much as 8.
+Thanks, Cédric!  I guess I should be running coverity myself.
 
-In practice, this should not happen because the properties "pin8" and
-above are not created. Nevertheless, fix the range to avoid this warning.
+-Glenn
 
-Fixes: CID 1534917
-Fixes: de0c7d543bca ("misc: Add a pca9554 GPIO device model")
-Cc: Glenn Miles <milesg@linux.vnet.ibm.com>
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- hw/misc/pca9554.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/misc/pca9554.c b/hw/misc/pca9554.c
-index 778b32e4430a8b618322c26b1b185ed3ead97cc4..5e31696797d9564666ece6fe17737ee2a9733e96 100644
---- a/hw/misc/pca9554.c
-+++ b/hw/misc/pca9554.c
-@@ -160,7 +160,7 @@ static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
-         error_setg(errp, "%s: error reading %s", __func__, name);
-         return;
-     }
--    if (pin < 0 || pin > PCA9554_PIN_COUNT) {
-+    if (pin < 0 || pin >= PCA9554_PIN_COUNT) {
-         error_setg(errp, "%s invalid pin %s", __func__, name);
-         return;
-     }
-@@ -187,7 +187,7 @@ static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
-         error_setg(errp, "%s: error reading %s", __func__, name);
-         return;
-     }
--    if (pin < 0 || pin > PCA9554_PIN_COUNT) {
-+    if (pin < 0 || pin >= PCA9554_PIN_COUNT) {
-         error_setg(errp, "%s invalid pin %s", __func__, name);
-         return;
-     }
--- 
-2.44.0
+Reviewed-by: Glenn Miles <milesg@linux.vnet.ibm.com>
 

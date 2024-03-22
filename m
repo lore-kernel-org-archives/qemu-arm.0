@@ -1,103 +1,102 @@
-Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1079281ejv;
-        Fri, 22 Mar 2024 03:39:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCURyNnkKnbreVTFjqQon21kWKEm6E3uAgT5nrxYc6wb1ViiTtM+SDpfSG97NO8foqYmcnp7ZnVV9DvrMsiVksGXVKqgCN3h
-X-Google-Smtp-Source: AGHT+IGQUaISe6/Q4aGT6ZMNMtPxl5tX7CAV3ZPbyrzRkLD1LjVl3zrKbLIhiRqVTFWtB3JM+6tJ
-X-Received: by 2002:a05:622a:1343:b0:431:3629:44fa with SMTP id w3-20020a05622a134300b00431362944famr832074qtk.24.1711103990146;
-        Fri, 22 Mar 2024 03:39:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711103990; cv=none;
+Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1086435ejv;
+        Fri, 22 Mar 2024 03:57:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUE/T72z8awtFrSvmpqPAcXY+FLwhWzMTxNAxZKFmGOE6PkOIzzMNwagDNXXS+jn3HMndV/RTmFcBPqnEmnKDoASbEYBpdj
+X-Google-Smtp-Source: AGHT+IE/qarp0yldJ+dihbqhdIZAzBW+GSk+Wqhg2n/OYDEuBP/Ka6+5Og0L/0hxP49QU/jWO/XK
+X-Received: by 2002:a81:73d7:0:b0:610:3b7a:c17d with SMTP id o206-20020a8173d7000000b006103b7ac17dmr1769162ywc.6.1711105036587;
+        Fri, 22 Mar 2024 03:57:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711105036; cv=none;
         d=google.com; s=arc-20160816;
-        b=NL3Tv86xyfx/11XxbWBdwMJBKGYia8UdOhaz+aLkWkhHsnpuu0LFgsN5/sbwZrK2b5
-         G6QjFmrEuzF+SJmn31NjyoNn6rAa9AOeIwqUx1nHZi1DP7GGmPDkPEKVeSluJiWIqM7m
-         h/kydlKSP76f9HK5eL+QOZFvjH8W+Oknqm2qeW86opVNUvs2tBKH8efwkMCPZxLCM/A+
-         doOWFQRY5NhH9JA+HAWJBI5s8/0H6QkWe4slM41oCUUY9xJPcrpzjseJvTjNZxY7QS6t
-         rH/Gmt/Cuutu52DjZr7g50UzhjAcQ/qQeqiGMpMSl9Y0IvsyDQaVjHmUzxsn9EEdwsw9
-         znxQ==
+        b=pKDz0OoyjKLXR7Ql2nQrOEXgnQshlZj/s/ByB83g+NJvetPAMcm3WJAxnqM5ddiIIM
+         BsEw+RLG/3ZNK6LRzqfX0AaDtm+/67xDxO8EyCeWGLhQciB4gfDFoNWnKj5Ww+eZTzlh
+         cpyp/lbPjEOLkNVTjxu4zfQK/vR2tQ6VSpqQIeezW7JbiMst3Q9AF1HipkUHuVVhqMrj
+         y5DtpNjkNtR/Jfyut9vqRPbhzCUrJ3qaTq9yNwkGV1so8/lJXBkDyF7VjUpJhqv/Gg3V
+         VV4ajYpCzGSbmLtpJz847e53h4zK5phYCPMEM6VBGkWO16eC/hon3o0/9Oi+o03zY2yD
+         ZKMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=eYeuDM4ep5y5DOBD9mJRXkz+JcDNW7jIh5JA/WzlHVM=;
-        fh=O9n0MBi490j+5rlqR6iP0PB2XdmsycDm5croDZT1AJI=;
-        b=bYXAvKgOwjTK2hUkxG40BXQaJ5CQ1//XUCsjTxZTFjuMtzIAn34MJfgPJLxT38dBPB
-         h3Dc0dgNZpUABMVkSrRIVV8dLvuE11ydcHkLaQuhhK68pL+7jl7kZuqvIz+ciN8fvbbx
-         eAh8C8bpf4SSYUl2b7sYWaq7W7XcCP4ceD1zdP97YzG3Z8kMGzOmhA0Tmi8LarmwqwUK
-         UywVAlZvhjBWqUvwnieEtN8CwkSES0EMnb6iPlyjUL8RJkOM5o1SFLut+hP9SGSnkZAU
-         MuXNWxd2Ti5toeaoTsdnyAxZvvzCbcnqatZS1IQAMdqAaWKAWu//4P8moM6skh3BbceP
-         fNvQ==;
+        bh=83Wh1TAIllHiFRSTsiBmuzx5iyrrRJxfmDnBiDGpJlU=;
+        fh=bRzcio0dlij2xMB7z0hjSbNg7getVIfeLbMFHaSITnI=;
+        b=eTz+tKGpciwfSNcF8OdvSGzt59y5aeyfVk1eht0NETKmsOUV4jTRdfMQfZ1wy6RtHM
+         y7j8VwBPcJaA/dN5XzEJpNuNnvTXtC+kOTEfnwK+pLNAPkSiq8H5mn1DbEAkwZnqz6Ey
+         ExwKaAAAUVuIL4MHs++Uns7QVKzEZaywCKev4wr9CPX17nVQh6btLN0XENoUQfWkMqxj
+         3fVR8ix1+0/VRRQ8Ev8NV1EE7kdWrVRZcW0NGga4IOlw6pUWPj2wvlnjHXl8WbbIFuA+
+         o+qtycdqMF3Iv9aq5Hw7De7mQk0IPevQjQDr8QNPzmSgCB92g37+WqC6bPy8F5otHs86
+         9Kvw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MntHM5NB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KYOl40Jh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a17-20020a05622a065100b00430d7a265casi1696404qtb.545.2024.03.22.03.39.49
+        by mx.google.com with ESMTPS id m9-20020a05620a220900b00789ebdb2ef5si633679qkh.288.2024.03.22.03.57.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Mar 2024 03:39:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Mar 2024 03:57:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MntHM5NB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KYOl40Jh;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rncIp-0003SX-Fc; Fri, 22 Mar 2024 06:39:11 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rnca2-00024C-Ty; Fri, 22 Mar 2024 06:56:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rncIn-0003Ro-AS
- for qemu-devel@nongnu.org; Fri, 22 Mar 2024 06:39:09 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ id 1rnca2-00023q-2K
+ for qemu-arm@nongnu.org; Fri, 22 Mar 2024 06:56:58 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rncIl-0002hL-NX
- for qemu-devel@nongnu.org; Fri, 22 Mar 2024 06:39:09 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-56bdc2a2c96so1035819a12.0
- for <qemu-devel@nongnu.org>; Fri, 22 Mar 2024 03:39:07 -0700 (PDT)
+ id 1rnca0-0006BY-IX
+ for qemu-arm@nongnu.org; Fri, 22 Mar 2024 06:56:57 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-56bcb9640bbso2091699a12.0
+ for <qemu-arm@nongnu.org>; Fri, 22 Mar 2024 03:56:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711103945; x=1711708745; darn=nongnu.org;
+ d=linaro.org; s=google; t=1711105015; x=1711709815; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=eYeuDM4ep5y5DOBD9mJRXkz+JcDNW7jIh5JA/WzlHVM=;
- b=MntHM5NBIpOvnYRbgqEuRVFKg73zAhOerwSnDpGpYxPtMyN3bnrttOut9WU2I3VNoe
- Uz5KbePk0o6y7kp3gfQ6/fo5zcYvT9KK751MjWDwlpef3FWZj22SBfsP22Lk/sjLON3E
- ObahUygaV0D+hJU2arLjibrd6XkHaV2rfE+FZ7FQK5ntq0ZOviwgaDWdIxOHoj6yAPhO
- 0xXcpHB4PPDIuV7lHx2I86GWrz9XLBJgpQh3G2wNWGINMTwlDALMd1dcDa9+x9Ve22Me
- oP+coIA7FCNHg/yhq9fsbrru+tGgnFJM4wX7trXLnVKKLcRiYZyXEVPE7GvOnl/qMqtu
- Q+bQ==
+ bh=83Wh1TAIllHiFRSTsiBmuzx5iyrrRJxfmDnBiDGpJlU=;
+ b=KYOl40JhDdkv4a9FjgZLLu91tPODA1z/ETdWENnUXjOdF6aGpBvH9x85O8LLIxJkIP
+ ecjBmvOExJqYnxyDbB6iMKwgMAI4xFe8Eh/RHzbHk9ub0ke1RJUjLNlY3wkXQrF15gYa
+ lxs0+HCt+hobrcoLCsmeyJkyvgRFaPDPRpfQgKrN5lOcjiXpgwCKwPmPHG92eOBcgE3l
+ WKwMRxOYU9/NYpffZax8OCcpBNdBgoV4ffm+N9xlQquT91N+Pnqb8AvTwvN5jtTzbYJ+
+ Nm/Z7JZhplSxb1MuTjLIZmU2HHrLcQLEDwnQI+GqBYwtsJe7FUM8Uob+TXkkYolRa1VT
+ TlWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711103945; x=1711708745;
+ d=1e100.net; s=20230601; t=1711105015; x=1711709815;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=eYeuDM4ep5y5DOBD9mJRXkz+JcDNW7jIh5JA/WzlHVM=;
- b=TNMBlDsiC8B8mojlpdJux6sSP+Yh8P+qeSE2YkLxu39+iloyJGNKFPkGSgjQvqSjH4
- vTUe7EJIjoUAHFnpKEbUlpXnmSWrvZy7GS9JjlrFht6eWLkCKisXSpjFkeCO2jijyK/C
- ANQXLDdNb4x8ZZhk2w7DSUM+rkcHNi8khgCi/wpf+OzXdYd4TsZw6cIbo4r8kFZWoLUt
- cIdyca7D6de1MXkVKG4QffG2TlR5TBGxLrlfyD7kOk1MhJTmMjdSlQPioHPxbT6nobFw
- Sl8tL4SrkTLhDLFmPozlbDCZij/19thxgg11BbrkzURrQcKMdsCjrcs6f2Koy3IonOYD
- Qkbg==
+ bh=83Wh1TAIllHiFRSTsiBmuzx5iyrrRJxfmDnBiDGpJlU=;
+ b=ogLnf1jmjigHrAZsLYYQntaa68NNMNTgEuiBshZagLT1uGS2l/Uq7HpRP65e1RmU3E
+ /Pz8+WUYGiZLse0sA/Nti5Hg0tRZJHwzB0dxWSCco578/vGtM7WQA9RoM8aFlMdZoIqL
+ gEq2E2qWamOnKBc9ERptU9nvXduHEuKIyQD8g6nuLiT5HTkjIohvYn+Cglk28dzlrkOW
+ NLx+JicuRiGbnY+mqTWV0+w1kxLF5MgD1dR18w0Y8nTik5AT0dFW0wrrT2XUENJ4TLRe
+ 1wK+6Ajejr03/Wvl6nb8YPHnznaSn4+VQ9sPbmiu8KUWiPSHm+8F272ZPL6Tkd8OJMqp
+ QI3w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWywLbr2caea7uPTt2+k9O2tPUvvCraFSwD932/pJ+IXDejSPjSO/i4dv+I4HVzd4vaOe9G1QA+2/PMpp6d2KdyCz5Uogs=
-X-Gm-Message-State: AOJu0YwCOlXk9kQbXWBAN+LbFrR5QDRNxpSI4ihVizbQpzos1vlf1EIA
- 9DcXIB2vS2nVwLA/H+gozHoQV3emDWzNyedp6gZVNLsinmWxzWDo0IlvoaPlVpGLUZs+wF+s7yU
- JzX6H5tmBoqowDagJoiFNWR/KkqLCEFOBhFz+8Q==
-X-Received: by 2002:a50:d54b:0:b0:568:d757:f7d2 with SMTP id
- f11-20020a50d54b000000b00568d757f7d2mr1274852edj.10.1711103944963; Fri, 22
- Mar 2024 03:39:04 -0700 (PDT)
+ AJvYcCVc+kxtzX5sgZFLQ0AeQQDyy4lHi/O4J2iPpUtMfIHkQQTjRjSDwo/+G+F11VaBC0r/ukIFRZpaHPYHPqZJECklAWl6
+X-Gm-Message-State: AOJu0YzaIHW63944ITZ8J/7EvbOjwEllmCtezh9WnbTQlBChimciFjMe
+ S1tEd4MjPKc6J5Q1p/BCAmpaatCuLbcz0q7PGi5jQQb4hmWBoBkm34E0FAilIevwA17VHbV0EPK
+ q37lsHo9UuLUlTO3PPVFPDd6BjKDVfbssSwpKkjKALwqHfoGS
+X-Received: by 2002:a50:9992:0:b0:568:32f7:6c53 with SMTP id
+ m18-20020a509992000000b0056832f76c53mr1243243edb.3.1711105014767; Fri, 22 Mar
+ 2024 03:56:54 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240321130812.2983113-1-ruanjinjie@huawei.com>
  <20240321130812.2983113-7-ruanjinjie@huawei.com>
  <CAFEAcA-SO3akirm+jgKGRvKH1bcsf1bLJE2uOCOoXi1h78WwFA@mail.gmail.com>
- <CAFEAcA8+9Xd-GDNzBqGfDxoc7Bg-+wK59vcsyyNmrXrvAitAuQ@mail.gmail.com>
- <53e82726-6b92-4176-a59d-c720e2c37ef4@huawei.com>
-In-Reply-To: <53e82726-6b92-4176-a59d-c720e2c37ef4@huawei.com>
+ <1b4f0b6a-f1b1-8531-e117-fb85aedfa440@huawei.com>
+In-Reply-To: <1b4f0b6a-f1b1-8531-e117-fb85aedfa440@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Mar 2024 10:38:53 +0000
-Message-ID: <CAFEAcA_HMOUJMPDW3QgNDkAMNzBXxGi1Oo5SxryBSh5vZt5kiQ@mail.gmail.com>
+Date: Fri, 22 Mar 2024 10:56:43 +0000
+Message-ID: <CAFEAcA8qSq0x_tu7zDfpghzZNSJtoHE4fZ7Hhu5nMJbUKviUtA@mail.gmail.com>
 Subject: Re: [RFC PATCH v9 06/23] target/arm: Add support for Non-maskable
  Interrupt
 To: Jinjie Ruan <ruanjinjie@huawei.com>
@@ -105,95 +104,79 @@ Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
  wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rLfKUa78ibBL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FZ0qGiAgilGw
 
-On Fri, 22 Mar 2024 at 05:05, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
+On Fri, 22 Mar 2024 at 03:56, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
 >
 >
 >
-> On 2024/3/22 2:28, Peter Maydell wrote:
-> > On Thu, 21 Mar 2024 at 15:46, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >> Something somewhere needs to implement "if SCTLR_ELx.NMI is 0 then
-> >> we don't take EXCP_VINMI etc but instead (maybe) EXCP_VIRQ etc".
-> >> At the moment nothing does that:
-> >>  * arm_cpu_update_vinmi() doesn't look at the NMI bit before
-> >>    deciding whether to set CPU_INTERRUPT_VINMI
-> >>  * in arm_excp_unmasked() if NMI is 0 then allIntMask takes its
-> >>    default value of false and so arm_excp_unmasked() returns true,
-> >>    so VINMI is not masked
-> >>  * arm_cpu_exec_interrupt() doesn't look at the NMI bit before
-> >>    deciding whether to check the CPU_INTERRUPT_VINMI bit in interrupt_request
-> >>
-> >> So even if SCTLR_ELx.NMI is 0 we'll still try to take a VINMI
-> >> if it's set up in the HCR_EL2 bits.
-> >>
-> >> However we do this the required behaviour is that if NMI is 0
-> >> then it is as if the interrupt doesn't have superpriority and
-> >> it falls back to being handled as an ordinary IRQ, VIRQ, VFIQ etc.
-> >> I think the best place to do this is probably here in
-> >> arm_cpu_exec_interrupt() -- if SCTLR_ELx.NMI isn't set then
-> >> treat the VFNMI bit like VFIQ, the VINMI bit like VIRQ, and
-> >> the NMI bit like IRQ.
+> On 2024/3/21 23:46, Peter Maydell wrote:
+> > Something somewhere needs to implement "if SCTLR_ELx.NMI is 0 then
+> > we don't take EXCP_VINMI etc but instead (maybe) EXCP_VIRQ etc".
+> > At the moment nothing does that:
+> >  * arm_cpu_update_vinmi() doesn't look at the NMI bit before
+> >    deciding whether to set CPU_INTERRUPT_VINMI
+> >  * in arm_excp_unmasked() if NMI is 0 then allIntMask takes its
+> >    default value of false and so arm_excp_unmasked() returns true,
+> >    so VINMI is not masked
+> >  * arm_cpu_exec_interrupt() doesn't look at the NMI bit before
+> >    deciding whether to check the CPU_INTERRUPT_VINMI bit in interrupt_request
 > >
-> > Folding in something like this I think will work:
+> > So even if SCTLR_ELx.NMI is 0 we'll still try to take a VINMI
+> > if it's set up in the HCR_EL2 bits.
 > >
-> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> > index 91c2896de0f..797ae3eb805 100644
-> > --- a/target/arm/cpu.c
-> > +++ b/target/arm/cpu.c
-> > @@ -837,7 +837,8 @@ static bool arm_cpu_exec_interrupt(CPUState *cs,
-> > int interrupt_request)
-> >
-> >      /* The prioritization of interrupts is IMPLEMENTATION DEFINED. */
-> >
-> > -    if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
-> > +    if (cpu_isar_feature(aa64_nmi, env_archcpu(env)) &&
-> > +        (arm_sctlr(env, cur_el) & SCTLR_NMI)) {
-> >          if (interrupt_request & CPU_INTERRUPT_NMI) {
-> >              excp_idx = EXCP_NMI;
-> >              target_el = arm_phys_excp_target_el(cs, excp_idx, cur_el, secure);
-> > @@ -862,7 +863,22 @@ static bool arm_cpu_exec_interrupt(CPUState *cs,
-> > int interrupt_request)
-> >                  goto found;
-> >              }
-> >          }
-> > +    } else {
-> > +        /*
-> > +         * NMI disabled: interrupts with superpriority are handled
-> > +         * as if they didn't have it
-> > +         */
-> > +        if (interrupt_request & CPU_INTERRUPT_NMI) {
-> > +            interrupt_request |= CPU_INTERRUPT_HARD;
+> > However we do this the required behaviour is that if NMI is 0
+> > then it is as if the interrupt doesn't have superpriority and
+> > it falls back to being handled as an ordinary IRQ, VIRQ, VFIQ etc.
+> > I think the best place to do this is probably here in
+> > arm_cpu_exec_interrupt() -- if SCTLR_ELx.NMI isn't set then
+> > treat the VFNMI bit like VFIQ, the VINMI bit like VIRQ, and
+> > the NMI bit like IRQ.
 >
-> The CPU_INTERRUPT_NMI and CPU_INTERRUPT_HARD are set simultaneously,
-> should the CPU_INTERRUPT_NMI be cleared?
+> A PE that implements FEAT_NMI and FEAT_GICv3 also implements
+> FEAT_GICv3_NMI. A PE that does not implement FEAT_NMI, does not
+> implement FEAT_GICv3_NMI.
+>
+> As the GIC side has checked the FEAT_GICv3_NMI is implemented or Not. So
+> if cpu_isar_feature(aa64_nmi, env_archcpu(env)) is false, the
+> FEAT_GICv3_NMI will also not implemented,the CPU_INTERRUPT_NMI/VINMI can
+> not come from GIC, so we only need to check cpu_isar_feature(aa64_nmi,
+> env_archcpu(env)) and SCTLR_ELx.NMI is set in hcr_write() and
+> hcrx_write() for CPU side.
 
-interrupt_request here is a local variable, and we will never
-check the NMI bit in it beyond this point in the function,
-so there's no need to explicitly clear the NMI bit.
+If the CPU implements FEAT_NMI then the guest is allowed to
+write to HCRX_EL2.VINMI even if SCTLR_ELx.NMI is 0. (It
+might for example choose to set up HCRX_EL2.VINMI first
+and then set NMI = 1 afterwards.) So you can't fix this
+by checking for NMI in hcr_write/hcrx_write.
 
-thanks
+If you wanted you could not set the VINMI etc bits in
+arm_cpu_update_vinmi() and friends if SCTLR_ELx.NMI is 0,
+as long as you ensure that the update functions all get
+called again when the NMI bit is written and on exception
+handling change.
+
 -- PMM

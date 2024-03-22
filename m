@@ -1,95 +1,97 @@
-Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1273043ejv;
-        Fri, 22 Mar 2024 08:58:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXlPkI/qs6CwBfmwaE+PsVRJt3cONHX7R3f/Yavw77qPD2/SA6nTPRVDzrhmyxGE5qqQTr1Pl5Dm1S+xn71iN+ciCdoqjqb
-X-Google-Smtp-Source: AGHT+IH9mE3tGvMLDOZ6uZ0L7ASGLqdAgwP9bDOpWos/LSK6MUSVpZuuJXRUftCT3VQYaqnRJzpD
-X-Received: by 2002:a05:6808:3cd:b0:3c3:7721:bd0f with SMTP id o13-20020a05680803cd00b003c37721bd0fmr102268oie.27.1711123111518;
-        Fri, 22 Mar 2024 08:58:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711123111; cv=none;
+Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1273377ejv;
+        Fri, 22 Mar 2024 08:59:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVoHfINft6ha10kwf0w907nSVVxdMJhgj6+r7au8nxZ0DeN0mF46zvYPVpSKG1ByAksY8LyX/xrSYdFBxwD07ukQUU558T3
+X-Google-Smtp-Source: AGHT+IGgnlWX1KOfhKiYzVZ3yskISEIecNKLW/ENJbkDm4pk21N6MD8U0DzyGNfnsCPQ8bs13QKh
+X-Received: by 2002:a05:6214:5014:b0:696:75e4:1d1b with SMTP id jo20-20020a056214501400b0069675e41d1bmr249981qvb.8.1711123148359;
+        Fri, 22 Mar 2024 08:59:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711123148; cv=none;
         d=google.com; s=arc-20160816;
-        b=N7Rzb/OoTDD11vCzUTpLtHcXRamj7LlQiHKQTvOzgVz8F5A3aT3lVSU/njmefgJeea
-         M0TvASb3I3yB6oYiLOfY3R9yWKe1lze2IFfb6fWK+2X58XLGyKZwrx89gKwfe3quLgbt
-         Xo+9rmRq92Khpfv41Bakv7xbviwCUqswQpuHZXqkSoU58+OMaJmf8DIh//ZBjVccsHV7
-         iDCds8XjFhcRjLxHbOv+xFgxueZek8pinFc7x1KwZAPbI6t5ae+YymwPybRyYE6lqAcf
-         iS2S0wDcoUGjdWYGK5V2Ect504iu50T3ECec4fiNAQcpjmtkCwRCinwA0eUcrm8kzjU1
-         fVTg==
+        b=ApUWEEJzVMomhhVZ8PfukQ9M3hw4endt+ojleWZx7XWdY40VU61YhuINzeONiL5+8o
+         HUDFIbdraIGpv/I2RPZDqLfjtuV1GXMrHFF/pG0zhhnyppFYTKkTFBmtKb+vHCFeT7Fv
+         ASwrEDDpenEu/qfKeiW2vmrI/l/Ag/aEqA6QkoiJi2wDFxyORpVIJq4j+jQOqIyNpriu
+         gB1FoyDgPQCQxceFnCcL+tTGnhP9tIDDdLIBeqMyDfygqP4a7JfjzF+XTcOS+ySkm7fd
+         7EmWopidKZpHLTbu03Wd55giW6rgGnq1+B/eHhlBu3ufY4qwIgTX3jALlmT1RQ3Vb+Uf
+         NyQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+fOM1vzhhoXwFohG+Qy5/7EBij4qwGl2aH9+HP9YMpY=;
-        fh=RSjDZf0NqHus22mgjAXg9IL1YCdRql2eKSnlNs06FnE=;
-        b=D8TirU582ubaBf6auZDBUT6NQbDzvPL4V2YfLOkufo9y0G0WApCg+3/j7u7vw0FsZw
-         OSJWLH+aFjKkzdoUlkJyY9cV09pDlHUP2UwsDkI93eMzj8Lr1q2+ClVyAdQI/bPp1+fj
-         Zsi0j6ghKMhS1ZW9NQCxjTa6Ozu0nFIwmUDN6f7HtHHjtB4MagtIVWKBUM//sZ8C8Ufz
-         yyBSIRI0FVm6SavlmbJrhd7x79CTKS2PJ/dr5g1CWwma2D+KWO9Ch2oXpQi3DCu9hP6S
-         GjEEJ9gGqEtHTMaT+5TJP8gSdG76AxY4cVhpvWjUqxzXKv8lJT4ODiWaabFdbCQckokV
-         gc2w==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=UxjY8qQEnjtbAhkgYiOeCHJsc+3HFQ5wgndLMK/z5QQ=;
+        fh=JzhUxzmpT3Kx0szYg18HKozZBflG1EwR9+QWfWnSBqU=;
+        b=z9kbZm0LxySwEGbs5PUSfQrvQrvdfTY7nIfDLOI/M2rHalt55xZ2rZjwGBuV9RQebY
+         4lpr22WwXATDiLrX8zhc3kwlmqwwUw3EBErlopELzVIYSrnIl5ySh5f3un72OpSaZK9Y
+         Kv37FCXUpS0bHoGw5655FtrlrrwqwNWZLBw3LaI9wlG8/QG2KeTAP5dSH5piEFP+4/vF
+         uYvIM90VWn8pps2o5rB++zgRfwhYAw+9VruphFAxaZ0S5eJNBd6LevLwWHLw+RdiJI48
+         C4k9iVPiEacSBF5Vt/jePO20b0RYsLV5roiH2NL8RspwgnEVrAvTVpA97Sk9M+1/aKmN
+         UEDA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tTOAULZM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=R8r5hRY6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f36-20020a05622a1a2400b0043139be7363si411846qtb.597.2024.03.22.08.58.31
+        by mx.google.com with ESMTPS id hf3-20020a0562140e8300b006966d32ca02si1265823qvb.609.2024.03.22.08.59.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Mar 2024 08:58:31 -0700 (PDT)
+        Fri, 22 Mar 2024 08:59:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tTOAULZM;
+       dkim=pass header.i=@linaro.org header.s=google header.b=R8r5hRY6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rnhHi-00017V-EV; Fri, 22 Mar 2024 11:58:22 -0400
+	id 1rnhHr-0001Aw-2a; Fri, 22 Mar 2024 11:58:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rnhHe-00015p-Vb
- for qemu-arm@nongnu.org; Fri, 22 Mar 2024 11:58:20 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rnhHp-0001Aa-Dy
+ for qemu-arm@nongnu.org; Fri, 22 Mar 2024 11:58:29 -0400
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rnhHc-0005Zp-4C
- for qemu-arm@nongnu.org; Fri, 22 Mar 2024 11:58:18 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-33ed7ba1a42so1241328f8f.2
- for <qemu-arm@nongnu.org>; Fri, 22 Mar 2024 08:58:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rnhHn-0005eO-Tk
+ for qemu-arm@nongnu.org; Fri, 22 Mar 2024 11:58:29 -0400
+Received: by mail-lj1-x230.google.com with SMTP id
+ 38308e7fff4ca-2d475b6609eso29372611fa.2
+ for <qemu-arm@nongnu.org>; Fri, 22 Mar 2024 08:58:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711123093; x=1711727893; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=+fOM1vzhhoXwFohG+Qy5/7EBij4qwGl2aH9+HP9YMpY=;
- b=tTOAULZMWZu8CC8X8JNGyLWLOvl6BnStOgFzUfgfutUobxFuTeEtC0cLMJOChQlxJp
- 5HjIzxAhxKNOtt9ZRjBvkGGtSFEjtxFMz21jJPUT4bWGKvm2Fglnp02nG4jKcVwvCaOh
- T0AM3mHxg9F4nYnKvRO6hQzvOtdtGIeek1bh8IwvpsWCjqWz6PG9Ku1iBbV/vw1p05fV
- LIA5C1hXAVvMRCz917BYt8DKKUwBhErzNF671p3ByGxQqPlQ1MG5fq+hBdfY5gGzsuQC
- 3wfWHBr8jJE/vD4Ydu+/q1yeHws1jrmK2DtiMJ7IdS7mndu3exmjHFIBlZfCDN6Y8+2n
- jQNw==
+ d=linaro.org; s=google; t=1711123106; x=1711727906; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=UxjY8qQEnjtbAhkgYiOeCHJsc+3HFQ5wgndLMK/z5QQ=;
+ b=R8r5hRY6gwbZVFB1TBsELt667RJ6iOqB98kN5CMLlnMD5ufnNEOZArHovNoWw7R63I
+ wO9L/NLD0TNQSiE/lGgYYwH8D5IXPMyu3wT8yhPj0Qffl96HmY5E3rMo97+wmY+8oyqS
+ RCInRUQNNJoUuBxyfmkRL503TD1fcSoTVmjwRrZmheak9oq84i2nJzGFbjPtOSeCdgIi
+ +VeThnHK/yL8Mui08oaJui16LH1ROUnxT8NRnXEsaaC3pQJ9ftZUKbv33wHQnYJTaS0U
+ wSkjynO3Vk2z2MujaDaaWP3M8NeAtNCEAtlyk6/I4itHa4fuSv4R5Rb+5TecmGKoU1Xm
+ aIHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711123093; x=1711727893;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+fOM1vzhhoXwFohG+Qy5/7EBij4qwGl2aH9+HP9YMpY=;
- b=O1cG4NDLvKNdgSeWoPa3/C5UZUs/HMCNS2r6sL7rs0xKDuvj9oT3/8PPe3PtRjMfpT
- jzVdcb7iAAqz+I3UrNBK8e6OLfq3vRH5IjIecHezdhZJYczLg29QH6njguYWgmKsT0G0
- Ebzoh23irGMOiOhU4hzjTOWnEdwoGEH4VlAKzdY51FZCaAd3dO2KPSAHxWYh/6PfLLW8
- aOyPqpnjJ9nlK4Z6wo2lyGKzsTgCSm1OGQVKDCaaPv74N1xZh4VLnNj/PXL4sNc/vA2j
- +5why8EIKJk8ubupoqTmObB5wuQW8tAtpI7/j5ehLtoQaVRu/od4JKDLRnRqdOH1G9yj
- ERJw==
+ d=1e100.net; s=20230601; t=1711123106; x=1711727906;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=UxjY8qQEnjtbAhkgYiOeCHJsc+3HFQ5wgndLMK/z5QQ=;
+ b=XeUacKl3xtNle8ntVVASTXJD9Mrt1/2qbiZl52rmW69DtO5tVZQN833JBh2eeZ2OMR
+ /JmnAAFct3CpaBr1iPp90MAL9NiIfSw8h53bWPW6e3ycsHEYPgobK4igOPreCFq7riu0
+ 28Sbua9xGSzLRxue6vGj38J35vmltCUQGO2/rIJH97G4mFXa5ifg5D3gVjpnRL0s0Wsn
+ 31XyCVzsCFZnwc9pFmN608eWJokkWMDBiKU9CreP/dLqa7mQPhxX5gwIygysvKdeBb1D
+ zL0q4nzFx8EqpaIo0GR5RWaQx5RcmlSvh1gIy6I+fvmNzwIejf6mfgH9dzHwe9G3Durc
+ YDSA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXFGMLHhMkBxasrcqzwu9SKjiV9+Z+qapIZNxb85sdX1T2oufwZBYWPyKZi3iTzV1fyivGjLU/oyV+dOZwT0iUjIn7w
-X-Gm-Message-State: AOJu0Yy3k2UH3y/PBz54R9ZN7uLenfoH+l1mgLipJi+0+Gg7HWLtPuiu
- r85pJz3hLWDHqnDyqdWYYYFFYlaEag1xs0x060oxc/YPnrrEAdc5QJDrMLC5HDM=
-X-Received: by 2002:adf:e54f:0:b0:33e:d8f:3466 with SMTP id
- z15-20020adfe54f000000b0033e0d8f3466mr2098172wrm.33.1711123093568; 
- Fri, 22 Mar 2024 08:58:13 -0700 (PDT)
+ AJvYcCUFIZhf7FSwQiwE5c4JcfRRyFXGjNq7/IY1HhyMVCqGq4ps16JtuiGf+zVTlxJt1rXsCwntx8GPAYNiy2pKn2ctHpvR
+X-Gm-Message-State: AOJu0Yw/cm9udI1e2/YzlsDGIAKrybsJZKGFROvyQNQYZdQvRMYo9pPk
+ rndE2j1BqWCQ9MA1Guye1RBHlkBx8x1PGgZeWrVGEph+SlPRGKgSmag50xj/eXE=
+X-Received: by 2002:a2e:8ed1:0:b0:2d4:74c5:2cd3 with SMTP id
+ e17-20020a2e8ed1000000b002d474c52cd3mr2166352ljl.41.1711123106159; 
+ Fri, 22 Mar 2024 08:58:26 -0700 (PDT)
 Received: from m1x-phil.lan ([176.176.178.251])
  by smtp.gmail.com with ESMTPSA id
- v7-20020a5d6107000000b0033e9e26a2d0sm2333672wrt.37.2024.03.22.08.58.11
+ h11-20020a05600c350b00b0041477e76ec6sm3486777wmq.2.2024.03.22.08.58.24
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 22 Mar 2024 08:58:13 -0700 (PDT)
+ Fri, 22 Mar 2024 08:58:25 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Luc Michel <luc@lmichel.fr>, Luc Michel <luc.michel@amd.com>,
@@ -97,16 +99,18 @@ Cc: Luc Michel <luc@lmichel.fr>, Luc Michel <luc.michel@amd.com>,
  =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.0 0/2] hw/clock: Propagate clock changes when STM32L4X5
- MUX is updated
-Date: Fri, 22 Mar 2024 16:58:08 +0100
-Message-ID: <20240322155810.5733-1-philmd@linaro.org>
+Subject: [PATCH-for-9.0 2/2] hw/misc/stm32l4x5_rcc: Propagate period when
+ enabling a clock
+Date: Fri, 22 Mar 2024 16:58:10 +0100
+Message-ID: <20240322155810.5733-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240322155810.5733-1-philmd@linaro.org>
+References: <20240322155810.5733-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::230;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x230.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,28 +132,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4BewpUkC9K0k
+X-TUID: mUEuJVc+q6GW
 
-Per https://www.qemu.org/docs/master/devel/clocks.html#clock-multiplier-and-divider-settings:
+From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 
-  Note that clock_set_mul_div() does not automatically call
-  clock_propagate(). If you make a runtime change to the
-  multiplier or divider you must call clock_propagate() yourself.
+The "clock_set_mul_div" function doesn't propagate the clock period
+to the children if it is changed (e.g. by enabling/disabling a clock
+multiplexer).
+This was overlooked during the implementation due to late changes.
 
-Fix what we forgot to do that in recent commit ec7d83acbd
-("hw/misc/stm32l4x5_rcc: Add an internal clock multiplexer object")
+This commit propagates the change if the multiplier or divider changes.
 
-Arnaud Minier (1):
-  hw/misc/stm32l4x5_rcc: Propagate period when enabling a clock
-
-Philippe Mathieu-Daudé (1):
-  hw/clock: Let clock_set_mul_div() return boolean value
-
- include/hw/clock.h      | 4 +++-
- hw/core/clock.c         | 8 +++++++-
+Fixes: ec7d83acbd ("hw/misc/stm32l4x5_rcc: Add an internal clock multiplexer object")
+Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+Message-ID: <20240317103918.44375-2-arnaud.minier@telecom-paris.fr>
+[PMD: Check clock_set_mul_div() return value]
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
  hw/misc/stm32l4x5_rcc.c | 5 ++++-
- 3 files changed, 14 insertions(+), 3 deletions(-)
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
+diff --git a/hw/misc/stm32l4x5_rcc.c b/hw/misc/stm32l4x5_rcc.c
+index bc2d63528b..7ad628b296 100644
+--- a/hw/misc/stm32l4x5_rcc.c
++++ b/hw/misc/stm32l4x5_rcc.c
+@@ -59,7 +59,10 @@ static void clock_mux_update(RccClockMuxState *mux, bool bypass_source)
+         freq_multiplier = mux->divider;
+     }
+ 
+-    clock_set_mul_div(mux->out, freq_multiplier, mux->multiplier);
++    if (clock_set_mul_div(mux->out, freq_multiplier, mux->multiplier)) {
++        clock_propagate(mux->out);
++    }
++
+     clock_update(mux->out, clock_get(current_source));
+ 
+     src_freq = clock_get_hz(current_source);
 -- 
 2.41.0
 

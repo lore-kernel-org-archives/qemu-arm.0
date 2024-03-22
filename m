@@ -1,103 +1,101 @@
-Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1350977ejv;
-        Fri, 22 Mar 2024 11:02:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXxUMitnoUk+j9+xGd9QITk/T0yGb2efk4WYRe1Lu+aB/uKr75dT9oXtv5FCxzim2BsLuWr1457Z2dGlwXHN0ALvQJ1/m1w
-X-Google-Smtp-Source: AGHT+IEOWA8gJCGftsaOOYvga29vT+bk+O/qD0ZobFC1AcRL5rrztHskm7q4kc3yBA/qM5t2xW8q
-X-Received: by 2002:ae9:e401:0:b0:78a:2d4b:3b06 with SMTP id q1-20020ae9e401000000b0078a2d4b3b06mr162052qkc.76.1711130564170;
-        Fri, 22 Mar 2024 11:02:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711130564; cv=none;
+Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1360729ejv;
+        Fri, 22 Mar 2024 11:17:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVv9iaqwh0t+JaahpGcfp6eTtso/Ge5+wnYmqmz9du7K3QsVh6+seIQcxdcEUWicVedAV67PZg/56RkPTgwSKgdWzi2MEHB
+X-Google-Smtp-Source: AGHT+IESOnGy1qxXNQ5tRR1u3CbRHPHYlxayHuuchqPydiVWaSTRBFlVp4V2a1zNu75qENKIHw1F
+X-Received: by 2002:a05:6102:38cf:b0:473:3801:e113 with SMTP id k15-20020a05610238cf00b004733801e113mr474533vst.23.1711131450811;
+        Fri, 22 Mar 2024 11:17:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711131450; cv=none;
         d=google.com; s=arc-20160816;
-        b=M3iP9MlKEh1ueTbHDlfPTp4MKqzlPr4XJxbRYRT+El4vRypmA9wTpQuR2a+0UfIhgO
-         DXQC8zc8ygEI4YHs2Ztemy2c1gGOEsqIGdSfkk7zJhDqTgPHxSrGyQLi33HojGGeI6tT
-         J8q1woAwVHLkHhBj/36baytK1l+HCQ0V/T0f0MCpllJ4/ITdxw4DmBUlpA6p1+i7pK5+
-         yCzYsnZuK64twHpTEUZFJKJ91A+tWdR0WhlfDkSDnUWXRO+oj93/M5kVhxHOpi5kJZT3
-         MGNJvCUSreVnf6e5zLSdJq4VB/Bw8RPI4eYSQbsWdzORoKUcoz1ElDIJhrHPtJz7DG2w
-         HP3A==
+        b=c6uZUcGGkT449UxGXWN+4oMW/IlundpSvyyKeInvX5QmqD+pB94x6KGwZqOKUZNF+3
+         x7H4jjkiui9draeugDiOPCXLAcjttWIrwBrk/e3KQeEA2gK/VvId4RJkkZ2sBsB2UxWO
+         c4YTqfJBDVB+Ysb3SuxEhy0uOv8asSI7Afj8lqVRWoT59FU3SOwwhh1AXpocSm0oYn1e
+         PLyB6RMKfnEU1KzTpS2KVZErZyTD1XduBIrC49ftvn78JqxsNF0Op3hRsJ4fDeONurrr
+         71j+Gqylz50zESlKwR8bX+D4+Uu4YTa+6o3sJuHQxNqNBhh6CjpbkNhSyZN8NIbOAYO0
+         khQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=Hwfo9mgfzP6086vlEWZX2HXWEfngeTxbC3n9gzuEQ2Q=;
-        fh=3aIIqMwDVw73LrTihRo2E+B3uqWoLxy683JcBJjPv2I=;
-        b=CwPe447hoqNAnRA8UVJQqxikTBkjEvkTQdNQzhbr93+jOlH05lDMQtqlLoovGXbIyM
-         rCtmzBCg4E5lk89DOGEIkvrG3aO5coVPHx3qVxbuR5O5G4Oyp2IFkYrQRnJa4BKaXFF+
-         Q/Rkba/rJMwaYdJvAdns6I4HiQVIzWFfcozJOAPhd4QaXXixeoaMvYCvL5qhg4Rypenu
-         /FldjFvItkg81CEHd9KUC4lOC/l2h/nwYSa/lHOgKwPwRPoTJ+Fpj9UV62tA6pQwdDkI
-         MoAMlmdW18aVqsttLFCpeCJYh8iDFEA5d8y3EJAR5BNNIY+Pmfg7JaC5/Ndq6re4VwRS
-         uvdw==;
+        bh=stdoSV9ntZpVzVEx7ecukiuBxB08z1i9BkzJV8hxl/0=;
+        fh=6CqDtVLAr1+PV+wxKP86ulVD1qiEIcpeZEe1D/S2BBI=;
+        b=boiSbFA1kvhTI2cwDZ0p1eUqMlSg+tNknai6YSHpefxe96Ya9jHvq3TRIgSj17Bfx4
+         dOj2Sme/PkvZyF5/QQV+gHUGhg6TAqQdx8e9eylaNPXFnPlCYcWVjSMvUmS0+RYwkVju
+         qxfJaSALpKAeksUmL3pD8me1uK5r9EfqMZMNfav0ajmgtQWYXZO82GcqqnVhKhqOMXgi
+         G1i+rg9sntkOhNYmft87iRoOJzEJkI7SWdNastv1fZQGGvpgcdnzzmeAWV2QxJwIdax9
+         zS7g68q5/3H6eZtq7YCnd3HS2OumhBQ4MHwFd9jy5drrO8s/qR6sm3rJnDxveLqhxYlu
+         1hlg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rcLsR2Fd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RYHy9qBI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v19-20020a05620a0a9300b00789e7b33bc1si72038qkg.592.2024.03.22.11.02.43
+        by mx.google.com with ESMTPS id b11-20020a0561023a0b00b00476d94ed939si48373vsu.133.2024.03.22.11.17.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Mar 2024 11:02:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Mar 2024 11:17:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rcLsR2Fd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=RYHy9qBI;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rnjDe-0003Mq-9A; Fri, 22 Mar 2024 14:02:18 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rnjRw-0005cM-0A; Fri, 22 Mar 2024 14:17:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rnjDc-0003MU-Su
- for qemu-arm@nongnu.org; Fri, 22 Mar 2024 14:02:16 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1rnjRn-0005ZJ-SO
+ for qemu-devel@nongnu.org; Fri, 22 Mar 2024 14:16:56 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rnjDa-0004h4-Bz
- for qemu-arm@nongnu.org; Fri, 22 Mar 2024 14:02:16 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-56a2bb1d84eso4341195a12.1
- for <qemu-arm@nongnu.org>; Fri, 22 Mar 2024 11:02:13 -0700 (PDT)
+ id 1rnjRg-00083Z-DC
+ for qemu-devel@nongnu.org; Fri, 22 Mar 2024 14:16:51 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-56890b533aaso3001610a12.3
+ for <qemu-devel@nongnu.org>; Fri, 22 Mar 2024 11:16:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711130532; x=1711735332; darn=nongnu.org;
+ d=linaro.org; s=google; t=1711131403; x=1711736203; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Hwfo9mgfzP6086vlEWZX2HXWEfngeTxbC3n9gzuEQ2Q=;
- b=rcLsR2FdrC7Cu6HcEUq+7N0wYkKs+8ht5mo/qiygGwENFtbwwOg07BBETyEJMONSPW
- P94qf6TcDGZVePzm+Yz1nCM+m1A7zRi7XmCXjKK/qMu6hlHRmowCQUV3QfWhaLQxzXj9
- 0qV2HgVwD69VM0S57GsAlTGMc+Z9ncJr2f/aoeCjn4/jXur3UQonMh6syQ8lfDm2ZjTE
- NEClx6SIqphpgR/X/V3lOEh/SzxIir1L0ximfxoUWUDykSSrE99y9W+1xEFYPZDeIx5j
- JBfSgW3RHqbI0aKMdDtCE0VgLaiEUtRCuvZ4vR3dtwSnRM/f7xLQjMjZ+cxDr7bEduDL
- /nZg==
+ bh=stdoSV9ntZpVzVEx7ecukiuBxB08z1i9BkzJV8hxl/0=;
+ b=RYHy9qBI5tM4+iUlIOahGvPrd4EMnaaPazJQqe2rnharrmj0Rn4uKh2UkYa3jpVFGb
+ znqL7vM+jBACoS4hZvhbIE1/TYiPG7yXFkkgXHbHRch7Aij5BoULRa/IxPHN2Ud242pH
+ 1GslWRh01UdhZSh6PLKOLimQ5WxnBAObg+N0ZTKKdpEoi4LjviSRFg7PXpqczNUa8v2k
+ LcoqEL2oqW4eQBBtKrQLuFjTIwKpX2ViYFCLbOqJ0aP3pMlKfU9CDPYkKtz8U0k7lLCA
+ sAi3q7Xb5dwjMMjrJv5et08zEz3WpvDn60PWfxyRvIXgZi6DOrmMmB5OmfRO+HrJUoPr
+ f51Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711130532; x=1711735332;
+ d=1e100.net; s=20230601; t=1711131403; x=1711736203;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Hwfo9mgfzP6086vlEWZX2HXWEfngeTxbC3n9gzuEQ2Q=;
- b=mrbLZooItDHGgB8ErkodJgB1Iw1jKeIjmMg8sKcq5QicYg2HchpG9Ne/VuALXk/P8y
- /JCHhQc3CCGHpQ6L7t2LKyW51MPD5u+gKz9d+dCqB7nI0L1iXrd4Ee7eiTCZa5oXIZRV
- 4bBpvswpXOgpUdxsBKosaV3z49/SH4Kw2+htVMX0EuKUPvy2Y6lAiC5EebKyUdCdgY/E
- QOabk0Yjf1TThiSCrt/xo7kAXVLiC035osxJUc5Q/yR4rmyPZ1CgbQA4hgCpNSeqSjAc
- r1rlwQOqwr9jN45jfLewRtuoCYk3zaZdb7UkSa3xe8tnnxLArfNaT+mtmR3IoL7wYIJq
- xVkA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXd+pJaxT5/e3QFpW5Mo5AHRe7BmlmulybURcc+p032123QpghN4Nh3e81C4KDwq6QV4bTmGKAkNg05+0TvFmqA7HBC
-X-Gm-Message-State: AOJu0YzXC7FFTiY7oE4gUMKNfxpUoBQK37APMrEzzbAoASvrND+m7EKd
- enqYISNVezITxWFXKYtkK5R5jj46KTVhw2Cf14bA/JIiBB38f5UNqSA1jjTs+2fIlf0sqtIuGWR
- g87ZHoSgPES3sP/UD2b5IhKFDQxPRJmtvhWRYiA==
-X-Received: by 2002:a50:ab11:0:b0:566:624a:9e3f with SMTP id
- s17-20020a50ab11000000b00566624a9e3fmr2287448edc.3.1711130532131; Fri, 22 Mar
- 2024 11:02:12 -0700 (PDT)
+ bh=stdoSV9ntZpVzVEx7ecukiuBxB08z1i9BkzJV8hxl/0=;
+ b=RPg6BUnHea6BWa5f+96CeCvatHtZagjjPWNRPOeQjCL6ogmFzn+EmT6UpOVK7MBbVv
+ fPVBnGRuLkdci0myj7I6fHY28hXYlSHGUPbaiNUUwgHizwHIpXUQ+fziZN6zZvAjmDib
+ hmp3B531WWaRRsVN7glbCULFXbUF0GG8g6HtMMau1mSOtOekxUeCylso5XXoppDFUc9M
+ Y1D+lRX/GZ6/NIJdf6T4QMQnkBUHbHmA3pm5McblMFJkzEuDA+WbAlNY1cPeD+A8POf2
+ xSdsSfwFx6GO68PzhOqxjbz950NZdOAwhScBirCEH2M8eDAdfaPCFya6OxAl5AC07jlz
+ nL5w==
+X-Gm-Message-State: AOJu0YzyifqNB39r/qF2BM0ZUO3+c7uyxSWqPX9EYV5iEDI0E6Fvw27z
+ TAxkb25Ae/w2RjAvoazoKmLUmmid819iiEh13RlvRZDpVl0p12P9HDZy83Y8VP8PsZxGDy9dVvY
+ l8yTj87Lka+RlirLhdvPcA1zvnZOk+e+obs8NLA==
+X-Received: by 2002:a50:d5d5:0:b0:567:504e:e779 with SMTP id
+ g21-20020a50d5d5000000b00567504ee779mr206413edj.25.1711131402884; Fri, 22 Mar
+ 2024 11:16:42 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240317103918.44375-1-arnaud.minier@telecom-paris.fr>
- <20240317103918.44375-4-arnaud.minier@telecom-paris.fr>
-In-Reply-To: <20240317103918.44375-4-arnaud.minier@telecom-paris.fr>
+ <20240317103918.44375-8-arnaud.minier@telecom-paris.fr>
+In-Reply-To: <20240317103918.44375-8-arnaud.minier@telecom-paris.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Mar 2024 18:02:00 +0000
-Message-ID: <CAFEAcA901b4OZiy=WVk0ggVQ1TF4mCQgoK8c9gES5uW7NX=0Kw@mail.gmail.com>
-Subject: Re: [PATCH 3/7] hw/char/stm32l4x5_usart: Add USART, UART, LPUART types
+Date: Fri, 22 Mar 2024 18:16:32 +0000
+Message-ID: <CAFEAcA8KjiaBHpMYQXrTBV3xG4Paqx82v6iFms_i2jwO2i2Fsg@mail.gmail.com>
+Subject: Re: [PATCH 7/7] tests/qtest: Add tests for the STM32L4x5 USART
 To: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Cc: qemu-devel@nongnu.org, Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, 
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
@@ -107,8 +105,8 @@ Cc: qemu-devel@nongnu.org, Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
  Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,55 +115,197 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uIDg7M/85Y3o
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Z3srYXeQWgbp
 
-On Sun, 17 Mar 2024 at 10:41, Arnaud Minier
+On Sun, 17 Mar 2024 at 10:42, Arnaud Minier
 <arnaud.minier@telecom-paris.fr> wrote:
 >
-> Create different types for the USART, UART and LPUART of the STM32L4x5
-> to deduplicate code and enable the implementation of different
-> behaviors depending on the type.
+> Test:
+> - read/write from/to the usart registers
+> - send/receive a character/string over the serial port
+>
+> The test to detect overrun is implemented but disabled
+> because overruns are currently impossible due to how we signal
+> in the USART when we are ready to receive a new character.
 >
 > Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 > Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 > ---
->  hw/char/stm32l4x5_usart.c         | 113 +++++++++++++++++++-----------
->  include/hw/char/stm32l4x5_usart.h |  21 +++++-
->  2 files changed, 92 insertions(+), 42 deletions(-)
->
-> diff --git a/hw/char/stm32l4x5_usart.c b/hw/char/stm32l4x5_usart.c
-> index b56fee5b3a..f58bd56875 100644
-> --- a/hw/char/stm32l4x5_usart.c
-> +++ b/hw/char/stm32l4x5_usart.c
-> @@ -154,9 +154,9 @@ REG32(RDR, 0x24)
->  REG32(TDR, 0x28)
->      FIELD(TDR, TDR, 0, 8)
->
-> -static void stm32l4x5_usart_reset_hold(Object *obj)
-> +static void stm32l4x5_usart_base_reset_hold(Object *obj)
->  {
-> -    STM32L4X5UsartState *s =3D STM32L4X5_USART(obj);
-> +    Stm32l4x5UsartBaseState *s =3D STM32L4X5_USART_BASE(obj);
 
-Could you avoid this kind of "add function/type/etc in
-one patch and then rename it in a following patch", please?
-Give things the right name from the start.
 
-This probably looks something like "squash this patch into
-the previous one" in practice.
+
+> --- /dev/null
+> +++ b/tests/qtest/stm32l4x5_usart-test.c
+> @@ -0,0 +1,399 @@
+> +/*
+> + * QTest testcase for STML4X5_USART
+> + *
+> + * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> + * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
+> + * See the COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "libqtest-single.h"
+> +#include "hw/misc/stm32l4x5_rcc_internals.h"
+> +#include "hw/registerfields.h"
+> +
+> +/*
+> + * All page references in the following test
+> + * refer to the ST RM0351 Reference Manuel.
+
+"Manual". Also, what page references? I couldn't see any
+from a quick scroll through.
+
+
+> + */
+> +
+> +#define RCC_BASE_ADDR 0x40021000
+> +/* Use USART 1 ADDR, assume the others work the same */
+> +#define USART1_BASE_ADDR 0x40013800
+> +
+> +/* See stm32l4x5_usart for definitions */
+> +REG32(CR1, 0x00)
+> +    FIELD(CR1, M1, 28, 1)
+> +    FIELD(CR1, OVER8, 15, 1)
+> +    FIELD(CR1, M0, 12, 1)
+> +    FIELD(CR1, PCE, 10, 1)
+> +    FIELD(CR1, TXEIE, 7, 1)
+> +    FIELD(CR1, RXNEIE, 5, 1)
+> +    FIELD(CR1, TE, 3, 1)
+> +    FIELD(CR1, RE, 2, 1)
+> +    FIELD(CR1, UE, 0, 1)
+> +REG32(CR2, 0x04)
+> +REG32(CR3, 0x08)
+> +    FIELD(CR3, OVRDIS, 12, 1)
+> +REG32(BRR, 0x0C)
+> +REG32(GTPR, 0x10)
+> +REG32(RTOR, 0x14)
+> +REG32(RQR, 0x18)
+> +REG32(ISR, 0x1C)
+> +    FIELD(ISR, TXE, 7, 1)
+> +    FIELD(ISR, RXNE, 5, 1)
+> +    FIELD(ISR, ORE, 3, 1)
+> +REG32(ICR, 0x20)
+> +REG32(RDR, 0x24)
+> +REG32(TDR, 0x28)
+> +
+> +#define NVIC_ISPR1 0XE000E204
+> +#define NVIC_ICPR1 0xE000E284
+> +#define USART1_IRQ 37
+> +
+> +static bool check_nvic_pending(QTestState *qts, unsigned int n)
+> +{
+> +    /* No USART interrupts are less than 32 */
+> +    if (n < 32) {
+> +        return false;
+> +    }
+
+I think this would be better as an assert() -- it would be
+a bug in the test case if it called this with a bad interrupt number.
+
+> +    n -=3D 32;
+> +    return qtest_readl(qts, NVIC_ISPR1) & (1 << n);
+> +}
+> +
+> +static bool clear_nvic_pending(QTestState *qts, unsigned int n)
+> +{
+> +    /* No USART interrupts are less than 32 */
+> +    if (n < 32) {
+> +        return false;
+> +    }
+
+Similarly here.
+
+> +    n -=3D 32;
+> +    qtest_writel(qts, NVIC_ICPR1, (1 << n));
+> +    return true;
+> +}
+> +
+> +static void usart_writel(unsigned int offset, uint32_t value)
+> +{
+> +    writel(USART1_BASE_ADDR + offset, value);
+> +}
+> +
+> +static uint32_t usart_readl(unsigned int offset)
+> +{
+> +    return readl(USART1_BASE_ADDR + offset);
+> +}
+> +
+> +static bool usart_wait_for_flag(QTestState *qts, uint32_t event_addr, ui=
+nt32_t flag)
+> +{
+> +    /* Wait at most 5 seconds */
+> +    for (int i =3D 0; i < 5000; i++) {
+> +        if ((qtest_readl(qts, event_addr) & flag)) {
+> +            return true;
+> +        }
+> +        g_usleep(1000);
+> +    }
+
+qtest tests should never need to sleep(). If you need to advance
+the guest clock, use clock_step(). If this is because we've sent some
+data to the UART over the socket and need to wait for it to appear
+in the QEMU process, that might be trickier, but I would see if
+advancing the guest clock works reliably for that.
+
+In general having tests which encode "wait for some wallclock
+time" is flaky, because while it might be plenty of time on your
+fast development machine, it can cause intermittent failures due
+to timeouts if the test is on some heavily-loaded slow CI runner.
+
+I note that the microbit version of this "wait for the UART"
+has a timeout of 10 minutes.
+
+> +
+> +    return false;
+> +}
+
+
+
+> +int main(int argc, char **argv)
+> +{
+> +    int ret;
+> +
+> +    g_test_init(&argc, &argv, NULL);
+> +    g_test_set_nonfatal_assertions();
+> +
+> +    qtest_add_func("stm32l4x5/usart/write_read", test_write_read);
+> +    qtest_add_func("stm32l4x5/usart/receive_char", test_receive_char);
+> +    qtest_add_func("stm32l4x5/usart/send_char", test_send_char);
+> +    qtest_add_func("stm32l4x5/usart/receive_str", test_receive_str);
+> +    qtest_add_func("stm32l4x5/usart/send_str", test_send_str);
+> +    /* Disabled tests */
+> +    if (false) {
+> +        qtest_add_func("stm32l4x5/usart/overrun", test_overrun);
+> +    }
+
+If the test doesn't work because QEMU's implementation never
+generates overruns, I would just not put it in the file, rather
+than having dead code we never run.
+
+> +    qtest_start("-machine b-l475e-iot01a");
+> +    ret =3D g_test_run();
+> +    qtest_end();
+> +
+> +    return ret;
+> +}
 
 thanks
 -- PMM

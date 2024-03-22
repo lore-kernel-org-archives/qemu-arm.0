@@ -1,104 +1,103 @@
-Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1365563ejv;
-        Fri, 22 Mar 2024 11:26:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWXZV0Q1QcVJfD2xg1vH8+owu5HMkV45ZvDV3S7cXElpFDa8I8IQ4p3oKRr9LqbvoE8RT0bOFNCo9cT1l45zHLFXwiIX6eL
-X-Google-Smtp-Source: AGHT+IHLi57hETY/ZaaxF0Y59a/TOgJTo/uNwWLk4Mv+NZlU2KCgPdlI8esywJL2pBmnL5uZzDrL
-X-Received: by 2002:a67:f28c:0:b0:474:cf85:3c61 with SMTP id m12-20020a67f28c000000b00474cf853c61mr403902vsk.11.1711131978367;
-        Fri, 22 Mar 2024 11:26:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711131978; cv=none;
+Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1370849ejv;
+        Fri, 22 Mar 2024 11:35:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVsT4P9vH1rh4mBmmwQSvYeK2TFfRXsBrNNkU2915xQP5aPVwVeqWNLZkDbIj52qJJlL92+5dLiovqd7PKqKEnq7e+sWLdV
+X-Google-Smtp-Source: AGHT+IHKUXAdpbJFQl6nIM5Mn7ysaY3hClc1fHu5E0LDQG1FPFfVkycjiQeJ33uAbQFgLv89lNiJ
+X-Received: by 2002:a05:620a:10aa:b0:78a:3e94:def9 with SMTP id h10-20020a05620a10aa00b0078a3e94def9mr595616qkk.34.1711132545112;
+        Fri, 22 Mar 2024 11:35:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711132545; cv=none;
         d=google.com; s=arc-20160816;
-        b=SqQH9qYfteK89wpSLH9VNO1/JeodF5ERsXXNtlN5nnlgXtdwG+B25kiMgNmVonQ4Xe
-         wLr9LABW3snI3cZnkfJvdhDJFcceAtdcmf/1cS45UycBHEfTH7j9ySzW7boKq3J60ixy
-         n+3U5J4zrP5/MhHYwbe1zTlWhHFjhPj4YatXcm++AY3eBIAcpslzI0WmbvjRnMRlF9Ww
-         J+e3VFyH/EEyEYLwyRzHEVFv9GuFQpnxKzOGu19r+68qGXj/gh9QBwTQlEU5LnY6vHgb
-         3f3xMIh0N8XD2N9Hn7fOUMbqT1x70TwBzZHo9vt6R5o2qnSKYKJg+8jFdi+JPfFZPT+g
-         iqMw==
+        b=SItWJKBW4kBI3TDtYLkBGkXdjNwKYWWjfJmWbgYT7Q0qnKhr2YBAbBMrgm7F0paM4D
+         S+p1zEF4Skti0WvmP3SXi2Htpj6+c1R89UFasxeXBsKagrEaIOHTFO4UPnqHaZc1aAUk
+         Yzkz1j/eGh7Uv73piU7nEliRl/eLGtPrSxvn7ucDGYLOmt3BhZoiAD3En4u5qRV4+aor
+         PvXNfYfwZeCYdTaOmED7v4hgbIBt1+Ok9A6gZFCAB/O1UkvlrMGr1KFEFUbZmiswNx89
+         wZTUz8c542zAxiPW5U4UuTbZq5R30CC7+TaeZC2YTZCl1NKlm0jDo1IJKTfsZVnsU9YV
+         Gcvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=M4QuTnMNy2QhRGnYd/1O8inzqWgELKkSsv5Kf67p/eI=;
-        fh=QWcrC/p48hw2/LYmRjTbi/LfsRSQuYjcvWMIFyojCUg=;
-        b=U3dPKTsKfvdcoQdeVdjR2veT13y7StDXhEStFnisYtaCZMGp03TcSoxGKk9q7RcsuJ
-         9PAIuaE8k9c8LrT3aGXuI3V8rjkjx9oeLfHSSY34i2x7Tw0AB853dHu0F6RpTFWzy9cW
-         lqE5macLVAAXzY6APG7mCgBTURRFTutzslip09s4aXfc1BXSstnsnw9iNcSYESq/1fy4
-         edIxqdJHm7f013/YFbZKuAAH/TWcMtRSDMlHOeKwo1YSZaRl8aMiU3oD38N0Nhrc/Q/Y
-         rFpEKnwJO6SZ5jzxFunlwKBeYA4mTe86s4trVmtUYNV7SfWluDtqN9OpISBeBts7sRTz
-         TreQ==;
+        bh=0iWMg007xv2AkRWL1ba45DBUCaixxTBKkzv3VnClTOM=;
+        fh=+AXGJ1TEO7QL1q1pfkc98PImjDs3SelthFCHCJFzGX0=;
+        b=dPMqck8ex6juG+P2K2Oj3Y/S0M3zYkDzLWpgO1edghzSGXTRHlLruMGhyuWEXE2dAt
+         iUvcOzN+ddjqmhruRuw53JvmJHmxNyu0e/A7NrOPnPCQ5htKzCdlRtUmwYf436mf8n57
+         OUf5PB/q+MZTAHireF3+1IISqp4WDvSFoX/H84LIdZwcpS8udBNJML6rSENC57SxcmnI
+         Qt3qVUZBTX4zFufS3QCYR8DBX9muZ6CEZLYl7KYZyg+8u8vkRrrYJnJe7tLaZjVRnHZX
+         vC4KdEeZCvYS/lsMo9atKQ80jGFMbrPKhD/9j6CMoXeuFrQjljCXoBSZc1fsB6VKtZDh
+         6pqA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cwOHTq0g;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FCKwohNx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a2-20020a056214062200b00691837e5b9bsi2551629qvx.128.2024.03.22.11.26.18
+        by mx.google.com with ESMTPS id po2-20020a05620a384200b0078a17418d04si131365qkn.321.2024.03.22.11.35.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Mar 2024 11:26:18 -0700 (PDT)
+        Fri, 22 Mar 2024 11:35:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cwOHTq0g;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FCKwohNx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rnjad-0000nA-V7; Fri, 22 Mar 2024 14:26:04 -0400
+	id 1rnjjW-0005fx-EW; Fri, 22 Mar 2024 14:35:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rnjaZ-0000ix-Fl
- for qemu-arm@nongnu.org; Fri, 22 Mar 2024 14:25:59 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ id 1rnjjU-0005fN-DL
+ for qemu-arm@nongnu.org; Fri, 22 Mar 2024 14:35:12 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rnjaX-0002FR-Fx
- for qemu-arm@nongnu.org; Fri, 22 Mar 2024 14:25:59 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-56a2bb1d84eso4378534a12.1
- for <qemu-arm@nongnu.org>; Fri, 22 Mar 2024 11:25:57 -0700 (PDT)
+ id 1rnjjS-0004tm-Bf
+ for qemu-arm@nongnu.org; Fri, 22 Mar 2024 14:35:12 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-56a2bb1d84eso4393005a12.1
+ for <qemu-arm@nongnu.org>; Fri, 22 Mar 2024 11:35:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711131956; x=1711736756; darn=nongnu.org;
+ d=linaro.org; s=google; t=1711132507; x=1711737307; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=M4QuTnMNy2QhRGnYd/1O8inzqWgELKkSsv5Kf67p/eI=;
- b=cwOHTq0gG9YSxXfB9oAvFXh90k5c4VLNGXHuqj+kEv9aPD34BNEA29rtfdLXv4wnaX
- vL3rE5DxRnl2f3UXTCmEAAOYW+GQGvtx0SRZGMwjRyyyo5tdgPcr4n5MBqS5wV/iVWv2
- u9fXeG5w4rP9CW8JC8WGIjNAyLmTztdZQyGna0wAedcseJYlQyd+1Ya4jSlA5hegcpUl
- NiEGrsofKTuYEQY6xa8AqacXWkvssPifQ7CUL8v+AIVW3BrS4xZhf5qWomT8NeVrVP+U
- 7Ole8C+l4fF36YkvHQGp8T8/JdaAMu9Dpa/r02MdwjDXBwNoGSKWIrpnT0pYZSFb/lIi
- SI9g==
+ bh=0iWMg007xv2AkRWL1ba45DBUCaixxTBKkzv3VnClTOM=;
+ b=FCKwohNxR8MCu71Uio522OYbc/nDS80trBEte2qExtUI1jWAF2yQuh98vhgqrML9db
+ TtPABG5Va9hBAuZyTM8nnWac2y8cE1kPU4vKIz98YmmQlGRzDU/f3Wc8s3yVmvean2p+
+ yddNBkpKu/ZOpkjDJnE/4T1w/I0hwBwRv8KOyqDt2aeQmOIlkZE5y4xGj3RXgU6OrUSq
+ pP4Gm/u2Q/6IqHgTm4hWZ1GBKMdnKrpZcW5K0dwn6vn7mIjehAy+mblWjisFtKAME4vk
+ KSaLXlvivDiXExJ+c1UssnfU8ScQYL9BYcq4x2il+q8nqLSbA6sZnK5bBJLrokVrVsZb
+ CpOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711131956; x=1711736756;
+ d=1e100.net; s=20230601; t=1711132507; x=1711737307;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=M4QuTnMNy2QhRGnYd/1O8inzqWgELKkSsv5Kf67p/eI=;
- b=l4QJv5NHXy3b9y5S90d99eRlsHDZDSmW2URg2E9f41h/QZsr8OVWV1iqkFmpfb6gmO
- NRu9KnYVl6ropnZL1P4Wgh8uS3DGe7YgfM3l/PlckiWMjFRO1ObFUtx2WMKzXsTBFSPb
- dYLYX0Jo9/5bWxs0NM8gRH67ceOGmiKvzpGofo/vg5i+Z+U5QLdgkOZvp87M9wqEl0Hy
- R/ZPRNn1Kqdcvjwtwxzrip3Rqqw6dzwquNJbjKJgjqjxNgugsUyqGJIPQL1T9Nhu704/
- b6lF37ViPjFb7S5wVm+VNUeNtz3xsjFvp6DNXVG8Nqfpdbqsfw27b3XnwRxgf+HihZzA
- jzsg==
+ bh=0iWMg007xv2AkRWL1ba45DBUCaixxTBKkzv3VnClTOM=;
+ b=iqeBr4BGjOO2mQpflJBNs4mDvFdrZMHIvFaar427WpD6o9B2pNXP5i2KYaR+o5wrE+
+ xvSolKQaeKEh31K+ZfH0hSBi67gmfWIWgBNtvs2vnj8Ta8ldIHQdBAr7iQ4an9MFWbYj
+ abAoBtuv+Pexud3oKzRueK80GmUcTP+1z+OIvrw9K+IP9ko0OoxNQ3gtUJnr1ACSU93J
+ C1+7q2mwnIdV4m9rctxkfcuKc2KEdO6ilL0wH6dfmT1Xzy5f5FPwe8AdDXKl2RpgKYGH
+ Spr750McUJrWwBe975Jl/LmSlRaIipc06rRHNgnG3TxY9BEiRwUeOuMYfqxy4KYdsb2q
+ ZxVA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXeT9uvgavtMcT9flFwNmjeMeDwrN4Eksn5Wk67L+X9WD1ptU90vI7hHFkbjZ2Ov22O1BJ8h55gQn1MT203AhpAfHKJ
-X-Gm-Message-State: AOJu0YzDwLxIrwwl3HeDiOP0z4kfywgI+Q4qZok0LR21HHJKz5amapQU
- J+bYna6H/xDv3JLL5J8TStKmrqzhEpcy9TYPKPPHead6gHwVgGsXAgZDx3xPW8tKpu7S3kM8rpt
- XZqxcVRmi2KUoBL67fjGqs8qXsK7/jgnIxYI9Rw==
-X-Received: by 2002:a50:c343:0:b0:568:d6a2:716 with SMTP id
- q3-20020a50c343000000b00568d6a20716mr2592917edb.7.1711131955719; Fri, 22 Mar
- 2024 11:25:55 -0700 (PDT)
+ AJvYcCUFvNE44+Sbwj+Qn3qCScMXx5rdaStyyE3FZ68XDg6S4b2q5KvwnzzEwWmrb3OhtWnBBqfopDXAJxyT0jaRXX3aaCD9
+X-Gm-Message-State: AOJu0Yy3ZxHZSPsthBVn+T2QF4zJ7KQ5E2XCgc2FJhrMb2toLcXnkcSN
+ 1DHVSs+SMcYC8u2OSA7F21eZzhMD7WGkC2PKUM8w0qvMa5KDcRRMtTahrf8/mtWvyhP2bznGPr6
+ 1UHY4Ownm9ntJPC1b8bvhCuxoelQTKDMCWd38cw==
+X-Received: by 2002:a50:8755:0:b0:568:d31e:4f94 with SMTP id
+ 21-20020a508755000000b00568d31e4f94mr2419188edv.9.1711132507598; Fri, 22 Mar
+ 2024 11:35:07 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240317103918.44375-1-arnaud.minier@telecom-paris.fr>
- <20240317103918.44375-6-arnaud.minier@telecom-paris.fr>
-In-Reply-To: <20240317103918.44375-6-arnaud.minier@telecom-paris.fr>
+ <20240317103918.44375-5-arnaud.minier@telecom-paris.fr>
+In-Reply-To: <20240317103918.44375-5-arnaud.minier@telecom-paris.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Mar 2024 18:25:45 +0000
-Message-ID: <CAFEAcA_J9HPQ=C9wF_jG5=Z2cxD9P3Ph3urvY=Wv2LsRhmcMWg@mail.gmail.com>
-Subject: Re: [PATCH 5/7] hw/char/stm32l4x5_usart: Add options for serial
- parameters setting
+Date: Fri, 22 Mar 2024 18:34:56 +0000
+Message-ID: <CAFEAcA-NgsDSry9dof3TNJRk5YJs2uXkN+LpnhD0OGcCCj3xXA@mail.gmail.com>
+Subject: Re: [PATCH 4/7] hw/char/stm32l4x5_usart: Enable serial read and write
 To: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Cc: qemu-devel@nongnu.org, Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, 
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
@@ -108,15 +107,15 @@ Cc: qemu-devel@nongnu.org, Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
  Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,191 +130,216 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UMyZgMEG67N1
+X-TUID: c72x8q9RooHK
 
 On Sun, 17 Mar 2024 at 10:41, Arnaud Minier
 <arnaud.minier@telecom-paris.fr> wrote:
 >
-> Add a function to change the settings of the
-> serial connection.
+> Implement the ability to read and write characters to the
+> usart using the serial port.
 >
 > Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 > Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 > ---
->  hw/char/stm32l4x5_usart.c | 97 +++++++++++++++++++++++++++++++++++++++
->  1 file changed, 97 insertions(+)
+>  hw/char/stm32l4x5_usart.c | 105 +++++++++++++++++++++++++++++++++++++-
+>  hw/char/trace-events      |   1 +
+>  2 files changed, 105 insertions(+), 1 deletion(-)
 >
 > diff --git a/hw/char/stm32l4x5_usart.c b/hw/char/stm32l4x5_usart.c
-> index 958d05a56d..95e792d09d 100644
+> index f58bd56875..958d05a56d 100644
 > --- a/hw/char/stm32l4x5_usart.c
 > +++ b/hw/char/stm32l4x5_usart.c
-> @@ -165,6 +165,91 @@ static int stm32l4x5_usart_base_can_receive(void *op=
-aque)
->      return 0;
->  }
+> @@ -154,6 +154,71 @@ REG32(RDR, 0x24)
+>  REG32(TDR, 0x28)
+>      FIELD(TDR, TDR, 0, 8)
 >
-> +static void stm32l4x5_update_params(Stm32l4x5UsartBaseState *s)
+> +static int stm32l4x5_usart_base_can_receive(void *opaque)
 > +{
-> +    int speed, parity, data_bits, stop_bits;
-> +    uint32_t value, usart_div;
-> +    QEMUSerialSetParams ssp;
+> +    Stm32l4x5UsartBaseState *s =3D opaque;
 > +
-> +    /* Select the parity type */
-> +    if (s->cr1 & R_CR1_PCE_MASK) {
-> +        if (s->cr1 & R_CR1_PS_MASK) {
-> +            parity =3D 'O';
-> +        } else {
-> +            parity =3D 'E';
-> +        }
-> +    } else {
-> +        parity =3D 'N';
+> +    if (!(s->isr & R_ISR_RXNE_MASK)) {
+> +        return 1;
 > +    }
 > +
-> +    /* Select the number of stop bits */
-> +    value =3D FIELD_EX32(s->cr2, CR2, STOP);
-> +    if (value =3D=3D 0b00) {
-> +        stop_bits =3D 1;
-> +    } else if (value =3D=3D 0b10) {
-> +        stop_bits =3D 2;
-> +    } else {
-
-I think this would read a little more clearly as
-
-     switch (FIELD_EX32(s->cr2, CR2, STOP)) {
-     case 0:
-          stop_bits =3D 1;
-          break;
-     case 2:
-          stop_bits =3D 2;
-          break;
-     default:
-          [error case code]
-     }
-
-rather than using an if-else ladder. Similarly below.
-
-> +        /* TODO: raise an error here */
-> +        stop_bits =3D 1;
-> +        error_report(
-> +            "UNIMPLEMENTED: fractionnal stop bits; CR2[13:12] =3D %x",
-> +            value);
-
-We generally use qemu_log_mask(LOG_UNIMP, ...) for
-"this was a valid thing for the guest to do but our implementation
-doesn't handle it", and qemu_log_mask(LOG_GUEST_ERROR, ...) for
-"this was an invalid thing for the guest to do" (eg programming register
-fields to reserved/undefined values), rather than using error_report().
-
-> +        return;
-> +    }
-> +
-> +    /* Select the length of the word */
-> +    value =3D (FIELD_EX32(s->cr1, CR1, M1) << 1) | FIELD_EX32(s->cr1, CR=
-1, M0);
-> +    if (value =3D=3D 0b00) {
-> +        data_bits =3D 8;
-> +    } else if (value =3D=3D 0b01) {
-> +        data_bits =3D 9;
-> +    } else if (value =3D=3D 0b01) {
-> +        data_bits =3D 7;
-
-These two arms both check against the same value, so one of them
-must be wrong...
-
-> +    } else {
-> +        /* TODO: Raise an error here */
-> +        data_bits =3D 8;
-> +        error_report("UNDEFINED: invalid word length, CR1.M =3D 0b11");
-> +        return;
-> +    }
-> +
-> +    /* Select the baud rate */
-> +    value =3D FIELD_EX32(s->brr, BRR, BRR);
-> +    if (value < 16) {
-> +        /* TODO: Raise an error here */
-> +        error_report("UNDEFINED: BRR lesser than 16: %u", value);
-> +        return;
-> +    }
-> +
-> +    if (FIELD_EX32(s->cr1, CR1, OVER8) =3D=3D 0) {
-> +        /*
-> +         * Oversampling by 16
-> +         * BRR =3D USARTDIV
-> +         */
-> +        usart_div =3D value;
-> +    } else {
-> +        /*
-> +         * Oversampling by 8
-> +         * - BRR[2:0] =3D USARTDIV[3:0] shifted 1 bit to the right.
-> +         * - BRR[3] must be kept cleared.
-> +         * - BRR[15:4] =3D USARTDIV[15:4]
-> +         * - The frequency is multiplied by 2
-> +         */
-> +        usart_div =3D ((value & 0xFFF0) | ((value & 0x0007) << 1)) / 2;
-> +    }
-> +
-> +    speed =3D clock_get_hz(s->clk) / usart_div;
-> +
-> +    ssp.speed     =3D speed;
-> +    ssp.parity    =3D parity;
-> +    ssp.data_bits =3D data_bits;
-> +    ssp.stop_bits =3D stop_bits;
-> +
-> +    qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
-> +
-> +    trace_stm32l4x5_usart_update_params(
-> +        speed, parity, data_bits, stop_bits, 0);
-
-This is slightly weird indentation.
-
-> +}
-> +
->  static void stm32l4x5_update_irq(Stm32l4x5UsartBaseState *s)
->  {
->      if (((s->isr & R_ISR_WUF_MASK) && (s->cr3 & R_CR3_WUFIE_MASK))      =
-  ||
-> @@ -318,16 +403,19 @@ static void stm32l4x5_usart_base_write(void *opaque=
-, hwaddr addr,
->      switch (addr) {
->      case A_CR1:
->          s->cr1 =3D value;
-> +        stm32l4x5_update_params(s);
->          stm32l4x5_update_irq(s);
->          return;
->      case A_CR2:
->          s->cr2 =3D value;
-> +        stm32l4x5_update_params(s);
->          return;
->      case A_CR3:
->          s->cr3 =3D value;
->          return;
->      case A_BRR:
->          s->brr =3D value;
-> +        stm32l4x5_update_params(s);
->          return;
->      case A_GTPR:
->          s->gtpr =3D value;
-> @@ -409,10 +497,19 @@ static void stm32l4x5_usart_base_init(Object *obj)
->      s->clk =3D qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
->  }
->
-> +static int stm32l4x5_usart_base_post_load(void *opaque, int version_id)
-> +{
-> +    Stm32l4x5UsartBaseState *s =3D (Stm32l4x5UsartBaseState *)opaque;
-> +
-> +    stm32l4x5_update_params(s);
 > +    return 0;
 > +}
 > +
->  static const VMStateDescription vmstate_stm32l4x5_usart_base =3D {
->      .name =3D TYPE_STM32L4X5_USART_BASE,
->      .version_id =3D 1,
->      .minimum_version_id =3D 1,
-> +    .post_load =3D stm32l4x5_usart_base_post_load,
->      .fields =3D (VMStateField[]) {
->          VMSTATE_UINT32(cr1, Stm32l4x5UsartBaseState),
->          VMSTATE_UINT32(cr2, Stm32l4x5UsartBaseState),
-> --
+> +static void stm32l4x5_update_irq(Stm32l4x5UsartBaseState *s)
+> +{
+> +    if (((s->isr & R_ISR_WUF_MASK) && (s->cr3 & R_CR3_WUFIE_MASK))      =
+  ||
+> +        ((s->isr & R_ISR_CMF_MASK) && (s->cr1 & R_CR1_CMIE_MASK))       =
+  ||
+> +        ((s->isr & R_ISR_ABRF_MASK) && (s->cr1 & R_CR1_RXNEIE_MASK))    =
+  ||
+> +        ((s->isr & R_ISR_EOBF_MASK) && (s->cr1 & R_CR1_EOBIE_MASK))     =
+  ||
+> +        ((s->isr & R_ISR_RTOF_MASK) && (s->cr1 & R_CR1_RTOIE_MASK))     =
+  ||
+> +        ((s->isr & R_ISR_CTSIF_MASK) && (s->cr3 & R_CR3_CTSIE_MASK))    =
+  ||
+> +        ((s->isr & R_ISR_LBDF_MASK) && (s->cr2 & R_CR2_LBDIE_MASK))     =
+  ||
+> +        ((s->isr & R_ISR_TXE_MASK) && (s->cr1 & R_CR1_TXEIE_MASK))      =
+  ||
+> +        ((s->isr & R_ISR_TC_MASK) && (s->cr1 & R_CR1_TCIE_MASK))        =
+  ||
+> +        ((s->isr & R_ISR_RXNE_MASK) && (s->cr1 & R_CR1_RXNEIE_MASK))    =
+  ||
+> +        ((s->isr & R_ISR_IDLE_MASK) && (s->cr1 & R_CR1_IDLEIE_MASK))    =
+  ||
+> +        ((s->isr & R_ISR_ORE_MASK) &&
+> +            ((s->cr1 & R_CR1_RXNEIE_MASK) || (s->cr3 & R_CR3_EIE_MASK)))=
+  ||
+> +        /* TODO: Handle NF ? */
+> +        ((s->isr & R_ISR_FE_MASK) && (s->cr3 & R_CR3_EIE_MASK))         =
+  ||
+> +        ((s->isr & R_ISR_PE_MASK) && (s->cr1 & R_CR1_PEIE_MASK))) {
+
+It always makes me a bit sad when hardware designers don't neatly
+line up the bits in the ISR register and the mask register so we
+can check them all at once :-)
+
+> +        qemu_irq_raise(s->irq);
+> +        trace_stm32l4x5_usart_irq_raised(s->isr);
+> +    } else {
+> +        qemu_irq_lower(s->irq);
+> +        trace_stm32l4x5_usart_irq_lowered();
+> +    }
+> +}
+> +
+> +static void stm32l4x5_usart_base_receive(void *opaque, const uint8_t *bu=
+f, int size)
+> +{
+> +    Stm32l4x5UsartBaseState *s =3D opaque;
+> +
+> +    if (!((s->cr1 & R_CR1_UE_MASK) && (s->cr1 & R_CR1_RE_MASK))) {
+> +        /* USART not enabled - drop the chars */
+> +        trace_stm32l4x5_usart_error("Dropping the chars\n");
+
+This shouldn't have the newline on the end. Also, it looks like
+this is the only use of this trace event so (a) you could make it
+more specific rather than passing in an arbitrary string, and
+(b) it should be defined in this patch, not in patch 2.
+
+> +        return;
+> +    }
+> +
+> +    /* Check if overrun detection is enabled and if there is an overrun =
+*/
+> +    if (!(s->cr3 & R_CR3_OVRDIS_MASK) && (s->isr & R_ISR_RXNE_MASK)) {
+> +        /*
+> +         * A character has been received while
+> +         * the previous has not been read =3D Overrun.
+> +         */
+> +        s->isr |=3D R_ISR_ORE_MASK;
+> +        trace_stm32l4x5_usart_overrun_detected(s->rdr, *buf);
+> +    } else {
+> +        /* No overrun */
+> +        s->rdr =3D *buf;
+> +        s->isr |=3D R_ISR_RXNE_MASK;
+> +        trace_stm32l4x5_usart_rx(s->rdr);
+> +    }
+> +
+> +    stm32l4x5_update_irq(s);
+> +}
+> +
+>  static void stm32l4x5_usart_base_reset_hold(Object *obj)
+>  {
+>      Stm32l4x5UsartBaseState *s =3D STM32L4X5_USART_BASE(obj);
+> @@ -168,6 +233,21 @@ static void stm32l4x5_usart_base_reset_hold(Object *=
+obj)
+>      s->isr =3D 0x020000C0 | R_ISR_TXE_MASK;
+>      s->rdr =3D 0x00000000;
+>      s->tdr =3D 0x00000000;
+> +
+> +    stm32l4x5_update_irq(s);
+> +}
+> +
+> +static void usart_update_rqr(Stm32l4x5UsartBaseState *s, uint32_t value)
+> +{
+> +    /* TXFRQ */
+> +    /* Reset RXNE flag */
+> +    if (value & R_RQR_RXFRQ_MASK) {
+> +        s->isr &=3D ~R_ISR_RXNE_MASK;
+> +    }
+> +    /* MMRQ */
+> +    /* SBKRQ */
+> +    /* ABRRQ */
+> +    stm32l4x5_update_irq(s);
+>  }
+>
+>  static uint64_t stm32l4x5_usart_base_read(void *opaque, hwaddr addr,
+> @@ -209,7 +289,8 @@ static uint64_t stm32l4x5_usart_base_read(void *opaqu=
+e, hwaddr addr,
+>      case A_RDR:
+>          retvalue =3D FIELD_EX32(s->rdr, RDR, RDR);
+>          /* Reset RXNE flag */
+> -        s->isr &=3D ~USART_ISR_RXNE;
+> +        s->isr &=3D ~R_ISR_RXNE_MASK;
+
+This looks like another "should have used that name to start with" change?
+
+> +        stm32l4x5_update_irq(s);
+>          break;
+>      case A_TDR:
+>          retvalue =3D FIELD_EX32(s->tdr, TDR, TDR);
+> @@ -237,6 +318,7 @@ static void stm32l4x5_usart_base_write(void *opaque, =
+hwaddr addr,
+>      switch (addr) {
+>      case A_CR1:
+>          s->cr1 =3D value;
+> +        stm32l4x5_update_irq(s);
+>          return;
+>      case A_CR2:
+>          s->cr2 =3D value;
+> @@ -254,6 +336,7 @@ static void stm32l4x5_usart_base_write(void *opaque, =
+hwaddr addr,
+>          s->rtor =3D value;
+>          return;
+>      case A_RQR:
+> +        usart_update_rqr(s, value);
+>          return;
+>      case A_ISR:
+>          qemu_log_mask(LOG_GUEST_ERROR,
+> @@ -262,6 +345,7 @@ static void stm32l4x5_usart_base_write(void *opaque, =
+hwaddr addr,
+>      case A_ICR:
+>          /* Clear the status flags */
+>          s->isr &=3D ~value;
+> +        stm32l4x5_update_irq(s);
+>          return;
+>      case A_RDR:
+>          qemu_log_mask(LOG_GUEST_ERROR,
+> @@ -269,6 +353,21 @@ static void stm32l4x5_usart_base_write(void *opaque,=
+ hwaddr addr,
+>          return;
+>      case A_TDR:
+>          s->tdr =3D value;
+> +        ch =3D value & R_TDR_TDR_MASK;
+> +        /*
+> +         * XXX this blocks entire thread. Rewrite to use
+> +         * qemu_chr_fe_write and background I/O callbacks
+> +         */
+
+Don't suppose you feel like doing that? It's not too horribly
+difficult. Example UART devices that implement this:
+ * cadence_uart.c is a good example for a UART with a FIFO
+ * cmsdk-apb-uart.c for a UART with no FIFO
+
+> +        qemu_chr_fe_write_all(&s->chr, &ch, 1);
+> +        /*
+> +         * XXX I/O are currently synchronous, making it impossible for
+> +         * software to observe transient states where TXE or TC aren't
+> +         * set. Unlike TXE however, which is read-only, software may
+> +         * clear TC by writing 0 to the ISR register, so set it again
+> +         * on each write.
+> +         */
+> +        s->isr |=3D R_ISR_TC_MASK;
+> +        stm32l4x5_update_irq(s);
+>          return;
+>      default:
+>          qemu_log_mask(LOG_GUEST_ERROR,
 
 thanks
 -- PMM

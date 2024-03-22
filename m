@@ -1,104 +1,104 @@
-Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1301838ejv;
-        Fri, 22 Mar 2024 09:39:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW1GN5T7rLBCmn2S+LariBTmovxqGAIEPa1/grYJp8TidWhOlt/mIMMYvnOiOe8LD1jfjxupBvYU6pqwlFKJ1ZohHLoPcD8
-X-Google-Smtp-Source: AGHT+IFs8d9BD2yKj4se7lzifL4JBpVc2iIPjpiNWsp/aOfqBCrR+xNlTyD2TI1hHyLaCxl4Wgt4
-X-Received: by 2002:a05:6214:1d24:b0:690:d84a:a13d with SMTP id f4-20020a0562141d2400b00690d84aa13dmr2603144qvd.51.1711125577133;
-        Fri, 22 Mar 2024 09:39:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711125577; cv=none;
+Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1302243ejv;
+        Fri, 22 Mar 2024 09:40:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXLmxycNH5R1HeOgrZi8IrjyM6o53zEkRvjFpY4plJ0RNHMLiJZ2JrLlcmkRap50Upt34voSQr1wmxazAvs4Q4zV6Bslawk
+X-Google-Smtp-Source: AGHT+IHxgnfcfN1Bz8jYPPr2qi7NlyQswH8NqrMq60Aym6/C9/OEs9pY7uPY+0JFCvqHHOmdMVzc
+X-Received: by 2002:a05:6122:3904:b0:4cb:56c5:580e with SMTP id ep4-20020a056122390400b004cb56c5580emr191913vkb.11.1711125622016;
+        Fri, 22 Mar 2024 09:40:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711125621; cv=none;
         d=google.com; s=arc-20160816;
-        b=oXaqdT7DkaKmkvny+qz4FD5yEiRt/o4nOBfwcURBdpQzIX5/psuUBlf/VzxudPzi/o
-         rN4k21i/wTsi5AcMK6sNAoP7pfLyZ5ZaQl/sPiJNzJJqI5/19frxGGxVauUmcIHfgfwg
-         sjbgUKCK/U5+3i9S4q0XOHQEnZxLGNBdd+BIu71/+AFotrlOKFiFROkRh5SPoq0DAZSf
-         DRCXoJQWeFYhTBg6NZkjTqhOTKwXcle3zLVlAlAeo9mzei75GBZMic1nWaVq9RHvp6P1
-         loitaNtRmAIlmWDpvDtipQjqtR3Hme29uDBgcfaF9VeN4LlCNKvvzngwlH2hjYYg1e4o
-         OQXQ==
+        b=MbcuQqUHx1gm/HJdlJXlHyYfjok7VWcDiee4OUAG6O6DOC2gA/vvrRi57R5aIeF/9h
+         9yB3QJQ1sVgZLU1gABSg+WOB+l8WYIr88odJ3flowLwmVH23hjRXeSHrenOXaHbuFslA
+         2aX+WX1djoUbaqkAKPmIE4Q4nRU+ztN+5cNL6zc29Ct02Fo4p5Fykk1KxBVzZYcg6yob
+         5/YHgxYDtAUKvwmzt/e6d1/CUX0ro2PP1WUAhGleRKk2a0AFm4baPAOiEy7q6pwlCRRV
+         HGb0kAvJUdK0LzYn+BFnsD+2gX7psPwHC+FsCer9em76pf1QbCP25Ld2iOo3Fy6kgjv6
+         R3RQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=h2V/kZFCfcWi0KYped6O13E5wkq/N08mYcZSpS8jksA=;
-        fh=9HhSU4GtJ00uYoum90IAuMw7ql+jmw0f4DR4iYlB24M=;
-        b=NuP/T+JSX7iBIIUke9Qo1+DyPSmRzxwh0tw+g9dkU1CGZoEnkVuFB1fCp7UB/zTOXg
-         n5+359A1ILGwk6oIZaLaZIjbBjnqebF5f9ntxHQ66sQlw4ffYUX3P0CdqnU1ZW9NV1rX
-         Wx+q7Aoy4R//Pd4Oex1eLIjiYm4IPyshRUkB26yR1++d6ZP/lhe10jjyeR5dE2VB1HCY
-         4O18l+bmvpW/01DO9FTHpqgNEKwxQ9le1ZOFBkHiXBHhxc1euqiA3qoCOHjXCEGv7Msz
-         MpJ3GnTfhFccJJrNmTFFCg8xdoqDJdbWinofwqSRMZ4j0hhp8C5RBsNy6P/9pe0EHbLD
-         YggQ==;
+        bh=uNeR5/Qku60sNPGCrf+nb2u/H4CBa2VUeW8ba0w9GpY=;
+        fh=UaHKk5gOoIKGM222hKVwlHskBXLefmk9C3Vb+rcoSho=;
+        b=s/ajkegx8ZKopy6iQwyqQ1SWhatDcFU+DRSOEpVmYXj0TqcBMKiVZxAroqqzF3Ah+v
+         eAd1m9zUkqEGZ7nRCRFhip5p+xRsu9xhNNaYFW0uh7m/9k8Pu4u/DvcXYsfFLWCy18kh
+         8xhujVBXrpFG7vMut10EnTjYGdcasOTP129aavcPkkYFd8YpGNzAK5wo78SQNcuE0AlO
+         a0qlQHV2jfwkV0KPfrCi2Qx1L4t9Emk6+q/WppglCuid5tK4psqhr6hdd96cIZPf3NiU
+         6DsWtTK0wQwhVYwuDT1R+SKkPOZCmGajsAclawBfmxBOfnh820VwOs+oOx1EC892w9eQ
+         sHgg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wc2HF3CQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tgCqLlML;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jk11-20020ad45d4b000000b00690a7e9cd15si2286372qvb.14.2024.03.22.09.39.36
+        by mx.google.com with ESMTPS id f2-20020a0562141d2200b0068fe8554c3csi2352416qvd.86.2024.03.22.09.40.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Mar 2024 09:39:37 -0700 (PDT)
+        Fri, 22 Mar 2024 09:40:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wc2HF3CQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tgCqLlML;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rnhvI-0006sN-EV; Fri, 22 Mar 2024 12:39:16 -0400
+	id 1rnhwG-0007Ed-Nu; Fri, 22 Mar 2024 12:40:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rnhvG-0006rw-Vy
- for qemu-arm@nongnu.org; Fri, 22 Mar 2024 12:39:15 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ id 1rnhwF-0007EA-1u
+ for qemu-arm@nongnu.org; Fri, 22 Mar 2024 12:40:15 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rnhvF-0005Vi-7W
- for qemu-arm@nongnu.org; Fri, 22 Mar 2024 12:39:14 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-56845954ffeso2971925a12.2
- for <qemu-arm@nongnu.org>; Fri, 22 Mar 2024 09:39:12 -0700 (PDT)
+ id 1rnhwD-0005oF-Il
+ for qemu-arm@nongnu.org; Fri, 22 Mar 2024 12:40:14 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-56b0af675deso2945609a12.1
+ for <qemu-arm@nongnu.org>; Fri, 22 Mar 2024 09:40:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711125551; x=1711730351; darn=nongnu.org;
+ d=linaro.org; s=google; t=1711125612; x=1711730412; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=h2V/kZFCfcWi0KYped6O13E5wkq/N08mYcZSpS8jksA=;
- b=wc2HF3CQSoVwvouwklCqbJGsJ/dxsiYEQJ830ZVuQ9RS5Mo5I8MHXzJtmeUq/d6zXb
- NQU74tJntlycPi9sHMJeWn+44bV0CcGyRwbC469OlQIkMxI/oGy/y5lLyz+2vT6qoYfB
- Ok0Se/vKfwu83RJTB4eHfMuW5YB6B3OG/NyrDwqrKWm3ti+LnKqDugpH0MHWvatH4Ztw
- mXTrEz/cUfcO1sRTooRmZr8/mMP8LLt335+WLELG76mBd96t22Awa31Yg5Xcp3n2RIP6
- PlUBUOgbaUXLJlBfs7wO80GyxJdT2zTvz0XruL02oLxcj+P+lM6+s765t1iys2I1hgzx
- fW8A==
+ bh=uNeR5/Qku60sNPGCrf+nb2u/H4CBa2VUeW8ba0w9GpY=;
+ b=tgCqLlMLXxTL5IxQBIX/YuhC0Fs8Jq7AZwck6KivrMwWeSycE0RqdG8DDgL+6ef2zE
+ 33bmMvNIQQRckHdfJCDNw26FuZ4/jsHfDf4PFszCBpRI48pPtnVTOsOHu7xdYi5wyugQ
+ HxEbNT0eNqBNV7luWgK9Q686+R26DmsMXl8J5C97zB/ci+H3BIGghlO4VG7LwAWEzUVF
+ GJO/6mKqW8GZqY1OhOe43o5SChiW3w2KMqkEHknKUXhsNd+yyuCOwU8Rnr425QZ9jsMS
+ YiiOl9oii8iFPgx0aZDAX54ebEKWQwpUIKNQ8p56VzvkKuC8IblDvlPH7T9FHZ9AKvcE
+ ckjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711125551; x=1711730351;
+ d=1e100.net; s=20230601; t=1711125612; x=1711730412;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=h2V/kZFCfcWi0KYped6O13E5wkq/N08mYcZSpS8jksA=;
- b=k6hE9Dmwv8rMGsyKcjdoDyGPjK/SXTPzv/+YWd4+UMphCwVfLNNB3FWG0yk973htz0
- ugDcdxTgvL/MuFbSCKMyUaNYKYdoKxKAhP0yWiMIvcynuvMbjEM1MAE3DN7PemZyUxYY
- 35sQetKwVqRXTrnejMbp8NcLQmIVFandeOSp+miADulk6P0BezFV0FuY6TcnqsJJh/yL
- zjdzypJTzEPF9YrsckNKlpFS14iVnCWFrv88G6+RiSPJu8tK+VRBUzKOzFiF+ut1+mHA
- LQ3Bsg6Ypp580glSxiGZt95jMo6+g3u069izhNyXY7gJXatzxJuelkJz/qNKKgx7Hv5c
- D+CA==
+ bh=uNeR5/Qku60sNPGCrf+nb2u/H4CBa2VUeW8ba0w9GpY=;
+ b=tToW74qJcvqSb11J4cyEC6Ul6WnPI1vpJy6DlScuqFYIV73Ucy2Ae3uESNrcYmdGpb
+ Uh5l41HUHeGvYYDjFByAl+ewXWob4HAy2ojjzkJEfyiPPq352137GjIOaRomc6BPrjhH
+ tLX+Tte90uQZSrrNhGEcCR4gMQSh3gs2f6f6PuQaBp+H3ox+h+NEHaoYpEomx6Mm+9Ac
+ EJcf7cZBSLAFKOyQXqUOinSTqUNBKqJInSs2weCMM8n3SOQwMyDqUKrkJq3qFKJO6rVu
+ LNCdLZcCnqqd96X+OKNX2oi8LDCba8L05kK73r3yFa14PyqrfXD8Vdu5cp0MQav3dz7E
+ CjXA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWlILTbHOhwV/RkeK5KlhHFkXzkNSW6kSn0hS9R1SUGM3vBBO/2wcGj8MvvqmSdNxVma+0hnHk1AVIibbP93AiomJhJ
-X-Gm-Message-State: AOJu0Yw7LMeisOcLYFwa7fDiJ1Q+SSZimVSeQgz4ATph7MltRqR+wZDE
- IO/71WwiX0hVMAUT4A9assyL8dvaKL1xVBdliwIpZcLCnZGvOpf86wEGBRSxamb3mRwVLf4Sw6I
- lAfRv0cMxSy83hCB8Bcq4tUd6zH87PA5tA0FOIg==
-X-Received: by 2002:a50:d5d5:0:b0:567:504e:e779 with SMTP id
- g21-20020a50d5d5000000b00567504ee779mr19991edj.25.1711125550871; Fri, 22 Mar
- 2024 09:39:10 -0700 (PDT)
+ AJvYcCXdf7z1fu3Jb7875yAubHMjJXEaNhZgZvP/wXlGRvJ8X5vNwKdvRFJiZXWZNnVsYGu4Wvw+BsHEeWnGWTmBizN/m7VY
+X-Gm-Message-State: AOJu0YxmX6pCafzzu00yeFFKH47/W9b5dp1YVv5PppcmROeIPfPl4fTD
+ ckOvzY9KvA34VQZ8D/oL7Sq/pZV+Oo4HhFLFvmlRVldpfJFdyq1nk5/ph8Vn9TDFC1CKPAVD5fS
+ aWWIKDFv/MidqTjTF7K39lvbg8fETrHLWfuGhyA==
+X-Received: by 2002:a50:9ec2:0:b0:56b:afe0:3070 with SMTP id
+ a60-20020a509ec2000000b0056bafe03070mr38680edf.19.1711125611880; Fri, 22 Mar
+ 2024 09:40:11 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240322155810.5733-1-philmd@linaro.org>
- <20240322155810.5733-3-philmd@linaro.org>
-In-Reply-To: <20240322155810.5733-3-philmd@linaro.org>
+ <20240322155810.5733-2-philmd@linaro.org>
+In-Reply-To: <20240322155810.5733-2-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 22 Mar 2024 16:39:00 +0000
-Message-ID: <CAFEAcA_nFsWfXckLBJ72X6PTjmBYSRF77UoYs=gPB_GNshoyRw@mail.gmail.com>
-Subject: Re: [PATCH-for-9.0 2/2] hw/misc/stm32l4x5_rcc: Propagate period when
- enabling a clock
+Date: Fri, 22 Mar 2024 16:40:00 +0000
+Message-ID: <CAFEAcA8eES_5aeEp0vDs-nMdsbZ7JPodfTG-cBhtc_+a9rL+Uw@mail.gmail.com>
+Subject: Re: [PATCH-for-9.0 1/2] hw/clock: Let clock_set_mul_div() return
+ boolean value
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Luc Michel <luc@lmichel.fr>,
  Luc Michel <luc.michel@amd.com>, Damien Hedde <damien.hedde@dahe.fr>,
@@ -106,8 +106,8 @@ Cc: qemu-devel@nongnu.org, Luc Michel <luc@lmichel.fr>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,56 +129,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wwPom2O0+PKS
+X-TUID: v8uiaheiPdmU
 
-On Fri, 22 Mar 2024 at 15:59, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+On Fri, 22 Mar 2024 at 15:58, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
 g> wrote:
 >
-> From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> Let clock_set_mul_div() return a boolean value whether the
+> clock has been updated or not, similarly to clock_set().
 >
-> The "clock_set_mul_div" function doesn't propagate the clock period
-> to the children if it is changed (e.g. by enabling/disabling a clock
-> multiplexer).
-> This was overlooked during the implementation due to late changes.
->
-> This commit propagates the change if the multiplier or divider changes.
->
-> Fixes: ec7d83acbd ("hw/misc/stm32l4x5_rcc: Add an internal clock multiple=
-xer object")
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-> Message-ID: <20240317103918.44375-2-arnaud.minier@telecom-paris.fr>
-> [PMD: Check clock_set_mul_div() return value]
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
->  hw/misc/stm32l4x5_rcc.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/misc/stm32l4x5_rcc.c b/hw/misc/stm32l4x5_rcc.c
-> index bc2d63528b..7ad628b296 100644
-> --- a/hw/misc/stm32l4x5_rcc.c
-> +++ b/hw/misc/stm32l4x5_rcc.c
-> @@ -59,7 +59,10 @@ static void clock_mux_update(RccClockMuxState *mux, bo=
-ol bypass_source)
->          freq_multiplier =3D mux->divider;
->      }
->
-> -    clock_set_mul_div(mux->out, freq_multiplier, mux->multiplier);
-> +    if (clock_set_mul_div(mux->out, freq_multiplier, mux->multiplier)) {
-> +        clock_propagate(mux->out);
-> +    }
-> +
->      clock_update(mux->out, clock_get(current_source));
+>  include/hw/clock.h | 4 +++-
+>  hw/core/clock.c    | 8 +++++++-
+>  2 files changed, 10 insertions(+), 2 deletions(-)
 
-clock_update() also calls clock_propagate(), so this doesn't
-seem entirely right: shouldn't we figure out whether we need to
-do a clock_propagate() and do it once? (Maybe what seems odd to me
-is that clock_set() does clock_propagate() for you but
-clock_set_mul_div() does not...)
 
-(Also I think we should have the information we need now to be able
-to do the "reduce log spam" in the comment -- if neither
-clock_set_mul_div() nor clock_update() needed to do anything
-then we didn't actually change the config.)
+I guess this makes sense, especially since you often would like to know
+this to decide whether to call clock_propagate().
 
+We should also update the docs/devel/clocks.rst to mention this.
+
+thanks
 -- PMM

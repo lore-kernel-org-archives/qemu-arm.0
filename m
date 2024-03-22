@@ -1,180 +1,199 @@
-Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1007502ejv;
-        Fri, 22 Mar 2024 00:50:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUC8Ok+ITyrd7tfLSDOgI12Ggrl1P8KUHTsQ6RZ5JuaJnAmC0AyZijlMskPwG7fxLYbTksb9F0/iAfYGUsNdbnkmhwwjX2W
-X-Google-Smtp-Source: AGHT+IEVHAJIS1CTVfSZiCz6Ym34dPeVXhf89N2hRVnIwn/WjP1MpGtpLBMFy+rtx5g6LSs1GRlS
-X-Received: by 2002:a05:6214:e8d:b0:696:4207:a6c9 with SMTP id hf13-20020a0562140e8d00b006964207a6c9mr1886779qvb.35.1711093813229;
-        Fri, 22 Mar 2024 00:50:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711093813; cv=none;
+Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1079281ejv;
+        Fri, 22 Mar 2024 03:39:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCURyNnkKnbreVTFjqQon21kWKEm6E3uAgT5nrxYc6wb1ViiTtM+SDpfSG97NO8foqYmcnp7ZnVV9DvrMsiVksGXVKqgCN3h
+X-Google-Smtp-Source: AGHT+IGQUaISe6/Q4aGT6ZMNMtPxl5tX7CAV3ZPbyrzRkLD1LjVl3zrKbLIhiRqVTFWtB3JM+6tJ
+X-Received: by 2002:a05:622a:1343:b0:431:3629:44fa with SMTP id w3-20020a05622a134300b00431362944famr832074qtk.24.1711103990146;
+        Fri, 22 Mar 2024 03:39:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711103990; cv=none;
         d=google.com; s=arc-20160816;
-        b=kk10gYSO1kKc4+JBQzdHLLe4V++0l14pSqYfjLC2BmpkZYILcteJnOZhZWzvWmTjNP
-         RxsPXKcSHytFPo/AFviA24k39Q5TTJ7TEkIDcMrt0Kk7uRWSW04/jDguEuKieEjh/0+X
-         4AJDLf9ujs+UB94ZIZ8kGjNHSi4MyiZnwqqDKs5Mk4Ac+C0kixZIr35FjBeAVJSs2SWm
-         +rSlQq5V5bcwM64ZcaqcXwRtpA/p+dH6+0eLPSMOLotmlvi5Qr/BYHcHbhxad8uj3bHd
-         mhkuAFhIWNgYbJ1mCvy79TrCn7xiDarxvKPXkyozsg9dUJXFCDTn2dM7lJ2ybcJ6D8Km
-         PCAg==
+        b=NL3Tv86xyfx/11XxbWBdwMJBKGYia8UdOhaz+aLkWkhHsnpuu0LFgsN5/sbwZrK2b5
+         G6QjFmrEuzF+SJmn31NjyoNn6rAa9AOeIwqUx1nHZi1DP7GGmPDkPEKVeSluJiWIqM7m
+         h/kydlKSP76f9HK5eL+QOZFvjH8W+Oknqm2qeW86opVNUvs2tBKH8efwkMCPZxLCM/A+
+         doOWFQRY5NhH9JA+HAWJBI5s8/0H6QkWe4slM41oCUUY9xJPcrpzjseJvTjNZxY7QS6t
+         rH/Gmt/Cuutu52DjZr7g50UzhjAcQ/qQeqiGMpMSl9Y0IvsyDQaVjHmUzxsn9EEdwsw9
+         znxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=jzKLMicNWycf3oA0gDzmt2LQfjKd7VPVTIC6wfZR9HM=;
-        fh=b7jD714dBnPZOZSIUpohe50iRwSK+KmOPoqlQMVz/70=;
-        b=sX/brZYN3xjfbQSc4YoDng5Om3UlHzlOuWnsqYtOIZRONysQ9btgNJNBEjpC4PSNmX
-         3U7ATPJ9BBYwjQU22yVHvQ+FGXponHbgIy086YtqmvkELiId7m8fnFydxXaD73EN9i/J
-         me2MirdyprvKmSGKUco4jQsfWkBKPUZWs0qHPK5rP3mb0rAd1NC2nL7NNelte4g5Od9V
-         2iHP2lf+D6L/9M9iCpsO78nIUtN/81+RhxfeHNCp1FiIhUzyzthmcYHnmv8geehDG2EX
-         ZUVFR3PU8wrOoXu90i4hW52PwUMP9YDx7w+qoik+vU//wUvVejdcC/Xt93E5ikXLyndz
-         nH5g==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=eYeuDM4ep5y5DOBD9mJRXkz+JcDNW7jIh5JA/WzlHVM=;
+        fh=O9n0MBi490j+5rlqR6iP0PB2XdmsycDm5croDZT1AJI=;
+        b=bYXAvKgOwjTK2hUkxG40BXQaJ5CQ1//XUCsjTxZTFjuMtzIAn34MJfgPJLxT38dBPB
+         h3Dc0dgNZpUABMVkSrRIVV8dLvuE11ydcHkLaQuhhK68pL+7jl7kZuqvIz+ciN8fvbbx
+         eAh8C8bpf4SSYUl2b7sYWaq7W7XcCP4ceD1zdP97YzG3Z8kMGzOmhA0Tmi8LarmwqwUK
+         UywVAlZvhjBWqUvwnieEtN8CwkSES0EMnb6iPlyjUL8RJkOM5o1SFLut+hP9SGSnkZAU
+         MuXNWxd2Ti5toeaoTsdnyAxZvvzCbcnqatZS1IQAMdqAaWKAWu//4P8moM6skh3BbceP
+         fNvQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HsQElxNi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=MntHM5NB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5-20020a056214202500b0068f5bff0abesi1654990qvf.442.2024.03.22.00.50.13
+        by mx.google.com with ESMTPS id a17-20020a05622a065100b00430d7a265casi1696404qtb.545.2024.03.22.03.39.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Mar 2024 00:50:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Mar 2024 03:39:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HsQElxNi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=MntHM5NB;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rnZf6-0006wA-Oi; Fri, 22 Mar 2024 03:50:01 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rncIp-0003SX-Fc; Fri, 22 Mar 2024 06:39:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rnZf2-0006vH-Dg
- for qemu-arm@nongnu.org; Fri, 22 Mar 2024 03:49:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rnZez-0003ru-7q
- for qemu-arm@nongnu.org; Fri, 22 Mar 2024 03:49:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1711093791;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=jzKLMicNWycf3oA0gDzmt2LQfjKd7VPVTIC6wfZR9HM=;
- b=HsQElxNikfu+rRpHJywBuMsgMhkisHuKlSO+gMIb7AtFNsN6Sg06e1N/9DN5ZAUJe3Mn9u
- OG017DeOjDpSjU70/o+T46W1/l5HsOm6NuPmQjc9Rx8twxRa9Zd1gnoJ7q5ajTmVU9pGVL
- 6kQ00sSmzNfzcdk+leZC60fZy7PMG90=
-Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
- [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-360-WtyoJQ4qOZm2eOo4uDySng-1; Fri, 22 Mar 2024 03:49:49 -0400
-X-MC-Unique: WtyoJQ4qOZm2eOo4uDySng-1
-Received: by mail-lj1-f200.google.com with SMTP id
- 38308e7fff4ca-2d47f385ce1so17991911fa.3
- for <qemu-arm@nongnu.org>; Fri, 22 Mar 2024 00:49:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rncIn-0003Ro-AS
+ for qemu-devel@nongnu.org; Fri, 22 Mar 2024 06:39:09 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rncIl-0002hL-NX
+ for qemu-devel@nongnu.org; Fri, 22 Mar 2024 06:39:09 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-56bdc2a2c96so1035819a12.0
+ for <qemu-devel@nongnu.org>; Fri, 22 Mar 2024 03:39:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1711103945; x=1711708745; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=eYeuDM4ep5y5DOBD9mJRXkz+JcDNW7jIh5JA/WzlHVM=;
+ b=MntHM5NBIpOvnYRbgqEuRVFKg73zAhOerwSnDpGpYxPtMyN3bnrttOut9WU2I3VNoe
+ Uz5KbePk0o6y7kp3gfQ6/fo5zcYvT9KK751MjWDwlpef3FWZj22SBfsP22Lk/sjLON3E
+ ObahUygaV0D+hJU2arLjibrd6XkHaV2rfE+FZ7FQK5ntq0ZOviwgaDWdIxOHoj6yAPhO
+ 0xXcpHB4PPDIuV7lHx2I86GWrz9XLBJgpQh3G2wNWGINMTwlDALMd1dcDa9+x9Ve22Me
+ oP+coIA7FCNHg/yhq9fsbrru+tGgnFJM4wX7trXLnVKKLcRiYZyXEVPE7GvOnl/qMqtu
+ Q+bQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711093788; x=1711698588;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=jzKLMicNWycf3oA0gDzmt2LQfjKd7VPVTIC6wfZR9HM=;
- b=GcvlxY/HPJddmrGESis0N6NGvGNQUQYix+JABKSqecSvgq8zJUqWFO8uBJHkSuqlpK
- 6hBgxP/ZSq3Q8BzJlNyLJxx4hEsOR6J5ejBMfEBdwPXB00YHC8gJicC2u+R6A8+PTjFV
- WTRRlwqUoMRONEh/Yd++lwcxTkzc2UZlRaq6l2PHzswR25Do4+xi+Ph4AIc+I/ePFq7B
- 07R5tWmcNkEGNNw+K0NVB+XiapWc2yTJzR5hOHWCSuuo1Ft7bwYLre1a7GR4bupthiQN
- ExULRlIB8uomwIrG1SB/WWGcYRRLGbGPbiVPXgweWcngp/jCjrJ+op6JP4wLZIGQwbkg
- SSEA==
+ d=1e100.net; s=20230601; t=1711103945; x=1711708745;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=eYeuDM4ep5y5DOBD9mJRXkz+JcDNW7jIh5JA/WzlHVM=;
+ b=TNMBlDsiC8B8mojlpdJux6sSP+Yh8P+qeSE2YkLxu39+iloyJGNKFPkGSgjQvqSjH4
+ vTUe7EJIjoUAHFnpKEbUlpXnmSWrvZy7GS9JjlrFht6eWLkCKisXSpjFkeCO2jijyK/C
+ ANQXLDdNb4x8ZZhk2w7DSUM+rkcHNi8khgCi/wpf+OzXdYd4TsZw6cIbo4r8kFZWoLUt
+ cIdyca7D6de1MXkVKG4QffG2TlR5TBGxLrlfyD7kOk1MhJTmMjdSlQPioHPxbT6nobFw
+ Sl8tL4SrkTLhDLFmPozlbDCZij/19thxgg11BbrkzURrQcKMdsCjrcs6f2Koy3IonOYD
+ Qkbg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXC1Pkqa452BPGZlxiGv5GZCmYobK6d9zAV4yEpT2Unsur3G12Lkv9LpY5Jh3DlQlUBdL1vgpD9Kw3iWRE65mzq2Mdv
-X-Gm-Message-State: AOJu0YwrA2ySVMfB+MGqTfgYCABrVNT8QqKKhvQSUVTYKxTr1npYxUaW
- zTRufatOzFeLJ3l44N8LcbNZs0JaqnOK7xW3BzdvCPKIcEfFlJ4yj7OpeK0XU/QI2eYatwpPOmw
- HKj7vbsK/e8PyVxk+x04YjfANHg5NtIzTFVPMRymJSLZSp9S2ZQ==
-X-Received: by 2002:a05:651c:1037:b0:2d4:5c0c:77db with SMTP id
- w23-20020a05651c103700b002d45c0c77dbmr1168479ljm.3.1711093788169; 
- Fri, 22 Mar 2024 00:49:48 -0700 (PDT)
-X-Received: by 2002:a05:651c:1037:b0:2d4:5c0c:77db with SMTP id
- w23-20020a05651c103700b002d45c0c77dbmr1168469ljm.3.1711093787765; 
- Fri, 22 Mar 2024 00:49:47 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- bp10-20020a5d5a8a000000b0033dedd63382sm1426285wrb.101.2024.03.22.00.49.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Mar 2024 00:49:47 -0700 (PDT)
-Message-ID: <43de228d-0fa7-465e-b8bf-5bab08de2f0a@redhat.com>
-Date: Fri, 22 Mar 2024 08:49:46 +0100
+ AJvYcCWywLbr2caea7uPTt2+k9O2tPUvvCraFSwD932/pJ+IXDejSPjSO/i4dv+I4HVzd4vaOe9G1QA+2/PMpp6d2KdyCz5Uogs=
+X-Gm-Message-State: AOJu0YwCOlXk9kQbXWBAN+LbFrR5QDRNxpSI4ihVizbQpzos1vlf1EIA
+ 9DcXIB2vS2nVwLA/H+gozHoQV3emDWzNyedp6gZVNLsinmWxzWDo0IlvoaPlVpGLUZs+wF+s7yU
+ JzX6H5tmBoqowDagJoiFNWR/KkqLCEFOBhFz+8Q==
+X-Received: by 2002:a50:d54b:0:b0:568:d757:f7d2 with SMTP id
+ f11-20020a50d54b000000b00568d757f7d2mr1274852edj.10.1711103944963; Fri, 22
+ Mar 2024 03:39:04 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] misc/pca9554: Fix check of pin range value in property
- accessors
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Glenn Miles <milesg@linux.vnet.ibm.com>
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20240321160154.901829-1-clg@redhat.com>
- <f74d141d-69aa-4d7a-8536-5378e4353db3@linaro.org>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-In-Reply-To: <f74d141d-69aa-4d7a-8536-5378e4353db3@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+References: <20240321130812.2983113-1-ruanjinjie@huawei.com>
+ <20240321130812.2983113-7-ruanjinjie@huawei.com>
+ <CAFEAcA-SO3akirm+jgKGRvKH1bcsf1bLJE2uOCOoXi1h78WwFA@mail.gmail.com>
+ <CAFEAcA8+9Xd-GDNzBqGfDxoc7Bg-+wK59vcsyyNmrXrvAitAuQ@mail.gmail.com>
+ <53e82726-6b92-4176-a59d-c720e2c37ef4@huawei.com>
+In-Reply-To: <53e82726-6b92-4176-a59d-c720e2c37ef4@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 22 Mar 2024 10:38:53 +0000
+Message-ID: <CAFEAcA_HMOUJMPDW3QgNDkAMNzBXxGi1Oo5SxryBSh5vZt5kiQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v9 06/23] target/arm: Add support for Non-maskable
+ Interrupt
+To: Jinjie Ruan <ruanjinjie@huawei.com>
+Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
+ wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.372,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: L2eVasa2Tg6u
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rLfKUa78ibBL
 
-On 3/21/24 18:15, Philippe Mathieu-Daudé wrote:
-> On 21/3/24 17:01, Cédric Le Goater wrote:
->> Coverity detected an "Integer handling" issue with the pin value :
->>
->>    In expression "state >> pin", right shifting "state" by more than 7
->>    bits always yields zero.  The shift amount, "pin", is as much as 8.
->>
->> In practice, this should not happen because the properties "pin8" and
->> above are not created. Nevertheless, fix the range to avoid this warning.
->>
->> Fixes: CID 1534917
->> Fixes: de0c7d543bca ("misc: Add a pca9554 GPIO device model")
->> Cc: Glenn Miles <milesg@linux.vnet.ibm.com>
->> Signed-off-by: Cédric Le Goater <clg@redhat.com>
->> ---
->>   hw/misc/pca9554.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> Isn't it the one Peter fixed in
-> https://lore.kernel.org/qemu-devel/20240312183810.557768-5-peter.maydell@linaro.org/?
+On Fri, 22 Mar 2024 at 05:05, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
+>
+>
+>
+> On 2024/3/22 2:28, Peter Maydell wrote:
+> > On Thu, 21 Mar 2024 at 15:46, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >> Something somewhere needs to implement "if SCTLR_ELx.NMI is 0 then
+> >> we don't take EXCP_VINMI etc but instead (maybe) EXCP_VIRQ etc".
+> >> At the moment nothing does that:
+> >>  * arm_cpu_update_vinmi() doesn't look at the NMI bit before
+> >>    deciding whether to set CPU_INTERRUPT_VINMI
+> >>  * in arm_excp_unmasked() if NMI is 0 then allIntMask takes its
+> >>    default value of false and so arm_excp_unmasked() returns true,
+> >>    so VINMI is not masked
+> >>  * arm_cpu_exec_interrupt() doesn't look at the NMI bit before
+> >>    deciding whether to check the CPU_INTERRUPT_VINMI bit in interrupt_request
+> >>
+> >> So even if SCTLR_ELx.NMI is 0 we'll still try to take a VINMI
+> >> if it's set up in the HCR_EL2 bits.
+> >>
+> >> However we do this the required behaviour is that if NMI is 0
+> >> then it is as if the interrupt doesn't have superpriority and
+> >> it falls back to being handled as an ordinary IRQ, VIRQ, VFIQ etc.
+> >> I think the best place to do this is probably here in
+> >> arm_cpu_exec_interrupt() -- if SCTLR_ELx.NMI isn't set then
+> >> treat the VFNMI bit like VFIQ, the VINMI bit like VIRQ, and
+> >> the NMI bit like IRQ.
+> >
+> > Folding in something like this I think will work:
+> >
+> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> > index 91c2896de0f..797ae3eb805 100644
+> > --- a/target/arm/cpu.c
+> > +++ b/target/arm/cpu.c
+> > @@ -837,7 +837,8 @@ static bool arm_cpu_exec_interrupt(CPUState *cs,
+> > int interrupt_request)
+> >
+> >      /* The prioritization of interrupts is IMPLEMENTATION DEFINED. */
+> >
+> > -    if (cpu_isar_feature(aa64_nmi, env_archcpu(env))) {
+> > +    if (cpu_isar_feature(aa64_nmi, env_archcpu(env)) &&
+> > +        (arm_sctlr(env, cur_el) & SCTLR_NMI)) {
+> >          if (interrupt_request & CPU_INTERRUPT_NMI) {
+> >              excp_idx = EXCP_NMI;
+> >              target_el = arm_phys_excp_target_el(cs, excp_idx, cur_el, secure);
+> > @@ -862,7 +863,22 @@ static bool arm_cpu_exec_interrupt(CPUState *cs,
+> > int interrupt_request)
+> >                  goto found;
+> >              }
+> >          }
+> > +    } else {
+> > +        /*
+> > +         * NMI disabled: interrupts with superpriority are handled
+> > +         * as if they didn't have it
+> > +         */
+> > +        if (interrupt_request & CPU_INTERRUPT_NMI) {
+> > +            interrupt_request |= CPU_INTERRUPT_HARD;
+>
+> The CPU_INTERRUPT_NMI and CPU_INTERRUPT_HARD are set simultaneously,
+> should the CPU_INTERRUPT_NMI be cleared?
 
-Oh yes. I missed it. Hopefully, they are similar. Let's keep Peter's.
+interrupt_request here is a local variable, and we will never
+check the NMI bit in it beyond this point in the function,
+so there's no need to explicitly clear the NMI bit.
 
-However, what I would like to do as a follow-up is to move the
-hw/misc/pca955* models under hw/gpio/. Is it something we can do
-for 9.0 ?
-
-Thanks,
-
-C.
-
-
-
-
+thanks
+-- PMM

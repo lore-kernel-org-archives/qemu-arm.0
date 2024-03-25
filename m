@@ -1,198 +1,385 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp746558ejj;
-        Mon, 25 Mar 2024 07:45:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVBNsIWgN5s4WjKtRelPAMeNmwrPIUCXf+CGwytUufcrPODUwuMpUJk57MyFRqw+XJzN16s253xlxm72rYZECK4VdMVBw1C
-X-Google-Smtp-Source: AGHT+IHQ42EAKdyG/9SZvtiGASXStSPLhYSaRoq1k2eN7E51M3V/ZYA/lJIOi9S/TNil55BEVqkN
-X-Received: by 2002:a05:6102:302f:b0:478:25f9:c731 with SMTP id v15-20020a056102302f00b0047825f9c731mr179250vsa.4.1711377931258;
-        Mon, 25 Mar 2024 07:45:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711377931; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp754373ejj;
+        Mon, 25 Mar 2024 08:00:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUjA8yHzrdq5+IitEPSY309+C5iHHR/qJV0jnjNdnhwGqOhigmR8BNRGVg31k6xMczeK0uVeQXYu3PP9sGzrQKN9ti6UkXu
+X-Google-Smtp-Source: AGHT+IEKw7rkUeMbVR4rlf8gj7Ix162kgw9H2jfJKj6Ypt+ncnclXgasZHII2q3imS9ZA74f96QH
+X-Received: by 2002:a05:620a:563b:b0:789:f37b:bc2f with SMTP id vv27-20020a05620a563b00b00789f37bbc2fmr7018474qkn.78.1711378808217;
+        Mon, 25 Mar 2024 08:00:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711378808; cv=none;
         d=google.com; s=arc-20160816;
-        b=sryYvnsShr900bfdzhuiZpndsg/rZab45DUE7DI0ekDkpnIMREDUZFy9pn+6NTggBE
-         s2GSAH63RJgooCO4OINv4nBBM7J4oG5ZjHGCf32F0jJYgUZJvv6hxm7WmqS9YAxNNRkp
-         ri4dbFSTweD0Pd2iBPXzj2liNYyAR2oZXU36BpOkSmbSuPyGF17VCrZpAz6y8bfVZ+SG
-         NRzWYcOx0GOqPVQ3bG10gV2igjU6skY8x+ELyX+sUnI7IWDD/J61HUkivj7BVgG6zYIu
-         10KgDV2ftpM1Q4z3v+Od/ap4urZiAMdC4vPQzsIYun4/x8Er8Ex7JpYEJQS1UejGVFGn
-         LLgQ==
+        b=vx0l7T3RigMYiRXlsYifu+gl39Xa/wKGTMQNiUpPSNOXAXijd1XY4uEHBAqCvttnvU
+         CYvaXHnbB0miAgGRIM1SfT25yMmLMfD4ZPvSFqoOf2zSCOQtN7foCTh52xT+fhRrvGdX
+         UcbTS1BcKOqhdlMZj260tlUuUzjUc/DZB0M+arSO9hp3GGzuPxZO1FJRxaUOZGXmXnXW
+         xyCrjoEtsDBZMA9TLxCT6c0nGBFsN7Wz5zu/bKxaEG2X5q4Z2X/UEvVOpsBWJGsnlWih
+         adbBZxrnQGXU/L0P2rz56zb9e4tOjlNTRiHHs3PlBYZ+C6Bla+haz68unV92NNnixmgZ
+         575A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=UasTUmVBcL/VKWYDCP4/BH4KdfUFX2g4aOhY6ZmnY4A=;
-        fh=WmKLx/0aS4jl7+OfMPt2McnVEfxuZ9BYps+3hXHNczg=;
-        b=XHuHHbPV6VvDDkp9vN/uiRVD0BTfcIGrNqLnIrnEV3glMRBSo9tgtUSx90jFdUvw2B
-         Hm44HyoehizAaBYOgHRrujW3P0QWI2PA8pWjIuvuHgCSiMwjBCdeljIHvZ0mJyYk/1P/
-         dyK7RWYjs2NRdpQ44Q7W/TUAf6VTmBHXeOiX5RpBnEZSu9ey8jxvm2uZ58ZRDCAt2eQQ
-         mMIpYcRyrJeVst0mKprJcPR/TVPsQzR65pQTXXRkkmFw5HBH/ZjJNCNh2unpCOwaw5kS
-         1E/qq/cbZe0JdpQfTcoozvTymNoOyw1LbAVedArK8FYAbJax+Shfunu6Ln1LjOLZ8kAL
-         S+FA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:date:cc:to:from:subject
+         :message-id:dkim-signature;
+        bh=xwsP8fbTOK8fPfrOjwTmzLwZm5LxASknvc4yN/CUuq4=;
+        fh=IQ072na1S14Rx1reHIMgunzrIg155+vMYpMZwTwUlyc=;
+        b=eRAW6W/P1j9rWxHAX/EzGpung7jkPKZnUnVEHqEiNtfCTu/gYbfqMmY8JrMy2p/Eib
+         BpIiy8TU3C9ps3J1kUy5D8wOzErJavK+IaMX+2q5gqYgOfzrHrcTywMBK6bVbWFLlPkU
+         n/b5Sh+ml5uHeqdoAizDhcoCqaHRZu7NAUlME9Wleabb/VD8totBWD5MTc/qNdB3i7Jl
+         CXP5LOlizuwLDx8bpxwcU551Cb05URRyKLTW0P4vmH9X45dPu3OysZeeE8K4okhUbb8w
+         ed7p9CY6sqw5eKhZngJMvuRroeacpREaUrI1G5CVzbSRfD7M/yR600LPzMEn7WrHTnmO
+         RiXg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FDyxM01V;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=WfUIs37F;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ji10-20020a056130694a00b007d647618199si1242631uab.84.2024.03.25.07.45.31
+        by mx.google.com with ESMTPS id vr6-20020a05620a55a600b00789fa832df0si5594306qkn.231.2024.03.25.08.00.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Mar 2024 07:45:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 25 Mar 2024 08:00:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FDyxM01V;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=WfUIs37F;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rolZP-0004R8-HN; Mon, 25 Mar 2024 10:45:03 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rolnh-0001Dr-MX; Mon, 25 Mar 2024 10:59:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rolZO-0004Ql-8z
- for qemu-arm@nongnu.org; Mon, 25 Mar 2024 10:45:02 -0400
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rolZM-00024S-6I
- for qemu-arm@nongnu.org; Mon, 25 Mar 2024 10:45:01 -0400
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-a46cca2a979so260694866b.3
- for <qemu-arm@nongnu.org>; Mon, 25 Mar 2024 07:44:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711377898; x=1711982698; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=UasTUmVBcL/VKWYDCP4/BH4KdfUFX2g4aOhY6ZmnY4A=;
- b=FDyxM01VIvIfrWm0Iqc9hUQvYbpCgHYG3t2bDx9ROxrqJwzuavKZX7fLZd5H7o/3mD
- NVslglkn15eqSsC4zggB0M7UvHgNR5XT0PD1jjx2IxJO2btpNwg3PZA3hphqAxrurYsZ
- Fvg4rnUApFR0DiCbwP431wy/Ik9sX2BNyz6COtk0QO1IbsUgkvTNosabTODC6r01HHC7
- Ob5TzntZpQzBuy4VVcAU3H9ciTFQTFSMC1SgSiDc6kbAMUwEVMsgDm785bgALwC6zPpf
- /9SdH007buKk3zHq4QA91BJG2TWFcezVB46KIP2ur+3ZjJvGd5eG6hfzBZQqxJifDPRh
- Spbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711377898; x=1711982698;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=UasTUmVBcL/VKWYDCP4/BH4KdfUFX2g4aOhY6ZmnY4A=;
- b=vb3gGyo9rDP9xB54vAk0T9TLP4vwVYkeKT3H0LLE3UloiY0A2z0Ye+mzb6gH6ncc1j
- eB1nHiwXFpW3rNyvKwPYu0s4qEDfvFNAcUFlqYoXTG0P8XQx+oTx5NBt/E6EOyR2KKf6
- R8oP34QfO7TN4v89hvkFznHlRnfflgSqUFCJoCegR1DKp6wX2IHViZ4yMgNBl8bDa948
- Y/ebmUWW5ulOFxUpkXyCCiNFMPW4xbWNBfDbOj6r/PflJVztNvALC3eKDr0SEqNjG2ug
- bcxXN/iblyhQqmjS1oQ8jgkJG71WF8yaeV/CEkwjNb6nTdCuWuvriAZD/penPhmoP2FV
- mAkg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXk+Mk/NqstDfxwTz/XBvpHcXxAcbGyONoW52oLtrvwHGaS0IyWN5jek0JfVW0hu6mJXHlHHD6VnVNbQIttuD6nTIJz
-X-Gm-Message-State: AOJu0YzufhlAqyU0SswgpFwDInQCPD3bK/c5PXVQJ1vxkYjywwcqyhWg
- 9wt5mf8FmYbMLySsRhx6sKyFinWpsOcQgn/5Yu5Oab3fNPJP5XtiSYNV6inVcmlhnPy1b4L/JyV
- iAbEcpzDF2M1ATeGrZ4/rIceUi/PR5Q7qbslX1g==
-X-Received: by 2002:a50:d7d1:0:b0:568:d7fe:a768 with SMTP id
- m17-20020a50d7d1000000b00568d7fea768mr6209020edj.25.1711377898145; Mon, 25
- Mar 2024 07:44:58 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240325133259.57235-1-philmd@linaro.org>
- <20240325133259.57235-3-philmd@linaro.org>
- <CAFEAcA9aM8J+0RjYnvr8Xr8Q2j3w_TgxHO-gPDn8MaAcAUDynw@mail.gmail.com>
- <e3806179-47ed-4952-a7b6-c256a2aad197@linaro.org>
-In-Reply-To: <e3806179-47ed-4952-a7b6-c256a2aad197@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 25 Mar 2024 14:44:46 +0000
-Message-ID: <CAFEAcA_yyWKo7E1Vz2zQXnjetYWEXtt6mUyg+t4mJXt+nsKBgA@mail.gmail.com>
-Subject: Re: [PATCH-for-9.0? v2 2/8] hw/clock: Pass optional &bool argument to
- clock_set()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Damien Hedde <damien.hedde@dahe.fr>, 
- qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- Luc Michel <luc@lmichel.fr>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1rolng-0001DY-DQ; Mon, 25 Mar 2024 10:59:48 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <milesg@linux.vnet.ibm.com>)
+ id 1rolnd-0004Vd-O7; Mon, 25 Mar 2024 10:59:48 -0400
+Received: from pps.filterd (m0356517.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 42PENVcH023805; Mon, 25 Mar 2024 14:59:26 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ mime-version : content-transfer-encoding; s=pp1;
+ bh=xwsP8fbTOK8fPfrOjwTmzLwZm5LxASknvc4yN/CUuq4=;
+ b=WfUIs37FmnuKl29htuu0Vp7TuIo6Oxb5XfrGu5Zjz9T1nDBp0Opa/1MCOEzXKfmS4A7V
+ rFCbvLpCEQf3iiDhTcNYFJPebw2nL0wDhduLRhbQJ/o6XAB911ZXBbYaYv44vylX/nsp
+ 2+YSxHfy/ESFL7Ww++gQz3E+WxkvpUFLNxZfphpqWf18YhvGdj1GlZbOmWGhI3MKp5W2
+ 9vGsIVSfMjS56tgvbQdsoIFRs+CG4kHB5+p5PKvd0zsmUyEbE643LSdw75WCqJ+FWSpb
+ 5k4MQASSBKLXtPyKPubwxc9/yxEOFzu3zgnwF50oV0n+BYwW4MaAQK886qsvbAjfGa4R wg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3x3aygr2uu-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 25 Mar 2024 14:59:25 +0000
+Received: from m0356517.ppops.net (m0356517.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 42PExPv7018888;
+ Mon, 25 Mar 2024 14:59:25 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3x3aygr2um-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 25 Mar 2024 14:59:25 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 42PDcph0013367; Mon, 25 Mar 2024 14:59:23 GMT
+Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3x29t0a0rv-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 25 Mar 2024 14:59:23 +0000
+Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
+ [10.241.53.100])
+ by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 42PExLbj31457896
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 25 Mar 2024 14:59:23 GMT
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2205758061;
+ Mon, 25 Mar 2024 14:59:21 +0000 (GMT)
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id C47EA58066;
+ Mon, 25 Mar 2024 14:59:20 +0000 (GMT)
+Received: from mamboa4.aus.stglabs.ibm.com (unknown [9.3.84.87])
+ by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Mon, 25 Mar 2024 14:59:20 +0000 (GMT)
+Message-ID: <6b626026caeda97432cefc43dd1a97734ad48d06.camel@linux.vnet.ibm.com>
+Subject: Re: [PATCH] misc/pca955*: Move models under hw/gpio
+From: Miles Glenn <milesg@linux.vnet.ibm.com>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
+ =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Thomas Huth
+ <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ =?ISO-8859-1?Q?Fr=E9d=E9ric?= Barrat <fbarrat@linux.ibm.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Date: Mon, 25 Mar 2024 09:59:20 -0500
+In-Reply-To: <20240325134833.1484265-1-clg@redhat.com>
+References: <20240325134833.1484265-1-clg@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Mailer: Evolution 3.28.5 (3.28.5-18.el8) 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: VLp3bBMZqdmrs1o-oHvTSF29kFCrgKta
+X-Proofpoint-ORIG-GUID: pXUWiS0BdFhRZQzWbZrg6FP6w8hUchzq
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-03-25_11,2024-03-21_02,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 bulkscore=0
+ adultscore=0 mlxlogscore=999 malwarescore=0 lowpriorityscore=0
+ impostorscore=0 phishscore=0 suspectscore=0 priorityscore=1501 spamscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2403210000 definitions=main-2403250083
+Received-SPF: none client-ip=148.163.156.1;
+ envelope-from=milesg@linux.vnet.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GQVFR1iO3jV6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: EJACHu0WJoin
 
-On Mon, 25 Mar 2024 at 14:39, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> On 25/3/24 14:47, Peter Maydell wrote:
-> > On Mon, 25 Mar 2024 at 13:33, Philippe Mathieu-Daud=C3=A9 <philmd@linar=
-o.org> wrote:
-> >>
-> >> Currently clock_set() returns whether the clock has
-> >> been changed or not. In order to combine this information
-> >> with other clock calls, pass an optional boolean and do
-> >> not return anything.  The single caller ignores the return
-> >> value, have it use NULL.
-> >>
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> >> ---
-> >>   include/hw/clock.h       | 22 ++++++++++++++++------
-> >>   hw/core/clock.c          |  8 +++++---
-> >>   hw/misc/bcm2835_cprman.c |  2 +-
-> >>   hw/misc/zynq_slcr.c      |  4 ++--
-> >>   4 files changed, 24 insertions(+), 12 deletions(-)
-> >>
-> >> diff --git a/include/hw/clock.h b/include/hw/clock.h
-> >> index bb12117f67..474bbc07fe 100644
-> >> --- a/include/hw/clock.h
-> >> +++ b/include/hw/clock.h
-> >> @@ -180,21 +180,28 @@ static inline bool clock_has_source(const Clock =
-*clk)
-> >>    * clock_set:
-> >>    * @clk: the clock to initialize.
-> >>    * @value: the clock's value, 0 means unclocked
-> >> + * @changed: set to true if the clock is changed, ignored if set to N=
-ULL.
-> >>    *
-> >>    * Set the local cached period value of @clk to @value.
-> >> - *
-> >> - * @return: true if the clock is changed.
-> >>    */
-> >> -bool clock_set(Clock *clk, uint64_t value);
-> >> +void clock_set(Clock *clk, uint64_t period, bool *changed);
-> >
-> > What's wrong with using the return value? Generally
-> > returning a value via passing in a pointer is much
-> > clunkier in C than using the return value, so we only
-> > do it if we have to (e.g. the return value is already
-> > being used for something else, or we need to return
-> > more than one thing at once).
->
-> Then I'd rather remove (by inlining) the clock_update*() methods,
-> to have explicit calls to clock_propagate(), after multiple
-> clock_set*() calls.
+Thanks for doing this, Cédric!
 
-You mean, so that we handle "set the clock period" and
-"set the mul/div" the same way, by just setting them and making
-it always the caller's responsibility to call clock_propagate() ?
+Reviewed-by: Glenn Miles <milesg@linux.vnet.ibm.com>
 
-Would you keep the bool return for clock_set and clock_set_mul_div
-to tell the caller whether a clock_propagate() call is needed ?
+-Glenn
 
-thanks
--- PMM
+On Mon, 2024-03-25 at 14:48 +0100, Cédric Le Goater wrote:
+> The PCA9552 and PCA9554 devices are both I2C GPIO controllers and the
+> PCA9552 also can drive LEDs. Do all the necessary adjustments to move
+> the models under hw/gpio.
+> 
+> Cc: Glenn Miles <milesg@linux.vnet.ibm.com>
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> ---
+>  MAINTAINERS                              | 4 ++--
+>  include/hw/{misc => gpio}/pca9552.h      | 0
+>  include/hw/{misc => gpio}/pca9552_regs.h | 0
+>  include/hw/{misc => gpio}/pca9554.h      | 0
+>  include/hw/{misc => gpio}/pca9554_regs.h | 0
+>  hw/arm/aspeed.c                          | 2 +-
+>  hw/{misc => gpio}/pca9552.c              | 4 ++--
+>  hw/{misc => gpio}/pca9554.c              | 4 ++--
+>  tests/qtest/pca9552-test.c               | 2 +-
+>  tests/qtest/pnv-host-i2c-test.c          | 4 ++--
+>  hw/gpio/meson.build                      | 2 ++
+>  hw/gpio/trace-events                     | 4 ++++
+>  hw/misc/meson.build                      | 2 --
+>  hw/misc/trace-events                     | 4 ----
+>  14 files changed, 16 insertions(+), 16 deletions(-)
+>  rename include/hw/{misc => gpio}/pca9552.h (100%)
+>  rename include/hw/{misc => gpio}/pca9552_regs.h (100%)
+>  rename include/hw/{misc => gpio}/pca9554.h (100%)
+>  rename include/hw/{misc => gpio}/pca9554_regs.h (100%)
+>  rename hw/{misc => gpio}/pca9552.c (99%)
+>  rename hw/{misc => gpio}/pca9554.c (99%)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 409d7db4d457..a07af6b9d48e 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1549,8 +1549,8 @@ M: Glenn Miles <milesg@linux.vnet.ibm.com>
+>  L: qemu-ppc@nongnu.org
+>  L: qemu-arm@nongnu.org
+>  S: Odd Fixes
+> -F: hw/misc/pca955*.c
+> -F: include/hw/misc/pca955*.h
+> +F: hw/gpio/pca955*.c
+> +F: include/hw/gpio/pca955*.h
+> 
+>  virtex_ml507
+>  M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+> diff --git a/include/hw/misc/pca9552.h b/include/hw/gpio/pca9552.h
+> similarity index 100%
+> rename from include/hw/misc/pca9552.h
+> rename to include/hw/gpio/pca9552.h
+> diff --git a/include/hw/misc/pca9552_regs.h
+> b/include/hw/gpio/pca9552_regs.h
+> similarity index 100%
+> rename from include/hw/misc/pca9552_regs.h
+> rename to include/hw/gpio/pca9552_regs.h
+> diff --git a/include/hw/misc/pca9554.h b/include/hw/gpio/pca9554.h
+> similarity index 100%
+> rename from include/hw/misc/pca9554.h
+> rename to include/hw/gpio/pca9554.h
+> diff --git a/include/hw/misc/pca9554_regs.h
+> b/include/hw/gpio/pca9554_regs.h
+> similarity index 100%
+> rename from include/hw/misc/pca9554_regs.h
+> rename to include/hw/gpio/pca9554_regs.h
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 729f66941462..badf6f6fa09d 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -18,7 +18,7 @@
+>  #include "hw/block/flash.h"
+>  #include "hw/i2c/i2c_mux_pca954x.h"
+>  #include "hw/i2c/smbus_eeprom.h"
+> -#include "hw/misc/pca9552.h"
+> +#include "hw/gpio/pca9552.h"
+>  #include "hw/nvram/eeprom_at24c.h"
+>  #include "hw/sensor/tmp105.h"
+>  #include "hw/misc/led.h"
+> diff --git a/hw/misc/pca9552.c b/hw/gpio/pca9552.c
+> similarity index 99%
+> rename from hw/misc/pca9552.c
+> rename to hw/gpio/pca9552.c
+> index 2ae13af35e93..27d4db068095 100644
+> --- a/hw/misc/pca9552.c
+> +++ b/hw/gpio/pca9552.c
+> @@ -15,8 +15,8 @@
+>  #include "qemu/module.h"
+>  #include "qemu/bitops.h"
+>  #include "hw/qdev-properties.h"
+> -#include "hw/misc/pca9552.h"
+> -#include "hw/misc/pca9552_regs.h"
+> +#include "hw/gpio/pca9552.h"
+> +#include "hw/gpio/pca9552_regs.h"
+>  #include "hw/irq.h"
+>  #include "migration/vmstate.h"
+>  #include "qapi/error.h"
+> diff --git a/hw/misc/pca9554.c b/hw/gpio/pca9554.c
+> similarity index 99%
+> rename from hw/misc/pca9554.c
+> rename to hw/gpio/pca9554.c
+> index 5e31696797d9..7d10a64ba7c1 100644
+> --- a/hw/misc/pca9554.c
+> +++ b/hw/gpio/pca9554.c
+> @@ -11,8 +11,8 @@
+>  #include "qemu/module.h"
+>  #include "qemu/bitops.h"
+>  #include "hw/qdev-properties.h"
+> -#include "hw/misc/pca9554.h"
+> -#include "hw/misc/pca9554_regs.h"
+> +#include "hw/gpio/pca9554.h"
+> +#include "hw/gpio/pca9554_regs.h"
+>  #include "hw/irq.h"
+>  #include "migration/vmstate.h"
+>  #include "qapi/error.h"
+> diff --git a/tests/qtest/pca9552-test.c b/tests/qtest/pca9552-test.c
+> index ccca2b3d9140..747495769239 100644
+> --- a/tests/qtest/pca9552-test.c
+> +++ b/tests/qtest/pca9552-test.c
+> @@ -12,7 +12,7 @@
+>  #include "libqtest.h"
+>  #include "libqos/qgraph.h"
+>  #include "libqos/i2c.h"
+> -#include "hw/misc/pca9552_regs.h"
+> +#include "hw/gpio/pca9552_regs.h"
+> 
+>  #define PCA9552_TEST_ID   "pca9552-test"
+>  #define PCA9552_TEST_ADDR 0x60
+> diff --git a/tests/qtest/pnv-host-i2c-test.c b/tests/qtest/pnv-host-
+> i2c-test.c
+> index c6351772520c..7f64d597ac1d 100644
+> --- a/tests/qtest/pnv-host-i2c-test.c
+> +++ b/tests/qtest/pnv-host-i2c-test.c
+> @@ -8,8 +8,8 @@
+>   */
+>  #include "qemu/osdep.h"
+>  #include "libqtest.h"
+> -#include "hw/misc/pca9554_regs.h"
+> -#include "hw/misc/pca9552_regs.h"
+> +#include "hw/gpio/pca9554_regs.h"
+> +#include "hw/gpio/pca9552_regs.h"
+>  #include "pnv-xscom.h"
+> 
+>  #define PPC_BIT(bit)            (0x8000000000000000ULL >> (bit))
+> diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+> index 791e93a97bcc..a7495d196ae9 100644
+> --- a/hw/gpio/meson.build
+> +++ b/hw/gpio/meson.build
+> @@ -2,6 +2,8 @@ system_ss.add(when: 'CONFIG_GPIO_KEY', if_true:
+> files('gpio_key.c'))
+>  system_ss.add(when: 'CONFIG_GPIO_MPC8XXX', if_true:
+> files('mpc8xxx.c'))
+>  system_ss.add(when: 'CONFIG_GPIO_PWR', if_true: files('gpio_pwr.c'))
+>  system_ss.add(when: 'CONFIG_MAX7310', if_true: files('max7310.c'))
+> +system_ss.add(when: 'CONFIG_PCA9552', if_true: files('pca9552.c'))
+> +system_ss.add(when: 'CONFIG_PCA9554', if_true: files('pca9554.c'))
+>  system_ss.add(when: 'CONFIG_PL061', if_true: files('pl061.c'))
+>  system_ss.add(when: 'CONFIG_ZAURUS', if_true: files('zaurus.c'))
+> 
+> diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
+> index 9331f4289d5a..b91cc7e9a45d 100644
+> --- a/hw/gpio/trace-events
+> +++ b/hw/gpio/trace-events
+> @@ -13,6 +13,10 @@ nrf51_gpio_write(uint64_t offset, uint64_t value)
+> "offset 0x%" PRIx64 " value 0x
+>  nrf51_gpio_set(int64_t line, int64_t value) "line %" PRIi64 " value
+> %" PRIi64
+>  nrf51_gpio_update_output_irq(int64_t line, int64_t value) "line %"
+> PRIi64 " value %" PRIi64
+> 
+> +# pca9552.c
+> +pca955x_gpio_status(const char *description, const char *buf) "%s
+> GPIOs 0-15 [%s]"
+> +pca955x_gpio_change(const char *description, unsigned id, unsigned
+> prev_state, unsigned current_state) "%s GPIO id:%u status: %u -> %u"
+> +
+>  # pl061.c
+>  pl061_update(const char *id, uint32_t dir, uint32_t data, uint32_t
+> pullups, uint32_t floating) "%s GPIODIR 0x%x GPIODATA 0x%x pullups
+> 0x%x floating 0x%x"
+>  pl061_set_output(const char *id, int gpio, int level) "%s setting
+> output %d to %d"
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 8e1ddc00f9b2..dd6cf89a5449 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -3,8 +3,6 @@ system_ss.add(when: 'CONFIG_EDU', if_true:
+> files('edu.c'))
+>  system_ss.add(when: 'CONFIG_FW_CFG_DMA', if_true:
+> files('vmcoreinfo.c'))
+>  system_ss.add(when: 'CONFIG_ISA_DEBUG', if_true:
+> files('debugexit.c'))
+>  system_ss.add(when: 'CONFIG_ISA_TESTDEV', if_true: files('pc-
+> testdev.c'))
+> -system_ss.add(when: 'CONFIG_PCA9552', if_true: files('pca9552.c'))
+> -system_ss.add(when: 'CONFIG_PCA9554', if_true: files('pca9554.c'))
+>  system_ss.add(when: 'CONFIG_PCI_TESTDEV', if_true: files('pci-
+> testdev.c'))
+>  system_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
+>  system_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true:
+> files('empty_slot.c'))
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index 0374eb33ac52..4896001f35de 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -340,10 +340,6 @@ grlib_apb_pnp_read(uint64_t addr, unsigned size,
+> uint32_t value) "APB PnP read a
+>  led_set_intensity(const char *color, const char *desc, uint8_t
+> intensity_percent) "LED desc:'%s' color:%s intensity: %u%%"
+>  led_change_intensity(const char *color, const char *desc, uint8_t
+> old_intensity_percent, uint8_t new_intensity_percent) "LED desc:'%s'
+> color:%s intensity %u%% -> %u%%"
+> 
+> -# pca9552.c
+> -pca955x_gpio_status(const char *description, const char *buf) "%s
+> GPIOs 0-15 [%s]"
+> -pca955x_gpio_change(const char *description, unsigned id, unsigned
+> prev_state, unsigned current_state) "%s GPIO id:%u status: %u -> %u"
+> -
+>  # bcm2835_cprman.c
+>  bcm2835_cprman_read(uint64_t offset, uint64_t value) "offset:0x%"
+> PRIx64 " value:0x%" PRIx64
+>  bcm2835_cprman_write(uint64_t offset, uint64_t value) "offset:0x%"
+> PRIx64 " value:0x%" PRIx64
+

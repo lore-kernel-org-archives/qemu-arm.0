@@ -1,95 +1,96 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp701455ejj;
-        Mon, 25 Mar 2024 06:33:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVqMWzvSs5yBqWBfcLM1jqVF+ZP3OgIO6+yaV7jTvp5mgFuYYEY4ax962AfQbMp5Xm6dW5MWUpOHzPZzWAQQx+Bjc/eDiid
-X-Google-Smtp-Source: AGHT+IGcR8CVsIEISM6uBa9/kuFHqbo8T3TeQQuX/UtlumXscHhyjDn+4Vx0mBiXtUrYuwFG+2zj
-X-Received: by 2002:a05:620a:9c7:b0:789:dd47:2ea2 with SMTP id y7-20020a05620a09c700b00789dd472ea2mr7919494qky.66.1711373603782;
-        Mon, 25 Mar 2024 06:33:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711373603; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp701631ejj;
+        Mon, 25 Mar 2024 06:33:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXcba0Y4LNJhRcKYeT3Wk6SME8GwQSbbi+ju7xMgNCD0HGHvUWYCC5NTcfGr74YWJKQ6PRIH2tRp6mHPEwWIdWXJHyXfm4k
+X-Google-Smtp-Source: AGHT+IEjtNtkGX2myGENlMwQnHU65z2Kmtp3375FFgO6WNe0yZM4YNEgvmIPBTXbOUVJ0ow7svRh
+X-Received: by 2002:a05:6870:2041:b0:229:ef48:8c67 with SMTP id l1-20020a056870204100b00229ef488c67mr7836913oad.41.1711373626106;
+        Mon, 25 Mar 2024 06:33:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711373626; cv=none;
         d=google.com; s=arc-20160816;
-        b=uZMkWOEoye5OiyKFEar+tkuEBw3QknntmPW7k9xf4BfHgxJCEB/T28PyZW1t6EnBNQ
-         yYWrUBOE7Uu/VHgClR4Q0TRm+LZSWiBkuR6lnThBHHRSdbUr37Q7IZUrA+3InXENYFeZ
-         7BcOu+rbZVFIG9BaeTt6k6GNNWS390WnYjeORzdlSCZT/N2obv3MDY8ilyuKkMD+eTLH
-         Q6qaK98mo8SX2dxUxajSsN5hmFuZ6u4RUr4PdRcrmhN9AWZs417Htd9Zhofch46Gjhv2
-         4yCtGz1DmT7JBOa09d74rMuw8xYM83qMhEv/gxqsdjypuFdz2TJQARHDtK7wdVnCX9Ze
-         cscw==
+        b=y1joyPhmTRrR/9owF/DH6UvdUOSigfaZNra44L72aUc+/Auhx1KvzXP8OVrMgm11tk
+         /MDy7icvy+W67Z2awjT94BayaCeDuIGxhTC9SlwQVpae7edc8l0xtrOp3uVimkPLd6p4
+         Ymnx1hLjTmOXQzgZsunh+3HCTCXshG8ZchDg1rWlJkON4pqvoFb4MQnL0nvOLCCMHQPF
+         zKNKvD94HqLx2yTFGKV8iIfQxwo7pMlG5tAVuGFEnNORcQLhRGqpyuYN53LDgJd9JzdZ
+         AoddjJzv9a9mgX9HaIVEuMheo54CiXx79Ax3TRQmdbF+eHqS4x+4OlfHit+na0FhVYH0
+         qiXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=mCxNPNDuz72bEraA+KHzlReHJxE9cKV4qETiCw6TYOw=;
-        fh=g+V9zXfbPjmDPKlQY5AwJoLz1eLSgNCfgFBeZnVpYu0=;
-        b=ITDIcRLaDdcNTCfwMxeVJXbGCdQxL4+RusexjJ5QIzfsVB0casqHpP+OriVW4NiAIR
-         bDMmNuJF5sSAM96CZmLpus+ypEBip7V7eUR3V5l17rjAvnWkXTxHNw6LJMU0pbirdsU4
-         aDDx9bxLpY0v+HORpWq+uLb+g+vpeZvypS3jymFgl+p8gqouVIKLHPvuq2IWFf6mxQki
-         D69EzIp4i82fDfL8r8FRwQSzlekHRzD1x/kcSMwtqi0zgCQnGaPMzIS8VvlpuUpyJPje
-         sRNlVFaGlb2l5b7hhs0NpQflgMhZTRdcbI0ff/c/c5eJsCrvSLpcmm8nebHUtDZQNfgC
-         mSkQ==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=SzMbY9DE4/3HwqgfxhwLJUdxgeZIWP3uN9BqoNrhiWM=;
+        fh=Z6ebApcLFJbaZHsWuXWH2AHWI2xWYXqDDJv2NwjBOYY=;
+        b=qEMzMmaSd4RFpUFsC4+JNn611yaypJJ0blDZBTN+JeAl75TRlqktVSxuBtooWgyzBB
+         sLZMQ8KRx1d/dPb7l5E/UWHLpOqZLT9mp40UmIJGNUi+VBX4yT5kp5RZMGsqiQk/orAL
+         QsKyaScodRrIl3GgOc+wAd/dRnygNBFuOLF6CjhmzSDZfyTH1jQkyDizzuCdpq4amDAk
+         4sV9L+uieMUbOtJFCL4OjFsHD1Wkxj9dLKqjcAb0rh8516P0tG8GkP/M28F/KWS+JY+m
+         0XgXiF8YkrF9oMxlRVfZaJMZ7rfDw8xzqbSEPEGOCzyy+CF0ILhXlq2V1gEI83qIsmaS
+         G98w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lZrWSbKL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Anc33Gab;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j15-20020a05620a146f00b007887d6a5044si5327285qkl.277.2024.03.25.06.33.23
+        by mx.google.com with ESMTPS id bp33-20020a05622a1ba100b0042f5123b42asi5407931qtb.370.2024.03.25.06.33.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Mar 2024 06:33:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 25 Mar 2024 06:33:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lZrWSbKL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Anc33Gab;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rokRr-0002Uz-Uc; Mon, 25 Mar 2024 09:33:15 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rokSD-0002by-Nr; Mon, 25 Mar 2024 09:33:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rokRn-0002TJ-Jg
- for qemu-arm@nongnu.org; Mon, 25 Mar 2024 09:33:10 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rokRr-0002Uv-So
+ for qemu-devel@nongnu.org; Mon, 25 Mar 2024 09:33:13 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rokRk-0007Jc-8K
- for qemu-arm@nongnu.org; Mon, 25 Mar 2024 09:33:06 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-414859830f2so9018555e9.0
- for <qemu-arm@nongnu.org>; Mon, 25 Mar 2024 06:33:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rokRq-0007KB-7y
+ for qemu-devel@nongnu.org; Mon, 25 Mar 2024 09:33:11 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-33ed5b6bf59so3181568f8f.0
+ for <qemu-devel@nongnu.org>; Mon, 25 Mar 2024 06:33:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711373582; x=1711978382; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=mCxNPNDuz72bEraA+KHzlReHJxE9cKV4qETiCw6TYOw=;
- b=lZrWSbKLVfF7/Ol5Xa1dz4GpM0WyOBcI6UkOz2ff1Noqi4RIV0bWS3Ip3gjn7jTqYN
- IplkwURHGl6hnMuSlmK/tc2OYN112211BIbG3OrkqKr2BLx/VrQTJoHpWBEnPszHCKs3
- 2eXLiwLqGsUZ/HRA4y89uvmh59lZ9Pd9GCOW3HJwF0D7evRcCgnLY035++cFQn/GCMYU
- W8BeqyJG7i/ncSxOkYJ0CmbzqD4lG44MTiULGjlGlFeYJt/5PuLb7JzolBMFlPLBz20j
- U0WF/aA8MgUL3Qv5bh+EGtGgShVUaLVy+Wrbk9oTo9uxBPBlalTocUYzYcMgUaiv3s9v
- 0wBw==
+ d=linaro.org; s=google; t=1711373588; x=1711978388; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=SzMbY9DE4/3HwqgfxhwLJUdxgeZIWP3uN9BqoNrhiWM=;
+ b=Anc33GabkocihGnodBXTH1AjtqxD4Kbpvg2JZKbPNzCTWsBJzJvQlvr1a4raEfZDBj
+ vpWYidbEpliZHOQA3XmLZhrQt/Y07nUTJP4EWjIGZa8R6seHOQs8WK9x90rWW4+Rvs5r
+ W2AoJFs+F6ceAV6w/8+nWghKAZBMh2qHPG6hGvfWVDejxccajTtShnWkl91PNS3FnE6J
+ 2cjq/RlXPW6Y+z2yKo2ESdaQCU3OxOTA2PmYNJePNGYSWdudoHMGYOLPcTAkHn0Rp4D6
+ vH7QvqoJbrbTQQgTIYPMjLr10yFYRMSLRZHMGgRUJkSAx8VXDJjdtzxZmqw7SDjW4MeK
+ 2Fcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711373582; x=1711978382;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=mCxNPNDuz72bEraA+KHzlReHJxE9cKV4qETiCw6TYOw=;
- b=Z2zoslzkqTrilCLahinoo0cB8HjUib5IrhTuoxb2spxAB9jV2wy/kACVgobsgT1+aL
- wvipRzIYg6JAEcfJmy4RMT0zLmzhAzy8Xbw7MHmsbtClt2sVBwebr/ZBY7Q3Mdztxh3t
- 6t0ZyBZVynLG4AoyXvG+rQ8hgv7WJ0DQ9r3gbcLJEcA6MVie9pKyaIR4YidasXBaFwh1
- ySvDO4cS+wD3sXIAR8iPh1sY+gdpHpNJHPJ6tHGkfBmQtl4VfZG02xhCQDbX+ko6pyRq
- 3Opi4xPz/VKydTBI3Acvqz3dfdTlMynjPlayBPLzl1AklqvB5rZXAZ93DIS+Axb9snfV
- VjRw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW0b8mcSdeTTFIDPas8+QdlAJTO4XlWfmpfLiF503DgIXSSIxZl8CKac/kzjz6bUfv/9gR1Ze9yCt6ix6nYFl2Gw/Ls
-X-Gm-Message-State: AOJu0YxebZTEqlB26O67Jlq0ew3aVitks/zJjKrnuewcVBfz/ZQ/AA6x
- TGoWVqBYHP7/Jbk9aY2xgNnLBWiR9GffjKdf0+MJe1itJUb4myDeZ403S/gtVm0=
-X-Received: by 2002:a05:600c:35d2:b0:414:ff4:5957 with SMTP id
- r18-20020a05600c35d200b004140ff45957mr4398058wmq.5.1711373582156; 
- Mon, 25 Mar 2024 06:33:02 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1711373588; x=1711978388;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=SzMbY9DE4/3HwqgfxhwLJUdxgeZIWP3uN9BqoNrhiWM=;
+ b=ilteFsCiBYahAZJTK/C1H8VvhmQHVPL5YhbDoE+gBFx4NGp/aP+vZupnVZiyIY02fg
+ 02B+soY/Y1RB84fy2hzVGlXTcJvznNsvC5Hn3Ziz5qWRKMs5w0AR/PHeCW1TLTMjUkC7
+ lCeXlgUZyxgz5ZX1ScojlVQyema9/ioW0fCXk9ukGq/cKtbOOLbG1OWsxU3uW4f8SgND
+ ccUbNbIYMx+pwzy5XwKS6J/u1CqAgBtV2OtqVcFijcMZASsflSayD8icdi4o9LFze2OP
+ gXNbxUfkn1RWisCrqpXbQrTsUuxbOtythoqo97APtqHW/83dCzO6s7ra3/jO21EgFbaO
+ 7AYw==
+X-Gm-Message-State: AOJu0YzHbzgy56VAVJJkjqqmJ3ZnCC01NbYjb+HnRkPQb/eUSQGixNNd
+ TbLLHKiHsUwZTOLqH2ZlbMby724aFvnnnBYD4VsK0mm4tqL25EplXflCxJEakGbWfeQG2Wr68KQ
+ Q/hM=
+X-Received: by 2002:a5d:6507:0:b0:33d:6fd8:90d3 with SMTP id
+ x7-20020a5d6507000000b0033d6fd890d3mr5158151wru.4.1711373587797; 
+ Mon, 25 Mar 2024 06:33:07 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.208.214])
  by smtp.gmail.com with ESMTPSA id
- ay4-20020a5d6f04000000b0033e48db23bdsm9640652wrb.100.2024.03.25.06.33.00
+ ez19-20020a056000251300b00341c88ab493sm4601353wrb.10.2024.03.25.06.33.06
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 25 Mar 2024 06:33:01 -0700 (PDT)
+ Mon, 25 Mar 2024 06:33:07 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
@@ -98,93 +99,64 @@ Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.0? v2 0/8] hw/clock: Propagate clock changes when
- STM32L4X5 MUX is updated
-Date: Mon, 25 Mar 2024 14:32:50 +0100
-Message-ID: <20240325133259.57235-1-philmd@linaro.org>
+Subject: [PATCH-for-9.0 v2 1/8] hw/clock: Have clock_set_mul_div() return
+ early when nothing to change
+Date: Mon, 25 Mar 2024 14:32:51 +0100
+Message-ID: <20240325133259.57235-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240325133259.57235-1-philmd@linaro.org>
+References: <20240325133259.57235-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BtC1w9QHNjAI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RJH5tctnCUY/
 
-Since v1:
-- Rework API to only propagate when both clock_set
-  and clock_set_mul_div modified the clock params
-  (Peter & Luc).
-- Use that in zynq_slcr.
+Return early when clock_set_mul_div() is called with
+same mul/div values the clock has.
 
-Per https://www.qemu.org/docs/master/devel/clocks.html#clock-multiplier-and-divider-settings:
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/core/clock.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-  Note that clock_set_mul_div() does not automatically call
-  clock_propagate(). If you make a runtime change to the
-  multiplier or divider you must call clock_propagate() yourself.
-
-Fix what we forgot to do that in recent commit ec7d83acbd
-("hw/misc/stm32l4x5_rcc: Add an internal clock multiplexer object")
-
-Arnaud Minier (1):
-  hw/misc/stm32l4x5_rcc: Propagate period when enabling a clock
-
-Philippe Mathieu-Daudé (7):
-  hw/clock: Have clock_set_mul_div() return early when nothing to change
-  hw/clock: Pass optional &bool argument to clock_set()
-  hw/clock: Pass optional &bool argument to clock_set_ns()
-  hw/clock: Pass optional &bool argument to clock_set_hz()
-  hw/clock: Pass optional &bool argument to clock_set_mul_div()
-  hw/misc/stm32l4x5_rcc: Inline clock_update() in clock_mux_update()
-  hw/misc/zynq_slcr: Only propagate clock changes when necessary
-
- docs/devel/clocks.rst      |  6 +++++-
- include/hw/clock.h         | 21 +++++++++++---------
- hw/arm/aspeed.c            |  2 +-
- hw/arm/fby35.c             |  2 +-
- hw/arm/mps2-tz.c           |  4 ++--
- hw/arm/mps2.c              |  4 ++--
- hw/arm/mps3r.c             |  2 +-
- hw/arm/msf2-soc.c          |  2 +-
- hw/arm/msf2-som.c          |  2 +-
- hw/arm/musca.c             |  4 ++--
- hw/arm/netduino2.c         |  2 +-
- hw/arm/netduinoplus2.c     |  2 +-
- hw/arm/nrf51_soc.c         |  2 +-
- hw/arm/olimex-stm32-h405.c |  2 +-
- hw/arm/stellaris.c         |  2 +-
- hw/arm/stm32f100_soc.c     |  2 +-
- hw/arm/stm32f205_soc.c     |  2 +-
- hw/arm/stm32f405_soc.c     |  2 +-
- hw/arm/stm32vldiscovery.c  |  2 +-
- hw/arm/xilinx_zynq.c       |  2 +-
- hw/char/cadence_uart.c     |  4 ++--
- hw/core/clock.c            | 19 +++++++++++++++----
- hw/misc/bcm2835_cprman.c   |  2 +-
- hw/misc/stm32l4x5_rcc.c    |  9 +++++++--
- hw/misc/zynq_slcr.c        | 39 +++++++++++++++++++++++++-------------
- 25 files changed, 89 insertions(+), 53 deletions(-)
-
+diff --git a/hw/core/clock.c b/hw/core/clock.c
+index d82e44cd1a..c73f0c2f98 100644
+--- a/hw/core/clock.c
++++ b/hw/core/clock.c
+@@ -147,6 +147,10 @@ void clock_set_mul_div(Clock *clk, uint32_t multiplier, uint32_t divider)
+ {
+     assert(divider != 0);
+ 
++    if (clk->multiplier == multiplier && clk->divider == divider) {
++        return;
++    }
++
+     trace_clock_set_mul_div(CLOCK_PATH(clk), clk->multiplier, multiplier,
+                             clk->divider, divider);
+     clk->multiplier = multiplier;
 -- 
 2.41.0
 

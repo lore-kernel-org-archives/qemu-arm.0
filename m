@@ -1,74 +1,74 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp564356ejj;
-        Mon, 25 Mar 2024 01:53:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUX6UtAfHD430av1jtGGPT2dG9CMW7xoMElfKjq0+j3ZSIFIagRyAt5U21jClVuKxHuk0oryMBQFFvejUl2SeHdObKvASI9
-X-Google-Smtp-Source: AGHT+IELXhcN2UAknm5KMBc8VWuaKB5ihtH9L6BAakoV+7YiK5ZiYIwUTH/jkBniYHJqQYRShXNF
-X-Received: by 2002:a05:620a:36c7:b0:788:7583:7647 with SMTP id cz7-20020a05620a36c700b0078875837647mr5732334qkb.69.1711356832475;
-        Mon, 25 Mar 2024 01:53:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711356832; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp564377ejj;
+        Mon, 25 Mar 2024 01:53:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW2fEzd0NkG6ucZr1zQUWXgzt6bUcPVag/rh8LyEbH4pa0yd/BSAgDpD4NwTMvN18qb3TaoSlW1Trivsf/OUInu2NBrZMB2
+X-Google-Smtp-Source: AGHT+IEYPFRRscbPzhCoggMUVCGAbq3nlkdnE2WO+0MsxlCtJ2DLgPol6D5Z1wnup0WEy/xuVmK0
+X-Received: by 2002:a05:6214:48c:b0:691:4c4a:54ac with SMTP id pt12-20020a056214048c00b006914c4a54acmr7942921qvb.30.1711356837340;
+        Mon, 25 Mar 2024 01:53:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711356837; cv=none;
         d=google.com; s=arc-20160816;
-        b=S200/uhqxqlJlTvNah7pWT2fVy7a4VXaYiortn5lGo7XVezJRsmLH0T74kuDDRa+i9
-         lpAKn68gAGONKdKb4gbYN6uD7UjHkoIEwPuzCJZUsvEU5AzR5v77AUwCjVqzfaEm6ZxR
-         vDBWaYiXXxz7C7oRaf5TaAE7HD55RCLOB1LFD8tkLuPCTL6HgDzBa8FiZWiA0h7Gh+Yu
-         9NXT48/skembFBS95jPgSUxMR6YVJrmBQY7fZ+5Dol0D/zWPgJxcKwvyUkFX82IghuCl
-         UBHAM+16KSdY0cOVEjWjhTkpzlBu216se2BOZQ69qhL/YpJuKdRzs4V+bC3cZNvokG4f
-         ts9A==
+        b=uMzuz22udSXF2bR09IWi9q2672kLXJi297/qwK5+nQPrlvvL3qG5hKddujNM+RH6zi
+         IV5ESx5qxQ+OHzhsLcxc1Kc214/t5hbL7NPM7XiNeQuK1rPTiJh7dgYltupPTPkC6vhO
+         c0aKIyHj0ZczezyVacl00nmTOmelBD17S6HMXwzoQxspd6wh3Bt/UATd07Zpp/FNn+A/
+         Y90k2X0DRBM1DeZDx6hbL9KQ2CsQwbI9WD/34TIXAhSaBnrTAJkOnfiMHe/EEbiKQGhQ
+         fP1Bkb+2cE//vR8V6qsLxha75/CrNI1WfxeiMJ++k1GHMhR3znmwrT4noKvyIy3ACbsj
+         /erg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=/39MLRYyia71qkZSYr0cs1jEB7hZuawoRtnqAdUipww=;
+        bh=UOP0RRjuA8FXA/qOLbqTLxoz7Pax4SmBwqH8y7x43ys=;
         fh=dR6uRwfo9om/DmWDsGu5eY7/2T4Nd7sHG4YVwbPnVj0=;
-        b=zoVeU+u6hLajWsfFsISoR7tcyZNCNH2+/D4fAevoymLK0CvLra4H3XF+dMELdgQ8P6
-         ICPAymzue6PSxlyapF2//aXvHX+J2NDBpBst5JJyDhLRm5zq9OnAU4YTjnGDZBLCByWW
-         DsRG61VpuVIlqZAeDxsiADF4PSS5vS0Rm+eJdEpFVyV20qTwS3xH+qS6VxiTyV9RHZUO
-         8ahmlLA/NrnRM8La3QBnShs8HQ0yOZqVzaRInZidap7i5vU9JqxAWvjriTd4c+5815GX
-         obQQRsJYvERwGkFFEKDU0lb+mCk47xx8/w3ANnrB4mz4vlMWSoR6Es5OdnBbPPY2Zzai
-         +pjg==;
+        b=QM+HOtPN5677DLT0qmt1dH6Qf98PWxpchBJ17Q/36RHOWm7K7MmZSkyu45phKD41vs
+         AaFsnNdHPYm7T4cOmC8m2GlYhfFXO809hMpYjbRvjkGuLaCWAXp9eRvFE+w97+ixnSRU
+         qMhib42GwvD1M4WdmHXVPB8bSdW/ZYGAIEKiQosCWL5Fd8xEoPI/h7OPOqH3ma1WyxCa
+         Q3CyCY/xbLwMLskpk6m/1kAGbLlf3IMF+lYkPZfZDYjWwHOtoHiCQrjrEZ0SMY0q54Tx
+         M0ann2EUgBRaJmnORVqYoejQQ3iFpxJWf60YsNXj0m3Uu+FuefjMPWXwNK2icAYk4cAt
+         5MZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z4-20020a05620a260400b0078a57c1d0bfsi1479548qko.674.2024.03.25.01.53.52
+        by mx.google.com with ESMTPS id o4-20020ad45c84000000b00690171413dfsi4124639qvh.498.2024.03.25.01.53.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Mar 2024 01:53:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 25 Mar 2024 01:53:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rog4S-0003GU-N8; Mon, 25 Mar 2024 04:52:44 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rog4D-0003AS-GI; Mon, 25 Mar 2024 04:52:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rog41-00034v-JE; Mon, 25 Mar 2024 04:52:19 -0400
+ id 1rog3k-0002za-TA; Mon, 25 Mar 2024 04:52:03 -0400
 Received: from szxga04-in.huawei.com ([45.249.212.190])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rog3q-0007Pf-Rd; Mon, 25 Mar 2024 04:52:16 -0400
-Received: from mail.maildlp.com (unknown [172.19.163.17])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4V367726QYz2Bhcx;
- Mon, 25 Mar 2024 16:49:23 +0800 (CST)
+ id 1rog3i-0007ON-Gz; Mon, 25 Mar 2024 04:52:00 -0400
+Received: from mail.maildlp.com (unknown [172.19.88.214])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4V36700Fxnz2Bhcx;
+ Mon, 25 Mar 2024 16:49:16 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 072131A0172;
- Mon, 25 Mar 2024 16:52:01 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id BA9831A016F;
+ Mon, 25 Mar 2024 16:51:53 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Mon, 25 Mar
- 2024 16:52:00 +0800
+ 2024 16:51:53 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <richard.henderson@linaro.org>, <qemu-devel@nongnu.org>,
  <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [PATCH v10 13/23] hw/intc: Enable FEAT_GICv3_NMI Feature
-Date: Mon, 25 Mar 2024 08:48:44 +0000
-Message-ID: <20240325084854.3010562-14-ruanjinjie@huawei.com>
+Subject: [PATCH v10 05/23] target/arm: Support MSR access to ALLINT
+Date: Mon, 25 Mar 2024 08:48:36 +0000
+Message-ID: <20240325084854.3010562-6-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240325084854.3010562-1-ruanjinjie@huawei.com>
 References: <20240325084854.3010562-1-ruanjinjie@huawei.com>
@@ -87,96 +87,102 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kGe87arcVJd3
+From:  Jinjie Ruan via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uGPOgPAoZEpK
 
-Added properties to enable FEAT_GICv3_NMI feature, setup distributor
-and redistributor registers to indicate NMI support.
+Support ALLINT msr access as follow:
+	mrs <xt>, ALLINT	// read allint
+	msr ALLINT, <xt>	// write allint with imm
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v10:
-- Adjust to before add irq non-maskable property.
-v4:
+v9:
+- Move nmi_reginfo and related functions inside an existing ifdef
+  TARGET_AARCH64 to solve the --target-list=aarch64-softmmu,arm-softmmu
+  compilation problem.
+- Check 'isread' when writing to ALLINT.
+v5:
 - Add Reviewed-by.
+v4:
+- Remove arm_is_el2_enabled() check in allint_check().
+- Change to env->pstate instead of env->allint.
+v3:
+- Remove EL0 check in aa64_allint_access() which alreay checks in .access
+  PL1_RW.
+- Use arm_hcrx_el2_eff() in aa64_allint_access() instead of env->cp15.hcrx_el2.
+- Make ALLINT msr access function controlled by aa64_nmi.
 ---
- hw/intc/arm_gicv3_common.c         | 1 +
- hw/intc/arm_gicv3_dist.c           | 2 ++
- hw/intc/gicv3_internal.h           | 1 +
- include/hw/intc/arm_gicv3_common.h | 1 +
- 4 files changed, 5 insertions(+)
+ target/arm/helper.c | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index c52f060026..2d2cea6858 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -569,6 +569,7 @@ static Property arm_gicv3_common_properties[] = {
-     DEFINE_PROP_UINT32("num-irq", GICv3State, num_irq, 32),
-     DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
-     DEFINE_PROP_BOOL("has-lpi", GICv3State, lpi_enable, 0),
-+    DEFINE_PROP_BOOL("has-nmi", GICv3State, nmi_support, 0),
-     DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
-     /*
-      * Compatibility property: force 8 bits of physical priority, even
-diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
-index 35e850685c..22ddc0d666 100644
---- a/hw/intc/arm_gicv3_dist.c
-+++ b/hw/intc/arm_gicv3_dist.c
-@@ -389,6 +389,7 @@ static bool gicd_readl(GICv3State *s, hwaddr offset,
-          *                      by GICD_TYPER.IDbits)
-          * MBIS == 0 (message-based SPIs not supported)
-          * SecurityExtn == 1 if security extns supported
-+         * NMI = 1 if Non-maskable interrupt property is supported
-          * CPUNumber == 0 since for us ARE is always 1
-          * ITLinesNumber == (((max SPI IntID + 1) / 32) - 1)
-          */
-@@ -402,6 +403,7 @@ static bool gicd_readl(GICv3State *s, hwaddr offset,
-         bool dvis = s->revision >= 4;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7d6c6e9878..a65729af66 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7497,6 +7497,37 @@ static const ARMCPRegInfo rme_mte_reginfo[] = {
+       .opc0 = 1, .opc1 = 6, .crn = 7, .crm = 14, .opc2 = 5,
+       .access = PL3_W, .type = ARM_CP_NOP },
+ };
++
++static void aa64_allint_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    env->pstate = (env->pstate & ~PSTATE_ALLINT) | (value & PSTATE_ALLINT);
++}
++
++static uint64_t aa64_allint_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    return env->pstate & PSTATE_ALLINT;
++}
++
++static CPAccessResult aa64_allint_access(CPUARMState *env,
++                                         const ARMCPRegInfo *ri, bool isread)
++{
++    if (!isread && arm_current_el(env) == 1 &&
++        (arm_hcrx_el2_eff(env) & HCRX_TALLINT)) {
++        return CP_ACCESS_TRAP_EL2;
++    }
++    return CP_ACCESS_OK;
++}
++
++static const ARMCPRegInfo nmi_reginfo[] = {
++    { .name = "ALLINT", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .opc2 = 0, .crn = 4, .crm = 3,
++      .type = ARM_CP_NO_RAW,
++      .access = PL1_RW, .accessfn = aa64_allint_access,
++      .fieldoffset = offsetof(CPUARMState, pstate),
++      .writefn = aa64_allint_write, .readfn = aa64_allint_read,
++      .resetfn = arm_cp_reset_ignore },
++};
+ #endif /* TARGET_AARCH64 */
  
-         *data = (1 << 25) | (1 << 24) | (dvis << 18) | (sec_extn << 10) |
-+            (s->nmi_support << GICD_TYPER_NMI_SHIFT) |
-             (s->lpi_enable << GICD_TYPER_LPIS_SHIFT) |
-             (0xf << 19) | itlinesnumber;
-         return true;
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index 29d5cdc1b6..8f4ebed2f4 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -68,6 +68,7 @@
- #define GICD_CTLR_E1NWF             (1U << 7)
- #define GICD_CTLR_RWP               (1U << 31)
+ static void define_pmu_regs(ARMCPU *cpu)
+@@ -9891,6 +9922,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_nv2, cpu)) {
+         define_arm_cp_regs(cpu, nv2_reginfo);
+     }
++
++    if (cpu_isar_feature(aa64_nmi, cpu)) {
++        define_arm_cp_regs(cpu, nmi_reginfo);
++    }
+ #endif
  
-+#define GICD_TYPER_NMI_SHIFT           9
- #define GICD_TYPER_LPIS_SHIFT          17
- 
- /* 16 bits EventId */
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index 7324c7d983..4358c5319c 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -249,6 +249,7 @@ struct GICv3State {
-     uint32_t num_irq;
-     uint32_t revision;
-     bool lpi_enable;
-+    bool nmi_support;
-     bool security_extn;
-     bool force_8bit_prio;
-     bool irq_reset_nonsecure;
+     if (cpu_isar_feature(any_predinv, cpu)) {
 -- 
 2.34.1
 

@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp564676ejj;
-        Mon, 25 Mar 2024 01:54:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVzfmvY8asI3A7GfvpPy05Rk65NfTdyMqCd0ozu9vD5ePyZPFj6YynYQ7OQP6jxpaSTQvRiJ9wgzkkSwPsstZBwlkbWSTeq
-X-Google-Smtp-Source: AGHT+IF5ftoyjgLxORyQ0EoQK+iPjcjUY4M5aeIltO4n8ePiebNdCET5ycxhy+FsPVQU3QRfP7xS
-X-Received: by 2002:a05:6214:2622:b0:696:8c86:b506 with SMTP id gv2-20020a056214262200b006968c86b506mr3204852qvb.1.1711356892823;
-        Mon, 25 Mar 2024 01:54:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711356892; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp564686ejj;
+        Mon, 25 Mar 2024 01:54:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUru1+L/VevJFW/Rr+l4H/U6upTY7lHMniOOb5TQBeoPYcoSOSuINwZWrxiGWmGV9pRRPlw3LbdwJMUE2pCxuVCpT7yGNhd
+X-Google-Smtp-Source: AGHT+IGVhwMcEtC7pjJuqrIx0KTffxTvt0ubCI7xq5kYbU6+f7VZEPnhj9wCPGQsX7bptDUx0bPY
+X-Received: by 2002:a5b:181:0:b0:dce:2e9:a637 with SMTP id r1-20020a5b0181000000b00dce02e9a637mr4590747ybl.20.1711356894359;
+        Mon, 25 Mar 2024 01:54:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711356894; cv=none;
         d=google.com; s=arc-20160816;
-        b=uS/v56UhvmZgtIUZ4QD25WksCpg2+tgg/xCSs74v0HSp8Lv4ZBtQIIGVJCuWORu262
-         U6W7N9XcUI6U5GDdgCX1Cku7EqtW9B2Tru3BaZVyTt5sHXW4N74AIVlu0FOoLGoQh1AX
-         I6pQapzOuVqwSwqBEgR95ga8vz/F+vYKWAq38Pcdk3yJFiny2PlZsujm9xrcTzyI5qTg
-         1n9mU8/FNi7sWWNK4TKuiuAkgiKq8VHcNIa+iXau3gZPAlXwaexSI4VczdC7KbIvYOoP
-         pwnfx3sryQI4hGRgS7VHtX1jQTzKPA8t7hV4k3JlRcnQC9FXs0N3AjKRTgfoTUKwyhDR
-         3Zvw==
+        b=NMou0a+gHkn/MfwEF4UvYGb10UweS8kxWdeKi9rq9NoNKTaLvVRc8FDI4XXqjHT3vf
+         PGMr3QpzulheRVbKWTv3ZPGjjN3iR9vQapqy6dNZfgALd1+WLalBirpB4sWxV3S/HIMf
+         ugm5VGiSBCuwj3wqZBMlI/CMQnnqbgc5uDIz6TxmDb2mwLj3th8oHvS+0MFk5Y8ew5Th
+         dP+UV3w/vGO0XyB3rmP21IPYFzPXrRPDuDlbc3gac6g0wZ/olWUT0wTOghPiYCrkvAJR
+         7z5or2j7vnmAwYDsW2+nu3Yy/AVeSiKgjsF5tbINLN5XRwYCQhAsWoKVJD2MwGh0ekZM
+         KCVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=55df/8Q3Ih0HtxhS+OjD+TDVvM0lFbuy4NtXuE3reTU=;
+        bh=dt86UNd2K16L4v3j5nOw+nZmX+C7D7SIcfApS2xJN5U=;
         fh=dR6uRwfo9om/DmWDsGu5eY7/2T4Nd7sHG4YVwbPnVj0=;
-        b=efOcABo7Vay6OQHYmhf4Ml2mAa3hgFh5OPvIbjL6iaMgCChoVZiDIto/kG52kz3C9H
-         3kfugKMKcMr3DfngNdvAyeW1sTeiFzI3c92zPZCfFQ7Rj2ZP6Jbt+9RNnyCPBO+HPFgo
-         4XhAqFeQ5ibV/neffbyulTMm+Kpl7HIvelagnzDOnDIed+Df+WoV0zMQiQPSh1vGOx0j
-         16rk+glIiMPckdgcGaI6rDGm2/pHnj3WflBdIkpbzvBk3bjCPjUN2yfGT31puctGmkuf
-         TLHIXN7HN+hwmFMNYrpF7+d/JZFO2e7iMRlvv8yUEC28VtXZTE+A/odCVhv3Vt5IylOO
-         7gjA==;
+        b=y/BJ6g9sv3uqDXdcewUWcP4gHW4eMUeC3nzv4NQj/tI/rcFJZDWO957IvJO1ujKWww
+         I1vocF9eL2DRPpDUow0CjNpef/HjkSe/YiHzB6qJ3F1v7HTkVda2KmDTKW8zqOaDklSN
+         rJH3ua7Q39uoOXwRUVPDJQz5CgtbRB/AqVkserocasxCfspqohwLSJlWwwIA0Rooc07p
+         aXQb0/PY+rZ9SlQeGz0ylzL2TyiJc+HWvIQUJZFpzOCngYru1l7O/SsKPOuXWS9ciQd3
+         cxSgUS6s94wRfLFniP3+4oOpJ6DH0o1sOyEvQFtZ9PtTUtodk0Gp+F3MzmAzX381acdS
+         9Mng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id iv15-20020ad45cef000000b006915b8b77c0si7426359qvb.0.2024.03.25.01.54.52
+        by mx.google.com with ESMTPS id n17-20020ac85a11000000b00431310f8ba4si4821233qta.340.2024.03.25.01.54.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Mar 2024 01:54:52 -0700 (PDT)
+        Mon, 25 Mar 2024 01:54:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,33 +42,33 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rog4L-0003DL-6K; Mon, 25 Mar 2024 04:52:37 -0400
+	id 1rog4X-0003Ht-FJ; Mon, 25 Mar 2024 04:52:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rog3u-000316-Oe; Mon, 25 Mar 2024 04:52:12 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189])
+ id 1rog41-00034s-Hy; Mon, 25 Mar 2024 04:52:19 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rog3n-0007OE-IC; Mon, 25 Mar 2024 04:52:10 -0400
-Received: from mail.maildlp.com (unknown [172.19.88.194])
- by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4V367k0GqdzNmL1;
- Mon, 25 Mar 2024 16:49:54 +0800 (CST)
+ id 1rog3x-0007RF-FH; Mon, 25 Mar 2024 04:52:17 -0400
+Received: from mail.maildlp.com (unknown [172.19.88.214])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4V367D6GgCz1h2rd;
+ Mon, 25 Mar 2024 16:49:28 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id A466D1402C7;
- Mon, 25 Mar 2024 16:51:52 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 650321A016F;
+ Mon, 25 Mar 2024 16:52:06 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Mon, 25 Mar
- 2024 16:51:52 +0800
+ 2024 16:52:05 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <richard.henderson@linaro.org>, <qemu-devel@nongnu.org>,
  <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [PATCH v10 04/23] target/arm: Implement ALLINT MSR (immediate)
-Date: Mon, 25 Mar 2024 08:48:35 +0000
-Message-ID: <20240325084854.3010562-5-ruanjinjie@huawei.com>
+Subject: [PATCH v10 19/23] hw/intc/arm_gicv3: Implement NMI interrupt prioirty
+Date: Mon, 25 Mar 2024 08:48:50 +0000
+Message-ID: <20240325084854.3010562-20-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240325084854.3010562-1-ruanjinjie@huawei.com>
 References: <20240325084854.3010562-1-ruanjinjie@huawei.com>
@@ -78,13 +78,14 @@ Content-Type: text/plain
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=ruanjinjie@huawei.com; helo=szxga03-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,123 +102,239 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WxeRqBHrNjxB
+X-TUID: 4ed7gvIUTEAT
 
-Add ALLINT MSR (immediate) to decodetree, in which the CRm is 0b000x. The
-EL0 check is necessary to ALLINT, and the EL1 check is necessary when
-imm == 1. So implement it inline for EL2/3, or EL1 with imm==0. Avoid the
-unconditional write to pc and use raise_exception_ra to unwind.
+If GICD_CTLR_DS bit is zero and the NMI is non-secure, the NMI prioirty
+is higher than 0x80, otherwise it is higher than 0x0. And save NMI
+super prioirty information in hppi.superprio to deliver NMI exception.
+Since both GICR and GICD can deliver NMI, it is both necessary to check
+whether the pending irq is NMI in gicv3_redist_update_noirqset and
+gicv3_update_noirqset. And In irqbetter(), only a non-NMI with the same
+priority and a smaller interrupt number can be preempted but not NMI.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
 v10:
-- Correct the exception_target_el(env) to 2, since it is a hypervisor trap
-  from EL1 to EL2.
-v7:
+- has_superprio -> nmi.
+- superpriority -> non-maskable property.
+- gicr_isuperprio -> gicr_inmir0.
+- superprio -> nmi.
+v8:
 - Add Reviewed-by.
+v7:
+- Reorder the irqbetter() code for clarity.
+- Eliminate the has_superprio local variable for gicv3_get_priority().
+- false -> cs->hpplpi.superprio in gicv3_redist_update_noirqset().
+- 0x0 -> false in arm_gicv3_common_reset_hold().
+- Clear superprio in several places for hppi, hpplpi and hppvlpi.
 v6:
-- Fix DISAS_TOO_MANY to DISAS_UPDATE_EXIT and add the comment.
-v5:
-- Drop the & 1 in trans_MSR_i_ALLINT().
-- Simplify and merge msr_i_allint() and allint_check().
-- Rename msr_i_allint() to msr_set_allint_el1().
+- Put the "extract superprio info" logic into gicv3_get_priority().
+- Update the comment in irqbetter().
+- Reset the cs->hppi.superprio to 0x0.
+- Set hppi.superprio to false for LPI.
 v4:
-- Fix the ALLINT MSR (immediate) decodetree implementation.
-- Remove arm_is_el2_enabled() check in allint_check().
-- Update env->allint to env->pstate.
-- Only call allint_check() when imm == 1.
-- Simplify the allint_check() to not pass "op" and extract.
-- Implement it inline for EL2/3, or EL1 with imm==0.
-- Pass (a->imm & 1) * PSTATE_ALLINT (i64) to simplfy the ALLINT set/clear.
-v3:
-- Remove EL0 check in allint_check().
-- Add TALLINT check for EL1 in allint_check().
-- Remove unnecessarily arm_rebuild_hflags() in msr_i_allint helper.
+- Replace is_nmi with has_superprio to not a mix NMI and superpriority.
+- Update the comment in irqbetter().
+- Extract gicv3_get_priority() to avoid code repeat.
 ---
- target/arm/tcg/a64.decode      |  1 +
- target/arm/tcg/helper-a64.c    | 12 ++++++++++++
- target/arm/tcg/helper-a64.h    |  1 +
- target/arm/tcg/translate-a64.c | 19 +++++++++++++++++++
- 4 files changed, 33 insertions(+)
+v3:
+- Add missing brace
+---
+ hw/intc/arm_gicv3.c        | 67 +++++++++++++++++++++++++++++++++-----
+ hw/intc/arm_gicv3_common.c |  3 ++
+ hw/intc/arm_gicv3_redist.c |  3 ++
+ 3 files changed, 64 insertions(+), 9 deletions(-)
 
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 8a20dce3c8..0e7656fd15 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -207,6 +207,7 @@ MSR_i_DIT       1101 0101 0000 0 011 0100 .... 010 11111 @msr_i
- MSR_i_TCO       1101 0101 0000 0 011 0100 .... 100 11111 @msr_i
- MSR_i_DAIFSET   1101 0101 0000 0 011 0100 .... 110 11111 @msr_i
- MSR_i_DAIFCLEAR 1101 0101 0000 0 011 0100 .... 111 11111 @msr_i
-+MSR_i_ALLINT    1101 0101 0000 0 001 0100 000 imm:1 000 11111
- MSR_i_SVCR      1101 0101 0000 0 011 0100 0 mask:2 imm:1 011 11111
+diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
+index 0b8f79a122..6704190d9d 100644
+--- a/hw/intc/arm_gicv3.c
++++ b/hw/intc/arm_gicv3.c
+@@ -21,7 +21,7 @@
+ #include "hw/intc/arm_gicv3.h"
+ #include "gicv3_internal.h"
  
- # MRS, MSR (register), SYS, SYSL. These are all essentially the
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index ebaa7f00df..673e949422 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -66,6 +66,18 @@ void HELPER(msr_i_spsel)(CPUARMState *env, uint32_t imm)
-     update_spsel(env, imm);
- }
- 
-+void HELPER(msr_set_allint_el1)(CPUARMState *env)
-+{
-+    /* ALLINT update to PSTATE. */
-+    if (arm_hcrx_el2_eff(env) & HCRX_TALLINT) {
-+        raise_exception_ra(env, EXCP_UDEF,
-+                           syn_aa64_sysregtrap(0, 1, 0, 4, 1, 0x1f, 0), 2,
-+                           GETPC());
-+    }
-+
-+    env->pstate |= PSTATE_ALLINT;
-+}
-+
- static void daif_check(CPUARMState *env, uint32_t op,
-                        uint32_t imm, uintptr_t ra)
+-static bool irqbetter(GICv3CPUState *cs, int irq, uint8_t prio)
++static bool irqbetter(GICv3CPUState *cs, int irq, uint8_t prio, bool nmi)
  {
-diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64.h
-index 575a5dab7d..0518165399 100644
---- a/target/arm/tcg/helper-a64.h
-+++ b/target/arm/tcg/helper-a64.h
-@@ -22,6 +22,7 @@ DEF_HELPER_FLAGS_1(rbit64, TCG_CALL_NO_RWG_SE, i64, i64)
- DEF_HELPER_2(msr_i_spsel, void, env, i32)
- DEF_HELPER_2(msr_i_daifset, void, env, i32)
- DEF_HELPER_2(msr_i_daifclear, void, env, i32)
-+DEF_HELPER_1(msr_set_allint_el1, void, env)
- DEF_HELPER_3(vfp_cmph_a64, i64, f16, f16, ptr)
- DEF_HELPER_3(vfp_cmpeh_a64, i64, f16, f16, ptr)
- DEF_HELPER_3(vfp_cmps_a64, i64, f32, f32, ptr)
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 340265beb0..21758b290d 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2036,6 +2036,25 @@ static bool trans_MSR_i_DAIFCLEAR(DisasContext *s, arg_i *a)
-     return true;
- }
- 
-+static bool trans_MSR_i_ALLINT(DisasContext *s, arg_i *a)
-+{
-+    if (!dc_isar_feature(aa64_nmi, s) || s->current_el == 0) {
-+        return false;
+     /* Return true if this IRQ at this priority should take
+      * precedence over the current recorded highest priority
+@@ -30,14 +30,23 @@ static bool irqbetter(GICv3CPUState *cs, int irq, uint8_t prio)
+      * is the same as this one (a property which the calling code
+      * relies on).
+      */
+-    if (prio < cs->hppi.prio) {
+-        return true;
++    if (prio != cs->hppi.prio) {
++        return prio < cs->hppi.prio;
 +    }
 +
-+    if (a->imm == 0) {
-+        clear_pstate_bits(PSTATE_ALLINT);
-+    } else if (s->current_el > 1) {
-+        set_pstate_bits(PSTATE_ALLINT);
++    /*
++     * The same priority IRQ with non-maskable property should signal to
++     * the CPU as it have the priority higher than the labelled 0x80 or 0x00.
++     */
++    if (nmi != cs->hppi.nmi) {
++        return nmi;
+     }
++
+     /* If multiple pending interrupts have the same priority then it is an
+      * IMPDEF choice which of them to signal to the CPU. We choose to
+      * signal the one with the lowest interrupt number.
+      */
+-    if (prio == cs->hppi.prio && irq <= cs->hppi.irq) {
++    if (irq <= cs->hppi.irq) {
+         return true;
+     }
+     return false;
+@@ -129,6 +138,40 @@ static uint32_t gicr_int_pending(GICv3CPUState *cs)
+     return pend;
+ }
+ 
++static bool gicv3_get_priority(GICv3CPUState *cs, bool is_redist,
++                               uint8_t *prio, int irq)
++{
++    uint32_t nmi = 0x0;
++
++    if (is_redist) {
++        nmi = extract32(cs->gicr_inmir0, irq, 1);
 +    } else {
-+        gen_helper_msr_set_allint_el1(tcg_env);
++        nmi = *gic_bmp_ptr32(cs->gic->nmi, irq);
++        nmi = nmi & (1 << (irq & 0x1f));
 +    }
 +
-+    /* Exit the cpu loop to re-evaluate pending IRQs. */
-+    s->base.is_jmp = DISAS_UPDATE_EXIT;
-+    return true;
++    if (nmi) {
++        /* DS = 0 & Non-secure NMI */
++        if (!(cs->gic->gicd_ctlr & GICD_CTLR_DS) &&
++            ((is_redist && extract32(cs->gicr_igroupr0, irq, 1)) ||
++             (!is_redist && gicv3_gicd_group_test(cs->gic, irq)))) {
++            *prio = 0x80;
++        } else {
++            *prio = 0x0;
++        }
++
++        return true;
++    }
++
++    if (is_redist) {
++        *prio = cs->gicr_ipriorityr[irq];
++    } else {
++        *prio = cs->gic->gicd_ipriority[irq];
++    }
++
++    return false;
 +}
 +
- static bool trans_MSR_i_SVCR(DisasContext *s, arg_MSR_i_SVCR *a)
- {
-     if (!dc_isar_feature(aa64_sme, s) || a->mask == 0) {
+ /* Update the interrupt status after state in a redistributor
+  * or CPU interface has changed, but don't tell the CPU i/f.
+  */
+@@ -141,6 +184,7 @@ static void gicv3_redist_update_noirqset(GICv3CPUState *cs)
+     uint8_t prio;
+     int i;
+     uint32_t pend;
++    bool nmi = false;
+ 
+     /* Find out which redistributor interrupts are eligible to be
+      * signaled to the CPU interface.
+@@ -152,10 +196,11 @@ static void gicv3_redist_update_noirqset(GICv3CPUState *cs)
+             if (!(pend & (1 << i))) {
+                 continue;
+             }
+-            prio = cs->gicr_ipriorityr[i];
+-            if (irqbetter(cs, i, prio)) {
++            nmi = gicv3_get_priority(cs, true, &prio, i);
++            if (irqbetter(cs, i, prio, nmi)) {
+                 cs->hppi.irq = i;
+                 cs->hppi.prio = prio;
++                cs->hppi.nmi = nmi;
+                 seenbetter = true;
+             }
+         }
+@@ -168,9 +213,10 @@ static void gicv3_redist_update_noirqset(GICv3CPUState *cs)
+     if ((cs->gicr_ctlr & GICR_CTLR_ENABLE_LPIS) && cs->gic->lpi_enable &&
+         (cs->gic->gicd_ctlr & GICD_CTLR_EN_GRP1NS) &&
+         (cs->hpplpi.prio != 0xff)) {
+-        if (irqbetter(cs, cs->hpplpi.irq, cs->hpplpi.prio)) {
++        if (irqbetter(cs, cs->hpplpi.irq, cs->hpplpi.prio, cs->hpplpi.nmi)) {
+             cs->hppi.irq = cs->hpplpi.irq;
+             cs->hppi.prio = cs->hpplpi.prio;
++            cs->hppi.nmi = cs->hpplpi.nmi;
+             cs->hppi.grp = cs->hpplpi.grp;
+             seenbetter = true;
+         }
+@@ -213,6 +259,7 @@ static void gicv3_update_noirqset(GICv3State *s, int start, int len)
+     int i;
+     uint8_t prio;
+     uint32_t pend = 0;
++    bool nmi = false;
+ 
+     assert(start >= GIC_INTERNAL);
+     assert(len > 0);
+@@ -240,10 +287,11 @@ static void gicv3_update_noirqset(GICv3State *s, int start, int len)
+              */
+             continue;
+         }
+-        prio = s->gicd_ipriority[i];
+-        if (irqbetter(cs, i, prio)) {
++        nmi = gicv3_get_priority(cs, false, &prio, i);
++        if (irqbetter(cs, i, prio, nmi)) {
+             cs->hppi.irq = i;
+             cs->hppi.prio = prio;
++            cs->hppi.nmi = nmi;
+             cs->seenbetter = true;
+         }
+     }
+@@ -293,6 +341,7 @@ void gicv3_full_update_noirqset(GICv3State *s)
+ 
+     for (i = 0; i < s->num_cpu; i++) {
+         s->cpu[i].hppi.prio = 0xff;
++        s->cpu[i].hppi.nmi = false;
+     }
+ 
+     /* Note that we can guarantee that these functions will not
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index be76ae0be6..91e17035a3 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -542,8 +542,11 @@ static void arm_gicv3_common_reset_hold(Object *obj)
+         memset(cs->gicr_ipriorityr, 0, sizeof(cs->gicr_ipriorityr));
+ 
+         cs->hppi.prio = 0xff;
++        cs->hppi.nmi = false;
+         cs->hpplpi.prio = 0xff;
++        cs->hpplpi.nmi = false;
+         cs->hppvlpi.prio = 0xff;
++        cs->hppvlpi.nmi = false;
+ 
+         /* State in the CPU interface must *not* be reset here, because it
+          * is part of the CPU's reset domain, not the GIC device's.
+diff --git a/hw/intc/arm_gicv3_redist.c b/hw/intc/arm_gicv3_redist.c
+index ed1f9d1e44..90b238fac0 100644
+--- a/hw/intc/arm_gicv3_redist.c
++++ b/hw/intc/arm_gicv3_redist.c
+@@ -120,6 +120,7 @@ static void update_for_one_lpi(GICv3CPUState *cs, int irq,
+         ((prio == hpp->prio) && (irq <= hpp->irq))) {
+         hpp->irq = irq;
+         hpp->prio = prio;
++        hpp->nmi = false;
+         /* LPIs and vLPIs are always non-secure Grp1 interrupts */
+         hpp->grp = GICV3_G1NS;
+     }
+@@ -156,6 +157,7 @@ static void update_for_all_lpis(GICv3CPUState *cs, uint64_t ptbase,
+     int i, bit;
+ 
+     hpp->prio = 0xff;
++    hpp->nmi = false;
+ 
+     for (i = GICV3_LPI_INTID_START / 8; i < pendt_size / 8; i++) {
+         address_space_read(as, ptbase + i, MEMTXATTRS_UNSPECIFIED, &pend, 1);
+@@ -241,6 +243,7 @@ static void gicv3_redist_update_vlpi_only(GICv3CPUState *cs)
+ 
+     if (!FIELD_EX64(cs->gicr_vpendbaser, GICR_VPENDBASER, VALID)) {
+         cs->hppvlpi.prio = 0xff;
++        cs->hppvlpi.nmi = false;
+         return;
+     }
+ 
 -- 
 2.34.1
 

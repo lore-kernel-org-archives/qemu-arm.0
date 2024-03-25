@@ -1,112 +1,100 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp564831ejj;
-        Mon, 25 Mar 2024 01:55:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU4upAHIzNsKE3nuBEZEs0PiXA6h9LZefvH7tYdxU30IJ8GOwVNuq8dUC8xtlhdfzLSX5rz5DhjjfjagRBRycNmYoqs76wR
-X-Google-Smtp-Source: AGHT+IENFKHsGBTpW8Se5hd91ubshPKOA2hQnZYgdcHaFu8knb133UryN7alh1cKXen1mPmMprdW
-X-Received: by 2002:a05:6214:2aa2:b0:691:83a:13b with SMTP id js2-20020a0562142aa200b00691083a013bmr7397823qvb.64.1711356921153;
-        Mon, 25 Mar 2024 01:55:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711356921; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp565344ejj;
+        Mon, 25 Mar 2024 01:57:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWz/ZCItQYcDJoZokF5A4F1zeS7v6hvwYXIkdmz4RRqD1OMGo5CiarEaigD1NfMmQZv6HSaaCbAmU67kw1Ylu9Uuui3Jgwo
+X-Google-Smtp-Source: AGHT+IFI9MqyuTqOV5ZpEtMUkPV0lInO8GMLLkBntkcanoh8rrUPky5mML88CZsOjLKXeSEYkLSo
+X-Received: by 2002:a05:620a:5a43:b0:78a:5c8f:cfe1 with SMTP id wx3-20020a05620a5a4300b0078a5c8fcfe1mr400497qkn.50.1711357021245;
+        Mon, 25 Mar 2024 01:57:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711357021; cv=none;
         d=google.com; s=arc-20160816;
-        b=zwZUWWDbDyJmLRAy9obCdN+oVoo8MVKxjAMR+ODwoGIFA7xIVkbuoXOVSO7jvgcKbh
-         245FqXOTPoME0xmH+RgCzelnKNFqtQlT6N1A55qai2dkw40hLEZU8NtYzlI+EJ+jzRKU
-         W+RA4Fy60s9+/L+/jyjhKZ+tN7cK6vwL+d8yQ6nK6x2PWOhvRh/t5NoREL7thRJWji+8
-         QyeVT7Du1lD43j+/0POqlXsJ0kjqpiVSGdFz7gS7+F2Od1AOPe14HLTqms0Nu3rH66ax
-         kfilavetbaExgNHQTlwF3QT6PKerqc1hWFFWMMTMXp/aCSJTFK5N+SG6Lxa3OnVMGfH3
-         miOA==
+        b=RKW+FMuPx1xBaYnEBl4k9+/9ngeEwzH8HGtnB9PkpN5dyStQviQ9QThhvoDwb1lFj0
+         +BS3K6VOeYZPVaDjWfSCcxgdDeQefP4kiBDRMO4l+bEPO+HgExt/mRdrJNIjpsW4U6ad
+         r8nySiy7EETxpGo7u1y5yeIAXBlAirdaUjifnyUrqzLq2VqIS2pgWD9YqcRTORGOedRU
+         5+0oNzCrUdAwMHMDqUE8AajW0b3nBREdL2rkfupl0MAhvt4eKxo/CVwR5A0cxmwiSfJg
+         Ds3lR2OI6ySJg9RV0EEX/Rkw7cN4/FEd2jfisF6R7+bbkQetNEtt5e/8vNxiersuCCN8
+         stLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=NzcgNkYTAZFq8h8Dt8F6evBpJr85CKu5FqXaOBLyeEg=;
-        fh=4jw+VptL5gS0ABgMJLbJ5FyRdwU54g1TscK8faLrSxo=;
-        b=Q7t9Yv7Z9si7+B3Z0e8ARgwRDOTKxdu4URAwT4G0pSK0LEnmi7equxvSSo/M3fChvh
-         IaZSpVwHvvwSEQox5VaVACcYlwOksegXG3dKFWFhm4Ldbp7OsiFepsBoVHlFqUX0ED7N
-         6Ji+LHOfWavgqo3R3LzLROc4eMBxoS53B7L0npaBZnigF6lc3Dsz5sgCVddahjNzT1BG
-         Ne121Nu3R4NHbFmikruN9aEx4sNpt8StK5CgyF9W6IBaBWpIK6WppZKU8eS5iW3pVSaV
-         HAj5Vct0NcgwTFcvlAprSCKZid+KOrgUFyjZ+qxflkCYZDnJSVDNu1TM6U3OAwcZ7LkD
-         liew==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=tPHKlcMjIAG9i8s53/hAPdDcGiPubMh2yTJuSv7Vaqc=;
+        fh=gYaU5B7DUzD2XWl4jAUZyCZJ3a/tOgViNRdwGsU5HFs=;
+        b=eEpEPwfNMxLXsKY77pZdFDoNKUqhd2japiVxoM6F9AC6aclcvkLDbcTr+gcJrnfGou
+         kd2IR/j02yGjUotUB2oW/QhAIvBba6Eo9zP334z8fTzLw3AFjoKOOWr0lsSUcemlHAcb
+         DUu2q5grXtkQ1UdTAuA3N2zh2zuLbag03XmCr6mm+26MYjOzthD0tzutgMIu4ShAPVME
+         ZO2vAmCndzVAh9EhpHrCNJCjLMqtnnWRvVVc4fPofHRUGCyYjyeIwf0c6jWJ7TM3DYo+
+         4TSmev1maT85Ga56fHR2Y83yq9cmiheyCZGdUW+K66BoMJocUom4Jvr5ds5pb7nd9vta
+         z2RQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b735vAGD;
+       dkim=pass header.i=@lmichel.fr header.s=pharaoh header.b=EMvhUfwc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id oq14-20020a056214460e00b0069694bb7ee4si225007qvb.6.2024.03.25.01.55.20
+        by mx.google.com with ESMTPS id c7-20020a05620a200700b0078a5c8821a8si269508qka.688.2024.03.25.01.57.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Mar 2024 01:55:21 -0700 (PDT)
+        Mon, 25 Mar 2024 01:57:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=b735vAGD;
+       dkim=pass header.i=@lmichel.fr header.s=pharaoh header.b=EMvhUfwc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rog6w-0007Ja-D4; Mon, 25 Mar 2024 04:55:18 -0400
+	id 1rog8M-0002r3-FX; Mon, 25 Mar 2024 04:56:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1rog6u-0006xI-6d
- for qemu-arm@nongnu.org; Mon, 25 Mar 2024 04:55:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1rog8K-0002qB-P2; Mon, 25 Mar 2024 04:56:44 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1rog6r-0007zm-VE
- for qemu-arm@nongnu.org; Mon, 25 Mar 2024 04:55:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1711356912;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=NzcgNkYTAZFq8h8Dt8F6evBpJr85CKu5FqXaOBLyeEg=;
- b=b735vAGDp8h9LXc0akTItWEq4SyEHtChrFqSqRqB30hq1AIgIwoNPz4dvhzq533Q1rxtKk
- gy/t8cf+5D1yrYgKdfc4uOB5gvW7VC3uS7d8Su0bKMs3txi9r+9C+ik2GOYViYXumo3tjV
- 1TJ/vDTbI/Y7QRRfvOjBd3bf/Gp3TS4=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-564--PeoPhtRNtmBTkNW7yapaw-1; Mon,
- 25 Mar 2024 04:55:09 -0400
-X-MC-Unique: -PeoPhtRNtmBTkNW7yapaw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 81EFB3C0E202;
- Mon, 25 Mar 2024 08:55:09 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.114])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5B0742022EA7;
- Mon, 25 Mar 2024 08:55:08 +0000 (UTC)
-Date: Mon, 25 Mar 2024 08:55:02 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Shaoqin Huang <shahuang@redhat.com>
-Cc: qemu-arm@nongnu.org, Eric Auger <eauger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org,
- kvm@vger.kernel.org
-Subject: Re: [PATCH v8] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-Message-ID: <ZgE71v8uGDNihQ5H@redhat.com>
-References: <20240312074849.71475-1-shahuang@redhat.com>
- <Zf2bbcpWYMWKZpNy@redhat.com>
- <1881554f-9183-4e01-8cda-0934f7829abf@redhat.com>
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1rog8I-0008UY-Hk; Mon, 25 Mar 2024 04:56:44 -0400
+Received: from localhost (sekoia-laptop.home.lmichel.fr [192.168.61.102])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 0DAF0C60172;
+ Mon, 25 Mar 2024 09:56:40 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1711357000;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tPHKlcMjIAG9i8s53/hAPdDcGiPubMh2yTJuSv7Vaqc=;
+ b=EMvhUfwc6vwqaCreCJma+9Ft+o6b+wO21TgsgXe5neYOYRLbSoFFAjg2ylfvudUNipo2QY
+ byeP0a/bbF1nTlEGLn8QsnxtiSknkxnSVx76yfH6pca1X5KK2C9ZGeVRd1w84ui0ic6hSp
+ NGAsT/OOK2DlyDgNwn5+qJvHqDYy52NgOIk/o5W+0omOrpewu5pNCEeOvHrsCzzgBvHX93
+ phti3gwMOocK1gVhaMhWAjnOB3GcGSA4iaAOu7nMJgsvMSHXxyzjHMxn+ob14TLOyTySvf
+ O0NOtAMT5sEf92mJW6YLr9pqFXiX0tV+iBz9uXHFEJvatHj7wK+TbPcQIC3Skw==
+Date: Mon, 25 Mar 2024 09:56:39 +0100
+From: Luc Michel <luc@lmichel.fr>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Luc Michel <luc.michel@amd.com>,
+ Damien Hedde <damien.hedde@dahe.fr>,
+ =?utf-8?B?SW7DqHM=?= Varhol <ines.varhol@telecom-paris.fr>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org
+Subject: Re: [PATCH-for-9.0 2/2] hw/misc/stm32l4x5_rcc: Propagate period when
+ enabling a clock
+Message-ID: <ZgE8R2WxPSvybpVH@michell-laptop.localdomain>
+References: <20240322155810.5733-1-philmd@linaro.org>
+ <20240322155810.5733-3-philmd@linaro.org>
+ <CAFEAcA_nFsWfXckLBJ72X6PTjmBYSRF77UoYs=gPB_GNshoyRw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <1881554f-9183-4e01-8cda-0934f7829abf@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAFEAcA_nFsWfXckLBJ72X6PTjmBYSRF77UoYs=gPB_GNshoyRw@mail.gmail.com>
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.099,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,30 +107,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mXbq3Q5dS+K5
+X-TUID: OsTru3DifOOq
 
-On Mon, Mar 25, 2024 at 01:35:58PM +0800, Shaoqin Huang wrote:
-> Hi Daniel,
+On 16:39 Fri 22 Mar     , Peter Maydell wrote:
+> On Fri, 22 Mar 2024 at 15:59, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+> >
+> > From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> >
+> > The "clock_set_mul_div" function doesn't propagate the clock period
+> > to the children if it is changed (e.g. by enabling/disabling a clock
+> > multiplexer).
+> > This was overlooked during the implementation due to late changes.
+> >
+> > This commit propagates the change if the multiplier or divider changes.
+> >
+> > Fixes: ec7d83acbd ("hw/misc/stm32l4x5_rcc: Add an internal clock multiplexer object")
+> > Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> > Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+> > Message-ID: <20240317103918.44375-2-arnaud.minier@telecom-paris.fr>
+> > [PMD: Check clock_set_mul_div() return value]
+> > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> > ---
+> >  hw/misc/stm32l4x5_rcc.c | 5 ++++-
+> >  1 file changed, 4 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/hw/misc/stm32l4x5_rcc.c b/hw/misc/stm32l4x5_rcc.c
+> > index bc2d63528b..7ad628b296 100644
+> > --- a/hw/misc/stm32l4x5_rcc.c
+> > +++ b/hw/misc/stm32l4x5_rcc.c
+> > @@ -59,7 +59,10 @@ static void clock_mux_update(RccClockMuxState *mux, bool bypass_source)
+> >          freq_multiplier = mux->divider;
+> >      }
+> >
+> > -    clock_set_mul_div(mux->out, freq_multiplier, mux->multiplier);
+> > +    if (clock_set_mul_div(mux->out, freq_multiplier, mux->multiplier)) {
+> > +        clock_propagate(mux->out);
+> > +    }
+> > +
+> >      clock_update(mux->out, clock_get(current_source));
 > 
-> Thanks for your reviewing. I see your comments in the v7.
-> 
-> I have some doubts about what you said about the QAPI. Do you want me to
-> convert the current design into the QAPI parsing like the
-> IOThreadVirtQueueMapping? And we need to add new json definition in the
-> qapi/ directory?
+> clock_update() also calls clock_propagate(), so this doesn't
+> seem entirely right: shouldn't we figure out whether we need to
+> do a clock_propagate() and do it once? (Maybe what seems odd to me
+> is that clock_set() does clock_propagate() for you but
+> clock_set_mul_div() does not...)
+clock_set() does not call clock_propagate(). clock_update() is a
+clock_set() followed by a clock_propagate() if the period changed.
 
-Yes, you would define a type in the qapi dir similar to how is
-done for IOThreadVirtQueueMapping, and then you can use that
-in the property setter method.
+I think this is where the problem comes from here. clock_update() call
+won't call clock_propagate() if the clock period does not change.
 
+I think you'll want something like:
+    bool changed;
 
-With regards,
-Daniel
+    changed = clock_set_mul_div(mux->out, freq_multiplier, mux->multiplexer);
+    changed ||= clock_set(clock_get(current_source));
+
+    if (changed) {
+        clock_propagate(mux->out);
+    }
+ 
+Thanks,
+
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Luc
 
+> 
+> (Also I think we should have the information we need now to be able
+> to do the "reduce log spam" in the comment -- if neither
+> clock_set_mul_div() nor clock_update() needed to do anything
+> then we didn't actually change the config.)
+> 
+> -- PMM
+
+-- 

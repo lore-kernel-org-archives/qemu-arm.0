@@ -1,339 +1,314 @@
-Received: by 2002:a17:906:bc5a:b0:a46:bbde:2c08 with SMTP id s26csp1017996ejv;
-        Fri, 22 Mar 2024 01:15:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUCr7hvltm3GMB8sTT7e6dzT455GzzPC6/ogLVCfjaApI3gul/vm6ZuX8CIR0AeMdqbqMi9golfHF6qzLeUeLcpq1T2DLG4
-X-Google-Smtp-Source: AGHT+IGjtaUyVK3mjLgAdj+ATDT7KupdPv/Dr1csntyuRGZKn51L7ZquGy8hK2Aw19NnTi0UCNbs
-X-Received: by 2002:a25:361e:0:b0:dd1:ebc:ca2d with SMTP id d30-20020a25361e000000b00dd10ebcca2dmr1597809yba.52.1711095357333;
-        Fri, 22 Mar 2024 01:15:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711095357; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp597513ejj;
+        Mon, 25 Mar 2024 03:15:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW0BweAQVcnaHL6nsBmph4dLc8K8iSRdde0vLiGLVi3VcIINRGXqjwEYFkZOEsoC6aoIZo6rpCc/Rcy0KyIoDxBZ6U0QxT4
+X-Received: by 2002:a5d:5051:0:b0:340:5b4:ba31 with SMTP id h17-20020a5d5051000000b0034005b4ba31mr5415614wrt.34.1711361711235;
+        Mon, 25 Mar 2024 03:15:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711361711; cv=none;
         d=google.com; s=arc-20160816;
-        b=tg1UgG6KDPdIrcWL4Aca1Smz+12UDmkUBhzpmOlpLIb/FVc/UUFcscr+Py4LnNtUPT
-         A9M1nxpb3FLy84NTitHMv32Xrgx2/23MYDKu7qHl/q8aZBvFHEC25q33Ib6dbHD72SMc
-         gc8lhRPbE20iYc26Tr7vVCOCmO0IPf72VodXZSo3Ym6gdhd/oRRtVI9sPLZuMmXVU31o
-         g00XkxDhgp89gzncoIN4C1w4iMDk68Mh5RUHEtwCckfGNRViiJZWFTlF14R+7muZoqDJ
-         XiQn8rdGmad/kgCCzDosj3BUOjI/GnqyT150AmThwkkQejiC2HXHa7zT8GChv42rWsFC
-         l6Jg==
+        b=MWw+2Y47wst+yyYx/Jve4FAcHRMBaMqA+C1cDabkLaiBWaBJhJuV+t9M4Yaq+wwwi9
+         6EAGBFRf5RWS2d/7OHQGgexIU/mn57khXbjXwM4A6OlKzxm6cXIRZUL1tD8oo8VfnDyR
+         PAz7BgPONLOHlK3ua6f+I9A8US8HaRls651AtKv77jfouMNhbTlaCbcZpVOphlPuIm3U
+         Gs3P36u38FRQSz50jHNpm/UU6ooiTxbvgjFmfQOr0iEeKKJcBlr6na4ThJlANSIAYF9K
+         XvIbLdXj8hrw3gJt23gFuuKz8i/jXg6+MX9JtxzN1dYjhCeTuXuwHqrmQfR8Y3RNI1YM
+         REHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=17kDj5YcawoHGbF3UgH4tA0YllnTGXTDLVxO/zS6Gqw=;
-        fh=suquJwrW4peq7auAPIVja/8lIRiktKIADH40+wmiXnI=;
-        b=B2frCBbTOjPjMqBMM9BhaDsC4ezADeJ/fbVXTNY9IfErBhM0hK1Dq/NilC9NvDrATK
-         XLUYhlUhtgt+As2xAT1Tc8nXtMK1C7CagMGshRz1LM7Z9RKRmwio2JCsRpJi2FE6gKid
-         toGhLxeBx+tDQUcHUP3ShMCa554vP4igGrDaV1qus5ZP1IYv/hRUJ7yaaVb/JjGNv3DG
-         r2SSTGyyxWZmcRZgonUYE1HJWLNB7I1oUo9oHJeqivdwvR9PFKCFVNVSzaVg1nSkZcpP
-         azzCFC1ek19Z+ve/iE2CgGhJyPBXJ5rDR7Y/mUlerOgs28uEj8OCootlYm3Wyn+HB/yX
-         k/Vw==;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:dkim-signature;
+        bh=0zs62To/zJ9W1gm3g27mxbClG/j+VvNKtNLClUaybGo=;
+        fh=szhqlviaYqDP3XOOAs0kxrlDn91sn7pKYS91I4SyvWM=;
+        b=XJZ8M4rujlFIGzEw1ytVmGDbb+c/HvAylVK3ZtPkXrVyqsoCzUkYPnWLh5SqLD1tIh
+         +B+7phIJIZkyJfJHJI2EAsARhl8mkHQ3E+I3vWx0UbJonF9e8j1YOfrxwIcgcwp13uwY
+         dQ0h0G3ebCc55CnNf/VuqzM8sTLpIGK37ggOb+xXmNk5ePsRd96hpBX110WklW5bMm1Y
+         HVQnBuQq79EIqNzk97WTqMyssVHsvPLd/TfTojhIdMI8Yb0cfDEN2UMMvalbJtiElwmD
+         lEJ6UOiGwGXj5grSEHlQY3FO8WKvJqO3soofr7DpF2Mayy5ZjWbCZ9WHUG5FxeTcfi+j
+         EgeA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=sj7hw0Pv;
-       spf=pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=harshpb@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <harshpb@linux.ibm.com>
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id h7-20020a256c07000000b00dc6c2e54c07si537648ybc.124.2024.03.22.01.15.56
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Mar 2024 01:15:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=JhNb4ep1;
+       spf=pass (google.com: domain of 3rk4bzggkc4c3xz34lqlrzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3rk4BZggKC4c3xz34lqlrzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--smostafa.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3rk4BZggKC4c3xz34lqlrzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--smostafa.bounces.google.com>
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
+        by mx.google.com with SMTPS id b4-20020a05600c150400b004140434718asor1047545wmg.2.2024.03.25.03.15.11
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 25 Mar 2024 03:15:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3rk4bzggkc4c3xz34lqlrzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=sj7hw0Pv;
-       spf=pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=harshpb@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 42M7XmbC019386;
-	Fri, 22 Mar 2024 08:15:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=17kDj5YcawoHGbF3UgH4tA0YllnTGXTDLVxO/zS6Gqw=;
- b=sj7hw0PvDYxAAEq9WMMeEXmIaxvUcVFPYNV0TD2Ez4WPze5EN+7D1hDebLHdHlGbjWVy
- Eu6yRw/Cq3lCXAq0/rWPiNmQasM2VnwrGaN7SOAK9AANUOtL9vmXp0R1UaWzRbFnlWfa
- BnyA/KnI0dY8FdqlMkzr/u12Vy78c95N/p+czNOjXb79SfzG7GLHGokVdJM/DU96GuEI
- eS0am4PeXuGdW0ECsefDgYYmfWL1U8HdmGcVq+IGvw/OCQbdVgjB4NBkR34mYP8Ojca+
- xJu2zrETlxHw/RkZ5ia5g4O3qOcCK1z2ROD47e7RbyrMB8oOQnDTvuMkmwXM1uXo9NVY VQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3x15pd02p1-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 22 Mar 2024 08:15:35 +0000
-Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 42M8FYxd017195;
-	Fri, 22 Mar 2024 08:15:34 GMT
-Received: from ppma12.dal12v.mail.ibm.com (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3x15pd02nx-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 22 Mar 2024 08:15:34 +0000
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
-	by ppma12.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 42M5M9aj026684;
-	Fri, 22 Mar 2024 08:15:33 GMT
-Received: from smtprelay06.dal12v.mail.ibm.com ([172.16.1.8])
-	by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 3x0x172g1b-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 22 Mar 2024 08:15:33 +0000
-Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com [10.39.53.232])
-	by smtprelay06.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 42M8FUJA11665978
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 22 Mar 2024 08:15:32 GMT
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 28D1E58068;
-	Fri, 22 Mar 2024 08:15:30 +0000 (GMT)
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 905A258053;
-	Fri, 22 Mar 2024 08:15:13 +0000 (GMT)
-Received: from [9.171.94.36] (unknown [9.171.94.36])
-	by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
-	Fri, 22 Mar 2024 08:15:13 +0000 (GMT)
-Message-ID: <ca178aae-82b9-4150-9965-50d968787d23@linux.ibm.com>
-Date: Fri, 22 Mar 2024 13:45:10 +0530
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V8 1/8] accel/kvm: Extract common KVM vCPU {creation,
- parking} code
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
-        lpieralisi@kernel.org, peter.maydell@linaro.org,
-        richard.henderson@linaro.org, imammedo@redhat.com,
-        andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
-        eric.auger@redhat.com, oliver.upton@linux.dev, pbonzini@redhat.com,
-        mst@redhat.com, will@kernel.org, gshan@redhat.com, rafael@kernel.org,
-        alex.bennee@linaro.org, linux@armlinux.org.uk,
-        darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
-        vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
-        miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
-        wangxiongfeng2@huawei.com, wangyanan55@huawei.com,
-        jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
-        linuxarm@huawei.com, Vaibhav Jain <vaibhav@linux.ibm.com>,
-        sbhat@linux.ibm.com
-References: <20240312020000.12992-1-salil.mehta@huawei.com>
- <20240312020000.12992-2-salil.mehta@huawei.com>
-Content-Language: en-US
-From: Harsh Prateek Bora <harshpb@linux.ibm.com>
-In-Reply-To: <20240312020000.12992-2-salil.mehta@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: tsxhMhWsrL_GhKz9GU4yVSscVlmqQIFx
-X-Proofpoint-GUID: AZ1Q4nW4o_OTiYwPeOE_BYR2DaNpe9Ki
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-03-22_04,2024-03-21_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0 bulkscore=0
- mlxlogscore=999 clxscore=1011 priorityscore=1501 mlxscore=0 malwarescore=0
- impostorscore=0 spamscore=0 phishscore=0 lowpriorityscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2403210000
- definitions=main-2403220058
-X-TUID: wY/jFGEcoIgp
+       dkim=pass header.i=@google.com header.s=20230601 header.b=JhNb4ep1;
+       spf=pass (google.com: domain of 3rk4bzggkc4c3xz34lqlrzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3rk4BZggKC4c3xz34lqlrzzrwp.nzxlwp8.mpyyppwtyl2z.z2r@flex--smostafa.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1711361711; x=1711966511; darn=linaro.org;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=0zs62To/zJ9W1gm3g27mxbClG/j+VvNKtNLClUaybGo=;
+        b=JhNb4ep1ZDZ0sHq+CSER7mNw7ecxYhxY9emGDATjjGzdE1Y42UuoxgCKbOlqOt4mzm
+         ZCW/fCDGpYW5fuftddkYuFO/hq6M3jVcmVqWeovDSXqSFVqGor2/VXTHFiZMOB3IV3+h
+         SMzsT5btc9LSHU+EK3qJRd8IaCbK/o06KJqN3ohSs+goejs0PY6R+UTcG/kRUNDg/be1
+         ssvQ8sE4wkHc6bah6iZY/nE+kWR8TVtfwzQsy8C1AhT9L75jHcyPFncsshTxffb6cIQT
+         gVgafNKg9eB3bKbUdua8/ShTInTEQhf1m1CMhe05ERtUeR/I5zzBKy+rzP9whVfw/tqw
+         62gg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711361711; x=1711966511;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=0zs62To/zJ9W1gm3g27mxbClG/j+VvNKtNLClUaybGo=;
+        b=afx8rORZH+YXTz+iT3z1p/ToK3UKuZ3jbO1Y3OctMIqV/QIUjxU+pV+iHh2q7KK4RY
+         AQvHQSHT4VL8quB0j0CHGscte/LdDU7hy4TKJK2BJYI9PrvFmZGSzY2XL0fQLcRzx/1c
+         1vuP2R0Gyl0ZGgXbASxn5fqmpmOFxD0I3POVyT8k2LY/5WegC+XKWbIA7A1+kYKUVgNo
+         JmmWGT839LVaf69V2pef3392BC0rKm70RKHImzozDEW1+vn8VDS6YLK0S5cImse4Qvql
+         Cz7URfQtDidHhvSgvLvkgnvcz00KX5rrnsdBI5Rp1bvF7EJ2Lw2FMpsvS1c21zrBLaZu
+         z9WQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUJqm5nAMbGkIDgmpeSTSSjEfkwT9aB0uav8GIkEkEvNrt+waEiWLrdgs0QqPiP1vI/Y8bWb1lvBMYbS1iKfIGMCEoHNN0s
+X-Gm-Message-State: AOJu0Yz4QezizynXsR+wxHyLh4477z4dkGyCwt7RGwYBq8x8dNRaD0+G
+	C5BXUh0luLRmMWGjTfxtDTb5kGblUbhqDse+GB4Q8r595L1pdvrzmZHGeHvYj2/3IhWDti9Myll
+	PBp36LPaOag==
+X-Google-Smtp-Source: AGHT+IETeQArB2ujPLdn1ThPuCEai0FayXQZcRHfRnbXYtcbtk9yVNCMGU65XiYRHxNzju4oO1oSGeWj83gx9Q==
+X-Received: from mostafa.c.googlers.com ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
+ (user=smostafa job=sendgmr) by 2002:a5d:4572:0:b0:33d:356f:fb82 with SMTP id
+ a18-20020a5d4572000000b0033d356ffb82mr21524wrc.11.1711361710691; Mon, 25 Mar
+ 2024 03:15:10 -0700 (PDT)
+Date: Mon, 25 Mar 2024 10:13:59 +0000
+In-Reply-To: <20240325101442.1306300-1-smostafa@google.com>
+Mime-Version: 1.0
+References: <20240325101442.1306300-1-smostafa@google.com>
+X-Mailer: git-send-email 2.44.0.396.g6e790dbe36-goog
+Message-ID: <20240325101442.1306300-4-smostafa@google.com>
+Subject: [RFC PATCH 03/12] hw/arm/smmu: Add stage to TLB
+From: Mostafa Saleh <smostafa@google.com>
+To: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
+	qemu-devel@nongnu.org
+Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org, 
+	nicolinc@nvidia.com, julien@xen.org, Mostafa Saleh <smostafa@google.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: N3vOqWnU+Jkf
 
-+ Vaibhav, Shiva
+TLBs for nesting will be extended to be combined, a new index is added
+"stage", with 2 valid values:
+ - SMMU_STAGE_1: Meaning this translates VA to PADDR, this entry can
+   be cached from fully nested configuration or from stage-1 only.
+   We don't support separate cached entries (VA to IPA)
 
-Hi Salil,
+ - SMMU_STAGE_2: Meaning this translates IPA to PADDR, cached from
+   stage-2 only configuration.
 
-I came across your patch while trying to solve a related problem on 
-spapr. One query below ..
+For TLB invalidation:
+ - by VA: Invalidate TLBs tagged with SMMU_STAGE_1
+ - by IPA: Invalidate TLBs tagged with SMMU_STAGE_2
+ - All: Will invalidate both, this is communicated to the TLB as
+   SMMU_NESTED which is (SMMU_STAGE_1 | SMMU_STAGE_2) which uses
+   it as a mask.
 
-On 3/12/24 07:29, Salil Mehta via wrote:
-> KVM vCPU creation is done once during the vCPU realization when Qemu vCPU thread
-> is spawned. This is common to all the architectures as of now.
-> 
-> Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
-> corresponding KVM vCPU object in the Host KVM is not destroyed as KVM doesn't
-> support vCPU removal. Therefore, its representative KVM vCPU object/context in
-> Qemu is parked.
-> 
-> Refactor architecture common logic so that some APIs could be reused by vCPU
-> Hotplug code of some architectures likes ARM, Loongson etc. Update new/old APIs
-> with trace events instead of DPRINTF. No functional change is intended here.
-> 
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> Reviewed-by: Gavin Shan <gshan@redhat.com>
-> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Tested-by: Xianglai Li <lixianglai@loongson.cn>
-> Tested-by: Miguel Luis <miguel.luis@oracle.com>
-> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
-> ---
->   accel/kvm/kvm-all.c    | 64 ++++++++++++++++++++++++++++++++----------
->   accel/kvm/trace-events |  5 +++-
->   include/sysemu/kvm.h   | 16 +++++++++++
->   3 files changed, 69 insertions(+), 16 deletions(-)
-> 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index a8cecd040e..3bc3207bda 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -126,6 +126,7 @@ static QemuMutex kml_slots_lock;
->   #define kvm_slots_unlock()  qemu_mutex_unlock(&kml_slots_lock)
->   
->   static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
-> +static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id);
->   
->   static inline void kvm_resample_fd_remove(int gsi)
->   {
-> @@ -314,14 +315,53 @@ err:
->       return ret;
->   }
->   
-> +void kvm_park_vcpu(CPUState *cpu)
-> +{
-> +    struct KVMParkedVcpu *vcpu;
-> +
-> +    trace_kvm_park_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-> +
-> +    vcpu = g_malloc0(sizeof(*vcpu));
-> +    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-> +    vcpu->kvm_fd = cpu->kvm_fd;
-> +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> +}
-> +
-> +int kvm_create_vcpu(CPUState *cpu)
-> +{
-> +    unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
-> +    KVMState *s = kvm_state;
-> +    int kvm_fd;
-> +
-> +    trace_kvm_create_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-> +
-> +    /* check if the KVM vCPU already exist but is parked */
-> +    kvm_fd = kvm_get_vcpu(s, vcpu_id);
-> +    if (kvm_fd < 0) {
-> +        /* vCPU not parked: create a new KVM vCPU */
-> +        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
-> +        if (kvm_fd < 0) {
-> +            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %lu", vcpu_id);
-> +            return kvm_fd;
-> +        }
-> +    }
-> +
-> +    cpu->kvm_fd = kvm_fd;
-> +    cpu->kvm_state = s;
-> +    cpu->vcpu_dirty = true;
-> +    cpu->dirty_pages = 0;
-> +    cpu->throttle_us_per_full = 0;
-> +
-> +    return 0;
-> +}
-> +
->   static int do_kvm_destroy_vcpu(CPUState *cpu)
->   {
->       KVMState *s = kvm_state;
->       long mmap_size;
-> -    struct KVMParkedVcpu *vcpu = NULL;
->       int ret = 0;
->   
-> -    trace_kvm_destroy_vcpu();
-> +    trace_kvm_destroy_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
->   
->       ret = kvm_arch_destroy_vcpu(cpu);
->       if (ret < 0) {
-> @@ -347,10 +387,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
->           }
->       }
->   
-> -    vcpu = g_malloc0(sizeof(*vcpu));
-> -    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-> -    vcpu->kvm_fd = cpu->kvm_fd;
-> -    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> +    kvm_park_vcpu(cpu);
->   err:
->       return ret;
->   }
-> @@ -371,6 +408,8 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
->           if (cpu->vcpu_id == vcpu_id) {
->               int kvm_fd;
->   
-> +            trace_kvm_get_vcpu(vcpu_id);
-> +
->               QLIST_REMOVE(cpu, node);
->               kvm_fd = cpu->kvm_fd;
->               g_free(cpu);
-> @@ -378,7 +417,7 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
->           }
->       }
->   
-> -    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
-> +    return -ENOENT;
->   }
->   
->   int kvm_init_vcpu(CPUState *cpu, Error **errp)
-> @@ -389,19 +428,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
->   
->       trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
->   
-> -    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
-> +    ret = kvm_create_vcpu(cpu);
->       if (ret < 0) {
-> -        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
-> +        error_setg_errno(errp, -ret,
-> +                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
->                            kvm_arch_vcpu_id(cpu));
+This briefly described in the user manual (ARM IHI 0070 F.b) in
+"16.2.1 Caching combined structures".
 
-If a vcpu hotplug fails due to failure with kvm_create_vcpu ioctl,
-current behaviour would be to bring down the guest as errp is
-&error_fatal. Any thoughts on how do we ensure that a failure with
-kvm_create_vcpu ioctl for hotplugged cpus (only) doesnt bring down the
-guest and fail gracefully (by reporting error to user on monitor?)?
+Signed-off-by: Mostafa Saleh <smostafa@google.com>
+---
+ hw/arm/smmu-common.c         | 27 +++++++++++++++++----------
+ hw/arm/smmu-internal.h       |  2 ++
+ hw/arm/smmuv3.c              |  5 +++--
+ hw/arm/trace-events          |  3 ++-
+ include/hw/arm/smmu-common.h |  8 ++++++--
+ 5 files changed, 30 insertions(+), 15 deletions(-)
 
-regards,
-Harsh
->           goto err;
->       }
->   
-> -    cpu->kvm_fd = ret;
-> -    cpu->kvm_state = s;
-> -    cpu->vcpu_dirty = true;
-> -    cpu->dirty_pages = 0;
-> -    cpu->throttle_us_per_full = 0;
-> -
->       mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
->       if (mmap_size < 0) {
->           ret = mmap_size;
-> diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
-> index a25902597b..5558cff0dc 100644
-> --- a/accel/kvm/trace-events
-> +++ b/accel/kvm/trace-events
-> @@ -9,6 +9,10 @@ kvm_device_ioctl(int fd, int type, void *arg) "dev fd %d, type 0x%x, arg %p"
->   kvm_failed_reg_get(uint64_t id, const char *msg) "Warning: Unable to retrieve ONEREG %" PRIu64 " from KVM: %s"
->   kvm_failed_reg_set(uint64_t id, const char *msg) "Warning: Unable to set ONEREG %" PRIu64 " to KVM: %s"
->   kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> +kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> +kvm_get_vcpu(unsigned long arch_cpu_id) "id: %lu"
-> +kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> +kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
->   kvm_irqchip_commit_routes(void) ""
->   kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
->   kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
-> @@ -25,7 +29,6 @@ kvm_dirty_ring_reaper(const char *s) "%s"
->   kvm_dirty_ring_reap(uint64_t count, int64_t t) "reaped %"PRIu64" pages (took %"PRIi64" us)"
->   kvm_dirty_ring_reaper_kick(const char *reason) "%s"
->   kvm_dirty_ring_flush(int finished) "%d"
-> -kvm_destroy_vcpu(void) ""
->   kvm_failed_get_vcpu_mmap_size(void) ""
->   kvm_cpu_exec(void) ""
->   kvm_interrupt_exit_request(void) ""
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index fad9a7e8ff..2ed928aa71 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -435,6 +435,22 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
->   int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
->                                          hwaddr *phys_addr);
->   
-> +/**
-> + * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
-> + * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
-> + *
-> + * @returns: 0 when success, errno (<0) when failed.
-> + */
-> +int kvm_create_vcpu(CPUState *cpu);
-> +
-> +/**
-> + * kvm_park_vcpu - Park QEMU KVM vCPU context
-> + * @cpu: QOM CPUState object for which QEMU KVM vCPU context has to be parked.
-> + *
-> + * @returns: none
-> + */
-> +void kvm_park_vcpu(CPUState *cpu);
-> +
->   #endif /* NEED_CPU_H */
->   
->   void kvm_cpu_synchronize_state(CPUState *cpu);
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 20630eb670..677dcf9a13 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -38,7 +38,7 @@ static guint smmu_iotlb_key_hash(gconstpointer v)
+ 
+     /* Jenkins hash */
+     a = b = c = JHASH_INITVAL + sizeof(*key);
+-    a += key->asid + key->vmid + key->level + key->tg;
++    a += key->asid + key->vmid + key->level + key->tg + key->stage;
+     b += extract64(key->iova, 0, 32);
+     c += extract64(key->iova, 32, 32);
+ 
+@@ -54,14 +54,14 @@ static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
+ 
+     return (k1->asid == k2->asid) && (k1->iova == k2->iova) &&
+            (k1->level == k2->level) && (k1->tg == k2->tg) &&
+-           (k1->vmid == k2->vmid);
++           (k1->vmid == k2->vmid) && (k1->stage == k2->stage);
+ }
+ 
+ SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint16_t vmid, uint64_t iova,
+-                                uint8_t tg, uint8_t level)
++                                uint8_t tg, uint8_t level, SMMUStage stage)
+ {
+     SMMUIOTLBKey key = {.asid = asid, .vmid = vmid, .iova = iova,
+-                        .tg = tg, .level = level};
++                        .tg = tg, .level = level, .stage = stage};
+ 
+     return key;
+ }
+@@ -81,7 +81,8 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+         SMMUIOTLBKey key;
+ 
+         key = smmu_get_iotlb_key(cfg->asid, cfg->s2cfg.vmid,
+-                                 iova & ~mask, tg, level);
++                                 iova & ~mask, tg, level,
++                                 SMMU_STAGE_TO_TLB_TAG(cfg->stage));
+         entry = g_hash_table_lookup(bs->iotlb, &key);
+         if (entry) {
+             break;
+@@ -109,15 +110,16 @@ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *new)
+ {
+     SMMUIOTLBKey *key = g_new0(SMMUIOTLBKey, 1);
+     uint8_t tg = (new->granule - 10) / 2;
++    SMMUStage stage_tag = SMMU_STAGE_TO_TLB_TAG(cfg->stage);
+ 
+     if (g_hash_table_size(bs->iotlb) >= SMMU_IOTLB_MAX_SIZE) {
+         smmu_iotlb_inv_all(bs);
+     }
+ 
+     *key = smmu_get_iotlb_key(cfg->asid, cfg->s2cfg.vmid, new->entry.iova,
+-                              tg, new->level);
++                              tg, new->level, stage_tag);
+     trace_smmu_iotlb_insert(cfg->asid, cfg->s2cfg.vmid, new->entry.iova,
+-                            tg, new->level);
++                            tg, new->level, stage_tag);
+     g_hash_table_insert(bs->iotlb, key, new);
+ }
+ 
+@@ -159,18 +161,22 @@ static gboolean smmu_hash_remove_by_asid_vmid_iova(gpointer key, gpointer value,
+     if (info->vmid >= 0 && info->vmid != SMMU_IOTLB_VMID(iotlb_key)) {
+         return false;
+     }
++    if (!(info->stage & SMMU_IOTLB_STAGE(iotlb_key))) {
++        return false;
++    }
+     return ((info->iova & ~entry->addr_mask) == entry->iova) ||
+            ((entry->iova & ~info->mask) == info->iova);
+ }
+ 
+ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
+-                         uint8_t tg, uint64_t num_pages, uint8_t ttl)
++                         uint8_t tg, uint64_t num_pages, uint8_t ttl,
++                         SMMUStage stage)
+ {
+     /* if tg is not set we use 4KB range invalidation */
+     uint8_t granule = tg ? tg * 2 + 10 : 12;
+ 
+     if (ttl && (num_pages == 1) && (asid >= 0)) {
+-        SMMUIOTLBKey key = smmu_get_iotlb_key(asid, vmid, iova, tg, ttl);
++        SMMUIOTLBKey key = smmu_get_iotlb_key(asid, vmid, iova, tg, ttl, stage);
+ 
+         if (g_hash_table_remove(s->iotlb, &key)) {
+             return;
+@@ -184,6 +190,7 @@ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
+     SMMUIOTLBPageInvInfo info = {
+         .asid = asid, .iova = iova,
+         .vmid = vmid,
++        .stage = stage,
+         .mask = (num_pages * 1 << granule) - 1};
+ 
+     g_hash_table_foreach_remove(s->iotlb,
+@@ -597,7 +604,7 @@ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t addr,
+     if (cached_entry) {
+         if ((flag & IOMMU_WO) && !(cached_entry->entry.perm & IOMMU_WO)) {
+             info->type = SMMU_PTW_ERR_PERMISSION;
+-            info->stage = cfg->stage;
++            info->stage = SMMU_STAGE_TO_TLB_TAG(cfg->stage);
+             return NULL;
+         }
+         return cached_entry;
+diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
+index 843bebb185..6caa0ddf21 100644
+--- a/hw/arm/smmu-internal.h
++++ b/hw/arm/smmu-internal.h
+@@ -133,12 +133,14 @@ static inline int pgd_concat_idx(int start_level, int granule_sz,
+ 
+ #define SMMU_IOTLB_ASID(key) ((key).asid)
+ #define SMMU_IOTLB_VMID(key) ((key).vmid)
++#define SMMU_IOTLB_STAGE(key) ((key).stage)
+ 
+ typedef struct SMMUIOTLBPageInvInfo {
+     int asid;
+     int vmid;
+     uint64_t iova;
+     uint64_t mask;
++    SMMUStage stage;
+ } SMMUIOTLBPageInvInfo;
+ 
+ typedef struct SMMUSIDRange {
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index f081ff0cc4..b27bf297e1 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1087,7 +1087,7 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd)
+     if (!tg) {
+         trace_smmuv3_range_inval(vmid, asid, addr, tg, 1, ttl, leaf);
+         smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1);
+-        smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1, ttl);
++        smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1, ttl, SMMU_NESTED);
+         return;
+     }
+ 
+@@ -1105,7 +1105,8 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd)
+         num_pages = (mask + 1) >> granule;
+         trace_smmuv3_range_inval(vmid, asid, addr, tg, num_pages, ttl, leaf);
+         smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, num_pages);
+-        smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, num_pages, ttl);
++        smmu_iotlb_inv_iova(s, asid, vmid, addr, tg,
++                            num_pages, ttl, SMMU_NESTED);
+         addr += mask + 1;
+     }
+ }
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index cc12924a84..3000c3bf14 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -14,10 +14,11 @@ smmu_iotlb_inv_all(void) "IOTLB invalidate all"
+ smmu_iotlb_inv_asid(uint16_t asid) "IOTLB invalidate asid=%d"
+ smmu_iotlb_inv_vmid(uint16_t vmid) "IOTLB invalidate vmid=%d"
+ smmu_iotlb_inv_iova(uint16_t asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
++smmu_iotlb_inv_stage(int stage) "Stage invalidate stage=%d"
+ smmu_inv_notifiers_mr(const char *name) "iommu mr=%s"
+ smmu_iotlb_lookup_hit(uint16_t asid, uint16_t vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache HIT asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
+ smmu_iotlb_lookup_miss(uint16_t asid, uint16_t vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache MISS asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
+-smmu_iotlb_insert(uint16_t asid, uint16_t vmid, uint64_t addr, uint8_t tg, uint8_t level) "IOTLB ++ asid=%d vmid=%d addr=0x%"PRIx64" tg=%d level=%d"
++smmu_iotlb_insert(uint16_t asid, uint16_t vmid, uint64_t addr, uint8_t tg, uint8_t level, int stage) "IOTLB ++ asid=%d vmid=%d addr=0x%"PRIx64" tg=%d level=%d stage=%d"
+ 
+ # smmuv3.c
+ smmuv3_read_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index 876e78975c..695d6d10ad 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -37,6 +37,8 @@
+ #define VMSA_IDXMSK(isz, strd, lvl)         ((1ULL << \
+                                              VMSA_BIT_LVL(isz, strd, lvl)) - 1)
+ 
++#define SMMU_STAGE_TO_TLB_TAG(stage)        (((stage) == SMMU_NESTED) ? \
++                                             SMMU_STAGE_1 : (stage))
+ /*
+  * Page table walk error types
+  */
+@@ -136,6 +138,7 @@ typedef struct SMMUIOTLBKey {
+     uint16_t vmid;
+     uint8_t tg;
+     uint8_t level;
++    SMMUStage stage;
+ } SMMUIOTLBKey;
+ 
+ struct SMMUState {
+@@ -203,12 +206,13 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+                                 SMMUTransTableInfo *tt, hwaddr iova);
+ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
+ SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint16_t vmid, uint64_t iova,
+-                                uint8_t tg, uint8_t level);
++                                uint8_t tg, uint8_t level, SMMUStage stage);
+ void smmu_iotlb_inv_all(SMMUState *s);
+ void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
+ void smmu_iotlb_inv_vmid(SMMUState *s, uint16_t vmid);
+ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
+-                         uint8_t tg, uint64_t num_pages, uint8_t ttl);
++                         uint8_t tg, uint64_t num_pages, uint8_t ttl,
++                         SMMUStage stage);
+ 
+ /* Unmap the range of all the notifiers registered to any IOMMU mr */
+ void smmu_inv_notifiers_all(SMMUState *s);
+-- 
+2.44.0.396.g6e790dbe36-goog

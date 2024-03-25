@@ -1,96 +1,97 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp701886ejj;
-        Mon, 25 Mar 2024 06:34:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWlC9msX8nzvt/pnRpbzfw9vpWWzdRtqbxWko6ekaG6oEAzudDD1U2A6qRrIRLQ1DuqLeL2JQnqRVNB3zUxDm5wbdDH0Pp8
-X-Google-Smtp-Source: AGHT+IGNwlZ4cu0PlOHpX/ogxH3C6Dyy+ARQPn5s6MxcplmTMsQ5FDdqtjQdSdmnTl+3IYrB5fhs
-X-Received: by 2002:a05:622a:4d0:b0:430:eb66:95e4 with SMTP id q16-20020a05622a04d000b00430eb6695e4mr7830586qtx.39.1711373654989;
-        Mon, 25 Mar 2024 06:34:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711373654; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp701914ejj;
+        Mon, 25 Mar 2024 06:34:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUv320SKA8Rr69HJliZoNgcxcnCV5DNXvJ/L0isEnosZfTQE662TpXMdlK6CAr0djXkHcLymOCfPtYEj2GAr/+kzV11oicP
+X-Google-Smtp-Source: AGHT+IFsJ1sz4KpLCHiK91C8RjqQuaxB/KsGfdgw65/0HoyCF6TdJcl7t3k5dO76ldpCq5KvlNKO
+X-Received: by 2002:a05:620a:36c7:b0:789:e3de:f338 with SMTP id cz7-20020a05620a36c700b00789e3def338mr6671983qkb.66.1711373656995;
+        Mon, 25 Mar 2024 06:34:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711373656; cv=none;
         d=google.com; s=arc-20160816;
-        b=rv29DJeKEWXuGI33MS8lynUFAkh/COZLmmnOHKV5jzpBJ9G/ikcXhlfhrZFqSteGAe
-         1nGy+cK5hsjQhJYqxOm4dE+hqHfadsOcfY0YnpH6aKCsTw9ki/+mAV2mC/gR5QG7YTQ3
-         HSOUN7w7doIbzHMqaIzx7B3pkDnlMZSM9WoNm+cV/LeoWuH09KdxgfpbdueH1hi7DqRu
-         10JZupTA/+FreJUO9o7DUSdQG47l2zL57xjogatLZNWsPjSXC9KLVIxpeXRYfc3Y7dfN
-         9+JEn9n+HntLLEoJnyfM2v8EaZb7vU7+U+Bf4bsZ2SYWNKx0B2O8IB34bGquzcWC0MKQ
-         Jm9w==
+        b=Tw4blcUzJUxOeYtmK1iW6q92gLjk3yxZXBNyPWj2mgD16JcPJXcxpNXBxWhOtIkjcH
+         Bz9It9965C38TwaDQGb81fw7O7bVMFEQ+wK95xznDMDfccYmuWb04bNsDf7RY/irzpcH
+         ZFOACuP6wD/BY+agGk6Q1P7EFigTFVd5/3B6LOA/bVch0rRMQvQjmEEPX+glMpJyY0iC
+         EDceYQX7w0pE6KMlIlEWrVCaLzez/p5/nMtXfror6UD5R6jerL+rlatT+OdKM3c9BrE4
+         ZSbH/Zsew97M4NluyNvgTPSMfJo5gD7Ebn/3zV3j2AUDHrXaq5zO7xCFwRV1RMR6lQ31
+         45Og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=LcyveRM01RBdsZUoJvcc1ljUZ85bZnawQAlgxiQ5g44=;
-        fh=t3X8QBlUt8lTNNYLmXnvt7uYZqjf0Fo0hWn60R6P6ms=;
-        b=cLKXavfLlsjth7SrrQxBK0ud9K+Arozbb/vVtQhxAgpZWyCPuPcV8qPu5iaRityzAQ
-         Z/fCE/424VAMgbsKqdd+vt92Sj5IuNQijeknQK2AXrVI6LmwJE8rRR6Wji4hwwhalR44
-         k9ue/Gp9CZdRewEZPyA461YLUPHhcETq3nou8D7F34HAbPORX/AzsypIF3Z95Rzf9zhI
-         fFdIpvKeAsrU4QH9tN15QAqigsq6fLki0TyXAIX0QhvgmZ8qhkfgiIkXgHTHbFSICSlA
-         TiLR5bx998nv+rSymZYVkFU3gP+q+NN6NLSr92pkBiSFPrU5VM1r+W7tX3VojpGyFeSH
-         pkNA==;
+        bh=cC2Yz91nzGrohL4G/Awv0+dd4I3kt82iWAFcfxuwSZM=;
+        fh=vmPOAMqvHft5e67RgXLuvn52EnvXn4vjEKCXfn8ORwc=;
+        b=KA6M7HXxz5zRkkknFEaiPcW0nv7cKg1uy8a5OOigJmYlPCfs5zUtnrn5eir+PDSmLt
+         b94aTYLbMzonu3dcwvnysIbfmX/klktjZlK5BLVyc23LXioIz8mAGcb5pBDtD608obh2
+         k/tb/io3SLoaRm2gk5XwsDwS0rPz7OCe1UqZY+N7tbt6HtxnLIAT89SfZfi/eJs464DM
+         Os6Z8HuCkmFbtniU/A66tVSUtTIl9yi5ilSM3Ok1E/frdSQpohqbFcD1O4vsh4q/S0s3
+         sgC4E9twlFHTqqvNOagl0VQpWkCMTq03qVjpR9QBNxKwmylGdYKhN11R9SnyGlxlE1bz
+         3oyw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zkogC/o/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=c4m9fmaT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12-20020ac87f4c000000b0043149a63c60si3937296qtk.128.2024.03.25.06.34.14
+        by mx.google.com with ESMTPS id b7-20020a05620a118700b0078a13742bb3si5192160qkk.516.2024.03.25.06.34.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Mar 2024 06:34:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 25 Mar 2024 06:34:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zkogC/o/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=c4m9fmaT;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rokSB-0002aw-NU; Mon, 25 Mar 2024 09:33:31 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rokSa-0003Yr-Qv; Mon, 25 Mar 2024 09:33:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rokRz-0002Vz-NV
- for qemu-devel@nongnu.org; Mon, 25 Mar 2024 09:33:22 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rokSY-0003Xt-Hz
+ for qemu-arm@nongnu.org; Mon, 25 Mar 2024 09:33:54 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rokRx-0007Km-L9
- for qemu-devel@nongnu.org; Mon, 25 Mar 2024 09:33:19 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-41488d7d0f6so6462125e9.1
- for <qemu-devel@nongnu.org>; Mon, 25 Mar 2024 06:33:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rokSW-0007TN-Ov
+ for qemu-arm@nongnu.org; Mon, 25 Mar 2024 09:33:54 -0400
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-a474c4faf5eso161723366b.2
+ for <qemu-arm@nongnu.org>; Mon, 25 Mar 2024 06:33:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711373596; x=1711978396; darn=nongnu.org;
+ d=linaro.org; s=google; t=1711373631; x=1711978431; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LcyveRM01RBdsZUoJvcc1ljUZ85bZnawQAlgxiQ5g44=;
- b=zkogC/o//J9sp5kP/kJTjQ2jmafcdvhVYR1MNHl62FlTroHQPVQ63gPg84/xcOYbbp
- ssLl+eqthPU1mPOFkyEOUD6/f3/HqFF67ZjSKpZngROJdrasTAbFYZ4Gdy29f5Psh79p
- uH0StaOGhedVqdjlaaqAj+8dbDL++fdUJsxvok90ybdxVkfKjBHMUxcJV2+d4iKhy9p/
- LaLaduKDlW73l4TznKtmW4waqe+BIc5I2a8ekZYrwC9Y8idyXCjOHL3ArgGkeG1tzjMK
- YkRxgNfcGdqah3kGe93q+XBS8nGFCc0E5y+33+n1+9hZKKJWJjTvUCWe5MumaVzq4037
- JaJw==
+ bh=cC2Yz91nzGrohL4G/Awv0+dd4I3kt82iWAFcfxuwSZM=;
+ b=c4m9fmaTqK/XPlEjig0UaahEDKAgnSNSNyONhgN2JpiiC+wfIcfy7dBlhYqNmpYUfC
+ aCKRiUq70AOpnD71r4N54Woy78+uYREu5w6Rivg3xvEdeUeEP7eEBA9SXC5FUZ9maV0u
+ OZhNWV5wOedNB9N6Xer7K1Wme8cPLzA6JjfNh8LSflmQ8vAYeKoaKITVEdiXZpezQjnN
+ VKubYafax35ySvIIHThW+3884YE//pMREyfmwCXlBz5F8VvL9v3gv7QGdujosmr8Ol7g
+ PcZeeAIWE9sie2oMFo/7pZgqB+p+KKYeUZuzUxBNSaF5Tsus606LtNvgyi53N8fDKqE/
+ 6y/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711373596; x=1711978396;
+ d=1e100.net; s=20230601; t=1711373631; x=1711978431;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LcyveRM01RBdsZUoJvcc1ljUZ85bZnawQAlgxiQ5g44=;
- b=ebZRhdAm4deIBqWso9f7XR+UkzyxNp3JdbrMoZLNQyT5uPyDq+1d4d1JA4+AiBwTHN
- 93Hpi860gMfKHgf3oVYto2CUWVpcLYpOPGBrOcUBEOPjOtPBjrNvCvevZ8IA/3Q0OIRg
- +Vs4zjNd/tZEmIu4oO/eCzuSOPWDGfSP7yc34B54p1rzggdzaaOWeCaYCQV9feUam4ap
- UvmSs4ppykIUV3WHlPVi0jFiFLSHLTjga0yfdsR9nIUZR9hanZ7LCKNdHWQWFdwDGDSA
- WnOT43uWwS5zN6SodfcqZBlrn5T8nrjF5fWGTdreTykLRR8eixGDOqOkj77sPF1UAmma
- HMbA==
-X-Gm-Message-State: AOJu0Yz8aokOoUcRMBX+WN7hSaPBFJ24qRi0MLSy0avoUbgl5v0GQ2tz
- qn1sLkDIdcIuXVt3Qd0dkXalYbRntIgpLre8go8X4PqHAnT79p+G1WIy0WhvkWc+YnZdPBaPqKW
- z8mc=
-X-Received: by 2002:a5d:53d1:0:b0:33e:1e2b:3f76 with SMTP id
- a17-20020a5d53d1000000b0033e1e2b3f76mr4724078wrw.61.1711373595764; 
- Mon, 25 Mar 2024 06:33:15 -0700 (PDT)
+ bh=cC2Yz91nzGrohL4G/Awv0+dd4I3kt82iWAFcfxuwSZM=;
+ b=NmhdA6T9iWWnFpVooURHjGV4ZjGRdAgSgA7siWNv2hQOsAzq2D7r4bZb+gr8ykx52i
+ n6WV9StbqS09yT31peKdd+KQBbEEA3jLwcX5TdkkKs1hpfmkeLyOvM6bKO8w9W7X0aVb
+ +erzwQPfv2/MOSsAyHnG8w0+Yao3SNkd6EwZl5G4s1k+1b1kDucOAmehTu1zE/iWrwiA
+ 6Rzk+WfLL07wlmU2CaCXP9JYQL/o0Veg1EigMZrpAsFLK+8ps53IJfm72iVka5XnuHPF
+ Ls1yKd8zQ8qYmcopG09/y/uhOSXzruWR4UbBEiK6b8zGBMzOj4+wqpgexDQJKs8dj8dx
+ s6AA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUP0/eSA5q8vKFj9Zpg5Ib9h3gkcWLOi601yQhZyJ4LP8NBHgtTtt/nN2A3uCexhP/xuibCEZLNxMNV3TV58BQlyfTF
+X-Gm-Message-State: AOJu0YwhHPIZPsS1Y/rcl7urHXr/GsoX8C1M1yJkXeZ4YTp3yjIo0JE5
+ qET4EVQISr9QVuEyzG0Upnx5mqpyxsCaoDlxNVj3L6icOIGab9XA0CvAFMx+MGY=
+X-Received: by 2002:a17:906:4e8d:b0:a46:cea6:a7f1 with SMTP id
+ v13-20020a1709064e8d00b00a46cea6a7f1mr4793519eju.51.1711373630981; 
+ Mon, 25 Mar 2024 06:33:50 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.208.214])
  by smtp.gmail.com with ESMTPSA id
- cl1-20020a5d5f01000000b00341b9737fc5sm8551423wrb.96.2024.03.25.06.33.14
+ qy34-20020a17090768a200b00a4623030893sm3046795ejc.126.2024.03.25.06.33.49
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 25 Mar 2024 06:33:15 -0700 (PDT)
+ Mon, 25 Mar 2024 06:33:50 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
@@ -100,18 +101,18 @@ Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Alistair Francis <alistair@alistair23.me>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH-for-9.0? v2 2/8] hw/clock: Pass optional &bool argument to
- clock_set()
-Date: Mon, 25 Mar 2024 14:32:52 +0100
-Message-ID: <20240325133259.57235-3-philmd@linaro.org>
+Subject: [PATCH-for-9.1 v2 8/8] hw/misc/zynq_slcr: Only propagate clock
+ changes when necessary
+Date: Mon, 25 Mar 2024 14:32:58 +0100
+Message-ID: <20240325133259.57235-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240325133259.57235-1-philmd@linaro.org>
 References: <20240325133259.57235-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,140 +121,141 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P9udhLZRmJns
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: eeAcB2wzhBX9
 
-Currently clock_set() returns whether the clock has
-been changed or not. In order to combine this information
-with other clock calls, pass an optional boolean and do
-not return anything.  The single caller ignores the return
-value, have it use NULL.
+Pass &bool to zynq_slcr_compute_clocks[_internal](), so we
+can pass it to the clock_set() calls which might update it.
+Then check it and only call zynq_slcr_propagate_clocks()
+and clock_propagate() when necessary.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/clock.h       | 22 ++++++++++++++++------
- hw/core/clock.c          |  8 +++++---
- hw/misc/bcm2835_cprman.c |  2 +-
- hw/misc/zynq_slcr.c      |  4 ++--
- 4 files changed, 24 insertions(+), 12 deletions(-)
+ hw/misc/zynq_slcr.c | 39 ++++++++++++++++++++++++++-------------
+ 1 file changed, 26 insertions(+), 13 deletions(-)
 
-diff --git a/include/hw/clock.h b/include/hw/clock.h
-index bb12117f67..474bbc07fe 100644
---- a/include/hw/clock.h
-+++ b/include/hw/clock.h
-@@ -180,21 +180,28 @@ static inline bool clock_has_source(const Clock *clk)
-  * clock_set:
-  * @clk: the clock to initialize.
-  * @value: the clock's value, 0 means unclocked
-+ * @changed: set to true if the clock is changed, ignored if set to NULL.
-  *
-  * Set the local cached period value of @clk to @value.
-- *
-- * @return: true if the clock is changed.
-  */
--bool clock_set(Clock *clk, uint64_t value);
-+void clock_set(Clock *clk, uint64_t period, bool *changed);
- 
- static inline bool clock_set_hz(Clock *clk, unsigned hz)
- {
--    return clock_set(clk, CLOCK_PERIOD_FROM_HZ(hz));
-+    bool changed = false;
-+
-+    clock_set(clk, CLOCK_PERIOD_FROM_HZ(hz), &changed);
-+
-+    return changed;
- }
- 
- static inline bool clock_set_ns(Clock *clk, unsigned ns)
- {
--    return clock_set(clk, CLOCK_PERIOD_FROM_NS(ns));
-+    bool changed = false;
-+
-+    clock_set(clk, CLOCK_PERIOD_FROM_NS(ns), &changed);
-+
-+    return changed;
- }
- 
- /**
-@@ -220,7 +227,10 @@ void clock_propagate(Clock *clk);
-  */
- static inline void clock_update(Clock *clk, uint64_t value)
- {
--    if (clock_set(clk, value)) {
-+    bool changed = false;
-+
-+    clock_set(clk, value, &changed);
-+    if (changed) {
-         clock_propagate(clk);
-     }
- }
-diff --git a/hw/core/clock.c b/hw/core/clock.c
-index c73f0c2f98..e0f257b141 100644
---- a/hw/core/clock.c
-+++ b/hw/core/clock.c
-@@ -52,16 +52,18 @@ void clock_clear_callback(Clock *clk)
-     clock_set_callback(clk, NULL, NULL, 0);
- }
- 
--bool clock_set(Clock *clk, uint64_t period)
-+void clock_set(Clock *clk, uint64_t period, bool *changed)
- {
-     if (clk->period == period) {
--        return false;
-+        return;
-     }
-     trace_clock_set(CLOCK_PATH(clk), CLOCK_PERIOD_TO_HZ(clk->period),
-                     CLOCK_PERIOD_TO_HZ(period));
-     clk->period = period;
- 
--    return true;
-+    if (changed) {
-+        *changed = true;
-+    }
- }
- 
- static uint64_t clock_get_child_period(Clock *clk)
-diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-index 91c8f7bd17..f16f7978ae 100644
---- a/hw/misc/bcm2835_cprman.c
-+++ b/hw/misc/bcm2835_cprman.c
-@@ -680,7 +680,7 @@ static void cprman_init(Object *obj)
-     s->xosc = clock_new(obj, "xosc");
-     s->gnd = clock_new(obj, "gnd");
- 
--    clock_set(s->gnd, 0);
-+    clock_set(s->gnd, 0, NULL);
- 
-     memory_region_init_io(&s->iomem, obj, &cprman_ops,
-                           s, "bcm2835-cprman", 0x2000);
 diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
-index d2ac2e77f2..e637798507 100644
+index e637798507..ad9c575137 100644
 --- a/hw/misc/zynq_slcr.c
 +++ b/hw/misc/zynq_slcr.c
-@@ -279,9 +279,9 @@ static void zynq_slcr_compute_clocks_internal(ZynqSLCRState *s, uint64_t ps_clk)
+@@ -269,7 +269,8 @@ static uint64_t zynq_slcr_compute_clock(const uint64_t periods[],
+     zynq_slcr_compute_clock((plls), (state)->regs[reg], \
+                             reg ## _ ## enable_field ## _SHIFT)
+ 
+-static void zynq_slcr_compute_clocks_internal(ZynqSLCRState *s, uint64_t ps_clk)
++static void zynq_slcr_compute_clocks_internal(ZynqSLCRState *s, uint64_t ps_clk,
++                                              bool *changed)
+ {
+     uint64_t io_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_IO_PLL_CTRL]);
+     uint64_t arm_pll = zynq_slcr_compute_pll(ps_clk, s->regs[R_ARM_PLL_CTRL]);
+@@ -279,9 +280,9 @@ static void zynq_slcr_compute_clocks_internal(ZynqSLCRState *s, uint64_t ps_clk)
  
      /* compute uartX reference clocks */
      clock_set(s->uart0_ref_clk,
--              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT0));
-+              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT0), NULL);
+-              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT0), NULL);
++              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT0), changed);
      clock_set(s->uart1_ref_clk,
--              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT1));
-+              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT1), NULL);
+-              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT1), NULL);
++              ZYNQ_COMPUTE_CLK(s, uart_mux, R_UART_CLK_CTRL, CLKACT1), changed);
  }
  
  /**
+@@ -289,7 +290,7 @@ static void zynq_slcr_compute_clocks_internal(ZynqSLCRState *s, uint64_t ps_clk)
+  * But do not propagate them further. Connected clocks
+  * will not receive any updates (See zynq_slcr_compute_clocks())
+  */
+-static void zynq_slcr_compute_clocks(ZynqSLCRState *s)
++static void zynq_slcr_compute_clocks(ZynqSLCRState *s, bool *changed)
+ {
+     uint64_t ps_clk = clock_get(s->ps_clk);
+ 
+@@ -298,7 +299,7 @@ static void zynq_slcr_compute_clocks(ZynqSLCRState *s)
+         ps_clk = 0;
+     }
+ 
+-    zynq_slcr_compute_clocks_internal(s, ps_clk);
++    zynq_slcr_compute_clocks_internal(s, ps_clk, changed);
+ }
+ 
+ /**
+@@ -315,9 +316,12 @@ static void zynq_slcr_propagate_clocks(ZynqSLCRState *s)
+ static void zynq_slcr_ps_clk_callback(void *opaque, ClockEvent event)
+ {
+     ZynqSLCRState *s = (ZynqSLCRState *) opaque;
++    bool propagate = false;
+ 
+-    zynq_slcr_compute_clocks(s);
+-    zynq_slcr_propagate_clocks(s);
++    zynq_slcr_compute_clocks(s, &propagate);
++    if (propagate) {
++        zynq_slcr_propagate_clocks(s);
++    }
+ }
+ 
+ static void zynq_slcr_reset_init(Object *obj, ResetType type)
+@@ -419,19 +423,25 @@ static void zynq_slcr_reset_init(Object *obj, ResetType type)
+ static void zynq_slcr_reset_hold(Object *obj)
+ {
+     ZynqSLCRState *s = ZYNQ_SLCR(obj);
++    bool propagate = false;
+ 
+     /* will disable all output clocks */
+-    zynq_slcr_compute_clocks_internal(s, 0);
+-    zynq_slcr_propagate_clocks(s);
++    zynq_slcr_compute_clocks_internal(s, 0, &propagate);
++    if (propagate) {
++        zynq_slcr_propagate_clocks(s);
++    }
+ }
+ 
+ static void zynq_slcr_reset_exit(Object *obj)
+ {
+     ZynqSLCRState *s = ZYNQ_SLCR(obj);
++    bool propagate = false;
+ 
+     /* will compute output clocks according to ps_clk and registers */
+-    zynq_slcr_compute_clocks_internal(s, clock_get(s->ps_clk));
+-    zynq_slcr_propagate_clocks(s);
++    zynq_slcr_compute_clocks_internal(s, clock_get(s->ps_clk), &propagate);
++    if (propagate) {
++        zynq_slcr_propagate_clocks(s);
++    }
+ }
+ 
+ static bool zynq_slcr_check_offset(hwaddr offset, bool rnw)
+@@ -516,6 +526,7 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
+                           uint64_t val, unsigned size)
+ {
+     ZynqSLCRState *s = (ZynqSLCRState *)opaque;
++    bool propagate = false;
+     offset /= 4;
+ 
+     DB_PRINT("addr: %08" HWADDR_PRIx " data: %08" PRIx64 "\n", offset * 4, val);
+@@ -569,8 +580,10 @@ static void zynq_slcr_write(void *opaque, hwaddr offset,
+     case R_ARM_PLL_CTRL:
+     case R_DDR_PLL_CTRL:
+     case R_UART_CLK_CTRL:
+-        zynq_slcr_compute_clocks(s);
+-        zynq_slcr_propagate_clocks(s);
++        zynq_slcr_compute_clocks(s, &propagate);
++        if (propagate) {
++            zynq_slcr_propagate_clocks(s);
++        }
+         break;
+     }
+ }
 -- 
 2.41.0
 

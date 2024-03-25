@@ -1,123 +1,107 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp709619ejj;
-        Mon, 25 Mar 2024 06:48:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXFQmBm43ZLteKOwNbImOj3VJmfw0h+u6EGGmXUR7/5oGq7SwXp2CeU3diWJ6hJa6R7j+1mxj4AMCAY3V+Fo+ssBST6+2IA
-X-Google-Smtp-Source: AGHT+IFPUWQOxvurSj/5+bCu8wSPBYGRrwYjdSkjmNnhjfPOrS3RrBMpDD7riRyZnVOUDCVC00Nl
-X-Received: by 2002:a05:620a:2483:b0:788:2a0d:6f90 with SMTP id i3-20020a05620a248300b007882a0d6f90mr9900580qkn.74.1711374490171;
-        Mon, 25 Mar 2024 06:48:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711374490; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp710082ejj;
+        Mon, 25 Mar 2024 06:49:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWKLiH1iks82doBLYNc4t8atn+IKB1Lcojokv9rn8a46lfUBT9nfvan2ljFJlJFlyco6OwSfv3nvQbLVNNig1Z0+0M2cIxE
+X-Google-Smtp-Source: AGHT+IEBiw4znRsENfa3n6FWwsYGQQue9XvWyEQjR/ECrIC0XeZZ7q6odFIIqqQwjnvEFxlI9eNZ
+X-Received: by 2002:a05:622a:15ca:b0:431:5e30:ccb with SMTP id d10-20020a05622a15ca00b004315e300ccbmr1410702qty.49.1711374542685;
+        Mon, 25 Mar 2024 06:49:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711374542; cv=none;
         d=google.com; s=arc-20160816;
-        b=MCZ3i+07ujqdTzZW3/8jAe0HWuE2TwemI1uG7U1h/8xMCHlFjxl95/Q0r39Qk5f3WB
-         xYYR1THpiMNlxIer5P1ILpVuk3qFZ4d/59q0e87jLW2qhMa9qbvRSjJx9SXnm7UqU5Wc
-         C/lsAAQi6cyAC034Mgv42bohvIzRhTsoSXDXffdAdOQ1b+H6qIb8JDgotgndHFWJiuO6
-         GSm2PMBF1wgGidvPmgDHpk6Xe8Qnpgs/g+pFeRwJhl/IyDFIHMTckFJfKL179u88mC2x
-         XGOd14r8B0B7HtFxDxEW9i4Cgli+BzUq0MSkA4owSaMTE5heo/TRX9c2psfEIz+UpYDr
-         H2kg==
+        b=TUzLFcuxqhUNYkoVBmQB8bMuDOa8YA5cXuNUlvW6Wvv+URc5uyB0ur/+Ny/du7e48U
+         GDk+A748gXNL3EDymMMtshzCcU1M+GzVQlYzuEfbbYgIa30hYOwufL//Dx5jGZvvMGwI
+         ey8BgipzI6wNDsroZrR2g7jqtuOGHVXl5stnegW+AjGWV+msrpGQIWaBAeYV5VnEhmWR
+         zWsImhyTD1WrrNCZeFxh6eBClg1Xc+9NcS6z94lTdK//QUVj5mVHLyb0KXqT+d7LKozo
+         5i5D991Wv/vTiF1rqSTZZNYUqkNW20+Ev0/uf+fMaOZBEhgu7sqZ7unvoxFQ2/vpKv63
+         GH2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Rt1vQHrPyRQSz/tnYXoveaVNPEz3zG79F4PYFBFIy9g=;
-        fh=db3+IhlewuTu/D3xmCAVTPgZxq1OklOGPVdhl7/hNN4=;
-        b=CiFTVIINinPtgNRTA5JmfC78UVLY8CvXm4xFVQgBQZ2y9QBD0lLGHA1ZeXwiTV4jgX
-         haaUsL052JHVIM5FUYn+gOqpWqgNQ/Iisto3l1PaeOm8pE2Zq9UigqdsX+VcUeuxH1NG
-         +wDm3MLMpud3iYp9D+OXUltHxVdQc92lYgmIDlZXVq4ZIJOldNvpJ5Pg0RxBXEfCr6LM
-         z3Ep/FmoYiIIy2eULnEKCBl6z4+qH0egSpEYuzXODBZk9fU/7RowD47juL9Jl0QxUzxa
-         aPNEfk6xFy7dwVm3vZCzcL1O//lyCbFB/x9M/2JgxXWIEFIB1j4l/c2t6NGByPNBix7y
-         rBew==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=VaH6K/ABk6YQuJNNhWyqrYmxsgNY5PnuamIwvpzT35o=;
+        fh=cVpPGLuuFGOEMLB/7Wo/ytwkG37penmSlu1oq69c3bI=;
+        b=H64En4SBCXvPEwN9mXc/ECfohihHjUg4J0/NrUI6eYL/PlL6OJbjvTmjHVNpHxknu9
+         +eZDTey39FPk+VtyC5tey01I0mMvbyoYySTqWzs+D+2aXJcyt6fXnVr6i9O1zBhF+LIo
+         bv+agMJ8WyJnhjlhbD1HMu0xyZ3sX/E46PqWCA9IPD7KX2ayWaXE2JdtrDxQnigIflBt
+         cmjS76biJQIeaxscDJA+RAQXs7xOzAksjKLTTVOwwMpLycuSvFxDhXQn4SArfrZQfOkq
+         mJbZQGqm0C0tpe/bYuqL/4o/tKORsRbyAHMwUoaWfMtRvvX0fKzV7VgaAZvYiHEsEIo7
+         ahgg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qKRGZm6S;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ep0bkICv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l23-20020a05620a211700b00789f0d4acdesi5351995qkl.317.2024.03.25.06.48.10
+        by mx.google.com with ESMTPS id g8-20020ac87d08000000b004314854f611si4081177qtb.76.2024.03.25.06.49.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Mar 2024 06:48:10 -0700 (PDT)
+        Mon, 25 Mar 2024 06:49:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qKRGZm6S;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ep0bkICv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rokgF-0001Qs-9Q; Mon, 25 Mar 2024 09:48:03 -0400
+	id 1rokh4-0002g8-A2; Mon, 25 Mar 2024 09:48:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rokfs-00013d-2M
- for qemu-arm@nongnu.org; Mon, 25 Mar 2024 09:47:40 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rokfo-0001Ya-0F
- for qemu-arm@nongnu.org; Mon, 25 Mar 2024 09:47:39 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-56845954ffeso6002225a12.2
- for <qemu-arm@nongnu.org>; Mon, 25 Mar 2024 06:47:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711374454; x=1711979254; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Rt1vQHrPyRQSz/tnYXoveaVNPEz3zG79F4PYFBFIy9g=;
- b=qKRGZm6SxXAJPhJkMQPB9K9bNiS/uCvOvthWi088wSBkEpg8ICmpeRCliA5rOxhvpV
- Fz/YSMgPPIaJYqcysr9jX51ZE4XMaS7Zd+vW6yuAu4A59Vb7z2UusjelwcB8vNaZe1cM
- /wrJ2LvtPF/8MlX+KdkYU0ZehMQlKV/Bq2TC7+5Mzm10x91D6npsGyij291/JNcu4w3/
- K7fPFCxv2T915vgxJYzN2Ny00Tc8sXOTn42FBSM1UfXtvStA7EDdN6tYOZrMStteTp3J
- FSicWjHMoIdSfcFjMOtOS8d1ZHPUv3uZliYQclIb6gUZ2GunQGNx8ZGq7fMrHJGX7Gmz
- E9ng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711374454; x=1711979254;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Rt1vQHrPyRQSz/tnYXoveaVNPEz3zG79F4PYFBFIy9g=;
- b=obZIc7VYxJTWkFh0ybd9bVqlT9tFNOoKIkGqCY//pFvtDDqL5KFt5SyXto5u3tgv8I
- Cl06TgA8A5WEr0RIYsRx5sO9KrBykN6JOSnuPlYvag4duByObwttqjIpGKQsMaOhZo5/
- bRLBkCuUMNw3ettWolowJAmoxNVHOg/IlITDzKgCIrAB5Yw8YQXsPocqFW94uZ0b/jHK
- zdY2FrN75SqaglBdMcoaqNrwWIGd5YbWxLAmRycIE0rnuXhxu8Mi/VVghBYxKkjBuar3
- CsOpCxS4YT5WD60dN1DkcQMf5wotTHAH9v09pXQQcBDwJ/3D5ZhvGG/rc77Aqkk3Iq8d
- qnLQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW6eQdd9MbH/6XlnPm4ymLOnMPZG5kucE7M8ZwgfDNIjd2I1ZYyEWdSEGHFDzMuiVGyB5kW1qpoLLk4Gqa0Jh3t5eH4
-X-Gm-Message-State: AOJu0Yzs/EbB7fFHcnpTdW3tcH2DXlJ8PnRe6in1XhmZVEyEskYVAJ15
- p2HizrzFKvwNCNNEqJVDSQQzmaCD9fpivDQ2KwpMb9eOrDHXM+DzlrA+gT0rVpncw8l3Xqb8JR6
- KZ5kro+4v/Y856TmbSmJHT4DG4aVoATFi9NBABQ==
-X-Received: by 2002:a50:d5d5:0:b0:567:504e:e779 with SMTP id
- g21-20020a50d5d5000000b00567504ee779mr4409669edj.25.1711374453738; Mon, 25
- Mar 2024 06:47:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rokgz-0002dI-Fg
+ for qemu-arm@nongnu.org; Mon, 25 Mar 2024 09:48:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rokgx-0001oK-Gm
+ for qemu-arm@nongnu.org; Mon, 25 Mar 2024 09:48:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1711374525;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=VaH6K/ABk6YQuJNNhWyqrYmxsgNY5PnuamIwvpzT35o=;
+ b=Ep0bkICvIWdlLw7i88ssWf2fCSehyNEJSqjF9kiYVt9YPkct8Y1O0I4nGyeu8w+ufncppY
+ eg8NYYhVA04LmbqGXjx4nobfvwz4vPXIuXDN1klDLV4WVNzPaxMijPe1XHNPRsQH8pxl+q
+ /zicsB8njMb0TSYnlMHVl5f1DrE6rvg=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-395-BV9l-_hpNYG3UXhpoXojSA-1; Mon, 25 Mar 2024 09:48:42 -0400
+X-MC-Unique: BV9l-_hpNYG3UXhpoXojSA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7B7F485A58C;
+ Mon, 25 Mar 2024 13:48:41 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.39.192.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id ED07C2024517;
+ Mon, 25 Mar 2024 13:48:38 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Glenn Miles <milesg@linux.vnet.ibm.com>,
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Subject: [PATCH] misc/pca955*: Move models under hw/gpio
+Date: Mon, 25 Mar 2024 14:48:32 +0100
+Message-ID: <20240325134833.1484265-1-clg@redhat.com>
 MIME-Version: 1.0
-References: <20240325133259.57235-1-philmd@linaro.org>
- <20240325133259.57235-3-philmd@linaro.org>
-In-Reply-To: <20240325133259.57235-3-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 25 Mar 2024 13:47:22 +0000
-Message-ID: <CAFEAcA9aM8J+0RjYnvr8Xr8Q2j3w_TgxHO-gPDn8MaAcAUDynw@mail.gmail.com>
-Subject: Re: [PATCH-for-9.0? v2 2/8] hw/clock: Pass optional &bool argument to
- clock_set()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Damien Hedde <damien.hedde@dahe.fr>, 
- qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- Luc Michel <luc@lmichel.fr>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.065,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,50 +116,201 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BNKtoKN20Ga8
+X-TUID: 4UQxNyX+ST7r
 
-On Mon, 25 Mar 2024 at 13:33, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> Currently clock_set() returns whether the clock has
-> been changed or not. In order to combine this information
-> with other clock calls, pass an optional boolean and do
-> not return anything.  The single caller ignores the return
-> value, have it use NULL.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  include/hw/clock.h       | 22 ++++++++++++++++------
->  hw/core/clock.c          |  8 +++++---
->  hw/misc/bcm2835_cprman.c |  2 +-
->  hw/misc/zynq_slcr.c      |  4 ++--
->  4 files changed, 24 insertions(+), 12 deletions(-)
->
-> diff --git a/include/hw/clock.h b/include/hw/clock.h
-> index bb12117f67..474bbc07fe 100644
-> --- a/include/hw/clock.h
-> +++ b/include/hw/clock.h
-> @@ -180,21 +180,28 @@ static inline bool clock_has_source(const Clock *cl=
-k)
->   * clock_set:
->   * @clk: the clock to initialize.
->   * @value: the clock's value, 0 means unclocked
-> + * @changed: set to true if the clock is changed, ignored if set to NULL=
-.
->   *
->   * Set the local cached period value of @clk to @value.
-> - *
-> - * @return: true if the clock is changed.
->   */
-> -bool clock_set(Clock *clk, uint64_t value);
-> +void clock_set(Clock *clk, uint64_t period, bool *changed);
+The PCA9552 and PCA9554 devices are both I2C GPIO controllers and the
+PCA9552 also can drive LEDs. Do all the necessary adjustments to move
+the models under hw/gpio.
 
-What's wrong with using the return value? Generally
-returning a value via passing in a pointer is much
-clunkier in C than using the return value, so we only
-do it if we have to (e.g. the return value is already
-being used for something else, or we need to return
-more than one thing at once).
+Cc: Glenn Miles <milesg@linux.vnet.ibm.com>
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ MAINTAINERS                              | 4 ++--
+ include/hw/{misc => gpio}/pca9552.h      | 0
+ include/hw/{misc => gpio}/pca9552_regs.h | 0
+ include/hw/{misc => gpio}/pca9554.h      | 0
+ include/hw/{misc => gpio}/pca9554_regs.h | 0
+ hw/arm/aspeed.c                          | 2 +-
+ hw/{misc => gpio}/pca9552.c              | 4 ++--
+ hw/{misc => gpio}/pca9554.c              | 4 ++--
+ tests/qtest/pca9552-test.c               | 2 +-
+ tests/qtest/pnv-host-i2c-test.c          | 4 ++--
+ hw/gpio/meson.build                      | 2 ++
+ hw/gpio/trace-events                     | 4 ++++
+ hw/misc/meson.build                      | 2 --
+ hw/misc/trace-events                     | 4 ----
+ 14 files changed, 16 insertions(+), 16 deletions(-)
+ rename include/hw/{misc => gpio}/pca9552.h (100%)
+ rename include/hw/{misc => gpio}/pca9552_regs.h (100%)
+ rename include/hw/{misc => gpio}/pca9554.h (100%)
+ rename include/hw/{misc => gpio}/pca9554_regs.h (100%)
+ rename hw/{misc => gpio}/pca9552.c (99%)
+ rename hw/{misc => gpio}/pca9554.c (99%)
 
-thanks
--- PMM
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 409d7db4d457..a07af6b9d48e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1549,8 +1549,8 @@ M: Glenn Miles <milesg@linux.vnet.ibm.com>
+ L: qemu-ppc@nongnu.org
+ L: qemu-arm@nongnu.org
+ S: Odd Fixes
+-F: hw/misc/pca955*.c
+-F: include/hw/misc/pca955*.h
++F: hw/gpio/pca955*.c
++F: include/hw/gpio/pca955*.h
+ 
+ virtex_ml507
+ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+diff --git a/include/hw/misc/pca9552.h b/include/hw/gpio/pca9552.h
+similarity index 100%
+rename from include/hw/misc/pca9552.h
+rename to include/hw/gpio/pca9552.h
+diff --git a/include/hw/misc/pca9552_regs.h b/include/hw/gpio/pca9552_regs.h
+similarity index 100%
+rename from include/hw/misc/pca9552_regs.h
+rename to include/hw/gpio/pca9552_regs.h
+diff --git a/include/hw/misc/pca9554.h b/include/hw/gpio/pca9554.h
+similarity index 100%
+rename from include/hw/misc/pca9554.h
+rename to include/hw/gpio/pca9554.h
+diff --git a/include/hw/misc/pca9554_regs.h b/include/hw/gpio/pca9554_regs.h
+similarity index 100%
+rename from include/hw/misc/pca9554_regs.h
+rename to include/hw/gpio/pca9554_regs.h
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 729f66941462..badf6f6fa09d 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -18,7 +18,7 @@
+ #include "hw/block/flash.h"
+ #include "hw/i2c/i2c_mux_pca954x.h"
+ #include "hw/i2c/smbus_eeprom.h"
+-#include "hw/misc/pca9552.h"
++#include "hw/gpio/pca9552.h"
+ #include "hw/nvram/eeprom_at24c.h"
+ #include "hw/sensor/tmp105.h"
+ #include "hw/misc/led.h"
+diff --git a/hw/misc/pca9552.c b/hw/gpio/pca9552.c
+similarity index 99%
+rename from hw/misc/pca9552.c
+rename to hw/gpio/pca9552.c
+index 2ae13af35e93..27d4db068095 100644
+--- a/hw/misc/pca9552.c
++++ b/hw/gpio/pca9552.c
+@@ -15,8 +15,8 @@
+ #include "qemu/module.h"
+ #include "qemu/bitops.h"
+ #include "hw/qdev-properties.h"
+-#include "hw/misc/pca9552.h"
+-#include "hw/misc/pca9552_regs.h"
++#include "hw/gpio/pca9552.h"
++#include "hw/gpio/pca9552_regs.h"
+ #include "hw/irq.h"
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+diff --git a/hw/misc/pca9554.c b/hw/gpio/pca9554.c
+similarity index 99%
+rename from hw/misc/pca9554.c
+rename to hw/gpio/pca9554.c
+index 5e31696797d9..7d10a64ba7c1 100644
+--- a/hw/misc/pca9554.c
++++ b/hw/gpio/pca9554.c
+@@ -11,8 +11,8 @@
+ #include "qemu/module.h"
+ #include "qemu/bitops.h"
+ #include "hw/qdev-properties.h"
+-#include "hw/misc/pca9554.h"
+-#include "hw/misc/pca9554_regs.h"
++#include "hw/gpio/pca9554.h"
++#include "hw/gpio/pca9554_regs.h"
+ #include "hw/irq.h"
+ #include "migration/vmstate.h"
+ #include "qapi/error.h"
+diff --git a/tests/qtest/pca9552-test.c b/tests/qtest/pca9552-test.c
+index ccca2b3d9140..747495769239 100644
+--- a/tests/qtest/pca9552-test.c
++++ b/tests/qtest/pca9552-test.c
+@@ -12,7 +12,7 @@
+ #include "libqtest.h"
+ #include "libqos/qgraph.h"
+ #include "libqos/i2c.h"
+-#include "hw/misc/pca9552_regs.h"
++#include "hw/gpio/pca9552_regs.h"
+ 
+ #define PCA9552_TEST_ID   "pca9552-test"
+ #define PCA9552_TEST_ADDR 0x60
+diff --git a/tests/qtest/pnv-host-i2c-test.c b/tests/qtest/pnv-host-i2c-test.c
+index c6351772520c..7f64d597ac1d 100644
+--- a/tests/qtest/pnv-host-i2c-test.c
++++ b/tests/qtest/pnv-host-i2c-test.c
+@@ -8,8 +8,8 @@
+  */
+ #include "qemu/osdep.h"
+ #include "libqtest.h"
+-#include "hw/misc/pca9554_regs.h"
+-#include "hw/misc/pca9552_regs.h"
++#include "hw/gpio/pca9554_regs.h"
++#include "hw/gpio/pca9552_regs.h"
+ #include "pnv-xscom.h"
+ 
+ #define PPC_BIT(bit)            (0x8000000000000000ULL >> (bit))
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 791e93a97bcc..a7495d196ae9 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -2,6 +2,8 @@ system_ss.add(when: 'CONFIG_GPIO_KEY', if_true: files('gpio_key.c'))
+ system_ss.add(when: 'CONFIG_GPIO_MPC8XXX', if_true: files('mpc8xxx.c'))
+ system_ss.add(when: 'CONFIG_GPIO_PWR', if_true: files('gpio_pwr.c'))
+ system_ss.add(when: 'CONFIG_MAX7310', if_true: files('max7310.c'))
++system_ss.add(when: 'CONFIG_PCA9552', if_true: files('pca9552.c'))
++system_ss.add(when: 'CONFIG_PCA9554', if_true: files('pca9554.c'))
+ system_ss.add(when: 'CONFIG_PL061', if_true: files('pl061.c'))
+ system_ss.add(when: 'CONFIG_ZAURUS', if_true: files('zaurus.c'))
+ 
+diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
+index 9331f4289d5a..b91cc7e9a45d 100644
+--- a/hw/gpio/trace-events
++++ b/hw/gpio/trace-events
+@@ -13,6 +13,10 @@ nrf51_gpio_write(uint64_t offset, uint64_t value) "offset 0x%" PRIx64 " value 0x
+ nrf51_gpio_set(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
+ nrf51_gpio_update_output_irq(int64_t line, int64_t value) "line %" PRIi64 " value %" PRIi64
+ 
++# pca9552.c
++pca955x_gpio_status(const char *description, const char *buf) "%s GPIOs 0-15 [%s]"
++pca955x_gpio_change(const char *description, unsigned id, unsigned prev_state, unsigned current_state) "%s GPIO id:%u status: %u -> %u"
++
+ # pl061.c
+ pl061_update(const char *id, uint32_t dir, uint32_t data, uint32_t pullups, uint32_t floating) "%s GPIODIR 0x%x GPIODATA 0x%x pullups 0x%x floating 0x%x"
+ pl061_set_output(const char *id, int gpio, int level) "%s setting output %d to %d"
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 8e1ddc00f9b2..dd6cf89a5449 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -3,8 +3,6 @@ system_ss.add(when: 'CONFIG_EDU', if_true: files('edu.c'))
+ system_ss.add(when: 'CONFIG_FW_CFG_DMA', if_true: files('vmcoreinfo.c'))
+ system_ss.add(when: 'CONFIG_ISA_DEBUG', if_true: files('debugexit.c'))
+ system_ss.add(when: 'CONFIG_ISA_TESTDEV', if_true: files('pc-testdev.c'))
+-system_ss.add(when: 'CONFIG_PCA9552', if_true: files('pca9552.c'))
+-system_ss.add(when: 'CONFIG_PCA9554', if_true: files('pca9554.c'))
+ system_ss.add(when: 'CONFIG_PCI_TESTDEV', if_true: files('pci-testdev.c'))
+ system_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
+ system_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 0374eb33ac52..4896001f35de 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -340,10 +340,6 @@ grlib_apb_pnp_read(uint64_t addr, unsigned size, uint32_t value) "APB PnP read a
+ led_set_intensity(const char *color, const char *desc, uint8_t intensity_percent) "LED desc:'%s' color:%s intensity: %u%%"
+ led_change_intensity(const char *color, const char *desc, uint8_t old_intensity_percent, uint8_t new_intensity_percent) "LED desc:'%s' color:%s intensity %u%% -> %u%%"
+ 
+-# pca9552.c
+-pca955x_gpio_status(const char *description, const char *buf) "%s GPIOs 0-15 [%s]"
+-pca955x_gpio_change(const char *description, unsigned id, unsigned prev_state, unsigned current_state) "%s GPIO id:%u status: %u -> %u"
+-
+ # bcm2835_cprman.c
+ bcm2835_cprman_read(uint64_t offset, uint64_t value) "offset:0x%" PRIx64 " value:0x%" PRIx64
+ bcm2835_cprman_write(uint64_t offset, uint64_t value) "offset:0x%" PRIx64 " value:0x%" PRIx64
+-- 
+2.44.0
+

@@ -1,102 +1,102 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1117132ejj;
-        Mon, 25 Mar 2024 21:53:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXlMkJJERfY4Rj8yjtsIS1pTDl7ovzj/zwGUvxlOqsFv2i5T8VrkVIpBnRHRlK+I2OLvHlCb8szI3VVH67obbhtYfRUgbSW
-X-Google-Smtp-Source: AGHT+IGNuLZC/I6/Yt0PIDTAD3gi3Rws/aqF4mXBCTt7owWtBK4Z0HlQDBYkIRYzrSuHo98abFcR
-X-Received: by 2002:ad4:5748:0:b0:696:8ed0:723f with SMTP id q8-20020ad45748000000b006968ed0723fmr5089507qvx.17.1711428788023;
-        Mon, 25 Mar 2024 21:53:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711428788; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1117607ejj;
+        Mon, 25 Mar 2024 21:54:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXgnaQ1hAHCFpgWszXj/uo1pY5fekUpjmKYpXilTw7K5bAqELW8ay9eGnHcRuZC0mhRvu1mH2AjjEZ5nQtkn2SzI3QwwFx8
+X-Google-Smtp-Source: AGHT+IFG/oZJ8uamdIw3eWSAy5rhLGXN9BLZZyZV+tRVICAK5FKWwTUEEuKvMU0ZtKmYBha1QOZc
+X-Received: by 2002:ac8:598b:0:b0:431:5079:faae with SMTP id e11-20020ac8598b000000b004315079faaemr7539442qte.30.1711428885006;
+        Mon, 25 Mar 2024 21:54:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711428884; cv=none;
         d=google.com; s=arc-20160816;
-        b=pbtcC9A3pGO2r1Ay8bvajkOnM9TjIaKxWXXQnOnxCCVHc2PlTKyIIaD6e9SF6vYgFh
-         /ND/lOihYDRRKO3OlsRwQAOS8q3PgqwW8Xo1ewwl1p48sy9jKBtgU3pTsfnHccCKaGr5
-         VXRR1QE++mPc0h+xbmnmDkULZ7QKpb6ZpMOJqWND6TR4ib5iHMTCTc3saIJtp0Hzt9wJ
-         MrMTYLrSNp7b6GWvZ/wV9kcOwa57mepHILq1zc9am0kRm5ZrYK9jWnrHzls3zw2rUPSx
-         eHdimtNYHf7dUW9jhmLSfAxXDp3rfE26qsk4EYd7wJiLniNGdUtRpRIAbpWrweqm1w5L
-         5+QQ==
+        b=dKUbWyQ2xzNwdc9zcod8JREA8Bt1lswtHGOC2Swa6/v1FFLuaV7dIwXvLkI/hGtgXi
+         qLYFozvkArPxTmGMz4o/6YBAmw6f1TyfnLlvJQ+bWwWewy8i3Rog1Oi4OXT12igT7UI7
+         jc5ZmQ2uc1K+zyvM3+NAZ2cD1ex8i3Jzv5GtOQwE0LaF3nv+sCbbuAmOab6cez4ma4Mp
+         ol2E36VKVfpUD3Q8QCuJn2cJWjWYltwhvHX+0t2B9vr4dzWBoOFnrhOkhstjxfnRi9We
+         AunsSgTM6l9dfEfTcc/iWQd8Gdni5o3wTIOLQGVm892eyVpFHWlKdinDn9YmUV6qT4kz
+         o/gQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=8Se6h2sk+23XBqGDt5WxIERqzHReoO5syAQ+oMHecUs=;
-        fh=VOJIN788zkoBvCVEpmU2ErNcxslu/iHsKNaCqPcMmt0=;
-        b=x23xtml4u1yip/VMZ8UgYmrK7dr7Ic1kYjqQV61d5oKSBDyBC6+MvaY1ObUsKIr+PW
-         BXmVIMz5vKr/93dxW/Gl7uFlukmb5HVHSU9TwlAAzeFz9idsPVDp7Xh9WlrkX0EA9xzD
-         fG3D3wmG46DCqXdoMFs3KQxRQPC3E8Rvb+oM1mZ1T8lwV+AGVp80zWSW2I1DvNsGydyE
-         7XxghI/m/XV3FAbSgsd3CJHfaCWBY6Q1Yc5zj1fVxorBcv38iSH4Qe+C+7WX0FajwuqZ
-         pyK/3mf8etR7xXNdzZZmNO5Q0MXStG0uCAeDC2Z74XJOnfApV9CHU10c3lfcbfgBxiBR
-         ZIWw==;
+        bh=JOEvSzzaFpPm6kSZsVuroxblQgv56KqmmLkwoyeaY00=;
+        fh=MOZsNLplxJCfLGAj6K5oZQEA0V0laakZS8q2Q3M7lzY=;
+        b=VjXo+AEX0vWVuuSK85qwqrQAG7tujqxE07dBmV/jfY5aVUwssBKkkrJZjMkUeuvmGx
+         W/2btuBinIBk7hasLPKfnLkWvIOyVR1R0aZp4NsqiYRkJABCLGyodv9j0ljR2cpc78pn
+         a6D17u52nk2h8gh8+iEToLTQUxxIqyacQBLPlTLTq/1RyBvefH1IUYUvzWrCqt3d040V
+         8XYnWKVIdtUxw3n6eNbjvX+SFA0NAiXwSsBzMYBGgEtlz4QhV0jk//Ht2UvVndcvYJ33
+         PIbPQ+Un8vasft/FngyC9fbvKRI/YxLozUQoDIk+MHQzp48D+nFH6EyPHzlD0GmhxBZZ
+         LsFw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ekCbDmoA;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mZDubjUf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id hf15-20020a0562140e8f00b006968ed166b9si3479874qvb.468.2024.03.25.21.53.07
+        by mx.google.com with ESMTPS id j1-20020a05620a0a4100b0078831bd38dfsi6964366qka.379.2024.03.25.21.54.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Mar 2024 21:53:08 -0700 (PDT)
+        Mon, 25 Mar 2024 21:54:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ekCbDmoA;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mZDubjUf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1roynV-0001It-28; Tue, 26 Mar 2024 00:52:29 -0400
+	id 1roypN-0002Fa-L3; Tue, 26 Mar 2024 00:54:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1roynP-0001Ho-B2; Tue, 26 Mar 2024 00:52:23 -0400
-Received: from mail-vk1-xa30.google.com ([2607:f8b0:4864:20::a30])
+ id 1roypM-0002FO-Mf; Tue, 26 Mar 2024 00:54:24 -0400
+Received: from mail-vk1-xa36.google.com ([2607:f8b0:4864:20::a36])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1roynN-0000c6-BV; Tue, 26 Mar 2024 00:52:23 -0400
-Received: by mail-vk1-xa30.google.com with SMTP id
- 71dfb90a1353d-4d44fb48077so1880945e0c.0; 
- Mon, 25 Mar 2024 21:52:19 -0700 (PDT)
+ id 1roypJ-0000tN-Cu; Tue, 26 Mar 2024 00:54:24 -0400
+Received: by mail-vk1-xa36.google.com with SMTP id
+ 71dfb90a1353d-4d44216ea59so1742710e0c.2; 
+ Mon, 25 Mar 2024 21:54:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1711428738; x=1712033538; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1711428859; x=1712033659; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8Se6h2sk+23XBqGDt5WxIERqzHReoO5syAQ+oMHecUs=;
- b=ekCbDmoAK4fNbWPuRN4e/zdYj0vCiAM6DbN5vWfVYvBAGUQG5dHXEKnUFZacn+fxgc
- khaontMOLnnZadObQSuO0powX7AY5KNnwCWx49oYWwjW+xje+/S8dwsJK3M4MFLuaCBu
- gcBmorrEDy2h/mSx4SpD7mmdmM+25Tco0votFmDKAylCEeBE4zrUHvDOLlazMYB2b9Re
- /wCDF+/iyunuTPIFAJ3ow2maR30/Kyc7LTImE/usQXpVVvlRZCfbLPt93fUIPyFQ3E7G
- 26bdiEic4bEmyFp5gbCvZ+JCoCXt3VUKo5SkbZT3Y2JaGeJ/pek4NCUgcjxVMoPxIuy1
- //Lg==
+ bh=JOEvSzzaFpPm6kSZsVuroxblQgv56KqmmLkwoyeaY00=;
+ b=mZDubjUfLpGcRCOFC0h0dydFe35sdVre2SoSDwxarBW9RI4JAchqy8u9fmONliStJv
+ 9sUGCrvXTIeHcvIsCVFhht1s7wKwx6c13Gbeavig3uGjlyyfQogDN7XFFRjOdCTqlDyM
+ U32L9ovZ6E+z09mn6iPrnH/sh3y22dfMJzOd0mdjZQXarnq9N1N59tqYdT4bvhRoi2Op
+ CqJKkiIq8LfJr2jLOav8gWjs2DPrHyylQ6qyt+0sJxHRlrHEZNTKrdSwbKUFPFMyryf2
+ ae5n0v5KF947zHB1Tnsd6Sc0Mb6WCKMwUH3Arw73u46s7DcmrVW5OBuhHveWcqsBzq2z
+ S9Rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711428738; x=1712033538;
+ d=1e100.net; s=20230601; t=1711428859; x=1712033659;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=8Se6h2sk+23XBqGDt5WxIERqzHReoO5syAQ+oMHecUs=;
- b=RvfjoFdtPXs/9Wn5BhMi9IAtuf5DWWrIo/frc2iQoZvxfsCa3Opkh3aWvu9CWLdtQ6
- BGD9Llfc40SSE//6js2+u+jLooZrV0fbBF/wWl/c77MnVoJfC1WQt7ZR1DM/uxb2pG9Q
- QWx79tZmNHaC4ogAPYp+9ioFtWyq9Q6agnyImzGd+zGtv16t/vvgKrn34nH7i1qunw1z
- qfpQbgzg33AK5B6nVmEulRHj0zjpm94qqYq6+RHrgSzJ1NocJTPI+33UxUIVEBSzjUd6
- lDxBrfhvYo4lzJBnx/I6LE1ZINFY9rVhnl8USNKqJLUg3icVPXbigwGTblOEM6nbXPXX
- 4MMQ==
+ bh=JOEvSzzaFpPm6kSZsVuroxblQgv56KqmmLkwoyeaY00=;
+ b=VGhA1Iia6DGQheYnO0onfwQN8J7S5HugcWVUFJ1V6ZMxenDfdMcko/f5AaDqex7Rth
+ p4v/ME+tj3OfCuskJFU25eTTbG9haq3NzqBPI5CDqsiEhpkef5GuZcJvK7kIO8fTC4aK
+ O4yI9aCJhS7vH5z4p+wAgzJR471x1MQK86sGER0dIQ1xhdi3PTmN4AzkSM/TfV/a2zRT
+ Ncy3c4sErVcaaY1LaRvI8UcWn1tkAjAFgyGO8QgrK7H2931kwSpkv8pYSfv28rzCxopE
+ 8Bo92n5HP9piOb/buJgcBFmLYnXiwqmLKvyGk6sL9pFytE/rmzH6MG6PzJbVOH0U5olD
+ 0J0w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXzXs+yz9RVmfbx91Q4BEFj+6+n0srZqCznlMPiVL/c9waq7O+99PpH+TWi+0+oUWsG9Pxst7t4XJ/LDrVA7wMfTkgd
-X-Gm-Message-State: AOJu0YzsCIehDcXOrtAVyD5OBgsoJH/nzx3JeIHbtlB9xexptXDqVjWC
- 1I0cMRc3fK4gINb4egf2n0KLgpHWYA1pxizYUSTjDiR9LEH3ruH1NHda+LoYZ2CfeOvHQrgfOgY
- VQL47PqHD4C82NDeKwsopaJ68X6s=
-X-Received: by 2002:a1f:cd02:0:b0:4d4:2fc1:b252 with SMTP id
- d2-20020a1fcd02000000b004d42fc1b252mr5209944vkg.6.1711428736732; Mon, 25 Mar
- 2024 21:52:16 -0700 (PDT)
+ AJvYcCX+AdJKPl8WaMV2Gabdt6WwEFYoAdE68Tq8+tkAfBIaal4oK02dqDMMGiC0MSykvEIPeB/PO6THGl1NraEvUl2r3maP
+X-Gm-Message-State: AOJu0YwNnnMrV1knqjckJfjme8lK68LAkVvKGRVaqdzsx8hKFVtnW0bX
+ hF3vFiweeTL/9ZK2OzzVQ+TiAt84c7IA892W7IcF6LB0HUOIRXmgPkBjcr9CSkCSxDWVwoOdu8V
+ /rCwzS9y0PdUoeSgeQkNf/Ly9za9HlPrz8ps=
+X-Received: by 2002:a05:6122:1d02:b0:4d8:79c1:2a21 with SMTP id
+ gc2-20020a0561221d0200b004d879c12a21mr7085156vkb.7.1711428859464; Mon, 25 Mar
+ 2024 21:54:19 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240325152827.73817-1-philmd@linaro.org>
- <20240325152827.73817-2-philmd@linaro.org>
-In-Reply-To: <20240325152827.73817-2-philmd@linaro.org>
+ <20240325152827.73817-3-philmd@linaro.org>
+In-Reply-To: <20240325152827.73817-3-philmd@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 26 Mar 2024 14:51:50 +1000
-Message-ID: <CAKmqyKMfYDrs07yNhOp+3Am-LTmwupcmA8aWxLRSnBUeP6qJaw@mail.gmail.com>
-Subject: Re: [PATCH-for-9.0 v3 1/3] hw/clock: Let clock_set_mul_div() return a
- boolean value
+Date: Tue, 26 Mar 2024 14:53:53 +1000
+Message-ID: <CAKmqyKPtYmO91rmPQUgCibxtGAPq2yZPKJsq1n-1dq5hC+XT0g@mail.gmail.com>
+Subject: Re: [PATCH-for-9.0 v3 2/3] hw/misc/stm32l4x5_rcc: Inline
+ clock_update() in clock_mux_update()
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org,
  =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
@@ -106,8 +106,8 @@ Cc: qemu-devel@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a30;
- envelope-from=alistair23@gmail.com; helo=mail-vk1-xa30.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a36;
+ envelope-from=alistair23@gmail.com; helo=mail-vk1-xa36.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -130,18 +130,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NwtkpNILg9Kb
+X-TUID: JM/tPQWbp4BY
 
 On Tue, Mar 26, 2024 at 1:29=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
 <philmd@linaro.org> wrote:
 >
-> Let clock_set_mul_div() return a boolean value whether the
-> clock has been updated or not, similarly to clock_set().
+> Trivial inlining in preliminary patch to make the next
+> one easier to review.
 >
-> Return early when clock_set_mul_div() is called with
-> same mul/div values the clock has.
->
-> Acked-by: Luc Michel <luc@lmichel.fr>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
@@ -149,80 +145,37 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  docs/devel/clocks.rst | 4 ++++
->  include/hw/clock.h    | 4 +++-
->  hw/core/clock.c       | 8 +++++++-
->  3 files changed, 14 insertions(+), 2 deletions(-)
+>  hw/misc/stm32l4x5_rcc.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
 >
-> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
-> index c4d14bde04..b2d1148cdb 100644
-> --- a/docs/devel/clocks.rst
-> +++ b/docs/devel/clocks.rst
-> @@ -279,6 +279,10 @@ You can change the multiplier and divider of a clock=
- at runtime,
->  so you can use this to model clock controller devices which
->  have guest-programmable frequency multipliers or dividers.
->
-> +Similary to ``clock_set()``, ``clock_set_mul_div()`` returns ``true`` if
-> +the clock state was modified; that is, if the multiplier or the diviser
-> +or both were changed by the call.
+> diff --git a/hw/misc/stm32l4x5_rcc.c b/hw/misc/stm32l4x5_rcc.c
+> index bc2d63528b..49b90afdf0 100644
+> --- a/hw/misc/stm32l4x5_rcc.c
+> +++ b/hw/misc/stm32l4x5_rcc.c
+> @@ -48,6 +48,8 @@ static void clock_mux_update(RccClockMuxState *mux, boo=
+l bypass_source)
+>      uint64_t src_freq;
+>      Clock *current_source =3D mux->srcs[mux->src];
+>      uint32_t freq_multiplier =3D 0;
+> +    bool clk_changed =3D false;
 > +
->  Note that ``clock_set_mul_div()`` does not automatically call
->  ``clock_propagate()``. If you make a runtime change to the
->  multiplier or divider you must call clock_propagate() yourself.
-> diff --git a/include/hw/clock.h b/include/hw/clock.h
-> index bb12117f67..eb58599131 100644
-> --- a/include/hw/clock.h
-> +++ b/include/hw/clock.h
-> @@ -357,6 +357,8 @@ char *clock_display_freq(Clock *clk);
->   * @multiplier: multiplier value
->   * @divider: divider value
->   *
-> + * @return: true if the clock is changed.
-> + *
->   * By default, a Clock's children will all run with the same period
->   * as their parent. This function allows you to adjust the multiplier
->   * and divider used to derive the child clock frequency.
-> @@ -374,6 +376,6 @@ char *clock_display_freq(Clock *clk);
->   * Note that this function does not call clock_propagate(); the
->   * caller should do that if necessary.
->   */
-> -void clock_set_mul_div(Clock *clk, uint32_t multiplier, uint32_t divider=
-);
-> +bool clock_set_mul_div(Clock *clk, uint32_t multiplier, uint32_t divider=
-);
+>      /*
+>       * To avoid rounding errors, we use the clock period instead of the
+>       * frequency.
+> @@ -60,7 +62,10 @@ static void clock_mux_update(RccClockMuxState *mux, bo=
+ol bypass_source)
+>      }
 >
->  #endif /* QEMU_HW_CLOCK_H */
-> diff --git a/hw/core/clock.c b/hw/core/clock.c
-> index d82e44cd1a..a19c7db7df 100644
-> --- a/hw/core/clock.c
-> +++ b/hw/core/clock.c
-> @@ -143,14 +143,20 @@ char *clock_display_freq(Clock *clk)
->      return freq_to_str(clock_get_hz(clk));
->  }
->
-> -void clock_set_mul_div(Clock *clk, uint32_t multiplier, uint32_t divider=
-)
-> +bool clock_set_mul_div(Clock *clk, uint32_t multiplier, uint32_t divider=
-)
->  {
->      assert(divider !=3D 0);
->
-> +    if (clk->multiplier =3D=3D multiplier && clk->divider =3D=3D divider=
-) {
-> +        return false;
+>      clock_set_mul_div(mux->out, freq_multiplier, mux->multiplier);
+> -    clock_update(mux->out, clock_get(current_source));
+> +    clk_changed |=3D clock_set(mux->out, clock_get(current_source));
+> +    if (clk_changed) {
+> +        clock_propagate(mux->out);
 > +    }
-> +
->      trace_clock_set_mul_div(CLOCK_PATH(clk), clk->multiplier, multiplier=
-,
->                              clk->divider, divider);
->      clk->multiplier =3D multiplier;
->      clk->divider =3D divider;
-> +
-> +    return true;
->  }
 >
->  static void clock_initfn(Object *obj)
+>      src_freq =3D clock_get_hz(current_source);
+>      /* TODO: can we simply detect if the config changed so that we reduc=
+e log spam ? */
 > --
 > 2.41.0
 >

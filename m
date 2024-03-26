@@ -1,157 +1,198 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1258277ejj;
-        Tue, 26 Mar 2024 03:57:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVxd5F88D94/2/FJvPzzqElqvuBzk9Y0z92ROmvhbPqc1osjslVTU2yZNB1O9Diqp7tlx+6noLMFnGhHp/mIVbGyAabMuAj
-X-Google-Smtp-Source: AGHT+IF5HIsgq5fgYXOxx9J8M920n13uOy7wk1DBXYlXtaE2/hxHXcd78udqi7PRd72RBBqYvbTZ
-X-Received: by 2002:a05:622a:202:b0:431:1e2d:a638 with SMTP id b2-20020a05622a020200b004311e2da638mr721380qtx.43.1711450665422;
-        Tue, 26 Mar 2024 03:57:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711450665; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1262528ejj;
+        Tue, 26 Mar 2024 04:04:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUcUBYZCa/JMDV3vwLJS7Uc5IkUCS37l3ETMWpZpd6y6qB+QGOfLQuM7HFei7Mrue/q0m51nPNc1FukbxthI4apX6DB+/Qb
+X-Google-Smtp-Source: AGHT+IGfQ8tb/YthaBgO5j3o7b1ljHMVu1T7T5c1H7aUk0+s81VupvjqfEKD2d5tBk1f0nmSCDSc
+X-Received: by 2002:a05:6830:1696:b0:6e6:c0ca:1115 with SMTP id k22-20020a056830169600b006e6c0ca1115mr567633otr.15.1711451078914;
+        Tue, 26 Mar 2024 04:04:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711451078; cv=none;
         d=google.com; s=arc-20160816;
-        b=tkh/9qQmdo5b+bv/BmRUG/K8niMZLxc4DtSEHViVOxKHyPDEMx+JEfZUPID+p15cX2
-         oQEwshLwfyl/O6VA2DXA8onGyTyHXAlCvXvDa6W8zTP5tKos+ZkSFJjco04DG9Kk6bFW
-         Z/T9Z/7ZQYrKfx3VvQRJK+ufLk/7O3L39UGDyc5PekenvEd5x/noId6tKWnSbSpgWrDa
-         thNMGqznsfpMdttPemLhMYW89pJ0gC06N6x6fr9GBjxTjSNkF2qAOyUVVYiBsWLcAG6Y
-         oghbluF09axm6WYw7lKsk8wGZySsfRuP6WacL6Ub13iCB+qtRuUvk9DkI4w+FupvP4x9
-         GGBg==
+        b=YnOZlj1fS04s2eUUjWZxu+qZR/EJNsOUFNbaBLff9ifFDlwgzkRKb5yDm28rDqdaLV
+         RdmYvrYMUAW+eRykoNSBU6tLudRjHBhReQE7ee5e+3Pzae6WTFWWUUJvIGxuqYZ6HQnn
+         tcImFdkQdr5XZp7hDpoWciLzj+NdPmDSGMlBz0d3B+T/SsVKcRMNTmT4g8sUMJnazPjd
+         v1pUV39sb3o8eAUcUDD7UHo4cV6TWq9XlaFSxEX8OIvt5tixe7C5Ur8sTOFTmbDvghX5
+         chex4p+mVNuAMF6cmHzYYOPkURAieisl0lG6o+68tF345u++YTdNrIbKdKl4FTMIBHG2
+         xYDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:message-id:date
-         :references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=hsAuvtjcGMknxupq7dt0Tx5jDHTx3kFzc8XXDd0b8jY=;
-        fh=+8z5BiqZKMGZ0zVC89rxr28L/OHZ+FIAjNMKA3AFSTg=;
-        b=htAiVE7wKV7Ix0R/qPMkCc2DYuXDkUx6j/yaFU4QMci2Hn7XbjU+0hVZYRF2q5cQRc
-         8LAbeLQshRn19s2wJvd9I3vfSg60U9+uobjd4bALJmQlWfekDu/AaBnmrX5VU832fVlE
-         wvgt4fXwZZ1Ul00sFEd6VsUS2D/pXOlPHE0zlUjDGMsResvgWvBPjSAtA3qQjNDdHiku
-         MoJsF3KMNgLr6p755suxpu1tBz3XIbgsLUQzzVyGBY/F/XJ0cKiYrnMw2b6F8LV2BbbZ
-         1oCJUKCB2jbUF2JT/TdstJsIg9YLgJOD5GWhC+xuDXgk9tRPsPL3x5E0SFo1R3N548fJ
-         sSBw==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=f53q2SxPvBYjGYJCIgE6J1ereeB88Gl5EgTBiYMMG8w=;
+        fh=4f9i8Fk18tgCY/a7NNs7JQUKWs2BLA5DTI5vBV5Jp4k=;
+        b=04Hj/0K+lbI1acMeH3YGP3D/P6UB14I/+7FnMwm1beRseH5bM6xqN9sgEwW8WpZuFH
+         dULfCZm46QacYRxniBvSiuJl2AeIfJkou+ljZ7hJ/jnjkI4SLAU/OFlnmhiJRIApWDzc
+         fJKgZeSzpF8hl3JKmvvHuYyzzYJkORu+OKXmF/yki2XLoNThwD8BgD8Fki3Qf7t1zw/k
+         9EGlyhfihNzHcHn2x12nxzqPYuoTN8OObH2Km6fupi86tE7lHwbMvfgB19eYkJUaLzQz
+         u4oJq1lPDMW7FUzlPFS2elt+sp3a7OmoQYdPjfqWQ1ahNZXQbXexIZZDjxf4/tXFfZvk
+         6MuA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z2Ed9IKH;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VBBipx+x;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <armbru@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id j18-20020ac85c52000000b004315b3c3709si3608172qtj.101.2024.03.26.03.57.45
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id u24-20020a05620a023800b0078a31cfe24csi164745qkm.292.2024.03.26.04.04.38
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Mar 2024 03:57:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 26 Mar 2024 04:04:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z2Ed9IKH;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VBBipx+x;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rp4bW-0004qJ-1O; Tue, 26 Mar 2024 07:04:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rp4bR-0004oo-IO
+ for qemu-arm@nongnu.org; Tue, 26 Mar 2024 07:04:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1rp4bM-0004Hp-1D
+ for qemu-arm@nongnu.org; Tue, 26 Mar 2024 07:04:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1711450665;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hsAuvtjcGMknxupq7dt0Tx5jDHTx3kFzc8XXDd0b8jY=;
-	b=Z2Ed9IKH+BnT3AhR1hsgntRSKjpCr0zM69cah5u+NvT11pGdeEFwqBQ+GpXYuNelbKJWer
-	yCEtJWdEDvR10AhFLQwplSWeMh7P4NgVYknrkTFgZAGDMCQD8JutcnzDp5NCjRHvpe1gAy
-	B0OjjMHnqfxlkEOYlUeZ9mgcCX8EeG0=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-571-YsFiHoJlPj6J1yCYNtY6uw-1; Tue,
- 26 Mar 2024 06:57:41 -0400
-X-MC-Unique: YsFiHoJlPj6J1yCYNtY6uw-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com [10.11.54.10])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CA2B0383CD69;
-	Tue, 26 Mar 2024 10:57:40 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.81])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8E4E1492BC4;
-	Tue, 26 Mar 2024 10:57:40 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 8667721E668C; Tue, 26 Mar 2024 11:57:35 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-riscv@nongnu.org,  Anton Johansson
- <anjo@rev.ng>,  qemu-s390x@nongnu.org,  qemu-ppc@nongnu.org,  Daniel P .
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,
-  Eduardo Habkost <eduardo@habkost.net>,  Claudio Fontana
- <cfontana@suse.de>,  Richard Henderson <richard.henderson@linaro.org>,
-  Peter Maydell <peter.maydell@linaro.org>,  Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,  Manos Pitsidianakis
- <manos.pitsidianakis@linaro.org>,  Zhao Liu <zhao1.liu@intel.com>,
-  qemu-arm@nongnu.org,  Thomas Huth <thuth@redhat.com>,  Laurent Vivier
- <lvivier@redhat.com>
-Subject: Re: [PATCH-for-9.1 06/21] target/i386: Make X86_CPU common to new
- I386_CPU / X86_64_CPU types
-In-Reply-To: <20240315130910.15750-7-philmd@linaro.org> ("Philippe
-	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 15 Mar 2024 14:08:54
- +0100")
-References: <20240315130910.15750-1-philmd@linaro.org>
-	<20240315130910.15750-7-philmd@linaro.org>
-Date: Tue, 26 Mar 2024 11:57:35 +0100
-Message-ID: <87h6gtp8f4.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ s=mimecast20190719; t=1711451057;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=f53q2SxPvBYjGYJCIgE6J1ereeB88Gl5EgTBiYMMG8w=;
+ b=VBBipx+xcG/EQhihZr2Mm1nOtUDI7stLgMSV2v1zPQC2eLk54qWEe3x+G803FHoXIOHz0R
+ f65SoUdW5Ia/0CfjjigRUG5ERulUOvJqfKUqD/p1mzTksvAkoDEweSN7YPd5Pmt7b1sYGE
+ Q5Kn9Atbvrqnm02Ua7UvKbEHIW1M3Cw=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-298-PvfUzUUqNIuDMwe-2x8Y5w-1; Tue, 26 Mar 2024 07:04:16 -0400
+X-MC-Unique: PvfUzUUqNIuDMwe-2x8Y5w-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4147de378b9so20183255e9.3
+ for <qemu-arm@nongnu.org>; Tue, 26 Mar 2024 04:04:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1711451055; x=1712055855;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=f53q2SxPvBYjGYJCIgE6J1ereeB88Gl5EgTBiYMMG8w=;
+ b=aE0MCk4Kz5XA9Cvll2FzeTtxknUUPRidBq6+8Aisokidm1/WIwtIBseyp0msFz7GRz
+ RyxotenMJg5VtjvVAL2IlYkI2u2gHsf/zNQZHedS0KPIuKwloWSmeE5mfkd/77Pu3Uez
+ 0gaoFrV8DhQT69JaT59GfCuAZaSek8po3uB2lTNylgGx1fqxP/Jb1Fy4EpFMRWMaTLiU
+ m6CgQqIzCdDq6dkNXoY/nhOlEAlh4r4+MbRX4o3gM1Qk5bo/vuK18JIX0nrfmIhw1T5P
+ hv2hcV7CHlAdm7udQ7NaAKMWkY29Zbjm1E7/xxvMLe1tuusXYBnnL8cz+ubdebh1vXaa
+ Z0lg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUedIdFtfju2isW1ZCQuyyQNYAZca+y0yIbaskyP6gxPJFqdYnm/9PQRr2LBHyefwWAYbVc6V03qj8ahaUUfJT0kKUq
+X-Gm-Message-State: AOJu0YzaA4rNttiEaAvhj4WHLn+i4IoKt3qgFWxhNnwgZGB8SVVmT8Qx
+ CVQvo+dtiHyxVTbmDMrOo0brkXAn6JhTtZpM+zIW6jkJ3UmyXKzgagK251GaVkBlVEnfY1dAELM
+ fW9UATL63JkTwJTt5JN3Dl4ZzJjpNIu/6CA5M4QlHTXE+6mpvyA==
+X-Received: by 2002:a05:600c:310f:b0:414:8fe0:2d16 with SMTP id
+ g15-20020a05600c310f00b004148fe02d16mr704599wmo.37.1711451054654; 
+ Tue, 26 Mar 2024 04:04:14 -0700 (PDT)
+X-Received: by 2002:a05:600c:310f:b0:414:8fe0:2d16 with SMTP id
+ g15-20020a05600c310f00b004148fe02d16mr704569wmo.37.1711451054234; 
+ Tue, 26 Mar 2024 04:04:14 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ hg9-20020a05600c538900b004101f27737asm11162672wmb.29.2024.03.26.04.04.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 26 Mar 2024 04:04:13 -0700 (PDT)
+Message-ID: <7f3e08db-5c95-4c8d-8b33-857ced740d48@redhat.com>
+Date: Tue, 26 Mar 2024 12:04:12 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
-X-TUID: Jt68c6FqEf/6
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v2 2/5] hw/arm: Allow setting KVM vGIC maintenance IRQ
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ miguel.luis@oracle.com, haibo.xu@linaro.org, richard.henderson@linaro.org,
+ maz@kernel.org, gkulkarni@amperecomputing.com
+References: <20240209160039.677865-1-eric.auger@redhat.com>
+ <20240209160039.677865-3-eric.auger@redhat.com>
+ <CAFEAcA-yLbwPyUxQy2s0CGwcE1z04WQd+EX0xmrvhUepfPR5ZQ@mail.gmail.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CAFEAcA-yLbwPyUxQy2s0CGwcE1z04WQd+EX0xmrvhUepfPR5ZQ@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.065,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: a5aZwS72xXHo
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+Hi Peter,
 
-> "target/foo/cpu-qom.h" can not use any target specific definitions.
+On 3/5/24 17:46, Peter Maydell wrote:
+> On Fri, 9 Feb 2024 at 16:00, Eric Auger <eric.auger@redhat.com> wrote:
+>> From: Haibo Xu <haibo.xu@linaro.org>
+>>
+>> Allow virt arm machine to set the intid for the KVM GIC maintenance
+>> interrupt.
+>>
+>> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+>> Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>
+>> ---
+>> v1 -> v2:
+>> - [Miguel] replaced the has_virt_extensions by the maintenance irq
+>>   intid property. [Eric] restored kvm_device_check_attr and
+>>   kvm_device_access standard usage and conditionally call those
+>>   if the prop is set
+> This seems reasonable, but it's not the same way we opted to
+> handle telling the kernel the IRQ number for the PMU interrupt
+> (where we use kvm_arm_pmu_set_irq()). I guess we have to do
+> it this way because it's a device attr so we need to set it
+> in gic realize, though?
 >
-> Currently "target/i386/cpu-qom.h" defines TYPE_X86_CPU depending
-> on the i386/x86_64 build type. This doesn't scale in a heterogeneous
-> context where we need to access both types concurrently.
->
-> In order to do that, introduce the new I386_CPU / X86_64_CPU
-> types, both inheriting a common TYPE_X86_CPU base type.
->
-> Keep the current "base" and "max" CPU types as 32 or 64-bit,
-> depending on the binary built.
->
-> Adapt the cpu-plug-test, since the 'base' architecture is now
-> common to both 32/64-bit x86 targets.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Acked-by: Richard Henderson <richard.henderson@linaro.org>
+> By the way, does the kernel automatically complain and fail
+> if we try to enable nested-virt with a GICv2 or with a
+> userspace GIC, or do we need to catch and produce error
+> messages for those (invalid) combinations ourselves?
+I don't think there is any check of that kind in Marc's series yet.
+This may be added if GICv2 KVM device is created while kvm_mode is set
+to KVM_MODE_NV.
 
-[...]
+Wrt userspace irqchip compat, KVM_CAP_ARM_USER_IRQ extension may not be
+exposed in case of nested virt.
 
-> diff --git a/tests/qtest/cpu-plug-test.c b/tests/qtest/cpu-plug-test.c
-> index 7f5dd5f85a..97316d131f 100644
-> --- a/tests/qtest/cpu-plug-test.c
-> +++ b/tests/qtest/cpu-plug-test.c
-> @@ -90,7 +90,7 @@ static void add_pc_test_case(const char *mname)
->      data->machine =3D g_strdup(mname);
->      data->cpu_model =3D "Haswell"; /* 1.3+ theoretically */
->      data->device_model =3D g_strdup_printf("%s-%s-cpu", data->cpu_model,
-> -                                         qtest_get_arch());
-> +                                         qtest_get_base_arch());
->      data->sockets =3D 1;
->      data->cores =3D 3;
->      data->threads =3D 2;
+Marc, is that something you would like to integrate into the kernel series?
 
-Doesn't build for me:
+Thanks
 
-../tests/qtest/cpu-plug-test.c: In function =E2=80=98add_pc_test_case=E2=80=
-=99:
-../tests/qtest/cpu-plug-test.c:93:42: error: implicit declaration of functi=
-on =E2=80=98qtest_get_base_arch=E2=80=99; did you mean =E2=80=98qtest_get_a=
-rch=E2=80=99? [-Werror=3Dimplicit-function-declaration]
-   93 |                                          qtest_get_base_arch());
-      |                                          ^~~~~~~~~~~~~~~~~~~
-      |                                          qtest_get_arch
-../tests/qtest/cpu-plug-test.c:93:42: error: nested extern declaration of =
-=E2=80=98qtest_get_base_arch=E2=80=99 [-Werror=3Dnested-externs]
-../tests/qtest/cpu-plug-test.c:92:47: error: format =E2=80=98%s=E2=80=99 ex=
-pects argument of type =E2=80=98char *=E2=80=99, but argument 3 has type =
-=E2=80=98int=E2=80=99 [-Werror=3Dformat=3D]
-   92 |     data->device_model =3D g_strdup_printf("%s-%s-cpu", data->cpu_m=
-odel,
-      |                                              ~^
-      |                                               |
-      |                                               char *
-      |                                              %d
-   93 |                                          qtest_get_base_arch());
-      |                                          ~~~~~~~~~~~~~~~~~~~~~
-      |                                          |
-      |                                          int
+Eric
+>
+> thanks
+> -- PMM
+>
+

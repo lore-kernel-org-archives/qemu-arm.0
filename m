@@ -1,224 +1,211 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1236488ejj;
-        Tue, 26 Mar 2024 03:10:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX7ePBZN5KrAoRhesyXrS52+4Oze6W3CVSMcPS/qrbPNo80OKICtSG41b6uMOfQxu2gyXwdpioyWxrRW22SS4vTlonGB1KA
-X-Google-Smtp-Source: AGHT+IG9sLNepiSSolFLt1yTuyRHib3TCLjaMK+3BXNTPO7oRej8OrBpEc/BOOfOozh3Q7MhkMQZ
-X-Received: by 2002:a25:e052:0:b0:dcc:44d7:5c7f with SMTP id x79-20020a25e052000000b00dcc44d75c7fmr7097428ybg.62.1711447806689;
-        Tue, 26 Mar 2024 03:10:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711447806; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1240500ejj;
+        Tue, 26 Mar 2024 03:18:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXWeWeV/Caa0qdyJcK7F5YhdzYvIVgbEv0OnVWP0QLD3QrESeITdjLKEQQ6/tDczF+SLsacYHWD+wefBDF5hc09+g21bCHX
+X-Google-Smtp-Source: AGHT+IHyEEeWo4FC6prkcEeIpo1HxSEhim+w8+dexty1roFZ1SbwADgE22ujbAx4tucqeXX6ztgf
+X-Received: by 2002:a05:6808:bc8:b0:3c3:d0f5:198d with SMTP id o8-20020a0568080bc800b003c3d0f5198dmr672486oik.40.1711448305265;
+        Tue, 26 Mar 2024 03:18:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711448305; cv=none;
         d=google.com; s=arc-20160816;
-        b=GVk6UsV45EI49W/BY1/1UFtTB20NZKjSzL7JQ6Azfz3158NbTbjGmZBtEkOigZv44v
-         /ZU62RXhbV8hvkGhb0V40xzu6vYoqT6t8O+eXBr4qWD3Qzh2+L+S3TxQIFG8LFdGD5E5
-         pGMD4GXu3LEeC/Agq/TnuqY+zzp/4n7cmERvMdaE/eV+zGL7W1nYVhvRo/qHsK5NYSZZ
-         lZ4N9/DeOoGrLqBzSzoxeLZvKiUiAV+/OB3pI1kFRvu+M1KTcK4o8gUMOvqCZNgBDzis
-         R2mZ78FTfzOIRfV2psZakF7n3znGG6mkB6brslyDeTyYZXXEAIiEMXCK1/BwuWJlYda8
-         6XJg==
+        b=GP01RtI/w2sPCGx2NSfP3ifV6T/gV4zlPO/dYS+cyU7vd2JeqrCjMIK0yC3DumzIlP
+         dsmKTBDi9bOFtBOv4XeI//z9EWdDJv0AYZYNqJCl9nhhJ0eunS81BabKL+Gxci3N8byL
+         ZQjny3WDUHX0CRgaLjtrqZS1NLkknf+jaVGS7mE4P3/fT292ykfx+JJEB6hCgKecovBd
+         X3MHKWRKaFGqE8s8Q9gzOv4wQVQBFLkPgqzDBoryZe/8Z0yqaXdqn8tZM5bZz4fsLrwD
+         encZwMtsQJfvegGPMISOGALe6DaJVdp7N/zcwaHg46pQC7X8wp1JG4PruZ9G4+PUW6lf
+         AjpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=bvZPmz9vy0RCmtvYL34Y8frf70wRFwPX4tjmvWz7bfA=;
-        fh=s9etL5/OoPqfgeH8o8++2PL5ZRLes9JRrLGkgQH7as8=;
-        b=NN7Q1nWETiQeMSbR780GtxPMKTzlXeuh+4iv/yEHRM6AznR/8r0FMB4cY33mWO+lEK
-         7DMJgVAtAXK23MseIX2S1aRJOb9Vt5CHqDi8COq4RgoxBZyZoZeSw0Z3WAU6C3hZU8dm
-         6JqhsvQSX1dGyk3jUxMqKDJUC4etHPVXhbVNxw0t/9LbIVNQ8BeGhJlBzBCBJuYtXjD5
-         4xza2bGW20HV1QBelb4/Tdg7ca/s65Opqqiati2ts8atppsUEY8/nN7AffUMSFtcnJ/e
-         36WQ94guqUyY1ploSRGun7ICsRfxJljNpTazcKJqCq0nEMRLxumITpMSWmKbnK+P1/r2
-         HVgQ==;
+        h=content-transfer-encoding:mime-version:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=KEQJETNEk4wTxAbmDE7IF8Ho8ryXep/KGcVsctLsOm8=;
+        fh=5zeJpO4ynDVAtSXeA67ToqlohQB1e8PC1m+coNyDlrM=;
+        b=A4orp/MTu9dzKSFooO54F9dfR0TdndrrHkS7MviByR/3Zxd5pNvXyjKbTS6TJsExSt
+         ggaCsDSBVCOuD+oi6LafTF4Dwty69dGrN5/LfLoEk9CNHO/Q+v0A+VknykZMX6xGaHBT
+         /DfBAayN/lm4rrvaExQnql66Oij+2gF8/GUPzUXf59UDED//y//NFi6OiCpVKs+yxZxy
+         zDL/TbHueJOq9Qqf0kBPqovwM3y8wEzPpttmZmVab1yfl/pZVuLn4XABZXH6rv+LozGR
+         9mjIOfM84uu8xNZBPXBlse4P7yQ7m+i6vDYmGen30hkSXEXXA0CqQhFBEQfKG2ymtGDl
+         nZIQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RTJWKseL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q8KhtiOs;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gs4-20020a056214226400b0069019d45e93si9268949qvb.195.2024.03.26.03.10.06
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id g20-20020ac87d14000000b00431615406e3si2597617qtb.345.2024.03.26.03.18.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Mar 2024 03:10:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Mar 2024 03:18:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RTJWKseL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q8KhtiOs;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rp3ke-00085O-BG; Tue, 26 Mar 2024 06:09:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rp3kc-00084r-DC
- for qemu-arm@nongnu.org; Tue, 26 Mar 2024 06:09:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rp3ka-0001JA-FN
- for qemu-arm@nongnu.org; Tue, 26 Mar 2024 06:09:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1711447786;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bvZPmz9vy0RCmtvYL34Y8frf70wRFwPX4tjmvWz7bfA=;
- b=RTJWKseLQmgq55Ws3psT02aYOqVxYCdnrXTtHd8Rpqm2is7NGLpmGEq+YWhg3oM1TcKpAW
- 7U6ry5gJg84J8NhvRGqQ0WoHn3ZAX/DnTJ/I+P0NBBTLPf9XWezWMOPXq1TChTq3+/K7cW
- I7X+NQ/Lumv2z1/H35Uk0iYng8ElGkk=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-410-TL3-pEuyO2CcKqL3jjK08A-1; Tue, 26 Mar 2024 06:09:45 -0400
-X-MC-Unique: TL3-pEuyO2CcKqL3jjK08A-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-33ed5ddd744so1592042f8f.3
- for <qemu-arm@nongnu.org>; Tue, 26 Mar 2024 03:09:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711447783; x=1712052583;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=bvZPmz9vy0RCmtvYL34Y8frf70wRFwPX4tjmvWz7bfA=;
- b=NaYiHNc6Br/38SEeaLAvMi6SPEWDvtuumL/fe0G1Y1KSYn6L6VoqabcFRtpzK8n4TE
- Z9bJwx+jgsff094eIQJGTAjwFbHBpmbmY43Sfsd48mdT3VCfwyYEZwOhyvuGZveHaLkm
- dVPaAOgPxP0Hhq43ijCRx+wQVfM3kRwrwVh4fnzxPCsSnSULquC8Henbq7yQQ/4rOaCB
- O950L6j+QM2is2yS+eybN2KeDQzkXkVL7+HeZAPD/s789dfw40ogZBaL9ktc0RumqySA
- CV4WE8943PxkptuwQNwKiIzQ6M+e1ewvfCoRAcygRVuUXOcZphmLpUVzzMUdDdlRB/3a
- SpLQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX7E1gTRy/Ms0wjJAdQAzRtV7IzxhaV6E7KFaNd8glLXx+Yu2Pkm3C1hHKuqOloh9gZxS38j9HuXqXQm+M+H5plOTzF
-X-Gm-Message-State: AOJu0YzZTD5TuyHgg7TrA/KAx2Ui91K52c4dYlD5OpYzSu3pHGf3MNZA
- s6n30bgAHIl+mHX57s5U8J9d463pYXZOvg9kZVKi0noR9OTq3Zk7LFejMJ5tkueSRb1Jg51ZDTx
- kwUqt24Usj/i/qQzApMnsIIrCEZR7JJZCTT4SJiSmgV47lGloHA==
-X-Received: by 2002:a5d:43c9:0:b0:341:cfd6:42af with SMTP id
- v9-20020a5d43c9000000b00341cfd642afmr3333261wrr.31.1711447783122; 
- Tue, 26 Mar 2024 03:09:43 -0700 (PDT)
-X-Received: by 2002:a5d:43c9:0:b0:341:cfd6:42af with SMTP id
- v9-20020a5d43c9000000b00341cfd642afmr3333248wrr.31.1711447782788; 
- Tue, 26 Mar 2024 03:09:42 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- en9-20020a056000420900b00341b451a31asm5552312wrb.36.2024.03.26.03.09.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Mar 2024 03:09:42 -0700 (PDT)
-Message-ID: <f4805b73-b485-46e0-938d-b0cf23ea2aa6@redhat.com>
-Date: Tue, 26 Mar 2024 11:09:41 +0100
+	s=mimecast20190719; t=1711448304;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KEQJETNEk4wTxAbmDE7IF8Ho8ryXep/KGcVsctLsOm8=;
+	b=Q8KhtiOs91TRMna0TP0etmYvj09lzQVcLTFkjr3jCW2JvoVTgt4fx936xlEzhbZ/CLuq/H
+	rrsKuPd1OtOsWwyc6XOURBCmtYcfte+lLBt9wln8BSmA6UEaK+UnNA1dUei/iWjqtjEtVr
+	G0cpZ1Hot5on6XX/bBr7UeY/TmCx3eg=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-98-pL4SSwWZOeS0ZogMZwZJZQ-1; Tue,
+ 26 Mar 2024 06:18:20 -0400
+X-MC-Unique: pL4SSwWZOeS0ZogMZwZJZQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B5BEB3C0008C;
+	Tue, 26 Mar 2024 10:18:19 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.81])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5BEF62166B33;
+	Tue, 26 Mar 2024 10:18:19 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 54BA321E668C; Tue, 26 Mar 2024 11:18:14 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-riscv@nongnu.org,  Anton Johansson
+ <anjo@rev.ng>,  qemu-s390x@nongnu.org,  qemu-ppc@nongnu.org,  Daniel P .
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,
+  Eduardo Habkost <eduardo@habkost.net>,  Claudio Fontana
+ <cfontana@suse.de>,  Richard Henderson <richard.henderson@linaro.org>,
+  Peter Maydell <peter.maydell@linaro.org>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>,  Zhao Liu <zhao1.liu@intel.com>,
+  qemu-arm@nongnu.org,  Thomas Huth <thuth@redhat.com>
+Subject: Re: [RFC PATCH-for-9.1 00/21] qapi: Make @query-cpu-definitions
+ command target-agnostic
+In-Reply-To: <20240315130910.15750-1-philmd@linaro.org> ("Philippe
+	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 15 Mar 2024 14:08:48
+ +0100")
+References: <20240315130910.15750-1-philmd@linaro.org>
+Date: Tue, 26 Mar 2024 11:18:14 +0100
+Message-ID: <878r25qot5.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v2 0/5] ARM Nested Virt Support
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- miguel.luis@oracle.com, haibo.xu@linaro.org, richard.henderson@linaro.org,
- maz@kernel.org, gkulkarni@amperecomputing.com
-References: <20240209160039.677865-1-eric.auger@redhat.com>
- <CAFEAcA_i7x=F-mDgkoa4Tma1xGH0no+WCfNt2Ljyk3DYhHNTiQ@mail.gmail.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CAFEAcA_i7x=F-mDgkoa4Tma1xGH0no+WCfNt2Ljyk3DYhHNTiQ@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.065,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +L9Ei4qedmE/
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+X-TUID: 7RD+FXKPfXSC
 
-Hi Peter,
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-On 3/5/24 17:57, Peter Maydell wrote:
-> On Fri, 9 Feb 2024 at 16:00, Eric Auger <eric.auger@redhat.com> wrote:
->> This series adds ARM Nested Virtualization support in KVM mode.
->> This is a respin of previous contributions from Miguel [1] and Haibo [2].
->>
->> This was tested with Marc's v11 [3] on Ampere HW with fedora L1 guest and
->> L2 guests booted without EDK2. However it does not work yet with
->> EDK2 but it looks unrelated to this qemu integration (host hard lockups).
->>
->> The host needs to be booted with "kvm-arm.mode=nested" option and
->> qemu needs to be invoked with :
->>
->> -machine virt,virtualization=on
->>
->> There is a known issue with hosts supporting SVE. Kernel does not support both
->> SVE and NV2 and the current qemu integration has an issue with the
->> scratch_host_vcpu startup because both are enabled if exposed by the kernel.
->> This is independent on whether sve is disabled on the command line. Unfortunately
->> I lost access to the HW that expose that issue so I couldn't fix it in this
->> version.
->>
->> This series can be found at:
->> https://github.com/eauger/qemu/tree/v8.2-nv-rfcv2
->>
->> Previous version from Miguel:
->> [1] https://lore.kernel.org/all/20230227163718.62003-1-miguel.luis@oracle.com/
->> Previous version from Haibo:
->> [2] https://lore.kernel.org/qemu-devel/cover.1617281290.git.haibo.xu@linaro.org/
->> [3] Marc's kernel v11 series:
->>     [PATCH v11 00/43] KVM: arm64: Nested Virtualization support (FEAT_NV2 only)
->>     https://lore.kernel.org/linux-arm-kernel/20231120131027.854038-1-maz@kernel.org/T/
->>     available at: https://github.com/eauger/linux/tree/nv-6.8-nv2-v11
->>
->> Haibo Xu (5):
->>   [Placeholder] headers: Partial headers update for NV2 enablement
->>   hw/arm: Allow setting KVM vGIC maintenance IRQ
->>   target/arm/kvm: Add helper to detect EL2 when using KVM
->>   target/arm: Enable feature ARM_FEATURE_EL2 if EL2 is supported
->>   hw/arm/virt: Allow virt extensions with KVM
->>
->>  hw/arm/virt.c                      |  6 +++++-
->>  hw/intc/arm_gicv3_common.c         |  1 +
->>  hw/intc/arm_gicv3_kvm.c            | 21 +++++++++++++++++++++
->>  include/hw/intc/arm_gicv3_common.h |  1 +
->>  linux-headers/asm-arm64/kvm.h      |  1 +
->>  linux-headers/linux/kvm.h          |  1 +
->>  target/arm/kvm.c                   | 21 +++++++++++++++++++++
->>  target/arm/kvm_arm.h               | 12 ++++++++++++
->>  8 files changed, 63 insertions(+), 1 deletion(-)
-> All the patches in this series seem reasonable, but the series
-> as a whole is so short I wonder if we're missing something :-)
-> Does migration Just Work? (I guess as long as the kernel exposes
-> all the EL2 sysregs via the ONE_REG ioctl interface it ought to...)
-To be honest I have not tested yet. I would also guess there is no mig
-blocker but that definitively deserves some testing. I will check before
-sending the next version.
+> Hi Alex, Markus,
 >
-> Anyway, I don't think there's anything that stood out as needing
-> major changes, so for now I guess we just wait for whenever the
-> KVM side patches eventually land.
+> Markus mentioned QAPI problems with the heterogeneous emulation
+> binary. My understanding is, while QAPI can use host-specific
+> conditional (OS, library available, configure option), it
+> shouldn't use target-specific ones.
 
-yup
+"Shouldn't" is too strong in the current state of things.  It can be
+awkward, though.
 
-Thanks
+Target-specific macros may be used only in target-specific code,
+i.e. code that is compiled per target.  To catch uses in
+target-independent code, we poison them there; see exec/poison.h.
 
-Eric
+QAPI-generated .c are not normally compiled per target.  To enable use
+of target-specific macros in conditionals, we compile .c generated QAPI
+submodules named *-target.json per target.  This is a bit of a hack.
+
+Since the same conditionals will also appear in the .h generated from
+them, these headers can only be used in target-specific code.
+
+Sometimes, these headers "infect" target-independent code: we need to
+compile per target just for the headers.  Awkward.  I can dig out an
+example if there's interest.
+
+But what about possible future state of things?
+
+The QAPI schema is compile-time static by design.  QAPI conditionals
+permit adjusting the schema for build configuration.  Target-specific
+conditionals adjust it for the build configuration of the
+target-specific part.  Each QEMU binary contains just one target's
+target-specific part.
+
+However, a single QEMU binary will contain several target-specific
+parts, one per target it supports.  The targets' QAPI schema adjustments
+may conflict.
+
+For a single binary, we need to resolve these conflicts.
+
+Special case: QAPI definitions that exist only for some targets.
+
+Example: command query-sev exists only for TARGET_I386.  It's actually a
+stub when CONFIG_SEV is off.
+
+Obvious solution: make it exist if it needs to exist for any target
+compiled into the binary.  Requires command stubs for the other targets.
+
+Example: query-sev now exists when the single binary supports x86.  It's
+a stub when CONFIG_SEV is off.  It behaves like a stub when CONFIG_SEV
+is on, but the machine isn't x86.
+
+Drawback: introspection with query-qmp-schema becomes less precise.
+When the binary supports just one target, introspection can answer
+target-specific questions like "does this target support SEV?"  With a
+single binary, that's no longer possible.
+
+Harmless enough for SEV, but consider query-cpu-model-expansion.  The
+command may support expansion types "full" and "static".  Currently,
+s390x supports both, ARM supports only "full", Loongarch only "static",
+RISC-V only "full", and x86 supports both.
+
+(I think.  The documentation is incomplete:
+
+    # Some architectures may not support all expansion types.  s390x
+    # supports "full" and "static". Arm only supports "full".
+)
+
+A management application may want to find out which expansion type is
+supported.  Right now, it can't.  But we could improve the schema so it
+can find out via introspection: define the expansion types only when
+they're actually supported.
+
+With a single binary, that's no longer possible: we have to define an
+expansion type when *any* target supports it.
+
+Such loss of introspection power is not a show-stopper, just something
+we need to keep in mind.
+
+> This series is an example on how to remove target specific
+> bits from the @query-cpu-definitions command.
+
+This is an instance of the special case with an additional twist: each
+target defines its own QMP command handler.
+
+>                                               Target specific
+> code is registered as CPUClass handlers, then a generic method
+> is used, iterating over all targets built in.
 >
-> thanks
-> -- PMM
+> The first set of patches were already posted / reviewed last
+> year.
 >
+> The PPC and S390X targets still need work (help welcomed),
+> however the code is useful enough to be tested and see if this
+> is a good approach.
+>
+> The only drawback is a change in QAPI introspection, because
+> targets not implementing @query-cpu-definitions were returning
+> "CommandNotFound".
 
+The change is introspection is actually something else.  Before the
+series, query-qmp-schema returns a description of command
+query-cpu-definitions exactly when the (single) target supports it.
+Afterwards, it always returns one (I think).
+
+The CommandNotFound change is a change in behavior when you try to
+execute query-cpu-definitions, but the target doesn't support it.
+Before, the command doesn't exist, and the QMP core duly replies
+CommandNotFound.  Afterwards, it does exist, but the target doesn't
+implement the call back, so the command fails.  I guess it fails with
+GenericError.  We could make it fail with CommandNotFound if we care.
+
+>                    My view is this was an incomplete
+> implementation, rather than a feature.
+
+Feels fair (but I'm not an expert in this area).

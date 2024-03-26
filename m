@@ -1,100 +1,100 @@
-Received: by 2002:a17:906:3503:b0:a46:a4a7:8772 with SMTP id r3csp5597eja;
-        Tue, 26 Mar 2024 11:25:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWg8IUz8kfx0Ij2RozuLlKFyDWagEr1Lp06XOu9QMU8apJrCTKEW0SoikJUoEiqVGZExPyB7xKqWatJTYluLAEnM1Wd9FRs
-X-Google-Smtp-Source: AGHT+IHeLXrttiImQ/hrMVx15AzktBm+CUX3RusrualslvSPSrv2aQpkmwUus0yskU83mi95N56w
-X-Received: by 2002:ad4:5c66:0:b0:696:73ef:39c8 with SMTP id i6-20020ad45c66000000b0069673ef39c8mr530982qvh.57.1711477516200;
-        Tue, 26 Mar 2024 11:25:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711477516; cv=none;
+Received: by 2002:a17:906:3503:b0:a46:a4a7:8772 with SMTP id r3csp5797eja;
+        Tue, 26 Mar 2024 11:25:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVzh/6vWZ+Ih1vjkWxdK2XPiSk1IyCwQoNwkc7YvSVa4DE2umkGtze8gAXS86XA2qEcOfAN8cqBJOYRgYZBCoo27k/CsIdd
+X-Google-Smtp-Source: AGHT+IHv4IouPMEn1V1juBn6U7p/kXotAdhogelYKu+6UfRI8JBmK4bjQVanOFkvAdmObLQrIT+N
+X-Received: by 2002:a05:620a:a12:b0:78a:3ecd:8536 with SMTP id i18-20020a05620a0a1200b0078a3ecd8536mr11356152qka.8.1711477542092;
+        Tue, 26 Mar 2024 11:25:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711477542; cv=none;
         d=google.com; s=arc-20160816;
-        b=qVF3lwCGewqNTYIkPRRzyJXXi2jbH/6ctxdkMWGA+Dy9CZ43OrFIzJ3IHu/i53ea2+
-         I4/SV8xhGvmj1xKpzgIokIEskuChlKdWnsUSMJ3RwDM8RZ283YzhQZPbYxCC3w5vFoZg
-         a1qLcWXbmgaDXqudvFh4sGVmrWWNeXahb1nyjffjLS8kReiNvCpvH0qkf09Se4HzF77K
-         lRpQj1KJE5ehBZ4p1RPy+LU5xs+sxyWQrnk7XlfjoifgNhPaF2Io/enuAdugiSRnjnbL
-         KBGCnyMTJvhJ2HwryBV2VN7Zs54OOQyi7/gqtiiX3wIxecSE76XcO9JNH+ZUWio0g6kf
-         U0aw==
+        b=VHcXhucdORlXwk/qFJH8JyQpxXyWiDNW4n0YAcZtC7NkYqIbrKkwZvzOm5LiQSIDqg
+         M6Uonafg2sOhzW2GvbVlxXM3D4WUtbN8GZ4U+qwsTHt256F/XyninDxhK6D4oQH6ZMJf
+         vhFc2MYYnuGRSEmcDg7t6PiYifyuaGkuC+xvaHmHUmEg41PyinpuIUhfbmFEkaHGpCcC
+         VXFerZd1LBufcjK3ODELwdm5NjGGd7FnK7vKnJIf4+2uzSY45myBR1y4+X2109jQ7sp+
+         0VyMVUEATroJUW8WB7C9zYK5e+jgPErQdHCuHNJFvyJurL02OdBbwDMbA/Jmaeza3XTQ
+         l4wA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=hUbv+rvlS0G9N87gYhgxzb3iduozwSSUmPtRG60IHpw=;
+        bh=mrx+8FcM1jTS6NEHVX004WmTl/e8o/GcR4HDlXfvyFc=;
         fh=+QYT5ic2V0JVqAzRbmJQwTxDwhWoCj38euddbeXj624=;
-        b=x+HmwCCGtSrkaUI/ZZ6qD17fB5KeNkkAngFqeClYo1xrO/TloJH8YHVtTBOyvdamSS
-         qtMbs6NzaDJbgHIYEGINO5qbneqNRcQSGrXpPC6+b2L8K3xwmzMWNOpjxrW3mmC6Wk7U
-         8E5PLfqrp4/sEFFuBxcXhlikvWg7fa7AiMWElMfHxnhyWIOdPQDkn+QsqpMOtkm6wzSa
-         1h1d2NMdxDmRccC9AnBhHS0PymjXcQJN+SG3mlA6LVAV6v0A0cO6LUZEPrDHl4VPaf3N
-         ImR1yC4pbE3Np49SuaTGG9emFgCRBxfgqVii+b8wc5sMLDDZCh8bRx43VI4cQF9elzXF
-         TfTA==;
+        b=kGryjhS95Pe8dt1Bop/Ykz4A28lP+imh/r9Ltrz4jjQCkx/iVcRmVzD0ah1SE6wcN7
+         w+bbXL9+6tfkMc+HoN4A+0iOtOsaEPKzXCzGao/2ftYrwcJc8pZeHxaCGN/0X42d6Las
+         sujChZtqGqh8cgcojxtU2Nz8PwFMvCe38+nqrGNSRW/xE3SiU7yrUxyRdlCyFY1jWDq0
+         2+Aqeul2a4zi1w/MQ+h//OqTTNyh3rAAs1yWlTX6o8jJehyw27PlNSsqxo1BzRBq8Xu8
+         RimGBHrjuf+ouIGo573YfriT+DzChjpKLLIgAh7abLE1yv/1VKaxmRZ4Pesghu3h4ZgW
+         ncdg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MQ7066fG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e+JHIf8J;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 7-20020a05621420c700b00690bac7d116si11532669qve.369.2024.03.26.11.25.16
+        by mx.google.com with ESMTPS id x5-20020ae9e905000000b0078a28e7e7casi8238832qkf.411.2024.03.26.11.25.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Mar 2024 11:25:16 -0700 (PDT)
+        Tue, 26 Mar 2024 11:25:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MQ7066fG;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e+JHIf8J;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rpBSz-0007Zf-W8; Tue, 26 Mar 2024 14:24:10 -0400
+	id 1rpBT4-0007e7-UD; Tue, 26 Mar 2024 14:24:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rpBSt-0007Tl-Hg
- for qemu-devel@nongnu.org; Tue, 26 Mar 2024 14:24:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1rpBT2-0007cx-LQ
+ for qemu-devel@nongnu.org; Tue, 26 Mar 2024 14:24:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1rpBSr-0000E7-9f
- for qemu-devel@nongnu.org; Tue, 26 Mar 2024 14:24:03 -0400
+ id 1rpBT1-0000G1-8J
+ for qemu-devel@nongnu.org; Tue, 26 Mar 2024 14:24:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1711477440;
+ s=mimecast20190719; t=1711477450;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hUbv+rvlS0G9N87gYhgxzb3iduozwSSUmPtRG60IHpw=;
- b=MQ7066fG1/Qcy9BzZmR2tw92aKRpg5uHsE09shNMq8hvzf8oAfl7aerF6gPJ7y+gDmfVg4
- wDXULsddYmITqtnRab1XTIUTPunfwWjy6E42iOK2o5fCJ3C/TJBi0lkImUUd5FJ2Mrihsx
- wQyMOm2luCQVJH7PgfDWlS6cwhZ0iG8=
+ bh=mrx+8FcM1jTS6NEHVX004WmTl/e8o/GcR4HDlXfvyFc=;
+ b=e+JHIf8JmQeSp5P/eCOrc3Jwye3uukYujC+zhRWui/LMK8Y+lo+/X+eliDVTbHMV+SjYe5
+ FhqtETF1xIRRyoIObmEDbItZaaIXkXuHd1htfX7oS6YrjngSOwPd4hR0ZuYMH/ZQpMmw6I
+ LSVdRyQmeFWxBr5vyAEcAcXjwwWxF8I=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-384-TSkH_aCIO9mj2HkM_RA8RA-1; Tue, 26 Mar 2024 14:23:57 -0400
-X-MC-Unique: TSkH_aCIO9mj2HkM_RA8RA-1
+ us-mta-33-1wFS5UDUMgOcM1xkbWiAEg-1; Tue, 26 Mar 2024 14:24:04 -0400
+X-MC-Unique: 1wFS5UDUMgOcM1xkbWiAEg-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
  [10.11.54.5])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DD1A9800266;
- Tue, 26 Mar 2024 18:23:56 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A9EC7185A786;
+ Tue, 26 Mar 2024 18:24:03 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.193.50])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C57FE10189;
- Tue, 26 Mar 2024 18:23:54 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AC1F710E47;
+ Tue, 26 Mar 2024 18:24:01 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, miguel.luis@oracle.com, peter.maydell@linaro.org,
  richard.henderson@linaro.org, maz@kernel.org,
  gkulkarni@amperecomputing.com, gankulkarni@os.amperecomputing.com
-Subject: [RFC v3 1/5] [Placeholder] headers: Partial headers update for NV2
- enablement
-Date: Tue, 26 Mar 2024 19:22:35 +0100
-Message-ID: <20240326182345.326758-2-eric.auger@redhat.com>
+Subject: [RFC v3 4/5] target/arm: Enable feature ARM_FEATURE_EL2 if EL2 is
+ supported
+Date: Tue, 26 Mar 2024 19:22:38 +0100
+Message-ID: <20240326182345.326758-5-eric.auger@redhat.com>
 In-Reply-To: <20240326182345.326758-1-eric.auger@redhat.com>
 References: <20240326182345.326758-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -117,49 +117,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 825pR6auiQum
+X-TUID: w1SOT1Q7E9qD
 
 From: Haibo Xu <haibo.xu@linaro.org>
 
-For now let's only import the pieces needed to run NV on KVM.
-Later on this will be replaced by a standard and comprehensive
-linux header update using scripts/update-linux-headers.sh.
+KVM_CAP_ARM_EL2 must be supported by the cpu to enable ARM_FEATURE_EL2.
+In case the host does support NV, expose the feature.
 
-For now the changes are taken from
-https://github.com/eauger/linux/tree/nv-6.8-rc1-sr-enforcement
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
 Signed-off-by: Miguel Luis <miguel.luis@oracle.com>
----
- linux-headers/asm-arm64/kvm.h | 1 +
- linux-headers/linux/kvm.h     | 1 +
- 2 files changed, 2 insertions(+)
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
-index c59ea55cd8..d46839f1d9 100644
---- a/linux-headers/asm-arm64/kvm.h
-+++ b/linux-headers/asm-arm64/kvm.h
-@@ -394,6 +394,7 @@ enum {
- #define KVM_DEV_ARM_VGIC_GRP_CPU_SYSREGS 6
- #define KVM_DEV_ARM_VGIC_GRP_LEVEL_INFO  7
- #define KVM_DEV_ARM_VGIC_GRP_ITS_REGS 8
-+#define KVM_DEV_ARM_VGIC_GRP_MAINT_IRQ  9
- #define KVM_DEV_ARM_VGIC_LINE_LEVEL_INFO_SHIFT	10
- #define KVM_DEV_ARM_VGIC_LINE_LEVEL_INFO_MASK \
- 			(0x3fffffULL << KVM_DEV_ARM_VGIC_LINE_LEVEL_INFO_SHIFT)
-diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-index 17839229b2..e488bafd3f 100644
---- a/linux-headers/linux/kvm.h
-+++ b/linux-headers/linux/kvm.h
-@@ -1151,6 +1151,7 @@ struct kvm_ppc_resize_hpt {
- #define KVM_CAP_MEMORY_ATTRIBUTES 233
- #define KVM_CAP_GUEST_MEMFD 234
- #define KVM_CAP_VM_TYPES 235
-+#define KVM_CAP_ARM_EL2 236
+---
+v2 -> v3:
+- check pmu->has_el2 on kvm_arch_init_vcpu() when setting
+  KVM_ARM_VCPU_HAS_EL2 feature (Peter)
+
+v1 -> v2:
+- remove isar_feature_aa64_aa32_el2 modif in target/arm/cpu.h
+  [Richard] and use el2_supported in kvm_arch_init_vcpu
+---
+ target/arm/kvm.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 981b8a0dad..ad0186f6b5 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -238,6 +238,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+      */
+     int fdarray[3];
+     bool sve_supported;
++    bool el2_supported;
+     bool pmu_supported = false;
+     uint64_t features = 0;
+     int err;
+@@ -268,6 +269,14 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+         init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
+     }
  
- #ifdef KVM_CAP_IRQ_ROUTING
++    /*
++     * Ask for EL2 if supported.
++     */
++    el2_supported = kvm_arm_el2_supported();
++    if (el2_supported) {
++        init.features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
++    }
++
+     /*
+      * Ask for Pointer Authentication if supported, so that we get
+      * the unsanitized field values for AA64ISAR1_EL1.
+@@ -449,6 +458,10 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     features |= 1ULL << ARM_FEATURE_PMU;
+     features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
  
++    if (el2_supported) {
++        features |= 1ULL << ARM_FEATURE_EL2;
++    }
++
+     ahcf->features = features;
+ 
+     return true;
+@@ -1912,6 +1925,9 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         cpu->kvm_init_features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
+                                       1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
+     }
++    if (cpu->has_el2 && kvm_arm_el2_supported()) {
++        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
++    }
+ 
+     /* Do KVM_ARM_VCPU_INIT ioctl */
+     ret = kvm_arm_vcpu_init(cpu);
 -- 
 2.41.0
 

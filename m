@@ -1,120 +1,123 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1433265ejj;
-        Tue, 26 Mar 2024 08:47:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUx+eX+0VnCiaGd2LZrXWzeBhjY90PxcuYg+1X915X+jPow7LDcUUjdN5OjcufSwwZO8NtUBnxT5OxuiLmziM0Omi5X6tdZ
-X-Google-Smtp-Source: AGHT+IHlRwJt/ctrH50Mt5foQ9JuxdAqpcCiirVquNknTcJiJb7FHh39cNWbfR0zz5wtF0RqXelC
-X-Received: by 2002:a05:600c:4b92:b0:414:658c:24f5 with SMTP id e18-20020a05600c4b9200b00414658c24f5mr7605193wmp.23.1711468036613;
-        Tue, 26 Mar 2024 08:47:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711468036; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1433514ejj;
+        Tue, 26 Mar 2024 08:47:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX2odhyE3suMK+ebb9hJiCO1Xga/rDodOBmgAboACgOTEqSUiRT73RErSEM3ZsRj3I9rMX+pT3sL9sl+BcUjF+bwwGUN2NV
+X-Google-Smtp-Source: AGHT+IEUo7PXDOj06JEcbwqt8H2H+qnNYBZWJyhoLuZ50d5DGzYqtWH+UiAwSqnEhmtf8UQMu4ny
+X-Received: by 2002:a5d:6b52:0:b0:33e:ca35:9fe8 with SMTP id x18-20020a5d6b52000000b0033eca359fe8mr24078wrw.19.1711468060321;
+        Tue, 26 Mar 2024 08:47:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711468060; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xrdy5PayL717gdsAB/LYbYlZ6YwIwogMcSzlAHxr9MhFm9NEmpDfyubhkIARLkSjLH
-         vL1nCGQA+lzoft1+gpjxS1rYfmZvwTn5U5wiK0melI9xDk9800VS4sGR0+J/CGuv2XHY
-         E47SNX14NDaucgt0eqHKxS0M3dh6WYp4pdRdwV4D6u/zWrzXnhoDk2vRkNJKHzBj8Bf+
-         phzSHkyRJBEL4RZR2rzPUDvkHojhax76Msi6nx7uM5VkN8rJqoXjUrKcnmLqPtPph8Zu
-         CxUNSIRlCQQaEEep2+PSJwhmmZb07fuK5enO1cfcCe8i5vsDcCDWNFILl9ikzEC0gZlV
-         9PVQ==
+        b=NvO4vIh3ynzNmugwXozjTM+/taAxCt7iTRGCFYIa4hSqlHFiCWLV9ctn7G/5DhbWlO
+         LIn/8CSPXwRhW0PJ/BfO40kb6/w0hwQBY6OeEJ2kJ3l8X7KubTMP3AF9oE+7vPQvzML7
+         +MJXgAG0UZFmVPvCCKxvoDERVWz3O0cTzVQrowMwYr6HshPfZlPOF+d5Dp1PRo/EPABZ
+         69qmisoJ0aSRoTWF1ZVcwg+2N9y36d06lm2FIsCsLeLfPs7AGQdjvLqBb1/UBZrHNYi4
+         e3sxyQi2PwvzxqBTALNAP1LDcXc9gGi9+lMl3/42hDQIBSaKS3TDkFFZ79dfPVe5iN19
+         Gkuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=pILgX4qmWPDEo+FllF7pXDQL2dWnRzBzAqVL780ebL0=;
-        fh=E5042cbrlOhqCF/vSIKw3cvFjZyuvP8gnyNdH0I4TZk=;
-        b=Hvk9fkqJk/CWppMsm2/1DfggDidQb1Wg0nN79EjZXTHZ9Y/q0RSqVrasD7L1UOD1BP
-         WIzJyvNSYlodlkLoE2yRxk7tgxuG9cfH33Tj+5SwH7YHfdUydTlesa8oja5UTy6APvtW
-         4H+C1JIGZWk0bE9pParElb5IjwAE6JZZg78z6yzcaS3QKG1nDdgaVg1xLVOLvdV5Sy4B
-         60UtXJbSbxrvIXm8sdBW+3/vbQ43l8obal6KSh+pXdw6BQdp+BEyajlfQ5Hz9Yrtvtek
-         bUNfPa9BEX02c6Jl8zhUMDptektGN5T6IisCV/T086lR2Ld2cVbozPFgw/8RQaWDJk8F
-         VCdg==;
+        bh=JkAwTx0OkQeZQvYLzrNAV/RC6xNW2lAxLycOTzYaqpI=;
+        fh=o+ins5HYUut2DgJhJRyjCJqW0m8UKZfchDj5L1Myjzw=;
+        b=wnsOsywdzNQ8z/Ame69LooIH83I2q9q5RHOiabyUhSYYSNLQywAqkX7NLk0XKLU+rS
+         tX5QBO0o6nlsC5tLKgCqpNI/y9zp6bYnjIt0PizmmO/3cbne8tkG6udUAukyf3GJHnzJ
+         fH30yW1E9cSkxzrv5RcMHPCAD8qEvr9hff1swMj0hdziZpREFS9WKVU7DLi3inxO1kcl
+         wUVoKL3SsWCBnXbtzNYff658kxbuESQcZZ14IgBvfkszUeA991EQLnUDXGjV5B0jkEEP
+         gI2ptr3s26LmQi7XEe5Xl/UhEjL4OGaheucMDpJGvb4wfrcivnnPNmhtKHP7S4BKk+7m
+         Ju+Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qd4XxyWr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EYGbRIwF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t10-20020a05600c198a00b00412f30e036fsi4237738wmq.173.2024.03.26.08.47.16
+        by mx.google.com with ESMTPS id f18-20020adff452000000b0033ec9742f68si5505725wrp.741.2024.03.26.08.47.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Mar 2024 08:47:16 -0700 (PDT)
+        Tue, 26 Mar 2024 08:47:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qd4XxyWr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EYGbRIwF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rp90C-0004Pj-AW; Tue, 26 Mar 2024 11:46:16 -0400
+	id 1rp8zR-0003dt-Tm; Tue, 26 Mar 2024 11:45:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp8zx-0003zm-07
- for qemu-devel@nongnu.org; Tue, 26 Mar 2024 11:46:01 -0400
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp8zI-0003b8-LF
+ for qemu-devel@nongnu.org; Tue, 26 Mar 2024 11:45:26 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp8zt-0001Ea-72
- for qemu-devel@nongnu.org; Tue, 26 Mar 2024 11:45:59 -0400
-Received: by mail-lj1-x234.google.com with SMTP id
- 38308e7fff4ca-2d6ee81bcd4so6777701fa.2
- for <qemu-devel@nongnu.org>; Tue, 26 Mar 2024 08:45:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp8zE-00016J-On
+ for qemu-devel@nongnu.org; Tue, 26 Mar 2024 11:45:19 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4148c6af2d3so9881685e9.1
+ for <qemu-devel@nongnu.org>; Tue, 26 Mar 2024 08:45:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711467954; x=1712072754; darn=nongnu.org;
+ d=linaro.org; s=google; t=1711467915; x=1712072715; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=pILgX4qmWPDEo+FllF7pXDQL2dWnRzBzAqVL780ebL0=;
- b=qd4XxyWrCrUcGvRO7kuuWoY6Wi6laaGq6BfdtucybR0jNF6v6sjhh7ZlqxhjeOW7H+
- YgmnW9WChgHOOopV7wChhrtTTxsHhCejBcFzvkYVMBAcX6ZNMlu7vSMAXMEps1btWy4e
- kfU6fWI74cJ0902WOrAMNaYUz/3B6TU/eDexDKbht7XaECU+o/ygRrHqdWrwN3KJ00PY
- i/cEDQwE6ss3mYFUd3stHUXatea3NuOzB0tRJoHp3i56Fbif/4/Nif4TEISbZfOAWA2U
- sOGfhuZ738k7ptayJT2HxhhkGUfxMJx1acsOayqLT/pajGASdQjL68SO18Z1CYCPT3cq
- 8PXA==
+ bh=JkAwTx0OkQeZQvYLzrNAV/RC6xNW2lAxLycOTzYaqpI=;
+ b=EYGbRIwFhOMph4BeoqqsSXXfTOYU7nb4l9JMMeH+BSJsDb2o81ha1ptGWJ+M82qQXo
+ jlN6MgyCLe2cOLhE4WEicl8IEU7SotYBuz9nl1rUD1bE/sBk4okPTND89qpbZATi0CN9
+ 7sgGAL7Dng686oBZr/QGaAn5w7QNbht68nDd8MDouinTWTrccvZmnq/DZXCIybPMGztp
+ TvJTRfq8843IHTV92MUhaQ433IVYgJyZ0N2bwOqrW+G77+Q3u949aTo7vzLvO3LuSjcH
+ oIjkcjEaNXsez6b2biUVEnrpCXegIY5MqvZTkJqmJGhgz6xrfMGkWx1AZQ7Y+z9MUYX/
+ iE0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711467954; x=1712072754;
+ d=1e100.net; s=20230601; t=1711467915; x=1712072715;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=pILgX4qmWPDEo+FllF7pXDQL2dWnRzBzAqVL780ebL0=;
- b=Ezfdcb1PljyqIW/0rAvFTc9fIxeecWkByZXjqIz4ZmEebxHV1i1BV3MQlG01G+99Rq
- /D/Vskwul6L62rRphIwX6A00tspcsaoz+Tvgz78HFprByAnK+1QRLrJPPRE/WDCUIg2z
- 1kBASWLjcejNWPeLnR/MK9gR3n6Ap4Yuyu6ztXptinTfBFNy4HzVzX1W7OYuXtgQx+DC
- 7/OVKVRJGWSduTqhd1nKaDksGLO9b0yKPaHMCDghhtoz//d3BKAb5ZyAu373J/V88Yzn
- dGrbIevHredU5yDa9UrNCH2I/knHA9NuOl4sTfbmrpGfpGq/i06dE9mWhdwvUmJPvMIH
- +7Iw==
-X-Gm-Message-State: AOJu0YwPqVN5fZMyOJrVfar4RUTfm7MOKtjF3Kj2MPQ7kt+6+4kHWS10
- 2cgkTwyMLEWr1hNLKrrUY/cZxYt1fAcKuoUmIWJNLgjt5NdKY1pP1pl0lFEqZmkpP7Dwi7gDG0B
- i
-X-Received: by 2002:a2e:914b:0:b0:2d6:f100:6e6b with SMTP id
- q11-20020a2e914b000000b002d6f1006e6bmr888577ljg.18.1711467953968; 
- Tue, 26 Mar 2024 08:45:53 -0700 (PDT)
+ bh=JkAwTx0OkQeZQvYLzrNAV/RC6xNW2lAxLycOTzYaqpI=;
+ b=w8KwMDkOkeTGBQly5N3VgFyxjpYGTTB1zPANIrrjyQltF/5rbpg1FqItx1h28kLIxz
+ ge53m6qBD8a7N3UhncViPvZGrKhqJtXTAR91iK9WVTzVCqkxaoYe4G8IO49UywupKcZG
+ 94kU+wTd5oY9dMbdIjDMyzrWfnSWmQktA2xNH+y1dL4IFo5wtR+8q+5zmrgLyTWeqHqO
+ enazgeA9J8Ra4TNA1NmkAXps8aYcLd2PLfwKJieXvSTf2O2E7bNjV2VdsxT2Yck6m1Bk
+ 9yQmPAoEpFYoKWqgdCYipIQDQT/JpJJ6a0+ub3CXleZlUpYGJbLBOYZMVeHbr/pxaSS+
+ aWpg==
+X-Gm-Message-State: AOJu0Yx3AKqQfDalXph7X6Vdnt9BtGQRAyRFu9dHIIKwAkXZ+bpFngFK
+ yT59tH3fVjc2tVmURISBgvuLWnCGz3aCM7y/rpHo10ZvECEv8IkYItzuOY/hlpNLzU5rA0UvVpu
+ /
+X-Received: by 2002:a05:600c:4f01:b0:414:8948:621c with SMTP id
+ l1-20020a05600c4f0100b004148948621cmr4736654wmq.8.1711467914751; 
+ Tue, 26 Mar 2024 08:45:14 -0700 (PDT)
 Received: from m1x-phil.lan ([176.176.155.229])
  by smtp.gmail.com with ESMTPSA id
- b2-20020a05600003c200b00341ddb65b07sm112154wrg.63.2024.03.26.08.45.52
+ p3-20020a05600c204300b004148090cf86sm1760810wmg.0.2024.03.26.08.45.13
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 26 Mar 2024 08:45:53 -0700 (PDT)
+ Tue, 26 Mar 2024 08:45:14 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- BALATON Zoltan <balaton@eik.bme.hu>,
+ Gregory Price <gregory.price@memverge.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 08/13] docs/system/ppc/amigang.rst: Fix formatting
-Date: Tue, 26 Mar 2024 16:44:59 +0100
-Message-ID: <20240326154505.8300-9-philmd@linaro.org>
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>
+Subject: [PULL 01/13] target/i386/tcg: Enable page walking from MMIO memory
+Date: Tue, 26 Mar 2024 16:44:52 +0100
+Message-ID: <20240326154505.8300-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240326154505.8300-1-philmd@linaro.org>
 References: <20240326154505.8300-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::234;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x234.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ WEIRD_PORT=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,44 +132,254 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4Pl+xVFiyZ7Q
+X-TUID: mKrF5XPp4RQu
 
-From: BALATON Zoltan <balaton@eik.bme.hu>
+From: Gregory Price <gregory.price@memverge.com>
 
-Add missing space to fix character formatting where it was missed in
-two places.
+CXL emulation of interleave requires read and write hooks due to
+requirement for subpage granularity. The Linux kernel stack now enables
+using this memory as conventional memory in a separate NUMA node. If a
+process is deliberately forced to run from that node
+$ numactl --membind=1 ls
+the page table walk on i386 fails.
 
-Fixes: 623d9065b6 (docs/system/ppc: Document running Linux on AmigaNG machines)
-Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20240324161148.4650D4E601F@zero.eik.bme.hu>
+Useful part of backtrace:
+
+    (cpu=cpu@entry=0x555556fd9000, fmt=fmt@entry=0x555555fe3378 "cpu_io_recompile: could not find TB for pc=%p")
+    at ../../cpu-target.c:359
+    (retaddr=0, addr=19595792376, attrs=..., xlat=<optimized out>, cpu=0x555556fd9000, out_offset=<synthetic pointer>)
+    at ../../accel/tcg/cputlb.c:1339
+    (cpu=0x555556fd9000, full=0x7fffee0d96e0, ret_be=ret_be@entry=0, addr=19595792376, size=size@entry=8, mmu_idx=4, type=MMU_DATA_LOAD, ra=0) at ../../accel/tcg/cputlb.c:2030
+    (cpu=cpu@entry=0x555556fd9000, p=p@entry=0x7ffff56fddc0, mmu_idx=<optimized out>, type=type@entry=MMU_DATA_LOAD, memop=<optimized out>, ra=ra@entry=0) at ../../accel/tcg/cputlb.c:2356
+    (cpu=cpu@entry=0x555556fd9000, addr=addr@entry=19595792376, oi=oi@entry=52, ra=ra@entry=0, access_type=access_type@entry=MMU_DATA_LOAD) at ../../accel/tcg/cputlb.c:2439
+    at ../../accel/tcg/ldst_common.c.inc:301
+    at ../../target/i386/tcg/sysemu/excp_helper.c:173
+    (err=0x7ffff56fdf80, out=0x7ffff56fdf70, mmu_idx=0, access_type=MMU_INST_FETCH, addr=18446744072116178925, env=0x555556fdb7c0)
+    at ../../target/i386/tcg/sysemu/excp_helper.c:578
+    (cs=0x555556fd9000, addr=18446744072116178925, size=<optimized out>, access_type=MMU_INST_FETCH, mmu_idx=0, probe=<optimized out>, retaddr=0) at ../../target/i386/tcg/sysemu/excp_helper.c:604
+
+Avoid this by plumbing the address all the way down from
+x86_cpu_tlb_fill() where is available as retaddr to the actual accessors
+which provide it to probe_access_full() which already handles MMIO accesses.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2180
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2220
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Gregory Price <gregory.price@memverge.com>
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Message-ID: <20240307155304.31241-2-Jonathan.Cameron@huawei.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- docs/system/ppc/amigang.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/i386/tcg/sysemu/excp_helper.c | 57 +++++++++++++++-------------
+ 1 file changed, 30 insertions(+), 27 deletions(-)
 
-diff --git a/docs/system/ppc/amigang.rst b/docs/system/ppc/amigang.rst
-index ba1a3d80b9..e2c9cb74b7 100644
---- a/docs/system/ppc/amigang.rst
-+++ b/docs/system/ppc/amigang.rst
-@@ -16,7 +16,7 @@ firmware to support AmigaOS 4.
- Emulated devices
- ----------------
+diff --git a/target/i386/tcg/sysemu/excp_helper.c b/target/i386/tcg/sysemu/excp_helper.c
+index 8f7011d966..7a57b7dd10 100644
+--- a/target/i386/tcg/sysemu/excp_helper.c
++++ b/target/i386/tcg/sysemu/excp_helper.c
+@@ -59,14 +59,14 @@ typedef struct PTETranslate {
+     hwaddr gaddr;
+ } PTETranslate;
  
-- * PowerPC 7457 CPU (can also use``-cpu g3, 750cxe, 750fx`` or ``750gx``)
-+ * PowerPC 7457 CPU (can also use ``-cpu g3, 750cxe, 750fx`` or ``750gx``)
-  * Articia S north bridge
-  * VIA VT82C686B south bridge
-  * PCI VGA compatible card (guests may need other card instead)
-@@ -73,7 +73,7 @@ https://www.powerdeveloper.org/platforms/pegasos/schematics.
- Emulated devices
- ----------------
+-static bool ptw_translate(PTETranslate *inout, hwaddr addr)
++static bool ptw_translate(PTETranslate *inout, hwaddr addr, uint64_t ra)
+ {
+     CPUTLBEntryFull *full;
+     int flags;
  
-- * PowerPC 7457 CPU (can also use``-cpu g3`` or ``750cxe``)
-+ * PowerPC 7457 CPU (can also use ``-cpu g3`` or ``750cxe``)
-  * Marvell MV64361 Discovery II north bridge
-  * VIA VT8231 south bridge
-  * PCI VGA compatible card (guests may need other card instead)
+     inout->gaddr = addr;
+     flags = probe_access_full(inout->env, addr, 0, MMU_DATA_STORE,
+-                              inout->ptw_idx, true, &inout->haddr, &full, 0);
++                              inout->ptw_idx, true, &inout->haddr, &full, ra);
+ 
+     if (unlikely(flags & TLB_INVALID_MASK)) {
+         TranslateFault *err = inout->err;
+@@ -82,20 +82,20 @@ static bool ptw_translate(PTETranslate *inout, hwaddr addr)
+     return true;
+ }
+ 
+-static inline uint32_t ptw_ldl(const PTETranslate *in)
++static inline uint32_t ptw_ldl(const PTETranslate *in, uint64_t ra)
+ {
+     if (likely(in->haddr)) {
+         return ldl_p(in->haddr);
+     }
+-    return cpu_ldl_mmuidx_ra(in->env, in->gaddr, in->ptw_idx, 0);
++    return cpu_ldl_mmuidx_ra(in->env, in->gaddr, in->ptw_idx, ra);
+ }
+ 
+-static inline uint64_t ptw_ldq(const PTETranslate *in)
++static inline uint64_t ptw_ldq(const PTETranslate *in, uint64_t ra)
+ {
+     if (likely(in->haddr)) {
+         return ldq_p(in->haddr);
+     }
+-    return cpu_ldq_mmuidx_ra(in->env, in->gaddr, in->ptw_idx, 0);
++    return cpu_ldq_mmuidx_ra(in->env, in->gaddr, in->ptw_idx, ra);
+ }
+ 
+ /*
+@@ -132,7 +132,8 @@ static inline bool ptw_setl(const PTETranslate *in, uint32_t old, uint32_t set)
+ }
+ 
+ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
+-                          TranslateResult *out, TranslateFault *err)
++                          TranslateResult *out, TranslateFault *err,
++                          uint64_t ra)
+ {
+     const target_ulong addr = in->addr;
+     const int pg_mode = in->pg_mode;
+@@ -164,11 +165,11 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
+                  * Page table level 5
+                  */
+                 pte_addr = (in->cr3 & ~0xfff) + (((addr >> 48) & 0x1ff) << 3);
+-                if (!ptw_translate(&pte_trans, pte_addr)) {
++                if (!ptw_translate(&pte_trans, pte_addr, ra)) {
+                     return false;
+                 }
+             restart_5:
+-                pte = ptw_ldq(&pte_trans);
++                pte = ptw_ldq(&pte_trans, ra);
+                 if (!(pte & PG_PRESENT_MASK)) {
+                     goto do_fault;
+                 }
+@@ -188,11 +189,11 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
+              * Page table level 4
+              */
+             pte_addr = (pte & PG_ADDRESS_MASK) + (((addr >> 39) & 0x1ff) << 3);
+-            if (!ptw_translate(&pte_trans, pte_addr)) {
++            if (!ptw_translate(&pte_trans, pte_addr, ra)) {
+                 return false;
+             }
+         restart_4:
+-            pte = ptw_ldq(&pte_trans);
++            pte = ptw_ldq(&pte_trans, ra);
+             if (!(pte & PG_PRESENT_MASK)) {
+                 goto do_fault;
+             }
+@@ -208,11 +209,11 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
+              * Page table level 3
+              */
+             pte_addr = (pte & PG_ADDRESS_MASK) + (((addr >> 30) & 0x1ff) << 3);
+-            if (!ptw_translate(&pte_trans, pte_addr)) {
++            if (!ptw_translate(&pte_trans, pte_addr, ra)) {
+                 return false;
+             }
+         restart_3_lma:
+-            pte = ptw_ldq(&pte_trans);
++            pte = ptw_ldq(&pte_trans, ra);
+             if (!(pte & PG_PRESENT_MASK)) {
+                 goto do_fault;
+             }
+@@ -235,12 +236,12 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
+              * Page table level 3
+              */
+             pte_addr = (in->cr3 & 0xffffffe0ULL) + ((addr >> 27) & 0x18);
+-            if (!ptw_translate(&pte_trans, pte_addr)) {
++            if (!ptw_translate(&pte_trans, pte_addr, ra)) {
+                 return false;
+             }
+             rsvd_mask |= PG_HI_USER_MASK;
+         restart_3_nolma:
+-            pte = ptw_ldq(&pte_trans);
++            pte = ptw_ldq(&pte_trans, ra);
+             if (!(pte & PG_PRESENT_MASK)) {
+                 goto do_fault;
+             }
+@@ -257,11 +258,11 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
+          * Page table level 2
+          */
+         pte_addr = (pte & PG_ADDRESS_MASK) + (((addr >> 21) & 0x1ff) << 3);
+-        if (!ptw_translate(&pte_trans, pte_addr)) {
++        if (!ptw_translate(&pte_trans, pte_addr, ra)) {
+             return false;
+         }
+     restart_2_pae:
+-        pte = ptw_ldq(&pte_trans);
++        pte = ptw_ldq(&pte_trans, ra);
+         if (!(pte & PG_PRESENT_MASK)) {
+             goto do_fault;
+         }
+@@ -283,10 +284,10 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
+          * Page table level 1
+          */
+         pte_addr = (pte & PG_ADDRESS_MASK) + (((addr >> 12) & 0x1ff) << 3);
+-        if (!ptw_translate(&pte_trans, pte_addr)) {
++        if (!ptw_translate(&pte_trans, pte_addr, ra)) {
+             return false;
+         }
+-        pte = ptw_ldq(&pte_trans);
++        pte = ptw_ldq(&pte_trans, ra);
+         if (!(pte & PG_PRESENT_MASK)) {
+             goto do_fault;
+         }
+@@ -301,11 +302,11 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
+          * Page table level 2
+          */
+         pte_addr = (in->cr3 & 0xfffff000ULL) + ((addr >> 20) & 0xffc);
+-        if (!ptw_translate(&pte_trans, pte_addr)) {
++        if (!ptw_translate(&pte_trans, pte_addr, ra)) {
+             return false;
+         }
+     restart_2_nopae:
+-        pte = ptw_ldl(&pte_trans);
++        pte = ptw_ldl(&pte_trans, ra);
+         if (!(pte & PG_PRESENT_MASK)) {
+             goto do_fault;
+         }
+@@ -330,10 +331,10 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
+          * Page table level 1
+          */
+         pte_addr = (pte & ~0xfffu) + ((addr >> 10) & 0xffc);
+-        if (!ptw_translate(&pte_trans, pte_addr)) {
++        if (!ptw_translate(&pte_trans, pte_addr, ra)) {
+             return false;
+         }
+-        pte = ptw_ldl(&pte_trans);
++        pte = ptw_ldl(&pte_trans, ra);
+         if (!(pte & PG_PRESENT_MASK)) {
+             goto do_fault;
+         }
+@@ -526,7 +527,8 @@ static G_NORETURN void raise_stage2(CPUX86State *env, TranslateFault *err,
+ 
+ static bool get_physical_address(CPUX86State *env, vaddr addr,
+                                  MMUAccessType access_type, int mmu_idx,
+-                                 TranslateResult *out, TranslateFault *err)
++                                 TranslateResult *out, TranslateFault *err,
++                                 uint64_t ra)
+ {
+     TranslateParams in;
+     bool use_stage2 = env->hflags2 & HF2_NPT_MASK;
+@@ -546,7 +548,7 @@ static bool get_physical_address(CPUX86State *env, vaddr addr,
+                 env->nested_pg_mode & PG_MODE_LMA ? MMU_USER64_IDX : MMU_USER32_IDX;
+             in.ptw_idx = MMU_PHYS_IDX;
+ 
+-            if (!mmu_translate(env, &in, out, err)) {
++            if (!mmu_translate(env, &in, out, err, ra)) {
+                 err->stage2 = S2_GPA;
+                 return false;
+             }
+@@ -577,7 +579,7 @@ static bool get_physical_address(CPUX86State *env, vaddr addr,
+                     return false;
+                 }
+             }
+-            return mmu_translate(env, &in, out, err);
++            return mmu_translate(env, &in, out, err, ra);
+         }
+         break;
+     }
+@@ -597,7 +599,8 @@ bool x86_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
+     TranslateResult out;
+     TranslateFault err;
+ 
+-    if (get_physical_address(env, addr, access_type, mmu_idx, &out, &err)) {
++    if (get_physical_address(env, addr, access_type, mmu_idx, &out, &err,
++                             retaddr)) {
+         /*
+          * Even if 4MB pages, we map only one 4KB page in the cache to
+          * avoid filling it too fast.
 -- 
 2.41.0
 

@@ -1,385 +1,212 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1433514ejj;
-        Tue, 26 Mar 2024 08:47:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX2odhyE3suMK+ebb9hJiCO1Xga/rDodOBmgAboACgOTEqSUiRT73RErSEM3ZsRj3I9rMX+pT3sL9sl+BcUjF+bwwGUN2NV
-X-Google-Smtp-Source: AGHT+IEUo7PXDOj06JEcbwqt8H2H+qnNYBZWJyhoLuZ50d5DGzYqtWH+UiAwSqnEhmtf8UQMu4ny
-X-Received: by 2002:a5d:6b52:0:b0:33e:ca35:9fe8 with SMTP id x18-20020a5d6b52000000b0033eca359fe8mr24078wrw.19.1711468060321;
-        Tue, 26 Mar 2024 08:47:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711468060; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1433570ejj;
+        Tue, 26 Mar 2024 08:47:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWWQWGWN0Taef2nE8kVnIzNjn2Zr+X2brtUCMeTDsBvapvHrRvFKxuX3JtPGwfyMYZvhBEOkoloE7idFpLFdUZYAt9bKxPk
+X-Google-Smtp-Source: AGHT+IGs2bp2oCxq9jOg9N4YdFxkehjQRrACNmTNx7fhy4RVIoLfomh6sd6KG0+T/7+uJq4zrTnT
+X-Received: by 2002:a05:6000:151:b0:33e:c271:8ca3 with SMTP id r17-20020a056000015100b0033ec2718ca3mr37670wrx.10.1711468063937;
+        Tue, 26 Mar 2024 08:47:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711468063; cv=none;
         d=google.com; s=arc-20160816;
-        b=NvO4vIh3ynzNmugwXozjTM+/taAxCt7iTRGCFYIa4hSqlHFiCWLV9ctn7G/5DhbWlO
-         LIn/8CSPXwRhW0PJ/BfO40kb6/w0hwQBY6OeEJ2kJ3l8X7KubTMP3AF9oE+7vPQvzML7
-         +MJXgAG0UZFmVPvCCKxvoDERVWz3O0cTzVQrowMwYr6HshPfZlPOF+d5Dp1PRo/EPABZ
-         69qmisoJ0aSRoTWF1ZVcwg+2N9y36d06lm2FIsCsLeLfPs7AGQdjvLqBb1/UBZrHNYi4
-         e3sxyQi2PwvzxqBTALNAP1LDcXc9gGi9+lMl3/42hDQIBSaKS3TDkFFZ79dfPVe5iN19
-         Gkuw==
+        b=rrhAZdpdtsxsA+2+15T1krgZG2XO/qKcNTrOIONlGrw3VbG4aODxHr7Xql/MsJkBVj
+         kP5KKpXduog5wsl0RIS4cy4IBgrkge5qyoEMPN+HqG3a5wzIIprezjPcDvL/DLJLuZq5
+         HUUqBj1p+fkE4M2i/XYzBJn/MrThLFA4uoEQ1nNmvuQ9vEjyFL2ba0cHvtoNy3SEvr4N
+         mCmjG58Ni0HgzhIPToWGGKnYFPoCYLWJf1OEF63teR1Z3NqduO2XHbiJvJA1Z9QZ3jnk
+         Vm4gfd66XwAtoWjaqkRxoFO+TBgafN8qYIPEVhpxVxKkg+vttapXf4AWclcQjP9TKZt8
+         i1ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=JkAwTx0OkQeZQvYLzrNAV/RC6xNW2lAxLycOTzYaqpI=;
-        fh=o+ins5HYUut2DgJhJRyjCJqW0m8UKZfchDj5L1Myjzw=;
-        b=wnsOsywdzNQ8z/Ame69LooIH83I2q9q5RHOiabyUhSYYSNLQywAqkX7NLk0XKLU+rS
-         tX5QBO0o6nlsC5tLKgCqpNI/y9zp6bYnjIt0PizmmO/3cbne8tkG6udUAukyf3GJHnzJ
-         fH30yW1E9cSkxzrv5RcMHPCAD8qEvr9hff1swMj0hdziZpREFS9WKVU7DLi3inxO1kcl
-         wUVoKL3SsWCBnXbtzNYff658kxbuESQcZZ14IgBvfkszUeA991EQLnUDXGjV5B0jkEEP
-         gI2ptr3s26LmQi7XEe5Xl/UhEjL4OGaheucMDpJGvb4wfrcivnnPNmhtKHP7S4BKk+7m
-         Ju+Q==;
+        bh=pTnsklKw4fWTCEXstwwApylL5b79xPCluS5bdtq/AP4=;
+        fh=8fwwG4jf5s+vp2LxKfvGZcFOYvMbRyHUPH92VDUPV1M=;
+        b=oBnNI6benjCdsTRDcvjqOKT7D82hc7cT4YxyYQnIYJ+jiNZrAvPHjvYqRQERuHe8cu
+         2LxuAeWw3ehvYLZ7RrCP9BYrwtP/x47/gfB1csUiviGu/YNUu7kwHoltzqIeFI09F0Zg
+         bCmp9qO93+83Gvv8Efi233gzppvRI3ZbQlruHNJlZzCyecWGFjGbDe0rBR3JlgyIJr/j
+         71KLSbY7cLmbJrAmEm8OglvG3OdWtbKks0ujaGMbX/EkRvVEFDURGE635wEypZCrAowS
+         SvbJPMYWYWHwhGRua066NESBUuqvNNyFfk0RAh+biJNz8tCdFGUH+dlfJgfqDq0NuXXq
+         Qz/Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EYGbRIwF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=K9kypSWj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f18-20020adff452000000b0033ec9742f68si5505725wrp.741.2024.03.26.08.47.40
+        by mx.google.com with ESMTPS id t2-20020a0560001a4200b0033e7be1f2c5si5465567wry.230.2024.03.26.08.47.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Mar 2024 08:47:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 26 Mar 2024 08:47:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EYGbRIwF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=K9kypSWj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rp8zR-0003dt-Tm; Tue, 26 Mar 2024 11:45:29 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rp90E-0004Y4-6x; Tue, 26 Mar 2024 11:46:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp8zI-0003b8-LF
- for qemu-devel@nongnu.org; Tue, 26 Mar 2024 11:45:26 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp90A-0004Ds-J1
+ for qemu-arm@nongnu.org; Tue, 26 Mar 2024 11:46:14 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp8zE-00016J-On
- for qemu-devel@nongnu.org; Tue, 26 Mar 2024 11:45:19 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4148c6af2d3so9881685e9.1
- for <qemu-devel@nongnu.org>; Tue, 26 Mar 2024 08:45:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp908-0001JK-Ks
+ for qemu-arm@nongnu.org; Tue, 26 Mar 2024 11:46:14 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-341cf77b86bso1462724f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 26 Mar 2024 08:46:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711467915; x=1712072715; darn=nongnu.org;
+ d=linaro.org; s=google; t=1711467971; x=1712072771; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JkAwTx0OkQeZQvYLzrNAV/RC6xNW2lAxLycOTzYaqpI=;
- b=EYGbRIwFhOMph4BeoqqsSXXfTOYU7nb4l9JMMeH+BSJsDb2o81ha1ptGWJ+M82qQXo
- jlN6MgyCLe2cOLhE4WEicl8IEU7SotYBuz9nl1rUD1bE/sBk4okPTND89qpbZATi0CN9
- 7sgGAL7Dng686oBZr/QGaAn5w7QNbht68nDd8MDouinTWTrccvZmnq/DZXCIybPMGztp
- TvJTRfq8843IHTV92MUhaQ433IVYgJyZ0N2bwOqrW+G77+Q3u949aTo7vzLvO3LuSjcH
- oIjkcjEaNXsez6b2biUVEnrpCXegIY5MqvZTkJqmJGhgz6xrfMGkWx1AZQ7Y+z9MUYX/
- iE0Q==
+ bh=pTnsklKw4fWTCEXstwwApylL5b79xPCluS5bdtq/AP4=;
+ b=K9kypSWjrfL9N49/W0NFOIIlz2Dnk9rtYgHDD6A1UPo93CPorPUdqVmjm6kgb6pr2O
+ ZuDtGSzklFVjwXlOvepNxv0tv7EHRW9ndWLYhbvZBKNEJKw3G3sqh/NjSeLkNEqY3810
+ lC/FZkOjdhaCgmmaGXaR0yLvPtpXg37ndUompjvycbESn9AEB3SfLm3FEeUVU8i9a1UC
+ FL/if81txP+DD12rEucTkPTogqMX0JCVVr4lUnZc4f+qhgv9kWP0UtxgbS7YcTUioGqI
+ 8aHdJtGGmg9YCTjK7Udiyf5IkzFCclroIJUHFaunEgDmUZuQS2O0Gx9apk5FQYDC5pU6
+ tDkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711467915; x=1712072715;
+ d=1e100.net; s=20230601; t=1711467971; x=1712072771;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=JkAwTx0OkQeZQvYLzrNAV/RC6xNW2lAxLycOTzYaqpI=;
- b=w8KwMDkOkeTGBQly5N3VgFyxjpYGTTB1zPANIrrjyQltF/5rbpg1FqItx1h28kLIxz
- ge53m6qBD8a7N3UhncViPvZGrKhqJtXTAR91iK9WVTzVCqkxaoYe4G8IO49UywupKcZG
- 94kU+wTd5oY9dMbdIjDMyzrWfnSWmQktA2xNH+y1dL4IFo5wtR+8q+5zmrgLyTWeqHqO
- enazgeA9J8Ra4TNA1NmkAXps8aYcLd2PLfwKJieXvSTf2O2E7bNjV2VdsxT2Yck6m1Bk
- 9yQmPAoEpFYoKWqgdCYipIQDQT/JpJJ6a0+ub3CXleZlUpYGJbLBOYZMVeHbr/pxaSS+
- aWpg==
-X-Gm-Message-State: AOJu0Yx3AKqQfDalXph7X6Vdnt9BtGQRAyRFu9dHIIKwAkXZ+bpFngFK
- yT59tH3fVjc2tVmURISBgvuLWnCGz3aCM7y/rpHo10ZvECEv8IkYItzuOY/hlpNLzU5rA0UvVpu
- /
-X-Received: by 2002:a05:600c:4f01:b0:414:8948:621c with SMTP id
- l1-20020a05600c4f0100b004148948621cmr4736654wmq.8.1711467914751; 
- Tue, 26 Mar 2024 08:45:14 -0700 (PDT)
+ bh=pTnsklKw4fWTCEXstwwApylL5b79xPCluS5bdtq/AP4=;
+ b=PIVl8i1F/7S5GQW2MJU/4Jj4xeHvRWMAmgA3BpG2CYycEWtGlS9EToYTWss7YQtFvh
+ SoesWDwHYnxUQrKZpC+77jJH5H5lTnq3S4kJrmUhuAVtzmRidPJMCqFr4l2BcsDnKvDL
+ oSXxRUMKrT5arlwHYJYODSm/vGBihPMEAt0PsrltwPrnz43m7PnEU17dRrxhNTQdst56
+ F/raSgamZlRlB0B5zwrGaCzkByPB1hzDf2ObKkMKNIfijrx4H7ISOr6bJV+Gv3x4a2yG
+ UJIlxBJ94oVxeCXoHQTRIsXH6Ul7gTyFEt3IQP9xrnxf4oP74bD1ZEWG0ddafLkFuJyu
+ Hf2g==
+X-Gm-Message-State: AOJu0YwBgFMPLdu7y1B8T4V/djUnXyRjwumz7QUrQ7H8yrpAJ9IlpjRt
+ kYALnROIJ95DLBywBuYAXfpCZSvHt1g3a0qNbXpTVYDt1VUGm2PhZO7G8CwKjn8=
+X-Received: by 2002:a5d:5b88:0:b0:33e:c0a9:79c with SMTP id
+ df8-20020a5d5b88000000b0033ec0a9079cmr24223wrb.23.1711467971342; 
+ Tue, 26 Mar 2024 08:46:11 -0700 (PDT)
 Received: from m1x-phil.lan ([176.176.155.229])
  by smtp.gmail.com with ESMTPSA id
- p3-20020a05600c204300b004148090cf86sm1760810wmg.0.2024.03.26.08.45.13
+ dv13-20020a0560000d8d00b0033e25c39ac3sm12463085wrb.80.2024.03.26.08.46.09
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 26 Mar 2024 08:45:14 -0700 (PDT)
+ Tue, 26 Mar 2024 08:46:10 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Gregory Price <gregory.price@memverge.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
+ Akihiko Odaki <akihiko.odaki@daynix.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>
-Subject: [PULL 01/13] target/i386/tcg: Enable page walking from MMIO memory
-Date: Tue, 26 Mar 2024 16:44:52 +0100
-Message-ID: <20240326154505.8300-2-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PULL 11/13] ui/cocoa: Fix aspect ratio
+Date: Tue, 26 Mar 2024 16:45:02 +0100
+Message-ID: <20240326154505.8300-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240326154505.8300-1-philmd@linaro.org>
 References: <20240326154505.8300-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_PORT=0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mKrF5XPp4RQu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 98oiaUVaIRQ5
 
-From: Gregory Price <gregory.price@memverge.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-CXL emulation of interleave requires read and write hooks due to
-requirement for subpage granularity. The Linux kernel stack now enables
-using this memory as conventional memory in a separate NUMA node. If a
-process is deliberately forced to run from that node
-$ numactl --membind=1 ls
-the page table walk on i386 fails.
+[NSWindow setContentAspectRatio:] does not trigger window resize itself,
+so the wrong aspect ratio will persist if nothing resizes the window.
+Call [NSWindow setContentSize:] in such a case.
 
-Useful part of backtrace:
-
-    (cpu=cpu@entry=0x555556fd9000, fmt=fmt@entry=0x555555fe3378 "cpu_io_recompile: could not find TB for pc=%p")
-    at ../../cpu-target.c:359
-    (retaddr=0, addr=19595792376, attrs=..., xlat=<optimized out>, cpu=0x555556fd9000, out_offset=<synthetic pointer>)
-    at ../../accel/tcg/cputlb.c:1339
-    (cpu=0x555556fd9000, full=0x7fffee0d96e0, ret_be=ret_be@entry=0, addr=19595792376, size=size@entry=8, mmu_idx=4, type=MMU_DATA_LOAD, ra=0) at ../../accel/tcg/cputlb.c:2030
-    (cpu=cpu@entry=0x555556fd9000, p=p@entry=0x7ffff56fddc0, mmu_idx=<optimized out>, type=type@entry=MMU_DATA_LOAD, memop=<optimized out>, ra=ra@entry=0) at ../../accel/tcg/cputlb.c:2356
-    (cpu=cpu@entry=0x555556fd9000, addr=addr@entry=19595792376, oi=oi@entry=52, ra=ra@entry=0, access_type=access_type@entry=MMU_DATA_LOAD) at ../../accel/tcg/cputlb.c:2439
-    at ../../accel/tcg/ldst_common.c.inc:301
-    at ../../target/i386/tcg/sysemu/excp_helper.c:173
-    (err=0x7ffff56fdf80, out=0x7ffff56fdf70, mmu_idx=0, access_type=MMU_INST_FETCH, addr=18446744072116178925, env=0x555556fdb7c0)
-    at ../../target/i386/tcg/sysemu/excp_helper.c:578
-    (cs=0x555556fd9000, addr=18446744072116178925, size=<optimized out>, access_type=MMU_INST_FETCH, mmu_idx=0, probe=<optimized out>, retaddr=0) at ../../target/i386/tcg/sysemu/excp_helper.c:604
-
-Avoid this by plumbing the address all the way down from
-x86_cpu_tlb_fill() where is available as retaddr to the actual accessors
-which provide it to probe_access_full() which already handles MMIO accesses.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2180
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2220
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Gregory Price <gregory.price@memverge.com>
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Message-ID: <20240307155304.31241-2-Jonathan.Cameron@huawei.com>
+Fixes: 91aa508d0274 ("ui/cocoa: Let the platform toggle fullscreen")
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20240323-fixes-v2-1-18651a2b0394@daynix.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/i386/tcg/sysemu/excp_helper.c | 57 +++++++++++++++-------------
- 1 file changed, 30 insertions(+), 27 deletions(-)
+ ui/cocoa.m | 41 ++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 40 insertions(+), 1 deletion(-)
 
-diff --git a/target/i386/tcg/sysemu/excp_helper.c b/target/i386/tcg/sysemu/excp_helper.c
-index 8f7011d966..7a57b7dd10 100644
---- a/target/i386/tcg/sysemu/excp_helper.c
-+++ b/target/i386/tcg/sysemu/excp_helper.c
-@@ -59,14 +59,14 @@ typedef struct PTETranslate {
-     hwaddr gaddr;
- } PTETranslate;
- 
--static bool ptw_translate(PTETranslate *inout, hwaddr addr)
-+static bool ptw_translate(PTETranslate *inout, hwaddr addr, uint64_t ra)
- {
-     CPUTLBEntryFull *full;
-     int flags;
- 
-     inout->gaddr = addr;
-     flags = probe_access_full(inout->env, addr, 0, MMU_DATA_STORE,
--                              inout->ptw_idx, true, &inout->haddr, &full, 0);
-+                              inout->ptw_idx, true, &inout->haddr, &full, ra);
- 
-     if (unlikely(flags & TLB_INVALID_MASK)) {
-         TranslateFault *err = inout->err;
-@@ -82,20 +82,20 @@ static bool ptw_translate(PTETranslate *inout, hwaddr addr)
-     return true;
- }
- 
--static inline uint32_t ptw_ldl(const PTETranslate *in)
-+static inline uint32_t ptw_ldl(const PTETranslate *in, uint64_t ra)
- {
-     if (likely(in->haddr)) {
-         return ldl_p(in->haddr);
+diff --git a/ui/cocoa.m b/ui/cocoa.m
+index 810751cf26..17e125d66d 100644
+--- a/ui/cocoa.m
++++ b/ui/cocoa.m
+@@ -519,6 +519,43 @@ - (void) drawRect:(NSRect) rect
      }
--    return cpu_ldl_mmuidx_ra(in->env, in->gaddr, in->ptw_idx, 0);
-+    return cpu_ldl_mmuidx_ra(in->env, in->gaddr, in->ptw_idx, ra);
  }
  
--static inline uint64_t ptw_ldq(const PTETranslate *in)
-+static inline uint64_t ptw_ldq(const PTETranslate *in, uint64_t ra)
++- (NSSize)fixAspectRatio:(NSSize)max
++{
++    NSSize scaled;
++    NSSize fixed;
++
++    scaled.width = screen.width * max.height;
++    scaled.height = screen.height * max.width;
++
++    /*
++     * Here screen is our guest's output size, and max is the size of the
++     * largest possible area of the screen we can display on.
++     * We want to scale up (screen.width x screen.height) by either:
++     *   1) max.height / screen.height
++     *   2) max.width / screen.width
++     * With the first scale factor the scale will result in an output height of
++     * max.height (i.e. we will fill the whole height of the available screen
++     * space and have black bars left and right) and with the second scale
++     * factor the scaling will result in an output width of max.width (i.e. we
++     * fill the whole width of the available screen space and have black bars
++     * top and bottom). We need to pick whichever keeps the whole of the guest
++     * output on the screen, which is to say the smaller of the two scale
++     * factors.
++     * To avoid doing more division than strictly necessary, instead of directly
++     * comparing scale factors 1 and 2 we instead calculate and compare those
++     * two scale factors multiplied by (screen.height * screen.width).
++     */
++    if (scaled.width < scaled.height) {
++        fixed.width = scaled.width / screen.height;
++        fixed.height = max.height;
++    } else {
++        fixed.width = max.width;
++        fixed.height = scaled.height / screen.width;
++    }
++
++    return fixed;
++}
++
+ - (NSSize) screenSafeAreaSize
  {
-     if (likely(in->haddr)) {
-         return ldq_p(in->haddr);
+     NSSize size = [[[self window] screen] frame].size;
+@@ -536,8 +573,10 @@ - (void) resizeWindow
+         [[self window] setContentSize:NSMakeSize(screen.width, screen.height)];
+         [[self window] center];
+     } else if ([[self window] styleMask] & NSWindowStyleMaskFullScreen) {
+-        [[self window] setContentSize:[self screenSafeAreaSize]];
++        [[self window] setContentSize:[self fixAspectRatio:[self screenSafeAreaSize]]];
+         [[self window] center];
++    } else {
++        [[self window] setContentSize:[self fixAspectRatio:[self frame].size]];
      }
--    return cpu_ldq_mmuidx_ra(in->env, in->gaddr, in->ptw_idx, 0);
-+    return cpu_ldq_mmuidx_ra(in->env, in->gaddr, in->ptw_idx, ra);
  }
  
- /*
-@@ -132,7 +132,8 @@ static inline bool ptw_setl(const PTETranslate *in, uint32_t old, uint32_t set)
- }
- 
- static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
--                          TranslateResult *out, TranslateFault *err)
-+                          TranslateResult *out, TranslateFault *err,
-+                          uint64_t ra)
- {
-     const target_ulong addr = in->addr;
-     const int pg_mode = in->pg_mode;
-@@ -164,11 +165,11 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
-                  * Page table level 5
-                  */
-                 pte_addr = (in->cr3 & ~0xfff) + (((addr >> 48) & 0x1ff) << 3);
--                if (!ptw_translate(&pte_trans, pte_addr)) {
-+                if (!ptw_translate(&pte_trans, pte_addr, ra)) {
-                     return false;
-                 }
-             restart_5:
--                pte = ptw_ldq(&pte_trans);
-+                pte = ptw_ldq(&pte_trans, ra);
-                 if (!(pte & PG_PRESENT_MASK)) {
-                     goto do_fault;
-                 }
-@@ -188,11 +189,11 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
-              * Page table level 4
-              */
-             pte_addr = (pte & PG_ADDRESS_MASK) + (((addr >> 39) & 0x1ff) << 3);
--            if (!ptw_translate(&pte_trans, pte_addr)) {
-+            if (!ptw_translate(&pte_trans, pte_addr, ra)) {
-                 return false;
-             }
-         restart_4:
--            pte = ptw_ldq(&pte_trans);
-+            pte = ptw_ldq(&pte_trans, ra);
-             if (!(pte & PG_PRESENT_MASK)) {
-                 goto do_fault;
-             }
-@@ -208,11 +209,11 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
-              * Page table level 3
-              */
-             pte_addr = (pte & PG_ADDRESS_MASK) + (((addr >> 30) & 0x1ff) << 3);
--            if (!ptw_translate(&pte_trans, pte_addr)) {
-+            if (!ptw_translate(&pte_trans, pte_addr, ra)) {
-                 return false;
-             }
-         restart_3_lma:
--            pte = ptw_ldq(&pte_trans);
-+            pte = ptw_ldq(&pte_trans, ra);
-             if (!(pte & PG_PRESENT_MASK)) {
-                 goto do_fault;
-             }
-@@ -235,12 +236,12 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
-              * Page table level 3
-              */
-             pte_addr = (in->cr3 & 0xffffffe0ULL) + ((addr >> 27) & 0x18);
--            if (!ptw_translate(&pte_trans, pte_addr)) {
-+            if (!ptw_translate(&pte_trans, pte_addr, ra)) {
-                 return false;
-             }
-             rsvd_mask |= PG_HI_USER_MASK;
-         restart_3_nolma:
--            pte = ptw_ldq(&pte_trans);
-+            pte = ptw_ldq(&pte_trans, ra);
-             if (!(pte & PG_PRESENT_MASK)) {
-                 goto do_fault;
-             }
-@@ -257,11 +258,11 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
-          * Page table level 2
-          */
-         pte_addr = (pte & PG_ADDRESS_MASK) + (((addr >> 21) & 0x1ff) << 3);
--        if (!ptw_translate(&pte_trans, pte_addr)) {
-+        if (!ptw_translate(&pte_trans, pte_addr, ra)) {
-             return false;
-         }
-     restart_2_pae:
--        pte = ptw_ldq(&pte_trans);
-+        pte = ptw_ldq(&pte_trans, ra);
-         if (!(pte & PG_PRESENT_MASK)) {
-             goto do_fault;
-         }
-@@ -283,10 +284,10 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
-          * Page table level 1
-          */
-         pte_addr = (pte & PG_ADDRESS_MASK) + (((addr >> 12) & 0x1ff) << 3);
--        if (!ptw_translate(&pte_trans, pte_addr)) {
-+        if (!ptw_translate(&pte_trans, pte_addr, ra)) {
-             return false;
-         }
--        pte = ptw_ldq(&pte_trans);
-+        pte = ptw_ldq(&pte_trans, ra);
-         if (!(pte & PG_PRESENT_MASK)) {
-             goto do_fault;
-         }
-@@ -301,11 +302,11 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
-          * Page table level 2
-          */
-         pte_addr = (in->cr3 & 0xfffff000ULL) + ((addr >> 20) & 0xffc);
--        if (!ptw_translate(&pte_trans, pte_addr)) {
-+        if (!ptw_translate(&pte_trans, pte_addr, ra)) {
-             return false;
-         }
-     restart_2_nopae:
--        pte = ptw_ldl(&pte_trans);
-+        pte = ptw_ldl(&pte_trans, ra);
-         if (!(pte & PG_PRESENT_MASK)) {
-             goto do_fault;
-         }
-@@ -330,10 +331,10 @@ static bool mmu_translate(CPUX86State *env, const TranslateParams *in,
-          * Page table level 1
-          */
-         pte_addr = (pte & ~0xfffu) + ((addr >> 10) & 0xffc);
--        if (!ptw_translate(&pte_trans, pte_addr)) {
-+        if (!ptw_translate(&pte_trans, pte_addr, ra)) {
-             return false;
-         }
--        pte = ptw_ldl(&pte_trans);
-+        pte = ptw_ldl(&pte_trans, ra);
-         if (!(pte & PG_PRESENT_MASK)) {
-             goto do_fault;
-         }
-@@ -526,7 +527,8 @@ static G_NORETURN void raise_stage2(CPUX86State *env, TranslateFault *err,
- 
- static bool get_physical_address(CPUX86State *env, vaddr addr,
-                                  MMUAccessType access_type, int mmu_idx,
--                                 TranslateResult *out, TranslateFault *err)
-+                                 TranslateResult *out, TranslateFault *err,
-+                                 uint64_t ra)
- {
-     TranslateParams in;
-     bool use_stage2 = env->hflags2 & HF2_NPT_MASK;
-@@ -546,7 +548,7 @@ static bool get_physical_address(CPUX86State *env, vaddr addr,
-                 env->nested_pg_mode & PG_MODE_LMA ? MMU_USER64_IDX : MMU_USER32_IDX;
-             in.ptw_idx = MMU_PHYS_IDX;
- 
--            if (!mmu_translate(env, &in, out, err)) {
-+            if (!mmu_translate(env, &in, out, err, ra)) {
-                 err->stage2 = S2_GPA;
-                 return false;
-             }
-@@ -577,7 +579,7 @@ static bool get_physical_address(CPUX86State *env, vaddr addr,
-                     return false;
-                 }
-             }
--            return mmu_translate(env, &in, out, err);
-+            return mmu_translate(env, &in, out, err, ra);
-         }
-         break;
-     }
-@@ -597,7 +599,8 @@ bool x86_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
-     TranslateResult out;
-     TranslateFault err;
- 
--    if (get_physical_address(env, addr, access_type, mmu_idx, &out, &err)) {
-+    if (get_physical_address(env, addr, access_type, mmu_idx, &out, &err,
-+                             retaddr)) {
-         /*
-          * Even if 4MB pages, we map only one 4KB page in the cache to
-          * avoid filling it too fast.
 -- 
 2.41.0
 

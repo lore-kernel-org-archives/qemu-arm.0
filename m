@@ -1,134 +1,209 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1432169ejj;
-        Tue, 26 Mar 2024 08:45:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW2eOwIEKh5Pu9C7aJtpn1kiDvGy13WYAeIeDx7msPP1K28m1uC4JwshTf7tydcHkyAzZ3V5/3YQnPLsMVpHgIB2kTfQeFa
-X-Received: by 2002:a05:600c:5249:b0:414:1fc:1081 with SMTP id fc9-20020a05600c524900b0041401fc1081mr2063096wmb.36.1711467920855;
-        Tue, 26 Mar 2024 08:45:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711467920; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1432276ejj;
+        Tue, 26 Mar 2024 08:45:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXFEaTtMEqxVojP0XCaFK2lzAfL9riO/tzpxrQ3YgvAvbyCvnOfj7tf9Q3FlHnEgPSySXVEsFJetmhaIJXmoLpDZ1b3xQP4
+X-Google-Smtp-Source: AGHT+IF5BWJcaizCSHQARXnZZAfCGeP+7E/kY4IZbbkqg3GscBvVHb1e0yTYYxRxScc/nAi3nB0k
+X-Received: by 2002:a05:6808:1701:b0:3c2:616a:22 with SMTP id bc1-20020a056808170100b003c2616a0022mr10740850oib.55.1711467932169;
+        Tue, 26 Mar 2024 08:45:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711467932; cv=none;
         d=google.com; s=arc-20160816;
-        b=OtbGW2/OUKuVoBnTdDOoHj1RrPjVId6I7rUX3JT74ePdaVfB66pteqgC7pRkAtBEtt
-         Y7KUvK5/mtVEM90t0SODHSkuefvbyA750VWitRnJNAtaUl60ayqD3zMzfaZaHyGfUEOy
-         GpH9N8eyk8xVBl/xT+7Qcz4ZHMlfbLX4Wemr3zRUVNl5zqdjKNtZFlKar9iVBd7RYdf9
-         3NQ1yh94g9I/7s6wUypSspi9zg0uENUTrzfn3VlgV0XXQsLrszmroPEegY2VtbyOQhis
-         MjsAW/Tqi1d+UOkJaxQlYC/fiQ47OuvvhEu1aOnwzYhkBx3u2U46kacz2gomcNolcEyM
-         ac5Q==
+        b=aa95FHDfdoVznMlx0zPFDLOKwv7yTJ/dQYrJ7L7m2/rHg8FTFpzdugQGsdrevQs2Gc
+         ESg8C/e5Xqb7PVkU6gpVnFiK+PDCO/mlGmJs6EsaVDkxZbzqT8MvSR0sdl5IAodd27dA
+         SLHti0kRKI9VeO9H8KefKvPQzSnsAHHjM22A7V/7UtUPcLixk49C3/tYd1uLcvFUQGwT
+         VSBssw66jwszT0Y/Ox621UeJBMy1GH2M7/+2cPVqGdMW8t6l8PEMY08jARivLOHV9gqa
+         HCMefCEJ04b3ow0eZIjef9Vylt64zWsV3/aG8D1n6v4vEIPDnL3TAhLXwJstINsneOhS
+         DsYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=D+2sufPZV1jZbwqSWcGkqalb0YdlIEBcm3JneTAQYPE=;
-        fh=hOvFLsRUzzDM41klNA+6MRPlNk1pVOEDm1IIhmfuHos=;
-        b=N2I/+r0D7Y6411dNY2PBOk4dpRql4prwo/P7nL42aEzmG3DsPjklsgK9v6AV+hOzWP
-         l5VJOu8U/arcrjQLnym0xYBxjGIdFM5dp4tSx9h1bSX8g8uw5xWQWRTxC6pokeaFHORx
-         F+z4yh3AwC7LtjqnBMbWfskoefLVzGI4YF82NsQwlIRRVlK0xbOKfJR1MfMQijpBblc6
-         di5Z43WPt4nvt+vA3d92Z7Ul63cTTknZAwmonLKyoGA6URJ6GhxR++Z5p2QBV+FG7jSM
-         n6w5X24MN4RiGy8BM6UAFEIlfk7Xug8bLIB+rpq7lnAtgvAEJWCTdxrS6UWh3RvNSD96
-         a93Q==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=hn7lLwxhhf3gNG9hNhmhqHwHMzru6i5It7d/ZRKMp5c=;
+        fh=mc4gOsX8ZopPHdUDDg78i1QqY75qACRVSvgtPpdhIeM=;
+        b=PY1PhiIXvqvKBs7lL39EN/ZNuP9ufeHflSby8a6mA5kX/VuPN73hs6tVQEG3/NMnqr
+         gc3IPZvzwgaggUe5EZtjAIzfY6LiLpaLudUN7RiJK0noSfMbWZK4ONWoQMfHDBOFbmY0
+         UGolo5bEI0FLnzqWhYFVuF1MThdovUY2SIfNpJCyKhh9OIrCRRxzyvO6aS5iZtyaaeh8
+         YF162SPMgTNMc+/ROQM4P6yOywsRNIw+hrdABgvJ0zsswMtjIOxyDOEk4e4e3NJqNtgU
+         KKXew04rw5ocaNYhMUpzNqbXOSBy+DJ7MfRo6tJo6Xb5hj3fonTQlvIfeLQKL7nBjdu8
+         /E2w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LFGTJY53;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Yb5lMLhX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q13-20020adfab0d000000b00341d977bd5dsor396675wrc.2.2024.03.26.08.45.20
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b10-20020ac87fca000000b0043175e5f530si847558qtk.711.2024.03.26.08.45.32
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 26 Mar 2024 08:45:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 26 Mar 2024 08:45:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LFGTJY53;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Yb5lMLhX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rp8zE-0003aN-Oo; Tue, 26 Mar 2024 11:45:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp8zA-0003YR-Lb
+ for qemu-arm@nongnu.org; Tue, 26 Mar 2024 11:45:13 -0400
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp8z8-00013I-Qt
+ for qemu-arm@nongnu.org; Tue, 26 Mar 2024 11:45:12 -0400
+Received: by mail-lj1-x235.google.com with SMTP id
+ 38308e7fff4ca-2d68cf90ec4so93860211fa.1
+ for <qemu-arm@nongnu.org>; Tue, 26 Mar 2024 08:45:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1711467920; x=1712072720; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=D+2sufPZV1jZbwqSWcGkqalb0YdlIEBcm3JneTAQYPE=;
-        b=LFGTJY53baSHdEmOiSznWN9y3WbyDYU1uhE+L4fyyGWerOpuWERliKEyKZj73zNXom
-         H17PXk6yxzWSlqjzZWeNFNKTeHsA2ATvXp+x5CxyRjrcJv5kLeNWPG49U2br0d03HT7b
-         DaBXhywJKx3uyk+eyjqDPl3G/3iVjzcSSzpQ9yqeVQ77mi3Gamf+7rOn+8snc6TZfd0d
-         XeWfHu15qqvvtVkMntDQIMWaHMaHByIYqjqsOd7JaBWiOlXzXRqRawAGIqVJpt5qUCwS
-         m3xTcG/CS+6BOMVMEKefWHi8+C5lFBKrlcAieKXz4t7XkV6R44L1qZtA1CNPILm0SK8x
-         qLag==
+ d=linaro.org; s=google; t=1711467909; x=1712072709; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=hn7lLwxhhf3gNG9hNhmhqHwHMzru6i5It7d/ZRKMp5c=;
+ b=Yb5lMLhXOiKn5VkpseRU65m2V2+9vB72Gq7NIpyoOd0vzxJydvcbsgZDZ8Tp9di5M4
+ QyWICCpbJTOqd434AzBzLHiBf9qkZDmkWqCnsK2rUnaBmrNZ7i5urO2x7ZW4jLgx0Jh2
+ xV0dhqjRwFIYCwc0mVk1VBDaf5QbAnHUtWDLDtlr4lXtZqtPtC0EjDhhByZ6Z5dhTM2d
+ C8zwh22r+e9ayzvjwlC3+he10IbdY5zI37WDLzFR0wGFTFxF2H9z1GUjEAfpQ1aEtuS6
+ wFYSBJHINrG32pOOCSdjVz4XRETqB+dmODdwx8qSLRXgcdZXbpNMF9Lt5O1dDotTMnKI
+ 3u2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711467920; x=1712072720;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=D+2sufPZV1jZbwqSWcGkqalb0YdlIEBcm3JneTAQYPE=;
-        b=O2TxhFmwTsLRy8ygFpUP+JfIv2/4/8JfFxTC5Zck6RwoEBXn6px7ym9lB8mts0A2PC
-         g/+26vh2ImcSyqll9Guxn1uptgGPYxRr5uFA0OBBkICLxNlfeD1GU23yPO8gXZU/H4hw
-         4NgjP3VIW5LTcapspoyrqJfPKU+knTLEYku3/VoWE29HFNsJuvKYr0p+Jhibj/MZPN8a
-         U5tPsagMfcJLPs4CFydUJS62YIe44agWgypDDhkmHAVQkRGnNC2lKJVKThloKGkZQ3SV
-         twZClp1jdJKbs8rzLTKgau3AOIFVrQZOiiW4kfSHkcE61ct6pbuBLFlCpNio5BC1wyMd
-         N+8A==
-X-Forwarded-Encrypted: i=1; AJvYcCVkPnjWzsV6W62/4JS9DY2oi3NIgoVz/mGr7doIK/JMW52BCfzDDmvzVkYQXfrZmEfIb4wx2KE+z1Q7+/1t3SuTmmNkkNi8
-X-Gm-Message-State: AOJu0YzJsXcflU5Ml8YKVqhvhXKS/6eQhiCJdhnlie5oxvGrfuwwIBTt
-	FmcYotZrkBN3bIU62nPoIUlgTpRJDioITDeLPxXDbQpTnx8xCEndHe+leE1TmrbD6eOqk2X1rAr
-	VLsY=
-X-Google-Smtp-Source: AGHT+IHwKtFMeWpq3ZJE9GoM5WPki6NX1BeYC0H8+aqSC47II9qYUq6lKqa65FD9RBme1NGAf6Rm0g==
-X-Received: by 2002:a5d:63d1:0:b0:33e:bb5c:f60a with SMTP id c17-20020a5d63d1000000b0033ebb5cf60amr2406678wrw.66.1711467920447;
-        Tue, 26 Mar 2024 08:45:20 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1711467909; x=1712072709;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=hn7lLwxhhf3gNG9hNhmhqHwHMzru6i5It7d/ZRKMp5c=;
+ b=RrauYdR2AcQYAhKxjrVV+8Ok12ZeAb/yKSsT4NfQDpMCdfMbw1dwk6F6fvaJBm+5om
+ IxhMa+s4fwW4TJu973f0gCoXnvYOLJxnP9IsD+0NtLOSrhN7IAWM0p0suM6C++seG+f7
+ kEIG7YNyK9UJgGCfrrSOtmzUhh6DhhW+EoAlvsjHYa6Vin0iON4VCNjpYj11kNVpbSMy
+ C3ruJb/JI71WA93+ZgNU7HQq79vLOXDx5Va2gBzZzgBe0sExDeW9Z81ylrIWX4n3GTDF
+ ZgTskyukJhb8wHK1F0Ew7rgajma12utxJhJWhibwiXpC86SikMbzyrQXrb52oBs/1MZ6
+ WyMg==
+X-Gm-Message-State: AOJu0YyXDN/QuZdxY/q7X0T+1nndvXDR6ecXPUUp2iULwu2un1Biy2sX
+ FEk6mFH9DXmQpeesS/enHtXqZu5+fOxYwXg3P4wkKclUnht3jbfapunA9H60qavxkJf7Zjizzt7
+ Z
+X-Received: by 2002:a2e:834e:0:b0:2d4:3c32:814d with SMTP id
+ l14-20020a2e834e000000b002d43c32814dmr1302990ljh.26.1711467908686; 
+ Tue, 26 Mar 2024 08:45:08 -0700 (PDT)
 Received: from m1x-phil.lan ([176.176.155.229])
-        by smtp.gmail.com with ESMTPSA id ay26-20020a5d6f1a000000b00341dc343e21sm573910wrb.65.2024.03.26.08.45.19
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 26 Mar 2024 08:45:19 -0700 (PDT)
+ by smtp.gmail.com with ESMTPSA id
+ fb13-20020a05600c520d00b0041490a19e13sm1084314wmb.7.2024.03.26.08.45.07
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 26 Mar 2024 08:45:07 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	Lorenz Brun <lorenz@brun.one>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Fam Zheng <fam@euphon.net>
-Subject: [PULL 02/13] hw/scsi/scsi-generic: Fix io_timeout property not applying
-Date: Tue, 26 Mar 2024 16:44:53 +0100
-Message-ID: <20240326154505.8300-3-philmd@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL 00/13] Misc HW patches for 2024-03-26
+Date: Tue, 26 Mar 2024 16:44:51 +0100
+Message-ID: <20240326154505.8300-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240326154505.8300-1-philmd@linaro.org>
-References: <20240326154505.8300-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: vMBlAO0kRhfj
+Received-SPF: pass client-ip=2a00:1450:4864:20::235;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x235.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SBItvJtUz53O
 
-From: Lorenz Brun <lorenz@brun.one>
+The following changes since commit 096ae430a7b5a704af4cd94dca7200d6cb069991:
 
-The io_timeout property, introduced in c9b6609 (part of 6.0) is
-silently overwritten by the hardcoded default value of 30 seconds
-(DEFAULT_IO_TIMEOUT) in scsi_generic_realize because that function is
-being called after the properties have already been applied.
+  Merge tag 'pull-qapi-2024-03-26' of https://repo.or.cz/qemu/armbru into staging (2024-03-26 09:50:21 +0000)
 
-The property definition already has a default value which is applied
-correctly when no value is explicitly set, so we can just remove the
-code which overrides the io_timeout completely.
+are available in the Git repository at:
 
-This has been tested by stracing SG_IO operations with the io_timeout
-property set and unset and now sets the timeout field in the ioctl
-request to the proper value.
+  https://github.com/philmd/qemu.git tags/hw-misc-20240326
 
-Fixes: c9b6609b69facad ("scsi: make io_timeout configurable")
-Signed-off-by: Lorenz Brun <lorenz@brun.one>
-Message-ID: <20240315145831.2531695-1-lorenz@brun.one>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/scsi/scsi-generic.c | 1 -
- 1 file changed, 1 deletion(-)
+for you to fetch changes up to ccebb9ae352eea63cb1491cb829e4cd0f7576f1c:
 
-diff --git a/hw/scsi/scsi-generic.c b/hw/scsi/scsi-generic.c
-index b7b04e1d63..ee945f87e3 100644
---- a/hw/scsi/scsi-generic.c
-+++ b/hw/scsi/scsi-generic.c
-@@ -752,7 +752,6 @@ static void scsi_generic_realize(SCSIDevice *s, Error **errp)
- 
-     /* Only used by scsi-block, but initialize it nevertheless to be clean.  */
-     s->default_scsi_version = -1;
--    s->io_timeout = DEFAULT_IO_TIMEOUT;
-     scsi_generic_read_device_inquiry(s);
- }
- 
+  ui/cocoa: Use NSTrackingInVisibleRect (2024-03-26 14:32:54 +0100)
+
+A pair of "WARNING: line over 80 characters" are ignored (82 chars).
+
+----------------------------------------------------------------
+Misc HW patch queue
+
+[hw]
+- Do not silently overwrite 'io_timeout' property in scsi-generic (Lorenz)
+- Propagate period when enabling a clock in stm32l4x5 mux (Arnaud, Phil)
+- Add missing smbios_get_table_legacy() stub (Igor)
+- Append a space in gpa2hva() HMP error message (Yao)
+- Fix compiler warning in 'execlog' plugin (Yao)
+
+[target]
+- i386: Enable page walking from MMIO memory (Gregory, Jonathan)
+- tricore: Use correct string format in cpu_tlb_fill (Phil)
+
+[docs]
+- Fix formatting in amigang.rst (Zoltan)
+
+[ui]
+- Fix cocoa regression in platform fullscreen toggling (Akihiko)
+
+----------------------------------------------------------------
+
+Akihiko Odaki (3):
+  ui/cocoa: Fix aspect ratio
+  ui/cocoa: Resize window after toggling zoom-to-fit
+  ui/cocoa: Use NSTrackingInVisibleRect
+
+Arnaud Minier (1):
+  hw/misc/stm32l4x5_rcc: Propagate period when enabling a clock
+
+BALATON Zoltan (1):
+  docs/system/ppc/amigang.rst: Fix formatting
+
+Gregory Price (1):
+  target/i386/tcg: Enable page walking from MMIO memory
+
+Igor Mammedov (1):
+  hw/smbios: add stub for smbios_get_table_legacy()
+
+Lorenz Brun (1):
+  hw/scsi/scsi-generic: Fix io_timeout property not applying
+
+Philippe Mathieu-Daudé (3):
+  target/tricore/helper: Use correct string format in cpu_tlb_fill()
+  hw/clock: Let clock_set_mul_div() return a boolean value
+  hw/misc/stm32l4x5_rcc: Inline clock_update() in clock_mux_update()
+
+Yao Xingtao (2):
+  monitor/hmp-cmds-target: Append a space in error message in gpa2hva()
+  contrib/plugins/execlog: Fix compiler warning
+
+ docs/devel/clocks.rst                |  4 ++
+ docs/system/ppc/amigang.rst          |  4 +-
+ include/hw/clock.h                   |  4 +-
+ contrib/plugins/execlog.c            | 24 +++++++-
+ hw/core/clock.c                      |  8 ++-
+ hw/misc/stm32l4x5_rcc.c              |  9 ++-
+ hw/scsi/scsi-generic.c               |  1 -
+ hw/smbios/smbios_legacy_stub.c       |  5 ++
+ monitor/hmp-cmds-target.c            |  2 +-
+ target/i386/tcg/sysemu/excp_helper.c | 57 +++++++++---------
+ target/tricore/helper.c              |  4 +-
+ ui/cocoa.m                           | 90 +++++++++++++++++-----------
+ 12 files changed, 137 insertions(+), 75 deletions(-)
+
 -- 
 2.41.0
+

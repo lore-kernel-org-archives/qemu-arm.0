@@ -1,102 +1,102 @@
-Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1117607ejj;
-        Mon, 25 Mar 2024 21:54:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXgnaQ1hAHCFpgWszXj/uo1pY5fekUpjmKYpXilTw7K5bAqELW8ay9eGnHcRuZC0mhRvu1mH2AjjEZ5nQtkn2SzI3QwwFx8
-X-Google-Smtp-Source: AGHT+IFG/oZJ8uamdIw3eWSAy5rhLGXN9BLZZyZV+tRVICAK5FKWwTUEEuKvMU0ZtKmYBha1QOZc
-X-Received: by 2002:ac8:598b:0:b0:431:5079:faae with SMTP id e11-20020ac8598b000000b004315079faaemr7539442qte.30.1711428885006;
-        Mon, 25 Mar 2024 21:54:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711428884; cv=none;
+Received: by 2002:a17:906:f85:b0:a47:c39e:cbe with SMTP id q5csp1117730ejj;
+        Mon, 25 Mar 2024 21:55:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXkYZLrSzF6tf4yWnKKNg2yXkCOKdjX84tquAhsontfThdQX7a6jAJ3I0N/XLzIvpL9/qYkY1I/YcXn9BQtkg8XFudu/66m
+X-Google-Smtp-Source: AGHT+IGbtfx50MCRMsB8S7P2GF6SaGIQxrz7iHQYNozHx3SlvyCTifWjQ70WkJz7tEBjjdDoGi9O
+X-Received: by 2002:a05:6214:411a:b0:696:8a6f:afd7 with SMTP id kc26-20020a056214411a00b006968a6fafd7mr6645604qvb.12.1711428915613;
+        Mon, 25 Mar 2024 21:55:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711428915; cv=none;
         d=google.com; s=arc-20160816;
-        b=dKUbWyQ2xzNwdc9zcod8JREA8Bt1lswtHGOC2Swa6/v1FFLuaV7dIwXvLkI/hGtgXi
-         qLYFozvkArPxTmGMz4o/6YBAmw6f1TyfnLlvJQ+bWwWewy8i3Rog1Oi4OXT12igT7UI7
-         jc5ZmQ2uc1K+zyvM3+NAZ2cD1ex8i3Jzv5GtOQwE0LaF3nv+sCbbuAmOab6cez4ma4Mp
-         ol2E36VKVfpUD3Q8QCuJn2cJWjWYltwhvHX+0t2B9vr4dzWBoOFnrhOkhstjxfnRi9We
-         AunsSgTM6l9dfEfTcc/iWQd8Gdni5o3wTIOLQGVm892eyVpFHWlKdinDn9YmUV6qT4kz
-         o/gQ==
+        b=uDYEGKoQK+XFQPPYGp4wVFxKOXhechHu4Jl3YijGShsB6ESXJ6dzRpUnHBprNJm/RR
+         DKg3X/PR9nApfTgwZ2xjArD9ZkeiXsujB/Yn28yuxSzHK9VFI95Q+WHjbp8OsizhWXru
+         S+twKif2caTduopnBiZIEzSwLwpgrKHn+8JC1Xuw4MZdXxbWfw+iuF6NkHKAkrarFPS8
+         t8eqq337PaXx1ERiKDqTMqBLvY5JiPzCphaQwj99xa5Y4LIqWiyMKFT7A8U2gygSXVmh
+         wEkZuT57R3tgSUM/pc51vKJGGKKBnpw8Cs7btH498l+KFXh2sBQp4k+5xZXcMxt3ldmE
+         WsnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=JOEvSzzaFpPm6kSZsVuroxblQgv56KqmmLkwoyeaY00=;
-        fh=MOZsNLplxJCfLGAj6K5oZQEA0V0laakZS8q2Q3M7lzY=;
-        b=VjXo+AEX0vWVuuSK85qwqrQAG7tujqxE07dBmV/jfY5aVUwssBKkkrJZjMkUeuvmGx
-         W/2btuBinIBk7hasLPKfnLkWvIOyVR1R0aZp4NsqiYRkJABCLGyodv9j0ljR2cpc78pn
-         a6D17u52nk2h8gh8+iEToLTQUxxIqyacQBLPlTLTq/1RyBvefH1IUYUvzWrCqt3d040V
-         8XYnWKVIdtUxw3n6eNbjvX+SFA0NAiXwSsBzMYBGgEtlz4QhV0jk//Ht2UvVndcvYJ33
-         PIbPQ+Un8vasft/FngyC9fbvKRI/YxLozUQoDIk+MHQzp48D+nFH6EyPHzlD0GmhxBZZ
-         LsFw==;
+        bh=gDto20CjZopmIFKXilu7ietmczZxyfrzm+oC59FLg6U=;
+        fh=LcZhSiEz6tAiy1z4FkTZEsPBPtcJhuxcyejC80S2yd4=;
+        b=qJ3Dx/ecysMriKQqmdK0wm2VTUKChJwBAk9bVaftzmEW4ChUuHh0mDVOVBxjcpjEG9
+         2GQApa36ZaFWQ5RgoFQCfH03Zqndx2HL3plt3kFazhrdXBSdolL7jQ73lqSDWuhVQc52
+         iNi/4djIC+LhPJlsYS4IQJhg31BabRD6JYeLOIb2QVtu7SEpEvKTskMMIjgH/mdxfJdu
+         QYLEbml7RgUX79mUY1zQaPE87xNKJc6ISzgo5UpltAA7glDn9dxVsT616Zjn1mKQ1I6Y
+         klk/cWGYFUUjhPlNIIghnWzo24jne260SQXfMXe5NKI/xTLaINOu1FVt9JsLQr26EYfx
+         I5AA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mZDubjUf;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UGJvmjcx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j1-20020a05620a0a4100b0078831bd38dfsi6964366qka.379.2024.03.25.21.54.44
+        by mx.google.com with ESMTPS id z17-20020a056214041100b0069625e992d3si9097006qvx.407.2024.03.25.21.55.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Mar 2024 21:54:44 -0700 (PDT)
+        Mon, 25 Mar 2024 21:55:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mZDubjUf;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=UGJvmjcx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1roypN-0002Fa-L3; Tue, 26 Mar 2024 00:54:25 -0400
+	id 1royq9-0002n8-3x; Tue, 26 Mar 2024 00:55:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1roypM-0002FO-Mf; Tue, 26 Mar 2024 00:54:24 -0400
-Received: from mail-vk1-xa36.google.com ([2607:f8b0:4864:20::a36])
+ id 1royq0-0002eB-9w; Tue, 26 Mar 2024 00:55:04 -0400
+Received: from mail-vk1-xa29.google.com ([2607:f8b0:4864:20::a29])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1roypJ-0000tN-Cu; Tue, 26 Mar 2024 00:54:24 -0400
-Received: by mail-vk1-xa36.google.com with SMTP id
- 71dfb90a1353d-4d44216ea59so1742710e0c.2; 
- Mon, 25 Mar 2024 21:54:20 -0700 (PDT)
+ id 1roypy-0000xi-1P; Tue, 26 Mar 2024 00:55:03 -0400
+Received: by mail-vk1-xa29.google.com with SMTP id
+ 71dfb90a1353d-4d452e2f0aeso1948630e0c.1; 
+ Mon, 25 Mar 2024 21:55:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1711428859; x=1712033659; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1711428900; x=1712033700; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JOEvSzzaFpPm6kSZsVuroxblQgv56KqmmLkwoyeaY00=;
- b=mZDubjUfLpGcRCOFC0h0dydFe35sdVre2SoSDwxarBW9RI4JAchqy8u9fmONliStJv
- 9sUGCrvXTIeHcvIsCVFhht1s7wKwx6c13Gbeavig3uGjlyyfQogDN7XFFRjOdCTqlDyM
- U32L9ovZ6E+z09mn6iPrnH/sh3y22dfMJzOd0mdjZQXarnq9N1N59tqYdT4bvhRoi2Op
- CqJKkiIq8LfJr2jLOav8gWjs2DPrHyylQ6qyt+0sJxHRlrHEZNTKrdSwbKUFPFMyryf2
- ae5n0v5KF947zHB1Tnsd6Sc0Mb6WCKMwUH3Arw73u46s7DcmrVW5OBuhHveWcqsBzq2z
- S9Rg==
+ bh=gDto20CjZopmIFKXilu7ietmczZxyfrzm+oC59FLg6U=;
+ b=UGJvmjcx5sMFF0HQUK+5LQL4KVhmi7YYnFzezIMJcQ4ncUwEJU6w1kD9Id8GGRQe4X
+ gzAXNyxZ3Q7GdHzuOy+SB15aXXyvNMUCMP8y8hh7kjIXVegGIIy+2z6Vuc3sLy1wBAA8
+ cSUUollONb2ZU4E+NqZykYZY4/NRn4CAfizxRU8iBNM7wE6TSVX6Xly+4LSgCaSgHRzr
+ QQZUNd69CrSNq2H5df/c/Hx9zS3zZo4IkIw5VnE7CpAwd89yKsxrjTSYz/FTFE8cMtz1
+ zT7w72M8vvmO6/qKTVWDfIktitv75NlTsUEin7bgRkMZVfLstJwerH8JD4fIdufrKTkX
+ qmKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711428859; x=1712033659;
+ d=1e100.net; s=20230601; t=1711428900; x=1712033700;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=JOEvSzzaFpPm6kSZsVuroxblQgv56KqmmLkwoyeaY00=;
- b=VGhA1Iia6DGQheYnO0onfwQN8J7S5HugcWVUFJ1V6ZMxenDfdMcko/f5AaDqex7Rth
- p4v/ME+tj3OfCuskJFU25eTTbG9haq3NzqBPI5CDqsiEhpkef5GuZcJvK7kIO8fTC4aK
- O4yI9aCJhS7vH5z4p+wAgzJR471x1MQK86sGER0dIQ1xhdi3PTmN4AzkSM/TfV/a2zRT
- Ncy3c4sErVcaaY1LaRvI8UcWn1tkAjAFgyGO8QgrK7H2931kwSpkv8pYSfv28rzCxopE
- 8Bo92n5HP9piOb/buJgcBFmLYnXiwqmLKvyGk6sL9pFytE/rmzH6MG6PzJbVOH0U5olD
- 0J0w==
+ bh=gDto20CjZopmIFKXilu7ietmczZxyfrzm+oC59FLg6U=;
+ b=bWV8XOm0rnc1eARvfN87PT3WQTKMCcpuWf2ma9DxadOGEzKdwRYltQCTkbv9027NzU
+ FV9WgzAm3xdYF1PrWRsD/b3+KwBkGQ73jUcsmik6yDhp7+/olHTxELMgMVyiCpGKdATd
+ X6SEmNYCfyvHdxKXRZ1cV5ufAiUq5k+QJZIH+VPMUZoRDA4tS5PZ08O2Dwj0rhjLcBUX
+ Vku320OUK/w+QsoA+Dwez5SzrGkVgy/aypCH57XW9jTO4blAbneK1almLidMAehEMIRl
+ l0tBtMcoaXqEJML4M2tTMUD2nmxxwBubbJboTty3yHPR6PyhEI0WWJx/lClLIymlKA8C
+ qV9Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX+AdJKPl8WaMV2Gabdt6WwEFYoAdE68Tq8+tkAfBIaal4oK02dqDMMGiC0MSykvEIPeB/PO6THGl1NraEvUl2r3maP
-X-Gm-Message-State: AOJu0YwNnnMrV1knqjckJfjme8lK68LAkVvKGRVaqdzsx8hKFVtnW0bX
- hF3vFiweeTL/9ZK2OzzVQ+TiAt84c7IA892W7IcF6LB0HUOIRXmgPkBjcr9CSkCSxDWVwoOdu8V
- /rCwzS9y0PdUoeSgeQkNf/Ly9za9HlPrz8ps=
-X-Received: by 2002:a05:6122:1d02:b0:4d8:79c1:2a21 with SMTP id
- gc2-20020a0561221d0200b004d879c12a21mr7085156vkb.7.1711428859464; Mon, 25 Mar
- 2024 21:54:19 -0700 (PDT)
+ AJvYcCVHityWI03RRAJoB2l22idP/OCfmfo7CWzmjHOJ/vPIMxwMm0BJgtvATS0Xe5nKHzwzUz3AH5zZ+hnnLjWUnfK4XPmi
+X-Gm-Message-State: AOJu0YxyNq31M1RVeVQzFUvtsn3yvsXDdwcWfOowgCUMoN9DOwxdgyHI
+ Te6K1Si+6/O0vdmD0BsP5qqLSccT5Jpj5xuPMmKUCHMvsbbl43tJsVrLrEoXnz2VGWd/yJSwZk9
+ 9bPCWmKllwa6i1J32PSsdCWbUgVI=
+X-Received: by 2002:a1f:f843:0:b0:4d8:7a5e:392f with SMTP id
+ w64-20020a1ff843000000b004d87a5e392fmr5912129vkh.12.1711428895420; Mon, 25
+ Mar 2024 21:54:55 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240325152827.73817-1-philmd@linaro.org>
- <20240325152827.73817-3-philmd@linaro.org>
-In-Reply-To: <20240325152827.73817-3-philmd@linaro.org>
+ <20240325152827.73817-4-philmd@linaro.org>
+In-Reply-To: <20240325152827.73817-4-philmd@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 26 Mar 2024 14:53:53 +1000
-Message-ID: <CAKmqyKPtYmO91rmPQUgCibxtGAPq2yZPKJsq1n-1dq5hC+XT0g@mail.gmail.com>
-Subject: Re: [PATCH-for-9.0 v3 2/3] hw/misc/stm32l4x5_rcc: Inline
- clock_update() in clock_mux_update()
+Date: Tue, 26 Mar 2024 14:54:29 +1000
+Message-ID: <CAKmqyKMm9RLMweqCBpHBmu8PaLavFh8rcOLLSMVLVpxim6AGqA@mail.gmail.com>
+Subject: Re: [PATCH-for-9.0 v3 3/3] hw/misc/stm32l4x5_rcc: Propagate period
+ when enabling a clock
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org,
  =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
@@ -106,8 +106,8 @@ Cc: qemu-devel@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a36;
- envelope-from=alistair23@gmail.com; helo=mail-vk1-xa36.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a29;
+ envelope-from=alistair23@gmail.com; helo=mail-vk1-xa29.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -130,14 +130,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JM/tPQWbp4BY
+X-TUID: YOJbwPeM9P3O
 
 On Tue, Mar 26, 2024 at 1:29=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
 <philmd@linaro.org> wrote:
 >
-> Trivial inlining in preliminary patch to make the next
-> one easier to review.
+> From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 >
+> The "clock_set_mul_div" function doesn't propagate the clock period
+> to the children if it is changed (e.g. by enabling/disabling a clock
+> multiplexer).
+> This was overlooked during the implementation due to late changes.
+>
+> This commit propagates the change if the multiplier or divider changes.
+>
+> Fixes: ec7d83acbd ("hw/misc/stm32l4x5_rcc: Add an internal clock multiple=
+xer object")
+> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> Message-ID: <20240317103918.44375-2-arnaud.minier@telecom-paris.fr>
+> [PMD: Check clock_set_mul_div() return value]
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
@@ -145,37 +157,24 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/misc/stm32l4x5_rcc.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
+>  hw/misc/stm32l4x5_rcc.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
 > diff --git a/hw/misc/stm32l4x5_rcc.c b/hw/misc/stm32l4x5_rcc.c
-> index bc2d63528b..49b90afdf0 100644
+> index 49b90afdf0..ed2dbd9dc3 100644
 > --- a/hw/misc/stm32l4x5_rcc.c
 > +++ b/hw/misc/stm32l4x5_rcc.c
-> @@ -48,6 +48,8 @@ static void clock_mux_update(RccClockMuxState *mux, boo=
+> @@ -61,7 +61,7 @@ static void clock_mux_update(RccClockMuxState *mux, boo=
 l bypass_source)
->      uint64_t src_freq;
->      Clock *current_source =3D mux->srcs[mux->src];
->      uint32_t freq_multiplier =3D 0;
-> +    bool clk_changed =3D false;
-> +
->      /*
->       * To avoid rounding errors, we use the clock period instead of the
->       * frequency.
-> @@ -60,7 +62,10 @@ static void clock_mux_update(RccClockMuxState *mux, bo=
-ol bypass_source)
+>          freq_multiplier =3D mux->divider;
 >      }
 >
->      clock_set_mul_div(mux->out, freq_multiplier, mux->multiplier);
-> -    clock_update(mux->out, clock_get(current_source));
-> +    clk_changed |=3D clock_set(mux->out, clock_get(current_source));
-> +    if (clk_changed) {
-> +        clock_propagate(mux->out);
-> +    }
->
->      src_freq =3D clock_get_hz(current_source);
->      /* TODO: can we simply detect if the config changed so that we reduc=
-e log spam ? */
+> -    clock_set_mul_div(mux->out, freq_multiplier, mux->multiplier);
+> +    clk_changed |=3D clock_set_mul_div(mux->out, freq_multiplier, mux->m=
+ultiplier);
+>      clk_changed |=3D clock_set(mux->out, clock_get(current_source));
+>      if (clk_changed) {
+>          clock_propagate(mux->out);
 > --
 > 2.41.0
 >

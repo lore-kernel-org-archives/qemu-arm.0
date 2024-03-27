@@ -1,97 +1,97 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp344646ejv;
-        Wed, 27 Mar 2024 02:53:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXCD60PpQwbfcxqijFanr6hvCxzr8iIgRcoQA5o+x7OuavUhNbc3F8eCODEkhXco7z8vMeWMLFjDvE5NY0Kqk0gVBk3KhD7
-X-Google-Smtp-Source: AGHT+IGMGTjVzYD7IrL+G1vRJ5mbJI2gfDbPmTbUzMrXrPfzZ1CxGUgn1OOvMAR4xjJbjPeIzKUb
-X-Received: by 2002:ae9:e211:0:b0:789:e93c:eeb0 with SMTP id c17-20020ae9e211000000b00789e93ceeb0mr661250qkc.30.1711533197666;
-        Wed, 27 Mar 2024 02:53:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711533197; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp344673ejv;
+        Wed, 27 Mar 2024 02:53:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXT1l5PfF9eQqhKCeQt2rt6xPZCDnJ3YUCW0e0Osa9oEb+CmQ2eTgsaY6MYYlNkDrlSPdkHYNswDmp0q2xtkQHXk956JZVe
+X-Google-Smtp-Source: AGHT+IF9KH8xaF2iSU2dJbtRbPF2/mChg6c3CyBiHbe5o6Mi6Tl63L/gnoW9vQsEvl4bMd7e3adh
+X-Received: by 2002:ac8:590f:0:b0:431:39ae:f843 with SMTP id 15-20020ac8590f000000b0043139aef843mr672510qty.8.1711533203200;
+        Wed, 27 Mar 2024 02:53:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711533203; cv=none;
         d=google.com; s=arc-20160816;
-        b=LOztLhG78whoYLIW12ldGROTGbo4KOXiYdzB0o81kqDupmY0jPBDsxXbNRovbDDnTz
-         9GnIfhDOu9oQIzIlYCJ5hV7DCgqVqbpQF8x6uynKfyc8KHb1Y7XZBI+kjHhhuHjqd5oR
-         ZWr3G9pNmadzgkxaZE4ZUb7lsiDV76Fv2BbwDkVLuOybvudBfOGBdGupN4nP0cqYWiVl
-         ky0c9lbt1U3FqrtceAcZ96/aKM8jWUl6/fOGVukeK79ky7P9P8UY+fXnaxcRaQ66bYIF
-         11XxrNGZlCntsKJowdb2wH70EYIcu4QneTL5XTLZzK/onH87QKw3/ilwzjxEMQcdX42d
-         dvXA==
+        b=jfE88NBovSpOMpWCbmn3GCb4jlPYLkdpQgnfyA7YzE60NmL6I+9Sk/XEOuT29egTAM
+         TmRGK8A3FD9+9tnVusQxBBxH6GKm6hYqp71RmLPjcVe6QOiBR9jhadCksiy6sCJVNEqN
+         5Ew1bkna7GmgGzkQ233RknA9QPti/W8eyYZW5jSdxkc8ydmIP+m1lIgXqW0wRH8OfVrw
+         kfoP33qC2NEVvt/zfDsVKM5F0BGQEU2xZ4LI2mLjKmBLBSLa9ES+XRzw68KGtSohWIS+
+         T/GLtK8JPq9D25Xuq5EGoR5IzUr+1L2eQF/7yYdqk3f7EUDRw/zhy5LNHhupPIblzzZm
+         R3gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=7V80jUeGTGxhiiHyRsegHQtV9uanGmJ469Am8fhnxrM=;
-        fh=Rqwtk/CTbtJ4Vf3eAHEC1905a9eyyxBkuvmzPrtGfr8=;
-        b=yZMwQ5iUcgit4Ojd1IcUxzx1bqUpFZTAgEwNaew/EZkUwJNaiSLmXiIrb/+xc/07I/
-         5/rOlv6eV/OJMkzQSjZDTaU4low6reQu+6Pzk8yHuIu0SdLB/TvBnYtuFw3FzLFsWhpK
-         ye5UdoKxE5E153zKTgQsLNRTzhbwlERpMq4dt84WkF+0gjaZpL/qIkXCRiQY1Sims3fH
-         WLKxT7tc2vpw+CQ6Y0E31HJRrDtjsLWcOp7wozGjKJaM3CoBztZW8WVBoQcYkOwK6xQO
-         imO9K3ElWYGLH3HZFltksVCECo9kG9wLA+2kgJVBju75DcwkufOuMYXUjkdzkwQsRtLp
-         fY0w==;
+        bh=PbL9DbUU/VwqkR1vuLb4yIgDr+6Vr1z3If7UjhII6YI=;
+        fh=0P2Q14Ou5PE/Iu5/yK0zc8RynXSDeov01FDiW/XFfK0=;
+        b=cLXdp3HsZXCOXrt5N+U5gecO6EtniwSi2V1BbkPVXMhgkTMLEe/q5Nhme/B0MMjWeZ
+         Qzi9OWd8tq0nRMf/ak2Wk2omoJy3Z8YgBXGkBTGTdAAb9SQAV41AhhDAVI6UZy6aqmbF
+         ejDqIOZ3lwn5WG3oQC8KLReI+Rv3DBDlDS27MbOCrA2TJ+cjZ+17KDamP04PBOHVp95A
+         p7q/YLlCF3rUmhVY1yYHsmQMH5+FP2yhpDUJ3KRzmJsPL+WFYoapnq0Ho/ZZdLOIda+I
+         MU6RXINaZEg4dhaaXWpvIcAIMttNdxVLC38aZnBhwnhEWSvvTpDCrTXQPcP12KL1z3C4
+         Dtww==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="M/lNm6pj";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=oshKLjFL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id wx28-20020a05620a5a5c00b0078a410cbf03si9671848qkn.40.2024.03.27.02.53.17
+        by mx.google.com with ESMTPS id z17-20020ac87f91000000b004313fb72cd0si8996066qtj.354.2024.03.27.02.53.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Mar 2024 02:53:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 27 Mar 2024 02:53:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="M/lNm6pj";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=oshKLjFL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rpPxl-0005XB-Tm; Wed, 27 Mar 2024 05:52:53 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rpPxW-0004Sk-Sw; Wed, 27 Mar 2024 05:52:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rpPxk-0005QE-7Z
- for qemu-devel@nongnu.org; Wed, 27 Mar 2024 05:52:52 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rpPxU-00048F-EV
+ for qemu-arm@nongnu.org; Wed, 27 Mar 2024 05:52:36 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rpPxh-0006ts-9O
- for qemu-devel@nongnu.org; Wed, 27 Mar 2024 05:52:51 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-56c404da0ebso417526a12.0
- for <qemu-devel@nongnu.org>; Wed, 27 Mar 2024 02:52:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rpPxN-0006np-Vm
+ for qemu-arm@nongnu.org; Wed, 27 Mar 2024 05:52:31 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-a466a27d30aso799557566b.1
+ for <qemu-arm@nongnu.org>; Wed, 27 Mar 2024 02:52:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711533168; x=1712137968; darn=nongnu.org;
+ d=linaro.org; s=google; t=1711533148; x=1712137948; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7V80jUeGTGxhiiHyRsegHQtV9uanGmJ469Am8fhnxrM=;
- b=M/lNm6pjB6oOE9TIOd6Wqdnd24XjYOL68l5e4mK5vTuVHwyvNiXGcfV01+xFc54c2b
- bJCS424XIyVNQXMQ+OfQ7ynhHcNRhkUWhrJt2uXLJymFDLc6NLAXpEEFGimljmw/u67E
- yUkfJLBdgKTWgLq5TCaZY0kdhde8cfpWTjrk36qZorQRiyUyDVyFmTXkX4mPS8F97Ljv
- 5yrIac7IBAe0Q8I9IaTkRaVBue+Ug6hFEcC6ulicwnejb3BDNWqa2EX/mN3oq7ngBuxT
- 8gBnlzdXZnYhSjK5OR0sFgYNFlyOPb/dLMf1b5uhN5tuyJ12asWDY/BilpRI75db2i0R
- YKXw==
+ bh=PbL9DbUU/VwqkR1vuLb4yIgDr+6Vr1z3If7UjhII6YI=;
+ b=oshKLjFLYApqxWaVs1GZ40igalfXY7g+8FwJhTvrmvj7zFS+DOyxqJicvcr9o741z+
+ K/zMyEI2i3nB7tdgSKfOJ1jqs37eh6Vo8WrWp0lBBDtA3HGv6t3rFpZ7sfJ6xqamJ1tY
+ BoOHNjhBIcji2bv/Xld3uIXlqs1YSTpDPMosq2RqhhY6BXTi+QfbVTJjlWFbQr+2nxnk
+ hR9wwlthGTa3ClUIONVmMZAOb56ZJ7lb3c1W6V8V8yAEuIzOW+j8fr40p/CNE5Qfp6Tl
+ e1XXaUUdSU/kG+xW+msvmT/MuO9JqpFtHC7GOzChFPLYy6fI7hy1qNb+/nutF5zUfEKg
+ e6Ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711533168; x=1712137968;
+ d=1e100.net; s=20230601; t=1711533148; x=1712137948;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7V80jUeGTGxhiiHyRsegHQtV9uanGmJ469Am8fhnxrM=;
- b=US3Qmey9bX0THg5UyDhP3r/qjwllOx+FVdwZERL3PjOrqZnVSU09JKFU5Sn4Rau7Bl
- L3lhNbfM5nkyJX21f9JiRNMS51shNscFEhRXzTKZztmQeCgBDaAu3LqyCKhW2LAL04c9
- 50Y8YrWnyREare7KOj1TYmSxz7cSfVXm5ehi3fNMuyjMoSt5R6OqTNcHdEbsA8xlWX/O
- JYtuESJuVe8b3SNZhrK1H8+0NJSdku2o3AxFLDJUpjT3r5gLiivcJ2XnUxZoDaNeS4+k
- mgsjpOQmr+JWW+SkyuatlHD3BNoH2CgeCLyfIRQOddMQluaenfkJPsJV5EP5jGXQG03s
- m/9g==
+ bh=PbL9DbUU/VwqkR1vuLb4yIgDr+6Vr1z3If7UjhII6YI=;
+ b=WnOcIVTRyOGBgmwlD4exUUJNsa0kyeDCjUpRY4+FqYqfOCfGQmCkKvljgdDOeh8EXi
+ +B7wtdAqkPLhPUi4cW1e3ynxI2+sPHxaBSeAofGniRPyESgISpoaiGHm/rygz0CtmRrQ
+ 7epWkf5v/I2uNj7V+/5IOZukgxmKx/qNCAI1VPK0cpmaZgasj1eqs04tFjpPxSVyoAne
+ RwlKPXW7PugPU1uhSshQwB3qy+7OboHiwX6yK8DnZlfkWTRBtcpEId4K4WbSdV4idz9J
+ zizvVQUXbSozv6w6kUmno8OqY4QoU2lccvLBJwJrvTCdPGskvNknEaGqgqOcMfntHZpy
+ f+oA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW8cJ1Kdstro1EL9dIDVPBmzwE1PsRTBzHnZhGMtyUKjlzg6T1Chk/m2nRgmiSrp4h2KlZgRZVXo5DJo1DSb/QABhqZBU8=
-X-Gm-Message-State: AOJu0YzWim4UDBp+uJAzcOczk3K7yu6WWAFGdMUGxn/PpllNON4lu2hO
- ahMM+vClvhRNnLMiUhWVFpsOi4yYFKHmwbXs8VaGny41bnBfAgt1Udfu5X7KU3s=
-X-Received: by 2002:a17:906:b34c:b0:a4d:f56b:b310 with SMTP id
- cd12-20020a170906b34c00b00a4df56bb310mr2532375ejb.61.1711533167762; 
- Wed, 27 Mar 2024 02:52:47 -0700 (PDT)
+ AJvYcCWms+5m3ZwHdJO1NjIHzYa5QeWMO/drgR24f1lovYAD17PIHGtN71ByTIejDXAs/FU94ko45HZRCP//PCKlKsgnkwJc
+X-Gm-Message-State: AOJu0YxKsGdfUuyT6FgEaTAvfAdXC+YZZMsdbuDxzO0uW+2hMCN5/p1g
+ taj7M1/w2W1G/njO+hyxoGz3YhJP+qaj8kQBQ2F9uK0QY3OY/+lAHVWbkr4Zz/k=
+X-Received: by 2002:a17:906:2998:b0:a49:dfe7:834f with SMTP id
+ x24-20020a170906299800b00a49dfe7834fmr492717eje.59.1711533148505; 
+ Wed, 27 Mar 2024 02:52:28 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.205.175])
  by smtp.gmail.com with ESMTPSA id
- p9-20020a170906614900b00a46af5f023bsm5196099ejl.202.2024.03.27.02.52.45
+ e10-20020a170906504a00b00a4735e440e1sm5219836ejk.97.2024.03.27.02.52.26
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 27 Mar 2024 02:52:47 -0700 (PDT)
+ Wed, 27 Mar 2024 02:52:28 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
  Igor Mammedov <imammedo@redhat.com>
@@ -103,25 +103,24 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, devel@lists.libvirt.org,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>, Song Gao <gaosong@loongson.cn>,
- David Hildenbrand <david@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org
-Subject: [PATCH-for-9.1 v2 13/21] hw/mem/pc-dimm: Remove legacy_align argument
- from pc_dimm_pre_plug()
-Date: Wed, 27 Mar 2024 10:51:15 +0100
-Message-ID: <20240327095124.73639-14-philmd@linaro.org>
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org
+Subject: [PATCH-for-9.1 v2 10/21] hw/smbios: Remove 'uuid_encoded' argument
+ from smbios_set_defaults()
+Date: Wed, 27 Mar 2024 10:51:12 +0100
+Message-ID: <20240327095124.73639-11-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240327095124.73639-1-philmd@linaro.org>
 References: <20240327095124.73639-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,125 +129,126 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QIjte/DvSKKV
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xSMPBeKt+Aa/
 
-'legacy_align' is always NULL, remove it.
+'uuid_encoded' is always NULL, remove it.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20240305134221.30924-11-philmd@linaro.org>
 ---
- include/hw/mem/pc-dimm.h | 3 +--
- hw/arm/virt.c            | 2 +-
- hw/i386/pc.c             | 2 +-
- hw/loongarch/virt.c      | 2 +-
- hw/mem/pc-dimm.c         | 6 ++----
- hw/ppc/spapr.c           | 2 +-
- 6 files changed, 7 insertions(+), 10 deletions(-)
+ include/hw/firmware/smbios.h | 3 +--
+ hw/arm/virt.c                | 3 +--
+ hw/i386/fw_cfg.c             | 2 +-
+ hw/loongarch/virt.c          | 2 +-
+ hw/riscv/virt.c              | 2 +-
+ hw/smbios/smbios.c           | 6 ++----
+ 6 files changed, 7 insertions(+), 11 deletions(-)
 
-diff --git a/include/hw/mem/pc-dimm.h b/include/hw/mem/pc-dimm.h
-index 322bebe555..fe0f3ea963 100644
---- a/include/hw/mem/pc-dimm.h
-+++ b/include/hw/mem/pc-dimm.h
-@@ -66,8 +66,7 @@ struct PCDIMMDeviceClass {
-     void (*unrealize)(PCDIMMDevice *dimm);
- };
- 
--void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
--                      const uint64_t *legacy_align, Error **errp);
-+void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine, Error **errp);
- void pc_dimm_plug(PCDIMMDevice *dimm, MachineState *machine);
- void pc_dimm_unplug(PCDIMMDevice *dimm, MachineState *machine);
- #endif
+diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
+index 8d3fb2fb3b..f066ab7262 100644
+--- a/include/hw/firmware/smbios.h
++++ b/include/hw/firmware/smbios.h
+@@ -331,8 +331,7 @@ void smbios_add_usr_blob_size(size_t size);
+ void smbios_entry_add(QemuOpts *opts, Error **errp);
+ void smbios_set_cpuid(uint32_t version, uint32_t features);
+ void smbios_set_defaults(const char *manufacturer, const char *product,
+-                         const char *version,
+-                         bool uuid_encoded);
++                         const char *version);
+ void smbios_set_default_processor_family(uint16_t processor_family);
+ uint8_t *smbios_get_table_legacy(size_t *length, Error **errp);
+ void smbios_get_tables(MachineState *ms,
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a55ef916cb..7af05a6a2d 100644
+index a9a913aead..a55ef916cb 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2736,7 +2736,7 @@ static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-         return;
+@@ -1650,8 +1650,7 @@ static void virt_build_smbios(VirtMachineState *vms)
      }
  
--    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
-+    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), errp);
- }
+     smbios_set_defaults("QEMU", product,
+-                        vmc->smbios_old_sys_ver ? "1.0" : mc->name,
+-                        true);
++                        vmc->smbios_old_sys_ver ? "1.0" : mc->name);
  
- static void virt_memory_plug(HotplugHandler *hotplug_dev,
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index adbc43ab90..baa1b228a9 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1309,7 +1309,7 @@ static void pc_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-         return;
+     /* build the array of physical mem area from base_memmap */
+     mem_array.address = vms->memmap[VIRT_MEM].base;
+diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
+index f7c2501161..ecc4047a4b 100644
+--- a/hw/i386/fw_cfg.c
++++ b/hw/i386/fw_cfg.c
+@@ -63,7 +63,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg,
+ 
+     if (pcmc->smbios_defaults) {
+         /* These values are guest ABI, do not change */
+-        smbios_set_defaults("QEMU", mc->desc, mc->name, true);
++        smbios_set_defaults("QEMU", mc->desc, mc->name);
      }
  
--    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
-+    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), errp);
- }
- 
- static void pc_memory_plug(HotplugHandler *hotplug_dev,
+     /* tell smbios about cpuid version and features */
 diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index 00d3005e54..af71bd2a99 100644
+index 441d764843..00d3005e54 100644
 --- a/hw/loongarch/virt.c
 +++ b/hw/loongarch/virt.c
-@@ -1025,7 +1025,7 @@ static bool memhp_type_supported(DeviceState *dev)
- static void virt_mem_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-                                  Error **errp)
- {
--    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL, errp);
-+    pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), errp);
- }
- 
- static void virt_machine_device_pre_plug(HotplugHandler *hotplug_dev,
-diff --git a/hw/mem/pc-dimm.c b/hw/mem/pc-dimm.c
-index 37f1f4ccfd..836384a90f 100644
---- a/hw/mem/pc-dimm.c
-+++ b/hw/mem/pc-dimm.c
-@@ -44,8 +44,7 @@ static MemoryRegion *pc_dimm_get_memory_region(PCDIMMDevice *dimm, Error **errp)
-     return host_memory_backend_get_memory(dimm->hostmem);
- }
- 
--void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
--                      const uint64_t *legacy_align, Error **errp)
-+void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine, Error **errp)
- {
-     Error *local_err = NULL;
-     int slot;
-@@ -70,8 +69,7 @@ void pc_dimm_pre_plug(PCDIMMDevice *dimm, MachineState *machine,
-                             &error_abort);
-     trace_mhp_pc_dimm_assigned_slot(slot);
- 
--    memory_device_pre_plug(MEMORY_DEVICE(dimm), machine, legacy_align,
--                           errp);
-+    memory_device_pre_plug(MEMORY_DEVICE(dimm), machine, NULL, errp);
- }
- 
- void pc_dimm_plug(PCDIMMDevice *dimm, MachineState *machine)
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index c417f9dd52..770b49456a 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -3667,7 +3667,7 @@ static void spapr_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+@@ -355,7 +355,7 @@ static void virt_build_smbios(LoongArchMachineState *lams)
          return;
      }
  
--    pc_dimm_pre_plug(dimm, MACHINE(hotplug_dev), NULL, errp);
-+    pc_dimm_pre_plug(dimm, MACHINE(hotplug_dev), errp);
+-    smbios_set_defaults("QEMU", product, mc->name, true);
++    smbios_set_defaults("QEMU", product, mc->name);
+ 
+     smbios_get_tables(ms, SMBIOS_ENTRY_POINT_TYPE_64,
+                       NULL, 0,
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index d171e74f7b..1ed9b0552e 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -1277,7 +1277,7 @@ static void virt_build_smbios(RISCVVirtState *s)
+         product = "KVM Virtual Machine";
+     }
+ 
+-    smbios_set_defaults("QEMU", product, mc->name, true);
++    smbios_set_defaults("QEMU", product, mc->name);
+ 
+     if (riscv_is_32bit(&s->soc[0])) {
+         smbios_set_default_processor_family(0x200);
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index eed5787b15..8261eb716f 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -30,7 +30,7 @@
+ #include "hw/pci/pci_device.h"
+ #include "smbios_build.h"
+ 
+-static bool smbios_uuid_encoded = true;
++static const bool smbios_uuid_encoded = true;
+ /*
+  * SMBIOS tables provided by user with '-smbios file=<foo>' option
+  */
+@@ -1017,11 +1017,9 @@ void smbios_set_default_processor_family(uint16_t processor_family)
  }
  
- struct SpaprDimmState {
+ void smbios_set_defaults(const char *manufacturer, const char *product,
+-                         const char *version,
+-                         bool uuid_encoded)
++                         const char *version)
+ {
+     smbios_have_defaults = true;
+-    smbios_uuid_encoded = uuid_encoded;
+ 
+     SMBIOS_SET_DEFAULT(smbios_type1.manufacturer, manufacturer);
+     SMBIOS_SET_DEFAULT(smbios_type1.product, product);
 -- 
 2.41.0
 

@@ -1,77 +1,77 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp500816ejv;
-        Wed, 27 Mar 2024 07:27:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVI4ak9f0adO7WgYcL9+ySBzzALI0m9IdqC4a/2Ds/vqJZ/fQCxekKkJQlYPZbrUe2SjFbTsWfQfOlIpz2fADP5bBtdAYS+
-X-Received: by 2002:ac2:5b50:0:b0:512:cc50:c3e0 with SMTP id i16-20020ac25b50000000b00512cc50c3e0mr4169426lfp.52.1711549663372;
-        Wed, 27 Mar 2024 07:27:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711549663; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp607411ejv;
+        Wed, 27 Mar 2024 10:13:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUPTt+Uc7w9myhOie/1sxbpMIBxsBnICs0APesYkwbnUixJYXV2WBPhNjLd0PKI7iQsWz7XBAPdr/Q18wPHJY7KV4pzEAJE
+X-Received: by 2002:a5d:6b87:0:b0:33e:7402:f4d3 with SMTP id n7-20020a5d6b87000000b0033e7402f4d3mr425300wrx.33.1711559637286;
+        Wed, 27 Mar 2024 10:13:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711559637; cv=none;
         d=google.com; s=arc-20160816;
-        b=FA1UO9dbNmzzrOsgFinTYljjqM+6MCLB0YC0M7jmn0C8q+MlEs2vwJ70UZpUaBHF4Q
-         WbuGHvR5Devgf/CcGd6Ikw+v3FrPWflzp6ifikHzlQAvDkjaLydribij99eI2IczKjTx
-         Mmzvmvy1ENKuJNx8eCsTXs9HnexWMUX4vgX+VLBKyPo2r0Ww9+N/uWEm34+9BokljKYm
-         fwShlJndFMWs45Ip+BIo3K9CO7maTxnwb0CgzSgO64qggoorG1x/KeztrhsdEnrgrrVa
-         KuTzdBHfW2rz57hT+cfBK5yEhN67dV4IQQ1Vi0w7Qiyt9ur6Khub3V37PxMglEvrZE/3
-         3aWw==
+        b=vykRsx9AqftjCCJUkEt1dJ92vG8B19Q8Wk9E9oIJTyZfKjElo2EXNyNcXpAABP4Nc9
+         /Pdrss2Tdlrr2PXBUwg+T6TdDfKdc/G4XVg9YXY1vsHYuVqWegYqVjvATZCu+izk2WR6
+         tCm0qZfr/Kx+JwTZD0HK2SnYHSBL2CAmmpeCMCT1CS3wEOsxf6Z82o8dLXDV7avVjWd0
+         rXhLOCIZCn2rSYLgYfWeJHjYQeBIy1432cI6I1gj4s92udoGr31vd2wlMLv0NlUijwmP
+         bNDb1hG3p4t7U8738VeQzL0mNOSRLcwC6KTHtzSWvVJ5S73DJbeiuqD6F27oUPovFaNH
+         o/FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=6s9TY9/Cn4vJqrwwNmvG7/hGbs5cbUMGy83r/DdqAYU=;
-        fh=5p6jXgSsz3bn1d13qNPP8WsICO6/jpXqGx+fwBw47d0=;
-        b=U6K09Z8Ur+VEi4YSAcAd+h0+0Si9eVhm4bnsuBFKbz0YXuwH7gE9lHk9iSmv9kRBeg
-         IIN/JdEPkaJBO3RtppTQj1+F5p2OTTO/IrhkcKOG4ej6NxmFJYl4YXwqdaf3abpxEItN
-         tyvXJ4yXPJ8ZWmcz40SQR+gvKU4skHfRVMC4k+f941sa8vk1510WpWTJNF//vRnAlBKn
-         iwVSaaosByttbf3PN93iOonDeVdoPa+ebeO2WOZmV1faBp/Et199PNyuOxFs1NmKzrt7
-         xDoXSzpHk6hBgWKv6V6TBPACBmUgk2t/9wMmeWCGsALGn80e5AGEJ7KfDrkm5C23451S
-         /NPQ==;
+        bh=vu7suNCUX1YMKGA4SET/IwU/8+fAPUob1HodKRWXOiw=;
+        fh=/X4CJ6feqMcRKd1h9Ck8goQFzLfMlFk+eVGAaHS15ZQ=;
+        b=k9ex5fe9FrRo2UVBiFfY5YfnRwsr8h+p5vxsS1QlJamBBy1UtOnLOWHU8sHSTtwRqI
+         lxky7dzua9b7iQ56puwLm1NuGUOhzZTbRn/VBfu1FSYxiaB3fkx1Mir1jJ1Wi4GJfa24
+         X8iEqQSG7cbLncY7v/qarUr7DPh3jOqayULFIxKzwFsyhY/OkqNtdCIgew+3HqEJXxMO
+         nL3AQXXqu6zSNL2xCKyvfqJ45V2S7p/Gi5QuZKgaZTHbVLn54/9Jaut5sgTaLa9QLVth
+         n9r1X2zjNyFiafYzCfE1A4wBMXmhLNthTGiab3SPrwrlmmtw5WexeQmgO4CWSLR+5B73
+         5Jrw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@cloud.com header.s=cloud header.b=akD1Dr79;
+       dkim=pass header.i=@cloud.com header.s=cloud header.b=chaI7cgG;
        spf=pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=anthony.perard@cloud.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cloud.com
 Return-Path: <anthony.perard@cloud.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a7-20020a19ca07000000b00513da9d0b2bsor2264114lfg.12.2024.03.27.07.27.43
+        by mx.google.com with SMTPS id o17-20020adfca11000000b00341a26e3d3csor3521604wrh.1.2024.03.27.10.13.57
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 27 Mar 2024 07:27:43 -0700 (PDT)
+        Wed, 27 Mar 2024 10:13:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@cloud.com header.s=cloud header.b=akD1Dr79;
+       dkim=pass header.i=@cloud.com header.s=cloud header.b=chaI7cgG;
        spf=pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=anthony.perard@cloud.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cloud.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=cloud.com; s=cloud; t=1711549663; x=1712154463; darn=linaro.org;
+        d=cloud.com; s=cloud; t=1711559637; x=1712164437; darn=linaro.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=6s9TY9/Cn4vJqrwwNmvG7/hGbs5cbUMGy83r/DdqAYU=;
-        b=akD1Dr79DA3TDuVy4KYa7V1o6k/eb0e53W0mn1whei8/DVe+gFthftFHUt4GsrSKNZ
-         EOZa5nEnHR7DGX0ZXoNWlyTU21APjyqyggod+8W5zUG6hAab+28n1D+SwSUQOhe/BvUy
-         CGW5zQBwFysbriwMc+tsf+1PXXq5a17wgkUW0=
+        bh=vu7suNCUX1YMKGA4SET/IwU/8+fAPUob1HodKRWXOiw=;
+        b=chaI7cgG8KkZSmeU0LuvKyHXxhdDmc0BGtl0uSpiAtjwMpdnkXR+PhUEpW1WgIXDcz
+         QthBgSfMaSuZ+L+BGGkObrgCRvw25ZYVdOCMUiGJgoOn2PTbyRWmwch8L5CXTJbp5xs5
+         4hHvpHke1m5dH9pz9+NIaYHhfoPvK470I2rr4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711549663; x=1712154463;
+        d=1e100.net; s=20230601; t=1711559637; x=1712164437;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6s9TY9/Cn4vJqrwwNmvG7/hGbs5cbUMGy83r/DdqAYU=;
-        b=dw1RRgVK0+S0kMBVPhlZXycKDnUv+LllJGQPerTjI1kfpzUt763OlaIwiD5EbNGbmw
-         /PfbIvT++pdxrUqqFbdTmNuY+iffMgCtyGRkGqHs7qVS3ggRwAMQ1y2LZXVlkw/CQ9IZ
-         lBmFTo5+5yTRA+wynT7Eiq0jjUFwNxBIYa7mR/Bqr5xJhwyims/ITPsczsdWuDc6mHiY
-         +6qiGwuxdthxHGH+qKrTSCUizCQvIHSJhgmlGpc9fDLT6iu8vZ0sRrLy/wpqGV1d0Yhm
-         7+iv0vnaY2W8wO3vADqJe6+rL5vAgrZsg1wosNjq5Lt9n/0cT18HcioAJcUkU/yEFbZs
-         t7jQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX6g2nD+k2dlew5TouMqpPIQ23YgSY98bVnbzwlCPrnkRq5nqOrOSMFvvDOtudRxpqcvq1w2EagQYgEffDqyx9HzF0hJxF3
-X-Gm-Message-State: AOJu0YyhaO86mYje1oqJ84ej6fAgcOKFKcjeChLmiwQ/EWNHvq4cz3I7
-	jL90h034DsCluBzK+VQ5WwZlOh/b063ux4PHGnlIuw0pLqA5dWPbBN5rbYkW4TI=
-X-Google-Smtp-Source: AGHT+IGfOGc5SfDKXbq/6cWQXWrbWdawL9QipNh4y7lGdJ/Uq0Y4kUnfad0T2fo+7kdSA94cBcA4PA==
-X-Received: by 2002:a05:6512:6c3:b0:515:ba94:8929 with SMTP id u3-20020a05651206c300b00515ba948929mr4374913lff.32.1711549662886;
-        Wed, 27 Mar 2024 07:27:42 -0700 (PDT)
+        bh=vu7suNCUX1YMKGA4SET/IwU/8+fAPUob1HodKRWXOiw=;
+        b=ixv0RuXSYiXvrhUpJ3TjET0lfjYLfnUjpnWB7e+qwCQ7XNLFbdrSpbhZR5YPSGFrZn
+         nuncO5Y3Oa951JtKQtcuZpQZ47PgaUN615N4hQrOT993t42/FX1I3tuVffpUUrsjlJvS
+         AJkAo5UKZMpyLjFbw+gUsifioqzAEsPaT4qgMv6kEYThOGmeIUcepOlkq6VB4kVP3yxv
+         b21+pwc7zb2kd1JbDBv6RMVHtlTe2CZJhdd/nBBG8Pu8NlBPfrB1O5VmssViiR2gDlrz
+         o+6CtU3GIIr4dJtOvMBJJywUEwMzl/bvFAbnv9s28toHXeMx3qL0/doF7Wc+BJXByEtn
+         RX0Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWGrfIVNxMH60UaovYg5tcDEBFKtBcP97ZHxPNZ4I7uT9b3RN4+/wZJTSdpVZZyI/ClhheM6AwSnJ2UMBXiykeyvjme8pc+
+X-Gm-Message-State: AOJu0YyP7d3MOtna/+oeIu6kwDTBsFHEpRuErcdzsl5jspI3yT+oLW4p
+	IsfAT5PLl6lUXhexDRdcwsSqhFkgFAyXWQjR9oEmamwoDNtIZqsu4vmqLYurVsQ=
+X-Google-Smtp-Source: AGHT+IHuzwyfCe0U7WV3L9+qNX5m7LH+o76ieKYIT56YXzVsC6yBJ1zoRlezauX/mZrHEMHFIXhO1A==
+X-Received: by 2002:a05:6000:ac3:b0:33e:64f3:65a5 with SMTP id di3-20020a0560000ac300b0033e64f365a5mr433896wrb.52.1711559636869;
+        Wed, 27 Mar 2024 10:13:56 -0700 (PDT)
 Return-Path: <anthony.perard@cloud.com>
 Received: from perard.uk.xensource.com (default-46-102-197-194.interdsl.co.uk. [46.102.197.194])
-        by smtp.gmail.com with ESMTPSA id jw24-20020a170906e95800b00a49856ae93asm3739062ejb.198.2024.03.27.07.27.41
+        by smtp.gmail.com with ESMTPSA id w17-20020adfcd11000000b0033e786abf84sm15317168wrm.54.2024.03.27.10.13.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Mar 2024 07:27:42 -0700 (PDT)
-Date: Wed, 27 Mar 2024 14:27:41 +0000
+        Wed, 27 Mar 2024 10:13:56 -0700 (PDT)
+Date: Wed, 27 Mar 2024 17:13:55 +0000
 From: Anthony PERARD <anthony.perard@cloud.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
 Cc: David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org,
@@ -87,26 +87,27 @@ Cc: David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org,
 	Eduardo Habkost <eduardo@habkost.net>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: Re: [PATCH-for-9.0 v2 12/19] hw/xen: Merge 'hw/xen/arch_hvm.h' in
- 'hw/xen/xen-hvm-common.h'
-Message-ID: <8829dd17-308b-45fe-8d48-a980470316e8@perard>
+Subject: Re: [PATCH-for-9.0 v2 15/19] hw/xen: Reduce inclusion of 'cpu.h' to
+ target-specific sources
+Message-ID: <5cac8283-2e26-44dd-b113-d8499a0ef618@perard>
 References: <20231114143816.71079-1-philmd@linaro.org>
- <20231114143816.71079-13-philmd@linaro.org>
+ <20231114143816.71079-16-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231114143816.71079-13-philmd@linaro.org>
-X-TUID: 6pFU+5cMaABq
+In-Reply-To: <20231114143816.71079-16-philmd@linaro.org>
+X-TUID: a2SE7bs1Cqoo
 
-On Tue, Nov 14, 2023 at 03:38:08PM +0100, Philippe Mathieu-Daudé wrote:
-> We don't need a target-specific header for common target-specific
-> prototypes. Declare xen_arch_handle_ioreq() and xen_arch_set_memory()
-> in "hw/xen/xen-hvm-common.h".
+On Tue, Nov 14, 2023 at 03:38:11PM +0100, Philippe Mathieu-Daudé wrote:
+> We rarely need to include "cpu.h" in headers. Including it
+> 'taint' headers to be target-specific. Here only the i386/arm
+> implementations requires "cpu.h", so include it there and
+> remove from the "hw/xen/xen-hvm-common.h" *common* header.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
 > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
 
 Acked-by: Anthony PERARD <anthony.perard@citrix.com>
 

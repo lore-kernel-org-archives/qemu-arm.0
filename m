@@ -1,77 +1,78 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp402779ejv;
-        Wed, 27 Mar 2024 04:50:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVACMKw7eoQ9uqslx1FNF91qd12jHMKkRp82jG4E3xnAj/OEpOdlk+VGGDZPMIwMDJQSQ/dzwa0+lM48bSDkwkm4DfiHm8M
-X-Received: by 2002:a17:906:911:b0:a46:a646:244b with SMTP id i17-20020a170906091100b00a46a646244bmr3344819ejd.34.1711540223886;
-        Wed, 27 Mar 2024 04:50:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711540223; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp404583ejv;
+        Wed, 27 Mar 2024 04:54:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVW5dbajZH0dOWBbpkqhT62renv4p7JXFaMBvt/u8tFBEdJpJsK2VKgX2pTFeIKuuhIG37U7mYt2NBRG37F1Oct1anQ8R86
+X-Received: by 2002:a17:906:c7c2:b0:a46:92a1:6459 with SMTP id dc2-20020a170906c7c200b00a4692a16459mr3859042ejb.17.1711540467533;
+        Wed, 27 Mar 2024 04:54:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711540467; cv=none;
         d=google.com; s=arc-20160816;
-        b=mdVu8cQsCAYQb54aRytWMUSRE6GEl3xXbXBoFLY0o3J71HvS8UlSqAObeYv/Rf8LFC
-         FH/bzLZgNwobBpHeIdOjajjblmOhV81GVOiIAOQXOTWn260zNNuWoxtIxu+uumKVmiOM
-         sM2Z6WMLxcbHn71xMLnWquRvTbiurCFUJuGTHUhwUKAEXqoxsQ9apZrs8ZMajJUR0cqk
-         mzMUty1RfF7z6ncfPr49U2CzYZ73y3C34OZq07ACysk3LzrEhtOvEqZa5yVTL3q9g4iQ
-         uYXB/47CV4v9UxHgwl68E6b0yq8ARDHxSoCTasy+96Ke5G34mJiS55UQ5v7EV36WA84O
-         g2HQ==
+        b=NtVG+dVJIMJVYuPMsOPntTjenqYJ9c5cXMjgHm4P05YZ/ASZu96sOVPTEu6gtoeMaP
+         kl3fXSbivDB5bgOgwYqMAWnLyzjjvDlNW/8vrbR8ll9yitxPDExeiO9qzmNu1HRZZ60w
+         QPYmiNmFOGFNruqpmAeRmE1vgODQkehhmkAh61CIqDM90vBtZRVQJf6vs91WGgRk/I8f
+         xeK4tlMLB4Hd/ZfuprvMQOAofyq+OYZK4VwzYskDGQ3grnZ7XzRRe9Yl0vTcTI1NWmep
+         fXV/yFNurD9Vv5rN1CQ8UHd/HqVaB0AayBJP+eeVnd4Hci9hU9INWn5EBHao9Jxny59E
+         y7Pg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=4FC6f2CiQL5W1YZBJ6SK7a0UwL0NwwFJDhTY6Z9yEh8=;
-        fh=PSZXdejtZsH3xR5OtrfWEju+g2gRF/Q5aBpiwOZWEr0=;
-        b=oGvt6sM/vewJp+mZKcqYrwyO4KkVKtb4+HcCM/8ahuR1tWyDFErf+9wg0igSUK/jzr
-         Xpl0IbgDkQ3wBrgZsJAfiKUJ9iAELbaKX5N/OgzNrpVOV+z9ocFcezVhGdIwiGMTibAK
-         Mo/OVbALDBalOzztmrjwA7yOi7NSWFV5TPhn5mHE5daMDPBd330FB1txnhCjpqtmzK1Q
-         ZvdjGUn9Qls1Delphz2clMU9xJk4H1kjDdqwUvTrfkzYEw720+k9dtHy/4TMO7JtWbFq
-         1EIGBTa4t4/38CXVf7rt92oimVUERcj11tnWjqAT/9PIwvqCx0wW3dTa/gehG90FhGnc
-         rHUg==;
+        bh=Xo2nfZBTCiRDB2jtZRoNWpjUBE4WiCL6rnHvacWUBJM=;
+        fh=2B0FbhM9McGTzXhpD4pfLoNtHVr9e9iypRtNPTENN40=;
+        b=v+WvPQurMifD9WrNy6nQiU09FHnPJWkEa9nJ35Bveb91/g1FCNkWxUZRpXHtLulXdA
+         7b3AJZ6Doukp0mGi1+8WUJXB3iIZXfEJhbsf8Yw+4yS6l29f4g7/XtdqFcbYcEwhyTWU
+         lad7TF+UxuBtM++89zz48EV5T7BiQ9UPzmZhv7/Ai6XamCCK2cnZfpH1NGausbgSEKPp
+         jNK7ECcf/vLqGAjhrIbylS8WlXAB9v9CRghUHXmN3e4nDJZHXtk/6/BGxG6c6MJpLmO2
+         29IIsZYNPRBjg1dklVHyoeJi8BgPSb6ygseL7myDN2TV+WDGCVshmIPJip8U6Wcr0/BD
+         Ry4Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@cloud.com header.s=cloud header.b=YW3Z0EXC;
+       dkim=pass header.i=@cloud.com header.s=cloud header.b=MNX8T4iQ;
        spf=pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=anthony.perard@cloud.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cloud.com
 Return-Path: <anthony.perard@cloud.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id y24-20020a170906071800b00a46f27d20f1sor612760ejb.1.2024.03.27.04.50.23
+        by mx.google.com with SMTPS id w18-20020a17090633d200b00a4720d0d75dsor2808894eja.14.2024.03.27.04.54.27
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 27 Mar 2024 04:50:23 -0700 (PDT)
+        Wed, 27 Mar 2024 04:54:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@cloud.com header.s=cloud header.b=YW3Z0EXC;
+       dkim=pass header.i=@cloud.com header.s=cloud header.b=MNX8T4iQ;
        spf=pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=anthony.perard@cloud.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cloud.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=cloud.com; s=cloud; t=1711540223; x=1712145023; darn=linaro.org;
+        d=cloud.com; s=cloud; t=1711540467; x=1712145267; darn=linaro.org;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=4FC6f2CiQL5W1YZBJ6SK7a0UwL0NwwFJDhTY6Z9yEh8=;
-        b=YW3Z0EXCxmFYSe4o3lPM9tiKBFYyQ54KDKv8LXctSzbrIMr//QF4DUFW4sLzaAsOWm
-         hdczdWcgZnQZltRCub6nivew/oAN2cBRmzKOVl+5jXqcDXloIjPgZwGp5BpUIHOXSRL3
-         8d12dVkWAItaCdQC4O4lSmDGGA0zwI0U9vu9M=
+        bh=Xo2nfZBTCiRDB2jtZRoNWpjUBE4WiCL6rnHvacWUBJM=;
+        b=MNX8T4iQjt4yepfEMC8nSoMl4e7KjZwxh3Blai6qEVkgBxC9svSU2B+pKtOUUKwX6D
+         tDHtYBvbfN7glXd/1ZaAZHNw5yv3c64PxyYfDvTLACfTiJpLb1RtBVE6MTchJAlr8cVz
+         sT9s6Qvsb6FncEFxlKMVxY24fQzRVvapBDv68=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711540223; x=1712145023;
+        d=1e100.net; s=20230601; t=1711540467; x=1712145267;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4FC6f2CiQL5W1YZBJ6SK7a0UwL0NwwFJDhTY6Z9yEh8=;
-        b=E1O8qyfGG1rKo5MJhMDCo2AWNnPJJUo5O5qLQRVbiDQgm6EjdRr/vQR2vhMdjzOWE5
-         Gm4tIXtXxfdXaaqAZMsZLckNUAfCYb5evRrRxp/aeb6ph5S+qYRqiOtGbDlV3KOvjuD8
-         YwolB30B5lnpkZ2T64tgew8ePczvkbacdLui0xmSO/gx7zJ0CeuurwOOZe8xrewOyChC
-         In5UkLnh/g+0hQbbb3JyBIfjHc0KzOHiH08A3Rg1hRJVD6U9XUsbWNNQ8Xg4zconTFwI
-         kIqAoXkPkQHwVCfGdbWoDygHlP9vcrizn+ndmnZQ4H8vpNio2Wd0IJReHH2aWBxc5wFw
-         IT2Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWkrqcVe1EhfdSFWuwdn7ce644pyIFMnrGWDoXccILHGUcB2G2qDQZmlAI83CqBQ9t8AQ02obPnHMzKDFLhkm1Rf0ngTuUJ
-X-Gm-Message-State: AOJu0Yziy2XidXt+CfRohELB31M002gleAFnVCk4ycVKEnoxSAVv5dS4
-	kOeMHNvncTfIeyjhsTVhGGx6tclcnr5y13HQ30pkl5v6nbT3zSOO8MeHAGuTmQY=
-X-Google-Smtp-Source: AGHT+IHjrlueyINri3BcwMN7nzklq3D6QJVA6wmS9ETMB5MPCffXe1tqgCTZZJIf53/O2Hw5bsVZmw==
-X-Received: by 2002:a17:906:a890:b0:a47:134d:2fc8 with SMTP id ha16-20020a170906a89000b00a47134d2fc8mr3629567ejb.10.1711540223416;
-        Wed, 27 Mar 2024 04:50:23 -0700 (PDT)
+        bh=Xo2nfZBTCiRDB2jtZRoNWpjUBE4WiCL6rnHvacWUBJM=;
+        b=dkVIgnJOznhnfs96xwS6uiuwH5x+cbyctcJ6wwcTVL2XfR7qbbAwA8IKjSGqfGl1GL
+         HmLUdblSvkM6LLLXBQ/Ya2TqOIGSYNK2fwKSbuxe3EKEPOmt9VYXntA3aS/D451lnuLF
+         wti9pLqLfwzRqFClmrJooqMXocgMqztojupZGyroRcaN4TEDgRvlpbMPLOicN41YyGYD
+         t5edQuBsObLcxYyosHbviMoxlk+n3zPWWWf0mWeGkjWvM7RpbqBZVMXh4ClIV4zkc78L
+         y40GF1kv0bUcbw2X87srBxBzJgXfakS7jBpuGZaeG43BiJOpldoG05KZoCll3LzBmU/o
+         jH6w==
+X-Forwarded-Encrypted: i=1; AJvYcCXkPpp3Lx8LSl8Vt1fJKrZKgB4n2cZ9TmqIXCaEAfLDQfcZ80oRS7q2ObPMGk9hHZTcVhZKY1919xHNuC0kmNoEAtoVJ1bK
+X-Gm-Message-State: AOJu0Ywm91kjZE+pf+dhe2e16YSjP0Wzar+aGFFkewSYh+VRgKR51gy4
+	Mgm2GB+wtz1r0GkhL5Fj1VpXANzwgHp4d92WV/1FIuiFqIj5ubmYEzzHqRsBgjbD9GRCmxDES70
+	K
+X-Google-Smtp-Source: AGHT+IG9GlCL2qsgWyuFSglCpOBIwZX7MMRogX3VsIf8avJI3j19EV0AuKmIO9P0kiOttKpgN9U6dQ==
+X-Received: by 2002:a17:906:1911:b0:a4d:f2a3:9c37 with SMTP id a17-20020a170906191100b00a4df2a39c37mr3310934eje.4.1711540467139;
+        Wed, 27 Mar 2024 04:54:27 -0700 (PDT)
 Return-Path: <anthony.perard@cloud.com>
 Received: from perard.uk.xensource.com (default-46-102-197-194.interdsl.co.uk. [46.102.197.194])
-        by smtp.gmail.com with ESMTPSA id u1-20020a1709063b8100b00a46fbff47a6sm5322360ejf.168.2024.03.27.04.50.22
+        by smtp.gmail.com with ESMTPSA id x20-20020a170906b09400b00a469e55767dsm5334791ejy.214.2024.03.27.04.54.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Mar 2024 04:50:22 -0700 (PDT)
-Date: Wed, 27 Mar 2024 11:50:21 +0000
+        Wed, 27 Mar 2024 04:54:26 -0700 (PDT)
+Date: Wed, 27 Mar 2024 11:54:26 +0000
 From: Anthony PERARD <anthony.perard@cloud.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
 Cc: David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org,
@@ -82,29 +83,28 @@ Cc: David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org,
 	Stefano Stabellini <sstabellini@kernel.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	xen-devel@lists.xenproject.org, qemu-block@nongnu.org,
-	kvm@vger.kernel.org, Thomas Huth <thuth@redhat.com>,
-	Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH-for-9.0 v2 05/19] hw/display: Restrict
- xen_register_framebuffer() call to Xen
-Message-ID: <7e08a2d5-7d90-4d48-85e5-4c7e39d59c11@perard>
+	kvm@vger.kernel.org, Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH-for-9.0 v2 08/19] hw/xen: Remove unused Xen stubs
+Message-ID: <7af32170-a282-4f28-9db6-913087960acf@perard>
 References: <20231114143816.71079-1-philmd@linaro.org>
- <20231114143816.71079-6-philmd@linaro.org>
+ <20231114143816.71079-9-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231114143816.71079-6-philmd@linaro.org>
-X-TUID: WOj+iqmI01Ju
+In-Reply-To: <20231114143816.71079-9-philmd@linaro.org>
+X-TUID: 3Rq0FTAqCpu6
 
-On Tue, Nov 14, 2023 at 03:38:01PM +0100, Philippe Mathieu-Daudé wrote:
-> Only call xen_register_framebuffer() when Xen is enabled.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Tue, Nov 14, 2023 at 03:38:04PM +0100, Philippe Mathieu-Daudé wrote:
+> All these stubs are protected by a 'if (xen_enabled())' check.
 
-I don't think this patch is very useful but it's fine, so:
-Reviewed-by: Anthony PERARD <anthony.perard@citrix.com>
+Are you sure? There's still nothing that prevent a compiler from wanting
+those, I don't think.
 
-Thanks,
+Sure, often compilers will remove dead code in `if(0){...}`, but there's
+no guaranty, is there?
+
+Cheers,
 
 -- 
 Anthony PERARD

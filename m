@@ -1,116 +1,157 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp466967ejv;
-        Wed, 27 Mar 2024 06:37:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU+5JZgZK1Db34/BX9HK34Ks8aHXLeyOALc32rjjm0wYj41kbbcfx8yNRkSypbmUfiYWDdfWJ4MJQWXX23Xf2RAT4TOIGP5
-X-Received: by 2002:a2e:88d7:0:b0:2d4:76d6:e9c9 with SMTP id a23-20020a2e88d7000000b002d476d6e9c9mr10744ljk.52.1711546653480;
-        Wed, 27 Mar 2024 06:37:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711546653; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp477251ejv;
+        Wed, 27 Mar 2024 06:55:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWq2xKlPc3PistLd4fE3fJta7Ga04CJBp9pjjUndqafMlQg3ovLAhBF0DtfxVnpTx5JlfwQPzvq+mHUYQGV3EyzA/9YRkBB
+X-Google-Smtp-Source: AGHT+IGmLTLVeeYB5Loqn6raAfnwSIz07ym6dEx6+/QfyRQoc5rhkP3t2JRF3kmiowJ7dVWK1lgt
+X-Received: by 2002:a05:6214:e89:b0:696:236b:c158 with SMTP id hf9-20020a0562140e8900b00696236bc158mr5430275qvb.1.1711547699804;
+        Wed, 27 Mar 2024 06:54:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711547699; cv=none;
         d=google.com; s=arc-20160816;
-        b=vMYkM5a1G/bX4D1qObbPOXF0EEO2I3sanLtxfFRXiZiganqRssnaPPqsTGc7kH4fkj
-         iBLJRv08jci3hPL440kY1EzeT9N4RQ6nT61fugm1iWFLWlfdjakXvbuPsa46zmZtApyd
-         7DhvqU77kCUPUeB2uQQ1syxVrKqCCnda+TL8Yv4BTBuXCRJE/sDjRsJaNmHhVFXC4Qar
-         P1s0Zo2KJJTtw7EEQUcA5oOFBL/EQWXgNs0nGXP/VQbtuY3wRoVuuW0cMsHx9FraCxhu
-         dnMBHVSfYySMUJGOy1cnMz+vTbggo+UIRfT42MMkTmJijAojc4mW4X+4kN1Wy33PAP6m
-         KG+w==
+        b=kZ1FlTNiRXwGbTOhiCo65Gj1nFDX86GoUapN4P91m2DvTykqd/0Yfe05Ve7CzGkp+K
+         bkcQC6kgqBfyltnFgVuNE/31PHpz8TjZ+AuL1P8E/qHYPdiLAbbp+7mYIzED5nnwahOd
+         Ku7o4tpQSggN8r1+jni124BBtFcl7njq6s/elozaviERgWTxju9g0HsoaMuZx4UchO58
+         AJwX2ZDe+ZSQuLBBeTltc9WDcDb/48gpfWWZY+w9pEaVNHdKppKnF7VoEGjMhv1TSR5H
+         RAMputGlck1nZwPmWjn6UuuJAVOUpwBD9T2VEid8ECgG8f/X+OJ9qFJ5qHCFzrJXdUet
+         Kwpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=smTZluOGn/fUn3D+QqeEnI8LdPKMkXjE5Ourcjod5Ew=;
-        fh=VLEkH7YwpXsTGXy3kWAVTpJbYVLsrlbabsIPNWxz8EE=;
-        b=MNXvxFCiTtQn0rUgEEZ2ub41yOXRdKSZAMZ8bnt7QM03CS6Aydt1z1i2C84dfxvWVY
-         W628JtDOKPaF09c2sGmtaqAsZq68i3VBkyFSh3Id6pnSrI/29drkKLlJzhQiEXFxQcoT
-         zp3e3QZMxboQhpgtGpAIlmp8DGhe2gPLIKfMrsFy1KLmOquHu3eYS4BE9CN0mygn1Y5e
-         uJgvBUkbPHe+BVo5MlNogRedF0W+eF9lDntOjF0oABmyF9SsUsMqtZP7kq5khq/eWIJN
-         vFTmy33Y9bBld+t6zGdWP1sGhqVjjwlPu33DgkZ1Q9upoccoKeaLRmmfOvWJ40B8Gt9K
-         ZQuA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Iqjoc5giyqC6qpXMEnHAOQAIfp5LTbThOabbaNlqsY4=;
+        fh=cmeBVc0/X94lMLxNKdjyCBgTBXAt7CFBf2FU7Kv0ncw=;
+        b=dRNviVMTM4INusXpFTWyEE7rcDF4kOO32xMuo1Afgm6JNANbdZ3GmBxDo4DpPeD1bm
+         XyIGfr3d9UAZZccfxmwil6AD3XflmhWe9CIjrpRGUX8KpFdZgi1sJ0KdgvUHU6mOb4rc
+         82XNIyB4RfmcAN3IWUFGZcmIh9+m5hKNcR/96nTDEHM9+REA0kE2UsiAxovsVo5HB+KX
+         uHHEhZe+r/FKH3HUQrQAKFSGfpa/jhIb5f/BZfAkbyuvfmtunYetiA7VeZjPq63LHiHT
+         fGir4eHJrjpnDxSClPkXIr4RoC5/VCAAz88NtJ62JEKQ4MTuJFP9LAbljYTTuyKIzuCf
+         goBw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@cloud.com header.s=cloud header.b=XQmXjHud;
-       spf=pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=anthony.perard@cloud.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cloud.com
-Return-Path: <anthony.perard@cloud.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id b4-20020a05600c150400b004147ece64d9sor2420365wmg.1.2024.03.27.06.37.33
+       dkim=pass header.i=@intel.com header.s=Intel header.b=WnIg2JhK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id kd6-20020a056214400600b00696b0d46e7esi784343qvb.302.2024.03.27.06.54.59
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 27 Mar 2024 06:37:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 27 Mar 2024 06:54:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@cloud.com header.s=cloud header.b=XQmXjHud;
-       spf=pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=anthony.perard@cloud.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cloud.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=cloud.com; s=cloud; t=1711546653; x=1712151453; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=smTZluOGn/fUn3D+QqeEnI8LdPKMkXjE5Ourcjod5Ew=;
-        b=XQmXjHudRa45bjC3Gisu5AJ0EApzA3ZQhJ7Eet6OQmvGhOrIyLQjjeW3eFlKP9B1pI
-         4mKw2fSjE4VQSQwbO0uzv7Q2bT04Dn0ZdvWr8s1QBSQU8AO1Ru4oj0f15Js6kUD8RWER
-         Ome/UQmM/Y0WGLcGkgbu3hKcrWXpCVfv32swc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711546653; x=1712151453;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=smTZluOGn/fUn3D+QqeEnI8LdPKMkXjE5Ourcjod5Ew=;
-        b=WN/L+cftFIvTKpOLFCZXun7QCGYhlkxgDepgt7N37PUM6N148oIJu5t784fohcrzLG
-         v7ag8AZXaftiLO8m0jZxKfEu+DVZYERJxFAnwlfMmCZdZ6Ea+cLM4/f/xrOaw0SZhY+X
-         Hv+Yx+62D8LXzytbeJI7G+AQsotdwO8A8cHe+XLlbOEyiv+m27hcGHGMehgnPjER3SEL
-         Wk8RPucoxIPDKQ8xjwhJe6UrOD1IA11FTJd7b/S8rg765gYwFamoqKpTPzgwhFScqdr/
-         lDo4IBUUok3VYwk8zih2lsbzgM+1ZqHDymftBN/MVIq3boyeTJhwIPrQ/4HgKBh7am6H
-         7Wqg==
-X-Forwarded-Encrypted: i=1; AJvYcCUYnlL/+SKHu8hKA+vmwFKFBfOVaB2yK4MYGC12qR4w/QQsTwyzX09wL3j9ITWLVspqi2Zt1eiKK0mZ89JFe+G2GNKDQh83
-X-Gm-Message-State: AOJu0Ywf+afjJA2BUBnea3XxXsNqhd/lCTubdCC3fvdNXiOqy9a0um/G
-	mq+6JNgcLN2ClKogoZcMNk8k5mtFczHRrZerd9zYHcKZMRStcKN8GOg9MeH+mbD50yFYlBgzqcl
-	R
-X-Google-Smtp-Source: AGHT+IHmCd6Z7pLRTa8judRkvI7RAqt4OfBOEutc0X/kcSqKXxmUpEJ5ND/lGGVRsxmC7KvW/3fTRQ==
-X-Received: by 2002:a05:600c:1c8f:b0:414:669b:aa9 with SMTP id k15-20020a05600c1c8f00b00414669b0aa9mr9727wms.28.1711546653009;
-        Wed, 27 Mar 2024 06:37:33 -0700 (PDT)
-Return-Path: <anthony.perard@cloud.com>
-Received: from perard.uk.xensource.com (default-46-102-197-194.interdsl.co.uk. [46.102.197.194])
-        by smtp.gmail.com with ESMTPSA id q18-20020a05600c46d200b0041488978873sm2166371wmo.44.2024.03.27.06.37.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Mar 2024 06:37:32 -0700 (PDT)
-Date: Wed, 27 Mar 2024 13:37:31 +0000
-From: Anthony PERARD <anthony.perard@cloud.com>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=WnIg2JhK;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rpTjh-0004Vu-48; Wed, 27 Mar 2024 09:54:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rpTjg-0004VB-5G; Wed, 27 Mar 2024 09:54:36 -0400
+Received: from mgamail.intel.com ([198.175.65.12])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rpTjd-0003OR-Ub; Wed, 27 Mar 2024 09:54:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1711547674; x=1743083674;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=iTLGYFoNuY8A1vOqe8hPovHfp1x9Dd+JH6t1fYzYsT0=;
+ b=WnIg2JhKM0tChHVZp7XfUbOBokboJJb54jmSRIcY9RHHb5yNo8hgyoqY
+ vSUxKTeeZf0gdb/WDws1gP9FY6B1/wnWaCRJgT5Puc/HipjMRx+G3Sk45
+ dMiub2OOy3XGtnmqkz0SMxahVbqeYM+oYaMDR+IqIyNVEiOYpws1t0o6b
+ o6xEMwg7ErKajEvLXRwm78SuG5KZjezZ2I/x+toRQQCax/5ynnNL96aTM
+ 7UBZ6D55nqZV854nTEqCWogfExFV4fTySQmYeOmeUEAd95LjP85lSlZnN
+ PT4uWRkkcFqUYv5wwCLxlk+LnW5JhFbRVsV3xz0gbJzztErz/YDjJi6M8 w==;
+X-CSE-ConnectionGUID: idNcBpYcS7KhkFUHcQzlBg==
+X-CSE-MsgGUID: WZcMIFEWR3ahYjRZLhkRAQ==
+X-IronPort-AV: E=McAfee;i="6600,9927,11025"; a="18079594"
+X-IronPort-AV: E=Sophos;i="6.07,159,1708416000"; d="scan'208";a="18079594"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Mar 2024 06:54:22 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,159,1708416000"; d="scan'208";a="16333882"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by fmviesa006.fm.intel.com with ESMTP; 27 Mar 2024 06:54:16 -0700
+Date: Wed, 27 Mar 2024 22:08:12 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Paul Durrant <paul@xen.org>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	xen-devel@lists.xenproject.org, qemu-block@nongnu.org,
-	kvm@vger.kernel.org, Thomas Huth <thuth@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>
-Subject: Re: [PATCH-for-9.0 v2 11/19] hw/xen/xen_arch_hvm: Rename prototypes
- using 'xen_arch_' prefix
-Message-ID: <3c553c67-c54c-4156-8d69-bef3476b63a2@perard>
-References: <20231114143816.71079-1-philmd@linaro.org>
- <20231114143816.71079-12-philmd@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, devel@lists.libvirt.org,
+ Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Song Gao <gaosong@loongson.cn>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org
+Subject: Re: [PATCH-for-9.1 v2 10/21] hw/smbios: Remove 'uuid_encoded'
+ argument from smbios_set_defaults()
+Message-ID: <ZgQoTF3FUOpIZAix@intel.com>
+References: <20240327095124.73639-1-philmd@linaro.org>
+ <20240327095124.73639-11-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231114143816.71079-12-philmd@linaro.org>
-X-TUID: sDFOjK9Jn0b3
+In-Reply-To: <20240327095124.73639-11-philmd@linaro.org>
+Received-SPF: pass client-ip=198.175.65.12; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Tj05rSSUjjsU
 
-On Tue, Nov 14, 2023 at 03:38:07PM +0100, Philippe Mathieu-Daudé wrote:
-> Use a common 'xen_arch_' prefix for architecture-specific functions.
-> Rename xen_arch_set_memory() and xen_arch_handle_ioreq().
+On Wed, Mar 27, 2024 at 10:51:12AM +0100, Philippe Mathieu-Daudé wrote:
+> Date: Wed, 27 Mar 2024 10:51:12 +0100
+> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Subject: [PATCH-for-9.1 v2 10/21] hw/smbios: Remove 'uuid_encoded' argument
+>  from smbios_set_defaults()
+> X-Mailer: git-send-email 2.41.0
 > 
+> 'uuid_encoded' is always NULL, remove it.
+
+It's a boolean, so,
+
+s/NULL/true/.
+
+
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  include/hw/firmware/smbios.h | 3 +--
+>  hw/arm/virt.c                | 3 +--
+>  hw/i386/fw_cfg.c             | 2 +-
+>  hw/loongarch/virt.c          | 2 +-
+>  hw/riscv/virt.c              | 2 +-
+>  hw/smbios/smbios.c           | 6 ++----
+>  6 files changed, 7 insertions(+), 11 deletions(-)
 
-Acked-by: Anthony PERARD <anthony.perard@citrix.com>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
-Thanks,
-
--- 
-Anthony PERARD

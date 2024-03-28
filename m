@@ -1,108 +1,109 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp1181759ejv;
-        Thu, 28 Mar 2024 07:55:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXdJ6Q8BqUZ1MgusiS53TnxzoiZ7FvxFxhW3bPVvbWgVOMyjUoZC59c4fNNcC4AA8n+iO2RbktjTfxZEVhh22sJ5I1fSFPb
-X-Google-Smtp-Source: AGHT+IEt01GUesjLVIMy1uWjE/EBSJX0xG0WLsr6UKSyolNLExGnEyCh7FC54sWMTM4H2WujHdSo
-X-Received: by 2002:a05:6870:9209:b0:21f:aad7:6888 with SMTP id e9-20020a056870920900b0021faad76888mr3006520oaf.28.1711637744022;
-        Thu, 28 Mar 2024 07:55:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711637743; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp1181963ejv;
+        Thu, 28 Mar 2024 07:56:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUEUjRod9g8X0MEmAw7zP8DQs2ylp+ogUQhQw8ODItn9PBSxCLhxdn8bTe+ZeIscPT0UKaOS6x7vfJqJVqYAYJ8D4CVRB7X
+X-Google-Smtp-Source: AGHT+IHfLnW5qmMP0bk819tO4L9xkW3IR8hxBGQe8BhIieSf07zwe5s8IdSSyXFcoSVnxoTnWz/X
+X-Received: by 2002:a05:6808:3189:b0:3c2:4de3:2cd2 with SMTP id cd9-20020a056808318900b003c24de32cd2mr4014982oib.10.1711637762262;
+        Thu, 28 Mar 2024 07:56:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711637762; cv=none;
         d=google.com; s=arc-20160816;
-        b=sPDrhUmPJNQZiC2d1C/nM9WYVg7y+Q6X/iYOrYjNs2T64SArc5wNrwqvoHpII+yPKh
-         L0DscYeDYTzeuPmwaMwGX1VNNoxCCJYkGxgfeyELdAptdcpyK5O2AfyULGo5L2sJe74J
-         EJSVoRyrrQfYiEy1DPPI8fpM3ZDr4MF6D5ULQDoIBxrb3UBQsfeZSzqm5+omcuArPNon
-         HleXAeyr6Fs2m0qTLM4bj9ooW2JOcOfrmh4MS+ptTMI9EOZPCh8mKTHYvMjWD4jdZIiB
-         BLxge8EHegG+vI3CDoH3TcFCw6gOIKLfRosBLecc1Z/lxHQbleJ7Wa2l4L+Ieuc6euBB
-         W6Jw==
+        b=hZkzjFtEI3b8IPpsypRcrsaaGYzrjhjYtqFTatg8BIfanPV8OTl2fSULXH+9o5ZWir
+         2FAczRbrUjmL1KLNp+A//B9JM0h7lZi1Dau0cjIfscVq4keO3O4sKr5YyDU7bfoqJFXa
+         +fY9pUweQn/XkcEgudy7MRhObPPR7MFgI3p8jXfYQtgUoglRmEmS2rgdVuSYInRsxAOF
+         cJ9Xk9kEV/ak1XWrZxYWFfD3vk8B2NQ1BVP0030/4bgq8APcg77O3q8UA9CGUGx5DlPV
+         rdhigqsnZLMxojuCZQ7jI3wi9apT+AywanSrEVKuyvK2juH+8c1L2PjjBx7uRsgiitMR
+         m7yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=uoX910Z6hg0RstS8SMFU3Ch1UUOwdBuEYj1I/OsSdqA=;
-        fh=taKyjmNuv1ojHb1iBqre5ygYRaE6fNAqfb+FkgFGCZs=;
-        b=Qxh3+PfqHZWWEChquMZcbEeWA/OQRDUYD4cbaRtpk09sYPLLO75B/VC1K/ZFy4kW5N
-         aa4+kJqheXmUXi9LYOzDlKrD5LXi3awALsaOGttYa10FxsdTn2THcN1aNFQPB85iFzFY
-         9FJ79wHFkGgK/1/YDyxxQ8NW24nV782iclQkc9Q1tw/+aRPoomTCtOnd8QhORK6jXL7s
-         mnvTmuLHzeWDT6LB+AW4sHhrmLRg+7+Td4YvYvkghHUhSAd2t6CH8xR9EgQxMG85Tvuz
-         /vEYCttajBLVNCkFOOuAy4+wWf/wzH9wC2MPBZK6NNiOuhOfw1dSVRVIL12CRoLdyK4y
-         I80g==;
+        bh=8TY7FcskIZBYZwKsnml/Hy1kUHUtaLEmLDD3ELdVs4c=;
+        fh=+VKJYP5WM7d5bkCtXS76c21j+vU6NcnKzgiD1FfJkuQ=;
+        b=zOHXthv7twtqr6lcjVNqZrSu/QaRUEqgiK7q6RpiYP5JDbhBJLKQNoMH/yfSv9LU90
+         xqykfoMuiRDHj2IPORzMdswEGtA6qIWOfWmW1A7FVmP0Rl+enV1FauTvaKj4jBSvHg91
+         iZ2+NW2D0KDGpDYqKi9rdaoWiHMQ09Hf+OfimeMwgKjIVFXGI382aiVWaopwqe+YHH7T
+         ZQywNgS4UsXQx0mK0jBi4JjLNYgaGRAxzW79RHW0Pttg6FzahA53Mw+FHnL67fHdQ3Hu
+         DIr6+d1Kegzdgqod6JC0CN9UNhA0ShVDYx7umSARM745F6dsugtMfpjfYaNNRzCXf38I
+         rAhw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="co2htj+/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=j8hrZ6jA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fi4-20020a05622a58c400b00432b7815bc1si946259qtb.579.2024.03.28.07.55.43
+        by mx.google.com with ESMTPS id y14-20020a05622a004e00b004315138a4aasi1545171qtw.85.2024.03.28.07.56.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Mar 2024 07:55:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 28 Mar 2024 07:56:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="co2htj+/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=j8hrZ6jA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rpr9s-00071s-MZ; Thu, 28 Mar 2024 10:55:12 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rprAd-00081h-12; Thu, 28 Mar 2024 10:56:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rpr9r-00071a-W6
- for qemu-devel@nongnu.org; Thu, 28 Mar 2024 10:55:12 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ id 1rprAb-0007yS-Sm
+ for qemu-arm@nongnu.org; Thu, 28 Mar 2024 10:55:57 -0400
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rpr9p-000755-G8
- for qemu-devel@nongnu.org; Thu, 28 Mar 2024 10:55:11 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-56c0d1bddc1so1257924a12.3
- for <qemu-devel@nongnu.org>; Thu, 28 Mar 2024 07:55:08 -0700 (PDT)
+ id 1rprAY-0007FL-DF
+ for qemu-arm@nongnu.org; Thu, 28 Mar 2024 10:55:57 -0400
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-515c3eeea5dso989211e87.1
+ for <qemu-arm@nongnu.org>; Thu, 28 Mar 2024 07:55:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711637707; x=1712242507; darn=nongnu.org;
+ d=linaro.org; s=google; t=1711637753; x=1712242553; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=uoX910Z6hg0RstS8SMFU3Ch1UUOwdBuEYj1I/OsSdqA=;
- b=co2htj+/IJ2GZDlNOYx6wQ9qcHPHIIvQ8/oWEe9/AtBxDgTas4mnHAjdij4AvIL66w
- yw22RI6NOWeSngUr2fCcjxlAs4q7+dI3v/z7qDZxo+e0Kgoe1F170Hp31rB6vBtDkHoC
- 2Y51knPQzZ6Wj1bLKuqC13wYs6GJA+LpKl2fiG7FJK/wckGgqgzyW84e7bNb6njFBjAW
- iTJEcecFbCeCK+LXrHruTulf7wEluRcY2I6v+6Gfq8WGSW7l1j/E5Ht7+UrsU6o2zZl7
- RJJLYwxCYpiYnlU6jdKH/7R4qqjlHM1HF3wySYgHCkREU54iZQHUYXRBxlJcce7SgqUD
- 5OSg==
+ bh=8TY7FcskIZBYZwKsnml/Hy1kUHUtaLEmLDD3ELdVs4c=;
+ b=j8hrZ6jAUXVbdkJ5cRJKTVXgTmQ31F5JYpXjmOonZby7kE/hmn3CwHviDizomY7MMb
+ /+KvzqRNnpmrHMlWNHk2BYMZxP66prD280p5iiPDk3lEL1KvkdGwKhj3Dvn8xcttx6M7
+ 34A8Sr2mWLUHeVrio6Q9zZCyPHbHSh6s3gG1yqTCHvok+Qu/AaMP055VcA6bzm67ulFR
+ Deae188l73Jfec1YJaCBXGYzF1+pWvtUisYLd/qXD83yJEsoJ/1Own3aZvi/InZMoPC8
+ dlZRB5C6m0tVmReB2OhPzWZPaZQQmFMjhnlal85xTPAWnJXgOHcbI+ZM1Af33uuxExCx
+ TCcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711637707; x=1712242507;
+ d=1e100.net; s=20230601; t=1711637753; x=1712242553;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=uoX910Z6hg0RstS8SMFU3Ch1UUOwdBuEYj1I/OsSdqA=;
- b=ScbGrtJIEwDqXZHVlOfOsTscPNZmfV2BV6WjMMiSIW3I+vBd3r+uOu76hM8hKvTM26
- 55/qNbt69wwCr9C9X6EyKRH0U5I1g3gZfS+KuaoqBDs5X5KKrObc7fMoZWjCBsitDZMd
- yhDaUDoxKk3xIhCxF+HckMOH9kmwwFGfZ1CMdbxo27VopqCCTlFZmbEOYk44QwPcighG
- ocPEyyVONwvyCA0WGrrhSxfQBxeQtO8Ft8hMchqLKqFRRA5hhwhwvKQylYgATFDre1pL
- gXMifZWtFCiZQu6/s5gXQ6zzcLHsqR/Ovd8IVdzCn3ZNtLFlEWZ9p+Idc4xTR229bdmX
- Kv4w==
+ bh=8TY7FcskIZBYZwKsnml/Hy1kUHUtaLEmLDD3ELdVs4c=;
+ b=hFbavaENoVTr1pCqGSG2EZ4qFPynD8h6ZFmlLsRHwsqwamiGd102Xwgp/hVP5ymnR+
+ ZuPMQVcgIeXjNXcSmK4U9pYsbd91G1kH82YC14LNpIC67j4R0TErkE8PIkA95+uprqTG
+ LzwNztQIJpb4b03dTZqMjI9fq01zTaW7x+98ke2zTvHfZ+SHS25ZSaRX3FdzB8Z6QWut
+ KZPvHCV+H0hyToRgU2GScb+fSeW9f+8WFicfxzJH/W9v6wF7EmsscXm40DJYgUvks4lL
+ 6oDDDIP9K+muaFkGimd7GxxIZfVSc0j7VNoBACquyCuYqfm5AUyYMwKrvqXJAMUieRIN
+ LxUw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU5U3D51ldCFhyD79NmQdMjkzR3eoR3/4FMoow1dcttjkNlT0vZxK01YfwXiZQFY7x02xqlv9V5K6vqyNZfdSkA/BAGuN8=
-X-Gm-Message-State: AOJu0Yxu1BhvwVKxWrNz4CgFeET4RL7rIGT3Y17SaaqgqfE2jw45CFBn
- 7G01CtOMhAhDSIRsZxSlalnthBo3fOpicYQ8dcvRRkPAKlv3d1yF32rcPY5r00UrsuhXhypd18F
- pwwmr/EJo0md5oD5aQVhoqoAZp7k1OZPPu91P6g==
-X-Received: by 2002:a50:c34d:0:b0:567:a318:ac0b with SMTP id
- q13-20020a50c34d000000b00567a318ac0bmr2453429edb.16.1711637707263; Thu, 28
- Mar 2024 07:55:07 -0700 (PDT)
+ AJvYcCWvpP+5B2H/UNdltKIvXNIH3w9v1P4x2hw+75Kyl052IZ9LTKkgxRWvsk0v+zZWBhPhEB795v0CEYdUSMKh0LOjZGEV
+X-Gm-Message-State: AOJu0YwAZEgMjHB4lC0gtUF59kB9abvYJdaNVEcKXUc/kkfQZhgvdFNc
+ hsRiWR+RF9HWPwt6Y0C0DfkjRaEeDSCs928MRusdkklLzUGypdDGCQe2+F7uBRiRa8ffKGGvE1E
+ nWHWFtjtrcLnh8iMzlBTQuFQfWDddVIdFm6J+aQ==
+X-Received: by 2002:a05:6512:2f1:b0:513:1577:3d66 with SMTP id
+ m17-20020a05651202f100b0051315773d66mr2162929lfq.64.1711637752622; Thu, 28
+ Mar 2024 07:55:52 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240325084854.3010562-1-ruanjinjie@huawei.com>
- <20240325084854.3010562-15-ruanjinjie@huawei.com>
-In-Reply-To: <20240325084854.3010562-15-ruanjinjie@huawei.com>
+ <20240325084854.3010562-12-ruanjinjie@huawei.com>
+In-Reply-To: <20240325084854.3010562-12-ruanjinjie@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 Mar 2024 14:54:56 +0000
-Message-ID: <CAFEAcA9go1xe+UOBjH64nsRx-n6Tz3sp71qjb0Je=9r8nHBbuA@mail.gmail.com>
-Subject: Re: [PATCH v10 14/23] hw/intc/arm_gicv3: Add irq non-maskable property
+Date: Thu, 28 Mar 2024 14:55:41 +0000
+Message-ID: <CAFEAcA912XopYLBo52PEczE8tSp4BPJB-Oxke3OQRW_X-Wrh2g@mail.gmail.com>
+Subject: Re: [PATCH v10 11/23] hw/intc/arm_gicv3: Add external IRQ lines for
+ NMI
 To: Jinjie Ruan <ruanjinjie@huawei.com>
 Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
  wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,173 +112,31 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4NjRzZfgpodD
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: n1RcPrjs4GKv
 
 On Mon, 25 Mar 2024 at 08:52, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
 >
-> A SPI, PPI or SGI interrupt can have non-maskable property. So maintain
-> non-maskable property in PendingIrq and GICR/GICD. Since add new device
-> state, it also needs to be migrated, so also save NMI info in
-> vmstate_gicv3_cpu and vmstate_gicv3.
+> Augment the GICv3's QOM device interface by adding one
+> new set of sysbus IRQ line, to signal NMI to each CPU.
 >
 > Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-> Acked-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
-> v10:
-> - superprio -> nmi, gicr_isuperprio -> gicr_inmir0.
-> - Save NMI state in vmstate_gicv3_cpu and vmstate_gicv3.
-> - Update the commit message.
-> v3:
-> - Place this ahead of implement GICR_INMIR.
-> - Add Acked-by.
-> ---
->  hw/intc/arm_gicv3_common.c         | 44 ++++++++++++++++++++++++++++++
->  include/hw/intc/arm_gicv3_common.h |  4 +++
->  2 files changed, 48 insertions(+)
->
-> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index 2d2cea6858..be76ae0be6 100644
-> --- a/hw/intc/arm_gicv3_common.c
-> +++ b/hw/intc/arm_gicv3_common.c
-> @@ -164,6 +164,24 @@ const VMStateDescription vmstate_gicv3_gicv4 = {
->      }
->  };
->
-> +static bool nmi_needed(void *opaque)
-> +{
-> +    GICv3CPUState *cs = opaque;
-> +
-> +    return cs->gic->nmi_support != 0;
 
-nmi_support is already a bool, so you can
-       return cs->gic_nmi_support;
-
-
-> +}
-> +
-> +static const VMStateDescription vmstate_gicv3_cpu_nmi = {
-> +    .name = "arm_gicv3_cpu/nmi",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = nmi_needed,
-> +    .fields = (const VMStateField[]) {
-> +        VMSTATE_UINT32(gicr_inmir0, GICv3CPUState),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static const VMStateDescription vmstate_gicv3_cpu = {
->      .name = "arm_gicv3_cpu",
->      .version_id = 1,
-> @@ -197,6 +215,10 @@ static const VMStateDescription vmstate_gicv3_cpu = {
->          &vmstate_gicv3_cpu_sre_el1,
->          &vmstate_gicv3_gicv4,
->          NULL
-> +    },
-> +    .subsections = (const VMStateDescription * const []) {
-> +        &vmstate_gicv3_cpu_nmi,
-> +        NULL
-
-You add your subsection to the existing .subsections[] list.
-Otherwise this field initializer overwrites the previous one.
-
->      }
->  };
->
-> @@ -238,6 +260,24 @@ const VMStateDescription vmstate_gicv3_gicd_no_migration_shift_bug = {
->      }
->  };
->
-> +static bool needed_nmi(void *opaque)
-> +{
-> +    GICv3State *cs = opaque;
-> +
-> +    return cs->nmi_support != 0;
-> +}
-
-You already have nmi_needed() above, so you can use it
-as the .needed function for both vmstate struct definitions.
-
-> +
-> +const VMStateDescription vmstate_gicv3_gicd_nmi = {
-> +    .name = "arm_gicv3/gicd_nmi",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = needed_nmi,
-> +    .fields = (const VMStateField[]) {
-> +        VMSTATE_UINT32_ARRAY(nmi, GICv3State, GICV3_BMP_SIZE),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static const VMStateDescription vmstate_gicv3 = {
->      .name = "arm_gicv3",
->      .version_id = 1,
-> @@ -267,6 +307,10 @@ static const VMStateDescription vmstate_gicv3 = {
->      .subsections = (const VMStateDescription * const []) {
->          &vmstate_gicv3_gicd_no_migration_shift_bug,
->          NULL
-> +    },
-> +    .subsections = (const VMStateDescription * const []) {
-> +        &vmstate_gicv3_gicd_nmi,
-> +        NULL
-
-Similarly here this must be added to the existing list.
-
->      }
->  };
->
-> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-> index 4358c5319c..88533749eb 100644
-> --- a/include/hw/intc/arm_gicv3_common.h
-> +++ b/include/hw/intc/arm_gicv3_common.h
-> @@ -146,6 +146,7 @@ typedef struct {
->      int irq;
->      uint8_t prio;
->      int grp;
-> +    bool nmi;
->  } PendingIrq;
->
->  struct GICv3CPUState {
-> @@ -172,6 +173,7 @@ struct GICv3CPUState {
->      uint32_t gicr_ienabler0;
->      uint32_t gicr_ipendr0;
->      uint32_t gicr_iactiver0;
-> +    uint32_t gicr_inmir0;
->      uint32_t edge_trigger; /* ICFGR0 and ICFGR1 even bits */
->      uint32_t gicr_igrpmodr0;
->      uint32_t gicr_nsacr;
-> @@ -275,6 +277,7 @@ struct GICv3State {
->      GIC_DECLARE_BITMAP(active);       /* GICD_ISACTIVER */
->      GIC_DECLARE_BITMAP(level);        /* Current level */
->      GIC_DECLARE_BITMAP(edge_trigger); /* GICD_ICFGR even bits */
-> +    GIC_DECLARE_BITMAP(nmi);          /* GICD_INMIR */
->      uint8_t gicd_ipriority[GICV3_MAXIRQ];
->      uint64_t gicd_irouter[GICV3_MAXIRQ];
->      /* Cached information: pointer to the cpu i/f for the CPUs specified
-> @@ -314,6 +317,7 @@ GICV3_BITMAP_ACCESSORS(pending)
->  GICV3_BITMAP_ACCESSORS(active)
->  GICV3_BITMAP_ACCESSORS(level)
->  GICV3_BITMAP_ACCESSORS(edge_trigger)
-> +GICV3_BITMAP_ACCESSORS(nmi)
->
->  #define TYPE_ARM_GICV3_COMMON "arm-gicv3-common"
->  typedef struct ARMGICv3CommonClass ARMGICv3CommonClass;
-> --
-> 2.34.1
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

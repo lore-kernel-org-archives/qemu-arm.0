@@ -1,119 +1,109 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp1259821ejv;
-        Thu, 28 Mar 2024 09:42:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUJ97gN/8nQRbIFTscUwCtJdhZ0o6kVosBqyEYNLsfH7YBICM4rGLYpGqBArmZxwEIu0pMFgWPfLcBpTM0E/FthiBr8lUux
-X-Google-Smtp-Source: AGHT+IHJ4htRy11ltYjaDSUPmxf6kXZRIfzDPF9oMvqg3YdSlCX0xFINlFzHDnFOnWx2J08av3eZ
-X-Received: by 2002:ad4:5a52:0:b0:696:1c19:7181 with SMTP id ej18-20020ad45a52000000b006961c197181mr4654679qvb.7.1711644159258;
-        Thu, 28 Mar 2024 09:42:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711644159; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp1360934ejv;
+        Thu, 28 Mar 2024 12:27:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWRmsbsHOiWCQouYRDu+wd0xCaVezz4bnPsmcsp9cyqJS1JP4YOgKQb6sxVzHSv0Gt0qRZHqbFviad7+RY89AQs8pWkcWYQ
+X-Google-Smtp-Source: AGHT+IHo4vLyUUJkfqzsOXw/lAckAsqBusMDw15ozHmpTqXtqRc9XI1wVKd6wLIKWeKHmrsWn08X
+X-Received: by 2002:a05:6830:441e:b0:6e6:ebee:265d with SMTP id q30-20020a056830441e00b006e6ebee265dmr209794otv.32.1711654061223;
+        Thu, 28 Mar 2024 12:27:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711654061; cv=none;
         d=google.com; s=arc-20160816;
-        b=u0tx1DUYNQD4jQ2B8QDpea7j9UyssEiKT41Xl78XhY36oAxBK115rs6mX8YVUp82Cl
-         UNAQyrUAS/EQk4nOTQIbA2lXA2q5bD3ZAh+O8wWBIRYdD4HXoZ9zZnxVls9GwVKSlt6h
-         0BaH9u8sPPUjs2hXOC7ox6r1EIx87JvOSuXiNN3U3kL9wTZLaU0UXEOraya+bqZ35ZAD
-         Dt+ozw1fhlK7rISyyHTWyXpF0ZTUdsVWOzwtrDFX6irLIdJH6Lelf3iMEKBwjvYkekAT
-         ZsFw2Xj4nu8vAR9iWbwO3EDZELMA49HIIH+9maOo/4D9oxtw7HWtT6EI08e0RTHU1vAx
-         b6kQ==
+        b=EbOvMCJ6T9yZYjMar6Bku16zKVrIQ7FUGZeG48vtt+VKENKnWyD69axr4qdJSaXy/J
+         xeXYkOE9OFm0txVLT83TltaUgZyJI9m0qWOC+YDqG6Kgvgz1tNN85C3aIacsL9mfZ50U
+         /A5S7ROaKZMO4W9f8T33MRFWP0lGITZk5ORpyZn6kY70WyWZopurTRDqG13r2XGsi++b
+         MjVF9zJ+A5+KRGH9U9q/GJfVzeEwAr07wyoi/GFJ87CCQzN0KEMerYaL+nxWFsk9DEMI
+         OYBYRAr83C8B72Izd5Gssg1imqVGJ5Kpuqx4DhDqN5X/0rJjIPCINmOpbtKKREE4dH8F
+         3mKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:organization:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=fpd9QS0uZHxja51WY1hodu7BzxiGsU4OgNS0Zs2Y5HU=;
-        fh=FNezr/bnob/rXkMlhbwhXxA/Ksr7byqx7x8Ea5jlpds=;
-        b=oBsmV2QXdZipancSnN4wgn6aa6+PjRJibQgPiK4EXuzJBFIiBTeqHA0dLSZKSw8AoR
-         h/ffCo4xbXNzQqY0HKvRqv0Rr0wGmpgqvue0kl8o7MWd9y9rYBwrVPGGopG4DwiG3lR0
-         NCcTHCktOGJCK0sgwORAiPEziLXEI/dI6lMBSB6N24ZBkbs4EVm+ICK0LCq9X6+xfWVM
-         Orb2VMpyWqx7Lzm444VHozvibkTIv2+xg+a5hXCg6PgWh0LJZBBEjZ4dH4wP1DvrHFIi
-         OBGZXrVLCLboDPHy+ztzmikQ2BQJkxrgstC7TBQ876t9VTwLgNkhtkO+ZXbdGqjOZWTw
-         0jqg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=rZS9XFyOQG2i8hCRjoB5xys4mRT4xfclOc6vBgM/M/Q=;
+        fh=+9IP2BBlDi5wPXHK8kct7/z5VUNR6osxl0Cy1C/LDuQ=;
+        b=dj9/7vfbCMhuxvWejJXyJxQfRWfriO9vxYeVjSEbSm41LOI8TS1FzS6joCMu2r/4yu
+         JVIWXsrG5QCfL2JSKSIzm37H+nFh/K4urqcaAZzU/Duqe4nUGwOvajQwEsOdtdfZugLW
+         53FI6ZSxYOcw5+T+BvE2HOFdWq7jFfwataGYkKViu5wW3uNz8OZTF+BLQ/fsFUQbmHF0
+         J8Aa/MLen1/It2zo9FY3KTmjnYw/woU01v9KrZtCSmkMGZqJXy+DBL36kFMhxUeStUiw
+         hRA3qO+up/DkMCTGglZzqvpVhbbLaneU5e7Zouh3AhOHH9COSteDMi5ay4LCs+YFx6XU
+         HaLA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CSsVe5SY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gMYmi83M;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k9-20020a0c9709000000b0068c3d2d61f1si1837571qvd.120.2024.03.28.09.42.39
+        by mx.google.com with ESMTPS id pa5-20020a05620a830500b0078a2d18e2f7si1998394qkn.776.2024.03.28.12.27.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Mar 2024 09:42:39 -0700 (PDT)
+        Thu, 28 Mar 2024 12:27:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CSsVe5SY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gMYmi83M;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rpspN-0008P6-P6; Thu, 28 Mar 2024 12:42:09 -0400
+	id 1rpvPL-0004ty-Ks; Thu, 28 Mar 2024 15:27:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rpspM-0008Ol-FR
- for qemu-arm@nongnu.org; Thu, 28 Mar 2024 12:42:08 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rpvPJ-0004sE-GV
+ for qemu-arm@nongnu.org; Thu, 28 Mar 2024 15:27:25 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rpspK-0003rV-5G
- for qemu-arm@nongnu.org; Thu, 28 Mar 2024 12:42:08 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-56c1922096cso1560889a12.0
- for <qemu-arm@nongnu.org>; Thu, 28 Mar 2024 09:42:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rpvPH-00021X-Sc
+ for qemu-arm@nongnu.org; Thu, 28 Mar 2024 15:27:25 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-56bc8cfc19fso1573551a12.1
+ for <qemu-arm@nongnu.org>; Thu, 28 Mar 2024 12:27:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711644124; x=1712248924; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:organization:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=fpd9QS0uZHxja51WY1hodu7BzxiGsU4OgNS0Zs2Y5HU=;
- b=CSsVe5SYmICIyPA1nHB5dDLtcXzdIBoUhP7qXFg8yAHDt509jLkd1/mGbLR1s/525J
- iMY6U8bAKA9lW8lpFL8Ppzezr19K4vuvto7Cie1aPCjINSFqBqamyVr0qPE9JXsvCf7W
- f0EcPldaOKDEG4dXsnrJjEbyF0Mn3XO//VhaH/cFHK7E3zpTh1oKI1GQj9CvCjtc++Ic
- 6XXHLyo1p5NwRkzPhKELZe1vEoohm4xrCvyqKpEcGJ7P57ymAsD0NSvym1eEJFFQqr1F
- Nr0C0+pkn0O7XwSYr2a7rGCNsx8hHALnYlFSBFaGxyhAoir0jpO9NnpB1eaVQSU0FHpK
- TSXA==
+ d=linaro.org; s=google; t=1711654042; x=1712258842; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=rZS9XFyOQG2i8hCRjoB5xys4mRT4xfclOc6vBgM/M/Q=;
+ b=gMYmi83MCR3YA5gsk+Px+t2a4xS1DuPMj6ZBWoOiabJlaRGeMSxGQluEdQwm7sP4+o
+ T88KeheWg8HH0n2mrfxEmDeTwzy6olKsBRU/MmGDXZg6gUloaPUNHt5mT2ehKoyLYrti
+ 0ZEcNzv+wV8t3IPjdLXmVU1/AhbM6dZIHyBefNx4Ttpvz8DuFaJdPuJgTIpwVBhPKvm6
+ TOYgW3ytChX8gLFHNsTbICAER9TZRz+CLM4LVSdB/L94mRh4pgGBtPypSbtxv1cJQ183
+ TiGMDqUnsElPKSags3lnxoUAi2jbjIlgr8u/jbRVXPNQcKmkyFauiaIA7grotDGye4yt
+ dvYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711644124; x=1712248924;
- h=content-transfer-encoding:in-reply-to:organization:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fpd9QS0uZHxja51WY1hodu7BzxiGsU4OgNS0Zs2Y5HU=;
- b=SJaP85mm/uJsM/aFQpBfafeCkYPtNsPvYK9AExVRC2jz/1LODOHxuXWsHoNsNpmvMq
- nbcss8fzX9ETQ7zY8cTgaaq0+CEIQDJ838lqndqwqrXs9zVkwkY9yWGkI4Yiu8Wwenqk
- T/deV3fOCdhjVRdDSnHnh4cEY8kHJQalFOgr7NatSFsibCocksk0iLGnpPoJafk1Y+ra
- ddN9kPN+j7x6yEy0FfPJ3OZAY6yHW741UCSKZZEvB6HeorGPu5rMBa7yvdg4zjenkjO/
- 7V4haaIcA06t1sBO2iTrMarXgCPGJgmK48TiMrZhM4PVnIa/+M0SAAwBnV8p4Ri78OJK
- Wfig==
+ d=1e100.net; s=20230601; t=1711654042; x=1712258842;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=rZS9XFyOQG2i8hCRjoB5xys4mRT4xfclOc6vBgM/M/Q=;
+ b=vvWYz08cgBIzSwcDF9nKLV55TFpXEhNwC/G+KmUeRskllkb1W8u7ZmAx8Bkj1X9cl7
+ wYinQffh/cgI7YWc1o2MrXLRBP52if5YaGt8s8YIlcb4qIiEZhgg+8I1D4ZO16Q8jYGr
+ x2bsA8vozOiHtGq2IO5EuY5av+7snAEAdN4BrmAYPgqoVNaMONKcX7SVU+uUWa8JxsA9
+ cnW2lgmagiYsCdIbBwvT22kaVYXf7UXBroY/20cMDLq2PmZFo45rWSIVZphEudNaNERj
+ RbhdgtfFkOTbBJACdEcXGC+MqzyEYkw/yzfZlncTBWOs1jH1RTlZP9aQBLJrT+6OUJ0A
+ pHJA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWqz0+SSqBhCB0Sgh/j6EdGGg9TGb596HgDNMxtjbZ10w/T5TL63p9KC6wZiCIvOl/Rlnw5KpzpLloo7x4wCJcEfhiV
-X-Gm-Message-State: AOJu0YzsECAd/C0Xj1JONHOzqZD/miinGt7PmU8XEqxbgnSKPz7nJxF5
- CbwymkIGzQBm95kJZRV+FzztWw7vcKuQK8BVpDPvRjqPj5qEqIG/aXplQ5OghTk=
-X-Received: by 2002:a50:ab5b:0:b0:56c:be3:7cef with SMTP id
- t27-20020a50ab5b000000b0056c0be37cefmr2534050edc.11.1711644124291; 
- Thu, 28 Mar 2024 09:42:04 -0700 (PDT)
-Received: from [192.168.200.106] (83.11.22.169.ipv4.supernova.orange.pl.
- [83.11.22.169]) by smtp.gmail.com with ESMTPSA id
- q4-20020aa7d444000000b00568d6a20717sm1033490edr.52.2024.03.28.09.42.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Mar 2024 09:42:03 -0700 (PDT)
-Message-ID: <19444e7a-f234-4f35-9a76-525430c7b9b1@linaro.org>
-Date: Thu, 28 Mar 2024 17:42:02 +0100
+ AJvYcCXCnWwcOOYA/g/qtur19+PWYYvHgt3jmBUfG37XukTmK+LKJ/TX2iJxFlRB9Hv0X6hXSFjlGN8RohcVtgGf6oghTSCU
+X-Gm-Message-State: AOJu0YwLFqyrbsD+tXFD1gS5IYINwNgUAgynPtJhS1BbtQB8p+jaSrv+
+ tM/J5ceXAXnO3MpTgXvDqGEyYCatbcrN7Q1dKA3J2OpI5MYFcVb1mNN13lbx/w/IUHHhh9fcRo1
+ ry6SG/dGYa3oo9Iz/8ze15JFLydjuUHviAIL3sw==
+X-Received: by 2002:a50:9b01:0:b0:56b:d9b0:f1c3 with SMTP id
+ o1-20020a509b01000000b0056bd9b0f1c3mr142023edi.39.1711654041959; Thu, 28 Mar
+ 2024 12:27:21 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] docs: sbsa: update specs, add dt note
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Radoslaw Biernacki <rad@semihalf.com>
-References: <20240326095819.1268062-1-marcin.juszkiewicz@linaro.org>
- <CAFEAcA_Hf_Ehk8Cc8kZGCO3niW_x18vwg4=JSFmYoFZOOTPzGg@mail.gmail.com>
-Content-Language: pl-PL, en-GB, en-HK
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Organization: Linaro
-In-Reply-To: <CAFEAcA_Hf_Ehk8Cc8kZGCO3niW_x18vwg4=JSFmYoFZOOTPzGg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ed1-x52d.google.com
+References: <20240325084854.3010562-1-ruanjinjie@huawei.com>
+ <20240325084854.3010562-19-ruanjinjie@huawei.com>
+In-Reply-To: <20240325084854.3010562-19-ruanjinjie@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 28 Mar 2024 19:27:10 +0000
+Message-ID: <CAFEAcA80e7j+euG9Fqtx5j-BnGMoK-bGoPrfFqfokJQE-kCcUA@mail.gmail.com>
+Subject: Re: [PATCH v10 18/23] hw/intc/arm_gicv3: Handle icv_nmiar1_read() for
+ icc_nmiar1_read()
+To: Jinjie Ruan <ruanjinjie@huawei.com>
+Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
+ wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -135,87 +125,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HlwKBLcU8wZZ
+X-TUID: hMtQurD9/7RA
 
-W dniu 28.03.2024 o 16:43, Peter Maydell pisze:
-> On Tue, 26 Mar 2024 at 09:58, Marcin Juszkiewicz
-> <marcin.juszkiewicz@linaro.org> wrote:
->>
->> Hardware of sbsa-ref board is nowadays defined by both BSA and SBSA
->> specifications. Then BBR defines firmware interface.
->>
->> Added note about DeviceTree data passed from QEMU to firmware. It is
->> very minimal and provides only data we use in firmware.
->>
->> Added NUMA information to list of things reported by DeviceTree.
->>
->> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
->> ---
->>   docs/system/arm/sbsa.rst | 37 ++++++++++++++++++++++++++++---------
->>   1 file changed, 28 insertions(+), 9 deletions(-)
->>
->> diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
->> index bca61608ff..d4d1f2efe3 100644
->> --- a/docs/system/arm/sbsa.rst
->> +++ b/docs/system/arm/sbsa.rst
+On Mon, 25 Mar 2024 at 08:52, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
+>
+> Implement icv_nmiar1_read() for icc_nmiar1_read(), so add definition for
+> ICH_LR_EL2.NMI and ICH_AP1R_EL2.NMI bit.
+>
+> If FEAT_GICv3_NMI is supported, ich_ap_write() should consider ICV_AP1R_EL1.NMI
+> bit. In icv_activate_irq() and icv_eoir_write(), the ICV_AP1R_EL1.NMI bit
+> should be set or clear according to the Non-maskable property. And the RPR
+> priority should also update the NMI bit according to the APR priority NMI bit.
+>
+> By the way, add gicv3_icv_nmiar1_read trace event.
+>
+> If the hpp irq is a NMI, the icv iar read should return 1022 and trap for
+> NMI again
+>
+> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> v10:
+> - Rename ICH_AP1R_EL2_NMI to ICV_AP1R_EL1_NMI.
+> - Add ICV_RPR_EL1_NMI definition.
+> - Set ICV_RPR_EL1.NMI according to the ICV_AP1R<n>_EL1.NMI in
+>   ich_highest_active_virt_prio().
+> v9:
+> - Correct the INTID_NMI logic.
+> v8:
+> - Fix an unexpected interrupt bug when sending VNMI by running qemu VM.
+> v7:
+> - Add Reviewed-by.
+> v6:
+> - Implement icv_nmiar1_read().
+> ---
+>  hw/intc/arm_gicv3_cpuif.c | 79 +++++++++++++++++++++++++++++++++------
+>  hw/intc/gicv3_internal.h  |  4 ++
+>  hw/intc/trace-events      |  1 +
+>  3 files changed, 73 insertions(+), 11 deletions(-)
 
->> +Note
->> +''''
->> +
->> +QEMU provides us with minimal information about hardware platform using
-> 
-> s/us/the guest EL3 firmware/  (or whatever other term you want to
-> use to describe the guest software that reads the dt).
+I haven't done a full review of this yet, but it looks like some of
+the parts that applied to physical interrupts apply here too, eg
+ * don't do the RPR NMI bit handling in ich_highest_active_virt_prio(),
+   deal with NMI in the callers
+ * in the AP registers, set either NMI or a group-priority bit, not both
+ * AP NMI bits are only in the 0 reg, so checking doesn't need to be
+   inside the for loop
 
-Thanks, fixed.
+You'll also need to update hppvi_index() so it accounts for NMIs
+when it's finding the highest priority interrupt in the list registers:
+compare the HighestPriorityVirtualInterrupt() pseudocode function.
 
->> +minimalistic devicetree. This is not a Linux devicetree. It is not even a
->> +firmware devicetree.
->> +
->> +It is information passed from QEMU to describe the information a hardware
->> +platform would have other mechanisms to discover at runtime, that are affected
->> +by the QEMU command line.
-> 
-> 
-> Might want to say also
->   Guest EL3 firmware does not pass this devicetree on to later
->   components of the software stack.
-> ?
-
-This is a matter of what firmware stack QEMU user will run. TF-A (our 
-current "guest EL3 firmware") passed devicetree to later components of 
-the software stack. We just stopped using it in EDK2. But if someone 
-would like to run U-Boot or other firmware then both SMC and DT will 
-wait for them.
-
->> +
->> +Ultimately this devicetree will be replaced by IPC calls to an emulated SCP.
->> +And when we do that, we won't then have to rewrite Normal world firmware to
->> +cope.
-> 
-> I would drop the last sentence here, and use "may" instead of "will".
-
-Done.
-
->> +
->>   DeviceTree information
->>   ''''''''''''''''''''''
->>
->> -The devicetree provided by the board model to the firmware is not intended
->> -to be a complete compliant DT. It currently reports:
->> +The devicetree reports:
->>
->>      - CPUs
->>      - memory
->>      - platform version
->>      - GIC addresses
->> +   - NUMA node id for CPUs and memory
-> 
-> Otherwise looks good to me, and the updates to the spec URLs
-> are particularly helpful. As a docs change I'd be happy
-> to take it into 9.0 (at least before rc2) if some other
-> sbsa-ref-knowledgeable person wants to either review or ack it.
-> (But it's also OK if it misses 9.0 and goes into 9.1.)
-
-OK.
-
+thanks
+-- PMM

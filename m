@@ -1,106 +1,116 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp1007818ejv;
-        Thu, 28 Mar 2024 02:58:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWjupkgkNn6vHYSdzkcORfxmswE7bjQeGHs5K+Dgb4t8Lr2QfheNzfCP9SpaHiWURxS2o3VyqppgalRWdXakz7Z5t+ebD8o
-X-Google-Smtp-Source: AGHT+IFxs324UJ9/KXMXzMXklmehfvO+Jd4HyL0WBCC4UM22wgIH9JtukvWysFzmfLC28gsL/wgE
-X-Received: by 2002:a05:6214:222:b0:690:c36d:f449 with SMTP id j2-20020a056214022200b00690c36df449mr1594592qvt.60.1711619924150;
-        Thu, 28 Mar 2024 02:58:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711619924; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp1030545ejv;
+        Thu, 28 Mar 2024 03:47:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVQceLuqw9oABTqBTQUr8JQCgZC5v+0+g0Xr7j8K4U9Zv3EG5LzR1b0bfuL8NpRoLGYH41EtP9xKQ903xtWqVza/3gKadYA
+X-Google-Smtp-Source: AGHT+IFX08UrB8z8r1TeTc5YCDUp62DOkUgbpg7XK6d8wTKO1Pzy51zbsOTdAeeD7oDfZiLCtbLQ
+X-Received: by 2002:a05:622a:1307:b0:431:38ea:1d42 with SMTP id v7-20020a05622a130700b0043138ea1d42mr2754406qtk.30.1711622850862;
+        Thu, 28 Mar 2024 03:47:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711622850; cv=none;
         d=google.com; s=arc-20160816;
-        b=JdSME4EeJaHUAmluNSWh33YtGPhW9vUoJktuGz5g2jYryuzhOtkTMAgfHPy9WNISz3
-         ILmEdMl4+xNA0AXRwIxd9CKGZDh9tSvG5pyQcCt6kNrI/webnXWZT/nohwKEaUVMHLSs
-         M8A+Hb2TmCqo3ncRbraa0kVAtLZD3s+WdVeYHsz87XULx79FZviemXf6ovkq0wKJ013e
-         5G8WLDP3WeMO5JzXFuAbWLXEKvxxHkVsMaM1tstf589jGGEwwby/1qbeofZjLkQ1EK9I
-         wti0IrPph9CAn9jttaLTiAtw0bYecGUZGAzLHBO8rUEjnFKzLA3XWEFYtANzo6wNgBLy
-         em3g==
+        b=aeMwBtUGICxoYOgix0G75Cw/Hhq7e9vYk3kXaVUfK01R3sOfcL9fQdewEGuamXHyDj
+         9hyX0w5VGobUQtEtLnAvUDxlEv83p7c2pE+pwoHO/bxlsO51927ba4cjS+SZ2QqYm2ax
+         H0UmLY9NifPlr0BYr1ZZBY1ZrJ2/z6gDKyr5MOWaR2Dpv9tzuPTJQTDXQjYToNBaU4QM
+         IkxqNpyMDg5X2gjS1NB/rThnNfw02FmM+xpwJTv79Qw5aiUYvdavUZkP9aaW4kItug7i
+         L5oapQpe9+G7z3MjosA8/H6jzBWLd08SojPY3WIkDuGnT6/x5lpiJDDjXS0FyPANYK9R
+         GImQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=Rqtt/5cFNnzN2QbWV6d5NoOamWwzy1pDi2pN2kUXfPg=;
-        fh=AS/duM02cz+dTA8VTFMo6qG6Xj10nD4DXJveCU6qXCw=;
-        b=sIAuX+gDeCMXwnA/20EzhCjlulUNBLPbAs2J5o2dY231YeJB+MXTK1TAOaEc2nahAg
-         dGuteaN7QN+HuFvd/Vamz9on8hyPDPUTumztGTAUWaGcKhmDreZFrei9S7TeYyB3VRXJ
-         Hf4kW8tLvdYOKwVSRl9rrAltASACeK8474mjZ91BLVdFP+z4kpaI3ufpL+Cb6p9g6Y2H
-         6iD1RqLSYKSmLAb0YQEboftmcioI3/gJ+KoT97ycu7Fqbp3nsu7vTL9cobenWx8QaTsj
-         2XT6meGwHdpw7+hw+1qr2kbeiHoXWLJj1m6Uw0pkAkZRMG2Ng9MOYWw6AaL9woLpbs3B
-         u7fQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=mtgrdYN8FimGo8IhYUXXXHISMt6fwqAisk0ui8/+sbo=;
+        fh=rrC0IiwZluTb6ts1GmE/blsieFw36DGKkcd/wb/Vg/8=;
+        b=V2WpfYlZRE4Gtwe0mZHO3ZyPV1Fw6TEWvaDZYCYRUx6fi4ttZ/c1PQLjEzWDPq1ZwW
+         ifh939NAOu+y00Kh2Z5ot5gDHGmCJuwQ4fajm/Oipz0TRvifjv5/+spRhvtBtnw4/gU4
+         75MYdfxKb0fgTm6tJtYI18C/F4J9EttzeqQna62xZQgLeAbthWzFAM65egIrdZD2fkjA
+         cyfNyPonHhruH+Ae8pvphAUjCJxOuAz++vId4G8MTdrnZg3cqGTCHkjtJ3k1gK95Q4Oz
+         RcZ2N8Jogtsw6x2AexS0MIj+3snZAV8iP6A1HN2poNtsfWA1JpV4WbpqqOk9D9/qZlz5
+         hT0w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ACBjn7+7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dvu8YM9J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14-20020a0cdc0e000000b006961d18107bsi1062707qvk.81.2024.03.28.02.58.43
+        by mx.google.com with ESMTPS id o11-20020a05622a044b00b0043175068184si1116056qtx.76.2024.03.28.03.47.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Mar 2024 02:58:44 -0700 (PDT)
+        Thu, 28 Mar 2024 03:47:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ACBjn7+7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Dvu8YM9J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rpmWk-00021t-Ur; Thu, 28 Mar 2024 05:58:32 -0400
+	id 1rpnHs-0007ka-Q4; Thu, 28 Mar 2024 06:47:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sanj27272@gmail.com>)
- id 1rpmWi-000211-OG; Thu, 28 Mar 2024 05:58:28 -0400
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rpnHn-0007j9-6m
+ for qemu-arm@nongnu.org; Thu, 28 Mar 2024 06:47:07 -0400
 Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sanj27272@gmail.com>)
- id 1rpmWg-0002p2-RV; Thu, 28 Mar 2024 05:58:28 -0400
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rpnHk-0003qi-T3
+ for qemu-arm@nongnu.org; Thu, 28 Mar 2024 06:47:06 -0400
 Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-5688eaf1165so973177a12.1; 
- Thu, 28 Mar 2024 02:58:25 -0700 (PDT)
+ 4fb4d7f45d1cf-568c714a9c7so871712a12.2
+ for <qemu-arm@nongnu.org>; Thu, 28 Mar 2024 03:46:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1711619904; x=1712224704; darn=nongnu.org;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=Rqtt/5cFNnzN2QbWV6d5NoOamWwzy1pDi2pN2kUXfPg=;
- b=ACBjn7+7u9b/qF49hj+P6JYNeFEmU/0dQTvda3Yhz/SxpigwJbAvsXJ6MTdLe7xRfj
- 2R5pfD1RzAg+4CYfLZ+0KlehWzqPPdKECf5Ya2sj+vMPsS5At/2UdxRjtenZ7uL1qB2B
- j0sS5yDg3ySCANyCbW6y30IdBqcmKjmi2OotTGr4CC7e65EfGftc8SUSuraxkao6tYyP
- U1OeNqs6ZdieyhkNlkWOD+gKEmYzPKCgq+w+vupmvKP09bjMeKQG2XIZ/zmjg8QPaR1B
- UO2mICZX/rAlkEAAz0VdCJas7GVwUSanEdOSUb17ExlPGmc5KIMLHYvf153H9dvgHUTn
- NVvw==
+ d=linaro.org; s=google; t=1711622815; x=1712227615; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=mtgrdYN8FimGo8IhYUXXXHISMt6fwqAisk0ui8/+sbo=;
+ b=Dvu8YM9J3sh9Jmm+T4oLfnLis1tfjZdsJ2wZTjNgGurN+nz/OZD0jh+DrbKIIPII8l
+ 2tgauzR17U+cZUf1wWO4MtDg31NuPIsfoz9zcpaGKVSUuA9KWHAsTlVz3HxwgvKtCeVW
+ SRXRRvXCFOUHUsbZcF3dEZ6hSTjlRrssvptGCFHhy1/vvCNNpla0tmEpol+t29xOmeiU
+ 41OVgnYTmtUz44TYX6EMTm1x4Oi13BBNS96ek+EwJy9XgfiG8DoDdLBYEC2mBEFhRM7l
+ W3G935wNR5WC1hjf+L+s+nnqvGp1JtjI61N2efYUL7uciCMw+y28gBvSpUyEoGIPgGFN
+ C3iA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711619904; x=1712224704;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Rqtt/5cFNnzN2QbWV6d5NoOamWwzy1pDi2pN2kUXfPg=;
- b=i1vu+C0owkZcNgavOhEtVhgxKCHOR5+WDGYf8omfmTTaYPiwW22hsv0+lRLhk7y/YQ
- G5JlZVL3/OBQPsTWCMTU0dVvLKpecGuBDO6D/7t1Y1oT9dDuchaTkCCPxNwg7c17B4fv
- VmEFXvXqeUFFbY5OKvJqjhtNmVecnvAopVRGxkDWE3gM6N/J4kjG/JRSwM3HOSlLiNM+
- sRQaLmu3EcWPWWNwA+d1lQpls7Nhb8TkVLyVBqzyzb/95jeUWlaw4GvWe2ClQq0mi2vJ
- hA3OSdl14Qv/BhGgQASF74oy4JpLTkqGofLeByQUIld2qo5qDoCUVHxoj5C0IbfCLtsU
- vwkw==
+ d=1e100.net; s=20230601; t=1711622815; x=1712227615;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=mtgrdYN8FimGo8IhYUXXXHISMt6fwqAisk0ui8/+sbo=;
+ b=T+3MDvQ+VqCIF6Z8O03DUg/OVP8TWqttH0/7YQsyHxV1NYTr6EFWKj1s8hv9AKOGCi
+ 8kguXWO+suVTZqIinHhX8/9zNW3//IyVgswvdrq3u+vJrPK+/yPtS1xBU4NF2/LGamZh
+ jhY6BkFhmao7QN/06lAizrOMrCqy3GkuY/5OcIBqx91aDq9amC9wrgztLrurYNNtOH1H
+ dJsdnJvzmgkvGw+s908F1Dw6XnDGv1pCaSuK79aoHWOUQGLqObjGIQNy+vSE+l1GdCuz
+ c2eJoKPibvXcn6DUOlL248syCUOlZStY/KJ1vX5G3J4n1lNiLO5RqwAfNe6k9Sf5BNph
+ PhVw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWZmIE4mrYOMny+ptT3HwJzrckYKeVIgbuI08Wpw7butRRPjQ6zg/9EZ8Z8PSHGIRNEStPaddmRFcz2scWE+zg7+CLsFRUFXF1f1m1KGV0mGjdSfYgaBHtwf24=
-X-Gm-Message-State: AOJu0YxXN26H0+d3kw/EUvy5G/CPUk01FzCheD5K27WqtUuYtSeJ7RoY
- dMLy56fD5gA3UAD/ZKTXcDf4NBQTXdG7DLXTKvhH5jOEUdqPb5FU8wcXK1IAz/S7PHWIIwKbE2X
- E3qEDz2bjTL/dSRsAKSYax6jmn4iXQwNH444=
-X-Received: by 2002:a17:906:db0d:b0:a46:d79c:ef62 with SMTP id
- xj13-20020a170906db0d00b00a46d79cef62mr1787599ejb.51.1711619903710; Thu, 28
- Mar 2024 02:58:23 -0700 (PDT)
+ AJvYcCUFNvRQIH+L9m13bcbVgE/zcqY1+k5lWvm/p7+tSx4QLvFjTHs/+9hGr8wWQyWeFfat+eeUJ/DujSUWeVmSk/ULLtON
+X-Gm-Message-State: AOJu0YxbQO4+bJIL7SjgtpreoA3x3k8lZfyo9tp34+zGSgmiR8IDe8hL
+ JSSQHdJVbT1srtiex8ry0mwttfBFkzzgdhMP2zd4YeFWswc7ftovET0mELBx/9nYy00sLBmLucw
+ FBTPslfsFsIYC/lOeTb5+NzDw/j6r8A/JKKDzZA==
+X-Received: by 2002:a50:d743:0:b0:569:e401:42db with SMTP id
+ i3-20020a50d743000000b00569e40142dbmr1877814edj.9.1711622815303; Thu, 28 Mar
+ 2024 03:46:55 -0700 (PDT)
 MIME-Version: 1.0
-From: sanjana gogte <sanj27272@gmail.com>
-Date: Thu, 28 Mar 2024 15:28:12 +0530
-Message-ID: <CA+ji3pHZN0DPg4LfssBs1urgYTZy22a6b+fzjfciA_QHjngMQA@mail.gmail.com>
-Subject: Gdb support for Debugging Arm M profile with Xilinx Qemu
-To: vikram.garhwal@amd.com, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- francisco.iglesias@xilinx.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000059ef2d0614b5900d"
+References: <20240318093546.2786144-1-ruanjinjie@huawei.com>
+ <20240318093546.2786144-10-ruanjinjie@huawei.com>
+ <CAFEAcA8_2U6bydhixx+j84FUBY3tT5rN8Y4c6KHGjbbAX+1v3Q@mail.gmail.com>
+ <1a10de26-97aa-260a-7c5b-dfb9a4949790@huawei.com>
+In-Reply-To: <1a10de26-97aa-260a-7c5b-dfb9a4949790@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 28 Mar 2024 10:46:44 +0000
+Message-ID: <CAFEAcA9R2yBs5Qm4shBp8K+aEFC4uc6=dWKACUMLRRsibqdcbA@mail.gmail.com>
+Subject: Re: [RFC PATCH v8 09/23] target/arm: Handle PSTATE.ALLINT on taking
+ an exception
+To: Jinjie Ruan <ruanjinjie@huawei.com>
+Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
+ wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=sanj27272@gmail.com; helo=mail-ed1-x534.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -117,287 +127,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gDcvIxIZqkQL
+X-TUID: yLqQGjdlFQx/
 
---00000000000059ef2d0614b5900d
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Thu, 28 Mar 2024 at 08:57, Jinjie Ruan via <qemu-arm@nongnu.org> wrote:
+>
+>
+>
+> On 2024/3/20 0:47, Peter Maydell wrote:
+> > On Mon, 18 Mar 2024 at 09:37, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
+> >>
+> >> Set or clear PSTATE.ALLINT on taking an exception to ELx according to the
+> >> SCTLR_ELx.SPINTMASK bit.
+> >>
+> >> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+> >> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> >> ---
+> >> v3:
+> >> - Add Reviewed-by.
+> >> ---
+> >>  target/arm/helper.c | 9 +++++++++
+> >>  1 file changed, 9 insertions(+)
+> >>
+> >> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> >> index 4bc63bf7ca..81f4a8f194 100644
+> >> --- a/target/arm/helper.c
+> >> +++ b/target/arm/helper.c
+> >> @@ -11705,6 +11705,15 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+> >>          }
+> >>      }
+> >>
+> >> +    if (cpu_isar_feature(aa64_nmi, cpu) &&
+> >> +        (env->cp15.sctlr_el[new_el] & SCTLR_NMI)) {
+> >
+> > This shouldn't be checking the value of SCTLR_NMI here:
+> > the new PSTATE.ALLINT is set to !SPINTMASK even if NMI == 0.
+> > (The SPINTMASK bit description is a bit confusing, but
+> > the correct behaviour is clear in the AArch64.TakeException()
+> > pseudocode.)
+>
+> It seems unreasonable to remove the SCTLR_NMI check, because if the
+> hardware supports FEAT_NMI but the kernel do not enable it, the ALLINT
+> bit in pstate will also set or clear when an exception is caught, which
+> seems unreasonable.
 
-Greetings,
+Whether we personally think it is "unreasonable" or not does not
+matter here. The architecture says that we must not check SCTLR_NMI,
+and therefore we must not check SCTLR_NMI, or we will be implementing
+the wrong behaviour.
 
-I am currently engaged in a project that involves emulating the LM3S811EVB
-( M3 Core ) board using Xilinx QEMU (version 7.1.0) . While the emulation
-process is successful, I am encountering difficulties in attaching GNU
-Debugger (GDB) or GDB-multiarch to the ELF file being executed on the
-emulated board. Interestingly, this issue does not arise when utilizing the
-standard QEMU (version 8.1.5), where I am able to attach GDB and step
-through the ELF file without any hindrances.
-
-
-To address this issue, I have experimented with different versions of GDB,
-specifically:
-GNU gdb (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) ( arm-none-eabi)
-GNU gdb (Linaro_GDB-2019.12) 8.3.1.20191204-git
-*Error I am facing :*
-Remote debugging using localhost:1234
-Remote 'g' packet reply is too long (expected 68 bytes, got 92 bytes):
-000000000000000000000000000000000000000000000000000000000000000000000000000=
-0000000000000000000000000000028100020ffffffff080000000000004100000000000000=
-0000000000000000000000000000000000
-(gdb) b main
-Breakpoint 1 at 0xc6: file main2.c, line 69.
-(gdb) continue
-The program is not being run.
-(gdb) run
-Don't know how to run. Try "help target".
-
-*With Gdb-multiarch (12.1)*
-gef=E2=9E=A4 set architecture armv7
-The target architecture is set to "armv7".
-gef=E2=9E=A4 target remote:1234
-Remote debugging using :1234
-warning: No executable has been specified and target does not support
-determining executable automatically. Try using the "file" command.
-Remote 'g' packet reply is too long (expected 68 bytes, got 92 bytes):
-000000000000000000000000000000000000000000000000000000000000000000000000000=
-0000000000000000000000000000028100020ffffffff080000000000004100000000000000=
-0000000000000000000000000000000000
-gef=E2=9E=A4 file kernel2.elf
-Reading symbols from kernel2.elf...
-gef=E2=9E=A4 b main
-Breakpoint 1 at 0xc6: file main2.c, line 69.
-gef=E2=9E=A4 continue
-The program is not being run.
-gef=E2=9E=A4 run
-Starting program:
-/mnt/c/Users/Gogte/Desktop/sanjana_intern_project/Qemu_test/test3/LinkerM3/=
-kernel2.elf
-
-/bin/bash: line 1:
-/mnt/c/Users/Gogte/Desktop/sanjana_intern_project/Qemu_test/test3/LinkerM3/=
-kernel2.elf:
-cannot execute binary file: Exec format error
-/bin/bash: line 1:
-/mnt/c/Users/Gogte/Desktop/sanjana_intern_project/Qemu_test/test3/LinkerM3/=
-kernel2.elf:
-Success
-During startup program exited with code 126.
-
-*If I do the same with Standard qemu binary the gdb works:*
-Remote debugging using localhost:1234
-start () at startup.s:10
---Type <RET> for more, q to quit, c to continue without paging--c
-10 ldr r1, =3Dmain
-(gdb) b main
-Breakpoint 1 at 0xc6: file main2.c, line 69.
-(gdb) continue
-Continuing.
-
-Breakpoint 1, main () at main2.c:69
-69 uart_print("Inside main function");
-(gdb)
-
-
-My project necessitates the use of the Xilinx QEMU binary, specifically to
-leverage the remote port functionality it offers.
-
-Therefore, I am seeking guidance on which version of GDB should be used, or
-any specific configurations that might enable successful GDB attachment to
-the ELF file running on Xilinx QEMU.
-
-
-Regards,
-Sanjana
-
---00000000000059ef2d0614b5900d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div><br></div>Greetings,<div>
-
-
-
-
-
-<p class=3D"gmail-p1" style=3D"margin:0px;font-variant-numeric:normal;font-=
-variant-east-asian:normal;font-variant-alternates:normal;font-kerning:auto;=
-font-feature-settings:normal;font-stretch:normal;font-size:13px;line-height=
-:normal;font-family:&quot;Helvetica Neue&quot;">I am currently engaged in a=
- project that involves emulating the LM3S811EVB ( M3 Core ) board using Xil=
-inx QEMU (version 7.1.0) . While the emulation process is successful, I am =
-encountering difficulties in attaching GNU Debugger (GDB) or GDB-multiarch =
-to the ELF file being executed on the emulated board. Interestingly, this i=
-ssue does not arise when utilizing the standard QEMU (version 8.1.5), where=
- I am able to attach GDB and step through the ELF file without any hindranc=
-es.</p><p class=3D"gmail-p1" style=3D"margin:0px;font-variant-numeric:norma=
-l;font-variant-east-asian:normal;font-variant-alternates:normal;font-kernin=
-g:auto;font-feature-settings:normal;font-stretch:normal;font-size:13px;line=
--height:normal;font-family:&quot;Helvetica Neue&quot;"><br></p><p class=3D"=
-gmail-p1" style=3D"margin:0px;font-variant-numeric:normal;font-variant-east=
--asian:normal;font-variant-alternates:normal;font-kerning:auto;font-feature=
--settings:normal;font-stretch:normal;font-size:13px;line-height:normal;font=
--family:&quot;Helvetica Neue&quot;">
-
-
-
-
-
-</p><p class=3D"gmail-p1" style=3D"margin:0px;font-variant-numeric:normal;f=
-ont-variant-east-asian:normal;font-variant-alternates:normal;font-kerning:a=
-uto;font-feature-settings:normal;font-stretch:normal;font-size:13px;line-he=
-ight:normal;font-family:&quot;Helvetica Neue&quot;">To address this issue, =
-I have experimented with different versions of GDB, specifically:</p></div>=
-<div>GNU gdb (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) ( arm-none-eabi=
-)<br></div><div>GNU gdb (Linaro_GDB-2019.12) 8.3.1.20191204-git<br></div><d=
-iv><b>Error I am facing :</b></div><div><div style=3D"font-family:Menlo,Mon=
-aco,&quot;Courier New&quot;,monospace;font-size:12px;line-height:18px;white=
--space:pre"><div style=3D""><span style=3D"background-color:rgb(255,255,255=
-)"><font color=3D"#000000">Remote debugging using localhost:1234</font></sp=
-an></div><div style=3D""><span style=3D"background-color:rgb(255,255,255)">=
-<font color=3D"#000000">Remote &#39;g&#39; packet reply is too long (expect=
-ed 68 bytes, got 92 bytes): 00000000000000000000000000000000000000000000000=
-00000000000000000000000000000000000000000000000000000000028100020ffffffff08=
-00000000000041000000000000000000000000000000000000000000000000</font></span=
-></div><div style=3D""><span style=3D"background-color:rgb(255,255,255)"><f=
-ont color=3D"#000000">(gdb) b main</font></span></div><div style=3D""><span=
- style=3D"background-color:rgb(255,255,255)"><font color=3D"#000000">Breakp=
-oint 1 at 0xc6: file main2.c, line 69.</font></span></div><div style=3D""><=
-span style=3D"background-color:rgb(255,255,255)"><font color=3D"#000000">(g=
-db) continue</font></span></div><div style=3D""><span style=3D"background-c=
-olor:rgb(255,255,255)"><font color=3D"#000000">The program is not being run=
-.</font></span></div><div style=3D""><span style=3D"background-color:rgb(25=
-5,255,255)"><font color=3D"#000000">(gdb) run</font></span></div><div style=
-=3D""><span style=3D"background-color:rgb(255,255,255)"><font color=3D"#000=
-000">Don&#39;t know how to run.  Try &quot;help target&quot;.</font></span>=
-</div></div></div><div><br></div><div><b>With Gdb-multiarch (12.1)</b></div=
-><div><div style=3D"line-height:18px;white-space:pre"><div style=3D"font-si=
-ze:12px;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospace"><span s=
-tyle=3D"background-color:rgb(255,255,255)"><font color=3D"#000000">gef=E2=
-=9E=A4  set architecture armv7</font></span></div><div style=3D"font-size:1=
-2px;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospace"><span style=
-=3D"background-color:rgb(255,255,255)"><font color=3D"#000000">The target a=
-rchitecture is set to &quot;armv7&quot;.</font></span></div><div style=3D"f=
-ont-size:12px;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospace"><=
-span style=3D"background-color:rgb(255,255,255)"><font color=3D"#000000">ge=
-f=E2=9E=A4  target remote:1234</font></span></div><div style=3D"font-size:1=
-2px;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospace"><span style=
-=3D"background-color:rgb(255,255,255)"><font color=3D"#000000">Remote debug=
-ging using :1234</font></span></div><div style=3D"font-size:12px;font-famil=
-y:Menlo,Monaco,&quot;Courier New&quot;,monospace"><span style=3D"background=
--color:rgb(255,255,255)"><font color=3D"#000000">warning: No executable has=
- been specified and target does not support</font></span></div><div style=
-=3D"font-size:12px;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospa=
-ce"><span style=3D"background-color:rgb(255,255,255)"><font color=3D"#00000=
-0">determining executable automatically.  Try using the &quot;file&quot; co=
-mmand.</font></span></div><div style=3D"font-size:12px;font-family:Menlo,Mo=
-naco,&quot;Courier New&quot;,monospace"><span style=3D"background-color:rgb=
-(255,255,255)"><font color=3D"#000000">Remote &#39;g&#39; packet reply is t=
-oo long (expected 68 bytes, got 92 bytes): 00000000000000000000000000000000=
-000000000000000000000000000000000000000000000000000000000000000000000000281=
-00020ffffffff08000000000000410000000000000000000000000000000000000000000000=
-00</font></span></div><div style=3D"font-size:12px;font-family:Menlo,Monaco=
-,&quot;Courier New&quot;,monospace"><span style=3D"background-color:rgb(255=
-,255,255)"><font color=3D"#000000">gef=E2=9E=A4  file kernel2.elf</font></s=
-pan></div><div style=3D"font-size:12px;font-family:Menlo,Monaco,&quot;Couri=
-er New&quot;,monospace"><span style=3D"background-color:rgb(255,255,255)"><=
-font color=3D"#000000">Reading symbols from kernel2.elf...</font></span></d=
-iv><div style=3D"font-size:12px;font-family:Menlo,Monaco,&quot;Courier New&=
-quot;,monospace"><span style=3D"background-color:rgb(255,255,255)"><font co=
-lor=3D"#000000">gef=E2=9E=A4  b main</font></span></div><div style=3D"font-=
-size:12px;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospace"><span=
- style=3D"background-color:rgb(255,255,255)"><font color=3D"#000000">Breakp=
-oint 1 at 0xc6: file main2.c, line 69.</font></span></div><div style=3D"fon=
-t-size:12px;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospace"><sp=
-an style=3D"background-color:rgb(255,255,255)"><font color=3D"#000000">gef=
-=E2=9E=A4  continue</font></span></div><div style=3D"font-size:12px;font-fa=
-mily:Menlo,Monaco,&quot;Courier New&quot;,monospace"><span style=3D"backgro=
-und-color:rgb(255,255,255)"><font color=3D"#000000">The program is not bein=
-g run.</font></span></div><div style=3D"font-size:12px;font-family:Menlo,Mo=
-naco,&quot;Courier New&quot;,monospace"><span style=3D"background-color:rgb=
-(255,255,255)"><font color=3D"#000000">gef=E2=9E=A4  run</font></span></div=
-><div style=3D"font-size:12px;font-family:Menlo,Monaco,&quot;Courier New&qu=
-ot;,monospace"><span style=3D"background-color:rgb(255,255,255)"><font colo=
-r=3D"#000000">Starting program: /mnt/c/Users/Gogte/Desktop/sanjana_intern_p=
-roject/Qemu_test/test3/LinkerM3/kernel2.elf </font></span></div><div style=
-=3D"font-size:12px;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospa=
-ce"><span style=3D"background-color:rgb(255,255,255)"><font color=3D"#00000=
-0">/bin/bash: line 1: /mnt/c/Users/Gogte/Desktop/sanjana_intern_project/Qem=
-u_test/test3/LinkerM3/kernel2.elf: cannot execute binary file: Exec format =
-error</font></span></div><div style=3D"font-size:12px;font-family:Menlo,Mon=
-aco,&quot;Courier New&quot;,monospace"><span style=3D"background-color:rgb(=
-255,255,255)"><font color=3D"#000000">/bin/bash: line 1: /mnt/c/Users/Gogte=
-/Desktop/sanjana_intern_project/Qemu_test/test3/LinkerM3/kernel2.elf: Succe=
-ss</font></span></div><div style=3D"font-size:12px;font-family:Menlo,Monaco=
-,&quot;Courier New&quot;,monospace"><span style=3D"background-color:rgb(255=
-,255,255)"><font color=3D"#000000">During startup program exited with code =
-126.</font></span></div><div style=3D"font-size:12px;font-family:Menlo,Mona=
-co,&quot;Courier New&quot;,monospace"><br></div><div style=3D""><font face=
-=3D"arial, sans-serif" style=3D""><b style=3D""><span style=3D"font-size:12=
-px">I</span>f I do the same with Standard qemu binary the gdb works:</b></f=
-ont></div><div style=3D""><div style=3D"line-height:18px"><div style=3D"fon=
-t-size:12px;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospace"><fo=
-nt color=3D"#000000" style=3D"background-color:rgb(255,255,255)">Remote deb=
-ugging using localhost:1234</font></div><div style=3D"font-size:12px;font-f=
-amily:Menlo,Monaco,&quot;Courier New&quot;,monospace"><font color=3D"#00000=
-0" style=3D"background-color:rgb(255,255,255)">start () at startup.s:10</fo=
-nt></div><div style=3D"font-size:12px;font-family:Menlo,Monaco,&quot;Courie=
-r New&quot;,monospace"><font color=3D"#000000" style=3D"background-color:rg=
-b(255,255,255)">--Type &lt;RET&gt; for more, q to quit, c to continue witho=
-ut paging--c</font></div><div style=3D"font-size:12px;font-family:Menlo,Mon=
-aco,&quot;Courier New&quot;,monospace"><font color=3D"#000000" style=3D"bac=
-kground-color:rgb(255,255,255)">10      ldr r1, =3Dmain</font></div><div st=
-yle=3D"font-size:12px;font-family:Menlo,Monaco,&quot;Courier New&quot;,mono=
-space"><font color=3D"#000000" style=3D"background-color:rgb(255,255,255)">=
-(gdb) b main</font></div><div style=3D"font-size:12px;font-family:Menlo,Mon=
-aco,&quot;Courier New&quot;,monospace"><font color=3D"#000000" style=3D"bac=
-kground-color:rgb(255,255,255)">Breakpoint 1 at 0xc6: file main2.c, line 69=
-.</font></div><div style=3D"font-size:12px;font-family:Menlo,Monaco,&quot;C=
-ourier New&quot;,monospace"><font color=3D"#000000" style=3D"background-col=
-or:rgb(255,255,255)">(gdb) continue</font></div><div style=3D"font-size:12p=
-x;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospace"><font color=
-=3D"#000000" style=3D"background-color:rgb(255,255,255)">Continuing.</font>=
-</div><font color=3D"#000000" style=3D"font-size:12px;font-family:Menlo,Mon=
-aco,&quot;Courier New&quot;,monospace;background-color:rgb(255,255,255)"><b=
-r></font><div style=3D"font-size:12px;font-family:Menlo,Monaco,&quot;Courie=
-r New&quot;,monospace"><font color=3D"#000000" style=3D"background-color:rg=
-b(255,255,255)">Breakpoint 1, main () at main2.c:69</font></div><div style=
-=3D"font-size:12px;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospa=
-ce"><font color=3D"#000000" style=3D"background-color:rgb(255,255,255)">69 =
-             uart_print(&quot;Inside main function&quot;);</font></div><div=
- style=3D"font-size:12px;font-family:Menlo,Monaco,&quot;Courier New&quot;,m=
-onospace"><font color=3D"#000000" style=3D"background-color:rgb(255,255,255=
-)">(gdb)</font></div><div style=3D"font-size:12px;font-family:Menlo,Monaco,=
-&quot;Courier New&quot;,monospace"><br></div><div style=3D"font-size:12px;f=
-ont-family:Menlo,Monaco,&quot;Courier New&quot;,monospace"><p class=3D"gmai=
-l-p1" style=3D"margin:0px;font-variant-numeric:normal;font-variant-east-asi=
-an:normal;font-variant-alternates:normal;font-kerning:auto;font-feature-set=
-tings:normal;font-stretch:normal;font-size:13px;line-height:normal;font-fam=
-ily:&quot;Helvetica Neue&quot;"><br></p><p class=3D"gmail-p1" style=3D"marg=
-in:0px;font-variant-numeric:normal;font-variant-east-asian:normal;font-vari=
-ant-alternates:normal;font-kerning:auto;font-feature-settings:normal;font-s=
-tretch:normal;font-size:13px;line-height:normal;font-family:&quot;Helvetica=
- Neue&quot;">My project necessitates the use of the Xilinx QEMU binary, spe=
-cifically to leverage the remote port functionality it offers.</p><p class=
-=3D"gmail-p1" style=3D"font-variant-numeric:normal;font-variant-east-asian:=
-normal;font-variant-alternates:normal;font-kerning:auto;font-feature-settin=
-gs:normal;font-stretch:normal;font-size:13px;line-height:normal;font-family=
-:&quot;Helvetica Neue&quot;;margin:0px">Therefore, I am seeking guidance on=
- which version of GDB should be used, or any specific configurations that m=
-ight enable successful GDB attachment to the ELF file running on Xilinx QEM=
-U.</p><p class=3D"gmail-p1" style=3D"margin:0px;font-variant-numeric:normal=
-;font-variant-east-asian:normal;font-variant-alternates:normal;font-kerning=
-:auto;font-feature-settings:normal;font-stretch:normal;font-size:13px;line-=
-height:normal;font-family:&quot;Helvetica Neue&quot;"><br></p></div></div><=
-/div><div style=3D"font-size:12px"><font face=3D"arial, sans-serif">Regards=
-,</font></div><div style=3D"font-size:12px"><font face=3D"arial, sans-serif=
-">Sanjana</font></div><div style=3D"font-size:12px;font-family:Menlo,Monaco=
-,&quot;Courier New&quot;,monospace"><span style=3D"background-color:rgb(255=
-,255,255)"><font color=3D"#000000"><br></font></span></div><div style=3D"fo=
-nt-size:12px;font-family:Menlo,Monaco,&quot;Courier New&quot;,monospace"><s=
-pan style=3D"background-color:rgb(255,255,255)"><font color=3D"#000000"><br=
-></font></span></div><div style=3D"font-size:12px;font-family:Menlo,Monaco,=
-&quot;Courier New&quot;,monospace"><span style=3D"background-color:rgb(255,=
-255,255)"><font color=3D"#000000"><br></font></span></div></div></div><div>=
-<br></div></div>
-
---00000000000059ef2d0614b5900d--
+thanks
+-- PMM

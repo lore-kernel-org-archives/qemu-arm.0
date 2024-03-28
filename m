@@ -1,114 +1,175 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp614955ejv;
-        Wed, 27 Mar 2024 10:27:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX5XjemgAgZOXQttQIVDMxEa0ty/hi3FYXTtzR9laXLzddVj2CEWuDos4YAMBL3xC/Vqa0jKhwgBF2540M5h5yn4LoaUYPt
-X-Received: by 2002:a5d:5604:0:b0:341:e369:c60a with SMTP id l4-20020a5d5604000000b00341e369c60amr451611wrv.2.1711560425868;
-        Wed, 27 Mar 2024 10:27:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711560425; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp1211851ejv;
+        Thu, 28 Mar 2024 08:33:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXGWmcmchauJs4YiXjzroQwglQxxuShT1jjsCjpO32LrBQvHThhLW3YFszHHEiID5tenmuS991gfcSfCZM22qnAVYB3hnnL
+X-Google-Smtp-Source: AGHT+IEdM0YHDIADnSbyq5+kbem/ZAN4zrq9eq2yqZgyQVcJwxKgvxs/v/5sGLhCOFIoswgjSIZt
+X-Received: by 2002:a05:6102:394a:b0:478:42b7:c535 with SMTP id f10-20020a056102394a00b0047842b7c535mr3628400vsu.30.1711640037957;
+        Thu, 28 Mar 2024 08:33:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711640037; cv=none;
         d=google.com; s=arc-20160816;
-        b=S00kjmQuH2cdj66XFIgjBNz3Qn7zzk5P+wUaSGMayxl8xefvwJYi2u9eg5bqPmraWE
-         RTMnubtcy+o5nq5PpKa7YJb0//x6wHMCIu3ClTa8eEuThc1ONGvHqwadsGr61H0nUGh6
-         6lXKz3TtCDpcqxRvq5yRkDQ9TZzIMHyF9cx7Zm+iorTHsqwFbg6gJMqfHtiXkHOgAbGb
-         N4ViRMME+lD9Pu8EE2cJny5L1I2El5BkAaq/p2yxtkv63kbjVp/mQXw13UJxuWBD+Gfz
-         i50+tM/FLmEqDmy48O28KHNsBVJCo26aMCvsTkv32kvP35aybdaKpvvveibdrI0ANUSo
-         6NwA==
+        b=REJfO/bv66t825w4XRi/jxC7MX3szhPhO+16kZuTb0tAaFi+N4+AIlFbhZ08Tn59ju
+         Y77vLVi7LhQzNb9iALH6PCBfZ0DAlFve0NwACXto7NqXPo+iGTFf0ZsHQMMBLCEAxg4L
+         yd56bh9JtpX0EyCGQYYvht2xE26fsr3sRfqJZAtBmQpDjnVvVTnqR1r5SYeA6s/bll4H
+         LaHMaY7OqOTbq3sl+wp8F/mK5xpVSi2yd9yHEoYo/D89vhpcfdd86+GxsMjBj3GZ69ZF
+         7b8gkhsi/cQVQH9sh1TJ/iatzrpefy0JeVryu7PNeyrL0/yyrll1+iM+M+BgaDXM48Le
+         GBlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=LOeWq64vcMpyC+dfgqU4qcoJI/qjRuI1jSd1ZXO7Aa8=;
-        fh=5zrsqFDE/BpeSVteG2+JyJN+M6DwTuVvnwlAo7/dmLM=;
-        b=GlnovjNRDgab+TFNA4FkB50jmXl1UJSMRPhdhWJY0TXIMb6Z6UOozo3ag/pNdW968n
-         6A/upIalwJR/CGD5r/xJTPt1yXiWF5J5j6eaBVc/Y3kwFq08fUExf1sXFFtfZi9b7cM+
-         eEh8t/k0ai+iGGvGegXB0CtZQpj+7DeeyH0gYpdZ2GjDfaYkdR41q9C6jJcYp0h/w5GX
-         5g8kMqci4p/HFM7Gd6/fAFWYhuz9a+4G2OI/ZOkpBOgpgAgbJHYIwgyfOTVxddssW2ji
-         KSok18PBcIPTL2sJjMPWExgx5JkeR+pmn68a15rwrsJ7+OC8RXVBeUD4pd64sFuWbkiX
-         /2lg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=HoXcWIswnaiYn+YGfxoqs8bfwHg7SCgsOteFXjUUrDI=;
+        fh=spbD1uAOw2hCQBb83uSlqZAKTOl6wvNX+k1rxl9UBCg=;
+        b=f9e6PFuRrFUzfSuSZlHPZua9ORkz1bApTxecIRkDiKRq3FcmHw+fJzBNXeaNRH/Cda
+         wcTqrX5B0P24/mFO93T3w5d/2hWzVaRBB6nc+SjzqcrMpT/qxOr0jBBUKUrAq2a184Q0
+         Gm3y1m6W4FeK7pRL5diPsqzQS4Ox7LOoXXiyFtgW7woaj2VEOUPlIcZn0DdMK7omea4N
+         pKCHcLqLGzzIWfYJmFLNC3ktbhNvWTYrLFSkOpdEckoGV5oJWFw+fOTqgC1/GY4+hUif
+         HXLJui/cj7g6hz2f2dpjA4h9XZnlfRKMh4eFUD+KV+ObkkyL88+gGkuxIOB+0R8j3mLs
+         97Kg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@cloud.com header.s=cloud header.b=ds4yEkBQ;
-       spf=pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=anthony.perard@cloud.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cloud.com
-Return-Path: <anthony.perard@cloud.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id dz17-20020a0560000e9100b00341b39311efsor3255968wrb.7.2024.03.27.10.27.05
+       dkim=pass header.i=@linaro.org header.s=google header.b=lrPq1BXS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id jf11-20020a05610217cb00b00476f09c0578si238424vsb.298.2024.03.28.08.33.57
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 27 Mar 2024 10:27:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 28 Mar 2024 08:33:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@cloud.com header.s=cloud header.b=ds4yEkBQ;
-       spf=pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=anthony.perard@cloud.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cloud.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=lrPq1BXS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rprl5-0008P0-Ep; Thu, 28 Mar 2024 11:33:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rprl4-0008Ol-Uz
+ for qemu-arm@nongnu.org; Thu, 28 Mar 2024 11:33:39 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rprl2-0006IV-Jl
+ for qemu-arm@nongnu.org; Thu, 28 Mar 2024 11:33:38 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-341d730bdfcso916846f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 28 Mar 2024 08:33:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=cloud.com; s=cloud; t=1711560425; x=1712165225; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=LOeWq64vcMpyC+dfgqU4qcoJI/qjRuI1jSd1ZXO7Aa8=;
-        b=ds4yEkBQ5g/MjZHJ51brGmQN2OPfYhRIrXcN2NWL/pgy6Kg49+IbeFJY0hMRsUMpDo
-         3nW5Td8NAXIsf46LZ3JJ/OO5nQ2TVh/QyXYJWVBKT01hkhen/sFxY9kVuOHsSw3FIk36
-         +VgK8kfod7nuQ+2NOEMujnZp1vKyoU4GNBkv4=
+ d=linaro.org; s=google; t=1711640015; x=1712244815; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=HoXcWIswnaiYn+YGfxoqs8bfwHg7SCgsOteFXjUUrDI=;
+ b=lrPq1BXStVueusSFfHC1HToxaenBcx4LtMGLV9TidOCdtHYBLjtDSt3tb29WngSAoC
+ NeLSh7tRkAOSWCCuONOA+gByvIB/WXOkP7yPVcj61ZTLxijaCwaVfCzyjSSlkGgFHM/B
+ hgZEwl1HyEQHibBhwfcQQ9qRHGaR0cGk7JGcnpSXyYB6LjIM7LMAQJ7TlC0j06MNE4hf
+ uVkMNYbx0gu8pV3C+jciXZECTny49b9nY9Tr4L6P5fFXH23hYxNUkoK//zX1OOH4btFb
+ 4zpZZ2Bxu+BXbxkW9+AZWwgE1xyDU/eHyMjitF4Ijs/eg3ZZWolcxKb3/LZY3vKyBknv
+ qrZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711560425; x=1712165225;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=LOeWq64vcMpyC+dfgqU4qcoJI/qjRuI1jSd1ZXO7Aa8=;
-        b=IrMaNiHxBKRhEoxquyMzlqB3FsiTzqH3G1YUQ91fl4IYyP7YwIolvFYe9Yed6L3E2K
-         Be/9eJujvguRhNocXE6r3gW1Wh3LTdfB57aWy48ELOr4cc2mSbVEoieHZACnlHth2Zo5
-         Azu2GNn678QaAo8dmN2C7+KG2vJcJ13ZRz/8PZUN1lzpkI0r3bcHMkExH6w9BVXvLxb3
-         rXK3um2ACwF6LcOVJwmcAE39DyLHvVdKCo+L8f2SlOZ1R+/8J1pbbm6fAdT9vGgn9qb/
-         h1l/pLRUISjLPEM48ep01YueEXP7jpjR1w4gPBcu7G7pO69zii/9fb0k3uVcfrpeKwbK
-         VFYg==
-X-Forwarded-Encrypted: i=1; AJvYcCV62/NrjYRLZbdpuRQ9pcxLdB04KuGxG9Dfop0MuT11BEXOG5RgrzWQGocxpE+mg5GOy4JCdcK5g3bA+dNQLp6TZyVAfm5l
-X-Gm-Message-State: AOJu0YzOmZejrdnZmBAu9bVyk5O1b75UXACqx+vWT4xr7X2BqPIK8fPh
-	ZfKK5OAJa44yc1vmtiyPoPkYigRH3gqdsCdZ6YR5iMnr0vcJpQUQSZUvcuxHkzM=
-X-Google-Smtp-Source: AGHT+IHr9JM+c5QDCOdkTDoDNItACvq5s9onzO3m1fxTIw9ef9+p/5BHroxQSnJUYc67vBX8mZewQg==
-X-Received: by 2002:adf:eccc:0:b0:341:d64e:4966 with SMTP id s12-20020adfeccc000000b00341d64e4966mr424121wro.61.1711560425465;
-        Wed, 27 Mar 2024 10:27:05 -0700 (PDT)
-Return-Path: <anthony.perard@cloud.com>
-Received: from perard.uk.xensource.com (default-46-102-197-194.interdsl.co.uk. [46.102.197.194])
-        by smtp.gmail.com with ESMTPSA id fa7-20020a056000258700b00341c6b53358sm10953709wrb.66.2024.03.27.10.27.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Mar 2024 10:27:05 -0700 (PDT)
-Date: Wed, 27 Mar 2024 17:27:04 +0000
-From: Anthony PERARD <anthony.perard@cloud.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Paul Durrant <paul@xen.org>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	xen-devel@lists.xenproject.org, qemu-block@nongnu.org,
-	kvm@vger.kernel.org, Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH-for-9.0 v2 16/19] hw/xen/xen_pt: Add missing license
-Message-ID: <71182998-214b-4e38-8420-79edb92ec09c@perard>
-References: <20231114143816.71079-1-philmd@linaro.org>
- <20231114143816.71079-17-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1711640015; x=1712244815;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=HoXcWIswnaiYn+YGfxoqs8bfwHg7SCgsOteFXjUUrDI=;
+ b=mr6946AJvxaRWXbwZyo276dJ7RFg3VbfAsPrJwma+DHMV1GEx02npKTgTDPsTnSwCD
+ of8pSqyE0rEiyo1HUgkSUGYpzIbAi2Odv5TeowIn7h1zSEyzhJEVJKbxUZ849NuBicGm
+ ZuYkBAJsrybH+Dg+9PTIMCdZz/GVjafRNOCZAnNN1umKRNVJ8d9q3BESS77dqcgbBR0E
+ GjoRsG3uLv0oExdyKf5K/8f8gLyC9YjR5R/Bzbmr6pmURlhQHN0+gcZcMfTVv+sGLO5e
+ R83/3rVgfJ8PmBlB3R6OlNKeqH7KhmPoIMHyDuHpS1a65c2uJkfeQ+QEo9gF7Uyre1d9
+ 1WDQ==
+X-Gm-Message-State: AOJu0Yy3AUlttYcWj2zF38atdyKMae4bVnWYmyNmoQgzZ3x8+BP17lBF
+ sgJF/HvQXzhUblVpnW0Q6IshWmRP9ZPPMpjaokGsKXSp1j7nXWdy7PRl841ohKXuuop6csDK+w2
+ 6
+X-Received: by 2002:a5d:6586:0:b0:33e:34aa:d78a with SMTP id
+ q6-20020a5d6586000000b0033e34aad78amr3033455wru.8.1711640014748; 
+ Thu, 28 Mar 2024 08:33:34 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ bt30-20020a056000081e00b00341b9e11b11sm2067039wrb.24.2024.03.28.08.33.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 Mar 2024 08:33:34 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org
+Subject: [PATCH] hw/intc/arm_gicv3: ICC_HPPIR* return SPURIOUS if int group is
+ disabled
+Date: Thu, 28 Mar 2024 15:33:33 +0000
+Message-Id: <20240328153333.2522667-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231114143816.71079-17-philmd@linaro.org>
-X-TUID: k3bgDTnL8xV5
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Hz5nXoWbGbSp
 
-On Tue, Nov 14, 2023 at 03:38:12PM +0100, Philippe Mathieu-Daudé wrote:
-> Commit eaab4d60d3 ("Introduce Xen PCI Passthrough, qdevice")
-> introduced both xen_pt.[ch], but only added the license to
-> xen_pt.c. Use the same license for xen_pt.h.
-> 
-> Suggested-by: David Woodhouse <dwmw@amazon.co.uk>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+If the group of the highest priority pending interrupt is disabled
+via ICC_IGRPEN*, the ICC_HPPIR* registers should return
+INTID_SPURIOUS, not the interrupt ID.  (See the GIC architecture
+specification pseudocode functions ICC_HPPIR1_EL1[] and
+HighestPriorityPendingInterrupt().)
 
-Fine by me. Looks like there was a license header before:
-https://xenbits.xen.org/gitweb/?p=qemu-xen-unstable.git;a=blob;f=hw/pass-through.h;h=0b5822414e24d199a064abccc4d378dcaf569bd6;hb=HEAD
-I don't know why I didn't copied it over here.
+Make HPPIR reads honour the group disable, the way we already do
+when determining whether to preempt in icc_hppi_can_preempt().
 
-Acked-by: Anthony PERARD <anthony.perard@citrix.com>
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Pre-existing bug which I happened to notice while working
+on review of the FEAT_NMI patches. I don't suppose real world
+code disables interrupt groups which it's actually using, which
+is why nobody's noticed it. Still, it's a safe bugfix so might
+as well go to stable too.
+---
+ hw/intc/arm_gicv3_cpuif.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Thanks,
-
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index e1a60d8c15b..67d8fd07b7f 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -1067,7 +1067,7 @@ static uint64_t icc_hppir0_value(GICv3CPUState *cs, CPUARMState *env)
+      */
+     bool irq_is_secure;
+ 
+-    if (cs->hppi.prio == 0xff) {
++    if (icc_no_enabled_hppi(cs)) {
+         return INTID_SPURIOUS;
+     }
+ 
+@@ -1104,7 +1104,7 @@ static uint64_t icc_hppir1_value(GICv3CPUState *cs, CPUARMState *env)
+      */
+     bool irq_is_secure;
+ 
+-    if (cs->hppi.prio == 0xff) {
++    if (icc_no_enabled_hppi(cs)) {
+         return INTID_SPURIOUS;
+     }
+ 
 -- 
-Anthony PERARD
+2.34.1
+

@@ -1,189 +1,224 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp1197383ejv;
-        Thu, 28 Mar 2024 08:13:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV0UTX9hVn2AbgY42cCIOTaqXWTo3DOuKIhCT1LUiSQsJmtQT0boDYiRnknvvQD7a26Ce52qJumhwLK7HDVCxuacjoJiOzY
-X-Received: by 2002:a2e:808f:0:b0:2d6:f16a:857f with SMTP id i15-20020a2e808f000000b002d6f16a857fmr2266784ljg.0.1711638839501;
-        Thu, 28 Mar 2024 08:13:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711638839; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp1218011ejv;
+        Thu, 28 Mar 2024 08:43:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXSJyZUWbaJtkPkYeW/r0xY2j93I0vTMvopgQt5LgtzmGGpq7ZZbnsz2pkP2pdNwAELzYHhgzDWH8VUZ0/4O2deSYjRnflk
+X-Google-Smtp-Source: AGHT+IHhaEfXg9ih+Dd1ThtgFU/vHrppa+o4kJYKZEBN/N4kD77kaUnpU9SZ5bP9XP48Yh2Trf17
+X-Received: by 2002:a05:6830:1313:b0:6e6:cce2:fc89 with SMTP id p19-20020a056830131300b006e6cce2fc89mr3477245otq.3.1711640625056;
+        Thu, 28 Mar 2024 08:43:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711640625; cv=none;
         d=google.com; s=arc-20160816;
-        b=etWTTjV2hcE1hWN0WPZEykxL5/e2/IL4x/jcnlGiouxu7NCmYlBwIuQm80fuw+qGUH
-         cEPK01uffgS0UKTTvFCx+0ww4JbRLKbZFie8j9CDXOKgyNqE2EudqjumhBUfRzQ+RIEA
-         OnqNnAguWHCXJ1PLGbW/YQ3xKDPth7mReitRBqyzNAqNRZP3ndI0w5MLDLkBAyFPM8DE
-         zQZEplkf/dOWZdJXg9aRqw+pLnh/uOItvJ4LGJxdjBgJ95Wo8AIxxhRSMpHsljIWd3Pn
-         +1T+TmcLoyf1S1SP7hGQmncuK2IRbPlPM5S+AJ67TXwxoonWwrKxfK3zIWHqd51Lmevf
-         rgzg==
+        b=Konvbc/1JsNFQ8Elj/oBcIdQbXQMgB1CV96gi+v1zQLYV+WesTqexNQ37H2pPtWx0/
+         k3UWbE1ba4zuTJyWUHT6EF7YroPBE18netNGiA6xqw0uZjiUwDJ6x0sf+MoxTMl1N+bS
+         BH3clUm9duw1IZy3p2uJ+2ZrWA64sQ/bw+Ijw4UjCbquaDWbDbcavPR9XmQTxID9Abht
+         XlVdcbQv/5m0UGV8KUVadBwb6iSzWTnJIsuj1lC46B45mhxaFR+Aqhtu8Z4AEMc95oJw
+         obsvVV75+munQCdiyTHMAOgUUXlhCC6wvWsjY2NCLiE0+8Moy9qBQ7c8LqzC4qozc8g/
+         olsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=Vutwe9uQNhqbkQuib/VJsrR0Y5T7DY7pGtessWbxb5I=;
-        fh=qO1HLve0wLKGsmfcaMLirAXYMOpB8t4EnEWzJ1TqHGk=;
-        b=MxwhH8cfFdUu3aWG48mff1Lwb27ql9+O/R1vEAxWdlz6eP/aK8M4aYnr9vYYYlXvIu
-         SoWHZ82qHFhaAXiQtM2+Yi5VItE/gFGXHj9qqG+NIYRotJeLiAU02BaCIuUKJiEQ2sy+
-         IhtyPNAm6OVs5YVxQtN3QNppbLI7MNMOEuYZSSA93XIUeRvj+qUJOMkThiiFDRMr6Zcj
-         IMDDS/NnlQ4Ilu3SOrklfMdKbUMOuSHuF4UVcf5XSSLibXyh8afaiBTiPEgccdMknIcf
-         mjV1ZvWVneD2I+hjlbOoKi+qFOdLZjB0x5m7OFFB8jc7jdFE9FXfCyluQ5L75e2uwgNR
-         ECkw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=SA9prWQH3+BKQDdv+4CEIFUq0hrH5UT0eDVBRphad+Y=;
+        fh=YiAzrS56PxfVdkyPJs6tLVpLvx4gYwnN5z0jpeaoOjQ=;
+        b=pbyBXaL5NYs0jy2fZzfWp0Wj+2ePf2MDihSy7VAzlN3WJkwiXPTZgGh76JYb1u3dyI
+         wgNqRW4JVkt3UPBfq2bzmF9K3sbTgh5JkhUxe/fQ5xEp0wspFs7+jvAzlHx4H+O2qQbB
+         6arV8mgSDOytz8Ps2QaXX5kgCvmclMaDm6CReQnd9hB+5ALPqYWkv5DPL9dpn2qE5Sql
+         ZBT3w2OjGcB/E6727JZZiKr6pYsGfC9yR4KZLW7UUmUbHF6Mz80EzbIms+ImlRrx2LdY
+         SUMG/Rzywbv0ak60wZezhIeSHpf14BT5CkKMlIE9pXa45yAUGXz+PP3qWjhEUkUWGqll
+         JOaw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@cloud.com header.s=cloud header.b=ha8lRBVN;
-       spf=pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=anthony.perard@cloud.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cloud.com
-Return-Path: <anthony.perard@cloud.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d34-20020a05600c4c2200b00414128eed8asor469395wmp.2.2024.03.28.08.13.59
+       dkim=pass header.i=@linaro.org header.s=google header.b=TJtMgdxw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a12-20020a05620a02ec00b0078a1aa8dd86si1653298qko.160.2024.03.28.08.43.44
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 28 Mar 2024 08:13:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 28 Mar 2024 08:43:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@cloud.com header.s=cloud header.b=ha8lRBVN;
-       spf=pass (google.com: domain of anthony.perard@cloud.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=anthony.perard@cloud.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=cloud.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=TJtMgdxw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rprui-0005eY-Ma; Thu, 28 Mar 2024 11:43:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rprug-0005dP-T1
+ for qemu-arm@nongnu.org; Thu, 28 Mar 2024 11:43:34 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rpruf-0007qR-4T
+ for qemu-arm@nongnu.org; Thu, 28 Mar 2024 11:43:34 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-56c147205b9so1986551a12.0
+ for <qemu-arm@nongnu.org>; Thu, 28 Mar 2024 08:43:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=cloud.com; s=cloud; t=1711638839; x=1712243639; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=Vutwe9uQNhqbkQuib/VJsrR0Y5T7DY7pGtessWbxb5I=;
-        b=ha8lRBVN78zr5g7kQd1xgr/c4BQW/kKL0Z227bkc4L9Wt0323pu4k7zM6Wc+Sbsm2L
-         ydTIaEaGm+ndRb0CRM2JkH1XLaOSgH9ckyfCs3+30MVSrCXVIhE9L0s/Jhzzwl1UNpJA
-         mF2a2mEqbu4ZiCuUfCQ6pnq2upKLd7M4hEPeY=
+ d=linaro.org; s=google; t=1711640611; x=1712245411; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=SA9prWQH3+BKQDdv+4CEIFUq0hrH5UT0eDVBRphad+Y=;
+ b=TJtMgdxwbLMVgdCwtC/sK/89pC3KS+oMtjFlkj2pexjbfX9bjGX9eltuO6QTVynRGz
+ gHc5c1TY6dbHzWmQmRxhI4q+c3Fg9seXyM5TgCzLed/o4kppYcA1S3Pomq3ciodIoLhC
+ JRFjNq7G3KiMGNZa4BMePpIXJnOKGZM4e2Y3/e7jSGZigcRPZO1/cA82cukWyERi+juA
+ U5Lji5d4WYjUfskQDGVZJfZZ2dAOs8IDZgo7qkZKWZjSJm1dcn5ZGmzcDFE+12e0qmns
+ UTIKS/5qbCrrRbzjZwT1/0CD9mtp54nimFUNHpbhszPUA6SlGAfvT1fVwPIf1l9hRt5A
+ T1Fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711638839; x=1712243639;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Vutwe9uQNhqbkQuib/VJsrR0Y5T7DY7pGtessWbxb5I=;
-        b=WAmQ6Qv025zQaLl+8O7h2lG/CGk5pnO7PSdsL8U8Jmo288nX5LcWJxQYzMeygxZoq7
-         3Xl8zbQxFWtUwaFt9bILF7pG1HgfnJT3ExNMA9YqprcATIAJBXncP6TUxQszbLUPGhM2
-         hGJtCaLRlKLnx+iCOzx+VCnD8xno5rkXqk3OqodGPW5u3O7krqmG1uScIa0KcyUwXxzm
-         /P6aOsicRPloMam35y62LDQulroHBRYepHW87k9UawOOmPc77f68EjLbPMpUSDQmw56g
-         10ks6DlEqUuVe0j+/VvM8zZtURc/x3Gq1mb8HgUW5tOfmeuYzDdL/rB3ayGewyORhA9C
-         Z/nQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWEFsuTYde1NGSVdJw2SPfWWoBLDsT3umhAg554bhm1U0bs+2Ud1rgGJXbYJbDXoEbMtvbqeQreBEpxCkARvr6XS85pRe30
-X-Gm-Message-State: AOJu0YxLapoL0fN7f1SJJt2kizpmjmxRGFtFCcku2Gv8KeUwfRWMkwIM
-	1EZBObysUdg8xeJq4dgNQdexGY/EOYUtATtTwCaX+7qGQO2g1al/LWTETtmrBAA=
-X-Google-Smtp-Source: AGHT+IGqAinQBfrXGU5/mTtpVN5DvsCj7MjTmxxo3BTpBz9VwcwzSMIjsSrbfaQrLhnH/z44soQEMQ==
-X-Received: by 2002:adf:e9cf:0:b0:341:bf20:c840 with SMTP id l15-20020adfe9cf000000b00341bf20c840mr2502075wrn.11.1711638839070;
-        Thu, 28 Mar 2024 08:13:59 -0700 (PDT)
-Return-Path: <anthony.perard@cloud.com>
-Received: from perard.uk.xensource.com (default-46-102-197-194.interdsl.co.uk. [46.102.197.194])
-        by smtp.gmail.com with ESMTPSA id ea2-20020a0560000ec200b003432d79876esm1947746wrb.97.2024.03.28.08.13.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Mar 2024 08:13:52 -0700 (PDT)
-Date: Thu, 28 Mar 2024 15:13:51 +0000
-From: Anthony PERARD <anthony.perard@cloud.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: David Woodhouse <dwmw@amazon.co.uk>, qemu-devel@nongnu.org,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Paul Durrant <paul@xen.org>, qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	xen-devel@lists.xenproject.org, qemu-block@nongnu.org,
-	kvm@vger.kernel.org, Thomas Huth <thuth@redhat.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
-Subject: Re: [PATCH-for-9.0 v2 19/19] hw/xen: Have most of Xen files become
- target-agnostic
-Message-ID: <83ff9fec-2ac1-418f-ac76-2256d03e676e@perard>
-References: <20231114143816.71079-1-philmd@linaro.org>
- <20231114143816.71079-20-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1711640611; x=1712245411;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=SA9prWQH3+BKQDdv+4CEIFUq0hrH5UT0eDVBRphad+Y=;
+ b=pOtFSfwOdSzRSerstDuwqKE5oyasqOAnbcrn781p+g7xRz14hM253uFwbaYIQONRFs
+ vI+oPcFK35eM6pHLS+BLt5M7q75H6HPX4h/HoGBD2GFXQEkL+EYzdK0z0ibZv05MHveW
+ 49AaDeW5EAiAx2fsdmKSJZL9kdke0+bMoW6M/FAP/h+ZphmNStn10m3tkBLHGdKql12S
+ wmxaLPDmqMXrQMqP0N1PmTQ/mZ4HyTOgS5dzEImAcaXWSk3sUU6zmZ8U/4NvGBSP2nBA
+ vfc3otnhqraJUZlz18BxQMHFTvJNq8IPvsInIUBRZcKtFwyAMAjsgWnmvevCWH0Gdyyh
+ XEpw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWoiXaye6gAPquZwOQM5EFzvWLKRdnFT6/zSFY6jOrR7u/A7Tb6aMeon75eclfUAPYEatDeQ1rHNqo4hGdCFoLu0O7z
+X-Gm-Message-State: AOJu0Yxo9IuYb2XMrlRQsbgckoQyE96/nIKN0MGCeb9FfCb4mq1G46QR
+ E6aOaUtP6ryCE4gsAMBv3jlz3WDq04ClrYvm30wOtr0WQtVk8arDNmjYk9+L5lBROUdfqQElGOK
+ sS0aCjQlNRg3OEKzlGoVCpBTp1iFMEax2FamboGlO5mXffUjg
+X-Received: by 2002:a50:d5c7:0:b0:567:e0e:dda5 with SMTP id
+ g7-20020a50d5c7000000b005670e0edda5mr2134150edj.17.1711640611549; Thu, 28 Mar
+ 2024 08:43:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231114143816.71079-20-philmd@linaro.org>
-X-TUID: dBV7rzJUs+3C
+References: <20240326095819.1268062-1-marcin.juszkiewicz@linaro.org>
+In-Reply-To: <20240326095819.1268062-1-marcin.juszkiewicz@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 28 Mar 2024 15:43:20 +0000
+Message-ID: <CAFEAcA_Hf_Ehk8Cc8kZGCO3niW_x18vwg4=JSFmYoFZOOTPzGg@mail.gmail.com>
+Subject: Re: [PATCH 1/1] docs: sbsa: update specs, add dt note
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Radoslaw Biernacki <rad@semihalf.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Vt+ejqQ60lzL
 
-On Tue, Nov 14, 2023 at 03:38:15PM +0100, Philippe Mathieu-Daudé wrote:
-> Previous commits re-organized the target-specific bits
-> from Xen files. We can now build the common files once
-> instead of per-target.
-> 
-> Only 4 files call libxen API (thus its CPPFLAGS):
-> - xen-hvm-common.c,
-> - xen_pt.c, xen_pt_graphics.c, xen_pt_msi.c
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Tue, 26 Mar 2024 at 09:58, Marcin Juszkiewicz
+<marcin.juszkiewicz@linaro.org> wrote:
+>
+> Hardware of sbsa-ref board is nowadays defined by both BSA and SBSA
+> specifications. Then BBR defines firmware interface.
+>
+> Added note about DeviceTree data passed from QEMU to firmware. It is
+> very minimal and provides only data we use in firmware.
+>
+> Added NUMA information to list of things reported by DeviceTree.
+>
+> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 > ---
-> Reworked since v1 so dropping David's R-b tag.
-> ---
->  accel/xen/meson.build          |  2 +-
->  hw/block/dataplane/meson.build |  2 +-
->  hw/xen/meson.build             | 21 ++++++++++-----------
->  3 files changed, 12 insertions(+), 13 deletions(-)
-> 
-> diff --git a/accel/xen/meson.build b/accel/xen/meson.build
-> index 002bdb03c6..455ad5d6be 100644
-> --- a/accel/xen/meson.build
-> +++ b/accel/xen/meson.build
-> @@ -1 +1 @@
-> -specific_ss.add(when: 'CONFIG_XEN', if_true: files('xen-all.c'))
-> +system_ss.add(when: 'CONFIG_XEN', if_true: files('xen-all.c'))
-> diff --git a/hw/block/dataplane/meson.build b/hw/block/dataplane/meson.build
-> index 025b3b061b..4d8bcb0bb9 100644
-> --- a/hw/block/dataplane/meson.build
-> +++ b/hw/block/dataplane/meson.build
-> @@ -1,2 +1,2 @@
->  system_ss.add(when: 'CONFIG_VIRTIO_BLK', if_true: files('virtio-blk.c'))
-> -specific_ss.add(when: 'CONFIG_XEN_BUS', if_true: files('xen-block.c'))
-> +system_ss.add(when: 'CONFIG_XEN_BUS', if_true: files('xen-block.c'))
-> diff --git a/hw/xen/meson.build b/hw/xen/meson.build
-> index d887fa9ba4..403cab49cf 100644
-> --- a/hw/xen/meson.build
-> +++ b/hw/xen/meson.build
-> @@ -7,26 +7,25 @@ system_ss.add(when: ['CONFIG_XEN_BUS'], if_true: files(
->    'xen_pvdev.c',
->  ))
->  
-> -system_ss.add(when: ['CONFIG_XEN', xen], if_true: files(
-> +system_ss.add(when: ['CONFIG_XEN'], if_true: files(
->    'xen-operations.c',
-> -))
-> -
-> -xen_specific_ss = ss.source_set()
-> -xen_specific_ss.add(files(
->    'xen-mapcache.c',
-> +))
-> +system_ss.add(when: ['CONFIG_XEN', xen], if_true: files(
->    'xen-hvm-common.c',
->  ))
+>  docs/system/arm/sbsa.rst | 37 ++++++++++++++++++++++++++++---------
+>  1 file changed, 28 insertions(+), 9 deletions(-)
+>
+> diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
+> index bca61608ff..d4d1f2efe3 100644
+> --- a/docs/system/arm/sbsa.rst
+> +++ b/docs/system/arm/sbsa.rst
+> @@ -1,12 +1,16 @@
+>  Arm Server Base System Architecture Reference board (``sbsa-ref``)
+>  ==================================================================
+>
+> -While the ``virt`` board is a generic board platform that doesn't match
+> -any real hardware the ``sbsa-ref`` board intends to look like real
+> -hardware. The `Server Base System Architecture
+> -<https://developer.arm.com/documentation/den0029/latest>`_ defines a
+> -minimum base line of hardware support and importantly how the firmware
+> -reports that to any operating system.
+> +The ``sbsa-ref`` board intends to look like real hardware (while the ``virt``
+> +board is a generic board platform that doesn't match any real hardware).
 > +
->  if have_xen_pci_passthrough
-> -  xen_specific_ss.add(files(
-> +  system_ss.add(when: ['CONFIG_XEN'], if_true: files(
->      'xen-host-pci-device.c',
-> -    'xen_pt.c',
->      'xen_pt_config_init.c',
-> -    'xen_pt_graphics.c',
->      'xen_pt_load_rom.c',
-> +  ))
-> +  system_ss.add(when: ['CONFIG_XEN', xen], if_true: files(
-> +    'xen_pt.c',
-> +    'xen_pt_graphics.c',
+> +The hardware part is defined by two specifications:
+> +
+> +  - `Base System Architecture <https://developer.arm.com/documentation/den0094/>`__ (BSA)
+> +  - `Server Base System Architecture <https://developer.arm.com/documentation/den0029/>`__ (SBSA)
+> +
+> +The `Arm Base Boot Requirements <https://developer.arm.com/documentation/den0044/>`__ (BBR)
+> +specification defines how the firmware reports that to any operating system.
+>
+>  It is intended to be a machine for developing firmware and testing
+>  standards compliance with operating systems.
+> @@ -35,16 +39,31 @@ includes both internal hardware and parts affected by the qemu command line
+>  (i.e. CPUs and memory). As a result it must have a firmware specifically built
+>  to expect a certain hardware layout (as you would in a real machine).
+>
+> +Note
+> +''''
+> +
+> +QEMU provides us with minimal information about hardware platform using
 
-How is it useful to separate those source files? In the commit
-description, there's a talk about "CPPFLAGS", but having `when: [xen]`
-doesn't change the flags used to build those objects, so the talk about
-"CPPFLAGS" is confusing.
-Second, if for some reason the dependency `xen` is false, but
-`CONFIG_XEN` is true, then we wouldn't be able to build QEMU. Try
-linking a binary with "xen_pt_config_init.o" but without "xen_pt.o",
-that's not going to work. So even if that first source file doesn't
-directly depend on the Xen libraries, it depends on "xen_pt.o" which
-depends on the Xen libraries. So ultimately, I think all those source
-files should have the same condition: ['CONFIG_XEN', xen].
+s/us/the guest EL3 firmware/  (or whatever other term you want to
+use to describe the guest software that reads the dt).
 
-I've only checked the xen_pt* source files, I don't know if the same
-applies to "xen-operations.c" or "xen-mapcache.c".
+> +minimalistic devicetree. This is not a Linux devicetree. It is not even a
+> +firmware devicetree.
+> +
+> +It is information passed from QEMU to describe the information a hardware
+> +platform would have other mechanisms to discover at runtime, that are affected
+> +by the QEMU command line.
 
-Beside this, QEMU built with Xen support still seems to works fine, so
-adding the objects to `system_ss` instead of `specific_ss` seems
-alright.
 
-Thanks,
+Might want to say also
+ Guest EL3 firmware does not pass this devicetree on to later
+ components of the software stack.
+?
 
--- 
-Anthony PERARD
+> +
+> +Ultimately this devicetree will be replaced by IPC calls to an emulated SCP.
+> +And when we do that, we won't then have to rewrite Normal world firmware to
+> +cope.
+
+I would drop the last sentence here, and use "may" instead of "will".
+
+> +
+>  DeviceTree information
+>  ''''''''''''''''''''''
+>
+> -The devicetree provided by the board model to the firmware is not intended
+> -to be a complete compliant DT. It currently reports:
+> +The devicetree reports:
+>
+>     - CPUs
+>     - memory
+>     - platform version
+>     - GIC addresses
+> +   - NUMA node id for CPUs and memory
+
+Otherwise looks good to me, and the updates to the spec URLs
+are particularly helpful. As a docs change I'd be happy
+to take it into 9.0 (at least before rc2) if some other
+sbsa-ref-knowledgeable person wants to either review or ack it.
+(But it's also OK if it misses 9.0 and goes into 9.1.)
+
+thanks
+-- PMM

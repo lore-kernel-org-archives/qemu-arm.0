@@ -1,124 +1,108 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp1333416ejv;
-        Thu, 28 Mar 2024 11:39:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUpY5EGelj+GYFcpFphztds0NHayrp2eOvI3V625LHyr5K/gtZFVkE0lymZp+g0YrRgZlCL2Xw8sTB8AsSevLlLIxiCUXQ/
-X-Google-Smtp-Source: AGHT+IH8Lv+FHPJO8KBmjuHe+ereRUoMJacZ3Ki5e5nfdxwKW3p4T/IQoxjuHesa4pDrsM/+by9+
-X-Received: by 2002:aca:f02:0:b0:3c3:d477:62d4 with SMTP id 2-20020aca0f02000000b003c3d47762d4mr65508oip.33.1711651140064;
-        Thu, 28 Mar 2024 11:39:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711651140; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp1965168ejv;
+        Fri, 29 Mar 2024 10:44:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVREsnFfJJyMjBpJBE6ezdIwXY0Ym7fWhB2FGxNPOxEgXBZpgjtoSpveFDyAxJxaqFMR/dOdV9IxOsLFB0DD41Io7bU8nkQ
+X-Google-Smtp-Source: AGHT+IHUXTmUZxxwTl++ZuatFFDy2fnfeKI+eEGP0ip2nBc7zSe315p6rKRiUtapC7JEy52pUnVu
+X-Received: by 2002:ac8:5c93:0:b0:432:c9c0:26fd with SMTP id r19-20020ac85c93000000b00432c9c026fdmr1059506qta.16.1711734279648;
+        Fri, 29 Mar 2024 10:44:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1711734279; cv=none;
         d=google.com; s=arc-20160816;
-        b=OUQCZ3nsPO6Ba56IrmBxxiVv7jqCm+Y2VHvdXdrAamyDrPr9CBHw3UNO6oNPJNUHsr
-         aSdKJjfWhCxIcksb75zywt5v/f6pm4tmfmy1y33ZFYoo1Q6pv3hlpefkCPPwIGgEzqMl
-         0xo8gZ5RRImwL8dxjSsIHlCkqDmNYL1t0Dur+awOz7BN4pVfvqSxQvsDp1QxnoJgxkBE
-         vPTWxgP0kpIsQapKcc3g6OVORl9M30HXOpXwHtmPJcgRcF3iyPmtZrKWQEr3Y/NmOZP4
-         P12ZCWrsyGHxl1hnv+yNNAjgpiCZmSI8+uDtJApjS1uMSTVzeO8HtWDXeEvtiGm1TONN
-         IqqQ==
+        b=YuynweGfo4GF9tkkUkqaSdnpzdyt+TcoREi1bQBPGO8snJxKg4bdbiHQqCXV7uhFg4
+         RJKL0SpVxaUH4xMkiBcJjisvzokgH8n5hEiAc3IMogkFTt4hNYuM1xvcYmORVPdqrqnI
+         eYtge0qSNMqK8U4vtFiFxBF6JitXYqI0cHQDYmwZuxx0Sc1fKqK7TgOI/QAWiJrE2JNO
+         F5TYcFrlBBzcFjzT04iZDc3heYXlQV8Bk/YvwNs8FR5qo+wt62/fNttfmpLT38kQrQ2r
+         JEIXUZEooPWrsQxmSS7uXQb8OxZPKryMZMWdbMLQkT1od/Guy+oE/DEceF6Txu5zPdEF
+         iPdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=8k8ShgZpDq6NET7E/sFDOpXqTEBsCxuTZlNM10OEm+g=;
-        fh=y7GoU8kqVrGH7C2v2uPbW1AJ4UBHAyh6f9wWn6hYl9s=;
-        b=LykZRcNP9bjyyRP42V7weg3EWAxHbBOl6HTu9x6scfJI2suH2wZMSrW/kPDTM0b7oE
-         XNvpSNCyn/cvz/V/DaWHe+i2aJOvvbcP6GB9X1P6+wrlgyP8dqK437RAC3b/L8tSu+oz
-         4pKosKMpqsX49bgOURQ/DxL/9MkFTRkYNmhUc3Y0zmTau/6brM6p70i37kkhhqjqiFUl
-         gRyZwLj4h/lB6fWyvkPh+Z8QNPIMLznEVTKeXUIDvE/m0ymeX9Fk/KFZELimvx/6v7oh
-         PZXE6VI+6wRg583TlW/XwtXnoMHL3C2tLO4Yjeh2ZEa2eOnQbBxYw9+EH70/FAtZ5sRj
-         p4Jw==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=hP/H/U5zGE9cZPNoevdOoPgNlljUCU4i6hF77V1gpX8=;
+        fh=b2JnWHbYnS2iP4VtUK/JL60wrJDxFsHJR5RAw1Tqwk8=;
+        b=xneiOFQs9qPZIp2ZWAM6wWprwntmJmVuI9aqwg3uxDly9vhGXstQOsn27o+4kIbBMF
+         HaHYcJwsVhWFOH/r4EVvNP0/g0wDhBIIIMRQFbeTmUWHFkpMRJ8W8vDpa4uTd5BFjPZv
+         bff7yZ/0GTyP03S7Aium3Yma0Yg8UHc6l3v1k5wUCkfpJ2AITkOkj+bluI/BQQlvoo6M
+         oPfeykQGlbx82fvF89jSdT04kDlxwEQ25rIqFs87ttrvQ36EX8B6AebIIm84yQr2H9K3
+         K4awnTAlaNgnoUsMshjFAP3sCtrz+m61uZAKRpFfdH5EWilM0vTVcbKvTws5+a0WGHSp
+         kXuQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZMN5YWbB;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b="aXY6/921";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x18-20020ac85f12000000b00430d8e8c0c4si2028031qta.446.2024.03.28.11.38.59
+        by mx.google.com with ESMTPS id e2-20020ac85982000000b004315e4f196asi4123893qte.664.2024.03.29.10.44.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Mar 2024 11:39:00 -0700 (PDT)
+        Fri, 29 Mar 2024 10:44:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZMN5YWbB;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b="aXY6/921";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rpue7-00053R-2V; Thu, 28 Mar 2024 14:38:40 -0400
+	id 1rqGHC-000582-CZ; Fri, 29 Mar 2024 13:44:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rpue3-00052n-D4
- for qemu-arm@nongnu.org; Thu, 28 Mar 2024 14:38:36 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rpue1-0000Qp-FH
- for qemu-arm@nongnu.org; Thu, 28 Mar 2024 14:38:35 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-6e782e955adso1219599b3a.3
- for <qemu-arm@nongnu.org>; Thu, 28 Mar 2024 11:38:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711651112; x=1712255912; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=8k8ShgZpDq6NET7E/sFDOpXqTEBsCxuTZlNM10OEm+g=;
- b=ZMN5YWbBYo0MOFS9NETgtDrOlN+WZy4s9ypKOgtGWfV9CqoGP3rK0NoFh4tu4sLwuF
- dwXKTahWYrFe66uTTRcL4ThLmOA8O0UjAEVvQGnJABIhPXtQZgRT2HpYFZYZ/eqzweXS
- bRAOEt/jOrLWozaECFoYRUFGo5EEfSELGFbQYEHVxbmpYRW/BOtAd9seUUN4XWA/lqXP
- QtRJTxAokp+Zo2+wDXtDsxfQxJoGvOYPAGh+AeyyrbNR78jtRyQ4xyAtg3W1mqV4hCi7
- pXhOZ7+/GZ/XFqcjtkTdcprCtfVCAInVtfKs5e1Wteuq8FbMQGrhA9jSgup610oIZBEz
- oo8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711651112; x=1712255912;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=8k8ShgZpDq6NET7E/sFDOpXqTEBsCxuTZlNM10OEm+g=;
- b=pHCOJR4r51LIHQRDo4im14lqK2wLmvrLZSvjGgzokVx3SWN0ylVou/16MDhnEzJCdU
- Dy/Q8TG+iXX8jKwFKScdlPOEm891gMxBk65HPJMHIR8BrqS4fE+0iy9p5ckwc+2sYCfP
- wZGPF141X9f81NGbVwukEcv9LS2qQ9JwljnxY2E+wDASa5DOezCteN9WmrEY5yUKdJIM
- eLj47ztL2nS08ghWXhSi0x8cFYYqVcDyRgNjvpEJIeZ8vSC0OY7R3FH24RD3sEpS80Ba
- wLk4DwseHLPZLO5N3uoAszZjXiHQljngMzNgnPgsFqKdEhNyILKcRcZBLHEset6VrKaY
- gZdA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXDBnX7NTianwSvGsDQ6VCyYs9GE/Zx1CrfLC5l78quS7bshIMrV+eKS8FcGmsYpC+Ii5AE+3mLcGAp2MNlpfA0PIj4
-X-Gm-Message-State: AOJu0YxKEM/nkBrJoUV8ahXwfF7XY1pzM8FGtc5B+Et+F0UUSXXwOcPm
- DqSK34OQGYc74N18NhHmL6LxSFXI1Ck7lwmfJ2cJaCDSctO8hIYepM8qYIhzw6+j63jKz+DuqjK
- 0
-X-Received: by 2002:a05:6a20:b387:b0:1a3:6a74:2e6b with SMTP id
- eg7-20020a056a20b38700b001a36a742e6bmr3219271pzb.55.1711651111966; 
- Thu, 28 Mar 2024 11:38:31 -0700 (PDT)
-Received: from [172.20.1.19] (098-147-007-212.res.spectrum.com. [98.147.7.212])
- by smtp.gmail.com with ESMTPSA id
- fj14-20020a056a003a0e00b006e554afa254sm1698720pfb.38.2024.03.28.11.38.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 28 Mar 2024 11:38:31 -0700 (PDT)
-Message-ID: <364a15eb-ca23-4cd1-aff7-37de8bd7e825@linaro.org>
-Date: Thu, 28 Mar 2024 08:38:27 -1000
+ (Exim 4.90_1) (envelope-from <arnaud.minier@telecom-paris.fr>)
+ id 1rqGHB-00057k-FR; Fri, 29 Mar 2024 13:44:25 -0400
+Received: from zproxy3.enst.fr ([2001:660:330f:2::de])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <arnaud.minier@telecom-paris.fr>)
+ id 1rqGH9-0007Ny-AW; Fri, 29 Mar 2024 13:44:25 -0400
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy3.enst.fr (Postfix) with ESMTP id 9C590A0597;
+ Fri, 29 Mar 2024 18:44:17 +0100 (CET)
+Received: from zproxy3.enst.fr ([IPv6:::1])
+ by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id A8TwLrCUT-7w; Fri, 29 Mar 2024 18:44:16 +0100 (CET)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy3.enst.fr (Postfix) with ESMTP id B571BA07BF;
+ Fri, 29 Mar 2024 18:44:16 +0100 (CET)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr B571BA07BF
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1711734256;
+ bh=hP/H/U5zGE9cZPNoevdOoPgNlljUCU4i6hF77V1gpX8=;
+ h=From:To:Date:Message-Id:MIME-Version;
+ b=aXY6/921WEcf8mDMDueeCdVbfUFrmjNGJmJ0tKzBcANfb0TI8FciFUJw7pjhjTPeY
+ G/nvdcVy+9+ftR8VlaBrqNY70IVnqckNjkwil4NdK+i4VlnYUyqDyfI8bma1ESc3pF
+ lat+9rQdjtsup+ER49t9C/9SlSdDGdsmaKbSspYo=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy3.enst.fr ([IPv6:::1])
+ by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id LvSpXaV796Mq; Fri, 29 Mar 2024 18:44:16 +0100 (CET)
+Received: from AM-Inspiron-3585.. (unknown [78.209.135.136])
+ by zproxy3.enst.fr (Postfix) with ESMTPSA id 5968AA0597;
+ Fri, 29 Mar 2024 18:44:15 +0100 (CET)
+From: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
+ Alistair Francis <alistair@alistair23.me>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH v3 0/5] hw/char: Implement the STM32L4x5 USART, UART and LPUART
+Date: Fri, 29 Mar 2024 18:43:57 +0100
+Message-Id: <20240329174402.60382-1-arnaud.minier@telecom-paris.fr>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/intc/arm_gicv3: ICC_HPPIR* return SPURIOUS if int
- group is disabled
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org
-References: <20240328153333.2522667-1-peter.maydell@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240328153333.2522667-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2001:660:330f:2::de;
+ envelope-from=arnaud.minier@telecom-paris.fr; helo=zproxy3.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,30 +117,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2LGI/8eI1Tf+
+X-TUID: 4HV4zGaNsVeV
 
-On 3/28/24 05:33, Peter Maydell wrote:
-> If the group of the highest priority pending interrupt is disabled
-> via ICC_IGRPEN*, the ICC_HPPIR* registers should return
-> INTID_SPURIOUS, not the interrupt ID.  (See the GIC architecture
-> specification pseudocode functions ICC_HPPIR1_EL1[] and
-> HighestPriorityPendingInterrupt().)
-> 
-> Make HPPIR reads honour the group disable, the way we already do
-> when determining whether to preempt in icc_hppi_can_preempt().
-> 
-> Cc:qemu-stable@nongnu.org
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
-> Pre-existing bug which I happened to notice while working
-> on review of the FEAT_NMI patches. I don't suppose real world
-> code disables interrupt groups which it's actually using, which
-> is why nobody's noticed it. Still, it's a safe bugfix so might
-> as well go to stable too.
-> ---
->   hw/intc/arm_gicv3_cpuif.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+This patch adds the STM32L4x5 USART
+(Universal Synchronous/Asynchronous Receiver/Transmitter)
+device and is part of a series implementing the
+STM32L4x5 with a few peripherals.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+It implements the necessary functionalities to receive/send
+characters over the serial port, which are useful to
+communicate with the program currently running.
 
-r~
+Thank you Peter and Thomas for your reviews !
+
+Changes from v1 to v2:
+- Use asynchronous transmission for serial communication
+  (based on cmsdk-apb-uart implementation)
+- Use qemu_log_mask instead of error_report
+- Squash the commit that renamed the base struct
+- Use switch statements where appropriate
+- Fix RDR and TDR mask size
+- Increase time limit in tests
+- Remove the global qtest in the tests
+- Use assert when checking the interrupt number in the tests
+- Correct usage of g_autofree in the SoC
+
+Changes from v2 to v3:
+- Fix typos and comment formatting
+- Declare variables at the start of code blocks in the SoC
+- Use %u instead of %x in an error log
+- Add ".abstract =3D true" to the base usart class
+- Change tests to use meson harness timeout
+- Drop merged RCC commit
+
+Arnaud Minier (5):
+  hw/char: Implement STM32L4x5 USART skeleton
+  hw/char/stm32l4x5_usart: Enable serial read and write
+  hw/char/stm32l4x5_usart: Add options for serial parameters setting
+  hw/arm: Add the USART to the stm32l4x5 SoC
+  tests/qtest: Add tests for the STM32L4x5 USART
+
+ MAINTAINERS                        |   1 +
+ docs/system/arm/b-l475e-iot01a.rst |   2 +-
+ hw/arm/Kconfig                     |   1 +
+ hw/arm/stm32l4x5_soc.c             |  82 +++-
+ hw/char/Kconfig                    |   3 +
+ hw/char/meson.build                |   1 +
+ hw/char/stm32l4x5_usart.c          | 634 +++++++++++++++++++++++++++++
+ hw/char/trace-events               |  12 +
+ include/hw/arm/stm32l4x5_soc.h     |   7 +
+ include/hw/char/stm32l4x5_usart.h  |  67 +++
+ tests/qtest/meson.build            |   4 +-
+ tests/qtest/stm32l4x5_usart-test.c | 325 +++++++++++++++
+ 12 files changed, 1131 insertions(+), 8 deletions(-)
+ create mode 100644 hw/char/stm32l4x5_usart.c
+ create mode 100644 include/hw/char/stm32l4x5_usart.h
+ create mode 100644 tests/qtest/stm32l4x5_usart-test.c
+
+--=20
+2.34.1
+

@@ -1,185 +1,124 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp3989507ejv;
-        Tue, 2 Apr 2024 07:25:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWIn549557PcXt0/Adpe+WvfXR/4gm5M4rrfTH0PBiQgule5i0jJtDdNmH2ZqB9aeF1R3yE7/MCtinalJOoipuknm1yZbkN
-X-Google-Smtp-Source: AGHT+IENJBv5NBNcN3pSCvRRf6APEM6MnNXwzihpKFVwbVSJH/mBX53VcjgeX+voDxGr/UlWtD74
-X-Received: by 2002:ac8:7dcc:0:b0:431:32c1:e8b5 with SMTP id c12-20020ac87dcc000000b0043132c1e8b5mr15170297qte.50.1712067940395;
-        Tue, 02 Apr 2024 07:25:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712067940; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp3989575ejv;
+        Tue, 2 Apr 2024 07:25:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUJDxweXrNj34C4GQ3IhQFO7z7eVyEpmYEMusrD74xIsvGxmT7VMoJ1qYeFkhJ+hGzUIIkAHp2FvCxhhk8rPYeRrcRSEP5p
+X-Received: by 2002:a5d:4b08:0:b0:341:8c2e:5001 with SMTP id v8-20020a5d4b08000000b003418c2e5001mr8389613wrq.64.1712067948492;
+        Tue, 02 Apr 2024 07:25:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712067948; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ffg/APNkHIGTkgBCoBDvIzTRg22f+niAvTaBXyZClSCkHUAnQNTexuBOEWSmKhQRx9
-         rP5IpKy9CIwZKyyXiCD2qJFci/YW0OiUtsj5JoPqgwdQjAuHBFCTEY1yP5q57da9dPLb
-         BxZPjb4WhE2oBZmQdAKLl0PuY4KjGWtmSA+KwoOJ0EtaJJLshq/XVNsrY/fiSq42x084
-         kJgyZaNp4FEzzdJTbFsbP9Ru4PiMqULvrg+CyqkQjfSes6Sw6UxkY4N8dgu4w0juXWFA
-         aOPINasUul/OEp3UlVcXstiVs0BYB5dj2IeHZ5WVotD0oS8SMtJAY356NFiP3m+D6noa
-         NgjA==
+        b=DMeNs8B8U86rGRm/AG11IJAmLC7ei0sUmQJuRYRQ97N3HeSn1DUx2NWpUGb0oJ8R04
+         w1E3gOBPrZciUj9DOBI4u3gNmVkFhXZObLepdeUawsuEsd0nrVbwFypo7kRXK1fIMUZD
+         ZWuREk6AtL3OfZ9Lrws2Mt0dUJc4EzowYlAZ0UYTD6Se4d13plkeGevb3dY+SggFPUv1
+         fgHLhkrQKuuERUBfvwZKx/piCwwRePcRcNJdh38W+nLggWeP95ms+tFZQDbE6YmhncEo
+         GggXbU8AsyNZPhchKQ9tyuyTMfFMFk8uPoB9CleQaiJMetQAsettJ0JzFJqNJnTCl8YI
+         /CaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=uQbqgStHmRhecsY4PYqLfYr9cNfbGSMKT9lGuv09ipA=;
-        fh=6U6ql6D0ajCW6I9sjJhDXIQlnaQakd3Y0rFA9Yu2tlQ=;
-        b=VwTdh7o7O1up4q8yQhUqSHU5o4f1iMG3fhMieQ7CmwfHth8qxqGBwlOq1N8tMUNZ2S
-         cErHHC+W3DNj9+i+V3YHeNbW3a0/9QY4NbhyecLNh+/BC3NZKuQNCCJ5f5gHJWVBI/dt
-         Onw6JDM7TjUcA8ZklNKf/N38fpEgEj3mlqnTO8wQbR+AVrHo54mLsJDwsvIx5gFav3/P
-         zgJoGc0gBvote0HkJpNw8o1BC2/X84hwTCRDvpPdLbtiJ74mHC5fxcRyWANMHqWmerAL
-         9NIAG8+iKULSqij8mN78znLoNXPtPHPK+tce05Fwt/Pek1n7kQHdghymhWXd1GBoulFc
-         wTcA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=OjdzjLmAnFvDVsex65dJCtrM54ZeLuGIMveMRxi+eG4=;
+        fh=zVFS3M07hXP25ss8a2D5ackuj5+nylQwjZWKN4F+qPo=;
+        b=eL4sdO8Siy2JkoNswlUmkC80ORCJbJIWIaXwvefxttW5jwLtneNVCEOBPOPoEHqZdH
+         lLGaacta3XJEOFcUuDu4RapzEFq6IEJdIs0wAdvqC1k1OR3hDXmy8wexXhyu2imZyVMn
+         aQZL8xuGZUylNUJUPzbrPMjZUaImQ5Pso4CqBOBCSwxYXMToYbeSlWKshuPqNurSKxLD
+         cTNALlmy8QqCjyn7WCrVmQCfiP5a3svf/+bYsUkWdGlm6Cy6bdt+ua/DZ1qgc2dyf+2d
+         0HxHGom3VqbUcKrkBfMyBmXvxp71kk484yfh23f5nOxAP+RYOEUrL9UFKVO6u2zeD9Z+
+         Kf2w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PneklPK3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WY0yS2UR;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 7-20020ac85907000000b004311dc257ecsi11793128qty.635.2024.04.02.07.25.40
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id l3-20020adffe83000000b00343792543fasor225450wrr.6.2024.04.02.07.25.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Apr 2024 07:25:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 02 Apr 2024 07:25:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PneklPK3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WY0yS2UR;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rrf4d-0000vB-6k; Tue, 02 Apr 2024 10:25:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rrf4a-0000tp-Fs
- for qemu-arm@nongnu.org; Tue, 02 Apr 2024 10:25:12 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rrf4Y-0007yi-JH
- for qemu-arm@nongnu.org; Tue, 02 Apr 2024 10:25:12 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-3436b096690so511353f8f.1
- for <qemu-arm@nongnu.org>; Tue, 02 Apr 2024 07:25:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712067909; x=1712672709; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uQbqgStHmRhecsY4PYqLfYr9cNfbGSMKT9lGuv09ipA=;
- b=PneklPK3VWzq7Rpn5MJMwrcOmZ+1kZlnIIZfc+UQ6NsFTudEX/wZu+9IcIIeFsc4Ef
- oRer9N1Y2vi2RSUgioIWehUSUb4Hg276okTDBY8R25IhjroBe2gx2rdl9ps5ea5oahdN
- iovT3uf6a18kuyIieZKCzeHwnW7dBNMns2VWDPOUt27srLXMgkH6UABqxVENPh3k3K8p
- D+BM8KEuLSFNaBpclbzdqvoIDyzXPde86eZjyiJhQ48a1aBaVW0j8DJ9HZzOG3ZqE4e8
- 3eS0eJpKGLK94BVWnYnU9m1XEA7Xzpno6r7WrK4WbzeocHAmtUiWelYzuItG1FpUwDVt
- eBRg==
+        d=linaro.org; s=google; t=1712067948; x=1712672748; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=OjdzjLmAnFvDVsex65dJCtrM54ZeLuGIMveMRxi+eG4=;
+        b=WY0yS2URjDPVdy/vjSGNL8BqQqMTX48aZU8xd3bNK5lWqfPgjXumL7DWru+n8wTgun
+         xl/41deQJApMdav97gQwvIc9YWAKcHkt3xJYcv1X5OuzajTgp1VQ01bKsIpkHKNlZech
+         ucyK1dAvX2efa+IMIzgG6YguOO4MFOrf+1S7ucFuYFIV1MD1gYUHGnv2JnkMf9CEljy6
+         KU7wDRpXg1s2EsNmVQVmpS7ZXucGf5qnSas3Nsd463EQkuzdx5G7bQLlBgAYePuj7QjI
+         M96Xb0606EzkOjzymdLnv2+dla7hygHDpSogdA+wre/Ul+ii9sitaGcSAv50WbL/C+FH
+         1aUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712067909; x=1712672709;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=uQbqgStHmRhecsY4PYqLfYr9cNfbGSMKT9lGuv09ipA=;
- b=hGpW2gfTWckHbszIworUIvVksBpjtHiJsIsje1UgKlGo/VaX0/NDw2pdWOLiCxd9xV
- F7Xvta4wjslcZzjuge40PMdQQpLrcgATg6DQ3RzLxEDNJFfY+pExV7m4dRba3vAby8EE
- aZekz8RAWIv5dZRTERaEfgXzlF2HHpbOB6TVZ5J2ACe94vfdf8Hk7PEet+anTRSTtR9f
- /akXGNhDbw/r9srHk9DX4FlR/LGVuC8P7J0OAVaxPQIz7Qy65CSJdEYEej92f8bWaSJc
- RFnOGWwgYo1xvADWP9g0xW45UM+amAL2lR344EpAIov2RfwYhx0EF/A87EtmdLnfli4x
- Z5KA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVSq26NWgJfKBYFqJqK7Yfu6SgMvRj10FmIom30DRoQKh5xK4Bxp3scvnf9rE17a3g+ZHANWNVVO/DlRN9DGmAZVh1q
-X-Gm-Message-State: AOJu0YyV+lyNy6qfmH80+H0sWJ+2vvjeWG0Yj5etqs2KPseK6yEnrK61
- +91eDRGz7jRgKTqyjTtvrL/wvttQQhSlBPN4A/uMHAeG5MzOEY7n5tBOsAbbWlM=
-X-Received: by 2002:a5d:56cb:0:b0:343:8022:dd08 with SMTP id
- m11-20020a5d56cb000000b003438022dd08mr327218wrw.0.1712067908944; 
- Tue, 02 Apr 2024 07:25:08 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1712067948; x=1712672748;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=OjdzjLmAnFvDVsex65dJCtrM54ZeLuGIMveMRxi+eG4=;
+        b=hygTSuMdCYau2QCO7uYlLuRwDaG19yZctikAvZkBXSSjh635365QrsE50LBk7AbSeH
+         1BQQlZfMZaEfHAciz2RGOnbxFKgCCmfNOrUY8BnTZ/urR1kL3wnm+WAwx/iyv1wRE9H7
+         KHZJjHWxW4z4DA/vlJoG4qCOjkeh0Nf4I+fQP/E2WO3wA1+85+ejr2iGeW/EzBJkv1x/
+         Bn69iRogp96V/jAQXjBSAGhc161aw2SRM6f3eU6e67qMcZdSzBouRlOjgI7ZVeiqr8V4
+         qr26t+VK8XgEG8UZ37s57RpB/C9I98/ep+A9BPdwolTLFd/9HqANmnDmm9OnwavmuOjo
+         48XA==
+X-Forwarded-Encrypted: i=1; AJvYcCWb2n7FETmfozJlWIc1CYYDSkMETHLPPZ/UjT7pLML6LkpjmKpfSHb7xuhGPFgNoF/zR8CH4Kb4wnK1dmQhcypmEYQznWGY
+X-Gm-Message-State: AOJu0YzRCm3j7oGfum9IQ7vtuJrfbQuLqOWI/SYpnbgyhB5ivXPumObB
+	xSyUZXRsQ7+iE5aTMk9Y1j3DDj2iP6izMKPhITnsXzdOaAWnPA7KG36e0xv19TkHKg==
+X-Google-Smtp-Source: AGHT+IGYcAMyT0ce3AxxAxntLH9Goeq/9HJoQOd5CAofmb0FvpxhwPE554XSFu0VKUJa09jGvh1mDQ==
+X-Received: by 2002:a05:6000:1a8a:b0:343:39a6:45a1 with SMTP id f10-20020a0560001a8a00b0034339a645a1mr9792770wry.59.1712067948073;
+        Tue, 02 Apr 2024 07:25:48 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.187.202.91])
- by smtp.gmail.com with ESMTPSA id
- bx26-20020a5d5b1a000000b0034356c434d0sm2796273wrb.117.2024.04.02.07.25.07
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 02 Apr 2024 07:25:08 -0700 (PDT)
+        by smtp.gmail.com with ESMTPSA id h18-20020adff192000000b003433a379a51sm520722wro.101.2024.04.02.07.25.46
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Tue, 02 Apr 2024 07:25:47 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PULL 05/15] hw/arm/smmu: Avoid using inlined functions with external
- linkage again
-Date: Tue,  2 Apr 2024 16:24:20 +0200
-Message-ID: <20240402142431.70700-6-philmd@linaro.org>
+Cc: qemu-ppc@nongnu.org,
+	qemu-block@nongnu.org,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>
+Subject: [PULL 11/15] plugins: fix -Werror=maybe-uninitialized false-positive
+Date: Tue,  2 Apr 2024 16:24:26 +0200
+Message-ID: <20240402142431.70700-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240402142431.70700-1-philmd@linaro.org>
 References: <20240402142431.70700-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sf5MFUts9vyI
+X-TUID: 6vQcsCeptgw7
 
-Similarly to commit 9de9fa5cf2 ("hw/arm/smmu-common: Avoid using
-inlined functions with external linkage"):
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-  None of our code base require / use inlined functions with external
-  linkage. Some places use internal inlining in the hot path. These
-  two functions are certainly not in any hot path and don't justify
-  any inlining, so these are likely oversights rather than intentional.
+../plugins/loader.c:405:15: error: ‘ctx’ may be used uninitialized [-Werror=maybe-uninitialized]
 
-Fix:
-
-  C compiler for the host machine: clang (clang 15.0.0 "Apple clang version 15.0.0 (clang-1500.3.9.4)")
-  ...
-  hw/arm/smmu-common.c:203:43: error: static function 'smmu_hash_remove_by_vmid' is
-  used in an inline function with external linkage [-Werror,-Wstatic-in-inline]
-      g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid, &vmid);
-                                            ^
-  include/hw/arm/smmu-common.h:197:1: note: use 'static' to give inline function 'smmu_iotlb_inv_vmid' internal linkage
-  void smmu_iotlb_inv_vmid(SMMUState *s, uint16_t vmid);
-  ^
-  static
-  hw/arm/smmu-common.c:139:17: note: 'smmu_hash_remove_by_vmid' declared here
-  static gboolean smmu_hash_remove_by_vmid(gpointer key, gpointer value,
-                ^
-
-Fixes: ccc3ee3871 ("hw/arm/smmuv3: Add CMDs related to stage-2")
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-ID: <20240328102052.3499331-15-marcandre.lureau@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Message-Id: <20240313184954.42513-2-philmd@linaro.org>
 ---
- hw/arm/smmu-common.c | 2 +-
+ plugins/loader.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 4caedb4998..c4b540656c 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -197,7 +197,7 @@ void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid)
-     g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid, &asid);
- }
- 
--inline void smmu_iotlb_inv_vmid(SMMUState *s, uint16_t vmid)
-+void smmu_iotlb_inv_vmid(SMMUState *s, uint16_t vmid)
+diff --git a/plugins/loader.c b/plugins/loader.c
+index 9768b78eb6..513a429c57 100644
+--- a/plugins/loader.c
++++ b/plugins/loader.c
+@@ -390,7 +390,7 @@ void plugin_reset_uninstall(qemu_plugin_id_t id,
+                             bool reset)
  {
-     trace_smmu_iotlb_inv_vmid(vmid);
-     g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid, &vmid);
+     struct qemu_plugin_reset_data *data;
+-    struct qemu_plugin_ctx *ctx;
++    struct qemu_plugin_ctx *ctx = NULL;
+ 
+     WITH_QEMU_LOCK_GUARD(&plugin.lock) {
+         ctx = plugin_id_to_ctx_locked(id);
 -- 
 2.41.0
-

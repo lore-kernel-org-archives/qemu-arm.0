@@ -1,162 +1,270 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp3827398ejv;
-        Tue, 2 Apr 2024 02:15:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWZK5I8jXKHr9bGzqVzjAKjFMiIPKvSxJpNwZla2/MxHaHjZm98kCVIdcm53RnCc0JDEAyRrr+cEWNH5MjYMeJRDfv+Cedw
-X-Google-Smtp-Source: AGHT+IGL60T0rcbNDFAj3733dp/nlFsdlOCzPCnXQduqVHCqbO1I+SSxGBNBnDucoBfpgedwrfh3
-X-Received: by 2002:a05:622a:1708:b0:434:342e:2b56 with SMTP id h8-20020a05622a170800b00434342e2b56mr1419799qtk.31.1712049347442;
-        Tue, 02 Apr 2024 02:15:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712049347; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp3836162ejv;
+        Tue, 2 Apr 2024 02:37:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX3zo/XivMwr29IPdWFAdI+qT1XtMvroSCiyKkBg61scLQ7VRh0/b2f7cxGxpb5j/jg53c2mP6NsElCTNHPRUDDKQF0z2BG
+X-Google-Smtp-Source: AGHT+IESeny5AwZqzP5GjVy5b7CmUtz91NEbc6obyoAwNV/QjujRSgw4mHaxG9GdeXj6wahpZy6I
+X-Received: by 2002:a05:6808:e86:b0:3c3:ddef:cbfb with SMTP id k6-20020a0568080e8600b003c3ddefcbfbmr12437621oil.44.1712050638492;
+        Tue, 02 Apr 2024 02:37:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712050638; cv=none;
         d=google.com; s=arc-20160816;
-        b=xmReP4xhjo4t+n8TlJoaWWXXSImjcHSEFP0Xef8VjWPGbDJT1cDhTMO8fgDQcgs4K7
-         9WVcrM5EsYFIluiJjx5aWyo7PNSZ9Pt+bWySm1+k3v16PghScmbSvPAL9Ni1Dh3w/zXw
-         i8aAJYt9A1u6Gvh5UOvRQ3PI7qLhMNUtJu009TMeY3QqJ3EMN0235xgHBJAS/qExEh1o
-         Srqn/+HbYYwaukd0QyV1BYm8qAoVqAeqybbSAdIWrcujqSADoYKWIizUle9FOpsap8g1
-         dmS3ZZwbu+F9I/eboHJKploEGdjvQO/KCaZvDCd4EHzoed9IgV2VjtthiKFj4clc/D/P
-         CICQ==
+        b=cp4CMc7KfOHpPpB2vc38XyHo4bo6QLVrXuOgr6lCoqB7mdFCGkIdhqbkQ5PJ9vSsFh
+         CW+9zoqx1aUOdNR8I19njDyLGHhZ/2mWinC+/nXmqMIP1RX0ZJRq+1f2PSaV4qqoIyah
+         tp8CFAkgjeP9MYjjGkC3PxYLu+kPhs9lCVQs51DAk9/OEe4AaOb1qiNB8I9hTcq+g8pK
+         DyHiLBG6liHTNICw7E6mdyzWWXvCFIvxKWV0nj/ihD6ndpdXf4dFYZOLfNDMLhsKcLsg
+         r1BHu/H8qj1tQ15oFoPYr9DXhXYqdcqHs1Bf6IegdnwJTwd7c9XTrr4FD6tIXgHSVBH6
+         nxtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=4nO2HzaN0kDt/16pA7tNJlMUFkH3bORvVFVPgUTmBlU=;
-        fh=qiZPS4UC8WZTyfFCFo+5R+0C+WhFaVgWm6qQmIOAEaI=;
-        b=A+zA0vejNLRUVcauJX5KKOqkckbCbE9UyZsSRO1j91cBUcdhtmJJiiAXW2uDG760Ky
-         6Ij/DDO7plHeutWioeLBoY5J8gr0lkzIzfu47ROTKXAk58NqtZhMcbSFMoRprQIYRal/
-         fWbXH+T2txgob8/VOhdwV52+xFcE5CaHj1a2X2xCQQliP4qP4Z/SgMlOKTc/qH8i0woN
-         7EoLS2/PT1/ocwIyiDqx+BLS19+EUhUVCrl2GhTo70Al/YEaB8UTJL/tRQxLKa2qwNJ4
-         /+vz4k3Aq4nutH4Z9npCSCACnNyezxAlX9w6B4z5K58ciT98UKVd/kiq4S2Yt+qGgsU3
-         Gt5w==;
+        h=content-transfer-encoding:mime-version:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=wF5lK1aJPl/KNxtJvjVqnprrlMlNrhSTZPVBoQn9ZQQ=;
+        fh=Sc7k6cJq/hu+VY6wVbFguHlw20OG2jhSnTxi1RPZ3DY=;
+        b=Fz3us5RlvLHa3vd0m6D+FVhqn4uEA/ELO6Ge0HalPecOPjoGryA68dSB29kKaLj1YU
+         7XIs45GFwBmsaaeb3dDIEO+jUiuSTNBFNCeJ2QGe4RqjmNS5F+EV285W/z/VJGFWSata
+         y1ChXAes3sEv21DRtPiZKM0ARrC4c79BzaYVxvIuNNDuChWB0S63p21AELdjhaIErHIC
+         VgiLn8e5goj3aKzX1QKvdJQ+885NNZFWKGNhtAuKYh/VUXecymiYZCQoGmtftSRL66iK
+         +LxKXYJSoBSoW1s2oHeifXTFWNr5EVUsXllFmgu+kHNvC+GV8wRbSdC+ih/+PPATT/Nx
+         HrHg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zWciNxR/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t9-20020a05622a148900b00432d73bd5f0si5993136qtx.588.2024.04.02.02.15.47
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="VP/QcVQ/";
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id ep6-20020a05622a548600b00432c7b5413asi7851893qtb.288.2024.04.02.02.37.18
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Apr 2024 02:15:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 Apr 2024 02:37:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zWciNxR/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rraEo-000596-Iz; Tue, 02 Apr 2024 05:15:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rraEb-00054D-6j
- for qemu-arm@nongnu.org; Tue, 02 Apr 2024 05:15:13 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rraEO-0003OT-G5
- for qemu-arm@nongnu.org; Tue, 02 Apr 2024 05:15:12 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-56d5d4d2e2bso2819764a12.3
- for <qemu-arm@nongnu.org>; Tue, 02 Apr 2024 02:14:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712049298; x=1712654098; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=4nO2HzaN0kDt/16pA7tNJlMUFkH3bORvVFVPgUTmBlU=;
- b=zWciNxR/VKe6N6fNNYTeVKOAUgta0AuMDRw8vb55AMI2haNSv8MwI0sHw2Dtg/fe4o
- aL8QQFDYYjvwmJ3iEXo6Jtou6VwHmL87neZ+0Wr0C5wAzEpKZGJ/4e20eO6BlfYXaFov
- tsFC7CzFRsfdRUB1ms/76M3L5l+gA5YLC2YwEvtj+svc6l3rtBlB0CfZogGJgtCmgvkt
- GJvlJ5iKCzDFn2TNCTq+xybrcEoDXBeeClIbskdZJFh2PZTNlK2ZBjwTabxu3ug8w32P
- DlV6RQCEwQz8T31QH6DZIDKCSlZF7BFK7yBz8X6mkAzzK+MiGEB8dWoesb8+jp+3UYDH
- TVdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712049298; x=1712654098;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=4nO2HzaN0kDt/16pA7tNJlMUFkH3bORvVFVPgUTmBlU=;
- b=VKsTt4B0JFgH3taIKFqFHvDBJTRCmHzMlbi2WIFUNjc6DKtQqgDiptxL8rtGsZemrP
- ftR4VBb+7nlRr6z9UX3izySupyt7uB0oikD3RzRiWTOB/G9WgKjI1gEJBuVHmnEqVXvm
- OUYdjSOMz64gYJ0PVJozp/80ptz/oPxN8STA37vOpWlt6gvGgUq5X4Lewkw2ssLYI17z
- 5Ix33YmpzSsnhl4VkMz0ojn+w9XLc4jNhJPS32tALDO+PZiIAF3qz0Q6fMZdDghfcT8i
- kKEgAE4KnMQXKPEfk+Ch9qOJ63dSSUBmIW/ZZi+hEofKo7IVGFGF9n0hjp5Ru8GYTrXG
- fB3A==
-X-Gm-Message-State: AOJu0Yyx4GKB11AZIaqojDjy9Dh01SQ3h3izmi6WSmXVmr51MvYpQ1MO
- 7Diq5ayEEPcqaUqQqijb5NiKjgmZqVEdm+por3a5S5Clucdh2Oo47LJNhEzK7dOvyMCCYogpd40
- KCvM59DNn9lizrY5XD3QiFgXD9wscEq72DtDHHHHRG6vagxsy
-X-Received: by 2002:a50:d698:0:b0:56b:cf40:f712 with SMTP id
- r24-20020a50d698000000b0056bcf40f712mr6719781edi.19.1712049298358; Tue, 02
- Apr 2024 02:14:58 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="VP/QcVQ/";
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1712050638;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=wF5lK1aJPl/KNxtJvjVqnprrlMlNrhSTZPVBoQn9ZQQ=;
+	b=VP/QcVQ/48l5R1jkbET0REHeEg1l+XF/2n7G5Y+bwuUoTiOrR60G+yoT8ABSdhz1iDMouN
+	ymVNqTmgU5Bx7Gl/jVuxLn9WzNUqCtLCDMErX6CukPIXE+4XahRzOTmL9T3FgG53zQxZOy
+	L1MlY5ic0wiF2GECfZhjqz9HWXaIqJ8=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-465-ZNIApIi2P7W73p1i2a3tlA-1; Tue, 02 Apr 2024 05:37:14 -0400
+X-MC-Unique: ZNIApIi2P7W73p1i2a3tlA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E51E08828C3;
+	Tue,  2 Apr 2024 09:37:13 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.81])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 46CFE1121313;
+	Tue,  2 Apr 2024 09:37:13 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 28B8221E6757; Tue,  2 Apr 2024 11:37:08 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-riscv@nongnu.org,  Anton Johansson
+ <anjo@rev.ng>,  qemu-s390x@nongnu.org,  qemu-ppc@nongnu.org,  Daniel
+ =?utf-8?Q?P=2EBerrang=C3=A9?= <berrange@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,
+  Eduardo Habkost <eduardo@habkost.net>,  Claudio Fontana
+ <cfontana@suse.de>,  Richard Henderson <richard.henderson@linaro.org>,
+  Peter Maydell <peter.maydell@linaro.org>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>,  Zhao Liu <zhao1.liu@intel.com>,
+  qemu-arm@nongnu.org,  Thomas Huth <thuth@redhat.com>,  Michael Roth
+ <michael.roth@amd.com>
+Subject: Re: [RFC PATCH-for-9.1 14/21] system: Introduce QMP
+ generic_query_cpu_definitions()
+In-Reply-To: <96bcb673-18dd-49bc-8bcb-281c7409b410@linaro.org> ("Philippe
+	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 29 Mar 2024 14:03:48
+ +0100")
+References: <20240315130910.15750-1-philmd@linaro.org>
+	<20240315130910.15750-15-philmd@linaro.org>
+	<87v859m89y.fsf@pond.sub.org>
+	<96bcb673-18dd-49bc-8bcb-281c7409b410@linaro.org>
+Date: Tue, 02 Apr 2024 11:37:07 +0200
+Message-ID: <87bk6s3y2k.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-References: <20240329150155.357043-1-clg@redhat.com>
-In-Reply-To: <20240329150155.357043-1-clg@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Apr 2024 10:14:47 +0100
-Message-ID: <CAFEAcA-=DFR-eRLz9XK4=u=Aq0O=3dWZv+nLcDOgWyWAt3iMCQ@mail.gmail.com>
-Subject: Re: [PATCH] raspi4b: Reduce RAM to 1Gb on 32-bit hosts
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FS0pIkwUeSVs
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
+X-TUID: 31Oj3SA1yi0y
 
-On Fri, 29 Mar 2024 at 15:02, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
->
-> Change the board revision number and RAM size to 1Gb on 32-bit hosts.
-> On these systems, RAM has a 2047 MB limit and this breaks the tests.
->
-> Fixes: 7785e8ea2204 ("hw/arm: Introduce Raspberry PI 4 machine")
-> Signed-off-by: C=C3=A9dric Le Goater <clg@redhat.com>
-> ---
->  hw/arm/raspi4b.c | 4 ++++
->  1 file changed, 4 insertions(+)
->
-> diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-> index cb1b1f2f147e8685a1dba6f137335ea0bc89bca5..85877880fc706d216de04ff1e=
-081d66e6080ebac 100644
-> --- a/hw/arm/raspi4b.c
-> +++ b/hw/arm/raspi4b.c
-> @@ -112,7 +112,11 @@ static void raspi4b_machine_class_init(ObjectClass *=
-oc, void *data)
->      MachineClass *mc =3D MACHINE_CLASS(oc);
->      RaspiBaseMachineClass *rmc =3D RASPI_BASE_MACHINE_CLASS(oc);
->
-> +#if HOST_LONG_BITS =3D=3D 32
-> +    rmc->board_rev =3D 0xa03111; /* Revision 1.1, 1 Gb RAM */
-> +#else
->      rmc->board_rev =3D 0xb03115; /* Revision 1.5, 2 Gb RAM */
-> +#endif
->      raspi_machine_class_common_init(mc, rmc->board_rev);
->      mc->init =3D raspi4b_machine_init;
->  }
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-Running "make check" on a 32-bit host has clearly fallen off
-our CI config...
+> Hi Markus,
+>
+> On 26/3/24 14:28, Markus Armbruster wrote:
+>> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+>>=20
+>>> Each target use a common template for qmp_query_cpu_definitions().
+>>>
+>>> Extract it as generic_query_cpu_definitions(), keeping the
+>>> target-specific implementations as the following SysemuCPUOps
+>>> handlers:
+>>>   - cpu_list_compare()
+>>>   - add_definition()
+>>>   - add_alias_definitions()
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>>> ---
+>>>   MAINTAINERS                           |  2 +
+>>>   include/hw/core/sysemu-cpu-ops.h      | 14 ++++++
+>>>   include/qapi/commands-target-compat.h | 14 ++++++
+>>>   system/cpu-qmp-cmds.c                 | 71 +++++++++++++++++++++++++++
+>>>   system/meson.build                    |  1 +
+>>>   5 files changed, 102 insertions(+)
+>>>   create mode 100644 include/qapi/commands-target-compat.h
+>>>   create mode 100644 system/cpu-qmp-cmds.c
+>
+>
+>>> diff --git a/system/cpu-qmp-cmds.c b/system/cpu-qmp-cmds.c
+>>> new file mode 100644
+>>> index 0000000000..daeb131159
+>>> --- /dev/null
+>>> +++ b/system/cpu-qmp-cmds.c
+>>> @@ -0,0 +1,71 @@
+>>> +/*
+>>> + * QAPI helpers for target specific QMP commands
+>>> + *
+>>> + * SPDX-FileCopyrightText: 2024 Linaro Ltd.
+>>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>>> + */
+>>> +
+>>> +#include "qemu/osdep.h"
+>>> +#include "qom/object.h"
+>>> +#include "qapi/commands-target-compat.h"
+>>> +#include "sysemu/arch_init.h"
+>>> +#include "hw/core/cpu.h"
+>>> +#include "hw/core/sysemu-cpu-ops.h"
+>>> +
+>>> +static void cpu_common_add_definition(gpointer data, gpointer user_dat=
+a)
+>>> +{
+>>> +    ObjectClass *oc =3D data;
+>>> +    CpuDefinitionInfoList **cpu_list =3D user_data;
+>>> +    CpuDefinitionInfo *info;
+>>> +    const char *typename;
+>>> +
+>>> +    typename =3D object_class_get_name(oc);
+>>> +    info =3D g_malloc0(sizeof(*info));
+>>> +    info->name =3D cpu_model_from_type(typename);
+>>> +    info->q_typename =3D g_strdup(typename);
+>>> +
+>>> +    QAPI_LIST_PREPEND(*cpu_list, info);
+>>> +}
+>>> +
+>>> +static void arch_add_cpu_definitions(CpuDefinitionInfoList **cpu_list,
+>>> +                                     const char *cpu_typename)
+>>> +{
+>>> +    ObjectClass *oc;
+>>> +    GSList *list;
+>>> +    const struct SysemuCPUOps *ops;
+>>> +
+>>> +    oc =3D object_class_by_name(cpu_typename);
+>>> +    if (!oc) {
+>>> +        return;
+>>> +    }
+>>> +    ops =3D CPU_CLASS(oc)->sysemu_ops;
+>>> +
+>>> +    list =3D object_class_get_list(cpu_typename, false);
+>>> +    if (ops->cpu_list_compare) {
+>>> +        list =3D g_slist_sort(list, ops->cpu_list_compare);
+>>> +    }
+>>> +    g_slist_foreach(list, ops->add_definition ? : cpu_common_add_defin=
+ition,
+>>> +                    cpu_list);
+>>> +    g_slist_free(list);
+>>> +
+>>> +    if (ops->add_alias_definitions) {
+>>> +        ops->add_alias_definitions(cpu_list);
+>>> +    }
+>>> +}
+>>> +
+>>> +CpuDefinitionInfoList *generic_query_cpu_definitions(Error **errp)
+>>> +{
+>>> +    CpuDefinitionInfoList *cpu_list =3D NULL;
+>>> +
+>>> +    for (unsigned i =3D 0; i <=3D QEMU_ARCH_BIT_LAST; i++) {
+>>> +        const char *cpu_typename;
+>>> +
+>>> +        cpu_typename =3D cpu_typename_by_arch_bit(i);
+>>> +        if (!cpu_typename) {
+>>> +            continue;
+>>> +        }
+>>> +        arch_add_cpu_definitions(&cpu_list, cpu_typename);
+>>> +    }
+>>> +
+>>> +    return cpu_list;
+>>> +}
+>>
+>> The target-specific qmp_query_cpu_definitions() this is going to replace
+>> each execute the equivalent of *one* loop iteration: the one
+>> corresponding to their own arch bit.
+>>
+>> For the replacement to be faithful, as cpu_typename_by_arch_bit() must
+>> return non-null exactly once.
+>>
+>> This is the case for the qemu-system-TARGET.  The solution feels
+>> overengineered there.
+>>
+>> I figure cpu_typename_by_arch_bit() will return non-null multiple times
+>> in a future single binary supporting heterogeneous machines.
+>>
+>> Such a single binary then can't serve as drop-in replacement for the
+>> qemu-system-TARGET, because query-cpu-definitions returns more.
+>>
+>> To get a drop-in replacement, we'll need additional logic to restrict
+>> the query for the homogeneous use case.
+>
+> Can we ask the management layer to provide the current homogeneous
+> target via argument? Otherwise we can add a new query-cpu-definitions-v2
+> command requiring an explicit target argument, allowing 'all', and
+> deprecate the current query-cpu-definitions.
 
-Applied to target-arm.next for 9.0, thanks.
+Is "new binary can serve as drop-in replacement for the
+qemu-system-TARGET" a goal?
 
--- PMM
+I'm asking because a new binary is also an opportunity to improve
+things, and backward compatibility conflicts with that.
+
+Where would we want to go if backward compatibility was not a concern?
+I guess we'd want a single binary capable of running any machine,
+homogeneous or not.
+
+Your query-cpu-definitions would be fine for that binary, as long as its
+users can filter out the CPUs they're interested in.
+
+I prefer client-side filtering whenever practical, since it keeps the
+interface simple.  We do have to provide clients the information they
+need to filter.  How would a client filter the result of your
+query-cpu-definitions for target?
+
+Since backward compatibility is a concern, and we don't want to provide
+per target binaries forever, we need to think about how to provide
+suitable replacements based on the single binary.  I'm not sure drop-in
+replacement is feasible, given the complexity of the external
+interfaces.
+
+>> I think this needs to be discussed in the commit message.
+>>
+>> Possibly easier: don't loop over the bits, relying on
+>> cpu_typename_by_arch_bit() to select the right one.  Instead get the
+>> right bit from somewhere.
+>>
+>> We can switch to a loop when we need it for the heterogeneous case.
+>
+> Alex suggested to consider heterogeneous emulation the new default,
+> and the current homogeneous use as a particular case. I'd rather not
+> plan on a "heterogeneous switch day" and get things integrated in
+> the way, otherwise we'll never get there...
+
+I guess it's okay to overengineer certain things so they're ready for
+the heterogenous case when it comes.  We may want to explain this in
+comments, so people don't simplify the overengineered code :)

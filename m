@@ -1,166 +1,290 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp4083837ejv;
-        Tue, 2 Apr 2024 09:52:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW7FK+e/Sn9swdEyYd68o/xvmuazULPz+byHK7eVibvOpXAu3K/ZWSa3XXiBcJyUe3j8Xz7g1QiAi2VH50zJHJk4tl+dY0e
-X-Google-Smtp-Source: AGHT+IFSJo7WNSc+Euxu6x1FbFFNtItcp6G76botRkrrNncSx15BlW3+0Jzmr4JNvwpj1u10zL/a
-X-Received: by 2002:a05:6214:961:b0:699:21f3:9f77 with SMTP id do1-20020a056214096100b0069921f39f77mr140916qvb.4.1712076766411;
-        Tue, 02 Apr 2024 09:52:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712076766; cv=none;
+Received: by 2002:a05:7022:1408:b0:78:8b49:fde5 with SMTP id pd8csp2665980dlb;
+        Tue, 2 Apr 2024 15:28:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWS9+vJLoWRpNK9Oo9OQ8uIiHZZLxHRM6c1175f4RrSP9f457LE53oHFOEQ+2zsuMdEfGczKJwE8LPzes2YYfU7zFrD92X/
+X-Google-Smtp-Source: AGHT+IGOpiz6QXTkd2UDMvCEb5BP4IfP1bpJ/wgPvTpoxxE3VOYgHpug3JO7aEx3Xl9rOOtWZowV
+X-Received: by 2002:a05:6a21:a58c:b0:1a3:ac20:e204 with SMTP id gd12-20020a056a21a58c00b001a3ac20e204mr18472456pzc.3.1712096924252;
+        Tue, 02 Apr 2024 15:28:44 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1712096924; cv=pass;
         d=google.com; s=arc-20160816;
-        b=cMrKvbuF/WiO07b1hp/3AXaAEZfj8gWbD2Lt7Xgvrby4ff+weLQEBic222BuBPdELh
-         ZnvTO9xnJJ9I95wVOZqSllz9kpQzgeQtdHejk3vuLgYTdfG22RlExQDoiLPodRpERml/
-         yQgqp/seOuWVkrcqYn6boPOn5TrRvtSjJ3gOfDdZuX8DOlMSO6mfGUVqgn3A4I2Swnjx
-         GgcNkEgFOxEK2RJMtM8OdUWX0Wh8Uz8N6Uxdl9bB+O5LP3cE3S2FukUIeIp6I1+VRzt1
-         gay2b03FaSs2Y+QBypuGBVYIdf2CULnnZXn4MbKDuwi4dxAqAvnFOQkopF4U1oPQ4GGx
-         tLSg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        b=tgn3TuRXO0LHzg8T1BgcZwJ6DscTBJBGfGNfAAfBf6kzAO5iyCvsX9Jo6K6k5JQGou
+         sZNBD0EI7DHE7KKTY0tzjdCpoTp72eENR2IitPzc4EEC4eF9dxn2mn0AUyVboRoqs3hP
+         iCzQmvS6MEQxNlBDIqS8Cda8zk+vlz66rhywrTlf5Jq4/qyZ2KIGy8mhUMQYUjVQ5PFW
+         K3vGPNGu+eLQALAVf8w7RQEkCWNxeAMXbLYLOYYSaJDBjSaN7l6hPYmIogI7JENt+H98
+         DW7x1v0JclghNmTv8DgUEFqJqFLZa/Y0ZArHyiQImmeKlBlCfFm607ah4jGhXHyH19F5
+         WqMg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=ht87CMOLxyFRaVHEDse0dDw3f4zfzSCSknSCAvE5adA=;
-        fh=iMEnPKjHMu6M+Rl6C//l7WskHSf69dVyRjL6xtF+v/I=;
-        b=LPnUeGYfMk2QxV0/WomELa6wMq5tmW7DyGkzdscvqAa5Lc/1wXB4/Xa7RgKMJZD4Ya
-         FIg/UleCh/+3STTXonxTpwpxp/RU+9wswEjd1PNk3L9OnOxeASZ87AcEc8a9TE1E/d0n
-         D8Y6QkSeSXCRattMCZ7Hff4HGpf0l0lKpTqkxV6Maw75lAX2wAiheXzLcrpg6WPSyTBz
-         kmsNYhb5CKJMaGMX1E0kMf0ACkAi2d9NkN509BjU4NCSRTrvHLSZoWoxCJBBvhDtizIx
-         AMEZDHzD54puXyXc9jOArXKEr6zwjN3/sfypS8QwKIsOrFzHhACmWBh9ojhO0V8DLmdX
-         xfyQ==;
+        bh=Gyl49u0yWFc0G97vQdyP4pyTSrP7vlqokTAN3w1h3BM=;
+        fh=ahmV85Kx1EYPSlv0rNripFSPjZC9Ias4w/8PHv6Sd6s=;
+        b=cPOFQ30/Q8gpTkTIvwt1LbAbYvMlqrNe5sqKWnHEYtcSjeWhylrqDhZ6mJRkZnO06n
+         6TaeC49XP/X3YG6yqgoi9rUyZLHUonrZXBhKRtwEztrkdsto6VQHAXS3+eIPnASnV2L3
+         BYB7HkjA9SyJ78RxNKCtkYZWPCayOdxv1Hp5r0EITBIem54h/g0qJUOuoHER+ae2dVST
+         8vBCMkvdLAscwhbutE84sfzVxJPfHgapcNILv2DFT5URaAnSPp60SHKPq9aNhRE7rRN0
+         4X+dolPrrV7AuuatpK8YV7RzxH9yx3GSNUBOlSwsvgdzGIfDI1QdikjOaxqr1UbUhrwQ
+         kC6w==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GuyIo1JC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p1-20020a0ccb81000000b0069019d451basi12408749qvk.66.2024.04.02.09.52.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Apr 2024 09:52:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=QtNnMX4N;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of nicolinc@nvidia.com designates 2a01:111:f403:2408::600 as permitted sender) smtp.mailfrom=nicolinc@nvidia.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <nicolinc@nvidia.com>
+Received: from NAM04-BN8-obe.outbound.protection.outlook.com (mail-bn8nam04on20600.outbound.protection.outlook.com. [2a01:111:f403:2408::600])
+        by mx.google.com with ESMTPS id b10-20020a056a000cca00b006e5812351e7si12304727pfv.211.2024.04.02.15.28.43
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 02 Apr 2024 15:28:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of nicolinc@nvidia.com designates 2a01:111:f403:2408::600 as permitted sender) client-ip=2a01:111:f403:2408::600;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GuyIo1JC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rrhMt-0003vi-Ic; Tue, 02 Apr 2024 12:52:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rrhMk-0003sm-HJ
- for qemu-arm@nongnu.org; Tue, 02 Apr 2024 12:52:06 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rrhMh-0000RC-Nz
- for qemu-arm@nongnu.org; Tue, 02 Apr 2024 12:52:06 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-56df8e6a376so127605a12.0
- for <qemu-arm@nongnu.org>; Tue, 02 Apr 2024 09:52:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712076722; x=1712681522; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ht87CMOLxyFRaVHEDse0dDw3f4zfzSCSknSCAvE5adA=;
- b=GuyIo1JCQR23+FQWy8aZ1y+0pYfXddJT5THAzHtdLuCb3uJKVVad7mpVfFCpVsZqcA
- LnMLtwV/uvX22gx/6gdKyFi+iZf2MAb0+KmA3LgWwnMI5NOnL9fzoRZyTX1HFNFG8Azh
- 2y+Uu/+3SqEq5EVDk9CCe8yQqP3bSedqKfC+J94NIltLENWvtyrGJZP+oqM6v7QMh1w8
- nEYK0vEPhhP0iy34gIqNmLGKq+Evb6DcOSF9TY1xTUyxaoieevbm6gLre6EC77aAJPg7
- jkPJCkmMlpLIy+voMtieM9T9m13gW0ZbFu9Ezm0rbAYZ6DWMy/XT2PCLHdsvypJtRyqu
- n2VA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712076722; x=1712681522;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ht87CMOLxyFRaVHEDse0dDw3f4zfzSCSknSCAvE5adA=;
- b=KD8ZVvmKZv0xwhfkCG4h2hLCznu9/zkjvjjqt81C17i5GqunNq0kW7jeANJzBMzBf9
- AQlgP/a65b1xXpLcGxWTDL1ruPEQ4MkFSM4XAwWcrGhOg5/PWA2sVO6fLzkinNjFXad4
- rQiAiSiK3FMRStI8jOWvBwBsAnFw+IkNUDTCiK34VXmQ4Y+2Zs/1OGHzKgNBaKcwO1yF
- d+Az7f1FJqx32EmAo7oqQOJq3j/fpIzUhQnHL+2mvyBdrx4Eo05kWKmPhAfg8vqiPtUY
- wFAi8KTEotMi2MDNM/h+F4SMiXIKPT18F3cES9BoISjiLeK891+PSAPkoG6hewkCShII
- J9YA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUtSEOxYHiyW5IH2+j2oImX8wqj+vV3tPDEErilXdZjg8J6uMT2E54DpopYEB4+nJt6jZDqOpKeXQb4kq4uBV/VR3P4
-X-Gm-Message-State: AOJu0YwaC3jW6za1x1CveZe90Af3jl2DERe2nh7ygBt8d0NuB0vMWRSO
- pkPFHbJ+20ef4C71fAv/zqPpkEeeWyZXPM/TDo7M5Jqefsq8z4tR5gRUUJuZ1NB4Z3GHe4I5Dlc
- 4oQyKoIEvehTD01tVn98BCN/d46ZYAEF7XPOPqw==
-X-Received: by 2002:a50:a6d8:0:b0:56b:ddcb:bb67 with SMTP id
- f24-20020a50a6d8000000b0056bddcbbb67mr58343edc.2.1712076721787; Tue, 02 Apr
- 2024 09:52:01 -0700 (PDT)
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=QtNnMX4N;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of nicolinc@nvidia.com designates 2a01:111:f403:2408::600 as permitted sender) smtp.mailfrom=nicolinc@nvidia.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=l29ADSdPD3R95LMsL17MjJzaW2e7tkVcQ9MU8kg7YDcdNkrwIk8yUgA0uwowJthSqPXU3IOmrqNaOgyWnNNGiBgbEbgTyqP16RgC6RQ/FJ/MeP1Bz07Bf1GIyj21Zo4Dw0kcTSH3YnJh+wtL3Td12w/ZGGl8otzcHaCIfBYNpqWX3cHtgW9VvvDv4Ttv2qEKu8udN0aEzBfrTAmrG+JeNOkhXwyFJirs7U2kc0P7+zVajI2WDDQX8URCFNTilNyrn1tKdn6gsKqJY2oztb06Odqb/Parli0Qa9bHoUvZ3KIOVZKPmSoyp3iV7DTBDXcpS+gnhbnRSU/fRvS45D0xvw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Gyl49u0yWFc0G97vQdyP4pyTSrP7vlqokTAN3w1h3BM=;
+ b=lU8AjzSlCLfd3qdMNLklnRXRNwPGsYD5HCHW3hGXQMInAH9U92CP5pDsCt9V3fQGhrHwrZU79IFvnyrTlAKAQFeRvvmsNqJf6cJRBNzxZG7gAPGm9+nHtLiqYaub6U/XS1dFPO3ZJ59BCOIDseCfF5CUjMjzIT86jcJzeocafLlteaJpMYbztUy5seBxSM6Am4azZpB3ZMUk0cJyGeMex1b1zVR8QGcfGRFgrMdp5gNpXx4GZRR08W5cimheyHHyeb7O/XBKxi8WZaA1W4HVIy9f18aa7EXmeBUgGQccnnVDCxfjRBdQfTWmxQcm6V0w5hmtuyppNv4QV4gYDNOxlg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=google.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Gyl49u0yWFc0G97vQdyP4pyTSrP7vlqokTAN3w1h3BM=;
+ b=QtNnMX4NUefwClUkjxSdZf+GrAQnqcrXQ4cFvydIkk5FVbO+6k/bRMK+gSgFKew4ZsJOK+8xPryUKUNL6ZPHJeUWKqFDtvLmi4bUbm0SPYEl6NH9ZTHPPVy4JKQ7SCiCKlwmknKABeu/rNCt0geornfqu8Gv1TiyOrnvtwpr8jK3zzE1hMTijMvKi7fa6PO8JqXTrR0vrZ/k7OgLNNooTPiwb7vCDfwUURsZbSwwz5m+A+4wnIDKqYmZD49LXszxETIl0Ue6htnrWKgEMVVdmtybnAfDMKRWERsoxguP4sReQ+B9RZlxya4Yb+wT/p0LNZyM1ObAKskZbTkhq8CdCg==
+Received: from DM6PR01CA0027.prod.exchangelabs.com (2603:10b6:5:296::32) by
+ MN2PR12MB4359.namprd12.prod.outlook.com (2603:10b6:208:265::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.46; Tue, 2 Apr
+ 2024 22:28:34 +0000
+Received: from CH3PEPF0000000C.namprd04.prod.outlook.com
+ (2603:10b6:5:296:cafe::e6) by DM6PR01CA0027.outlook.office365.com
+ (2603:10b6:5:296::32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.46 via Frontend
+ Transport; Tue, 2 Apr 2024 22:28:34 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ CH3PEPF0000000C.mail.protection.outlook.com (10.167.244.39) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7452.22 via Frontend Transport; Tue, 2 Apr 2024 22:28:33 +0000
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Tue, 2 Apr 2024
+ 15:28:15 -0700
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail204.nvidia.com
+ (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 2 Apr
+ 2024 15:28:14 -0700
+Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com (10.129.68.8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12 via Frontend
+ Transport; Tue, 2 Apr 2024 15:28:14 -0700
+Date: Tue, 2 Apr 2024 15:28:12 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Mostafa Saleh <smostafa@google.com>
+CC: <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+	<peter.maydell@linaro.org>, <qemu-devel@nongnu.org>,
+	<jean-philippe@linaro.org>, <alex.bennee@linaro.org>, <maz@kernel.org>,
+	<julien@xen.org>
+Subject: Re: [RFC PATCH 00/12] SMMUv3 nested translation support
+Message-ID: <ZgyGfMz7IktmwtP/@Asurada-Nvidia>
+References: <20240325101442.1306300-1-smostafa@google.com>
 MIME-Version: 1.0
-References: <20240402142431.70700-1-philmd@linaro.org>
-In-Reply-To: <20240402142431.70700-1-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Apr 2024 17:51:50 +0100
-Message-ID: <CAFEAcA_v6WCwJJrbqtFqAWQNC1BGG37p6WXyVTrWWqLwa71c=w@mail.gmail.com>
-Subject: Re: [PULL 00/15] Misc HW patches for 2024-04-02
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Yhn7d1hGQrZV
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240325101442.1306300-1-smostafa@google.com>
+Return-Path: nicolinc@nvidia.com
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PEPF0000000C:EE_|MN2PR12MB4359:EE_
+X-MS-Office365-Filtering-Correlation-Id: 152fc020-b6d1-4bff-70d7-08dc53643b7e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	D1KktmxSP+zyUAxJ5zaF6nA/EwGWYOd3BPojjqiTp7OxCZ9nAIQlNcmogsAXRO0IACX1L/Atk1+fo3nM9ImtUyKqpEj6zcLeQVuAtF9BfoHnFmUwe7VJpxoPe7NeHk+R0uAXA99JI0t4FRsAzzoHMQOAgK/TnmNV8TOo2jSjlQk2BqU22sc+s0WmSc6AMU+qvHYW5X32WTn34H4Dox89eMvUi30TaKdL0oO6a33pVtnxwOI++7Hm4TXgvhN8/kXile7DHw3ivwMTzI2z5X7idNfi2ANgyz55uSypNV8A72uMazK/ffT6Nwc8TQ6whhO/JCHMEGtbGjb8YpTX3E6ORRUsf6WytTjZoME7gDW9/dt4I7/75X7JLlnwW21U2oY8MfcRFkRHtt8IGIYyWBdxkEMg7HewfyB6MO3eJBJ37In16VehPQxSoEYUYlvPWjguGzIexubeFxoorJZ7MbGPOxWfZ7FHjUvMlvq5e9dwX+emVsTFp/8hG1/YzBvjNXd9GcFWb6ma4b+YnApNFCGCiim9zGevOQPrY2N1ju6urfh6H7NTFmIsHX3VIv2Mt9d3EzW/pqnSXnEC9Kl3Kw2iRg1tCpm+uWKGV5hEFS+fF7VtD8G6oaiH0VNc8sh5b4dPirA1nYv9zPMk/q5Wx8lDefTIXLtNp7CGQJ86TJ+Y7FIzbkmiR65h+t2bk5KeT3nKO5EbyOhGXjjT6kGZZ4PnBWlfsVulTXFQwO9ykHrP6tW/edX6+UNgVzgnGAhNE+tB
+X-Forefront-Antispam-Report:
+	CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230031)(376005)(82310400014)(1800799015)(36860700004);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Apr 2024 22:28:33.8182
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 152fc020-b6d1-4bff-70d7-08dc53643b7e
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource:
+	CH3PEPF0000000C.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4359
+X-TUID: oVozXhHOIvQS
 
-On Tue, 2 Apr 2024 at 15:25, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
->
-> The following changes since commit 7fcf7575f3d201fc84ae168017ffdfd6c86257=
-a6:
->
->   Merge tag 'pull-target-arm-20240402' of https://git.linaro.org/people/p=
-maydell/qemu-arm into staging (2024-04-02 11:34:49 +0100)
->
-> are available in the Git repository at:
->
->   https://github.com/philmd/qemu.git tags/hw-misc-20240402
->
-> for you to fetch changes up to 4c54f5bc8e1d38f15cc35b6a6932d8fbe219c692:
->
->   hw/net/virtio-net: fix qemu set used ring flag even vhost started (2024=
--04-02 16:15:07 +0200)
->
-> ----------------------------------------------------------------
-> Misc HW patch queue
->
-> - MAINTAINERS updates (Zhao, Glenn)
-> - Replace incorrect mentions of 'softmmu' by 'system' (Phil)
-> - Avoid using inlined functions with external linkage (Phil)
-> - Restrict CXL to x86 PC PCI-based machines (Phil)
-> - Remove unnecessary NULL check in bdrv_pad_request (Kevin)
-> - Fix a pair of -Werror=3Dmaybe-uninitialized (Marc-Andr=C3=A9)
-> - Initialize variable in xen_evtchn_soft_reset (Artem)
-> - Do not access virtio-net tx queue until vhost is started (Yajun)
+Hi Mostafa,
 
+On Mon, Mar 25, 2024 at 10:13:56AM +0000, Mostafa Saleh wrote:
+> 
+> Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
+> but not nested instances.
+> This patch series adds support for nested translation in SMMUv3,
+> this is controlled by property “arm-smmuv3.stage=nested”, and
+> advertised to guests as (IDR0.S1P == 1 && IDR0.S2P == 2)
 
-Applied, thanks.
+IIUIC, with this series, vSMMU will support a virtualized 2-stage
+translation in a guest VM, right? I wonder how it would interact
+with the ongoing 2-stage nesting support with host and guest. Or
+is it supposed to be just a total orthogonal feature without any
+interaction with the host system?
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/9.0
-for any user-visible changes.
+Thanks
+Nicolin
 
--- PMM
+> Main changes(architecture):
+> ============================
+> 1) CDs are considered IPA and translated with stage-2.
+> 2) TTBx and tables for stage-1 are considered IPA and translated
+>    with stage-2.
+> 3) Translate the IPA address with stage-2.
+> 
+> TLBs:
+> ======
+> TLBs are the most tricky part.
+> 
+> 1) General design
+>    Unified(Combined) design is used, where a new tag is added "stage"
+>    which has 2 valid values:
+>    - STAGE_1: Meaning this entry translates VA to PADDR, it can be
+>      cached from fully nested configuration or from stage-1 only.
+>      It doesn't support separate cached entries (VA to IPA).
+> 
+>    - STAGE_2: Meaning this translates IPA to PADDR, cached from
+>      stage-2  only configuration.
+> 
+>    TLBs are also modified to cache 2 permissions, a new permission added
+>    "parent_perm."
+> 
+>    For non-nested configuration, perm == parent_perm and nothing
+>    changes. This is used to know which stage to use in case there is
+>    a permission fault from a TLB entry.
+> 
+> 2) Caching in TLB
+>    Stage-1 and stage-2 are inserted in the TLB as is.
+>    For nested translation, both entries are combined into one TLB
+>    entry. Everything is used from stage-1, except:
+>    - transatled_addr from stage-2.
+>    - parent_perm is from stage-2.
+>    - addr_mask: is the minimum of both.
+> 
+> 3) TLB Lookup
+>    For stage-1 and nested translations, it look for STAGE_1 entries.
+>    For stage-2 it look for STAGE_2 TLB entries.
+> 
+> 4) TLB invalidation
+>    - Stage-1 commands (CMD_TLBI_NH_VAA, SMMU_CMD_TLBI_NH_VA,
+>      SMMU_CMD_TLBI_NH_ALL): Invalidate TLBs tagged with SMMU_STAGE_1.
+>    - Stage-2 commands (CMD_TLBI_S2_IPA): Invalidate TLBs tagged with
+>      SMMU_STAGE_2.
+>    - All (SMMU_CMD_TLBI_S12_VMALL): Will invalidate both, this is
+>      communicated to the TLB as SMMU_NESTED which is (SMMU_STAGE_1 |
+>      SMMU_STAGE_2) which uses it as a mask.
+> 
+>    As far as I understand, this is compliant with the ARM
+>    architecture, based on:
+>    - ARM ARM DDI 0487J.a: RLGSCG, RTVTYQ, RGNJPZ
+>    - ARM IHI 0070F.b: 16.2 Caching
+> 
+>    An alternative approach would be to instantiate 2 TLBs, one per
+>    each stage. I haven’t investigated that.
+> 
+> Others
+> =======
+> - Advertise SMMUv3.2-S2FWB, it is NOP for QEMU as it doesn’t support
+>   attributes.
+> 
+> - OAS: A typical setup with nesting is to share CPU stage-2 with the
+>   SMMU, and according to the user manual, SMMU OAS must match the
+>   system physical address.
+> 
+>   This was discussed before in
+>   https://lore.kernel.org/all/20230226220650.1480786-11-smostafa@google.com/
+>   The implementation here, follows the discussion, where migration is
+>   added and oas is set up from the board (virt). However, the OAS is
+>   chosen based on the CPU PARANGE as there is no fixed one.
+> 
+> - For nested configuration, IOVA notifier only notifies for stage-1
+>   invalidations (as far as I understand this is the intended
+>   behaviour as it notifies for IOVA)
+> 
+> - Stop ignoring VMID for stage-1 if stage-2 is also supported.
+> 
+> 
+> Future improvements:
+> =====================
+> 1) One small improvement, that I don’t think it’s worth the extra
+>    complexity, is in case of Stage-1 TLB miss for nested translation,
+>    we can do stage-1 walk and lookup for stage-2 TLBs, instead of
+>    doing the full walk.
+> 
+> 2) Patch 0006 (hw/arm/smmuv3: Translate CD and TT using stage-2 table)
+>    introduces a macro to use functions that rely on cfg for stage-2,
+>    I don’t like it. However, I didn’t find a simple way around it,
+>    either we change many functions to have a separate stage argument,
+>    or add another arg in config, which is probably more code.
+> 
+> Testing
+> ========
+> 1) IOMMUFD + VFIO
+>    Kernel: https://lore.kernel.org/all/cover.1683688960.git.nicolinc@nvidia.com/
+>    VMM: https://qemu-devel.nongnu.narkive.com/o815DqpI/rfc-v5-0-8-arm-smmuv3-emulation-support
+> 
+>    By assigning “virtio-net-pci,netdev=net0,disable-legacy=on,iommu_platform=on,ats=on”,
+>    to a guest VM (on top of QEMU guest) with VIFO and IOMMUFD.
+> 
+> 2) Work in progress prototype I am hacking on for nesting on KVM
+>    (this is nowhere near complete, and misses many stuff but it
+>    doesn't require VMs/VFIO) also with virtio-net-pci and git
+>    cloning a bunch of stuff and also observing traces.
+>    https://android-kvm.googlesource.com/linux/+log/refs/heads/smostafa/android15-6.6-smmu-nesting-wip
+> 
+> hw/arm/smmuv3: Split smmuv3_translate() better viewed with --color-moved
+> 
+> 
+> Mostafa Saleh (12):
+>   hw/arm/smmu: Use enum for SMMU stage
+>   hw/arm/smmu: Split smmuv3_translate()
+>   hw/arm/smmu: Add stage to TLB
+>   hw/arm/smmu: Support nesting in commands
+>   hw/arm/smmuv3: Support nested SMMUs in smmuv3_notify_iova()
+>   hw/arm/smmuv3: Translate CD and TT using stage-2 table
+>   hw/arm/smmu-common: Support nested translation
+>   hw/arm/smmuv3: Support and advertise nesting
+>   hw/arm/smmuv3: Advertise S2FWB
+>   hw/arm/smmu: Refactor SMMU OAS
+>   hw/arm/smmuv3: Add property for OAS
+>   hw/arm/virt: Set SMMU OAS based on CPU PARANGE
+> 
+>  hw/arm/smmu-common.c         | 256 ++++++++++++++++++----
+>  hw/arm/smmu-internal.h       |   2 +
+>  hw/arm/smmuv3-internal.h     |  17 +-
+>  hw/arm/smmuv3.c              | 405 ++++++++++++++++++++++-------------
+>  hw/arm/trace-events          |  14 +-
+>  hw/arm/virt.c                |  14 +-
+>  include/hw/arm/smmu-common.h |  46 +++-
+>  include/hw/arm/smmuv3.h      |   1 +
+>  target/arm/cpu.h             |   2 +
+>  target/arm/cpu64.c           |   5 +
+>  10 files changed, 533 insertions(+), 229 deletions(-)
+> 
+> --
+> 2.44.0.396.g6e790dbe36-goog
+> 

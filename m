@@ -1,118 +1,113 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp2429654ejv;
-        Sat, 30 Mar 2024 07:48:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWtwxcw5UTQ9+GYEq4EOl1tkgH06UQhzPm3LFPQHLrzTOTjnsS3VOh6QfBvedLdX7kVHVCMxO0ot303mGmtF07GAeuCmqQP
-X-Google-Smtp-Source: AGHT+IHZzjlE+Fb/ku2GEDYaxStbSZ7UQGCZgENqYmmMS7BlbQuwTKrj+rRdJXXd6K75dheBTzzv
-X-Received: by 2002:a05:622a:4e:b0:431:3163:c32d with SMTP id y14-20020a05622a004e00b004313163c32dmr6075264qtw.48.1711810124177;
-        Sat, 30 Mar 2024 07:48:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1711810124; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp3827398ejv;
+        Tue, 2 Apr 2024 02:15:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWZK5I8jXKHr9bGzqVzjAKjFMiIPKvSxJpNwZla2/MxHaHjZm98kCVIdcm53RnCc0JDEAyRrr+cEWNH5MjYMeJRDfv+Cedw
+X-Google-Smtp-Source: AGHT+IGL60T0rcbNDFAj3733dp/nlFsdlOCzPCnXQduqVHCqbO1I+SSxGBNBnDucoBfpgedwrfh3
+X-Received: by 2002:a05:622a:1708:b0:434:342e:2b56 with SMTP id h8-20020a05622a170800b00434342e2b56mr1419799qtk.31.1712049347442;
+        Tue, 02 Apr 2024 02:15:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712049347; cv=none;
         d=google.com; s=arc-20160816;
-        b=JLcz6H+1lxGIWGEwJhEh7AKRLlPppoHu2uy0bHKW54HFtoCmBec8Myg6XBB5reAGRc
-         fvtd6hYCeRzgUSZN0aep7ZiMlbg3ulqJ4awF0n9BHlb8y1eKKtw0Juz0gJaBZ7n5PLk3
-         KFpjp3BwocuE0uWCwyQe0BmHMvRJQ7mKwJ682Ff2S83XJ8LOeTkfsB7u/vmxcmkGxZEd
-         tkSfOrgkZ65Y3lV7OYawyQm/C2ZzD9T3O572h5OZuCPI4tiKQN6h6SljD1frI7YYacsF
-         slQK2exE6ibfl9/eSROQ5sXm8g4C29xSQJo/YqCKXhcDI0Q1Z6SMxTRgSQkXxz59Efkq
-         A5iQ==
+        b=xmReP4xhjo4t+n8TlJoaWWXXSImjcHSEFP0Xef8VjWPGbDJT1cDhTMO8fgDQcgs4K7
+         9WVcrM5EsYFIluiJjx5aWyo7PNSZ9Pt+bWySm1+k3v16PghScmbSvPAL9Ni1Dh3w/zXw
+         i8aAJYt9A1u6Gvh5UOvRQ3PI7qLhMNUtJu009TMeY3QqJ3EMN0235xgHBJAS/qExEh1o
+         Srqn/+HbYYwaukd0QyV1BYm8qAoVqAeqybbSAdIWrcujqSADoYKWIizUle9FOpsap8g1
+         dmS3ZZwbu+F9I/eboHJKploEGdjvQO/KCaZvDCd4EHzoed9IgV2VjtthiKFj4clc/D/P
+         CICQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=wLcvsATfM2+/owsmomcHUczf3j2FECJ4z6goPaJVor0=;
-        fh=V866iNOyH15Wh8P4+67BpRbYpF9zpTB5GoGDIMSkA+Q=;
-        b=kbhh5YfeOJezPrbjNsJIwbbT7O7tPAH8+nVvNSSDQlt7angZniRvnTWj2FPJU0oDxY
-         tnDqPBZIDX7vXVI3W5/virVTWgbBA1ovbCjNTISKuHEGDyIkle4jZ8DivG/ehkW6ml5s
-         LYoYJ/yJu7XyuZfV+DfI53Vf2eltHUbAv3eyekd7Xmw0jlyF+FC4QCBJxtLlkH2RGYx+
-         ByDwbvJ2sUoNbaFD7YGNCNTwvEafAciR6kpw9f5fBCfh6PLu2Im6ZNfkRbIpgMP9sDqa
-         7oFtgxIMPeIGcYtrHLpMOYS7aQXY/rU3nqVjt25QAHm9/ElD7xJ+b4x4IMKeDigt7gG4
-         jgPg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=4nO2HzaN0kDt/16pA7tNJlMUFkH3bORvVFVPgUTmBlU=;
+        fh=qiZPS4UC8WZTyfFCFo+5R+0C+WhFaVgWm6qQmIOAEaI=;
+        b=A+zA0vejNLRUVcauJX5KKOqkckbCbE9UyZsSRO1j91cBUcdhtmJJiiAXW2uDG760Ky
+         6Ij/DDO7plHeutWioeLBoY5J8gr0lkzIzfu47ROTKXAk58NqtZhMcbSFMoRprQIYRal/
+         fWbXH+T2txgob8/VOhdwV52+xFcE5CaHj1a2X2xCQQliP4qP4Z/SgMlOKTc/qH8i0woN
+         7EoLS2/PT1/ocwIyiDqx+BLS19+EUhUVCrl2GhTo70Al/YEaB8UTJL/tRQxLKa2qwNJ4
+         /+vz4k3Aq4nutH4Z9npCSCACnNyezxAlX9w6B4z5K58ciT98UKVd/kiq4S2Yt+qGgsU3
+         Gt5w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lNULilpp;
+       dkim=pass header.i=@linaro.org header.s=google header.b="zWciNxR/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w18-20020a05622a135200b00432d55595ecsi434217qtk.383.2024.03.30.07.48.43
+        by mx.google.com with ESMTPS id t9-20020a05622a148900b00432d73bd5f0si5993136qtx.588.2024.04.02.02.15.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 30 Mar 2024 07:48:44 -0700 (PDT)
+        Tue, 02 Apr 2024 02:15:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lNULilpp;
+       dkim=pass header.i=@linaro.org header.s=google header.b="zWciNxR/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rqa0Y-000282-L0; Sat, 30 Mar 2024 10:48:34 -0400
+	id 1rraEo-000596-Iz; Tue, 02 Apr 2024 05:15:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rqa0Y-00027n-1N
- for qemu-arm@nongnu.org; Sat, 30 Mar 2024 10:48:34 -0400
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+ id 1rraEb-00054D-6j
+ for qemu-arm@nongnu.org; Tue, 02 Apr 2024 05:15:13 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rqa0W-0006xV-AI
- for qemu-arm@nongnu.org; Sat, 30 Mar 2024 10:48:33 -0400
-Received: by mail-lf1-x129.google.com with SMTP id
- 2adb3069b0e04-515a97846b5so2876224e87.2
- for <qemu-arm@nongnu.org>; Sat, 30 Mar 2024 07:48:31 -0700 (PDT)
+ id 1rraEO-0003OT-G5
+ for qemu-arm@nongnu.org; Tue, 02 Apr 2024 05:15:12 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-56d5d4d2e2bso2819764a12.3
+ for <qemu-arm@nongnu.org>; Tue, 02 Apr 2024 02:14:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711810110; x=1712414910; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=wLcvsATfM2+/owsmomcHUczf3j2FECJ4z6goPaJVor0=;
- b=lNULilppURZoij4XHF+rvLFzyg/48b2+8wfLL2X/pMYYN8kzSZr3b95SddkI9yKymO
- OKAT011e5EiAAc36LTaOLHlYjetK0Fum3cvprGwd0lhwqDaMpLXRaWfyk4KwBF+VQ81v
- sIrX1/ye+07ztjgSaRODXgdcLAYKxhnhOQjXsPYMaIGgk9gc/5lV5Qe1GYNBapLodE9h
- frXZKWMH4ChoVTmRD9DoKvuzA5ZYKIivgvq2/1Ce5ULyBK0Y1mnRo6w6JMu0btZ42spJ
- 6OtsjE+OtjQ80OwL6/xYvfSDHP+j0aLU5KihmtTz8L/6SE93gJoVG5tuyViNlPtOwtxy
- oR6A==
+ d=linaro.org; s=google; t=1712049298; x=1712654098; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=4nO2HzaN0kDt/16pA7tNJlMUFkH3bORvVFVPgUTmBlU=;
+ b=zWciNxR/VKe6N6fNNYTeVKOAUgta0AuMDRw8vb55AMI2haNSv8MwI0sHw2Dtg/fe4o
+ aL8QQFDYYjvwmJ3iEXo6Jtou6VwHmL87neZ+0Wr0C5wAzEpKZGJ/4e20eO6BlfYXaFov
+ tsFC7CzFRsfdRUB1ms/76M3L5l+gA5YLC2YwEvtj+svc6l3rtBlB0CfZogGJgtCmgvkt
+ GJvlJ5iKCzDFn2TNCTq+xybrcEoDXBeeClIbskdZJFh2PZTNlK2ZBjwTabxu3ug8w32P
+ DlV6RQCEwQz8T31QH6DZIDKCSlZF7BFK7yBz8X6mkAzzK+MiGEB8dWoesb8+jp+3UYDH
+ TVdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711810110; x=1712414910;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=wLcvsATfM2+/owsmomcHUczf3j2FECJ4z6goPaJVor0=;
- b=cv7uatHGFVSGoI8qaMKXp5DyQw9ZvjbBfqmbfz6RSfB1aHyZHhmctXnKcGLNdoQ1DT
- ZpCz9PsKr81fBLGWaNsGuFiwqKlJGfVlLGJtUWzpG5PLF80VGJA6aKcjc/2RtksmgBW0
- XYDtLD0+K30Tg8YHrJPW9Djmp/J+5jmOIyZHbi1hS5U7yTtjFdCj5aXA4b3iRjKXhhzv
- ZKg2EOkvJnwiVQfJLJFROlFFsrH+m7DRCEuRFB+WH1qSP7mn03W6kRHQXb0ZONvjMbPX
- 4SCGeB6qY7I5kbVmhVwgTvgi8cYXvhPB715cFzMzlSkBHL658DMOSR41MIbnLSU80QJJ
- M6lA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXShAybHUWMtHzdAmydTP6qyG/2TFesn9IHTvl/0AHitc35B8DKlZHqC41oVtAQkSa8B3mo+xxB8yCfY4Bj3J+NnmiZ
-X-Gm-Message-State: AOJu0YywENRTqUvDTRxZG8qHujyM1iAiT3ondqG7AN4rUboG7m8WoaLE
- BJ6/+Y4/N6qFI7AqPcBNaP72pw32CvJuebS5LjAoJPDrhjVX5J3R13Ipv38vUXozCAdlKPaQiUK
- f4NcccpVT3iAH6pKpVaTFCG38CtHatObiDYofww==
-X-Received: by 2002:ac2:5f86:0:b0:513:cb7a:7cf7 with SMTP id
- r6-20020ac25f86000000b00513cb7a7cf7mr3133868lfe.63.1711810110296; Sat, 30 Mar
- 2024 07:48:30 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1712049298; x=1712654098;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=4nO2HzaN0kDt/16pA7tNJlMUFkH3bORvVFVPgUTmBlU=;
+ b=VKsTt4B0JFgH3taIKFqFHvDBJTRCmHzMlbi2WIFUNjc6DKtQqgDiptxL8rtGsZemrP
+ ftR4VBb+7nlRr6z9UX3izySupyt7uB0oikD3RzRiWTOB/G9WgKjI1gEJBuVHmnEqVXvm
+ OUYdjSOMz64gYJ0PVJozp/80ptz/oPxN8STA37vOpWlt6gvGgUq5X4Lewkw2ssLYI17z
+ 5Ix33YmpzSsnhl4VkMz0ojn+w9XLc4jNhJPS32tALDO+PZiIAF3qz0Q6fMZdDghfcT8i
+ kKEgAE4KnMQXKPEfk+Ch9qOJ63dSSUBmIW/ZZi+hEofKo7IVGFGF9n0hjp5Ru8GYTrXG
+ fB3A==
+X-Gm-Message-State: AOJu0Yyx4GKB11AZIaqojDjy9Dh01SQ3h3izmi6WSmXVmr51MvYpQ1MO
+ 7Diq5ayEEPcqaUqQqijb5NiKjgmZqVEdm+por3a5S5Clucdh2Oo47LJNhEzK7dOvyMCCYogpd40
+ KCvM59DNn9lizrY5XD3QiFgXD9wscEq72DtDHHHHRG6vagxsy
+X-Received: by 2002:a50:d698:0:b0:56b:cf40:f712 with SMTP id
+ r24-20020a50d698000000b0056bcf40f712mr6719781edi.19.1712049298358; Tue, 02
+ Apr 2024 02:14:58 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240325084854.3010562-1-ruanjinjie@huawei.com>
- <20240325084854.3010562-18-ruanjinjie@huawei.com>
- <CAFEAcA_p6i5KNcQW3NLZY=kwUXuUPXM+8ncC8T-gPNVUWJ6CHA@mail.gmail.com>
- <8263a597-298d-158e-524a-21ac906363b4@huawei.com>
-In-Reply-To: <8263a597-298d-158e-524a-21ac906363b4@huawei.com>
+References: <20240329150155.357043-1-clg@redhat.com>
+In-Reply-To: <20240329150155.357043-1-clg@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 30 Mar 2024 14:48:19 +0000
-Message-ID: <CAFEAcA8E8iLmO=qrgeNOM=cLY14RyqpY6NjOdtwRPY8wbVz7uw@mail.gmail.com>
-Subject: Re: [PATCH v10 17/23] hw/intc/arm_gicv3: Add NMI handling CPU
- interface registers
-To: Jinjie Ruan <ruanjinjie@huawei.com>
-Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
- wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org
+Date: Tue, 2 Apr 2024 10:14:47 +0100
+Message-ID: <CAFEAcA-=DFR-eRLz9XK4=u=Aq0O=3dWZv+nLcDOgWyWAt3iMCQ@mail.gmail.com>
+Subject: Re: [PATCH] raspi4b: Reduce RAM to 1Gb on 32-bit hosts
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::129;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x129.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,61 +122,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3WUzx6AiqpA/
+X-TUID: FS0pIkwUeSVs
 
-On Sat, 30 Mar 2024 at 02:44, Jinjie Ruan via <qemu-arm@nongnu.org> wrote:
+On Fri, 29 Mar 2024 at 15:02, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
 >
+> Change the board revision number and RAM size to 1Gb on 32-bit hosts.
+> On these systems, RAM has a 2047 MB limit and this breaks the tests.
 >
+> Fixes: 7785e8ea2204 ("hw/arm: Introduce Raspberry PI 4 machine")
+> Signed-off-by: C=C3=A9dric Le Goater <clg@redhat.com>
+> ---
+>  hw/arm/raspi4b.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 >
-> On 2024/3/28 22:50, Peter Maydell wrote:
-> > The NMI bit also exists only in the AP1R0 bit, not in every AP
-> > register. So you can check it before the for() loop, something like this:
-> >
-> >     if (cs->gic->nmi_support) {
-> >         /*
-> >          * If an NMI is active this takes precedence over anything else
-> >          * for priority purposes; the NMI bit is only in the AP1R0 bit.
-> >          * We return here the effective priority of the NMI, which is
-> >          * either 0x0 or 0x80. Callers will need to check NMI again for
-> >          * purposes of either setting the RPR register bits or for
-> >          * prioritization of NMI vs non-NMI.
-> >          */
-> >         prio = 0;
-> >         if (cs->icc_apr[GICV3_G1][0] & ICC_AP1R_EL1_NMI) {
-> >             return 0;
-> >         }
-> >         if (cs->icc_apr[GICV3_G1NS][0] & ICC_AP1R_EL1_NMI) {
-> >             return (cs->gic->gicd_ctlr & GICD_CTLR_DS) ? 0 : 0x80;
-> >         }
-> >     }
-> >
-> > Then in icc_rpr_read() we can pretty much directly write the same
-> > logic that the pseudocode uses to determine whether to set the RPR
-> > NMI bits, after the point where we do the shifting of the prio for
-> > the NS view:
-> >
-> >     if (cs->gic->nmi_support) {
-> >         /* NMI info is reported in the high bits of RPR */
-> >         if (arm_feature(env, ARM_FEATURE_EL3) && !arm_is_secure(env)) {
-> >             if (cs->icc_apr[GICV3_G1NS][0] & ICC_AP1R_EL1_NMI) {
-> >                 prio |= ICC_RPR_EL1_NMI;
+> diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
+> index cb1b1f2f147e8685a1dba6f137335ea0bc89bca5..85877880fc706d216de04ff1e=
+081d66e6080ebac 100644
+> --- a/hw/arm/raspi4b.c
+> +++ b/hw/arm/raspi4b.c
+> @@ -112,7 +112,11 @@ static void raspi4b_machine_class_init(ObjectClass *=
+oc, void *data)
+>      MachineClass *mc =3D MACHINE_CLASS(oc);
+>      RaspiBaseMachineClass *rmc =3D RASPI_BASE_MACHINE_CLASS(oc);
 >
-> It seems ICC_RPR_EL1_NSNMI in pseudocode:
->
-> // GICv3.3
-> if HaveNMIExt() then
->     if HaveEL(EL3) && (IsNonSecure() || IsRealm()) then
->         pPriority<63> = ICC_AP1R_EL1NS<63>;
->         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> else
->     pPriority<63> = ICC_AP1R_EL1S<63>;
->     pPriority<62> = ICC_AP1R_EL1NS<63>;
+> +#if HOST_LONG_BITS =3D=3D 32
+> +    rmc->board_rev =3D 0xa03111; /* Revision 1.1, 1 Gb RAM */
+> +#else
+>      rmc->board_rev =3D 0xb03115; /* Revision 1.5, 2 Gb RAM */
+> +#endif
+>      raspi_machine_class_common_init(mc, rmc->board_rev);
+>      mc->init =3D raspi4b_machine_init;
+>  }
 
-I'm not sure what you have in mind here? For QEMU,
-ICC_AP1R_EL1NS<63> is the ICC_AP1R_EL1_NMI bit in the
-icc_apr[GICV3_G1NS][0] value, and ICC_RPR_EL1_NMI is bit 63,
-so the C code seems to me to match up with the pseudocode line
-that you highlight.
+Running "make check" on a 32-bit host has clearly fallen off
+our CI config...
 
-thanks
+Applied to target-arm.next for 9.0, thanks.
+
 -- PMM

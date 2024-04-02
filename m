@@ -1,270 +1,261 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp3836162ejv;
-        Tue, 2 Apr 2024 02:37:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX3zo/XivMwr29IPdWFAdI+qT1XtMvroSCiyKkBg61scLQ7VRh0/b2f7cxGxpb5j/jg53c2mP6NsElCTNHPRUDDKQF0z2BG
-X-Google-Smtp-Source: AGHT+IESeny5AwZqzP5GjVy5b7CmUtz91NEbc6obyoAwNV/QjujRSgw4mHaxG9GdeXj6wahpZy6I
-X-Received: by 2002:a05:6808:e86:b0:3c3:ddef:cbfb with SMTP id k6-20020a0568080e8600b003c3ddefcbfbmr12437621oil.44.1712050638492;
-        Tue, 02 Apr 2024 02:37:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712050638; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp3935002ejv;
+        Tue, 2 Apr 2024 06:02:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCV0KjujqNhD6I02nrcM+eWjDn4sfMiEiblE6dC1OvbVrovUtwdL9SBRbU+Ss+pvosvb3IcyZnLW/KoKzhtrCtiZS8TYDzZK
+X-Google-Smtp-Source: AGHT+IGCeNb2istQ2rxyN0GHvR7j73pDu3IW3rAQR0x0Csnrc3hPWrf9tX7/a12DTiHzd87cQgW8
+X-Received: by 2002:a05:6a00:18a6:b0:6e7:294:9775 with SMTP id x38-20020a056a0018a600b006e702949775mr13381770pfh.8.1712062930820;
+        Tue, 02 Apr 2024 06:02:10 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1712062930; cv=pass;
         d=google.com; s=arc-20160816;
-        b=cp4CMc7KfOHpPpB2vc38XyHo4bo6QLVrXuOgr6lCoqB7mdFCGkIdhqbkQ5PJ9vSsFh
-         CW+9zoqx1aUOdNR8I19njDyLGHhZ/2mWinC+/nXmqMIP1RX0ZJRq+1f2PSaV4qqoIyah
-         tp8CFAkgjeP9MYjjGkC3PxYLu+kPhs9lCVQs51DAk9/OEe4AaOb1qiNB8I9hTcq+g8pK
-         DyHiLBG6liHTNICw7E6mdyzWWXvCFIvxKWV0nj/ihD6ndpdXf4dFYZOLfNDMLhsKcLsg
-         r1BHu/H8qj1tQ15oFoPYr9DXhXYqdcqHs1Bf6IegdnwJTwd7c9XTrr4FD6tIXgHSVBH6
-         nxtw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:message-id:date
-         :references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=wF5lK1aJPl/KNxtJvjVqnprrlMlNrhSTZPVBoQn9ZQQ=;
-        fh=Sc7k6cJq/hu+VY6wVbFguHlw20OG2jhSnTxi1RPZ3DY=;
-        b=Fz3us5RlvLHa3vd0m6D+FVhqn4uEA/ELO6Ge0HalPecOPjoGryA68dSB29kKaLj1YU
-         7XIs45GFwBmsaaeb3dDIEO+jUiuSTNBFNCeJ2QGe4RqjmNS5F+EV285W/z/VJGFWSata
-         y1ChXAes3sEv21DRtPiZKM0ARrC4c79BzaYVxvIuNNDuChWB0S63p21AELdjhaIErHIC
-         VgiLn8e5goj3aKzX1QKvdJQ+885NNZFWKGNhtAuKYh/VUXecymiYZCQoGmtftSRL66iK
-         +LxKXYJSoBSoW1s2oHeifXTFWNr5EVUsXllFmgu+kHNvC+GV8wRbSdC+ih/+PPATT/Nx
-         HrHg==;
+        b=f+UfR0vqGT3CfDc+Do72Fa8830F7H1OWfEinoXQUvM3nw/NSptOb+PiZl35ZDaPrL5
+         WlXVHCWPIDC3cnXl1ap7fmOOs6OOy8xvREey2cxqW2IaWoIyd2EE+B6toTNyW1+pZKdp
+         x1zmhPU9csB4VAGsUxYimBHT081CinLB0ABfzY0KHQoe849xU9zI9NhcKqrd4uDMXDS9
+         YT9D+jHD2tuNZK7a5gH2Dd3uliLd+UkC/t5KKFDGLOLiR5Qey54A19w0kyfjNKJfap7k
+         xT6ZzGHVok2qguC3AfO0fDBsiE7VE6VF/9qeh9rRxBuFgkzelUvbLWkkymGERhLMIeCE
+         V1uQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=RbJu5JhscfzLmMEVZM2sY/pfYvXjDWrFhs3X6SyDklc=;
+        fh=dFSsVdSFYgrB1kufoUkeL9dKrbXlULsdtHSR9wM0hVc=;
+        b=HFbWNSMLonMcqwqn5GCbzgNQ3ucEJbmb/NcyiAEuOOizRDgU5O7cRE0w7m0ouSryJ8
+         RsOjT9cF7DF60Ntn4riwB/4aWO8F/fk8s88fHGIdb4t57l7wlNLOuJ0/9M6tim7fuR7U
+         ue03Cy1tjpn7qzVDwcrJKgOy0b2+7HSgMlKxj7HxdistpxWyygkHX5Iergx5belAh9Ff
+         Sm/6rEe/CD3k8dzuqAevHw7pKfagVhu2aRFjzncWt2QsvlE3PPv7fHPG49UNMrCexr7r
+         lG7pGI6+tQA/6vWg49OI/nZhZANv6V0rT/j+02T225T/QCRt+y3NHPqLeZDqQs6vOJZU
+         Fsyw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="VP/QcVQ/";
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZE+C49+9;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-13368-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-13368-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <armbru@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id ep6-20020a05622a548600b00432c7b5413asi7851893qtb.288.2024.04.02.02.37.18
+Return-Path: <kvm+bounces-13368-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id a2-20020aa78642000000b006eadff158dasi10100895pfo.382.2024.04.02.06.02.10
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Apr 2024 02:37:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Tue, 02 Apr 2024 06:02:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-13368-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="VP/QcVQ/";
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZE+C49+9;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-13368-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-13368-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 4D42228219E
+	for <alex.bennee@linaro.org>; Tue,  2 Apr 2024 13:02:10 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 068BD7F46B;
+	Tue,  2 Apr 2024 13:02:06 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="ZE+C49+9"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 393267E58A
+	for <kvm@vger.kernel.org>; Tue,  2 Apr 2024 13:02:04 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1712062925; cv=none; b=K5WtKOKiEYoJz5RNS7ixhEnKwp3v8we9TTLcWxU4xLBag/GZpgp8eiapbBx2l+hFc8at3xmWv1LJCnp0FqbsTXYx8gI+bBruBLd7gIfw3tX/Acd5bk1c9bssWOFNHGI1wo9I8Es7ZtrQQj5O0NC8ADQKIiyO/ODaWETUYeoSxIE=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1712062925; c=relaxed/simple;
+	bh=dJTK7uaprHRPxPOi8xoFEcOM7mbvRu1zU8fNqA3tZUk=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=J1NjJgme/fQMhOTwK9iYlHGTdfGKh25VP7K4ZSHtNLOpJBMGPqxiUdtIl8t24NCN0MkP6/HEYwZHPGmRQPl8cnGnJdtq0nbkchR91m3RQiBGsYGsyfNWwifWeBgtFYXOAM/x8L6tcJereRtk7r2lB23ZpMoALwbnYNsxe37ESeM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=ZE+C49+9; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1712050638;
+	s=mimecast20190719; t=1712062923;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=wF5lK1aJPl/KNxtJvjVqnprrlMlNrhSTZPVBoQn9ZQQ=;
-	b=VP/QcVQ/48l5R1jkbET0REHeEg1l+XF/2n7G5Y+bwuUoTiOrR60G+yoT8ABSdhz1iDMouN
-	ymVNqTmgU5Bx7Gl/jVuxLn9WzNUqCtLCDMErX6CukPIXE+4XahRzOTmL9T3FgG53zQxZOy
-	L1MlY5ic0wiF2GECfZhjqz9HWXaIqJ8=
+	bh=RbJu5JhscfzLmMEVZM2sY/pfYvXjDWrFhs3X6SyDklc=;
+	b=ZE+C49+9vWgpen0wkJ0SELBiI8m7n0nBpdWG+rOO1kXgSMDZ/6PQkioehF6G/nngPUG619
+	Pnpazv5gvakfM2lro6cjAZeE/JeBEwYTNMPrVmvpkNNahIe04ifvUgKjAxwtjHNBqhmTqZ
+	hp9dXXWNVoyi3FywaKLBlXiazOhXCWI=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-465-ZNIApIi2P7W73p1i2a3tlA-1; Tue, 02 Apr 2024 05:37:14 -0400
-X-MC-Unique: ZNIApIi2P7W73p1i2a3tlA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+ us-mta-240-yHf5CL1qOzqgAT7RUWhSVQ-1; Tue, 02 Apr 2024 09:01:57 -0400
+X-MC-Unique: yHf5CL1qOzqgAT7RUWhSVQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E51E08828C3;
-	Tue,  2 Apr 2024 09:37:13 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.81])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 46CFE1121313;
-	Tue,  2 Apr 2024 09:37:13 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 28B8221E6757; Tue,  2 Apr 2024 11:37:08 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-riscv@nongnu.org,  Anton Johansson
- <anjo@rev.ng>,  qemu-s390x@nongnu.org,  qemu-ppc@nongnu.org,  Daniel
- =?utf-8?Q?P=2EBerrang=C3=A9?= <berrange@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,
-  Eduardo Habkost <eduardo@habkost.net>,  Claudio Fontana
- <cfontana@suse.de>,  Richard Henderson <richard.henderson@linaro.org>,
-  Peter Maydell <peter.maydell@linaro.org>,  Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,  Manos Pitsidianakis
- <manos.pitsidianakis@linaro.org>,  Zhao Liu <zhao1.liu@intel.com>,
-  qemu-arm@nongnu.org,  Thomas Huth <thuth@redhat.com>,  Michael Roth
- <michael.roth@amd.com>
-Subject: Re: [RFC PATCH-for-9.1 14/21] system: Introduce QMP
- generic_query_cpu_definitions()
-In-Reply-To: <96bcb673-18dd-49bc-8bcb-281c7409b410@linaro.org> ("Philippe
-	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 29 Mar 2024 14:03:48
- +0100")
-References: <20240315130910.15750-1-philmd@linaro.org>
-	<20240315130910.15750-15-philmd@linaro.org>
-	<87v859m89y.fsf@pond.sub.org>
-	<96bcb673-18dd-49bc-8bcb-281c7409b410@linaro.org>
-Date: Tue, 02 Apr 2024 11:37:07 +0200
-Message-ID: <87bk6s3y2k.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7FC6D80C764;
+	Tue,  2 Apr 2024 13:01:57 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.194.153])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id B8893C04220;
+	Tue,  2 Apr 2024 13:01:55 +0000 (UTC)
+Date: Tue, 2 Apr 2024 15:01:50 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Shaoqin Huang <shahuang@redhat.com>
+Cc: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+	qemu-arm@nongnu.org, Eric Auger <eauger@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org,
+	kvm@vger.kernel.org, armbru@redhat.com
+Subject: Re: [PATCH v8] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
+Message-ID: <ZgwBvuCrTwKmA0IK@redhat.com>
+References: <20240312074849.71475-1-shahuang@redhat.com>
+ <Zf2bbcpWYMWKZpNy@redhat.com>
+ <1881554f-9183-4e01-8cda-0934f7829abf@redhat.com>
+ <ZgE71v8uGDNihQ5H@redhat.com>
+ <46f0c5ab-dee7-4cd4-844d-c418818e187c@redhat.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-X-TUID: 31Oj3SA1yi0y
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <46f0c5ab-dee7-4cd4-844d-c418818e187c@redhat.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+X-TUID: cV+5BBnxdIM/
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+Am 29.03.2024 um 04:45 hat Shaoqin Huang geschrieben:
+> Hi Daniel,
+> 
+> On 3/25/24 16:55, Daniel P. Berrangé wrote:
+> > On Mon, Mar 25, 2024 at 01:35:58PM +0800, Shaoqin Huang wrote:
+> > > Hi Daniel,
+> > > 
+> > > Thanks for your reviewing. I see your comments in the v7.
+> > > 
+> > > I have some doubts about what you said about the QAPI. Do you want me to
+> > > convert the current design into the QAPI parsing like the
+> > > IOThreadVirtQueueMapping? And we need to add new json definition in the
+> > > qapi/ directory?
+> 
+> I have defined the QAPI for kvm-pmu-filter like below:
+> 
+> +##
+> +# @FilterAction:
+> +#
+> +# The Filter Action
+> +#
+> +# @a: Allow
+> +#
+> +# @d: Disallow
+> +#
+> +# Since: 9.0
+> +##
+> +{ 'enum': 'FilterAction',
+> +  'data': [ 'a', 'd' ] }
+> +
+> +##
+> +# @SingleFilter:
+> +#
+> +# Lazy
+> +#
+> +# @action: the action
+> +#
+> +# @start: the start
+> +#
+> +# @end: the end
+> +#
+> +# Since: 9.0
+> +##
+> +
+> +{ 'struct': 'SingleFilter',
+> + 'data': { 'action': 'FilterAction', 'start': 'int', 'end': 'int' } }
+> +
+> +##
+> +# @KVMPMUFilter:
+> +#
+> +# Lazy
+> +#
+> +# @filter: the filter
+> +#
+> +# Since: 9.0
+> +##
+> +
+> +{ 'struct': 'KVMPMUFilter',
+> +  'data': { 'filter': ['SingleFilter'] }}
+> 
+> And I guess I can use it by adding code like below:
+> 
+> --- a/hw/core/qdev-properties-system.c
+> +++ b/hw/core/qdev-properties-system.c
+> @@ -1206,3 +1206,35 @@ const PropertyInfo qdev_prop_iothread_vq_mapping_list
+> = {
+>      .set = set_iothread_vq_mapping_list,
+>      .release = release_iothread_vq_mapping_list,
+>  };
+> +
+> +/* --- kvm-pmu-filter ---*/
+> +
+> +static void get_kvm_pmu_filter(Object *obj, Visitor *v,
+> +        const char *name, void *opaque, Error **errp)
+> +{
+> +    KVMPMUFilter **prop_ptr = object_field_prop_ptr(obj, opaque);
+> +
+> +    visit_type_KVMPMUFilter(v, name, prop_ptr, errp);
+> +}
+> +
+> +static void set_kvm_pmu_filter(Object *obj, Visitor *v,
+> +        const char *name, void *opaque, Error **errp)
+> +{
+> +    KVMPMUFilter **prop_ptr = object_field_prop_ptr(obj, opaque);
+> +    KVMPMUFilter *list;
+> +
+> +    printf("running the %s\n", __func__);
+> +    if (!visit_type_KVMPMUFilter(v, name, &list, errp)) {
+> +        return;
+> +    }
+> +
+> +    printf("The name is %s\n", name);
+> +    *prop_ptr = list;
+> +}
+> +
+> +const PropertyInfo qdev_prop_kvm_pmu_filter = {
+> +    .name = "KVMPMUFilter",
+> +    .description = "der der",
+> +    .get = get_kvm_pmu_filter,
+> +    .set = set_kvm_pmu_filter,
+> +};
+> 
+> +#define DEFINE_PROP_KVM_PMU_FILTER(_name, _state, _field) \
+> +    DEFINE_PROP(_name, _state, _field, qdev_prop_kvm_pmu_filter, \
+> +                KVMPMUFilter *)
+> 
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2439,6 +2441,7 @@ static Property arm_cpu_properties[] = {
+>                          mp_affinity, ARM64_AFFINITY_INVALID),
+>      DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
+>      DEFINE_PROP_INT32("core-count", ARMCPU, core_count, -1),
+> +    DEFINE_PROP_KVM_PMU_FILTER("kvm-pmu-filter", ARMCPU, kvm_pmu_filter),
+>      DEFINE_PROP_END_OF_LIST()
+>  };
+> 
+> And I guess I can use the new json format input like below:
+> 
+> qemu-system-aarch64 \
+> 	-cpu host, '{"filter": [{"action": "a", "start": 0x10, "end": "0x11"}]}'
+> 
+> But it doesn't work. It seems like because the -cpu option doesn't
+> support json format parameter.
+> 
+> Maybe I'm wrong. So I want to double check with if the -cpu option
+> support json format nowadays?
 
-> Hi Markus,
->
-> On 26/3/24 14:28, Markus Armbruster wrote:
->> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
->>=20
->>> Each target use a common template for qmp_query_cpu_definitions().
->>>
->>> Extract it as generic_query_cpu_definitions(), keeping the
->>> target-specific implementations as the following SysemuCPUOps
->>> handlers:
->>>   - cpu_list_compare()
->>>   - add_definition()
->>>   - add_alias_definitions()
->>>
->>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->>> ---
->>>   MAINTAINERS                           |  2 +
->>>   include/hw/core/sysemu-cpu-ops.h      | 14 ++++++
->>>   include/qapi/commands-target-compat.h | 14 ++++++
->>>   system/cpu-qmp-cmds.c                 | 71 +++++++++++++++++++++++++++
->>>   system/meson.build                    |  1 +
->>>   5 files changed, 102 insertions(+)
->>>   create mode 100644 include/qapi/commands-target-compat.h
->>>   create mode 100644 system/cpu-qmp-cmds.c
->
->
->>> diff --git a/system/cpu-qmp-cmds.c b/system/cpu-qmp-cmds.c
->>> new file mode 100644
->>> index 0000000000..daeb131159
->>> --- /dev/null
->>> +++ b/system/cpu-qmp-cmds.c
->>> @@ -0,0 +1,71 @@
->>> +/*
->>> + * QAPI helpers for target specific QMP commands
->>> + *
->>> + * SPDX-FileCopyrightText: 2024 Linaro Ltd.
->>> + * SPDX-License-Identifier: GPL-2.0-or-later
->>> + */
->>> +
->>> +#include "qemu/osdep.h"
->>> +#include "qom/object.h"
->>> +#include "qapi/commands-target-compat.h"
->>> +#include "sysemu/arch_init.h"
->>> +#include "hw/core/cpu.h"
->>> +#include "hw/core/sysemu-cpu-ops.h"
->>> +
->>> +static void cpu_common_add_definition(gpointer data, gpointer user_dat=
-a)
->>> +{
->>> +    ObjectClass *oc =3D data;
->>> +    CpuDefinitionInfoList **cpu_list =3D user_data;
->>> +    CpuDefinitionInfo *info;
->>> +    const char *typename;
->>> +
->>> +    typename =3D object_class_get_name(oc);
->>> +    info =3D g_malloc0(sizeof(*info));
->>> +    info->name =3D cpu_model_from_type(typename);
->>> +    info->q_typename =3D g_strdup(typename);
->>> +
->>> +    QAPI_LIST_PREPEND(*cpu_list, info);
->>> +}
->>> +
->>> +static void arch_add_cpu_definitions(CpuDefinitionInfoList **cpu_list,
->>> +                                     const char *cpu_typename)
->>> +{
->>> +    ObjectClass *oc;
->>> +    GSList *list;
->>> +    const struct SysemuCPUOps *ops;
->>> +
->>> +    oc =3D object_class_by_name(cpu_typename);
->>> +    if (!oc) {
->>> +        return;
->>> +    }
->>> +    ops =3D CPU_CLASS(oc)->sysemu_ops;
->>> +
->>> +    list =3D object_class_get_list(cpu_typename, false);
->>> +    if (ops->cpu_list_compare) {
->>> +        list =3D g_slist_sort(list, ops->cpu_list_compare);
->>> +    }
->>> +    g_slist_foreach(list, ops->add_definition ? : cpu_common_add_defin=
-ition,
->>> +                    cpu_list);
->>> +    g_slist_free(list);
->>> +
->>> +    if (ops->add_alias_definitions) {
->>> +        ops->add_alias_definitions(cpu_list);
->>> +    }
->>> +}
->>> +
->>> +CpuDefinitionInfoList *generic_query_cpu_definitions(Error **errp)
->>> +{
->>> +    CpuDefinitionInfoList *cpu_list =3D NULL;
->>> +
->>> +    for (unsigned i =3D 0; i <=3D QEMU_ARCH_BIT_LAST; i++) {
->>> +        const char *cpu_typename;
->>> +
->>> +        cpu_typename =3D cpu_typename_by_arch_bit(i);
->>> +        if (!cpu_typename) {
->>> +            continue;
->>> +        }
->>> +        arch_add_cpu_definitions(&cpu_list, cpu_typename);
->>> +    }
->>> +
->>> +    return cpu_list;
->>> +}
->>
->> The target-specific qmp_query_cpu_definitions() this is going to replace
->> each execute the equivalent of *one* loop iteration: the one
->> corresponding to their own arch bit.
->>
->> For the replacement to be faithful, as cpu_typename_by_arch_bit() must
->> return non-null exactly once.
->>
->> This is the case for the qemu-system-TARGET.  The solution feels
->> overengineered there.
->>
->> I figure cpu_typename_by_arch_bit() will return non-null multiple times
->> in a future single binary supporting heterogeneous machines.
->>
->> Such a single binary then can't serve as drop-in replacement for the
->> qemu-system-TARGET, because query-cpu-definitions returns more.
->>
->> To get a drop-in replacement, we'll need additional logic to restrict
->> the query for the homogeneous use case.
->
-> Can we ask the management layer to provide the current homogeneous
-> target via argument? Otherwise we can add a new query-cpu-definitions-v2
-> command requiring an explicit target argument, allowing 'all', and
-> deprecate the current query-cpu-definitions.
+As far as I can see, -cpu doesn't support JSON yet. But even if it did,
+your command line would be invalid because the 'host,' part isn't JSON.
 
-Is "new binary can serve as drop-in replacement for the
-qemu-system-TARGET" a goal?
+> If the -cpu option doesn't support json format, how I can use the QAPI
+> for kvm-pmu-filter property?
 
-I'm asking because a new binary is also an opportunity to improve
-things, and backward compatibility conflicts with that.
+This would probably mean QAPIfying all CPUs first, which sounds like a
+major effort.
 
-Where would we want to go if backward compatibility was not a concern?
-I guess we'd want a single binary capable of running any machine,
-homogeneous or not.
+Kevin
 
-Your query-cpu-definitions would be fine for that binary, as long as its
-users can filter out the CPUs they're interested in.
-
-I prefer client-side filtering whenever practical, since it keeps the
-interface simple.  We do have to provide clients the information they
-need to filter.  How would a client filter the result of your
-query-cpu-definitions for target?
-
-Since backward compatibility is a concern, and we don't want to provide
-per target binaries forever, we need to think about how to provide
-suitable replacements based on the single binary.  I'm not sure drop-in
-replacement is feasible, given the complexity of the external
-interfaces.
-
->> I think this needs to be discussed in the commit message.
->>
->> Possibly easier: don't loop over the bits, relying on
->> cpu_typename_by_arch_bit() to select the right one.  Instead get the
->> right bit from somewhere.
->>
->> We can switch to a loop when we need it for the heterogeneous case.
->
-> Alex suggested to consider heterogeneous emulation the new default,
-> and the current homogeneous use as a particular case. I'd rather not
-> plan on a "heterogeneous switch day" and get things integrated in
-> the way, otherwise we'll never get there...
-
-I guess it's okay to overengineer certain things so they're ready for
-the heterogenous case when it comes.  We may want to explain this in
-comments, so people don't simplify the overengineered code :)

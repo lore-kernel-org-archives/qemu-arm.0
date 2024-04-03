@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp4321864ejv;
-        Tue, 2 Apr 2024 19:22:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU8ENBtcdzQN3WY9/XV3PMKwF9HwUiDlS7O++DcZbCHjdahDYVqyvEjoDiSHYyw0Li3zbujxdCD3NHE7rwzL+G0tUTzHAm5
-X-Google-Smtp-Source: AGHT+IHlLlxHsoljCvytHbkITczuWjeZCki55GhYC4vW6eL1yh/oUdMEEzJhVHvOhrC0JhuQsv+2
-X-Received: by 2002:ac8:5c0f:0:b0:432:e9a2:7f54 with SMTP id i15-20020ac85c0f000000b00432e9a27f54mr9754410qti.39.1712110934484;
-        Tue, 02 Apr 2024 19:22:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712110934; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp4337757ejv;
+        Tue, 2 Apr 2024 20:17:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWwKSilOzY6DoTL6ir0WDDj2uzKDY7Ij46gy6lIFqLbVEIJrluOpkhAoVWsqoSrPIEW5oDaNUwhZJclzXIUJOMoEuF1i2rI
+X-Google-Smtp-Source: AGHT+IFGj7fKG6vazvLMNBJp7CoZSpzDqKcFe7kcElNuTXB0wkYxUBu8JVgs0MKQuiuoVXOFhf9j
+X-Received: by 2002:a05:6808:1189:b0:3c5:d2ce:b9d8 with SMTP id j9-20020a056808118900b003c5d2ceb9d8mr656866oil.5.1712114265148;
+        Tue, 02 Apr 2024 20:17:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712114265; cv=none;
         d=google.com; s=arc-20160816;
-        b=H5PZi9tzXK82e4j1qHjbhq2lbZnGvjJ7gB6kVPFyJL40VLd8qRR7HnbzcurXogddF4
-         gBGUBjxE+JnuWurTanr3BCSDnjNhxjmNRPjkM91WJfbQNyAvlGaaaufcdKiJuNRR98P+
-         0J0xiudtJrrZxhqOslgSsTaMfzuQdIvr11Y/okH9lhMboY1TtqZkq/Xf5vh0SduheTDx
-         olcqTDyEmCEjaCTuO038SwrctM4vBSP0h2SCkexDQcICcLMQXCBs2F7RvMspZSzSKb4Z
-         JtOBrH+DKxeQzvQSkmK/VB08jLvzyfBNJjEHw41TYkzpk6hHRcF6r19R1qy1ycimKJ39
-         j7xw==
+        b=bdvGRuStxo9yxMmARIi5akq+yKEQ1Y3VHpcEr3L6GnmxDbmh4W2yAafKcbp7dTIzk4
+         /f9mgofu2Es0ZVikihwDOzhjyvEaPT3+V+WbDIYr6le4woqTiLzDgEpHXN1WbEtx0fwk
+         t1DTnXbVqXBDbIg7g7ue+x33tHHdcAxxfbo+xyA+dbPFebggao4m8Xe9gEo4pF5rCMD2
+         tpwDgl303TodKUQSySjdhiD/BF7mugrkfWn15QtdcHW0qwobI8F4rUPSinSX+hDq7AGP
+         VWuNSKWDihB8o5E0PMICIltw3jubA9sd+ZN8VmuE05GpJxsauI4Tj0fPKrfCtQ0Xea9G
+         z3Bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:in-reply-to:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=USmTOzpY5JCrPyTKjPUNa0z57LjI6pNhTLGKBnrjtA4=;
+        bh=mml55JwbM3QcACHvWGtEJqs4+QNROElHlAKcOjeFBUA=;
         fh=/MSHAyhUJiTYoT4ekOyS/HopHNLqBW111kC/699+MBU=;
-        b=R7PLT7EOAdkp/TQtfsx4ShtlavXBYWMENHfcR3ebqjrfz33HekM5ZCYj4/MSGaTW0T
-         jr2MeLThU3rjGhxMX/WmB1bKQZify0xXspdRBKLESttqsHJUlLjki9Mpe9jly2pGKYyo
-         xrHhCncIrZtmdXgohcf97d/brDLnp/8JhAEYIm5O3RugMYxFPdjqE6LKMpd8cygkyq2y
-         2RHUaGliIdkM6Tv1DAcZEmUC7PnbVrgkLuKdsBfvRzBpuWW+h2ijnVfPr8QQVqRSlDix
-         pAIbakzIcVUAzQQHBfy39CUDqHDfsxdxP0m7RyMx24qAJJI8qLbBYVOQdIJ4Bc1bEM/L
-         eBhw==;
+        b=NivEaSRqqWq75dGbbtkPUGpz2SbEeZ3Nlz3dl4jUjZQAE8nHGViVw8Wd19bA5giEJU
+         nYIn3jqrHjXeQB5xKYtDMeag9Zmsv0MXYLcL0zBpFhYJJ/VOIVAqK8GTT4gBQLSCRF/k
+         5VhyLgr3LdmO7yLxFicg6X1SlPTDoW5EwnC1idRlUldwYQZKUBbjrDBZ1uOhKCG1Tov6
+         G2I6PbWntP/EVeyP7iILpb5oPh5c8CFqDSpEN3rUZVu/dv7o6TdH5sBmBBDudq+Oz0Hq
+         MGsyJ1rH3rwGWpTRvcE58WtSk06Sj1sUHxhsdfwMHsCkm28uG1EPzbJ80itZf1ixtpfv
+         l5qQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dh9-20020a05622a4e0900b00432c4f4fa0esi7049712qtb.294.2024.04.02.19.22.14
+        by mx.google.com with ESMTPS id s27-20020a05622a1a9b00b00432e8ef80d4si6828965qtc.640.2024.04.02.20.17.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Apr 2024 19:22:14 -0700 (PDT)
+        Tue, 02 Apr 2024 20:17:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,27 +42,27 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rrqGP-0000hh-35; Tue, 02 Apr 2024 22:22:09 -0400
+	id 1rrr7L-00087g-It; Tue, 02 Apr 2024 23:16:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rrqGL-0000hK-H4; Tue, 02 Apr 2024 22:22:06 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+ id 1rrr7J-00086b-Oh; Tue, 02 Apr 2024 23:16:49 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rrqGI-0007Pi-2F; Tue, 02 Apr 2024 22:22:05 -0400
-Received: from mail.maildlp.com (unknown [172.19.88.234])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4V8T2S6pCrz1h53y;
- Wed,  3 Apr 2024 10:18:56 +0800 (CST)
+ id 1rrr7F-0006iN-Sb; Tue, 02 Apr 2024 23:16:49 -0400
+Received: from mail.maildlp.com (unknown [172.19.88.194])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4V8VFm2FxCzwR46;
+ Wed,  3 Apr 2024 11:13:48 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 2FC4214011A;
- Wed,  3 Apr 2024 10:21:42 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id CFC0B14010C;
+ Wed,  3 Apr 2024 11:16:35 +0800 (CST)
 Received: from [10.67.109.254] (10.67.109.254) by
  kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Wed, 3 Apr 2024 10:21:41 +0800
-Message-ID: <28ccee86-b6ca-8609-d528-10ec74bdc9db@huawei.com>
-Date: Wed, 3 Apr 2024 10:21:40 +0800
+ 15.1.2507.35; Wed, 3 Apr 2024 11:16:35 +0800
+Message-ID: <6ff19301-8791-384e-bd40-5f58058f4234@huawei.com>
+Date: Wed, 3 Apr 2024 11:16:34 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.2.0
@@ -80,16 +80,16 @@ In-Reply-To: <CAFEAcA_WY04voee07n6Ph606xqy=QvTkYdMyqYf5LMHUS5GcDw@mail.gmail.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.67.109.254]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga01-in.huawei.com
 X-Spam_score_int: -45
 X-Spam_score: -4.6
 X-Spam_bar: ----
 X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.376,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,7 +106,7 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ADHsZulL/kY5
+X-TUID: v8y4g52aTscl
 
 
 
@@ -193,10 +193,6 @@ On 2024/4/3 0:12, Peter Maydell wrote:
 > 
 > You could write this a little more concisely as
 >       bool thisnmi = cs->gic_nmi_support && (lr & ICH_LR_EL2_NMI);
-
-If the following if check continues, the operations are unnecessary, so
-I think it's more appropriate to put it as thisprio operations do it.
-
 > 
 >>          if (ich_lr_state(lr) != ICH_LR_EL2_STATE_PENDING) {
 >>              /* Not Pending */
@@ -280,6 +276,11 @@ I think it's more appropriate to put it as thisprio operations do it.
 >         bool nmi = cs->gic->nmi_support &&
 >             (env->cp15.sctlr_el[arm_current_el(env)] & SCTLR_NMI) &&
 >             (lr & ICH_LR_EL2_NMI);
+
+The nmi_support check is redundant, as if FEAT_GICv3_NMI is unsupported,
+the ICH_LR_EL2.NMI is RES0, so if ICH_LR_EL2.NMI is 1, FEAT_GICv3_NMI
+has been surely realized.
+
 > 
 > and then you can check "if (!nmi)" here.
 > 

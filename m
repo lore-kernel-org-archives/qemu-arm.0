@@ -1,290 +1,381 @@
-Received: by 2002:a05:7022:1408:b0:78:8b49:fde5 with SMTP id pd8csp2665980dlb;
-        Tue, 2 Apr 2024 15:28:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWS9+vJLoWRpNK9Oo9OQ8uIiHZZLxHRM6c1175f4RrSP9f457LE53oHFOEQ+2zsuMdEfGczKJwE8LPzes2YYfU7zFrD92X/
-X-Google-Smtp-Source: AGHT+IGOpiz6QXTkd2UDMvCEb5BP4IfP1bpJ/wgPvTpoxxE3VOYgHpug3JO7aEx3Xl9rOOtWZowV
-X-Received: by 2002:a05:6a21:a58c:b0:1a3:ac20:e204 with SMTP id gd12-20020a056a21a58c00b001a3ac20e204mr18472456pzc.3.1712096924252;
-        Tue, 02 Apr 2024 15:28:44 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1712096924; cv=pass;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp4321864ejv;
+        Tue, 2 Apr 2024 19:22:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU8ENBtcdzQN3WY9/XV3PMKwF9HwUiDlS7O++DcZbCHjdahDYVqyvEjoDiSHYyw0Li3zbujxdCD3NHE7rwzL+G0tUTzHAm5
+X-Google-Smtp-Source: AGHT+IHlLlxHsoljCvytHbkITczuWjeZCki55GhYC4vW6eL1yh/oUdMEEzJhVHvOhrC0JhuQsv+2
+X-Received: by 2002:ac8:5c0f:0:b0:432:e9a2:7f54 with SMTP id i15-20020ac85c0f000000b00432e9a27f54mr9754410qti.39.1712110934484;
+        Tue, 02 Apr 2024 19:22:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712110934; cv=none;
         d=google.com; s=arc-20160816;
-        b=tgn3TuRXO0LHzg8T1BgcZwJ6DscTBJBGfGNfAAfBf6kzAO5iyCvsX9Jo6K6k5JQGou
-         sZNBD0EI7DHE7KKTY0tzjdCpoTp72eENR2IitPzc4EEC4eF9dxn2mn0AUyVboRoqs3hP
-         iCzQmvS6MEQxNlBDIqS8Cda8zk+vlz66rhywrTlf5Jq4/qyZ2KIGy8mhUMQYUjVQ5PFW
-         K3vGPNGu+eLQALAVf8w7RQEkCWNxeAMXbLYLOYYSaJDBjSaN7l6hPYmIogI7JENt+H98
-         DW7x1v0JclghNmTv8DgUEFqJqFLZa/Y0ZArHyiQImmeKlBlCfFm607ah4jGhXHyH19F5
-         WqMg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=Gyl49u0yWFc0G97vQdyP4pyTSrP7vlqokTAN3w1h3BM=;
-        fh=ahmV85Kx1EYPSlv0rNripFSPjZC9Ias4w/8PHv6Sd6s=;
-        b=cPOFQ30/Q8gpTkTIvwt1LbAbYvMlqrNe5sqKWnHEYtcSjeWhylrqDhZ6mJRkZnO06n
-         6TaeC49XP/X3YG6yqgoi9rUyZLHUonrZXBhKRtwEztrkdsto6VQHAXS3+eIPnASnV2L3
-         BYB7HkjA9SyJ78RxNKCtkYZWPCayOdxv1Hp5r0EITBIem54h/g0qJUOuoHER+ae2dVST
-         8vBCMkvdLAscwhbutE84sfzVxJPfHgapcNILv2DFT5URaAnSPp60SHKPq9aNhRE7rRN0
-         4X+dolPrrV7AuuatpK8YV7RzxH9yx3GSNUBOlSwsvgdzGIfDI1QdikjOaxqr1UbUhrwQ
-         kC6w==;
+        b=H5PZi9tzXK82e4j1qHjbhq2lbZnGvjJ7gB6kVPFyJL40VLd8qRR7HnbzcurXogddF4
+         gBGUBjxE+JnuWurTanr3BCSDnjNhxjmNRPjkM91WJfbQNyAvlGaaaufcdKiJuNRR98P+
+         0J0xiudtJrrZxhqOslgSsTaMfzuQdIvr11Y/okH9lhMboY1TtqZkq/Xf5vh0SduheTDx
+         olcqTDyEmCEjaCTuO038SwrctM4vBSP0h2SCkexDQcICcLMQXCBs2F7RvMspZSzSKb4Z
+         JtOBrH+DKxeQzvQSkmK/VB08jLvzyfBNJjEHw41TYkzpk6hHRcF6r19R1qy1ycimKJ39
+         j7xw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=USmTOzpY5JCrPyTKjPUNa0z57LjI6pNhTLGKBnrjtA4=;
+        fh=/MSHAyhUJiTYoT4ekOyS/HopHNLqBW111kC/699+MBU=;
+        b=R7PLT7EOAdkp/TQtfsx4ShtlavXBYWMENHfcR3ebqjrfz33HekM5ZCYj4/MSGaTW0T
+         jr2MeLThU3rjGhxMX/WmB1bKQZify0xXspdRBKLESttqsHJUlLjki9Mpe9jly2pGKYyo
+         xrHhCncIrZtmdXgohcf97d/brDLnp/8JhAEYIm5O3RugMYxFPdjqE6LKMpd8cygkyq2y
+         2RHUaGliIdkM6Tv1DAcZEmUC7PnbVrgkLuKdsBfvRzBpuWW+h2ijnVfPr8QQVqRSlDix
+         pAIbakzIcVUAzQQHBfy39CUDqHDfsxdxP0m7RyMx24qAJJI8qLbBYVOQdIJ4Bc1bEM/L
+         eBhw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=QtNnMX4N;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of nicolinc@nvidia.com designates 2a01:111:f403:2408::600 as permitted sender) smtp.mailfrom=nicolinc@nvidia.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <nicolinc@nvidia.com>
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com (mail-bn8nam04on20600.outbound.protection.outlook.com. [2a01:111:f403:2408::600])
-        by mx.google.com with ESMTPS id b10-20020a056a000cca00b006e5812351e7si12304727pfv.211.2024.04.02.15.28.43
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2024 15:28:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nicolinc@nvidia.com designates 2a01:111:f403:2408::600 as permitted sender) client-ip=2a01:111:f403:2408::600;
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id dh9-20020a05622a4e0900b00432c4f4fa0esi7049712qtb.294.2024.04.02.19.22.14
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Apr 2024 19:22:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=QtNnMX4N;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of nicolinc@nvidia.com designates 2a01:111:f403:2408::600 as permitted sender) smtp.mailfrom=nicolinc@nvidia.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=l29ADSdPD3R95LMsL17MjJzaW2e7tkVcQ9MU8kg7YDcdNkrwIk8yUgA0uwowJthSqPXU3IOmrqNaOgyWnNNGiBgbEbgTyqP16RgC6RQ/FJ/MeP1Bz07Bf1GIyj21Zo4Dw0kcTSH3YnJh+wtL3Td12w/ZGGl8otzcHaCIfBYNpqWX3cHtgW9VvvDv4Ttv2qEKu8udN0aEzBfrTAmrG+JeNOkhXwyFJirs7U2kc0P7+zVajI2WDDQX8URCFNTilNyrn1tKdn6gsKqJY2oztb06Odqb/Parli0Qa9bHoUvZ3KIOVZKPmSoyp3iV7DTBDXcpS+gnhbnRSU/fRvS45D0xvw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Gyl49u0yWFc0G97vQdyP4pyTSrP7vlqokTAN3w1h3BM=;
- b=lU8AjzSlCLfd3qdMNLklnRXRNwPGsYD5HCHW3hGXQMInAH9U92CP5pDsCt9V3fQGhrHwrZU79IFvnyrTlAKAQFeRvvmsNqJf6cJRBNzxZG7gAPGm9+nHtLiqYaub6U/XS1dFPO3ZJ59BCOIDseCfF5CUjMjzIT86jcJzeocafLlteaJpMYbztUy5seBxSM6Am4azZpB3ZMUk0cJyGeMex1b1zVR8QGcfGRFgrMdp5gNpXx4GZRR08W5cimheyHHyeb7O/XBKxi8WZaA1W4HVIy9f18aa7EXmeBUgGQccnnVDCxfjRBdQfTWmxQcm6V0w5hmtuyppNv4QV4gYDNOxlg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=google.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Gyl49u0yWFc0G97vQdyP4pyTSrP7vlqokTAN3w1h3BM=;
- b=QtNnMX4NUefwClUkjxSdZf+GrAQnqcrXQ4cFvydIkk5FVbO+6k/bRMK+gSgFKew4ZsJOK+8xPryUKUNL6ZPHJeUWKqFDtvLmi4bUbm0SPYEl6NH9ZTHPPVy4JKQ7SCiCKlwmknKABeu/rNCt0geornfqu8Gv1TiyOrnvtwpr8jK3zzE1hMTijMvKi7fa6PO8JqXTrR0vrZ/k7OgLNNooTPiwb7vCDfwUURsZbSwwz5m+A+4wnIDKqYmZD49LXszxETIl0Ue6htnrWKgEMVVdmtybnAfDMKRWERsoxguP4sReQ+B9RZlxya4Yb+wT/p0LNZyM1ObAKskZbTkhq8CdCg==
-Received: from DM6PR01CA0027.prod.exchangelabs.com (2603:10b6:5:296::32) by
- MN2PR12MB4359.namprd12.prod.outlook.com (2603:10b6:208:265::24) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.46; Tue, 2 Apr
- 2024 22:28:34 +0000
-Received: from CH3PEPF0000000C.namprd04.prod.outlook.com
- (2603:10b6:5:296:cafe::e6) by DM6PR01CA0027.outlook.office365.com
- (2603:10b6:5:296::32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.46 via Frontend
- Transport; Tue, 2 Apr 2024 22:28:34 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- CH3PEPF0000000C.mail.protection.outlook.com (10.167.244.39) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7452.22 via Frontend Transport; Tue, 2 Apr 2024 22:28:33 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.41; Tue, 2 Apr 2024
- 15:28:15 -0700
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail204.nvidia.com
- (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 2 Apr
- 2024 15:28:14 -0700
-Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com (10.129.68.8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12 via Frontend
- Transport; Tue, 2 Apr 2024 15:28:14 -0700
-Date: Tue, 2 Apr 2024 15:28:12 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Mostafa Saleh <smostafa@google.com>
-CC: <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
-	<peter.maydell@linaro.org>, <qemu-devel@nongnu.org>,
-	<jean-philippe@linaro.org>, <alex.bennee@linaro.org>, <maz@kernel.org>,
-	<julien@xen.org>
-Subject: Re: [RFC PATCH 00/12] SMMUv3 nested translation support
-Message-ID: <ZgyGfMz7IktmwtP/@Asurada-Nvidia>
-References: <20240325101442.1306300-1-smostafa@google.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rrqGP-0000hh-35; Tue, 02 Apr 2024 22:22:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rrqGL-0000hK-H4; Tue, 02 Apr 2024 22:22:06 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
+ id 1rrqGI-0007Pi-2F; Tue, 02 Apr 2024 22:22:05 -0400
+Received: from mail.maildlp.com (unknown [172.19.88.234])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4V8T2S6pCrz1h53y;
+ Wed,  3 Apr 2024 10:18:56 +0800 (CST)
+Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
+ by mail.maildlp.com (Postfix) with ESMTPS id 2FC4214011A;
+ Wed,  3 Apr 2024 10:21:42 +0800 (CST)
+Received: from [10.67.109.254] (10.67.109.254) by
+ kwepemi500008.china.huawei.com (7.221.188.139) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Wed, 3 Apr 2024 10:21:41 +0800
+Message-ID: <28ccee86-b6ca-8609-d528-10ec74bdc9db@huawei.com>
+Date: Wed, 3 Apr 2024 10:21:40 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240325101442.1306300-1-smostafa@google.com>
-Return-Path: nicolinc@nvidia.com
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PEPF0000000C:EE_|MN2PR12MB4359:EE_
-X-MS-Office365-Filtering-Correlation-Id: 152fc020-b6d1-4bff-70d7-08dc53643b7e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info:
-	D1KktmxSP+zyUAxJ5zaF6nA/EwGWYOd3BPojjqiTp7OxCZ9nAIQlNcmogsAXRO0IACX1L/Atk1+fo3nM9ImtUyKqpEj6zcLeQVuAtF9BfoHnFmUwe7VJpxoPe7NeHk+R0uAXA99JI0t4FRsAzzoHMQOAgK/TnmNV8TOo2jSjlQk2BqU22sc+s0WmSc6AMU+qvHYW5X32WTn34H4Dox89eMvUi30TaKdL0oO6a33pVtnxwOI++7Hm4TXgvhN8/kXile7DHw3ivwMTzI2z5X7idNfi2ANgyz55uSypNV8A72uMazK/ffT6Nwc8TQ6whhO/JCHMEGtbGjb8YpTX3E6ORRUsf6WytTjZoME7gDW9/dt4I7/75X7JLlnwW21U2oY8MfcRFkRHtt8IGIYyWBdxkEMg7HewfyB6MO3eJBJ37In16VehPQxSoEYUYlvPWjguGzIexubeFxoorJZ7MbGPOxWfZ7FHjUvMlvq5e9dwX+emVsTFp/8hG1/YzBvjNXd9GcFWb6ma4b+YnApNFCGCiim9zGevOQPrY2N1ju6urfh6H7NTFmIsHX3VIv2Mt9d3EzW/pqnSXnEC9Kl3Kw2iRg1tCpm+uWKGV5hEFS+fF7VtD8G6oaiH0VNc8sh5b4dPirA1nYv9zPMk/q5Wx8lDefTIXLtNp7CGQJ86TJ+Y7FIzbkmiR65h+t2bk5KeT3nKO5EbyOhGXjjT6kGZZ4PnBWlfsVulTXFQwO9ykHrP6tW/edX6+UNgVzgnGAhNE+tB
-X-Forefront-Antispam-Report:
-	CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230031)(376005)(82310400014)(1800799015)(36860700004);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Apr 2024 22:28:33.8182
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 152fc020-b6d1-4bff-70d7-08dc53643b7e
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource:
-	CH3PEPF0000000C.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4359
-X-TUID: oVozXhHOIvQS
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.0
+Subject: Re: [PATCH v11 18/23] hw/intc/arm_gicv3: Handle icv_nmiar1_read() for
+ icc_nmiar1_read()
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <eduardo@habkost.net>, <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, 
+ <wangyanan55@huawei.com>, <richard.henderson@linaro.org>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+References: <20240330103128.3185962-1-ruanjinjie@huawei.com>
+ <20240330103128.3185962-19-ruanjinjie@huawei.com>
+ <CAFEAcA_WY04voee07n6Ph606xqy=QvTkYdMyqYf5LMHUS5GcDw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_WY04voee07n6Ph606xqy=QvTkYdMyqYf5LMHUS5GcDw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.67.109.254]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ kwepemi500008.china.huawei.com (7.221.188.139)
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
+X-Spam_score_int: -45
+X-Spam_score: -4.6
+X-Spam_bar: ----
+X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.376,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
+From:  Jinjie Ruan via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ADHsZulL/kY5
 
-Hi Mostafa,
 
-On Mon, Mar 25, 2024 at 10:13:56AM +0000, Mostafa Saleh wrote:
-> 
-> Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
-> but not nested instances.
-> This patch series adds support for nested translation in SMMUv3,
-> this is controlled by property “arm-smmuv3.stage=nested”, and
-> advertised to guests as (IDR0.S1P == 1 && IDR0.S2P == 2)
 
-IIUIC, with this series, vSMMU will support a virtualized 2-stage
-translation in a guest VM, right? I wonder how it would interact
-with the ongoing 2-stage nesting support with host and guest. Or
-is it supposed to be just a total orthogonal feature without any
-interaction with the host system?
+On 2024/4/3 0:12, Peter Maydell wrote:
+> On Sat, 30 Mar 2024 at 10:33, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
+>>
+>> Implement icv_nmiar1_read() for icc_nmiar1_read(), so add definition for
+>> ICH_LR_EL2.NMI and ICH_AP1R_EL2.NMI bit.
+>>
+>> If FEAT_GICv3_NMI is supported, ich_ap_write() should consider ICV_AP1R_EL1.NMI
+>> bit. In icv_activate_irq() and icv_eoir_write(), the ICV_AP1R_EL1.NMI bit
+>> should be set or clear according to the Non-maskable property. And the RPR
+>> priority should also update the NMI bit according to the APR priority NMI bit.
+>>
+>> By the way, add gicv3_icv_nmiar1_read trace event.
+>>
+>> If the hpp irq is a NMI, the icv iar read should return 1022 and trap for
+>> NMI again
+>>
+>> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>> v11:
+>> - Deal with NMI in the callers instead of ich_highest_active_virt_prio().
+>> - Set either NMI or a group-priority bit, not both.
+>> - Only set AP NMI bits in the 0 reg.
+>> - Handle NMI in hppvi_index(), icv_hppi_can_preempt() and icv_eoir_write().
+>> v10:
+>> - Rename ICH_AP1R_EL2_NMI to ICV_AP1R_EL1_NMI.
+>> - Add ICV_RPR_EL1_NMI definition.
+>> - Set ICV_RPR_EL1.NMI according to the ICV_AP1R<n>_EL1.NMI in
+>>   ich_highest_active_virt_prio().
+>> v9:
+>> - Correct the INTID_NMI logic.
+>> v8:
+>> - Fix an unexpected interrupt bug when sending VNMI by running qemu VM.
+>> v7:
+>> - Add Reviewed-by.
+>> v6:
+>> - Implement icv_nmiar1_read().
+>> ---
+>>  hw/intc/arm_gicv3_cpuif.c | 97 ++++++++++++++++++++++++++++++++++-----
+>>  hw/intc/gicv3_internal.h  |  4 ++
+>>  hw/intc/trace-events      |  1 +
+>>  3 files changed, 91 insertions(+), 11 deletions(-)
+>>
+>> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+>> index f99f2570a6..a7bc44b30c 100644
+>> --- a/hw/intc/arm_gicv3_cpuif.c
+>> +++ b/hw/intc/arm_gicv3_cpuif.c
+>> @@ -157,6 +157,10 @@ static int ich_highest_active_virt_prio(GICv3CPUState *cs)
+>>      int i;
+>>      int aprmax = ich_num_aprs(cs);
+>>
+>> +    if (cs->gic->nmi_support && cs->ich_apr[GICV3_G1NS][0] & ICV_AP1R_EL1_NMI) {
+>> +        return 0x80;
+> 
+> This should be 0, not 0x80 -- see the register description for
+> ICH_LR<n>_EL2 Priority field: when NMI is 1, the virtual interrupt's
+> priority is treated as 0x0.
+> 
+>> +    }
+>> +
+>>      for (i = 0; i < aprmax; i++) {
+>>          uint32_t apr = cs->ich_apr[GICV3_G0][i] |
+>>              cs->ich_apr[GICV3_G1NS][i];
+>> @@ -191,6 +195,7 @@ static int hppvi_index(GICv3CPUState *cs)
+>>       * correct behaviour.
+>>       */
+>>      int prio = 0xff;
+>> +    bool nmi = false;
+>>
+>>      if (!(cs->ich_vmcr_el2 & (ICH_VMCR_EL2_VENG0 | ICH_VMCR_EL2_VENG1))) {
+>>          /* Both groups disabled, definitely nothing to do */
+>> @@ -200,6 +205,11 @@ static int hppvi_index(GICv3CPUState *cs)
+>>      for (i = 0; i < cs->num_list_regs; i++) {
+>>          uint64_t lr = cs->ich_lr_el2[i];
+>>          int thisprio;
+>> +        bool thisnmi = false;
+>> +
+>> +        if (cs->gic->nmi_support) {
+>> +            thisnmi = lr & ICH_LR_EL2_NMI;
+>> +        }
+> 
+> You could write this a little more concisely as
+>       bool thisnmi = cs->gic_nmi_support && (lr & ICH_LR_EL2_NMI);
 
-Thanks
-Nicolin
+If the following if check continues, the operations are unnecessary, so
+I think it's more appropriate to put it as thisprio operations do it.
 
-> Main changes(architecture):
-> ============================
-> 1) CDs are considered IPA and translated with stage-2.
-> 2) TTBx and tables for stage-1 are considered IPA and translated
->    with stage-2.
-> 3) Translate the IPA address with stage-2.
 > 
-> TLBs:
-> ======
-> TLBs are the most tricky part.
+>>          if (ich_lr_state(lr) != ICH_LR_EL2_STATE_PENDING) {
+>>              /* Not Pending */
+>> @@ -219,9 +229,13 @@ static int hppvi_index(GICv3CPUState *cs)
+>>
+>>          thisprio = ich_lr_prio(lr);
+>>
+>> -        if (thisprio < prio) {
+>> +        if ((thisprio < prio) || ((thisprio == prio) && (thisnmi & (!nmi)))) {
+>>              prio = thisprio;
+>>              idx = i;
+>> +
+>> +            if (cs->gic->nmi_support) {
+>> +                nmi = thisnmi;
+>> +            }
 > 
-> 1) General design
->    Unified(Combined) design is used, where a new tag is added "stage"
->    which has 2 valid values:
->    - STAGE_1: Meaning this entry translates VA to PADDR, it can be
->      cached from fully nested configuration or from stage-1 only.
->      It doesn't support separate cached entries (VA to IPA).
+> You don't need to check nmi_support here because if nmi_support
+> is false then thisnmi will also be false, and so we will never
+> set nmi to anything other than false.
 > 
->    - STAGE_2: Meaning this translates IPA to PADDR, cached from
->      stage-2  only configuration.
+>>          }
+>>      }
+>>
+>> @@ -326,6 +340,12 @@ static bool icv_hppi_can_preempt(GICv3CPUState *cs, uint64_t lr)
+>>          return true;
+>>      }
+>>
+>> +    if ((prio & mask) == (rprio & mask) &&
+>> +        cs->gic->nmi_support && (lr & ICH_LR_EL2_NMI) &&
+>> +        (!(cs->ich_apr[GICV3_G1NS][0] & ICV_AP1R_EL1_NMI))) {
+>> +        return true;
+>> +    }
+>> +
+>>      return false;
+>>  }
 > 
->    TLBs are also modified to cache 2 permissions, a new permission added
->    "parent_perm."
+> This isn't the only change needed to icv_hppi_can_preempt():
+> virtual NMIs are never masked by the MPR, so that check also
+> must be changed. If we pull out a variable:
 > 
->    For non-nested configuration, perm == parent_perm and nothing
->    changes. This is used to know which stage to use in case there is
->    a permission fault from a TLB entry.
+>     bool is_nmi = cs->gic->nmi_support && (lr & ICH_LR_EL2_NMI);
 > 
-> 2) Caching in TLB
->    Stage-1 and stage-2 are inserted in the TLB as is.
->    For nested translation, both entries are combined into one TLB
->    entry. Everything is used from stage-1, except:
->    - transatled_addr from stage-2.
->    - parent_perm is from stage-2.
->    - addr_mask: is the minimum of both.
+> we can use that both to gate the vpmr check:
 > 
-> 3) TLB Lookup
->    For stage-1 and nested translations, it look for STAGE_1 entries.
->    For stage-2 it look for STAGE_2 TLB entries.
+>     if (!is_nmi && prio >= vpmr) {
 > 
-> 4) TLB invalidation
->    - Stage-1 commands (CMD_TLBI_NH_VAA, SMMU_CMD_TLBI_NH_VA,
->      SMMU_CMD_TLBI_NH_ALL): Invalidate TLBs tagged with SMMU_STAGE_1.
->    - Stage-2 commands (CMD_TLBI_S2_IPA): Invalidate TLBs tagged with
->      SMMU_STAGE_2.
->    - All (SMMU_CMD_TLBI_S12_VMALL): Will invalidate both, this is
->      communicated to the TLB as SMMU_NESTED which is (SMMU_STAGE_1 |
->      SMMU_STAGE_2) which uses it as a mask.
+> and also in the priority check you have here.
 > 
->    As far as I understand, this is compliant with the ARM
->    architecture, based on:
->    - ARM ARM DDI 0487J.a: RLGSCG, RTVTYQ, RGNJPZ
->    - ARM IHI 0070F.b: 16.2 Caching
+>> @@ -736,13 +765,19 @@ static void icv_activate_irq(GICv3CPUState *cs, int idx, int grp)
+>>       */
+>>      uint32_t mask = icv_gprio_mask(cs, grp);
+>>      int prio = ich_lr_prio(cs->ich_lr_el2[idx]) & mask;
+>> +    bool nmi = cs->ich_lr_el2[idx] & ICH_LR_EL2_NMI;
+>>      int aprbit = prio >> (8 - cs->vprebits);
+>>      int regno = aprbit / 32;
+>>      int regbit = aprbit % 32;
+>>
+>>      cs->ich_lr_el2[idx] &= ~ICH_LR_EL2_STATE_PENDING_BIT;
+>>      cs->ich_lr_el2[idx] |= ICH_LR_EL2_STATE_ACTIVE_BIT;
+>> -    cs->ich_apr[grp][regno] |= (1 << regbit);
+>> +
+>> +    if (cs->gic->nmi_support && nmi) {
+>> +        cs->ich_apr[grp][regno] |= ICV_AP1R_EL1_NMI;
+>> +    } else {
+>> +        cs->ich_apr[grp][regno] |= (1 << regbit);
+>> +    }
+>>  }
+>>
+>>  static void icv_activate_vlpi(GICv3CPUState *cs)
+>> @@ -776,7 +811,11 @@ static uint64_t icv_iar_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>>          if (thisgrp == grp && icv_hppi_can_preempt(cs, lr)) {
+>>              intid = ich_lr_vintid(lr);
+>>              if (!gicv3_intid_is_special(intid)) {
+>> -                icv_activate_irq(cs, idx, grp);
+>> +                if (!(lr & ICH_LR_EL2_NMI)) {
 > 
->    An alternative approach would be to instantiate 2 TLBs, one per
->    each stage. I haven’t investigated that.
+> This is missing checks on both whether the GIC has NMI support and
+> on whether the SCTLR NMI bit is set (compare pseudocode
+> VirtualReadIAR1()). I suggest defining a
 > 
-> Others
-> =======
-> - Advertise SMMUv3.2-S2FWB, it is NOP for QEMU as it doesn’t support
->   attributes.
+>         bool nmi = cs->gic->nmi_support &&
+>             (env->cp15.sctlr_el[arm_current_el(env)] & SCTLR_NMI) &&
+>             (lr & ICH_LR_EL2_NMI);
 > 
-> - OAS: A typical setup with nesting is to share CPU stage-2 with the
->   SMMU, and according to the user manual, SMMU OAS must match the
->   system physical address.
+> and then you can check "if (!nmi)" here.
 > 
->   This was discussed before in
->   https://lore.kernel.org/all/20230226220650.1480786-11-smostafa@google.com/
->   The implementation here, follows the discussion, where migration is
->   added and oas is set up from the board (virt). However, the OAS is
->   chosen based on the CPU PARANGE as there is no fixed one.
+>> +                    icv_activate_irq(cs, idx, grp);
+>> +                } else {
+>> +                    intid = INTID_NMI;
+>> +                }
+>>              } else {
+>>                  /* Interrupt goes from Pending to Invalid */
+>>                  cs->ich_lr_el2[idx] &= ~ICH_LR_EL2_STATE_PENDING_BIT;
+>> @@ -797,8 +836,32 @@ static uint64_t icv_iar_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>>
+>>  static uint64_t icv_nmiar1_read(CPUARMState *env, const ARMCPRegInfo *ri)
+>>  {
+>> -    /* todo */
+>> +    GICv3CPUState *cs = icc_cs_from_env(env);
+>> +    int idx = hppvi_index(cs);
+>>      uint64_t intid = INTID_SPURIOUS;
+>> +
+>> +    if (idx >= 0 && idx != HPPVI_INDEX_VLPI) {
+>> +        uint64_t lr = cs->ich_lr_el2[idx];
+>> +        int thisgrp = (lr & ICH_LR_EL2_GROUP) ? GICV3_G1NS : GICV3_G0;
+>> +
+>> +        if ((thisgrp == GICV3_G1NS) && (lr & ICH_LR_EL2_NMI)) {
+>> +            intid = ich_lr_vintid(lr);
+>> +            if (!gicv3_intid_is_special(intid)) {
+>> +                icv_activate_irq(cs, idx, GICV3_G1NS);
+>> +            } else {
+>> +                /* Interrupt goes from Pending to Invalid */
+>> +                cs->ich_lr_el2[idx] &= ~ICH_LR_EL2_STATE_PENDING_BIT;
+>> +                /* We will now return the (bogus) ID from the list register,
+>> +                 * as per the pseudocode.
+>> +                 */
 > 
-> - For nested configuration, IOVA notifier only notifies for stage-1
->   invalidations (as far as I understand this is the intended
->   behaviour as it notifies for IOVA)
+> QEMU's coding style wants the /* on a line of its own for a
+> multiline comment.
 > 
-> - Stop ignoring VMID for stage-1 if stage-2 is also supported.
+>> +            }
+>> +        }
+>> +    }
+>> +
+>> +    trace_gicv3_icv_nmiar1_read(gicv3_redist_affid(cs), intid);
+>> +
+>> +    gicv3_cpuif_virt_update(cs);
+>> +
+>>      return intid;
+>>  }
 > 
+>> @@ -1504,6 +1573,7 @@ static void icv_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>>      int irq = value & 0xffffff;
+>>      int grp = ri->crm == 8 ? GICV3_G0 : GICV3_G1NS;
+>>      int idx, dropprio;
+>> +    bool nmi = false;
+>>
+>>      trace_gicv3_icv_eoir_write(ri->crm == 8 ? 0 : 1,
+>>                                 gicv3_redist_affid(cs), value);
+>> @@ -1516,8 +1586,8 @@ static void icv_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>>       * error checks" (because that lets us avoid scanning the AP
+>>       * registers twice).
+>>       */
+>> -    dropprio = icv_drop_prio(cs);
+>> -    if (dropprio == 0xff) {
+>> +    dropprio = icv_drop_prio(cs, &nmi);
+>> +    if (dropprio == 0xff && !nmi) {
+>>          /* No active interrupt. It is CONSTRAINED UNPREDICTABLE
+>>           * whether the list registers are checked in this
+>>           * situation; we choose not to.
+>> @@ -1539,8 +1609,9 @@ static void icv_eoir_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>>          uint64_t lr = cs->ich_lr_el2[idx];
+>>          int thisgrp = (lr & ICH_LR_EL2_GROUP) ? GICV3_G1NS : GICV3_G0;
+>>          int lr_gprio = ich_lr_prio(lr) & icv_gprio_mask(cs, grp);
+>> +        int thisnmi = lr & ICH_LR_EL2_NMI;
 > 
-> Future improvements:
-> =====================
-> 1) One small improvement, that I don’t think it’s worth the extra
->    complexity, is in case of Stage-1 TLB miss for nested translation,
->    we can do stage-1 walk and lookup for stage-2 TLBs, instead of
->    doing the full walk.
+> This variable should be "bool". An "int" is 32 bits, so because
+> ICH_LR_EL2_NMI is bit 59, the value of "lr & ICH_LR_EL2_NMI" when
+> cast to int is always zero. Using bool avoids this bug and also
+> is consistent with the type we used for the 'nmi' variable we're
+> about to compare it with.
 > 
-> 2) Patch 0006 (hw/arm/smmuv3: Translate CD and TT using stage-2 table)
->    introduces a macro to use functions that rely on cfg for stage-2,
->    I don’t like it. However, I didn’t find a simple way around it,
->    either we change many functions to have a separate stage argument,
->    or add another arg in config, which is probably more code.
+>> -        if (thisgrp == grp && lr_gprio == dropprio) {
+>> +        if (thisgrp == grp && (lr_gprio == dropprio || thisnmi == nmi)) {
+>>              if (!icv_eoi_split(env, cs) || irq >= GICV3_LPI_INTID_START) {
+>>                  /*
+>>                   * Priority drop and deactivate not split: deactivate irq now.
+>> @@ -2626,7 +2697,11 @@ static void ich_ap_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>>
+>>      trace_gicv3_ich_ap_write(ri->crm & 1, regno, gicv3_redist_affid(cs), value);
+>>
+>> -    cs->ich_apr[grp][regno] = value & 0xFFFFFFFFU;
+>> +    if (cs->gic->nmi_support) {
+>> +        cs->ich_apr[grp][regno] = value & (0xFFFFFFFFU | ICV_AP1R_EL1_NMI);
+>> +    } else {
+>> +        cs->ich_apr[grp][regno] = value & 0xFFFFFFFFU;
+>> +    }
+>>      gicv3_cpuif_virt_irq_fiq_update(cs);
+>>  }
 > 
-> Testing
-> ========
-> 1) IOMMUFD + VFIO
->    Kernel: https://lore.kernel.org/all/cover.1683688960.git.nicolinc@nvidia.com/
->    VMM: https://qemu-devel.nongnu.narkive.com/o815DqpI/rfc-v5-0-8-arm-smmuv3-emulation-support
-> 
->    By assigning “virtio-net-pci,netdev=net0,disable-legacy=on,iommu_platform=on,ats=on”,
->    to a guest VM (on top of QEMU guest) with VIFO and IOMMUFD.
-> 
-> 2) Work in progress prototype I am hacking on for nesting on KVM
->    (this is nowhere near complete, and misses many stuff but it
->    doesn't require VMs/VFIO) also with virtio-net-pci and git
->    cloning a bunch of stuff and also observing traces.
->    https://android-kvm.googlesource.com/linux/+log/refs/heads/smostafa/android15-6.6-smmu-nesting-wip
-> 
-> hw/arm/smmuv3: Split smmuv3_translate() better viewed with --color-moved
-> 
-> 
-> Mostafa Saleh (12):
->   hw/arm/smmu: Use enum for SMMU stage
->   hw/arm/smmu: Split smmuv3_translate()
->   hw/arm/smmu: Add stage to TLB
->   hw/arm/smmu: Support nesting in commands
->   hw/arm/smmuv3: Support nested SMMUs in smmuv3_notify_iova()
->   hw/arm/smmuv3: Translate CD and TT using stage-2 table
->   hw/arm/smmu-common: Support nested translation
->   hw/arm/smmuv3: Support and advertise nesting
->   hw/arm/smmuv3: Advertise S2FWB
->   hw/arm/smmu: Refactor SMMU OAS
->   hw/arm/smmuv3: Add property for OAS
->   hw/arm/virt: Set SMMU OAS based on CPU PARANGE
-> 
->  hw/arm/smmu-common.c         | 256 ++++++++++++++++++----
->  hw/arm/smmu-internal.h       |   2 +
->  hw/arm/smmuv3-internal.h     |  17 +-
->  hw/arm/smmuv3.c              | 405 ++++++++++++++++++++++-------------
->  hw/arm/trace-events          |  14 +-
->  hw/arm/virt.c                |  14 +-
->  include/hw/arm/smmu-common.h |  46 +++-
->  include/hw/arm/smmuv3.h      |   1 +
->  target/arm/cpu.h             |   2 +
->  target/arm/cpu64.c           |   5 +
->  10 files changed, 533 insertions(+), 229 deletions(-)
-> 
-> --
-> 2.44.0.396.g6e790dbe36-goog
-> 
+> thanks
+> -- PMM

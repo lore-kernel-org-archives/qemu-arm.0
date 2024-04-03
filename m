@@ -1,292 +1,160 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp4493113ejv;
-        Wed, 3 Apr 2024 03:39:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUsSUqIwI7SvB8kQXrTaui+C9w4vjTB2o8ESapYOVqS+R1uZ8CTYThG+GAv6ZivCfgYIiXKBBvlQx3RFbXTGcMh4yEBQQUM
-X-Received: by 2002:a05:600c:35c5:b0:413:f4d0:c233 with SMTP id r5-20020a05600c35c500b00413f4d0c233mr9654813wmq.35.1712140750290;
-        Wed, 03 Apr 2024 03:39:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712140750; cv=none;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp4526533ejv;
+        Wed, 3 Apr 2024 04:50:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWLalAVcomb/TACkUTV0Xd2qLoRbUFC2DW+YAk1tplA+jK6Copp9RkGc8lfcOjGAlfAZuaZKqZx/fTznUX+n/XwsM4QAc+w
+X-Google-Smtp-Source: AGHT+IHnjrG9xG2v60ABxPpu83IRtkEXqyBIX8zJ1lLchIfDkDZF6nh2tLLhWVXWUvQ4V4C+pLAm
+X-Received: by 2002:ac8:7d81:0:b0:431:3963:14a9 with SMTP id c1-20020ac87d81000000b00431396314a9mr3229797qtd.31.1712145026375;
+        Wed, 03 Apr 2024 04:50:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712145026; cv=none;
         d=google.com; s=arc-20160816;
-        b=vV/KkHNlim2Qn4mQgE24yXzPwaWJ7X5Qxye325y9XIliNua4FAuHvJhi9kMMAuTOBC
-         Jd8KNhEpsZZBL8OuVC0vrql4vYa2lAiTBDnStoT0IsC25Lru+ZgYPFjUJoeW/c84QBV1
-         A13PyAJhomH53jT/W1w0j1YsL+RfEO15PA+8afuqa1dGRUUhexGZWt8L4Y3hK/apulY0
-         W5YRbozUgaFX25Wp1uuATtkir9+b1Ydqx+UV3SUEv0vUTBhOoNq5C+nNePjIjzkXMLYU
-         /OCM9LYRg8twANhq8oa2kLBKF2zCYL7JqEj9TpxQozMYEZbQeAidp72FaTdaR5s/1KGY
-         iCLA==
+        b=Zak9FCe9I9LcH/YW0mkQnZZ+T6h2bV7H4JeS4BeA3WpgVdKcHeN1AhFqjJEL1Y74C0
+         U4WeoLsJ0DcP2GjPgON2XkM+rLdXtYMa8JcSD0KGRkn68phUwn+WixnNPzIfDLGeJTey
+         IrilQIlNF8MGDoEvi7QHbeWzGeBIl/5Tj6rRqzhNslRgMxU2AYxGz8u5OmePmEMxPHCO
+         wmKCfB1kOT0b9O+KNjuI8M87FVUGOcMk/MGbjO68kQUgjC0yRqee1Ch/RrM3iiXglgEe
+         VcoS1zfgWxQ0iKnsEL2a1kmdYfW5jox73HYgB+8yCgzhz6IiS2pY7JrE1B5xGxQ9B3AD
+         l1MA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=L5uRbfpn8rAyhg4/JlDV2ZnHGFfvZpSBfsFBPdWj1Is=;
-        fh=/v08RNh5+BmWLa7dEE5WcQ8oNPmDnIrA2jmUPWFhsCk=;
-        b=OPdKQGucrUHV8mW5qr6/3pUCePy1Ak1cLKFToEe6SWdSt4hghCxuQ6pN8GR6AYVW2y
-         OuHCjXRDSB0yz6Y/u+buNqQM075F8ydRxYD9BN8A0h45WFmhve66ptNC9p8sHxSoY31U
-         SQRg0VctiFxqAb/CIqYPilRUo6F5Ae2XrcROfhTELZ19Ag9GI8FzjKCIM6N+8+81vl8o
-         4nONAlmuvC9//DbJt8sUzTwWxWsSZYkU6EBaFPH4fs2qvbTIGEn0TmGjWvlKWJn/GQTd
-         hKPXxFCyABHVuIGzFiKINrwvrclTRQai1SmWEZbFZhS12YiL2YEFSdQnEr5QUoQR3tA1
-         JB1g==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Q04MB9sbtDquxr5tfECR0Pc+WkFOv2d45d7auHnPkmA=;
+        fh=/p1foQEaIva2b7/ljiBpkBD5abxvpgufgbCeIglQfWQ=;
+        b=y+SFw343iOC8WQhtkqXMbEW53IXQg2eY93LmjHTmVwXEMpewkdoA+IYcLgzx6SE27r
+         MSpBhL15kSvz9WPmWNquwUbO4tlzXPg2Bk0eZ/b9W3Mu/5wNAj6PSPk+9wDBS9mjm3+w
+         T2d+TiOY81uY/whgbtg9dj/Mu9vlUyMBXpa9YPqHVLNHKBkI2QPBfJYp89GlhUI9XFRd
+         7jGnrSAy9sW2D6DIwxIGJ9C/ZkdZ/nCpt7yCFejYFnNuPAs6Kd+S0CQ57OuKyP25r+a5
+         W0odBNQej3rwIZcCL4N/JuPbBoQ1uku/BJeg7D14mmKH5EDPKqjeMYD/UqMVNxJdM9Eo
+         laIg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=XT4pk45s;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <smostafa@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o3-20020a05600c4fc300b0041547ffa750sor72286wmq.4.2024.04.03.03.39.10
+       dkim=pass header.i=@linaro.org header.s=google header.b=rTiKymSV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c20-20020a05622a025400b00432b30bc544si14120736qtx.800.2024.04.03.04.50.26
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 03 Apr 2024 03:39:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 03 Apr 2024 04:50:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=XT4pk45s;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=rTiKymSV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rrz7p-0001o6-4a; Wed, 03 Apr 2024 07:49:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rrz7k-0001md-O7
+ for qemu-arm@nongnu.org; Wed, 03 Apr 2024 07:49:50 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rrz7j-0006GN-0x
+ for qemu-arm@nongnu.org; Wed, 03 Apr 2024 07:49:48 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-515c50dc2afso6974289e87.1
+ for <qemu-arm@nongnu.org>; Wed, 03 Apr 2024 04:49:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1712140750; x=1712745550; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=L5uRbfpn8rAyhg4/JlDV2ZnHGFfvZpSBfsFBPdWj1Is=;
-        b=XT4pk45sd+wfE16oVWjla8UbmLRol8qx5Sw4pw/FL4gD5E31dkBcyIBZPnrOJ7tQzA
-         E9s1I8up0fhkKj7H5aOe/7xTwVb01X6kEgtMbNpkdl2OPlMwQwuCMHkWcsvAohC4v0ML
-         AB+PWmBuTCzQV1zQEIAxAy2y+aqK3p+0jkxCneViLgJk4AQNDum3elbE3bTLCKAqUA06
-         nkZpEXFoOQjERWYeKxeTrA0uP+RLqD9uyyvI1d97qaJA71u41X+xLq4VAsbcVBvGHVRN
-         GuCMSmeTkMdyqFd6PVipj4bBl8Bz1BfDD74DR03cm287cvjXyHPOyuMTivqom20Drux4
-         WarA==
+ d=linaro.org; s=google; t=1712144984; x=1712749784; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Q04MB9sbtDquxr5tfECR0Pc+WkFOv2d45d7auHnPkmA=;
+ b=rTiKymSVsIfF0jepYx6m/kQe83jNR5mGrtY54lYY4QrHbOhr3c9jNhm6pBd1cDsNu2
+ kJTUnEH55fY0RTyjBqcZbEnPJ2Wsz6aEOZVRyJJMQ85SMoHiJG26jnGHq9CsG1hTDI9t
+ jdpypGuPQZKcbzGT8BXrqlfvQuPafI8CaT86f0su1N2sEUVXRfNPT5u5se9lvTtMcGXN
+ T9Igj/aH7Z479P6wwHYk0c7iaJ27zApJPsY0SQIRyc/b96grSXhwAz5rId2qjFRuI7TA
+ Z3hBrLeyJ7E3pyryHvci3dAWz+V0SlT5QHPk5jxaRjAhDlm/ApfLXvEgT0Yngrv4oTni
+ YoxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712140750; x=1712745550;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=L5uRbfpn8rAyhg4/JlDV2ZnHGFfvZpSBfsFBPdWj1Is=;
-        b=RseZHv0t0bKVC5xS+lyF5u0VNGk1m1pxLhMf48UCrd96AGrP0gMQeMFKPwXZ1+WRZf
-         BLvvPmnmTXusqi0IRoSMiUFBLFrMSnJ5ipw4RNNEszWpIDoqnGcLCITteGLd9JSNvNZF
-         IrfgA9Z7K4GVeLSqBkAhlV47Vmtb67u4AQYtPRJZlpTroJqhFmUD8wbDRUNGMG3nZ1Xq
-         FE/IxoY06QjvyD0a5cLweUk5zJMGYbZwjctepJBp179BcPnECCPy0afYgFt5RAgTaDJk
-         cdeCYdrfapOPSP82/2W3kcw2SlLGVc3A9ZK1ovoCwVX9fYwXQV4mO2OUFo/RgATi29z2
-         Iadg==
-X-Forwarded-Encrypted: i=1; AJvYcCV+mULAJPn03nBBR2gng3DT/MDbU3BeN59xQ9la8vG506u7/AQm/n7EIKsJlgU9tMyMq8h1NlZlKBTA3tcaxHstC8Q+sKTr
-X-Gm-Message-State: AOJu0Yyn1AX506N4WYXMBcOHRduEHkJuK/LrE2jwoBVfsjO+a+MD2eZD
-	X5H04AN+HFV7RL4D07zAR980xW0ZoZNEB0QU9zq3pErwpjeKGegBiRkD+rqiDA==
-X-Google-Smtp-Source: AGHT+IFWa18vylUEOkR9TfcCo5jVlnZR6BcGKxxSu6MazmSehuaRmUlF15MEdcJtsSOT3wVShkwiSA==
-X-Received: by 2002:a05:600c:1c12:b0:415:615c:b98b with SMTP id j18-20020a05600c1c1200b00415615cb98bmr118907wms.5.1712140749689;
-        Wed, 03 Apr 2024 03:39:09 -0700 (PDT)
-Return-Path: <smostafa@google.com>
-Received: from google.com (180.232.140.34.bc.googleusercontent.com. [34.140.232.180])
-        by smtp.gmail.com with ESMTPSA id v13-20020a5d4b0d000000b0034356c434d0sm1913522wrq.117.2024.04.03.03.39.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Apr 2024 03:39:09 -0700 (PDT)
-Date: Wed, 3 Apr 2024 10:39:05 +0000
-From: Mostafa Saleh <smostafa@google.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
-	qemu-devel@nongnu.org, jean-philippe@linaro.org,
-	alex.bennee@linaro.org, maz@kernel.org, julien@xen.org
-Subject: Re: [RFC PATCH 00/12] SMMUv3 nested translation support
-Message-ID: <Zg0xyXBXGa8_Kx6k@google.com>
-References: <20240325101442.1306300-1-smostafa@google.com>
- <ZgyGfMz7IktmwtP/@Asurada-Nvidia>
+ d=1e100.net; s=20230601; t=1712144984; x=1712749784;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Q04MB9sbtDquxr5tfECR0Pc+WkFOv2d45d7auHnPkmA=;
+ b=TdIJwbUIGfOusIn3Dz63wABL5rT1cFu1ej3AY3uT4nkNpUHK2w+/auVymJngdfEyPC
+ axi5iE8uAjo+dyzKj95i0kykrk3okqKKQTq4AHYh2AwiEbrlFWWlwstnSGfkCaAFg94M
+ j9bDWCjddueEYcunILYPLc2Yq8/d4i+xXVkfxO3DP+iIKNwYG4ObrkgNYtD3SczjFzYD
+ 7e3R3LX380YwGL2hI4+b5CBYI8STLikjbZqkYD2XmFFrRMTyQ5iVKyRzyoi0CW29IK+0
+ ZWswrdqcRFhJqZqmYIVYi2gc1oyCA0mvUuWf2JrmylJ+Bcge52uBkGHzGhu+w4AIufvb
+ nT+w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXTEsUKtLXkfWgPscabZs/QVsBiODW4G6Ro1wxP3W7zKZwa9Io/sbI7tLRG7BmNanOj61he8GqCuPVgzeSAHaYsJa/B
+X-Gm-Message-State: AOJu0Yz9FS4tGm/LSUdpdj1V/NW6NAve4WywrYK8xRWI8HKeVGkD4Epr
+ jSKki0Y7vKyYy1zrR5k1B4MLjPEklnvpvNWwBFY4oRXWUGWAvpcnxE1gaLh0BC+KQ8i2okglLkg
+ 3kYkA3Lwsq7n3M5vNL3rKYD5uPGyqp4VkxRsqKg==
+X-Received: by 2002:ac2:5f49:0:b0:513:ba98:36a with SMTP id
+ 9-20020ac25f49000000b00513ba98036amr10290422lfz.10.1712144984208; Wed, 03 Apr
+ 2024 04:49:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZgyGfMz7IktmwtP/@Asurada-Nvidia>
-X-TUID: ++HFhXl3+9jp
+References: <20240330103128.3185962-1-ruanjinjie@huawei.com>
+ <20240330103128.3185962-19-ruanjinjie@huawei.com>
+ <CAFEAcA_WY04voee07n6Ph606xqy=QvTkYdMyqYf5LMHUS5GcDw@mail.gmail.com>
+ <6ff19301-8791-384e-bd40-5f58058f4234@huawei.com>
+In-Reply-To: <6ff19301-8791-384e-bd40-5f58058f4234@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 3 Apr 2024 12:49:32 +0100
+Message-ID: <CAFEAcA_Y_0SSaX_mSAr5eZvuU2fxPUWMow-0=4Bb-+2ofY2pEA@mail.gmail.com>
+Subject: Re: [PATCH v11 18/23] hw/intc/arm_gicv3: Handle icv_nmiar1_read() for
+ icc_nmiar1_read()
+To: Jinjie Ruan <ruanjinjie@huawei.com>
+Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
+ wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wgopPXHeXw4V
 
-Hi Nicolin,
+On Wed, 3 Apr 2024 at 04:16, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
+> On 2024/4/3 0:12, Peter Maydell wrote:
+> >> @@ -776,7 +811,11 @@ static uint64_t icv_iar_read(CPUARMState *env, const ARMCPRegInfo *ri)
+> >>          if (thisgrp == grp && icv_hppi_can_preempt(cs, lr)) {
+> >>              intid = ich_lr_vintid(lr);
+> >>              if (!gicv3_intid_is_special(intid)) {
+> >> -                icv_activate_irq(cs, idx, grp);
+> >> +                if (!(lr & ICH_LR_EL2_NMI)) {
+> >
+> > This is missing checks on both whether the GIC has NMI support and
+> > on whether the SCTLR NMI bit is set (compare pseudocode
+> > VirtualReadIAR1()). I suggest defining a
+> >
+> >         bool nmi = cs->gic->nmi_support &&
+> >             (env->cp15.sctlr_el[arm_current_el(env)] & SCTLR_NMI) &&
+> >             (lr & ICH_LR_EL2_NMI);
+>
+> The nmi_support check is redundant, as if FEAT_GICv3_NMI is unsupported,
+> the ICH_LR_EL2.NMI is RES0, so if ICH_LR_EL2.NMI is 1, FEAT_GICv3_NMI
+> has been surely realized.
 
-On Tue, Apr 02, 2024 at 03:28:12PM -0700, Nicolin Chen wrote:
-> Hi Mostafa,
-> 
-> On Mon, Mar 25, 2024 at 10:13:56AM +0000, Mostafa Saleh wrote:
-> > 
-> > Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
-> > but not nested instances.
-> > This patch series adds support for nested translation in SMMUv3,
-> > this is controlled by property “arm-smmuv3.stage=nested”, and
-> > advertised to guests as (IDR0.S1P == 1 && IDR0.S2P == 2)
-> 
-> IIUIC, with this series, vSMMU will support a virtualized 2-stage
-> translation in a guest VM, right? I wonder how it would interact
+As far as I can see you haven't changed ich_lr_write() to enforce
+that, though, so the guest can write 1 to the NMI bit even if the
+GIC doesn't support FEAT_GICv3_NMI. If you want to skip checking
+nmi_support here you need to enforce that the NMI bit in the LR
+is 0 in ich_lr_write().
 
-I always get confused with terminologies when dealing with QEMU;
-as the host can mean the actual host (which is x86_64 in my case)
-and the guest would aarch64 Linux fully emulated by QEMU, and the
-emulated guest can be considered a host and launch it’s guests wit
-KVM for example. This also will be more fun with guests supporting
-nested virtualization :)
-
-For simplicity, I will consider:
-- HOST: the fully emulated QEMU guest (aarch64) running on my machine.
-- GUEST: Any guest launched by the HOST (through KVM for example)
-- QEMU: Is the instance of QEMU emulating the HOST (built for x86)
-- QEMU-VMM: Is the instance of QEMU running on the HOST (built for
-  aarch64) which launches VMs(GUESTs).
-
-With that, AFAIU, vSMMU is the SMMUv3 emulation used for GUESTs with
-QEMU-VMM, where it has hooks in CMDQ and then the QEMU-VMM will issue
-IOCTLs to the HOST to do the actual SMMU work (through iommufd or IIRC
-there was previous patches from Eric that does that also), also the
-vSMMU is out of tree AFAICT.
-
-In that case, this work is orthogonal to that, the nested SMMUv3
-emulation in this series mainly targets QEMU which is advertised
-to the HOST, which then allows it to use iommufd with GUESts.
-
-In theory, that work can be extended to QEMU-VMM with vSMMU, but
-I guess that would be a lot of work as the VMM needs to collapse
-both stages as the kernel provides only one address space for the VMM.
-
-Mainly, I use this patches to test nesting patches I am hacking for
-KVM, also they can be used with your patches to test iommufd with
-needing hardware. (See testing section in the cover letter)
-
-> with the ongoing 2-stage nesting support with host and guest. Or
-> is it supposed to be just a total orthogonal feature without any
-> interaction with the host system?
-
-Are you referring to the iommufd work on Linux to support nesting?
-
-
-Thanks,
-Mostafa
-> Thanks
-> Nicolin
-> 
-> > Main changes(architecture):
-> > ============================
-> > 1) CDs are considered IPA and translated with stage-2.
-> > 2) TTBx and tables for stage-1 are considered IPA and translated
-> >    with stage-2.
-> > 3) Translate the IPA address with stage-2.
-> > 
-> > TLBs:
-> > ======
-> > TLBs are the most tricky part.
-> > 
-> > 1) General design
-> >    Unified(Combined) design is used, where a new tag is added "stage"
-> >    which has 2 valid values:
-> >    - STAGE_1: Meaning this entry translates VA to PADDR, it can be
-> >      cached from fully nested configuration or from stage-1 only.
-> >      It doesn't support separate cached entries (VA to IPA).
-> > 
-> >    - STAGE_2: Meaning this translates IPA to PADDR, cached from
-> >      stage-2  only configuration.
-> > 
-> >    TLBs are also modified to cache 2 permissions, a new permission added
-> >    "parent_perm."
-> > 
-> >    For non-nested configuration, perm == parent_perm and nothing
-> >    changes. This is used to know which stage to use in case there is
-> >    a permission fault from a TLB entry.
-> > 
-> > 2) Caching in TLB
-> >    Stage-1 and stage-2 are inserted in the TLB as is.
-> >    For nested translation, both entries are combined into one TLB
-> >    entry. Everything is used from stage-1, except:
-> >    - transatled_addr from stage-2.
-> >    - parent_perm is from stage-2.
-> >    - addr_mask: is the minimum of both.
-> > 
-> > 3) TLB Lookup
-> >    For stage-1 and nested translations, it look for STAGE_1 entries.
-> >    For stage-2 it look for STAGE_2 TLB entries.
-> > 
-> > 4) TLB invalidation
-> >    - Stage-1 commands (CMD_TLBI_NH_VAA, SMMU_CMD_TLBI_NH_VA,
-> >      SMMU_CMD_TLBI_NH_ALL): Invalidate TLBs tagged with SMMU_STAGE_1.
-> >    - Stage-2 commands (CMD_TLBI_S2_IPA): Invalidate TLBs tagged with
-> >      SMMU_STAGE_2.
-> >    - All (SMMU_CMD_TLBI_S12_VMALL): Will invalidate both, this is
-> >      communicated to the TLB as SMMU_NESTED which is (SMMU_STAGE_1 |
-> >      SMMU_STAGE_2) which uses it as a mask.
-> > 
-> >    As far as I understand, this is compliant with the ARM
-> >    architecture, based on:
-> >    - ARM ARM DDI 0487J.a: RLGSCG, RTVTYQ, RGNJPZ
-> >    - ARM IHI 0070F.b: 16.2 Caching
-> > 
-> >    An alternative approach would be to instantiate 2 TLBs, one per
-> >    each stage. I haven’t investigated that.
-> > 
-> > Others
-> > =======
-> > - Advertise SMMUv3.2-S2FWB, it is NOP for QEMU as it doesn’t support
-> >   attributes.
-> > 
-> > - OAS: A typical setup with nesting is to share CPU stage-2 with the
-> >   SMMU, and according to the user manual, SMMU OAS must match the
-> >   system physical address.
-> > 
-> >   This was discussed before in
-> >   https://lore.kernel.org/all/20230226220650.1480786-11-smostafa@google.com/
-> >   The implementation here, follows the discussion, where migration is
-> >   added and oas is set up from the board (virt). However, the OAS is
-> >   chosen based on the CPU PARANGE as there is no fixed one.
-> > 
-> > - For nested configuration, IOVA notifier only notifies for stage-1
-> >   invalidations (as far as I understand this is the intended
-> >   behaviour as it notifies for IOVA)
-> > 
-> > - Stop ignoring VMID for stage-1 if stage-2 is also supported.
-> > 
-> > 
-> > Future improvements:
-> > =====================
-> > 1) One small improvement, that I don’t think it’s worth the extra
-> >    complexity, is in case of Stage-1 TLB miss for nested translation,
-> >    we can do stage-1 walk and lookup for stage-2 TLBs, instead of
-> >    doing the full walk.
-> > 
-> > 2) Patch 0006 (hw/arm/smmuv3: Translate CD and TT using stage-2 table)
-> >    introduces a macro to use functions that rely on cfg for stage-2,
-> >    I don’t like it. However, I didn’t find a simple way around it,
-> >    either we change many functions to have a separate stage argument,
-> >    or add another arg in config, which is probably more code.
-> > 
-> > Testing
-> > ========
-> > 1) IOMMUFD + VFIO
-> >    Kernel: https://lore.kernel.org/all/cover.1683688960.git.nicolinc@nvidia.com/
-> >    VMM: https://qemu-devel.nongnu.narkive.com/o815DqpI/rfc-v5-0-8-arm-smmuv3-emulation-support
-> > 
-> >    By assigning “virtio-net-pci,netdev=net0,disable-legacy=on,iommu_platform=on,ats=on”,
-> >    to a guest VM (on top of QEMU guest) with VIFO and IOMMUFD.
-> > 
-> > 2) Work in progress prototype I am hacking on for nesting on KVM
-> >    (this is nowhere near complete, and misses many stuff but it
-> >    doesn't require VMs/VFIO) also with virtio-net-pci and git
-> >    cloning a bunch of stuff and also observing traces.
-> >    https://android-kvm.googlesource.com/linux/+log/refs/heads/smostafa/android15-6.6-smmu-nesting-wip
-> > 
-> > hw/arm/smmuv3: Split smmuv3_translate() better viewed with --color-moved
-> > 
-> > 
-> > Mostafa Saleh (12):
-> >   hw/arm/smmu: Use enum for SMMU stage
-> >   hw/arm/smmu: Split smmuv3_translate()
-> >   hw/arm/smmu: Add stage to TLB
-> >   hw/arm/smmu: Support nesting in commands
-> >   hw/arm/smmuv3: Support nested SMMUs in smmuv3_notify_iova()
-> >   hw/arm/smmuv3: Translate CD and TT using stage-2 table
-> >   hw/arm/smmu-common: Support nested translation
-> >   hw/arm/smmuv3: Support and advertise nesting
-> >   hw/arm/smmuv3: Advertise S2FWB
-> >   hw/arm/smmu: Refactor SMMU OAS
-> >   hw/arm/smmuv3: Add property for OAS
-> >   hw/arm/virt: Set SMMU OAS based on CPU PARANGE
-> > 
-> >  hw/arm/smmu-common.c         | 256 ++++++++++++++++++----
-> >  hw/arm/smmu-internal.h       |   2 +
-> >  hw/arm/smmuv3-internal.h     |  17 +-
-> >  hw/arm/smmuv3.c              | 405 ++++++++++++++++++++++-------------
-> >  hw/arm/trace-events          |  14 +-
-> >  hw/arm/virt.c                |  14 +-
-> >  include/hw/arm/smmu-common.h |  46 +++-
-> >  include/hw/arm/smmuv3.h      |   1 +
-> >  target/arm/cpu.h             |   2 +
-> >  target/arm/cpu64.c           |   5 +
-> >  10 files changed, 533 insertions(+), 229 deletions(-)
-> > 
-> > --
-> > 2.44.0.396.g6e790dbe36-goog
-> > 
+thanks
+-- PMM

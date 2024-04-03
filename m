@@ -1,37 +1,37 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp4484412ejv;
+Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp4484411ejv;
         Wed, 3 Apr 2024 03:19:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX+BqhL8xJGLZMfu9j01uQuy0CQXj4IlU9ZWr6qss+9imtMUyOlHwNljPndnCn6XzPLK8EyLBrV5QZ9q3J3er2wMDPBXt1x
-X-Google-Smtp-Source: AGHT+IHuPo0w94vU43lU1R/bY7Iq0IM/aWupmkuTy/C7j1a4iUnDHr+xDAgcwQDfXEWTCiZDqxsZ
-X-Received: by 2002:ad4:55ea:0:b0:699:2723:66a8 with SMTP id bu10-20020ad455ea000000b00699272366a8mr1242547qvb.55.1712139555773;
+X-Forwarded-Encrypted: i=2; AJvYcCVatDYs/o4Y6KbbylveLSoZSmyVpD/01/3jMwL4utof/HsOSnWRBsSCcdUGftWhg7g0daohbTmohRm6UEuf+EiHCK2UP5WS
+X-Google-Smtp-Source: AGHT+IGZvwRRnba8yCHzPShummsiB/fQRnUtQGK720iWRqlLVqxaoOtzLdIkuA5dvzm0YEQMtKWN
+X-Received: by 2002:a05:6808:6392:b0:3c3:89dd:9e71 with SMTP id ec18-20020a056808639200b003c389dd9e71mr13172269oib.50.1712139555461;
         Wed, 03 Apr 2024 03:19:15 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1712139555; cv=none;
         d=google.com; s=arc-20160816;
-        b=yFpG25RzotvJY3B4qQ7POYmWVy1et4xcpYZTZyHH0inXrGHe470jObs8DmMYjUDVlx
-         x/Kictf9BD72a8BDgFlPeYA2/kPJhPEV6UrqwtUF1ZOTCa3anz7GDgahU1L/6JRuYHsS
-         VEEYqo8L2o6aOG+r1WYNHShrR3j14UQIiXil31JaIw10/f29cC8H3ssoPcDANm+w/PQA
-         SVl1ABuCNbwcwO3np2eE6FkC3YfTmJ48cQtzjpTCtwtzFs91xcr5gwRwY2hphnF4Y1pO
-         1QwO4lghI3EO5xkBw4IRIJZP3LER/7YHSbY+TIN6zD02S5QGqTtMcq7scN2uXGWsNZbL
-         wFcg==
+        b=MIKtx2VaHw4JWpCc4nEVwRFe+PzYc3f3XveiRusl9wE41G3XbKcKx0BlCKQulsR67d
+         AdZAvzbvUxhOEJIG45Dmp50gFibfMVEv3sdJnAWF+YJLYdPRMmYqr+YpIgoD3qpFXxLl
+         1KxmexQE/v4EL/ldsDGlKNnldYEECu/IZkQWatamkIhYH+AIpvKiaxzeiGkxg8nGAD6t
+         By3m2kCK50a82p51RiyHZ7PJzI9ZfSfSQ4GlHY+jMdbf2R9RwlNFdyM0jehpNsYS695w
+         jdGjC0iCRnfl127HvrDtMHzNiBx013ZZ0/Bh1+3PX8M1qLfRviAcF9ay1voSeGaaSJ5z
+         8uiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=28RRVaKLh/x6LTR0kRpLqMJLfdcWWzDGtiOf/xTvcn8=;
+        bh=t3jazX+6tDWzajfl7GWHjXKqn5VEYTJAYHbEOWxOgL8=;
         fh=dR6uRwfo9om/DmWDsGu5eY7/2T4Nd7sHG4YVwbPnVj0=;
-        b=EwNdN+ysbHo1K+Z9x0/l9dMUx6g1C16AE6Vv8bzeppPePKplj15EXbKtmcs1PPV/nG
-         PfSe3HZGAOI9y9fDRkTE2sl4K6ey4eKA/FjaJtpMNR7pmrNJWy6p8R6xQA9veDd7EGen
-         mVbiA1cXW6HOtzJ/LMgKN/2ubXyATDvS7ljRPvcC9k9NnNtbubUd1wRKOXsVLBum5680
-         UJ5mV/lCcWjTIcQsBCQADxvNarZFIvLjtQXSHXkP19dC1k0rxm4mrhg+PwM4jjLkTYMs
-         GpEHtJXb4bByb0vcP/AGQuoo0zJqPL1BGt6CLlNNEhxTg4jfjhkpuDraaHpu0uP6EEKV
-         taXg==;
+        b=TnoRyV4bdjA1s2NFpYxRk5yuEgYIouzzPJHuZkuYgSqxhvcTpVYx7rJphQ031nkqTq
+         hQEVG8Jb1OjIdsGs+iDpOYVUVZ/eEJQBOHAXnZPZ0nrQ+aigv3nYBye9RSVr+nKw6Adh
+         ZCsavlFBp/gftO3n+7KNgF05YMwB4x9nglobU8I4vx5gnYkHMW/1oI5HHBZJ89o+UveY
+         1Ap8WEt5+tLJvIYX68L4wcJCtUBk8oZJONVhUlPCMG0MXnVxbHagPXBtZorilCw9jkZh
+         M7DvPCH7QfSWNNUj0rJ6khETuG3J+kgjSF3TOrAxXXrYyoWsyh4uF7PLsYJldP/Cmupg
+         GC0A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s17-20020a05620a081100b0078bcb61e380si11277234qks.352.2024.04.03.03.19.15
+        by mx.google.com with ESMTPS id 15-20020ac8574f000000b004343a7044cesi2807837qtx.555.2024.04.03.03.19.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 03 Apr 2024 03:19:15 -0700 (PDT)
@@ -42,34 +42,33 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rrxgt-0000pM-2G; Wed, 03 Apr 2024 06:18:00 -0400
+	id 1rrxgt-0000qi-Q7; Wed, 03 Apr 2024 06:17:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rrxgq-0000nG-LC; Wed, 03 Apr 2024 06:17:56 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+ id 1rrxgo-0000m4-RA; Wed, 03 Apr 2024 06:17:54 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rrxgm-0006cs-0h; Wed, 03 Apr 2024 06:17:55 -0400
-Received: from mail.maildlp.com (unknown [172.19.88.214])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4V8gfF4nLXz1GFbw;
- Wed,  3 Apr 2024 18:17:09 +0800 (CST)
+ id 1rrxgk-0006cH-33; Wed, 03 Apr 2024 06:17:54 -0400
+Received: from mail.maildlp.com (unknown [172.19.88.234])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4V8gcS0lssz1ylZ8;
+ Wed,  3 Apr 2024 18:15:36 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 227681A016F;
- Wed,  3 Apr 2024 18:17:48 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 29F2F14010C;
+ Wed,  3 Apr 2024 18:17:44 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Wed, 3 Apr
- 2024 18:17:47 +0800
+ 2024 18:17:43 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <richard.henderson@linaro.org>, <qemu-devel@nongnu.org>,
  <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [PATCH v12 10/23] hw/arm/virt: Wire NMI and VINMI irq lines from GIC
- to CPU
-Date: Wed, 3 Apr 2024 10:15:58 +0000
-Message-ID: <20240403101611.3204086-11-ruanjinjie@huawei.com>
+Subject: [PATCH v12 05/23] target/arm: Support MSR access to ALLINT
+Date: Wed, 3 Apr 2024 10:15:53 +0000
+Message-ID: <20240403101611.3204086-6-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240403101611.3204086-1-ruanjinjie@huawei.com>
 References: <20240403101611.3204086-1-ruanjinjie@huawei.com>
@@ -79,8 +78,8 @@ Content-Type: text/plain
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga04-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -103,49 +102,87 @@ Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
 From:  Jinjie Ruan via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gt2Gr4nvzDiZ
+X-TUID: JDSPyr1hW2GV
 
-Wire the new NMI and VINMI interrupt line from the GIC to each CPU.
+Support ALLINT msr access as follow:
+	mrs <xt>, ALLINT	// read allint
+	msr ALLINT, <xt>	// write allint with imm
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
 v9:
-- Rename ARM_CPU_VNMI to ARM_CPU_VINMI.
-- Update the commit message.
-v4:
+- Move nmi_reginfo and related functions inside an existing ifdef
+  TARGET_AARCH64 to solve the --target-list=aarch64-softmmu,arm-softmmu
+  compilation problem.
+- Check 'isread' when writing to ALLINT.
+v5:
 - Add Reviewed-by.
+v4:
+- Remove arm_is_el2_enabled() check in allint_check().
+- Change to env->pstate instead of env->allint.
 v3:
-- Also add VNMI wire.
+- Remove EL0 check in aa64_allint_access() which alreay checks in .access
+  PL1_RW.
+- Use arm_hcrx_el2_eff() in aa64_allint_access() instead of env->cp15.hcrx_el2.
+- Make ALLINT msr access function controlled by aa64_nmi.
 ---
- hw/arm/virt.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ target/arm/helper.c | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a9a913aead..ef2e6c2c4d 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -821,7 +821,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 408922c94d..5ed3eacbea 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -7496,6 +7496,37 @@ static const ARMCPRegInfo rme_mte_reginfo[] = {
+       .opc0 = 1, .opc1 = 6, .crn = 7, .crm = 14, .opc2 = 5,
+       .access = PL3_W, .type = ARM_CP_NOP },
+ };
++
++static void aa64_allint_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    env->pstate = (env->pstate & ~PSTATE_ALLINT) | (value & PSTATE_ALLINT);
++}
++
++static uint64_t aa64_allint_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    return env->pstate & PSTATE_ALLINT;
++}
++
++static CPAccessResult aa64_allint_access(CPUARMState *env,
++                                         const ARMCPRegInfo *ri, bool isread)
++{
++    if (!isread && arm_current_el(env) == 1 &&
++        (arm_hcrx_el2_eff(env) & HCRX_TALLINT)) {
++        return CP_ACCESS_TRAP_EL2;
++    }
++    return CP_ACCESS_OK;
++}
++
++static const ARMCPRegInfo nmi_reginfo[] = {
++    { .name = "ALLINT", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 0, .opc2 = 0, .crn = 4, .crm = 3,
++      .type = ARM_CP_NO_RAW,
++      .access = PL1_RW, .accessfn = aa64_allint_access,
++      .fieldoffset = offsetof(CPUARMState, pstate),
++      .writefn = aa64_allint_write, .readfn = aa64_allint_read,
++      .resetfn = arm_cp_reset_ignore },
++};
+ #endif /* TARGET_AARCH64 */
  
-     /* Wire the outputs from each CPU's generic timer and the GICv3
-      * maintenance interrupt signal to the appropriate GIC PPI inputs,
--     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
-+     * and the GIC's IRQ/FIQ/VIRQ/VFIQ/NMI/VINMI interrupt outputs to the
-+     * CPU's inputs.
-      */
-     for (i = 0; i < smp_cpus; i++) {
-         DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
-@@ -865,6 +866,10 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-                            qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-         sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
-                            qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-+        sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus,
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_NMI));
-+        sysbus_connect_irq(gicbusdev, i + 5 * smp_cpus,
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_VINMI));
+ static void define_pmu_regs(ARMCPU *cpu)
+@@ -9890,6 +9921,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_nv2, cpu)) {
+         define_arm_cp_regs(cpu, nv2_reginfo);
      }
++
++    if (cpu_isar_feature(aa64_nmi, cpu)) {
++        define_arm_cp_regs(cpu, nmi_reginfo);
++    }
+ #endif
  
-     fdt_add_gic_node(vms);
+     if (cpu_isar_feature(any_predinv, cpu)) {
 -- 
 2.34.1
 

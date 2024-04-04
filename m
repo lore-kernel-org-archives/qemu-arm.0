@@ -1,368 +1,314 @@
-Received: by 2002:a17:906:bc5b:b0:a47:c39e:cbe with SMTP id s27csp4146209ejv;
-        Tue, 2 Apr 2024 11:47:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUhlT5t3jqaPmK/8JHsywFcCtJRBM5o4WeHP8GRicBTanUOqWYBuGRgsrO41iWG1wOZHhM9fakk2hUSsEsNYTLUM4AMIeV/
-X-Received: by 2002:a05:6000:186b:b0:343:5e64:a1dd with SMTP id d11-20020a056000186b00b003435e64a1ddmr2516878wri.71.1712083632422;
-        Tue, 02 Apr 2024 11:47:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712083632; cv=none;
+Received: by 2002:a17:906:4f0b:b0:a47:c39e:cbe with SMTP id t11csp274843eju;
+        Thu, 4 Apr 2024 07:02:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCV4pvbZ9mbuRstflpts2RVbcKC3GXiZNhwFaoGuCdL7uXkDs7I68svDd7CUgJ5PkSD+LlhfJZPZA9AxHYtn45FaOvxPdYMR
+X-Google-Smtp-Source: AGHT+IG5z2vJ5hcnLx0m23lmdYeLEgYH9THwe+UlR18M1OvAhfEcsahjOLef6ug/skVHn73e1YbM
+X-Received: by 2002:a17:90a:fd08:b0:2a2:94e4:6eba with SMTP id cv8-20020a17090afd0800b002a294e46ebamr2770600pjb.9.1712239354090;
+        Thu, 04 Apr 2024 07:02:34 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1712239354; cv=pass;
         d=google.com; s=arc-20160816;
-        b=XTY+rzVZwBd3cYf2kfpSSgQftEsWbt5Y+QAdrM4KFnq/tk8gttG/sK2m1Lybz6i37E
-         ylNmUCY1NUnsB3Zljmqo/V9FLTzHenD2chauh3gtu+ux7RiEsLMiR3UJAlcZX09UFbRA
-         6wkHchxLw+5aKQN5Q5q1ebbb6pAsyJ1eUVS5NTzBwp4y6id7+3BCx56nkJ9jJxovVtK+
-         PLByfJRCh4XKCFPUB47S5IY1R70BAjPEGXBrPX414FLX4/xjUcG1kE0Ff4YGO3yyEYYo
-         Me9cIpfQspyihiiFxfDqVuXowJHdRL+IJXTlIBxJtYmA1+rSdAUnZr8V08Vu8XF7cJMa
-         dhsQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=n+I88cwOPYzLAuneqq9pnjT46KYCt8NVG+O4st++aqg=;
-        fh=PLNYdYJBgZj1saZtvIKKuELkQ0mzPjyJ7R8csOuuX7w=;
-        b=cmiJ5LCrbvfrhv5O8dXte9d4mZp2hX7brTitmenMW2xIJY8n7aISB6GFm2whzdkY7S
-         6yC6FpjSlxddhGcLEVbrx2sE0FUdaN4SOhTUJrSeKasOsxuMSfHcwI03Pfgp/yFj2hzB
-         hSZNGdyIoO3QzOCkmDeP4Ul4BMPwt1lR8+UpeGQYBaVDsj26Ep9WDBwLeiXpFzfNb1rL
-         HYo4kppVELJltIEUI5DGrNCGHMqy8AD2hvRfD7F2bM+/6aDn9mWNG2n3FHNew5aJW7Ub
-         EgD8Ap/I9VGwEwKfTI7CZej/lfwiwADZe/QJJQW1OXvW6KXugjNtmp2S+mksBZsIk5P3
-         Uw9A==;
+        b=U2b5+l9sYH21VKh41zKL5iXj1FVnp5KIdZEX9MZdurNaleXrvPJJ4C+SQryi38Co0Q
+         gLPGMT5xUuG75ij2y4GTdJdjvIreKABmE25tg+0VjJISPvNN3WJbNjXJ9bDFhtGvRZ17
+         XrKpNoU3qXCU6VjWnudkgSDodhXrwN3hPuTbC4JxSeOgT1GzKtUAv42NbHwabGUbQJVF
+         znqTd4ERkRgupoV/8YD/zmNner4t9XjFGARJOSwoJkgZtLV4ZTCd4Pa06cSzNohPZnnx
+         e0smQ/psfgyCnqFyeqMCXiu5Vx7CDKU3cd+J3frGuIFPi9PFBTJCxwffQ3GknPTBPhS/
+         9gpA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:in-reply-to:from:content-language:references:cc:to
+         :subject:user-agent:date:message-id:dkim-signature;
+        bh=xTOW4eL2J48x/anFI1wj+IwFebKlVPP2FM9QzD+so7k=;
+        fh=9tX89LzYy1PPJUislzf9FzzhMfJBhSEzF9KOgLRDmLY=;
+        b=Yz+f4KjX3ccQyhGmq4Xx1tc/MWRMmo4jjIzcmhPFcdWxUILl0RFI4Esgu5ke4ekshH
+         0Hh/Mj3y3gAf3G2TQ3y6KCBmiwXHjvyx/qbRfH82JPWy6WndhOpUjJ0gzreVqIXjTF3B
+         fF6mZM3llG4ozdk123VrlY9+1TxulfYljGHITloBMkrDiUFT4KSRm9GhgNsmeAm0ty00
+         Mi9W3xeEwTZ1eg79Ixc2sXmRF3fMoxoIspEAU/U5mMIXjOVu921vxyvaW5imPwhfoG/I
+         u2RRZk9UJSEKPf/pn2S80RIg5fxJKT13+zvVhBXauw2tsPlNmsMr1w0QGHhZLxBxO0vf
+         moCg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=UCItUYUW;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <smostafa@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l8-20020a05600c1d0800b00415537b4f90sor11462wms.9.2024.04.02.11.47.12
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 02 Apr 2024 11:47:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=temperror (no key for signature) header.i=@amperemail.onmicrosoft.com header.s=selector1-amperemail-onmicrosoft-com header.b=J89j8rv3;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=amperemail.onmicrosoft.com dmarc=pass fromdomain=amperemail.onmicrosoft.com);
+       spf=pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2416::701 as permitted sender) smtp.mailfrom=vishnu@os.amperecomputing.com
+Return-Path: <vishnu@os.amperecomputing.com>
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (mail-co1nam11on20701.outbound.protection.outlook.com. [2a01:111:f403:2416::701])
+        by mx.google.com with ESMTPS id pf2-20020a17090b1d8200b002a2f7dd8afcsi329838pjb.31.2024.04.04.07.02.33
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 04 Apr 2024 07:02:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2416::701 as permitted sender) client-ip=2a01:111:f403:2416::701;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=UCItUYUW;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=temperror (no key for signature) header.i=@amperemail.onmicrosoft.com header.s=selector1-amperemail-onmicrosoft-com header.b=J89j8rv3;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=amperemail.onmicrosoft.com dmarc=pass fromdomain=amperemail.onmicrosoft.com);
+       spf=pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2416::701 as permitted sender) smtp.mailfrom=vishnu@os.amperecomputing.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=E5K3krKrG81TGo2NlLfeEv8jiBTWmLC1TR4gq3/cuK60DrqJ+MEY61ySWhuM1Xz4vjsjaWyXcbUfLYmw3FKa91pD3I7bbce0ypKIs2EdoZp/hmKnlGJgV6ZD8Kq1EfZYgk4RU6pB/ZgjMgdfyGvvXHifcIaq+50F5kNpGlnFTWZmQWfLfeaveKGYgxWFDdaA0wAYoPLEdKqRy3aSTN4xlfp+T/SmxABeLPkTRP7bpSZUaHoLN4H3lECZA6o4iATyEocuoYAzyxHyy52OFx+mkCuAiCgWPlPyDfnRZP2ly/YOBgM/JBNOle0p2+XnDIuCfOvwl0zuDDvfj6n5CxNgaw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xTOW4eL2J48x/anFI1wj+IwFebKlVPP2FM9QzD+so7k=;
+ b=gJfmFLwmiffusNptXAQ1/VV9XQZYhzPtU0jRmZtu4xIMD0vvEAiN9JYXhhI9WJIG3MaXBL76O04czusMj6OpHKfl+rE6PvZKvTb0970mqXSHAUJxSLf0eC+P9tmqhx7Exy1hN2fLccziMTEzBOH+Gbp/5g+hstXOh0hxzVXKV7n+LZIzr9Q+YY34DpKQVvfmLrg4RdcqO1pSdOHMRL+bMmKcyFX+Pu2kxEsxdqruKuFUypL6LnYImuSMKHFjVLSbO2TvWobVA5sPLIvjHdCbt3NxDohDo4VQWrF7H0We7wllqSLjHKf99bY7oMRcgIEfdlXp72luAhECSXP0ugsAJQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
+ header.from=amperemail.onmicrosoft.com; dkim=pass
+ header.d=amperemail.onmicrosoft.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1712083632; x=1712688432; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=n+I88cwOPYzLAuneqq9pnjT46KYCt8NVG+O4st++aqg=;
-        b=UCItUYUWnXvKIArg8AFwE0E5yHD1lJ4v4m69zr6KjPuPgrAsD1bNBz7TK7J+Xixnko
-         a5u2dqi0jm3RAx1LKaajBzzzvfb7yghFDv80IpzI0MYpKBOT8otFJKf1MUcndhBT7F9c
-         ZsxH2/F2813ZFqNymqx9DQXTfTEFFerlHR2l/fz4mijZSSX6+fZCF/x6zQtzqRPnVPn/
-         ACwxVcHayTcA9SNJnfnmZv36VQovM+H7yPZddWyAHwdI6aA3heZ7Fwb/nBe7BXLaMMMv
-         tVUNY1gRjDOqpDJwHZlccF8SFMY6YHf84V/7eafX7cALk6UsZ+6B6nsiMWhUDC9JFYUg
-         YzXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712083632; x=1712688432;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=n+I88cwOPYzLAuneqq9pnjT46KYCt8NVG+O4st++aqg=;
-        b=uij6Ij6dywFqVhmefDUAFWDm6p492zfW/HmE4KeMNhMkRcn1+Hk1q8U9bala5HE8b4
-         VDxIrE/E/wpafjYRRvzrnFtsaRzhVWoODWoitpr6/wcJhIuRe/u3XNz2cHOjqc5BbRIv
-         Q6PsO1TH+CHTFKjX0S14FHIL6WF8gos0GjQPhIpVmFmx5vhOKCLaVGZ3DC8Jj9XNejbs
-         ULJcku3KlN6MJLS9k5GJufr8Eicz2TCfKrbjIs8Z9/8oJcEbqvSTFTuxPb6/TkNB+YdX
-         buuzOK6hCN2o1IRSIKjTQkRaVWMgic1VQiJsLPurfa0hIUY4Ok6Il5NILjMN7YSEy8xt
-         ZaKg==
-X-Forwarded-Encrypted: i=1; AJvYcCUDoPKY6J69DuaEtQkhNMdoqqmscZeNs2ya54W4qKS7/Z7kkYMs1y7AEZAHnqo0+aL5QTZpo+aCzUSt/7kmJhCcOa7Jjjlc
-X-Gm-Message-State: AOJu0Yx64tMWWDYYviyDlL81Tlah7mEIXWSJ5qedw5l8uVHMnkttdJOy
-	ijRiitYtlRvjg2DbfMnPoAWCfAvD1Mm1r03VPYSfHNfCZTIE+DGmekQ2mNwP0w==
-X-Google-Smtp-Source: AGHT+IHmN8afs4tf6dGiW+KSTT7kNKSNbDq6MEIZxboSPtpju0eyDqmEDhkehIpDLyqRNWo0b5HJVQ==
-X-Received: by 2002:a05:600c:3d94:b0:414:866e:4437 with SMTP id bi20-20020a05600c3d9400b00414866e4437mr21613wmb.1.1712083631731;
-        Tue, 02 Apr 2024 11:47:11 -0700 (PDT)
-Return-Path: <smostafa@google.com>
-Received: from google.com (180.232.140.34.bc.googleusercontent.com. [34.140.232.180])
-        by smtp.gmail.com with ESMTPSA id jb2-20020a05600c54e200b004155387c08esm14012496wmb.27.2024.04.02.11.47.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Apr 2024 11:47:10 -0700 (PDT)
-Date: Tue, 2 Apr 2024 18:47:06 +0000
-From: Mostafa Saleh <smostafa@google.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
-	nicolinc@nvidia.com, julien@xen.org
-Subject: Re: [RFC PATCH 03/12] hw/arm/smmu: Add stage to TLB
-Message-ID: <ZgxSqi9G_WxGYJj-@google.com>
-References: <20240325101442.1306300-1-smostafa@google.com>
- <20240325101442.1306300-4-smostafa@google.com>
- <b2588763-1fc3-4259-8666-f1a663ef2937@redhat.com>
+ d=amperemail.onmicrosoft.com; s=selector1-amperemail-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=xTOW4eL2J48x/anFI1wj+IwFebKlVPP2FM9QzD+so7k=;
+ b=J89j8rv3sbiVwjkAjWL6cr7MkZwXhqLBAXxj5UIs3IXzG60hAGEhvaNPxTTNyJ5jnkYebSdr8tZ9KdNkS8cnhhP0D+usQaWce8GLZ7VuVOtCQzVplD5U6yVogAXnex8rQFH+zJDJW4tL3Fs2MRyFVyvQcvcP71oZCniWEI2jodA=
+Received: from DM8PR01MB7142.prod.exchangelabs.com (2603:10b6:8:1::11) by
+ CH0PR01MB7106.prod.exchangelabs.com (2603:10b6:610:ff::23) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7409.46; Thu, 4 Apr 2024 14:02:27 +0000
+Received: from DM8PR01MB7142.prod.exchangelabs.com
+ ([fe80::63bf:3703:b8b4:9d1]) by DM8PR01MB7142.prod.exchangelabs.com
+ ([fe80::63bf:3703:b8b4:9d1%5]) with mapi id 15.20.7409.042; Thu, 4 Apr 2024
+ 14:02:27 +0000
+Content-Type: multipart/alternative;
+ boundary="------------cF4OedXxvwA4KzUguFT5AQgH"
+Message-ID: <884099cd-f57f-417e-aff9-52a7d77dab31@amperemail.onmicrosoft.com>
+Date: Thu, 4 Apr 2024 19:32:08 +0530
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V8 7/8] gdbstub: Add helper function to unregister GDB
+ register space
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, philmd@linaro.org, eric.auger@redhat.com,
+ oliver.upton@linux.dev, pbonzini@redhat.com, mst@redhat.com,
+ will@kernel.org, gshan@redhat.com, rafael@kernel.org,
+ alex.bennee@linaro.org, linux@armlinux.org.uk,
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
+ wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
+ maobibo@loongson.cn, lixianglai@loongson.cn, linuxarm@huawei.com,
+ gankulkarni@os.amperecomputing.com
+References: <20240312020000.12992-1-salil.mehta@huawei.com>
+ <20240312020000.12992-8-salil.mehta@huawei.com>
+Content-Language: en-US
+From: Vishnu Pajjuri <vishnu@amperemail.onmicrosoft.com>
+In-Reply-To: <20240312020000.12992-8-salil.mehta@huawei.com>
+X-ClientProxiedBy: CY5PR19CA0072.namprd19.prod.outlook.com
+ (2603:10b6:930:69::14) To DM8PR01MB7142.prod.exchangelabs.com
+ (2603:10b6:8:1::11)
+Return-Path: vishnu@os.amperecomputing.com
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM8PR01MB7142:EE_|CH0PR01MB7106:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	kcBFvsrU9y4aJtcepmA9oprYocQOfpDTUMGAY4PaSDhgjPDiopcpqx/emxJ9aYPtnXEf8lnIbTOuGFD6hBXrNnZ/U2uf5RYso6dN0GLiWSBr51bdVJo7I5tfgAXPVCTcKgGGD245m4KIP90XYVnxuFHfkIR140CDvx+HUYFF0Zn0sg70MSeCe2FauIwfWEdZQ8OkwLJoR6T9ewd1qU7R4GdRzVbPH1O9Zlc+uHFgDIKtqtWKUn826sJ/4H3tkHFm0HWpMwgIWZ1mbjUaOEGtECBLNdOlDGAEHFG4jRz0FpMJqh9GzapCeLadh+4v2IFOhITmwSnykmcb4XV3hu1EltTUKtibBvkVG4ZUL69FQ7DBTjLJktzFv1la126QbZxvPe27sbMkRej5wXTWqfr4qjctlcpdpb0PUP3YLU1NW5cvpYfnOuJRiWIXiuar9LNf6wCYDQraYE1TiXEbHcF/AVbJuaHgI0xz7rFmNQRCJ0ULoaXM9JlTzy1aJ5Vzkrxzde5S39GAPV6jI2Ee6Rdz6MoMGYyX6M2IhvPRDEr6VP/wLA/ktqQ3ZcN40s4RaDnqq98QhvDDB/6I2TjRVPOGzEfiAnMq55M79065+Szf3QLg/FSjbNg5ieEOA8nwePPI7FUJFaEQS/9GKquNUM+SYbDRT1AVNLcsYtmy1llubPE=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM8PR01MB7142.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230031)(366007)(376005)(1800799015)(7416005);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?NzdaajFTNDdlTk4zNmNSNm1rak5Oci9YT3o5Q3ByZjg4elliQTI5TVlHWDF6?=
+ =?utf-8?B?R0g5OGVOMEg1WXV1dDZsbk5sUUQrQzdDM1pua2I1SlRIaE8zS3lyN3dkakJq?=
+ =?utf-8?B?TkdJKzNhbEc3UUFxOE0rSktaS0djUmxlK25oRVZ1a2ZNQjZ0eEo4UWptOTBu?=
+ =?utf-8?B?OU1YTFlQa3R4dGxmT0xVVm40TXlxRGdocUQ4M3cwd3dYbllBcnhKZmM4VlM2?=
+ =?utf-8?B?bDJpYlNZZ3Zmd2d6b1ZpNVVIMU1ISkNKdk0wTldkU1lxSkt0RE9lMEYyMHFM?=
+ =?utf-8?B?RmIrR2xwWE9kWHJJYVNxYnlRYW9YSGd6anhKM3RHdGpDUTR3c2lxcVNnUlE5?=
+ =?utf-8?B?a3hwanl6UExVdmk2ZXlhcDhvNHl6Z1dZZzhSZEhxQlNHaGtQOFZteTQrWStw?=
+ =?utf-8?B?MnBHWUdReUdyN2dxdnZoSVcydmZzbzcweGJyZUlXSWNSeEZVNXRpWUZTMHg0?=
+ =?utf-8?B?NXVBQlJvMWYyZkx6RG5jRTJTNnZ4d3VPd3VIdGhFZzVGNThTeFMvY1FwRGRY?=
+ =?utf-8?B?RkRnWHMyR2ZoRzRYcmphL25KcGlDS20renRsRU9VVGNjd0pubmcya29XZWpS?=
+ =?utf-8?B?ZStxck1KNHVIOWV3c2gycnl1akhWUE1qTkVpSnlVZmFHSWRNc0V6Tll5bXB4?=
+ =?utf-8?B?cmxFSkowcU8zc3BwUnRwQ1BNOXJsRmtxcUhobnFQZHAzSnNKN2hoUVFSd3ZO?=
+ =?utf-8?B?WXJRRTY2bTNpT1A2WWcwQkpIRytsUm16WGlQRVZ0MXFlV0NvTHJqSUJvdDE2?=
+ =?utf-8?B?SU8vTzZWVGFJNUVSK003ZFpPRk9BK1BjdytoeGpwRFNubHlqdjhpNVBHcGJk?=
+ =?utf-8?B?K0t4ckNZQlduN0s5VGVLNmhJTVRNaEY1YzUzWk82dUlzcEZIbGtVb1ppbFZv?=
+ =?utf-8?B?MkcxSnpZT0J2U3p2OGthZnFNQkg5R3F6b2pIMGlEcTRYSXZMejlUdUxXbnVu?=
+ =?utf-8?B?eHlaSzQ2MjBZY1BNdk9SdmxBcWsyNTA4d2RFK3pDWUlRYlhPYW5wTEFxVHN5?=
+ =?utf-8?B?WVJ1MGsvZmpHSnlndDFyQnNXRVZuNk9uWTRsU1dMR0d3bjBPSUpCQ1ZrSmww?=
+ =?utf-8?B?Sy94bnNNU2x1R2RCQUtwS2xWQnowQ2c4UFB6bWhRaCtoaDFtNkd1SlJiMCs2?=
+ =?utf-8?B?bkE3eWp5ZzJEUlNiR21mWnJhSlU0TjJSSjFyWFVqQ2ZmK05nVDRvbUorQlNK?=
+ =?utf-8?B?QUZyd3lrYkxETU92NVY4RGh4UU1lY3VHejdzL1lHVHRnK1NXWklpSFNJM1pK?=
+ =?utf-8?B?WFkwVlVtU1YzYXhrSE1qdURYQnlHaFcwR2hqVDhoSXNGQ0E2cDVDV1ZTSnBl?=
+ =?utf-8?B?d3daRk0zUk9SQUJQRUVsVHpKRHFIb2dTSnlyaWt2a2ZhU2w3dEgvQ0YzNXZS?=
+ =?utf-8?B?cG4wK3loQnRtZzJ4K1UyMXdlYnM0S0RlZ0ROZDJucldkZnJkd3ZCRDJ0WTc2?=
+ =?utf-8?B?eC9CbU9mbWkvNUZPYmgvZE9QUFZMMFB2U2tSS0pLZUNoaXh2WlpBMGJPS281?=
+ =?utf-8?B?UUF1Y0UvL1lqUlhpL2Z1cDJRSENNQzJHZGRLb1NQWmxyTVlUd0J1S1RjM1h0?=
+ =?utf-8?B?U25TYkVXL3RoYkFxVUZESVNhNFNtWTZnMnp1ZU14VitrMEdFaUtVUUpCVjQx?=
+ =?utf-8?B?QUUvd2c1UmY4WDZBU0wyeXJORmZpL09QQk5FM2ZYc3U0Sko3TmhlVm0yRHoy?=
+ =?utf-8?B?K1YzVUtIaGQrNWZGZ1hGMGl1aEo2aFREZ3Y2MjN6V0pIc08vOE5wMkhrZXUv?=
+ =?utf-8?B?NXVMelk3Y1BUTUszaVc1Zk9nTlNqL2tvS1BYS21vajhDUVNOYUNzZE5lenI5?=
+ =?utf-8?B?YUc1cUhPajVHTElyTkVvMXFvRER0SXV2aDVEWmxUNmp1YlhXdzJ6aUJqQjFM?=
+ =?utf-8?B?aWNrd0NucDlBcjBCcUdLM2lpMWpNVytWZmtlU0doSFN1TXVHNW11NGo0ZEJU?=
+ =?utf-8?B?Vmo3dFNLYVlaMlpCYVBCRnlFSUdqVmNuSnZhY2JoUWdvVE9BN3F1b05TNFNl?=
+ =?utf-8?B?Nndsb1ZqMG5BU0pMNXlwWmUvNzRHNW9KQ3JUMnAvQVlRVzNIR3JrVGQ4QVpI?=
+ =?utf-8?B?bHN1bEttdXZTbWpRa0tuRnA3QXBRU2paWWlua05VbCtPYkVJTC9ULzUvc0My?=
+ =?utf-8?B?b2IvTDlMM0NKZVhnYncvTjE1aDZQeFVGZ2JxOWtoVzVOMWxMbng2dDgyUllk?=
+ =?utf-8?Q?XTkiwqZssbeuU1nnfynVhKI=3D?=
+X-OriginatorOrg: amperemail.onmicrosoft.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 145bfea8-c8e6-49cb-d990-08dc54afdc8f
+X-MS-Exchange-CrossTenant-AuthSource: DM8PR01MB7142.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Apr 2024 14:02:27.7282
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qGnJF4DfJL7YAYmd+2eN6PalxL+Ya6vXLI+xIvrsSwx3oxGhCPW8dWCksO3s8280dXFiwU6QHnb5xI2Rym45+gMQzJPn06rH8FoDYh1gzcPUKR8kMzabMLY9HR1axK19
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR01MB7106
+X-TUID: usF8m1epd5aS
+
+--------------cF4OedXxvwA4KzUguFT5AQgH
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <b2588763-1fc3-4259-8666-f1a663ef2937@redhat.com>
-X-TUID: ml8+locnjX9u
 
-Hi Eric,
+Hi Salil,
 
-On Tue, Apr 02, 2024 at 07:15:20PM +0200, Eric Auger wrote:
-> Hi Mostafa,
-> 
-> On 3/25/24 11:13, Mostafa Saleh wrote:
-> > TLBs for nesting will be extended to be combined, a new index is added
-> > "stage", with 2 valid values:
-> >  - SMMU_STAGE_1: Meaning this translates VA to PADDR, this entry can
-> >    be cached from fully nested configuration or from stage-1 only.
-> >    We don't support separate cached entries (VA to IPA)
-> >
-> >  - SMMU_STAGE_2: Meaning this translates IPA to PADDR, cached from
-> >    stage-2 only configuration.
-> >
-> > For TLB invalidation:
-> >  - by VA: Invalidate TLBs tagged with SMMU_STAGE_1
-> >  - by IPA: Invalidate TLBs tagged with SMMU_STAGE_2
-> >  - All: Will invalidate both, this is communicated to the TLB as
-> >    SMMU_NESTED which is (SMMU_STAGE_1 | SMMU_STAGE_2) which uses
-> >    it as a mask.
-> 
-> I don't really get why you need this extra stage field in the key. Why
-> aren't the asid and vmid tags enough?
-> 
+On 12-03-2024 07:29, Salil Mehta wrote:
+> Add common function to help unregister the GDB register space. This shall be
+> done in context to the CPU unrealization.
+>
+> Signed-off-by: Salil Mehta<salil.mehta@huawei.com>
+> Tested-by: Vishnu Pajjuri<vishnu@os.amperecomputing.com>
+> Reviewed-by: Gavin Shan<gshan@redhat.com>
+> Tested-by: Xianglai Li<lixianglai@loongson.cn>
+> Tested-by: Miguel Luis<miguel.luis@oracle.com>
+> Reviewed-by: Shaoqin Huang<shahuang@redhat.com>
+> ---
+>   gdbstub/gdbstub.c      | 12 ++++++++++++
+>   include/exec/gdbstub.h |  6 ++++++
+>   2 files changed, 18 insertions(+)
+>
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index 17efcae0d0..a8449dc309 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -615,6 +615,18 @@ void gdb_register_coprocessor(CPUState *cpu,
+>       }
+>   }
+>   
+> +void gdb_unregister_coprocessor_all(CPUState *cpu)
+> +{
+> +    /*
+> +     * Safe to nuke everything. GDBRegisterState::xml is static const char so
+> +     * it won't be freed
+> +     */
+> +    g_array_free(cpu->gdb_regs, true);
+> +
+> +    cpu->gdb_regs = NULL;
+> +    cpu->gdb_num_g_regs = 0;
+Likewise, you may need to set gdb_num_regs to zero as well.
+> +}
+> +
+>   static void gdb_process_breakpoint_remove_all(GDBProcess *p)
+>   {
+>       CPUState *cpu = gdb_get_first_cpu_in_process(p);
+> diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+> index eb14b91139..249d4d4bc8 100644
+> --- a/include/exec/gdbstub.h
+> +++ b/include/exec/gdbstub.h
+> @@ -49,6 +49,12 @@ void gdb_register_coprocessor(CPUState *cpu,
+>                                 gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
+>                                 const GDBFeature *feature, int g_pos);
+>   
+> +/**
+> + * gdb_unregister_coprocessor_all() - unregisters supplemental set of registers
+> + * @cpu - the CPU associated with registers
+> + */
+> +void gdb_unregister_coprocessor_all(CPUState *cpu);
+> +
+>   /**
+>    * gdbserver_start: start the gdb server
+>    * @port_or_device: connection spec for gdb
 
-Looking again, I think we can do it with ASID and VMID only, but that
-requires some rework in the invalidation path.
+Otherwise, Looks good to me.  Feel free to add
+Reviewed-by: "Vishnu Pajjuri" <vishnu@os.amperecomputing.com>
 
-With nested SMMUs, we can cache entries from:
-- Stage-1 (or nested): Tagged with VMID and ASID
-- Stage-2: Tagged with VMID only (ASID = -1)
+_Regards_,
 
-That should be enough for caching/lookup, but for invalidation, we
-should be able to invalidate IPAs which are cached from stage-2.
+-Vishnu
 
-At the moment, we represent ASIDs with < 0 as a wildcard for
-invalidation or stage-2 and they were mutually exclusive.
+--------------cF4OedXxvwA4KzUguFT5AQgH
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-An example is:
-- CMD_TLBI_NH_VAA: Invalidate stage-1 for a VMID, all ASIDs (we use ASID = -1)
-- CMD_TLBI_NH_VA: Invalidate stage-1 for a VMID, an ASID  ( > 0)
-- CMD_TLBI_S2_IPA: Invalidate stage-2 for a VMID (we use ASID = -1)
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+    <p>Hi Salil,<br>
+    </p>
+    <div class="moz-cite-prefix">On 12-03-2024 07:29, Salil Mehta wrote:<br>
+    </div>
+    <blockquote type="cite" cite="mid:20240312020000.12992-8-salil.mehta@huawei.com">
+      <pre class="moz-quote-pre" wrap="">Add common function to help unregister the GDB register space. This shall be
+done in context to the CPU unrealization.
 
-We need to distinguish between case 1) and 3) otherwise we over invalidate.
+Signed-off-by: Salil Mehta <a class="moz-txt-link-rfc2396E" href="mailto:salil.mehta@huawei.com">&lt;salil.mehta@huawei.com&gt;</a>
+Tested-by: Vishnu Pajjuri <a class="moz-txt-link-rfc2396E" href="mailto:vishnu@os.amperecomputing.com">&lt;vishnu@os.amperecomputing.com&gt;</a>
+Reviewed-by: Gavin Shan <a class="moz-txt-link-rfc2396E" href="mailto:gshan@redhat.com">&lt;gshan@redhat.com&gt;</a>
+Tested-by: Xianglai Li <a class="moz-txt-link-rfc2396E" href="mailto:lixianglai@loongson.cn">&lt;lixianglai@loongson.cn&gt;</a>
+Tested-by: Miguel Luis <a class="moz-txt-link-rfc2396E" href="mailto:miguel.luis@oracle.com">&lt;miguel.luis@oracle.com&gt;</a>
+Reviewed-by: Shaoqin Huang <a class="moz-txt-link-rfc2396E" href="mailto:shahuang@redhat.com">&lt;shahuang@redhat.com&gt;</a>
+---
+ gdbstub/gdbstub.c      | 12 ++++++++++++
+ include/exec/gdbstub.h |  6 ++++++
+ 2 files changed, 18 insertions(+)
 
-Similarly, CMD_TLBI_NH_ALL(invalidate all stage-1 by VMID) and
-CMD_TLBI_S12_VMALL(invalidate both stages by VMID).
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index 17efcae0d0..a8449dc309 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -615,6 +615,18 @@ void gdb_register_coprocessor(CPUState *cpu,
+     }
+ }
+ 
++void gdb_unregister_coprocessor_all(CPUState *cpu)
++{
++    /*
++     * Safe to nuke everything. GDBRegisterState::xml is static const char so
++     * it won't be freed
++     */
++    g_array_free(cpu-&gt;gdb_regs, true);
++
++    cpu-&gt;gdb_regs = NULL;
++    cpu-&gt;gdb_num_g_regs = 0;</pre>
+    </blockquote>
+    Likewise, you may need to set gdb_num_regs to zero as well.<br>
+    <blockquote type="cite" cite="mid:20240312020000.12992-8-salil.mehta@huawei.com">
+      <pre class="moz-quote-pre" wrap="">
++}
++
+ static void gdb_process_breakpoint_remove_all(GDBProcess *p)
+ {
+     CPUState *cpu = gdb_get_first_cpu_in_process(p);
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index eb14b91139..249d4d4bc8 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -49,6 +49,12 @@ void gdb_register_coprocessor(CPUState *cpu,
+                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
+                               const GDBFeature *feature, int g_pos);
+ 
++/**
++ * gdb_unregister_coprocessor_all() - unregisters supplemental set of registers
++ * @cpu - the CPU associated with registers
++ */
++void gdb_unregister_coprocessor_all(CPUState *cpu);
++
+ /**
+  * gdbserver_start: start the gdb server
+  * @port_or_device: connection spec for gdb</pre>
+    </blockquote>
+    <p>Otherwise, Looks good to me.&nbsp; Feel free to add<br>
+      Reviewed-by: &quot;Vishnu Pajjuri&quot;
+      <a class="moz-txt-link-rfc2396E" href="mailto:vishnu@os.amperecomputing.com">&lt;vishnu@os.amperecomputing.com&gt;</a><br>
+    </p>
+    <p><u>Regards</u>,</p>
+    <p>-Vishnu<br>
+    </p>
+    <blockquote type="cite" cite="mid:20240312020000.12992-8-salil.mehta@huawei.com">
+      <pre class="moz-quote-pre" wrap="">
+</pre>
+    </blockquote>
+  </body>
+</html>
 
-I guess we can add variants of these functions that operate on ASIDs
-(>= 0) or (< 0) which is basically stage-1 or stage-2.
-
-Another case I can think of which is not implemented in QEMU is
-global entries, where we would like to look up entries for all ASIDs
-(-1), but that’s not a problem for now.
-
-I don’t have a strong opinion, I can try to do it this way.
-
-Thanks,
-Mostafa
-
-> Eric
-> >
-> > This briefly described in the user manual (ARM IHI 0070 F.b) in
-> > "16.2.1 Caching combined structures".
-> >
-> > Signed-off-by: Mostafa Saleh <smostafa@google.com>
-> > ---
-> >  hw/arm/smmu-common.c         | 27 +++++++++++++++++----------
-> >  hw/arm/smmu-internal.h       |  2 ++
-> >  hw/arm/smmuv3.c              |  5 +++--
-> >  hw/arm/trace-events          |  3 ++-
-> >  include/hw/arm/smmu-common.h |  8 ++++++--
-> >  5 files changed, 30 insertions(+), 15 deletions(-)
-> >
-> > diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> > index 20630eb670..677dcf9a13 100644
-> > --- a/hw/arm/smmu-common.c
-> > +++ b/hw/arm/smmu-common.c
-> > @@ -38,7 +38,7 @@ static guint smmu_iotlb_key_hash(gconstpointer v)
-> >  
-> >      /* Jenkins hash */
-> >      a = b = c = JHASH_INITVAL + sizeof(*key);
-> > -    a += key->asid + key->vmid + key->level + key->tg;
-> > +    a += key->asid + key->vmid + key->level + key->tg + key->stage;
-> >      b += extract64(key->iova, 0, 32);
-> >      c += extract64(key->iova, 32, 32);
-> >  
-> > @@ -54,14 +54,14 @@ static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
-> >  
-> >      return (k1->asid == k2->asid) && (k1->iova == k2->iova) &&
-> >             (k1->level == k2->level) && (k1->tg == k2->tg) &&
-> > -           (k1->vmid == k2->vmid);
-> > +           (k1->vmid == k2->vmid) && (k1->stage == k2->stage);
-> >  }
-> >  
-> >  SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint16_t vmid, uint64_t iova,
-> > -                                uint8_t tg, uint8_t level)
-> > +                                uint8_t tg, uint8_t level, SMMUStage stage)
-> >  {
-> >      SMMUIOTLBKey key = {.asid = asid, .vmid = vmid, .iova = iova,
-> > -                        .tg = tg, .level = level};
-> > +                        .tg = tg, .level = level, .stage = stage};
-> >  
-> >      return key;
-> >  }
-> > @@ -81,7 +81,8 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
-> >          SMMUIOTLBKey key;
-> >  
-> >          key = smmu_get_iotlb_key(cfg->asid, cfg->s2cfg.vmid,
-> > -                                 iova & ~mask, tg, level);
-> > +                                 iova & ~mask, tg, level,
-> > +                                 SMMU_STAGE_TO_TLB_TAG(cfg->stage));
-> >          entry = g_hash_table_lookup(bs->iotlb, &key);
-> >          if (entry) {
-> >              break;
-> > @@ -109,15 +110,16 @@ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *new)
-> >  {
-> >      SMMUIOTLBKey *key = g_new0(SMMUIOTLBKey, 1);
-> >      uint8_t tg = (new->granule - 10) / 2;
-> > +    SMMUStage stage_tag = SMMU_STAGE_TO_TLB_TAG(cfg->stage);
-> >  
-> >      if (g_hash_table_size(bs->iotlb) >= SMMU_IOTLB_MAX_SIZE) {
-> >          smmu_iotlb_inv_all(bs);
-> >      }
-> >  
-> >      *key = smmu_get_iotlb_key(cfg->asid, cfg->s2cfg.vmid, new->entry.iova,
-> > -                              tg, new->level);
-> > +                              tg, new->level, stage_tag);
-> >      trace_smmu_iotlb_insert(cfg->asid, cfg->s2cfg.vmid, new->entry.iova,
-> > -                            tg, new->level);
-> > +                            tg, new->level, stage_tag);
-> >      g_hash_table_insert(bs->iotlb, key, new);
-> >  }
-> >  
-> > @@ -159,18 +161,22 @@ static gboolean smmu_hash_remove_by_asid_vmid_iova(gpointer key, gpointer value,
-> >      if (info->vmid >= 0 && info->vmid != SMMU_IOTLB_VMID(iotlb_key)) {
-> >          return false;
-> >      }
-> > +    if (!(info->stage & SMMU_IOTLB_STAGE(iotlb_key))) {
-> > +        return false;
-> > +    }
-> >      return ((info->iova & ~entry->addr_mask) == entry->iova) ||
-> >             ((entry->iova & ~info->mask) == info->iova);
-> >  }
-> >  
-> >  void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
-> > -                         uint8_t tg, uint64_t num_pages, uint8_t ttl)
-> > +                         uint8_t tg, uint64_t num_pages, uint8_t ttl,
-> > +                         SMMUStage stage)
-> >  {
-> >      /* if tg is not set we use 4KB range invalidation */
-> >      uint8_t granule = tg ? tg * 2 + 10 : 12;
-> >  
-> >      if (ttl && (num_pages == 1) && (asid >= 0)) {
-> > -        SMMUIOTLBKey key = smmu_get_iotlb_key(asid, vmid, iova, tg, ttl);
-> > +        SMMUIOTLBKey key = smmu_get_iotlb_key(asid, vmid, iova, tg, ttl, stage);
-> >  
-> >          if (g_hash_table_remove(s->iotlb, &key)) {
-> >              return;
-> > @@ -184,6 +190,7 @@ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
-> >      SMMUIOTLBPageInvInfo info = {
-> >          .asid = asid, .iova = iova,
-> >          .vmid = vmid,
-> > +        .stage = stage,
-> >          .mask = (num_pages * 1 << granule) - 1};
-> >  
-> >      g_hash_table_foreach_remove(s->iotlb,
-> > @@ -597,7 +604,7 @@ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t addr,
-> >      if (cached_entry) {
-> >          if ((flag & IOMMU_WO) && !(cached_entry->entry.perm & IOMMU_WO)) {
-> >              info->type = SMMU_PTW_ERR_PERMISSION;
-> > -            info->stage = cfg->stage;
-> > +            info->stage = SMMU_STAGE_TO_TLB_TAG(cfg->stage);
-> >              return NULL;
-> >          }
-> >          return cached_entry;
-> > diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
-> > index 843bebb185..6caa0ddf21 100644
-> > --- a/hw/arm/smmu-internal.h
-> > +++ b/hw/arm/smmu-internal.h
-> > @@ -133,12 +133,14 @@ static inline int pgd_concat_idx(int start_level, int granule_sz,
-> >  
-> >  #define SMMU_IOTLB_ASID(key) ((key).asid)
-> >  #define SMMU_IOTLB_VMID(key) ((key).vmid)
-> > +#define SMMU_IOTLB_STAGE(key) ((key).stage)
-> >  
-> >  typedef struct SMMUIOTLBPageInvInfo {
-> >      int asid;
-> >      int vmid;
-> >      uint64_t iova;
-> >      uint64_t mask;
-> > +    SMMUStage stage;
-> >  } SMMUIOTLBPageInvInfo;
-> >  
-> >  typedef struct SMMUSIDRange {
-> > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> > index f081ff0cc4..b27bf297e1 100644
-> > --- a/hw/arm/smmuv3.c
-> > +++ b/hw/arm/smmuv3.c
-> > @@ -1087,7 +1087,7 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd)
-> >      if (!tg) {
-> >          trace_smmuv3_range_inval(vmid, asid, addr, tg, 1, ttl, leaf);
-> >          smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1);
-> > -        smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1, ttl);
-> > +        smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1, ttl, SMMU_NESTED);
-> >          return;
-> >      }
-> >  
-> > @@ -1105,7 +1105,8 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd)
-> >          num_pages = (mask + 1) >> granule;
-> >          trace_smmuv3_range_inval(vmid, asid, addr, tg, num_pages, ttl, leaf);
-> >          smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, num_pages);
-> > -        smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, num_pages, ttl);
-> > +        smmu_iotlb_inv_iova(s, asid, vmid, addr, tg,
-> > +                            num_pages, ttl, SMMU_NESTED);
-> >          addr += mask + 1;
-> >      }
-> >  }
-> > diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> > index cc12924a84..3000c3bf14 100644
-> > --- a/hw/arm/trace-events
-> > +++ b/hw/arm/trace-events
-> > @@ -14,10 +14,11 @@ smmu_iotlb_inv_all(void) "IOTLB invalidate all"
-> >  smmu_iotlb_inv_asid(uint16_t asid) "IOTLB invalidate asid=%d"
-> >  smmu_iotlb_inv_vmid(uint16_t vmid) "IOTLB invalidate vmid=%d"
-> >  smmu_iotlb_inv_iova(uint16_t asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
-> > +smmu_iotlb_inv_stage(int stage) "Stage invalidate stage=%d"
-> >  smmu_inv_notifiers_mr(const char *name) "iommu mr=%s"
-> >  smmu_iotlb_lookup_hit(uint16_t asid, uint16_t vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache HIT asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
-> >  smmu_iotlb_lookup_miss(uint16_t asid, uint16_t vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache MISS asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
-> > -smmu_iotlb_insert(uint16_t asid, uint16_t vmid, uint64_t addr, uint8_t tg, uint8_t level) "IOTLB ++ asid=%d vmid=%d addr=0x%"PRIx64" tg=%d level=%d"
-> > +smmu_iotlb_insert(uint16_t asid, uint16_t vmid, uint64_t addr, uint8_t tg, uint8_t level, int stage) "IOTLB ++ asid=%d vmid=%d addr=0x%"PRIx64" tg=%d level=%d stage=%d"
-> >  
-> >  # smmuv3.c
-> >  smmuv3_read_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
-> > diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> > index 876e78975c..695d6d10ad 100644
-> > --- a/include/hw/arm/smmu-common.h
-> > +++ b/include/hw/arm/smmu-common.h
-> > @@ -37,6 +37,8 @@
-> >  #define VMSA_IDXMSK(isz, strd, lvl)         ((1ULL << \
-> >                                               VMSA_BIT_LVL(isz, strd, lvl)) - 1)
-> >  
-> > +#define SMMU_STAGE_TO_TLB_TAG(stage)        (((stage) == SMMU_NESTED) ? \
-> > +                                             SMMU_STAGE_1 : (stage))
-> >  /*
-> >   * Page table walk error types
-> >   */
-> > @@ -136,6 +138,7 @@ typedef struct SMMUIOTLBKey {
-> >      uint16_t vmid;
-> >      uint8_t tg;
-> >      uint8_t level;
-> > +    SMMUStage stage;
-> >  } SMMUIOTLBKey;
-> >  
-> >  struct SMMUState {
-> > @@ -203,12 +206,13 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
-> >                                  SMMUTransTableInfo *tt, hwaddr iova);
-> >  void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
-> >  SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint16_t vmid, uint64_t iova,
-> > -                                uint8_t tg, uint8_t level);
-> > +                                uint8_t tg, uint8_t level, SMMUStage stage);
-> >  void smmu_iotlb_inv_all(SMMUState *s);
-> >  void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
-> >  void smmu_iotlb_inv_vmid(SMMUState *s, uint16_t vmid);
-> >  void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
-> > -                         uint8_t tg, uint64_t num_pages, uint8_t ttl);
-> > +                         uint8_t tg, uint64_t num_pages, uint8_t ttl,
-> > +                         SMMUStage stage);
-> >  
-> >  /* Unmap the range of all the notifiers registered to any IOMMU mr */
-> >  void smmu_inv_notifiers_all(SMMUState *s);
-> 
+--------------cF4OedXxvwA4KzUguFT5AQgH--

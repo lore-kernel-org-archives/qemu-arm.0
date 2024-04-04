@@ -1,109 +1,109 @@
-Received: by 2002:a17:906:4f0b:b0:a47:c39e:cbe with SMTP id t11csp294891eju;
-        Thu, 4 Apr 2024 07:25:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW7CNFcySRFqlBMbCcpHcNs5c9f7bZBdU79CazAiKvgO4TUMwTbJnFZXEuygMTagfVH9pVvKBuVzzD3nl0h0vyFZz2fvAB+
-X-Google-Smtp-Source: AGHT+IHWkwWFw90Usi5OO9rvPEDbWlFpGmiVKf8oA2ESMX+29+SVnRmM9lKT0DH+5Q9RDRO0Irji
-X-Received: by 2002:ac8:5750:0:b0:430:eef7:2780 with SMTP id 16-20020ac85750000000b00430eef72780mr2847134qtx.63.1712240736714;
-        Thu, 04 Apr 2024 07:25:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712240736; cv=none;
+Received: by 2002:a17:906:4f0b:b0:a47:c39e:cbe with SMTP id t11csp296452eju;
+        Thu, 4 Apr 2024 07:28:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWAuKnnIRUYikC7Ai0jCyyMajGdIWU03aM4eF2MOUxpOn2jhUmSxCr85Hqba6/LVVtQQIFNdqWfs252rUqfk8ID/jGRKELe
+X-Google-Smtp-Source: AGHT+IHM7KzJ1ciBHh76p6DTW85zDsIClkcMU75hVZkkN9Mn7nEAmqSmi+Sk2zTtOIyLsB4Lfmnx
+X-Received: by 2002:ac8:5b8a:0:b0:432:b6d4:2cad with SMTP id a10-20020ac85b8a000000b00432b6d42cadmr2693855qta.14.1712240882189;
+        Thu, 04 Apr 2024 07:28:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712240882; cv=none;
         d=google.com; s=arc-20160816;
-        b=FahMWshjpf2tJ7u68p0jfTvbZh/0TRih52G1JR34x9QehT5YuOYfGpmXSbH34skwIY
-         0viEmn3O003vUtLk+ejZarCY+vSeDNTE3S0nv1ZVUbYcFykxo64tjj5AuAW1xsX288a9
-         c5RNjGQeVhmEAn0VVkw75rldNEHwR5lBhF0/g8HHoC61HQKqlgYLeuZp8/WIH5QRbBsS
-         XVWsIO/3uOaTFAnuQGs/oZjX0EPP3hVUZaIei2Lw4RxsTOnogtKuVvsVVD3apz/Lte3b
-         X+zFESS0O7+2ICAadMoTvHFpjd9ITJD4bazkmbMTr7lCCXIYCmpJkt9OeXAQrWy2DbYc
-         N2/Q==
+        b=isdyxkE++ggY+nxFLVMrR0K/NEcmpLNz60ewnZXAuWWeBsx+4fcofaaBDr9yhfpOFe
+         bF6kezB9m6FrPeug1KPKNXWskeotsoZdSyByI0Qkb+52keHOdoQEECDAXltwMWlKVL5s
+         KHQ4VPa0eekKjXwMLUNMILEYoyu1/yO0E/USxHQLqyQM5BAz/gGf8Z+5JlI7WF9C+HcG
+         OpAOrI3A1W+/bTwMmTLaUB9Llq8JrSjhaEFIRGFDDfnrWb/xGqsWYmbRtQWKu+13+90R
+         DuA0ef8LFZIDo4WE3ez46ek4NZgXT1sgZTWYQAjT6W/kwMj1WJzOwsuGB+EAl693Ddlg
+         dRkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=c8ExWDHR6fUpIq8ES+mS5HgEhWRKo0jFGf4s3D+PgJI=;
-        fh=nmGkMYP1FYNkZxc/6WJYHspEDzjh2c+YHO9B+Ow/uN8=;
-        b=F11UX8CDsUnCW4FzD4xsYAdbAGQBvDOaettdk2ZiLiVjhJ+NonjHKnKoUe6/qh8n1n
-         HPTQXYUNh5SXJqClnGyJmWnhnB25KvjFVPJPeCR94XQL4byW7pVorykBvZ1XH18IkxoN
-         bHW0OX1lP2Hu/V13+bG2aBTfcP88AYILrj0M1sQB9dUPNt+AeHYKQ8FhnrVCqE51zHyW
-         wxfDvfzhqGKev0fVxiy61RLkJEikaDka8cybh9ZZ7sx9uIzfMieUjGWuX02E5p5kzVmx
-         OTtKExQDjU81Sm2OvdqKKeNwoXai/qVXEjpVtSqI5GhJ7CICKDeRWSRsa/oNevVcqkNY
-         SuZQ==;
+        bh=ZNmD2zvccXxBiRyDCZ5QsCEdO6xkpxPE/hEP78GGnt8=;
+        fh=Y5lrYJP1Ad4VsJalarMUZ8X5CzVy67qj5Wcb7ia2IxI=;
+        b=srg8C4G8WdxdEyTCfHyKzCfamnNqOAiv/t09W5NPoYJgt11cCgryYPQveQBaH4qY/K
+         8mcicy0BCyFr0efyIyJHCHFYx9kRXhkvMqA7EfMvqVOr19OrLseZHKYmR3mrcgbZ+FDa
+         /QdBpwYRxJFMIUBFQJiMDPuU9irEawZhiJYnMM0YcVomYKeFhpBtDaNr9fKILF+WbIAr
+         xbzUTEg5WYPK6x7yrYdT6VG4CY+cmOCoWhXIZIiJx+cQvDdCf+cj8SDs1hFJNB+8N+hj
+         VCWaDGiaJDZPiHOj49/es9km0wxQFuuoOmc9nbQTdk9haeTqff3ZcEQ8QJbaSXWYWZa/
+         LVTA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tCl7tGzq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="frJcs/3i";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q12-20020a05622a04cc00b004315e360db1si16576083qtx.193.2024.04.04.07.25.36
+        by mx.google.com with ESMTPS id r4-20020ac85c84000000b004343a39b59esi5707406qta.15.2024.04.04.07.28.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Apr 2024 07:25:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Apr 2024 07:28:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tCl7tGzq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="frJcs/3i";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rsO1o-0003Yj-Rf; Thu, 04 Apr 2024 10:25:20 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rsO3y-0008A2-SE; Thu, 04 Apr 2024 10:27:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rsO1l-0003X1-1P
- for qemu-arm@nongnu.org; Thu, 04 Apr 2024 10:25:18 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ id 1rsO3w-0007qN-7U
+ for qemu-devel@nongnu.org; Thu, 04 Apr 2024 10:27:32 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rsO1e-0005xX-W3
- for qemu-arm@nongnu.org; Thu, 04 Apr 2024 10:25:16 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-56e1e6e1d01so978125a12.1
- for <qemu-arm@nongnu.org>; Thu, 04 Apr 2024 07:25:10 -0700 (PDT)
+ id 1rsO3u-0006DF-J5
+ for qemu-devel@nongnu.org; Thu, 04 Apr 2024 10:27:31 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-56e2ac1c16aso10129a12.0
+ for <qemu-devel@nongnu.org>; Thu, 04 Apr 2024 07:27:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712240709; x=1712845509; darn=nongnu.org;
+ d=linaro.org; s=google; t=1712240849; x=1712845649; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=c8ExWDHR6fUpIq8ES+mS5HgEhWRKo0jFGf4s3D+PgJI=;
- b=tCl7tGzqd54fRY+H8denh7i6qrnK4fusDtNn2nSoRP2TA3Ay8pQRPqPlATJKcgBg/r
- XXkyMnZQBH0J5vk/F3SJz/lyxX+61Sv2qMnt81BowzwLkLrifYyLt9CGdogh2d7KK/o8
- pWJs+0q6K3/S+hMkfYHdFWuxvkdFkJSc382rzk41MzMq8dXXArTjhbQFUYN7jq+vJlxQ
- oSbLUrYlIO3pEw6OmbuQh1boMenTCUbUuMGmQyZaKAkbYBpSs5uWBx1/SdyTs2LBIJo1
- g4ZfbPjNpEzL3TNcyyREmMRZUDzcK0W1dhNr+F3GKucEGj7YENs8l3/sUvxAuMFnjDUn
- vLxA==
+ bh=ZNmD2zvccXxBiRyDCZ5QsCEdO6xkpxPE/hEP78GGnt8=;
+ b=frJcs/3ia6Opx6xc1m7OG8E2g4XHlpWAcjjgCAR968MXvYxrYu0BkOqteFN6JO3nTL
+ TxsydO3/W1YXsq1oILPyg2eAVm9rJcQBvfR+QMFWgy1DSRorh17HGfzglPqNx40vhu/l
+ mnbA8R4vw2Hj3pAvYMUHG72M4XVpRcxnu8kw6Cb7TKTxddsIhhuRqxtCjPWCz+WBuOCV
+ R0/wwRtD0yev5guq/ixPcC+skrw7tzF3hepx2j3DKetdiOYpR0QXYBkuue277ph3kZcd
+ yI4rXuy7+ytooqEawxNhVcGtH1FQcdAR+auoc8ncGzp91UxZpEScLXwn8IJ76bpMifOD
+ RHQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712240709; x=1712845509;
+ d=1e100.net; s=20230601; t=1712240849; x=1712845649;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=c8ExWDHR6fUpIq8ES+mS5HgEhWRKo0jFGf4s3D+PgJI=;
- b=KSRnsiODLvzLCcuyJ1lvoSmCHkroGCRiXRqtUT4TtL9EsBNRCpw+B9KkMCZEETCtjG
- qKYyS0p0kQYEzILRks7XGrpyuhJWawT8cVIxFDPWN2WZ6JapUxIwfrR3mQVCOPT2smpL
- HPikaP7nI2rph6oW3Mlmys+2f5GZYnFvjy/sw1I9S0qOTeCMwU5Wdo2wQqIP2V9nZoiR
- Htv0eJqfuno/oRQtiIu3ERasQgLJN2nM1tYEydTx5Vx2uRcODPnhopNkrbi3OG6IrO5E
- 1SDJWe0nxoY29qE86IipJeH2xsUiKDEHG6vKPfx4rOARcX06x0Pc3hmF9yv0YAuhMpmo
- tCXg==
+ bh=ZNmD2zvccXxBiRyDCZ5QsCEdO6xkpxPE/hEP78GGnt8=;
+ b=mx6MEZkmt/yHFiSkJDm51R5I3Y77QInu4iH8IZ/n6YfFTDj5akRfm2hDEvi1Q3SlsH
+ tmlzThkPBXvPwWGU/pJH/o2aG0YCBPHj3fI0nAnXYuYlTjiBE2Kkt31wVkQ4Rpv0RHhV
+ HUt+SC8IB9AlGKSidwV+UNjMCvo8FFtWw1kxbgt6EwIcQS1u0z9+ZhCcfMVeQ3mmbMog
+ veqATNp5B57rCrA+9EALJyXG/4pS1fwZEKCESTHcny+J+UK7yWMolv9E7KJiaFwelijL
+ pV8nEyLqdFWoHCHbxcTO6017TlSNoquJ+1QB0SEXDyF2heP2OqkSmSb6MkcuAT3VeNo7
+ 5SHw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVKNFY3stu2LuBQUxINI7+izlIdUGYDrxtxR86oZgzAALjewTHZwIz8hIqVxHnicsSL+Ync4b+lpKvUevwDH0GHBra1
-X-Gm-Message-State: AOJu0YwZK9K3ZWvqfO8J4yt6+N1j4d9avLpUsknU61vYcpkq9+TrTUb7
- 1r+YhVLi2E5C077/Jj06QMsQ2Z6PCJ4Mn0Ca5OCMI+aq9QPHfZ3cDSjXKn4ufkszSPoMHpINMJy
- LtfLtH1IuqsDpCc1ftfye0HgbhlVjn2HM5ScPVA==
-X-Received: by 2002:a50:cc82:0:b0:567:ff26:4bcb with SMTP id
- q2-20020a50cc82000000b00567ff264bcbmr1607896edi.30.1712240708718; Thu, 04 Apr
- 2024 07:25:08 -0700 (PDT)
+ AJvYcCUGyAsHhW8GxAqhfsNaggA6W4yYjBE8DdtnaDKxklb+bqapvN0KfPpkTz2wLgmPCnQ9AK1emLsy8N2XA35Q92dY4hjcwhA=
+X-Gm-Message-State: AOJu0YwG2poOo9b4gwYrDqODE0RuX7sXASWdZRoORWCDivPe6k+ishYs
+ m8Lmx4Nrct1WbpttB388PsGtRIrsXsGLJxB2blpJuk3zoPNDYuynxWJYvACB+4BJypq7XftYdBT
+ UGVoGTDCievu1/rLyd8c8O8gTVOIDkzJb+qKFvg==
+X-Received: by 2002:a50:d7d4:0:b0:56e:bad:36b with SMTP id
+ m20-20020a50d7d4000000b0056e0bad036bmr1157566edj.21.1712240848773; 
+ Thu, 04 Apr 2024 07:27:28 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240403101611.3204086-1-ruanjinjie@huawei.com>
- <20240403101611.3204086-18-ruanjinjie@huawei.com>
-In-Reply-To: <20240403101611.3204086-18-ruanjinjie@huawei.com>
+ <20240403101611.3204086-19-ruanjinjie@huawei.com>
+In-Reply-To: <20240403101611.3204086-19-ruanjinjie@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 4 Apr 2024 15:24:57 +0100
-Message-ID: <CAFEAcA_2b3R4KMyiO_Pe1zH9xBsUFjUW64vL3xEwi6OZQ=Z3eA@mail.gmail.com>
-Subject: Re: [PATCH v12 17/23] hw/intc/arm_gicv3: Add NMI handling CPU
- interface registers
+Date: Thu, 4 Apr 2024 15:27:18 +0100
+Message-ID: <CAFEAcA8v8guoP37xO81jGRpydbriSjgow0MBv+OnDGjZ52+Tww@mail.gmail.com>
+Subject: Re: [PATCH v12 18/23] hw/intc/arm_gicv3: Handle icv_nmiar1_read() for
+ icc_nmiar1_read()
 To: Jinjie Ruan <ruanjinjie@huawei.com>
 Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
  wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,38 +112,64 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: z+CLzPSb6fai
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: X2c0fiq27ibU
 
-On Wed, 3 Apr 2024 at 11:17, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
+On Wed, 3 Apr 2024 at 11:18, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
 >
-> Add the NMIAR CPU interface registers which deal with acknowledging NMI.
+> Implement icv_nmiar1_read() for icc_nmiar1_read(), so add definition for
+> ICH_LR_EL2.NMI and ICH_AP1R_EL2.NMI bit.
 >
-> When introduce NMI interrupt, there are some updates to the semantics for the
-> register ICC_IAR1_EL1 and ICC_HPPIR1_EL1. For ICC_IAR1_EL1 register, it
-> should return 1022 if the intid has non-maskable property. And for
-> ICC_NMIAR1_EL1 register, it should return 1023 if the intid do not have
-> non-maskable property. Howerever, these are not necessary for ICC_HPPIR1_EL1
-> register.
+> If FEAT_GICv3_NMI is supported, ich_ap_write() should consider ICV_AP1R_EL1.NMI
+> bit. In icv_activate_irq() and icv_eoir_write(), the ICV_AP1R_EL1.NMI bit
+> should be set or clear according to the Non-maskable property. And the RPR
+> priority should also update the NMI bit according to the APR priority NMI bit.
 >
-> And the APR and RPR has NMI bits which should be handled correctly.
+> By the way, add gicv3_icv_nmiar1_read trace event.
+>
+> If the hpp irq is a NMI, the icv iar read should return 1022 and trap for
+> NMI again
 >
 > Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
 
+
+> @@ -301,10 +310,11 @@ static bool icv_hppi_can_preempt(GICv3CPUState *cs, uint64_t lr)
+>       */
+>
+>      prio = ich_lr_prio(lr);
+> +    is_nmi = lr & ICH_LR_EL2_NMI;
+
+If you want to be able to skip the cs->gic->nmi_support check here
+then you need to enforce in ich_lr_write() that the guest cannot
+write a 1 to the ICH_LR_EL2_NMI bit when the GIC doesn't implement NMIs.
+
+@@ -2833,6 +2833,10 @@ static void ich_lr_write(CPUARMState *env,
+const ARMCPRegInfo *ri,
+                           8 - cs->vpribits, 0);
+     }
+
++    if (!cs->gic->nmi_support) {
++        value &= ~ICH_LR_EL2_NMI;
++    }
++
+     cs->ich_lr_el2[regno] = value;
+     gicv3_cpuif_virt_update(cs);
+ }
+
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

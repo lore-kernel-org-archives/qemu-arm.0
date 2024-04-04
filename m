@@ -1,50 +1,50 @@
-Received: by 2002:a17:906:4f0b:b0:a47:c39e:cbe with SMTP id t11csp271442eju;
-        Thu, 4 Apr 2024 07:00:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUGsRlIxhi6pz/GfTMZy6oI4+I6lJ0j5NEmsIqnspJ6y2TO6rx4ux89KirMUWMga9TJY3RSjph4fqbaP2QpUMoC37VOeOFX
-X-Google-Smtp-Source: AGHT+IHMHFR8G/FUsrJ+AQ8F87dz/84kCS/Xt2ntbCljpvrnQniNH/Pjx5qcAR3vJi/PBlIZu+//
-X-Received: by 2002:a17:903:249:b0:1e2:a0cf:c3dd with SMTP id j9-20020a170903024900b001e2a0cfc3ddmr2046498plh.7.1712239201297;
-        Thu, 04 Apr 2024 07:00:01 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1712239201; cv=pass;
+Received: by 2002:a17:906:4f0b:b0:a47:c39e:cbe with SMTP id t11csp273325eju;
+        Thu, 4 Apr 2024 07:01:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXfzdLePhAIBUW7f0L2mpu+WwgN5XSmWcV49p1GPn8eQEPkdWAHASU2tgUVdqwjJnrjZfdDRn4lNBXiNnEjrpirIjWw2ATK
+X-Google-Smtp-Source: AGHT+IHQH29kQqbLiax9ddlZD8xtZupzuqmsrfe34ksZ6Gen6N778OevbYjeZhXV1xuUawf7zvU9
+X-Received: by 2002:a05:6214:c62:b0:691:3b1e:d44b with SMTP id t2-20020a0562140c6200b006913b1ed44bmr2832001qvj.34.1712239287973;
+        Thu, 04 Apr 2024 07:01:27 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1712239287; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Cu/36iUyoMpQaecWslHtr9z4Zg2ySpRNqPJEqpPLWyb8Z9VsRBJHqQVJMb2TQk0ifL
-         Xa3torf6uzgA3W3F8jCfbBWP4gZYyFtAIXIkLToy5t1CKOZco/xLHIwdxVTAEJ5yE8bf
-         iH69GGP69WedxEmM1J3UZ0lFEnNsWl7cbY44M6jI2+zokTBzVueeoxvQGWmtaF7NTiJD
-         KQWcv+ZXr9wUgO5W3bdDbrE0Nq2opmd70rWrVbA90+K3Ch0Ttzt+H+x+i3/iH3k4VM9i
-         FfXAxvpYd6h49ggP/tOvUaop+YeqGTYIP0DelM+A3zqWR8rz0s3saytbJWkXO/ciD81x
-         QM1Q==
+        b=qQq7Ssioehkj8vCVvqkkn4+OoHp5+Fud3ntxf2R5NJOjykrKfurQ0Ip9zOiucLULZC
+         QcM2o4P6V7HTA3PPXgg1vxXGzNNOLWf3bbnPGmTEDiDmfqdJaloLV963Q/js/OUbKQde
+         /Q3I3m2zO5UgZTjhg4We9rcyR1R59V2FNqW5WHOjBnqiR2+Tqwz0Ln65fvY6tK4R/c3E
+         2c1mZSXbwBVlAZxhOojslq23z5poUU0SjEHs69i/GD4xuuTc1OHSWRrJlqyebeJQhMUc
+         oJDA01SonSsd9Zo0E8BQ+FLUbei7Qgfga5Tl2ir+80daBjLpO5itjyFPq5p8z0vAPK82
+         BtzQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:in-reply-to:from:content-language:references:cc:to
          :subject:user-agent:date:message-id:dkim-signature;
-        bh=4wH3iJzTN/amQDxE3Q+q2nEdNLA6mGGFVnV2iJwsaz0=;
+        bh=AaXvKDtaneKLD7J4eMPjNahnVopMZOi79UzWqeijaLc=;
         fh=9tX89LzYy1PPJUislzf9FzzhMfJBhSEzF9KOgLRDmLY=;
-        b=B/b8+jqkb0v6O2jrK10YqE/09gE2ZmQgR5YW23I1OxOdDfBJ9HY6K711rwUyLymDq+
-         /nS37iqkBjVOA0tumewoeDAY9oir+HfYvgLwqNDMvKyiCfiGB/RxjCgsgvm11Tf1WNSp
-         7IsCTJDA87g+fu3O/M/VzMJ+i3ZFldJGCsf+r9qFO+coUteitAUfqBwSO1SnBRbK9jSn
-         LTv+pt2Pp7fZgDSn0F4BFXEeUR5nV17L3uCzRcHNNO3S1HFj8M+b53SRc6sjbKS7+p7h
-         S+YUav0O1iykkw7Mp2isfYaVlUEKsjzNRzBBwJf7GP6BjGGpTvORug35PUwqR7o8qh5/
-         WVQg==;
+        b=yYjISDqNpPhChgGHhoOHBSw2KpcuQz+zq5K484rQ2o41bEHliQ3Ey0CoztIDZsztdG
+         4IMpPmeoCnlC9ThLb4f0RDXKXHEnQnc+b1RJhqo2KvCvNBlNA9qYFf5m1rg5Vkc5y2XS
+         0DLFvIk+rJH8KYXh3JcBCnNfs2xeCFFoZ/qkrsdw1OIHhP8iE4nQsnVobwFvUhPhsToO
+         FLf7bWpEUBMXCPCRI1ESjiVV3Ky+AEjUuk6qd8GYJ8LgBNiBaj80wM1N30zqvX+r7FEk
+         ReJ/2Wduvbyo1K7muqqwU3jBIJaojVJxRaR9/xSYL9BPU1t3b0ufcMt0efeoWQ8YV/TB
+         oMSw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=temperror (no key for signature) header.i=@amperemail.onmicrosoft.com header.s=selector1-amperemail-onmicrosoft-com header.b=anZBdjMO;
+       dkim=temperror (no key for signature) header.i=@amperemail.onmicrosoft.com header.s=selector1-amperemail-onmicrosoft-com header.b="9uAgEtn/";
        arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=amperemail.onmicrosoft.com dmarc=pass fromdomain=amperemail.onmicrosoft.com);
-       spf=pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2416::700 as permitted sender) smtp.mailfrom=vishnu@os.amperecomputing.com
+       spf=pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2405::700 as permitted sender) smtp.mailfrom=vishnu@os.amperecomputing.com
 Return-Path: <vishnu@os.amperecomputing.com>
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (mail-co1nam11on20700.outbound.protection.outlook.com. [2a01:111:f403:2416::700])
-        by mx.google.com with ESMTPS id z14-20020a170903018e00b001e2afcc2df3si1305734plg.255.2024.04.04.07.00.00
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (mail-dm3nam02on20700.outbound.protection.outlook.com. [2a01:111:f403:2405::700])
+        by mx.google.com with ESMTPS id pe12-20020a056214494c00b00690acb3e24csi16493147qvb.569.2024.04.04.07.01.27
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 04 Apr 2024 07:00:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2416::700 as permitted sender) client-ip=2a01:111:f403:2416::700;
+        Thu, 04 Apr 2024 07:01:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2405::700 as permitted sender) client-ip=2a01:111:f403:2405::700;
 Authentication-Results: mx.google.com;
-       dkim=temperror (no key for signature) header.i=@amperemail.onmicrosoft.com header.s=selector1-amperemail-onmicrosoft-com header.b=anZBdjMO;
+       dkim=temperror (no key for signature) header.i=@amperemail.onmicrosoft.com header.s=selector1-amperemail-onmicrosoft-com header.b="9uAgEtn/";
        arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=amperemail.onmicrosoft.com dmarc=pass fromdomain=amperemail.onmicrosoft.com);
-       spf=pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2416::700 as permitted sender) smtp.mailfrom=vishnu@os.amperecomputing.com
+       spf=pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2405::700 as permitted sender) smtp.mailfrom=vishnu@os.amperecomputing.com
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MZgSnbxmIQOO6dbLk1w+WCXeGp0GX3MXIwa16Suz0BhSB9dNyYI9h/Ws9kazwqcS3VoABv3fhXyXmtipXx0rKiJMN6uZZjUs8/9v16dE39mrgmbJJNUy7279b8Og+d8XP+Io++ZriqWWxARGPZN3bZnudq+2JmtgtoDNAw/quLJtWkH5fI4waJoN3K3R/UyizOlRSj2vvAmDB9UAXmrkwOEx+AKYAdMb+4FS7BH1U9tPesVySosXhsc71YOjoSIMiIM5cQ5sIl0mUQ4HJ1www1lWUjlY2XTeCQStHJec2MDhkScPeymRy1ghw6DXDrqmr8rJIS3z7qPnM1IINCGfPA==
+ b=jM0XZywCGkebek80OlyvbAdjhR21mzRY/okDKMljp0sPFGg3inckFH32N/CfdOGLniRyDStaxokh27ASi4vt7evomkndMzu3gCHm6BgVaM5o5/0bXyuRvKBTdeauwnCSuFyzlrCnwibGm35svDQ07+2Frb/APIQh+s/OZQoub9HvriGGnplwfErqMTzzvdXlhzfaMnkg//gq/HLQODsjZLOzA/p7/ZaeJqK4HHgVZN/K38Vk5uemxPjWJDd2Z8YN2Dx4H/FPe4trMccVohjhgeXEMr8IrgxrANWHVctEbc/jWliGSq2LgCPo5SSLXnzhjLNYdB1Y2Kqo0P5JfQn+FA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=4wH3iJzTN/amQDxE3Q+q2nEdNLA6mGGFVnV2iJwsaz0=;
- b=ZfrLtR0SIBAjSNtkkhlNvxlAC4OHYDNOy2RINRk0anmxKaXDQ3EldssnxLCORmQ4ixZrCcHWrNmzXzmfnMXoXuCFNTzbP30C8hNXdCPGl+vEqJS4Kc/UYsgnzWq4NTs1+X93wKPnrrrfCazG8WKxBXqClZEF0A5vOl2p+oKhAGstru5vjOpNasNocDRsiDNhv4C6RSsatIevWeROY2EdQ53GayzznlRYTD49TK7YqxPxVPOU87ZlA8E/lvrInti/1eJOtgHm5N9ugZhZpBBQ+xgHtAAVjwzTB6mbi9AgVm/Dgom5picSrMOi7A6RXUyd2+KYIbsaRZmb5dYGly+a/w==
+ bh=AaXvKDtaneKLD7J4eMPjNahnVopMZOi79UzWqeijaLc=;
+ b=ixtV+hWKYS9Tux4XG0H2t7Tu7zonxqmN1HOj3adSF4MPUQaMN/ZmAuGMIOSUZMyt+b7xBu12EcwgNpaQ3CP/Wzn7X5Vxl60HsyNnasQk0p++Li64RD5jCe1DiQSF2ePexLqIWeidaXqyJOY2fVzuQh+3jPax/7LgSHxAiOw/7FqnSYgN4sLWrJjYePzX5FPl9BSUPJH5UqSFDidg1QbOjFixwsM1Nc4VPk7vtKsfVf4Lsiq+udLBZENe/sXgGXuIJO7ubWIwqib+7TWRyOvD5XDBPvgHYJgEQBudac5MukTbvn/opoP6LUQ28yaj66iVfl3Lx7WhnlfYCPtbjVc6vw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
  header.from=amperemail.onmicrosoft.com; dkim=pass
@@ -52,23 +52,23 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amperemail.onmicrosoft.com; s=selector1-amperemail-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4wH3iJzTN/amQDxE3Q+q2nEdNLA6mGGFVnV2iJwsaz0=;
- b=anZBdjMOMVcKWLwq/2HaAYj10HU6nagXLge7JtJzx5oCQeO+UD+FjAE4VCiM8q0st4vE6nnsWHN7U0b2iGxWUy0o6ptzwG9QOFbz5bl2vYkB2iYlCpG8Tg1lfauT2ayIgcinFzakbRc9N0HKd3lknEZEbrcZ99xjRkSJ8VePfpU=
+ bh=AaXvKDtaneKLD7J4eMPjNahnVopMZOi79UzWqeijaLc=;
+ b=9uAgEtn/97CIWH6tZK8YJdU5DeFpxeI3u1oL8RrSSH4bqsQ0+smLY5LXf5hIsbSCj1N68ebKZADLI0vAjI469aXwgp+I1TM8/gSWFmdHvX3J7Wm4P98biWHr7fpJNV3gpIACIOTOZxEAvF9fJpIy9dmcGdyBaa9hmxAloWtgvQI=
 Received: from DM8PR01MB7142.prod.exchangelabs.com (2603:10b6:8:1::11) by
- SJ0PR01MB7527.prod.exchangelabs.com (2603:10b6:a03:3da::12) with Microsoft
+ SJ0PR01MB6157.prod.exchangelabs.com (2603:10b6:a03:290::22) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7409.46; Thu, 4 Apr 2024 13:59:53 +0000
+ 15.20.7409.46; Thu, 4 Apr 2024 14:01:20 +0000
 Received: from DM8PR01MB7142.prod.exchangelabs.com
  ([fe80::63bf:3703:b8b4:9d1]) by DM8PR01MB7142.prod.exchangelabs.com
  ([fe80::63bf:3703:b8b4:9d1%5]) with mapi id 15.20.7409.042; Thu, 4 Apr 2024
- 13:59:52 +0000
+ 14:01:20 +0000
 Content-Type: multipart/alternative;
- boundary="------------kBel8wbk5Cyo6NpiUIMpNbx5"
-Message-ID: <565ba0ac-a070-4784-a882-2eeab9c91541@amperemail.onmicrosoft.com>
-Date: Thu, 4 Apr 2024 19:29:32 +0530
+ boundary="------------c8RvZptx13P3VidEKPRJjXJ9"
+Message-ID: <98b28e91-20e1-4b71-8997-608303fbdb3f@amperemail.onmicrosoft.com>
+Date: Thu, 4 Apr 2024 19:31:02 +0530
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V8 1/8] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
+Subject: Re: [PATCH V8 3/8] hw/acpi: Update ACPI GED framework to support vCPU
+ Hotplug
 To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
@@ -85,293 +85,241 @@ Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
  maobibo@loongson.cn, lixianglai@loongson.cn, linuxarm@huawei.com,
  gankulkarni@os.amperecomputing.com
 References: <20240312020000.12992-1-salil.mehta@huawei.com>
- <20240312020000.12992-2-salil.mehta@huawei.com>
+ <20240312020000.12992-4-salil.mehta@huawei.com>
 Content-Language: en-US
 From: Vishnu Pajjuri <vishnu@amperemail.onmicrosoft.com>
-In-Reply-To: <20240312020000.12992-2-salil.mehta@huawei.com>
-X-ClientProxiedBy: CY8PR22CA0002.namprd22.prod.outlook.com
- (2603:10b6:930:45::7) To DM8PR01MB7142.prod.exchangelabs.com
+In-Reply-To: <20240312020000.12992-4-salil.mehta@huawei.com>
+X-ClientProxiedBy: CH2PR14CA0042.namprd14.prod.outlook.com
+ (2603:10b6:610:56::22) To DM8PR01MB7142.prod.exchangelabs.com
  (2603:10b6:8:1::11)
 Return-Path: vishnu@os.amperecomputing.com
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM8PR01MB7142:EE_|SJ0PR01MB7527:EE_
+X-MS-TrafficTypeDiagnostic: DM8PR01MB7142:EE_|SJ0PR01MB6157:EE_
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
 X-Microsoft-Antispam-Message-Info:
-	FVctIsOxNXhFKSih0h4mLoYqdyFO1DlY7tgoweoIttvEHQ320jZ/CNG+sFWKva6MjejbWVUKFyuJ4kn4nx4SfD+Nr2dr5GRI1p5uMjaonU2DH+4bPdsIUr9N5hgTgS45uANL50bFxodeo+lkPkZWOnSbDCcvRsDdx38nKGWycYfa3T0wL5cEmPAqazjMr68pTw27p1Sya4eM9pi575raVKyfye7lYVGy0e/H/gwC++LDG54np94uzmLX5eeYhsuhy+Lhyj/ve9bUbaomm2OCPOmhmzawfvcSjvVSLLw0IsaOxOwCoRbCgHDiU1gna7X41k3FIwM5DuJ+6L2SFHIMrOUe6vZfRt1smcdexEdQaKawn9rBixTB3cGw2sjtyOlP9cckF1mbw70QovJwZnvIEBNqMUD0OXeWm+pYFPC4Rw9VrAzu/nvfzbLtqDIyVfMYUPrcHOjDR26YJYDM3vAeF12E8thqwR48PtNbeG3RwP55lHWzv1r7GID6RzjhELxQjVMfl9ApL3+vfNH7PUQSjxsAM0a/6v2QaoQkDp182JTdsxcMJ6GZV29IV200ed+5YNMhvvoq5OqB5Lx4F2/wNyqbFklu3IJwysiaI6Z9PkPlKRd+0sc0VgCfEX5XMMWE9BJEXhqLwaEaA/AfziulMVPOvZmXEaLZiVkB66MiDaI=
+	zxcR/fs8JPJeggrlazzdf55L2tSPQWiF2MhPm4APNPPUqAlBCkxetWZb/VLExm9UU6ntj6zh676x9fY4cxDr0wEok5aSZuWdPGs1bBtWRBh54vRejjlwPWAg93k0LwD9JopBGW5YDAjFreTIFDS+OmDbzyvkyizC5usW8MhWysCuJL+DwtgV5XiZWSAzJtYt491y68i3hFK8fwoetxuQB77F3cBXwACbBhYt1b4aeZ9OWRDJ9wmyeeFjDTndESLZCJIeKB+dKsaXVgw8cCBErS3BoJPztfZP36xxhxBFgKKLrXFJnHzpIsLa/y4N9RQwXXUrUt644MdQ/jkah7H5KfwsIi6uoVWj4poVaoo3cCJ1vs5HVl/DKQY/oPHjDKjcHUBJu3ZAWx92GNTbb4BBTgXEVVhVuh2eJtFr6Zvdjlf2KwBIkFBnps98K3vvQbT7EIv/1FDfrBDF8yE26+UoYRAtal0BfMbrYs79uJl1D8MZ3WY5t3WhcYH7ulpi4zicH/P7Wcy4nOeZiqtRgF7b3i3DbwomddwidJGKMpfn1kZwmlH/gCEtfeES95ZKACNamdWpcPIwMsmGv9rF5mFSl/QLgyJCqoyIb29Z/lNQ5vB0xJhTboBpKAd9ORJYzz/t+gJ0h9f1tt2PLunZC6Yop7Ez8BGltrm2bP4CfQYsdkw=
 X-Forefront-Antispam-Report:
 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM8PR01MB7142.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230031)(7416005)(1800799015)(376005)(366007);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
 X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?MThXTGZmbFV1Qis2TFJWTHp0WVZKdlNGaFV4YkNWVDR0bU9hSmwxQ1l5a3M2?=
- =?utf-8?B?SW5od3NHenFyRGlJYkg2cW4walhYQXpTT3pyRkV4cC96NHl1aUJBeDJScWQz?=
- =?utf-8?B?V2hqSUd4SFgzd2FNdlpJaXZ6S080SDlhK3czOHdIeDkzWGtBVi9wTTJMellF?=
- =?utf-8?B?ZldRRTE1NEhTRVNVZ1F3ODhGZnZYZWxOaUVIOTN3djdWUFdWY3lqc2dhMmhk?=
- =?utf-8?B?MERFblVsYTVmdHlYbFBPK1E1eVpSK21TUVRQOGhQWk5UWG5DcTdkckR4SkQz?=
- =?utf-8?B?VCthbTJLeDN1cGE4RTlLaVo3eVJHMndIK1lsSFJPbDFmR1pkTXJkaUt2cHoy?=
- =?utf-8?B?bFQxN2VhL3o0U1k0MDgwM0lmQkRzNExDN3U4dG1qRmpSaWFvUzQvT0l1bG5n?=
- =?utf-8?B?L0xtZlc3M25OT1F5UENZTVIxUHlmaWZvVVdncWUzTGNvRXhCeVJ5Wi81SUF2?=
- =?utf-8?B?RkwrYWxpTGRYREZZUXVyUW9Db05sRm1jbFlYNVNsZWN2L2Z4S1lPSHVDSHVw?=
- =?utf-8?B?ck5XR0RNeUFGQmk3UHQ5QkJPVzI4VGc3clpEbStzN01YZ0hOOEV6dzkrYTVo?=
- =?utf-8?B?a0ZlK2JJWHlOZnFOUmN2ZVd2R1NOZUo2ZExBVHM1eGRzNnlZVjNYdHVsVUFT?=
- =?utf-8?B?eHJpamZvbFg4SkN2ZkRmNHd0dDJnOGh1T1ZDNjNtRzFHbzlITnRwSGZEOGpT?=
- =?utf-8?B?UlhWUmR4dm5tNGwvL3dpczBxS1B6M053Rm1VTzFzdXdDU3ZEVXJ2QVQ5elY4?=
- =?utf-8?B?czJyeThtaG9pTTZ4YVJoVlh2elhtd1FGSjV6VTlWZ0tJYzFCL3lsajIrMkNX?=
- =?utf-8?B?ODhySE4yMllrOFpSQ3BuZ1k2NUE5NklXc25aVEloaHZUOWR6Kzl3QTBQeXIz?=
- =?utf-8?B?aEZMTDg2NnE2bWZUT3dJYUVSRnNGenkzb0YyUmNIYVFsT2JYZHMrTStITCtp?=
- =?utf-8?B?UE01aVdqUkl1ci82MndUaERWRTh6TEcxcTBLMG9UY2JFNFAvaFYvbE9CUFhu?=
- =?utf-8?B?Rm81RlB1c1hMamM3QnJsZlQ0QTVKenBkQzY0KzBrV2wvcGJsZVppNE1ydVl1?=
- =?utf-8?B?SjFPUmR4b2gvcmZXeWNEUkZYK3I4ajV6ZXVSWjlTMWIxWXh4ZFdIWjRPZWlj?=
- =?utf-8?B?Rmo5RHd6aFcyRHV3SGI1Q3IwczQzVXRkZC9lTW9lZWt4Z0N4bUUwUDU0dDhC?=
- =?utf-8?B?U0kyNXlod2RRdjg3RXFvQlZPVmxmNUJ2ZjQ3MXg4eTVkeG4xcFVrcmJnR0xG?=
- =?utf-8?B?MXB1UHhraisvWjJ3RFFMYWdSdjZSbG0vRzBIdFJoSEZBZmR2emFhRlU1R1VS?=
- =?utf-8?B?d3FCc00xVExsLzNLOXA3aXdNbmEzSldZeXNKM0RZQ0U2U2JNNzV2anAzcExy?=
- =?utf-8?B?T0kwb1l0L3ZXZThrRUNLZ01vVURuZGtEMU1uUUpsVUVtTGtZY0IwR0NzVTYw?=
- =?utf-8?B?dlcwcXFwR08zOGtVU0VLUlRGSTVWdUlRSW4rMVc2NzZlVGZRTHplb3VrUEll?=
- =?utf-8?B?REUyUzFvRmVaU3dCR3l0ekVTRzV2UE1aRmtNRFNvQzdBa1k5Rnp5aWhhRngx?=
- =?utf-8?B?eWFRc0RJMUQ2MGo2anFkQmJNYUpQelNVbEIwSjF0Z2swRXlZNHp0VEhGWkpE?=
- =?utf-8?B?Lyt0WCtya2g4QUZrTzFoRllVSzhlcW1xNnlhOHVLYXFIaWxOZ3Y4a250QkZo?=
- =?utf-8?B?K0g3aTVuMEpLT2M3WXM1UUhCcllWbHBlYnN3K0FwdGxCZE5pcll5RXFUYjJ3?=
- =?utf-8?B?bDd2LzUzOUcyOWpablVESnZFMGdzTnpISkNYcFVjbG0rSkZWcTltZldlR1E4?=
- =?utf-8?B?M3N4dnh6aUFkOUJVM1JRb05NejB1VHBLWnNXZk1GN1d2UFVWK2ZoOEppcDJ1?=
- =?utf-8?B?bXRReXBPNnBnQmc0d0g2LzN0SDRTWE1xWGtJaUU3MCtKcGVpTTRkRW44NGh4?=
- =?utf-8?B?R1JPVTFKVkFNOWZJRWdoSDBKZGpnQzU1T3pTVmpNUlBaNVp1cW9uV1owalpT?=
- =?utf-8?B?dlR0QTBEb0ZydFFRQ0V4Y1k4TVNrV2plY0lVL0R6dCtpMThqckZyMWQ4WXJ6?=
- =?utf-8?B?dkFPZHZjRXFLdGhHUklYWGw4ODJYSEVuSm0vSi9FcE96M2h2OVc1RjN3ODZ3?=
- =?utf-8?B?SXhWeVQ0WmJyZUJoMEVQSFd4T3J4TTVSVkVSQW1YQkVWVmlMY2M4a0IraGNE?=
- =?utf-8?Q?IWRCLIKKLrRfiMytGv1OLmE=3D?=
+	=?utf-8?B?V2liTk4yeEU0NGZ1ZVdlbGRKeW5VUFNqd2ZhWGlyeEpRYU1qbjk5M2drV2xK?=
+ =?utf-8?B?QXovdGovd3k3UGx4SmsrWXdwbCsrODd2VVJPQkh4c0NwZk40UWZFM0hRVG1L?=
+ =?utf-8?B?N1FPMWJWeVEvTnBHMjhrQWM5NWZLUFhTbjFUUWZkZjVXZUloSlJwQklkQ1do?=
+ =?utf-8?B?UmY0bDRQRldaZW5MZTNhMVdsQ0Noc0FCalhMT2xqVk9TeDUzNEp6cit1NnhT?=
+ =?utf-8?B?T0JwdmxhQUQ3blIyQlJxeE1TanJDTWdEOHA2Zi9abnpWMkFQR0pxdStYVmNy?=
+ =?utf-8?B?MllXMEdEWDRUMmhTQ0Z2VDc0M2ZYcjVZbUgyWC81YTZYc3dOZFpVd3hXa3JV?=
+ =?utf-8?B?YThzTm8yOVFUMWp5bFpYRlFnK3BDelhFRklFdE1jekZqcCt1ekZaL2tmT3lt?=
+ =?utf-8?B?blJZdEI3eVhuZTl2Nk9VU2JnaDdsdDN6TjJhODkvVGdNVTkvc21BUmErNkZ2?=
+ =?utf-8?B?RU5Qdjd3aHdZRlpWWFVkQVJsYzltMi9uT2ZsSFNTbjRUTFcwNHRSVmRtU3Fm?=
+ =?utf-8?B?aVh0ejZ6WjNhUStmVk1UN0ZpWnZlUGlSM1ZaL0dHNkE3NHR0Wnl1bG94ejFL?=
+ =?utf-8?B?a1VJdzdtQTRSNFp3bVlXM2lFanFBTlEwN0dacWlyd2xheDZIV1BVNEFSbFNX?=
+ =?utf-8?B?eU5sbE11QVNzdXVCaXpxZUNDWnNCM210dS9Qd1NNWlU5Y1dMcU5lUkhsUWEz?=
+ =?utf-8?B?L0pkQ3BZODBXV1RvUEk5UEVoT0ZWT1IvcVFzdU1XTVpvVXpsK0taQXVaQVBi?=
+ =?utf-8?B?SFVqZGRtUU56Zk5wU2NCRUo4V3NJWVdldmU1bjRWN1YvejJ5eHVEZXNOYlRm?=
+ =?utf-8?B?bUVCN2lTWGZDcFZKZmVMZGpZRUo2bEJNck5IK2UvbUdRNldQMmFGa2ZtMExo?=
+ =?utf-8?B?VmVSd2tSMVA2RGFCVTBwY3NzV0JZMEl1aVRuc1lnUDNvVGR3WWlGbXZKUG1M?=
+ =?utf-8?B?WmRCWXo1bmpyU3VoN2lYdGdvRllpeVVpOXJNSksxUWloRG9sUmxncmpNeDJ2?=
+ =?utf-8?B?U1VpL3VTUjEwdi8zajNZbXM3a0FXc3lEL1R2QjN0SklyVmsyc1VQSW5mdWRn?=
+ =?utf-8?B?elpYczdNYkZ1Y3dpL0VvSTFyUVNpdzQ1c2ZRV0Q4L241Z1dsQSsyQ0NBYm01?=
+ =?utf-8?B?K1IxRHpmRWdOVUlIN2tvYTFTNzFhMUhHS0JXMmorcGdweEsvaVRaSHFRa2ZL?=
+ =?utf-8?B?bHgxQnZLb1pCeU42WUZNOEtMMXNMd0hpbjluVk9JRjltblMzQm9qYStsUGI2?=
+ =?utf-8?B?S0VQY1NMM3BuVlBpMzllVks2djFNRURGUHIvdDA5dXUvMDd6cTlOQVBya1Nn?=
+ =?utf-8?B?WmJjWDlITUtiVUhlbFRmc2NhYXUyRjhnRC9qTXpoRHN0WFZDVG5MV240OHcv?=
+ =?utf-8?B?KzRYc2VUOXF5TnlNUnJTR2ZTMFhVbHk2a0tqcEhUcnUvKzRGdVNHRHQrQXQ0?=
+ =?utf-8?B?N0o3RzdPVlN0QnZrMUpaL0JLbis0OXlrc2F3ckdjdTR1UkNQT3duY2JlaUdy?=
+ =?utf-8?B?eE1jTnFOdkphY3Q1L0kwZDRDaGJ5MEhrNzVDMTBralJzazdVWSttamh4L2s0?=
+ =?utf-8?B?VkJjZUROZ3FxWW0rekdnTmRvQXZVOVFxNWtEOWNvU3puQkF4ZjZJVjVuTnZ3?=
+ =?utf-8?B?YkJOK2pkcWVGdGcrRlFBSUF0bUFHdktBbXUwTjV3UXM2b1ZRV3ZjR0Voa2pE?=
+ =?utf-8?B?dFlHd3pHQmZONkNZSk9BWjdHdmNGZFlEZjUzMjVld1kvL3BXQlByOGJrQnFB?=
+ =?utf-8?B?bFd4eWMyUy9lcTlOUW11SU1wdkkrcVFMN2ZNSzJmbjNTREdZSkMremc4L2RT?=
+ =?utf-8?B?Z1dxSGZvYlhjc1ZXbDExOTVnazl6ekU4WVRzV2Q5RFhqZmJ6Vm4zelo3UGM0?=
+ =?utf-8?B?Q1RTaHpGOFdQR2p2bG8xVzNILzJCL3huaUNXVXpORlNxWnprWDVsODk2NnZv?=
+ =?utf-8?B?K3BoVXQ2U2NPbSt0N0tvaXp1SlJ3ZXBpV3ZBWUUzUkdUazBPaTlETmRDRFVN?=
+ =?utf-8?B?S0MrQ1E0VHZVcU5kQWQwVFNCbzk4aUc5cUg3b1hiWUdZd21tRHQxU25tR1Ay?=
+ =?utf-8?B?SUJBYjRFNmppVlVqWkNrYS9MLy9HTisrWjdJL3BjWjBaUSs3djlTdDhSZVdP?=
+ =?utf-8?B?bFhpMUlNK0pPcjFXaDM2YnhmbldBMGlPbE12Yk84bEg1WlZhR3F4Q2NHVVkz?=
+ =?utf-8?Q?eg4HRxz+K5aDVZa+eK4YH2Q=3D?=
 X-OriginatorOrg: amperemail.onmicrosoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c9dea104-5673-489b-3877-08dc54af802d
+X-MS-Exchange-CrossTenant-Network-Message-Id: d5f848a7-ed19-46c2-0581-08dc54afb4ad
 X-MS-Exchange-CrossTenant-AuthSource: DM8PR01MB7142.prod.exchangelabs.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Apr 2024 13:59:52.7822
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Apr 2024 14:01:20.8426
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 0bCugVJd7MYucnMlcYfP2V58diAK5Xn+1t10tvPBA4gMXDosbYLyTkVSC8LKW/bYQy4O1PMPYqzk/qAUqpQh6SDtLDwt0jyxo7Wyi42x3GzHYtfI+9Me6QOqYmnBqqZV
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR01MB7527
-X-TUID: y+WXI6eEOQcW
+X-MS-Exchange-CrossTenant-UserPrincipalName: 7gnOnbxdZfJbsdl5yQvo7MoiGnbKNaK14az2x6AsAx9QVdp6Wq/WLbUyf+Tt+skqeZ9hQvMfxtBPxoEp52y2w6AgBDhZwM0XnfdTcvqaOraY2r+Bj+TwUKOb3nl1XQYe
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR01MB6157
+X-TUID: IC3tZhc0yBvz
 
---------------kBel8wbk5Cyo6NpiUIMpNbx5
+--------------c8RvZptx13P3VidEKPRJjXJ9
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 
 Hi Salil,
 
 On 12-03-2024 07:29, Salil Mehta wrote:
-> KVM vCPU creation is done once during the vCPU realization when Qemu vCPU thread
-> is spawned. This is common to all the architectures as of now.
+> ACPI GED (as described in the ACPI 6.4 spec) uses an interrupt listed in the
+> _CRS object of GED to intimate OSPM about an event. Later then demultiplexes the
+> notified event by evaluating ACPI _EVT method to know the type of event. Use
+> ACPI GED to also notify the guest kernel about any CPU hot(un)plug events.
 >
-> Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
-> corresponding KVM vCPU object in the Host KVM is not destroyed as KVM doesn't
-> support vCPU removal. Therefore, its representative KVM vCPU object/context in
-> Qemu is parked.
+> ACPI CPU hotplug related initialization should only happen if ACPI_CPU_HOTPLUG
+> support has been enabled for particular architecture. Add cpu_hotplug_hw_init()
+> stub to avoid compilation break.
 >
-> Refactor architecture common logic so that some APIs could be reused by vCPU
-> Hotplug code of some architectures likes ARM, Loongson etc. Update new/old APIs
-> with trace events instead of DPRINTF. No functional change is intended here.
->
+> Co-developed-by: Keqian Zhu<zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu<zhukeqian1@huawei.com>
 > Signed-off-by: Salil Mehta<salil.mehta@huawei.com>
-> Reviewed-by: Gavin Shan<gshan@redhat.com>
-> Tested-by: Vishnu Pajjuri<vishnu@os.amperecomputing.com>
 > Reviewed-by: Jonathan Cameron<Jonathan.Cameron@huawei.com>
+> Reviewed-by: Gavin Shan<gshan@redhat.com>
+> Reviewed-by: David Hildenbrand<david@redhat.com>
+> Reviewed-by: Shaoqin Huang<shahuang@redhat.com>
+> Tested-by: Vishnu Pajjuri<vishnu@os.amperecomputing.com>
 > Tested-by: Xianglai Li<lixianglai@loongson.cn>
 > Tested-by: Miguel Luis<miguel.luis@oracle.com>
-> Reviewed-by: Shaoqin Huang<shahuang@redhat.com>
 > ---
->   accel/kvm/kvm-all.c    | 64 ++++++++++++++++++++++++++++++++----------
->   accel/kvm/trace-events |  5 +++-
->   include/sysemu/kvm.h   | 16 +++++++++++
->   3 files changed, 69 insertions(+), 16 deletions(-)
+>   hw/acpi/acpi-cpu-hotplug-stub.c        |  6 ++++++
+>   hw/acpi/generic_event_device.c         | 17 +++++++++++++++++
+>   include/hw/acpi/generic_event_device.h |  4 ++++
+>   3 files changed, 27 insertions(+)
 >
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index a8cecd040e..3bc3207bda 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -126,6 +126,7 @@ static QemuMutex kml_slots_lock;
->   #define kvm_slots_unlock()  qemu_mutex_unlock(&kml_slots_lock)
->   
->   static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
-> +static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id);
->   
->   static inline void kvm_resample_fd_remove(int gsi)
->   {
-> @@ -314,14 +315,53 @@ err:
->       return ret;
+> diff --git a/hw/acpi/acpi-cpu-hotplug-stub.c b/hw/acpi/acpi-cpu-hotplug-stub.c
+> index 3fc4b14c26..c6c61bb9cd 100644
+> --- a/hw/acpi/acpi-cpu-hotplug-stub.c
+> +++ b/hw/acpi/acpi-cpu-hotplug-stub.c
+> @@ -19,6 +19,12 @@ void legacy_acpi_cpu_hotplug_init(MemoryRegion *parent, Object *owner,
+>       return;
 >   }
 >   
-> +void kvm_park_vcpu(CPUState *cpu)
+> +void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+> +                         CPUHotplugState *state, hwaddr base_addr)
 > +{
-> +    struct KVMParkedVcpu *vcpu;
-> +
-> +    trace_kvm_park_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-It's good if we add kvm_fd to trace.
-It will be useful to cross verify kvm_get_vcpu()'s kvm_fd with parked vcpu.
-> +
-> +    vcpu = g_malloc0(sizeof(*vcpu));
-> +    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-> +    vcpu->kvm_fd = cpu->kvm_fd;
-> +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
+> +    return;
 > +}
 > +
-> +int kvm_create_vcpu(CPUState *cpu)
-> +{
-> +    unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
-> +    KVMState *s = kvm_state;
-> +    int kvm_fd;
-> +
-> +    trace_kvm_create_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-vcpu_id can be used instead of kvm_arch_vcpu_id(cpu).
-> +
-> +    /* check if the KVM vCPU already exist but is parked */
-> +    kvm_fd = kvm_get_vcpu(s, vcpu_id);
-> +    if (kvm_fd < 0) {
-> +        /* vCPU not parked: create a new KVM vCPU */
-> +        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
-> +        if (kvm_fd < 0) {
-> +            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %lu", vcpu_id);
-> +            return kvm_fd;
-> +        }
-> +    }
-> +
-> +    cpu->kvm_fd = kvm_fd;
-> +    cpu->kvm_state = s;
-> +    cpu->vcpu_dirty = true;
-> +    cpu->dirty_pages = 0;
-> +    cpu->throttle_us_per_full = 0;
-> +
-> +    return 0;
-> +}
-> +
->   static int do_kvm_destroy_vcpu(CPUState *cpu)
+>   void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list)
 >   {
->       KVMState *s = kvm_state;
->       long mmap_size;
-> -    struct KVMParkedVcpu *vcpu = NULL;
->       int ret = 0;
+>       return;
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index 2d6e91b124..35a71505a5 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -12,6 +12,7 @@
+>   #include "qemu/osdep.h"
+>   #include "qapi/error.h"
+>   #include "hw/acpi/acpi.h"
+> +#include "hw/acpi/cpu.h"
+>   #include "hw/acpi/generic_event_device.h"
+>   #include "hw/irq.h"
+>   #include "hw/mem/pc-dimm.h"
+> @@ -25,6 +26,7 @@ static const uint32_t ged_supported_events[] = {
+>       ACPI_GED_MEM_HOTPLUG_EVT,
+>       ACPI_GED_PWR_DOWN_EVT,
+>       ACPI_GED_NVDIMM_HOTPLUG_EVT,
+> +    ACPI_GED_CPU_HOTPLUG_EVT,
+>   };
 >   
-> -    trace_kvm_destroy_vcpu();
-> +    trace_kvm_destroy_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
->   
->       ret = kvm_arch_destroy_vcpu(cpu);
->       if (ret < 0) {
-> @@ -347,10 +387,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
+>   /*
+> @@ -234,6 +236,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
+>           } else {
+>               acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
 >           }
->       }
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
+>       } else {
+>           error_setg(errp, "virt: device plug request for unsupported device"
+>                      " type: %s", object_get_typename(OBJECT(dev)));
+> @@ -248,6 +252,8 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
+>       if ((object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) &&
+>                          !(object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)))) {
+>           acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
+>       } else {
+>           error_setg(errp, "acpi: device unplug request for unsupported device"
+>                      " type: %s", object_get_typename(OBJECT(dev)));
+> @@ -261,6 +267,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
 >   
-> -    vcpu = g_malloc0(sizeof(*vcpu));
-> -    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-> -    vcpu->kvm_fd = cpu->kvm_fd;
-> -    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> +    kvm_park_vcpu(cpu);
->   err:
->       return ret;
+>       if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>           acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
+>       } else {
+>           error_setg(errp, "acpi: device unplug for unsupported device"
+>                      " type: %s", object_get_typename(OBJECT(dev)));
+> @@ -272,6 +280,7 @@ static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
+>       AcpiGedState *s = ACPI_GED(adev);
+>   
+>       acpi_memory_ospm_status(&s->memhp_state, list);
+> +    acpi_cpu_ospm_status(&s->cpuhp_state, list);
 >   }
-> @@ -371,6 +408,8 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
->           if (cpu->vcpu_id == vcpu_id) {
->               int kvm_fd;
 >   
-> +            trace_kvm_get_vcpu(vcpu_id);
-It's good if we add kvm_fd to trace.
-It will be useful to cross verify kvm_get_vcpu's kvm_fd with parked vcpu.
+>   static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+> @@ -286,6 +295,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+>           sel = ACPI_GED_PWR_DOWN_EVT;
+>       } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
+>           sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
+> +    } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
+> +        sel = ACPI_GED_CPU_HOTPLUG_EVT;
+>       } else {
+>           /* Unknown event. Return without generating interrupt. */
+>           warn_report("GED: Unsupported event %d. No irq injected", ev);
+> @@ -400,6 +411,12 @@ static void acpi_ged_initfn(Object *obj)
+>       memory_region_init_io(&ged_st->regs, obj, &ged_regs_ops, ged_st,
+>                             TYPE_ACPI_GED "-regs", ACPI_GED_REG_COUNT);
+>       sysbus_init_mmio(sbd, &ged_st->regs);
 > +
->               QLIST_REMOVE(cpu, node);
->               kvm_fd = cpu->kvm_fd;
->               g_free(cpu);
-> @@ -378,7 +417,7 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
->           }
->       }
->   
-> -    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
-> +    return -ENOENT;
+> +    memory_region_init(&s->container_cpuhp, OBJECT(dev), "cpuhp container",
+> +                       ACPI_CPU_HOTPLUG_REG_LEN);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->container_cpuhp);
+same sbd can be used here instead of SYS_BUS_DEVICE(dev).
+> +    cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
+> +                        &s->cpuhp_state, 0);
 >   }
 >   
->   int kvm_init_vcpu(CPUState *cpu, Error **errp)
-> @@ -389,19 +428,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+>   static void acpi_ged_class_init(ObjectClass *class, void *data)
+> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+> index ba84ce0214..90fc41cbb8 100644
+> --- a/include/hw/acpi/generic_event_device.h
+> +++ b/include/hw/acpi/generic_event_device.h
+> @@ -60,6 +60,7 @@
+>   #define HW_ACPI_GENERIC_EVENT_DEVICE_H
 >   
->       trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+>   #include "hw/sysbus.h"
+> +#include "hw/acpi/cpu_hotplug.h"
+>   #include "hw/acpi/memory_hotplug.h"
+>   #include "hw/acpi/ghes.h"
+>   #include "qom/object.h"
+> @@ -95,6 +96,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
+>   #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
+>   #define ACPI_GED_PWR_DOWN_EVT      0x2
+>   #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
+> +#define ACPI_GED_CPU_HOTPLUG_EVT    0x8
 >   
-> -    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
-> +    ret = kvm_create_vcpu(cpu);
->       if (ret < 0) {
-> -        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
-> +        error_setg_errno(errp, -ret,
-> +                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
->                            kvm_arch_vcpu_id(cpu));
->           goto err;
->       }
->   
-> -    cpu->kvm_fd = ret;
-> -    cpu->kvm_state = s;
-> -    cpu->vcpu_dirty = true;
-> -    cpu->dirty_pages = 0;
-> -    cpu->throttle_us_per_full = 0;
-> -
->       mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
->       if (mmap_size < 0) {
->           ret = mmap_size;
-> diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
-> index a25902597b..5558cff0dc 100644
-> --- a/accel/kvm/trace-events
-> +++ b/accel/kvm/trace-events
-> @@ -9,6 +9,10 @@ kvm_device_ioctl(int fd, int type, void *arg) "dev fd %d, type 0x%x, arg %p"
->   kvm_failed_reg_get(uint64_t id, const char *msg) "Warning: Unable to retrieve ONEREG %" PRIu64 " from KVM: %s"
->   kvm_failed_reg_set(uint64_t id, const char *msg) "Warning: Unable to set ONEREG %" PRIu64 " to KVM: %s"
->   kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> +kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> +kvm_get_vcpu(unsigned long arch_cpu_id) "id: %lu"
-> +kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> +kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
->   kvm_irqchip_commit_routes(void) ""
->   kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
->   kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
-> @@ -25,7 +29,6 @@ kvm_dirty_ring_reaper(const char *s) "%s"
->   kvm_dirty_ring_reap(uint64_t count, int64_t t) "reaped %"PRIu64" pages (took %"PRIi64" us)"
->   kvm_dirty_ring_reaper_kick(const char *reason) "%s"
->   kvm_dirty_ring_flush(int finished) "%d"
-> -kvm_destroy_vcpu(void) ""
->   kvm_failed_get_vcpu_mmap_size(void) ""
->   kvm_cpu_exec(void) ""
->   kvm_interrupt_exit_request(void) ""
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index fad9a7e8ff..2ed928aa71 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -435,6 +435,22 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
->   int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
->                                          hwaddr *phys_addr);
->   
-> +/**
-> + * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
-> + * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
-> + *
-> + * @returns: 0 when success, errno (<0) when failed.
-> + */
-> +int kvm_create_vcpu(CPUState *cpu);
-> +
-> +/**
-> + * kvm_park_vcpu - Park QEMU KVM vCPU context
-> + * @cpu: QOM CPUState object for which QEMU KVM vCPU context has to be parked.
-> + *
-> + * @returns: none
-> + */
-> +void kvm_park_vcpu(CPUState *cpu);
-> +
->   #endif /* NEED_CPU_H */
->   
->   void kvm_cpu_synchronize_state(CPUState *cpu);
+>   typedef struct GEDState {
+>       MemoryRegion evt;
+> @@ -106,6 +108,8 @@ struct AcpiGedState {
+>       SysBusDevice parent_obj;
+>       MemHotplugState memhp_state;
+>       MemoryRegion container_memhp;
+> +    CPUHotplugState cpuhp_state;
+> +    MemoryRegion container_cpuhp;
+>       GEDState ged_state;
+>       uint32_t ged_event_bitmap;
+>       qemu_irq irq;
 
 Otherwise, Looks good to me.  Feel free to add
 Reviewed-by: "Vishnu Pajjuri" <vishnu@os.amperecomputing.com>
 
-_Thanks_,
+_Regards_,
 
 -Vishnu
 
---------------kBel8wbk5Cyo6NpiUIMpNbx5
+--------------c8RvZptx13P3VidEKPRJjXJ9
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
@@ -383,232 +331,172 @@ Content-Transfer-Encoding: 8bit
     </p>
     <div class="moz-cite-prefix">On 12-03-2024 07:29, Salil Mehta wrote:<br>
     </div>
-    <blockquote type="cite" cite="mid:20240312020000.12992-2-salil.mehta@huawei.com">
-      <pre class="moz-quote-pre" wrap="">KVM vCPU creation is done once during the vCPU realization when Qemu vCPU thread
-is spawned. This is common to all the architectures as of now.
+    <blockquote type="cite" cite="mid:20240312020000.12992-4-salil.mehta@huawei.com">
+      <pre class="moz-quote-pre" wrap="">ACPI GED (as described in the ACPI 6.4 spec) uses an interrupt listed in the
+_CRS object of GED to intimate OSPM about an event. Later then demultiplexes the
+notified event by evaluating ACPI _EVT method to know the type of event. Use
+ACPI GED to also notify the guest kernel about any CPU hot(un)plug events.
 
-Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
-corresponding KVM vCPU object in the Host KVM is not destroyed as KVM doesn't
-support vCPU removal. Therefore, its representative KVM vCPU object/context in
-Qemu is parked.
+ACPI CPU hotplug related initialization should only happen if ACPI_CPU_HOTPLUG
+support has been enabled for particular architecture. Add cpu_hotplug_hw_init()
+stub to avoid compilation break.
 
-Refactor architecture common logic so that some APIs could be reused by vCPU
-Hotplug code of some architectures likes ARM, Loongson etc. Update new/old APIs
-with trace events instead of DPRINTF. No functional change is intended here.
-
+Co-developed-by: Keqian Zhu <a class="moz-txt-link-rfc2396E" href="mailto:zhukeqian1@huawei.com">&lt;zhukeqian1@huawei.com&gt;</a>
+Signed-off-by: Keqian Zhu <a class="moz-txt-link-rfc2396E" href="mailto:zhukeqian1@huawei.com">&lt;zhukeqian1@huawei.com&gt;</a>
 Signed-off-by: Salil Mehta <a class="moz-txt-link-rfc2396E" href="mailto:salil.mehta@huawei.com">&lt;salil.mehta@huawei.com&gt;</a>
-Reviewed-by: Gavin Shan <a class="moz-txt-link-rfc2396E" href="mailto:gshan@redhat.com">&lt;gshan@redhat.com&gt;</a>
-Tested-by: Vishnu Pajjuri <a class="moz-txt-link-rfc2396E" href="mailto:vishnu@os.amperecomputing.com">&lt;vishnu@os.amperecomputing.com&gt;</a>
 Reviewed-by: Jonathan Cameron <a class="moz-txt-link-rfc2396E" href="mailto:Jonathan.Cameron@huawei.com">&lt;Jonathan.Cameron@huawei.com&gt;</a>
+Reviewed-by: Gavin Shan <a class="moz-txt-link-rfc2396E" href="mailto:gshan@redhat.com">&lt;gshan@redhat.com&gt;</a>
+Reviewed-by: David Hildenbrand <a class="moz-txt-link-rfc2396E" href="mailto:david@redhat.com">&lt;david@redhat.com&gt;</a>
+Reviewed-by: Shaoqin Huang <a class="moz-txt-link-rfc2396E" href="mailto:shahuang@redhat.com">&lt;shahuang@redhat.com&gt;</a>
+Tested-by: Vishnu Pajjuri <a class="moz-txt-link-rfc2396E" href="mailto:vishnu@os.amperecomputing.com">&lt;vishnu@os.amperecomputing.com&gt;</a>
 Tested-by: Xianglai Li <a class="moz-txt-link-rfc2396E" href="mailto:lixianglai@loongson.cn">&lt;lixianglai@loongson.cn&gt;</a>
 Tested-by: Miguel Luis <a class="moz-txt-link-rfc2396E" href="mailto:miguel.luis@oracle.com">&lt;miguel.luis@oracle.com&gt;</a>
-Reviewed-by: Shaoqin Huang <a class="moz-txt-link-rfc2396E" href="mailto:shahuang@redhat.com">&lt;shahuang@redhat.com&gt;</a>
 ---
- accel/kvm/kvm-all.c    | 64 ++++++++++++++++++++++++++++++++----------
- accel/kvm/trace-events |  5 +++-
- include/sysemu/kvm.h   | 16 +++++++++++
- 3 files changed, 69 insertions(+), 16 deletions(-)
+ hw/acpi/acpi-cpu-hotplug-stub.c        |  6 ++++++
+ hw/acpi/generic_event_device.c         | 17 +++++++++++++++++
+ include/hw/acpi/generic_event_device.h |  4 ++++
+ 3 files changed, 27 insertions(+)
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index a8cecd040e..3bc3207bda 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -126,6 +126,7 @@ static QemuMutex kml_slots_lock;
- #define kvm_slots_unlock()  qemu_mutex_unlock(&amp;kml_slots_lock)
- 
- static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
-+static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id);
- 
- static inline void kvm_resample_fd_remove(int gsi)
- {
-@@ -314,14 +315,53 @@ err:
-     return ret;
+diff --git a/hw/acpi/acpi-cpu-hotplug-stub.c b/hw/acpi/acpi-cpu-hotplug-stub.c
+index 3fc4b14c26..c6c61bb9cd 100644
+--- a/hw/acpi/acpi-cpu-hotplug-stub.c
++++ b/hw/acpi/acpi-cpu-hotplug-stub.c
+@@ -19,6 +19,12 @@ void legacy_acpi_cpu_hotplug_init(MemoryRegion *parent, Object *owner,
+     return;
  }
  
-+void kvm_park_vcpu(CPUState *cpu)
++void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
++                         CPUHotplugState *state, hwaddr base_addr)
 +{
-+    struct KVMParkedVcpu *vcpu;
-+
-+    trace_kvm_park_vcpu(cpu-&gt;cpu_index, kvm_arch_vcpu_id(cpu));</pre>
-    </blockquote>
-    It's good if we add kvm_fd to trace.<br>
-    It will be useful to cross verify kvm_get_vcpu()'s kvm_fd with
-    parked vcpu.<br>
-    <blockquote type="cite" cite="mid:20240312020000.12992-2-salil.mehta@huawei.com">
-      <pre class="moz-quote-pre" wrap="">
-+
-+    vcpu = g_malloc0(sizeof(*vcpu));
-+    vcpu-&gt;vcpu_id = kvm_arch_vcpu_id(cpu);
-+    vcpu-&gt;kvm_fd = cpu-&gt;kvm_fd;
-+    QLIST_INSERT_HEAD(&amp;kvm_state-&gt;kvm_parked_vcpus, vcpu, node);
++    return;
 +}
 +
-+int kvm_create_vcpu(CPUState *cpu)
-+{
-+    unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
-+    KVMState *s = kvm_state;
-+    int kvm_fd;
-+
-+    trace_kvm_create_vcpu(cpu-&gt;cpu_index, kvm_arch_vcpu_id(cpu));</pre>
-    </blockquote>
-    vcpu_id can be used instead of kvm_arch_vcpu_id(cpu).<br>
-    <blockquote type="cite" cite="mid:20240312020000.12992-2-salil.mehta@huawei.com">
-      <pre class="moz-quote-pre" wrap="">
-+
-+    /* check if the KVM vCPU already exist but is parked */
-+    kvm_fd = kvm_get_vcpu(s, vcpu_id);
-+    if (kvm_fd &lt; 0) {
-+        /* vCPU not parked: create a new KVM vCPU */
-+        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
-+        if (kvm_fd &lt; 0) {
-+            error_report(&quot;KVM_CREATE_VCPU IOCTL failed for vCPU %lu&quot;, vcpu_id);
-+            return kvm_fd;
-+        }
-+    }
-+
-+    cpu-&gt;kvm_fd = kvm_fd;
-+    cpu-&gt;kvm_state = s;
-+    cpu-&gt;vcpu_dirty = true;
-+    cpu-&gt;dirty_pages = 0;
-+    cpu-&gt;throttle_us_per_full = 0;
-+
-+    return 0;
-+}
-+
- static int do_kvm_destroy_vcpu(CPUState *cpu)
+ void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list)
  {
-     KVMState *s = kvm_state;
-     long mmap_size;
--    struct KVMParkedVcpu *vcpu = NULL;
-     int ret = 0;
+     return;
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 2d6e91b124..35a71505a5 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -12,6 +12,7 @@
+ #include &quot;qemu/osdep.h&quot;
+ #include &quot;qapi/error.h&quot;
+ #include &quot;hw/acpi/acpi.h&quot;
++#include &quot;hw/acpi/cpu.h&quot;
+ #include &quot;hw/acpi/generic_event_device.h&quot;
+ #include &quot;hw/irq.h&quot;
+ #include &quot;hw/mem/pc-dimm.h&quot;
+@@ -25,6 +26,7 @@ static const uint32_t ged_supported_events[] = {
+     ACPI_GED_MEM_HOTPLUG_EVT,
+     ACPI_GED_PWR_DOWN_EVT,
+     ACPI_GED_NVDIMM_HOTPLUG_EVT,
++    ACPI_GED_CPU_HOTPLUG_EVT,
+ };
  
--    trace_kvm_destroy_vcpu();
-+    trace_kvm_destroy_vcpu(cpu-&gt;cpu_index, kvm_arch_vcpu_id(cpu));
- 
-     ret = kvm_arch_destroy_vcpu(cpu);
-     if (ret &lt; 0) {
-@@ -347,10 +387,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
+ /*
+@@ -234,6 +236,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
+         } else {
+             acpi_memory_plug_cb(hotplug_dev, &amp;s-&gt;memhp_state, dev, errp);
          }
-     }
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
++        acpi_cpu_plug_cb(hotplug_dev, &amp;s-&gt;cpuhp_state, dev, errp);
+     } else {
+         error_setg(errp, &quot;virt: device plug request for unsupported device&quot;
+                    &quot; type: %s&quot;, object_get_typename(OBJECT(dev)));
+@@ -248,6 +252,8 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
+     if ((object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) &amp;&amp;
+                        !(object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)))) {
+         acpi_memory_unplug_request_cb(hotplug_dev, &amp;s-&gt;memhp_state, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
++        acpi_cpu_unplug_request_cb(hotplug_dev, &amp;s-&gt;cpuhp_state, dev, errp);
+     } else {
+         error_setg(errp, &quot;acpi: device unplug request for unsupported device&quot;
+                    &quot; type: %s&quot;, object_get_typename(OBJECT(dev)));
+@@ -261,6 +267,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
  
--    vcpu = g_malloc0(sizeof(*vcpu));
--    vcpu-&gt;vcpu_id = kvm_arch_vcpu_id(cpu);
--    vcpu-&gt;kvm_fd = cpu-&gt;kvm_fd;
--    QLIST_INSERT_HEAD(&amp;kvm_state-&gt;kvm_parked_vcpus, vcpu, node);
-+    kvm_park_vcpu(cpu);
- err:
-     return ret;
+     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+         acpi_memory_unplug_cb(&amp;s-&gt;memhp_state, dev, errp);
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
++        acpi_cpu_unplug_cb(&amp;s-&gt;cpuhp_state, dev, errp);
+     } else {
+         error_setg(errp, &quot;acpi: device unplug for unsupported device&quot;
+                    &quot; type: %s&quot;, object_get_typename(OBJECT(dev)));
+@@ -272,6 +280,7 @@ static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
+     AcpiGedState *s = ACPI_GED(adev);
+ 
+     acpi_memory_ospm_status(&amp;s-&gt;memhp_state, list);
++    acpi_cpu_ospm_status(&amp;s-&gt;cpuhp_state, list);
  }
-@@ -371,6 +408,8 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
-         if (cpu-&gt;vcpu_id == vcpu_id) {
-             int kvm_fd;
  
-+            trace_kvm_get_vcpu(vcpu_id);</pre>
+ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+@@ -286,6 +295,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+         sel = ACPI_GED_PWR_DOWN_EVT;
+     } else if (ev &amp; ACPI_NVDIMM_HOTPLUG_STATUS) {
+         sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
++    } else if (ev &amp; ACPI_CPU_HOTPLUG_STATUS) {
++        sel = ACPI_GED_CPU_HOTPLUG_EVT;
+     } else {
+         /* Unknown event. Return without generating interrupt. */
+         warn_report(&quot;GED: Unsupported event %d. No irq injected&quot;, ev);
+@@ -400,6 +411,12 @@ static void acpi_ged_initfn(Object *obj)
+     memory_region_init_io(&amp;ged_st-&gt;regs, obj, &amp;ged_regs_ops, ged_st,
+                           TYPE_ACPI_GED &quot;-regs&quot;, ACPI_GED_REG_COUNT);
+     sysbus_init_mmio(sbd, &amp;ged_st-&gt;regs);
++
++    memory_region_init(&amp;s-&gt;container_cpuhp, OBJECT(dev), &quot;cpuhp container&quot;,
++                       ACPI_CPU_HOTPLUG_REG_LEN);
++    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &amp;s-&gt;container_cpuhp);</pre>
     </blockquote>
-    It's good if we add kvm_fd to trace.<br>
-    It will be useful to cross verify kvm_get_vcpu's kvm_fd with parked
-    vcpu.<br>
-    <blockquote type="cite" cite="mid:20240312020000.12992-2-salil.mehta@huawei.com">
+    same sbd can be used here instead of SYS_BUS_DEVICE(dev).<br>
+    <blockquote type="cite" cite="mid:20240312020000.12992-4-salil.mehta@huawei.com">
       <pre class="moz-quote-pre" wrap="">
-+
-             QLIST_REMOVE(cpu, node);
-             kvm_fd = cpu-&gt;kvm_fd;
-             g_free(cpu);
-@@ -378,7 +417,7 @@ static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
-         }
-     }
- 
--    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
-+    return -ENOENT;
++    cpu_hotplug_hw_init(&amp;s-&gt;container_cpuhp, OBJECT(dev),
++                        &amp;s-&gt;cpuhp_state, 0);
  }
  
- int kvm_init_vcpu(CPUState *cpu, Error **errp)
-@@ -389,19 +428,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+ static void acpi_ged_class_init(ObjectClass *class, void *data)
+diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+index ba84ce0214..90fc41cbb8 100644
+--- a/include/hw/acpi/generic_event_device.h
++++ b/include/hw/acpi/generic_event_device.h
+@@ -60,6 +60,7 @@
+ #define HW_ACPI_GENERIC_EVENT_DEVICE_H
  
-     trace_kvm_init_vcpu(cpu-&gt;cpu_index, kvm_arch_vcpu_id(cpu));
+ #include &quot;hw/sysbus.h&quot;
++#include &quot;hw/acpi/cpu_hotplug.h&quot;
+ #include &quot;hw/acpi/memory_hotplug.h&quot;
+ #include &quot;hw/acpi/ghes.h&quot;
+ #include &quot;qom/object.h&quot;
+@@ -95,6 +96,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
+ #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
+ #define ACPI_GED_PWR_DOWN_EVT      0x2
+ #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
++#define ACPI_GED_CPU_HOTPLUG_EVT    0x8
  
--    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
-+    ret = kvm_create_vcpu(cpu);
-     if (ret &lt; 0) {
--        error_setg_errno(errp, -ret, &quot;kvm_init_vcpu: kvm_get_vcpu failed (%lu)&quot;,
-+        error_setg_errno(errp, -ret,
-+                         &quot;kvm_init_vcpu: kvm_create_vcpu failed (%lu)&quot;,
-                          kvm_arch_vcpu_id(cpu));
-         goto err;
-     }
- 
--    cpu-&gt;kvm_fd = ret;
--    cpu-&gt;kvm_state = s;
--    cpu-&gt;vcpu_dirty = true;
--    cpu-&gt;dirty_pages = 0;
--    cpu-&gt;throttle_us_per_full = 0;
--
-     mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
-     if (mmap_size &lt; 0) {
-         ret = mmap_size;
-diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
-index a25902597b..5558cff0dc 100644
---- a/accel/kvm/trace-events
-+++ b/accel/kvm/trace-events
-@@ -9,6 +9,10 @@ kvm_device_ioctl(int fd, int type, void *arg) &quot;dev fd %d, type 0x%x, arg %p&quot;
- kvm_failed_reg_get(uint64_t id, const char *msg) &quot;Warning: Unable to retrieve ONEREG %&quot; PRIu64 &quot; from KVM: %s&quot;
- kvm_failed_reg_set(uint64_t id, const char *msg) &quot;Warning: Unable to set ONEREG %&quot; PRIu64 &quot; to KVM: %s&quot;
- kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) &quot;index: %d id: %lu&quot;
-+kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id) &quot;index: %d id: %lu&quot;
-+kvm_get_vcpu(unsigned long arch_cpu_id) &quot;id: %lu&quot;
-+kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) &quot;index: %d id: %lu&quot;
-+kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) &quot;index: %d id: %lu&quot;
- kvm_irqchip_commit_routes(void) &quot;&quot;
- kvm_irqchip_add_msi_route(char *name, int vector, int virq) &quot;dev %s vector %d virq %d&quot;
- kvm_irqchip_update_msi_route(int virq) &quot;Updating MSI route virq=%d&quot;
-@@ -25,7 +29,6 @@ kvm_dirty_ring_reaper(const char *s) &quot;%s&quot;
- kvm_dirty_ring_reap(uint64_t count, int64_t t) &quot;reaped %&quot;PRIu64&quot; pages (took %&quot;PRIi64&quot; us)&quot;
- kvm_dirty_ring_reaper_kick(const char *reason) &quot;%s&quot;
- kvm_dirty_ring_flush(int finished) &quot;%d&quot;
--kvm_destroy_vcpu(void) &quot;&quot;
- kvm_failed_get_vcpu_mmap_size(void) &quot;&quot;
- kvm_cpu_exec(void) &quot;&quot;
- kvm_interrupt_exit_request(void) &quot;&quot;
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index fad9a7e8ff..2ed928aa71 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -435,6 +435,22 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
- int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
-                                        hwaddr *phys_addr);
- 
-+/**
-+ * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
-+ * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
-+ *
-+ * @returns: 0 when success, errno (&lt;0) when failed.
-+ */
-+int kvm_create_vcpu(CPUState *cpu);
-+
-+/**
-+ * kvm_park_vcpu - Park QEMU KVM vCPU context
-+ * @cpu: QOM CPUState object for which QEMU KVM vCPU context has to be parked.
-+ *
-+ * @returns: none
-+ */
-+void kvm_park_vcpu(CPUState *cpu);
-+
- #endif /* NEED_CPU_H */
- 
- void kvm_cpu_synchronize_state(CPUState *cpu);</pre>
+ typedef struct GEDState {
+     MemoryRegion evt;
+@@ -106,6 +108,8 @@ struct AcpiGedState {
+     SysBusDevice parent_obj;
+     MemHotplugState memhp_state;
+     MemoryRegion container_memhp;
++    CPUHotplugState cpuhp_state;
++    MemoryRegion container_cpuhp;
+     GEDState ged_state;
+     uint32_t ged_event_bitmap;
+     qemu_irq irq;</pre>
     </blockquote>
     <p>Otherwise, Looks good to me.&nbsp; Feel free to add<br>
       Reviewed-by: &quot;Vishnu Pajjuri&quot;
       <a class="moz-txt-link-rfc2396E" href="mailto:vishnu@os.amperecomputing.com">&lt;vishnu@os.amperecomputing.com&gt;</a><br>
     </p>
-    <p><u>Thanks</u>,</p>
+    <p><u>Regards</u>,</p>
     <p>-Vishnu<br>
     </p>
-    <blockquote type="cite" cite="mid:20240312020000.12992-2-salil.mehta@huawei.com">
+    <blockquote type="cite" cite="mid:20240312020000.12992-4-salil.mehta@huawei.com">
       <pre class="moz-quote-pre" wrap="">
 </pre>
     </blockquote>
   </body>
 </html>
 
---------------kBel8wbk5Cyo6NpiUIMpNbx5--
+--------------c8RvZptx13P3VidEKPRJjXJ9--

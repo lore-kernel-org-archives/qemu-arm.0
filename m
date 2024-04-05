@@ -1,102 +1,101 @@
-Received: by 2002:a17:906:4f0b:b0:a47:c39e:cbe with SMTP id t11csp993874eju;
-        Fri, 5 Apr 2024 06:49:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUAV6LFc6j7SJk4p/LCcY+Ig/kvc1usupGHHNqeF4JPaM4mPd3pcljuuhK3TGMTQWWQDjAKr/UOGTARC5X2pU5cIdwbNQdR
-X-Google-Smtp-Source: AGHT+IEc7VFKwhhiVzsSOkAhKr8DtEDM4z7cOW+aTncp3S//a4GChjWprXTlcp8ZZvsli9xUsy8N
-X-Received: by 2002:a05:620a:24cb:b0:78d:475a:df2f with SMTP id m11-20020a05620a24cb00b0078d475adf2fmr1727235qkn.4.1712324965526;
-        Fri, 05 Apr 2024 06:49:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712324965; cv=none;
+Received: by 2002:a17:906:4f0b:b0:a47:c39e:cbe with SMTP id t11csp1005582eju;
+        Fri, 5 Apr 2024 07:07:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX64T4fKIfdhZpYBXXZG4Oq24he5Y7Bj/2aCl0GLAKFmWEfzCp4jC2KbmLmyMq+w8IJKHWBxCzpFM/RAqwDQJbyonTdOWt/
+X-Google-Smtp-Source: AGHT+IF2TZ3LVYKlXvUQAFIi0cfIWWLppu/pxp4fYoeJfXIQN0KY8lIpW+dHr5LEMjI3jFgB9dQx
+X-Received: by 2002:a05:6122:4f0d:b0:4d4:20fa:eb0c with SMTP id gh13-20020a0561224f0d00b004d420faeb0cmr1808764vkb.5.1712326020999;
+        Fri, 05 Apr 2024 07:07:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712326020; cv=none;
         d=google.com; s=arc-20160816;
-        b=zKoPtUlym4HpjvmRg+B7Uw3/gzHrRsp6XsxBMhiAK3QA5h/hpj3eloLbyY3QDi8pOL
-         Yw9WXCUhCAiXN176v+19du9jLdy2JSk5127KvnyAxRhSwcjbTk4NGW0ubU5VzbGgeNI2
-         9wO3Y3FAo2itx+PRz3eU41VqaDYqrOk0LiMjxwURv88HFEoyDGOXky0nYjz6LrnhOWvR
-         J23fZuBOx/YHkUL+LvYUTO4RGu3i/GpqU0I4Kg0S1QfoSHHSLr3tDZD4qmOUVr9H9KF5
-         rD7aiDwSmtGYl4if8MwhCQ1b0/C7WDj0RaR4NIHvWXFjzN+CsysTDTFOTEFEliM3mcfO
-         fhVQ==
+        b=kwNAoOIP1bT4NsRs6P9MX9WSBvNaXDHaVdRct2P0uZxrku7O664hO/IUTVwz06Om6d
+         aNbd8omi0UpjR5YZtsflrnkXsQVgm7NkQxZwb36gPZyhrehFnHcigW/3oL0bWE9lh3xB
+         SST6VHlyMgIz2g3ycoO7qO39fsTEdGiWU2GjKcW8Fub/vQNqdC//GYs2QfxIrDBAZ67I
+         AWGHeMMRIOWtMLurSn0HC9VowAhGk8WTVzrWT/OhsNapMu96mnOxuUwjPAbMxKocqUw1
+         cChPGZcO0lkSf5IytQ9/MJ7E93KPbNvGA2kQ6i9TdBGR07JPqQMUx4aMs2sA7iQS/cvy
+         Kh5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=wdCWLNv+gNFxjtNktRqs7Z1CW9aK0oxvcU92JTLyTJg=;
-        fh=xgqvpcnzEVTCzZWSMDbGiFxiHtAMylYcPbS+NbplNIg=;
-        b=rJyLmGtQBlnUpBn1Gti2FTS8JxLtBLuqnnxhL2xwEMG6YEZMoTO5Ndj+WDnUjkIkSY
-         Fe8K0+flw/KFiSPLETsH40bfp/IbMGQcxdOmAvoT8Vs5jLnqbcG73P/yLn/HiVQ4rTJn
-         KGmVRx/MWaSTswZmXuUYjJS4XsqSAZy8T5w7Q0/Xo1+a1+IbV7RI9tGzSihCB78Xnfh1
-         zqE9Xpn6WEo8k5qe0QaAHdgUxfnuipoXHEKSa4Vv47PQUEFZE8Iilw7M7dmBZtk0KEwD
-         3ita3bJ3asKiQfO5F1iqLxRBp9D9UYFcGWf5L4tiLau2C6R/vXuPK9e3d4znUucL87S3
-         +Ing==;
+        bh=wHGOW1wgnR+5ZgnC3ijf1kTcTTOtgDyd8J10Q0czdfc=;
+        fh=cgfMwD2MWIHFRFAlszW3LHEtbvtwk7TrCL5rWfJwoCo=;
+        b=bULukNOg8lO8GBM+mEy5s0a2nJI+OCdLq77fh7xKNk2CyNhRhXsRKjR8FC6APc+Ua+
+         2433BlNUIiMqPhtpdTtSqv+48RRzYxiLx6xaGzW6+b+T0j7y4m4pJek/5XlBiZZUKDjO
+         55BC6wzlhqlu/ufBqMxr1dGMYdHQL5ms9d2Qyq/NDTE7RmE6NCTrd/KZnCIt/9W4NAor
+         Fz4WILJm0plPAY9pbGqNg4qN3qImRIQE1lowq2HrYESJAaG5r8BqvlYydGqNPCNPV+EY
+         bq4vdQEhduX92vgm4Jzs736mGcZh6ka9dNdb7GmktjyBajn5EWT7h9UX57IixDNgG3nt
+         CjIg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FBifFoiP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F+aOOMuo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y22-20020a37e316000000b0078845f8a288si1781974qki.666.2024.04.05.06.49.25
+        by mx.google.com with ESMTPS id g7-20020ac5c5c7000000b004d892a588a5si223025vkl.240.2024.04.05.07.07.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Apr 2024 06:49:25 -0700 (PDT)
+        Fri, 05 Apr 2024 07:07:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FBifFoiP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F+aOOMuo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rsjw3-0000XK-E7; Fri, 05 Apr 2024 09:48:52 -0400
+	id 1rskDK-00071v-3w; Fri, 05 Apr 2024 10:06:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rsjvx-0000VU-VK
- for qemu-arm@nongnu.org; Fri, 05 Apr 2024 09:48:45 -0400
+ id 1rskDF-00071T-E1
+ for qemu-arm@nongnu.org; Fri, 05 Apr 2024 10:06:38 -0400
 Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rsjvw-0001ue-FH
- for qemu-arm@nongnu.org; Fri, 05 Apr 2024 09:48:45 -0400
+ id 1rskDC-0008Oe-Vw
+ for qemu-arm@nongnu.org; Fri, 05 Apr 2024 10:06:37 -0400
 Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-56845954ffeso3175252a12.2
- for <qemu-arm@nongnu.org>; Fri, 05 Apr 2024 06:48:44 -0700 (PDT)
+ 4fb4d7f45d1cf-56c5d05128dso2698050a12.0
+ for <qemu-arm@nongnu.org>; Fri, 05 Apr 2024 07:06:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712324923; x=1712929723; darn=nongnu.org;
+ d=linaro.org; s=google; t=1712325993; x=1712930793; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=wdCWLNv+gNFxjtNktRqs7Z1CW9aK0oxvcU92JTLyTJg=;
- b=FBifFoiPs/CJ0dU8jmH1vmaaLGR/sKIHpeG8DiS1S74nTJ+Cv14y6EKjeMI4nJkjLm
- 9Oq+F3OEVEca5pn6VwizgS8ScVfiz2RbOyNBi4quDw6PQ7uO4VRYdpEecavlzE4L+BK2
- I8Rk2ifzhmMgingGOePqA7oxCs6s9bVNQdNa5VLkZKjrSLmwi9iJtkFt5SwngXB3kK7v
- Sk6ZJKB6mPUiXuAI6h0vDj47OQQ7ezIUCUMgdUjoOyBN26D2x9fmps65yeyYLR6341zm
- bfMfWJX9DAWgmlAeVgmXdk0Wbe+NcscAqdYPvom91jmi1/lWYD3QadAMwaUNMXEe9M82
- HElg==
+ bh=wHGOW1wgnR+5ZgnC3ijf1kTcTTOtgDyd8J10Q0czdfc=;
+ b=F+aOOMuocmjWxyHMo6W1GyF6YavrWF7M5H+Il+p/Dmk83/lxv2wGBERXwtHyGcoQbj
+ w7zExWTiM4kVNoJ2qzZAN9tlo3QFUjTnc33Hfsgy5VSD9sc/3F2r4sWlIo4pUelfz3xM
+ tqss8ODP5eAubxHw5DVGJjD81gl481mzxMlIeqmzUCjurRnNiZXqhm1hLyDYr1jny17l
+ GzcF0d5Tma7/cLkNDJyU171X8NEeHQ5SDgB0pv/ufjqR/eux7LffSj/j+T0wiFOz+FEB
+ Y+tpVkVge/Ca32mky/nJWj9OmfDWNGttpVS9hen7AZN2TyvZCcnXHV9Lj8UbfNGK7IIw
+ AmUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712324923; x=1712929723;
+ d=1e100.net; s=20230601; t=1712325993; x=1712930793;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=wdCWLNv+gNFxjtNktRqs7Z1CW9aK0oxvcU92JTLyTJg=;
- b=onm36n1mPi7sRlegmSJJMRtROsOospUHSFhFph2HoyE/wlpXzSuShxWxWuvMXdbPCy
- qz2fX7OwaOmJa831uYnbBixxIVDAXwwAlTvYxM2iK9IAUXTCzYTDtn7o84fSeIa9Kf/t
- 9uOs/1nZRio3zyWIRPjDprNzSuFNWiw6Vz5JK1jfM4v5Zt32P3DIXaeAtFpeHCK01iG7
- RCH6/POTvMFW2L1e6dcjX3X+pvt7AThanlbI+UU2KSrxR/zI1ll7iqN3wB8JX4g5oMpe
- 92HWW8jv1yQJwgq7ZnnEDHIer3jUtdBLS3GyF5poHbmdDElvx69uoqTfqFviwwr49rbp
- jyRw==
+ bh=wHGOW1wgnR+5ZgnC3ijf1kTcTTOtgDyd8J10Q0czdfc=;
+ b=Z5uNiesYCebyn5ZcGUio6/P3sZ7dkgSEY1h/+83Jjc8bs84atAD/sjfCWkTeoo5Ffh
+ CO967d0roZT+TsFtqcvAGYqgtKx8CeeEijrdLlqntBvXloJzR0ba2zb6kKauvMlDy1tj
+ nPTEVpZFC4WBhIQWvB8ALpw3z9dnznlGUqFEILGnE5qmTb/ziw1Yejpti+g+QW8rhepf
+ n+25aHwDPNxEA1KmYsxpDCAhKTHE5qF0P+hvHAx6sTNzYZVGMTy0ioBP2xDBZ9rWqR/t
+ UwEIpMMY+ob01JkN4e4ztelbOFpQYEhcuZDZZ+hjZo0UmGWRGRWk7kN5rxqJCh4knUA7
+ PzQQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV0TeRMGWUkoty5JfNkJalyZlS7wpXKW82tWixBs9mqOE47QXz3cJFD428sUTH3bydPcmSmYJys7In1Oy8W3kS2oXM6
-X-Gm-Message-State: AOJu0YwALBERPeuBWNhdxb9qgY/njnHYAOGHs1jIFQPavN10OztmxQag
- MHOyFifQft2OChal6/yhH4176m/y5JqoVNead3yDgdrxmMqmkCU6zJodxIdBNap9//zDn9dVpV/
- +A6hPCYDMOulM/k1x8TG/IKQM7PVuVoqUL5/ASg==
-X-Received: by 2002:a50:8ac2:0:b0:56e:64a:2a47 with SMTP id
- k2-20020a508ac2000000b0056e064a2a47mr992030edk.42.1712324922780; Fri, 05 Apr
- 2024 06:48:42 -0700 (PDT)
+ AJvYcCVAdlse0qf5JgNJBMjO5jev/cNqLDPPIGrhbuOQxc4Oye0jWqsb+iuuT/qfGvW7xaDM8nl3oEytlwJJFgm2mQfpMq5h
+X-Gm-Message-State: AOJu0YwWCzjgXJCCJeo4EO7LLX3XWlcSLzf+698PAeowgLpN/rTSxOuc
+ WqYQzAZjbxJWYFWTW+zeV1vSYaBhj/J0brtSZWGDoqh8k4pEcEZR6gK/VxidZW7jPBMLKJ65u8i
+ fqRSW+lDMZ7fdge99oXGHJDmhg+65o+mpuXm9JA==
+X-Received: by 2002:a50:bb48:0:b0:56c:4f5:7227 with SMTP id
+ y66-20020a50bb48000000b0056c04f57227mr1018226ede.41.1712325992905; Fri, 05
+ Apr 2024 07:06:32 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240403101611.3204086-1-ruanjinjie@huawei.com>
- <20240403101611.3204086-24-ruanjinjie@huawei.com>
-In-Reply-To: <20240403101611.3204086-24-ruanjinjie@huawei.com>
+In-Reply-To: <20240403101611.3204086-1-ruanjinjie@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Apr 2024 14:48:31 +0100
-Message-ID: <CAFEAcA87CCLyk6=XzQANoqywfnSXSMcEkezAdH8bH-pO6AXKaw@mail.gmail.com>
-Subject: Re: [PATCH v12 23/23] hw/arm/virt: Add FEAT_GICv3_NMI feature support
- in virt GIC
+Date: Fri, 5 Apr 2024 15:06:21 +0100
+Message-ID: <CAFEAcA8=qJ763Q5UH5DvL=Wo4zhxvG0kO0VR77d5soYzDHsP=g@mail.gmail.com>
+Subject: Re: [PATCH v12 00/23] target/arm: Implement FEAT_NMI and
+ FEAT_GICv3_NMI
 To: Jinjie Ruan <ruanjinjie@huawei.com>
 Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
  wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
@@ -125,67 +124,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Xs5eG8RlgHef
+X-TUID: tjPTI7o041g/
 
 On Wed, 3 Apr 2024 at 11:18, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
 >
-> A PE that implements FEAT_NMI and FEAT_GICv3 also implements
-> FEAT_GICv3_NMI. A PE that does not implement FEAT_NMI, does not implement
-> FEAT_GICv3_NMI
+> This patch set implements FEAT_NMI and FEAT_GICv3_NMI for ARMv8. These
+> introduce support for a new category of interrupts in the architecture
+> which we can use to provide NMI like functionality.
 
-This is true but not really relevant here -- FEAT_GICv3_NMI
-is not "NMI support in the GIC", it's "does the CPU interface
-support NMIs". (And so I'm wondering if the code in arm_gicv3_cpuif.c
-should be checking cpu_isar_feature(aa64_nmi, cpu) rather than
-cs->gic->nmi_support; but I need to think through the consequences
-of that first.)
-
-The justification for "enable NMIs in the GIC device if the
-CPU has FEAT_NMI" is that (a) it's only OK to have a GIC with
-NMI support if the CPU also has NMI support and (b) if we
-can turn on NMI support in the GIC we should, so that we can
-provide the feature to the guest.
-
-> So included support FEAT_GICv3_NMI feature as part of virt platform
-> GIC initialization if FEAT_NMI and FEAT_GICv3 supported.
->
-> Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
-> v4:
-> - Add Reviewed-by.
-> v3:
-> - Adjust to be the last after add FEAT_NMI to max.
-> - Check whether support FEAT_NMI and FEAT_GICv3 for FEAT_GICv3_NMI.
-> ---
->  hw/arm/virt.c | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index ef2e6c2c4d..63d9f5b553 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -729,6 +729,19 @@ static void create_v2m(VirtMachineState *vms)
->      vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
->  }
->
-> +/*
-> + * A PE that implements FEAT_NMI and FEAT_GICv3 also implements
-> + * FEAT_GICv3_NMI. A PE that does not implement FEAT_NMI, does not implement
-> + * FEAT_GICv3_NMI.
-> + */
-> +static bool gicv3_nmi_present(VirtMachineState *vms)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(qemu_get_cpu(0));
-> +
-> +    return cpu_isar_feature(aa64_nmi, cpu) &&
-> +           (vms->gic_version != VIRT_GIC_VERSION_2);
-
-I think we should add tcg_enabled() to this condition:
-neither KVM nor hvf support FEAT_NMI yet. Defaulting QEMU to
-not trying to enable NMI in the GIC device is the safe
-option. As and when those accelerators get NMI support, we
-can add the handling to QEMU and update this code in the virt board.
+I think I'm now done with review on this series, so if you
+address the last handful of things I pointed out in replies
+to this series, I think v13 should be good to go in.
+(No rush, as 9.0 won't be out for another couple of weeks
+anyway and I won't start collecting up patches for 9.1
+much before that.)
 
 thanks
 -- PMM

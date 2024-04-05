@@ -1,314 +1,230 @@
-Received: by 2002:a17:906:4f0b:b0:a47:c39e:cbe with SMTP id t11csp274843eju;
-        Thu, 4 Apr 2024 07:02:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCV4pvbZ9mbuRstflpts2RVbcKC3GXiZNhwFaoGuCdL7uXkDs7I68svDd7CUgJ5PkSD+LlhfJZPZA9AxHYtn45FaOvxPdYMR
-X-Google-Smtp-Source: AGHT+IG5z2vJ5hcnLx0m23lmdYeLEgYH9THwe+UlR18M1OvAhfEcsahjOLef6ug/skVHn73e1YbM
-X-Received: by 2002:a17:90a:fd08:b0:2a2:94e4:6eba with SMTP id cv8-20020a17090afd0800b002a294e46ebamr2770600pjb.9.1712239354090;
-        Thu, 04 Apr 2024 07:02:34 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1712239354; cv=pass;
+Received: by 2002:a17:906:4f0b:b0:a47:c39e:cbe with SMTP id t11csp958776eju;
+        Fri, 5 Apr 2024 05:54:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVwl0ZZXJgKFcioCbQ8VYu+mQZ2GBlGM3U1O6u9gAHup/RkeiPtlwjTq0ikuoPCsSsLXaA4ZqSjTAkpjFGKu+C6me3Y1QVx
+X-Google-Smtp-Source: AGHT+IHEapvwXXe36ubnP//AZ0hJJxuQSM1y4ZjLDG/5y0tUIICi9QZokdBE/4C8rRlYylyKdVqp
+X-Received: by 2002:a81:8351:0:b0:60a:5fd6:360b with SMTP id t78-20020a818351000000b0060a5fd6360bmr1236101ywf.40.1712321677793;
+        Fri, 05 Apr 2024 05:54:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712321677; cv=none;
         d=google.com; s=arc-20160816;
-        b=U2b5+l9sYH21VKh41zKL5iXj1FVnp5KIdZEX9MZdurNaleXrvPJJ4C+SQryi38Co0Q
-         gLPGMT5xUuG75ij2y4GTdJdjvIreKABmE25tg+0VjJISPvNN3WJbNjXJ9bDFhtGvRZ17
-         XrKpNoU3qXCU6VjWnudkgSDodhXrwN3hPuTbC4JxSeOgT1GzKtUAv42NbHwabGUbQJVF
-         znqTd4ERkRgupoV/8YD/zmNner4t9XjFGARJOSwoJkgZtLV4ZTCd4Pa06cSzNohPZnnx
-         e0smQ/psfgyCnqFyeqMCXiu5Vx7CDKU3cd+J3frGuIFPi9PFBTJCxwffQ3GknPTBPhS/
-         9gpA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:in-reply-to:from:content-language:references:cc:to
-         :subject:user-agent:date:message-id:dkim-signature;
-        bh=xTOW4eL2J48x/anFI1wj+IwFebKlVPP2FM9QzD+so7k=;
-        fh=9tX89LzYy1PPJUislzf9FzzhMfJBhSEzF9KOgLRDmLY=;
-        b=Yz+f4KjX3ccQyhGmq4Xx1tc/MWRMmo4jjIzcmhPFcdWxUILl0RFI4Esgu5ke4ekshH
-         0Hh/Mj3y3gAf3G2TQ3y6KCBmiwXHjvyx/qbRfH82JPWy6WndhOpUjJ0gzreVqIXjTF3B
-         fF6mZM3llG4ozdk123VrlY9+1TxulfYljGHITloBMkrDiUFT4KSRm9GhgNsmeAm0ty00
-         Mi9W3xeEwTZ1eg79Ixc2sXmRF3fMoxoIspEAU/U5mMIXjOVu921vxyvaW5imPwhfoG/I
-         u2RRZk9UJSEKPf/pn2S80RIg5fxJKT13+zvVhBXauw2tsPlNmsMr1w0QGHhZLxBxO0vf
-         moCg==;
+        b=mjkcwn0Tmac25G9iIcXIZGv9q50XqaQuWbguqp1PCDK76UWvax6g9rPMSkiiVSZImN
+         1NYHW7yOiDfPgIDVeUTguQiBkcDfRcektS5evReqEB4KqJkoj4+xe6tHmV/uyjE5A04I
+         E7X/gvCgDArT1h+OihhXZUAFDiO0DVmw3rWldnlrjTrxR3dQOEi/USfmkaTDz0+KmZh8
+         QnVclMUocPv9nw8jmAhJZkG04yA55tJ1GfSIBxn4LSKoeG7adBuoq1YV6+nZnmKEScVM
+         7LhGB7Xpb6S13Zb6aXihC9RxdYW8fZMe59aPPFpTVR/2X9bM0Zl2tt5r1OdfoyX20ijP
+         p4Hw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=jARGZ5t8qjs1XSZjo4NZHkEKWxs+rQQU56W1uBL9n0I=;
+        fh=L1NKobGozxxmi4IyYxnJnBRHye24jd9qR2lNTjdC0wM=;
+        b=a11v872yGHtQptgX9olMC6UPMg92zFFFpNZ53JeZ32TkKjbWc41SieQJQtMYQ4Fv9p
+         K6d+/qln3AHOtujnk5o+HrqYEKPXpb5i4axuie21slGTHvB4AS28kOPunE6ueWa3huVL
+         N0bCJQYPqGU/sFmJKXYjTnSXgWUuapQZ+5w/HzHdoWhARSdku0DHgtw6yiwdo5kGDnfg
+         tcQ5wY4CGaPi0OdIknKfqaeo0bMzV0NWPpgc6lNDGlB/BZt0eA/+0L+7wuiEG/FR8JcL
+         atTNR9kydho3R1W3Holj81UwFUBvSQnAPmNfiDBVLJ5m6BZG5cIfithNJNC+EAz4CTxt
+         jTQA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=temperror (no key for signature) header.i=@amperemail.onmicrosoft.com header.s=selector1-amperemail-onmicrosoft-com header.b=J89j8rv3;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=amperemail.onmicrosoft.com dmarc=pass fromdomain=amperemail.onmicrosoft.com);
-       spf=pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2416::701 as permitted sender) smtp.mailfrom=vishnu@os.amperecomputing.com
-Return-Path: <vishnu@os.amperecomputing.com>
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (mail-co1nam11on20701.outbound.protection.outlook.com. [2a01:111:f403:2416::701])
-        by mx.google.com with ESMTPS id pf2-20020a17090b1d8200b002a2f7dd8afcsi329838pjb.31.2024.04.04.07.02.33
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 04 Apr 2024 07:02:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2416::701 as permitted sender) client-ip=2a01:111:f403:2416::701;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Brx37PE+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id et8-20020a05622a4b0800b00432fb46e917si1585693qtb.200.2024.04.05.05.54.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 05 Apr 2024 05:54:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=temperror (no key for signature) header.i=@amperemail.onmicrosoft.com header.s=selector1-amperemail-onmicrosoft-com header.b=J89j8rv3;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=amperemail.onmicrosoft.com dmarc=pass fromdomain=amperemail.onmicrosoft.com);
-       spf=pass (google.com: domain of vishnu@os.amperecomputing.com designates 2a01:111:f403:2416::701 as permitted sender) smtp.mailfrom=vishnu@os.amperecomputing.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=E5K3krKrG81TGo2NlLfeEv8jiBTWmLC1TR4gq3/cuK60DrqJ+MEY61ySWhuM1Xz4vjsjaWyXcbUfLYmw3FKa91pD3I7bbce0ypKIs2EdoZp/hmKnlGJgV6ZD8Kq1EfZYgk4RU6pB/ZgjMgdfyGvvXHifcIaq+50F5kNpGlnFTWZmQWfLfeaveKGYgxWFDdaA0wAYoPLEdKqRy3aSTN4xlfp+T/SmxABeLPkTRP7bpSZUaHoLN4H3lECZA6o4iATyEocuoYAzyxHyy52OFx+mkCuAiCgWPlPyDfnRZP2ly/YOBgM/JBNOle0p2+XnDIuCfOvwl0zuDDvfj6n5CxNgaw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xTOW4eL2J48x/anFI1wj+IwFebKlVPP2FM9QzD+so7k=;
- b=gJfmFLwmiffusNptXAQ1/VV9XQZYhzPtU0jRmZtu4xIMD0vvEAiN9JYXhhI9WJIG3MaXBL76O04czusMj6OpHKfl+rE6PvZKvTb0970mqXSHAUJxSLf0eC+P9tmqhx7Exy1hN2fLccziMTEzBOH+Gbp/5g+hstXOh0hxzVXKV7n+LZIzr9Q+YY34DpKQVvfmLrg4RdcqO1pSdOHMRL+bMmKcyFX+Pu2kxEsxdqruKuFUypL6LnYImuSMKHFjVLSbO2TvWobVA5sPLIvjHdCbt3NxDohDo4VQWrF7H0We7wllqSLjHKf99bY7oMRcgIEfdlXp72luAhECSXP0ugsAJQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=amperemail.onmicrosoft.com; dkim=pass
- header.d=amperemail.onmicrosoft.com; arc=none
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Brx37PE+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rsj5C-0004od-L0; Fri, 05 Apr 2024 08:54:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <npiggin@gmail.com>)
+ id 1rsj5B-0004o5-CD; Fri, 05 Apr 2024 08:54:13 -0400
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <npiggin@gmail.com>)
+ id 1rsj59-0000yE-Kq; Fri, 05 Apr 2024 08:54:13 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-29ddfada0d0so1520303a91.3; 
+ Fri, 05 Apr 2024 05:54:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amperemail.onmicrosoft.com; s=selector1-amperemail-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=xTOW4eL2J48x/anFI1wj+IwFebKlVPP2FM9QzD+so7k=;
- b=J89j8rv3sbiVwjkAjWL6cr7MkZwXhqLBAXxj5UIs3IXzG60hAGEhvaNPxTTNyJ5jnkYebSdr8tZ9KdNkS8cnhhP0D+usQaWce8GLZ7VuVOtCQzVplD5U6yVogAXnex8rQFH+zJDJW4tL3Fs2MRyFVyvQcvcP71oZCniWEI2jodA=
-Received: from DM8PR01MB7142.prod.exchangelabs.com (2603:10b6:8:1::11) by
- CH0PR01MB7106.prod.exchangelabs.com (2603:10b6:610:ff::23) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7409.46; Thu, 4 Apr 2024 14:02:27 +0000
-Received: from DM8PR01MB7142.prod.exchangelabs.com
- ([fe80::63bf:3703:b8b4:9d1]) by DM8PR01MB7142.prod.exchangelabs.com
- ([fe80::63bf:3703:b8b4:9d1%5]) with mapi id 15.20.7409.042; Thu, 4 Apr 2024
- 14:02:27 +0000
-Content-Type: multipart/alternative;
- boundary="------------cF4OedXxvwA4KzUguFT5AQgH"
-Message-ID: <884099cd-f57f-417e-aff9-52a7d77dab31@amperemail.onmicrosoft.com>
-Date: Thu, 4 Apr 2024 19:32:08 +0530
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V8 7/8] gdbstub: Add helper function to unregister GDB
- register space
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
- david@redhat.com, philmd@linaro.org, eric.auger@redhat.com,
- oliver.upton@linux.dev, pbonzini@redhat.com, mst@redhat.com,
- will@kernel.org, gshan@redhat.com, rafael@kernel.org,
- alex.bennee@linaro.org, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
- maobibo@loongson.cn, lixianglai@loongson.cn, linuxarm@huawei.com,
- gankulkarni@os.amperecomputing.com
-References: <20240312020000.12992-1-salil.mehta@huawei.com>
- <20240312020000.12992-8-salil.mehta@huawei.com>
-Content-Language: en-US
-From: Vishnu Pajjuri <vishnu@amperemail.onmicrosoft.com>
-In-Reply-To: <20240312020000.12992-8-salil.mehta@huawei.com>
-X-ClientProxiedBy: CY5PR19CA0072.namprd19.prod.outlook.com
- (2603:10b6:930:69::14) To DM8PR01MB7142.prod.exchangelabs.com
- (2603:10b6:8:1::11)
-Return-Path: vishnu@os.amperecomputing.com
+ d=gmail.com; s=20230601; t=1712321648; x=1712926448; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=jARGZ5t8qjs1XSZjo4NZHkEKWxs+rQQU56W1uBL9n0I=;
+ b=Brx37PE+2hszUmqqb3cuzk2ToxGzpJTPxq/INiZ3DFChwKBkA8hrDbdR3etp2lKnLp
+ 8Eu1dvDMifoMYuU4kPmX9eDXAwACRsPofl8+qTqukAZW1VaFPMOXAvOVjK2VhU8GiEUz
+ pJ4ZXkFLR37oIfkYag4ThaN8x4VWatKzPFoRmvMLJorrLqG0Comtr6S2rrCnfwrUk9iz
+ cOONq/0V/n13kvl/sWvx4zuYEXoUidLKvvoKqTeo7hTySAJjEBv+6b7tRa4JkuLH+IoD
+ r9wPvcglVSGA1irB2kqn4AF+4O1vc1hyyqk8mfZ2iqc4xoUVPC47gTSOaxxKDZ9sl03Q
+ AtaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1712321648; x=1712926448;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=jARGZ5t8qjs1XSZjo4NZHkEKWxs+rQQU56W1uBL9n0I=;
+ b=KMCQd6L94kVEiVAD7U6aJDGpEsupKZ+Iac/f5zfPbWbthc1W/0Yk/BtL6JXhuA24Lx
+ Oamg6tgAdzLO5RNnhRQTW7VqZrucM8uVKVguQ6p9+hMLkQMN0BghoLnib01DSsFukWr/
+ ijX4q++fkLMevrd6hNthcrJVCIFbXAJkwzI77S7lvFGPSrCqEMhm324SMCQXSAmCabon
+ cyUJusqLOATSeeo3Aes/y1EyrnZHb7gCLP+Tfi/Isx3GMn5Eqw6qwf20eB8v/WbWuVyD
+ UMG+nu3HLc+a4OVDSrHtiDFbsOi6cukkmQCoN165F51GHJJ75CkfQLzjlg6DXW0jvzY3
+ 0MTQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWPAu4Y240NnLgNP24kL6T5KyRwNYdaen/Ic+PexIrwhgxcjjaF216xrAOEBeRh2TgjG66j/NONCJKa+AtJ8CS4cCKeprvk/im0eKXyn3O+Dz97sEuU67Q+gdhbv4PrGfFM5sBiOVJ8ullrAwWG4lZ3xS8UgD5gwFsBUK5IzNJowKo8vrYjU7MW
+X-Gm-Message-State: AOJu0YxS+YcgVk7PvlWERtBXu1pVAtNglgov5+h+5fsalVnitwvv2STp
+ dLf/s4cVuUspOU+knvtw4KZa9EhFiZOj92xBHPkAtOekzDf18zvYSY80CyA/
+X-Received: by 2002:a17:90b:46c8:b0:2a4:82ca:4516 with SMTP id
+ jx8-20020a17090b46c800b002a482ca4516mr568882pjb.5.1712321648367; 
+ Fri, 05 Apr 2024 05:54:08 -0700 (PDT)
+Received: from wheely.local0.net (124-169-104-130.tpgi.com.au.
+ [124.169.104.130]) by smtp.gmail.com with ESMTPSA id
+ t19-20020a17090ae51300b002a2d8d34009sm2984414pjy.27.2024.04.05.05.54.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 05 Apr 2024 05:54:08 -0700 (PDT)
+From: Nicholas Piggin <npiggin@gmail.com>
+To: qemu-ppc@nongnu.org
+Cc: Nicholas Piggin <npiggin@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+Subject: [PATCH v2 3/3] tcg/cputlb: remove other-cpu capability from TLB
+ flushing
+Date: Fri,  5 Apr 2024 22:53:38 +1000
+Message-ID: <20240405125340.380828-4-npiggin@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240405125340.380828-1-npiggin@gmail.com>
+References: <20240405125340.380828-1-npiggin@gmail.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM8PR01MB7142:EE_|CH0PR01MB7106:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info:
-	kcBFvsrU9y4aJtcepmA9oprYocQOfpDTUMGAY4PaSDhgjPDiopcpqx/emxJ9aYPtnXEf8lnIbTOuGFD6hBXrNnZ/U2uf5RYso6dN0GLiWSBr51bdVJo7I5tfgAXPVCTcKgGGD245m4KIP90XYVnxuFHfkIR140CDvx+HUYFF0Zn0sg70MSeCe2FauIwfWEdZQ8OkwLJoR6T9ewd1qU7R4GdRzVbPH1O9Zlc+uHFgDIKtqtWKUn826sJ/4H3tkHFm0HWpMwgIWZ1mbjUaOEGtECBLNdOlDGAEHFG4jRz0FpMJqh9GzapCeLadh+4v2IFOhITmwSnykmcb4XV3hu1EltTUKtibBvkVG4ZUL69FQ7DBTjLJktzFv1la126QbZxvPe27sbMkRej5wXTWqfr4qjctlcpdpb0PUP3YLU1NW5cvpYfnOuJRiWIXiuar9LNf6wCYDQraYE1TiXEbHcF/AVbJuaHgI0xz7rFmNQRCJ0ULoaXM9JlTzy1aJ5Vzkrxzde5S39GAPV6jI2Ee6Rdz6MoMGYyX6M2IhvPRDEr6VP/wLA/ktqQ3ZcN40s4RaDnqq98QhvDDB/6I2TjRVPOGzEfiAnMq55M79065+Szf3QLg/FSjbNg5ieEOA8nwePPI7FUJFaEQS/9GKquNUM+SYbDRT1AVNLcsYtmy1llubPE=
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM8PR01MB7142.prod.exchangelabs.com;PTR:;CAT:NONE;SFS:(13230031)(366007)(376005)(1800799015)(7416005);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?NzdaajFTNDdlTk4zNmNSNm1rak5Oci9YT3o5Q3ByZjg4elliQTI5TVlHWDF6?=
- =?utf-8?B?R0g5OGVOMEg1WXV1dDZsbk5sUUQrQzdDM1pua2I1SlRIaE8zS3lyN3dkakJq?=
- =?utf-8?B?TkdJKzNhbEc3UUFxOE0rSktaS0djUmxlK25oRVZ1a2ZNQjZ0eEo4UWptOTBu?=
- =?utf-8?B?OU1YTFlQa3R4dGxmT0xVVm40TXlxRGdocUQ4M3cwd3dYbllBcnhKZmM4VlM2?=
- =?utf-8?B?bDJpYlNZZ3Zmd2d6b1ZpNVVIMU1ISkNKdk0wTldkU1lxSkt0RE9lMEYyMHFM?=
- =?utf-8?B?RmIrR2xwWE9kWHJJYVNxYnlRYW9YSGd6anhKM3RHdGpDUTR3c2lxcVNnUlE5?=
- =?utf-8?B?a3hwanl6UExVdmk2ZXlhcDhvNHl6Z1dZZzhSZEhxQlNHaGtQOFZteTQrWStw?=
- =?utf-8?B?MnBHWUdReUdyN2dxdnZoSVcydmZzbzcweGJyZUlXSWNSeEZVNXRpWUZTMHg0?=
- =?utf-8?B?NXVBQlJvMWYyZkx6RG5jRTJTNnZ4d3VPd3VIdGhFZzVGNThTeFMvY1FwRGRY?=
- =?utf-8?B?RkRnWHMyR2ZoRzRYcmphL25KcGlDS20renRsRU9VVGNjd0pubmcya29XZWpS?=
- =?utf-8?B?ZStxck1KNHVIOWV3c2gycnl1akhWUE1qTkVpSnlVZmFHSWRNc0V6Tll5bXB4?=
- =?utf-8?B?cmxFSkowcU8zc3BwUnRwQ1BNOXJsRmtxcUhobnFQZHAzSnNKN2hoUVFSd3ZO?=
- =?utf-8?B?WXJRRTY2bTNpT1A2WWcwQkpIRytsUm16WGlQRVZ0MXFlV0NvTHJqSUJvdDE2?=
- =?utf-8?B?SU8vTzZWVGFJNUVSK003ZFpPRk9BK1BjdytoeGpwRFNubHlqdjhpNVBHcGJk?=
- =?utf-8?B?K0t4ckNZQlduN0s5VGVLNmhJTVRNaEY1YzUzWk82dUlzcEZIbGtVb1ppbFZv?=
- =?utf-8?B?MkcxSnpZT0J2U3p2OGthZnFNQkg5R3F6b2pIMGlEcTRYSXZMejlUdUxXbnVu?=
- =?utf-8?B?eHlaSzQ2MjBZY1BNdk9SdmxBcWsyNTA4d2RFK3pDWUlRYlhPYW5wTEFxVHN5?=
- =?utf-8?B?WVJ1MGsvZmpHSnlndDFyQnNXRVZuNk9uWTRsU1dMR0d3bjBPSUpCQ1ZrSmww?=
- =?utf-8?B?Sy94bnNNU2x1R2RCQUtwS2xWQnowQ2c4UFB6bWhRaCtoaDFtNkd1SlJiMCs2?=
- =?utf-8?B?bkE3eWp5ZzJEUlNiR21mWnJhSlU0TjJSSjFyWFVqQ2ZmK05nVDRvbUorQlNK?=
- =?utf-8?B?QUZyd3lrYkxETU92NVY4RGh4UU1lY3VHejdzL1lHVHRnK1NXWklpSFNJM1pK?=
- =?utf-8?B?WFkwVlVtU1YzYXhrSE1qdURYQnlHaFcwR2hqVDhoSXNGQ0E2cDVDV1ZTSnBl?=
- =?utf-8?B?d3daRk0zUk9SQUJQRUVsVHpKRHFIb2dTSnlyaWt2a2ZhU2w3dEgvQ0YzNXZS?=
- =?utf-8?B?cG4wK3loQnRtZzJ4K1UyMXdlYnM0S0RlZ0ROZDJucldkZnJkd3ZCRDJ0WTc2?=
- =?utf-8?B?eC9CbU9mbWkvNUZPYmgvZE9QUFZMMFB2U2tSS0pLZUNoaXh2WlpBMGJPS281?=
- =?utf-8?B?UUF1Y0UvL1lqUlhpL2Z1cDJRSENNQzJHZGRLb1NQWmxyTVlUd0J1S1RjM1h0?=
- =?utf-8?B?U25TYkVXL3RoYkFxVUZESVNhNFNtWTZnMnp1ZU14VitrMEdFaUtVUUpCVjQx?=
- =?utf-8?B?QUUvd2c1UmY4WDZBU0wyeXJORmZpL09QQk5FM2ZYc3U0Sko3TmhlVm0yRHoy?=
- =?utf-8?B?K1YzVUtIaGQrNWZGZ1hGMGl1aEo2aFREZ3Y2MjN6V0pIc08vOE5wMkhrZXUv?=
- =?utf-8?B?NXVMelk3Y1BUTUszaVc1Zk9nTlNqL2tvS1BYS21vajhDUVNOYUNzZE5lenI5?=
- =?utf-8?B?YUc1cUhPajVHTElyTkVvMXFvRER0SXV2aDVEWmxUNmp1YlhXdzJ6aUJqQjFM?=
- =?utf-8?B?aWNrd0NucDlBcjBCcUdLM2lpMWpNVytWZmtlU0doSFN1TXVHNW11NGo0ZEJU?=
- =?utf-8?B?Vmo3dFNLYVlaMlpCYVBCRnlFSUdqVmNuSnZhY2JoUWdvVE9BN3F1b05TNFNl?=
- =?utf-8?B?Nndsb1ZqMG5BU0pMNXlwWmUvNzRHNW9KQ3JUMnAvQVlRVzNIR3JrVGQ4QVpI?=
- =?utf-8?B?bHN1bEttdXZTbWpRa0tuRnA3QXBRU2paWWlua05VbCtPYkVJTC9ULzUvc0My?=
- =?utf-8?B?b2IvTDlMM0NKZVhnYncvTjE1aDZQeFVGZ2JxOWtoVzVOMWxMbng2dDgyUllk?=
- =?utf-8?Q?XTkiwqZssbeuU1nnfynVhKI=3D?=
-X-OriginatorOrg: amperemail.onmicrosoft.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 145bfea8-c8e6-49cb-d990-08dc54afdc8f
-X-MS-Exchange-CrossTenant-AuthSource: DM8PR01MB7142.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Apr 2024 14:02:27.7282
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qGnJF4DfJL7YAYmd+2eN6PalxL+Ya6vXLI+xIvrsSwx3oxGhCPW8dWCksO3s8280dXFiwU6QHnb5xI2Rym45+gMQzJPn06rH8FoDYh1gzcPUKR8kMzabMLY9HR1axK19
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR01MB7106
-X-TUID: usF8m1epd5aS
-
---------------cF4OedXxvwA4KzUguFT5AQgH
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=npiggin@gmail.com; helo=mail-pj1-x102e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iSWEFg6U9uXz
 
-Hi Salil,
+Some TLB flush operations can flush other CPUs. The problem with this
+is they used non-synced variants of flushes (i.e., that return
+before the destination has completed the flush). Since all TLB flush
+users need the _synced variants, and that last user (ppc) of the
+non-synced flush was buggy, this is a footgun waiting to go off. There
+do not seem to be any callers that flush other CPUs, so remove the
+capability.
 
-On 12-03-2024 07:29, Salil Mehta wrote:
-> Add common function to help unregister the GDB register space. This shall be
-> done in context to the CPU unrealization.
->
-> Signed-off-by: Salil Mehta<salil.mehta@huawei.com>
-> Tested-by: Vishnu Pajjuri<vishnu@os.amperecomputing.com>
-> Reviewed-by: Gavin Shan<gshan@redhat.com>
-> Tested-by: Xianglai Li<lixianglai@loongson.cn>
-> Tested-by: Miguel Luis<miguel.luis@oracle.com>
-> Reviewed-by: Shaoqin Huang<shahuang@redhat.com>
-> ---
->   gdbstub/gdbstub.c      | 12 ++++++++++++
->   include/exec/gdbstub.h |  6 ++++++
->   2 files changed, 18 insertions(+)
->
-> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-> index 17efcae0d0..a8449dc309 100644
-> --- a/gdbstub/gdbstub.c
-> +++ b/gdbstub/gdbstub.c
-> @@ -615,6 +615,18 @@ void gdb_register_coprocessor(CPUState *cpu,
->       }
->   }
->   
-> +void gdb_unregister_coprocessor_all(CPUState *cpu)
-> +{
-> +    /*
-> +     * Safe to nuke everything. GDBRegisterState::xml is static const char so
-> +     * it won't be freed
-> +     */
-> +    g_array_free(cpu->gdb_regs, true);
-> +
-> +    cpu->gdb_regs = NULL;
-> +    cpu->gdb_num_g_regs = 0;
-Likewise, you may need to set gdb_num_regs to zero as well.
-> +}
-> +
->   static void gdb_process_breakpoint_remove_all(GDBProcess *p)
->   {
->       CPUState *cpu = gdb_get_first_cpu_in_process(p);
-> diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-> index eb14b91139..249d4d4bc8 100644
-> --- a/include/exec/gdbstub.h
-> +++ b/include/exec/gdbstub.h
-> @@ -49,6 +49,12 @@ void gdb_register_coprocessor(CPUState *cpu,
->                                 gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
->                                 const GDBFeature *feature, int g_pos);
->   
-> +/**
-> + * gdb_unregister_coprocessor_all() - unregisters supplemental set of registers
-> + * @cpu - the CPU associated with registers
-> + */
-> +void gdb_unregister_coprocessor_all(CPUState *cpu);
-> +
->   /**
->    * gdbserver_start: start the gdb server
->    * @port_or_device: connection spec for gdb
-
-Otherwise, Looks good to me.  Feel free to add
-Reviewed-by: "Vishnu Pajjuri" <vishnu@os.amperecomputing.com>
-
-_Regards_,
-
--Vishnu
-
---------------cF4OedXxvwA4KzUguFT5AQgH
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-<!DOCTYPE html><html><head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  </head>
-  <body>
-    <p>Hi Salil,<br>
-    </p>
-    <div class="moz-cite-prefix">On 12-03-2024 07:29, Salil Mehta wrote:<br>
-    </div>
-    <blockquote type="cite" cite="mid:20240312020000.12992-8-salil.mehta@huawei.com">
-      <pre class="moz-quote-pre" wrap="">Add common function to help unregister the GDB register space. This shall be
-done in context to the CPU unrealization.
-
-Signed-off-by: Salil Mehta <a class="moz-txt-link-rfc2396E" href="mailto:salil.mehta@huawei.com">&lt;salil.mehta@huawei.com&gt;</a>
-Tested-by: Vishnu Pajjuri <a class="moz-txt-link-rfc2396E" href="mailto:vishnu@os.amperecomputing.com">&lt;vishnu@os.amperecomputing.com&gt;</a>
-Reviewed-by: Gavin Shan <a class="moz-txt-link-rfc2396E" href="mailto:gshan@redhat.com">&lt;gshan@redhat.com&gt;</a>
-Tested-by: Xianglai Li <a class="moz-txt-link-rfc2396E" href="mailto:lixianglai@loongson.cn">&lt;lixianglai@loongson.cn&gt;</a>
-Tested-by: Miguel Luis <a class="moz-txt-link-rfc2396E" href="mailto:miguel.luis@oracle.com">&lt;miguel.luis@oracle.com&gt;</a>
-Reviewed-by: Shaoqin Huang <a class="moz-txt-link-rfc2396E" href="mailto:shahuang@redhat.com">&lt;shahuang@redhat.com&gt;</a>
+Signed-off-by: Nicholas Piggin <npiggin@gmail.com>
 ---
- gdbstub/gdbstub.c      | 12 ++++++++++++
- include/exec/gdbstub.h |  6 ++++++
- 2 files changed, 18 insertions(+)
+ accel/tcg/cputlb.c | 42 +++++++++---------------------------------
+ 1 file changed, 9 insertions(+), 33 deletions(-)
 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 17efcae0d0..a8449dc309 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -615,6 +615,18 @@ void gdb_register_coprocessor(CPUState *cpu,
-     }
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 8ff3aa5e50..1fe6def280 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -366,12 +366,9 @@ void tlb_flush_by_mmuidx(CPUState *cpu, uint16_t idxmap)
+ {
+     tlb_debug("mmu_idx: 0x%" PRIx16 "\n", idxmap);
+ 
+-    if (cpu->created && !qemu_cpu_is_self(cpu)) {
+-        async_run_on_cpu(cpu, tlb_flush_by_mmuidx_async_work,
+-                         RUN_ON_CPU_HOST_INT(idxmap));
+-    } else {
+-        tlb_flush_by_mmuidx_async_work(cpu, RUN_ON_CPU_HOST_INT(idxmap));
+-    }
++    assert_cpu_is_self(cpu);
++
++    tlb_flush_by_mmuidx_async_work(cpu, RUN_ON_CPU_HOST_INT(idxmap));
  }
  
-+void gdb_unregister_coprocessor_all(CPUState *cpu)
-+{
-+    /*
-+     * Safe to nuke everything. GDBRegisterState::xml is static const char so
-+     * it won't be freed
-+     */
-+    g_array_free(cpu-&gt;gdb_regs, true);
-+
-+    cpu-&gt;gdb_regs = NULL;
-+    cpu-&gt;gdb_num_g_regs = 0;</pre>
-    </blockquote>
-    Likewise, you may need to set gdb_num_regs to zero as well.<br>
-    <blockquote type="cite" cite="mid:20240312020000.12992-8-salil.mehta@huawei.com">
-      <pre class="moz-quote-pre" wrap="">
-+}
-+
- static void gdb_process_breakpoint_remove_all(GDBProcess *p)
+ void tlb_flush(CPUState *cpu)
+@@ -560,28 +557,12 @@ void tlb_flush_page_by_mmuidx(CPUState *cpu, vaddr addr, uint16_t idxmap)
  {
-     CPUState *cpu = gdb_get_first_cpu_in_process(p);
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index eb14b91139..249d4d4bc8 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -49,6 +49,12 @@ void gdb_register_coprocessor(CPUState *cpu,
-                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
-                               const GDBFeature *feature, int g_pos);
+     tlb_debug("addr: %016" VADDR_PRIx " mmu_idx:%" PRIx16 "\n", addr, idxmap);
  
-+/**
-+ * gdb_unregister_coprocessor_all() - unregisters supplemental set of registers
-+ * @cpu - the CPU associated with registers
-+ */
-+void gdb_unregister_coprocessor_all(CPUState *cpu);
++    assert_cpu_is_self(cpu);
 +
- /**
-  * gdbserver_start: start the gdb server
-  * @port_or_device: connection spec for gdb</pre>
-    </blockquote>
-    <p>Otherwise, Looks good to me.&nbsp; Feel free to add<br>
-      Reviewed-by: &quot;Vishnu Pajjuri&quot;
-      <a class="moz-txt-link-rfc2396E" href="mailto:vishnu@os.amperecomputing.com">&lt;vishnu@os.amperecomputing.com&gt;</a><br>
-    </p>
-    <p><u>Regards</u>,</p>
-    <p>-Vishnu<br>
-    </p>
-    <blockquote type="cite" cite="mid:20240312020000.12992-8-salil.mehta@huawei.com">
-      <pre class="moz-quote-pre" wrap="">
-</pre>
-    </blockquote>
-  </body>
-</html>
+     /* This should already be page aligned */
+     addr &= TARGET_PAGE_MASK;
+ 
+-    if (qemu_cpu_is_self(cpu)) {
+-        tlb_flush_page_by_mmuidx_async_0(cpu, addr, idxmap);
+-    } else if (idxmap < TARGET_PAGE_SIZE) {
+-        /*
+-         * Most targets have only a few mmu_idx.  In the case where
+-         * we can stuff idxmap into the low TARGET_PAGE_BITS, avoid
+-         * allocating memory for this operation.
+-         */
+-        async_run_on_cpu(cpu, tlb_flush_page_by_mmuidx_async_1,
+-                         RUN_ON_CPU_TARGET_PTR(addr | idxmap));
+-    } else {
+-        TLBFlushPageByMMUIdxData *d = g_new(TLBFlushPageByMMUIdxData, 1);
+-
+-        /* Otherwise allocate a structure, freed by the worker.  */
+-        d->addr = addr;
+-        d->idxmap = idxmap;
+-        async_run_on_cpu(cpu, tlb_flush_page_by_mmuidx_async_2,
+-                         RUN_ON_CPU_HOST_PTR(d));
+-    }
++    tlb_flush_page_by_mmuidx_async_0(cpu, addr, idxmap);
+ }
+ 
+ void tlb_flush_page(CPUState *cpu, vaddr addr)
+@@ -744,6 +725,8 @@ void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
+ {
+     TLBFlushRangeData d;
+ 
++    assert_cpu_is_self(cpu);
++
+     /*
+      * If all bits are significant, and len is small,
+      * this devolves to tlb_flush_page.
+@@ -764,14 +747,7 @@ void tlb_flush_range_by_mmuidx(CPUState *cpu, vaddr addr,
+     d.idxmap = idxmap;
+     d.bits = bits;
+ 
+-    if (qemu_cpu_is_self(cpu)) {
+-        tlb_flush_range_by_mmuidx_async_0(cpu, d);
+-    } else {
+-        /* Otherwise allocate a structure, freed by the worker.  */
+-        TLBFlushRangeData *p = g_memdup(&d, sizeof(d));
+-        async_run_on_cpu(cpu, tlb_flush_range_by_mmuidx_async_1,
+-                         RUN_ON_CPU_HOST_PTR(p));
+-    }
++    tlb_flush_range_by_mmuidx_async_0(cpu, d);
+ }
+ 
+ void tlb_flush_page_bits_by_mmuidx(CPUState *cpu, vaddr addr,
+-- 
+2.43.0
 
---------------cF4OedXxvwA4KzUguFT5AQgH--

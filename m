@@ -1,109 +1,109 @@
-Received: by 2002:a17:906:4f0b:b0:a47:c39e:cbe with SMTP id t11csp979946eju;
-        Fri, 5 Apr 2024 06:25:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUqPG4HRezSRjPBIudkvBPEBLKNQo1Qy1jJYQp/iAQahGAjK6NSWL3EmRWmffHcr/Vl3ri7fwQhNIXFbOpfWE/cc9kd3gs+
-X-Google-Smtp-Source: AGHT+IG3rwcFI2lpyzxDEiZi8sjDPszGpz68e6cdDIuWbQDNhPgLW28rVkRS8jTHRU6i4JnDIfb8
-X-Received: by 2002:a05:622a:183:b0:431:503b:69ae with SMTP id s3-20020a05622a018300b00431503b69aemr3843641qtw.6.1712323549787;
-        Fri, 05 Apr 2024 06:25:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712323549; cv=none;
+Received: by 2002:a17:906:4f0b:b0:a47:c39e:cbe with SMTP id t11csp993874eju;
+        Fri, 5 Apr 2024 06:49:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUAV6LFc6j7SJk4p/LCcY+Ig/kvc1usupGHHNqeF4JPaM4mPd3pcljuuhK3TGMTQWWQDjAKr/UOGTARC5X2pU5cIdwbNQdR
+X-Google-Smtp-Source: AGHT+IEc7VFKwhhiVzsSOkAhKr8DtEDM4z7cOW+aTncp3S//a4GChjWprXTlcp8ZZvsli9xUsy8N
+X-Received: by 2002:a05:620a:24cb:b0:78d:475a:df2f with SMTP id m11-20020a05620a24cb00b0078d475adf2fmr1727235qkn.4.1712324965526;
+        Fri, 05 Apr 2024 06:49:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712324965; cv=none;
         d=google.com; s=arc-20160816;
-        b=IsIg3yyl/6ExofWqu2kqVnnqPtYwdzMyIx3vyPo23GEmA1+iLJymXqry7pzJPTNgVr
-         aCF6OMm5zfqhpHAr4dmtzFTCI40INe5BNeByOWmn0fIKsuQR7vfI2ESpwYeqaKLJ92If
-         NiJhB+FPqaPt1gRagNWknUb47ArcSTmRZ8MW9V0xdbNy7pUqXydrGwl5tYIbDV8dsXUW
-         RLj8yrxBv1PeVBbcI1c56Cmc987GCo9xj/haowpf7Y93H2D7lzTa27/ddaj6KoSgcOee
-         oddSzNggXz6e7poZ9CP7te6nTK51paCE644Zz/EBudrdHw6eNjTpQ65DPyLJpGPrlHd3
-         Wn1Q==
+        b=zKoPtUlym4HpjvmRg+B7Uw3/gzHrRsp6XsxBMhiAK3QA5h/hpj3eloLbyY3QDi8pOL
+         Yw9WXCUhCAiXN176v+19du9jLdy2JSk5127KvnyAxRhSwcjbTk4NGW0ubU5VzbGgeNI2
+         9wO3Y3FAo2itx+PRz3eU41VqaDYqrOk0LiMjxwURv88HFEoyDGOXky0nYjz6LrnhOWvR
+         J23fZuBOx/YHkUL+LvYUTO4RGu3i/GpqU0I4Kg0S1QfoSHHSLr3tDZD4qmOUVr9H9KF5
+         rD7aiDwSmtGYl4if8MwhCQ1b0/C7WDj0RaR4NIHvWXFjzN+CsysTDTFOTEFEliM3mcfO
+         fhVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=/faHNRafUdRJhvfF+2DKc8//5g/kYkjcQe6IuY2hny0=;
-        fh=cbrcKLTZn21hQFRe34Znz5u/AQ46ZxTZx7FzZBIbLXI=;
-        b=eZ0/A1arBHzBWefqIYasxR2YCRlqD7QWDzD5+/akF8fAWwOVsfDZtibKI4xpU5Btbq
-         2j5ImsWoJW/MHfaNrl8aUzrXd7S/ewLptBTvPzks8RiavmB2uQbhez1hM9py4eVBU9g3
-         PUGy0s1vzttIVNFfyxq0j2VW5ltw19aNGCVPGXf/Sri4uYsJF0cioOeISo1yV8oVl4HV
-         AkYS+dBKun4ysGgT+KEsExYgDZ2VVVWcnBOM9ypr9Teo0Gc9RMIMsGxNbnJZcDML7VKF
-         FNFH94Fg+nGV6Sw9ry0UdFWHi7lRmatVlDu5M31s+N3x2007sCFw3kUCvy6XcZFCh632
-         xbHw==;
+        bh=wdCWLNv+gNFxjtNktRqs7Z1CW9aK0oxvcU92JTLyTJg=;
+        fh=xgqvpcnzEVTCzZWSMDbGiFxiHtAMylYcPbS+NbplNIg=;
+        b=rJyLmGtQBlnUpBn1Gti2FTS8JxLtBLuqnnxhL2xwEMG6YEZMoTO5Ndj+WDnUjkIkSY
+         Fe8K0+flw/KFiSPLETsH40bfp/IbMGQcxdOmAvoT8Vs5jLnqbcG73P/yLn/HiVQ4rTJn
+         KGmVRx/MWaSTswZmXuUYjJS4XsqSAZy8T5w7Q0/Xo1+a1+IbV7RI9tGzSihCB78Xnfh1
+         zqE9Xpn6WEo8k5qe0QaAHdgUxfnuipoXHEKSa4Vv47PQUEFZE8Iilw7M7dmBZtk0KEwD
+         3ita3bJ3asKiQfO5F1iqLxRBp9D9UYFcGWf5L4tiLau2C6R/vXuPK9e3d4znUucL87S3
+         +Ing==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lryVQd6F;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FBifFoiP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n16-20020a05622a041000b0043175068184si1824780qtx.76.2024.04.05.06.25.49
+        by mx.google.com with ESMTPS id y22-20020a37e316000000b0078845f8a288si1781974qki.666.2024.04.05.06.49.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Apr 2024 06:25:49 -0700 (PDT)
+        Fri, 05 Apr 2024 06:49:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lryVQd6F;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FBifFoiP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rsjZK-0002jX-JT; Fri, 05 Apr 2024 09:25:22 -0400
+	id 1rsjw3-0000XK-E7; Fri, 05 Apr 2024 09:48:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rsjZI-0002j3-C2
- for qemu-arm@nongnu.org; Fri, 05 Apr 2024 09:25:20 -0400
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+ id 1rsjvx-0000VU-VK
+ for qemu-arm@nongnu.org; Fri, 05 Apr 2024 09:48:45 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rsjZF-0006R4-Qt
- for qemu-arm@nongnu.org; Fri, 05 Apr 2024 09:25:20 -0400
-Received: by mail-lf1-x12c.google.com with SMTP id
- 2adb3069b0e04-516d0c004b1so2008672e87.2
- for <qemu-arm@nongnu.org>; Fri, 05 Apr 2024 06:25:17 -0700 (PDT)
+ id 1rsjvw-0001ue-FH
+ for qemu-arm@nongnu.org; Fri, 05 Apr 2024 09:48:45 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-56845954ffeso3175252a12.2
+ for <qemu-arm@nongnu.org>; Fri, 05 Apr 2024 06:48:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712323515; x=1712928315; darn=nongnu.org;
+ d=linaro.org; s=google; t=1712324923; x=1712929723; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=/faHNRafUdRJhvfF+2DKc8//5g/kYkjcQe6IuY2hny0=;
- b=lryVQd6FzGLXtkZsuXbC8gZXgMLScKPj+vPxRfbUlJ2o6oFGhEPrAHM2iUayO8H8vK
- YibeU6kMdscTUg5swXnp1wxzhwcLvpzsADyBMMNkWq5dfhm3swiboYxehWLd+CWWOebr
- FHQYz3bWWKotvVlRUKNLP7fTbaKqJcQdRRsmt3yK0fiatJGrox+KlDtbBUUwucI2JEgX
- 3mOo1cYaQNXCJZClPVbkSukSkwhmv15Y38FYejEvr/BH2nOpHB7hVGrgBZZ1SaTT7bw6
- CY7I+x4/Vj27dZzvItVShRJQ+IOf5hWlChtdEa30u3UnJ8t9nHmo95ZbAHiOjIt/HCB+
- 6RmA==
+ bh=wdCWLNv+gNFxjtNktRqs7Z1CW9aK0oxvcU92JTLyTJg=;
+ b=FBifFoiPs/CJ0dU8jmH1vmaaLGR/sKIHpeG8DiS1S74nTJ+Cv14y6EKjeMI4nJkjLm
+ 9Oq+F3OEVEca5pn6VwizgS8ScVfiz2RbOyNBi4quDw6PQ7uO4VRYdpEecavlzE4L+BK2
+ I8Rk2ifzhmMgingGOePqA7oxCs6s9bVNQdNa5VLkZKjrSLmwi9iJtkFt5SwngXB3kK7v
+ Sk6ZJKB6mPUiXuAI6h0vDj47OQQ7ezIUCUMgdUjoOyBN26D2x9fmps65yeyYLR6341zm
+ bfMfWJX9DAWgmlAeVgmXdk0Wbe+NcscAqdYPvom91jmi1/lWYD3QadAMwaUNMXEe9M82
+ HElg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712323515; x=1712928315;
+ d=1e100.net; s=20230601; t=1712324923; x=1712929723;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=/faHNRafUdRJhvfF+2DKc8//5g/kYkjcQe6IuY2hny0=;
- b=Gyt3BaeNAoSCR1Yk3/3OZmMnvdorzDTCPVsxY8UaEspkNW3Jg41NHBuJd84w5umyjT
- a/D4NZ01Vwm7TqiOt9UXr0cL5OaxssFkauAJI/+8jMKngQFePfMmRbNsz6UaoPzq7fh2
- IoB4d6PIAS1o548YYkE9dtHQ/Q1vqAOhXgSQwTPCPc7ITpETCzJnxXskmQAzWGzREWRH
- 7TNR90hvRNBUkLfIXAgzjLtJdKErUreBkzO6TjG20HDRCSKdid92KYz1mJCwZ3fyPG7s
- vLxSrqeGwIE672t3Gk58+He3nL8+Seo0guuC3crs3nFyaBuSmMPLgXe47H3BUR1zihSZ
- GcSQ==
+ bh=wdCWLNv+gNFxjtNktRqs7Z1CW9aK0oxvcU92JTLyTJg=;
+ b=onm36n1mPi7sRlegmSJJMRtROsOospUHSFhFph2HoyE/wlpXzSuShxWxWuvMXdbPCy
+ qz2fX7OwaOmJa831uYnbBixxIVDAXwwAlTvYxM2iK9IAUXTCzYTDtn7o84fSeIa9Kf/t
+ 9uOs/1nZRio3zyWIRPjDprNzSuFNWiw6Vz5JK1jfM4v5Zt32P3DIXaeAtFpeHCK01iG7
+ RCH6/POTvMFW2L1e6dcjX3X+pvt7AThanlbI+UU2KSrxR/zI1ll7iqN3wB8JX4g5oMpe
+ 92HWW8jv1yQJwgq7ZnnEDHIer3jUtdBLS3GyF5poHbmdDElvx69uoqTfqFviwwr49rbp
+ jyRw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVZGQ77VrMvkJtHO3dWsdkyGE2wut543ckn32p7fPZUrJfDstkmaqmVOg1AOUWE3Kwbcxt87KK1b9HoijK3H1b12bIN
-X-Gm-Message-State: AOJu0YxWuql7DREEz2X40vgaBAWie+qiQugD3wV8adzzQgFD9UbDbm8X
- 9s2xdJY0JjNPeSEV+DfS5CHtvMqsgkKq3DuWZVHvRW/aemw9wgWwxCapW4wggcl+47EzuJe56wN
- SXyklMt2/YJhG5v7G7U/w0UQ3bEHzBvArx6TZ7Q==
-X-Received: by 2002:a19:ad0b:0:b0:516:d264:1ce8 with SMTP id
- t11-20020a19ad0b000000b00516d2641ce8mr1144916lfc.19.1712323515550; Fri, 05
- Apr 2024 06:25:15 -0700 (PDT)
+ AJvYcCV0TeRMGWUkoty5JfNkJalyZlS7wpXKW82tWixBs9mqOE47QXz3cJFD428sUTH3bydPcmSmYJys7In1Oy8W3kS2oXM6
+X-Gm-Message-State: AOJu0YwALBERPeuBWNhdxb9qgY/njnHYAOGHs1jIFQPavN10OztmxQag
+ MHOyFifQft2OChal6/yhH4176m/y5JqoVNead3yDgdrxmMqmkCU6zJodxIdBNap9//zDn9dVpV/
+ +A6hPCYDMOulM/k1x8TG/IKQM7PVuVoqUL5/ASg==
+X-Received: by 2002:a50:8ac2:0:b0:56e:64a:2a47 with SMTP id
+ k2-20020a508ac2000000b0056e064a2a47mr992030edk.42.1712324922780; Fri, 05 Apr
+ 2024 06:48:42 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240403101611.3204086-1-ruanjinjie@huawei.com>
- <20240403101611.3204086-14-ruanjinjie@huawei.com>
-In-Reply-To: <20240403101611.3204086-14-ruanjinjie@huawei.com>
+ <20240403101611.3204086-24-ruanjinjie@huawei.com>
+In-Reply-To: <20240403101611.3204086-24-ruanjinjie@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Apr 2024 14:25:04 +0100
-Message-ID: <CAFEAcA-Jf4H4r4BVzPvDZGsm26T1QUjtaOAh+Ln2e=o2Gty-kQ@mail.gmail.com>
-Subject: Re: [PATCH v12 13/23] hw/intc/arm_gicv3: Add has-nmi property to
- GICv3 device
+Date: Fri, 5 Apr 2024 14:48:31 +0100
+Message-ID: <CAFEAcA87CCLyk6=XzQANoqywfnSXSMcEkezAdH8bH-pO6AXKaw@mail.gmail.com>
+Subject: Re: [PATCH v12 23/23] hw/arm/virt: Add FEAT_GICv3_NMI feature support
+ in virt GIC
 To: Jinjie Ruan <ruanjinjie@huawei.com>
 Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
  wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,51 +125,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gx4ZMd/1VhO5
+X-TUID: Xs5eG8RlgHef
 
 On Wed, 3 Apr 2024 at 11:18, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
 >
-> Add a property has-nmi to the GICv3 device, and use this to set
-> the NMI bit in the GICD_TYPER register. This isn't visible to
-> guests yet because the property defaults to false and we won't
-> set it in the board code until we've landed all of the changes
-> needed to implement FEAT_GICV3_NMI.
+> A PE that implements FEAT_NMI and FEAT_GICv3 also implements
+> FEAT_GICv3_NMI. A PE that does not implement FEAT_NMI, does not implement
+> FEAT_GICv3_NMI
+
+This is true but not really relevant here -- FEAT_GICv3_NMI
+is not "NMI support in the GIC", it's "does the CPU interface
+support NMIs". (And so I'm wondering if the code in arm_gicv3_cpuif.c
+should be checking cpu_isar_feature(aa64_nmi, cpu) rather than
+cs->gic->nmi_support; but I need to think through the consequences
+of that first.)
+
+The justification for "enable NMIs in the GIC device if the
+CPU has FEAT_NMI" is that (a) it's only OK to have a GIC with
+NMI support if the CPU also has NMI support and (b) if we
+can turn on NMI support in the GIC we should, so that we can
+provide the feature to the guest.
+
+> So included support FEAT_GICv3_NMI feature as part of virt platform
+> GIC initialization if FEAT_NMI and FEAT_GICv3 supported.
 >
 > Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> v4:
+> - Add Reviewed-by.
+> v3:
+> - Adjust to be the last after add FEAT_NMI to max.
+> - Check whether support FEAT_NMI and FEAT_GICv3 for FEAT_GICv3_NMI.
+> ---
+>  hw/arm/virt.c | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index ef2e6c2c4d..63d9f5b553 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -729,6 +729,19 @@ static void create_v2m(VirtMachineState *vms)
+>      vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
+>  }
+>
+> +/*
+> + * A PE that implements FEAT_NMI and FEAT_GICv3 also implements
+> + * FEAT_GICv3_NMI. A PE that does not implement FEAT_NMI, does not implement
+> + * FEAT_GICv3_NMI.
+> + */
+> +static bool gicv3_nmi_present(VirtMachineState *vms)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(qemu_get_cpu(0));
+> +
+> +    return cpu_isar_feature(aa64_nmi, cpu) &&
+> +           (vms->gic_version != VIRT_GIC_VERSION_2);
 
-
-> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index c52f060026..2d2cea6858 100644
-> --- a/hw/intc/arm_gicv3_common.c
-> +++ b/hw/intc/arm_gicv3_common.c
-> @@ -569,6 +569,7 @@ static Property arm_gicv3_common_properties[] = {
->      DEFINE_PROP_UINT32("num-irq", GICv3State, num_irq, 32),
->      DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
->      DEFINE_PROP_BOOL("has-lpi", GICv3State, lpi_enable, 0),
-> +    DEFINE_PROP_BOOL("has-nmi", GICv3State, nmi_support, 0),
->      DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
->      /*
->       * Compatibility property: force 8 bits of physical priority, even
-
-I was thinking about how we'll (eventually) want to handle NMI
-for non-TCG cases (KVM, hvf), and I realised there's a missing
-piece here: we want to make it an error to try to set has-nmi=true
-for the KVM GICv3, because it doesn't support NMIs yet.
-
-So in hw/intc/arm_gicv3_kvm.c:kvm_arm_gicv3_realize(), we want
-to add a check similar to the existing "fail if s->revision != 3"
-and "fail if s->security_extn" that does
-
-    if (s->nmi_support) {
-        error_setg(errp, "NMI is not supported with the in-kernel GIC");
-        return;
-    }
-
-(There are some work-in-progress kernel patches for NMI support
-in the in-kernel GIC, but nothing has landed yet. When it does
-we'll then be able to add the support in the QEMU code.)
+I think we should add tcg_enabled() to this condition:
+neither KVM nor hvf support FEAT_NMI yet. Defaulting QEMU to
+not trying to enable NMI in the GIC device is the safe
+option. As and when those accelerators get NMI support, we
+can add the handling to QEMU and update this code in the virt board.
 
 thanks
 -- PMM

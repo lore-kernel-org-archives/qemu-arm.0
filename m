@@ -1,369 +1,186 @@
-Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp659036ejh;
-        Sun, 7 Apr 2024 01:20:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW423RraKVfnVMEzfoiU1T678cWAa+nmgxPiEyd9+sy7yO3Sct0Di/e9Fu141eWYujl6ujTvWKREpFPX7bYTXPxKFuxpgAO
-X-Google-Smtp-Source: AGHT+IGEcbcP0FRPb2H0FiePVicR2FOp+xu7eA9aNloyxO9vYllMwcsnuCGCUC33K9k6DMR3fXLE
-X-Received: by 2002:a05:6214:5293:b0:699:2923:922f with SMTP id kj19-20020a056214529300b006992923922fmr5948102qvb.59.1712478025667;
-        Sun, 07 Apr 2024 01:20:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712478025; cv=none;
+Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp659111ejh;
+        Sun, 7 Apr 2024 01:20:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUKFCBDKaw4e4/LOEv62wfC+H/XZKt+ucyLcvxoXp6O/5HfZ152piI1g96EPXjHLbNyAl2bz40tgbvMjMVJhd1/pvC4WUB3
+X-Google-Smtp-Source: AGHT+IHietdZl0g8V0a/A3t6PvnuqHbaQrXqMRrOk1F8y8aYlphF6Zd/PL+JnzmZCcwNSokccg5+
+X-Received: by 2002:a05:620a:90f:b0:78d:3cc7:eea2 with SMTP id v15-20020a05620a090f00b0078d3cc7eea2mr5450631qkv.53.1712478042409;
+        Sun, 07 Apr 2024 01:20:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712478042; cv=none;
         d=google.com; s=arc-20160816;
-        b=0DsGHpuLDKEoaIhbGquj6ohFZn/48O4MJt+eubeKF0HwXkWrS7a5OSMOmqTHnZ2PpM
-         cllllsaTprRkpOOXM8mvZW5UfSiRSh7zXGPj7OXJl+nyWYrcMWXVpXvesmLKGlHDUzKY
-         s/Jw2r367AZk38z+5uCwlGCs1cj32aDaZB5Mi6Et1yZiWeAKIWzFAQv05HKjNMJGHDLI
-         Z/X96Rvt2pw4+mjYM3opQSF99/WLJJNkmtrb+edZKrgQZWre6oxVfw79QaaHCPdN1z7Q
-         kcqYzlRBDHEY2Dp5leFBgVVAeJ+NCLuHhZnKMdgHIpTLP5pey+u09pm2kOMQF/CiycX6
-         7Y/Q==
+        b=fG8FiQgr6ZqRNbQ22E+loHojPZHCQDXwWXd5QCfwYxK0ZZULzJwv6m29ancapSxG8D
+         CzPP6w8K1K4tMJLos5+AsMw+j4voiO4I9AJIcOZcZFz+BNP4TdrUUwujpFF4bww7RHiL
+         EhTu28MR0M3uAPs8Egs3WRxP9PvW2zA0q1N5aM5KMtgfnLTMrTjNdT60+7ISzQngwD1c
+         BFgjgy2IOtAeCaBh3KF7zc/mONDTfM28UeMGFLPir+YoEjfIw3QQ+1Ean0n87X1N0xjO
+         WH1X9bnw2YRlQPqBNhpIaoPKv4eTGHXhNcnHgCjYXLaR0t5SsISklL6u58hH5uzpt+tC
+         T1YQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=wz29EV/i7UPozXmnaVYPM2/VzK7CQIVyY6PuQgaJhrU=;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=B7pubt+kclP+8+EziMQ4ZlyyXgLY6s/1YP/EGNXuHGU=;
         fh=dR6uRwfo9om/DmWDsGu5eY7/2T4Nd7sHG4YVwbPnVj0=;
-        b=ezMPJOqqpVbLAphqrJ4wCkGpZM/eWEVVCeuMhLEq5KSHikIpD/l3y+rtkm31UtUXOy
-         OZZvMdz2Es8cRrfTdpid5umjNL4MslSIG9TYeRrPPXOAILONzM1BSiVhr8Lcf78R1ibV
-         ooF+D4eJmtOt9GMPY3d0eJAL6BgYni6BRATmo3TdsdZ0sJBayYVW1x19ESVvOfJKfmO7
-         W3RfXyBUA3rZ8Mo+w+3RLchxvqRaspBF6iYYxpitsIY9svv909qY7y2c6Yl3WBikwlT0
-         lZA2n+3dgTYnHwoZhUXPNYmVyPTZv+FBvwtOJJWt/RagzGnf+2WvK9Ay3pYCi1NUyibN
-         9V9A==;
+        b=NljT1GQ6aAXE0lypqjRA/t7PlSk02oqRPH8257n7A1dM+aReUnXpGA+A7US08IMeKJ
+         KgZQ9CR+JdmIm5jWh2HMh2dUBEa+SOCpJydVwHRM7ujYyRP2wA/noHZH9c42DWT15y+6
+         ZuoOq7rN68hyn5BiL9m4qBWxSnES77gqOLiIMK3qSYodJIHctolIfCVLeoYxfoA94234
+         +8Ae6BFEmHzzwYo/1uWVglrq3tNqRIC7mQ4MKlX4b2loE65OZhQ/ZDDqUOlicG3kE2VD
+         Xc7pSP5AuymzsGP5DDUg6rdH5MKODtVm6DFGAxmbd/66zjCHkQmIo+aCmQBXtRVVFWK4
+         KueA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w15-20020a0cef8f000000b0069614e60977si5917187qvr.133.2024.04.07.01.20.25
+        by mx.google.com with ESMTPS id x14-20020a05620a098e00b0078d61a46965si1139200qkx.211.2024.04.07.01.20.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Apr 2024 01:20:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 07 Apr 2024 01:20:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rtNkq-0004BP-F4; Sun, 07 Apr 2024 04:19:57 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rtNl6-0004K9-T4; Sun, 07 Apr 2024 04:20:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rtNko-0004AR-36; Sun, 07 Apr 2024 04:19:54 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+ id 1rtNku-0004Di-8R; Sun, 07 Apr 2024 04:20:00 -0400
+Received: from szxga08-in.huawei.com ([45.249.212.255])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rtNkk-0001zO-HF; Sun, 07 Apr 2024 04:19:53 -0400
-Received: from mail.maildlp.com (unknown [172.19.88.194])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4VC4nN63QczXkpf;
- Sun,  7 Apr 2024 16:16:40 +0800 (CST)
+ id 1rtNkr-00021H-0Z; Sun, 07 Apr 2024 04:19:59 -0400
+Received: from mail.maildlp.com (unknown [172.19.88.105])
+ by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4VC4p22Yv6z1QCVZ;
+ Sun,  7 Apr 2024 16:17:14 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 64A831403D1;
- Sun,  7 Apr 2024 16:19:44 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 92F9E14010C;
+ Sun,  7 Apr 2024 16:19:53 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Sun, 7 Apr
- 2024 16:19:43 +0800
+ 2024 16:19:52 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <richard.henderson@linaro.org>, <qemu-devel@nongnu.org>,
  <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [PATCH v13 00/24] target/arm: Implement FEAT_NMI and FEAT_GICv3_NMI
-Date: Sun, 7 Apr 2024 08:17:09 +0000
-Message-ID: <20240407081733.3231820-1-ruanjinjie@huawei.com>
+Subject: [PATCH v13 08/24] target/arm: Handle IS/FS in ISR_EL1 for NMI,
+ VINMI and VFNMI
+Date: Sun, 7 Apr 2024 08:17:17 +0000
+Message-ID: <20240407081733.3231820-9-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240407081733.3231820-1-ruanjinjie@huawei.com>
+References: <20240407081733.3231820-1-ruanjinjie@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=ruanjinjie@huawei.com; helo=szxga02-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.255;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga08-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AhaUy/C7HBO1
+From:  Jinjie Ruan via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iNqSJGjALRKZ
 
-This patch set implements FEAT_NMI and FEAT_GICv3_NMI for ARMv8. These
-introduce support for a new category of interrupts in the architecture
-which we can use to provide NMI like functionality.
+Add IS and FS bit in ISR_EL1 and handle the read. With CPU_INTERRUPT_NMI or
+CPU_INTERRUPT_VINMI, both CPSR_I and ISR_IS must be set. With
+CPU_INTERRUPT_VFNMI, both CPSR_F and ISR_FS must be set.
 
-There are two modes for using this FEAT_NMI. When PSTATE.ALLINT or
-PSTATE.SP & SCTLR_ELx.SCTLR_SPINTMASK is set, any entry to ELx causes all
-interrupts including those with superpriority to be masked on entry to ELn
-until the mask is explicitly removed by software or hardware. PSTATE.ALLINT
-can be managed by software using the new register control ALLINT.ALLINT.
-Independent controls are provided for this feature at each EL, usage at EL1
-should not disrupt EL2 or EL3.
-
-I have tested it with the following Linux patches which try to support
-FEAT_NMI in Linux kernel:
-
-	https://lore.kernel.org/linux-arm-kernel/Y4sH5qX5bK9xfEBp@lpieralisi/T/#mb4ba4a2c045bf72c10c2202c1dd1b82d3240dc88
-
-In the test, SGI, PPI and SPI interrupts can all be set to have super priority
-to be converted to a hardware NMI interrupt. The SGI is tested with kernel
-IPI as NMI framework, softlockup, hardlockup and kgdb test cases, and the PPI
-interrupt is tested with "perf top" command with hardware NMI enabled, and
-the SPI interrupt is tested with a custom test module, in which NMI interrupts
-can be received and sent normally.
-
-And the Virtual NMI(VNMI) SGI, PPI and SPI interrupts has also been tested in
-nested QEMU Virtual Machine with host "virtualization=true". The SGI VNMI is
-tested by accessing GICR_INMIR0 and GICR_ISPENDR0 with devmem command, as well
-as hardlockup and kgdb testcases. The PPI VNMI is tested by accessing
-GICR_INMIR0 and GICR_ISPENDR0 with devmem command, as well as "perf top"
-command with hardware NMI enabled, which works well. The SPI VNMI is tested
-with a custom test module, in which SPI VNMI can be sent from the GIC and
-received normally.
-
-         +-------------------------------------------------+
-         |               Distributor                       |
-         +-------------------------------------------------+
-             SPI |  NMI                        |  NMI
-                \/                            \/
-            +--------+                     +-------+
-            | Redist |                     | Redist|
-            +--------+                     +-------+
-            SGI  | NMI                     PPI | NMI
-                \/                            \/
-          +-------------+             +---------------+
-          |CPU Interface|   ...       | CPU Interface |
-          +-------------+             +---------------+
-               | NMI                         | NMI
-              \/                            \/
-            +-----+                       +-----+
-            |  PE |                       |  PE |
-            +-----+                       +-----+
-
-Changes in v13:
-- Handle PSTATE.ALLINT the same way as PSTATE.DAIF in the illegal_return
-  exit path.
-- Adjust "hw/arm/virt: Wire NMI and VINMI irq lines from GIC to CPU" to after
-  "hw/intc/arm_gicv3: Add external IRQ lines for NMI" to fix the unexpected
-  error with patchseries at this point.
-- Only connect NMI irq lines from GIC to CPU if vms->gic_version is not
-  VIRT_GIC_VERSION_2 to fix the gic-version=2 unexpected error.
-- Enforce RES0 bit in NMI field when FEAT_GICv3_NMI is not implemented for
-  ICH_LR<n>_EL2.
-- Swap the order of the "irq" and "prio" args in gicv3_get_priority() to make
-  input before output.
-- Check tcg_enabled() for gicv3_nmi_present().
-- Update the comment for gicv3_nmi_present().
-- Update the commit message.
+Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+v13:
 - Add Reviewed-by.
-- Add Suggested-by.
-
-Changes in v12:
-- pPriority<63> = ICC_AP1R_EL1NS<63> if HaveNMIExt() and HaveEL(EL3) and
-  (IsNonSecure(), fix the wrong writing.
-- Do not check nmi_support repetitively in icc_hppi_can_preempt(),
-  and icc_activate_irq, ich_highest_active_virt_prio(), hppvi_index(),
-  icv_hppi_can_preempt(), icv_rpr_read() and icv_activate_irq(),
-  gicv3_cpuif_virt_irq_fiq_update().
-- Check hppi.nmi after check icc_hppi_can_preempt() for icc_iar1_read() and
-  icc_nmiar1_read().
-- When NMI is 1, the virtual interrupt's priority is 0x0.
-- Make the thisnmi logic more concisely in hppvi_index().
-- Use is_nmi to simplify code and check is_nmi before comparing vpmr.
-- Also check sctlrx.NMI in icv_iar_read().
-- Check icv_hppi_can_preempt() for icv_nmiar1_read().
-- Check ICH_LR_EL2.NMI after check icv_hppi_can_preempt() as icv_iar_read()
-  do it in icv_nmiar1_read().
-- Correct thisnmi to bool in icv_eoir_write().
-- Check thisnmi and nmi both true instead of identical in icv_eoir_write().
-- nmi_needed -> gicv3_cpu_nmi_needed, needed_nmi -> gicv3_nmi_needed.
-- Correct the comment style in arm_cpu_initfn() and icv_nmiar1_read().
-- Fix the typo, "prioirty" -> "priority".
-- Remove the redundant blank line.
-- Update the subject and commit message, hppi.superprio -> hppi.nmi,
-  super priority -> non-maskable property.
-- Add Reviewed-by.
-
-Changes in v11:
-- Put vmstate_gicv3_cpu_nmi and vmstate_gicv3_gicd_nmi into existing list.
-- Remove the excess != 0.
-- Handle NMI priority in icc_highest_active_prio() and handle NMI RPR in
-  icc_rpr_read() separately.
-- Only set NMI bit for a NMI and and ordinary priority bit for a non-NMI in
-  icc_activate_irq().
-- Only clear APR bit for AP1R0 in icc_drop_prio().
-- Check special INTID_* in callers instead of passing two extra boolean args
-  for ack functions.
-- Handle NMI in icc_hppi_can_preempt() and icc_highest_active_group().
-- Also check icc_hppi_can_preempt() for icc_nmiar1_read().
-- Deal with NMI in the callers instead of ich_highest_active_virt_prio().
-- Set either NMI or a group-priority bit, not both.
-- Only set AP NMI bits in the 0 reg.
-- Handle NMI in hppvi_index(), icv_hppi_can_preempt() and icv_eoir_write().
-- Add Reviewed-by.
-
-Changes in v10:
-- Correct the exception_target_el(env) to 2 in msr_set_allint_el1 helper,
-  since it is a hypervisor trap from EL1 to EL2.
-- In arm_cpu_exec_interrupt(), if SCTLR_ELx.NMI is 0, NMI -> IRQ,
-  VINMI -> VIRQ, VFNMI -> VFIQ.
-- Make arm_cpu_update_virq() and arm_cpu_update_vfiq() check that it is not a
-  VINMI/VFNMI, so only set 1 bit in interrupt_request, not 2.
-- Adjust "hw/intc: Enable FEAT_GICv3_NMI Feature" to before "add irq
-  non-maskable property".
-- superprio -> nmi, gicr_isuperprio -> gicr_inmir0, is_nmi -> nmi,
-  is_hppi -> hppi, has_superprio -> nmi, superpriority -> non-maskable property.
-- Save NMI state in vmstate_gicv3_cpu and vmstate_gicv3.
-- Exchange the order of nmi and hppi parameters.
-- Handle APR and RPR NMI bits, rename ICH_AP1R_EL2_NMI to ICV_AP1R_EL1_NMI.
-- Set ICV_RPR_EL1.NMI according to the ICV_AP1R<n>_EL1.NMI in
-  ich_highest_active_virt_prio()
-- Update the commit message.
-
-Changes in v9:
-- Move nmi_reginfo and related functions inside an existing ifdef
-  TARGET_AARCH64 to solve the --target-list=aarch64-softmmu,arm-softmmu
-  compilation problem.
-- Check 'isread' when writing to ALLINT.
-- Update the GPIOs passed in the arm_cpu_kvm_set_irq, and update the comment.
-- Definitely not merge VINMI and VFNMI into EXCP_VNMI.
-- ARM_CPU_VNMI -> ARM_CPU_VINMI, CPU_INTERRUPT_VNMI -> CPU_INTERRUPT_VINMI.
-- Update VINMI and VFNMI when writing HCR_EL2 or HCRX_EL2.
-- Update the commit subject and message, VNMI -> VINMI.
+v9:
+- CPU_INTERRUPT_VNMI -> CPU_INTERRUPT_VINMI.
 - Handle CPSR_F and ISR_FS according to CPU_INTERRUPT_VFNMI instead of
   CPU_INTERRUPT_VFIQ and HCRX_EL2.VFNMI.
-- Not check SCTLR_NMI in arm_cpu_do_interrupt_aarch64().
-- Correct the INTID_NMI logic.
-- Declare cpu variable to reuse latter.
-
-Changes in v8:
-- Fix the rcu stall after sending a VNMI in qemu VM.
-- Fix an unexpected interrupt bug when sending VNMI by running qemu VM.
-- Test the VNMI interrupt.
 - Update the commit message.
-- Add Reviewed-by.
-
-Changes in v7:
+v7:
 - env->cp15.hcrx_el2 -> arm_hcrx_el2_eff().
-- Reorder the irqbetter() code for clarity.
-- Eliminate the has_superprio local variable for gicv3_get_priority().
-- false -> cs->hpplpi.superprio in gicv3_redist_update_noirqset().
-- 0x0 -> false in arm_gicv3_common_reset_hold().
-- Clear superprio in several places for hppi, hpplpi and hppvlpi.
 - Add Reviewed-by.
-
-Changes in v6:
-- Fix DISAS_TOO_MANY to DISAS_UPDATE_EXIT for ALLINT MSR (immediate).
+v6:
 - Verify that HCR_EL2.VF is set before checking VFNMI.
-- env->cp15.hcr_el2 -> arm_hcr_el2_eff().
-- env->cp15.hcrx_el2 -> arm_hcrx_el2_eff().
-- Not combine VFNMI with CPU_INTERRUPT_VNMI.
-- Implement icv_nmiar1_read().
-- Put the "extract superprio info" code into gicv3_get_priority().
-- Update the comment in irqbetter().
-- Reset the cs->hppi.superprio to 0x0.
-- Set hppi.superprio to false for LPI.
-- Add Reviewed-by.
-
-Changes in v5:
-- Remove the comment for ALLINT in cpu.h.
-- Merge allint_check() to msr_i_allint to clear the ALLINT MSR (immediate)
-  implementation.
-- Rename msr_i_allint() to msr_set_allint_el1() to make it clearer.
-- Drop the & 1 in trans_MSR_i_ALLINT().
-- Add Reviewed-by.
-
-Changes in v4:
-- Handle VNMI within the CPU and the GIC.
-- Keep PSTATE.ALLINT in env->pstate but not env->allint.
-- Fix the ALLINT MSR (immediate) decodetree implementation.
-- Accept NMI unconditionally for arm_cpu_has_work() but add comment.
-- Improve nmi mask in arm_excp_unmasked().
-- Make the GICR_INMIR0 and GICD_INMIR implementation more clearer.
-- Improve ICC_NMIAR1_EL1 implementation
-- Extract gicv3_get_priority() to avoid priority code repetition.
-- Add Reviewed-by.
-
-Changes in v3:
-- Remove the FIQ NMI.
-- Adjust the patches Sequence.
-- Reomve the patch "Set pstate.ALLINT in arm_cpu_reset_hold".
-- Check whether support FEAT_NMI and FEAT_GICv3 for FEAT_GICv3_NMI.
+v4；
+- Also handle VNMI.
+v3:
+- CPU_INTERRUPT_NMI do not set FIQ, so remove it.
 - With CPU_INTERRUPT_NMI, both CPSR_I and ISR_IS must be set.
-- Not include NMI logic when FEAT_NMI or SCTLR_ELx.NMI not enabled.
-- Refator nmi mask in arm_excp_unmasked().
-- Add VNMI definitions, add HCRX_VINMI and HCRX_VFNMI support in HCRX_EL2.
-- Add Reviewed-by and Acked-by.
-- Update the commit message.
+---
+ target/arm/cpu.h    |  2 ++
+ target/arm/helper.c | 13 +++++++++++++
+ 2 files changed, 15 insertions(+)
 
-Changes in v2:
-- Break up the patches so that each one does only one thing.
-- Remove the command line option and just implement it in "max" cpu.
-
-Jinjie Ruan (24):
-  target/arm: Handle HCR_EL2 accesses for bits introduced with FEAT_NMI
-  target/arm: Add PSTATE.ALLINT
-  target/arm: Add support for FEAT_NMI, Non-maskable Interrupt
-  target/arm: Implement ALLINT MSR (immediate)
-  target/arm: Support MSR access to ALLINT
-  target/arm: Add support for Non-maskable Interrupt
-  target/arm: Add support for NMI in arm_phys_excp_target_el()
-  target/arm: Handle IS/FS in ISR_EL1 for NMI, VINMI and VFNMI
-  target/arm: Handle PSTATE.ALLINT on taking an exception
-  hw/intc/arm_gicv3: Add external IRQ lines for NMI
-  hw/arm/virt: Wire NMI and VINMI irq lines from GIC to CPU
-  target/arm: Handle NMI in arm_cpu_do_interrupt_aarch64()
-  hw/intc/arm_gicv3: Add has-nmi property to GICv3 device
-  hw/intc/arm_gicv3_kvm: Not set has-nmi=true for the KVM GICv3
-  hw/intc/arm_gicv3: Add irq non-maskable property
-  hw/intc/arm_gicv3_redist: Implement GICR_INMIR0
-  hw/intc/arm_gicv3: Implement GICD_INMIR
-  hw/intc/arm_gicv3: Add NMI handling CPU interface registers
-  hw/intc/arm_gicv3: Handle icv_nmiar1_read() for icc_nmiar1_read()
-  hw/intc/arm_gicv3: Implement NMI interrupt priority
-  hw/intc/arm_gicv3: Report the NMI interrupt in gicv3_cpuif_update()
-  hw/intc/arm_gicv3: Report the VINMI interrupt
-  target/arm: Add FEAT_NMI to max
-  hw/arm/virt: Add FEAT_GICv3_NMI feature support in virt GIC
-
- docs/system/arm/emulation.rst      |   1 +
- hw/arm/virt.c                      |  27 ++-
- hw/intc/arm_gicv3.c                |  67 +++++++-
- hw/intc/arm_gicv3_common.c         |  48 ++++++
- hw/intc/arm_gicv3_cpuif.c          | 258 +++++++++++++++++++++++++++--
- hw/intc/arm_gicv3_dist.c           |  36 ++++
- hw/intc/arm_gicv3_kvm.c            |   5 +
- hw/intc/arm_gicv3_redist.c         |  22 +++
- hw/intc/gicv3_internal.h           |  13 ++
- hw/intc/trace-events               |   2 +
- include/hw/intc/arm_gic_common.h   |   2 +
- include/hw/intc/arm_gicv3_common.h |   7 +
- target/arm/cpu-features.h          |   5 +
- target/arm/cpu-qom.h               |   5 +-
- target/arm/cpu.c                   | 147 ++++++++++++++--
- target/arm/cpu.h                   |   9 +
- target/arm/helper.c                | 101 ++++++++++-
- target/arm/internals.h             |  21 +++
- target/arm/tcg/a64.decode          |   1 +
- target/arm/tcg/cpu64.c             |   1 +
- target/arm/tcg/helper-a64.c        |  16 +-
- target/arm/tcg/helper-a64.h        |   1 +
- target/arm/tcg/translate-a64.c     |  19 +++
- 23 files changed, 767 insertions(+), 47 deletions(-)
-
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 08a6bc50de..97997dbd08 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1398,6 +1398,8 @@ void pmu_init(ARMCPU *cpu);
+ #define CPSR_N (1U << 31)
+ #define CPSR_NZCV (CPSR_N | CPSR_Z | CPSR_C | CPSR_V)
+ #define CPSR_AIF (CPSR_A | CPSR_I | CPSR_F)
++#define ISR_FS (1U << 9)
++#define ISR_IS (1U << 10)
+ 
+ #define CPSR_IT (CPSR_IT_0_1 | CPSR_IT_2_7)
+ #define CACHED_CPSR_BITS (CPSR_T | CPSR_AIF | CPSR_GE | CPSR_IT | CPSR_Q \
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index d9814433e1..0e7eefd7e5 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2021,16 +2021,29 @@ static uint64_t isr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+         if (cs->interrupt_request & CPU_INTERRUPT_VIRQ) {
+             ret |= CPSR_I;
+         }
++        if (cs->interrupt_request & CPU_INTERRUPT_VINMI) {
++            ret |= ISR_IS;
++            ret |= CPSR_I;
++        }
+     } else {
+         if (cs->interrupt_request & CPU_INTERRUPT_HARD) {
+             ret |= CPSR_I;
+         }
++
++        if (cs->interrupt_request & CPU_INTERRUPT_NMI) {
++            ret |= ISR_IS;
++            ret |= CPSR_I;
++        }
+     }
+ 
+     if (hcr_el2 & HCR_FMO) {
+         if (cs->interrupt_request & CPU_INTERRUPT_VFIQ) {
+             ret |= CPSR_F;
+         }
++        if (cs->interrupt_request & CPU_INTERRUPT_VFNMI) {
++            ret |= ISR_FS;
++            ret |= CPSR_F;
++        }
+     } else {
+         if (cs->interrupt_request & CPU_INTERRUPT_FIQ) {
+             ret |= CPSR_F;
 -- 
 2.34.1
 

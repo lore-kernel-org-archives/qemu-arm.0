@@ -1,74 +1,75 @@
-Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp659300ejh;
-        Sun, 7 Apr 2024 01:21:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXKIUhMXNW/e+f6PElPQJJCZwrazcUjZ7QUp0AtP9tSYa2tgS5UyjkNLoF9CE/FgRsAfIESg/HBiPPHXYaXycHrvWmKm1R8
-X-Google-Smtp-Source: AGHT+IGY4G9sVTEEKc5s1yoBXmbP/urlap3GnauRg3WHdU6K0ixdzatUAdL+aeIKeqBlDf+tE3Wm
-X-Received: by 2002:a05:6808:648b:b0:3c5:ef08:35ec with SMTP id fh11-20020a056808648b00b003c5ef0835ecmr1756836oib.45.1712478084709;
-        Sun, 07 Apr 2024 01:21:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712478084; cv=none;
+Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp659347ejh;
+        Sun, 7 Apr 2024 01:21:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXjfl90NW/ApvpN7YM8BJQs8X88dtBWzH9xyXSbp8hAvNNAkoS7jKecsr518Rg8i2cziE5asXaWIw3C/xW51amwRf8TkpIB
+X-Google-Smtp-Source: AGHT+IG5gwul+Oq0U8gxff2+OoAj5ZH/kx/I//L1r6N5r6fCvp9wqGF29ZneTnon5XqY644NnRVv
+X-Received: by 2002:a05:620a:ec3:b0:78d:635a:e25b with SMTP id x3-20020a05620a0ec300b0078d635ae25bmr640223qkm.9.1712478093377;
+        Sun, 07 Apr 2024 01:21:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712478093; cv=none;
         d=google.com; s=arc-20160816;
-        b=r8h0d+qbAeSU0jRrbRAWb7lweMePP244ZrUYeLEe9R7YJyOvyflur/BFNirBgiP2G7
-         cNnDgNPU6C8YmJ+cZfkKIcReIY0SD7MzVNPBQQzepVr+GDpZBXRHB/LfnZ6WX9kyWsXY
-         qoQiFaZ0Fr7ibfkQ7eMaFKIw4yJqbJJeVw7RShhccPGKA1ne8VaLbScZh+a4M3GEA2Lr
-         7hW21PwDrDJmSCZV5ak/T7MAnqqf5/WrP0QIaNp3V16sYo+zycPm/YYXQLo5zt8bWOJ5
-         6sgqBkXY2tJvTISXL6WOT2ozmZI3yrbu/9MIwjotA69TxmoNe1wH5cj5BZykKXFRr51z
-         N4Dw==
+        b=NvPE5GB/0Y+qFq+HICPvqIzaxXGxXEw1bp9OFJkWdApJRaAyWMjkmyAnUVnDgaGzSq
+         ywvfpLKY+ZwdZ/9KTvn4+DlURy700/NBo5tWGiXyhpaSihs0IFFJB/IUdxJwn5fLq7+F
+         CFisSoLYIC3iNgmGvM2TJPmpL0a4K0OazTeKIYkHifk4xq9t8hVoe8EJ+2CTb5JEDCZY
+         Fv6sZgYZrgsr5cZa0STe3mHNZSh+wkPdkM7j/J3H+yHwz1tErOP5vSWmA4Wc8TBUXkHf
+         l+YWoz7NTGlW/5qEVznCfF0jZV7ShB1Lrkcc//nIOwGNJ/QZIsMEeer8fXYBd1xXTElG
+         jR3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=KtbXuNedkCN7U67B0FyLribJLBzUSX2+OFB41iNAPt0=;
+        bh=17u46GjXNuFpLUttXxJef1xJGuKlRKEBj+2XZG42ekQ=;
         fh=dR6uRwfo9om/DmWDsGu5eY7/2T4Nd7sHG4YVwbPnVj0=;
-        b=iIaKZ4oLjP50JPesu8I3GPd/N/fNRUm1LYhEFPIxc8lBMLWUtnI1BM2CUEBPkCd8sU
-         dug2McdaMi0+uOJyjxZOgLMSuxGvHY3dXf/cYbJBy6L/8AjbAd5OX2ycuLFG8Wgh5Thc
-         orMNrJw9KdpPRgRu4vFEzUituRLvuaCjC6lytIH6nNaqRmyonZ3NFwlsIuEqkcpQIvQR
-         iN7gGlemcr9tPV0o17eVlXdmPZMcx37yieFZGeJSMkckxXDMJuEsMIMYQ1LQ/iRHeFmt
-         QW7E8SCtWyepFY2NC2lMt1gOJAiXZoEfp00+Nxl9ejRzooP3Dg61FP3VnAfagJhRnnlI
-         nehQ==;
+        b=R6k15kNKc4vbv/hFytLnJm+QkER0lLQIgf4smeYl4rI5HjT5aS82uLxMzQoRUROrZL
+         /Cmxb84v4O4tlY1UXzmi+jzMMzYSvWjFrtwTf2cAACRazHYTF5hx9FVHT2GA7DTtKQbf
+         94WVmR/WN9aXat7O6hHWdTNQCoFeYM+GyXUOxfdfS9fradgruBEMRcjutK7Y+fyF2y+Q
+         QJA7HyCbR7kWSQHNMD0NIxBa5aeeU3qEUDws5FbGRmqOhuQhzkpe3kMzHZgoaOZrpmIz
+         JUJZC2lamnhOzeXvmjerKrx1LZWq7hRb4r2nBIP0bZpsAF2lDrHOJiHwxI7s3BE98tzK
+         rEZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v10-20020ac8578a000000b00431a474c0f0si5808597qta.368.2024.04.07.01.21.24
+        by mx.google.com with ESMTPS id d12-20020a05620a166c00b0078d5e891645si2181667qko.616.2024.04.07.01.21.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Apr 2024 01:21:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 07 Apr 2024 01:21:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rtNlJ-0004Tj-HQ; Sun, 07 Apr 2024 04:20:25 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rtNlJ-0004Tk-LB; Sun, 07 Apr 2024 04:20:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rtNl7-0004KW-Ri; Sun, 07 Apr 2024 04:20:15 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+ id 1rtNl2-0004II-KG; Sun, 07 Apr 2024 04:20:09 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruanjinjie@huawei.com>)
- id 1rtNl0-0002GU-QY; Sun, 07 Apr 2024 04:20:10 -0400
-Received: from mail.maildlp.com (unknown [172.19.88.163])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4VC4p31S3Kz1h5rC;
- Sun,  7 Apr 2024 16:17:15 +0800 (CST)
+ id 1rtNkz-00025L-Ja; Sun, 07 Apr 2024 04:20:08 -0400
+Received: from mail.maildlp.com (unknown [172.19.162.112])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4VC4pk0Ywjz1ymJ4;
+ Sun,  7 Apr 2024 16:17:50 +0800 (CST)
 Received: from kwepemi500008.china.huawei.com (unknown [7.221.188.139])
- by mail.maildlp.com (Postfix) with ESMTPS id 2B09018005F;
- Sun,  7 Apr 2024 16:20:04 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 5E150140416;
+ Sun,  7 Apr 2024 16:20:02 +0800 (CST)
 Received: from huawei.com (10.67.174.55) by kwepemi500008.china.huawei.com
  (7.221.188.139) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Sun, 7 Apr
- 2024 16:20:03 +0800
+ 2024 16:20:01 +0800
 To: <peter.maydell@linaro.org>, <eduardo@habkost.net>,
  <marcel.apfelbaum@gmail.com>, <philmd@linaro.org>, <wangyanan55@huawei.com>,
  <richard.henderson@linaro.org>, <qemu-devel@nongnu.org>,
  <qemu-arm@nongnu.org>
 CC: <ruanjinjie@huawei.com>
-Subject: [PATCH v13 17/24] hw/intc/arm_gicv3: Implement GICD_INMIR
-Date: Sun, 7 Apr 2024 08:17:26 +0000
-Message-ID: <20240407081733.3231820-18-ruanjinjie@huawei.com>
+Subject: [PATCH v13 13/24] hw/intc/arm_gicv3: Add has-nmi property to GICv3
+ device
+Date: Sun, 7 Apr 2024 08:17:22 +0000
+Message-ID: <20240407081733.3231820-14-ruanjinjie@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240407081733.3231820-1-ruanjinjie@huawei.com>
 References: <20240407081733.3231820-1-ruanjinjie@huawei.com>
@@ -78,8 +79,8 @@ Content-Type: text/plain
 X-Originating-IP: [10.67.174.55]
 X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
  kwepemi500008.china.huawei.com (7.221.188.139)
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=ruanjinjie@huawei.com; helo=szxga05-in.huawei.com
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=ruanjinjie@huawei.com; helo=szxga04-in.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -87,115 +88,103 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Jinjie Ruan <ruanjinjie@huawei.com>
-From:  Jinjie Ruan via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oceT59uVRH2d
+From:  Jinjie Ruan via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5TBTo3IN3cYe
 
-Add GICD_INMIR, GICD_INMIRnE register and support access GICD_INMIR0.
+Add a property has-nmi to the GICv3 device, and use this to set
+the NMI bit in the GICD_TYPER register. This isn't visible to
+guests yet because the property defaults to false and we won't
+set it in the board code until we've landed all of the changes
+needed to implement FEAT_GICV3_NMI.
 
 Signed-off-by: Jinjie Ruan <ruanjinjie@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-v11:
-- Add new Reviewed-by.
+v12:
+- Update the subject and commit message.
+- Add Reviewed-by.
 v10:
-- superprio -> nmi.
+- Adjust to before add irq non-maskable property.
 v4:
-- Make the GICD_INMIR implementation more clearer.
-- Udpate the commit message.
-v3:
 - Add Reviewed-by.
 ---
- hw/intc/arm_gicv3_dist.c | 34 ++++++++++++++++++++++++++++++++++
- hw/intc/gicv3_internal.h |  2 ++
- 2 files changed, 36 insertions(+)
+ hw/intc/arm_gicv3_common.c         | 1 +
+ hw/intc/arm_gicv3_dist.c           | 2 ++
+ hw/intc/gicv3_internal.h           | 1 +
+ include/hw/intc/arm_gicv3_common.h | 1 +
+ 4 files changed, 5 insertions(+)
 
+diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+index c52f060026..2d2cea6858 100644
+--- a/hw/intc/arm_gicv3_common.c
++++ b/hw/intc/arm_gicv3_common.c
+@@ -569,6 +569,7 @@ static Property arm_gicv3_common_properties[] = {
+     DEFINE_PROP_UINT32("num-irq", GICv3State, num_irq, 32),
+     DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
+     DEFINE_PROP_BOOL("has-lpi", GICv3State, lpi_enable, 0),
++    DEFINE_PROP_BOOL("has-nmi", GICv3State, nmi_support, 0),
+     DEFINE_PROP_BOOL("has-security-extensions", GICv3State, security_extn, 0),
+     /*
+      * Compatibility property: force 8 bits of physical priority, even
 diff --git a/hw/intc/arm_gicv3_dist.c b/hw/intc/arm_gicv3_dist.c
-index 22ddc0d666..d8207acb22 100644
+index 35e850685c..22ddc0d666 100644
 --- a/hw/intc/arm_gicv3_dist.c
 +++ b/hw/intc/arm_gicv3_dist.c
-@@ -89,6 +89,29 @@ static int gicd_ns_access(GICv3State *s, int irq)
-     return extract32(s->gicd_nsacr[irq / 16], (irq % 16) * 2, 2);
- }
+@@ -389,6 +389,7 @@ static bool gicd_readl(GICv3State *s, hwaddr offset,
+          *                      by GICD_TYPER.IDbits)
+          * MBIS == 0 (message-based SPIs not supported)
+          * SecurityExtn == 1 if security extns supported
++         * NMI = 1 if Non-maskable interrupt property is supported
+          * CPUNumber == 0 since for us ARE is always 1
+          * ITLinesNumber == (((max SPI IntID + 1) / 32) - 1)
+          */
+@@ -402,6 +403,7 @@ static bool gicd_readl(GICv3State *s, hwaddr offset,
+         bool dvis = s->revision >= 4;
  
-+static void gicd_write_bitmap_reg(GICv3State *s, MemTxAttrs attrs,
-+                                  uint32_t *bmp, maskfn *maskfn,
-+                                  int offset, uint32_t val)
-+{
-+    /*
-+     * Helper routine to implement writing to a "set" register
-+     * (GICD_INMIR, etc).
-+     * Semantics implemented here:
-+     * RAZ/WI for SGIs, PPIs, unimplemented IRQs
-+     * Bits corresponding to Group 0 or Secure Group 1 interrupts RAZ/WI.
-+     * offset should be the offset in bytes of the register from the start
-+     * of its group.
-+     */
-+    int irq = offset * 8;
-+
-+    if (irq < GIC_INTERNAL || irq >= s->num_irq) {
-+        return;
-+    }
-+    val &= mask_group_and_nsacr(s, attrs, maskfn, irq);
-+    *gic_bmp_ptr32(bmp, irq) = val;
-+    gicv3_update(s, irq, 32);
-+}
-+
- static void gicd_write_set_bitmap_reg(GICv3State *s, MemTxAttrs attrs,
-                                       uint32_t *bmp,
-                                       maskfn *maskfn,
-@@ -545,6 +568,11 @@ static bool gicd_readl(GICv3State *s, hwaddr offset,
-         /* RAZ/WI since affinity routing is always enabled */
-         *data = 0;
+         *data = (1 << 25) | (1 << 24) | (dvis << 18) | (sec_extn << 10) |
++            (s->nmi_support << GICD_TYPER_NMI_SHIFT) |
+             (s->lpi_enable << GICD_TYPER_LPIS_SHIFT) |
+             (0xf << 19) | itlinesnumber;
          return true;
-+    case GICD_INMIR ... GICD_INMIR + 0x7f:
-+        *data = (!s->nmi_support) ? 0 :
-+                gicd_read_bitmap_reg(s, attrs, s->nmi, NULL,
-+                                     offset - GICD_INMIR);
-+        return true;
-     case GICD_IROUTER ... GICD_IROUTER + 0x1fdf:
-     {
-         uint64_t r;
-@@ -754,6 +782,12 @@ static bool gicd_writel(GICv3State *s, hwaddr offset,
-     case GICD_SPENDSGIR ... GICD_SPENDSGIR + 0xf:
-         /* RAZ/WI since affinity routing is always enabled */
-         return true;
-+    case GICD_INMIR ... GICD_INMIR + 0x7f:
-+        if (s->nmi_support) {
-+            gicd_write_bitmap_reg(s, attrs, s->nmi, NULL,
-+                                  offset - GICD_INMIR, value);
-+        }
-+        return true;
-     case GICD_IROUTER ... GICD_IROUTER + 0x1fdf:
-     {
-         uint64_t r;
 diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index 21697ecf39..8d793243f4 100644
+index 29d5cdc1b6..8f4ebed2f4 100644
 --- a/hw/intc/gicv3_internal.h
 +++ b/hw/intc/gicv3_internal.h
-@@ -52,6 +52,8 @@
- #define GICD_SGIR            0x0F00
- #define GICD_CPENDSGIR       0x0F10
- #define GICD_SPENDSGIR       0x0F20
-+#define GICD_INMIR           0x0F80
-+#define GICD_INMIRnE         0x3B00
- #define GICD_IROUTER         0x6000
- #define GICD_IDREGS          0xFFD0
+@@ -68,6 +68,7 @@
+ #define GICD_CTLR_E1NWF             (1U << 7)
+ #define GICD_CTLR_RWP               (1U << 31)
  
++#define GICD_TYPER_NMI_SHIFT           9
+ #define GICD_TYPER_LPIS_SHIFT          17
+ 
+ /* 16 bits EventId */
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index 7324c7d983..4358c5319c 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -249,6 +249,7 @@ struct GICv3State {
+     uint32_t num_irq;
+     uint32_t revision;
+     bool lpi_enable;
++    bool nmi_support;
+     bool security_extn;
+     bool force_8bit_prio;
+     bool irq_reset_nonsecure;
 -- 
 2.34.1
 

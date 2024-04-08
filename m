@@ -1,143 +1,246 @@
-Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1238482ejh;
-        Mon, 8 Apr 2024 05:37:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUMe9+ryXcMF/HXhX1sBVkiV5EithehJFcjXc7BJxjE6o0aIVnkz7PLyBnYjTVNTmzKq4mm+XTS7nESUCWekxbT7Ma+Vlpi
-X-Google-Smtp-Source: AGHT+IGZYmbkoEp0sqWMwX/2IKJSUkr7QCIGhlT5FHUhlUG5YryGe/lg0xtVczCknWvUAMLBCFCf
-X-Received: by 2002:a05:620a:1788:b0:78d:641e:826f with SMTP id ay8-20020a05620a178800b0078d641e826fmr4374212qkb.43.1712579854378;
-        Mon, 08 Apr 2024 05:37:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712579854; cv=none;
+Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1293564ejh;
+        Mon, 8 Apr 2024 07:09:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX/cIuS/Libqg2JZ3tsV4l9Fb8jWtlpHPmy3CA9+SjbMvbLuwsyzXIiQLHVAlz0CQuXblknanotTBIVgNHjeD8K9OWRnp59
+X-Received: by 2002:a0d:e6cd:0:b0:615:102e:5af1 with SMTP id p196-20020a0de6cd000000b00615102e5af1mr7048508ywe.24.1712585340231;
+        Mon, 08 Apr 2024 07:09:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712585340; cv=none;
         d=google.com; s=arc-20160816;
-        b=rGyY6qbPsdvVMSXDEo+HpSTfWNZ79NoUlKyYxCNZHQYNC3/w3D8ZmKXGpVg77zgSMQ
-         bREk3L1+U8ETYNGnHQORioEElNjxeyVy87jYvVuSUscSd5U2nVTBtqSTGNcH+rCe4hGs
-         3lrDOE2KgR2/iRIi4pTRwkraX0FjGslaVbYmanxKNyJudxDViyLHPmNLZngZ6F/ZgB/u
-         pUDia578G+4t4FOmXdVTKPinJYm+iCvLCvQ2cyb5vRkVT7np5pfXy2pVmmoyl/VGIJjD
-         lXKgsSuUZwr5eR9dfeBaTxHicDDPe+IjmbOQ3wwIKAcy0XrHcU5zqGM72rOcm+5qNZcq
-         xKKg==
+        b=utwAokOQqMpefwM6fQaMd150iw0A67/dXxvcK044FghUVpKFIVdiZya516UI1XbAyE
+         xmakC7OWAM17I9muXioQcMEIZSZ+PxBO8vhKk1xdMhna17IBxvNCXujqAam8yUF2r4Hv
+         5A+FuxGD4ghxWED78LtpmPIRYoqcjQcQhowVkOcF5oayNtGpvB0wSKj5Ajp+YLZcOsW1
+         Pkj2aPd36/ufC1JSnYlj0JwZj79kQh4laiyxwg8yJjOctWY4si7Po5H8hr3SsVqVV2Vq
+         XqkrlQTIURYZ+SmDAyXf6s0Gl+4o9r2QHa+Up/rANjDrhfbW6pxMjBldGdaK1pf+8Kx/
+         HXkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=9J/ZVhREruH9TnriC5uGWKBw96sf+KUPfNqRr+GOaVY=;
-        fh=5vgTseY4GfksZPCqE1pAaSTEOm++X82P/Vaq1Fas6/s=;
-        b=SxcoI7pDxkWExxn0R+Nj37AVq1jWHi+FkOGkbSiM8yfFGJ0+1JkoEI6ZvI8dXQNVGj
-         5MUaHTWvN6BBSf/pOF8b7wP3cuyx8gGjulp/K9FnFRiFAEybyYjRiI9YDfbBulRy0t/j
-         1h7nHQAqlAPBL79tTLSmWB0PLnBeiNn17HspXateRFXaHk5zqQ+KApFtwuC8liEV/Vry
-         9zivuTiFonqai6TCvoGUVkpvwacRTBEOEZsGBDp/fG7enxK3qzdrqwBsR2JgCSDezK5t
-         e6BE5b5QMCPggC0rSBAJsOY+WA8GM4i4/q87bbqI3e+MAeSv7x03XCsLp1H373ePy8Ox
-         d16g==;
+        h=content-transfer-encoding:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=NLZ1DYSCUHy7vwgXmykXXQThwxqVk3hHzLk0I+Ol/to=;
+        fh=OVV2f+VFZ+FqHZLYXU3EkCp+ESfTyuC2ayqM2h29FV0=;
+        b=xujUn4iN1sOtBPb9clYDwm48e4fNVFek1B84dXapTYhuYnMDVw2RaDAHXTa9KLzQ+9
+         7MMeBizhID3Riu93QPFhjzfdpBGIKuGlsreJg1E65QX4bhfCpUc0xKxTEK+Z3K/g9FFt
+         heiykJ7WuCV1TdSAkgoT1WuQmNolrKqOOc9kLqabrW8HKBQ6F8fRfBN1dm7KlQhzBkTl
+         rSLQ8od04JqIN7KG2vFrrQfdQJ23PXja5SD480M+bU22j+1FUQ6C0ChBltIx+ZWdlPz1
+         mioOxfIGd0/zxyxaVG7LAS+JHNtbEgS12FQQYsI0nJliO+/qZlsUQTqjMMdnOr0x+XWb
+         WzUg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="yYUKt/Kn";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bs7-20020a05620a470700b0078d54355829si4014658qkb.525.2024.04.08.05.37.34
+       dkim=pass header.i=@google.com header.s=20230601 header.b=puhj+g5Q;
+       spf=pass (google.com: domain of 3e_otzggkc_yqkmqrydyemmejc.amkyjcv.zcllccjglypm.mpe@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3e_oTZggKC_YqkmqrYdYemmejc.amkYjcv.ZcllccjglYpm.mpe@flex--smostafa.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3e_oTZggKC_YqkmqrYdYemmejc.amkYjcv.ZcllccjglYpm.mpe@flex--smostafa.bounces.google.com>
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
+        by mx.google.com with SMTPS id y9-20020a0dd609000000b006153858d945sor3613954ywd.15.2024.04.08.07.09.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Apr 2024 05:37:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 08 Apr 2024 07:09:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3e_otzggkc_yqkmqrydyemmejc.amkyjcv.zcllccjglypm.mpe@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="yYUKt/Kn";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rtoFT-0004Lu-PK; Mon, 08 Apr 2024 08:37:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rtoFS-0004LL-Cr
- for qemu-devel@nongnu.org; Mon, 08 Apr 2024 08:37:18 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rtoFQ-0001X5-Rb
- for qemu-devel@nongnu.org; Mon, 08 Apr 2024 08:37:18 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-56e47843cc7so1435937a12.0
- for <qemu-devel@nongnu.org>; Mon, 08 Apr 2024 05:37:16 -0700 (PDT)
+       dkim=pass header.i=@google.com header.s=20230601 header.b=puhj+g5Q;
+       spf=pass (google.com: domain of 3e_otzggkc_yqkmqrydyemmejc.amkyjcv.zcllccjglypm.mpe@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3e_oTZggKC_YqkmqrYdYemmejc.amkYjcv.ZcllccjglYpm.mpe@flex--smostafa.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712579835; x=1713184635; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=9J/ZVhREruH9TnriC5uGWKBw96sf+KUPfNqRr+GOaVY=;
- b=yYUKt/KnNzg4DLng5jfVquVEh64TdiKYesJW7fLFR05AKOG4fl+8QpkVSXnqFVzY1Y
- Mj2v1yLY3LYEH8gN5BGDCmP5OFO/jWQXdnwLR46A6pOTPcrvupswhT6pVSGMK6MxK/BE
- t5FguxflC2s5vD577C3px2xQGnZdHPw1Osy0vhbu0MteQ9U4HhxAGzJVCVpxLSRnGRLA
- Ey/g/JeIdRxyuLPehHeCLwVpOg+uXbbkOSd3xVJsAaIMaR8yzl07LE7vJCzifK7NHgUW
- RERM0AWuUavEzZ+/Esl47TfQM4ki10ZTtBlRPX3FGY8Mu/5HNr6pDwHatxof3cDjRfzO
- iN6A==
+        d=google.com; s=20230601; t=1712585340; x=1713190140; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:from:subject:message-id
+         :mime-version:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=NLZ1DYSCUHy7vwgXmykXXQThwxqVk3hHzLk0I+Ol/to=;
+        b=puhj+g5Qh/J+B3Q6gHIjCKXAoQI7/U7NoMOkidGeZyM+oHHCdpZhlqlhpGi2v253Ql
+         ZDVCkDSHfBLCaGS+LoFS6/+1gdXfIxj5r6zi1L8YQOXCoJMLh+Q1LcEeylDpRy9wl8ED
+         2k0aQLpHPZo3yBkRDo45UMquSJnvJvwAQvPZqDTO1xi619p7m/B60iU2qbneJom6Xlrp
+         uE0IrQ6iHCOm80keh7ScS7f9hTGEIkRca7jdi2kR38JD684z68qB8oqbd8czLophYspD
+         vT6gfEyvlsS4FUS9obOnkozGO8RhU/jPpWnQwgsMw1nAy+/4E8LPjtqj8y++3ucbhg8h
+         1uQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712579835; x=1713184635;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=9J/ZVhREruH9TnriC5uGWKBw96sf+KUPfNqRr+GOaVY=;
- b=gIiphj4BFFbllGQQm9+qeQw/x5xr1QnrGFHhmymhqicqB/ACGVa5e0Xc0UpM5GMWOE
- 5dp+P0iEUIYusQUlMN81P+8nBVCvpuAB+O8XI8qY5KH+IdPRuk+EVRKuXrbT/sUqKrjf
- gVKt+ypO7mWLQ/d25K/iaXbypPzpGx5024RbUIXF93h5DH7VEjFJam6OFr8OHuHDVNnm
- 2doZqO64x7lIQmxXIGy0Dm+Sz+xFHpkb6xkB85Of3V9D+SUgjvQitgkb8xDi/CXS8T4U
- 5oJMT+04JlJ9d57k7tYbeAgWRkZDjZofJTrOVbpetlBrLJ2IzFBDEf/wTxS7cf08q3bH
- xpkw==
-X-Gm-Message-State: AOJu0Yy8FSsIVJKPrlq8FqzId/0qcjo5kbyXwVSYarzzIYhI2cbjD3hJ
- Hr7z/3akE3A29KrZiUvfXdMygZ/YjePtLB/vcw5+O+3pPlOL8/1g+7WfRQUJluhOLAwxIslZCtQ
- T553AWvmCMm6z9GxfiBkkwpz5GAv/IHIiqIhMSA==
-X-Received: by 2002:a50:8e4e:0:b0:56c:2f3a:13a7 with SMTP id
- 14-20020a508e4e000000b0056c2f3a13a7mr5645901edx.25.1712579835336; Mon, 08 Apr
- 2024 05:37:15 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240408105149.59258-1-philmd@linaro.org>
- <20240408105149.59258-2-philmd@linaro.org>
-In-Reply-To: <20240408105149.59258-2-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Apr 2024 13:37:04 +0100
-Message-ID: <CAFEAcA8u4HG+g_6Vpv53yq6SW5g3GSUYsjo=S0vc3sZ2Dzgs1w@mail.gmail.com>
-Subject: Re: [PATCH-for-9.0? 1/2] hw/net/lan9118: Replace magic '2048' value
- by 'PKT_SIZE' definition
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>, 
- Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org,
- Chuhong Yuan <hslester96@gmail.com>
+        d=1e100.net; s=20230601; t=1712585340; x=1713190140;
+        h=content-transfer-encoding:cc:to:from:subject:message-id
+         :mime-version:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NLZ1DYSCUHy7vwgXmykXXQThwxqVk3hHzLk0I+Ol/to=;
+        b=StuvHlN49qoPJtQYhMSPRTz7f+boIvEcL8YNPJMcmNnpz6fVFU8IIzgSUGudnRaCgp
+         MZw51eoSVjhRW0V2BSPcRj7QXn7o26+3CYz8RoZ6ijxgmsffqjKvEQXe1i5G3pWAw4PW
+         gwk4z00WwNTdgqL+wyb9T8E6DQERHyy3kEMwCmPaDZBhg9vbXEu2tctJYjOXUE0WSP8B
+         +3fICHpPPQqq5Ey/9V4HhHZSpprMpbF2xTzjbH+iSF2sgbZUNs4+AnkMlrRIAbBlVJ5G
+         c5/oqIuW4dvYqzPgxDEQZVEgcdcBI9FlML2Mq4GLUQks1MYgo2HyW2/70RzLwf1qEMzQ
+         Zjkw==
+X-Forwarded-Encrypted: i=1; AJvYcCVxO0NsZlhG/7y+5owIKTFKBF5IljX6w8waaBPVIKNkbnQSlY9g9qGBK3MlC9zdOTQw3RPTR5a6MCUmrgX65tEo+D0izy/o
+X-Gm-Message-State: AOJu0YzWk3f7EZ+mtYZaHVTWRFDY+MJL86FsSz8eV1kHIQiDj9GzG05r
+	egQF1iu2qJjD6hXwSpu1ThXXI+fAayqBkguvhgxzNE+sX0JpOniuS5ui3VYgN1Xd5ndsta7iv2Y
+	S4S7UEbYJpg==
+X-Google-Smtp-Source: AGHT+IE1Q1LdzTAE3ST+4+e5xy8cHcG2rBiP4XMSy4WwOu3sF80cKufjTrScDzf7KH+OiJ76fQL1tA2a0D1t0g==
+X-Received: from mostafa.c.googlers.com ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
+ (user=smostafa job=sendgmr) by 2002:a0d:d74c:0:b0:615:2597:7246 with SMTP id
+ z73-20020a0dd74c000000b0061525977246mr2354981ywd.6.1712585339740; Mon, 08 Apr
+ 2024 07:08:59 -0700 (PDT)
+Date: Mon,  8 Apr 2024 14:08:05 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.44.0.478.gd926399ef9-goog
+Message-ID: <20240408140818.3799590-1-smostafa@google.com>
+Subject: [RFC PATCH v2 00/13] SMMUv3 nested translation support
+From: Mostafa Saleh <smostafa@google.com>
+To: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
+	qemu-devel@nongnu.org
+Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org, 
+	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org, 
+	marcin.juszkiewicz@linaro.org, Mostafa Saleh <smostafa@google.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6DSfMXqgxpbH
+X-TUID: YEEZ6ylXALFY
 
-On Mon, 8 Apr 2024 at 11:53, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  hw/net/lan9118.c | 8 +++++---
->  1 file changed, 5 insertions(+), 3 deletions(-)
->
+Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
+but not nested instances.
+This patch series adds support for nested translation in SMMUv3,
+this is controlled by property =E2=80=9Carm-smmuv3.stage=3Dnested=E2=80=9D,=
+ and
+advertised to guests as (IDR0.S1P =3D=3D 1 && IDR0.S2P =3D=3D 2)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Main changes(architecture):
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D
+1) CDs are considered IPA and translated with stage-2.
+2) TTBx and tables for stage-1 are considered IPA and translated
+   with stage-2.
+3) Translate the IPA address with stage-2.
 
-thanks
--- PMM
+TLBs:
+=3D=3D=3D=3D=3D=3D
+TLBs are the most tricky part.
+
+1) General design
+   Unified(Combined) design is used, where entries with ASID=3D-1 are
+   IPAs(cached from stage-2 config)
+
+   TLBs are also modified to cache 2 permissions, a new permission added
+   "parent_perm."
+
+   For non-nested configuration, perm =3D=3D parent_perm and nothing
+   changes. This is used to know which stage to use in case there is
+   a permission fault from a TLB entry.
+
+2) Caching in TLB
+   Stage-1 and stage-2 are inserted in the TLB as is.
+   For nested translation, both entries are combined into one TLB
+   entry. The size (level and granule) are chosen from the smallest entries=
+.
+   That means that a stage-1 translation can be cached with sage-2
+   granule in key, this is take into account lookup.
+
+3) TLB Lookup
+   TLB lookup already uses ASID in key, so it can distinguish between
+   stage-1 and stage-2.
+   And as mentioned above, the granule for stage-1 can be different,
+   If stage-1 lookup failed, we try again with the stage-2 granule.
+
+4) TLB invalidation
+   - Address invalidation is split, for IOVA(CMD_TLBI_NH_VA
+     /CMD_TLBI_NH_VAA) and IPA(CMD_TLBI_S2_IPA) based on ASID value
+   - CMD_TLBI_NH_ASID/CMD_TLBI_NH_ALL: Consider VMID if stage-2 is
+     supported, and invalidate stage-1 only by VMIDs
+
+As far as I understand, this is compliant with the ARM architecture:
+- ARM ARM DDI 0487J.a: RLGSCG, RTVTYQ, RGNJPZ
+- ARM IHI 0070F.b: 16.2 Caching
+
+An alternative approach would be to instantiate 2 TLBs, one per each
+stage. I haven=E2=80=99t investigated that.
+
+Others
+=3D=3D=3D=3D=3D=3D=3D
+- Advertise SMMUv3.2-S2FWB, it is NOP for QEMU as it doesn=E2=80=99t suppor=
+t
+  attributes.
+
+- OAS: A typical setup with nesting is to share CPU stage-2 with the
+  SMMU, and according to the user manual, SMMU OAS must match the
+  system physical address.
+
+  This was discussed before in
+  https://lore.kernel.org/all/20230226220650.1480786-11-smostafa@google.com=
+/
+  The implementation here, follows the discussion, where migration is
+  added and oas is set up from the board (virt). However, the OAS is
+  chosen based on the CPU PARANGE as there is no fixed one.
+
+- For nested configuration, IOVA notifier only notifies for stage-1
+  invalidations (as far as I understand this is the intended
+  behaviour as it notifies for IOVA)
+
+- Stop ignoring VMID for stage-1 if stage-2 is also supported.
+
+
+Future improvements:
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+1) One small improvement, that I don=E2=80=99t think it=E2=80=99s worth the=
+ extra
+   complexity, is in case of Stage-1 TLB miss for nested translation,
+   we can do stage-1 walk and lookup for stage-2 TLBs, instead of
+   doing the full walk.
+
+2) Patch 0006 (hw/arm/smmuv3: Translate CD and TT using stage-2 table)
+   introduces a macro to use functions that rely on cfg for stage-2,
+   I don=E2=80=99t like it. However, I didn=E2=80=99t find a simple way aro=
+und it,
+   either we change many functions to have a separate stage argument,
+   or add another arg in config, which is probably more code.
+
+Testing
+=3D=3D=3D=3D=3D=3D=3D=3D
+1) IOMMUFD + VFIO
+   Kernel: https://lore.kernel.org/all/cover.1683688960.git.nicolinc@nvidia=
+.com/
+   VMM: https://qemu-devel.nongnu.narkive.com/o815DqpI/rfc-v5-0-8-arm-smmuv=
+3-emulation-support
+
+   By assigning =E2=80=9Cvirtio-net-pci,netdev=3Dnet0,disable-legacy=3Don,i=
+ommu_platform=3Don,ats=3Don=E2=80=9D,
+   to a guest VM (on top of QEMU guest) with VIFO and IOMMUFD.
+
+2) Work in progress prototype I am hacking on for nesting on KVM
+   (this is nowhere near complete, and misses many stuff but it
+   doesn't require VMs/VFIO) also with virtio-net-pci and git
+   cloning a bunch of stuff and also observing traces.
+   https://android-kvm.googlesource.com/linux/+log/refs/heads/smostafa/andr=
+oid15-6.6-smmu-nesting-wip
+
+I also modified the Linux driver to test with mixed granules/levels.
+
+hw/arm/smmuv3: Split smmuv3_translate() better viewed with --color-moved
+
+Changes in v2:
+v1: https://lore.kernel.org/qemu-devel/20240325101442.1306300-1-smostafa@go=
+ogle.com/
+- Collected Eric Rbs
+- Rework TLB to rely on VMID/ASID instead of an extra key.
+- Fixed TLB issue with large stage-1 reported by Julian.
+- Cap the OAS to 48 bits as PTW doesn=E2=80=99t support 52 bits.
+- Fix ASID/VMID representation in some contexts as 16 bits while
+  they can be -1
+- Increase visibility in trace points
+
+
+Mostafa Saleh (13):
+  hw/arm/smmu: Use enum for SMMU stage
+  hw/arm/smmu: Split smmuv3_translate()
+  hw/arm/smmu: Consolidate ASID and VMID types
+  hw/arm/smmuv3: Translate CD and TT using stage-2 table
+  hw/arm/smmu-common: Support nested translation
+  hw/arm/smmu: Support nesting in smmuv3_range_inval()
+  hw/arm/smmu: Support nesting in the rest of commands
+  hw/arm/smmuv3: Support nested SMMUs in smmuv3_notify_iova()
+  hw/arm/smmuv3: Support and advertise nesting
+  hw/arm/smmuv3: Advertise S2FWB
+  hw/arm/smmu: Refactor SMMU OAS
+  hw/arm/smmuv3: Add property for OAS
+  hw/arm/virt: Set SMMU OAS based on CPU PARANGE
+
+ hw/arm/smmu-common.c         | 306 +++++++++++++++++++++----
+ hw/arm/smmuv3-internal.h     |  16 +-
+ hw/arm/smmuv3.c              | 418 ++++++++++++++++++++++-------------
+ hw/arm/trace-events          |  18 +-
+ hw/arm/virt.c                |  14 +-
+ include/hw/arm/smmu-common.h |  57 ++++-
+ include/hw/arm/smmuv3.h      |   1 +
+ target/arm/cpu.h             |   2 +
+ target/arm/cpu64.c           |   5 +
+ 9 files changed, 608 insertions(+), 229 deletions(-)
+
+--=20
+2.44.0.478.gd926399ef9-goog

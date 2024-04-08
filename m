@@ -1,120 +1,118 @@
-Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1300605ejh;
-        Mon, 8 Apr 2024 07:18:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXKUzIqwx6fIJxigAWFUTekdyxmFHGe+TmbBRtnEY5PNqp3s3fmj6uf9FNldgZ94A/AOAT5CEOR2VFf8bHF/pMNn822e6we
-X-Google-Smtp-Source: AGHT+IF/fsEfPtfdwiKcVwCJr6f7C9MvKXrbUrr01ozTYrQ4S286pRlp71M0ckxzgxYwKm7Qa+n2
-X-Received: by 2002:a05:6214:403:b0:696:7ffc:4617 with SMTP id z3-20020a056214040300b006967ffc4617mr12452375qvx.11.1712585914604;
-        Mon, 08 Apr 2024 07:18:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712585914; cv=none;
+Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1305615ejh;
+        Mon, 8 Apr 2024 07:25:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUUtBqqMJVgLUnGfJVIPjjHgfOtV2UkEtpnJIY5CcFOYyUGUovFUgLRX9AKbNb46l/Elgo6Odokjm3UB/60KRkVhgmEfV5R
+X-Google-Smtp-Source: AGHT+IFssNaYZC7Q+suZe8PNG8jNyJszRMXnWcOIYNGJlURUVQK/hZQaHL6TSt6DydLLBS4GMSZn
+X-Received: by 2002:a05:620a:89d:b0:78d:6574:8230 with SMTP id b29-20020a05620a089d00b0078d65748230mr2943768qka.56.1712586352484;
+        Mon, 08 Apr 2024 07:25:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712586352; cv=none;
         d=google.com; s=arc-20160816;
-        b=aowRRGDsxQTXUoZmu90NlrbBGJLi43um3pHRQlmrBZFQtuWXW20cqPbLgow61MQ/Aq
-         Nguu7xBJjTW+GC3+8X+5camjnqCzT91a0OcNBkTb2gH7D2RJxM73CGHrXO8/H4ML65r7
-         hHPHOVn/9Q3XKNrg7RucP+yZHIKwwLKJm363LeDk7XxVLoHG0xWv+MIGNdxl2SVs5iGf
-         ByjKY/0uGZm06iE7l0tAo63Rmprw+Yi7Bfn/3rqrg5LLb3Kqd59wHq6CV1fxnaBb50j5
-         CUmvWl0Ixw1rrrhFTVB3NWvZssvvK7FKNJwPDWITUWlUpgBurazMm26mku0W9jhSDS+9
-         IMlw==
+        b=T9ybU9KTmLOtoU0MVUldcCf0jo7UrX72EgGpmuMpuLcEoLFGlRfQANeAAt4cZQpi8V
+         SaO2b+qbNFZ0umLmlPJJxdFSq92cWkXdk9ivHy4OrLcXzWr/auJ9rRwUhilQd2JFBhGV
+         yZUtfKB2fIGX7i7lNpf+QYhaa8qVkHzRxkYhFX6EUnt1Wk8F2VGt9DwoPAAC1Vxu6qI6
+         grp0w2p33DmwdIXalZPfhUp8j2XrM0JaNMzM9abcX63ivYjNRHA0W/zunYbtp9l96CIa
+         vgZ1oLVKKqlV3VEVznmZbA7ws86CvNddunLTjUgb7u6ry6sQrdOsSnPd8pwtHEIhJARH
+         NEww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=T0UPUS6B8fn4peMJtb8NBu9x0+Ma6yL7q2dFjDj2dHM=;
-        fh=tuade0I/Lko4F9qoQc0BfhlJdAgZoSVkjsXDuZmFRFU=;
-        b=v+pNa7PZoNLsCxTWfArGf5d7uXjgWhmk3FpCBya/2cTzK2FuHL+psR5cZh3v3kqEMH
-         UMLdCYVfOHaz0jN0wtp6hlxDFRAQA3ch6gFHSKNkcQvp8/a3tIydZx+vkf6c5FmhPn7q
-         ovRa52WQbkun6eFvfn/WFF0SszQL4645SVRq0fwd8vtpUX3+rpB2nvOw0gMI0lg+t5gV
-         i31FD3mfc85sCEPihKzQf4K4ZktdkatR3FhRgNxEdNgFo7hwuodwIFZoF/bwLtGDAZfO
-         6S9Z4eljqN7KE5VVE5oa4xeSvYk4ZhnLzhWRiWywmhqtlg3EvsZNTAKw2vqGSNiTLH8D
-         f3uQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=OrBRkuPxXOCZvmMbQCwyyz4itVDU/vM75cSck92WVEI=;
+        fh=pDm4BkITLSP+p3rOP38L4uDc27zGNEZF4x5NDC144aY=;
+        b=yk9rmVN+9KYtL54Mh81BFw9Fu5xR2NYkzYBFacYQF5fefyRIIPuMgm5t4Lh/ug+/vx
+         MZuOfiBkJIu1k986f5SeVlDYRbNZqo4v0tEfFY7RSmYVpxtWJXdvPIs3jbLYIhdIya3/
+         hHS17GU531SOHjqmRNObw1/1iRBUCxJgluN3AnGXLiT4DMs0D+prhseJYEGm7gGkOrge
+         /ZW+sB8HP3NM8/7QkeBnH9NS5jaknsnOSFlpZhkLwDF+vFTW36C8b8B14t3W29TYgfbU
+         y9djX/BIc0m/6tBp4ejs/G7g/esL6drMjWyZChvxTI7NaxttixiHj8THGnl37biGJmMx
+         rNiQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LSeYys5B;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q7Mn2Ubo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p12-20020a0cfd8c000000b0069a38fa03b5si5904313qvr.189.2024.04.08.07.18.34
+        by mx.google.com with ESMTPS id y3-20020a05622a004300b0043468827618si2879770qtw.468.2024.04.08.07.25.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Apr 2024 07:18:34 -0700 (PDT)
+        Mon, 08 Apr 2024 07:25:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LSeYys5B;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q7Mn2Ubo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rtpoh-0001m5-QB; Mon, 08 Apr 2024 10:17:49 -0400
+	id 1rtpvv-0006Fy-EX; Mon, 08 Apr 2024 10:25:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rtpoY-0001g4-A3
- for qemu-arm@nongnu.org; Mon, 08 Apr 2024 10:17:39 -0400
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rtpvs-0006D6-AC
+ for qemu-arm@nongnu.org; Mon, 08 Apr 2024 10:25:12 -0400
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rtpoV-0002xS-UF
- for qemu-arm@nongnu.org; Mon, 08 Apr 2024 10:17:38 -0400
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-516cbf3fe68so5488281e87.0
- for <qemu-arm@nongnu.org>; Mon, 08 Apr 2024 07:17:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rtpvp-0004Tr-RO
+ for qemu-arm@nongnu.org; Mon, 08 Apr 2024 10:25:11 -0400
+Received: by mail-lf1-x12b.google.com with SMTP id
+ 2adb3069b0e04-516d0161e13so4826912e87.3
+ for <qemu-arm@nongnu.org>; Mon, 08 Apr 2024 07:25:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712585852; x=1713190652; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1712586308; x=1713191108; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=T0UPUS6B8fn4peMJtb8NBu9x0+Ma6yL7q2dFjDj2dHM=;
- b=LSeYys5BGQu24Pq4BayAUEbiqv01yuxq4lUqsaQbLkMix6LVmTu2p41BqgfOpfyQNK
- ryjf6hS7tCxJP3SinRioCahtJ2itjMdHfl3iN0+N4r0cTQzJVanUDD5GC47BVirdBhIr
- iSUaIhiUQTPletkX5ujFGyn1bhrT4Kg8OLVhkCcgB2jJpS9siGwyJ7yrGfPUjOfKBp14
- UsndyD1V0FMRQRvzFKQrVeIvz7SWbl2kjMLlZjM4j4tXKHnIPyhSlIq8SCsAMr189HkH
- mNraB6XgOCQioDADVuzlR7c/kFFqFsPVQ13bfJsVXnCMVCGjhyxzERZgKF/wg8MNORmO
- p4WA==
+ bh=OrBRkuPxXOCZvmMbQCwyyz4itVDU/vM75cSck92WVEI=;
+ b=q7Mn2UboO9Z3JOLkQqndjtwC0WLWb/GaiN+ybqnPLem67MjK/Ku5IQcjmKphNccAgJ
+ BTPmxhlF6Zr0F27EbAvtv53dqcOT2QYF4YX1z14M8yArmIg8Mfn5neDA+UdMsfVKYi59
+ WmkgcTakQsJmDGoz0FqmrO7niPYfHTHbiNKmAXop7jDKHiQhf7ZfuMGtbIAa/xa30fNn
+ cytJ3eco1VT7TWKul66Jdl4lxUc9pa5k/pUW6URNE1VSwOaQP+uyuDXsck9lQCGoY9q8
+ ciAO5sikwHPczWnyM10/f9GmeypGhWQZSGxzA4GXc83bJIHSZw1/ekk61Pj5ifob6MCV
+ 9rAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712585852; x=1713190652;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1712586308; x=1713191108;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=T0UPUS6B8fn4peMJtb8NBu9x0+Ma6yL7q2dFjDj2dHM=;
- b=Kif7JrSvINuyJFjAGCWKTyb+Ir0tVnTrrNbL5+/e2iiXA9Sw0Jf9dbS2q1hwiQzySk
- H5HxH0M/kfDfIcDogRW0WPTpT5uh/M4kH7MyPf1rfUeGNTO8sE11K0L4T9wsosVxR6VH
- yOZf2S4hPmM6N5Hr/eXqsucKTke/sX4CdND2rwJ1A7TrRGd8DEfNYEculHv+jlGtmynj
- 5UDrcFJFlglpcbb5KLOO3Y4pE+8eUDyUoepVopJ2OkqyiaGIX2qhUE70PD0CjbHocOaM
- mZeq0o3Bjk5Il0k3SDb9v74hhLedNx+44mlKI8gAWyHjXRJIrMude7kzLi0ouiwwnwcP
- 73Ug==
+ bh=OrBRkuPxXOCZvmMbQCwyyz4itVDU/vM75cSck92WVEI=;
+ b=WvL51QU39c4hC8o4P45oR5c4ERxhS9g0X6m+CWqLJGVFgbV2XC3ea/z2PnXt4bnwRN
+ 6d5CpxZbyWva/Lg7E7kJ+wXOmT4pHJtoOErlrkvaTq2yYNRD/fMqJisoFAel7ZQ++Rka
+ 9bwL8BZt5AumBVqaLrbA359SgOADJmpRtqu3qYyl/MYijq+3++PIbfbut3L/6PNu68lv
+ IOJCmivocfhBQvmw/2HjqsS1sbkH6LmacMeIT7CLUE9M0dED2eavUDGoXXThgTzHvK22
+ 8ksICPxOgafSKQ/vLpUggcIYCjkc11XMSgUET7Qb8lGcIPtuzB8vavtORePHl7AHpQdN
+ +1kQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXIxFLB1/i1ZvppKL50BBhdW3RCqt2uKG31ivskQf9FfS6FXXNYEcCEP3o+F3Sj6CY4qvCMbOOIUxUM+DuyrUEKjcmE
-X-Gm-Message-State: AOJu0YyieUhSnGl53Y+Pn/Rpc2gl8r+SMjQD5H3+Cd5ZsiH7sPV7YwQa
- tdHtToBZ/tNME9UwGqKWIjhk8j3Q2tO1E46IdlEwGR0HHCu73MTT3ZiAc6UJ30I=
-X-Received: by 2002:a05:6512:4896:b0:516:d250:86bd with SMTP id
- eq22-20020a056512489600b00516d25086bdmr5722907lfb.44.1712585852562; 
- Mon, 08 Apr 2024 07:17:32 -0700 (PDT)
-Received: from m1x-phil.lan ([176.176.144.67])
- by smtp.gmail.com with ESMTPSA id
- h1-20020a0564020e8100b005682a0e915fsm4138014eda.76.2024.04.08.07.17.31
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 08 Apr 2024 07:17:32 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexander Bulekov <alxndr@bu.edu>, qemu-block@nongnu.org
-Subject: [PATCH-for-9.1 2/2] hw/sd/sdcard: Assert @data_offset is in range
-Date: Mon,  8 Apr 2024 16:17:17 +0200
-Message-ID: <20240408141717.66154-3-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240408141717.66154-1-philmd@linaro.org>
-References: <20240408141717.66154-1-philmd@linaro.org>
+ AJvYcCW4cNOiwEbesMn6Np1WhuamHa6+krmz6jfJ/mRPNc5rbvWQjwhqVLwGnONxIjRY2QyAW3TmH0kqoF4pjhG/3+CpHnKT
+X-Gm-Message-State: AOJu0Yy7L8LDHru/muc+/KAb6Cl1ufTskniiCeMfmzwWJY2FVibQuN/b
+ qu4qKwLtrK/GJAdJ6CSxkg1RAu4AZxwW+vElj4YQ5zSmSEZa4jMhzH6dUV+szjnk+AqgAfx/NrC
+ /kUYsJRZPXXsEaTJYf7KM2vA9Y4JYRtYmEeqJxA==
+X-Received: by 2002:ac2:4ac2:0:b0:516:d4c2:53eb with SMTP id
+ m2-20020ac24ac2000000b00516d4c253ebmr5376563lfp.58.1712586307609; Mon, 08 Apr
+ 2024 07:25:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x134.google.com
+References: <20240408105149.59258-1-philmd@linaro.org>
+ <20240408105149.59258-3-philmd@linaro.org>
+In-Reply-To: <20240408105149.59258-3-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 8 Apr 2024 15:24:56 +0100
+Message-ID: <CAFEAcA8vvURMn2FaDP9tXtP5eCMs6-XFOCR9ypo=WBH+6g5prw@mail.gmail.com>
+Subject: Re: [PATCH-for-9.0? 2/2] hw/net/lan9118: Fix overflow in TX FIFO
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>, 
+ Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org,
+ Chuhong Yuan <hslester96@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,128 +127,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IRjiXzJesfii
+X-TUID: iYlQtKzNsBEk
 
-Prevent out-of-bound access with assertions.
+On Mon, 8 Apr 2024 at 11:52, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
+>
+> When the TX FIFO is full, raise the TX Status FIFO Overflow (TXSO)
+> flag, "Generated when the TX Status FIFO overflows" [*].
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/sd/sd.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+This doesn't sound right. The TX Status FIFO and the
+TX Data FIFO are separate FIFOs, and the TX FIFO has its own
+overflow bit, TDFO. And I think the overflow here is of
+a third FIFO, the MIL's transmit FIFO...
 
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 16d8d52a78..c081211582 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -1875,6 +1875,7 @@ void sd_write_byte(SDState *sd, uint8_t value)
-                             sd->current_cmd, value);
-     switch (sd->current_cmd) {
-     case 24:  /* CMD24:  WRITE_SINGLE_BLOCK */
-+        assert(sd->data_offset < sizeof(sd->data));
-         sd->data[sd->data_offset ++] = value;
-         if (sd->data_offset >= sd->blk_len) {
-             /* TODO: Check CRC before committing */
-@@ -1901,6 +1902,7 @@ void sd_write_byte(SDState *sd, uint8_t value)
-                 }
-             }
-         }
-+        assert(sd->data_offset < sizeof(sd->data));
-         sd->data[sd->data_offset++] = value;
-         if (sd->data_offset >= sd->blk_len) {
-             /* TODO: Check CRC before committing */
-@@ -1925,6 +1927,7 @@ void sd_write_byte(SDState *sd, uint8_t value)
-         break;
- 
-     case 26:  /* CMD26:  PROGRAM_CID */
-+        assert(sd->data_offset < sizeof(sd->data));
-         sd->data[sd->data_offset ++] = value;
-         if (sd->data_offset >= sizeof(sd->cid)) {
-             /* TODO: Check CRC before committing */
-@@ -1944,6 +1947,7 @@ void sd_write_byte(SDState *sd, uint8_t value)
-         break;
- 
-     case 27:  /* CMD27:  PROGRAM_CSD */
-+        assert(sd->data_offset < sizeof(sd->data));
-         sd->data[sd->data_offset ++] = value;
-         if (sd->data_offset >= sizeof(sd->csd)) {
-             /* TODO: Check CRC before committing */
-@@ -1968,6 +1972,7 @@ void sd_write_byte(SDState *sd, uint8_t value)
-         break;
- 
-     case 42:  /* CMD42:  LOCK_UNLOCK */
-+        assert(sd->data_offset < sizeof(sd->data));
-         sd->data[sd->data_offset ++] = value;
-         if (sd->data_offset >= sd->blk_len) {
-             /* TODO: Check CRC before committing */
-@@ -1979,6 +1984,7 @@ void sd_write_byte(SDState *sd, uint8_t value)
-         break;
- 
-     case 56:  /* CMD56:  GEN_CMD */
-+        assert(sd->data_offset < sizeof(sd->data));
-         sd->data[sd->data_offset ++] = value;
-         if (sd->data_offset >= sd->blk_len) {
-             APP_WRITE_BLOCK(sd->data_start, sd->data_offset);
-@@ -2046,6 +2052,7 @@ uint8_t sd_read_byte(SDState *sd)
-         break;
- 
-     case 13:  /* ACMD13: SD_STATUS */
-+        assert(sd->data_offset < sizeof(sd->sd_status));
-         ret = sd->sd_status[sd->data_offset ++];
- 
-         if (sd->data_offset >= sizeof(sd->sd_status))
-@@ -2055,6 +2062,7 @@ uint8_t sd_read_byte(SDState *sd)
-     case 17:  /* CMD17:  READ_SINGLE_BLOCK */
-         if (sd->data_offset == 0)
-             BLK_READ_BLOCK(sd->data_start, io_len);
-+        assert(sd->data_offset < sizeof(sd->data));
-         ret = sd->data[sd->data_offset ++];
- 
-         if (sd->data_offset >= io_len)
-@@ -2069,6 +2077,7 @@ uint8_t sd_read_byte(SDState *sd)
-             }
-             BLK_READ_BLOCK(sd->data_start, io_len);
-         }
-+        assert(sd->data_offset < sizeof(sd->data));
-         ret = sd->data[sd->data_offset ++];
- 
-         if (sd->data_offset >= io_len) {
-@@ -2089,10 +2098,12 @@ uint8_t sd_read_byte(SDState *sd)
-         if (sd->data_offset >= SD_TUNING_BLOCK_SIZE - 1) {
-             sd->state = sd_transfer_state;
-         }
-+        assert(sd->data_offset < sizeof(sd_tuning_block_pattern));
-         ret = sd_tuning_block_pattern[sd->data_offset++];
-         break;
- 
-     case 22:  /* ACMD22: SEND_NUM_WR_BLOCKS */
-+        assert(sd->data_offset < sizeof(sd->sd_status));
-         ret = sd->data[sd->data_offset ++];
- 
-         if (sd->data_offset >= 4)
-@@ -2100,6 +2111,7 @@ uint8_t sd_read_byte(SDState *sd)
-         break;
- 
-     case 30:  /* CMD30:  SEND_WRITE_PROT */
-+        assert(sd->data_offset < sizeof(sd->data));
-         ret = sd->data[sd->data_offset ++];
- 
-         if (sd->data_offset >= 4)
-@@ -2107,6 +2119,7 @@ uint8_t sd_read_byte(SDState *sd)
-         break;
- 
-     case 51:  /* ACMD51: SEND_SCR */
-+        assert(sd->data_offset < sizeof(sd->scr));
-         ret = sd->scr[sd->data_offset ++];
- 
-         if (sd->data_offset >= sizeof(sd->scr))
-@@ -2116,6 +2129,7 @@ uint8_t sd_read_byte(SDState *sd)
-     case 56:  /* CMD56:  GEN_CMD */
-         if (sd->data_offset == 0)
-             APP_READ_BLOCK(sd->data_start, sd->blk_len);
-+        assert(sd->data_offset < sizeof(sd->data));
-         ret = sd->data[sd->data_offset ++];
- 
-         if (sd->data_offset >= sd->blk_len)
--- 
-2.41.0
+> diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
+> index 7be0430ac5..7a1367b0bb 100644
+> --- a/hw/net/lan9118.c
+> +++ b/hw/net/lan9118.c
+> @@ -795,8 +795,11 @@ static void tx_fifo_push(lan9118_state *s, uint32_t =
+val)
+>              /* Documentation is somewhat unclear on the ordering of byte=
+s
+>                 in FIFO words.  Empirical results show it to be little-en=
+dian.
+>                 */
+> -            /* TODO: FIFO overflow checking.  */
+>              while (n--) {
+> +                if (s->txp->len =3D=3D PKT_SIZE) {
+> +                    s->int_sts |=3D TXSO_INT;
+> +                    break;
+> +                }
 
+While I was looking at this bug, I realised that we have serious
+confusion about whether any of the variables we use to track FIFO
+size and FIFO usage are word counts or byte counts.
+
+Looking at table 5-3 in the data sheet, the size of these
+FIFOs is actually software-configurable in the HW_CFG register,
+but we don't implement that and (attempt to) only provide
+the default configuration setting of TX_FIF_SZ =3D=3D 5. That
+should mean:
+ TX data FIFO size =3D=3D 4608 bytes =3D=3D 1152 words
+ RX data FIFO size =3D=3D 10560 bytes =3D=3D 2640 words
+ TX status FIFO size =3D=3D 512 bytes =3D=3D 128 words
+ RX status FIFO size =3D=3D 704 bytes =3D=3D 176 words
+
+But we don't consistently use either word or byte units for the
+variables we use to track FIFO size and FIFO usage. For instance:
+ * we initialise s->tx_fifo_size to 4608, which is a byte count
+ * we initialise s->rx_status_fifo_size to 704, which is a byte count...
+ * ...and then three lines later override that to 176, which is a word
+   count!
+ * we generally simply increment the various fifo_used fields
+   when we push a word into the FIFOs, implying word counts
+ * we mostly do calculations assuming word counts
+ * calculations of the RX_FIFO_INF and TX_FIFO_INF fields
+   (which report the used space in words and the free space
+   in bytes) are confused about units too
+ * the tx_status_fifo[] array is 512 words long and the bounds
+   checks assume 512 is a word count, but it is a byte count
+ * the rx_status_fifo[] array is 896 words long, but the worst
+   case RX status FIFO size is 896 bytes, even if we allowed
+   runtime adjustable FIFO sizes
+ * the rx_fifo[] array, on the other hand, is 3360 words long,
+   which really is the max possible size in words
+
+Anyway, I think that txp->data[] is effectively modelling
+the "2K Byte transmit FIFO" within the MIL, not the TX FIFO.
+(We don't need to model the TX FIFO itself, because we don't
+do asynchronous sending of data packets: as soon as we've
+accumulated a complete packet into the MIL TX FIFO, we
+send it out. In real hardware the guest can put multiple
+packets into the TX data FIFO, which is why it makes sense to be
+able to configure a TX data FIFO size larger than the largest
+possible packet and larger than the MIL TX FIFO.)
+
+So the limit that we are enforcing here is similar to the one
+described in the "Calculating Worst-Case TX FIFO (MIL) usage",
+except that we don't actually use data space for the gaps
+caused by unaligned buffers. So this can only overflow if the
+packet is greater than what the data sheet says is the
+maximum size of 1514 bytes. The datasheet unfortunately doesn't
+describe the behaviour if this maximum is exceeded, and our
+current code doesn't try to check it (it's in the "command B"
+words, which are all supposed to match in the case of a
+fragmented packet, and which we also don't check).
+
+The most plausible behaviour to take I think is to raise
+TXE when we would overflow the s->txp_data[] buffer; there are
+various conditions described for when TXE is raised that seem
+like this would fit in reasonably with them.
+(There is a status bit TDFO for "TX Data FIFO Overrun", which
+I think is probably only for overruns of the TX data FIFO,
+not the MIL's TX FIFO.)
+
+Since the datasheet doesn't say if the packet should be
+dropped or truncated if it's invalid like this, I guess
+we can do whatever's easiest.
+
+>                  s->txp->data[s->txp->len] =3D val & 0xff;
+>                  s->txp->len++;
+>                  val >>=3D 8;
+
+Conclusion:
+ * we should raise TXE, not TXSO
+ * add a comment about what exactly is going on here
+ * we should try to clean up the confusion between words and
+   bytes, as a separate patch that isn't -stable/-9.0
+   material...
+
+thanks
+-- PMM

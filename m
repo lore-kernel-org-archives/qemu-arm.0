@@ -1,120 +1,120 @@
-Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1912055ejh;
-        Tue, 9 Apr 2024 06:39:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUkndPkcxjN/8up1xTX6woF0iopn0RnidheM7qFsY7igzJ0dZJ56/kTGpLgPA6AolqvwolrPlArj72GiZCAYmG2+WV8l4I7
-X-Google-Smtp-Source: AGHT+IG6fooiltGFUmbjKcfZVKVg1T16WX+XmSCBvcVPaOB88N3G1/tuwYVri18CtGfRS7F4kXzi
-X-Received: by 2002:a25:aac7:0:b0:dc7:140:8c0c with SMTP id t65-20020a25aac7000000b00dc701408c0cmr11389826ybi.23.1712669982612;
-        Tue, 09 Apr 2024 06:39:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712669982; cv=none;
+Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1912170ejh;
+        Tue, 9 Apr 2024 06:39:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXF7FDggvLjHrVa1nXzes/G50eeP1R+QxL6bkWfJv0tHr36JS+6Mo8c0nHCgrTXOub8aHp2Zy5VKPlTZrZkjBJfzTE86hfP
+X-Google-Smtp-Source: AGHT+IGZhjN1BWsE384ne3tnMgH7Y2DiBMHqUtLZyh7S4U2+5hrIKNjB23s+ZF13HTVe9qZ7CqS4
+X-Received: by 2002:a05:6102:3ed4:b0:479:d870:5044 with SMTP id n20-20020a0561023ed400b00479d8705044mr11493605vsv.33.1712669995043;
+        Tue, 09 Apr 2024 06:39:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712669995; cv=none;
         d=google.com; s=arc-20160816;
-        b=BC6BIj8rC1Ms+e8ogfWGaPi+BfW947Vu3jTqHFUfXHNQwNX/Wh4nmqZulAZdVeOYP/
-         Xjv6d2yanFLwP8oqTzPuWezSktvs831i8Reyf5miA+9ucB2Gpexn0+DEJhpndZjOhqiT
-         edI/ntA9Zvmn/wFqxf106Ml0UW1nrgq/sw4ObjhT4rs3xynpEMcZVW+mKKpuUUV9e4Rz
-         DbmJgtMA88FSslTzoKIHQ7AwVCWo6BcbfAeuhgXiXTe5kwWY31jXyQ5LNUaRwmZckUhk
-         Gap6Hcig81rispA4rQ0WBbbth9XoEP7Q8vp7io+/Zro4D8wn+XU9q0hJ4gaSFbvWglT7
-         A9GA==
+        b=PXkLeZTHSFfvNY7KFXvqyORVgjwvICOYJerkWte7A1F1Fz7+f7Uo1juqePZUBvRyZa
+         XGeNSg9zhwQ66PlYB++YdvzYpPWVeVl02GF62V0eCyfrDMY+5AcSjnrI4r0d2sa/8pQ0
+         eJjKMu9zUjYhCKoFKLgZr0xb1bJwQ+RAAhkevsvNpRdwUJEKGXaIIO01WsAXbLjv8cwf
+         c0uIXO11tOMn45IqXIXraVyrChFhRJwH2oZ+FPeBhScGb8+YgfVbnfKjtE7ZrKDibju3
+         ku+HBeBHRFmcrmaVzTTynxPE5MKx0xnH/SRXZCq3BfNajgm/aok/b4eiScA28jPfnvTm
+         bquw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=gF6HIIw6B4sYh42vGN4HzBKkT28PHylGD41Sq3YKysg=;
+        bh=oGzPoYfNQCrbv8SBMTgNtn+qUHBJfLjzTK3ZMwrVVa0=;
         fh=QOl9Xi9nQ721K4qxGgLCqy+fNk/yfBHdpOYFmb4mu2g=;
-        b=UXRVJnRXOQo6nslC2H/CuGppOawoq7fy2SmDzXVbM7gwu13LgCZ4FKyIUdgEDqlAw6
-         upQc7ahcHVGg20l83J4u3uBwM70R9Zjb4wC1QtIX82q9EwZ+9kKWP+YiAI8XWONCiuyA
-         tPZOnhgsb2oFPR7urPFZjr8P+bSSpAqWVeUmdK7I5Z3py7VVAw3282UBr+QTH4aA802+
-         R4hHCl3pYRQlqY0Lyan1i09sWxUotHV+hqJTxv5NDaymofFnxVNJm/a9qThStA5kLe3x
-         9G1jCXWXIJT+zCGoVaoQ+BwcU2qfDgYDn5Si5FxzgeOn9jIQI9nc+pMKI/4+vuQ7qq6Y
-         fzIg==;
+        b=fdOBjLbB7FPnHncCSB//+oYZHQ9ktfxKqChX+OxK24qKAxQhd4jfKvdff2YTx2TbxY
+         i5NUL1LK5JKg1KdhTV8DPQ+imf11BApEmIRvk42UPvUiCmYcYdIkuQbxvGWEaijp7A7H
+         4e9spgVnPSU+JwSjfFOTPMXxzQb1y0F2xcvf9ThRzZlT24hJBP9Yd8FyuZm2GrYSKLRe
+         zr+S6PIy8f/3jSO9LWv8JQODKGN4Ldy7NCjht9ibKA5+VIUlKy+d1Z3EXEQpQQR1RbeO
+         KiitAiEJTEFpANC6AYtkPb9pzAZh6C9HM4msiVNpg8WSBZmthkonQj99j+urqykD8Rrq
+         3B1Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S8FpbpF7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YLVPHWI9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z18-20020a05622a061200b00432c730fd04si10928363qta.746.2024.04.09.06.39.42
+        by mx.google.com with ESMTPS id y14-20020a056214016e00b006961d18107bsi10068997qvs.81.2024.04.09.06.39.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Apr 2024 06:39:42 -0700 (PDT)
+        Tue, 09 Apr 2024 06:39:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S8FpbpF7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YLVPHWI9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ruBgt-0006NN-Mx; Tue, 09 Apr 2024 09:39:13 -0400
+	id 1ruBhB-000771-NN; Tue, 09 Apr 2024 09:39:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruBgH-0005yG-P2
- for qemu-devel@nongnu.org; Tue, 09 Apr 2024 09:38:34 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruBga-0006Bb-8S
+ for qemu-devel@nongnu.org; Tue, 09 Apr 2024 09:38:54 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruBgC-0008EA-3E
- for qemu-devel@nongnu.org; Tue, 09 Apr 2024 09:38:31 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-416b7f372b3so1963045e9.3
- for <qemu-devel@nongnu.org>; Tue, 09 Apr 2024 06:38:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruBgY-0008Fg-Cl
+ for qemu-devel@nongnu.org; Tue, 09 Apr 2024 09:38:51 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-345e1c64695so940193f8f.1
+ for <qemu-devel@nongnu.org>; Tue, 09 Apr 2024 06:38:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712669905; x=1713274705; darn=nongnu.org;
+ d=linaro.org; s=google; t=1712669926; x=1713274726; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=gF6HIIw6B4sYh42vGN4HzBKkT28PHylGD41Sq3YKysg=;
- b=S8FpbpF7twbylfVlLu54c/YC69uDLbzg0pP476agLBBvdIKBMmCWTgyXahoachl3Ys
- 7nZq0VV+H/KjA35lgZISJY+T53ras3swDGGHGCduHrSiXd5IoYetFmm97AqKSvIifvUA
- 9XuLk2I+8BItERRWPANmPtkBwzxBsMUQDSNNVULKEmQFyeJmHltoxuRJCtjLb3+VxPXk
- we4D9R1n7KLZcOu7c0E8K8JN33ibFTJ10Qcjhvma4TvNDg0Hni9jsNhpqHFPdBM21rIW
- lfuMdWKXse2KfXM+5RQObW1S1ARYd1qwjKN9exmcwmFWRmWTEQ4sFDW+JrSep6meEGQf
- cgOg==
+ bh=oGzPoYfNQCrbv8SBMTgNtn+qUHBJfLjzTK3ZMwrVVa0=;
+ b=YLVPHWI9qf0YqvGfy+qWUYDFO34sRgz35Kr5pF9BOGHm0J1/ie3U27Iv+Wg6NTQXmU
+ Zt9CCvlcOG/Lnm1t+h0k2OUElLmhMVMYZwQPhFgx3FUeEmF1t5/IeV+K/WBxU6uwNFqK
+ s57WPDAHjbduBqL0p6mss1NlQthDZfnGN+z5l4uGO7yzx67iR/pl9ksqhYvlg0ynzK8h
+ aj5rDi6uSDmgbxOIt+GsOjWuOQqwVE5KHMfSbocDELpm+NDYA8ycOWFMwWitQefCV8zi
+ hT4IxCEon3qEgB20gmuVtigvFkf11knelYlT2DjnWsU8C1T3OyFGtXYI5Yq26vPhhpTm
+ CIIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712669905; x=1713274705;
+ d=1e100.net; s=20230601; t=1712669926; x=1713274726;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=gF6HIIw6B4sYh42vGN4HzBKkT28PHylGD41Sq3YKysg=;
- b=og6LixhW6y3toAEHn3B68/A2YXcNriHS++uX7WtHqCX25PR/4W1bjXpCdtbMVZvRmg
- vDS2CXS+9F0JlYCUnSHay6IJy7C9V9P8rUTQK8/85t/dy3n00Fnx5ljbm5lUZXcSOXIR
- pTTNBmB1j+B68lcejFfCyALaWnByAJnUoyjWeEiZ2EHPG12WaCWdsqcHS1DI1xVp4Ojq
- xD70kpiJFuVU2Wf/FARsgfX0hUuWwIZoU7gHlfLyv85Gy9liUVezeW5kuj1WBlI7yvVp
- E1DmXiSY7nVpSU3V/Fa9opDt++94x9cUoStfpsTSSDwbBpTLStQBI+NOAz3i9UAO3Sh6
- nyIg==
-X-Gm-Message-State: AOJu0YyrQk/6L9WlesPFRIYpeo1oV0E+K1WEfByW23lUmHR+PcG1Rai7
- pL4b0bC/4nR2rA/7rmt2yNWj0QhPwZgXkA2n40Qh9entulSumJR1/F/Xxv/BfzmzxlNa7di9P1R
- B
-X-Received: by 2002:a05:600c:4f54:b0:416:6abe:2975 with SMTP id
- m20-20020a05600c4f5400b004166abe2975mr4221251wmq.15.1712669905261; 
- Tue, 09 Apr 2024 06:38:25 -0700 (PDT)
+ bh=oGzPoYfNQCrbv8SBMTgNtn+qUHBJfLjzTK3ZMwrVVa0=;
+ b=HNe95lChZkKJiCDJQRNMZyP4YRBOhHRCvD3K356rDaVIuLVDML0XEm+Nw4IYhd3Exi
+ bjjwEskXc43A5YWHbLC7dcpxLoGsINjFaCBuqLynE0OnC2TWB8tjRMuKpnXuZ1FujLvl
+ ioGilqKIRC+EncGTvmMsqvduTs01Fr/Y8u6T4sNL30RDagRaMd9sVV9/TWI/9EotmjnM
+ 4UMWc8lq5L6KhksX2EGYhJGqZ+XiDQ2x/S8Wjseila/925D82y2E1LKFinc9lPhitItC
+ 2TozSK++bQZGwMZpKn0EdLksGUEY8GwccDlMFz+15Ync0q2ZHEYKSxcQHvY0Ey9NMO9O
+ uudQ==
+X-Gm-Message-State: AOJu0YwnnelMvHvQwuJVgOyeURkAtTYtbHo4OPjjQps8MVDVtxtbgjdz
+ Sp3QxKAonmgVX8aXKUi9DGL1WKBn7l5FEfIr1IyR/UGbv78U5fL3InzqsHc795fvZU+KjpeHXoq
+ T
+X-Received: by 2002:adf:f7cb:0:b0:343:ba58:97c4 with SMTP id
+ a11-20020adff7cb000000b00343ba5897c4mr7607183wrq.10.1712669926663; 
+ Tue, 09 Apr 2024 06:38:46 -0700 (PDT)
 Received: from m1x-phil.lan ([176.176.160.134])
  by smtp.gmail.com with ESMTPSA id
- hn3-20020a05600ca38300b004162b578d8bsm16974787wmb.1.2024.04.09.06.38.24
+ y13-20020a5d4acd000000b00343eac2acc4sm10864616wrs.111.2024.04.09.06.38.45
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 09 Apr 2024 06:38:24 -0700 (PDT)
+ Tue, 09 Apr 2024 06:38:46 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Chuhong Yuan <hslester96@gmail.com>, Jason Wang <jasowang@redhat.com>,
  Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-9.1 v2 04/11] hw/net/lan9118: Replace magic '5' value by
- TX_FIF_SZ_RESET definition
-Date: Tue,  9 Apr 2024 15:37:53 +0200
-Message-ID: <20240409133801.23503-5-philmd@linaro.org>
+Subject: [PATCH-for-9.1 v2 08/11] hw/net/lan9118: Use RX_STATUS_FIFO_BYTES
+ definition
+Date: Tue,  9 Apr 2024 15:37:57 +0200
+Message-ID: <20240409133801.23503-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240409133801.23503-1-philmd@linaro.org>
 References: <20240409133801.23503-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,38 +129,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n4q0FUFY1ddh
+X-TUID: kqxmUvNy6t45
 
-TX_FIF_SZ is described in chapter 5.3.9,
-"HW_CFG — HARDWARE CONFIGURATION REGISTER".
+rx_status_fifo[] is an array of words,
+rx_status_fifo_size is a word count.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/net/lan9118.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ hw/net/lan9118.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
-index d6f0e37eb1..a6a869de32 100644
+index a983ce193b..cace22381d 100644
 --- a/hw/net/lan9118.c
 +++ b/hw/net/lan9118.c
-@@ -71,6 +71,8 @@ do { printf("lan9118: " fmt , ## __VA_ARGS__); } while (0)
- #define CSR_E2P_CMD     0xb0
- #define CSR_E2P_DATA    0xb4
- 
-+#define TX_FIF_SZ_RESET 5
-+
- #define E2P_CMD_MAC_ADDR_LOADED 0x100
- 
- /* IRQ_CFG */
-@@ -435,7 +437,7 @@ static void lan9118_reset(DeviceState *d)
-     s->fifo_int = 0x48000000;
-     s->rx_cfg = 0;
-     s->tx_cfg = 0;
--    s->hw_cfg = s->mode_16bit ? 0x00050000 : 0x00050004;
-+    s->hw_cfg = (TX_FIF_SZ_RESET << 16) | (s->mode_16bit << 2);
-     s->pmt_ctrl &= 0x45;
-     s->gpio_cfg = 0;
-     s->txp->state = TX_IDLE;
+@@ -262,7 +262,7 @@ struct lan9118_state {
+     int32_t rx_status_fifo_size;
+     int32_t rx_status_fifo_used;
+     int32_t rx_status_fifo_head;
+-    uint32_t rx_status_fifo[896];
++    uint32_t rx_status_fifo[RX_STATUS_FIFO_BYTES / 4];
+     int32_t rx_fifo_size;
+     int32_t rx_fifo_used;
+     int32_t rx_fifo_head;
+@@ -332,7 +332,9 @@ static const VMStateDescription vmstate_lan9118 = {
+         VMSTATE_INT32(rx_status_fifo_size, lan9118_state),
+         VMSTATE_INT32(rx_status_fifo_used, lan9118_state),
+         VMSTATE_INT32(rx_status_fifo_head, lan9118_state),
+-        VMSTATE_UINT32_ARRAY(rx_status_fifo, lan9118_state, 896),
++        VMSTATE_UINT32_ARRAY(rx_status_fifo, lan9118_state,
++                             RX_STATUS_FIFO_BYTES / 4),
++        VMSTATE_UNUSED(896 * 4 - RX_STATUS_FIFO_BYTES),
+         VMSTATE_INT32(rx_fifo_size, lan9118_state),
+         VMSTATE_INT32(rx_fifo_used, lan9118_state),
+         VMSTATE_INT32(rx_fifo_head, lan9118_state),
+@@ -458,10 +460,9 @@ static void lan9118_reset(DeviceState *d)
+     s->txp->fifo_used = 0;
+     s->tx_fifo_bytes = TX_DATA_FIFO_BYTES;
+     s->tx_status_fifo_used = 0;
+-    s->rx_status_fifo_size = 704;
+     s->rx_fifo_size = 2640;
+     s->rx_fifo_used = 0;
+-    s->rx_status_fifo_size = 176;
++    s->rx_status_fifo_size = RX_STATUS_FIFO_BYTES / 4;
+     s->rx_status_fifo_used = 0;
+     s->rxp_offset = 0;
+     s->rxp_size = 0;
 -- 
 2.41.0
 

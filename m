@@ -1,173 +1,241 @@
-Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1746981ejh;
-        Tue, 9 Apr 2024 00:47:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUgPOEe/W8rW7QJ5Tr2eZ9JNkmdI3RsNC2rLJBwYZZlUWZzsH8EU9LxS3+u/2jtmUXThRru9Tc1cVIWWWIdlFJPwn/ntYQq
-X-Google-Smtp-Source: AGHT+IFxFvS74QXxt/535PoCjqggrarf2+rqktCCvSyYeMuex4+2e/YlysC0hv28Mibo2mRYclwz
-X-Received: by 2002:a05:6214:5099:b0:699:263d:23ae with SMTP id kk25-20020a056214509900b00699263d23aemr11926765qvb.10.1712648860695;
-        Tue, 09 Apr 2024 00:47:40 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1712648860; cv=pass;
+Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1860579ejh;
+        Tue, 9 Apr 2024 05:10:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVGLLywNoL1Df22WLY/x2oJ2HBbPMnnjGDOBeqt8CU0SM1Qep+78XWzUthmugIONpDv+0WKu6VFqCD5awxQG3U0w2JY55fK
+X-Google-Smtp-Source: AGHT+IEXkFuMBKYnmRxS2BjbudeHqw6uihnyqn32tQbewZq0tOksamOXo5Ez7H6Hs0YbxJ4mAhQ/
+X-Received: by 2002:a05:6102:b02:b0:47a:1201:45e0 with SMTP id b2-20020a0561020b0200b0047a120145e0mr2767043vst.35.1712664641784;
+        Tue, 09 Apr 2024 05:10:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712664641; cv=none;
         d=google.com; s=arc-20160816;
-        b=R9HziIwxdxQ85UdVwTC6zA6nl/13g2i4pxnsXgTEx5vBMA1E1uQhxiXSIGeIfL2pI1
-         aEW723kd/fJutVwbLI7gE8zrxcACIxaFUlLuGuRnoDNTwJ+65pR5oR+aY8eX5qC4xL6g
-         S6wv+GS8UVQtuCpVZmdF0KvEgL4rw50S4jCk0068fdNJWb/JLpK/H5ktThttxx6JPj0n
-         GjGqGj0psRCRoUS6T+4+Hq855EjsBBIY0xB8tOJLGktAgUSW3tuz/x1QfiDTXyd3oUc3
-         mlMiG+6UeY7pJE3aYtBoKilfTNCjDoJ+ordMT4bqA1U6g5UoIxYyDExcFP6FpH9lrtPi
-         IVpg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=P2vOMs/DIcveirHQQdM7XrMgLSklaYSgQkSBVonMYZA=;
-        fh=tiqbv/KR+ZChHc417769TdAGbHM4CY0swKTZ5CuhUnA=;
-        b=yafI+09ULCMdkFaFP9I51+aP9mRRBUNaQcRsfY7uYtaSSK5q/o5uMyGoM70+Kc1fnl
-         RbWA61gH1T2q1lO8n+VES6LXpOpkhMyo7KlMFtPTDO3usI6tP21ym/Y2fTIlD9wpbtXN
-         prvsSO4wgJj2NTVBYi6HRJ4e4I3HwQFwi1qbWysnPRK+o6XLQ8Z2OBbnyh5ft99LkAQF
-         bUgamsUsAip53jOnK7il2j30K7+Jq+cb+C+PJZkNVEzAL/Cyc2EG4RhSn1btGMmkvUqq
-         g95xh7BF4D6KQQfeBI51weWmFwjsZjdvhPFIb10+3q6QGWKChu4ORS78nhIXaDRQOv8I
-         8o7A==;
+        b=0kuVMuuc3CfJLi+HhYH1e5wauhrT5iVvO5z2wfe2RKGkfUY3t9T5EXxeAJFkXpeYme
+         NrABT/XZ2DRfCbQcurvSBxbxwaAJxkIrFwuMdObk4ClHKir5synmG1A0Ma6egtQjAypd
+         yaZKz49PIxDIzvO9cLzxCv/ZxVx/sjtDTD6Pal0JbRc5+aV+8HGRBski/jy0kYS493fr
+         CaJY1+JyWfIXf2oSrbaUuR0HkXAOmMzTNpunc6pcd+PjuBXaJAXLtWJ+qGEMRVH7577V
+         WUp677z+gkyGwuqRYmTpiQKuDNpI61e5FWMBcGIRXUkXrj9RHNJKO0l2PMyZT2MoRRhx
+         UntQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=kgOnhYWhAteTH3NIEX7CxxxDND4+WUrherR9XVyjJn4=;
+        fh=idIdj3qwCoQLIg8lX1iHO/04SIOoMGB1avcdihVjt6Y=;
+        b=JnkJVReTpq7ejResbyFrixQvxGzFnuj10TrmAiaTpNXMwqB+x0HtQzwyy+HPqh87Ya
+         BMPTJd2zCU7RbMIWLBmZcFqXhUTAx5WsIQIHL/KEIkvXwYGqHox/PXnoHK6p0tELAuoQ
+         /B1FTQuKqwqBAa9Yhty4m6A5JZGo05p8BgftQw8joU4+dOswrCAidxPr5fV/g5TbBlv7
+         oImMooQwtZDE7W9McE3j6IiLGIewF7zZmkentDE1rhb1NLcW5kxBdOnXnHswgVpAw3Zs
+         xiQ258elGiYmrYj4crgQc4CC+3avgsQXFcdHc7YgvOwL4zrj4gjRzzjmAoE+2XLKiTt7
+         JTJw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PfmOKUkf;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-13973-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-13973-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-13973-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id z9-20020ad44149000000b0069923db61f7si9810933qvp.349.2024.04.09.00.47.40
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xvj82heu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m20-20020a05610206d400b0047a0b2d76e4si400946vsg.165.2024.04.09.05.10.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Apr 2024 00:47:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-13973-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 09 Apr 2024 05:10:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PfmOKUkf;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-13973-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-13973-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 407861C212C5
-	for <alex.bennee@linaro.org>; Tue,  9 Apr 2024 07:47:40 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id D06097CF17;
-	Tue,  9 Apr 2024 07:47:35 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="PfmOKUkf"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D91876413
-	for <kvm@vger.kernel.org>; Tue,  9 Apr 2024 07:47:33 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1712648855; cv=none; b=QFXtGyj0qQ4OSNHA43yiwCjpOTnHpe5D+VL6q/92lKU9WZRuYgMGa4ldjBQ18JQ04ZHavOSaon2t13TZWs7Ui+V0AX8WcRsnhxKLa36tRKOamocJkzAC8Te7GXVaJJt/H5Cbze3A0vB7ktz46lH/aIIDJ4ZDKuRnERBmLOYWEFA=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1712648855; c=relaxed/simple;
-	bh=y0Dwj2lXyabUf14cqARhCkVWYffRd/CkPwQh1Fi8qtk=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=humwGfxF1mg4D+wKN9Bw3w59qYcAwfvnliCOiZLX2OZEO0PlycDlUUSgBocqwdLKkyWZXIYFr7swae35ijWhrs0qIDgWmGAfsvWjPJ1gGSeh1hZuPTzf5wrgoAO13ZbHlkYQ2Ii6WxyTy5UTTNSqBYiktJE0PT8vZ5da0s/zxAY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=PfmOKUkf; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1712648853;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=P2vOMs/DIcveirHQQdM7XrMgLSklaYSgQkSBVonMYZA=;
-	b=PfmOKUkflCVyhIQqVzBggATw9aq/N7DLiCYHPFSH7fzSzmYjHTnPrY/YsmyJv1pT28Dv2Z
-	Dd2Un20Jc4ZiR83ykf4y8o26MAaLLH8CKiYrMNNhk/2ax77AMv1WawkEyfJkH5ly1rZzg0
-	zOHW4GDAYCBnrjGdhvqy2vZoROxtwFg=
-Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com
- [209.85.216.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-54-0pvtu5WWNtSE_UNZ7vG9fQ-1; Tue, 09 Apr 2024 03:47:31 -0400
-X-MC-Unique: 0pvtu5WWNtSE_UNZ7vG9fQ-1
-Received: by mail-pj1-f69.google.com with SMTP id 98e67ed59e1d1-2a303938023so1400927a91.0
-        for <kvm@vger.kernel.org>; Tue, 09 Apr 2024 00:47:31 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=xvj82heu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ruAJ2-00028W-V8; Tue, 09 Apr 2024 08:10:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruAIy-00027R-AN
+ for qemu-arm@nongnu.org; Tue, 09 Apr 2024 08:10:24 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruAIq-0008V2-9M
+ for qemu-arm@nongnu.org; Tue, 09 Apr 2024 08:10:20 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-4166d58a71eso13880865e9.1
+ for <qemu-arm@nongnu.org>; Tue, 09 Apr 2024 05:10:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1712664613; x=1713269413; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=kgOnhYWhAteTH3NIEX7CxxxDND4+WUrherR9XVyjJn4=;
+ b=xvj82heu2epidxmdaUV5EixYfhNld/whh+AFXeUMGWcBeFSX7JYIK/HBJl2VanCsbp
+ EBZdZlAPZqbYr9dZVwOPE5bcqu18HLvZcm6heMal0MDxB5c4nqAh1CdVWTGaVlSsHuO2
+ FqarfmQyLv0eg0W1B/SQztvD5289Mff4SvT0Qru9dkzdYfULGcEh/w9NvK3/M1gUlzw0
+ NJ+nqdtMphhXl1/R6JZJ0HMfXi44Ig82ZuxoKYkdd3BabxFjQHSYGatX64xYWeJB88qk
+ r3eC3CzLxnfnYaqY73qS4z/VafS7E3cRu9lPBkPvPJWkv0aUmYTKs3bLfGUPahIlIb1U
+ OaKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712648850; x=1713253650;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=P2vOMs/DIcveirHQQdM7XrMgLSklaYSgQkSBVonMYZA=;
-        b=qlJQGza5n6SgIi5m2mfEP33XsXY1sBJ8OXN5DHY6o0YRxv71sQXxnRViSkebc85gQh
-         ICFu1fb8KGZDz5PWwds+BGDg2SDpgp3zXgRZF2aCgC2UdtIoSqDc7HBbp7gA8eGnBcd7
-         FLciUUHhxC4RWjjoJvcU7iEKul3pMvNrJtTipQjjW/oMsRzFMWyucAh0SmB3TQuk2a6L
-         o7avf73cIsrdQh03LWIXvM1MnAW+OQAmBPaodZiPQu72nuqELlmztawoE9bDfnNFcYt1
-         ggAhaLqlWTclF69zngMMupGJgoI4cR3UUi6828mCmsEy84J+YbgnJDU18jog8znggEI0
-         Cc7g==
-X-Forwarded-Encrypted: i=1; AJvYcCUr/QwYsh5kSeUFERT4VKxQfjrtr7dDuDkDqTP1pLy00ANBgDHw0px0lED2lbmYUEOIp+wH2W0APzOnNIMdvQqZT55a
-X-Gm-Message-State: AOJu0YyIfFzChU1iNa/Ht5Ll7j2egXQ+9GOwQxn0n2+t1TFksrmSFmyV
-	MGd88fJC4huYseFLOnDvcuhR1T/A67RKNqi+Ri7vvgf7rJ4vWumUr1iI926rV/EthmcIVeti2fD
-	zqKbQusBSdPZRinRf740ahcTDAzV8bvhrWblmyYqHDMT5grHh0+9lFaUIEsi5
-X-Received: by 2002:a17:90b:4b08:b0:2a5:223c:2975 with SMTP id lx8-20020a17090b4b0800b002a5223c2975mr4212088pjb.3.1712648850034;
-        Tue, 09 Apr 2024 00:47:30 -0700 (PDT)
-X-Received: by 2002:a17:90b:4b08:b0:2a5:223c:2975 with SMTP id lx8-20020a17090b4b0800b002a5223c2975mr4212074pjb.3.1712648849634;
-        Tue, 09 Apr 2024 00:47:29 -0700 (PDT)
-Received: from [10.66.61.39] ([43.228.180.230])
-        by smtp.gmail.com with ESMTPSA id fs22-20020a17090af29600b0029ddac03effsm9393320pjb.11.2024.04.09.00.47.27
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 09 Apr 2024 00:47:29 -0700 (PDT)
-Message-ID: <47e0c03b-0a6f-4a58-8dd7-6f1b85bcf71c@redhat.com>
-Date: Tue, 9 Apr 2024 15:47:25 +0800
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1712664613; x=1713269413;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=kgOnhYWhAteTH3NIEX7CxxxDND4+WUrherR9XVyjJn4=;
+ b=FtNFgOPpIJ0QIKrzGPlPp3UBRF5WVrvHlPlEB2Nnz8PtmpsmGS26K/7SE7Wd683x5P
+ +XAoDrtb5WdjksFvdQFAz1vQz3ObJ9KQY0V18mRE9o/cAuz/nmII5m73zexTpQcECMsY
+ qm9erNrM/zucW3yt702pIa/caj2WKz9a9zRJ/X9Xw6VcSXRqFKFIOKj9cQTBd9tHUWx3
+ jC+7Xgnm4dtCBw3zOHsOe+fXoqkYM4870thlbtcAbSVOIaLTeN4y57xMTOTBy4mtbd0s
+ yLNa9z5KVhtgijcdUUb2ve6UrzpPwiaVUdlJRHq4KWD6AUnYVPs1R+r32G06RITL05jP
+ 1FAg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW3xkCScsB6bOGkAr+cygMPxMF2v/Enqm76kFcrbcFA1s2BSAl/cL1+qySsp/eJG0dQit4FxxXyRB1puOgTI9Iatd/3
+X-Gm-Message-State: AOJu0YzaDRY1lJlTVv/a1Ga9D63rhwT7Sc+ggUe23DJmHk46Legc2QGs
+ QeaPrVh4bdKTo01IlYGQjIGS7AXRxBITbr/To3ByQAYBTnfH0hu7HfRui58ZDo8=
+X-Received: by 2002:a05:6000:e49:b0:343:41ef:ab30 with SMTP id
+ dy9-20020a0560000e4900b0034341efab30mr8962398wrb.47.1712664612805; 
+ Tue, 09 Apr 2024 05:10:12 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.160.134])
+ by smtp.gmail.com with ESMTPSA id
+ f13-20020adfdb4d000000b00341c6b53358sm11302306wrj.66.2024.04.09.05.10.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Apr 2024 05:10:11 -0700 (PDT)
+Message-ID: <224d9add-a2f3-41de-a50c-f2c14d991ef3@linaro.org>
+Date: Tue, 9 Apr 2024 14:10:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-To: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org
-Cc: Eric Auger <eauger@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- qemu-devel@nongnu.org, kvm@vger.kernel.org
-References: <20240409024940.180107-1-shahuang@redhat.com>
- <d1a76e23-e361-46a9-9baf-6ab51db5d7ba@redhat.com>
+Subject: Re: [PATCH-for-9.0? 2/2] hw/net/lan9118: Fix overflow in TX FIFO
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org,
+ Chuhong Yuan <hslester96@gmail.com>
+References: <20240408105149.59258-1-philmd@linaro.org>
+ <20240408105149.59258-3-philmd@linaro.org>
+ <CAFEAcA8vvURMn2FaDP9tXtP5eCMs6-XFOCR9ypo=WBH+6g5prw@mail.gmail.com>
 Content-Language: en-US
-From: Shaoqin Huang <shahuang@redhat.com>
-In-Reply-To: <d1a76e23-e361-46a9-9baf-6ab51db5d7ba@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA8vvURMn2FaDP9tXtP5eCMs6-XFOCR9ypo=WBH+6g5prw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: oZCrAyIb5th6
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: p6kLGQzmPJIA
 
-Hi Thmoas,
-
-On 4/9/24 13:33, Thomas Huth wrote:
->> +        assert_has_feature(qts, "host", "kvm-pmu-filter");
+On 8/4/24 16:24, Peter Maydell wrote:
+> On Mon, 8 Apr 2024 at 11:52, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> When the TX FIFO is full, raise the TX Status FIFO Overflow (TXSO)
+>> flag, "Generated when the TX Status FIFO overflows" [*].
 > 
-> So you assert here that the feature is available ...
+> This doesn't sound right. The TX Status FIFO and the
+> TX Data FIFO are separate FIFOs, and the TX FIFO has its own
+> overflow bit, TDFO. And I think the overflow here is of
+> a third FIFO, the MIL's transmit FIFO...
 > 
->>           assert_has_feature(qts, "host", "kvm-steal-time");
->>           assert_has_feature(qts, "host", "sve");
->>           resp = do_query_no_props(qts, "host");
->> +        kvm_supports_pmu_filter = resp_get_feature_str(resp, 
->> "kvm-pmu-filter");
->>           kvm_supports_steal_time = resp_get_feature(resp, 
->> "kvm-steal-time");
->>           kvm_supports_sve = resp_get_feature(resp, "sve");
->>           vls = resp_get_sve_vls(resp);
->>           qobject_unref(resp);
->> +        if (kvm_supports_pmu_filter) { >
-> ... why do you then need to check for its availability here again?
-> I either don't understand this part of the code, or you could drop the 
-> kvm_supports_pmu_filter variable and simply always execute the code below.
-
-Thanks for your reviewing. I did so because all other feature like 
-"kvm-steal-time" check its availability again. I don't know the original 
-reason why they did that. I just followed it.
-
-Do you think we should delete all the checking?
-
-Thanks,
-Shaoqin
-
+>> diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
+>> index 7be0430ac5..7a1367b0bb 100644
+>> --- a/hw/net/lan9118.c
+>> +++ b/hw/net/lan9118.c
+>> @@ -795,8 +795,11 @@ static void tx_fifo_push(lan9118_state *s, uint32_t val)
+>>               /* Documentation is somewhat unclear on the ordering of bytes
+>>                  in FIFO words.  Empirical results show it to be little-endian.
+>>                  */
+>> -            /* TODO: FIFO overflow checking.  */
+>>               while (n--) {
+>> +                if (s->txp->len == PKT_SIZE) {
+>> +                    s->int_sts |= TXSO_INT;
+>> +                    break;
+>> +                }
 > 
->   Thomas
+> While I was looking at this bug, I realised that we have serious
+> confusion about whether any of the variables we use to track FIFO
+> size and FIFO usage are word counts or byte counts.
 > 
+> Looking at table 5-3 in the data sheet, the size of these
+> FIFOs is actually software-configurable in the HW_CFG register,
+> but we don't implement that and (attempt to) only provide
+> the default configuration setting of TX_FIF_SZ == 5. That
+> should mean:
+>   TX data FIFO size == 4608 bytes == 1152 words
+>   RX data FIFO size == 10560 bytes == 2640 words
+>   TX status FIFO size == 512 bytes == 128 words
+>   RX status FIFO size == 704 bytes == 176 words
+> 
+> But we don't consistently use either word or byte units for the
+> variables we use to track FIFO size and FIFO usage. For instance:
+>   * we initialise s->tx_fifo_size to 4608, which is a byte count
+>   * we initialise s->rx_status_fifo_size to 704, which is a byte count...
+>   * ...and then three lines later override that to 176, which is a word
+>     count!
+>   * we generally simply increment the various fifo_used fields
+>     when we push a word into the FIFOs, implying word counts
+>   * we mostly do calculations assuming word counts
+>   * calculations of the RX_FIFO_INF and TX_FIFO_INF fields
+>     (which report the used space in words and the free space
+>     in bytes) are confused about units too
+>   * the tx_status_fifo[] array is 512 words long and the bounds
+>     checks assume 512 is a word count, but it is a byte count
+>   * the rx_status_fifo[] array is 896 words long, but the worst
+>     case RX status FIFO size is 896 bytes, even if we allowed
+>     runtime adjustable FIFO sizes
+>   * the rx_fifo[] array, on the other hand, is 3360 words long,
+>     which really is the max possible size in words
+> 
+> Anyway, I think that txp->data[] is effectively modelling
+> the "2K Byte transmit FIFO" within the MIL, not the TX FIFO.
+> (We don't need to model the TX FIFO itself, because we don't
+> do asynchronous sending of data packets: as soon as we've
+> accumulated a complete packet into the MIL TX FIFO, we
+> send it out. In real hardware the guest can put multiple
+> packets into the TX data FIFO, which is why it makes sense to be
+> able to configure a TX data FIFO size larger than the largest
+> possible packet and larger than the MIL TX FIFO.)
+> 
+> So the limit that we are enforcing here is similar to the one
+> described in the "Calculating Worst-Case TX FIFO (MIL) usage",
+> except that we don't actually use data space for the gaps
+> caused by unaligned buffers. So this can only overflow if the
+> packet is greater than what the data sheet says is the
+> maximum size of 1514 bytes. The datasheet unfortunately doesn't
+> describe the behaviour if this maximum is exceeded, and our
+> current code doesn't try to check it (it's in the "command B"
+> words, which are all supposed to match in the case of a
+> fragmented packet, and which we also don't check).
+> 
+> The most plausible behaviour to take I think is to raise
+> TXE when we would overflow the s->txp_data[] buffer; there are
+> various conditions described for when TXE is raised that seem
+> like this would fit in reasonably with them.
+> (There is a status bit TDFO for "TX Data FIFO Overrun", which
+> I think is probably only for overruns of the TX data FIFO,
+> not the MIL's TX FIFO.)
+> 
+> Since the datasheet doesn't say if the packet should be
+> dropped or truncated if it's invalid like this, I guess
+> we can do whatever's easiest.
+> 
+>>                   s->txp->data[s->txp->len] = val & 0xff;
+>>                   s->txp->len++;
+>>                   val >>= 8;
+> 
+> Conclusion:
+>   * we should raise TXE, not TXSO
+>   * add a comment about what exactly is going on here
+>   * we should try to clean up the confusion between words and
+>     bytes, as a separate patch that isn't -stable/-9.0
+>     material...
 
--- 
-Shaoqin
-
+Thanks a lot for this very detailed analysis! v2 on the way.

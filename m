@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1913005ejh;
-        Tue, 9 Apr 2024 06:41:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUlmWT30JsTRRY7IiX3LrHeIgragFPLXyDTfW7IDthRZP1pxvdWQdxjKNtiEnr23Rf3xToItFTEGy923ICB4U+aem3xyZOF
-X-Google-Smtp-Source: AGHT+IFjdmGiFCV3QuilyKZ6vt/eW81R1LwSALIoNV7Hsp08tW+WTxF7qUq0eZREeok/YXeS+glJ
-X-Received: by 2002:a05:6870:20c:b0:221:9c97:69eb with SMTP id j12-20020a056870020c00b002219c9769ebmr15043583oad.50.1712670085827;
-        Tue, 09 Apr 2024 06:41:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712670085; cv=none;
+Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1913436ejh;
+        Tue, 9 Apr 2024 06:42:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVZLs9MqesRzblQ+LVrUnRl7dBpF1k6YDaTKtHVUDNU/CQpH08eqyL6q2aAdM1ZKXNQ3NABZzGCqcxCRuUwoTVsEXV65ZS5
+X-Google-Smtp-Source: AGHT+IFpeSXwsjsHHoveDD1VX7E6wOxHUCy+dqvtszZ14yeqCaufKuH5SFMsVBmLHnYe7EtATLqo
+X-Received: by 2002:a05:6214:ac6:b0:69b:3132:53a5 with SMTP id g6-20020a0562140ac600b0069b313253a5mr1130913qvi.34.1712670131905;
+        Tue, 09 Apr 2024 06:42:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712670131; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pf36+MPyeEQ3QEqPLFYiepX4rmG/q2sP88kVJsbgpOGrQ1e1cZMk7unmEu8TdiP9je
-         AQJGPVevGKwd3HI5B//ERlEEK5FxwzErbz642bRljTJ5AlcsClqwc/hR7UO5qBKevkMF
-         LyaUWbz6SZTep/OkJ0uYBXIEvxwjjFLl/oKlUxlSNd+AfiI+KOBvxPx3WAe0FO8vthg9
-         OqS8t3+yNeSDI19DIYpLebB39ML+haI9sy/4mM96d6oeJ5NpdPFv7FBfpn5140Vxhqps
-         IojfToRHRHjuADZZLyA5LQoO6MJvqZgkXHZ2dzVSUMPbR/cVG5sTlS/UQgWvxxgVJs5b
-         UZ7w==
+        b=HrvtyO3s2hvVfiA6yWVCwCTIMLqotm4JzpdGmPiD2g/G5nRbehrCkRQe3ILIy/6lJF
+         +JzHqCiVD6hm6/82Jeng1mdaMIFH80hTQ9XXOZ0/KYPxJV7brBxCEKt076iryZtG3mRh
+         LJ0NorkRZgM1/1qFIfnrcYf3i77Byi1N43VRDp35y0PpPmxZ/0NkiH1BO8/o047WFJb2
+         MjMvGcIJzu+eGh9Vpeducl5Nb3Q8JuzNOKj4cJaccmPjKtHDvj7BcLdOz1QEqxCNksFu
+         dnBq/OOhVjJQncCHncTgyymlfF3lRAF4sgbYfFux/bxZdNRqsJF7VymO2hzbMvk3zdK3
+         rjfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=4D3FSC9ddaqc6WPgOycbKu85N6QxdHBgLlA9EjGP3hc=;
+        bh=seoyXeyruefadi2eT8APGXSV51cRic55d3JTadMFQ5Y=;
         fh=lMr66YWO2NNsKPKpMDQNKa75STa8w1P0wpumtLrUy6U=;
-        b=zMhc2tCbWg25qrdYxBfsOa4rXBoDFXzovu4ApXqiJzJHDIFJgXJm1x/jfDZBXFFL0+
-         AFhaQsdVR2GTZE4M6b1baCUZZ8Mo+tVbZjZtB0VIaLqJzJ3ds2QzSVa1yC2KzkX519UA
-         yg2Y2Bqb09AnhxRoiAOiYs2rQZ4NfhEe8nbVrgTbeb7Yb1E4/dWk8+pInE0B1GbFTuKy
-         YiQ83s0MXyyORY1C84o0B1KgSNX0C+vvUIZWuYz6zNA4fiwAoI1Ly23KtN3/3HhlDj/l
-         pGCtDjEpFfrNOG87bZ5a/qsX3wjI/tfd2dtg3ux6maRpQD/ryQHiEMhlUi8fahCk6270
-         fSdg==;
+        b=FxSC7n7gCwDfkEB+O1qOArY5bG1r0BmlePOPtkqOcz/KUYWiZZ2buIb5D2m3UA1G5f
+         NyNAWk1kOft88raQ3IlmMwjtZY7VXnM4d9lO2m+FMvPC+GR464XmdPLiwx16hPteEEjV
+         +o1HmMndBR05EIWovd/HzdEv7yTfNoLQnGmBrD/RZOE0wrqdCYy6xKJpA+wzX721cpa/
+         1N4Lp0u5wBndpkEF0zVWozB7l0U1A/AW/uwXFkDKudgn5biRaGxfwTuqGdUeuHMmIg1O
+         JfRjjXO8bPRc0O8s/D8hyt42NrQJxD8Wbkgta7AMWNyRF6ri21+YLi9IOEXjJDGHAGfO
+         wsVQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LMXC9g01;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ADRqkII7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h24-20020a05620a10b800b0078d5f15efc3si6423504qkk.560.2024.04.09.06.41.25
+        by mx.google.com with ESMTPS id a15-20020ad441cf000000b0069935e0c9e9si10551293qvq.550.2024.04.09.06.42.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Apr 2024 06:41:25 -0700 (PDT)
+        Tue, 09 Apr 2024 06:42:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LMXC9g01;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ADRqkII7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ruBix-0004rp-H6; Tue, 09 Apr 2024 09:41:20 -0400
+	id 1ruBjl-0006F9-27; Tue, 09 Apr 2024 09:42:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ruBiq-0004j7-Ce
- for qemu-devel@nongnu.org; Tue, 09 Apr 2024 09:41:13 -0400
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ id 1ruBjf-00066b-DJ
+ for qemu-devel@nongnu.org; Tue, 09 Apr 2024 09:42:03 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ruBio-0000S9-GB
- for qemu-devel@nongnu.org; Tue, 09 Apr 2024 09:41:11 -0400
-Received: by mail-lf1-x132.google.com with SMTP id
- 2adb3069b0e04-516dbc36918so3907402e87.0
- for <qemu-devel@nongnu.org>; Tue, 09 Apr 2024 06:41:10 -0700 (PDT)
+ id 1ruBjd-0000jW-I9
+ for qemu-devel@nongnu.org; Tue, 09 Apr 2024 09:42:02 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-56e1f3462caso5795922a12.3
+ for <qemu-devel@nongnu.org>; Tue, 09 Apr 2024 06:42:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712670068; x=1713274868; darn=nongnu.org;
+ d=linaro.org; s=google; t=1712670120; x=1713274920; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4D3FSC9ddaqc6WPgOycbKu85N6QxdHBgLlA9EjGP3hc=;
- b=LMXC9g01p0azmO+mrose5NdJdXfyejKXIdmZDH0f8qFD9GpA59/enAWmgXq7jKVA0B
- o2UoA/WEcOPW5YiujPRTz7giT7htZwfj3OpkMQfLgsU4A/VkocvCzmeqRJ+Yb3KjY5W4
- hvkiMfmKnKyfgJlXFnLKpEcMrDfvwHpa8uM5IjMRkGI3C9p8Cs3XXLP6vj0yW70vOVOA
- Gq6q1KF/na+AgCAoXVidDGqerBNukNJuwD0h8+2t6CF/G0n+XkmUe8W72Hnc881pLvx5
- 4SpCNbScTkgl8VcnIg6FrDAsl5UXaCY86fTVrIJqddpNNXAWDcLf7GcD5m41ueuH2TMi
- SM9A==
+ bh=seoyXeyruefadi2eT8APGXSV51cRic55d3JTadMFQ5Y=;
+ b=ADRqkII7cmFZDATYmrkfU8JgFtGkDk22P2XP7gbfKmoZlXXY7m151aSYg7i7CLGKx8
+ Oahsa6IjsSkp4K9SNOIhy811uIb+kdDIuMrK7UeR3xk0sd43156aeB1pbc6GQyNY//fK
+ qHZgPF9O96hsa1Mvf8qDRrhD2Sk0Q0REDDRALpASvdGhOC2CwJy2Z/YlO0hyuru2ybZV
+ dLe1pLgU7Pm3GwfVBdmpcQTO5egNEgJZk0CWgqMB9QSleWuYfDLpFMyd3siM1/bJbeyN
+ Bx6HnpBmOFeVW7cjO8oPxgfYf9lRtqHshUoqVP7xEI1w8NOqx2uSr8kqK+EOuhQdGx5v
+ R8Qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712670068; x=1713274868;
+ d=1e100.net; s=20230601; t=1712670120; x=1713274920;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=4D3FSC9ddaqc6WPgOycbKu85N6QxdHBgLlA9EjGP3hc=;
- b=THKsF3vnY4Qewab876ANQR4eDkFpWWTidOEBUsx0QYPMPxznPCQdksbk+oH8zA9OF0
- fFiM/SupBDnYJbOAJq4G5H+XazBvv3jD4YoxWdUy6rJDavtJ4Yo3McvkPxIHzxunRiph
- U76tDs7N5Jl8cFYMFBpywDml70PWlnDiT3YthpotvYRTomAp5AfUr1JLp38aVZMO2Hes
- zfXWgznPN48OgsyHzUQ/I2N03Ug33yTjiM96nOpRefv6SSRHCJ5c8satFdGd9ffzqU96
- DGB6oP7Ecubdjg80cqaIGsmdUHNwCUOhzCE+iJZx4xgB+WP3jcvp7fbPK2SE3mEvcYAd
- mdAw==
-X-Gm-Message-State: AOJu0Yxomj0PlI3rWQmusS/YQ2q5IzAqu4sgioNQvEDMHVLvGCDXAEq0
- n0fZ7YgXlBIzoHrL0wTSS+/l6JGJje4DmRlxPDLVgYzP4haoOjxmwP0uVgxjJRojw8MiC404C6Z
- rR20rly0vt+oEyplHECWPbUDeipyIa1l7dLnzLQ==
-X-Received: by 2002:a05:6512:3da7:b0:516:a978:7b06 with SMTP id
- k39-20020a0565123da700b00516a9787b06mr9593784lfv.5.1712670068446; Tue, 09 Apr
- 2024 06:41:08 -0700 (PDT)
+ bh=seoyXeyruefadi2eT8APGXSV51cRic55d3JTadMFQ5Y=;
+ b=Kn478EGwRzNH9/UpRN+sCNqM6XkxdX6dsiwypVNVJyHA11KzNheOqDWO7j7zXN1KMj
+ rNFYRnjrrg+kw0LCTtW/FgC/7UsYA4JiLIKqXhBI0HjY/mT1eSWcvLOzSefXofOx5l3N
+ eoqx2n/tW+6r7fandEbJfv0JuuAZ8caDZyEWEsFiwYJxPIpn3iWtSEbalKqXybyG8ls2
+ ij7EcNxUlrAK8lqJrLrIsrQpAe0iadMj6cDJRUJTftP8s3w6RiDrD0IMiBR8emyoGmZb
+ QY8OX8Ure8caXGXx6XZcGqJ8GI0CZ0y1ind5F4O7FcQ1MbfV4LRdixjUh8Ju6n9CXTt6
+ vRsw==
+X-Gm-Message-State: AOJu0YyH/qm/AZxbTzd4zoi0ocZ2JQwpSVqAZXP/CmegK53rS/XuPZA/
+ u80tBwYqiVeT5dd8JtO4iaHlLWe5Qi3z76Xjpp2MahWvwyFMZALK4ebOaq1BrjTFJpBojrUH152
+ 3YzlFR+6D5F+9ULxPEBK66Sw88EepnSE9g37Snw==
+X-Received: by 2002:a50:9eec:0:b0:56d:faa2:789b with SMTP id
+ a99-20020a509eec000000b0056dfaa2789bmr7962495edf.40.1712670120065; Tue, 09
+ Apr 2024 06:42:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240409133801.23503-1-philmd@linaro.org>
- <20240409133801.23503-2-philmd@linaro.org>
-In-Reply-To: <20240409133801.23503-2-philmd@linaro.org>
+ <20240409133801.23503-3-philmd@linaro.org>
+In-Reply-To: <20240409133801.23503-3-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Apr 2024 14:40:57 +0100
-Message-ID: <CAFEAcA-CVN_5ZFbd_j3_b4cKG1xpggM6sPmeGxWJs9r1oL5iLg@mail.gmail.com>
-Subject: Re: [PATCH-for-9.0 v2 01/11] hw/net/lan9118: Replace magic '2048'
- value by MIL_TXFIFO_SIZE definition
+Date: Tue, 9 Apr 2024 14:41:49 +0100
+Message-ID: <CAFEAcA8EsUJ8mYJDQueZZip7xhipES1exK_FzQOVJ-QYTYqVbg@mail.gmail.com>
+Subject: Re: [PATCH-for-9.0 v2 02/11] hw/net/lan9118: Fix overflow in MIL TX
+ FIFO
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Chuhong Yuan <hslester96@gmail.com>, 
  Jason Wang <jasowang@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x132.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,27 +126,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pQICsny2c23W
+X-TUID: DdG0B9IbECws
 
-On Tue, 9 Apr 2024 at 14:39, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+On Tue, 9 Apr 2024 at 14:38, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
 > wrote:
 >
-> The magic 2048 is explained in the LAN9211 datasheet (DS00002414A)
-> in chapter 1.4, "10/100 Ethernet MAC":
+> When the MAC Interface Layer (MIL) transmit FIFO is full,
+> truncate the packet, and raise the Transmitter Error (TXE)
+> flag.
 >
->   The MAC Interface Layer (MIL), within the MAC, contains a
->   2K Byte transmit and a 128 Byte receive FIFO which is separate
->   from the TX and RX FIFOs. [...]
+> Broken since model introduction in commit 2a42499017
+> ("LAN9118 emulation").
 >
+> When using the reproducer from
+> https://gitlab.com/qemu-project/qemu/-/issues/2267 we get:
+>
+>   hw/net/lan9118.c:798:17: runtime error:
+>   index 2048 out of bounds for type 'uint8_t[2048]' (aka 'unsigned char[2=
+048]')
+>     #0 0x563ec9a057b1 in tx_fifo_push hw/net/lan9118.c:798:43
+>     #1 0x563ec99fbb28 in lan9118_writel hw/net/lan9118.c:1042:9
+>     #2 0x563ec99f2de2 in lan9118_16bit_mode_write hw/net/lan9118.c:1205:9
+>     #3 0x563ecbf78013 in memory_region_write_accessor system/memory.c:497=
+:5
+>     #4 0x563ecbf776f5 in access_with_adjusted_size system/memory.c:573:18
+>     #5 0x563ecbf75643 in memory_region_dispatch_write system/memory.c:152=
+1:16
+>     #6 0x563ecc01bade in flatview_write_continue_step system/physmem.c:27=
+13:18
+>     #7 0x563ecc01b374 in flatview_write_continue system/physmem.c:2743:19
+>     #8 0x563ecbff1c9b in flatview_write system/physmem.c:2774:12
+>     #9 0x563ecbff1768 in address_space_write system/physmem.c:2894:18
+>     ...
+>
+> [*] LAN9118 DS00002266B.pdf, Table 5.3.3 "INTERRUPT STATUS REGISTER"
+>
+> Reported-by: Will Lester
+> Reported-by: Chuhong Yuan <hslester96@gmail.com>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2267
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
-> (Not including Peter R-b from v1 due to semantic change)
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-Though the use of the constant in lan9118_receive()
-reveals that our implementation is using the same buffer
-for both tx and rx...
 
 thanks
 -- PMM

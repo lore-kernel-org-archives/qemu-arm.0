@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1926736ejh;
-        Tue, 9 Apr 2024 07:04:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXgm9LF4ktjp+UNVxkboHpux7GRdObITO+FyFFBDYUbxUTJJqH3MEXqeUwgv8gaxH/EU87aTolP83Z882u99UiybOzkC267
-X-Google-Smtp-Source: AGHT+IF0PCi6LcAA2h3ZuCSV4bRrY3KeqnlRVlU5bFCHDmHmj68lIOK0GAbNBXVzmw+3UKNypfTJ
-X-Received: by 2002:a0d:eac7:0:b0:611:200c:9229 with SMTP id t190-20020a0deac7000000b00611200c9229mr12289759ywe.8.1712671465836;
-        Tue, 09 Apr 2024 07:04:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712671465; cv=none;
+Received: by 2002:a17:906:1c8e:b0:a51:b7b1:b069 with SMTP id g14csp1928618ejh;
+        Tue, 9 Apr 2024 07:06:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVbSQlAUneFZ+jal7DI19ZQnjPBE794bXtuaUhC6JXVZO1UpNMCk3X0UU8O7OibdCwL22/Fq6ZyLrmD5INbSk+gYbU9jgWa
+X-Google-Smtp-Source: AGHT+IEEN7QzElWetmcci2mU1PSKb4xi+SyZJXBGes4Uh1lOkxy6u4EboFTH6b5B7lG4d0x3AI4U
+X-Received: by 2002:a05:622a:1102:b0:434:f6c1:b3ae with SMTP id e2-20020a05622a110200b00434f6c1b3aemr216457qty.51.1712671591267;
+        Tue, 09 Apr 2024 07:06:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712671591; cv=none;
         d=google.com; s=arc-20160816;
-        b=JtWwR0SjOgj2M7p8T6nOVvf+ifIQRB1IzSlTdMsUDXYcjtjnOu1XZ1PM+v32Pr781a
-         C9bFzhlkZL8CmDXXyMD/uKgWkrA5dWTg3xol020FkorU4VraMNHKzYUclw4rrb6zMkc+
-         AU4ma7wz9FoDQPbUshh70f2dA0299q6wH42NxeyPPQRzWsREQplOfvDJ6mL3ZPhtAxXS
-         OFrHGDB72Zh1jRaY+2BNBSxbCEPRTHGKPezq0Zn0cb8aTOR8jN4/YH768rhm7cwzKV7Q
-         DyFANNtaJuI1mrMH5++LUyZZJNgxQReEaUvGpkDi74B63j8PVlutL0bldUokL8cRw7qC
-         o+3g==
+        b=ANYR7j9Bx4ZK1joSmRLrPrRDCLz7aoRnwJJKnSxRDso+7bH47q7e4l4jLwZWXCrwrT
+         kFGDMy78e2TmyIsYpDQjFf1q0ZgIQ8LHaCTtgpSsEVafYMcYSzJnkj0CHiTJoyp8vx+A
+         q1jCZ2QwishUSggZOeReJq8bp0ZcIHoyLZ/rXr7n429ar0gpxeWkQQQqHoZ5QgXQpqYz
+         R86IA+VK2VD9QtArnuotTOu53qrJ3R6sgZsYxO4CKXO6/T13khxqfm841T8M1dgc7eYD
+         jNo73p7m+8MZUXxnE1dTRFR9jqd4EVDHpKX1cpt3bn6jZBqIQUc+jDdnk73pgK1vCbfV
+         D5EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=vzmYBdZ5mYJb9oSJsGiax8oqSCMQV8SWF1raZ7Z6dPw=;
+        bh=kq74n8QmF/8vkVCgPiL8KHqd0m7ZYpshZwl+KVQquYY=;
         fh=lMr66YWO2NNsKPKpMDQNKa75STa8w1P0wpumtLrUy6U=;
-        b=cfGtCse/ojKPoMELTfGzVY/ZKw4iM0o5gaeB2d36DX3I2nfx3hV4DfHnKjJJpkAdPz
-         vi9Y/g33viIiMpfNnqridjWGtpPSVmBORkNHhCkELdXHYqUqaLvHXhf32ggmAgk3QgZu
-         KIJxPuBu0K4Dn6rupHKSSXqHSkF68jv5Ot/bm6/YS6hXzJEow91d80/3mr6r7wOQrSwt
-         JX/xORql2GbfytIMuP5oIqWwd3KfpE8U08Znl1hfahiDbxJQjiPrjSyCu6vYzrVA8Nva
-         1DU4xH42DLPXrgmjN302C5s3X9FYsesU9+65BftT1YF/Gy3zTa3S5l3Jk4ktgMj63Hpy
-         nm6Q==;
+        b=Rng1KYKY9UOckZRIpwFkpzPD8t+5g5Lxoh5Ok5OV7VJ8JHKB8jl2MuNU/VB6VVB6oH
+         AYNSPQKcQWjcJiwvPvpTv0UU5rtsgbrPGcB2tUv3XIaxzAdJYy0DB5OhNRA6bXaP4gfK
+         rzmSZ2lY+hYqEoW56RdD3SOPaH8RISw0L+AUokOGveMrVKG9G/VMPrRHvu61OLIChull
+         /FKZjrVR+fx7U3BbNtp5GNTOZ70IchPHYcQPu0XTHJLO7F+i4II4QnyHkT2FBhv6FRwA
+         ZdqjJkC9CUewp2Ff0zmEtSE/X5ez0TAThzrSmgru+zVRRf05/CdtmZsN7bGOIPKwOU/x
+         OA9A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=myuQHTul;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gHpkQ0Vl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k38-20020a81ac26000000b00615183ab185si4059648ywh.155.2024.04.09.07.04.25
+        by mx.google.com with ESMTPS id n19-20020ac85a13000000b004346094bea9si9685901qta.643.2024.04.09.07.06.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Apr 2024 07:04:25 -0700 (PDT)
+        Tue, 09 Apr 2024 07:06:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=myuQHTul;
+       dkim=pass header.i=@linaro.org header.s=google header.b=gHpkQ0Vl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ruC4w-0002Oh-1M; Tue, 09 Apr 2024 10:04:02 -0400
+	id 1ruC6d-0003sp-JS; Tue, 09 Apr 2024 10:05:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ruC4t-0002Ny-V6
- for qemu-devel@nongnu.org; Tue, 09 Apr 2024 10:03:59 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ id 1ruC6c-0003sK-KN
+ for qemu-devel@nongnu.org; Tue, 09 Apr 2024 10:05:46 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ruC4s-0005CO-0p
- for qemu-devel@nongnu.org; Tue, 09 Apr 2024 10:03:59 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-56e449187fcso3245035a12.3
- for <qemu-devel@nongnu.org>; Tue, 09 Apr 2024 07:03:57 -0700 (PDT)
+ id 1ruC6Z-0005bq-SL
+ for qemu-devel@nongnu.org; Tue, 09 Apr 2024 10:05:46 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-56c404da0ebso8425120a12.0
+ for <qemu-devel@nongnu.org>; Tue, 09 Apr 2024 07:05:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712671436; x=1713276236; darn=nongnu.org;
+ d=linaro.org; s=google; t=1712671542; x=1713276342; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=vzmYBdZ5mYJb9oSJsGiax8oqSCMQV8SWF1raZ7Z6dPw=;
- b=myuQHTulG68B7fYUVbuKghJVjTgiQTVAjXL7EZI80aQvTJtav8GA8ChrQLWQ814naX
- 4jGsRPo2QudIOFmxjV3Cnysf+uAdbcGWHt2UNn3M+9Q9YyCMKIAFH2MEHkjPvOeBWAA7
- wUdpM76gCRnK0+XzQLdJe3tS9UTalRg1wkVtSjGtnsffXfwbQ008fNosW5ztun99UYti
- +FEhx9lkw6DIgn5g3+/J99iQoFtjQMU5yrOkNUq08Fgvr3AVpjfjMYgOmdn4ZZrd+99/
- K9Webv6NLXTdczfcvyLy50r6U31zvmky8vUFjVW7s4FQj+zilmaXBXOuiIeFYcneyA+P
- Nd5w==
+ bh=kq74n8QmF/8vkVCgPiL8KHqd0m7ZYpshZwl+KVQquYY=;
+ b=gHpkQ0Vl8nD/euS0Ra9kKydYdldMStD/oxqyZx7Tpm2CnMLUg1cBjObsiEiWO2/D1g
+ 9C5xVs4S/fhNrvzCM9Y+DXxantCWoUbRTZb4Fi+4UhJPzplD10VoTeqOVNT1ALcKIS7W
+ iW8dil6zVKReNEa/rU5/7Ot8dIPBf3fq2pnjFyDeqFCZnfkxhguAM2WxbCioN0ADj7LF
+ +2OznMJO2rg80+roLXcFZ10FhTx5YowuZAuPaiKv3nJaZYbdYf279/N8L0pYYen4a3Sb
+ DCDxfjFaV3yw6gXiXhTztPBtYUcySH62+tTLiAhW9Eodc1T7LJoznfsh+cJsSsZU8Bhk
+ Nkzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712671436; x=1713276236;
+ d=1e100.net; s=20230601; t=1712671542; x=1713276342;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=vzmYBdZ5mYJb9oSJsGiax8oqSCMQV8SWF1raZ7Z6dPw=;
- b=fUICdqbkiXTC1Cgnz1wqlkihjegQc13QfAhGoLcie0ICi1gfCAJcK1FI5FgdR1bQj5
- 9MT8Sa6QApA3VXq1bYrEfYDL6be/XvU7AMZw6quxIOYsBtkXyJaTnOfCvAynR5bgL3l2
- TyaFHOApAlBPb7i6cBlm1oUWd1Bnyecjh1Eg97byQqOxGNp1crqbtSKXMzRud/VL3YjK
- AR9AmlzQA7CyhnJmA71eRYJ0Qi6bBoNBzdb2Awr4itexp6Qq02g2yBNvQf1TxDMLUbjF
- XMyosqkvopPZJTeXhqw4jvwz30e7gD3fvF3YVtnJaDCbOkBLl24D0A5/87QIcJaTzvWK
- lm0w==
-X-Gm-Message-State: AOJu0YyneZ7byve2AuQ9rcpbbRI+pc2xwWrn1KwgmfyuqWmHVXRpsTy8
- FS9VxClZmZF2JEZ1KjAghPA8ox4lyNvxCx5VwiI4N1ycg8UoURiWHdwPmGXE5CEICCvJKTBt1h0
- roWqZf+ipysshoZw9us/sYrj2yNABNkqNk0kLoA==
-X-Received: by 2002:a50:c016:0:b0:56e:de1:f427 with SMTP id
- r22-20020a50c016000000b0056e0de1f427mr7883074edb.25.1712671436235; Tue, 09
- Apr 2024 07:03:56 -0700 (PDT)
+ bh=kq74n8QmF/8vkVCgPiL8KHqd0m7ZYpshZwl+KVQquYY=;
+ b=lRcd+52Ne00qWL4WO1XP5rT+tufGtW9DDu8cEhr5vYLvkbonvR+t3bds+vWCHZ/2Hm
+ 2vsdKaq44VWXk870szUQZ+ITqyQSfxJ+YBbpAUgRyEfc5IOkrLz34Y971uIrW28I+hqy
+ BPFwCOP+FTwET11VBSwiH0oXcplwU14D3rQVIdGtTHV7K7dOgdP70VYsujFjbOAeqQnT
+ 63qqQfQMeAReHuhlaq+Uq6CmloWMr7eVma0M1OM9P4QyYd7FFuC2iqUhzE6okkXEqQAA
+ oQ4uPLiKK2Gy7wZBPi6J+RzKkOBzgFqdXBQNgIMUQDxDiufU6FEzKWv9RCI9B8KpRrGQ
+ 37SQ==
+X-Gm-Message-State: AOJu0YyaFgl7K4a7IE6P615/FVItZCpAeIISbkcT93d//JaNQpX4Uwi5
+ iV1FsCQII4d3dIY5Re0DVPnBsTBxb7uc3AsUIE2jHDi1+8t5SiKb2+mNiEfa5sKM6I6PDa/o0kG
+ r6fn2maAgs8VPJFCYgTGEW/50i1u7jFX9Lg/flg==
+X-Received: by 2002:a50:9e44:0:b0:56b:9f82:4a40 with SMTP id
+ z62-20020a509e44000000b0056b9f824a40mr9019832ede.11.1712671542100; Tue, 09
+ Apr 2024 07:05:42 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240409133801.23503-1-philmd@linaro.org>
- <20240409133801.23503-10-philmd@linaro.org>
-In-Reply-To: <20240409133801.23503-10-philmd@linaro.org>
+ <20240409133801.23503-11-philmd@linaro.org>
+In-Reply-To: <20240409133801.23503-11-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Apr 2024 15:03:44 +0100
-Message-ID: <CAFEAcA8fFyU+WkS=SkUAW7g8kydNiV9Z-YK5+aPH3hagOzKTeg@mail.gmail.com>
-Subject: Re: [PATCH-for-9.1 v2 09/11] hw/net/lan9118: Rename
- rx_status_fifo_size -> rx_status_fifo_wordcount
+Date: Tue, 9 Apr 2024 15:05:31 +0100
+Message-ID: <CAFEAcA-HN=AL+af2QgvASr0YaUDVgtckpB=ay9sTuHd4m_hRTw@mail.gmail.com>
+Subject: Re: [PATCH-for-9.1 v2 10/11] hw/net/lan9118: Use RX_DATA_FIFO_BYTES
+ definition
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Chuhong Yuan <hslester96@gmail.com>, 
  Jason Wang <jasowang@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,34 +126,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Tk52nWY7ualT
+X-TUID: z5MgPMtcdJ3K
 
-On Tue, 9 Apr 2024 at 14:38, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+On Tue, 9 Apr 2024 at 14:39, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
 > wrote:
 >
-> rx_status_fifo_size is a word count, rename it to avoid confusion.
->
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  hw/net/lan9118.c | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
->
-> diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
-> index cace22381d..663776f575 100644
-> --- a/hw/net/lan9118.c
-> +++ b/hw/net/lan9118.c
-> @@ -259,7 +259,7 @@ struct lan9118_state {
->      int32_t tx_status_fifo_head;
->      uint32_t tx_status_fifo[512];
->
-> -    int32_t rx_status_fifo_size;
-> +    int32_t rx_status_fifo_wordcount;
->      int32_t rx_status_fifo_used;
->      int32_t rx_status_fifo_head;
+> rx_fifo[] is an array of words,
+> rx_fifo_size is a word count.
 
-True, but rx_status_fifo_used and rx_status_fifo_head
-are also word counts. Should we try to indicate units in
-all these names, or is that getting unwieldy?
+True, but that's not why rx_fifo[] has been sized to 3360.
+It's 3360 because that is the worst-case RX data FIFO size
+in words (if TX_FIF_SZ is 2 then the RX data FIFO is 13440
+bytes, which is 3360 words). So in this case the array size
+is correct.
 
+thanks
 -- PMM

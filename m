@@ -1,177 +1,181 @@
-Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp238149ejc;
-        Wed, 10 Apr 2024 04:09:51 -0700 (PDT)
-X-Received: by 2002:a50:8d0a:0:b0:56b:a077:2eee with SMTP id s10-20020a508d0a000000b0056ba0772eeemr1471836eds.4.1712747391233;
-        Wed, 10 Apr 2024 04:09:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712747391; cv=none;
+Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp413622ejc;
+        Wed, 10 Apr 2024 09:07:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUueYXQQqpSSbx+5qnNthlc7GKKl9ARfx0hDsrKsHzYJsmlZYvpyIcFaXWrPtsHIp+AZZgS0hJzpVTS4I2Dbu4c1m6yyNN0
+X-Google-Smtp-Source: AGHT+IGRtnbgdd2Ziat+c+VvarvZRt3YrbZXs7SDd0XO59W2g3XKMoYX3591CaBIR47SLUCoON1w
+X-Received: by 2002:a05:6214:20cf:b0:696:9255:b787 with SMTP id 15-20020a05621420cf00b006969255b787mr3254075qve.9.1712765252379;
+        Wed, 10 Apr 2024 09:07:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712765252; cv=none;
         d=google.com; s=arc-20160816;
-        b=NFXSHAUtOTz0DxapOPhXwUNy406FdCyKmNr0bmUP6GjEp/jNOmREhbShq1bOHa3P1d
-         /hsgEl4c5H2QIDM+bZrDD0sMDlwqz+y6U4bXcp7aqzWuxsW1J8lDC4dsrtbr2kdosSG9
-         85GmpmLUkCUw412psI/XkCq0QVi2dbXPkl1cvjkrKJhXIOMCeViVZSXA0cteYPRkd3GX
-         kbEeQgqIVvwrNRQd8zUA5AOUw7SrRhj74dIN3nfqyBXO6V+UQyHT9SChnbMsefc7AVpF
-         997vpca2ooh2A9oy66h6//S5eS4q5EWLP6Rr1RF/HUJzLsQbP2I4g5ZrAuA596jdypYC
-         9IfA==
+        b=fjY+1CuHJXcJ1/wJXTpi2x3SlMYJrYn5H4u91oE51fkJDhDeNS8p2YfQwEkhpVG+zi
+         trAj71wxH059npq7hLClQOnLZuv2N40YZ0FTvRj91fcJWx9WXeoJ1iDVJyd2ZA5nyY9T
+         2+v3CZJkaV4m/fHhdQNUuPDU26U4TSMmDJEFmT2PTN8LlZqZiXVFas+OMmBT6cdyMpsi
+         oO8FxwFFeUYdONirt1ibbWOeur/sM8zFu9DPpVltwCSDKV8nHNG+PwSH+8Z0NrRLrq59
+         IzKYw0D3rNlpIeWvx4XDn6+lT74zwtmdgW65tHHFD3hgzcmEa66H8JuOw3Zgko6lNMmO
+         JP4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=vE92hnc8BAG0T6Kx44GKeZRxsC+3iq1fx3ux4Mdkiqk=;
-        fh=CBnOaSFfJkaPz4RfPZ0Yxqetu/mr7EzRO2alpDGp8ZQ=;
-        b=ys9zoXjfa1GLlPW/LQ9iVqfwNfp1hbXWJgvrWPcVyOjafz7h4wiFLBdzbXFuJq6slc
-         t9gu2YN2LeMFAUD3ERiTkXgU/+MjFGA8in/475olb0Ei2wfZvPNoPiNnmOAqr8yZAZ3v
-         pF6+tucLAvD+NjnyQSX1ljmCgiEeuoIp3DTIjlQbNDMKhwpgX0VwppzECfHHgyOfGcDz
-         3NO9jmH2KBob2241U7obXSsYbpu39mVD2q+MdSkwjmmNOY0qpHIhbQeGFX40rg6oLMIV
-         9PYjyfbtCitrlHjYBnV5SbBv9oaw6yWD/gPVj8QEt/kDT5Gz/PqCkE039ptA+M7w4vu2
-         BUvQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Qtkg4POGe6isMYcrXvpVF2IG6m9MMiveeMLsCwcT+VQ=;
+        fh=p8yoxHa5ML4mJnXWYGUfW3W4flmLPcqyR+rvhpg+zLE=;
+        b=IRWCJBiTRsd9ABLT4ESu6UBNVBn9WAhPeDrRnkjv30qt7oDW8sYfhV3HmoL3Q+Op0u
+         sARfOPnBFPdYwHhhdZjui4247ZA04AGwDdR4TfVege34zH7PXtxgC0zZTzTBetddBjEo
+         iKoNpGHaob3PV4uxRxwf3r/YXQRGoNnA71GhMa/gLzX6BLiaRKFO9aa+gq4nx3rXKR8n
+         wLPwD6WrRRgbUtgyFYM5Fw9OkDd6NbGoDZKrKlVvCQp/Qv2h/tfT7He37oboOnRVgFxL
+         VD0fIOZ+pvdGqYi15wbhJe5XNGlnRqcbaniVBaBga8Bd7/cFRpHjAjeenBv4Q2bmm21r
+         cFzg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=U1dzIePk;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id z3-20020a50cd03000000b0056c2e2f4575sor2741178edi.3.2024.04.10.04.09.51
-        (Google Transport Security);
-        Wed, 10 Apr 2024 04:09:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@linaro.org header.s=google header.b="G6Tg/+7v";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id et12-20020a056214176c00b0069935f02a8bsi12691077qvb.387.2024.04.10.09.07.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 10 Apr 2024 09:07:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=U1dzIePk;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b="G6Tg/+7v";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ruaTD-0000CQ-VX; Wed, 10 Apr 2024 12:06:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruaT0-00009p-24
+ for qemu-devel@nongnu.org; Wed, 10 Apr 2024 12:06:33 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruaSv-0002Yj-GT
+ for qemu-devel@nongnu.org; Wed, 10 Apr 2024 12:06:28 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-56e23bbe06bso1765346a12.0
+ for <qemu-devel@nongnu.org>; Wed, 10 Apr 2024 09:06:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712747391; x=1713352191; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=vE92hnc8BAG0T6Kx44GKeZRxsC+3iq1fx3ux4Mdkiqk=;
-        b=U1dzIePkRQ2zx3fmMPm8Xeh6VqlvVFPWywIWaSW1wbZ64/W5F2DDmhY17UTXe4kcak
-         aSBcj1o2gqSSaGkBOcH4lxvdoI4ICx09YiydEcV7O0weT0gmJ5fWlwPhSd0HCoJVegfU
-         y11kTc2lmyBEY62ve3WOIszzY12zFxgnAocqJn/h9RVcRD4YGXHfaI0rvzmz4r48R4r9
-         M8GRn8l75Sumc4omJERIKcIfW4gcXldCXMp1oSXtOoBsDZ3I9ikod2tucyJlbT+cglVy
-         cmwJkq2oZuFhHcfx1VCSC4zEjTRz6rDk521xLSe9RguEFsWpJ4DkQlSvfX/QuuMK0nlt
-         53gg==
+ d=linaro.org; s=google; t=1712765177; x=1713369977; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Qtkg4POGe6isMYcrXvpVF2IG6m9MMiveeMLsCwcT+VQ=;
+ b=G6Tg/+7vqom4SNpdVIX70ttnwcSqmozkV4XRrB62f/sBjYNHlDrAeIM0oE/kR+KBma
+ q2Vln2RLSFBrBYt/g1N/OsR1qBRIYblNhYQpEdWKX0JRQJtDWH0hziAN+CCCMx79vSyG
+ cPjDX3eigUsYmdAxgnMJwvr9/KZiv/78jjfBDZnTf+NODkuJKuPHx3zJz9bsbxSOXw0y
+ LRoVSBldmYdvnvd9kVfszBe2d2uN9Og/JltDYrjC2bbzoEG7KPrq/ZDWaq8nn+IpyFL/
+ R8VoJIrWOt+ERWf44wIe8zKMD9cRMtSstpoknlkvMc39a1UZqX54KbzErvKUYJETPjdn
+ RNpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712747391; x=1713352191;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vE92hnc8BAG0T6Kx44GKeZRxsC+3iq1fx3ux4Mdkiqk=;
-        b=nu09BL0myqw1Uxxfh+vHJ8TL9+L6v7SZ4vX2YNXAeAsAvkwhU2eBxK7A87BvJx2J32
-         rVkLSsYIsVhVqVxdCVT5I57JHUfNSqgpd4DDQx1Crz7KNxPr11WkbX4uREiOMgFBpnMt
-         R6wQjHOMUHTn+llIX76zpjNXF0YBqEvXaxGIZpfGp0X/RdzXdcNG32GLHyjMoO40jq0J
-         ne2qsG76dYL57s2Kas0nU3rqCMa6qX8AeQI7aEbYRkYGGFTgDVSou4NjmYDUh2Ixj4A3
-         LRBsCgrt9sW0RHjDNZPDPuWCTefJpYzlHAa1uwyMCR5rBX8O+GXc3tigeW4xKnYfSJrg
-         RNrg==
-X-Forwarded-Encrypted: i=1; AJvYcCU2jcc/EFWs7oMXVNaRyvzoOwNg/0ApNiPNzV2uIZLNMfip3uDRqAN8nakAdBrdDmVWHVrWFiMaxMmK0U37K6F3jXYm8vwrpOo=
-X-Gm-Message-State: AOJu0YxJM25oy1yoknnzLiofm9l+s9gUmJDJ0AMNuRI5etRSld+Sw6Od
-	SEhyRJzVbdAj3JCA6oT7CT3NLgAlh6v1bJ28fut0u4Q0ieSmx0Ns4x/tnY8+yJjQMJytmt0XGyJ
-	1nIXTvAKUCeDdtZPN1MCsPTywwwM1huPX69bsCFor
-X-Google-Smtp-Source: AGHT+IHrJ+Y8ioHbIy0Osc3IVG8sczZ/fh2l/i3k+Pjsz6iAjVr7s4zdD5EDW4dIxxrrt0vurUB8+OFWHS+EEB1t83Q=
-X-Received: by 2002:a50:8a89:0:b0:56d:c88a:f37 with SMTP id
- j9-20020a508a89000000b0056dc88a0f37mr1422295edj.26.1712747390673; Wed, 10 Apr
- 2024 04:09:50 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1712765177; x=1713369977;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Qtkg4POGe6isMYcrXvpVF2IG6m9MMiveeMLsCwcT+VQ=;
+ b=iCeidnlZ1nCQiCuolOLjt0DerXu6GNqG/d2BAhlLmWAflJbrQdmfCGc5npTBtc8KTH
+ YlRvqEwybfJIw6yGFLsEIH3LLYpOoYKTw6fiPfqmJPmL+TxKvBfibTK59SMcXOnramJy
+ R5Vkls/joYxNZr4C3MIZd+68uEXRbgKpRj46/usAOwewIglXuseEP/GffHUSuxpjHtU/
+ uH5Wpv2j86dNMTdZbT4lLwc9rUj+ibmy8jSIPbZOjJ6/syhb2nM4o9urKwaUnTVyOcWD
+ 7eUypQZ7u5/WvIEW3CmCcM2Vgck0iqfM45NOO/gQ8U19Tj+MgVOFlQjxsxX6KPQy2dyl
+ 18Lw==
+X-Gm-Message-State: AOJu0YyRJ4SaY28SDtxLLZg00gxScesS9+A8LddsnNqlaN2Uxs0zWHyQ
+ Dve+LnB4rw6BsYDFC3Q+3BbWuu+A3LTti7JcsDjTLEtwWtXhxPV4EtGyxPm7fKRRGHVobgz88x/
+ A
+X-Received: by 2002:a50:871c:0:b0:56e:3088:49a with SMTP id
+ i28-20020a50871c000000b0056e3088049amr2567624edb.37.1712765177225; 
+ Wed, 10 Apr 2024 09:06:17 -0700 (PDT)
+Received: from m1x-phil.lan (arl95-h02-176-184-34-173.dsl.sta.abo.bbox.fr.
+ [176.184.34.173]) by smtp.gmail.com with ESMTPSA id
+ i2-20020a50fc02000000b0056e22be831dsm6544900edr.42.2024.04.10.09.06.15
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 10 Apr 2024 09:06:16 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ Philippe =?unknown-8bit?q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/12] misc: Remove sprintf() due to macOS deprecation
+Date: Wed, 10 Apr 2024 18:06:01 +0200
+Message-ID: <20240410160614.90627-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-References: <20240227223501.28475-1-vikram.garhwal@amd.com>
- <20240227223501.28475-8-vikram.garhwal@amd.com> <87il25514r.fsf@draig.linaro.org>
- <ZejYmXhm87RGhQED@amd.com>
-In-Reply-To: <ZejYmXhm87RGhQED@amd.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Wed, 10 Apr 2024 13:09:39 +0200
-Message-ID: <CAJy5ezqc1MsfR7A=ba5N42M-r42ciDzTvDy92r3SENQKg+FMYw@mail.gmail.com>
-Subject: Re: [QEMU][PATCH v3 7/7] hw: arm: Add grant mapping.
-To: Vikram Garhwal <vikram.garhwal@amd.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-devel@nongnu.org, sstabellini@kernel.org, jgross@suse.com, 
-	Peter Maydell <peter.maydell@linaro.org>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="000000000000cfa99e0615bc13e8"
-X-TUID: osFm9rq6b9g6
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7iwiGOyQjfGb
 
---000000000000cfa99e0615bc13e8
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi,
 
-On Wed, Mar 6, 2024 at 9:57=E2=80=AFPM Vikram Garhwal <vikram.garhwal@amd.c=
-om>
-wrote:
+sprintf() is deprecated on Darwin since macOS 13.0 / XCode 14.1,
+resulting in painful developper experience.
 
-> Hi Alex,
-> On Fri, Mar 01, 2024 at 05:10:28PM +0000, Alex Benn=C3=A9e wrote:
-> > Vikram Garhwal <vikram.garhwal@amd.com> writes:
-> >
-> > > Enable grant ram mapping support for Xenpvh machine on ARM.
-> > >
-> > > Signed-off-by: Vikram Garhwal <vikram.garhwal@amd.com>
-> > > Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
-> > > ---
-> > >  hw/arm/xen_arm.c | 3 +++
-> > >  1 file changed, 3 insertions(+)
-> > >
-> > > diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-> > > index 32776d94df..b5993ef2a6 100644
-> > > --- a/hw/arm/xen_arm.c
-> > > +++ b/hw/arm/xen_arm.c
-> > > @@ -125,6 +125,9 @@ static void xen_init_ram(MachineState *machine)
-> > >                                   GUEST_RAM1_BASE, ram_size[1]);
-> > >          memory_region_add_subregion(sysmem, GUEST_RAM1_BASE, &ram_hi=
-);
-> > >      }
-> > > +
-> > > +    DPRINTF("init grant ram mapping for XEN\n");
-> >
-> > I don't think we need the DPRINTF here (there others where recently
-> > converted to trace-points although I suspect a memory_region tracepoint
-> > would be a better place to capture this).
-> May be drop the print? As it's not providing much information anyways.
->
+Suggestion to avoid the super-noisy warning on macOS forum are [*]:
 
-With the DPRINTF dropped:
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+* use -Wno-deprecated-declarations on the whole build
+* surgically add #pragma clang diagnostic around each use.
 
---000000000000cfa99e0615bc13e8
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+None of these options seem reasonable, so we are somehow forced to
+spend time converting each sprintf() call, even if they are safe
+enough.
 
-<div dir=3D"ltr"><div dir=3D"ltr">On Wed, Mar 6, 2024 at 9:57=E2=80=AFPM Vi=
-kram Garhwal &lt;<a href=3D"mailto:vikram.garhwal@amd.com">vikram.garhwal@a=
-md.com</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">Hi Alex,<br>
-On Fri, Mar 01, 2024 at 05:10:28PM +0000, Alex Benn=C3=A9e wrote:<br>
-&gt; Vikram Garhwal &lt;<a href=3D"mailto:vikram.garhwal@amd.com" target=3D=
-"_blank">vikram.garhwal@amd.com</a>&gt; writes:<br>
-&gt; <br>
-&gt; &gt; Enable grant ram mapping support for Xenpvh machine on ARM.<br>
-&gt; &gt;<br>
-&gt; &gt; Signed-off-by: Vikram Garhwal &lt;<a href=3D"mailto:vikram.garhwa=
-l@amd.com" target=3D"_blank">vikram.garhwal@amd.com</a>&gt;<br>
-&gt; &gt; Reviewed-by: Stefano Stabellini &lt;<a href=3D"mailto:sstabellini=
-@kernel.org" target=3D"_blank">sstabellini@kernel.org</a>&gt;<br>
-&gt; &gt; ---<br>
-&gt; &gt;=C2=A0 hw/arm/xen_arm.c | 3 +++<br>
-&gt; &gt;=C2=A0 1 file changed, 3 insertions(+)<br>
-&gt; &gt;<br>
-&gt; &gt; diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c<br>
-&gt; &gt; index 32776d94df..b5993ef2a6 100644<br>
-&gt; &gt; --- a/hw/arm/xen_arm.c<br>
-&gt; &gt; +++ b/hw/arm/xen_arm.c<br>
-&gt; &gt; @@ -125,6 +125,9 @@ static void xen_init_ram(MachineState *machin=
-e)<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0GUEST_RAM1_BASE,=
- ram_size[1]);<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 memory_region_add_subregion(sys=
-mem, GUEST_RAM1_BASE, &amp;ram_hi);<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; &gt; +<br>
-&gt; &gt; +=C2=A0 =C2=A0 DPRINTF(&quot;init grant ram mapping for XEN\n&quo=
-t;);<br>
-&gt; <br>
-&gt; I don&#39;t think we need the DPRINTF here (there others where recentl=
-y<br>
-&gt; converted to trace-points although I suspect a memory_region tracepoin=
-t<br>
-&gt; would be a better place to capture this).<br>
-May be drop the print? As it&#39;s not providing much information anyways.<=
-br>
-</blockquote><div><br></div><div>With the DPRINTF dropped:</div><div>Review=
-ed-by: Edgar E. Iglesias &lt;<a href=3D"mailto:edgar.iglesias@amd.com">edga=
-r.iglesias@amd.com</a>&gt;</div><div><br></div><div><br></div></div></div>
+I'm so tired of seeing them than I started the conversion. This is
+the first part. Help for the rest is welcomed.
 
---000000000000cfa99e0615bc13e8--
+Regards,
+
+Phil.
+
+[*] https://forums.developer.apple.com/forums/thread/714675
+
+Philippe Mathieu-Daudé (12):
+  ui/console-vc: Replace sprintf() by g_strdup_printf()
+  hw/vfio/pci: Replace sprintf() by g_strdup_printf()
+  hw/ppc/spapr: Replace sprintf() by g_strdup_printf()
+  hw/mips/malta: Replace sprintf() by g_string_append_printf()
+  system/qtest: Replace sprintf() by g_string_append_printf()
+  util/hexdump: Rename @offset argument in qemu_hexdump_line()
+  util/hexdump: Have qemu_hexdump_line() return heap allocated buffer
+  util/hexdump: Replace sprintf() by g_string_append_printf()
+  hw/scsi/scsi-disk: Use qemu_hexdump_line() to avoid sprintf()
+  hw/ide/atapi: Use qemu_hexdump_line() to avoid sprintf()
+  hw/dma/pl330: Use qemu_hexdump_line() to avoid sprintf()
+  backends/tpm: Use qemu_hexdump_line() to avoid sprintf()
+
+ include/qemu/cutils.h   | 17 ++++++++++++++---
+ backends/tpm/tpm_util.c | 24 ++++++++----------------
+ hw/dma/pl330.c          | 12 +++---------
+ hw/ide/atapi.c          |  8 ++------
+ hw/mips/malta.c         | 22 +++++++++++++---------
+ hw/ppc/spapr.c          |  4 ++--
+ hw/scsi/scsi-disk.c     |  8 ++------
+ hw/vfio/pci.c           |  7 +++----
+ hw/virtio/vhost-vdpa.c  | 11 ++++++-----
+ system/qtest.c          |  8 +++-----
+ ui/console-vc.c         |  4 ++--
+ util/hexdump.c          | 33 ++++++++++++++++++---------------
+ 12 files changed, 76 insertions(+), 82 deletions(-)
+
+-- 
+2.41.0
+

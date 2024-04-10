@@ -1,114 +1,113 @@
-Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp414790ejc;
-        Wed, 10 Apr 2024 09:09:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV3dIrVP2QklsVTUmIffToTVO4hL/XEVQQN18bZN2uf7hqxxD7lD3zIZLUfdzDoPLiDnQtJrzJYk2upy452qs7nk2jgrwk1
-X-Google-Smtp-Source: AGHT+IHqHNjadlu6owNgTRNeE9QoNLEOKegK1pepkFH6hopUs4cu36gaYleA9rhR4zouPmW4/e32
-X-Received: by 2002:a05:622a:47:b0:434:62f4:2505 with SMTP id y7-20020a05622a004700b0043462f42505mr3174712qtw.2.1712765347072;
-        Wed, 10 Apr 2024 09:09:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712765347; cv=none;
+Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp415000ejc;
+        Wed, 10 Apr 2024 09:09:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUDdBtzebgn5/3gkjopNv2ZtKHiOmkp6+Zx6Pwpgu9DxEdQb/v5OXkSfw41hu95VLRBCQ6ukj+kIYDJlu9JYWhvLA5aXXJk
+X-Google-Smtp-Source: AGHT+IFeVu6IeofouxFDokrFQp+diZOMdIKgqv8V9fK3gjMYvm7cDb32GOaen31sZ0WvpwVQAf8g
+X-Received: by 2002:a05:6214:da1:b0:69b:2aa8:dc66 with SMTP id h1-20020a0562140da100b0069b2aa8dc66mr3572503qvh.28.1712765363505;
+        Wed, 10 Apr 2024 09:09:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712765363; cv=none;
         d=google.com; s=arc-20160816;
-        b=0yyNPTY5ZOTOp8ue5Ho53DIG1gSR/OiCYhBCpLP/TTQlzgTtw8GTDyT53aY5koNSyy
-         lQLcJg81Rgl6nSa1ykeTQ1i0E6zcH4BwYztDvPjVlY8Ow9Md0QOYze8MWn62sQzzSft8
-         S8pveXDlqIF2XYAuiExzd1svTCTdsV9jVj2z3PVcNQznDyMzjdRrWhddVn7bV8lBwnGG
-         wPRYvT2CH+YnyP7HulfBQNpQ74TvLyP3/GXL3dLPWKCy/3exQjy6Z/R8K9DBC+obXn/f
-         EdD+94gn3uNdwkJ4Wi6MRfuNT8uH0i6W2LOkLAoS/AXsV1OldXeAo2eZeQsy3s5qjsn8
-         +6Bw==
+        b=YP7xvmfNbayDpfvTI1plWPDXtzWrgS3FeORC0H1cLgQj9uwBvhQQBSwUXufXagKmXv
+         zfcFog0aMz1qVtUjFRZBIPa0bnN28bbquyc/nenS3Nxy3WGrOI3uu5AxAN6sNp1UdRS0
+         yPsfN63msCpWSpGF8w7ooK4ZDxUVCd2JFznh9NdV3snBS/YUp0/CaEybqoksh7vRPfsO
+         ukrneWQJBCz5eC/E14qWpHtKw0IGMQ5bcQSwWYuZOdIF6c0O3oWVxu+ydFe6b6ePe3i8
+         Lwl0JSV+/lTjZyZue+mBhXh3xaArLzzduOSYE/Jy0JkfZlI3WF/JjhOuGeXrQC4Itntu
+         vPiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=F1NpFpUrBWuL7lYE+0KLDn2ZH8pFKE5VoepA/3Vy6uc=;
-        fh=09EcShx6kmYL3ZKJT1SYMIa3PY22rWT7otN6l6zDXME=;
-        b=l3Dzl3VRHvSU3mJIXXSGHmabDElrFJR2ZvO1HUfYsvD4LUwnNY1AsAORJ0ECN4qcvR
-         FD9LFiNMjoVDFf62jqCHRGFZLAQ/dVHuETsVh/AqX6NXjIQndtxHDrsdyFlwSmJxCAo8
-         gZPxXTKDfknuLhO7tWLUDpQWIXNN4W2dKwhZcCBxjfcb8NUv8wX83+M/kJvw/AiFdujK
-         lCXT1vTBVQ/gbyTK0wgc7EHuZ/EeKpzj/eDZPkeEZw2JAdF4NIlGWJqqxUvxP+dSd5g4
-         wkj50prKJ6/aZy48R7ucMZf0x7vSSVY6//CNG58HzcX5z7y7CEDn93LYUm0xUDu+WJki
-         H6Dw==;
+        bh=tmrbaiUVNJN3VwkspX6n0mLGveiY6Yl+m30htubqYrE=;
+        fh=s1iuJY5DbIijYD6dlLSPIDBSiHLILOeGKgnYh7ZcSrg=;
+        b=iBUfstSrk3l89newKGVNoy7sH/myB6W8fkfGdVJLZpnH/sn3tY2I4nJRVz7Qlp+xj5
+         EAa/dVIZcDKvn34ffhj4A9FwRoYYTswAVpfrTDTNObzwHSKqm6ZaW0VVyWQOanPKfmFV
+         q3juvwHmsoEJotlk/Ifeh1BExTF/jdcpJHsOAV34IbxUoPTK8OiWE6j1yAl+dJSsvxlN
+         DCMl6hJk2en2oHYLN/QNQp0k43QZDqo7GAfsg+RVK3Zro00ck+Jlo3EQyMphTmmm08+K
+         t1HpoSILL94DvSJBwUN1rxoBvFrJbcXvcNWXZabYKHmjiKsuinszjAOpTeVT9eThUFbU
+         17hw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tsg5YHeD;
+       dkim=pass header.i=@linaro.org header.s=google header.b="JVdI3/bJ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c13-20020ac87d8d000000b0043640286d7dsi1088971qtd.773.2024.04.10.09.09.06
+        by mx.google.com with ESMTPS id eh19-20020a056214187300b00696a0e92d92si12679986qvb.257.2024.04.10.09.09.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Apr 2024 09:09:07 -0700 (PDT)
+        Wed, 10 Apr 2024 09:09:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tsg5YHeD;
+       dkim=pass header.i=@linaro.org header.s=google header.b="JVdI3/bJ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ruaTS-0000QI-7M; Wed, 10 Apr 2024 12:06:58 -0400
+	id 1ruaUC-00011E-Oa; Wed, 10 Apr 2024 12:07:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruaTQ-0000OP-7X
- for qemu-arm@nongnu.org; Wed, 10 Apr 2024 12:06:56 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruaTo-0000Va-RK
+ for qemu-arm@nongnu.org; Wed, 10 Apr 2024 12:07:22 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruaTO-0002hN-Hv
- for qemu-arm@nongnu.org; Wed, 10 Apr 2024 12:06:55 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-a51a1c8d931so665442666b.0
- for <qemu-arm@nongnu.org>; Wed, 10 Apr 2024 09:06:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruaTn-0002l7-9v
+ for qemu-arm@nongnu.org; Wed, 10 Apr 2024 12:07:20 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-56845954ffeso9225265a12.2
+ for <qemu-arm@nongnu.org>; Wed, 10 Apr 2024 09:07:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712765213; x=1713370013; darn=nongnu.org;
+ d=linaro.org; s=google; t=1712765238; x=1713370038; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=F1NpFpUrBWuL7lYE+0KLDn2ZH8pFKE5VoepA/3Vy6uc=;
- b=Tsg5YHeD7mSxw0UaB4lmQ1RUfRORqL3+j2KyD6Vu2/XuDjHcO0YO+TYkMhM6rk0EIC
- RC2VfbvzMyslhfAOnOujjDJu9iKxbGSR3KXO1m/zYa6Pkd0dJrmN4xS1Mam3soSz+GXj
- WK0nJ5kpWVVU1nD7Rxh7phukWj6bfEqGekmYwI7q2tbdYv8pe+k4M1KU+QQth/RMjJj9
- 51jCiQUgg0YOS4Hx7Q+9IWbcrOqP8qBqPfsmtRM5eBIzQl2C5IUyqbGeBy6+vUzWnAGZ
- 8uRPh7SU23sdZmchB/L5Mqg2NOvfOI/MDjgITP6sL2vZaTwhTvmqENKCCzk/mPElE1hR
- 3QYA==
+ bh=tmrbaiUVNJN3VwkspX6n0mLGveiY6Yl+m30htubqYrE=;
+ b=JVdI3/bJyAnRiH7HM0mKCBnRJihYXsZIOUsDWSD3sC5DjVTt6pGKrkp2JfW2S+DWmE
+ adeWdhxLYuUs2HZexMoICMxAusqGH/0ogO2zYoLDb4bNcfjMmii8BcYH03bCNxJEPHg/
+ aG9kkuGQJoDa0DvRO9zbrZYyhC/pLa3W4AmbcNktrCYyafp3z+T5hkZUwSrQcRsd8aDq
+ ff5fBygq0kgRXVrd9+1Oyk+Yx4vvKVcFffYrBYmAbOo//pRMeHkJBLg1XtDLqpZ/7pPy
+ xlh651SeqU0Ykk+SzGq4HJsy9KDfJ5y3lXFO1hKuWI+DuYQ0sj7wKBLtO5NEC18v6oR0
+ 7/Dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712765213; x=1713370013;
+ d=1e100.net; s=20230601; t=1712765238; x=1713370038;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=F1NpFpUrBWuL7lYE+0KLDn2ZH8pFKE5VoepA/3Vy6uc=;
- b=qUiE8k+L1U/XyIv8SCi/9h3No+AyW9fCzjfM3u5AK2E1hVhI4jKCkxdL6eNZwVHrk8
- zlywpNZCJvL+G+v/q/HWpgC/cTYTDXt7ZTQgbSWUvKguhI1ZdVvJFWeJAlL/iqDn9hKt
- VGtJJC51LYeKXFBbOdnDHYvZY0hPqOSQ4apKDJjjV86iL8/XUjJ9kDuIiyTf4ZnNlSBn
- B6IlFYWOQ6jo78X7idbZK2f1RSkoDJ/wAkOo0UNYUFWxcbND5Lqtg6Uqo/OHjmrfdSGb
- BMMfDCDizdu87uarAx837gqo5syUemki8h2P3ucyCZjWlpML9CDy9q2Tlxl/ZV0tpRKv
- rckQ==
+ bh=tmrbaiUVNJN3VwkspX6n0mLGveiY6Yl+m30htubqYrE=;
+ b=QzF8PeH0FOLNnl6QUBK55ys/23py7Fa0dR4nwwXeSKsKOo1MPWlFlGsfTAoz/9VozA
+ ny75JmCB/d8gRsr7/pwuIjuA61EltLqN1k5p4r23Di3mQ/0mkwEFDhK+nlnUkZG97/AR
+ boMbezfB3LMdoQTF39DhXUsbe+XIRevMFrZ0Pe61PY5mTqHu+Hck+lDu1P3rUdrb2H0/
+ HQdUEcuUgFHHNI8enlbYjgu9/o5ZA1HaemJnnCiE/vX5F31Lm5eIIdOn5lHTUirxs778
+ rCFUhC0XLMUmaiyhwbrbU3dsbKrYD7Ro9GaOoJBmm3Pr9WPNYaX+4qNJcsAnOp+JA8Oj
+ TyUw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWo5xZy45W4W5sO2yXVF8OyFW5FF8Bi/6DHekR2bBrvi7afGhqLxn1kOxis2REf/9rUelTZF+VAFxw/hrbsdvvHMLCt
-X-Gm-Message-State: AOJu0Yyf3kfC1TE1rUD98/zt0uIBnVJ+7kilALWxvcbAf0JGs9PQnDbB
- DheBhGRNBg0yfbErbGy3nU/MTpo+XKuU0+YvcdwXUzw/AQCbMJE7ccIWBcZSUsU=
-X-Received: by 2002:a17:906:2a91:b0:a51:8540:c671 with SMTP id
- l17-20020a1709062a9100b00a518540c671mr1832686eje.50.1712765213206; 
- Wed, 10 Apr 2024 09:06:53 -0700 (PDT)
+ AJvYcCVmZY7pCy/FoJVH93/6DaI61fSOeJ8R/ChWbASBhOD9VIBgWjXkTbfxnaFIne/d1HP+gd+vDXBBtimC5EGpYBieM1e5
+X-Gm-Message-State: AOJu0Ywlf2nu+QBMix145NHu1GExQ9JyJTvWeesJRL1wt8UlGKsdaBBu
+ sWXJGQcmxRRcmznxzjr929nIUFGXxE1quDtDDx8BhUqjGhWhlyxLZZcUJAQJops=
+X-Received: by 2002:a50:d6da:0:b0:56e:230b:853c with SMTP id
+ l26-20020a50d6da000000b0056e230b853cmr2079454edj.15.1712765236469; 
+ Wed, 10 Apr 2024 09:07:16 -0700 (PDT)
 Received: from m1x-phil.lan (arl95-h02-176-184-34-173.dsl.sta.abo.bbox.fr.
  [176.184.34.173]) by smtp.gmail.com with ESMTPSA id
- xh13-20020a170906da8d00b00a51c0c0cb86sm5506389ejb.22.2024.04.10.09.06.51
+ y9-20020a056402440900b0056e3707323bsm5824580eda.97.2024.04.10.09.07.15
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 10 Apr 2024 09:06:52 -0700 (PDT)
+ Wed, 10 Apr 2024 09:07:16 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-block@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH 06/12] util/hexdump: Rename @offset argument in
- qemu_hexdump_line()
-Date: Wed, 10 Apr 2024 18:06:07 +0200
-Message-ID: <20240410160614.90627-7-philmd@linaro.org>
+ John Snow <jsnow@redhat.com>
+Subject: [PATCH 10/12] hw/ide/atapi: Use qemu_hexdump_line() to avoid sprintf()
+Date: Wed, 10 Apr 2024 18:06:11 +0200
+Message-ID: <20240410160614.90627-11-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240410160614.90627-1-philmd@linaro.org>
 References: <20240410160614.90627-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,123 +129,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: z1MbnCOLOZiN
+X-TUID: f+dnAWsdZXQi
 
-@offset argument is more descriptive than @b.
+sprintf() is deprecated on Darwin since macOS 13.0 / XCode 14.1,
+resulting in painful developper experience.
 
-Inverse @bufptr <-> @offset arguments order.
+Use qemu_hexdump_line() to avoid sprintf() calls, silencing:
 
-Document qemu_hexdump_line().
+  [1367/1604] Compiling C object libcommon.fa.p/backends_tpm_tpm_util.c.o
+  backends/tpm/tpm_util.c:355:18: warning: 'sprintf' is deprecated:
+    This function is provided for compatibility reasons only.
+    Due to security concerns inherent in the design of sprintf(3),
+    it is highly recommended that you use snprintf(3) instead.
+    [-Wdeprecated-declarations]
+            p += sprintf(p, "\n");
+                 ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/qemu/cutils.h  | 11 +++++++++--
- hw/virtio/vhost-vdpa.c |  8 ++++----
- util/hexdump.c         | 16 ++++++++--------
- 3 files changed, 21 insertions(+), 14 deletions(-)
+ hw/ide/atapi.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
-index 92c927a6a3..70ca4b876b 100644
---- a/include/qemu/cutils.h
-+++ b/include/qemu/cutils.h
-@@ -252,12 +252,19 @@ static inline const char *yes_no(bool b)
+diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
+index 73ec373184..27b6aa59fd 100644
+--- a/hw/ide/atapi.c
++++ b/hw/ide/atapi.c
+@@ -24,6 +24,7 @@
   */
- int parse_debug_env(const char *name, int max, int initial);
  
--/*
-+/**
-+ * qemu_hexdump_line:
-+ * @line: Buffer to be filled by the hexadecimal/ASCII dump
-+ * @bufptr: Buffer to dump
-+ * @offset: Offset within @bufptr to start the dump
-+ * @len: Length of the bytes do dump
-+ * @ascii: Replace non-ASCII characters by the dot symbol
-+ *
-  * Hexdump a line of a byte buffer into a hexadecimal/ASCII buffer
-  */
- #define QEMU_HEXDUMP_LINE_BYTES 16 /* Number of bytes to dump */
- #define QEMU_HEXDUMP_LINE_LEN 75   /* Number of characters in line */
--void qemu_hexdump_line(char *line, unsigned int b, const void *bufptr,
-+void qemu_hexdump_line(char *line, const void *bufptr, unsigned offset,
-                        unsigned int len, bool ascii);
- 
- /*
-diff --git a/hw/virtio/vhost-vdpa.c b/hw/virtio/vhost-vdpa.c
-index e827b9175f..cf7cfa3f16 100644
---- a/hw/virtio/vhost-vdpa.c
-+++ b/hw/virtio/vhost-vdpa.c
-@@ -941,12 +941,12 @@ static int vhost_vdpa_set_config_call(struct vhost_dev *dev,
- static void vhost_vdpa_dump_config(struct vhost_dev *dev, const uint8_t *config,
-                                    uint32_t config_len)
- {
--    int b, len;
-+    int ofs, len;
-     char line[QEMU_HEXDUMP_LINE_LEN];
- 
--    for (b = 0; b < config_len; b += 16) {
--        len = config_len - b;
--        qemu_hexdump_line(line, b, config, len, false);
-+    for (ofs = 0; ofs < config_len; ofs += 16) {
-+        len = config_len - ofs;
-+        qemu_hexdump_line(line, config, ofs, len, false);
-         trace_vhost_vdpa_dump_config(dev, line);
-     }
- }
-diff --git a/util/hexdump.c b/util/hexdump.c
-index 9921114b3c..469083d8c0 100644
---- a/util/hexdump.c
-+++ b/util/hexdump.c
-@@ -16,7 +16,7 @@
  #include "qemu/osdep.h"
- #include "qemu/cutils.h"
++#include "qemu/cutils.h"
+ #include "hw/scsi/scsi.h"
+ #include "sysemu/block-backend.h"
+ #include "scsi/constants.h"
+@@ -1309,12 +1310,7 @@ void ide_atapi_cmd(IDEState *s)
+     trace_ide_atapi_cmd(s, s->io_buffer[0]);
  
--void qemu_hexdump_line(char *line, unsigned int b, const void *bufptr,
-+void qemu_hexdump_line(char *line, const void *bufptr, unsigned offset,
-                        unsigned int len, bool ascii)
- {
-     const char *buf = bufptr;
-@@ -26,13 +26,13 @@ void qemu_hexdump_line(char *line, unsigned int b, const void *bufptr,
-         len = QEMU_HEXDUMP_LINE_BYTES;
+     if (trace_event_get_state_backends(TRACE_IDE_ATAPI_CMD_PACKET)) {
+-        /* Each pretty-printed byte needs two bytes and a space; */
+-        char *ppacket = g_malloc(ATAPI_PACKET_SIZE * 3 + 1);
+-        int i;
+-        for (i = 0; i < ATAPI_PACKET_SIZE; i++) {
+-            sprintf(ppacket + (i * 3), "%02x ", buf[i]);
+-        }
++        char *ppacket = qemu_hexdump_line(buf, 0, ATAPI_PACKET_SIZE, false);
+         trace_ide_atapi_cmd_packet(s, s->lcyl | (s->hcyl << 8), ppacket);
+         g_free(ppacket);
      }
- 
--    line += snprintf(line, 6, "%04x:", b);
-+    line += snprintf(line, 6, "%04x:", offset);
-     for (i = 0; i < QEMU_HEXDUMP_LINE_BYTES; i++) {
-         if ((i % 4) == 0) {
-             *line++ = ' ';
-         }
-         if (i < len) {
--            line += sprintf(line, " %02x", (unsigned char)buf[b + i]);
-+            line += sprintf(line, " %02x", (unsigned char)buf[offset + i]);
-         } else {
-             line += sprintf(line, "   ");
-         }
-@@ -40,7 +40,7 @@ void qemu_hexdump_line(char *line, unsigned int b, const void *bufptr,
-     if (ascii) {
-         *line++ = ' ';
-         for (i = 0; i < len; i++) {
--            c = buf[b + i];
-+            c = buf[offset + i];
-             if (c < ' ' || c > '~') {
-                 c = '.';
-             }
-@@ -53,12 +53,12 @@ void qemu_hexdump_line(char *line, unsigned int b, const void *bufptr,
- void qemu_hexdump(FILE *fp, const char *prefix,
-                   const void *bufptr, size_t size)
- {
--    unsigned int b, len;
-+    unsigned int ofs, len;
-     char line[QEMU_HEXDUMP_LINE_LEN];
- 
--    for (b = 0; b < size; b += QEMU_HEXDUMP_LINE_BYTES) {
--        len = size - b;
--        qemu_hexdump_line(line, b, bufptr, len, true);
-+    for (ofs = 0; ofs < size; ofs += QEMU_HEXDUMP_LINE_BYTES) {
-+        len = size - ofs;
-+        qemu_hexdump_line(line, bufptr, ofs, len, true);
-         fprintf(fp, "%s: %s\n", prefix, line);
-     }
- 
 -- 
 2.41.0
 

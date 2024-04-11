@@ -1,117 +1,116 @@
-Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp865366ejc;
-        Thu, 11 Apr 2024 03:44:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWYjQzRidjn3gEymnGtTSdq+xKMVMXWhiwBJqJH/8wwVYvxPLXVO/2SdSJ3oSlh2cTVkc143Df95Grp6x3yZV9reeznTRM6
-X-Google-Smtp-Source: AGHT+IEA505CN7Wz4clmy6buD3Dg+uTftTRVGK5Z2OQTPoQP+OlFrBguigdiQWNUfQIp8SjqKmFn
-X-Received: by 2002:a05:620a:819:b0:78d:61a4:6955 with SMTP id s25-20020a05620a081900b0078d61a46955mr5141542qks.67.1712832294616;
-        Thu, 11 Apr 2024 03:44:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712832294; cv=none;
+Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp865865ejc;
+        Thu, 11 Apr 2024 03:46:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUjM8JuPLJEDzgqeOBYmt/JT9TuzXmYQT8Qs4tY9UjG2Ax9CE/tfWBO0bnpctNUirsyO0q4mF5hdSxd/cuPEaKdIU8lRvR5
+X-Google-Smtp-Source: AGHT+IETwXK9IfC7du1IGEib2XEMIIbUDcQjFnfkR6ErPzh+fyEIhg4nQJfTiACwPhb65T3HlK2f
+X-Received: by 2002:a05:6102:c8a:b0:47a:2e1e:6701 with SMTP id f10-20020a0561020c8a00b0047a2e1e6701mr2811656vst.17.1712832366833;
+        Thu, 11 Apr 2024 03:46:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712832366; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dd7rUk2wtE4b3oxWGbz3NkhtWyp1cpi8z86xqedi/7/Lh2xs739ZsZhAjNh1488Ypk
-         j5L7od+pFcPXR3BBrByBhIm1RD4RF9seIe1ikhOoHvI2R+I8f+39PodZBW2TJDhNhkor
-         92J7sba39VRschhaoFO6O13YEZlenhh8OBHysuU7kOEatTiarL63iNP4m48PnMFYwW/x
-         IL3TASd9LNo/ZPWxoG3cTbBcH0z/JODGPATWmhNbctvgU2HfOvoExu8ZgdrY+YJEUlra
-         4XLrpRxgTqK+vvhyNYzFoKVNvoJhZ9tdcClluwTAnev8VovGepzSnVsQtMLUC6Iz373N
-         nEaA==
+        b=TxtcE4RR/jUunnImn2+7UV6UqNjsYArIxhICCYxukhQWbPOSHJCGOwgBCTtiKAB7kc
+         rGmkraAx4gUnXsEf/ejB4g/krrCDOjUdC6ZRJpSBKJyOk7JsQWkakVxnmnHbw5TGKVFF
+         8p7t85WN27m0ZmBud/QrkkDAvjwHx4oO3OzWMpyQOu1IAl7tJN0hPdRh1hS4wqhNi1pE
+         Y7v3SWQ9LeS+1lPPfxj/f42mjPDHf26G+bEK1+R7M+4w7AqIc+cN1VfFPDIwfym/9XAo
+         8gW9FCKoPDnxb+TJ9p/q3kEI0VKaim0UgfLNQnExW6zDbUseJDsyVeuHSnnBK99y6P5C
+         LlHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=xiqqVJM+uSsQysg2/XmJ/Md8TLOTVsfYAw0sKCriLiE=;
-        fh=6+Pw3xH97gGFzXYf3RZiDG0pTwma7nr3SVorOjtmMzQ=;
-        b=yRCldVEZ1mgaScRAqk7UsdOQM2qiemmSWzV2a+op303u/AziShmsvoEoyYbFjwl+VN
-         1hlDWEe++b8v1MBU6u5dN232PItNPHR2V6UnaD2aWtYdNHu2te02sPMs9/6VgNkXEIUq
-         YHgHQQj0bQEkkqL3oM9OuRrykgNepQlRVviSbgJZV8LoAYcm50Rgtbjf9kBXkxkeG84y
-         yDhoIt11KUcBHuRCn6Sl65E+UtQFDX2rcbILPHWn16X1+3puzsL/TcYF9TlZVxX+KSQc
-         5pbwHA0IGdzT7er4IjWhdMVnlywKD+Gzu+tTHF+n/GDGhnyN25f6gR8TKWFPDB5xZSHB
-         Rq3Q==;
+        bh=CeYnoI7aOgEwL66760hzse5mJ3cb0VBg+S1wKs8bFQ0=;
+        fh=zBgAMROPo0xqnDicIPm9Scywe+oxF2lNF81H77wFbG4=;
+        b=Au8iEJ3f1NrsbKZZyFebkgPtBsRGH017iOa+aEXVnXNFSFBRM9WwGl9RXAdmNA18eu
+         OdKOV2Ub1XmjprIlJUTqJdmfkxpQweqIIif8scLpVYHszNTaBqJZnBLVE8xi30wq31XY
+         F986mtYQFajBW8nM+Wwc+UecaQTF/1NpX66/FK/ZP6ecOoFYm3Plvx2o3VqbeQdHW9V4
+         ZqqxyKjFk8iM1yxZ7QoYHfPlr87pFk7+HrKTzKtLdnh8y0vq5z7UOND0IJK7uSrpP/Cj
+         ysa+2OL3g1g2mmHPNWx+APjsS0sLmhUpH+FLOUhwSBdJLUHNFRhriCR1wPLjNRgbJbQa
+         /AEA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GZeFCtW9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G5bDdycK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a12-20020a05620a066c00b0078d61b97935si1248938qkh.451.2024.04.11.03.44.54
+        by mx.google.com with ESMTPS id k18-20020a0cf592000000b0069b22177e9csi1237500qvm.45.2024.04.11.03.46.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Apr 2024 03:44:54 -0700 (PDT)
+        Thu, 11 Apr 2024 03:46:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GZeFCtW9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G5bDdycK;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ruruy-0003OX-Bq; Thu, 11 Apr 2024 06:44:32 -0400
+	id 1rurul-0002xr-5a; Thu, 11 Apr 2024 06:44:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruruu-0003N8-VN
- for qemu-devel@nongnu.org; Thu, 11 Apr 2024 06:44:29 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruruj-0002x8-2t
+ for qemu-devel@nongnu.org; Thu, 11 Apr 2024 06:44:17 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rurus-0004Nr-GL
- for qemu-devel@nongnu.org; Thu, 11 Apr 2024 06:44:28 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-344047ac7e4so433281f8f.0
- for <qemu-devel@nongnu.org>; Thu, 11 Apr 2024 03:44:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rurug-0004KI-Px
+ for qemu-devel@nongnu.org; Thu, 11 Apr 2024 06:44:16 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-417da6ca440so3572735e9.1
+ for <qemu-devel@nongnu.org>; Thu, 11 Apr 2024 03:44:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712832265; x=1713437065; darn=nongnu.org;
+ d=linaro.org; s=google; t=1712832252; x=1713437052; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xiqqVJM+uSsQysg2/XmJ/Md8TLOTVsfYAw0sKCriLiE=;
- b=GZeFCtW9AOmnpwAxKfWv9ISvHo97cnyH/2SgCnGbG8O41ShKUf87tOeZFwkDYtNGwF
- a6/z6Pp8NPeWLcsXQm1nmM3Onw58KbDYigvUXot1c8FDcroYsGvgEWBpK8IM4Cc7lFAG
- iRvGJIjBdjA5zm0WnTHqUawBCvZCh+vLhC5dsO974tlMfnYXOBWlB6fVN9yjsbV0Qgvt
- m47JjFs6OYT1ic7MO+RiQa2EQvt1xwb9X419iK9mwSGJNW53SJT3PuCaIzqkYQf2PjNL
- Hz5aQQPQZh8BACQwP+bXUpYitcYFZ3sbWWBoFm+To7w9/La2P9o7fAEih4fqh+XDnYun
- FIGg==
+ bh=CeYnoI7aOgEwL66760hzse5mJ3cb0VBg+S1wKs8bFQ0=;
+ b=G5bDdycK8Ly0Pi6hc566NKP7L8l/jED7DIFXFYByOqqqLEwgrjdSHO9AHgGU+hNZ9m
+ xxmdD1IFlkQ5QONWaVPFvCZGvUmflW7gganTiPa0i4o5hb1/MMIbEacA6jAkgbDWF2wi
+ rTwcY5U9RmMLwRerS3J1x2LkEFSndt4OJGfWkfIxaDU1BniN9q6mgykaFMzopGeIFmrD
+ rVa5mu7sguckJ/Q2EdG24xv2Zva4OFBGRY6qVE7GNEBY6XN8U87KQkn8bXj3zSmElcEx
+ KuCUplLGv65ttCDk+sVpt/pJn58g5dyY1Vi14Vz0XsYQI3Nv0UqHXfmyU5MHNQ6OvAHu
+ 1ssA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712832265; x=1713437065;
+ d=1e100.net; s=20230601; t=1712832252; x=1713437052;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=xiqqVJM+uSsQysg2/XmJ/Md8TLOTVsfYAw0sKCriLiE=;
- b=gfuVJiTTFDVQfxAxW36sYu9LmMGo4gVR6elN/Zl/AIVkgdeU5SapiZxeNtKMGaz+WX
- hYV0ffJzdyovh0KifFKFdXV2KVcjIyd9W3PiQStZuxKvRoeJUC8wDBg1I890Qs1WV5+V
- eCgWN33HkEacDgeyKlg0jMCrXbOCTKQoXdppbivdykuGpQ0+k+FhVrlsJPeYEcumXaMW
- Q3CngzdaFNlXzqREUAVoR/TeyddyCgbk+0KF0jYhb+PgUV4t/dzsP/rfNKwtg414efrV
- 0limXl9NKgp8QLRsXYtIolyGxJ/c1u4kf2R6vDMTxbIk9rQ54ZvsCSmrsdUzrxcG/IZN
- rkXA==
-X-Gm-Message-State: AOJu0YwgwHv0vkr28yELjaVyd/CpW7wxJsN/28NCgRthOMxDnDixMsns
- bUE8j6MvCmlHBFBMtIb93xFdQvlqeAChQwFotP4X5uCnJzrJdQgrwhobbzRJb5dnUC2DV+Qe9QI
- EVJw=
-X-Received: by 2002:a5d:46c4:0:b0:343:44cd:7d1e with SMTP id
- g4-20020a5d46c4000000b0034344cd7d1emr2084780wrs.17.1712832264913; 
- Thu, 11 Apr 2024 03:44:24 -0700 (PDT)
+ bh=CeYnoI7aOgEwL66760hzse5mJ3cb0VBg+S1wKs8bFQ0=;
+ b=TV1y6RfPIrzKuNIz7gKdQ8sFo16wII6dzYvWPAQaa49F5pC44PpUTp1LJuWeRJotiC
+ UhgrrRlvlr2MoXx22WWuZXJ2XZNfyXlQw6JPnhKHcdQX/ctHO9XgPymwgLGOYcB85inu
+ G3nEzGQBN13qyONRXqbfyvG4e9JfCS0RnDcJQdq9yiYyMghpqte2H/vnv5K3SITluhq2
+ Ti6PkQPV8lUU1o1R6CQ5a90ryqwv/egFXfOGT8n+XcfXqY3a/3hVU7ss6jqPYrTMIQvt
+ sMac+nz4RcqZdVQWQQZ/vLylbfk+FsTGqIMlF/IsLhtjA1GGjwG8S/SBf/q7cBMhT/Mh
+ kZtw==
+X-Gm-Message-State: AOJu0YwuGKZ8TSbRsZaMVpz9KM7rSv+MWWfu4cNVe1p6xNkZqkueOREu
+ ziroZSFoQiYSfVsZOj69DbzMt1UfaZmxDkk70Q2RQuY6ATgjJ5Ca1VLGLbT0rWXeqPTUhd1j58O
+ ap1s=
+X-Received: by 2002:adf:ce86:0:b0:346:bc1b:4e7c with SMTP id
+ r6-20020adfce86000000b00346bc1b4e7cmr1325606wrn.35.1712832252684; 
+ Thu, 11 Apr 2024 03:44:12 -0700 (PDT)
 Received: from localhost.localdomain
  (137.red-88-29-174.dynamicip.rima-tde.net. [88.29.174.137])
  by smtp.gmail.com with ESMTPSA id
- m5-20020a5d6245000000b0034334af2957sm1470365wrv.37.2024.04.11.03.44.23
+ c10-20020adfc04a000000b003467a420243sm1485130wrf.12.2024.04.11.03.44.11
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 11 Apr 2024 03:44:24 -0700 (PDT)
+ Thu, 11 Apr 2024 03:44:12 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Subject: [PATCH 7/9] hw/riscv/virt: Replace sprintf() by snprintf()
-Date: Thu, 11 Apr 2024 12:43:38 +0200
-Message-ID: <20240411104340.6617-8-philmd@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>
+Subject: [PATCH 5/9] hw/misc/imx: Replace sprintf() by snprintf()
+Date: Thu, 11 Apr 2024 12:43:36 +0200
+Message-ID: <20240411104340.6617-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240411104340.6617-1-philmd@linaro.org>
 References: <20240411104340.6617-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -133,39 +132,145 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: nmpCwAskAbGc
+X-TUID: j0zt9GhgCNr0
 
 sprintf() is deprecated on Darwin since macOS 13.0 / XCode 14.1,
 resulting in painful developper experience. Use snprintf() instead.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/riscv/virt.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ hw/misc/imx25_ccm.c  | 2 +-
+ hw/misc/imx31_ccm.c  | 2 +-
+ hw/misc/imx6_ccm.c   | 4 ++--
+ hw/misc/imx6_src.c   | 2 +-
+ hw/misc/imx6ul_ccm.c | 4 ++--
+ hw/misc/imx7_src.c   | 2 +-
+ hw/net/imx_fec.c     | 2 +-
+ hw/ssi/imx_spi.c     | 2 +-
+ 8 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index d171e74f7b..b3fede1207 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -1619,7 +1619,7 @@ static char *virt_get_aia_guests(Object *obj, Error **errp)
-     RISCVVirtState *s = RISCV_VIRT_MACHINE(obj);
-     char val[32];
- 
--    sprintf(val, "%d", s->aia_guests);
-+    snprintf(val, sizeof(val), "%d", s->aia_guests);
-     return g_strdup(val);
+diff --git a/hw/misc/imx25_ccm.c b/hw/misc/imx25_ccm.c
+index d888966014..faa726a86a 100644
+--- a/hw/misc/imx25_ccm.c
++++ b/hw/misc/imx25_ccm.c
+@@ -91,7 +91,7 @@ static const char *imx25_ccm_reg_name(uint32_t reg)
+     case IMX25_CCM_LPIMR1_REG:
+         return "lpimr1";
+     default:
+-        sprintf(unknown, "[%u ?]", reg);
++        snprintf(unknown, sizeof(unknown), "[%u ?]", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/misc/imx31_ccm.c b/hw/misc/imx31_ccm.c
+index a9059bb1f7..125d4fceeb 100644
+--- a/hw/misc/imx31_ccm.c
++++ b/hw/misc/imx31_ccm.c
+@@ -89,7 +89,7 @@ static const char *imx31_ccm_reg_name(uint32_t reg)
+     case IMX31_CCM_PDR2_REG:
+         return "PDR2";
+     default:
+-        sprintf(unknown, "[%u ?]", reg);
++        snprintf(unknown, sizeof(unknown), "[%u ?]", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
+index 56489d8b57..b1def7f05b 100644
+--- a/hw/misc/imx6_ccm.c
++++ b/hw/misc/imx6_ccm.c
+@@ -85,7 +85,7 @@ static const char *imx6_ccm_reg_name(uint32_t reg)
+     case CCM_CMEOR:
+         return "CMEOR";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
+@@ -224,7 +224,7 @@ static const char *imx6_analog_reg_name(uint32_t reg)
+     case USB_ANALOG_DIGPROG:
+         return "USB_ANALOG_DIGPROG";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/misc/imx6_src.c b/hw/misc/imx6_src.c
+index 0c6003559f..3766bdf561 100644
+--- a/hw/misc/imx6_src.c
++++ b/hw/misc/imx6_src.c
+@@ -68,7 +68,7 @@ static const char *imx6_src_reg_name(uint32_t reg)
+     case SRC_GPR10:
+         return "SRC_GPR10";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/misc/imx6ul_ccm.c b/hw/misc/imx6ul_ccm.c
+index bbc0be9921..0ac49ea34b 100644
+--- a/hw/misc/imx6ul_ccm.c
++++ b/hw/misc/imx6ul_ccm.c
+@@ -143,7 +143,7 @@ static const char *imx6ul_ccm_reg_name(uint32_t reg)
+     case CCM_CMEOR:
+         return "CMEOR";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
+@@ -274,7 +274,7 @@ static const char *imx6ul_analog_reg_name(uint32_t reg)
+     case USB_ANALOG_DIGPROG:
+         return "USB_ANALOG_DIGPROG";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/misc/imx7_src.c b/hw/misc/imx7_src.c
+index b3725ff6e7..d19f0450d4 100644
+--- a/hw/misc/imx7_src.c
++++ b/hw/misc/imx7_src.c
+@@ -75,7 +75,7 @@ static const char *imx7_src_reg_name(uint32_t reg)
+     case SRC_GPR10:
+         return "SRC_GPR10";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index cee84af7ba..8c91d20d44 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -41,7 +41,7 @@
+ static const char *imx_default_reg_name(IMXFECState *s, uint32_t index)
+ {
+     static char tmp[20];
+-    sprintf(tmp, "index %d", index);
++    snprintf(tmp, sizeof(tmp), "index %d", index);
+     return tmp;
  }
  
-@@ -1785,7 +1785,8 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     object_class_property_add_str(oc, "aia-guests",
-                                   virt_get_aia_guests,
-                                   virt_set_aia_guests);
--    sprintf(str, "Set number of guest MMIO pages for AIA IMSIC. Valid value "
-+    snprintf(str, sizeof(str),
-+                 "Set number of guest MMIO pages for AIA IMSIC. Valid value "
-                  "should be between 0 and %d.", VIRT_IRQCHIP_MAX_GUESTS);
-     object_class_property_set_description(oc, "aia-guests", str);
-     object_class_property_add(oc, "acpi", "OnOffAuto",
+diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+index d8a7583ff3..12d897d306 100644
+--- a/hw/ssi/imx_spi.c
++++ b/hw/ssi/imx_spi.c
+@@ -53,7 +53,7 @@ static const char *imx_spi_reg_name(uint32_t reg)
+     case ECSPI_MSGDATA:
+         return  "ECSPI_MSGDATA";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
 -- 
 2.41.0
 

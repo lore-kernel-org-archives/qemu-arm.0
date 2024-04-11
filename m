@@ -1,120 +1,120 @@
-Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp865945ejc;
-        Thu, 11 Apr 2024 03:46:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVJkROgnuBxIURxJbnlB5414v9rZFO0E+BGzQN34tFVaTL/Y1VrQfPdzOb4t1yM9WZHb/i+QSYY8jy8Y6vtTAkN5VJbNijJ
-X-Google-Smtp-Source: AGHT+IE8NM9Zzix4knDlECVAa4Bn5za9WjOT/bA8Ew57xNBk0+9Y+MOKE/NQLY7I3a3XXFR0L3fA
-X-Received: by 2002:a05:6214:766:b0:69b:2839:b474 with SMTP id f6-20020a056214076600b0069b2839b474mr5440025qvz.1.1712832377843;
-        Thu, 11 Apr 2024 03:46:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712832377; cv=none;
+Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp866014ejc;
+        Thu, 11 Apr 2024 03:46:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX8KbVgNvS+3DUDyLhitN9HfpogTzb5YkHXJpk05g5DpQpBIYNVfTeInrp5Sza2tWp+jH4jb5EB7tvluSGiQeZgJhMoP0Zy
+X-Google-Smtp-Source: AGHT+IH9TDPUu7gkTRPsHXItgpxI0C4vA4Rexpt55t0WueJDWyrsEENFvc3G/8+q7zWP+1z/6qgK
+X-Received: by 2002:ac8:7e8f:0:b0:436:5d80:fa52 with SMTP id w15-20020ac87e8f000000b004365d80fa52mr1873055qtj.42.1712832385915;
+        Thu, 11 Apr 2024 03:46:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712832385; cv=none;
         d=google.com; s=arc-20160816;
-        b=YXh0xOmh4ER6jikfEh6NesfUHkrKJL1ZV1K+RTGYspu9x6HlXBeodWjo0oZz41Mfmv
-         dXQl1iV0RtQHLHd6SrSX7QPwcyZ0h9AdgYEDklxflIuwTCL5tPLkMwnBnk/WVfVp1zjk
-         PIpIpwDhEQMpEkeA8AHg/1Sj9FGDmsi0viaghr+E9bHQpyUiO7T66h2iqTpKP2X0pjto
-         NOdBmIKxWyxZuoONBhGxG9tdIEWmcJSldnygctOOSti5UUGvwDh8BTzYW/QHP/9rniMI
-         /wbt0HqsNUAHG6iFRHVldEVZA4ZnRpfXZYv6xQPD1YJ3YD069iwIwhPb6CHVJ5SrwSq9
-         0H6Q==
+        b=kttHKS8rVlnP3YZ87JMq+6NiUHLOc2KcP69JSYKGe/9qtPSyIm6fjt36JLUZlpYMrm
+         IHoK//TQc9075wXWTu09sZQ0pV3c6TzS41Jc0kgYFYvQXGeZARAF32DltKY0wTLEFfjA
+         ReKnOMu4FCB0g6cDyFqtMtyVu/Iy/Mchy9c+ISu9sS34xSX3rQxzt1nMfRSV4rgtGLM5
+         Nf2mEI9MJQPyaeXhXid4di1sAFVoRExErQCbgVaMrnxeEcHS50V8BbZ81sYWPQY4gO66
+         DKPA5KORpJAsNlVRI2Hm6M0X+bD6d22s3NDceci/4XcAvxun4VnLRGA6mdo/OPfyh1aE
+         Yj0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ZARctQBaWTgi16Nsw9jDwGPNb4MI5ibxpQ1TfC8D7e4=;
-        fh=+59ao9oSc1SGxUJzhUa1UnjN6q33SXhEw+bkPs4Onpk=;
-        b=KW2hBodB6dlQz9qlKYw5IErWJLAWaLFIyND7oRQictoMbAJHsGdAlZ93xVOPt5uVsx
-         GNRH+Mmrk0QNJTwF+WQX53jxP/OuKVQ86DDVjgbDJetbRAgogg1JvXtE5WJITMaU0zVm
-         uTjlY3wqzDUCiy/fRN8c/i6DQxTnlZUOhdVuItA+fAo+NgYcd9Ocl1sXugRfiu6RTscT
-         thzHRpif8zNA4Hl9+9/rFMdcfv82QSQ0Wn99+x9WPI8XNkZhWyNAF1YXShyCVOcdUt0B
-         Fl/x2/6ETcr4YIbuH+4U+pWLbxBckpZgF1nKlO1ni0MvBcI5U+BHhM2vfM979vBDI/cx
-         Rk0Q==;
+        bh=wlJcz+pht8e4e9xihxB/4ukY7MeVnKXZI9Z44gsjm/E=;
+        fh=Y26SNCcx7mV3+DQ4GiURg25QCLf4EDTrA1pj2iVRPwA=;
+        b=MAyz7OcO+eNYPr0AIsTN3aHZ9cocEGLun3dx8C4XQTwtRWLqi6QAGnin5ozuVGNWkV
+         3zpe5xM71nMr8K4xkgYELlNoKczZQ3W8N3c7THuTG01gfQ7bsXqXx4TMMO3o2DdXN1rY
+         lMvgXRkY3W4qQqN+lskGLg6ipa2ZtLee+28ci0nycM5Oa4HTJxrOIGBHp5gRCwZ7r2uL
+         mG7C20TE2hGND5XGnTwL0GESh77xcxG3vBC7+Pzy62qt+k+9eIx0Y5p4Zoo/g324D0+8
+         AGYgfVfZiwQUUFe0Tc8Yj4/7wdFI7RdpyGAhKXyXjogPm80O0HHmzfqCZtzeWlzyfmfo
+         waYA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Uyq3Zvys;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TYvTWsYb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e16-20020a0cf350000000b0069b503c131esi447634qvm.314.2024.04.11.03.46.17
+        by mx.google.com with ESMTPS id u37-20020a05622a19a500b00434ef8f7a7esi1270484qtc.52.2024.04.11.03.46.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Apr 2024 03:46:17 -0700 (PDT)
+        Thu, 11 Apr 2024 03:46:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Uyq3Zvys;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TYvTWsYb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ruruS-0002ne-PT; Thu, 11 Apr 2024 06:44:00 -0400
+	id 1rurvE-0003Xc-HY; Thu, 11 Apr 2024 06:44:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruruR-0002mv-4l
- for qemu-devel@nongnu.org; Thu, 11 Apr 2024 06:43:59 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rurv6-0003R7-7q
+ for qemu-devel@nongnu.org; Thu, 11 Apr 2024 06:44:41 -0400
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruruO-0004Dv-Cd
- for qemu-devel@nongnu.org; Thu, 11 Apr 2024 06:43:58 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-3458b699d6cso2049759f8f.0
- for <qemu-devel@nongnu.org>; Thu, 11 Apr 2024 03:43:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rurv0-0004QA-6K
+ for qemu-devel@nongnu.org; Thu, 11 Apr 2024 06:44:40 -0400
+Received: by mail-lj1-x232.google.com with SMTP id
+ 38308e7fff4ca-2d895e2c6efso49317871fa.0
+ for <qemu-devel@nongnu.org>; Thu, 11 Apr 2024 03:44:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712832235; x=1713437035; darn=nongnu.org;
+ d=linaro.org; s=google; t=1712832272; x=1713437072; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZARctQBaWTgi16Nsw9jDwGPNb4MI5ibxpQ1TfC8D7e4=;
- b=Uyq3ZvysZVVtHJqCKPc03g5Bsc5oinb0hXgKU+H4K5AlZ/8HcxFapInf8Z4Bz1ShGO
- 8KmPGbqO+fb3KLveXljBwmkqj4Zhu++jDyU5Tu6syvG3RWsQnxyOmqinSOEnHHwL90Ik
- SMugQiXDytI8bGOe3zaB3YhaWDdnITY+oSdm5/YHxG4v3Nyemr8sod6Qoz3r9tF0wJtN
- U83nfCBILtZ3labYAJlxnxic6UZaC2qjBD3SI0zVAArDrRc9RdqQ4dVWlKacV04vQ1u2
- /1wZSEAcw9YeJ+mxq8/U+4CqZyJrN09hHIyo4laihz7i/96ptAHxUQkcOoh6Hmo/IooK
- zbmw==
+ bh=wlJcz+pht8e4e9xihxB/4ukY7MeVnKXZI9Z44gsjm/E=;
+ b=TYvTWsYbdqVdvPZebGVAxY5+2AAcEbHQDcDIUPsgZNzwtvceL0xGflGJd8MB8y+vcy
+ sG3D0vPE7OxTm7bUbZU8pXler/adU/QskwRAs4LoAWxZZw6DPviwCWW5GB8isHj2U0Jx
+ FM8NrrsZoj8XvGihIN9eubgmJ1vcS9XTS/EZS6Pky0yohF9vvjd4JZznVMbWZUXtS7uv
+ lKbqonwK5Ow1J+2Aj6WCiWZD3MK1MECeXNVzamSmT2YWehuRZil5PRRFeiF+QeIqQUXI
+ 6xuDYg6h4G80fahJcAujhVzu9vnBciHwPyfkJfLkGCWYKs1RMtNe+p8/PVremI8NfTL+
+ SfEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712832235; x=1713437035;
+ d=1e100.net; s=20230601; t=1712832272; x=1713437072;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ZARctQBaWTgi16Nsw9jDwGPNb4MI5ibxpQ1TfC8D7e4=;
- b=JsI8bvXcX7R6r1cJjYzqFIKTu0e8FNs3Y/r3gzGRGhyk5ZAinIqpWXJIf+4sPWQyAJ
- A+yOLTNabaY9kuU0wQAqSSgVrO2CYGkP5/u7m/rM7eQFUB+zqJv1OVbP/0Ya0fFpyAew
- X0Tzitw/c8IjTs0chsMDKyC1i94KczyWnjhYdwEEtYzA0VtpCP1Gjx9dDzA8syFZScAe
- fAO1krS664BQpksL5CJobr3ilQpvKoz5qxlnhw/5/Lplrwzu0M4razE/F6wlwJTsQ5IE
- PsmiLBUF7+DjPpupQCFhFVChG5Nc0eJmCAf6jSJnoQLDvbifvRQtYhPn1e+1kYgWzqfn
- t5jQ==
-X-Gm-Message-State: AOJu0YxYmRUXB8TN+a46QR/AHtaekBH3sjFJp4xmXi/Uc53KrimsU7SS
- cNIzyRTTTUPBCGhWYomkh3BpPm7/utww69UA2sjpqgg8mTE93vq0MYo8ECpjYDR3DeU1WxcTldb
- CxSM=
-X-Received: by 2002:a5d:58c2:0:b0:346:ba70:f261 with SMTP id
- o2-20020a5d58c2000000b00346ba70f261mr952868wrf.2.1712832234836; 
- Thu, 11 Apr 2024 03:43:54 -0700 (PDT)
+ bh=wlJcz+pht8e4e9xihxB/4ukY7MeVnKXZI9Z44gsjm/E=;
+ b=XDIdWWvcb/bBHpSNcUeN9+mG9Ox4wnVPfTFMrgSybuKaWyD1iyZZWc3VsCdpJUOC/V
+ SH6a6mMlY2GaCbELSrpTBamGST8bDAnRyn74sXCG1csK00leK/Ut1NjqYadiOQMhZcli
+ A39aHQWIR1AyXoBcUVcUfTq2xx7tcU3lt0eNUb7unjzgsh/nnbdl25rAg7Iu0K+lvxcY
+ H0TSYMfy17I1uJs8WytKyTcKieuX+yslzj6g+OGx2fHXf9x9zoFVSLJ4uwk6tgAF2C00
+ gSsHcxYHyNHVgnxJA04nc+bMQC6F2rZaZs/lgnP7HyFdN33LJlVLRo3WxDn5KkA+FAOY
+ Zv9Q==
+X-Gm-Message-State: AOJu0YxuuH0DXyNkuaPJn+0S2uSUT7o/cGoNlNrYAzlrHEmXwXPxvySU
+ m8K/AUGO4rtEZ5dlZMO53oOYL2bIKi6JACFo5CtVaWCPFLd8Bntnsqt7FBE5zgx7//Aq1vrgANc
+ XqCo=
+X-Received: by 2002:a2e:904e:0:b0:2d8:4af7:1235 with SMTP id
+ n14-20020a2e904e000000b002d84af71235mr2797615ljg.44.1712832271697; 
+ Thu, 11 Apr 2024 03:44:31 -0700 (PDT)
 Received: from localhost.localdomain
  (137.red-88-29-174.dynamicip.rima-tde.net. [88.29.174.137])
  by smtp.gmail.com with ESMTPSA id
- t7-20020adfe447000000b00343eac2acc4sm1461921wrm.111.2024.04.11.03.43.53
+ o9-20020a5d6709000000b00343956e8852sm1471455wru.42.2024.04.11.03.44.29
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 11 Apr 2024 03:43:54 -0700 (PDT)
+ Thu, 11 Apr 2024 03:44:31 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH 2/9] disas/microblaze: Replace sprintf() by snprintf()
-Date: Thu, 11 Apr 2024 12:43:33 +0200
-Message-ID: <20240411104340.6617-3-philmd@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 8/9] target/arm: Replace sprintf() by snprintf()
+Date: Thu, 11 Apr 2024 12:43:39 +0200
+Message-ID: <20240411104340.6617-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240411104340.6617-1-philmd@linaro.org>
 References: <20240411104340.6617-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::232;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x232.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,108 +129,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: trR8P0c86s10
+X-TUID: R3Wp684VNohl
 
 sprintf() is deprecated on Darwin since macOS 13.0 / XCode 14.1,
 resulting in painful developper experience. Use snprintf() instead.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- disas/microblaze.c | 25 ++++++++++++++++---------
- 1 file changed, 16 insertions(+), 9 deletions(-)
+ target/arm/cpu64.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/disas/microblaze.c b/disas/microblaze.c
-index 0b89b9c4fa..49a4c0fd40 100644
---- a/disas/microblaze.c
-+++ b/disas/microblaze.c
-@@ -600,7 +600,8 @@ static char *
- get_field (long instr, long mask, unsigned short low)
- {
-   char tmpstr[25];
--  sprintf(tmpstr, "%s%d", register_prefix, (int)((instr & mask) >> low));
-+  snprintf(tmpstr, sizeof(tmpstr), "%s%d", register_prefix,
-+           (int)((instr & mask) >> low));
-   return(strdup(tmpstr));
- }
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 985b1efe16..f0f4fe6714 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -433,7 +433,7 @@ void aarch64_add_sve_properties(Object *obj)
  
-@@ -608,7 +609,8 @@ static char *
- get_field_imm (long instr)
- {
-   char tmpstr[25];
--  sprintf(tmpstr, "%d", (short)((instr & IMM_MASK) >> IMM_LOW));
-+  snprintf(tmpstr, sizeof(tmpstr), "%d",
-+           (short)((instr & IMM_MASK) >> IMM_LOW));
-   return(strdup(tmpstr));
- }
+     for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
+         char name[8];
+-        sprintf(name, "sve%d", vq * 128);
++        snprintf(name, sizeof(name), "sve%d", vq * 128);
+         object_property_add(obj, name, "bool", cpu_arm_get_vq,
+                             cpu_arm_set_vq, NULL, &cpu->sve_vq);
+     }
+@@ -458,7 +458,7 @@ void aarch64_add_sme_properties(Object *obj)
  
-@@ -616,7 +618,8 @@ static char *
- get_field_imm5 (long instr)
- {
-   char tmpstr[25];
--  sprintf(tmpstr, "%d", (short)((instr & IMM5_MASK) >> IMM_LOW));
-+  snprintf(tmpstr, sizeof(tmpstr), "%d",
-+           (short)((instr & IMM5_MASK) >> IMM_LOW));
-   return(strdup(tmpstr));
- }
- 
-@@ -624,7 +627,8 @@ static char *
- get_field_rfsl (long instr)
- {
-   char tmpstr[25];
--  sprintf(tmpstr, "%s%d", fsl_register_prefix, (short)((instr & RFSL_MASK) >> IMM_LOW));
-+  snprintf(tmpstr, sizeof(tmpstr), "%s%d", fsl_register_prefix,
-+           (short)((instr & RFSL_MASK) >> IMM_LOW));
-   return(strdup(tmpstr));
- }
- 
-@@ -632,7 +636,8 @@ static char *
- get_field_imm15 (long instr)
- {
-   char tmpstr[25];
--  sprintf(tmpstr, "%d", (short)((instr & IMM15_MASK) >> IMM_LOW));
-+  snprintf(tmpstr, sizeof(tmpstr), "%d",
-+           (short)((instr & IMM15_MASK) >> IMM_LOW));
-   return(strdup(tmpstr));
- }
- 
-@@ -641,7 +646,8 @@ static char *
- get_field_unsigned_imm (long instr)
- {
-   char tmpstr[25];
--  sprintf(tmpstr, "%d", (int)((instr & IMM_MASK) >> IMM_LOW));
-+  snprintf(tmpstr, sizeof(tmpstr), "%d",
-+           (int)((instr & IMM_MASK) >> IMM_LOW));
-   return(strdup(tmpstr));
- }
- #endif
-@@ -653,7 +659,8 @@ get_field_unsigned_imm (long instr)
-   {
-   char tmpstr[25];
-   
--  sprintf(tmpstr, "%s%s", register_prefix, (((instr & IMM_MASK) >> IMM_LOW) & REG_MSR_MASK) == 0 ? "pc" : "msr");
-+  snprintf(tmpstr, sizeof(tmpstr), "%s%s", register_prefix,
-+          (((instr & IMM_MASK) >> IMM_LOW) & REG_MSR_MASK) == 0 ? "pc" : "msr");
-   
-   return(strdup(tmpstr));
-   }
-@@ -709,7 +716,7 @@ get_field_special(long instr, const struct op_code_struct *op)
-    default :
-      {
-        if ( ((((instr & IMM_MASK) >> IMM_LOW) ^ op->immval_mask) & 0xE000) == REG_PVR_MASK) {
--	  sprintf(tmpstr, "%s%u", pvr_register_prefix,
-+          snprintf(tmpstr, sizeof(tmpstr), "%s%u", pvr_register_prefix,
-                  (unsigned short)(((instr & IMM_MASK) >> IMM_LOW) ^
-                                   op->immval_mask) ^ REG_PVR_MASK);
- 	 return(strdup(tmpstr));
-@@ -720,7 +727,7 @@ get_field_special(long instr, const struct op_code_struct *op)
-      break;
-    }
-    
--   sprintf(tmpstr, "%s%s", register_prefix, spr);
-+   snprintf(tmpstr, sizeof(tmpstr), "%s%s", register_prefix, spr);
-    return(strdup(tmpstr));
- }
- 
+     for (vq = 1; vq <= ARM_MAX_VQ; vq <<= 1) {
+         char name[8];
+-        sprintf(name, "sme%d", vq * 128);
++        snprintf(name, sizeof(name), "sme%d", vq * 128);
+         object_property_add(obj, name, "bool", cpu_arm_get_vq,
+                             cpu_arm_set_vq, NULL, &cpu->sme_vq);
+     }
 -- 
 2.41.0
 

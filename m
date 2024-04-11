@@ -1,185 +1,253 @@
-Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp853660ejc;
-        Thu, 11 Apr 2024 03:16:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX0gWH7ZwXlsoV7dSYbE5P//yZQ9zVCMl7Wku+jWjkGyQlzYqd+BRNmrZupeld4J2voc2ana9vPVY0E6UKmzPl4AbWMV/ob
-X-Google-Smtp-Source: AGHT+IHPQUaQ17QU4GuLB4GsHbaQPOl+poq95TW4y39OWtZ6zkYB9Xcv0sec4bZFsIAe/HlhdV4k
-X-Received: by 2002:ac8:5f52:0:b0:436:537c:72f3 with SMTP id y18-20020ac85f52000000b00436537c72f3mr2678949qta.12.1712830594084;
-        Thu, 11 Apr 2024 03:16:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712830594; cv=none;
+Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp866263ejc;
+        Thu, 11 Apr 2024 03:46:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVtngQf1cDwcywXmHdwdO60C8giYjxUD7oK4imO8/IL+PzNE3O9nVRnVdOfh4WfrtyaeozlhKnOLU2Mu6RQScvuY8z3KGC6
+X-Google-Smtp-Source: AGHT+IHgPAjMkraxqhQGm/uDZEb16qXmcTVQME431uwoIXTGTmHoJxnBTpiif9x9t4aHwK1Qx9lp
+X-Received: by 2002:ac8:5fcb:0:b0:435:163c:911d with SMTP id k11-20020ac85fcb000000b00435163c911dmr5003543qta.59.1712832417861;
+        Thu, 11 Apr 2024 03:46:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712832417; cv=none;
         d=google.com; s=arc-20160816;
-        b=SK/BYCpxvZKLMVMMtUKfnCcGtEdWJt9QHFjnQhVEWgjZL/9TmK2koHiE8oUR6rmxDH
-         BuqQYsxyeVoJSOeBefVqV6Vm+Vd+WOwRCQS1me0cfeqdLf436ovJrn11gNlSi1XmE1O5
-         DDLKN9RJmeoU/S62AARB4JHhvkt3UkqoEb8eizP6l8KrG077QRn/ZQ004r8FpFmkWkvS
-         CKxZUoU2lTArze+shicDeJiJDc0LANSPOkdEv5V9aVPsCI9B/09aMC9h/lEZ4kFJNwTf
-         CmGhvmIGKmB5Bhbhab9KJM3Ba5bZ46/ROTTpQox2AXcXx54Agh4HxbQ3r6U7DV4DLFbx
-         CsEQ==
+        b=rrMeLLrgXhAdPliZGpRjiXn1MFudTuKb8jdN8l3/1gZKGnIl9ERHcSBolFepkjLFjQ
+         9QscFgPvDYxA23mBme4C9DI4fy5U9h75RvT+g+I+FHDUViCdEhg2S5RmEnIjEZbyMKFf
+         kBd7I9wwbdkXBne2WBJNGDxvlPNnaM5B7Y6K94vkiuYIu8J05kXOlBNefU1k3SmaNC1V
+         4/MWYR3kxRhp9z/81ND19+MVadoWB+80BPVz4mCvlP2yPrW5zyWzlsvb9ZoHuFSyLtc5
+         2KIcR79TXcziD715NzO6Pm4hbHajcpKWDbuRne1IBsG5+c5lPwUjpMfXPQ1xX8Lb7dts
+         KO9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DYu9NeN6C15PoB5yWPnrDM1Qg3VSjQOVFu4GcSZeT34=;
-        fh=TssSa9PNiRIadGrXNk+2LKrlUrl1dXImLX+rT4ruJa4=;
-        b=AnlSWMlbiGZnVAaWYXpQQ2/+U1f/yqqG6cmmS/IFhnxNcPXaOaNTyDVqoOicv8iPuF
-         WQ4cOytXKHcwovxJozYiWOtejuRimQ+DorJC+iT59nqxX/TE8ncRy+rdp2WNWmVe7iJv
-         vKBHc9HX3Vss77L7EyCp1jS9XiI6Y1YIlR09jlL6wHwslLZvAnq7ChoEsVMEf/mfcx7a
-         mPKgWO8ZXZbjM2hM/LkoOO0PKnq+N/As1wkTt+2eujdNdxHUWWJJGv4ddgY1sw7Uet5C
-         GSN17eOH+hCHfU6rn17b+Bgr/lR28yeIsVCca7e0EJS2bTDUBdGNr/dcxSeIadVTTtYX
-         U7Ew==;
+        bh=ru9saU1iDfz4qwFM9pZtgFWpVV+tgMJTqfv3heZtoxI=;
+        fh=XVmi9qnYc/zT9sxd29EdwC2SdEYras7UoPBhSlgJiOY=;
+        b=iRJ37bJpykeiM5O1Y72OAcQXZPNoTE4AH+CqSXh1nl9cf6l6SSYjScCxB6HAbfsF9A
+         o+VkeAjCy/6FM63T1KO4mJRONzL+tzfz8peO+0LfOnTqJnJalaBcI9R+4cEPOc/HnKV3
+         g9/kFsK/veb5fFTeKGgQFYLEyhDS6P67pxY7reIz7YJOjf9V/K2rpdDdMuE7pfW4kMBW
+         V+Gtw8r68VKqXmVBw35jyTTQ8CRvDP7KeXWujQ5ahINyLzdpv1W5M4wnvEROpIStFlP0
+         AmQO+NPQFrktKqf3YGeG/Dq6FdK/Xh7UCLW319NBpYZ8Bhvniu1nHoNeFs8QezXun4yF
+         /XDQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cx3RV9w8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ITHW2fuz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c9-20020ac87dc9000000b004365c91aeb0si1231735qte.105.2024.04.11.03.16.33
+        by mx.google.com with ESMTPS id d9-20020ac85d89000000b00434610ed8e8si1200054qtx.803.2024.04.11.03.46.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Apr 2024 03:16:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 11 Apr 2024 03:46:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Cx3RV9w8;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ITHW2fuz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rurTZ-00050Q-PL; Thu, 11 Apr 2024 06:16:14 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rurwl-0005JF-Pk; Thu, 11 Apr 2024 06:46:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rurTJ-0004wv-Ve
- for qemu-arm@nongnu.org; Thu, 11 Apr 2024 06:16:05 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rurwD-0004oX-VS
+ for qemu-devel@nongnu.org; Thu, 11 Apr 2024 06:46:06 -0400
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rurTG-0007Rb-Tb
- for qemu-arm@nongnu.org; Thu, 11 Apr 2024 06:15:57 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-417d029bf15so4682745e9.3
- for <qemu-arm@nongnu.org>; Thu, 11 Apr 2024 03:15:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rurw0-0004sp-QC
+ for qemu-devel@nongnu.org; Thu, 11 Apr 2024 06:45:49 -0400
+Received: by mail-lf1-x136.google.com with SMTP id
+ 2adb3069b0e04-516dbc36918so6494985e87.0
+ for <qemu-devel@nongnu.org>; Thu, 11 Apr 2024 03:45:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712830553; x=1713435353; darn=nongnu.org;
+ d=linaro.org; s=google; t=1712832334; x=1713437134; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=DYu9NeN6C15PoB5yWPnrDM1Qg3VSjQOVFu4GcSZeT34=;
- b=Cx3RV9w8wW+GAi+XbsX7x/6b4qcdxcuyoOH1t6BI+h7gSUAUerFu/oNjoAuM8NLAtG
- f6U6YRZWNcaaQzLXoe69uEFIDhrD8NU45NslJXJmEo2/MZV/20ZPvU94Rsu0g7X/35t5
- nq4JZ6AsC7nKeTSTj1+L3GDOQEk02p+PlJ2gopVWHSKFQW8BnFNGexlwU8uKXdgzxwxv
- RPALybwWTfTGlN91JFk4+GnNE+tAU061KZy61nEw8bG/OQ8nRGDXDlf55ELHXchXc+ZK
- K1cr5890Yi/NEHjRgEBMvDz2zgdLoyV7g2W/DD9j8DDu50XcowWysYyN76A++AeHJxwG
- 8UBw==
+ bh=ru9saU1iDfz4qwFM9pZtgFWpVV+tgMJTqfv3heZtoxI=;
+ b=ITHW2fuzf4CcSbcYP/dbh0c72SqhGrEXaZJtY9Z6lxDxC8EnTMbFNt7vWzv8a1YO8J
+ HbhlOtUegkG4V/QJbbo/jmHnRdz5Wj47fCPo8Di8kXZ8jac/ql7qPP+RNzMkILYYwLjS
+ VWOIQsy7aIPYkZfu2VZat/+HQXh82i/GHzdfUG11x1a1ZLlXZVdQtFFXYRUeu2a/j3/i
+ RjIQJv6uaNFHZNBMKI4JSJrCi9G/K/BZPGaEUXroKqBZRCueqEL+rpZ39V0lwTUP/agO
+ LPM4tuhZpAQIJWqp5fYGXkJ6ItMnimLToT6tYBKyIKYEGBfvRPGQuRhKfLnXwBOzhUoJ
+ XHpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712830553; x=1713435353;
+ d=1e100.net; s=20230601; t=1712832334; x=1713437134;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=DYu9NeN6C15PoB5yWPnrDM1Qg3VSjQOVFu4GcSZeT34=;
- b=AiYn7SP5ZxtT8LbwMDqrHcDvjFfa3OqoZv3BsWzCTbf/5IjcgWg+KD7ZSlPNhfWBb8
- TIBiJxUsy+5qIv22Sqx0mdU0rp3wW2cN+/rf6PgZF84HGeUffvXKdzcvjPIKtZRrsrT9
- meA9mZh15j+aZfDZnj5ad9F6Dv7qGdKnxhQ7XeXNrRHBMoiyBeQsQYIv65mCHi+v5nww
- cW9mzxAP5GblafoB7W5BgCIcvpJf7S96GYtvYjWkJzzVC2DHuuGvMrV4m6Ry1dT5kgue
- ZXKOp/byHX6WVuAVDQPNo1eZP0sGb7FbIS2+B8Tz7qXV8VFyZzvr8CoHAKLEQQTEhwII
- xiXQ==
-X-Gm-Message-State: AOJu0YyJBOUl+5A7YmRTDJc6LN8e+Q+eH2MsTKj/P+zYOKBHVu/dDj6u
- m8JtVzRhlFdQILevX0Cj+Eifk2NEa5UlqCmYBxr7Q9mY2fitX5XSHQod33i6Sus=
-X-Received: by 2002:a05:600c:4f95:b0:416:b650:cefe with SMTP id
- n21-20020a05600c4f9500b00416b650cefemr4789263wmq.14.1712830553135; 
- Thu, 11 Apr 2024 03:15:53 -0700 (PDT)
-Received: from localhost.localdomain
- (137.red-88-29-174.dynamicip.rima-tde.net. [88.29.174.137])
+ bh=ru9saU1iDfz4qwFM9pZtgFWpVV+tgMJTqfv3heZtoxI=;
+ b=Rs1vH4ZKzzbnvShdygqoQq6Wx8nyXjeVcsAakjV+nnnY/SGMOxRb7rbE8Jdnpu+sLR
+ N7d868DGfLu8E7WMJ+Xjf5fr9MqBMoT/KsC9o+4QqJukf/2zzsJBZOpqiZof+CW/DpTA
+ azl0vmmxdxkE/Xfr0fKUBeE1PgmbKYtnasavrusuRvYds9x22ieYO4VxWMQYxF5w5je2
+ dewyxpGtmuV1LOpXAbEWiixt9g5IeXy+drdKVKnpwR235nET3EesH6l2HuaUQ855PBG7
+ fsnMY4i/M+XVhXubzHY1ZIEdClb2Nmbtq7h9Ww/1I9d+y8Bbrp69yoE1nV89Zgqnpdx5
+ 6REA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUcFgLMW+MFHfH6dnBYgMugOh42RSD/IQB5KdITBWcxZGRP3Cco28HixQVbtSSWJorjPW1SadnT8MF+r5wfBNFfVVHN58c=
+X-Gm-Message-State: AOJu0YxiYo2yEgiLSbhWfcjIfoOddy/n2h5dvQYMU9MZ0acmsbJgsAYy
+ P1jGCUy7x4Q5txLkZWELgjm/7cEh87vDrf2gmDAS3DBxmd3UB3J/yJg9blxU9J8=
+X-Received: by 2002:a19:ac07:0:b0:516:d482:d720 with SMTP id
+ g7-20020a19ac07000000b00516d482d720mr3334647lfc.30.1712832334366; 
+ Thu, 11 Apr 2024 03:45:34 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- he8-20020a05600c540800b00416a08788a5sm5055032wmb.27.2024.04.11.03.15.51
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 11 Apr 2024 03:15:52 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-ppc@nongnu.org,
- Philippe =?unknown-8bit?q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 00/13] misc: Remove sprintf() due to macOS deprecation
-Date: Thu, 11 Apr 2024 12:15:36 +0200
-Message-ID: <20240411101550.99392-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
+ z17-20020a05600c0a1100b00416b8da335esm1924848wmp.48.2024.04.11.03.45.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 11 Apr 2024 03:45:34 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>
+Subject: [PATCH] hw/misc: Avoid sprintf() in the imx devices
+Date: Thu, 11 Apr 2024 11:45:32 +0100
+Message-Id: <20240411104532.588170-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NSej5uut7bzG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qKidRitAsI1V
 
-Since v1:
-- Use snprintf() in patches 1-5
+Various imx devices in hw/misc have a pattern in the
+debug logging where a function which prints register names
+has a fallback case for an unknown offset that uses sprintf().
+Use snprintf() instead to avoid warnings on macos. (The
+buffer could never overflow because it is 20 bytes and we
+will write at most 10 digits plus 4 nondigits plus NUL.)
 
-Hi,
+Commit created with:
 
-sprintf() is deprecated on Darwin since macOS 13.0 / XCode 14.1,
-resulting in painful developper experience.
+sed -i -e 's/sprintf(unknown/snprintf(unknown, sizeof(unknown)/' hw/misc/imx*
 
-Suggestion to avoid the super-noisy warning on macOS forum are [*]:
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Philippe: here's an easy sprintf->snprintf conversion for your pile :-)
 
-* use -Wno-deprecated-declarations on the whole build
-* surgically add #pragma clang diagnostic around each use.
+ hw/misc/imx25_ccm.c  | 2 +-
+ hw/misc/imx31_ccm.c  | 2 +-
+ hw/misc/imx6_ccm.c   | 4 ++--
+ hw/misc/imx6_src.c   | 2 +-
+ hw/misc/imx6ul_ccm.c | 4 ++--
+ hw/misc/imx7_src.c   | 2 +-
+ 6 files changed, 8 insertions(+), 8 deletions(-)
 
-None of these options seem reasonable, so we are somehow forced to
-spend time converting each sprintf() call, even if they are safe
-enough.
-
-I'm so tired of seeing them than I started the conversion. This is
-the first part. Help for the rest is welcomed.
-
-Regards,
-
-Phil.
-
-[*] https://forums.developer.apple.com/forums/thread/714675
-
-Philippe Mathieu-Daudé (13):
-  ui/console-vc: Replace sprintf() by snprintf()
-  hw/vfio/pci: Replace sprintf() by snprintf()
-  hw/ppc/spapr: Replace sprintf() by snprintf()
-  hw/mips/malta: Add re-usable rng_seed_hex_new() method
-  hw/mips/malta: Replace sprintf() by snprintf()
-  system/qtest: Replace sprintf() by g_string_append_printf()
-  util/hexdump: Rename @offset argument in qemu_hexdump_line()
-  util/hexdump: Have qemu_hexdump_line() return heap allocated buffer
-  util/hexdump: Replace sprintf() by g_string_append_printf()
-  hw/scsi/scsi-disk: Use qemu_hexdump_line() to avoid sprintf()
-  hw/ide/atapi: Use qemu_hexdump_line() to avoid sprintf()
-  hw/dma/pl330: Use qemu_hexdump_line() to avoid sprintf()
-  backends/tpm: Use qemu_hexdump_line() to avoid sprintf()
-
- include/qemu/cutils.h   | 17 ++++++++++++++---
- backends/tpm/tpm_util.c | 24 ++++++++----------------
- hw/dma/pl330.c          | 12 +++---------
- hw/ide/atapi.c          |  8 ++------
- hw/mips/malta.c         | 23 ++++++++++++++---------
- hw/ppc/spapr.c          |  2 +-
- hw/scsi/scsi-disk.c     |  8 ++------
- hw/vfio/pci.c           |  2 +-
- hw/virtio/vhost-vdpa.c  | 11 ++++++-----
- system/qtest.c          |  8 +++-----
- ui/console-vc.c         |  2 +-
- util/hexdump.c          | 33 ++++++++++++++++++---------------
- 12 files changed, 73 insertions(+), 77 deletions(-)
-
+diff --git a/hw/misc/imx25_ccm.c b/hw/misc/imx25_ccm.c
+index d888966014d..faa726a86ac 100644
+--- a/hw/misc/imx25_ccm.c
++++ b/hw/misc/imx25_ccm.c
+@@ -91,7 +91,7 @@ static const char *imx25_ccm_reg_name(uint32_t reg)
+     case IMX25_CCM_LPIMR1_REG:
+         return "lpimr1";
+     default:
+-        sprintf(unknown, "[%u ?]", reg);
++        snprintf(unknown, sizeof(unknown), "[%u ?]", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/misc/imx31_ccm.c b/hw/misc/imx31_ccm.c
+index a9059bb1f72..125d4fceebb 100644
+--- a/hw/misc/imx31_ccm.c
++++ b/hw/misc/imx31_ccm.c
+@@ -89,7 +89,7 @@ static const char *imx31_ccm_reg_name(uint32_t reg)
+     case IMX31_CCM_PDR2_REG:
+         return "PDR2";
+     default:
+-        sprintf(unknown, "[%u ?]", reg);
++        snprintf(unknown, sizeof(unknown), "[%u ?]", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
+index 56489d8b57b..b1def7f05b9 100644
+--- a/hw/misc/imx6_ccm.c
++++ b/hw/misc/imx6_ccm.c
+@@ -85,7 +85,7 @@ static const char *imx6_ccm_reg_name(uint32_t reg)
+     case CCM_CMEOR:
+         return "CMEOR";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
+@@ -224,7 +224,7 @@ static const char *imx6_analog_reg_name(uint32_t reg)
+     case USB_ANALOG_DIGPROG:
+         return "USB_ANALOG_DIGPROG";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/misc/imx6_src.c b/hw/misc/imx6_src.c
+index 0c6003559f5..3766bdf5619 100644
+--- a/hw/misc/imx6_src.c
++++ b/hw/misc/imx6_src.c
+@@ -68,7 +68,7 @@ static const char *imx6_src_reg_name(uint32_t reg)
+     case SRC_GPR10:
+         return "SRC_GPR10";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/misc/imx6ul_ccm.c b/hw/misc/imx6ul_ccm.c
+index bbc0be99211..0ac49ea34b3 100644
+--- a/hw/misc/imx6ul_ccm.c
++++ b/hw/misc/imx6ul_ccm.c
+@@ -143,7 +143,7 @@ static const char *imx6ul_ccm_reg_name(uint32_t reg)
+     case CCM_CMEOR:
+         return "CMEOR";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
+@@ -274,7 +274,7 @@ static const char *imx6ul_analog_reg_name(uint32_t reg)
+     case USB_ANALOG_DIGPROG:
+         return "USB_ANALOG_DIGPROG";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/misc/imx7_src.c b/hw/misc/imx7_src.c
+index b3725ff6e72..d19f0450d4a 100644
+--- a/hw/misc/imx7_src.c
++++ b/hw/misc/imx7_src.c
+@@ -75,7 +75,7 @@ static const char *imx7_src_reg_name(uint32_t reg)
+     case SRC_GPR10:
+         return "SRC_GPR10";
+     default:
+-        sprintf(unknown, "%u ?", reg);
++        snprintf(unknown, sizeof(unknown), "%u ?", reg);
+         return unknown;
+     }
+ }
 -- 
-2.41.0
+2.34.1
 

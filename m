@@ -1,109 +1,124 @@
-Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp794808ejc;
-        Thu, 11 Apr 2024 00:48:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVVmk9ouT9GgfPS3oPJaq+ykhfT5mHsqb78tq7JUBKSn1v8ze8AcMBWcJC4WZv+CpAX7ndhAPaP2IB3ghppRyeYQOXHR1NN
-X-Google-Smtp-Source: AGHT+IEVT7lFImYDDAlq7jhOiGLHmv5+gCtqDbt+UBOOPeY8oAixtGhZ9JOi/jVZ2ZiapaopGOhN
-X-Received: by 2002:a25:9a88:0:b0:dc2:3113:8700 with SMTP id s8-20020a259a88000000b00dc231138700mr5003804ybo.24.1712821714568;
-        Thu, 11 Apr 2024 00:48:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712821714; cv=none;
+Received: by 2002:a17:907:6195:b0:a52:fc6:5c40 with SMTP id mt21csp837255ejc;
+        Thu, 11 Apr 2024 02:36:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWzIzTB4JqgYki7yN5wScYOhiuuk9mMc5sU1+7WB8CDEYjiI0PKBQAVFeDd0syeuUxV+QciswaDw8P9A17Tr76HM47b6izQ
+X-Google-Smtp-Source: AGHT+IHbu82+y/mT+NxUkhipPWLqpYDERJnVdIdmCITJbjGqanM1VRPAyn76M/3lXDAnhdjbgVgI
+X-Received: by 2002:a05:620a:1725:b0:78d:692a:9dfe with SMTP id az37-20020a05620a172500b0078d692a9dfemr3340842qkb.28.1712828198515;
+        Thu, 11 Apr 2024 02:36:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712828198; cv=none;
         d=google.com; s=arc-20160816;
-        b=hXgZ1yMj2QK0CTsyGE8xETE7JM6WEM2ob41CFSPgJf5qMv6GcjhCa2aXRb3AeDI+pD
-         8wyIWzds2Dy0GXHoCnWK37KiS6rWs/ciZ3DbBx3a/WibaZ5A44a/7hv/h+iDF6xDLDYR
-         jcVhFKPnTN7t1pid2aeo2wJjCpyzoUr+mJvp1Ti7fre3/BtC8KF8d8eiKKRG+gKTD0XO
-         dlBoI8m9pxzYcrjHUEflKf1DBfiEzaLY59eypNZrDUFp4hNiMx7STTdSk4+IqIzTgB0C
-         NCcKQmjFuBadsYEyg4gkX9jb0IkFn87YOvRVk4B2xIRqKPknGfL4L9QGJ2kKsvXrFr9v
-         UTsg==
+        b=V/BNzHlgWAkWCtFa1a+o1RwX18QcPzRKJxEG6LTqEDqmXBkG5yjwC4Ph/Q3qzmRC+e
+         eiNDiXFPs10J6eUba/39aZ7G7zuTTtQwt57whhXhzxxaJzgKFA9aah9yVfDG51CCGHEr
+         NIQ4R4JfpgfkOsW6G4GrVpLdO6Ju5GV7ZJVLGaz4i5QCDTatPgdRldlXCP9ofnZ+swoQ
+         UVznm6PEal3pV2lEf/9FhRXvr1T3vezMFmWTAtTxyPErOQUACDM5d1IJ9YYVY9LtsDQB
+         XsoDUTRAncrSDknwIg641VkeU9vcWDm8xkAe2Y5/EcDjNKF9mYm9TOOzO7BgkDOiNr4A
+         V1eA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=i8U/sQ8CkeLkjs7bm1HRLLJIytyVKeKbbadhT01xLQs=;
-        fh=zxYLHcCljaxcgzDvlTMeui49l5Brlv6L2vFslf1U0xY=;
-        b=oEhDvIxCRfkHg6AqSA57zpRlDR1WQrSk2GS4JL88N8mvu77czZO4hFl74/HA3SvSpV
-         UkSPWx3W0f6WntcNRNX1uVme/alP1UZ1PfpgUF/zBqroW/dzHrBwq0uwYlu3gqVA+KLt
-         uvHr/KB/rHs1IcvcXuOEYwwB2lxF9saMHX9MUuhmf1cMzre0w0Cyr/1hon666BnpaP/V
-         Q0teU3RY89VM2Y0iqxOP/mRoobjDc9lawAAXkXnxoqRiedJk2SrkClcL7UIt7FHzyair
-         m0IYRPBdsyteFi0WLC/xgVr3VNky20yqz46VxjfzSP+fZoNjN+IicW49zolk0N9MehXf
-         Eeqw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=UE6t2jCVit83Kyhn5LvJR7ZKVRuHMJ6vHRvosUhAV+A=;
+        fh=CfGOM5edlcUka8Lgbi3rjLpfoRm2A6ySbkPEnSIJ9YI=;
+        b=HTRHGUX4PKvRc1T2S77y23kHVhDgEcWTlnW+L7Oq51vY4u/QTQhcMobp6nnq0/ZuMa
+         i3W20wuNi7akw/+ZphY0Btq5ndVmeRj72FfJUsL8ORt+V8RUXSsY/zpbmmLl/XfvG5e7
+         h/8GUxYx9nKl38nPjycAwbdLYVW7vZEouvP1jGc8TMweN1EfjKDynazuXPtTR0uY/7tP
+         znaWoET34RAyG2GUHFteX2zOgNHBImS7YtVez4W1TWD/5KmvbaJc8Y1myj/0IkRoP+tf
+         oJYGdNdNbPR9/dzojrSi8Nkka5l/mrPOkCPBheYrIeNWgVaHt4X2P+qqaC6kkTMxR6wu
+         sW6w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f9v3ZzOF;
+       dkim=pass header.i=@linaro.org header.s=google header.b="rc44rY/n";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u28-20020a05622a199c00b00434e3d1df1dsi961682qtc.87.2024.04.11.00.48.34
+        by mx.google.com with ESMTPS id l9-20020a05620a0c0900b0078d69eb61fasi1087142qki.591.2024.04.11.02.36.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Apr 2024 00:48:34 -0700 (PDT)
+        Thu, 11 Apr 2024 02:36:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f9v3ZzOF;
+       dkim=pass header.i=@linaro.org header.s=google header.b="rc44rY/n";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rup9X-0001Cc-U0; Thu, 11 Apr 2024 03:47:26 -0400
+	id 1ruqqz-00031m-HY; Thu, 11 Apr 2024 05:36:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rup9U-0001BQ-SD
- for qemu-arm@nongnu.org; Thu, 11 Apr 2024 03:47:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rup9S-0000im-5q
- for qemu-arm@nongnu.org; Thu, 11 Apr 2024 03:47:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1712821634;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=i8U/sQ8CkeLkjs7bm1HRLLJIytyVKeKbbadhT01xLQs=;
- b=f9v3ZzOFfqSakaL1tTEnQ3fcyqBGbkeSdCDO1CzOYuG1TDJqJ9vNSIVn/83sANp0PEsXHD
- aGU+b6V5pI4PSRtftzEinaSVuAOWZQ3EVmZmQgSsvqJI9FyjyEayMHEn8BRa/kFv7L1pwU
- IKGCOFPR9gK5uhwaYJanv6WM5zo51J4=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-604-PqIVvN-MP_KVrbHWsRRmLg-1; Thu, 11 Apr 2024 03:47:09 -0400
-X-MC-Unique: PqIVvN-MP_KVrbHWsRRmLg-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A68741807B28;
- Thu, 11 Apr 2024 07:47:08 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.192.204])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A0CF1121306;
- Thu, 11 Apr 2024 07:47:08 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 123E9180063D; Thu, 11 Apr 2024 09:47:03 +0200 (CEST)
-Date: Thu, 11 Apr 2024 09:47:03 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org, 
- qemu-block@nongnu.org,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruqqx-00031B-QH
+ for qemu-arm@nongnu.org; Thu, 11 Apr 2024 05:36:19 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ruqqw-0001SV-8u
+ for qemu-arm@nongnu.org; Thu, 11 Apr 2024 05:36:19 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4167fce0a41so3756205e9.0
+ for <qemu-arm@nongnu.org>; Thu, 11 Apr 2024 02:36:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1712828176; x=1713432976; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=UE6t2jCVit83Kyhn5LvJR7ZKVRuHMJ6vHRvosUhAV+A=;
+ b=rc44rY/nygEJH94IAw6L+LeJsxenss7LasN4PSWYSrEh8+s1jxAknWXg6BIEWzerL0
+ F2PWoKsEzQIgqJv41Im+Ud0Amk+oBUsGaOpxBPKoaMb+AqkkQuCfE7YzKw354yp7fM0c
+ TkmGln6ZfqgLDosguCASu/Vlu7vVYMZH0hPpMGZ8Qgao3ul44ITH231x11ItAuXsyEWg
+ oeasRASjcPhhZHPOKctrvLYkKeYtWEo0JVZkVt13Lwkxv54kcUm6V7ax9M2hHr3Ngnvc
+ rcBIsVEMpZshqXPY1udhpihj4G4ad6lwk4Ai+syiyEhi0yRCIqoOSMT2wfnRaE6nRQwd
+ BhJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1712828176; x=1713432976;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=UE6t2jCVit83Kyhn5LvJR7ZKVRuHMJ6vHRvosUhAV+A=;
+ b=fjtUKgEACt43/yZ+EfZEMxcwlA9XXusRjYnwhfrmy3KRleOUMPRMj25M8apD82COVt
+ HxUXPDgnRV5CoftiDSLuQCGo/ct6Ujj3BJ+ewaHOYHecDBXFsnZKKpX1D080Fc2Rex1t
+ ANVb6hCCGy9Zj/RvRGBP5E1TTsBEp50tr6zVNsQBeOJw4baRcj+pQoCqk1t2P/ZHGCmp
+ OLygOxSewaV/6YFtk1ZzUTv1BrfuOJ1MDuZPtjCHyfWNymU4p6OGmYvmnkNVf2lKl0Tu
+ oJ8DBhu8k8j+axF4K6BIHYF4/QG7AB5hIAHxaEArCSwZOB1BBe84NELwPsc43R+Vf/0k
+ 0yPg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUIA+ZBvNqtl4MqpRjGjfi+yKXG7jf11HbyMnm7FC7VSjI1evB+VuhA8bkxuTkrTVZkwacfPg5+kr7oyZKy4ovtwoBG
+X-Gm-Message-State: AOJu0Yyq06dMmKV/PrcSF0LcANzdDI0GslgZN/PaR3TnyCtDAUDK/UtT
+ An0w5FaGiYipfEALCksHioT6+MbCE3Uhji6MfMD+UiBETkAFGxmELZzZSAhsDLo=
+X-Received: by 2002:a05:600c:4f93:b0:416:389d:a4b6 with SMTP id
+ n19-20020a05600c4f9300b00416389da4b6mr2107258wmq.12.1712828176496; 
+ Thu, 11 Apr 2024 02:36:16 -0700 (PDT)
+Received: from [192.168.202.175] (137.red-88-29-174.dynamicip.rima-tde.net.
+ [88.29.174.137]) by smtp.gmail.com with ESMTPSA id
+ u14-20020a05600c19ce00b0041772ec5d18sm4237322wmq.0.2024.04.11.02.36.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 11 Apr 2024 02:36:16 -0700 (PDT)
+Message-ID: <4c683f51-fe0f-4ef9-b424-aee8a859df0e@linaro.org>
+Date: Thu, 11 Apr 2024 11:36:10 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 01/12] ui/console-vc: Replace sprintf() by
  g_strdup_printf()
-Message-ID: <dx3zdfuwz7gam7brijaqfd4kg4uttybr2s2pjonhl4twyivhf3@afcjz4iulzcn>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>
 References: <20240410160614.90627-1-philmd@linaro.org>
  <20240410160614.90627-2-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240410160614.90627-2-philmd@linaro.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.049,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ <dx3zdfuwz7gam7brijaqfd4kg4uttybr2s2pjonhl4twyivhf3@afcjz4iulzcn>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <dx3zdfuwz7gam7brijaqfd4kg4uttybr2s2pjonhl4twyivhf3@afcjz4iulzcn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,27 +133,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Wv/Hjo0wBqm+
+X-TUID: pf6xVRqdQZhJ
 
-  Hi,
+On 11/4/24 09:47, Gerd Hoffmann wrote:
+>    Hi,
+> 
+>>      Due to security concerns inherent in the design of sprintf(3),
+>>      it is highly recommended that you use snprintf(3) instead.
+> 
+>> -    char response[40];
+>> +    g_autofree char *response = NULL;
+> 
+>> -                    sprintf(response, "\033[%d;%dR",
+>> +                    response = g_strdup_printf("\033[%d;%dR",
+> 
+> Any specific reason why you don't go with the recommendation above?
+> 
+> While using g_strdup_printf() isn't wrong it allocates memory which
+> is not needed here because you can continue to use the stack buffer
+> this way:
+> 
+> 	snprintf(response, sizeof(response), ...);
 
->     Due to security concerns inherent in the design of sprintf(3),
->     it is highly recommended that you use snprintf(3) instead.
+I thought GLib/GString was recommended for formatting, so choose
+this thinking mostly about style. Indeed in this case snprintf()
+is sufficient. I'll respin, thanks.
 
-> -    char response[40];
-> +    g_autofree char *response = NULL;
-
-> -                    sprintf(response, "\033[%d;%dR",
-> +                    response = g_strdup_printf("\033[%d;%dR",
-
-Any specific reason why you don't go with the recommendation above?
-
-While using g_strdup_printf() isn't wrong it allocates memory which
-is not needed here because you can continue to use the stack buffer
-this way:
-
-	snprintf(response, sizeof(response), ...);
-
-take care,
-  Gerd
+> 
+> take care,
+>    Gerd
+> 
 

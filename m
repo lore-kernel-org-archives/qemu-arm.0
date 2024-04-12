@@ -1,113 +1,132 @@
-Received: by 2002:a17:906:4a51:b0:a52:fc6:5c40 with SMTP id a17csp503128ejv;
-        Fri, 12 Apr 2024 04:37:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVxk57hakGFiuJD4dMhKJs751C6bFo1EoyMCJ0AlZh+ZayOJe4+udL4OzCMGnS9cfqKnClbWfMh2FIelTo4PYF7KDNx85a/
-X-Google-Smtp-Source: AGHT+IE4AYoCUZ9hH6cz5xIee21azYLttn1t953sUdnL9HNl+NjFTqWkfeVmjyquP+19pyB3NJAM
-X-Received: by 2002:a0c:c303:0:b0:69b:5db8:112 with SMTP id f3-20020a0cc303000000b0069b5db80112mr617336qvi.17.1712921820159;
-        Fri, 12 Apr 2024 04:37:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712921820; cv=none;
+Received: by 2002:a17:906:4a51:b0:a52:fc6:5c40 with SMTP id a17csp642528ejv;
+        Fri, 12 Apr 2024 08:26:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXIx0+ssBdOHnIggD0SuIxPELuhQHl31WdaMXIe9+M+QpZKVvxXdCmnED1PcoPOCSYSZzlWcmp4bA6AdzFvVRbNBGevb9NI
+X-Google-Smtp-Source: AGHT+IGbT3W53xhdVx+vCsZ6iB7t4FT+PqaahheWhqIr+Mk9yWOSQOxJAfooucqOGdC3HYahxYWg
+X-Received: by 2002:a05:620a:4d03:b0:78d:6198:f07d with SMTP id wa3-20020a05620a4d0300b0078d6198f07dmr2952927qkn.31.1712935583814;
+        Fri, 12 Apr 2024 08:26:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1712935583; cv=none;
         d=google.com; s=arc-20160816;
-        b=0dWj+QxOMOX1zuZk5ISs07U9Jlc8h+6MQtZXCyUlQV8840Hz2fHz7O6VVlf0a3X2jN
-         HayILxeB+bINhOL7WKbgpSkDFZ+l2gC4Jln/II+DhQ7MdzNruHN0++pjTHo0UB5H6+2e
-         AAw8OnSUZWkPROZ29zj4sqYgzgJHfUV1UvWELOWrXaXs7UPJrZd4QIDmN7AV3Zb8ZTRJ
-         p+7A8GLSZO36VO6Yt2VLkc5QoETSVRdWOAdQIYk8INrTeeV11KI8jT0my3lYFrY+EvDf
-         zdkmRgu33r3ovk/tuYEsVBRviKyEUh4CjFOmilTw4cI92U5vDKl+EG6FpdvQeB7j+k1s
-         lPGg==
+        b=OCMSkYUuwbMNJQIVd56gLRGTChn8QX0TSqMjQIL7d1B8Bn3Huln3RrVhqTpsAj/7/v
+         r9NZoCMN7RjYCXa75YVMXIHfQrk8cqMSJOq5gZat/qhQ9WDrVE+9SXy4bSxLL26AW1UA
+         JSpU0e2VrKEjuyLeNQ4BJhopMuRUZdbtkYKK6o+8tXyVSTG1jISvNohnv7KD4AaqY+4f
+         DlsgfrdVT66Jurg7HAklbUkB52d6/wJ9a4Y2Kg75vE1iJESqhbfvw8Och8NvIBix9YBw
+         nRLszOyZhZLcMggtH798Sverw/aeihvsHrFj+rgSEOU+kx9OxVZmgLC8+bKKM8KFQ494
+         U+uQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=xlMSl6AZxnSBBoc0mH7VbIptvRJGyRHmkjbLnzCBIa8=;
-        fh=URim2PeQnZ4LvID5rdBNUOZB58WuU9cNamev4pCKuNQ=;
-        b=TfbZngN4JVIx9lTJ7LFbgoafrN96ob/K2YlJw4zXZMHG4p7jWN17/jz8OjzcII4EfF
-         tNg7OpcNngJamDx97wh8X2q1jQpjFCxodUHd7clyB+A7B0ouqEfDXw7QKMPDZZbF11Ui
-         kJ6gM+hMYrSl5GO5krEkvWpivyXkIjPfjfYikyreSnkE1Jmn/0PYcLcnnuVemv1gbiGt
-         5enxhL/Bk0ApgRpTGYWvXWEEdKrk6yVUz7eylXYRkNNm1jPT1bZZCzbioMvEGSWdTpQ1
-         nK1kgzJpwDq0LDVsCc8hS6B1BsDVDR9Xop+2mkx+7XnvwL+NZ+6oAN+JJXQSk7ePw4fh
-         ZafA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :cc:to:from:date:dkim-signature;
+        bh=4QRMf4A9pdnITwrqT/648C2rZ4OGfHGeacWNc0Yevds=;
+        fh=PtEzZV8lewTsEhdjnvYI3dlW1izt+z1+lGR2Vrrdpq8=;
+        b=u2ysCXUwriIfXOmEISH3QZfCFfnefWP+k6yv97gO2CbaIMLhFssRl+AxCm8C43m9hl
+         0qfgLn2Cz5be7qHvv2d4vv7y3Fz/3AXFTaL06oitMBtW7mEh6h1GW7eVIcKlutCmdHoc
+         2b71J1p2DfHS9EnoitOragykZyjO+GEm078JF40Bwsaeapl9cyBYe0k0HRQDW8DPtWKD
+         Rj36WpF2htIn1X8kuRAVdkL5cb7Cdn8V+mF52Tjh2mfniJSoGQ8WekEnOZh5y8QKaUpT
+         +WzaIvYxmGziMpnK/8HEMLd2WZBpQ44OSYoJ3vmN8mGo/snGXh9h33pV8DMRu18PgfU+
+         233g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EYb1HF4A;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hVdoq+vX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g13-20020a0cd7cd000000b0069b2a1128ffsi3311296qvj.590.2024.04.12.04.36.59
+        by mx.google.com with ESMTPS id y22-20020a05620a09d600b0078ed33d557dsi462709qky.489.2024.04.12.08.26.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Apr 2024 04:37:00 -0700 (PDT)
+        Fri, 12 Apr 2024 08:26:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EYb1HF4A;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hVdoq+vX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rvFDA-0001jK-9e; Fri, 12 Apr 2024 07:36:52 -0400
+	id 1rvImv-000745-Lb; Fri, 12 Apr 2024 11:26:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rvFD8-0001iK-BE
- for qemu-arm@nongnu.org; Fri, 12 Apr 2024 07:36:50 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rvFD6-0002aj-MG
- for qemu-arm@nongnu.org; Fri, 12 Apr 2024 07:36:50 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-56e346224bdso713691a12.1
- for <qemu-arm@nongnu.org>; Fri, 12 Apr 2024 04:36:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712921806; x=1713526606; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=xlMSl6AZxnSBBoc0mH7VbIptvRJGyRHmkjbLnzCBIa8=;
- b=EYb1HF4Aev5dHJG6evPa+DTfPRjjg+eac4fcU9XRC/YFBnRXU1KBe5ctT9uZmraGD0
- Zxc9CsFop6QscdL4LKVKSXNNr/Dny42b26ZyKZPPqQBKvTLi9nq6PkBxde2yMd2HscAE
- Cl4AH9Y7yOR600iZjbTO0Xr/iQGfPmN02MsnHpsunQ4eQQooCz4RHkhBZavtPezpCJPL
- l2ZDSofrwesJeN4+0+jojLmHjU9P/EKYpz5xKR6RJKVcSKsbfXgenLYT3mHKB6yho/6g
- pGxSd3xYwfF8OG/4l+2np2Dj4PfKL47q18TA8S6V1zlK67lYYMiMb1Yr7Nf8oFUw/XCe
- WH5w==
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1rvImt-000738-E1
+ for qemu-arm@nongnu.org; Fri, 12 Apr 2024 11:25:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1rvImo-000585-Es
+ for qemu-arm@nongnu.org; Fri, 12 Apr 2024 11:25:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1712935552;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4QRMf4A9pdnITwrqT/648C2rZ4OGfHGeacWNc0Yevds=;
+ b=hVdoq+vXR3tWWkQZziglqwRF8ljz7NLopvdf/IxQEUqw0gujc476C3YhGrtLevXHowXUSl
+ 9RbJLf9f8Fa7ZuluSHrXIUPgUTK5sfevBXlB+imgqFXcSgThE0WPkc8LO1a5ejwar2x8Y5
+ GFiqwrBAehswECfiEqbhq3s1fbWNUjE=
+Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
+ [209.85.166.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-608-tRwoxP8OOrqz20i8J_xFNw-1; Fri, 12 Apr 2024 11:25:51 -0400
+X-MC-Unique: tRwoxP8OOrqz20i8J_xFNw-1
+Received: by mail-il1-f197.google.com with SMTP id
+ e9e14a558f8ab-36a3010f66bso10263995ab.3
+ for <qemu-arm@nongnu.org>; Fri, 12 Apr 2024 08:25:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712921806; x=1713526606;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=xlMSl6AZxnSBBoc0mH7VbIptvRJGyRHmkjbLnzCBIa8=;
- b=EDNvr2jPu+24I1fyXGjtg8duta+wCHjwjVwMGJSaEcV14F9ONImWdPTBR3kujgFYKC
- k59JWl4iFlR4hE59Uo4khlATYNlDfrUdJMLWBpSWMvyC69pgEML1+UOY4ByZDolOK1UE
- 3YhC2lRhawfsPTmFKUWSZwwpbHon979pXk4U0v/YDvb9YYYatQU1x1ZOgUof5Eal9aUS
- PUNtvxvWuzfY1uBV2hadaVLLw++y49hXNWlH+LxQy6LkWPoxXMpmuuv0F1XL2SvdcHU6
- amxeWux0hh0pwiYl5wOCSz7TrCqDX9FxLbpG+rINmtRc3Xpi4KUzaxuRMcIO62aaC7zW
- pKew==
+ d=1e100.net; s=20230601; t=1712935550; x=1713540350;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=4QRMf4A9pdnITwrqT/648C2rZ4OGfHGeacWNc0Yevds=;
+ b=hUxBvFQq3YOn5yk3KFJXWnacimxyJ+5dH7SfIX/0dft4njxy2UikfoNcNdVdZuOg+j
+ 5lt95OzpHDEcvzugE3/sVwiaqVlZ55pQrr2wGKGKhV21UFS+z9oukXThhe12RTz1Bcx0
+ 6oR4lRORKjrU1IJ9UQteJs/YviIdrEdjtw6mTt88WcO8CQ+rNc/J3/5znBmAs1PpTV+9
+ cjX6IYRD0U0Wthku1EZeIrTlEV+wZgtB1oCjt/CSc2cZcQ1lB7+6jHhA+kuEB5seBeox
+ ap8dlUrnMBYtUPzPQAgXmxolNHgEEt8yCJPl34gmU49eB9jfwLV/yAO+TT7kZC7jCXpT
+ 80ZQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV/SDQxtEmPAzaB8YTJzlRLRi2395DvBI6ugStBj27GhG79VnOFlKPq3ua72Ci+PvYovfYtdyLppzFFWT/DOx3jV3fo
-X-Gm-Message-State: AOJu0Yxr14hr6P6Oxb7P5Nw0yMz6lG/e4aw6yJyqIHsIUMy8SnXZ4Ca5
- lbiVSdhzhwmy4CeHCPmHxqA0vRZVf/4xgYnXb+la7pn+16A+u81k9vqkSzIHd4i6MqUdVN5k58p
- GAmRz+NxPFzx5PzZXUXcrM4StpYEZEOtVeanrsQ==
-X-Received: by 2002:a50:9e84:0:b0:56d:f979:8d82 with SMTP id
- a4-20020a509e84000000b0056df9798d82mr1586037edf.25.1712921806372; Fri, 12 Apr
- 2024 04:36:46 -0700 (PDT)
+ AJvYcCVP17JqfdyRc1B14I5w3VA6k9nk4lCjWLysDsZuUt+WYCsaxsq8NHtPO/m8b6APst3lhY/H+c4oXgvypYdQvhS4aEOV
+X-Gm-Message-State: AOJu0YzRfix7Lhfs09xa0QIKAmTTz+Cvl1IVw/Cv4AVpVskgQB2DxMlt
+ IrWrn7imRvOc3+kg+/3cVkn0Jq4QpVjPBOvJPvdFqzFaWtpAQ5hb8nPrME84ooZTPEpCdwxCNT3
+ 4x7uE0yJf1eS+ktwZ/lxJ+4YpF6xDLgRLIzKiCdbGgG9X8FEilg==
+X-Received: by 2002:a05:6e02:174a:b0:36a:2f18:109 with SMTP id
+ y10-20020a056e02174a00b0036a2f180109mr3277889ill.4.1712935550720; 
+ Fri, 12 Apr 2024 08:25:50 -0700 (PDT)
+X-Received: by 2002:a05:6e02:174a:b0:36a:2f18:109 with SMTP id
+ y10-20020a056e02174a00b0036a2f180109mr3277881ill.4.1712935550461; 
+ Fri, 12 Apr 2024 08:25:50 -0700 (PDT)
+Received: from redhat.com ([38.15.36.11]) by smtp.gmail.com with ESMTPSA id
+ l13-20020a056638144d00b004829e76a7c1sm1107539jad.172.2024.04.12.08.25.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 12 Apr 2024 08:25:49 -0700 (PDT)
+Date: Fri, 12 Apr 2024 09:25:46 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@redhat.com>
+Subject: Re: [PATCH 02/12] hw/vfio/pci: Replace sprintf() by g_strdup_printf()
+Message-ID: <20240412092546.348163c0.alex.williamson@redhat.com>
+In-Reply-To: <20240410160614.90627-3-philmd@linaro.org>
+References: <20240410160614.90627-1-philmd@linaro.org>
+ <20240410160614.90627-3-philmd@linaro.org>
+Organization: Red Hat
 MIME-Version: 1.0
-References: <20220620175235.60881-1-richard.henderson@linaro.org>
- <20220620175235.60881-18-richard.henderson@linaro.org>
-In-Reply-To: <20220620175235.60881-18-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Apr 2024 12:36:35 +0100
-Message-ID: <CAFEAcA8pQ9dZXh1sghqGmuVRubFkn2HQpRnzDSGQpkUSKGg+jA@mail.gmail.com>
-Subject: Re: [PATCH v3 17/51] target/arm: Add cpu properties for SME
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=alex.williamson@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.103,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,67 +141,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aqyrmYm1gH5T
+X-TUID: jue2JYRVOCsS
 
-On Mon, 20 Jun 2022 at 19:08, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Mirror the properties for SVE.  The main difference is
-> that any arbitrary set of powers of 2 may be supported,
-> and not the stricter constraints that apply to SVE.
+On Wed, 10 Apr 2024 18:06:03 +0200
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
 
-> +SME CPU Property Examples
-> +-------------------------
-> +
-> +  1) Disable SME::
-> +
-> +     $ qemu-system-aarch64 -M virt -cpu max,sme=off
-> +
-> +  2) Implicitly enable all vector lengths for the ``max`` CPU type::
-> +
-> +     $ qemu-system-aarch64 -M virt -cpu max
-> +
-> +  3) Only enable the 256-bit vector length::
-> +
-> +     $ qemu-system-aarch64 -M virt -cpu max,sme256=on
-> +
-> +  3) Enable the 256-bit and 1024-bit vector lengths::
-> +
-> +     $ qemu-system-aarch64 -M virt -cpu max,sme256=on,sme1024=on
-> +
-> +  4) Disable the 512-bit vector length.  This results in all the other
-> +     lengths supported by ``max`` defaulting to enabled
-> +     (128, 256, 1024 and 2048)::
-> +
-> +     $ qemu-system-aarch64 -M virt -cpu max,sve512=off
-> +
+> sprintf() is deprecated on Darwin since macOS 13.0 / XCode 14.1,
+> resulting in painful developper experience. Use g_strdup_printf()
+> instead.
 
-I just noticed this while I was trying to understand the
-SME and SVE property documentation -- the example 4 here
-is in the SME property examples section, but it's changing
-sve512, not sme512. Is that an error, or intentional? (If the
-latter, the explanation could be enlarged upon to say that
-it's changing behaviour of the SME vector length by adjusting
-the SVE vector length.)
+Isn't this code only compiled for Linux hosts?  Maybe still a valid
+change, but the rationale seems irrelevant.  Thanks,
 
-Also, the documentation for the SVE properties uses this
-same command line, but it describes the effects differently:
+Alex
 
-# Disable the 512-bit vector length and all larger vector lengths,
-# since 512 is a power-of-two. This results in all the smaller,
-# uninitialized lengths (128, 256, and 384) defaulting to enabled:
-#
-# $ qemu-system-aarch64 -M virt -cpu max,sve512=off
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  hw/vfio/pci.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 64780d1b79..cc3cc89122 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -2442,10 +2442,9 @@ void vfio_pci_post_reset(VFIOPCIDevice *vdev)
+> =20
+>  bool vfio_pci_host_match(PCIHostDeviceAddress *addr, const char *name)
+>  {
+> -    char tmp[13];
+> -
+> -    sprintf(tmp, "%04x:%02x:%02x.%1x", addr->domain,
+> -            addr->bus, addr->slot, addr->function);
+> +    g_autofree char *tmp =3D g_strdup_printf("%04x:%02x:%02x.%1x",
+> +                                           addr->domain, addr->bus,
+> +                                           addr->slot, addr->function);
+> =20
+>      return (strcmp(tmp, name) =3D=3D 0);
+>  }
 
-In the SME section we say that all other lengths default
-to enabled, but in the SVE section we say that the
-smaller lengths default to enabled but the longer
-lengths are disabled. Is:
- * the SVE part wrong?
- * the SME part wrong?
- * the behaviour deliberately different for SVE and SME
-   vector lengths? (If so, we should say so explicitly to
-   highlight that to users).
-
-thanks
--- PMM

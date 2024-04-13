@@ -1,123 +1,127 @@
-Received: by 2002:a17:906:4a51:b0:a52:fc6:5c40 with SMTP id a17csp675539ejv;
-        Fri, 12 Apr 2024 09:17:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV+hI0olkbHNOo7UlUx04WnWUJFw84L1OYTWQL3n/LqICcjjL/7H7P3/Qo8nKx+ONQukIqEPClV/ORHyB+xqUcuWiQ1ydEa
-X-Google-Smtp-Source: AGHT+IFqYzpnw4cMxMLaioKgfNrnSfQWZnGNYlTcXNjVYk/g8L96Ze1Kh1IBIye+8JaSNcJkEMpT
-X-Received: by 2002:a0c:eb4c:0:b0:699:247e:a69a with SMTP id c12-20020a0ceb4c000000b00699247ea69amr3482833qvq.9.1712938671799;
-        Fri, 12 Apr 2024 09:17:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1712938671; cv=none;
+Received: by 2002:a17:907:1751:b0:a52:4db9:938b with SMTP id lf17csp182549ejc;
+        Sat, 13 Apr 2024 02:49:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUxkIqexrUKXp2S99oiJQa6Cf2aMNKsY7cBUI65k1cyaEgRCyI1FRhTkEqfqqszK7vbN42a4ByP2msWRQgOHCxVgJqwLPxE
+X-Google-Smtp-Source: AGHT+IH/GS/GZAMV643M8MSAm6NNJ0qGrRmWh8rQ3K5HpfTw+W6YhYyFaqWHK/iTdk6nFXOIYngL
+X-Received: by 2002:ae9:f50f:0:b0:78d:631e:7ede with SMTP id o15-20020ae9f50f000000b0078d631e7edemr5291554qkg.72.1713001776272;
+        Sat, 13 Apr 2024 02:49:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713001776; cv=none;
         d=google.com; s=arc-20160816;
-        b=GGmYskxe+Tq49eLyjzJnsJffYgWRzOafipWeTCw28huKsyr6amIPQDrY3WAQ7mhkDj
-         lW9IwTbw3tmpZ9AGZ3qcWCJpC/OlRMlygRcJY92UCGddkjTd90i6xlYLMtqtDQmaxJhH
-         d4Jxdfz+z7Hu4kvDUpIMga3f0AgNZldfOZYYwc8TZPjsyH3TIxZ/llfZ3vK/d3Sa+hR9
-         8BA16cdhPmPgXisE9o79wDEZautzKpjJG1UyCgaqNCHvPX5y1ZjbX9OBO2aY0z9zWw/y
-         slL/4Q/VdLgbaTNAlqcPTcwofNm3lxdf49QCCOtSlW/NJ+wV0THnmz4EMVc/qALWImBW
-         5zOg==
+        b=eH1A05wQvS3m04UajyN1qJwdgU5kYHwEZ28BcR43kwK6xB8xEyZ1RT+SZ6WFjn6Hd9
+         mhA9Gi3UEHRrYb3eOIRYNZJF7VqSEXt4XzxX/6C+KT2Wc31HR+GvJ6j30phDvi6Tjann
+         ZY7zXL2Ddwq1+35yP1Fp2SnNc1PZm1RyVFCWTLIc4VhhfETka3i+Jnle9pcXzmV4m9j+
+         RIU2sbVXcpGCF3hVubInrnKtHkrsdqO59T5Gw+TlsTom7/B1vC2h/kmg92mu3suAqgMV
+         qZhHBVL08cutN5pUbxF7//Mro5UQrh8ZXLkRd9gv92b24LVfwYyeWy48u6oI6z5cqZMZ
+         4IwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=USoFStEqNXqZnRqMSDJ7Q4ksTEbQBxRG0TPfOFM2CtY=;
-        fh=5WojEhEmN5eF5K+hoc8OKF90T0JOBS6VumJgCO/FgBg=;
-        b=llIbZz8jd6iJFh3G/NwrYkENYXAPqMgr7fElLWxKDQ023mgDkxOQ8urWD1nKX/awoN
-         bzQRhSLw12aPhCgZYrcURsbU8rL1CngAJI4GywkKyzGaUvfmXDNyHZapUX6ykWipCNqJ
-         3JF9mG0ivnVSCN3wqi5jfNGcESskIU2tdtqR6v4E8xQF+J++H2I+xuOt9I7OBSWCyZQT
-         avWFJayNyPW6c8wtexIFKLavfjj6iE+xiHWzNxBUlg779L+mRm5YCWw17FWeqGY/0h54
-         CGvdlDVITEz3s+SsT8qx/wJoMzcnbm8uGDxhloeo8u2bVCQ+PTA7UPoqwy77F6ioAXQT
-         GkPg==;
+        bh=YXdpzhcljKxwFeCjPC31atfXxlX/3Lka6nbkKu0vUDI=;
+        fh=Kg0/Me3tpVJtH9/d0rYnDSoW4orhjxoGURIkdNPqa+k=;
+        b=yyFC84EX5hsgBzP3oGRkhOWrgcMTw59QFu9tr69Lu9FdxhhZ4b9NCm4QpQyC0IpZML
+         81u4tU1nYHzVRblfCJ9lwRluQt0rcGfrmR044a/5UoSVm5s9DBhPjrAPFQ8hn8C/H2dT
+         NoSLJIbDP35mXzZNndN2yjrvJTKDJ1IpZitxabTfyLvRMo1qIj+4fd8EtBuwUUxZpS8/
+         f0mtShgZhZbLk+95nl7n6NfM+JuBq3UmE9scKpibXlqeh9ELbVFNxSEx7/4xsv8QdsA2
+         uqS2Cae5gSERAnc6JwP7gMMRjidMIa3bM3IcgAb2kBY7Am1BfYLQ4+BINxB1oQGMl4wy
+         vKNA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tc8WBqkL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y9Q5H+RX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ct10-20020a056214178a00b0069b23f26671si3932202qvb.185.2024.04.12.09.17.51
+        by mx.google.com with ESMTPS id u4-20020a05620a084400b0078d5ad78d26si5630376qku.689.2024.04.13.02.49.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Apr 2024 09:17:51 -0700 (PDT)
+        Sat, 13 Apr 2024 02:49:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tc8WBqkL;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y9Q5H+RX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rvJao-0000Qb-PZ; Fri, 12 Apr 2024 12:17:34 -0400
+	id 1rva0K-0002TR-QQ; Sat, 13 Apr 2024 05:49:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rvJaj-0000Pv-KF
- for qemu-arm@nongnu.org; Fri, 12 Apr 2024 12:17:33 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rva0I-0002Ss-47
+ for qemu-arm@nongnu.org; Sat, 13 Apr 2024 05:48:58 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rvJah-0006aI-KD
- for qemu-arm@nongnu.org; Fri, 12 Apr 2024 12:17:29 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-1e3c3aa8938so7319365ad.1
- for <qemu-arm@nongnu.org>; Fri, 12 Apr 2024 09:17:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rva0D-0002m1-N4
+ for qemu-arm@nongnu.org; Sat, 13 Apr 2024 05:48:57 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-346b94fa7ecso1566824f8f.3
+ for <qemu-arm@nongnu.org>; Sat, 13 Apr 2024 02:48:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712938644; x=1713543444; darn=nongnu.org;
+ d=linaro.org; s=google; t=1713001732; x=1713606532; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=USoFStEqNXqZnRqMSDJ7Q4ksTEbQBxRG0TPfOFM2CtY=;
- b=Tc8WBqkLIcT1ZsKFCTg2/7cD1d1p9c/h9HHohi8tZqqqyM75jmtuI1in1wU2pvsxzk
- VGWJUseUyQV/BjtVSH2oJ7lqaIe3PbJG2CDj9nFjk2+gpKlOFpb4Jtpy3nC7OrdQKcMr
- 6bTUaIT8GeID0wZVM7zr8+6yX3gMpMGzPAycGElDK6/dx24pN14u5UBRNr9jAVWBq3/k
- wawI9xYIWbaovWhnJN27fJ+QkiXsKyIuMbniuJUJ4UU61M1+nnW9fj9hVjfDlYv6y5yr
- OXWq6UnRepTCmy+RjFtHCfrZY2XH8Y2ptL3sjXwKpUxiJLflq3zrDUajsQxqeUg5QNZR
- +8eg==
+ bh=YXdpzhcljKxwFeCjPC31atfXxlX/3Lka6nbkKu0vUDI=;
+ b=y9Q5H+RXmGg+kZU+xjugYm1vMROZ5okChxnPJQiPEufqUiEc2NKRVoCQMb1se0QXoi
+ YvRYM7hYCygC6OocNI4cdypVtSVO5LtYZ21u0Su5FWvysEYuzfqjNSCL48rBWJfaK0HA
+ I0w4HlMZaX7NRtVUsfr+1dRcBjm9rJrp7p5G8OW0WlRNTTGwsY5KjdLhkcSwJ699Ct6Z
+ buOGNTwuak5ky/Hz2v5QFzfdkMwyNgR0F8pOethzhgZnbUjqNPlbTAtxpmMhHFy98lXN
+ vIr1x7wu8Sic87r3g0qit9V+rdkoYpa3Wdg2zuJEvslehmUZtASpepmvyPwMOA69wp3+
+ UIaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712938644; x=1713543444;
+ d=1e100.net; s=20230601; t=1713001732; x=1713606532;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=USoFStEqNXqZnRqMSDJ7Q4ksTEbQBxRG0TPfOFM2CtY=;
- b=h5e6ov0A9NZALwGyZBAB6Qcxr2nMY6utZYaRDPcJF5gbZJjyZrj17lrmAIP1RFg6jA
- IKf+pcLlqHMImtMHxfs4XQRyfFSjYEshsV+0GVu1gEj+EACM7o/Ji9eaaguf5XijULJR
- XviCg3PdUwVsQXdQXqxWHscTRMo0gTRx9eV9mTEF1iVjIIr6Vzz0/rXAi68gs5WiA+LA
- xOho0W+8ZYmh4YsjW/xrGJeE3gvnqr/t2XilL0AwikSOGOalbz6yiVDkhQga7Gr8qGYS
- GhMsC3/N2c4uIiTw7YylqKLq7brI0S8pxeL9OZaeigH0WSSGKPy7eZMGKwu59zfursK9
- WOVw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW/T6JHu6/qERIA456A93yWRwmZX9NyL8+n9Aqk92H6V6TpN3Rd3CGSx1ccAnbSksqwAXPbZhnLTeBppaMBWncRwqW3
-X-Gm-Message-State: AOJu0YwglH0msbdxneFHcBEpcDZjAHCTyV2I4x2ssX48v6QXpMFRrioh
- FJna48SD0CUf55hQT/+1lgOniRw2YKndACr4gnu0O+zYJAwJ1t2CEQZ3yqOAFaA=
-X-Received: by 2002:a17:902:b287:b0:1de:f91:3cf3 with SMTP id
- u7-20020a170902b28700b001de0f913cf3mr2573948plr.55.1712938644386; 
- Fri, 12 Apr 2024 09:17:24 -0700 (PDT)
-Received: from [192.168.0.4] (174-21-72-5.tukw.qwest.net. [174.21.72.5])
- by smtp.gmail.com with ESMTPSA id
- h11-20020a170902f54b00b001e420abf8c1sm3169196plf.165.2024.04.12.09.17.23
+ bh=YXdpzhcljKxwFeCjPC31atfXxlX/3Lka6nbkKu0vUDI=;
+ b=kyzSb27l/sYtfp+SzX7pTQbuLL2TfOvy5YZ6e5jtl6QOgJB7ljUamyqgdFPIXRIS/L
+ uXcACvlKm1MiMwbxwTz3w7GwnGdzpIA5pJUe3ji7VkzjGyPmrinik2AhgnYL6KJujfVS
+ bVFS0JawTMU4zzJ+VP2FcERegQ2wZkJeYS8M6eHVVG7JFcOWUMIkKBZMGr9p2X0z+A0K
+ 1AxdJZtzK84j+6r6OmIqLc9nAPsJtUsqieHPzFyUgspRUcLusJk3GxJdNU7/EfAqHsqT
+ wpKx1WI4ewJRfQOh6u0acIJNHg5kKGhNakiemCyBnFG/RKF5DUQHs36dwvrq/jq/gigv
+ VmVg==
+X-Gm-Message-State: AOJu0YxYrK+KHlXfKXNeFMkg0pbtZRX6Z3cGJ+D/kUksbwK54g9A3vCs
+ 6vd0SUsxbRAmk2E+N22Xt371EP04n4i7YraXVmV1HjZmXtC+rScucIJvzTic1x0=
+X-Received: by 2002:a5d:4049:0:b0:343:6b76:251f with SMTP id
+ w9-20020a5d4049000000b003436b76251fmr3872935wrp.42.1713001732191; 
+ Sat, 13 Apr 2024 02:48:52 -0700 (PDT)
+Received: from [192.168.1.28] (lfbn-bay-1-170-196.w83-193.abo.wanadoo.fr.
+ [83.193.250.196]) by smtp.gmail.com with ESMTPSA id
+ k5-20020a5d66c5000000b00346406a5c80sm6143871wrw.32.2024.04.13.02.48.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Apr 2024 09:17:24 -0700 (PDT)
-Message-ID: <21265e46-637d-46db-81e2-c2ae948e312f@linaro.org>
-Date: Fri, 12 Apr 2024 09:17:22 -0700
+ Sat, 13 Apr 2024 02:48:51 -0700 (PDT)
+Message-ID: <fad7296f-1870-4b87-9b05-e367c7422d14@linaro.org>
+Date: Sat, 13 Apr 2024 11:48:50 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 17/51] target/arm: Add cpu properties for SME
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20220620175235.60881-1-richard.henderson@linaro.org>
- <20220620175235.60881-18-richard.henderson@linaro.org>
- <CAFEAcA8pQ9dZXh1sghqGmuVRubFkn2HQpRnzDSGQpkUSKGg+jA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw: Fix problem with the A*MPCORE switches in the
+ Kconfig files
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>
+References: <20240412062042.105174-1-thuth@redhat.com>
+ <20240412062042.105174-2-thuth@redhat.com>
+ <35ea1f53-5c7a-45e8-9fa1-0df8fc7a0cba@linaro.org>
+ <f75a5002-8292-4383-9d62-ebd8f3587c20@redhat.com>
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA8pQ9dZXh1sghqGmuVRubFkn2HQpRnzDSGQpkUSKGg+jA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <f75a5002-8292-4383-9d62-ebd8f3587c20@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,42 +136,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DknieGl/SWaK
+X-TUID: qoQLy3ny6wzO
 
-On 4/12/24 04:36, Peter Maydell wrote:
->> +  4) Disable the 512-bit vector length.  This results in all the other
->> +     lengths supported by ``max`` defaulting to enabled
->> +     (128, 256, 1024 and 2048)::
->> +
->> +     $ qemu-system-aarch64 -M virt -cpu max,sve512=off
->> +
+On 12/4/24 13:32, Thomas Huth wrote:
+> On 12/04/2024 13.10, Philippe Mathieu-Daudé wrote:
+>> On 12/4/24 08:20, Thomas Huth wrote:
+>>> A9MPCORE, ARM11MPCORE and A15MPCORE are defined twice, once in
+>>> hw/cpu/Kconfig and once in hw/arm/Kconfig. This is only possible
+>>> by accident, since hw/cpu/Kconfig is never included from hw/Kconfig.
+>>> Fix it by declaring the switches only in hw/cpu/Kconfig (since the
+>>> related files reside in the hw/cpu/ folder) and by making sure that
+>>> the file hw/cpu/Kconfig is now properly included from hw/Kconfig.
+>>>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>   hw/Kconfig     |  1 +
+>>>   hw/arm/Kconfig | 15 ---------------
+>>>   hw/cpu/Kconfig | 12 +++++++++---
+>>>   3 files changed, 10 insertions(+), 18 deletions(-)
+>>>
+>>> diff --git a/hw/Kconfig b/hw/Kconfig
+>>> index 2c00936c28..9567cc475d 100644
+>>> --- a/hw/Kconfig
+>>> +++ b/hw/Kconfig
+>>> @@ -48,6 +48,7 @@ source watchdog/Kconfig
+>>>   # arch Kconfig
+>>>   source arm/Kconfig
+>>> +source cpu/Kconfig
+>>>   source alpha/Kconfig
+>>>   source avr/Kconfig
+>>>   source cris/Kconfig
+>>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+>>> index 893a7bff66..d97015c45c 100644
+>>> --- a/hw/arm/Kconfig
+>>> +++ b/hw/arm/Kconfig
+>>> @@ -678,21 +678,6 @@ config ZAURUS
+>>>       select NAND
+>>>       select ECC
+>>> -config A9MPCORE
+>>> -    bool
+>>> -    select A9_GTIMER
+>>> -    select A9SCU       # snoop control unit
+>>> -    select ARM_GIC
+>>> -    select ARM_MPTIMER
+>>> -
+>>> -config A15MPCORE
+>>> -    bool
+>>> -    select ARM_GIC
+>>> -
+>>> -config ARM11MPCORE
+>>> -    bool
+>>> -    select ARM11SCU
+>>> -
+>>>   config ARMSSE
+>>>       bool
+>>>       select ARM_V7M
+>>> diff --git a/hw/cpu/Kconfig b/hw/cpu/Kconfig
+>>> index 1767d028ac..f776e884cd 100644
+>>> --- a/hw/cpu/Kconfig
+>>> +++ b/hw/cpu/Kconfig
+>>> @@ -1,8 +1,14 @@
+>>> -config ARM11MPCORE
+>>> -    bool
+>>> -
+>>>   config A9MPCORE
+>>>       bool
+>>> +    select A9_GTIMER
+>>> +    select A9SCU       # snoop control unit
+>>> +    select ARM_GIC
+>>> +    select ARM_MPTIMER
+>>>   config A15MPCORE
+>>>       bool
+>>> +    select ARM_GIC
+>>> +
+>>> +config ARM11MPCORE
+>>> +    bool
+>>> +    select ARM11SCU
+>>
+>> I thought 
+>> https://lore.kernel.org/qemu-devel/20231212162935.42910-6-philmd@linaro.org/
+>>   was already merged :/ I'll look at what is missing and respin.
 > 
-> I just noticed this while I was trying to understand the
-> SME and SVE property documentation -- the example 4 here
-> is in the SME property examples section, but it's changing
-> sve512, not sme512. Is that an error, or intentional?
+> Oh, ok. But I'd prefer to keep the hw/cpu/Kconfig file since it will be 
+> used in the 2nd patch here, too.
 
-Error.
+Fine,
 
-> In the SME section we say that all other lengths default
-> to enabled, but in the SVE section we say that the
-> smaller lengths default to enabled but the longer
-> lengths are disabled. Is:
->   * the SVE part wrong?
->   * the SME part wrong?
->   * the behaviour deliberately different for SVE and SME
->     vector lengths? (If so, we should say so explicitly to
->     highlight that to users).
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The behaviour is deliberately different.
-
-See R_JRCSH and especially I_FQKMN:
-
-     For example, this means that the set of supported SVLs might be
-     discontiguous and might not start at the smallest permitted SVL.
-
-whereas for SVE, the implementation is required to support all powers of 2 up to the 
-maximum (see e.g. the text for ZCR_EL3.LEN).
-
-
-r~

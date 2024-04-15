@@ -1,111 +1,128 @@
-Received: by 2002:a17:907:1751:b0:a52:4db9:938b with SMTP id lf17csp1045493ejc;
-        Sun, 14 Apr 2024 23:58:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXi6z35bw3nB44iPbDDLsRbz7VlXIwNVtkht7ZxkFw2ysyeJm9aP6gtYAAAuH2CuXi2MNHqbLzAyi8UWEOkV84rm0sS2O6D
-X-Google-Smtp-Source: AGHT+IEBy5aByQ0mn/0QoG9lJUjHtwsPkiDQlvx5kp+s6lFL9SAEpxBqmDgzKex/NZEFIaxRznB8
-X-Received: by 2002:a05:622a:1a81:b0:437:1ec3:3b6c with SMTP id s1-20020a05622a1a8100b004371ec33b6cmr387194qtc.30.1713164280712;
-        Sun, 14 Apr 2024 23:58:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713164280; cv=none;
+Received: by 2002:a17:907:1751:b0:a52:4db9:938b with SMTP id lf17csp1060062ejc;
+        Mon, 15 Apr 2024 00:36:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXKDTzTXEoiphRgld1hj+YW5uSemZG3+378IAduo2jIa1KyyPlKPageoY9dAlJ1M4XIIGLTQdZcSfIjrtm50KpKs55bj79l
+X-Google-Smtp-Source: AGHT+IHfmw4oy9CK245gbZFTt7IlWXWa9x0e4pMau2KAonLCT0jB41b1DPIgYq1CqqZcvhhRrSae
+X-Received: by 2002:a05:6102:cd2:b0:47a:4221:5511 with SMTP id g18-20020a0561020cd200b0047a42215511mr6843157vst.3.1713166574383;
+        Mon, 15 Apr 2024 00:36:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713166574; cv=none;
         d=google.com; s=arc-20160816;
-        b=qlRS0I9YkDpb+D3UguClueEQX9secXRx3V8i8qIQ8vxyG7eSxEtYK7zdP4LQ+nSXm7
-         LTiBFzlCND+gsAnqddxrb3TjcWQV0kljSUBlXs8BI9mA1AZm9Sc4A8/9FpsbTp+xTynz
-         VZn8LcyAxBUd2lcsVp/nsW3e8OsD6eDNiThhXylVgr6BMJqPCqN86BGr8JFz/QEdFZ3R
-         8DY5roMblphh5itnA9mchP8NSqJd7yZQR/XCOYf0oIo4cD/El8flaqm0UIVQ4QgZndqQ
-         r7S66G2i+VqAZpk+2DnZuFtJGdlot3sKeJufemd2ekDabnGKmYX8k6p9Jmd5aXJvuaA9
-         uZDg==
+        b=L9lmVYdFL2jDoXBWyWoWPMigDLSVh0+GVHNw+syaWeEXau3H8OEOCZs07TVRtmxVhh
+         t28giYa0TY4iiGVt1V3UBchsobGa+I2hx+z1afN6CstNe/nYXOyMrhu0ywhbxs6cfSUq
+         iAUm3lT2qRPkCo9HvpMuFl/v96568dwTzAUV5tZ154c3MnFiMUGWM6F+mDc0zXUXMiK1
+         7A1SE+/U3FosNCJJbJPeps72qjJ1l1cPoJ7FBZkVvjyT9pxPC6t0p6ZWboRz/VZYbdOS
+         wpnXexrvTIDGaEjir1/RuRsaiNvihjHEmcGIe4xYkU0DdW3XNyDTfCtRGJHoC4e5OYLQ
+         XY/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=8KZmZrq7Mb+200IsjYG9ksH3TZh5RNNYtpl57wmZs0s=;
-        fh=FgpzUiSKNMTtMHyk5kkuAaa5ueEJtER2oT+Q/1wxShc=;
-        b=O6QeSoA3vFWRqQ2lxMtynYyWv9YOUOx9kxhCJc4wEo/Dx3RL+NVdQzCGWpgdq6L+/A
-         0IyhTTyDOAd7ofX1DtqFkypyrV7XSLsr7JVgMX7IA9AmrQmhgJ+EmDU8Jo6tcoLY5eHu
-         +jNPvPEXCHwqM8ToWPpaLfzTCLHEzWKbc/RTybd8xkZJM1QlUwhdhYdGtFypt/zTj2BQ
-         444GUcvWfcri5BDyO1X33Pq5ymGBtXgavuLN3X9H/a7bWzGwrRZHVg6saezG+fx3CCX1
-         HQWxJOdbuwNWuTWGIXNmK4sR96caPjem1yxWBXkZSsnsnBL01qgXERaZ/tHSUv4Oi655
-         G2jw==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=XRUAnlKiaRRwzf0wfbwa43E1iCK7RwwFAsvsJo8rp3Y=;
+        fh=0fZt6Ry0fBWHIb1fMFK0m+/cEawH3+D5k10Y9KV+G4E=;
+        b=ysA0Am6Z8xpQMAAP8olVB23u51g/SiTFHOacc1g7K2Hbuh16rfhcPR+HPzfe+yXfg3
+         rt7mxGhA4cRvMGArKJImWdLSHJsuHvNfJiEYZc+E/nH/isMJEWfzyAEi/nTaVO/NB9Fv
+         QNWR5+OV1ESOHkn+4yrCXoWuMuT5XjbfSapeAVhOQPpdJuYROk2qOdxGoPeDXB/jk0oZ
+         JwNYK5f2oSAhF13ZCo9L9YImbYC0F51J3V9Cv/RQ0NOGNx6k92HswXgvMfmbN9UzN7Zu
+         RZvU5N/2WNwze0cBuzgjQTtdKeyWz3sbYCjspPDfinaqmmM6OmGLXA44nt9ff+dO3C4/
+         A+VA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RzO1SA9X;
+       dkim=pass header.i=@linaro.org header.s=google header.b="n/9hWh98";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n18-20020ac85a12000000b00436f79fb885si2221072qta.86.2024.04.14.23.58.00
+        by mx.google.com with ESMTPS id j15-20020ac85f8f000000b004368714b214si7776292qta.211.2024.04.15.00.36.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 14 Apr 2024 23:58:00 -0700 (PDT)
+        Mon, 15 Apr 2024 00:36:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RzO1SA9X;
+       dkim=pass header.i=@linaro.org header.s=google header.b="n/9hWh98";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rwGHJ-0004BO-K8; Mon, 15 Apr 2024 02:57:21 -0400
+	id 1rwGsc-0004LD-7i; Mon, 15 Apr 2024 03:35:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rwGHI-0004Ay-1X
- for qemu-arm@nongnu.org; Mon, 15 Apr 2024 02:57:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rwGHG-0005Nh-Fs
- for qemu-arm@nongnu.org; Mon, 15 Apr 2024 02:57:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1713164237;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8KZmZrq7Mb+200IsjYG9ksH3TZh5RNNYtpl57wmZs0s=;
- b=RzO1SA9XPpAE5QILpbGJdgPW6/TvgrPYiLpHZYqOLHhlERkhSp58aPluZ2DME/1/clGr08
- ttEscFAbJ/gshH9paQ9gJ3QX/zeMNgmHIP20etc7jOKX53kjAbirWRvMNAhfdz/mPzvgMT
- 6KeQDEZWxEdStPE8KH2zxeC7tFoxNWA=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-128-WCq81KAKMTSj3O-jVmo4vw-1; Mon,
- 15 Apr 2024 02:57:12 -0400
-X-MC-Unique: WCq81KAKMTSj3O-jVmo4vw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 724933C23FCC;
- Mon, 15 Apr 2024 06:57:11 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.87])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1DB8BC13FA1;
- Mon, 15 Apr 2024 06:57:07 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>
-Subject: [PATCH v2 2/2] hw: Add a Kconfig switch for the TYPE_CPU_CLUSTER
- device
-Date: Mon, 15 Apr 2024 08:56:55 +0200
-Message-ID: <20240415065655.130099-3-thuth@redhat.com>
-In-Reply-To: <20240415065655.130099-1-thuth@redhat.com>
-References: <20240415065655.130099-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwGsa-0004Kc-DL
+ for qemu-arm@nongnu.org; Mon, 15 Apr 2024 03:35:52 -0400
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwGsX-0003bd-K5
+ for qemu-arm@nongnu.org; Mon, 15 Apr 2024 03:35:52 -0400
+Received: by mail-lj1-x236.google.com with SMTP id
+ 38308e7fff4ca-2d895e2c6efso36372911fa.0
+ for <qemu-arm@nongnu.org>; Mon, 15 Apr 2024 00:35:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1713166547; x=1713771347; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=XRUAnlKiaRRwzf0wfbwa43E1iCK7RwwFAsvsJo8rp3Y=;
+ b=n/9hWh981wUWsp90QOd2Qb3rDyhHoLeKV8pEvKUtm1iyaW0eF52b+efbUBhxkK1ilX
+ qwjyk/1Ay8Kbo3P6AbdHnpnGNvos277l866LRcJTmd8AW3RnI59fuAP/CHRX23mbkJry
+ rt+xustBH5AijunQSFWiVSe3Q2VCTSBj0r+A92FzYtGmyLoPLLWF6TgEVnC0uDgGOgde
+ xC3CZMe6EfgtH0cavz5JagubQVn3fmguTwwyxsbDv0Ui/8XWXjNzpsJBsEn/gWMq4nqU
+ HH96fWAV38wcPZG9RBxypuitdfoRGc6vFq14bqGLDFzmMTjc6ojmQB5Mo8DpWLPX0Y7O
+ E+JA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1713166547; x=1713771347;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=XRUAnlKiaRRwzf0wfbwa43E1iCK7RwwFAsvsJo8rp3Y=;
+ b=wp4vN+y7P3RoAFBKr+YXirbI4zfucGxIHW+2tp75A1m2gn4f6IOVWx+44AYskJBIpD
+ hmFy16sv8xtyMpE2c6YsMsW/bVwi2YBmyHMvkQTqJJiMeiqvmPUwNvtbZGmRBB7yLE0q
+ 5WjwNVjFwMIpoaoRLw6DhqMa47VSNE+eJYiapx3VWfmQzV4zGGwVLreJ0oi+wxb8f6zM
+ 9FJp1DilmcLDAh4XAWDL4gh09uCWnmkcILt9crFUqMXXSDReshPGk1kVLkD5TJ7QmUcd
+ tS9Kq85QZymnQiG56f+C2w1BjSBXS4olWq/KX59melG5dwjMCQ/7ccy0qbThhZetxHzd
+ zoqg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWA0yXEDn9nAF3jozpk6QPBNgp+K6Try5QvXORCDBAQtroI2VDm9n4ZJWgYVOV4llNvhGIAImccMmecbpSDnyH6wurM
+X-Gm-Message-State: AOJu0YyOo9n8U/knOIQJNu6MjoazPLHiPznd4ri3p7lUOtr8DLsG37Wo
+ Q09JZcZXmyENqvxjVetHFzWMTK2ws+1JnYshgezD5pJ/SPqzuU0hPLhT8e1xywE=
+X-Received: by 2002:a2e:99c6:0:b0:2d8:74c6:c44c with SMTP id
+ l6-20020a2e99c6000000b002d874c6c44cmr5044349ljj.46.1713166547395; 
+ Mon, 15 Apr 2024 00:35:47 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.132.126])
+ by smtp.gmail.com with ESMTPSA id
+ w13-20020a5d680d000000b003433bf6651dsm11310911wru.75.2024.04.15.00.35.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 15 Apr 2024 00:35:46 -0700 (PDT)
+Message-ID: <af647bac-d0b7-4382-b762-5ba055411872@linaro.org>
+Date: Mon, 15 Apr 2024 09:35:44 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] tests/qtest : Use `g_assert_cmphex` instead of
+ `g_assert_cmpuint`
+To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
+ qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-block@nongnu.org,
+ Ninad Palsule <ninad@linux.ibm.com>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, John Snow <jsnow@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+References: <20240414173349.31194-1-ines.varhol@telecom-paris.fr>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240414173349.31194-1-ines.varhol@telecom-paris.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.127,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::236;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x236.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,91 +137,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: L0t2Ef8SdeFw
+X-TUID: SXbqrPLsw3iE
 
-The cpu-cluster device is only needed for some few arm and riscv
-machines. Let's avoid compiling and linking it if it is not really
-necessary.
+On 14/4/24 19:28, Inès Varhol wrote:
+> The messages for assertions using hexadecimal numbers will be
+> easier to understand with `g_assert_cmphex`.
+> 
+> Cases changed : "cmpuint.*0x", "cmpuint.*<<"
+> 
+> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+> ---
+>   tests/qtest/aspeed_fsi-test.c          |  20 ++--
+>   tests/qtest/cmsdk-apb-dualtimer-test.c |   2 +-
+>   tests/qtest/cmsdk-apb-watchdog-test.c  |   2 +-
+>   tests/qtest/erst-test.c                |   2 +-
+>   tests/qtest/ivshmem-test.c             |  10 +-
+>   tests/qtest/libqos/ahci.c              |   4 +-
+>   tests/qtest/microbit-test.c            |  46 ++++-----
+>   tests/qtest/sse-timer-test.c           |   4 +-
+>   tests/qtest/stm32l4x5_exti-test.c      | 138 ++++++++++++-------------
+>   tests/qtest/stm32l4x5_syscfg-test.c    |  74 ++++++-------
+>   10 files changed, 151 insertions(+), 151 deletions(-)
+
+Thanks for the generic cleanup!
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/arm/Kconfig     | 3 +++
- hw/cpu/Kconfig     | 3 +++
- hw/cpu/meson.build | 3 ++-
- hw/riscv/Kconfig   | 2 ++
- 4 files changed, 10 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index d97015c45c..5d4015b75a 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -485,6 +485,7 @@ config XLNX_ZYNQMP_ARM
-     select AHCI
-     select ARM_GIC
-     select CADENCE
-+    select CPU_CLUSTER
-     select DDC
-     select DPCD
-     select SDHCI
-@@ -503,6 +504,7 @@ config XLNX_VERSAL
-     default y
-     depends on TCG && AARCH64
-     select ARM_GIC
-+    select CPU_CLUSTER
-     select PL011
-     select CADENCE
-     select VIRTIO_MMIO
-@@ -688,6 +690,7 @@ config ARMSSE
-     select CMSDK_APB_DUALTIMER
-     select CMSDK_APB_UART
-     select CMSDK_APB_WATCHDOG
-+    select CPU_CLUSTER
-     select IOTKIT_SECCTL
-     select IOTKIT_SYSCTL
-     select IOTKIT_SYSINFO
-diff --git a/hw/cpu/Kconfig b/hw/cpu/Kconfig
-index f776e884cd..baff478e1b 100644
---- a/hw/cpu/Kconfig
-+++ b/hw/cpu/Kconfig
-@@ -12,3 +12,6 @@ config A15MPCORE
- config ARM11MPCORE
-     bool
-     select ARM11SCU
-+
-+config CPU_CLUSTER
-+    bool
-diff --git a/hw/cpu/meson.build b/hw/cpu/meson.build
-index 38cdcfbe57..9d36bf8ae2 100644
---- a/hw/cpu/meson.build
-+++ b/hw/cpu/meson.build
-@@ -1,4 +1,5 @@
--system_ss.add(files('core.c', 'cluster.c'))
-+system_ss.add(files('core.c'))
-+system_ss.add(when: 'CONFIG_CPU_CLUSTER', if_true: files('cluster.c'))
- 
- system_ss.add(when: 'CONFIG_ARM11MPCORE', if_true: files('arm11mpcore.c'))
- system_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview_mpcore.c'))
-diff --git a/hw/riscv/Kconfig b/hw/riscv/Kconfig
-index 5d644eb7b1..fc72ef0379 100644
---- a/hw/riscv/Kconfig
-+++ b/hw/riscv/Kconfig
-@@ -9,6 +9,7 @@ config IBEX
- config MICROCHIP_PFSOC
-     bool
-     select CADENCE_SDHCI
-+    select CPU_CLUSTER
-     select MCHP_PFSOC_DMC
-     select MCHP_PFSOC_IOSCB
-     select MCHP_PFSOC_MMUART
-@@ -68,6 +69,7 @@ config SIFIVE_E
- config SIFIVE_U
-     bool
-     select CADENCE
-+    select CPU_CLUSTER
-     select RISCV_ACLINT
-     select SIFIVE_GPIO
-     select SIFIVE_PDMA
--- 
-2.44.0
 

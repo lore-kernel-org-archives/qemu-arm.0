@@ -1,120 +1,110 @@
-Received: by 2002:a17:907:1751:b0:a52:4db9:938b with SMTP id lf17csp1115464ejc;
-        Mon, 15 Apr 2024 03:00:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVpRzKqEjlp5MgNRWItUS0w8+cGmjkPJG4TienTdRWA+dfHhwjys08F17shOpUNXS7GgRoPBzxVqjAZ6s7UgITfhDV9gavp
-X-Google-Smtp-Source: AGHT+IGpv936WSRxmlXvy/ykvgNvUTxD/XfM0azcsab0RKVsow8GY/nt0Ssf6n4slUyb08yxYfhZ
-X-Received: by 2002:ac8:5dcf:0:b0:432:b430:770e with SMTP id e15-20020ac85dcf000000b00432b430770emr12513169qtx.28.1713175246248;
-        Mon, 15 Apr 2024 03:00:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713175246; cv=none;
+Received: by 2002:a17:907:1751:b0:a52:4db9:938b with SMTP id lf17csp1200321ejc;
+        Mon, 15 Apr 2024 05:52:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV4kqbJMIyA1fJVeN9Pa5EkHIoR5wJTj0rFRUO5C37uItmnKsEoYPbPu2fJMubDR9lQKsYpaHftaCr28KcrAoipEZu+nCXw
+X-Google-Smtp-Source: AGHT+IEpxqol5iHv9EblTeO9d3TZjVdy9R8vAisJkGuhAv67Ynt+0O2FLrftDcONlEiIvPlPHlwQ
+X-Received: by 2002:a05:620a:56d3:b0:78d:6966:bc26 with SMTP id wh19-20020a05620a56d300b0078d6966bc26mr10654204qkn.25.1713185533425;
+        Mon, 15 Apr 2024 05:52:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713185533; cv=none;
         d=google.com; s=arc-20160816;
-        b=FiRfZk13Wzc6HzjjEuUMPTVbVOYqym5En2AhZRrbV95Wp+iQLkRvDl4l2b5/vogo0d
-         n06zkLpayUV+z9JhDZVUId7MvubSdsqc6XPZxfEVf0qgehAWj9evQiHyY+34ZLWeM9sS
-         op0FaAxs6MY1o+rqF8OHi4xatR5eK6wtLeXmkCGrOVDPVmeD0ECkTEhsAl1ZLX/jidT4
-         xLDxG6FOyol/AmcgaruLiGATFDJV0UP+s+ej5apMaa82l7m/l1u97ZxFK5fotw/cwmdT
-         yqf6cD8GPnwqH9AazkY2Xd5f5FC40FUtz6+P5GwdnrCm0sJ06qiwaSTb2sx0+Yxnj0X/
-         GddQ==
+        b=BtLTWfcf0c124GHxZRB7WijyAJ7fwrabV0oWhRqJizXPwZhqJEsNMoMke3o+Q+lGKd
+         N64upVrsIVKvIAgy4GSr6LTdFX3jyrmg5wuHC8KH4oOMd57bcvk0EDANAqV0gWzkmKt+
+         e8a2aWUpdnLXtISUOQmvFE7h655bQoqDtbdiRClyYE5ClOVe2+Dunmrq2W51OucYQ/NF
+         CVJdzbeyCXNIgWoUb1QxVzYCC2qp7//CxX36B8vbufCQAYLvX26it+u1mAJvblN5rNce
+         GuzIVRz7xxRtc0l6daOn/khcYI9ttClJrkgVIyTgugRLlfWAh8ekuvxEsS10NsqUAExa
+         A1Yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=wVZoDGmy7n2YFhP3n9Yj01/03KToH2CTZo5lCQd8atk=;
-        fh=Z1mgH0ZMIxptml4iRaWnWDiq5SXZcsvgnxW3g+ngTk4=;
-        b=hB84S043ZWGeGDBcGA2xR4iyp4eWUOkK9Ef/Py8K/3AA7jxmGxNCpOYiEhv/8PeSjM
-         tf8BrenV9AV40jboTvGv+vHpMmN57ZCwsSiBj9VLEiCrn4S5iwFtGx8B42P98J2MC9ru
-         8pXDFsjMiKpz/bqEKGpE23s4lDRs+T/CJX88Ff1ZICpqz1+RXzZ4GqEMqgeeeir+xH6V
-         UfrRVobltmEtwIzNhWAwIVfawlX2kQ0BBlpVTqUuvWRq5g/kz7CUijo36a2ug69Qffjv
-         GO6U173I1r8R+nxDvrsjgIb12l1bdY0et5MDJ5ntNqryb4K7gvQWsq+vG17ObXSlzDoY
-         LR5Q==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=z8AepQQxvUrPrG9q2kSM9bsltAFNkulnFvczKTzhPCw=;
+        fh=gRGqrGqz7ZPYXeqe2+/FpThRxYfflOmGoGu1LlIbgQU=;
+        b=f9mv7KBFM36weLsaiGJA9XYARlefet60ES6xhFr7nyQf8rxHBxVmO4Groot0bSQ4AQ
+         pQOi3U2Gn/748MzBjU9VkmDQBnAM18Ggrg3M/0Pezt+efM+VTODkqBw+IxvghdxN/vxV
+         wHCrhSEoffjIsT5MuP8t5mUQ9/XuMLXChAFPHZYkVtU3Pr9JoPCmPw1u1gEwrsmpT28T
+         XkdS6patYkjjas94e54d5uG9t8le6A7SGY9k74xK4kCYjIwqD8STfcR9HBqSDjhT4lwy
+         kMtoJRIZwrnfAYYMoQuiOoQIWuYGAd8tqV22DNvxHRCeq7rU23qMosL1QJwvToApN0+M
+         Kxtw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c3zpf019;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ivJXcFpo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i6-20020ac85e46000000b00434ab9db084si9969656qtx.607.2024.04.15.03.00.46
+        by mx.google.com with ESMTPS id p14-20020a05620a112e00b0078d53eeb8c0si9621188qkk.621.2024.04.15.05.52.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Apr 2024 03:00:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 Apr 2024 05:52:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c3zpf019;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ivJXcFpo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rwJ8c-0003Wd-5s; Mon, 15 Apr 2024 06:00:37 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rwLoS-0004dh-IK; Mon, 15 Apr 2024 08:51:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwJ8N-0003Vh-NF
- for qemu-devel@nongnu.org; Mon, 15 Apr 2024 06:00:23 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rwLnz-0004Dj-1h
+ for qemu-arm@nongnu.org; Mon, 15 Apr 2024 08:51:33 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwJ8J-0001TZ-9e
- for qemu-devel@nongnu.org; Mon, 15 Apr 2024 06:00:19 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-4185e80adfbso2548455e9.1
- for <qemu-devel@nongnu.org>; Mon, 15 Apr 2024 03:00:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rwLnw-00030H-2Y
+ for qemu-arm@nongnu.org; Mon, 15 Apr 2024 08:51:25 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-56e2c1650d8so2913418a12.0
+ for <qemu-arm@nongnu.org>; Mon, 15 Apr 2024 05:51:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1713175210; x=1713780010; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=wVZoDGmy7n2YFhP3n9Yj01/03KToH2CTZo5lCQd8atk=;
- b=c3zpf019oxV+LWLPhFoPco35sP8xqhUcQbp/lIa0Gj0cJusCtKpCW+eMaBqHRJAR47
- Y1rJG/a5Kr1ToVQj8s+M0Do/AnGXlvghrgELnPHwhy2M0U12lbACtiqEAC7QgSqrgHq5
- BkJwG6o5v03NQBeGEtdBKXqZfKxZzP4a1fnaTADFNFIutW4EYXvFY5l6NkJf+nuPIbEC
- IwGJ6FZEQ3lIHesTa0HmZQTtC6I4Tsj+qQzK+ctz3lVAQoUjCUVQoApEwSwceshkWysc
- QHpW3ZOBLZf875ooJrHTLNUSsUYanbxh9pd7N+mTv/8mJEftWU9nZW+gmkqSchqHQ18j
- vpLQ==
+ d=linaro.org; s=google; t=1713185481; x=1713790281; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=z8AepQQxvUrPrG9q2kSM9bsltAFNkulnFvczKTzhPCw=;
+ b=ivJXcFpoLg20ubV/D6V5trRcSZYO8XwUq/Rj1amhIaJgSTqYKkAcywUSWEz7FTmihN
+ koQoj+0TqCM6/WmlMOtUUtfgITxk0pE4Q6XpYRi0CZOxEiewsNwKOQrgdlxve9x9EPY6
+ h0S7tP1jo8xON8nIM0ekhbGpTf+RfBZLWOaIfgRr0p7xX7Xssq5sCHl++t/Kc3Cl64Tp
+ 1bnM5MGhz0p8eCh9IjU1Ll18QT8Iq9+gITjyxwI5iHL+9q2YlqwCT8/BQ4FyhTiBwTT0
+ hjDIJBQNfu8E7cjBgmfzaEDTzIvLI0Gf7nsy/vz7Jdm/zNkg0Ej1afcmDjNKitrk/1rN
+ UP9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713175210; x=1713780010;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wVZoDGmy7n2YFhP3n9Yj01/03KToH2CTZo5lCQd8atk=;
- b=YxQ46LILEJOyZRr8Hvzmd6CZNxU5dsoNI8NhQbCa68Vms6wL5u8fWIbcp0HYg3gK4C
- SFetEkOfZpxHxtxoptSLzfydzg7pedF5mwUnLWXDkSKtGG5I6Y5GRBwe4FMuxMCRgrcB
- 8U5+2QLXf1NsIkHdUUc21HkmG37glDS0STS6jfU2ZUmzEhc36AdztFjq5XHVmhjIRq57
- Wwvyb9S/JpCpmvTDy6GrgNvUZ+hr6bOLB0D32pGChw/EOksfFaRdyPfro9RxWdfnEr1i
- 1OKeERSKemMYF5qdZgdav9Y68fYZXCjYeXmWdQ/dc0HyIbyfi60uY7snL1dnSmWkmk1p
- OmDA==
+ d=1e100.net; s=20230601; t=1713185481; x=1713790281;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=z8AepQQxvUrPrG9q2kSM9bsltAFNkulnFvczKTzhPCw=;
+ b=iRlcEPOwIR9zU6h5B+B/ztjrItnEEqAaQ7fabRQVlbIi2qPiG578I2POP7PRrm3v9G
+ L4tLRdh6zHL6aleds4ZRD9OMlm5/+w8IeWpGjvHNYH0wyIzUL82FLdCMKvCMRawXBR4+
+ py6SUGTq5Exgs4lu2RPVrpWcTM4EYnpJ2aTr8ryWU3Y9SjJmiBzfZA/y6kDL0Zkjle7P
+ aLxYtDjvYSEMByhQPzvKRFrONdkg6JOn9C6oMClF05/16Oz5mTCKFQkxb6hHRxSFl3an
+ +AQKaQVsdWgl8aXqy+tPKPnJzQ1JPQfKmzXzpkZJb65vXlsF/w4SF8ftp71y0vAcPYUY
+ gj7w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWSa/fqUHcWlH2jEXOQ+Iwlib9aNZhwyIyo1XUvIYtdet4M1ldmWI4uhvrd/hEaM5EIqceYWnXyeszm1Azlf/0bHZmedqE=
-X-Gm-Message-State: AOJu0YyxBiQYd3eM5OyFMputsKO+aY/8IBa0UqcbIYyyyktHgzuosUuK
- fMwMqiKwp83a9cMkUQaoB6wKUDkqPnZ1yQp/+KdmnMvBzLFjx0E0DeVNeFa67HQ=
-X-Received: by 2002:a05:600c:501e:b0:418:5ed2:5aa7 with SMTP id
- n30-20020a05600c501e00b004185ed25aa7mr1621819wmr.14.1713175210588; 
- Mon, 15 Apr 2024 03:00:10 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.132.126])
- by smtp.gmail.com with ESMTPSA id
- ay36-20020a05600c1e2400b004186df974f1sm1959303wmb.33.2024.04.15.03.00.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Apr 2024 03:00:10 -0700 (PDT)
-Message-ID: <3995d868-c7fe-40c0-840f-4929ad17557f@linaro.org>
-Date: Mon, 15 Apr 2024 12:00:08 +0200
+ AJvYcCWJ9MvHDisk4LBS7lHcQTvHBLLNx8qgctWxfg5Q/2WYvZ1kFhiSwEhI7ijwHw+y/rSqLaYBEkxhHPAX1gr2VqWmJ7qL
+X-Gm-Message-State: AOJu0YxTtoxnGyoki+q6/yL/eZMXUbVSdRDVeFR1bOnmxC86jbKMFWet
+ 6+iSbWbZEeT/+JMEd91VjCinkbQRztJc6Ry32FlN8gTtKAXEp+KcSlHMxtl3NweUfTBroKrzjD+
+ BYtOasU3yfLrPHpdO+wZHyQULjEmhlI5kBR4MrpFDSCXtfPJu
+X-Received: by 2002:a50:aad1:0:b0:56d:e6f6:f73c with SMTP id
+ r17-20020a50aad1000000b0056de6f6f73cmr5686900edc.42.1713185481193; Mon, 15
+ Apr 2024 05:51:21 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/5] hw/display : Add device DM163
-To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
- Samuel Tardieu <sam@rfc1149.net>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair.francis@wdc.com>
-References: <20240414130604.182059-1-ines.varhol@telecom-paris.fr>
- <20240414130604.182059-2-ines.varhol@telecom-paris.fr>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240414130604.182059-2-ines.varhol@telecom-paris.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+References: <20240118200643.29037-1-philmd@linaro.org>
+ <20240118200643.29037-9-philmd@linaro.org>
+In-Reply-To: <20240118200643.29037-9-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 15 Apr 2024 13:51:09 +0100
+Message-ID: <CAFEAcA_snH+ucZQELesLgf0uDUgON8Sj==4JYPHh=4oLbczxQQ@mail.gmail.com>
+Subject: Re: [PATCH 08/20] target/arm: Rename arm_cpu_mp_affinity
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,259 +113,42 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: b76xj8SjScRY
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ldvhi3+CPB5F
 
-Hi Inès,
+On Thu, 18 Jan 2024 at 20:07, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> From: Richard Henderson <richard.henderson@linaro.org>
+>
+> Rename to arm_build_mp_affinity.  This frees up the name for
+> other usage, and emphasizes that the cpu object is not involved.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-On 14/4/24 15:05, Inès Varhol wrote:
-> This device implements the IM120417002 colors shield v1.1 for Arduino
-> (which relies on the DM163 8x3-channel led driving logic) and features
-> a simple display of an 8x8 RGB matrix. The columns of the matrix are
-> driven by the DM163 and the rows are driven externally.
-> 
-> Acked-by: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
-> ---
->   docs/system/arm/b-l475e-iot01a.rst |   3 +-
->   include/hw/display/dm163.h         |  58 +++++
->   hw/display/dm163.c                 | 333 +++++++++++++++++++++++++++++
->   hw/display/Kconfig                 |   3 +
->   hw/display/meson.build             |   1 +
->   hw/display/trace-events            |  14 ++
->   6 files changed, 411 insertions(+), 1 deletion(-)
->   create mode 100644 include/hw/display/dm163.h
->   create mode 100644 hw/display/dm163.c
+Hi; I just had cause to re-look at this commit. The problem
+here is that to determine the right MP affinity value the
+CPU *should* be involved. This is because for some Arm
+CPUs the MPIDR MT bit is 0, and the CPU number is in Aff0,
+but for others the MPIDR MT bit is 1, and the CPU number is
+in Aff1, and Aff0 is 0. We don't currently model the latter
+CPUs correctly, treating everything as MT=3D0, but we should.
+So really arm_build_mp_affinity() ought to take a CPU
+argument (which is awkward because we don't always have one
+to hand at the callsite)...
 
-
-> diff --git a/include/hw/display/dm163.h b/include/hw/display/dm163.h
-> new file mode 100644
-> index 0000000000..00d0504640
-> --- /dev/null
-> +++ b/include/hw/display/dm163.h
-> @@ -0,0 +1,58 @@
-> +/*
-> + * QEMU DM163 8x3-channel constant current led driver
-> + * driving columns of associated 8x8 RGB matrix.
-> + *
-> + * Copyright (C) 2024 Samuel Tardieu <sam@rfc1149.net>
-> + * Copyright (C) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-> + * Copyright (C) 2024 Inès Varhol <ines.varhol@telecom-paris.fr>
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#ifndef HW_DISPLAY_DM163_H
-> +#define HW_DISPLAY_DM163_H
-> +
-> +#include "qom/object.h"
-> +#include "hw/qdev-core.h"
-> +
-> +#define TYPE_DM163 "dm163"
-> +OBJECT_DECLARE_SIMPLE_TYPE(DM163State, DM163);
-> +
-> +#define DM163_NUM_LEDS 24
-> +#define RGB_MATRIX_NUM_ROWS 8
-> +#define RGB_MATRIX_NUM_COLS (DM163_NUM_LEDS / 3)
-
-Maybe better as:
-
-   #define DM163_NUM_LEDS (RGB_MATRIX_NUM_COLS * RGB_MATRIX_NUM_ROWS)
-
-> +#define COLOR_BUFFER_SIZE RGB_MATRIX_NUM_ROWS
-
-It could ease the code to define here directly as:
-
-   /* The last row is filled with 0 (turned off row) */
-   #define COLOR_BUFFER_SIZE (RGB_MATRIX_NUM_ROWS + 1)
-
-> +
-> +typedef struct DM163State {
-> +    DeviceState parent_obj;
-> +
-> +    /* DM163 driver */
-> +    uint64_t bank0_shift_register[3];
-> +    uint64_t bank1_shift_register[3];
-> +    uint16_t latched_outputs[DM163_NUM_LEDS];
-> +    uint16_t outputs[DM163_NUM_LEDS];
-> +    qemu_irq sout;
-> +
-> +    uint8_t sin;
-> +    uint8_t dck;
-> +    uint8_t rst_b;
-> +    uint8_t lat_b;
-> +    uint8_t selbk;
-> +    uint8_t en_b;
-> +
-> +    /* IM120417002 colors shield */
-> +    uint8_t activated_rows;
-> +
-> +    /* 8x8 RGB matrix */
-> +    QemuConsole *console;
-> +    uint8_t redraw;
-> +    /* Rows currently being displayed on the matrix. */
-> +    /* The last row is filled with 0 (turned off row) */
-> +    uint32_t buffer[COLOR_BUFFER_SIZE + 1][RGB_MATRIX_NUM_COLS];
-> +    uint8_t last_buffer_idx;
-> +    uint8_t buffer_idx_of_row[RGB_MATRIX_NUM_ROWS];
-> +    /* Used to simulate retinal persistence of rows */
-> +    uint8_t age_of_row[RGB_MATRIX_NUM_ROWS];
-
-Maybe "row_persistence_delay"?
-
-> +} DM163State;
-> +
-> +#endif /* HW_DISPLAY_DM163_H */
-
-
-> +static void dm163_dck_gpio_handler(void *opaque, int line, int new_state)
-> +{
-> +    DM163State *s = DM163(opaque);
-
-GPIO handlers are initialized in dm163_realize() where we know @dev
-is already a DM163State:
-
-   static void dm163_realize(DeviceState *dev, Error **errp)
-   {
-       DM163State *s = DM163(dev);
-                       ^^^^^
-       qdev_init_gpio_in(dev, dm163_rows_gpio_handler, 8);
-
-So here (and other handlers) you can avoid the QOM cast macro,
-and directly use:
-
-       DM163State *s = opaque;
-
-> +
-> +    if (new_state && !s->dck) {
-> +        /*
-> +         * On raising dck, sample selbk to get the bank to use, and
-> +         * sample sin for the bit to enter into the bank shift buffer.
-> +         */
-> +        uint64_t *sb =
-> +            s->selbk ? s->bank1_shift_register : s->bank0_shift_register;
-> +        /* Output the outgoing bit on sout */
-> +        const bool sout = (s->selbk ? sb[2] & MAKE_64BIT_MASK(63, 1) :
-> +                           sb[2] & MAKE_64BIT_MASK(15, 1)) != 0;
-> +        qemu_set_irq(s->sout, sout);
-> +        /* Enter sin into the shift buffer */
-> +        sb[2] = (sb[2] << 1) | ((sb[1] >> 63) & 1);
-> +        sb[1] = (sb[1] << 1) | ((sb[0] >> 63) & 1);
-> +        sb[0] = (sb[0] << 1) | s->sin;
-> +    }
-> +
-> +    s->dck = new_state;
-> +    trace_dm163_dck(new_state);
-> +}
-
-
-> +static void dm163_en_b_gpio_handler(void *opaque, int line, int new_state)
-> +{
-> +    DM163State *s = DM163(opaque);
-> +
-> +    s->en_b = new_state;
-> +    dm163_propagate_outputs(s);
-> +    trace_dm163_en_b(new_state);
-> +}
-> +
-> +static inline uint8_t dm163_bank0(const DM163State *s, uint8_t led)
-
-No need to force the compiler to inline these methods.
-
-> +{
-> +    /*
-> +     * Bank 1 uses 6 bits per led, so a value may be stored accross
-> +     * two uint64_t entries.
-> +     */
-> +    const uint8_t low_bit = 6 * led;
-> +    const uint8_t low_word = low_bit / 64;
-> +    const uint8_t high_word = (low_bit + 5) / 64;
-> +    const uint8_t low_shift = low_bit % 64;
-> +
-> +    if (low_word == high_word) {
-> +        /* Simple case: the value belongs to one entry. */
-> +        return (s->bank0_shift_register[low_word] &
-> +                MAKE_64BIT_MASK(low_shift, 6)) >> low_shift;
-> +    }
-> +
-> +    const uint8_t bits_in_low_word = 64 - low_shift;
-> +    const uint8_t bits_in_high_word = 6 - bits_in_low_word;
-> +    return ((s->bank0_shift_register[low_word] &
-> +             MAKE_64BIT_MASK(low_shift, bits_in_low_word)) >>
-> +            low_shift) |
-> +           ((s->bank0_shift_register[high_word] &
-> +             MAKE_64BIT_MASK(0, bits_in_high_word))
-> +         << bits_in_low_word);
-> +}
-> +
-> +static inline uint8_t dm163_bank1(const DM163State *s, uint8_t led)
-> +{
-> +    const uint64_t entry = s->bank1_shift_register[led / 8];
-> +    const unsigned shift = 8 * (led % 8);
-> +    return (entry & MAKE_64BIT_MASK(shift, 8)) >> shift;
-> +}
-
-
-> +static void dm163_realize(DeviceState *dev, Error **errp)
-> +{
-> +    DM163State *s = DM163(dev);
-> +
-> +    qdev_init_gpio_in(dev, dm163_rows_gpio_handler, 8);
-
-s/8/RGB_MATRIX_NUM_ROWS/
-
-> +    qdev_init_gpio_in(dev, dm163_sin_gpio_handler, 1);
-> +    qdev_init_gpio_in(dev, dm163_dck_gpio_handler, 1);
-> +    qdev_init_gpio_in(dev, dm163_rst_b_gpio_handler, 1);
-> +    qdev_init_gpio_in(dev, dm163_lat_b_gpio_handler, 1);
-> +    qdev_init_gpio_in(dev, dm163_selbk_gpio_handler, 1);
-> +    qdev_init_gpio_in(dev, dm163_en_b_gpio_handler, 1);
-> +    qdev_init_gpio_out_named(dev, &s->sout, "sout", 1);
-> +
-> +    s->console = graphic_console_init(dev, 0, &dm163_ops, s);
-> +    qemu_console_resize(s->console, RGB_MATRIX_NUM_COLS * LED_SQUARE_SIZE,
-> +                        RGB_MATRIX_NUM_ROWS * LED_SQUARE_SIZE);
-> +}
-
-
-> diff --git a/hw/display/trace-events b/hw/display/trace-events
-> index 2336a0ca15..fc7cbdcd36 100644
-> --- a/hw/display/trace-events
-> +++ b/hw/display/trace-events
-
-
-> +# dm163.c
-> +dm163_redraw(uint8_t redraw) "0x%02x"
-> +dm163_dck(int new_state) "dck : %d"
-> +dm163_en_b(int new_state) "en_b : %d"
-> +dm163_rst_b(int new_state) "rst_b : %d"
-> +dm163_lat_b(int new_state) "lat_b : %d"
-> +dm163_sin(int new_state) "sin : %d"
-> +dm163_selbk(int new_state) "selbk : %d"
-
-unsigned new_state, "%u"
-
-> +dm163_activated_rows(int new_state) "Activated rows : 0x%" PRIx32 ""
-> +dm163_bits_ppi(unsigned dest_width) "dest_width : %u"
-> +dm163_leds(int led, uint32_t value) "led %d: 0x%x"
-> +dm163_channels(int channel, uint8_t value) "channel %d: 0x%x"
-> +dm163_refresh_rate(uint32_t rr) "refresh rate %d"
-
-Minor comments, otherwise LGTM!
-
-Regards,
-
-Phil.
+thanks
+-- PMM

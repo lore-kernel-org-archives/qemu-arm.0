@@ -1,144 +1,106 @@
-Received: by 2002:a17:907:1751:b0:a52:4db9:938b with SMTP id lf17csp1041721ejc;
-        Sun, 14 Apr 2024 23:45:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXEbuTA7Vf7WRxQIf/+kQQxgOeQJh3SvyROygG3F/cgflAl7ZJ9x3z4mV5oDBUGG9v6q8QBBf840HgdtSahWN9Pa1MLWGnI
-X-Google-Smtp-Source: AGHT+IHgvJhL776XkI/BJd2ebtbKMiRJvcNsEMHEp43kuQeY2ynWb4SrUjmbTdEqH7ybOgzDGYjr
-X-Received: by 2002:a05:620a:4452:b0:78e:e525:a5c8 with SMTP id w18-20020a05620a445200b0078ee525a5c8mr3705154qkp.20.1713163542953;
-        Sun, 14 Apr 2024 23:45:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713163542; cv=none;
+Received: by 2002:a17:907:1751:b0:a52:4db9:938b with SMTP id lf17csp1045414ejc;
+        Sun, 14 Apr 2024 23:57:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV4RwWRKDg3o7hSTFYYuZT9WEpk2PhhwhLh0LgYA3o35r6jYdn47ohpUV3hYVwtVT+wRqD53WJ86vGbdZtIyaGqRM321u5O
+X-Google-Smtp-Source: AGHT+IHE962zOpt+Hk2PvPrmxFgA79TijASroFRztlDiBarpinkxLTB0E+iDNKkVhjxALnndeAos
+X-Received: by 2002:a0c:e8c3:0:b0:699:2212:3b33 with SMTP id m3-20020a0ce8c3000000b0069922123b33mr9317959qvo.19.1713164267715;
+        Sun, 14 Apr 2024 23:57:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713164267; cv=none;
         d=google.com; s=arc-20160816;
-        b=euYbI/EbRIRQGsdDWwx4NwzVqH65e4GCaTa1aXhh2Dw9uPDiIO/9sFCK3GEyMXesIL
-         Cy23XZO25FdYyLqLKypYGl9WEWHQ4EzAziNG9x9b29A2zJQaWmaPQHMzYAzlijPiXosi
-         DZXElEf3ZMXorUpXTHmM/H9gJAEpsZ2VvsWTLmdFVxnPZwjx5hfIKbil+tq1vZecMIog
-         ZICf3PkMKE7hcbGz3++VrfjKxYn7cT0Rgv/7xPX06CN8M2jYT9Gybj4yHtKSGABI4wpy
-         /MPmfdO4xZ76m5zsXZyi2RQ8OgAa5t0KE2eV8NV62DlSN1Rfx+T8cUKHUSEQpK5Z/6Ta
-         nz1A==
+        b=k+uHjYy5ApVg5P+/Oq5wvSFJl4Ivi94ohjFvEVjmDGn6Y9xlW2JasS/H4FlLdua377
+         OBsKuTUM8ClpBAVT6TDsMKByexKNiBgAOd5Z5plDwQQRW1N6G7cyWKJMu2GF2YUwzIo2
+         ZgespPkoHPJc9Divd7SYfFDFFwtbJFtv9TYgzvB3AsndpZT4nv2LDTfWPAq8NX4Wqifw
+         M5vuuPZOiKUXFbCk/CAv0YsrH+AlB2EqXMJQRKOkOYn8dhy/bvnQnNk6sBm9HovOp9lo
+         YA17+AzAq6UE4lMxRPjZIfmeSz3frBs+Fgr0CYLzzVpvVJG0q5FiPko+IxXZ1W/tZrSi
+         7prw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2f3mC0MveLoqAGzbHuJcz1A+T3asq6NfIjFNB9xmYb4=;
-        fh=9UX8SA+6Uro7EPkrGsceSUapP1GMFvcnXDA0AaifKg4=;
-        b=BHuglAPa729yufY4vFmc69Picaf+l5oEzxXQ0F7AHr7ms8Y7nP5ddD5fqfXc6nYeXX
-         3voReKi7rZIIb+9WodC/n0RBf2fD2fdel6h8zqKpzmPGiMWoiJQV77Wa6/uOEHG9/6kw
-         CEDZLvBNDutOglRqoyFU70iy/QYntVKNzqPo6d/CGLijv+bmNsd60PdZ0ERE6jXJaoLa
-         DgaSmsq6C1y7vKoEltqf/EH73r0blmi+cwPKC6s0W+tCbA5nxe9APWpqF66gexA2cSnl
-         lmEZcrHP3hdMffeCh954h8xQZgTxXs7mTA8WpB8LAPBlJyvZZ+vM9L0/Mcl+/YyblrAS
-         3FfA==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=bxJeX+B7KSWmtuR0us1T/3kZsL3pvcA+zyP4+odJ2ss=;
+        fh=FgpzUiSKNMTtMHyk5kkuAaa5ueEJtER2oT+Q/1wxShc=;
+        b=BuRZr5rQDq+l0VnD0f1RlGQblxD+CEqMJZ5rRFNE659hDrZW21sde/w/t26dj+CMGM
+         FrHFrovv7u6UK6n7y1esofSfiPaGOjAtc/J2atz5s9AoIRqw/htTsHPm1PVNYbDHRR0U
+         zTZYN7GwPSRvCdpQHG+uU6nuhiKe9fNhhZjXM2paYWXOxo0QGHdW9imCiOcUNlqlCssp
+         en6FcG/SfxmJAp2VSq6z8/KzGCtqW/xICQEHhXbUfcut0CtZoZ1opGT1EghJVVUykIGW
+         P47y5LrtPUdB8qF62kRCUil9g0uqQLgRLicM5eCyj2QjA9tvMDpW5Zj4UD9rV1Zuy0Fr
+         vQtA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ctSEyN2b;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QN4xP6/K";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y8-20020a05620a09c800b0078d63cf9e51si9191432qky.657.2024.04.14.23.45.42
+        by mx.google.com with ESMTPS id dh5-20020ad458c5000000b0069b529b76d4si7985442qvb.7.2024.04.14.23.57.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 14 Apr 2024 23:45:42 -0700 (PDT)
+        Sun, 14 Apr 2024 23:57:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ctSEyN2b;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QN4xP6/K";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rwG5T-0007qm-5h; Mon, 15 Apr 2024 02:45:07 -0400
+	id 1rwGHK-0004Bv-S2; Mon, 15 Apr 2024 02:57:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <harshpb@linux.ibm.com>)
- id 1rwG5O-0007pC-Fe; Mon, 15 Apr 2024 02:45:02 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rwGHJ-0004BB-Gc
+ for qemu-arm@nongnu.org; Mon, 15 Apr 2024 02:57:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <harshpb@linux.ibm.com>)
- id 1rwG5M-0003Ls-L4; Mon, 15 Apr 2024 02:45:02 -0400
-Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 43F5xhgi026847; Mon, 15 Apr 2024 06:44:52 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=2f3mC0MveLoqAGzbHuJcz1A+T3asq6NfIjFNB9xmYb4=;
- b=ctSEyN2b+YEPzOJ1wrS4msUyq0RyZIydDFwLHnT7rVuyQxfHmyCWQDwk2y6IW/jZvP2U
- O44ZFvnOOR6zz38m5PwD/L7eRG19nn4wNpB36U1BgoAPO8qBvaQ5TUIWl2pQFhhGPNi8
- qHkuxQI93IVgsxMwdhhvzuV1mLZANxyXKIUXSDwIiibyIUFWXQeB1YruD/ImgK1+MWi4
- W75JDm+42uK8Ol2FGKFG66Q9q824tbax8DK53SUzkvcJ4m24LBd+GdbILT+nQvSefoy4
- S8+vGfkdL171zoiEna2SbqIP6kaZW2bIVOvMHZsTUb0LPdZKB7uYM8N0/0F4pxBZqQvp wQ== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xgmufgt6m-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 15 Apr 2024 06:44:51 +0000
-Received: from m0353723.ppops.net (m0353723.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 43F6ipi6028057;
- Mon, 15 Apr 2024 06:44:51 GMT
-Received: from ppma23.wdc07v.mail.ibm.com
- (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xgmufgt6h-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 15 Apr 2024 06:44:51 +0000
-Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 43F6bvDF015506; Mon, 15 Apr 2024 06:44:50 GMT
-Received: from smtprelay05.dal12v.mail.ibm.com ([172.16.1.7])
- by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3xg5vkx73b-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 15 Apr 2024 06:44:50 +0000
-Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
- [10.241.53.104])
- by smtprelay05.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 43F6il1P26215088
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 15 Apr 2024 06:44:50 GMT
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E362B58052;
- Mon, 15 Apr 2024 06:44:47 +0000 (GMT)
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2C53058068;
- Mon, 15 Apr 2024 06:44:45 +0000 (GMT)
-Received: from [9.195.42.95] (unknown [9.195.42.95])
- by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Mon, 15 Apr 2024 06:44:44 +0000 (GMT)
-Message-ID: <216f09dd-6a19-4c0d-9994-1942f21e6bb5@linux.ibm.com>
-Date: Mon, 15 Apr 2024 12:14:38 +0530
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rwGHI-0005Nt-33
+ for qemu-arm@nongnu.org; Mon, 15 Apr 2024 02:57:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1713164239;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=bxJeX+B7KSWmtuR0us1T/3kZsL3pvcA+zyP4+odJ2ss=;
+ b=QN4xP6/Ko30E3jjPAZRLmgBBF3cexX8BDFiHTfpXSnmtgzcqHUFwr8WdijlcjsYKhsEhfA
+ tRB5EvA079O0pmh8Ng05avGIOKugfmnnBoEu5zsucVA5oXkCc1+pNJU5XbRRDe2vrxIg2t
+ D8zp0AHXzQToIqQCxzPBR5ZPAR1EhDY=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-388-DBKtyqIwMFGTe7wdFvPw6Q-1; Mon,
+ 15 Apr 2024 02:57:04 -0400
+X-MC-Unique: DBKtyqIwMFGTe7wdFvPw6Q-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0AF873C23FD6;
+ Mon, 15 Apr 2024 06:57:04 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.87])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AB658C13FA2;
+ Mon, 15 Apr 2024 06:57:00 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>
+Subject: [PATCH v2 0/2] Improvements for switches in hw/cpu/Kconfig
+Date: Mon, 15 Apr 2024 08:56:53 +0200
+Message-ID: <20240415065655.130099-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/13] hw/ppc/spapr: Replace sprintf() by snprintf()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-ppc@nongnu.org,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
-References: <20240411101550.99392-1-philmd@linaro.org>
- <20240411101550.99392-4-philmd@linaro.org>
-Content-Language: en-US
-From: Harsh Prateek Bora <harshpb@linux.ibm.com>
-In-Reply-To: <20240411101550.99392-4-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: xxuKvwJwfZtagdCsY4kBxebyUYp9AJsu
-X-Proofpoint-ORIG-GUID: 2JTZClb7UQzMyNNBDm8OfOYX8dzR2Xmh
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-04-15_05,2024-04-09_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0
- priorityscore=1501 mlxscore=0 spamscore=0 adultscore=0 mlxlogscore=828
- impostorscore=0 malwarescore=0 lowpriorityscore=0 clxscore=1011
- suspectscore=0 bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2404010000 definitions=main-2404150042
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=harshpb@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.127,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,48 +115,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EbB/sQomhn4Q
+X-TUID: grFCVuhQDW8p
 
+First patch fixes the problem that the file hw/cpu/Kconfig is
+currently ignored and the switches there are duplicated in hw/arm/.
 
+The second patch introduces a proper config switch for the cpu-cluster
+device.
 
-On 4/11/24 15:45, Philippe Mathieu-Daudé wrote:
-> sprintf() is deprecated on Darwin since macOS 13.0 / XCode 14.1,
-> resulting in painful developper experience.
+v2:
+- Don't make core.c depend on the CPU_CLUSTER switch
+- Added Philippe's Reviewed-bys
 
-s/developper/developer ?
+Thomas Huth (2):
+  hw: Fix problem with the A*MPCORE switches in the Kconfig files
+  hw: Add a Kconfig switch for the TYPE_CPU_CLUSTER device
 
-> 
-> Replace sprintf() by snprintf() in order to avoid:
-> 
->    hw/ppc/spapr.c:385:5: warning: 'sprintf' is deprecated:
->      This function is provided for compatibility reasons only.
->      Due to security concerns inherent in the design of sprintf(3),
->      it is highly recommended that you use snprintf(3) instead.
->      [-Wdeprecated-declarations]
->        sprintf(mem_name, "memory@%" HWADDR_PRIx, start);
->        ^
->    1 warning generated.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+ hw/Kconfig         |  1 +
+ hw/arm/Kconfig     | 18 +++---------------
+ hw/cpu/Kconfig     | 15 ++++++++++++---
+ hw/cpu/meson.build |  3 ++-
+ hw/riscv/Kconfig   |  2 ++
+ 5 files changed, 20 insertions(+), 19 deletions(-)
 
-With the typo fixed,
+-- 
+2.44.0
 
-Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
-
-> ---
->   hw/ppc/spapr.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-> index e9bc97fee0..9e97992c79 100644
-> --- a/hw/ppc/spapr.c
-> +++ b/hw/ppc/spapr.c
-> @@ -382,7 +382,7 @@ static int spapr_dt_memory_node(SpaprMachineState *spapr, void *fdt, int nodeid,
->       mem_reg_property[0] = cpu_to_be64(start);
->       mem_reg_property[1] = cpu_to_be64(size);
->   
-> -    sprintf(mem_name, "memory@%" HWADDR_PRIx, start);
-> +    snprintf(mem_name, sizeof(mem_name), "memory@%" HWADDR_PRIx, start);
->       off = fdt_add_subnode(fdt, 0, mem_name);
->       _FDT(off);
->       _FDT((fdt_setprop_string(fdt, off, "device_type", "memory")));

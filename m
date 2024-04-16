@@ -1,68 +1,69 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp452890ejd;
-        Tue, 16 Apr 2024 08:35:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXM7PM6hbGpnyRjCr8/QRMtOsSE5+8Lw1fNPR+fHwq7XtmtnduwwYFFGh2+4LjIIu/AN7yBeAGhlXaOo28uWL4XTKd7ohFa
-X-Google-Smtp-Source: AGHT+IGqMdlJVUC57L1pJrPkFdpT4Ynj1Kfk9/pv1Dgb5WvaR9BYxRUM5ZG9D1BN7y+TF2OT9fam
-X-Received: by 2002:a05:6122:1824:b0:4da:d617:520c with SMTP id ay36-20020a056122182400b004dad617520cmr11617243vkb.13.1713281705500;
-        Tue, 16 Apr 2024 08:35:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713281705; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp463654ejd;
+        Tue, 16 Apr 2024 08:54:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW1zudweaItFdeNsm8DVH84qnhsYlRYIibOoI9nmtgA9aF44NRvT5sKzX+74XrfzT6MOlQijHmvvtc7ULWIsOdgW0nud/MF
+X-Google-Smtp-Source: AGHT+IFrHFdu+MMmS2WXfj/y2foGMMzii3Ckxkf7j2Awfx8/5PIdWL7qjj/qQ8jd1uoceuuAZSLl
+X-Received: by 2002:a05:6214:9c3:b0:69b:b54a:b4f8 with SMTP id dp3-20020a05621409c300b0069bb54ab4f8mr4259925qvb.6.1713282893789;
+        Tue, 16 Apr 2024 08:54:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713282893; cv=none;
         d=google.com; s=arc-20160816;
-        b=HC2yEvSt4FP8HFj3IENLh68aVe6cDU8JsUj3oV37SZGAmPaJpskbAF7ra0Y0mqDAw8
-         I+OtcakVveWIpiv0E0EcFLHeK20uCYCb9wRGU1n9YQ7XD+0RRHze7vNl0CGCKCTSok37
-         ZfIjqyyoBeGdFTjbt4Jr20vgwP7jrzMz7zQ6uvzVdejG0VG0Wx+HA25zr/jBQzTufjWk
-         G7u48gywzLk81SB93YedRvNvcYEfi1H4QIlrRIW+kabHWMrlmYYTNBo0tpqlrCHFe09o
-         G3hsVJ9ep4X8PmmiXVafEJ7ks9cR6T/nXkoHh9uLkjldsTVZcaLl1P+e6TcKcEB4MX1W
-         c6Fw==
+        b=uxQE2vn7YP9iE547y7N2ajtPNxVNTAfclFKJxQ1iD9ADqlH7IsTXCQtru2O/nW9HkX
+         fs9eVmkEblqszHIhOy6EiDHOZLifGNjRYwXNPC7qJjiT1fJwdas0wGucsJJcx4CXVdnX
+         2ll/T6vl+yYrI+Y2GvInMpF0PzqpK2zcIUCdKDItv3hRW5wpx1KohG3wstGfjP0AlSZe
+         1t00lR6LHu1n/nP7kbTB496EJPwTf08kpnX3CNYX5nHRSQWFpHcHj5MmaMl1ELLBwcnu
+         FRJMQGpo5w2Dm09E9dmPBbwr1ECBxN03YbWaiDskdhejUu1Qhj0sACIT2mQ2N7oU3Nu3
+         ladw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=H7zq3zOdUOxa+2HTsJym5PdHMBvnPJJFAM5abklMy1c=;
+        bh=UiGqUm1d3dahrDRohsKZyQAjylTIHdgZaxSqL8q0KJY=;
         fh=dkl4W7Ty5DQDYblIuR6iwQV8rfkW6Bl5VLJjLin9mSc=;
-        b=AxoTa65OWqFELr+QT1QP6uwhCjdbAix5v0Q+rkfOmR8D579z5ZwHvl1Pyh0V1ZPHGA
-         fSDDgPgCfOST/MH0qjEc7dyVckc0GeD3rkFcKd5vHyiVjDg6qhEleQXme8dQpSPKuNdp
-         D33dmxlZlC0cMyEdRixDHRQOnXvbYap9pJfstuw0uL3iLNaEgQdrN2ZReSrTQf+et4IL
-         oAy+an7AHni/gslnE5c440bAtKX+zYPRoqBYSZYWfwez0pmiV+RwrfIu7DyuBL2PMh+C
-         E1Cv6bYeUExB0VT81HyUiQRMVUV0Trnyc6PDHHpMVdcH+LX5IMJ4+xStZArNOupMNQpB
-         F2Tw==;
+        b=MXY0NBge6IjQlMXRayHLuqc2yYMMJ97OG2aMm4A3zdG2Er6KvOHlhhWm1nNZ+0cqMC
+         HFr6lYGtIW7yAoUBsYiw2U5+zDQBagIG0ecVXGMKW6VxPqJ3yTOr4i93pGUTpv6sgAZ5
+         PkzyiCyjo/eEppRIrPA1idoDJ3BBWoZmkKFyr4cOFOgCmo3Lo+ZLCfliwYOMOAGsAYcB
+         630ejYqWzzI3rI71a81/KQE2a2H42ZFJtOqp4SX/4mx2jRIYj1TYTHd0BqSwIq3/+62A
+         FQQT2IZbiOjv1GjG66SfQw9Hb8xFfZpfW1ttRbqDLMv3eevBRpM/YHQc1n5h5BJcxU/F
+         NVYw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d24-20020a056122033800b004b7305215b8si1791793vko.294.2024.04.16.08.35.05
+        by mx.google.com with ESMTPS id jq9-20020ad45fc9000000b00696b323a01asi13922553qvb.604.2024.04.16.08.54.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Apr 2024 08:35:05 -0700 (PDT)
+        Tue, 16 Apr 2024 08:54:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rwkpb-0003rJ-H7; Tue, 16 Apr 2024 11:34:47 -0400
+	id 1rwl8w-0001f4-UG; Tue, 16 Apr 2024 11:54:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=29bf=LV=kaod.org=clg@ozlabs.org>)
- id 1rwkpa-0003qi-8n; Tue, 16 Apr 2024 11:34:46 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
+ id 1rwl8w-0001es-0H; Tue, 16 Apr 2024 11:54:46 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=29bf=LV=kaod.org=clg@ozlabs.org>)
- id 1rwkpY-0002VW-4A; Tue, 16 Apr 2024 11:34:45 -0400
+ id 1rwl8t-0006fN-AU; Tue, 16 Apr 2024 11:54:45 -0400
 Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4VJp4d5KRhz4x1x;
- Wed, 17 Apr 2024 01:34:41 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4VJpWc0pyvz4wyf;
+ Wed, 17 Apr 2024 01:54:36 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4VJp4X4qKKz4wyY;
- Wed, 17 Apr 2024 01:34:36 +1000 (AEST)
-Message-ID: <9b3170d9-001e-4f05-a7d3-7ace61f957fd@kaod.org>
-Date: Tue, 16 Apr 2024 17:34:35 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4VJpWV5Mq6z4wyY;
+ Wed, 17 Apr 2024 01:54:30 +1000 (AEST)
+Message-ID: <a2c64420-2472-4ef5-b006-ced54ac52c65@kaod.org>
+Date: Tue, 16 Apr 2024 17:54:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 06/16] aspeed/smc: correct device description
+Subject: Re: [PATCH v3 16/16] docs:aspeed: Add AST2700 Evaluation board
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
@@ -74,19 +75,19 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
- <20240416091904.935283-7-jamin_lin@aspeedtech.com>
+ <20240416091904.935283-17-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240416091904.935283-7-jamin_lin@aspeedtech.com>
+In-Reply-To: <20240416091904.935283-17-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=29bf=LV=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -102,9 +103,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TYshLyINwIVG
+X-TUID: iDFB323mOhqD
 
-On 4/16/24 11:18, Jamin Lin wrote:
+On 4/16/24 11:19, Jamin Lin wrote:
+> Add AST2700 Evaluation board and its boot command.
+> 
 > Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
@@ -117,38 +120,86 @@ C.
 
 
 > ---
->   hw/ssi/aspeed_smc.c | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
+>   docs/system/arm/aspeed.rst | 39 ++++++++++++++++++++++++++++++++++----
+>   1 file changed, 35 insertions(+), 4 deletions(-)
 > 
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 6e1a84c197..8a8d77b480 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -1448,7 +1448,7 @@ static void aspeed_2500_fmc_class_init(ObjectClass *klass, void *data)
->       DeviceClass *dc = DEVICE_CLASS(klass);
->       AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
+> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+> index b2dea54eed..320ff2a4cd 100644
+> --- a/docs/system/arm/aspeed.rst
+> +++ b/docs/system/arm/aspeed.rst
+> @@ -1,11 +1,12 @@
+> -Aspeed family boards (``*-bmc``, ``ast2500-evb``, ``ast2600-evb``)
+> -==================================================================
+> +Aspeed family boards (``*-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``)
+> +===================================================================================
 >   
-> -    dc->desc               = "Aspeed 2600 FMC Controller";
-> +    dc->desc               = "Aspeed 2500 FMC Controller";
->       asc->r_conf            = R_CONF;
->       asc->r_ce_ctrl         = R_CE_CTRL;
->       asc->r_ctrl0           = R_CTRL0;
-> @@ -1486,7 +1486,7 @@ static void aspeed_2500_spi1_class_init(ObjectClass *klass, void *data)
->       DeviceClass *dc = DEVICE_CLASS(klass);
->       AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
+>   The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+>   Aspeed evaluation boards. They are based on different releases of the
+>   Aspeed SoC : the AST2400 integrating an ARM926EJ-S CPU (400MHz), the
+> -AST2500 with an ARM1176JZS CPU (800MHz) and more recently the AST2600
+> -with dual cores ARM Cortex-A7 CPUs (1.2GHz).
+> +AST2500 with an ARM1176JZS CPU (800MHz), the AST2600
+> +with dual cores ARM Cortex-A7 CPUs (1.2GHz) and more recently the AST2700
+> +with quad cores ARM Cortex-A35 64 bits CPUs (1.6GHz)
 >   
-> -    dc->desc               = "Aspeed 2600 SPI1 Controller";
-> +    dc->desc               = "Aspeed 2500 SPI1 Controller";
->       asc->r_conf            = R_CONF;
->       asc->r_ce_ctrl         = R_CE_CTRL;
->       asc->r_ctrl0           = R_CTRL0;
-> @@ -1521,7 +1521,7 @@ static void aspeed_2500_spi2_class_init(ObjectClass *klass, void *data)
->       DeviceClass *dc = DEVICE_CLASS(klass);
->       AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
+>   The SoC comes with RAM, Gigabit ethernet, USB, SD/MMC, USB, SPI, I2C,
+>   etc.
+> @@ -38,6 +39,10 @@ AST2600 SoC based machines :
+>   - ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
+>   - ``qcom-firework-bmc``    Qualcomm Firework BMC
 >   
-> -    dc->desc               = "Aspeed 2600 SPI2 Controller";
-> +    dc->desc               = "Aspeed 2500 SPI2 Controller";
->       asc->r_conf            = R_CONF;
->       asc->r_ce_ctrl         = R_CE_CTRL;
->       asc->r_ctrl0           = R_CTRL0;
+> +AST2700 SoC based machines :
+> +
+> +- ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
+> +
+>   Supported devices
+>   -----------------
+>   
+> @@ -66,6 +71,7 @@ Supported devices
+>    * eMMC Boot Controller (dummy)
+>    * PECI Controller (minimal)
+>    * I3C Controller
+> + * Internal Bridge Controller (SLI dummy)
+>   
+>   
+>   Missing devices
+> @@ -95,6 +101,10 @@ or directly from the OpenBMC GitHub release repository :
+>   
+>      https://github.com/openbmc/openbmc/releases
+>   
+> +or directly from the ASPEED Forked OpenBMC GitHub release repository :
+> +
+> +   https://github.com/AspeedTech-BMC/openbmc/releases
+> +
+>   To boot a kernel directly from a Linux build tree:
+>   
+>   .. code-block:: bash
+> @@ -164,6 +174,27 @@ under Linux), use :
+>   
+>     -M ast2500-evb,bmc-console=uart3
+>   
+> +
+> +Boot the AST2700 machine from the flash image, use an MTD drive :
+> +
+> +.. code-block:: bash
+> +
+> +  IMGDIR=ast2700-default
+> +  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
+> +
+> +  $ qemu-system-aarch64 -M ast2700-evb \
+> +       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
+> +       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=u-boot.dtb \
+> +       -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
+> +       -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
+> +       -device loader,cpu-num=0,addr=0x430000000 \
+> +       -device loader,cpu-num=1,addr=0x430000000 \
+> +       -device loader,cpu-num=2,addr=0x430000000 \
+> +       -device loader,cpu-num=3,addr=0x430000000 \
+> +       -smp 4 \
+> +       -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd \
+> +       -nographic
+> +
+>   Aspeed minibmc family boards (``ast1030-evb``)
+>   ==================================================================
+>   
 

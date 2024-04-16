@@ -1,169 +1,255 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp374162ejd;
-        Tue, 16 Apr 2024 06:33:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWRjtExfs+Pm81xWmijy/U1G5XBWbeilZBGd01/EYgG9XNS2aLd8wy2bxFxUvKOpMR666/pvtIJl0YVHgtaflpnzA6kKj1/
-X-Google-Smtp-Source: AGHT+IG7cgw1Mgc3Di7U9UHeq4nedJlvrTtXqyBq11SYq++fiTTOhs+ZIWL8aBboRx2ySPBd2xPm
-X-Received: by 2002:ad4:510f:0:b0:69b:7ed1:7a79 with SMTP id g15-20020ad4510f000000b0069b7ed17a79mr169260qvp.35.1713274437676;
-        Tue, 16 Apr 2024 06:33:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713274437; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp387112ejd;
+        Tue, 16 Apr 2024 06:57:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVIqVah+Hw9u6HBNQZUkCnmzgAYA0ZpMj0QtvKiw4DugW4gWhv3soN7SbNw04MSBp57DvG+DTt9SVPrbA6mAKKnLzCkhD3k
+X-Google-Smtp-Source: AGHT+IHOYV4/BW/Jba80SR1jLNbu55eOOS+Ie6nlwJPZNis3FicAa2fQ89XLHcszHU5phSb/Xzy0
+X-Received: by 2002:a05:6102:149e:b0:474:d24c:4e50 with SMTP id d30-20020a056102149e00b00474d24c4e50mr15130532vsv.31.1713275826052;
+        Tue, 16 Apr 2024 06:57:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713275826; cv=none;
         d=google.com; s=arc-20160816;
-        b=vLLd7reNXcsOCQUQSbjyLiZbVmUy4GdiB3oe4v2sBgTIY97TDkZO3RBzFEgXCcLOoZ
-         K4F1CfD6L25R8so4qBbUmFBD1MTUcIezAoAymUhVTGMphMFrVwDPTBUFEtH9Hshxb63K
-         omEZfLv06usWvyadgugoStL6vv3/SlbLISyHpPtNPd3buIiCsbi9yoCa0CRYYFUXdlRQ
-         HcWIrdQnOEk8HkP/+QMpaUAovBApCMSemIfVrBLMUUSOqioNmB7T5bJPbtwIMDqG8aPp
-         nY3T6XoqOaac00z+ZYuuFagwo7wNhU9mIyt46aDm5WmSHA7a5M/Y0p0KmAx8k4HPu4rR
-         C/ng==
+        b=tuyWS1A3BARm0zSTWsQ6srUYQ9HRbw8717Hh+GKSnxMV3ymtFJbTFQYtdsge2lfHIL
+         L7F+1a33XKr5u+eYn7HDsx6LVIgi3hHjPgbX5GihwFSJnCzYlXnYmfdcnuu583pd8Bo8
+         ZMXreK2Ko94jYqYZYvMkImtdPUhqSUmZgWg2RtQg9wISA2V4gGifDdxQK4sywUaeVtT/
+         WwOgVd++Ij1abTdYTdPC3ihzMjU5+yQZWyDK1SuJbjUGWi2bWtYuciNbV30Mvl4w77Kl
+         MfbOn4UWIbF/frqEqgifp172ShL+PUqeiz/WSih+v6uKeuinNPvP9XXD4m/38J2E3jjK
+         JH8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=8ejCkE3cYY+5NHE0dWEkXgBRP4mtgFRv6mrQVJe9Kjo=;
-        fh=6rdtPCs9QBJ0i9M+LXQpkxVGP0p1ckcM82LYlf6Ru9Q=;
-        b=zLngfpL/rOvr+yaeFJo67dxRO2Y3/FtXL8bMFC0vXvTESnqAlEQYJ/UUxEYJesE84H
-         0cAO8FxDXisly5PncL5cjFAy+obgpcLFUZyNSZ8cZwDGhJ/Vq0o9jZ74l+Elmap7IaYB
-         mVY7vkhURk4XCwCIKXqljOXiAEKMK2fenTeSpvB2kBAsWPif92q2oOIDhLb+dmYJ0nUw
-         s0eJyRY2xh+sk+n1DFae4Ahyw7yMxP5/4ilawnq5pHttQ2+ubJXH/SGolQx5I8gAn3S3
-         OV/bZ1oqYzAHWyBiKODYvfxdX7h87OR4SPT55wIk8cET8S5XRj1dAAegvIA/aY8W2UyR
-         9xjw==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=UuGQRWMqmr6ruVhTw3v1+AueGwovFmnNusAak3fPiJU=;
+        fh=4W+tTt/b0/ang4/afEdXvDSxpxcHReiij1z+lXKgWEo=;
+        b=v3gCnKRUTfLC294VkmCbcLuq2oX+U0Mi+pNVkqqdATx8gf7zLWOSl04+x4FH5wDleG
+         W2pdTtPO3gGgUN0GDKRtCFZyOkUKgLVmkWmo9OtZ3MijOSf89PhYsBWLrVHzPAdZRE9l
+         XlMTfl5TlofFoIXe/W/3idhz23FS4/u/gvZOJ4yvvLz1awn5bsbH0q8VwloWUbhOK+J0
+         5ncymVhFHiCKPOVAR/GdW0yZ3URoxRwtykFVb+46LAjpsTBP18hbQ2nM6ySAHJ5D3fEK
+         vmvkjiTAKxt5ExY6+WsWXbDmtcu4zBlfzetlEkRmdcu5HLUossd0iDnrTaRBzQ9xJll9
+         QY+Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XAjHLgab;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eKE+BoUe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z18-20020a056214041200b0069927e1eecasi13739845qvx.193.2024.04.16.06.33.57
+        by mx.google.com with ESMTPS id t11-20020a05621405cb00b0069b205e9c9fsi12245824qvz.547.2024.04.16.06.57.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Apr 2024 06:33:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Apr 2024 06:57:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XAjHLgab;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=eKE+BoUe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rwiwY-0004Bt-Qh; Tue, 16 Apr 2024 09:33:50 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rwjGP-0003F9-8k; Tue, 16 Apr 2024 09:54:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwiwE-00046j-0m
- for qemu-devel@nongnu.org; Tue, 16 Apr 2024 09:33:34 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwjGF-0002oj-To
+ for qemu-arm@nongnu.org; Tue, 16 Apr 2024 09:54:12 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwiwA-0006DP-W1
- for qemu-devel@nongnu.org; Tue, 16 Apr 2024 09:33:29 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-3498c7d4473so349277f8f.1
- for <qemu-devel@nongnu.org>; Tue, 16 Apr 2024 06:33:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwjGC-0001qu-6d
+ for qemu-arm@nongnu.org; Tue, 16 Apr 2024 09:54:11 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-56e56ee8d5cso5769959a12.2
+ for <qemu-arm@nongnu.org>; Tue, 16 Apr 2024 06:54:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1713274405; x=1713879205; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=8ejCkE3cYY+5NHE0dWEkXgBRP4mtgFRv6mrQVJe9Kjo=;
- b=XAjHLgabfnZOzzaKrKG2a1y+Ld787QKVj/JxAuNHiFRsJLH4dvuIfH/tomy425KivL
- SVSiTID3OI+0GhZG+52rFVImvngM/xTCvq3foazEcxhgGCpMrKPgo1lcN3PwNnCr9nym
- Ai89O5wp1mEHcjvupshjy5tN1AzO/n79wWqv2pAyrZUG0QxT8j/hapckfiaPkF3p2oVE
- GWyuUFfjHRsYHePxnINoBh9aPAGlRy76Hrp4DEOedn9unRdM6z17mFSZGAaZLQ9q44ab
- 7Q/HDVw/3QoQVkmgPO1kTAz15bRE6Wm++Gos5ozm0ATNr7aRIwPY1RkIUnbtQPmGx1Tv
- Cw2A==
+ d=linaro.org; s=google; t=1713275646; x=1713880446; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=UuGQRWMqmr6ruVhTw3v1+AueGwovFmnNusAak3fPiJU=;
+ b=eKE+BoUebL5WjsIkKju9B9igNMd8zk94zRmWT9YlQ1bQcklpByc2mQ3Jpghr+bumm4
+ 4PGzTW8yFFL+PfGYZstYO6J8J9Vwx0gvo4gQxFnc+b85dVAP2t8QRGFFNjXp6z6wrAdM
+ KGLn3RMrMIyly+hpWHDC7lgJZvB6gBKqT7HePnN+RYWHKqkFPwBJaUClmV4N+LitzM0i
+ OU+w4V4Y1bmZK14aDs4Y/Wv0WzREcXOn4ABoUSAeKKhQVQOupzZ/Z/sMezmMnnOJinrT
+ Br8KKSzKqwmlwc0dv8Pgr5h9yAf1QDABmvNxUjq9zFMaZpQ4dg5111OVp8vMHCusTMO9
+ Z2Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713274405; x=1713879205;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=8ejCkE3cYY+5NHE0dWEkXgBRP4mtgFRv6mrQVJe9Kjo=;
- b=rV3Cijaazzx9lbJG2HfcXsRIGq5QrAUjKp1HaGGJxFSflVgELz6kPrikzqQSO1xPGk
- sMxNKcTHqGmUqLIF61tvAQi2J/r8kc2MYKougFntoD2qOVEnc3GGGvUvsNdL/tHntyRJ
- TBIdECO1Oc6W2+pC+TFITfDFe2M4PAU5XO5c8lk6ZxHo8GhYAg308t6b8cLlnQQ2ZnCN
- prDUHDZMSDGndyZrvVhYvayR3FAae3klU5CL/Z54K9G3e5U8pb3C090DwfOQWDjrpBIh
- Tc2CvG7qk7n5EOIS0lUclRVSGtD86pRwJTDYyCQ73i9EoUMglvPQ7yF9GWB3v9+6sPxj
- E4Kg==
+ d=1e100.net; s=20230601; t=1713275646; x=1713880446;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=UuGQRWMqmr6ruVhTw3v1+AueGwovFmnNusAak3fPiJU=;
+ b=gD36Kzcmxn+hHk3mZ6E2y+J8cs9Zzmc8DxO6QQfpfSASD7ygfXMesVy9/c+pDvihzy
+ KROklmnSvbSTYKpZLS+POF/tUmWrkTs6s7xZ7MkLdTfSm1yo35XV1qUYU9IRdfSkWVl4
+ gBHcxIwz+zCegxeMJven+ehiEkOD6lgWKsDjYtXSpT1WeSyIlBTouy2TuKhW65ol13Pw
+ VxgKcglxReWsHqo6ZPTE5FQ6bEM2PGqjCFWJFz80JknU0KirUfsTFnwmR1iMwvAOSpHw
+ upg2C/JzK8aMxI6XXkkBlqYDrjoxOLcEs5hj45DtrJz3y6DKwoiI6uUsB6MGqwBCvVdb
+ Eggg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXTrHzRBqmIXRCHllaTNdFPuivJKtw/SmVCDjl7DmM9jfHPrNF5o3IJyE5GeCm5BOWbcHl9PAbH2Dr2IWYqxxaUq5o4Yxw=
-X-Gm-Message-State: AOJu0Ywjq9JO2RS8DvFhVml4HZLOiqQKc7UKzPA7vGTsCv4XJ/vC5ZP8
- tyDxCMKn8RqVmPasG/Vr3OhGMG4PtWDPmRDaHkVznNEvNK95vK/QV30yIcqi7as=
-X-Received: by 2002:a5d:54c8:0:b0:345:c169:8808 with SMTP id
- x8-20020a5d54c8000000b00345c1698808mr9106697wrv.4.1713274405201; 
- Tue, 16 Apr 2024 06:33:25 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.155.61])
+ AJvYcCX51x9Qq51jnMt0xpHSTq17mgE3PBDtLWj6HwsvLBHDwbc6mjN2/3V8LGEyGR8PnyIMsYNJziVUns0BYyCQjvoQ1Fc8
+X-Gm-Message-State: AOJu0Yz6KuNhf2DDP2NMCZE/Kj0iBuTmTUUnWwaQIYMJkokClnhz1hOy
+ Lm1shR/7I5RHbsmxA7+SFyOGd2iY5zmkSrSjMDGfx/WH4I3pHlD8vmgMNOqRFEw=
+X-Received: by 2002:a50:d55d:0:b0:566:d333:45e8 with SMTP id
+ f29-20020a50d55d000000b00566d33345e8mr8949322edj.20.1713275646553; 
+ Tue, 16 Apr 2024 06:54:06 -0700 (PDT)
+Received: from m1x-phil.lan ([176.176.155.61])
  by smtp.gmail.com with ESMTPSA id
- dd15-20020a0560001e8f00b003436cb45f7esm14924652wrb.90.2024.04.16.06.33.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Apr 2024 06:33:24 -0700 (PDT)
-Message-ID: <b2c237b5-9dc4-4557-ab00-0c19a5be0366@linaro.org>
-Date: Tue, 16 Apr 2024 15:33:22 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.1 v2 13/21] hw/mem/pc-dimm: Remove legacy_align
- argument from pc_dimm_pre_plug()
-To: David Hildenbrand <david@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-devel@nongnu.org, Igor Mammedov <imammedo@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, devel@lists.libvirt.org,
- Zhao Liu <zhao1.liu@intel.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ ee42-20020a056402292a00b005701550ddc5sm3802566edb.90.2024.04.16.06.54.04
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 16 Apr 2024 06:54:06 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org,
+	Thomas Huth <thuth@redhat.com>
+Cc: Ani Sinha <anisinha@redhat.com>, qemu-riscv@nongnu.org,
+ qemu-ppc@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+ David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Eduardo Habkost <eduardo@habkost.net>, Song Gao <gaosong@loongson.cn>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org
-References: <20240327095124.73639-1-philmd@linaro.org>
- <20240327095124.73639-14-philmd@linaro.org>
- <5efe6309-2c7e-404c-9674-2221606b35ac@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <5efe6309-2c7e-404c-9674-2221606b35ac@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-arm@nongnu.org
+Subject: [PATCH v3 11/22] hw/smbios: Remove 'uuid_encoded' argument from
+ smbios_set_defaults()
+Date: Tue, 16 Apr 2024 15:52:40 +0200
+Message-ID: <20240416135252.8384-12-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240416135252.8384-1-philmd@linaro.org>
+References: <20240416135252.8384-1-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J0wZLyonTr6/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tlziOLkTDbZa
 
-On 27/3/24 12:32, David Hildenbrand wrote:
-> On 27.03.24 10:51, Philippe Mathieu-Daudé wrote:
->> 'legacy_align' is always NULL, remove it.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> Reviewed-by: Thomas Huth <thuth@redhat.com>
->> Message-Id: <20240305134221.30924-11-philmd@linaro.org>
->> ---
-> 
-> I was really confused for a second until I saw that this series is 
-> dependent on another one.
-> 
-> Please make sure to CC people you CC on patches to also CC on the cover 
-> letter.
+'uuid_encoded' is always true, remove it.
 
-Oops, sorry. I really should patch that on git-publish...
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+---
+ include/hw/firmware/smbios.h | 3 +--
+ hw/arm/virt.c                | 3 +--
+ hw/i386/fw_cfg.c             | 2 +-
+ hw/loongarch/virt.c          | 2 +-
+ hw/riscv/virt.c              | 2 +-
+ hw/smbios/smbios.c           | 6 ++----
+ 6 files changed, 7 insertions(+), 11 deletions(-)
 
-> Reviewed-by: David Hildenbrand <david@redhat.com>
-
-Thanks!
+diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
+index 8d3fb2fb3b..f066ab7262 100644
+--- a/include/hw/firmware/smbios.h
++++ b/include/hw/firmware/smbios.h
+@@ -331,8 +331,7 @@ void smbios_add_usr_blob_size(size_t size);
+ void smbios_entry_add(QemuOpts *opts, Error **errp);
+ void smbios_set_cpuid(uint32_t version, uint32_t features);
+ void smbios_set_defaults(const char *manufacturer, const char *product,
+-                         const char *version,
+-                         bool uuid_encoded);
++                         const char *version);
+ void smbios_set_default_processor_family(uint16_t processor_family);
+ uint8_t *smbios_get_table_legacy(size_t *length, Error **errp);
+ void smbios_get_tables(MachineState *ms,
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index a9a913aead..a55ef916cb 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1650,8 +1650,7 @@ static void virt_build_smbios(VirtMachineState *vms)
+     }
+ 
+     smbios_set_defaults("QEMU", product,
+-                        vmc->smbios_old_sys_ver ? "1.0" : mc->name,
+-                        true);
++                        vmc->smbios_old_sys_ver ? "1.0" : mc->name);
+ 
+     /* build the array of physical mem area from base_memmap */
+     mem_array.address = vms->memmap[VIRT_MEM].base;
+diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
+index f7c2501161..ecc4047a4b 100644
+--- a/hw/i386/fw_cfg.c
++++ b/hw/i386/fw_cfg.c
+@@ -63,7 +63,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg,
+ 
+     if (pcmc->smbios_defaults) {
+         /* These values are guest ABI, do not change */
+-        smbios_set_defaults("QEMU", mc->desc, mc->name, true);
++        smbios_set_defaults("QEMU", mc->desc, mc->name);
+     }
+ 
+     /* tell smbios about cpuid version and features */
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index 441d764843..00d3005e54 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -355,7 +355,7 @@ static void virt_build_smbios(LoongArchMachineState *lams)
+         return;
+     }
+ 
+-    smbios_set_defaults("QEMU", product, mc->name, true);
++    smbios_set_defaults("QEMU", product, mc->name);
+ 
+     smbios_get_tables(ms, SMBIOS_ENTRY_POINT_TYPE_64,
+                       NULL, 0,
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index d171e74f7b..1ed9b0552e 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -1277,7 +1277,7 @@ static void virt_build_smbios(RISCVVirtState *s)
+         product = "KVM Virtual Machine";
+     }
+ 
+-    smbios_set_defaults("QEMU", product, mc->name, true);
++    smbios_set_defaults("QEMU", product, mc->name);
+ 
+     if (riscv_is_32bit(&s->soc[0])) {
+         smbios_set_default_processor_family(0x200);
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index eed5787b15..8261eb716f 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -30,7 +30,7 @@
+ #include "hw/pci/pci_device.h"
+ #include "smbios_build.h"
+ 
+-static bool smbios_uuid_encoded = true;
++static const bool smbios_uuid_encoded = true;
+ /*
+  * SMBIOS tables provided by user with '-smbios file=<foo>' option
+  */
+@@ -1017,11 +1017,9 @@ void smbios_set_default_processor_family(uint16_t processor_family)
+ }
+ 
+ void smbios_set_defaults(const char *manufacturer, const char *product,
+-                         const char *version,
+-                         bool uuid_encoded)
++                         const char *version)
+ {
+     smbios_have_defaults = true;
+-    smbios_uuid_encoded = uuid_encoded;
+ 
+     SMBIOS_SET_DEFAULT(smbios_type1.manufacturer, manufacturer);
+     SMBIOS_SET_DEFAULT(smbios_type1.product, product);
+-- 
+2.41.0
 

@@ -1,108 +1,108 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp572711ejd;
-        Tue, 16 Apr 2024 12:01:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUDaBzFWINbTwMNPq/FIlHqA+K4L6T/BnWWv+s5n8mwkcJguAvxbpprAIkIsc/HKxjfu7EfxHcH0B/4S9CbN1sAD3iLCTTe
-X-Google-Smtp-Source: AGHT+IFVs9hFZ+yoEyqzJyJx+Mri2ljvi2ovSOWbxTwqEDjRwZZ3yEvwpt58BBGsoVAx00U6p5ve
-X-Received: by 2002:a50:8d19:0:b0:570:1161:111f with SMTP id s25-20020a508d19000000b005701161111fmr9394482eds.15.1713294107309;
-        Tue, 16 Apr 2024 12:01:47 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1713294107; cv=pass;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp572849ejd;
+        Tue, 16 Apr 2024 12:01:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCU1uoGtZ8YNiRt//IR96jEZVaq9J8c8iZOtV2MDdrD7tlPfptainX1bpi18zqRbmcSPxEJsFDpvghWGeKUi0ZQDDUcqUEo8
+X-Google-Smtp-Source: AGHT+IHtMijQXfBjELUCLGYNM4sPnvxXcVFafeQTan1RxxjjippugsYcb8Rf0ASfha0IBopT3Jcr
+X-Received: by 2002:a05:6a20:ce48:b0:1a7:17a:9ac1 with SMTP id id8-20020a056a20ce4800b001a7017a9ac1mr4210058pzb.1.1713294117584;
+        Tue, 16 Apr 2024 12:01:57 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1713294117; cv=pass;
         d=google.com; s=arc-20160816;
-        b=fbsLW3sq3v7q8NHxpXzriCw2W8JoRB5sNXStr2MlxZlom3IOzIeIuKz0WinSBcd7TB
-         PyObPqeSYNdl3gydqXB4D/tmOZpeUhtbYCH6GE3MiYany7d3N0M9YkBZzJDk0Ykbw4rc
-         I2sNeUBUSmWTEd1PXOidTTtAvgGBCTQh33qk/Mde8Szr3/pxaznv+guPlsOQHASfNrYu
-         iaC1wXlwLx8GNgkFMHU8dRXkKS6L2BUu7JQXLqcZAZ3D9U6bO/bMBplN/aFEZUIvGFBK
-         QbgHl9iwN2DmThy8uSnhxnTEjo5HugzQ9BibS8HPgSOIseVR5UXEkM0r+DVZ1MWlk6Mc
-         KlQg==
+        b=CpKfABtwTv9Q2kSavSalF/Xn9NWBoJWuHxyswpMGh33F5YYh3Rm7FaWlES98GdEpoK
+         kKezGlZLYFVb24fT6/cpUDHF3LY8AWJEvwwW5Zondwpnx3+Zi+SBKuTlglQuipHh0D0o
+         oHRoktyHVT/TCKmM+VncbCy86+Xrl7Bk68a5rr8V/uqHtlqUC32j0HO2J7IbpcCgKJlL
+         ePVKIn1RWTmBO4TFDr71o0gTODjW2RsT+tpNGMzrevHAkjqcsJCY9U0BTTCFzATnJUtV
+         Kib3B0btY8vEA1JvUZcljrf/+z2OLh1XqANiHIdmx8fVTxVJj1OFiiP49LmWkfgu0ZHF
+         0mTA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=M+KMTbrbI+PCZ7l2nXt22iBk719lD5OjaX/6s+DU33I=;
-        fh=2o7M+5lPSl9NUTnFdM37Cn4GnsEQFM0/uwaXGRev4f4=;
-        b=I+cE7ps3uzJSF8Dwwts1nDla+tMF3c/fNiaUcZN5eg7o0s93ltp1jhcmF0brjUcD0Q
-         R2bu10aVNjF9ak2dVf4DIs6SfCdkn4Usqr/J2H4V107V2Ua/T15LDsZ7ghAx1QgWITAs
-         E8N/IbBqSv3pQV6Fe6IzkIKCgIgPovp/ULoR1bk93Zl1mra1q/YxZs4laAPrY9g8Knkn
-         bG6cTwSH3OgwoHlHOvFrky8ESrpYjgfkLGLHd6Akb/Y+TUusRKx1QAxXwwhEU5tz3spF
-         VI8ylLNWNQctQYfe4U7RwRX0/020PYHoiobKgwfL8QpWfHTCAzb7qs0umsFo9V/nolum
-         meJg==;
+        bh=DC2xHT4tK3V/eBcSroqFKTXibEqMvehvouzWEl1ZI6k=;
+        fh=hJtXHIvxSdjwIxN01VbjdjCVylEfG4RKvl+fRNXvLBc=;
+        b=UuvBUrHlHYY3Mrrg4Hy9ZcEdvjepbU8oAhTSR/fTTcVMoGQvYSDmyo78QEY0i0y/UG
+         zawEDvw1TShp4DwDBtvdAzfGNYX+gaScX3Rlf6KVZ5zCQHY8Yv7h4d9n5kynh4BqBOXl
+         +/+GHDtprw4GTo5YLw8X9pMvLHaNIna9cxpQ/Ly8KYW/1rOVywFzIYIm54sg1hJ8FH36
+         +NA7AKezQIOWuLrt2CncC0fUQg81m8ELZkuLuKC3fTLZAqlxIbliO8V2f0EUdSVnL6Ax
+         Vi0itGdaaoEB1eSOZ6AlDEArMAI1GrqFWOlqgqDhBOZ9fk9IKeYCjfR3Mv9rZvfVOzhN
+         HSoA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="dSy/GEGj";
+       dkim=pass header.i=@linaro.org header.s=google header.b=d1+0yNOr;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-14867-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-14867-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-14868-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-14868-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-14867-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id t8-20020a508d48000000b0056e5174f4f0si5900293edt.181.2024.04.16.12.01.47
+Return-Path: <kvm+bounces-14868-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id r8-20020a056a00216800b006ed65c8161dsi9984589pff.88.2024.04.16.12.01.57
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Apr 2024 12:01:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-14867-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        Tue, 16 Apr 2024 12:01:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-14868-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="dSy/GEGj";
+       dkim=pass header.i=@linaro.org header.s=google header.b=d1+0yNOr;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-14867-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-14867-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-14868-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-14868-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id D2EFE1F21215
-	for <alex.bennee@linaro.org>; Tue, 16 Apr 2024 19:01:46 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 29114280AB4
+	for <alex.bennee@linaro.org>; Tue, 16 Apr 2024 19:01:57 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 28BB5136995;
-	Tue, 16 Apr 2024 19:01:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1D4AA137929;
+	Tue, 16 Apr 2024 19:01:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="dSy/GEGj"
-Received: from mail-ed1-f54.google.com (mail-ed1-f54.google.com [209.85.208.54])
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="d1+0yNOr"
+Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com [209.85.218.54])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 36D6B13473F
-	for <kvm@vger.kernel.org>; Tue, 16 Apr 2024 19:01:42 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.54
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 48276136995
+	for <kvm@vger.kernel.org>; Tue, 16 Apr 2024 19:01:49 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.54
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1713294104; cv=none; b=amOkiVIHoFj8nN0aZYzd5DNvH8VobrWHVW2Vugn/PR9QgQpf9U2dNVzZj210zuFQ6CR7CaTwP4A9K71aaTytTbugKR3kukk7qxTNxW1+bertX7cqwxOH9Ah7ure7C2DJrgIZRYFwE5zJucj37bdcZtk9k/lgOxdyneMcPWQurns=
+	t=1713294110; cv=none; b=AGAGCQnksvp3eyRxeyj5hA20s8gYRRNrS/iXT1dPU6qmTSN8DnYjCKD5Xa+YghLdof6+s+++9GqdU2N5RpHWOvWYWzv2c/NIj4g9b+U0dWKw5eflH83M0wKoYPZflPn0/iAw3FG13RJuQEji+QfVxuxbF/FZPkpHHgKJGdKjBkI=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1713294104; c=relaxed/simple;
-	bh=fraBTz31yqncmzNgbezaajd4THrS+JlG00TaDOUqfoM=;
+	s=arc-20240116; t=1713294110; c=relaxed/simple;
+	bh=LY6d/B7zjFnteYcEwHF3F5b+VLZBtL39Jzgiyp+18QA=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=oxTwO8TeZ98DkjGZ5p3sVQo4gA8ByWdULY0EhOdCLbchy4pPGVyQ0VVDeriZRkaQCvK+7VqDOgf2LlJ3iJH34k3zdiqYqpbPXBoWxM6AgUay46BCB30xX4wdOi/CEgRNyQASgfgkgkQtjXI/XH9E7MWQrhUAJ1EmIJvF6SFCPX0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=dSy/GEGj; arc=none smtp.client-ip=209.85.208.54
+	 MIME-Version:Content-Type; b=E8g81Ea4fffWrFBJA59SbP2DmNuX7H9mBdFNlTNquek2019LMVLa3xSOVOia/vynDQYWtgFt2lwrG8IcXVsN8xwqupP/k0d31eSjGklHfAm18SJTXbzuSFda/ddqQ84cId09MoBqm4LKaz+XL6NA4BsZhTc+jvCzOL22n28Iw80=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=d1+0yNOr; arc=none smtp.client-ip=209.85.218.54
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-ed1-f54.google.com with SMTP id 4fb4d7f45d1cf-56e48d0a632so7415654a12.2
-        for <kvm@vger.kernel.org>; Tue, 16 Apr 2024 12:01:42 -0700 (PDT)
+Received: by mail-ej1-f54.google.com with SMTP id a640c23a62f3a-a51a1c8d931so615406666b.0
+        for <kvm@vger.kernel.org>; Tue, 16 Apr 2024 12:01:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713294101; x=1713898901; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1713294108; x=1713898908; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=M+KMTbrbI+PCZ7l2nXt22iBk719lD5OjaX/6s+DU33I=;
-        b=dSy/GEGjCWqHMwl29nUKaAoF7javvue/eqHBGf+sHbBKqLG7hljeQhAmgAkYw6xJFO
-         DaInz2tx4zrocunu2WO9oj8wPaINSnUeSjOEnwPakE18tbZsM7g85oAWW72+AW4igGGM
-         LU5uvYG3sI+KGnC/FYWGEWQKB0+r051p6LgDmtuBcbSykFEto3TZrwEWRZbpUEHKrBIU
-         Id7c0dUD78FSkWO8OQUbLaSR24P4ZuOuSyis4+8caWyJJYYJfWkVEgBNCSj3/lWbCTBn
-         wSw/4Wf/CFMM0/6/ca9biDLsPn4fnJ6abwyrI7B2pfUUKu0XtYL9xKthVNKXV/fapPmP
-         Ox8Q==
+        bh=DC2xHT4tK3V/eBcSroqFKTXibEqMvehvouzWEl1ZI6k=;
+        b=d1+0yNOrARUX2jswal2XUGPZ23bnyegsTOpb101RJ4ZDfLlbwF7ED1uUIWbSDVIwpx
+         hBrRfeSGa6PYLguvWzDzEfKzLpuCnF9J8FRcT364JsdDXVB4dDQ9leYbGhN05QS5fT9x
+         V855SqOeqtZzJ8wVS2t+ZIiZYV3bhVjh1Ixz6+ZklEgGvgYjOvsepAovKb2hdO34FDTQ
+         VW/fr3mWoA2ko3GnICauC8EmLsi+wJClJuSjwXEFxxs7AyFwhaJlMOAmht0F7Rs2KSME
+         KRhuobZWMVLZp3Te75MDmYWUX5ktwPSJPxwQGDslly2Yi4AAvcTiBCC9m/ysJ2ztAoBe
+         HPuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713294101; x=1713898901;
+        d=1e100.net; s=20230601; t=1713294108; x=1713898908;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=M+KMTbrbI+PCZ7l2nXt22iBk719lD5OjaX/6s+DU33I=;
-        b=ItbzOsz5b61asLNBuTa99/Fg4/EWbi73i+0/Wr8fMyXD3PXQ3WFBPbwvO7474H3UC+
-         25o44DlQUCSv/KEEpPAi8cHtJXkRV+FfYyxLuDd8KLdkxsqSfsy6+ChWpiMlT8tNuMCX
-         nGPD3P35XhApZo6rRW9mZPBiySBxSl8mwE9utC+ukBWivwKNka3v955YhoaCF0X2hZgU
-         SHT9XGh8Q29HU5Mfqr1DEmybH1T3pM9Zf8BmcROWn7lRW/Lcic6tieRFh7Ms5mLwpDeC
-         8Nw5K2ep+NrO0mAtVYzPdnfs/kxipqvRhghIOvNQfDnXQS5We0qj05l8D9Zqc3tUnP7K
-         YC4A==
-X-Forwarded-Encrypted: i=1; AJvYcCXcdYFwM3pUCEvB46Zk/inrV9hjWdLSCgvpQkgJHFfN9fkw4sIuYaVykWBDY2xhHO1z5Gf9H/TBcOr0pe6nRtXpZS4X
-X-Gm-Message-State: AOJu0YwdgmSR3p/XkcUopmuQK6Zr/D1HK3HfH8szr6KkbfbCrdetHuHz
-	ZgB+eGk8wJBmGCBFsoXNQbCnixp7RpiVJWhSxaCeZxOhIuymb7jNmbimoMJB41Q=
-X-Received: by 2002:a17:907:72c9:b0:a52:53f3:af3c with SMTP id du9-20020a17090772c900b00a5253f3af3cmr8756708ejc.10.1713294101517;
-        Tue, 16 Apr 2024 12:01:41 -0700 (PDT)
+        bh=DC2xHT4tK3V/eBcSroqFKTXibEqMvehvouzWEl1ZI6k=;
+        b=nUpPrjKHIvKW2a2uUjQhxGoHrY8YtgKTu8NP+RmsZv42b+rhrQFpAyQjnc56/f7kfX
+         f56wnqSU4YTtyfHnHHBV12Z+TdqSsa+Jjfwge6xquHdNs4diOVoG+toBgau9SdTzphV4
+         j64AZc5BuWfTtx7KhL4PdLV3S+8X1FNbfXidHqo0MjSLk6apz9PYOeS6afUNPLWH/BRL
+         YpokjMt8mkeFSaUO04DCD+sBkONvt2LBReu+fK4mJL0dL5ezgTA9gyGiAlrPNEvxbqrn
+         txNP1HQtdr1zbKOTDB+9OSupr7eU/y9VBFtje1f3airRjs055DhGzhAKBvBy4tyIf4Um
+         GdPg==
+X-Forwarded-Encrypted: i=1; AJvYcCWBq1bUiTiRpqLe/6mkt2jEzWVpz2b1DScVE2DvM0jr6JetczEecCjZkEvME/qeo88jOHeZwDNitUb51BCQe/5hIwMq
+X-Gm-Message-State: AOJu0YzRKc7wpTy/Us733aDj/4L4Rzbga5PrvTn4btwZoaNaohuu/o54
+	BJceuLsBjf8/SyOw2Ra9uFgzNKg0og9chmIUgGj+mrlVKgp3iKHE+0hp2fLlc9w=
+X-Received: by 2002:a17:907:724c:b0:a54:e183:6249 with SMTP id ds12-20020a170907724c00b00a54e1836249mr4000170ejc.56.1713294107715;
+        Tue, 16 Apr 2024 12:01:47 -0700 (PDT)
 Received: from m1x-phil.lan ([176.176.155.61])
-        by smtp.gmail.com with ESMTPSA id cw4-20020a170906c78400b00a4e58c74c9fsm7141780ejb.6.2024.04.16.12.01.39
+        by smtp.gmail.com with ESMTPSA id v13-20020a17090606cd00b00a526562de1fsm3471599ejb.73.2024.04.16.12.01.45
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 16 Apr 2024 12:01:41 -0700 (PDT)
+        Tue, 16 Apr 2024 12:01:47 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Thomas Huth <thuth@redhat.com>
@@ -120,9 +120,9 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Eduardo Habkost <eduardo@habkost.net>
-Subject: [PATCH v4 18/22] hw/i386/pc: Remove PCMachineClass::rsdp_in_ram
-Date: Tue, 16 Apr 2024 20:59:34 +0200
-Message-ID: <20240416185939.37984-19-philmd@linaro.org>
+Subject: [PATCH v4 19/22] hw/i386/acpi: Remove AcpiBuildState::rsdp field
+Date: Tue, 16 Apr 2024 20:59:35 +0200
+Message-ID: <20240416185939.37984-20-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240416185939.37984-1-philmd@linaro.org>
 References: <20240416185939.37984-1-philmd@linaro.org>
@@ -134,112 +134,51 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: rXaR9jNAF5L9
+X-TUID: IHCegyQFuqvV
 
-PCMachineClass::rsdp_in_ram was only used by the
-pc-i440fx-2.2 machine, which got removed. It is
-now always true. Remove it, simplifying acpi_setup().
+AcpiBuildState::rsdp is always NULL, remove it,
+simplifying acpi_build_update().
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- include/hw/i386/pc.h |  1 -
- hw/i386/acpi-build.c | 35 ++++-------------------------------
- hw/i386/pc.c         |  1 -
- 3 files changed, 4 insertions(+), 33 deletions(-)
+ hw/i386/acpi-build.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 10a8ffa0de..96ccb4583f 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -100,7 +100,6 @@ struct PCMachineClass {
- 
-     /* ACPI compat: */
-     bool has_acpi_build;
--    bool rsdp_in_ram;
-     unsigned acpi_data_size;
-     int pci_root_uid;
- 
 diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index ab2d4d8dcb..ed0adb0e82 100644
+index ed0adb0e82..6f9925d176 100644
 --- a/hw/i386/acpi-build.c
 +++ b/hw/i386/acpi-build.c
-@@ -2495,7 +2495,6 @@ static
- void acpi_build(AcpiBuildTables *tables, MachineState *machine)
- {
-     PCMachineState *pcms = PC_MACHINE(machine);
--    PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
-     X86MachineState *x86ms = X86_MACHINE(machine);
-     DeviceState *iommu = pcms->iommu;
-     GArray *table_offsets;
-@@ -2667,16 +2666,6 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-             .rsdt_tbl_offset = &rsdt,
-         };
-         build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
--        if (!pcmc->rsdp_in_ram) {
--            /* We used to allocate some extra space for RSDP revision 2 but
--             * only used the RSDP revision 0 space. The extra bytes were
--             * zeroed out and not used.
--             * Here we continue wasting those extra 16 bytes to make sure we
--             * don't break migration for machine types 2.2 and older due to
--             * RSDP blob size mismatch.
--             */
--            build_append_int_noprefix(tables->rsdp, 0, 16);
--        }
-     }
+@@ -2459,7 +2459,6 @@ struct AcpiBuildState {
+     MemoryRegion *table_mr;
+     /* Is table patched? */
+     uint8_t patched;
+-    void *rsdp;
+     MemoryRegion *rsdp_mr;
+     MemoryRegion *linker_mr;
+ } AcpiBuildState;
+@@ -2715,11 +2714,7 @@ static void acpi_build_update(void *build_opaque)
  
-     /* We'll expose it all to Guest so we want to reduce
-@@ -2755,7 +2744,6 @@ static const VMStateDescription vmstate_acpi_build = {
- void acpi_setup(void)
- {
-     PCMachineState *pcms = PC_MACHINE(qdev_get_machine());
--    PCMachineClass *pcmc = PC_MACHINE_GET_CLASS(pcms);
-     X86MachineState *x86ms = X86_MACHINE(pcms);
-     AcpiBuildTables tables;
-     AcpiBuildState *build_state;
-@@ -2817,25 +2805,10 @@ void acpi_setup(void)
+     acpi_ram_update(build_state->table_mr, tables.table_data);
+ 
+-    if (build_state->rsdp) {
+-        memcpy(build_state->rsdp, tables.rsdp->data, acpi_data_len(tables.rsdp));
+-    } else {
+-        acpi_ram_update(build_state->rsdp_mr, tables.rsdp);
+-    }
++    acpi_ram_update(build_state->rsdp_mr, tables.rsdp);
+ 
+     acpi_ram_update(build_state->linker_mr, tables.linker->cmd_blob);
+     acpi_build_tables_cleanup(&tables, true);
+@@ -2805,7 +2800,6 @@ void acpi_setup(void)
                             tables.vmgenid);
      }
  
--    if (!pcmc->rsdp_in_ram) {
--        /*
--         * Keep for compatibility with old machine types.
--         * Though RSDP is small, its contents isn't immutable, so
--         * we'll update it along with the rest of tables on guest access.
--         */
--        uint32_t rsdp_size = acpi_data_len(tables.rsdp);
--
--        build_state->rsdp = g_memdup(tables.rsdp->data, rsdp_size);
--        fw_cfg_add_file_callback(x86ms->fw_cfg, ACPI_BUILD_RSDP_FILE,
--                                 acpi_build_update, NULL, build_state,
--                                 build_state->rsdp, rsdp_size, true);
--        build_state->rsdp_mr = NULL;
--    } else {
--        build_state->rsdp = NULL;
--        build_state->rsdp_mr = acpi_add_rom_blob(acpi_build_update,
--                                                 build_state, tables.rsdp,
--                                                 ACPI_BUILD_RSDP_FILE);
--    }
-+    build_state->rsdp = NULL;
-+    build_state->rsdp_mr = acpi_add_rom_blob(acpi_build_update,
-+                                             build_state, tables.rsdp,
-+                                             ACPI_BUILD_RSDP_FILE);
- 
-     qemu_register_reset(acpi_build_reset, build_state);
-     acpi_build_reset(build_state);
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index c4a7885a3b..a1b0e94523 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1745,7 +1745,6 @@ static void pc_machine_class_init(ObjectClass *oc, void *data)
- 
-     pcmc->pci_enabled = true;
-     pcmc->has_acpi_build = true;
--    pcmc->rsdp_in_ram = true;
-     pcmc->smbios_defaults = true;
-     pcmc->gigabyte_align = true;
-     pcmc->has_reserved_memory = true;
+-    build_state->rsdp = NULL;
+     build_state->rsdp_mr = acpi_add_rom_blob(acpi_build_update,
+                                              build_state, tables.rsdp,
+                                              ACPI_BUILD_RSDP_FILE);
 -- 
 2.41.0
 

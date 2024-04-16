@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp246095ejd;
-        Tue, 16 Apr 2024 02:21:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVZYuGDpF29b6Pq8Dd39ECcbDzRwgukq1kE9vGjU4O6VNEAd7tdH5qOKRE2yunT9TX/3+SkP155tzsN7lB9650cph9GCn40
-X-Google-Smtp-Source: AGHT+IEAdandfMYDe8N1eKyA7qWVipPEA7Q7qYJ2ThwHKsG0OUHM4iGv5RkgBkKozTFFQmSPcBtF
-X-Received: by 2002:a37:e116:0:b0:78d:5f25:ef66 with SMTP id c22-20020a37e116000000b0078d5f25ef66mr14289925qkm.50.1713259305900;
-        Tue, 16 Apr 2024 02:21:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713259305; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp246175ejd;
+        Tue, 16 Apr 2024 02:21:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVFjYCfSxoT74IJ1E+BfUKRhNJFr0a0z7Oa6K6Ba43kBFptUa5WCoY7HWuX2vIL4gTL90gRvWiRTkp7MNgmO2SWvO6ngHBz
+X-Google-Smtp-Source: AGHT+IEEYjUi6XFvdn25Mm8JeBamZeQVYJ7GNyUcrGZjpGJAad+xaX/d+v6ca7l3etDVqvRnpxYJ
+X-Received: by 2002:a05:622a:20c:b0:434:ea70:c18b with SMTP id b12-20020a05622a020c00b00434ea70c18bmr16474289qtx.14.1713259318623;
+        Tue, 16 Apr 2024 02:21:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713259318; cv=none;
         d=google.com; s=arc-20160816;
-        b=LHaaQDzsr0Tc9kj5lZW6P2IzDebDmnfpOwd/wi9lYnOa1R550BC1ve1HtQPDadiyAP
-         V4wv2t/7x6Ld2fWpig93/z1LokBPmPIxfK1yV6Y9KzX/1RoEL1rFdwyGgQ86YpbHQEoe
-         r/Y+i+yKr8dlNu5j6Z82fLfybfV9Frd4e/6ppJSVGCATdiMwbjbO5JE3ldUBe+AN27vu
-         Y+GCAxa5pcBw33VHtDz0f+C4j+XCfpaM3XSG4MPZYT/8g5QsnweOD1/O1A6rQAuu3sOj
-         4LtTC2GnWI0xKtCz2AAzZYG1XVD6dW20l7Vp7TQYIE7KPqjXNnC6lzbuyiIWtpiJoZnW
-         Ahpw==
+        b=Suxm74iT+KGMyBS4mlhXTW8GDbV8cR4ayuj+rgxFL4edfOXj1YRRRGX9ZdvqVrxbZt
+         IE2Rrnw++lUl4R08SwoFnOaXqrsQ99RS6NG/4XOe8rWYkmOXUgENvt06l0SLlrp4Kezi
+         wqJYDkAa0Cco8iRJommgCX0iRTjLbiD3DdkxZtcx+ID2PYeSUO2GmnxDD8ccHMSr8JMu
+         OMWZW7BIU8QUJQWQiCw1oolJZ33jmddScwp9GlxNe/Zlo7mcPLp83LKb38VafivMfs/q
+         B3YJxJxuDvddeASCUeLKfXfOZB/WZYELzQfz8LzUfYlM+dURQtuJD4JivJ8US2rMRoLM
+         HyaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=+kp5nzuN4yhuEGviiQ3FtjR3buKifywUcbOkTThnoV0=;
+        bh=H2XGJKKUrx/ByTXmc/nS0BQJr3kDnB2I+5AkWD8avIA=;
         fh=4qsXPuPQQYwauqV4GBfUuJ135n2gY4LbnQu8KHliids=;
-        b=RdFB47Bx6R3YbG+lfF64zCIjmikZv7qPQAPmsndQ+FrFBWy8/X9M/EfKWhB1yJaSr7
-         zgwKe3OyyQXbbOEUEFt4Fw2BHUIvvoBGnm54LFhqZITqMgpMu3bJzqb/8cRJgA1IR4qi
-         6KIxW7IyxefKcGG6lQ7Q6FTYBW+Bsf2bLtvG3ROyBPX7V4/pF26PHsJ/XQhtlSrR+n/r
-         PsXYUWFO+yUPFA4ixaw2/hM6NuDHGfK9/npCsNSUdYVMBZqt/seftUMi+/osijSYZ44C
-         zaJUIF1x6mrhL80boUK29koimSp13axJxRk45Fa2qEw8zf5jU91oLhU8WYxwVx3SzTH2
-         PnSQ==;
+        b=FU+o2IQz2NHGHkaUNGa2zp4PzhjS3kTfl3TrwrrmUPlZ4tbOjky0Pdo+B5yl2nlEkZ
+         uNALvpxSq336eIFxr2nsgyqdPSYSu/x2S9XeD8szwdpqAHlMY9Pc74VhYi2rSAOGGlB0
+         CBtKHXMktONlb8e+7wtnsBX67ktwDCkzpWeMVkSOV72Ti7S+hZCcXFzTVlZ/vKy++lIV
+         pcZzpmBGsm6TMVXlV9od6PbS2aIlYzskAk7VwX63i3i0t4wr+6cwWoy6iiQlVW7Yw2Yz
+         MahodCOGWR3mPwGPk2JZ0q9nKyVHmAcsCLX/Waxr5Hap8mHceZuFHyQXRJf4gqETe/Il
+         +xHw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bp6-20020a05620a458600b0078d549bc49esi13958863qkb.749.2024.04.16.02.21.45
+        by mx.google.com with ESMTPS id bv6-20020a05622a0a0600b004369a2fdc33si9160178qtb.8.2024.04.16.02.21.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Apr 2024 02:21:45 -0700 (PDT)
+        Tue, 16 Apr 2024 02:21:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,25 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rwf00-00042P-Uk; Tue, 16 Apr 2024 05:21:10 -0400
+	id 1rwf0S-0004WC-Q3; Tue, 16 Apr 2024 05:21:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rwezN-0003Em-KS; Tue, 16 Apr 2024 05:20:32 -0400
+ id 1rwezY-0003SV-EM; Tue, 16 Apr 2024 05:20:40 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rwez9-0007iy-Mf; Tue, 16 Apr 2024 05:20:28 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ id 1rwezV-0007iy-WE; Tue, 16 Apr 2024 05:20:40 -0400
+Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 16 Apr
- 2024 17:19:10 +0800
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Tue, 16 Apr
+ 2024 17:19:11 +0800
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Tue, 16 Apr
+ 2024 17:19:13 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 16 Apr 2024 17:19:10 +0800
+ Transport; Tue, 16 Apr 2024 17:19:11 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
  Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
@@ -68,15 +71,19 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v3 11/16] aspeed/intc: Add AST2700 support
-Date: Tue, 16 Apr 2024 17:18:58 +0800
-Message-ID: <20240416091904.935283-12-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 13/16] aspeed: Add an AST2700 eval board
+Date: Tue, 16 Apr 2024 17:19:00 +0800
+Message-ID: <20240416091904.935283-14-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
 References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
+ does not designate 192.168.10.10 as permitted sender)
+ receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
+ helo=localhost.localdomain;
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -100,384 +107,83 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NjzpIzaSfcRT
+X-TUID: aINXjVl1+6uG
 
-AST2700 interrupt controller(INTC) provides hardware interrupt interfaces
-to interrupt of processors PSP, SSP and TSP. In INTC, each interrupt of
-INT 128 to INT136 combines 32 interrupts.
+AST2700 CPU is ARM Cortex-A35 which is 64 bits.
+Add TARGET_AARCH64 to build this machine.
 
-Introduce a new aspeed_intc class with instance_init and realize handlers.
+According to the design of ast2700, it has a bootmcu(riscv-32) which
+is used for executing SPL.
+Then, CPUs(cortex-a35) execute u-boot, kernel and rofs.
 
-So far, this model only supports GICINT128 to GICINT136.
-It creates 9 GICINT or-gates to connect 32 interrupts sources
-from GICINT128 to GICINT136 as IRQ GPIO-OUTPUT pins.
-Then, this model registers IRQ handler with its IRQ GPIO-INPUT pins which
-connect to GICINT or-gates. And creates 9 GICINT IRQ GPIO-OUTPUT pins which
-connect to GIC device with GIC IRQ 128 to 136.
-
-If one interrupt source from GICINT128 to GICINT136
-set irq, the OR-GATE irq callback function is called and set irq to INTC by
-OR-GATE GPIO-OUTPUT pins. Then, the INTC irq callback function is called and
-set irq to GIC by its GICINT IRQ GPIO-OUTPUT pins. Finally, the GIC irq
-callback function is called and set irq to CPUs and
-CPUs execute Interrupt Service Routine (ISR).
+Currently, qemu not support emulate two CPU architectures
+at the same machine. Therefore, qemu will only support
+to emulate CPU(cortex-a35) side for ast2700
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/intc/aspeed_intc.c         | 269 ++++++++++++++++++++++++++++++++++
- hw/intc/meson.build           |   1 +
- hw/intc/trace-events          |   6 +
- include/hw/intc/aspeed_intc.h |  35 +++++
- 4 files changed, 311 insertions(+)
- create mode 100644 hw/intc/aspeed_intc.c
- create mode 100644 include/hw/intc/aspeed_intc.h
+ hw/arm/aspeed.c | 32 ++++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
 
-diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
-new file mode 100644
-index 0000000000..df31900d56
---- /dev/null
-+++ b/hw/intc/aspeed_intc.c
-@@ -0,0 +1,269 @@
-+/*
-+ * ASPEED INTC Controller
-+ *
-+ * Copyright (C) 2024 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/intc/aspeed_intc.h"
-+#include "hw/irq.h"
-+#include "migration/vmstate.h"
-+#include "qemu/bitops.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "hw/intc/arm_gicv3.h"
-+#include "trace.h"
-+#include "hw/registerfields.h"
-+#include "qapi/error.h"
-+
-+/* INTC Registers */
-+REG32(GICINT128_EN,         0x1000)
-+REG32(GICINT128_STATUS,     0x1004)
-+REG32(GICINT129_EN,         0x1100)
-+REG32(GICINT129_STATUS,     0x1104)
-+REG32(GICINT130_EN,         0x1200)
-+REG32(GICINT130_STATUS,     0x1204)
-+REG32(GICINT131_EN,         0x1300)
-+REG32(GICINT131_STATUS,     0x1304)
-+REG32(GICINT132_EN,         0x1400)
-+REG32(GICINT132_STATUS,     0x1404)
-+REG32(GICINT133_EN,         0x1500)
-+REG32(GICINT133_STATUS,     0x1504)
-+REG32(GICINT134_EN,         0x1600)
-+REG32(GICINT134_STATUS,     0x1604)
-+REG32(GICINT135_EN,         0x1700)
-+REG32(GICINT135_STATUS,     0x1704)
-+REG32(GICINT136_EN,         0x1800)
-+REG32(GICINT136_STATUS,     0x1804)
-+
-+#define GICINT_EN_BASE     R_GICINT128_EN
-+
-+/*
-+ * The address of GICINT128 to GICINT136 are from 0x1000 to 0x1804.
-+ * Utilize "address & 0x0f00" to get the gicint_out index and
-+ * its gic irq.
-+ */
-+static void aspeed_intc_update(AspeedINTCState *s, int irq, int level)
-+{
-+    uint32_t gicint_enable_addr = GICINT_EN_BASE + ((0x100 * irq) >> 2);
-+    uint32_t gicint_status_addr = gicint_enable_addr + (0x4 >> 2);
-+
-+    if (s->trigger[irq]) {
-+        if (!level && !s->regs[gicint_status_addr]) {
-+            /* clear irq */
-+            trace_aspeed_intc_update_irq(irq, 0);
-+            qemu_set_irq(s->gicint_out[irq], 0);
-+            s->trigger[irq] = false;
-+        }
-+    } else {
-+        if (s->new_gicint_status[irq]) {
-+            /* set irq */
-+            trace_aspeed_intc_update_irq(irq, 1);
-+            s->regs[gicint_status_addr] = s->new_gicint_status[irq];
-+            s->new_gicint_status[irq] = 0;
-+            qemu_set_irq(s->gicint_out[irq], 1);
-+            s->trigger[irq] = true;
-+        }
-+    }
-+}
-+
-+/*
-+ * The value of irq should be 0 to ASPEED_INTC_NR_GICS.
-+ * The irq 0 indicates GICINT128, irq 1 indicates GICINT129 and so on.
-+ */
-+static void aspeed_intc_set_irq(void *opaque, int irq, int level)
-+{
-+    AspeedINTCState *s = (AspeedINTCState *)opaque;
-+    uint32_t gicint_enable_addr = GICINT_EN_BASE + ((0x100 * irq) >> 2);
-+    uint32_t enable = s->regs[gicint_enable_addr];
-+    int i;
-+
-+    if (irq > ASPEED_INTC_NR_GICS) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
-+                      __func__, irq);
-+        return;
-+    }
-+
-+    trace_aspeed_intc_set_irq(irq, level);
-+
-+    for (i = 0; i < 32; i++) {
-+        if (s->gicint_orgate[irq].levels[i]) {
-+            if (enable & BIT(i)) {
-+                s->new_gicint_status[irq] |= BIT(i);
-+            }
-+        }
-+    }
-+
-+    aspeed_intc_update(s, irq, level);
-+}
-+
-+static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned int size)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(opaque);
-+    uint32_t addr = offset >> 2;
-+    uint32_t value = 0;
-+
-+    if (addr >= ASPEED_INTC_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        return 0;
-+    }
-+
-+    switch (addr) {
-+    case R_GICINT128_EN:
-+    case R_GICINT129_EN:
-+    case R_GICINT130_EN:
-+    case R_GICINT131_EN:
-+    case R_GICINT132_EN:
-+    case R_GICINT133_EN:
-+    case R_GICINT134_EN:
-+    case R_GICINT135_EN:
-+    case R_GICINT136_EN:
-+    case R_GICINT128_STATUS:
-+    case R_GICINT129_STATUS:
-+    case R_GICINT130_STATUS:
-+    case R_GICINT131_STATUS:
-+    case R_GICINT132_STATUS:
-+    case R_GICINT133_STATUS:
-+    case R_GICINT134_STATUS:
-+    case R_GICINT135_STATUS:
-+    case R_GICINT136_STATUS:
-+        value = s->regs[addr];
-+        break;
-+    default:
-+        value = s->regs[addr];
-+        break;
-+    }
-+
-+    trace_aspeed_intc_read(offset, size, value);
-+
-+    return value;
-+}
-+
-+static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
-+                                        unsigned size)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(opaque);
-+    uint32_t irq = (offset & 0x0f00) >> 8;
-+    uint32_t addr = offset >> 2;
-+
-+
-+    if (addr >= ASPEED_INTC_NR_REGS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        return;
-+    }
-+
-+    trace_aspeed_intc_write(offset, size, data);
-+
-+    switch (addr) {
-+    case R_GICINT128_EN:
-+    case R_GICINT129_EN:
-+    case R_GICINT130_EN:
-+    case R_GICINT131_EN:
-+    case R_GICINT132_EN:
-+    case R_GICINT133_EN:
-+    case R_GICINT134_EN:
-+    case R_GICINT135_EN:
-+    case R_GICINT136_EN:
-+        s->regs[addr] = data;
-+        break;
-+    case R_GICINT128_STATUS:
-+    case R_GICINT129_STATUS:
-+    case R_GICINT130_STATUS:
-+    case R_GICINT131_STATUS:
-+    case R_GICINT132_STATUS:
-+    case R_GICINT133_STATUS:
-+    case R_GICINT134_STATUS:
-+    case R_GICINT135_STATUS:
-+    case R_GICINT136_STATUS:
-+        /* clear status */
-+        s->regs[addr] &= ~data;
-+        if (!s->regs[addr]) {
-+            aspeed_intc_update(s, irq, 0);
-+        }
-+        break;
-+    default:
-+        s->regs[addr] = data;
-+        break;
-+    }
-+
-+    return;
-+}
-+
-+static const MemoryRegionOps aspeed_intc_ops = {
-+    .read = aspeed_intc_read,
-+    .write = aspeed_intc_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    }
-+};
-+
-+static void aspeed_intc_instance_init(Object *obj)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(obj);
-+    int i;
-+
-+    for (i = 0; i < ASPEED_INTC_NR_GICS; i++) {
-+        object_initialize_child(obj, "gic-orgate[*]", &s->gicint_orgate[i],
-+                                TYPE_OR_IRQ);
-+        object_property_set_int(OBJECT(&s->gicint_orgate[i]), "num-lines",
-+                                32, &error_abort);
-+    }
-+}
-+
-+static void aspeed_intc_reset(DeviceState *dev)
-+{
-+    AspeedINTCState *s = ASPEED_INTC(dev);
-+    memset(s->regs, 0, sizeof(s->regs));
-+    memset(s->trigger, 0, sizeof(s->trigger));
-+    memset(s->new_gicint_status, 0, sizeof(s->new_gicint_status));
-+}
-+
-+static void aspeed_intc_realize(DeviceState *dev, Error **errp)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    AspeedINTCState *s = ASPEED_INTC(dev);
-+    int i;
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_intc_ops, s,
-+                          TYPE_ASPEED_INTC ".regs", ASPEED_INTC_NR_REGS << 2);
-+
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    qdev_init_gpio_in(dev, aspeed_intc_set_irq, ASPEED_INTC_NR_GICS);
-+
-+    for (i = 0; i < ASPEED_INTC_NR_GICS; i++) {
-+        sysbus_init_irq(sbd, &s->gicint_out[i]);
-+    }
-+}
-+
-+static void aspeed_intc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = aspeed_intc_realize;
-+    dc->reset = aspeed_intc_reset;
-+    dc->desc = "ASPEED INTC Controller";
-+    dc->vmsd = NULL;
-+}
-+
-+static const TypeInfo aspeed_intc_info = {
-+    .name = TYPE_ASPEED_INTC,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_init = aspeed_intc_instance_init,
-+    .instance_size = sizeof(AspeedINTCState),
-+    .class_init = aspeed_intc_class_init,
-+};
-+
-+static void aspeed_intc_register_types(void)
-+{
-+    type_register_static(&aspeed_intc_info);
-+}
-+
-+type_init(aspeed_intc_register_types);
-diff --git a/hw/intc/meson.build b/hw/intc/meson.build
-index ed355941d1..f5c574f584 100644
---- a/hw/intc/meson.build
-+++ b/hw/intc/meson.build
-@@ -14,6 +14,7 @@ system_ss.add(when: 'CONFIG_ARM_GICV3_TCG', if_true: files(
- ))
- system_ss.add(when: 'CONFIG_ALLWINNER_A10_PIC', if_true: files('allwinner-a10-pic.c'))
- system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_vic.c'))
-+system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_intc.c'))
- system_ss.add(when: 'CONFIG_ETRAXFS', if_true: files('etraxfs_pic.c'))
- system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_gic.c', 'exynos4210_combiner.c'))
- system_ss.add(when: 'CONFIG_GOLDFISH_PIC', if_true: files('goldfish_pic.c'))
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 1ef29d0256..30b9dd2a96 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -79,6 +79,12 @@ aspeed_vic_update_fiq(int flags) "Raising FIQ: %d"
- aspeed_vic_update_irq(int flags) "Raising IRQ: %d"
- aspeed_vic_read(uint64_t offset, unsigned size, uint32_t value) "From 0x%" PRIx64 " of size %u: 0x%" PRIx32
- aspeed_vic_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
-+# aspeed_intc.c
-+aspeed_intc_read(uint64_t offset, unsigned size, uint32_t value) "From 0x%" PRIx64 " of size %u: 0x%" PRIx32
-+aspeed_intc_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
-+aspeed_intc_set_irq(int irq, int level) "Set IRQ %d: %d"
-+aspeed_intc_update_irq(int irq, int level) "Update IRQ: %d: %d"
-+aspeed_intc_debug(uint32_t offset, uint32_t value) "Debug 0x%x: 0x%x"
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 93ca87fda2..40dc0e4c76 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -178,6 +178,12 @@ struct AspeedMachineState {
+ #define AST2600_EVB_HW_STRAP1 0x000000C0
+ #define AST2600_EVB_HW_STRAP2 0x00000003
  
- # arm_gic.c
- gic_enable_irq(int irq) "irq %d enabled"
-diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
-new file mode 100644
-index 0000000000..0d2fbbda8f
---- /dev/null
-+++ b/include/hw/intc/aspeed_intc.h
-@@ -0,0 +1,35 @@
-+/*
-+ * ASPEED INTC Controller
-+ *
-+ * Copyright (C) 2024 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef ASPEED_INTC_H
-+#define ASPEED_INTC_H
++#ifdef TARGET_AARCH64
++/* AST2700 evb hardware value */
++#define AST2700_EVB_HW_STRAP1 0x000000C0
++#define AST2700_EVB_HW_STRAP2 0x00000003
++#endif
 +
-+#include "hw/sysbus.h"
-+#include "qom/object.h"
-+#include "hw/or-irq.h"
+ /* Tacoma hardware value */
+ #define TACOMA_BMC_HW_STRAP1  0x00000000
+ #define TACOMA_BMC_HW_STRAP2  0x00000040
+@@ -1588,6 +1594,26 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
+ 
++#ifdef TARGET_AARCH64
++static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+#define TYPE_ASPEED_INTC "aspeed.intc"
-+OBJECT_DECLARE_SIMPLE_TYPE(AspeedINTCState, ASPEED_INTC)
++    mc->desc = "Aspeed AST2700 EVB (Cortex-A35)";
++    amc->soc_name  = "ast2700-a0";
++    amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
++    amc->hw_strap2 = AST2700_EVB_HW_STRAP2;
++    amc->fmc_model = "w25q01jvq";
++    amc->spi_model = "w25q512jv";
++    amc->num_cs    = 2;
++    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
++    amc->uart_default = ASPEED_DEV_UART12;
++    mc->default_ram_size = 1 * GiB;
++    aspeed_machine_class_init_cpus_defaults(mc);
++}
++#endif
 +
-+#define ASPEED_INTC_NR_REGS (0x2000 >> 2)
-+#define ASPEED_INTC_NR_GICS 9
-+
-+struct AspeedINTCState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+    DeviceState *gic;
-+
-+    /*< public >*/
-+    MemoryRegion iomem;
-+    uint32_t regs[ASPEED_INTC_NR_REGS];
-+    OrIRQState gicint_orgate[ASPEED_INTC_NR_GICS];
-+    qemu_irq gicint_out[ASPEED_INTC_NR_GICS];
-+    bool trigger[ASPEED_INTC_NR_GICS];
-+    uint32_t new_gicint_status[ASPEED_INTC_NR_GICS];
-+};
-+
-+#endif /* ASPEED_INTC_H */
+ static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
+                                                      void *data)
+ {
+@@ -1711,6 +1737,12 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name           = MACHINE_TYPE_NAME("ast1030-evb"),
+         .parent         = TYPE_ASPEED_MACHINE,
+         .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
++#ifdef TARGET_AARCH64
++    }, {
++        .name          = MACHINE_TYPE_NAME("ast2700-evb"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_ast2700_evb_class_init,
++#endif
+     }, {
+         .name          = TYPE_ASPEED_MACHINE,
+         .parent        = TYPE_MACHINE,
 -- 
 2.25.1
 

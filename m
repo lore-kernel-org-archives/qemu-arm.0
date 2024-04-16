@@ -1,183 +1,158 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp442550ejd;
-        Tue, 16 Apr 2024 08:18:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVdiTWrqeaCg3MgMN/hFoZm5kjICma2Ma8/ytaLJjDW81d9OrNMWLCz5sIzmlVyAt6bFVx5wrx24tMzSOxfIOz3zGqWe5EU
-X-Google-Smtp-Source: AGHT+IEPqdo2GDrf184NA1tHfu6HfH8+Ikzq9S3E9xIIGXXk+J38LTwE0b+S5CzPNSNXAvoxgcJB
-X-Received: by 2002:a2e:a718:0:b0:2d8:687d:b22 with SMTP id s24-20020a2ea718000000b002d8687d0b22mr10571184lje.20.1713280706622;
-        Tue, 16 Apr 2024 08:18:26 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1713280706; cv=pass;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp450225ejd;
+        Tue, 16 Apr 2024 08:30:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW1lPGAYN8v/dYGb9888nrODiJB9h77qlJmDrH2v+iXPzQEODbQEiJ1jIWIrMlWtHXUnTOMdIKTaBoYZLItZXWlccjeEe9Y
+X-Google-Smtp-Source: AGHT+IHsHXVEig9J2dd/+wE8YsKkhCAsAMiF5qisjPNyO16ddbQQu+aIGyPpGycxGOefCNXp+m/Z
+X-Received: by 2002:a05:6870:c0cf:b0:232:ff53:44fe with SMTP id e15-20020a056870c0cf00b00232ff5344femr14306172oad.38.1713281454456;
+        Tue, 16 Apr 2024 08:30:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713281454; cv=none;
         d=google.com; s=arc-20160816;
-        b=PcJhK0K0kG5XTer3ZoSuCjcOzANIYOXrr5iSyzCvlaQxdnVdcSkuaHwTlaRhtpswTX
-         n1AF3nKtqGtsT0RnYBjJACfcTYwVhovvHs0nl1SZS5cFDgmQzzBUbTJmPQ9MoDhWYlBJ
-         LCB0cQ1BmqDIrrBvvRFXI+7sTpmhMYn3ceD69xNP3PkgYBKVZhBEsM7eiAUkySiaROBz
-         tk/rfoyAvzqu0ZxjWap+hZZSkIE0QvmU8cd1TWbmqFpu0+pTcYvqr2ESPByABzMtAXkR
-         jYLSdqiSQIoHk1Gork8VoDnPdXjILX8IRjw60oZjwYL/mjP7Rxfe7MHJmh4zOrwaeIGJ
-         vJug==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=tPtRVTsXis21eVmAj2j9npZRV3GxwQ/AaRJo8gVEatg=;
-        fh=XFL2SROIcxj0LOb2ZNbcA9tgRSHJB8R0UO1ay7g5yzQ=;
-        b=Asv8VPvyfY/YShyuP9EPj856/0SlbLmKiRsMpvx1ZRZcyTxMVKpHfeZUh0FAwC8b7V
-         cpLnYN9FKsAqLN90v6qqy45wWCuwHQu5kTtb6Q+y8sl65eU2tnlvFUsxaTUXl/8faUBW
-         e6TnysQowZN/R+BIaWVWRzU9huXTPP2QOlwpoQ8muO+c7SREG4bPhd+vplQjVzR1uxwz
-         hhpJChCI1cr+UxU5Rd2jL4Mr4ye8dx8DC0s+sGQE0uWO5ny2OwMLIwJyWyRrcNgHLaq0
-         QiwwtJkxf2MtUXePYLCtHiTKg6ARmoLhzFJsFFiFYqvsni+Iu5DFuLBXkln2H2n9WrvL
-         kY4w==;
+        b=morgkY2+CHcf4QSkH5PyHdkVn+g6S6uaYBhI8jp0tOBPNOljXOsihbrlX1DVykK3yR
+         RHKiQn7ZgJXx5Em+TAtinUPkMpCIavymBMzvq531nifm6zfGBWYgj8bsLbzsm0mt+o/B
+         DjpW8C0DZohVcRAK23pIySMLgtRDQ8Zg9+d0FDMNvWmwhjVtEA9nC3cFW5WYVohMsYEb
+         2FYLqSWeJZ4Tn4RXMkyEfnhrCKIyOXs1z9+X/7kDCQMCgcDogUBl+GtTd0sGDqs/kD2p
+         XR7n/Z8Elq5P74bsBI77ZWpQXPU+pTC61TXvhPaQNgV2MgKji1/aaojCmCgw0fZYktFV
+         d6yQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=3Ghacl2xXxH3bIQtZldY4h+5M0DF8LumXdIJ/p5hOyc=;
+        fh=dkl4W7Ty5DQDYblIuR6iwQV8rfkW6Bl5VLJjLin9mSc=;
+        b=lTqqUjZQ7BOnBjMBu/qZIpylSZRIkBA6OtXzS3NxWx7M85TXCTyjRYI9blykJmFfOd
+         tVch4VVIdLLXAAa8ElmXeY2IbZkuC7d4I2ndpbIK6pA/waUG/Ueo+xKB3pmJguE2acSB
+         /D6Y/MfpuzKQcqVyH/YowVS6Vnb6Kqu6XRKcwC9F7dnmEgMCkIP416svqWNXZbhaizxM
+         6rtj/yfsrXh5bSWlyoBDo3bpJmw067dJVo3NXRbZ568BvsjM72CjIQggv+3UGk3eCFlU
+         H/avpZfmvvXmtF6AdYQ8/HEMku3JRQ9TK6KuCPHPpeR4YcqLcyVs4D+kkoQ4p3GibhUg
+         hnnA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a1m+wB+J;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-14790-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-14790-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-14790-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id g13-20020a1709067c4d00b00a4e2653f545si5585874ejp.181.2024.04.16.08.18.26
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d3-20020a37c403000000b0078ee1869f64si5669843qki.319.2024.04.16.08.30.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Apr 2024 08:18:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-14790-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 16 Apr 2024 08:30:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a1m+wB+J;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-14790-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-14790-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 521F21F21B07
-	for <alex.bennee@linaro.org>; Tue, 16 Apr 2024 15:18:26 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1DB7C131725;
-	Tue, 16 Apr 2024 15:18:03 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="a1m+wB+J"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57203131726
-	for <kvm@vger.kernel.org>; Tue, 16 Apr 2024 15:18:01 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1713280682; cv=none; b=bIn7MxQuwXD5cXTiGq0kC3Cr3I1ZqG8S1vKk7SBWrI6xW+N7kHJ4SJSFy0m8ys1ogxYJLaBROS9dpgFzie35NMonUHqHNoFfEeQotHxJzeM0HjjOmSb+EL+cMxqKiRWqfEAZ9PX9WTrhDQJsUHhV2MZRVzBU5mb28QVP+qfrnOE=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1713280682; c=relaxed/simple;
-	bh=tPtRVTsXis21eVmAj2j9npZRV3GxwQ/AaRJo8gVEatg=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=gTbIsHSr8GTXOVzU0WoNCROPugffhzXKQMuzizlexWxeTUUA9q8nu59vLlQzuDpLNoQd1bVgNCC+cezZni+VZ2bpt+AuOMLZAxIVv3vhDTGgeSOUcNjattZFflyH2febVSKKdbgQm/pGJLjTPfyItBV+yXPk+UHLwsgJ+Xu19Rs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=a1m+wB+J; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1713280680;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=tPtRVTsXis21eVmAj2j9npZRV3GxwQ/AaRJo8gVEatg=;
-	b=a1m+wB+Jlbvf29smpBLD4aJoQFC4yRnsn1IgLHn95CHF3mbP6VBOM9XUxW0+On+UHXGwem
-	iBo6zlVrhp+l3QK0yIduKvEgkoEbtUrBPf26ytQLJNQfmR1WczsczYP0JtV+l+XgbkjUTB
-	nhTIG9ZCQmwa7pyFqNcgiQs4TBP0//g=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-106-Gxm3JAxfNWyzzrw3LARPug-1; Tue, 16 Apr 2024 11:17:56 -0400
-X-MC-Unique: Gxm3JAxfNWyzzrw3LARPug-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com [10.11.54.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A6AC7104B507;
-	Tue, 16 Apr 2024 15:17:55 +0000 (UTC)
-Received: from localhost (dhcp-192-239.str.redhat.com [10.33.192.239])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 597DB2026D1F;
-	Tue, 16 Apr 2024 15:17:55 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Thomas Huth <thuth@redhat.com>, Shaoqin Huang <shahuang@redhat.com>,
- qemu-arm@nongnu.org
-Cc: Eric Auger <eauger@redhat.com>, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Paolo
- Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- qemu-devel@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [PATCH v9] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-In-Reply-To: <227c96c8-4f17-4f79-9378-a15c9dce8d46@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
-References: <20240409024940.180107-1-shahuang@redhat.com>
- <d1a76e23-e361-46a9-9baf-6ab51db5d7ba@redhat.com>
- <47e0c03b-0a6f-4a58-8dd7-6f1b85bcf71c@redhat.com>
- <227c96c8-4f17-4f79-9378-a15c9dce8d46@redhat.com>
-User-Agent: Notmuch/0.37 (https://notmuchmail.org)
-Date: Tue, 16 Apr 2024 17:17:54 +0200
-Message-ID: <875xwhjpzx.fsf@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rwklj-0000WM-1G; Tue, 16 Apr 2024 11:30:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=29bf=LV=kaod.org=clg@ozlabs.org>)
+ id 1rwklP-0000UZ-4M; Tue, 16 Apr 2024 11:30:30 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=29bf=LV=kaod.org=clg@ozlabs.org>)
+ id 1rwklM-0001cE-QP; Tue, 16 Apr 2024 11:30:26 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4VJnzf1dfmz4wyl;
+ Wed, 17 Apr 2024 01:30:22 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4VJnzY1GZ3z4wyY;
+ Wed, 17 Apr 2024 01:30:16 +1000 (AEST)
+Message-ID: <382a8ea3-a2bc-406c-9655-a1e82cd64b97@kaod.org>
+Date: Tue, 16 Apr 2024 17:30:13 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-X-TUID: +ZZSOBa0Y1gi
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 03/16] aspeed/sdmc: remove redundant macros
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
+ <20240416091904.935283-4-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240416091904.935283-4-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=29bf=LV=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: UkAWku4fHWHm
 
-On Wed, Apr 10 2024, Thomas Huth <thuth@redhat.com> wrote:
+On 4/16/24 11:18, Jamin Lin wrote:
+> These macros are no longer used for ASPEED SOCs, so removes them.
+> 
+> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
-> On 09/04/2024 09.47, Shaoqin Huang wrote:
->> Hi Thmoas,
->>=20
->> On 4/9/24 13:33, Thomas Huth wrote:
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 assert_has_feature(qts, "h=
-ost", "kvm-pmu-filter");
->>>
->>> So you assert here that the feature is available ...
->>>
->>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 assert_has_feat=
-ure(qts, "host", "kvm-steal-time");
->>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 assert_has_feat=
-ure(qts, "host", "sve");
->>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 resp =3D do_que=
-ry_no_props(qts, "host");
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kvm_supports_pmu_filter =
-=3D resp_get_feature_str(resp,=20
->>>> "kvm-pmu-filter");
->>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kvm_supports_st=
-eal_time =3D resp_get_feature(resp,=20
->>>> "kvm-steal-time");
->>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 kvm_supports_sv=
-e =3D resp_get_feature(resp, "sve");
->>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 vls =3D resp_ge=
-t_sve_vls(resp);
->>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qobject_unref(r=
-esp);
->>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (kvm_supports_pmu_filte=
-r) { >
->>> ... why do you then need to check for its availability here again?
->>> I either don't understand this part of the code, or you could drop the=
-=20
->>> kvm_supports_pmu_filter variable and simply always execute the code bel=
-ow.
->>=20
->> Thanks for your reviewing. I did so because all other feature like=20
->> "kvm-steal-time" check its availability again. I don't know the original=
-=20
->> reason why they did that. I just followed it.
->>=20
->> Do you think we should delete all the checking?
->
-> resp_get_feature() seems to return a boolean value, so though these featu=
-re=20
-> could be there, they still could be disabled, I assume? Thus we likely ne=
-ed=20
-> to keep the check for those.
 
-This had confused me as well when I looked at it the last time -- one
-thing is to check whether we have a certain prop in the cpu model, the
-other one whether we actually support it. Maybe this needs some
-comments?
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
+> ---
+>   hw/misc/aspeed_sdmc.c | 15 ---------------
+>   1 file changed, 15 deletions(-)
+> 
+> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+> index 64cd1a81dc..74279bbe8e 100644
+> --- a/hw/misc/aspeed_sdmc.c
+> +++ b/hw/misc/aspeed_sdmc.c
+> @@ -76,10 +76,6 @@
+>   #define     ASPEED_SDMC_VGA_32MB            0x2
+>   #define     ASPEED_SDMC_VGA_64MB            0x3
+>   #define ASPEED_SDMC_DRAM_SIZE(x)        (x & 0x3)
+> -#define     ASPEED_SDMC_DRAM_64MB           0x0
+> -#define     ASPEED_SDMC_DRAM_128MB          0x1
+> -#define     ASPEED_SDMC_DRAM_256MB          0x2
+> -#define     ASPEED_SDMC_DRAM_512MB          0x3
+>   
+>   #define ASPEED_SDMC_READONLY_MASK                       \
+>       (ASPEED_SDMC_RESERVED | ASPEED_SDMC_VGA_COMPAT |    \
+> @@ -100,17 +96,6 @@
+>   #define ASPEED_SDMC_CACHE_ENABLE        (1 << 10) /* differs from AST2400 */
+>   #define ASPEED_SDMC_DRAM_TYPE           (1 << 4)  /* differs from AST2400 */
+>   
+> -/* DRAM size definitions differs */
+> -#define     ASPEED_SDMC_AST2500_128MB       0x0
+> -#define     ASPEED_SDMC_AST2500_256MB       0x1
+> -#define     ASPEED_SDMC_AST2500_512MB       0x2
+> -#define     ASPEED_SDMC_AST2500_1024MB      0x3
+> -
+> -#define     ASPEED_SDMC_AST2600_256MB       0x0
+> -#define     ASPEED_SDMC_AST2600_512MB       0x1
+> -#define     ASPEED_SDMC_AST2600_1024MB      0x2
+> -#define     ASPEED_SDMC_AST2600_2048MB      0x3
+> -
+>   #define ASPEED_SDMC_AST2500_READONLY_MASK                               \
+>       (ASPEED_SDMC_HW_VERSION(0xf) | ASPEED_SDMC_CACHE_INITIAL_DONE |     \
+>        ASPEED_SDMC_AST2500_RESERVED | ASPEED_SDMC_VGA_COMPAT |            \
 

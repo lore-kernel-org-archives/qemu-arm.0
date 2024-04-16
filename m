@@ -1,120 +1,118 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp557744ejd;
-        Tue, 16 Apr 2024 11:31:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXjsuNMQliXmvXufR2TZLWpolieRv1St6WMlIiu7UusNqQsd8wQvc6qP6SuUkawl6D+XWZwkrTxlXPDIw7alUaJbQpnJVwt
-X-Google-Smtp-Source: AGHT+IGq4DI+CLQ2ikJ2iO2gzHTvAkrQWBcEpgJCu4e26MeLUUQWI5tArn19rJEAKprkTBajR74Z
-X-Received: by 2002:a05:6122:168e:b0:4d3:cff6:79f0 with SMTP id 14-20020a056122168e00b004d3cff679f0mr12389152vkl.4.1713292289963;
-        Tue, 16 Apr 2024 11:31:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713292289; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp565831ejd;
+        Tue, 16 Apr 2024 11:47:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUlV6e2birl1OPcV0Wg8WeStYDzTSQQTvCjEruXysXtx+2mUgwCzFi/g7bAeICtN6JqgDP/gqZvPR4hytKUwBcTLow58wEc
+X-Google-Smtp-Source: AGHT+IFcGNHHjJY+3DWe2hWTmnFHJTmR3HLHf0vfO84LbJqEGsfP/ymhT/wZ8qXQBJoDBOv64WuE
+X-Received: by 2002:ad4:4b64:0:b0:6a0:404c:6250 with SMTP id m4-20020ad44b64000000b006a0404c6250mr1325683qvx.61.1713293271486;
+        Tue, 16 Apr 2024 11:47:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713293271; cv=none;
         d=google.com; s=arc-20160816;
-        b=HzTwHEcpPPQgYofZaZrxHYDdp6PsaG3Yzg0MmqwvPsfaJkg738HhgAuEW5YJv/BddI
-         55hqfWGYYWpwnPzoX34T2GaJUlJBmjC5O2FOpKEK+IspNltBU+zULdli9ouVVm9dhOkF
-         93Cr7aC+LAoECKT1uuuMJAT6H69DwkAmUXedXzIJ8hSWD9qNfzpQH/i0gFe8Vz6w3Koz
-         qmDVpB1npclmme3FR+5ogUBGRVfodSFx2MrwvX3orPMpIUIPb/EMdMYJyepzNpmbslSi
-         LGOd4FheMc1xKByoqthQzwL42dRYecNBdbUgEh5TIaqlrz6PWA6IjPdioEkZPnpWcCHh
-         j6XQ==
+        b=VjrBjS3q7eKqjYpV1G+OYVwXA3zh8OPfovLpRsBhw35YapYEcO+Wujx3R78xjCUmJ1
+         iUnHtX1j402xe3NYvoAw17eF8dwcewitcwfO4k6TIKyXLRywW/kF8hXHsmJmsxYmT/aT
+         v3fxcnd3jyF2kTPwfRgg7HxY1hf3vXIhLN7jWk2upZdeY8NzkOeu1P11PB5ZqJyotgLl
+         vV7Wgy1Fa/JuFrI0kTS3BI8ywiTnW/X6f0ncFO4mGgxOY4XXpmLcDYGlG4icoDYurtKe
+         mcp5JWKgtqJmwc9Hj7MeKrCCN3SnHhDkOo0Ap24PSn/TQvA3/Ics4o8ylC4I+FNN11gC
+         yxlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=wk7u/9eZ75AaJIIkOV3mpXsCWAmkef56FBtI/Zo3fXg=;
-        fh=9Q/0ZE1s2HZw/WGf54V8vTWeC2Dd6ApIUfgoEe2JAHU=;
-        b=n+3q1+t30lpag7NURx82CD43Z2yv0qOYRWgp7CelgVS28p7WQfc/cw9uXEI6znz320
-         vs49tu5xfjrkgWZOklARSDQE0WVqyt4z73T5SjTkXkG+2u1IHAcoTr5HH9i0jfSUdplP
-         3Ao/qxTpDAfP6bzE10/e70NZh9kvryKSrXPQ0iUfDIKxNto+5TsJJ3Hlau85lmxTlcu1
-         Kte3AwyMMhd4dlA5WSrPV9ErfXsf14EFv139DOCwvYCRE1l2bpja1j7vhR0seIv1IPPI
-         XWfkJhoIulwaWzZ8RLv1moiy+jaBDdq18edZO49c2uGrVEAT4Kg2G6B/VJ+zXlkASFaF
-         HADg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Spf4Zi1bBqXxf2Gm6GK4HE1fTrLcNzSmKtfAQewlYLg=;
+        fh=QDZ5YkBW6RYC7h8fy6JfwMSdERpjG16RTV1iRIy6iZQ=;
+        b=kHXBwYlrmcGmHERhsaO+MozSag1D8whotbQUCbAyg6BY/FFvviBev6cLaaf7af2vvw
+         NUOrkOdu5bTbz9zXarM+dRL8JqupdntwwJKC/SEMx3cASKBS3ULthwXB1GKEv+HJ5Mif
+         fKXF05QXgz7ICszYHhR5oy25ZR8waSsD5RW1JciJ1Glzrjmy5DrUo1QJK14esna2HmH8
+         6nHvt4cCVdJ7xJ2DHUjlgmgAySH9d5mQKrAWKXy0uQ7jMKWuA8V6n8jVFQVM9hg34Jbo
+         e59SZFh7azxwyslk/O04VpBpX5AuDwOM6Lken8jRQPp0QmGSAwBk51EaDYLyk1UswNL7
+         aaUA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=f4XEKaW4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dd7N3ZE3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l64-20020a1fed43000000b004d88ff27f9csi1876176vkh.275.2024.04.16.11.31.29
+        by mx.google.com with ESMTPS id p9-20020ad452c9000000b0069b4144f0absi13200230qvs.119.2024.04.16.11.47.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Apr 2024 11:31:29 -0700 (PDT)
+        Tue, 16 Apr 2024 11:47:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=f4XEKaW4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dd7N3ZE3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rwnaT-0007Z7-P9; Tue, 16 Apr 2024 14:31:23 -0400
+	id 1rwnqG-0003ax-Nu; Tue, 16 Apr 2024 14:47:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1rwnaN-0007X6-TJ; Tue, 16 Apr 2024 14:31:16 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwnqC-0003Yz-7c
+ for qemu-arm@nongnu.org; Tue, 16 Apr 2024 14:47:36 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1rwnaL-0000OX-Cl; Tue, 16 Apr 2024 14:31:15 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-56fe7dc7f58so4428641a12.2; 
- Tue, 16 Apr 2024 11:31:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwnq8-00031Q-JO
+ for qemu-arm@nongnu.org; Tue, 16 Apr 2024 14:47:35 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4189a6a71dcso5421075e9.2
+ for <qemu-arm@nongnu.org>; Tue, 16 Apr 2024 11:47:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1713292271; x=1713897071; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=wk7u/9eZ75AaJIIkOV3mpXsCWAmkef56FBtI/Zo3fXg=;
- b=f4XEKaW44Mq6O9kYonzHmeCWrCyWlKiv0uuZbGe1lsPgC43TBo9q27CkOKLKx1QvjT
- D/z/MLNQXLEaC/kDCWW5q2zPCktl/KPae98CN/PBh7qhlNcZIqqpHKblbltS6PD2eUq5
- ITrtdtzljZHE0lHNv5e0Y3lkPBOpCMXcZoCk/61GhpaUadrkYr8MMKz6EuJEQ4y6NHKP
- LT/fOH/mkzAWKKBoLJBQweZimcbMuKDfqHANxRVXAN5/KJXe5/FW0DTsvT52/45pfv8j
- vD22TpJm3Qib1pdxXK/8EK4tymvQz4H9qtYRuf4RU7G50Qfc+tmhMEjbWxXOyxPqYHHW
- 8fVQ==
+ d=linaro.org; s=google; t=1713293251; x=1713898051; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Spf4Zi1bBqXxf2Gm6GK4HE1fTrLcNzSmKtfAQewlYLg=;
+ b=dd7N3ZE3hFx58vqNiJMX/fOLvm2IfdKY1DRm/XekDtR9wYR17mHLetsYE5fY8fbvgH
+ 4z3WayQ5xC7tYYVuZkzQGA+H2x4S4UvROCxQgSjNIGBxECTeLmQrJXGpI7yFy/Th9Cyx
+ uL4lRau6fR9K4N5Ry0JGc9IGvdkIHn9i9olEnkZ1i4TchNx0mlqWb4z9Fux/Ri+zm0Bh
+ 8NV1AmSdZuSTjr2K6j/ZlreoLEiFdiDHb4mv2YtmwdSFx0AYB35xffBQNkL5uixyWxfc
+ LZ2DdeIgznowhAKSCxqBa2fZHsOUezLl8hU2STOnyUcF3tXOvhxIirlaQwnsWfaOtDUp
+ 1i9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713292271; x=1713897071;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=wk7u/9eZ75AaJIIkOV3mpXsCWAmkef56FBtI/Zo3fXg=;
- b=t5WXEX8pOjq/Gnv2Y+cG/aUIO05E/F0gAynN7gPNGf5Yq0H66h4l5UVly4znqLWRzQ
- TFx45VezHwWjxAY5cWLVOv11Y8x1/Ed35tXAf5xDmWodwIOWOr5WCZNUaCScoVEXLgXC
- UCXZUsbcdVzYQymJvDmkxCnxtE2LMirzu7F2ry9++qkbM0Y6jd9y+jAP3kyYmt8ouHgT
- 18Qp0dvxKJZWSs8Y9pF/8tVKMmvJVRrYj48R2rF7VLcqyNlwiRxzDOKoGf9M1/vTAhtQ
- vHo6g3c9ZnweeyESp43JdS/qRJgJOsKbm5QaHDC9ii71oilDZA4NzGIPb9szjPrRyFiM
- ZGNA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVL2K54v6SsePzh3V8tvR24T4Rt/s4DtXDT3YdtdiUx4hOL6VwRLNK9JytixpiUp2jUoDJQv6P401Ib5536Mvex8vmzsG5fCOy5nE9PjL7VpTPW9SiaKVEkvwI=
-X-Gm-Message-State: AOJu0Yw/TtEX3rQXnGtcHXe2NLlxQ2TDijvfqaQmSDaB5KdvQ6ct8BsK
- nu/d38HQwzffApNGGKK9F23dbwHk9IaGC2QnTt1z9M2HodPY2ezNNYXOR7zb/7wKJobeNbVtYaM
- 1ZDqxJtO4nL7G3dmtHb8KNJEVSTk=
-X-Received: by 2002:a50:9fcb:0:b0:570:5214:f62 with SMTP id
- c69-20020a509fcb000000b0057052140f62mr573816edf.0.1713292271343; Tue, 16 Apr
- 2024 11:31:11 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1713293251; x=1713898051;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Spf4Zi1bBqXxf2Gm6GK4HE1fTrLcNzSmKtfAQewlYLg=;
+ b=AbMIKWfT3Q2NVLTfnQS2IhnfHWakVWKjSw5z0iJLiDjXQQk2oYKetB3bRdNjySJYWo
+ KKag0pIOv+rjOixd2Em1TcogJCazCFBD/YJ3TFjDvwVcVNrxH6N3D5GiCghbcmWXntaQ
+ L8ZarboKGZw/rw+DuX6dYpU9B9PL5ApqqZB9ebELOBW/rF5lARtt5/5jIihbKc7QmoiW
+ R7jSYyMOZEMoyT6KRocqWxjorWkIiaJ6tIwEC0AJ+fCV6iYoothCdmrcAnloNLJEqJdQ
+ sLn5okxq/XSMKTcP+D8CsXSM4HNDfyJtZYM4lEvWKSbxMYloh2deQBvVhNNZgnk8aFN0
+ R7Ig==
+X-Gm-Message-State: AOJu0YxU9Ihv7xu4zL8oSFZPL6Hbst1Sb0ysA76Seu5Ax+ir1fTjyOL5
+ J+jT+FFhqOgDRAbz7BsxN9OLz1eHxNXW0kP1HbP8YidrOiUC8YjnTlcwibiyHH0=
+X-Received: by 2002:a05:600c:3491:b0:418:2323:e87 with SMTP id
+ a17-20020a05600c349100b0041823230e87mr7283079wmq.25.1713293250787; 
+ Tue, 16 Apr 2024 11:47:30 -0700 (PDT)
+Received: from m1x-phil.lan ([176.176.155.61])
+ by smtp.gmail.com with ESMTPSA id
+ e29-20020adfa45d000000b00348b46a134bsm2810947wra.1.2024.04.16.11.47.29
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 16 Apr 2024 11:47:30 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Corey Minyard <cminyard@mvista.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 1/4] hw/i2c: Fix checkpatch block comment warnings
+Date: Tue, 16 Apr 2024 20:47:18 +0200
+Message-ID: <20240416184722.28334-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240416184722.28334-1-philmd@linaro.org>
+References: <20240416184722.28334-1-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20240412081328.11183-1-adiupina@astralinux.ru>
- <CAFEAcA9wfzpc74iA_2G-YbtQtwGCA9VPQuXagg-Q0FwC92tg+w@mail.gmail.com>
- <69dffcb3-6424-420d-97b5-7aa72522ee98@astralinux.ru>
-In-Reply-To: <69dffcb3-6424-420d-97b5-7aa72522ee98@astralinux.ru>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Tue, 16 Apr 2024 20:30:59 +0200
-Message-ID: <CAJy5ezoak5hGy7enXQEoiUyBgYiAOP7ZwMLmZebLL49OVFvarg@mail.gmail.com>
-Subject: Re: [PATCH RFC] prevent overflow in
- xlnx_dpdma_desc_get_source_address()
-To: Alexandra Diupina <adiupina@astralinux.ru>, "Konrad,
- Frederic" <frederic.konrad@amd.com>
-Cc: Alistair Francis <alistair@alistair23.me>,
- Alistair Francis <alistair.francis@xilinx.com>, 
- Hyun Kwon <hyun.kwon@xilinx.com>, KONRAD Frederic <fred.konrad@greensocs.com>, 
- Peter Maydell <peter.maydell@linaro.org>, crosthwaitepeter@gmail.com, 
- guillaume.delbergue@greensocs.com, hyunk@xilinx.com, 
- mark.burton@greensocs.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- sdl.qemu@linuxtesting.org
-Content-Type: multipart/alternative; boundary="0000000000003ae01606163af164"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x534.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,318 +127,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0HJgiyOMI5ut
+X-TUID: ffzqQErqWC1h
 
---0000000000003ae01606163af164
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+We are going to modify these lines, fix their style
+in order to avoid checkpatch.pl warnings:
 
-+ To: Fred
+  WARNING: Block comments use a leading /* on a separate line
+  WARNING: Block comments use * on subsequent lines
+  WARNING: Block comments use a trailing */ on a separate line
 
-On Tue, 16 Apr 2024 at 19:56, Alexandra Diupina <adiupina@astralinux.ru>
-wrote:
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/i2c/i2c.h | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-> Peter, thank you! I agree with you that
-> as mentioned in the documentation
-> https://docs.amd.com/r/en-US/ug1085-zynq-ultrascale-trm/ADDR_EXT-Field,
-> we should take 32 bits of the address from one field
-> (for example, case 1, SRC_ADDR2_EXT - in code it is desc->source_address2=
-)
-> and 16 bits (high or low) of the address from another field
-> (ADDR_EXT_23 - in code it is desc->address_extension_23, we need [15:0]
-> bits)
-> and combine them to make a 48 bit address.
->
-> Therefore, I suggest making the following changes to the code
-> so that it matches the documentation:
->
-> static uint64_t xlnx_dpdma_desc_get_source_address(DPDMADescriptor *desc,
->                                                       uint8_t frag)
-> {
->      uint64_t addr =3D 0;
->      assert(frag < 5);
->
->      switch (frag) {
->      case 0:
->          addr =3D (uint64_t)desc->source_address
->              + (extract64(desc->address_extension, 16, 16) << 32);
->          break;
->      case 1:
->          addr =3D (uint64_t)desc->source_address2
->              + (extract64(desc->address_extension_23, 0, 16) << 32);
->          break;
->      case 2:
->          addr =3D (uint64_t)desc->source_address3
->              + (extract64(desc->address_extension_23, 16, 16) << 32);
->          break;
->      case 3:
->          addr =3D (uint64_t)desc->source_address4
->              + (extract64(desc->address_extension_45, 0, 16) << 32);
->          break;
->      case 4:
->          addr =3D (uint64_t)desc->source_address5
->              + (extract64(desc->address_extension_45, 16, 16) << 32);
->          break;
->      default:
->          addr =3D 0;
->          break;
->      }
->
->      return addr;
-> }
->
->
-> This change adds a type cast and also uses extract64() instead of
-> extract32()
-> to avoid integer overflow on addition (there was a typo in the previous
-> letter).
-> Also in extract64() extracts a bit field with a length of 16 bits
-> instead of 12,
-> the shift is changed to 32 so that the extracted field fits into bits
-> [47:32] of the final address.
->
-> if this calculation is correct, I'm ready to create a second version of
-> the patch.
->
->
->
->
-> 12/04/24 13:06, Peter Maydell =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
-> > On Fri, 12 Apr 2024 at 09:13, Alexandra Diupina <adiupina@astralinux.ru=
->
-> wrote:
-> >> Overflow can occur in a situation where desc->source_address
-> >> has a maximum value (pow(2, 32) - 1), so add a cast to a
-> >> larger type before the assignment.
-> >>
-> >> Found by Linux Verification Center (linuxtesting.org) with SVACE.
-> >>
-> >> Fixes: d3c6369a96 ("introduce xlnx-dpdma")
-> >> Signed-off-by: Alexandra Diupina <adiupina@astralinux.ru>
-> >> ---
-> >>   hw/dma/xlnx_dpdma.c | 20 ++++++++++----------
-> >>   1 file changed, 10 insertions(+), 10 deletions(-)
-> >>
-> >> diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c
-> >> index 1f5cd64ed1..224259225c 100644
-> >> --- a/hw/dma/xlnx_dpdma.c
-> >> +++ b/hw/dma/xlnx_dpdma.c
-> >> @@ -175,24 +175,24 @@ static uint64_t
-> xlnx_dpdma_desc_get_source_address(DPDMADescriptor *desc,
-> >>
-> >>       switch (frag) {
-> >>       case 0:
-> >> -        addr =3D desc->source_address
-> >> -            + (extract32(desc->address_extension, 16, 12) << 20);
-> >> +        addr =3D (uint64_t)(desc->source_address
-> >> +            + (extract32(desc->address_extension, 16, 12) << 20));
-> > Unless I'm confused, this cast doesn't help, because we
-> > will have already done a 32-bit addition of desc->source_address
-> > and the value from the address_extension part, so it doesn't
-> > change the result.
-> >
-> > If we want to do the addition at 64 bits then using extract64()
-> > would be the simplest way to arrange for that.
-> >
-> > However, I can't figure out what this code is trying to do and
-> > make that line up with the data sheet; maybe this isn't the
-> > right datasheet for this device?
-> >
-> > https://docs.amd.com/r/en-US/ug1085-zynq-ultrascale-trm/ADDR_EXT-Field
-> >
-> > The datasheet suggests that we should take 32 bits of the address
-> > from one field (here desc->source_address) and 16 bits of the
-> > address from another (here desc->address_extension's high bits)
-> > and combine them to make a 48 bit address. But this code is only
-> > looking at 12 bits of the high 16 in address_extension, and it
-> > doesn't shift them right enough to put them into bits [47:32]
-> > of the final address.
-> >
-> > Xilinx folks: what hardware is this modelling, and is it
-> > really the right behaviour?
-> >
-> > Also, this device looks like it has a host-endianness bug: the
-> > DPDMADescriptor struct is read directly from guest memory in
-> > dma_memory_read(), but the device never does anything to swap
-> > the fields from guest memory order to host memory order. So
-> > this is likely broken on big-endian hosts.
-> >
-> > thanks
-> > -- PMM
->
->
->
+diff --git a/include/hw/i2c/i2c.h b/include/hw/i2c/i2c.h
+index 2a3abacd1b..c18a69e4b6 100644
+--- a/include/hw/i2c/i2c.h
++++ b/include/hw/i2c/i2c.h
+@@ -4,10 +4,12 @@
+ #include "hw/qdev-core.h"
+ #include "qom/object.h"
+ 
+-/* The QEMU I2C implementation only supports simple transfers that complete
+-   immediately.  It does not support slave devices that need to be able to
+-   defer their response (eg. CPU slave interfaces where the data is supplied
+-   by the device driver in response to an interrupt).  */
++/*
++ * The QEMU I2C implementation only supports simple transfers that complete
++ * immediately.  It does not support slave devices that need to be able to
++ * defer their response (eg. CPU slave interfaces where the data is supplied
++ * by the device driver in response to an interrupt).
++ */
+ 
+ enum i2c_event {
+     I2C_START_RECV,
+-- 
+2.41.0
 
---0000000000003ae01606163af164
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">+ To: Fred</div><div><br><div class=3D"gmail_quote"><div =
-dir=3D"ltr" class=3D"gmail_attr">On Tue, 16 Apr 2024 at 19:56, Alexandra Di=
-upina &lt;<a href=3D"mailto:adiupina@astralinux.ru">adiupina@astralinux.ru<=
-/a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0=
-px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;padding-left=
-:1ex;border-left-color:rgb(204,204,204)">Peter, thank you! I agree with you=
- that<br>
-as mentioned in the documentation<br>
-<a href=3D"https://docs.amd.com/r/en-US/ug1085-zynq-ultrascale-trm/ADDR_EXT=
--Field" rel=3D"noreferrer" target=3D"_blank">https://docs.amd.com/r/en-US/u=
-g1085-zynq-ultrascale-trm/ADDR_EXT-Field</a>,<br>
-we should take 32 bits of the address from one field<br>
-(for example, case 1, SRC_ADDR2_EXT - in code it is desc-&gt;source_address=
-2)<br>
-and 16 bits (high or low) of the address from another field<br>
-(ADDR_EXT_23 - in code it is desc-&gt;address_extension_23, we need [15:0] =
-<br>
-bits)<br>
-and combine them to make a 48 bit address.<br>
-<br>
-Therefore, I suggest making the following changes to the code<br>
-so that it matches the documentation:<br>
-<br>
-static uint64_t xlnx_dpdma_desc_get_source_address(DPDMADescriptor *desc,<b=
-r>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 uint8_t frag)<br>
-{<br>
-=C2=A0=C2=A0=C2=A0=C2=A0 uint64_t addr =3D 0;<br>
-=C2=A0=C2=A0=C2=A0=C2=A0 assert(frag &lt; 5);<br>
-<br>
-=C2=A0=C2=A0=C2=A0=C2=A0 switch (frag) {<br>
-=C2=A0=C2=A0=C2=A0=C2=A0 case 0:<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 addr =3D (uint64_t)desc-&g=
-t;source_address<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 + =
-(extract64(desc-&gt;address_extension, 16, 16) &lt;&lt; 32);<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-=C2=A0=C2=A0=C2=A0=C2=A0 case 1:<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 addr =3D (uint64_t)desc-&g=
-t;source_address2<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 + =
-(extract64(desc-&gt;address_extension_23, 0, 16) &lt;&lt; 32);<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-=C2=A0=C2=A0=C2=A0=C2=A0 case 2:<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 addr =3D (uint64_t)desc-&g=
-t;source_address3<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 + =
-(extract64(desc-&gt;address_extension_23, 16, 16) &lt;&lt; 32);<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-=C2=A0=C2=A0=C2=A0=C2=A0 case 3:<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 addr =3D (uint64_t)desc-&g=
-t;source_address4<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 + =
-(extract64(desc-&gt;address_extension_45, 0, 16) &lt;&lt; 32);<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-=C2=A0=C2=A0=C2=A0=C2=A0 case 4:<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 addr =3D (uint64_t)desc-&g=
-t;source_address5<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 + =
-(extract64(desc-&gt;address_extension_45, 16, 16) &lt;&lt; 32);<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-=C2=A0=C2=A0=C2=A0=C2=A0 default:<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 addr =3D 0;<br>
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;<br>
-=C2=A0=C2=A0=C2=A0=C2=A0 }<br>
-<br>
-=C2=A0=C2=A0=C2=A0=C2=A0 return addr;<br>
-}<br>
-<br>
-<br>
-This change adds a type cast and also uses extract64() instead of <br>
-extract32()<br>
-to avoid integer overflow on addition (there was a typo in the previous <br=
->
-letter).<br>
-Also in extract64() extracts a bit field with a length of 16 bits <br>
-instead of 12,<br>
-the shift is changed to 32 so that the extracted field fits into bits <br>
-[47:32] of the final address.<br>
-<br>
-if this calculation is correct, I&#39;m ready to create a second version of=
- <br>
-the patch.<br>
-<br>
-<br>
-<br>
-<br>
-12/04/24 13:06, Peter Maydell =D0=BF=D0=B8=D1=88=D0=B5=D1=82:<br>
-&gt; On Fri, 12 Apr 2024 at 09:13, Alexandra Diupina &lt;<a href=3D"mailto:=
-adiupina@astralinux.ru" target=3D"_blank">adiupina@astralinux.ru</a>&gt; wr=
-ote:<br>
-&gt;&gt; Overflow can occur in a situation where desc-&gt;source_address<br=
->
-&gt;&gt; has a maximum value (pow(2, 32) - 1), so add a cast to a<br>
-&gt;&gt; larger type before the assignment.<br>
-&gt;&gt;<br>
-&gt;&gt; Found by Linux Verification Center (<a href=3D"http://linuxtesting=
-.org" rel=3D"noreferrer" target=3D"_blank">linuxtesting.org</a>) with SVACE=
-.<br>
-&gt;&gt;<br>
-&gt;&gt; Fixes: d3c6369a96 (&quot;introduce xlnx-dpdma&quot;)<br>
-&gt;&gt; Signed-off-by: Alexandra Diupina &lt;<a href=3D"mailto:adiupina@as=
-tralinux.ru" target=3D"_blank">adiupina@astralinux.ru</a>&gt;<br>
-&gt;&gt; ---<br>
-&gt;&gt;=C2=A0 =C2=A0hw/dma/xlnx_dpdma.c | 20 ++++++++++----------<br>
-&gt;&gt;=C2=A0 =C2=A01 file changed, 10 insertions(+), 10 deletions(-)<br>
-&gt;&gt;<br>
-&gt;&gt; diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c<br>
-&gt;&gt; index 1f5cd64ed1..224259225c 100644<br>
-&gt;&gt; --- a/hw/dma/xlnx_dpdma.c<br>
-&gt;&gt; +++ b/hw/dma/xlnx_dpdma.c<br>
-&gt;&gt; @@ -175,24 +175,24 @@ static uint64_t xlnx_dpdma_desc_get_source_a=
-ddress(DPDMADescriptor *desc,<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0switch (frag) {<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0case 0:<br>
-&gt;&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 addr =3D desc-&gt;source_address<br>
-&gt;&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 + (extract32(desc-&gt;a=
-ddress_extension, 16, 12) &lt;&lt; 20);<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 addr =3D (uint64_t)(desc-&gt;source_a=
-ddress<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 + (extract32(desc-&gt;a=
-ddress_extension, 16, 12) &lt;&lt; 20));<br>
-&gt; Unless I&#39;m confused, this cast doesn&#39;t help, because we<br>
-&gt; will have already done a 32-bit addition of desc-&gt;source_address<br=
->
-&gt; and the value from the address_extension part, so it doesn&#39;t<br>
-&gt; change the result.<br>
-&gt;<br>
-&gt; If we want to do the addition at 64 bits then using extract64()<br>
-&gt; would be the simplest way to arrange for that.<br>
-&gt;<br>
-&gt; However, I can&#39;t figure out what this code is trying to do and<br>
-&gt; make that line up with the data sheet; maybe this isn&#39;t the<br>
-&gt; right datasheet for this device?<br>
-&gt;<br>
-&gt; <a href=3D"https://docs.amd.com/r/en-US/ug1085-zynq-ultrascale-trm/ADD=
-R_EXT-Field" rel=3D"noreferrer" target=3D"_blank">https://docs.amd.com/r/en=
--US/ug1085-zynq-ultrascale-trm/ADDR_EXT-Field</a><br>
-&gt;<br>
-&gt; The datasheet suggests that we should take 32 bits of the address<br>
-&gt; from one field (here desc-&gt;source_address) and 16 bits of the<br>
-&gt; address from another (here desc-&gt;address_extension&#39;s high bits)=
-<br>
-&gt; and combine them to make a 48 bit address. But this code is only<br>
-&gt; looking at 12 bits of the high 16 in address_extension, and it<br>
-&gt; doesn&#39;t shift them right enough to put them into bits [47:32]<br>
-&gt; of the final address.<br>
-&gt;<br>
-&gt; Xilinx folks: what hardware is this modelling, and is it<br>
-&gt; really the right behaviour?<br>
-&gt;<br>
-&gt; Also, this device looks like it has a host-endianness bug: the<br>
-&gt; DPDMADescriptor struct is read directly from guest memory in<br>
-&gt; dma_memory_read(), but the device never does anything to swap<br>
-&gt; the fields from guest memory order to host memory order. So<br>
-&gt; this is likely broken on big-endian hosts.<br>
-&gt;<br>
-&gt; thanks<br>
-&gt; -- PMM<br>
-<br>
-<br>
-</blockquote></div></div>
-
---0000000000003ae01606163af164--

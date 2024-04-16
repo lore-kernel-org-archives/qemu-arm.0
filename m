@@ -1,186 +1,152 @@
-Received: by 2002:a17:907:1751:b0:a52:4db9:938b with SMTP id lf17csp1373947ejc;
-        Mon, 15 Apr 2024 10:31:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUUBgfNlWfD4xDXOznbnWyxG+ENBCtq5eoEIndUiyL17uXm5FDxz6Xuejhd41oGl+DPWto8aSrgonFSF6ZGx/8/SV+43xZx
-X-Google-Smtp-Source: AGHT+IH6mniq2UeDfZUR2pbXVL0YvjPV87A77IaMjm+MTz1UpoxRH+cBx2bK2BeNTFZ22vMf2C3M
-X-Received: by 2002:a17:903:2984:b0:1e3:e081:d29b with SMTP id lm4-20020a170903298400b001e3e081d29bmr11464145plb.45.1713202318658;
-        Mon, 15 Apr 2024 10:31:58 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1713202318; cv=pass;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp204710ejd;
+        Tue, 16 Apr 2024 00:34:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXMUt5sFYe8CPsPhm0bvV5VlQtPiN/5wfvtCb8i61W+p9M2iGrR4mdqI6OGSSks4TtdV65gZYSvGyhQ02E7d5PUiRlRYIKQ
+X-Google-Smtp-Source: AGHT+IHzu4HUQcYqq+60VgMRamKg0tuybP42IaRJD/YH1QuGCLQgt0D1gXj8fDHT/kFRd/qWT7xo
+X-Received: by 2002:a05:6214:d82:b0:69b:30f6:d55f with SMTP id e2-20020a0562140d8200b0069b30f6d55fmr15327696qve.58.1713252887786;
+        Tue, 16 Apr 2024 00:34:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713252887; cv=none;
         d=google.com; s=arc-20160816;
-        b=xuiAMLR8f7lnJq82gbomjtPlFp7YsGJB/QuLGV+AU2GbGm1p+GRHibbstLeXDN8NcQ
-         bCMzZNMYgiDffwzLU3Mel11CMJiWWi2Hoh4Oh+51pIGX6hXQa8VLdTT9a152TCk7mm32
-         GQ3BzzukurWNh0ZDyOyBP1BbVKCV5YEWLjIiTn/gCgHaErrg78IbwkTVF9YoMroOWT05
-         hwRy7izjaIZn+p/V8qMPadIJJMfZ1yl1bzasAb64+tBcN6QYkKO6oP2pR03FYvS0Rc1z
-         yDGMFqT8MJujARsqrJbk97kDrIX0P7BzP4r3F0ImXclPC1cd84OVBo4mz591y5KhixaO
-         pa8Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:list-unsubscribe:list-subscribe
-         :list-id:precedence:references:reply-to:message-id:subject:cc:to
-         :from:date:dkim-signature;
-        bh=AydjyBs6LzOYz3Jy9BRREvazpy+lYPG1Un3sEr91ddI=;
-        fh=sbVHhSsowsyJstKR4Lal7AVNCSSODfDEegXAzR3cDoQ=;
-        b=yc+A/wVmoTq1m7SZ4ZSAJX5P7Qj/e9RcfbCN6gkXpWT3WKP/hkHPsaI4f5YO9ZdFrC
-         SlR65Qf6VS/SddZFDRIfO/RJG/+6czqLG5OAe824GsBRQ9vQW/lxGFfNuagHk6AyvDhH
-         G2fSqYhhqx5dR5oBHGCWOHFJTDmism20PzhkZGVCysZKAAIxU+dx7F7fwUxXeUn94Ewa
-         JSZXj/3Uzw7GGFknPFFWFYfX9zEzlAPMp6F/eYaqU4IwEUbF5Bm/TFBVY7sk83TxuxRO
-         RySBlaQpjgBl6ejCBKW1vKjFu+bgYeir9meDKtXPbrtM+mDdz25EpcU0tsQgU9n+M5oa
-         9nKw==;
+        b=GQQfqdKgttSwvxwYr0eEtAbopJIn+N4NisaPN14zgqoalsc5Gi5FeXXIQF790p+Tt9
+         M2L3nrQnCZ1+HY2EFGBCc8e6kF4dtE3husUU/zxH5Xtk16qI1ESSUk3z0ZIo8/R3Eait
+         aKsHjD9D/BQ9cw1DwOMoyfHFqj08DCteHg3a9cUSGqx9uHiTviTDwq4dK1crq4Jk6pso
+         ZEcXYP6/N6A4Iac7XlFxi9cbCHx/3nThBolQx9DUtF1jhcAGsuwGDx+abx+57S1yvM7k
+         RrbFWo322yWWB3j9LJ9aCkPT314c1q01o8LJdz28ovC7EtuDS1BhvBbqn5rY9FDUStcj
+         LvkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=7LYAs7izQsVLWruu/9Fs3Ifo3+Ewv93g3NBlVCtDbEk=;
+        fh=Kg0/Me3tpVJtH9/d0rYnDSoW4orhjxoGURIkdNPqa+k=;
+        b=zGZ/gokkUynBq/UcyHYYpWp/wW7G3n5/1e/VBaavlyrdHgXjXlpl3Sh7P0fJ+y79yZ
+         Y/kq1cNSCCVFKVeoR58vRAUGl3P0FjQb3Z8iIHKavlglkL/+IT/xzrDleTKYB7Aub7BG
+         hKVE08MSm/QMG8sIv7rGEyZIB02rupObuiJu0WAVC/GoVgpDB7d06EM83L4d4IcjVw0C
+         gnGisjdS2RAV7K9+1MgOKpkxLDAZyuWS73L5jXqqL3bQcMH294T7j9ON1DNm3oJsseFR
+         by2Zi2OHfppAwOU+Qj8y8h8D+AjLb0JfuSF0WEwB6X/PQW2d4nGWafxdLTQgHgGQ0K/+
+         3pQg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="O9+/NAit";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-14680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-14680-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-14680-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id v11-20020a170903238b00b001e0892bb867si8400356plh.0.2024.04.15.10.31.58
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mNyFbTO9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c14-20020a0cd60e000000b0069b40c7f96fsi11849549qvj.310.2024.04.16.00.34.47
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Apr 2024 10:31:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-14680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 16 Apr 2024 00:34:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="O9+/NAit";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-14680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-14680-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 5FD30B20B17
-	for <alex.bennee@linaro.org>; Mon, 15 Apr 2024 17:31:56 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id C46D9839F8;
-	Mon, 15 Apr 2024 17:31:52 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="O9+/NAit"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 128061E87C
-	for <kvm@vger.kernel.org>; Mon, 15 Apr 2024 17:31:50 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1713202312; cv=none; b=KyuOZZJMAUELS5L+5yOlPXXPCgoAhRh2IHXdw1qYCr1xisidw++FRzG+eZERwfDZrbDhfs6b1NIbymmEFKjZL5G2VlvFL7Xwdd6CL61Vqs8631QGIYxzyiMQSgx+9VJXCyHZPuol0ryGOCTDrKeCTDhoLWvJ8fEgLAO/5NfCSFM=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1713202312; c=relaxed/simple;
-	bh=o/i3rNPQfxzHkk9xiPN/DP28k7FlEdJHfAyQQfZ4Htk=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=edcmSZJVjpiuE/hUqmmq37J2ayqY05eL3aW5OnZwG9U4xoeJ3XfQJqcpjUbwQpJOfX457jtBJjySUtEfyp9yaZDstOQq999lVPsn4l1BI1RuPsye+OqBq0GEfB+LYAA8NBEgmJ93rVUN7ZuqAzgZJLsqIbiPj8A3PBUay0biVfw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=O9+/NAit; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1713202310;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AydjyBs6LzOYz3Jy9BRREvazpy+lYPG1Un3sEr91ddI=;
-	b=O9+/NAit8h8hajjkUrQZDpW89iXG1LWWLfDZIzWlASsXM7sl/gk1a2MiwsWnaXPm5uxmck
-	/giKIY0e1dDRImlfiti2e4iAG2IOpcK+5Vj0cTSaqCIO+avu4MtyZr9M/YyqKog65aCGxY
-	dcMtdi5SAw1ODrY5wpTki6np4eOgdKk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-608-52EMPevqN2m2nyBg4_8NjQ-1; Mon, 15 Apr 2024 13:31:46 -0400
-X-MC-Unique: 52EMPevqN2m2nyBg4_8NjQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 19D401887314;
-	Mon, 15 Apr 2024 17:31:46 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.20])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B455CC13FA2;
-	Mon, 15 Apr 2024 17:31:44 +0000 (UTC)
-Date: Mon, 15 Apr 2024 18:31:38 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Kevin Wolf <kwolf@redhat.com>
-Cc: Shaoqin Huang <shahuang@redhat.com>, qemu-arm@nongnu.org,
-	Eric Auger <eauger@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, armbru@redhat.com
-Subject: Re: [PATCH v8] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-Message-ID: <Zh1ketp8cvLoYjok@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240312074849.71475-1-shahuang@redhat.com>
- <Zf2bbcpWYMWKZpNy@redhat.com>
- <1881554f-9183-4e01-8cda-0934f7829abf@redhat.com>
- <ZgE71v8uGDNihQ5H@redhat.com>
- <46f0c5ab-dee7-4cd4-844d-c418818e187c@redhat.com>
- <ZgwBvuCrTwKmA0IK@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=mNyFbTO9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rwdKk-0004pa-Qt; Tue, 16 Apr 2024 03:34:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwdKj-0004oi-2u
+ for qemu-arm@nongnu.org; Tue, 16 Apr 2024 03:34:25 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rwdKg-0006QV-So
+ for qemu-arm@nongnu.org; Tue, 16 Apr 2024 03:34:24 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-570423c4f80so479008a12.0
+ for <qemu-arm@nongnu.org>; Tue, 16 Apr 2024 00:34:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1713252860; x=1713857660; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=7LYAs7izQsVLWruu/9Fs3Ifo3+Ewv93g3NBlVCtDbEk=;
+ b=mNyFbTO9Kmhqj7miHWxXuM6YQavk7EJxdWug61jSwhFRZp1dynv4sWfd3PeyJV27fy
+ JsMpXtNL12d8GlT9Th8kw1RYnrpVub2fBRVfA6mHZ5z8ENLXQ8RZn3jECDyuuWaTyc6Z
+ Q+17tEentqWu9eSoXsyhNHM4zpXt+LojIhyS6u7YTFnxwjEtLimi4gZ2l7zzs+bg+ddA
+ x7Lanc/8pZSOBfwqI7AJta0314r/m+sa2oROMFk27+uECyekbhy/73tcKK42C7vy/luJ
+ L9lrlXqlisqkg+CESq1lwgHsvZzhPQ0SDxGP8c0UlPum0TBkk5b9lpl95vBAaNYhKQCR
+ yOZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1713252860; x=1713857660;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=7LYAs7izQsVLWruu/9Fs3Ifo3+Ewv93g3NBlVCtDbEk=;
+ b=crRat6a+5UCE56gw9YtP51I4GVX27zPoWAX1xDInwDDtJdYzbrEcXEmiItEV5bIKRg
+ y+jbG2PqL7o2VMLjBMOMJzP/egzbCR040FXU0kNDE/eN4qifjDykA5paLIqgcmDlwly1
+ 5Lt1koPgwxL1+ichbohn95HXpOntA73x+asSHuiFFsIAD6IfQft3jJkvnf87q63hSsqG
+ xkDXdXpoWpVTZ2k9+p6NQAU2GxNP7Qp8ZE12mmm83v9xO8El7v0j/FrAZojFkZYERVya
+ Viqa+qKGx1RRd+oVLYGYO5AFbNMI36IZ0nYkZb3vjP8LF/LXbi3yWLjgqw2fOkrHovEl
+ 7pfA==
+X-Gm-Message-State: AOJu0Yw8zIEMPN50Hybgy3ui5coGlFtxy2O/+N11iIZz3WJjbktslE55
+ Vt+46p82/bVjFIaJl+uZ3mer000tcOuJUujdwBRI1M02svOIo7KGF5ld10dqXWU=
+X-Received: by 2002:a50:9b1a:0:b0:56e:2464:7c41 with SMTP id
+ o26-20020a509b1a000000b0056e24647c41mr9143342edi.19.1713252860520; 
+ Tue, 16 Apr 2024 00:34:20 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.155.61])
+ by smtp.gmail.com with ESMTPSA id
+ d3-20020a056402000300b005702c757af2sm2059791edu.30.2024.04.16.00.34.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 16 Apr 2024 00:34:20 -0700 (PDT)
+Message-ID: <17e59f9a-444e-43d3-af02-d036f90a036a@linaro.org>
+Date: Tue, 16 Apr 2024 09:34:17 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZgwBvuCrTwKmA0IK@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-X-TUID: Z2QiOenS6SQO
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/2] Improvements for switches in hw/cpu/Kconfig
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>
+References: <20240415065655.130099-1-thuth@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240415065655.130099-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XqrEEFs+05rQ
 
-On Tue, Apr 02, 2024 at 03:01:50PM +0200, Kevin Wolf wrote:
-> Am 29.03.2024 um 04:45 hat Shaoqin Huang geschrieben:
-> > Hi Daniel,
-> > 
-> > On 3/25/24 16:55, Daniel P. Berrangé wrote:
-> > > On Mon, Mar 25, 2024 at 01:35:58PM +0800, Shaoqin Huang wrote:
-> > > > Hi Daniel,
-> > > > 
-> > > > Thanks for your reviewing. I see your comments in the v7.
-> > > > 
-> > > > I have some doubts about what you said about the QAPI. Do you want me to
-> > > > convert the current design into the QAPI parsing like the
-> > > > IOThreadVirtQueueMapping? And we need to add new json definition in the
-> > > > qapi/ directory?
-> > 
-> > I have defined the QAPI for kvm-pmu-filter like below:
-
-> > @@ -2439,6 +2441,7 @@ static Property arm_cpu_properties[] = {
-> >                          mp_affinity, ARM64_AFFINITY_INVALID),
-> >      DEFINE_PROP_INT32("node-id", ARMCPU, node_id, CPU_UNSET_NUMA_NODE_ID),
-> >      DEFINE_PROP_INT32("core-count", ARMCPU, core_count, -1),
-> > +    DEFINE_PROP_KVM_PMU_FILTER("kvm-pmu-filter", ARMCPU, kvm_pmu_filter),
-> >      DEFINE_PROP_END_OF_LIST()
-> >  };
-> > 
-> > And I guess I can use the new json format input like below:
-> > 
-> > qemu-system-aarch64 \
-> > 	-cpu host, '{"filter": [{"action": "a", "start": 0x10, "end": "0x11"}]}'
-> > 
-> > But it doesn't work. It seems like because the -cpu option doesn't
-> > support json format parameter.
-> > 
-> > Maybe I'm wrong. So I want to double check with if the -cpu option
-> > support json format nowadays?
+On 15/4/24 08:56, Thomas Huth wrote:
+> First patch fixes the problem that the file hw/cpu/Kconfig is
+> currently ignored and the switches there are duplicated in hw/arm/.
 > 
-> As far as I can see, -cpu doesn't support JSON yet. But even if it did,
-> your command line would be invalid because the 'host,' part isn't JSON.
+> The second patch introduces a proper config switch for the cpu-cluster
+> device.
 > 
-> > If the -cpu option doesn't support json format, how I can use the QAPI
-> > for kvm-pmu-filter property?
+> v2:
+> - Don't make core.c depend on the CPU_CLUSTER switch
+> - Added Philippe's Reviewed-bys
 > 
-> This would probably mean QAPIfying all CPUs first, which sounds like a
-> major effort.
+> Thomas Huth (2):
+>    hw: Fix problem with the A*MPCORE switches in the Kconfig files
+>    hw: Add a Kconfig switch for the TYPE_CPU_CLUSTER device
 
-I wonder if we can do a half-way house where we parse the JSON and
-turn it into regular QemuOpts internally, and then just use QAPI
-parsing for the filter property. IOW, publically give the illusion
-that -cpu has been QAPI-ified, but without actually doing the hard
-part yet. The idea being to avoid inventing a new cli syntax that
-has no analogue to QAPI.
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+Thanks, series queued.

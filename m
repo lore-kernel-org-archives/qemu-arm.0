@@ -1,63 +1,66 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp245659ejd;
-        Tue, 16 Apr 2024 02:20:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXCaDuo+C8bpoLM9kXxXpcaKLNTdpsP2Rbawcglcv0G3nvIBLYXwArkBmYyX0sKJZBpWZLyVKY3g1RVzWNyBPCN7HOAgd0Z
-X-Google-Smtp-Source: AGHT+IFTWcdCiuuVaZoWDLSY9wG93xHzDQ/W43WH1kbQeBWAy04fdiWaobbXmVZ9bNfBu8LAOBPR
-X-Received: by 2002:ac8:7f81:0:b0:436:da73:2000 with SMTP id z1-20020ac87f81000000b00436da732000mr9683416qtj.15.1713259239767;
-        Tue, 16 Apr 2024 02:20:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713259239; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp245701ejd;
+        Tue, 16 Apr 2024 02:20:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW4lMJuRgF909y/6zWzA5yg7py5nrlDkV8Cya/pwn8u9klIx1DLDyKk2D2HXQ7hjJnISBNhfYGpG7GEDVG9dIVs6Fu7C2Oi
+X-Google-Smtp-Source: AGHT+IHq3pmAdiQqLvsaL7tqmHzZNyn5rEutIe9JiQAKXpHWbFIKwJhUBcaCUyv/yyB3A1QFmTfD
+X-Received: by 2002:a05:6122:54b:b0:4d3:45a2:ae53 with SMTP id y11-20020a056122054b00b004d345a2ae53mr8233178vko.16.1713259246021;
+        Tue, 16 Apr 2024 02:20:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713259246; cv=none;
         d=google.com; s=arc-20160816;
-        b=ndKC3PNb5O+s6bJokDpXXmT8mbDBhiiFpeuWc4gw8vkCaGtjlWFEJvFd8Hf8K7yE8X
-         Gskm+yL2+zAyHiQoO47UrwINnQ4IzE58GdMQVS6KUolM5JlfXdegIq1I3rt/EBB4lWYI
-         jMgLImOCxLuY3PaOn0jBZJRL9+lWmAxiP2leunnMld9Fr38FWdaeFEdxzpSKUcTs2CgJ
-         P9Z7NMZNxPJHgjQIpgGoMb51h2ndrSXnASHzKXwHy5+86N5q29uAB8cqzExZXU+4DIQm
-         l7S3JQ1JWE5yUNPiOihH8qUUJpumWMfmPbrKHuZuIhw5Nw0SEIEYjFhSl9chIw+TR4VK
-         p8fg==
+        b=jHj82n5KWFbXfK6Px9IDSvoiJLmLC/CNwXry0LwZBpkpX6hWsiqIER/QId2zw0IIgU
+         PTD+MznAv6BJySFnr5dzXNv+X63X1LgmIgBlov+0zS6tDv87X7Bj9g9mTKgARJtE05zx
+         xODT5ib3s9sKbCCXRv7NJgX7KuVl8z5NCv87I2VDv0W+zL94jNSJaEGXjodAsNN3h50b
+         6TwICBKkzYXUPmrIVpYr6B8P2elkZYu1lGnQUODhMKGYNWp8w+ijhcwds+SUvBbHIAHn
+         2j316hsIl46xbKkOs++lPtpsIx+3TQtvDV7/k92v6taiKDLM54LuVTLCzKrVtBzv231J
+         tVVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=fHKY/AKCqPg/sS9uzn5FcjnWYcVznLJLeEmBWjYRHAw=;
+        bh=bkPbZrWkfn1gLPyX+TFyjtkATCVhqBjw5ey+1ijIzsc=;
         fh=4qsXPuPQQYwauqV4GBfUuJ135n2gY4LbnQu8KHliids=;
-        b=v8RID/gkTOEKyKVXvnKYl7Z8SBsXocsfoFBY8HptCfj0eBxbvpvNFEzSj1CV3W2lC6
-         mfYZj5su3ntp3YFnyi2ntdzX22/YZAbhZPe2rki3qJ4PT45wiMJcpwF01hRxzOIU+u6R
-         hl3e8b20iDLk1ZJaPIszEAlAFk7eR8OscfEYLZuiUCvH+EQanFD0G2zAvcfrwCsV0a6n
-         HhMz9WXJ4cWKWCtFXE4ipJyYYPjLN6IqBsWrRH8+jqlpA02yPzXpE0GNp6LUKtO2iYnH
-         EKxr01V8Jx4zjKIszrZX13rqZqXdRtsdnp1WrTrTJ7fr6DBzhm3BrOVu9veimDbvrDgr
-         4zow==;
+        b=JH9anRE+KFvXcIIOOISVoP7aV09PiD4vCH/p1ylifrN/b1HfCIEF3Pg4cIQycWCvi6
+         pV0PYYKekvbR7CIq8XGCtQe6fmrmsPgEhPOYAb8WT45yLq38X+83VyYO4fyt6Bl+lV8r
+         drAIFQTzy7xlL6VT4mGulO/8rCxoCNvgn7aRvatMtnmh3Qqa6oFtt8F/bZlHR6Sx18nQ
+         jfZG6bRp27OMuBLYjHXqc3c7cmTR0yl7vhf4UVLReUTP0ai/76e6b0owuXPfjDtbbHeG
+         KUskyoL1Wtvlr5G0wMCcczHn2gfVcOlIPUjJkIuoVDfh7UKySTJainbgJUN3pIPgsfJW
+         4IhQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id eh27-20020a05622a579b00b00436446add94si10965970qtb.157.2024.04.16.02.20.39
+        by mx.google.com with ESMTPS id qp6-20020a05620a388600b0078bcec2939asi12107512qkn.38.2024.04.16.02.20.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Apr 2024 02:20:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Apr 2024 02:20:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rwezK-00039i-H9; Tue, 16 Apr 2024 05:20:29 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rweyS-0002aT-ML; Tue, 16 Apr 2024 05:19:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rweyx-0002vc-8o; Tue, 16 Apr 2024 05:20:07 -0400
+ id 1rweyO-0002Y8-1w; Tue, 16 Apr 2024 05:19:29 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rweyh-0007Zt-Qs; Tue, 16 Apr 2024 05:20:00 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ id 1rweyL-0007Zt-TN; Tue, 16 Apr 2024 05:19:27 -0400
+Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 16 Apr
- 2024 17:19:07 +0800
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Tue, 16 Apr
+ 2024 17:19:05 +0800
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX02.aspeed.com
+ (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Tue, 16 Apr
+ 2024 17:19:06 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 16 Apr 2024 17:19:07 +0800
+ Transport; Tue, 16 Apr 2024 17:19:04 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
  Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
@@ -68,16 +71,19 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v3 07/16] aspeed/smc: fix dma moving incorrect data length
- issue
-Date: Tue, 16 Apr 2024 17:18:54 +0800
-Message-ID: <20240416091904.935283-8-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 01/16] aspeed/wdt: Add AST2700 support
+Date: Tue, 16 Apr 2024 17:18:48 +0800
+Message-ID: <20240416091904.935283-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
 References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
+ does not designate 192.168.10.10 as permitted sender)
+ receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
+ helo=localhost.localdomain;
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -86,226 +92,93 @@ X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0RriBGMDEqHB
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Q/l0TSB9xSRS
 
-DMA length is from 1 byte to 32MB for AST2600 and AST10x0
-and DMA length is from 4 bytes to 32MB for AST2500.
-
-In other words, if "R_DMA_LEN" is 0, it should move at least 1 byte
-data for AST2600 and AST10x0 and 4 bytes data for AST2500.
-To support all ASPEED SOCs, adds dma_start_length parameter to store
-the start length, add helper routines function to compute the dma length
-and update DMA_LENGTH mask to "1FFFFFF" to fix dma moving
-incorrect data length issue.
-
-Currently, only supports dma length 4 bytes aligned.
+AST2700 wdt controller is similiar to AST2600's wdt, but
+the AST2700 has 8 watchdogs, and they each have 0x80 of registers.
+Introduce ast2700 object class and increase the number of regs(offset) of
+ast2700 model.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/ssi/aspeed_smc.c         | 52 ++++++++++++++++++++++++++++++++-----
- include/hw/ssi/aspeed_smc.h |  1 +
- 2 files changed, 46 insertions(+), 7 deletions(-)
+ hw/watchdog/wdt_aspeed.c         | 24 ++++++++++++++++++++++++
+ include/hw/watchdog/wdt_aspeed.h |  3 ++-
+ 2 files changed, 26 insertions(+), 1 deletion(-)
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 8a8d77b480..71abc7a2d8 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -178,13 +178,17 @@
-  * DMA flash addresses should be 4 bytes aligned and the valid address
-  * range is 0x20000000 - 0x2FFFFFFF.
-  *
-- * DMA length is from 4 bytes to 32MB
-+ * DMA length is from 4 bytes to 32MB (AST2500)
-  *   0: 4 bytes
-  *   0x7FFFFF: 32M bytes
-+ *
-+ * DMA length is from 1 byte to 32MB (AST2600, AST10x0)
-+ *   0: 1 byte
-+ *   0x1FFFFFF: 32M bytes
-  */
- #define DMA_DRAM_ADDR(asc, val)   ((val) & (asc)->dma_dram_mask)
- #define DMA_FLASH_ADDR(asc, val)  ((val) & (asc)->dma_flash_mask)
--#define DMA_LENGTH(val)         ((val) & 0x01FFFFFC)
-+#define DMA_LENGTH(val)         ((val) & 0x01FFFFFF)
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index d70b656f8e..75685c5647 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -422,12 +422,36 @@ static const TypeInfo aspeed_1030_wdt_info = {
+     .class_init = aspeed_1030_wdt_class_init,
+ };
  
- /* Flash opcodes. */
- #define SPI_OP_READ       0x03    /* Read data bytes (low frequency) */
-@@ -843,6 +847,24 @@ static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
-     }
- }
- 
-+static uint32_t aspeed_smc_dma_len(AspeedSMCState *s)
++static void aspeed_2700_wdt_class_init(ObjectClass *klass, void *data)
 +{
-+    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-+    uint32_t dma_len;
-+    uint32_t extra;
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
 +
-+    dma_len = s->regs[R_DMA_LEN] + asc->dma_start_length;
-+
-+    /* dma length 4 bytes aligned */
-+    extra = dma_len % 4;
-+
-+    if (extra != 0) {
-+        dma_len += 4 - extra;
-+    }
-+
-+    return dma_len;
++    dc->desc = "ASPEED 2700 Watchdog Controller";
++    awc->iosize = 0x80;
++    awc->ext_pulse_width_mask = 0xfffff; /* TODO */
++    awc->reset_ctrl_reg = AST2600_SCU_RESET_CONTROL1;
++    awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
++    awc->wdt_reload = aspeed_wdt_reload_1mhz;
++    awc->sanitize_ctrl = aspeed_2600_sanitize_ctrl;
++    awc->default_status = 0x014FB180;
++    awc->default_reload_value = 0x014FB180;
 +}
 +
- /*
-  * Accumulate the result of the reads to provide a checksum that will
-  * be used to validate the read timing settings.
-@@ -850,6 +872,7 @@ static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
- static void aspeed_smc_dma_checksum(AspeedSMCState *s)
- {
-     MemTxResult result;
-+    uint32_t dma_len;
-     uint32_t data;
- 
-     if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
-@@ -861,7 +884,9 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
-         aspeed_smc_dma_calibration(s);
-     }
- 
--    while (s->regs[R_DMA_LEN]) {
-+    dma_len = aspeed_smc_dma_len(s);
++static const TypeInfo aspeed_2700_wdt_info = {
++    .name = TYPE_ASPEED_2700_WDT,
++    .parent = TYPE_ASPEED_WDT,
++    .instance_size = sizeof(AspeedWDTState),
++    .class_init = aspeed_2700_wdt_class_init,
++};
 +
-+    while (dma_len) {
-         data = address_space_ldl_le(&s->flash_as, s->regs[R_DMA_FLASH_ADDR],
-                                     MEMTXATTRS_UNSPECIFIED, &result);
-         if (result != MEMTX_OK) {
-@@ -877,7 +902,8 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
-          */
-         s->regs[R_DMA_CHECKSUM] += data;
-         s->regs[R_DMA_FLASH_ADDR] += 4;
--        s->regs[R_DMA_LEN] -= 4;
-+        dma_len -= 4;
-+        s->regs[R_DMA_LEN] = dma_len;
-     }
- 
-     if (s->inject_failure && aspeed_smc_inject_read_failure(s)) {
-@@ -889,14 +915,17 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
- static void aspeed_smc_dma_rw(AspeedSMCState *s)
+ static void wdt_aspeed_register_types(void)
  {
-     MemTxResult result;
-+    uint32_t dma_len;
-     uint32_t data;
- 
-+    dma_len = aspeed_smc_dma_len(s);
-+
-     trace_aspeed_smc_dma_rw(s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE ?
-                             "write" : "read",
-                             s->regs[R_DMA_FLASH_ADDR],
-                             s->regs[R_DMA_DRAM_ADDR],
--                            s->regs[R_DMA_LEN]);
--    while (s->regs[R_DMA_LEN]) {
-+                            dma_len);
-+    while (dma_len) {
-         if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
-             data = address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
-                                         MEMTXATTRS_UNSPECIFIED, &result);
-@@ -937,7 +966,8 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
-          */
-         s->regs[R_DMA_FLASH_ADDR] += 4;
-         s->regs[R_DMA_DRAM_ADDR] += 4;
--        s->regs[R_DMA_LEN] -= 4;
-+        dma_len -= 4;
-+        s->regs[R_DMA_LEN] = dma_len;
-         s->regs[R_DMA_CHECKSUM] += data;
-     }
+     type_register_static(&aspeed_wdt_info);
+     type_register_static(&aspeed_2400_wdt_info);
+     type_register_static(&aspeed_2500_wdt_info);
+     type_register_static(&aspeed_2600_wdt_info);
++    type_register_static(&aspeed_2700_wdt_info);
+     type_register_static(&aspeed_1030_wdt_info);
  }
-@@ -1381,6 +1411,7 @@ static void aspeed_2400_fmc_class_init(ObjectClass *klass, void *data)
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x1FFFFFFC;
-+    asc->dma_start_length  = 4;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-@@ -1464,6 +1495,7 @@ static void aspeed_2500_fmc_class_init(ObjectClass *klass, void *data)
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x3FFFFFFC;
-+    asc->dma_start_length  = 4;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-@@ -1620,6 +1652,7 @@ static void aspeed_2600_fmc_class_init(ObjectClass *klass, void *data)
-                              ASPEED_SMC_FEATURE_WDT_CONTROL;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x3FFFFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-@@ -1658,6 +1691,7 @@ static void aspeed_2600_spi1_class_init(ObjectClass *klass, void *data)
-                              ASPEED_SMC_FEATURE_DMA_GRANT;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x3FFFFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-@@ -1697,6 +1731,7 @@ static void aspeed_2600_spi2_class_init(ObjectClass *klass, void *data)
-                              ASPEED_SMC_FEATURE_DMA_GRANT;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x3FFFFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-@@ -1778,6 +1813,7 @@ static void aspeed_1030_fmc_class_init(ObjectClass *klass, void *data)
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x000BFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_1030_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_1030_smc_reg_to_segment;
-@@ -1815,6 +1851,7 @@ static void aspeed_1030_spi1_class_init(ObjectClass *klass, void *data)
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x000BFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-@@ -1851,6 +1888,7 @@ static void aspeed_1030_spi2_class_init(ObjectClass *klass, void *data)
-     asc->features          = ASPEED_SMC_FEATURE_DMA;
-     asc->dma_flash_mask    = 0x0FFFFFFC;
-     asc->dma_dram_mask     = 0x000BFFFC;
-+    asc->dma_start_length  = 1;
-     asc->nregs             = ASPEED_SMC_R_MAX;
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index 8e1dda556b..f359ed22cc 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -106,6 +106,7 @@ struct AspeedSMCClass {
-     uint32_t features;
-     hwaddr dma_flash_mask;
-     hwaddr dma_dram_mask;
-+    uint32_t dma_start_length;
-     uint32_t nregs;
-     uint32_t (*segment_to_reg)(const AspeedSMCState *s,
-                                const AspeedSegments *seg);
+ 
+diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+index e90ef86651..830b0a7936 100644
+--- a/include/hw/watchdog/wdt_aspeed.h
++++ b/include/hw/watchdog/wdt_aspeed.h
+@@ -19,9 +19,10 @@ OBJECT_DECLARE_TYPE(AspeedWDTState, AspeedWDTClass, ASPEED_WDT)
+ #define TYPE_ASPEED_2400_WDT TYPE_ASPEED_WDT "-ast2400"
+ #define TYPE_ASPEED_2500_WDT TYPE_ASPEED_WDT "-ast2500"
+ #define TYPE_ASPEED_2600_WDT TYPE_ASPEED_WDT "-ast2600"
++#define TYPE_ASPEED_2700_WDT TYPE_ASPEED_WDT "-ast2700"
+ #define TYPE_ASPEED_1030_WDT TYPE_ASPEED_WDT "-ast1030"
+ 
+-#define ASPEED_WDT_REGS_MAX        (0x30 / 4)
++#define ASPEED_WDT_REGS_MAX        (0x80 / 4)
+ 
+ struct AspeedWDTState {
+     /*< private >*/
 -- 
 2.25.1
 

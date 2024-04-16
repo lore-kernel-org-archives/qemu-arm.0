@@ -1,69 +1,71 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp463654ejd;
-        Tue, 16 Apr 2024 08:54:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW1zudweaItFdeNsm8DVH84qnhsYlRYIibOoI9nmtgA9aF44NRvT5sKzX+74XrfzT6MOlQijHmvvtc7ULWIsOdgW0nud/MF
-X-Google-Smtp-Source: AGHT+IFrHFdu+MMmS2WXfj/y2foGMMzii3Ckxkf7j2Awfx8/5PIdWL7qjj/qQ8jd1uoceuuAZSLl
-X-Received: by 2002:a05:6214:9c3:b0:69b:b54a:b4f8 with SMTP id dp3-20020a05621409c300b0069bb54ab4f8mr4259925qvb.6.1713282893789;
-        Tue, 16 Apr 2024 08:54:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713282893; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp497320ejd;
+        Tue, 16 Apr 2024 09:45:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVPg43QL27PZJ7wjZFSiRtmQ58Mj2Jb+0Mnqaa57SVuu0wdoqRhhXbMV2lzipyEHLgqttwF5ob/YmStxVNjg4BnP6zceQ3l
+X-Google-Smtp-Source: AGHT+IG1dP/RWrr/16ze4KDplBhdtPc6hdCnXAjuNRfNzsfy/8RP2SaN1p09txDNmMiNLhIhMoP+
+X-Received: by 2002:ae9:ee03:0:b0:78e:d2e7:3e9e with SMTP id i3-20020ae9ee03000000b0078ed2e73e9emr11065507qkg.68.1713285923645;
+        Tue, 16 Apr 2024 09:45:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713285923; cv=none;
         d=google.com; s=arc-20160816;
-        b=uxQE2vn7YP9iE547y7N2ajtPNxVNTAfclFKJxQ1iD9ADqlH7IsTXCQtru2O/nW9HkX
-         fs9eVmkEblqszHIhOy6EiDHOZLifGNjRYwXNPC7qJjiT1fJwdas0wGucsJJcx4CXVdnX
-         2ll/T6vl+yYrI+Y2GvInMpF0PzqpK2zcIUCdKDItv3hRW5wpx1KohG3wstGfjP0AlSZe
-         1t00lR6LHu1n/nP7kbTB496EJPwTf08kpnX3CNYX5nHRSQWFpHcHj5MmaMl1ELLBwcnu
-         FRJMQGpo5w2Dm09E9dmPBbwr1ECBxN03YbWaiDskdhejUu1Qhj0sACIT2mQ2N7oU3Nu3
-         ladw==
+        b=XZhpxixqdj+evYf3Zx364m5hqkuTDLskLzrTgDlMVlrbLLl3JXne95XvDkqa+ez1n2
+         Z8PeTKlTR0gkSQPWKWuIvcvbVBtV17SFg7Jt4asjWATZfU25Fn0t2Mq1Q35L8vajBSd7
+         714ZcyH4s1n549Ye3NUoKunNS+aIjNinAgTdTwQHCn6f1jcmboOr39kLBmr4rvoDCLSe
+         Fs80oACdSV164ybwsSL7FZm70u5T4fKPFkfM94BBJ7ORmSd2fqjIrYwOTh+Mn6Fc88rc
+         V0W6dE/SgJtTc4EdLfQb4Aweh0jKK2OGVPNJeUImEKEOBXPmC/cWSZFYDpBRBm64y3Q2
+         9u2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=UiGqUm1d3dahrDRohsKZyQAjylTIHdgZaxSqL8q0KJY=;
+        bh=zUI/DsHM3hEMLnS7rAgikS68YNLQbVnxnvFr8nzgEVU=;
         fh=dkl4W7Ty5DQDYblIuR6iwQV8rfkW6Bl5VLJjLin9mSc=;
-        b=MXY0NBge6IjQlMXRayHLuqc2yYMMJ97OG2aMm4A3zdG2Er6KvOHlhhWm1nNZ+0cqMC
-         HFr6lYGtIW7yAoUBsYiw2U5+zDQBagIG0ecVXGMKW6VxPqJ3yTOr4i93pGUTpv6sgAZ5
-         PkzyiCyjo/eEppRIrPA1idoDJ3BBWoZmkKFyr4cOFOgCmo3Lo+ZLCfliwYOMOAGsAYcB
-         630ejYqWzzI3rI71a81/KQE2a2H42ZFJtOqp4SX/4mx2jRIYj1TYTHd0BqSwIq3/+62A
-         FQQT2IZbiOjv1GjG66SfQw9Hb8xFfZpfW1ttRbqDLMv3eevBRpM/YHQc1n5h5BJcxU/F
-         NVYw==;
+        b=xmlmqaeK3dbSzq0BcrHz6hdtaElV03Ns8wUy7OrHqY6YofBb/K/nmH0x2o/AgGBI//
+         KsvE8QBMMBNylVtNJqn3DJNDAV0jr/stvsVNW0PiiMvEZlH5VpmJWQt+NaXqL7APjrPd
+         LsSMxLw1L7ckriYFUUhQySoz8suiDKxIGhCvUtJDae1Xp1416W5nlcuWQTC+4HU6yQER
+         SwhRduMU5aDRgdRdrx4qNk24imVALOLgxbDlxbqfcNzu9qKh8eb7P59hSDY9E6h6rDmr
+         0p6Bh7dwrlecD2SI3X/9bWTMZ1nIxqIj6yXqq6aVFM5bUGiohodk6CYQWY+oN2M9pU9k
+         ackA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jq9-20020ad45fc9000000b00696b323a01asi13922553qvb.604.2024.04.16.08.54.53
+        by mx.google.com with ESMTPS id l16-20020a05620a211000b0078be5dda957si12387593qkl.528.2024.04.16.09.45.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Apr 2024 08:54:53 -0700 (PDT)
+        Tue, 16 Apr 2024 09:45:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rwl8w-0001f4-UG; Tue, 16 Apr 2024 11:54:47 -0400
+	id 1rwlvi-0007db-OM; Tue, 16 Apr 2024 12:45:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=29bf=LV=kaod.org=clg@ozlabs.org>)
- id 1rwl8w-0001es-0H; Tue, 16 Apr 2024 11:54:46 -0400
+ id 1rwlve-0007dM-Vy; Tue, 16 Apr 2024 12:45:08 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
  helo=gandalf.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=29bf=LV=kaod.org=clg@ozlabs.org>)
- id 1rwl8t-0006fN-AU; Tue, 16 Apr 2024 11:54:45 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4VJpWc0pyvz4wyf;
- Wed, 17 Apr 2024 01:54:36 +1000 (AEST)
+ id 1rwlvZ-0006xY-OL; Tue, 16 Apr 2024 12:45:04 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4VJqdh1jZtz4wx5;
+ Wed, 17 Apr 2024 02:44:56 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4VJpWV5Mq6z4wyY;
- Wed, 17 Apr 2024 01:54:30 +1000 (AEST)
-Message-ID: <a2c64420-2472-4ef5-b006-ced54ac52c65@kaod.org>
-Date: Tue, 16 Apr 2024 17:54:27 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4VJqdb37cYz4wcC;
+ Wed, 17 Apr 2024 02:44:31 +1000 (AEST)
+Message-ID: <7dd9b7b1-4e89-46bd-8027-0342780bc9f7@kaod.org>
+Date: Tue, 16 Apr 2024 18:44:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 16/16] docs:aspeed: Add AST2700 Evaluation board
+Subject: Re: [PATCH v3 15/16] test/avocado/machine_aspeed.py: Add AST2700 test
+ case
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
@@ -75,10 +77,10 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
- <20240416091904.935283-17-jamin_lin@aspeedtech.com>
+ <20240416091904.935283-16-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240416091904.935283-17-jamin_lin@aspeedtech.com>
+In-Reply-To: <20240416091904.935283-16-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
@@ -103,10 +105,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iDFB323mOhqD
+X-TUID: wlmcgwqM3anc
 
 On 4/16/24 11:19, Jamin Lin wrote:
-> Add AST2700 Evaluation board and its boot command.
+> Add a test case to test Aspeed OpenBMC SDK v09.01 on AST2700 board.
+> 
+> It loads u-boot-nodtb.bin, u-boot.dtb, tfa and optee-os
+> images to dram first which base address is 0x400000000.
+> Then, boot and launch 4 cpu cores.
+> 
+> ```
+> qemu-system-aarch64 -machine ast2700-evb
+>      -device loader,force-raw=on,addr=0x400000000,file=workdir/u-boot-nodtb.bin \
+>      -device loader,force-raw=on,addr=uboot_dtb_load_addr,file=u-boot.dtb\
+>      -device loader,force-raw=on,addr=0x430000000,file=workdir/bl31.bin\
+>      -device loader,force-raw=on,addr=0x430080000,file=workdir/optee/tee-raw.bin\
+>      -device loader,cpu-num=0,addr=0x430000000 \
+>      -device loader,cpu-num=1,addr=0x430000000 \
+>      -device loader,cpu-num=2,addr=0x430000000 \
+>      -device loader,cpu-num=3,addr=0x430000000 \
+>      -smp 4 \
+>      -drive file=workdir/image-bmc,format=raw,if=mtd
+> ```
+> 
+> A test image is downloaded from the ASPEED Forked OpenBMC GitHub release repository :
+> https://github.com/AspeedTech-BMC/openbmc/releases/
 > 
 > Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
@@ -120,86 +143,84 @@ C.
 
 
 > ---
->   docs/system/arm/aspeed.rst | 39 ++++++++++++++++++++++++++++++++++----
->   1 file changed, 35 insertions(+), 4 deletions(-)
+>   tests/avocado/machine_aspeed.py | 62 +++++++++++++++++++++++++++++++++
+>   1 file changed, 62 insertions(+)
 > 
-> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-> index b2dea54eed..320ff2a4cd 100644
-> --- a/docs/system/arm/aspeed.rst
-> +++ b/docs/system/arm/aspeed.rst
-> @@ -1,11 +1,12 @@
-> -Aspeed family boards (``*-bmc``, ``ast2500-evb``, ``ast2600-evb``)
-> -==================================================================
-> +Aspeed family boards (``*-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``)
-> +===================================================================================
+> diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+> index cec0181424..3a20644fb2 100644
+> --- a/tests/avocado/machine_aspeed.py
+> +++ b/tests/avocado/machine_aspeed.py
+> @@ -311,6 +311,17 @@ def do_test_arm_aspeed_sdk_start(self, image):
+>               self, 'boot', '## Loading kernel from FIT Image')
+>           self.wait_for_console_pattern('Starting kernel ...')
 >   
->   The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
->   Aspeed evaluation boards. They are based on different releases of the
->   Aspeed SoC : the AST2400 integrating an ARM926EJ-S CPU (400MHz), the
-> -AST2500 with an ARM1176JZS CPU (800MHz) and more recently the AST2600
-> -with dual cores ARM Cortex-A7 CPUs (1.2GHz).
-> +AST2500 with an ARM1176JZS CPU (800MHz), the AST2600
-> +with dual cores ARM Cortex-A7 CPUs (1.2GHz) and more recently the AST2700
-> +with quad cores ARM Cortex-A35 64 bits CPUs (1.6GHz)
->   
->   The SoC comes with RAM, Gigabit ethernet, USB, SD/MMC, USB, SPI, I2C,
->   etc.
-> @@ -38,6 +39,10 @@ AST2600 SoC based machines :
->   - ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
->   - ``qcom-firework-bmc``    Qualcomm Firework BMC
->   
-> +AST2700 SoC based machines :
+> +    def do_test_aarch64_aspeed_sdk_start(self, image):
+> +        self.vm.set_console()
+> +        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw')
 > +
-> +- ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
+> +        self.vm.launch()
 > +
->   Supported devices
->   -----------------
->   
-> @@ -66,6 +71,7 @@ Supported devices
->    * eMMC Boot Controller (dummy)
->    * PECI Controller (minimal)
->    * I3C Controller
-> + * Internal Bridge Controller (SLI dummy)
->   
->   
->   Missing devices
-> @@ -95,6 +101,10 @@ or directly from the OpenBMC GitHub release repository :
->   
->      https://github.com/openbmc/openbmc/releases
->   
-> +or directly from the ASPEED Forked OpenBMC GitHub release repository :
+> +        self.wait_for_console_pattern('U-Boot 2023.10')
+> +        self.wait_for_console_pattern('## Loading kernel from FIT Image')
+> +        self.wait_for_console_pattern('Starting kernel ...')
+> +        self.wait_for_console_pattern("systemd[1]: Hostname set to")
 > +
-> +   https://github.com/AspeedTech-BMC/openbmc/releases
-> +
->   To boot a kernel directly from a Linux build tree:
+>       @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
 >   
->   .. code-block:: bash
-> @@ -164,6 +174,27 @@ under Linux), use :
->   
->     -M ast2500-evb,bmc-console=uart3
->   
+>       def test_arm_ast2500_evb_sdk(self):
+> @@ -375,3 +386,54 @@ def test_arm_ast2600_evb_sdk(self):
+>                'i2c i2c-5: new_device: Instantiated device ds1307 at 0x32');
+>           year = time.strftime("%Y")
+>           self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
 > +
-> +Boot the AST2700 machine from the flash image, use an MTD drive :
+> +    def test_aarch64_ast2700_evb_sdk_v09_01(self):
+> +        """
+> +        :avocado: tags=arch:aarch64
+> +        :avocado: tags=machine:ast2700-evb
+> +        """
 > +
-> +.. code-block:: bash
+> +        image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+> +                     'download/v09.01/ast2700-default-obmc.tar.gz')
+> +        image_hash = 'b1cc0fd73c7650d34c9c8459a243f52a91e9e27144b8608b2645ab19461d1e07'
+> +        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+> +                                      algorithm='sha256')
+> +        archive.extract(image_path, self.workdir)
 > +
-> +  IMGDIR=ast2700-default
-> +  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
+> +        num_cpu = 4
+> +        image_dir = self.workdir + '/ast2700-default/'
+> +        uboot_size = os.path.getsize(image_dir + 'u-boot-nodtb.bin')
+> +        uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
 > +
-> +  $ qemu-system-aarch64 -M ast2700-evb \
-> +       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
-> +       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=u-boot.dtb \
-> +       -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-> +       -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
-> +       -device loader,cpu-num=0,addr=0x430000000 \
-> +       -device loader,cpu-num=1,addr=0x430000000 \
-> +       -device loader,cpu-num=2,addr=0x430000000 \
-> +       -device loader,cpu-num=3,addr=0x430000000 \
-> +       -smp 4 \
-> +       -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd \
-> +       -nographic
+> +        load_images_list = [
+> +            {
+> +                'addr': '0x400000000',
+> +                'file': image_dir + 'u-boot-nodtb.bin'
+> +            },
+> +            {
+> +                'addr': str(uboot_dtb_load_addr),
+> +                'file': image_dir + 'u-boot.dtb'
+> +            },
+> +            {
+> +                'addr': '0x430000000',
+> +                'file': image_dir + 'bl31.bin'
+> +            },
+> +            {
+> +                'addr': '0x430080000',
+> +                'file': image_dir + 'optee/tee-raw.bin'
+> +            }
+> +        ]
 > +
->   Aspeed minibmc family boards (``ast1030-evb``)
->   ==================================================================
->   
+> +        for load_image in load_images_list:
+> +            addr = load_image['addr']
+> +            file = load_image['file']
+> +            self.vm.add_args('-device',
+> +                             f'loader,force-raw=on,addr={addr},file={file}')
+> +
+> +        for i in range(num_cpu):
+> +            self.vm.add_args('-device',
+> +                             f'loader,addr=0x430000000,cpu-num={i}')
+> +
+> +        self.vm.add_args('-smp', str(num_cpu))
+> +        self.do_test_aarch64_aspeed_sdk_start(image_dir + 'image-bmc')
+> +
 

@@ -1,63 +1,63 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp245749ejd;
-        Tue, 16 Apr 2024 02:20:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVygfvvCYy67FVnxhTrGr4AywphjViyFs/U6lc3FTK1qYiqMq40fewpbsmf+boX90BmR0++yUnjPwuSFuaP6NkIPKqlJmjr
-X-Google-Smtp-Source: AGHT+IEfmcVL9YDdyv9941mfBLBFhbF+VlsmNswq1TfFtiGn2EiWKyckGcZkpmAh2LGXqCN/+Uuh
-X-Received: by 2002:a05:620a:1674:b0:78e:e7dc:fd3b with SMTP id d20-20020a05620a167400b0078ee7dcfd3bmr5221801qko.73.1713259253076;
-        Tue, 16 Apr 2024 02:20:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713259253; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp245827ejd;
+        Tue, 16 Apr 2024 02:21:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUsvA13ZPjHTQkBCUIE8ZnEGXTeiCsT1mCrg2dr0SxJjjJ+ho2m0JRK238gHn2Eds04C7CUT6bIIHDfBnkxJd2szU7VhEfh
+X-Google-Smtp-Source: AGHT+IEjq9a8NGZkbrAnYt2+GQkvJJa61dCCb6D6TBEHFo7Q82eAT/tD1WVOlGD9120+euNZQBD3
+X-Received: by 2002:a25:ef52:0:b0:dc2:2d75:5fde with SMTP id w18-20020a25ef52000000b00dc22d755fdemr13445341ybm.29.1713259265839;
+        Tue, 16 Apr 2024 02:21:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713259265; cv=none;
         d=google.com; s=arc-20160816;
-        b=nHWAGZZIPjZ0y7rWFTH1EVjkFqzRGyCSgo/QwnHnk/wXT84xa6AQWLbf1Cuq+pyZgG
-         z3bivYr/4VGzjL1c8nDu+K3yWJIKjzI9I16RsHMTFDAWO+kBUQ8VpYi3zXirWSSBac+4
-         c76nndULuFcJwRlMqvoV9PWVJgIsPkn4URx1RRvV6aFQotO+O7oRBOIQM2bog0KhL/pY
-         YYGxVEloMvaDie1cv5FK+C458vZieCSYzp554meRD5DKMBoCqtd756qkyGQ0Aa3M8+Zb
-         sMyzndkp/5HLc1jD4btHha4R1MBeZ76YaSgkNJIBayDdhrra03aND8HS6V+P0Lww6Ojc
-         PlPw==
+        b=RHbq5BBeN9xV3rs+UAh1LP5wo1AePdjk1BGlFKaXZsZEidhegDYyVXzgfar83Kt5mG
+         bbzEaSjDdQLsYlDh5QeVsx99Djc2HjsegAKQ/q8IKx1eRhr64J6a++iB4YyxgFRLFxAy
+         toHc/Fxi5M9P3xwPHGLlvbA22mXE6OuSmhxh/rFS+SA4RafPGiZeylq75xvncFLcrqIx
+         LFgNH3AUd5cwpAoX0bLn95YDE6zfj5hBDu3iujJLbPv81dXMhuDkJYUmMKMplIdQTGAk
+         Jw5PFdAsRJTPX88VzLdp18YKAUhwG9I+dnOHP5GffWrNuFxn95ZyI7kFVrSGMsfU37DD
+         mtYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=LyZDSl3rpYcvn54fYkCzFN8VBSs6WRBiMy17PSVVyjU=;
+        bh=YlPX3oLgiQgLHWLQza6InS7UaOjNdGTIB8e71XkFdRQ=;
         fh=4qsXPuPQQYwauqV4GBfUuJ135n2gY4LbnQu8KHliids=;
-        b=IfDyLJYQRqeamdo+jGetT8H3WTrXxT/v/bkgwu7bseO12wdOJSWFSjJcdMGJN5YRXp
-         jend0p/bNG9lZd0Yno/q6RfqdLxnJiTP0DIUw+EUo9IbTeUOSjBUDzDk64C4p6/JUAyP
-         NH2zbY3lFUQ0QX/QUvQ5ZJChWF5D3eF1UYUvYP6zEqUbBBDEZwEdA78IYFXsdHmsSw98
-         qTqmT3xd5lFMUtlaSjQ57kOUlJTodfbBH7ELoPHczxxAKJpUDNh0Iu3YIXzvCRNw3b5p
-         uh4H2oQ2sFruBJjWN83mC71hAFMDEj6O7KMg/iJ3imHSutfptrKPAydwYe57HZkA/lK4
-         9JGA==;
+        b=KrZxR0C3CL0UkSD36MvhmhBegCLKFN+02xm5VEIYTNeHH6jVyuj3o3pJpc2Kh7x4uE
+         sQoP/tWCHKCn6jP8hmBOUyHarqiSr7HRtZRD0Zhtg4SwJvG2FWztfm9OHR+e48r+h9Zo
+         ylTHm1GumQrh0x9sMAK4Ehv1V1GNqXGKhnjFzFwwJb8AWPgy6Day9G7iyyn+rcuZ9qxZ
+         YiJTcopFqgVuIK/xy8IkLMymQSqD2EkD3gSxpXsqYzyEicowy979/9kDqcrH38q8B9nu
+         zexvl6IafadWaFY2BiszAcqgY8y5PT36QCu0IoYYSidHkoAbJ34eDAg/2r+TjxXsxtim
+         PYnw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x16-20020ae9f810000000b0078ebdea1dc2si11983534qkh.500.2024.04.16.02.20.52
+        by mx.google.com with ESMTPS id o1-20020ad45c81000000b0069e9680ddc8si1132281qvh.440.2024.04.16.02.21.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Apr 2024 02:20:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Apr 2024 02:21:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rwezd-0003Rs-9Z; Tue, 16 Apr 2024 05:20:47 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rweya-0002ed-FX; Tue, 16 Apr 2024 05:19:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rwez1-0002w6-HU; Tue, 16 Apr 2024 05:20:09 -0400
+ id 1rweyY-0002eF-FH; Tue, 16 Apr 2024 05:19:38 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rweyz-0007iy-Ld; Tue, 16 Apr 2024 05:20:07 -0400
+ id 1rweyW-0007Zt-ID; Tue, 16 Apr 2024 05:19:38 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 16 Apr
- 2024 17:19:08 +0800
+ 2024 17:19:06 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 16 Apr 2024 17:19:08 +0800
+ Transport; Tue, 16 Apr 2024 17:19:06 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
  Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
@@ -68,9 +68,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v3 08/16] aspeed/smc: support 64 bits dma dram address
-Date: Tue, 16 Apr 2024 17:18:55 +0800
-Message-ID: <20240416091904.935283-9-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 05/16] aspeed/sdmc: Add AST2700 support
+Date: Tue, 16 Apr 2024 17:18:52 +0800
+Message-ID: <20240416091904.935283-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
 References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
@@ -85,207 +85,325 @@ X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FtbAkHqNPE4B
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: t+rfJ0oYJdKr
 
-AST2700 support the maximum dram size is 8GiB
-and has a "DMA DRAM Side Address High Part(0x7C)"
-register to support 64 bits dma dram address.
-Add helper routines functions to compute the dma dram
-address, new features and update trace-event
-to support 64 bits dram address.
+The SDRAM memory controller(DRAMC) controls the access to external
+DDR4 and DDR5 SDRAM and power up to DDR4 and DDR5 PHY.
+
+The DRAM memory controller of AST2700 is not backward compatible
+to previous chips such AST2600, AST2500 and AST2400.
+
+Max memory is now 8GiB on the AST2700. Introduce new
+aspeed_2700_sdmc and class with read/write operation and
+reset handlers.
+
+Define DRAMC necessary protected registers and
+unprotected registers for AST2700 and increase
+the register set to 0x1000.
+
+Add unlocked property to change controller protected status.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/ssi/aspeed_smc.c | 66 +++++++++++++++++++++++++++++++++++++++------
- hw/ssi/trace-events |  2 +-
- 2 files changed, 59 insertions(+), 9 deletions(-)
+ hw/misc/aspeed_sdmc.c         | 190 +++++++++++++++++++++++++++++++++-
+ include/hw/misc/aspeed_sdmc.h |   5 +-
+ 2 files changed, 193 insertions(+), 2 deletions(-)
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 71abc7a2d8..a67cac3d0f 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -132,6 +132,9 @@
- #define   FMC_WDT2_CTRL_BOOT_SOURCE      BIT(4) /* O: primary 1: alternate */
- #define   FMC_WDT2_CTRL_EN               BIT(0)
+diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+index 873d67c592..69a34903db 100644
+--- a/hw/misc/aspeed_sdmc.c
++++ b/hw/misc/aspeed_sdmc.c
+@@ -27,6 +27,7 @@
+ #define   PROT_SOFTLOCKED    0x00
  
-+/* DMA DRAM Side Address High Part (AST2700) */
-+#define R_DMA_DRAM_ADDR_HIGH   (0x7c / 4)
+ #define   PROT_KEY_UNLOCK     0xFC600309
++#define   PROT_2700_KEY_UNLOCK  0x1688A8A8
+ #define   PROT_KEY_HARDLOCK   0xDEADDEAD /* AST2600 */
+ 
+ /* Configuration Register */
+@@ -54,6 +55,46 @@
+ #define R_DRAM_TIME       (0x8c / 4)
+ #define R_ECC_ERR_INJECT  (0xb4 / 4)
+ 
++/* AST2700 Register */
++#define R_2700_PROT                 (0x00 / 4)
++#define R_INT_STATUS                (0x04 / 4)
++#define R_INT_CLEAR                 (0x08 / 4)
++#define R_INT_MASK                  (0x0c / 4)
++#define R_MAIN_CONF                 (0x10 / 4)
++#define R_MAIN_CONTROL              (0x14 / 4)
++#define R_MAIN_STATUS               (0x18 / 4)
++#define R_ERR_STATUS                (0x1c / 4)
++#define R_ECC_FAIL_STATUS           (0x78 / 4)
++#define R_ECC_FAIL_ADDR             (0x7c / 4)
++#define R_ECC_TESTING_CONTROL       (0x80 / 4)
++#define R_PROT_REGION_LOCK_STATUS   (0x94 / 4)
++#define R_TEST_FAIL_ADDR            (0xd4 / 4)
++#define R_TEST_FAIL_D0              (0xd8 / 4)
++#define R_TEST_FAIL_D1              (0xdc / 4)
++#define R_TEST_FAIL_D2              (0xe0 / 4)
++#define R_TEST_FAIL_D3              (0xe4 / 4)
++#define R_DBG_STATUS                (0xf4 / 4)
++#define R_PHY_INTERFACE_STATUS      (0xf8 / 4)
++#define R_GRAPHIC_MEM_BASE_ADDR     (0x10c / 4)
++#define R_PORT0_INTERFACE_MONITOR0  (0x240 / 4)
++#define R_PORT0_INTERFACE_MONITOR1  (0x244 / 4)
++#define R_PORT0_INTERFACE_MONITOR2  (0x248 / 4)
++#define R_PORT1_INTERFACE_MONITOR0  (0x2c0 / 4)
++#define R_PORT1_INTERFACE_MONITOR1  (0x2c4 / 4)
++#define R_PORT1_INTERFACE_MONITOR2  (0x2c8 / 4)
++#define R_PORT2_INTERFACE_MONITOR0  (0x340 / 4)
++#define R_PORT2_INTERFACE_MONITOR1  (0x344 / 4)
++#define R_PORT2_INTERFACE_MONITOR2  (0x348 / 4)
++#define R_PORT3_INTERFACE_MONITOR0  (0x3c0 / 4)
++#define R_PORT3_INTERFACE_MONITOR1  (0x3c4 / 4)
++#define R_PORT3_INTERFACE_MONITOR2  (0x3c8 / 4)
++#define R_PORT4_INTERFACE_MONITOR0  (0x440 / 4)
++#define R_PORT4_INTERFACE_MONITOR1  (0x444 / 4)
++#define R_PORT4_INTERFACE_MONITOR2  (0x448 / 4)
++#define R_PORT5_INTERFACE_MONITOR0  (0x4c0 / 4)
++#define R_PORT5_INTERFACE_MONITOR1  (0x4c4 / 4)
++#define R_PORT5_INTERFACE_MONITOR2  (0x4c8 / 4)
 +
- /* DMA Control/Status Register */
- #define R_DMA_CTRL        (0x80 / 4)
- #define   DMA_CTRL_REQUEST      (1 << 31)
-@@ -187,6 +190,7 @@
-  *   0x1FFFFFF: 32M bytes
-  */
- #define DMA_DRAM_ADDR(asc, val)   ((val) & (asc)->dma_dram_mask)
-+#define DMA_DRAM_ADDR_HIGH(val)   ((val) & 0xf)
- #define DMA_FLASH_ADDR(asc, val)  ((val) & (asc)->dma_flash_mask)
- #define DMA_LENGTH(val)         ((val) & 0x01FFFFFF)
+ /*
+  * Configuration register Ox4 (for Aspeed AST2400 SOC)
+  *
+@@ -101,6 +142,19 @@
+      ASPEED_SDMC_AST2500_RESERVED | ASPEED_SDMC_VGA_COMPAT |            \
+      ASPEED_SDMC_VGA_APERTURE(ASPEED_SDMC_VGA_64MB))
  
-@@ -207,6 +211,7 @@ static const AspeedSegments aspeed_2500_spi2_segments[];
- #define ASPEED_SMC_FEATURE_DMA       0x1
- #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
- #define ASPEED_SMC_FEATURE_WDT_CONTROL 0x4
-+#define ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH 0x08
- 
- static inline bool aspeed_smc_has_dma(const AspeedSMCClass *asc)
++/*
++ * Main Configuration register Ox10 (for Aspeed AST2700 SOC and higher)
++ *
++ */
++#define ASPEED_SDMC_AST2700_RESERVED        0xFFFF2082 /* 31:16, 13, 7, 1 */
++#define ASPEED_SDMC_AST2700_DATA_SCRAMBLE           (1 << 8)
++#define ASPEED_SDMC_AST2700_ECC_ENABLE              (1 << 6)
++#define ASPEED_SDMC_AST2700_PAGE_MATCHING_ENABLE    (1 << 5)
++#define ASPEED_SDMC_AST2700_DRAM_SIZE(x)            ((x & 0x7) << 2)
++
++#define ASPEED_SDMC_AST2700_READONLY_MASK   \
++     (ASPEED_SDMC_AST2700_RESERVED)
++
+ static uint64_t aspeed_sdmc_read(void *opaque, hwaddr addr, unsigned size)
  {
-@@ -218,6 +223,11 @@ static inline bool aspeed_smc_has_wdt_control(const AspeedSMCClass *asc)
-     return !!(asc->features & ASPEED_SMC_FEATURE_WDT_CONTROL);
- }
+     AspeedSDMCState *s = ASPEED_SDMC(opaque);
+@@ -216,7 +270,7 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
+     AspeedSDMCState *s = ASPEED_SDMC(dev);
+     AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
  
-+static inline bool aspeed_smc_has_dma_dram_addr_high(const AspeedSMCClass *asc)
+-    assert(asc->max_ram_size < 4 * GiB); /* 32-bit address bus */
++    assert(asc->max_ram_size < 4 * GiB || asc->is_bus64bit);
+     s->max_ram_size = asc->max_ram_size;
+ 
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
+@@ -236,6 +290,7 @@ static const VMStateDescription vmstate_aspeed_sdmc = {
+ 
+ static Property aspeed_sdmc_properties[] = {
+     DEFINE_PROP_UINT64("max-ram-size", AspeedSDMCState, max_ram_size, 0),
++    DEFINE_PROP_BOOL("unlocked", AspeedSDMCState, unlocked, false),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -500,12 +555,145 @@ static const TypeInfo aspeed_2600_sdmc_info = {
+     .class_init = aspeed_2600_sdmc_class_init,
+ };
+ 
++static void aspeed_2700_sdmc_reset(DeviceState *dev)
 +{
-+    return !!(asc->features & ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH);
++    AspeedSDMCState *s = ASPEED_SDMC(dev);
++    AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
++
++    memset(s->regs, 0, sizeof(s->regs));
++
++    /* Set ram size bit and defaults values */
++    s->regs[R_MAIN_CONF] = asc->compute_conf(s, 0);
++
++    if (s->unlocked) {
++        s->regs[R_2700_PROT] = PROT_UNLOCKED;
++    }
 +}
 +
- #define aspeed_smc_error(fmt, ...)                                      \
-     qemu_log_mask(LOG_GUEST_ERROR, "%s: " fmt "\n", __func__, ## __VA_ARGS__)
- 
-@@ -747,6 +757,9 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_CTRL) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_FLASH_ADDR) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_DRAM_ADDR) ||
-+        (aspeed_smc_has_dma(asc) &&
-+         aspeed_smc_has_dma_dram_addr_high(asc) &&
-+         addr == R_DMA_DRAM_ADDR_HIGH) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_CHECKSUM) ||
-         (addr >= R_SEG_ADDR0 &&
-@@ -847,6 +860,23 @@ static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
-     }
- }
- 
-+static uint64_t aspeed_smc_dma_dram_addr(AspeedSMCState *s)
++static uint32_t aspeed_2700_sdmc_compute_conf(AspeedSDMCState *s, uint32_t data)
 +{
-+    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-+    uint64_t dram_addr_high;
-+    uint64_t dma_dram_addr;
++    uint32_t fixed_conf = ASPEED_SDMC_AST2700_PAGE_MATCHING_ENABLE |
++        ASPEED_SDMC_AST2700_DRAM_SIZE(aspeed_sdmc_get_ram_bits(s));
 +
-+    if (aspeed_smc_has_dma_dram_addr_high(asc)) {
-+        dram_addr_high = s->regs[R_DMA_DRAM_ADDR_HIGH];
-+        dram_addr_high <<= 32;
-+        dma_dram_addr = dram_addr_high | s->regs[R_DMA_DRAM_ADDR];
-+    } else {
-+        dma_dram_addr = s->regs[R_DMA_DRAM_ADDR];
-+    }
++    /* Make sure readonly bits are kept */
++    data &= ~ASPEED_SDMC_AST2700_READONLY_MASK;
 +
-+    return dma_dram_addr;
++    return data | fixed_conf;
 +}
 +
- static uint32_t aspeed_smc_dma_len(AspeedSMCState *s)
- {
-     AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-@@ -914,24 +944,34 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
- 
- static void aspeed_smc_dma_rw(AspeedSMCState *s)
- {
-+    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-+    uint64_t dram_addr_high;
-+    uint64_t dma_dram_addr;
-+    uint64_t dram_addr;
-     MemTxResult result;
-     uint32_t dma_len;
-     uint32_t data;
- 
-     dma_len = aspeed_smc_dma_len(s);
-+    dma_dram_addr = aspeed_smc_dma_dram_addr(s);
-+
-+    if (aspeed_smc_has_dma_dram_addr_high(asc)) {
-+        dram_addr = dma_dram_addr - s->dram_mr->container->addr;
-+    } else {
-+        dram_addr = dma_dram_addr;
++static void aspeed_2700_sdmc_write(AspeedSDMCState *s, uint32_t reg,
++                                   uint32_t data)
++{
++    /* Unprotected registers */
++    switch (reg) {
++    case R_INT_STATUS:
++    case R_INT_CLEAR:
++    case R_INT_MASK:
++    case R_MAIN_STATUS:
++    case R_ERR_STATUS:
++    case R_ECC_FAIL_STATUS:
++    case R_ECC_FAIL_ADDR:
++    case R_PROT_REGION_LOCK_STATUS:
++    case R_TEST_FAIL_ADDR:
++    case R_TEST_FAIL_D0:
++    case R_TEST_FAIL_D1:
++    case R_TEST_FAIL_D2:
++    case R_TEST_FAIL_D3:
++    case R_DBG_STATUS:
++    case R_PHY_INTERFACE_STATUS:
++    case R_GRAPHIC_MEM_BASE_ADDR:
++    case R_PORT0_INTERFACE_MONITOR0:
++    case R_PORT0_INTERFACE_MONITOR1:
++    case R_PORT0_INTERFACE_MONITOR2:
++    case R_PORT1_INTERFACE_MONITOR0:
++    case R_PORT1_INTERFACE_MONITOR1:
++    case R_PORT1_INTERFACE_MONITOR2:
++    case R_PORT2_INTERFACE_MONITOR0:
++    case R_PORT2_INTERFACE_MONITOR1:
++    case R_PORT2_INTERFACE_MONITOR2:
++    case R_PORT3_INTERFACE_MONITOR0:
++    case R_PORT3_INTERFACE_MONITOR1:
++    case R_PORT3_INTERFACE_MONITOR2:
++    case R_PORT4_INTERFACE_MONITOR0:
++    case R_PORT4_INTERFACE_MONITOR1:
++    case R_PORT4_INTERFACE_MONITOR2:
++    case R_PORT5_INTERFACE_MONITOR0:
++    case R_PORT5_INTERFACE_MONITOR1:
++    case R_PORT5_INTERFACE_MONITOR2:
++        s->regs[reg] = data;
++        return;
 +    }
- 
-     trace_aspeed_smc_dma_rw(s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE ?
-                             "write" : "read",
-                             s->regs[R_DMA_FLASH_ADDR],
--                            s->regs[R_DMA_DRAM_ADDR],
-+                            dram_addr,
-                             dma_len);
-     while (dma_len) {
-         if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
--            data = address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
-+            data = address_space_ldl_le(&s->dram_as, dram_addr,
-                                         MEMTXATTRS_UNSPECIFIED, &result);
-             if (result != MEMTX_OK) {
--                aspeed_smc_error("DRAM read failed @%08x",
--                                 s->regs[R_DMA_DRAM_ADDR]);
-+                aspeed_smc_error("DRAM read failed @%" PRIx64, dram_addr);
-                 return;
-             }
- 
-@@ -951,11 +991,10 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
-                 return;
-             }
- 
--            address_space_stl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
-+            address_space_stl_le(&s->dram_as, dram_addr,
-                                  data, MEMTXATTRS_UNSPECIFIED, &result);
-             if (result != MEMTX_OK) {
--                aspeed_smc_error("DRAM write failed @%08x",
--                                 s->regs[R_DMA_DRAM_ADDR]);
-+                aspeed_smc_error("DRAM write failed @%" PRIx64, dram_addr);
-                 return;
-             }
-         }
-@@ -964,8 +1003,15 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
-          * When the DMA is on-going, the DMA registers are updated
-          * with the current working addresses and length.
-          */
-+        dram_addr += 4;
-+        dma_dram_addr += 4;
-+        if (aspeed_smc_has_dma_dram_addr_high(asc)) {
-+            dram_addr_high = dma_dram_addr >> 32;
-+            s->regs[R_DMA_DRAM_ADDR_HIGH] = dram_addr_high;
++
++    if (s->regs[R_2700_PROT] == PROT_HARDLOCKED) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: SDMC is locked until system reset!\n",
++                      __func__);
++        return;
++    }
++
++    if (reg != R_2700_PROT && s->regs[R_2700_PROT] == PROT_SOFTLOCKED) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: SDMC is locked! (write to MCR%02x blocked)\n",
++                      __func__, reg * 4);
++        return;
++    }
++
++    switch (reg) {
++    case R_2700_PROT:
++        if (data == PROT_2700_KEY_UNLOCK)  {
++            data = PROT_UNLOCKED;
++        } else if (data == PROT_KEY_HARDLOCK) {
++            data = PROT_HARDLOCKED;
++        } else {
++            data = PROT_SOFTLOCKED;
 +        }
++        break;
++    case R_MAIN_CONF:
++        data = aspeed_2700_sdmc_compute_conf(s, data);
++        break;
++    case R_MAIN_STATUS:
++        /* Will never return 'busy'. */
++        data &= ~PHY_BUSY_STATE;
++        break;
++    default:
++        break;
++    }
 +
-+        s->regs[R_DMA_DRAM_ADDR] = dma_dram_addr & 0xffffffff;
-         s->regs[R_DMA_FLASH_ADDR] += 4;
--        s->regs[R_DMA_DRAM_ADDR] += 4;
-         dma_len -= 4;
-         s->regs[R_DMA_LEN] = dma_len;
-         s->regs[R_DMA_CHECKSUM] += data;
-@@ -1118,6 +1164,10 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
-     } else if (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN &&
-                aspeed_smc_dma_granted(s)) {
-         s->regs[addr] = DMA_LENGTH(value);
-+    } else if (aspeed_smc_has_dma(asc) &&
-+               aspeed_smc_has_dma_dram_addr_high(asc) &&
-+               addr == R_DMA_DRAM_ADDR_HIGH) {
-+        s->regs[addr] = DMA_DRAM_ADDR_HIGH(value);
-     } else {
-         qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
-                       __func__, addr);
-diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
-index 2d5bd2b83d..7b5ad6a939 100644
---- a/hw/ssi/trace-events
-+++ b/hw/ssi/trace-events
-@@ -6,7 +6,7 @@ aspeed_smc_do_snoop(int cs, int index, int dummies, int data) "CS%d index:0x%x d
- aspeed_smc_flash_write(int cs, uint64_t addr,  uint32_t size, uint64_t data, int mode) "CS%d @0x%" PRIx64 " size %u: 0x%" PRIx64" mode:%d"
- aspeed_smc_read(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
- aspeed_smc_dma_checksum(uint32_t addr, uint32_t data) "0x%08x: 0x%08x"
--aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint32_t dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%08x size:0x%08x"
-+aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint64_t dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%" PRIx64 " size:0x%08x"
- aspeed_smc_write(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
- aspeed_smc_flash_select(int cs, const char *prefix) "CS%d %sselect"
++    s->regs[reg] = data;
++}
++
++static const uint64_t
++    aspeed_2700_ram_sizes[] = { 256 * MiB, 512 * MiB, 1024 * MiB,
++                                2048 * MiB, 4096 * MiB, 8192 * MiB, 0};
++
++static void aspeed_2700_sdmc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
++
++    dc->desc = "ASPEED 2700 SDRAM Memory Controller";
++    dc->reset = aspeed_2700_sdmc_reset;
++
++    asc->is_bus64bit = true;
++    asc->max_ram_size = 8 * GiB;
++    asc->compute_conf = aspeed_2700_sdmc_compute_conf;
++    asc->write = aspeed_2700_sdmc_write;
++    asc->valid_ram_sizes = aspeed_2700_ram_sizes;
++}
++
++static const TypeInfo aspeed_2700_sdmc_info = {
++    .name = TYPE_ASPEED_2700_SDMC,
++    .parent = TYPE_ASPEED_SDMC,
++    .class_init = aspeed_2700_sdmc_class_init,
++};
++
+ static void aspeed_sdmc_register_types(void)
+ {
+     type_register_static(&aspeed_sdmc_info);
+     type_register_static(&aspeed_2400_sdmc_info);
+     type_register_static(&aspeed_2500_sdmc_info);
+     type_register_static(&aspeed_2600_sdmc_info);
++    type_register_static(&aspeed_2700_sdmc_info);
+ }
  
+ type_init(aspeed_sdmc_register_types);
+diff --git a/include/hw/misc/aspeed_sdmc.h b/include/hw/misc/aspeed_sdmc.h
+index ec2d59a14f..61c979583a 100644
+--- a/include/hw/misc/aspeed_sdmc.h
++++ b/include/hw/misc/aspeed_sdmc.h
+@@ -17,6 +17,7 @@ OBJECT_DECLARE_TYPE(AspeedSDMCState, AspeedSDMCClass, ASPEED_SDMC)
+ #define TYPE_ASPEED_2400_SDMC TYPE_ASPEED_SDMC "-ast2400"
+ #define TYPE_ASPEED_2500_SDMC TYPE_ASPEED_SDMC "-ast2500"
+ #define TYPE_ASPEED_2600_SDMC TYPE_ASPEED_SDMC "-ast2600"
++#define TYPE_ASPEED_2700_SDMC TYPE_ASPEED_SDMC "-ast2700"
+ 
+ /*
+  * SDMC has 174 documented registers. In addition the u-boot device tree
+@@ -29,7 +30,7 @@ OBJECT_DECLARE_TYPE(AspeedSDMCState, AspeedSDMCClass, ASPEED_SDMC)
+  * time, and the other is in the DDR-PHY IP which is used during DDR-PHY
+  * training.
+  */
+-#define ASPEED_SDMC_NR_REGS (0x500 >> 2)
++#define ASPEED_SDMC_NR_REGS (0x1000 >> 2)
+ 
+ struct AspeedSDMCState {
+     /*< private >*/
+@@ -41,6 +42,7 @@ struct AspeedSDMCState {
+     uint32_t regs[ASPEED_SDMC_NR_REGS];
+     uint64_t ram_size;
+     uint64_t max_ram_size;
++    bool unlocked;
+ };
+ 
+ 
+@@ -51,6 +53,7 @@ struct AspeedSDMCClass {
+     const uint64_t *valid_ram_sizes;
+     uint32_t (*compute_conf)(AspeedSDMCState *s, uint32_t data);
+     void (*write)(AspeedSDMCState *s, uint32_t reg, uint32_t data);
++    bool is_bus64bit;
+ };
+ 
+ #endif /* ASPEED_SDMC_H */
 -- 
 2.25.1
 

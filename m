@@ -1,88 +1,148 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp246618ejd;
-        Tue, 16 Apr 2024 02:22:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX3iMg/sW1j6IvphkTUYnwUPZwa0o0SrFJU5OXbfriaUl9OfRmN3Et1zG2XoN05f/bbx3l/WsI6tHu3Lu983iEOjUggoc7s
-X-Google-Smtp-Source: AGHT+IH38QJenOS1DDVG1ntFzKPiPSfAQUcteDE+pXQJjX6pGq5/6uA9Cb+v/rl3qpw1M/pDDKzY
-X-Received: by 2002:a0c:fe92:0:b0:69b:1be3:10d2 with SMTP id d18-20020a0cfe92000000b0069b1be310d2mr13250290qvs.10.1713259374915;
-        Tue, 16 Apr 2024 02:22:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713259374; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp315706ejd;
+        Tue, 16 Apr 2024 04:55:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXP0CA6e8XlK5BKgzukTVAUnMGYCGZNBPB6DRRsp3As5aGSpS7vBHWK7prgPY5DBgdlUMVHDFLwxOBB0sQI5ZcSmiMJrQI9
+X-Google-Smtp-Source: AGHT+IGKtfqiDvB2NlBWtyKC/p3rlIJu+bhC7v+tz9IMkjFHmbYt3rmFIYv3KTmmK5YPoLrZN+xE
+X-Received: by 2002:a05:620a:13ef:b0:78d:67aa:70d with SMTP id h15-20020a05620a13ef00b0078d67aa070dmr14405627qkl.37.1713268537036;
+        Tue, 16 Apr 2024 04:55:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713268537; cv=none;
         d=google.com; s=arc-20160816;
-        b=qGuyHWcfEEayHtu+0POeGIbSUGucdqfRALIhxYfdxruXgtEN6OxwN62LW0BMY6Bj10
-         uCZRANay2CD8zmddvOqEJLH0LfDxaknUGpZMH35lqZek80tOmfAMyiPB9NXu3+uwnga+
-         Ddp8NjwLRu0qb8hkq9k/aexe0AwHO7/3Xct8ePsQl11HEOS08CdXoB5GdZd5qTztVa/I
-         9iU6Tae+yT5OvEyQuCO/tt+kXnJ4HY6uaSAk3HwOIFXZv4/pkyXr+Dvkp4XHEHoFH/AU
-         fox0p997TImPzVCy7oYD0CpNu11bDGS+HLurTyDOIOUXfenyPTDFswsUJO93oJMtRTkR
-         5t3A==
+        b=xQXfxttQCOQHscSgKQ6A23aDFW8S9SSmI2KwGFGLrCIRejlAUj7aZbUXl+WCXyuI3T
+         TGLJgzMuQ031O+9J0fg4PbBC0VJc9+muRc3wkkd6i8Nfd2Xh54pAHxvPOU6TJQzD60h8
+         6dtJWItkuto9EPqrefoHOcn3sJUZ7tXWXrP9te1jY655AsqRxiG9z2YTMNDnT+wHGmHQ
+         D/vAr8ZIiu3To7UwzkR0uh3BNwRyierL0EAiF/X0H7w8Xy/SMBp5VX0dIfSZgixiFCUn
+         9pqz/BS2RX/IDIi7HlcVI0M5v/LVGRsFHUvu0k5r3aIZxyjg+y4/LT3P4181/6fk5YhS
+         2wRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=xbfrb+j/Yu7Xhsr6x1E7uHyRXzm/1CeCy/3exl/zbmY=;
-        fh=4qsXPuPQQYwauqV4GBfUuJ135n2gY4LbnQu8KHliids=;
-        b=unNbiCDHrpOMMRCg53Oc34YmzzP0O5d/7zzrrntC45WzP613v/DI3uqwS9DjOK629K
-         3oGiLnI20rLXRto0k2GJM3N2SvvXsHRO2UzQci1g9uguKHnw3nMBFSQH+h6JiHFN/Ksd
-         7DKp5iCio3TAs2f2KZ/WylTRN6CpwdzpKD5Nykjy5Ob8FkMa4CUW95rqrGgUAYrPRA/S
-         JysQ3UL3EphS1IyZYMXHa6BSEbPoaGIyXamC23pSoUnLRvAlBItQA1vfFgSR8tt+bARs
-         WqgKizCQ78Jr0ZqBB481qBx/cCiafQ9EEhn60W0aINi644omLOcuGK6CUlcdD5OY0myq
-         7uag==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=BF+WWx2eyJpyEbVOTgr946Qb3Qp3BXMlMICw75obs9E=;
+        fh=+/mR0YkOHdurNeN4hPXGYc3tMYx9JfsmV8mpgD07ZXo=;
+        b=Ctr0mg70+q+Wzln+cDU1r2AC8JSKoI7nHzQvcbJbaH5cj/wY5WSPpiQI3YAd42TSkI
+         nve0CCDHx20rPlQ8Jhk/9TQA4DIYz+pT5M3XxOz4u3k5JUh11fsbUm5Zm3eItBzRYEHd
+         vZsvb8AZ20anJZButqa7X3j4b01AaOhMzt+gUo4M71TsLmDJpJXwSEB00JM/1tLrPIw7
+         MiuKSzv9NNlg6+z/LPBYvgoBsDo3cAK19mgJ6S+BsvzICjUJQ8wnj0Kq2BUM+wvuoiSQ
+         71rVLVwKbAP+/1rungWUUxzfDRMBmeHyxDA/g1Olby1YxokmYvDwqInj7dPRnvHbsNt2
+         jqGA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=NYbG5VSQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id od15-20020a0562142f0f00b0069d8209bf25si1439546qvb.557.2024.04.16.02.22.54
+        by mx.google.com with ESMTPS id yf3-20020a05620a3bc300b0078a4fe9e84asi12055381qkn.758.2024.04.16.04.55.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Apr 2024 02:22:54 -0700 (PDT)
+        Tue, 16 Apr 2024 04:55:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=NYbG5VSQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rwf0i-0004xR-1G; Tue, 16 Apr 2024 05:21:52 -0400
+	id 1rwhP5-0007SA-N6; Tue, 16 Apr 2024 07:55:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rwezd-0003Yd-S3; Tue, 16 Apr 2024 05:20:47 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1rwhP4-0007Rj-7Z; Tue, 16 Apr 2024 07:55:10 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1rwezc-0007iy-5S; Tue, 16 Apr 2024 05:20:45 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 16 Apr
- 2024 17:19:12 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 16 Apr 2024 17:19:12 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
- Cleber Rosa <crosa@redhat.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v3 15/16] test/avocado/machine_aspeed.py: Add AST2700 test case
-Date: Tue, 16 Apr 2024 17:19:02 +0800
-Message-ID: <20240416091904.935283-16-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
-References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <ninad@linux.ibm.com>)
+ id 1rwhP0-00034O-Id; Tue, 16 Apr 2024 07:55:09 -0400
+Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 43GAwSpR018870; Tue, 16 Apr 2024 11:54:52 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=BF+WWx2eyJpyEbVOTgr946Qb3Qp3BXMlMICw75obs9E=;
+ b=NYbG5VSQNK3NWK2XLcpaQKTcDVi84vffP5V3A3TI7pWPdywGgw2Z+7gkEa7cvdGFrg1e
+ dZE2AENcx2wRC5i/mqCDJ0yP16ATZYgM/gRAj1BD6nG8tle+hPmdrlU4uT7+92tpRkiS
+ d5g5ul1+mwOVGaaOVSxSC6dz8GFSXhcZY16zci3tefJr6I29HLP/lPECPqJs0nfPR9AA
+ 6hNjeJO3xYKNFdZc2lbGMPDJRA0vMOGK+C3LJXEZCTLz9904fqg2XF/OMB+BptmskUH7
+ Vr7vLIIYP4CPT71GngSr9eQU5HpyyH+EDvTSCSOm3ULl8wuGHEc0uOFbFL8rDnmy1Efg ZQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xhr1rg3a1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 16 Apr 2024 11:54:51 +0000
+Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 43GBspYI003700;
+ Tue, 16 Apr 2024 11:54:51 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xhr1rg39x-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 16 Apr 2024 11:54:51 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 43G8fhhx027311; Tue, 16 Apr 2024 11:54:50 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3xg4ryx1hq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 16 Apr 2024 11:54:50 +0000
+Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
+ [10.241.53.100])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 43GBsl2729033166
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 16 Apr 2024 11:54:50 GMT
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id CFAC458067;
+ Tue, 16 Apr 2024 11:54:47 +0000 (GMT)
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 666EE58062;
+ Tue, 16 Apr 2024 11:54:47 +0000 (GMT)
+Received: from [9.24.12.86] (unknown [9.24.12.86])
+ by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 16 Apr 2024 11:54:47 +0000 (GMT)
+Message-ID: <a860264b-e1e4-4d10-87f7-a95f0eee4e01@linux.ibm.com>
+Date: Tue, 16 Apr 2024 06:54:47 -0500
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] tests/qtest : Use `g_assert_cmphex` instead of
+ `g_assert_cmpuint`
+To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
+ qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ qemu-block@nongnu.org, Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, John Snow <jsnow@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>
+References: <20240414173349.31194-1-ines.varhol@telecom-paris.fr>
+Content-Language: en-US
+From: Ninad Palsule <ninad@linux.ibm.com>
+In-Reply-To: <20240414173349.31194-1-ines.varhol@telecom-paris.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: z5-AnbfhOBMo_IJkUGSeHREa5Uef08ku
+X-Proofpoint-ORIG-GUID: mG6XJ0J1cvqu1R3E9vwkLOx5-VCk8zTn
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-04-16_08,2024-04-16_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 suspectscore=0
+ malwarescore=0 phishscore=0 impostorscore=0 bulkscore=0 adultscore=0
+ spamscore=0 lowpriorityscore=0 mlxlogscore=999 priorityscore=1501
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2404010000 definitions=main-2404160073
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=ninad@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,118 +156,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3CbL57syo1Du
+X-TUID: 94pVJmeDn6Kl
 
-Add a test case to test Aspeed OpenBMC SDK v09.01 on AST2700 board.
 
-It loads u-boot-nodtb.bin, u-boot.dtb, tfa and optee-os
-images to dram first which base address is 0x400000000.
-Then, boot and launch 4 cpu cores.
+On 4/14/24 12:28, Inès Varhol wrote:
+> The messages for assertions using hexadecimal numbers will be
+> easier to understand with `g_assert_cmphex`.
+>
+> Cases changed : "cmpuint.*0x", "cmpuint.*<<"
+>
+> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+> ---
+>   tests/qtest/aspeed_fsi-test.c          |  20 ++--
+>   tests/qtest/cmsdk-apb-dualtimer-test.c |   2 +-
+>   tests/qtest/cmsdk-apb-watchdog-test.c  |   2 +-
+>   tests/qtest/erst-test.c                |   2 +-
+>   tests/qtest/ivshmem-test.c             |  10 +-
+>   tests/qtest/libqos/ahci.c              |   4 +-
+>   tests/qtest/microbit-test.c            |  46 ++++-----
+>   tests/qtest/sse-timer-test.c           |   4 +-
+>   tests/qtest/stm32l4x5_exti-test.c      | 138 ++++++++++++-------------
+>   tests/qtest/stm32l4x5_syscfg-test.c    |  74 ++++++-------
+>   10 files changed, 151 insertions(+), 151 deletions(-)
+>
+> diff --git a/tests/qtest/aspeed_fsi-test.c b/tests/qtest/aspeed_fsi-test.c
+> index b3020dd821..f5ab269972 100644
+> --- a/tests/qtest/aspeed_fsi-test.c
+> +++ b/tests/qtest/aspeed_fsi-test.c
+> @@ -63,22 +63,22 @@ static void test_fsi_setup(QTestState *s, uint32_t base_addr)
+>           /* Unselect FSI1 */
+>           aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_SELECT, 0x0);
+>           curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_SELECT);
+> -        g_assert_cmpuint(curval, ==, 0x0);
+> +        g_assert_cmphex(curval, ==, 0x0);
+>   
+>           /* Select FSI0 */
+>           aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_SELECT, 0x1);
+>           curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_SELECT);
+> -        g_assert_cmpuint(curval, ==, 0x1);
+> +        g_assert_cmphex(curval, ==, 0x1);
+>       } else if (base_addr == AST2600_OPB_FSI1_BASE_ADDR) {
+>           /* Unselect FSI0 */
+>           aspeed_fsi_writel(s, ASPEED_FSI_OPB0_BUS_SELECT, 0x0);
+>           curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_SELECT);
+> -        g_assert_cmpuint(curval, ==, 0x0);
+> +        g_assert_cmphex(curval, ==, 0x0);
+>   
+>           /* Select FSI1 */
+>           aspeed_fsi_writel(s, ASPEED_FSI_OPB1_BUS_SELECT, 0x1);
+>           curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_SELECT);
+> -        g_assert_cmpuint(curval, ==, 0x1);
+> +        g_assert_cmphex(curval, ==, 0x1);
+>       } else {
+>           g_assert_not_reached();
+>       }
+> @@ -145,11 +145,11 @@ static void test_fsi0_getcfam_addr0(const void *data)
+>       aspeed_fsi_writel(s, ASPEED_FSI_ENGINER_TRIGGER, 0x1);
+>   
+>       curval = aspeed_fsi_readl(s, ASPEED_FSI_INTRRUPT_STATUS);
+> -    g_assert_cmpuint(curval, ==, 0x10000);
+> +    g_assert_cmphex(curval, ==, 0x10000);
+>       curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_BUS_STATUS);
+> -    g_assert_cmpuint(curval, ==, 0x0);
+> +    g_assert_cmphex(curval, ==, 0x0);
+>       curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB0_READ_DATA);
+> -    g_assert_cmpuint(curval, ==, 0x152d02c0);
+> +    g_assert_cmphex(curval, ==, 0x152d02c0);
+>   }
+>   
+>   static void test_fsi1_getcfam_addr0(const void *data)
+> @@ -168,11 +168,11 @@ static void test_fsi1_getcfam_addr0(const void *data)
+>       aspeed_fsi_writel(s, ASPEED_FSI_ENGINER_TRIGGER, 0x1);
+>   
+>       curval = aspeed_fsi_readl(s, ASPEED_FSI_INTRRUPT_STATUS);
+> -    g_assert_cmpuint(curval, ==, 0x20000);
+> +    g_assert_cmphex(curval, ==, 0x20000);
+>       curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_BUS_STATUS);
+> -    g_assert_cmpuint(curval, ==, 0x0);
+> +    g_assert_cmphex(curval, ==, 0x0);
+>       curval = aspeed_fsi_readl(s, ASPEED_FSI_OPB1_READ_DATA);
+> -    g_assert_cmpuint(curval, ==, 0x152d02c0);
+> +    g_assert_cmphex(curval, ==, 0x152d02c0);
+>   }
+>   
 
-```
-qemu-system-aarch64 -machine ast2700-evb
-    -device loader,force-raw=on,addr=0x400000000,file=workdir/u-boot-nodtb.bin \
-    -device loader,force-raw=on,addr=uboot_dtb_load_addr,file=u-boot.dtb\
-    -device loader,force-raw=on,addr=0x430000000,file=workdir/bl31.bin\
-    -device loader,force-raw=on,addr=0x430080000,file=workdir/optee/tee-raw.bin\
-    -device loader,cpu-num=0,addr=0x430000000 \
-    -device loader,cpu-num=1,addr=0x430000000 \
-    -device loader,cpu-num=2,addr=0x430000000 \
-    -device loader,cpu-num=3,addr=0x430000000 \
-    -smp 4 \
-    -drive file=workdir/image-bmc,format=raw,if=mtd
-```
+aspeed-fsi-test changes looks good. Thanks
 
-A test image is downloaded from the ASPEED Forked OpenBMC GitHub release repository :
-https://github.com/AspeedTech-BMC/openbmc/releases/
+Reviewed-by: Ninad Palsule <ninad@linux.ibm.com>
 
-Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- tests/avocado/machine_aspeed.py | 62 +++++++++++++++++++++++++++++++++
- 1 file changed, 62 insertions(+)
-
-diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-index cec0181424..3a20644fb2 100644
---- a/tests/avocado/machine_aspeed.py
-+++ b/tests/avocado/machine_aspeed.py
-@@ -311,6 +311,17 @@ def do_test_arm_aspeed_sdk_start(self, image):
-             self, 'boot', '## Loading kernel from FIT Image')
-         self.wait_for_console_pattern('Starting kernel ...')
- 
-+    def do_test_aarch64_aspeed_sdk_start(self, image):
-+        self.vm.set_console()
-+        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw')
-+
-+        self.vm.launch()
-+
-+        self.wait_for_console_pattern('U-Boot 2023.10')
-+        self.wait_for_console_pattern('## Loading kernel from FIT Image')
-+        self.wait_for_console_pattern('Starting kernel ...')
-+        self.wait_for_console_pattern("systemd[1]: Hostname set to")
-+
-     @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
- 
-     def test_arm_ast2500_evb_sdk(self):
-@@ -375,3 +386,54 @@ def test_arm_ast2600_evb_sdk(self):
-              'i2c i2c-5: new_device: Instantiated device ds1307 at 0x32');
-         year = time.strftime("%Y")
-         self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
-+
-+    def test_aarch64_ast2700_evb_sdk_v09_01(self):
-+        """
-+        :avocado: tags=arch:aarch64
-+        :avocado: tags=machine:ast2700-evb
-+        """
-+
-+        image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
-+                     'download/v09.01/ast2700-default-obmc.tar.gz')
-+        image_hash = 'b1cc0fd73c7650d34c9c8459a243f52a91e9e27144b8608b2645ab19461d1e07'
-+        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-+                                      algorithm='sha256')
-+        archive.extract(image_path, self.workdir)
-+
-+        num_cpu = 4
-+        image_dir = self.workdir + '/ast2700-default/'
-+        uboot_size = os.path.getsize(image_dir + 'u-boot-nodtb.bin')
-+        uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
-+
-+        load_images_list = [
-+            {
-+                'addr': '0x400000000',
-+                'file': image_dir + 'u-boot-nodtb.bin'
-+            },
-+            {
-+                'addr': str(uboot_dtb_load_addr),
-+                'file': image_dir + 'u-boot.dtb'
-+            },
-+            {
-+                'addr': '0x430000000',
-+                'file': image_dir + 'bl31.bin'
-+            },
-+            {
-+                'addr': '0x430080000',
-+                'file': image_dir + 'optee/tee-raw.bin'
-+            }
-+        ]
-+
-+        for load_image in load_images_list:
-+            addr = load_image['addr']
-+            file = load_image['file']
-+            self.vm.add_args('-device',
-+                             f'loader,force-raw=on,addr={addr},file={file}')
-+
-+        for i in range(num_cpu):
-+            self.vm.add_args('-device',
-+                             f'loader,addr=0x430000000,cpu-num={i}')
-+
-+        self.vm.add_args('-smp', str(num_cpu))
-+        self.do_test_aarch64_aspeed_sdk_start(image_dir + 'image-bmc')
-+
--- 
-2.25.1
 

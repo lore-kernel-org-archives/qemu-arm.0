@@ -1,258 +1,169 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1559944ejd;
-        Thu, 18 Apr 2024 00:56:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVxGryRy4m+Jm5p5Zz2jYmfSLZ1mazIgOJoepOW0l1f3oNRC0YQqzVqtNvG8iUMECLWscHxUdfLUefW4avkhr8UgKyNjrY4
-X-Google-Smtp-Source: AGHT+IGyT275tyrZSAgr1knO9xsA+VUEwlNdiZW2tN8G2OPz0TWwoDnwpYoLymqm7NAtkCfVbXKt
-X-Received: by 2002:a05:620a:31aa:b0:78e:db72:9f40 with SMTP id bi42-20020a05620a31aa00b0078edb729f40mr2512070qkb.13.1713426985974;
-        Thu, 18 Apr 2024 00:56:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713426985; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1577205ejd;
+        Thu, 18 Apr 2024 01:33:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXK75hPv+ZKvLGFFrYwkkxCWC3qGTzi3t+OBredk7xPlLza2RCUs0W1yZ7w4Wcul8K/vIT8Hly+UW1W5AQdkoFizDouoONG
+X-Google-Smtp-Source: AGHT+IFGB0iSki4V7B4pNFI7JwQ+SrHphDCYYBBHi32Ee7KY8OH6eAwbxBrqV+oPKw6X8oc29vx9
+X-Received: by 2002:a05:690c:6c92:b0:61b:1341:f4da with SMTP id is18-20020a05690c6c9200b0061b1341f4damr1883715ywb.25.1713429212389;
+        Thu, 18 Apr 2024 01:33:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713429212; cv=none;
         d=google.com; s=arc-20160816;
-        b=YX9F3AONLxUwxHojVNwUIwQtLUxb3F7kC4SPweyLhrtdF0RZRPf2LKo3RlxzdWUC4S
-         zpGLVfDuWnHJ76XXM7G4lWIW2/rVQKlgvTj0Oka4q5k5Nf8n5ovLsitmWfKeh1yqaRnI
-         ICxtEQsQvG4HlrRMJInsgqykQ0lJSZ9tnOzzHNYO+UcpvIIcyNyP76H4mkfWncU0Hal/
-         z+K92dteBX6qnDPAUe4WuY7aqCEDffaSs2fuhvfULf2aIIaxdFKGUOAb+6Plt357Fbbv
-         2yW7AWqEAMRIJKQ9n6WoBieW67mkbD5wyNiuT6RlyJ9scNl5tVEEu4m7Rq7gzpafcMbZ
-         h4vw==
+        b=0Afe4q2gQcjMO3EzTTTNJVZt4P4HrqAxmoQbdnjHS4GwV6qfVLeld4cGP3E2VqFtqv
+         el5QIAcTB+dto7ew0+3ejJzhZlLxdwjAK24ef/Q0UpuvVlaxh/uMOPBLsC0hu64Dm3WT
+         Ohoagc3CBocg//YeJvvTnhb0raEoVu04EzSkBYl5OBkybbCAzKmfti0p5bX8nspI12rr
+         0i9MNV3+DANx6ccLxcN1DSIKjPjJrkXFiZTEsykjKZQoAYPd8qTD3jiuQAd0O4KLebcD
+         hOv+txzOG52OdzXAVD/2wrkcJ3HWADPC1UAnDSnB2xF4K1E01a3ezIh8whZr15JNyf66
+         eqqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=+AJRVK1J2Bm1IOcAddMTRzH20GLdSfC9QEoO87nKsR0=;
-        fh=541Gwp2DnuFmc1qgJBEp+y3TQBD7Bfw5wTeyXKbJkgk=;
-        b=QPqMY17XXDNlVj92uextgex1xfF+DoL1EwK+WCAGeXYizleJOcCViITwJkK7VVmD6x
-         QbF0Tv1ineOAjVaB+aKbUmCiKopoRHtaXnjIT/59iTxrE66wjLOYK6YVQLQSdLzu13N7
-         OO+T2uqu90R0osOWD/E1jDz/CW4dG7i7u3kSPd+mku3htrJBU+npr50mzpXt0CggkZbD
-         8OdISbTEM8KHBwUGclXx7QB9Bd5MSrlx4xdRLONSRQ6xumvkhOhPfqGXsfGn++bmX75a
-         oul61Vg2Tx8+gnJERnfEgtfOkmBHRkYFVe5V9FKC85AFbtusoxkDGcVxXXcnuVp2BjEA
-         FM+Q==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=g4W+5MaJ6M7/m7Xxc6VIvMoXqJFFG+w6d0D3ldtIj2k=;
+        fh=ZluLMqsFTDQBgxMpL2k7Q27rRh4gW2CO+onXmwc5zAE=;
+        b=UsBN4LALvuIu3ajQOoDp+XWOUMlNOJDPXa1xZe6Xur1iiGo79RWZjmixFZrjThlcPo
+         tUW2SqBh2pohY1uVr5MWQ+UnSr9xJX+vqBRLCFDpP9BjVKh4xqslEVVSDu2nK08d6QYd
+         zeI2PnShLCZY6Hpaq3lhfIxniEqtaW4rsdEne83YgfMNdJQ50ut5Kg6lmw+U4ui5nc+B
+         YUkVRLfJgH0heQlIX9m9OHodSOtdZdDomYNxZMM76i4cjDvC5cr61e8iNr9B90VQJ4Pp
+         KuE8cor32oG0J6OpSoahXPXeqnoSxhmL40/5ZGUOvBW2qf/kupIqnLYfqAjDBu5IB1rs
+         0JMQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AWGwoUFc;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id n3-20020a05620a294300b0078ed673542fsi986749qkp.171.2024.04.18.00.56.25
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s13-20020a05622a1a8d00b0043780c6bfd7si1004205qtc.182.2024.04.18.01.33.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Apr 2024 00:56:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 18 Apr 2024 01:33:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AWGwoUFc;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1713426985;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+AJRVK1J2Bm1IOcAddMTRzH20GLdSfC9QEoO87nKsR0=;
-	b=AWGwoUFcy74u6NFaIgW/hCM2QsyM+YLNa0Od64Ve4Ymc9LWuucpm4gpPykY/OEoV9bTjhj
-	1GACgcVs8QpS6HqcUorpF8B1aPIJJ52vxe4QEbNbbtMmpuqPA7MVBDODsQN2GZs9wbGz5I
-	X0LWnVCO7IsIPeS/f4QHluOgnSuNnHM=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-5-mpJ1jPN8PL-R3ka993PluQ-1; Thu, 18 Apr 2024 03:56:24 -0400
-X-MC-Unique: mpJ1jPN8PL-R3ka993PluQ-1
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-78f08178393so157736685a.1
-        for <alex.bennee@linaro.org>; Thu, 18 Apr 2024 00:56:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713426983; x=1714031783;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=+AJRVK1J2Bm1IOcAddMTRzH20GLdSfC9QEoO87nKsR0=;
-        b=dyCC02Bv8ujzQ4i+H/jzmlqmEMfXYA0BcbK7UPmLKtBOfCbeY06vMlJvTnQlU24nch
-         QhmaCadnTTl+eiZIYXniRQFBFdy7mgCpokyDxDl6v+O1siOeGaanyyloHseMDKTzU6xY
-         L5R7LMykBZCWYHLO9EJo1XuFXa6rZcbM/OIkt7g+PypagZv43lFxZS8IDIIQnZyv20OQ
-         PBlX05ixfkZrFYycRzCnvPhdLnihKmlBZD7p5SsOsKHzC2IoQTYfZ8x29MsFftxBoKvi
-         Dnr8We+92+h1Q2s8+ZxsiygXYaEBELwr1fkZf5P3sUSbDme5miqDdsosF7IxW7+Ks8td
-         g2SQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUNaR8wIdSoo8k6MbYWsiSKjEXKBEcsa/RgIoAj4sCIEfPk76XaUXdceSL3leL2F/A6hIAuDB9n3ahpPL1FYMfBtKvJFZkJ
-X-Gm-Message-State: AOJu0Yy5nlFtXTVdDXj3EI/pfO9TFHBoYjhavOwvp+hANLCsYXQEKOKo
-	mfmFqOU516ONEUViACkQM7BJQfbPhR1rfOlBnvEHHZj5Zc2Tvy6sNbzVE0OSIongBNanDvteQAv
-	tD1S1RTMC7fW2b2iFcMuLFXy7Tsc4YEqp0383u1ykBJ1JamuaCcZasG4n93zGKg==
-X-Received: by 2002:a05:620a:40c3:b0:78d:68f2:11af with SMTP id g3-20020a05620a40c300b0078d68f211afmr2564030qko.23.1713426982889;
-        Thu, 18 Apr 2024 00:56:22 -0700 (PDT)
-X-Received: by 2002:a05:620a:40c3:b0:78d:68f2:11af with SMTP id g3-20020a05620a40c300b0078d68f211afmr2564017qko.23.1713426982521;
-        Thu, 18 Apr 2024 00:56:22 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id y21-20020a05620a44d500b0078ecd71114dsm413360qkp.69.2024.04.18.00.56.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 18 Apr 2024 00:56:21 -0700 (PDT)
-Message-ID: <74b42fab-7731-4826-974f-dec9f0413b7d@redhat.com>
-Date: Thu, 18 Apr 2024 09:56:18 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rxNCj-0005w1-RP; Thu, 18 Apr 2024 04:33:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=S08W=LX=kaod.org=clg@ozlabs.org>)
+ id 1rxNCY-0005ul-8g; Thu, 18 Apr 2024 04:33:04 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=S08W=LX=kaod.org=clg@ozlabs.org>)
+ id 1rxNCV-0000kW-DT; Thu, 18 Apr 2024 04:33:02 -0400
+Received: from gandalf.ozlabs.org (mail.ozlabs.org
+ [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4VKrcx5s7fz4x1V;
+ Thu, 18 Apr 2024 18:32:49 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4VKrct1cjdz4wyh;
+ Thu, 18 Apr 2024 18:32:45 +1000 (AEST)
+Message-ID: <a74efe19-83b0-4700-a1f3-d2f366f29be2@kaod.org>
+Date: Thu, 18 Apr 2024 10:32:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [RFC PATCH v2 03/13] hw/arm/smmu: Consolidate ASID and VMID types
-To: Mostafa Saleh <smostafa@google.com>, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
- marcin.juszkiewicz@linaro.org
-References: <20240408140818.3799590-1-smostafa@google.com>
- <20240408140818.3799590-4-smostafa@google.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20240408140818.3799590-4-smostafa@google.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [PATCH v2 2/4] hw/i2c: Fix checkpatch line over 80 chars warnings
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Corey Minyard <cminyard@mvista.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>
+References: <20240416184722.28334-1-philmd@linaro.org>
+ <20240416184722.28334-3-philmd@linaro.org>
+ <4513c447-2ef3-4547-875b-5500067b44eb@kaod.org>
+ <9722502e-ce18-49d4-932e-4ff777163763@linaro.org>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <9722502e-ce18-49d4-932e-4ff777163763@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: YdGZZMWD1dRp
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=S08W=LX=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MdMAXqMu1v7/
 
-Hi Mostafa,
+On 4/17/24 16:20, Philippe Mathieu-Daudé wrote:
+> On 17/4/24 08:24, Cédric Le Goater wrote:
+>> Hello,
+>>
+>> On 4/16/24 20:47, Philippe Mathieu-Daudé wrote:
+>>> We are going to modify these lines, fix their style
+>>> in order to avoid checkpatch.pl warnings:
+>>>
+>>>    WARNING: line over 80 characters
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>> ---
+>>>   include/hw/i2c/i2c.h            |  11 ++-
+>>>   include/hw/nvram/eeprom_at24c.h |   6 +-
+>>>   hw/arm/aspeed.c                 | 140 +++++++++++++++++++-------------
+>>>   hw/nvram/eeprom_at24c.c         |   6 +-
+>>>   4 files changed, 98 insertions(+), 65 deletions(-)
+> 
+> 
+>>> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "dps310", 0x76);
+>>> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "max31785", 0x52);
+>>> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "tmp423", 0x4c);
+>>> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), "tmp423", 0x4c);
+>>> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
+>>> +                            "dps310", 0x76);
+>>> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
+>>> +                            "max31785", 0x52);
+>>> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4),
+>>> +                            "tmp423", 0x4c);
+>>> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5),
+>>> +                            "tmp423", 0x4c);
+>>>       /* The Witherspoon expects a TMP275 but a TMP105 is compatible */
+>>> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), TYPE_TMP105,
+>>> -                     0x4a);
+>>> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9),
+>>> +                            TYPE_TMP105, 0x4a);
+>>>       /* The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 is
+>>>        * good enough */
+>>> -    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
+>>> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11),
+>>> +                            "ds1338", 0x32);
+>>
+>> If the definitions were on a single line, they would be more
+>> readable IMHO. So I would do the opposit change ...
+>>
+>> An alternate solution could be to define an array of devices
+>> at the machine class level, something like
+>>    struct i2c_device [
+>>            const char *type;
+>>            uint8_t bus;
+>>            uint8_t addr;
+>>    } devices[] = { ... };
+> 
+> I agree this would be better, but this should be done separately
+> of this series. For now I propose not modifying hw/arm/aspeed.c
+> in this patch, and ignoring the checkpatch errors in the next
+> patch. What do you think?
 
-On 4/8/24 16:08, Mostafa Saleh wrote:
-> ASID and VMID used to be uint16_t in the translation config, however,
-> in other contexts they can be int as -1 in case of TLB invalidation,
-> to represent all(don’t care).
-> When stage-2 was added asid was set to -1 in stage-2 and vmid to -1
-> in stage-1 configs. However, that meant they were set as (65536),
-> this was not an issue as nesting was not supported and no
-> commands/lookup targets both.
->
-> With nesting, it’s critical to get this right as translation must be
-> tagged correctly with ASID/VMID, and with ASID=-1 meaning stage-2.
-> Represent ASID/VMID everywhere as int.
+sure, np.
 
-small conflict  due to
-0b796f3810  hw/arm/smmu: Avoid using inlined functions with external
-linkage again
+Thanks,
 
-Besides
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+C.
 
-Eric
-
-
->
-> Signed-off-by: Mostafa Saleh <smostafa@google.com>
-> ---
->  hw/arm/smmu-common.c         | 10 +++++-----
->  hw/arm/smmuv3.c              |  4 ++--
->  include/hw/arm/smmu-common.h | 14 +++++++-------
->  3 files changed, 14 insertions(+), 14 deletions(-)
->
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 20630eb670..771b9c79a3 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -57,7 +57,7 @@ static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
->             (k1->vmid == k2->vmid);
->  }
->  
-> -SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint16_t vmid, uint64_t iova,
-> +SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
->                                  uint8_t tg, uint8_t level)
->  {
->      SMMUIOTLBKey key = {.asid = asid, .vmid = vmid, .iova = iova,
-> @@ -130,7 +130,7 @@ void smmu_iotlb_inv_all(SMMUState *s)
->  static gboolean smmu_hash_remove_by_asid(gpointer key, gpointer value,
->                                           gpointer user_data)
->  {
-> -    uint16_t asid = *(uint16_t *)user_data;
-> +    int asid = *(int *)user_data;
->      SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
->  
->      return SMMU_IOTLB_ASID(*iotlb_key) == asid;
-> @@ -139,7 +139,7 @@ static gboolean smmu_hash_remove_by_asid(gpointer key, gpointer value,
->  static gboolean smmu_hash_remove_by_vmid(gpointer key, gpointer value,
->                                           gpointer user_data)
->  {
-> -    uint16_t vmid = *(uint16_t *)user_data;
-> +    int vmid = *(int *)user_data;
->      SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
->  
->      return SMMU_IOTLB_VMID(*iotlb_key) == vmid;
-> @@ -191,13 +191,13 @@ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
->                                  &info);
->  }
->  
-> -void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid)
-> +void smmu_iotlb_inv_asid(SMMUState *s, int asid)
->  {
->      trace_smmu_iotlb_inv_asid(asid);
->      g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid, &asid);
->  }
->  
-> -inline void smmu_iotlb_inv_vmid(SMMUState *s, uint16_t vmid)
-> +inline void smmu_iotlb_inv_vmid(SMMUState *s, int vmid)
->  {
->      trace_smmu_iotlb_inv_vmid(vmid);
->      g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid, &vmid);
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index f081ff0cc4..897f8fe085 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1235,7 +1235,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->          }
->          case SMMU_CMD_TLBI_NH_ASID:
->          {
-> -            uint16_t asid = CMD_ASID(&cmd);
-> +            int asid = CMD_ASID(&cmd);
->  
->              if (!STAGE1_SUPPORTED(s)) {
->                  cmd_error = SMMU_CERROR_ILL;
-> @@ -1268,7 +1268,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->              break;
->          case SMMU_CMD_TLBI_S12_VMALL:
->          {
-> -            uint16_t vmid = CMD_VMID(&cmd);
-> +            int vmid = CMD_VMID(&cmd);
->  
->              if (!STAGE2_SUPPORTED(s)) {
->                  cmd_error = SMMU_CERROR_ILL;
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index 5944735632..96eb017e50 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -84,7 +84,7 @@ typedef struct SMMUS2Cfg {
->      bool record_faults;     /* Record fault events (S2R) */
->      uint8_t granule_sz;     /* Granule page shift (based on S2TG) */
->      uint8_t eff_ps;         /* Effective PA output range (based on S2PS) */
-> -    uint16_t vmid;          /* Virtual Machine ID (S2VMID) */
-> +    int vmid;               /* Virtual Machine ID (S2VMID) */
->      uint64_t vttb;          /* Address of translation table base (S2TTB) */
->  } SMMUS2Cfg;
->  
-> @@ -108,7 +108,7 @@ typedef struct SMMUTransCfg {
->      uint64_t ttb;              /* TT base address */
->      uint8_t oas;               /* output address width */
->      uint8_t tbi;               /* Top Byte Ignore */
-> -    uint16_t asid;
-> +    int asid;
->      SMMUTransTableInfo tt[2];
->      /* Used by stage-2 only. */
->      struct SMMUS2Cfg s2cfg;
-> @@ -132,8 +132,8 @@ typedef struct SMMUPciBus {
->  
->  typedef struct SMMUIOTLBKey {
->      uint64_t iova;
-> -    uint16_t asid;
-> -    uint16_t vmid;
-> +    int asid;
-> +    int vmid;
->      uint8_t tg;
->      uint8_t level;
->  } SMMUIOTLBKey;
-> @@ -205,11 +205,11 @@ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
->  SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
->                                  SMMUTransTableInfo *tt, hwaddr iova);
->  void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
-> -SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint16_t vmid, uint64_t iova,
-> +SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
->                                  uint8_t tg, uint8_t level);
->  void smmu_iotlb_inv_all(SMMUState *s);
-> -void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
-> -void smmu_iotlb_inv_vmid(SMMUState *s, uint16_t vmid);
-> +void smmu_iotlb_inv_asid(SMMUState *s, int asid);
-> +void smmu_iotlb_inv_vmid(SMMUState *s, int vmid);
->  void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
->                           uint8_t tg, uint64_t num_pages, uint8_t ttl);
->  

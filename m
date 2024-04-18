@@ -1,238 +1,191 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1895218ejd;
-        Thu, 18 Apr 2024 10:41:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVLNdDv931GdP5FWjXcT5/tT4JPrZu3HSCM1rU2sn3tjkqC1Y4hCaZRMrJ4QyhwK47UIJbmm615yv3JQYZ8I2rtTCQydk5z
-X-Google-Smtp-Source: AGHT+IEsaI6yKF9SqKTB+M4wlhNhXLUQQs6f/8+Sm44dGrVv8tyyu8lPiKyboNJ81+9N72GcolKk
-X-Received: by 2002:a0c:f50c:0:b0:6a0:4187:29a7 with SMTP id j12-20020a0cf50c000000b006a0418729a7mr5426992qvm.7.1713462073464;
-        Thu, 18 Apr 2024 10:41:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713462073; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1952091ejd;
+        Thu, 18 Apr 2024 12:25:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXNDgKL8vr0SMF3KEiSUs14vGRx2FVk1E1JZkfcP0oP9+rH1NmiIq62xwv+uTMAG/5S69kme/U/3DTharSkRwxzo2SjY69X
+X-Received: by 2002:a05:6402:35c5:b0:571:bc64:f8bf with SMTP id z5-20020a05640235c500b00571bc64f8bfmr2699726edc.14.1713468329353;
+        Thu, 18 Apr 2024 12:25:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713468329; cv=none;
         d=google.com; s=arc-20160816;
-        b=NCt2Q2pxuw/gO11RPprjNJr6Yo8hpspg6VUkk3FI817pHdyeUQPj05zCZHb80voKPl
-         aU5Mr3u6rzqkoW7kM3QS1db9mTh6z5Vt39+x5OiS/DjFyHdwySA7yzEjAl8v2z70++v9
-         n6AAbs6J39+JNSqpyw7YJdK6UgNBokCYecYCxzqVQ9NMdDsJePsYdJdH5nxUcKKX9wqP
-         431NzsI/DS2gZdwXJLjeMFN5XhPc7zY71Qoj1ydSyFcvyZnLEykJFuITD1Y+UJsOoDlL
-         guyB+sTyi1bP9RCCEIqmX766QH3O0hkB8S3AV54Pe/GUWsZTc8j38+/Z4K7ahzRr0264
-         j1qQ==
+        b=ftzPtHqs5d76Vhb4xEzKymcXoX+NzQ3W+8ELL+9dkoouRDoemT2IsD6EGHTfR6jPLw
+         NRpFnuOeLTCNpAdBrsZrmc9D5NPhfXE2+K7M4meWgf28wPHF5eedQ/KAKONIzCqWp0qK
+         DWna1kdl0oOIjXiPMc6kk7x5FRFKDBWUUT7hzcm0Gj8H5VEIz+dHeRFz0w9krjyqRzMY
+         Rg1dRVPAI14pXi1oSDybwvJmOB5yG5QzbkGyaVFnjRHmacVZniRklgH+SggAdMtwaPMn
+         fvJXoAYE7AuhXs7plLM/pjKbaZuL+uVgpxwti9XzfVtmFiNO6oVn8SvWBQGb5/3Rf4Ub
+         moWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=jLwlvSiyrkPG90Q6hzFzXxa9gOuW8DolnKlK9TIqmE4=;
-        fh=kLIRLfNNaeAudrIjfDYJe12ItOyVjhSRaa6WQgZm9Vw=;
-        b=bbS3G0qC4Ix1uDaznKLGhIvtvoVz1CoYxhzS1QdIUMhzcDKLNQY6Kmyg3MmN7fJLVl
-         8tFbVQlXpB8+L02a2477LHr2tpOSELpYwEjsPcaUoS793PNujlA7an4BoefM+JZmHFqg
-         dOTQSB5HCv9ZnnRJUTCKTaREsSunFic8Ko0haK5K6vmLqfPps0umhgS9LZBoaDlwEHKZ
-         QKV38fk4mwGxPoKB8T4LQegR6hCxXHFDW7+clEWM+7Jjm9KpZ2X8+bvopcngrMB7n7uV
-         +NQvDdKosHT+Vtks/1uij6vybO6lJCG+2AMowVS2ujBpXtjH6M91PDADHCfsD1G/g12O
-         Jkow==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=UatYjw6LkKqMQcEs0xLI/ll8in5w62RsbSuNUqaD+hU=;
+        fh=NvieTHu3K02VN3cT8xlPkDqPjwY7UDY/RCL1nwFtsJ0=;
+        b=tO+9Nt3wFBcpsG5wCmH14l0VaSe8+bJrur2nSm0vhf7/8goD+cenJcmQyuR2t9XtOs
+         j1HEAHWnKfcHlNWQjhUlDkkCdDVj28GkFcILa+WnseXsXn8nTheT2m4loKhVu6gHlVL6
+         V/mJzoVnTkqA8W+idkjFe7UVLh2+uivVJVN9z+tPf8ceUmzwGEEnR2YpNUHq2X1Man2b
+         74YrZKD362X5ledny2BNwzf9DZQB3oH6t0D1RToLtyvl3PkJhwwwn6c1FKNJdjQk1jmJ
+         pMlo9cnN3cK1SFD0ebwu2g6rSVZLJFhLOKsdO+Ya8Ctj0R4Z5xIko9jkzsNTclrwMao9
+         mZuw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q3-20020a05621419e300b0069b43f9da2csi1927698qvc.143.2024.04.18.10.41.13
+       dkim=pass header.i=@linaro.org header.s=google header.b=eS7RE077;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 22-20020a508e16000000b0056e0a927af0sor1134452edw.3.2024.04.18.12.25.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Apr 2024 10:41:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 18 Apr 2024 12:25:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rxVku-0005kB-SX; Thu, 18 Apr 2024 13:41:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rxVks-0005jl-GW; Thu, 18 Apr 2024 13:41:02 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rxVkp-0005pD-M0; Thu, 18 Apr 2024 13:41:02 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VL4l02Jmqz6JB0K;
- Fri, 19 Apr 2024 01:38:52 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id 93BC7140D1A;
- Fri, 19 Apr 2024 01:40:55 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Thu, 18 Apr
- 2024 18:40:55 +0100
-Date: Thu, 18 Apr 2024 18:40:54 +0100
-To: Jonathan Cameron via <qemu-devel@nongnu.org>, <linuxarm@huawei.com>
-CC: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, Richard Henderson
- <richard.henderson@linaro.org>, <qemu-arm@nongnu.org>, Philippe
- =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Idan Horowitz
- <idan.horowitz@gmail.com>, <kraxel@redhat.com>, <devel@edk2.groups.io>
-Subject: Re: [PATCH v3 5/6] target/arm: Do memory type alignment check when
- translation disabled
-Message-ID: <20240418183600.00000345@huawei.com>
-In-Reply-To: <20240418091555.00006666@Huawei.com>
-References: <20240301204110.656742-1-richard.henderson@linaro.org>
- <20240301204110.656742-6-richard.henderson@linaro.org>
- <20240416161111.0000607c@huawei.com>
- <0c878d25-3fbb-4f0b-bc9e-ca638f8c4f1e@linaro.org>
- <20240418091555.00006666@Huawei.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b=eS7RE077;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1713468329; x=1714073129; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=UatYjw6LkKqMQcEs0xLI/ll8in5w62RsbSuNUqaD+hU=;
+        b=eS7RE077jEoIo9nwxAwxYvpj+Yr8+jIrSCK+FaQELynScZDtAuZV488T8U96pHE0Xj
+         fp1F0XV9ob5QHNOKwC9QLgCfDoQCRGq2DGfLlbZmPMlwMVfJgACx+GiQFSzNt9218BTP
+         qs0DAaQlKhyaPFMwIelFv8psf/K5rzJmTDk5Dr9D52O/c2dJlpQSt+E0Etk3vRYsihiO
+         A1rHyOMhykx+5yqjc8iHIANcK0hOc1D/bjG0vGKzwq0u4ArBmTOxr4RkKqpd46Bb8/PA
+         E3gBWP/TKbriwMdRd/mS9zWbGkj6KZqrIwDGCMGW+O41lOFU10ZmuqptZbev39pAl3wV
+         yDEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713468329; x=1714073129;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=UatYjw6LkKqMQcEs0xLI/ll8in5w62RsbSuNUqaD+hU=;
+        b=sIs6vrV7TjaT3ByKQ/wAF1uh60QQz8JCJ71iutJHSCSwroH1/FB3wzAS5uFGUmQqgS
+         N48ze3AcFhT7LkUBMhzC/KvEtXANhIEYhfN/xJMXOhPoPny4v0nDHpgN4fzotf+YrKHe
+         QAsk+IvenWFn3aO1ql2cbIrY5I0AWBmExG04l0aBw2vfkhbJJARFzRAk27ICMg1idRH8
+         c0fGxKxP0YmEZEGzlR4yZe08MHmAzuSCLieflc2ejyzvmiswGeXVVymVFWYH1xbLutTK
+         HSNXdLSvVB/Cp7NSS078AswzjrzrTI5vdvDuuVgc+V9M/gb+4kDMjPum4nrakoiKX9ye
+         ZztQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXq0jyhS2QLgi+KgsKAfOOIqB/mrkJmEcgmjlg/hQKaMhh7GG2in2bMIx9rhC84YWJd7IfkEUnTG5Vfb6yk98FYY8YuIHXU
+X-Gm-Message-State: AOJu0YxvseF/Kg7GhEbD5mylR20RUbPdlOcwBrQCR910RGaniYYLIyzw
+	2SmUVSDCEUqK/Ax6xhjpLKpBY2bo33Y4zeXJ/+gvjCNyEfJ8vU9Y6EEcpk+IfgS9dA==
+X-Google-Smtp-Source: AGHT+IG6mbo7Ujao5nYsEjpEqJP1F0wz9b6JL8jKjwrBHCw0/6R9oQcHVTB20tlAD3rgevO7qdU+6w==
+X-Received: by 2002:a05:6402:35c5:b0:571:bc64:f8bf with SMTP id z5-20020a05640235c500b00571bc64f8bfmr2699703edc.14.1713468328813;
+        Thu, 18 Apr 2024 12:25:28 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan ([176.176.151.213])
+        by smtp.gmail.com with ESMTPSA id b10-20020aa7dc0a000000b0056fe755f1e6sm1202106edu.91.2024.04.18.12.25.27
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 18 Apr 2024 12:25:28 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org,
+	qemu-riscv@nongnu.org,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Anton Johansson <anjo@rev.ng>,
+	Philippe =?unknown-8bit?q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/24] include/exec: Rework (part 2)
+Date: Thu, 18 Apr 2024 21:24:59 +0200
+Message-ID: <20240418192525.97451-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 66GBneLjgBS5
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: XWiHJ0s1zhsL
 
-On Thu, 18 Apr 2024 09:15:55 +0100
-Jonathan Cameron via <qemu-devel@nongnu.org> wrote:
+Reordering exec/, second round. Mostly splitting:
+- TCG LDST API (to "exec/cpu_ldst.h")
+- CPU TLB APIs (to "exec/cputlb.h")
+from "exec/cpu-all.h" and "exec/exec-all.h", and
+reducing inclusions of "hw/core/cpu.h".
 
-> On Wed, 17 Apr 2024 13:07:35 -0700
-> Richard Henderson <richard.henderson@linaro.org> wrote:
->=20
-> > On 4/16/24 08:11, Jonathan Cameron wrote: =20
-> > > On Fri,  1 Mar 2024 10:41:09 -1000
-> > > Richard Henderson <richard.henderson@linaro.org> wrote:
-> > >    =20
-> > >> If translation is disabled, the default memory type is Device, which
-> > >> requires alignment checking.  This is more optimally done early via
-> > >> the MemOp given to the TCG memory operation.
-> > >>
-> > >> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>
-> > >> Reported-by: Idan Horowitz <idan.horowitz@gmail.com>
-> > >> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1204
-> > >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>   =20
-> > >=20
-> > > Hi Richard.
-> > >=20
-> > > I noticed some tests I was running stopped booting with master.
-> > > (it's a fun and complex stack of QEMU + kvm on QEMU for vCPU Hotplug =
-kernel work,
-> > > but this is the host booting)
-> > >=20
-> > > EDK2 build from upstream as of somepoint last week.
-> > >=20
-> > > Bisects to this patch.
-> > >=20
-> > >   qemu-system-aarch64 -M virt,gic-version=3D3,virtualization=3Dtrue -=
-m 4g,maxmem=3D8G,slots=3D8 -cpu cortex-a76 -smp cpus=3D4,threads=3D2,cluste=
-rs=3D2,sockets=3D1 \
-> > >   -kernel Image \
-> > >   -drive if=3Dnone,file=3Dfull.qcow2,format=3Dqcow2,id=3Dhd \
-> > >   -device ioh3420,id=3Droot_port1 -device virtio-blk-pci,drive=3Dhd \
-> > >   -netdev user,id=3Dmynet,hostfwd=3Dtcp::5555-:22 -device virtio-net-=
-pci,netdev=3Dmynet,id=3Dbob \
-> > >   -nographic -no-reboot -append 'earlycon root=3D/dev/vda2 fsck.mode=
-=3Dskip tp_printk' \
-> > >   -monitor telnet:127.0.0.1:1235,server,nowait -bios QEMU_EFI.fd \
-> > >   -object memory-backend-ram,size=3D4G,id=3Dmem0 \
-> > >   -numa node,nodeid=3D0,cpus=3D0-3,memdev=3Dmem0
-> > >=20
-> > > Symptoms: Nothing on console from edk2 which is built in debug mode s=
-o is normally very noisy.
-> > >            No sign of anything much happening at all :(   =20
-> >=20
-> > This isn't a fantastic bug report.
-> >=20
-> > (1) If it doesn't boot efi, then none of the -kernel parameters are nec=
-essary.
-> > (2) I'd be surprised if the full.qcow2 drive parameters are necessary e=
-ither.
-> >      But if they are, what contents?  Is a new empty drive sufficient, =
-just
-> >      enough to send the bios through the correct device initialization?
-> > (3) edk2 build from ...
-> >      Well, this is partly edk2's fault, as the build documentation is a=
-wful.
-> >      I spent an entire afternoon trying to figure it out and gave up.
-> >=20
-> > I will say that the edk2 shipped with qemu does work, so... are you abs=
-olutely
-> > certain that it isn't a bug in edk2 since then?  Firmware bugs are exac=
-tly what
-> > that patch is supposed to expose, as requested by issue #1204.
-> >=20
-> > I'd say you should boot with "-d int" and see what kind of interrupts y=
-ou're getting very=20
-> > early on.  I suspect that you'll see data aborts with ESR xx/yy where t=
-he last 6 bits of=20
-> > yy are 0x21 (alignment fault). =20
->=20
-> Hi Richard,
->=20
-> Sorry for lack of details, I was aware it wasn't great and should have st=
-ated I planned
-> to come back with more details when I had time to debug.  Snowed under so=
- for now I've
-> just dropped back to 8.2 and will get back to this perhaps next week.
+Based-on: <20240417182806.69446-1-philmd@linaro.org>
+or https://gitlab.com/philmd/qemu/-/commits/exec-next
 
-+CC EDK2 list and Gerd.
+Philippe Mathieu-Daudé (24):
+  exec: Declare MMUAccessType type in 'mmu-access-type.h' header
+  exec: Declare CPUBreakpoint/CPUWatchpoint type in 'breakpoint.h'
+    header
+  hw/core: Avoid including the full 'hw/core/cpu.h' in 'tcg-cpu-ops.h'
+  exec: Restrict TCG specific declarations of 'cputlb.h'
+  exec: Restrict 'cpu_ldst.h' to TCG accelerator
+  exec: Have guest_addr_valid() methods take abi_ptr/size_t arguments
+  exec: Un-inline tlb_vaddr_to_host() and declare it in 'exec/cputlb.h'
+  physmem: Move TCG CPU IOTLB methods around
+  physmem: Restrict TCG CPU IOTLB code to TCG accel
+  exec: Reduce tlb_set_dirty() declaration scope
+  exec: Move tlb_reset_dirty*() declarations to 'exec/cputlb.h'
+  exec: Move CPUTLBEntry helpers to cputlb.c
+  target/sparc: Replace abi_ulong by uint32_t for TARGET_ABI32
+  exec: Rename 'exec/user/guest-base.h' as 'user/guest-base.h'
+  exec: Restrict inclusion of 'user/guest-base.h'
+  exec: Move GUEST_ADDR_MAX definition to 'cpu_ldst.h'
+  exec: Include missing 'qemu/log-for-trace.h' header in 'exec/log.h'
+  plugins: Include missing 'qemu/bitmap.h' header
+  gdbstub: Avoid including 'cpu.h' in 'gdbstub/helpers.h'
+  hw/xtensa: Include missing 'exec/cpu-common.h' in 'bootparam.h'
+  plugins: Un-inline qemu_plugin_disable_mem_helpers()
+  exec: Remove 'exec/tswap.h' from 'exec/cpu-all.h'
+  exec: Remove 'disas/disas.h' from 'exec/log.h'
+  exec: Remove unnecessary inclusions of 'hw/core/cpu.h'
 
-Still not a thorough report but some breadcrumbs.
+ hw/xtensa/bootparam.h            |   3 +
+ include/exec/breakpoint.h        |  23 ++++++
+ include/exec/cpu-all.h           |  39 +---------
+ include/exec/cpu-defs.h          |   1 -
+ include/exec/cpu_ldst.h          | 122 ++++++++++---------------------
+ include/exec/cputlb.h            |  58 ++++++++++++++-
+ include/exec/exec-all.h          |  26 +------
+ include/exec/log.h               |   2 +-
+ include/exec/mmu-access-type.h   |  18 +++++
+ include/exec/ram_addr.h          |   1 +
+ include/exec/user/guest-base.h   |  12 ---
+ include/gdbstub/helpers.h        |   3 +-
+ include/hw/boards.h              |   1 -
+ include/hw/core/cpu.h            |  24 +-----
+ include/hw/core/tcg-cpu-ops.h    |   6 +-
+ include/hw/ppc/openpic.h         |   1 -
+ include/qemu/plugin.h            |   7 +-
+ include/sysemu/hw_accel.h        |   1 -
+ include/user/guest-base.h        |  18 +++++
+ target/arm/internals.h           |   1 +
+ target/ppc/internal.h            |   1 +
+ target/riscv/debug.h             |   2 +
+ accel/stubs/tcg-stub.c           |   4 -
+ accel/tcg/cpu-exec.c             |   1 -
+ accel/tcg/cputlb.c               |  53 +++++++++++++-
+ accel/tcg/translator.c           |   1 +
+ accel/tcg/user-exec.c            |   7 ++
+ bsd-user/main.c                  |   1 +
+ hw/arm/boot.c                    |   1 +
+ hw/arm/npcm7xx.c                 |   1 +
+ hw/mips/fuloong2e.c              |   1 +
+ hw/mips/malta.c                  |   1 +
+ hw/ppc/sam460ex.c                |   1 +
+ hw/ppc/spapr.c                   |   1 +
+ hw/ppc/virtex_ml507.c            |   1 +
+ hw/sh4/r2d.c                     |   1 +
+ linux-user/elfload.c             |   1 +
+ linux-user/main.c                |   1 +
+ plugins/core.c                   |   5 ++
+ system/physmem.c                 |  58 ++++++++-------
+ target/arm/gdbstub.c             |   1 +
+ target/arm/tcg/helper-a64.c      |   1 +
+ target/avr/gdbstub.c             |   1 +
+ target/avr/translate.c           |   1 +
+ target/hexagon/translate.c       |   1 +
+ target/loongarch/tcg/translate.c |   1 +
+ target/riscv/vector_helper.c     |   1 +
+ target/rx/translate.c            |   1 +
+ target/sparc/gdbstub.c           |   2 +-
+ target/sparc/mmu_helper.c        |   1 +
+ target/tricore/gdbstub.c         |   1 +
+ target/xtensa/xtensa-semi.c      |   1 +
+ tcg/tcg.c                        |   3 +-
+ 53 files changed, 300 insertions(+), 226 deletions(-)
+ create mode 100644 include/exec/breakpoint.h
+ create mode 100644 include/exec/mmu-access-type.h
+ delete mode 100644 include/exec/user/guest-base.h
+ create mode 100644 include/user/guest-base.h
 
-May be something about my local build setup as the shipped EDK2 succeeds,
-but the one I'm building via
-uefi-tools/edk2-build.sh armvirtqemu64
-(some aged instructions here that are more or less working still)
-https://people.kernel.org/jic23/
-
-Indeed starts out with some alignment faults.
-
-Gerd, any ideas?  Maybe I needs something subtly different in my
-edk2 build?  I've not looked at this bit of the qemu infrastructure
-before - is there a document on how that image is built?
-As Richard observed, EDK2 isn't the simplest thing to build - I've
-been using uefitools for this for a long time, so maybe I missed some
-new requirement?
-
-Build machine is x86_64 ubuntu, gcc 12.2.0.
-
-I need to build it because of some necessary tweaks to debug a
-PCI enumeration issue in Linux. (these tests were without those
-tweaks)
-
-As Richard observed, most of the command line isn't needed.
-
-qemu-system-aarch64 -M virt,virtualization=3Dtrue, -m 4g -cpu cortex-a76 \
--bios QEMU_EFI.fd -d int
-
-Jonathan
-
-=20
-
-
->=20
-> Jonathan
->=20
-> >=20
-> >=20
-> > r~ =20
->=20
->=20
-
+-- 
+2.41.0

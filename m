@@ -1,384 +1,265 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1841789ejd;
-        Thu, 18 Apr 2024 09:14:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXjudFV3egNKdPZPwaEuXsyF3hrG90QBta3Iq4OexdzOO5ankocABb7DC3v38+MB4kwutrRvWFT5U3Ep7e+XTtDRPePBiNo
-X-Google-Smtp-Source: AGHT+IH1Abh1pWKmPdF/7F3pvCd1KhheTESTuVNetXjglJTams8q1ZzOT3JcBzgNDlqYo4ydhNzm
-X-Received: by 2002:a05:620a:562a:b0:78d:74e9:efe7 with SMTP id vv10-20020a05620a562a00b0078d74e9efe7mr3369599qkn.74.1713456866420;
-        Thu, 18 Apr 2024 09:14:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713456866; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1913192ejd;
+        Thu, 18 Apr 2024 11:11:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUF6hBMDHTQrDIX9ekp5eGQH/eFN78GSyP49RljLKZ0LNv/7V2n40+4ZJR8RWTxJtutbngTURaRrc8h9yD2fIgcOojNySUc
+X-Google-Smtp-Source: AGHT+IFtMU3FMMnghFzNeZS8EqfhVHJ5q/E/CnfIkNYlZ9KC61YIlphm5IxBH9ODcdkKeAhhEwi5
+X-Received: by 2002:a05:620a:28c6:b0:78e:e007:441e with SMTP id l6-20020a05620a28c600b0078ee007441emr4495113qkp.16.1713463873075;
+        Thu, 18 Apr 2024 11:11:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713463873; cv=none;
         d=google.com; s=arc-20160816;
-        b=d4SOyDNjYe6WOndHHX3PtTBjo4nDYuoeAMXl8TwMG0uyA6KmFyYcfFLxU8OobWS/30
-         7+KWjuXMZTSn1XoEedBEjGKcBoQSjGONfexMJYtE6wM0V7VnJHazGxUAm1NSlxuU15po
-         gArP9IhFFfRNlzWztSMbqp9dbLM/uvwmVwxXxp5eNzYBdWhyINxOclIY2/xIV03+fwGS
-         BBGzIhhFksN5eG6zVfvnv+V6weIDrDxrbU3uwJ1wccYMTog8CHLikRqZYrVrRvREptBR
-         bQ9nPHvY1IPRVLbGUutwGrKYyxsvQi5KKLM3YzpLm6vaqP0avAJzMx+WvOFaxc+H6ZVB
-         zhEQ==
+        b=g1cIBC7RzQWHb901RkBI6e4dJFTbRnPCKxwqbT7ukMfwzCtiFtBrv1+z2OYfLMEBHz
+         guuC9b3KNN8rwccp/M0n9NjnVouETD/3rQjhEYUb2QG98GEgcgpMgZ6hKs6RgHMoNWMU
+         P+eHgSX2rsuZkC2RXvAVYj1Aiy8i4ZbnKAU3XzEjHTA8FFtAwzSvYBrZiD0s6Z14Wp72
+         k6kGpSNlEAhbnmjb3EButiZT73CBQz/dvJtT2m3ng26pBZ2vAHtV1Ep8xQUHEIwaxFvt
+         bZah/yeI/ZEXcHnj6OY4glkL/xC6jOIj9moucpZ/WPNsgaqtUFq8qicCu1xfJ34ZK0+P
+         Ia+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=JJOnGFU3cPz5GR5xOKEzRfUk6QCDApwHA98gKMGvj1Q=;
-        fh=dkl4W7Ty5DQDYblIuR6iwQV8rfkW6Bl5VLJjLin9mSc=;
-        b=U7HPcQ4xpoiXt7UfAXFR+83/u3pNpHB6fSKXKjrva2Bc3THkJ4xkOhv2NGa5djGaUA
-         wb1Sr7MpJTVCu935e8Fr9+Ke63qLcIa0c7Ugg19wGr1P6tnwMApA+MNJKhaJ/joRpO9w
-         ppktz4fPxz9vXfJ9Ed/6qiq3SIiujdavZ58kmHXCSl4njuWNPf8OUseFD1BRsvoRZtaz
-         qjR31SC94dc93gxFaLM7QDBimcugDPfz3ySMryAJydJgPaQN91YUTGHu5DDMQ+JqFjGu
-         hvVzub3VD46/W8E7TLU/CWdsew46Qa1I1o4DHJfL7YG/aIMz9QDSKC8OafOQ6XJxSOjf
-         /gSQ==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=27eefg414On2YawNE62Pu8XoXMQ46Ze1X2uuQSi8kn4=;
+        fh=c7J4wz+aHdc/MeKH8q0kLU/RBuQGNRwTVU99zkyTSX8=;
+        b=nnUnBlYOvUVsxONAEHwU15jPA9qKI2nxs/K6pMDWJzW74OEMsXEUIqGQlGtiLYIHsY
+         FhnOgPOR7GtC9ZZGLolpXzZK8PrsHC3YclN0CK1c0nSha8yKztuIsYnfkrbjNsY8kgt+
+         aA2G179dfV2UQ/NIf7V8s8uglcRfUfNzfmLCqm6FvrCpmY1P+hz6AJlBVW0g7ZaUGQ3S
+         xs9JBq0qrjzoyqut1A88Ojng/AR9JwOdfkooX2grqmmU+3fmQfFBAU6pt77IRlxns5lC
+         s1D68eEbDmtTNaUI7wRsR7/6bYAjpOtBH8b1PAQoBT+lrsAI+qHyYjKYU2y3cGFJYijd
+         1SEg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id vr19-20020a05620a55b300b0078d63cf9e51si1693810qkn.657.2024.04.18.09.14.26
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YBMKAtXB;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id vu24-20020a05620a561800b0078d6245a065si1950507qkn.526.2024.04.18.11.11.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Apr 2024 09:14:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 18 Apr 2024 11:11:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rxUOx-0004QR-Bk; Thu, 18 Apr 2024 12:14:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=S08W=LX=kaod.org=clg@ozlabs.org>)
- id 1rxUOw-0004QF-KN; Thu, 18 Apr 2024 12:14:18 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=S08W=LX=kaod.org=clg@ozlabs.org>)
- id 1rxUOu-0007CH-2w; Thu, 18 Apr 2024 12:14:18 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4VL2sJ3Gxyz4x1t;
- Fri, 19 Apr 2024 02:14:12 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4VL2sC48JQz4wcC;
- Fri, 19 Apr 2024 02:14:07 +1000 (AEST)
-Message-ID: <64c6d5b2-9ee9-4b74-a679-1509e0293350@kaod.org>
-Date: Thu, 18 Apr 2024 18:14:04 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YBMKAtXB;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1713463872;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=27eefg414On2YawNE62Pu8XoXMQ46Ze1X2uuQSi8kn4=;
+	b=YBMKAtXBmhFuOtm62aAYqbakwokodLqFwdxFKa+P3F9nhStgaYNTt2jP6TS78LPchw4T4Q
+	6s6KBqs5LCwDT/C+30NRReT6P+XtlvZlgmvtQiGEojh2tenXVD0UWYNDdI9tkPvmqu40zP
+	zR91T/+Ot8beEAgszdfYw+XcE/Ndmzg=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-407-RPmPfU9qOmq9U_288bibbg-1; Thu, 18 Apr 2024 14:11:11 -0400
+X-MC-Unique: RPmPfU9qOmq9U_288bibbg-1
+Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-69b62a06757so17485056d6.0
+        for <alex.bennee@linaro.org>; Thu, 18 Apr 2024 11:11:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713463871; x=1714068671;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=27eefg414On2YawNE62Pu8XoXMQ46Ze1X2uuQSi8kn4=;
+        b=N3MX9MLJIKC8VaXEKvEbt60tLYBLQzkOEgcZODD8dNXO0Wa4BRl/u4exCutE8F2lI7
+         XucUpo+nZFUNFn+uedhMCYLnbpM4BkqLtRpRs0e3dWaXoUutXvk9YjgjqETNhJCaqLiu
+         M24pIGJk0O1UxFXi9sZoM2pULSTPog5p8unK8ddDF7bX8KWXdT5GT6YhWTkPFB1eeXsx
+         XLiWrKPJhhTV3Sj8JxOj6HK0L1ZTklBSP5HVtW0rFoT/b161B/h2dFSNhnOdqj+yK3Ee
+         /wmgw9jvrEzgK+alCHy3wTYKuVJQ4o9aqQvSGYhjMyaUDdn4iX2w1U4lHTOpWr7457ce
+         yyyA==
+X-Forwarded-Encrypted: i=1; AJvYcCWhq7odQORHxAVIvD/lZvcivHJCeVplH3bG8wmPVtWeoKvmc4fKRLM9Do8iykbrHS/EDBKsBkpAQpn9iKioKWvOIPS03R+3
+X-Gm-Message-State: AOJu0YxXn8dUIX/cjgQKmVx9NmQlbQMqFZpFUPIXYRETKKYpiwvL5PBZ
+	UI+jlO4t7bD/DoPS+2R6P2GwXsQ2kX+XA5WAd5xdkAvmrDuHDdfcRYk+C6oGayobalDmBBsDfyf
+	eBnEk492FLMNQRAFnUUhcuACpzTo7+Bn4oMga9IONS5b1vH6QVJYj7g==
+X-Received: by 2002:ad4:4482:0:b0:69b:6fb4:f0d1 with SMTP id m2-20020ad44482000000b0069b6fb4f0d1mr3965676qvt.62.1713463870654;
+        Thu, 18 Apr 2024 11:11:10 -0700 (PDT)
+X-Received: by 2002:ad4:4482:0:b0:69b:6fb4:f0d1 with SMTP id m2-20020ad44482000000b0069b6fb4f0d1mr3965648qvt.62.1713463870250;
+        Thu, 18 Apr 2024 11:11:10 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id o6-20020a0ce406000000b0069b534fb8b0sm845480qvl.59.2024.04.18.11.11.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 18 Apr 2024 11:11:09 -0700 (PDT)
+Message-ID: <14a6fbf1-4f05-42a7-a59b-7195e95aed6f@redhat.com>
+Date: Thu, 18 Apr 2024 20:11:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 09/16] aspeed/smc: Add AST2700 support
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
- <20240416091904.935283-10-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240416091904.935283-10-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Reply-To: eric.auger@redhat.com
+Subject: Re: [RFC PATCH v2 00/13] SMMUv3 nested translation support
+To: Mostafa Saleh <smostafa@google.com>, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, qemu-devel@nongnu.org
+Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+ nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
+ marcin.juszkiewicz@linaro.org
+References: <20240408140818.3799590-1-smostafa@google.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20240408140818.3799590-1-smostafa@google.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=S08W=LX=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jKUjYOpU+PN1
+X-TUID: BAkrBM8tEDr4
 
-On 4/16/24 11:18, Jamin Lin wrote:
-> AST2700 fmc/spi controller's address decoding unit is 64KB
-> and only bits [31:16] are used for decoding. Introduce seg_to_reg
-> and reg_to_seg handlers for ast2700 fmc/spi controller.
-> In addition, adds ast2700 fmc, spi0, spi1, and spi2 class init handler.
-> 
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Hi Mostafa,
 
+On 4/8/24 16:08, Mostafa Saleh wrote:
+> Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
+> but not nested instances.
+> This patch series adds support for nested translation in SMMUv3,
+> this is controlled by property “arm-smmuv3.stage=nested”, and
+> advertised to guests as (IDR0.S1P == 1 && IDR0.S2P == 2)
+>
+> Main changes(architecture):
+> ============================
+> 1) CDs are considered IPA and translated with stage-2.
+> 2) TTBx and tables for stage-1 are considered IPA and translated
+>    with stage-2.
+> 3) Translate the IPA address with stage-2.
+>
+> TLBs:
+> ======
+> TLBs are the most tricky part.
+>
+> 1) General design
+>    Unified(Combined) design is used, where entries with ASID=-1 are
+>    IPAs(cached from stage-2 config)
+>
+>    TLBs are also modified to cache 2 permissions, a new permission added
+>    "parent_perm."
+>
+>    For non-nested configuration, perm == parent_perm and nothing
+>    changes. This is used to know which stage to use in case there is
+>    a permission fault from a TLB entry.
+>
+> 2) Caching in TLB
+>    Stage-1 and stage-2 are inserted in the TLB as is.
+>    For nested translation, both entries are combined into one TLB
+>    entry. The size (level and granule) are chosen from the smallest entries.
+>    That means that a stage-1 translation can be cached with sage-2
+>    granule in key, this is take into account lookup.
+is that a correct understanding that with the current implementation, in
+nested mode, you end up with combined S1 + S2 entries (IOVA -> PA) and
+S2 entries (IPA -> PA)?
+Out of cusiosity, how did you end up with that choice? Have you made
+some perf assessment compared to separate S1 and S2 entries? I guess it
+is a complex topic and choice.
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Thanks
 
-Thanks,
-
-C.
-
-
-> ---
->   hw/ssi/aspeed_smc.c | 222 +++++++++++++++++++++++++++++++++++++++++++-
->   1 file changed, 220 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index a67cac3d0f..e768e5463c 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -185,7 +185,7 @@
->    *   0: 4 bytes
->    *   0x7FFFFF: 32M bytes
->    *
-> - * DMA length is from 1 byte to 32MB (AST2600, AST10x0)
-> + * DMA length is from 1 byte to 32MB (AST2600, AST10x0 and AST2700)
->    *   0: 1 byte
->    *   0x1FFFFFF: 32M bytes
->    */
-> @@ -670,7 +670,7 @@ static const MemoryRegionOps aspeed_smc_flash_ops = {
->       .endianness = DEVICE_LITTLE_ENDIAN,
->       .valid = {
->           .min_access_size = 1,
-> -        .max_access_size = 4,
-> +        .max_access_size = 8,
->       },
->   };
->   
-> @@ -1951,6 +1951,220 @@ static const TypeInfo aspeed_1030_spi2_info = {
->       .class_init = aspeed_1030_spi2_class_init,
->   };
->   
-> +/*
-> + * The FMC Segment Registers of the AST2700 have a 64KB unit.
-> + * Only bits [31:16] are used for decoding.
-> + */
-> +#define AST2700_SEG_ADDR_MASK 0xffff0000
-> +
-> +static uint32_t aspeed_2700_smc_segment_to_reg(const AspeedSMCState *s,
-> +                                               const AspeedSegments *seg)
-> +{
-> +    uint32_t reg = 0;
-> +
-> +    /* Disabled segments have a nil register */
-> +    if (!seg->size) {
-> +        return 0;
-> +    }
-> +
-> +    reg |= (seg->addr & AST2700_SEG_ADDR_MASK) >> 16; /* start offset */
-> +    reg |= (seg->addr + seg->size - 1) & AST2700_SEG_ADDR_MASK; /* end offset */
-> +    return reg;
-> +}
-> +
-> +static void aspeed_2700_smc_reg_to_segment(const AspeedSMCState *s,
-> +                                           uint32_t reg, AspeedSegments *seg)
-> +{
-> +    uint32_t start_offset = (reg << 16) & AST2700_SEG_ADDR_MASK;
-> +    uint32_t end_offset = reg & AST2700_SEG_ADDR_MASK;
-> +    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-> +
-> +    if (reg) {
-> +        seg->addr = asc->flash_window_base + start_offset;
-> +        seg->size = end_offset + (64 * KiB) - start_offset;
-> +    } else {
-> +        seg->addr = asc->flash_window_base;
-> +        seg->size = 0;
-> +    }
-> +}
-> +
-> +static const uint32_t aspeed_2700_fmc_resets[ASPEED_SMC_R_MAX] = {
-> +    [R_CONF] = (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0 |
-> +            CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1),
-> +    [R_CE_CTRL] = 0x0000aa00,
-> +    [R_CTRL0] = 0x406b0641,
-> +    [R_CTRL1] = 0x00000400,
-> +    [R_CTRL2] = 0x00000400,
-> +    [R_CTRL3] = 0x00000400,
-> +    [R_SEG_ADDR0] = 0x08000000,
-> +    [R_SEG_ADDR1] = 0x10000800,
-> +    [R_SEG_ADDR2] = 0x00000000,
-> +    [R_SEG_ADDR3] = 0x00000000,
-> +    [R_DUMMY_DATA] = 0x00010000,
-> +    [R_DMA_DRAM_ADDR_HIGH] = 0x00000000,
-> +    [R_TIMINGS] = 0x007b0000,
-> +};
-> +
-> +static const AspeedSegments aspeed_2700_fmc_segments[] = {
-> +    { 0x0, 128 * MiB }, /* start address is readonly */
-> +    { 128 * MiB, 128 * MiB }, /* default is disabled but needed for -kernel */
-> +    { 256 * MiB, 128 * MiB }, /* default is disabled but needed for -kernel */
-> +    { 0x0, 0 }, /* disabled */
-> +};
-> +
-> +static void aspeed_2700_fmc_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-> +
-> +    dc->desc               = "Aspeed 2700 FMC Controller";
-> +    asc->r_conf            = R_CONF;
-> +    asc->r_ce_ctrl         = R_CE_CTRL;
-> +    asc->r_ctrl0           = R_CTRL0;
-> +    asc->r_timings         = R_TIMINGS;
-> +    asc->nregs_timings     = 3;
-> +    asc->conf_enable_w0    = CONF_ENABLE_W0;
-> +    asc->cs_num_max        = 3;
-> +    asc->segments          = aspeed_2700_fmc_segments;
-> +    asc->segment_addr_mask = 0xffffffff;
-> +    asc->resets            = aspeed_2700_fmc_resets;
-> +    asc->flash_window_base = 0x100000000;
-> +    asc->flash_window_size = 1 * GiB;
-> +    asc->features          = ASPEED_SMC_FEATURE_DMA |
-> +                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
-> +    asc->dma_flash_mask    = 0x2FFFFFFC;
-> +    asc->dma_dram_mask     = 0xFFFFFFFC;
-> +    asc->dma_start_length  = 1;
-> +    asc->nregs             = ASPEED_SMC_R_MAX;
-> +    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
-> +    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
-> +    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-> +}
-> +
-> +static const TypeInfo aspeed_2700_fmc_info = {
-> +    .name =  "aspeed.fmc-ast2700",
-> +    .parent = TYPE_ASPEED_SMC,
-> +    .class_init = aspeed_2700_fmc_class_init,
-> +};
-> +
-> +static const AspeedSegments aspeed_2700_spi0_segments[] = {
-> +    { 0x0, 128 * MiB }, /* start address is readonly */
-> +    { 128 * MiB, 128 * MiB }, /* start address is readonly */
-> +    { 0x0, 0 }, /* disabled */
-> +};
-> +
-> +static void aspeed_2700_spi0_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-> +
-> +    dc->desc               = "Aspeed 2700 SPI0 Controller";
-> +    asc->r_conf            = R_CONF;
-> +    asc->r_ce_ctrl         = R_CE_CTRL;
-> +    asc->r_ctrl0           = R_CTRL0;
-> +    asc->r_timings         = R_TIMINGS;
-> +    asc->nregs_timings     = 2;
-> +    asc->conf_enable_w0    = CONF_ENABLE_W0;
-> +    asc->cs_num_max        = 2;
-> +    asc->segments          = aspeed_2700_spi0_segments;
-> +    asc->segment_addr_mask = 0xffffffff;
-> +    asc->flash_window_base = 0x180000000;
-> +    asc->flash_window_size = 1 * GiB;
-> +    asc->features          = ASPEED_SMC_FEATURE_DMA |
-> +                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
-> +    asc->dma_flash_mask    = 0x2FFFFFFC;
-> +    asc->dma_dram_mask     = 0xFFFFFFFC;
-> +    asc->dma_start_length  = 1;
-> +    asc->nregs             = ASPEED_SMC_R_MAX;
-> +    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
-> +    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
-> +    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-> +}
-> +
-> +static const TypeInfo aspeed_2700_spi0_info = {
-> +    .name =  "aspeed.spi0-ast2700",
-> +    .parent = TYPE_ASPEED_SMC,
-> +    .class_init = aspeed_2700_spi0_class_init,
-> +};
-> +
-> +static const AspeedSegments aspeed_2700_spi1_segments[] = {
-> +    { 0x0, 128 * MiB }, /* start address is readonly */
-> +    { 0x0, 0 }, /* disabled */
-> +};
-> +
-> +static void aspeed_2700_spi1_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-> +
-> +    dc->desc               = "Aspeed 2700 SPI1 Controller";
-> +    asc->r_conf            = R_CONF;
-> +    asc->r_ce_ctrl         = R_CE_CTRL;
-> +    asc->r_ctrl0           = R_CTRL0;
-> +    asc->r_timings         = R_TIMINGS;
-> +    asc->nregs_timings     = 2;
-> +    asc->conf_enable_w0    = CONF_ENABLE_W0;
-> +    asc->cs_num_max        = 2;
-> +    asc->segments          = aspeed_2700_spi1_segments;
-> +    asc->segment_addr_mask = 0xffffffff;
-> +    asc->flash_window_base = 0x200000000;
-> +    asc->flash_window_size = 1 * GiB;
-> +    asc->features          = ASPEED_SMC_FEATURE_DMA |
-> +                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
-> +    asc->dma_flash_mask    = 0x2FFFFFFC;
-> +    asc->dma_dram_mask     = 0xFFFFFFFC;
-> +    asc->dma_start_length  = 1;
-> +    asc->nregs             = ASPEED_SMC_R_MAX;
-> +    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
-> +    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
-> +    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-> +}
-> +
-> +static const TypeInfo aspeed_2700_spi1_info = {
-> +        .name =  "aspeed.spi1-ast2700",
-> +        .parent = TYPE_ASPEED_SMC,
-> +        .class_init = aspeed_2700_spi1_class_init,
-> +};
-> +
-> +static const AspeedSegments aspeed_2700_spi2_segments[] = {
-> +    { 0x0, 128 * MiB }, /* start address is readonly */
-> +    { 0x0, 0 }, /* disabled */
-> +};
-> +
-> +static void aspeed_2700_spi2_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
-> +
-> +    dc->desc               = "Aspeed 2700 SPI2 Controller";
-> +    asc->r_conf            = R_CONF;
-> +    asc->r_ce_ctrl         = R_CE_CTRL;
-> +    asc->r_ctrl0           = R_CTRL0;
-> +    asc->r_timings         = R_TIMINGS;
-> +    asc->nregs_timings     = 2;
-> +    asc->conf_enable_w0    = CONF_ENABLE_W0;
-> +    asc->cs_num_max        = 2;
-> +    asc->segments          = aspeed_2700_spi2_segments;
-> +    asc->segment_addr_mask = 0xffffffff;
-> +    asc->flash_window_base = 0x280000000;
-> +    asc->flash_window_size = 1 * GiB;
-> +    asc->features          = ASPEED_SMC_FEATURE_DMA |
-> +                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
-> +    asc->dma_flash_mask    = 0x0FFFFFFC;
-> +    asc->dma_dram_mask     = 0xFFFFFFFC;
-> +    asc->dma_start_length  = 1;
-> +    asc->nregs             = ASPEED_SMC_R_MAX;
-> +    asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
-> +    asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
-> +    asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-> +}
-> +
-> +static const TypeInfo aspeed_2700_spi2_info = {
-> +        .name =  "aspeed.spi2-ast2700",
-> +        .parent = TYPE_ASPEED_SMC,
-> +        .class_init = aspeed_2700_spi2_class_init,
-> +};
-> +
->   static void aspeed_smc_register_types(void)
->   {
->       type_register_static(&aspeed_smc_flash_info);
-> @@ -1967,6 +2181,10 @@ static void aspeed_smc_register_types(void)
->       type_register_static(&aspeed_1030_fmc_info);
->       type_register_static(&aspeed_1030_spi1_info);
->       type_register_static(&aspeed_1030_spi2_info);
-> +    type_register_static(&aspeed_2700_fmc_info);
-> +    type_register_static(&aspeed_2700_spi0_info);
-> +    type_register_static(&aspeed_2700_spi1_info);
-> +    type_register_static(&aspeed_2700_spi2_info);
->   }
->   
->   type_init(aspeed_smc_register_types)
-
+Eric
+>
+> 3) TLB Lookup
+>    TLB lookup already uses ASID in key, so it can distinguish between
+>    stage-1 and stage-2.
+>    And as mentioned above, the granule for stage-1 can be different,
+>    If stage-1 lookup failed, we try again with the stage-2 granule.
+>
+> 4) TLB invalidation
+>    - Address invalidation is split, for IOVA(CMD_TLBI_NH_VA
+>      /CMD_TLBI_NH_VAA) and IPA(CMD_TLBI_S2_IPA) based on ASID value
+>    - CMD_TLBI_NH_ASID/CMD_TLBI_NH_ALL: Consider VMID if stage-2 is
+>      supported, and invalidate stage-1 only by VMIDs
+>
+> As far as I understand, this is compliant with the ARM architecture:
+> - ARM ARM DDI 0487J.a: RLGSCG, RTVTYQ, RGNJPZ
+> - ARM IHI 0070F.b: 16.2 Caching
+>
+> An alternative approach would be to instantiate 2 TLBs, one per each
+> stage. I haven’t investigated that.
+>
+> Others
+> =======
+> - Advertise SMMUv3.2-S2FWB, it is NOP for QEMU as it doesn’t support
+>   attributes.
+>
+> - OAS: A typical setup with nesting is to share CPU stage-2 with the
+>   SMMU, and according to the user manual, SMMU OAS must match the
+>   system physical address.
+>
+>   This was discussed before in
+>   https://lore.kernel.org/all/20230226220650.1480786-11-smostafa@google.com/
+>   The implementation here, follows the discussion, where migration is
+>   added and oas is set up from the board (virt). However, the OAS is
+>   chosen based on the CPU PARANGE as there is no fixed one.
+>
+> - For nested configuration, IOVA notifier only notifies for stage-1
+>   invalidations (as far as I understand this is the intended
+>   behaviour as it notifies for IOVA)
+>
+> - Stop ignoring VMID for stage-1 if stage-2 is also supported.
+>
+>
+> Future improvements:
+> =====================
+> 1) One small improvement, that I don’t think it’s worth the extra
+>    complexity, is in case of Stage-1 TLB miss for nested translation,
+>    we can do stage-1 walk and lookup for stage-2 TLBs, instead of
+>    doing the full walk.
+>
+> 2) Patch 0006 (hw/arm/smmuv3: Translate CD and TT using stage-2 table)
+>    introduces a macro to use functions that rely on cfg for stage-2,
+>    I don’t like it. However, I didn’t find a simple way around it,
+>    either we change many functions to have a separate stage argument,
+>    or add another arg in config, which is probably more code.
+>
+> Testing
+> ========
+> 1) IOMMUFD + VFIO
+>    Kernel: https://lore.kernel.org/all/cover.1683688960.git.nicolinc@nvidia.com/
+>    VMM: https://qemu-devel.nongnu.narkive.com/o815DqpI/rfc-v5-0-8-arm-smmuv3-emulation-support
+>
+>    By assigning “virtio-net-pci,netdev=net0,disable-legacy=on,iommu_platform=on,ats=on”,
+>    to a guest VM (on top of QEMU guest) with VIFO and IOMMUFD.
+>
+> 2) Work in progress prototype I am hacking on for nesting on KVM
+>    (this is nowhere near complete, and misses many stuff but it
+>    doesn't require VMs/VFIO) also with virtio-net-pci and git
+>    cloning a bunch of stuff and also observing traces.
+>    https://android-kvm.googlesource.com/linux/+log/refs/heads/smostafa/android15-6.6-smmu-nesting-wip
+>
+> I also modified the Linux driver to test with mixed granules/levels.
+>
+> hw/arm/smmuv3: Split smmuv3_translate() better viewed with --color-moved
+>
+> Changes in v2:
+> v1: https://lore.kernel.org/qemu-devel/20240325101442.1306300-1-smostafa@google.com/
+> - Collected Eric Rbs
+> - Rework TLB to rely on VMID/ASID instead of an extra key.
+> - Fixed TLB issue with large stage-1 reported by Julian.
+> - Cap the OAS to 48 bits as PTW doesn’t support 52 bits.
+> - Fix ASID/VMID representation in some contexts as 16 bits while
+>   they can be -1
+> - Increase visibility in trace points
+>
+>
+> Mostafa Saleh (13):
+>   hw/arm/smmu: Use enum for SMMU stage
+>   hw/arm/smmu: Split smmuv3_translate()
+>   hw/arm/smmu: Consolidate ASID and VMID types
+>   hw/arm/smmuv3: Translate CD and TT using stage-2 table
+>   hw/arm/smmu-common: Support nested translation
+>   hw/arm/smmu: Support nesting in smmuv3_range_inval()
+>   hw/arm/smmu: Support nesting in the rest of commands
+>   hw/arm/smmuv3: Support nested SMMUs in smmuv3_notify_iova()
+>   hw/arm/smmuv3: Support and advertise nesting
+>   hw/arm/smmuv3: Advertise S2FWB
+>   hw/arm/smmu: Refactor SMMU OAS
+>   hw/arm/smmuv3: Add property for OAS
+>   hw/arm/virt: Set SMMU OAS based on CPU PARANGE
+>
+>  hw/arm/smmu-common.c         | 306 +++++++++++++++++++++----
+>  hw/arm/smmuv3-internal.h     |  16 +-
+>  hw/arm/smmuv3.c              | 418 ++++++++++++++++++++++-------------
+>  hw/arm/trace-events          |  18 +-
+>  hw/arm/virt.c                |  14 +-
+>  include/hw/arm/smmu-common.h |  57 ++++-
+>  include/hw/arm/smmuv3.h      |   1 +
+>  target/arm/cpu.h             |   2 +
+>  target/arm/cpu64.c           |   5 +
+>  9 files changed, 608 insertions(+), 229 deletions(-)
+>

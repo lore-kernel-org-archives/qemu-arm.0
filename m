@@ -1,78 +1,78 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1952860ejd;
-        Thu, 18 Apr 2024 12:27:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXkIEuVLtZk5oaUgPmAbCHB0ztz/uDTFt0lJBwzj7fjJ9Rd1VRmLv+bhEQcvmrlEmGX5Y2hqK2tCE9iAxnOutvDgwrXN6xL
-X-Received: by 2002:a17:906:4686:b0:a52:3556:85db with SMTP id a6-20020a170906468600b00a52355685dbmr69392ejr.19.1713468433716;
-        Thu, 18 Apr 2024 12:27:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713468433; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1952901ejd;
+        Thu, 18 Apr 2024 12:27:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUIdTBRpyH8n1Etk8XldoIiANRCWpUo5R4be8x3VrR2+/2h+ghCyyNQZQEZOVB/z01RbJ/v9TBP0Nrs0YTE8m2BjdFa2ss0
+X-Received: by 2002:a05:6512:512:b0:515:bc26:24d8 with SMTP id o18-20020a056512051200b00515bc2624d8mr2085963lfb.66.1713468439522;
+        Thu, 18 Apr 2024 12:27:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713468439; cv=none;
         d=google.com; s=arc-20160816;
-        b=RUxvc720EeAg594mZlav4TKRWOSqS/JP8w/szvFjdN8VewzYQqrtG7u/2bQ9Z3xcsa
-         WG2RZTgbPkaQzStY9pz3Vy3esqtvzjG0LIVCEND6n1hwvtZ0KFc4fg4msd6S+aFjPt/w
-         fiJNmRLr1Tq8xKY4qyZAd09913l9YRok4fybAXo2RKym4z9v+sCL1w5IA9Ydo4xRuCb6
-         wl+xSZBk+oaQaNEzCJO+rSZ/Espnxzya578vu40RaE/pD7JHAgRY2crrq/4LVYOK1b+6
-         ALfQ/D63tRMBSvH1v2OMiavXLBug0cwWNX0WRiWSZirtu3o0IEj6ubIvhWml5HSf/8kn
-         Di8Q==
+        b=fzsDR3+ajyYxtVpRwhGVLgcThYOkeo62tnVj/ooP29hi1jOJtVDRtDP3zhJO769/Du
+         oqJCCvmkeW6pk5Ml5LukpCEI4HE0Wmqfje1bIShWZxqxr7bIFrD046/ph95RXu3ev9fT
+         zhei8Y1AuBPPAjEOr3Z5yGWJijaLDa5d7qPUI5m9EJay03bTIBguWKNXfdqslXWhQsIt
+         uPJVjQ/uHod2l69721Q1iM+3hTvieh6w5xUkX7rLHsv698LvZqMN/XIv9C85CXoSo6vj
+         3EgNwuanUS+TULTdGfKch6g5gBIngjSx5iSjh1pQdypA8eQPWVb1j1SYs2xyqxp+MpIL
+         lqew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Dml4vJCRKxCVY1uFtRIPG5lLzhQacgo/ZMSZt5sIQXk=;
-        fh=NPRSV4VBEpK7l5hwP+FVzIstNZ/0tIxs0Wgh2HjQ5b8=;
-        b=XAMiivkxkDP8iNHd7fqjLF6k9pcLxPf/lik3sdu2nqOGQkHGOJ2M6Q8QX4H63FrVZw
-         NTwstdS4KLOh+I92CVjU/8JOSFqQg42Q+2W0ml7/KXzAyxzccq7RtNqAZYYO9FuiKqoy
-         0nwrPSPSkOKTHY80Y2eGbPWai0A295MB4ZWDWLuT+dzFYHbPI6lJvPM6iDUouFZPFiJS
-         CUzepfh0fdeK5uk+DPAJ6VFHrgcZo3UYHE+Ho3YMOPlrSlmQusZaq8NngI3sTaiQkdWt
-         lxeLMzCRioMxThYsjHy14wqLQcNm3wuHUyotB+7MylbIAfMEzQXTWs8eCAniQlOeWY86
-         gZLA==;
+        bh=koVgyajCEgUVl/LMvNKONPGr1ZhJ2eug5WfoAqRNjUs=;
+        fh=rkcCbXOP/Jfttq+7Iyjeu0cDFcjpddcwa56mRym1AS8=;
+        b=Mq7a9BryZy/T3YAaf4FA5WtnTa5iZOFFEMW8BcwSQJ0iVimK2sy1Tqg0Z1L6bhYZE/
+         rdnDIi/m8Wa/Mt/FNNneRsLrsBmxn37d3FC4SxGk2Tb6GJo8eNwT07poUR94u2l48F52
+         KTBjYj3z0zgnCuyWQSsfxzH7CbpZ8hnpi4K36Cm0lR8hZOWOh4sD0HhsGWgfOvIANvyF
+         2JqestFCEMgy3hfqbTdQ27LSVS0EzsvHx0cJrrqfhPqcEQK8Wc7J0tfPfpaqR0E6miz4
+         MKC72OqH+zVt8CwrqhGBYthnm3vCk7tVzR92b4OzZqFFk2IgW3j9QLi4NdLfJuguN7hs
+         Fivw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L5aFpv6H;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mcFcbqa8;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id md23-20020a170906ae9700b00a519d941850sor706772ejb.4.2024.04.18.12.27.13
+        by mx.google.com with SMTPS id kv4-20020a17090778c400b00a55659e10d4sor729525ejc.1.2024.04.18.12.27.19
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 18 Apr 2024 12:27:13 -0700 (PDT)
+        Thu, 18 Apr 2024 12:27:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L5aFpv6H;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mcFcbqa8;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713468433; x=1714073233; darn=linaro.org;
+        d=linaro.org; s=google; t=1713468439; x=1714073239; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Dml4vJCRKxCVY1uFtRIPG5lLzhQacgo/ZMSZt5sIQXk=;
-        b=L5aFpv6HagDGBboEGkj1QKNzCYF14FRkgb6qJEH8OICndnFSHkaqaAr7dIMnbzJYY3
-         tCgHb5NGsqhRCIALf0zgjKjRvvqQuXk86WgiDvwu6Z3SdUXJwpyRZyp8eR2fHKdXIXIt
-         ic0U66Gj39KyZUrHbi88FwzWZ4YDI4Y5rNzMsyJlwu3Tsaw5aQyvdTyRhV3lm/uUkLw1
-         3/0LzLrik+p9zQWNH1oaipNbWZYGszn4XelzOEGRNH9LycZUMlW3sHpcIPIWlJoaNN0Y
-         O43tLyWs2wgUz2Nw9RLYWhkS6Z0A2kjUg1fy78e+2ONbHZJRK9/PinQF09UB2jdi1YDO
-         L/ZA==
+        bh=koVgyajCEgUVl/LMvNKONPGr1ZhJ2eug5WfoAqRNjUs=;
+        b=mcFcbqa8yWYt9Bgv3aYqJcG2sCKbceWnsTu0WBLBdFyth47oZSTqJbjTeT3m7GghxP
+         11+9f8GkOPg5fOcLWAWBb+hDbsWen5h3rlu3LImtEKf1Wt9gARjZ2npE3faPtJXDOBLM
+         bs6xOK6kWsRfee+TWcC6SQLkw8wz1J9npUo/la7PvspTk9/AkwNFzVZTaD6IYVxCu4Ky
+         rEtfJaW0rilSMEHQmVl8AHzvyykf+Jfg2jklywYpbJJZ0V4RWRUYi27oBrpjOymN/t/M
+         hnnuImJeWL8J0lZ6oF4C7cJZsiwK1TmPpj8L06WrSHtHxcGV215DowedFYef3JIunJQI
+         +6yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713468433; x=1714073233;
+        d=1e100.net; s=20230601; t=1713468439; x=1714073239;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Dml4vJCRKxCVY1uFtRIPG5lLzhQacgo/ZMSZt5sIQXk=;
-        b=CAmkeIukdTlg4iF5WHjrgdcpIt8ELLZES/HQseU0G5/D98xnYPNbFXRsvY5+gfDZxD
-         UZYdjbawWzDSvm2bWfDjHq01gIEyaXGCFu2P16Xi4pzLOa7wc6gyuB3D2fps7GKridKB
-         TCpeza5GROy/iKwnpPINdsvbyfwKHL86o1aCgdnGQJxq5ftNW3qnIfcmPRItbJom6Z6k
-         UnYUgD4KtxtOtJVQ49/hOun/fZ8KXC/f//No4/VHMQnPp+LFgapSI5EQ+iXa3eR3e9y+
-         EVQjMjfnlP5XqYbBoGTQQKyKBPEZuAe4yQr82m0JsMtNVirDL80rYWuF7kmTMY30eJbV
-         hNjw==
-X-Forwarded-Encrypted: i=1; AJvYcCXyqycLHHe2w96G7XKsrfZf5YvBhYaHMJktecmJZNNs81KgRe66ZZYcSV2M7aS2IdZxs1VjSivO00XSCiU2KvrHHW7roAZB
-X-Gm-Message-State: AOJu0YwZ02s/K53MswXjzkwjnlcMIXxp6PBWoqiUUeApu2g7S+SIV8mS
-	93Jj1bW8JVY+TMsdwa7x7ppehhI8VmxsB3nKgdQhqRLivIWdqP7ooEop1N2LSzI2Xw==
-X-Google-Smtp-Source: AGHT+IErWPr/zfg0WmvCw3RKPanQkeAYRatbBUwaG2fx37IV0JpOFdDvX+lUOlTZSWvTHHNC9ulpZw==
-X-Received: by 2002:a17:906:6bc7:b0:a52:13ee:8124 with SMTP id t7-20020a1709066bc700b00a5213ee8124mr59241ejs.35.1713468433364;
-        Thu, 18 Apr 2024 12:27:13 -0700 (PDT)
+        bh=koVgyajCEgUVl/LMvNKONPGr1ZhJ2eug5WfoAqRNjUs=;
+        b=xAN2bSRqNbBFE4USVQ9XDNYUCmJYr6ICj1d8Lvj5W/rLLNAjqRhoEGdLi2B29r91zR
+         9B7Mpj48aSyMHqGFxYju+o2/nvOa0VY/YLq3V2pdBdUs/ffJTcR7jVYDQ3zKCQ8merxE
+         3u1hH6Chkic5gi37zssbsT8qpIotWcbo9V9CbzxTW97viy7hb3Gtt8ZY6xPUoz/x1qXV
+         rOdS7/6dl89vkjZ9BG02Z2PJ6IkLs2JbbbMgXyHUQw5Jnd03AwhQ9xzxrV32RK44NwC1
+         yS724Zp2ZMf70TmqRUitVC1PoWSfG9K2AIgyS2GNX1N8ZhaWsjihrvUsHOM4evzup+oT
+         0kMQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXbSYNkIxGdg5eEyuRAAPfhbiEbS7kNesYc/w6McscPwxlgmD842U7LyPtxLbt3KBXMh1NoRl1/kuyWChiND212dUS8eWve
+X-Gm-Message-State: AOJu0YwqkQ/jtKR4lqA54glgUYGcIRveBUQhKVfIL2XRl5rBiLvuoODY
+	Y2qr2nEO3AE0EAIqPVMY1GTbdSXzQSvJ3WzLZI9Yn+fAK95zdTBjXkQS+lmsl+omiA==
+X-Google-Smtp-Source: AGHT+IGUKx1BaAucoqEBkcKvR0ggaq6VcW3+/vbLpdXj+U90uCMnnNyN02Af7LhJb66dZ9m1Y8QZCA==
+X-Received: by 2002:a17:906:6013:b0:a52:ec:a87d with SMTP id o19-20020a170906601300b00a5200eca87dmr48021ejj.74.1713468439142;
+        Thu, 18 Apr 2024 12:27:19 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.151.213])
-        by smtp.gmail.com with ESMTPSA id x16-20020a1709060a5000b00a5575c9d5b4sm967734ejf.63.2024.04.18.12.27.11
+        by smtp.gmail.com with ESMTPSA id n22-20020a170906119600b00a51a9d87570sm1269573eja.17.2024.04.18.12.27.17
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 18 Apr 2024 12:27:12 -0700 (PDT)
+        Thu, 18 Apr 2024 12:27:18 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -83,122 +83,129 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	David Hildenbrand <david@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Anton Johansson <anjo@rev.ng>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Warner Losh <imp@bsdimp.com>,
-	Kyle Evans <kevans@freebsd.org>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH 15/24] exec: Restrict inclusion of 'user/guest-base.h'
-Date: Thu, 18 Apr 2024 21:25:14 +0200
-Message-ID: <20240418192525.97451-16-philmd@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 16/24] exec: Move GUEST_ADDR_MAX definition to 'cpu_ldst.h'
+Date: Thu, 18 Apr 2024 21:25:15 +0200
+Message-ID: <20240418192525.97451-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240418192525.97451-1-philmd@linaro.org>
 References: <20240418192525.97451-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: TGukmPcu7zAu
+X-TUID: NPtxjx4/D5c6
 
-Declare 'have_guest_base' in "user/guest-base.h".
-
-Very few files require this header, so explicitly include
-it there instead of "exec/cpu-all.h" which is used in many
-source files.
-
-Assert this user-specific header is only included from user
-emulation.
+GUEST_ADDR_MAX is only used in accel/tcg/user-exec.c
+and "exec/cpu_ldst.h". Move it from "exec/cpu-all.h"
+to "exec/cpu_ldst.h" so we can avoid including
+"exec/cpu-all.h" in accel/tcg/user-exec.c.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20231211212003.21686-23-philmd@linaro.org>
 ---
- include/exec/cpu-all.h    | 3 ---
- include/exec/cpu_ldst.h   | 2 ++
- include/user/guest-base.h | 6 ++++++
- bsd-user/main.c           | 1 +
- linux-user/elfload.c      | 1 +
- linux-user/main.c         | 1 +
- 6 files changed, 11 insertions(+), 3 deletions(-)
+ include/exec/cpu-all.h  | 34 +---------------------------------
+ include/exec/cpu_ldst.h | 30 ++++++++++++++++++++++++++++++
+ accel/tcg/cpu-exec.c    |  1 -
+ 3 files changed, 31 insertions(+), 34 deletions(-)
 
 diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 027f19e052..e75ec13cd0 100644
+index e75ec13cd0..554b937ddb 100644
 --- a/include/exec/cpu-all.h
 +++ b/include/exec/cpu-all.h
-@@ -65,9 +65,6 @@
+@@ -63,39 +63,7 @@
  
- #if defined(CONFIG_USER_ONLY)
- #include "exec/user/abitypes.h"
--#include "user/guest-base.h"
+ /* MMU memory access macros */
+ 
+-#if defined(CONFIG_USER_ONLY)
+-#include "exec/user/abitypes.h"
 -
--extern bool have_guest_base;
+-/*
+- * If non-zero, the guest virtual address space is a contiguous subset
+- * of the host virtual address space, i.e. '-R reserved_va' is in effect
+- * either from the command-line or by default.  The value is the last
+- * byte of the guest address space e.g. UINT32_MAX.
+- *
+- * If zero, the host and guest virtual address spaces are intermingled.
+- */
+-extern unsigned long reserved_va;
+-
+-/*
+- * Limit the guest addresses as best we can.
+- *
+- * When not using -R reserved_va, we cannot really limit the guest
+- * to less address space than the host.  For 32-bit guests, this
+- * acts as a sanity check that we're not giving the guest an address
+- * that it cannot even represent.  For 64-bit guests... the address
+- * might not be what the real kernel would give, but it is at least
+- * representable in the guest.
+- *
+- * TODO: Improve address allocation to avoid this problem, and to
+- * avoid setting bits at the top of guest addresses that might need
+- * to be used for tags.
+- */
+-#define GUEST_ADDR_MAX_                                                 \
+-    ((MIN_CONST(TARGET_VIRT_ADDR_SPACE_BITS, TARGET_ABI_BITS) <= 32) ?  \
+-     UINT32_MAX : ~0ul)
+-#define GUEST_ADDR_MAX    (reserved_va ? : GUEST_ADDR_MAX_)
+-
+-#else
++#if !defined(CONFIG_USER_ONLY)
  
- /*
-  * If non-zero, the guest virtual address space is a contiguous subset
+ #include "exec/hwaddr.h"
+ 
 diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-index 2c5a0a5c81..6d47d3114a 100644
+index 6d47d3114a..07649a01c1 100644
 --- a/include/exec/cpu_ldst.h
 +++ b/include/exec/cpu_ldst.h
-@@ -73,6 +73,8 @@
+@@ -73,8 +73,38 @@
  
  #if defined(CONFIG_USER_ONLY)
  
-+#include "user/guest-base.h"
++#include "user/abitypes.h"
+ #include "user/guest-base.h"
+ 
++/*
++ * If non-zero, the guest virtual address space is a contiguous subset
++ * of the host virtual address space, i.e. '-R reserved_va' is in effect
++ * either from the command-line or by default.  The value is the last
++ * byte of the guest address space e.g. UINT32_MAX.
++ *
++ * If zero, the host and guest virtual address spaces are intermingled.
++ */
++extern unsigned long reserved_va;
++
++/*
++ * Limit the guest addresses as best we can.
++ *
++ * When not using -R reserved_va, we cannot really limit the guest
++ * to less address space than the host.  For 32-bit guests, this
++ * acts as a sanity check that we're not giving the guest an address
++ * that it cannot even represent.  For 64-bit guests... the address
++ * might not be what the real kernel would give, but it is at least
++ * representable in the guest.
++ *
++ * TODO: Improve address allocation to avoid this problem, and to
++ * avoid setting bits at the top of guest addresses that might need
++ * to be used for tags.
++ */
++#define GUEST_ADDR_MAX_                                                 \
++    ((MIN_CONST(TARGET_VIRT_ADDR_SPACE_BITS, TARGET_ABI_BITS) <= 32) ?  \
++     UINT32_MAX : ~0ul)
++#define GUEST_ADDR_MAX    (reserved_va ? : GUEST_ADDR_MAX_)
 +
  #ifndef TARGET_TAGGED_ADDRESSES
  static inline abi_ptr cpu_untagged_addr(CPUState *cs, abi_ptr x)
  {
-diff --git a/include/user/guest-base.h b/include/user/guest-base.h
-index 1e42bca5db..055c1d14fe 100644
---- a/include/user/guest-base.h
-+++ b/include/user/guest-base.h
-@@ -7,6 +7,12 @@
- #ifndef USER_GUEST_BASE_H
- #define USER_GUEST_BASE_H
- 
-+#ifndef CONFIG_USER_ONLY
-+#error Cannot include this header from system emulation
-+#endif
-+
- extern uintptr_t guest_base;
- 
-+extern bool have_guest_base;
-+
- #endif
-diff --git a/bsd-user/main.c b/bsd-user/main.c
-index 01b313756e..29a629d877 100644
---- a/bsd-user/main.c
-+++ b/bsd-user/main.c
-@@ -36,6 +36,7 @@
- #include "qemu/help_option.h"
- #include "qemu/module.h"
- #include "exec/exec-all.h"
-+#include "user/guest-base.h"
- #include "tcg/startup.h"
- #include "qemu/timer.h"
- #include "qemu/envlist.h"
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index fc60c01d57..9ed4baa2ac 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -8,6 +8,7 @@
- 
- #include "qemu.h"
- #include "user/tswap-target.h"
-+#include "user/guest-base.h"
- #include "user-internals.h"
- #include "signal-common.h"
- #include "loader.h"
-diff --git a/linux-user/main.c b/linux-user/main.c
-index 149e35432e..94e4c47f05 100644
---- a/linux-user/main.c
-+++ b/linux-user/main.c
-@@ -38,6 +38,7 @@
- #include "qemu/help_option.h"
- #include "qemu/module.h"
- #include "qemu/plugin.h"
-+#include "user/guest-base.h"
- #include "exec/exec-all.h"
- #include "exec/gdbstub.h"
- #include "gdbstub/user.h"
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index 225e5fbd3e..7bfd558027 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -31,7 +31,6 @@
+ #include "exec/log.h"
+ #include "qemu/main-loop.h"
+ #include "sysemu/cpus.h"
+-#include "exec/cpu-all.h"
+ #include "sysemu/cpu-timers.h"
+ #include "exec/replay-core.h"
+ #include "sysemu/tcg.h"
 -- 
 2.41.0

@@ -1,265 +1,191 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1913192ejd;
-        Thu, 18 Apr 2024 11:11:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUF6hBMDHTQrDIX9ekp5eGQH/eFN78GSyP49RljLKZ0LNv/7V2n40+4ZJR8RWTxJtutbngTURaRrc8h9yD2fIgcOojNySUc
-X-Google-Smtp-Source: AGHT+IFtMU3FMMnghFzNeZS8EqfhVHJ5q/E/CnfIkNYlZ9KC61YIlphm5IxBH9ODcdkKeAhhEwi5
-X-Received: by 2002:a05:620a:28c6:b0:78e:e007:441e with SMTP id l6-20020a05620a28c600b0078ee007441emr4495113qkp.16.1713463873075;
-        Thu, 18 Apr 2024 11:11:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713463873; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1952128ejd;
+        Thu, 18 Apr 2024 12:25:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXQ7YAw3q99HbZdHjWu/4VyWO5PKh0UskK209cz2OhKZuZNmVK63/UkxUOHRVc9/XvT4L3nlk5CQnzAMl2MWHoQ80und2Br
+X-Received: by 2002:a05:6512:143:b0:516:afeb:e27e with SMTP id m3-20020a056512014300b00516afebe27emr1416lfo.29.1713468335454;
+        Thu, 18 Apr 2024 12:25:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713468335; cv=none;
         d=google.com; s=arc-20160816;
-        b=g1cIBC7RzQWHb901RkBI6e4dJFTbRnPCKxwqbT7ukMfwzCtiFtBrv1+z2OYfLMEBHz
-         guuC9b3KNN8rwccp/M0n9NjnVouETD/3rQjhEYUb2QG98GEgcgpMgZ6hKs6RgHMoNWMU
-         P+eHgSX2rsuZkC2RXvAVYj1Aiy8i4ZbnKAU3XzEjHTA8FFtAwzSvYBrZiD0s6Z14Wp72
-         k6kGpSNlEAhbnmjb3EButiZT73CBQz/dvJtT2m3ng26pBZ2vAHtV1Ep8xQUHEIwaxFvt
-         bZah/yeI/ZEXcHnj6OY4glkL/xC6jOIj9moucpZ/WPNsgaqtUFq8qicCu1xfJ34ZK0+P
-         Ia+A==
+        b=IH5YS58COAm92X1ASfk/h8wgUjE8C/mk8OihW7jl3dD+LMEjpOLLoLggvRDxPa0lru
+         rDF+PxSB74iu5O3VAwN4QRqPD7clalnIZzk0hIpYAMvKewh5YFO05bAsdbODcJ/QNLjx
+         QDE1Y2m0EJ5cIqGv2e5zOkpLwQRmgwK+0hoIMheRk1XNa1nEW6WLUcbB/MyMlMElqJuC
+         MmvuK5h+OO+aQraOLyzEhbpYrzNHPlotByQRF3RZBE+odRQRoY8/6UuKPs8qu4ARvMUC
+         yeT+N8sBFybzvgE88WsKNMscoDEHq34Sz9Y2hZpq46pD7CBn4DwX7LrvnVacf5a5BLR0
+         xjHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=27eefg414On2YawNE62Pu8XoXMQ46Ze1X2uuQSi8kn4=;
-        fh=c7J4wz+aHdc/MeKH8q0kLU/RBuQGNRwTVU99zkyTSX8=;
-        b=nnUnBlYOvUVsxONAEHwU15jPA9qKI2nxs/K6pMDWJzW74OEMsXEUIqGQlGtiLYIHsY
-         FhnOgPOR7GtC9ZZGLolpXzZK8PrsHC3YclN0CK1c0nSha8yKztuIsYnfkrbjNsY8kgt+
-         aA2G179dfV2UQ/NIf7V8s8uglcRfUfNzfmLCqm6FvrCpmY1P+hz6AJlBVW0g7ZaUGQ3S
-         xs9JBq0qrjzoyqut1A88Ojng/AR9JwOdfkooX2grqmmU+3fmQfFBAU6pt77IRlxns5lC
-         s1D68eEbDmtTNaUI7wRsR7/6bYAjpOtBH8b1PAQoBT+lrsAI+qHyYjKYU2y3cGFJYijd
-         1SEg==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=a05kQu+3IE9JJfcYC8SvHu7OLyLA4nojU3zTAPx26K0=;
+        fh=IDGypcbZ2AyrsKlLtVqhRT2zpGeBOTW177rM4N9vTFU=;
+        b=N8NS1JbZeyOu6d/dezAawdgb9Ecyc2Ft4Bf1XHjoKy9Tr9yj0mIBxpGySG2H+PmW78
+         8h3FeJYoGvVp4Kc7P6qbFLy/E0EJdUD0xWIltY46pHCWq+OLHM8QIuQMBX0fHCZOmu/K
+         i56L8yuIPitxSPSivg/NU4XPvaJtYe4qvXFVomGJnYWAe7FRz0tLsu//R1dfCHUj/O+h
+         K52MDbQp05UXPELY0cY1/04Vx2Guc2kU9W8KdF3lac5wLNOr3dFZxuInBf/xg49MHU/Z
+         qzagquSMHmFQIRaq7NBdAH2QGv7Em18KjFT21mh20gpBu28g/eH/b/t6D2PfFhZiR5YB
+         3E9w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YBMKAtXB;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id vu24-20020a05620a561800b0078d6245a065si1950507qkn.526.2024.04.18.11.11.12
+       dkim=pass header.i=@linaro.org header.s=google header.b=bZwIBxFN;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a4-20020a19ca04000000b00516c0906ec3sor566375lfg.26.2024.04.18.12.25.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Apr 2024 11:11:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Thu, 18 Apr 2024 12:25:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YBMKAtXB;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1713463872;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=27eefg414On2YawNE62Pu8XoXMQ46Ze1X2uuQSi8kn4=;
-	b=YBMKAtXBmhFuOtm62aAYqbakwokodLqFwdxFKa+P3F9nhStgaYNTt2jP6TS78LPchw4T4Q
-	6s6KBqs5LCwDT/C+30NRReT6P+XtlvZlgmvtQiGEojh2tenXVD0UWYNDdI9tkPvmqu40zP
-	zR91T/+Ot8beEAgszdfYw+XcE/Ndmzg=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-407-RPmPfU9qOmq9U_288bibbg-1; Thu, 18 Apr 2024 14:11:11 -0400
-X-MC-Unique: RPmPfU9qOmq9U_288bibbg-1
-Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-69b62a06757so17485056d6.0
-        for <alex.bennee@linaro.org>; Thu, 18 Apr 2024 11:11:11 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=bZwIBxFN;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1713468335; x=1714073135; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=a05kQu+3IE9JJfcYC8SvHu7OLyLA4nojU3zTAPx26K0=;
+        b=bZwIBxFNxXwEk5bknPvt+UfK/o2deO5ymc6Hd+IbyjAJ0y3KzGcNgOuMuB6DoFb7Ep
+         mLerCjxb7KqyeRyl9NbwLUMwKCAT6GyO7RZosw8hwM2H60xoBqoTkeGhfHJk53XTgFiE
+         eFtF3P6/CAdxKjfghkQcE4inpGZdiHtknjh0RoeJR9P4PEliJhBSopXJ2VQim8AdmHvd
+         dyYWn5XheG+3cFqAmcDHWmj7YfA4P1eohEaJ5JedmhW6sEk9l3SFh4Nux/7Ekd7MLUSM
+         jy5xXGSROj/E2u6IJxhP1H/zB5pA5RnMXt9z28LFhnHz6hFgRBee48agk7K+5zsXeGmJ
+         GoNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713463871; x=1714068671;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=27eefg414On2YawNE62Pu8XoXMQ46Ze1X2uuQSi8kn4=;
-        b=N3MX9MLJIKC8VaXEKvEbt60tLYBLQzkOEgcZODD8dNXO0Wa4BRl/u4exCutE8F2lI7
-         XucUpo+nZFUNFn+uedhMCYLnbpM4BkqLtRpRs0e3dWaXoUutXvk9YjgjqETNhJCaqLiu
-         M24pIGJk0O1UxFXi9sZoM2pULSTPog5p8unK8ddDF7bX8KWXdT5GT6YhWTkPFB1eeXsx
-         XLiWrKPJhhTV3Sj8JxOj6HK0L1ZTklBSP5HVtW0rFoT/b161B/h2dFSNhnOdqj+yK3Ee
-         /wmgw9jvrEzgK+alCHy3wTYKuVJQ4o9aqQvSGYhjMyaUDdn4iX2w1U4lHTOpWr7457ce
-         yyyA==
-X-Forwarded-Encrypted: i=1; AJvYcCWhq7odQORHxAVIvD/lZvcivHJCeVplH3bG8wmPVtWeoKvmc4fKRLM9Do8iykbrHS/EDBKsBkpAQpn9iKioKWvOIPS03R+3
-X-Gm-Message-State: AOJu0YxXn8dUIX/cjgQKmVx9NmQlbQMqFZpFUPIXYRETKKYpiwvL5PBZ
-	UI+jlO4t7bD/DoPS+2R6P2GwXsQ2kX+XA5WAd5xdkAvmrDuHDdfcRYk+C6oGayobalDmBBsDfyf
-	eBnEk492FLMNQRAFnUUhcuACpzTo7+Bn4oMga9IONS5b1vH6QVJYj7g==
-X-Received: by 2002:ad4:4482:0:b0:69b:6fb4:f0d1 with SMTP id m2-20020ad44482000000b0069b6fb4f0d1mr3965676qvt.62.1713463870654;
-        Thu, 18 Apr 2024 11:11:10 -0700 (PDT)
-X-Received: by 2002:ad4:4482:0:b0:69b:6fb4:f0d1 with SMTP id m2-20020ad44482000000b0069b6fb4f0d1mr3965648qvt.62.1713463870250;
-        Thu, 18 Apr 2024 11:11:10 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id o6-20020a0ce406000000b0069b534fb8b0sm845480qvl.59.2024.04.18.11.11.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 18 Apr 2024 11:11:09 -0700 (PDT)
-Message-ID: <14a6fbf1-4f05-42a7-a59b-7195e95aed6f@redhat.com>
-Date: Thu, 18 Apr 2024 20:11:06 +0200
+        d=1e100.net; s=20230601; t=1713468335; x=1714073135;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=a05kQu+3IE9JJfcYC8SvHu7OLyLA4nojU3zTAPx26K0=;
+        b=DyA+xG4LsPPSH0C8S7s0youIUJRPH3MS8r42gJrvsyVyWgYvP05TJfSC5btWWr2+vv
+         QmRK4FFneAzVAzoXwUq8A+qxokTKJXAJOjFG4BjYiqnfcgKdZc7lMvnO1Qts0FSq92gk
+         LmojHaxWDhldQR9+9I+VGf/kaoGXJqZFTDEfRY6lc6kUw4l6C3XSudPKctFVemazg+js
+         C7u0kv4FqZyCApKybLX15ZqcMOkJ7/dywcqDZXEvqfFcDPk8OKHyr97KRTIzx/r6RAtR
+         EjfoJbJWgT1/HwbFn3GEiAgKX55ky761gEIpgIJpQLqhasrIX8RCkcX11QmS/eqg/NI8
+         iqIA==
+X-Forwarded-Encrypted: i=1; AJvYcCVrt1Pt2uVmYFj5MVk6nvNGzx1U6CyNRj+yQ4PLCbHMp7+M0lczumegDxlp0dLU4nMzO8PSBpGdfolMqHHSdhGIuPO+vhXs
+X-Gm-Message-State: AOJu0YwSWEwaUkoyWa/saRKdMD/WftuKkuDuf/1A9rClub+CwHwiTonk
+	0pRkhb7HdhxcppcI2KV95sCrf5eOw1n1a8nyT0qHPNFU8xIvh+0kPWIuN6y+4J2urw==
+X-Google-Smtp-Source: AGHT+IHfNUYllVyhV+QY71Ro4Kj4dJNcZ5I4DM2/UYYkrguyOxfOHqu9Q/5fh3sLLZjgbH1NDAnw6A==
+X-Received: by 2002:a19:2d42:0:b0:519:67f6:cd93 with SMTP id t2-20020a192d42000000b0051967f6cd93mr2279810lft.49.1713468334923;
+        Thu, 18 Apr 2024 12:25:34 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan ([176.176.151.213])
+        by smtp.gmail.com with ESMTPSA id h17-20020a1709070b1100b00a558206b2c5sm77249ejl.99.2024.04.18.12.25.33
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Thu, 18 Apr 2024 12:25:34 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	qemu-arm@nongnu.org,
+	qemu-ppc@nongnu.org,
+	qemu-riscv@nongnu.org,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Anton Johansson <anjo@rev.ng>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>
+Subject: [PATCH 01/24] exec: Declare MMUAccessType type in 'mmu-access-type.h' header
+Date: Thu, 18 Apr 2024 21:25:00 +0200
+Message-ID: <20240418192525.97451-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240418192525.97451-1-philmd@linaro.org>
+References: <20240418192525.97451-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [RFC PATCH v2 00/13] SMMUv3 nested translation support
-To: Mostafa Saleh <smostafa@google.com>, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
- marcin.juszkiewicz@linaro.org
-References: <20240408140818.3799590-1-smostafa@google.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20240408140818.3799590-1-smostafa@google.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: BAkrBM8tEDr4
+X-TUID: 44XYE2UmZwl/
 
-Hi Mostafa,
+The MMUAccessType enum is declared in "hw/core/cpu.h".
+"hw/core/cpu.h" contains declarations related to CPUState
+and CPUClass. Some source files only require MMUAccessType
+and don't need to pull in all CPU* declarations. In order
+to simplify, create a new "exec/mmu-access-type.h" header.
 
-On 4/8/24 16:08, Mostafa Saleh wrote:
-> Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
-> but not nested instances.
-> This patch series adds support for nested translation in SMMUv3,
-> this is controlled by property “arm-smmuv3.stage=nested”, and
-> advertised to guests as (IDR0.S1P == 1 && IDR0.S2P == 2)
->
-> Main changes(architecture):
-> ============================
-> 1) CDs are considered IPA and translated with stage-2.
-> 2) TTBx and tables for stage-1 are considered IPA and translated
->    with stage-2.
-> 3) Translate the IPA address with stage-2.
->
-> TLBs:
-> ======
-> TLBs are the most tricky part.
->
-> 1) General design
->    Unified(Combined) design is used, where entries with ASID=-1 are
->    IPAs(cached from stage-2 config)
->
->    TLBs are also modified to cache 2 permissions, a new permission added
->    "parent_perm."
->
->    For non-nested configuration, perm == parent_perm and nothing
->    changes. This is used to know which stage to use in case there is
->    a permission fault from a TLB entry.
->
-> 2) Caching in TLB
->    Stage-1 and stage-2 are inserted in the TLB as is.
->    For nested translation, both entries are combined into one TLB
->    entry. The size (level and granule) are chosen from the smallest entries.
->    That means that a stage-1 translation can be cached with sage-2
->    granule in key, this is take into account lookup.
-is that a correct understanding that with the current implementation, in
-nested mode, you end up with combined S1 + S2 entries (IOVA -> PA) and
-S2 entries (IPA -> PA)?
-Out of cusiosity, how did you end up with that choice? Have you made
-some perf assessment compared to separate S1 and S2 entries? I guess it
-is a complex topic and choice.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/exec/cpu_ldst.h        |  1 +
+ include/exec/exec-all.h        |  1 +
+ include/exec/mmu-access-type.h | 18 ++++++++++++++++++
+ include/hw/core/cpu.h          |  8 +-------
+ 4 files changed, 21 insertions(+), 7 deletions(-)
+ create mode 100644 include/exec/mmu-access-type.h
 
-Thanks
-
-Eric
->
-> 3) TLB Lookup
->    TLB lookup already uses ASID in key, so it can distinguish between
->    stage-1 and stage-2.
->    And as mentioned above, the granule for stage-1 can be different,
->    If stage-1 lookup failed, we try again with the stage-2 granule.
->
-> 4) TLB invalidation
->    - Address invalidation is split, for IOVA(CMD_TLBI_NH_VA
->      /CMD_TLBI_NH_VAA) and IPA(CMD_TLBI_S2_IPA) based on ASID value
->    - CMD_TLBI_NH_ASID/CMD_TLBI_NH_ALL: Consider VMID if stage-2 is
->      supported, and invalidate stage-1 only by VMIDs
->
-> As far as I understand, this is compliant with the ARM architecture:
-> - ARM ARM DDI 0487J.a: RLGSCG, RTVTYQ, RGNJPZ
-> - ARM IHI 0070F.b: 16.2 Caching
->
-> An alternative approach would be to instantiate 2 TLBs, one per each
-> stage. I haven’t investigated that.
->
-> Others
-> =======
-> - Advertise SMMUv3.2-S2FWB, it is NOP for QEMU as it doesn’t support
->   attributes.
->
-> - OAS: A typical setup with nesting is to share CPU stage-2 with the
->   SMMU, and according to the user manual, SMMU OAS must match the
->   system physical address.
->
->   This was discussed before in
->   https://lore.kernel.org/all/20230226220650.1480786-11-smostafa@google.com/
->   The implementation here, follows the discussion, where migration is
->   added and oas is set up from the board (virt). However, the OAS is
->   chosen based on the CPU PARANGE as there is no fixed one.
->
-> - For nested configuration, IOVA notifier only notifies for stage-1
->   invalidations (as far as I understand this is the intended
->   behaviour as it notifies for IOVA)
->
-> - Stop ignoring VMID for stage-1 if stage-2 is also supported.
->
->
-> Future improvements:
-> =====================
-> 1) One small improvement, that I don’t think it’s worth the extra
->    complexity, is in case of Stage-1 TLB miss for nested translation,
->    we can do stage-1 walk and lookup for stage-2 TLBs, instead of
->    doing the full walk.
->
-> 2) Patch 0006 (hw/arm/smmuv3: Translate CD and TT using stage-2 table)
->    introduces a macro to use functions that rely on cfg for stage-2,
->    I don’t like it. However, I didn’t find a simple way around it,
->    either we change many functions to have a separate stage argument,
->    or add another arg in config, which is probably more code.
->
-> Testing
-> ========
-> 1) IOMMUFD + VFIO
->    Kernel: https://lore.kernel.org/all/cover.1683688960.git.nicolinc@nvidia.com/
->    VMM: https://qemu-devel.nongnu.narkive.com/o815DqpI/rfc-v5-0-8-arm-smmuv3-emulation-support
->
->    By assigning “virtio-net-pci,netdev=net0,disable-legacy=on,iommu_platform=on,ats=on”,
->    to a guest VM (on top of QEMU guest) with VIFO and IOMMUFD.
->
-> 2) Work in progress prototype I am hacking on for nesting on KVM
->    (this is nowhere near complete, and misses many stuff but it
->    doesn't require VMs/VFIO) also with virtio-net-pci and git
->    cloning a bunch of stuff and also observing traces.
->    https://android-kvm.googlesource.com/linux/+log/refs/heads/smostafa/android15-6.6-smmu-nesting-wip
->
-> I also modified the Linux driver to test with mixed granules/levels.
->
-> hw/arm/smmuv3: Split smmuv3_translate() better viewed with --color-moved
->
-> Changes in v2:
-> v1: https://lore.kernel.org/qemu-devel/20240325101442.1306300-1-smostafa@google.com/
-> - Collected Eric Rbs
-> - Rework TLB to rely on VMID/ASID instead of an extra key.
-> - Fixed TLB issue with large stage-1 reported by Julian.
-> - Cap the OAS to 48 bits as PTW doesn’t support 52 bits.
-> - Fix ASID/VMID representation in some contexts as 16 bits while
->   they can be -1
-> - Increase visibility in trace points
->
->
-> Mostafa Saleh (13):
->   hw/arm/smmu: Use enum for SMMU stage
->   hw/arm/smmu: Split smmuv3_translate()
->   hw/arm/smmu: Consolidate ASID and VMID types
->   hw/arm/smmuv3: Translate CD and TT using stage-2 table
->   hw/arm/smmu-common: Support nested translation
->   hw/arm/smmu: Support nesting in smmuv3_range_inval()
->   hw/arm/smmu: Support nesting in the rest of commands
->   hw/arm/smmuv3: Support nested SMMUs in smmuv3_notify_iova()
->   hw/arm/smmuv3: Support and advertise nesting
->   hw/arm/smmuv3: Advertise S2FWB
->   hw/arm/smmu: Refactor SMMU OAS
->   hw/arm/smmuv3: Add property for OAS
->   hw/arm/virt: Set SMMU OAS based on CPU PARANGE
->
->  hw/arm/smmu-common.c         | 306 +++++++++++++++++++++----
->  hw/arm/smmuv3-internal.h     |  16 +-
->  hw/arm/smmuv3.c              | 418 ++++++++++++++++++++++-------------
->  hw/arm/trace-events          |  18 +-
->  hw/arm/virt.c                |  14 +-
->  include/hw/arm/smmu-common.h |  57 ++++-
->  include/hw/arm/smmuv3.h      |   1 +
->  target/arm/cpu.h             |   2 +
->  target/arm/cpu64.c           |   5 +
->  9 files changed, 608 insertions(+), 229 deletions(-)
->
+diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
+index 64e0319996..5b99666702 100644
+--- a/include/exec/cpu_ldst.h
++++ b/include/exec/cpu_ldst.h
+@@ -64,6 +64,7 @@
+ 
+ #include "exec/memopidx.h"
+ #include "exec/abi_ptr.h"
++#include "exec/mmu-access-type.h"
+ #include "qemu/int128.h"
+ #include "cpu.h"
+ 
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index e932d364b6..5cddfea01b 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -25,6 +25,7 @@
+ #include "exec/abi_ptr.h"
+ #include "exec/cpu_ldst.h"
+ #endif
++#include "exec/mmu-access-type.h"
+ #include "exec/translation-block.h"
+ #include "qemu/clang-tsa.h"
+ 
+diff --git a/include/exec/mmu-access-type.h b/include/exec/mmu-access-type.h
+new file mode 100644
+index 0000000000..28bbb05b94
+--- /dev/null
++++ b/include/exec/mmu-access-type.h
+@@ -0,0 +1,18 @@
++/*
++ * QEMU MMU Access type definitions
++ *
++ * Copyright (c) 2012 SUSE LINUX Products GmbH
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef EXEC_MMU_ACCESS_TYPE_H
++#define EXEC_MMU_ACCESS_TYPE_H
++
++typedef enum MMUAccessType {
++    MMU_DATA_LOAD  = 0,
++    MMU_DATA_STORE = 1,
++    MMU_INST_FETCH = 2
++#define MMU_ACCESS_COUNT 3
++} MMUAccessType;
++
++#endif
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 3a66d8581e..5f0422493b 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -25,6 +25,7 @@
+ #include "exec/hwaddr.h"
+ #include "exec/vaddr.h"
+ #include "exec/memattrs.h"
++#include "exec/mmu-access-type.h"
+ #include "exec/tlb-common.h"
+ #include "qapi/qapi-types-run-state.h"
+ #include "qemu/bitmap.h"
+@@ -80,13 +81,6 @@ DECLARE_CLASS_CHECKERS(CPUClass, CPU,
+     typedef struct ArchCPU CpuInstanceType; \
+     OBJECT_DECLARE_TYPE(ArchCPU, CpuClassType, CPU_MODULE_OBJ_NAME);
+ 
+-typedef enum MMUAccessType {
+-    MMU_DATA_LOAD  = 0,
+-    MMU_DATA_STORE = 1,
+-    MMU_INST_FETCH = 2
+-#define MMU_ACCESS_COUNT 3
+-} MMUAccessType;
+-
+ typedef struct CPUWatchpoint CPUWatchpoint;
+ 
+ /* see accel-cpu.h */
+-- 
+2.41.0

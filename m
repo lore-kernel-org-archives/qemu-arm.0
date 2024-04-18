@@ -1,78 +1,78 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1952313ejd;
-        Thu, 18 Apr 2024 12:25:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXu2BZ3grM8ne1Ac7iIDllUemjM7Y/caAM4039OqD8PlrDrVDQO9K21+P19+1x7zjQhpJFKZhpOZK7k2nTlJAKUlJWBjrrW
-X-Received: by 2002:a17:906:46cc:b0:a52:5d0b:208d with SMTP id k12-20020a17090646cc00b00a525d0b208dmr63086ejs.0.1713468359617;
-        Thu, 18 Apr 2024 12:25:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713468359; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1952358ejd;
+        Thu, 18 Apr 2024 12:26:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWAdSDOBH50zvFhUSuQbBFsZJQMlWoVMNgusKdS6iKijepMdDzI2fhx5M26AR9XnmRVgRHruMDnVcEw6gRguqdo4VShICAw
+X-Received: by 2002:a50:d696:0:b0:571:b9ac:ff3f with SMTP id r22-20020a50d696000000b00571b9acff3fmr115624edi.5.1713468365706;
+        Thu, 18 Apr 2024 12:26:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713468365; cv=none;
         d=google.com; s=arc-20160816;
-        b=F6r64FoSN2UGwGEyshqEftPQK9Y4/0WZIqE7w/VQAafTxsfR7oMJiAIaDZws9Eh4dZ
-         2KngrRM+9GvCg/0nZf2YIGu3GVXrTTRVeZZJwnnP1O96HjYh/v4JR7rp1wMJ0/PNQNT0
-         yvlZQGH6CS4QGLlVxiX9nr43yQjMArGpjZSMXsvnrh2do+aNlvfasoxY2SVUfFWZML/7
-         Wv5gxXPCyXb2MdMpBOafU8zB5avYTExl5zAqaRz2NbydMIAMftA6oJMtxPeL+IufzR0s
-         JKbWrvog51yeEruoel2T5X20ogsIoFyWmVNAVo2dKyn4EAeuF2GVQeNYrc02YXMcQWhP
-         gt/A==
+        b=XgsVfSleL61C4lKtA16ilTYri2xA4vJrh6DZ+4MSIIZBGDdf7NsHg1KNf3p4hlo4CH
+         bAkzhmt4cWo+iaGo21YaXyDqpSAxoi7SMsFCkTfeTS/59EJK4lWixa8Fr24kY1tKXNYD
+         sn7+e/bwMeX/nCFBU0tybTWpC/YjFsRl0MOA8K1u+ujniNFv9tRGjg7Y6YBIB4sE5TdH
+         kuLqCDdips3HwQviYtuMcvuy7TU+yZ3vje/tLtyePC+cIbu/PuRKqJLoUyZFLy0Z3b3W
+         3BaiVwGu+z2r3Kxu8N/CNVYkkaY20yvPWaP6+Tb366R6LNSCZNStIbkD7dpjcch7VFVG
+         cDsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=A5AN2zfNkbZgNzq4yMXaRJrNHQuv3As8IXVhhvnN+gY=;
-        fh=l6aXhiFm9/kcQpB9Y80p2cJ0C3xQYKQomgb+q2OdoL0=;
-        b=JUlZWzmogtSsNAcIlOEjDHno6qirC1SSNuJloK5uvtNvKVN/D9RFHPvv8O5q866XqX
-         rrXrhyoEttbTUQSmgvw55YmbremzvVcE+7oJja3Jodg3yt1elff8Od18wrIET+9FVWx+
-         9SeITfjPZ2BfgnskqLhT5TN4boVfw9OASJRaHXgsO7DunvP26Glfm3U9FpizlcsJYL3R
-         JQBsDnhfKBIQ5AZret3Mt5ferlYf6nOKLp2pNB3SfW3Qu8HKDUT3Y7r2vg3ICPSD0UJ/
-         t2/ppqpEyohK/eiV9VtzIC/gjU6y48BB4R/fTSWfaIZXSqYqsZbAA6DjYHvw1nbwnVId
-         67EA==;
+        bh=kMOTCzZ8G1QDoqpRuDm+110xUKe36YwlxUEiY1YFvik=;
+        fh=a0gkX8UrSn25albMEy0ocq2wYrFUuqIObdZjibt9Huw=;
+        b=l1aVQLGFTrU19w9rx1vrIIEsC/TRndUwG8hpbYV7wLo3FnDbRn7cIVWaxnNkiMrdVg
+         n/Vf+Jqj1EUssis2jbFJ1HFRuV/1YxMhSV7c/ibmmjtuGYnXp+X36bv4zKD5x89FEMNf
+         2lyPhZzEykPEOdPRk/zxIFknfs2DSHvXCl7TspGry9ZMlt3InphxOeSRfoUGNJ36AZGD
+         GTsUj0oK5tg2ivzBo4EabAZ891Ng2F6okWDntUkdLLnGrmi3Y3F0xBqTaG6EDo/VsWze
+         gMLSJzQNMJr7OXuYBXhkyLjKif5rUIF5tsMZhWNM4K6AiZPqm7mhPDKaHwpX6Lm+nPp8
+         cdrQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DVwMwnqu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qoPhLICL;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id gq20-20020a170906e25400b00a5261383e23sor716771ejb.14.2024.04.18.12.25.59
+        by mx.google.com with SMTPS id c68-20020a509fca000000b0057083e9f3c1sor600682edf.5.2024.04.18.12.26.05
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 18 Apr 2024 12:25:59 -0700 (PDT)
+        Thu, 18 Apr 2024 12:26:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DVwMwnqu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qoPhLICL;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713468359; x=1714073159; darn=linaro.org;
+        d=linaro.org; s=google; t=1713468365; x=1714073165; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=A5AN2zfNkbZgNzq4yMXaRJrNHQuv3As8IXVhhvnN+gY=;
-        b=DVwMwnquwPT72/FMtg9WVofC+Lvc411ZhLIEbEHwWKh8/a5wun1tVQi1ESUVP0vhsC
-         VqLSxm6ZQvAQOgXVV1W6+EqB4LCoKE/3sUbESP2hcWXayoivdnkLdoWYJ0O8IxSW/yca
-         vOl+pgKmO80xmV+KimVVdLRg/yLRxTk3blNOXhYhHfy4KmVSY2pqKpg+xWsaR8ugCLeW
-         VpvWk3wrhAsolgT5WI/WNlOKYqx7Pogkqf17XKrhQG9jkDGFdl/1J8s+9c3jFuKf9yxO
-         0LCFqx+l0RgGhAH5u3bXDqHvYwSGIRmrP1en9UaIkfjP7DFM6F2VsuyM9c/48mp+eOVl
-         cvLA==
+        bh=kMOTCzZ8G1QDoqpRuDm+110xUKe36YwlxUEiY1YFvik=;
+        b=qoPhLICLCBGfpr8Aq8BZ58RgkKk75UaHUf4XAkWl6fbfihpsYh4wbu561AbzdrMQ+w
+         YN7fkLHT5EJw5tPEjknhp/fzKHICd/IM7hk/Pazlu26GRXUBDond+WY2LO2UTrubFidU
+         NFf7a4xLTbjzmxhQ+Hm87MlLTNLSsdjRRpewPInPBxPxcqpKdPfTZDgZY6k+a7Ov49lb
+         Fd9drjl3paPDcA3QVvIxu9rwZwRB7rJmQnYX2IvlQsZZVZ5yhf2AwaNLETUI1+G2Feym
+         VuNb0D92zSfuxaxFCbSFhRfCreUPQwgRaY7JAlbiU9KHE8KxJmqEDz9Ms2nm3hPYTk+U
+         7szg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713468359; x=1714073159;
+        d=1e100.net; s=20230601; t=1713468365; x=1714073165;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=A5AN2zfNkbZgNzq4yMXaRJrNHQuv3As8IXVhhvnN+gY=;
-        b=fnkgD0j2/hwHv0+0hosxGjKLzh28PJi8l9XnyIcrGH0zXVHPJ1wvvWZ7FXNQ7nzt9K
-         R4joYT+7StJn/ecLvTgqaJ7xi78INlgV8IybR/YZr5bhhundZ3KUUpLDIVNwRJhiw0++
-         /gBuNwnTBUK9RIEU2O5RislC6zaclsG9GLYL1WiXQcjbXsQca5UYFCa9m/ZXkTwdNQ3f
-         BsRDcmEhMY8VeWoz8DG3J4Jsnxt1gwER/P15NUqFo62NQOgfRck5FYyNvyl+Sd7CWOkZ
-         abMpdjwxdAwgjpRMq1jC37N3z/dVG4ClL34RnEnHWtgfpaAEetoKCb8XQcpYmCEmIWIr
-         5FPA==
-X-Forwarded-Encrypted: i=1; AJvYcCVO1ClruxYzYRNS2PSwicZU2emypx56cz4R47joYr4Z/hNrVztnuo90CkeUFReUJmBHuIMz6/51scXOALUp+ZYjo1jXNg9c
-X-Gm-Message-State: AOJu0YywTl8tvGbDomGtbcEQI372fGdk2HAyYYJn3MeryMXdmi8Htf1T
-	u94PJ6JO73wi6Uhf5oO7rgaptGEhkRTXvWxh0JZstpSWA7g0ZXsZ5N1FtoHK3U0aNA==
-X-Google-Smtp-Source: AGHT+IFLSLQi8pDowoTVpwvSQYRuYn13I7Tn86X4cb0qyEAJ8RLgeCtpawdlVQYvcABi9MDTksrlmA==
-X-Received: by 2002:a17:906:1949:b0:a52:5925:1f76 with SMTP id b9-20020a170906194900b00a5259251f76mr47729eje.47.1713468359292;
-        Thu, 18 Apr 2024 12:25:59 -0700 (PDT)
+        bh=kMOTCzZ8G1QDoqpRuDm+110xUKe36YwlxUEiY1YFvik=;
+        b=lgcF5+IeGTmd0Zpg0UloUMHnVVwnViC7OmfO3hPk9yifg0vtMzOffuq9nCXYFF/UJg
+         GekGqnF+2se+/fqwruglXmp44fEfS1sF4anieamNy8xEW23PMFbk7c1uIoBaegLdsOQX
+         RkF2kgVLqvFKs0BAah07U3NukjFlpov3iCZssM0WR9KA04wvweIlhrME1jFZb1JuvsqY
+         zYpBi04U+BrmfGGns5h3SBiu3f8dYMB3+Btuz79t10l4yt54+2No9kRAHPbXQRszNMbd
+         yoyDUAOO1xU54lj49it5/j/3fNeNCVPgLUDpqqs4SsoXwvYsFyD/FAXqouF1knAFDjms
+         dG+w==
+X-Forwarded-Encrypted: i=1; AJvYcCVH8lCXKPYiwJ0JbQ8ABD+p+2N3McKuK5KqRgOpZckKrjdd1vdMcjrYpbeg1b21JWe0MrK4FMWNEq1FL2VYF3kdzhQxMKwE
+X-Gm-Message-State: AOJu0Yxlsfge5B0rYhHzIMLyhk6OP/5FkQtKGcXP00CGKBCQt6muHlbl
+	3ZUJx6WNuaki549VRxkmoGFHLhJ7J9gXcl75ftha7Bi7nDh5EPHtNQzQVEymdGmR8w==
+X-Google-Smtp-Source: AGHT+IGauXFub4OFdy7tZBt9c2yQKaEln2/oxE9Uk8pxg4A6jmXoRy5XQ4BNQTCVjKmFKW2y4HZUKg==
+X-Received: by 2002:a50:951a:0:b0:56e:2fb9:66d6 with SMTP id u26-20020a50951a000000b0056e2fb966d6mr107290eda.27.1713468365147;
+        Thu, 18 Apr 2024 12:26:05 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.151.213])
-        by smtp.gmail.com with ESMTPSA id z18-20020a170906435200b00a4e657a5f1asm1259445ejm.112.2024.04.18.12.25.57
+        by smtp.gmail.com with ESMTPSA id fj17-20020a0564022b9100b0056fe8f3eec6sm1194542edb.62.2024.04.18.12.26.03
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 18 Apr 2024 12:25:58 -0700 (PDT)
+        Thu, 18 Apr 2024 12:26:04 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -84,46 +84,43 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Anton Johansson <anjo@rev.ng>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 05/24] exec: Restrict 'cpu_ldst.h' to TCG accelerator
-Date: Thu, 18 Apr 2024 21:25:04 +0200
-Message-ID: <20240418192525.97451-6-philmd@linaro.org>
+Subject: [PATCH 06/24] exec: Have guest_addr_valid() methods take abi_ptr/size_t arguments
+Date: Thu, 18 Apr 2024 21:25:05 +0200
+Message-ID: <20240418192525.97451-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240418192525.97451-1-philmd@linaro.org>
 References: <20240418192525.97451-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: rwYEUWdHqhVq
+X-TUID: rp+fh0DWB/mO
 
-"exec/cpu_ldst.h" is specific to TCG, do not allow its
-inclusion from other accelerators.
+abi_ulong is target specific, replace by abi_ptr which isn't.
+Use size_t for the @len type.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/exec/cpu_ldst.h | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ include/exec/cpu_ldst.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-index 5b99666702..f3c2a3ca74 100644
+index f3c2a3ca74..63186b07e4 100644
 --- a/include/exec/cpu_ldst.h
 +++ b/include/exec/cpu_ldst.h
-@@ -1,5 +1,5 @@
- /*
-- *  Software MMU support
-+ *  Software MMU support (per-target)
-  *
-  * This library is free software; you can redistribute it and/or
-  * modify it under the terms of the GNU Lesser General Public
-@@ -62,6 +62,10 @@
- #ifndef CPU_LDST_H
- #define CPU_LDST_H
+@@ -92,12 +92,12 @@ static inline void *g2h(CPUState *cs, abi_ptr x)
+     return g2h_untagged(cpu_untagged_addr(cs, x));
+ }
  
-+#ifndef CONFIG_TCG
-+#error Can only include this header with TCG
-+#endif
-+
- #include "exec/memopidx.h"
- #include "exec/abi_ptr.h"
- #include "exec/mmu-access-type.h"
+-static inline bool guest_addr_valid_untagged(abi_ulong x)
++static inline bool guest_addr_valid_untagged(abi_ptr x)
+ {
+     return x <= GUEST_ADDR_MAX;
+ }
+ 
+-static inline bool guest_range_valid_untagged(abi_ulong start, abi_ulong len)
++static inline bool guest_range_valid_untagged(abi_ptr start, size_t len)
+ {
+     return len - 1 <= GUEST_ADDR_MAX && start <= GUEST_ADDR_MAX - len + 1;
+ }
 -- 
 2.41.0

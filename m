@@ -1,307 +1,327 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1783008ejd;
-        Thu, 18 Apr 2024 07:48:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU8kCyoV/0oTCs+lucbeolJM2R6hdyHfG/KdB8Bbq3HOBVrQy9GhjXSaH12ZKf6Ri05TWRPf79w48TAXD/X9aFNNeRrWgcm
-X-Google-Smtp-Source: AGHT+IHpWe8FEPsAh5JUXQdA9/RqFIn4y93YUWaxZxL72E5e/gncyp/EILxmw6/1Kl8Rg7oLtsMv
-X-Received: by 2002:a05:620a:43aa:b0:78d:56ed:1b63 with SMTP id a42-20020a05620a43aa00b0078d56ed1b63mr4356716qkp.52.1713451725076;
-        Thu, 18 Apr 2024 07:48:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713451725; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1839065ejd;
+        Thu, 18 Apr 2024 09:10:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVSpqB9NjDJF41ob6DqPCTyQlV6ABsL8Faqkdjyyj4zXpbnDrKX9PTp7RFr6mQJ3gTeTZm72LV6qPPaOoeHhbfVFH6BplA6
+X-Google-Smtp-Source: AGHT+IFGg+YU06wzotZ2T/A9nGoNCpR626QZep/TGVDv4TMv3U3RJuUmHy0OxcrTmaPCBFY+O9Qn
+X-Received: by 2002:a05:6358:ca5:b0:185:eb16:2b03 with SMTP id o37-20020a0563580ca500b00185eb162b03mr3561853rwj.4.1713456635979;
+        Thu, 18 Apr 2024 09:10:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713456635; cv=none;
         d=google.com; s=arc-20160816;
-        b=CFCUStZZ9rEc3xsJGwHWzG2qT0KIrqjkEQ18vedkehaXjuoWWNeJUg//GxsOaqLY18
-         n6gozKRVeMMxAqmTkMl00GVWhvOhR4elyOPAm8IKqd1KR8afVH1Dr6EjZDWNFIVr36q/
-         qx6jmv+bii6Xyz9AhZ9j7n8/DVNLf5n8JMwBRH23fSxy/YM+Rbu8QI/TeonCs9j2Ddcp
-         2ygJ6IN80gXUJYsUMGOAU/BIVrr1W4JZnLaxBFLIoo2ax46qgts0vaWoC4/V0gMAWJfH
-         uOul0Wid3HivSRFs6E613F6A/o8wjn75ZhJIuSaIXhvx83qy89beFGUCpelOlPAqjI/e
-         lCdQ==
+        b=VFFX94E2LcovQK6eHEisd+vhtC3qQBOHY2rge9BJaJo9IhFDOuWK41o+eg9oU363Ja
+         WoOdipsN1IEaBTjvBMTp8IUgNJiZEmaR7NxJQL897OCSzsDMRmuAnxPChfj/7ShL4th2
+         F6bngEheA6tbW8fhZQ5iW+rQlGP2nbHh1sNuDBy8q1qO0b+rROu08yrV51dVzlxA1BRQ
+         KLcxkax+bW4dmnHYBMK9d/5vrNZxsLAveUkTG5bFXAHXSuNRimAA3QClQQq0WJ+dbVOt
+         JH2I0rEBSOqgM8ALRtZcrcHmB7Qq4dKzqOti78t7Mdv+2idNHD9r++e11vD6JDyzrH4u
+         BpEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=enxY/DHRZLwIyCmI8664oAPoGfsD/JfngFCP4Fvyl8w=;
-        fh=SyNBgPX76NiFNznXAHmVU3yRR+TneCswPnLgvW70wa4=;
-        b=ka9kTVO/bsmG7rWOKX+Uh1LY6D7cBw/1+gLerc7c1tS/QOaJ158DKzUaG7XvzFKa9I
-         6RYafTrvsOTNSrXxCT4CE28N9orM/I8Y1BmdYkWPfLKannj5/XudDnKlMD2KFKfHflbR
-         5k2MH/16nOe5yGk0n6Rs42OpM2DUdp2WTXQAfC+x85nnGE7MX6OVBQagCsPz1D2QWxWV
-         Nf3K8c0Oo+7bxg6ifTSxWOsk7uShsiq4X60zpQITLj5GPCHAuH5xj5jBuOe5b5/KpwZT
-         9C8ou2+3MhFe10dqDUs+Y+IjAR9gZJBZFcmHYyVWsL34vdU9pwmaE0OebmWAwwK9HSh9
-         PgfQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=k56guyUpyeWC4ZQ2kho/E0qlIdPeDmBD03H5NJ5gm4w=;
+        fh=dkl4W7Ty5DQDYblIuR6iwQV8rfkW6Bl5VLJjLin9mSc=;
+        b=0/jHlbMmv7Th/EC6CRP/GkIfehQfrSW2kfCuD93j6zhFh7TZGkpUVEWKA23mUZT+mR
+         zAumXB3d+2gO8iiGInyrVPfC9dAHXlQhsytrtb9Hoy2vYp+GG1EtR05Borom8c+k94rA
+         ytxtkDIh2kJPF1aGevsLDR+/hohMDu/TcOKEyb/9fc7hNPjYjKLWtcCcSy8muM5o1jq7
+         SqGu4mKd/GpyJuE/24JWqro3TwFl4Ps/+6E1UKtKNlszf81ZOzZRw1n016R5NzYI1oVf
+         +PsFEWcMO4WNs/VnSPdt4mYEyM09CX1dXEIYLu++DH3n0lsULFYDpEekJHYkYGGBprNE
+         kl/A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gTaFzxTU;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id i21-20020ae9ee15000000b0078edc1974b6si1571358qkg.455.2024.04.18.07.48.44
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id jq9-20020a0561026f0900b0047bbc13dfadsi279597vsb.663.2024.04.18.09.10.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Apr 2024 07:48:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 18 Apr 2024 09:10:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gTaFzxTU;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1713451724;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=enxY/DHRZLwIyCmI8664oAPoGfsD/JfngFCP4Fvyl8w=;
-	b=gTaFzxTUtGMOMWE0zjWg4a135AiTXKQQa+7PHCxl3nRzhcrMGVGvI03pprzGgA4Dz0m4zr
-	2FcpeNOPdR9VzsutxRvby459eFnCOdDmbgvg+t7PGBypA9nl+4DjHW+2AwHkc4RqMmd5pC
-	H+ULwTL+VCh69XvG22ESmYiW5euehD8=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-246-pv8iX4RANIqHUwtaTItsAg-1; Thu, 18 Apr 2024 10:48:43 -0400
-X-MC-Unique: pv8iX4RANIqHUwtaTItsAg-1
-Received: by mail-ej1-f69.google.com with SMTP id a640c23a62f3a-a450265c7b6so51593666b.0
-        for <alex.bennee@linaro.org>; Thu, 18 Apr 2024 07:48:43 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713451722; x=1714056522;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=enxY/DHRZLwIyCmI8664oAPoGfsD/JfngFCP4Fvyl8w=;
-        b=m8oFvK1PaZqqE+UdaiD5Mh4vRhn6VLVxL8YrzqEwqbiHL9V39ArzGTE8CA2oZl4UwZ
-         hBKWhFGpIBGUiuE0D61VieJwvYw/Ha6wesLMQ9p3Xx/tdavtT5QLhWu5GpeDW/aSw7ww
-         5x29yYBcBq2GkIPuxfmWQ8cZHq9uYeKL206fKm4e1NbDM5aepvEvAHWVP6RTGB77k+ZA
-         CONqXifrBe+vetTu/wyddCQk8CHQ1Nv4nJXfwCoiAhv/QVFqJ7z4GfUtVld46jnZBJ0G
-         Mld0KOqvsRwH+c66HD3gfiAFE4HxG+kGUU28MI16SNiX1w9s3K17eYpIVJo0rkLqrfg1
-         KSGQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVkSvBzyU2WlPoJ3EHI3KXqp9MrKpLc1PDaU+TJGRg9l8nO+JSzbmRf18AmYl3XJCgU4Ig4wBMUAazc4k2RvR5fbfdLwX14
-X-Gm-Message-State: AOJu0YxDo9GjWIO9m2XaD5VBT/fH2StzCo1FLlGTOOyYSk3IvWTJbguf
-	ri9vY/XVYbpZwSCulM8JsDLJVu4xRuZ8yrQU9Olh+a+aNJCTrX2pZXmKKIM6mRUKv0sVHNHduLX
-	H9o4wpkHW7aU+1Z9ai/VP9KMHWiv/pVyWhhPVzYQNM2a5tx4Z02G1Vw==
-X-Received: by 2002:a17:906:4f8b:b0:a52:53f2:5ae0 with SMTP id o11-20020a1709064f8b00b00a5253f25ae0mr1863636eju.74.1713451722273;
-        Thu, 18 Apr 2024 07:48:42 -0700 (PDT)
-X-Received: by 2002:a17:906:4f8b:b0:a52:53f2:5ae0 with SMTP id o11-20020a1709064f8b00b00a5253f25ae0mr1863618eju.74.1713451721870;
-        Thu, 18 Apr 2024 07:48:41 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id re27-20020a170906d8db00b00a521327b019sm987721ejb.197.2024.04.18.07.48.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 18 Apr 2024 07:48:41 -0700 (PDT)
-Message-ID: <cfb5e002-26d4-437a-91d5-7c2eb49a75b6@redhat.com>
-Date: Thu, 18 Apr 2024 16:48:39 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rxUL9-0000oI-EO; Thu, 18 Apr 2024 12:10:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=S08W=LX=kaod.org=clg@ozlabs.org>)
+ id 1rxUL5-0000nx-Kc; Thu, 18 Apr 2024 12:10:19 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=S08W=LX=kaod.org=clg@ozlabs.org>)
+ id 1rxUL1-0006lb-N4; Thu, 18 Apr 2024 12:10:19 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4VL2mc1K9Qz4wnr;
+ Fri, 19 Apr 2024 02:10:08 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4VL2mV5Xqrz4wd3;
+ Fri, 19 Apr 2024 02:10:02 +1000 (AEST)
+Message-ID: <9b6d5078-121d-4370-86fc-4bb25ad4e72f@kaod.org>
+Date: Thu, 18 Apr 2024 18:09:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [RFC PATCH v2 07/13] hw/arm/smmu: Support nesting in the rest of
- commands
-To: Mostafa Saleh <smostafa@google.com>, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
- marcin.juszkiewicz@linaro.org
-References: <20240408140818.3799590-1-smostafa@google.com>
- <20240408140818.3799590-8-smostafa@google.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20240408140818.3799590-8-smostafa@google.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [PATCH v3 08/16] aspeed/smc: support 64 bits dma dram address
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
+ <20240416091904.935283-9-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240416091904.935283-9-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: DSyy40Nok3nN
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=S08W=LX=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fY/lEFo8+nGt
 
-Hi Mostafa,
+Hello Jamin,
 
-On 4/8/24 16:08, Mostafa Saleh wrote:
-> Some commands need rework for nesting, as they used to assume S1
-> and S2 are mutually exclusive:
->
-> - CMD_TLBI_NH_ASID: Consider VMID if stage-2 is supported
-> - CMD_TLBI_NH_ALL: Consider VMID if stage-2 is supported, otherwise
->   invalidate everything, this required a new vmid invalidation
->   function for stage-1 only (ASID >= 0)
->
-> Also, rework trace events to reflect the new implementation.
-
-This does not apply for me. Could you share a branch or respin?
-
-Thank you in advance
-
-Eric
->
-> Signed-off-by: Mostafa Saleh <smostafa@google.com>
+On 4/16/24 11:18, Jamin Lin wrote:
+> AST2700 support the maximum dram size is 8GiB
+> and has a "DMA DRAM Side Address High Part(0x7C)"
+> register to support 64 bits dma dram address.
+> Add helper routines functions to compute the dma dram
+> address, new features and update trace-event
+> to support 64 bits dram address.
+> 
+> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->  hw/arm/smmu-common.c         | 36 +++++++++++++++++++++++++++++-------
->  hw/arm/smmuv3.c              | 31 +++++++++++++++++++++++++++++--
->  hw/arm/trace-events          |  6 ++++--
->  include/hw/arm/smmu-common.h |  3 ++-
->  4 files changed, 64 insertions(+), 12 deletions(-)
->
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 8b9e59b24b..b1cf1303c6 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -148,13 +148,14 @@ void smmu_iotlb_inv_all(SMMUState *s)
->      g_hash_table_remove_all(s->iotlb);
->  }
->  
-> -static gboolean smmu_hash_remove_by_asid(gpointer key, gpointer value,
-> -                                         gpointer user_data)
-> +static gboolean smmu_hash_remove_by_asid_vmid(gpointer key, gpointer value,
-> +                                              gpointer user_data)
->  {
-> -    int asid = *(int *)user_data;
-> +    SMMUIOTLBPageInvInfo *info = (SMMUIOTLBPageInvInfo *)user_data;
->      SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
->  
-> -    return SMMU_IOTLB_ASID(*iotlb_key) == asid;
-> +    return (SMMU_IOTLB_ASID(*iotlb_key) == info->asid) &&
-> +           (SMMU_IOTLB_VMID(*iotlb_key) == info->vmid);
->  }
->  
->  static gboolean smmu_hash_remove_by_vmid(gpointer key, gpointer value,
-> @@ -166,6 +167,16 @@ static gboolean smmu_hash_remove_by_vmid(gpointer key, gpointer value,
->      return SMMU_IOTLB_VMID(*iotlb_key) == vmid;
->  }
->  
-> +static gboolean smmu_hash_remove_by_vmid_s1(gpointer key, gpointer value,
-> +                                            gpointer user_data)
-> +{
-> +    int vmid = *(int *)user_data;
-> +    SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
+>   hw/ssi/aspeed_smc.c | 66 +++++++++++++++++++++++++++++++++++++++------
+>   hw/ssi/trace-events |  2 +-
+>   2 files changed, 59 insertions(+), 9 deletions(-)
+> 
+> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+> index 71abc7a2d8..a67cac3d0f 100644
+> --- a/hw/ssi/aspeed_smc.c
+> +++ b/hw/ssi/aspeed_smc.c
+> @@ -132,6 +132,9 @@
+>   #define   FMC_WDT2_CTRL_BOOT_SOURCE      BIT(4) /* O: primary 1: alternate */
+>   #define   FMC_WDT2_CTRL_EN               BIT(0)
+>   
+> +/* DMA DRAM Side Address High Part (AST2700) */
+> +#define R_DMA_DRAM_ADDR_HIGH   (0x7c / 4)
 > +
-> +    return (SMMU_IOTLB_VMID(*iotlb_key) == vmid) &&
-> +           (SMMU_IOTLB_ASID(*iotlb_key) >= 0);
+>   /* DMA Control/Status Register */
+>   #define R_DMA_CTRL        (0x80 / 4)
+>   #define   DMA_CTRL_REQUEST      (1 << 31)
+> @@ -187,6 +190,7 @@
+>    *   0x1FFFFFF: 32M bytes
+>    */
+>   #define DMA_DRAM_ADDR(asc, val)   ((val) & (asc)->dma_dram_mask)
+> +#define DMA_DRAM_ADDR_HIGH(val)   ((val) & 0xf)
+>   #define DMA_FLASH_ADDR(asc, val)  ((val) & (asc)->dma_flash_mask)
+>   #define DMA_LENGTH(val)         ((val) & 0x01FFFFFF)
+>   
+> @@ -207,6 +211,7 @@ static const AspeedSegments aspeed_2500_spi2_segments[];
+>   #define ASPEED_SMC_FEATURE_DMA       0x1
+>   #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
+>   #define ASPEED_SMC_FEATURE_WDT_CONTROL 0x4
+> +#define ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH 0x08
+>   
+>   static inline bool aspeed_smc_has_dma(const AspeedSMCClass *asc)
+>   {
+> @@ -218,6 +223,11 @@ static inline bool aspeed_smc_has_wdt_control(const AspeedSMCClass *asc)
+>       return !!(asc->features & ASPEED_SMC_FEATURE_WDT_CONTROL);
+>   }
+>   
+> +static inline bool aspeed_smc_has_dma_dram_addr_high(const AspeedSMCClass *asc)
+
+To ease the reading, I would call the helper aspeed_smc_has_dma64()
+
+> +{
+> +    return !!(asc->features & ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH);
 > +}
 > +
->  static gboolean smmu_hash_remove_by_asid_vmid_iova(gpointer key, gpointer value,
->                                                gpointer user_data)
->  {
-> @@ -259,10 +270,15 @@ void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
->                                  &info);
->  }
->  
-> -void smmu_iotlb_inv_asid(SMMUState *s, int asid)
-> +void smmu_iotlb_inv_asid_vmid(SMMUState *s, int asid, int vmid)
->  {
-> -    trace_smmu_iotlb_inv_asid(asid);
-> -    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid, &asid);
-> +    SMMUIOTLBPageInvInfo info = {
-> +        .asid = asid,
-> +        .vmid = vmid,
-> +    };
-> +
-> +    trace_smmu_iotlb_inv_asid_vmid(asid, vmid);
-> +    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid_vmid, &info);
->  }
->  
->  inline void smmu_iotlb_inv_vmid(SMMUState *s, int vmid)
-> @@ -271,6 +287,12 @@ inline void smmu_iotlb_inv_vmid(SMMUState *s, int vmid)
->      g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid, &vmid);
->  }
->  
-> +inline void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid)
+>   #define aspeed_smc_error(fmt, ...)                                      \
+>       qemu_log_mask(LOG_GUEST_ERROR, "%s: " fmt "\n", __func__, ## __VA_ARGS__)
+>   
+> @@ -747,6 +757,9 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
+>           (aspeed_smc_has_dma(asc) && addr == R_DMA_CTRL) ||
+>           (aspeed_smc_has_dma(asc) && addr == R_DMA_FLASH_ADDR) ||
+>           (aspeed_smc_has_dma(asc) && addr == R_DMA_DRAM_ADDR) ||
+> +        (aspeed_smc_has_dma(asc) &&
+> +         aspeed_smc_has_dma_dram_addr_high(asc) &&
+> +         addr == R_DMA_DRAM_ADDR_HIGH) ||
+>           (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN) ||
+>           (aspeed_smc_has_dma(asc) && addr == R_DMA_CHECKSUM) ||
+>           (addr >= R_SEG_ADDR0 &&
+> @@ -847,6 +860,23 @@ static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
+>       }
+>   }
+>   
+> +static uint64_t aspeed_smc_dma_dram_addr(AspeedSMCState *s)
 > +{
-> +    trace_smmu_iotlb_inv_vmid_s1(vmid);
-> +    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid_s1, &vmid);
+> +    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
+> +    uint64_t dram_addr_high;
+> +    uint64_t dma_dram_addr;
+> +
+> +    if (aspeed_smc_has_dma_dram_addr_high(asc)) {
+> +        dram_addr_high = s->regs[R_DMA_DRAM_ADDR_HIGH];
+> +        dram_addr_high <<= 32;
+> +        dma_dram_addr = dram_addr_high | s->regs[R_DMA_DRAM_ADDR];
+
+Here is a proposal to shorten the routine :
+
+         return ((uint64_t) s->regs[R_DMA_DRAM_ADDR_HIGH] << 32) |
+             s->regs[R_DMA_DRAM_ADDR];
+
+
+> +    } else {
+> +        dma_dram_addr = s->regs[R_DMA_DRAM_ADDR];
+
+and
+         return s->regs[R_DMA_DRAM_ADDR];
+	
+> +    }
+> +
+> +    return dma_dram_addr;
 > +}
 > +
->  /* VMSAv8-64 Translation */
->  
->  /**
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 17bbd43c13..ece647b8bf 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1280,25 +1280,52 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->          case SMMU_CMD_TLBI_NH_ASID:
->          {
->              int asid = CMD_ASID(&cmd);
-> +            int vmid = -1;
->  
->              if (!STAGE1_SUPPORTED(s)) {
->                  cmd_error = SMMU_CERROR_ILL;
->                  break;
->              }
->  
-> +            /*
-> +             * VMID is only matched when stage 2 is supported for the Security
-> +             * state corresponding to the command queue that the command was
-> +             * issued in.
-> +             * QEMU ignores the field by setting to -1, similarly to what STE
-> +             * decoding does. And invalidation commands ignore VMID < 0.
-> +             */
-> +            if (STAGE2_SUPPORTED(s)) {
-> +                vmid = CMD_VMID(&cmd);
-> +            }
+>   static uint32_t aspeed_smc_dma_len(AspeedSMCState *s)
+>   {
+>       AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
+> @@ -914,24 +944,34 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+>   
+>   static void aspeed_smc_dma_rw(AspeedSMCState *s)
+>   {
+> +    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
+> +    uint64_t dram_addr_high;
+
+This variable doesn't look very useful
+  
+> +    uint64_t dma_dram_addr;
+> +    uint64_t dram_addr;
+
+and dram_addr is redundant with dma_dram_addr. Please use only one.
+
+
+>       MemTxResult result;
+>       uint32_t dma_len;
+>       uint32_t data;
+>   
+>       dma_len = aspeed_smc_dma_len(s);
+> +    dma_dram_addr = aspeed_smc_dma_dram_addr(s);
 > +
->              trace_smmuv3_cmdq_tlbi_nh_asid(asid);
->              smmu_inv_notifiers_all(&s->smmu_state);
-> -            smmu_iotlb_inv_asid(bs, asid);
-> +            smmu_iotlb_inv_asid_vmid(bs, asid, vmid);
->              break;
->          }
->          case SMMU_CMD_TLBI_NH_ALL:
-> +        {
-> +            int vmid = -1;
-> +
->              if (!STAGE1_SUPPORTED(s)) {
->                  cmd_error = SMMU_CERROR_ILL;
->                  break;
->              }
-> +
-> +            /*
-> +             * If stage-2 is supported, invalidate for this VMID only, otherwise
-> +             * invalidate the whole thing, see SMMU_CMD_TLBI_NH_ASID()
-> +             */
-> +            if (STAGE2_SUPPORTED(s)) {
-> +                vmid = CMD_VMID(&cmd);
-> +                trace_smmuv3_cmdq_tlbi_nh(vmid);
-> +                smmu_iotlb_inv_vmid_s1(bs, vmid);
-> +                break;
-> +            }
->              QEMU_FALLTHROUGH;
+> +    if (aspeed_smc_has_dma_dram_addr_high(asc)) {
+> +        dram_addr = dma_dram_addr - s->dram_mr->container->addr;
+
+Why do you truncate the address again ? It should already be done with
+
+#define DMA_DRAM_ADDR_HIGH(val)   ((val) & 0xf)
+
+> +    } else {
+> +        dram_addr = dma_dram_addr;
+> +    }
+>   
+>       trace_aspeed_smc_dma_rw(s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE ?
+>                               "write" : "read",
+>                               s->regs[R_DMA_FLASH_ADDR],
+> -                            s->regs[R_DMA_DRAM_ADDR],
+> +                            dram_addr,
+>                               dma_len);
+>       while (dma_len) {
+>           if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
+> -            data = address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
+> +            data = address_space_ldl_le(&s->dram_as, dram_addr,
+>                                           MEMTXATTRS_UNSPECIFIED, &result);
+>               if (result != MEMTX_OK) {
+> -                aspeed_smc_error("DRAM read failed @%08x",
+> -                                 s->regs[R_DMA_DRAM_ADDR]);
+> +                aspeed_smc_error("DRAM read failed @%" PRIx64, dram_addr);
+>                   return;
+>               }
+>   
+> @@ -951,11 +991,10 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
+>                   return;
+>               }
+>   
+> -            address_space_stl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
+> +            address_space_stl_le(&s->dram_as, dram_addr,
+>                                    data, MEMTXATTRS_UNSPECIFIED, &result);
+>               if (result != MEMTX_OK) {
+> -                aspeed_smc_error("DRAM write failed @%08x",
+> -                                 s->regs[R_DMA_DRAM_ADDR]);
+> +                aspeed_smc_error("DRAM write failed @%" PRIx64, dram_addr);
+>                   return;
+>               }
+>           }
+> @@ -964,8 +1003,15 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
+>            * When the DMA is on-going, the DMA registers are updated
+>            * with the current working addresses and length.
+>            */
+> +        dram_addr += 4;
+> +        dma_dram_addr += 4;
+> +        if (aspeed_smc_has_dma_dram_addr_high(asc)) {
+> +            dram_addr_high = dma_dram_addr >> 32;
+> +            s->regs[R_DMA_DRAM_ADDR_HIGH] = dram_addr_high;
+
+             s->regs[R_DMA_DRAM_ADDR_HIGH] = dma_dram_addr >> 32;
+
 > +        }
->          case SMMU_CMD_TLBI_NSNH_ALL:
-> -            trace_smmuv3_cmdq_tlbi_nh();
-> +            trace_smmuv3_cmdq_tlbi_nsnh();
->              smmu_inv_notifiers_all(&s->smmu_state);
->              smmu_iotlb_inv_all(bs);
->              break;
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index f5c361d96e..2556f4721a 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -11,8 +11,9 @@ smmu_ptw_page_pte(int stage, int level,  uint64_t iova, uint64_t baseaddr, uint6
->  smmu_ptw_block_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t iova, uint64_t gpa, int bsize_mb) "stage=%d level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" iova=0x%"PRIx64" block address = 0x%"PRIx64" block size = %d MiB"
->  smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64
->  smmu_iotlb_inv_all(void) "IOTLB invalidate all"
-> -smmu_iotlb_inv_asid(uint16_t asid) "IOTLB invalidate asid=%d"
-> +smmu_iotlb_inv_asid_vmid(int asid, uint16_t vmid) "IOTLB invalidate asid=%d vmid=%d"
->  smmu_iotlb_inv_vmid(uint16_t vmid) "IOTLB invalidate vmid=%d"
-> +smmu_iotlb_inv_vmid_s1(uint16_t vmid) "IOTLB invalidate vmid=%d"
->  smmu_iotlb_inv_iova(uint16_t asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
->  smmu_inv_notifiers_mr(const char *name) "iommu mr=%s"
->  smmu_iotlb_lookup_hit(int asid, uint16_t vmid, uint64_t addr, uint64_t mask, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache HIT asid=%d vmid=%d addr=0x%"PRIx64" mask=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
-> @@ -47,7 +48,8 @@ smmuv3_cmdq_cfgi_cd(uint32_t sid) "sid=0x%x"
->  smmuv3_config_cache_hit(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache HIT for sid=0x%x (hits=%d, misses=%d, hit rate=%d)"
->  smmuv3_config_cache_miss(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache MISS for sid=0x%x (hits=%d, misses=%d, hit rate=%d)"
->  smmuv3_range_inval(int vmid, int asid, uint64_t addr, uint8_t tg, uint64_t num_pages, uint8_t ttl, bool leaf, int stage) "vmid=%d asid=%d addr=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" ttl=%d leaf=%d stage=%d"
-> -smmuv3_cmdq_tlbi_nh(void) ""
-> +smmuv3_cmdq_tlbi_nh(int vmid) "vmid=%d"
-> +smmuv3_cmdq_tlbi_nsnh(void) ""
->  smmuv3_cmdq_tlbi_nh_asid(uint16_t asid) "asid=%d"
->  smmuv3_cmdq_tlbi_s12_vmid(uint16_t vmid) "vmid=%d"
->  smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid=0x%x"
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index df166d8477..67db30e85b 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -226,8 +226,9 @@ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
->  SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
->                                  uint8_t tg, uint8_t level);
->  void smmu_iotlb_inv_all(SMMUState *s);
-> -void smmu_iotlb_inv_asid(SMMUState *s, int asid);
-> +void smmu_iotlb_inv_asid_vmid(SMMUState *s, int asid, int vmid);
->  void smmu_iotlb_inv_vmid(SMMUState *s, int vmid);
-> +void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid);
->  void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
->                           uint8_t tg, uint64_t num_pages, uint8_t ttl);
->  void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
+> +
+> +        s->regs[R_DMA_DRAM_ADDR] = dma_dram_addr & 0xffffffff;
+
+use DMA_DRAM_ADDR() may be instead.
+
+>           s->regs[R_DMA_FLASH_ADDR] += 4;
+> -        s->regs[R_DMA_DRAM_ADDR] += 4;
+>           dma_len -= 4;
+>           s->regs[R_DMA_LEN] = dma_len;
+>           s->regs[R_DMA_CHECKSUM] += data;
+> @@ -1118,6 +1164,10 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
+>       } else if (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN &&
+>                  aspeed_smc_dma_granted(s)) {
+>           s->regs[addr] = DMA_LENGTH(value);
+> +    } else if (aspeed_smc_has_dma(asc) &&
+> +               aspeed_smc_has_dma_dram_addr_high(asc) &&
+> +               addr == R_DMA_DRAM_ADDR_HIGH) {
+> +        s->regs[addr] = DMA_DRAM_ADDR_HIGH(value);
+>       } else {
+>           qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
+>                         __func__, addr);
+> diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
+> index 2d5bd2b83d..7b5ad6a939 100644
+> --- a/hw/ssi/trace-events
+> +++ b/hw/ssi/trace-events
+> @@ -6,7 +6,7 @@ aspeed_smc_do_snoop(int cs, int index, int dummies, int data) "CS%d index:0x%x d
+>   aspeed_smc_flash_write(int cs, uint64_t addr,  uint32_t size, uint64_t data, int mode) "CS%d @0x%" PRIx64 " size %u: 0x%" PRIx64" mode:%d"
+>   aspeed_smc_read(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
+>   aspeed_smc_dma_checksum(uint32_t addr, uint32_t data) "0x%08x: 0x%08x"
+> -aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint32_t dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%08x size:0x%08x"
+> +aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint64_t dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%" PRIx64 " size:0x%08x"
+>   aspeed_smc_write(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
+>   aspeed_smc_flash_select(int cs, const char *prefix) "CS%d %sselect"
+>   
+

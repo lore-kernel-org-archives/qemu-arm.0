@@ -1,193 +1,195 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1283116ejd;
-        Wed, 17 Apr 2024 13:07:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUM9c6/NHfvUHR4HsEgp8hIxQgG1uF1wgxbYHsBWhAlSJI5R1TqgnerCfk5Mjl+nPSqht5PIqhayn8eClYR8gcwmjvYUU5y
-X-Google-Smtp-Source: AGHT+IGRPsiiUmext8bzb1cbXHLWgGgQwGz/pYNyhU27BAnUwWuz/gHIOk2FUQEzQF7KUf48cS9I
-X-Received: by 2002:a05:622a:5499:b0:437:93f2:729c with SMTP id ep25-20020a05622a549900b0043793f2729cmr321467qtb.5.1713384474608;
-        Wed, 17 Apr 2024 13:07:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713384474; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1570043ejd;
+        Thu, 18 Apr 2024 01:16:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXEN/S8lEBXzmfzQYC86WC3SGjIgRKVfoUPohBlDSJb8kke+Gk/sVR/KK7fSfjeia9S3S4mCGY2rsCHeUI5vLbIC87+NxBv
+X-Google-Smtp-Source: AGHT+IHXp3Cg8vI9E/v3bzcCp5uamHtskY0jg6eYqTyCQRhDETs6/jmsRUFQO3+Dp5amE3zr++y5
+X-Received: by 2002:ad4:500b:0:b0:6a0:582d:b4bf with SMTP id s11-20020ad4500b000000b006a0582db4bfmr529949qvo.27.1713428187124;
+        Thu, 18 Apr 2024 01:16:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713428187; cv=none;
         d=google.com; s=arc-20160816;
-        b=cguoQ555k3a6NtfCDWnY/clrAt2YHRcL876VJFCNVmu+R0NCeDI2E3HoNbMFULTUsX
-         1XqRapp+GSgoaiC7fZWCuxISPr1+eD3EbUE33/8kvzYhcjsteLYsw8/Db+KxlUTQ9LTi
-         zUCAiPFRiF2MrpMhE/12f764O0u9dGr40gz01vtBUjdnNr1y8AGPlhB+Sb1PeFh7Wfyg
-         6QZnuia2bkZD5IWrISkQac2Bv5Eq4KODkxcazQChZNEq0YgTHMJftcU+OMEnKxKCWGJm
-         wnLtQ27rqUFDC8Yon4RVcSwAfFUkB4FE8iZnL8IR221/hqA019z6I0IYUoaM3myHGikz
-         8HjA==
+        b=cNuQYWCGo9dRPhk3PM3bCE+Suc7oyISU+21agVqRDeHpZyTLyQd2e7SBPgpGkh3TzK
+         1G2kf2zwgk26TjI78QXarln1ieba749Cc/4TaJqXPHBPgxRckNPSHNnSc3dx6srOb8Wv
+         yMEZcUiEyNgUfOagepBBhuWHHNpvDLpNf8GGPyahcOXh0wfTQYJtd0Pkk3n8lXR3A2H/
+         aV1eaiofClvXjpOjV3jJthMpnad9sm+L5ylILJ0JHcfXsanVgd/zMKYxgsRRJR65i5dL
+         3Vi6+R/uceqFOlvZ5UVjT4zL8bN3JwbHnlBRCAAh2RwU3jCqFt44/41EBOFx/W49SalD
+         Fy1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=8tcTq2KpScTlws07ObRAiC//XPp8pHFLk1BZM5ydL3M=;
-        fh=hWq9biYcHi4AVBFeigpCRerUFNUig9XOCt49Yp/LVQA=;
-        b=IN9PgjPa7QV6Vx7E/0NKwws84N66VHzXQe2pghOun2bjKVP+QkQ7Ocpo8VeJfjuwTu
-         xsttth7EUdoznPMFHwxBxsEpAZx/8Wny18eBj/XiZDo/jcTp398jJBXEbKiCiaXzdsSf
-         1C3gyFJe7A2XZfyFK1GZ9AVGws4fgaVgF5vTdYiPpBfYI9tuHICMhG/13fKPneMdVwl9
-         NYPCAFzCNtNczRxBglYDJWJBitCVJNSgYkEm6FQdgRaISaWFKPbKg6xOq+euGuqe3KZ2
-         ZNnJFnyg6ny5tV0ofQUdb1/rzf3TOj36T9d+Vxv24tqxJc3gr1TMsEh9tOwr/3ruWq7F
-         EhFQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=62mA9kWBl6rNhwgcKetLh06gyGC3fEnKCyIht4Ys5vE=;
+        fh=KjSYjhGl8givcv6vWyPkD+c3THMMoXDtefKQslEFMA0=;
+        b=TxwXB5FSTVygSPxgaUv9KZ4omzrVdsfi7EFj6NDp7NtdtjTsIjNFfP9ge8R5sfDjx2
+         Ta0ga22yT65FFw7zjQl3SOLJfHPdqPqrDzr71Z0cjTAy+uQZ5XXLJyOUJOEupmKAhM07
+         VeJYLckSHlrIZjR8tn4zXmsXxyvQX2uiF0XdgcNohQt3/o4E4nhlBmUcEDnMXyN/IAX5
+         f5R0MGCndVAaTSbppjkD8+LAKwcAEe9Y1nSCrEreMp9oQ/zzNxlC5SylW7xOQzsS7YGO
+         H+JRxcHRppRBfk3cvzDrQk29qDRxWW1akjIDhc+9o/NjF/zht4Nk3tbp39imjeZMDE1a
+         rDPw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h8QzEhvs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g18-20020ac87d12000000b004378bb33a87si742094qtb.488.2024.04.17.13.07.54
+        by mx.google.com with ESMTPS id if4-20020a0562141c4400b006a0423b368dsi954203qvb.325.2024.04.18.01.16.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Apr 2024 13:07:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 18 Apr 2024 01:16:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h8QzEhvs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rxBZH-00063a-W3; Wed, 17 Apr 2024 16:07:44 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rxMwJ-0001ui-LO; Thu, 18 Apr 2024 04:16:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rxBZF-000635-J5
- for qemu-devel@nongnu.org; Wed, 17 Apr 2024 16:07:41 -0400
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rxBZD-0000fq-Lj
- for qemu-devel@nongnu.org; Wed, 17 Apr 2024 16:07:41 -0400
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-6eff9dc1821so182449b3a.3
- for <qemu-devel@nongnu.org>; Wed, 17 Apr 2024 13:07:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1713384458; x=1713989258; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=8tcTq2KpScTlws07ObRAiC//XPp8pHFLk1BZM5ydL3M=;
- b=h8QzEhvsradVqDq+vVXw7W+nYcnBd73teAsfOqTBiAn0dZd3mlecFwHFUoYXcx6oak
- MevkqV/V2JdTHye9ARyYMIFgbXJp9y31ulj8CvZvUFokpANW3iKvpidOQOEJ2A5ZuZiQ
- 3R98p203cB5kiQM9G3Otua7SMXZEpOsVR9t6yVEQyZj0MTNylm0hjdyTdEZ13gdHi22Z
- 1xDTn4ezQNJnc0+xvBoRYTqTtu/un7Dbub/nj2fuuzzvOOWZi05D+fciJNbVxkUtHcEO
- oHKnY7mybbp8vfSwMslEDpgrFk+CwGxuaQUNUuTqGGgQwwbWZPKJue/faQ/XaqLT/s0r
- Jn3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713384458; x=1713989258;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=8tcTq2KpScTlws07ObRAiC//XPp8pHFLk1BZM5ydL3M=;
- b=ginSWZ8bY+YgrAJrnpZH0V8+qLP8jffUg8rCiNhS7y0IjkvvZDNw7K+01E+zpDvITe
- BWUQWEMXSfgXPlvP/7n3OAglBAK+2elYi3KLdE/rpSxQfypXQ1AJoN4BNkqKe91wUvCM
- GwDPLojkpuxmXIQ5RPuGp994ASbHSmEi52L0xtL8sGXNv6TI9mQwVt4UZrJhcfGLZRiL
- sY90EANfpfp7IG0CHx8oShpMFFVa+USa/6MAFQDXMA9+XdGOdh49juszGMYKNFBQWzCc
- sEc9yzYmp9VO7MKLFB7ug13JhWw4CygKVbldy7uGS+zs2hhR+fX0l6+89AEdna1MoL9M
- cKfQ==
-X-Gm-Message-State: AOJu0YxgP/qpl5vIRMcjw2IWmxNuyzuBiwYp3fn15q2/w1tMZUgzMHdc
- JNzuf9sOQO/XBgi4kGglObGteztTf9kBYw95Tj3uVqrXKeipJJMmTHOL3g9j9wk=
-X-Received: by 2002:a05:6a00:198e:b0:6ed:e1c:1035 with SMTP id
- d14-20020a056a00198e00b006ed0e1c1035mr688575pfl.28.1713384458019; 
- Wed, 17 Apr 2024 13:07:38 -0700 (PDT)
-Received: from [192.168.0.4] (174-21-72-5.tukw.qwest.net. [174.21.72.5])
- by smtp.gmail.com with ESMTPSA id
- fb33-20020a056a002da100b006ed14fed3a5sm52917pfb.154.2024.04.17.13.07.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Apr 2024 13:07:37 -0700 (PDT)
-Message-ID: <0c878d25-3fbb-4f0b-bc9e-ca638f8c4f1e@linaro.org>
-Date: Wed, 17 Apr 2024 13:07:35 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rxMwI-0001uL-1h; Thu, 18 Apr 2024 04:16:14 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rxMwE-0006Tn-Ms; Thu, 18 Apr 2024 04:16:13 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VKrC36F1mz6K5qR;
+ Thu, 18 Apr 2024 16:13:51 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id D8A22140684;
+ Thu, 18 Apr 2024 16:15:54 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Thu, 18 Apr
+ 2024 09:15:54 +0100
+Date: Thu, 18 Apr 2024 09:15:55 +0100
+To: Richard Henderson <richard.henderson@linaro.org>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Philippe
+ =?ISO-8859-1?Q?Ma?= =?ISO-8859-1?Q?thieu-Daud=E9?= <philmd@linaro.org>, Idan
+ Horowitz <idan.horowitz@gmail.com>, <linuxarm@huawei.com>
 Subject: Re: [PATCH v3 5/6] target/arm: Do memory type alignment check when
  translation disabled
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Idan Horowitz <idan.horowitz@gmail.com>, linuxarm@huawei.com
+Message-ID: <20240418091555.00006666@Huawei.com>
+In-Reply-To: <0c878d25-3fbb-4f0b-bc9e-ca638f8c4f1e@linaro.org>
 References: <20240301204110.656742-1-richard.henderson@linaro.org>
  <20240301204110.656742-6-richard.henderson@linaro.org>
  <20240416161111.0000607c@huawei.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240416161111.0000607c@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ <0c878d25-3fbb-4f0b-bc9e-ca638f8c4f1e@linaro.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: F3WPStJKA69j
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: CWfPqoUjZDDR
 
-On 4/16/24 08:11, Jonathan Cameron wrote:
-> On Fri,  1 Mar 2024 10:41:09 -1000
-> Richard Henderson <richard.henderson@linaro.org> wrote:
-> 
->> If translation is disabled, the default memory type is Device, which
->> requires alignment checking.  This is more optimally done early via
->> the MemOp given to the TCG memory operation.
->>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> Reported-by: Idan Horowitz <idan.horowitz@gmail.com>
->> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1204
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> 
-> Hi Richard.
-> 
-> I noticed some tests I was running stopped booting with master.
-> (it's a fun and complex stack of QEMU + kvm on QEMU for vCPU Hotplug kernel work,
-> but this is the host booting)
-> 
-> EDK2 build from upstream as of somepoint last week.
-> 
-> Bisects to this patch.
-> 
->   qemu-system-aarch64 -M virt,gic-version=3,virtualization=true -m 4g,maxmem=8G,slots=8 -cpu cortex-a76 -smp cpus=4,threads=2,clusters=2,sockets=1 \
->   -kernel Image \
->   -drive if=none,file=full.qcow2,format=qcow2,id=hd \
->   -device ioh3420,id=root_port1 -device virtio-blk-pci,drive=hd \
->   -netdev user,id=mynet,hostfwd=tcp::5555-:22 -device virtio-net-pci,netdev=mynet,id=bob \
->   -nographic -no-reboot -append 'earlycon root=/dev/vda2 fsck.mode=skip tp_printk' \
->   -monitor telnet:127.0.0.1:1235,server,nowait -bios QEMU_EFI.fd \
->   -object memory-backend-ram,size=4G,id=mem0 \
->   -numa node,nodeid=0,cpus=0-3,memdev=mem0
-> 
-> Symptoms: Nothing on console from edk2 which is built in debug mode so is normally very noisy.
->            No sign of anything much happening at all :(
+On Wed, 17 Apr 2024 13:07:35 -0700
+Richard Henderson <richard.henderson@linaro.org> wrote:
 
-This isn't a fantastic bug report.
+> On 4/16/24 08:11, Jonathan Cameron wrote:
+> > On Fri,  1 Mar 2024 10:41:09 -1000
+> > Richard Henderson <richard.henderson@linaro.org> wrote:
+> >  =20
+> >> If translation is disabled, the default memory type is Device, which
+> >> requires alignment checking.  This is more optimally done early via
+> >> the MemOp given to the TCG memory operation.
+> >>
+> >> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>
+> >> Reported-by: Idan Horowitz <idan.horowitz@gmail.com>
+> >> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1204
+> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org> =20
+> >=20
+> > Hi Richard.
+> >=20
+> > I noticed some tests I was running stopped booting with master.
+> > (it's a fun and complex stack of QEMU + kvm on QEMU for vCPU Hotplug ke=
+rnel work,
+> > but this is the host booting)
+> >=20
+> > EDK2 build from upstream as of somepoint last week.
+> >=20
+> > Bisects to this patch.
+> >=20
+> >   qemu-system-aarch64 -M virt,gic-version=3D3,virtualization=3Dtrue -m =
+4g,maxmem=3D8G,slots=3D8 -cpu cortex-a76 -smp cpus=3D4,threads=3D2,clusters=
+=3D2,sockets=3D1 \
+> >   -kernel Image \
+> >   -drive if=3Dnone,file=3Dfull.qcow2,format=3Dqcow2,id=3Dhd \
+> >   -device ioh3420,id=3Droot_port1 -device virtio-blk-pci,drive=3Dhd \
+> >   -netdev user,id=3Dmynet,hostfwd=3Dtcp::5555-:22 -device virtio-net-pc=
+i,netdev=3Dmynet,id=3Dbob \
+> >   -nographic -no-reboot -append 'earlycon root=3D/dev/vda2 fsck.mode=3D=
+skip tp_printk' \
+> >   -monitor telnet:127.0.0.1:1235,server,nowait -bios QEMU_EFI.fd \
+> >   -object memory-backend-ram,size=3D4G,id=3Dmem0 \
+> >   -numa node,nodeid=3D0,cpus=3D0-3,memdev=3Dmem0
+> >=20
+> > Symptoms: Nothing on console from edk2 which is built in debug mode so =
+is normally very noisy.
+> >            No sign of anything much happening at all :( =20
+>=20
+> This isn't a fantastic bug report.
+>=20
+> (1) If it doesn't boot efi, then none of the -kernel parameters are neces=
+sary.
+> (2) I'd be surprised if the full.qcow2 drive parameters are necessary eit=
+her.
+>      But if they are, what contents?  Is a new empty drive sufficient, ju=
+st
+>      enough to send the bios through the correct device initialization?
+> (3) edk2 build from ...
+>      Well, this is partly edk2's fault, as the build documentation is awf=
+ul.
+>      I spent an entire afternoon trying to figure it out and gave up.
+>=20
+> I will say that the edk2 shipped with qemu does work, so... are you absol=
+utely
+> certain that it isn't a bug in edk2 since then?  Firmware bugs are exactl=
+y what
+> that patch is supposed to expose, as requested by issue #1204.
+>=20
+> I'd say you should boot with "-d int" and see what kind of interrupts you=
+'re getting very=20
+> early on.  I suspect that you'll see data aborts with ESR xx/yy where the=
+ last 6 bits of=20
+> yy are 0x21 (alignment fault).
 
-(1) If it doesn't boot efi, then none of the -kernel parameters are necessary.
-(2) I'd be surprised if the full.qcow2 drive parameters are necessary either.
-     But if they are, what contents?  Is a new empty drive sufficient, just
-     enough to send the bios through the correct device initialization?
-(3) edk2 build from ...
-     Well, this is partly edk2's fault, as the build documentation is awful.
-     I spent an entire afternoon trying to figure it out and gave up.
+Hi Richard,
 
-I will say that the edk2 shipped with qemu does work, so... are you absolutely
-certain that it isn't a bug in edk2 since then?  Firmware bugs are exactly what
-that patch is supposed to expose, as requested by issue #1204.
+Sorry for lack of details, I was aware it wasn't great and should have stat=
+ed I planned
+to come back with more details when I had time to debug.  Snowed under so f=
+or now I've
+just dropped back to 8.2 and will get back to this perhaps next week.
 
-I'd say you should boot with "-d int" and see what kind of interrupts you're getting very 
-early on.  I suspect that you'll see data aborts with ESR xx/yy where the last 6 bits of 
-yy are 0x21 (alignment fault).
+Jonathan
 
+>=20
+>=20
+> r~
 
-r~

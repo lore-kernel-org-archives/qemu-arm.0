@@ -1,174 +1,166 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1953491ejd;
-        Thu, 18 Apr 2024 12:28:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVWXoLANYrVUozPl6gftIhsTP1zWJ7K4K5hF5SywtpeXbsNah0EwE9U67qUX3SMG3Tle2vPyJb0wpPRPV4Yl7nytgQR18D7
-X-Received: by 2002:a17:907:97c9:b0:a52:13ff:5317 with SMTP id js9-20020a17090797c900b00a5213ff5317mr70883ejc.38.1713468507510;
-        Thu, 18 Apr 2024 12:28:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713468507; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1954020ejd;
+        Thu, 18 Apr 2024 12:29:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXBLmual2Iboc/4scDLDRnc4/8ug3KXgymUxOdycQ50LAEY/EEsQlvQTnnpeIP7cUlrs/YUr+TkWld9O5OWCko3+fSJVBf+
+X-Received: by 2002:a2e:301a:0:b0:2d7:7bb2:7afc with SMTP id w26-20020a2e301a000000b002d77bb27afcmr2490853ljw.3.1713468585390;
+        Thu, 18 Apr 2024 12:29:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713468585; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q8x817BxTKC3Ly+S0z7xVunueJ7sKmihFrdWbpDGGziGjaapEGNbVGcmRmzfEz9daq
-         63pptgu9eMd4jlKLeucQGdYfmYaN12SFf/MeMYUdz+bxUQkaqZZ3k+g2ZWAkJ3+Vw0Ga
-         9Ugw7k6F5dWRUDE8eJc5NVhSdSa+p/G/7s+jg+UeSzGamcZEbkoLVrn+8K8uG2XQeFmR
-         AA9PhWqrDqywXkGYLXu/+Au5F9UpWyuM7nB8zB2qLi7ySOVdgFH8boG9FarR7gnXJWvG
-         PPblZO2EogXaz8ax2NPlJEuDiV64J8RuHQtPCw1GGJRVJedxZNqljzc57mVfl4m9GzEf
-         dKfQ==
+        b=aM+hIvS6y/CGaOCv3wiL7m3EXOZFF3Ac+e/sUAnlyuo/nzhitcCL+1yR2CxZwBuENN
+         NZADo7mYaoSHm8yO00tzOVe79s/ZsDlh9s7iGps0RHPYSguySJIrxGisqOVVK+2fqj/q
+         g0fK4EE6QmK9ao314a3kD3FUDZjdPFimmu1Eo1pzOxAOnz4JzXyuGwpLox6eisYJLGeV
+         dJsiO46paBDOsntRiuun9AwvPJ4X85R5/Jc3ObHVhYwolAQOF0cCV4HQC7HQm1qrMgKA
+         qHobpICu2bc7eyvwe315ObMuqLYA6fbODKpJb8g2rlTkT+Ueqo8xLPJ+4btxd8HZecu3
+         CCWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=1RS5jD62Ba4lXsw4t8DJy1DGdcN7GiTei/ES6lsX54Q=;
-        fh=End/5HnPWgHNcimj4aEqabS5UZc05/1J8KKO3WRDNwY=;
-        b=HSArLGs7KFrhsu64tOst2awQGHP9aa5COKDzariH1yHkKX2b5AFpbZ87bRhsOEyfQ5
-         APiRKgPdU3F5mYl0HGx3ISKxLSNX7ASgSpYmyQytMixxx2VFD54s8VikmU5yxmJQHswM
-         DGxgd2Y2L6kPTOJtqMsqet9o5fIRPJqnvCp7lQktoQY/1kBq48MBoKyoiWz/HuIUq+sM
-         IdPeOr4EVN7J/9rMmGasRwx+5Cma9JCFY42FBuq8o2g5UafbOldRWou+S+uVA+9nXY5c
-         EEMQLtK2LDmRnx1/re8XsdoluRUimDpmHJWlaysHFq1uZ1wDZyeJ98HRrw7VdYk5EVoi
-         NB6Q==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=WrEd7aDEDjdvNR6Rc9rGdmrqk6I0VD0LzXzxlDM7bsE=;
+        fh=pnGJXZ3su++rSyAZC6SZGGIpNaIAAcflk1rRcHg09Fk=;
+        b=kyajpN+7xaQaH3MFijHicDLy4e5XWGzcGCGE78AigrkdS04U99HIb66y/6k+UJWfUZ
+         yf/IyYAGsAnOxCEtGttkxvoYSW1skEnNplgiXVQ4wTp+lnZmov/I2NoBltRQkkncRCzC
+         EdrfcwggnC8bHrNDy6LSaeY4EUAF6+iYuBsGiPcVspllgtJuJiD8JUOWMBjFTj+3h3l8
+         WYvqVFuRrSG7WAx4UhzjDECSt2+9hJqfZ1+pHf9InX8aqPRYMUL9ZUCw6ZPLFbvAQXV+
+         53uOW7Hdgr6PV7gBMhK4s/M2p5NP42lf91KO+lwhpqYgJvbW568+H9ewSpJybZe9rwyt
+         wkow==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A0uMWYOS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZtQ1NDYt;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u15-20020a170906408f00b00a51c541ab6dsor710369ejj.19.2024.04.18.12.28.27
+        by mx.google.com with SMTPS id 9-20020a2e1309000000b002da9d88ff4csor760745ljt.2.2024.04.18.12.29.45
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 18 Apr 2024 12:28:27 -0700 (PDT)
+        Thu, 18 Apr 2024 12:29:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A0uMWYOS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZtQ1NDYt;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713468507; x=1714073307; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1RS5jD62Ba4lXsw4t8DJy1DGdcN7GiTei/ES6lsX54Q=;
-        b=A0uMWYOSGFoR3OJ/1FZyftE21dMDZjYJ2qcSyzOOgD44qat6yu8i3G0324BhWteY+P
-         T+G1ROOoTJRXXywAwgzosIafMlyS12cP0+xgj2l0tt2QF43xXSi1TBqYV379sAxzz0rZ
-         K7rM8mET3VNl+6sqnSEIuYM3uL5FLJ7p5xbQbZEwYKXB3gEBLFC+5qZT3rZuB9un/KXf
-         nl16K2dwBvL/wHtG9zWeiEIaXch7tn6ak0PnjUU3jFasaNlqLcx4tUpXYisaarqLl+GM
-         Upv+lB2zhZ1pB9LYOEMcoFA1J0GFV39F2tZBlNaoTQd8285esRYhmg41wNQJxL/tZ3HS
-         DKTw==
+        d=linaro.org; s=google; t=1713468585; x=1714073385; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=WrEd7aDEDjdvNR6Rc9rGdmrqk6I0VD0LzXzxlDM7bsE=;
+        b=ZtQ1NDYtEY9Xeo8cUMGcZxgH8vgS3yrHw2ncEkMgFCnUnL9wRmkNXv5P4ACFcdEpLE
+         QRXF69Q6cFBk2jaAtusFngB7H6ts8rhLSU2XTKtf/2zr4zjpcHgkKacvK2n0lLulcNqm
+         7SsX3PPRnpenTpaG3QEWOlK1I2Ydpkh2KH13wwy2dvVpsK/JednpQIjxdGp6Hg9ZMgTq
+         0Od+CnKxGlxSBfxBCZQrs61q6LbQoRWy+1tx3auanDGrblfx/YcHAB6RTZ1PaVme2sfe
+         DA/p92x731TrFAZng8lifUU1g6qTrg3f1FK2vnmqsPjnCcQDIMvp7NvRlJtiQezkwPyc
+         nZmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713468507; x=1714073307;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1RS5jD62Ba4lXsw4t8DJy1DGdcN7GiTei/ES6lsX54Q=;
-        b=Zf/zuaxwwxJYQLufq0nz3HJIMYYf5ItUsyrBzFrBWEiTHqC7+dRgEIhCo2pQtmgoMq
-         R6vrCqOaFumg2Z1wN9OS6LAjRRHD7S5wdl+NMS0ouczAv9JQ39nTxD7j7aMTY7+myenr
-         dTWKJTdEWPvurztE8dZcU2lQeI8iZzxpRSuzj54/ZsqCCBBcrGO6xoNkjtvmssPmIjc4
-         BTNL4GrthKee1/VOINsWO1JjEu75moAPmgz/65xyC1L4C4zHzzdA8pZThWu0CCYL28ly
-         4rF9LurMd0yp254WqU+ZuQ4LyjX2oC9pXNNt3EXqXjD0TWQDujAaPiQrsMk2oNvWMzDJ
-         qQrA==
-X-Forwarded-Encrypted: i=1; AJvYcCXHqsrnDC3k76pJ1o5prgM/v12bzRKHm+9VGyZGiMqzR9adaBOb8LoJzZCB1TjqYf16dGxs8ycHWKcTJ4uwdYRZCrU08ZWZ
-X-Gm-Message-State: AOJu0Yy2l3Jv38xpwkMEVnw6XNmPTlA3w3O8xJEo0l3Qo/2CKyqzGhee
-	3nDs9l7XtDKQa0+Qk92ENALB889YML1XmDTMM8zct5BEQlQjOHK6/+mzPL014ys+Ug==
-X-Google-Smtp-Source: AGHT+IGnTKynFh1txoZ9rF9Vyl15tlc6kOiNOpj1xrRbtFLNtjZUfEfbPneu9vzj/dXaKDU0HdxgVA==
-X-Received: by 2002:a17:906:f87:b0:a51:b463:6b41 with SMTP id q7-20020a1709060f8700b00a51b4636b41mr56034ejj.61.1713468507162;
-        Thu, 18 Apr 2024 12:28:27 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1713468585; x=1714073385;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=WrEd7aDEDjdvNR6Rc9rGdmrqk6I0VD0LzXzxlDM7bsE=;
+        b=ECHzw/OTlEuKLv+OnmtHdlexCbhMsyvvBQlXBm4Am3EPr+ERPLynq8A1mLi5JEkQn7
+         elsGDVHfBGi5YGIZ1cMpTwY+EMSwJnshPjkBtyTW+JZq0a18qZWYu7k5FojSYc4OE1sY
+         +NZTDnWw8fe9Sq6iCmkiICTCXPRw609T9OLaHvMs520bmu984FL1cCQsP+JIdQHfQP7e
+         zERsuwYSJrzJNwO+GvFTnxnekXUIb7OKI1ajFyhh51QzBFdJFa8UikmbZ41NR2R6RAPs
+         q7hmp4+ZlqX0ef8NXf7AIqnEgaGsrCWMHy7nXkQ/7O5cwV9beO0I1rjiisPEpjdL4OoZ
+         mavw==
+X-Forwarded-Encrypted: i=1; AJvYcCVRytHneVN+L2P9VAg56jNH1sw6EZK/6UEIwvKfuEIb2vfEkpHd3v6Mmmn87Q9eBN36cdP/XS1X5pD04csPAhFbBVdkU6wS
+X-Gm-Message-State: AOJu0Yx2ysHWCFu3BVHls1tJeDHazHvdHMCQX3otPmPUEMnQtJzcIW+8
+	2OgUGddGXDxY6pHf1LBJ72JF2Ew94B0R8+AA9iSFgkkenxHGvF7KKWCzzuIGmOUc7A==
+X-Google-Smtp-Source: AGHT+IGPiOT1eC6eUS6iwYRXcHUMAYmSQxpoP9gCPQopDsCgUk5q4iJLyvSqdEZh8CYyR1arTYRm6Q==
+X-Received: by 2002:a2e:240c:0:b0:2d8:a82c:9e1e with SMTP id k12-20020a2e240c000000b002d8a82c9e1emr1974267ljk.15.1713468584887;
+        Thu, 18 Apr 2024 12:29:44 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
-Received: from m1x-phil.lan ([176.176.151.213])
-        by smtp.gmail.com with ESMTPSA id s17-20020a170906bc5100b00a4660b63502sm1277805ejv.12.2024.04.18.12.28.25
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 18 Apr 2024 12:28:26 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Received: from [192.168.69.100] ([176.176.151.213])
+        by smtp.gmail.com with ESMTPSA id bc24-20020a056402205800b0057059784823sm1226083edb.29.2024.04.18.12.29.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 18 Apr 2024 12:29:44 -0700 (PDT)
+Message-ID: <09dd8fe2-29ec-4099-9746-70fe8665b3dd@linaro.org>
+Date: Thu, 18 Apr 2024 21:29:41 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 02/24] exec: Declare CPUBreakpoint/CPUWatchpoint type in
+ 'breakpoint.h' header
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	qemu-arm@nongnu.org,
-	qemu-ppc@nongnu.org,
-	qemu-riscv@nongnu.org,
-	David Hildenbrand <david@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Anton Johansson <anjo@rev.ng>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH 24/24] exec: Remove unnecessary inclusions of 'hw/core/cpu.h'
-Date: Thu, 18 Apr 2024 21:25:23 +0200
-Message-ID: <20240418192525.97451-25-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240418192525.97451-1-philmd@linaro.org>
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ David Hildenbrand <david@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Anton Johansson <anjo@rev.ng>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
 References: <20240418192525.97451-1-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ <20240418192525.97451-3-philmd@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240418192525.97451-3-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Z0l55RFAi5Y3
+X-TUID: izgGJSfoiaRb
 
-When "hw/core/cpu.h" is not required, remove it.
+On 18/4/24 21:25, Philippe Mathieu-Daudé wrote:
+> The CPUBreakpoint and CPUWatchpoint structures are declared
+> in "hw/core/cpu.h", which contains declarations related to
+> CPUState and CPUClass. Some source files only require the
+> BP/WP definitions and don't need to pull in all CPU* API.
+> In order to simplify, create a new "exec/breakpoint.h" header.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/exec/breakpoint.h | 23 +++++++++++++++++++++++
+>   include/hw/core/cpu.h     | 16 +---------------
+>   target/arm/internals.h    |  1 +
+>   target/ppc/internal.h     |  1 +
+>   target/riscv/debug.h      |  2 ++
+>   5 files changed, 28 insertions(+), 15 deletions(-)
+>   create mode 100644 include/exec/breakpoint.h
+> 
+> diff --git a/include/exec/breakpoint.h b/include/exec/breakpoint.h
+> new file mode 100644
+> index 0000000000..45038263e3
+> --- /dev/null
+> +++ b/include/exec/breakpoint.h
+> @@ -0,0 +1,23 @@
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/exec/cpu-all.h    | 1 -
- include/exec/cpu-defs.h   | 1 -
- include/hw/boards.h       | 1 -
- include/hw/ppc/openpic.h  | 1 -
- include/sysemu/hw_accel.h | 1 -
- 5 files changed, 5 deletions(-)
+Oops, forgot:
 
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index cfbf51822c..03963442a0 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -21,7 +21,6 @@
- 
- #include "exec/cpu-common.h"
- #include "exec/memory.h"
--#include "hw/core/cpu.h"
- 
- /* some important defines:
-  *
-diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
-index 0dbef3010c..2b88db71a8 100644
---- a/include/exec/cpu-defs.h
-+++ b/include/exec/cpu-defs.h
-@@ -29,7 +29,6 @@
- #include "exec/hwaddr.h"
- #endif
- #include "exec/memattrs.h"
--#include "hw/core/cpu.h"
- 
- #include "cpu-param.h"
- 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 8b8f6d5c00..2daa23082f 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -9,7 +9,6 @@
- #include "qapi/qapi-types-machine.h"
- #include "qemu/module.h"
- #include "qom/object.h"
--#include "hw/core/cpu.h"
- 
- #define TYPE_MACHINE_SUFFIX "-machine"
- 
-diff --git a/include/hw/ppc/openpic.h b/include/hw/ppc/openpic.h
-index 9c6af8e207..8fe3a5902f 100644
---- a/include/hw/ppc/openpic.h
-+++ b/include/hw/ppc/openpic.h
-@@ -2,7 +2,6 @@
- #define OPENPIC_H
- 
- #include "hw/sysbus.h"
--#include "hw/core/cpu.h"
- #include "qom/object.h"
- 
- #define MAX_CPU     32
-diff --git a/include/sysemu/hw_accel.h b/include/sysemu/hw_accel.h
-index c71b77e71f..6aca3c6178 100644
---- a/include/sysemu/hw_accel.h
-+++ b/include/sysemu/hw_accel.h
-@@ -11,7 +11,6 @@
- #ifndef QEMU_HW_ACCEL_H
- #define QEMU_HW_ACCEL_H
- 
--#include "hw/core/cpu.h"
- #include "sysemu/kvm.h"
- #include "sysemu/hvf.h"
- #include "sysemu/whpx.h"
--- 
-2.41.0
++/*
++ * QEMU breakpoint & watchpoint definitions
++ *
++ * Copyright (c) 2012 SUSE LINUX Products GmbH
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
+
+> +#ifndef EXEC_BREAKPOINT_H
+> +#define EXEC_BREAKPOINT_H
+> +
+> +#include "qemu/queue.h"
+> +#include "exec/vaddr.h"
+> +#include "exec/memattrs.h" //MemTxAttrs
+
+Also forgot to remove that comment.
+
+> +
+> +typedef struct CPUBreakpoint {
+> +    vaddr pc;
+> +    int flags; /* BP_* */
+> +    QTAILQ_ENTRY(CPUBreakpoint) entry;
+> +} CPUBreakpoint;
+> +
+> +typedef struct CPUWatchpoint {
+> +    vaddr vaddr;
+> +    vaddr len;
+> +    vaddr hitaddr;
+> +    MemTxAttrs hitattrs;
+> +    int flags; /* BP_* */
+> +    QTAILQ_ENTRY(CPUWatchpoint) entry;
+> +} CPUWatchpoint;
+> +
+> +#endif

@@ -1,78 +1,78 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1952633ejd;
-        Thu, 18 Apr 2024 12:26:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXRqEMvU/DbqsGwHv9h15ew+EdDZQ9QMwLSPUpFaIrW0ye9D6x/wsBAI7Gt3t3lKhI7eMTMLif31E95CTIcCTn5ZtHIXP9d
-X-Received: by 2002:a05:651c:b0f:b0:2da:38e:f73d with SMTP id b15-20020a05651c0b0f00b002da038ef73dmr3266328ljr.51.1713468402610;
-        Thu, 18 Apr 2024 12:26:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713468402; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1952679ejd;
+        Thu, 18 Apr 2024 12:26:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVjmyifxNfKZEWFPwkmdvIibpEoGmcATUpWLdx6x7+0P4O4uOhC7xCcZKZ6oOhr3IAfjXr67A/i38gJcLbAdim9x0t1EucN
+X-Received: by 2002:a05:6512:1c8:b0:516:d1f0:600f with SMTP id f8-20020a05651201c800b00516d1f0600fmr6062lfp.16.1713468408605;
+        Thu, 18 Apr 2024 12:26:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713468408; cv=none;
         d=google.com; s=arc-20160816;
-        b=BCmgxgMFDOJT5va7R/WnA/azwgfu+TbSNrBBvIXwUzJdlb2Jsv15WS8m/4q1Qh8sLk
-         o030xkEB+CUZCXjnU0x+zhPPmFJuytXeKHgyZEE8KX3AIxM+QqD8VKRGDAJovmI2bOy9
-         k2IkWWgqtlS+uCiaRvohKE2zDdlYTnKzXuFx0IHSEYwXHtTtF/ByUPzuR7tOjsXLJcSI
-         OO1UcWSUBwIOHSvePHCk/ty9HIy0gPIRL5FeMEa/bGbseouCZZtQxmWpzSQljw9oXJ4y
-         jiJBQgREMIljA3fdJlq0VwAMg/D5rA3VjqO1RCYyflZapUM0lrC5wlp7eS4bOuh/mCmh
-         48dw==
+        b=jL9drt1fMgvAFgl5xybKprLhyk1M+YFxATXJEtW/KAO3YzKr9+3U+HqhLxagqIyFtd
+         T670zNDQblhsnzpQ0oIa1iPA6C/b5c5ma0MOozrkDpSKXzY7TOs33ck7mFRYRwtkPY9A
+         5sYcRLRW+gz6u1b03vm73rDFNF7+JxP/mnyBlaLwHPi7MK/7rRsMhbbGt3CnvAQB56Me
+         fwRr9/cutCVeZjzWUG/ONiYP1OFMa6VWb8REbFkTr/okScuBs82EgFSrIYl0Efkear95
+         /q62wipVre/ASwksfU0O0f6do6a0+y1zhwkq5Bn5vUCv9NbOsmsxSF4DuB4lydgIfcRA
+         Pi1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=cb1njxsoj9fqYLqI6LbCARFpOVdltqpYC3ClFHXZbjY=;
-        fh=DyqKojjW1nh28m64FsONQoYtWwkN18cBNEngfgdNAX4=;
-        b=uz/GKmQDf844WyfP8rOS6Q5BMq1toTr5nifjXF1ljcfVwFI7yX3Gen8BHYegsoEGsA
-         2zfLZgh1mMjcDzDxVfJG+l9HZnqZXknnoxjfdZ+qTjyS+zY+Tc/Cz9xaDU9Vu9qNZ60M
-         DAm/C8oC8CIHhhyXEz9zfBvIxEQ4ZkqlcNVfCaZBOOBDML5qChKWB1tFrTckfJ0JdIWi
-         NieDJiea3myNwdrwz6IJmqulNgH7uE313QFaHaGEg0MSi0lWP+a4CEQ+K/G7yeVPjjcB
-         ls3vrecBuINYhqDlD/lxyDdSDkAB6EbjWkAPDJ4E1UKyhk3heFkl5ZTPLa5B6FfKbstw
-         7gYA==;
+        bh=KYZzt8h+xfLtt/f9EJkGkN8nzUXLIiHe8tAqM2sJg8A=;
+        fh=5puZ7VWgB0J0XAicAKy2/LM0uOggGlkE+Uab7cD78sg=;
+        b=oDsvsG2onit+mnkyEStqW9h4qwlFoseQnc9LzeY371FxXr3TwGTBDoeqQGsZiwLoDJ
+         aydbWP9ehTjaC6Z1J77DP/mG3mGY1gjtzm+FB9kfXbn+9n+DB4QVjbZpICbSMLwhPCZC
+         Xcx5kC6WJaRwtMtDjxhnno5n5BYL4zdCT+DRmlZ+vULf8JVlI9woVtQF53i/N0i8s9wm
+         o0Dmtr5G53yg/EQWwcdeP2PvvLabUdR96+oeney7W7kZLWBxHNA4ceR19n+5Co49f1Pm
+         Tnz9cCEfc5xIh2M2R0G7B77VcGUxY5XwkvWwpDUKOgvZTU7GV4xjLzwJTpScolEQROmI
+         YyUA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NDkGdbb0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Biw9iiiy;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id e23-20020a50d4d7000000b0056e2b094003sor621396edj.5.2024.04.18.12.26.42
+        by mx.google.com with SMTPS id kl20-20020a170907995400b00a5228837383sor736457ejc.15.2024.04.18.12.26.48
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 18 Apr 2024 12:26:42 -0700 (PDT)
+        Thu, 18 Apr 2024 12:26:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NDkGdbb0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Biw9iiiy;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713468402; x=1714073202; darn=linaro.org;
+        d=linaro.org; s=google; t=1713468408; x=1714073208; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=cb1njxsoj9fqYLqI6LbCARFpOVdltqpYC3ClFHXZbjY=;
-        b=NDkGdbb07k4EpE4SRMg94uangb50fod38+CyIcp/11LqElN/f7Z8eK/9rry+JIgDIk
-         TbW1Rt35XmskvMu4Y7q6lAkIiwBHuX1AKI06xsO2EpAFbpMRuT0OTxJMRD/rSSRAbWbC
-         UU22CqxSxAV+tPNssPb8ceo6336UR/qxcFgKHaPFkK2Y/EmaNa8P9qBNR6sDUKkhnrcB
-         Pat0ecHViNivTJcAU68guyMCqCrRirda+Sd7M902Usq4yUjrH5OH822+AAyAJ/dJaT0t
-         7Ozz/p35rBBgxWVvCj+Ot9ZyATC+UMbl2EzVKLLFlSP0EDF/XAGTqcAh4cD5n0elN3Wn
-         6/Tw==
+        bh=KYZzt8h+xfLtt/f9EJkGkN8nzUXLIiHe8tAqM2sJg8A=;
+        b=Biw9iiiyuIgu35zNivSKSieBlD/GXKcJwtFAvNKDoNUjlQXYAwb/ZYlTQqSt86I4ll
+         Dr8YSBtnT8JKMVEXFViVNcsh4kNvtydaYtL5+WuxjE6iFoK/1S+g35QcdeTsgzvyWWRL
+         xbyi3nN2wfQED/tWxd3e4Tfpu81jugNRJzN7gepOtOgTJot1Z0q3V9Z+qRGZvEHDVxEU
+         LrelEmzjUKu3PuxT434hlobZwWb6O+6AMG3SDsssAklhmjnuqUnOKbWKDdwEeVqxbVii
+         l7JpWVaQe2MSyq6D+/WD8eqxIEOP2FBe0KcGBFbFEnNxOEKEUxO/Qb0RsryUWr7zAat4
+         r8TQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713468402; x=1714073202;
+        d=1e100.net; s=20230601; t=1713468408; x=1714073208;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=cb1njxsoj9fqYLqI6LbCARFpOVdltqpYC3ClFHXZbjY=;
-        b=bmGWR59IVvJkQ2bCiscmLHkfSe3w2TCrptOaA9l+PsN5u3p0YjGG6aiqea1A2bJAh1
-         kPTqsmJLakho+POwvYuD5+P5f5+yATO7ynE010tT83CE8HW0q8Gj8wP85WykB3YG17zH
-         mJ6YwhYMp7mYwcL3yp0PxXchZtZq3AMn/szde+Kd0LfA1w+9wWSJKMsiVvwVw9cNG8bo
-         qo9/nJKdoGf/h4izq2HYfsUDzz4yzPC7ZwLRxaV22vIAGpijzNaWP9SWHW1rLQyM1vPM
-         QWDbLXZJuWQ5Rds2d6d4dVN2lAmk1xI+2BLVp49X5x5/Fnyt43oM8xKMDHH5LoyBbP/1
-         xQNw==
-X-Forwarded-Encrypted: i=1; AJvYcCUWxVdO3cgve7TiW1aioSszvrdJNcl6DY3pxxHytYpsJVl6VBD1+EEO67E/y98eanoE3Df/kQwKqHBfdLBLROlki16im9ou
-X-Gm-Message-State: AOJu0YwY3RC8+JgyAwH8YkseTzEbudKT9A506/cbToUJK7d3Ptt8UNVM
-	iIGl+GPn39CVENIKH/TyIXrGDcXm9fBEYP7bPpKYEXae4an63zgrSs34+1viyVTUfA==
-X-Google-Smtp-Source: AGHT+IE+0wbmWgIFnPU7i6VoBuSEKx6idnpuhGmJGfEUKBYV1liUnXM/8gEwZP44oUl1tDGVCvsLvw==
-X-Received: by 2002:a50:d7db:0:b0:56e:d9e:f4d3 with SMTP id m27-20020a50d7db000000b0056e0d9ef4d3mr95268edj.18.1713468402179;
-        Thu, 18 Apr 2024 12:26:42 -0700 (PDT)
+        bh=KYZzt8h+xfLtt/f9EJkGkN8nzUXLIiHe8tAqM2sJg8A=;
+        b=VSN5EIw5aGNL+P4s9KoMIU/8wxkDDzSYQEwGzlZ9VVpcF1Z554o/qbCLPDuZ7ptmBS
+         PwpL2q5CWHhhRUv3lmc1g67RXCNXwBTsKbYZduEUFO+ZlDyAanr98NH1BOVRE3hA2zrs
+         oSgh0lnj7ArDrT1LaPy992nHhi3iBGz4HUZRaJkAUgZidfZYQ+Hy0a5Oc4FNrk92Ssfu
+         f4vgHt37OnWoI7gdTMTflKWzA75YrnMCdPsSTmREwz1508fblKe4iCGb1E5bQPnKSbpT
+         Q8Z7WfUXkOv8EIN++fdNBS7v+1OTHCZ8EFV2d2/RyviPWTLpluMWcMkhgKw6QFDYQlzo
+         Spbg==
+X-Forwarded-Encrypted: i=1; AJvYcCVzZb+fDv3a/Wf36UTC6kIcdfnN6m+TXGBupuyHN5fQGvADh2r5PrCsRAxPKpUK3ly49XWNltgYgrdFOtaoA83m5emF644b
+X-Gm-Message-State: AOJu0YyZqOA7PLQn08eiOzTJed/jSZNePltaZu425yUgGnQzPwcoCZUr
+	71k7q/CNnYMcdCLU4fjxdsPVCA9niY0267LWR7PJzoNL9htF4UnTPNKKuF/yOd3Iug==
+X-Google-Smtp-Source: AGHT+IGGSoNOPuz4j2WvvNGODM+4AEJcNNx0Thxm9FrMRXdYVHLgsSyAWa6ZsVOCsEkdfnN1Xh2oBQ==
+X-Received: by 2002:a17:906:34da:b0:a52:2e08:207e with SMTP id h26-20020a17090634da00b00a522e08207emr43995ejb.77.1713468408261;
+        Thu, 18 Apr 2024 12:26:48 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.151.213])
-        by smtp.gmail.com with ESMTPSA id d3-20020a50f683000000b0056e59d747b0sm1276471edn.40.2024.04.18.12.26.40
+        by smtp.gmail.com with ESMTPSA id u21-20020a1709064ad500b00a47423b4c33sm1255791ejt.128.2024.04.18.12.26.46
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 18 Apr 2024 12:26:41 -0700 (PDT)
+        Thu, 18 Apr 2024 12:26:47 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -83,174 +83,41 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	David Hildenbrand <david@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Anton Johansson <anjo@rev.ng>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 12/24] exec: Move CPUTLBEntry helpers to cputlb.c
-Date: Thu, 18 Apr 2024 21:25:11 +0200
-Message-ID: <20240418192525.97451-13-philmd@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Artyom Tarasenko <atar4qemu@gmail.com>
+Subject: [PATCH 13/24] target/sparc: Replace abi_ulong by uint32_t for TARGET_ABI32
+Date: Thu, 18 Apr 2024 21:25:12 +0200
+Message-ID: <20240418192525.97451-14-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240418192525.97451-1-philmd@linaro.org>
 References: <20240418192525.97451-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: lZIqlk7qNOqm
+X-TUID: WKKsGYH/UjQQ
 
-The following CPUTLBEntry helpers are only used in accel/tcg/cputlb.c:
-  - tlb_index()
-  - tlb_entry()
-  - tlb_read_idx()
-  - tlb_addr_write()
-
-Move them to this file, allowing to remove the huge "cpu.h" header
-inclusion from "exec/cpu_ldst.h".
+We have abi_ulong == uint32_t for the 32-bit ABI.
+Use the generic type to avoid to depend on the
+"exec/user/abitypes.h" header.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/exec/cpu_ldst.h | 55 -----------------------------------------
- accel/tcg/cputlb.c      | 51 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 51 insertions(+), 55 deletions(-)
+ target/sparc/gdbstub.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-index 7032949dba..2c5a0a5c81 100644
---- a/include/exec/cpu_ldst.h
-+++ b/include/exec/cpu_ldst.h
-@@ -70,7 +70,6 @@
- #include "exec/abi_ptr.h"
- #include "exec/mmu-access-type.h"
- #include "qemu/int128.h"
--#include "cpu.h"
+diff --git a/target/sparc/gdbstub.c b/target/sparc/gdbstub.c
+index 07ea81ab5f..ec0036e9ef 100644
+--- a/target/sparc/gdbstub.c
++++ b/target/sparc/gdbstub.c
+@@ -108,7 +108,7 @@ int sparc_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+     SPARCCPU *cpu = SPARC_CPU(cs);
+     CPUSPARCState *env = &cpu->env;
+ #if defined(TARGET_ABI32)
+-    abi_ulong tmp;
++    uint32_t tmp;
  
- #if defined(CONFIG_USER_ONLY)
- 
-@@ -294,60 +293,6 @@ Int128 cpu_atomic_cmpxchgo_be_mmu(CPUArchState *env, abi_ptr addr,
-                                   Int128 cmpv, Int128 newv,
-                                   MemOpIdx oi, uintptr_t retaddr);
- 
--#if !defined(CONFIG_USER_ONLY)
--
--#include "tcg/oversized-guest.h"
--
--static inline uint64_t tlb_read_idx(const CPUTLBEntry *entry,
--                                    MMUAccessType access_type)
--{
--    /* Do not rearrange the CPUTLBEntry structure members. */
--    QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_read) !=
--                      MMU_DATA_LOAD * sizeof(uint64_t));
--    QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_write) !=
--                      MMU_DATA_STORE * sizeof(uint64_t));
--    QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_code) !=
--                      MMU_INST_FETCH * sizeof(uint64_t));
--
--#if TARGET_LONG_BITS == 32
--    /* Use qatomic_read, in case of addr_write; only care about low bits. */
--    const uint32_t *ptr = (uint32_t *)&entry->addr_idx[access_type];
--    ptr += HOST_BIG_ENDIAN;
--    return qatomic_read(ptr);
--#else
--    const uint64_t *ptr = &entry->addr_idx[access_type];
--# if TCG_OVERSIZED_GUEST
--    return *ptr;
--# else
--    /* ofs might correspond to .addr_write, so use qatomic_read */
--    return qatomic_read(ptr);
--# endif
--#endif
--}
--
--static inline uint64_t tlb_addr_write(const CPUTLBEntry *entry)
--{
--    return tlb_read_idx(entry, MMU_DATA_STORE);
--}
--
--/* Find the TLB index corresponding to the mmu_idx + address pair.  */
--static inline uintptr_t tlb_index(CPUState *cpu, uintptr_t mmu_idx,
--                                  vaddr addr)
--{
--    uintptr_t size_mask = cpu->neg.tlb.f[mmu_idx].mask >> CPU_TLB_ENTRY_BITS;
--
--    return (addr >> TARGET_PAGE_BITS) & size_mask;
--}
--
--/* Find the TLB entry corresponding to the mmu_idx + address pair.  */
--static inline CPUTLBEntry *tlb_entry(CPUState *cpu, uintptr_t mmu_idx,
--                                     vaddr addr)
--{
--    return &cpu->neg.tlb.f[mmu_idx].table[tlb_index(cpu, mmu_idx, addr)];
--}
--
--#endif /* !defined(CONFIG_USER_ONLY) */
--
- #if TARGET_BIG_ENDIAN
- # define cpu_lduw_data        cpu_lduw_be_data
- # define cpu_ldsw_data        cpu_ldsw_be_data
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index e16d02a62c..953c437ba9 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -27,6 +27,9 @@
- #include "exec/tb-flush.h"
- #include "exec/memory-internal.h"
- #include "exec/ram_addr.h"
-+#include "exec/mmu-access-type.h"
-+#include "exec/tlb-common.h"
-+#include "exec/vaddr.h"
- #include "tcg/tcg.h"
- #include "qemu/error-report.h"
- #include "exec/log.h"
-@@ -95,6 +98,54 @@ static inline size_t sizeof_tlb(CPUTLBDescFast *fast)
-     return fast->mask + (1 << CPU_TLB_ENTRY_BITS);
- }
- 
-+static inline uint64_t tlb_read_idx(const CPUTLBEntry *entry,
-+                                    MMUAccessType access_type)
-+{
-+    /* Do not rearrange the CPUTLBEntry structure members. */
-+    QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_read) !=
-+                      MMU_DATA_LOAD * sizeof(uint64_t));
-+    QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_write) !=
-+                      MMU_DATA_STORE * sizeof(uint64_t));
-+    QEMU_BUILD_BUG_ON(offsetof(CPUTLBEntry, addr_code) !=
-+                      MMU_INST_FETCH * sizeof(uint64_t));
-+
-+#if TARGET_LONG_BITS == 32
-+    /* Use qatomic_read, in case of addr_write; only care about low bits. */
-+    const uint32_t *ptr = (uint32_t *)&entry->addr_idx[access_type];
-+    ptr += HOST_BIG_ENDIAN;
-+    return qatomic_read(ptr);
-+#else
-+    const uint64_t *ptr = &entry->addr_idx[access_type];
-+# if TCG_OVERSIZED_GUEST
-+    return *ptr;
-+# else
-+    /* ofs might correspond to .addr_write, so use qatomic_read */
-+    return qatomic_read(ptr);
-+# endif
-+#endif
-+}
-+
-+static inline uint64_t tlb_addr_write(const CPUTLBEntry *entry)
-+{
-+    return tlb_read_idx(entry, MMU_DATA_STORE);
-+}
-+
-+/* Find the TLB index corresponding to the mmu_idx + address pair.  */
-+static inline uintptr_t tlb_index(CPUState *cpu, uintptr_t mmu_idx,
-+                                  vaddr addr)
-+{
-+    uintptr_t size_mask = cpu->neg.tlb.f[mmu_idx].mask >> CPU_TLB_ENTRY_BITS;
-+
-+    return (addr >> TARGET_PAGE_BITS) & size_mask;
-+}
-+
-+/* Find the TLB entry corresponding to the mmu_idx + address pair.  */
-+static inline CPUTLBEntry *tlb_entry(CPUState *cpu, uintptr_t mmu_idx,
-+                                     vaddr addr)
-+{
-+    return &cpu->neg.tlb.f[mmu_idx].table[tlb_index(cpu, mmu_idx, addr)];
-+}
-+
- static void tlb_window_reset(CPUTLBDesc *desc, int64_t ns,
-                              size_t max_entries)
- {
+     tmp = ldl_p(mem_buf);
+ #else
 -- 
 2.41.0

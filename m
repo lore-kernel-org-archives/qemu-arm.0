@@ -1,79 +1,78 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1952267ejd;
-        Thu, 18 Apr 2024 12:25:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUYKjVUCjmDJJI/gk2R2wZ7TC1irdhNpMnnjkLvCqRhHW6zdmrhs8u4MOREBd38lOKjfc4Cwl3x0qr21eN/VFZeneqTkDKs
-X-Received: by 2002:a17:906:5006:b0:a52:53f3:af3c with SMTP id s6-20020a170906500600b00a5253f3af3cmr60230ejj.10.1713468353716;
-        Thu, 18 Apr 2024 12:25:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713468353; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1952313ejd;
+        Thu, 18 Apr 2024 12:25:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXu2BZ3grM8ne1Ac7iIDllUemjM7Y/caAM4039OqD8PlrDrVDQO9K21+P19+1x7zjQhpJFKZhpOZK7k2nTlJAKUlJWBjrrW
+X-Received: by 2002:a17:906:46cc:b0:a52:5d0b:208d with SMTP id k12-20020a17090646cc00b00a525d0b208dmr63086ejs.0.1713468359617;
+        Thu, 18 Apr 2024 12:25:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713468359; cv=none;
         d=google.com; s=arc-20160816;
-        b=PAqwh9tciXX4Y9UTA2yCKtpLP5tJB7MZk6lZxfmBuayIWJHLbbbHsoVFeSpopebzI+
-         UU+lusPZU6WYZRDv4CaKmmBjysxl3nfgZ0D7FZbGY9ajEpgf7tx9C/KiPACrOhyT7abc
-         P0Cb1ChPeoE01dZTy9mLTXLwCbQjcMtPmT9KDD9/n9EsTXt80T3ll1/Qqcr1j/UZcv5W
-         TOhFbRzCCclC4wvOMwktbsjeC4o7U4GQ1VWhqGlRfZB6AbAdDX9SH9GOcxsxWydb4oBc
-         b1WXVeBX1jv5ieD7D2X8wf1BxsnyjK1Hs27FVHE80fBctpWt4VOwsdqMsmw7zSBUF2IT
-         Ny4A==
+        b=F6r64FoSN2UGwGEyshqEftPQK9Y4/0WZIqE7w/VQAafTxsfR7oMJiAIaDZws9Eh4dZ
+         2KngrRM+9GvCg/0nZf2YIGu3GVXrTTRVeZZJwnnP1O96HjYh/v4JR7rp1wMJ0/PNQNT0
+         yvlZQGH6CS4QGLlVxiX9nr43yQjMArGpjZSMXsvnrh2do+aNlvfasoxY2SVUfFWZML/7
+         Wv5gxXPCyXb2MdMpBOafU8zB5avYTExl5zAqaRz2NbydMIAMftA6oJMtxPeL+IufzR0s
+         JKbWrvog51yeEruoel2T5X20ogsIoFyWmVNAVo2dKyn4EAeuF2GVQeNYrc02YXMcQWhP
+         gt/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=akXy09tUeGr6mCjhMUDCOqgVvIVDrIu0xemDF/6ToBg=;
-        fh=lV50mQQztPE/4OGr1c9CR8X4Tpn8REECEwZRzsOZF7A=;
-        b=zHCGrPjgI8S8/jKjQCrSUpG99gSebChOGDs7o82ugKM65WOPLfkvR9aWnhs8l5/jlH
-         kREGBLXKbEU3ijr7Z4og2pjQDa6TpPnRvDuLDjZ/H1aQAkktFZvQ8a1GEt2dBv3cjZKp
-         djAfNWhdCL1tGHW8gkyYPSww1XA/qW0xPEzrwjPzNw2SW+XOciOy/8oPsvCjlk/q1n+S
-         xXbhVZHGis5T0+FMYUatBLYzyBxUzeZzXFH2FofNfy+l68iS7nW0b2x8Z2RknkopKJgN
-         sVEklrm40QgefPVSL4zYzKESik+dM/WcMENu6ClXY5dBMZ8qT7j7vl+mj482JOieC2U7
-         yztQ==;
+        bh=A5AN2zfNkbZgNzq4yMXaRJrNHQuv3As8IXVhhvnN+gY=;
+        fh=l6aXhiFm9/kcQpB9Y80p2cJ0C3xQYKQomgb+q2OdoL0=;
+        b=JUlZWzmogtSsNAcIlOEjDHno6qirC1SSNuJloK5uvtNvKVN/D9RFHPvv8O5q866XqX
+         rrXrhyoEttbTUQSmgvw55YmbremzvVcE+7oJja3Jodg3yt1elff8Od18wrIET+9FVWx+
+         9SeITfjPZ2BfgnskqLhT5TN4boVfw9OASJRaHXgsO7DunvP26Glfm3U9FpizlcsJYL3R
+         JQBsDnhfKBIQ5AZret3Mt5ferlYf6nOKLp2pNB3SfW3Qu8HKDUT3Y7r2vg3ICPSD0UJ/
+         t2/ppqpEyohK/eiV9VtzIC/gjU6y48BB4R/fTSWfaIZXSqYqsZbAA6DjYHvw1nbwnVId
+         67EA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="djIraWu/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DVwMwnqu;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c14-20020a170906528e00b00a51a01b0137sor738122ejm.3.2024.04.18.12.25.53
+        by mx.google.com with SMTPS id gq20-20020a170906e25400b00a5261383e23sor716771ejb.14.2024.04.18.12.25.59
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 18 Apr 2024 12:25:53 -0700 (PDT)
+        Thu, 18 Apr 2024 12:25:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="djIraWu/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=DVwMwnqu;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713468353; x=1714073153; darn=linaro.org;
+        d=linaro.org; s=google; t=1713468359; x=1714073159; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=akXy09tUeGr6mCjhMUDCOqgVvIVDrIu0xemDF/6ToBg=;
-        b=djIraWu/aUQJJqOFT1wCib1g1H8L7RLU8Mhkebb7zSgoYe1VdGOfD+GpDIYiXTdgNl
-         Tvx0/1zXaO5nh3Z7PLz4dY5BP4gmEvKEO3CjNV0tWRc8VOjUeJWuw7OSPUJJx9CU3h8C
-         RL2nghpic8346fWk6bFNUeDsyyAjCWUGwbC05NcPnn93RGfUJmy2VHMbKp5Gd2vU1yb0
-         AmkmNqRMRrpG7z3Cg5VCnKur8/m3hk1zU+JYlwGA2aIDV/xb0uni9fbkgvZyNoKMCO2C
-         g01jBhiDI5B7ZlI6YRPpponZ1eLFe2ei6fnM8D95zfFKd/6RvAsj0lN2ILvsd4KE9y/G
-         iXVw==
+        bh=A5AN2zfNkbZgNzq4yMXaRJrNHQuv3As8IXVhhvnN+gY=;
+        b=DVwMwnquwPT72/FMtg9WVofC+Lvc411ZhLIEbEHwWKh8/a5wun1tVQi1ESUVP0vhsC
+         VqLSxm6ZQvAQOgXVV1W6+EqB4LCoKE/3sUbESP2hcWXayoivdnkLdoWYJ0O8IxSW/yca
+         vOl+pgKmO80xmV+KimVVdLRg/yLRxTk3blNOXhYhHfy4KmVSY2pqKpg+xWsaR8ugCLeW
+         VpvWk3wrhAsolgT5WI/WNlOKYqx7Pogkqf17XKrhQG9jkDGFdl/1J8s+9c3jFuKf9yxO
+         0LCFqx+l0RgGhAH5u3bXDqHvYwSGIRmrP1en9UaIkfjP7DFM6F2VsuyM9c/48mp+eOVl
+         cvLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713468353; x=1714073153;
+        d=1e100.net; s=20230601; t=1713468359; x=1714073159;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=akXy09tUeGr6mCjhMUDCOqgVvIVDrIu0xemDF/6ToBg=;
-        b=ZSLqmqwZ1Ium4hHDq2gOSbglmwbUxNxE4QP2nw+5h3TuHmb7oRkEm+KCDF0t5JODyA
-         l4yF3ZmBvFH+ejAMag1WMj9N+K2NUq9xYT3j2soelY9WLgdr4RyOnx+uqlmYnEkuQzcd
-         K7+tSH+aaA2VW4HS9foagFZN4PAGaAxqtyWtWWbd/VPTlEXocHApxuVk+fgchC90UGn6
-         l8mISgxMEzAI6kf6PnmzPZeg+FU61YEyiCtBOS94p34deMt19AmUan6REoaBMUB0YwF5
-         Z5fTokJT3AWT6frNVEKWnDsZMpseJsPWVUYW+wsqhg1wCC8U5f9oY292O/VutajfCSXt
-         1Emw==
-X-Forwarded-Encrypted: i=1; AJvYcCXTWajIM0Yii9pX7IPWmNvFFFV66gtpzmr3mnKS9GPu4QGLpb2NdWuWztQJdzxDp8IO2FkgKV5Hk35J9211OC+yTeQWMDGg
-X-Gm-Message-State: AOJu0YzTx/2ZxaOqYcNvLtqe/7ZCpeN5U4Ebpa0OiCNrI3EZKFqEBgSZ
-	IzZUsEC5BO+li2wYjPpK5odma/hJUq7xWtdqpZD4A6v+oKXpdP00QhuGpZgVgZCZscNO/c+cKmp
-	ivuA=
-X-Google-Smtp-Source: AGHT+IGHWdMJNoXaAn2jkLARpnzm1AkwDW/nssSUAmn21RnLFR4YTnbmDPzOOELnW5gLZFOLDS380g==
-X-Received: by 2002:a17:906:915:b0:a51:c964:3cb7 with SMTP id i21-20020a170906091500b00a51c9643cb7mr50934ejd.61.1713468353390;
-        Thu, 18 Apr 2024 12:25:53 -0700 (PDT)
+        bh=A5AN2zfNkbZgNzq4yMXaRJrNHQuv3As8IXVhhvnN+gY=;
+        b=fnkgD0j2/hwHv0+0hosxGjKLzh28PJi8l9XnyIcrGH0zXVHPJ1wvvWZ7FXNQ7nzt9K
+         R4joYT+7StJn/ecLvTgqaJ7xi78INlgV8IybR/YZr5bhhundZ3KUUpLDIVNwRJhiw0++
+         /gBuNwnTBUK9RIEU2O5RislC6zaclsG9GLYL1WiXQcjbXsQca5UYFCa9m/ZXkTwdNQ3f
+         BsRDcmEhMY8VeWoz8DG3J4Jsnxt1gwER/P15NUqFo62NQOgfRck5FYyNvyl+Sd7CWOkZ
+         abMpdjwxdAwgjpRMq1jC37N3z/dVG4ClL34RnEnHWtgfpaAEetoKCb8XQcpYmCEmIWIr
+         5FPA==
+X-Forwarded-Encrypted: i=1; AJvYcCVO1ClruxYzYRNS2PSwicZU2emypx56cz4R47joYr4Z/hNrVztnuo90CkeUFReUJmBHuIMz6/51scXOALUp+ZYjo1jXNg9c
+X-Gm-Message-State: AOJu0YywTl8tvGbDomGtbcEQI372fGdk2HAyYYJn3MeryMXdmi8Htf1T
+	u94PJ6JO73wi6Uhf5oO7rgaptGEhkRTXvWxh0JZstpSWA7g0ZXsZ5N1FtoHK3U0aNA==
+X-Google-Smtp-Source: AGHT+IFLSLQi8pDowoTVpwvSQYRuYn13I7Tn86X4cb0qyEAJ8RLgeCtpawdlVQYvcABi9MDTksrlmA==
+X-Received: by 2002:a17:906:1949:b0:a52:5925:1f76 with SMTP id b9-20020a170906194900b00a5259251f76mr47729eje.47.1713468359292;
+        Thu, 18 Apr 2024 12:25:59 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan ([176.176.151.213])
-        by smtp.gmail.com with ESMTPSA id i7-20020a1709061e4700b00a52244ab819sm1270026ejj.170.2024.04.18.12.25.51
+        by smtp.gmail.com with ESMTPSA id z18-20020a170906435200b00a4e657a5f1asm1259445ejm.112.2024.04.18.12.25.57
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 18 Apr 2024 12:25:53 -0700 (PDT)
+        Thu, 18 Apr 2024 12:25:58 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -85,42 +84,46 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Anton Johansson <anjo@rev.ng>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 04/24] exec: Restrict TCG specific declarations of 'cputlb.h'
-Date: Thu, 18 Apr 2024 21:25:03 +0200
-Message-ID: <20240418192525.97451-5-philmd@linaro.org>
+Subject: [PATCH 05/24] exec: Restrict 'cpu_ldst.h' to TCG accelerator
+Date: Thu, 18 Apr 2024 21:25:04 +0200
+Message-ID: <20240418192525.97451-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240418192525.97451-1-philmd@linaro.org>
 References: <20240418192525.97451-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ueLkHdQBHaqb
+X-TUID: rwYEUWdHqhVq
 
-Avoid TCG specific declarations being used from non-TCG accelerators.
+"exec/cpu_ldst.h" is specific to TCG, do not allow its
+inclusion from other accelerators.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/exec/cputlb.h | 5 +++++
- 1 file changed, 5 insertions(+)
+ include/exec/cpu_ldst.h | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/include/exec/cputlb.h b/include/exec/cputlb.h
-index 6da1462c4f..ef18642a32 100644
---- a/include/exec/cputlb.h
-+++ b/include/exec/cputlb.h
-@@ -22,9 +22,14 @@
+diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
+index 5b99666702..f3c2a3ca74 100644
+--- a/include/exec/cpu_ldst.h
++++ b/include/exec/cpu_ldst.h
+@@ -1,5 +1,5 @@
+ /*
+- *  Software MMU support
++ *  Software MMU support (per-target)
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+@@ -62,6 +62,10 @@
+ #ifndef CPU_LDST_H
+ #define CPU_LDST_H
  
- #include "exec/cpu-common.h"
- 
-+#ifdef CONFIG_TCG
++#ifndef CONFIG_TCG
++#error Can only include this header with TCG
++#endif
 +
- #if !defined(CONFIG_USER_ONLY)
- /* cputlb.c */
- void tlb_protect_code(ram_addr_t ram_addr);
- void tlb_unprotect_code(ram_addr_t ram_addr);
- #endif
-+
-+#endif /* CONFIG_TCG */
-+
- #endif
+ #include "exec/memopidx.h"
+ #include "exec/abi_ptr.h"
+ #include "exec/mmu-access-type.h"
 -- 
 2.41.0

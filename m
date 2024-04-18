@@ -1,95 +1,113 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1570043ejd;
-        Thu, 18 Apr 2024 01:16:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXEN/S8lEBXzmfzQYC86WC3SGjIgRKVfoUPohBlDSJb8kke+Gk/sVR/KK7fSfjeia9S3S4mCGY2rsCHeUI5vLbIC87+NxBv
-X-Google-Smtp-Source: AGHT+IHXp3Cg8vI9E/v3bzcCp5uamHtskY0jg6eYqTyCQRhDETs6/jmsRUFQO3+Dp5amE3zr++y5
-X-Received: by 2002:ad4:500b:0:b0:6a0:582d:b4bf with SMTP id s11-20020ad4500b000000b006a0582db4bfmr529949qvo.27.1713428187124;
-        Thu, 18 Apr 2024 01:16:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713428187; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp1806001ejd;
+        Thu, 18 Apr 2024 08:20:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX3Plppi0ps4L8qoWWZRD2DMfTKFxEQjGw5JLjzgHpg8TYJ+4B8RMMpk8Ox20oRnqS61gbizgEoYK+kNLqY9Jg+vggG5PjO
+X-Google-Smtp-Source: AGHT+IGKrj+KEd2Gf9qz+GCfD2Qn1C8P9E1Ge5nXl7XKeRnOinWMhqgkrsykiGsluYJLheZbZlHJ
+X-Received: by 2002:a05:6102:4187:b0:47b:b66e:c7d1 with SMTP id cd7-20020a056102418700b0047bb66ec7d1mr4218065vsb.1.1713453642286;
+        Thu, 18 Apr 2024 08:20:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713453642; cv=none;
         d=google.com; s=arc-20160816;
-        b=cNuQYWCGo9dRPhk3PM3bCE+Suc7oyISU+21agVqRDeHpZyTLyQd2e7SBPgpGkh3TzK
-         1G2kf2zwgk26TjI78QXarln1ieba749Cc/4TaJqXPHBPgxRckNPSHNnSc3dx6srOb8Wv
-         yMEZcUiEyNgUfOagepBBhuWHHNpvDLpNf8GGPyahcOXh0wfTQYJtd0Pkk3n8lXR3A2H/
-         aV1eaiofClvXjpOjV3jJthMpnad9sm+L5ylILJ0JHcfXsanVgd/zMKYxgsRRJR65i5dL
-         3Vi6+R/uceqFOlvZ5UVjT4zL8bN3JwbHnlBRCAAh2RwU3jCqFt44/41EBOFx/W49SalD
-         Fy1A==
+        b=esuQtTvlu7co1cdkWkdYJUaiKSDR+RxrHH6dYUki+IymqfDN4cDz7an7X5BIOo8xbf
+         IIiV/m2jUhlCmOqjkQyRxaoaHzcYps1ATX0fTgGT3CVs+JZVqRWkgSZ+yINAr8jEvuiG
+         4ArP/o5I4OhBj96wj5HJlI/DWipjDLQlx6z4q/n8zfDOQRo9yF8tUVALa3f0Euk3S22f
+         NQ6j/eHZyRF+YMt+hJ2d8eKby29i1G0CGDlBsmWJzhvKlK29G6Bu1B/yiqheiUOsXzzc
+         K/t/z000f+GvmBroIOGQgucpsQEMHWhlsfeNSApih7jTunNvN1CTxGsU7hiuKoORWcc8
+         qPBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=62mA9kWBl6rNhwgcKetLh06gyGC3fEnKCyIht4Ys5vE=;
-        fh=KjSYjhGl8givcv6vWyPkD+c3THMMoXDtefKQslEFMA0=;
-        b=TxwXB5FSTVygSPxgaUv9KZ4omzrVdsfi7EFj6NDp7NtdtjTsIjNFfP9ge8R5sfDjx2
-         Ta0ga22yT65FFw7zjQl3SOLJfHPdqPqrDzr71Z0cjTAy+uQZ5XXLJyOUJOEupmKAhM07
-         VeJYLckSHlrIZjR8tn4zXmsXxyvQX2uiF0XdgcNohQt3/o4E4nhlBmUcEDnMXyN/IAX5
-         f5R0MGCndVAaTSbppjkD8+LAKwcAEe9Y1nSCrEreMp9oQ/zzNxlC5SylW7xOQzsS7YGO
-         H+JRxcHRppRBfk3cvzDrQk29qDRxWW1akjIDhc+9o/NjF/zht4Nk3tbp39imjeZMDE1a
-         rDPw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=gPIaBM3QM8McnGpdq3qblSpqrPodIkBgwRVjsR+0/1E=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=lycVioPcqdCKLYT9x1jNPqX9jLD6NME2XG5afFiJGpLMNtWen+88XDJ1Duz6sXadIE
+         boaD9U5TprWx1MiitbhHBJBHg8g6hfBND/h6AT35+QjO2iUQRiy/yBIFq5sQ/mab9bGp
+         H6D8Lmi+R+JlkMI7UF+2UtM6jltsXqX9fouTzbEX0LclzLFMNi3R5/DPq5Itiu4QdlaA
+         P2FDcjgsvIWVH0slIe7hcOZqnCVGh5yMmxfat4/6l6lAC0KHkYj7/ysqC0MA9K+Fh4gu
+         3d8IkXD/C2nf/zpe9Szf5FjQcJaJMTfdXZamyS75j3Gh7HCTDz4HE9XW4rvUbVDgcUnZ
+         r2ig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YTxnwxx7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id if4-20020a0562141c4400b006a0423b368dsi954203qvb.325.2024.04.18.01.16.26
+        by mx.google.com with ESMTPS id hy5-20020a67e7c5000000b0047603e338f5si352101vsb.773.2024.04.18.08.20.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Apr 2024 01:16:27 -0700 (PDT)
+        Thu, 18 Apr 2024 08:20:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YTxnwxx7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rxMwJ-0001ui-LO; Thu, 18 Apr 2024 04:16:16 -0400
+	id 1rxTYm-0003Gf-5r; Thu, 18 Apr 2024 11:20:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rxMwI-0001uL-1h; Thu, 18 Apr 2024 04:16:14 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rxMwE-0006Tn-Ms; Thu, 18 Apr 2024 04:16:13 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VKrC36F1mz6K5qR;
- Thu, 18 Apr 2024 16:13:51 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id D8A22140684;
- Thu, 18 Apr 2024 16:15:54 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Thu, 18 Apr
- 2024 09:15:54 +0100
-Date: Thu, 18 Apr 2024 09:15:55 +0100
-To: Richard Henderson <richard.henderson@linaro.org>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Philippe
- =?ISO-8859-1?Q?Ma?= =?ISO-8859-1?Q?thieu-Daud=E9?= <philmd@linaro.org>, Idan
- Horowitz <idan.horowitz@gmail.com>, <linuxarm@huawei.com>
-Subject: Re: [PATCH v3 5/6] target/arm: Do memory type alignment check when
- translation disabled
-Message-ID: <20240418091555.00006666@Huawei.com>
-In-Reply-To: <0c878d25-3fbb-4f0b-bc9e-ca638f8c4f1e@linaro.org>
-References: <20240301204110.656742-1-richard.henderson@linaro.org>
- <20240301204110.656742-6-richard.henderson@linaro.org>
- <20240416161111.0000607c@huawei.com>
- <0c878d25-3fbb-4f0b-bc9e-ca638f8c4f1e@linaro.org>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rxTYg-0003Ds-K3
+ for qemu-arm@nongnu.org; Thu, 18 Apr 2024 11:20:18 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rxTYV-0004Ti-Ky
+ for qemu-arm@nongnu.org; Thu, 18 Apr 2024 11:20:14 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-418effbc70cso4476435e9.0
+ for <qemu-arm@nongnu.org>; Thu, 18 Apr 2024 08:20:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1713453606; x=1714058406; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=gPIaBM3QM8McnGpdq3qblSpqrPodIkBgwRVjsR+0/1E=;
+ b=YTxnwxx78og9nHusPZmZEh7dW8Ttskztk/VdBSKYAHovY4eJxA3KdNu/0yaWFbWgcF
+ sc27sfyxdVPJ1R1rbCBgAj8QOIcJjLpp3YRc0HZMSTypFIrueXSxQ3y5NA0ZTZRt2nBE
+ h6GZVUA0fsUeDtHPQbSJfBoPJXW5D/gv+p/jen/zl3ZubapspVd+DjPIq98h0SlSKk3b
+ 0+IWEi/mcKxYmDCWixZVyrDPSe+UsPE0769wtdnwMoY7QrweYuDjTVOwJTZI+fugSJE1
+ mDO8PeDGKDjGYCsS53f9VO9FqaAP3nJnGzxFrhneV4AGQHWJQ1M7zzLQsqsERGbb8+nY
+ 3zsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1713453606; x=1714058406;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=gPIaBM3QM8McnGpdq3qblSpqrPodIkBgwRVjsR+0/1E=;
+ b=QMRXBSy8CJQKQ6DKWdHVq+DqqNTmUqRhb53kpsZCRE6g+vt+sS7n6lmJ0fiIg9LUYk
+ FtJtf22TLZzkZ6W1iAxlHU2/Glj+fZNozGm9ozVXK/teJXvhdpvtBuFGtPTIXN1w1JTP
+ /8S2jYx9MAHOzAB3dHkPq46w3ISM8zgz85hIMsMENqtpv7FzDIVaq+13xhOv8TpqUmw9
+ h99dkcUKJ/3tywyEluMj7xToqRzlZcDclfxXdYxPqcNGenaXm9hs9auVtno8huXQK9Q1
+ TzPb7tzZUEqmeGmVtmf8VSOc5AkKFygfPBBsOQIKj3UYCcJ1eUBhbxutdrAM0x1Cj9WV
+ Ct+A==
+X-Gm-Message-State: AOJu0YyMDHUB16qwcpwmwFkbDJ5eTPJAGsXNOwpo8RxHbKNEq29CRiGJ
+ 0MfcqZBmS+NAYeciG6dZ9KRHbrOjOkC08TSYXk0zHTaf4U+1JV1qbFJ0lgSuuPFkx1588lOTVEX
+ o
+X-Received: by 2002:a05:600c:a004:b0:416:bc18:2a00 with SMTP id
+ jg4-20020a05600ca00400b00416bc182a00mr2310119wmb.38.1713453605638; 
+ Thu, 18 Apr 2024 08:20:05 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ w17-20020a05600c475100b004162d06768bsm6886839wmo.21.2024.04.18.08.20.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Apr 2024 08:20:05 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 0/5] target/arm: Update emulation.rst, add some easy features
+Date: Thu, 18 Apr 2024 16:19:59 +0100
+Message-Id: <20240418152004.2106516-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,94 +120,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CWfPqoUjZDDR
+X-TUID: HbV3471nvC3v
 
-On Wed, 17 Apr 2024 13:07:35 -0700
-Richard Henderson <richard.henderson@linaro.org> wrote:
+As of version DDI0487K.a of the Arm ARM, some architectural features
+which previously didn't have official names have been named.
+Mostly these are features which we thought of as part of baseline 8.0
+support.  For SVE and SVE2, the names have been brought into line
+with the FEAT_* naming convention of other extensions, and some
+sub-components split into separate FEAT_ items. This patchset updates
+our list of supported features in emulation.rst to add these.
+The audit also caught a few cases (eg FEAT_CCIDX, FEAT_DPB2) where
+the omission from our list was just an oversight.
+                                
+I've also included a few patches enabling "basically no-op for us"
+features: FEAT_CSV2_3, FEAT_ETS2, and FEAT_Spec_FPACC. (The latter
+does require us to put in the handling for ID_AA64MMFR3_EL1 as
+a real ID register rather than an always-zero reserved sysreg.)
 
-> On 4/16/24 08:11, Jonathan Cameron wrote:
-> > On Fri,  1 Mar 2024 10:41:09 -1000
-> > Richard Henderson <richard.henderson@linaro.org> wrote:
-> >  =20
-> >> If translation is disabled, the default memory type is Device, which
-> >> requires alignment checking.  This is more optimally done early via
-> >> the MemOp given to the TCG memory operation.
-> >>
-> >> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>
-> >> Reported-by: Idan Horowitz <idan.horowitz@gmail.com>
-> >> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1204
-> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org> =20
-> >=20
-> > Hi Richard.
-> >=20
-> > I noticed some tests I was running stopped booting with master.
-> > (it's a fun and complex stack of QEMU + kvm on QEMU for vCPU Hotplug ke=
-rnel work,
-> > but this is the host booting)
-> >=20
-> > EDK2 build from upstream as of somepoint last week.
-> >=20
-> > Bisects to this patch.
-> >=20
-> >   qemu-system-aarch64 -M virt,gic-version=3D3,virtualization=3Dtrue -m =
-4g,maxmem=3D8G,slots=3D8 -cpu cortex-a76 -smp cpus=3D4,threads=3D2,clusters=
-=3D2,sockets=3D1 \
-> >   -kernel Image \
-> >   -drive if=3Dnone,file=3Dfull.qcow2,format=3Dqcow2,id=3Dhd \
-> >   -device ioh3420,id=3Droot_port1 -device virtio-blk-pci,drive=3Dhd \
-> >   -netdev user,id=3Dmynet,hostfwd=3Dtcp::5555-:22 -device virtio-net-pc=
-i,netdev=3Dmynet,id=3Dbob \
-> >   -nographic -no-reboot -append 'earlycon root=3D/dev/vda2 fsck.mode=3D=
-skip tp_printk' \
-> >   -monitor telnet:127.0.0.1:1235,server,nowait -bios QEMU_EFI.fd \
-> >   -object memory-backend-ram,size=3D4G,id=3Dmem0 \
-> >   -numa node,nodeid=3D0,cpus=3D0-3,memdev=3Dmem0
-> >=20
-> > Symptoms: Nothing on console from edk2 which is built in debug mode so =
-is normally very noisy.
-> >            No sign of anything much happening at all :( =20
->=20
-> This isn't a fantastic bug report.
->=20
-> (1) If it doesn't boot efi, then none of the -kernel parameters are neces=
-sary.
-> (2) I'd be surprised if the full.qcow2 drive parameters are necessary eit=
-her.
->      But if they are, what contents?  Is a new empty drive sufficient, ju=
-st
->      enough to send the bios through the correct device initialization?
-> (3) edk2 build from ...
->      Well, this is partly edk2's fault, as the build documentation is awf=
-ul.
->      I spent an entire afternoon trying to figure it out and gave up.
->=20
-> I will say that the edk2 shipped with qemu does work, so... are you absol=
-utely
-> certain that it isn't a bug in edk2 since then?  Firmware bugs are exactl=
-y what
-> that patch is supposed to expose, as requested by issue #1204.
->=20
-> I'd say you should boot with "-d int" and see what kind of interrupts you=
-'re getting very=20
-> early on.  I suspect that you'll see data aborts with ESR xx/yy where the=
- last 6 bits of=20
-> yy are 0x21 (alignment fault).
+thanks
+-- PMM
 
-Hi Richard,
+Peter Maydell (5):
+  docs/system/arm/emulation.rst: Add missing implemented features
+  target/arm: Enable FEAT_CSV2_3 for -cpu max
+  target/arm: Enable FEAT_ETS2 for -cpu max
+  target/arm: Implement ID_AA64MMFR3_EL1
+  target/arm: Enable FEAT_Spec_FPACC for -cpu max
 
-Sorry for lack of details, I was aware it wasn't great and should have stat=
-ed I planned
-to come back with more details when I had time to debug.  Snowed under so f=
-or now I've
-just dropped back to 8.2 and will get back to this perhaps next week.
+ docs/system/arm/emulation.rst | 41 ++++++++++++++++++++++++++++++++---
+ target/arm/cpu.h              | 17 +++++++++++++++
+ target/arm/helper.c           |  6 +++--
+ target/arm/hvf/hvf.c          |  2 ++
+ target/arm/kvm.c              |  2 ++
+ target/arm/tcg/cpu32.c        |  2 +-
+ target/arm/tcg/cpu64.c        | 10 ++++++---
+ 7 files changed, 71 insertions(+), 9 deletions(-)
 
-Jonathan
-
->=20
->=20
-> r~
+-- 
+2.34.1
 

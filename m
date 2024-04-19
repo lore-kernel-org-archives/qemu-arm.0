@@ -1,302 +1,347 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp2305394ejd;
-        Fri, 19 Apr 2024 03:56:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXizzj+yOu2I/mFyCtcuePYj5yUQjE1N/SU4ZeC9eaLITA2fJJ8bJWdmUHz+Aw8xvDFWkCvlhvcn0lgM39Kgba8GD/5yFZR
-X-Received: by 2002:a05:600c:4448:b0:419:c823:80e7 with SMTP id v8-20020a05600c444800b00419c82380e7mr128572wmn.14.1713524200958;
-        Fri, 19 Apr 2024 03:56:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713524200; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp2405279ejd;
+        Fri, 19 Apr 2024 06:42:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUSeLGDvt56w8WeQTHfyroZoZCFjSaJWjvjDNaVrcbxOoXa9lASHN131h4mE5I3VYZ3vNg4i7srIYdYhsLoNk1T8XPGyTV/
+X-Google-Smtp-Source: AGHT+IG+reuRR8CwtBdgkGaDzrmdZiZ+Czmxygpr6sbWBO/7WHfvCdoI1vDoFuGzDU9Mty74OTyc
+X-Received: by 2002:a05:620a:16a2:b0:78f:187f:ff19 with SMTP id s2-20020a05620a16a200b0078f187fff19mr3867636qkj.18.1713534138087;
+        Fri, 19 Apr 2024 06:42:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713534138; cv=none;
         d=google.com; s=arc-20160816;
-        b=DQPPwUvnxoVuZpv98oQpNI3qhYbW0aWciT08AosGd8hEE15BswbDY2QggDJiNLtIXp
-         f6IE9p6yY4eYeFxf9rPVwO6i4H0sQEmNRKnoZn8hnh4TV+2n3N5M2yFysWRzdcwiecjI
-         WQFNWt8VnBT2lzNANuXBKCVtwZaGGiDjmB+uvbksyeKxxfxs/NMYLOXNCYGqH0v1MqZs
-         YE6kMYMV7LN0wYhnE+/JidRh572yM/VIol+PLC1JWjSisdVi0UjDp0Yva05ETC4t8AmE
-         0itNuj9WYUo35AV/TVtEDcAOtYI1kzeVfg7V0AqkjzIAivbQYj6VK1wx4/91pXjbPMno
-         s1Nw==
+        b=KNCKeM7ZonDbnavP8D60vLAf4BdMqCkKn7X5ES8eH56uZgM5qOUDhlnN4WxowgP9ET
+         fL8Z5mxGm2TqaTuH2/zFUr+Ii5vojYALmoNPTxjHn/arQpORYknra0BclCcJsme1vboj
+         gwCA19CfrtLDQvhk8Z0bgX7sEYIxsdZYamjDaHf7PO4aVLP8NWZdxGB6iv5amF5Aj1Wr
+         SbkjPePLQpIPdWcmHZPIBp4oTrNnBXdhdLUOMrZqFLmmVsfPsNqLDOZhXwh7qvktaRyr
+         XEfyjjviBWxKbgv/Ytl8BJOMG0sPB4sJy9V6r51h2HuZnjuF1SWg6Tfq8+WSiaUXuSj/
+         uMxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=Vn6JiMl4zrHUKjgNBj59H2lkepqikhr5ZPOEGsYcT9A=;
-        fh=plGZwRwhYvsW+fF511Q8Xhff3I0Dck57p0IAXr+reXc=;
-        b=eGN5lMxjOzmvwtblhZ4l+D9fPR08CGtz3yzFRH7ihK+rZj2bLAxDvGxO5JXqHnZ4Nn
-         W+AGI9yxzHBuQs2E+pMkXkPMgZczceXr4i5X/nolSoUbBJjgk8V8f5do9sVP2NLZsvMj
-         8SQ0d3kBWXHYi0yIoc4lcwALGahWWSB5QNQOsj6DNTfo7beSNSkSZQ8+hom21U6l21Uq
-         v/b4BSjmrcPRgm3tj/jRaDZl0/h6iEDaLZlFrZrVB5E6VX0vQbXD8YuDuSIvWNjbPIfC
-         I8EjqNLWoG4P94uwLFHbsDc+A7eL2BYtiGjCOWgscNmyEbK9w7nWqZQSHkWkNigMQ+P1
-         OJYw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=wecmFydLd4PeD/sJWgbnU86x1vhiTw8RfMbrqGCQnac=;
+        fh=dkl4W7Ty5DQDYblIuR6iwQV8rfkW6Bl5VLJjLin9mSc=;
+        b=zIv3CMb88udYglJpwxjlsjqmIkETAdAWbYRrXI74ywZs8rkf6vmb36ZpQL0Qvf0sIm
+         7FMVobjHbnQK6kbDkxFW9rUaDpP/TKa1V6nCCn8L18y/x93Wefw/dx0LFNFSPnINBIfE
+         FANA04qu2t3Uj/1bAuQEDhcJJPZ3kaVh5yikseTiWSLtVw4lg4914HFIqnEvo2Ybd8Qd
+         nHpIOGfIw3CP96EkUqpYqlP8+yYcuMZqCri9BfNLYRRO3hHPL8y61Gd8ovOTuBnWKJFj
+         Yts+WRCP03ZJjhLFJ/pX8wUXsYWGrhhwmNTnSvWop+zAKIs/F0iYwpz90JiI6ZdQyIT7
+         stUA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=0V82qM0z;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <smostafa@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id jn21-20020a05600c6b1500b0041868ee437esor350165wmb.1.2024.04.19.03.56.40
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id wk25-20020a05620a579900b0078eeb5d7a06si3802355qkn.56.2024.04.19.06.42.17
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 19 Apr 2024 03:56:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 19 Apr 2024 06:42:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=0V82qM0z;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1713524200; x=1714129000; darn=linaro.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Vn6JiMl4zrHUKjgNBj59H2lkepqikhr5ZPOEGsYcT9A=;
-        b=0V82qM0z8i3QrAP0xqsX3+TKyfrcH01V93sF6vMakTcGz79AiamBsZr32BdsY/pnd/
-         pO+JAa/XUyKn+hFKpfZM01eSG5JSu8u7LQ04vH0dk4w0PJlhXgIkoFeSp2sIr4LQlkOe
-         jq+4U7IvAdHB/VLQ1dokhPgQXwzY4UbPMhFh4yEe5qwdNhDrBdPVdQ+ap4vjUQTH269j
-         5uCCrNHFCLCzPWDA0O59/MVEYCztTAfPE9TXEMRNFjIHmSl4wFQJpgCu7Nf+qVlMmmF2
-         pYxPaVH3ADQnFyE/YYJaKCPZKZN0yqUS2cEtEnTlzWEXyu6USVCRcMf3wioccvg4kI5o
-         IARA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713524200; x=1714129000;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Vn6JiMl4zrHUKjgNBj59H2lkepqikhr5ZPOEGsYcT9A=;
-        b=mrCCY4NUQRMEdtlZV+2Ty/IG3bM3gVKxyWQiQjaaL/Ddl1md5rnOb4jIpLUHeDFJaa
-         2OSw6mPbivsOQ7jZOIDqf3fni+wX89YFaE1T+IMAdaSVGKyYAV3lAYYfzohjMYyIr2fa
-         nx5vwK1kuFRkcEhO33p8V/TQvSb0WS6/qxWs2tqJnmyu7zVo+CI9SsrDitfUdBQTY/7+
-         9TExbV9Hk8QxB/fnY7I/cok0Y+74FUQs4VU6CJ215MVqhR8YGVEzSb6S01nlMiQqltvU
-         ZRi/T+x9w4VUUB2UQxnb0CIwq2n34oQWLDPQw7GB9oEhJa4lfE/jYYB50MzWtI5Ujna7
-         yZvA==
-X-Forwarded-Encrypted: i=1; AJvYcCU067wr8EWQdEPCZ1f+4yokiLmESooeZJ3Edlvx1ZLZno/5HTBDkaswR1BkDIc7Wd2L33CNgDArOA2ZkJJgUa7zp3gzIYpR
-X-Gm-Message-State: AOJu0YxA2um6Iex1iayUuo5kHq+JzM8DFEBPSje4jCqW04Agf5kvAyc0
-	jeVG1ZA0dgQWzc/8y/IUgbucnvC6J5cS0C9TnSL3eJn022mSdZbPjnLQcUvsUAlav6jzfkvcV3C
-	aqg==
-X-Google-Smtp-Source: AGHT+IEExGVRPnQLjJi4jYbVSqdpM5by59bS570RPwLR/+HBg1+MV6yVt4BanzsSyCObw6kyO8eq7g==
-X-Received: by 2002:a05:600c:1d13:b0:418:5aaa:7db1 with SMTP id l19-20020a05600c1d1300b004185aaa7db1mr127384wms.1.1713524200382;
-        Fri, 19 Apr 2024 03:56:40 -0700 (PDT)
-Return-Path: <smostafa@google.com>
-Received: from google.com (180.232.140.34.bc.googleusercontent.com. [34.140.232.180])
-        by smtp.gmail.com with ESMTPSA id f18-20020adff592000000b00343a0e2375esm4114611wro.27.2024.04.19.03.56.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Apr 2024 03:56:39 -0700 (PDT)
-Date: Fri, 19 Apr 2024 10:56:36 +0000
-From: Mostafa Saleh <smostafa@google.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
-	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
-	marcin.juszkiewicz@linaro.org
-Subject: Re: [RFC PATCH v2 07/13] hw/arm/smmu: Support nesting in the rest of
- commands
-Message-ID: <ZiJN5AG4lgOU8Mg4@google.com>
-References: <20240408140818.3799590-1-smostafa@google.com>
- <20240408140818.3799590-8-smostafa@google.com>
- <cfb5e002-26d4-437a-91d5-7c2eb49a75b6@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rxoVC-0008VV-Hw; Fri, 19 Apr 2024 09:42:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=0ju7=LY=kaod.org=clg@ozlabs.org>)
+ id 1rxoVB-0008Uz-Oe; Fri, 19 Apr 2024 09:42:05 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
+ helo=gandalf.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=0ju7=LY=kaod.org=clg@ozlabs.org>)
+ id 1rxoV8-00086W-V3; Fri, 19 Apr 2024 09:42:05 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4VLbR75pdZz4x1y;
+ Fri, 19 Apr 2024 23:41:55 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4VLbR241Hnz4wyY;
+ Fri, 19 Apr 2024 23:41:49 +1000 (AEST)
+Message-ID: <90a930b9-ec7f-47fc-bfc9-f4ac0958ef83@kaod.org>
+Date: Fri, 19 Apr 2024 15:41:43 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cfb5e002-26d4-437a-91d5-7c2eb49a75b6@redhat.com>
-X-TUID: K/C7sDS2rmgf
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 07/16] aspeed/smc: fix dma moving incorrect data length
+ issue
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
+ <20240416091904.935283-8-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240416091904.935283-8-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=0ju7=LY=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.248, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rH1t2nsbmIA3
 
-Hi Eric,
-
-On Thu, Apr 18, 2024 at 04:48:39PM +0200, Eric Auger wrote:
-> Hi Mostafa,
+On 4/16/24 11:18, Jamin Lin wrote:
+> DMA length is from 1 byte to 32MB for AST2600 and AST10x0
+> and DMA length is from 4 bytes to 32MB for AST2500.
 > 
-> On 4/8/24 16:08, Mostafa Saleh wrote:
-> > Some commands need rework for nesting, as they used to assume S1
-> > and S2 are mutually exclusive:
-> >
-> > - CMD_TLBI_NH_ASID: Consider VMID if stage-2 is supported
-> > - CMD_TLBI_NH_ALL: Consider VMID if stage-2 is supported, otherwise
-> >   invalidate everything, this required a new vmid invalidation
-> >   function for stage-1 only (ASID >= 0)
-> >
-> > Also, rework trace events to reflect the new implementation.
-> 
-> This does not apply for me. Could you share a branch or respin?
+> In other words, if "R_DMA_LEN" is 0, it should move at least 1 byte
+> data for AST2600 and AST10x0 and 4 bytes data for AST2500.
+>> To support all ASPEED SOCs, adds dma_start_length parameter to store
+> the start length, add helper routines function to compute the dma length
+> and update DMA_LENGTH mask to "1FFFFFF" to fix dma moving
+> incorrect data length issue.
 
-Oh, Sorry about that. I will address the previous comments and respin.
+OK. There are two problems to address, the "zero" length transfer and
+the DMA length unit, which is missing today. Newer SoC use a 1 bit / byte
+and older ones, AST2400 and AST2500, use 1 bit / 4 bytes.
+
+We can introduce a AspeedSMCClass::dma_len_unit and rework the loop to :
+
+     do {
+
+       ....
+
+        if (s->regs[R_DMA_LEN]) {
+             s->regs[R_DMA_LEN] -= 4 / asc->dma_len_unit;
+         }
+     } while (s->regs[R_DMA_LEN]);
+
+It should fix the current implementation.
+
+I don't think this is necessary to add a Fixes tag because the problem
+has been there for ages and no one reported it. Probably because the
+only place DMA transfers are used is in U-Boot and transfers have a
+non-zero length.
+
+> Currently, only supports dma length 4 bytes aligned.
+
+this looks like a third topic. So the minimum value R_DMA_LEN should
+have on the AST2600 SoC and above is '3'. I would opt to replace the
+DMA_LENGTH macro with a dma_length_sanitize() helper to fix the software
+input of R_DMA_LEN.
+
 
 Thanks,
-Mostafa
 
+C.
+
+
+  
+> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/ssi/aspeed_smc.c         | 52 ++++++++++++++++++++++++++++++++-----
+>   include/hw/ssi/aspeed_smc.h |  1 +
+>   2 files changed, 46 insertions(+), 7 deletions(-)
 > 
-> Thank you in advance
-> 
-> Eric
-> >
-> > Signed-off-by: Mostafa Saleh <smostafa@google.com>
-> > ---
-> >  hw/arm/smmu-common.c         | 36 +++++++++++++++++++++++++++++-------
-> >  hw/arm/smmuv3.c              | 31 +++++++++++++++++++++++++++++--
-> >  hw/arm/trace-events          |  6 ++++--
-> >  include/hw/arm/smmu-common.h |  3 ++-
-> >  4 files changed, 64 insertions(+), 12 deletions(-)
-> >
-> > diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> > index 8b9e59b24b..b1cf1303c6 100644
-> > --- a/hw/arm/smmu-common.c
-> > +++ b/hw/arm/smmu-common.c
-> > @@ -148,13 +148,14 @@ void smmu_iotlb_inv_all(SMMUState *s)
-> >      g_hash_table_remove_all(s->iotlb);
-> >  }
-> >  
-> > -static gboolean smmu_hash_remove_by_asid(gpointer key, gpointer value,
-> > -                                         gpointer user_data)
-> > +static gboolean smmu_hash_remove_by_asid_vmid(gpointer key, gpointer value,
-> > +                                              gpointer user_data)
-> >  {
-> > -    int asid = *(int *)user_data;
-> > +    SMMUIOTLBPageInvInfo *info = (SMMUIOTLBPageInvInfo *)user_data;
-> >      SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
-> >  
-> > -    return SMMU_IOTLB_ASID(*iotlb_key) == asid;
-> > +    return (SMMU_IOTLB_ASID(*iotlb_key) == info->asid) &&
-> > +           (SMMU_IOTLB_VMID(*iotlb_key) == info->vmid);
-> >  }
-> >  
-> >  static gboolean smmu_hash_remove_by_vmid(gpointer key, gpointer value,
-> > @@ -166,6 +167,16 @@ static gboolean smmu_hash_remove_by_vmid(gpointer key, gpointer value,
-> >      return SMMU_IOTLB_VMID(*iotlb_key) == vmid;
-> >  }
-> >  
-> > +static gboolean smmu_hash_remove_by_vmid_s1(gpointer key, gpointer value,
-> > +                                            gpointer user_data)
-> > +{
-> > +    int vmid = *(int *)user_data;
-> > +    SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
-> > +
-> > +    return (SMMU_IOTLB_VMID(*iotlb_key) == vmid) &&
-> > +           (SMMU_IOTLB_ASID(*iotlb_key) >= 0);
-> > +}
-> > +
-> >  static gboolean smmu_hash_remove_by_asid_vmid_iova(gpointer key, gpointer value,
-> >                                                gpointer user_data)
-> >  {
-> > @@ -259,10 +270,15 @@ void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
-> >                                  &info);
-> >  }
-> >  
-> > -void smmu_iotlb_inv_asid(SMMUState *s, int asid)
-> > +void smmu_iotlb_inv_asid_vmid(SMMUState *s, int asid, int vmid)
-> >  {
-> > -    trace_smmu_iotlb_inv_asid(asid);
-> > -    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid, &asid);
-> > +    SMMUIOTLBPageInvInfo info = {
-> > +        .asid = asid,
-> > +        .vmid = vmid,
-> > +    };
-> > +
-> > +    trace_smmu_iotlb_inv_asid_vmid(asid, vmid);
-> > +    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid_vmid, &info);
-> >  }
-> >  
-> >  inline void smmu_iotlb_inv_vmid(SMMUState *s, int vmid)
-> > @@ -271,6 +287,12 @@ inline void smmu_iotlb_inv_vmid(SMMUState *s, int vmid)
-> >      g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid, &vmid);
-> >  }
-> >  
-> > +inline void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid)
-> > +{
-> > +    trace_smmu_iotlb_inv_vmid_s1(vmid);
-> > +    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid_s1, &vmid);
-> > +}
-> > +
-> >  /* VMSAv8-64 Translation */
-> >  
-> >  /**
-> > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> > index 17bbd43c13..ece647b8bf 100644
-> > --- a/hw/arm/smmuv3.c
-> > +++ b/hw/arm/smmuv3.c
-> > @@ -1280,25 +1280,52 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-> >          case SMMU_CMD_TLBI_NH_ASID:
-> >          {
-> >              int asid = CMD_ASID(&cmd);
-> > +            int vmid = -1;
-> >  
-> >              if (!STAGE1_SUPPORTED(s)) {
-> >                  cmd_error = SMMU_CERROR_ILL;
-> >                  break;
-> >              }
-> >  
-> > +            /*
-> > +             * VMID is only matched when stage 2 is supported for the Security
-> > +             * state corresponding to the command queue that the command was
-> > +             * issued in.
-> > +             * QEMU ignores the field by setting to -1, similarly to what STE
-> > +             * decoding does. And invalidation commands ignore VMID < 0.
-> > +             */
-> > +            if (STAGE2_SUPPORTED(s)) {
-> > +                vmid = CMD_VMID(&cmd);
-> > +            }
-> > +
-> >              trace_smmuv3_cmdq_tlbi_nh_asid(asid);
-> >              smmu_inv_notifiers_all(&s->smmu_state);
-> > -            smmu_iotlb_inv_asid(bs, asid);
-> > +            smmu_iotlb_inv_asid_vmid(bs, asid, vmid);
-> >              break;
-> >          }
-> >          case SMMU_CMD_TLBI_NH_ALL:
-> > +        {
-> > +            int vmid = -1;
-> > +
-> >              if (!STAGE1_SUPPORTED(s)) {
-> >                  cmd_error = SMMU_CERROR_ILL;
-> >                  break;
-> >              }
-> > +
-> > +            /*
-> > +             * If stage-2 is supported, invalidate for this VMID only, otherwise
-> > +             * invalidate the whole thing, see SMMU_CMD_TLBI_NH_ASID()
-> > +             */
-> > +            if (STAGE2_SUPPORTED(s)) {
-> > +                vmid = CMD_VMID(&cmd);
-> > +                trace_smmuv3_cmdq_tlbi_nh(vmid);
-> > +                smmu_iotlb_inv_vmid_s1(bs, vmid);
-> > +                break;
-> > +            }
-> >              QEMU_FALLTHROUGH;
-> > +        }
-> >          case SMMU_CMD_TLBI_NSNH_ALL:
-> > -            trace_smmuv3_cmdq_tlbi_nh();
-> > +            trace_smmuv3_cmdq_tlbi_nsnh();
-> >              smmu_inv_notifiers_all(&s->smmu_state);
-> >              smmu_iotlb_inv_all(bs);
-> >              break;
-> > diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> > index f5c361d96e..2556f4721a 100644
-> > --- a/hw/arm/trace-events
-> > +++ b/hw/arm/trace-events
-> > @@ -11,8 +11,9 @@ smmu_ptw_page_pte(int stage, int level,  uint64_t iova, uint64_t baseaddr, uint6
-> >  smmu_ptw_block_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t iova, uint64_t gpa, int bsize_mb) "stage=%d level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" iova=0x%"PRIx64" block address = 0x%"PRIx64" block size = %d MiB"
-> >  smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64
-> >  smmu_iotlb_inv_all(void) "IOTLB invalidate all"
-> > -smmu_iotlb_inv_asid(uint16_t asid) "IOTLB invalidate asid=%d"
-> > +smmu_iotlb_inv_asid_vmid(int asid, uint16_t vmid) "IOTLB invalidate asid=%d vmid=%d"
-> >  smmu_iotlb_inv_vmid(uint16_t vmid) "IOTLB invalidate vmid=%d"
-> > +smmu_iotlb_inv_vmid_s1(uint16_t vmid) "IOTLB invalidate vmid=%d"
-> >  smmu_iotlb_inv_iova(uint16_t asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
-> >  smmu_inv_notifiers_mr(const char *name) "iommu mr=%s"
-> >  smmu_iotlb_lookup_hit(int asid, uint16_t vmid, uint64_t addr, uint64_t mask, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache HIT asid=%d vmid=%d addr=0x%"PRIx64" mask=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
-> > @@ -47,7 +48,8 @@ smmuv3_cmdq_cfgi_cd(uint32_t sid) "sid=0x%x"
-> >  smmuv3_config_cache_hit(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache HIT for sid=0x%x (hits=%d, misses=%d, hit rate=%d)"
-> >  smmuv3_config_cache_miss(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache MISS for sid=0x%x (hits=%d, misses=%d, hit rate=%d)"
-> >  smmuv3_range_inval(int vmid, int asid, uint64_t addr, uint8_t tg, uint64_t num_pages, uint8_t ttl, bool leaf, int stage) "vmid=%d asid=%d addr=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" ttl=%d leaf=%d stage=%d"
-> > -smmuv3_cmdq_tlbi_nh(void) ""
-> > +smmuv3_cmdq_tlbi_nh(int vmid) "vmid=%d"
-> > +smmuv3_cmdq_tlbi_nsnh(void) ""
-> >  smmuv3_cmdq_tlbi_nh_asid(uint16_t asid) "asid=%d"
-> >  smmuv3_cmdq_tlbi_s12_vmid(uint16_t vmid) "vmid=%d"
-> >  smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid=0x%x"
-> > diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> > index df166d8477..67db30e85b 100644
-> > --- a/include/hw/arm/smmu-common.h
-> > +++ b/include/hw/arm/smmu-common.h
-> > @@ -226,8 +226,9 @@ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
-> >  SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
-> >                                  uint8_t tg, uint8_t level);
-> >  void smmu_iotlb_inv_all(SMMUState *s);
-> > -void smmu_iotlb_inv_asid(SMMUState *s, int asid);
-> > +void smmu_iotlb_inv_asid_vmid(SMMUState *s, int asid, int vmid);
-> >  void smmu_iotlb_inv_vmid(SMMUState *s, int vmid);
-> > +void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid);
-> >  void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
-> >                           uint8_t tg, uint64_t num_pages, uint8_t ttl);
-> >  void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
-> 
+> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+> index 8a8d77b480..71abc7a2d8 100644
+> --- a/hw/ssi/aspeed_smc.c
+> +++ b/hw/ssi/aspeed_smc.c
+> @@ -178,13 +178,17 @@
+>    * DMA flash addresses should be 4 bytes aligned and the valid address
+>    * range is 0x20000000 - 0x2FFFFFFF.
+>    *
+> - * DMA length is from 4 bytes to 32MB
+> + * DMA length is from 4 bytes to 32MB (AST2500)
+>    *   0: 4 bytes
+>    *   0x7FFFFF: 32M bytes
+> + *
+> + * DMA length is from 1 byte to 32MB (AST2600, AST10x0)
+> + *   0: 1 byte
+> + *   0x1FFFFFF: 32M bytes
+>    */
+>   #define DMA_DRAM_ADDR(asc, val)   ((val) & (asc)->dma_dram_mask)
+>   #define DMA_FLASH_ADDR(asc, val)  ((val) & (asc)->dma_flash_mask)
+> -#define DMA_LENGTH(val)         ((val) & 0x01FFFFFC)
+> +#define DMA_LENGTH(val)         ((val) & 0x01FFFFFF)
+>   
+>   /* Flash opcodes. */
+>   #define SPI_OP_READ       0x03    /* Read data bytes (low frequency) */
+> @@ -843,6 +847,24 @@ static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
+>       }
+>   }
+>   
+> +static uint32_t aspeed_smc_dma_len(AspeedSMCState *s)
+> +{
+> +    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
+> +    uint32_t dma_len;
+> +    uint32_t extra;
+> +
+> +    dma_len = s->regs[R_DMA_LEN] + asc->dma_start_length;
+> +
+> +    /* dma length 4 bytes aligned */
+> +    extra = dma_len % 4;
+> +
+> +    if (extra != 0) {
+> +        dma_len += 4 - extra;
+> +    }
+> +
+> +    return dma_len;
+> +}
+> +
+>   /*
+>    * Accumulate the result of the reads to provide a checksum that will
+>    * be used to validate the read timing settings.
+> @@ -850,6 +872,7 @@ static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
+>   static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+>   {
+>       MemTxResult result;
+> +    uint32_t dma_len;
+>       uint32_t data;
+>   
+>       if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
+> @@ -861,7 +884,9 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+>           aspeed_smc_dma_calibration(s);
+>       }
+>   
+> -    while (s->regs[R_DMA_LEN]) {
+> +    dma_len = aspeed_smc_dma_len(s);
+> +
+> +    while (dma_len) {
+>           data = address_space_ldl_le(&s->flash_as, s->regs[R_DMA_FLASH_ADDR],
+>                                       MEMTXATTRS_UNSPECIFIED, &result);
+>           if (result != MEMTX_OK) {
+> @@ -877,7 +902,8 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+>            */
+>           s->regs[R_DMA_CHECKSUM] += data;
+>           s->regs[R_DMA_FLASH_ADDR] += 4;
+> -        s->regs[R_DMA_LEN] -= 4;
+> +        dma_len -= 4;
+> +        s->regs[R_DMA_LEN] = dma_len;
+>       }
+>   
+>       if (s->inject_failure && aspeed_smc_inject_read_failure(s)) {
+> @@ -889,14 +915,17 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+>   static void aspeed_smc_dma_rw(AspeedSMCState *s)
+>   {
+>       MemTxResult result;
+> +    uint32_t dma_len;
+>       uint32_t data;
+>   
+> +    dma_len = aspeed_smc_dma_len(s);
+> +
+>       trace_aspeed_smc_dma_rw(s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE ?
+>                               "write" : "read",
+>                               s->regs[R_DMA_FLASH_ADDR],
+>                               s->regs[R_DMA_DRAM_ADDR],
+> -                            s->regs[R_DMA_LEN]);
+> -    while (s->regs[R_DMA_LEN]) {
+> +                            dma_len);
+> +    while (dma_len) {
+>           if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
+>               data = address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
+>                                           MEMTXATTRS_UNSPECIFIED, &result);
+> @@ -937,7 +966,8 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
+>            */
+>           s->regs[R_DMA_FLASH_ADDR] += 4;
+>           s->regs[R_DMA_DRAM_ADDR] += 4;
+> -        s->regs[R_DMA_LEN] -= 4;
+> +        dma_len -= 4;
+> +        s->regs[R_DMA_LEN] = dma_len;
+>           s->regs[R_DMA_CHECKSUM] += data;
+>       }
+>   }
+> @@ -1381,6 +1411,7 @@ static void aspeed_2400_fmc_class_init(ObjectClass *klass, void *data)
+>       asc->features          = ASPEED_SMC_FEATURE_DMA;
+>       asc->dma_flash_mask    = 0x0FFFFFFC;
+>       asc->dma_dram_mask     = 0x1FFFFFFC;
+> +    asc->dma_start_length  = 4;
+>       asc->nregs             = ASPEED_SMC_R_MAX;
+>       asc->segment_to_reg    = aspeed_smc_segment_to_reg;
+>       asc->reg_to_segment    = aspeed_smc_reg_to_segment;
+> @@ -1464,6 +1495,7 @@ static void aspeed_2500_fmc_class_init(ObjectClass *klass, void *data)
+>       asc->features          = ASPEED_SMC_FEATURE_DMA;
+>       asc->dma_flash_mask    = 0x0FFFFFFC;
+>       asc->dma_dram_mask     = 0x3FFFFFFC;
+> +    asc->dma_start_length  = 4;
+>       asc->nregs             = ASPEED_SMC_R_MAX;
+>       asc->segment_to_reg    = aspeed_smc_segment_to_reg;
+>       asc->reg_to_segment    = aspeed_smc_reg_to_segment;
+> @@ -1620,6 +1652,7 @@ static void aspeed_2600_fmc_class_init(ObjectClass *klass, void *data)
+>                                ASPEED_SMC_FEATURE_WDT_CONTROL;
+>       asc->dma_flash_mask    = 0x0FFFFFFC;
+>       asc->dma_dram_mask     = 0x3FFFFFFC;
+> +    asc->dma_start_length  = 1;
+>       asc->nregs             = ASPEED_SMC_R_MAX;
+>       asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
+>       asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
+> @@ -1658,6 +1691,7 @@ static void aspeed_2600_spi1_class_init(ObjectClass *klass, void *data)
+>                                ASPEED_SMC_FEATURE_DMA_GRANT;
+>       asc->dma_flash_mask    = 0x0FFFFFFC;
+>       asc->dma_dram_mask     = 0x3FFFFFFC;
+> +    asc->dma_start_length  = 1;
+>       asc->nregs             = ASPEED_SMC_R_MAX;
+>       asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
+>       asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
+> @@ -1697,6 +1731,7 @@ static void aspeed_2600_spi2_class_init(ObjectClass *klass, void *data)
+>                                ASPEED_SMC_FEATURE_DMA_GRANT;
+>       asc->dma_flash_mask    = 0x0FFFFFFC;
+>       asc->dma_dram_mask     = 0x3FFFFFFC;
+> +    asc->dma_start_length  = 1;
+>       asc->nregs             = ASPEED_SMC_R_MAX;
+>       asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
+>       asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
+> @@ -1778,6 +1813,7 @@ static void aspeed_1030_fmc_class_init(ObjectClass *klass, void *data)
+>       asc->features          = ASPEED_SMC_FEATURE_DMA;
+>       asc->dma_flash_mask    = 0x0FFFFFFC;
+>       asc->dma_dram_mask     = 0x000BFFFC;
+> +    asc->dma_start_length  = 1;
+>       asc->nregs             = ASPEED_SMC_R_MAX;
+>       asc->segment_to_reg    = aspeed_1030_smc_segment_to_reg;
+>       asc->reg_to_segment    = aspeed_1030_smc_reg_to_segment;
+> @@ -1815,6 +1851,7 @@ static void aspeed_1030_spi1_class_init(ObjectClass *klass, void *data)
+>       asc->features          = ASPEED_SMC_FEATURE_DMA;
+>       asc->dma_flash_mask    = 0x0FFFFFFC;
+>       asc->dma_dram_mask     = 0x000BFFFC;
+> +    asc->dma_start_length  = 1;
+>       asc->nregs             = ASPEED_SMC_R_MAX;
+>       asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
+>       asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
+> @@ -1851,6 +1888,7 @@ static void aspeed_1030_spi2_class_init(ObjectClass *klass, void *data)
+>       asc->features          = ASPEED_SMC_FEATURE_DMA;
+>       asc->dma_flash_mask    = 0x0FFFFFFC;
+>       asc->dma_dram_mask     = 0x000BFFFC;
+> +    asc->dma_start_length  = 1;
+>       asc->nregs             = ASPEED_SMC_R_MAX;
+>       asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
+>       asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
+> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+> index 8e1dda556b..f359ed22cc 100644
+> --- a/include/hw/ssi/aspeed_smc.h
+> +++ b/include/hw/ssi/aspeed_smc.h
+> @@ -106,6 +106,7 @@ struct AspeedSMCClass {
+>       uint32_t features;
+>       hwaddr dma_flash_mask;
+>       hwaddr dma_dram_mask;
+> +    uint32_t dma_start_length;
+>       uint32_t nregs;
+>       uint32_t (*segment_to_reg)(const AspeedSMCState *s,
+>                                  const AspeedSegments *seg);
+

@@ -1,95 +1,115 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp2405279ejd;
-        Fri, 19 Apr 2024 06:42:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUSeLGDvt56w8WeQTHfyroZoZCFjSaJWjvjDNaVrcbxOoXa9lASHN131h4mE5I3VYZ3vNg4i7srIYdYhsLoNk1T8XPGyTV/
-X-Google-Smtp-Source: AGHT+IG+reuRR8CwtBdgkGaDzrmdZiZ+Czmxygpr6sbWBO/7WHfvCdoI1vDoFuGzDU9Mty74OTyc
-X-Received: by 2002:a05:620a:16a2:b0:78f:187f:ff19 with SMTP id s2-20020a05620a16a200b0078f187fff19mr3867636qkj.18.1713534138087;
-        Fri, 19 Apr 2024 06:42:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713534138; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp2405471ejd;
+        Fri, 19 Apr 2024 06:42:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXNeJYugDfIOlaNxbd6D5jFsUYYbaCAzROXRpjmI+9OLTTYnz5ROEEdxqtWcdbOpfzRI/JmKdMTdrTn1Y9740ogJytfzkKF
+X-Google-Smtp-Source: AGHT+IGSs9UipueZwKw+xj6nfKlGDtyc6RLX/b/zaGFz8Rud9TIZ85Jl1o+PJeL3wywKghW6tjKI
+X-Received: by 2002:a05:6214:a6b:b0:6a0:50ca:7347 with SMTP id ef11-20020a0562140a6b00b006a050ca7347mr3486212qvb.31.1713534155601;
+        Fri, 19 Apr 2024 06:42:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713534155; cv=none;
         d=google.com; s=arc-20160816;
-        b=KNCKeM7ZonDbnavP8D60vLAf4BdMqCkKn7X5ES8eH56uZgM5qOUDhlnN4WxowgP9ET
-         fL8Z5mxGm2TqaTuH2/zFUr+Ii5vojYALmoNPTxjHn/arQpORYknra0BclCcJsme1vboj
-         gwCA19CfrtLDQvhk8Z0bgX7sEYIxsdZYamjDaHf7PO4aVLP8NWZdxGB6iv5amF5Aj1Wr
-         SbkjPePLQpIPdWcmHZPIBp4oTrNnBXdhdLUOMrZqFLmmVsfPsNqLDOZhXwh7qvktaRyr
-         XEfyjjviBWxKbgv/Ytl8BJOMG0sPB4sJy9V6r51h2HuZnjuF1SWg6Tfq8+WSiaUXuSj/
-         uMxA==
+        b=BVZFlAWLm6edwSDgXTv30s1Dx4tBGR9kzSxs+N3Z1VQeBAE2UtGDZkWWcSHuSAJ10I
+         WliFKogFUYF31nPXNp5+GLfPxSgDxpUPc67YqHKu2xR7y6eV+7JxebYyRAOJ5XIp0XqA
+         6sGbdryfA5W/zTr/2zKSvtXuVJiTglRVcsP2uKmZ82roM+QcpUcCo3NbGJxmc/U0TK7k
+         eCYPACdZY1ms+xwhY/3nOFz82u6LXYwkmPEt94Ej7nFX/L0IsOMIOgyZ5JSwQrqxmj/P
+         /2VNXX34iQjT+uWqlhlBoW+zOFbfqd2jC6yvex0h86f5wwY3lFgLv72Wtwc3QLRZLvVX
+         Emew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=wecmFydLd4PeD/sJWgbnU86x1vhiTw8RfMbrqGCQnac=;
-        fh=dkl4W7Ty5DQDYblIuR6iwQV8rfkW6Bl5VLJjLin9mSc=;
-        b=zIv3CMb88udYglJpwxjlsjqmIkETAdAWbYRrXI74ywZs8rkf6vmb36ZpQL0Qvf0sIm
-         7FMVobjHbnQK6kbDkxFW9rUaDpP/TKa1V6nCCn8L18y/x93Wefw/dx0LFNFSPnINBIfE
-         FANA04qu2t3Uj/1bAuQEDhcJJPZ3kaVh5yikseTiWSLtVw4lg4914HFIqnEvo2Ybd8Qd
-         nHpIOGfIw3CP96EkUqpYqlP8+yYcuMZqCri9BfNLYRRO3hHPL8y61Gd8ovOTuBnWKJFj
-         Yts+WRCP03ZJjhLFJ/pX8wUXsYWGrhhwmNTnSvWop+zAKIs/F0iYwpz90JiI6ZdQyIT7
-         stUA==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=oy0myZolFHjohcbr3xwrONm5HW5/I5fGMRWgJnRDNAM=;
+        fh=mLkj3vG2/w+l42jAgIJcHpa/IcHwdT2vPSvr6KVaKbE=;
+        b=UdcvRwCApebdBwpBKL1Gb8RfMWH7Z47kfUn1kc8+XgrAK4zk5OXh47MnH1+pVj2JAJ
+         jZHP+KTSIk7bp5QMUAVOr9rAxF85nxRklJ/EstNLcmDdoUBhoy+wgdCaW4/N+X0vLD3q
+         Hywie0V4PewXTSd2eK1GmMol1OvPytwO9tbQ38UwH9+oZjfn5qQTb8mlJ4a8+SFoJGN+
+         SxrCK4mfgoNpOfjxvn+9/A0Tw2xPG6010EDez2uCK+uaoXo1EL8cWz++/Eg56XbUXlnr
+         nJ6k6Hfk30r4qSs/6VQvfY3lN8tuGuG/gentjxOGlG6aiZoG7mlBsRIAWUUxGFgSSrfq
+         iXGw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=DlmDGpYX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id wk25-20020a05620a579900b0078eeb5d7a06si3802355qkn.56.2024.04.19.06.42.17
+        by mx.google.com with ESMTPS id hf1-20020a0562140e8100b00695d4a4fbfasi3958900qvb.53.2024.04.19.06.42.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Apr 2024 06:42:18 -0700 (PDT)
+        Fri, 19 Apr 2024 06:42:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=DlmDGpYX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rxoVC-0008VV-Hw; Fri, 19 Apr 2024 09:42:07 -0400
+	id 1rxoVA-0008Ue-6U; Fri, 19 Apr 2024 09:42:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=0ju7=LY=kaod.org=clg@ozlabs.org>)
- id 1rxoVB-0008Uz-Oe; Fri, 19 Apr 2024 09:42:05 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3]
- helo=gandalf.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=0ju7=LY=kaod.org=clg@ozlabs.org>)
- id 1rxoV8-00086W-V3; Fri, 19 Apr 2024 09:42:05 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4VLbR75pdZz4x1y;
- Fri, 19 Apr 2024 23:41:55 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4VLbR241Hnz4wyY;
- Fri, 19 Apr 2024 23:41:49 +1000 (AEST)
-Message-ID: <90a930b9-ec7f-47fc-bfc9-f4ac0958ef83@kaod.org>
-Date: Fri, 19 Apr 2024 15:41:43 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rxoV7-0008U6-OH
+ for qemu-arm@nongnu.org; Fri, 19 Apr 2024 09:42:01 -0400
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rxoV5-00086Q-3D
+ for qemu-arm@nongnu.org; Fri, 19 Apr 2024 09:42:01 -0400
+Received: by mail-lj1-x234.google.com with SMTP id
+ 38308e7fff4ca-2d88a869ce6so27726221fa.3
+ for <qemu-arm@nongnu.org>; Fri, 19 Apr 2024 06:41:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1713534115; x=1714138915; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=oy0myZolFHjohcbr3xwrONm5HW5/I5fGMRWgJnRDNAM=;
+ b=DlmDGpYXFvMo/RncRckvX37LNFIOFALnMahG7rfVncfUc8w1PakgJN1r5K1JzE7Muy
+ x1/pvvX9QFZXPz7BGnDC+4cE+06pFPJW6rWuhFntJM94Q11RCUeZhOTOJrQ6FFB8N77x
+ fiTwO4Jtg2UTkdKkgsUIiP7ysyg8HmjKxxrDCSfnKnPi5uY9Io0BdME1sB2hecMiZcrP
+ PBCC7ebLhkLAEiUPqXxBryQyYEXapYEvvcJT4PPCS4Dpuad7kZseHtw8TXu9pBIA3O+E
+ q0OcuAFyPVXDNpMu92uooPA1HmLm3hfIJRISP6zk3wBfU+K05lW02Y2ewewPiaYN9F9m
+ UVwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1713534115; x=1714138915;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oy0myZolFHjohcbr3xwrONm5HW5/I5fGMRWgJnRDNAM=;
+ b=Rpbj+SJCfAEvcRj5F2qL5M/4OSJ7I9JghfxOuFAFZLREwR8NZmlbgAqc6wa27t5F9R
+ HA+kTDEwFoeNtYUVVYwwd2hUNe8iyLsAqw2Leh4Nw9MBGQyLx1yYKtdzacBT0rl5KOeD
+ wocN1XU6cJQPjEt3nzszHtMkjZJlduGLe6jaf6adUixdAJnb++K2yLv1fuarfacJNXky
+ f3EoZ5WFSSXxsGZQE9dCUQvfeAszKbcWhRxsaW0zK7jAa80nuI+h9VdlpjneQFi53Dt+
+ y4tUz6mE0iGunLEDk277Yc+giPwOTdFINsFPbRWetyDqBjsxE2CAB64nLweZvDpnq7vp
+ +fqg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW+RGtLOpl/x6sND5evc+YGJqLPQ9NQCt6Z4SE4eRgmq86nRM5PVR03MfSwfIXues7O6EMnModAQ0kVusqoAPs/+nOv
+X-Gm-Message-State: AOJu0Yzh0fLwFWe6aNxVxjaJiR4sHhQ1M63J5Gqa9/KpR9rLUT1iidtK
+ DfOM33D0HweMFI142ql2s0mAyV4D3qa2Lxh1ZbkGYDu8O4F9ym8vzPXkNvM+1Zvecgesj3jzoOJ
+ rbDvcCrG0Ls66J8xKgktqDg1c2M89P2YhhjZK0Q==
+X-Received: by 2002:a05:6512:3d20:b0:516:d4c2:53eb with SMTP id
+ d32-20020a0565123d2000b00516d4c253ebmr2381628lfv.58.1713534114967; Fri, 19
+ Apr 2024 06:41:54 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 07/16] aspeed/smc: fix dma moving incorrect data length
- issue
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
- <20240416091904.935283-8-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240416091904.935283-8-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=0ju7=LY=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.248, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20240407081733.3231820-1-ruanjinjie@huawei.com>
+In-Reply-To: <20240407081733.3231820-1-ruanjinjie@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 19 Apr 2024 14:41:43 +0100
+Message-ID: <CAFEAcA9Y02am4wfb8Ct9qz7YX_maH4VD+JD+FFc18dBg5+hv7w@mail.gmail.com>
+Subject: Re: [PATCH v13 00/24] target/arm: Implement FEAT_NMI and
+ FEAT_GICv3_NMI
+To: Jinjie Ruan <ruanjinjie@huawei.com>
+Cc: eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org, 
+ wangyanan55@huawei.com, richard.henderson@linaro.org, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::234;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x234.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,244 +124,213 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rH1t2nsbmIA3
+X-TUID: i6+EN2Sesbh8
 
-On 4/16/24 11:18, Jamin Lin wrote:
-> DMA length is from 1 byte to 32MB for AST2600 and AST10x0
-> and DMA length is from 4 bytes to 32MB for AST2500.
-> 
-> In other words, if "R_DMA_LEN" is 0, it should move at least 1 byte
-> data for AST2600 and AST10x0 and 4 bytes data for AST2500.
->> To support all ASPEED SOCs, adds dma_start_length parameter to store
-> the start length, add helper routines function to compute the dma length
-> and update DMA_LENGTH mask to "1FFFFFF" to fix dma moving
-> incorrect data length issue.
+On Sun, 7 Apr 2024 at 09:19, Jinjie Ruan <ruanjinjie@huawei.com> wrote:
+>
+> This patch set implements FEAT_NMI and FEAT_GICv3_NMI for ARMv8. These
+> introduce support for a new category of interrupts in the architecture
+> which we can use to provide NMI like functionality.
 
-OK. There are two problems to address, the "zero" length transfer and
-the DMA length unit, which is missing today. Newer SoC use a 1 bit / byte
-and older ones, AST2400 and AST2500, use 1 bit / 4 bytes.
+I had one last loose end I wanted to tidy up, and I got round
+to working through reading the spec about it today. This is
+the question of what the "is NMI enabled?" test should be
+in the code in arm_gicv3_cpuif.c.
 
-We can introduce a AspeedSMCClass::dma_len_unit and rework the loop to :
+The spec wording isn't always super clear, but there are several
+things here:
 
-     do {
+ * FEAT_NMI : the changes to the CPU proper which implement
+   superpriority for IRQ and FIQ, PSTATE.ALLINT, etc etc.
+ * FEAT_GICv3_NMI : the changes to the CPU interface for
+   GICv3 NMI handling. Any CPU with FEAT_NMI and FEAT_GICv3
+   must have this.
+ * NMI support in the IRI (Interrupt Routing Infrastructure,
+   i.e. all the bits of the GIC that aren't the cpuif; the
+   distributor and redistributors). Table 3-1 in the GIC spec
+   says that you can have an IRI without NMI support connected
+   to a CPU which does have NMI support. This is what the ID
+   register bit GICD_TYPER.NMI reports.
 
-       ....
+At the moment this patchset conflates FEAT_GICv3_NMI and
+the NMI support in the IRI. The effect of this is that we
+allow a machine model to create a CPU with FEAT_NMI but
+without FEAT_GICv3_NMI in the cpuif, and we don't allow
+a setup where the CPU and cpuif have NMI support but the
+IRI does not. (This will actually happen with this patchset
+with the sbsa-ref machine and -cpu max, because we haven't
+(yet) made sbsa-ref enable NMI in the GIC device when the
+CPU has NMI support.)
 
-        if (s->regs[R_DMA_LEN]) {
-             s->regs[R_DMA_LEN] -= 4 / asc->dma_len_unit;
+For a Linux guest this doesn't make much difference, because
+Linux will only enable NMI support if it finds it in both
+the IRI and the CPU, but I think it would be better to
+get the enable-tests right as these can be awkward to change
+after the fact in a backwards-compatible way.
+
+I think this is easy to fix -- we can add a new bool field
+GICv3CPUState::nmi_support which we initialize in
+gicv3_init_cpuif() if the CPU has FEAT_NMI, and make the
+checks in arm_gicv3_cpuif.c check cs->nmi_support instead
+of cs->gic->nmi_support. That looks like this squashed into
+patch 18:
+
+diff --git a/include/hw/intc/arm_gicv3_common.h
+b/include/hw/intc/arm_gicv3_common.h
+index 88533749ebb..cd09bee3bc4 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -225,6 +225,13 @@ struct GICv3CPUState {
+
+     /* This is temporary working state, to avoid a malloc in gicv3_update() */
+     bool seenbetter;
++
++    /*
++     * Whether the CPU interface has NMI support (FEAT_GICv3_NMI). The
++     * CPU interface may support NMIs even when the GIC proper (what the
++     * spec calls the IRI; the redistributors and distributor) does not.
++     */
++    bool nmi_support;
+ };
+
+ /*
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index 2457b7bca23..715909d0f7d 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -21,6 +21,7 @@
+ #include "hw/irq.h"
+ #include "cpu.h"
+ #include "target/arm/cpregs.h"
++#include "target/arm/cpu-features.h"
+ #include "sysemu/tcg.h"
+ #include "sysemu/qtest.h"
+
+@@ -839,7 +840,7 @@ static int icc_highest_active_prio(GICv3CPUState *cs)
+      */
+     int i;
+
+-    if (cs->gic->nmi_support) {
++    if (cs->nmi_support) {
+         /*
+          * If an NMI is active this takes precedence over anything else
+          * for priority purposes; the NMI bit is only in the AP1R0 bit.
+@@ -1285,7 +1286,7 @@ static void icc_drop_prio(GICv3CPUState *cs, int grp)
+             continue;
          }
-     } while (s->regs[R_DMA_LEN]);
 
-It should fix the current implementation.
+-        if (i == 0 && cs->gic->nmi_support && (*papr & ICC_AP1R_EL1_NMI)) {
++        if (i == 0 && cs->nmi_support && (*papr & ICC_AP1R_EL1_NMI)) {
+             *papr &= (~ICC_AP1R_EL1_NMI);
+             break;
+         }
+@@ -1324,7 +1325,7 @@ static int icc_highest_active_group(GICv3CPUState *cs)
+      */
+     int i;
 
-I don't think this is necessary to add a Fixes tag because the problem
-has been there for ages and no one reported it. Probably because the
-only place DMA transfers are used is in U-Boot and transfers have a
-non-zero length.
+-    if (cs->gic->nmi_support) {
++    if (cs->nmi_support) {
+         if (cs->icc_apr[GICV3_G1][0] & ICC_AP1R_EL1_NMI) {
+             return GICV3_G1;
+         }
+@@ -1787,7 +1788,7 @@ static void icc_ap_write(CPUARMState *env, const
+ARMCPRegInfo *ri,
+         return;
+     }
 
-> Currently, only supports dma length 4 bytes aligned.
+-    if (cs->gic->nmi_support) {
++    if (cs->nmi_support) {
+         cs->icc_apr[grp][regno] = value & (0xFFFFFFFFU | ICC_AP1R_EL1_NMI);
+     } else {
+         cs->icc_apr[grp][regno] = value & 0xFFFFFFFFU;
+@@ -1901,7 +1902,7 @@ static uint64_t icc_rpr_read(CPUARMState *env,
+const ARMCPRegInfo *ri)
+         }
+     }
 
-this looks like a third topic. So the minimum value R_DMA_LEN should
-have on the AST2600 SoC and above is '3'. I would opt to replace the
-DMA_LENGTH macro with a dma_length_sanitize() helper to fix the software
-input of R_DMA_LEN.
+-    if (cs->gic->nmi_support) {
++    if (cs->nmi_support) {
+         /* NMI info is reported in the high bits of RPR */
+         if (arm_feature(env, ARM_FEATURE_EL3) && !arm_is_secure(env)) {
+             if (cs->icc_apr[GICV3_G1NS][0] & ICC_AP1R_EL1_NMI) {
+@@ -2961,7 +2962,16 @@ void gicv3_init_cpuif(GICv3State *s)
+          */
+         define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
 
+-        if (s->nmi_support) {
++        /*
++         * If the CPU implements FEAT_NMI and FEAT_GICv3 it must also
++         * implement FEAT_GICv3_NMI, which is the CPU interface part
++         * of NMI support. This is distinct from whether the GIC proper
++         * (redistributors and distributor) have NMI support. In QEMU
++         * that is a property of the GIC device in s->nmi_support;
++         * cs->nmi_support indicates the CPU interface's support.
++         */
++        if (cpu_isar_feature(aa64_nmi, cpu)) {
++            cs->nmi_support = true;
+             define_arm_cp_regs(cpu, gicv3_cpuif_gicv3_nmi_reginfo);
+         }
 
-Thanks,
+plus this squashed into patch 19:
 
-C.
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index 20a8e1f2fe4..b1f6c16ffef 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -566,7 +566,7 @@ static void icv_ap_write(CPUARMState *env, const
+ARMCPRegInfo *ri,
 
+     trace_gicv3_icv_ap_write(ri->crm & 1, regno,
+gicv3_redist_affid(cs), value);
 
-  
-> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/ssi/aspeed_smc.c         | 52 ++++++++++++++++++++++++++++++++-----
->   include/hw/ssi/aspeed_smc.h |  1 +
->   2 files changed, 46 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 8a8d77b480..71abc7a2d8 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -178,13 +178,17 @@
->    * DMA flash addresses should be 4 bytes aligned and the valid address
->    * range is 0x20000000 - 0x2FFFFFFF.
->    *
-> - * DMA length is from 4 bytes to 32MB
-> + * DMA length is from 4 bytes to 32MB (AST2500)
->    *   0: 4 bytes
->    *   0x7FFFFF: 32M bytes
-> + *
-> + * DMA length is from 1 byte to 32MB (AST2600, AST10x0)
-> + *   0: 1 byte
-> + *   0x1FFFFFF: 32M bytes
->    */
->   #define DMA_DRAM_ADDR(asc, val)   ((val) & (asc)->dma_dram_mask)
->   #define DMA_FLASH_ADDR(asc, val)  ((val) & (asc)->dma_flash_mask)
-> -#define DMA_LENGTH(val)         ((val) & 0x01FFFFFC)
-> +#define DMA_LENGTH(val)         ((val) & 0x01FFFFFF)
->   
->   /* Flash opcodes. */
->   #define SPI_OP_READ       0x03    /* Read data bytes (low frequency) */
-> @@ -843,6 +847,24 @@ static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
->       }
->   }
->   
-> +static uint32_t aspeed_smc_dma_len(AspeedSMCState *s)
-> +{
-> +    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-> +    uint32_t dma_len;
-> +    uint32_t extra;
-> +
-> +    dma_len = s->regs[R_DMA_LEN] + asc->dma_start_length;
-> +
-> +    /* dma length 4 bytes aligned */
-> +    extra = dma_len % 4;
-> +
-> +    if (extra != 0) {
-> +        dma_len += 4 - extra;
-> +    }
-> +
-> +    return dma_len;
-> +}
-> +
->   /*
->    * Accumulate the result of the reads to provide a checksum that will
->    * be used to validate the read timing settings.
-> @@ -850,6 +872,7 @@ static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
->   static void aspeed_smc_dma_checksum(AspeedSMCState *s)
->   {
->       MemTxResult result;
-> +    uint32_t dma_len;
->       uint32_t data;
->   
->       if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
-> @@ -861,7 +884,9 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
->           aspeed_smc_dma_calibration(s);
->       }
->   
-> -    while (s->regs[R_DMA_LEN]) {
-> +    dma_len = aspeed_smc_dma_len(s);
-> +
-> +    while (dma_len) {
->           data = address_space_ldl_le(&s->flash_as, s->regs[R_DMA_FLASH_ADDR],
->                                       MEMTXATTRS_UNSPECIFIED, &result);
->           if (result != MEMTX_OK) {
-> @@ -877,7 +902,8 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
->            */
->           s->regs[R_DMA_CHECKSUM] += data;
->           s->regs[R_DMA_FLASH_ADDR] += 4;
-> -        s->regs[R_DMA_LEN] -= 4;
-> +        dma_len -= 4;
-> +        s->regs[R_DMA_LEN] = dma_len;
->       }
->   
->       if (s->inject_failure && aspeed_smc_inject_read_failure(s)) {
-> @@ -889,14 +915,17 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
->   static void aspeed_smc_dma_rw(AspeedSMCState *s)
->   {
->       MemTxResult result;
-> +    uint32_t dma_len;
->       uint32_t data;
->   
-> +    dma_len = aspeed_smc_dma_len(s);
-> +
->       trace_aspeed_smc_dma_rw(s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE ?
->                               "write" : "read",
->                               s->regs[R_DMA_FLASH_ADDR],
->                               s->regs[R_DMA_DRAM_ADDR],
-> -                            s->regs[R_DMA_LEN]);
-> -    while (s->regs[R_DMA_LEN]) {
-> +                            dma_len);
-> +    while (dma_len) {
->           if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
->               data = address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
->                                           MEMTXATTRS_UNSPECIFIED, &result);
-> @@ -937,7 +966,8 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
->            */
->           s->regs[R_DMA_FLASH_ADDR] += 4;
->           s->regs[R_DMA_DRAM_ADDR] += 4;
-> -        s->regs[R_DMA_LEN] -= 4;
-> +        dma_len -= 4;
-> +        s->regs[R_DMA_LEN] = dma_len;
->           s->regs[R_DMA_CHECKSUM] += data;
->       }
->   }
-> @@ -1381,6 +1411,7 @@ static void aspeed_2400_fmc_class_init(ObjectClass *klass, void *data)
->       asc->features          = ASPEED_SMC_FEATURE_DMA;
->       asc->dma_flash_mask    = 0x0FFFFFFC;
->       asc->dma_dram_mask     = 0x1FFFFFFC;
-> +    asc->dma_start_length  = 4;
->       asc->nregs             = ASPEED_SMC_R_MAX;
->       asc->segment_to_reg    = aspeed_smc_segment_to_reg;
->       asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-> @@ -1464,6 +1495,7 @@ static void aspeed_2500_fmc_class_init(ObjectClass *klass, void *data)
->       asc->features          = ASPEED_SMC_FEATURE_DMA;
->       asc->dma_flash_mask    = 0x0FFFFFFC;
->       asc->dma_dram_mask     = 0x3FFFFFFC;
-> +    asc->dma_start_length  = 4;
->       asc->nregs             = ASPEED_SMC_R_MAX;
->       asc->segment_to_reg    = aspeed_smc_segment_to_reg;
->       asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-> @@ -1620,6 +1652,7 @@ static void aspeed_2600_fmc_class_init(ObjectClass *klass, void *data)
->                                ASPEED_SMC_FEATURE_WDT_CONTROL;
->       asc->dma_flash_mask    = 0x0FFFFFFC;
->       asc->dma_dram_mask     = 0x3FFFFFFC;
-> +    asc->dma_start_length  = 1;
->       asc->nregs             = ASPEED_SMC_R_MAX;
->       asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
->       asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-> @@ -1658,6 +1691,7 @@ static void aspeed_2600_spi1_class_init(ObjectClass *klass, void *data)
->                                ASPEED_SMC_FEATURE_DMA_GRANT;
->       asc->dma_flash_mask    = 0x0FFFFFFC;
->       asc->dma_dram_mask     = 0x3FFFFFFC;
-> +    asc->dma_start_length  = 1;
->       asc->nregs             = ASPEED_SMC_R_MAX;
->       asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
->       asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-> @@ -1697,6 +1731,7 @@ static void aspeed_2600_spi2_class_init(ObjectClass *klass, void *data)
->                                ASPEED_SMC_FEATURE_DMA_GRANT;
->       asc->dma_flash_mask    = 0x0FFFFFFC;
->       asc->dma_dram_mask     = 0x3FFFFFFC;
-> +    asc->dma_start_length  = 1;
->       asc->nregs             = ASPEED_SMC_R_MAX;
->       asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
->       asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-> @@ -1778,6 +1813,7 @@ static void aspeed_1030_fmc_class_init(ObjectClass *klass, void *data)
->       asc->features          = ASPEED_SMC_FEATURE_DMA;
->       asc->dma_flash_mask    = 0x0FFFFFFC;
->       asc->dma_dram_mask     = 0x000BFFFC;
-> +    asc->dma_start_length  = 1;
->       asc->nregs             = ASPEED_SMC_R_MAX;
->       asc->segment_to_reg    = aspeed_1030_smc_segment_to_reg;
->       asc->reg_to_segment    = aspeed_1030_smc_reg_to_segment;
-> @@ -1815,6 +1851,7 @@ static void aspeed_1030_spi1_class_init(ObjectClass *klass, void *data)
->       asc->features          = ASPEED_SMC_FEATURE_DMA;
->       asc->dma_flash_mask    = 0x0FFFFFFC;
->       asc->dma_dram_mask     = 0x000BFFFC;
-> +    asc->dma_start_length  = 1;
->       asc->nregs             = ASPEED_SMC_R_MAX;
->       asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
->       asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-> @@ -1851,6 +1888,7 @@ static void aspeed_1030_spi2_class_init(ObjectClass *klass, void *data)
->       asc->features          = ASPEED_SMC_FEATURE_DMA;
->       asc->dma_flash_mask    = 0x0FFFFFFC;
->       asc->dma_dram_mask     = 0x000BFFFC;
-> +    asc->dma_start_length  = 1;
->       asc->nregs             = ASPEED_SMC_R_MAX;
->       asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
->       asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-> index 8e1dda556b..f359ed22cc 100644
-> --- a/include/hw/ssi/aspeed_smc.h
-> +++ b/include/hw/ssi/aspeed_smc.h
-> @@ -106,6 +106,7 @@ struct AspeedSMCClass {
->       uint32_t features;
->       hwaddr dma_flash_mask;
->       hwaddr dma_dram_mask;
-> +    uint32_t dma_start_length;
->       uint32_t nregs;
->       uint32_t (*segment_to_reg)(const AspeedSMCState *s,
->                                  const AspeedSegments *seg);
+-    if (cs->gic->nmi_support) {
++    if (cs->nmi_support) {
+         cs->ich_apr[grp][regno] = value & (0xFFFFFFFFU | ICV_AP1R_EL1_NMI);
+     } else {
+         cs->ich_apr[grp][regno] = value & 0xFFFFFFFFU;
+@@ -1510,7 +1510,7 @@ static int icv_drop_prio(GICv3CPUState *cs, bool *nmi)
+             continue;
+         }
 
+-        if (i == 0 && cs->gic->nmi_support && (*papr1 & ICV_AP1R_EL1_NMI)) {
++        if (i == 0 && cs->nmi_support && (*papr1 & ICV_AP1R_EL1_NMI)) {
+             *papr1 &= (~ICV_AP1R_EL1_NMI);
+             *nmi = true;
+             return 0xff;
+@@ -2699,7 +2699,7 @@ static void ich_ap_write(CPUARMState *env, const
+ARMCPRegInfo *ri,
+
+     trace_gicv3_ich_ap_write(ri->crm & 1, regno,
+gicv3_redist_affid(cs), value);
+
+-    if (cs->gic->nmi_support) {
++    if (cs->nmi_support) {
+         cs->ich_apr[grp][regno] = value & (0xFFFFFFFFU | ICV_AP1R_EL1_NMI);
+     } else {
+         cs->ich_apr[grp][regno] = value & 0xFFFFFFFFU;
+@@ -2821,7 +2821,7 @@ static void ich_lr_write(CPUARMState *env, const
+ARMCPRegInfo *ri,
+     }
+
+     /* Enforce RES0 bit in NMI field when FEAT_GICv3_NMI is not implemented */
+-    if (!cs->gic->nmi_support) {
++    if (!cs->nmi_support) {
+         value &= ~ICH_LR_EL2_NMI;
+     }
+
+The comments and commit message for patch 24 also need tweaking,
+because they are written assuming that FEAT_GICv3_NMI means
+"NMI support in the GIC proper", not "NMI support in the cpuif".
+
+Since those changes are not too complicated, and I made them
+locally anyway since I wanted to confirm that my plan was
+workable, my proposal is that I will apply these fixes while
+I take this series into target-arm.next for 9.1.
+
+So I've applied this series to target-arm.next with the above
+changes (preparatory to doing a pull request tail end of next
+week once we release 9.0). Let me know if you'd prefer something
+else.
+
+thanks
+-- PMM

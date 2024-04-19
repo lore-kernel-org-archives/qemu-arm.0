@@ -1,78 +1,78 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp2497957ejd;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp2497969ejd;
+        Fri, 19 Apr 2024 08:59:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUdYSBKRJzAmeOp21AkGwIm4dI2fGFR8JO8e/2CcXqZSAgo81elNqG1c/jdgp6ZQvlOLJi4cNxqwtrvcdCO2Ag5AmGHI3gv
+X-Received: by 2002:a05:600c:3504:b0:418:9d5a:f680 with SMTP id h4-20020a05600c350400b004189d5af680mr1887089wmq.25.1713542392803;
         Fri, 19 Apr 2024 08:59:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW4IspklxrDb55eQRMvzrpj+ZIMj3Jq5KcsZ2CT6/niGa6MKsZNzvWLBBBN0dcZg0PfeOnK+8h+nn+37rFDIM+o24KQ+pRV
-X-Received: by 2002:adf:e58d:0:b0:348:b435:2736 with SMTP id l13-20020adfe58d000000b00348b4352736mr2140105wrm.51.1713542391984;
-        Fri, 19 Apr 2024 08:59:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713542391; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1713542392; cv=none;
         d=google.com; s=arc-20160816;
-        b=SZAzMpKiwYdJ0UBXodGvJQm+7FmiCwlmepg6OvCQ5EPKChwCCObZF6t1/EEg3nNwcj
-         775YUMgBd2JMaxZmYiwbnDrzlLr2sMobfuclgqZKRgZgblBLm+RNMrB9grKDNeFjreTb
-         tPvjy+4PjUudxWe6GaPVO55Fl7L2f4S8z4SvxMPlSrn1XoxNMGGXOnpd+ivIc9PrO1l3
-         ToTbRTX3seWbkHwdCFDatiuuJXwuRMrtyEWKVi3EbTcS2RE73L6CiMomHqPaBjGsst74
-         tD7bq0VHdL4avM0sbJ0LcPcByrzvF+C/1zDje0ULrbNHdgJ9sYc/7bKBphAOfFrIvxkK
-         +x3Q==
+        b=oXC3TnRSQqMGIn936gREd5vNcnjYKH4a6NDT+jkoDWlOky2rWiHBPRz73FiOgrEdWV
+         40swX+3TKKW7MsbxqO1fRNNqLzAKYdTvipoxqNFmGep/ltq3oLj+h5jUhiMsc/6IkaIn
+         MvdPgqy+PVbae1vQLlVm8h98tUipvIx4alSFrCiWRtlEdjKs3DavaUSI83R3X2Z3IdtW
+         iUtdRtOTa//Oa6plinY2cUflSeEhmUETci2/Gw49ysXJ7urOvimncVc3jkxER9Krf/ml
+         i4D2udzZQoPKyUWXfCTz2MMXb78FjdVjF9r2yYCBLnWe/UaeoBUnkqO7hIfWoC+KHWLy
+         36Bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=wGSOG2AohVyB+YklCc4A6nr7dY+0+hbY8R/nFstjWpI=;
-        fh=a7d7Iv1MshUScIRERUqZNIVbLwdMyUBvhE/sIMuP6Rk=;
-        b=tHFUII6yAiYr7OYqovGWCBA1I3nn+1ET6VdkM8MYZRfvoMpLEW7GnnZGyKlxXAqUH8
-         BmNoqZiV2vNDRPi8nxihM9G1a95FATykxD/eZGZpPZ5aiZ5m/rYTHFP8GAk7Bow1JXAx
-         Rk1xGf0eTs9QRigIfqwMyGqDkjTZOyqrrUVGidwL9nWgiGC6JVqP1ZeGI1xMiX0DUvBg
-         DA1VjgZh0gmLP4cBSD4++Jz9lLhbrfHZjiMm5WdPqPa7wvNrYDHu3F0Ce2dOK5lh0Mev
-         C8FAXSKhn3cM4a5qgYzVL27nvrdxrEZjC0NvPIs0ASUoE1csbntzjSsN54TCCh277WKy
-         N8Dw==;
+        bh=EQHElS3YY06JrxJsFkVRbTnlkqXQPEN2MqSOomU202A=;
+        fh=8/QyFgW2S4jcRDEi1PLqbQxgd2rrDCY5edxwpHTLGgo=;
+        b=PGWQmpQ0da7mXaPaXlW32m5FOA9r/LPXdbd/pub5XD7fyWkK4aHpNehD9fkXWYeRAC
+         2uPgOpZnE/KVYUt+2ig2GOWt6vMVmCqpeLN+6+f1tuNZXp4y4eHAMmpJasMza5hC1ELV
+         GX3BIYjKDCyYuYn0yjoSy5PLx+W6LbXyPZvQMGyHs1QV3Pm3/FZT4Iw/EOhNokIwxwU/
+         1Pp7g6YPCUdEGyvdQTbKASrhzyuTC++DWQOqHu2UxOL+lwwftHQdSunKCz73p1rKn/8z
+         EQth/xJrJdTY9TzByArdtEHa/uhF3BUv7id7Ww+tr7tT71dkUrDd0aLIeQFjioGeOzHd
+         64/A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="d/0bSTjT";
+       dkim=pass header.i=@linaro.org header.s=google header.b="TgLUPv/X";
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t13-20020adfba4d000000b00346c40d96c1sor1834587wrg.7.2024.04.19.08.59.51
+        by mx.google.com with SMTPS id g16-20020adfa490000000b00341b9dc4f4bsor1248313wrb.1.2024.04.19.08.59.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 19 Apr 2024 08:59:51 -0700 (PDT)
+        Fri, 19 Apr 2024 08:59:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="d/0bSTjT";
+       dkim=pass header.i=@linaro.org header.s=google header.b="TgLUPv/X";
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713542391; x=1714147191; darn=linaro.org;
+        d=linaro.org; s=google; t=1713542392; x=1714147192; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=wGSOG2AohVyB+YklCc4A6nr7dY+0+hbY8R/nFstjWpI=;
-        b=d/0bSTjTG1XdfLj59MP+HLIaRkb29LZOhCGrxH4ndWRiDID3b0nBURU5rSEoPBrgM1
-         dOD19q3sccwAQl/0+HZ3MoRRLNVK3b9m2NZaVhcvRvFm06AUib09TqBOIjfOc8Q3Xxeb
-         6LN1Co7HmHN/VmFN2bu7Bb/gwRhwradXoDhRVR1NdYDxWssxJ0lc2dyjJ+H7JMWTQZKB
-         BxtQ7/yUdl12xHFJw0/lFknxkR6jLbxCSXRbHzXxQ6DVe3n/j91qqGU5bWZTmY5kBM92
-         PSYQ6JavhZ/AXf/0mgGDO9nvG/4ZJIF1JibnfrN/RZHLIqhhr75sXtJNbmyVnBkjnAD7
-         2mww==
+        bh=EQHElS3YY06JrxJsFkVRbTnlkqXQPEN2MqSOomU202A=;
+        b=TgLUPv/X/udHzDdZJI6BPF9LIVHFRxny6j/gcgpbDNWuMeO/g7/O4kz6OrgqOAHCCX
+         Apqw/nVe/rCNwGvpnBUCW0YrLWZpqOzib4gnOptqS6nMdkGiTaGtnbNu8OOGg1JaLtdQ
+         UQ89wnYpMoXwNzEnxx+WmkA5qLVQ+lcI5Zmagizggktd1XfnqxnG1LQ/QELf3VTC8cJJ
+         aJzQD3SgbZXlXxSO6rccDu2fYzgUuCSlZ11VjWsmVPGbd9mhddbqyrrXBwaKQWOLvu1f
+         ZF9jDpSklOUwp/cUTtzvyZlQnfzEoJ5BAYdWLIouloceGCP0vcao/h3+VrHd6pj+ZLSC
+         f1hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713542391; x=1714147191;
+        d=1e100.net; s=20230601; t=1713542392; x=1714147192;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=wGSOG2AohVyB+YklCc4A6nr7dY+0+hbY8R/nFstjWpI=;
-        b=shKFF5VaZbthxCstFGipXkqgicjnJKc8UJeQXXsrm6cZlRrOP/PlDYWEN9jmraAJHG
-         0wJG1WirVQTi/mZ306xE2LeuVj9eb5Yv9MTU8HucBSI5/rxLkE5P3Zz5Aww+MjcXOwP+
-         nILtyzgbCs1mh9BfJpRBdsEWjqU5jXqgCWhcW5JMnnEqnWLv5LjB2RNpj3vHjiICn326
-         AmvHf35i11XMHM1aBZuUeJYlbxgkLi9ndA1/kakEllJrEloZ6IW9HrtDa2Wa5P+obJIa
-         WlA9dJxPvyHa++HVCtcQrEZ6tuTyZsNxnSiyKD+g2NE+XOOa0gifRmBenehVJyi99QXM
-         icrg==
-X-Forwarded-Encrypted: i=1; AJvYcCWOy+ZUU+1/atwYbuXuo+F48+H7AOHf8mqa/hnbphKJcA5HcbidpqDD2gHYqq5/taKD70e/qq2jkr+YxMWCf9CULoWXctqp
-X-Gm-Message-State: AOJu0Yy+PKJioDX8GZ+oP0rYMZ4IsxHkKiVdrAcyl+/xpcbtc0Va0awn
-	lcMzsp0kkKHSv7Ph6+0Si/bWJm5UxVLbOYFZasfc6Rc4Qdf7sS4JuLLgeL3UIQQauw==
-X-Google-Smtp-Source: AGHT+IFXWXZ2doR638dGx4gpYpEI6Czh03A8U4tqNaQVQjbA9rRJGDe2do9bDxtdVxSSCJ0+axOIjQ==
-X-Received: by 2002:a5d:4f90:0:b0:347:4484:4498 with SMTP id d16-20020a5d4f90000000b0034744844498mr1910461wru.59.1713542391579;
-        Fri, 19 Apr 2024 08:59:51 -0700 (PDT)
+        bh=EQHElS3YY06JrxJsFkVRbTnlkqXQPEN2MqSOomU202A=;
+        b=iaX5hMmyXiu+1Rfud6tiWQ/c8yDlu+Swwh8YT5KQNMfTPCNj7WZaeJhZjgugVg3O/f
+         0UbO+WwJqcTRS9U88iLBu3TKjp9VQVStfNWUtT7WqVIOgzh8WOq648lJpe3vd1IIJyhf
+         VxjuXuEJTrvlpFkY+ndPWMEE0/3RYuzgBO3RZILGRhZq+cQKYvX3RoWb5qxWFOI1Z05M
+         +mQzSTHfHv8Hh9XBeDb7y0V0SLFR6rnxqO3FF/rRwx/oDDs2I+jr7HUSebWsJbDpquBg
+         1wWQuGPn430B8h53MG6MGccZRBHdhoCuqFo7CUPvaYLoU2/3YvSl22H+D2fO9eQjC+b1
+         tUww==
+X-Forwarded-Encrypted: i=1; AJvYcCVpEXg9seTZyuYsxcyAc+P/5tSaQ6u918OzZ6lVkYZLoaXBYIgpcjUOt9Pj8Xj59QkuyUWcNL2J0odTTDizk6M+GkW62lUa
+X-Gm-Message-State: AOJu0YxLotdUh65Za3+aq+5O7S5M64NY6WexbH3eQ3wulRrmLqPUzyyo
+	XH3J0pt3qWfOKvKUzfpcnPFxLzSFH/EvQZaIEEDTPtffa86HnAklXrgtzxJMhro38Q==
+X-Google-Smtp-Source: AGHT+IHmfre/WtSkx5TiRXN2ShYLuSNHji6jc90xBDmEWEXfCMjkEhDoIkS0aPXwd0+4HswaKGSxuA==
+X-Received: by 2002:adf:e4c6:0:b0:34a:6f8b:1237 with SMTP id v6-20020adfe4c6000000b0034a6f8b1237mr1184972wrm.41.1713542392299;
+        Fri, 19 Apr 2024 08:59:52 -0700 (PDT)
 Return-Path: <jean-philippe@linaro.org>
 Received: from localhost.localdomain ([2.221.137.100])
         by smtp.gmail.com with ESMTPSA id p13-20020adfe60d000000b00349b73143e7sm4793089wrm.75.2024.04.19.08.59.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Apr 2024 08:59:51 -0700 (PDT)
+        Fri, 19 Apr 2024 08:59:52 -0700 (PDT)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: peter.maydell@linaro.org,
 	richard.henderson@linaro.org
@@ -82,57 +82,86 @@ Cc: philmd@linaro.org,
 	qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v2 07/22] hw/arm/virt: Reserve one bit of guest-physical address for RME
-Date: Fri, 19 Apr 2024 16:56:55 +0100
-Message-ID: <20240419155709.318866-9-jean-philippe@linaro.org>
+Subject: [PATCH v2 08/22] target/arm/kvm: Split kvm_arch_get/put_registers
+Date: Fri, 19 Apr 2024 16:56:56 +0100
+Message-ID: <20240419155709.318866-10-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240419155709.318866-2-jean-philippe@linaro.org>
 References: <20240419155709.318866-2-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: h/F9GvY9CVZC
+X-TUID: 0c73Z9FFVkD2
 
-When RME is enabled, the upper GPA bit is used to distinguish protected
-from unprotected addresses. Reserve it when setting up the guest memory
-map.
+The confidential guest support in KVM limits the number of registers
+that we can read and write. Split the get/put_registers function to
+prepare for it.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
-v1->v2: separate patch
----
- hw/arm/virt.c | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+ target/arm/kvm.c | 30 ++++++++++++++++++++++++++++--
+ 1 file changed, 28 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f300f100b5..eca9a96b5a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2939,14 +2939,24 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
-     VirtMachineState *vms = VIRT_MACHINE(ms);
-     int rme_vm_type = kvm_arm_rme_vm_type(ms);
-     int max_vm_pa_size, requested_pa_size;
-+    int rme_reserve_bit = 0;
-     bool fixed_ipa;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index b00077c1a5..3504276822 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -2056,7 +2056,7 @@ static int kvm_arch_put_sve(CPUState *cs)
+     return 0;
+ }
  
--    max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms, &fixed_ipa);
-+    if (rme_vm_type) {
-+        /*
-+         * With RME, the upper GPA bit differentiates Realm from NS memory.
-+         * Reserve the upper bit to ensure that highmem devices will fit.
-+         */
-+        rme_reserve_bit = 1;
+-int kvm_arch_put_registers(CPUState *cs, int level)
++static int kvm_arm_put_core_regs(CPUState *cs, int level)
+ {
+     uint64_t val;
+     uint32_t fpr;
+@@ -2159,6 +2159,19 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+         return ret;
+     }
+ 
++    return 0;
++}
++
++int kvm_arch_put_registers(CPUState *cs, int level)
++{
++    int ret;
++    ARMCPU *cpu = ARM_CPU(cs);
++
++    ret = kvm_arm_put_core_regs(cs, level);
++    if (ret) {
++        return ret;
 +    }
 +
-+    max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms, &fixed_ipa) -
-+                     rme_reserve_bit;
+     write_cpustate_to_list(cpu, true);
  
-     /* we freeze the memory map to compute the highest gpa */
-     virt_set_memmap(vms, max_vm_pa_size);
+     if (!write_list_to_kvmstate(cpu, level)) {
+@@ -2240,7 +2253,7 @@ static int kvm_arch_get_sve(CPUState *cs)
+     return 0;
+ }
  
--    requested_pa_size = 64 - clz64(vms->highest_gpa);
-+    requested_pa_size = 64 - clz64(vms->highest_gpa) + rme_reserve_bit;
+-int kvm_arch_get_registers(CPUState *cs)
++static int kvm_arm_get_core_regs(CPUState *cs)
+ {
+     uint64_t val;
+     unsigned int el;
+@@ -2343,6 +2356,19 @@ int kvm_arch_get_registers(CPUState *cs)
+     }
+     vfp_set_fpcr(env, fpr);
  
-     /*
-      * KVM requires the IPA size to be at least 32 bits.
++    return 0;
++}
++
++int kvm_arch_get_registers(CPUState *cs)
++{
++    int ret;
++    ARMCPU *cpu = ARM_CPU(cs);
++
++    ret = kvm_arm_get_core_regs(cs);
++    if (ret) {
++        return ret;
++    }
++
+     ret = kvm_get_vcpu_events(cpu);
+     if (ret) {
+         return ret;
 -- 
 2.44.0

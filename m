@@ -1,76 +1,77 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp2498075ejd;
-        Fri, 19 Apr 2024 08:59:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUONQGlbxmOK6TuWuLBY3nZWXYq/6qv/JpcFmEAziKAsg1W5boYnawR7ymGgQR+03u24ZgbbXTFLZ2NmlQwuQdmz2hnqBpu
-X-Received: by 2002:a2e:bc0f:0:b0:2db:381a:bf6e with SMTP id b15-20020a2ebc0f000000b002db381abf6emr1676713ljf.16.1713542399715;
-        Fri, 19 Apr 2024 08:59:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713542399; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp2498086ejd;
+        Fri, 19 Apr 2024 09:00:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU0k3SZWBdI+FDS7p3FsrxKRpj4OAnz1cQ/vcVXjxyxRwLpdW8SteK8Wj9UhOD5ZDGD1jYTavihUr7K4yTMGJRtNMFL5o4t
+X-Received: by 2002:adf:f447:0:b0:343:d23a:c977 with SMTP id f7-20020adff447000000b00343d23ac977mr4791314wrp.1.1713542400284;
+        Fri, 19 Apr 2024 09:00:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713542400; cv=none;
         d=google.com; s=arc-20160816;
-        b=dKckGESQyCpeYe+oUlhIJCfUsL7bPGwjxh4WjyxYk+XnZHHa4xrhQHQhBCssC84oDS
-         Jt3iyun3Dmddh9s91gPSZXQMdg9s/4RObBTE8ZSkEE6WescExEGsgia4XhdFpb/yWsf0
-         m8A/+pNeV9SroTTQSEp+RY/Cf0oN96ECJx+L7KtE9M2PD9Twn/MSRMli+zAAavhhRM4x
-         85UobWpDWEMMlbMRI2bx/7zCJdt8jtzSyDQV/jVSgQx4WuM17Ms+mO2zUi0L0pgdErY7
-         y4NhwzBVm0t7rrTn8ft4XtaSL7WAGrm+jeGsZe1le5WnKMhIeCIzTMZigUNx3mJ2y/ys
-         smuQ==
+        b=uuxHT/uTDspJwX6kSTmVJdwnwcCUgEON+iMhS8651MQwWdcStL4WFfNUxWc5VAUvOm
+         t09C+ZRAqN0V81xujbWuavumfP1WmV9TsaLYn3xNyuAGcUkzBJDaRv1KcLcIBL0ujn/9
+         WNw0E5oNv/KpDzxUsRn7SNLlACVM/ISfj6V+tMcqlgUE/NCMa21IVwzvirWkKXEEYPE2
+         kmZJFpxYMg0Elfd2PZRHSExnl6e4dPq3gVJC3norWb24Hrne8lt+ABPdT68gsOSK9fwg
+         m6aqc4uM2PRK7LBdwfkrR1wNJxmsexM/OG2X/ZmDSG2FXtp1KiMT0bZPqU2xUNZaz6RC
+         RUjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=jIcQyW6KzhNyvwt6+UmGVqg4qIIzzlR1XREhlouJbsQ=;
-        fh=AQ2A8h04BErs1wzVkODdxQW16yyZ6mkk2uszQ9JZZ4E=;
-        b=W43A00OZcT50OybZwO2Yype0+fNvhiEVNRsXGNH7d0EOCyhmKj9ybP4arquJ7Stqa1
-         32GNhdU3kfhH+kk7IlqpyhFNQrVU2rfIobpLpF/pF2aYD1E7WWXKdc8ctn5hWWP9uCm1
-         cWzOKPRC5/ykwDHPyMaIYO+9KgS/f6p2/D3JOM47rm0lcaq90Ih5ltjlYbIfAjy4YdSs
-         T6Kgz1ZXj8lXCSilqQ5qpZ+g/m2Qd1txkMcQ2qsMbT29h0qA+pdlGi0HGVwqFee7zQPh
-         HX+nAsJHJfo8BabJRlfXIgFpNzYZ0zfp+zZjw4TnhfNd47RnwUtjfeojQVDiHrAdOP8i
-         31gg==;
+        bh=FkRIZYSXM60C11pVAmU0c6gDc0GU3jgcOc8qxUScJ1Y=;
+        fh=xk/Zp1qNYHrrYWsN7hRHG7IOw8K4JZqb5+hrebNljTI=;
+        b=iI80PVv5T+oHnV366sMdHBe9bl4Gw6OR03crbPSltcyfE6xeY1zWqUlFxSuuXltFlV
+         r+ENxQQ1M7icyu3u97c717iRtwvrZK+aDYqXGhjFxdnfUQOWAJ5RC8oObogj1VGJL8zr
+         ckBDcCT6y5kVDc4JD3f5GkDfcHwUHKdx6oE7QX5777ErJSHfiA8tvEkJ8MaCsxR/Uok7
+         AaEAuKwqlVouz9ZcWsOnSxZDIgJRk5/b/cwW5cCvFOH0tHSO9qRxnQH6V+LaZ0zh8WKI
+         WFON258aW74FEyv/I2xaYd7ZrqJ7qIuUxYnqp3Q7GlAmG63LV/c8ApaqrI1UCBAjmWJY
+         bRJA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xK7Qzvti;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uAVFARwQ;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id r28-20020adfb1dc000000b00347e635db1fsor1288637wra.4.2024.04.19.08.59.59
+        by mx.google.com with SMTPS id v1-20020a05600c214100b004147e72fe40sor1112505wml.1.2024.04.19.09.00.00
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 19 Apr 2024 08:59:59 -0700 (PDT)
+        Fri, 19 Apr 2024 09:00:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xK7Qzvti;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uAVFARwQ;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713542399; x=1714147199; darn=linaro.org;
+        d=linaro.org; s=google; t=1713542400; x=1714147200; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=jIcQyW6KzhNyvwt6+UmGVqg4qIIzzlR1XREhlouJbsQ=;
-        b=xK7Qzvti1S6Gfb0wP3mrz2p4Pc2dOyV6534V4NtG9sutkjLSC/XY3ZMtYByyJEduhU
-         fK36WB9vEAW38d7hWm/FsSUFnsu0QG27VvMwrcjw5/iqJMzDM3T6ifmWXEHpHe0cdRXm
-         EB2MISg/QVStKHp5aTV7OM8BGnlNJgqJ5r5L20i9IlxFC9P0Hi8BZpmeyki2bARJ8Kzo
-         JkSiQXKZNSj5ko4a6wQLdEarKX3ZQ5XCZnClsdFfyEe2bv4Py+KrJ4Qv75VwgPlhOMc6
-         uoyej97BAwc6VL/2kIuXOBj/3MoG3hHKdtWnp/o+0ZxqiAOQJTINKQtLDbmjbSe53wXN
-         NuIA==
+        bh=FkRIZYSXM60C11pVAmU0c6gDc0GU3jgcOc8qxUScJ1Y=;
+        b=uAVFARwQLbCU275bRs13h/QrePTY3QWyDLvXH0jQPNQsLRIiAktW3UoM7mu78/5Nmd
+         xHs6LCwwbvnnhgd6ebiT6eq1WT0M2Jl9GTzzIV2I73E/G9VQ40xCQmE0RHpnrxlZEGya
+         NAQT024v8zX3HT1e0Fk0SCu5gVxJ0PNCzHwsMzldzsiLLLlEAcb6sZarLjcWJ579DsmM
+         2SujVDIq5kGJ6//DKYjS2jSqYvPjM7Et+lr4JeOeJ5eMB2cQn7pTNkCfxx1SCRQx/liX
+         6zKL9fUvN62joUvcMWkNdyf8G93IRzKtgqjvu6uJtuc0ALJ5ufIPzqUAfMv5hMei0GbC
+         ZgNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713542399; x=1714147199;
+        d=1e100.net; s=20230601; t=1713542400; x=1714147200;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=jIcQyW6KzhNyvwt6+UmGVqg4qIIzzlR1XREhlouJbsQ=;
-        b=KXaC8EJNGrG3ouIxYsgfaYvqxxO8pUoSodMtuaxj6zRzraZHKgc1EYdk7YmtpMU9mo
-         TtZf0SpWEd5Gt6YrQ6LzpemzZhk2okaARktcqTr4Ad9BDI8gmtStqO55XjjSC9XWhnqJ
-         SYcKuRj0xg8sF2NI68BMJnH/OsTwa8Z7Rpmrazj2AginrVtlD19ql1NQ01wq9un2ikpD
-         6eevzGrw6wsODGvWbgSmHlYZ/y2OtsT1tTbZ16iuo6WT7E7DBD5xZdmQE7QvFyNxOWn/
-         WbTi0tQ5SKTjSRRDrekTfF5EO0HuvF5c0rPCtkp2Iq/FkGTT61chioPL43c7pJGSKLqF
-         BRUQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX/OuYp68fEoHsOVSSDGvwuc21ebB3/V/D1+UcZvf4KKAfXfbl6Vmco96qA+lHoBth4YCHZ+BSBbS/lv9wp6dXrIrg9sooZ
-X-Gm-Message-State: AOJu0YxRnTYCphR7EcSJbvHUric2TMnGGQzCN1sn6Jn/V+dNjBMYYkb7
-	KI+PKU6tytZP0sL+CvY1Zis4qBVGQmq+wYZuafJQyDznkwZAhH5VaDbdl5wuzcoEEg==
-X-Google-Smtp-Source: AGHT+IGhGSM7QgbfXO8OR3slb7jRSos7wMZm9vS1hUM+S6LXvKS+/GJivhp4kH4tzFVyibQMKFVAWw==
-X-Received: by 2002:a5d:4589:0:b0:34a:5663:40e with SMTP id p9-20020a5d4589000000b0034a5663040emr1679936wrq.9.1713542399398;
+        bh=FkRIZYSXM60C11pVAmU0c6gDc0GU3jgcOc8qxUScJ1Y=;
+        b=ZwgCnVHXuqAkA2FN1PGxpdznkXBNRqbz+dtw4ErqGKtslyxXjvWzsoH8RdnJdFumk+
+         5QEm9NlOutyJU6KNuTW7AeTq66B/nKRqH0TPwpbx4jMa/LJemoX+74+Vyf9f/XBIW56l
+         oLab3dEfLZOHaunncXVxuRvjnnvwCp8IFqDmhdPrcHGNRMlx4ABWfsfJGbrLEdXxyCQG
+         MDzH3e9MHQKZ2oyIksxkGueKFzo/ZILIdxqoFxrDLAUO7/tmeSacDyRKs/jkoAWeK1z8
+         jzAb6NdNxsD8XQKTeYVN6iexy5s8X8SvOj3WeSwTeDjtUeKofjaPjaSTul5cfswRYbSl
+         smAA==
+X-Forwarded-Encrypted: i=1; AJvYcCVG5qg8i08dWxwTQglVJ/It0B2L0+8T/i7O6ZSLt8v4/GvKPUSHZeeY7IptKuXdjHjv6cuQRAbShUYfeMsaNpvtIzmjG1sL
+X-Gm-Message-State: AOJu0YxHO7TJ/e+40Y4Wr6ZM7cTxsa2ixgMzKK1bt7urZ1LkPPdYOvkr
+	fzTNWkuY4HiWGyi7mQ2dcCuLAOwT6lK2vQEB5t/rhOdswgZv8Lh+5DReZ30RE7K/xOcHFyKvz4X
+	46Ew=
+X-Google-Smtp-Source: AGHT+IHAbdi0c326+6wQmTCOWDDeEMqnDrJNMO++dLbiFMIKRETjm2YK89aW5Ik3rFD1vYXenRdRYw==
+X-Received: by 2002:a05:600c:4c17:b0:418:f6e7:3599 with SMTP id d23-20020a05600c4c1700b00418f6e73599mr3254144wmp.3.1713542399993;
         Fri, 19 Apr 2024 08:59:59 -0700 (PDT)
 Return-Path: <jean-philippe@linaro.org>
 Received: from localhost.localdomain ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id p13-20020adfe60d000000b00349b73143e7sm4793089wrm.75.2024.04.19.08.59.58
+        by smtp.gmail.com with ESMTPSA id p13-20020adfe60d000000b00349b73143e7sm4793089wrm.75.2024.04.19.08.59.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 19 Apr 2024 08:59:59 -0700 (PDT)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
@@ -82,42 +83,42 @@ Cc: philmd@linaro.org,
 	qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v2 19/22] target/arm/cpu: Inform about reading confidential CPU registers
-Date: Fri, 19 Apr 2024 16:57:07 +0100
-Message-ID: <20240419155709.318866-21-jean-philippe@linaro.org>
+Subject: [PATCH v2 20/22] target/arm/kvm-rme: Enable guest memfd
+Date: Fri, 19 Apr 2024 16:57:08 +0100
+Message-ID: <20240419155709.318866-22-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240419155709.318866-2-jean-philippe@linaro.org>
 References: <20240419155709.318866-2-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: on8HW4It5fAO
+X-TUID: 37kPNeAL5ypx
 
-The host cannot access registers of a Realm. Instead of showing all
-registers as zero in "info registers", display a message about this
-restriction.
+Request that RAM block uses the KVM guest memfd call to allocate guest
+memory. With RME, guest memory is not accessible by the host, and using
+guest memfd ensures that the host kernel is aware of this and doesn't
+attempt to access guest pages.
+
+Done in a separate patch because ms->require_guest_memfd is not yet
+merged.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
 v1->v2: new
 ---
- target/arm/cpu.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ target/arm/kvm-rme.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index ab8d007a86..18d1b88e2f 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1070,6 +1070,11 @@ static void aarch64_cpu_dump_state(CPUState *cs, FILE *f, int flags)
-     const char *ns_status;
-     bool sve;
+diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+index 8f39e54aaa..71cc1d4147 100644
+--- a/target/arm/kvm-rme.c
++++ b/target/arm/kvm-rme.c
+@@ -263,6 +263,7 @@ int kvm_arm_rme_init(MachineState *ms)
+     rme_guest->rom_load_notifier.notify = rme_rom_load_notify;
+     rom_add_load_notifier(&rme_guest->rom_load_notifier);
  
-+    if (cpu->kvm_rme) {
-+        qemu_fprintf(f, "the CPU registers are confidential to the realm\n");
-+        return;
-+    }
-+
-     qemu_fprintf(f, " PC=%016" PRIx64 " ", env->pc);
-     for (i = 0; i < 32; i++) {
-         if (i == 31) {
++    ms->require_guest_memfd = true;
+     cgs->ready = true;
+     return 0;
+ }
 -- 
 2.44.0

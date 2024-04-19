@@ -1,175 +1,260 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp2562749ejd;
-        Fri, 19 Apr 2024 10:37:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV/ojLEOgW2yMsM/dHWFzL3JT07J7LpEHoEy2dAwxeGptcDKJz2MiMbgNIDGQ7YZRcQeaji04MGRMFble3zpH2lzsxgWg00
-X-Google-Smtp-Source: AGHT+IGWr2mWlrfENRY31VdLrVBYo/+QoMosDvV1gppiwBtxpkiZmCTkS5Z4dpAELUv9gC1Zoe/X
-X-Received: by 2002:a0c:e791:0:b0:69b:24f2:c2eb with SMTP id x17-20020a0ce791000000b0069b24f2c2ebmr3506681qvn.59.1713548265635;
-        Fri, 19 Apr 2024 10:37:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713548265; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp2563530ejd;
+        Fri, 19 Apr 2024 10:39:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUA7XX49LcomAwMrujv6DhINluCFycOsjjVr4vyXCtgtW9r4eoW6h5hEuKWRhZVzrReJfqHsk6D6eHz5vluHvbPBv7+BbPE
+X-Google-Smtp-Source: AGHT+IGnX+2BzfiGQEW0NrT2rNslFL4b61isgnX27BNHFkWlCq4uMw1nkS5i/q24Bgams8341Q02
+X-Received: by 2002:a05:6359:5088:b0:186:2720:2122 with SMTP id on8-20020a056359508800b0018627202122mr2884929rwb.2.1713548352335;
+        Fri, 19 Apr 2024 10:39:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713548352; cv=none;
         d=google.com; s=arc-20160816;
-        b=IsMT6hJE1lh10LvH3R9yisKNk2+502oHNTOldiy53D0JBo9n2d992oTqEkGtJw2Eam
-         mGLMi8JX+Ltop9gva7rZqeFgzETLq/KknhIcAVAx+mpyWMs6VKGHgDLmnppYeipgjsPy
-         pB0ctL8uDjTGnw/GDqXIG77fTSOZIbcfLUWatZOuN0Al33KgfBlHwvqYFiDcr7KAjXlt
-         ARA1rm53wyIwM69qU+aRzgRwp5F+mKaUFpek/KqMu7/5NU1/bsePscoUDoh8joAUC/uw
-         Agl0lO5QDxJwBvhYgvO09GUI62LA2RfRHeEBCSJVQbxCShngmCn1Ij9u9rRrVRuHg/D1
-         G45w==
+        b=JQr2mDDhf3DhqfTuCkt3f2i08cYBaatN7ln8u9mT1Ogv1CHt4zbZjlFOdrNNzCGOQM
+         bW2SkfMuABVIp5aBZWsrFyuj8R0vSsW539zSVg9IgK01KPR95Px8K1oSCAPNXJKDuPRG
+         M5pkt2h0WVbE3/Epv8xoJjUcJWFKA0SLnVG5FDwBk/9JejGWjPRnxKceLv4lT7RH/OH/
+         y4GTVKi6ksPPxRKSxihpT/qwUO/Bu+fbiSsvmFZrhbEGOWL0HOsCNXF8EBwRwJbjqt/z
+         5U3UCylHRsq6cjP1SnDMiwZn1v2olHEmyWIH0162APddynK4d8tKLUwFtjGU8z8zLdB0
+         gObw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=xI9shwFKRsiVt360abO99mGfeOn4kepQF/rcjZ6h/wI=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=aXCbUUuR5st/prKv6aUPpvOiBjsAbTx1h8MeatXk6ELxa2sqLGjkuHL0tMfKJnwxwm
-         ZuyujuQVK2h+8DLv+mQaf0eqai8sTKtbT0oJXSTMEG9Oe+0jXdytc2cIvKqiyIfMREFA
-         LE1fQafvqmwi6J4tgy6O7nyvoh3Wp59Js3ejc03v/6cqNTgYECaV9ibF/poWZCjzeIOR
-         5CHzw9rMW/4V7UXhYr/9J09xazk29xwe/HljVR/ipT3m9gGjU9wCaq93gP/GOw/k8tdz
-         H5LJSXXLiEWeCU998Wj0noltFqxUdldiFKlE2tuneagR8K5MtkSiFDQWHUbmFcusxCxL
-         0G5A==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=qFmfv/KIkQSPxfizuGhahizSA5YVd0xpIUFDh/uURYY=;
+        fh=G0TCLMaa7JPcVg9aLGnIlg2wduapCXDjx/VAoas8ZWM=;
+        b=Pl/neCPQIhMElKqWoDJU6fujZPTycI0Y7rEBUtPrYNyolJKLJe61BoTRFClNH4/6p8
+         pn9bQDmvc5jUyOLXvRSAjgEKgG4hW1O4tEA2V5jDxhKxmUq0OpmMIL2hbnhc6zOdlmfE
+         qT4LpN61XpohyzaLd/q8tEQVoXAowWVPxmxcx8rsEbrltQoAMA+ZbPym7yUbgSZA6qBk
+         WrS3W+4CzUpTw8Yk2S3+n3FfqERiZCrKYrUyfXgYGtG+3zbS4jJcjqzUt/pMxAYGKcGJ
+         ROYrmcXtetAPKMJeiNX3E9g5Ujg95LBF1dmzcI9SidDL7MaMp1OZJEAYdsvKKCxxy4Xz
+         lNQg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jgwGbem5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=adCfsPE4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ib2-20020a0562141c8200b00699403c5771si4345294qvb.291.2024.04.19.10.37.45
+        by mx.google.com with ESMTPS id n19-20020a05622a041300b004367e7df36esi4359353qtx.73.2024.04.19.10.39.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Apr 2024 10:37:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 19 Apr 2024 10:39:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jgwGbem5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=adCfsPE4;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rxsAz-0003eU-8Z; Fri, 19 Apr 2024 13:37:29 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rxsCK-0004bV-5Z; Fri, 19 Apr 2024 13:38:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rxsAy-0003eB-B9
- for qemu-arm@nongnu.org; Fri, 19 Apr 2024 13:37:28 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rxsAw-0003oY-Iw
- for qemu-arm@nongnu.org; Fri, 19 Apr 2024 13:37:27 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-571bddddbc2so1940968a12.1
- for <qemu-arm@nongnu.org>; Fri, 19 Apr 2024 10:37:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1713548244; x=1714153044; darn=nongnu.org;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :from:to:cc:subject:date:message-id:reply-to;
- bh=xI9shwFKRsiVt360abO99mGfeOn4kepQF/rcjZ6h/wI=;
- b=jgwGbem57FI8D8Hd9uh6HSM8bCQEu3OMsKFWaGdEhMBODlsMksCge75HkXipCcfqwl
- Pmr9jXPl58Ga+EoDBHoSUEqveaDj4HelnnBW4V6M4wBkBe5SrK3trMG6/iPuoPZ/GI8b
- SQvbbFcUTYftNKKcMKmpvxTzS3kfdzUstU0dhUTgQjQk45vLSdqO+M6O6lLAxyhP/j/Q
- hYLqnij+Wpy+2zX0q+3OgdXNJDG0XOKfXFzyzsKap2zK1WUgnoLgwqZrDj/ZRBFiqVB/
- Z/tOjgc9CiNzFFjRgjwn5qxRKOUJIPaq4cF9QCECooIs+z/6jqlSwkCGfO9GlemhudT+
- Fcpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713548244; x=1714153044;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xI9shwFKRsiVt360abO99mGfeOn4kepQF/rcjZ6h/wI=;
- b=LxlVYtz0tBJJ7boerrjjb/W9SIhsKESx9N3K5L0OaEK9tMkA/L4H/C9kgVPW2dGaZK
- MKCA8a9Auc5OwOChndm9AqpAwiyMgmncHjFPxktc4yndXUz9x4A8z9KylouaS/9MeV8n
- hlnTFulbvzri/bt/kNsBbODxGU/HFQezI/J+NQoq596nENpwaVZsoEB/rfMYRjvLtMJV
- fdEWoN1zr2bq/aONgobZEm1wnOr2P+Fziv0H8gsDz4JjQEAh55o2njj5k8q2LiU9fqNs
- BG0kkHkds2eJEZkoc4EuJRnwHDFe+IZJPR7MrdAtxhe3iztb8sAFPOpF1G+7hgNs5afE
- jHgw==
-X-Gm-Message-State: AOJu0Yw4WO4MYfkkh585SIgShlnYME6BBghXgo7SRnkx23FWjlFX1Izl
- Kf8zgRP7IeihpDjO1OgLvnovfFcJlBxoseSRQh/QkfVYw5Ebms9o5+XCmKwrrHXAtujh5dPEgS7
- iL8YWPiUNpspNw31C6beNtuydWvho+DUIqP/8NCNope000d6X
-X-Received: by 2002:a50:bb48:0:b0:56e:238e:372c with SMTP id
- y66-20020a50bb48000000b0056e238e372cmr1764521ede.26.1713548244277; Fri, 19
- Apr 2024 10:37:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
+ id 1rxsCH-0004a1-1G; Fri, 19 Apr 2024 13:38:49 -0400
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ardb@kernel.org>)
+ id 1rxsCC-0003zh-6v; Fri, 19 Apr 2024 13:38:48 -0400
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 80526CE1B60;
+ Fri, 19 Apr 2024 17:38:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8FEAC072AA;
+ Fri, 19 Apr 2024 17:38:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1713548319;
+ bh=xFMTjOU9FaSmOc2TGsUAJWnbrTmxvTQIzUny4ULRBDQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=adCfsPE4xUZ++eve9Tnr2rWu3ZZhm/ZQMD/wb8Fl/tuN/OtpMWO/S6zNDEKjoYop9
+ 0RLJXJXVeZnstgr4E706sHTqpse6kaWwcKRZuiUiwvppmE0fQCptyxvSaihTdEYtSK
+ KPfx/L/75Have8ks28ZjcY7/reR93pU+XwF/kZIdG2nTU2vfSuIPg4ZTcp0LFTmXBq
+ 5ahSCuNH0M7kH+ok4N7OJ8ILuMPYLb8CDLREntSmY+j4kNM0SGwwO+sX6SyuH3mucC
+ jTZwrMqpKsHUL+SVLAT8JAeLtZ5Mfa0hst5nv4fmJ2mhuHyAjCz9XSevLpMpUGVSqA
+ VUC5f9qw+Zt+w==
+Received: by mail-lj1-f171.google.com with SMTP id
+ 38308e7fff4ca-2d8a2cbe1baso30207581fa.0; 
+ Fri, 19 Apr 2024 10:38:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXcftqTDb6eNpHTv6PnPJrVAdN3J5YhHT9WovVQJyvJCLvqqP68cHfWe9Y90aCBQVoyJkRSc3ikG6sJWOlbglpC8Mzb/rhrAReAtRw1HWDwkUXSOJn3apX5owE=
+X-Gm-Message-State: AOJu0YxVrJYM6C7u9sY6JgU346CBuG9dcjRPmW3Fw0E34hIRE9eV+BKw
+ YwVhz/eMMktrckAn0LfLwsnIsPXB951OqJLc+NDFtuDpE9OCLpO8FNvOxhi/FxQkcmndotUBG58
+ 14l86kZ9YBqi8tv01uFtU8S7RMgA=
+X-Received: by 2002:a05:6512:159:b0:518:b283:1078 with SMTP id
+ m25-20020a056512015900b00518b2831078mr2445253lfo.26.1713548318060; Fri, 19
+ Apr 2024 10:38:38 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240418152004.2106516-1-peter.maydell@linaro.org>
- <20240418152004.2106516-2-peter.maydell@linaro.org>
-In-Reply-To: <20240418152004.2106516-2-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 19 Apr 2024 18:37:13 +0100
-Message-ID: <CAFEAcA92B8C1tRpm53kjnrskbuSyJa7ss9BEKZ+uNsMiAAbeGA@mail.gmail.com>
-Subject: Re: [PATCH 1/5] docs/system/arm/emulation.rst: Add missing
- implemented features
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20240301204110.656742-1-richard.henderson@linaro.org>
+ <20240301204110.656742-6-richard.henderson@linaro.org>
+ <20240416161111.0000607c@huawei.com>
+ <0c878d25-3fbb-4f0b-bc9e-ca638f8c4f1e@linaro.org>
+ <20240418091555.00006666@Huawei.com>
+ <20240418183600.00000345@huawei.com>
+ <kjpkyoux2xcegrqshde5ddhicf33jnlelobuzuo4uj4svvlzdn@rilun7dz6776>
+ <20240419170938.00000551@huawei.com>
+ <CAMj1kXE+0mUfFq_FrhZT0m_YOJkWiuPndWt3GsRn1eMyCVrmMw@mail.gmail.com>
+In-Reply-To: <CAMj1kXE+0mUfFq_FrhZT0m_YOJkWiuPndWt3GsRn1eMyCVrmMw@mail.gmail.com>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Fri, 19 Apr 2024 19:38:26 +0200
+X-Gmail-Original-Message-ID: <CAMj1kXFMT=rM=2ivrcUXEtZYEqSbTG6ZokJgDcpd4ufwYm34Xw@mail.gmail.com>
+Message-ID: <CAMj1kXFMT=rM=2ivrcUXEtZYEqSbTG6ZokJgDcpd4ufwYm34Xw@mail.gmail.com>
+Subject: Re: [edk2-devel] [PATCH v3 5/6] target/arm: Do memory type alignment
+ check when translation disabled
+To: devel@edk2.groups.io, jonathan.cameron@huawei.com
+Cc: Gerd Hoffmann <kraxel@redhat.com>,
+ Jonathan Cameron via <qemu-devel@nongnu.org>, linuxarm@huawei.com, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Idan Horowitz <idan.horowitz@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2604:1380:40e1:4800::1;
+ envelope-from=ardb@kernel.org; helo=sin.source.kernel.org
+X-Spam_score_int: -66
+X-Spam_score: -6.7
+X-Spam_bar: ------
+X-Spam_report: (-6.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.313,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sNevD55bF+D6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aeoJ9+IwQGvx
 
-On Thu, 18 Apr 2024 at 16:20, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Fri, 19 Apr 2024 at 18:36, Ard Biesheuvel <ardb@kernel.org> wrote:
 >
-> As of version DDI0487K.a of the Arm ARM, some architectural features
-> which previously didn't have official names have been named.  Add
-> these to the list of features which QEMU's TCG emulation supports.
-> Mostly these are features which we thought of as part of baseline 8.0
-> support.  For SVE and SVE2, the names have been brought into line
-> with the FEAT_* naming convention of other extensions, and some
-> sub-components split into separate FEAT_ items.  In a few cases (eg
-> FEAT_CCIDX, FEAT_DPB2) the omission from our list was just an oversight.
+> On Fri, 19 Apr 2024 at 18:09, Jonathan Cameron via groups.io
+> <jonathan.cameron=huawei.com@groups.io> wrote:
+> >
+> > On Fri, 19 Apr 2024 13:52:07 +0200
+> > Gerd Hoffmann <kraxel@redhat.com> wrote:
+> >
+> > >   Hi,
+> > >
+> > > > Gerd, any ideas?  Maybe I needs something subtly different in my
+> > > > edk2 build?  I've not looked at this bit of the qemu infrastructure
+> > > > before - is there a document on how that image is built?
+> > >
+> > > There is roms/Makefile for that.
+> > >
+> > > make -C roms help
+> > > make -C roms efi
+> > >
+> > > So easiest would be to just update the edk2 submodule to what you
+> > > need, then rebuild.
+> > >
+> > > The build is handled by the roms/edk2-build.py script,
+> > > with the build configuration being in roms/edk2-build.config.
+> > > That is usable outside the qemu source tree too, i.e. like this:
+> > >
+> > >   python3 /path/to/qemu.git/roms/edk2-build.py \
+> > >     --config /path/to/qemu.git/roms/edk2-build.config \
+> > >     --core /path/to/edk2.git \
+> > >     --match armvirt \
+> > >     --silent --no-logs
+> > >
+> > > That'll try to place the images build in "../pc-bios", so maybe better
+> > > work with a copy of the config file where you adjust this.
+> > >
+> > > HTH,
+> > >   Gerd
+> > >
+> >
+> > Thanks Gerd!
+> >
+> > So the builds are very similar via the two method...
+> > However - the QEMU build sets -D CAVIUM_ERRATUM_27456=TRUE
+> >
+> > And that's the difference - with that set for my other builds the alignment
+> > problems go away...
+> >
+> > Any idea why we have that set in roms/edk2-build.config?
+> > Superficially it seems rather unlikely anyone cares about thunderx1
+> > (if they do we need to get them some new hardware with fresh bugs)
+> > bugs now and this config file was only added last year.
+> >
+> >
+> > However, the last comment in Ard's commit message below seems
+> > highly likely to be relevant!
+> >
+> > Chasing through Ard's patch it has the side effect of dropping
+> > an override of a requirement for strict alignment.
+> > So with out the errata
+> > DEFINE GCC_AARCH64_CC_XIPFLAGS     = -mstrict-align -mgeneral-regs-only
+> > is replaced with
+> >  [BuildOptions]
+> > +!if $(CAVIUM_ERRATUM_27456) == TRUE^M
+> > +  GCC:*_*_AARCH64_PP_FLAGS = -DCAVIUM_ERRATUM_27456^M
+> > +!else^M
+> >    GCC:*_*_AARCH64_CC_XIPFLAGS ==
+> > +!endif^M
+> >
+> > The edk2 commit that added this was the following +CC Ard.
+> >
+> > Given I wasn't sure of the syntax of that file I set it
+> > manually to the original value and indeed it works.
+> >
+> >
+> > commit ec54ce1f1ab41b92782b37ae59e752fff0ef9c41
+> > Author: Ard Biesheuvel <ardb@kernel.org>
+> > Date:   Wed Jan 4 16:51:35 2023 +0100
+> >
+> >     ArmVirtPkg/ArmVirtQemu: Avoid early ID map on ThunderX
+> >
+> >     The early ID map used by ArmVirtQemu uses ASID scoped non-global
+> >     mappings, as this allows us to switch to the permanent ID map seamlessly
+> >     without the need for explicit TLB maintenance.
+> >
+> >     However, this triggers a known erratum on ThunderX, which does not
+> >     tolerate non-global mappings that are executable at EL1, as this appears
+> >     to result in I-cache corruption. (Linux disables the KPTI based Meltdown
+> >     mitigation on ThunderX for the same reason)
+> >
+> >     So work around this, by detecting the CPU implementor and part number,
+> >     and proceeding without the early ID map if a ThunderX CPU is detected.
+> >
+> >     Note that this requires the C code to be built with strict alignment
+> >     again, as we may end up executing it with the MMU and caches off.
+> >
+> >     Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+> >     Acked-by: Laszlo Ersek <lersek@redhat.com>
+> >     Tested-by: dann frazier <dann.frazier@canonical.com>
+> >
+> > Test case is
+> > qemu-system-aarch64 -M virt,virtualization=true, -m 4g -cpu cortex-a76 \
+> > -bios QEMU_EFI.fd -d int
+> >
+> > Which gets alignment faults since:
+> > https://lore.kernel.org/all/20240301204110.656742-6-richard.henderson@linaro.org/
+> >
+> > So my feeling here is EDK2 should either have yet another config for QEMU as a host
+> > or should always set the alignment without needing to pick the CAVIUM 27456 errata
+> > which I suspect will get dropped soonish anyway if anyone ever cleans up
+> > old errata.
+> >
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  docs/system/arm/emulation.rst | 37 +++++++++++++++++++++++++++++++++--
->  1 file changed, 35 insertions(+), 2 deletions(-)
+> This code was never really intended for execution at EL2, but it
+> happened to work, partially because TCG's lack of strict alignment
+> checking when the MMU is off.
 >
-> diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-> index 2a7bbb82dc4..9388c7dd553 100644
-> --- a/docs/system/arm/emulation.rst
-> +++ b/docs/system/arm/emulation.rst
-> @@ -8,13 +8,25 @@ Armv8 versions of the A-profile architecture. It also has support for
->  the following architecture extensions:
+> Those assumptions no longer hold, so yes, let's get this fixed properly.
 >
->  - FEAT_AA32BF16 (AArch32 BFloat16 instructions)
-> +- FEAT_AA32EL0 (Support for AArch32 at EL0)
-> +- FEAT_AA32EL1 (Support for AArch32 at EL1)
-> +- FEAT_AA32EL2 (Support for AArch32 at EL2)
-> +- FEAT_AA32EL3 (Support for AArch32 at EL3)
->  - FEAT_AA32HPD (AArch32 hierarchical permission disables)
->  - FEAT_AA32I8MM (AArch32 Int8 matrix multiplication instructions)
-> +- FEAT_AA64EL0 (Support for AArch64 at EL0)
-> +- FEAT_AA64EL1 (Support for AArch64 at EL1)
-> +- FEAT_AA64EL2 (Support for AArch64 at EL2)
-> +- FEAT_AA64EL3 (Support for AArch64 at EL3)
-> +- FEAT_AdvSIMD (Advanced SIMD Extension)
->  - FEAT_AES (AESD and AESE instructions)
-> +- FEAT_ASID16 (16 bit ASID)
->  - FEAT_BBM at level 2 (Translation table break-before-make levels)
->  - FEAT_BF16 (AArch64 BFloat16 instructions)
->  - FEAT_BTI (Branch Target Identification)
-> +- FEAT_CCIDX (Extended cache index)
->  - FEAT_CRC32 (CRC32 instructions)
-> +- FEAT_Crypto (Cryptographic Extension)
+> Given VHE and nested virt (which will likely imply VHE in practice), I
+> would like to extend this functionality (i.e., the use of preliminary
+> page tables in NOR flash) to EL2 as well, but with VHE enabled. This
+> means we can still elide TLB maintenance (and BBM checks) by using
+> different ASIDs, and otherwise, fall back to entering with the MMU off
+> if VHE is not available. In that case, we should enforce strict
+> alignment too, so that needs to be fixed regardless.
+>
+> I'll try to code something up and send it round. In the mean time,
+> feel free to propose a minimal patch that reinstates the strict
+> alignment if you are pressed for time, and I'll merge it right away.
 
-I missed one here: we can also add
-FEAT_Armv9_Crypto (Armv9 Cryptographic Extension)
-
-(Like FEAT_Crypto, this is an "umbrella" feature naming the
-combination of various other crypto related features, all of which
-we already implement.)
-
--- PMM
+Actually, let's just so that first - I'll send out a patch.

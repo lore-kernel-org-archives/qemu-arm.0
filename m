@@ -1,82 +1,82 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp3637901ejd;
-        Sun, 21 Apr 2024 07:06:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX4Q6n2SK27Cy19ob17QsP1E2JVT5QDg8/t2IK0mAzNTZouORifWhX+8cQi8NKFBqcOaD5VC9O8GA+rvj2qxcYjrFj9vnyk
-X-Google-Smtp-Source: AGHT+IEVrQtl7+5mc4fjRquuFXZf4IQQn7ao+bvsRUh43ovVmGSXE6xsFS/okQJbKW6ktex5Arvn
-X-Received: by 2002:a05:6214:5c7:b0:69b:2664:cda2 with SMTP id t7-20020a05621405c700b0069b2664cda2mr8024604qvz.8.1713708399309;
-        Sun, 21 Apr 2024 07:06:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713708399; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp3638327ejd;
+        Sun, 21 Apr 2024 07:07:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUAFZAKU04N5Olfy7aflt8q61S8EwJvfzTOowyPlRFbbGxtq6+8Uo9iMwOPT1MTLSGA5xiBdeB4fUR0Ad13EkOW1Ve5LyM0
+X-Google-Smtp-Source: AGHT+IFP5tCAr5fx7Db5E62QWQ0cBIW6u/JxMzzQAWfVgFj3yymp5seZOHdeOUvCAfiY5ReAc/E5
+X-Received: by 2002:a0c:c308:0:b0:6a0:7824:dba1 with SMTP id f8-20020a0cc308000000b006a07824dba1mr2371829qvi.14.1713708439356;
+        Sun, 21 Apr 2024 07:07:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713708439; cv=none;
         d=google.com; s=arc-20160816;
-        b=OgshMlvqBt0DKqk4KaK9ByerjPgnyeTpCzsxluUJI5WZK3M3vaYfI9vx1lr/Vzj4mm
-         8SGxXAYPRUW1Jj9oIPJbXHbWPhtQmlCrBZGWvladRPgMZda3e8M7yHYV4aR6fYy9OOU/
-         +HJsZ9bGGZtSZXqS7m9LTVSgjRFERtT5rc871NOyxXDFkCFJfH1P9iVcBxTri3vEq/vJ
-         LXDtXmbFwtsnBhI6RUI7o/hgq7E9EYKoE7IXdmKngmwuTwuuZIVIm+pVmP0QL6aM8UOu
-         mjtLJ+GotzZ8Y+4+vUPQ1+UMokNh19giq+GRdYsRxWSXZwOrElSp5IGaevzzGVw2cejB
-         7WEQ==
+        b=hKsGcqusiwdKG+ShWGMy/3JtVBDcRw8+abmyFUmUfMbeMGjr0DLEIX98/2k7ZBFyxS
+         grM9wPrpGXl3ifM9/Y8Nvg041n6+I/X6xbE3ydA8Io1Naq2JzH9OTRu3Oq5Tp7G565zm
+         msZ4vIGMKc633I4RyNDKxI0hIL7+mNFiHmk9e97VuHb9MED6FExeQa0FMz5GBd0cItIu
+         B2ST2U+HlmL/bZml4E4lj6VIPx5PWIZ67FD1FSuOkZLpz5OXRpH/cWXGyW4vh64cVsJS
+         nWlI/fZzQ8TmMFHKKOPe0eRg5kZtcqe1xY4S0tJemeMUC0DNp2A8Ean8n+jXVtyuqUZ6
+         E97w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature:dkim-filter;
-        bh=5CFKEPqz+1ZcgxhABmTozLTGT1xbD7H5nOrjny7q8kM=;
+        bh=3R1cZFMNLQryBlDCNdtrSHptL+Xd0cZLTSuX/37F5Jo=;
         fh=qCKTD+AnYCGca/qkg8saz3FMbn1gCujqEM1vfcJsKaM=;
-        b=IPOx6FHWASHSU7R0vxyNmH94R+3UzCQYb8clbj7UCWiMNTTmOrvMETlyexbj9Gik71
-         aQPj6NQDO54cnNRfNlrRGghRmQ1nazHPVxOyBPgUu+hq/jZ3EzaAipat2lNOmc5No5ax
-         AVHBRHL2K+gujdfqxpq2E+gKFe2ZU0Zdr721X3gfSDOxpeAo95Koo1ZQ3JmNavy9tocT
-         mZlQK5bWne5/RZo6GcvHkIEKGtRgmb7E2XpHw5DULINcWCTAMg7z2PtRURKuElvuu16R
-         /N6Bf80IAEg1x0SVIgsDoV5sR7uZGwE2IFvlKGoJ7Jr1YmNdjZHux4ITS8JGJDTn5EQk
-         cieg==;
+        b=ebPH3UKKdM40XFp9TWFxX306bYbdvoDr9EVR8hI+n937XV9BJpff31LfRd7XRC8eJu
+         ucR/VTpPIBqtp60afkS9TWHHlRm3HKjALiaeLBoQeuShgdvpe+7jkOpRDrXfI0PMXJiq
+         xph9ZmyI4SxsayKPqYfI/VGbojqSJPS39yU/t6FmTnyks9rUO3T8uoJw41d9Hxi9WSTs
+         +QK9ydetWZctCcl8xdeIUNAYMAZh5e/9WD7MgdECjmJKFRM2ltogBn2JbyvYRpSfhtVa
+         /0AAafyhYOSCUQ+2tl5m0h4+oT7jMsYFJWzXDcPm5LtZnAvxdFJjIAKEHygNdyrX1Tqb
+         9giw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=ETy7ZurZ;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=4SIe3hjq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fv7-20020a056214240700b0069b4c1a50easi5820755qvb.520.2024.04.21.07.06.39
+        by mx.google.com with ESMTPS id t10-20020ad45bca000000b006a07b7dfba4si1132789qvt.261.2024.04.21.07.07.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Apr 2024 07:06:39 -0700 (PDT)
+        Sun, 21 Apr 2024 07:07:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=ETy7ZurZ;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=4SIe3hjq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ryXps-0001RC-MJ; Sun, 21 Apr 2024 10:06:30 -0400
+	id 1ryXq6-0001Y2-5g; Sun, 21 Apr 2024 10:06:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1ryXpo-0001Pd-2c; Sun, 21 Apr 2024 10:06:24 -0400
+ id 1ryXpo-0001Px-GJ; Sun, 21 Apr 2024 10:06:25 -0400
 Received: from zproxy4.enst.fr ([2001:660:330f:2::df])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1ryXpk-0008Kz-CJ; Sun, 21 Apr 2024 10:06:23 -0400
+ id 1ryXpk-0008MF-Py; Sun, 21 Apr 2024 10:06:24 -0400
 Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 8BC1320641;
- Sun, 21 Apr 2024 16:06:17 +0200 (CEST)
+ by zproxy4.enst.fr (Postfix) with ESMTP id 4BFC520673;
+ Sun, 21 Apr 2024 16:06:19 +0200 (CEST)
 Received: from zproxy4.enst.fr ([IPv6:::1])
  by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id VUCAIoKKxz3b; Sun, 21 Apr 2024 16:06:17 +0200 (CEST)
+ id moy2jUn4VZqn; Sun, 21 Apr 2024 16:06:18 +0200 (CEST)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 10F882058E;
- Sun, 21 Apr 2024 16:06:17 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 10F882058E
+ by zproxy4.enst.fr (Postfix) with ESMTP id A7CD42066D;
+ Sun, 21 Apr 2024 16:06:18 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr A7CD42066D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1713708377;
- bh=5CFKEPqz+1ZcgxhABmTozLTGT1xbD7H5nOrjny7q8kM=;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1713708378;
+ bh=3R1cZFMNLQryBlDCNdtrSHptL+Xd0cZLTSuX/37F5Jo=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=ETy7ZurZKTWBcfJSWVYPYpaBRHD6tMF8TjfZSPhSsW8SkCrES+MWeVYWCwJkRn+6T
- SX3y3nDwmdiNAOutSP1RVKWFDBjZLMwjrySEP2qzr65XnrzrV/VBXcFFhSmkbYPMvi
- 7Jh4RAWKJzlg3zqvIHJVLLvDY0hwbuG03tJKaVEA=
+ b=4SIe3hjqPG/yyyb8LjM+1lfvuh/QKFwlCB8FFvEWrdP74rb/29QTNwlXcc0wVuexP
+ 0ZIRreIpTSCRUeyVE+nOU5rR7dquMKITGIxqio2tXhRkVYo1cyXF7EJXAccPoQiaoM
+ Ppk1MQBZVi8EXbPlsKlkqWp2TQ3H8/btwUKLkB2M=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy4.enst.fr ([IPv6:::1])
  by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id ajHVnndBjG5N; Sun, 21 Apr 2024 16:06:16 +0200 (CEST)
+ id GVCGSWROdDdi; Sun, 21 Apr 2024 16:06:18 +0200 (CEST)
 Received: from inesv-Inspiron-3501.. (unknown
  [IPv6:2a02:1808:204:e56c:d081:2a7:415b:bbbd])
- by zproxy4.enst.fr (Postfix) with ESMTPSA id 158CC20600;
+ by zproxy4.enst.fr (Postfix) with ESMTPSA id F03FE2061F;
  Sun, 21 Apr 2024 16:06:16 +0200 (CEST)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
@@ -88,9 +88,9 @@ Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org,
  =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v5 4/5] hw/arm : Connect DM163 to B-L475E-IOT01A
-Date: Sun, 21 Apr 2024 16:02:47 +0200
-Message-ID: <20240421140604.111262-5-ines.varhol@telecom-paris.fr>
+Subject: [PATCH v5 5/5] tests/qtest : Add testcase for DM163
+Date: Sun, 21 Apr 2024 16:02:48 +0200
+Message-ID: <20240421140604.111262-6-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240421140604.111262-1-ines.varhol@telecom-paris.fr>
 References: <20240421140604.111262-1-ines.varhol@telecom-paris.fr>
@@ -119,123 +119,248 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: O0Ls1gLB6B0a
+X-TUID: uk+ogyGMxQH2
+
+`test_dm163_bank()`
+Checks that the pin "sout" of the DM163 led driver outputs the values
+received on pin "sin" with the expected latency (depending on the bank).
+
+`test_dm163_gpio_connection()`
+Check that changes to relevant STM32L4x5 GPIO pins are propagated to the
+DM163 device.
 
 Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+Acked-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 ---
- hw/arm/b-l475e-iot01a.c | 59 +++++++++++++++++++++++++++++++++++++++--
- hw/arm/Kconfig          |  1 +
- 2 files changed, 58 insertions(+), 2 deletions(-)
+ tests/qtest/dm163-test.c | 194 +++++++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build  |   2 +
+ 2 files changed, 196 insertions(+)
+ create mode 100644 tests/qtest/dm163-test.c
 
-diff --git a/hw/arm/b-l475e-iot01a.c b/hw/arm/b-l475e-iot01a.c
-index 970c637ce6..5002a40f06 100644
---- a/hw/arm/b-l475e-iot01a.c
-+++ b/hw/arm/b-l475e-iot01a.c
-@@ -27,10 +27,37 @@
- #include "hw/boards.h"
- #include "hw/qdev-properties.h"
- #include "qemu/error-report.h"
--#include "hw/arm/stm32l4x5_soc.h"
- #include "hw/arm/boot.h"
-+#include "hw/core/split-irq.h"
-+#include "hw/arm/stm32l4x5_soc.h"
-+#include "hw/gpio/stm32l4x5_gpio.h"
-+#include "hw/display/dm163.h"
-+
-+/* B-L475E-IOT01A implementation is inspired from netduinoplus2 and ardu=
-ino */
-=20
--/* B-L475E-IOT01A implementation is derived from netduinoplus2 */
+diff --git a/tests/qtest/dm163-test.c b/tests/qtest/dm163-test.c
+new file mode 100644
+index 0000000000..3161c9208d
+--- /dev/null
++++ b/tests/qtest/dm163-test.c
+@@ -0,0 +1,194 @@
 +/*
-+ * There are actually 14 input pins in the DM163 device.
-+ * Here the DM163 input pin EN isn't connected to the STM32L4x5
-+ * GPIOs as the IM120417002 colors shield doesn't actually use
-+ * this pin to drive the RGB matrix.
++ * QTest testcase for DM163
++ *
++ * Copyright (C) 2024 Samuel Tardieu <sam@rfc1149.net>
++ * Copyright (C) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
++ * Copyright (C) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
-+#define NUM_DM163_INPUTS 13
 +
-+static const unsigned dm163_input[NUM_DM163_INPUTS] =3D {
-+    1 * GPIO_NUM_PINS + 2,  /* ROW0  PB2       */
-+    0 * GPIO_NUM_PINS + 15, /* ROW1  PA15      */
-+    0 * GPIO_NUM_PINS + 2,  /* ROW2  PA2       */
-+    0 * GPIO_NUM_PINS + 7,  /* ROW3  PA7       */
-+    0 * GPIO_NUM_PINS + 6,  /* ROW4  PA6       */
-+    0 * GPIO_NUM_PINS + 5,  /* ROW5  PA5       */
-+    1 * GPIO_NUM_PINS + 0,  /* ROW6  PB0       */
-+    0 * GPIO_NUM_PINS + 3,  /* ROW7  PA3       */
-+    0 * GPIO_NUM_PINS + 4,  /* SIN (SDA) PA4   */
-+    1 * GPIO_NUM_PINS + 1,  /* DCK (SCK) PB1   */
-+    2 * GPIO_NUM_PINS + 3,  /* RST_B (RST) PC3 */
-+    2 * GPIO_NUM_PINS + 4,  /* LAT_B (LAT) PC4 */
-+    2 * GPIO_NUM_PINS + 5,  /* SELBK (SB)  PC5 */
++#include "qemu/osdep.h"
++#include "libqtest.h"
++
++enum DM163_INPUTS {
++    SIN =3D 8,
++    DCK =3D 9,
++    RST_B =3D 10,
++    LAT_B =3D 11,
++    SELBK =3D 12,
++    EN_B =3D 13
 +};
-=20
- #define TYPE_B_L475E_IOT01A MACHINE_TYPE_NAME("b-l475e-iot01a")
- OBJECT_DECLARE_SIMPLE_TYPE(Bl475eMachineState, B_L475E_IOT01A)
-@@ -39,12 +66,16 @@ typedef struct Bl475eMachineState {
-     MachineState parent_obj;
-=20
-     Stm32l4x5SocState soc;
-+    SplitIRQ gpio_splitters[NUM_DM163_INPUTS];
-+    DM163State dm163;
- } Bl475eMachineState;
-=20
- static void bl475e_init(MachineState *machine)
- {
-     Bl475eMachineState *s =3D B_L475E_IOT01A(machine);
-     const Stm32l4x5SocClass *sc;
-+    DeviceState *dev, *gpio_out_splitter;
-+    unsigned gpio, pin;
-=20
-     object_initialize_child(OBJECT(machine), "soc", &s->soc,
-                             TYPE_STM32L4X5XG_SOC);
-@@ -53,6 +84,30 @@ static void bl475e_init(MachineState *machine)
-     sc =3D STM32L4X5_SOC_GET_CLASS(&s->soc);
-     armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, 0,
-                        sc->flash_size);
 +
-+    if (object_class_by_name(TYPE_DM163)) {
-+        object_initialize_child(OBJECT(machine), "dm163",
-+                                &s->dm163, TYPE_DM163);
-+        dev =3D DEVICE(&s->dm163);
-+        qdev_realize(dev, NULL, &error_abort);
++#define DEVICE_NAME "/machine/dm163"
++#define GPIO_OUT(name, value) qtest_set_irq_in(qts, DEVICE_NAME, NULL, n=
+ame,   \
++                                               value)
++#define GPIO_PULSE(name)                                                =
+       \
++  do {                                                                  =
+       \
++    GPIO_OUT(name, 1);                                                  =
+       \
++    GPIO_OUT(name, 0);                                                  =
+       \
++  } while (0)
 +
-+        for (unsigned i =3D 0; i < NUM_DM163_INPUTS; i++) {
-+            object_initialize_child(OBJECT(machine), "gpio-out-splitters=
-[*]",
-+                                    &s->gpio_splitters[i], TYPE_SPLIT_IR=
-Q);
-+            gpio_out_splitter =3D DEVICE(&s->gpio_splitters[i]);
-+            qdev_prop_set_uint32(gpio_out_splitter, "num-lines", 2);
-+            qdev_realize(gpio_out_splitter, NULL, &error_fatal);
 +
-+            qdev_connect_gpio_out(gpio_out_splitter, 0,
-+                qdev_get_gpio_in(DEVICE(&s->soc), dm163_input[i]));
-+            qdev_connect_gpio_out(gpio_out_splitter, 1,
-+                qdev_get_gpio_in(dev, i));
-+            gpio =3D dm163_input[i] / GPIO_NUM_PINS;
-+            pin =3D dm163_input[i] % GPIO_NUM_PINS;
-+            qdev_connect_gpio_out(DEVICE(&s->soc.gpio[gpio]), pin,
-+                qdev_get_gpio_in(DEVICE(gpio_out_splitter), 0));
-+        }
++static void rise_gpio_pin_dck(QTestState *qts)
++{
++    /* Configure output mode for pin PB1 */
++    qtest_writel(qts, 0x48000400, 0xFFFFFEB7);
++    /* Write 1 in ODR for PB1 */
++    qtest_writel(qts, 0x48000414, 0x00000002);
++}
++
++static void lower_gpio_pin_dck(QTestState *qts)
++{
++    /* Configure output mode for pin PB1 */
++    qtest_writel(qts, 0x48000400, 0xFFFFFEB7);
++    /* Write 0 in ODR for PB1 */
++    qtest_writel(qts, 0x48000414, 0x00000000);
++}
++
++static void rise_gpio_pin_selbk(QTestState *qts)
++{
++    /* Configure output mode for pin PC5 */
++    qtest_writel(qts, 0x48000800, 0xFFFFF7FF);
++    /* Write 1 in ODR for PC5 */
++    qtest_writel(qts, 0x48000814, 0x00000020);
++}
++
++static void lower_gpio_pin_selbk(QTestState *qts)
++{
++    /* Configure output mode for pin PC5 */
++    qtest_writel(qts, 0x48000800, 0xFFFFF7FF);
++    /* Write 0 in ODR for PC5 */
++    qtest_writel(qts, 0x48000814, 0x00000000);
++}
++
++static void rise_gpio_pin_lat_b(QTestState *qts)
++{
++    /* Configure output mode for pin PC4 */
++    qtest_writel(qts, 0x48000800, 0xFFFFFDFF);
++    /* Write 1 in ODR for PC4 */
++    qtest_writel(qts, 0x48000814, 0x00000010);
++}
++
++static void lower_gpio_pin_lat_b(QTestState *qts)
++{
++    /* Configure output mode for pin PC4 */
++    qtest_writel(qts, 0x48000800, 0xFFFFFDFF);
++    /* Write 0 in ODR for PC4 */
++    qtest_writel(qts, 0x48000814, 0x00000000);
++}
++
++static void rise_gpio_pin_rst_b(QTestState *qts)
++{
++    /* Configure output mode for pin PC3 */
++    qtest_writel(qts, 0x48000800, 0xFFFFFF7F);
++    /* Write 1 in ODR for PC3 */
++    qtest_writel(qts, 0x48000814, 0x00000008);
++}
++
++static void lower_gpio_pin_rst_b(QTestState *qts)
++{
++    /* Configure output mode for pin PC3 */
++    qtest_writel(qts, 0x48000800, 0xFFFFFF7F);
++    /* Write 0 in ODR for PC3 */
++    qtest_writel(qts, 0x48000814, 0x00000000);
++}
++
++static void rise_gpio_pin_sin(QTestState *qts)
++{
++    /* Configure output mode for pin PA4 */
++    qtest_writel(qts, 0x48000000, 0xFFFFFDFF);
++    /* Write 1 in ODR for PA4 */
++    qtest_writel(qts, 0x48000014, 0x00000010);
++}
++
++static void lower_gpio_pin_sin(QTestState *qts)
++{
++    /* Configure output mode for pin PA4 */
++    qtest_writel(qts, 0x48000000, 0xFFFFFDFF);
++    /* Write 0 in ODR for PA4 */
++    qtest_writel(qts, 0x48000014, 0x00000000);
++}
++
++static void test_dm163_bank(const void *opaque)
++{
++    const unsigned bank =3D (uintptr_t) opaque;
++    const int width =3D bank ? 192 : 144;
++
++    QTestState *qts =3D qtest_initf("-M b-l475e-iot01a");
++    qtest_irq_intercept_out_named(qts, DEVICE_NAME, "sout");
++    GPIO_OUT(RST_B, 1);
++    GPIO_OUT(EN_B, 0);
++    GPIO_OUT(DCK, 0);
++    GPIO_OUT(SELBK, bank);
++    GPIO_OUT(LAT_B, 1);
++
++    /* Fill bank with zeroes */
++    GPIO_OUT(SIN, 0);
++    for (int i =3D 0; i < width; i++) {
++        GPIO_PULSE(DCK);
 +    }
- }
++    /* Fill bank with ones, check that we get the previous zeroes */
++    GPIO_OUT(SIN, 1);
++    for (int i =3D 0; i < width; i++) {
++        GPIO_PULSE(DCK);
++        g_assert(!qtest_get_irq(qts, 0));
++    }
++
++    /* Pulse one more bit in the bank, check that we get a one */
++    GPIO_PULSE(DCK);
++    g_assert(qtest_get_irq(qts, 0));
++
++    qtest_quit(qts);
++}
++
++static void test_dm163_gpio_connection(void)
++{
++    QTestState *qts =3D qtest_init("-M b-l475e-iot01a");
++    qtest_irq_intercept_in(qts, DEVICE_NAME);
++
++    g_assert_false(qtest_get_irq(qts, SIN));
++    g_assert_false(qtest_get_irq(qts, DCK));
++    g_assert_false(qtest_get_irq(qts, RST_B));
++    g_assert_false(qtest_get_irq(qts, LAT_B));
++    g_assert_false(qtest_get_irq(qts, SELBK));
++
++    rise_gpio_pin_dck(qts);
++    g_assert_true(qtest_get_irq(qts, DCK));
++    lower_gpio_pin_dck(qts);
++    g_assert_false(qtest_get_irq(qts, DCK));
++
++    rise_gpio_pin_lat_b(qts);
++    g_assert_true(qtest_get_irq(qts, LAT_B));
++    lower_gpio_pin_lat_b(qts);
++    g_assert_false(qtest_get_irq(qts, LAT_B));
++
++    rise_gpio_pin_selbk(qts);
++    g_assert_true(qtest_get_irq(qts, SELBK));
++    lower_gpio_pin_selbk(qts);
++    g_assert_false(qtest_get_irq(qts, SELBK));
++
++    rise_gpio_pin_rst_b(qts);
++    g_assert_true(qtest_get_irq(qts, RST_B));
++    lower_gpio_pin_rst_b(qts);
++    g_assert_false(qtest_get_irq(qts, RST_B));
++
++    rise_gpio_pin_sin(qts);
++    g_assert_true(qtest_get_irq(qts, SIN));
++    lower_gpio_pin_sin(qts);
++    g_assert_false(qtest_get_irq(qts, SIN));
++
++    g_assert_false(qtest_get_irq(qts, DCK));
++    g_assert_false(qtest_get_irq(qts, LAT_B));
++    g_assert_false(qtest_get_irq(qts, SELBK));
++    g_assert_false(qtest_get_irq(qts, RST_B));
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++    qtest_add_data_func("/dm163/bank0", (void *)0, test_dm163_bank);
++    qtest_add_data_func("/dm163/bank1", (void *)1, test_dm163_bank);
++    qtest_add_func("/dm163/gpio_connection", test_dm163_gpio_connection)=
+;
++    return g_test_run();
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 36c5c13a7b..59bd89c438 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -222,6 +222,8 @@ qtests_arm =3D \
+   (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : [=
+]) + \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') ? qtests_stm32l4x5=
+ : []) + \
+   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fs=
+i-test'] : []) + \
++  (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
++   config_all_devices.has_key('CONFIG_DM163')? ['dm163-test'] : []) + \
+   ['arm-cpu-features',
+    'boot-serial-test']
 =20
- static void bl475e_machine_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 893a7bff66..8431384402 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -468,6 +468,7 @@ config B_L475E_IOT01A
-     default y
-     depends on TCG && ARM
-     select STM32L4X5_SOC
-+    imply DM163
-=20
- config STM32L4X5_SOC
-     bool
 --=20
 2.43.2
 

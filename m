@@ -1,109 +1,204 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp3427716ejd;
-        Sat, 20 Apr 2024 22:20:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXLNfNHobObSP6aLM9LpdHP4YzTrg2iqRblK3L16N3qi4Xt19QUevmNqwvztB6DkmGLrQAUNtbomwuHseFxVBTgbFIL13aH
-X-Received: by 2002:a17:902:d395:b0:1e4:436e:801b with SMTP id e21-20020a170902d39500b001e4436e801bmr6515935pld.67.1713676812783;
-        Sat, 20 Apr 2024 22:20:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713676812; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp3637831ejd;
+        Sun, 21 Apr 2024 07:06:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWeWayzcfS77tnxT7NdJ/M2d3mtC3xogS+yYkwo0VmBIY05sCKCHi5S84LMvLmm/YbPs+v1cyWrms97wnotnF5dWZ1oAy21
+X-Google-Smtp-Source: AGHT+IHfmCq1ZWu+H2NaqeT1ZUNsA8bWOByzg6GzQbI40o7xUZEU22oZIiC88+1U82z/2dWKfVc2
+X-Received: by 2002:a25:aaa5:0:b0:dcb:d653:8ad9 with SMTP id t34-20020a25aaa5000000b00dcbd6538ad9mr6237405ybi.12.1713708394658;
+        Sun, 21 Apr 2024 07:06:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713708394; cv=none;
         d=google.com; s=arc-20160816;
-        b=m0oAGKgCBuPclVwhTj/0P6BJQWzxoLoc417YOxrH6RJNaCndUi0sxuRXdG/o0MJKIu
-         3QkibW5jHSeds97Vi8irbTSHeSebD7X6RFYtUDkO3+HhZKUX2z39QHHDxw+0w3eJgvSw
-         p0kgPCtP4U7VJqQwmIaXWhRF1UpTn0lQ1bBfIOEYvHDzeZzAE4CFVtvFFrW5dM6Hpn2g
-         Ey0ZfBpOQgMyW/cP4MNYjO6UVOtFrauYCE6uWlCF8aDNiEQQYZEz2/kjnsKDHN5HqrkR
-         EzDPV4n2hRVPTaSp70PKAds9rPDVn83Kiu7xevWUJpPdq0poHA6vtvV6Nq/JkY0iSz1o
-         2awA==
+        b=xT8rdkMW0dgeGx/yy8BsrlWO9qEPmZ+qoGW3fENeuCI3lSZixZKVAUMzFFIMKN2RGS
+         OE5bRrqNyPkJeHcOW/O1RD0/4LK+OjhHbdvJb2so/jZVSCYBfdZ92o4PW//7u573j0kl
+         CjwPAsMwXK0yFsjQuk0O3G3PO5pr+6JP7VSkdu9RHtNlg38bsXV5sB3s4yeXzYXM5YHk
+         3Z8Tv7kbOIHXaPLL1pSrUJtWUqcR1cu6DQ8j11eO/REDOb0o1G5wl7sFjIFIhgBvVLOm
+         W34kXn4Q9FDTQvN5UeP0atK3HVPBAivbxCxrYjBNP6D6Is3obpl5KTGusjYrxKIzTUQN
+         3ZPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=lDXAB8ltRRwkbBawSc6C2SFgBQpWEcy0Yr0gdbEefAg=;
-        fh=+1l3ylzWZI8DyyaQ8ZbqBspu2Dg+vK3Rl9xuYcWb/bU=;
-        b=W9wxB/rTxbkHFY9clYRZUGoJ4fbAcCJK3ejZRLFNqv1ao+TPQLm1QJY6dx0XWBeNlt
-         e/ajHCoVyKt4514OUFqwGeLK8dLNhL2FJ4FAztlRwdlWLJpWTkWDb0Zq+VKBcN9zH/uI
-         GTdyh+VdoNtlRu4azNPtevVXCngbi8/tP0zecBzF7zh6bdIA4F4m74bCFM/1sefCgDN4
-         EalbLlx+ICSp2Tb0gFPHO4hkJx9pkPIBnvcAkEfts40uf1Qk5renHAArs6SJDMVzBayf
-         giBIxKetKL7yBT0CFZghKMp/WJmpiwN5LDf2yaTHCyGNS+vU4CXSw7T5hAy4d+pl7Fg8
-         6IYQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=bLqPec3FceI5R9NLnnSodI+Knv8HoQGLvkpWNn2IWV4=;
+        fh=qCKTD+AnYCGca/qkg8saz3FMbn1gCujqEM1vfcJsKaM=;
+        b=wkbp6ZtLmXEab/P/LnOHMHL0H/mrruPzQ7RELyJPfk6C2wM4qmCifvkddt5XhxRt2a
+         apL3atUx2wxa8vvyimiLjGHPmTi5oMmhJcQNbEcrK3iTm30BPIv+OatjG/P1uN1pdrrq
+         VOCpeIIS2wCrwZQYdLX0W80SunSPeFCbXhbc6XvDb7mUxNqUabO9Np3xpSJxwNtwt/FK
+         zl4DFFVjBRVzkWQy+H9TPpRBFaa7ANt9L/J3Lpe6ajuihgdNb+stY5jAa/cOx8idV/de
+         hRW5jFV1fZEX77OdZeL3yYTt626z4MGJrJf02hJaj5UZt5wo3vX00iwNXd4W2xfZqVPI
+         uGOw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sEHGnxSI;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id mg5-20020a170903348500b001e9506b9c4fsor1063528plb.5.2024.04.20.22.20.12
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=YtPDNzaJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y14-20020a25ad0e000000b00dcd2736021csi3823961ybi.48.2024.04.21.07.06.34
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 20 Apr 2024 22:20:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 21 Apr 2024 07:06:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sEHGnxSI;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713676812; x=1714281612; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=lDXAB8ltRRwkbBawSc6C2SFgBQpWEcy0Yr0gdbEefAg=;
-        b=sEHGnxSIioykLb5bB29EImAiNH2VIIdYXgkjB1FCQ0DoVyseZ1Gp690ZKk27bNDKhO
-         jlOMpR88aF2Sh5eOfbwkS8juwPhnyhBjITLBHW1ef2E+qTJDbkQPLpEzjSe4eGjNEHcN
-         dsIHOBgl/qwBcmHIdXG5Z9VzUtOR1rNpzFEWRB9tnfYi0JJ3e43S5ztTA3FOrXR+QLXT
-         c9yF//riCRbOBkCxM3Z1/LvsTEwV9ahKxsOdsFz3UVNrD7+4tikJx9kfkaQUSME+HxDI
-         EnkgLsGgpVw68mQTdAYUBwdeGIg6EvwBWUq1DpOIHZ7opMSVC3pmMfDbqQRaoTNKXTQw
-         /ZXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713676812; x=1714281612;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lDXAB8ltRRwkbBawSc6C2SFgBQpWEcy0Yr0gdbEefAg=;
-        b=IpWxeIhpYH9fP8A7pHaT6bE0u2vIko3kHI3kO28L0XY+ZxcXLrSsfQ7iRl9OpLcwWd
-         uSK2NBmri1l4Jb7OLw8XjpLvcX2xjFXEZWH3erjd2BLRUARPOLyOuuf/VYy7M0iMfRrj
-         0WgsuwWU/dnuTvCjLB0LpAVCZMuT5Fr0atEDlJ1cq8kwMJmKeW0zugRXP7ZnmPU86390
-         grtd5C+D8dQ9d1LWP1wawMdOFtDYozhgbgo9lH2pY9acVey+fRWQTv3M9iiBjgpZ4z76
-         N2KnoTVsdzVBcy0ojvO7dT5cV/Q/JYxe9sLdYDMqfmYKgPs2eJ690g+P8Lt6exQxcCDe
-         6c5g==
-X-Forwarded-Encrypted: i=1; AJvYcCUh6uFDJ4JA1Jt1JACfYzs4Eh1xJ5mqaW822iV+YqtBHfDsAGdZykL7GL+LX/Qh0KWsYB/27R7GxrSY/teHYMtYbjPgSG71
-X-Gm-Message-State: AOJu0YwKm5TAXm2R3XDQnVEIkpuvAZ6pO6edBMbr6aKZc/B8uvh1pfFX
-	AO/XfNh8wO93WXn3LW79eXdxdNlSZqcfTfLD5Od8vmCp+JO6qIPoG+1UBVU2JAlqQQ==
-X-Google-Smtp-Source: AGHT+IHkMyM5opv2eoOylQZroSnk6GqGYbzNWxMP5sTw32UbvTFvHfQW0vjUnKeBk99bL24mNOUByQ==
-X-Received: by 2002:a17:902:daca:b0:1e2:7d3b:353c with SMTP id q10-20020a170902daca00b001e27d3b353cmr7571336plx.18.1713676812239;
-        Sat, 20 Apr 2024 22:20:12 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.91.227] ([156.19.246.23])
-        by smtp.gmail.com with ESMTPSA id mi8-20020a170902fcc800b001e294f2f30dsm5792306plb.93.2024.04.20.22.20.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 20 Apr 2024 22:20:11 -0700 (PDT)
-Message-ID: <374ff057-b799-47c0-a033-fc17847e98e9@linaro.org>
-Date: Sat, 20 Apr 2024 22:20:09 -0700
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=YtPDNzaJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ryXpp-0001Q8-U7; Sun, 21 Apr 2024 10:06:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1ryXpm-0001PI-TV; Sun, 21 Apr 2024 10:06:22 -0400
+Received: from zproxy4.enst.fr ([2001:660:330f:2::df])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1ryXpk-0008KR-DC; Sun, 21 Apr 2024 10:06:22 -0400
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id 9FB7E2066A;
+ Sun, 21 Apr 2024 16:06:14 +0200 (CEST)
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id 09e0s9xG2QB5; Sun, 21 Apr 2024 16:06:13 +0200 (CEST)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id 91E5B2061F;
+ Sun, 21 Apr 2024 16:06:13 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 91E5B2061F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1713708373;
+ bh=bLqPec3FceI5R9NLnnSodI+Knv8HoQGLvkpWNn2IWV4=;
+ h=From:To:Date:Message-ID:MIME-Version;
+ b=YtPDNzaJl+46hexN1Ggds/fW9sqDpTkeZDiAT9+8fOPefJv4h/PYi1H47+arUskZU
+ D5/iIbeCSiyaC31nmxh9cku+NU104Us9Yq4pq+vf33qpW9Di/eASvPmUiY185+comB
+ OTmB9PUSa40JqE2oHz9dueetyK8yq+AsdxDA/R9k=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id lbi1dKfJn23E; Sun, 21 Apr 2024 16:06:13 +0200 (CEST)
+Received: from inesv-Inspiron-3501.. (unknown
+ [IPv6:2a02:1808:204:e56c:d081:2a7:415b:bbbd])
+ by zproxy4.enst.fr (Postfix) with ESMTPSA id 4918820600;
+ Sun, 21 Apr 2024 16:06:12 +0200 (CEST)
+From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Samuel Tardieu <sam@rfc1149.net>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v5 0/5] Add device DM163 (led driver,
+ matrix colors shield & display)
+Date: Sun, 21 Apr 2024 16:02:43 +0200
+Message-ID: <20240421140604.111262-1-ines.varhol@telecom-paris.fr>
+X-Mailer: git-send-email 2.43.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/24] hw/core: Avoid including the full 'hw/core/cpu.h'
- in 'tcg-cpu-ops.h'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- David Hildenbrand <david@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Anton Johansson <anjo@rev.ng>
-References: <20240418192525.97451-1-philmd@linaro.org>
- <20240418192525.97451-4-philmd@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240418192525.97451-4-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: +rTwIQyqVwna
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2001:660:330f:2::df;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy4.enst.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ajnWhfbxox8Z
 
-On 4/18/24 12:25, Philippe Mathieu-Daudé wrote:
-> Only include what is required, avoiding the full
-> CPUState API from the huge "hw/core/cpu.h" header.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
-> ---
->   include/hw/core/tcg-cpu-ops.h | 6 +++++-
->   1 file changed, 5 insertions(+), 1 deletion(-)
+This device implements the IM120417002 colors shield v1.1 for Arduino
+(which relies on the DM163 8x3-channel led driving logic) and features
+a simple display of an 8x8 RGB matrix. This color shield can be plugged
+on the Arduino board (or the B-L475E-IOT01A board) to drive an 8x8
+RGB led matrix. This RGB led matrix takes advantage of retinal persistanc=
+e
+to seemingly display different colors in each row.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Hello,
 
-r~
+I'm planning to add a more thorough test of the display functionality
+in a later patch, based on the avocado test  `machine_m68k_nextcube.py`.
+
+Thank you for the reviews.
+
+Changes from v4 :
+dm163
+- redefine `DM163_NUM_LEDS` for clarity
+- change definition of `COLOR_BUFFER_SIZE`
+- rename `age_of_row` to `row_persistance_delay`
+- remove unnecessary QOM cast macro in GPIO handlers
+- remove unnecessary inline of `dm163_bank0` and `dm163_bank1`
+- replace occurrences of number 8 by the right define macro
+- use unsigned type to print GPIO input `new_stateq`
+STM32L4x5 qtests
+- add comment to explain GPIO forwarding to SoC
+B-L475E-IOT01A
+- correct formatting
+- use unsigned for gpio pins' indices
+DM163 qtest
+- use an enum for dm163 inputs
+- inline ['dm163-test'] in meson.build (I don't plan on adding qtests)
+OTHER
+- update copyrights to 2023-2024
+
+Changes from v3 (review of the 1st commit by Peter Maydell) :
+- dm163.c : instead of redrawing the entire console each frame,
+only redraw the rows that changed using a new variable `redraw`
+- reset all the fields in `dm163_reset_hold`
+- correcting typos : persistance -> persistence
+- b-l475e-iot01a.rst : correcting typo
+
+Changes from v2 : Corrected typo in the Based-on message id
+
+Changes from v1 :
+- moving the DM163 from the SoC to the B-L475E-IOT01A machine
+(changing config files and tests accordingly)
+- restricting DM163 test to ARM & DM163 availability
+- using `object_class_by_name()` to check for DM163 presence at run-time
+- exporting SYSCFG inputs to the SoC (and adapting tests accordingly)
+
+Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
+Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+
+In=C3=A8s Varhol (5):
+  hw/display : Add device DM163
+  hw/arm : Pass STM32L4x5 SYSCFG gpios to STM32L4x5 SoC
+  hw/arm : Create Bl475eMachineState
+  hw/arm : Connect DM163 to B-L475E-IOT01A
+  tests/qtest : Add testcase for DM163
+
+ docs/system/arm/b-l475e-iot01a.rst  |   3 +-
+ include/hw/display/dm163.h          |  59 +++++
+ hw/arm/b-l475e-iot01a.c             | 105 +++++++--
+ hw/arm/stm32l4x5_soc.c              |   6 +-
+ hw/display/dm163.c                  | 334 ++++++++++++++++++++++++++++
+ tests/qtest/dm163-test.c            | 194 ++++++++++++++++
+ tests/qtest/stm32l4x5_gpio-test.c   |  13 +-
+ tests/qtest/stm32l4x5_syscfg-test.c |  17 +-
+ hw/arm/Kconfig                      |   1 +
+ hw/display/Kconfig                  |   3 +
+ hw/display/meson.build              |   1 +
+ hw/display/trace-events             |  14 ++
+ tests/qtest/meson.build             |   2 +
+ 13 files changed, 721 insertions(+), 31 deletions(-)
+ create mode 100644 include/hw/display/dm163.h
+ create mode 100644 hw/display/dm163.c
+ create mode 100644 tests/qtest/dm163-test.c
+
+--=20
+2.43.2
+

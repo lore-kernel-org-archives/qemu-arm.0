@@ -1,297 +1,108 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp3638766ejd;
-        Sun, 21 Apr 2024 07:07:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWcsgjdU2cWx+CsvkS22Ckwky5xwxrw3TDaGmDNgMHgCS7/om400cu0Ehc31FgQDy5US6YiDbOk0KBqmts5Dq4LEYnxkloV
-X-Google-Smtp-Source: AGHT+IGDTJPFQ8S2pcbgw/fakkFGQ0Vc7IjnzxOtBQ94l6NuhNaoimGBgIgKVI0O7Ljami46Dn7g
-X-Received: by 2002:a05:6808:1450:b0:3c7:e7c:13ec with SMTP id x16-20020a056808145000b003c70e7c13ecmr8664033oiv.39.1713708479654;
-        Sun, 21 Apr 2024 07:07:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713708479; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp3710178ejd;
+        Sun, 21 Apr 2024 09:27:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUqV9v1JkN0LFEyYUq4q42mL6rNN9+C/6uo/BWkYJUclEHOCZ6WVQumEVIJWV4qJUR8AZ2gJ4nHDXboFDdbrlJ6mUqt0moJ
+X-Received: by 2002:a17:902:ea02:b0:1e2:58b7:2dd6 with SMTP id s2-20020a170902ea0200b001e258b72dd6mr16770810plg.21.1713716857725;
+        Sun, 21 Apr 2024 09:27:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713716857; cv=none;
         d=google.com; s=arc-20160816;
-        b=b8Xx4RJciwzI71ju01yeyXhawpJeKkrrva7dcgZaf5y2k7w/Win5ZN9EP0rsHLDVVa
-         HMBGNx/4YSB5PeCPEWfPOhqVagwdiQfmO8nBgo3QwWoY5gi0qxTFsGOkBPacJ4X4Jj0m
-         KChzt0Jh9AD4iqy5leYo/eHs2P+Zw7+Rj1lb652owvnyUm+iEtlG5l69k/wvw/IyeNKv
-         iaKZK/S3FpeqBI9GBgpbjZ2g9Hatu1UDDT/wuV8kqWxK6AGD9pIJSWsYedzIo/IQvsB1
-         iLuQHjfGmbBm98O14uUu/68ouXHJrRtzmxDjkyyj4jV5KVMSasMJn1nK0rf0JwM45z0j
-         jDQA==
+        b=qfUEL7KfB2qIpoRwA3t0KeQ1V+7VCGuxlIllOmf/UNm3Qb/a4grCOCvH6spff576kO
+         R/KpFMc4n66Yewg9tPNejVYSfC6IPjUqaqryIAyEBEeDZmiyC/TFOrJ2LphZOw/Y1V+7
+         DL4ybLRpQWhIbs1ISmXL9OFQs/uJzy6JN5rrafGcMcvF1xqQX2otMkkh7/G1T9oMzA0X
+         zEt2CltemPh0QUdLf2+YpSvNcr+pHUgBH25uyQ2IVclFpWUyB+qEQbXTNBIphrENfGap
+         j9xTPgYa6ulgLoKsqffYdMdDptKkSojnlfdLMJDtB/fGb7xR38Zdwjv1yJgoIfz6KuoU
+         M/9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=X/wpbm0EC8rqlm8d0E5vAn6rjNtyNNeDQK76DQ2iaCs=;
-        fh=qCKTD+AnYCGca/qkg8saz3FMbn1gCujqEM1vfcJsKaM=;
-        b=XskygcZIK0apyvwERKUInwW1bepzEwTaTUE9Spi4wZ04GUIDKXmqRsUhO7LJGsCMno
-         q6x9InipduEdxERSbJIppRNoyA1GMwUqoNIeeHgwPqv9SCFp8meDRyHY5BNYhe5qpkYT
-         kF/PoCCy41YCw7NiCv6jliavid7HRn808oWtLaJY1MwR9FvFBL/WeopTUOt7GtgPSLsh
-         lExfeulQKqR2rl6A8ly62AiZuVYyx6pjfCSoAqXzc/Tctlj3QYDauCdVOGFNxaA96a6R
-         zfxVaPav0wGQSrSXfFRgrHO1seyBAp67vQE/qh05UWjtnVzOPVDRsJzPsFGun87+Yxhd
-         QIMA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=iOyaZMyPq29jL5oW2CX6HwsQxIE37ZSna4tob0e+Je0=;
+        fh=rIYxqEzyFEjlfA+yEFaIrDNyd716TYDyuHpyI6SbPGY=;
+        b=vEbShfez2hMqnCNgp3UllAZ+6Vhhf/7VmyMItZx1BGM21APgSJzQcdLARRM8rhGsLw
+         J58Utv4HYppCSyP6oyojxg8ndRdCPftlt53lsgnHR8bFjXpQcEWZH3EXsfFjRw64Mg0J
+         7vVaGQWaZE/14/Eqo8SW96/pw33hfPrOBWjYbWWGAzTM+0f+RRU9nU5dQgKbxPlm4b2n
+         wGVVV0iCkGRuiFmMRi62ywWiLMlgikS+9Z2C2Z9JnrPZYsZD48m2QhTVvc+AIiTf9cMO
+         VbaqOun4GgO4286S3vIJBydlXOBjRJvvuZvECdZjo+tDXJdUEhgi5eivqITY9X7BHamh
+         G/yw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=WLLsDXNv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d10-20020a05622a05ca00b00437845a93f5si8329837qtb.504.2024.04.21.07.07.59
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oa4QvwUW;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id kn8-20020a170903078800b001e950ffe9d6sor1567827plb.0.2024.04.21.09.27.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Apr 2024 07:07:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sun, 21 Apr 2024 09:27:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=WLLsDXNv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1ryXq0-0001UH-5u; Sun, 21 Apr 2024 10:06:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1ryXpo-0001Pt-Di; Sun, 21 Apr 2024 10:06:25 -0400
-Received: from zproxy4.enst.fr ([2001:660:330f:2::df])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1ryXpl-0008KY-D2; Sun, 21 Apr 2024 10:06:24 -0400
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id A140620642;
- Sun, 21 Apr 2024 16:06:16 +0200 (CEST)
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id opCqgdwTej2g; Sun, 21 Apr 2024 16:06:15 +0200 (CEST)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 5954D20616;
- Sun, 21 Apr 2024 16:06:15 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 5954D20616
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1713708375;
- bh=X/wpbm0EC8rqlm8d0E5vAn6rjNtyNNeDQK76DQ2iaCs=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=WLLsDXNvD5GJqBbJj3SK5HEX45JTE+bfXumyalFJ6p6Xwc5sz6fRENfOS/S5H/Jvk
- X/lbpLcKtTgH6wC8mxq0z8EiDT59kgLo6GAUxZWywSUmskzIRbvCMSvM1rYfMJ9Xhu
- T4N0pJ/EYAmTxHDRHVn1ZUXGfTdcKnmsSBmiMQXE=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id Pw817ZzTc0g1; Sun, 21 Apr 2024 16:06:15 +0200 (CEST)
-Received: from inesv-Inspiron-3501.. (unknown
- [IPv6:2a02:1808:204:e56c:d081:2a7:415b:bbbd])
- by zproxy4.enst.fr (Postfix) with ESMTPSA id 6A34920600;
- Sun, 21 Apr 2024 16:06:14 +0200 (CEST)
-From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Samuel Tardieu <sam@rfc1149.net>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v5 2/5] hw/arm : Pass STM32L4x5 SYSCFG gpios to STM32L4x5 SoC
-Date: Sun, 21 Apr 2024 16:02:45 +0200
-Message-ID: <20240421140604.111262-3-ines.varhol@telecom-paris.fr>
-X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240421140604.111262-1-ines.varhol@telecom-paris.fr>
-References: <20240421140604.111262-1-ines.varhol@telecom-paris.fr>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Oa4QvwUW;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1713716857; x=1714321657; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=iOyaZMyPq29jL5oW2CX6HwsQxIE37ZSna4tob0e+Je0=;
+        b=Oa4QvwUWLqE1v9c/lqs0J3p5FI4F7dXoRDyaTI7f59+xfuCazXl/MPG8xVxY5EJyk0
+         gwFATbZHa2d9SGh5BOKsv/p9MKZqn6puJwVNVN2BMmv2Sa0oZhYA221B8bW4NX5QY3cb
+         fv8sXU7it6BoJpVg41UxbTUIHiIhsRZMHj4zqxKozaQf16ytc7pVQDt+909f/kNfaZgX
+         1e7RZr/QV5UZmfhnF1J5SwYJ7lsmC0DYmZ5iEgF42JrP2WwsDSNX08N56uaVYAknWhaF
+         Yz/XBkWsPt+giPy+q5U2qxBXdLt1vrd9+a7GugqSGmNYqKbmb92jAESZPYKebmnh0bUD
+         MXuA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1713716857; x=1714321657;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=iOyaZMyPq29jL5oW2CX6HwsQxIE37ZSna4tob0e+Je0=;
+        b=qd/0aaJCBPehSHVoIHdZlGqlv/OEcbu7SNSWWX4AkIfUw9RsN8BM6XuH3GQYc2ab4u
+         YWlI+gQRT5JPJKSdyK/p+9JGdfH8cFBXg78nFF8DOlTZ7Uy2ScnW8GPeSUsP64zSSkVq
+         X768nFKBevST2mnLA3FcSiYgj3Y11q2Aq2yFU7TXMhp6YnlauiHtsolrv3sOtZo5UQ1g
+         O7YMDz99km1+TJ8N0axerawzSETH5Y0wCUvcd25eMCkRKzb7Zu+NCsEHIbq8biBhqHf2
+         cWWpxgYmFFaDVa+48hzX6+FL+fetwkFaQdpaK4Y+19f9kx0USb8pTp39rX4/494jSBoH
+         hxDA==
+X-Forwarded-Encrypted: i=1; AJvYcCUuctOm+7DfGNhtULGwSlhK8grjNMPq/HQkMwRnQLh+jxDiMujVkZljISvxuhHTAP/z67pL1xOR3ZQ8Y4QDTbn5l/9fr/IL
+X-Gm-Message-State: AOJu0YxfD9dH0Mq0aqCTDfnYH3/9vbefEK7ZH9Gp+4HyJYwYLyVRecBn
+	sFMKdAMZ3yHhlx8sB7+cZWHVyG/nkniC91BbtcERIiq6J3SRF9as03xpu1b6mRRW3A==
+X-Google-Smtp-Source: AGHT+IFLfblF3YJSb+MSCnS69JplAb8izxUGFPdTcHajHejz8H+1RJSmXq+nZOkAxb+BHxcxL1/zMw==
+X-Received: by 2002:a17:902:d481:b0:1e7:d3e3:a927 with SMTP id c1-20020a170902d48100b001e7d3e3a927mr10974124plg.31.1713716857100;
+        Sun, 21 Apr 2024 09:27:37 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.91.227] ([156.19.246.23])
+        by smtp.gmail.com with ESMTPSA id jf22-20020a170903269600b001e2a408df30sm6477996plb.273.2024.04.21.09.27.35
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 21 Apr 2024 09:27:36 -0700 (PDT)
+Message-ID: <0868f8be-1b48-4d1b-91e7-f4085e9055b2@linaro.org>
+Date: Sun, 21 Apr 2024 09:27:32 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:660:330f:2::df;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy4.enst.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9WSccDe5OY1w
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 05/24] exec: Restrict 'cpu_ldst.h' to TCG accelerator
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ David Hildenbrand <david@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Anton Johansson <anjo@rev.ng>
+References: <20240418192525.97451-1-philmd@linaro.org>
+ <20240418192525.97451-6-philmd@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20240418192525.97451-6-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: MGxRmrBHwW4X
 
-Exposing SYSCFG inputs to the SoC is practical in order to wire the SoC
-to the optional DM163 display from the board code (GPIOs outputs need
-to be connected to both SYSCFG inputs and DM163 inputs).
+On 4/18/24 12:25, Philippe Mathieu-Daudé wrote:
+> "exec/cpu_ldst.h" is specific to TCG, do not allow its
+> inclusion from other accelerators.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> ---
+>   include/exec/cpu_ldst.h | 6 +++++-
+>   1 file changed, 5 insertions(+), 1 deletion(-)
 
-STM32L4x5 SYSCFG in-irq interception needed to be changed accordingly.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
----
- hw/arm/stm32l4x5_soc.c              |  6 ++++--
- tests/qtest/stm32l4x5_gpio-test.c   | 13 ++++++++-----
- tests/qtest/stm32l4x5_syscfg-test.c | 17 ++++++++++-------
- 3 files changed, 22 insertions(+), 14 deletions(-)
-
-diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-index 40e294f838..0332b67701 100644
---- a/hw/arm/stm32l4x5_soc.c
-+++ b/hw/arm/stm32l4x5_soc.c
-@@ -1,8 +1,8 @@
- /*
-  * STM32L4x5 SoC family
-  *
-- * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-- * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+ * Copyright (c) 2023-2024 Arnaud Minier <arnaud.minier@telecom-paris.fr=
->
-+ * Copyright (c) 2023-2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.f=
-r>
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  *
-@@ -221,6 +221,8 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
-c, Error **errp)
-         }
-     }
-=20
-+    qdev_pass_gpios(DEVICE(&s->syscfg), dev_soc, NULL);
-+
-     /* EXTI device */
-     busdev =3D SYS_BUS_DEVICE(&s->exti);
-     if (!sysbus_realize(busdev, errp)) {
-diff --git a/tests/qtest/stm32l4x5_gpio-test.c b/tests/qtest/stm32l4x5_gp=
-io-test.c
-index 0f6bda54d3..72a7823406 100644
---- a/tests/qtest/stm32l4x5_gpio-test.c
-+++ b/tests/qtest/stm32l4x5_gpio-test.c
-@@ -43,6 +43,9 @@
- #define OTYPER_PUSH_PULL 0
- #define OTYPER_OPEN_DRAIN 1
-=20
-+/* SoC forwards GPIOs to SysCfg */
-+#define SYSCFG "/machine/soc"
-+
- const uint32_t moder_reset[NUM_GPIOS] =3D {
-     0xABFFFFFF,
-     0xFFFFFEBF,
-@@ -284,7 +287,7 @@ static void test_gpio_output_mode(const void *data)
-     uint32_t gpio =3D test_gpio_addr(data);
-     unsigned int gpio_id =3D get_gpio_id(gpio);
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+    qtest_irq_intercept_in(global_qtest, SYSCFG);
-=20
-     /* Set a bit in ODR and check nothing happens */
-     gpio_set_bit(gpio, ODR, pin, 1);
-@@ -319,7 +322,7 @@ static void test_gpio_input_mode(const void *data)
-     uint32_t gpio =3D test_gpio_addr(data);
-     unsigned int gpio_id =3D get_gpio_id(gpio);
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+    qtest_irq_intercept_in(global_qtest, SYSCFG);
-=20
-     /* Configure a line as input, raise it, and check that the pin is hi=
-gh */
-     gpio_set_2bits(gpio, MODER, pin, MODER_INPUT);
-@@ -348,7 +351,7 @@ static void test_pull_up_pull_down(const void *data)
-     uint32_t gpio =3D test_gpio_addr(data);
-     unsigned int gpio_id =3D get_gpio_id(gpio);
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+    qtest_irq_intercept_in(global_qtest, SYSCFG);
-=20
-     /* Configure a line as input with pull-up, check the line is set hig=
-h */
-     gpio_set_2bits(gpio, MODER, pin, MODER_INPUT);
-@@ -378,7 +381,7 @@ static void test_push_pull(const void *data)
-     uint32_t gpio =3D test_gpio_addr(data);
-     uint32_t gpio2 =3D GPIO_BASE_ADDR + (GPIO_H - gpio);
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+    qtest_irq_intercept_in(global_qtest, SYSCFG);
-=20
-     /* Setting a line high externally, configuring it in push-pull outpu=
-t */
-     /* And checking the pin was disconnected */
-@@ -425,7 +428,7 @@ static void test_open_drain(const void *data)
-     uint32_t gpio =3D test_gpio_addr(data);
-     uint32_t gpio2 =3D GPIO_BASE_ADDR + (GPIO_H - gpio);
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/syscfg");
-+    qtest_irq_intercept_in(global_qtest, SYSCFG);
-=20
-     /* Setting a line high externally, configuring it in open-drain outp=
-ut */
-     /* And checking the pin was disconnected */
-diff --git a/tests/qtest/stm32l4x5_syscfg-test.c b/tests/qtest/stm32l4x5_=
-syscfg-test.c
-index ed4801798d..733b42df55 100644
---- a/tests/qtest/stm32l4x5_syscfg-test.c
-+++ b/tests/qtest/stm32l4x5_syscfg-test.c
-@@ -1,8 +1,8 @@
- /*
-  * QTest testcase for STM32L4x5_SYSCFG
-  *
-- * Copyright (c) 2023 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-- * Copyright (c) 2023 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+ * Copyright (c) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-  *
-  * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-  * See the COPYING file in the top-level directory.
-@@ -25,6 +25,10 @@
- #define SYSCFG_SWPR2 0x28
- #define INVALID_ADDR 0x2C
-=20
-+/* SoC forwards GPIOs to SysCfg */
-+#define SYSCFG "/machine/soc"
-+#define EXTI "/machine/soc/exti"
-+
- static void syscfg_writel(unsigned int offset, uint32_t value)
- {
-     writel(SYSCFG_BASE_ADDR + offset, value);
-@@ -37,8 +41,7 @@ static uint32_t syscfg_readl(unsigned int offset)
-=20
- static void syscfg_set_irq(int num, int level)
- {
--   qtest_set_irq_in(global_qtest, "/machine/soc/syscfg",
--                    NULL, num, level);
-+   qtest_set_irq_in(global_qtest, SYSCFG, NULL, num, level);
- }
-=20
- static void system_reset(void)
-@@ -197,7 +200,7 @@ static void test_interrupt(void)
-      * Test that GPIO rising lines result in an irq
-      * with the right configuration
-      */
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/exti");
-+    qtest_irq_intercept_in(global_qtest, EXTI);
-=20
-     /* GPIOA is the default source for EXTI lines 0 to 15 */
-=20
-@@ -230,7 +233,7 @@ static void test_irq_pin_multiplexer(void)
-      * Test that syscfg irq sets the right exti irq
-      */
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/exti");
-+    qtest_irq_intercept_in(global_qtest, EXTI);
-=20
-     syscfg_set_irq(0, 1);
-=20
-@@ -257,7 +260,7 @@ static void test_irq_gpio_multiplexer(void)
-      * Test that an irq is generated only by the right GPIO
-      */
-=20
--    qtest_irq_intercept_in(global_qtest, "/machine/soc/exti");
-+    qtest_irq_intercept_in(global_qtest, EXTI);
-=20
-     /* GPIOA is the default source for EXTI lines 0 to 15 */
-=20
---=20
-2.43.2
-
+r~

@@ -1,154 +1,152 @@
-Received: by 2002:a05:7022:3841:b0:7a:7256:a3a6 with SMTP id pk1csp2675624dlb;
-        Mon, 22 Apr 2024 04:44:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVjszbprvCm36gWMGlV4fjtN4tMvcZZaKKoiXVb5VFKoPf5fxqmlWx3MMMhdRBjLP44QhL6Q2GqiDH4L5norbYFjW/AfUJ9
-X-Received: by 2002:a05:600c:1d8f:b0:41a:408b:dbd4 with SMTP id p15-20020a05600c1d8f00b0041a408bdbd4mr2669598wms.7.1713786284569;
-        Mon, 22 Apr 2024 04:44:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713786284; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4229788ejd;
+        Mon, 22 Apr 2024 05:46:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXTfQV8tV0zsGDgKh1nrLSEXmmGVCzojdexlXUULVbUFhHbIbxEJcaPK6tagxk0fLjzqH+FraWE9BQ/Lm5py/luyuBka0Ad
+X-Received: by 2002:adf:f00b:0:b0:347:e6d1:2fb8 with SMTP id j11-20020adff00b000000b00347e6d12fb8mr9391737wro.34.1713789966950;
+        Mon, 22 Apr 2024 05:46:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713789966; cv=none;
         d=google.com; s=arc-20160816;
-        b=cHq56ESuQdMQuy+bOOWqKFjECsB12A2ZzjsHIaLd7YFpZrYomAktYKHLoLdqeU87Hq
-         XDrEz32Enjl3URemIPaJjgG7mXFB/smPzxzDFmSKxVzRxTkX40Y9bgQzLBpCGmGVN0yT
-         c0/cvnYzXn+wbX7/NHAFrqvvm0H+qsSL7TvcZ1uFVDhTIOTGLgXFpNPTt8r58c8Gx2II
-         6rZl4dENCTMyTcm+BuRDddEjpfxsPi6Vq1efewWZm0T5zJClCnKxKmQfPybRDu6ccxtY
-         MtAiajUGcGFIvkG3KPM74r3Jn8MBmgh9o8aG1yQLvcmK+ZzfIqnhmhH7AkIwAmzOupA7
-         hJkw==
+        b=fcqmOhP6FuvQs6XhlKxNa7GtVSH0sNf1zKGXXQSpebhHqODCaxBLvU8yOCyuYFXOla
+         6yp0abxY+5aHciKEEot4ABgGvsjeNgIEiVz5TOl9mqwdPY+2maIzuNgnyMFjAHZ5PahT
+         mBMAU0v8tnYnq43Vq6hwqA/49XBJViGUmy0pZ7T5e/6w3iiUWojJ8ldDNi1T+SnCRMp4
+         Hdh1hwRRQiX5kxvevCV1jkurZDl6SrCxWe9Bf2yZ1oVSz6yMingYhJxRurxpgCSnvIjE
+         ep/ehfP4g2ckU9p1LVcf/gsAjQtoWjrzGPL3g4Khuj8ZRPoxdwtGfEqosBzHRXPF/EZA
+         em8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=rQyqkO5rBtVr2l90561BkaV6H3PIbJfSNkwtRwVJ0Ek=;
-        fh=F9XmarM2CoqPPemCMNFl2uJ5B4Ltqr1u23VqH19VRTk=;
-        b=dNqD8QD2zrqSaiEFoMbVc6JK8RKs2wqoq8GIJf7Ouy48Bfb7BbJVER6JNsZO34JUnM
-         gUqMiRXu3W/4VUuxAsPEhICFSyeo57bS5Nak69rIXC5JA17/bi0saLTNcLOUJmcDlvJT
-         MMNxk6vYtU2wC+gTunBrNpar9bAee4C5m0V1d3Uu4M1gVTkyIes81dxkzdKypEPAzOi1
-         1YVMvUa7fEq99A0NGS0dd6qFtEzUwEe4EKfdzwBx0PH2Igf6Nsmo6YzKlq3FJTft+Ils
-         4xPbuD7czoJKB/7FE0efn+L6k9orIAoV4ayfk8CD/NVqKiyADf3Yt9YRc3TQgsOvnMf6
-         iDjw==;
+        bh=39Acx84dTQ3hN2yMfKWcH9znaBkPeHgCHhH+12hyjQ8=;
+        fh=c+ZyRT4sRKYStVDZC/1cOAxHEwWt0104+8VKNvwymXk=;
+        b=hF0A5zH0fZdrbn9UkLHxBKootg0oSvZGBrokjYeNJDMyoh+1MGfvN6mUvf9HfYkZJ9
+         HJgOPyc/XJAf3SFJfWtjlqK4mQ7mKqSyvlLaCGsvzNgTpsamzS27dpRDLdDwUbtX53XF
+         O9crCWuBOvOLqLTK/8D+n49OOlMHef5AgiPjgvIVSr8c6HQKBb18UvidJvu7GwnqGbv8
+         T+vD2x6XI6OyjGpwLIk2jo9oJjbgmXrnzAABgDQx/BGk4qXGqK6uNANdESMEQcj/yVNs
+         Mru3kiYPy0ddFbNi28+e/O3myWbDyTLevHdEQ1Dql66lvcH9bWi00mK+Fv87TIQeU/uN
+         cxvg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p5AOznZt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hlsyOJn0;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t48-20020a05600c32b000b00419d52e6233sor1432053wmp.0.2024.04.22.04.44.44
+        by mx.google.com with SMTPS id v1-20020a05600c214100b004147e72fe40sor2144019wml.1.2024.04.22.05.46.06
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 22 Apr 2024 04:44:44 -0700 (PDT)
+        Mon, 22 Apr 2024 05:46:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=p5AOznZt;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hlsyOJn0;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713786284; x=1714391084; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=rQyqkO5rBtVr2l90561BkaV6H3PIbJfSNkwtRwVJ0Ek=;
-        b=p5AOznZtcf7lZfZcI8yp+6MYXhu1JNsVRO38Zsc3IjTO5PqC3IZttV94hh0DWi+dU6
-         J7PXZzzuZyBdoZJ1sIOP7rMJvEi2CInhixe9aw+U3/r0NKFlH+pzpYs4cRE0h7BrcWHA
-         7ZFnFT2KKE9flyXJ40Wmcr5oDiruzU+GBc+LYmG4FmYAp+sgNOxFDJd0xmj5l93R0NIO
-         NjpPaqNvl1VuUsAcUE3CZ1QGsnpnU9pCg9oGQwJzGG+S/SLqHgVXJOhUgdJWDt8btzA4
-         ox23mZce0n3r6Y6g84kZNkTH3YwnqqETekUEcDRvmTBbzbwCNsoAQqBndvhIKviPDmSL
-         rHzw==
+        d=linaro.org; s=google; t=1713789966; x=1714394766; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=39Acx84dTQ3hN2yMfKWcH9znaBkPeHgCHhH+12hyjQ8=;
+        b=hlsyOJn0kU6A+MGQJXnXQu38ppsU/snmAGw/AkIruE4Ws3ad5GYmRWjVRrWYWADjRg
+         +hFyCtsAK0z3tQbiu96Lr2u19/LoVmOzj4V74WJq6fINBmw4hYfcjzOEpWZU4lEhtMmB
+         pTU19i2QfuWrpON2HqPy1Q1luoam6tHEZpQcxC16tKSpR0nUg4/oNlU2PEfA7770XaLF
+         sY8bPaXJzM9AnkTbxK5+zpPzbAi6/4qH8AUkq+dabQDTcpvZUDASEjLrQhiG6IEvuZWX
+         hOGDPK+6eoXr4u6f8fdPyJfzhE8f6LjL6IWQEi7Q7xf/MwN+kTxPHg0s5npN5r04pvLL
+         ZXnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713786284; x=1714391084;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1713789966; x=1714394766;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=rQyqkO5rBtVr2l90561BkaV6H3PIbJfSNkwtRwVJ0Ek=;
-        b=jDC6VO/OkfN58Yq9DKpKLL17nySsZYTWG8wO18yP8Amy457PN6O31c0p1AzOEmY1Mh
-         kiyp70exIyfMjsFyxoWmpmKJZy1xdxBeYoa0IMFzialyKQ2Fs00W556K1mkl/uW2nK9G
-         4B/QLlYJgTJAmnMYlRUGBA1SH0DlvFOP+GuhDrQTaoCzM4msD46gQyfgZyQi7j+t6NZj
-         GKU24xTLikdn4BOPDNW3kazS62WDfE415ijFzz0rdo+xly06POxzRf+QbAmfA2LLA3to
-         lbS6DjJNMIGjiPdW77RNYYjwaZcTdTkjJnQRJCCgwh9wq3jmjUvJWBvmjVV+gyNRGFev
-         8l1Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUo5wY8HmCimj+dH1+NjY9cnp/b1VN1GHqc8wZ0773B28hrlJ//61SoEMccoy6C419UxVS+2UuA+eDxCBPZJ7CZCj19kcqA
-X-Gm-Message-State: AOJu0YxF6sPCjGjHf90pL9c3lvBJHfZszh3v6pJDWyOlU4TSgwIBrTng
-	8PbeCABMAuWvB82raIe16sOKhP7uo1OjV8ivIoNtwO/x6IIibByxPLM37fynWDQ1yv+1ItcyyeT
-	etpk=
-X-Google-Smtp-Source: AGHT+IGm2cDFOYgMIbZm0eI4/PNyMTOAT6fdJzXfqBLD2oHpxa+uqBaIn5ZRqy9rTLlKSXVvSErKTQ==
-X-Received: by 2002:a05:6000:1b8f:b0:347:9bec:9ba3 with SMTP id r15-20020a0560001b8f00b003479bec9ba3mr7424132wru.66.1713786283963;
-        Mon, 22 Apr 2024 04:44:43 -0700 (PDT)
+        bh=39Acx84dTQ3hN2yMfKWcH9znaBkPeHgCHhH+12hyjQ8=;
+        b=W0w+XXrcy6q8GKP+Rh7U1EQDnsNP1rwVTyCzAcYlavVb+1i6aD3JQ+j3mo6r1JBdyF
+         JkjV6qt0Q1a5Syp1PDMEmrEERHAmlMkxCu3Su8JXWf9x8Ql1kdh8UScNuZAOWNbBtEh1
+         oG9Rp6OqAC7qsIRKSzdtzfCiccPlR7ubhLcjKKQkpe7omaH72Pv1sgcssGWdJByhuKsk
+         ot9NSf+ul7OT8qyfC7QzHH95InHqQIAh8VRl0Yp5d5/mDpnaMzkIQFMCfmJgTmzbjrml
+         AKvDb3cFSfNYjIrQ5rZOYIiOmRRF5uWBZa7q+2PFReUxHvK+DWEOkv4sIEmcDHyxO0Fg
+         3HvA==
+X-Forwarded-Encrypted: i=1; AJvYcCUUyDToUld/mxdQ7BhXOApOAf9Jkki3/uNfINg5pbEXsxarQ7Kkljd35/MhotfAJSUIsD6P4/tJUg+BpQEnVu3vmpjEVXfb
+X-Gm-Message-State: AOJu0YwjS0eUgH9F82Ok/ciQSlROA6IpU7nJtRLNwGKrYcSfdMeQUAdx
+	gGr7jGcnZRD+2uoN6D7Zkf3rGjIbmu3WZTT/P14EbgNeb8USLHxeyLVkDFqBS1JR3w==
+X-Google-Smtp-Source: AGHT+IF6ekSDYQxE6y/nkKThKaQm3zn/4i7UQcySSVjovWfJ/Lif57cfa79EBDVO51EtY1b9jhV+aw==
+X-Received: by 2002:a05:600c:1e15:b0:41a:7c1d:3326 with SMTP id ay21-20020a05600c1e1500b0041a7c1d3326mr1187471wmb.8.1713789966552;
+        Mon, 22 Apr 2024 05:46:06 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.1.28] (lfbn-bay-1-170-196.w83-193.abo.wanadoo.fr. [83.193.250.196])
-        by smtp.gmail.com with ESMTPSA id a12-20020a056000050c00b00349ac818326sm11855526wrf.43.2024.04.22.04.44.43
+        by smtp.gmail.com with ESMTPSA id bd25-20020a05600c1f1900b00419f7d6879dsm8198662wmb.8.2024.04.22.05.46.05
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 Apr 2024 04:44:43 -0700 (PDT)
-Message-ID: <a9a7f5d2-9fe1-4160-ac2e-b55f53945c22@linaro.org>
-Date: Mon, 22 Apr 2024 13:44:42 +0200
+        Mon, 22 Apr 2024 05:46:05 -0700 (PDT)
+Message-ID: <7492ef2d-1ea1-472d-baf3-ad8236fcf62a@linaro.org>
+Date: Mon, 22 Apr 2024 14:46:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 17/24] exec: Include missing 'qemu/log-for-trace.h' header
- in 'exec/log.h'
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- David Hildenbrand <david@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Anton Johansson <anjo@rev.ng>
-References: <20240418192525.97451-1-philmd@linaro.org>
- <20240418192525.97451-18-philmd@linaro.org>
- <76d68cab-7b28-43bf-89a6-bb39a7fdb131@linaro.org>
- <50a43668-4a21-4f3e-a306-133dd1d54594@linaro.org>
+Subject: Re: [RFC PATCH-for-8.0 3/3] hw/net/xilinx_ethlite: Replace tswap32()
+ by be32_to_cpu()
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Alistair Francis <alistair@alistair23.me>,
+ David Gibson <david@gibson.dropbear.id.au>, Jason Wang
+ <jasowang@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-ppc@nongnu.org
+References: <20221213125218.39868-1-philmd@linaro.org>
+ <20221213125218.39868-4-philmd@linaro.org>
+ <CAFEAcA-iouFJgu_2cG2TapxYVr-_ZK1Uuwa4mqSL5zNKg6Jq+Q@mail.gmail.com>
 Content-Language: en-US
-In-Reply-To: <50a43668-4a21-4f3e-a306-133dd1d54594@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA-iouFJgu_2cG2TapxYVr-_ZK1Uuwa4mqSL5zNKg6Jq+Q@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Edp0+M5+WQef
+X-TUID: mfnCLqPL0uIi
 
-On 22/4/24 11:05, Philippe Mathieu-Daudé wrote:
-> On 21/4/24 18:44, Richard Henderson wrote:
->> On 4/18/24 12:25, Philippe Mathieu-Daudé wrote:
->>> "exec/log.h" accesses the qemu_loglevel variable,
->>> which is declared in "qemu/log-for-trace.h".
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> ---
->>>   include/exec/log.h | 1 +
->>>   1 file changed, 1 insertion(+)
->>>
->>> diff --git a/include/exec/log.h b/include/exec/log.h
->>> index 4a7375a45f..e0ff778a10 100644
->>> --- a/include/exec/log.h
->>> +++ b/include/exec/log.h
->>> @@ -2,6 +2,7 @@
->>>   #define QEMU_EXEC_LOG_H
->>>   #include "qemu/log.h"
->>> +#include "qemu/log-for-trace.h"
->>>   #include "hw/core/cpu.h"
->>>   #include "disas/disas.h"
+On 13/12/22 14:53, Peter Maydell wrote:
+> On Tue, 13 Dec 2022 at 12:52, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
 >>
->> I disagree: qemu/log.h is the main file; log-for-trace.h was split out 
->> for other usage. That shouldn't mean that log-for-trace.h needs to be 
->> spread around.
+>> This partly revert commit d48751ed4f ("xilinx-ethlite:
+>> Simplify byteswapping to/from brams") which states the
+>> packet data is stored in big-endian.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > 
-> Good point, I haven't noticed we can just move the qemu_loglevel
-> declaration.
+>> @@ -102,8 +102,8 @@ eth_read(void *opaque, hwaddr addr, unsigned int size)
+>>               D(qemu_log("%s " TARGET_FMT_plx "=%x\n", __func__, addr * 4, r));
+>>               break;
+>>
+>> -        default:
+>> -            r = tswap32(s->regs[addr]);
+>> +        default: /* Packet data */
+>> +            r = be32_to_cpu(s->regs[addr]);
+>>               break;
+>>       }
+>>       return r;
+>> @@ -160,8 +160,8 @@ eth_write(void *opaque, hwaddr addr,
+>>               s->regs[addr] = value;
+>>               break;
+>>
+>> -        default:
+>> -            s->regs[addr] = tswap32(value);
+>> +        default: /* Packet data */
+>> +            s->regs[addr] = cpu_to_be32(value);
+>>               break;
+>>       }
+>>   }
+> 
+> This is a change of behaviour for this device in the
+> qemu-system-microblazeel petalogix-s3adsp1800 board, because
+> previously on that system the bytes of the rx buffer would
+> appear in the registers in little-endian order and now they
+> will appear in big-endian order.
 
-Now I'm confused, I don't remember why I ended doing that, since
-"exec/log.h" includes "qemu/log.h" itself including
-"qemu/log-for-trace.h.
+Maybe to simplify we could choose to only model the Big
+Endian variant of this device?
 
-I now notice commit be0aa7ac89 ("log-for-trace.h: Split out
-parts of log.h used by trace.h"):
-
-     A persistent build problem we see is where a source file
-     accidentally omits the #include of log.h. This slips through
-     local developer testing because if you configure with the
-     default (log) trace backend trace.h will pull in log.h for you.
-     Compilation fails only if some other backend is selected.
-
-     To make this error cause a compile failure regardless of
-     the configured trace backend, split out the parts of log.h
-     that trace.h requires into a new log-for-trace.h header.
-     Since almost all manual uses of the log.h functions will
-     use constants or functions which aren't in log-for-trace.h,
-     this will let us catch missing #include "qemu/log.h" more
-     consistently.
-
-Let's drop this patch.
-
-Thanks,
-
-Phil.
+-- >8 --
+@@ -169,7 +169,7 @@ eth_write(void *opaque, hwaddr addr,
+  static const MemoryRegionOps eth_ops = {
+      .read = eth_read,
+      .write = eth_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_BIG_ENDIAN,
+      .valid = {
+          .min_access_size = 4,
+          .max_access_size = 4
+---

@@ -1,162 +1,171 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4412306ejd;
-        Mon, 22 Apr 2024 09:47:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUU55aquv0DVeiEynG5etNLGS+nIgvlS73UDLL9vI5TxQeydBmGQZvPO5USkDz5hTNjjRo6QRJUFF9JC7+k7qPW7c6u4JUS
-X-Received: by 2002:a05:6a00:2d1e:b0:6ed:1012:9572 with SMTP id fa30-20020a056a002d1e00b006ed10129572mr14266054pfb.29.1713804432824;
-        Mon, 22 Apr 2024 09:47:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713804432; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4236200ejd;
+        Mon, 22 Apr 2024 05:57:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWMvoSI27C8bJywYWHT9D/a3KUCgLQmZwhhxukAqypuDSjPmpDBiKf4tZ+iKT4NHEk8DrA1J+1f7ZxfnX5iOZ7LuhVfpM0w
+X-Google-Smtp-Source: AGHT+IH06VJRDyA+ff9a9hp1R8vEZpM54rq20+LRjc+NFx9VTKVprZQ5k3nk+RC+7auC+qRz2fuR
+X-Received: by 2002:a05:620a:5a4c:b0:78e:fba5:4742 with SMTP id wx12-20020a05620a5a4c00b0078efba54742mr15659703qkn.24.1713790632674;
+        Mon, 22 Apr 2024 05:57:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713790632; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZgtLRrJ3OqkAsMF51zAXW2//upMRhymOeEYqR1C8M/irwrnrzzHWaGEkO1yYrbBcii
-         zIyBNiZaCOfjqv8J0maV63KPYyzK6i1rnA55eJZpGFT5jIfLSawTHEqlCv6j9bu8gww7
-         o5LVLeM4NBV4qpqQItS35J+x15i4eJf3zG7zwyUvyGIM6g6keV2S3aHuHVVP7+/sLTtl
-         UF4OjBDKxokRaLxFGAudUmnCs1c0yOMQz2PkLopoY4EFuJmCrqyxELZag93EjX9Ig0yM
-         wLHGALR/Dn36lctX8Jpwt6t/uljSklcOmsRtgS+11AoBqQhjtFqBMRF23IPWwx81VNrO
-         lnoA==
+        b=wP+vhW3+2EAlG0L0Mm3PA03SmQXmUhtozsE8JoPxsb5STZcJW2DFb0wgGXkbd3KOx8
+         n3ODglkJAboW7ysZVXM1eYzWe0jpzdlMhGFnokdRDa3ey/IEHaep7M7R0udaFn0KCci1
+         yDPz2cnmhfs5HmrHtybtN9VVO8X/Te9pV0O8qZYfcZW/4NHB2I6kLMnpW/fhYlUGUI+q
+         1NtKuLnnT2xhq5/G9EBb1IRGtqrSplfU8gd5XfvWgSnC2Kalb+72n9BDwfcDN/gOhTxd
+         F3vp2Z6l8my3oGkTc+H4e5T1d9rNyHgfEwAoukIX6ZA6x/fGcz+6x4hzyTInMXv4dQU6
+         q2bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=4aJLrmmDZ1b1wEEBqlhG5LMFF9PxxIOoGYxCH76bhZ0=;
-        fh=3gGb3M4pQd/Qu9PgMEkkkaTj7UwNrUJHQtRLktiY4zA=;
-        b=HSa7h6x6+DeEin76aI6yolzT+hH3XAx4+LIAo+0zVi6sKuwe9AlHuC6qCs1D5u4gcc
-         8/v6Y/ekjLXV6A/jJvibC7vZNIWmXexdhuHPFS/5LABdCwcwWQo2peW+y4BzPcK18B6A
-         v6p0LVRf+h8OSEri1IcfKSVwF5dAVHhPUdwzZxkyuOw8Db8lb9EcriGUa91CemXGief3
-         LtQg0jAzuItfV61FbuH1chankBPyW3e+1689D3VafrCmfbuTn9DgloIW8H19AevcHBeg
-         phxJ0x7ko0H5jwSaP60zAf3f4Gp3NlSnoZL6Dh25+4aSo1/n/7YliOQr4FcRzU9MlwQ1
-         cunA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=nl+sgvBp+w/CT7gP97ti+pDaudI7/Gy87YKtR8NYhBE=;
+        fh=LNAlGgVYafZeeJ4BtVb6lUn564ChQ0WXtIq4NJyN4v4=;
+        b=xlNglXQyY0X1qkPtpKWsp4KVElQSFSNOY3fNG4csRkQNMwfG0PgHNk7EFBnju9VFt4
+         5gdkd8SFJYkBogfNaGykAkJrCcfS8+/61Hxau+3xhi13a5vwi0gxzZorzfiS6Q6O6bjF
+         O0ivNPX5/2b2uErsQg8+O50n3/2kFUTlOdjy9jA1C6CjN67SjTTbWcAcS2GNhMIjGjBV
+         QN87Lp0ox4hMYaRK4WXdMjGoNXdkOVici4MZTTq44yMlQmBMHDtaL31mIJCues/1CtSj
+         FMdL31ND72norvLZGCLmcdbaeNkH/ZIPnrMeTUkZgI7dYohjD5vv/cWMP64Am5UcpyE0
+         m/UA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VCmfajvZ;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="wa2/BYeo";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h185-20020a6383c2000000b005f7f3d659afsor5719853pge.9.2024.04.22.09.47.12
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id bp39-20020a05620a45a700b0078a68d1e54bsi12030440qkb.123.2024.04.22.05.57.12
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 22 Apr 2024 09:47:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Apr 2024 05:57:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VCmfajvZ;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="wa2/BYeo";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rytDp-0005hh-6D; Mon, 22 Apr 2024 08:56:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rytDl-0005fp-Hp
+ for qemu-arm@nongnu.org; Mon, 22 Apr 2024 08:56:34 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rytDj-0007B7-6b
+ for qemu-arm@nongnu.org; Mon, 22 Apr 2024 08:56:33 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-571c22d9de4so5758008a12.3
+ for <qemu-arm@nongnu.org>; Mon, 22 Apr 2024 05:56:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713804432; x=1714409232; darn=linaro.org;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=4aJLrmmDZ1b1wEEBqlhG5LMFF9PxxIOoGYxCH76bhZ0=;
-        b=VCmfajvZC2i3t6ZFop/scloNUpoJh74TcTPH7X8SwFSyAuzi4+dV3GS5Gw82RdyKdb
-         YoX+7Ojrk+QM5c0vtSYeSyTF4p6NKR4hJrYWTVHcIwc8eLdTQla7Cjw5zoQjpi72wwl+
-         vAPws6Wmx8NK00YMKL3l55G5alMFLZwelvnfcLsAggT07fqW06nQK1k4y58AYMlNSCLE
-         E5mD61dLZ07av8gjx74exj1uxCMTrTUH5P/e4mcUH4zuacAVY2ula/PLx8YMOsV2YCuO
-         w8ied1nzo0VbJLRI6w8/N2dQMMQRyhNJlRxZWuMoaiuywNJP3Re+Wx4B8w90fqUI86Bv
-         x9fA==
+ d=linaro.org; s=google; t=1713790589; x=1714395389; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=nl+sgvBp+w/CT7gP97ti+pDaudI7/Gy87YKtR8NYhBE=;
+ b=wa2/BYeoJ9R5HTeut0yT/PJKlKm+AhIKKeAAZJzuj6Y7zL+GNS9y9K0+ctVVs8Anbl
+ MR/5s4Yl5wcfNif8k+sX91aYX8XqgDrKQxM/1OtrGksB+iokNsUcgmIQx0z7qRtAX9XB
+ ALxKIPSqr4AleuoNSnexbFFX+yBp+JGlHkHIlOPGCxtzQ0Uf94gIKHMZt73auaBMlAJe
+ xIAync8XlxMWjPLfGzdeqmKKnTcxdd2Epliq4p/BXJ3avJNZV3YrZeKQkx/aL9a/fs8j
+ v4myAooi3dYEewbCxY41zAh/cKY+99o+8za47fqvkdQbtM8dMZc/1XBRjBkA68muAI+f
+ RVZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713804432; x=1714409232;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4aJLrmmDZ1b1wEEBqlhG5LMFF9PxxIOoGYxCH76bhZ0=;
-        b=V95+XiR1YWOo3TwSn+VAtOYfPjzVkkIBnDOKK+Emf5bZcRUFBCX7cK/qFdfLPVt4Oj
-         1Jj1CFPClfM43hP1r8gMQwW5qMBTGgUr4C9nUKR9dKZcUUZkyvBPDCfUcM2ub3iLB/E9
-         3m6zy0f1THJPXuQ0D+j3w+doFdEU9plAGLD80kAvvB14ayOdsUO2cV8EfvQ3ur4J2UGQ
-         7nfacfTDLKjn4Lo+XuQJnhpHsbhia/sDNKDofxUM2b0KccXGDe4c9FNqfDOHLu3xfAg2
-         POS9hqaM8xn7T+BNvVkiRnsRb0eX3e4FVAt4QEdKrXv06kHPQjNefZ+EXTNYetcEPMRY
-         pxfQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUfCE7Y4yBNdyoVV8OeZb8fUa4NNTwZ3idPDfn0uCe5fGuNjbCYoMxBiFKTBJnQjskflxYIVZzRRLRPc2tdt9se5233Kmwk
-X-Gm-Message-State: AOJu0YxfSRV81yAP97ZE6FA9WPUxnK3WkL/svin6K1a+DVu5MiLsNy38
-	EnMunIfASBIbTUOD8p9LFw09lrg1FM40nvD1ipa/pF7fAAtp+K/BfUImf4yhbhiGMw==
-X-Google-Smtp-Source: AGHT+IHjoNSiNApXmt1qn9xPUHwOYpKmEyEUgLIlorcgYEnGxB2ouNIjz1jsdNy624j7fvtiWGAkGw==
-X-Received: by 2002:a05:6a21:3989:b0:1a7:51f1:f778 with SMTP id ad9-20020a056a21398900b001a751f1f778mr12507775pzc.37.1713804432283;
-        Mon, 22 Apr 2024 09:47:12 -0700 (PDT)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from [192.168.0.102] ([177.139.3.212])
-        by smtp.gmail.com with ESMTPSA id f33-20020a056a000b2100b006ecee611c05sm8058930pfu.182.2024.04.22.09.47.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 Apr 2024 09:47:11 -0700 (PDT)
-Subject: Re: [PATCH 0/6] Add ivshmem-flat device
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, philmd@linaro.org, thuth@redhat.com,
- lvivier@redhat.com, qemu-arm@nongnu.org, alex.bennee@linaro.org,
- pbonzini@redhat.com, anton.kochkov@proton.me, richard.henderson@linaro.org,
- peter.maydell@linaro.org, Bill Mills <bill.mills@linaro.org>
-References: <20240222222218.2261956-1-gustavo.romero@linaro.org>
- <87wmqp3xug.fsf@pond.sub.org>
-From: Gustavo Romero <gustavo.romero@linaro.org>
-Message-ID: <a28f3657-c827-7a0d-a8da-b82d17d17577@linaro.org>
-Date: Mon, 22 Apr 2024 13:47:07 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ d=1e100.net; s=20230601; t=1713790589; x=1714395389;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=nl+sgvBp+w/CT7gP97ti+pDaudI7/Gy87YKtR8NYhBE=;
+ b=K/ilheAEceKMZhUQTuNTUUbLr+ppiX0vNjNLoTH8VkgVmbK5Tv/y4Y6uEze5lG4m2F
+ CcSen9hLhm+CSAwRBhYfn58nKmFs7ngyoarNGP7/nuq4P4Qc2igrS+HSIOCUtduraDj3
+ vZ8U4gsxuo+slIcsgXRV/C2LztuEdcTopmiMNMwmFPN8z5+kQJmUhnGpXRwnYu2VNL+8
+ LWP4HlijCDEhDot/PpHJPxKiv7m0b5CCo23qR223PlZG7VjHxDBwpb/6zIP0iV6KSGb5
+ P5HrlvDdTYW6lXKvJmq/qKfQlyTL7SEhM2PDLYZLcHndKqYHpv4DT1mkaAzassxVy+t4
+ NheA==
+X-Gm-Message-State: AOJu0Yy+QUQ4HC8lWDKPhOlNpPVJE7xvdozasY8llilOLCcN8yt7rwLK
+ 1CDWqOk/pExPFFxDynCeZ35x4P+tpplOCEdC8Ev40b61rWczMbx10LnJAzoKJoG6s64Ahwzzub4
+ Z1ozYqxJ9huiXabasoAxBon24gsApZQ4tBNK9HZW3f3MbHLfI
+X-Received: by 2002:a50:d609:0:b0:56e:418:5559 with SMTP id
+ x9-20020a50d609000000b0056e04185559mr6425782edi.3.1713790589501; Mon, 22 Apr
+ 2024 05:56:29 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87wmqp3xug.fsf@pond.sub.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: cS2ouLUeKRyk
+References: <20240419184608.2675213-1-peter.maydell@linaro.org>
+In-Reply-To: <20240419184608.2675213-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 22 Apr 2024 13:56:18 +0100
+Message-ID: <CAFEAcA91ZULEjEgTotevp-epgH_azcwrSi9PVnnOSk8gq5j22g@mail.gmail.com>
+Subject: Re: [PATCH 0/3] target/arm: Make the counter frequency default 1GHz
+ for new CPUs, machines
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Leif Lindholm <quic_llindhol@quicinc.com>, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qM+qPMtRHGYt
 
-Hi Markus,
+On Fri, 19 Apr 2024 at 19:46, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> In previous versions of the Arm architecture, the frequency of the
+> generic timers as reported in CNTFRQ_EL0 could be any IMPDEF value,
+> and for QEMU we picked 62.5MHz, giving a timer tick period of 16ns.
+> In Armv8.6, the architecture standardized this frequency to 1GHz.
+>
+> Because there is no ID register feature field that indicates whether a
+> CPU is v8.6 or that it ought to have this counter frequency, we
+> implement this by changing our default CNTFRQ value for all CPUs, with
+> exceptions for backwards compatibility:
+>
+>  * CPU types which we already implement will retain the old
+>    default value. None of these are v8.6 CPUs, so this is
+>    architecturally OK.
+>  * CPUs used in versioned machine types with a version of 9.0
+>    or earlier will retain the old default value.
+>
+> The upshot is that the only CPU type that changes is 'max'; but any
+> new type we add in future (whether v8.6 or not) will also get the new
+> 1GHz default (assuming we spot in code review any attempts to set
+> the ARM_FEATURE_BACKCOMPAT_CNTFRQ flag on new CPU types as a result
+> of cut-n-paste from an older CPU initfn ;-)).
+>
+> It remains the case that the machine model can override the default
+> value via the 'cntfrq' QOM property (regardless of the CPU type).
 
-Thanks for interesting in the ivshmem-flat device.
+This patchset turns out to break the sbsa-ref board: the
+Aarch64SbsarefMachine.test_sbsaref_alpine_linux_max_pauth_impdef
+avocado test both (a) takes rather longer to boot and (b) when
+running thinks that time is advancing very fast.
 
-Bill Mills (cc:ed) is the best person to answer your question,
-so please find his answer below.
+I suspect this may be because the firmware hard-codes the
+generic timer clock frequency it is expecting. I've cc'd the
+sbsa-ref maintainers: is that correct?
 
-On 2/28/24 3:29 AM, Markus Armbruster wrote:
-> Gustavo Romero <gustavo.romero@linaro.org> writes:
-> 
-> [...]
-> 
->> This patchset introduces a new device, ivshmem-flat, which is similar to the
->> current ivshmem device but does not require a PCI bus. It implements the ivshmem
->> status and control registers as MMRs and the shared memory as a directly
->> accessible memory region in the VM memory layout. It's meant to be used on
->> machines like those with Cortex-M MCUs, which usually lack a PCI bus, e.g.,
->> lm3s6965evb and mps2-an385. Additionally, it has the benefit of requiring a tiny
->> 'device driver,' which is helpful on some RTOSes, like Zephyr, that run on
->> memory-constrained resource targets.
->>
->> The patchset includes a QTest for the ivshmem-flat device, however, it's also
->> possible to experiment with it in two ways:
->>
->> (a) using two Cortex-M VMs running Zephyr; or
->> (b) using one aarch64 VM running Linux with the ivshmem PCI device and another
->>      arm (Cortex-M) VM running Zephyr with the new ivshmem-flat device.
->>
->> Please note that for running the ivshmem-flat QTests the following patch, which
->> is not committed to the tree yet, must be applied:
->>
->> https://lists.nongnu.org/archive/html/qemu-devel/2023-11/msg03176.html
-> 
-> What problem are you trying to solve with ivshmem?
-> 
-> Shared memory is not a solution to any communication problem, it's
-> merely a building block for building such solutions: you invariably have
-> to layer some protocol on top.  What do you intend to put on top of
-> ivshmem?
+If so, we can deal with it by making the sbsa-ref board set the
+cntfrq QOM property on its CPUs to force them to the old
+frequency. However this will produce a technically-out-of-spec
+CPU when used with a v8.6-compliant CPU type, so probably we
+should do something to be able to tell the firmware the clock
+frequency (if it doesn't want to just read CNTFRQ_EL0 itself).
 
-Actually ivshmem is shared memory and bi-direction notifications (in this case a doorbell register and an irq).
-
-This is the fundamental requirement for many types of communication but our interest is for the OpenAMP project [1].
-
-All the OpenAMP project's communication is based on shared memory and bi-directional notification.  Often this is on a AMP SOC with Cortex-As and Cortex-Ms or Rs.  However we are now expanding into PCIe based AMP. One example of this is an x86 host computer and a PCIe card with an ARM SOC.  Other examples include two systems with PCIe root complex connected via a non-transparent bridge.
-
-The existing PCI based ivshmem lets us model these types of systems in a simple generic way without worrying about the details of the RC/EP relationship or the details of a specific non-transparent bridge.  In fact the ivshmem looks to the two (or more) systems like a non-transparent bridge with its own memory (and no other memory access is allowed).
-
-Right now we are testing this with RPMSG between two QEMU system where both systems are cortex-a53 and both running Zephyr. [2]
-
-We will expand this by switching one of the QEMU systems to either arm64 Linux or x86 Linux.
-
-We (and others) are also working on a generic virtio transport that will work between any two systems as long as they have shared memory and bi-directional notifications.
-
-Now for ivshmem-flat.  We want to expand this model to include MCU like CPUs and RTOS'es that don't have PCIe.  We focus on Cortex-M because every open source RTOS has an existing port for one of the Cortex-M machines already in QEMU.  However they don't normally pick the same one.  If we added our own custom machine for this, the QEMU project would push back and even if accepted we would have to do a port for each RTOS.  This would mean we would not test as many RTOSes.
-
-The ivshmem-flat is actually a good model for what a Cortex-M based PCIe card would look like.  The host system would see the connection as PCIe but to the Cortex-M it would just appear as memory, MMR's for the doorbell, and an IRQ.
-
-So even after we have a "roll your own machine definition from a file", I expect ivshmem and ivshmem-flat to still be very useful.
-
-[1] https://www.openampproject.org/
-[2] Work in progress here: https://github.com/OpenAMP/openamp-system-reference/tree/main/examples/zephyr/dual_qemu_ivshmem
-
-
-Cheers,
-Gustavo
+thanks
+-- PMM

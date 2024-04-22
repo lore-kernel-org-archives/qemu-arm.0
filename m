@@ -1,128 +1,91 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4269646ejd;
-        Mon, 22 Apr 2024 06:39:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX8miSO0218GGAERf5v1WpjE+1RC3px3oqusF1sTvlcpvAuJ13Sm4WU08DBp4qVqfrNvCSvgrnPJit5Zlhd4ThF9+chLe69
-X-Google-Smtp-Source: AGHT+IHfX3s5/ksErhDtYi14Q2kRQbjYiALTWXIUMreArVOOri3LbP76H84o4Rtjk1orJT7TPZbN
-X-Received: by 2002:a25:4e86:0:b0:dc7:4ad4:c977 with SMTP id c128-20020a254e86000000b00dc74ad4c977mr9252083ybb.25.1713793178746;
-        Mon, 22 Apr 2024 06:39:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713793178; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4323550ejd;
+        Mon, 22 Apr 2024 07:51:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWagTb/J2MMhif7ejkIDYlS+WxF5tR97tOfL3pSTEvJbGe+IU36VHbKB7SJpt5fUUorAotUjtmt7snrNATVNAOsWaJ4kgKn
+X-Google-Smtp-Source: AGHT+IHwZ9TUT3PUWU+ph0BRL0zI+I/0NVdvkfGNKxGVttAVJfQETpewoj7Rnt4mSwbNMJHx7AAD
+X-Received: by 2002:a05:620a:468c:b0:790:680f:c88b with SMTP id bq12-20020a05620a468c00b00790680fc88bmr8377225qkb.78.1713797493411;
+        Mon, 22 Apr 2024 07:51:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713797493; cv=none;
         d=google.com; s=arc-20160816;
-        b=QqCfc9oLDN/LVfU5BNYideTh5zZq2lL+Zd8156tvLuVipbbJDbtFwQObC9xmTXhiOO
-         BEln0ZmngyOL9U5idd8N9iKZgyRt2T9/2h6jg3BONN8axHmh8lC3IrSJGd45nIQY/+TN
-         21itz4rmvVQxCDgT21mRXKpc0//13KvbrADiwZf3ZmXkvaHhwP1cQ0oPzK5+oH1PMUQN
-         5vKEdQANZFWU1At1Q3dXqe/LL9kiXmjSqtBlXzLPy9VuLrFtIrJv/38DHeLlKl6f0UhJ
-         sz/dG96so1qD2oOijoZVI6Mkp+VnOURRPwhxmYAesJq1Xy9z5P4bioh1Fu2cQutJmp2l
-         NTxA==
+        b=X4pN3tJXAKNz+kP3zBezPtEhKGhQhS8JtzUxIKhqH/IwhPZ1qrqgC90Vfj0aHG0d5Q
+         8E2z7NJVZ2n9IbqtOGMLMYs4q2oA4iWh8XeBydOTgpxSz1n5grcPDb0GJwkXcgTPagW8
+         eU2oPO/t7OLSUUT2YXqk68620aTLSJ3pF2ojp4jIjS01FOjTugO1ZyrqL8l1gOgHhyp8
+         qZT3ep3I3k2kXr0E3z2jFNGKYg3kX6U7w5+6CQB14nrlRsMmJ4she4Q+wxjqrhZP3M5V
+         4nDy+w4WWlis7UhjTLXcKtcjoUmu3h/iDmRtHdGQmssTqpdz6ncObzVivzA/X/R4I/Jl
+         gCTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:organization:content-language:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=M66w4ZMk2jUV5zE9y1t/5ZKvJPgqA4sXDNh2QHRZ59k=;
-        fh=b84YdWTdHEByPRzWKyrxPbFjAXAmcUO/nIX+fTYqQBM=;
-        b=EOHyPTEX67+adqHeb1BJVylIYHniv8lHqwejRopT5oyNWlaQBcHS6c4gjVQfVqV3+W
-         pVJHml7jcF4lGjekxOnuedXBHWXHLtUY2SeSoZcpzXkZUkcP3KS0BHJP/5aR3ZaZumQI
-         FNOXwL9MRQPV+7/AcLoG6aqfy6PXFvv5bdE4Rzz/Y/Q273efondnmyzDrlhTswh/YrVZ
-         8xKRrFNfo+d6XfBvldIQVcyf7BYM0hwJQsLW/jtxTfz3BhWov9gq8Cm9Q+p7tRasxkrj
-         XDmKdTpj1nC+VmoUdir8m9gdrZcmIHh7X+PjMmyT7jqHT2g6dL1LPamkv6R3CpVFl2hy
-         LhGg==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Co44Q9mlr4zNsi4wNMbg2xr+Hkh3wz3o/Kg+Jwyh0d4=;
+        fh=WyoOzUE1NXft/e3Boe86CT/zd2PXColkUkQzIRh9+gA=;
+        b=DQrzYxiYEAqqw7KsFS+4mAUIUTdj+XD+HjKDmfpiy7DhazrmS8ZVy9bQtJ8KiOCUYX
+         CT1e1qKcQynpMdbowNNcBD0c4zeP27Z7g0634dvtFZbvWIPhfs/oMqwboLGS7EeB7BYp
+         4Z5Nx3W1WWeaV7688DCjGmUL0mh2/wSnhoTPxZRlztwjNXvbSkjZT6pfBq9G4pYhd8fl
+         hGX7oTjfpKsBP/IB/vYMmFBrL7TB7bYUAMp+2JaQ2+ZThynuQ7rZOY8kLRlKU26Bdmk7
+         shIl7mp81UE+ih8gUzBMF7cQjGo+fTgTssQkx2m0QPWTGGWcdfGCovDAW6n6zNUWCEK3
+         b2gw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BbKTVLC3;
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=jCfpUiFT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t6-20020ac5c906000000b004daa78923d4si1452754vkl.163.2024.04.22.06.39.38
+        by mx.google.com with ESMTPS id xx24-20020a05620a5d9800b0078f1583f518si8977573qkn.619.2024.04.22.07.51.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Apr 2024 06:39:38 -0700 (PDT)
+        Mon, 22 Apr 2024 07:51:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BbKTVLC3;
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=jCfpUiFT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rytso-0004Fz-DW; Mon, 22 Apr 2024 09:38:58 -0400
+	id 1ryv0i-0004xE-Cc; Mon, 22 Apr 2024 10:51:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rytsm-0004FM-IE
- for qemu-arm@nongnu.org; Mon, 22 Apr 2024 09:38:56 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1rytsk-0006iO-Gn
- for qemu-arm@nongnu.org; Mon, 22 Apr 2024 09:38:56 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-571c22d9de4so5835459a12.3
- for <qemu-arm@nongnu.org>; Mon, 22 Apr 2024 06:38:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1713793132; x=1714397932; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:organization:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=M66w4ZMk2jUV5zE9y1t/5ZKvJPgqA4sXDNh2QHRZ59k=;
- b=BbKTVLC3zDg3GUsZN8LIFRHo+0rOLSQNhf7/yijIfBadDvYBdbBkcs9vO+Y0KcueZ8
- uUYeCoEfDRvlJt6EP3CL0X6oiurA9VpqLRG9kN8NvNYnb3hIucJPkiHcrCfzzgE5AKFM
- IqeH7u+sH6mYauKsYTC0KZ8fQPWe1VbLDHFmJc7vNVScLDrgPTeO/b9HTOgIKRhWvpa0
- k/+gGJevaAuk4kj+0HVJaNSVRSVL4qKwmKKGwEvPMljh0EJ0zTZQQ/aDKJr0GqO/lsUV
- 5mNkS97JSSmalAvJz+Mkh2HCzAMIgQu9gLuUS7+joUgIblBFfRTa/jEcQEKNuIFsA0s/
- +Byw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713793132; x=1714397932;
- h=content-transfer-encoding:in-reply-to:organization:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=M66w4ZMk2jUV5zE9y1t/5ZKvJPgqA4sXDNh2QHRZ59k=;
- b=p2ttbXFaO/vO10pbUzBUGjQ3ARVpe9ztsnE9SBfc0vAB5oNxSLajXrFBrUbFu2PJH6
- vwykf8NnUMdnH34pGR/cwvKyKd1OFuHymYWYFhFFFv06R+eBBA8PshfYzfIJaCnLJAoy
- kJ0AQQuu4ddlebwuZ3ebyDlyTNiaKr/nRm5FIxeDDZJ4EDSbpdOmlRR0SKdhwRtXn1a2
- ggOvp8Rr+WZPe1ndHU7AoVWt0IWKTq80NceR2VX4kRvSGs4ku7wKEqw/APPP/AKZiPce
- wAnN545x2rooKLRjol5skBJkzcn9/lad2Gd14kVTDNQz6JjeJWKcnpIqCB3rouLr0YiG
- Yz7A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXY6/uf2JjX+/naq6xhmZLR5IopCibeu+sgKESYuiaOiIly/pyCL5f6CzPgR5CjEsiQxxOjjDYZkAAnq7MWpMPAFURm
-X-Gm-Message-State: AOJu0YwU8QKdI2RazTLuzYS9hypOip9xaTP66nRCvvSHIeUkHVjsg3ln
- uail4+vIRxd/ChXl8BnZV6jpKO+a4WfINUwbCBPQenKLvHVlowX7umVPSqUd+k0=
-X-Received: by 2002:a50:d658:0:b0:56e:34db:f5ef with SMTP id
- c24-20020a50d658000000b0056e34dbf5efmr6311370edj.28.1713793132353; 
- Mon, 22 Apr 2024 06:38:52 -0700 (PDT)
-Received: from [192.168.200.106] (83.11.0.31.ipv4.supernova.orange.pl.
- [83.11.0.31]) by smtp.gmail.com with ESMTPSA id
- ij6-20020a056402158600b005705bfeeb27sm5514568edb.66.2024.04.22.06.38.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 22 Apr 2024 06:38:51 -0700 (PDT)
-Message-ID: <c84bfac7-5fb5-4fca-90a3-93adb40bcf3c@linaro.org>
-Date: Mon, 22 Apr 2024 15:38:50 +0200
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1rypxe-0000vq-BQ
+ for qemu-arm@nongnu.org; Mon, 22 Apr 2024 05:27:42 -0400
+Received: from out-188.mta1.migadu.com ([2001:41d0:203:375::bc])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1rypxb-0000mA-QG
+ for qemu-arm@nongnu.org; Mon, 22 Apr 2024 05:27:42 -0400
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+ t=1713778055;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Co44Q9mlr4zNsi4wNMbg2xr+Hkh3wz3o/Kg+Jwyh0d4=;
+ b=jCfpUiFTGUPXPYsp3pm3Ur6ev6kvmfoiYjjLuoCshXsFTzZ3APSPHDYHcs1KGuvM5BL0iW
+ 7aAzgJsJ9ebxp9++NZG/L5IrT4RJefIR2W2pZ6UopAdmIvUcqyP7ak3IYCYAWHTf1G0ATZ
+ 7vOqqujywPWxxJsaA+Zm3RxdJ7Srduk=
+From: Zenghui Yu <zenghui.yu@linux.dev>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: agraf@csgraf.de, peter.maydell@linaro.org, wanghaibin.wang@huawei.com,
+ Zenghui Yu <zenghui.yu@linux.dev>
+Subject: [PATCH] hvf: arm: Remove PL1_WRITE_MASK
+Date: Mon, 22 Apr 2024 17:27:15 +0800
+Message-Id: <20240422092715.71973-1-zenghui.yu@linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] target/arm: Make the counter frequency default 1GHz
- for new CPUs, machines
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Leif Lindholm <quic_llindhol@quicinc.com>,
- Radoslaw Biernacki <rad@semihalf.com>
-References: <20240419184608.2675213-1-peter.maydell@linaro.org>
- <CAFEAcA91ZULEjEgTotevp-epgH_azcwrSi9PVnnOSk8gq5j22g@mail.gmail.com>
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Content-Language: pl-PL, en-GB, en-HK
-Organization: Linaro
-In-Reply-To: <CAFEAcA91ZULEjEgTotevp-epgH_azcwrSi9PVnnOSk8gq5j22g@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ed1-x535.google.com
+X-Migadu-Flow: FLOW_OUT
+Received-SPF: pass client-ip=2001:41d0:203:375::bc;
+ envelope-from=zenghui.yu@linux.dev; helo=out-188.mta1.migadu.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 22 Apr 2024 10:51:07 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,51 +99,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BCLNVy67FaCb
+X-TUID: YTqcQug3Vfqg
 
-W dniu 22.04.2024 o 14:56, Peter Maydell pisze:
-> On Fri, 19 Apr 2024 at 19:46, Peter Maydell <peter.maydell@linaro.org> wrote:
+As it had never been used since the first commit a1477da3ddeb ("hvf: Add
+Apple Silicon support").
 
->> The upshot is that the only CPU type that changes is 'max'; but any
->> new type we add in future (whether v8.6 or not) will also get the new
->> 1GHz default (assuming we spot in code review any attempts to set
->> the ARM_FEATURE_BACKCOMPAT_CNTFRQ flag on new CPU types as a result
->> of cut-n-paste from an older CPU initfn ;-)).
->>
->> It remains the case that the machine model can override the default
->> value via the 'cntfrq' QOM property (regardless of the CPU type).
-> 
-> This patchset turns out to break the sbsa-ref board: the
-> Aarch64SbsarefMachine.test_sbsaref_alpine_linux_max_pauth_impdef
-> avocado test both (a) takes rather longer to boot and (b) when
-> running thinks that time is advancing very fast.
-> 
-> I suspect this may be because the firmware hard-codes the
-> generic timer clock frequency it is expecting. I've cc'd the
-> sbsa-ref maintainers: is that correct?
-> 
-> If so, we can deal with it by making the sbsa-ref board set the
-> cntfrq QOM property on its CPUs to force them to the old
-> frequency. However this will produce a technically-out-of-spec
-> CPU when used with a v8.6-compliant CPU type, so probably we
-> should do something to be able to tell the firmware the clock
-> frequency (if it doesn't want to just read CNTFRQ_EL0 itself).
+Signed-off-by: Zenghui Yu <zenghui.yu@linux.dev>
+---
+ target/arm/hvf/hvf.c | 1 -
+ 1 file changed, 1 deletion(-)
 
- From what I see in EDK2 code we read CNTFREQ_EL0:
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 65a5601804..015e96a6d3 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -150,7 +150,6 @@ void hvf_arm_init_debug(void)
+ 
+ #define HVF_SYSREG(crn, crm, op0, op1, op2) \
+         ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
+-#define PL1_WRITE_MASK 0x4
+ 
+ #define SYSREG_OP0_SHIFT      20
+ #define SYSREG_OP0_MASK       0x3
+-- 
+2.34.1
 
-GetPlatformTimerFreq() checks for PcdArmArchTimerFreqInHz variable which
-sbsa-ref has set to 0. So it calls ArmGenericTimerGetTimerFreq() ->
-ArmReadCntFrq() -> "mrs x0, cntfrq_el0"
-
-I added debug output to firmware and it shows me:
-
-HRW: GetPlatformTimerFreq TimerFreq = 62500000
-
-Local tree:
-ed0604e99c (HEAD -> test-counter) target/arm: Default to 1GHz cntfrq for 'max' and new CPUs
-c0a8c341f5 target/arm: Refactor default generic timer frequency handling
-592c01312b hw: Add compat machines for 9.1
-62dbe54c24 (tag: v9.0.0-rc4, origin/master, origin/HEAD) Update version for v9.0.0-rc4 release
-a12214d1c4 (origin/staging) usb-storage: Fix BlockConf defaults
-
-sbsa-ref with "-cpu max" used. All cpu cores give me same value.

@@ -1,124 +1,180 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4099154ejd;
-        Mon, 22 Apr 2024 02:05:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWF5V0IlXuZTi2Oe/TN1x1/zshnVt2wp/U30QSzPbQhQFvLOjdk8QjzNxCKBsJ6/rbnHiId4d02LzvpdQPMtZBYgLgdacSG
-X-Received: by 2002:a05:6000:124f:b0:34b:3ef6:55b4 with SMTP id j15-20020a056000124f00b0034b3ef655b4mr474674wrx.7.1713776720544;
-        Mon, 22 Apr 2024 02:05:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713776720; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4112107ejd;
+        Mon, 22 Apr 2024 02:31:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX5ZaIY8bxnbAK7uSAaD+S8tjDr5SPhIFJxVJVRc9Th8nbKuGjhfKc4Z9bMW/qC0kuGUH4wi86LtjXBoP5YpUBTNo2MgnKp
+X-Google-Smtp-Source: AGHT+IFu9+plA5kVLwuuKJdznaPOP7+EMe5NPuFHFm1EV9EsLZJBowLx5VhY/tTmRLYPnwYhcw23
+X-Received: by 2002:a05:620a:1115:b0:78d:5185:48ca with SMTP id o21-20020a05620a111500b0078d518548camr10546026qkk.46.1713778269594;
+        Mon, 22 Apr 2024 02:31:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713778269; cv=none;
         d=google.com; s=arc-20160816;
-        b=C8bMRboXse+ewOm+5LRsZqX/gG5cmUCPG9V+0WjmKYwRPe09mM6tX11P5qg8dhMW41
-         nYS5YSpZue3sSuMK3f3+15V1RYfFS3vKgX4FiPtdGq4lxlwu90P3Tcq4Wz+loGYZjSS+
-         xPf+MEojqYOKmuVrDFQPoIJrJxnow6Z5QEOG/DB4bcZ6MLBzmp+e6KT6MANBmNWq863A
-         R90H3KZQjhgse/rO3x8arQJxdR036vWNoYUAsVdGqnmmabPm6ay42JUYraBsdUXZ4oKO
-         zlG/sGm0uZx7rC3ZX1hqqmTiGj8IH1Mc22HAoTWtLROjbzSKRQwQzPqRT/sXMdHdzw5t
-         J0zg==
+        b=UFJa9Pq1/fFUO3y34ZKHskdLSkqcZhZn+WuWAZ9ymQjWgHLx2AtK4Bu0VamuZB3jAo
+         mSq2mRE5c0cRrEtRPpxXZZZr2eIzIuuJhEp/BhyNQsBnaBd8QJES/GB6clhPsOO7UXpL
+         1SspgN8d1A8sINQA0tf85CSJwmkCAzssAwf6iy8NYmFnJVaG9SwT0F44ooNPSp8RpE3X
+         i1Z0eXzUVRrlHHmSStg3psja9aQZZR8l6YdqdSSGWVZoBHvpxq/W2lfwwEaXpx9w/d1g
+         neTluGCZfrK8EqP2TEgNru116eJe2vsONRdmHEFfGkAWpM+hUjhygzB9/3qAIv71M2Rz
+         l95w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=6bku35Pa23hx7jlKF3U6gFrNWhDJqMIVbU8YTHxAROc=;
-        fh=eJfsaQPHk00G9sXO1JCbhnhkDg2K0QrLdQThGo6Ket8=;
-        b=nnf0WgvroMJjFSRsDACbsxx9zlYs6M/9fejFfV9nUUaMvF71HlKRNUCKwNu5fINdC5
-         omLIs54wk8i49uS12XxuwQ9NIy/byekDxQzMKdv007hcPRmm1iGtRC27AR8bxnq8YBfi
-         nNylkE1REN64Hg0WAgMgDPT7d0iI129g6tlmH5z0saqjQv3utIPV5u6RQ2bUr0CsPc8F
-         M0VACyqMiCQ1eXtzXH8C6DSqSk5PoOaj2DbgRJ/LDNJRHvp7nu5BDjOvihFyk7D+VuVg
-         R+M/J0GdcuMjLtPx0aYD8HxXleuoRhgv56OLpfsiJpLOZrm5dVbHZE6ZIlfY9LW5AQ/1
-         qnUA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=M0lTlovALFtDrD/9nHFFARggRw0Hmes0UOkWRkfP5v0=;
+        fh=CvchfUC+IvxUFW3xcPq3ZcbjuPFFDkLY8RpAnUMNDFk=;
+        b=yuYfMF0VGwzWTHfG6SNl3Bsdafe+5qfIei4HBVdxpaFbfFMs+M98NRFUK+kxQfLlBt
+         1+5K9S+yGG6d10y69Fk9cavYvQfuXBXUPBz3ZPnz2JjsHsnnr2kQHqiHj5h0LozWR5a+
+         EcAgkZDgIC86tyEbNwkpm+0DqaUZdeYkPnqRKdj+VGE0dQt0aNezr4e6BWVJizxvYwvz
+         yHjO4yUG13z03ckses9aOxXXkHb0zkejA72hRVgUEZjc0rnkwx/+UThrvwzlhn/9FBmH
+         Lt4KkEvcyR0GJ28Eu9AIHb2MsGoSzgIRKsJZWhqbl8ijiwQKSDOkKdCiAw9bJvWZxh9t
+         OBQQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T0D6Ee6o;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id q26-20020adfab1a000000b00343c40821e9sor2498668wrc.8.2024.04.22.02.05.20
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y20-20020a37e314000000b0078ecf9c3480si9319374qki.555.2024.04.22.02.31.09
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 22 Apr 2024 02:05:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Apr 2024 02:31:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T0D6Ee6o;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713776720; x=1714381520; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6bku35Pa23hx7jlKF3U6gFrNWhDJqMIVbU8YTHxAROc=;
-        b=T0D6Ee6oZSDzFBQNgph5usqQENs/v4ujOkv38GLlecVoQdJkAmOsvTo8T0vcn/UYJ1
-         WsbKe8IG5UiLz9EZhcNB1MIsqg/8yQRXU5+iRPp3vzsxMTaVtM3axKQhq2FAHfT4EfnG
-         uD5Wvkw5cnrzXLdrJzGWQ1nmrLLNpa8+uYhsA7dw8VuN2o6xc7nXcjI04u762YqMw+py
-         JbC5braVXMjnZ/6eChHNbNeaHEwAbXBT9pm1xbYq1s9i/I14Sx0aJIF6QcHP/SP/doKP
-         k70+MEPwY8+6CzTYkbjvIFMAy1v9snMVYzju2AAgQeMD55ZygrFNqieHsmSjapx764ax
-         43MQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713776720; x=1714381520;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6bku35Pa23hx7jlKF3U6gFrNWhDJqMIVbU8YTHxAROc=;
-        b=Ca3rxpmvqCDZ6yqQEvjPJVxquxLyjEfcIm2bu5G2ONOjalZeJX2cHUPpuwL1WL9Wek
-         ZytlqSgt27bVwlaOCh+B5oJQTYVSrY3LjK/jlgzDVjm8pafCufdRY7h23ncRWIQNok9K
-         DSNvtnhLIUOwUTpLdnUb+be3dkUgbty00gmTywMv/dS/FZajiDsXXgAdoxRGKF1gaCnC
-         nbscq0aQ6jDYVW1t6d2wF4t5hlwOEqO8TxsmDbZ7JIAMF1pmOXPMUml/FDm464FCQnge
-         wbIpLvUTc2wvsM5ayMI/dBwFS4Fwv9EiRvPOZS4Dnl/uszw5+FUwHEtnULTiwgoB5Gf9
-         fVbQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUW71s04lQ8yYJ8HLnCDPTQgjNMcHfKQ1LJr2/r/Ikd/6lWdz8kKt9SS60QKb7QjpAn6mI0pUW6GN5F6dFbe0PN7Vz1Czpp
-X-Gm-Message-State: AOJu0YyxMp0Mk9X2oF411qRQloOeSjQC3d0/sezyQI3tF1PNtRjmfCiH
-	v1NyJc4RYz5RKwUEnVP8t7GViS3n6zlZ5Os0vVB9/iSRs66TAGrwLFe2zPFsBOzzjg==
-X-Google-Smtp-Source: AGHT+IH0bW441SeuH4pzB1JOInkylQKy7UFVU+26AbFUsLZxLebVBbEZ1E84FAsT/enoZ+PA/mOzjQ==
-X-Received: by 2002:adf:f6ca:0:b0:346:72f4:c805 with SMTP id y10-20020adff6ca000000b0034672f4c805mr5044587wrp.66.1713776720049;
-        Mon, 22 Apr 2024 02:05:20 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.1.28] (lfbn-bay-1-170-196.w83-193.abo.wanadoo.fr. [83.193.250.196])
-        by smtp.gmail.com with ESMTPSA id r30-20020adfb1de000000b00343e392829dsm11578896wra.97.2024.04.22.02.05.19
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 22 Apr 2024 02:05:19 -0700 (PDT)
-Message-ID: <50a43668-4a21-4f3e-a306-133dd1d54594@linaro.org>
-Date: Mon, 22 Apr 2024 11:05:18 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1ryq0h-00029X-8M; Mon, 22 Apr 2024 05:30:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1ryq0e-00029A-Li
+ for qemu-arm@nongnu.org; Mon, 22 Apr 2024 05:30:48 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1ryq0c-0001OC-2z
+ for qemu-arm@nongnu.org; Mon, 22 Apr 2024 05:30:48 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VNKgF2TVFz6JBNX;
+ Mon, 22 Apr 2024 17:28:25 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id B3DDC140B18;
+ Mon, 22 Apr 2024 17:30:38 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Mon, 22 Apr
+ 2024 10:30:38 +0100
+Date: Mon, 22 Apr 2024 10:30:37 +0100
+To: Ard Biesheuvel <ardb+git@google.com>
+CC: <devel@edk2.groups.io>, <quic_llindhol@quicinc.com>, Ard Biesheuvel
+ <ardb@kernel.org>, Richard Henderson <richard.henderson@linaro.org>, Philippe
+ Mathieu-Daud_ <philmd@linaro.org>, Idan Horowitz <idan.horowitz@gmail.com>,
+ <qemu-arm@nongnu.org>, <salil.mehta@huawei.com>
+Subject: Re: [PATCH] ArmVirtPkg/ArmVirtQemu: always build XIP code with
+ strict alignment
+Message-ID: <20240422103037.00000a96@Huawei.com>
+In-Reply-To: <20240419175013.3983824-1-ardb+git@google.com>
+References: <20240419175013.3983824-1-ardb+git@google.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 17/24] exec: Include missing 'qemu/log-for-trace.h' header
- in 'exec/log.h'
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- David Hildenbrand <david@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Anton Johansson <anjo@rev.ng>
-References: <20240418192525.97451-1-philmd@linaro.org>
- <20240418192525.97451-18-philmd@linaro.org>
- <76d68cab-7b28-43bf-89a6-bb39a7fdb131@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <76d68cab-7b28-43bf-89a6-bb39a7fdb131@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: FBz5zb6AwOkv
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500006.china.huawei.com (7.191.161.198) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5lUUG5jqgVgr
 
-On 21/4/24 18:44, Richard Henderson wrote:
-> On 4/18/24 12:25, Philippe Mathieu-Daudé wrote:
->> "exec/log.h" accesses the qemu_loglevel variable,
->> which is declared in "qemu/log-for-trace.h".
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   include/exec/log.h | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/include/exec/log.h b/include/exec/log.h
->> index 4a7375a45f..e0ff778a10 100644
->> --- a/include/exec/log.h
->> +++ b/include/exec/log.h
->> @@ -2,6 +2,7 @@
->>   #define QEMU_EXEC_LOG_H
->>   #include "qemu/log.h"
->> +#include "qemu/log-for-trace.h"
->>   #include "hw/core/cpu.h"
->>   #include "disas/disas.h"
-> 
-> I disagree: qemu/log.h is the main file; log-for-trace.h was split out 
-> for other usage. That shouldn't mean that log-for-trace.h needs to be 
-> spread around.
+On Fri, 19 Apr 2024 19:50:13 +0200
+Ard Biesheuvel <ardb+git@google.com> wrote:
 
-Good point, I haven't noticed we can just move the qemu_loglevel
-declaration.
+> From: Ard Biesheuvel <ardb@kernel.org>
+>=20
+> The optimization that enabled entry with MMU and caches enabled at EL1
+> removed the strict alignment requirement for XIP code (roughly, any code
+> that might execute with the MMU and caches off, which means SEC and PEI
+> phase modules but also *all* BASE libraries), on the basis that QEMU can
+> only run guest payloads at EL2 in TCG emulation, which used to ignore
+> alignment violations, and execution at EL1 would always occur with the
+> MMU enabled.
+>=20
+> This assumption no longer holds: not only does QEMU now enforce strict
+> alignment for memory accesses with device semantics, there are also
+> cases where this code might execute at EL2 under virtualization (i.e.,
+> under NV2 nested virtualization) where the strict alignment is required
+> too.
+>=20
+> The latter case could be optimized too, by enabling VHE and pretending
+> execution is occurring at EL1, which would allow the existing logic for
+> entry with the MMU enabled to be reused. However, this would leave
+> non-VHE CPUs behind.
+>=20
+> So in summary, strict alignment needs to be enforced for any code that
+> may execute with the MMU off, so drop the override that sets the XIP
+> flags to the empty string.
+>=20
+> Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Philippe Mathieu-Daud=EF=BF=BD <philmd@linaro.org>
+> Cc: Idan Horowitz <idan.horowitz@gmail.com>
+> Cc: qemu-arm@nongnu.org
+> Signed-off-by: Ard Biesheuvel <ardb@kernel.org>
+
+This matches what I was testing with locally. Thanks sorting this
+out.
+
+Tested-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+
+> ---
+>  ArmVirtPkg/ArmVirtQemu.dsc | 2 --
+>  1 file changed, 2 deletions(-)
+>=20
+> diff --git a/ArmVirtPkg/ArmVirtQemu.dsc b/ArmVirtPkg/ArmVirtQemu.dsc
+> index e48c75b5e99f..f6f78359552d 100644
+> --- a/ArmVirtPkg/ArmVirtQemu.dsc
+> +++ b/ArmVirtPkg/ArmVirtQemu.dsc
+> @@ -124,8 +124,6 @@ [LibraryClasses.common.UEFI_DRIVER]
+>  [BuildOptions]
+>=20
+>  !if $(CAVIUM_ERRATUM_27456) =3D=3D TRUE
+>=20
+>    GCC:*_*_AARCH64_PP_FLAGS =3D -DCAVIUM_ERRATUM_27456
+>=20
+> -!else
+>=20
+> -  GCC:*_*_AARCH64_CC_XIPFLAGS =3D=3D
+>=20
+>  !endif
+>=20
+> =20
+>=20
+>  !include NetworkPkg/NetworkBuildOptions.dsc.inc
+>=20
+> --
+> 2.44.0.769.g3c40516874-goog
+>=20
+

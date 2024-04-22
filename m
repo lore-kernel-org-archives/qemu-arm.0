@@ -1,116 +1,123 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4372722ejd;
-        Mon, 22 Apr 2024 08:57:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUYIxRQ1JjYGfHLtDY9PisjZPEDj2OoXsa765nF41pB6fXNLDq+mgZNSyrSahBNF4+l6J/MSQnGc0gL5QbdISOO7HWUHjwU
-X-Google-Smtp-Source: AGHT+IEQ0hXFwn9hoWM2ov68rX8du5F5/mtWsxx6IC6bd6UtWGAFIhaYJ2MjLP539Fn+zOolHOrJ
-X-Received: by 2002:ad4:52e4:0:b0:6a0:6d48:e008 with SMTP id p4-20020ad452e4000000b006a06d48e008mr114189qvu.14.1713801451562;
-        Mon, 22 Apr 2024 08:57:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713801451; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4374088ejd;
+        Mon, 22 Apr 2024 08:59:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXet3gjUMCvO/89q24dRII/7C6lFWf3O9037lHyTqo3esaxHyUCks2feyhdiLkABWROjSoPOABZ6/+x/+LrtceYf3Y9Qnm4
+X-Google-Smtp-Source: AGHT+IE9ryzu/XckJMHr77ZDK5YxvFGYWSuMwxrQNilwcTRm3yFW2XthfNuNUCJCLFrURZlquIhb
+X-Received: by 2002:a05:622a:1822:b0:439:577d:9a9e with SMTP id t34-20020a05622a182200b00439577d9a9emr12484578qtc.9.1713801587003;
+        Mon, 22 Apr 2024 08:59:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713801586; cv=none;
         d=google.com; s=arc-20160816;
-        b=lL+SrM8lXwKeLhNA37/5WcfOfUSNQ4et5hESIIoUh+UqXhaphqx1jDYlk9IeKVskmO
-         bHASxp2N6v9NlapGcjNUxpZeRPykeMbo5eQpQNUFZF1K5NGGNUE4+CVv2g+QREgRWKXT
-         SbNS9kRnybAwpLurFbuocsjXWiaQEzFVz8uiv4/oYLIgyOZVvA+/0Do0hKSYkm38Uj74
-         zipUxnDM5Rz2RjEmU6wGVduiTVF/6IlHXVIzWBG0DG3KVvkF/+1WH3ZegzjUDdo1y8Nq
-         6x3ZHFPJ26dgj6wdf7CtlFuSK5PdcoAArOZla1o4x34Py/WMM4KOSqTWqTEZQHEL19VP
-         YCAw==
+        b=hrxLk1mnt+97GZw2Kw8jsBvmjRki5gsVZTAJIAfhtP7XM9GAsjwgx8qaytsGOcK35k
+         qPFr3Okg+EJFy5yQhAKHa3bWf3hxq7Wsk0Enm+Twp7ZxRg1Y+bElV4uOJ18AVczPJWPl
+         2eaNh84XMqehz6K3yk5mNzbb9eis7Qb7778WUaUTgjO6OVPcrRd911luH87pYR9sLPU/
+         /SeAnEzBxMsXBIrkODiI/JjHi14jbyfleSwBCmkmdfOKjYXfopaHEk+EG34vpVyXYDHz
+         i5bRMskbV4GiogFAuUjb1GJHfYDIajXhAq90EKvxTOULcixVM+RHRKK1MWZaWJA7mGJs
+         gIhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=tBApjg9WR3qEgc5zMdctfxmtQQQ61WDmYwyqiPU9VyM=;
-        fh=WPJkwkHM1zDMH3gSeqxlA8K+LyaaAYqQfYjW1QfAEaI=;
-        b=rw51iiCnmpi3+zrCd5HJDM0qne0Gnuh8RnEAZ00wvLJMlycnuVtSgGHW7hi1p2GqoI
-         FzeMW8L1FkVOvl/gmm1EDOB34n8ovOqcd3SYytmhiLZ+m4lfIjZnXidjxLnsLcekBlb3
-         8AGOvBzM30RYAMKaTXvn0LfaW5mo+uraAN5xd9/3VY4f2xH/IkzJlzTkXLUXfdt+pa6I
-         2cMS53dFNdPIuv0nOmVZGX9hUgT2J8qbc/H2Blqk5ugTH2rAKqBG1EQIP+fnPHYQn6g/
-         Ej1zpwYYE5RXULs0YF8DMCyhVNA1R3ENG/BX2cI1ojAnCoqXB/ofFCJuQHnuJh8Ffjfr
-         MI/g==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=zTzh/CY5pEAB9F/D4tZJ6UKsdUsJeOrDVK6PgLKaRZ0=;
+        fh=OtxPdJAxXKm7vbHb6ldUE2wfoG5tYvWYBgJjhOxiO6o=;
+        b=Q8sA3Ah/qsOANrgdxIV8heC+qOqMTfI/FU28kgxKaXeEMLKHd2N/b1fwyUTYLFilai
+         i1hDi9A4dMY0J7Dkdg2qp47Z1eAfsZ6Avwe2eTA5PiMfsPXRof4qohu6W1PCESwKdXca
+         GcOM2e/mHHvoerki0bSofOqjiEcUOwNVvMyvoomBCYtVMMHfHlGN0v6h5UQzs2bpr0qj
+         rd/Aviv8N8v2pSUKwWpi2FPckMeZrrk8udYsiWZtvl4cMk8s/klG8kN9lnhb/ExagZie
+         rvM8RdcL4QgEx1omCnalfsgogezc74ZtfrTEFIbUXPvA/LF/KNhEChu3PDYLuD0Y+fOl
+         oUAQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EP0b1zLJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VBBbld38;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q6-20020a056214194600b0069b296fcc63si10663622qvk.235.2024.04.22.08.57.31
+        by mx.google.com with ESMTPS id b15-20020ac87fcf000000b00430ef644d5csi10550888qtk.275.2024.04.22.08.59.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Apr 2024 08:57:31 -0700 (PDT)
+        Mon, 22 Apr 2024 08:59:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EP0b1zLJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VBBbld38;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ryw2p-00042x-TO; Mon, 22 Apr 2024 11:57:28 -0400
+	id 1ryw4u-000560-CO; Mon, 22 Apr 2024 11:59:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ryw2o-00042b-Bd
- for qemu-arm@nongnu.org; Mon, 22 Apr 2024 11:57:26 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ id 1ryw4p-00055W-0o
+ for qemu-arm@nongnu.org; Mon, 22 Apr 2024 11:59:31 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ryw2m-0000MJ-8x
- for qemu-arm@nongnu.org; Mon, 22 Apr 2024 11:57:26 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-56e6a1edecfso6989831a12.1
- for <qemu-arm@nongnu.org>; Mon, 22 Apr 2024 08:57:23 -0700 (PDT)
+ id 1ryw4l-0000WT-H6
+ for qemu-arm@nongnu.org; Mon, 22 Apr 2024 11:59:30 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-56e6a1edecfso6993027a12.1
+ for <qemu-arm@nongnu.org>; Mon, 22 Apr 2024 08:59:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1713801442; x=1714406242; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=tBApjg9WR3qEgc5zMdctfxmtQQQ61WDmYwyqiPU9VyM=;
- b=EP0b1zLJ5Aakp4n03zwg+f64kmd8KrAIWGTYxy2gIhUHMDHh51whdjRKW1NIGUazw6
- /Lx7/pOIAMISv8jop6mmWb28DfeR18aj4OM7cOTI1xRpu/H1grTgshabhCGgIZrrwCqf
- 5yFkruvH5zEf1buJBG0dfCFVIJBT7vTC5isrxH2YAqhlQHo/GAjlk5wv9qhMcHFkACT5
- VbQeGiCQt6dNbYpT2KoV+t7CyMDjgIEORP+1KHTbcX00pSFYKhysDMpctHvb8LTvN+L6
- 8Fvj0I0SGmF3cPycSbRDXi7GsDz3ZWqDVvL6UU4DHhONohaK6cuckWe65MgPRjHeldyb
- eiXA==
+ d=linaro.org; s=google; t=1713801562; x=1714406362; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=zTzh/CY5pEAB9F/D4tZJ6UKsdUsJeOrDVK6PgLKaRZ0=;
+ b=VBBbld38fKhDeQ4XIuG/Nl42RhWxUTM4K3dfVtYcMbp/57Y2d8jrse4z/GVHctjbCJ
+ vixfZ8WuSVPyaUKB1Y6jwx5u0f8yVQkPx/+plwexB8keJU9M8hlfoj0lTxkZo2rrgxFl
+ om+pAdBwVq7ePHivdmYe5+5K2oxenOpfpiIvVZblw98WRTCSpk1ttzfNXxq1W787kT8o
+ jyktZ1ZAilPAKS/hQYjVBfCisEC9Wgv1coynLiDN/+8kHGiV7pQmGsPkT2fQDoBYC4ne
+ 7f9q/SVHETizlN6qAioKO32i9TX9hAC04LvA5UIq18pTj1hKfNB48mzGOSLk3tr6E0Rt
+ kxZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713801442; x=1714406242;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=tBApjg9WR3qEgc5zMdctfxmtQQQ61WDmYwyqiPU9VyM=;
- b=nyh/APn8D+vkh+esAfnLqM070xffcygLBz2q9L8zg+VoRtz5SEyPH4/U9qcPzqPzhX
- isylBYGbUTAF6PKLI3BuCziTOVtTp+g6X+uK6+dIJbBW6yygtFvE4Z5Z26edQi2Y5xAz
- o2wqfX9bx4iKfs+MzslmvvbomE7HD2kVuQHRtietS1kBDx6c634+ec4I0+0bf3qdRBNO
- baLqd6TTMQfEothQOmW8MMpZ9CBHfznFPP+Er/BZ/oOOflsi9M8jFQq9+aE7ns93SA6b
- ayszBmu1uRx+89eqSjIN6WLNuJR0jvDLY2QvzibpAHbIKRlML3rmDA5PinJF6o+NnU4a
- xsQA==
-X-Gm-Message-State: AOJu0YzO0LmhFWZw5C22knKaUfAQkY0VQiJG/76r+UbbDGySsDSUEte8
- tBQ7+QL1x/P4i85NKN9Ixf/m3nLKyo6Zm1rLEFRs7pF6xmHpC/gr1jeyqNuU7Vrcl9xKgQxpr7j
- UXhKlGwttCOEhn61t8lJ9nYBjKZhGU59U1AIDVQ==
-X-Received: by 2002:a50:9b51:0:b0:56d:f54a:8765 with SMTP id
- a17-20020a509b51000000b0056df54a8765mr8320828edj.23.1713801441641; Mon, 22
- Apr 2024 08:57:21 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1713801562; x=1714406362;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=zTzh/CY5pEAB9F/D4tZJ6UKsdUsJeOrDVK6PgLKaRZ0=;
+ b=sMWS3RxhcLmw8pd+C8XZyc82CoD+G+wxjwfvv3Ka5BcWkJh3H+wcpE8VGdI9G6JWCF
+ vVjbwmiqIfwCFMEfqo3sVBHKt+ITWN/TSrxo21kCcqztfbo+XGo8DeRjrLAh2d1bPrDZ
+ ntSz3e++zvXr+LOMzkOD28EXrCcqM1WTpekjWTsi2dNPQUnu7QaUaS6+H0Pbe4GIIRh9
+ 9jx3Xbrje0S1YVqg1eY6uwc4kI3xx0EaW1KSOdIm2NgkZAX8z4kcT21xFiuv36HwwkEo
+ Udmop2y1GJY7M21YH5sUY0auC5wwqC9P5msTkVVrnLMutZrdgheFmL9cRQXwbgi0OU5Q
+ hxzw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXZQ91hTz5GkvWQqJD+lfN9O1pSVMVUuz6Poi7cNF72C6kvueyfD/f+Y5Y+mMKi6b/xGNKTWfhDdNXD8t1edKJDZKhF
+X-Gm-Message-State: AOJu0YwQrsCbxrar4hRU6IySabDpKWnM3JqU+IUlc6R15rXHpyaL98j6
+ RtHxQXEb2a1IvwsOreDVtLMlk1TseBvXymIPeDouvrELMi9OOeK4JSb2RzV/etaxXuKP9TFecHV
+ yeJRe0DTQ5R4fACOWvMWuP8oPGnXdclzyL13Wbw==
+X-Received: by 2002:a50:ab1a:0:b0:570:4ae1:6534 with SMTP id
+ s26-20020a50ab1a000000b005704ae16534mr7614953edc.7.1713801562528; Mon, 22 Apr
+ 2024 08:59:22 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240419184608.2675213-1-peter.maydell@linaro.org>
- <CAFEAcA91ZULEjEgTotevp-epgH_azcwrSi9PVnnOSk8gq5j22g@mail.gmail.com>
- <c84bfac7-5fb5-4fca-90a3-93adb40bcf3c@linaro.org>
- <CAFEAcA_PWyu=ca-S=qwePDdGqjX95k3oQ+BJUZc541YEyV7i2w@mail.gmail.com>
-In-Reply-To: <CAFEAcA_PWyu=ca-S=qwePDdGqjX95k3oQ+BJUZc541YEyV7i2w@mail.gmail.com>
+References: <20240301204110.656742-1-richard.henderson@linaro.org>
+ <20240301204110.656742-6-richard.henderson@linaro.org>
+ <CAJ307Egu6951WwbdoTERUVff9cr=2qBK70FWgk3Ck-1DCpDtHA@mail.gmail.com>
+ <1e4cd671-45fe-4a97-8f76-5bbb07a84c15@linaro.org>
+In-Reply-To: <1e4cd671-45fe-4a97-8f76-5bbb07a84c15@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 Apr 2024 16:57:10 +0100
-Message-ID: <CAFEAcA_-97Qi2yk6yx9KLB=pDV15KaF57gfvNJWq2EDzwFLx4A@mail.gmail.com>
-Subject: Re: [PATCH 0/3] target/arm: Make the counter frequency default 1GHz
- for new CPUs, machines
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Radoslaw Biernacki <rad@semihalf.com>
+Date: Mon, 22 Apr 2024 16:59:11 +0100
+Message-ID: <CAFEAcA8RqJXm7aUv-odrDExYzxoWofzmZOT+A0MFtewZpTHJRg@mail.gmail.com>
+Subject: Re: [PATCH v3 5/6] target/arm: Do memory type alignment check when
+ translation disabled
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>, 
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Idan Horowitz <idan.horowitz@gmail.com>, 
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>, ardb@kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,27 +132,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yJwGkSR0Umi5
+X-TUID: EzcICWId5kUe
 
-On Mon, 22 Apr 2024 at 15:18, Peter Maydell <peter.maydell@linaro.org> wrote:
-> I imagine that value gets written into CNTFRQ by TF-A somewhere
-> along the line (and then read by EDK2 later), though I haven't
-> quite found where. Plus I notice that the TF-A sbsa-watchdog-timer
-> assumes that the generic-timer frequency and the watchdog
-> timer frequency are the same, which is a bit dubious IMHO.
+On Mon, 22 Apr 2024 at 16:48, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 4/22/24 08:26, Cl=C3=A9ment Chigot wrote:
+> > Hi Richard,
+> >
+> > While testing the future V9, I've some regressions on a custom board
+> > using cortex-R5 CPUs.
+> > Unaligned data accesses are no longer allowed because of that patch.
+> >
+> > I've dug into the various documentation and it seems that R-profile
+> > CPUs don't have the same default memory type as A-profile. It depends
+> > on a default memory map provided in the R-Profile RM in C1.3 [1], even
+> > when PMU is disabled.
+> >
+> >> Each PMSAv8-32 MPU has an associated default memory map which is used =
+when the MPU is not enabled.
+> >> ...
+> >> Table C1-4 and Table C1-5 describe the default memory map defined for =
+the EL1 MPU.
+> >
+> > For our case, Table C1-5 can be simplified as:
+> >   |  0x00000000 =E2=80=93 0x7FFFFFFF Normal
+> >   |  0x80000000 =E2=80=93 0xBFFFFFFF Device-nGnRE
+> >   |  0xC0000000 =E2=80=93 0xFFFFFFFF Device-nGnRnE
+> >
+> > Therefore, we can't blindly enable strict alignment checking solely on
+> > SCTLR bits. We should make it depend on the address targeted. But is
+> > it possible to know that address in `aprofile_require_alignment` ?
+> > with `mmu_idx` ?
+>
+> No, this would need to be handled in get_phys_addr_disabled.
+>
+> > By the way, are R-Profile CPUs the same as those having the `PMSA`
+> > feature ? That could mean we can use the `ARM_FEATURE_PMSA` to deal
+> > with that, instead of create a new `ARM_FEATURE_R`
+>
+> No, some armv5 have PMSA.
+>
+> >
+> > Note that the RM I've linked is for ARMv8. But this other link [2]
+> > seems to show a similar behavior for arm-v7.
+> >
+> > cc Jonathan and Ard, though not sure this is the same bug you've
+> > reported earlier.
+> >
+> > Thanks,
+> > Cl=C3=A9ment
+> > [1] https://developer.arm.com/documentation/ddi0568/a-c/?lang=3Den
+> > [2] https://developer.arm.com/documentation/ddi0406/cb/System-Level-Arc=
+hitecture/Protected-Memory-System-Architecture--PMSA-/About-the-PMSA/Enabli=
+ng-and-disabling-the-MPU?lang=3Den#BEIJEFCJ
+>
+> Ouch, thanks for the armv7 link.  At the moment it looks like my blanket =
+mmu-disabled
+> change should be restricted to armv8.
 
-Checking the BSA spec, this is actually correct -- the system
-watchdog is supposed to run at the generic counter frequency,
-which will be the same as the one the CPU generic timers use.
-So we need on the QEMU side to make the sbsa-watchdog device
-be runtime configurable for frequency and arrange for it to
-be set the same as the CPU.
-
-(We could also arrange this by modelling the memory mapped
-system counter properly; I have some slightly half-baked
-patches to do that floating around somewhere. But I'm still
-not quite sure it's worth the effort needed to try to get
-them into a fully baked state :-))
+Restricted to A-profile, probably. I haven't cross-checked, but IIRC
+for v7A this is IMPDEF and we're OK to fault it.
 
 thanks
 -- PMM

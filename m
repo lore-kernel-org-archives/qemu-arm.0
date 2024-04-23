@@ -1,150 +1,159 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4973319ejd;
-        Tue, 23 Apr 2024 05:20:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVc9oVwyiTHfyrx7qaBqi27FT5sJCDmMaL6mAip65VSbvUpRlzWTEhIxit+6qqtZwlg+5gqQXcoUa+sZIxJz+cX4zQyNO6w
-X-Received: by 2002:a05:6512:3c9e:b0:51b:2bc9:f1ba with SMTP id h30-20020a0565123c9e00b0051b2bc9f1bamr5793418lfv.47.1713874832063;
-        Tue, 23 Apr 2024 05:20:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713874832; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4978857ejd;
+        Tue, 23 Apr 2024 05:30:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW+RRNFFiYeCo7TE7TaGC320at2AqGfHOSuRrGu39kQXu/OrngIK6JsQFl3tNWSgacpOnUasjbyIVYakTlUgQL9VAJ71IZr
+X-Google-Smtp-Source: AGHT+IEbpPzlwEKBYQ+oodvbdZZwoZnDcL/A5yEUB6Ij1Oc7HO2m1vyiepRyHcI97I57VYGTjsr8
+X-Received: by 2002:a05:6358:6e90:b0:186:27f9:d71a with SMTP id q16-20020a0563586e9000b0018627f9d71amr20783960rwm.12.1713875409793;
+        Tue, 23 Apr 2024 05:30:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713875409; cv=none;
         d=google.com; s=arc-20160816;
-        b=OK7HqIv8jEakMbd1fy0XZwXeeKK9U+0azP+2qlSRhTVkcHhW+PRGmSeSYTbgvEzs4U
-         c8aUah+FrZzJ3frzbvOLo4OdjvXfimkVqULNKOV+bTje5AWkuTrvFdqzUTpzPGn9y+t/
-         c5Zx5AJ36J/8+OkwHFBdzyHAoBeX8tgTq5fUGS6PI7q3VKIjoi4pG4kAU3dfCTChaiG3
-         a8Y3tntsvvJUBpgC94HmQ6jY77H1bhNiMablz6Pa1sNEQZJ4tN64V6wzto14+x38aH/l
-         n6v6+iK2R4NlkUfhBPacAQtrWHPj6xJkMJytuR5Zcr01hppIVmGiVdbeerSe0Q/Z9wno
-         YbtQ==
+        b=lf2YlL5MBDlIP9OBBPLXgTYBRIZyYc82B4vRHLHA5pe3rNpsM/EO8IzmO1tWxJtI4a
+         BkvirRFBwbtjWQODev4C8LggYB8M4JhiRMz+G2J+8hcQYCgeE3gHzZ4bsL/fKJiK3iV+
+         6NzYbbIm/D7SPZs1NB0yX3N0JJEIz1TUMDr5IQMICBpxV5glRXLfniSXRYCSfdicY60A
+         qvlYe6sVXHE4Ngu2ZPKy2Elc7clWuuNVcXL57ZlpW05LFLoJoWd3K9HlahRkJC10bCEK
+         DyJGJkjaa+E/+H2veANqZGSdskjTbadDvyXQA6K5jwWFZPjU09hLh+OTN3lXbS65bBy5
+         LAKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=gYMz7MjvN68OhLwjzExPLgLFmIo+u86IPAUUmgeTNj8=;
-        fh=R42lQ2fT2CZYozvi/UisIuf2n4ZGXoxUs0w9JtG+mm8=;
-        b=WwYwgIYfHD5tPgHCmENsWgJiuc0RESZ6HfPjTApI1ZUoSfWQda6BpzmO7dK68FCV3k
-         m1U0GmIlc5qPcELSzLR0hyJ1/QAmYlfk7dPLwR5syb5QKS7gYvRmyc2RFTiGdnsJwgXw
-         iXvXvyPM+zp48eHWZoRq1bIFPZ6aQakEV/z9epCvOy+9zfA7Bg28GId0mU2kY/KKtgF8
-         5YdneCmiaYgCgiPLoQEirgZgmcYAmtadU32Dzp2GAvHS4DwSVFEb5kCDQPSXqGP/cDc9
-         0BM7ct5ASyc2ZtriGtgG8G5ubQAYNKt9Uc7lxKmzAkiCvlLNA8v0dEsYaLeuMTiXXbhg
-         aKbw==;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=r5YmGgbKI3nqiIt1WA82Fe5RFo8wRLu+Nl7AH7k4mj0=;
+        fh=wZqHyTFs6L4LPU3Kx9qLUZdYidQhWA9pq7mJaFoEadI=;
+        b=NenF+WscG+MV6ASmpeTHith+bnwsIR8Kx9g6BLwX3Sb4CnCKmneA1KdQUzhM1o4nRd
+         LoTFPlaXFykVDRM4zv9iMrFLO6816P8wDgsIfcbuvuYbJWZfGpTRl+2GEmhrifqrclC5
+         zY35zVnpXixGQTpc2KGhIg1/ut+DnsyspNXV8FuQyGCtBp+hur2DZc/FkCBzdvh/o7Qh
+         bk10LjyKDladLSu3zvQsSEiVprnZ2Bx2HETkmreUkJuia7J1fMERqSmXb5Ngbs15+CBj
+         dksnoqg0W4BUGWzCChABMydI+azJIsP5e9WCKgHDIZCBMtuktdGt0FX56W5HIwLWSvaO
+         i54w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=m+aXhupO;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id c20-20020a50d654000000b0056e2ba5443esor2623302edj.1.2024.04.23.05.20.31
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XRTHw1wD;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id w17-20020a05620a095100b0078eeda2cf82si11956363qkw.153.2024.04.23.05.30.09
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 23 Apr 2024 05:20:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 23 Apr 2024 05:30:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=m+aXhupO;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713874831; x=1714479631; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gYMz7MjvN68OhLwjzExPLgLFmIo+u86IPAUUmgeTNj8=;
-        b=m+aXhupObDf2xNWDVZ9MTY3Pz0KWdHztTPx/dsU45UzWmVYHVSG0o7Z2YAHDF5yp1e
-         ujJZUTlSXtJU8eI31kMFmLUwYsZ9yu+zgrlWS+yW4B0rWrhRPOEcnF2m+enaoH0F9yiN
-         d6sgh7asqgaKFVN96nexo7v5xYDS+NppYNX0Gu2DeVckC2b+vaNkYbosXExYel/LO3Xt
-         Z87eImMW/vEWATyLEz67QMfYDgjvfW3vk7pbDxwkowwWDXF2P21vBWxpYBxxs9++6HkA
-         9qw1TXa+KDF8O5FGVBkTplsfertrx+h7ctbyKsKvV9CJGAeOiQi3xT02c+XM3RdxJ3iH
-         I+JQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713874831; x=1714479631;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=gYMz7MjvN68OhLwjzExPLgLFmIo+u86IPAUUmgeTNj8=;
-        b=VP2VgKGcRg7d5tIGybYWTQ9c4E/hX/BKBjW55GH58Tddv9QqlFJZoMWnGX3h3EIIrr
-         qAW9C+YZYZifCN3k3Yy6cecalOJIx+A511cGzqYFv80jxpknAezg9ft1/CQUpzJHwhGO
-         bvUe7FtF8H7WjITYTYpM4s/lU4E9guXtoOhwQIwRtcQUdzRXB35XSBGkBn4xhw6U9mI6
-         AVJY74I+UBv8v/3htmOUFDqAx2IE/xT3zHumWmKw657icCLS9XRS97U+GmMgleW7aPtW
-         G81uGrNVboqMqjnY2dyS9uP1OP0A/kax0zbKZ9leekzdHXqaaUcjFmbGbepHFi1M3QMQ
-         Qb1w==
-X-Forwarded-Encrypted: i=1; AJvYcCWrwmFEhpVPYZpGGxtMoKUvZNEdIgQwEfcVPinLSdSYz9zmjVtgUnoET/0DyYfqN69gkQ2ajJUiOwVlDTo6Js/7Fd623skq
-X-Gm-Message-State: AOJu0YwLFIIUIvksZLrYJpigXkUipuW7I7YVd7zKhE/ULZsBcy9Fsips
-	I61hUj3znq2hyL2oPvN/vtGxPgxE9QEJWhdpZJEH7+INQm/vTQcrhp+fVTSst/HE/Ca35WVmfsn
-	r2tiwBd8Ri3xKxS1mEIDYGXPFtuzkQl6b8RrJPncO
-X-Google-Smtp-Source: AGHT+IEufC5CQcooFDS8qycrr/9+VHGzEu1NCuH8j9PxeX4emguu3mhQ1mjOuslnsJT6RT+XKfHg4eyQ4b1pVbigUjg=
-X-Received: by 2002:a50:9fc1:0:b0:56b:d139:490 with SMTP id
- c59-20020a509fc1000000b0056bd1390490mr9622407edf.6.1713874831482; Tue, 23 Apr
- 2024 05:20:31 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240419155709.318866-2-jean-philippe@linaro.org> <20240419155709.318866-16-jean-philippe@linaro.org>
-In-Reply-To: <20240419155709.318866-16-jean-philippe@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 23 Apr 2024 13:20:20 +0100
-Message-ID: <CAFEAcA_0wi_Ujt5vjbcUFacNqxktmbF7Kma8uEw+pOUp==W0oA@mail.gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XRTHw1wD;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1713875409;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=r5YmGgbKI3nqiIt1WA82Fe5RFo8wRLu+Nl7AH7k4mj0=;
+	b=XRTHw1wDGFiFZQG3lwGxwUrrnKyQpJQfO+nxsLJg2WQNrk3qAdaMj2u37ZLBmqFgTADpHr
+	9/IaWfsQsUBsyxQlqvc25Hy9Ib8xy5wr36mAHPzbRmvwOHbNMxsxc4IlP1esadcKvnsuc0
+	o4faVH47QDfk93LNvomp0OvXS6kMhqs=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-452-SVEwI74BMd-2fQMR7lLMGQ-1; Tue, 23 Apr 2024 08:30:06 -0400
+X-MC-Unique: SVEwI74BMd-2fQMR7lLMGQ-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com [10.11.54.9])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 85FE918065AE;
+	Tue, 23 Apr 2024 12:30:05 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.127])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 098E4492BC6;
+	Tue, 23 Apr 2024 12:30:02 +0000 (UTC)
+Date: Tue, 23 Apr 2024 13:30:00 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
+	richard.henderson@linaro.org, philmd@linaro.org,
+	pbonzini@redhat.com, alex.bennee@linaro.org, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>
 Subject: Re: [PATCH v2 14/22] target/arm/kvm-rme: Add Realm Personalization
  Value parameter
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: richard.henderson@linaro.org, philmd@linaro.org, pbonzini@redhat.com, 
-	alex.bennee@linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
-	Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
-	=?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	Eduardo Habkost <eduardo@habkost.net>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: FUaZ0IbdcM5H
+Message-ID: <ZiepyDp4LasLicJU@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20240419155709.318866-2-jean-philippe@linaro.org>
+ <20240419155709.318866-16-jean-philippe@linaro.org>
+ <CAFEAcA_0wi_Ujt5vjbcUFacNqxktmbF7Kma8uEw+pOUp==W0oA@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAFEAcA_0wi_Ujt5vjbcUFacNqxktmbF7Kma8uEw+pOUp==W0oA@mail.gmail.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+X-TUID: 2Lzn4SnpGl1L
 
-On Fri, 19 Apr 2024 at 16:59, Jean-Philippe Brucker
-<jean-philippe@linaro.org> wrote:
->
-> The Realm Personalization Value (RPV) is provided by the user to
-> distinguish Realms that have the same initial measurement.
->
-> The user provides up to 64 hexadecimal bytes. They are stored into the
-> RPV in the same order, zero-padded on the right.
->
-> Cc: Eric Blake <eblake@redhat.com>
-> Cc: Markus Armbruster <armbru@redhat.com>
-> Cc: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-> Cc: Eduardo Habkost <eduardo@habkost.net>
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> ---
-> v1->v2: Move parsing early, store as-is rather than reverted
-> ---
->  qapi/qom.json        |  15 +++++-
->  target/arm/kvm-rme.c | 111 +++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 125 insertions(+), 1 deletion(-)
->
-> diff --git a/qapi/qom.json b/qapi/qom.json
-> index 623ec8071f..91654aa267 100644
-> --- a/qapi/qom.json
-> +++ b/qapi/qom.json
-> @@ -931,6 +931,18 @@
->    'data': { '*cpu-affinity': ['uint16'],
->              '*node-affinity': ['uint16'] } }
->
-> +##
-> +# @RmeGuestProperties:
-> +#
-> +# Properties for rme-guest objects.
-> +#
-> +# @personalization-value: Realm personalization value, as a 64-byte hex =
-string
-> +#     (default: 0)
-> +#
-> +# Since: FIXME
-> +##
-> +{ 'struct': 'RmeGuestProperties',
-> +  'data': { '*personalization-value': 'str' } }
->
->  ##
->  # @ObjectType:
-> @@ -1066,7 +1078,8 @@
->        'tls-creds-x509':             'TlsCredsX509Properties',
->        'tls-cipher-suites':          'TlsCredsProperties',
->        'x-remote-object':            'RemoteObjectProperties',
-> -      'x-vfio-user-server':         'VfioUserServerProperties'
-> +      'x-vfio-user-server':         'VfioUserServerProperties',
-> +      'rme-guest':                  'RmeGuestProperties'
->    } }
+On Tue, Apr 23, 2024 at 01:20:20PM +0100, Peter Maydell wrote:
+> On Fri, 19 Apr 2024 at 16:59, Jean-Philippe Brucker
+> <jean-philippe@linaro.org> wrote:
+> >
+> > The Realm Personalization Value (RPV) is provided by the user to
+> > distinguish Realms that have the same initial measurement.
+> >
+> > The user provides up to 64 hexadecimal bytes. They are stored into the
+> > RPV in the same order, zero-padded on the right.
+> >
+> > Cc: Eric Blake <eblake@redhat.com>
+> > Cc: Markus Armbruster <armbru@redhat.com>
+> > Cc: Daniel P. Berrangé <berrange@redhat.com>
+> > Cc: Eduardo Habkost <eduardo@habkost.net>
+> > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > ---
+> > v1->v2: Move parsing early, store as-is rather than reverted
+> > ---
+> >  qapi/qom.json        |  15 +++++-
+> >  target/arm/kvm-rme.c | 111 +++++++++++++++++++++++++++++++++++++++++++
+> >  2 files changed, 125 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/qapi/qom.json b/qapi/qom.json
+> > index 623ec8071f..91654aa267 100644
+> > --- a/qapi/qom.json
+> > +++ b/qapi/qom.json
+> > @@ -931,6 +931,18 @@
+> >    'data': { '*cpu-affinity': ['uint16'],
+> >              '*node-affinity': ['uint16'] } }
+> >
+> > +##
+> > +# @RmeGuestProperties:
+> > +#
+> > +# Properties for rme-guest objects.
+> > +#
+> > +# @personalization-value: Realm personalization value, as a 64-byte hex string
+> > +#     (default: 0)
+> > +#
+> > +# Since: FIXME
+> > +##
+> > +{ 'struct': 'RmeGuestProperties',
+> > +  'data': { '*personalization-value': 'str' } }
+> >
+> >  ##
+> >  # @ObjectType:
+> > @@ -1066,7 +1078,8 @@
+> >        'tls-creds-x509':             'TlsCredsX509Properties',
+> >        'tls-cipher-suites':          'TlsCredsProperties',
+> >        'x-remote-object':            'RemoteObjectProperties',
+> > -      'x-vfio-user-server':         'VfioUserServerProperties'
+> > +      'x-vfio-user-server':         'VfioUserServerProperties',
+> > +      'rme-guest':                  'RmeGuestProperties'
+> >    } }
+> 
+> This list is in alphabetical order. Are we obliged to add new
+> items to the end for some compatibility reason, or should this new
+> item be filed in its correct place with the other 'r's ?
 
-This list is in alphabetical order. Are we obliged to add new
-items to the end for some compatibility reason, or should this new
-item be filed in its correct place with the other 'r's ?
+Ordering has no bearing on compatibility, so this should be at the
+correct alphbetical position.
 
-thanks
--- PMM
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

@@ -1,171 +1,165 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4975440ejd;
-        Tue, 23 Apr 2024 05:24:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXIKNl95HlP7dKhuNZQygZzOTQuId/kNT6WMEyH41QTxnjNkkHq1u/KhEk9xaREk4odXTXTHXrr+Eoh6V6ofsw2AZNzvVa8
-X-Google-Smtp-Source: AGHT+IEEEwjFF4wnPV0Ct1jMdoV1FprSV0QWPmWJ7QAGRjdsAIjMzTid1w+LNZ+JmWYKm3mmM6rp
-X-Received: by 2002:a05:622a:1344:b0:439:f542:fa1b with SMTP id w4-20020a05622a134400b00439f542fa1bmr1482730qtk.14.1713875041697;
-        Tue, 23 Apr 2024 05:24:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713875041; cv=none;
+Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp4968466ejd;
+        Tue, 23 Apr 2024 05:12:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXKMyunFdyxf0Wy2qNSfQNzN06xBoCNSNpgBRr70QXKGv/yHOMJyRx7d7q08zVZ6QdO49KPADkXF3Q9GwrEUCxk/6+6GSWL
+X-Google-Smtp-Source: AGHT+IGjE0LuignzFGJDKmzga8JsDmYQqla3Y1SwtRTbkotYVYCacJLhZ4XaQdO51nWcuDbuBLid
+X-Received: by 2002:a05:620a:c46:b0:78d:6477:37bc with SMTP id u6-20020a05620a0c4600b0078d647737bcmr16684801qki.51.1713874371819;
+        Tue, 23 Apr 2024 05:12:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713874371; cv=none;
         d=google.com; s=arc-20160816;
-        b=I53t4reLfnnGWp+8dD92uOwKw29PI1XWHAmI/n4PCE0ri0m0TgsFPPLJFcAagoeI6/
-         AdoQSN77Zz6I3iQXblTJCYccWLetjb7yfjQ30oQfqW9aeDFz/RGoTdHnOmP2GLAOpZ9c
-         rQE2PzL4wdOf3s5yx0hYzQ7RqeY//h6x9+brehx+JIEci1BYT1foNo01lBWW86EWFEPD
-         9Jii61da7CfFTxzoPVQPP64sYub30BaeUq+QQDYxWpgn4gT3CM9pUbAonF8wPniNYeiT
-         A/hjrNVmOCa+rvl/2w6MIlX0CDGhLEJaWVdPQ9+XBLGqpJ4CBOZrnOl3P5ryY+EMDzWC
-         XJdw==
+        b=yHVuCp6vjf4fW7AifQheAwIevTp/zlGEO+oYdDzQi37s9qFqnc+302zf8BlMbVX5Wt
+         VdV9XQcpOBt5hSJf7T+4rWptiGMulMkw2jJ1+/GDOxiDHeYmhGd9xfQLOqKEChYDqCOP
+         nVjHBrV/apyx5qiqT8knwKTZF5OAw5XVsMANSsiRD6WJX7evX583DXPKgTIrHJVd+zcM
+         bSg0ZxZinnIEPJ2ENafkEp2oapmwQlLdSzG7JaSkz2D6zVzbMrkK/GHR1FvtpnSwTqla
+         Udow6mHPyjND3osh2i8c2RVMQckCfPqynBruZA3seKQHWiklxo11wFmdk0tHEEPF0vhH
+         TfgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:message-id:date
-         :references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=fiqphxhYJargMMyLa5pQpnAo6EBJ91EbXVeBFXykreM=;
-        fh=91dEIlbah35+t9zVVyoBUs9Q3y3sqoz24ttnniBdHd8=;
-        b=P8tt3egka2bUfgdtXMIfVsms5emMh/xFG75e/fKBkRAuxVP3MNwOacRnD5mKxviFAq
-         QP9hSdDS7OODg3oHm6cbAG/Vj1qsP56pg0fxhc5OMG7NGrtdMN84cLMbCNtqKPLiZYrf
-         pAYRKnUAMgPW3TF8wGPIsdNB2gPM7Jtz+a0E8DL8VHTd4ydpb0apk8Lp5jawbVbBGqzo
-         9QFbp0Wp8TaovZBeHRbD+cMqxB2GNGfglKCv1mus9igEJG9IwzsPYmKE4LtWLokOZh/5
-         sBAl5ElMLDJ86N6nIlXeyPZNEciLT8eyIADXchByJnN1SYW/9zWKdYmpT6BtWT9IAR7u
-         bpLg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=2l7PltlWdJDwWp/74Dgpbb8SGt7xm86vms3Vm5cSd1E=;
+        fh=hhQGcvLODbZg2O14IKnmHpMtFS+N4nfbuOGWT8Fd3JM=;
+        b=DeNQ7vlAJfU+R+aNMi7QVuaVUMx+KlzPn4I2Efr7bmLMR66yzqVKplDqlpG7SA1Qlf
+         w9UAFICqKhq77ett8OrQmVVykUfj5RqexwdqgApDkrhJkrFf8dqL4uDkaZWs02f4wU7f
+         KyeyyJ3W8v6b7cmk5tJu3oHzNVIwINhQTAD2xFXuxHJGqYfcAnPI6wNIVqpEmz2u6U7i
+         HGrtQSSN0J22ZSD7EZiEaFjptoggKJHNFT+2vINzsLjR7H3NUULwEDWEEa8+BOyOVqas
+         56Sf1HMTPXckXJezLwRvqxdY1ZmHfq/DNpEQ7+2cy5/Ceev7TsDQy/rgGsSbUEco4iYT
+         CpBg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c3iKEF8A;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <armbru@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id x16-20020a05622a001000b0043787c0db4esi13186148qtw.252.2024.04.23.05.24.01
+       dkim=pass header.i=@linaro.org header.s=google header.b=n3KDW5Ro;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v20-20020a05620a0a9400b0078ec8244f78si12446455qkg.28.2024.04.23.05.12.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Apr 2024 05:24:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 23 Apr 2024 05:12:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c3iKEF8A;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1713875041;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=fiqphxhYJargMMyLa5pQpnAo6EBJ91EbXVeBFXykreM=;
-	b=c3iKEF8AUmOHhcHT+dT0tvLDK8s/n55QraW/7CdZFr6JWcDsVEX/pj0Yk14TYzBQHEqf2B
-	xk5ZakN8XB4UkClCVFktzBzN2AZeVkrNd6MgUjpSUVkWk21pq7tiNwwOphJBI2coEZ3I+m
-	7SLYglwEUu0VFgciPJGlKCUVE5r3qbM=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-264-mn02n3XQPyO058_wGItq9Q-1; Tue, 23 Apr 2024 08:23:57 -0400
-X-MC-Unique: mn02n3XQPyO058_wGItq9Q-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com [10.11.54.2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0BB988001B2;
-	Tue, 23 Apr 2024 12:23:57 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.247])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DE6B0406D72A;
-	Tue, 23 Apr 2024 12:23:56 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id E691C21E66E5; Tue, 23 Apr 2024 14:23:55 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: peter.maydell@linaro.org,  richard.henderson@linaro.org,
-  philmd@linaro.org,  pbonzini@redhat.com,  alex.bennee@linaro.org,
-  qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Eric Blake
- <eblake@redhat.com>,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Eduardo
- Habkost <eduardo@habkost.net>
-Subject: Re: [PATCH v2 15/22] target/arm/kvm-rme: Add measurement algorithm
- property
-In-Reply-To: <20240419155709.318866-17-jean-philippe@linaro.org>
-	(Jean-Philippe Brucker's message of "Fri, 19 Apr 2024 16:57:03 +0100")
-References: <20240419155709.318866-2-jean-philippe@linaro.org>
-	<20240419155709.318866-17-jean-philippe@linaro.org>
-Date: Tue, 23 Apr 2024 14:23:55 +0200
-Message-ID: <87o7a0b738.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+       dkim=pass header.i=@linaro.org header.s=google header.b=n3KDW5Ro;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rzF0j-0003cE-VV; Tue, 23 Apr 2024 08:12:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzF0i-0003au-IR
+ for qemu-arm@nongnu.org; Tue, 23 Apr 2024 08:12:32 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzF0f-0007Ib-P2
+ for qemu-arm@nongnu.org; Tue, 23 Apr 2024 08:12:32 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-34388753650so2906240f8f.3
+ for <qemu-arm@nongnu.org>; Tue, 23 Apr 2024 05:12:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1713874348; x=1714479148; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=2l7PltlWdJDwWp/74Dgpbb8SGt7xm86vms3Vm5cSd1E=;
+ b=n3KDW5RohaLbG+KPOrLw8RMo9/piYC3FBQX5HewKQDrhj2Md42C+UjJFLNHTOCMZCa
+ O8aAyRXee5ZJWyLN25c9coeEQe9sJ2QXkmG2NGgMz8kHBuhzboCIozZxJtZSB6yaWNvk
+ iTkxop8ed2fHpEJU2e7/0dEt5LAL1H6eLZakQskSaJt2u+nvRxhmKUd+t64aj5e7PPdQ
+ bkJhCsc1pQJxLvi3G75n4Tsbz1I2Flu01bud+XBBaRYsczLlwqeCb+eIyaw72We9ZE6D
+ dbwEN6IlBIStHXZmc/XUye4FvofdtLxb7xjKgDQHwYnUuRujVrtBMwCk9ZR3oSAfE4Bu
+ tcAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1713874348; x=1714479148;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=2l7PltlWdJDwWp/74Dgpbb8SGt7xm86vms3Vm5cSd1E=;
+ b=drJXcikLouzcN1cF1/HcTZ+ZCm43Lh4xIGdQdKdvS6AG4OO1/CPEM3o11YqHP/39VU
+ feSgwmLKLnA/F1SrwkIfyLpwx2n6rZOO+Bq6pkkX36qDvM/sPLZAjdLJNeKP2TD6tWnS
+ qahaQSGJwj+5jX5biePrS/M2YxiDdzr2SoIp5ZjRj/x1JJasM5xATALzIDPM/YYzRwOl
+ ErHyUojN4s433rECfwymu9ebTLnFh8aOC2BuLw4sVAEPUPP+D1kE+Ve747TyeeFP3dAt
+ Pva32DlrjsEC6ACA9vzXWHodsnatL1v62wkNcj61a5OcmeL6yYbmF/qWDV6p0JPjVryF
+ ZCHA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVaHrjd10s6SfJzaXYF8mUkovGBQlsG5+A1FcJs1HjPOyJjesnktAnRimc8114IQk7hSMweVKYWJdbN7TmdtxvtDxxM
+X-Gm-Message-State: AOJu0YznHtnmQU/j5xZst/87XgYSujCfeMz9tOAAGK2dg5Z03ziY9PJ9
+ FObh5MvjjBOe4CteK7/whBcMp5eD4Pll2ZHlGXG+Y+0FrsRkuApB5iUX2uvrlyM=
+X-Received: by 2002:a05:6000:11d0:b0:341:ce05:dba5 with SMTP id
+ i16-20020a05600011d000b00341ce05dba5mr8601607wrx.30.1713874348076; 
+ Tue, 23 Apr 2024 05:12:28 -0700 (PDT)
+Received: from [192.168.175.175] (228.53.205.77.rev.sfr.net. [77.205.53.228])
+ by smtp.gmail.com with ESMTPSA id
+ x5-20020a5d6b45000000b003472489d26fsm14517690wrw.19.2024.04.23.05.12.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 23 Apr 2024 05:12:27 -0700 (PDT)
+Message-ID: <69fe13c5-8351-44fe-bde5-88015b4f2523@linaro.org>
+Date: Tue, 23 Apr 2024 14:12:10 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
-X-TUID: 2+QEiQqy3HIV
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/3] target/arm: Refactor default generic timer frequency
+ handling
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20240419184608.2675213-1-peter.maydell@linaro.org>
+ <20240419184608.2675213-3-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240419184608.2675213-3-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sO65g5yh4YDq
 
-Jean-Philippe Brucker <jean-philippe@linaro.org> writes:
-
-> This option selects which measurement algorithm to use for attestation.
-> Supported values are SHA256 and SHA512. Default to SHA512 arbitrarily.
->
-> SHA512 is generally faster on 64-bit architectures. On a few arm64 CPUs
-> I tested SHA256 is much faster, but that's most likely because they only
-> support acceleration via FEAT_SHA256 (Armv8.0) and not FEAT_SHA512
-> (Armv8.2). Future CPUs supporting RME are likely to also support
-> FEAT_SHA512.
->
-> Cc: Eric Blake <eblake@redhat.com>
-> Cc: Markus Armbruster <armbru@redhat.com>
-> Cc: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-> Cc: Eduardo Habkost <eduardo@habkost.net>
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+On 19/4/24 20:46, Peter Maydell wrote:
+> The generic timer frequency is settable by board code via a QOM
+> property "cntfrq", but otherwise defaults to 62.5MHz.  The way this
+> is done includes some complication resulting from how this was
+> originally a fixed value with no QOM property.  Clean it up:
+> 
+>   * always set cpu->gt_cntfrq_hz to some sensible value, whether
+>     the CPU has the generic timer or not, and whether it's system
+>     or user-only emulation
+>   * this means we can always use gt_cntfrq_hz, and never need
+>     the old GTIMER_SCALE define
+>   * set the default value in exactly one place, in the realize fn
+> 
+> The aim here is to pave the way for handling the ARMv8.6 requirement
+> that the generic timer frequency is always 1GHz.  We're going to do
+> that by having old CPU types keep their legacy-in-QEMU behaviour and
+> having the default for any new CPU types be a 1GHz rather han 62.5MHz
+> cntfrq, so we want the point where the default is decided to be in
+> one place, and in code, not in a DEFINE_PROP_UINT64() initializer.
+> 
+> This commit should have no behavioural changes.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> v1->v2: use enum, pick default
-> ---
->  qapi/qom.json        | 18 +++++++++++++++++-
->  target/arm/kvm-rme.c | 39 ++++++++++++++++++++++++++++++++++++++-
->  2 files changed, 55 insertions(+), 2 deletions(-)
->
-> diff --git a/qapi/qom.json b/qapi/qom.json
-> index 91654aa267..84dce666b2 100644
-> --- a/qapi/qom.json
-> +++ b/qapi/qom.json
-> @@ -931,18 +931,34 @@
->    'data': { '*cpu-affinity': ['uint16'],
->              '*node-affinity': ['uint16'] } }
->=20=20
-> +##
-> +# @RmeGuestMeasurementAlgo:
-> +#
-> +# @sha256: Use the SHA256 algorithm
+>   target/arm/internals.h |  7 ++++---
+>   target/arm/cpu.c       | 31 +++++++++++++++++--------------
+>   target/arm/helper.c    | 16 ++++++++--------
+>   3 files changed, 29 insertions(+), 25 deletions(-)
 
-Let's have a blank line here.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> +# @sha512: Use the SHA512 algorithm
-> +#
-> +# Algorithm to use for realm measurements
-> +#
-> +# Since: FIXME
-
-9.1
-
-> +##
-> +{ 'enum': 'RmeGuestMeasurementAlgo',
-> +  'data': ['sha256', 'sha512'] }
-> +
->  ##
->  # @RmeGuestProperties:
->  #
->  # Properties for rme-guest objects.
->  #
-> +# @measurement-algo: Realm measurement algorithm (default: sha512)
-> +#
-
-We tend to avoid abbreviations in QMP: @measurement-algorithm.
-
-May want to rename the type to RmeGuestMeasurementAlgorithm for
-consistency.
-
->  # @personalization-value: Realm personalization value, as a 64-byte hex =
-string
->  #     (default: 0)
->  #
->  # Since: FIXME
->  ##
->  { 'struct': 'RmeGuestProperties',
-> -  'data': { '*personalization-value': 'str' } }
-> +  'data': { '*personalization-value': 'str',
-> +            '*measurement-algo': 'RmeGuestMeasurementAlgo' } }
->=20=20
->  ##
->  # @ObjectType:
-
-With these issues addressed, QAPI schema
-Acked-by: Markus Armbruster <armbru@redhat.com>
-
-[...]

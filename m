@@ -1,97 +1,97 @@
-Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp791903ejb;
-        Wed, 24 Apr 2024 10:45:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXnmhUbhVWgqwkmjShiO8hVcdWdDlQ78SN05MtH2BbMvlDoNV72TJRgzQ6zwjIjGy04flidNa1PISvnVJP++Js0Fu1pL4ku
-X-Google-Smtp-Source: AGHT+IGmBtnrqRPZ2pnOwGmZqkzicfAP92z7k3qut14Nyc4eEWYz2Kvd/hE09dtYZ+1BLfoixnLi
-X-Received: by 2002:a5b:b0c:0:b0:de5:4a94:b027 with SMTP id z12-20020a5b0b0c000000b00de54a94b027mr3319568ybp.53.1713980753978;
-        Wed, 24 Apr 2024 10:45:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713980753; cv=none;
+Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp792034ejb;
+        Wed, 24 Apr 2024 10:46:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXRV2Pp7qeGqX6yYRuIkFAWlyflb/risjfM+5wbhg34rPsrBGlT1YUgR62UeqlcWS5o0OGgEvFbUGZ1FYe3Qm5E8rnb0DwO
+X-Google-Smtp-Source: AGHT+IGsIW8a8xmqhnSobH6VElsMte5Kx1q7EdloEiajdeVea9bZz7NxDSum4tx/ldXRVCpbY10j
+X-Received: by 2002:a37:c449:0:b0:790:88fe:5658 with SMTP id h9-20020a37c449000000b0079088fe5658mr572481qkm.32.1713980768405;
+        Wed, 24 Apr 2024 10:46:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713980768; cv=none;
         d=google.com; s=arc-20160816;
-        b=0iQ4wg4ipwU96TDh5ubiN/DKcZDT0kEV6FjT4gARtj6FJF5JX2SyEHyIaINcI15+0H
-         qhxfJLlkQG1U4+FN1p95i9yso1nIdqIbcBZDfMyWjv5WtbD7WK0P6Kjy4dqqxVo1QFjF
-         bjpgJ99/WIelLa2n+h7LILzLWqOx7idpHMCfJgdxSREybIKsjHlFCF8UIuSgQSQc+6fo
-         EmddKZcXEoUfJUh2tiMl1TE5GB3iXOp6dC1r5NoA1NmBoExE7rZaxfXGq08bkG+m6k0v
-         TQJoZZRpsya2Y25MrdcHHsHPxySXwPoY0MliQjzsVmdq6to8sdjN6qZP8t4EsHEqobf0
-         SwOQ==
+        b=dFwVJ6h+8Mv9Bte+TadmU+TGv9PkWqNj/8TgBvs2mUzBVRkuaFYYpTE8q9oLzDB+iz
+         9MdvYfbSJxgT0jQPo3Mz71WY36jSfUaYKrEaUTDHSDC4yN4J7lEMn4AzthcUIQQc9/bG
+         K/7GMZu6cTHGDiksce3zF6I+HvuYgSI17XklS6YbHIDelRUw6gi02D0iCX4Hx35bU++Q
+         Qy3mGZFar0YMGJoxmH0NImXBYXQILJjsHtAXIcQHK+QfNUf/7RXgmEAOFCufWXLtbk1p
+         88M4hi8z7KndyesEyt4xRP/N7flczWeG+NsGtdU1ixAaoGHn3Pr+tkaThuBWtiqvS9Bb
+         g79A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ffMjM79d07wntpDOb5AXkdSL7inATxjs1KjISEI2gk0=;
-        fh=cxz8nMap0jiqldc4p67rXc4XZepDJBIKRl1YE8QD7uw=;
-        b=MKSuaxLamT4jRyJsl/lWrfo8NI6+JdLoeKM/dBwnBCBVNsaAzXPABaFvvWwjhj5ooQ
-         UCoVBPE1HvIIksvV26fDud3nKVu3qq6dOhC+n5DvNyl0mi4ad9VGuXBMiKsjhgved2jq
-         Sh4GWpm+pr+CwQ/TsLAxjS064vLN8wlTai4PtluG5Fown6vN5g5JK+nc6NP09gPCabCk
-         ALV91NDr3kGB/ra2HcIcF1fnYpq1WSHJVsIkpX/OjzRD3f4PhYEDzQxxW6G6combuuxB
-         BqASu3255VwyrdLc3spSi8ELG9x45kcNi17pMRsUgI5lRMHM4J+Giv+j8+yEkx+czt1n
-         HezQ==;
+        bh=S1vG3j9SklDspIE1oKgdKXBwljECYteot2YkVWDa25w=;
+        fh=UZI2xaj6P0caFCy7Huss7YTLsPa8Y5iSXeFncPqLo0w=;
+        b=PTWov89euK+jZ+UIwz8CHmaIUUHcHp6YFyaPj4YTK4bwTQZTTdICIUkANkIFxEwEsM
+         N+5QskL1SZETAvS4a4Ik3428RCc8uJrXciM/RZCVpvBp7cfo2tbVvC1kV9Sm6DXg7WkD
+         VUNh269ZYmMuz0Ar05tAlLLXUsn8Cxxoak7NLD1IBCQqJTyf24agrSj6HBtG9lFG7TF7
+         M0g73v7NDSm/00t6bSNwBJc4UsvQDkyR54MsPDZHFYVnXs50h6qDdC+rLB82YE1M+bVI
+         KinVY8LGFl2owiJNGQouxdsEkaG3/nOj/lUALwGGkotN2yjKaMfs7VMupUSBfB1/2gSM
+         bvSw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WY2fiU1G;
+       dkim=pass header.i=@linaro.org header.s=google header.b="hDzKW/7I";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jf13-20020a0562142a4d00b0069b538caa0asi15512012qvb.14.2024.04.24.10.45.53
+        by mx.google.com with ESMTPS id y10-20020a05620a44ca00b0078edc3ccad9si18371534qkp.411.2024.04.24.10.46.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Apr 2024 10:45:53 -0700 (PDT)
+        Wed, 24 Apr 2024 10:46:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WY2fiU1G;
+       dkim=pass header.i=@linaro.org header.s=google header.b="hDzKW/7I";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1rzggS-0005NA-9O; Wed, 24 Apr 2024 13:45:29 -0400
+	id 1rzggt-0005lC-0p; Wed, 24 Apr 2024 13:45:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzggJ-0005ID-7a
- for qemu-devel@nongnu.org; Wed, 24 Apr 2024 13:45:20 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzggT-0005Nu-Es
+ for qemu-devel@nongnu.org; Wed, 24 Apr 2024 13:45:29 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzggG-0005aI-IJ
- for qemu-devel@nongnu.org; Wed, 24 Apr 2024 13:45:17 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-41b21ed19f5so735275e9.2
- for <qemu-devel@nongnu.org>; Wed, 24 Apr 2024 10:45:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzggR-0005c3-Jr
+ for qemu-devel@nongnu.org; Wed, 24 Apr 2024 13:45:29 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-41b31e2788aso815215e9.3
+ for <qemu-devel@nongnu.org>; Wed, 24 Apr 2024 10:45:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1713980714; x=1714585514; darn=nongnu.org;
+ d=linaro.org; s=google; t=1713980725; x=1714585525; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ffMjM79d07wntpDOb5AXkdSL7inATxjs1KjISEI2gk0=;
- b=WY2fiU1Gq9sVpZTr+OknAg6ndnCEak4gpIrUBLHJYveYu8iUVtRh3MqNvwHU2NObnE
- 5I85uiAI1l4ga3JOBFafaIrJnfY/RzqaqZKI6JmKWH3it0mDJgT22yJ9WX0n04N1VYD8
- SCE25QPhTOW1/MOb1mRijXVkZJc1PUmhlPiSoDHY0d7ESM42mgwZaQ+WeVd2VBh0B5L/
- PmRo0Oh4wWMwLPTwtM2APr1pXXBLlezyFKtYF0HXOrlDAf4XJA6SNuDKOPpe7xTa9AHd
- 82A/csHqPPaza7LRcw+GcUJX4folRBTQLq4cakiEFaO5q0adY2wL5ApWIKmw3gvKIq0G
- CpbQ==
+ bh=S1vG3j9SklDspIE1oKgdKXBwljECYteot2YkVWDa25w=;
+ b=hDzKW/7IPUHiYbbr6SUp5RbE5KuB8q41m8XT8fgDeOj/OUPrzpl14OCxE0yEuxQjkk
+ xtvmklVVxZjgQKkz5MUrxdl7yAM0EmaTiXdZNDx8cMj4Jxgfp+cXjZ9QX5xDNCCOaIoG
+ GhhHKIakivf/RHw6AYHweKNYTFSe+jjK8jdXqt6AzKo+1BILHQJna3gcBIDZY1mpMGju
+ EGmzoytPBl/1YllW8OmXrEW6JgWb9wFBgpfbSu0dx4DK50oR6sjEzd0/2K8ZBruxVTFJ
+ muVsO76ll1HB0d8z2TZql2A3cwQUthlY+EzdAdruztJ+BfqA61qYbmIY8XkFfOkv73vP
+ DN/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713980714; x=1714585514;
+ d=1e100.net; s=20230601; t=1713980725; x=1714585525;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ffMjM79d07wntpDOb5AXkdSL7inATxjs1KjISEI2gk0=;
- b=lvLgW9q03PEQRxpmVQqfD1z4YxsOVFcdQqE7nTNDDV1WzeYNc0OkdyBw2OggUvxnkL
- cYuVF7BTVUyI+t1/Aid1FAGPRDYGEwQSaBIdaX2crj5gVdrJXE+Lbm+YCvHJ+AxpMYZQ
- X6h2T4LgQUKbat3cQgmE7Wi+fCmGk1zQzVY5VL7az43HefpBfy3VzHfAeiapFt6Wg0uP
- RPPmpb3Xkcv4abE5lPqvAGE752TjFHyD5UhFYtWQMqL3HAKpK7zaetrwCm8O0NfU6gUO
- QssKzJx0qCvKjGfqCz4ZDwWdiM2aPs0HC7bpX+5spQiUEnbJ1YEhmCruSATFw7KI+KBl
- b2Iw==
-X-Gm-Message-State: AOJu0Yy/rorSMOWV9BnGNJxllTAcJ3c3jKdakHHqakTiImc3AKS6s0zF
- 7jyVC3qlMAmFJuvWD3BXtShMVosp9QaD2LH8ouGgZCBgvbkvbM0G+sBlWKvXA6QKfDEAIKbt1D2
- E
-X-Received: by 2002:a05:600c:198b:b0:416:605b:5868 with SMTP id
- t11-20020a05600c198b00b00416605b5868mr2399343wmq.35.1713980714392; 
- Wed, 24 Apr 2024 10:45:14 -0700 (PDT)
+ bh=S1vG3j9SklDspIE1oKgdKXBwljECYteot2YkVWDa25w=;
+ b=blImnqfXW502zuIqZoaXRz/c1DB11EEcloOMNerSrWPyq9ehaA/KQgtZVcUugZIFeb
+ 9QJv3I+8iSq3Ghv/LM3m6k1udoUED2nkJRQn3/KAoAU3AFVfI/aE1NcuE+usU00JuMr9
+ niLhrscwhJhL8RvWDciTVNJgfqoAQruMMVxPg2/v3Hc1F1yl7pkFXkDTjhZf3OZ+rEzM
+ 1puEHBPpUf2aDnzOoXjTdO4GZUAqabxGfHprM22qopSS6ky8PbvpFDml4fxV63OKLBWh
+ Nwe828Bkvol5kxeuKgK012nuf7zIbuV6nirKcsOkyZ07FEqbn72pfYY38nUTMHa7we+N
+ 5r7w==
+X-Gm-Message-State: AOJu0Yz/O42+pO7jK5a0LJG+/EVLJ5+arAOshXfIV4i/hXxOKD8/OvxK
+ letx6J167o0J2i8+3GZRDRyFYAEJuPxaQkgcOl214LS4cfO/eLTTPvYyfgKCWxjZ7tkddOfxaTi
+ G
+X-Received: by 2002:a05:6000:1e8d:b0:346:b778:eaa7 with SMTP id
+ dd13-20020a0560001e8d00b00346b778eaa7mr1923315wrb.18.1713980725528; 
+ Wed, 24 Apr 2024 10:45:25 -0700 (PDT)
 Received: from localhost.localdomain
  (mon75-h03-176-184-51-42.dsl.sta.abo.bbox.fr. [176.184.51.42])
  by smtp.gmail.com with ESMTPSA id
- d5-20020a5d6445000000b0034659d971a6sm17637310wrw.26.2024.04.24.10.45.13
+ a3-20020adffb83000000b0034b32e5e9ccsm7253936wrr.64.2024.04.24.10.45.24
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 24 Apr 2024 10:45:13 -0700 (PDT)
+ Wed, 24 Apr 2024 10:45:25 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -99,18 +99,21 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
  qemu-arm@nongnu.org, Cameron Esfahani <dirty@apple.com>,
  Reinoud Zandijk <reinoud@netbsd.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/3] accel/whpx: Use accel-specific per-vcpu @dirty field
-Date: Wed, 24 Apr 2024 19:45:04 +0200
-Message-ID: <20240424174506.326-2-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>
+Subject: [PATCH 3/3] accel/hvf: Use accel-specific per-vcpu @dirty field
+Date: Wed, 24 Apr 2024 19:45:06 +0200
+Message-ID: <20240424174506.326-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240424174506.326-1-philmd@linaro.org>
 References: <20240424174506.326-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,114 +135,142 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mI3h0Hg0N21H
+X-TUID: qzIwYEiPI0Mr
 
-WHPX has a specific use of the CPUState::vcpu_dirty field
+HVF has a specific use of the CPUState::vcpu_dirty field
 (CPUState::vcpu_dirty is not used by common code).
 To make this field accel-specific, add and use a new
 @dirty variable in the AccelCPUState structure.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/i386/whpx/whpx-all.c | 23 ++++++++++++-----------
- 1 file changed, 12 insertions(+), 11 deletions(-)
+ include/hw/core/cpu.h     |  3 +--
+ include/sysemu/hvf_int.h  |  1 +
+ accel/hvf/hvf-accel-ops.c | 10 +++++-----
+ target/arm/hvf/hvf.c      |  4 ++--
+ target/i386/hvf/hvf.c     |  4 ++--
+ target/i386/hvf/x86hvf.c  |  2 +-
+ 6 files changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 31eec7048c..b08e644517 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -237,6 +237,7 @@ struct AccelCPUState {
-     uint64_t tpr;
-     uint64_t apic_base;
-     bool interruption_pending;
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 6f5a16e0fc..46b99a7ea5 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -505,6 +505,7 @@ struct CPUState {
+     uint32_t kvm_fetch_index;
+     uint64_t dirty_pages;
+     int kvm_vcpu_stats_fd;
++    bool vcpu_dirty;
+ 
+     /* Use by accel-block: CPU is executing an ioctl() */
+     QemuLockCnt in_ioctl_lock;
+@@ -526,8 +527,6 @@ struct CPUState {
+     int32_t exception_index;
+ 
+     AccelCPUState *accel;
+-    /* shared by kvm and hvf */
+-    bool vcpu_dirty;
+ 
+     /* Used to keep track of an outstanding cpu throttle thread for migration
+      * autoconverge
+diff --git a/include/sysemu/hvf_int.h b/include/sysemu/hvf_int.h
+index 718beddcdd..4a327fd526 100644
+--- a/include/sysemu/hvf_int.h
++++ b/include/sysemu/hvf_int.h
+@@ -55,6 +55,7 @@ struct AccelCPUState {
+     bool vtimer_masked;
+     sigset_t unblock_ipi_mask;
+     bool guest_debug_enabled;
 +    bool dirty;
+ };
  
-     /* Must be the last field as it may have a tail */
-     WHV_RUN_VP_EXIT_CONTEXT exit_ctx;
-@@ -839,7 +840,7 @@ static HRESULT CALLBACK whpx_emu_setreg_callback(
-      * The emulator just successfully wrote the register state. We clear the
-      * dirty state so we avoid the double write on resume of the VP.
-      */
--    cpu->vcpu_dirty = false;
-+    cpu->accel->dirty = false;
+ void assert_hvf_ok(hv_return_t ret);
+diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+index d94d41ab6d..40d4187d9d 100644
+--- a/accel/hvf/hvf-accel-ops.c
++++ b/accel/hvf/hvf-accel-ops.c
+@@ -204,15 +204,15 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
  
-     return hr;
- }
-@@ -1394,7 +1395,7 @@ static int whpx_last_vcpu_stopping(CPUState *cpu)
- /* Returns the address of the next instruction that is about to be executed. */
- static vaddr whpx_vcpu_get_pc(CPUState *cpu, bool exit_context_valid)
- {
--    if (cpu->vcpu_dirty) {
-+    if (cpu->accel->dirty) {
-         /* The CPU registers have been modified by other parts of QEMU. */
-         return cpu_env(cpu)->eip;
-     } else if (exit_context_valid) {
-@@ -1713,9 +1714,9 @@ static int whpx_vcpu_run(CPUState *cpu)
-     }
- 
-     do {
--        if (cpu->vcpu_dirty) {
-+        if (cpu->accel->dirty) {
-             whpx_set_registers(cpu, WHPX_SET_RUNTIME_STATE);
--            cpu->vcpu_dirty = false;
-+            cpu->accel->dirty = false;
-         }
- 
-         if (exclusive_step_mode == WHPX_STEP_NONE) {
-@@ -2063,9 +2064,9 @@ static int whpx_vcpu_run(CPUState *cpu)
- 
- static void do_whpx_cpu_synchronize_state(CPUState *cpu, run_on_cpu_data arg)
+ static void do_hvf_cpu_synchronize_state(CPUState *cpu, run_on_cpu_data arg)
  {
 -    if (!cpu->vcpu_dirty) {
 +    if (!cpu->accel->dirty) {
-         whpx_get_registers(cpu);
+         hvf_get_registers(cpu);
 -        cpu->vcpu_dirty = true;
 +        cpu->accel->dirty = true;
      }
  }
  
-@@ -2073,20 +2074,20 @@ static void do_whpx_cpu_synchronize_post_reset(CPUState *cpu,
-                                                run_on_cpu_data arg)
- {
-     whpx_set_registers(cpu, WHPX_SET_RESET_STATE);
--    cpu->vcpu_dirty = false;
-+    cpu->accel->dirty = false;
- }
- 
- static void do_whpx_cpu_synchronize_post_init(CPUState *cpu,
-                                               run_on_cpu_data arg)
- {
-     whpx_set_registers(cpu, WHPX_SET_FULL_STATE);
--    cpu->vcpu_dirty = false;
-+    cpu->accel->dirty = false;
- }
- 
- static void do_whpx_cpu_synchronize_pre_loadvm(CPUState *cpu,
-                                                run_on_cpu_data arg)
- {
--    cpu->vcpu_dirty = true;
-+    cpu->accel->dirty = true;
- }
- 
- /*
-@@ -2095,7 +2096,7 @@ static void do_whpx_cpu_synchronize_pre_loadvm(CPUState *cpu,
- 
- void whpx_cpu_synchronize_state(CPUState *cpu)
+ static void hvf_cpu_synchronize_state(CPUState *cpu)
  {
 -    if (!cpu->vcpu_dirty) {
 +    if (!cpu->accel->dirty) {
-         run_on_cpu(cpu, do_whpx_cpu_synchronize_state, RUN_ON_CPU_NULL);
+         run_on_cpu(cpu, do_hvf_cpu_synchronize_state, RUN_ON_CPU_NULL);
      }
  }
-@@ -2235,7 +2236,7 @@ int whpx_init_vcpu(CPUState *cpu)
-     }
- 
-     vcpu->interruptable = true;
+@@ -221,7 +221,7 @@ static void do_hvf_cpu_synchronize_set_dirty(CPUState *cpu,
+                                              run_on_cpu_data arg)
+ {
+     /* QEMU state is the reference, push it to HVF now and on next entry */
 -    cpu->vcpu_dirty = true;
 +    cpu->accel->dirty = true;
-     cpu->accel = vcpu;
-     max_vcpu_index = max(max_vcpu_index, cpu->cpu_index);
-     qemu_add_vm_change_state_handler(whpx_cpu_update_state, env);
+ }
+ 
+ static void hvf_cpu_synchronize_post_reset(CPUState *cpu)
+@@ -402,7 +402,7 @@ static int hvf_init_vcpu(CPUState *cpu)
+ #else
+     r = hv_vcpu_create((hv_vcpuid_t *)&cpu->accel->fd, HV_VCPU_DEFAULT);
+ #endif
+-    cpu->vcpu_dirty = 1;
++    cpu->accel->dirty = true;
+     assert_hvf_ok(r);
+ 
+     cpu->accel->guest_debug_enabled = false;
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 65a5601804..db628c1cba 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -806,9 +806,9 @@ int hvf_put_registers(CPUState *cpu)
+ 
+ static void flush_cpu_state(CPUState *cpu)
+ {
+-    if (cpu->vcpu_dirty) {
++    if (cpu->accel->dirty) {
+         hvf_put_registers(cpu);
+-        cpu->vcpu_dirty = false;
++        cpu->accel->dirty = false;
+     }
+ }
+ 
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 1ed8ed5154..e493452acb 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -419,9 +419,9 @@ int hvf_vcpu_exec(CPUState *cpu)
+     }
+ 
+     do {
+-        if (cpu->vcpu_dirty) {
++        if (cpu->accel->dirty) {
+             hvf_put_registers(cpu);
+-            cpu->vcpu_dirty = false;
++            cpu->accel->dirty = false;
+         }
+ 
+         if (hvf_inject_interrupts(cpu)) {
+diff --git a/target/i386/hvf/x86hvf.c b/target/i386/hvf/x86hvf.c
+index be2c46246e..1569f860eb 100644
+--- a/target/i386/hvf/x86hvf.c
++++ b/target/i386/hvf/x86hvf.c
+@@ -427,7 +427,7 @@ int hvf_process_events(CPUState *cs)
+     X86CPU *cpu = X86_CPU(cs);
+     CPUX86State *env = &cpu->env;
+ 
+-    if (!cs->vcpu_dirty) {
++    if (!cs->accel->dirty) {
+         /* light weight sync for CPU_INTERRUPT_HARD and IF_MASK */
+         env->eflags = rreg(cs->accel->fd, HV_X86_RFLAGS);
+     }
 -- 
 2.41.0
 

@@ -1,216 +1,155 @@
-Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp1170669ejb;
-        Thu, 25 Apr 2024 00:29:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWmwewf+EBuU+1aOkX4zfcdmWp8V3IdCrXFHtbtLwnL+dR/NyR49tJV3XtslbRHDWa0dCEbsQRJJoQAPirj5t9kdji+EfPT
-X-Google-Smtp-Source: AGHT+IEvcvtNAUiI/VF4C1ALNIKUK33vWVUnAqG7nIrrBs7OmWar4zJtAGHiQfAGDSF6V0tI1HHz
-X-Received: by 2002:a05:6000:50d:b0:346:ef6f:562b with SMTP id a13-20020a056000050d00b00346ef6f562bmr4121138wrf.53.1714030186214;
-        Thu, 25 Apr 2024 00:29:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714030186; cv=none;
+Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp791987ejb;
+        Wed, 24 Apr 2024 10:46:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVnHOKLYKUSFveL1I9r9Z1tQdTgAJOXcACnUTqjVWrCXaYTznBW3FGWCLn1Wj43YlKTSXIETSrpxw+6GNwyGtjNj6GqtNd2
+X-Google-Smtp-Source: AGHT+IFBByKWneX3tUSxW1jbNUCgGAML3HHhiQWqeu2z863v1/AdSujW8TdaB6Mj99xnJ4ERUab9
+X-Received: by 2002:a05:620a:579a:b0:790:8cb1:16e6 with SMTP id wk26-20020a05620a579a00b007908cb116e6mr2771539qkn.60.1713980763061;
+        Wed, 24 Apr 2024 10:46:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713980763; cv=none;
         d=google.com; s=arc-20160816;
-        b=FaKZHDjKZ0hHDrCLL/Zfpbv8eKjLXETvCKA27tsqI3yUrDhOkBDobrJvlttnqYO0bZ
-         yk83X/O0JNqnYcex4VuhRR1kLb4ARgMQOhizy0YXVEB6V0TA6vydl77T+mvXnfRwnbN/
-         18j3y4Hp6NygUOzLeexB5/USzakY2Upa+p7Fm7oHU9vkkMs3hL1d6P8ZcpJH3k/c/X1o
-         FWguj9pYMNsyOM0oPAnrXa84gBvrhYVM6cXohqzZUA3USF+oyF3/PmxdNWUWXR7sZLSH
-         qgBmZmbEwsuTxoN8UJEiiQrcxkg5Dhan2rQMh3mcWPMzsTYtxmp0c7Nxyd8FRV8SV9A1
-         IxsQ==
+        b=y07nbpbKqxGPTX/7C/TCxR+vyevN2enUaoBOTnTkIvM5l2ZnUbr7j2B60YNcUo0ZtB
+         FjiGvxDFu7/unsb7kHgA2Sflb5w2REtFgDnA3+4T6o7k7PrKp2LLbnIRcIv5AeQUkTLp
+         Q03cMRtHBazVaM8OorJ5eycSd6Dg65G97wpGxLqKBsLNVYQU9S/l+Z399E1V/FbZiXXs
+         PAz3xVwMB5uOaDj0siEYIk2asOCcbc5q+jfaxxRqTGXDTjFIKgQuh14EWiXZS3jPLhoC
+         SBeKSrJuGgdO6+YivJpgo8GzcSBu/Mi2Cq7fSQ48gY8NdxUDWWn3xcyCRS+q9Bwj++Hr
+         zrGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=Da3yxCWGzsnWNN6km+BcKJYVIH43tAdmKiFk55A1vrc=;
-        fh=LsweAqzktXfCcpdujJz1lS2dJjAzaTh1+7YaeFKgoxM=;
-        b=bpXLNcwUVYfCwG/XQJ6SivNU7g0DdI2LTCm7UA9SZQ412jW6aLhkDQ9CEt5B4AvXZR
-         nhzsev3bajGDNWW2FGZEpvXYi8gIuv14Aj3MSGsbZ4IfI0Ct+d8V9g6yhtcKsVHjm56p
-         m+WPjKJosLrlHlqMs19/f+P/oVVvNwIGBr2MLqR+kHIdGpeYaGLzWUmOSJba/DjpQ7VH
-         tq9t3//Fq/nWZnsmK5pyAH43+owrZ6gD+CUpXdStivprhgb0mnfcMC+C8Lhc2F11rut8
-         JXC3KiUKgiTf+ec73rIySuHeBfUGooybk8SuO0TAMj+Yyjch5NQIu/2oZBe8ZP88kV+S
-         e1Bg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Ml+4qNbbwrewfNa4tKqFrq9Yee47wMDeCNmhWRp2b6s=;
+        fh=kFznyDGgQWa7EGHYULnbMFEUYfrx+M/P24heDjBu56Q=;
+        b=I4R+XS6l8H0bBLrBkmZH1So0Vak8BJPGaiFvC/c5yqpm3rcmCdxbP8H86OTyofhoIO
+         qFuHy5ZQmu//iJvHlmKjkfJ+KaEOuydm+Qa/82rrKo8DUWdu0mgZ092FsDSTG82eam37
+         RiDMtnQ0JxhlN2ipZhCUPB/a4BArJ9XIKSo6vq05yh8fKpHITzYIhR9DsvOyJjGFjKIL
+         H6FUriAY9VbQgPO3dB4gNO8hvSFr7NlYtKy7p3YhwGfniqUGtWYScJmQna8UVYGisgMv
+         brj3ksvlxg8Z5t/Gu7ntgSAcu3xDMpJK6lEfHzI/UNyI72d3fkNuV9ATNyNbXawAOnGl
+         L5DQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@rev.ng header.s=dkim header.b=eKRbj7ld;
-       spf=pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) smtp.mailfrom=anjo@rev.ng;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=rev.ng
-Return-Path: <anjo@rev.ng>
-Received: from rev.ng (rev.ng. [5.9.113.41])
-        by mx.google.com with ESMTPS id f5-20020adfb605000000b0034abfdaec1esi5306574wre.606.2024.04.25.00.29.45
+       dkim=pass header.i=@linaro.org header.s=google header.b=mmqRn2sW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id xy23-20020a05620a5dd700b0078f103242a9si14799385qkn.489.2024.04.24.10.46.02
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Apr 2024 00:29:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) client-ip=5.9.113.41;
+        Wed, 24 Apr 2024 10:46:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@rev.ng header.s=dkim header.b=eKRbj7ld;
-       spf=pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) smtp.mailfrom=anjo@rev.ng;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=rev.ng
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
-	s=dkim; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive:List-Unsubscribe:List-Unsubscribe-Post:
-	List-Help; bh=Da3yxCWGzsnWNN6km+BcKJYVIH43tAdmKiFk55A1vrc=; b=eKRbj7ldRIKCcDi
-	0cwKzubk4X8WO9Ygs0PGviGBDuafgdKDlM8E1dJB/AwqSHYNXNgORb5G5zM2z1FL1RQdM3/qcZi32
-	A3dCSpLSlOnWKd5lLN2/pOdpCFWqxJwbbPc40X2gr45k2ce95tEPc4vqpUnkPeB+TMfKGqyU0sea2
-	PM=;
-Date: Thu, 25 Apr 2024 09:30:57 +0200
-From: Anton Johansson <anjo@rev.ng>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
-	Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
-	David Hildenbrand <david@redhat.com>, Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
-	Peter Xu <peterx@redhat.com>
-Subject: Re: [PATCH 09/24] physmem: Restrict TCG CPU IOTLB code to TCG accel
-Message-ID: <2efaq47itirahcuk3yxpccdyuuuvgbdugudzwl2qenhezso456@566dj53tasun>
-References: <20240418192525.97451-1-philmd@linaro.org>
- <20240418192525.97451-10-philmd@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=mmqRn2sW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rzggH-0005I1-MN; Wed, 24 Apr 2024 13:45:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzggF-0005Gg-DZ
+ for qemu-arm@nongnu.org; Wed, 24 Apr 2024 13:45:15 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzggB-0005Yz-S5
+ for qemu-arm@nongnu.org; Wed, 24 Apr 2024 13:45:13 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-34665dd7744so45351f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 24 Apr 2024 10:45:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1713980709; x=1714585509; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Ml+4qNbbwrewfNa4tKqFrq9Yee47wMDeCNmhWRp2b6s=;
+ b=mmqRn2sWKxKWFqDbRi1SWv0AMAPn0YKxWhD+Mmap2tV+ILnHP0RezUrhhSuL3+a5oQ
+ URLQ7VZTbccfVtyjcezzow5RjaUOi3Qmi/5zrNIiD+88dIdOp+QvfaUPouuPWaEmucpX
+ LfNzvFvRnW7B7MrzgGvZLfUjwcwV+YavcyYle6Eh5Km3vBRJXD2u9aJR9zPsBvbV8k6u
+ bNZ0bggLB4zRmyc81aISpyq3lRZ4rcsBWEJnhaNeAJBwMCvgDA00SVkqNb3ejlfgXoi0
+ bh4r12awrD4taG2VqGfsTFdJfZrvoeVkbX4ev6LlYF8okrXHVWoIOt4GpZn1+H/rW5Av
+ rpyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1713980709; x=1714585509;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Ml+4qNbbwrewfNa4tKqFrq9Yee47wMDeCNmhWRp2b6s=;
+ b=cRDydesO+9NRUsh0PI9zMkFMKr3yw8ePsyvmzqJv5xSbxkbqrVjmPjk/MH0nKGTtFX
+ Jt9YRVd3nYnCTaC+PZPAwW9sSm6PD1ZRjNmrm/FPk93FO157FaRM/UJQLu1p1ACY5bVS
+ E2QxsxvCFsPzshqthDgP1cazNl8rppmT0Enh7vYvNe/34iWeF8cj8ZthDQrGye3uop+u
+ IHa6ISN35FkQ3pAb/voUhyGljaYoBIqutNoAFEh2f33o55uTbdsH6KW/CPo8DUocH3Yx
+ Ry4VCoaIYMBbiyRYN4rJI2hGzgR0PfqDc+ef0y6dAJaSEKgH2fpyKa+6D4HlOIl3jtdu
+ uXlA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUFdekWY41EshQ43CK9cCPNnXBr2ohK5YDOWTHha2BkR00lN6KfQYlWAlh7SlrsCpKKc7afhF+LeaGXx7mT+QY78Y1y
+X-Gm-Message-State: AOJu0Yz4WMZhANe6ohgK4+Oy56FZjR+INygbx1wBCD9212UFNYLL7FhL
+ Hp18mEC3doI5tYa8bDz6C5T0zKlE0pwNDh8/Iqzc1b3tsVFktYS4GftEjNHue68=
+X-Received: by 2002:adf:fb0b:0:b0:346:d12d:fcab with SMTP id
+ c11-20020adffb0b000000b00346d12dfcabmr1726298wrr.65.1713980708973; 
+ Wed, 24 Apr 2024 10:45:08 -0700 (PDT)
+Received: from localhost.localdomain
+ (mon75-h03-176-184-51-42.dsl.sta.abo.bbox.fr. [176.184.51.42])
+ by smtp.gmail.com with ESMTPSA id
+ f3-20020adfe903000000b003445bb2362esm17616085wrm.65.2024.04.24.10.45.07
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 24 Apr 2024 10:45:08 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm@nongnu.org, Cameron Esfahani <dirty@apple.com>,
+ Reinoud Zandijk <reinoud@netbsd.org>,
+ Philippe =?unknown-8bit?q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/3] accel: Add new @dirty field on HVF/NVMM/WHPX
+Date: Wed, 24 Apr 2024 19:45:03 +0200
+Message-ID: <20240424174506.326-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240418192525.97451-10-philmd@linaro.org>
-X-TUID: s8crfEJVwiSY
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: w3mCo1FAvc0V
 
-On 18/04/24, Philippe Mathieu-Daudé wrote:
-> Restrict iotlb_to_section(), address_space_translate_for_iotlb()
-> and memory_region_section_get_iotlb() to TCG. Declare them in
-> "exec/cputlb.h". Declare iotlb_to_section() using the
-> MemoryRegionSection typedef.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  include/exec/cputlb.h   | 25 +++++++++++++++++++++++--
->  include/exec/exec-all.h | 21 ---------------------
->  system/physmem.c        |  6 ++++++
->  3 files changed, 29 insertions(+), 23 deletions(-)
-> 
-> diff --git a/include/exec/cputlb.h b/include/exec/cputlb.h
-> index 173eb98b9a..3594f904b4 100644
-> --- a/include/exec/cputlb.h
-> +++ b/include/exec/cputlb.h
-> @@ -21,6 +21,8 @@
->  #define CPUTLB_H
->  
->  #include "exec/abi_ptr.h"
-> +#include "exec/hwaddr.h"
-> +#include "exec/memattrs.h"
->  #include "exec/cpu-common.h"
->  #include "exec/mmu-access-type.h"
->  
-> @@ -43,10 +45,29 @@ void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
->                          MMUAccessType access_type, int mmu_idx);
->  
->  #if !defined(CONFIG_USER_ONLY)
-> -/* cputlb.c */
-> +
->  void tlb_protect_code(ram_addr_t ram_addr);
->  void tlb_unprotect_code(ram_addr_t ram_addr);
-> -#endif
-> +
-> +/**
-> + * iotlb_to_section:
-> + * @cpu: CPU performing the access
-> + * @index: TCG CPU IOTLB entry
-> + *
-> + * Given a TCG CPU IOTLB entry, return the MemoryRegionSection that
-> + * it refers to. @index will have been initially created and returned
-> + * by memory_region_section_get_iotlb().
-> + */
-> +MemoryRegionSection *iotlb_to_section(CPUState *cpu,
-> +                                      hwaddr index, MemTxAttrs attrs);
-> +MemoryRegionSection *
-> +address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
-> +                                  hwaddr *xlat, hwaddr *plen,
-> +                                  MemTxAttrs attrs, int *prot);
-> +hwaddr memory_region_section_get_iotlb(CPUState *cpu,
-> +                                       MemoryRegionSection *section);
-> +
-> +#endif /* CONFIG_USER_ONLY */
+We want CPUState to only contain fields used by common code.
+Start using a specific @dirty field for HVF/NVMM/WHPX
+(TCG then KVM will follow).
 
-!CONFIG_USER_ONLY
+Philippe Mathieu-Daudé (3):
+  accel/whpx: Use accel-specific per-vcpu @dirty field
+  accel/nvmm: Use accel-specific per-vcpu @dirty field
+  accel/hvf: Use accel-specific per-vcpu @dirty field
 
->  
->  #endif /* CONFIG_TCG */
->  
-> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-> index 5cddfea01b..e4cff08db4 100644
-> --- a/include/exec/exec-all.h
-> +++ b/include/exec/exec-all.h
-> @@ -536,21 +536,6 @@ extern __thread uintptr_t tci_tb_ptr;
->     smaller than 4 bytes, so we don't worry about special-casing this.  */
->  #define GETPC_ADJ   2
->  
-> -#if !defined(CONFIG_USER_ONLY)
-> -
-> -/**
-> - * iotlb_to_section:
-> - * @cpu: CPU performing the access
-> - * @index: TCG CPU IOTLB entry
-> - *
-> - * Given a TCG CPU IOTLB entry, return the MemoryRegionSection that
-> - * it refers to. @index will have been initially created and returned
-> - * by memory_region_section_get_iotlb().
-> - */
-> -struct MemoryRegionSection *iotlb_to_section(CPUState *cpu,
-> -                                             hwaddr index, MemTxAttrs attrs);
-> -#endif
-> -
->  /**
->   * get_page_addr_code_hostp()
->   * @env: CPUArchState
-> @@ -659,12 +644,6 @@ void tlb_reset_dirty(CPUState *cpu, ram_addr_t start1, ram_addr_t length);
->  void tlb_set_dirty(CPUState *cpu, vaddr addr);
->  void tlb_reset_dirty_range_all(ram_addr_t start, ram_addr_t length);
->  
-> -MemoryRegionSection *
-> -address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
-> -                                  hwaddr *xlat, hwaddr *plen,
-> -                                  MemTxAttrs attrs, int *prot);
-> -hwaddr memory_region_section_get_iotlb(CPUState *cpu,
-> -                                       MemoryRegionSection *section);
->  #endif
->  
->  #endif
-> diff --git a/system/physmem.c b/system/physmem.c
-> index cf6334f3a3..38d3ede9f9 100644
-> --- a/system/physmem.c
-> +++ b/system/physmem.c
-> @@ -31,6 +31,7 @@
->  #endif /* CONFIG_TCG */
->  
->  #include "exec/exec-all.h"
-> +#include "exec/cputlb.h"
->  #include "exec/target_page.h"
->  #include "hw/qdev-core.h"
->  #include "hw/qdev-properties.h"
-> @@ -585,6 +586,7 @@ typedef struct TCGIOMMUNotifier {
->      bool active;
->  } TCGIOMMUNotifier;
->  
-> +#ifdef CONFIG_TCG
->  static void tcg_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
->  {
->      TCGIOMMUNotifier *notifier = container_of(n, TCGIOMMUNotifier, n);
-> @@ -648,6 +650,7 @@ static void tcg_register_iommu_notifier(CPUState *cpu,
->          notifier->active = true;
->      }
->  }
-> +#endif
->  
->  void tcg_iommu_free_notifier_list(CPUState *cpu)
->  {
-> @@ -668,6 +671,7 @@ void tcg_iommu_init_notifier_list(CPUState *cpu)
->      cpu->iommu_notifiers = g_array_new(false, true, sizeof(TCGIOMMUNotifier *));
->  }
->  
-> +#ifdef CONFIG_TCG
->  /* Called from RCU critical section */
->  MemoryRegionSection *
->  address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr orig_addr,
-> @@ -761,6 +765,8 @@ hwaddr memory_region_section_get_iotlb(CPUState *cpu,
->      return section - d->map.sections;
->  }
->  
-> +#endif /* CONFIG_TCG */
+ include/hw/core/cpu.h       |  3 +--
+ include/sysemu/hvf_int.h    |  1 +
+ accel/hvf/hvf-accel-ops.c   | 10 +++++-----
+ target/arm/hvf/hvf.c        |  4 ++--
+ target/i386/hvf/hvf.c       |  4 ++--
+ target/i386/hvf/x86hvf.c    |  2 +-
+ target/i386/nvmm/nvmm-all.c | 21 +++++++++++----------
+ target/i386/whpx/whpx-all.c | 23 ++++++++++++-----------
+ 8 files changed, 35 insertions(+), 33 deletions(-)
 
-I might be missing some context here but are the other iotlb functions
-#ifdef CONFIG_TCG'd by some other patch?
+-- 
+2.41.0
 
-Otherwise,
-Reviewed-by: Anton Johansson <anjo@rev.ng>

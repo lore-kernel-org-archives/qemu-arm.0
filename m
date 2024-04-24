@@ -1,194 +1,180 @@
-Received: by 2002:a17:906:28cf:b0:a52:4db9:938b with SMTP id p15csp5131663ejd;
-        Tue, 23 Apr 2024 09:00:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUR9WWDPXBlMiagX+qUaL4heU0dkeiCyyAVIvk92tWYsVI/w0y5SkKIfECwmzeYXziYf7tB+FplzU4lzcnjnDVIEPE5xbFQ
-X-Received: by 2002:a05:622a:4d3:b0:439:a509:8845 with SMTP id q19-20020a05622a04d300b00439a5098845mr9934507qtx.37.1713888053321;
-        Tue, 23 Apr 2024 09:00:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1713888053; cv=none;
+Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp721046ejb;
+        Wed, 24 Apr 2024 09:05:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXLexehf3dlI/YIugLP6L/k5p/oflSJnLPO4WvDwkY0izaC7LVtURlbsJRhfNiRqsY5/DGqaaECjBr6EJYJ9G0Euqbq/e/w
+X-Google-Smtp-Source: AGHT+IH7IOWN16So+gjTxesh1iWghcMn0MJfj2xKu93Aw30RjCq7pMaY+OfLQS6wW+mW6XE046Gn
+X-Received: by 2002:a05:620a:5745:b0:78e:fd19:4e56 with SMTP id wj5-20020a05620a574500b0078efd194e56mr3192851qkn.28.1713974741654;
+        Wed, 24 Apr 2024 09:05:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1713974741; cv=none;
         d=google.com; s=arc-20160816;
-        b=vy2xL35F8EerIAU6HTpukQnqA9svJZmfjzW6Ybd/Lx6xMPVKH5zlDAfvVB4bKBy41J
-         6aznIV7mm20uMBO4aNQ4A6EOocqVzraGPlT1Hb5iT+oVGG+1x5WdvEZyJIlXMtiM11ls
-         zw6HV83TAayHFgjUTSVRBYpPuIu6DwW6+RAznj17OdXm0E6Me5uKzRhcOCErL3nEFtNZ
-         kkG6KxxivYIDb02fqyeKwe1eRHRk/dA6Zdc/AaKsR0KAkuHAgTGvcx0wSLihjqB7L9Ix
-         IMZ4xCwAsiydlnqo8N0SmFXD5HmVQiR2b3gJpYhzZEWS8rOkeIN0NXDs9/LK4i392eDg
-         aneQ==
+        b=fk3CZuiGFGjyeqcrNqzPDckFMksSlJlIBtZ2UDwhfpw9/poGHuD8YDQw07AFSW/mv/
+         HTCYzJdSjoRm5SVy3M2uCyrOMctiO5GiKyD9d3w00h2od9YMXj7eu6gaJ/bueBR+HOFS
+         q49DNZpMJjxl0xmt1qQ8YiOEX5ohe4xOXIlRf6ZW3Jzo3p4a0Xx0cCcFscZl1M6lF8MD
+         VF/hBci9lNCfSQuHa4kMy8DIJu6rYN7vBBqvggHodYgMcCGI/n+IJ8K8/GofXYgBxBhx
+         cqPgudAZWNW/7dbQ5Jzhr+5N5Cog/g3JmyDpC+D92SUov67RzDaIM3a50uBSTu00QLlD
+         wkIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=QUXF0pbqPINBlWAL3oyQd0ZXBGy6HiUG13wz1FRP9pg=;
-        fh=9rGLBOWWt/MoZKE8/tVxhPkMMeOtmmcPqjo55lUkq5M=;
-        b=XpJbwbeNjyS8n/SNtB2V/WgqmTsog1icesNaAa6qX/DoXb8HpH0nplwojiBDDRH5b3
-         2M0ld57AnvGoNENl/WhyxjLIgYLe6yCtbZMjeqZdLxbWrSsB8T2K4OOAH3yTgnZpgiq5
-         HIczCyEuwlFo5dXcTguJCaU9BBY7qrgjN1P56A7J/OUW++I2jYr6Yn8E40GAWcG6NTZ8
-         WE81JLCLzFDkovJ5kC5AvGULD4KVLGRTQmnQ3tCT+fpl9DVoWKzcBrhFH4KAXIca+MdM
-         xO80fObJ0bjJH0/ejbNyeD990Olzr/DxNFDgS2M4s1AoOQfuMMiGyTVEaF9uAjSl+bQN
-         O9Dw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=AvhxFkw9jqfxOrZ5LRzVFFZbTM1fOmun5chamhyiV+E=;
+        fh=KhPmtqiO7I+RHVSwxM6Q+2pSaisfnKJNQ7kjg9iU24w=;
+        b=NfoqIC08Tc4MeTcwj8Ttj2s70VTVJCc5FlJy9uhRY4K6c/vj7iiNo4O5iCrkQICdP0
+         5k5nqYaKYEd+/ytKs+xPu47zD8Sk9WqqZAdZyDsCRmWtfaY0SL5IVfe8cPMkm41zt8pt
+         /A5DomEoq17F5P69kPkfqr9P4cXdRagKwcXYEO0nwfOkHPptg1kKYI13awsxSPXUJhBk
+         c3eWXjpTumABjxs/be+4kUTBB0Za1eOxoz9ob+fKM0yHds39TChzeufrNLPcuIvFRta1
+         Fqdkdbh/d56kslT0WerYpa85aQhNqMi99duoLoeAcBcAaETHDxKGYuddAqhIQAvGN/aV
+         31Fg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qSWzR4oU;
-       spf=pass (google.com: domain of bill.mills@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=bill.mills@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="c00QQ/5J";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <bill.mills@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id cs7-20020ad44c47000000b006962ff5d8ecsor6843837qvb.10.2024.04.23.09.00.53
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id pj33-20020a05620a1da100b0078d67e70f5esi15041851qkn.222.2024.04.24.09.05.41
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 23 Apr 2024 09:00:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bill.mills@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 24 Apr 2024 09:05:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qSWzR4oU;
-       spf=pass (google.com: domain of bill.mills@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=bill.mills@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="c00QQ/5J";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1rzf75-00007E-7N; Wed, 24 Apr 2024 12:04:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rzf6x-00006Q-7J
+ for qemu-arm@nongnu.org; Wed, 24 Apr 2024 12:04:44 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rzf6v-0001eb-FH
+ for qemu-arm@nongnu.org; Wed, 24 Apr 2024 12:04:42 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-56e69a51a33so6621425a12.1
+ for <qemu-arm@nongnu.org>; Wed, 24 Apr 2024 09:04:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713888053; x=1714492853; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=QUXF0pbqPINBlWAL3oyQd0ZXBGy6HiUG13wz1FRP9pg=;
-        b=qSWzR4oUyZQBe3ZPDVP3RQg9JPIcp1F1rGp5QZMAZHMj5UlOnFS5z29eqp9qdvHYjF
-         +3Cv1U+zfeSJXxTEi9pEZvGeYKGuHzFML0PRK0/GwWugSiALhQ9sQWvAcZrF4WWYk3Dp
-         vrZOBp1pEGRKjm6jzzJgH5uC/F/DXmEe5SNMIA13zpbIsgHMiLHV8+Xc70vChpEO0NFJ
-         bPua9BS6efANloXcjGq95ngsY76yjNreb08P8McBUp8QAglr1ylNWOAPc/+J9V5USqrm
-         HES8T6Efb6gsXKX3xwjED3DpR0ZhL6YbfEngUKVQ//r96Htkflx4q+zsKEk1raYJXtiJ
-         a2BQ==
+ d=linaro.org; s=google; t=1713974679; x=1714579479; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=AvhxFkw9jqfxOrZ5LRzVFFZbTM1fOmun5chamhyiV+E=;
+ b=c00QQ/5JSjI1aIwpD8LUKni5NY7zpf2CRYNAlaG6jK9ApGQ++ElHUK0NirR7lo7vT5
+ 02IwyYfnzhT3VB4Gk1lxms8+fFQX8pVTAZDmm1pt/QdthuY23Pg8NKUB51Tkx3Y488Ge
+ d8m1thsJOCykNCu4vgqUBLUPK8cL7OE63wR/LIJmiDfT/4AvOtmX0H8bFkfDo0ZG12YD
+ kszQv8m3VIuLHv0Pa71JaLnV0FV+RnVDIziVSZm0S3IJOm4g0eQyJ7vnm81sEsDU1hrm
+ r5eP5hrIypZ+Yu8wS6E7DbmtB2nHNMngSdUTuEd6kLol4H8MevhMsKKEDCmxbdTMztiq
+ EzIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713888053; x=1714492853;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QUXF0pbqPINBlWAL3oyQd0ZXBGy6HiUG13wz1FRP9pg=;
-        b=Pndzkoztdnv4tyh03X1JFnKDLzrW5dbzBiJ5pbRKSGsFAlDwc9Gk885UaPYHPEvmg1
-         XAv2Zf0Vh/XmmfrRDqAsxeYhS5WZwZ9czISSwc/D2PNE0GDWecJJDUm6fFHR6il7Puio
-         Z3CPBiX4jVFa+tqKrobT2ia2pNKSXCbwDjCAXMOMvrUeLAzeCf2OTJEioVhp5xrvsK0K
-         qMDbZrNL35H2ySfry1CxTD8uQHxvumYrbtYO+ldbGrHEIg56zFKCp8h5Eh/8OozozeIv
-         s0AcKI32nVuuwFiXts9HSnLa+Qd4uEaJQcyZqxUT/qtBH13OCEnZAyUjZ3zxLZu54Mh0
-         MUVA==
-X-Forwarded-Encrypted: i=1; AJvYcCUtYmDZV2VMKofxIrjVWE5opfe2LxEOUkCNg8RZPJnPFVY9Ub8K6m5Lfgimqri5Frt/uPTIDq/C3uJ+L8DGCrqFLM/6B3l7
-X-Gm-Message-State: AOJu0YzWxKO0EMUJM+f300lBNnqmMusKtf6DzJ/1bPPkPsD2oBOGadf0
-	deidWPCF8OFh55GUp6+z5aeATCvyHnb6RAag8XWTRTs+OKKG62xQg01twO59yzoU7A==
-X-Google-Smtp-Source: AGHT+IFHyYErQf67inmK+ur4lzrBBmXfVCID0ViuwnycAsaZ92iAIKWD0AY5tw4uOOU7fVDE46HlMg==
-X-Received: by 2002:a0c:e58a:0:b0:6a0:582c:61a with SMTP id t10-20020a0ce58a000000b006a0582c061amr9791054qvm.55.1713888052666;
-        Tue, 23 Apr 2024 09:00:52 -0700 (PDT)
-Return-Path: <bill.mills@linaro.org>
-Received: from [192.168.2.7] (pool-72-83-14-124.washdc.fios.verizon.net. [72.83.14.124])
-        by smtp.gmail.com with ESMTPSA id ez4-20020ad45904000000b00690c77505bdsm4392053qvb.37.2024.04.23.09.00.50
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 23 Apr 2024 09:00:51 -0700 (PDT)
-Message-ID: <ecf04b2a-2038-43ac-a0bb-38d0baca7a7c@linaro.org>
-Date: Tue, 23 Apr 2024 12:00:50 -0400
+ d=1e100.net; s=20230601; t=1713974679; x=1714579479;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=AvhxFkw9jqfxOrZ5LRzVFFZbTM1fOmun5chamhyiV+E=;
+ b=ZSxPlRnn9K4G3F3MrBvRx6sZNZPGROePAxpJNYYQynrd0oz6sjSlEGS/Nkh6wT3sXm
+ yz6KcaZsXhfq67wVNpox/ExMpm5ByqFTj4Xe1Q961x695rC3smUB4xHINjQpbQIjB5oi
+ 2UGUXOyedrT524f/GsMj4Cg2k9f5cxAiDWrHxkrmGOhc7uUozNAEpXkvf13/UclLh7B5
+ EjJ6cGa32m83ZkZVwdY/DDjsZWkyriTZN7RmteUeG8T4RYUNgnrpHQSijn8tSBIdLuYk
+ IiMgCCbx7Ru4SiNfUn6tYLo4CSd/oPCGXVGEcbDx4DCLazsyNrfoEYX/kaDnOOQgd+gW
+ jK6A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXE/5hRwEPM0pq3munEsQOu/Q1mFqadPsPeYEzWf7eSbN4ASy3aswLHRtVcRtMn4A2ltNqiv9oMOVy5qd0zm1sEN3nB
+X-Gm-Message-State: AOJu0Yy5wI36bIL3tNbPg/EQ4p8dT73vS1JlP1bELytqEfTpoKG2WOjd
+ DLg97+kYzJbo18KRd4BqlAfu/nvIhoJFnjQHVuy8ApcQF19TGdy4hIvr95fRwhiCo/8ShMCK4JB
+ 97iwoO+2r63JRBZqXDGR+8AcOPW1vb544f+GAgSiB0ewNXaWMd14=
+X-Received: by 2002:a50:f688:0:b0:570:1ea6:e9d8 with SMTP id
+ d8-20020a50f688000000b005701ea6e9d8mr2137218edn.9.1713974679115; Wed, 24 Apr
+ 2024 09:04:39 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/6] Add ivshmem-flat device
-To: Markus Armbruster <armbru@redhat.com>,
- Gustavo Romero <gustavo.romero@linaro.org>
-Cc: qemu-devel@nongnu.org, philmd@linaro.org, thuth@redhat.com,
- lvivier@redhat.com, qemu-arm@nongnu.org, alex.bennee@linaro.org,
- pbonzini@redhat.com, anton.kochkov@proton.me, richard.henderson@linaro.org,
- peter.maydell@linaro.org
-References: <20240222222218.2261956-1-gustavo.romero@linaro.org>
- <87wmqp3xug.fsf@pond.sub.org>
- <a28f3657-c827-7a0d-a8da-b82d17d17577@linaro.org>
- <87sezc8irk.fsf@pond.sub.org>
-Content-Language: en-US
-From: Bill Mills <bill.mills@linaro.org>
-In-Reply-To: <87sezc8irk.fsf@pond.sub.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: wjhiQ3jVDSN2
+References: <CAFEAcA9JXOxkbQP6-1uTK+hG5yvYRcO31PYFZSxGjfrPis1nYA@mail.gmail.com>
+ <20240424125324.1628-1-adiupina@astralinux.ru>
+In-Reply-To: <20240424125324.1628-1-adiupina@astralinux.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 24 Apr 2024 17:04:27 +0100
+Message-ID: <CAFEAcA-=kk_TQVRLLQvH96DC-ffmDqd_hU5=z=Og8ntYGxPUeg@mail.gmail.com>
+Subject: Re: [PATCH v2 RFC] fix host-endianness bug and prevent overflow
+To: Alexandra Diupina <adiupina@astralinux.ru>
+Cc: Alistair Francis <alistair@alistair23.me>, "Konrad,
+ Frederic" <Frederic.Konrad@amd.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, sdl.qemu@linuxtesting.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: k4MArdBADw/w
 
-Hi Markus,
+On Wed, 24 Apr 2024 at 13:53, Alexandra Diupina <adiupina@astralinux.ru> wrote:
+>
+> Add a type cast and use extract64() instead of extract32()
+> to avoid integer overflow on addition. Fix bit fields
+> extraction according to documentation.
+> Also fix host-endianness bug by swapping desc fields from guest
+> memory order to host memory order after dma_memory_read().
 
-On 4/23/24 6:39 AM, Markus Armbruster wrote:
-> Gustavo Romero <gustavo.romero@linaro.org> writes:
-> 
->> Hi Markus,
->>
->> Thanks for interesting in the ivshmem-flat device.
->>
->> Bill Mills (cc:ed) is the best person to answer your question,
->> so please find his answer below.
->>
->> On 2/28/24 3:29 AM, Markus Armbruster wrote:
->>> Gustavo Romero <gustavo.romero@linaro.org> writes:
->>>
->>> [...]
->>>
->>>> This patchset introduces a new device, ivshmem-flat, which is similar to the
->>>> current ivshmem device but does not require a PCI bus. It implements the ivshmem
->>>> status and control registers as MMRs and the shared memory as a directly
->>>> accessible memory region in the VM memory layout. It's meant to be used on
->>>> machines like those with Cortex-M MCUs, which usually lack a PCI bus, e.g.,
->>>> lm3s6965evb and mps2-an385. Additionally, it has the benefit of requiring a tiny
->>>> 'device driver,' which is helpful on some RTOSes, like Zephyr, that run on
->>>> memory-constrained resource targets.
->>>>
->>>> The patchset includes a QTest for the ivshmem-flat device, however, it's also
->>>> possible to experiment with it in two ways:
->>>>
->>>> (a) using two Cortex-M VMs running Zephyr; or
->>>> (b) using one aarch64 VM running Linux with the ivshmem PCI device and another
->>>>       arm (Cortex-M) VM running Zephyr with the new ivshmem-flat device.
->>>>
->>>> Please note that for running the ivshmem-flat QTests the following patch, which
->>>> is not committed to the tree yet, must be applied:
->>>>
->>>> https://lists.nongnu.org/archive/html/qemu-devel/2023-11/msg03176.html
->>>
->>> What problem are you trying to solve with ivshmem?
->>>
->>> Shared memory is not a solution to any communication problem, it's
->>> merely a building block for building such solutions: you invariably have
->>> to layer some protocol on top.  What do you intend to put on top of
->>> ivshmem?
->>
->> Actually ivshmem is shared memory and bi-direction notifications (in this case a doorbell register and an irq).
-> 
-> Yes, ivshmem-doorbell supports interrupts.  Doesn't change my argument.
-> 
->> This is the fundamental requirement for many types of communication but our interest is for the OpenAMP project [1].
->>
->> All the OpenAMP project's communication is based on shared memory and bi-directional notification.  Often this is on a AMP SOC with Cortex-As and Cortex-Ms or Rs.  However we are now expanding into PCIe based AMP. One example of this is an x86 host computer and a PCIe card with an ARM SOC.  Other examples include two systems with PCIe root complex connected via a non-transparent bridge.
->>
->> The existing PCI based ivshmem lets us model these types of systems in a simple generic way without worrying about the details of the RC/EP relationship or the details of a specific non-transparent bridge.  In fact the ivshmem looks to the two (or more) systems like a non-transparent bridge with its own memory (and no other memory access is allowed).
->>
->> Right now we are testing this with RPMSG between two QEMU system where both systems are cortex-a53 and both running Zephyr. [2]
->>
->> We will expand this by switching one of the QEMU systems to either arm64 Linux or x86 Linux.
-> 
-> So you want to simulate a heterogeneous machine by connecting multiple
-> qemu-system-FOO processes via ivshmem, correct?
+Thanks for this patch. Could you split it into two, please?
+The error in handling of the descriptor extension fields is a
+separate problem from the endianness bug, so they should be
+fixed in separate patches.
 
-An AMP SOC is one use case.  A PCIe card with an embedded Cortex-M would 
-be another.
+> @@ -660,6 +660,24 @@ size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
+>              break;
+>          }
+>
+> +        /* Convert from LE into host endianness.  */
+> +        desc.control = le32_to_cpu(desc.control);
+> +        desc.descriptor_id = le32_to_cpu(desc.descriptor_id);
+> +        desc.xfer_size = le32_to_cpu(desc.xfer_size);
+> +        desc.line_size_stride = le32_to_cpu(desc.line_size_stride);
+> +        desc.timestamp_lsb = le32_to_cpu(desc.timestamp_lsb);
+> +        desc.timestamp_msb = le32_to_cpu(desc.timestamp_msb);
+> +        desc.address_extension = le32_to_cpu(desc.address_extension);
+> +        desc.next_descriptor = le32_to_cpu(desc.next_descriptor);
+> +        desc.source_address = le32_to_cpu(desc.source_address);
+> +        desc.address_extension_23 = le32_to_cpu(desc.address_extension_23);
+> +        desc.address_extension_45 = le32_to_cpu(desc.address_extension_45);
+> +        desc.source_address2 = le32_to_cpu(desc.source_address2);
+> +        desc.source_address3 = le32_to_cpu(desc.source_address3);
+> +        desc.source_address4 = le32_to_cpu(desc.source_address4);
+> +        desc.source_address5 = le32_to_cpu(desc.source_address5);
+> +        desc.crc = le32_to_cpu(desc.crc);
+> +
+>          xlnx_dpdma_update_desc_info(s, channel, &desc);
+>
+>  #ifdef DEBUG_DPDMA
 
-> 
->> We (and others) are also working on a generic virtio transport that will work between any two systems as long as they have shared memory and bi-directional notifications.
-> 
-> On top of or adjacent to ivshmem?
-> 
+I would suggest factoring out a function like
 
-On top of ivshmem.  It is not the only use case but it is an important one.
+static MemTxResult xlnx_dpdma_read_descriptor(XlnxDPDMAState *s,
+uint64_t desc_addr,
+                                              DPDMADescriptor *desc)
 
-I just gave a talk on this subject at EOSS.  If you would like to look 
-at the slides they are here:
-https://sched.co/1aBFm
+which wraps up "read the descriptor from desc_addr and fill in desc"
+as a single operation (by calling dma_memory_read() and then
+doing the byteswap).
 
-Thanks,
-Bill
-
->> Now for ivshmem-flat.  We want to expand this model to include MCU like CPUs and RTOS'es that don't have PCIe.  We focus on Cortex-M because every open source RTOS has an existing port for one of the Cortex-M machines already in QEMU.  However they don't normally pick the same one.  If we added our own custom machine for this, the QEMU project would push back and even if accepted we would have to do a port for each RTOS.  This would mean we would not test as many RTOSes.
->>
->> The ivshmem-flat is actually a good model for what a Cortex-M based PCIe card would look like.  The host system would see the connection as PCIe but to the Cortex-M it would just appear as memory, MMR's for the doorbell, and an IRQ.
->>
->> So even after we have a "roll your own machine definition from a file", I expect ivshmem and ivshmem-flat to still be very useful.
->>
->> [1] https://www.openampproject.org/
->> [2] Work in progress here: https://github.com/OpenAMP/openamp-system-reference/tree/main/examples/zephyr/dual_qemu_ivshmem
-> 
-
--- 
-Bill Mills
-Principal Technical Consultant, Linaro
-+1-240-643-0836
-TZ: US Eastern
-Work Schedule:  Tues/Wed/Thur
+thanks
+-- PMM

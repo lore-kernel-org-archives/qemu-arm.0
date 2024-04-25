@@ -1,42 +1,42 @@
-Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp1143109ejb;
-        Wed, 24 Apr 2024 23:28:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWUA2TECWV0TQy9yoVWkVcZMns6960kvPm5yltQGaOTSC7cdpwAHRcv9RYUcwCVnyZRreL7rOLXTK6Q7j5VpFa0lkHKkmjF
-X-Google-Smtp-Source: AGHT+IEFUI2KIGcEzbaa3eVCIY2d04TRgJ41dbTjN9EgyNtQrEyjnscvn6eMYkQuqN0dl3IjBgFX
-X-Received: by 2002:adf:f342:0:b0:349:d810:9974 with SMTP id e2-20020adff342000000b00349d8109974mr2830872wrp.17.1714026517468;
-        Wed, 24 Apr 2024 23:28:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714026517; cv=none;
+Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp1170669ejb;
+        Thu, 25 Apr 2024 00:29:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWmwewf+EBuU+1aOkX4zfcdmWp8V3IdCrXFHtbtLwnL+dR/NyR49tJV3XtslbRHDWa0dCEbsQRJJoQAPirj5t9kdji+EfPT
+X-Google-Smtp-Source: AGHT+IEvcvtNAUiI/VF4C1ALNIKUK33vWVUnAqG7nIrrBs7OmWar4zJtAGHiQfAGDSF6V0tI1HHz
+X-Received: by 2002:a05:6000:50d:b0:346:ef6f:562b with SMTP id a13-20020a056000050d00b00346ef6f562bmr4121138wrf.53.1714030186214;
+        Thu, 25 Apr 2024 00:29:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714030186; cv=none;
         d=google.com; s=arc-20160816;
-        b=Hhpry7FBHhrAyOmDveK7PW+Rtkp6dZ00oPIUlRYri0s0zavhX9LT01Xpf6Fvc8xOcI
-         lswuf//a8PK2mRkzzx2t4miyX58Wrn/U1Q3YpX/Dd8DKJn/PBtZNwmKTcsqgAk3uIyV7
-         O9RRsvOen2FaYKI9WMjaX95QTOXIEpSAOxT2D93Fu3v+lLAy6S8FPHIieB2VdWRSlPpI
-         Y19uizRiCz8NBmBBf0K5dTx1gkrzkrC4MnPBvzCPokDMVn3vXtMigoks2vA4Juka5ykw
-         g4YfZD8mhha7fKRzBmNdm6GkXbD9SUtnlXCnOKBZw4YDhoyj7VwBJGx13auFgsdWHcG2
-         Rg5g==
+        b=FaKZHDjKZ0hHDrCLL/Zfpbv8eKjLXETvCKA27tsqI3yUrDhOkBDobrJvlttnqYO0bZ
+         yk83X/O0JNqnYcex4VuhRR1kLb4ARgMQOhizy0YXVEB6V0TA6vydl77T+mvXnfRwnbN/
+         18j3y4Hp6NygUOzLeexB5/USzakY2Upa+p7Fm7oHU9vkkMs3hL1d6P8ZcpJH3k/c/X1o
+         FWguj9pYMNsyOM0oPAnrXa84gBvrhYVM6cXohqzZUA3USF+oyF3/PmxdNWUWXR7sZLSH
+         qgBmZmbEwsuTxoN8UJEiiQrcxkg5Dhan2rQMh3mcWPMzsTYtxmp0c7Nxyd8FRV8SV9A1
+         IxsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=5QMD6OT4/QN/tvMX/7HwcVotZ4cCQJVV7+QfBX/IXgc=;
-        fh=dNjB6WICFZxWQc8GY768FZO6HiP1SM1B7ly2xzLomko=;
-        b=FCDIrhjuAwD/DpYzMJ2TJfrqv/220tlX/WR2cs4bclodxaoOh5oYOwhAjMaf50rLX/
-         2NuF5iWKsgLqCVIuVvehUKdzzWcThQ2K1Jzal2UqRx4kWUo5zr/jGQp+Qfz7/PGSIIrc
-         +mHD9i8LZ0KkEghD6dIFSFr8cR3I4b4Xiv4uQYYR4hL+VIxT9h/TLpRk3P340yrFMliY
-         wavz1QraCFnlboLJiJtyVgD5qAewNLUrPIpqGn7xk9naOjqmkUepoa43hda7sbt9xurS
-         7wAYfUzdVf4K8/u/93dc95F/SP1GiVu+XxEqYNhn5CsRF1pUNMZpx4a/1xXmGZVLYgHw
-         Udgg==;
+        bh=Da3yxCWGzsnWNN6km+BcKJYVIH43tAdmKiFk55A1vrc=;
+        fh=LsweAqzktXfCcpdujJz1lS2dJjAzaTh1+7YaeFKgoxM=;
+        b=bpXLNcwUVYfCwG/XQJ6SivNU7g0DdI2LTCm7UA9SZQ412jW6aLhkDQ9CEt5B4AvXZR
+         nhzsev3bajGDNWW2FGZEpvXYi8gIuv14Aj3MSGsbZ4IfI0Ct+d8V9g6yhtcKsVHjm56p
+         m+WPjKJosLrlHlqMs19/f+P/oVVvNwIGBr2MLqR+kHIdGpeYaGLzWUmOSJba/DjpQ7VH
+         tq9t3//Fq/nWZnsmK5pyAH43+owrZ6gD+CUpXdStivprhgb0mnfcMC+C8Lhc2F11rut8
+         JXC3KiUKgiTf+ec73rIySuHeBfUGooybk8SuO0TAMj+Yyjch5NQIu/2oZBe8ZP88kV+S
+         e1Bg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@rev.ng header.s=dkim header.b=VS8TNiuP;
+       dkim=pass header.i=@rev.ng header.s=dkim header.b=eKRbj7ld;
        spf=pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) smtp.mailfrom=anjo@rev.ng;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=rev.ng
 Return-Path: <anjo@rev.ng>
 Received: from rev.ng (rev.ng. [5.9.113.41])
-        by mx.google.com with ESMTPS id y13-20020adff6cd000000b00343c09fa301si7768814wrp.169.2024.04.24.23.28.36
+        by mx.google.com with ESMTPS id f5-20020adfb605000000b0034abfdaec1esi5306574wre.606.2024.04.25.00.29.45
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Apr 2024 23:28:37 -0700 (PDT)
+        Thu, 25 Apr 2024 00:29:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) client-ip=5.9.113.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@rev.ng header.s=dkim header.b=VS8TNiuP;
+       dkim=pass header.i=@rev.ng header.s=dkim header.b=eKRbj7ld;
        spf=pass (google.com: domain of anjo@rev.ng designates 5.9.113.41 as permitted sender) smtp.mailfrom=anjo@rev.ng;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=rev.ng
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
@@ -45,51 +45,172 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
 	List-Post:List-Owner:List-Archive:List-Unsubscribe:List-Unsubscribe-Post:
-	List-Help; bh=5QMD6OT4/QN/tvMX/7HwcVotZ4cCQJVV7+QfBX/IXgc=; b=VS8TNiuP7OgPdUJ
-	QEV8fRLGE0wAPkCR6SlJs5Fu9RLITCHipuNzZbfe2ZbTDRmrQEOqZIrPGP1RN/D8Ec5xr+jZZ1anB
-	/oFJ+9cQQNSj3gMdhcenLgNyrVHLAMTED0n505jZtd+03ADjnOGjfVvEnsTc8Jr3fHE3Mf2nbkJQT
-	Vs=;
-Date: Thu, 25 Apr 2024 08:29:40 +0200
+	List-Help; bh=Da3yxCWGzsnWNN6km+BcKJYVIH43tAdmKiFk55A1vrc=; b=eKRbj7ldRIKCcDi
+	0cwKzubk4X8WO9Ygs0PGviGBDuafgdKDlM8E1dJB/AwqSHYNXNgORb5G5zM2z1FL1RQdM3/qcZi32
+	A3dCSpLSlOnWKd5lLN2/pOdpCFWqxJwbbPc40X2gr45k2ce95tEPc4vqpUnkPeB+TMfKGqyU0sea2
+	PM=;
+Date: Thu, 25 Apr 2024 09:30:57 +0200
 From: Anton Johansson <anjo@rev.ng>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
 	Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
 	David Hildenbrand <david@redhat.com>, Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
-	Eduardo Habkost <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	Yanan Wang <wangyanan55@huawei.com>, Peter Maydell <peter.maydell@linaro.org>, 
-	Nicholas Piggin <npiggin@gmail.com>, Daniel Henrique Barboza <danielhb413@gmail.com>, 
-	Palmer Dabbelt <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>, 
-	Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>, 
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Subject: Re: [PATCH 02/24] exec: Declare CPUBreakpoint/CPUWatchpoint type in
- 'breakpoint.h' header
-Message-ID: <bjz7nuf5v5z6vlucnm7rw2bp6dfnpw534pwfqzlenllmxzx3o2@tnzxchmwmcpl>
+	Peter Xu <peterx@redhat.com>
+Subject: Re: [PATCH 09/24] physmem: Restrict TCG CPU IOTLB code to TCG accel
+Message-ID: <2efaq47itirahcuk3yxpccdyuuuvgbdugudzwl2qenhezso456@566dj53tasun>
 References: <20240418192525.97451-1-philmd@linaro.org>
- <20240418192525.97451-3-philmd@linaro.org>
- <09dd8fe2-29ec-4099-9746-70fe8665b3dd@linaro.org>
+ <20240418192525.97451-10-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <09dd8fe2-29ec-4099-9746-70fe8665b3dd@linaro.org>
-X-TUID: 7va5T4o7MP2W
+In-Reply-To: <20240418192525.97451-10-philmd@linaro.org>
+X-TUID: s8crfEJVwiSY
 
 On 18/04/24, Philippe Mathieu-Daudé wrote:
-> On 18/4/24 21:25, Philippe Mathieu-Daudé wrote:
-> > The CPUBreakpoint and CPUWatchpoint structures are declared
-> > in "hw/core/cpu.h", which contains declarations related to
-> > CPUState and CPUClass. Some source files only require the
-> > BP/WP definitions and don't need to pull in all CPU* API.
-> > In order to simplify, create a new "exec/breakpoint.h" header.
-> > 
-> > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> > ---
-> >   include/exec/breakpoint.h | 23 +++++++++++++++++++++++
-> >   include/hw/core/cpu.h     | 16 +---------------
-> >   target/arm/internals.h    |  1 +
-> >   target/ppc/internal.h     |  1 +
-> >   target/riscv/debug.h      |  2 ++
-> >   5 files changed, 28 insertions(+), 15 deletions(-)
-> >   create mode 100644 include/exec/breakpoint.h
+> Restrict iotlb_to_section(), address_space_translate_for_iotlb()
+> and memory_region_section_get_iotlb() to TCG. Declare them in
+> "exec/cputlb.h". Declare iotlb_to_section() using the
+> MemoryRegionSection typedef.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  include/exec/cputlb.h   | 25 +++++++++++++++++++++++--
+>  include/exec/exec-all.h | 21 ---------------------
+>  system/physmem.c        |  6 ++++++
+>  3 files changed, 29 insertions(+), 23 deletions(-)
+> 
+> diff --git a/include/exec/cputlb.h b/include/exec/cputlb.h
+> index 173eb98b9a..3594f904b4 100644
+> --- a/include/exec/cputlb.h
+> +++ b/include/exec/cputlb.h
+> @@ -21,6 +21,8 @@
+>  #define CPUTLB_H
+>  
+>  #include "exec/abi_ptr.h"
+> +#include "exec/hwaddr.h"
+> +#include "exec/memattrs.h"
+>  #include "exec/cpu-common.h"
+>  #include "exec/mmu-access-type.h"
+>  
+> @@ -43,10 +45,29 @@ void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
+>                          MMUAccessType access_type, int mmu_idx);
+>  
+>  #if !defined(CONFIG_USER_ONLY)
+> -/* cputlb.c */
+> +
+>  void tlb_protect_code(ram_addr_t ram_addr);
+>  void tlb_unprotect_code(ram_addr_t ram_addr);
+> -#endif
+> +
+> +/**
+> + * iotlb_to_section:
+> + * @cpu: CPU performing the access
+> + * @index: TCG CPU IOTLB entry
+> + *
+> + * Given a TCG CPU IOTLB entry, return the MemoryRegionSection that
+> + * it refers to. @index will have been initially created and returned
+> + * by memory_region_section_get_iotlb().
+> + */
+> +MemoryRegionSection *iotlb_to_section(CPUState *cpu,
+> +                                      hwaddr index, MemTxAttrs attrs);
+> +MemoryRegionSection *
+> +address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
+> +                                  hwaddr *xlat, hwaddr *plen,
+> +                                  MemTxAttrs attrs, int *prot);
+> +hwaddr memory_region_section_get_iotlb(CPUState *cpu,
+> +                                       MemoryRegionSection *section);
+> +
+> +#endif /* CONFIG_USER_ONLY */
 
+!CONFIG_USER_ONLY
+
+>  
+>  #endif /* CONFIG_TCG */
+>  
+> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+> index 5cddfea01b..e4cff08db4 100644
+> --- a/include/exec/exec-all.h
+> +++ b/include/exec/exec-all.h
+> @@ -536,21 +536,6 @@ extern __thread uintptr_t tci_tb_ptr;
+>     smaller than 4 bytes, so we don't worry about special-casing this.  */
+>  #define GETPC_ADJ   2
+>  
+> -#if !defined(CONFIG_USER_ONLY)
+> -
+> -/**
+> - * iotlb_to_section:
+> - * @cpu: CPU performing the access
+> - * @index: TCG CPU IOTLB entry
+> - *
+> - * Given a TCG CPU IOTLB entry, return the MemoryRegionSection that
+> - * it refers to. @index will have been initially created and returned
+> - * by memory_region_section_get_iotlb().
+> - */
+> -struct MemoryRegionSection *iotlb_to_section(CPUState *cpu,
+> -                                             hwaddr index, MemTxAttrs attrs);
+> -#endif
+> -
+>  /**
+>   * get_page_addr_code_hostp()
+>   * @env: CPUArchState
+> @@ -659,12 +644,6 @@ void tlb_reset_dirty(CPUState *cpu, ram_addr_t start1, ram_addr_t length);
+>  void tlb_set_dirty(CPUState *cpu, vaddr addr);
+>  void tlb_reset_dirty_range_all(ram_addr_t start, ram_addr_t length);
+>  
+> -MemoryRegionSection *
+> -address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
+> -                                  hwaddr *xlat, hwaddr *plen,
+> -                                  MemTxAttrs attrs, int *prot);
+> -hwaddr memory_region_section_get_iotlb(CPUState *cpu,
+> -                                       MemoryRegionSection *section);
+>  #endif
+>  
+>  #endif
+> diff --git a/system/physmem.c b/system/physmem.c
+> index cf6334f3a3..38d3ede9f9 100644
+> --- a/system/physmem.c
+> +++ b/system/physmem.c
+> @@ -31,6 +31,7 @@
+>  #endif /* CONFIG_TCG */
+>  
+>  #include "exec/exec-all.h"
+> +#include "exec/cputlb.h"
+>  #include "exec/target_page.h"
+>  #include "hw/qdev-core.h"
+>  #include "hw/qdev-properties.h"
+> @@ -585,6 +586,7 @@ typedef struct TCGIOMMUNotifier {
+>      bool active;
+>  } TCGIOMMUNotifier;
+>  
+> +#ifdef CONFIG_TCG
+>  static void tcg_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
+>  {
+>      TCGIOMMUNotifier *notifier = container_of(n, TCGIOMMUNotifier, n);
+> @@ -648,6 +650,7 @@ static void tcg_register_iommu_notifier(CPUState *cpu,
+>          notifier->active = true;
+>      }
+>  }
+> +#endif
+>  
+>  void tcg_iommu_free_notifier_list(CPUState *cpu)
+>  {
+> @@ -668,6 +671,7 @@ void tcg_iommu_init_notifier_list(CPUState *cpu)
+>      cpu->iommu_notifiers = g_array_new(false, true, sizeof(TCGIOMMUNotifier *));
+>  }
+>  
+> +#ifdef CONFIG_TCG
+>  /* Called from RCU critical section */
+>  MemoryRegionSection *
+>  address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr orig_addr,
+> @@ -761,6 +765,8 @@ hwaddr memory_region_section_get_iotlb(CPUState *cpu,
+>      return section - d->map.sections;
+>  }
+>  
+> +#endif /* CONFIG_TCG */
+
+I might be missing some context here but are the other iotlb functions
+#ifdef CONFIG_TCG'd by some other patch?
+
+Otherwise,
 Reviewed-by: Anton Johansson <anjo@rev.ng>

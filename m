@@ -1,126 +1,88 @@
-Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp1467204ejb;
-        Thu, 25 Apr 2024 08:25:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXWyBFIRpUaVhvjhaJve0vpP66VjMqM42hg2J4huUL6wNiFY1Cnh8t+FfVhIDOzvGanJJn1FzLu+WaYShvdG3WtK7+u+le4
-X-Google-Smtp-Source: AGHT+IEBmFrplXw87fV5JQql4WUllCYAayjAoDNluZLuRR8ehWivTVjQsXu5RDr++JyRayeQTm+N
-X-Received: by 2002:a05:620a:6216:b0:78f:95c:5de5 with SMTP id ou22-20020a05620a621600b0078f095c5de5mr6107482qkn.26.1714058731423;
-        Thu, 25 Apr 2024 08:25:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714058731; cv=none;
+Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp1385024ejb;
+        Thu, 25 Apr 2024 06:42:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUXI2izSHUrbSfA+eaKQvWA49SfFIgrTK4yA2pWsdvodVi8vd4BLxVnWns43Y10M4mr+q1W8fs/pV3x4aaGHK5/MtB/vD5k
+X-Google-Smtp-Source: AGHT+IFe0bZRKWLjo3TTOgxqyosZtyZvtGHdnreNdwDwCb36Xxgsu6HQ22y1T6x8UXIXj3C1RjRs
+X-Received: by 2002:ae9:c214:0:b0:790:9974:733b with SMTP id j20-20020ae9c214000000b007909974733bmr2599166qkg.35.1714052535200;
+        Thu, 25 Apr 2024 06:42:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714052535; cv=none;
         d=google.com; s=arc-20160816;
-        b=fZ+UZ8N51DQ4fIBm2S+L4ZXzABYvyzfvi9UFKzewjQ3zQ9aJEUqCSfBjkSzq4q5Aji
-         mpFK8KFJjKLq5WAUlW4C1CIUvbyCpNWD2+LAL+QX1krELtzBKr2jQePwSSa/GGcs5AQ1
-         J2Vy1CzCujj5uYpes3mMUz7qDMjK961iswL2qQxOKjNALKQnjQzRxLTaayT8mcNDgJpl
-         CAzbHC5XPcXZR2k35Hy14WFQpVP3regh4X2jfHntbDHmwXp2fbRWfjoGW0mxPn3Z3XFu
-         m8NPIxNN/KAyFeQdI4LRa0GaymCN43k5b6ehzLgTHT7CytwI09D3sh/HhGEcM2wwYF5h
-         6tAg==
+        b=n7uFi1AqzYBdS/FkyUrVZnVePIULqgPjROxiY2VA5QXKK87eJ220CRKEBzmo5lZX97
+         qD8SBzofH/z+XaPzCSfQJPi8Yr7l5GD2kSMvcdqjgFEuXSwleUA1OT4q1S/At0CnPjdx
+         8X7Qupbb/C8DCp1gVOUBhRGRt5JQ/BTAW2qy6Az5mzb+WhgTEdRsUZX9xi1XZA7NVVZ5
+         hU9Qfrvry4b0X+88pnSrpdL1HWQV2hTm+TK2zoVd2jQvRUFUF2xT0n7G/mMY5u4VyoCu
+         apfNtD/HJ7OgK0NOMux9uNMpbIMD6lwZJL0FMNPVNe2mIuRLfjcrg546oB7/3IgfHtOK
+         QMvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=je4x5jiGT0B0ywcNHuMNctXjgVyiZbeVwC2Wv/LhaKE=;
-        fh=btH3sN70RGCz1Q8zrXp8iBOkHwPBbqVi1WnZLUj8dco=;
-        b=dRWF5GcLqpKsYwxlqJo9l2yLS/JXB22nu3fUsrTxS/ehPa5epuSWvNtmHdUayHPCEn
-         58ACbZeCPT9lSdtCX1TgY3AZob4GdP9tw6GGdkQs1IxVzMI1wMdSDyFGA9XEYT+qNMfO
-         GKpKjUy79nA068+n1ehygOu3zqTQwfCmr9w2D8yXnwjYorpdSgGOxddAj7o4OwzyGtqx
-         1zaXwYKOUA4LPebL6eXvOs3nz/LzQk0WvZ5lkUGHHr5Xm29PCYLmdXD7RmzRUSUI0GGU
-         V8MG9k8tfumNyiEpAfcv6+5Fpnc92F3MEtjdfCErUhjSY31e+X5bBClo6pMf5pzH5L8I
-         9vQg==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=wGqamm0njMPhI8+Tq71xbmUqMKt7vC6zpEzbOg2JT0c=;
+        fh=/0MHjUAmI/wL40Gy3mvvC19IqtVRkTQxODnHjMieUFU=;
+        b=lk8CDr5vigTcUDAWoM6aBmBCvEb6kpBiGN0N214GyykibK8UEpFiMJB+7rC74mYtf7
+         n8SlC1lCLiVtFtHloyKAN9IBZSKS1AkNmps6j5xxlE1XEufH+BFU9eHq2WczMCmKHWFg
+         MPN4MO+RyX8RvicUlGNQ/60s9GB19JmqqPxm3BGnvTgr1c8fRGIvfnzr4PGc3L49Tu6/
+         lJRP6k+4xRXPT05O2fei0Qcm7lNO5rj6VxpfVGY45j2u7MQNYpsF1+hTDjtPqRDobkKv
+         ABQfstyfjA6kdCKXZrZwOpGsDmk+vU0IvicXZtUWVwdExwC4BC/3fJZk92aTzBq7g8B9
+         +jZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GhXRnwtc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h5-20020a37de05000000b0078f04a252e0si17162599qkj.230.2024.04.25.08.25.31
+        by mx.google.com with ESMTPS id u2-20020ae9c002000000b0078ebc07c4besi17219043qkk.661.2024.04.25.06.42.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Apr 2024 08:25:31 -0700 (PDT)
+        Thu, 25 Apr 2024 06:42:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GhXRnwtc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s00yF-0004YC-9O; Thu, 25 Apr 2024 11:25:14 -0400
+	id 1rzzMR-0004US-1C; Thu, 25 Apr 2024 09:42:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1s00y7-0004Tc-K4
- for qemu-arm@nongnu.org; Thu, 25 Apr 2024 11:25:05 -0400
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1s00y5-0006ha-Dg
- for qemu-arm@nongnu.org; Thu, 25 Apr 2024 11:25:03 -0400
-Received: by mail-ot1-x334.google.com with SMTP id
- 46e09a7af769-6ea2375d8d0so883088a34.0
- for <qemu-arm@nongnu.org>; Thu, 25 Apr 2024 08:25:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1714058699; x=1714663499; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=je4x5jiGT0B0ywcNHuMNctXjgVyiZbeVwC2Wv/LhaKE=;
- b=GhXRnwtc/2yb54cJVtMX0dgebWpeadMlO2l+SbgTTuEgAvs8Ue1mbSUANk/f6h5DrD
- lbsy0ZdIbO+gBYLyhv7V5ch4CnfkjvP6UZ+LSkjVZsvBgu2XLrlm2QkbpOhS0gPSZyP7
- LdFOU9+l8VNMf3PqtcoyAouuQ3PGJ7jIgpuh72jKetXSxYaKXu1Hfu6TstxwATHysfQo
- 1WKMS7BPEy0p+1/l9w81d+UE9iMEme6Q16eKnG+mdSLrKDZeJuBwHdl07SA732WvNJxS
- nz7vLZfJosF3XxjFmfr+USy27HNJpicXWEUyd/gH3deKTJrERAoQ1jtAH4GLOeS7t2yf
- fIhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714058699; x=1714663499;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=je4x5jiGT0B0ywcNHuMNctXjgVyiZbeVwC2Wv/LhaKE=;
- b=U0ycd7fZRsC7CONkfcjCV2T/KbFHtVqtbIiiBOjAgS1jzT8kfSIZmPqmVX5HkCn1u3
- SSs9JXK4M2WNpi+pSBN8wl6l6EsbSmbnExwpQ8KPPPJjBYrente5+G/h+tUB/KEF4urc
- zUk5q3IV336iCaIssz5sn4b+yv3izpSOEmxUP4ZCsIulHM0ZmHmH5Md2x8FvfXOuStUI
- WAgVNRokZDSQtWS3EjglTzwr31L7GsswsuJ6yI3MGeoKDVkHEBjwhz+KN4u0O+JV0MLR
- SzaQCMLXoXAWsJYDtxUt9VbVvT8Lc3C1Vqlc6H3LyX6zlZC+SzmykBBoKwnyAg5Zvbiv
- 1gkA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV1YGo8JUjTJr67kkNw4G+lV1hPBUMQA/kJPW0s1vJjwIuwloHtOJAkFJCtYBNVp8k+pf+FCY3LOaGE0jozshAinhX4
-X-Gm-Message-State: AOJu0YzSG4fZf2Estcq17XdRD5qlDZUjXFHzC/rVdiSkm3sjLheMW5yf
- wfRLuSYcLfNG7M/Yo5E64NYxpXUiowvrVsEcPPmMa5F91cX23cDwgASiMSq0Krg=
-X-Received: by 2002:a9d:4f06:0:b0:6ea:9ba:7fce with SMTP id
- d6-20020a9d4f06000000b006ea09ba7fcemr6796669otl.38.1714058699706; 
- Thu, 25 Apr 2024 08:24:59 -0700 (PDT)
-Received: from ?IPV6:2607:fb91:1ae9:8637:9f94:1f67:75f4:ea2d?
- ([2607:fb91:1ae9:8637:9f94:1f67:75f4:ea2d])
- by smtp.gmail.com with ESMTPSA id
- x9-20020a056830114900b006eb94216797sm2694229otq.58.2024.04.25.08.24.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 25 Apr 2024 08:24:59 -0700 (PDT)
-Message-ID: <56479506-9e30-4003-9153-db6ef19ecea0@linaro.org>
-Date: Thu, 25 Apr 2024 08:24:53 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] fix endianness bug
-To: Alexandra Diupina <adiupina@astralinux.ru>,
- Alistair Francis <alistair@alistair23.me>
-Cc: "Konrad, Frederic" <Frederic.Konrad@amd.com>,
+ (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
+ id 1rzzMO-0004U8-65; Thu, 25 Apr 2024 09:42:00 -0400
+Received: from new-mail.astralinux.ru ([51.250.53.244])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
+ id 1rzzML-00015C-Ml; Thu, 25 Apr 2024 09:41:59 -0400
+Received: from rbta-msk-lt-302690.astralinux.ru (unknown [10.177.232.172])
+ by new-mail.astralinux.ru (Postfix) with ESMTPA id 4VQH894WV8zyWj;
+ Thu, 25 Apr 2024 16:41:45 +0300 (MSK)
+From: Alexandra Diupina <adiupina@astralinux.ru>
+To: Alistair Francis <alistair@alistair23.me>
+Cc: Alexandra Diupina <adiupina@astralinux.ru>,
+ "Konrad, Frederic" <Frederic.Konrad@amd.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, sdl.qemu@linuxtesting.org
-References: <20240425134115.32057-1-adiupina@astralinux.ru>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240425134115.32057-1-adiupina@astralinux.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::334;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x334.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Subject: [PATCH v3] fix endianness bug
+Date: Thu, 25 Apr 2024 16:41:15 +0300
+Message-Id: <20240425134115.32057-1-adiupina@astralinux.ru>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <074c9cbb-939e-4fb1-87a9-235626bf3a94@linaro.org>
+References: 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-DrWeb-SpamScore: -100
+X-DrWeb-SpamState: legit
+X-DrWeb-SpamDetail: gggruggvucftvghtrhhoucdtuddrgedvfedrvdehuddgtddvucetufdoteggodetrfcurfhrohhfihhlvgemucfftfghgfeunecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpeetlhgvgigrnhgurhgrucffihhuphhinhgruceorgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhuqeenucggtffrrghtthgvrhhnpeefkedufedvkeffuedtgfdugeeutdegvdffffejfffgleffieduhfejvdelffdvudenucffohhmrghinheplhhinhhugihtvghsthhinhhgrdhorhhgnecukfhppedutddrudejjedrvdefvddrudejvdenucfrrghrrghmpehhvghloheprhgsthgrqdhmshhkqdhlthdqfedtvdeiledtrdgrshhtrhgrlhhinhhugidrrhhupdhinhgvthepuddtrddujeejrddvfedvrddujedvmeefkeeljeeipdhmrghilhhfrhhomheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhnsggprhgtphhtthhopeekpdhrtghpthhtoheprghlihhsthgrihhrsegrlhhishhtrghirhdvfedrmhgvpdhrtghpthhtoheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhrtghpthhtohephfhrvgguvghrihgtrdfmohhnrhgrugesrghmugdrtghomhdprhgtphhtthhopegvughgrghrrdhighhlvghsihgrshesghhmrghilhdrtghomhdprhgtphhtth
+ hopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdprhgtphhtthhopehsughlrdhqvghmuheslhhinhhugihtvghsthhinhhgrdhorhhg
+X-DrWeb-SpamVersion: Vade Retro 01.423.251#02 AS+AV+AP Profile: DRWEB;
+ Bailout: 300
+X-AntiVirus: Checked by Dr.Web [MailD: 11.1.19.2307031128,
+ SE: 11.1.12.2210241838, Core engine: 7.00.62.01180, Virus records: 12631002,
+ Updated: 2024-Apr-25 11:41:39 UTC]
+Received-SPF: pass client-ip=51.250.53.244;
+ envelope-from=adiupina@astralinux.ru; helo=new-mail.astralinux.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,52 +97,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J3z4WYnUfvoq
+X-TUID: xn3tO4x/VP9j
 
-On 4/25/24 06:41, Alexandra Diupina wrote:
-> +static MemTxResult xlnx_dpdma_read_descriptor(XlnxDPDMAState *s,
-> +                                    uint64_t desc_addr, DPDMADescriptor *desc)
-> +{
-> +    if (dma_memory_read(&address_space_memory, desc_addr, &desc,
-> +                            sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED))
-> +        return MEMTX_ERROR;
-> +
+Add xlnx_dpdma_read_descriptor() and
+xlnx_dpdma_write_descriptor() functions.
+xlnx_dpdma_read_descriptor() combines reading a
+descriptor from desc_addr by calling dma_memory_read()
+and swapping the desc fields from guest memory order
+to host memory order. xlnx_dpdma_write_descriptor()
+performs similar actions when writing a descriptor.
 
-Missing { } for docs/devel/style.rst.
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
 
-> +static void xlnx_dpdma_write_descriptor(uint64_t desc_addr,
-> +                                                DPDMADescriptor *desc)
-> +{
-> +    /* Convert from host endianness into LE.  */
-> +    desc->control = cpu_to_le32(desc->control);
-> +    desc->descriptor_id = cpu_to_le32(desc->descriptor_id);
-> +    desc->xfer_size = cpu_to_le32(desc->xfer_size);
-> +    desc->line_size_stride = cpu_to_le32(desc->line_size_stride);
-> +    desc->timestamp_lsb = cpu_to_le32(desc->timestamp_lsb);
-> +    desc->timestamp_msb = cpu_to_le32(desc->timestamp_msb);
-> +    desc->address_extension = cpu_to_le32(desc->address_extension);
-> +    desc->next_descriptor = cpu_to_le32(desc->next_descriptor);
-> +    desc->source_address = cpu_to_le32(desc->source_address);
-> +    desc->address_extension_23 = cpu_to_le32(desc->address_extension_23);
-> +    desc->address_extension_45 = cpu_to_le32(desc->address_extension_45);
-> +    desc->source_address2 = cpu_to_le32(desc->source_address2);
-> +    desc->source_address3 = cpu_to_le32(desc->source_address3);
-> +    desc->source_address4 = cpu_to_le32(desc->source_address4);
-> +    desc->source_address5 = cpu_to_le32(desc->source_address5);
-> +    desc->crc = cpu_to_le32(desc->crc);
+Fixes: d3c6369a96 ("introduce xlnx-dpdma")
+Signed-off-by: Alexandra Diupina <adiupina@astralinux.ru>
+---
+v3: add xlnx_dpdma_write_descriptor()
+v2: minor changes in xlnx_dpdma_read_descriptor()
+ hw/dma/xlnx_dpdma.c | 59 ++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 55 insertions(+), 4 deletions(-)
 
-This is incorrect, rewriting in place, because after the call,
+diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c
+index dd66be5265..7845f43221 100644
+--- a/hw/dma/xlnx_dpdma.c
++++ b/hw/dma/xlnx_dpdma.c
+@@ -614,6 +614,59 @@ static void xlnx_dpdma_register_types(void)
+     type_register_static(&xlnx_dpdma_info);
+ }
+ 
++static MemTxResult xlnx_dpdma_read_descriptor(XlnxDPDMAState *s,
++                                    uint64_t desc_addr, DPDMADescriptor *desc)
++{
++    if (dma_memory_read(&address_space_memory, desc_addr, &desc,
++                            sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED))
++        return MEMTX_ERROR;
++
++    /* Convert from LE into host endianness.  */
++    desc->control = le32_to_cpu(desc->control);
++    desc->descriptor_id = le32_to_cpu(desc->descriptor_id);
++    desc->xfer_size = le32_to_cpu(desc->xfer_size);
++    desc->line_size_stride = le32_to_cpu(desc->line_size_stride);
++    desc->timestamp_lsb = le32_to_cpu(desc->timestamp_lsb);
++    desc->timestamp_msb = le32_to_cpu(desc->timestamp_msb);
++    desc->address_extension = le32_to_cpu(desc->address_extension);
++    desc->next_descriptor = le32_to_cpu(desc->next_descriptor);
++    desc->source_address = le32_to_cpu(desc->source_address);
++    desc->address_extension_23 = le32_to_cpu(desc->address_extension_23);
++    desc->address_extension_45 = le32_to_cpu(desc->address_extension_45);
++    desc->source_address2 = le32_to_cpu(desc->source_address2);
++    desc->source_address3 = le32_to_cpu(desc->source_address3);
++    desc->source_address4 = le32_to_cpu(desc->source_address4);
++    desc->source_address5 = le32_to_cpu(desc->source_address5);
++    desc->crc = le32_to_cpu(desc->crc);
++
++    return MEMTX_OK;
++}
++
++static void xlnx_dpdma_write_descriptor(uint64_t desc_addr,
++                                                DPDMADescriptor *desc)
++{
++    /* Convert from host endianness into LE.  */
++    desc->control = cpu_to_le32(desc->control);
++    desc->descriptor_id = cpu_to_le32(desc->descriptor_id);
++    desc->xfer_size = cpu_to_le32(desc->xfer_size);
++    desc->line_size_stride = cpu_to_le32(desc->line_size_stride);
++    desc->timestamp_lsb = cpu_to_le32(desc->timestamp_lsb);
++    desc->timestamp_msb = cpu_to_le32(desc->timestamp_msb);
++    desc->address_extension = cpu_to_le32(desc->address_extension);
++    desc->next_descriptor = cpu_to_le32(desc->next_descriptor);
++    desc->source_address = cpu_to_le32(desc->source_address);
++    desc->address_extension_23 = cpu_to_le32(desc->address_extension_23);
++    desc->address_extension_45 = cpu_to_le32(desc->address_extension_45);
++    desc->source_address2 = cpu_to_le32(desc->source_address2);
++    desc->source_address3 = cpu_to_le32(desc->source_address3);
++    desc->source_address4 = cpu_to_le32(desc->source_address4);
++    desc->source_address5 = cpu_to_le32(desc->source_address5);
++    desc->crc = cpu_to_le32(desc->crc);
++
++    dma_memory_write(&address_space_memory, desc_addr, &desc,
++                            sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED);
++}
++
+ size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
+                                     bool one_desc)
+ {
+@@ -651,8 +704,7 @@ size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
+             desc_addr = xlnx_dpdma_descriptor_next_address(s, channel);
+         }
+ 
+-        if (dma_memory_read(&address_space_memory, desc_addr, &desc,
+-                            sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED)) {
++        if (xlnx_dpdma_read_descriptor(s, desc_addr, &desc)) {
+             s->registers[DPDMA_EISR] |= ((1 << 1) << channel);
+             xlnx_dpdma_update_irq(s);
+             s->operation_finished[channel] = true;
+@@ -755,8 +807,7 @@ size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
+             /* The descriptor need to be updated when it's completed. */
+             DPRINTF("update the descriptor with the done flag set.\n");
+             xlnx_dpdma_desc_set_done(&desc);
+-            dma_memory_write(&address_space_memory, desc_addr, &desc,
+-                             sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED);
++            xlnx_dpdma_write_descriptor(desc_addr, &desc);
+         }
+ 
+         if (xlnx_dpdma_desc_completion_interrupt(&desc)) {
+-- 
+2.30.2
 
->          if (xlnx_dpdma_desc_completion_interrupt(&desc)) {
-
-the memory block is still live, and the swap here has corrupted it.
-
-> +
-> +    dma_memory_write(&address_space_memory, desc_addr, &desc,
-
-This is incorrect because desc is now a pointer so &desc is DPDMADescriptor **.
-
-Do not reply to an existing thread to post a new patch.
-
-
-r~

@@ -1,167 +1,237 @@
-Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp1249775ejb;
-        Thu, 25 Apr 2024 03:08:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVs4j8OnE9SJ6FAJHJcicF9Ve+AgcMpyHkUveeL20J6dPIa8o1d8/2VJBEoJC7a9UzSpylWi83gvnk0sMsKI82grCn9thFU
-X-Google-Smtp-Source: AGHT+IGWvzEb+hcXrqC88J4ySvVg3vvIQQXeHJtSPBjytfhmCMtfialQqU9J3GXpX5md6B3vg3UK
-X-Received: by 2002:a05:6218:2882:b0:18d:f8ef:3c54 with SMTP id vw2-20020a056218288200b0018df8ef3c54mr978613rwc.5.1714039732985;
-        Thu, 25 Apr 2024 03:08:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714039732; cv=none;
+Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp1310702ejb;
+        Thu, 25 Apr 2024 04:58:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV2MEgFiPgAljaEFgRQJGMaRXFfAS92rRaQ7AYKjgP7AkHSyoc/BP3/8GGX+8JTG1gyf+zYbcIxKE2YCw7Qc40bKS2olfT7
+X-Google-Smtp-Source: AGHT+IEHPEXUhyWaa7PYpYmDCt49Jl8BmTKnZptDBqOsjMFoeG00TG6BCyDVuqyJ6ilPawCdoihm
+X-Received: by 2002:ac8:5802:0:b0:439:85b8:f71d with SMTP id g2-20020ac85802000000b0043985b8f71dmr5970687qtg.58.1714046324793;
+        Thu, 25 Apr 2024 04:58:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714046324; cv=none;
         d=google.com; s=arc-20160816;
-        b=m9ZZL6p3bBbosbxZ1gurSnJ3RGSS5Bqqlfg/1GxNrGqzLxYbHrX1IKLvv/adNGntbo
-         4UfR3nOMv0l7JuzRPmsE18kuSwthXmoE5cnqQkXprE7dutsWnFLDhQuWtm+o9iZspaKZ
-         +nHTyuWrnuKt5y6ntNz3ZOVzhKbt156KRqOOhZaCr9tCe2BrYfz2nMoAR43mlhG068Wk
-         gpepNTTB2uincfmxe97WRjxcWt9Lk0cMfUHfO/Rr8PAUnGD1H8oOvkwG/GAOyNHAaYgN
-         eizYMJGPvOOqSXDQvcykm5T8U+6/MNLFkVmUZU/vbM1UNwv/CGgdH01b/srjFqKJ3n6g
-         em2A==
+        b=qPEEAnnuEGfgW7VovAHHaXEs+jxgZK/7PKV9F8N8SdHCIEag61dwUcIhuYlsWvkmU9
+         tjzJo77ZxnPwqgGG+fFFU67DOFaoZo3+hgy6QqRfGI9H9W5d51ynMzh6ogrZluuajBU+
+         xyFkkZ9p1uaTXek8MOHMvtgBFbj6eUFUwSoWz6BehVSVQg6/M6dYPM8X5nA887FCPUjv
+         JwM4KQ/L0V/ptdscEIU3bYxiw0X3YBab99YxmO3QFzL5GY1wf2PPiiFXjziAkj0QUtWE
+         1POp4+n0ZK1ZHTEg8cFRX+YcQd9dwvqYuvPMoS8S3zCHR7YdHKYoD9VH29dnh9ufHMXt
+         TCGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=CJKbSHPbQ4g6rL/wBiGiqWVG8uP2BybEvqr89CZ3xzE=;
-        fh=/0MHjUAmI/wL40Gy3mvvC19IqtVRkTQxODnHjMieUFU=;
-        b=kXQkw24jKGy5Ck2QoKnrKmoPXtp6zKI+8A224A4ECSPvw+gbCadagMafTML3qiLO/B
-         lia94wKcJxNWyRuo42tc1EfkjmvptLO0tqD5mKv/1ZEzK7Wbr1H5s8BrLL/sLPQFQ/yU
-         81Hlny7x31TPQkoVmSi5/Uygsz1QMn9fBTeL6ge1ZT+Da2MyKT8tyXUeyKXMCF6+9mNX
-         NFIRvh90rcJraWpSWRQl2nvvQ70J9mSdFVRfxGOlmFrzUPBJxcoxmrOihcumvdJKDejA
-         nkv91qCyoBSC2j2S0k4M66TbOeBbl5z4HY87MuGvLFsydE9WrJqwUSi9YB1TIRsZhzcu
-         ZK5Q==;
+        h=mime-version:user-agent:message-id:date:references:in-reply-to
+         :subject:cc:to:from:dkim-signature;
+        bh=R+xFDk2/5ItdOF3n0v7RXkeAPsAbowKOb2jxJkaJNEc=;
+        fh=9O4w6iBYBLl92WXfArOA0AqyM8Gy2WgVMaDv7qF28IA=;
+        b=O46l5rbkAF8bRYP95wABTsX+kb2BmLQ3+gqDA3YExTJYKltCM3oMTks5rX1OcUFqBW
+         rHgSZxdbnipC5/TCMOtM4VsvFUD5paxXJru/1vMsgPkJEjmWgOFDU/1ARF3/WKmtcGyk
+         rGgG6iCdfGIPoTOcFJPQ6gREb7KY9UUVg7bkvQCot3zO5YXjOjscLN6UOt6hS6/obnud
+         LX24j+yds7DTE/J+/LXto8OhZe7Stn3OS0tHC1OXBW+J/eZgqKQms8IUxt5AvmrrKXYw
+         wMBZon7qgLqa/va/4BChNpN7MrM1/2hRjZv+O8mhevF6HOZpvVMs+FXyJLaExDC+90pR
+         A6+g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p17-20020a05622a13d100b004347938cdd6si14935033qtk.49.2024.04.25.03.08.52
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Pjp/7xYx";
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id eh27-20020a05622a579b00b004368be54c94si15997847qtb.546.2024.04.25.04.58.44
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Apr 2024 03:08:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 25 Apr 2024 04:58:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rzw1w-0007PT-2I; Thu, 25 Apr 2024 06:08:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
- id 1rzw1u-0007P9-Lt; Thu, 25 Apr 2024 06:08:38 -0400
-Received: from new-mail.astralinux.ru ([51.250.53.164])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
- id 1rzw1s-0002Cb-JD; Thu, 25 Apr 2024 06:08:38 -0400
-Received: from rbta-msk-lt-302690.astralinux.ru (unknown [10.177.232.172])
- by new-mail.astralinux.ru (Postfix) with ESMTPA id 4VQBQ23s8QzqSSl;
- Thu, 25 Apr 2024 13:08:25 +0300 (MSK)
-From: Alexandra Diupina <adiupina@astralinux.ru>
-To: Alistair Francis <alistair@alistair23.me>
-Cc: Alexandra Diupina <adiupina@astralinux.ru>,
- "Konrad, Frederic" <Frederic.Konrad@amd.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, sdl.qemu@linuxtesting.org
-Subject: [PATCH v2] fix host-endianness bug
-Date: Thu, 25 Apr 2024 13:07:18 +0300
-Message-Id: <20240425100718.20184-1-adiupina@astralinux.ru>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <CAFEAcA-6td71-XBL6dp49L2uZGTbMphJcFeZbi6ReZrm3AHNbA@mail.gmail.com>
-References: 
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Pjp/7xYx";
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1714046324;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=R+xFDk2/5ItdOF3n0v7RXkeAPsAbowKOb2jxJkaJNEc=;
+	b=Pjp/7xYxCM84FR2Ww94+oBp9bXlcpR49VMBqSZvS3u/hgsFmpz4ZZBuBWP+nP/LShiVe/K
+	4s9IdANSN48ctnDa6w4CgcgbXzkRiE1HlBFNnljTe5kDOPnnuOOsbE7rBo6AiiRPTrwJWJ
+	/BBPwsRDSeL/Q8Ack7J8noYB7SyizgM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-223-DdEDqRNQN2WzslgQebEUdQ-1; Thu, 25 Apr 2024 07:58:42 -0400
+X-MC-Unique: DdEDqRNQN2WzslgQebEUdQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 860FA18065AF;
+	Thu, 25 Apr 2024 11:58:41 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.247])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 4AE481121312;
+	Thu, 25 Apr 2024 11:58:41 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 3BB6D21E6680; Thu, 25 Apr 2024 13:58:40 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Bill Mills <bill.mills@linaro.org>
+Cc: Gustavo Romero <gustavo.romero@linaro.org>,  qemu-devel@nongnu.org,
+  philmd@linaro.org,  thuth@redhat.com,  lvivier@redhat.com,
+  qemu-arm@nongnu.org,  alex.bennee@linaro.org,  pbonzini@redhat.com,
+  anton.kochkov@proton.me,  richard.henderson@linaro.org,
+  peter.maydell@linaro.org
+Subject: Re: [PATCH 0/6] Add ivshmem-flat device
+In-Reply-To: <ecf04b2a-2038-43ac-a0bb-38d0baca7a7c@linaro.org> (Bill Mills's
+	message of "Tue, 23 Apr 2024 12:00:50 -0400")
+References: <20240222222218.2261956-1-gustavo.romero@linaro.org>
+	<87wmqp3xug.fsf@pond.sub.org>
+	<a28f3657-c827-7a0d-a8da-b82d17d17577@linaro.org>
+	<87sezc8irk.fsf@pond.sub.org>
+	<ecf04b2a-2038-43ac-a0bb-38d0baca7a7c@linaro.org>
+Date: Thu, 25 Apr 2024 13:58:40 +0200
+Message-ID: <87zfth4psf.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-DrWeb-SpamScore: -100
-X-DrWeb-SpamState: legit
-X-DrWeb-SpamDetail: gggruggvucftvghtrhhoucdtuddrgedvfedrvdehuddgtddvucetufdoteggodetrfcurfhrohhfihhlvgemucfftfghgfeunecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpeetlhgvgigrnhgurhgrucffihhuphhinhgruceorgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhuqeenucggtffrrghtthgvrhhnpeefkedufedvkeffuedtgfdugeeutdegvdffffejfffgleffieduhfejvdelffdvudenucffohhmrghinheplhhinhhugihtvghsthhinhhgrdhorhhgnecukfhppedutddrudejjedrvdefvddrudejvdenucfrrghrrghmpehhvghloheprhgsthgrqdhmshhkqdhlthdqfedtvdeiledtrdgrshhtrhgrlhhinhhugidrrhhupdhinhgvthepuddtrddujeejrddvfedvrddujedvmeegheehvdegpdhmrghilhhfrhhomheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhnsggprhgtphhtthhopeekpdhrtghpthhtoheprghlihhsthgrihhrsegrlhhishhtrghirhdvfedrmhgvpdhrtghpthhtoheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhrtghpthhtohephfhrvgguvghrihgtrdfmohhnrhgrugesrghmugdrtghomhdprhgtphhtthhopegvughgrghrrdhighhlvghsihgrshesghhmrghilhdrtghomhdprhgtphhtth
- hopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdprhgtphhtthhopehsughlrdhqvghmuheslhhinhhugihtvghsthhinhhgrdhorhhg
-X-DrWeb-SpamVersion: Vade Retro 01.423.251#02 AS+AV+AP Profile: DRWEB;
- Bailout: 300
-X-AntiVirus: Checked by Dr.Web [MailD: 11.1.19.2307031128,
- SE: 11.1.12.2210241838, Core engine: 7.00.62.01180, Virus records: 12630171,
- Updated: 2024-Apr-25 08:00:48 UTC]
-Received-SPF: pass client-ip=51.250.53.164;
- envelope-from=adiupina@astralinux.ru; helo=new-mail.astralinux.ru
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ickNdJ6i+gXJ
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
+X-TUID: /d/CMxrcjYJX
 
-Add a function xlnx_dpdma_read_descriptor() that
-combines reading the descriptor from desc_addr
-by calling dma_memory_read() and swapping desc
-fields from guest memory order to host memory order.
+Bill Mills <bill.mills@linaro.org> writes:
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
+> Hi Markus,
+>
+> On 4/23/24 6:39 AM, Markus Armbruster wrote:
+>> Gustavo Romero <gustavo.romero@linaro.org> writes:
+>> 
+>>> Hi Markus,
+>>>
+>>> Thanks for interesting in the ivshmem-flat device.
+>>>
+>>> Bill Mills (cc:ed) is the best person to answer your question,
+>>> so please find his answer below.
+>>>
+>>> On 2/28/24 3:29 AM, Markus Armbruster wrote:
+>>>> Gustavo Romero <gustavo.romero@linaro.org> writes:
+>>>>
+>>>> [...]
+>>>>
+>>>>> This patchset introduces a new device, ivshmem-flat, which is similar to the
+>>>>> current ivshmem device but does not require a PCI bus. It implements the ivshmem
+>>>>> status and control registers as MMRs and the shared memory as a directly
+>>>>> accessible memory region in the VM memory layout. It's meant to be used on
+>>>>> machines like those with Cortex-M MCUs, which usually lack a PCI bus, e.g.,
+>>>>> lm3s6965evb and mps2-an385. Additionally, it has the benefit of requiring a tiny
+>>>>> 'device driver,' which is helpful on some RTOSes, like Zephyr, that run on
+>>>>> memory-constrained resource targets.
+>>>>>
+>>>>> The patchset includes a QTest for the ivshmem-flat device, however, it's also
+>>>>> possible to experiment with it in two ways:
+>>>>>
+>>>>> (a) using two Cortex-M VMs running Zephyr; or
+>>>>> (b) using one aarch64 VM running Linux with the ivshmem PCI device and another
+>>>>>       arm (Cortex-M) VM running Zephyr with the new ivshmem-flat device.
+>>>>>
+>>>>> Please note that for running the ivshmem-flat QTests the following patch, which
+>>>>> is not committed to the tree yet, must be applied:
+>>>>>
+>>>>> https://lists.nongnu.org/archive/html/qemu-devel/2023-11/msg03176.html
+>>>>
+>>>> What problem are you trying to solve with ivshmem?
+>>>>
+>>>> Shared memory is not a solution to any communication problem, it's
+>>>> merely a building block for building such solutions: you invariably have
+>>>> to layer some protocol on top.  What do you intend to put on top of
+>>>> ivshmem?
+>>>
+>>> Actually ivshmem is shared memory and bi-direction notifications (in this case a doorbell register and an irq).
+>>
+>> Yes, ivshmem-doorbell supports interrupts.  Doesn't change my argument.
+>> 
+>>> This is the fundamental requirement for many types of communication but our interest is for the OpenAMP project [1].
+>>>
+>>> All the OpenAMP project's communication is based on shared memory and bi-directional notification.  Often this is on a AMP SOC with Cortex-As and Cortex-Ms or Rs.  However we are now expanding into PCIe based AMP. One example of this is an x86 host computer and a PCIe card with an ARM SOC.  Other examples include two systems with PCIe root complex connected via a non-transparent bridge.
+>>>
+>>> The existing PCI based ivshmem lets us model these types of systems in a simple generic way without worrying about the details of the RC/EP relationship or the details of a specific non-transparent bridge.  In fact the ivshmem looks to the two (or more) systems like a non-transparent bridge with its own memory (and no other memory access is allowed).
+>>>
+>>> Right now we are testing this with RPMSG between two QEMU system where both systems are cortex-a53 and both running Zephyr. [2]
+>>>
+>>> We will expand this by switching one of the QEMU systems to either arm64 Linux or x86 Linux.
+>> So you want to simulate a heterogeneous machine by connecting multiple
+>> qemu-system-FOO processes via ivshmem, correct?
+>
+> An AMP SOC is one use case.  A PCIe card with an embedded Cortex-M would be another.
+>
+>> 
+>>> We (and others) are also working on a generic virtio transport that will work between any two systems as long as they have shared memory and bi-directional notifications.
+>> 
+>> On top of or adjacent to ivshmem?
+>
+> On top of ivshmem.  It is not the only use case but it is an important one.
 
-Fixes: d3c6369a96 ("introduce xlnx-dpdma")
-Signed-off-by: Alexandra Diupina <adiupina@astralinux.ru>
----
-v2:minor changes in xlnx_dpdma_read_descriptor()
- hw/dma/xlnx_dpdma.c | 31 +++++++++++++++++++++++++++++--
- 1 file changed, 29 insertions(+), 2 deletions(-)
+Interesting.
 
-diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c
-index dd66be5265..62a0952377 100644
---- a/hw/dma/xlnx_dpdma.c
-+++ b/hw/dma/xlnx_dpdma.c
-@@ -614,6 +614,34 @@ static void xlnx_dpdma_register_types(void)
-     type_register_static(&xlnx_dpdma_info);
- }
- 
-+static MemTxResult xlnx_dpdma_read_descriptor(XlnxDPDMAState *s,
-+                                    uint64_t desc_addr, DPDMADescriptor *desc)
-+{
-+    if (dma_memory_read(&address_space_memory, desc_addr, &desc,
-+                            sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED))
-+        return MEMTX_ERROR;
-+
-+    /* Convert from LE into host endianness.  */
-+    desc->control = le32_to_cpu(desc->control);
-+    desc->descriptor_id = le32_to_cpu(desc->descriptor_id);
-+    desc->xfer_size = le32_to_cpu(desc->xfer_size);
-+    desc->line_size_stride = le32_to_cpu(desc->line_size_stride);
-+    desc->timestamp_lsb = le32_to_cpu(desc->timestamp_lsb);
-+    desc->timestamp_msb = le32_to_cpu(desc->timestamp_msb);
-+    desc->address_extension = le32_to_cpu(desc->address_extension);
-+    desc->next_descriptor = le32_to_cpu(desc->next_descriptor);
-+    desc->source_address = le32_to_cpu(desc->source_address);
-+    desc->address_extension_23 = le32_to_cpu(desc->address_extension_23);
-+    desc->address_extension_45 = le32_to_cpu(desc->address_extension_45);
-+    desc->source_address2 = le32_to_cpu(desc->source_address2);
-+    desc->source_address3 = le32_to_cpu(desc->source_address3);
-+    desc->source_address4 = le32_to_cpu(desc->source_address4);
-+    desc->source_address5 = le32_to_cpu(desc->source_address5);
-+    desc->crc = le32_to_cpu(desc->crc);
-+
-+    return MEMTX_OK;
-+}
-+
- size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
-                                     bool one_desc)
- {
-@@ -651,8 +679,7 @@ size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
-             desc_addr = xlnx_dpdma_descriptor_next_address(s, channel);
-         }
- 
--        if (dma_memory_read(&address_space_memory, desc_addr, &desc,
--                            sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED)) {
-+        if (xlnx_dpdma_read_descriptor(s, desc_addr, &desc)) {
-             s->registers[DPDMA_EISR] |= ((1 << 1) << channel);
-             xlnx_dpdma_update_irq(s);
-             s->operation_finished[channel] = true;
--- 
-2.30.2
+> I just gave a talk on this subject at EOSS.  If you would like to look at the slides they are here:
+> https://sched.co/1aBFm
 
+The talk's abstract:
+
+    AMP Virtio: A New Virto Transport for AMP Systems, with Focus on
+    Zephyr, Linux, and Xen
+
+    Asymmetric multiprocessing systems are common in automotive,
+    Industrial, and mobile markets and are entering the data center
+    market as well.  The OpenAMP project strives to make AMP systems
+    easier and more standards based.  The OpenAMP project is working on
+    a new Virtio transport layer that can be used between cores that do
+    not share a hypervisor.  Example systems include: * AMP SOCs running
+    running Linux on Cortex-A and Zephyr on Cortex-M, * x86 and Arm
+    systems connected via PCIe, both running Linux.  AMP Virtio can also
+    be used in Xen and other hypervisors to reduce worse case latency
+    and increase freedom of interference (FFI).  These aspects are
+    critical in real-time and functionally safe systems.  This
+    presentation will cover:
+    * Why Virtio for AMP systems
+    * What are the problems with the existing virtio transports for AMP
+      systems
+    * Outline of the transport proposal
+    * Prototype software for Zephyr, Linux, and Xen
+    * Show various topologies and use cases for Device and Driver
+      placement
+    * Show portability to other RTOSes and hypervisors.
+
+You're interested in systems that contain multiple cores.  You want to
+create a virtio transport to let these cores talk to each other.
+
+Let's talk physical hardware.  The transport needs to go over some kind
+of device.  The device could be pretty smart and provide the virtio
+transport, or it could be really dumb and provide just enough to let
+software running on the core implement the virtio transport.  What do
+you have in mind?
+
+You need QEMU to emulate one or more of the devices you have in mind.
+
+Note: emulation is about the guest-facing part of the QEMU device model.
+We'll get to the host-facing part in a minute.
+
+Smart device: we know how to emulate virtio devices with various
+connectors, such as PCI, CCW, MMIO.
+
+Dumb device: ivshmem-doorbell could serve as a virtual dumb device.
+Note that a physical ivshmem would be a bad idea; it's design is rather
+poor.  Is this why you're interested in ivshmem?
+
+As is, ivshmem-doorbell comes with a PCI connector.  You want an MMIO
+connector.  Fair enough.
+
+Once you have an actual dumb physical device, you're likely better off
+emulating that instead of approximating it with ivshmem.
+
+Approximating could still be useful as a stopgap.
+
+I sidestepped an important problem so far: the "asymmetric" in AMP.
+When your asymmetric system contains cores with different architectures,
+QEMU can't emulate the entire system, because qemu-system-TARGET can
+only emulate cores with achitecture TARGET.
+
+I guess you want to work around this limitation by running multiple
+qemu-system-TARGETs.  Trouble is you then need to connect them somehow.
+ivshmem's host-facing part can connect its qemu-system-TARGET to other
+processes, including other qemu-system-TARGETs, and the TARGETs need not
+be identical.  Correct?
+
+What if we had a qemu-system that wasn't limited to a single
+architecture?  Would you still want to run multiple connected instances
+then, or would you simply model your asymmetric system in a single one?
+
+[...]

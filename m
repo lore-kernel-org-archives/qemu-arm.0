@@ -1,214 +1,213 @@
-Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp1281138ejb;
-        Thu, 25 Apr 2024 04:06:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVYnTP0xB/5Rpnv2C6JrAvbIHsidTPthQEkCdyZ8u9IZ4GoBuDhtiAj/C6tFW1DYz/dHIkhx6R5sBCtDVTmAXL4S8pD4wkg
-X-Google-Smtp-Source: AGHT+IHgnDkV2z+5R6a9OkYY0G7nGrhlZGidMuYyX+rc6pSik8ZCMchUNhz0iAdO/bPTEGFWWLXN
-X-Received: by 2002:a05:6122:4122:b0:4d8:7339:4c35 with SMTP id ce34-20020a056122412200b004d873394c35mr6407484vkb.13.1714043202063;
-        Thu, 25 Apr 2024 04:06:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714043202; cv=none;
+Received: by 2002:a17:906:c0c2:b0:a52:4db9:938b with SMTP id bn2csp1281291ejb;
+        Thu, 25 Apr 2024 04:06:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXaU0YatSicMBXh0zusggRkB8D9cIG+qxvS+fqsx6yK7Lu3pV7sDYp8aldynelmKMG0tuPca1LwISy+F7AeDtNuqr4Oa8Gg
+X-Google-Smtp-Source: AGHT+IEoUICKrU3Rqi0pXoAbld9sAWAp/Wn0O3goPqTfsf/Tp4uyVyP+1JkZoIaAlt3Axd9W9sL1
+X-Received: by 2002:a05:6358:6b8b:b0:183:f636:8a46 with SMTP id z11-20020a0563586b8b00b00183f6368a46mr5454946rwg.27.1714043215651;
+        Thu, 25 Apr 2024 04:06:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714043215; cv=none;
         d=google.com; s=arc-20160816;
-        b=GoIX+T6RBZcJ1DWOG8lw8C++JOKEPidYIrjxRn9IcGYzkOEpmQ60LY1M1U8XUoWNUY
-         aWGuX98F6X5EVODYDNn6wEJDdGS/Tz33+k920ajwgD68bUN8vUaMiAZcp/UlAs7YzDxj
-         xxfD4YhrIwYjuoUS1d86SqDcGWJ2YCvKgf/zhvplTBv+NwBIeB/TLEYGeoUJ+w82zX3T
-         ArKV71HoQvCkY3ubOWjbRGnPtsm9ZSchNput/kcx/eNmRjFfmq6K2PC0pYqegAZ1LpIm
-         176q70X1j9OMpwFvqwy007HMuQGvdMcIiiqEq1RJkMjuUVX6QX8TUoyTjR/iJhOQ54Cm
-         7IcA==
+        b=xIfdU4jVGxlqBW/WVkPCdeJSi5+elxjkYnRgOvgkX14oxHRlT7wPTYxe4tQOXM8VUo
+         rERRztbkJgWFWdSHYtgft66Qu15h47iRZObL9QDu+ngBDQKMwcJrndZOb8D6ezlecvVP
+         5zy8IoDt78fqlHI+gfRN/fHZI/rIbKZdmYiprovK1o9Vyw33H+yuBGsIck0c2YicUOcF
+         Vf0u8hmx6XvXfK6eRpyZWHo/Z8EdxH5Zw0XYXZ9YhNQb7o69SUrqpPI9mEpL3TSNFp3G
+         H1LdP2e48xzp8MSBOzZm/I2s1oLCx/Rm0enQKyQ31qFoPSeVxYqe8Th7W5yD4HLeW10F
+         fG0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=LU/r9zSSWOAgtXVFmIxCt1qMAeFSfB+B8bTVtMRUbL4=;
-        fh=YaFzJHnfr4s4+lgFhoRlxsI0waUg79h7Fa3VEBwlLPM=;
-        b=qrURUqtsjLQuwLg2BNgWdxr3dm2ymQuK8L0rKkP2e1gAaFColgBs18VRfl3WGC12Mr
-         7Qutr1AUbhlCtbAfTxkfxtgFgeQ/YAUMyhkhcn3Db++1hfH0i8yoYGlTlDk1ce39ProF
-         iBAlBKolyCgVPz7APsKTlZAkPNCs5VtDbSd3uiBenWPgflIJmgz9q2yx70MW0/E+sLpi
-         FpunqNpRrAVfadRZwTA2Et8YZ0wI8o2KQECkABlbn1CQQWxleiUJjvuv4FTcSjhexUTi
-         AQWOTbEHhK2M3hrFq6DZl2lD56jvp9Z+XX9uh38zSkGElANfL6gjZFCZvvH493JgWHkC
-         r3dQ==;
+        bh=AM4wpjhaRu1VnbLScsMczsVnLF9tLEy5hd6kj7QFVIE=;
+        fh=UHy6wn6deYeel3rxfPEcAf/E8JgVUWtp9/D/O/RzSHA=;
+        b=Zn/s/EtmUjXbs7+oOQdMmFlUCj/x5WiO6AvhzhOqnchMzXaw7SFsiFE5UZvVRAPMQH
+         nVceX4ceV76P18HpumpQKffePS/0uIIFnmm5CNZIS6g/dLCHeeWV2S2bA+xd0EjijgO1
+         O7GXGn5KyVdf7DTKIVvuzBgfxDKlvO5XbVHGZD83LYtY97JvMTa1PZUu/KSR4pCUFV87
+         c/ncVgxDzI8a0MMsTokpl71qpDZPaqbOtL4JawT/RWPbF19Krfe3SpcXp2xOghM7h0Mv
+         35MRJavNyJwKgHW+P5sZxWCA2t4Ksq4CNsk6PcpwV2j3nRDfck2wx951QhfjmWUG0Sa7
+         k7dw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WrXR9xds;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="DRP/e7hm";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cm21-20020a056122421500b004daa7878371si3012557vkb.297.2024.04.25.04.06.41
+        by mx.google.com with ESMTPS id a21-20020a67eb15000000b004784cc580fbsi2646153vso.174.2024.04.25.04.06.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Apr 2024 04:06:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Apr 2024 04:06:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WrXR9xds;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="DRP/e7hm";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1rzwuE-0002ll-NQ; Thu, 25 Apr 2024 07:04:49 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1rzwuM-000322-FM; Thu, 25 Apr 2024 07:04:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzwsn-0008VQ-Mq
- for qemu-arm@nongnu.org; Thu, 25 Apr 2024 07:03:38 -0400
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzwtE-00009y-6k
+ for qemu-devel@nongnu.org; Thu, 25 Apr 2024 07:04:03 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzwsk-00007E-9K
- for qemu-arm@nongnu.org; Thu, 25 Apr 2024 07:03:16 -0400
-Received: by mail-lj1-x234.google.com with SMTP id
- 38308e7fff4ca-2def8e5ae60so4591271fa.2
- for <qemu-arm@nongnu.org>; Thu, 25 Apr 2024 04:03:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rzwt9-0000G4-I1
+ for qemu-devel@nongnu.org; Thu, 25 Apr 2024 07:03:42 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-41b5e74fa83so1814755e9.0
+ for <qemu-devel@nongnu.org>; Thu, 25 Apr 2024 04:03:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1714042989; x=1714647789; darn=nongnu.org;
+ d=linaro.org; s=google; t=1714043006; x=1714647806; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LU/r9zSSWOAgtXVFmIxCt1qMAeFSfB+B8bTVtMRUbL4=;
- b=WrXR9xds2luym4J6tztK66DnJaf/wuj2yu2EDa583PaxoSFJwEWk1s2L1aNchIx+/r
- bbR9UZz7iFtrCvMuaaKDwy3TZsSwGW9zzUFnkKUtVogRlNYkQ18amTlZR9yb/pPExQ2j
- fjGvhqmzFGItbBbAjuHVlaCBQNbmXskDV7Snl6aLxO67SwCZGLsYvUI6KWzLAQQ/obJ8
- MeQ9254Ek3cXhnTeh1ApAZ9/J5mkzleH+K9rKInF3B7Y1sQ4VXjXN0HdV+sqQ7CRQsXS
- xsVN1HokLi5KiqQA+3m7jZXt90Xy2TAVok0I9hsD2cFYXLzuWsODMcI6TuDobnVQOdTP
- 5GAg==
+ bh=AM4wpjhaRu1VnbLScsMczsVnLF9tLEy5hd6kj7QFVIE=;
+ b=DRP/e7hmF6iTP+67jZNGAZC5bdVnFmP3bDeqkkvXVRtNO1QVv9eP+1BQ51xeN1OnO7
+ GrQgB+KpD9aKhDRUDjNILD++QhzOgAoyQo8ZV2wS16RW7tPR+z9QYb4viTK4x6Tv3tOf
+ PJn0lKmm26v30ffqOJfJkntUbhMQN6/WZqaOTMQyaNG5DpTPxDWZx+2xj3ZuAmZx4rWZ
+ 53j8HNEgGjxvtECCQ5LQ+OPHXbHisNkuBtdoCc8+NbausmdY4/8V0bMH29qz8ZrME+2D
+ BR2kWIENkCnd41O60ynhaXnLwMEJqjUYvwqt8ORwK6XzUuaraxXQQRa4oPp8YIxglKm+
+ 1UFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714042989; x=1714647789;
+ d=1e100.net; s=20230601; t=1714043006; x=1714647806;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LU/r9zSSWOAgtXVFmIxCt1qMAeFSfB+B8bTVtMRUbL4=;
- b=HBK5rGM/71pXYZ9gC1VGbZVkktKAsRE9/q7qHdwsNvr7/XO0KQqcRL6OGhRXk/Iroq
- 68nEfzDIpVWH3Pg8h8YYX3IW8LYjm/Rssjcd07ydHFIl9Gxob70+T9we/Bgdgh4X72Qp
- b+FiwdPcSr2s4cSJlpvulKW3/E8xI4xaxqhTYGE6PlV5vldHVT7wL9Y/LU4s+2llu4ZA
- IRr/yAw2+73EP9smTiUPnuGze7vDoskyDzRBwzpHeYhrOBFehKOG45CTkV6usf6ZDgIa
- +DPNCPAU+wZiDHW53LNSwefWtyjBypZqBIszzS/SvQJu10KYJ9o52mbgPgcuBdHd9tMZ
- AzGQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX711dlX2U0KbXfIlDYR+1L9KL+pTtKpcg9OIftE+ofiSL5ldgOJFk7vJCMWxEK5I0qEfo2Gio/jA68VibAtyYury0a
-X-Gm-Message-State: AOJu0Yx8iVmIlLKZ6lmvjvpB0jhBrPv4mtdGF0U/HS48DfKPcfDUeznZ
- wZYfWo3oHuSpJJtDIRcGnazO40aG3WuX5kX2fFuyjRE6Lh+RBeow716KWxWSvGo=
-X-Received: by 2002:a2e:954f:0:b0:2de:81c9:14b3 with SMTP id
- t15-20020a2e954f000000b002de81c914b3mr2837508ljh.35.1714042988935; 
- Thu, 25 Apr 2024 04:03:08 -0700 (PDT)
+ bh=AM4wpjhaRu1VnbLScsMczsVnLF9tLEy5hd6kj7QFVIE=;
+ b=pajwHbasfcXPaAhindbfoIlB7f0BQlOCex0TRtfo9z+Za3MxG4tjOa2R1vBtEgs1Q3
+ /E3aRGZqNGJ+bODNo7rxQXiSWxawZZIrH9OSB4+3QI8nYN/w4W5WVXBzOJpb+a2L1e3/
+ LhV4qDjhUoAq1SQGwtYpZZSyl8rfmMePGGS9kKVHYu9ws7mC/JGdL3B+6eQztR5xEDjs
+ ODCu736Q/xGJcBDyYXM0SWsqWY11jblmZHZRDFkKcmYNYuo8gMX6rm844xtLn7wFZVJO
+ Z9XrCTLwAt1NsfQcQoBa9z7I0ZhxG+mmP3NZLcauTmUcTLowXKuSpmtP3T5lsLxIV0fV
+ Lqgw==
+X-Gm-Message-State: AOJu0YyyuI/7yfjf7uncyuQnMiFAanOt2Oa6pE+t90a6MUr6Vn4fJT89
+ 4fzOuIhAXkkevgIKpCir3cRRDsOi3yA0RMuTvulajnAMQrhVio8cqsuzGLic2JYtfiMQRKqgW1t
+ V
+X-Received: by 2002:a05:600c:4508:b0:418:f991:8ad4 with SMTP id
+ t8-20020a05600c450800b00418f9918ad4mr4383715wmo.6.1714043006094; 
+ Thu, 25 Apr 2024 04:03:26 -0700 (PDT)
 Received: from localhost.localdomain ([92.88.170.77])
  by smtp.gmail.com with ESMTPSA id
- o20-20020a05600c511400b0041a49b10a13sm14955302wms.11.2024.04.25.04.03.07
+ l37-20020a05600c1d2500b004186f979543sm31187720wms.33.2024.04.25.04.03.24
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 25 Apr 2024 04:03:08 -0700 (PDT)
+ Thu, 25 Apr 2024 04:03:25 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Markus Armbruster <armbru@redhat.com>,
+Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>, Fan Ni <fan.ni@samsung.com>
-Subject: [PULL 12/22] hw/cxl/cxl-cdat: Make ct3_load_cdat() return boolean
-Date: Thu, 25 Apr 2024 13:01:45 +0200
-Message-ID: <20240425110157.20328-13-philmd@linaro.org>
+ Richard Henderson <richard.henderson@linaro.org>,
+ Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PULL 15/22] hw/elf_ops: Rename elf_ops.h -> elf_ops.h.inc
+Date: Thu, 25 Apr 2024 13:01:48 +0200
+Message-ID: <20240425110157.20328-16-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240425110157.20328-1-philmd@linaro.org>
 References: <20240425110157.20328-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::234;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x234.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BsQPxFtwUi7o
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pMXaX4OHwwAN
 
-From: Zhao Liu <zhao1.liu@intel.com>
+Since commit 139c1837db ("meson: rename included C source files
+to .c.inc"), QEMU standard procedure for included C files is to
+use *.c.inc.
 
-As error.h suggested, the best practice for callee is to return
-something to indicate success / failure.
+Besides, since commit 6a0057aa22 ("docs/devel: make a statement
+about includes") this is documented in the Coding Style:
 
-So make ct3_load_cdat() return boolean, and this is the preparation for
-cxl_doe_cdat_init() returning boolean.
+  If you do use template header files they should be named with
+  the ``.c.inc`` or ``.h.inc`` suffix to make it clear they are
+  being included for expansion.
 
-Suggested-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Message-ID: <20240418100433.1085447-2-zhao1.liu@linux.intel.com>
+Therefore rename "hw/elf_ops.h" as "hw/elf_ops.h.inc".
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240424173333.96148-2-philmd@linaro.org>
 ---
- hw/cxl/cxl-cdat.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ include/hw/{elf_ops.h => elf_ops.h.inc} | 0
+ bsd-user/elfload.c                      | 2 +-
+ hw/core/loader.c                        | 4 ++--
+ linux-user/elfload.c                    | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+ rename include/hw/{elf_ops.h => elf_ops.h.inc} (100%)
 
-diff --git a/hw/cxl/cxl-cdat.c b/hw/cxl/cxl-cdat.c
-index 551545f782..b3e496857a 100644
---- a/hw/cxl/cxl-cdat.c
-+++ b/hw/cxl/cxl-cdat.c
-@@ -111,7 +111,7 @@ static void ct3_build_cdat(CDATObject *cdat, Error **errp)
-     cdat->entry = g_steal_pointer(&cdat_st);
+diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h.inc
+similarity index 100%
+rename from include/hw/elf_ops.h
+rename to include/hw/elf_ops.h.inc
+diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
+index baf2f63d2f..833fa3bd05 100644
+--- a/bsd-user/elfload.c
++++ b/bsd-user/elfload.c
+@@ -383,7 +383,7 @@ static const char *lookup_symbolxx(struct syminfo *s, uint64_t orig_addr)
+     return "";
  }
  
--static void ct3_load_cdat(CDATObject *cdat, Error **errp)
-+static bool ct3_load_cdat(CDATObject *cdat, Error **errp)
+-/* FIXME: This should use elf_ops.h  */
++/* FIXME: This should use elf_ops.h.inc  */
+ static int symcmp(const void *s0, const void *s1)
  {
-     g_autofree CDATEntry *cdat_st = NULL;
-     g_autofree uint8_t *buf = NULL;
-@@ -127,11 +127,11 @@ static void ct3_load_cdat(CDATObject *cdat, Error **errp)
-                              &file_size, &error)) {
-         error_setg(errp, "CDAT: File read failed: %s", error->message);
-         g_error_free(error);
--        return;
-+        return false;
-     }
-     if (file_size < sizeof(CDATTableHeader)) {
-         error_setg(errp, "CDAT: File too short");
--        return;
-+        return false;
-     }
-     i = sizeof(CDATTableHeader);
-     num_ent = 1;
-@@ -139,19 +139,19 @@ static void ct3_load_cdat(CDATObject *cdat, Error **errp)
-         hdr = (CDATSubHeader *)(buf + i);
-         if (i + sizeof(CDATSubHeader) > file_size) {
-             error_setg(errp, "CDAT: Truncated table");
--            return;
-+            return false;
-         }
-         cdat_len_check(hdr, errp);
-         i += hdr->length;
-         if (i > file_size) {
-             error_setg(errp, "CDAT: Truncated table");
--            return;
-+            return false;
-         }
-         num_ent++;
-     }
-     if (i != file_size) {
-         error_setg(errp, "CDAT: File length mismatch");
--        return;
-+        return false;
-     }
+     struct elf_sym *sym0 = (struct elf_sym *)s0;
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index b8e52f3fb0..2f8105d7de 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -305,7 +305,7 @@ static void *load_at(int fd, off_t offset, size_t size)
+ #define elf_word        uint32_t
+ #define elf_sword       int32_t
+ #define bswapSZs        bswap32s
+-#include "hw/elf_ops.h"
++#include "hw/elf_ops.h.inc"
  
-     cdat_st = g_new0(CDATEntry, num_ent);
-@@ -185,6 +185,7 @@ static void ct3_load_cdat(CDATObject *cdat, Error **errp)
-     cdat->entry_len = num_ent;
-     cdat->entry = g_steal_pointer(&cdat_st);
-     cdat->buf = g_steal_pointer(&buf);
-+    return true;
+ #undef elfhdr
+ #undef elf_phdr
+@@ -327,7 +327,7 @@ static void *load_at(int fd, off_t offset, size_t size)
+ #define elf_sword       int64_t
+ #define bswapSZs        bswap64s
+ #define SZ              64
+-#include "hw/elf_ops.h"
++#include "hw/elf_ops.h.inc"
+ 
+ const char *load_elf_strerror(ssize_t error)
+ {
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index f4a0b78c75..a0999dac15 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -3572,7 +3572,7 @@ static const char *lookup_symbolxx(struct syminfo *s, uint64_t orig_addr)
+     return "";
  }
  
- void cxl_doe_cdat_init(CXLComponentState *cxl_cstate, Error **errp)
+-/* FIXME: This should use elf_ops.h  */
++/* FIXME: This should use elf_ops.h.inc  */
+ static int symcmp(const void *s0, const void *s1)
+ {
+     struct elf_sym *sym0 = (struct elf_sym *)s0;
 -- 
 2.41.0
 

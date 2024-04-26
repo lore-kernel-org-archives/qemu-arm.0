@@ -1,123 +1,122 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp347257ejb;
-        Fri, 26 Apr 2024 05:29:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVyDiEYNUKPCm4fGHwvKT1MVVrmKF2Lq3UFUwlI/VqYlLp2Rl8t16bnzjExGeKuyi/UoXUK4tCcYvksOXS6XJo3UIUf4K4W
-X-Google-Smtp-Source: AGHT+IEhoNMP2+qWnHOg299hpaqipgDVL08/ER2vQ5FKNNQQEiAFsAq30x3ug/kZilL8qU+XYHdf
-X-Received: by 2002:ac8:5a91:0:b0:43a:904d:8176 with SMTP id c17-20020ac85a91000000b0043a904d8176mr70457qtc.0.1714134584295;
-        Fri, 26 Apr 2024 05:29:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714134584; cv=none;
+Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp347468ejb;
+        Fri, 26 Apr 2024 05:30:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUXt17xJePNHjMpfqhGIr8+X5KdtYHj6RtzsiZcB8/lsR43QHPRaz8ue+Xgf4U67ZD1dk8ZHvcAO1S58IWYMxhgZenh7P/8
+X-Google-Smtp-Source: AGHT+IFp2+4ePTO0LmKhY0Z2C49baZUnT+Ty0SK+FGkLkgwOR/MecvR4lF098Y8BqeUF4/NYrsGQ
+X-Received: by 2002:a05:6359:65cc:b0:186:249a:c8e2 with SMTP id ym12-20020a05635965cc00b00186249ac8e2mr3135252rwb.23.1714134605163;
+        Fri, 26 Apr 2024 05:30:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714134605; cv=none;
         d=google.com; s=arc-20160816;
-        b=RwiMa4OpVliIxyLsH/qqz34WHNw40iKlgRuYEh8XMnJxGKNhMRjA/bTN+G8m7IlL+b
-         eMGBaum4x5iv3DnFSwuc3RjCXGQpxyPDbyY6zv6CU/ShHfk+n/LqHUIRTAXCGIzX5Rtw
-         12GWIqnAXj2kOsx+TM5gWrxdM+os8jI8tXp5+71tDd+90tu61bSAo37QpOxdUKqiHylq
-         qKoenhm1hTbYB8GtKSF7ZJ2eHiizgt5RqgorwhoJGTgYDAmsWjVkk1sjuWxuhN7J7q1Q
-         jV3Vdu0aEocPVL8E2mlipZTbXH27KJCG/PG6ogD44B7VvL24lpUXmOQUspXV/YMaadBG
-         YRkQ==
+        b=aOzqD5NYcS/hIf7moaJ1ejvILRRcGFbM/QNv290AtLESAS31Ux9f28+HD0HmLT6+ja
+         JomOWq4bf8COcOjHUPQnhsG+hjNGw25/3HCA2ScxwAslSOd3Md/NTEyiZycv5fJbOrlG
+         XhoYlZeFsv7gCsq3/7a4NncYZ6XxJVnnw1TWNTZbWzMN0tdyrfPGfkATVftI75VXGp9G
+         lT+sgkGT7SrOaHZpQNErPZjMp1s+ySfduoTB1e1RtU9sV41/QrDzgGH23R6/lNPS8cpZ
+         pJSAw92kdf1wWu8hgFbKn94l/95i6Yy9DZbmxVS8oQqql7teJnU61hKOX30GFQn/Qxqo
+         amWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=DB0/7Uqp2qUB8AIDdwjge4FwiUAyUxwuYK0G2iKn4ik=;
+        bh=WS9SzNWMMODXM/MCi5WitYJBrcmDnkYWEhDYB5gmtic=;
         fh=ccPkIv+ASOOBZ/9yqv8QUMFw2GtqYDK2ik0zYMtkoQw=;
-        b=iffCiS5ZFPZks85/BQIi9RVZAZnVOvCa/Ij1x4G9qAaOoRR/fXlkpC1+877x0t+79Y
-         ukrspgBzLdyuq7OD/uOrLBjwEWf2WkywdEv6X2JuCTKj8x65ysRbZHFCBwfuWyPdXv+F
-         sgA7Tf1/Z6s4Q149tdgHo3REGAXK5Hb1z50Elz6KjeRoXnk6AvnuZT8EpUrKGb3T3u7K
-         De2Z84EyRcDPZ6LDWoom0eIicvQd06HDRSq7obBB9sJ6+WRifBruXh2z6ak+IBkmk8mH
-         t4CZk9Q33nhJq0K1hnd4BWv7Bzf8PxasQGCLC9/BaSiJuwGCJfjQrowwuW+Lsa0nu0ls
-         zgVA==;
+        b=0cjOE7mgJafM3wYFuCACRY4kIVYzQpWQiGbID6pDfGtYdCEqnFDh8HM54/keau6aFT
+         ZdomZAUm5uUzOGNznDkmc5c1ncXR66aIV84hi8gL5lOHlZsbVKedE1co+BSLAVVhdG5N
+         Zk2uG9RdyQw9OeIpdmhp8aGYSP56XJM8uVORrJVx8t84/GN73HHvGt90ahUbccy1hGQH
+         UqfQInQ9HAb+NfpVlJ7RPlNGLzK4DIh2OM4gUoYox+uTnYiUWW0dRSmJAj4c8UTWCCtk
+         uBkyoAoQhJHvigpbU0dQqCs2EpRRiK0U85o27Ef9tnx1/n258sJgWzVbMBU30vmF1djN
+         IAtg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qDLbAyKd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H2z+ryAf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ci12-20020a05622a260c00b0043992ddfdecsi14403610qtb.435.2024.04.26.05.29.44
+        by mx.google.com with ESMTPS id u13-20020a05620a084d00b0078f162257edsi18647896qku.425.2024.04.26.05.30.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Apr 2024 05:29:44 -0700 (PDT)
+        Fri, 26 Apr 2024 05:30:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qDLbAyKd;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H2z+ryAf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s0Khe-0003Aj-JX; Fri, 26 Apr 2024 08:29:22 -0400
+	id 1s0Khg-0003C4-VJ; Fri, 26 Apr 2024 08:29:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1s0Khc-00039l-My
- for qemu-arm@nongnu.org; Fri, 26 Apr 2024 08:29:21 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1s0Khf-0003Az-6Q
+ for qemu-arm@nongnu.org; Fri, 26 Apr 2024 08:29:23 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1s0KhZ-00064g-O0
- for qemu-arm@nongnu.org; Fri, 26 Apr 2024 08:29:20 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-41b79451145so6704125e9.3
- for <qemu-arm@nongnu.org>; Fri, 26 Apr 2024 05:29:17 -0700 (PDT)
+ id 1s0Khb-00064t-An
+ for qemu-arm@nongnu.org; Fri, 26 Apr 2024 08:29:21 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-41b79451128so6152865e9.0
+ for <qemu-arm@nongnu.org>; Fri, 26 Apr 2024 05:29:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1714134556; x=1714739356; darn=nongnu.org;
+ d=linaro.org; s=google; t=1714134557; x=1714739357; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DB0/7Uqp2qUB8AIDdwjge4FwiUAyUxwuYK0G2iKn4ik=;
- b=qDLbAyKdbgASlqXkTww1ViH8YU6hVgUh7iGxletNdXqOq1+tyAHtnPlzQ81U7GX4Op
- GylbqcURjpA0NiGVJZM5m34VYjO0IH9hXxxaGauj2p1kct9GxQ6vgkJenOM8j2PBHlZy
- wyYz5bxNTTBF0k+5ZwlF+lO0xXpYesy1H+2s8nKRHj/N9YYPgc4igBJmQG4RsxtwuHz8
- L+FL0L8tUlgbQ/KBM5aNn8go6qD64MPobA5ZFuMmgahHCDv0s5umKGz8OYlQSPDbMHjT
- 2nCza2jAHHo6h8ax+A3avW1UwEP2CruGMbGSB1aP1V1VBS+w2CxVMJHXJo1XPyJHFXj9
- Ifbw==
+ bh=WS9SzNWMMODXM/MCi5WitYJBrcmDnkYWEhDYB5gmtic=;
+ b=H2z+ryAfa1GmC2U5USp1dWHx+58KAfKPfOnLU6LVLP+uodx9C+6ACc6sC3YPcKAnF+
+ Ukl5Ciata/UbApgbJ8rRwFQN799taAFDes2GNp3Got0LSoomNFtbcFoPSBGFIkDFklrb
+ FMfbvarAxG+l+FiMsvSJm9mpm6kSNKhbcxTAuKMCKwmt4+MX3X+Ox5GImXsI7g2A/mql
+ JNQFjng03J4lFaZHhZ0qWaq4jqLgLB6zDC8HHCpbxBYKFPKtJ2DxRPfzjZ2VhScTPXtT
+ Sun77dJ+w2RI7kokldURUW4sHXGc9FuDjhpg1hbE1gNvWdtINEfOd/0ejIUoIv4W6sXJ
+ xOYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714134556; x=1714739356;
+ d=1e100.net; s=20230601; t=1714134557; x=1714739357;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=DB0/7Uqp2qUB8AIDdwjge4FwiUAyUxwuYK0G2iKn4ik=;
- b=aEWgPlofBn6s03PFr2vGXrkaYHXG8SLy1Gv1E4anHrYA1RcF79aZZqhMYUxgxyQs08
- 4Mcbuz26Xmy+Y8v9GN8vMOGXF0GnnAijUsH3+KUcVUZyOtyqQ1Flpn/u18g5l/KInbog
- DH6UuY+fRh1B27unhj7PE7JZgEbAi63NyJ8RgopYeWSna96zpboBQ/7iUYgwnNK+b3FK
- zQ2JBhrjGxGpoKrIMsbCijSVSNmLVYSgVbw/eBHKX+EcqftFPoaITNi1CKltz5sWqFpZ
- q8CtjsfoGdg2bCcbdqQB79yQJbZQkxxWWLx4CDXkjCVv8aTWzkqqN7YtoziI7BpL0XzS
- CROw==
-X-Gm-Message-State: AOJu0YxRa21QS/VrJ1xGq4ozabfl9jmxasgXaQcjr+lCtAFRJXgOwCBV
- TZxCl8hw3prxFH5rqs5ugwSBe6yJrfecLwqJMuvp/D8Bhury90mvFkDXBc15nRSmNsMWGBsjG5p
- a
-X-Received: by 2002:a05:600c:470f:b0:41a:8374:7eae with SMTP id
- v15-20020a05600c470f00b0041a83747eaemr1980934wmo.31.1714134555834; 
- Fri, 26 Apr 2024 05:29:15 -0700 (PDT)
+ bh=WS9SzNWMMODXM/MCi5WitYJBrcmDnkYWEhDYB5gmtic=;
+ b=nc+O3tHJ16Ffkj9P8VgvBN/db7iSJV0bV0bHv+Id3AVAJ/vNM7NL6X1NKHZ872Rc/M
+ eO+m9Zj1oSKSsraaUnS7uxnzN6BhBho1gAzhj6rKQSekV53vCgV2sMOGAEAy9hRHkYFm
+ FWgr46qG7eAL+7QYOuSQDVDwfp/6ByNAb9l8BgD7wk7ZqycQPsYDp6GOv5YcKwR8aocX
+ EC2nFvZ18KimrJA1gvEYXXKfNSfCDcVwetOGg+qpoSBcD0PqSeZIFVTJZMEQ9pcuh8r+
+ DdNHsGhBaOpFA8IU7AmUs4B3OlMfhxjIDfbqWqaZfGOo8rFcUxX396PM5pVeXys1A41t
+ 3/Fw==
+X-Gm-Message-State: AOJu0Yyh8HJ2+SSB8PlclugWq662pmU/L/aZqbaMgIEmhfyK3OLzhOzp
+ SIpFRO+DQmhLW0FekJToJgH2tK3Tt4bVJO4XciioxMzw0hkK3xUFDZHCTjwJjPNwnnG4tmJQP90
+ q
+X-Received: by 2002:a05:600c:45cd:b0:41a:a521:9699 with SMTP id
+ s13-20020a05600c45cd00b0041aa5219699mr1970436wmo.4.1714134556905; 
+ Fri, 26 Apr 2024 05:29:16 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- m15-20020a05600c460f00b0041a964b55ddsm1397134wmo.1.2024.04.26.05.29.15
+ m15-20020a05600c460f00b0041a964b55ddsm1397134wmo.1.2024.04.26.05.29.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Apr 2024 05:29:15 -0700 (PDT)
+ Fri, 26 Apr 2024 05:29:16 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Radoslaw Biernacki <rad@semihalf.com>,
  Leif Lindholm <quic_llindhol@quicinc.com>,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH v2 1/4] target/arm: Refactor default generic timer frequency
- handling
-Date: Fri, 26 Apr 2024 13:29:10 +0100
-Message-Id: <20240426122913.3427983-2-peter.maydell@linaro.org>
+Subject: [PATCH v2 3/4] hw/watchdog/sbsa_gwdt: Make watchdog timer frequency a
+ QOM property
+Date: Fri, 26 Apr 2024 13:29:12 +0100
+Message-Id: <20240426122913.3427983-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240426122913.3427983-1-peter.maydell@linaro.org>
 References: <20240426122913.3427983-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,155 +131,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oj9XysXjF2/p
+X-TUID: JLvivuTVBxv1
 
-The generic timer frequency is settable by board code via a QOM
-property "cntfrq", but otherwise defaults to 62.5MHz.  The way this
-is done includes some complication resulting from how this was
-originally a fixed value with no QOM property.  Clean it up:
+Currently the sbsa_gdwt watchdog device hardcodes its frequency at
+62.5MHz. In real hardware, this watchdog is supposed to be driven
+from the system counter, which also drives the CPU generic timers.
+Newer CPU types (in particular from Armv8.6) should have a CPU
+generic timer frequency of 1GHz, so we can't leave the watchdog
+on the old QEMU default of 62.5GHz.
 
- * always set cpu->gt_cntfrq_hz to some sensible value, whether
-   the CPU has the generic timer or not, and whether it's system
-   or user-only emulation
- * this means we can always use gt_cntfrq_hz, and never need
-   the old GTIMER_SCALE define
- * set the default value in exactly one place, in the realize fn
-
-The aim here is to pave the way for handling the ARMv8.6 requirement
-that the generic timer frequency is always 1GHz.  We're going to do
-that by having old CPU types keep their legacy-in-QEMU behaviour and
-having the default for any new CPU types be a 1GHz rather han 62.5MHz
-cntfrq, so we want the point where the default is decided to be in
-one place, and in code, not in a DEFINE_PROP_UINT64() initializer.
-
-This commit should have no behavioural changes.
+Make the frequency a QOM property so it can be set by the board,
+and have our only board that uses this device set that frequency
+to the same value it sets the CPU frequency.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h |  7 ++++---
- target/arm/cpu.c       | 31 +++++++++++++++++--------------
- target/arm/helper.c    | 16 ++++++++--------
- 3 files changed, 29 insertions(+), 25 deletions(-)
+ include/hw/watchdog/sbsa_gwdt.h |  3 +--
+ hw/arm/sbsa-ref.c               |  1 +
+ hw/watchdog/sbsa_gwdt.c         | 15 ++++++++++++++-
+ 3 files changed, 16 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index b53f5e8ff2a..a1509a3a58e 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -59,10 +59,11 @@ static inline bool excp_is_internal(int excp)
-         || excp == EXCP_SEMIHOST;
+diff --git a/include/hw/watchdog/sbsa_gwdt.h b/include/hw/watchdog/sbsa_gwdt.h
+index 70b137de301..4bdc6c6fdb6 100644
+--- a/include/hw/watchdog/sbsa_gwdt.h
++++ b/include/hw/watchdog/sbsa_gwdt.h
+@@ -55,8 +55,6 @@
+ #define SBSA_GWDT_RMMIO_SIZE 0x1000
+ #define SBSA_GWDT_CMMIO_SIZE 0x1000
+ 
+-#define SBSA_TIMER_FREQ      62500000 /* Hz */
+-
+ typedef struct SBSA_GWDTState {
+     /* <private> */
+     SysBusDevice parent_obj;
+@@ -67,6 +65,7 @@ typedef struct SBSA_GWDTState {
+     qemu_irq irq;
+ 
+     QEMUTimer *timer;
++    uint64_t freq;
+ 
+     uint32_t id;
+     uint32_t wcs;
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 36f6f717b4b..57c337fd92a 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -543,6 +543,7 @@ static void create_wdt(const SBSAMachineState *sms)
+     SysBusDevice *s = SYS_BUS_DEVICE(dev);
+     int irq = sbsa_ref_irqmap[SBSA_GWDT_WS0];
+ 
++    qdev_prop_set_uint64(dev, "clock-frequency", SBSA_GTIMER_HZ);
+     sysbus_realize_and_unref(s, &error_fatal);
+     sysbus_mmio_map(s, 0, rbase);
+     sysbus_mmio_map(s, 1, cbase);
+diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+index 96895d76369..d437535cc66 100644
+--- a/hw/watchdog/sbsa_gwdt.c
++++ b/hw/watchdog/sbsa_gwdt.c
+@@ -18,6 +18,7 @@
+ #include "qemu/osdep.h"
+ #include "sysemu/reset.h"
+ #include "sysemu/watchdog.h"
++#include "hw/qdev-properties.h"
+ #include "hw/watchdog/sbsa_gwdt.h"
+ #include "qemu/timer.h"
+ #include "migration/vmstate.h"
+@@ -109,7 +110,7 @@ static void sbsa_gwdt_update_timer(SBSA_GWDTState *s, WdtRefreshType rtype)
+         timeout = s->woru;
+         timeout <<= 32;
+         timeout |= s->worl;
+-        timeout = muldiv64(timeout, NANOSECONDS_PER_SECOND, SBSA_TIMER_FREQ);
++        timeout = muldiv64(timeout, NANOSECONDS_PER_SECOND, s->freq);
+         timeout += qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+ 
+         if ((rtype == EXPLICIT_REFRESH) || ((rtype == TIMEOUT_REFRESH) &&
+@@ -261,6 +262,17 @@ static void wdt_sbsa_gwdt_realize(DeviceState *dev, Error **errp)
+                 dev);
  }
  
--/* Scale factor for generic timers, ie number of ns per tick.
-- * This gives a 62.5MHz timer.
-+/*
-+ * Default frequency for the generic timer, in Hz.
-+ * This is 62.5MHz, which gives a 16 ns tick period.
-  */
--#define GTIMER_SCALE 16
-+#define GTIMER_DEFAULT_HZ 62500000
- 
- /* Bit definitions for the v7M CONTROL register */
- FIELD(V7M_CONTROL, NPRIV, 0, 1)
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index a152def2413..9f2ca6633a1 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1506,9 +1506,12 @@ static void arm_cpu_initfn(Object *obj)
-     }
++static Property wdt_sbsa_gwdt_props[] = {
++    /*
++     * Timer frequency in Hz. This must match the frequency used by
++     * the CPU's generic timer. Default 62.5Hz matches QEMU's legacy
++     * CPU timer frequency default.
++     */
++    DEFINE_PROP_UINT64("clock-frequency", struct SBSA_GWDTState, freq,
++                       62500000),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -271,6 +283,7 @@ static void wdt_sbsa_gwdt_class_init(ObjectClass *klass, void *data)
+     set_bit(DEVICE_CATEGORY_WATCHDOG, dc->categories);
+     dc->vmsd = &vmstate_sbsa_gwdt;
+     dc->desc = "SBSA-compliant generic watchdog device";
++    device_class_set_props(dc, wdt_sbsa_gwdt_props);
  }
  
-+/*
-+ * 0 means "unset, use the default value". That default might vary depending
-+ * on the CPU type, and is set in the realize fn.
-+ */
- static Property arm_cpu_gt_cntfrq_property =
--            DEFINE_PROP_UINT64("cntfrq", ARMCPU, gt_cntfrq_hz,
--                               NANOSECONDS_PER_SECOND / GTIMER_SCALE);
-+            DEFINE_PROP_UINT64("cntfrq", ARMCPU, gt_cntfrq_hz, 0);
- 
- static Property arm_cpu_reset_cbar_property =
-             DEFINE_PROP_UINT64("reset-cbar", ARMCPU, reset_cbar, 0);
-@@ -1954,6 +1957,17 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+    if (!cpu->gt_cntfrq_hz) {
-+        /*
-+         * 0 means "the board didn't set a value, use the default".
-+         * The default value of the generic timer frequency (as seen in
-+         * CNTFRQ_EL0) is 62.5MHz, which corresponds to a period of 16ns.
-+         * This is what you get (a) for a CONFIG_USER_ONLY CPU (b) if the
-+         * board doesn't set it.
-+         */
-+        cpu->gt_cntfrq_hz = GTIMER_DEFAULT_HZ;
-+    }
-+
- #ifndef CONFIG_USER_ONLY
-     /* The NVIC and M-profile CPU are two halves of a single piece of
-      * hardware; trying to use one without the other is a command line
-@@ -2002,18 +2016,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     }
- 
-     {
--        uint64_t scale;
--
--        if (arm_feature(env, ARM_FEATURE_GENERIC_TIMER)) {
--            if (!cpu->gt_cntfrq_hz) {
--                error_setg(errp, "Invalid CNTFRQ: %"PRId64"Hz",
--                           cpu->gt_cntfrq_hz);
--                return;
--            }
--            scale = gt_cntfrq_period_ns(cpu);
--        } else {
--            scale = GTIMER_SCALE;
--        }
-+        uint64_t scale = gt_cntfrq_period_ns(cpu);
- 
-         cpu->gt_timer[GTIMER_PHYS] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-                                                arm_gt_ptimer_cb, cpu);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 6b224826fbb..1e3002f9947 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2474,6 +2474,13 @@ static const ARMCPRegInfo v6k_cp_reginfo[] = {
-       .resetvalue = 0 },
- };
- 
-+static void arm_gt_cntfrq_reset(CPUARMState *env, const ARMCPRegInfo *opaque)
-+{
-+    ARMCPU *cpu = env_archcpu(env);
-+
-+    cpu->env.cp15.c14_cntfrq = cpu->gt_cntfrq_hz;
-+}
-+
- #ifndef CONFIG_USER_ONLY
- 
- static CPAccessResult gt_cntfrq_access(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -3228,13 +3235,6 @@ void arm_gt_hvtimer_cb(void *opaque)
-     gt_recalc_timer(cpu, GTIMER_HYPVIRT);
- }
- 
--static void arm_gt_cntfrq_reset(CPUARMState *env, const ARMCPRegInfo *opaque)
--{
--    ARMCPU *cpu = env_archcpu(env);
--
--    cpu->env.cp15.c14_cntfrq = cpu->gt_cntfrq_hz;
--}
--
- static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     /*
-      * Note that CNTFRQ is purely reads-as-written for the benefit
-@@ -3514,7 +3514,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 0,
-       .type = ARM_CP_CONST, .access = PL0_R /* no PL1_RW in linux-user */,
-       .fieldoffset = offsetof(CPUARMState, cp15.c14_cntfrq),
--      .resetvalue = NANOSECONDS_PER_SECOND / GTIMER_SCALE,
-+      .resetfn = arm_gt_cntfrq_reset,
-     },
-     { .name = "CNTVCT_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 2,
+ static const TypeInfo wdt_sbsa_gwdt_info = {
 -- 
 2.34.1
 

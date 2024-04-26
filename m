@@ -1,78 +1,78 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp636542ejb;
-        Fri, 26 Apr 2024 12:42:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXrIH36R+0yYCd6yUkrISw0VjWe90l3xDXJXNwOZavOL3Y7or1epju81TDgdBQtjA3FvbA78eum9sn8RcyI/fSgQ+zVDiwr
-X-Received: by 2002:a17:906:7f03:b0:a52:6435:ef09 with SMTP id d3-20020a1709067f0300b00a526435ef09mr2679688ejr.76.1714160559992;
-        Fri, 26 Apr 2024 12:42:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714160559; cv=none;
+Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp636579ejb;
+        Fri, 26 Apr 2024 12:42:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUsWJNdLAhAqGIY3QQNQCmAmmlh+aLNKWgIo1w4caReCDyikeSG90c82xCG3FGvWBQ0KoKTddlEAe3p4oAKJkndKWfpbtlp
+X-Received: by 2002:a2e:92cc:0:b0:2dd:bd92:63c with SMTP id k12-20020a2e92cc000000b002ddbd92063cmr2173025ljh.42.1714160565892;
+        Fri, 26 Apr 2024 12:42:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714160565; cv=none;
         d=google.com; s=arc-20160816;
-        b=iDHFi+xPbhuiPse8N2vNa+gfqvxO8l+11yq1ebLs3rXZgfe0C8O3wWi1kjkkPIYZKW
-         OmnHT/q+3KH8WhF+NilFSyODRdjyzGbkEgAU5OzxYXjbmqeIXFOC6eANVXtSf5g/LKb0
-         n+uxGp7gmWsmRIUFpYPgdmzbPmaYx6slBX4Q7f2pMJlI2615rGcYu7CpVvRXYsC+BSBS
-         5VgciKkW6aKdSwMBMo9KlbPfynTFWNTPgfOo+R8Kdno0OLkovfpL33P+UKugqqDJWpu6
-         uXKrg+u/nbPaHPNawjRhUSOJpPdOpQnT4TXT44XcKygbs81aifyFmSYk8UuTVlDIXNEg
-         l13w==
+        b=WmOqmRptLXFBDM9FFE1fODeBKPBnVBUS/kYeD9RMmZ5O6PwwR4vR3r6TUfLcq/B56s
+         etha1sSh8TnNfAr/K1chhYwVpPcHiw7e5ENlqknO4uZwqdaOrASxuwEBfBvYPls6PLid
+         wIsto1q4NC7VXPJ0+MnxRr8IM2T5eVa4sQFqqt+t6+B9tl831SBG8+/hTPn2o47qPki0
+         Qhqnj+XhAf60LleHCsZOPVjo0Iw3SpwMaLvtgHBvM1jiHBUyQuHuf//xhsEOxCNXBa30
+         +oDda3/FT6oeh3ftYQE6oo26LqSACFcKsquTdb5XtASgBJFzoZlAeJZ97LV/nT3DO+Mn
+         mlJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=4X/VhmwXvkdhIQuo7rHVj9w7BkqzRhVw95Tx0jafh5o=;
-        fh=dLEaXY73ExIfLMGqtPopie5q8EWV8/78NJxXPwK34Ac=;
-        b=ffVR01zVeggMj2ZGBToFqN5m1I+BQ8kKuM8qwW4GNwdzEL5GC+HsHvpt4kFhAaTuJj
-         c9hXyfPFIhFR8lId6Kx/n99PLgSp6MwVnpmEPKlBEbaifcT2VWYm2+mpz3+6bQnqDifE
-         75nCxdPvoDaVAYgJgK3y4qwPEsL13gNXqDPObcexJVRzj1GelMik4/vekLKvtggI73v3
-         +89t863mysVZA1HU0HXuwYmeuLRLcqVidEk9V/UxFNf01/AhUIc93YvXavH8uc4BTqmm
-         +SGMr+qU3boIt1FRp103r59VTNm/k2oTr9sLp0B2kN3+STLHsHkAGPkAQuqoBLcu5+/p
-         hhzw==;
+        bh=t0nMCqhYKzp5r2ZnGbDu0d0x6qlsj2uY/rxTdGpirtw=;
+        fh=Ms1Joq9smtta8VY2Wj9LJ9L4thsPyCDTGbuTY5hkSjU=;
+        b=Zw6DzODRlyb8kpGquXB5KFpBmyErxZysVz8zxsV3HqBRmS83HmZIWEDrNGT0cpBx4c
+         pdoLuLICqmW+VKZBTHtO3boE+R48sykvCX3Pyx2Ct72DmY1ED6hgLTCJzP6A+9oCj+WG
+         zRFs05UW0KsT+auXl5OLMAw6z1iRel3gdlfci/6j94c+0Z1pFd6Pj6jdV8W/Srt0dk+8
+         ApSspMLLjeZxxJyQlImFazlnweePXUUrXRHkeTSHjYTsWtHJudajcPl4QK9veefUbozW
+         Xe+9EaKss2fTF9BDxlPdWaERAKFPKMv+AqFbuH6NPGjj7x5YPdPOUAQGQOBpD22UaFlz
+         8amw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P3Mm0d5y;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FybzDQe6;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l13-20020a1709061c4d00b00a5211f8bbf8sor5091909ejg.17.2024.04.26.12.42.39
+        by mx.google.com with SMTPS id c68-20020a509fca000000b0056e03f421ebsor4480721edf.10.2024.04.26.12.42.45
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 26 Apr 2024 12:42:39 -0700 (PDT)
+        Fri, 26 Apr 2024 12:42:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P3Mm0d5y;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FybzDQe6;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714160559; x=1714765359; darn=linaro.org;
+        d=linaro.org; s=google; t=1714160565; x=1714765365; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=4X/VhmwXvkdhIQuo7rHVj9w7BkqzRhVw95Tx0jafh5o=;
-        b=P3Mm0d5yApOiOwfb8OPCOI5yPuipOfO9S2Y8nScdcQPfG/mQR1MoeMwzWXfhxgrVXX
-         UpuVpQPRl5mVnM1MNu5XRS4CyWpKMrgOkY6XzVGiOD9Y53bxdX7It/xukws+vogN6c1o
-         Gv1rlRJpDna/SCpKE+bbBe6YwO74EcwFvJRxp3/uwU+fA7/4ddktHE1ObVacAVYucY++
-         0dnLB1BvJR45z9T57+Rc7Ls0MqxKS/cEi2SFbCdOVH/es2Mry+DDQIMRNEpcosuCUvSO
-         yp7iE1MIQCIKI8MOd5H5aiZ4A/pSlLWJs/+HEtY5Eh+lUGZb58kL+6axyG/IpwoSOZrL
-         Fjew==
+        bh=t0nMCqhYKzp5r2ZnGbDu0d0x6qlsj2uY/rxTdGpirtw=;
+        b=FybzDQe6EnrTeASvFcLT1Ufgf/8IdiV6HSheRMvAEdwxzbPy9Ijx6++I3jcnuPjp8p
+         b4l9U1YOAcreoG9y0LkJwNLr+2lhb1ADzz1FUnPla6fxYy0Yllnvz8t6W/t6xyDHhQkd
+         dCFsqf4atwKq7UO8ZhweYtM3OKu+LhaNgHf/eS0JwGf5+rIB3ETpAewjqBNRU7KZwCTr
+         Hy4SlZZddEFww5p+CrzhWSioqXEnkbSliMx9RPhikhnWN9HIhUOoeRcX2wPTXWuuVyV8
+         zXgBx7DSCddFSxX8MuqF0WC9+fNduTewRj1L1utcrWt65Aibp7+SI/EU24JrgpjR1jxd
+         vSUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714160559; x=1714765359;
+        d=1e100.net; s=20230601; t=1714160565; x=1714765365;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=4X/VhmwXvkdhIQuo7rHVj9w7BkqzRhVw95Tx0jafh5o=;
-        b=qifWHVHolIqsQWTEYYAz8gWqF2k2IROZqMowkdkx4RGQYtMWnrhR66Ua61KcxJeLZF
-         sOW1qbZH47gAXH9qSD95TLCVrQdvf5CSklc87mNcSQe2iaHyE1H6swB6n2UEXH8NG9cw
-         gsrC0gFeixgg4V7eA1XGOvwyEprQMaYCzhntj7QFQiZVhLdR98vJAOTupcDiQyQND5nV
-         BxumgCILkuCwxSyCeBD8xrH1BE2ETA9LZ0r39aH/VP7A0+DIXy9RbCg5sOskTDFt2poQ
-         CvjyfpqNWlD40D3UT5neriE0eCG0ahz53/vqfBR+NuWWeYMh2q2Qq4dDBJ4lEp3HzMOv
-         Uk4g==
-X-Forwarded-Encrypted: i=1; AJvYcCWRtjmJfMQD82PRPgVQ3n8+6RvMlXTvi6g9KOjcketR6icq3Y135xWS/Admif0HHt1ykCLIBTlxgk/BVLR6m5GLeTqUTpcs
-X-Gm-Message-State: AOJu0YzKnMyQU06gG8Xd9OZKf2RZiSwAGT9x1G9q4qgcX6dAzqY9hdbB
-	yq0JFygt6KruInNgL4SRsHgGBuX2SoVgG3wgfOaCABL7T6JTLBMIstm1x8tWi3UVyw==
-X-Google-Smtp-Source: AGHT+IGxJBhgvUwhhWCAgenYBiSIUi2w5crKR0/10WrNMXoZqN9Fol3uSvd/ZTOG18vXH6erYN0+GQ==
-X-Received: by 2002:a17:906:28d9:b0:a55:63de:9aa9 with SMTP id p25-20020a17090628d900b00a5563de9aa9mr2581937ejd.49.1714160559645;
-        Fri, 26 Apr 2024 12:42:39 -0700 (PDT)
+        bh=t0nMCqhYKzp5r2ZnGbDu0d0x6qlsj2uY/rxTdGpirtw=;
+        b=AEB6NvltM3c90uG38FyVk9gpWJh6cyFEdMBOdEFQehKkh7zIywwnRwxnqA8yXK9g31
+         tAd0qhP68QJgJEdHHmglrzkLGvc62nrTOUiS2YwTpd0Js8SED0Ipwpe5I8vB/RRAVV3V
+         peO+vH/0G0GYQtxcJhixeUX69Uik6a3OlvBqKvRKqN7Ckar4csWM5ZcSXjGtMJ4aOdO+
+         JpdmY2J5yWEVSThrF8hiwpfmdSrpkr219xyLBcDzH0eLYDhAh456JoqdJf2s4zGD5Gg3
+         6UQUec7nL2PRv/Xa1pwqte1fx1pw9I6SjM9yFQwl2LMPlWlW5wnZDkjgrBbSB4wscsDY
+         1aIg==
+X-Forwarded-Encrypted: i=1; AJvYcCVLRROcam+1jFLNd7ZC1dz7bP51NpyQ4Z1aG3OOqoAsr5N9C+KLVKi6nEUL9x1YjSJvVxqU1vNc4OB+7A2n0AKdFAnclHtz
+X-Gm-Message-State: AOJu0Yz4gwxHQqsNKxtwDWBuMPm2orFHUjZEOTYMtm9nYzk+UY2j1oy5
+	2jDW/DdZIaCxfep1F3nNKUY35uKfMB5IiRcQCAOFOzsXMecxAXErNYuObBMDwAw1Lw==
+X-Google-Smtp-Source: AGHT+IHy1tLGCW7Nem/jvC7aOudNiOgNhqRxkuX/J7UTcovAnA7B/AIFC8TXFy/FYnitwiaNryc9TQ==
+X-Received: by 2002:a50:a6dc:0:b0:572:6b03:607 with SMTP id f28-20020a50a6dc000000b005726b030607mr44695edc.42.1714160565256;
+        Fri, 26 Apr 2024 12:42:45 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from m1x-phil.lan (aul93-h02-176-184-11-147.dsl.sta.abo.bbox.fr. [176.184.11.147])
-        by smtp.gmail.com with ESMTPSA id n11-20020a170906b30b00b00a5242e285aesm10798927ejz.184.2024.04.26.12.42.38
+        by smtp.gmail.com with ESMTPSA id cf8-20020a0564020b8800b0056c24df7a78sm10395889edb.5.2024.04.26.12.42.43
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 26 Apr 2024 12:42:39 -0700 (PDT)
+        Fri, 26 Apr 2024 12:42:44 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -80,48 +80,52 @@ Cc: qemu-arm@nongnu.org,
 	qemu-s390x@nongnu.org,
 	qemu-ppc@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Warner Losh <imp@bsdimp.com>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PULL 06/38] gdbstub: Include missing 'hw/core/cpu.h' header
-Date: Fri, 26 Apr 2024 21:41:26 +0200
-Message-ID: <20240426194200.43723-7-philmd@linaro.org>
+Subject: [PULL 07/38] gdbstub: Simplify #ifdef'ry in helpers.h
+Date: Fri, 26 Apr 2024 21:41:27 +0200
+Message-ID: <20240426194200.43723-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240426194200.43723-1-philmd@linaro.org>
 References: <20240426194200.43723-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 4/rC0LBT90J0
+X-TUID: aPlgi0FFu/Le
 
-Functions such gdb_get_cpu_pid() dereference CPUState so
-require the structure declaration from "hw/core/cpu.h":
-
-  static uint32_t gdb_get_cpu_pid(CPUState *cpu)
-  {
-    ...
-    return cpu->cluster_index + 1;
-  }
+Slightly simplify by checking NEED_CPU_H definition in header.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Warner Losh <imp@bsdimp.com>
-Message-Id: <20231211212003.21686-15-philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240322161439.6448-2-philmd@linaro.org>
 ---
- gdbstub/gdbstub.c | 1 +
- 1 file changed, 1 insertion(+)
+ include/gdbstub/helpers.h | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index 9c23d44baf..9c2b8b5d0a 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -37,6 +37,7 @@
- #include "hw/cpu/cluster.h"
- #include "hw/boards.h"
- #endif
-+#include "hw/core/cpu.h"
+diff --git a/include/gdbstub/helpers.h b/include/gdbstub/helpers.h
+index 6b97610f48..6277a858a1 100644
+--- a/include/gdbstub/helpers.h
++++ b/include/gdbstub/helpers.h
+@@ -12,7 +12,10 @@
+ #ifndef _GDBSTUB_HELPERS_H_
+ #define _GDBSTUB_HELPERS_H_
  
- #include "sysemu/hw_accel.h"
- #include "sysemu/runstate.h"
+-#ifdef COMPILING_PER_TARGET
++#ifndef COMPILING_PER_TARGET
++#error "gdbstub helpers should only be included by target specific code"
++#endif
++
+ #include "cpu.h"
+ 
+ /*
+@@ -96,8 +99,4 @@ static inline uint8_t *gdb_get_reg_ptr(GByteArray *buf, int len)
+ #define ldtul_p(addr) ldl_p(addr)
+ #endif
+ 
+-#else
+-#error "gdbstub helpers should only be included by target specific code"
+-#endif
+-
+ #endif /* _GDBSTUB_HELPERS_H_ */
 -- 
 2.41.0

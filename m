@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id y43-20020a50bb2e000000b0057000a2cb5bsm10547038ede.18.2024.04.26.08.39.39
+        by smtp.gmail.com with ESMTPSA id u14-20020a1709063b8e00b00a58de9434ecsm33716ejf.108.2024.04.26.08.39.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 26 Apr 2024 08:39:39 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 0670E5F8A9;
+	by draig.lan (Postfix) with ESMTP id 1C85E5F94B;
 	Fri, 26 Apr 2024 16:39:39 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -29,73 +29,137 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Jiaxun Yang <jiaxun.yang@flygoat.com>,
 	Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH 1/3] build-environment: make some packages optional
-Date: Fri, 26 Apr 2024 16:39:36 +0100
-Message-Id: <20240426153938.1707723-2-alex.bennee@linaro.org>
+Subject: [PATCH 2/3] gitlab: migrate the s390x custom machine to 22.04
+Date: Fri, 26 Apr 2024 16:39:37 +0100
+Message-Id: <20240426153938.1707723-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240426153938.1707723-1-alex.bennee@linaro.org>
 References: <20240426153938.1707723-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: XNl2naSOJFyQ
+X-TUID: LUijBlOsOId5
 
-Upgrading the s390x runner exposed some packages are not available for
-it. Add an additional optional stage we only enable for arm64/x86_64
-for now.
+20.04 is dead (from QEMU's point of view), long live 22.04!
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/ci/setup/build-environment.yml | 16 +++++++++++++---
- 1 file changed, 13 insertions(+), 3 deletions(-)
+ .gitlab-ci.d/custom-runners.yml               |  2 +-
+ ...20.04-s390x.yml => ubuntu-22.04-s390x.yml} | 28 +++++++++----------
+ 2 files changed, 15 insertions(+), 15 deletions(-)
+ rename .gitlab-ci.d/custom-runners/{ubuntu-20.04-s390x.yml => ubuntu-22.04-s390x.yml} (88%)
 
-diff --git a/scripts/ci/setup/build-environment.yml b/scripts/ci/setup/build-environment.yml
-index f344d1a850..de0d866a1e 100644
---- a/scripts/ci/setup/build-environment.yml
-+++ b/scripts/ci/setup/build-environment.yml
-@@ -95,7 +95,6 @@
-           - libpam0g-dev
-           - libpcre2-dev
-           - libpixman-1-dev
--          - libpmem-dev
-           - libpng-dev
-           - libpulse-dev
-           - librbd-dev
-@@ -107,7 +106,6 @@
-           - libslirp-dev
-           - libsnappy-dev
-           - libspice-protocol-dev
--          - libspice-server-dev
-           - libssh-dev
-           - libsystemd-dev
-           - libtasn1-6-dev
-@@ -119,7 +117,6 @@
-           - libvdeplug-dev
-           - libvirglrenderer-dev
-           - libvte-2.91-dev
--          - libxen-dev
-           - libxml2-dev
-           - libzstd-dev
-           - llvm
-@@ -156,6 +153,19 @@
-         - ansible_facts['distribution'] == 'Ubuntu'
-         - ansible_facts['distribution_version'] == '22.04'
+diff --git a/.gitlab-ci.d/custom-runners.yml b/.gitlab-ci.d/custom-runners.yml
+index a0e79acd39..29e52df283 100644
+--- a/.gitlab-ci.d/custom-runners.yml
++++ b/.gitlab-ci.d/custom-runners.yml
+@@ -29,7 +29,7 @@
+       junit: build/meson-logs/testlog.junit.xml
  
-+    # not all packages are available for all architectures
-+    - name: Install additional packages to build QEMU on Ubuntu 22.04
-+      package:
-+        name:
-+          - libpmem-dev
-+          - libspice-server-dev
-+          - libxen-dev
-+        state: present
-+      when:
-+        - ansible_facts['distribution'] == 'Ubuntu'
-+        - ansible_facts['distribution_version'] == '22.04'
-+        - ansible_facts['architecture'] == 'aarch64' or ansible_facts['architecture'] == 'x86_64'
-+
-     - name: Install armhf cross-compile packages to build QEMU on AArch64 Ubuntu 22.04
-       package:
-         name:
+ include:
+-  - local: '/.gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml'
++  - local: '/.gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml'
+   - local: '/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml'
+   - local: '/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml'
+   - local: '/.gitlab-ci.d/custom-runners/centos-stream-8-x86_64.yml'
+diff --git a/.gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml
+similarity index 88%
+rename from .gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml
+rename to .gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml
+index cdae6c5212..85e2809573 100644
+--- a/.gitlab-ci.d/custom-runners/ubuntu-20.04-s390x.yml
++++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml
+@@ -1,13 +1,13 @@
+-# All ubuntu-20.04 jobs should run successfully in an environment
++# All ubuntu-22.04 jobs should run successfully in an environment
+ # setup by the scripts/ci/setup/build-environment.yml task
+-# "Install basic packages to build QEMU on Ubuntu 20.04/20.04"
++# "Install basic packages to build QEMU on Ubuntu 22.04"
+ 
+-ubuntu-20.04-s390x-all-linux-static:
++ubuntu-22.04-s390x-all-linux-static:
+  extends: .custom_runner_template
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_20.04
++ - ubuntu_22.04
+  - s390x
+  rules:
+  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+@@ -23,12 +23,12 @@ ubuntu-20.04-s390x-all-linux-static:
+  - make --output-sync check-tcg
+  - make --output-sync -j`nproc` check
+ 
+-ubuntu-20.04-s390x-all:
++ubuntu-22.04-s390x-all:
+  extends: .custom_runner_template
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_20.04
++ - ubuntu_22.04
+  - s390x
+  timeout: 75m
+  rules:
+@@ -42,12 +42,12 @@ ubuntu-20.04-s390x-all:
+  - make --output-sync -j`nproc`
+  - make --output-sync -j`nproc` check
+ 
+-ubuntu-20.04-s390x-alldbg:
++ubuntu-22.04-s390x-alldbg:
+  extends: .custom_runner_template
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_20.04
++ - ubuntu_22.04
+  - s390x
+  rules:
+  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+@@ -65,12 +65,12 @@ ubuntu-20.04-s390x-alldbg:
+  - make --output-sync -j`nproc`
+  - make --output-sync -j`nproc` check
+ 
+-ubuntu-20.04-s390x-clang:
++ubuntu-22.04-s390x-clang:
+  extends: .custom_runner_template
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_20.04
++ - ubuntu_22.04
+  - s390x
+  rules:
+  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+@@ -87,11 +87,11 @@ ubuntu-20.04-s390x-clang:
+  - make --output-sync -j`nproc`
+  - make --output-sync -j`nproc` check
+ 
+-ubuntu-20.04-s390x-tci:
++ubuntu-22.04-s390x-tci:
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_20.04
++ - ubuntu_22.04
+  - s390x
+  rules:
+  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+@@ -107,12 +107,12 @@ ubuntu-20.04-s390x-tci:
+    || { cat config.log meson-logs/meson-log.txt; exit 1; }
+  - make --output-sync -j`nproc`
+ 
+-ubuntu-20.04-s390x-notcg:
++ubuntu-22.04-s390x-notcg:
+  extends: .custom_runner_template
+  needs: []
+  stage: build
+  tags:
+- - ubuntu_20.04
++ - ubuntu_22.04
+  - s390x
+  rules:
+  - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
 -- 
 2.39.2

@@ -1,124 +1,121 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp638090ejb;
-        Fri, 26 Apr 2024 12:45:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVsU1d4/OVXWwcAFECFJMlnHGyqn1pju1PyqLRl3sYRcUsCVbm9xwWf4c57q6iRDu8sSlU02Wu2q2RJtVDp7KeLGr/UXXmt
-X-Google-Smtp-Source: AGHT+IHGNBSvAkxnB4nVkNK3uh1NIWD2fI+gv+4u+OK9iLLEeUnWFc9EPYtTr4HwQyNlby65kihD
-X-Received: by 2002:a05:6830:56:b0:6ed:b948:2d3b with SMTP id d22-20020a056830005600b006edb9482d3bmr4077405otp.21.1714160759383;
-        Fri, 26 Apr 2024 12:45:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714160759; cv=none;
+Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp638299ejb;
+        Fri, 26 Apr 2024 12:46:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXO2e17BRhRomkwlQv4XtFcvB8mmJMV7xU91cVFPDuh/HRILrwCKv38f3xvlqK2p54EgTHDPY7feGAiu+/omd9XbXy5X5Q4
+X-Google-Smtp-Source: AGHT+IEcyD+JotBtRjLhtU2t0CaOErJtqy5BH54fwgZ6bUAqlH1et+0qQ9/YlQFCuFtfNDVHAI0h
+X-Received: by 2002:a05:6214:2a4d:b0:6a0:93b8:6c9 with SMTP id jf13-20020a0562142a4d00b006a093b806c9mr3725048qvb.62.1714160787601;
+        Fri, 26 Apr 2024 12:46:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714160787; cv=none;
         d=google.com; s=arc-20160816;
-        b=TvwWprLRilnd9azhLU9wNeqvDTLdgDo9scWwE+3k4Fz2SdS/a50qxJ8mCruuHaxUfF
-         H2EA7pg14kSjoOlYpWkcReiVqhf1OXYuWACAh2aj/l6Crhf8k7oCLjhgCQV1zEan9qdb
-         gVyB25z/o/AXHtGNqHx228qEq8kI2VAlx7RCcI47Lsvw1pyv27hUIxnArLaFDe7EPV+u
-         nDhZUiLLGzPCAxnOquqBGa6Cp4rra9gWwklQAHsIqip7iOzJnIIx1+EWl5AfOvXg6/8M
-         kFHFUBTBqWlHRGkm85g+bNN9TPk/LjptNeWDwpWptgowow1B1NMWDUDp4Wig4C+FfLF9
-         Y1qA==
+        b=eUuuQwZOlONFhtv2eW9RuYgBf5EsbZmkSB8ikyiUeuZGG13gYlRjUWFmCW3KE6tboa
+         QHC5K1br9pmBEHZipjAP+Y5BKZWPJurjv1GNygnZKJuVxFaZB5LqMka/xGVzpjgjrYW4
+         40lK3czMEratSWc/dgVx4Cuuk0V83F2hbFlJZbHQ+NlJOEuS5oOuUt4GFal5/Xmmzfd8
+         EIiiQvFMsbdAZKN4NTW+MEXiMHmFJIgPl6WXNJeqTBbey+Q3UWxXjcf/cBfePnIQv1iv
+         +nNt1WN6h7967qyiDfnBkGqGJrDKy7O1L/X0EY6mA7nxR3Rm2Hcz4HFYFj2qy42kUEQm
+         l0aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=WYKx5VszY8nnZEUuUG4wRLUF4gkwtzF7xUPTRJGo2+Q=;
-        fh=UsvrWiw8iuAIKc6VNCTZEK8fw8WS394Hi7v6I2mixnA=;
-        b=iH1aDlE7xG4I8ZjUgrjQQ9DI9H6w61rbBBATHWkYVvtV+vmbWDG3QUhfx98hXtU6lY
-         DQ/dytrr2RCBfv89RBNjXQIga4wA9w+9ShVVz2pcoseihSRhpRFKcYeaYwqOJR+DgLOh
-         bVKKMlVdfBDrGfW5Y6UBDlmlQYs0AMpUvGrhUWTPIqP6rb+StyZxDmoeOcsQoSm5t/5f
-         XyFtB15oK1vQOv1cPC9zdbwW6BT5On2weeMQXTUZV5VlEVUZPj9cxWBvNbuFMbp4+jJQ
-         ZRblI6mh4JnagykAj5rVLAIaqPUQnQXVzPbpmox0PfgoXiv5fE0uQuBivoyRh8lAJtlR
-         rmGg==;
+        bh=PmvNrspQ4cegMOJikcLgrcfGHx45XMIAa70gCbSZauU=;
+        fh=PHxkKbOTLbQlxVKPl0judirWFiC6GeHrb+o1LcVhEUs=;
+        b=mLeE3qdEeDqq4Go1FEf8n+3JM4cjgAsxGin0+ssaglDwDSHNb455ryZz/VQoBA0PQp
+         SELlXX3IYJxI1FX0eGZqnwR/4af/m8a/eMM3F8aJoLPJFaFLV9gsf4maDEQMyn4UlUyA
+         6jUzc4m7PnznAfHEe4nG0bcFp8WEJGlQqdL/Vt0+NqusnzerAKNhp9Jw+aQh/1+V+kY7
+         hT61dN3JtdYCUPZW5uuamAVFifqtQiYfQmtRhP+uuPCKIX1ZmLE20P5+6c+dkzxhSXGW
+         JGIjuKgiW1a4hwgeBPhFA5ODMCJ72F48FODZPLZn0WUj2OznR6zlZ6c3P51NCkYQxawt
+         Gtqw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zU/XCxym";
+       dkim=pass header.i=@linaro.org header.s=google header.b=YdHFy1AV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t13-20020a05620a450d00b0078d66631907si23758173qkp.625.2024.04.26.12.45.59
+        by mx.google.com with ESMTPS id gm7-20020a056214268700b0069b3cba3318si20628820qvb.48.2024.04.26.12.46.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Apr 2024 12:45:59 -0700 (PDT)
+        Fri, 26 Apr 2024 12:46:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="zU/XCxym";
+       dkim=pass header.i=@linaro.org header.s=google header.b=YdHFy1AV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s0RV3-0007fn-KR; Fri, 26 Apr 2024 15:44:49 -0400
+	id 1s0RSy-0000Zf-4T; Fri, 26 Apr 2024 15:42:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s0RUz-0007E5-Q0
- for qemu-arm@nongnu.org; Fri, 26 Apr 2024 15:44:46 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s0RSv-0000U9-5L
+ for qemu-arm@nongnu.org; Fri, 26 Apr 2024 15:42:37 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s0RUw-0003uL-Ta
- for qemu-arm@nongnu.org; Fri, 26 Apr 2024 15:44:45 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-57225322312so3651752a12.1
- for <qemu-arm@nongnu.org>; Fri, 26 Apr 2024 12:44:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s0RSt-0002tU-Dd
+ for qemu-arm@nongnu.org; Fri, 26 Apr 2024 15:42:36 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-a58c0a05a39so257164066b.2
+ for <qemu-arm@nongnu.org>; Fri, 26 Apr 2024 12:42:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1714160681; x=1714765481; darn=nongnu.org;
+ d=linaro.org; s=google; t=1714160554; x=1714765354; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WYKx5VszY8nnZEUuUG4wRLUF4gkwtzF7xUPTRJGo2+Q=;
- b=zU/XCxymT11y+r0fzbWhY8ISvbh1mohOvhMlIIbxtHqGH86x6OqYM+R0xlL4LiEt/W
- wsyK73EchtzqMVNyQmygMnec8X7FRqaTuHqUKbjjHP4YEge5U9aL9pANUyTMJ3iWOHlv
- g6xyNN+wZrxRQFpPyGSRl5YRZJkf3lDfeSLlkJLwHfVButMLrXWyDF+CR3cez/K8QwGJ
- Wsomiuy1EBS/TmSxyX0YJzc+8RCLwpfjJBYlddXzKuiFHXgdcgtm1yi8PIDQtS9/G3M4
- ixsckR7WzKRCs3f+zvMQgX++stBpqB3rIKuSQFpZEOu1if1pLCa+r/1h1pYWv0QGntEt
- jy1w==
+ bh=PmvNrspQ4cegMOJikcLgrcfGHx45XMIAa70gCbSZauU=;
+ b=YdHFy1AV9K4NTYD+68FsT4yFL1hAFieTQIFgCpNqwaKIrUwQmnNzMwByKsNvR7rsSD
+ /JNhA4TJOKP6DOw28Xyqf1rY6wgdVzwi0Cq4g0kBzW1gpC5ewaBygSwol5XW3k146Z3c
+ akKqFxiU1esv8ZaUr+E9ysTiCvQ4Lhn6ZXmwUGNyceG5NPgoW4xa44T5/3q9d9pPE+am
+ PlsNN7acIFVKepYyPgNCUvZk/Eo4D0zAhXUlRw7gqyhKV0x5QBVoDTMp82bJQLvq14By
+ xQoCP1se+o7K/Z08b6lLnnQragxmwjD+3jDArQMjnQkPQ5WtCr0+kl+/t1DHZ0Xr8Zud
+ NjUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714160681; x=1714765481;
+ d=1e100.net; s=20230601; t=1714160554; x=1714765354;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=WYKx5VszY8nnZEUuUG4wRLUF4gkwtzF7xUPTRJGo2+Q=;
- b=AZP5hHUh3Ix6jOD9YjbIoWMK7/NIapJNEjNytx0GiOt6e084RRVl86/kWaFl7zIO57
- Yiyl2ucc8v2qGdSRLdrwUz699WT9/UPVzaZ4eSIppNZrUt2vPm+I64qmIDXrSkMvff6M
- 5Xtmd7Y9DQPqGG/VRvHmhkgGI4NQ4F3VpevuHsOwINo05CddYqzNYUqmvgNLGr8iDJDW
- DfhuIl94rLpsDcpDhQrnB0bYYs36E+Zg2n0aW2HA6dDDfNO4Vh4mKeHD9vRimHUXeJTw
- yLOSWc9Oq/hU6W4PtRzSXqTgp0gXV+JicVvASdyyDe7rY7uroa4gzmqYFRBMHUM6KPWO
- KX7w==
-X-Gm-Message-State: AOJu0YzjN4SB1t5L326iveM0LzFWcxlqtWf4iKMiyZ0tcQqielmleTkp
- ikqNO3xS3h3Y9S/kqbn5wnSUb+mtmbcDszlEokBMTrCBz5dd2KCpJ6eEO4SHKKs=
-X-Received: by 2002:a50:cd0e:0:b0:570:5b71:4859 with SMTP id
- z14-20020a50cd0e000000b005705b714859mr2171733edi.41.1714160681245; 
- Fri, 26 Apr 2024 12:44:41 -0700 (PDT)
+ bh=PmvNrspQ4cegMOJikcLgrcfGHx45XMIAa70gCbSZauU=;
+ b=nV7wXVMvhO/OoLhha0dRiPb8jws/8zmvrYAZWvh86E089kAzwYjDgtZT24S0FZZgDX
+ P/SzBtzoNjnlS91yT3oIjiE1WN54pla9GcmrcQVWIWpa3kLRFnN341lS/Qmlrv89raPa
+ 7Lo+TUQqh4j7Z7R/42ThSIvLCe/rZX9D/2qHKDyW3t9IzHe925RoZzyneHp7/2qqsKBj
+ mYNP/DrZD2piI5RzJL9KRqOKvZ7et/cpOHFX2bmwLGdiv423S60fiN+iNdE6BHrzue/M
+ GkXfWaRSAEHPQ5mfg0U56OkPWJjlpCNg6wEM+OAez+owue0hUgyrESqYCEYq4DwMpJOq
+ j9mA==
+X-Gm-Message-State: AOJu0YzBWr7PxKoxkJ3H1ZtjuQMWt4NRHhcoK0kXyHUZY9lx9tT5zsJP
+ xcvGZ6RhbMPGW5Lr9EslsUpsAPsHWWD/wt36Fp34tpHHdxsxeXfgdbxTvqKw5L0=
+X-Received: by 2002:a17:906:3593:b0:a58:be1f:9134 with SMTP id
+ o19-20020a170906359300b00a58be1f9134mr2374855ejb.30.1714160554023; 
+ Fri, 26 Apr 2024 12:42:34 -0700 (PDT)
 Received: from m1x-phil.lan (aul93-h02-176-184-11-147.dsl.sta.abo.bbox.fr.
  [176.184.11.147]) by smtp.gmail.com with ESMTPSA id
- l11-20020a50cbcb000000b0057030326144sm10281434edi.47.2024.04.26.12.44.39
+ m24-20020a17090607d800b00a524216fe78sm10939590ejc.64.2024.04.26.12.42.32
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 26 Apr 2024 12:44:40 -0700 (PDT)
+ Fri, 26 Apr 2024 12:42:33 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  qemu-ppc@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Anton Johansson <anjo@rev.ng>,
  Richard Henderson <richard.henderson@linaro.org>,
- Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Riku Voipio <riku.voipio@iki.fi>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PULL 27/38] exec: Move [b]tswapl() declarations to
- 'exec/user/tswap-target.h'
-Date: Fri, 26 Apr 2024 21:41:47 +0200
-Message-ID: <20240426194200.43723-28-philmd@linaro.org>
+ Paolo Bonzini <pbonzini@redhat.com>, Brian Cain <bcain@quicinc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: [PULL 05/38] accel: Include missing 'exec/cpu_ldst.h' header
+Date: Fri, 26 Apr 2024 21:41:25 +0200
+Message-ID: <20240426194200.43723-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240426194200.43723-1-philmd@linaro.org>
 References: <20240426194200.43723-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,212 +130,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wDcZqXa61eGV
+X-TUID: 9hQjzWbv6ypq
 
-tswapl() and bswaptls() are target-dependent and only used
-by user emulation. Move their definitions to a new header:
-"exec/user/tswap-target.h".
+Theses files call cpu_ldl_code() which is declared
+in "exec/cpu_ldst.h".
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Anton Johansson <anjo@rev.ng>
-Message-Id: <20231212123401.37493-17-philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20231211212003.21686-5-philmd@linaro.org>
 ---
- MAINTAINERS                        |  1 +
- bsd-user/freebsd/target_os_elf.h   |  1 +
- bsd-user/freebsd/target_os_stack.h |  1 +
- bsd-user/netbsd/target_os_elf.h    |  1 +
- bsd-user/openbsd/target_os_elf.h   |  1 +
- include/exec/cpu-all.h             |  8 --------
- include/exec/user/abitypes.h       |  1 +
- include/user/tswap-target.h        | 22 ++++++++++++++++++++++
- bsd-user/signal.c                  |  1 +
- bsd-user/strace.c                  |  1 +
- linux-user/elfload.c               |  1 +
- linux-user/i386/signal.c           |  1 +
- linux-user/ppc/signal.c            |  1 +
- 13 files changed, 33 insertions(+), 8 deletions(-)
- create mode 100644 include/user/tswap-target.h
+ accel/tcg/translator.c        | 1 +
+ target/hexagon/translate.c    | 1 +
+ target/microblaze/cpu.c       | 1 +
+ target/microblaze/translate.c | 1 +
+ 4 files changed, 4 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 96411e6adf..302b6fd00c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3692,6 +3692,7 @@ Overall usermode emulation
- M: Riku Voipio <riku.voipio@iki.fi>
- S: Maintained
- F: accel/tcg/user-exec*.c
-+F: include/exec/user/
- F: include/user/
- F: common-user/
- 
-diff --git a/bsd-user/freebsd/target_os_elf.h b/bsd-user/freebsd/target_os_elf.h
-index 9df17d56d8..01124979f7 100644
---- a/bsd-user/freebsd/target_os_elf.h
-+++ b/bsd-user/freebsd/target_os_elf.h
-@@ -22,6 +22,7 @@
- 
- #include "target_arch_elf.h"
- #include "elf.h"
-+#include "user/tswap-target.h"
- 
- #define bsd_get_ncpu() 1 /* until we pull in bsd-proc.[hc] */
- 
-diff --git a/bsd-user/freebsd/target_os_stack.h b/bsd-user/freebsd/target_os_stack.h
-index d15fc3263f..ac0ef22cd7 100644
---- a/bsd-user/freebsd/target_os_stack.h
-+++ b/bsd-user/freebsd/target_os_stack.h
+diff --git a/accel/tcg/translator.c b/accel/tcg/translator.c
+index 9de0bc34c8..6832e55135 100644
+--- a/accel/tcg/translator.c
++++ b/accel/tcg/translator.c
+@@ -12,6 +12,7 @@
+ #include "qemu/error-report.h"
+ #include "exec/exec-all.h"
+ #include "exec/translator.h"
++#include "exec/cpu_ldst.h"
+ #include "exec/plugin-gen.h"
+ #include "tcg/tcg-op-common.h"
+ #include "internal-target.h"
+diff --git a/target/hexagon/translate.c b/target/hexagon/translate.c
+index f163eefe97..47a870f42d 100644
+--- a/target/hexagon/translate.c
++++ b/target/hexagon/translate.c
 @@ -23,6 +23,7 @@
- #include <sys/param.h>
- #include "target_arch_sigtramp.h"
- #include "qemu/guest-random.h"
-+#include "user/tswap-target.h"
- 
- /*
-  * The initial FreeBSD stack is as follows:
-diff --git a/bsd-user/netbsd/target_os_elf.h b/bsd-user/netbsd/target_os_elf.h
-index 2f3cb20871..9de0f290c0 100644
---- a/bsd-user/netbsd/target_os_elf.h
-+++ b/bsd-user/netbsd/target_os_elf.h
+ #include "exec/helper-gen.h"
+ #include "exec/helper-proto.h"
+ #include "exec/translation-block.h"
++#include "exec/cpu_ldst.h"
+ #include "exec/log.h"
+ #include "internal.h"
+ #include "attribs.h"
+diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+index f8dc3173fc..9eb7374ccd 100644
+--- a/target/microblaze/cpu.c
++++ b/target/microblaze/cpu.c
+@@ -28,6 +28,7 @@
+ #include "qemu/module.h"
+ #include "hw/qdev-properties.h"
+ #include "exec/exec-all.h"
++#include "exec/cpu_ldst.h"
+ #include "exec/gdbstub.h"
+ #include "fpu/softfloat-helpers.h"
+ #include "tcg/tcg.h"
+diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+index fc451befae..6d89c1a175 100644
+--- a/target/microblaze/translate.c
++++ b/target/microblaze/translate.c
 @@ -22,6 +22,7 @@
- 
- #include "target_arch_elf.h"
- #include "elf.h"
-+#include "user/tswap-target.h"
- 
- /* this flag is uneffective under linux too, should be deleted */
- #ifndef MAP_DENYWRITE
-diff --git a/bsd-user/openbsd/target_os_elf.h b/bsd-user/openbsd/target_os_elf.h
-index 6dca9c5a85..4cf5747dcd 100644
---- a/bsd-user/openbsd/target_os_elf.h
-+++ b/bsd-user/openbsd/target_os_elf.h
-@@ -22,6 +22,7 @@
- 
- #include "target_arch_elf.h"
- #include "elf.h"
-+#include "user/tswap-target.h"
- 
- /* this flag is uneffective under linux too, should be deleted */
- #ifndef MAP_DENYWRITE
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 7c44ffb3af..78848f018c 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -36,14 +36,6 @@
- #define BSWAP_NEEDED
- #endif
- 
--#if TARGET_LONG_SIZE == 4
--#define tswapl(s) tswap32(s)
--#define bswaptls(s) bswap32s(s)
--#else
--#define tswapl(s) tswap64(s)
--#define bswaptls(s) bswap64s(s)
--#endif
--
- /* Target-endianness CPU memory access functions. These fit into the
-  * {ld,st}{type}{sign}{size}{endian}_p naming scheme described in bswap.h.
-  */
-diff --git a/include/exec/user/abitypes.h b/include/exec/user/abitypes.h
-index db4a670328..731f345ff5 100644
---- a/include/exec/user/abitypes.h
-+++ b/include/exec/user/abitypes.h
-@@ -2,6 +2,7 @@
- #define EXEC_USER_ABITYPES_H
- 
  #include "cpu.h"
-+#include "user/tswap-target.h"
- 
- #ifdef TARGET_ABI32
- #define TARGET_ABI_BITS 32
-diff --git a/include/user/tswap-target.h b/include/user/tswap-target.h
-new file mode 100644
-index 0000000000..4719330dbb
---- /dev/null
-+++ b/include/user/tswap-target.h
-@@ -0,0 +1,22 @@
-+/*
-+ * target-specific swap() definitions
-+ *
-+ *  Copyright (c) 2003 Fabrice Bellard
-+ *
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
-+ */
-+#ifndef USER_TSWAP_H
-+#define USER_TSWAP_H
-+
-+#include "exec/cpu-defs.h"
-+#include "exec/tswap.h"
-+
-+#if TARGET_LONG_SIZE == 4
-+#define tswapl(s) tswap32(s)
-+#define bswaptls(s) bswap32s(s)
-+#else
-+#define tswapl(s) tswap64(s)
-+#define bswaptls(s) bswap64s(s)
-+#endif
-+
-+#endif
-diff --git a/bsd-user/signal.c b/bsd-user/signal.c
-index e5a773ddde..b2faf1d0dd 100644
---- a/bsd-user/signal.c
-+++ b/bsd-user/signal.c
-@@ -21,6 +21,7 @@
- #include "qemu/osdep.h"
- #include "qemu/log.h"
- #include "qemu.h"
-+#include "user/tswap-target.h"
- #include "gdbstub/user.h"
- #include "signal-common.h"
- #include "trace.h"
-diff --git a/bsd-user/strace.c b/bsd-user/strace.c
-index 96499751eb..6dc01d3be7 100644
---- a/bsd-user/strace.c
-+++ b/bsd-user/strace.c
-@@ -22,6 +22,7 @@
- #include <sys/ioccom.h>
- 
- #include "qemu.h"
-+#include "user/tswap-target.h"
- 
- #include "os-strace.h"  /* OS dependent strace print functions */
- 
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index a0999dac15..207455c1ba 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -7,6 +7,7 @@
- #include <sys/shm.h>
- 
- #include "qemu.h"
-+#include "user/tswap-target.h"
- #include "user-internals.h"
- #include "signal-common.h"
- #include "loader.h"
-diff --git a/linux-user/i386/signal.c b/linux-user/i386/signal.c
-index cfe70fc5cf..990048f42a 100644
---- a/linux-user/i386/signal.c
-+++ b/linux-user/i386/signal.c
-@@ -21,6 +21,7 @@
- #include "user-internals.h"
- #include "signal-common.h"
- #include "linux-user/trace.h"
-+#include "user/tswap-target.h"
- 
- /* from the Linux kernel - /arch/x86/include/uapi/asm/sigcontext.h */
- 
-diff --git a/linux-user/ppc/signal.c b/linux-user/ppc/signal.c
-index 652038a53c..a1d8c0bccc 100644
---- a/linux-user/ppc/signal.c
-+++ b/linux-user/ppc/signal.c
-@@ -21,6 +21,7 @@
- #include "user-internals.h"
- #include "signal-common.h"
- #include "linux-user/trace.h"
-+#include "user/tswap-target.h"
- #include "vdso-asmoffset.h"
- 
- /* See arch/powerpc/include/asm/ucontext.h.  Only used for 32-bit PPC;
+ #include "disas/disas.h"
+ #include "exec/exec-all.h"
++#include "exec/cpu_ldst.h"
+ #include "tcg/tcg-op.h"
+ #include "exec/helper-proto.h"
+ #include "exec/helper-gen.h"
 -- 
 2.41.0
 

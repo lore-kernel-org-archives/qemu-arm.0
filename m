@@ -1,190 +1,484 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp498026ejb;
-        Fri, 26 Apr 2024 09:03:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWf7WQhqtdWaHKtOodQEk9kSs9HL7b9A2zrfhjFeYNbMWUMkeAJsB0SQqY42FyVBTYqYsDA16yQR+3dQvrQ6ApQ7ep9cl4C
-X-Google-Smtp-Source: AGHT+IGU/cCZZlKTq7ErJH2rfCjGRybDTbtvLcDiyeYFXXr+wJ5dXZ2rMrlpMCNe6u/WcCExSVGN
-X-Received: by 2002:a05:6e02:1c42:b0:36a:2386:d8a7 with SMTP id d2-20020a056e021c4200b0036a2386d8a7mr3765637ilg.30.1714147387782;
-        Fri, 26 Apr 2024 09:03:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714147387; cv=none;
+Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp636307ejb;
+        Fri, 26 Apr 2024 12:42:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVV72J5a5wgr06xYE3pmQUl0kYpSk2ki5Y3Ep3ck4YqlzJLyHHsZEn3NfYghpQ65ywJLYRqz2Hwguoo46hJYqp+vl97P0uq
+X-Received: by 2002:a19:9112:0:b0:51c:c7d:7f0f with SMTP id t18-20020a199112000000b0051c0c7d7f0fmr2297461lfd.67.1714160531386;
+        Fri, 26 Apr 2024 12:42:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714160531; cv=none;
         d=google.com; s=arc-20160816;
-        b=W8YhLsIhh7VSOFZp4Rlu9jtOG1lOxBGF4vqW2Z6RewQgVqsV517NCLujNMFpLtavVD
-         bj8GkiFlEw9xWgOYqtfAZZoxrRRcEKdWdH9FJZfND9RtsIwt5MK5yLVdS0K4IaoUEN94
-         bvDEN2JjjD6veI3/8yosds0njFeNlfRbZsD1HCeS3lG2D9f1r0emJKp3bwCA+wg4DAP+
-         ODNV8bMZ9CgT3bcEb/xOAolXACsKxMewItYE1gKJNMRU0wceQX6kiKBkForz7hj9TF1M
-         Wva2UZaI5ghoa0d3XS0f78FyAVrAQAZB3GU0YdNE+prNXJkTqgCvQ6tJw+J0E158RybI
-         9twQ==
+        b=ZfM7XYU3GWOJhSvKC9NurJYotfYrf5FLgLhgBA/rY6e8kW3UuM2mlqcdWd5+TlZHee
+         XsLY9F8blgEnEhqRtdd29rwajSoQT9Bi5Lx2vS3Ab/leRtWpUUj+ptQG3OTeYR+tGm02
+         Dz1roYSGe933Ke3RedTU7VRb+q6XFsMq9ovs3sXWPUh0glvKXhXSTGSrAjS+4dT8MOq6
+         FFm6IORftsc1Mw4JNBnnxljmwNRDI2aDCk3W3/v4awX7WYWOp1EhnacFTh39jku36ESh
+         Rj2bockqNq1y2xN4jQ+sS4RO3rS0IawOwafVYbdzmzlGDjl+q5if/dsxucFujocGpafh
+         ILsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=Ky2wiMnrEINtQt200X/fGLiLQiuXbtU5Xchb8ijYIrM=;
-        fh=EBQCnSsDpj0ItrKTibVcyZheS4Uyt0KvUklD82oX0Pk=;
-        b=0E1hg0bytmBKhN8lKJuaYei4NDv+tskRQBr//5eyE34DRiSTfM3mDEgc6R/DVLpDvh
-         jC83E79JgULLvMdyPUYibzahAHaTZEkCcX+8QRFKXnIUrNhVDWZfiDCy+VkTw/bmihxw
-         e+it79Vtb/ZceTRjj0i38cdRI/AqKL58ADl4Ea46glCl4oBOfrAm97qmp2pwjy7hb9eu
-         UbyXN5bpWtxQoCBnKiMtY1FLF2D7jUmiXUHAq9gD7bwoTBlhF2eDc01vOhLFrkFoHwVW
-         bdxjVJ62M15JTNT1HQup0NtychDwW3H/vGj1yd8VznWyu38yJWtEWB6jjbiW/0CvjHUK
-         lUGQ==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ye55WMDRK5S6l5M0zWgNVrTpOE29KI1trvIKq0uwte4=;
+        fh=WF7yfIRnFTf10r55hs+etczt2fhIqwSMHxdw0mWNMQ8=;
+        b=iqisJeskjNpMMG9PAQW4DUPVuJGC565qsv3LemjRc+0FWFX3OLvj9SMCE9n5ysa3TA
+         4FXyF9ZUCAY1EBuKvEakIPuk+0k87QbPoLJg/VlZSaXeYOMY3zDWqUu8+RFTIBU/tt8p
+         JS/sS7LGSZSEyau/CAx/X892wxCe2vDGQXxyJwxq7rv2FZx7zu2YF1dx8oafyYufA5P2
+         cP0VbHLlpXuLBzxt/ln+MxhACYYppEjTKQnTOYmIHg3Kd8pAqbv+R1oNsF6IWXtkq6lr
+         7bs0d0UK7ibklj96DL/iGvasmYd/mlBaqfcCF7kH1KpLbfmt0n2emgx1ekUqrqlB0gFH
+         Bp8g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 16-20020a92c650000000b0036b3b10698esi7781653ill.179.2024.04.26.09.03.07
+       dkim=pass header.i=@linaro.org header.s=google header.b=fbdoRljf;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a25-20020a19ca19000000b00513c46d8ed9sor4978165lfg.28.2024.04.26.12.42.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Apr 2024 09:03:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 26 Apr 2024 12:42:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s0O2S-0005ol-Lg; Fri, 26 Apr 2024 12:03:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1s0O2R-0005oH-Jg; Fri, 26 Apr 2024 12:03:03 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1s0O2P-0001Io-Bl; Fri, 26 Apr 2024 12:03:03 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 4DD354E606E;
- Fri, 26 Apr 2024 18:02:56 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id 5wk-KGWAIU7m; Fri, 26 Apr 2024 18:02:54 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 10E744E605B; Fri, 26 Apr 2024 18:02:54 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 0D42974570D;
- Fri, 26 Apr 2024 18:02:54 +0200 (CEST)
-Date: Fri, 26 Apr 2024 18:02:54 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: Akihiko Odaki <akihiko.odaki@daynix.com>, Thomas Huth <th.huth@posteo.de>, 
- Prasad Pandit <pj.pandit@yahoo.in>, 
- Mauro Matteo Cascella <mcascell@redhat.com>, 
- Alexander Bulekov <alxndr@bu.edu>, 
- Dmitry Fleytman <dmitry.fleytman@gmail.com>, 
- Beniamino Galvani <b.galvani@gmail.com>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, 
- Jason Wang <jasowang@redhat.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Alistair Francis <alistair@alistair23.me>, Stefan Weil <sw@weilnetz.de>, 
- =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
- Andrew Jeffery <andrew@aj.id.au>, Joel Stanley <joel@jms.id.au>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Helge Deller <deller@gmx.de>, 
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>, 
- Thomas Huth <huth@tuxfamily.org>, 
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Jan Kiszka <jan.kiszka@web.de>, 
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>, 
- Max Filippov <jcmvbkbc@gmail.com>, Jiri Pirko <jiri@resnulli.us>, 
- Daniel Henrique Barboza <danielhb413@gmail.com>, 
- David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Sven Schnelle <svens@stackframe.org>, 
- "Michael S. Tsirkin" <mst@redhat.com>, 
- Stefano Stabellini <sstabellini@kernel.org>, 
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>, 
- Rob Herring <robh@kernel.org>, Gerd Hoffmann <kraxel@redhat.com>, 
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>, 
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>
-Subject: Re: [PATCH v2 1/2] net: Provide MemReentrancyGuard * to qemu_new_nic()
-In-Reply-To: <e2fb1d51-b5a6-4c25-a9af-af1e1ed42475@linaro.org>
-Message-ID: <2691730d-795b-d60c-0932-f2e941343d91@eik.bme.hu>
-References: <20230601031859.7115-1-akihiko.odaki@daynix.com>
- <20230601031859.7115-2-akihiko.odaki@daynix.com>
- <ac66952e-4281-4250-96f4-dc3d5b518d24@linaro.org>
- <1497808863.2030924.1713955286878@mail.yahoo.com>
- <088ec61c-39ab-4b58-a02f-8897a3e7ae68@posteo.de>
- <81397221-8144-47cd-bce9-b3ab7d94c626@daynix.com>
- <e2fb1d51-b5a6-4c25-a9af-af1e1ed42475@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=fbdoRljf;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1714160531; x=1714765331; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ye55WMDRK5S6l5M0zWgNVrTpOE29KI1trvIKq0uwte4=;
+        b=fbdoRljfnp2Z0FQv3bQ3ZnxNx7QgNgpBpISqhH+7gmOefGvBk7a2xUA7DyFZKTtxe6
+         iN058x74VzpAy+lMdww115lK/TiqKCSwhOe92Jy7xWOo4BX2oIffGhHXm1qfUx9HFb2P
+         bYznwuTM3mixKBvaR08QYl3jrAQkdhtundCM8oyd03tb8AQ/PyDYQ8kL0xw+cEue0V/L
+         vxP2uVRalp30mCc/92+YgWQ4KGzzrg0Eib+sFgwFcuVif/zTt6+6Oh1Re3FmnkkjI4k5
+         EdV/16Saq7w94GzPv9wZmeyEztoX4yaQnR5mW3fxvWLdk0QcukhwFKSdRbNzYM7xmRaS
+         2Vvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714160531; x=1714765331;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ye55WMDRK5S6l5M0zWgNVrTpOE29KI1trvIKq0uwte4=;
+        b=GTxLLTfzzONg6bg9N12orNlch2qN+WptPz4lbu9ukWHbEmKtCc6BmoMjvCWqTRgrje
+         RQA9gg3GOyV/IE/AhKgmAGs/46nNEmFwtZiwtAeCzSHEnvzxanTOhqU7NxVtCyXBIXPi
+         d9BLS1vQ13XaZxGK+H5dyUhWdVsSB0wAdN0rjP4dliJ1pkKHlM4zel3oeehzWBZqyIsg
+         poO97FnN9Vo3WbGXZTjSv2kK7t1MO/a2OL9LyRflSG9nDlI+r5HSm08Jrd+d/QIys+8E
+         LRzmGaPxuP22SwKK7KYIHtjJULnK2aq4D3abyo6ocJT6HDx6SIGN1PwZ6+LryPVbyWpk
+         masQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVGhVp2yhcf0+HnxBeMhIEVpc5TgvHyUSThhP1eYHL+Qvi1u2shhC9x8B45lTW8zbfzpqgT9JvikzX5Ecw23CgnaohbV9Tk
+X-Gm-Message-State: AOJu0YzaP2pFSOEL2/+MZGvvfRMM1RnrJ+lUaW8MCDjdq3i3Jg+Vonnw
+	GYfH7Zxubna6Y9gFjbxLZUWdOagwAIfnwhglW3179dwa+bBO/R3rcYiZ6ZjPlnV55Q==
+X-Google-Smtp-Source: AGHT+IFL14ms+GZPBLVOB0MB3rNqmeNW55qsxaKuP7JYpVZQYPUqzQLjW5flfi2FoO61Lw3+u8GCQQ==
+X-Received: by 2002:a19:f80b:0:b0:518:bc7c:413a with SMTP id a11-20020a19f80b000000b00518bc7c413amr2135720lff.69.1714160530417;
+        Fri, 26 Apr 2024 12:42:10 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from m1x-phil.lan (aul93-h02-176-184-11-147.dsl.sta.abo.bbox.fr. [176.184.11.147])
+        by smtp.gmail.com with ESMTPSA id e24-20020a170906081800b00a5891d81009sm3390140ejd.36.2024.04.26.12.42.07
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Fri, 26 Apr 2024 12:42:09 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org,
+	qemu-s390x@nongnu.org,
+	qemu-ppc@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Xu <peterx@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Cameron Esfahani <dirty@apple.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>,
+	Reinoud Zandijk <reinoud@netbsd.org>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony Perard <anthony.perard@citrix.com>,
+	Paul Durrant <paul@xen.org>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	kvm@vger.kernel.org,
+	xen-devel@lists.xenproject.org
+Subject: [PULL 01/38] exec: Rename NEED_CPU_H -> COMPILING_PER_TARGET
+Date: Fri, 26 Apr 2024 21:41:21 +0200
+Message-ID: <20240426194200.43723-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240426194200.43723-1-philmd@linaro.org>
+References: <20240426194200.43723-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="3866299591-78233328-1714147374=:20485"
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TNANnYg61f7d
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: xtrlkqyZgYnp
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+'NEED_CPU_H' guard target-specific code; it is defined by meson
+altogether with the 'CONFIG_TARGET' definition. Rename NEED_CPU_H
+as COMPILING_PER_TARGET to clarify its meaning.
 
---3866299591-78233328-1714147374=:20485
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+Mechanical change running:
 
-On Fri, 26 Apr 2024, Philippe Mathieu-Daudé wrote:
-> On 26/4/24 14:37, Akihiko Odaki wrote:
->> On 2024/04/24 21:32, Thomas Huth wrote:
->>> On 24/04/2024 12.41, Prasad Pandit wrote:
->>>> On Wednesday, 24 April, 2024 at 03:36:01 pm IST, Philippe Mathieu-Daudé 
->>>> wrote:
->>>>> On 1/6/23 05:18, Akihiko Odaki wrote:
->>>>>> Recently MemReentrancyGuard was added to DeviceState to record that the
->>>>>> device is engaging in I/O. The network device backend needs to update 
->>>>>> it
->>>>>> when delivering a packet to a device.
->>>>>> In preparation for such a change, add MemReentrancyGuard * as a
->>>>>> parameter of qemu_new_nic().
->>>>> 
->>>>> An user on IRC asked if this patch is related/fixing CVE-2021-20255,
->>>>> any clue?
->>>> 
->>>> * CVE-2021-20255 bug: infinite recursion is pointing at a different fix 
->>>> patch.
->>>>    -> https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2021-20255
->>>> 
->>>> * And the this patch below has different issue tagged
->>>> -> https://lists.nongnu.org/archive/html/qemu-devel/2023-05/msg08312.html
->>>>    Fixes: CVE-2023-3019
->>>> 
->>>> 
->>>> * They look different, former is an infinite recursion issue and the 
->>>> latter is a use-after-free one.
->>> 
->>> I assume the eepro reentrancy issue has been fixed with:
->>> 
->>>   https://gitlab.com/qemu-project/qemu/-/issues/556
->>>   i.e.:
->>>   https://gitlab.com/qemu-project/qemu/-/commit/c40ca2301c7603524eaddb5308a3
->> 
->> I agree. Commit c40ca2301c7603524eaddb5308a3 should be what fixed 
->> CVE-2021-20255, not this patch.
->
-> Thank you all for clarifying!
+ $ sed -i s/NEED_CPU_H/COMPILING_PER_TARGET/g $(git grep -l NEED_CPU_H)
 
-$ git log -p c40ca2301c7603524eaddb5308a3 --
-fatal: bad revision 'c40ca2301c7603524eaddb5308a3'
+then manually add a /* COMPILING_PER_TARGET */ comment
+after the '#endif' when the block is large.
 
-It seems to actually be commit a2e1753b8054344f32cf94f31c6399a58794a380
+Inspired-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240322161439.6448-4-philmd@linaro.org>
+---
+ meson.build                | 4 ++--
+ include/exec/cpu-defs.h    | 2 +-
+ include/exec/helper-head.h | 4 ++--
+ include/exec/memop.h       | 4 ++--
+ include/exec/memory.h      | 4 ++--
+ include/exec/tswap.h       | 4 ++--
+ include/gdbstub/helpers.h  | 2 +-
+ include/hw/core/cpu.h      | 4 ++--
+ include/qemu/osdep.h       | 2 +-
+ include/sysemu/hvf.h       | 8 ++++----
+ include/sysemu/kvm.h       | 6 +++---
+ include/sysemu/nvmm.h      | 4 ++--
+ include/sysemu/whpx.h      | 4 ++--
+ include/sysemu/xen.h       | 4 ++--
+ target/arm/kvm-consts.h    | 4 ++--
+ scripts/analyze-inclusions | 6 +++---
+ 16 files changed, 33 insertions(+), 33 deletions(-)
 
-Regards,
-BALATON Zoltan
---3866299591-78233328-1714147374=:20485--
+diff --git a/meson.build b/meson.build
+index 553b940999..96fdc6dfd2 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3610,7 +3610,7 @@ foreach d, list : target_modules
+         if target.endswith('-softmmu')
+           config_target = config_target_mak[target]
+           target_inc = [include_directories('target' / config_target['TARGET_BASE_ARCH'])]
+-          c_args = ['-DNEED_CPU_H',
++          c_args = ['-DCOMPILING_PER_TARGET',
+                     '-DCONFIG_TARGET="@0@-config-target.h"'.format(target),
+                     '-DCONFIG_DEVICES="@0@-config-devices.h"'.format(target)]
+           target_module_ss = module_ss.apply(config_target, strict: false)
+@@ -3793,7 +3793,7 @@ foreach target : target_dirs
+   target_base_arch = config_target['TARGET_BASE_ARCH']
+   arch_srcs = [config_target_h[target]]
+   arch_deps = []
+-  c_args = ['-DNEED_CPU_H',
++  c_args = ['-DCOMPILING_PER_TARGET',
+             '-DCONFIG_TARGET="@0@-config-target.h"'.format(target),
+             '-DCONFIG_DEVICES="@0@-config-devices.h"'.format(target)]
+   link_args = emulator_link_args
+diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
+index 3915438b83..0dbef3010c 100644
+--- a/include/exec/cpu-defs.h
++++ b/include/exec/cpu-defs.h
+@@ -19,7 +19,7 @@
+ #ifndef CPU_DEFS_H
+ #define CPU_DEFS_H
+ 
+-#ifndef NEED_CPU_H
++#ifndef COMPILING_PER_TARGET
+ #error cpu.h included from common code
+ #endif
+ 
+diff --git a/include/exec/helper-head.h b/include/exec/helper-head.h
+index 28ceab0a46..5ef467a79d 100644
+--- a/include/exec/helper-head.h
++++ b/include/exec/helper-head.h
+@@ -43,7 +43,7 @@
+ #define dh_ctype_noreturn G_NORETURN void
+ #define dh_ctype(t) dh_ctype_##t
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ # ifdef TARGET_LONG_BITS
+ #  if TARGET_LONG_BITS == 32
+ #   define dh_alias_tl i32
+@@ -54,7 +54,7 @@
+ #  endif
+ # endif
+ # define dh_ctype_tl target_ulong
+-#endif
++#endif /* COMPILING_PER_TARGET */
+ 
+ /* We can't use glue() here because it falls foul of C preprocessor
+    recursive expansion rules.  */
+diff --git a/include/exec/memop.h b/include/exec/memop.h
+index a86dc6743a..06417ff361 100644
+--- a/include/exec/memop.h
++++ b/include/exec/memop.h
+@@ -35,7 +35,7 @@ typedef enum MemOp {
+     MO_LE    = 0,
+     MO_BE    = MO_BSWAP,
+ #endif
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ #if TARGET_BIG_ENDIAN
+     MO_TE    = MO_BE,
+ #else
+@@ -135,7 +135,7 @@ typedef enum MemOp {
+     MO_BESL  = MO_BE | MO_SL,
+     MO_BESQ  = MO_BE | MO_SQ,
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+     MO_TEUW  = MO_TE | MO_UW,
+     MO_TEUL  = MO_TE | MO_UL,
+     MO_TEUQ  = MO_TE | MO_UQ,
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index dbb1bad72f..dadb5cd65a 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -3107,7 +3107,7 @@ address_space_write_cached(MemoryRegionCache *cache, hwaddr addr,
+ MemTxResult address_space_set(AddressSpace *as, hwaddr addr,
+                               uint8_t c, hwaddr len, MemTxAttrs attrs);
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ /* enum device_endian to MemOp.  */
+ static inline MemOp devend_memop(enum device_endian end)
+ {
+@@ -3125,7 +3125,7 @@ static inline MemOp devend_memop(enum device_endian end)
+     return (end == non_host_endianness) ? MO_BSWAP : 0;
+ #endif
+ }
+-#endif
++#endif /* COMPILING_PER_TARGET */
+ 
+ /*
+  * Inhibit technologies that require discarding of pages in RAM blocks, e.g.,
+diff --git a/include/exec/tswap.h b/include/exec/tswap.h
+index 68944a880b..5089cd6a4c 100644
+--- a/include/exec/tswap.h
++++ b/include/exec/tswap.h
+@@ -15,11 +15,11 @@
+  * If we're in target-specific code, we can hard-code the swapping
+  * condition, otherwise we have to do (slower) run-time checks.
+  */
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ #define target_needs_bswap()  (HOST_BIG_ENDIAN != TARGET_BIG_ENDIAN)
+ #else
+ #define target_needs_bswap()  (target_words_bigendian() != HOST_BIG_ENDIAN)
+-#endif
++#endif /* COMPILING_PER_TARGET */
+ 
+ static inline uint16_t tswap16(uint16_t s)
+ {
+diff --git a/include/gdbstub/helpers.h b/include/gdbstub/helpers.h
+index c573aef2dc..6b97610f48 100644
+--- a/include/gdbstub/helpers.h
++++ b/include/gdbstub/helpers.h
+@@ -12,7 +12,7 @@
+ #ifndef _GDBSTUB_HELPERS_H_
+ #define _GDBSTUB_HELPERS_H_
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ #include "cpu.h"
+ 
+ /*
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index ec14f74ce5..7f037b158e 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -1182,7 +1182,7 @@ bool target_words_bigendian(void);
+ 
+ const char *target_name(void);
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ 
+ #ifndef CONFIG_USER_ONLY
+ 
+@@ -1197,7 +1197,7 @@ extern const VMStateDescription vmstate_cpu_common;
+ }
+ #endif /* !CONFIG_USER_ONLY */
+ 
+-#endif /* NEED_CPU_H */
++#endif /* COMPILING_PER_TARGET */
+ 
+ #define UNASSIGNED_CPU_INDEX -1
+ #define UNASSIGNED_CLUSTER_INDEX -1
+diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+index c7053cdc2b..f61edcfdc2 100644
+--- a/include/qemu/osdep.h
++++ b/include/qemu/osdep.h
+@@ -32,7 +32,7 @@
+ #endif
+ 
+ #include "config-host.h"
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ #include CONFIG_TARGET
+ #else
+ #include "exec/poison.h"
+diff --git a/include/sysemu/hvf.h b/include/sysemu/hvf.h
+index 4a7c6af3a5..730f927f03 100644
+--- a/include/sysemu/hvf.h
++++ b/include/sysemu/hvf.h
+@@ -16,7 +16,7 @@
+ #include "qemu/accel.h"
+ #include "qom/object.h"
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ #include "cpu.h"
+ 
+ #ifdef CONFIG_HVF
+@@ -26,7 +26,7 @@ extern bool hvf_allowed;
+ #define hvf_enabled() 0
+ #endif /* !CONFIG_HVF */
+ 
+-#endif /* NEED_CPU_H */
++#endif /* COMPILING_PER_TARGET */
+ 
+ #define TYPE_HVF_ACCEL ACCEL_CLASS_NAME("hvf")
+ 
+@@ -34,7 +34,7 @@ typedef struct HVFState HVFState;
+ DECLARE_INSTANCE_CHECKER(HVFState, HVF_STATE,
+                          TYPE_HVF_ACCEL)
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ struct hvf_sw_breakpoint {
+     vaddr pc;
+     vaddr saved_insn;
+@@ -66,6 +66,6 @@ void hvf_arch_update_guest_debug(CPUState *cpu);
+  * Return whether the guest supports debugging.
+  */
+ bool hvf_arch_supports_guest_debug(void);
+-#endif /* NEED_CPU_H */
++#endif /* COMPILING_PER_TARGET */
+ 
+ #endif
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index 47f9e8be1b..eaf801bc93 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -20,7 +20,7 @@
+ #include "qemu/accel.h"
+ #include "qom/object.h"
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ # ifdef CONFIG_KVM
+ #  include <linux/kvm.h>
+ #  define CONFIG_KVM_IS_POSSIBLE
+@@ -210,7 +210,7 @@ bool kvm_arm_supports_user_irq(void);
+ int kvm_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
+ int kvm_on_sigbus(int code, void *addr);
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ #include "cpu.h"
+ 
+ void kvm_flush_coalesced_mmio_buffer(void);
+@@ -435,7 +435,7 @@ void kvm_set_sigmask_len(KVMState *s, unsigned int sigmask_len);
+ int kvm_physical_memory_addr_from_host(KVMState *s, void *ram_addr,
+                                        hwaddr *phys_addr);
+ 
+-#endif /* NEED_CPU_H */
++#endif /* COMPILING_PER_TARGET */
+ 
+ void kvm_cpu_synchronize_state(CPUState *cpu);
+ 
+diff --git a/include/sysemu/nvmm.h b/include/sysemu/nvmm.h
+index be7bc9a62d..6971ddb3a5 100644
+--- a/include/sysemu/nvmm.h
++++ b/include/sysemu/nvmm.h
+@@ -12,7 +12,7 @@
+ #ifndef QEMU_NVMM_H
+ #define QEMU_NVMM_H
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ 
+ #ifdef CONFIG_NVMM
+ 
+@@ -24,6 +24,6 @@ int nvmm_enabled(void);
+ 
+ #endif /* CONFIG_NVMM */
+ 
+-#endif /* NEED_CPU_H */
++#endif /* COMPILING_PER_TARGET */
+ 
+ #endif /* QEMU_NVMM_H */
+diff --git a/include/sysemu/whpx.h b/include/sysemu/whpx.h
+index 781ca5b2b6..00ff409b68 100644
+--- a/include/sysemu/whpx.h
++++ b/include/sysemu/whpx.h
+@@ -15,7 +15,7 @@
+ #ifndef QEMU_WHPX_H
+ #define QEMU_WHPX_H
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ 
+ #ifdef CONFIG_WHPX
+ 
+@@ -29,6 +29,6 @@ bool whpx_apic_in_platform(void);
+ 
+ #endif /* CONFIG_WHPX */
+ 
+-#endif /* NEED_CPU_H */
++#endif /* COMPILING_PER_TARGET */
+ 
+ #endif /* QEMU_WHPX_H */
+diff --git a/include/sysemu/xen.h b/include/sysemu/xen.h
+index a9f591f26d..754ec2e6cb 100644
+--- a/include/sysemu/xen.h
++++ b/include/sysemu/xen.h
+@@ -16,13 +16,13 @@
+ 
+ #include "exec/cpu-common.h"
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ # ifdef CONFIG_XEN
+ #  define CONFIG_XEN_IS_POSSIBLE
+ # endif
+ #else
+ # define CONFIG_XEN_IS_POSSIBLE
+-#endif
++#endif /* COMPILING_PER_TARGET */
+ 
+ #ifdef CONFIG_XEN_IS_POSSIBLE
+ 
+diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+index 7c6adc14f6..c44d23dbe7 100644
+--- a/target/arm/kvm-consts.h
++++ b/target/arm/kvm-consts.h
+@@ -14,13 +14,13 @@
+ #ifndef ARM_KVM_CONSTS_H
+ #define ARM_KVM_CONSTS_H
+ 
+-#ifdef NEED_CPU_H
++#ifdef COMPILING_PER_TARGET
+ #ifdef CONFIG_KVM
+ #include <linux/kvm.h>
+ #include <linux/psci.h>
+ #define MISMATCH_CHECK(X, Y) QEMU_BUILD_BUG_ON(X != Y)
+ #endif
+-#endif
++#endif /* COMPILING_PER_TARGET */
+ 
+ #ifndef MISMATCH_CHECK
+ #define MISMATCH_CHECK(X, Y) QEMU_BUILD_BUG_ON(0)
+diff --git a/scripts/analyze-inclusions b/scripts/analyze-inclusions
+index 45c821de32..b6280f25c8 100644
+--- a/scripts/analyze-inclusions
++++ b/scripts/analyze-inclusions
+@@ -92,7 +92,7 @@ echo trace/generated-tracers.h:
+ analyze -include ../include/qemu/osdep.h trace/generated-tracers.h
+ 
+ echo target/i386/cpu.h:
+-analyze -DNEED_CPU_H -I../target/i386 -Ii386-softmmu -include ../include/qemu/osdep.h ../target/i386/cpu.h
++analyze -DCOMPILING_PER_TARGET -I../target/i386 -Ii386-softmmu -include ../include/qemu/osdep.h ../target/i386/cpu.h
+ 
+-echo hw/hw.h + NEED_CPU_H:
+-analyze -DNEED_CPU_H -I../target/i386 -Ii386-softmmu -include ../include/qemu/osdep.h ../include/hw/hw.h
++echo hw/hw.h + COMPILING_PER_TARGET:
++analyze -DCOMPILING_PER_TARGET -I../target/i386 -Ii386-softmmu -include ../include/qemu/osdep.h ../include/hw/hw.h
+-- 
+2.41.0

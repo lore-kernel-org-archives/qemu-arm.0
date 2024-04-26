@@ -1,114 +1,117 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp347499ejb;
-        Fri, 26 Apr 2024 05:30:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU60b/PQx9XrZF68SIMeICMG6efMaAvnxDsPuzm+CVX1IcH9FWO2W6tje3ysoi7KHKX8v4a7ShlDyPtAf2GhUra9zQgZdfc
-X-Google-Smtp-Source: AGHT+IFD7jaAmaTZUY8syBb2aWf1DyJse9R+Pyf7aDOIAG8MAnarXlVxdQHWW2llwEm7vANFHgrw
-X-Received: by 2002:a25:aaa4:0:b0:de5:5040:ea12 with SMTP id t33-20020a25aaa4000000b00de55040ea12mr788782ybi.32.1714134607637;
-        Fri, 26 Apr 2024 05:30:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714134607; cv=none;
+Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp358548ejb;
+        Fri, 26 Apr 2024 05:47:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXG6xAsO5//FlQ8OjcWps2IoHAKMdMqHBYbrLoOoIUb0n8qXEEdexGDXp6qW+1tnnIEggSJBOT5turkuuCnlWfUiHhrvPP/
+X-Google-Smtp-Source: AGHT+IEmXfCgB9PkSyUYTcyiUw+hkijXPmiOKdj630/kxvOG73joqB3NnnGImsqaOhdLswPnYBee
+X-Received: by 2002:a05:6214:1305:b0:69b:1d1b:5609 with SMTP id pn5-20020a056214130500b0069b1d1b5609mr3276876qvb.65.1714135677326;
+        Fri, 26 Apr 2024 05:47:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714135677; cv=none;
         d=google.com; s=arc-20160816;
-        b=M32sGkCCXJKHjDSIcqn8Bc2ezMSTUIztkC/LE/xdiogywm4ocVzSTbEdCUtKEKjj1E
-         bewwWx0nwfD1y/tMbifkEAoHelvX4d3JXz+hdydnudksPLbfj4hcss1QR7wE2ly8O27+
-         lNrWQ623nsSvI9DIoo7KH37MdPV2uFnUWyqiz+ol71Ec8CJDV1STlKQ2z+AGOhDrNDIE
-         3hE8K51IBwLn65fdTctwECDzQuCQOHCpxfIYnPb85EF8L6xsboimvJa0vSIZ/U6+ezLQ
-         yE4oYow0+hc/CVR3lMv7itRMAsmwKybEBIP1t44FxljGckvmRhtZX+qQ206VEUhvoBgX
-         W2+w==
+        b=XtKYB9dMcP/E3QsVl3zKaYutNX35Yfxu9N3Q1LfwmMERYqGz3vrsZpZInFWldvKyyD
+         62RCmTCzWNEXnc9KR4/j4Dth33xNLaV0mWelxilOzHFgb9fO2rVuDSRHsoJymjIX4L6U
+         98zZbzFa1jUv0iBoRgRin0gccHD69oxGGIp37g/8cK7s34Krk8iG96bxhPJLvvaGKb0Q
+         c5QK08IKIlxMldSX8HDZSQoebeqtYh5nOJp9DlR2T31kmDnPJ5btUdb9/OzYJ486LVIP
+         /JpQwrq+fpJvx3Esbfpxy8flWFQfqWRAEnPn9ZIT2r6rbFyuy1GG+ajeowvG/gc2xt4h
+         RYcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=N0nd37JbIqFWOk7TVvpZsBjDnU/+rTPYGOgPUq3SDrY=;
-        fh=ccPkIv+ASOOBZ/9yqv8QUMFw2GtqYDK2ik0zYMtkoQw=;
-        b=OIp+MZzsrU6pxKXAMT9iRqpTsjndIxzZB4fD8D/Z8x2tl2bqlk7dLubAAex6ds/VUt
-         zb2fj9ncW1AD1Y/86M23/kB7pixgIbxmGeHamEk7/EIdDnQbrtdUKF2im3NKmRCwDPxa
-         vxmBo06yz51ot7QxFvAVUWqPpFWo3hi8l4btyBnxFcoK56BEgYcc+42wlhnHuPtxAvkC
-         BADKGGAjsWKtXoJFFmMYeklK1rcIN7ffvRHtDRoi7sEHXcSOIo9CCoL6/PJt1iCbZi61
-         44MKwne2IFI2N6H7U6x/ikgdQGIU3k/umQf//PbicNqs55gholpFHqgpgmPwEQp2/bAk
-         7NgQ==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=9lrTY4Nr9jGNC6AFsCt/hzu1RHEYbNWHMSByUm/lhys=;
+        fh=O5a8P+2aQZSPyouDp3JqXaMw0rYMSR+vN2vKSg6DipI=;
+        b=B/yw7hdUzQw5rpG3oaw7D+51iuorYJp6ujzIv7TCymJovHLP8AElIdj7z8bburBdSf
+         6c+W4mdh5pGDIO9RtBuGyr3o1gYJkOJI9dox7FOVZvAnIl55WqmDojLTBcLPcTqeOTb8
+         E1tRqjumGyUCJ/ydOfGCJdFKLVz5xpwLSu0HNfAYoyRyyVjB6XrcDaOeTKwVAGndhDGp
+         gqbkGiv4u9HC3TTLWs1KQwTyjx5Dr+tw41oTnKpiXxqXwrlsYKD35h6Kuw6vHWVKIawg
+         2jPL2oplPfQ/Mx6uqxI0ZwSbYpz1T8AS6WMQEammNXkVqZu2ikHLuE25T0YuMKfUhTtj
+         eyVA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AXqnKx4F;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yrYbW9hl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x10-20020a05622a000a00b0043a037426e4si7725069qtw.190.2024.04.26.05.30.07
+        by mx.google.com with ESMTPS id r6-20020a056214124600b0069b4c1a2613si20120302qvv.324.2024.04.26.05.47.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Apr 2024 05:30:07 -0700 (PDT)
+        Fri, 26 Apr 2024 05:47:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AXqnKx4F;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yrYbW9hl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s0Khg-0003Bv-Eo; Fri, 26 Apr 2024 08:29:24 -0400
+	id 1s0Kyp-0002yp-MA; Fri, 26 Apr 2024 08:47:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1s0Khd-0003A1-UG
- for qemu-arm@nongnu.org; Fri, 26 Apr 2024 08:29:21 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s0Kyg-0002vx-3X
+ for qemu-arm@nongnu.org; Fri, 26 Apr 2024 08:47:05 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1s0Khb-00064l-3N
- for qemu-arm@nongnu.org; Fri, 26 Apr 2024 08:29:21 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-41ba1ba5591so2421245e9.1
- for <qemu-arm@nongnu.org>; Fri, 26 Apr 2024 05:29:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s0Kyc-0002qM-5h
+ for qemu-arm@nongnu.org; Fri, 26 Apr 2024 08:46:57 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-a55911bff66so272648166b.0
+ for <qemu-arm@nongnu.org>; Fri, 26 Apr 2024 05:46:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1714134556; x=1714739356; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=N0nd37JbIqFWOk7TVvpZsBjDnU/+rTPYGOgPUq3SDrY=;
- b=AXqnKx4FbHeeJXfIuj3UCBTL1pLdXSthtg832dHJ9ggZerQCNOUDreXyKJEUulqhRg
- oecRk88yZNhLXtPdJ7vdjTgNsA4w1Rsxt5rtaT/OTgWJCTsIqP+TlsPQO/j3/KoOqrz5
- BHsct3d8bFj1vxYOxVjj02EZS94M3Jjkw6iKAcIEIZA9PJq1lZ4RZRendNhSX7XZ30qy
- REj9BZkzeQhkjgM4KJlCAuOf8mAcwYJDRteFgQBYoEaVjXSNuul2zc6P8SDUMCgIvDI6
- gg3efamYVpL5agODwePI6+r1rvOzucEg58cVlDpWUnk/T/AGX1xHikUl5iUmrQVgzQz/
- sgSQ==
+ d=linaro.org; s=google; t=1714135612; x=1714740412; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=9lrTY4Nr9jGNC6AFsCt/hzu1RHEYbNWHMSByUm/lhys=;
+ b=yrYbW9hlp602M9KBRmmN9QOgzNPMuW35DvZRq7qVHtsGI4P2Zpt358mdCPIiz5cLt8
+ tULC3D1sMtlS+EB559F4/vnWOc1xRV6cugr2VHviBaBpzDCC+BXFixVT+wl547Bgpbbn
+ zNsB8R4jgBSY30pLub4Nv5eRBSFmZ8eIW1cK9SKrFmWweF4er9wq2sng7bYS2eIzFOo/
+ 3r/DemCku+eKMjhY16LQl7/IfX3F6kLSswyKgVpSNUV/opCV87a2tcs9mTGSvdaawbi5
+ wgca5aX8iqDcO4fkGCNszGgdvrgmgCqKRtRjpyzqpGo8VsDAA0C0lOsMr6GX06EfSdbF
+ IlDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714134556; x=1714739356;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=N0nd37JbIqFWOk7TVvpZsBjDnU/+rTPYGOgPUq3SDrY=;
- b=Y0je2V17pmjjkwZySQfPf5Fk+FACF4pqQw6TtCbwx+XxSAbMuc6FpHgv0SSAZVFYYv
- v/tfPPFt0c8rxgxDPnWuMdaeqrTYJ4dTTc8ncmtdg1MLV3Kk1Oxf/piyNCBtXJhiOhsQ
- C/EEAVYu398huMnaZttf2TUbHbshkkwFY/EqXuzehM0mx2gJOfF2eZBmuBU0GY1zD4cs
- RAQJvcQ16DBbxCY511iClxu/g4TvZ4izgBD2L/OakyrkCsiUpMeeY+fUU9/0JvHot8dV
- sMsNbZ/Wn+9MNbTephkSKXltN58DV80KVOenlU3bkeos4OpSED9S0lW3pi7eUeGD2TGh
- /S2Q==
-X-Gm-Message-State: AOJu0Yzs+AagI0NySy76kZOV/7ykx7RBbTrA4K3dyQzO89+KQHCCWPpO
- ZvT3C2wgIBsR37zpvlXiVC7OwlDZY8nPagG8DpXze8W0sD4rtnEnvIjlOVnfrFnizqDaXh/pfRk
- m
-X-Received: by 2002:a05:600c:4e47:b0:41a:e995:b924 with SMTP id
- e7-20020a05600c4e4700b0041ae995b924mr1758805wmq.33.1714134556360; 
- Fri, 26 Apr 2024 05:29:16 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- m15-20020a05600c460f00b0041a964b55ddsm1397134wmo.1.2024.04.26.05.29.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Apr 2024 05:29:16 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+ d=1e100.net; s=20230601; t=1714135612; x=1714740412;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=9lrTY4Nr9jGNC6AFsCt/hzu1RHEYbNWHMSByUm/lhys=;
+ b=eAF+WXIULsMAPZx2tp0wDC7lycoGDh+3JStGXP+4UJ+M+TaS3oMouJo8TXGR2s86iR
+ Cg+QOI6tKWWAw5Vj/CFT34nBeCfl3dkGKDEomeO+qa5w9MNwBpd8e75CXa7/wmgYMxsB
+ 4iB2dTKlDpCsqv8/w79vv+99D9TJecE12ATQnHiFmM4TEa6QokAwcvS3JqsIneR8zRbv
+ knrabZLxHh74aFDtXtyGl8IXRzT3vFE0+Bqtc7vPZx5GWRJQbGyrxq6SpN1vJVqeOH8j
+ Aeqpypp9yyEZYWOwSYxZYPleB5L73m9cGh5iNQITRZ+JGYtNhSeNceFSId1Yh/heb+hH
+ 3qeA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW5uPTBRJ2dCuEWmwDPWzzc8labHMQEepUoa1upcER36z72X6naaXkk3DaclMUP4IS7j8GadBO69+Rp4DXIGtYZEyF7
+X-Gm-Message-State: AOJu0YzkuAModTn6Ey4P4H7AqUJpFo44AxUZyHwGW6URJqccnUTfIyhm
+ QnnNlpJCBWtyVSgOtVEJ6oTk1LGqFZpbR/EgpEoHxNwd2WniYyJ4E49q+yDytf0=
+X-Received: by 2002:a17:906:4144:b0:a58:c0e2:9792 with SMTP id
+ l4-20020a170906414400b00a58c0e29792mr2186578ejk.61.1714135612416; 
+ Fri, 26 Apr 2024 05:46:52 -0700 (PDT)
+Received: from [192.168.69.100] (aul93-h02-176-184-11-147.dsl.sta.abo.bbox.fr.
+ [176.184.11.147]) by smtp.gmail.com with ESMTPSA id
+ dk18-20020a170907941200b00a58ca98bbfbsm762915ejc.30.2024.04.26.05.46.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 26 Apr 2024 05:46:52 -0700 (PDT)
+Message-ID: <36b9a714-44ff-4b60-a23d-89672a98f46e@linaro.org>
+Date: Fri, 26 Apr 2024 14:46:50 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/4] hw/watchdog/sbsa_gwdt: Make watchdog timer
+ frequency a QOM property
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Cc: Radoslaw Biernacki <rad@semihalf.com>,
  Leif Lindholm <quic_llindhol@quicinc.com>,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH v2 2/4] hw/arm/sbsa-ref: Force CPU generic timer to 62.5MHz
-Date: Fri, 26 Apr 2024 13:29:11 +0100
-Message-Id: <20240426122913.3427983-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240426122913.3427983-1-peter.maydell@linaro.org>
 References: <20240426122913.3427983-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+ <20240426122913.3427983-4-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240426122913.3427983-4-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,69 +133,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vdu/QX54K1Sa
+X-TUID: 493LxRq1PrPI
 
-Currently QEMU CPUs always run with a generic timer counter frequency
-of 62.5MHz, but ARMv8.6 CPUs will run at 1GHz.  For older versions of
-the TF-A firmware that sbsa-ref runs, the frequency of the generic
-timer is hardcoded into the firmware, and so if the CPU actually has
-a different frequency then timers in the guest will be set
-incorrectly.
+Hi Peter,
 
-The default frequency used by the 'max' CPU is about to change, so
-make the sbsa-ref board force the CPU frequency to the value which
-the firmware expects.
+On 26/4/24 14:29, Peter Maydell wrote:
+> Currently the sbsa_gdwt watchdog device hardcodes its frequency at
+> 62.5MHz. In real hardware, this watchdog is supposed to be driven
+> from the system counter, which also drives the CPU generic timers.
+> Newer CPU types (in particular from Armv8.6) should have a CPU
+> generic timer frequency of 1GHz, so we can't leave the watchdog
+> on the old QEMU default of 62.5GHz.
+> 
+> Make the frequency a QOM property so it can be set by the board,
+> and have our only board that uses this device set that frequency
+> to the same value it sets the CPU frequency.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   include/hw/watchdog/sbsa_gwdt.h |  3 +--
+>   hw/arm/sbsa-ref.c               |  1 +
+>   hw/watchdog/sbsa_gwdt.c         | 15 ++++++++++++++-
+>   3 files changed, 16 insertions(+), 3 deletions(-)
 
-Newer versions of TF-A will read the frequency from the CPU's
-CNTFRQ_EL0 register:
- https://github.com/ARM-software/arm-trusted-firmware/commit/4c77fac98dac0bebc63798aae9101ac865b87148
-so in the longer term we could make this board use the 1GHz
-frequency. We will need to make sure we update the binaries used
-by our avocado test
- Aarch64SbsarefMachine.test_sbsaref_alpine_linux_max_pauth_impdef
-before we can do that.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I leave it up to the sbsa-ref maintainers exactly when they
-want to shift to 1GHz (probably after a TF-A release with the fix?)
----
- hw/arm/sbsa-ref.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index 36f6f717b4b..57c337fd92a 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -543,6 +543,7 @@ static void create_wdt(const SBSAMachineState *sms)
+>       SysBusDevice *s = SYS_BUS_DEVICE(dev);
+>       int irq = sbsa_ref_irqmap[SBSA_GWDT_WS0];
+>   
+> +    qdev_prop_set_uint64(dev, "clock-frequency", SBSA_GTIMER_HZ);
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index f5709d6c141..36f6f717b4b 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -60,6 +60,19 @@
- #define NUM_SMMU_IRQS   4
- #define NUM_SATA_PORTS  6
- 
-+/*
-+ * Generic timer frequency in Hz (which drives both the CPU generic timers
-+ * and the SBSA watchdog-timer). Older versions of the TF-A firmware
-+ * typically used with sbsa-ref (including the binaries in our Avocado test
-+ * Aarch64SbsarefMachine.test_sbsaref_alpine_linux_max_pauth_impdef
-+ * assume it is this value.
-+ *
-+ * TODO: this value is not architecturally correct for an Armv8.6 or
-+ * better CPU, so we should move to 1GHz once the TF-A fix above has
-+ * made it into a release and into our Avocado test.
-+ */
-+#define SBSA_GTIMER_HZ 62500000
-+
- enum {
-     SBSA_FLASH,
-     SBSA_MEM,
-@@ -767,6 +780,8 @@ static void sbsa_ref_init(MachineState *machine)
-                                     &error_abort);
-         }
- 
-+        object_property_set_int(cpuobj, "cntfrq", SBSA_GTIMER_HZ, &error_abort);
-+
-         object_property_set_link(cpuobj, "memory", OBJECT(sysmem),
-                                  &error_abort);
- 
--- 
-2.34.1
+Since we have access to the CPU and its generic timer, what about
+just keep the wdg in sync, as smth like:
+
+   qdev_prop_set_uint64(dev, "clock-frequency",
+                        object_property_get_uint(OBJECT(some_cpu),
+                                                 "cntfrq", errp));
+
+>       sysbus_realize_and_unref(s, &error_fatal);
+>       sysbus_mmio_map(s, 0, rbase);
+>       sysbus_mmio_map(s, 1, cbase);
+
 

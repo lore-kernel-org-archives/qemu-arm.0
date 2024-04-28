@@ -1,96 +1,85 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp1371562ejb;
-        Sat, 27 Apr 2024 19:12:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVwjqOQzYtKvj2s6EHBxY7JvBmyWmPET3G+viO9Bpsl0f4hOlam/8Qex/gQHbqpxApnctGP0JKbTT4JmVqDbA3IUqS5Q0ao
-X-Google-Smtp-Source: AGHT+IHLQN8Q09yMl20SsjXd28oiCWySADQyvb31cts06BqzKmvkaoNpGvmJtJtZnrF20VNv+HRw
-X-Received: by 2002:a05:6359:5092:b0:183:9ea4:74a9 with SMTP id on18-20020a056359509200b001839ea474a9mr6275247rwb.15.1714270360825;
-        Sat, 27 Apr 2024 19:12:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714270360; cv=none;
+Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp1733985ejb;
+        Sun, 28 Apr 2024 11:12:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV0yTeawbAFDFAeYasdc2BhJr4aWvvhLki4LkKJ0nBay5YJHAr9vgIF9s8BeX8CvuhsslXMtu2qvKe3qVWp1QgaL1TsEfc3
+X-Google-Smtp-Source: AGHT+IGAqbf7V3WeI1AC2F321hNR+HKScrGK/UlQljsezW47J6c03UGOYbg8ABenlc+jMdGQ4G7+
+X-Received: by 2002:a05:622a:2b0e:b0:43a:18ae:ea94 with SMTP id ha14-20020a05622a2b0e00b0043a18aeea94mr11128269qtb.7.1714327952866;
+        Sun, 28 Apr 2024 11:12:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714327952; cv=none;
         d=google.com; s=arc-20160816;
-        b=A/I2etCQqJASmC9PdNNdtrQGddB7Faghy0Zr6KAKuIhGwzRvS6Nsr7z1VtyLIOgYk9
-         VAoTvmvXy5AuyiArm7KByvLmj3awSu7aNI5EjzNKWASj8KSSQigYRJwUIyEpCLNiL3zF
-         fARYDaGNBEaXL+ULkQEd6vkEbmRw1CxyTHGWmME/4zYG6KmXjVZ0Wa0M8KlF3x3AMPI/
-         a65yEVuvE3p0OFThaFDUav91vPX33cHocfeyjrQ2FUSX0s+dldrj2WDwLtdvgJV6PzXU
-         t0jVAcOmXwMgfcGvVSeHTcVuaZ+mLFltDL6nydQKXa2tpuX+5lJiginQ9QUXhQ2i8Xss
-         yAig==
+        b=PE0s4g6TV9535VaYZD6oiLh28aYyFcf6IbaAj2Hl7qALfcg0JYO84IKdqDsDzYLIhs
+         wYuzhem9BE3/gEsJRWCJ2so0LxFjCGyhC14oTChMhGHydiBVezeyKBI5yxivu7ygExsy
+         BNjbV2JbZmZEeKRCLu58N0Eu0LcgL8qtlQ5OgPwR8CABQwSuG5SoEEIOz2tBUf8gSMdP
+         81IZ4L+lRGzjKCbwGt3oPtBuFvtcquxsaZrXR4L4utOvg54JobofZsR2S3KMfQ7XnaOf
+         fEdXiMw9rJAEKVOc7WnBZ7OcqdFCX6sRuxvqzReLVrLWtpKlJjsZUB+2mNJNKYpDKyUv
+         5aJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:mime-version
-         :references:subject:cc:to:from:date;
-        bh=CmFY3NDVEOZgNTYE69Lao23b4r5BHvXBaJ+QnTiqHEE=;
-        fh=PIAQerTqJmE8WhlPrwsngE+PEjJ3mx3BrcC9alj8r5s=;
-        b=woq5kMlQpE6ALrNdgkT3Yls0Y2HBvYnFujEaoz/wBEmVaOkif2te9hO2GLJqj/T66b
-         4YjHsA3w8om6Gs2uTVDdnVDzYPy4dJ1HwJZWoqTr2QgnjBdbYrefnHwvEideFVTr5QBB
-         dd1FliayTHJLDarpFvVmxBIqYO2uLH4L4Qxodq6Hl3z/sSjeF8XcAJljY1zYIAVPIXqX
-         a68MHyksQLscSdEYR540vpLyipY62Osn46/XL/ITbaVpvW9iWuWHwD1TgTFyKWg5xTXG
-         c2b6jtZNnTni8iLRQZdoWob+yKg43Td8fVTt2wzHTJPOchhLE9dzsuMbrK0cMorpWKqz
-         60Uw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=DYqmuKG7OFfy8WpjCEv7E6IEzHqY4LgNfUe6fh1glv8=;
+        fh=/0MHjUAmI/wL40Gy3mvvC19IqtVRkTQxODnHjMieUFU=;
+        b=FKZlcHTmQsLZkSxGkIkJU+5Vpfk1Kpp+GzSAZCukJnpTFJR7lO605uVQP4tnu082vC
+         qhkkbOTL24kC6QVT07rOFOd8U5Dx0rD/LFSHou7zbGO8s58bH0hj5Sckfr+j7nU4limq
+         0UNJIQSOIJMzpCDzLDszuDznhKNvO/NEPYfeIGMm/LwCmEs+V5sxB//1eFE0kWj8ziZA
+         7pJbHpCpcwyYXw16XbvvUw0XEDCVYt3lG5407puxj2aechnk8YnFgw4ksKX10Lc8xS1G
+         0MycMH1svAkeMeiMA0jcX/346NBX3pKJDy2IJlbvXJ+N7/B/Sa5LudH+0Sxq4dz0Xkz0
+         kMDw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e11-20020ac85dcb000000b004313acd2f44si25060134qtx.425.2024.04.27.19.12.40
+        by mx.google.com with ESMTPS id fj25-20020a05622a551900b00439e7c3c6b0si17451708qtb.802.2024.04.28.11.12.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 27 Apr 2024 19:12:40 -0700 (PDT)
+        Sun, 28 Apr 2024 11:12:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s0u1o-0006gF-82; Sat, 27 Apr 2024 22:12:33 -0400
+	id 1s190V-00021b-0G; Sun, 28 Apr 2024 14:12:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xiongyining1480@phytium.com.cn>)
- id 1s0u1m-0006g2-P7; Sat, 27 Apr 2024 22:12:30 -0400
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <xiongyining1480@phytium.com.cn>)
- id 1s0u1i-00057g-FS; Sat, 27 Apr 2024 22:12:30 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwDX3RF9sC1mfwZOAA--.40375S2;
- Sun, 28 Apr 2024 10:12:13 +0800 (CST)
-Received: from DESKTOP-E65K6PP (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwDXcDl2sC1mchoAAA--.139S3;
- Sun, 28 Apr 2024 10:12:06 +0800 (CST)
-Date: Sun, 28 Apr 2024 10:12:06 +0800
-From: "xiongyining1480@phytium.com.cn" <xiongyining1480@phytium.com.cn>
-To: "Richard Henderson" <richard.henderson@linaro.org>, 
- qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
-Cc: rad <rad@semihalf.com>, peter.maydell <peter.maydell@linaro.org>, 
- quic_llindhol <quic_llindhol@quicinc.com>, 
- "Marcin Juszkiewicz" <marcin.juszkiewicz@linaro.org>
-Subject: Re: [PATCH v4 1/1] hw/arm/sbsa-ref: Enable CPU cluster on ARM sbsa
- machine
-References: <20240426073553.326946-1-xiongyining1480@phytium.com.cn>, 
- <20240426073553.326946-2-xiongyining1480@phytium.com.cn>, 
- <a25e01c0-5f6e-4568-93ec-970987eb6d07@linaro.org>
-X-Priority: 3
-X-GUID: F05A055B-186E-4EED-9A38-56A6D16D2805
-X-Has-Attach: no
-X-Mailer: Foxmail 7.2.25.228[cn]
-Mime-Version: 1.0
-Message-ID: <2024042810120618268213@phytium.com.cn>
-Content-Type: multipart/alternative;
- boundary="----=_001_NextPart176011612711_=----"
-X-CM-TRANSID: AQAAfwDXcDl2sC1mchoAAA--.139S3
-X-CM-SenderInfo: x0lr0wp1lqx0bjrumio6sk53xlxphulrpou0/1tbiAQAJBmYtU2QBHQABsv
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=xiongyinin
- g1480@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW7tFWUArWxGFW7Jw47Ar4xWFg_yoW8Wr48pr
- W8Gr98K3ykJ3sFka13Za1xXr1rXr1rAa18Jr1Iqw42vwn8Ga4xKr17Kr4rC3srGry8A3s2
- 9FWIqa4ruFs8urJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=209.97.181.73;
- envelope-from=xiongyining1480@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
+ (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
+ id 1s190U-0001ym-7u; Sun, 28 Apr 2024 14:12:10 -0400
+Received: from new-mail.astralinux.ru ([51.250.53.244])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
+ id 1s190S-0007B4-Ea; Sun, 28 Apr 2024 14:12:09 -0400
+Received: from rbta-msk-lt-302690.astralinux.ru (unknown [10.177.236.220])
+ by new-mail.astralinux.ru (Postfix) with ESMTPA id 4VSF0g2Wh1zyWD;
+ Sun, 28 Apr 2024 21:12:03 +0300 (MSK)
+From: Alexandra Diupina <adiupina@astralinux.ru>
+To: Alistair Francis <alistair@alistair23.me>
+Cc: Alexandra Diupina <adiupina@astralinux.ru>,
+ "Konrad, Frederic" <Frederic.Konrad@amd.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, sdl.qemu@linuxtesting.org
+Subject: [PATCH v4] fix endianness bug
+Date: Sun, 28 Apr 2024 21:11:56 +0300
+Message-Id: <20240428181156.24071-1-adiupina@astralinux.ru>
+X-Mailer: git-send-email 2.30.2
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-DrWeb-SpamScore: -100
+X-DrWeb-SpamState: legit
+X-DrWeb-SpamDetail: gggruggvucftvghtrhhoucdtuddrgedvfedrvdehuddgtddvucetufdoteggodetrfcurfhrohhfihhlvgemucfftfghgfeunecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvfevufffkffoggfgsedtkeertdertddtnecuhfhrohhmpeetlhgvgigrnhgurhgrucffihhuphhinhgruceorgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhuqeenucggtffrrghtthgvrhhnpeduleetfeehffekueeuffektefgudfgffeutdefudfghedvieffheehleeuieehteenucffohhmrghinheplhhinhhugihtvghsthhinhhgrdhorhhgnecukfhppedutddrudejjedrvdefiedrvddvtdenucfrrghrrghmpehhvghloheprhgsthgrqdhmshhkqdhlthdqfedtvdeiledtrdgrshhtrhgrlhhinhhugidrrhhupdhinhgvthepuddtrddujeejrddvfeeirddvvddtmeehheehkeeipdhmrghilhhfrhhomheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhnsggprhgtphhtthhopeekpdhrtghpthhtoheprghlihhsthgrihhrsegrlhhishhtrghirhdvfedrmhgvpdhrtghpthhtoheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhrtghpthhtohephfhrvgguvghrihgtrdfmohhnrhgrugesrghmugdrtghomhdprhgtphhtthhopegvughgrghrrdhighhlvghsihgrshesghhmrghilhdrtghomhdprhgtphhtthhope
+ hpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdprhgtphhtthhopehsughlrdhqvghmuheslhhinhhugihtvghsthhinhhgrdhorhhg
+X-DrWeb-SpamVersion: Vade Retro 01.423.251#02 AS+AV+AP Profile: DRWEB;
+ Bailout: 300
+X-AntiVirus: Checked by Dr.Web [MailD: 11.1.19.2307031128,
+ SE: 11.1.12.2210241838, Core engine: 7.00.62.01180, Virus records: 12643460,
+ Updated: 2024-Apr-28 16:43:47 UTC]
+Received-SPF: pass client-ip=51.250.53.244;
+ envelope-from=adiupina@astralinux.ru; helo=new-mail.astralinux.ru
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,97 +94,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QzoL4m7uyjmC
+X-TUID: J6Fpq4LQtgft
 
-This is a multi-part message in MIME format.
+Add xlnx_dpdma_read_descriptor() and
+xlnx_dpdma_write_descriptor() functions.
+xlnx_dpdma_read_descriptor() combines reading a
+descriptor from desc_addr by calling dma_memory_read()
+and swapping the desc fields from guest memory order
+to host memory order. xlnx_dpdma_write_descriptor()
+performs similar actions when writing a descriptor.
 
-------=_001_NextPart176011612711_=----
-Content-Type: text/plain;
-	charset="UTF-8"
-Content-Transfer-Encoding: base64
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
 
-DQoNCg0KDQp4aW9uZ3lpbmluZzE0ODBAcGh5dGl1bS5jb20uY24NCiANCkZyb206IFJpY2hhcmQg
-SGVuZGVyc29uDQpEYXRlOiAyMDI0LTA0LTI3IDAwOjA2DQpUbzogWGlvbmcgWWluaW5nOyBxZW11
-LWFybTsgcWVtdS1kZXZlbA0KQ0M6IHJhZDsgcGV0ZXIubWF5ZGVsbDsgcXVpY19sbGluZGhvbDsg
-bWFyY2luLmp1c3praWV3aWN6DQpTdWJqZWN0OiBSZTogW1BBVENIIHY0IDEvMV0gaHcvYXJtL3Ni
-c2EtcmVmOiBFbmFibGUgQ1BVIGNsdXN0ZXIgb24gQVJNIHNic2EgbWFjaGluZQ0KT24gNC8yNi8y
-NCAwMDozNSwgWGlvbmcgWWluaW5nIHdyb3RlOg0KPiBGcm9tOiB4aW9uZ3lpbmluZzE0ODAgPHhp
-b25neWluaW5nMTQ4MEBwaHl0aXVtLmNvbS5jbj4NCj4gDQo+IEVuYWJsZSBDUFUgY2x1c3RlciBz
-dXBwb3J0IG9uIFNic2FRZW11IHBsYXRmb3JtLCBzbyB0aGF0IHVzZXJzIGNhbg0KPiBzcGVjaWZ5
-IGEgNC1sZXZlbCBDUFUgaGllcmFyY2h5IHNvY2tldHMvY2x1c3RlcnMvY29yZXMvdGhyZWFkcy4g
-QW5kDQo+IHRoaXMgdG9wb2xvZ3kgY2FuIGJlIHBhc3NlZCB0byB0aGUgZmlybXdhcmUgdGhyb3Vn
-aCBEVCBjcHUtbWFwLg0KPiANCj4gU2lnbmVkLW9mZi1ieTogWGlvbmcgWWluaW5nIDx4aW9uZ3lp
-bmluZzE0ODBAcGh5dGl1bS5jb20uY24+DQo+IHRlc3RlZC1ieTogTWFyY2luIEp1c3praWV3aWN6
-IDxtYXJjaW4uanVzemtpZXdpY3pAbGluYXJvLm9yZz4NCj4gLS0tDQo+ICAgZG9jcy9zeXN0ZW0v
-YXJtL3Nic2EucnN0IHwgIDQgKysrKw0KPiAgIGh3L2FybS9zYnNhLXJlZi5jICAgICAgICB8IDM3
-ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0NCj4gICAyIGZpbGVzIGNoYW5n
-ZWQsIDQwIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkNCiANCj4gSXNuJ3QgdGhpcyBiYXNp
-Y2FsbHkgd2hhdCBNUElEUl9FTDEgaXMgc3VwcG9zZWQgdG8gaW5kaWNhdGU/DQo+IFdlIGRvIG5v
-dCB5ZXQgaW1wbGVtZW50IGFsbCBvZiB0aGF0IGluIFFFTVUsIGJ1dCBzaG91bGQuDQogDQo+IFdo
-eSBkb2VzIHRoZSBzYW1lIGluZm8gbmVlZCB0byBiZSByZXBsaWNhdGVkIGluIGRldmljZXRyZWU/
-DQogDQpzYnNhIHVzZXMgUFBUVCB0byBpbmRpY2F0ZSB0aGUgY3B1IHRvcG9sb2d5LCBhbmQgT1Mg
-dXNlIHRoZSBBQ1BJIHRvIGdldCBoYXJkd2FyZSBpbmZvbWF0aW9uLiBXZSBhZGQgdGhlIHJlbGF0
-ZWQgaW5mb3JtYXRpb24gaW4gZGV2aWNldHJlZSwgYW5kIFRGLUEgcGFyc2VzIGRldmljZXRyZWUN
-CmFuZCBleHRyYWN0IGRhdGEgZm9ybSBpdCAsIHNvIEVESzIgY2FuIGdhdGhlciBkYXRhIGZvcm0g
-VEYtQSB0byBjcmVhdGUgUFBUVCB0YWJsZXMgdmlhIFNNQyBjYWxscy4gDQoNCk5vdyB0aGUgUFBU
-VCB0YWJsZXMgY3JlYXRlZCBieSBFREsyIGxvc2Ugc29tZSBkZXRhaWxlZCBpbmZvcm1hdGlvbiwg
-c28gdGhlIGNwdSB0b3BvbG9neSBPUyBpZGVudGlmaWVkIGNhbm5vdCBhbGlnbiB3aXRoIHRoZSBx
-ZW11IGNvbmZpZ3VyZS4gV2UgaG9wZSB0byBhZGQgdGhlIHRvcG9sb2d5IA0KaW5mb3JtYXRpb24g
-aW4gZGV2aWNlIHRyZWUsIHNvIEVLRDIgY2FuIGNyZWF0ZSBtb3JlIGRldGFpbGVkIFBQVFQgdGFi
-bGVzLg0KIA0KPiByfg0K
+Fixes: d3c6369a96 ("introduce xlnx-dpdma")
+Signed-off-by: Alexandra Diupina <adiupina@astralinux.ru>
+---
+v4: remove rewriting desc in place
+v3: add xlnx_dpdma_write_descriptor()
+v2: minor changes in xlnx_dpdma_read_descriptor()
+ hw/dma/xlnx_dpdma.c | 63 ++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 59 insertions(+), 4 deletions(-)
 
-------=_001_NextPart176011612711_=----
-Content-Type: text/html;
-	charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charse=
-t=3DUTF-8"><style>body { line-height: 1.5; }blockquote { margin-top: 0px; =
-margin-bottom: 0px; margin-left: 0.5em; }body { font-size: 14px; font-fami=
-ly: "Microsoft YaHei UI"; color: rgb(0, 0, 0); line-height: 1.5; }</style>=
-</head><body>=0A<div><span></span><br></div>=0A<div><br></div><hr style=3D=
-"width: 210px; height: 1px;" color=3D"#b5c4df" size=3D"1" align=3D"left">=
-=0A<div><span><div style=3D"MARGIN: 10px; FONT-FAMILY: verdana; FONT-SIZE:=
- 10pt"><div>xiongyining1480@phytium.com.cn</div></div></span></div>=0A<blo=
-ckquote style=3D"margin-Top: 0px; margin-Bottom: 0px; margin-Left: 0.5em; =
-margin-Right: inherit"><div>&nbsp;</div><div style=3D"border:none;border-t=
-op:solid #B5C4DF 1.0pt;padding:3.0pt 0cm 0cm 0cm"><div style=3D"PADDING-RI=
-GHT: 8px; PADDING-LEFT: 8px; FONT-SIZE: 12px;FONT-FAMILY:tahoma;COLOR:#000=
-000; BACKGROUND: #efefef; PADDING-BOTTOM: 8px; PADDING-TOP: 8px"><div><b>F=
-rom:</b>&nbsp;<a href=3D"mailto:richard.henderson@linaro.org">Richard Hend=
-erson</a></div><div><b>Date:</b>&nbsp;2024-04-27&nbsp;00:06</div><div><b>T=
-o:</b>&nbsp;<a href=3D"mailto:xiongyining1480@phytium.com.cn">Xiong Yining=
-</a>; <a href=3D"mailto:qemu-arm@nongnu.org">qemu-arm</a>; <a href=3D"mail=
-to:qemu-devel@nongnu.org">qemu-devel</a></div><div><b>CC:</b>&nbsp;<a href=
-=3D"mailto:rad@semihalf.com">rad</a>; <a href=3D"mailto:peter.maydell@lina=
-ro.org">peter.maydell</a>; <a href=3D"mailto:quic_llindhol@quicinc.com">qu=
-ic_llindhol</a>; <a href=3D"mailto:marcin.juszkiewicz@linaro.org">marcin.j=
-uszkiewicz</a></div><div><b>Subject:</b>&nbsp;Re: [PATCH v4 1/1] hw/arm/sb=
-sa-ref: Enable CPU cluster on ARM sbsa machine</div></div></div><div><div>=
-On 4/26/24 00:35, Xiong Yining wrote:</div>=0A<div>&gt; From: xiongyining1=
-480 &lt;xiongyining1480@phytium.com.cn&gt;</div>=0A<div>&gt; </div>=0A<div=
->&gt; Enable CPU cluster support on SbsaQemu platform, so that users can</=
-div>=0A<div>&gt; specify a 4-level CPU hierarchy sockets/clusters/cores/th=
-reads. And</div>=0A<div>&gt; this topology can be passed to the firmware t=
-hrough DT cpu-map.</div>=0A<div>&gt; </div>=0A<div>&gt; Signed-off-by: Xio=
-ng Yining &lt;xiongyining1480@phytium.com.cn&gt;</div>=0A<div>&gt; tested-=
-by: Marcin Juszkiewicz &lt;marcin.juszkiewicz@linaro.org&gt;</div>=0A<div>=
-&gt; ---</div>=0A<div>&gt;&nbsp;&nbsp; docs/system/arm/sbsa.rst |&nbsp; 4 =
-++++</div>=0A<div>&gt;&nbsp;&nbsp; hw/arm/sbsa-ref.c&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp;&nbsp;&nbsp; | 37 ++++++++++++++++++++++++++++++++++++-</div>=0A<d=
-iv>&gt;&nbsp;&nbsp; 2 files changed, 40 insertions(+), 1 deletion(-)</div>=
-=0A<div>&nbsp;</div>=0A<div>&gt; Isn't this basically what MPIDR_EL1 is su=
-pposed to indicate?</div>=0A<div>&gt; We do not yet implement all of that =
-in QEMU, but should.</div>=0A<div>&nbsp;</div>=0A<div>&gt; Why does the sa=
-me info need to be replicated in devicetree?</div>=0A<div>&nbsp;</div><div=
-><div>sbsa uses PPTT to indicate the cpu topology, and OS use the ACPI to =
-get hardware infomation. We add the related information in devicetree, and=
- TF-A parses devicetree</div><div>and extract data form it , so EDK2 can g=
-ather data form TF-A to create PPTT tables via SMC calls.&nbsp;</div><div>=
-<br></div><div>Now the PPTT tables created by EDK2 lose some detailed info=
-rmation, so the cpu topology OS identified cannot align with the qemu conf=
-igure. We hope to add the topology&nbsp;</div><div>information in device t=
-ree, so EKD2 can create more detailed PPTT tables.</div></div>=0A<div>&nbs=
-p;</div>=0A<div>&gt; r~</div>=0A</div></blockquote>=0A</body></html>
-------=_001_NextPart176011612711_=------
+diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c
+index 1f5cd64ed1..e9133e9dcb 100644
+--- a/hw/dma/xlnx_dpdma.c
++++ b/hw/dma/xlnx_dpdma.c
+@@ -614,6 +614,63 @@ static void xlnx_dpdma_register_types(void)
+     type_register_static(&xlnx_dpdma_info);
+ }
+ 
++static MemTxResult xlnx_dpdma_read_descriptor(XlnxDPDMAState *s,
++                                    uint64_t desc_addr, DPDMADescriptor *desc)
++{
++    if (dma_memory_read(&address_space_memory, desc_addr, &desc,
++                            sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED)) {
++        return MEMTX_ERROR;
++    }
++
++    /* Convert from LE into host endianness.  */
++    desc->control = le32_to_cpu(desc->control);
++    desc->descriptor_id = le32_to_cpu(desc->descriptor_id);
++    desc->xfer_size = le32_to_cpu(desc->xfer_size);
++    desc->line_size_stride = le32_to_cpu(desc->line_size_stride);
++    desc->timestamp_lsb = le32_to_cpu(desc->timestamp_lsb);
++    desc->timestamp_msb = le32_to_cpu(desc->timestamp_msb);
++    desc->address_extension = le32_to_cpu(desc->address_extension);
++    desc->next_descriptor = le32_to_cpu(desc->next_descriptor);
++    desc->source_address = le32_to_cpu(desc->source_address);
++    desc->address_extension_23 = le32_to_cpu(desc->address_extension_23);
++    desc->address_extension_45 = le32_to_cpu(desc->address_extension_45);
++    desc->source_address2 = le32_to_cpu(desc->source_address2);
++    desc->source_address3 = le32_to_cpu(desc->source_address3);
++    desc->source_address4 = le32_to_cpu(desc->source_address4);
++    desc->source_address5 = le32_to_cpu(desc->source_address5);
++    desc->crc = le32_to_cpu(desc->crc);
++
++    return MEMTX_OK;
++}
++
++static void xlnx_dpdma_write_descriptor(uint64_t desc_addr,
++                                                DPDMADescriptor *desc)
++{
++    DPDMADescriptor* tmp_desc = (DPDMADescriptor *)malloc(sizeof(DPDMADescriptor));
++    memcpy(tmp_desc, desc, sizeof(desc));
++
++    /* Convert from host endianness into LE.  */
++    tmp_desc->control = cpu_to_le32(tmp_desc->control);
++    tmp_desc->descriptor_id = cpu_to_le32(tmp_desc->descriptor_id);
++    tmp_desc->xfer_size = cpu_to_le32(tmp_desc->xfer_size);
++    tmp_desc->line_size_stride = cpu_to_le32(tmp_desc->line_size_stride);
++    tmp_desc->timestamp_lsb = cpu_to_le32(tmp_desc->timestamp_lsb);
++    tmp_desc->timestamp_msb = cpu_to_le32(tmp_desc->timestamp_msb);
++    tmp_desc->address_extension = cpu_to_le32(tmp_desc->address_extension);
++    tmp_desc->next_descriptor = cpu_to_le32(tmp_desc->next_descriptor);
++    tmp_desc->source_address = cpu_to_le32(tmp_desc->source_address);
++    tmp_desc->address_extension_23 = cpu_to_le32(tmp_desc->address_extension_23);
++    tmp_desc->address_extension_45 = cpu_to_le32(tmp_desc->address_extension_45);
++    tmp_desc->source_address2 = cpu_to_le32(tmp_desc->source_address2);
++    tmp_desc->source_address3 = cpu_to_le32(tmp_desc->source_address3);
++    tmp_desc->source_address4 = cpu_to_le32(tmp_desc->source_address4);
++    tmp_desc->source_address5 = cpu_to_le32(tmp_desc->source_address5);
++    tmp_desc->crc = cpu_to_le32(tmp_desc->crc);
++
++    dma_memory_write(&address_space_memory, desc_addr, tmp_desc,
++                            sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED);
++}
++
+ size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
+                                     bool one_desc)
+ {
+@@ -651,8 +708,7 @@ size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
+             desc_addr = xlnx_dpdma_descriptor_next_address(s, channel);
+         }
+ 
+-        if (dma_memory_read(&address_space_memory, desc_addr, &desc,
+-                            sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED)) {
++        if (xlnx_dpdma_read_descriptor(s, desc_addr, &desc)) {
+             s->registers[DPDMA_EISR] |= ((1 << 1) << channel);
+             xlnx_dpdma_update_irq(s);
+             s->operation_finished[channel] = true;
+@@ -755,8 +811,7 @@ size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
+             /* The descriptor need to be updated when it's completed. */
+             DPRINTF("update the descriptor with the done flag set.\n");
+             xlnx_dpdma_desc_set_done(&desc);
+-            dma_memory_write(&address_space_memory, desc_addr, &desc,
+-                             sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED);
++            xlnx_dpdma_write_descriptor(desc_addr, &desc);
+         }
+ 
+         if (xlnx_dpdma_desc_completion_interrupt(&desc)) {
+-- 
+2.30.2
 

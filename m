@@ -1,121 +1,96 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp1116830ejb;
-        Sat, 27 Apr 2024 07:47:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVgzR35WUA53e2UdiW0cSyP1lDizbOetcfN9iLKWwL6vQAfjid38HiUBy7ot3qbrMztO/u+AbOP255lBFgZI0LufgsH+fA0
-X-Google-Smtp-Source: AGHT+IHfRPONxCSStA4Eljas2KI81oWmEZv3y+YRed8/6YDV4Ort2Du56bTHmAAQUGYO4smFlH4D
-X-Received: by 2002:a05:622a:b:b0:43a:829d:2ac1 with SMTP id x11-20020a05622a000b00b0043a829d2ac1mr5216728qtw.61.1714229266379;
-        Sat, 27 Apr 2024 07:47:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714229266; cv=none;
+Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp1371562ejb;
+        Sat, 27 Apr 2024 19:12:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVwjqOQzYtKvj2s6EHBxY7JvBmyWmPET3G+viO9Bpsl0f4hOlam/8Qex/gQHbqpxApnctGP0JKbTT4JmVqDbA3IUqS5Q0ao
+X-Google-Smtp-Source: AGHT+IHLQN8Q09yMl20SsjXd28oiCWySADQyvb31cts06BqzKmvkaoNpGvmJtJtZnrF20VNv+HRw
+X-Received: by 2002:a05:6359:5092:b0:183:9ea4:74a9 with SMTP id on18-20020a056359509200b001839ea474a9mr6275247rwb.15.1714270360825;
+        Sat, 27 Apr 2024 19:12:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714270360; cv=none;
         d=google.com; s=arc-20160816;
-        b=KRyL5oU4mKwZ9dIZt1lNzESdf9QXYQEEZMxYIITs8Whr2TNEypWg+YST8liEqHMq+7
-         37wl/J+0swcNDHSLJqjXIzyiU6z9mM7Z4mmA8MHRA3kTwiBiGmySdQhDmMMX2FHkQjas
-         qZm0CWy/NBgPBmscTfpM9rMfSW2CmTkn9VCrc3Cdss2f1wnterrwexvj/jBhqRlca45J
-         5Nn6WpBuE+7XW1uaRu/IlXPOsnKoXbG+s7dA70g+dIXeQcF9imz/2ibrZM+0FHa0Xv0a
-         7G4MMigaG4IOKrEBv2i4BxrU59YHB82tPbopIilzPOncAsZ0Js7EJx5/1vdWPFMzATUK
-         Gz0A==
+        b=A/I2etCQqJASmC9PdNNdtrQGddB7Faghy0Zr6KAKuIhGwzRvS6Nsr7z1VtyLIOgYk9
+         VAoTvmvXy5AuyiArm7KByvLmj3awSu7aNI5EjzNKWASj8KSSQigYRJwUIyEpCLNiL3zF
+         fARYDaGNBEaXL+ULkQEd6vkEbmRw1CxyTHGWmME/4zYG6KmXjVZ0Wa0M8KlF3x3AMPI/
+         a65yEVuvE3p0OFThaFDUav91vPX33cHocfeyjrQ2FUSX0s+dldrj2WDwLtdvgJV6PzXU
+         t0jVAcOmXwMgfcGvVSeHTcVuaZ+mLFltDL6nydQKXa2tpuX+5lJiginQ9QUXhQ2i8Xss
+         yAig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=6wcbJVsApLjFvrfZlLIEnscXA61H/LQylnHzp959vKo=;
-        fh=/jJVGraV4woJlaoLPXLHw4VCh+ri9g4K1DGkRL54DrQ=;
-        b=fZqIkvm3rlzFW4YAdZ5LaGEq9znyKphJ492ewYWHCX6Rglf+OJO7CYpJiL6lZZgLwH
-         eVoRA9xuNUKM82oz24psQlb7ubWX3OvOt+geJ+rUJu0D0aBd49N6OrzNBGQNbh8x3nRj
-         jkkw5zl3/gmoUgW3yeWDK9tGZGyRQgJdi9Eek+xvSxE4mz80RB59bbvLn0VFhbjqT43s
-         LVHKatAyL6E1SDBs0UmpTgB3naBcCNr0y23GhOiFrTJFNqRP+pDz9T74HKiP6Lf7+C/Y
-         sd7UZmZ/3mD9L1/w0iMJ0k1+1EUT7rDxdfN4dldhHTk7sD7CR1NaSA2zaRDuDNkZk989
-         mwUw==;
+         :list-unsubscribe:list-id:precedence:message-id:mime-version
+         :references:subject:cc:to:from:date;
+        bh=CmFY3NDVEOZgNTYE69Lao23b4r5BHvXBaJ+QnTiqHEE=;
+        fh=PIAQerTqJmE8WhlPrwsngE+PEjJ3mx3BrcC9alj8r5s=;
+        b=woq5kMlQpE6ALrNdgkT3Yls0Y2HBvYnFujEaoz/wBEmVaOkif2te9hO2GLJqj/T66b
+         4YjHsA3w8om6Gs2uTVDdnVDzYPy4dJ1HwJZWoqTr2QgnjBdbYrefnHwvEideFVTr5QBB
+         dd1FliayTHJLDarpFvVmxBIqYO2uLH4L4Qxodq6Hl3z/sSjeF8XcAJljY1zYIAVPIXqX
+         a68MHyksQLscSdEYR540vpLyipY62Osn46/XL/ITbaVpvW9iWuWHwD1TgTFyKWg5xTXG
+         c2b6jtZNnTni8iLRQZdoWob+yKg43Td8fVTt2wzHTJPOchhLE9dzsuMbrK0cMorpWKqz
+         60Uw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y5HZgU4s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17-20020ac85f11000000b004347c7aa34bsi23030109qta.445.2024.04.27.07.47.46
+        by mx.google.com with ESMTPS id e11-20020ac85dcb000000b004313acd2f44si25060134qtx.425.2024.04.27.19.12.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 27 Apr 2024 07:47:46 -0700 (PDT)
+        Sat, 27 Apr 2024 19:12:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y5HZgU4s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s0jKz-0000VF-80; Sat, 27 Apr 2024 10:47:38 -0400
+	id 1s0u1o-0006gF-82; Sat, 27 Apr 2024 22:12:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1s0jKs-0000RF-J0
- for qemu-arm@nongnu.org; Sat, 27 Apr 2024 10:47:30 -0400
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1s0jKp-0008GE-6f
- for qemu-arm@nongnu.org; Sat, 27 Apr 2024 10:47:28 -0400
-Received: by mail-pg1-x532.google.com with SMTP id
- 41be03b00d2f7-5f7fc45fe1bso2439792a12.0
- for <qemu-arm@nongnu.org>; Sat, 27 Apr 2024 07:47:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1714229244; x=1714834044; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=6wcbJVsApLjFvrfZlLIEnscXA61H/LQylnHzp959vKo=;
- b=Y5HZgU4sA/zjqpsAB3DxRLIjmp/xxad6nzY0c8nHBhWkwBIzk0yewFpM326TZ9m5fy
- VxNPeqH3kC6kAmirVagPg/19NR/aoxtLY38MXM6M6hXrhVSnmrwApVGiFrlqoS5gRzLc
- 4UfvCG2hucuL6uOM07fIPGGKVKSWJJr6weMPNvwNajXm3/ahtsakhAAdLogjyfFIVdMR
- dDZj+UZYlt9ByMYHiWBHQynNZqBMyFO/19GPtqKyGVFACvkHS6BGOCgq3dT4ybDsWFxe
- bsM020t0QFzF7C4sxSRVMqM0lKHX8t+CUC6oObm5ZGuNXbTsiPi3R7ZhyvNxrYQzKU4k
- HDoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714229244; x=1714834044;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6wcbJVsApLjFvrfZlLIEnscXA61H/LQylnHzp959vKo=;
- b=rhf8+XfEJ14zLU+t3i3PgwweEdTG1lIIYDaTY7uW4POv/gPLaP3Tty3D+oL0vREx/V
- kDuKvTxM+HNwpQzRgLlrk79loASFkGGpgZ/6fMssk0jTC9HgIBJNT0+/y1SweGzbOi3R
- jzg3ThQAOamNtQtuVJdOFfcjab6efVyQy5gZdPTRQZED4O4lz1d9jWLG98wwUTOPi2pL
- 2yibnUTEqTSNjQAdR43wY3SEshRe5crpttO5B19/W8LrhEV8Vj6tEtMeGtMifbRZC0xL
- gjYSHmaZhabKaIT3LRwcf4S74pzS1lmbn4tmhypTcL4zlHPX0ko6/EKRPzi1KtojNKd9
- Y7pA==
-X-Gm-Message-State: AOJu0Yy2FsCGjCLiz5rpR1N52a9WPOrCHP473J7fZUTUmfumUBECHEbX
- cmRWT2B7/GEFmB2UqoRL6iPSDEr6q4QfQVeUDjS9dRlF5y1sBAgTxLDD2zhX29c=
-X-Received: by 2002:a17:90a:d78b:b0:2ad:e004:76e6 with SMTP id
- z11-20020a17090ad78b00b002ade00476e6mr5231493pju.7.1714229244449; 
- Sat, 27 Apr 2024 07:47:24 -0700 (PDT)
-Received: from [192.168.91.227] ([75.147.178.105])
- by smtp.gmail.com with ESMTPSA id
- q1-20020a17090a938100b002a706910b05sm16194208pjo.9.2024.04.27.07.47.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 27 Apr 2024 07:47:23 -0700 (PDT)
-Message-ID: <040db071-6406-4270-969a-c98d6fb33caf@linaro.org>
-Date: Sat, 27 Apr 2024 07:47:21 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 00/38] Exec / accelerators patches
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
- qemu-ppc@nongnu.org
-References: <20240426194200.43723-1-philmd@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240426194200.43723-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
+ (Exim 4.90_1) (envelope-from <xiongyining1480@phytium.com.cn>)
+ id 1s0u1m-0006g2-P7; Sat, 27 Apr 2024 22:12:30 -0400
+Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <xiongyining1480@phytium.com.cn>)
+ id 1s0u1i-00057g-FS; Sat, 27 Apr 2024 22:12:30 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwDX3RF9sC1mfwZOAA--.40375S2;
+ Sun, 28 Apr 2024 10:12:13 +0800 (CST)
+Received: from DESKTOP-E65K6PP (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAfwDXcDl2sC1mchoAAA--.139S3;
+ Sun, 28 Apr 2024 10:12:06 +0800 (CST)
+Date: Sun, 28 Apr 2024 10:12:06 +0800
+From: "xiongyining1480@phytium.com.cn" <xiongyining1480@phytium.com.cn>
+To: "Richard Henderson" <richard.henderson@linaro.org>, 
+ qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Cc: rad <rad@semihalf.com>, peter.maydell <peter.maydell@linaro.org>, 
+ quic_llindhol <quic_llindhol@quicinc.com>, 
+ "Marcin Juszkiewicz" <marcin.juszkiewicz@linaro.org>
+Subject: Re: [PATCH v4 1/1] hw/arm/sbsa-ref: Enable CPU cluster on ARM sbsa
+ machine
+References: <20240426073553.326946-1-xiongyining1480@phytium.com.cn>, 
+ <20240426073553.326946-2-xiongyining1480@phytium.com.cn>, 
+ <a25e01c0-5f6e-4568-93ec-970987eb6d07@linaro.org>
+X-Priority: 3
+X-GUID: F05A055B-186E-4EED-9A38-56A6D16D2805
+X-Has-Attach: no
+X-Mailer: Foxmail 7.2.25.228[cn]
+Mime-Version: 1.0
+Message-ID: <2024042810120618268213@phytium.com.cn>
+Content-Type: multipart/alternative;
+ boundary="----=_001_NextPart176011612711_=----"
+X-CM-TRANSID: AQAAfwDXcDl2sC1mchoAAA--.139S3
+X-CM-SenderInfo: x0lr0wp1lqx0bjrumio6sk53xlxphulrpou0/1tbiAQAJBmYtU2QBHQABsv
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=xiongyinin
+ g1480@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoW7tFWUArWxGFW7Jw47Ar4xWFg_yoW8Wr48pr
+ W8Gr98K3ykJ3sFka13Za1xXr1rXr1rAa18Jr1Iqw42vwn8Ga4xKr17Kr4rC3srGry8A3s2
+ 9FWIqa4ruFs8urJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=209.97.181.73;
+ envelope-from=xiongyining1480@phytium.com.cn;
+ helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,39 +105,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RsS/v37y+8y+
+X-TUID: QzoL4m7uyjmC
 
-On 4/26/24 12:41, Philippe Mathieu-Daudé wrote:
-> The following changes since commit a118c4aff4087eafb68f7132b233ad548cf16376:
-> 
->    Merge tag 'hw-misc-20240425' ofhttps://github.com/philmd/qemu  into staging (2024-04-25 09:43:29 -0700)
-> 
-> are available in the Git repository at:
-> 
->    https://github.com/philmd/qemu.git  tags/accel-20240426
-> 
-> for you to fetch changes up to 671558d290ffb93752d3245e7c5604b04b6dcdf2:
-> 
->    plugins: Include missing 'qemu/bitmap.h' header (2024-04-26 21:36:19 +0200)
-> 
-> Selfish PR, painfully tested commit by commit.
-> ----------------------------------------------------------------
-> Accelerators patches
-> 
-> A lot of trivial cleanups and simplifications (moving methods around,
-> adding/removing #include statements). Most notable changes:
-> 
-> - Rename NEED_CPU_H -> COMPILING_PER_TARGET
-> - Rename few template headers using the '.h.inc' suffix
-> - Extract some definitions / declarations into their own header:
->    - accel/tcg/user-retaddr.h (helper_retaddr)
->    - include/exec/abi_ptr.h (abi_ptr)
->    - include/exec/breakpoint.h (CPUBreakpoint, CPUWatchpoint)
->    - include/exec/mmu-access-type.h (MMUAccessType)
->    - include/user/tswap-target.h (tswapl, bswaptls)
+This is a multi-part message in MIME format.
 
-Applied, thanks.  Please update https://wiki.qemu.org/ChangeLog/9.1 as appropriate.
+------=_001_NextPart176011612711_=----
+Content-Type: text/plain;
+	charset="UTF-8"
+Content-Transfer-Encoding: base64
 
+DQoNCg0KDQp4aW9uZ3lpbmluZzE0ODBAcGh5dGl1bS5jb20uY24NCiANCkZyb206IFJpY2hhcmQg
+SGVuZGVyc29uDQpEYXRlOiAyMDI0LTA0LTI3IDAwOjA2DQpUbzogWGlvbmcgWWluaW5nOyBxZW11
+LWFybTsgcWVtdS1kZXZlbA0KQ0M6IHJhZDsgcGV0ZXIubWF5ZGVsbDsgcXVpY19sbGluZGhvbDsg
+bWFyY2luLmp1c3praWV3aWN6DQpTdWJqZWN0OiBSZTogW1BBVENIIHY0IDEvMV0gaHcvYXJtL3Ni
+c2EtcmVmOiBFbmFibGUgQ1BVIGNsdXN0ZXIgb24gQVJNIHNic2EgbWFjaGluZQ0KT24gNC8yNi8y
+NCAwMDozNSwgWGlvbmcgWWluaW5nIHdyb3RlOg0KPiBGcm9tOiB4aW9uZ3lpbmluZzE0ODAgPHhp
+b25neWluaW5nMTQ4MEBwaHl0aXVtLmNvbS5jbj4NCj4gDQo+IEVuYWJsZSBDUFUgY2x1c3RlciBz
+dXBwb3J0IG9uIFNic2FRZW11IHBsYXRmb3JtLCBzbyB0aGF0IHVzZXJzIGNhbg0KPiBzcGVjaWZ5
+IGEgNC1sZXZlbCBDUFUgaGllcmFyY2h5IHNvY2tldHMvY2x1c3RlcnMvY29yZXMvdGhyZWFkcy4g
+QW5kDQo+IHRoaXMgdG9wb2xvZ3kgY2FuIGJlIHBhc3NlZCB0byB0aGUgZmlybXdhcmUgdGhyb3Vn
+aCBEVCBjcHUtbWFwLg0KPiANCj4gU2lnbmVkLW9mZi1ieTogWGlvbmcgWWluaW5nIDx4aW9uZ3lp
+bmluZzE0ODBAcGh5dGl1bS5jb20uY24+DQo+IHRlc3RlZC1ieTogTWFyY2luIEp1c3praWV3aWN6
+IDxtYXJjaW4uanVzemtpZXdpY3pAbGluYXJvLm9yZz4NCj4gLS0tDQo+ICAgZG9jcy9zeXN0ZW0v
+YXJtL3Nic2EucnN0IHwgIDQgKysrKw0KPiAgIGh3L2FybS9zYnNhLXJlZi5jICAgICAgICB8IDM3
+ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0NCj4gICAyIGZpbGVzIGNoYW5n
+ZWQsIDQwIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkNCiANCj4gSXNuJ3QgdGhpcyBiYXNp
+Y2FsbHkgd2hhdCBNUElEUl9FTDEgaXMgc3VwcG9zZWQgdG8gaW5kaWNhdGU/DQo+IFdlIGRvIG5v
+dCB5ZXQgaW1wbGVtZW50IGFsbCBvZiB0aGF0IGluIFFFTVUsIGJ1dCBzaG91bGQuDQogDQo+IFdo
+eSBkb2VzIHRoZSBzYW1lIGluZm8gbmVlZCB0byBiZSByZXBsaWNhdGVkIGluIGRldmljZXRyZWU/
+DQogDQpzYnNhIHVzZXMgUFBUVCB0byBpbmRpY2F0ZSB0aGUgY3B1IHRvcG9sb2d5LCBhbmQgT1Mg
+dXNlIHRoZSBBQ1BJIHRvIGdldCBoYXJkd2FyZSBpbmZvbWF0aW9uLiBXZSBhZGQgdGhlIHJlbGF0
+ZWQgaW5mb3JtYXRpb24gaW4gZGV2aWNldHJlZSwgYW5kIFRGLUEgcGFyc2VzIGRldmljZXRyZWUN
+CmFuZCBleHRyYWN0IGRhdGEgZm9ybSBpdCAsIHNvIEVESzIgY2FuIGdhdGhlciBkYXRhIGZvcm0g
+VEYtQSB0byBjcmVhdGUgUFBUVCB0YWJsZXMgdmlhIFNNQyBjYWxscy4gDQoNCk5vdyB0aGUgUFBU
+VCB0YWJsZXMgY3JlYXRlZCBieSBFREsyIGxvc2Ugc29tZSBkZXRhaWxlZCBpbmZvcm1hdGlvbiwg
+c28gdGhlIGNwdSB0b3BvbG9neSBPUyBpZGVudGlmaWVkIGNhbm5vdCBhbGlnbiB3aXRoIHRoZSBx
+ZW11IGNvbmZpZ3VyZS4gV2UgaG9wZSB0byBhZGQgdGhlIHRvcG9sb2d5IA0KaW5mb3JtYXRpb24g
+aW4gZGV2aWNlIHRyZWUsIHNvIEVLRDIgY2FuIGNyZWF0ZSBtb3JlIGRldGFpbGVkIFBQVFQgdGFi
+bGVzLg0KIA0KPiByfg0K
 
-r~
+------=_001_NextPart176011612711_=----
+Content-Type: text/html;
+	charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charse=
+t=3DUTF-8"><style>body { line-height: 1.5; }blockquote { margin-top: 0px; =
+margin-bottom: 0px; margin-left: 0.5em; }body { font-size: 14px; font-fami=
+ly: "Microsoft YaHei UI"; color: rgb(0, 0, 0); line-height: 1.5; }</style>=
+</head><body>=0A<div><span></span><br></div>=0A<div><br></div><hr style=3D=
+"width: 210px; height: 1px;" color=3D"#b5c4df" size=3D"1" align=3D"left">=
+=0A<div><span><div style=3D"MARGIN: 10px; FONT-FAMILY: verdana; FONT-SIZE:=
+ 10pt"><div>xiongyining1480@phytium.com.cn</div></div></span></div>=0A<blo=
+ckquote style=3D"margin-Top: 0px; margin-Bottom: 0px; margin-Left: 0.5em; =
+margin-Right: inherit"><div>&nbsp;</div><div style=3D"border:none;border-t=
+op:solid #B5C4DF 1.0pt;padding:3.0pt 0cm 0cm 0cm"><div style=3D"PADDING-RI=
+GHT: 8px; PADDING-LEFT: 8px; FONT-SIZE: 12px;FONT-FAMILY:tahoma;COLOR:#000=
+000; BACKGROUND: #efefef; PADDING-BOTTOM: 8px; PADDING-TOP: 8px"><div><b>F=
+rom:</b>&nbsp;<a href=3D"mailto:richard.henderson@linaro.org">Richard Hend=
+erson</a></div><div><b>Date:</b>&nbsp;2024-04-27&nbsp;00:06</div><div><b>T=
+o:</b>&nbsp;<a href=3D"mailto:xiongyining1480@phytium.com.cn">Xiong Yining=
+</a>; <a href=3D"mailto:qemu-arm@nongnu.org">qemu-arm</a>; <a href=3D"mail=
+to:qemu-devel@nongnu.org">qemu-devel</a></div><div><b>CC:</b>&nbsp;<a href=
+=3D"mailto:rad@semihalf.com">rad</a>; <a href=3D"mailto:peter.maydell@lina=
+ro.org">peter.maydell</a>; <a href=3D"mailto:quic_llindhol@quicinc.com">qu=
+ic_llindhol</a>; <a href=3D"mailto:marcin.juszkiewicz@linaro.org">marcin.j=
+uszkiewicz</a></div><div><b>Subject:</b>&nbsp;Re: [PATCH v4 1/1] hw/arm/sb=
+sa-ref: Enable CPU cluster on ARM sbsa machine</div></div></div><div><div>=
+On 4/26/24 00:35, Xiong Yining wrote:</div>=0A<div>&gt; From: xiongyining1=
+480 &lt;xiongyining1480@phytium.com.cn&gt;</div>=0A<div>&gt; </div>=0A<div=
+>&gt; Enable CPU cluster support on SbsaQemu platform, so that users can</=
+div>=0A<div>&gt; specify a 4-level CPU hierarchy sockets/clusters/cores/th=
+reads. And</div>=0A<div>&gt; this topology can be passed to the firmware t=
+hrough DT cpu-map.</div>=0A<div>&gt; </div>=0A<div>&gt; Signed-off-by: Xio=
+ng Yining &lt;xiongyining1480@phytium.com.cn&gt;</div>=0A<div>&gt; tested-=
+by: Marcin Juszkiewicz &lt;marcin.juszkiewicz@linaro.org&gt;</div>=0A<div>=
+&gt; ---</div>=0A<div>&gt;&nbsp;&nbsp; docs/system/arm/sbsa.rst |&nbsp; 4 =
+++++</div>=0A<div>&gt;&nbsp;&nbsp; hw/arm/sbsa-ref.c&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp; | 37 ++++++++++++++++++++++++++++++++++++-</div>=0A<d=
+iv>&gt;&nbsp;&nbsp; 2 files changed, 40 insertions(+), 1 deletion(-)</div>=
+=0A<div>&nbsp;</div>=0A<div>&gt; Isn't this basically what MPIDR_EL1 is su=
+pposed to indicate?</div>=0A<div>&gt; We do not yet implement all of that =
+in QEMU, but should.</div>=0A<div>&nbsp;</div>=0A<div>&gt; Why does the sa=
+me info need to be replicated in devicetree?</div>=0A<div>&nbsp;</div><div=
+><div>sbsa uses PPTT to indicate the cpu topology, and OS use the ACPI to =
+get hardware infomation. We add the related information in devicetree, and=
+ TF-A parses devicetree</div><div>and extract data form it , so EDK2 can g=
+ather data form TF-A to create PPTT tables via SMC calls.&nbsp;</div><div>=
+<br></div><div>Now the PPTT tables created by EDK2 lose some detailed info=
+rmation, so the cpu topology OS identified cannot align with the qemu conf=
+igure. We hope to add the topology&nbsp;</div><div>information in device t=
+ree, so EKD2 can create more detailed PPTT tables.</div></div>=0A<div>&nbs=
+p;</div>=0A<div>&gt; r~</div>=0A</div></blockquote>=0A</body></html>
+------=_001_NextPart176011612711_=------
 

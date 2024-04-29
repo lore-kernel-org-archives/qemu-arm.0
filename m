@@ -1,207 +1,181 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp1941933ejb;
-        Sun, 28 Apr 2024 20:54:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV1l6DTTabFStmt+mFPNvHvNibN413tusb1LUisn4YCukkPpjbxl092bpf8QWUIjQtNoWWJifXivi+O1ekw8Hppk0u3vikq
-X-Google-Smtp-Source: AGHT+IGC/0FjHBaLfeuMq24vmAZ/jjteTYCgS6W/qJQf3YkgcVpEjgsKgGJ3PeredzeTe6XViwle
-X-Received: by 2002:a05:620a:2b9c:b0:790:f83a:6105 with SMTP id dz28-20020a05620a2b9c00b00790f83a6105mr1387070qkb.32.1714362857015;
-        Sun, 28 Apr 2024 20:54:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714362857; cv=none;
+Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp1999025ejb;
+        Sun, 28 Apr 2024 23:35:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVm5o67tP5cr5k15XT/Ct5gAwHBO7xmsEm+ZOfEiexq3emLMkz9bvNu6utPIrR/0rnNOr5dZXkiZUOC2A5pGve+Px2YkR9u
+X-Google-Smtp-Source: AGHT+IFChLrjGMI+BfDA14cI6WeCmiC8aLr9gAyXAS44I/WEP/argiZI/oK4/w13xZoCoDaXMLaJ
+X-Received: by 2002:a05:622a:1387:b0:43a:ea41:c9cd with SMTP id o7-20020a05622a138700b0043aea41c9cdmr2567633qtk.59.1714372543627;
+        Sun, 28 Apr 2024 23:35:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714372543; cv=none;
         d=google.com; s=arc-20160816;
-        b=N3L+zb0Q3gsn89eJZNtemqrhXL04a7hi09tM7gJCtOfsnSPCpyr+EbOabOBnoKnZpE
-         C+lnljAoPcKdjclMHHzIWfsOZ1/ES0NEarcsj0TVzzkOvPmoOIL4WXgdld6d+avgtjRu
-         sqfoVscQtKoHcElbLdYc8Cjd3NkRLurIrUZPwRYJCmGe5kuCkh0H9hbde9c0Q8rUSlJs
-         pDJ2uSaFDUcA6CI14vr+oiF5bTk/ALvGl6wExsmMFXTMOkHAqOb2FESWZvCRS/thdRY+
-         KoMHFIe5vPcPxHv3pxK1JPMMSUwqsVxEIhZhtSzE1rmxkwTZwrU/H9EA6hGXZGxx2Oku
-         LnMQ==
+        b=ZId2h7PdrnIndvJJaa9FE5at2KSzxgcIaJRBLtMU+Y/tYiwwFd7rumeePWRDIyCgqn
+         MrUIm/u8RuPTbYaVn0SqvWdFm35Omkk5JI+IUUW80liZQgCgpJGW6vy4x4ftfvcANLV8
+         phsY0oTvTHmIx6ZwLqxbJY6574C3eSyTKzB4g+MaJHGqNFqWe8oYcVQJI/8+8pRbJx/m
+         aMfIXC2C7ufS/NZP4IPxUM/xxnDO7BWkZSYh3wuChWq6Iqih1vsrPWNKKPxwoqkBdvlC
+         zLusmJS0STamA5RXeILNlPYSwyLxJPXzwDLwGcv9bn5s/jo1yyDFijUus4zm5Wb6iVCT
+         678g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=7dgUWsHYpbbhlXlR+BJ7ZnWLEwWj1cUFlUVxhU5bESM=;
-        fh=kipQuF8MBXnP+K76dKNoqAX8CsE9qSKGV7FV2giCf6E=;
-        b=Ai8Fvlx/sPiRoYB5bZTsxiCPuZ/BpzZanQP1UHkw0WTMBgcaNbczRzXEA9eANSHP/u
-         D4vDc6qaMCQHsviAQ2zXEg35V5sd5cicMeCEzlceUI7h++NWi/mM4WeENRp8/xx9Hrq0
-         kk478lxu3IFTaCzYlAHlkaLVi2oAL1G9d22FqsqCDC685oj8gWHyhSi7ULrhBal62mVd
-         7Gpt9JFzs5R7syr6EsjMopEzjCdUw48CM+iRCrhcs9yaBOFTu0k4yNtc1RQbqafIURqU
-         IuCgfkoN+UxPYChDKqkZUt3lICNLfSLBZdZW8UOKDqHqW//ooit5WFK46PpMM1BBImMf
-         t6mQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:organization:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=fF+tHR9zZY2qsdLlB2woUhQUdUSvkMx+q6iplS5/FIE=;
+        fh=mcx6mFie+IUo0+Luwl45waWOUb2JSUBdEgHQ50V/Qcw=;
+        b=DaDpcsjdSGMsLxFdj1+9JxYxgLWDq/wovDy7QbwUBUasTHEcbdPE43u3d1kHPwEUjK
+         yoIzkMtSafQgIlBSCm+JDeRFs9xhW6JsuetvtJzn/Ud8kM/eIzzEzvCz9yu1t1tf4db5
+         ww6WoN45slikzZE4qsnZGS6w0iH7hdJ80ptlxH+gIxucyMKIKOxWWkbr1ckZXK9j6s7O
+         QNscLoDhbNDY1hihVcBCR5mrPYz1yi7sGHwdObWpeyYw1xxf50WLSiGPfY9A4HG5XFB8
+         v3HoVJfJ+GSm/bN3RARG4HzmwkrhbPRh+CNJO2dXaz3/ly5vhP0XMbaM3y9D7htKkmfL
+         G26w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GLcK6hyG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="ff92oBz/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f18-20020a05620a20d200b00790f3693819si1893596qka.110.2024.04.28.20.54.16
+        by mx.google.com with ESMTPS id n16-20020ac85a10000000b0043acbbf6662si2881847qta.614.2024.04.28.23.35.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 28 Apr 2024 20:54:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 28 Apr 2024 23:35:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=GLcK6hyG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b="ff92oBz/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1s1I5k-0002cJ-5x; Sun, 28 Apr 2024 23:54:13 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s1Kbk-0007wE-QQ; Mon, 29 Apr 2024 02:35:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1s1I5f-0002bO-S7; Sun, 28 Apr 2024 23:54:08 -0400
-Received: from mail-ua1-x935.google.com ([2607:f8b0:4864:20::935])
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1s1Kba-0007ub-B5
+ for qemu-arm@nongnu.org; Mon, 29 Apr 2024 02:35:15 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1s1I5c-0008H6-QQ; Sun, 28 Apr 2024 23:54:06 -0400
-Received: by mail-ua1-x935.google.com with SMTP id
- a1e0cc1a2514c-7f00a9fc1f4so675888241.2; 
- Sun, 28 Apr 2024 20:54:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1s1KbY-0004Ka-L6
+ for qemu-arm@nongnu.org; Mon, 29 Apr 2024 02:35:14 -0400
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-a58d0aea14cso319376166b.2
+ for <qemu-arm@nongnu.org>; Sun, 28 Apr 2024 23:35:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1714362842; x=1714967642; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7dgUWsHYpbbhlXlR+BJ7ZnWLEwWj1cUFlUVxhU5bESM=;
- b=GLcK6hyGAOD05phRB0eP7GXnCBUV4zBaipb4xXE7jCuAvt8XuoRU6LZtcckG/WNzVJ
- NJwdjdRgCLDr2TT878/CO+evvh5liNm/X4Alfu7YuYTih+hqNAUJbgON2bhTpZcfh22u
- V+kZGBNqCRk1vEoUoWoZOUMGXLvdDEkicbkaAwY+O3ai2EsTFRocuqgrNWHhfVu9kIqc
- OLI2lKkbs0zkFb8Y0DNmmLIxFhbwfl0HJbbOmxHLBbHdmSOA/LyI+PGL2ugrc/4Tu+RB
- dEWEmrcXYjVXH9MV/3HGDj7XXs6ofrB6UBEmLQSAcJ5bNSZiQRP1m5cqHEdkBPNRT+EV
- WyKg==
+ d=linaro.org; s=google; t=1714372509; x=1714977309; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:organization:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+ bh=fF+tHR9zZY2qsdLlB2woUhQUdUSvkMx+q6iplS5/FIE=;
+ b=ff92oBz/hTgFfuDuGdMM7vqUjydJBaovEjvZr4VybvYvjeob3NLfOA5BmohuhvFC1N
+ Gk+KZuazu0LnCMBTBtVwQbG4igL8ECGJ3yWpPm3SuFjDk3HmOJSiMB4RtIp0cm0KVNK6
+ 2Jb5kzg1fumKioZuOekK0EHXG5HKApuG91L+CLFS+v9pxIHe/1T3oI4EOr+u6MsTW+rP
+ VIgq1PkwAIXTlGXpwdIcP296WexAr5EQ3MYqpzrQpo5dZJGZQxxf27hu/mr5tjPwE0zQ
+ BljDLcP7lBqkq1hvr64NNaDuvzji+AErbg3DcKDkkMG+J1E9JA36/Zd/64FtIVdLTW0w
+ /DMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714362842; x=1714967642;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7dgUWsHYpbbhlXlR+BJ7ZnWLEwWj1cUFlUVxhU5bESM=;
- b=li/eyhQJyqBVELCA4rJknOYNK9VaaO7NGGnYse2lRzKmuOk9MLxqfMBgYi3cbFJhKx
- WaMFq5AdFDxjvs9mMWbv69KaCx3Uv9GEOfq6agTmdyTqiKbYlLQ5k+El6ReVuPU54Kyp
- XCJw0HngKdvTXOxcpMndn6e+oIa/pmMnhD+xGv1ZZI4/TPFFzqZ8FvdUXoMdExg9e9Mu
- syIeF0Toiy9KwUHW7EcybSbzYxokZXqbKp7rae5XKUxHRaIHsVOQB5k9QmeYFY4ddM6E
- adCN2Uafk6he/CZRFyEte6siTU38AlLmOtJUiUFqCMC+PxNFXqD+wR/2+E8BqR4nj3V0
- nERg==
+ d=1e100.net; s=20230601; t=1714372509; x=1714977309;
+ h=content-transfer-encoding:in-reply-to:organization:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=fF+tHR9zZY2qsdLlB2woUhQUdUSvkMx+q6iplS5/FIE=;
+ b=u6b/XA4lGLilNJAoIMmNtsQsQAphF2k3Sc+8nLjOWTvRlrn8bo98d0uhIHHe9i2p44
+ lgU5TOLeKTgAOuhPbdp9YuqmK5gThUvkupGDGoWNwETvin6VgAVETOOOgjYlv2OKd2e7
+ pnz+qax0lbfukXxJoTCwjwxbcddYl2VwpJlWhjTfK4NoQnYmLsHMAgp1gd0yNhp9BK5J
+ qkAp9Sy9qzhFWPcMTk4bdNQxAcSrFb9651eDbrs3iS8UgpeG5tuG6A+Tw8ij9chsnM6p
+ B2TOU03MxX6wwCeDFD8I1f77wqn7vuZQAYa7LYNLGsdfXPPzg3JmSra7EpKyy1WlDVBl
+ oKMQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWttbCx9rmETFYY5ZZG+WBHv5hyVaUG07zQaDWvptw9oyiwIjlv90AaqVHhjQ0eEIZDBAlcLfTjWlJ5dZIu2q6B2E99NAlUEVPwdHnjTtpOZjPOFoRWCdiJTQQ=
-X-Gm-Message-State: AOJu0YxNCGVtdbGayeVukcTwuGHbnkRVYlNxW3G29kLfTegJK7nkV2OH
- JT2OMN6qwGvx1lIeDYRpqCEFRmuq479/Jj8xw5o+MNTincYddD86smMcNL0b2ikj0BuDQrh1DhO
- O5e3v3T+j/iugYfBNhIpne9w/uNU=
-X-Received: by 2002:a05:6122:369f:b0:4d8:5e2f:c235 with SMTP id
- ec31-20020a056122369f00b004d85e2fc235mr9152576vkb.0.1714362841832; Sun, 28
- Apr 2024 20:54:01 -0700 (PDT)
+ AJvYcCX+4XyrIV9TnH6bSUhhLyl/0mEpppC4qE8b7UGXNLaxD2A3fq9LPkDgdksKQRNTGmZ314CelHW2AbOK74gsSq4O9BBR
+X-Gm-Message-State: AOJu0Yxq4y6BxekzonJkJJK0si6JGckz0sDudp/i5mDwrwR+Amuad9b0
+ ztL31Q6kX6KVRUGCw1lL1S2OeVNoPjgW6ndA6ct7R2rHSk59iJ5MtdiQg2X6r5E=
+X-Received: by 2002:a17:906:1643:b0:a55:b2d8:c584 with SMTP id
+ n3-20020a170906164300b00a55b2d8c584mr5941126ejd.66.1714372509156; 
+ Sun, 28 Apr 2024 23:35:09 -0700 (PDT)
+Received: from [192.168.200.106] (83.11.4.140.ipv4.supernova.orange.pl.
+ [83.11.4.140]) by smtp.gmail.com with ESMTPSA id
+ k15-20020a170906128f00b00a473a1fe089sm13539985ejb.1.2024.04.28.23.35.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 28 Apr 2024 23:35:08 -0700 (PDT)
+Message-ID: <559cc23e-f581-4f0d-bf59-94a516d1ef56@linaro.org>
+Date: Mon, 29 Apr 2024 08:35:07 +0200
 MIME-Version: 1.0
-References: <20240315130924.2378849-1-sunilvl@ventanamicro.com>
- <20240315130924.2378849-10-sunilvl@ventanamicro.com>
-In-Reply-To: <20240315130924.2378849-10-sunilvl@ventanamicro.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 29 Apr 2024 13:53:35 +1000
-Message-ID: <CAKmqyKOSfF+kUK1OyDWRRgV4tkJ=cKQW2J4-_5vh11UNwmC2Zg@mail.gmail.com>
-Subject: Re: [PATCH 12/12] tests/qtest/bios-tables-test.c: Enable basic
- testing for RISC-V
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Gerd Hoffmann <kraxel@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, 
- Ani Sinha <anisinha@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Andrew Jones <ajones@ventanamicro.com>, 
- Anup Patel <apatel@ventanamicro.com>, Haibo1 Xu <haibo1.xu@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::935;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x935.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/1] hw/arm/sbsa-ref: Enable CPU cluster on ARM sbsa
+ machine
+To: Richard Henderson <richard.henderson@linaro.org>,
+ Xiong Yining <xiongyining1480@phytium.com.cn>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: rad@semihalf.com, peter.maydell@linaro.org, quic_llindhol@quicinc.com
+References: <20240426073553.326946-1-xiongyining1480@phytium.com.cn>
+ <20240426073553.326946-2-xiongyining1480@phytium.com.cn>
+ <a25e01c0-5f6e-4568-93ec-970987eb6d07@linaro.org>
+Content-Language: pl-PL, en-GB, en-HK
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Organization: Linaro
+In-Reply-To: <a25e01c0-5f6e-4568-93ec-970987eb6d07@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ej1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KOjxXI2R+92k
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ii/e8xfFd6+l
 
-On Fri, Mar 15, 2024 at 11:10=E2=80=AFPM Sunil V L <sunilvl@ventanamicro.co=
-m> wrote:
->
-> Add basic ACPI table testing for RISC-V.
->
-> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+W dniu 26.04.2024 o 18:06, Richard Henderson pisze:
+> 
+> Isn't this basically what MPIDR_EL1 is supposed to indicate?
+> We do not yet implement all of that in QEMU, but should.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+QEMU has socket/cluster/core/thread model which could map to
+aff3/aff2/aff1/aff0 (or aff0/1/2/3) of MPIDR_EL1 register, right? But it 
+does not.
 
-Alistair
+Nevermind which combination of socket/cluster/core/thread I use all I 
+have is this:
 
-> ---
->  tests/qtest/bios-tables-test.c | 28 ++++++++++++++++++++++++++++
->  1 file changed, 28 insertions(+)
->
-> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-tes=
-t.c
-> index c492438ced..033acc8958 100644
-> --- a/tests/qtest/bios-tables-test.c
-> +++ b/tests/qtest/bios-tables-test.c
-> @@ -1923,6 +1923,30 @@ static void test_acpi_microvm_acpi_erst(void)
->  }
->  #endif /* CONFIG_POSIX */
->
-> +static void test_acpi_riscv64_virt_tcg(void)
-> +{
-> +    test_data data =3D {
-> +        .machine =3D "virt",
-> +        .arch =3D "riscv64",
-> +        .tcg_only =3D true,
-> +        .uefi_fl1 =3D "pc-bios/edk2-riscv-code.fd",
-> +        .uefi_fl2 =3D "pc-bios/edk2-riscv-vars.fd",
-> +        .ram_start =3D 0x80000000ULL,
-> +        .scan_len =3D 128ULL * 1024 * 1024,
-> +    };
-> +
-> +    /*
-> +     * RHCT will have ISA string encoded. To reduce the effort
-> +     * of updating expected AML file for any new default ISA extension,
-> +     * use the profile rva22s64. Once profile is ratified, there may
-> +     * not be new extension possible.
-> +     */
-> +    test_acpi_one("-cpu rva22s64 -device virtio-blk-device,drive=3Dhd0 "
-> +                  "-drive file=3Dtests/data/uefi-boot-images/bios-tables=
--test.riscv64.iso.qcow2,id=3Dhd0",
-> +                  &data);
-> +    free_test_data(&data);
-> +}
-> +
->  static void test_acpi_aarch64_virt_tcg(void)
->  {
->      test_data data =3D {
-> @@ -2342,6 +2366,10 @@ int main(int argc, char *argv[])
->                  qtest_add_func("acpi/virt/viot", test_acpi_aarch64_virt_=
-viot);
->              }
->          }
-> +    } else if (strcmp(arch, "riscv64") =3D=3D 0) {
-> +        if (has_tcg && qtest_has_device("virtio-blk-pci")) {
-> +            qtest_add_func("acpi/virt", test_acpi_riscv64_virt_tcg);
-> +        }
->      }
->      ret =3D g_test_run();
->      boot_sector_cleanup(disk);
-> --
-> 2.40.1
->
+cpu 0x000 mpidr 00000000 00000000
+cpu 0x001 mpidr 00000000 00000001
+cpu 0x002 mpidr 00000000 00000010
+cpu 0x003 mpidr 00000000 00000011
+cpu 0x004 mpidr 00000000 00000100
+cpu 0x005 mpidr 00000000 00000101
+cpu 0x006 mpidr 00000000 00000110
+cpu 0x007 mpidr 00000000 00000111
+
+cpu 0x008 mpidr 00000001 00000000
+cpu 0x009 mpidr 00000001 00000001
+cpu 0x00a mpidr 00000001 00000010
+cpu 0x00b mpidr 00000001 00000011
+cpu 0x00c mpidr 00000001 00000100
+cpu 0x00d mpidr 00000001 00000101
+cpu 0x00e mpidr 00000001 00000110
+cpu 0x00f mpidr 00000001 00000111
+
+Eight cpu cores per unit. Probably leftover from GICv2 times where there 
+was 8 cores per GIC limit.
+
+So looks like adding mapping of topology to MPIDR_EL1 into QEMU would be 
+a better option. May require checking for more than 256 of one kind then.
+
+> Why does the same info need to be replicated in devicetree?
+
+One of things we had on todolist: export cpu topology in PPTT table. 
+With MPIDR being 2 level while topology can be 4 level.

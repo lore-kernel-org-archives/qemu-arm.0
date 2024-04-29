@@ -1,203 +1,1023 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp1931754ejb;
-        Sun, 28 Apr 2024 20:24:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWchd4eZ+daQZ/DbQXad7972Av706WyR2Nr7NPFYSUFyvvQDKzrbAMV7mBIPPqpyUD9WezEV6sqCqCmM0JkuzlBBDlm0esA
-X-Received: by 2002:a05:600c:3c8a:b0:418:ed23:a9f0 with SMTP id bg10-20020a05600c3c8a00b00418ed23a9f0mr5364771wmb.18.1714361091331;
-        Sun, 28 Apr 2024 20:24:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714361091; cv=none;
+Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp2479800ejb;
+        Mon, 29 Apr 2024 13:41:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUZyjjnSHKx4nk+GWRAkOumu0KrViBE8F0sgrJ+crKIK7ONr+1Lw7GKMqW+1uSQyfqfRoKVps3i1pSGPfRbTSxINKMTvi+b
+X-Google-Smtp-Source: AGHT+IGf3ItHSxcjVywEPTkYbA+Wm2vuw5unZcVBlI8VwIITvzh2h0cmS0FYyS3KpcGz03RFOEyz
+X-Received: by 2002:a05:620a:4090:b0:790:88a3:27b7 with SMTP id f16-20020a05620a409000b0079088a327b7mr11298339qko.39.1714423269496;
+        Mon, 29 Apr 2024 13:41:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714423269; cv=none;
         d=google.com; s=arc-20160816;
-        b=nhb1nmszghbZczD7pbFoBo9+FZDXj3ROzbEFRvoiM7FM/jPXJiFaNZLj9RAUu/N0/Y
-         mkUX0DsyVaz94/HRlhe7vttqnK8yIyn1D1NCyjq9RhIUFzEK7pTmxDuctiEw+7IlCPRY
-         FN30X9idn/PfEShYJsKngpr82Zv5xcIBdF9yGQffSsbsiH8FMhvn9VXDDgAhGm4UXyTS
-         etAgObQLGgxh0SXg2/xkKbf3UjOyVswdMtn4/ElqVprl7ZCNPnzTkzv2Q0obKNO2IAjQ
-         oKg7p51kU2y21SfHz0qofnYE9WEO9McIKGkKMhLDfZxN8mZ+8hxf0r3l7rVwQ0/zC3Jv
-         jujg==
+        b=d3iP9UgT+x384hwforavFzKzO2++sfb+fHqCy7vo6/0ngGfH7+jkO7hFYU9xrVSJGr
+         OZQmhyu5tkajXe57gvEZfnAnZHEHPwC0nznmpw8XdC8gBo2Lr8XcVOKOSbAUEbeCeJpE
+         728OUxqaNYhONx1bIXm3tj7L8pyV53pm6EhOTDbBQfmVY+qm9GL0/+xf0BM1KyvTrR91
+         F2euRa7UqsHkrzl/Ty5AtbuAv7WWSnqi7NiCvWxyH2ky2ynXte7HWB/mW7lIMJeqDTWy
+         9C7H0Qv1n8W/G0o4u9hRROYz5wdW3uxTS+0th2JxrE7xLBelqFhc00qeUsiMjHU3UIOI
+         SbWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:from:subject:message-id:references
-         :mime-version:in-reply-to:date:dkim-signature;
-        bh=ZpCcezp9/fTsowCTsySf9fmY/aXn95QjnE0/b0e/YVQ=;
-        fh=VqExcrAuunyh84CE0tWY/cphh7jm3bJdtiLKtnDix8o=;
-        b=rl2ZveryssD4Th/SbGUfgpJwWxHykKKfvWplfIschz99t9wLZ+J5t+ARInngFQdTVX
-         oXnC63NXNguOn8zyYnf19lX/OTSK1I66JlRSuNAShyj37If5tGiy1Z4CbKHDWMq71rIa
-         H/8uwMNPude0gE9isikWhY+io81KI+V2TBWG+27luwP+k3yyIGaByEJ3mOWZL0f+wT0V
-         VsCZNdLPkp/uS52G7bBNO8lt32MdJXxurkyPc75nn1vtYclxcl9Q7DLTX6SAolVT6PUT
-         Qv6fUdUMN4sMaKKDXoQZVL1hie8gXZ3YyE9OFZo6zJvfbLuExge4kkg6YOk0jw1uEHgT
-         y5Zw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=6V/CrElNwNNnlxTPID4N4FF9zSfvE0AWNUJIIWDEKWc=;
+        fh=7rd0FBhaou1gjgg2Xbj6hzJNKfHh0I+WwVSTPIuVRMg=;
+        b=DufdBHJImRjRqp21XxxjOyxZqToewYY1uJeRPnh0Yjk9mdXu151I81ZJ2L11NjIvdv
+         5fonXkQpwwDHcnUEKMvTEVnIATc8VeklAGNkd/ew6AyaecYCyAUlZBHro2CFPdBoRTEp
+         hto0rsc72gH+q9SewwY5zM3TXV5ng/jidj+ggBy1q9G7er5w2b/Oq4XaeQ//h9yp7F+z
+         Pf2VYJBzcDcV9LQjOJEg3xqsSqB+G2dwDHBubCd1oOJBOvXnxhqiP9gt8oFv8pDc2Cdo
+         6YkqDzxm+lVc5Sa49Zg4O7B1upIcZtUv4bdewW8QGhKOhDcHtcgOk57YSlFV4MUft3KY
+         Ekmw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=YenYEeDu;
-       spf=pass (google.com: domain of 3axmvzggkcx4mgimn494aiiaf8.6ig4f8r.58hh88fch4li.ila@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3AxMvZggKCx4MGIMN494AIIAF8.6IG4F8R.58HH88FCH4LI.ILA@flex--smostafa.bounces.google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <3AxMvZggKCx4MGIMN494AIIAF8.6IG4F8R.58HH88FCH4LI.ILA@flex--smostafa.bounces.google.com>
-Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
-        by mx.google.com with SMTPS id f13-20020a7bc8cd000000b004140476f167sor6148464wml.9.2024.04.28.20.24.51
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fepzNRcx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e15-20020a05620a12cf00b0078efe07f306si26230196qkl.323.2024.04.29.13.41.09
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 28 Apr 2024 20:24:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of 3axmvzggkcx4mgimn494aiiaf8.6ig4f8r.58hh88fch4li.ila@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 29 Apr 2024 13:41:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=YenYEeDu;
-       spf=pass (google.com: domain of 3axmvzggkcx4mgimn494aiiaf8.6ig4f8r.58hh88fch4li.ila@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3AxMvZggKCx4MGIMN494AIIAF8.6IG4F8R.58HH88FCH4LI.ILA@flex--smostafa.bounces.google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fepzNRcx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s1Xnh-000640-4I; Mon, 29 Apr 2024 16:40:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1s1Xnf-00063g-E1; Mon, 29 Apr 2024 16:40:35 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1s1Xna-00032r-Nb; Mon, 29 Apr 2024 16:40:35 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-61804067da0so46667597b3.0; 
+ Mon, 29 Apr 2024 13:40:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1714361091; x=1714965891; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:from:subject:message-id:references
-         :mime-version:in-reply-to:date:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ZpCcezp9/fTsowCTsySf9fmY/aXn95QjnE0/b0e/YVQ=;
-        b=YenYEeDuLbFntEuICPrDIGDQ7MHr+iJDl5esNmt8pRACIKvynqWba6VnTWIo9j8VuV
-         bUulAcSk1YYOYFt3LYpvuAONnitdkszzObINuUHkKsQdAxhbTTEdKGkzhPEBv+hmle+j
-         M5BcnNCKgltOll+o/cMX39U2gyHaTbBc8Rt6BfyQbvOCcoS7nhpCmYqlxX7LORQviDbP
-         hXuL2YDeghnjVgNG0MjoDs9JXKXjNQZ5FZu0ZlkDo15p1JmtC+rCAbbiYgX5noBLUu8L
-         +YD2EqoG6NF+gBGQtWdjjPllfQl3Vihif9KHXkZU3LaCuTZXy1hbGoXZeGlaMdfXZVXi
-         /tUw==
+ d=gmail.com; s=20230601; t=1714423227; x=1715028027; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=6V/CrElNwNNnlxTPID4N4FF9zSfvE0AWNUJIIWDEKWc=;
+ b=fepzNRcxcXP0bZ04CKKpMdS1HUsc5N+w2v5HKzMvPxATnXKl9vyfzO6jfBIDyoMJQN
+ nLrenHIj5ZpIuSJgiFIotx6ahiqCZWG+f+pZgXclx66MSNGsAAy2pglvURlFHuzJM62G
+ KQU5b4Hq2P+pqUWjsMJEzb44m+plr6k6LIDpaK/4Re1Uv7WGACWwgp3fxotCUPYbZ7Hd
+ DhNAl8X2zWGjpOiWP0+dZHLlmD/8G8MTHWBmCCB1yCmeBMdDdjCkkXHx07kfABIo8rja
+ qKsiLE+f8yrwmRKAcNtue0T2vjD0AkUGNBPLY9Iwi22d9gHvt3/IAv/p5knutgyU8Nzd
+ htAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714361091; x=1714965891;
-        h=content-transfer-encoding:cc:to:from:subject:message-id:references
-         :mime-version:in-reply-to:date:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=ZpCcezp9/fTsowCTsySf9fmY/aXn95QjnE0/b0e/YVQ=;
-        b=pVHmJ8LHCIuHrGrEO6iDF/X3YpfZ0euZRbi/2zhCRqlJK+pHr79Ajpnpg+B9P48+BA
-         32WVU2u+eF+VBqaZJykYtvbY4IcUcEpcvwUrSfGLWxQE0oY+Fy2OwMZ+hw0/f2LTslo5
-         FyVqbmoEGhx+2F1g8tbcbrggKk5rTe5no/fJssk/AIDZP3LoSvscAs091cWwW/paszd6
-         A1WeW//MZ/8/iCY8kzJscEl9yDnTTg1Ia/VQ/YzKR3DauBOCJDWjPIO2EHbI2XhSu27V
-         tAmAcXL1hABQ95hgY4NNcWTBT1V+bv4dHPN1miAvibVrwFLjLclkgDwhvM+VTplc0A78
-         lPpg==
-X-Forwarded-Encrypted: i=1; AJvYcCUMzJXuQoUrvUyXOAOI5vZ1hBwEFOyNFRFUN17Ak5HwyAb0uhPlckh0uIGKoC7WMFv17+LM83D5M4rIpuf+YJIgCv9MltP8
-X-Gm-Message-State: AOJu0YyxYQYzNPZ/f22cnTQb7kRGbIlpckPuZWz8bGs/c2LhqqwGWM0U
-	PRTOePKD+DKZsQ1WCNSskRi1PyjKxjJBGPfRAvfbfGZVwX69+enDVY26fRuVDK6tiqzrt81fiye
-	zBZVAdql4lQ==
-X-Google-Smtp-Source: AGHT+IFlmFvm8bFLPkRmQqZHSTw5edCekNmbTGPI6RjgH4IB4gxI0vAC1L48k37Wl9JBTfaWcoeZ653OKbEgJQ==
-X-Received: from mostafa.c.googlers.com ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
- (user=smostafa job=sendgmr) by 2002:a05:600c:2294:b0:418:16b2:a3a4 with SMTP
- id 20-20020a05600c229400b0041816b2a3a4mr41283wmf.3.1714361091028; Sun, 28 Apr
- 2024 20:24:51 -0700 (PDT)
-Date: Mon, 29 Apr 2024 03:23:52 +0000
-In-Reply-To: <20240429032403.74910-1-smostafa@google.com>
-Mime-Version: 1.0
-References: <20240429032403.74910-1-smostafa@google.com>
-X-Mailer: git-send-email 2.44.0.769.g3c40516874-goog
-Message-ID: <20240429032403.74910-9-smostafa@google.com>
-Subject: [RFC PATCH v3 08/18] hw/arm/smmu-common: Add support for nested TLB
-From: Mostafa Saleh <smostafa@google.com>
-To: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
-	qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org, 
-	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org, 
-	marcin.juszkiewicz@linaro.org, Mostafa Saleh <smostafa@google.com>
+ d=1e100.net; s=20230601; t=1714423227; x=1715028027;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=6V/CrElNwNNnlxTPID4N4FF9zSfvE0AWNUJIIWDEKWc=;
+ b=nmAbZwuHeB8HVUb+P1cxFOHdyNUn5PL9veOCMWDd2xbWNKEaGA7W8ExDtMobhW34Ir
+ Wq34UbgefKp50N0/R6OMrYSrHuacP2JFQRdAZYj/CONiwvRhqF26flaQ307iziDoAwid
+ GFdWeeTRnsrrEHYgC4H4nR0peZbRjyCjqEs7MmQJWpRdDosVtn36iFTLY0vly1wpRqWN
+ NO09AD/Aaa0YW4Ap1lgsuIpsIYvxfbXv0Dmsutji1nsC4R0pN6tHIRjHvjmmyiLS5Lrh
+ a0gAGVakT1b9b+zO6MH113Q/QQPrmbYRdfKuNfI02G8WNuXVjr2hQvpN+szgbZoEcKuB
+ osUg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXhsGI2SFPt3m3Gw6HtLOj2J1SsJqH+RQL2x+nQsgiirZhoQ2UxpJhuG9Y3FV3q0t1f5JrzB8JaNPVcYDRgOFkbEXefD9Jq/8nEq6I/ouoaN0dkS4TNPXr12SI/NWYjzEqXypaWBPi8MS6XUXmN2uZ/bCY=
+X-Gm-Message-State: AOJu0Yy1nI+GjvBzUdZorU81VCIW9iuhvvfxj1BXZ6ih+rNSPY45tnIf
+ PX5Nn9c46yoc0w4NioBS3Ct6tyPZAyqGwWTLSuQODZDvJSlMVwoT9JqW6kU5lJIkFuj+4jZuSWf
+ +oVak1cuuqoE/QGDvGzINI0EtzVs=
+X-Received: by 2002:a05:690c:6c82:b0:615:187:541d with SMTP id
+ is2-20020a05690c6c8200b006150187541dmr8792070ywb.24.1714423227372; Mon, 29
+ Apr 2024 13:40:27 -0700 (PDT)
+MIME-Version: 1.0
+References: <20240415151845.1564201-1-peter.maydell@linaro.org>
+ <CAFEAcA86Frw=GcWdjOgXsbP+9dgGjQpxP79k=nKshPm9LK0QVQ@mail.gmail.com>
+ <CABtshVRrPv8uUuX3C2k1BPkS4-_0HQH6aKiMFmLr1B1bck-+Pg@mail.gmail.com>
+In-Reply-To: <CABtshVRrPv8uUuX3C2k1BPkS4-_0HQH6aKiMFmLr1B1bck-+Pg@mail.gmail.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Mon, 29 Apr 2024 22:40:16 +0200
+Message-ID: <CAPan3Wp7jzm+ErEi0LR+F0acOggt94FPfJCYb-VEUGriiZnPtw@mail.gmail.com>
+Subject: Re: [PATCH] tests/avocado: update sunxi kernel from armbian to 6.6.16
+To: Strahinja Jankovic <strahinjapjankovic@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, 
+ qemu-stable@nongnu.org, Beniamino Galvani <b.galvani@gmail.com>
+Content-Type: multipart/alternative; boundary="0000000000007660100617424386"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-yw1-x1133.google.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, MIME_BOUND_DIGITS_15=0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xi3tYYh7WJAW
+
+--0000000000007660100617424386
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: GahxOMFejgM0
 
-This patch adds support for nested(combined) TLB entries.
-The main function combine_tlb() is not used here but in the next
-patches, but to simplify the patches it is introduced first.
+Hi Peter, Strahinja,
 
-Main changes:
-1) New entry added in the TLB, parent_perm, for nested TLB, holds the
-   stage-2 permission, this can be used to know the origin of a
-   permission fault from a cached entry as caching the =E2=80=9Cand=E2=80=
-=9D of the
-   permissions loses this information.
+I can confirm that the orangepi-pc and cubieboard based tests are working
+OK using the newer kernel 6.6.16:
 
-   SMMUPTWEventInfo is used to hold information about PTW faults so
-   the event can be populated, the value of stage (which maps to S2
-   in the event) used to be set based on the current stage for TLB
-   permission faults, however with the parent_perm, it is now set
-   based on which perm has the missing permission
+  $ ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes
+./build/pyvenv/bin/avocado --show=3Dapp,console run -t machine:orangepi-pc =
+-t
+machine:cubieboard tests/avocado/boot_linux_console.py
+  ...
+  RESULTS    : PASS 7 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 |
+CANCEL 1
+  JOB TIME   : 177.65 s
 
-   When nesting is not enabled it has the same value as perm which
-   doesn't change the logic.
+So for this patch:
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
-2) As combined TLB implementation is used, the combination logic
-   chooses:
-   - tg and level from the entry which has the smallest addr_mask.
-   - Based on that the iova that would be cached is recalculated.
-   - Translated_addr is chosen from stage-2.
+About the BootLinuxConsole.test_arm_orangepi_bionic_20_08 test, I'd be
+happy to provide a patch to revive that test.
+Since that test is no longer working without having the image available,
+this could also be a good moment to re-consider if armbian is really the
+best input for testing
+the orangepi-pc board. The image is relatively larger and slower compared
+to other images, like the two openwrt based tests for cubieboard and bpim2u=
+.
 
-Signed-off-by: Mostafa Saleh <smostafa@google.com>
----
- hw/arm/smmu-common.c         | 32 ++++++++++++++++++++++++++++----
- include/hw/arm/smmu-common.h |  1 +
- 2 files changed, 29 insertions(+), 4 deletions(-)
+After some searching I've found that Openwrt also has orangepi-pc support:
+  https://openwrt.org/toh/xunlong/orange_pi_pc
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 21982621c0..0d6945fa54 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -394,7 +394,7 @@ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
-         tlbe->entry.translated_addr =3D gpa;
-         tlbe->entry.iova =3D iova & ~mask;
-         tlbe->entry.addr_mask =3D mask;
--        tlbe->entry.perm =3D PTE_AP_TO_PERM(ap);
-+        tlbe->parent_perm =3D tlbe->entry.perm =3D PTE_AP_TO_PERM(ap);
-         tlbe->level =3D level;
-         tlbe->granule =3D granule_sz;
-         return 0;
-@@ -515,7 +515,7 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
-         tlbe->entry.translated_addr =3D gpa;
-         tlbe->entry.iova =3D ipa & ~mask;
-         tlbe->entry.addr_mask =3D mask;
--        tlbe->entry.perm =3D s2ap;
-+        tlbe->parent_perm =3D tlbe->entry.perm =3D s2ap;
-         tlbe->level =3D level;
-         tlbe->granule =3D granule_sz;
-         return 0;
-@@ -530,6 +530,27 @@ error:
-     return -EINVAL;
- }
-=20
-+/* combine 2 TLB entries and return in tlbe in nested config. */
-+static void __attribute__((unused)) combine_tlb(SMMUTLBEntry *tlbe,
-+                                                SMMUTLBEntry *tlbe_s2,
-+                                                dma_addr_t iova,
-+                                                SMMUTransCfg *cfg)
-+{
-+    if (tlbe_s2->entry.addr_mask < tlbe->entry.addr_mask) {
-+        tlbe->entry.addr_mask =3D tlbe_s2->entry.addr_mask;
-+        tlbe->granule =3D tlbe_s2->granule;
-+        tlbe->level =3D tlbe_s2->level;
-+    }
-+
-+    tlbe->entry.translated_addr =3D CACHED_ENTRY_TO_ADDR(tlbe_s2,
-+                                    tlbe->entry.translated_addr);
-+
-+    tlbe->entry.iova =3D iova & ~tlbe->entry.addr_mask;
-+    /* parent_perm has s2 perm while perm has s1 perm. */
-+    tlbe->parent_perm =3D tlbe_s2->entry.perm;
-+    return;
-+}
-+
- /**
-  * smmu_ptw - Walk the page tables for an IOVA, according to @cfg
-  *
-@@ -607,9 +628,12 @@ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransC=
-fg *cfg, dma_addr_t addr,
-=20
-     cached_entry =3D smmu_iotlb_lookup(bs, cfg, &tt_combined, aligned_addr=
-);
-     if (cached_entry) {
--        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm & IOMMU_WO)) {
-+        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm &
-+            cached_entry->parent_perm & IOMMU_WO)) {
-             info->type =3D SMMU_PTW_ERR_PERMISSION;
--            info->stage =3D cfg->stage;
-+            info->stage =3D !(cached_entry->entry.perm & IOMMU_WO) ?
-+                          SMMU_STAGE_1 :
-+                          SMMU_STAGE_2;
-             return NULL;
-         }
-         return cached_entry;
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 09d3b9e734..1db566d451 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -77,6 +77,7 @@ typedef struct SMMUTLBEntry {
-     IOMMUTLBEntry entry;
-     uint8_t level;
-     uint8_t granule;
-+    IOMMUAccessFlags parent_perm;
- } SMMUTLBEntry;
-=20
- /* Stage-2 configuration. */
+That image works fine with our emulated orangepi-pc board:
+
+$ qemu-system-arm -M orangepi-pc -sd
+openwrt-23.05.0-sunxi-cortexa7-xunlong_orangepi-pc-ext4-sdcard.img
+-nographic
+U-Boot SPL 2020.07-OpenWrt-r23497-6637af95aa (Oct 09 2023 - 21:45:35 +0000)
+DRAM: 1024 MiB
+Failed to set core voltage! Can't set CPU frequency
+Trying to boot from MMC1
+
+
+U-Boot 2020.07-OpenWrt-r23497-6637af95aa (Oct 09 2023 - 21:45:35 +0000)
+Allwinner Technology
+
+CPU:   Allwinner H3 (SUN8I 0000)
+Model: Xunlong Orange Pi PC
+...
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 5.15.134 (builder@buildhost)
+(arm-openwrt-linux-muslgnueabi-gcc (OpenWrt GCC 12.3.0 r23497-6637af95aa)
+12.3.0, GNU ld (GNU Binutils) 2.40.0) #0 SMP Mon Oct 9 21:45:35 2023
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7),
+cr=3D30c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing
+instruction cache
+...
+BusyBox v1.36.1 (2023-10-09 21:45:35 UTC) built-in shell (ash)
+
+  _______                     ________        __
+ |       |.-----.-----.-----.|  |  |  |.----.|  |_
+ |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+ |_______||   __|_____|__|__||________||__|  |____|
+          |__| W I R E L E S S   F R E E D O M
+ -----------------------------------------------------
+ OpenWrt 23.05.0, r23497-6637af95aa
+ -----------------------------------------------------
+=3D=3D=3D WARNING! =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+There is no root password defined on this device!
+Use the "passwd" command to set up a new password
+in order to prevent unauthorized SSH logins.
+--------------------------------------------------
+root@(none):/# uname -a
+Linux (none) 5.15.134 #0 SMP Mon Oct 9 21:45:35 2023 armv7l GNU/Linux
+
+Using openwrt also for the orangepi-pc test instead of armbian also gives
+some consistency between the various tests, to some degree. What are you
+opinions on this?
+
+Regards,
+Niek
+
+
+On Fri, Apr 26, 2024 at 12:24=E2=80=AFAM Strahinja Jankovic <
+strahinjapjankovic@gmail.com> wrote:
+
+> Hi Peter,
+>
+> I ran the avocado tests and this patch looks good to me.
+> The only comment I have would be that the `test_arm-Orangepi_bionic_20_08=
+`
+> is not executed anymore since the image is not available, but I guess tha=
+t
+> can be another patch.
+>
+>
+>
+> On Thu, Apr 25, 2024 at 9:31=E2=80=AFPM Peter Maydell <peter.maydell@lina=
+ro.org>
+> wrote:
+>
+>> Whoops, forgot to cc the allwinner maintainers/reviewers on this.
+>> Ping for review, please?
+>>
+>> thanks
+>> -- PMM
+>>
+>> On Mon, 15 Apr 2024 at 16:18, Peter Maydell <peter.maydell@linaro.org>
+>> wrote:
+>> >
+>> > The Linux kernel 5.10.16 binary for sunxi has been removed from
+>> > apt.armbian.com. This means that the avocado tests for these machines
+>> > will be skipped (status CANCEL) if the old binary isn't present in
+>> > the avocado cache.
+>> >
+>> > Update to 6.6.16, in the same way we did in commit e384db41d8661
+>> > when we moved to 5.10.16 in 2021.
+>> >
+>> > Cc: qemu-stable@nongnu.org
+>> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2284
+>> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> > ---
+>> > At this point in the release cycle I don't think I really want
+>> > to put this into 9.0, though I could just about squeeze it in.
+>> >
+>> > cc'ing stable as an FYI -- since the tests fall back to the
+>> > CANCEL status this doesn't break CI, so it's not a requirement
+>> > to backport to any stable branches. But it would probably be
+>> > preferable to get the coverage back on the stable branches so
+>> > we can detect if we get something wrong on a backport of a
+>> > patch that affects these machines.
+>> > ---
+>> >  tests/avocado/boot_linux_console.py | 70 ++++++++++++++--------------=
+-
+>> >  tests/avocado/replay_kernel.py      |  8 ++--
+>> >  2 files changed, 39 insertions(+), 39 deletions(-)
+>> >
+>> > diff --git a/tests/avocado/boot_linux_console.py
+>> b/tests/avocado/boot_linux_console.py
+>> > index 989b65111c0..d0ab5aaa83a 100644
+>> > --- a/tests/avocado/boot_linux_console.py
+>> > +++ b/tests/avocado/boot_linux_console.py
+>> > @@ -646,12 +646,12 @@ def test_arm_cubieboard_initrd(self):
+>> >          :avocado: tags=3Daccel:tcg
+>> >          """
+>> >          deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+>> > -
+>>  'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
+>> > -        deb_hash =3D '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+>> > +
+>>  'linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb')
+>> > +        deb_hash =3D 'f7c3c8c5432f765445dc6e7eab02f3bbe668256b'
+>> >          deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+>> >          kernel_path =3D self.extract_from_deb(deb_path,
+>> > -
+>> '/boot/vmlinuz-5.10.16-sunxi')
+>> > -        dtb_path =3D
+>> '/usr/lib/linux-image-current-sunxi/sun4i-a10-cubieboard.dtb'
+>> > +
+>> '/boot/vmlinuz-6.6.16-current-sunxi')
+>> > +        dtb_path =3D
+>> '/usr/lib/linux-image-6.6.16-current-sunxi/sun4i-a10-cubieboard.dtb'
+>> >          dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+>> >          initrd_url =3D ('https://github.com/groeck/linux-build-test/r=
+aw/
+>> '
+>> >
+>> '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
+>> > @@ -690,12 +690,12 @@ def test_arm_cubieboard_sata(self):
+>> >          :avocado: tags=3Daccel:tcg
+>> >          """
+>> >          deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+>> > -
+>>  'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
+>> > -        deb_hash =3D '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+>> > +
+>>  'linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb')
+>> > +        deb_hash =3D 'f7c3c8c5432f765445dc6e7eab02f3bbe668256b'
+>> >          deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+>> >          kernel_path =3D self.extract_from_deb(deb_path,
+>> > -
+>> '/boot/vmlinuz-5.10.16-sunxi')
+>> > -        dtb_path =3D
+>> '/usr/lib/linux-image-current-sunxi/sun4i-a10-cubieboard.dtb'
+>> > +
+>> '/boot/vmlinuz-6.6.16-current-sunxi')
+>> > +        dtb_path =3D
+>> '/usr/lib/linux-image-6.6.16-current-sunxi/sun4i-a10-cubieboard.dtb'
+>> >          dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+>> >          rootfs_url =3D ('https://github.com/groeck/linux-build-test/r=
+aw/
+>> '
+>> >
+>> '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
+>> > @@ -872,13 +872,13 @@ def test_arm_bpim2u(self):
+>> >          :avocado: tags=3Dmachine:bpim2u
+>> >          :avocado: tags=3Daccel:tcg
+>> >          """
+>> > -        deb_url =3D ('
+>> https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/'
+>> > -                   'linux-image-current-sunxi_21.02.2_armhf.deb')
+>> > -        deb_hash =3D '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+>> > +        deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+>> > +
+>>  'linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb')
+>> > +        deb_hash =3D 'f7c3c8c5432f765445dc6e7eab02f3bbe668256b'
+>> >          deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+>> >          kernel_path =3D self.extract_from_deb(deb_path,
+>> > -
+>> '/boot/vmlinuz-5.10.16-sunxi')
+>> > -        dtb_path =3D ('/usr/lib/linux-image-current-sunxi/'
+>> > +
+>> '/boot/vmlinuz-6.6.16-current-sunxi')
+>> > +        dtb_path =3D ('/usr/lib/linux-image-6.6.16-current-sunxi/'
+>> >                      'sun8i-r40-bananapi-m2-ultra.dtb')
+>> >          dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+>> >
+>> > @@ -899,13 +899,13 @@ def test_arm_bpim2u_initrd(self):
+>> >          :avocado: tags=3Daccel:tcg
+>> >          :avocado: tags=3Dmachine:bpim2u
+>> >          """
+>> > -        deb_url =3D ('
+>> https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/'
+>> > -                   'linux-image-current-sunxi_21.02.2_armhf.deb')
+>> > -        deb_hash =3D '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+>> > +        deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+>> > +
+>>  'linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb')
+>> > +        deb_hash =3D 'f7c3c8c5432f765445dc6e7eab02f3bbe668256b'
+>> >          deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+>> >          kernel_path =3D self.extract_from_deb(deb_path,
+>> > -
+>> '/boot/vmlinuz-5.10.16-sunxi')
+>> > -        dtb_path =3D ('/usr/lib/linux-image-current-sunxi/'
+>> > +
+>> '/boot/vmlinuz-6.6.16-current-sunxi')
+>> > +        dtb_path =3D ('/usr/lib/linux-image-6.6.16-current-sunxi/'
+>> >                      'sun8i-r40-bananapi-m2-ultra.dtb')
+>> >          dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+>> >          initrd_url =3D ('https://github.com/groeck/linux-build-test/r=
+aw/
+>> '
+>> > @@ -946,13 +946,13 @@ def test_arm_bpim2u_gmac(self):
+>> >          """
+>> >          self.require_netdev('user')
+>> >
+>> > -        deb_url =3D ('
+>> https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/'
+>> > -                   'linux-image-current-sunxi_21.02.2_armhf.deb')
+>> > -        deb_hash =3D '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+>> > +        deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+>> > +
+>>  'linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb')
+>> > +        deb_hash =3D 'f7c3c8c5432f765445dc6e7eab02f3bbe668256b'
+>> >          deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+>> >          kernel_path =3D self.extract_from_deb(deb_path,
+>> > -
+>> '/boot/vmlinuz-5.10.16-sunxi')
+>> > -        dtb_path =3D ('/usr/lib/linux-image-current-sunxi/'
+>> > +
+>> '/boot/vmlinuz-6.6.16-current-sunxi')
+>> > +        dtb_path =3D ('/usr/lib/linux-image-6.6.16-current-sunxi/'
+>> >                      'sun8i-r40-bananapi-m2-ultra.dtb')
+>> >          dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+>> >          rootfs_url =3D ('
+>> http://storage.kernelci.org/images/rootfs/buildroot/'
+>> > @@ -1049,12 +1049,12 @@ def test_arm_orangepi(self):
+>> >          :avocado: tags=3Daccel:tcg
+>> >          """
+>> >          deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+>> > -
+>>  'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
+>> > -        deb_hash =3D '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+>> > +
+>>  'linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb')
+>> > +        deb_hash =3D 'f7c3c8c5432f765445dc6e7eab02f3bbe668256b'
+>> >          deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+>> >          kernel_path =3D self.extract_from_deb(deb_path,
+>> > -
+>> '/boot/vmlinuz-5.10.16-sunxi')
+>> > -        dtb_path =3D
+>> '/usr/lib/linux-image-current-sunxi/sun8i-h3-orangepi-pc.dtb'
+>> > +
+>> '/boot/vmlinuz-6.6.16-current-sunxi')
+>> > +        dtb_path =3D
+>> '/usr/lib/linux-image-6.6.16-current-sunxi/sun8i-h3-orangepi-pc.dtb'
+>> >          dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+>> >
+>> >          self.vm.set_console()
+>> > @@ -1075,12 +1075,12 @@ def test_arm_orangepi_initrd(self):
+>> >          :avocado: tags=3Dmachine:orangepi-pc
+>> >          """
+>> >          deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+>> > -
+>>  'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
+>> > -        deb_hash =3D '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+>> > +
+>>  'linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb')
+>> > +        deb_hash =3D 'f7c3c8c5432f765445dc6e7eab02f3bbe668256b'
+>> >          deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+>> >          kernel_path =3D self.extract_from_deb(deb_path,
+>> > -
+>> '/boot/vmlinuz-5.10.16-sunxi')
+>> > -        dtb_path =3D
+>> '/usr/lib/linux-image-current-sunxi/sun8i-h3-orangepi-pc.dtb'
+>> > +
+>> '/boot/vmlinuz-6.6.16-current-sunxi')
+>> > +        dtb_path =3D
+>> '/usr/lib/linux-image-6.6.16-current-sunxi/sun8i-h3-orangepi-pc.dtb'
+>> >          dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+>> >          initrd_url =3D ('https://github.com/groeck/linux-build-test/r=
+aw/
+>> '
+>> >
+>> '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
+>> > @@ -1121,12 +1121,12 @@ def test_arm_orangepi_sd(self):
+>> >          self.require_netdev('user')
+>> >
+>> >          deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+>> > -
+>>  'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
+>> > -        deb_hash =3D '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+>> > +
+>>  'linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb')
+>> > +        deb_hash =3D 'f7c3c8c5432f765445dc6e7eab02f3bbe668256b'
+>> >          deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+>> >          kernel_path =3D self.extract_from_deb(deb_path,
+>> > -
+>> '/boot/vmlinuz-5.10.16-sunxi')
+>> > -        dtb_path =3D
+>> '/usr/lib/linux-image-current-sunxi/sun8i-h3-orangepi-pc.dtb'
+>> > +
+>> '/boot/vmlinuz-6.6.16-current-sunxi')
+>> > +        dtb_path =3D
+>> '/usr/lib/linux-image-6.6.16-current-sunxi/sun8i-h3-orangepi-pc.dtb'
+>> >          dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+>> >          rootfs_url =3D ('
+>> http://storage.kernelci.org/images/rootfs/buildroot/'
+>> >
+>> 'buildroot-baseline/20221116.0/armel/rootfs.ext2.xz')
+>> > diff --git a/tests/avocado/replay_kernel.py
+>> b/tests/avocado/replay_kernel.py
+>> > index 10d99403a4c..0474f7b7c8e 100644
+>> > --- a/tests/avocado/replay_kernel.py
+>> > +++ b/tests/avocado/replay_kernel.py
+>> > @@ -203,12 +203,12 @@ def test_arm_cubieboard_initrd(self):
+>> >          :avocado: tags=3Dmachine:cubieboard
+>> >          """
+>> >          deb_url =3D ('https://apt.armbian.com/pool/main/l/'
+>> > -
+>>  'linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb')
+>> > -        deb_hash =3D '9fa84beda245cabf0b4fa84cf6eaa7738ead1da0'
+>> > +
+>>  'linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb')
+>> > +        deb_hash =3D 'f7c3c8c5432f765445dc6e7eab02f3bbe668256b'
+>> >          deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
+>> >          kernel_path =3D self.extract_from_deb(deb_path,
+>> > -
+>> '/boot/vmlinuz-5.10.16-sunxi')
+>> > -        dtb_path =3D
+>> '/usr/lib/linux-image-current-sunxi/sun4i-a10-cubieboard.dtb'
+>> > +
+>> '/boot/vmlinuz-6.6.16-current-sunxi')
+>> > +        dtb_path =3D
+>> '/usr/lib/linux-image-6.6.16-current-sunxi/sun4i-a10-cubieboard.dtb'
+>> >          dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
+>> >          initrd_url =3D ('https://github.com/groeck/linux-build-test/r=
+aw/
+>> '
+>> >
+>> '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
+>> > --
+>> > 2.34.1
+>> >
+>>
+>
+> Reviewed-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+>
+>
+> Best regards,
+> Strahinja
+>
+>
+
 --=20
-2.44.0.769.g3c40516874-goog
+Niek Linnenbank
+
+--0000000000007660100617424386
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Peter, Strahinja,</div><div><br></div><div>I can c=
+onfirm that the orangepi-pc and cubieboard based tests are working OK using=
+ the newer kernel 6.6.16:</div><div><br></div><div>=C2=A0 $ ARMBIAN_ARTIFAC=
+TS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes ./build/pyvenv/bin/avocad=
+o --show=3Dapp,console run -t machine:orangepi-pc -t machine:cubieboard tes=
+ts/avocado/boot_linux_console.py</div><div>=C2=A0 ...</div><div>=C2=A0 RESU=
+LTS =C2=A0 =C2=A0: PASS 7 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT =
+0 | CANCEL 1<br>=C2=A0 JOB TIME =C2=A0 : 177.65 s</div><div><br></div><div>=
+So for this patch:</div><div>Reviewed-by: Niek Linnenbank &lt;<a href=3D"ma=
+ilto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</div><div>T=
+ested-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">n=
+ieklinnenbank@gmail.com</a>&gt;<br></div><div><br></div><div>About the Boot=
+LinuxConsole.test_arm_orangepi_bionic_20_08 test, I&#39;d be happy to provi=
+de a patch to revive that test.<br></div><div>Since that test is no longer =
+working without having the image available, this could also be a good momen=
+t to re-consider if armbian is really the best input for testing</div><div>=
+the orangepi-pc board. The image is relatively larger and slower compared t=
+o other images, like the two openwrt based tests for cubieboard and bpim2u.=
+</div><div><br></div><div>After some searching I&#39;ve found that Openwrt =
+also has orangepi-pc support:</div><div>=C2=A0 <a href=3D"https://openwrt.o=
+rg/toh/xunlong/orange_pi_pc">https://openwrt.org/toh/xunlong/orange_pi_pc</=
+a></div><div><br></div><div>That image works fine with our emulated orangep=
+i-pc board:</div><div><br></div><div>$ qemu-system-arm -M orangepi-pc -sd o=
+penwrt-23.05.0-sunxi-cortexa7-xunlong_orangepi-pc-ext4-sdcard.img -nographi=
+c</div><div>U-Boot SPL 2020.07-OpenWrt-r23497-6637af95aa (Oct 09 2023 - 21:=
+45:35 +0000)<br>DRAM: 1024 MiB<br>Failed to set core voltage! Can&#39;t set=
+ CPU frequency<br>Trying to boot from MMC1<br><br><br>U-Boot 2020.07-OpenWr=
+t-r23497-6637af95aa (Oct 09 2023 - 21:45:35 +0000) Allwinner Technology<br>=
+<br>CPU: =C2=A0 Allwinner H3 (SUN8I 0000)<br>Model: Xunlong Orange Pi PC</d=
+iv><div>...</div><div>Starting kernel ...<br><br>[ =C2=A0 =C2=A00.000000] B=
+ooting Linux on physical CPU 0x0<br>[ =C2=A0 =C2=A00.000000] Linux version =
+5.15.134 (builder@buildhost) (arm-openwrt-linux-muslgnueabi-gcc (OpenWrt GC=
+C 12.3.0 r23497-6637af95aa) 12.3.0, GNU ld (GNU Binutils) 2.40.0) #0 SMP Mo=
+n Oct 9 21:45:35 2023<br>[ =C2=A0 =C2=A00.000000] CPU: ARMv7 Processor [410=
+fc075] revision 5 (ARMv7), cr=3D30c5387d<br>[ =C2=A0 =C2=A00.000000] CPU: d=
+iv instructions available: patching division code<br>[ =C2=A0 =C2=A00.00000=
+0] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache=
+</div><div>...</div><div>BusyBox v1.36.1 (2023-10-09 21:45:35 UTC) built-in=
+ shell (ash)<br><br>=C2=A0 _______ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ________ =C2=A0 =C2=A0 =C2=A0 =C2=A0__<br>=
+=C2=A0| =C2=A0 =C2=A0 =C2=A0 |.-----.-----.-----.| =C2=A0| =C2=A0| =C2=A0|.=
+----.| =C2=A0|_<br>=C2=A0| =C2=A0 - =C2=A0 || =C2=A0_ =C2=A0| =C2=A0-__| =
+=C2=A0 =C2=A0 || =C2=A0| =C2=A0| =C2=A0|| =C2=A0 _|| =C2=A0 _|<br>=C2=A0|__=
+_____|| =C2=A0 __|_____|__|__||________||__| =C2=A0|____|<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 |__| W I R E L E S S =C2=A0 F R E E D O M<br>=C2=A0---=
+--------------------------------------------------<br>=C2=A0OpenWrt 23.05.0=
+, r23497-6637af95aa<br>=C2=A0----------------------------------------------=
+-------<br>=3D=3D=3D WARNING! =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D<br>There=
+ is no root password defined on this device!<br>Use the &quot;passwd&quot; =
+command to set up a new password<br>in order to prevent unauthorized SSH lo=
+gins.<br>--------------------------------------------------<br>root@(none):=
+/# uname -a<br>Linux (none) 5.15.134 #0 SMP Mon Oct 9 21:45:35 2023 armv7l =
+GNU/Linux</div><div><br></div><div>Using openwrt also for the orangepi-pc t=
+est instead of armbian also gives some consistency between the various test=
+s, to some degree. What are you opinions on this?</div><div><br></div><div>=
+Regards,</div><div>Niek<br></div><div><br></div></div><br><div class=3D"gma=
+il_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Apr 26, 2024 at 12:=
+24=E2=80=AFAM Strahinja Jankovic &lt;<a href=3D"mailto:strahinjapjankovic@g=
+mail.com">strahinjapjankovic@gmail.com</a>&gt; wrote:<br></div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr">Hi =
+Peter,<div><br></div><div>I ran the avocado tests and this patch looks good=
+ to me.</div><div>The only comment I have would be that the `test_arm-Orang=
+epi_bionic_20_08` is not executed anymore since the image is not available,=
+ but I guess that can be another patch.</div><div><br></div><div><br></div>=
+</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
+On Thu, Apr 25, 2024 at 9:31=E2=80=AFPM Peter Maydell &lt;<a href=3D"mailto=
+:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>&g=
+t; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Whoops=
+, forgot to cc the allwinner maintainers/reviewers on this.<br>
+Ping for review, please?<br>
+<br>
+thanks<br>
+-- PMM<br>
+<br>
+On Mon, 15 Apr 2024 at 16:18, Peter Maydell &lt;<a href=3D"mailto:peter.may=
+dell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt; wrote:<=
+br>
+&gt;<br>
+&gt; The Linux kernel 5.10.16 binary for sunxi has been removed from<br>
+&gt; <a href=3D"http://apt.armbian.com" rel=3D"noreferrer" target=3D"_blank=
+">apt.armbian.com</a>. This means that the avocado tests for these machines=
+<br>
+&gt; will be skipped (status CANCEL) if the old binary isn&#39;t present in=
+<br>
+&gt; the avocado cache.<br>
+&gt;<br>
+&gt; Update to 6.6.16, in the same way we did in commit e384db41d8661<br>
+&gt; when we moved to 5.10.16 in 2021.<br>
+&gt;<br>
+&gt; Cc: <a href=3D"mailto:qemu-stable@nongnu.org" target=3D"_blank">qemu-s=
+table@nongnu.org</a><br>
+&gt; Resolves: <a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/228=
+4" rel=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-project/qem=
+u/-/issues/2284</a><br>
+&gt; Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
+o.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+&gt; ---<br>
+&gt; At this point in the release cycle I don&#39;t think I really want<br>
+&gt; to put this into 9.0, though I could just about squeeze it in.<br>
+&gt;<br>
+&gt; cc&#39;ing stable as an FYI -- since the tests fall back to the<br>
+&gt; CANCEL status this doesn&#39;t break CI, so it&#39;s not a requirement=
+<br>
+&gt; to backport to any stable branches. But it would probably be<br>
+&gt; preferable to get the coverage back on the stable branches so<br>
+&gt; we can detect if we get something wrong on a backport of a<br>
+&gt; patch that affects these machines.<br>
+&gt; ---<br>
+&gt;=C2=A0 tests/avocado/boot_linux_console.py | 70 ++++++++++++++---------=
+------<br>
+&gt;=C2=A0 tests/avocado/replay_kernel.py=C2=A0 =C2=A0 =C2=A0 |=C2=A0 8 ++-=
+-<br>
+&gt;=C2=A0 2 files changed, 39 insertions(+), 39 deletions(-)<br>
+&gt;<br>
+&gt; diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_=
+linux_console.py<br>
+&gt; index 989b65111c0..d0ab5aaa83a 100644<br>
+&gt; --- a/tests/avocado/boot_linux_console.py<br>
+&gt; +++ b/tests/avocado/boot_linux_console.py<br>
+&gt; @@ -646,12 +646,12 @@ def test_arm_cubieboard_initrd(self):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Daccel:tcg<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https:/=
+/apt.armbian.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https:/=
+/apt.armbian.com/pool/main/l/</a>&#39;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb&#39;)<=
+br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;9fa84beda245cabf0b4fa84=
+cf6eaa7738ead1da0&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;f7c3c8c5432f765445dc6e7=
+eab02f3bbe668256b&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_ur=
+l, asset_hash=3Ddeb_hash)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_de=
+b(deb_path,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-5.10.16-sunxi&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-cu=
+rrent-sunxi/sun4i-a10-cubieboard.dtb&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-6.6.16-current-sunxi&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-6.=
+6.16-current-sunxi/sun4i-a10-cubieboard.dtb&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(d=
+eb_path, dtb_path)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 initrd_url =3D (&#39;<a href=3D"http=
+s://github.com/groeck/linux-build-test/raw/" rel=3D"noreferrer" target=3D"_=
+blank">https://github.com/groeck/linux-build-test/raw/</a>&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &#39;2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/&#39;<br=
+>
+&gt; @@ -690,12 +690,12 @@ def test_arm_cubieboard_sata(self):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Daccel:tcg<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https:/=
+/apt.armbian.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https:/=
+/apt.armbian.com/pool/main/l/</a>&#39;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb&#39;)<=
+br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;9fa84beda245cabf0b4fa84=
+cf6eaa7738ead1da0&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;f7c3c8c5432f765445dc6e7=
+eab02f3bbe668256b&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_ur=
+l, asset_hash=3Ddeb_hash)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_de=
+b(deb_path,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-5.10.16-sunxi&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-cu=
+rrent-sunxi/sun4i-a10-cubieboard.dtb&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-6.6.16-current-sunxi&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-6.=
+6.16-current-sunxi/sun4i-a10-cubieboard.dtb&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(d=
+eb_path, dtb_path)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rootfs_url =3D (&#39;<a href=3D"http=
+s://github.com/groeck/linux-build-test/raw/" rel=3D"noreferrer" target=3D"_=
+blank">https://github.com/groeck/linux-build-test/raw/</a>&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &#39;2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/&#39;<br=
+>
+&gt; @@ -872,13 +872,13 @@ def test_arm_bpim2u(self):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:bpim2u<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Daccel:tcg<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https://apt.=
+armbian.com/pool/main/l/linux-5.10.16-sunxi/" rel=3D"noreferrer" target=3D"=
+_blank">https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/</a>&#39;<b=
+r>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-image-current-sunxi_21.02.2_armhf.deb&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;9fa84beda245cabf0b4fa84=
+cf6eaa7738ead1da0&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https://apt.=
+armbian.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https://apt.=
+armbian.com/pool/main/l/</a>&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;f7c3c8c5432f765445dc6e7=
+eab02f3bbe668256b&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_ur=
+l, asset_hash=3Ddeb_hash)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_de=
+b(deb_path,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-5.10.16-sunxi&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D (&#39;/usr/lib/linux-image-c=
+urrent-sunxi/&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-6.6.16-current-sunxi&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D (&#39;/usr/lib/linux-image-6=
+.6.16-current-sunxi/&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &#39;sun8i-r40-bananapi-m2-ultra.dtb&#39;)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(d=
+eb_path, dtb_path)<br>
+&gt;<br>
+&gt; @@ -899,13 +899,13 @@ def test_arm_bpim2u_initrd(self):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Daccel:tcg<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:bpim2u<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https://apt.=
+armbian.com/pool/main/l/linux-5.10.16-sunxi/" rel=3D"noreferrer" target=3D"=
+_blank">https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/</a>&#39;<b=
+r>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-image-current-sunxi_21.02.2_armhf.deb&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;9fa84beda245cabf0b4fa84=
+cf6eaa7738ead1da0&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https://apt.=
+armbian.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https://apt.=
+armbian.com/pool/main/l/</a>&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;f7c3c8c5432f765445dc6e7=
+eab02f3bbe668256b&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_ur=
+l, asset_hash=3Ddeb_hash)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_de=
+b(deb_path,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-5.10.16-sunxi&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D (&#39;/usr/lib/linux-image-c=
+urrent-sunxi/&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-6.6.16-current-sunxi&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D (&#39;/usr/lib/linux-image-6=
+.6.16-current-sunxi/&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &#39;sun8i-r40-bananapi-m2-ultra.dtb&#39;)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(d=
+eb_path, dtb_path)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 initrd_url =3D (&#39;<a href=3D"http=
+s://github.com/groeck/linux-build-test/raw/" rel=3D"noreferrer" target=3D"_=
+blank">https://github.com/groeck/linux-build-test/raw/</a>&#39;<br>
+&gt; @@ -946,13 +946,13 @@ def test_arm_bpim2u_gmac(self):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 self.require_netdev(&#39;user&#39;)<=
+br>
+&gt;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https://apt.=
+armbian.com/pool/main/l/linux-5.10.16-sunxi/" rel=3D"noreferrer" target=3D"=
+_blank">https://apt.armbian.com/pool/main/l/linux-5.10.16-sunxi/</a>&#39;<b=
+r>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-image-current-sunxi_21.02.2_armhf.deb&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;9fa84beda245cabf0b4fa84=
+cf6eaa7738ead1da0&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https://apt.=
+armbian.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https://apt.=
+armbian.com/pool/main/l/</a>&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;f7c3c8c5432f765445dc6e7=
+eab02f3bbe668256b&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_ur=
+l, asset_hash=3Ddeb_hash)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_de=
+b(deb_path,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-5.10.16-sunxi&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D (&#39;/usr/lib/linux-image-c=
+urrent-sunxi/&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-6.6.16-current-sunxi&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D (&#39;/usr/lib/linux-image-6=
+.6.16-current-sunxi/&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &#39;sun8i-r40-bananapi-m2-ultra.dtb&#39;)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(d=
+eb_path, dtb_path)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rootfs_url =3D (&#39;<a href=3D"http=
+://storage.kernelci.org/images/rootfs/buildroot/" rel=3D"noreferrer" target=
+=3D"_blank">http://storage.kernelci.org/images/rootfs/buildroot/</a>&#39;<b=
+r>
+&gt; @@ -1049,12 +1049,12 @@ def test_arm_orangepi(self):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Daccel:tcg<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https:/=
+/apt.armbian.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https:/=
+/apt.armbian.com/pool/main/l/</a>&#39;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb&#39;)<=
+br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;9fa84beda245cabf0b4fa84=
+cf6eaa7738ead1da0&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;f7c3c8c5432f765445dc6e7=
+eab02f3bbe668256b&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_ur=
+l, asset_hash=3Ddeb_hash)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_de=
+b(deb_path,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-5.10.16-sunxi&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-cu=
+rrent-sunxi/sun8i-h3-orangepi-pc.dtb&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-6.6.16-current-sunxi&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-6.=
+6.16-current-sunxi/sun8i-h3-orangepi-pc.dtb&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(d=
+eb_path, dtb_path)<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 self.vm.set_console()<br>
+&gt; @@ -1075,12 +1075,12 @@ def test_arm_orangepi_initrd(self):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:orangepi-pc=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https:/=
+/apt.armbian.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https:/=
+/apt.armbian.com/pool/main/l/</a>&#39;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb&#39;)<=
+br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;9fa84beda245cabf0b4fa84=
+cf6eaa7738ead1da0&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;f7c3c8c5432f765445dc6e7=
+eab02f3bbe668256b&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_ur=
+l, asset_hash=3Ddeb_hash)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_de=
+b(deb_path,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-5.10.16-sunxi&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-cu=
+rrent-sunxi/sun8i-h3-orangepi-pc.dtb&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-6.6.16-current-sunxi&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-6.=
+6.16-current-sunxi/sun8i-h3-orangepi-pc.dtb&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(d=
+eb_path, dtb_path)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 initrd_url =3D (&#39;<a href=3D"http=
+s://github.com/groeck/linux-build-test/raw/" rel=3D"noreferrer" target=3D"_=
+blank">https://github.com/groeck/linux-build-test/raw/</a>&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &#39;2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/&#39;<br=
+>
+&gt; @@ -1121,12 +1121,12 @@ def test_arm_orangepi_sd(self):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 self.require_netdev(&#39;user&#39;)<=
+br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https:/=
+/apt.armbian.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https:/=
+/apt.armbian.com/pool/main/l/</a>&#39;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb&#39;)<=
+br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;9fa84beda245cabf0b4fa84=
+cf6eaa7738ead1da0&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;f7c3c8c5432f765445dc6e7=
+eab02f3bbe668256b&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_ur=
+l, asset_hash=3Ddeb_hash)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_de=
+b(deb_path,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-5.10.16-sunxi&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-cu=
+rrent-sunxi/sun8i-h3-orangepi-pc.dtb&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-6.6.16-current-sunxi&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-6.=
+6.16-current-sunxi/sun8i-h3-orangepi-pc.dtb&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(d=
+eb_path, dtb_path)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rootfs_url =3D (&#39;<a href=3D"http=
+://storage.kernelci.org/images/rootfs/buildroot/" rel=3D"noreferrer" target=
+=3D"_blank">http://storage.kernelci.org/images/rootfs/buildroot/</a>&#39;<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &#39;buildroot-baseline/20221116.0/armel/rootfs.ext2.xz&#39;)=
+<br>
+&gt; diff --git a/tests/avocado/replay_kernel.py b/tests/avocado/replay_ker=
+nel.py<br>
+&gt; index 10d99403a4c..0474f7b7c8e 100644<br>
+&gt; --- a/tests/avocado/replay_kernel.py<br>
+&gt; +++ b/tests/avocado/replay_kernel.py<br>
+&gt; @@ -203,12 +203,12 @@ def test_arm_cubieboard_initrd(self):<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 :avocado: tags=3Dmachine:cubieboard<=
+br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;&quot;&quot;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_url =3D (&#39;<a href=3D"https:/=
+/apt.armbian.com/pool/main/l/" rel=3D"noreferrer" target=3D"_blank">https:/=
+/apt.armbian.com/pool/main/l/</a>&#39;<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-5.10.16-sunxi/linux-image-current-sunxi_21.02.2_armhf.deb&#39;)<=
+br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;9fa84beda245cabf0b4fa84=
+cf6eaa7738ead1da0&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+&#39;linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4=
+a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_hash =3D &#39;f7c3c8c5432f765445dc6e7=
+eab02f3bbe668256b&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 deb_path =3D self.fetch_asset(deb_ur=
+l, asset_hash=3Ddeb_hash)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 kernel_path =3D self.extract_from_de=
+b(deb_path,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-5.10.16-sunxi&#39;)<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-cu=
+rrent-sunxi/sun4i-a10-cubieboard.dtb&#39;<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &#39;/boot/vmlinuz-6.6.16-current-sunxi&#39;)<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D &#39;/usr/lib/linux-image-6.=
+6.16-current-sunxi/sun4i-a10-cubieboard.dtb&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dtb_path =3D self.extract_from_deb(d=
+eb_path, dtb_path)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 initrd_url =3D (&#39;<a href=3D"http=
+s://github.com/groeck/linux-build-test/raw/" rel=3D"noreferrer" target=3D"_=
+blank">https://github.com/groeck/linux-build-test/raw/</a>&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &#39;2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/&#39;<br=
+>
+&gt; --<br>
+&gt; 2.34.1<br>
+&gt;<br></blockquote><div><br><span>Reviewed</span>-<span>by</span>: Strahi=
+nja Jankovic &lt;<a href=3D"mailto:strahinja.p.jankovic@gmail.com" target=
+=3D"_blank">strahinja.p.jankovic@gmail.com</a>&gt;=C2=A0<br><br><br>Best re=
+gards,<br>Strahinja</div><div><br></div></div></div>
+</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
+fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"l=
+tr"><div>Niek Linnenbank<br><br></div></div></div>
+
+--0000000000007660100617424386--

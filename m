@@ -1,186 +1,145 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp2835748ejb;
-        Tue, 30 Apr 2024 03:21:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUWslqMPe2QnYcXp9O3ljTe0awbvmCnZFZdnkRgtQeym8feSjlEqGhbgLtbvnKZeBDKSgbwdKmAZGSswwG5x5FxVhcO6Yxp
-X-Google-Smtp-Source: AGHT+IF7Rl1HRb0+39FawPBK/pGk0now8fbInXfWTn42/uTMy1GCeH70plV/gdhlrrIddTJSOY5A
-X-Received: by 2002:a05:6214:258b:b0:6a0:c8c3:7e2e with SMTP id fq11-20020a056214258b00b006a0c8c37e2emr2586760qvb.1.1714472478240;
-        Tue, 30 Apr 2024 03:21:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714472478; cv=none;
+Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp2814069ejb;
+        Tue, 30 Apr 2024 02:40:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXOome1pVjwj9GyCnQEjlHqiuR6idq5HZr6AcKg21JAbfyOZlGhjNKlpFIBuqW5HWMM7qzFP96KHbGYoyvsfrG4DB3KZCzi
+X-Received: by 2002:a17:906:48d4:b0:a58:bd17:f96a with SMTP id d20-20020a17090648d400b00a58bd17f96amr1521463ejt.36.1714470045344;
+        Tue, 30 Apr 2024 02:40:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714470045; cv=none;
         d=google.com; s=arc-20160816;
-        b=uCBoAM+JZyTZs7/MnZDoI0Xv1hp0jffX6uFZi7/sxIzwc7NdhxjBMeszqQP12eg0gA
-         bLSw7Qiq49vgBLmA/4l+URmeyRraV1+QHkwigxltc7D38bqjc8YEV6agmtH+vDZE/J0s
-         5Er5qz9jcU5vjssx1+WklZvu+31/xQ5CeY45BnuPAQ+NWAI172E5LsbnL4pWZLN5nqAu
-         S9vtySPHtAGMvcOaW+FXbpXciwvwWIdWyWEv7zTVfAFnQctYt4RIlEk9arfnMnGEpnK5
-         pqK4tu204yXjVF8QwJVFUx3Aobttp16vnWTx+c2BQKbbGrYgcudXYWhWSnN+KelD/vP+
-         gxEg==
+        b=eG0cSNS6UurrG40dqmxPBwWAIM8TFq+HDP51f/qJ6NzVappGP7hwovlA02smgu3LJ+
+         jz56TZPnhibAWEO3y38HHeuMyQvkMzQ6vUO0tCMgLZI8cu+Gt0VgXFOIx9GSkLZIb9yO
+         s+LMeUbqfH61bxgUVFUOrxI+i6DnRNNpV5GVMl5LMPSqBMOdkXDEafYXCUVzVsPOO+6O
+         oCIUdDlAgMU0YuKX7pWq1OVV/wVMqqrGX6VRnP+JXJxjrricQ8xpda/dorI0kgzYUvcT
+         +iNW6OSyY/4LWN09SXF1gBil3rF/8mI7NLXOLWJa3/f76v5UuoKsSTtasoua1AO4QZwv
+         Ddww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=U4lKWZzDWugm1dHWAmR/3vEfsQYmA3iVl1bRbOmmAsI=;
-        fh=JEjqrgGFCPhqOi03J5uxzpKG7b+7vJNXZwSUMDbM7X4=;
-        b=uW6yVDVeFJPJMFsesbHeYmld3BAEVwlyDnDCVFrjT2WhsLyh9dv5AvYQn/w/jY62xX
-         XXnIU+27QWn9KD5c45qLtfLDAclqwuVy8FpfTuucuiuuI1x2RuwTrrUFO3tm8VDv877d
-         XNE/5/MxzvC//+N/J9sYda/T5TZMe/z9kIXhz0C26w8FCZJnGeO8r3ZoxOQ8L3QW5qnw
-         PsUdz+MjFElir/XtSc8cPD5qdWTqIQFujDrOt7/Nud3KOQPnfxF/wWtA8rgMTqoQlsfd
-         JM9G2YHt5i4QNITRQucEwi14LYFntfseeaLJHbtsXnTmd6yXzy9P+6cxpEAWnWsEpeLh
-         8wZQ==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=WCW36M2OPMJQEyyFgNdC/dGiDwonm3j21cpSR92e9XQ=;
+        fh=ZZ9+5PrRArRlrXN1PNBN1MR9mosNYdWqTZO6rCqfiU0=;
+        b=lTLiDnouMbIFNVVLrNQC7CeV0EEYHNGPwUx0fyIccllwYQWQhxPn8jb54/Y9Rpa6RW
+         Cg0AwCQx6llM8uxSRgHKq/0JVRw1DIAu6bN7++Xk5bn8P4fNAOWXdgDXbEVdSTqnqfrp
+         atW0uLpiS2ANHZZO/7+ZvMqQGuz3uWWoEPjIRweODImf7w/1YWFKz6HqEAItz3DK+ez5
+         WTbDBfMjcQfALtyL8xRppjAAIg6HaaRvtqZGTv4h0K3JAb6a7QJlF9FgOc9eLd0JEjQ7
+         pM4duSC10VGb3txreMf1Wii65tWm2GpVtwu7kKPO6alr3Nx2a9NrjtdgV3avfGNswmj+
+         d0wQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JFI7MSOW;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id fo5-20020ad45f05000000b0069b5a4e6c7bsi29361113qvb.439.2024.04.30.03.21.17
+       dkim=pass header.i=@linaro.org header.s=google header.b=aL9i8wsa;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ku16-20020a170907789000b00a58ff191bd4sor1244022ejc.10.2024.04.30.02.40.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Apr 2024 03:21:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Tue, 30 Apr 2024 02:40:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JFI7MSOW;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1714472477;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=U4lKWZzDWugm1dHWAmR/3vEfsQYmA3iVl1bRbOmmAsI=;
-	b=JFI7MSOWH9jG/ES8S1xvua7cSL3LrCsxzrgDoBuMcOGtLMwBFn6quso5mjEZvF2zy2Dpoz
-	y43BOVc3WugwJS8x4tBwWmWGpSN5/YBuUAo2wf7fOdZ1NAAEayzL42DAMosdXYicDS3Kmv
-	zzEO2oc38IUQCTXj0PI/vnB3rj2+jzg=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-551-jlJx2V0qNMq6cZzOXoqiNg-1; Tue, 30 Apr 2024 06:21:12 -0400
-X-MC-Unique: jlJx2V0qNMq6cZzOXoqiNg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 724FA88E922;
-	Tue, 30 Apr 2024 10:21:11 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.59])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id A51871C060D0;
-	Tue, 30 Apr 2024 10:21:09 +0000 (UTC)
-Date: Tue, 30 Apr 2024 11:21:07 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>, devel@lists.libvirt.org,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>, qemu-s390x@nongnu.org,
-	qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-	Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>
+       dkim=pass header.i=@linaro.org header.s=google header.b=aL9i8wsa;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1714470045; x=1715074845; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=WCW36M2OPMJQEyyFgNdC/dGiDwonm3j21cpSR92e9XQ=;
+        b=aL9i8wsaAvUaqCTU2VNCWxJu/11oMlaINkkZU1c6JUcIBTNFrl6SC9+YBkA24M6ccf
+         Jvoo/YkYh6xFPuAZu3PX1nVozUx0IoCty/vJ4zg6eLzfnXZc2b5NJ9fpr1RzpKnC0rJ0
+         O2ORUN9Nlj50NNqLFJwitc4XXBVbWO7iPgOg3kje9plEvlN3sMrJsAER7HdsMSfym1qu
+         VT0wuXghVlescE8FC2/cz4pghqy4WMPZzp2tzubqS6KmVLYGxgMtRFeCHR6fOVWlZbvl
+         UXkoT67UiLsGpr78tbABs96griYM7OZOrtcv25i1lloqg5ebIHXG1MCRBRoV1abvC8+d
+         LJ1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714470045; x=1715074845;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=WCW36M2OPMJQEyyFgNdC/dGiDwonm3j21cpSR92e9XQ=;
+        b=mdkb65kle4bdbyNI2VeHj16cbzXTZibiHkLFz13IoyUXk71Bymf2qnzBDx3c6qDSh2
+         t+Wxpy62Bg2+31WnlGHPGXylTm7b2wjDNCURqTWmjLpuS8BXOpwoeu5gdHsdIY/9f7eF
+         3IKXSR2rJVGO8HSa24bSlItybh01ZSVhCOmpTLBYFHKQfZxCMM1Uy9ozKemC7RRwMpjU
+         blA9og2LmA84ARwgU5ofJVkt/F0hYslqUw6lWq0xbAV3ExFukWj6jiKWEHPrw9tdABxC
+         qqKfgo5rEoMyIulqc+9/VR4VoptkDgNuR8DDCzMimoWRSOzntqdXgvtQnbAeJWtR9MDh
+         5Xtg==
+X-Forwarded-Encrypted: i=1; AJvYcCWtiTJ6Sn/NRZeWjOd5ujk8AikA662kRD2DC0NrCwjE1NBjZUSwlrKTeCeH6eLWONgBqtElaBxebxn4b2XMPmRScEnZSCwx
+X-Gm-Message-State: AOJu0Yz+t9t4JenmO6jT4gCNL4l4ZV5H9vfdJALJ4zy+yw4WL1W/BzTK
+	xbtdvsTn3kqnW/WHWTPuQ7cwykDBT+8PBjkipfkdtyd0J/wGYAUtOKwMl7Hndl9xdg==
+X-Google-Smtp-Source: AGHT+IG7XLmwO7QxuzgXq2SVqqslj4FXwQzCThn2wfkH4A9JCUY6sNp/icquTpaem+8tzcmU+J8LRg==
+X-Received: by 2002:a17:906:5851:b0:a58:7ce0:8e13 with SMTP id h17-20020a170906585100b00a587ce08e13mr1469299ejs.34.1714470044921;
+        Tue, 30 Apr 2024 02:40:44 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] (mab78-h01-176-184-55-179.dsl.sta.abo.bbox.fr. [176.184.55.179])
+        by smtp.gmail.com with ESMTPSA id x10-20020a170906298a00b00a58ed644d6dsm3526332eje.127.2024.04.30.02.40.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 30 Apr 2024 02:40:44 -0700 (PDT)
+Message-ID: <e0e836cf-f080-45f4-a71b-060dd2c90279@linaro.org>
+Date: Tue, 30 Apr 2024 11:40:42 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] docs/about: Automatically deprecate versioned machine
  types older than 6 years
-Message-ID: <ZjDGE9CT-cX1iiGB@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: devel@lists.libvirt.org, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>
 References: <20240430064529.411699-1-thuth@redhat.com>
- <ZjDAGuONZ_Zem3fL@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240430064529.411699-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZjDAGuONZ_Zem3fL@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-X-TUID: ILE5hgVx7DAS
+X-TUID: onhNa0wnN1S/
 
-On Tue, Apr 30, 2024 at 10:55:38AM +0100, Daniel P. Berrangé wrote:
-> On Tue, Apr 30, 2024 at 08:45:29AM +0200, Thomas Huth wrote:
-> > Old machine types often have bugs or work-arounds that affect our
-> > possibilities to move forward with the QEMU code base (see for example
-> > https://gitlab.com/qemu-project/qemu/-/issues/2213 for a bug that likely
-> > cannot be fixed without breaking live migration with old machine types,
-> > or https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg04516.html or
-> > commit ea985d235b86). So instead of going through the process of manually
-> > deprecating old machine types again and again, let's rather add an entry
-> > that can stay, which declares that machine types older than 6 years are
-> > considered as deprecated automatically. Six years should be sufficient to
-> > support the release cycles of most Linux distributions.
-> 
-> Reading this again, I think we're mixing two concepts here.
-> 
-> With this 6 year cut off, we're declaring the actual *removal* date,
-> not the deprecation date.
-> 
-> A deprecation is something that happens prior to removal normally,
-> to give people a warning of /future/ removal, as a suggestion
-> that they stop using it.
-> 
-> If we never set the 'deprecation_reason' on a machine type, then
-> unless someone reads this doc, they'll never realize they are on
-> a deprecated machine.
-> 
-> When it comes to machine types, I see deprecation as a way to tell
-> people they should not deploy a /new/ VM on a machine type, only
-> use it for back compat (incoming migration / restore from saved
-> image) with existing deployed VMs.
-> 
-> If we delete a machine on the 6 year anniversary, then users
-> don't want to be deploying /new/ VMs using that on the
-> 5 year anniversary as it only gives a 1 year upgrade window.
-> 
-> So how long far back do we consider it reasonable for a user
-> to deploy a /new/ VM on an old machine type ? 1 year, 2 years,
-> 3 years ?
-> 
-> 
-> How about picking the half way point ?  3 years ?
-> 
-> ie, set deprecation_reason for any machine that is 3 years
-> old, but declare that our deprecation cycle lasts for
-> 3 years, instead of the normal 1 year, when applied to
-> machine types.
-> 
-> This would give a strong hint that users should get off the
-> old machine type, several years before its finally deleted.
+Hi Thomas,
 
-The m68k/arm archs have a nice macro for defining versions
-that exposes major/minor directly. That would let us
-automatically set the deprecation flag after 3 years,
-avoiding manually writing patches for each release:
+On 30/4/24 08:45, Thomas Huth wrote:
+> Old machine types often have bugs or work-arounds that affect our
+> possibilities to move forward with the QEMU code base (see for example
+> https://gitlab.com/qemu-project/qemu/-/issues/2213 for a bug that likely
+> cannot be fixed without breaking live migration with old machine types,
+> or https://lists.gnu.org/archive/html/qemu-devel/2018-12/msg04516.html or
+> commit ea985d235b86). So instead of going through the process of manually
+> deprecating old machine types again and again, let's rather add an entry
+> that can stay, which declares that machine types older than 6 years are
+> considered as deprecated automatically. Six years should be sufficient to
+> support the release cycles of most Linux distributions.
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 3c93c0c0a6..e40209f60a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -101,6 +101,11 @@ static void arm_virt_compat_set(MachineClass *mc)
-                      arm_virt_compat_len);
- }
- 
-+#define MACHINE_IS_DEPRECATED(major, minor) \
-+    ((QEMU_VERSION_MAJOR - major) > 3 || \
-+     ((QEMU_VERSION_MAJOR - major) == 3 &&      \
-+      (QEMU_VERSION_MINOR - minor) > 0))
-+
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-                                                     void *data) \
-@@ -109,6 +114,9 @@ static void arm_virt_compat_set(MachineClass *mc)
-         arm_virt_compat_set(mc); \
-         virt_machine_##major##_##minor##_options(mc); \
-         mc->desc = "QEMU " # major "." # minor " ARM Virtual Machine"; \
-+        if (MACHINE_IS_DEPRECATED(major, minor)) { \
-+            mc->deprecation_reason = "machine virt-" # major "." # minor " is not recommended for newly deployed VMs"; \
-+        }                                                               \
-         if (latest) { \
-             mc->alias = "virt"; \
-         } \
+Thanks for taking that out of my plate :)
 
-we could easily change other arches to enable the same thing.
+IIRC 6 years was because of some old RHEL version, otherwise could
+5 years be enough? (maybe it could be good enough for this old RHEL
+version as of QEMU v10.0).
 
-Then all we need do manually is the actual deletion. We would make
-it a BUILD_BUG_ON after say 20 releases to force us to remember the
-actual deletion at the 6 year point, without creating an immediate
-build fail in that exact 18th release cycle.
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   docs/about/deprecated.rst | 11 +++++++++++
+>   1 file changed, 11 insertions(+)
+> 
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index 6d595de3b6..fe69e2d44c 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -220,6 +220,17 @@ is a chance the code will bitrot without anyone noticing.
+>   System emulator machines
+>   ------------------------
+>   
+> +Versioned machine types older than 6 years
+> +''''''''''''''''''''''''''''''''''''''''''
+> +
+> +Starting with the release of QEMU 10.0, versioned machine types older than
 
+Why can't we start with QEMU 9.1?
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> +6 years will automatically be considered as deprecated and might be due to
+> +removal without furthor notice. For example, this affects machine types like
+> +pc-i440fx-X.Y, pc-q35-X.Y, pseries-X.Y, s390-ccw-virtio-X.Y or virt-X.Y where
+> +X is the major number and Y is the minor number of the old QEMU version.
+> +If you are still using machine types from QEMU versions older than 6 years,
+> +please update your setting to use a newer versioned machine type instead.
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

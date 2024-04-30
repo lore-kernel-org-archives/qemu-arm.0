@@ -1,161 +1,165 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp3183702ejb;
-        Tue, 30 Apr 2024 11:43:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXtHXwjWie0iRgN3qfZvafncNju+hntsMdgya1K9a4QMyZ2PXNHO+z21ckkZSb+0mFrFz0690A1S/UFpRroRnDMbgm8Ax2v
-X-Google-Smtp-Source: AGHT+IHyfd50PFJOGJcc61mVTid2G+4sh72IzS+rGsjueY0e0TbURxGoghi2rgPE4xP52giA6aAU
-X-Received: by 2002:ad4:4ee1:0:b0:698:ecae:429c with SMTP id dv1-20020ad44ee1000000b00698ecae429cmr181334qvb.56.1714502585994;
-        Tue, 30 Apr 2024 11:43:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714502585; cv=none;
+Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp3184577ejb;
+        Tue, 30 Apr 2024 11:44:51 -0700 (PDT)
+X-Received: by 2002:ac2:42c3:0:b0:51c:5fab:c23d with SMTP id n3-20020ac242c3000000b0051c5fabc23dmr207675lfl.17.1714502690906;
+        Tue, 30 Apr 2024 11:44:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714502690; cv=none;
         d=google.com; s=arc-20160816;
-        b=okXIEZWJooMrE3MLKvPZamKhjSt2xQas2VsApB2Cubf1XxZFculyWpr0RtsUnFkHym
-         lzcfneb+HJ9ox+nI7zDRjolxtPkRiSR1nnzl1RM7ZKynWfux8wwIi84byvTtuRJwZllm
-         6fd5IECRJ7XRYmpz9eapkAMo1wTC98M4ReDpAGT8wTV1IQkcSU+T9eqxwwe2QPf9xACT
-         lbwMLPysNjtMoC+BZPDUUCfntiaxAmCHjbQnOhlhwEEyCnbaGPyiBkhtJTQuSzeSGnoj
-         znK0V9RQ9Q+NldSljj5REx2GdVW1AC3ERoYoU5i52t+LpwT0eUA77iJpBi8BFqJ7t7d0
-         eyDw==
+        b=FAna7/jKgZLPKdFyaHI4dDlqjqGhxaux3DtyTtQzPCxuPdhUJq+9zB16UBhYt3bEl1
+         CVxALPHhCBnYqseJS7zueYD9tHuyDE2X1xmdSzLrYNteRIkE/R5OlP3GD1kh5hoMzY+z
+         sx4VBWil5QEv35qsuEuWvCOwhgs/MMshIa0P3UUiF0KsP4Y0PBvdRv4ace7P7tkhtHoh
+         LZ9aL3GnB9Pb5YpJRirhX4mDmxhYPS+EAk9DDCsmz9bOWPheTZYJzBvmUVZLUZd1JXeu
+         ZMq6oxi1nJqM2YAYRvh0Qi+biwkdD1dj4QkjvPjp+qJYc/BFkmLr+Jv8AWjYtnFK/JwW
+         7usg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=8mCUSCLmgKzNcOyOr98vFPv0pYjXNNAruAUVA2i3+os=;
-        fh=PKodlsZ4sLOulf3vcyB9a9UvxkkwctzJ7UL5PZ8dNXQ=;
-        b=H6bXbKErNwmDaDi27mPaVSgBUz4pqw2ZMsIIAa38lVYlDVULaQLmLwzgsK2GzZCpK5
-         g4RIONg/xsVheAeQwHeHLWnBXkXo6Vpm8oEPA4Ff0dtC6fSceNTo61w/XItrjR3F09AL
-         /78+O6VRaXsX1k0e+BD1kpNI6LyZNjBycMjs1tHoAI0HQC8LhL3IdagbHkTVVeg4dBPD
-         3QALKpHikFiP33lmwevITsStSfjr1cxc3HBN4V7JV4zvW+3mWxiwM8Ff0Qy9jWRNzGga
-         8LDsi6ugO2imU2MGFnbp3/FoCty+wrZnj722JoCZGdOxgdXQPXa0YG6WIeZt6ZSIUXgi
-         aIQA==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=3gBgASPmO3umVtWBxwX2dWIChGUiJly3iRrpORmwNCA=;
+        fh=lyYd5u/xP7MkSXnqR0B3Lug5GOOGoEqAPzvNtygcaUQ=;
+        b=CdHhrj6GJxUtPv6YWUI6zHSSpabAO7T2OOg/BLGnJ4K9px1T3s9riWVNDFcj+Ny7KQ
+         soGMgUHONUQ560vfprjfpwqMzN5LGLEaZUfIsWOiKuP5vfRWGqC1hkqchOUMBfRXIEuV
+         xyvVflY60MyYl7cZ0DdXwryP5AYCv1DvajEbri431zHAn6YhSmAGlpycPC/z2UsYwJC5
+         nYXLlAnS2KY4/MOyI5uevGeRXSMDIfXWM7b2ZQOl5gSCayHV1nvjmVHZ2aUX4JIwWKB5
+         TpKmxIjAYE9lgxh3M5MPdERa7DDyGk6rGpqTT5FaArQYOEg6GdBKIbzaIzD6kHxL+Z+v
+         wduQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hxFVVeLd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="eH+ZN/wG";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gc15-20020a056214230f00b0069b0b8b31bcsi29348152qvb.429.2024.04.30.11.43.05
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w20-20020a056402269400b0057288f630f4sor1598302edd.5.2024.04.30.11.44.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Apr 2024 11:43:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 30 Apr 2024 11:44:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hxFVVeLd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="eH+ZN/wG";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s1sRH-0002Vo-CU; Tue, 30 Apr 2024 14:42:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1s1sRF-0002VM-OZ
- for qemu-arm@nongnu.org; Tue, 30 Apr 2024 14:42:49 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1s1sRA-0004bJ-Cd
- for qemu-arm@nongnu.org; Tue, 30 Apr 2024 14:42:49 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-5708d8beec6so7673233a12.0
- for <qemu-arm@nongnu.org>; Tue, 30 Apr 2024 11:42:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1714502562; x=1715107362; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=8mCUSCLmgKzNcOyOr98vFPv0pYjXNNAruAUVA2i3+os=;
- b=hxFVVeLdCwZmHYXYNtKRnYN9yEv66xefyDS51rKYbt/tW1c9t8U6Huz9Bqn2pR+Buy
- 8fvv1Dh0mri8uxu4c6u9AaQMTph2wBKqiwKKFbY9puf5Hjh5iHUuSGpUBsStLhljX5b+
- AukHREH77W2I5GWGscBq6wbUnx6zPrdoBw7fMPCLyseGrdiax3bpu2yVqpJQdNsaDSNY
- iDsgBQqT+rvdM07czuwfbx6IMMhRx3PuwHjVKCr7S3Wf8Y4XCEMeylM6OL1Orgs7IkL4
- qGhS8FKuH7Jy4qL/e8kMEuGbl9Lqf+WWNWRgoXckkNLUenK1sybtkp3Pqm1vHORKGW0L
- KvNw==
+        d=linaro.org; s=google; t=1714502690; x=1715107490; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3gBgASPmO3umVtWBxwX2dWIChGUiJly3iRrpORmwNCA=;
+        b=eH+ZN/wGy3/t+POb0Iv5PFFejtSkTJd+USNwWZZEuaOr+UrgsqAPyYRVnXAHWK199m
+         5YvQu/F9hB9riiqtTE5EqK4iE6wHmZCdxktpfF+xSnaSc30CgGmYGplBBiIfpiFl7ZJi
+         df9yb3mP4IBcW4VtTSLQlOWn8dBBZH4/sdJjPGc+EaO60C2VStYL4Rzbp/wRJyGvDXuF
+         mA1Q7enT7ez7zq0yH12yXU1eat6SaEuUvLMTJCwc98NEbfyY6ma/FSMb6CrOKe13K7HK
+         tNIL2r6fu22U0lzpO1omJ4xlz+FJteKcxfxJiN1V7jIYE3RLkXJucLNhzB814CqTZehJ
+         YTYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714502562; x=1715107362;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8mCUSCLmgKzNcOyOr98vFPv0pYjXNNAruAUVA2i3+os=;
- b=UmUw3H9YEoDdC2X+Y+GhxVnjUOx4oJap+YjiwbcgmU4ahatznlm+Ir7cYLwHsDLF0j
- ozaEjjGtol1BeShpikeVakYhzqh5orbRiIlGlTEOfxuEsFcgSBXfoKUmOYjxK2m3+1VE
- Vf5EEmPM3Txf5bBpzNGKduDDu4yI7HJl7aS7YSs/4EZaSTq5wv2qVLZgAeVpFrzPM3nM
- R7AwVAlNfb5hhWs2KIMNIDzQBXojR4/nsqXNIA6xzx9tzAqUxdJnkaRSmZZ642OhqSc/
- jwrw9fg6d3ULeDPYSIpzIcwzpHlrTf9MNTEDoZ3H4o77K7EOKpfsyw/77/EqybWvgJmd
- 4+Zw==
-X-Gm-Message-State: AOJu0Yyesw1lK/Y5H8CdzK4lT76EzCS/Yj85a9uzBlPkjsopMyYfla61
- vKz4bXhtJ+OOku/0emA/T4BEMariSQK9FO6XnfRVyh1pp6hw1UKwDTA9iA0G0zN+0rykVxgTsXl
- dUSiVOnyHxIJ4BIw0wgmyinu81eLiWGkIK4Io/A==
-X-Received: by 2002:a50:d6c2:0:b0:56e:22a1:a9a2 with SMTP id
- l2-20020a50d6c2000000b0056e22a1a9a2mr415339edj.33.1714502562360; Tue, 30 Apr
- 2024 11:42:42 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1714502690; x=1715107490;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3gBgASPmO3umVtWBxwX2dWIChGUiJly3iRrpORmwNCA=;
+        b=II6srdoigS8I18C6Co3jvC0JkVyCbXnluNynjxS1D9nBPtl1fXqH2qDR+unf0Izh2M
+         3CYvl+n9Ue24dXl+5xUN2Eav0NcReJmQWVii4vKtK9vZNH/dG1W3sw4u/tx77MnL6i+y
+         oVAg256FveAntgLRadsUDPXWyulkmSRNL8ftu8tsA9HpJfMvs28Spu8Hoki4j0Yo/2rW
+         wV6DZDL8mGgxa9kxr6Copl+YW5PBFVX+v+ObS0RSjG9bLFuzM9NJoiIokvBp6Lina8Cq
+         Nu6MAWORuPhz635J60xbXt/dAv87I3KqwQ7wPrcfs0QMsBEmLCup1EKY2e7x7yl7s9Jb
+         HB9Q==
+X-Gm-Message-State: AOJu0YzpU0Cvn41+TdbVD+WeIx5/nmrP1oPp3Y7knhLvgWJD10+kqWle
+	SaRPuG4UYpNLakRgQFRXG7zx3/0uhQgXo82jPSruyJKeOKAPV8f0K/7GPkBozTyCFeyQWlxfNpx
+	r2hdmaHKNiLcR8GBDTFqscYKx/02phddHtTom7w97roK345lX6AI=
+X-Google-Smtp-Source: AGHT+IFuMFg0PiJtqAlOUKGqjf2n9rAlcZePYebauohCzwk4FET2C8il2R8vdrWLPxH/BY67FY6E7Gwmcqno3AoQvXE=
+X-Received: by 2002:a50:aad3:0:b0:565:dfac:a686 with SMTP id
+ r19-20020a50aad3000000b00565dfaca686mr411314edc.38.1714502690495; Tue, 30 Apr
+ 2024 11:44:50 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240430140035.3889879-1-peter.maydell@linaro.org>
- <20240430140035.3889879-3-peter.maydell@linaro.org>
- <8004c7bf-3185-4eba-8e1b-4a913bc1143f@linaro.org>
-In-Reply-To: <8004c7bf-3185-4eba-8e1b-4a913bc1143f@linaro.org>
+ <20240430140035.3889879-2-peter.maydell@linaro.org> <87ttji3h69.fsf@draig.linaro.org>
+In-Reply-To: <87ttji3h69.fsf@draig.linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 30 Apr 2024 19:42:31 +0100
-Message-ID: <CAFEAcA-G2YAArmV7Ttg_-iRoh43n5YeXiBafqsjeAyu_9u8saA@mail.gmail.com>
-Subject: Re: [PATCH 2/2] target/arm: Implement FEAT WFxT and enable for '-cpu
- max'
-To: Richard Henderson <richard.henderson@linaro.org>
+Date: Tue, 30 Apr 2024 19:44:39 +0100
+Message-ID: <CAFEAcA-UL6cd7Obbx8sHpJ-Vdb-vpU8NJwdcLM2P+8ZpFnj2kg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] accel/tcg: Make TCGCPUOps::cpu_exec_halt return bool
+ for whether to halt
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1HsoCYnGlMbh
+Content-Transfer-Encoding: quoted-printable
+X-TUID: kbs7wxKySRzK
 
-On Tue, 30 Apr 2024 at 18:31, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Tue, 30 Apr 2024 at 18:15, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> On 4/30/24 07:00, Peter Maydell wrote:
-> > +    if (uadd64_overflow(timeout, offset, &nexttick)) {
-> > +        nexttick = UINT64_MAX;
-> > +    }
-> > +    if (nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
-> > +        /*
-> > +         * If the timeout is too long for the signed 64-bit range
-> > +         * of a QEMUTimer, let it expire early.
-> > +         */
-> > +        timer_mod_ns(cpu->wfxt_timer, INT64_MAX);
-> > +    } else {
-> > +        timer_mod(cpu->wfxt_timer, nexttick);
-> > +    }
+> Peter Maydell <peter.maydell@linaro.org> writes:
 >
-> The use of both UINT64_MAX and INT64_MAX is confusing.  Perhaps
+> > The TCGCPUOps::cpu_exec_halt method is called from cpu_handle_halt()
+> > when the CPU is halted, so that a target CPU emulation can do
+> > anything target-specific it needs to do.  (At the moment we only use
+> > this on i386.)
+> >
+> > The current specification of the method doesn't allow the target
+> > specific code to do something different if the CPU is about to come
+> > out of the halt state, because cpu_handle_halt() only determines this
+> > after the method has returned.  (If the method called cpu_has_work()
+> > itself this would introduce a potential race if an interrupt arrived
+> > between the target's method implementation checking and
+> > cpu_handle_halt() repeating the check.)
+> >
+> > Change the definition of the method so that it returns a bool to
+> > tell cpu_handle_halt() whether to stay in halt or not.
+> >
+> > We will want this for the Arm target, where FEAT_WFxT wants to do
+> > some work only for the case where the CPU is in halt but about to
+> > leave it.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >  include/hw/core/tcg-cpu-ops.h       | 11 +++++++++--
+> >  target/i386/tcg/helper-tcg.h        |  2 +-
+> >  accel/tcg/cpu-exec.c                |  7 +++++--
+> >  target/i386/tcg/sysemu/seg_helper.c |  3 ++-
+> >  4 files changed, 17 insertions(+), 6 deletions(-)
+> >
+> > diff --git a/include/hw/core/tcg-cpu-ops.h b/include/hw/core/tcg-cpu-op=
+s.h
+> > index dc1f16a9777..f3ac76e6f6d 100644
+> > --- a/include/hw/core/tcg-cpu-ops.h
+> > +++ b/include/hw/core/tcg-cpu-ops.h
+> > @@ -111,8 +111,15 @@ struct TCGCPUOps {
+> >      void (*do_interrupt)(CPUState *cpu);
+> >      /** @cpu_exec_interrupt: Callback for processing interrupts in cpu=
+_exec */
+> >      bool (*cpu_exec_interrupt)(CPUState *cpu, int interrupt_request);
+> > -    /** @cpu_exec_halt: Callback for handling halt in cpu_exec */
+> > -    void (*cpu_exec_halt)(CPUState *cpu);
+> > +    /**
+> > +     * @cpu_exec_halt: Callback for handling halt in cpu_exec.
+> > +     *
+> > +     * Return true to indicate that the CPU should now leave halt, fal=
+se
+> > +     * if it should remain in the halted state.
+> > +     * If this method is not provided, the default is to leave halt
+> > +     * if cpu_has_work() returns true.
+> > +     */
+> > +    bool (*cpu_exec_halt)(CPUState *cpu);
 >
->      if (uadd64_overflow(timeout, offset, &nexttick) ||
->          nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
->          nexttick = INT64_MAX;
->      }
->      timer_mod(cpu->wfxt_timer, nexttick);
+> Would it be too much to rename the method to cpu_exec_leave_halt() to
+> make it clearer on use the sense of the return value?
 
-I'm following here the pattern of the logic in gt_recalc_timer()
-(which could admittedly also be considered confusing...).
+We could, but that makes it sound like it's a method to say
+"should we leave halt?", which ...
 
-Also note that timer_mod_ns() and timer_mod() aren't the
-same thing. The latter calls timer_mod_ns() on its argument
-multiplied by ts->scale, so if you pass it INT64_MAX
-the multiply is liable to overflow.
+> > -void x86_cpu_exec_halt(CPUState *cpu)
+> > +bool x86_cpu_exec_halt(CPUState *cpu)
+> >  {
+> >      if (cpu->interrupt_request & CPU_INTERRUPT_POLL) {
+> >          X86CPU *x86_cpu =3D X86_CPU(cpu);
+> > @@ -138,6 +138,7 @@ void x86_cpu_exec_halt(CPUState *cpu)
+> >          cpu_reset_interrupt(cpu, CPU_INTERRUPT_POLL);
+> >          bql_unlock();
+> >      }
+> > +    return cpu_has_work(cpu);
+>
+> The x86 version is essentially being called for side effects. Do we want
+> to document this usage in the method?
+
+...is not how the x86 target is using it, as you note.
 
 thanks
 -- PMM

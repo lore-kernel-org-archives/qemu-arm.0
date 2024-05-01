@@ -1,85 +1,85 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp643018ejy;
-        Wed, 1 May 2024 11:29:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWuUdwkyjPLa1TVOAZCv0ftGdO3vEJRB9I3Y5OWR312CNDpdJN1NmL107K3Q0dOcHE2jwRp/hI+wgabV/3Ad9ss9VbQ2nlC
-X-Google-Smtp-Source: AGHT+IGLItMqHHvVdCoNLKd2mWnhNMqzy1BaaXFH0ytlT/3M8dL1HR+J+k0H4kLieQ8divOFBac5
-X-Received: by 2002:ad4:5967:0:b0:6a0:d291:a35e with SMTP id eq7-20020ad45967000000b006a0d291a35emr3289173qvb.52.1714588175636;
-        Wed, 01 May 2024 11:29:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714588175; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp643062ejy;
+        Wed, 1 May 2024 11:29:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW5IjVbLbANuiRp8TdF+3pQ4Zw3TIt0++yY4HK/9ZpIwlktCkSae460KMFRfFUHwMwRNzeSnIr+ugcmYoGx5uyp4TuWmV9K
+X-Google-Smtp-Source: AGHT+IHGzEpWpE9dORkvG+K3rlshm9s+K+ingRr9ZWxDSSbWt0nEp4Luey/SB6e34WBhBM4UHAak
+X-Received: by 2002:a05:620a:118e:b0:790:a961:373a with SMTP id b14-20020a05620a118e00b00790a961373amr873210qkk.31.1714588180608;
+        Wed, 01 May 2024 11:29:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714588180; cv=none;
         d=google.com; s=arc-20160816;
-        b=O7UrntVrlgQ0R6E4FJiuV4BiKme2fKAnKPnfUYQhTIBg5eKODJSOTkkt5oKutMF+U3
-         pfxq/Mm9J5VE7UBIVxYKb32nwXST4WZIY4TY/2nHPCvs1x2BuE9t7dIXTY00ARstkjyd
-         jwXMEkoaHIrixvdT0pol6lcmGdUcXjGRzcLp8qAcEgsVj+K7tKumVus1IIvJCTKXLwj9
-         Wi5WTIJFBixeXjass044qCUMlLOXjqdzrkaRIEtHOfqoLF7iPhjeYKg5KDUxqWE6NmZi
-         04gmwM+//kRB3GtmJK4o48iHGaR1946/+O9pY1xW3tAA6FaAGRD7fKP8jn7vKQpELvp4
-         yv9g==
+        b=Yl3gwrOFKBX3fhjyKFQE8hZCD+JoZTvc3GmDcqf+MsPh2YxCMiu2n362yTNt0x8G9r
+         jyS6tV7GNilcL7T8c7bUYRhkv1m1UOeTZs1rGYeGv3QSTHqvqeJimVuEDAPD0VAcDDw6
+         pff/gIHkL54dW8n65YuRvLNamPYXLNAPLU77qlaUm8EA8yRNWH272BL0C1sYFHsjixFL
+         Ig1ALdb9uOiaUwMBLv/Icw7edagp8J0WOaUaxu1wpHHlNt2El1BlgoUhJU+UsskAMqVf
+         vJ4L3wMGFCLBMpfouiGQwm9oNN6YQiCVBKaK4EkF/8GnpyRGWwUD5tKYqi0W17FdyYVj
+         1jgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=LbNgJd5vjOzyPPQegoUm7fdN8mfz+bUzsuHGR1E6bVA=;
+        bh=GfZjvRgY+N1hSW4FRFPg1V3Orbmg+ibOyYup93C+b3Y=;
         fh=+wZQXfkGrDFf08DRkV04g4pIKND0uH82z0Y2PgLJFoY=;
-        b=PVQtLN+5lpJ0rp5ACm6+isuhFn8mYaDcMsX4C93C5asVgFZ3blzjQQERZ/SCQQmTVe
-         /3zlVg/lOZx56Biv/7uZv94Vx4wyM0I0z8TLtiNg+8fI0oCHAK5en9J7WJ4TD6gy9Gh1
-         CCCss09XocvLQ2+5duzU8BE1uMLp3vohfw4gxQOuIfdZWmgZstjs+0EixVTdbb7DU2i2
-         25ny1vXynYJC2ejh4y5BEf56SOu6glQHfnDoD8jzIZHADk/PauIP2ViH+O7OEBV6O3mm
-         GAmY6fNPRTvZJ9tsDzLn9pe1SP5wlQn/DZecQmq+sQkkzVnriVo5mzm5hUNm29t/PgHt
-         TroA==;
+        b=LX0DO8gOx4fBcQyZGg9EXacJUWKmddG6yLaE595FqNfvHakCTYVuwFwAuhLxcZpy9R
+         khQWH+TDyjRK0wCpsaW5lf5QYzrsOGHubrGvViLDNGTThmeMoF68C9jYVNDAT7Hb8q8z
+         Nr7jawSNya98ANRgNF/Rri1TOJBjew0EmgPwkILb+HT0DOjma4kQCit6lMTveECCYyTu
+         HwU62G/dWFvi+JamFbzXDZxubsaugKBMVgkwf0lHJuLYcYoNpDJi9DaDTl9EBSLv4cwH
+         PKIMG6+SbkOW1YK2C7CpdyzoAbfPEoBQf9mUHbk1xCPhsUM9lM+7HVO83mA+RZMuvbJk
+         zm1Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Q4hg+G/B";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UA9nKFHQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c8-20020a0cd608000000b006a0b4ff4555si10704147qvj.402.2024.05.01.11.29.35
+        by mx.google.com with ESMTPS id pj41-20020a05620a1da900b0078f066ae1c8si29760008qkn.470.2024.05.01.11.29.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 May 2024 11:29:35 -0700 (PDT)
+        Wed, 01 May 2024 11:29:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Q4hg+G/B";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UA9nKFHQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s2EhY-0006e9-Pg; Wed, 01 May 2024 14:29:09 -0400
+	id 1s2Eh6-0006EN-Ga; Wed, 01 May 2024 14:28:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2EhW-0006cH-7e
- for qemu-arm@nongnu.org; Wed, 01 May 2024 14:29:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1s2Eh5-0006Di-9Y
+ for qemu-arm@nongnu.org; Wed, 01 May 2024 14:28:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2EhN-0003L5-JY
- for qemu-arm@nongnu.org; Wed, 01 May 2024 14:29:05 -0400
+ id 1s2Eh2-0003J2-NJ
+ for qemu-arm@nongnu.org; Wed, 01 May 2024 14:28:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714588136;
+ s=mimecast20190719; t=1714588116;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=LbNgJd5vjOzyPPQegoUm7fdN8mfz+bUzsuHGR1E6bVA=;
- b=Q4hg+G/BKGx3i7rtGl4QivYCN3jtQKRlm0DJJ28/7BWq/U7ytWBTnsV+SJ5jYgGtaQr6yh
- wEG1DhTyL8NFN4PYGc/OxODNZg8DczdS8EY899dUKy32EjHKf/qR/G8KOlHPawpUEsHVbZ
- nIsYYp3Ef136DRz5d7eCdHvs4CP9mK8=
+ bh=GfZjvRgY+N1hSW4FRFPg1V3Orbmg+ibOyYup93C+b3Y=;
+ b=UA9nKFHQ8IO6KtExUyLCmAio2LL/46LERXX/P9zqeFKaXxJqC80fcT9Z6LiAeuLGkb9vac
+ 1QtMnRSLEd/89n/Uv18FUzHwDKSY2Bzh8ZJXMMHTo3DTi9RobaDTlL6XQ1sNpX0um3KT3o
+ e6KemMjyfpCUkcJ1exiKZrXRubQ58Fs=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-361-C4dxp_u-MzOdADPZ-Vrgcg-1; Wed, 01 May 2024 14:28:54 -0400
-X-MC-Unique: C4dxp_u-MzOdADPZ-Vrgcg-1
+ us-mta-542-A9S8f-g_OUmaAcYVWFtxJQ-1; Wed, 01 May 2024 14:28:32 -0400
+X-MC-Unique: A9S8f-g_OUmaAcYVWFtxJQ-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 395AD10498B9;
- Wed,  1 May 2024 18:28:53 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D9237830D37;
+ Wed,  1 May 2024 18:28:31 +0000 (UTC)
 Received: from toolbox.redhat.com (unknown [10.42.28.121])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 36D56AC6B;
- Wed,  1 May 2024 18:28:45 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 879FC8C4;
+ Wed,  1 May 2024 18:28:23 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
@@ -100,25 +100,25 @@ Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 04/14] hw/ppc: convert 'spapr' machine definitions to use new
+Subject: [PATCH 02/14] hw/arm: convert 'virt' machine definitions to use new
  macros
-Date: Wed,  1 May 2024 19:27:49 +0100
-Message-ID: <20240501182759.2934195-5-berrange@redhat.com>
+Date: Wed,  1 May 2024 19:27:47 +0100
+Message-ID: <20240501182759.2934195-3-berrange@redhat.com>
 In-Reply-To: <20240501182759.2934195-1-berrange@redhat.com>
 References: <20240501182759.2934195-1-berrange@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.897,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,368 +133,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6ytqr74l4dcB
+X-TUID: QajGumFMbd4r
 
-This changes the DEFINE_SPAPR_MACHINE macro to use the common
+This changes the DEFINE_VIRT_MACHINE macro to use the common
 helpers for constructing versioned symbol names and strings,
 bringing greater consistency across targets.
 
-The added benefit is that it avoids the need to repeat the
-version number twice in two different formats in the calls
-to DEFINE_SPAPR_MACHINE.
-
-A DEFINE_SPAPR_MACHINE_AS_LATEST helper is added so that it
-is not required to pass 'false' for every single historical
-machine type.
-
-Due to the odd-ball '2.12-sxxm' machine type version, this
-commit introduces a DEFINE_SPAPR_MACHINE_TAGGED helper to
-allow defining of "tagged" machine types which have a string
-suffix.
-
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/ppc/spapr.c | 93 +++++++++++++++++++++++++++-----------------------
- 1 file changed, 51 insertions(+), 42 deletions(-)
+ hw/arm/virt.c | 28 +++++++++++++++-------------
+ 1 file changed, 15 insertions(+), 13 deletions(-)
 
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index d2d1e310a3..4ab331da57 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -4788,26 +4788,35 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
-     mc->is_default = true;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 3c93c0c0a6..24b104dfa7 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -101,33 +101,35 @@ static void arm_virt_compat_set(MachineClass *mc)
+                      arm_virt_compat_len);
  }
  
--#define DEFINE_SPAPR_MACHINE(suffix, verstr, latest)                 \
--    static void spapr_machine_##suffix##_class_init(ObjectClass *oc, \
--                                                    void *data)      \
-+#define DEFINE_SPAPR_MACHINE_IMPL(latest, ...)                       \
-+    static void MACHINE_VER_SYM(class_init, spapr, __VA_ARGS__)(     \
-+        ObjectClass *oc,                                             \
-+        void *data)                                                  \
-     {                                                                \
-         MachineClass *mc = MACHINE_CLASS(oc);                        \
--        spapr_machine_##suffix##_class_options(mc);                  \
-+        MACHINE_VER_SYM(class_options, spapr, __VA_ARGS__)(mc);      \
-         if (latest) {                                                \
-             spapr_machine_latest_class_options(mc);                  \
-         }                                                            \
-     }                                                                \
--    static const TypeInfo spapr_machine_##suffix##_info = {          \
--        .name = MACHINE_TYPE_NAME("pseries-" verstr),                \
-+    static const TypeInfo MACHINE_VER_SYM(info, spapr, __VA_ARGS__) = \
-+    {                                                                \
-+        .name = MACHINE_VER_TYPE_NAME("pseries", __VA_ARGS__),       \
-         .parent = TYPE_SPAPR_MACHINE,                                \
--        .class_init = spapr_machine_##suffix##_class_init,           \
-+        .class_init = MACHINE_VER_SYM(class_init, spapr, __VA_ARGS__), \
-     };                                                               \
--    static void spapr_machine_register_##suffix(void)                \
-+    static void MACHINE_VER_SYM(register, spapr, __VA_ARGS__)(void)  \
-     {                                                                \
--        type_register(&spapr_machine_##suffix##_info);               \
-+        type_register(&MACHINE_VER_SYM(info, spapr, __VA_ARGS__));   \
-     }                                                                \
--    type_init(spapr_machine_register_##suffix)
-+    type_init(MACHINE_VER_SYM(register, spapr, __VA_ARGS__))
-+
-+#define DEFINE_SPAPR_MACHINE_AS_LATEST(major, minor) \
-+    DEFINE_SPAPR_MACHINE_IMPL(true, major, minor)
-+#define DEFINE_SPAPR_MACHINE(major, minor) \
-+    DEFINE_SPAPR_MACHINE_IMPL(false, major, minor)
-+#define DEFINE_SPAPR_MACHINE_TAGGED(major, minor, tag) \
-+    DEFINE_SPAPR_MACHINE_IMPL(false, major, minor, _, tag)
+-#define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+-    static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
+-                                                    void *data) \
++#define DEFINE_VIRT_MACHINE_IMPL(latest, ...) \
++    static void MACHINE_VER_SYM(class_init, virt, __VA_ARGS__)( \
++        ObjectClass *oc, \
++        void *data) \
+     { \
+         MachineClass *mc = MACHINE_CLASS(oc); \
+         arm_virt_compat_set(mc); \
+-        virt_machine_##major##_##minor##_options(mc); \
+-        mc->desc = "QEMU " # major "." # minor " ARM Virtual Machine"; \
++        MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
++        mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " ARM Virtual Machine"; \
+         if (latest) { \
+             mc->alias = "virt"; \
+         } \
+     } \
+-    static const TypeInfo machvirt_##major##_##minor##_info = { \
+-        .name = MACHINE_TYPE_NAME("virt-" # major "." # minor), \
++    static const TypeInfo MACHINE_VER_SYM(info, virt, __VA_ARGS__) = \
++    { \
++        .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
+         .parent = TYPE_VIRT_MACHINE, \
+-        .class_init = virt_##major##_##minor##_class_init, \
++        .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
+     }; \
+-    static void machvirt_machine_##major##_##minor##_init(void) \
++    static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
+     { \
+-        type_register_static(&machvirt_##major##_##minor##_info); \
++        type_register_static(&MACHINE_VER_SYM(info, virt, __VA_ARGS__)); \
+     } \
+-    type_init(machvirt_machine_##major##_##minor##_init);
++    type_init(MACHINE_VER_SYM(register, virt, __VA_ARGS__));
  
- /*
-  * pseries-9.1
-@@ -4817,7 +4826,7 @@ static void spapr_machine_9_1_class_options(MachineClass *mc)
-     /* Defaults for the latest behaviour inherited from the base class */
- }
+ #define DEFINE_VIRT_MACHINE_AS_LATEST(major, minor) \
+-    DEFINE_VIRT_MACHINE_LATEST(major, minor, true)
++    DEFINE_VIRT_MACHINE_IMPL(true, major, minor)
+ #define DEFINE_VIRT_MACHINE(major, minor) \
+-    DEFINE_VIRT_MACHINE_LATEST(major, minor, false)
++    DEFINE_VIRT_MACHINE_IMPL(false, major, minor)
  
--DEFINE_SPAPR_MACHINE(9_1, "9.1", true);
-+DEFINE_SPAPR_MACHINE_AS_LATEST(9, 1);
  
- /*
-  * pseries-9.0
-@@ -4828,7 +4837,7 @@ static void spapr_machine_9_0_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_9_0, hw_compat_9_0_len);
- }
- 
--DEFINE_SPAPR_MACHINE(9_0, "9.0", false);
-+DEFINE_SPAPR_MACHINE(9, 0);
- 
- /*
-  * pseries-8.2
-@@ -4839,7 +4848,7 @@ static void spapr_machine_8_2_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_8_2, hw_compat_8_2_len);
- }
- 
--DEFINE_SPAPR_MACHINE(8_2, "8.2", false);
-+DEFINE_SPAPR_MACHINE(8, 2);
- 
- /*
-  * pseries-8.1
-@@ -4850,7 +4859,7 @@ static void spapr_machine_8_1_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_8_1, hw_compat_8_1_len);
- }
- 
--DEFINE_SPAPR_MACHINE(8_1, "8.1", false);
-+DEFINE_SPAPR_MACHINE(8, 1);
- 
- /*
-  * pseries-8.0
-@@ -4861,7 +4870,7 @@ static void spapr_machine_8_0_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_8_0, hw_compat_8_0_len);
- }
- 
--DEFINE_SPAPR_MACHINE(8_0, "8.0", false);
-+DEFINE_SPAPR_MACHINE(8, 0);
- 
- /*
-  * pseries-7.2
-@@ -4872,7 +4881,7 @@ static void spapr_machine_7_2_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
- }
- 
--DEFINE_SPAPR_MACHINE(7_2, "7.2", false);
-+DEFINE_SPAPR_MACHINE(7, 2);
- 
- /*
-  * pseries-7.1
-@@ -4883,7 +4892,7 @@ static void spapr_machine_7_1_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_7_1, hw_compat_7_1_len);
- }
- 
--DEFINE_SPAPR_MACHINE(7_1, "7.1", false);
-+DEFINE_SPAPR_MACHINE(7, 1);
- 
- /*
-  * pseries-7.0
-@@ -4894,7 +4903,7 @@ static void spapr_machine_7_0_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_7_0, hw_compat_7_0_len);
- }
- 
--DEFINE_SPAPR_MACHINE(7_0, "7.0", false);
-+DEFINE_SPAPR_MACHINE(7, 0);
- 
- /*
-  * pseries-6.2
-@@ -4905,7 +4914,7 @@ static void spapr_machine_6_2_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_6_2, hw_compat_6_2_len);
- }
- 
--DEFINE_SPAPR_MACHINE(6_2, "6.2", false);
-+DEFINE_SPAPR_MACHINE(6, 2);
- 
- /*
-  * pseries-6.1
-@@ -4920,7 +4929,7 @@ static void spapr_machine_6_1_class_options(MachineClass *mc)
-     mc->smp_props.prefer_sockets = true;
- }
- 
--DEFINE_SPAPR_MACHINE(6_1, "6.1", false);
-+DEFINE_SPAPR_MACHINE(6, 1);
- 
- /*
-  * pseries-6.0
-@@ -4931,7 +4940,7 @@ static void spapr_machine_6_0_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
- }
- 
--DEFINE_SPAPR_MACHINE(6_0, "6.0", false);
-+DEFINE_SPAPR_MACHINE(6, 0);
- 
- /*
-  * pseries-5.2
-@@ -4942,7 +4951,7 @@ static void spapr_machine_5_2_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
- }
- 
--DEFINE_SPAPR_MACHINE(5_2, "5.2", false);
-+DEFINE_SPAPR_MACHINE(5, 2);
- 
- /*
-  * pseries-5.1
-@@ -4956,7 +4965,7 @@ static void spapr_machine_5_1_class_options(MachineClass *mc)
-     smc->pre_5_2_numa_associativity = true;
- }
- 
--DEFINE_SPAPR_MACHINE(5_1, "5.1", false);
-+DEFINE_SPAPR_MACHINE(5, 1);
- 
- /*
-  * pseries-5.0
-@@ -4975,7 +4984,7 @@ static void spapr_machine_5_0_class_options(MachineClass *mc)
-     smc->pre_5_1_assoc_refpoints = true;
- }
- 
--DEFINE_SPAPR_MACHINE(5_0, "5.0", false);
-+DEFINE_SPAPR_MACHINE(5, 0);
- 
- /*
-  * pseries-4.2
-@@ -4992,7 +5001,7 @@ static void spapr_machine_4_2_class_options(MachineClass *mc)
-     mc->nvdimm_supported = false;
- }
- 
--DEFINE_SPAPR_MACHINE(4_2, "4.2", false);
-+DEFINE_SPAPR_MACHINE(4, 2);
- 
- /*
-  * pseries-4.1
-@@ -5012,7 +5021,7 @@ static void spapr_machine_4_1_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
- }
- 
--DEFINE_SPAPR_MACHINE(4_1, "4.1", false);
-+DEFINE_SPAPR_MACHINE(4, 1);
- 
- /*
-  * pseries-4.0
-@@ -5039,7 +5048,7 @@ static void spapr_machine_4_0_class_options(MachineClass *mc)
-     smc->pre_4_1_migration = true;
- }
- 
--DEFINE_SPAPR_MACHINE(4_0, "4.0", false);
-+DEFINE_SPAPR_MACHINE(4, 0);
- 
- /*
-  * pseries-3.1
-@@ -5061,7 +5070,7 @@ static void spapr_machine_3_1_class_options(MachineClass *mc)
-     smc->default_caps.caps[SPAPR_CAP_LARGE_DECREMENTER] = SPAPR_CAP_OFF;
- }
- 
--DEFINE_SPAPR_MACHINE(3_1, "3.1", false);
-+DEFINE_SPAPR_MACHINE(3, 1);
- 
- /*
-  * pseries-3.0
-@@ -5079,7 +5088,7 @@ static void spapr_machine_3_0_class_options(MachineClass *mc)
-     smc->irq = &spapr_irq_xics_legacy;
- }
- 
--DEFINE_SPAPR_MACHINE(3_0, "3.0", false);
-+DEFINE_SPAPR_MACHINE(3, 0);
- 
- /*
-  * pseries-2.12
-@@ -5104,7 +5113,7 @@ static void spapr_machine_2_12_class_options(MachineClass *mc)
-     smc->default_caps.caps[SPAPR_CAP_HPT_MAXPAGESIZE] = 0;
- }
- 
--DEFINE_SPAPR_MACHINE(2_12, "2.12", false);
-+DEFINE_SPAPR_MACHINE(2, 12);
- 
- static void spapr_machine_2_12_sxxm_class_options(MachineClass *mc)
- {
-@@ -5116,7 +5125,7 @@ static void spapr_machine_2_12_sxxm_class_options(MachineClass *mc)
-     smc->default_caps.caps[SPAPR_CAP_IBS] = SPAPR_CAP_FIXED_CCD;
- }
- 
--DEFINE_SPAPR_MACHINE(2_12_sxxm, "2.12-sxxm", false);
-+DEFINE_SPAPR_MACHINE_TAGGED(2, 12, sxxm);
- 
- /*
-  * pseries-2.11
-@@ -5132,7 +5141,7 @@ static void spapr_machine_2_11_class_options(MachineClass *mc)
-     mc->deprecation_reason = "old and not maintained - use a 2.12+ version";
- }
- 
--DEFINE_SPAPR_MACHINE(2_11, "2.11", false);
-+DEFINE_SPAPR_MACHINE(2, 11);
- 
- /*
-  * pseries-2.10
-@@ -5144,7 +5153,7 @@ static void spapr_machine_2_10_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_2_10, hw_compat_2_10_len);
- }
- 
--DEFINE_SPAPR_MACHINE(2_10, "2.10", false);
-+DEFINE_SPAPR_MACHINE(2, 10);
- 
- /*
-  * pseries-2.9
-@@ -5164,7 +5173,7 @@ static void spapr_machine_2_9_class_options(MachineClass *mc)
-     smc->resize_hpt_default = SPAPR_RESIZE_HPT_DISABLED;
- }
- 
--DEFINE_SPAPR_MACHINE(2_9, "2.9", false);
-+DEFINE_SPAPR_MACHINE(2, 9);
- 
- /*
-  * pseries-2.8
-@@ -5182,7 +5191,7 @@ static void spapr_machine_2_8_class_options(MachineClass *mc)
-     mc->numa_mem_align_shift = 23;
- }
- 
--DEFINE_SPAPR_MACHINE(2_8, "2.8", false);
-+DEFINE_SPAPR_MACHINE(2, 8);
- 
- /*
-  * pseries-2.7
-@@ -5257,7 +5266,7 @@ static void spapr_machine_2_7_class_options(MachineClass *mc)
-     smc->phb_placement = phb_placement_2_7;
- }
- 
--DEFINE_SPAPR_MACHINE(2_7, "2.7", false);
-+DEFINE_SPAPR_MACHINE(2, 7);
- 
- /*
-  * pseries-2.6
-@@ -5275,7 +5284,7 @@ static void spapr_machine_2_6_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
- }
- 
--DEFINE_SPAPR_MACHINE(2_6, "2.6", false);
-+DEFINE_SPAPR_MACHINE(2, 6);
- 
- /*
-  * pseries-2.5
-@@ -5294,7 +5303,7 @@ static void spapr_machine_2_5_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
- }
- 
--DEFINE_SPAPR_MACHINE(2_5, "2.5", false);
-+DEFINE_SPAPR_MACHINE(2, 5);
- 
- /*
-  * pseries-2.4
-@@ -5309,7 +5318,7 @@ static void spapr_machine_2_4_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_2_4, hw_compat_2_4_len);
- }
- 
--DEFINE_SPAPR_MACHINE(2_4, "2.4", false);
-+DEFINE_SPAPR_MACHINE(2, 4);
- 
- /*
-  * pseries-2.3
-@@ -5324,7 +5333,7 @@ static void spapr_machine_2_3_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, hw_compat_2_3, hw_compat_2_3_len);
-     compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
- }
--DEFINE_SPAPR_MACHINE(2_3, "2.3", false);
-+DEFINE_SPAPR_MACHINE(2, 3);
- 
- /*
-  * pseries-2.2
-@@ -5341,7 +5350,7 @@ static void spapr_machine_2_2_class_options(MachineClass *mc)
-     compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
-     mc->default_machine_opts = "modern-hotplug-events=off,suppress-vmdesc=on";
- }
--DEFINE_SPAPR_MACHINE(2_2, "2.2", false);
-+DEFINE_SPAPR_MACHINE(2, 2);
- 
- /*
-  * pseries-2.1
-@@ -5352,7 +5361,7 @@ static void spapr_machine_2_1_class_options(MachineClass *mc)
-     spapr_machine_2_2_class_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_2_1, hw_compat_2_1_len);
- }
--DEFINE_SPAPR_MACHINE(2_1, "2.1", false);
-+DEFINE_SPAPR_MACHINE(2, 1);
- 
- static void spapr_machine_register_types(void)
- {
+ /* Number of external interrupt lines to configure the GIC with */
 -- 
 2.43.0
 

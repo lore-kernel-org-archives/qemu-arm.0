@@ -1,85 +1,85 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp643062ejy;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp643061ejy;
         Wed, 1 May 2024 11:29:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW5IjVbLbANuiRp8TdF+3pQ4Zw3TIt0++yY4HK/9ZpIwlktCkSae460KMFRfFUHwMwRNzeSnIr+ugcmYoGx5uyp4TuWmV9K
-X-Google-Smtp-Source: AGHT+IHGzEpWpE9dORkvG+K3rlshm9s+K+ingRr9ZWxDSSbWt0nEp4Luey/SB6e34WBhBM4UHAak
-X-Received: by 2002:a05:620a:118e:b0:790:a961:373a with SMTP id b14-20020a05620a118e00b00790a961373amr873210qkk.31.1714588180608;
+X-Forwarded-Encrypted: i=2; AJvYcCXFkHcBxAuf38Dde3IiomdjQVAlzG/be38Ah85alDVcZIYMIn58p5SEqhaLn4Go0N9j2qhjU5/KtW+PoHRL6FTWHCRZ94G2
+X-Google-Smtp-Source: AGHT+IENky9PZErro8fnG9+jfJylQRL23wLhcP1PaIGXTbfUIxcKAoEkedbiDyWFFEj9OVzKMpYD
+X-Received: by 2002:a05:6214:4118:b0:6a0:b3ff:1e7a with SMTP id kc24-20020a056214411800b006a0b3ff1e7amr2697021qvb.30.1714588180573;
         Wed, 01 May 2024 11:29:40 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1714588180; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yl3gwrOFKBX3fhjyKFQE8hZCD+JoZTvc3GmDcqf+MsPh2YxCMiu2n362yTNt0x8G9r
-         jyS6tV7GNilcL7T8c7bUYRhkv1m1UOeTZs1rGYeGv3QSTHqvqeJimVuEDAPD0VAcDDw6
-         pff/gIHkL54dW8n65YuRvLNamPYXLNAPLU77qlaUm8EA8yRNWH272BL0C1sYFHsjixFL
-         Ig1ALdb9uOiaUwMBLv/Icw7edagp8J0WOaUaxu1wpHHlNt2El1BlgoUhJU+UsskAMqVf
-         vJ4L3wMGFCLBMpfouiGQwm9oNN6YQiCVBKaK4EkF/8GnpyRGWwUD5tKYqi0W17FdyYVj
-         1jgg==
+        b=fbySXzPPHJes8EEscPnXw6TEsLXz1IlzamjGIpuLnQ5y24ax+hcWWUck/1YJM64KND
+         ZwLp0YN6qpOhZ8z9jNRiqwuEof45j25eRknW6df76+JTGY9f0XzXuari3811ii3bMVHn
+         98i9Ywxgc0TZILIXn89DFDhyCdv/mDoyhtqKKmlnM26CB7rgGOsFSOYP4CJEUpVqXnWY
+         fhqykmxvaW6nWH6PuA3hmkDzb80bGNexJ/zxWGiJYxQ456vScg3M3E6iZpWofUViHzha
+         1xTw6W/4tbK/tD8sIf6zkITITNYYME3O5OlxpFF7G73h3DIaIy4Yj4ww0ePWfaF0kR1D
+         IhAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=GfZjvRgY+N1hSW4FRFPg1V3Orbmg+ibOyYup93C+b3Y=;
+        bh=qHftsJaualJD392VTnJgKqVFGTgpA/9GACdOaVFgs1c=;
         fh=+wZQXfkGrDFf08DRkV04g4pIKND0uH82z0Y2PgLJFoY=;
-        b=LX0DO8gOx4fBcQyZGg9EXacJUWKmddG6yLaE595FqNfvHakCTYVuwFwAuhLxcZpy9R
-         khQWH+TDyjRK0wCpsaW5lf5QYzrsOGHubrGvViLDNGTThmeMoF68C9jYVNDAT7Hb8q8z
-         Nr7jawSNya98ANRgNF/Rri1TOJBjew0EmgPwkILb+HT0DOjma4kQCit6lMTveECCYyTu
-         HwU62G/dWFvi+JamFbzXDZxubsaugKBMVgkwf0lHJuLYcYoNpDJi9DaDTl9EBSLv4cwH
-         PKIMG6+SbkOW1YK2C7CpdyzoAbfPEoBQf9mUHbk1xCPhsUM9lM+7HVO83mA+RZMuvbJk
-         zm1Q==;
+        b=JkYq8VagLIsNzGdeHZB85VOYSI4+MBhE3XUjhEkjJdn9/F+6FWkazdFXx+18+q9fEi
+         lMY+YUjEwgLdUszVZwBjqRBwpd09CQg11+wuzph013fGKyRrR2H+Tj3RbkE601b/pHHz
+         ih/YFbZNM24+tGEWepyQG30E8zFdnHDtpy7cdTmP2l9+PCXA0PdOwYhqdDi4qxw0NzXk
+         Sr3tBnMUNtp/FJOc4Rcfd0ch49xb+J9KJrmm1v7LiS1W35ods8ZCpiWuqrD3aoc8frgS
+         I8qHyocz4HmAbK+alMlb1omGnRY7Tl76o1u1ZqOZf5DWQGo7UxPJ1ae8buMyiSokbIOv
+         2qng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UA9nKFHQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RC+Pa91K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pj41-20020a05620a1da900b0078f066ae1c8si29760008qkn.470.2024.05.01.11.29.40
+        by mx.google.com with ESMTPS id ey5-20020a0562140b6500b0069b5f5c3d73si33940467qvb.172.2024.05.01.11.29.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 01 May 2024 11:29:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UA9nKFHQ;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RC+Pa91K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s2Eh6-0006EN-Ga; Wed, 01 May 2024 14:28:40 -0400
+	id 1s2Ehg-0006hr-S3; Wed, 01 May 2024 14:29:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2Eh5-0006Di-9Y
- for qemu-arm@nongnu.org; Wed, 01 May 2024 14:28:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1s2Ehb-0006f3-JN
+ for qemu-arm@nongnu.org; Wed, 01 May 2024 14:29:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2Eh2-0003J2-NJ
- for qemu-arm@nongnu.org; Wed, 01 May 2024 14:28:38 -0400
+ id 1s2EhZ-0003Ly-Vq
+ for qemu-arm@nongnu.org; Wed, 01 May 2024 14:29:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714588116;
+ s=mimecast20190719; t=1714588147;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GfZjvRgY+N1hSW4FRFPg1V3Orbmg+ibOyYup93C+b3Y=;
- b=UA9nKFHQ8IO6KtExUyLCmAio2LL/46LERXX/P9zqeFKaXxJqC80fcT9Z6LiAeuLGkb9vac
- 1QtMnRSLEd/89n/Uv18FUzHwDKSY2Bzh8ZJXMMHTo3DTi9RobaDTlL6XQ1sNpX0um3KT3o
- e6KemMjyfpCUkcJ1exiKZrXRubQ58Fs=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-542-A9S8f-g_OUmaAcYVWFtxJQ-1; Wed, 01 May 2024 14:28:32 -0400
-X-MC-Unique: A9S8f-g_OUmaAcYVWFtxJQ-1
+ bh=qHftsJaualJD392VTnJgKqVFGTgpA/9GACdOaVFgs1c=;
+ b=RC+Pa91KtBfydKidvWlHjclNoWF/VHxK2vBQdDb+ugP7K1DZ93+0+u3ufI5Gg61aq79qky
+ FskvR3HDtwkHrZifU0UN2VUO6VkrjYOZV0JcM2zhOGnkR//RN0DDqgIvx1sOEiTkBnYqpq
+ QSsifgqEzSSkyjvp4gU4unPg948MX0o=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-655-f6CuIJG5Niua8WFlaa31mw-1; Wed,
+ 01 May 2024 14:29:04 -0400
+X-MC-Unique: f6CuIJG5Niua8WFlaa31mw-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D9237830D37;
- Wed,  1 May 2024 18:28:31 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2309529AA390;
+ Wed,  1 May 2024 18:29:03 +0000 (UTC)
 Received: from toolbox.redhat.com (unknown [10.42.28.121])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 879FC8C4;
- Wed,  1 May 2024 18:28:23 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7282A8C4;
+ Wed,  1 May 2024 18:28:53 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
@@ -100,17 +100,17 @@ Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 02/14] hw/arm: convert 'virt' machine definitions to use new
+Subject: [PATCH 05/14] hw/m68k: convert 'virt' machine definitions to use new
  macros
-Date: Wed,  1 May 2024 19:27:47 +0100
-Message-ID: <20240501182759.2934195-3-berrange@redhat.com>
+Date: Wed,  1 May 2024 19:27:50 +0100
+Message-ID: <20240501182759.2934195-6-berrange@redhat.com>
 In-Reply-To: <20240501182759.2934195-1-berrange@redhat.com>
 References: <20240501182759.2934195-1-berrange@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -118,7 +118,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.897,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,26 +133,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QajGumFMbd4r
+X-TUID: n2sd95DwlnrU
 
 This changes the DEFINE_VIRT_MACHINE macro to use the common
 helpers for constructing versioned symbol names and strings,
 bringing greater consistency across targets.
 
+A DEFINE_VIRT_MACHINE_AS_LATEST helper is added so that it
+is not required to pass 'false' for every single historical
+machine type.
+
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/arm/virt.c | 28 +++++++++++++++-------------
- 1 file changed, 15 insertions(+), 13 deletions(-)
+ hw/m68k/virt.c | 51 ++++++++++++++++++++++++++++----------------------
+ 1 file changed, 29 insertions(+), 22 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 3c93c0c0a6..24b104dfa7 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -101,33 +101,35 @@ static void arm_virt_compat_set(MachineClass *mc)
-                      arm_virt_compat_len);
- }
+diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+index 09bc9bdfef..cd6ee692f7 100644
+--- a/hw/m68k/virt.c
++++ b/hw/m68k/virt.c
+@@ -335,99 +335,106 @@ static void virt_machine_register_types(void)
  
--#define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
+ type_init(virt_machine_register_types)
+ 
+-#define DEFINE_VIRT_MACHINE(major, minor, latest) \
 -    static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
 -                                                    void *data) \
 +#define DEFINE_VIRT_MACHINE_IMPL(latest, ...) \
@@ -161,11 +165,10 @@ index 3c93c0c0a6..24b104dfa7 100644
 +        void *data) \
      { \
          MachineClass *mc = MACHINE_CLASS(oc); \
-         arm_virt_compat_set(mc); \
 -        virt_machine_##major##_##minor##_options(mc); \
--        mc->desc = "QEMU " # major "." # minor " ARM Virtual Machine"; \
+-        mc->desc = "QEMU " # major "." # minor " M68K Virtual Machine"; \
 +        MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
-+        mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " ARM Virtual Machine"; \
++        mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " M68K Virtual Machine"; \
          if (latest) { \
              mc->alias = "virt"; \
          } \
@@ -175,7 +178,7 @@ index 3c93c0c0a6..24b104dfa7 100644
 +    static const TypeInfo MACHINE_VER_SYM(info, virt, __VA_ARGS__) = \
 +    { \
 +        .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
-         .parent = TYPE_VIRT_MACHINE, \
+         .parent = MACHINE_TYPE_NAME("virt"), \
 -        .class_init = virt_##major##_##minor##_class_init, \
 +        .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
      }; \
@@ -187,16 +190,97 @@ index 3c93c0c0a6..24b104dfa7 100644
      } \
 -    type_init(machvirt_machine_##major##_##minor##_init);
 +    type_init(MACHINE_VER_SYM(register, virt, __VA_ARGS__));
- 
- #define DEFINE_VIRT_MACHINE_AS_LATEST(major, minor) \
--    DEFINE_VIRT_MACHINE_LATEST(major, minor, true)
++
++#define DEFINE_VIRT_MACHINE_AS_LATEST(major, minor) \
 +    DEFINE_VIRT_MACHINE_IMPL(true, major, minor)
- #define DEFINE_VIRT_MACHINE(major, minor) \
--    DEFINE_VIRT_MACHINE_LATEST(major, minor, false)
++#define DEFINE_VIRT_MACHINE(major, minor) \
 +    DEFINE_VIRT_MACHINE_IMPL(false, major, minor)
  
+ static void virt_machine_9_1_options(MachineClass *mc)
+ {
+ }
+-DEFINE_VIRT_MACHINE(9, 1, true)
++DEFINE_VIRT_MACHINE_AS_LATEST(9, 1)
  
- /* Number of external interrupt lines to configure the GIC with */
+ static void virt_machine_9_0_options(MachineClass *mc)
+ {
+     virt_machine_9_1_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_9_0, hw_compat_9_0_len);
+ }
+-DEFINE_VIRT_MACHINE(9, 0, false)
++DEFINE_VIRT_MACHINE(9, 0)
+ 
+ static void virt_machine_8_2_options(MachineClass *mc)
+ {
+     virt_machine_9_0_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_8_2, hw_compat_8_2_len);
+ }
+-DEFINE_VIRT_MACHINE(8, 2, false)
++DEFINE_VIRT_MACHINE(8, 2)
+ 
+ static void virt_machine_8_1_options(MachineClass *mc)
+ {
+     virt_machine_8_2_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_8_1, hw_compat_8_1_len);
+ }
+-DEFINE_VIRT_MACHINE(8, 1, false)
++DEFINE_VIRT_MACHINE(8, 1)
+ 
+ static void virt_machine_8_0_options(MachineClass *mc)
+ {
+     virt_machine_8_1_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_8_0, hw_compat_8_0_len);
+ }
+-DEFINE_VIRT_MACHINE(8, 0, false)
++DEFINE_VIRT_MACHINE(8, 0)
+ 
+ static void virt_machine_7_2_options(MachineClass *mc)
+ {
+     virt_machine_8_0_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+ }
+-DEFINE_VIRT_MACHINE(7, 2, false)
++DEFINE_VIRT_MACHINE(7, 2)
+ 
+ static void virt_machine_7_1_options(MachineClass *mc)
+ {
+     virt_machine_7_2_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_7_1, hw_compat_7_1_len);
+ }
+-DEFINE_VIRT_MACHINE(7, 1, false)
++DEFINE_VIRT_MACHINE(7, 1)
+ 
+ static void virt_machine_7_0_options(MachineClass *mc)
+ {
+     virt_machine_7_1_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_7_0, hw_compat_7_0_len);
+ }
+-DEFINE_VIRT_MACHINE(7, 0, false)
++DEFINE_VIRT_MACHINE(7, 0)
+ 
+ static void virt_machine_6_2_options(MachineClass *mc)
+ {
+     virt_machine_7_0_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_6_2, hw_compat_6_2_len);
+ }
+-DEFINE_VIRT_MACHINE(6, 2, false)
++DEFINE_VIRT_MACHINE(6, 2)
+ 
+ static void virt_machine_6_1_options(MachineClass *mc)
+ {
+     virt_machine_6_2_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_6_1, hw_compat_6_1_len);
+ }
+-DEFINE_VIRT_MACHINE(6, 1, false)
++DEFINE_VIRT_MACHINE(6, 1)
+ 
+ static void virt_machine_6_0_options(MachineClass *mc)
+ {
+     virt_machine_6_1_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
+ }
+-DEFINE_VIRT_MACHINE(6, 0, false)
++DEFINE_VIRT_MACHINE(6, 0)
 -- 
 2.43.0
 

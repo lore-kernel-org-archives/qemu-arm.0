@@ -1,97 +1,124 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp754945ejy;
-        Wed, 1 May 2024 15:12:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWemHIuHtZgpV+vbR59NTLpc0CcX0y09ghmm5660ko6MgdVi3stk2OmuSLX2739I5YNsnEdOQ9fG+skRaJsmsAyh9ZnB39n
-X-Google-Smtp-Source: AGHT+IGjwkeDhPPVM/vJOpNfRd7UESPPCQad+P5lTDHHwOuR+TXqE3gR8wuvF6+Q4fDkPmAdub56
-X-Received: by 2002:a05:6808:4285:b0:3c7:148d:660b with SMTP id dq5-20020a056808428500b003c7148d660bmr269425oib.59.1714601533186;
-        Wed, 01 May 2024 15:12:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714601533; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp642761ejy;
+        Wed, 1 May 2024 11:29:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVBMuOBtAo5XAcaAkcUEJtUtgbsB/gyrYJKFnjbUCkbPBibW731Gg1Rr6wlrQjpIIw9QMoRj+b2I99uA3pCavfL1m3DaNa2
+X-Google-Smtp-Source: AGHT+IEYCNVek6vipwPWwmagZASVK5BPGucKhmzTFEoFXMoZI0jvOGQKN8TthT+c987i9xBngdbv
+X-Received: by 2002:a05:6214:1256:b0:6a0:7d91:19cf with SMTP id r22-20020a056214125600b006a07d9119cfmr4271404qvv.57.1714588147268;
+        Wed, 01 May 2024 11:29:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714588147; cv=none;
         d=google.com; s=arc-20160816;
-        b=qNguE30JEorAjx4Kucg9GTRGNxJ9kxTvmNTRL34lWd8B2E3rNam8TcioKj8B4xvyKy
-         YwGr526GWiqkZbbqgkeVKebhrXb3zR4uNGwcu7Dw+zGWkwChpA9PKFh8CL1ZKvVyESd6
-         CPMLDthX22nlENmeV/EHV3LbZlVay19LeYfeCSllL7ZjNfU0rIttEqCdwDyqoRmSJP7H
-         kJrdykIFHoTcbVEnJbRBtWvM8pXkd92VtMM6BjHLSz43YerPe5BT0F6ztypdE47jXAEr
-         +eDhGiwYQjaN7RPxjsvDIeTyFaMnCxNfQDg9mgASCjh7HYXBFL8ZI2riTrlFSGSB6WzT
-         67bA==
+        b=L8i9VHwiES+JMCWU1af1Yzy/LZMFSiZYQ9iSKnyD91iL2jJ6fGJxD85Sf1fQuZO/b3
+         8SnJVUKNqPBkw8W9WULhMSUVex6kAujUR1AxGUWmGAG6ho/HxZMBcAVhnJoL9/tLeTvn
+         HaIiGexjOFW/G3Uquo6PiHr/hPSY75ilT/1lEVjXnKrEsz5TrkQ9G+YIGHdzdvEjq6T7
+         /4y2WY6WSdy6C2ZvE68dI25+uRLZCFRsTqJRHsuUMobgKF4rOu9/qp1IP+YMfkwHo9p+
+         CmQHon1HkZXHzAexomM2SncG3qHRsze2JlkKPZxMvdCyqGLUDTYRXIWJdJ0D6Zd4bYqx
+         kz5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :references:message-id:in-reply-to:subject:cc:to:from:date
-         :dkim-signature;
-        bh=hZg/dZR0vkvk2HcXhAWlMFGydx9gxdnr+bRvPv7OkAY=;
-        fh=cd/Pd2JYiqD4PIRpN/zWzYUzRciApr1BpTuFdki24A0=;
-        b=rQ9baaqTQGgwR9TlEkILV0sAf+Uw6p/+0A4eXNn73dKfo5TJMZYQ6zWZhAj/Ipm/Cb
-         K4sSZMKgi464HK7ByJ/xCTWV4nAxmzwlZi7aINn2PWzjkxmXL73hjKfNWOK1EguCi3HJ
-         LIa4ALMyo54wgtKhaavtLtIzk1xMDELQUPXBl4Vk1+Zc4inEth2ZYZMYKhGICzYWzw1D
-         l2LMdp7QK/gcO89EWcQvA3uAFzJChJjfOXf3AosxWtOfw4jlkczDbJlzmEd1jcHqYjV6
-         siLr+gdMnAydnRH5ijTD5kKmc0BgemsicudiGxScd4fhNQyXuxKObbU1xTZ9UR8x4thJ
-         WiwA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=mwEVoCc93jx5nfg7NRvnFyOc5Hj+ZUL12dTpbCUFPNw=;
+        fh=+wZQXfkGrDFf08DRkV04g4pIKND0uH82z0Y2PgLJFoY=;
+        b=uJoP9eorlvkIu9DzM1pewAGoi+Pz6nfwL2Apb9rVNbkhq+WsBoa+sEyPUwD02IgMSj
+         BBViEPW5BYjgOn5bp2IqDgbpb3oBEg6OCBwZ54NGHAjiyxtfe/cf+jAIRoo3nGxRmh+w
+         Spnuye+lF6LDStmoBrjfCSlusf1ROCLLZzcQB2g3c5TYFSzqj5XLunTfgHABKKFK/0tu
+         XWKgYCmmszlOWkLWGQsKHRQ8YNcQBg8avycVQ+W/KXv+2ut1qhUUYF+yBb/lgKNLwj8n
+         /LjCPxYuwPcf5t3udkc7jg9vjSFm7GTZ+2wRGoNUaoW1ngvqDsepGraFU8VvHVa9Aww5
+         IZsg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=MDdirIhw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MM4x/c6o";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gw9-20020a0562140f0900b0069b66fdd254si32372170qvb.309.2024.05.01.15.12.13
+        by mx.google.com with ESMTPS id p4-20020a05621421e400b006a0b15f2e59si12257722qvj.431.2024.05.01.11.29.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 May 2024 15:12:13 -0700 (PDT)
+        Wed, 01 May 2024 11:29:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=MDdirIhw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="MM4x/c6o";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s2IBI-0005VB-Bc; Wed, 01 May 2024 18:12:04 -0400
+	id 1s2EhJ-0006Iq-3w; Wed, 01 May 2024 14:28:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
- id 1s2IBH-0005Uz-Ox; Wed, 01 May 2024 18:12:03 -0400
-Received: from dfw.source.kernel.org ([139.178.84.217])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1s2EhH-0006Hw-Ba
+ for qemu-arm@nongnu.org; Wed, 01 May 2024 14:28:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sstabellini@kernel.org>)
- id 1s2IBG-0006aR-2x; Wed, 01 May 2024 18:12:03 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 128006199A;
- Wed,  1 May 2024 22:12:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8BF35C072AA;
- Wed,  1 May 2024 22:11:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1714601519;
- bh=oczYVEObSp0SwvIKnSVleIAmfuVMgFghBTCjRwOLx6c=;
- h=Date:From:To:cc:Subject:In-Reply-To:References:From;
- b=MDdirIhwF+icqMf5tLMx7XIap1CCkJDe5s4NqlnhZk5fHNP8QzgcxzmTfZtujatuL
- /50f+4OCUDA4ZYnQZChhv53/l9oD2Ij2UYYcsiWPDLzqnmCLYH0IYys5gexQBQ3xVW
- 9Km/gIkzVAGi2YmfuKUn1NyvSQmIuq3qsCCgX5kXq+434qFYUrLf/rHi5bAQbz2jar
- odrJ0WbcnNW+0UCSYxinTvax7bXxpKZWUYVIRAYdYKqIQwrHDKXcoBA9OQwIiQMop0
- VehvLlhR/24R+ruQSLDTr5SSPuUSTiT0p0XT0yhhhBD8yg4w4SgP/EaGSW07tsFnq0
- uE6kHxu+Qjlsg==
-Date: Wed, 1 May 2024 15:11:57 -0700 (PDT)
-From: Stefano Stabellini <sstabellini@kernel.org>
-X-X-Sender: sstabellini@ubuntu-linux-20-04-desktop
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-cc: qemu-devel@nongnu.org, sstabellini@kernel.org, jgross@suse.com, 
- "Edgar E. Iglesias" <edgar.iglesias@amd.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v4 17/17] hw/arm: xen: Enable use of grant mappings
-In-Reply-To: <20240430164939.925307-18-edgar.iglesias@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2405011511040.497719@ubuntu-linux-20-04-desktop>
-References: <20240430164939.925307-1-edgar.iglesias@gmail.com>
- <20240430164939.925307-18-edgar.iglesias@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1s2EhE-0003KL-7J
+ for qemu-arm@nongnu.org; Wed, 01 May 2024 14:28:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1714588127;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=mwEVoCc93jx5nfg7NRvnFyOc5Hj+ZUL12dTpbCUFPNw=;
+ b=MM4x/c6oFWivOMOhIgY8W+oNiKFPcElDiolZjl1wEbuklQm3eHWKl3MAtpIZ2fKO6xacQS
+ XqlPfxlzb9pCZso1y8AzFjo3Ao48EmYOc2vyU5nCoqkegn0ddrN+a5rcDG0tFk+AdYcO24
+ fwSbs3WrLEP6mn04Z6vp3ZEn7I1GE8g=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-56-EUIZLs3aOTmTEOZxAnXtDA-1; Wed, 01 May 2024 14:28:45 -0400
+X-MC-Unique: EUIZLs3aOTmTEOZxAnXtDA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EF2471005055;
+ Wed,  1 May 2024 18:28:44 +0000 (UTC)
+Received: from toolbox.redhat.com (unknown [10.42.28.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1E8936958;
+ Wed,  1 May 2024 18:28:32 +0000 (UTC)
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clegoate@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-arm@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 03/14] hw/s390x: convert 'ccw' machine definitions to use new
+ macros
+Date: Wed,  1 May 2024 19:27:48 +0100
+Message-ID: <20240501182759.2934195-4-berrange@redhat.com>
+In-Reply-To: <20240501182759.2934195-1-berrange@redhat.com>
+References: <20240501182759.2934195-1-berrange@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Received-SPF: pass client-ip=139.178.84.217;
- envelope-from=sstabellini@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -79
-X-Spam_score: -8.0
-X-Spam_bar: --------
-X-Spam_report: (-8.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.897,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.897,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,36 +133,349 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZkVeePHUB3ux
+X-TUID: XW5/kRJZw4Xe
 
-On Tue, 30 Apr 2024, Edgar E. Iglesias wrote:
-> From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+This changes the DEFINE_CCW_MACHINE macro to use the common
+helpers for constructing versioned symbol names and strings,
+bringing greater consistency across targets.
 
-Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
+The added benefit is that it avoids the need to repeat the
+version number twice in two different formats in the calls
+to DEFINE_CCW_MACHINE.
 
+A DEFINE_CCW_MACHINE_AS_LATEST helper is added so that it
+is not required to pass 'false' for every single historical
+machine type.
 
-> ---
->  hw/arm/xen_arm.c | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
-> diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
-> index 15fa7dfa84..6fad829ede 100644
-> --- a/hw/arm/xen_arm.c
-> +++ b/hw/arm/xen_arm.c
-> @@ -125,6 +125,11 @@ static void xen_init_ram(MachineState *machine)
->                                   GUEST_RAM1_BASE, ram_size[1]);
->          memory_region_add_subregion(sysmem, GUEST_RAM1_BASE, &ram_hi);
->      }
-> +
-> +    /* Setup support for grants.  */
-> +    memory_region_init_ram(&xen_grants, NULL, "xen.grants", block_len,
-> +                           &error_fatal);
-> +    memory_region_add_subregion(sysmem, XEN_GRANT_ADDR_OFF, &xen_grants);
->  }
->  
->  void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
-> -- 
-> 2.40.1
-> 
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ hw/s390x/s390-virtio-ccw.c | 96 +++++++++++++++++++++-----------------
+ 1 file changed, 53 insertions(+), 43 deletions(-)
+
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index 4dcc213820..9324fecdca 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -15,6 +15,7 @@
+ #include "qapi/error.h"
+ #include "exec/ram_addr.h"
+ #include "exec/confidential-guest-support.h"
++#include "hw/boards.h"
+ #include "hw/s390x/s390-virtio-hcall.h"
+ #include "hw/s390x/sclp.h"
+ #include "hw/s390x/s390_flic.h"
+@@ -832,35 +833,44 @@ bool css_migration_enabled(void)
+     return get_machine_class()->css_migration_enabled;
+ }
+ 
+-#define DEFINE_CCW_MACHINE(suffix, verstr, latest)                            \
+-    static void ccw_machine_##suffix##_class_init(ObjectClass *oc,            \
+-                                                  void *data)                 \
++#define DEFINE_CCW_MACHINE_IMPL(latest, ...)                                  \
++    static void MACHINE_VER_SYM(class_init, ccw, __VA_ARGS__)(                \
++        ObjectClass *oc,                                                      \
++        void *data)                                                           \
+     {                                                                         \
+         MachineClass *mc = MACHINE_CLASS(oc);                                 \
+-        ccw_machine_##suffix##_class_options(mc);                             \
+-        mc->desc = "Virtual s390x machine (version " verstr ")";              \
++        MACHINE_VER_SYM(class_options, ccw, __VA_ARGS__)(mc);                 \
++        mc->desc = "Virtual s390x machine (version " MACHINE_VER_STR(__VA_ARGS__) ")"; \
+         if (latest) {                                                         \
+             mc->alias = "s390-ccw-virtio";                                    \
+             mc->is_default = true;                                            \
+         }                                                                     \
+     }                                                                         \
+-    static void ccw_machine_##suffix##_instance_init(Object *obj)             \
++    static void MACHINE_VER_SYM(instance_init, ccw, __VA_ARGS__)(Object *obj) \
+     {                                                                         \
+         MachineState *machine = MACHINE(obj);                                 \
+-        current_mc = S390_CCW_MACHINE_CLASS(MACHINE_GET_CLASS(machine));          \
+-        ccw_machine_##suffix##_instance_options(machine);                     \
++        current_mc = S390_CCW_MACHINE_CLASS(MACHINE_GET_CLASS(machine));      \
++        MACHINE_VER_SYM(instance_options, ccw, __VA_ARGS__)(machine);         \
+     }                                                                         \
+-    static const TypeInfo ccw_machine_##suffix##_info = {                     \
+-        .name = MACHINE_TYPE_NAME("s390-ccw-virtio-" verstr),                 \
++    static const TypeInfo MACHINE_VER_SYM(info, ccw, __VA_ARGS__) =           \
++    {                                                                         \
++        .name = MACHINE_VER_TYPE_NAME("s390-ccw-virtio", __VA_ARGS__),        \
+         .parent = TYPE_S390_CCW_MACHINE,                                      \
+-        .class_init = ccw_machine_##suffix##_class_init,                      \
+-        .instance_init = ccw_machine_##suffix##_instance_init,                \
++        .class_init = MACHINE_VER_SYM(class_init, ccw, __VA_ARGS__),          \
++        .instance_init = MACHINE_VER_SYM(instance_init, ccw, __VA_ARGS__),    \
+     };                                                                        \
+-    static void ccw_machine_register_##suffix(void)                           \
++    static void MACHINE_VER_SYM(register, ccw, __VA_ARGS__)(void)             \
+     {                                                                         \
+-        type_register_static(&ccw_machine_##suffix##_info);                   \
++        type_register_static(&MACHINE_VER_SYM(info, ccw, __VA_ARGS__));       \
+     }                                                                         \
+-    type_init(ccw_machine_register_##suffix)
++    type_init(MACHINE_VER_SYM(register, ccw, __VA_ARGS__))
++
++#define DEFINE_CCW_MACHINE_AS_LATEST(major, minor) \
++    DEFINE_CCW_MACHINE_IMPL(true, major, minor)
++
++#define DEFINE_CCW_MACHINE(major, minor) \
++    DEFINE_CCW_MACHINE_IMPL(false, major, minor)
++
+ 
+ static void ccw_machine_9_1_instance_options(MachineState *machine)
+ {
+@@ -869,7 +879,7 @@ static void ccw_machine_9_1_instance_options(MachineState *machine)
+ static void ccw_machine_9_1_class_options(MachineClass *mc)
+ {
+ }
+-DEFINE_CCW_MACHINE(9_1, "9.1", true);
++DEFINE_CCW_MACHINE_AS_LATEST(9, 1);
+ 
+ static void ccw_machine_9_0_instance_options(MachineState *machine)
+ {
+@@ -881,7 +891,7 @@ static void ccw_machine_9_0_class_options(MachineClass *mc)
+     ccw_machine_9_1_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_9_0, hw_compat_9_0_len);
+ }
+-DEFINE_CCW_MACHINE(9_0, "9.0", false);
++DEFINE_CCW_MACHINE(9, 0);
+ 
+ static void ccw_machine_8_2_instance_options(MachineState *machine)
+ {
+@@ -893,7 +903,7 @@ static void ccw_machine_8_2_class_options(MachineClass *mc)
+     ccw_machine_9_0_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_8_2, hw_compat_8_2_len);
+ }
+-DEFINE_CCW_MACHINE(8_2, "8.2", false);
++DEFINE_CCW_MACHINE(8, 2);
+ 
+ static void ccw_machine_8_1_instance_options(MachineState *machine)
+ {
+@@ -907,7 +917,7 @@ static void ccw_machine_8_1_class_options(MachineClass *mc)
+     mc->smp_props.drawers_supported = false;
+     mc->smp_props.books_supported = false;
+ }
+-DEFINE_CCW_MACHINE(8_1, "8.1", false);
++DEFINE_CCW_MACHINE(8, 1);
+ 
+ static void ccw_machine_8_0_instance_options(MachineState *machine)
+ {
+@@ -919,7 +929,7 @@ static void ccw_machine_8_0_class_options(MachineClass *mc)
+     ccw_machine_8_1_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_8_0, hw_compat_8_0_len);
+ }
+-DEFINE_CCW_MACHINE(8_0, "8.0", false);
++DEFINE_CCW_MACHINE(8, 0);
+ 
+ static void ccw_machine_7_2_instance_options(MachineState *machine)
+ {
+@@ -931,7 +941,7 @@ static void ccw_machine_7_2_class_options(MachineClass *mc)
+     ccw_machine_8_0_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_7_2, hw_compat_7_2_len);
+ }
+-DEFINE_CCW_MACHINE(7_2, "7.2", false);
++DEFINE_CCW_MACHINE(7, 2);
+ 
+ static void ccw_machine_7_1_instance_options(MachineState *machine)
+ {
+@@ -955,7 +965,7 @@ static void ccw_machine_7_1_class_options(MachineClass *mc)
+     compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
+     s390mc->max_threads = S390_MAX_CPUS;
+ }
+-DEFINE_CCW_MACHINE(7_1, "7.1", false);
++DEFINE_CCW_MACHINE(7, 1);
+ 
+ static void ccw_machine_7_0_instance_options(MachineState *machine)
+ {
+@@ -970,7 +980,7 @@ static void ccw_machine_7_0_class_options(MachineClass *mc)
+     ccw_machine_7_1_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_7_0, hw_compat_7_0_len);
+ }
+-DEFINE_CCW_MACHINE(7_0, "7.0", false);
++DEFINE_CCW_MACHINE(7, 0);
+ 
+ static void ccw_machine_6_2_instance_options(MachineState *machine)
+ {
+@@ -985,7 +995,7 @@ static void ccw_machine_6_2_class_options(MachineClass *mc)
+     ccw_machine_7_0_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_6_2, hw_compat_6_2_len);
+ }
+-DEFINE_CCW_MACHINE(6_2, "6.2", false);
++DEFINE_CCW_MACHINE(6, 2);
+ 
+ static void ccw_machine_6_1_instance_options(MachineState *machine)
+ {
+@@ -1003,7 +1013,7 @@ static void ccw_machine_6_1_class_options(MachineClass *mc)
+     compat_props_add(mc->compat_props, hw_compat_6_1, hw_compat_6_1_len);
+     mc->smp_props.prefer_sockets = true;
+ }
+-DEFINE_CCW_MACHINE(6_1, "6.1", false);
++DEFINE_CCW_MACHINE(6, 1);
+ 
+ static void ccw_machine_6_0_instance_options(MachineState *machine)
+ {
+@@ -1018,7 +1028,7 @@ static void ccw_machine_6_0_class_options(MachineClass *mc)
+     ccw_machine_6_1_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_6_0, hw_compat_6_0_len);
+ }
+-DEFINE_CCW_MACHINE(6_0, "6.0", false);
++DEFINE_CCW_MACHINE(6, 0);
+ 
+ static void ccw_machine_5_2_instance_options(MachineState *machine)
+ {
+@@ -1030,7 +1040,7 @@ static void ccw_machine_5_2_class_options(MachineClass *mc)
+     ccw_machine_6_0_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
+ }
+-DEFINE_CCW_MACHINE(5_2, "5.2", false);
++DEFINE_CCW_MACHINE(5, 2);
+ 
+ static void ccw_machine_5_1_instance_options(MachineState *machine)
+ {
+@@ -1042,7 +1052,7 @@ static void ccw_machine_5_1_class_options(MachineClass *mc)
+     ccw_machine_5_2_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
+ }
+-DEFINE_CCW_MACHINE(5_1, "5.1", false);
++DEFINE_CCW_MACHINE(5, 1);
+ 
+ static void ccw_machine_5_0_instance_options(MachineState *machine)
+ {
+@@ -1054,7 +1064,7 @@ static void ccw_machine_5_0_class_options(MachineClass *mc)
+     ccw_machine_5_1_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+ }
+-DEFINE_CCW_MACHINE(5_0, "5.0", false);
++DEFINE_CCW_MACHINE(5, 0);
+ 
+ static void ccw_machine_4_2_instance_options(MachineState *machine)
+ {
+@@ -1067,7 +1077,7 @@ static void ccw_machine_4_2_class_options(MachineClass *mc)
+     mc->fixup_ram_size = s390_fixup_ram_size;
+     compat_props_add(mc->compat_props, hw_compat_4_2, hw_compat_4_2_len);
+ }
+-DEFINE_CCW_MACHINE(4_2, "4.2", false);
++DEFINE_CCW_MACHINE(4, 2);
+ 
+ static void ccw_machine_4_1_instance_options(MachineState *machine)
+ {
+@@ -1081,7 +1091,7 @@ static void ccw_machine_4_1_class_options(MachineClass *mc)
+     ccw_machine_4_2_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len);
+ }
+-DEFINE_CCW_MACHINE(4_1, "4.1", false);
++DEFINE_CCW_MACHINE(4, 1);
+ 
+ static void ccw_machine_4_0_instance_options(MachineState *machine)
+ {
+@@ -1095,7 +1105,7 @@ static void ccw_machine_4_0_class_options(MachineClass *mc)
+     ccw_machine_4_1_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_4_0, hw_compat_4_0_len);
+ }
+-DEFINE_CCW_MACHINE(4_0, "4.0", false);
++DEFINE_CCW_MACHINE(4, 0);
+ 
+ static void ccw_machine_3_1_instance_options(MachineState *machine)
+ {
+@@ -1111,7 +1121,7 @@ static void ccw_machine_3_1_class_options(MachineClass *mc)
+     ccw_machine_4_0_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_3_1, hw_compat_3_1_len);
+ }
+-DEFINE_CCW_MACHINE(3_1, "3.1", false);
++DEFINE_CCW_MACHINE(3, 1);
+ 
+ static void ccw_machine_3_0_instance_options(MachineState *machine)
+ {
+@@ -1126,7 +1136,7 @@ static void ccw_machine_3_0_class_options(MachineClass *mc)
+     ccw_machine_3_1_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_3_0, hw_compat_3_0_len);
+ }
+-DEFINE_CCW_MACHINE(3_0, "3.0", false);
++DEFINE_CCW_MACHINE(3, 0);
+ 
+ static void ccw_machine_2_12_instance_options(MachineState *machine)
+ {
+@@ -1140,7 +1150,7 @@ static void ccw_machine_2_12_class_options(MachineClass *mc)
+     ccw_machine_3_0_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_2_12, hw_compat_2_12_len);
+ }
+-DEFINE_CCW_MACHINE(2_12, "2.12", false);
++DEFINE_CCW_MACHINE(2, 12);
+ 
+ static void ccw_machine_2_11_instance_options(MachineState *machine)
+ {
+@@ -1161,7 +1171,7 @@ static void ccw_machine_2_11_class_options(MachineClass *mc)
+     compat_props_add(mc->compat_props, hw_compat_2_11, hw_compat_2_11_len);
+     compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
+ }
+-DEFINE_CCW_MACHINE(2_11, "2.11", false);
++DEFINE_CCW_MACHINE(2, 11);
+ 
+ static void ccw_machine_2_10_instance_options(MachineState *machine)
+ {
+@@ -1173,7 +1183,7 @@ static void ccw_machine_2_10_class_options(MachineClass *mc)
+     ccw_machine_2_11_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_2_10, hw_compat_2_10_len);
+ }
+-DEFINE_CCW_MACHINE(2_10, "2.10", false);
++DEFINE_CCW_MACHINE(2, 10);
+ 
+ static void ccw_machine_2_9_instance_options(MachineState *machine)
+ {
+@@ -1197,7 +1207,7 @@ static void ccw_machine_2_9_class_options(MachineClass *mc)
+     compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
+     s390mc->css_migration_enabled = false;
+ }
+-DEFINE_CCW_MACHINE(2_9, "2.9", false);
++DEFINE_CCW_MACHINE(2, 9);
+ 
+ static void ccw_machine_2_8_instance_options(MachineState *machine)
+ {
+@@ -1214,7 +1224,7 @@ static void ccw_machine_2_8_class_options(MachineClass *mc)
+     compat_props_add(mc->compat_props, hw_compat_2_8, hw_compat_2_8_len);
+     compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
+ }
+-DEFINE_CCW_MACHINE(2_8, "2.8", false);
++DEFINE_CCW_MACHINE(2, 8);
+ 
+ static void ccw_machine_2_7_instance_options(MachineState *machine)
+ {
+@@ -1229,7 +1239,7 @@ static void ccw_machine_2_7_class_options(MachineClass *mc)
+     ccw_machine_2_8_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_2_7, hw_compat_2_7_len);
+ }
+-DEFINE_CCW_MACHINE(2_7, "2.7", false);
++DEFINE_CCW_MACHINE(2, 7);
+ 
+ static void ccw_machine_2_6_instance_options(MachineState *machine)
+ {
+@@ -1249,7 +1259,7 @@ static void ccw_machine_2_6_class_options(MachineClass *mc)
+     compat_props_add(mc->compat_props, hw_compat_2_6, hw_compat_2_6_len);
+     compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
+ }
+-DEFINE_CCW_MACHINE(2_6, "2.6", false);
++DEFINE_CCW_MACHINE(2, 6);
+ 
+ static void ccw_machine_2_5_instance_options(MachineState *machine)
+ {
+@@ -1261,7 +1271,7 @@ static void ccw_machine_2_5_class_options(MachineClass *mc)
+     ccw_machine_2_6_class_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_2_5, hw_compat_2_5_len);
+ }
+-DEFINE_CCW_MACHINE(2_5, "2.5", false);
++DEFINE_CCW_MACHINE(2, 5);
+ 
+ static void ccw_machine_2_4_instance_options(MachineState *machine)
+ {
+@@ -1286,7 +1296,7 @@ static void ccw_machine_2_4_class_options(MachineClass *mc)
+     compat_props_add(mc->compat_props, hw_compat_2_4, hw_compat_2_4_len);
+     compat_props_add(mc->compat_props, compat, G_N_ELEMENTS(compat));
+ }
+-DEFINE_CCW_MACHINE(2_4, "2.4", false);
++DEFINE_CCW_MACHINE(2, 4);
+ 
+ static void ccw_machine_register_types(void)
+ {
+-- 
+2.43.0
+

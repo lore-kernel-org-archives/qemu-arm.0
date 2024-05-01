@@ -1,85 +1,83 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp642834ejy;
-        Wed, 1 May 2024 11:29:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX8CSwI++nQIp2RixYFsrpHegQEICdt+wJ22Zmzpz3dePwBaL6ArTkI2lfJVTmDpwzXoL26+mUV8uBojyvZGtyykWfMA4Up
-X-Google-Smtp-Source: AGHT+IGmjWXAKImXAp9zoEr826tTMRm4/Z6DBXLZm9nyMOBDlfKT91iB0xMj2fdTbgwAbALPxNyg
-X-Received: by 2002:a05:6808:1701:b0:3c6:ce0:6820 with SMTP id bc1-20020a056808170100b003c60ce06820mr4339518oib.35.1714588156308;
-        Wed, 01 May 2024 11:29:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714588156; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp642981ejy;
+        Wed, 1 May 2024 11:29:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUcyGOgf2TYybv8F7OBUJuGcDx80SSC3ehK6fjVFgSL/o8aRk8plQHNtMgLympq6/wxoahIvXklTWdOcQgDOX/R33TV9pf6
+X-Google-Smtp-Source: AGHT+IGANlcKgn00ezXXJ2g0zunziIXKxvkWAQryu7bZxjbbAxrpi7aps8AFWnC2YHD/0js3MIib
+X-Received: by 2002:ae9:c01a:0:b0:790:8d49:8929 with SMTP id u26-20020ae9c01a000000b007908d498929mr3176067qkk.25.1714588171755;
+        Wed, 01 May 2024 11:29:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714588171; cv=none;
         d=google.com; s=arc-20160816;
-        b=BA2ejMVLbBfmcjWr2lDnoPyM6/iZLrAQUnnPdJsITqCH69iyRqQJkKYEauANVtVd1z
-         CJ/QuPoGcJlCcAW8Wovb+xVN4AAOyqi+dgYqD0VYchAaJVPlKpwCuYjFPl1ghjrUlaIc
-         roz0tiT/AgtNKxoRaFuWsHP1sxpg7hUck9xSGal0ooX7vt+7qaX+L8vUB5LywEU61mqs
-         mBmsRgnepMFrUJWrYNyLo9F5f2t+pMJmRBF8n810ZE9R8YfO51D1op0HsxGSVAuz2CGq
-         Ji6nrd/8oN23Bn3pq69nToeK4Q4xx2qHAKaY6uZxxjiSQEWYbC9k6LPASYqEVRtU4Pnz
-         Whdg==
+        b=HWKfF1fCSt9asHgO5m4VcMJk8MG87Vtn3WhzikKzEYdMjRn22BPbDo54NkMWyCdclP
+         Y3Nlv8hZpaoXetJ35Wn2scR9TS0M/WwPRdYV0/ir4K+JSGnsJIG3GPQIFCbs5UlA+zsi
+         h252GCoXgkgyyRRCCpPk+odaT241F6rs14754W4U3z/MjQuq/Xddc251Lqgjr98xS9D5
+         iV8yUtMmJeW/ryouEr2mQNta8i6rGvcAiElfiZ5sDj7McNvSkP6HLMPhhCTgww27uD4t
+         iW6vz5w5O1tWQwU9CDprgk3e/pMZGUUYyoNinP9KUmrXErUEG/OF4UjtczCJi8ELiJOx
+         HnYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=vMfJHsYvmobgy61on1Rj2n79uU4DdyDjA58g4hgCPZk=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gto1UuAU9WpqeW8SpTuCOa7URFT6vnbKkqsxudrwjOc=;
         fh=+wZQXfkGrDFf08DRkV04g4pIKND0uH82z0Y2PgLJFoY=;
-        b=NcNp5S7AG8UNiKtYt/KTRAoME5kyNrc8tFbOK2u9n36i/xOFH7LNH0yj9fNNuyvyXy
-         6TTL+/K/477qQxQoZOsYvteLMrDznvkw9RPRJRH/ZEg3+ULbT/wNUaQImrz/PcXwLL2e
-         2Uuizi0cokBvB86yKdjVKk/cJblfY1eBy8U+GQPqj4LabYPAqFy7Xf/EykUejq2jEFrX
-         44GJVWH4fa9iLpKbX4iQPNgJIGt5Rm4S+fqz2N1gx9I4mEKOyXiNDHHzNs9mXgvvlFJo
-         ojZV+VGjuBJ4vi5i183kJJmLS9l0xmm1upVxzEa8zPu8u594f8/rPLYumZOWCVpBabYp
-         q+zg==;
+        b=OHyv8awgQQAOJFkWTYY35KRc5fq8cktsCPWJ7XSp8+DeRRsqpXUwF3+fXsPMAdO8DJ
+         uupDMVg/QVjK1lV1AQzct2UKBUsb4dddXQUPgSehpPSbBqIhs3LiLHFbU2sr5zfGD25w
+         uj//hYk/lQaOvD1uJxwoyoHFShhV/Hb8HA1uTkec7COyltbV6sV7E6gbybFPXYNF+fyL
+         Hz579qyoSkQevmUKavnsYV4B5js/TOW4pYsj9HKEjfMUWrxZV/q9+xRP4uAab0sQCJJJ
+         ynmeYC4sRrtQLpT2FdYJmpV87SoD1g4aiewMCKwTgSkOvXjgjS5P5xxlhy4OTzYpleYc
+         B3QA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WNokclXk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=csfH74ad;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id js14-20020a0562142aae00b006a0c44254b4si9264431qvb.198.2024.05.01.11.29.16
+        by mx.google.com with ESMTPS id wi22-20020a05620a571600b0078f04a6ac98si30602580qkn.321.2024.05.01.11.29.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 May 2024 11:29:16 -0700 (PDT)
+        Wed, 01 May 2024 11:29:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WNokclXk;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=csfH74ad;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s2Eh1-00069e-9Y; Wed, 01 May 2024 14:28:35 -0400
+	id 1s2Egq-000678-5d; Wed, 01 May 2024 14:28:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2Egy-000682-52
- for qemu-arm@nongnu.org; Wed, 01 May 2024 14:28:32 -0400
+ id 1s2Ego-00065k-Pc
+ for qemu-arm@nongnu.org; Wed, 01 May 2024 14:28:22 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2Egw-0003HE-Aj
- for qemu-arm@nongnu.org; Wed, 01 May 2024 14:28:31 -0400
+ id 1s2Egl-0003GH-H5
+ for qemu-arm@nongnu.org; Wed, 01 May 2024 14:28:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714588109;
+ s=mimecast20190719; t=1714588098;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vMfJHsYvmobgy61on1Rj2n79uU4DdyDjA58g4hgCPZk=;
- b=WNokclXkdD7V4ASF825n3+j3x5vn5zqAazKQq/yhUg8629hDXK/xzBs66YgUzW6SoCGEGR
- hWJ3RKxYP5qDtS0cKX27OfGSS9DlTnz3LbPFFQ7rdPmKIokfwP//Yqb/IBbK69cDS2kYgY
- rC56jM8x53TFct5/M3fQBUz9e8MZaLM=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-217-ShCAsNVtMimk0zYHe1Sygg-1; Wed,
- 01 May 2024 14:28:24 -0400
-X-MC-Unique: ShCAsNVtMimk0zYHe1Sygg-1
+ content-transfer-encoding:content-transfer-encoding;
+ bh=gto1UuAU9WpqeW8SpTuCOa7URFT6vnbKkqsxudrwjOc=;
+ b=csfH74adve1nvCvp8+DNt7CRi/ben62xv9ki6tMlyDl8xFvqrWUmmn0uG8YVzAEaTZQBdA
+ BCObfwLv3a3fj5aMOdeRtdfMiYfhmyyodOgCqjbbfISX4GCzAcT+a9UgsfAm1MAOCXUG3s
+ lN24e7Em0Iw5xiS6iR4DqOV6a9TxI5E=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-311-Gyrs1OTHPbqoj5064iKzkg-1; Wed, 01 May 2024 14:28:14 -0400
+X-MC-Unique: Gyrs1OTHPbqoj5064iKzkg-1
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
  [10.11.54.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 39577380390B;
- Wed,  1 May 2024 18:28:23 +0000 (UTC)
-Received: from toolbox.redhat.com (unknown [10.42.28.121])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8FABE6958;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5313F80591B;
  Wed,  1 May 2024 18:28:13 +0000 (UTC)
+Received: from toolbox.redhat.com (unknown [10.42.28.121])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6CD01151EF;
+ Wed,  1 May 2024 18:28:05 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
@@ -100,14 +98,12 @@ Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 01/14] include/hw: add helpers for defining versioned machine
- types
-Date: Wed,  1 May 2024 19:27:46 +0100
-Message-ID: <20240501182759.2934195-2-berrange@redhat.com>
-In-Reply-To: <20240501182759.2934195-1-berrange@redhat.com>
-References: <20240501182759.2934195-1-berrange@redhat.com>
+Subject: [PATCH 00/14] hw: define and enforce a standard lifecycle for
+ versioned machines
+Date: Wed,  1 May 2024 19:27:45 +0100
+Message-ID: <20240501182759.2934195-1-berrange@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
@@ -133,197 +129,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e/rbmv6xC/p6
+X-TUID: 2OOv6mC8j21x
 
-The various targets which define versioned machine types have
-a bunch of obfuscated macro code for defining unique function
-and variable names using string concatenation.
+Thomas proposed a new deprecation and removal policy for versioned
+machine types that would see them liable for deletion after 6 years:
 
-This addes a couple of helpers to improve the clarity of such
-code macro.
+  https://lists.nongnu.org/archive/html/qemu-devel/2024-04/msg04683.html
 
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
----
- include/hw/boards.h | 166 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 166 insertions(+)
+This suggest was met with broad approval, however, I suggested that we
+could take it further and actually mark them deprecated sooner, at the
+3 year timeframe, and also fully automate the enablement of the runtime
+deprecation warning without developer intervention on every release
+cycle.
 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 2fa800f11a..47ca450fca 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -414,6 +414,172 @@ struct MachineState {
-     struct NumaState *numa_state;
- };
- 
-+/*
-+ * The macros which follow are intended to facilitate the
-+ * definition of versioned machine types, using a somewhat
-+ * similar pattern across targets:
-+ *
-+ *  #define DEFINE_VIRT_MACHINE_IMPL(latest, ...) \
-+ *      static void MACHINE_VER_SYM(class_init, virt, __VA_ARGS__)( \
-+ *          ObjectClass *oc, \
-+ *          void *data) \
-+ *      { \
-+ *          MachineClass *mc = MACHINE_CLASS(oc); \
-+ *          MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
-+ *          mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " Virtual Machine"; \
-+ *          if (latest) { \
-+ *              mc->alias = "virt"; \
-+ *          } \
-+ *      } \
-+ *      static const TypeInfo MACHINE_VER_SYM(info, virt, __VA_ARGS__) = { \
-+ *          .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
-+ *          .parent = TYPE_VIRT_MACHINE, \
-+ *          .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
-+ *      }; \
-+ *      static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
-+ *      { \
-+ *          type_register_static(&MACHINE_VER_SYM(info, virt, __VA_ARGS__)); \
-+ *      } \
-+ *      type_init(MACHINE_VER_SYM(register, virt, __VA_ARGS__));
-+ *
-+ * Following this, one (or more) helpers can be added for
-+ * whichever scenarios need to be catered for with a machine:
-+ *
-+ *  // Normal 2 digit, marked as latest eg 'virt-9.0'
-+ *  #define DEFINE_VIRT_MACHINE_LATEST(major, minor) \
-+ *      DEFINE_VIRT_MACHINE_IMPL(true, major, minor)
-+ *
-+ *  // Normal 2 digit eg 'virt-9.0'
-+ *  #define DEFINE_VIRT_MACHINE(major, minor) \
-+ *      DEFINE_VIRT_MACHINE_IMPL(false, major, minor)
-+ *
-+ *  // Bugfix 3 digit  eg 'virt-9.0.1'
-+ *  #define DEFINE_VIRT_MACHINE_BUGFIX(major, minor, micro) \
-+ *      DEFINE_VIRT_MACHINE_IMPL(false, major, minor, micro)
-+ *
-+ *  // Tagged 2 digit  eg 'virt-9.0-extra'
-+ *  #define DEFINE_VIRT_MACHINE_TAGGED(major, minor, tag) \
-+ *      DEFINE_VIRT_MACHINE_IMPL(false, major, minor, _, tag)
-+ *
-+ *  // Tagged bugffix 2 digit  eg 'virt-9.0.1-extra'
-+ *  #define DEFINE_VIRT_MACHINE_TAGGED(major, minor, micro, tag) \
-+ *      DEFINE_VIRT_MACHINE_IMPL(false, major, minor, micro, _, tag)
-+ */
-+
-+#define _MACHINE_VER_PICK(x1, x2, x3, x4, x5, x6, ...) x6
-+
-+/*
-+ * Construct a human targetted machine version string.
-+ *
-+ * Can be invoked with various signatures
-+ *
-+ *  MACHINE_VER_STR(sym, prefix, major, minor)
-+ *  MACHINE_VER_STR(sym, prefix, major, minor, micro)
-+ *  MACHINE_VER_STR(sym, prefix, major, minor, _, tag)
-+ *  MACHINE_VER_STR(sym, prefix, major, minor, micro, _, tag)
-+ *
-+ * Respectively emitting symbols with the format
-+ *
-+ *   "{major}.{minor}"
-+ *   "{major}.{minor}-{tag}"
-+ *   "{major}.{minor}.{micro}"
-+ *   "{major}.{minor}.{micro}-{tag}"
-+ */
-+#define _MACHINE_VER_STR2(major, minor) \
-+    #major "." #minor
-+
-+#define _MACHINE_VER_STR3(major, minor, micro) \
-+    #major "." #minor "." #micro
-+
-+#define _MACHINE_VER_STR4(major, minor, _unused_, tag) \
-+    #major "." #minor "-" #tag
-+
-+#define _MACHINE_VER_STR5(major, minor, micro, _unused_, tag) \
-+    #major "." #minor "." #micro "-" #tag
-+
-+#define MACHINE_VER_STR(...) \
-+    _MACHINE_VER_PICK(__VA_ARGS__, \
-+                      _MACHINE_VER_STR5, \
-+                      _MACHINE_VER_STR4, \
-+                      _MACHINE_VER_STR3, \
-+                      _MACHINE_VER_STR2) (__VA_ARGS__)
-+
-+
-+/*
-+ * Construct a QAPI type name for a versioned machine
-+ * type
-+ *
-+ * Can be invoked with various signatures
-+ *
-+ *  MACHINE_VER_TYPE_NAME(prefix, major, minor)
-+ *  MACHINE_VER_TYPE_NAME(prefix, major, minor, micro)
-+ *  MACHINE_VER_TYPE_NAME(prefix, major, minor, _, tag)
-+ *  MACHINE_VER_TYPE_NAME(prefix, major, minor, micro, _, tag)
-+ *
-+ * Respectively emitting symbols with the format
-+ *
-+ *   "{prefix}-{major}.{minor}"
-+ *   "{prefix}-{major}.{minor}.{micro}"
-+ *   "{prefix}-{major}.{minor}-{tag}"
-+ *   "{prefix}-{major}.{minor}.{micro}-{tag}"
-+ */
-+#define _MACHINE_VER_TYPE_NAME2(prefix, major, minor)   \
-+    prefix "-" #major "." #minor TYPE_MACHINE_SUFFIX
-+
-+#define _MACHINE_VER_TYPE_NAME3(prefix, major, minor, micro) \
-+    prefix "-" #major "." #minor "." #micro TYPE_MACHINE_SUFFIX
-+
-+#define _MACHINE_VER_TYPE_NAME4(prefix, major, minor, _unused_, tag) \
-+    prefix "-" #major "." #minor "-" #tag TYPE_MACHINE_SUFFIX
-+
-+#define _MACHINE_VER_TYPE_NAME5(prefix, major, minor, micro, _unused_, tag) \
-+    prefix "-" #major "." #minor "." #micro "-" #tag TYPE_MACHINE_SUFFIX
-+
-+#define MACHINE_VER_TYPE_NAME(prefix, ...) \
-+    _MACHINE_VER_PICK(__VA_ARGS__, \
-+                      _MACHINE_VER_TYPE_NAME5, \
-+                      _MACHINE_VER_TYPE_NAME4, \
-+                      _MACHINE_VER_TYPE_NAME3, \
-+                      _MACHINE_VER_TYPE_NAME2) (prefix, __VA_ARGS__)
-+
-+/*
-+ * Construct a name for a versioned machine type that is
-+ * suitable for use as a C symbol (function/variable/etc).
-+ *
-+ * Can be invoked with various signatures
-+ *
-+ *  MACHINE_VER_SYM(sym, prefix, major, minor)
-+ *  MACHINE_VER_SYM(sym, prefix, major, minor, micro)
-+ *  MACHINE_VER_SYM(sym, prefix, major, minor, _, tag)
-+ *  MACHINE_VER_SYM(sym, prefix, major, minor, micro, _, tag)
-+ *
-+ * Respectively emitting symbols with the format
-+ *
-+ *   {prefix}_machine_{major}_{minor}_{sym}
-+ *   {prefix}_machine_{major}_{minor}_{micro}_{sym}
-+ *   {prefix}_machine_{major}_{minor}_{tag}_{sym}
-+ *   {prefix}_machine_{major}_{minor}_{micro}_{tag}_{sym}
-+ */
-+#define _MACHINE_VER_SYM2(sym, prefix, major, minor) \
-+    prefix ## _machine_ ## major ## _ ## minor ## _ ## sym
-+
-+#define _MACHINE_VER_SYM3(sym, prefix, major, minor, micro) \
-+    prefix ## _machine_ ## major ## _ ## minor ## _ ## micro ## _ ## sym
-+
-+#define _MACHINE_VER_SYM4(sym, prefix, major, minor, _unused_, tag) \
-+    prefix ## _machine_ ## major ## _ ## minor ## _ ## tag ## _ ## sym
-+
-+#define _MACHINE_VER_SYM5(sym, prefix, major, minor, micro, _unused_, tag) \
-+    prefix ## _machine_ ## major ## _ ## minor ## _ ## micro ## _ ## tag ## _ ## sym
-+
-+#define MACHINE_VER_SYM(sym, prefix, ...) \
-+    _MACHINE_VER_PICK(__VA_ARGS__, \
-+                      _MACHINE_VER_SYM5, \
-+                      _MACHINE_VER_SYM4, \
-+                      _MACHINE_VER_SYM3, \
-+                      _MACHINE_VER_SYM2) (sym, prefix, __VA_ARGS__)
-+
-+
- #define DEFINE_MACHINE(namestr, machine_initfn) \
-     static void machine_initfn##_class_init(ObjectClass *oc, void *data) \
-     { \
+This series implements my suggestions.
+
+The first patch introduces some helper macros and documents a standard
+code pattern for defining versioned machine types across targets.
+
+The next 6 patches convert existing targets with versioned machine
+types (arm, s390x, ppc, m68k, i386) to use the new helper macros and
+code patterns.
+
+A further patch introduces some helper macros for automating the
+handling of deprecation and deletion of versioned machine types.
+
+Two more patches then enable the deprecation and deletion logic
+across all versioned machines
+
+Finally we do some cleanup and document the new policy.
+
+........a tangent about VERSION file handling.......
+
+One oddity here, is that during the development and release
+candidate phases the automatic logic in this series has an off-by-1
+error.
+
+This is because when we, for example, add the "9.1" machine type
+versions, the VERSION file is still reporting '9.0.50', and then
+'9.0.9{1,2,3,4}'.
+
+IOW, during development and in rc candidates, we fail to deprecate
+and delete 1 machine type. We should already have deprecated the
+6.1 machine types, but the most recently deprecated is 6.0.
+This is pretty harmless since the final release does the right
+thing.
+
+I wonder, however, whether we would benefit from changing how we
+update the VERSION file.
+
+eg instead of re-using the micro digit to indicate a dev or rc
+snapshot, represent those explicitly. eg "9.1.0-dev" and
+"9.1.0-rc1", "9.1.0-rc2", etc in VERSION.
+
+We don't use the full QEMU_VERSION in the code in all that many
+places. It appears in some help messages for command line tools,
+and in QMP query-version response, and in a few other misc places.
+At a glance it appears all of those places would easily handle a
+tagged version.
+
+For release candidates in particular I think it would be saner
+to show the user the actual version the release is about to become,
+rather than the previous release's version. This would make the
+reported version match the rc tarball naming too which would be
+nice.
+
+Anyway, this isn't a blocker for this machine type versioning
+proposal, just a thought....
+
+Daniel P. Berrangé (14):
+  include/hw: add helpers for defining versioned machine types
+  hw/arm: convert 'virt' machine definitions to use new macros
+  hw/s390x: convert 'ccw' machine definitions to use new macros
+  hw/ppc: convert 'spapr' machine definitions to use new macros
+  hw/m68k: convert 'virt' machine definitions to use new macros
+  hw/i386: convert 'i440fx' machine definitions to use new macros
+  hw/i386: convert 'q35' machine definitions to use new macros
+  include/hw: add macros for deprecation & removal of versioned machines
+  hw: temporarily disable deletion of versioned machine types
+  hw: set deprecation info for all versioned machine types
+  hw: skip registration of outdated versioned machine types
+  hw/ppc: remove obsolete manual deprecation reason string of spapr
+    machines
+  hw/i386: remove obsolete manual deprecation reason string of i440fx
+    machines
+  docs: document special exception for machine type deprecation &
+    removal
+
+ docs/about/deprecated.rst  |  12 ++
+ hw/arm/virt.c              |  30 +++--
+ hw/i386/pc_piix.c          | 252 +++++++++++++++-------------------
+ hw/i386/pc_q35.c           | 215 +++++++++++++----------------
+ hw/m68k/virt.c             |  53 +++++---
+ hw/ppc/spapr.c             |  96 +++++++------
+ hw/s390x/s390-virtio-ccw.c |  98 ++++++++------
+ include/hw/boards.h        | 268 +++++++++++++++++++++++++++++++++++++
+ include/hw/i386/pc.h       |  32 +++++
+ 9 files changed, 666 insertions(+), 390 deletions(-)
+
 -- 
 2.43.0
 

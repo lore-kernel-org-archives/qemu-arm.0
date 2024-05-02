@@ -1,124 +1,156 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp645489ejy;
-        Wed, 1 May 2024 11:33:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXtzuw00Od/jm6kCd7NnsR8LIEhiP2Fo8W+t0EnxEEha2yMSFONuu/FpyDD7qha4rgfHSQ4BobEXGn6y38tfMIlLBBfEKMO
-X-Google-Smtp-Source: AGHT+IGRVHXnV9ZtFaO+r9cLPI4rRyWyjsFR7KMeMnLmPZeY2w7uIt4OYX9dKY773evsitarWF3O
-X-Received: by 2002:a05:622a:11c9:b0:43c:7444:d69c with SMTP id n9-20020a05622a11c900b0043c7444d69cmr3839735qtk.20.1714588427920;
-        Wed, 01 May 2024 11:33:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714588427; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp925494ejy;
+        Wed, 1 May 2024 22:13:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCV0Ck9rx8g+C9qul8Ktcwq6iehWX4kFvBeMOrsboAQ5/b+GsLQl6a2gF5X2y884yOc+vZbCfZmlfB38av+e81T23s791RKd
+X-Google-Smtp-Source: AGHT+IFLCXvi9NB1X5HbV/cVc1KR22unP+1aniBNUmQLSWK6wK0algw8DYepkR/r2hESVITN59YY
+X-Received: by 2002:a05:6214:1bc6:b0:6a0:c9ef:3aae with SMTP id m6-20020a0562141bc600b006a0c9ef3aaemr5960281qvc.23.1714626806606;
+        Wed, 01 May 2024 22:13:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1714626806; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ip2VS6GfcqoVkQ7FxZ+vlCxApBUdmTxkhlmuBYR5DAPjVnSWd3QEKP4xILYB6grlR+
-         FQyVPbaDyrbkE6aQlz9EkRr+deC+VelzL3RWYXTEd3eN2X7+2yXAd8jNcvYwm4llg1ZL
-         u42//SUu5mRILRAzRphGZMIR03tQpo0yaUB8TfiTLw+QzQjK4cJWdZtHVQzz8m4ju/wq
-         fNsUCdhHLWWGrYHo8hoik2/kmouxTF7Spyp5lJP8kQvvXH5/cvvwGWo6JflZ4eyCNCC0
-         7ZFgTJR1OxLV4H/OCjG2S2waVvCtS1SixbVecHO/M2O/qfzIHoH9cMGZ44DQPjliZaKU
-         ZZKw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=YEVQtYEn2aYkNtXaPiMgPyiGDqeqDcedobWKqG5P+8lWV/dd8q9mVQO9fJjdVGomtD
+         DC7GwOBj2qRMK9KwHJ7KfmDUpq+wN+exrkyBp6DMJ1L55iYuw0bgyT5Xwq8Bcrkocnqx
+         +jzAOzgXbF6s7vL8TYXRjIPoulUCx2oL/Z+yyNaL3BU0q5wdPLjuQX4/NQpYCEgdUOBz
+         PWY2t9NapyWvR0n7TOEzPnDFVI7Hm/yJnGJkrlhmpDGCvIu8yYZaTsWwNrZHhHMJvgoR
+         hIsJErwoF2CPFZQ5ZkqfkXjQPkiDMRQ/DU/b2KcZf1pGgS8msECQC68m2eYW15NLl+dG
+         pniA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=51PhOxKstr+7jPXShqzPTAd2+/6hX1EMNZeg4zocuws=;
-        fh=+wZQXfkGrDFf08DRkV04g4pIKND0uH82z0Y2PgLJFoY=;
-        b=tv7D87/IvVHYCeirNjOqZaeOUfem7j6MlCJRC5L2DWQ1uN5xe+GcGeW0mC7SEoy2h1
-         tnfDb5X5d7klB5Ojwkn3C4Cm6Zjd+d3ZVMRRqMysgg6O0v76LhNuSF42u5Xcbky1mt9P
-         wfU21Wmzvh0BejBit/8D/yR3FxivhC0OnrKZZSVjNZRCl7dwtqttNqC4KyBl74RcY6Fz
-         84PUtRtOij68wEQMG3+SXQx9ThaYgIYQi+DrZ3ZItZdKP38nU4SO3NzwhYdvUu5YX6Ek
-         LM4HurabEnRo0piCPIbCjz4v2APzUUugKs4ezYR7FVrJe/lmjj49XyNJ8BtCCa3q48Xe
-         nFWw==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from;
+        bh=Q54FDq+8bs+b114HtEAaw7nfwzff5x34MXrTihyiRk8=;
+        fh=BPqx+tT0l4/T42nLjlbaMbNPkbDvuI5V4MIQ4GAZFPU=;
+        b=hVix8XrVwpCkarO+7/KJjDqe3PbMa4CQRR7zhpm81zMZxiTvOlb4ieeNpWRXiPVp/8
+         jEygUWuwCzdxLEcme/f+XmoautiZgkXObbTrz+mTXRtJacozt46EqwqYBVZDFjOx7yqt
+         eZDg4SjTGB0nlxJ2BURbvqRipzHpUe9+pgKzPqreCj1RzM63zoJQAIJZeGIHVKyDZb5U
+         ZLyu+bJXxrzFL5bnXV1lfvtmmLBUkYgAW0NsqvDwyuznrejTIi0U8VVsK4NnsJMXk7l4
+         ro5wf8tXO4Fi3zaSLPwrn2ROJmie03JynA5TwiVKBu8QRJSLURUwyRa9gBM+KTVGuYiN
+         xzPg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xc2naGBy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id bb5-20020a05622a1b0500b0043ad8617ee9si8454387qtb.792.2024.05.01.11.33.47
+        by mx.google.com with ESMTPS id fo13-20020ad45f0d000000b006a0af70629asi182741qvb.584.2024.05.01.22.13.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 01 May 2024 11:33:47 -0700 (PDT)
+        Wed, 01 May 2024 22:13:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xc2naGBy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s2EiD-0007os-RM; Wed, 01 May 2024 14:29:49 -0400
+	id 1s2Okj-0000jb-1m; Thu, 02 May 2024 01:13:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2EiB-0007aw-T3
- for qemu-arm@nongnu.org; Wed, 01 May 2024 14:29:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
+ id 1s2Okh-0000jK-9L; Thu, 02 May 2024 01:13:03 -0400
+Received: from mail-bjschn02on2070a.outbound.protection.partner.outlook.cn
+ ([2406:e500:4440:2::70a]
+ helo=CHN02-BJS-obe.outbound.protection.partner.outlook.cn)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2Ei9-0003Rh-5M
- for qemu-arm@nongnu.org; Wed, 01 May 2024 14:29:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714588184;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=51PhOxKstr+7jPXShqzPTAd2+/6hX1EMNZeg4zocuws=;
- b=Xc2naGByFKQpB3yGVQFz9SrzM2L2Ca04od1Yjps1Xlcaj5SQhnB2OzB9olGG8FuaE/NYyW
- tsF4cTfcNDdrooDLWGMzgDvl5YrCFKy2yU8FL3/YLRLLgvsz9h7I495nPPVHrsZYwZ9DIz
- k5zBdaD9+r5gjhGQAmFTUysWMgZoG2w=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-522-8JKz4Z3gO1eUAlJNRoh1nA-1; Wed,
- 01 May 2024 14:29:40 -0400
-X-MC-Unique: 8JKz4Z3gO1eUAlJNRoh1nA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 89B523C02747;
- Wed,  1 May 2024 18:29:39 +0000 (UTC)
-Received: from toolbox.redhat.com (unknown [10.42.28.121])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DD4E0AC69;
- Wed,  1 May 2024 18:29:29 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clegoate@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-arm@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 09/14] hw: temporarily disable deletion of versioned machine
- types
-Date: Wed,  1 May 2024 19:27:54 +0100
-Message-ID: <20240501182759.2934195-10-berrange@redhat.com>
-In-Reply-To: <20240501182759.2934195-1-berrange@redhat.com>
-References: <20240501182759.2934195-1-berrange@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
+ id 1s2Okd-0005U9-PY; Thu, 02 May 2024 01:13:02 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WBAze7vF/rH7/QSD9PiQLhrE+gOZ3lyUwYes27K9pJQmcqJOwc1BRUqObMhsRBZuyEaytFAiUzcRxX/xuaoCw91pVFvfVz/H8HKZxS8GtN6hp91C9vx1ARMpZhhnAucVS+zqvZO/VUi8F4QyhulO1nrl3mLwG2eAKB8XCOniPxNkGGoAQb6tVvRcyJ0CaBFJto4DR5B+RRBuOAdIK2u7SAo9FZCQIZPvK8eXHtx7/pJupEHJDWtXGMzzcvL6jiOQAK+NxUZG/ZA6TbkppiLUSX6bk/DvkAhkkbC9TLKCFeLXSYPe7HgHUUq0z3QFA0Ldyi5XDodrqkbLtQEa+ZiDqQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Q54FDq+8bs+b114HtEAaw7nfwzff5x34MXrTihyiRk8=;
+ b=aFecPfcEKA0Fk15yzsh6qnfAk5/KOPfJNXBvfXxHHepmPjdn51hXEHxJEXxv8twmzhsoMhB6RC/+RLi47Wgt9AOjpZ3wZzNp8QkN5Enpicvz7H/+08tM8Jt2ciPFh4wzUtD+yRG27Igtai3CUwlsHzAiGgl4Ojwp+ljtS2z1Ay/7nhR0tVXgpJsRfbCltU28629HcfJX9uw+8vAYKz4oihECs44DaRNqS0Ruma8S9XgrF1EIt48UrPMsi01RgfzICi/QNa0LLgHJ9wHfFnzNRB/3GII7n12UxTSd4w7Q9J6J6PkdqmIy3uuaxW6T07zlgE9257dA68wzUSmXq5FGjQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=starfivetech.com; dmarc=pass action=none
+ header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=starfivetech.com;
+Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c510:12::10) by NT0PR01MB0973.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c510:6::7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.33; Thu, 2 May
+ 2024 05:12:47 +0000
+Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
+ ([fe80::e604:661e:e939:4c87]) by
+ NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn ([fe80::e604:661e:e939:4c87%4])
+ with mapi id 15.20.7472.044; Thu, 2 May 2024 05:12:47 +0000
+From: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	qemu-riscv@nongnu.org
+Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
+ peter.maydell@linaro.org, jeeheng.sia@starfivetech.com,
+ shannon.zhaosl@gmail.com, sunilvl@ventanamicro.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
+Subject: [PATCH v1 0/2] Upgrade ACPI SPCR table to support SPCR table version
+ 4 format
+Date: Wed,  1 May 2024 22:12:31 -0700
+Message-Id: <20240502051233.50749-1-jeeheng.sia@starfivetech.com>
+X-Mailer: git-send-email 2.34.1
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.897,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-ClientProxiedBy: BJXPR01CA0051.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c211:12::18) To NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c510:12::10)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: NT0PR01MB1278:EE_|NT0PR01MB0973:EE_
+X-MS-Office365-Filtering-Correlation-Id: 22f1d692-c7ec-4d5a-85c5-08dc6a6681b1
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: euLL5ZDJ6zC08cKWP2gxpmUNTEG5NAC7ld03won4btD36bk8+BgjWPtdkmG4dmVvp2oOu+xR/mjxIaK/hF5Vat2+7z+lKW8GvUvGA6bpm8PoK9CZjng4NTs8+B5JLHKbj9ci044/1hgV9u1+9VYwZsmyIrcs2vcR7dojYMeGtCgltXFVOWJs9hyeINFFN1UBWUCIyIZZf3qO07h8W0p50TrAnwCiKUg6daT3SMi9lHJ1axxzK6VhOWLTxXo44QiGu6KhfCFYjCGZW+mzeLdT9Za1rBxUUyqab/itFNxWyZn4N0L7j3ZXqCi4724Y4oXp10Rdf14vXHt7wGKHaaBnTzSrN24b3ZtExhDqW3yncLdap3QwC28AWyYxOl36etzumoKZcoCd+TAPWDlKG9p44S5aKhCGgPNPeUUy1R5QUWX+er2X0uuqCexrpoW/fMMjC5JErLY0tQdHMPQOYhrfGRUwDTPPoBWI5yctqjSomKaNk042mv7DBzloFGzfxRNTjjahwBFzCvMH7lbWi/TXpdnoBUelwgMadMn0Z5DwgKYLmnL1GthbWRi1t1QaciLIU8g/b5lb2V1n2Q8KlpelYMoW6Cfibic4Ys5kb5U52wcvNvsKT92f3MxIu5dHFGC/
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn; PTR:;
+ CAT:NONE;
+ SFS:(13230031)(7416005)(41320700004)(366007)(52116005)(1800799015)(38350700005);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NySLDAjr1r7MgrcNxB4vHmNKzPIGfOAlBYXSwz9W6WgNd3qLDQ1OspHXiJQR?=
+ =?us-ascii?Q?QtiElPb0+1bHAYjuVZU5kny6Zb3VjGfEs0h/YIB7ABp3sSCohS3rynN5xtGy?=
+ =?us-ascii?Q?e4rQ61weq0Hh3Z7wbiEFcJAZLWZfC60ReW31Yj8ObatI4s4aFumIP69UT4hj?=
+ =?us-ascii?Q?LxqWvgiGZ9ALhe+dXUy251SVrD1KSPVEggz62W+3+QBU00wA8BwRzVsRT37u?=
+ =?us-ascii?Q?zs1C8XWzALunYcZm3li32uPHNStPtcjF4yeRoc9stu77lGv+i4ORDOLIwALB?=
+ =?us-ascii?Q?DDucKNSYWvfl/ojV17xMkqlJU/0OwTaW2u93OSxblf5A1G9omw5Amp4o1gHb?=
+ =?us-ascii?Q?57FRGt6dm+vXxZpz9nZ7qFXnyj46tqo+bfDSOg2ki0S4B40JSETnftCcv/qv?=
+ =?us-ascii?Q?IYGowjokD8R0R8Uz7ehPBQas0V6wk+5ugmpkkhC89QvjQllY4+mVC0vvxR0T?=
+ =?us-ascii?Q?Q8RioDfp28s4ecZTiVy/nV3XnrckKw/VYfCsT1itahW278HwNjxlGg7Sw+4q?=
+ =?us-ascii?Q?wwTFAukXVo6Umso4EjLBNbuLb6VB+zu3K7Yi81BFRay1Xa42xfAQpI5PQUJi?=
+ =?us-ascii?Q?JI0F3xv1A0qd8VFLaMjL3rrHAr4Hoc9+IYjGw0Sv51ZqDbSWkiMGcgoZdioO?=
+ =?us-ascii?Q?NbqHE/IqsXxOdi9KNCkvutNOqGfGIPO1wbhoidXXoUD9g6PPrlGsBL5dbqE/?=
+ =?us-ascii?Q?G5X37ZDySUkfELhNAjLRP/lxE5rf0JC50+4JFH8N3X96GNHid0D82WRUJMWa?=
+ =?us-ascii?Q?lVpXW7CMqp8y1c235zDOExmxUQaV0qNe8mtqlg3CDEEdGdPdt8rtES8Imlnj?=
+ =?us-ascii?Q?syP09/hVBNxCQkUwLe6Pvh3DGtosF3+xpu/FqazeUFgMvAgFR7Kh4G+Po2iH?=
+ =?us-ascii?Q?4NwusL7LJ7tooiOle+nxK7yLyRgHkIs2Ag/YUNrXVHK4JU+c7etTjF4/1Mxi?=
+ =?us-ascii?Q?HMgIwmCO8eUazoR6bPOLPM2qVqWeSunQ4hIBnMvnQ+bdIQgvGul4aswFMGGb?=
+ =?us-ascii?Q?goXhax56RcmcVXwHTimOxEw21pLT9cdLpkxq+vA56gotG6PzAzYjrc3QnRV+?=
+ =?us-ascii?Q?D978499+akyi8Fz6dAbynebIJmSVnqfy0lqiY416Jn0BnatwxrNl5bIB0GSE?=
+ =?us-ascii?Q?ZQjiC4F8REjChHRitUfaKGtO0FTjwM4rfuPbwRhAFczZt9lt145DrY8dTAXh?=
+ =?us-ascii?Q?LYq6mOJnHtX6sR/lg29LAFT1wHpvtz5OaQ5bFzRRr57cBdtI6ACeY5AkphTj?=
+ =?us-ascii?Q?wswX6NA6IhXtnQLYj8ieN9rsdFHKKfeUW3zK70LafVsmjhfLbQVR6k1znf/u?=
+ =?us-ascii?Q?lrP85VBX46qxRl+THTBC2GCEKOMdwilWsujxbtzbL0fLciKTnJqvnzSOpZL3?=
+ =?us-ascii?Q?mJqSqIMApi10DoS3g667tXgekeQkZBgFtIyTURa7DtSeJgmsuV9Myzw4clud?=
+ =?us-ascii?Q?UEF7XHdUoRECr1rHj+ksh17DuydL7RDKk7RZzHivqgy5g3h3EgUE2eYYeqlJ?=
+ =?us-ascii?Q?8v+n60eUlcn5xXUFoA49r+izfhn7Yfe9hDjXQIR3ur37y2WHSCdM4jhv/QM8?=
+ =?us-ascii?Q?6MGnTVImZHTX4U9AMrb8mc+TvO/IGqnoLoO2w81xlk84zoASkZ6rQQNKmgyS?=
+ =?us-ascii?Q?Ew=3D=3D?=
+X-OriginatorOrg: starfivetech.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 22f1d692-c7ec-4d5a-85c5-08dc6a6681b1
+X-MS-Exchange-CrossTenant-AuthSource: NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 May 2024 05:12:47.6185 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: y2fAWPnqdmgZxN9PNRF4IH8cZtqFiQnpdnAChXmbcRHF/Pks+DkudzBrUs6+mQ/5w8pdPRZqstxZl/5h8a06yn1TUIuYMzDJKZpebPR+FjM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: NT0PR01MB0973
+Received-SPF: pass client-ip=2406:e500:4440:2::70a;
+ envelope-from=jeeheng.sia@starfivetech.com;
+ helo=CHN02-BJS-obe.outbound.protection.partner.outlook.cn
+X-Spam_score_int: 1
+X-Spam_score: 0.1
+X-Spam_bar: /
+X-Spam_report: (0.1 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, URI_TRY_3LD=1.997 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,62 +165,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2BnmSjOELdSy
+X-TUID: +c0EyPDwRql6
 
-The new deprecation and deletion policy for versioned machine types is
-being introduced in QEMU 9.1.0.
+Update the SPCR table to accommodate the SPCR Table version 4 [1].
+The SPCR table has been modified to adhere to the version 4 format [2].
 
-Under the new policy a number of old machine types (any prior to 2.12)
-would be liable for immediate deletion which would be a violation of our
-historical deprecation and removal policy
+Meanwhile, the virt SPCR golden reference files have been updated to
+accommodate the SPCR Table version 4.
 
-Thus automatic deletions (by skipping QOM registration) are temporarily
-gated on existance of the env variable "QEMU_DELETE_MACHINES" / QEMU
-version number >= 10.1.0. This allows opt-in testing of the automatic
-deletion logic, while activating it fully in QEMU >= 10.1.0.
+[1]: https://learn.microsoft.com/en-us/windows-hardware/drivers/serports/serial-port-console-redirection-table
+[2]: https://github.com/acpica/acpica/pull/931
 
-This whole commit should be reverted in the 10.1.0 dev cycle or shortly
-thereafter.
+Sia Jee Heng (2):
+  tests/qtest/bios-tables-test: Update virt SPCR golden references
+  hw/acpi: Upgrade ACPI SPCR table to support SPCR table version 4
+    format
 
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
----
- include/hw/boards.h | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
+ hw/acpi/aml-build.c         |  14 +++++++++++---
+ hw/arm/virt-acpi-build.c    |  10 ++++++++--
+ hw/riscv/virt-acpi-build.c  |  10 ++++++++--
+ include/hw/acpi/acpi-defs.h |   7 +++++--
+ include/hw/acpi/aml-build.h |   2 +-
+ tests/data/acpi/virt/SPCR   | Bin 80 -> 90 bytes
+ 6 files changed, 33 insertions(+), 10 deletions(-)
 
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 48b6c98c77..d6214007ce 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -657,10 +657,28 @@ struct MachineState {
-         } \
-     } while (0)
- 
-+/*
-+ * The new deprecation and deletion policy for versioned
-+ * machine types was introduced in QEMU 9.1.0.
-+ *
-+ * Under the new policy a number of old machine types (any
-+ * prior to 2.12) would be liable for immediate deletion
-+ * which would be a violation of our historical deprecation
-+ * and removal policy
-+ *
-+ * Thus deletions are temporarily gated on existance of
-+ * the env variable "QEMU_DELETE_MACHINES" / QEMU version
-+ * number >= 10.1.0. This gate can be deleted in the 10.1.0
-+ * dev cycle
-+ */
- #define MACHINE_VER_DELETION(...) \
-     do { \
-         if (MACHINE_VER_SHOULD_DELETE(__VA_ARGS__)) { \
--            return; \
-+            if (getenv("QEMU_DELETE_MACHINES") || \
-+                QEMU_VERSION_MAJOR > 10 || (QEMU_VERSION_MAJOR == 10 && \
-+                                            QEMU_VERSION_MINOR >= 1)) { \
-+                return; \
-+            } \
-         } \
-     } while (0)
- 
+
+base-commit: 4977ce198d2390bff8c71ad5cb1a5f6aa24b56fb
 -- 
-2.43.0
+2.34.1
 

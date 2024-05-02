@@ -1,130 +1,88 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1128451ejy;
-        Thu, 2 May 2024 05:16:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVEniN6e+5nSVTB6o05j+43/ISUZsoMULHWVoTie+HFH3+LudKzbaoZc/7CyCerA4CMZB3hRwAoNNR4XfwcFf2swBIecsSW
-X-Google-Smtp-Source: AGHT+IFZLKAvrdtIGM2/zHeprpZTUIsAvbCDQ4eYdzqrN2YDQq2YASmSH1iaV+FSWRhqrMmc50Qk
-X-Received: by 2002:a05:651c:218:b0:2e1:f6f7:89c7 with SMTP id y24-20020a05651c021800b002e1f6f789c7mr797925ljn.49.1714652202271;
-        Thu, 02 May 2024 05:16:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714652202; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1216046ejy;
+        Thu, 2 May 2024 07:17:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXxMWRB5l16k067KsJefJq+whKtSys6PPtKrUZ1Bp3NBEV6GX7mYrBQt4XvyVvhAxHyzJKjc2vzHYoA//rXYdEbUPiN3ghz
+X-Google-Smtp-Source: AGHT+IHM7dwZOWzkMqyaAGxANHopMua94BoZD6ZxNlu7pVZcOJOXCrUi+GXR18QmQywQbgMBTUcW
+X-Received: by 2002:a05:6808:8d8:b0:3c6:d99:41e9 with SMTP id k24-20020a05680808d800b003c60d9941e9mr6466073oij.38.1714659465019;
+        Thu, 02 May 2024 07:17:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714659464; cv=none;
         d=google.com; s=arc-20160816;
-        b=iHkKY+a7GG2Mwg9+3GbLr8V3mBfkfPFC77g03SjluZ/bEAj6U8PSaZgYvmtTOOrm9b
-         wPifeVeWLmsIYDIHQ3OxFmw+J6C5ns/qYC0N17Vf2BdPW1/uKksPfZLH0lqZhYfD1niW
-         /9K4sekW00y0qW0QvZQqK6WzXquRnZCaQ928ZsNa/tioOkHs4QO3XLx+ti3HpEK3La8x
-         yo92NKz8KXSWD9Q5Tffq8ba/Nmc7S52NloY9l8QFLvTwGQ0FPiymecAt5jyGoenQ+lAY
-         VQvhOMEfY641M7NAmUrEoWMqKTLiGT573Rfi6jj42ZTnZ5/rz8KDEHqXJ0yMNy8Z5GXy
-         2FLg==
+        b=Z88EQ4MnuMbbYM1ch7B69lsOMXJJdHjWYkNyvm2UCNlrzDbv4zl8PqYeCuQ4UUSBoC
+         epgl4DXoWqpiIe302TtttPRDEFrFNOEqWEkXjZV1cnF51sAR03dLAgQVeo9EPttia9zn
+         x96VPcdsHfmMMYR75aNYfzxaFzneY+3Wzuyul5FvAjVzu9rww9UL+e4F0M6MoINyMXhr
+         0hF6SFWieg0a0HQD/A1npF6qLTYIl9QmOSTLSvxI380Z4v/xrSYl2AZ8se9OHrlYHEJS
+         6oMXcvxUqNQLxqmZL0iizxNz20cw/h2VBtqp2UYcSC9ebTf8aVLUO7JHIgIJDrkH0NzG
+         ZeKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=dMYitP7Vq+BpFO1f6Ueqlnu4u7GGKKaZQULRhMdXP4o=;
-        fh=22r/u9W3d3xxxbdkFqCcgOHpeWRzCRJRnyquRaklBog=;
-        b=X9Oo24n+xeiFPFWK1VCzZlV4SZoKyIX7eoCaK/CtIdzKGAXo+irgkAkJZzb12jPRCw
-         QQRKNr1ttuCCq0ZNKWUkeAeKRinqDioa2a17uTwxz+VA8B61BzsYDroyrDDdU80Pxnkv
-         ZO+QkpBfJdMJS8ki8TqZUpx0KoiM4ab2udV5XsNDGCglq193iNS1agmmfX4QB+UHiV3O
-         CZHJvHxTAhDELd6O034/kTqvC7nNKBchokZh9sQ+ktA6Kn2JX7Db2oc5ddP/11JqCqaa
-         QqAKsgrBDxfPNTH5MiIMIUg0jfvHFHkvUUE74curBBcwgeYGkuXOncdot8SAZGPFrOdb
-         rggg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=QQhCd6TB3bv0Dadliv/SsXe0dKxIU48vwgSftt+edzI=;
+        fh=/0MHjUAmI/wL40Gy3mvvC19IqtVRkTQxODnHjMieUFU=;
+        b=bdQ9hhgcunjQm2KwHjpOJoUmTKc79O4g027flIDsxnYwaMq6Vdp0ADRcBOJWH4uXOT
+         9a/6JxQnlE3cl/Fa4iJrsrvVD/5T2pZanyOitN+D+gFPuutmGSAYrwAmDq+UZmO8ZMOa
+         sype0tFI4vU0+jjeHTiiwfGohvFxRy7VM1jSjeqfp164mmfHCAy4EIRXrRmjLPzvjnLl
+         rH4i1B2S05Zzbg9qvJlK/MmSitPhahrilSSSOR5FGkGzVo4x44wVNk8oGNc9SkeZFH0r
+         OwwvdOPeCRgBHfeaSdBRyndn4D68GMaYGB5MeiEuA0w3HluPbRt+eBn8+Rwg0EHnf/g5
+         e0xg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zx0o1gSZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id fc10-20020a05600c524a00b0041c7c1ff121si650264wmb.148.2024.05.02.05.16.42
+        by mx.google.com with ESMTPS id is23-20020a0561026a9700b0047c544d8936si171650vsb.500.2024.05.02.07.17.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 May 2024 05:16:42 -0700 (PDT)
+        Thu, 02 May 2024 07:17:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zx0o1gSZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s2VM8-0008V7-42; Thu, 02 May 2024 08:16:08 -0400
+	id 1s2XFK-0002uy-R3; Thu, 02 May 2024 10:17:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2VM4-0008T9-Fl
- for qemu-arm@nongnu.org; Thu, 02 May 2024 08:16:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
+ id 1s2XFG-0002uG-Ck; Thu, 02 May 2024 10:17:10 -0400
+Received: from new-mail.astralinux.ru ([51.250.53.244])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2VLv-0001RV-Ut
- for qemu-arm@nongnu.org; Thu, 02 May 2024 08:16:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714652154;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dMYitP7Vq+BpFO1f6Ueqlnu4u7GGKKaZQULRhMdXP4o=;
- b=Zx0o1gSZJ1NMILGP+W3SQejKdKK9kKZ9p7ak0vGG7K+a9k7xvL7eP3vAYw2k08qutgxypd
- I+7ukpFfj3H/2weBkUKyIetT/05r2LJtiGiRjnYzll91kHddtqsCeIHJ2/ih490AfGIP+e
- 9wJM3cT5j5zkOGDHhmlp5IaRvWdO5HA=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-43-JDDgPq6LMye7SwQfj6dGwA-1; Thu,
- 02 May 2024 08:15:50 -0400
-X-MC-Unique: JDDgPq6LMye7SwQfj6dGwA-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A728B299E746;
- Thu,  2 May 2024 12:15:49 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.138])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3F916492BC7;
- Thu,  2 May 2024 12:15:46 +0000 (UTC)
-Date: Thu, 2 May 2024 13:15:44 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clegoate@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org
-Subject: Re: [PATCH 13/14] hw/i386: remove obsolete manual deprecation reason
- string of i440fx machines
-Message-ID: <ZjOD8CpDVRV_OW-F@redhat.com>
-References: <20240501182759.2934195-1-berrange@redhat.com>
- <20240501182759.2934195-14-berrange@redhat.com>
- <500cec2c-a598-4185-b275-a1435a848c88@redhat.com>
+ (Exim 4.90_1) (envelope-from <adiupina@astralinux.ru>)
+ id 1s2XFB-0007KH-OS; Thu, 02 May 2024 10:17:09 -0400
+Received: from rbta-msk-lt-302690.astralinux.ru (unknown [10.177.234.226])
+ by new-mail.astralinux.ru (Postfix) with ESMTPA id 4VVbbQ6mlnzlVth;
+ Thu,  2 May 2024 17:16:50 +0300 (MSK)
+From: Alexandra Diupina <adiupina@astralinux.ru>
+To: Alistair Francis <alistair@alistair23.me>
+Cc: Alexandra Diupina <adiupina@astralinux.ru>,
+ "Konrad, Frederic" <Frederic.Konrad@amd.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, sdl.qemu@linuxtesting.org
+Subject: [PATCH v5] xlnx_dpdma: fix descriptor endianness bug
+Date: Thu,  2 May 2024 17:16:28 +0300
+Message-Id: <20240502141628.28103-1-adiupina@astralinux.ru>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <87y18u3hjf.fsf@draig.linaro.org>
+References: 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <500cec2c-a598-4185-b275-a1435a848c88@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.476,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-DrWeb-SpamScore: -100
+X-DrWeb-SpamState: legit
+X-DrWeb-SpamDetail: gggruggvucftvghtrhhoucdtuddrgedvfedrvdehuddgtddvucetufdoteggodetrfcurfhrohhfihhlvgemucfftfghgfeunecuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvfevufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpeetlhgvgigrnhgurhgrucffihhuphhinhgruceorgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhuqeenucggtffrrghtthgvrhhnpeefkedufedvkeffuedtgfdugeeutdegvdffffejfffgleffieduhfejvdelffdvudenucffohhmrghinheplhhinhhugihtvghsthhinhhgrdhorhhgnecukfhppedutddrudejjedrvdefgedrvddvieenucfrrghrrghmpehhvghloheprhgsthgrqdhmshhkqdhlthdqfedtvdeiledtrdgrshhtrhgrlhhinhhugidrrhhupdhinhgvthepuddtrddujeejrddvfeegrddvvdeimeegudehfeegpdhmrghilhhfrhhomheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhnsggprhgtphhtthhopeekpdhrtghpthhtoheprghlihhsthgrihhrsegrlhhishhtrghirhdvfedrmhgvpdhrtghpthhtoheprgguihhuphhinhgrsegrshhtrhgrlhhinhhugidrrhhupdhrtghpthhtohephfhrvgguvghrihgtrdfmohhnrhgrugesrghmugdrtghomhdprhgtphhtthhopegvughgrghrrdhighhlvghsihgrshesghhmrghilhdrtghomhdprhgtphhtth
+ hopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdprhgtphhtthhopehsughlrdhqvghmuheslhhinhhugihtvghsthhinhhgrdhorhhg
+X-DrWeb-SpamVersion: Vade Retro 01.423.251#02 AS+AV+AP Profile: DRWEB;
+ Bailout: 300
+X-AntiVirus: Checked by Dr.Web [MailD: 11.1.19.2307031128,
+ SE: 11.1.12.2210241838, Core engine: 7.00.62.01180, Virus records: 12656802,
+ Updated: 2024-May-02 12:36:40 UTC]
+Received-SPF: pass client-ip=51.250.53.244;
+ envelope-from=adiupina@astralinux.ru; helo=new-mail.astralinux.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,62 +95,121 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +xMEs2E4GVnF
+X-TUID: c12pI8VTIO/6
 
-On Thu, May 02, 2024 at 02:08:58PM +0200, Thomas Huth wrote:
-> On 01/05/2024 20.27, Daniel P. Berrangé wrote:
-> > The automatic deprecation mechanism introduced in the preceeding patches
-> > will mark every i440fx machine upto and including 2.12 as deprecated. As
-> > such we can revert the manually added deprecation which was a subset:
-> > 
-> >    commit c7437f0ddb8ee45bf96d949ddfcbb7697ae3d415
-> >    Author: Thomas Huth <thuth@redhat.com>
-> >    Date:   Fri Oct 6 09:52:47 2023 +0200
-> > 
-> >      docs/about: Mark the old pc-i440fx-2.0 - 2.3 machine types as deprecated
-> > 
-> > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> > ---
-> >   hw/i386/pc_piix.c | 1 -
-> >   1 file changed, 1 deletion(-)
-> > 
-> > diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> > index 9f92504cc4..4137e03f6f 100644
-> > --- a/hw/i386/pc_piix.c
-> > +++ b/hw/i386/pc_piix.c
-> > @@ -812,7 +812,6 @@ static void pc_i440fx_machine_2_3_options(MachineClass *m)
-> >   {
-> >       pc_i440fx_machine_2_4_options(m);
-> >       m->hw_version = "2.3.0";
-> > -    m->deprecation_reason = "old and unattended - use a newer version instead";
-> >       compat_props_add(m->compat_props, hw_compat_2_3, hw_compat_2_3_len);
-> >       compat_props_add(m->compat_props, pc_compat_2_3, pc_compat_2_3_len);
-> >   }
-> 
-> This will conflict with Philippe's "hw/i386: Remove deprecated pc-i440fx-2.0
-> -> 2.3 machines" patch series (which should easy to resolve, though).
+Add xlnx_dpdma_read_descriptor() and
+xlnx_dpdma_write_descriptor() functions.
+xlnx_dpdma_read_descriptor() combines reading a
+descriptor from desc_addr by calling dma_memory_read()
+and swapping the desc fields from guest memory order
+to host memory order. xlnx_dpdma_write_descriptor()
+performs similar actions when writing a descriptor.
 
-Yep, there are a few places in my series which will conflict with
-that.
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
 
-I've just looked at Philippe's code and everything has at least
-one R-b. I had a minor comment but I could address that in this
-series.
+Fixes: d3c6369a96 ("introduce xlnx-dpdma")
+Signed-off-by: Alexandra Diupina <adiupina@astralinux.ru>
+---
+v5: fix subject and make xlnx_dpdma_write_descriptor() not void
+v4: remove rewriting desc in place
+v3: add xlnx_dpdma_write_descriptor()
+v2: minor changes in xlnx_dpdma_read_descriptor()
+ hw/dma/xlnx_dpdma.c | 66 ++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 62 insertions(+), 4 deletions(-)
 
-IOW, ideally we could merge Philippe's series now, to reduce
-code in flight touching the same areas.
-
-> Anyway:
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> 
-
-With regards,
-Daniel
+diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c
+index 1f5cd64ed1..f582c1a085 100644
+--- a/hw/dma/xlnx_dpdma.c
++++ b/hw/dma/xlnx_dpdma.c
+@@ -614,6 +614,63 @@ static void xlnx_dpdma_register_types(void)
+     type_register_static(&xlnx_dpdma_info);
+ }
+ 
++static MemTxResult xlnx_dpdma_read_descriptor(XlnxDPDMAState *s,
++                                    uint64_t desc_addr, DPDMADescriptor *desc)
++{
++    MemTxResult res = dma_memory_read(&address_space_memory, desc_addr,
++                &desc, sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED);
++    if (res) {
++        return res;
++    }
++
++    /* Convert from LE into host endianness.  */
++    desc->control = le32_to_cpu(desc->control);
++    desc->descriptor_id = le32_to_cpu(desc->descriptor_id);
++    desc->xfer_size = le32_to_cpu(desc->xfer_size);
++    desc->line_size_stride = le32_to_cpu(desc->line_size_stride);
++    desc->timestamp_lsb = le32_to_cpu(desc->timestamp_lsb);
++    desc->timestamp_msb = le32_to_cpu(desc->timestamp_msb);
++    desc->address_extension = le32_to_cpu(desc->address_extension);
++    desc->next_descriptor = le32_to_cpu(desc->next_descriptor);
++    desc->source_address = le32_to_cpu(desc->source_address);
++    desc->address_extension_23 = le32_to_cpu(desc->address_extension_23);
++    desc->address_extension_45 = le32_to_cpu(desc->address_extension_45);
++    desc->source_address2 = le32_to_cpu(desc->source_address2);
++    desc->source_address3 = le32_to_cpu(desc->source_address3);
++    desc->source_address4 = le32_to_cpu(desc->source_address4);
++    desc->source_address5 = le32_to_cpu(desc->source_address5);
++    desc->crc = le32_to_cpu(desc->crc);
++
++    return res;
++}
++
++static MemTxResult xlnx_dpdma_write_descriptor(uint64_t desc_addr,
++                                                DPDMADescriptor *desc)
++{
++    DPDMADescriptor tmp_desc = *desc;
++
++    /* Convert from host endianness into LE.  */
++    tmp_desc.control = cpu_to_le32(tmp_desc.control);
++    tmp_desc.descriptor_id = cpu_to_le32(tmp_desc.descriptor_id);
++    tmp_desc.xfer_size = cpu_to_le32(tmp_desc.xfer_size);
++    tmp_desc.line_size_stride = cpu_to_le32(tmp_desc.line_size_stride);
++    tmp_desc.timestamp_lsb = cpu_to_le32(tmp_desc.timestamp_lsb);
++    tmp_desc.timestamp_msb = cpu_to_le32(tmp_desc.timestamp_msb);
++    tmp_desc.address_extension = cpu_to_le32(tmp_desc.address_extension);
++    tmp_desc.next_descriptor = cpu_to_le32(tmp_desc.next_descriptor);
++    tmp_desc.source_address = cpu_to_le32(tmp_desc.source_address);
++    tmp_desc.address_extension_23 = cpu_to_le32(tmp_desc.address_extension_23);
++    tmp_desc.address_extension_45 = cpu_to_le32(tmp_desc.address_extension_45);
++    tmp_desc.source_address2 = cpu_to_le32(tmp_desc.source_address2);
++    tmp_desc.source_address3 = cpu_to_le32(tmp_desc.source_address3);
++    tmp_desc.source_address4 = cpu_to_le32(tmp_desc.source_address4);
++    tmp_desc.source_address5 = cpu_to_le32(tmp_desc.source_address5);
++    tmp_desc.crc = cpu_to_le32(tmp_desc.crc);
++
++    return dma_memory_write(&address_space_memory, desc_addr, &tmp_desc,
++                            sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED);
++}
++
+ size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
+                                     bool one_desc)
+ {
+@@ -651,8 +708,7 @@ size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
+             desc_addr = xlnx_dpdma_descriptor_next_address(s, channel);
+         }
+ 
+-        if (dma_memory_read(&address_space_memory, desc_addr, &desc,
+-                            sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED)) {
++        if (xlnx_dpdma_read_descriptor(s, desc_addr, &desc)) {
+             s->registers[DPDMA_EISR] |= ((1 << 1) << channel);
+             xlnx_dpdma_update_irq(s);
+             s->operation_finished[channel] = true;
+@@ -755,8 +811,10 @@ size_t xlnx_dpdma_start_operation(XlnxDPDMAState *s, uint8_t channel,
+             /* The descriptor need to be updated when it's completed. */
+             DPRINTF("update the descriptor with the done flag set.\n");
+             xlnx_dpdma_desc_set_done(&desc);
+-            dma_memory_write(&address_space_memory, desc_addr, &desc,
+-                             sizeof(DPDMADescriptor), MEMTXATTRS_UNSPECIFIED);
++            if (xlnx_dpdma_write_descriptor(desc_addr, &desc)) {
++                DPRINTF("Can't write the descriptor.\n");
++                break;
++            }
+         }
+ 
+         if (xlnx_dpdma_desc_completion_interrupt(&desc)) {
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.30.2
 

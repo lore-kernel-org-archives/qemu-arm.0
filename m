@@ -1,100 +1,121 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1089644ejy;
-        Thu, 2 May 2024 04:13:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWATkd4xGyyB61wYLoWNyywfDGQWpFzZQ4z7UqUZWIDhc8bGi/DERFl5SLCNae+OmrY0SNSwhBwaFhYSqKwOtJm71qPzmIR
-X-Google-Smtp-Source: AGHT+IEigSTu0dCML6X/kgOAvPRra9omvWcfNMiXyb2Alzxi7IzTUI+h3ypQAjIErhljB2aU7UKL
-X-Received: by 2002:ac8:5d0e:0:b0:43c:60ba:81ab with SMTP id f14-20020ac85d0e000000b0043c60ba81abmr6637579qtx.28.1714648419408;
-        Thu, 02 May 2024 04:13:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714648419; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1079918ejy;
+        Thu, 2 May 2024 03:59:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXIhTq/moiXGJcyhnjBJIMzcaNBRSLqjgj6dupqU0OWlt6cicKJlmWQ5bUtfNYGcTPD478EUELR58+rxeKTwCwgjQeAEabA
+X-Google-Smtp-Source: AGHT+IFRgC/q0B3csAdAIb9onvGnzxKsLxfhUMsQZDmFpAzWK4TWOXcqQ9j6wdSpTnvFPktW9Ylh
+X-Received: by 2002:a05:6870:80c6:b0:222:7000:8b28 with SMTP id r6-20020a05687080c600b0022270008b28mr2044771oab.32.1714647573639;
+        Thu, 02 May 2024 03:59:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714647573; cv=none;
         d=google.com; s=arc-20160816;
-        b=cn0Y/jkPcbRaWJrR1wC88pId2YevC5tb8lXE20kuKCIELw+ueJrF1qtzkSgt1SuWu7
-         VZ0dDWdB99PEx/MvhPlgfgQZwXOAEC4sg5jrmlGJ0PDtGdwZLPys99JZamKNaJ5SwexW
-         X4fsxVoJcN4COKO4iYRrtCz/PUPvTXnbocsM/AF+FZ0dQZFUB2aGc0WR0ljLQmflZDqH
-         UVPSsChQ63DwVhzEumhzDdy1/3FcwuX50nlxT7w5dyp8wWtm2rosWoUcHwrqo8zmceOQ
-         BKM/HJtlryXMLEH2iZQKcK/RbjpEmnNElBGvrUo6/YTj9R/b/ZvU2fGHBITGTx9ZQDHm
-         kPTw==
+        b=qXcFZ8WPO0JDkQCB/tTDQJOcyrNS/IkrDdSvX/gibfWUhyCCwVd2mcN5rC0IRuL6GW
+         W0Acu4m6DVNsN3eXbH0E5CaDZC/sKNhvJtMQpdoki+NcwY7bUOvggSmXVaaFqrcXQaLe
+         MW6nIY33+wI6cHdeVajW1LfTzyZVkBQ83HyJByQLAf0o3MmM+tOBOFAZ+EpcwxgRuaQe
+         +3YOeER5xE9UZRsycGGHXiI05q/PHj8HlbBX7KLg0b9eTuKkz9KljXqPpgj6k/DOCg6a
+         2S7AoWogoGn06XzOme95qSCrl5wE7jUuoaL79TupqYRkdENOGOPxbjx9vqL/s2hgGF0R
+         gJ/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=ReHaOmtWkCTZ24YOjUrIFzDhCHIV1mhDRW5EQbEV5Gs=;
-        fh=Ms16QcKpU70eAate/Hw38VHfo2hdtf7uGlCRNNJz0FA=;
-        b=QcHOYsYehmAv2f90Cc/dIkBpHsIkNt1Z1tgEo9NBRuhk0wrncD4ylSbVR3tmCpLy+a
-         fFyT+LPxmcjrwPM7eO7hhz3xE1hSEaB4aBSwCosnFZUNOTo6TOrP/H++EPTU52ezn5Eg
-         lVrq9jMs2ROMRkdg/GgGDl5iLykQCcgOXBmYWPUbVK7R/UFYpcfgwDkwU0sOaP39XqHO
-         4v/IorXD3aCT3ELpCWSPxN4/ou2wrNrgLW4XhdU5fH40sHWI7R38dHAJY1LtBHovFVGJ
-         eTQ/0FfhELeAr3iwz/4VnCZKPio+q90xk/k4LX70sQhuxllT390WTLWoJHkxaKqvJrSI
-         dlBQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=EMx6e38IioNt1LAbYe0rkYAfMHsQHYA4fbzbwZk7bkY=;
+        fh=xI5z+Y394CAEq5bKKCJ/wcjSiI43GqJMwsU3Zer5Ztg=;
+        b=Nuq2PaBjeFMd2w12xu547cJWnsNoebSjRID05MY0oNePXzC2aNCKogeCCKmTBzyU5Y
+         54hQvaJtYxdB8u7YnhreCD60QMk9k7S9YvIOmyIRskoiUt0tKajeOKS9Z9MPp0EXKAvV
+         3s8C1RoqpjFBrYv5imiZsK0fGLzSmBAB0ooKjjoRnoH4Z5ycslq+LYENQL4xg9jDgaQV
+         O4hb2gbcuHqV28muvDCNXsOFpyQVDgQFtz43KYNLr4GfGieKM6bmgwKTx5wcH7Pl9TMH
+         OtuLfpslNgsqn6XFCVgi131KwSPkZenAf4DiaiIzanbx3FZZW2jdYzoIF+rLbRntsjiQ
+         83lA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fB6dZ91A;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Izen9Xnd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q19-20020a05622a04d300b00437a0620a47si699841qtx.566.2024.05.02.04.13.39
+        by mx.google.com with ESMTPS id e25-20020a05620a209900b007906785ebbbsi637658qka.716.2024.05.02.03.59.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 May 2024 04:13:39 -0700 (PDT)
+        Thu, 02 May 2024 03:59:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fB6dZ91A;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Izen9Xnd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s2UNO-0001li-UT; Thu, 02 May 2024 07:13:24 -0400
+	id 1s2U9p-0003Bn-Nl; Thu, 02 May 2024 06:59:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2UNN-0001kr-O5
- for qemu-arm@nongnu.org; Thu, 02 May 2024 07:13:21 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2U9n-0003Ar-7M
+ for qemu-arm@nongnu.org; Thu, 02 May 2024 06:59:19 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2UNJ-0005sZ-1v
- for qemu-arm@nongnu.org; Thu, 02 May 2024 07:13:21 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2U9l-0003BQ-Ev
+ for qemu-arm@nongnu.org; Thu, 02 May 2024 06:59:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714648395;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1714647553;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ReHaOmtWkCTZ24YOjUrIFzDhCHIV1mhDRW5EQbEV5Gs=;
- b=fB6dZ91ANqt+8Ol7q7V6NzqL8kbs+GGDGs8CW25SVor/lCapl1rj37NgO0WuK7ey4CeubO
- SLakQVZjqD21Ow+rm2GTKPGcVX91JUuzU+hUO+9q/7yi8g+n1hJ7FG7xc6Z2heMzmznkRK
- dfIg12FminDtKH53e2dkKhiY7UIEkYc=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-691-TFpbQAWgOiiiWtx94Bj1RA-1; Thu,
- 02 May 2024 07:13:12 -0400
-X-MC-Unique: TFpbQAWgOiiiWtx94Bj1RA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 39B8F299E74B;
- Thu,  2 May 2024 11:13:11 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.138])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id BFB21EC682;
- Thu,  2 May 2024 11:13:07 +0000 (UTC)
-Date: Thu, 2 May 2024 12:13:05 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=EMx6e38IioNt1LAbYe0rkYAfMHsQHYA4fbzbwZk7bkY=;
+ b=Izen9XndZ2kwEDHXgywWnp/Tql5osOV+9jS4sHuAxu1Nkuje/gtN0TDhIEXy9Kdr5qprMb
+ UX5umX2If3z5VDm4FDj/jWE/CZNnv8YUSzfTCZq+GSHcQEf4c703nu0ocUWAxQD57l3F6Y
+ cBqG9LJssLmuB05QxjK0R+QScqKuv5E=
+Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
+ [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-623-cjeOCpcwOcaXIQ7s61WOLA-1; Thu, 02 May 2024 06:59:12 -0400
+X-MC-Unique: cjeOCpcwOcaXIQ7s61WOLA-1
+Received: by mail-lj1-f200.google.com with SMTP id
+ 38308e7fff4ca-2da2f30cb50so68199561fa.2
+ for <qemu-arm@nongnu.org>; Thu, 02 May 2024 03:59:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1714647550; x=1715252350;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=EMx6e38IioNt1LAbYe0rkYAfMHsQHYA4fbzbwZk7bkY=;
+ b=xHJVXy1wtvJQBg77H/Rj4RVc7+Fk0xWV95/8XnTl14qYfAlU+FUMgxr+2tXfdPH8Vw
+ rIeazCR94d1+Eg48jGFQCDkTi7ng60w7Wgb3l3pQm3GOaKgT6OwNtBLriNLGlWc5IDnt
+ MB6Z7d01FhypAe1pyNEAPMaM+0Wiw0GPWs7+nC2ADdGCkPG79aG345pBqDxAZ6XoQ3Cj
+ F9AHKvl4+Z/nkwsJHWFpikgQNKw+wM8D6dLHGnjlKCpDNigaSqkyexlgoG2tjTaGa8Pm
+ 5x54RBVFv9c2DfIYTGHgWbA8m54zWu2der5p8USRnkXcycAvshPBHLNk7HYrua3I4HkD
+ rwsw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVDaR71Sgu7OjHiSSPhhPtv+oknqLrqf6gAHcD2W9DwXkipYneAR4U5WbsAEYrlVh4y86IJ52qFk6NFwXvp9nFB3m2i
+X-Gm-Message-State: AOJu0Yx/qGHnkLzPLASYikXZV/7dxcu4ukvSHIHH4XE2MOyjv9xEcipe
+ L+mN8w8jvFTlcTclr/hfdxAjvfSk/mxwbs25j4CeJxoWn5enSwN6v3zPJYzSGit5L76Ep5CI0L9
+ z1hLINldUJdVX5pONH0iX/PQywgyj3mPoZ5HG9x82cn4w5SMaqA==
+X-Received: by 2002:a05:651c:212a:b0:2e1:ce2b:a55f with SMTP id
+ a42-20020a05651c212a00b002e1ce2ba55fmr1353046ljq.53.1714647550710; 
+ Thu, 02 May 2024 03:59:10 -0700 (PDT)
+X-Received: by 2002:a05:651c:212a:b0:2e1:ce2b:a55f with SMTP id
+ a42-20020a05651c212a00b002e1ce2ba55fmr1352983ljq.53.1714647548299; 
+ Thu, 02 May 2024 03:59:08 -0700 (PDT)
+Received: from [192.168.0.9] (ip-109-43-179-34.web.vodafone.de.
+ [109.43.179.34]) by smtp.gmail.com with ESMTPSA id
+ f12-20020a05600c154c00b0041be609b1c7sm5272315wmg.47.2024.05.02.03.59.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 May 2024 03:59:07 -0700 (PDT)
+Message-ID: <b8027831-9f15-42e4-aa52-a071dc7bd384@redhat.com>
+Date: Thu, 2 May 2024 12:59:05 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 08/14] include/hw: add macros for deprecation & removal of
+ versioned machines
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Nicholas Piggin
+ <npiggin@gmail.com>, Richard Henderson <richard.henderson@linaro.org>,
  Yanan Wang <wangyanan55@huawei.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clegoate@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clegoate@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-arm@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
  David Gibson <david@gibson.dropbear.id.au>,
  Ilya Leoshkevich <iii@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
@@ -102,20 +123,58 @@ Cc: qemu-devel@nongnu.org, Harsh Prateek Bora <harshpb@linux.ibm.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org
-Subject: Re: [PATCH 09/14] hw: temporarily disable deletion of versioned
- machine types
-Message-ID: <ZjN1QSZMhsc_S_6Z@redhat.com>
 References: <20240501182759.2934195-1-berrange@redhat.com>
- <20240501182759.2934195-10-berrange@redhat.com>
- <48986ad1-ae23-4ff1-9494-cae9b485deae@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+ <20240501182759.2934195-9-berrange@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240501182759.2934195-9-berrange@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <48986ad1-ae23-4ff1-9494-cae9b485deae@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -35
 X-Spam_score: -3.6
@@ -136,44 +195,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fZktjhAJrqQi
+X-TUID: t/ac2iXnXGtE
 
-On Thu, May 02, 2024 at 01:05:20PM +0200, Thomas Huth wrote:
-> On 01/05/2024 20.27, Daniel P. Berrangé wrote:
-> > The new deprecation and deletion policy for versioned machine types is
-> > being introduced in QEMU 9.1.0.
-> > 
-> > Under the new policy a number of old machine types (any prior to 2.12)
-> > would be liable for immediate deletion which would be a violation of our
-> > historical deprecation and removal policy
-> > 
-> > Thus automatic deletions (by skipping QOM registration) are temporarily
-> > gated on existance of the env variable "QEMU_DELETE_MACHINES" / QEMU
-> > version number >= 10.1.0. This allows opt-in testing of the automatic
-> > deletion logic, while activating it fully in QEMU >= 10.1.0.
+On 01/05/2024 20.27, Daniel P. Berrangé wrote:
+> Versioned machines live for a long time to provide back compat for
+> incoming migration and restore of saved images. To guide users away from
+> usage of old machines, however, we want to deprecate any older than 3
+> years (equiv of 9 releases), and delete any older than 6 years (equiva
+> of 18 releases).
 > 
-> If we include your patches now, the old machine types will be marked as
-> deprecated in QEMU 9.1 and 9.2, so it should be OK to remove them in 10.0
-> already, shouldn't it?
+> To get a standardized deprecation message and avoid having to remember
+> to manually add it after three years, this introduces two macros to be
+> used by targets when defining versioned machines.
+> 
+> * MACHINE_VER_DEPRECATION(major, minor)
+> 
+>    Automates the task of setting the 'deprecation_reason' field on the
+>    machine, if-and-only-if the major/minor version is older than 3 years.
+> 
+> * MACHINE_VER_DEPRECATION(major, minor)
 
-Yes, the deprecation marking still happens on the correct documented
-schedule. We're merely postponing the removal to be nice.
+That should be MACHINE_VER_DELETION instead.
 
-IOW, when 10.0 arrives, we'll be able to delete everything upto and
-including version 4.0, so at that point 4.1 will be the oldest
-machine present.
+>    Simulates the deletion of by skipping registration of the QOM type
+>    for a versioned machine, if-and-only-if the major/minor version is
+>    older than 6 years.
+> 
+> By using these two macros there is no longer any manual work required
+> per-release to deprecate old machines. By preventing the use of machines
+> that have reached their deletion date, it is also no neccessary to
 
-Without this patch, we would be removing everything upto and including
-3.1 straight away with no prior warning. With this patch everything
-is still present, under the old deprecation 2 release policy.
+s/neccessary/necessary/
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> manually delete machines per-release. Deletion can be batched up once a
+> year or whenever makes most sense.
+> 
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>   include/hw/boards.h | 84 +++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 84 insertions(+)
+
+With the typos fixed:
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 

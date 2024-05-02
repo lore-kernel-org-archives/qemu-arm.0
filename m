@@ -1,110 +1,110 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1114281ejy;
-        Thu, 2 May 2024 04:58:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUtxN3nZf8fqe6zj1SXqidpMz71I+ZmRpd64icb8m+LlLU6U9DEwijjM8uXcYGcSdzta6svV9O5MTpFpQy426OYM4ppDl44
-X-Google-Smtp-Source: AGHT+IHEcN5+YJxZ4Bw5vfIzIxCxEc4XF0gpj+B27SS89lIPmlIUEcLH6Nsjr5yOdLg51KlXBpal
-X-Received: by 2002:ac8:5f06:0:b0:43a:d430:b678 with SMTP id x6-20020ac85f06000000b0043ad430b678mr6914251qta.32.1714651086116;
-        Thu, 02 May 2024 04:58:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714651086; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1116521ejy;
+        Thu, 2 May 2024 05:01:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWpR7Us32sBABrT15hLybh0xI1iiDNeggRnebdolhMD1UgqUFw0U0bROOACbjQezxYk/NHP5Wp9LGT9XpJpqz1luHKNM+MZ
+X-Google-Smtp-Source: AGHT+IFhzpBjb4C0leHZWbS8vYBnuMAtx1j8ZoqNST7lICLIMNq362hXWAsA0VRfRPlLGAicyKea
+X-Received: by 2002:a05:600c:4f84:b0:41b:82ba:7997 with SMTP id n4-20020a05600c4f8400b0041b82ba7997mr3611661wmq.3.1714651284001;
+        Thu, 02 May 2024 05:01:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714651283; cv=none;
         d=google.com; s=arc-20160816;
-        b=A9UpH9B9cvcGmtB4o8P391IUITTaGQ+KusyrbRkUCpfEi8Grlnf80aS64dcSv35i0R
-         x6DT6Ptpcwlq3/eDj++00vbKb8r7DFjK3Yiqc0OQ0kYT4vJJ0S5Srqfy1r4lnSFOifEj
-         GWTcSBIW6uz+Xb2AOCgw2CuTs1YwO/GHimFUXA+Ag9v2JoYHQ4KoboDi0uJuQeqfoEix
-         t9Dhg0vq8pxjt50rNt8b3lBO4bZGNb+QTQBF3yfGwWCRX+6fnyI5JqVpuIeCVEeM2TlM
-         cq4SFwbLoaKNTvFixW+U7SsHHbypQ0x+4JQiBQyKJMfaI+/jdDLYaYCgbq7Oh/HLyc+v
-         epOQ==
+        b=jA5rB6SHa13Xg012+EvvlmS8tuu+Yx45sqqq630cQ2az4sC7UPjq3duvVcgciff4qd
+         Hp/V7fG1jKYeOeYxZ7AHTgfXYS39lsACS48KtrGm5WXDb5FpnO/5g7MjlbvsLMubqiPL
+         mIVn284SmeHhLlVyTzlo+H6FoMSNj126E9GhdaoF6r/dnfE4xCYn8OgkmGPctOTgBHrK
+         OhJkG08NWKPT0icj4DnbD5CbOrV5pUnxACjOeFw5Ca6SsUmLqGGvPt41qsOxFTcQbtt5
+         OeEI5B25YhnWqvN6iXaJNiNQItLvgYG1bJYojnYpMwFJiFLtkmgo7VU/+NEB/ZCzWesE
+         bATA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=DyRhwSzy2Fg8V2t+jqg/wjBgU0PyYHDbjnEQDGwGjBs=;
-        fh=4yq01yuxg6zocETFvy1Lojiyo0xhNaD4i4v78U6UgVw=;
-        b=W6bJxcjOhrdw+YD2tHDDgR7sRyRnXHnxXJUqsUOGra00j/Ko4Zj94QTKxk491ebvny
-         sefV/ByPqM32Ki6B70x/hNpN5VRT/pZ9uy2D7h4ARIwOjMgIMsryp+0AkIoXE5n9E6H/
-         SXS+pIFl2KwOYK+sTyCpUkTqwKBTwerHsUw+a951bEac2/hyvCHDgRmxhxcNRjyONB+J
-         huBGny106ebxs704AEsPkimdBlSD8TxHHBpvJ0Wqd2b01uFXrRIKOZ/kWhki56fsftJH
-         T0AKmf23TWxa+LL1Hs9+05YIqbKi6un5Mvokz8Qe9DPGx7h88ZUwJIwbBhivafa7aeKY
-         nJ6g==;
+        bh=vbD6IhTfoN8vpOu/3tBLDauAxSNQNcFELCBXYOEbW78=;
+        fh=frMJVDFkStTIa09sdmQ+fv5cUJoVkIeX3CcntAO6UQg=;
+        b=jh8Thxf8bnupJdwTUcBHIbJNgtkysV0D+uDyCYyuOOBiCdEe8qojo4n/eEl/3yUybN
+         dQIlwB3Tho3DkZ/Rnz8Z/hpGWo7aNesZo29gKtW8jaAxsFb4aI5qXs7hmPkq1FKDquje
+         pxF4G3C1J20BWOWczBfng/wnMCqSJgm0RbYxZcL6VGeaXGkDQaHJG/7/h4cRrCJ3X8qN
+         szGtoVDnseX+LAOV5eOuagY1qclmWlC6F4lYFP6AIZ1ZL5oiTHbCPQ/hCM5ZR3gP0fTW
+         fhE+invNRtvBySbCffdi9qACTZ4wG3EC6pb44l3hzcOjoCVW8Fv2EH/Lvn+M5SJRYiGp
+         QA1g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BwNbSMYI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RxJKvgNI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14-20020ac8594e000000b0043af8d3965asi834828qtz.226.2024.05.02.04.58.05
+        by mx.google.com with ESMTPS id o15-20020a5d648f000000b00343ccc8efcasi600922wri.341.2024.05.02.05.01.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 May 2024 04:58:06 -0700 (PDT)
+        Thu, 02 May 2024 05:01:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BwNbSMYI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RxJKvgNI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s2V4T-0001vY-TP; Thu, 02 May 2024 07:57:55 -0400
+	id 1s2V79-0003T7-Fu; Thu, 02 May 2024 08:00:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2V4N-0001u4-SH
- for qemu-arm@nongnu.org; Thu, 02 May 2024 07:57:48 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2V76-0003Qg-Sz
+ for qemu-arm@nongnu.org; Thu, 02 May 2024 08:00:37 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2V4L-000690-OF
- for qemu-arm@nongnu.org; Thu, 02 May 2024 07:57:47 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2V71-0006gy-Om
+ for qemu-arm@nongnu.org; Thu, 02 May 2024 08:00:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714651064;
+ s=mimecast20190719; t=1714651230;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=DyRhwSzy2Fg8V2t+jqg/wjBgU0PyYHDbjnEQDGwGjBs=;
- b=BwNbSMYIw/EGsN/X7OdX0FCF6A0/4GUuPWmIrXg5P++cUUbQsIDEtjgYgpteVEobuATUJM
- qqFvRvn/DDdJQgMm99F0wGU8oVVqKnMv0YSAxAwtveqjzkrX8Iags8PUUb23Nhnr+uYF1y
- L3wNqJCc6P19HODvnjnhXYbvHo96+VQ=
-Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
- [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=vbD6IhTfoN8vpOu/3tBLDauAxSNQNcFELCBXYOEbW78=;
+ b=RxJKvgNIUNkDfn4WI++9ajjiouo6PRbvDeLgLsMZdmxYFhgSchFsOSqCYrAKTs/tW4cOQ3
+ RD1i1IBnOnnyujVmJlKvpsoAOwvx9uFk5a5sUwyBt4bumn5Rnl0lXks9xNGUFcaup5m7Z1
+ InnqY60sbVU/beeBWRCoBCpLMQYo3FM=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-290-iX9OvvhZNt28PPZzm4z24w-1; Thu, 02 May 2024 07:57:43 -0400
-X-MC-Unique: iX9OvvhZNt28PPZzm4z24w-1
-Received: by mail-lj1-f200.google.com with SMTP id
- 38308e7fff4ca-2dfc1e7ac17so50558941fa.0
- for <qemu-arm@nongnu.org>; Thu, 02 May 2024 04:57:43 -0700 (PDT)
+ us-mta-136-h5X5vqb4O4GZjIjnsWw0SA-1; Thu, 02 May 2024 08:00:28 -0400
+X-MC-Unique: h5X5vqb4O4GZjIjnsWw0SA-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-418f5e7b9b2so33052085e9.3
+ for <qemu-arm@nongnu.org>; Thu, 02 May 2024 05:00:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714651062; x=1715255862;
+ d=1e100.net; s=20230601; t=1714651227; x=1715256027;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=DyRhwSzy2Fg8V2t+jqg/wjBgU0PyYHDbjnEQDGwGjBs=;
- b=J4LWr8b1Oa1fv2cCSusqGQH9EtO4Zr1xVZdf4MIrAyWgDLi0jVBBZlEKBHkIy7J/E3
- YvLqsyqy6Oy4hLnbaFo24vTZFTBYpM5aUHhtHexwEHT5AxpePtxVnZGqrjmA7At1TlaS
- yBsowAtNRjbDILvy57UkjmlOjnfNOnvyMbtYckQkdQcQTbrw+06zks1zqEa1wXvROCzc
- g3Zb2XiBiQaRaWfrkraN3Dy8fb4Vd9mvjy06b3IElm/VnJ3KeAUs3F24PT02AmaFB13Q
- LI9KGtPlfnnWqmt+V0h5ciCIOyBlDNdo02eF67U+k1PxnVR4lYlUuJs+9mRlZU9/EvL+
- bf7w==
+ bh=vbD6IhTfoN8vpOu/3tBLDauAxSNQNcFELCBXYOEbW78=;
+ b=gxkj6HTeK/7pHAD5OD0SCgQObNU9JCZwvLbYo57vLhLJjmjKdbRXXzZDNUCbZKToJk
+ tK72TozZbL9jnih3fVuunxYVOdVUezYmFeqYB4akfkJUkSGISyx8s8LvP4WZhWUFF6pC
+ 62bT6rOhe6itFsYYbjvx8ezahPHjH0RU2Qc63R3Sn+SgpGW23Ryamp7gwBY542MNDesw
+ mpf8W91K90DfarCkr7FrFjv2FZE1SqMW6vMkJua4XqnEZAREfl0BCZ+rjQPlEFBytYeq
+ 8753P1nQoyzrlJT4LbBQO3uQqYvbGDa/uqOjuev8WIA6h9HQgoMKEbgwptt9lGB5X2DA
+ 17cQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWGp3FoXHViLXM2EJXQHBBpaFQY07d3ab8zLMhj0d/OdDFQHyaEIHXKJh1Z308xtJmK0dxnfL/8/8T16apzleQnJrHe
-X-Gm-Message-State: AOJu0Yw7nGZF3dxw5AN+SwmihaC+UagmMTC/3SVWphbiPLGdF9NeKcPJ
- tCnavStZT646NTcN2RVUfTK5m1T0wSKdO4/O0vs/L1mZlVqWttNv49yL9ijb1damfda+tLaED5f
- FyQa61w/kJ5rmXZuNNsu6xi4MZfGxc0rRS87cgLKaKfu8U3RCuw==
-X-Received: by 2002:a2e:8750:0:b0:2e0:83a9:e385 with SMTP id
- q16-20020a2e8750000000b002e083a9e385mr4529382ljj.6.1714651061939; 
- Thu, 02 May 2024 04:57:41 -0700 (PDT)
-X-Received: by 2002:a2e:8750:0:b0:2e0:83a9:e385 with SMTP id
- q16-20020a2e8750000000b002e083a9e385mr4529282ljj.6.1714651059539; 
- Thu, 02 May 2024 04:57:39 -0700 (PDT)
+ AJvYcCWzI0DfIfPY7hBVRKFDCWUNxgbWEqbP/DHnrZB1Fn8kF9Su9ITI6E/Iod8MrQ7XgvEcR1cyIVmSBwCvU47Ay3wG08xy
+X-Gm-Message-State: AOJu0Ywoac4/s2m4Fg+3lolPmWoEWxxBeiwe5L51jVOuTUWxEwwBU/d0
+ bOJhOqqa6m1U60COt8Q3GKVZYEAejl0PowuKyVeomQ/7majerrQJznZ3FPkSTbVUe6/fWL0WhB3
+ oMPVixmkP6nhqylecXHGDdSKEwDztOUAP54YxsXzyZHOuMpV1bQ==
+X-Received: by 2002:a05:600c:4e0f:b0:41c:8754:8796 with SMTP id
+ b15-20020a05600c4e0f00b0041c87548796mr3695920wmq.30.1714651227318; 
+ Thu, 02 May 2024 05:00:27 -0700 (PDT)
+X-Received: by 2002:a05:600c:4e0f:b0:41c:8754:8796 with SMTP id
+ b15-20020a05600c4e0f00b0041c87548796mr3695890wmq.30.1714651226959; 
+ Thu, 02 May 2024 05:00:26 -0700 (PDT)
 Received: from [192.168.0.9] (ip-109-43-179-34.web.vodafone.de.
  [109.43.179.34]) by smtp.gmail.com with ESMTPSA id
- l17-20020adfe591000000b0034dac7e5f7bsm1098391wrm.50.2024.05.02.04.57.37
+ p20-20020a05600c469400b0041bc41287cesm1739412wmo.16.2024.05.02.05.00.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 May 2024 04:57:39 -0700 (PDT)
-Message-ID: <d5780d74-7a2e-413d-b55d-e9b9747ff936@redhat.com>
-Date: Thu, 2 May 2024 13:57:37 +0200
+ Thu, 02 May 2024 05:00:26 -0700 (PDT)
+Message-ID: <efe51df4-68d5-48da-bf0b-631594f603e7@redhat.com>
+Date: Thu, 2 May 2024 14:00:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/14] hw/ppc: convert 'spapr' machine definitions to use
+Subject: Re: [PATCH 05/14] hw/m68k: convert 'virt' machine definitions to use
  new macros
 To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org
@@ -124,7 +124,7 @@ Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org
 References: <20240501182759.2934195-1-berrange@redhat.com>
- <20240501182759.2934195-5-berrange@redhat.com>
+ <20240501182759.2934195-6-berrange@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -168,7 +168,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240501182759.2934195-5-berrange@redhat.com>
+In-Reply-To: <20240501182759.2934195-6-berrange@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -182,7 +182,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.476,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -197,30 +197,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /OuLNAI0bAKk
+X-TUID: UbB7ywuT+ClZ
 
 On 01/05/2024 20.27, Daniel P. Berrangé wrote:
-> This changes the DEFINE_SPAPR_MACHINE macro to use the common
+> This changes the DEFINE_VIRT_MACHINE macro to use the common
 > helpers for constructing versioned symbol names and strings,
 > bringing greater consistency across targets.
 > 
-> The added benefit is that it avoids the need to repeat the
-> version number twice in two different formats in the calls
-> to DEFINE_SPAPR_MACHINE.
-> 
-> A DEFINE_SPAPR_MACHINE_AS_LATEST helper is added so that it
+> A DEFINE_VIRT_MACHINE_AS_LATEST helper is added so that it
 > is not required to pass 'false' for every single historical
 > machine type.
 > 
-> Due to the odd-ball '2.12-sxxm' machine type version, this
-> commit introduces a DEFINE_SPAPR_MACHINE_TAGGED helper to
-> allow defining of "tagged" machine types which have a string
-> suffix.
-> 
 > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 > ---
->   hw/ppc/spapr.c | 93 +++++++++++++++++++++++++++-----------------------
->   1 file changed, 51 insertions(+), 42 deletions(-)
+>   hw/m68k/virt.c | 51 ++++++++++++++++++++++++++++----------------------
+>   1 file changed, 29 insertions(+), 22 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 

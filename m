@@ -1,111 +1,111 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1079918ejy;
-        Thu, 2 May 2024 03:59:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXIhTq/moiXGJcyhnjBJIMzcaNBRSLqjgj6dupqU0OWlt6cicKJlmWQ5bUtfNYGcTPD478EUELR58+rxeKTwCwgjQeAEabA
-X-Google-Smtp-Source: AGHT+IFRgC/q0B3csAdAIb9onvGnzxKsLxfhUMsQZDmFpAzWK4TWOXcqQ9j6wdSpTnvFPktW9Ylh
-X-Received: by 2002:a05:6870:80c6:b0:222:7000:8b28 with SMTP id r6-20020a05687080c600b0022270008b28mr2044771oab.32.1714647573639;
-        Thu, 02 May 2024 03:59:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714647573; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1084627ejy;
+        Thu, 2 May 2024 04:06:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXD/VGCEbGCxsaze56PsoqgXq8iqwXbc8sHHACD23nyM5+VnD2KFc6npf2Dp2ElwMXAoUUGNINDeInmYzNbdCgTiZXNEnig
+X-Google-Smtp-Source: AGHT+IENVktYh+odGRK3LWeCkPFn3Sjk77egEWvVOojJ6LhRe93sVnbRAyG257Lzw4QyLDwiREEC
+X-Received: by 2002:a05:620a:10b2:b0:790:abdf:ce13 with SMTP id h18-20020a05620a10b200b00790abdfce13mr5690238qkk.15.1714647959525;
+        Thu, 02 May 2024 04:05:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714647959; cv=none;
         d=google.com; s=arc-20160816;
-        b=qXcFZ8WPO0JDkQCB/tTDQJOcyrNS/IkrDdSvX/gibfWUhyCCwVd2mcN5rC0IRuL6GW
-         W0Acu4m6DVNsN3eXbH0E5CaDZC/sKNhvJtMQpdoki+NcwY7bUOvggSmXVaaFqrcXQaLe
-         MW6nIY33+wI6cHdeVajW1LfTzyZVkBQ83HyJByQLAf0o3MmM+tOBOFAZ+EpcwxgRuaQe
-         +3YOeER5xE9UZRsycGGHXiI05q/PHj8HlbBX7KLg0b9eTuKkz9KljXqPpgj6k/DOCg6a
-         2S7AoWogoGn06XzOme95qSCrl5wE7jUuoaL79TupqYRkdENOGOPxbjx9vqL/s2hgGF0R
-         gJ/g==
+        b=SuySGM1ejGeNUFCzSiAx3tiTgx9x2Hv/egN3crV5KUcVDzo589shDE8lHzsRfQyfVJ
+         L+813PIgKSASF/1ZSrqHCcEob0ghFPhs9JfTcp3Uf9SxeI7GfbziobegEJZRMpGdvpjj
+         llC2c86qY1eKXXY+flOAVoru2yq2dSj/nIE4OTkeAcB2domyxAXpCsLcBfbNiRLUCrqe
+         GPrkyghOdsx4e7e+82Er8jcRLvBi8slg3/C1WJM/QruC94WYz4WQH6f67EG0Zr83icOC
+         N6iddbMQDseuqUMtZM9fVqa3jwNSyG4G3VuXF7CuUvbkzBE5h7hQ/wwVaCKCQbMC38E/
+         quDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=EMx6e38IioNt1LAbYe0rkYAfMHsQHYA4fbzbwZk7bkY=;
-        fh=xI5z+Y394CAEq5bKKCJ/wcjSiI43GqJMwsU3Zer5Ztg=;
-        b=Nuq2PaBjeFMd2w12xu547cJWnsNoebSjRID05MY0oNePXzC2aNCKogeCCKmTBzyU5Y
-         54hQvaJtYxdB8u7YnhreCD60QMk9k7S9YvIOmyIRskoiUt0tKajeOKS9Z9MPp0EXKAvV
-         3s8C1RoqpjFBrYv5imiZsK0fGLzSmBAB0ooKjjoRnoH4Z5ycslq+LYENQL4xg9jDgaQV
-         O4hb2gbcuHqV28muvDCNXsOFpyQVDgQFtz43KYNLr4GfGieKM6bmgwKTx5wcH7Pl9TMH
-         OtuLfpslNgsqn6XFCVgi131KwSPkZenAf4DiaiIzanbx3FZZW2jdYzoIF+rLbRntsjiQ
-         83lA==;
+        bh=ia1wg53KtmoYcLskoGz4iuKc9iw5ahYOShe1HXlEl1c=;
+        fh=0hEpqSStfxzzZhrTJlP6OL2D8IjiTo/M9ijlNfUubLg=;
+        b=wjcHDxlweXasjXwI1SPN3nk7l/tSmRprcwOqM3d0rSpKjm0aMe/wyvlTv1O6RxgqmN
+         CfJhayV/l3eSa2x3Uygxx9p+eCqd7OblBgfEoNSnzC+C1hFANRcyYntp6NqVyflsuoEb
+         78svf2858wHsTieeU1gXEPfM6VGDUGwH1p72wiDUdshhsZRVaQG8PAuiS3PeVZvC+tLH
+         6St6aJ+asF0yro+b17HFpseBYkDh5A6gLO7tRO1Etn0vyaU7sraQ9TY0yYrUzzIfXAab
+         noZtAF+J+LfPA8apqGx2tVz+/JduoD0ADoZeJobe27ZR2m9m7KwS2NMhT+gXy3eQmzBw
+         FC4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Izen9Xnd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GOzWWQaB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e25-20020a05620a209900b007906785ebbbsi637658qka.716.2024.05.02.03.59.33
+        by mx.google.com with ESMTPS id wj3-20020a05620a574300b0078edb45f5acsi669153qkn.391.2024.05.02.04.05.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 May 2024 03:59:33 -0700 (PDT)
+        Thu, 02 May 2024 04:05:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Izen9Xnd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GOzWWQaB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s2U9p-0003Bn-Nl; Thu, 02 May 2024 06:59:23 -0400
+	id 1s2UFk-00068Z-V6; Thu, 02 May 2024 07:05:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2U9n-0003Ar-7M
- for qemu-arm@nongnu.org; Thu, 02 May 2024 06:59:19 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2UFk-00068O-65
+ for qemu-arm@nongnu.org; Thu, 02 May 2024 07:05:28 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2U9l-0003BQ-Ev
- for qemu-arm@nongnu.org; Thu, 02 May 2024 06:59:18 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2UFh-0004SZ-TK
+ for qemu-arm@nongnu.org; Thu, 02 May 2024 07:05:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714647553;
+ s=mimecast20190719; t=1714647925;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=EMx6e38IioNt1LAbYe0rkYAfMHsQHYA4fbzbwZk7bkY=;
- b=Izen9XndZ2kwEDHXgywWnp/Tql5osOV+9jS4sHuAxu1Nkuje/gtN0TDhIEXy9Kdr5qprMb
- UX5umX2If3z5VDm4FDj/jWE/CZNnv8YUSzfTCZq+GSHcQEf4c703nu0ocUWAxQD57l3F6Y
- cBqG9LJssLmuB05QxjK0R+QScqKuv5E=
-Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
- [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ia1wg53KtmoYcLskoGz4iuKc9iw5ahYOShe1HXlEl1c=;
+ b=GOzWWQaBdNUmjsOS1aaWJWYK6udaQca/28PUvibPOJC68kAaMf6CujxpIfymQsvZcrgPXJ
+ 600Rb0sxMEB+9M48zaiCB1EPpdTy4WmTef7jZ6VH3SMdfivxP7ryRa+i8GSi24x4YA6jAz
+ O8j8EXjYR4JihS36yIvuSZnlLnZK3WM=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-623-cjeOCpcwOcaXIQ7s61WOLA-1; Thu, 02 May 2024 06:59:12 -0400
-X-MC-Unique: cjeOCpcwOcaXIQ7s61WOLA-1
-Received: by mail-lj1-f200.google.com with SMTP id
- 38308e7fff4ca-2da2f30cb50so68199561fa.2
- for <qemu-arm@nongnu.org>; Thu, 02 May 2024 03:59:11 -0700 (PDT)
+ us-mta-449-HPQZ-vrgORe0fbCzoPTixg-1; Thu, 02 May 2024 07:05:23 -0400
+X-MC-Unique: HPQZ-vrgORe0fbCzoPTixg-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-41bf6751b28so23170505e9.2
+ for <qemu-arm@nongnu.org>; Thu, 02 May 2024 04:05:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714647550; x=1715252350;
+ d=1e100.net; s=20230601; t=1714647922; x=1715252722;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=EMx6e38IioNt1LAbYe0rkYAfMHsQHYA4fbzbwZk7bkY=;
- b=xHJVXy1wtvJQBg77H/Rj4RVc7+Fk0xWV95/8XnTl14qYfAlU+FUMgxr+2tXfdPH8Vw
- rIeazCR94d1+Eg48jGFQCDkTi7ng60w7Wgb3l3pQm3GOaKgT6OwNtBLriNLGlWc5IDnt
- MB6Z7d01FhypAe1pyNEAPMaM+0Wiw0GPWs7+nC2ADdGCkPG79aG345pBqDxAZ6XoQ3Cj
- F9AHKvl4+Z/nkwsJHWFpikgQNKw+wM8D6dLHGnjlKCpDNigaSqkyexlgoG2tjTaGa8Pm
- 5x54RBVFv9c2DfIYTGHgWbA8m54zWu2der5p8USRnkXcycAvshPBHLNk7HYrua3I4HkD
- rwsw==
+ bh=ia1wg53KtmoYcLskoGz4iuKc9iw5ahYOShe1HXlEl1c=;
+ b=rmgzy2FBThlWS5wlwIueBnZdpn7dv00fXmKUEuY+Lrk7jm7LJ/T4ABz3SpioEzDnCC
+ KblazgU/ElPpp/IjxLcZtcEa/BmBUN6CE9jJ2UKDN31CF5hhYpqp3H3NmMRKu+XvCi8I
+ nvGfi9F/AKdyu6Um9UErL4kkbmXgbboMhvh7QtqFoOByaSjSy+NaclwEMKt5JJY/afzn
+ SzSJDFlgaMRpFUOh2wmhke7DOjkGimCzR8wz6MGlnkirohAQoshdfTFiPUJMbQSwDOBD
+ tfnYLAd9M+0Im6YgJEYEG+AuRwukxMPnBQ6ntyD1of21EAMlzzXJRI3eMKEym8xIqFOI
+ KYRg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVDaR71Sgu7OjHiSSPhhPtv+oknqLrqf6gAHcD2W9DwXkipYneAR4U5WbsAEYrlVh4y86IJ52qFk6NFwXvp9nFB3m2i
-X-Gm-Message-State: AOJu0Yx/qGHnkLzPLASYikXZV/7dxcu4ukvSHIHH4XE2MOyjv9xEcipe
- L+mN8w8jvFTlcTclr/hfdxAjvfSk/mxwbs25j4CeJxoWn5enSwN6v3zPJYzSGit5L76Ep5CI0L9
- z1hLINldUJdVX5pONH0iX/PQywgyj3mPoZ5HG9x82cn4w5SMaqA==
-X-Received: by 2002:a05:651c:212a:b0:2e1:ce2b:a55f with SMTP id
- a42-20020a05651c212a00b002e1ce2ba55fmr1353046ljq.53.1714647550710; 
- Thu, 02 May 2024 03:59:10 -0700 (PDT)
-X-Received: by 2002:a05:651c:212a:b0:2e1:ce2b:a55f with SMTP id
- a42-20020a05651c212a00b002e1ce2ba55fmr1352983ljq.53.1714647548299; 
- Thu, 02 May 2024 03:59:08 -0700 (PDT)
+ AJvYcCUPmS3NomTA1px8q/UfNXq2tmOTOsmmt/rWAmyIOVtNtMSqj6z+HygfF/EBTooaGCWfMTvbhKGI+vA06/Msx485Nwqr
+X-Gm-Message-State: AOJu0Ywfh381GfINh1p9mPIxCwHKrWVv/DszxvDAf0Sacf95UifGjqQD
+ x6GhU4t0Ub9i67LebSMfNc+v/oLqHbGXQVYqsuZAMEJ4SXRTrQqE+RIOPNpwG4+bkgApoKgnW9t
+ +f68YjMUcjJGF6exeZWi/G8nvNB8prxgIjjb/GlwhpqnddN40Fw==
+X-Received: by 2002:a05:600c:242:b0:41b:85bf:f3a8 with SMTP id
+ 2-20020a05600c024200b0041b85bff3a8mr3885556wmj.35.1714647922440; 
+ Thu, 02 May 2024 04:05:22 -0700 (PDT)
+X-Received: by 2002:a05:600c:242:b0:41b:85bf:f3a8 with SMTP id
+ 2-20020a05600c024200b0041b85bff3a8mr3885521wmj.35.1714647922042; 
+ Thu, 02 May 2024 04:05:22 -0700 (PDT)
 Received: from [192.168.0.9] (ip-109-43-179-34.web.vodafone.de.
  [109.43.179.34]) by smtp.gmail.com with ESMTPSA id
- f12-20020a05600c154c00b0041be609b1c7sm5272315wmg.47.2024.05.02.03.59.06
+ z11-20020a05600c0a0b00b0041c097e20f9sm5309476wmp.25.2024.05.02.04.05.20
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 May 2024 03:59:07 -0700 (PDT)
-Message-ID: <b8027831-9f15-42e4-aa52-a071dc7bd384@redhat.com>
-Date: Thu, 2 May 2024 12:59:05 +0200
+ Thu, 02 May 2024 04:05:21 -0700 (PDT)
+Message-ID: <48986ad1-ae23-4ff1-9494-cae9b485deae@redhat.com>
+Date: Thu, 2 May 2024 13:05:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/14] include/hw: add macros for deprecation & removal of
- versioned machines
+Subject: Re: [PATCH 09/14] hw: temporarily disable deletion of versioned
+ machine types
 To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org
 Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
@@ -124,7 +124,7 @@ Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org
 References: <20240501182759.2934195-1-berrange@redhat.com>
- <20240501182759.2934195-9-berrange@redhat.com>
+ <20240501182759.2934195-10-berrange@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -168,7 +168,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240501182759.2934195-9-berrange@redhat.com>
+In-Reply-To: <20240501182759.2934195-10-berrange@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -197,46 +197,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: t/ac2iXnXGtE
+X-TUID: 1R0XUTOaL4Rt
 
 On 01/05/2024 20.27, Daniel P. Berrangé wrote:
-> Versioned machines live for a long time to provide back compat for
-> incoming migration and restore of saved images. To guide users away from
-> usage of old machines, however, we want to deprecate any older than 3
-> years (equiv of 9 releases), and delete any older than 6 years (equiva
-> of 18 releases).
+> The new deprecation and deletion policy for versioned machine types is
+> being introduced in QEMU 9.1.0.
 > 
-> To get a standardized deprecation message and avoid having to remember
-> to manually add it after three years, this introduces two macros to be
-> used by targets when defining versioned machines.
+> Under the new policy a number of old machine types (any prior to 2.12)
+> would be liable for immediate deletion which would be a violation of our
+> historical deprecation and removal policy
 > 
-> * MACHINE_VER_DEPRECATION(major, minor)
-> 
->    Automates the task of setting the 'deprecation_reason' field on the
->    machine, if-and-only-if the major/minor version is older than 3 years.
-> 
-> * MACHINE_VER_DEPRECATION(major, minor)
+> Thus automatic deletions (by skipping QOM registration) are temporarily
+> gated on existance of the env variable "QEMU_DELETE_MACHINES" / QEMU
+> version number >= 10.1.0. This allows opt-in testing of the automatic
+> deletion logic, while activating it fully in QEMU >= 10.1.0.
 
-That should be MACHINE_VER_DELETION instead.
+If we include your patches now, the old machine types will be marked as 
+deprecated in QEMU 9.1 and 9.2, so it should be OK to remove them in 10.0 
+already, shouldn't it?
 
->    Simulates the deletion of by skipping registration of the QOM type
->    for a versioned machine, if-and-only-if the major/minor version is
->    older than 6 years.
-> 
-> By using these two macros there is no longer any manual work required
-> per-release to deprecate old machines. By preventing the use of machines
-> that have reached their deletion date, it is also no neccessary to
-
-s/neccessary/necessary/
-
-> manually delete machines per-release. Deletion can be batched up once a
-> year or whenever makes most sense.
-> 
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> ---
->   include/hw/boards.h | 84 +++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 84 insertions(+)
-
-With the typos fixed:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+  Thomas
 

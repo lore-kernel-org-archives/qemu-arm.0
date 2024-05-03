@@ -1,228 +1,374 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1861726ejy;
-        Fri, 3 May 2024 05:36:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVtRxTxGsIcMStf238Reej5sISANt06aq3w9oI4XwfVV7nBdCdhwS8XgefXDxZQEwuKpMPw+pGvYPo/V9OjUXyJCv+VuXEn
-X-Google-Smtp-Source: AGHT+IG+GCzwCb58+MhMBNppsW0GdYJc46rFaMuUFkiRn9MPYqDzsKp4250I6w8nSR4nmRr6DSR0
-X-Received: by 2002:a05:620a:29d0:b0:790:d62a:d9fa with SMTP id s16-20020a05620a29d000b00790d62ad9famr3249502qkp.7.1714739770921;
-        Fri, 03 May 2024 05:36:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714739770; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1936810ejy;
+        Fri, 3 May 2024 07:21:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUK+pW6gb7qjGZAVkXvMpocmkdv8DauMsBOjWWbx6NxTxfAIaZXdjlbXxiON/xKviC3p4G23uM8GdWjsiDdj4arS/XFU2x1
+X-Google-Smtp-Source: AGHT+IFjYQfPKQY6EWwptvqbvZpU1nPvsCa+0zkcVpas/Dkn8CGoqvID0zmwRLMj0z2f5b4Y25Kp
+X-Received: by 2002:a05:620a:28c4:b0:790:c69a:d3f3 with SMTP id l4-20020a05620a28c400b00790c69ad3f3mr3236372qkp.15.1714746080438;
+        Fri, 03 May 2024 07:21:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714746080; cv=none;
         d=google.com; s=arc-20160816;
-        b=h4dyaha6MReS63hUAB9bXZPbDcE78p8HOJnOtGO1XJVUvsSJ8ddy2rTqCoR0HrIghO
-         wRMwIQ41a8znsrpiLrvPf+D6avXgLdbQxzY1mZCPrp+fXzZeY9jwT0FRGy06fTZR+TDu
-         RO1dVkFdYELX84udWXm8tPW0gdYv+GrM+rb70DLUtR3GvjvGcu1Qo78JlhC83Dz1YAMK
-         FrNH+oaQAFI9XK3Nvkqq74z7ZjbS88zFYxWgEQXuxljSBbd1/4BXWlhQEf8YNNVqO/gG
-         F27glOveaN5kd3Nz4pjdbkpna+CKh2HAAtJ29POAZazYe9zBsubjarmznQHkRpjzOdjW
-         WdPA==
+        b=UA8MsUVRl8Dd/IArL7KFAHalPy/IJNoW9snJ7inim9Kdae08TsxM0j5guXkifWhFLn
+         6apgec0YUYMMHG8M3w3hllFWaiVe51u8qJUupWcLWIfOHNqRtW6ahTVoo7CoahzO7hgy
+         9gpgPYRFe8qBMpXvJ/eDXgV7yMdBPMH+85oFXalFJFZhy4xvgk/e1ypD0388/aeVHa9r
+         ln2vM49g7VSzfzL3nRkJI/C7pCw8+bsk3YE/EpimvzC4xTPISiVXkJOB3ENB4LhzY/RF
+         gzWXhd3Pwh/kr+Av7ebBpdP5KP80uD7iol5rLJYYcRsUdKrf9xcUlChsBZg6sMMw7Veg
+         ROJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=pWj+HnS8N6/jcUpATLvn3zKB5cbBEMbtsZN5xw5kBws=;
-        fh=9PeifdOIeHGG/Fq/8EqfoUCtxr7mCL9Xl2smON729J8=;
-        b=TQJB6rUE1RJVLYRBBnUfHlKWH/reqs8ZenNDZF4tbYoqIjOmqYABYIExmjnvVkKaF4
-         /ffTmyGgI65SCjpTEUxywTr71Xwo4t3Ziw652Q0quf7iDVP2zAZj3T5YyYCEv7FeoSlB
-         ag21USeM5UMe6xg+Uodsty9zImQu9nsHCEEABYPSEIkUsgYeG7+TIWUs2pOLD8V4rj9S
-         f2Xf5bEvFzJbryiHbEHRr4w5QC+5bMj4HPlZL/DfhT6jF0NglGmI1GLzVZ/STpQ1+wUp
-         W3CTQqM9QwwRrfEVfUDWL0733fJbht/Zrk/SgGLKBw6DcMtZ2SdKpkaprKjhBzCWbtUm
-         Rbtg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=Ra1bLMv6MGQUDWP4K39F7opbVkNgeOKiw1F4gvajhhQ=;
+        fh=wBNV7UiSATYaVKmE7Xme8a9dwVo8oS3HDnEeSM4b3WE=;
+        b=hLFn0vILO/C3ImeVb4Z8Jpb0D6gGuVi/XBO3zOBMyqhiX7cqvkpwQy+Y7tvXdrn/Hy
+         8XVUr6CrCruDcBdU5YPf0KUAECyej32VMQw4JxFx+5k1UZlVZAarYThifKHUGTQWsDnu
+         4XnXQoHp5A3MAYXlaCe7O6EG+PZI/2LAogYQ1xD86bsB6EwJUgaKv7lsyQ+1mHIqkjqf
+         kdMBUtNnAK/ztLooqNLw7sXy9l9hZQjEWes9eThvee4COBQW0V5VrxMPGaXxvZzGunUk
+         Xc8QVTc8ClOJ8Aqo88x8qjR+Ii5gztFXs3Rz1Yo6iLi/vJo8eeC2efq/i3jVxSibQiSi
+         HLOg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hCiTcJu9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s10-20020a05620a29ca00b0078ed8a2e55asi3528516qkp.267.2024.05.03.05.36.10
+        by mx.google.com with ESMTPS id x11-20020a05620a098b00b0078d65f76612si3144286qkx.243.2024.05.03.07.21.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 May 2024 05:36:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 May 2024 07:21:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hCiTcJu9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1s2s8w-0007uB-QT; Fri, 03 May 2024 08:36:02 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s2tmj-0004Wr-U4; Fri, 03 May 2024 10:21:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2s8E-0007Fo-Bm
- for qemu-devel@nongnu.org; Fri, 03 May 2024 08:35:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <SRS0=qmem=MG=kaod.org=clg@ozlabs.org>)
+ id 1s2tmh-0004Vz-RZ; Fri, 03 May 2024 10:21:11 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2s8A-0002nZ-9T
- for qemu-devel@nongnu.org; Fri, 03 May 2024 08:35:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714739707;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pWj+HnS8N6/jcUpATLvn3zKB5cbBEMbtsZN5xw5kBws=;
- b=hCiTcJu9bROqKfo9Hb0IKv/4diCeHIYKDBnH4bJr6jii68a2hrNeb6iv7l1dklIIExFJDH
- NS1CLVzZ99qubgEYHdcc/QkFqojR0YT7SBX2Kb1mOvNKHqs7nadbgbELEYGuLFANaWEoj0
- brQDsqZHoBHODnrQg/74jeOM+aoCDps=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-29-n7i_lRwhMVOmwufLibs9aQ-1; Fri, 03 May 2024 08:35:04 -0400
-X-MC-Unique: n7i_lRwhMVOmwufLibs9aQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
+ (Exim 4.90_1) (envelope-from <SRS0=qmem=MG=kaod.org=clg@ozlabs.org>)
+ id 1s2tme-0005zT-FG; Fri, 03 May 2024 10:21:11 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4VWCdr2M82z4xPh;
+ Sat,  4 May 2024 00:21:04 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 72F5A886F07;
- Fri,  3 May 2024 12:35:03 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.62])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8A93A40C6CC0;
- Fri,  3 May 2024 12:34:59 +0000 (UTC)
-Date: Fri, 3 May 2024 13:34:57 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clegoate@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org
-Subject: Re: [PATCH 00/14] hw: define and enforce a standard lifecycle for
- versioned machines
-Message-ID: <ZjTZ8YrxElWp1A8x@redhat.com>
-References: <20240501182759.2934195-1-berrange@redhat.com>
- <CAFEAcA9LTsdjHpip1F=BPhrRUbH++3eW4HjjH4Xn6yN18pHtjQ@mail.gmail.com>
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4VWCdl37vxz4xM7;
+ Sat,  4 May 2024 00:20:39 +1000 (AEST)
+Message-ID: <5d5c88a4-0a71-48c7-8edb-66f079ad9305@kaod.org>
+Date: Fri, 3 May 2024 16:20:35 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 08/16] aspeed/smc: support 64 bits dma dram address
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>,
+ Yunlin Tang <yunlin.tang@aspeedtech.com>
+References: <20240416091904.935283-1-jamin_lin@aspeedtech.com>
+ <20240416091904.935283-9-jamin_lin@aspeedtech.com>
+ <9b6d5078-121d-4370-86fc-4bb25ad4e72f@kaod.org>
+ <SEYPR06MB50377414AEA2C2CAEF28A5E8FC0D2@SEYPR06MB5037.apcprd06.prod.outlook.com>
+ <01232b1d-2646-46e0-bb4e-0162d2035889@kaod.org>
+ <SI2PR06MB504162FDF2648BABF864B371FC1A2@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <SI2PR06MB504162FDF2648BABF864B371FC1A2@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAFEAcA9LTsdjHpip1F=BPhrRUbH++3eW4HjjH4Xn6yN18pHtjQ@mail.gmail.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.483,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=qmem=MG=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7CVa/JFjuAwJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QwddfQRfMXxN
 
-On Fri, May 03, 2024 at 01:14:27PM +0100, Peter Maydell wrote:
-> On Wed, 1 May 2024 at 19:28, Daniel P. Berrangé <berrange@redhat.com> wrote:
-> > I wonder, however, whether we would benefit from changing how we
-> > update the VERSION file.
-> >
-> > eg instead of re-using the micro digit to indicate a dev or rc
-> > snapshot, represent those explicitly. eg "9.1.0-dev" and
-> > "9.1.0-rc1", "9.1.0-rc2", etc in VERSION.
-> >
-> > We don't use the full QEMU_VERSION in the code in all that many
-> > places. It appears in some help messages for command line tools,
-> > and in QMP query-version response, and in a few other misc places.
-> > At a glance it appears all of those places would easily handle a
-> > tagged version.
-> >
-> > For release candidates in particular I think it would be saner
-> > to show the user the actual version the release is about to become,
-> > rather than the previous release's version. This would make the
-> > reported version match the rc tarball naming too which would be
-> > nice.
+Hello Jamin,
+
+On 4/30/24 09:56, Jamin Lin wrote:
+> Hi Cedric,
 > 
-> I think the theory behind the VERSION file is that we want
-> to be able to express the version:
->  * purely numerically
->  * in a strictly ascending order
+>> -----Original Message-----
+>> From: Cédric Le Goater <clg@kaod.org>
+>> Sent: Tuesday, April 30, 2024 3:26 PM
+>> To: Jamin Lin <jamin_lin@aspeedtech.com>; Peter Maydell
+>> <peter.maydell@linaro.org>; Andrew Jeffery <andrew@codeconstruct.com.au>;
+>> Joel Stanley <joel@jms.id.au>; Alistair Francis <alistair@alistair23.me>; Cleber
+>> Rosa <crosa@redhat.com>; Philippe Mathieu-Daudé <philmd@linaro.org>;
+>> Wainer dos Santos Moschetta <wainersm@redhat.com>; Beraldo Leal
+>> <bleal@redhat.com>; open list:ASPEED BMCs <qemu-arm@nongnu.org>; open
+>> list:All patches CC here <qemu-devel@nongnu.org>
+>> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
+>> <yunlin.tang@aspeedtech.com>
+>> Subject: Re: [PATCH v3 08/16] aspeed/smc: support 64 bits dma dram address
+>>
+>> On 4/19/24 08:00, Jamin Lin wrote:
+>>> Hi Cedric,
+>>>>
+>>>> Hello Jamin,
+>>>>
+>>>> On 4/16/24 11:18, Jamin Lin wrote:
+>>>>> AST2700 support the maximum dram size is 8GiB and has a "DMA DRAM
+>>>> Side
+>>>>> Address High Part(0x7C)"
+>>>>> register to support 64 bits dma dram address.
+>>>>> Add helper routines functions to compute the dma dram address, new
+>>>>> features and update trace-event to support 64 bits dram address.
+>>>>>
+>>>>> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+>>>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>>>>> ---
+>>>>>     hw/ssi/aspeed_smc.c | 66
+>>>> +++++++++++++++++++++++++++++++++++++++------
+>>>>>     hw/ssi/trace-events |  2 +-
+>>>>>     2 files changed, 59 insertions(+), 9 deletions(-)
+>>>>>
+>>>>> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c index
+>>>>> 71abc7a2d8..a67cac3d0f 100644
+>>>>> --- a/hw/ssi/aspeed_smc.c
+>>>>> +++ b/hw/ssi/aspeed_smc.c
+>>>>> @@ -132,6 +132,9 @@
+>>>>>     #define   FMC_WDT2_CTRL_BOOT_SOURCE      BIT(4) /* O:
+>> primary
+>>>> 1: alternate */
+>>>>>     #define   FMC_WDT2_CTRL_EN               BIT(0)
+>>>>>
+>>>>> +/* DMA DRAM Side Address High Part (AST2700) */
+>>>>> +#define R_DMA_DRAM_ADDR_HIGH   (0x7c / 4)
+>>>>> +
+>>>>>     /* DMA Control/Status Register */
+>>>>>     #define R_DMA_CTRL        (0x80 / 4)
+>>>>>     #define   DMA_CTRL_REQUEST      (1 << 31)
+>>>>> @@ -187,6 +190,7 @@
+>>>>>      *   0x1FFFFFF: 32M bytes
+>>>>>      */
+>>>>>     #define DMA_DRAM_ADDR(asc, val)   ((val) &
+>> (asc)->dma_dram_mask)
+>>>>> +#define DMA_DRAM_ADDR_HIGH(val)   ((val) & 0xf)
+>>>>>     #define DMA_FLASH_ADDR(asc, val)  ((val) &
+>> (asc)->dma_flash_mask)
+>>>>>     #define DMA_LENGTH(val)         ((val) & 0x01FFFFFF)
+>>>>>
+>>>>> @@ -207,6 +211,7 @@ static const AspeedSegments
+>>>> aspeed_2500_spi2_segments[];
+>>>>>     #define ASPEED_SMC_FEATURE_DMA       0x1
+>>>>>     #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
+>>>>>     #define ASPEED_SMC_FEATURE_WDT_CONTROL 0x4
+>>>>> +#define ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH 0x08
+>>>>>
+>>>>>     static inline bool aspeed_smc_has_dma(const AspeedSMCClass *asc)
+>>>>>     {
+>>>>> @@ -218,6 +223,11 @@ static inline bool
+>>>> aspeed_smc_has_wdt_control(const AspeedSMCClass *asc)
+>>>>>         return !!(asc->features &
+>> ASPEED_SMC_FEATURE_WDT_CONTROL);
+>>>>>     }
+>>>>>
+>>>>> +static inline bool aspeed_smc_has_dma_dram_addr_high(const
+>>>>> +AspeedSMCClass *asc)
+>>>>
+>>>> To ease the reading, I would call the helper aspeed_smc_has_dma64()
+>>> Will fix it
+>>>>
+>>>>> +{
+>>>>> +    return !!(asc->features &
+>>>> ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH);
+>>>>> +}
+>>>>> +
+>>>>>     #define aspeed_smc_error(fmt, ...)
+>>>> \
+>>>>>         qemu_log_mask(LOG_GUEST_ERROR, "%s: " fmt "\n", __func__,
+>> ##
+>>>>> __VA_ARGS__)
+>>>>>
+>>>>> @@ -747,6 +757,9 @@ static uint64_t aspeed_smc_read(void *opaque,
+>>>> hwaddr addr, unsigned int size)
+>>>>>             (aspeed_smc_has_dma(asc) && addr == R_DMA_CTRL) ||
+>>>>>             (aspeed_smc_has_dma(asc) && addr ==
+>> R_DMA_FLASH_ADDR)
+>>>> ||
+>>>>>             (aspeed_smc_has_dma(asc) && addr ==
+>> R_DMA_DRAM_ADDR)
+>>>> ||
+>>>>> +        (aspeed_smc_has_dma(asc) &&
+>>>>> +         aspeed_smc_has_dma_dram_addr_high(asc) &&
+>>>>> +         addr == R_DMA_DRAM_ADDR_HIGH) ||
+>>>>>             (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN) ||
+>>>>>             (aspeed_smc_has_dma(asc) && addr ==
+>> R_DMA_CHECKSUM)
+>>>> ||
+>>>>>             (addr >= R_SEG_ADDR0 &&
+>>>>> @@ -847,6 +860,23 @@ static bool
+>>>> aspeed_smc_inject_read_failure(AspeedSMCState *s)
+>>>>>         }
+>>>>>     }
+>>>>>
+>>>>> +static uint64_t aspeed_smc_dma_dram_addr(AspeedSMCState *s) {
+>>>>> +    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
+>>>>> +    uint64_t dram_addr_high;
+>>>>> +    uint64_t dma_dram_addr;
+>>>>> +
+>>>>> +    if (aspeed_smc_has_dma_dram_addr_high(asc)) {
+>>>>> +        dram_addr_high = s->regs[R_DMA_DRAM_ADDR_HIGH];
+>>>>> +        dram_addr_high <<= 32;
+>>>>> +        dma_dram_addr = dram_addr_high |
+>>>> s->regs[R_DMA_DRAM_ADDR];
+>>>>
+>>>> Here is a proposal to shorten the routine :
+>>>>
+>>>>            return ((uint64_t) s->regs[R_DMA_DRAM_ADDR_HIGH] << 32)
+>> |
+>>>>                s->regs[R_DMA_DRAM_ADDR];
+>>>>
+>>>>
+>>>>> +    } else {
+>>>>> +        dma_dram_addr = s->regs[R_DMA_DRAM_ADDR];
+>>>>
+>>>> and
+>>>>            return s->regs[R_DMA_DRAM_ADDR];
+>>>>
+>>>>> +    }
+>>>>> +
+>>>>> +    return dma_dram_addr;
+>>>>> +}
+>>>>> +
+>>> Thanks for your suggestion. Will fix.
+>>>>>     static uint32_t aspeed_smc_dma_len(AspeedSMCState *s)
+>>>>>     {
+>>>>>         AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s); @@
+>> -914,24
+>>>>> +944,34 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+>>>>>
+>>>>>     static void aspeed_smc_dma_rw(AspeedSMCState *s)
+>>>>>     {
+>>>>> +    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
+>>>>> +    uint64_t dram_addr_high;
+>>>>
+>>>> This variable doesn't look very useful
+>>> Will try to remove it.
+>>>>
+>>>>> +    uint64_t dma_dram_addr;
+>>>>> +    uint64_t dram_addr;
+>>>>
+>>>> and dram_addr is redundant with dma_dram_addr. Please use only one.
+>>> Please see my below description and please give us any suggestion.
+>>>>
+>>>>
+>>>>>         MemTxResult result;
+>>>>>         uint32_t dma_len;
+>>>>>         uint32_t data;
+>>>>>
+>>>>>         dma_len = aspeed_smc_dma_len(s);
+>>>>> +    dma_dram_addr = aspeed_smc_dma_dram_addr(s);
+>>>>> +
+>>>>> +    if (aspeed_smc_has_dma_dram_addr_high(asc)) {
+>>>>> +        dram_addr = dma_dram_addr - s->dram_mr->container->addr;
+>>>>
+>>>> Why do you truncate the address again ? It should already be done
+>>>> with
+>>>>
+>>>> #define DMA_DRAM_ADDR_HIGH(val)   ((val) & 0xf)
+>>>>
+>>> The reason is that our firmware set the real address in SMC registers.
+>>> For example: If users want to move data from flash to the DRAM at
+>>> address 0, It set R_DMA_DRAM_ADDR_HIGH 4 and R_DMA_DRAM_ADDR 0
+>> because
+>>> the dram base address is 0x 4 00000000 for AST2700.
+>>
+>>
+>> Could you please share the specs of the R_DMA_DRAM_ADDR and
+>> R_DMA_DRAM_ADDR_HIGH registers to see what are the init values, how
+>> these registers should be set, their alignment constraints if any, how the values
+>> evolve while the HW does the DMA transactions, etc.
+>>
+> DMA_DRAM_SIDE_ADDRESS 0x088 Init=0x00000000
+> 31:0 RW DMA_RO
+> DRAM side start address
+> For DMA Read flash, this the destination address.
+> For DMA Write flash, the is the source address
+> DMA only execute on 4 bytes boundary
+> When read, it shows the current working address
 > 
-> We expose the assumption of numeric versions in places like
-> QMP's query-version command, which reports it as a set of ints.
+> DMA DRAM Side Address High Part 0x07c Init=0x00000000
+> 32:8 RO reserved
+> 7:0 RW DMA_RO_HI
+>        dma_ro[39:32]
+> 
+> Therefore, DMA address is dma_ro[39:0]
 
-Right, we have:
+Thanks for the info. It seems that there are no alignment constraints.
+I am surprised that there are no limits for the length in the specs.
+It's 32MB right ?
+  
+Previous SoCs hardwire the high bits of the address where DRAM is mapped
+in the DMA DRAM address reg. This is why the DRAM container was introduced,
+so that HW units doing DMAs, like SMC, didn't have to manipulate real
+physical addresses and offsets could be used instead. AST2700 HW interface
+is different.
 
-#     -> { "execute": "query-version" }
-#     <- {
-#           "return":{
-#              "qemu":{
-#                 "major":0,
-#                 "minor":11,
-#                 "micro":5
-#              },
-#              "package":""
-#           }
-#        }
+We can't use 's->dram_mr->container->addr' directly and I would like to
+avoid passing 'sc->memmap[ASPEED_DEV_SDRAM]' as a property to the model.
+Also, I was hoping that we didn't have to update the high part of the
+address in the 0x07c reg. It seems we have to.
+
+  
+> 
+> Our FW settings,
+> In u-boot shell, execute the following command
+> cp.b 100220000 403000000 100
+> 100220000 flash address for kernel fit image
+> 403000000 dram address at offset 3000000
+> https://github.com/AspeedTech-BMC/u-boot/blob/aspeed-master-v2023.10/lib/string.c#L553C8-L553C29
+> https://github.com/AspeedTech-BMC/u-boot/blob/aspeed-master-v2023.10/arch/arm/mach-aspeed/ast2700/spi.c#L156
+
+So, U-Boot simply hardcodes the DRAM high bits
+
+			if (dma_dest >= ASPEED_DRAM_BASE)
+				writel(0x4, (void *)DRAM_HI_ADDR);
+
+The fallback plan would simply be to ignore the high bits of the DMA
+DRAM address. It should work today. Let me think about it more.
+
+Thanks,
+
+C.
 
 
-We could add an extra field to it thus:
 
 
-#     -> { "execute": "query-version" }
-#     <- {
-#           "return":{
-#              "qemu":{
-#                 "major":0,
-#                 "minor":11,
-#                 "micro":5,
-#                 "tag": "rc2"
-#              },
-#              "package":""
-#           }
-#        }
-
-arguably we are still in strictly ascending order for the
-numeric part, we merely didn't bump the numeric part of
-the value at rc releases.
-
-> I think there's probably scope for making the "human friendly"
-> version string be surfaced instead of the strictly-numeric
-> one in more places, but I worry that breaking the "always
-> numeric and ascending" rule might have subtle breakage for
-> us or for downstream uses...
-
-Downstream I see no issues. There are already many projects which
-use a '-dev' or '-rcNN' suffix for tarballs of unreleased versions,
-and distros have guidelines on how they deal with this.
-
-In fact downstream already deals with it for QEMU, because they will
-typically set packaging versioning based on the version as seen in
-the tarball name, not the different version seen in the VERSION file
-(and thus QMP).
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> https://github.com/AspeedTech-BMC/u-boot/blob/aspeed-master-v2023.10/arch/arm/mach-aspeed/ast2700/spi.c#L179-L183
+> Thanks-Jamin
+> 
+>> Thanks,
+>>
+>> C.
+>>
+>>
+> 
 

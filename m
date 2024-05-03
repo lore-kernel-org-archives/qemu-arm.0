@@ -1,165 +1,193 @@
-Received: by 2002:a17:906:c1cf:b0:a52:4db9:938b with SMTP id bw15csp3184577ejb;
-        Tue, 30 Apr 2024 11:44:51 -0700 (PDT)
-X-Received: by 2002:ac2:42c3:0:b0:51c:5fab:c23d with SMTP id n3-20020ac242c3000000b0051c5fabc23dmr207675lfl.17.1714502690906;
-        Tue, 30 Apr 2024 11:44:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714502690; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1768074ejy;
+        Fri, 3 May 2024 02:40:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWyPHc8LSjdQ5UqxDIJtro0E34WTn0I50Fm3+7lLyfJpAiqPkElHhfXCK7F5sL+4GqU0Yvzlk+mDOF3DVAa7wzUlXCeGvaB
+X-Received: by 2002:a17:906:5a92:b0:a55:a8a6:aac6 with SMTP id l18-20020a1709065a9200b00a55a8a6aac6mr1208898ejq.54.1714729214745;
+        Fri, 03 May 2024 02:40:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714729214; cv=none;
         d=google.com; s=arc-20160816;
-        b=FAna7/jKgZLPKdFyaHI4dDlqjqGhxaux3DtyTtQzPCxuPdhUJq+9zB16UBhYt3bEl1
-         CVxALPHhCBnYqseJS7zueYD9tHuyDE2X1xmdSzLrYNteRIkE/R5OlP3GD1kh5hoMzY+z
-         sx4VBWil5QEv35qsuEuWvCOwhgs/MMshIa0P3UUiF0KsP4Y0PBvdRv4ace7P7tkhtHoh
-         LZ9aL3GnB9Pb5YpJRirhX4mDmxhYPS+EAk9DDCsmz9bOWPheTZYJzBvmUVZLUZd1JXeu
-         ZMq6oxi1nJqM2YAYRvh0Qi+biwkdD1dj4QkjvPjp+qJYc/BFkmLr+Jv8AWjYtnFK/JwW
-         7usg==
+        b=Nx7WLB0mTUd0wJ/YSRQ3Er0qsYN04xuVDHmiySwLjqHilzSQT6Jmr/9mVBJufG/MAf
+         l/qEk99G1S/feR9pQCPuwFbwMyu4SF2Tgkz8sZI3iJ6nhcoPWyuKE4n5TkMNFSiUWrtr
+         xrmFFZNE6oC/rZQuQSutvBh66TQFv6q6XHN+vG6VcqH9HXy/5TExAIIbqYFG+1hKyBRD
+         PvE7iCCyEtA5btW5+oqJP0I3tPkFBIRJIbCdLTh3We9JKQLfPg52UpsfhDknzsNal/89
+         8+/ZdJ1tscscPiFYelsT0i3wwrFphh4vySSjtqAr1gLk+bypQnm7lmfA/JlFISn7wwBD
+         9Xkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=3gBgASPmO3umVtWBxwX2dWIChGUiJly3iRrpORmwNCA=;
-        fh=lyYd5u/xP7MkSXnqR0B3Lug5GOOGoEqAPzvNtygcaUQ=;
-        b=CdHhrj6GJxUtPv6YWUI6zHSSpabAO7T2OOg/BLGnJ4K9px1T3s9riWVNDFcj+Ny7KQ
-         soGMgUHONUQ560vfprjfpwqMzN5LGLEaZUfIsWOiKuP5vfRWGqC1hkqchOUMBfRXIEuV
-         xyvVflY60MyYl7cZ0DdXwryP5AYCv1DvajEbri431zHAn6YhSmAGlpycPC/z2UsYwJC5
-         nYXLlAnS2KY4/MOyI5uevGeRXSMDIfXWM7b2ZQOl5gSCayHV1nvjmVHZ2aUX4JIwWKB5
-         TpKmxIjAYE9lgxh3M5MPdERa7DDyGk6rGpqTT5FaArQYOEg6GdBKIbzaIzD6kHxL+Z+v
-         wduQ==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=+aYukAFjSkKANGHcVIV8wuIMZB/UvTg/F4UINqCVkZU=;
+        fh=RENRkrd25gjQVBheh+qxHwSs0qNrFpiFwCjvi0Bc1Xo=;
+        b=y9kElWSpx2g2qUKNK3zPgGHcNudb4z/jrsKVlsoJmPSmBdhpC8nyetUzXfR/cAUhUB
+         NKpCXjnFsvdII8thrStPZq463x3JwcgH/BmwQ7q55iM+0SsaE/+lkvTUcEeJSVMAqtHe
+         GeCzQ0Lmd9vWkeKjlUHLpY91z5qqmQc3L+yP+sC3REGl3WrUeO5urrMfT1lPjmukxFZQ
+         i04uPDu3Z+CMZ6MaFrWAynbu/53n0bTMIGhtlWc0LaEuZWjuSa7uvnPnPRTy/gbqr0Nz
+         zfFNkOxCkHSkA+aA97EJfuhfXHi6kmOOGZAnCub2j7r4cxumZtN6b9CEWDIhRTrpOpQP
+         v4Aw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="eH+ZN/wG";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=leupeN3z;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id w20-20020a056402269400b0057288f630f4sor1598302edd.5.2024.04.30.11.44.50
+        by mx.google.com with SMTPS id v2-20020a170906292200b00a587ccbf2b3sor1025364ejd.21.2024.05.03.02.40.14
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 30 Apr 2024 11:44:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 03 May 2024 02:40:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="eH+ZN/wG";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=leupeN3z;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714502690; x=1715107490; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3gBgASPmO3umVtWBxwX2dWIChGUiJly3iRrpORmwNCA=;
-        b=eH+ZN/wGy3/t+POb0Iv5PFFejtSkTJd+USNwWZZEuaOr+UrgsqAPyYRVnXAHWK199m
-         5YvQu/F9hB9riiqtTE5EqK4iE6wHmZCdxktpfF+xSnaSc30CgGmYGplBBiIfpiFl7ZJi
-         df9yb3mP4IBcW4VtTSLQlOWn8dBBZH4/sdJjPGc+EaO60C2VStYL4Rzbp/wRJyGvDXuF
-         mA1Q7enT7ez7zq0yH12yXU1eat6SaEuUvLMTJCwc98NEbfyY6ma/FSMb6CrOKe13K7HK
-         tNIL2r6fu22U0lzpO1omJ4xlz+FJteKcxfxJiN1V7jIYE3RLkXJucLNhzB814CqTZehJ
-         YTYQ==
+        d=linaro.org; s=google; t=1714729214; x=1715334014; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=+aYukAFjSkKANGHcVIV8wuIMZB/UvTg/F4UINqCVkZU=;
+        b=leupeN3zEhYf4mla18jAZeiDgRbSBaGJiSB/4zQn6Xql9qeENrUBLLztnT0y08kuP2
+         iY8DzaleA3H5VqXbQH66juil82ysi2cxj+MxteG7awiVDqaP26VNzhM1XWtAAzhpznFV
+         J4Jmz2XyQD5WMJHEyZ2uq0Ay9Qhb126nAeqA/2wtMtte6EXyDOv4IYdUtMCfdIIeDZ3h
+         zxx2XtT4c6pn1kHJCGkA2q2n845zBKHcrB0lv0F6Qg0965FKo1XjUUbIGXjzKhalRv7q
+         Uns69xgxW6swZi4bUUT/QDtZXer1rwT62VrN/Z4oy0n9LEpPfTMd4/UZ2PBlHxDFvnb8
+         +/ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714502690; x=1715107490;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3gBgASPmO3umVtWBxwX2dWIChGUiJly3iRrpORmwNCA=;
-        b=II6srdoigS8I18C6Co3jvC0JkVyCbXnluNynjxS1D9nBPtl1fXqH2qDR+unf0Izh2M
-         3CYvl+n9Ue24dXl+5xUN2Eav0NcReJmQWVii4vKtK9vZNH/dG1W3sw4u/tx77MnL6i+y
-         oVAg256FveAntgLRadsUDPXWyulkmSRNL8ftu8tsA9HpJfMvs28Spu8Hoki4j0Yo/2rW
-         wV6DZDL8mGgxa9kxr6Copl+YW5PBFVX+v+ObS0RSjG9bLFuzM9NJoiIokvBp6Lina8Cq
-         Nu6MAWORuPhz635J60xbXt/dAv87I3KqwQ7wPrcfs0QMsBEmLCup1EKY2e7x7yl7s9Jb
-         HB9Q==
-X-Gm-Message-State: AOJu0YzpU0Cvn41+TdbVD+WeIx5/nmrP1oPp3Y7knhLvgWJD10+kqWle
-	SaRPuG4UYpNLakRgQFRXG7zx3/0uhQgXo82jPSruyJKeOKAPV8f0K/7GPkBozTyCFeyQWlxfNpx
-	r2hdmaHKNiLcR8GBDTFqscYKx/02phddHtTom7w97roK345lX6AI=
-X-Google-Smtp-Source: AGHT+IFuMFg0PiJtqAlOUKGqjf2n9rAlcZePYebauohCzwk4FET2C8il2R8vdrWLPxH/BY67FY6E7Gwmcqno3AoQvXE=
-X-Received: by 2002:a50:aad3:0:b0:565:dfac:a686 with SMTP id
- r19-20020a50aad3000000b00565dfaca686mr411314edc.38.1714502690495; Tue, 30 Apr
- 2024 11:44:50 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1714729214; x=1715334014;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+aYukAFjSkKANGHcVIV8wuIMZB/UvTg/F4UINqCVkZU=;
+        b=w5rwrnFkhMkiFI0DDYaPOr8+ewCn1cZz45cFVj7PIIVn9os1Cco0agu2xZJDivjD2R
+         s3QvK4UK+ISGyqFQ9/kf1LheHZD3Q14tEyGN7/UArf7qY23SmNEIT0PIHFz1pUJptu44
+         pWpLgzntnblx/p2CzJj5Mh8JSX7eQ7GL7olI/pTXxl4DALp8gbl+8RPxJDE0ZE2TTY1q
+         0qK0yQkfnOZ9z2A6aJ7WFmhS+D6wW0rt8V/2IVWXVsox9OU4qF0U0xAzWqLtHb2ozaj4
+         EuVztpPaT+kdwAIZ0zMGXM8Hd67im4ZNxZmE264KbDEvVrx3GccwN/e7EWAjECo9q6IM
+         0UPw==
+X-Forwarded-Encrypted: i=1; AJvYcCX3/boQEofczvM5ntyj1/Bl5IDB/YWkwlf3tlBDbAVPCMltaz7ijMBUfzKJoz4qJ+ndh8dWfJS2HKK8WDQi+rn3mSq02IY8
+X-Gm-Message-State: AOJu0YwqeNxT18zOhAn1rm+GXdL554WmlQniON7X0ElWdz9zT5tpn30S
+	4hGpQBAU4B3gw4veIYUf453Vdz9UPg3QNcacYC6SXDtg7bK5CjacExrL/5+ZvFxoZw==
+X-Google-Smtp-Source: AGHT+IHIToLEnpdNruYrQBoTyWj2gFK1Cz1QmwFWVv+7gCqdsuJSn9RcpPNSSbr6WOuF0nFrhPsslw==
+X-Received: by 2002:a17:907:1b06:b0:a59:9a68:7283 with SMTP id mp6-20020a1709071b0600b00a599a687283mr489708ejc.12.1714729214279;
+        Fri, 03 May 2024 02:40:14 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] ([176.176.179.187])
+        by smtp.gmail.com with ESMTPSA id ay20-20020a170906d29400b00a58aff25d77sm1496488ejb.193.2024.05.03.02.40.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 03 May 2024 02:40:13 -0700 (PDT)
+Message-ID: <9747db79-4444-4d31-b014-8c368936cab4@linaro.org>
+Date: Fri, 3 May 2024 11:40:09 +0200
 MIME-Version: 1.0
-References: <20240430140035.3889879-1-peter.maydell@linaro.org>
- <20240430140035.3889879-2-peter.maydell@linaro.org> <87ttji3h69.fsf@draig.linaro.org>
-In-Reply-To: <87ttji3h69.fsf@draig.linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 30 Apr 2024 19:44:39 +0100
-Message-ID: <CAFEAcA-UL6cd7Obbx8sHpJ-Vdb-vpU8NJwdcLM2P+8ZpFnj2kg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] accel/tcg: Make TCGCPUOps::cpu_exec_halt return bool
- for whether to halt
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: kbs7wxKySRzK
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V8 1/8] accel/kvm: Extract common KVM vCPU
+ {creation,parking} code
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev,
+ david@redhat.com, eric.auger@redhat.com, oliver.upton@linux.dev,
+ pbonzini@redhat.com, mst@redhat.com, will@kernel.org, gshan@redhat.com,
+ rafael@kernel.org, alex.bennee@linaro.org, linux@armlinux.org.uk,
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
+ wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com,
+ maobibo@loongson.cn, lixianglai@loongson.cn, linuxarm@huawei.com
+References: <20240312020000.12992-1-salil.mehta@huawei.com>
+ <20240312020000.12992-2-salil.mehta@huawei.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240312020000.12992-2-salil.mehta@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: AaDBI5FurAS2
 
-On Tue, 30 Apr 2024 at 18:15, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > The TCGCPUOps::cpu_exec_halt method is called from cpu_handle_halt()
-> > when the CPU is halted, so that a target CPU emulation can do
-> > anything target-specific it needs to do.  (At the moment we only use
-> > this on i386.)
-> >
-> > The current specification of the method doesn't allow the target
-> > specific code to do something different if the CPU is about to come
-> > out of the halt state, because cpu_handle_halt() only determines this
-> > after the method has returned.  (If the method called cpu_has_work()
-> > itself this would introduce a potential race if an interrupt arrived
-> > between the target's method implementation checking and
-> > cpu_handle_halt() repeating the check.)
-> >
-> > Change the definition of the method so that it returns a bool to
-> > tell cpu_handle_halt() whether to stay in halt or not.
-> >
-> > We will want this for the Arm target, where FEAT_WFxT wants to do
-> > some work only for the case where the CPU is in halt but about to
-> > leave it.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >  include/hw/core/tcg-cpu-ops.h       | 11 +++++++++--
-> >  target/i386/tcg/helper-tcg.h        |  2 +-
-> >  accel/tcg/cpu-exec.c                |  7 +++++--
-> >  target/i386/tcg/sysemu/seg_helper.c |  3 ++-
-> >  4 files changed, 17 insertions(+), 6 deletions(-)
-> >
-> > diff --git a/include/hw/core/tcg-cpu-ops.h b/include/hw/core/tcg-cpu-op=
-s.h
-> > index dc1f16a9777..f3ac76e6f6d 100644
-> > --- a/include/hw/core/tcg-cpu-ops.h
-> > +++ b/include/hw/core/tcg-cpu-ops.h
-> > @@ -111,8 +111,15 @@ struct TCGCPUOps {
-> >      void (*do_interrupt)(CPUState *cpu);
-> >      /** @cpu_exec_interrupt: Callback for processing interrupts in cpu=
-_exec */
-> >      bool (*cpu_exec_interrupt)(CPUState *cpu, int interrupt_request);
-> > -    /** @cpu_exec_halt: Callback for handling halt in cpu_exec */
-> > -    void (*cpu_exec_halt)(CPUState *cpu);
-> > +    /**
-> > +     * @cpu_exec_halt: Callback for handling halt in cpu_exec.
-> > +     *
-> > +     * Return true to indicate that the CPU should now leave halt, fal=
-se
-> > +     * if it should remain in the halted state.
-> > +     * If this method is not provided, the default is to leave halt
-> > +     * if cpu_has_work() returns true.
-> > +     */
-> > +    bool (*cpu_exec_halt)(CPUState *cpu);
->
-> Would it be too much to rename the method to cpu_exec_leave_halt() to
-> make it clearer on use the sense of the return value?
+Hi Salil,
 
-We could, but that makes it sound like it's a method to say
-"should we leave halt?", which ...
+On 12/3/24 02:59, Salil Mehta wrote:
+> KVM vCPU creation is done once during the vCPU realization when Qemu vCPU thread
+> is spawned. This is common to all the architectures as of now.
+> 
+> Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
+> corresponding KVM vCPU object in the Host KVM is not destroyed as KVM doesn't
+> support vCPU removal. Therefore, its representative KVM vCPU object/context in
+> Qemu is parked.
+> 
+> Refactor architecture common logic so that some APIs could be reused by vCPU
+> Hotplug code of some architectures likes ARM, Loongson etc. Update new/old APIs
+> with trace events instead of DPRINTF. No functional change is intended here.
+> 
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
+> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Tested-by: Xianglai Li <lixianglai@loongson.cn>
+> Tested-by: Miguel Luis <miguel.luis@oracle.com>
+> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+> ---
+>   accel/kvm/kvm-all.c    | 64 ++++++++++++++++++++++++++++++++----------
+>   accel/kvm/trace-events |  5 +++-
+>   include/sysemu/kvm.h   | 16 +++++++++++
+>   3 files changed, 69 insertions(+), 16 deletions(-)
+> 
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index a8cecd040e..3bc3207bda 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -126,6 +126,7 @@ static QemuMutex kml_slots_lock;
+>   #define kvm_slots_unlock()  qemu_mutex_unlock(&kml_slots_lock)
+>   
+>   static void kvm_slot_init_dirty_bitmap(KVMSlot *mem);
+> +static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id);
+>   
+>   static inline void kvm_resample_fd_remove(int gsi)
+>   {
+> @@ -314,14 +315,53 @@ err:
+>       return ret;
+>   }
+>   
+> +void kvm_park_vcpu(CPUState *cpu)
+> +{
+> +    struct KVMParkedVcpu *vcpu;
+> +
+> +    trace_kvm_park_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+> +
+> +    vcpu = g_malloc0(sizeof(*vcpu));
+> +    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
+> +    vcpu->kvm_fd = cpu->kvm_fd;
+> +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
+> +}
+> +
+> +int kvm_create_vcpu(CPUState *cpu)
+> +{
+> +    unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
+> +    KVMState *s = kvm_state;
+> +    int kvm_fd;
+> +
+> +    trace_kvm_create_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
+> +
+> +    /* check if the KVM vCPU already exist but is parked */
+> +    kvm_fd = kvm_get_vcpu(s, vcpu_id);
+> +    if (kvm_fd < 0) {
+> +        /* vCPU not parked: create a new KVM vCPU */
+> +        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
+> +        if (kvm_fd < 0) {
+> +            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %lu", vcpu_id);
+> +            return kvm_fd;
+> +        }
+> +    }
+> +
+> +    cpu->kvm_fd = kvm_fd;
+> +    cpu->kvm_state = s;
+> +    cpu->vcpu_dirty = true;
+> +    cpu->dirty_pages = 0;
+> +    cpu->throttle_us_per_full = 0;
+> +
+> +    return 0;
+> +}
 
-> > -void x86_cpu_exec_halt(CPUState *cpu)
-> > +bool x86_cpu_exec_halt(CPUState *cpu)
-> >  {
-> >      if (cpu->interrupt_request & CPU_INTERRUPT_POLL) {
-> >          X86CPU *x86_cpu =3D X86_CPU(cpu);
-> > @@ -138,6 +138,7 @@ void x86_cpu_exec_halt(CPUState *cpu)
-> >          cpu_reset_interrupt(cpu, CPU_INTERRUPT_POLL);
-> >          bql_unlock();
-> >      }
-> > +    return cpu_has_work(cpu);
->
-> The x86 version is essentially being called for side effects. Do we want
-> to document this usage in the method?
+This seems generic enough to be implemented for all accelerators.
 
-...is not how the x86 target is using it, as you note.
+See AccelOpsClass in include/sysemu/accel-ops.h.
 
-thanks
--- PMM
+That said, can be done later on top.

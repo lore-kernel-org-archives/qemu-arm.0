@@ -1,109 +1,147 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1769808ejy;
-        Fri, 3 May 2024 02:44:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU0FnPp7S/WY3S+hI6PlPp7wgbGfxX078vcu0CMI+c6wMu8gUdCMN+mTRkcPb31gGR7HC0fub9Zr5Zx5Ab5167KTl4DGNk5
-X-Google-Smtp-Source: AGHT+IEqOTquF7Q6uXd3L5clQ+MzzTs66H0BXjGJQ4HjDAkVSubOfTTNwElz8dpQC0sCsMLXeM6T
-X-Received: by 2002:ad4:5c62:0:b0:6a0:ac0f:a59c with SMTP id i2-20020ad45c62000000b006a0ac0fa59cmr2255169qvh.46.1714729499595;
-        Fri, 03 May 2024 02:44:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714729499; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1831714ejy;
+        Fri, 3 May 2024 04:47:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWTvQUu/+1NJHvmkXvb+i0wMAhhepa5Pe5/tb1QLN9PW3D0n/HgHpOQxFx2hVgDrRT6jzRdKHvFjgyuLyth64QJ5zCM4q9z
+X-Google-Smtp-Source: AGHT+IE27JFmb+nz7BPaTka8hlMkUSXldrgpMd9pkpOzMNnfdCPDvylhTfLCog+CqFi0fSfpR5N5
+X-Received: by 2002:a05:620a:40d2:b0:790:7f30:6c0 with SMTP id g18-20020a05620a40d200b007907f3006c0mr10387822qko.23.1714736825684;
+        Fri, 03 May 2024 04:47:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714736825; cv=none;
         d=google.com; s=arc-20160816;
-        b=GZeNcJ70ZOmNRJWnzAdzeyQkz55KDoLK6whWnXeS1t7+Qy1rwunO/l1WiUok+RZyzf
-         kIGVUH8Ck8x+KAYdcZ9+9d329TpU4IjFqhK+eG7Riw3SKSWyUMYNN1fKKWfRj/M31z/g
-         TaNOszPYIrmFDWQS2hxO6BjqMLIq6OvdHi0k0LCDwP9F1cBJYo6cHFN/pMhYlBFos8P/
-         kPkZfTDHOdm656vmUDvMVUq2T0BNXw8rYz9lEEKiq0zG8OdQO47wiKuLlu0jQXB7vM5c
-         LLQswb+WkkHmvc+C67i4fL3rIsU+Ih+mJhJnyZ/08hFOblpeFku8Aam67afnjg7FSrKD
-         JNFQ==
+        b=sLxB6t4dY3v+w5CJ9fctv/DtFwi7JidWkpl29h5BgNt8aqF7tySN+58zfFBlP1Fgd5
+         0nvxhhYZlx+DabY+mWdgu6JWj+aze/B8msU8lhLR9x7e3ki4eEw+moT8GoTwYcnspSkh
+         +s4adg82mUAO+KnJ/+VH5y2o/Ta9cG1zxxpG5KmtZT7MQpxPnfMVVJTYZF8HEHkIYit5
+         Dlu9UZkvMCrvZHGYlB0ENNeBwEPdb0ETvM5ix0yO3fAwWrPve92PPVTUcB5k1Y0G97DG
+         kGMokIervRSY1hJeH+i2HIXIN2RotOwmplUmqKCCRNSwPYkeUvpKldLQh1gcJfPYpmH7
+         //9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=EzpjF3TeR3cKzb5knQUNNKlMPBdKhlydcNyhW3iKAlQ=;
-        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
-        b=eKTEQ7bxS7OMWmc8WgzZUiG7rtbYHrgNvzwzosDvdfcZGBnzhDsgQljg5XUUWODcRK
-         yKNYXvm89ajTpoJJF0mQGm05z6CZWA3DM46DjEFL071w0qn+acq+NVDJkBHW/OF3MrCP
-         k7f5ynSjc2KJsMPX9a6WJo/4nWA+jJE30hJtdqYCJHTX+zk61+NJjr01TtDi9NnOo9a2
-         Q2i61FTNz0hfL/kPRJhkdYdgZqb1YD+E4ZBHrOr18RmUPIvXJ0yKhXe/tT5PMp56+n/i
-         n14R1neS0kxda/ENbIt7W6KIc1iM4gwHh7W8U8wfrsjxvbKJoDeUU6pkKgPnc96No/P/
-         Iwqg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=2uvasta9I+i7UwShPVPO1nVQS1rJRHFdQYPNeS/VWv0=;
+        fh=EkTTntoLTmriGpJBH+KJMM5VfPFkGswPwnje1hRfpcM=;
+        b=M+je4p/ksn2z0UmvgG9oZX6soBdD0HRdALWMwraDZzch2D5TznGv1ivYDkKcN3nWg+
+         3c14ECLPsSRSrgaKX0Qf7b/8yfrLOv+AghuSiM282860G4liWWDbjz+ed2CH5aNINXNB
+         l1x84ExQd6RwJaKZhEyoVu9SUeOunvNTAz/YE2rStBrt9ru8iQ0YcMDc9bH0Qke+/9IB
+         DKufE1bNSG+MFb2BeWTpo0EJ3NNO8NB7weQ05Luwb7yn/+9jmr6wRTnFofAoQsLjqTzn
+         XOgpxRHhjHEon/CzTjFnYVGxyefs922GJ7zF+7lMLj3OIlavJVIRZRiQXsdiXLD492yi
+         zfsw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Cj0mReRm;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YYaIF2wt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p7-20020a05621421e700b006993ed55bd8si2845022qvj.230.2024.05.03.02.44.59
+        by mx.google.com with ESMTPS id wd41-20020a05620a72a900b0078ede41b220si2864328qkn.559.2024.05.03.04.47.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 May 2024 02:44:59 -0700 (PDT)
+        Fri, 03 May 2024 04:47:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Cj0mReRm;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YYaIF2wt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s2pTG-0002fH-Jy; Fri, 03 May 2024 05:44:50 -0400
+	id 1s2rNL-0003mc-9N; Fri, 03 May 2024 07:46:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <krishna125g@gmail.com>)
- id 1s2pTF-0002et-Db
- for qemu-arm@nongnu.org; Fri, 03 May 2024 05:44:49 -0400
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <krishna125g@gmail.com>)
- id 1s2pTC-0007xc-Tn
- for qemu-arm@nongnu.org; Fri, 03 May 2024 05:44:48 -0400
-Received: by mail-ot1-x336.google.com with SMTP id
- 46e09a7af769-6ee2fb4ec57so3119912a34.3
- for <qemu-arm@nongnu.org>; Fri, 03 May 2024 02:44:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1714729482; x=1715334282; darn=nongnu.org;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :from:to:cc:subject:date:message-id:reply-to;
- bh=EzpjF3TeR3cKzb5knQUNNKlMPBdKhlydcNyhW3iKAlQ=;
- b=Cj0mReRmGXLWXiFNuwpHThXYJ/ANJvyTgv+8z4DQJcLGTsJz7/J5JzuXY1tz5bdALZ
- HLgGm5f0l0OI4FHEi4EoVjY4JbTOibIwUfGACPf8/aV0AcEzOhYnLMbdjk3M732L/4S4
- NNYK/8U4dC5ec86qT55hOqPPIBxFVHyfWyTCv4YPvfuKEOTBn2CkbU1q76h7+lzTmHva
- Ji+inotIHFqh5Ou4FhnfQ2TF6QEStKETiozvgHPRclGOZ+qLbJ6gZ4lImiSr++KlIWx2
- kDcoycDm8ysaXcm6RMZtWO9ZV//ZVVA8+J8n34tVWMm0MsXT+H/+1oA0SCZiU+fS7uS2
- eRFA==
+ (Exim 4.90_1) (envelope-from <clegoate@redhat.com>)
+ id 1s2rN9-0003hU-Hi
+ for qemu-arm@nongnu.org; Fri, 03 May 2024 07:46:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clegoate@redhat.com>)
+ id 1s2rN4-0000xM-SW
+ for qemu-arm@nongnu.org; Fri, 03 May 2024 07:46:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1714736792;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2uvasta9I+i7UwShPVPO1nVQS1rJRHFdQYPNeS/VWv0=;
+ b=YYaIF2wt07gbW/bFGoKxxd+EUwDciFMMBEtGJYIr5jdSWm3vRw6fz9uN5iuSMkuAL/hcsO
+ NPfjZ6YOWamPCJOfLjzns4mhpHm3AgD+p5VvyjIz5m359RFon3NU4kf/O0fnFkJs3qqkhV
+ bT0RAGkxxZgHQAeIJZ1JRgPrAfIF21E=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-651-zyFIceu6PSiMG9boA3r9Sg-1; Fri, 03 May 2024 07:46:31 -0400
+X-MC-Unique: zyFIceu6PSiMG9boA3r9Sg-1
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-7907346a0fdso607018285a.0
+ for <qemu-arm@nongnu.org>; Fri, 03 May 2024 04:46:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714729482; x=1715334282;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ d=1e100.net; s=20230601; t=1714736791; x=1715341591;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=EzpjF3TeR3cKzb5knQUNNKlMPBdKhlydcNyhW3iKAlQ=;
- b=SbyXWULMCQnaY3l0z7R8Cxu0pms+iManWwEg8IzJTEvN43z6c73/9ttxtNVOVtA6a9
- kIvdKy5s6S6CQJpdoTI18BqjXaioJ0CKO++i4TFz2EIhGJyde5+rw64l+85weDBtcTEC
- Y7UtBE7BzyMhegrLzWF9fJI9SLoZ6WdML1QH0fmYKU7yktp7dSJrZRddFE47OkpVqpaI
- FH18xLe+aWloj7By4ekfqCffDysxpsdjRV8WLJMQJWP+NvIqA3zIC7aMHMS6nnyZRhjM
- QQUQQLg77qgQhHWORJKhi/fbseNZBCyrQjmK+U4yM3T35lAQ2yw8eIYopJcWp37ReDNJ
- Y9KA==
-X-Gm-Message-State: AOJu0YyTVgyacSaB5Qd04KpPkvmLzl3PufzQ5vOsi84lcyNmiYvNgFby
- i+wxy2uYQSjvSegvgzoVn/KnY3JmyFuxir5MZWAeN1BL2m4qK+DKC2zX8ph+UhoEgDSSNcFnlC4
- YIHOyvfihgrkR+BPT71cat/soDV00pw7alo8=
-X-Received: by 2002:a05:6870:d8cb:b0:23e:5cd0:faae with SMTP id
- of11-20020a056870d8cb00b0023e5cd0faaemr1389095oac.34.1714729482335; Fri, 03
- May 2024 02:44:42 -0700 (PDT)
+ bh=2uvasta9I+i7UwShPVPO1nVQS1rJRHFdQYPNeS/VWv0=;
+ b=oJ5g9Sd00UJ5QDGrt/F64u8a403kdkX4204l8B0wT2NNg+/C1AvjagW0Ys8jyfffqz
+ tS1OpSfrFwrhCxPYHarPWW6P+Y2WBwy4tjvDemnFhKA6IfWR+tzw+8BuEe17n/ndHMzQ
+ ELUQAyHb828rewmLIGDSGT4UrHnsrTL8Jjv5vtweqqVye9w1yitmxK+UM81M20eXmKA8
+ LS/zNeeyyTA3kZQqLyPHd3bUizkRwWWNW5e8kh2HvabJlEOiYN9PLxhfh+M85UCjT2cR
+ KJ26Z5V0/X4/1OE17rMR7WhYavwfY8p1TV4z9O2hj/PrwCttOKU7+j7Qn9LFnXNP7/Wc
+ P7Ag==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUhOA/uULZpiCN6CKOMitVabFnR/vKJX7JVqkq1klIap9VU2IXhEM3QFUIDkrIxBq8b6gF1AnQ+MkY/3k2oH4xeSSAH
+X-Gm-Message-State: AOJu0Yz+FvWbQ3CZdX8B/X81NnHIeqLj43Yzt0gVIenxLJneHSvPRqsp
+ PAO0k/b4AxQgN5DRB1GZRfqDSqYzGzJslZ0WZ4P8JOOd1RtLtdafF6n6TUN8O2/1HzwMeEFHCQu
+ 5IJKBk4d9IleDLObVtaUVRcdKIN1ZqvITlmqe7es1Sc5dmU69RA==
+X-Received: by 2002:a05:620a:158f:b0:78e:bd5d:8d7b with SMTP id
+ d15-20020a05620a158f00b0078ebd5d8d7bmr4193311qkk.14.1714736790649; 
+ Fri, 03 May 2024 04:46:30 -0700 (PDT)
+X-Received: by 2002:a05:620a:158f:b0:78e:bd5d:8d7b with SMTP id
+ d15-20020a05620a158f00b0078ebd5d8d7bmr4193275qkk.14.1714736790247; 
+ Fri, 03 May 2024 04:46:30 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ y22-20020a05620a09d600b0078d5f7b9a2dsm1156452qky.15.2024.05.03.04.46.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 03 May 2024 04:46:29 -0700 (PDT)
+Message-ID: <919d07f5-ecf7-4ce1-9508-7ac8f8f6e7e4@redhat.com>
+Date: Fri, 3 May 2024 13:46:24 +0200
 MIME-Version: 1.0
-References: <CAH9tv=PKi3B44y4+gvTa9CpJHNN4UAeyvgxFwXCjUVM3Qy=ppA@mail.gmail.com>
- <CAFEAcA_LH+vKxn3pdzfua_1+Piy4rQECq3yh66f_O+YuTxfnRw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_LH+vKxn3pdzfua_1+Piy4rQECq3yh66f_O+YuTxfnRw@mail.gmail.com>
-From: Krishna Gururaj <krishna125g@gmail.com>
-Date: Fri, 3 May 2024 15:14:31 +0530
-Message-ID: <CAH9tv=MSO2ooq=8Vt63uWCNV3sWMkZC2DihLvUkbpeOhYphkDg@mail.gmail.com>
-Subject: Re: QNX in qemu
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000ae3c4e0617899196"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::336;
- envelope-from=krishna125g@gmail.com; helo=mail-ot1-x336.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URI_NOVOWEL=0.5 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/14] hw: define and enforce a standard lifecycle for
+ versioned machines
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Nicholas Piggin
+ <npiggin@gmail.com>, Richard Henderson <richard.henderson@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org
+References: <20240501182759.2934195-1-berrange@redhat.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clegoate@redhat.com>
+In-Reply-To: <20240501182759.2934195-1-berrange@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clegoate@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.483,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,247 +156,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dScH4/KOBitG
+X-TUID: y/MCawmL6LCU
 
---000000000000ae3c4e0617899196
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 5/1/24 20:27, Daniel P. Berrangé wrote:
+> Thomas proposed a new deprecation and removal policy for versioned
+> machine types that would see them liable for deletion after 6 years:
+> 
+>    https://lists.nongnu.org/archive/html/qemu-devel/2024-04/msg04683.html
+> 
+> This suggest was met with broad approval, however, I suggested that we
+> could take it further and actually mark them deprecated sooner, at the
+> 3 year timeframe, and also fully automate the enablement of the runtime
+> deprecation warning without developer intervention on every release
+> cycle.
+> 
+> This series implements my suggestions.
+> 
+> The first patch introduces some helper macros and documents a standard
+> code pattern for defining versioned machine types across targets.
+> 
+> The next 6 patches convert existing targets with versioned machine
+> types (arm, s390x, ppc, m68k, i386) to use the new helper macros and
+> code patterns.
+> 
+> A further patch introduces some helper macros for automating the
+> handling of deprecation and deletion of versioned machine types.
+> 
+> Two more patches then enable the deprecation and deletion logic
+> across all versioned machines
+> 
+> Finally we do some cleanup and document the new policy.
+> 
+> ........a tangent about VERSION file handling.......
+> 
+> One oddity here, is that during the development and release
+> candidate phases the automatic logic in this series has an off-by-1
+> error.
+> 
+> This is because when we, for example, add the "9.1" machine type
+> versions, the VERSION file is still reporting '9.0.50', and then
+> '9.0.9{1,2,3,4}'.
+> 
+> IOW, during development and in rc candidates, we fail to deprecate
+> and delete 1 machine type. We should already have deprecated the
+> 6.1 machine types, but the most recently deprecated is 6.0.
+> This is pretty harmless since the final release does the right
+> thing.
+> 
+> I wonder, however, whether we would benefit from changing how we
+> update the VERSION file.
+> 
+> eg instead of re-using the micro digit to indicate a dev or rc
+> snapshot, represent those explicitly. eg "9.1.0-dev" and
+> "9.1.0-rc1", "9.1.0-rc2", etc in VERSION.
+> 
+> We don't use the full QEMU_VERSION in the code in all that many
+> places. It appears in some help messages for command line tools,
+> and in QMP query-version response, and in a few other misc places.
+> At a glance it appears all of those places would easily handle a
+> tagged version.
+> 
+> For release candidates in particular I think it would be saner
+> to show the user the actual version the release is about to become,
+> rather than the previous release's version. This would make the
+> reported version match the rc tarball naming too which would be
+> nice.
+> 
+> Anyway, this isn't a blocker for this machine type versioning
+> proposal, just a thought....
 
-Hello,
+I would agree with such a change. The version numbers always confused
+me. AFAICT, only QEMU_VERSION_MICRO would need some massaging. It
+shouldn't be too complex.
 
-     Firstly thank you for the response. Now when I remove the -nographic
-option a gtk screen opens and it displays that ' Guest has not initialized
-the display (yet) and in the log I see this : (qemu:15068): Gtk-WARNING **:
-10:54:03.341: Could not load a pixbuf from icon theme.This may indicate
-that pixbuf loaders or the mime database could not be found.
+For the series,
 
-QNX is not getting loaded when I remove this option.
+Tested-by: Cédric Le Goater <clg@redhat.com>
 
+Thanks,
 
-I think the below logs might help you help me better :
-
-I get this when I run this command 'qemu-system-aarch64.exe -machine
-vexpress-a15 -cpu cortex-a57 -smp 4 -m 30G -kernel ifs.bin -drive
-file=3Ddisk-qemu.vmdk,if=3Dnone,id=3Ddrv0 -device virtio-blk-device,drive=
-=3Ddrv0
--netdev tap,id=3Dmynet0,ifname=3DTAP_Ethernet,script=3Dno,downscript=3Dno -=
-device
-virtio-net-device,netdev=3Dmynet0,mac=3D52:55:00:d1:55:01 -device
-virtio-rng-device -nographic'
-
----> Starting slogger2
----> Starting PCI Services
----> Starting devb
-Path=3D0 -
- target=3D0 lun=3D0     Direct-Access(0) - VIRTIO  Rev:
----> Mounting file systems
----> Mounting file systems
-=E2=97=84---> Starting Networking
-# net.inet.icmp.bmcastecho: 0 -> 1
-qnx.kern.droproot: 0 -> 1
----> Starting sshd
----> Starting misc
--U deprecated, use security policies.
-pps: NOTICE: PPS initializing
-pps: NOTICE: PPS attaching /pps
-pps: NOTICE: PPS attached /pps major 2 minor 6
----> Starting graphics
-io_hid_dlopen, devh-ps2ser-vm.so DLL Error Library cannot be found
-libkhronos: dlopen() err No valid library found, path:
-'/system/graphics/vmwgfx-drm/libwfdcfg-vmwgfx-generic.so'
-libkhronos: dlopen() err Library cannot be found, path:
-'libwfdcfg-vmwgfx-generic.so'
-libkhronos: Ensure directory containing graphics libraries is appended to
-LD_LIBRARY_PATH envar.
-*Unable to access /dev/screen *
-Process count: 26
-Startup complete
-QNX noname 7.1.0 2020/06/13-20:07:59EDT ARMv8_Foundation_Model aarch64le
-
-
-I am configuring the screen with the follwoing command after boot up :
-
-screen -c /system/lib/graphics/swiftshader/graphics.conf
-
-
-graphics.conf :
-
-begin khronos
-  begin egl display 1
-    vk-icds =3D vk_swiftshader_icd.json
-    egl-dlls =3D libEGL_Angle.so
-    glesv2-dlls =3D libGLESv2_Angle.so
-  end egl display
-
-  begin wfd device 1
-    pipeline-ids =3D 1
-    display-ids =3D 1
-    wfd-dlls =3D libwfdcfg-sample.so libWFDdummy.so
-  end wfd device
-end khronos
-
-begin winmgr
-  begin globals
-    default-display =3D 1
-    alloc-config =3D stdbuf
-    stack-size =3D 65536
-    blit-config =3D sw
-    input =3D keyboard,mouse
-    requests-logsize =3D 65536
-    blits-logsize =3D 4096
-  end globals
-
-  begin display 1
-   formats =3D rgba8888
-   force-composition =3D true
-   video-mode =3D 1920 x 1080 @ 60
-   stack-size =3D 65536
-  end display
-
-  begin class framebuffer1
-    display =3D 1
-    pipeline =3D 1
-    format =3D rgba8888
-    usage =3D sw
-  end class
-
-end winmgr
-
-
-Thank You,
-Krishna G.
+C.
 
 
 
-Regards,
-Krishna Gururaj.
+> 
+> Daniel P. Berrangé (14):
+>    include/hw: add helpers for defining versioned machine types
+>    hw/arm: convert 'virt' machine definitions to use new macros
+>    hw/s390x: convert 'ccw' machine definitions to use new macros
+>    hw/ppc: convert 'spapr' machine definitions to use new macros
+>    hw/m68k: convert 'virt' machine definitions to use new macros
+>    hw/i386: convert 'i440fx' machine definitions to use new macros
+>    hw/i386: convert 'q35' machine definitions to use new macros
+>    include/hw: add macros for deprecation & removal of versioned machines
+>    hw: temporarily disable deletion of versioned machine types
+>    hw: set deprecation info for all versioned machine types
+>    hw: skip registration of outdated versioned machine types
+>    hw/ppc: remove obsolete manual deprecation reason string of spapr
+>      machines
+>    hw/i386: remove obsolete manual deprecation reason string of i440fx
+>      machines
+>    docs: document special exception for machine type deprecation &
+>      removal
+> 
+>   docs/about/deprecated.rst  |  12 ++
+>   hw/arm/virt.c              |  30 +++--
+>   hw/i386/pc_piix.c          | 252 +++++++++++++++-------------------
+>   hw/i386/pc_q35.c           | 215 +++++++++++++----------------
+>   hw/m68k/virt.c             |  53 +++++---
+>   hw/ppc/spapr.c             |  96 +++++++------
+>   hw/s390x/s390-virtio-ccw.c |  98 ++++++++------
+>   include/hw/boards.h        | 268 +++++++++++++++++++++++++++++++++++++
+>   include/hw/i386/pc.h       |  32 +++++
+>   9 files changed, 666 insertions(+), 390 deletions(-)
+> 
 
-On Mon, Apr 29, 2024 at 8:56=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
-.org>
-wrote:
-
-> On Mon, 29 Apr 2024 at 13:26, Krishna Gururaj <krishna125g@gmail.com>
-> wrote:
-> >
-> > Hello,
-> >
-> > I am trying to run the gles2-gears binary in qnx with the following
-> configuration :
-> >
-> > qemu-system-aarch64.exe -machine vexpress-a15 -cpu cortex-a57 -smp 4 -m
-> 30G -kernel ifs.bin -drive file=3Ddisk-qemu.vmdk,if=3Dnone,id=3Ddrv0 -dev=
-ice
-> virtio-blk-device,drive=3Ddrv0 -netdev
-> tap,id=3Dmynet0,ifname=3DTAP_Ethernet,script=3Dno,downscript=3Dno -device
-> virtio-net-device,netdev=3Dmynet0,mac=3D52:55:00:d1:55:01 -device
-> virtio-rng-device -nographic
->
-> This command line is not correct, because it takes a machine
-> that is only supposed to work with a Cortex-A15 ("vexpress-a15")
-> and tries to create a Cortex-A57 CPU with it. This will either
-> ignore the -cpu option or create something weird and unsupported,
-> I forget which. You should either fix the machine type or the
-> CPU type.
->
-> That's unrelated to your graphics question -- the answer there
-> is that you say "-nographic" which means "I don't want to see
-> a GUI window". If you do that then you obviously won't see any
-> graphics. (Beyond that, the guest OS will need to have support
-> for whatever graphics device/framebuffer the machine provides.)
->
-> thanks
-> -- PMM
->
-
---000000000000ae3c4e0617899196
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hello,<br><br>=C2=A0 =C2=A0 =C2=A0Firstly thank you for th=
-e response. Now when I remove the -nographic option a gtk screen opens and =
-it displays that &#39; Guest has not initialized the display (yet) and in t=
-he log I see this : (qemu:15068): Gtk-WARNING **: 10:54:03.341: Could not l=
-oad a pixbuf from icon theme.This may indicate that pixbuf loaders or the m=
-ime database could not be found.=C2=A0<br><br>QNX is not getting loaded whe=
-n I remove this option.<br><br><br>I think the below logs might help you he=
-lp me better :<br><br>I get this when I run this command &#39;qemu-system-a=
-arch64.exe -machine vexpress-a15 -cpu cortex-a57 -smp 4 -m 30G -kernel ifs.=
-bin -drive file=3Ddisk-qemu.vmdk,if=3Dnone,id=3Ddrv0 -device virtio-blk-dev=
-ice,drive=3Ddrv0 -netdev tap,id=3Dmynet0,ifname=3DTAP_Ethernet,script=3Dno,=
-downscript=3Dno -device virtio-net-device,netdev=3Dmynet0,mac=3D52:55:00:d1=
-:55:01 -device virtio-rng-device -nographic&#39;<br><br>---&gt; Starting sl=
-ogger2<br>---&gt; Starting PCI Services<br>---&gt; Starting devb<br>Path=3D=
-0 -<br>=C2=A0target=3D0 lun=3D0 =C2=A0 =C2=A0 Direct-Access(0) - VIRTIO =C2=
-=A0Rev:<br>---&gt; Mounting file systems<br>---&gt; Mounting file systems<b=
-r>=E2=97=84---&gt; Starting Networking<br># net.inet.icmp.bmcastecho: 0 -&g=
-t; 1<br>qnx.kern.droproot: 0 -&gt; 1<br>---&gt; Starting sshd<br>---&gt; St=
-arting misc<br>-U deprecated, use security policies.<br>pps: NOTICE: PPS in=
-itializing<br>pps: NOTICE: PPS attaching /pps<br>pps: NOTICE: PPS attached =
-/pps major 2 minor 6<br>---&gt; Starting graphics<br>io_hid_dlopen, devh-ps=
-2ser-vm.so DLL Error Library cannot be found<br>libkhronos: dlopen() err No=
- valid library found, path: &#39;/system/graphics/vmwgfx-drm/libwfdcfg-vmwg=
-fx-generic.so&#39;<br>libkhronos: dlopen() err Library cannot be found, pat=
-h: &#39;libwfdcfg-vmwgfx-generic.so&#39;<br>libkhronos: Ensure directory co=
-ntaining graphics libraries is appended to LD_LIBRARY_PATH envar.<br><b>Una=
-ble to access /dev/screen=C2=A0</b><br>Process count: 26<br>Startup complet=
-e<br>QNX noname 7.1.0 2020/06/13-20:07:59EDT ARMv8_Foundation_Model aarch64=
-le<div><br></div><div><br></div><div>I am configuring the screen with the f=
-ollwoing command after boot up :=C2=A0</div><div><br></div><div>screen -c /=
-system/lib/graphics/swiftshader/graphics.conf<br><br><br>graphics.conf :<br=
-><br>begin khronos<br>=C2=A0 begin egl display 1<br>=C2=A0 =C2=A0 vk-icds =
-=3D vk_swiftshader_icd.json<br>=C2=A0 =C2=A0 egl-dlls =3D libEGL_Angle.so<b=
-r>=C2=A0 =C2=A0 glesv2-dlls =3D libGLESv2_Angle.so<br>=C2=A0 end egl displa=
-y<br><br>=C2=A0 begin wfd device 1<br>=C2=A0 =C2=A0 pipeline-ids =3D 1<br>=
-=C2=A0 =C2=A0 display-ids =3D 1<br>=C2=A0 =C2=A0 wfd-dlls =3D libwfdcfg-sam=
-ple.so libWFDdummy.so<br>=C2=A0 end wfd device<br>end khronos<br><br>begin =
-winmgr<br>=C2=A0 begin globals<br>=C2=A0 =C2=A0 default-display =3D 1<br>=
-=C2=A0 =C2=A0 alloc-config =3D stdbuf<br>=C2=A0 =C2=A0 stack-size =3D 65536=
-<br>=C2=A0 =C2=A0 blit-config =3D sw<br>=C2=A0 =C2=A0 input =3D keyboard,mo=
-use<br>=C2=A0 =C2=A0 requests-logsize =3D 65536<br>=C2=A0 =C2=A0 blits-logs=
-ize =3D 4096<br>=C2=A0 end globals<br><br>=C2=A0 begin display 1<br>=C2=A0 =
-=C2=A0formats =3D rgba8888<br>=C2=A0 =C2=A0force-composition =3D true<br>=
-=C2=A0 =C2=A0video-mode =3D 1920 x 1080 @ 60<br>=C2=A0 =C2=A0stack-size =3D=
- 65536<br>=C2=A0 end display<br><br>=C2=A0 begin class framebuffer1<br>=C2=
-=A0 =C2=A0 display =3D 1<br>=C2=A0 =C2=A0 pipeline =3D 1<br>=C2=A0 =C2=A0 f=
-ormat =3D rgba8888<br>=C2=A0 =C2=A0 usage =3D sw<br>=C2=A0 end class<br><br=
->end winmgr<br><br><br>Thank You,=C2=A0<br>Krishna G.</div><br><br><br>Rega=
-rds,<br>Krishna Gururaj.<br></div><br><div class=3D"gmail_quote"><div dir=
-=3D"ltr" class=3D"gmail_attr">On Mon, Apr 29, 2024 at 8:56=E2=80=AFPM Peter=
- Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@lina=
-ro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">On Mon, 29 Apr 2024 at 13:26, Krishna Gururaj &lt;<a href=3D"mailto:k=
-rishna125g@gmail.com" target=3D"_blank">krishna125g@gmail.com</a>&gt; wrote=
-:<br>
-&gt;<br>
-&gt; Hello,<br>
-&gt;<br>
-&gt; I am trying to run the gles2-gears binary in qnx with the following co=
-nfiguration :<br>
-&gt;<br>
-&gt; qemu-system-aarch64.exe -machine vexpress-a15 -cpu cortex-a57 -smp 4 -=
-m 30G -kernel ifs.bin -drive file=3Ddisk-qemu.vmdk,if=3Dnone,id=3Ddrv0 -dev=
-ice virtio-blk-device,drive=3Ddrv0 -netdev tap,id=3Dmynet0,ifname=3DTAP_Eth=
-ernet,script=3Dno,downscript=3Dno -device virtio-net-device,netdev=3Dmynet0=
-,mac=3D52:55:00:d1:55:01 -device virtio-rng-device -nographic<br>
-<br>
-This command line is not correct, because it takes a machine<br>
-that is only supposed to work with a Cortex-A15 (&quot;vexpress-a15&quot;)<=
-br>
-and tries to create a Cortex-A57 CPU with it. This will either<br>
-ignore the -cpu option or create something weird and unsupported,<br>
-I forget which. You should either fix the machine type or the<br>
-CPU type.<br>
-<br>
-That&#39;s unrelated to your graphics question -- the answer there<br>
-is that you say &quot;-nographic&quot; which means &quot;I don&#39;t want t=
-o see<br>
-a GUI window&quot;. If you do that then you obviously won&#39;t see any<br>
-graphics. (Beyond that, the guest OS will need to have support<br>
-for whatever graphics device/framebuffer the machine provides.)<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---000000000000ae3c4e0617899196--

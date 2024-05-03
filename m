@@ -1,223 +1,364 @@
-Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1332108ejy;
-        Thu, 2 May 2024 09:55:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXjzybpPE6n23Ou0Jm48KjU45Ugnn3Lhcq4aKvkjx8mjCmbVYv4CNhnM+bgjDlnLwqerEnmaQ7Fl1Vps7nRLvy2rh8qtojy
-X-Google-Smtp-Source: AGHT+IGFcUpcLqMwV+nsmd+w+Ngl1J24qm+J+TPV6nxMJta0CiE969cfE/OKOEsaB3SG9P2om4gT
-X-Received: by 2002:a05:620a:166c:b0:790:f9c0:b573 with SMTP id d12-20020a05620a166c00b00790f9c0b573mr190184qko.17.1714668923179;
-        Thu, 02 May 2024 09:55:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714668923; cv=none;
+Received: by 2002:a17:906:a205:b0:a52:4db9:938b with SMTP id r5csp1769808ejy;
+        Fri, 3 May 2024 02:44:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU0FnPp7S/WY3S+hI6PlPp7wgbGfxX078vcu0CMI+c6wMu8gUdCMN+mTRkcPb31gGR7HC0fub9Zr5Zx5Ab5167KTl4DGNk5
+X-Google-Smtp-Source: AGHT+IEqOTquF7Q6uXd3L5clQ+MzzTs66H0BXjGJQ4HjDAkVSubOfTTNwElz8dpQC0sCsMLXeM6T
+X-Received: by 2002:ad4:5c62:0:b0:6a0:ac0f:a59c with SMTP id i2-20020ad45c62000000b006a0ac0fa59cmr2255169qvh.46.1714729499595;
+        Fri, 03 May 2024 02:44:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714729499; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y++WTL3MpmJ5sOv1cShFmG/bIOJYnolEiIpU3eBfYeQlljenJlgQslVHCQRt5w70Gu
-         gzMkvsCSAaUEa1ZxoD4+KRqTIL2BhDvGLviaTHH+Wz6gPwf/wJyfyWrKuAEoId8P/oc6
-         5T7CbJwrtPPLWruMV01oBEPHDO60uwIbOvJ7JiHG10gcz1T5yGjMKfWAwfaIgTFW0qu1
-         KWyqaMpEH4TOdGwpk9v5+7F1pJrWDDAvkg2yn03VjOfXCJLq49wo/OMkXZp56Uleq6k0
-         dJHxRwojxNl8t9Xjz6eyNGPQpaD5md0PlJVizfGGHa8AOhccIY+pc5D5CLjRmbXXL+jq
-         RMsw==
+        b=GZeNcJ70ZOmNRJWnzAdzeyQkz55KDoLK6whWnXeS1t7+Qy1rwunO/l1WiUok+RZyzf
+         kIGVUH8Ck8x+KAYdcZ9+9d329TpU4IjFqhK+eG7Riw3SKSWyUMYNN1fKKWfRj/M31z/g
+         TaNOszPYIrmFDWQS2hxO6BjqMLIq6OvdHi0k0LCDwP9F1cBJYo6cHFN/pMhYlBFos8P/
+         kPkZfTDHOdm656vmUDvMVUq2T0BNXw8rYz9lEEKiq0zG8OdQO47wiKuLlu0jQXB7vM5c
+         LLQswb+WkkHmvc+C67i4fL3rIsU+Ih+mJhJnyZ/08hFOblpeFku8Aam67afnjg7FSrKD
+         JNFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:content-language:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=LdExJYSxitazOXeR/b2ZbNsS9UXfJyr4GffVgKqjrp4=;
-        fh=1DA/vI4zvFHkCzBTFaJvBOxx2mwQAChfDN+VIY/bDjI=;
-        b=WywUL5iDhpght+Z3ryS6b+uG5/5kCK/FmbX/PoXAeBBZdPVdaA41JfHuVvB0SBrIpd
-         eHlk61fOYKOCyrBQ4YRDLh2PsOA4FrMz5WS4z5EbowKPADk6bQJ3BoGke6eIF4bYr96X
-         vQnqvZpeR7a2uU7P0CHZ18KUwM+yLZSwUqP5/eZTMzr5YJ+YzvPvzbQCoZPqmrOXEMSo
-         LeQUjcwSGS0BOWcpBr31mhb9jwEa+P7aJoy0xDaTRw15bNU2RPVDEoM3UqB8E9kPQzf5
-         4SJ3OoRykl5uhyiT100qcVuBO54wOA6nTx4/gfBJtMYEXirVcRnUOldbj9XlV+rRXrC4
-         1SvQ==;
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=EzpjF3TeR3cKzb5knQUNNKlMPBdKhlydcNyhW3iKAlQ=;
+        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
+        b=eKTEQ7bxS7OMWmc8WgzZUiG7rtbYHrgNvzwzosDvdfcZGBnzhDsgQljg5XUUWODcRK
+         yKNYXvm89ajTpoJJF0mQGm05z6CZWA3DM46DjEFL071w0qn+acq+NVDJkBHW/OF3MrCP
+         k7f5ynSjc2KJsMPX9a6WJo/4nWA+jJE30hJtdqYCJHTX+zk61+NJjr01TtDi9NnOo9a2
+         Q2i61FTNz0hfL/kPRJhkdYdgZqb1YD+E4ZBHrOr18RmUPIvXJ0yKhXe/tT5PMp56+n/i
+         n14R1neS0kxda/ENbIt7W6KIc1iM4gwHh7W8U8wfrsjxvbKJoDeUU6pkKgPnc96No/P/
+         Iwqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gl8wLhGM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Cj0mReRm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a25-20020a05620a02f900b00791026f6102si1283744qko.116.2024.05.02.09.55.22
+        by mx.google.com with ESMTPS id p7-20020a05621421e700b006993ed55bd8si2845022qvj.230.2024.05.03.02.44.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 May 2024 09:55:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 03 May 2024 02:44:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Gl8wLhGM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Cj0mReRm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1s2ZhW-0008Hr-1H; Thu, 02 May 2024 12:54:30 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s2pTG-0002fH-Jy; Fri, 03 May 2024 05:44:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2ZhV-0008HF-0I
- for qemu-devel@nongnu.org; Thu, 02 May 2024 12:54:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2ZhT-0005cw-C3
- for qemu-devel@nongnu.org; Thu, 02 May 2024 12:54:28 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714668865;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=LdExJYSxitazOXeR/b2ZbNsS9UXfJyr4GffVgKqjrp4=;
- b=Gl8wLhGMGPj852QcPbj3asnKZKPdY80k0xfVn+ZYl2pie9yk6tsjQqkW8qsfJYdZHJOKXA
- w91VZKdgnib8pKek8L/wQvzV2GE4wPW7VpRX/x0+WeDbUhOakAl0PqhuI0rrJobvOvzV2C
- HjsnsQZNzjRrdR6x5vC5Hoyuga43DTU=
-Received: from mail-lf1-f71.google.com (mail-lf1-f71.google.com
- [209.85.167.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-634-3e7tL_QlPfqaji2ry7nQBA-1; Thu, 02 May 2024 12:54:24 -0400
-X-MC-Unique: 3e7tL_QlPfqaji2ry7nQBA-1
-Received: by mail-lf1-f71.google.com with SMTP id
- 2adb3069b0e04-516d46e1bafso4290114e87.2
- for <qemu-devel@nongnu.org>; Thu, 02 May 2024 09:54:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <krishna125g@gmail.com>)
+ id 1s2pTF-0002et-Db
+ for qemu-arm@nongnu.org; Fri, 03 May 2024 05:44:49 -0400
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <krishna125g@gmail.com>)
+ id 1s2pTC-0007xc-Tn
+ for qemu-arm@nongnu.org; Fri, 03 May 2024 05:44:48 -0400
+Received: by mail-ot1-x336.google.com with SMTP id
+ 46e09a7af769-6ee2fb4ec57so3119912a34.3
+ for <qemu-arm@nongnu.org>; Fri, 03 May 2024 02:44:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1714729482; x=1715334282; darn=nongnu.org;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=EzpjF3TeR3cKzb5knQUNNKlMPBdKhlydcNyhW3iKAlQ=;
+ b=Cj0mReRmGXLWXiFNuwpHThXYJ/ANJvyTgv+8z4DQJcLGTsJz7/J5JzuXY1tz5bdALZ
+ HLgGm5f0l0OI4FHEi4EoVjY4JbTOibIwUfGACPf8/aV0AcEzOhYnLMbdjk3M732L/4S4
+ NNYK/8U4dC5ec86qT55hOqPPIBxFVHyfWyTCv4YPvfuKEOTBn2CkbU1q76h7+lzTmHva
+ Ji+inotIHFqh5Ou4FhnfQ2TF6QEStKETiozvgHPRclGOZ+qLbJ6gZ4lImiSr++KlIWx2
+ kDcoycDm8ysaXcm6RMZtWO9ZV//ZVVA8+J8n34tVWMm0MsXT+H/+1oA0SCZiU+fS7uS2
+ eRFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714668863; x=1715273663;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=LdExJYSxitazOXeR/b2ZbNsS9UXfJyr4GffVgKqjrp4=;
- b=s2unQ0uJJgbOTe+fIfNKJITyYnvhhxVNCduhODTMPy16ItFSJm+zD0B48GjqIAfQff
- ypi3YM3krtwCSk9+OI7v/ZezQfHTX0dqw22tV/CCrCzJywVF8LWoyMMlNTqm8SUsCwB9
- Ty5X7CDVPJW9S5Fr2AGr71fpCz85eVcaz4JiGt0LQsI6LUR56/LHJFma+jYe7BjHJx7A
- a49nvNkYe/L6TGRZrhgQ9H7mvB/gso1qZABenRLG575zJZJrafkXU1tCKvxVh0Du4GFG
- aEOLtr4eiBl5lLGQpl3BtzFgGHNlFlVACm/h4wj4GxSPHlaUzzjdrw+rHyNq9mRqaAeY
- BNKw==
-X-Gm-Message-State: AOJu0YyETQ7UGEyeYOh6l6lx+nqKQ4XWWW/LQyTOC1Sd/+XkBpg86Rsf
- K8Qm3hDQEpfiZTmsrHQs5TSSNDtsN/MEkBSgSTmjTQsZDP4jYJYRSdrIcpJAVmxPFstK5QNPJT5
- nP4eBBIAx59kKN/uodDjZxFL1P35h53Th8KehFSvqHwnHd6RE7iGh
-X-Received: by 2002:a05:6512:130f:b0:51b:1e76:4ea9 with SMTP id
- x15-20020a056512130f00b0051b1e764ea9mr333462lfu.4.1714668862786; 
- Thu, 02 May 2024 09:54:22 -0700 (PDT)
-X-Received: by 2002:a05:6512:130f:b0:51b:1e76:4ea9 with SMTP id
- x15-20020a056512130f00b0051b1e764ea9mr333443lfu.4.1714668862350; 
- Thu, 02 May 2024 09:54:22 -0700 (PDT)
-Received: from [192.168.0.9] (ip-109-43-179-34.web.vodafone.de.
- [109.43.179.34]) by smtp.gmail.com with ESMTPSA id
- es8-20020a056402380800b0056fe8f3eec6sm695922edb.62.2024.05.02.09.54.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 May 2024 09:54:21 -0700 (PDT)
-Message-ID: <0419f9ac-3de4-4855-a81d-8c0344fd7ae0@redhat.com>
-Date: Thu, 2 May 2024 18:54:19 +0200
+ d=1e100.net; s=20230601; t=1714729482; x=1715334282;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=EzpjF3TeR3cKzb5knQUNNKlMPBdKhlydcNyhW3iKAlQ=;
+ b=SbyXWULMCQnaY3l0z7R8Cxu0pms+iManWwEg8IzJTEvN43z6c73/9ttxtNVOVtA6a9
+ kIvdKy5s6S6CQJpdoTI18BqjXaioJ0CKO++i4TFz2EIhGJyde5+rw64l+85weDBtcTEC
+ Y7UtBE7BzyMhegrLzWF9fJI9SLoZ6WdML1QH0fmYKU7yktp7dSJrZRddFE47OkpVqpaI
+ FH18xLe+aWloj7By4ekfqCffDysxpsdjRV8WLJMQJWP+NvIqA3zIC7aMHMS6nnyZRhjM
+ QQUQQLg77qgQhHWORJKhi/fbseNZBCyrQjmK+U4yM3T35lAQ2yw8eIYopJcWp37ReDNJ
+ Y9KA==
+X-Gm-Message-State: AOJu0YyTVgyacSaB5Qd04KpPkvmLzl3PufzQ5vOsi84lcyNmiYvNgFby
+ i+wxy2uYQSjvSegvgzoVn/KnY3JmyFuxir5MZWAeN1BL2m4qK+DKC2zX8ph+UhoEgDSSNcFnlC4
+ YIHOyvfihgrkR+BPT71cat/soDV00pw7alo8=
+X-Received: by 2002:a05:6870:d8cb:b0:23e:5cd0:faae with SMTP id
+ of11-20020a056870d8cb00b0023e5cd0faaemr1389095oac.34.1714729482335; Fri, 03
+ May 2024 02:44:42 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/14] include/hw: add helpers for defining versioned
- machine types
-To: Eric Blake <eblake@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>, Nicholas Piggin
- <npiggin@gmail.com>, Richard Henderson <richard.henderson@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clegoate@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-arm@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org
-References: <20240501182759.2934195-1-berrange@redhat.com>
- <20240501182759.2934195-2-berrange@redhat.com>
- <6lfkvaovs4tz5nep43zw5ueudqy2zrns6fttu4bmq3q5wqvgqx@hxnvw7sqsyzo>
-From: Thomas Huth <thuth@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <6lfkvaovs4tz5nep43zw5ueudqy2zrns6fttu4bmq3q5wqvgqx@hxnvw7sqsyzo>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.476,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <CAH9tv=PKi3B44y4+gvTa9CpJHNN4UAeyvgxFwXCjUVM3Qy=ppA@mail.gmail.com>
+ <CAFEAcA_LH+vKxn3pdzfua_1+Piy4rQECq3yh66f_O+YuTxfnRw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_LH+vKxn3pdzfua_1+Piy4rQECq3yh66f_O+YuTxfnRw@mail.gmail.com>
+From: Krishna Gururaj <krishna125g@gmail.com>
+Date: Fri, 3 May 2024 15:14:31 +0530
+Message-ID: <CAH9tv=MSO2ooq=8Vt63uWCNV3sWMkZC2DihLvUkbpeOhYphkDg@mail.gmail.com>
+Subject: Re: QNX in qemu
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000ae3c4e0617899196"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::336;
+ envelope-from=krishna125g@gmail.com; helo=mail-ot1-x336.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URI_NOVOWEL=0.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vIEMgwIMTQJ3
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dScH4/KOBitG
 
-On 02/05/2024 16.57, Eric Blake wrote:
-> On Wed, May 01, 2024 at 07:27:46PM +0100, Daniel P. Berrangé wrote:
->> The various targets which define versioned machine types have
->> a bunch of obfuscated macro code for defining unique function
->> and variable names using string concatenation.
->>
->> This addes a couple of helpers to improve the clarity of such
->> code macro.
->>
->> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
->> ---
-...
->> + *  // Normal 2 digit eg 'virt-9.0'
->> + *  #define DEFINE_VIRT_MACHINE(major, minor) \
->> + *      DEFINE_VIRT_MACHINE_IMPL(false, major, minor)
->> + *
->> + *  // Bugfix 3 digit  eg 'virt-9.0.1'
-> 
-> Inconsistent on whether you are using one or two spaces before 'eg'.
+--000000000000ae3c4e0617899196
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-While you're at it, maybe also better spell it with dots: e.g.
+Hello,
 
-  Thomas
+     Firstly thank you for the response. Now when I remove the -nographic
+option a gtk screen opens and it displays that ' Guest has not initialized
+the display (yet) and in the log I see this : (qemu:15068): Gtk-WARNING **:
+10:54:03.341: Could not load a pixbuf from icon theme.This may indicate
+that pixbuf loaders or the mime database could not be found.
+
+QNX is not getting loaded when I remove this option.
 
 
+I think the below logs might help you help me better :
+
+I get this when I run this command 'qemu-system-aarch64.exe -machine
+vexpress-a15 -cpu cortex-a57 -smp 4 -m 30G -kernel ifs.bin -drive
+file=3Ddisk-qemu.vmdk,if=3Dnone,id=3Ddrv0 -device virtio-blk-device,drive=
+=3Ddrv0
+-netdev tap,id=3Dmynet0,ifname=3DTAP_Ethernet,script=3Dno,downscript=3Dno -=
+device
+virtio-net-device,netdev=3Dmynet0,mac=3D52:55:00:d1:55:01 -device
+virtio-rng-device -nographic'
+
+---> Starting slogger2
+---> Starting PCI Services
+---> Starting devb
+Path=3D0 -
+ target=3D0 lun=3D0     Direct-Access(0) - VIRTIO  Rev:
+---> Mounting file systems
+---> Mounting file systems
+=E2=97=84---> Starting Networking
+# net.inet.icmp.bmcastecho: 0 -> 1
+qnx.kern.droproot: 0 -> 1
+---> Starting sshd
+---> Starting misc
+-U deprecated, use security policies.
+pps: NOTICE: PPS initializing
+pps: NOTICE: PPS attaching /pps
+pps: NOTICE: PPS attached /pps major 2 minor 6
+---> Starting graphics
+io_hid_dlopen, devh-ps2ser-vm.so DLL Error Library cannot be found
+libkhronos: dlopen() err No valid library found, path:
+'/system/graphics/vmwgfx-drm/libwfdcfg-vmwgfx-generic.so'
+libkhronos: dlopen() err Library cannot be found, path:
+'libwfdcfg-vmwgfx-generic.so'
+libkhronos: Ensure directory containing graphics libraries is appended to
+LD_LIBRARY_PATH envar.
+*Unable to access /dev/screen *
+Process count: 26
+Startup complete
+QNX noname 7.1.0 2020/06/13-20:07:59EDT ARMv8_Foundation_Model aarch64le
+
+
+I am configuring the screen with the follwoing command after boot up :
+
+screen -c /system/lib/graphics/swiftshader/graphics.conf
+
+
+graphics.conf :
+
+begin khronos
+  begin egl display 1
+    vk-icds =3D vk_swiftshader_icd.json
+    egl-dlls =3D libEGL_Angle.so
+    glesv2-dlls =3D libGLESv2_Angle.so
+  end egl display
+
+  begin wfd device 1
+    pipeline-ids =3D 1
+    display-ids =3D 1
+    wfd-dlls =3D libwfdcfg-sample.so libWFDdummy.so
+  end wfd device
+end khronos
+
+begin winmgr
+  begin globals
+    default-display =3D 1
+    alloc-config =3D stdbuf
+    stack-size =3D 65536
+    blit-config =3D sw
+    input =3D keyboard,mouse
+    requests-logsize =3D 65536
+    blits-logsize =3D 4096
+  end globals
+
+  begin display 1
+   formats =3D rgba8888
+   force-composition =3D true
+   video-mode =3D 1920 x 1080 @ 60
+   stack-size =3D 65536
+  end display
+
+  begin class framebuffer1
+    display =3D 1
+    pipeline =3D 1
+    format =3D rgba8888
+    usage =3D sw
+  end class
+
+end winmgr
+
+
+Thank You,
+Krishna G.
+
+
+
+Regards,
+Krishna Gururaj.
+
+On Mon, Apr 29, 2024 at 8:56=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org>
+wrote:
+
+> On Mon, 29 Apr 2024 at 13:26, Krishna Gururaj <krishna125g@gmail.com>
+> wrote:
+> >
+> > Hello,
+> >
+> > I am trying to run the gles2-gears binary in qnx with the following
+> configuration :
+> >
+> > qemu-system-aarch64.exe -machine vexpress-a15 -cpu cortex-a57 -smp 4 -m
+> 30G -kernel ifs.bin -drive file=3Ddisk-qemu.vmdk,if=3Dnone,id=3Ddrv0 -dev=
+ice
+> virtio-blk-device,drive=3Ddrv0 -netdev
+> tap,id=3Dmynet0,ifname=3DTAP_Ethernet,script=3Dno,downscript=3Dno -device
+> virtio-net-device,netdev=3Dmynet0,mac=3D52:55:00:d1:55:01 -device
+> virtio-rng-device -nographic
+>
+> This command line is not correct, because it takes a machine
+> that is only supposed to work with a Cortex-A15 ("vexpress-a15")
+> and tries to create a Cortex-A57 CPU with it. This will either
+> ignore the -cpu option or create something weird and unsupported,
+> I forget which. You should either fix the machine type or the
+> CPU type.
+>
+> That's unrelated to your graphics question -- the answer there
+> is that you say "-nographic" which means "I don't want to see
+> a GUI window". If you do that then you obviously won't see any
+> graphics. (Beyond that, the guest OS will need to have support
+> for whatever graphics device/framebuffer the machine provides.)
+>
+> thanks
+> -- PMM
+>
+
+--000000000000ae3c4e0617899196
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hello,<br><br>=C2=A0 =C2=A0 =C2=A0Firstly thank you for th=
+e response. Now when I remove the -nographic option a gtk screen opens and =
+it displays that &#39; Guest has not initialized the display (yet) and in t=
+he log I see this : (qemu:15068): Gtk-WARNING **: 10:54:03.341: Could not l=
+oad a pixbuf from icon theme.This may indicate that pixbuf loaders or the m=
+ime database could not be found.=C2=A0<br><br>QNX is not getting loaded whe=
+n I remove this option.<br><br><br>I think the below logs might help you he=
+lp me better :<br><br>I get this when I run this command &#39;qemu-system-a=
+arch64.exe -machine vexpress-a15 -cpu cortex-a57 -smp 4 -m 30G -kernel ifs.=
+bin -drive file=3Ddisk-qemu.vmdk,if=3Dnone,id=3Ddrv0 -device virtio-blk-dev=
+ice,drive=3Ddrv0 -netdev tap,id=3Dmynet0,ifname=3DTAP_Ethernet,script=3Dno,=
+downscript=3Dno -device virtio-net-device,netdev=3Dmynet0,mac=3D52:55:00:d1=
+:55:01 -device virtio-rng-device -nographic&#39;<br><br>---&gt; Starting sl=
+ogger2<br>---&gt; Starting PCI Services<br>---&gt; Starting devb<br>Path=3D=
+0 -<br>=C2=A0target=3D0 lun=3D0 =C2=A0 =C2=A0 Direct-Access(0) - VIRTIO =C2=
+=A0Rev:<br>---&gt; Mounting file systems<br>---&gt; Mounting file systems<b=
+r>=E2=97=84---&gt; Starting Networking<br># net.inet.icmp.bmcastecho: 0 -&g=
+t; 1<br>qnx.kern.droproot: 0 -&gt; 1<br>---&gt; Starting sshd<br>---&gt; St=
+arting misc<br>-U deprecated, use security policies.<br>pps: NOTICE: PPS in=
+itializing<br>pps: NOTICE: PPS attaching /pps<br>pps: NOTICE: PPS attached =
+/pps major 2 minor 6<br>---&gt; Starting graphics<br>io_hid_dlopen, devh-ps=
+2ser-vm.so DLL Error Library cannot be found<br>libkhronos: dlopen() err No=
+ valid library found, path: &#39;/system/graphics/vmwgfx-drm/libwfdcfg-vmwg=
+fx-generic.so&#39;<br>libkhronos: dlopen() err Library cannot be found, pat=
+h: &#39;libwfdcfg-vmwgfx-generic.so&#39;<br>libkhronos: Ensure directory co=
+ntaining graphics libraries is appended to LD_LIBRARY_PATH envar.<br><b>Una=
+ble to access /dev/screen=C2=A0</b><br>Process count: 26<br>Startup complet=
+e<br>QNX noname 7.1.0 2020/06/13-20:07:59EDT ARMv8_Foundation_Model aarch64=
+le<div><br></div><div><br></div><div>I am configuring the screen with the f=
+ollwoing command after boot up :=C2=A0</div><div><br></div><div>screen -c /=
+system/lib/graphics/swiftshader/graphics.conf<br><br><br>graphics.conf :<br=
+><br>begin khronos<br>=C2=A0 begin egl display 1<br>=C2=A0 =C2=A0 vk-icds =
+=3D vk_swiftshader_icd.json<br>=C2=A0 =C2=A0 egl-dlls =3D libEGL_Angle.so<b=
+r>=C2=A0 =C2=A0 glesv2-dlls =3D libGLESv2_Angle.so<br>=C2=A0 end egl displa=
+y<br><br>=C2=A0 begin wfd device 1<br>=C2=A0 =C2=A0 pipeline-ids =3D 1<br>=
+=C2=A0 =C2=A0 display-ids =3D 1<br>=C2=A0 =C2=A0 wfd-dlls =3D libwfdcfg-sam=
+ple.so libWFDdummy.so<br>=C2=A0 end wfd device<br>end khronos<br><br>begin =
+winmgr<br>=C2=A0 begin globals<br>=C2=A0 =C2=A0 default-display =3D 1<br>=
+=C2=A0 =C2=A0 alloc-config =3D stdbuf<br>=C2=A0 =C2=A0 stack-size =3D 65536=
+<br>=C2=A0 =C2=A0 blit-config =3D sw<br>=C2=A0 =C2=A0 input =3D keyboard,mo=
+use<br>=C2=A0 =C2=A0 requests-logsize =3D 65536<br>=C2=A0 =C2=A0 blits-logs=
+ize =3D 4096<br>=C2=A0 end globals<br><br>=C2=A0 begin display 1<br>=C2=A0 =
+=C2=A0formats =3D rgba8888<br>=C2=A0 =C2=A0force-composition =3D true<br>=
+=C2=A0 =C2=A0video-mode =3D 1920 x 1080 @ 60<br>=C2=A0 =C2=A0stack-size =3D=
+ 65536<br>=C2=A0 end display<br><br>=C2=A0 begin class framebuffer1<br>=C2=
+=A0 =C2=A0 display =3D 1<br>=C2=A0 =C2=A0 pipeline =3D 1<br>=C2=A0 =C2=A0 f=
+ormat =3D rgba8888<br>=C2=A0 =C2=A0 usage =3D sw<br>=C2=A0 end class<br><br=
+>end winmgr<br><br><br>Thank You,=C2=A0<br>Krishna G.</div><br><br><br>Rega=
+rds,<br>Krishna Gururaj.<br></div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">On Mon, Apr 29, 2024 at 8:56=E2=80=AFPM Peter=
+ Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@lina=
+ro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">On Mon, 29 Apr 2024 at 13:26, Krishna Gururaj &lt;<a href=3D"mailto:k=
+rishna125g@gmail.com" target=3D"_blank">krishna125g@gmail.com</a>&gt; wrote=
+:<br>
+&gt;<br>
+&gt; Hello,<br>
+&gt;<br>
+&gt; I am trying to run the gles2-gears binary in qnx with the following co=
+nfiguration :<br>
+&gt;<br>
+&gt; qemu-system-aarch64.exe -machine vexpress-a15 -cpu cortex-a57 -smp 4 -=
+m 30G -kernel ifs.bin -drive file=3Ddisk-qemu.vmdk,if=3Dnone,id=3Ddrv0 -dev=
+ice virtio-blk-device,drive=3Ddrv0 -netdev tap,id=3Dmynet0,ifname=3DTAP_Eth=
+ernet,script=3Dno,downscript=3Dno -device virtio-net-device,netdev=3Dmynet0=
+,mac=3D52:55:00:d1:55:01 -device virtio-rng-device -nographic<br>
+<br>
+This command line is not correct, because it takes a machine<br>
+that is only supposed to work with a Cortex-A15 (&quot;vexpress-a15&quot;)<=
+br>
+and tries to create a Cortex-A57 CPU with it. This will either<br>
+ignore the -cpu option or create something weird and unsupported,<br>
+I forget which. You should either fix the machine type or the<br>
+CPU type.<br>
+<br>
+That&#39;s unrelated to your graphics question -- the answer there<br>
+is that you say &quot;-nographic&quot; which means &quot;I don&#39;t want t=
+o see<br>
+a GUI window&quot;. If you do that then you obviously won&#39;t see any<br>
+graphics. (Beyond that, the guest OS will need to have support<br>
+for whatever graphics device/framebuffer the machine provides.)<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div>
+
+--000000000000ae3c4e0617899196--

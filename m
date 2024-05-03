@@ -1,264 +1,290 @@
-Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp186942ejc;
-        Fri, 3 May 2024 18:41:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVD+OEOxukCKlP1T+iASVOC+kUo2lm98xoXcPkQUW0RdYAlo/x/cFpFXP0D/0yfq4umwQvFzEkdkmNk/ieD7SF/7bn0ZeOa
-X-Received: by 2002:a17:907:9195:b0:a59:9d4c:eb09 with SMTP id bp21-20020a170907919500b00a599d4ceb09mr1410684ejb.27.1714786869430;
-        Fri, 03 May 2024 18:41:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714786869; cv=none;
+Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp38627ejc;
+        Fri, 3 May 2024 12:58:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXdXJ0RsJ4IoALUtQLvZ7JfSBEBiEs0Wgua5MMDH5UvI0n8nS8B0ydWy6cGGSnKCSU+6wEIdC4Xt1CACPRDxehlWZzMNDLh
+X-Google-Smtp-Source: AGHT+IEQNmLjFrboraG+blEWM18MXfGBnRAtwv4bNQxfcAOb9N+DA0e4vYGxL7ys7Z368mwRKOo8
+X-Received: by 2002:ad4:5bc3:0:b0:6a0:c95d:8d9c with SMTP id t3-20020ad45bc3000000b006a0c95d8d9cmr3306573qvt.35.1714766294243;
+        Fri, 03 May 2024 12:58:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714766294; cv=none;
         d=google.com; s=arc-20160816;
-        b=rmpp8mTiCUCCOLVr52mGlZj3D8vrQq24qFH9EiDOk465uG3L6CwC4u1wpuq22RY2KH
-         7QnnzMNbZUfugiUF6O1G6kyocP3Y8Q9AScpc3LBCc3zQ4UHNRsYAdl40f4tpllfAQSqd
-         Cz6qmF6hsmVPcAnE2TlbtZEAPt4d0+j+cv1Q/sYKUQ956AKlUM3+QEok1BH+1pTVMUl/
-         zv8uHocLZGRbPI3s4z8WY+laQTKFYqtL1+Fq93eaZntovRQ5nRWG0rkLJvs+b+ROSFjY
-         TCSPfT2o1XfYW8xx2TUM4afo5jJnEgcaEEEX9C2MzkO1HS0dKVtmwHOwVh6undu4CSp8
-         HJ7A==
+        b=tm9Bf1Aj6/uMC+Z/xkTohvT28jHZ275Js7hLtlv2FJHUM9acJIZwntszPvVLLgoQ0m
+         HTmhlDB74RYy9bibLmYxtrTYWW+rXnI5Lf9Vt1F0/e+gSndHCYgGgcGJ/Lo31eMcgD8R
+         tfbSKi8TthUVCFRqghOjB8EUr78M0oTyAKFV6sDz0jjkvgzfZ+r9JpdHyc5EPmco7BW6
+         uL6L5BR9O4WaEPgS72tfJL0zwd2wl1DstBqF1jF2MijbvgH+cUOUfcIEafTGItRvTxtC
+         yj/yKVXwaM4jYa5062zdJgzaBH5dlhbuy5mkNuWp+0NxQ+JPZyauUJMcNgGUpHcUgPd1
+         c3Gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=cMaSACtjO3SUkgFNE0eUoOTbz0mIrS43V9gIJCsSjMw=;
-        fh=QQ+LZZri3kxqO5l93k5HwenmK+SmwasCOkONJtHlS40=;
-        b=TSo13IGCX82zwaN72o26SOIcREcBtCanM13AON8NEmziA8WOOwmVE5sWMFMJFx6wo+
-         9CE91NDR5cWL/sxVwCxWQudPS+f1ywJbxgi4RqLEZ+PLM05HtFl08Geu7G2unRgaJitA
-         mAK1k39gVjjH9oMmqx/10X92tygd675kAfEaR1LbgKZBAXb7tucnXw39spFfTPI4wX4Q
-         tz3O3CNEaj4YACSil+ZoKb1xIK5jl9vFuXvVc6ZIdgYH6XJriouE/tLe2wB2paS3wdL6
-         q4Qicz5Z3z9I7Tu7IemujV7Ys92sKIPqFTwZpMhwnj+E1rFe/Gpa+NkSriHTOIm8A7U7
-         dYNw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Cxy5I3qFqegg9o6TUkAnNa/wB20b3zBgd4M5pvNyG88=;
+        fh=SF+4YmnJLGtkj1IFQ3/Vf/2Q++A7JCbUX/q6TUOEH04=;
+        b=uBODBlhqTN2ZjBI9BoAuKwG0/NEWLyLxgVliExsUFlFNA6cdNxFPZkgi5Kny4jnltO
+         Jlb9juWLhBWx7l8B8ae9jHnwWQbKZAG4htN+mbm4XV5OtVxifTwt99/wiLlvLbVUGpIZ
+         Vo5g/Dr2zXuNXLIPaqwpOjyVngZu+WPpWJYuCp9nOvMbmzLbO+c8/aagQ0Etls1Po5bY
+         UeyOVjr7j8rNfWa5ryJO54GyPgCXikIs4/Cbk+3+fohkowaq6GlCtEEopyWO1/s0g5gL
+         PbNSaMgeKIh1v/MApk2vzMWoN4rxupKwidzIFYb3PbsYatT8DZr6Tg7cc8oXjbOfQ4bM
+         XECA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@opnsrc.net header.s=google header.b=cEK0JfLj;
-       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net
-Return-Path: <salil.mehta@opnsrc.net>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id lb5-20020a170907784500b00a521c173f3esor1287222ejc.17.2024.05.03.18.41.09
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=XmcT7tAt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q12-20020ad45cac000000b006a065ac280csi3912285qvh.613.2024.05.03.12.58.13
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 03 May 2024 18:41:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 03 May 2024 12:58:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@opnsrc.net header.s=google header.b=cEK0JfLj;
-       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=XmcT7tAt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s2z2W-0005Ye-PL; Fri, 03 May 2024 15:57:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1s2z2V-0005YC-6o; Fri, 03 May 2024 15:57:51 -0400
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1s2z2T-00012c-AF; Fri, 03 May 2024 15:57:50 -0400
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-6153d85053aso101787b3.0; 
+ Fri, 03 May 2024 12:57:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=opnsrc.net; s=google; t=1714786869; x=1715391669; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=cMaSACtjO3SUkgFNE0eUoOTbz0mIrS43V9gIJCsSjMw=;
-        b=cEK0JfLjzgLR6m3FTfXYGDEAH7xbk4tR7yaW3jd4b/1kIczxYNGcjSuPll4yV0JBt7
-         3YtwnevhYZ07EeFOQhZiV8SHv9prvcHsYzB9NqNPCxeseSZxSw+8+qL6vy9GVLuUBNm/
-         FrkhCUaFOZDCPnBMd83i7yXHbSWCYRrhvYdkHuvSd3eAY2EDLgQs0e6pALBNGhLiHvPF
-         X5dyw+JyPQEABVZXBK2suBzssBrgIHHivyr6hTnjIqsXoIvGcWEfi5er63hBue4Aki41
-         0b3Z9JUgC5A98HuwdTGGUMW5tlGZPvvHWdkodFRDG67ae/5C/tujPW8H2gYBkXJ7ILG2
-         5/Tg==
+ d=gmail.com; s=20230601; t=1714766267; x=1715371067; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Cxy5I3qFqegg9o6TUkAnNa/wB20b3zBgd4M5pvNyG88=;
+ b=XmcT7tAt1bdduy55E1J2oPQ/PbVYFXuc3H63Fh3cIdK2gkQLz0dTYsqC3zZCdRk3LH
+ 7O1NQZAR58sZdcF2eVSNyiJ2BpICEDlEkX+beK1i+4PDGU+r4x0tSgxT7sYeXkaZ08rq
+ Ri0jp1+BxHLd41rtZfunhyxY8XEB48UV8sNAYw4UfrfRCLgClB15K1sGwJ0hCSLQ3aor
+ 4fI9G4qwS/lLOIJkgWAlkCvD9g0tj/6an5Ow2EP5ibngu218jnjkMvKp17vYfZ4jCtdB
+ eA6WysmHW5azPIVtsL4J44R1ww/h8C/5dDH1dOESsWugDWgdAV5aBOOY2JP5IG+i28C1
+ wrgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714786869; x=1715391669;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=cMaSACtjO3SUkgFNE0eUoOTbz0mIrS43V9gIJCsSjMw=;
-        b=uDr52Z5pBz7kel3Jfm+L1wOk7Q0Yp/pzhgupBWxsuAzVLZSJP61vyU9Biju6ZGtFoV
-         nPb9JftWPJ1F4wE2gobBdFzzJ6+zWGYbO0gPUa1w1lmfXq2T+ilppMdQO7orODjguq1i
-         G9RFfGh8o74t9VKlmKu3ca/clWNzcrwW3awTshMKNot6fOEbaejNiU96Jk+42ZAmKuPF
-         +TznGmoJru6DE24NjUajMXXS27fBbEj+je1YNF1pRfKnnKOoaJNY17sZDjU40uxsJzuP
-         fWy3OUFCBbnozc/t+DlQtsR2VibXXvkxqxb5U2XlEz+1v37HPdqSbfQGzH55vn4J8d6I
-         TNEA==
-X-Forwarded-Encrypted: i=1; AJvYcCWCU8VnowI7Q6xqGj6IpcUmpzm1ckPmFhJ5mfpac/40w1c//bIdCZyozLVg/YhNxM5tIoAxLK7PzWTs3j0+saKVp/NVc05U
-X-Gm-Message-State: AOJu0YzdUmdhBcJNZZYC9rgYBOIOpZA8a4M3WxNmwph4+rKk/FZoZjpd
-	LtjkCaOXTH13T87XoPMd9i7Fqyp2diM0dEqPMKc/RTUYpot64biVqpkDiK2SzEoXCWTc4Yk8xP0
-	W3HvKpOkadUugSAnz7AzC92CQOCQvgncXWOu3YQ==
-X-Google-Smtp-Source: AGHT+IHjmytAzojMfNdYwcFmfP1vW50Hh3Q+jDWe+k2a+JTyeZh4d7TBP15mECEOVzFwePmUI2mZfJryFWNQJZ5yAHI=
-X-Received: by 2002:a17:906:52cc:b0:a59:9f11:2b66 with SMTP id
- w12-20020a17090652cc00b00a599f112b66mr974332ejn.36.1714786869051; Fri, 03 May
- 2024 18:41:09 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1714766267; x=1715371067;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Cxy5I3qFqegg9o6TUkAnNa/wB20b3zBgd4M5pvNyG88=;
+ b=e2f4QT19crXTdJ13UBISakc2t/RpH3KEqQW6D4byKVciOTWdZcoALpXu+3aZqxhbT7
+ qbCPFIejG4XY2kCk0u+rN4BXhzQyalD5B9EnfNtoQtJ5j+M83K+l+z+OBh3yaNVx3SU7
+ b8ctvfQk/H63NK+Jw7IyPp0eftGcKIroEHvlhYBXenCumyjtKns+PhFKKunV/tkdiIKP
+ v/JHtji99Tuy2eJgt8oXi2QkUcm5zdWI/ko/HOAFkNZj9L5aXo5ptokdKr+cZ2l6B7Hx
+ 79p2YIscgkKCiS+V7rmub+feKACO4eU1XVi1Fdw3LRvguZp/7m5p2r0YiTex7jciWqC0
+ oHNA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXHXTmdOe1Kkxmd+cejjOtg5uDycEpOKVjffKG90IiOZjTeN1viztQnYCPexLmMsa+hzkFcVmeHjoo+PPifok2N/Dm6l8hD7kkbQI3MN5vvYP1GN+zNMb1/e+pwatzS3uxyRV7Q7UFQN3KAEMW00gBhmdc=
+X-Gm-Message-State: AOJu0YyAE5ByR+yOVKruG86f5o7mtLYDmvtQojxGSfw/OwKtoL8FhKz8
+ xMypFEd/+PkKKdDA9YU2gnsFMHKugOG2Li7vCsz4SzkxjN76HPldJ2uERvSOmH2KSQ70tCQfus5
+ Qt0aO0vik2aYNUyXI/Irx7OqMKRk=
+X-Received: by 2002:a81:a041:0:b0:61a:b0bc:934c with SMTP id
+ x62-20020a81a041000000b0061ab0bc934cmr3669080ywg.3.1714766267097; Fri, 03 May
+ 2024 12:57:47 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240312020000.12992-1-salil.mehta@huawei.com>
- <20240312020000.12992-7-salil.mehta@huawei.com> <7bccde5479f044dc87679236b736b861@huawei.com>
-In-Reply-To: <7bccde5479f044dc87679236b736b861@huawei.com>
-From: Salil Mehta <salil.mehta@opnsrc.net>
-Date: Sat, 4 May 2024 02:40:57 +0100
-Message-ID: <CAJ7pxebK_rPFYN_NVLUyAVExb+e0ep7Bx5BuPgRJcmg9s5BQBQ@mail.gmail.com>
-Subject: Re: [PATCH V8 6/8] physmem: Add helper function to destroy CPU AddressSpace
-To: zhukeqian <zhukeqian1@huawei.com>
-Cc: Salil Mehta <salil.mehta@huawei.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "maz@kernel.org" <maz@kernel.org>, 
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>, 
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, 
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>, 
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>, 
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>, 
-	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>, 
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>, 
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, 
-	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>, 
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>, 
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>, 
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>, 
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, 
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>, 
-	"wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>, 
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "Wanghaibin (D)" <wanghaibin.wang@huawei.com>, 
-	"maobibo@loongson.cn" <maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>, 
-	Linuxarm <linuxarm@huawei.com>, yuzenghui <yuzenghui@huawei.com>
-Content-Type: multipart/alternative; boundary="000000000000321bd9061796eeec"
-X-TUID: OYoR8XP/Ci5c
+References: <20240415151845.1564201-1-peter.maydell@linaro.org>
+ <CAFEAcA86Frw=GcWdjOgXsbP+9dgGjQpxP79k=nKshPm9LK0QVQ@mail.gmail.com>
+ <CABtshVRrPv8uUuX3C2k1BPkS4-_0HQH6aKiMFmLr1B1bck-+Pg@mail.gmail.com>
+ <CAPan3Wp7jzm+ErEi0LR+F0acOggt94FPfJCYb-VEUGriiZnPtw@mail.gmail.com>
+ <CAFEAcA8FS=6mn754LGs6KGDahm0vyifiK9P2i57i_TsKvPqUOw@mail.gmail.com>
+In-Reply-To: <CAFEAcA8FS=6mn754LGs6KGDahm0vyifiK9P2i57i_TsKvPqUOw@mail.gmail.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Fri, 3 May 2024 21:57:36 +0200
+Message-ID: <CAPan3Wrkm+hJKoxXa_Q6WtQHvsZWOB819UWS-CBeeAzpvb44NQ@mail.gmail.com>
+Subject: Re: [PATCH] tests/avocado: update sunxi kernel from armbian to 6.6.16
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Strahinja Jankovic <strahinjapjankovic@gmail.com>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org, qemu-stable@nongnu.org, 
+ Beniamino Galvani <b.galvani@gmail.com>
+Content-Type: multipart/alternative; boundary="00000000000039292d06179222f3"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-yw1-x112f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: iay4+rojLNoZ
 
---000000000000321bd9061796eeec
+--00000000000039292d06179222f3
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi Zhukeqian,
+On Tue, Apr 30, 2024 at 4:12=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org>
+wrote:
 
-On Fri, Mar 15, 2024 at 1:17=E2=80=AFAM zhukeqian <zhukeqian1@huawei.com> w=
-rote:
-
-> Hi Salil,
+> On Mon, 29 Apr 2024 at 21:40, Niek Linnenbank <nieklinnenbank@gmail.com>
+> wrote:
+> >
+> > Hi Peter, Strahinja,
+> >
+> > I can confirm that the orangepi-pc and cubieboard based tests are
+> working OK using the newer kernel 6.6.16:
+> >
+> >   $ ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORAGE=3Dyes
+> ./build/pyvenv/bin/avocado --show=3Dapp,console run -t machine:orangepi-p=
+c -t
+> machine:cubieboard tests/avocado/boot_linux_console.py
+> >   ...
+> >   RESULTS    : PASS 7 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT =
+0
+> | CANCEL 1
+> >   JOB TIME   : 177.65 s
+> >
+> > So for this patch:
+> > Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+> > Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 >
-> [...]
+> Great, thanks. (I'll put this patch into an upcoming arm pullreq.)
 >
-> +void cpu_address_space_destroy(CPUState *cpu, int asidx) {
-> +    CPUAddressSpace *cpuas;
-> +
-> +    assert(cpu->cpu_ases);
-> +    assert(asidx >=3D 0 && asidx < cpu->num_ases);
-> +    /* KVM cannot currently support multiple address spaces. */
-> +    assert(asidx =3D=3D 0 || !kvm_enabled());
-> +
-> +    cpuas =3D &cpu->cpu_ases[asidx];
-> +    if (tcg_enabled()) {
-> +        memory_listener_unregister(&cpuas->tcg_as_listener);
-> +    }
-> +
-> +    address_space_destroy(cpuas->as);
-> +    g_free_rcu(cpuas->as, rcu);
+> > About the BootLinuxConsole.test_arm_orangepi_bionic_20_08 test, I'd be
+> happy to provide a patch to revive that test.
+> > Since that test is no longer working without having the image available=
+,
+> this could also be a good moment to re-consider if armbian is really the
+> best input for testing
+> > the orangepi-pc board. The image is relatively larger and slower
+> compared to other images, like the two openwrt based tests for cubieboard
+> and bpim2u.
+> >
+> > After some searching I've found that Openwrt also has orangepi-pc
+> support:
+> >   https://openwrt.org/toh/xunlong/orange_pi_pc
+> >
+> > That image works fine with our emulated orangepi-pc board:
+> >
+> > $ qemu-system-arm -M orangepi-pc -sd
+> openwrt-23.05.0-sunxi-cortexa7-xunlong_orangepi-pc-ext4-sdcard.img
+> -nographic
 >
-> In address_space_destroy(), it calls call_rcu1() on cpuas->as which will
-> set do_address_space_destroy() as the rcu func.
-> And g_free_rcu() also calls call_rcu1() on cpuas->as which will overwrite
-> the rcu func as g_free().
+> > Using openwrt also for the orangepi-pc test instead of armbian also
+> gives some consistency between the various tests, to some degree. What ar=
+e
+> you opinions on this?
 >
-> Then I think the g_free() may be called twice in rcu thread, please verif=
-y
-> that.
->
-> The source code of call_rcu1:
->
-> void call_rcu1(struct rcu_head *node, void (*func)(struct rcu_head *node)=
-)
-> {
->     node->func =3D func;
->     enqueue(node);
->     qatomic_inc(&rcu_call_count);
->     qemu_event_set(&rcu_call_ready_event);
-> }
->
-
-
-Thanks for testing and identifying this. Let me have a look and will get
-back to you.
-
-Thanks
-Salil
-
-
-
->
-> Thanks,
-> Keqian
->
-> +
-> +    if (asidx =3D=3D 0) {
-> +        /* reset the convenience alias for address space 0 */
-> +        cpu->as =3D NULL;
-> +    }
-> +
-> +    if (--cpu->cpu_ases_count =3D=3D 0) {
-> +        g_free(cpu->cpu_ases);
-> +        cpu->cpu_ases =3D NULL;
-> +    }
-> +}
-> +
->  AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)  {
->      /* Return the AddressSpace corresponding to the specified index */
-> --
-> 2.34.1
->
+> Yeah, seems reasonable. My main thing to think about would be
+> that to understand what extra coverage this gives us that we
+> don't already have (there's no point running a ton of tests
+> which all amount to "boot a Linux kernel to a shell prompt").
+> It looks like what we get from this one is that we are testing
+> the "boot off an SD card image via u-boot" flow -- is that right?
 >
 
---000000000000321bd9061796eeec
+Yes, correct.
+Okey, I'll try to find some time the coming days to prepare a patch that
+replaces test_arm_orangepi_bionic_20_08 with a test that uses openwrt
+instead.
+
+Niek
+
+
+
+>
+> thanks
+> -- PMM
+>
+
+
+--=20
+Niek Linnenbank
+
+--00000000000039292d06179222f3
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Zhukeqian,</div><br><div class=3D"gmai=
-l_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Mar 15, 2024 at 1:17=
-=E2=80=AFAM zhukeqian &lt;<a href=3D"mailto:zhukeqian1@huawei.com">zhukeqia=
-n1@huawei.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
-ng-left:1ex">Hi Salil,<br>
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Apr 30, 2024 at 4:12=E2=80=AF=
+PM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.mayd=
+ell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex">On Mon, 29 Apr 2024 at 21:40, Niek Linnenbank &lt;<a href=3D"=
+mailto:nieklinnenbank@gmail.com" target=3D"_blank">nieklinnenbank@gmail.com=
+</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Hi Peter, Strahinja,<br>
+&gt;<br>
+&gt; I can confirm that the orangepi-pc and cubieboard based tests are work=
+ing OK using the newer kernel 6.6.16:<br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0$ ARMBIAN_ARTIFACTS_CACHED=3Dyes AVOCADO_ALLOW_LARGE_STORA=
+GE=3Dyes ./build/pyvenv/bin/avocado --show=3Dapp,console run -t machine:ora=
+ngepi-pc -t machine:cubieboard tests/avocado/boot_linux_console.py<br>
+&gt;=C2=A0 =C2=A0...<br>
+&gt;=C2=A0 =C2=A0RESULTS=C2=A0 =C2=A0 : PASS 7 | ERROR 0 | FAIL 0 | SKIP 0 =
+| WARN 0 | INTERRUPT 0 | CANCEL 1<br>
+&gt;=C2=A0 =C2=A0JOB TIME=C2=A0 =C2=A0: 177.65 s<br>
+&gt;<br>
+&gt; So for this patch:<br>
+&gt; Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmai=
+l.com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
+&gt; Tested-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.=
+com" target=3D"_blank">nieklinnenbank@gmail.com</a>&gt;<br>
 <br>
-[...]<br>
+Great, thanks. (I&#39;ll put this patch into an upcoming arm pullreq.)<br>
 <br>
-+void cpu_address_space_destroy(CPUState *cpu, int asidx) {<br>
-+=C2=A0 =C2=A0 CPUAddressSpace *cpuas;<br>
-+<br>
-+=C2=A0 =C2=A0 assert(cpu-&gt;cpu_ases);<br>
-+=C2=A0 =C2=A0 assert(asidx &gt;=3D 0 &amp;&amp; asidx &lt; cpu-&gt;num_ase=
-s);<br>
-+=C2=A0 =C2=A0 /* KVM cannot currently support multiple address spaces. */<=
-br>
-+=C2=A0 =C2=A0 assert(asidx =3D=3D 0 || !kvm_enabled());<br>
-+<br>
-+=C2=A0 =C2=A0 cpuas =3D &amp;cpu-&gt;cpu_ases[asidx];<br>
-+=C2=A0 =C2=A0 if (tcg_enabled()) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 memory_listener_unregister(&amp;cpuas-&gt;tcg_=
-as_listener);<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 address_space_destroy(cpuas-&gt;as);<br>
-+=C2=A0 =C2=A0 g_free_rcu(cpuas-&gt;as, rcu);<br>
+&gt; About the BootLinuxConsole.test_arm_orangepi_bionic_20_08 test, I&#39;=
+d be happy to provide a patch to revive that test.<br>
+&gt; Since that test is no longer working without having the image availabl=
+e, this could also be a good moment to re-consider if armbian is really the=
+ best input for testing<br>
+&gt; the orangepi-pc board. The image is relatively larger and slower compa=
+red to other images, like the two openwrt based tests for cubieboard and bp=
+im2u.<br>
+&gt;<br>
+&gt; After some searching I&#39;ve found that Openwrt also has orangepi-pc =
+support:<br>
+&gt;=C2=A0 =C2=A0<a href=3D"https://openwrt.org/toh/xunlong/orange_pi_pc" r=
+el=3D"noreferrer" target=3D"_blank">https://openwrt.org/toh/xunlong/orange_=
+pi_pc</a><br>
+&gt;<br>
+&gt; That image works fine with our emulated orangepi-pc board:<br>
+&gt;<br>
+&gt; $ qemu-system-arm -M orangepi-pc -sd openwrt-23.05.0-sunxi-cortexa7-xu=
+nlong_orangepi-pc-ext4-sdcard.img -nographic<br>
 <br>
-In address_space_destroy(), it calls call_rcu1() on cpuas-&gt;as which will=
- set do_address_space_destroy() as the rcu func.<br>
-And g_free_rcu() also calls call_rcu1() on cpuas-&gt;as which will overwrit=
-e the rcu func as g_free().<br>
+&gt; Using openwrt also for the orangepi-pc test instead of armbian also gi=
+ves some consistency between the various tests, to some degree. What are yo=
+u opinions on this?<br>
 <br>
-Then I think the g_free() may be called twice in rcu thread, please verify =
-that.<br>
+Yeah, seems reasonable. My main thing to think about would be<br>
+that to understand what extra coverage this gives us that we<br>
+don&#39;t already have (there&#39;s no point running a ton of tests<br>
+which all amount to &quot;boot a Linux kernel to a shell prompt&quot;).<br>
+It looks like what we get from this one is that we are testing<br>
+the &quot;boot off an SD card image via u-boot&quot; flow -- is that right?=
+<br></blockquote><div><br></div><div>Yes, correct.</div><div>Okey, I&#39;ll=
+ try to find some time the coming days to prepare a patch that replaces tes=
+t_arm_orangepi_bionic_20_08 with a test that uses openwrt instead.</div><di=
+v><br></div><div>Niek<br></div><div><br></div><div>=C2=A0</div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex">
 <br>
-The source code of call_rcu1:<br>
-<br>
-void call_rcu1(struct rcu_head *node, void (*func)(struct rcu_head *node))<=
-br>
-{<br>
-=C2=A0 =C2=A0 node-&gt;func =3D func;<br>
-=C2=A0 =C2=A0 enqueue(node);<br>
-=C2=A0 =C2=A0 qatomic_inc(&amp;rcu_call_count);<br>
-=C2=A0 =C2=A0 qemu_event_set(&amp;rcu_call_ready_event);<br>
-}<br></blockquote><div><br></div><div><br></div><div>Thanks for testing and=
- identifying this. Let me have a look and will get back to you.</div><div><=
-br></div><div>Thanks</div><div>Salil</div><div><br></div><div>=C2=A0</div><=
-blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
-eft:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-Thanks,<br>
-Keqian<br>
-<br>
-+<br>
-+=C2=A0 =C2=A0 if (asidx =3D=3D 0) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* reset the convenience alias for address spa=
-ce 0 */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu-&gt;as =3D NULL;<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 if (--cpu-&gt;cpu_ases_count =3D=3D 0) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 g_free(cpu-&gt;cpu_ases);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu-&gt;cpu_ases =3D NULL;<br>
-+=C2=A0 =C2=A0 }<br>
-+}<br>
-+<br>
-=C2=A0AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)=C2=A0 {=
-<br>
-=C2=A0 =C2=A0 =C2=A0/* Return the AddressSpace corresponding to the specifi=
-ed index */<br>
---<br>
-2.34.1<br>
-<br>
-</blockquote></div></div>
+thanks<br>
+-- PMM<br>
+</blockquote></div><br clear=3D"all"><br><span class=3D"gmail_signature_pre=
+fix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"l=
+tr"><div>Niek Linnenbank<br><br></div></div></div></div>
 
---000000000000321bd9061796eeec--
+--00000000000039292d06179222f3--

@@ -1,100 +1,90 @@
-Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1024041ejc;
-        Sun, 5 May 2024 07:16:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVwq3bNbGd3hPkoNL+gCDfGi126RsiWui5IDzXbtuuPLaG6Rvi7KtnqZAMGIC2yn13ExVrky1qGMCtIzHcLDGQo40OEEt/D
-X-Google-Smtp-Source: AGHT+IHZ63gIbU3u/hg3XRycN05Il3z9JTWVvkfeoVwLslFM/EO4ilYINmOrCzJST0aE6q0/uaZz
-X-Received: by 2002:a81:4808:0:b0:618:2381:2404 with SMTP id v8-20020a814808000000b0061823812404mr8835130ywa.44.1714918618403;
-        Sun, 05 May 2024 07:16:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714918618; cv=none;
+Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1031301ejc;
+        Sun, 5 May 2024 07:33:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX2GxO4fdFwvC9bTMHLQ0IQrs8hFRSpnj6WGf1JH/XzEyZGkOQqM+Me1o6hwKNSMjpDSup7DboKiuy99SWSYrJn/CCaK9Ng
+X-Google-Smtp-Source: AGHT+IHASkpey/3rl3htbpcohBR7uLj89frZzUzDiOjLhoWxgN6F7dkoBzRdOAtCihy53JixFPDJ
+X-Received: by 2002:a05:6214:c84:b0:6a0:caba:7e2f with SMTP id r4-20020a0562140c8400b006a0caba7e2fmr10410850qvr.20.1714919581764;
+        Sun, 05 May 2024 07:33:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714919581; cv=none;
         d=google.com; s=arc-20160816;
-        b=sMkihnHgyt/AOg16KgKuAK9IBGh/3Mdjci4OO4eJeZkSFsKOYZ4nctt5xhovqQ6y17
-         upvxSO7ht4Q5ggnOIl642eH519kZxO6rEKga2tWE/uwMzMVUkIayHVcchr8QIxT8b04r
-         zHRphnLQ252fPS9mr7dISQZRsK+sTtU2rNkCOgchX5SMr3iBIjGJFpdtpw4kcMKhEmQ9
-         W7qu1s2IdfPozMUPKg2A9XZdSHCYcGzB6Gunb1LGMkO6zRMqSfzwXFadYg3vAkrrcf5u
-         UDTZCscVf6HGH72iu5dyI54FSxFnrV9F+a9DMtDwglAfAPhd65e2j4ktVN888SC4ToA3
-         g1Uw==
+        b=RRctA7y6Cgm1W0JjrLHSlc1ZtuIMcPfVhW45OAcGC1s0ewKAZp2Q8MzRTjp4hCK1kH
+         +x8/OSa/aHfUSPjYTkvX+pH05HCl7VwwnMG5TfEOscWrkCbwOBA7dkl2MgX5GyNGj2KR
+         ThtXbKWUTv+Km7+SrAPNzKzUnVDqN4oWsjM+p6m7+Jt45o4OEBjSVf2gd5vY3tJwSnep
+         Z/O4tqLXlha9Rq2HGDoiNCjMNzLCuEF6f48xSNKB2bkBmvivV5fntfJoRzVkHSm+6kPE
+         1DN1bhZbxA5/firl5VVUxw76ajEipUd5StARUm9JFeUwMzjkZ9IJPDMES5cymiUCNJzH
+         zGAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
-         :dkim-filter;
-        bh=vcFgVjRGgW/7vYVh6RD7B1Vto6HuZOvfgObdLod54wg=;
-        fh=6pcb5+dp30T4OJBgwllO9TA2DKUhZ9AywmJPJQmRiz0=;
-        b=OxW1Vm+T74wMLtUha6aNavcXyIMBAfYG78kNEgym0BiXBDOI4KnusGOMYLIwhUOwr2
-         ikU6vmaNafwBD+4yDmi6apzJ0LV3DCeRExmB5J2MNpai6LPPrGDQKQr7XVkSJAtGi4rY
-         He3CbJ0Wd0QfxwriyrNA4mdG6fGiIZIW/gB+R4rvCGQ50Cm3d6XYd+BNIWqTR84H/K9b
-         jgG/g2PCL6tHFhdtFjzOgOhVvdPkkDuUsVyfBXpQw8tRxuU3NOqPZ+8rzdsniHRK618Q
-         C3wUj7iq14wOEJiHdyS0YtTC1FTQg5jlx38wzl/uS6IkrkXBaBLMnKz06dP1SqgY9W29
-         7ZQA==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :mime-version:date:dkim-signature:message-id;
+        bh=VY+njysv1MdU4u1nHnnqJGdW72Ge39UFiDFeON+QGqE=;
+        fh=y0vhzwoyUcuVxqWUGXwu/wXE0z0Iv9oKccE/qGoQbPI=;
+        b=AR19F9pv6QkiegIv7ckS5vNvQNbNTt8gfWEH0ecgSDVqXV+stYTADSfbo9PQ5GA9CG
+         lc5KXu1ou5eIOB6UARX/QmsM83gt0WcvuAD3oXFT+MzbEPwfx0ryeBd8vzG2KtXT9NDI
+         w2zhfRKPz1hjCJ0aHqqowloAKqtASzpa3HpTuvGlGxfAOhkvdPs8NfgVF8HMIyd1Lj47
+         P/CUsYTAKuZg5VEMKDyE7f39DEaag2y487BxumeJNr39HeGN4cKTfT40nYqnKJH8dkML
+         9UyYq2nVSAf/Ynit4tb1gXGsRyihGqx3+M3ATauTlYMCctY7XbFMJ5FpydsPiY6au5sv
+         SvhA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b="txQN/c9H";
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=taJ5kOdk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z12-20020a67f54c000000b0047c3b535c85si1106674vsn.814.2024.05.05.07.16.57
+        by mx.google.com with ESMTPS id jt2-20020a05621427e200b006a0cb4e22e4si7231311qvb.153.2024.05.05.07.33.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 May 2024 07:16:57 -0700 (PDT)
+        Sun, 05 May 2024 07:33:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b="txQN/c9H";
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=taJ5kOdk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s3cfI-0005g1-8x; Sun, 05 May 2024 10:16:32 -0400
+	id 1s3cuo-0003Ko-GO; Sun, 05 May 2024 10:32:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1s3cfB-0005cK-Qk; Sun, 05 May 2024 10:16:28 -0400
-Received: from zproxy1.enst.fr ([2001:660:330f:2::dc])
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1s3cum-0003Jh-7i
+ for qemu-arm@nongnu.org; Sun, 05 May 2024 10:32:32 -0400
+Received: from out-181.mta1.migadu.com ([2001:41d0:203:375::b5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1s3cf9-00052o-Mx; Sun, 05 May 2024 10:16:25 -0400
-Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id C3C3BC062D;
- Sun,  5 May 2024 16:16:19 +0200 (CEST)
-Received: from zproxy1.enst.fr ([IPv6:::1])
- by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id RB6ty0b616Pb; Sun,  5 May 2024 16:16:19 +0200 (CEST)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 5F32CC05F5;
- Sun,  5 May 2024 16:16:19 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 5F32CC05F5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1714918579;
- bh=vcFgVjRGgW/7vYVh6RD7B1Vto6HuZOvfgObdLod54wg=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=txQN/c9HWZRJvSHD4VC7/WNopOltIncwDqJn0y/k68CCZC4EhLa5u/wQ3wf5PMWK2
- jezThd6kVdhy/IHSTTPMzaPamzX9Ow2g3/cXzT/V/kKvG51UNTafg/C4GYRnX64miP
- Bvdge12WvXs6L3vXZLkf5d5LT+Eze1kvT5by1uog=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy1.enst.fr ([IPv6:::1])
- by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id B-vYFCQw5Vi3; Sun,  5 May 2024 16:16:19 +0200 (CEST)
-Received: from inesv-Inspiron-3501.enst.fr (unknown
- [IPv6:2a04:8ec0:0:124::190c])
- by zproxy1.enst.fr (Postfix) with ESMTPSA id 92831C056B;
- Sun,  5 May 2024 16:16:18 +0200 (CEST)
-From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH] hw/char: Correct STM32L4x5 usart register CR2 field ADD_0 size
-Date: Sun,  5 May 2024 16:16:08 +0200
-Message-ID: <20240505141613.387508-1-ines.varhol@telecom-paris.fr>
-X-Mailer: git-send-email 2.43.2
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1s3cui-0002UP-K6
+ for qemu-arm@nongnu.org; Sun, 05 May 2024 10:32:31 -0400
+Message-ID: <960d6344-4aa5-4644-ba97-a06d21f4ead8@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+ t=1714919543;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VY+njysv1MdU4u1nHnnqJGdW72Ge39UFiDFeON+QGqE=;
+ b=taJ5kOdk2wl3oHJ8XlNRBIB/QtmTn9jYIKgmTYIaKOTNIEyB1/RBoYpuzOCNXYP7P0r7oi
+ U7AnvcfyROoRjp0lA3/UKJhUggXT1et8mYL/ijzskc+wbJhGeYB/u/Lpn7ghgzTYS7pV7R
+ A50jGzcXrBGpmyoBepbyUxQW/MQZNN8=
+Date: Sun, 5 May 2024 22:31:54 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:660:330f:2::dc;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy1.enst.fr
+Subject: Re: [PATCH] hvf: arm: Fix encodings for ID_AA64PFR1_EL1 and debug
+ System registers
+To: Alexander Graf <agraf@csgraf.de>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ wanghaibin.wang@huawei.com
+References: <20240503153453.54389-1-zenghui.yu@linux.dev>
+ <f0c19830-d4e0-4585-b960-7dd3fa1a3c76@csgraf.de>
+Content-Language: en-US
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: Zenghui Yu <zenghui.yu@linux.dev>
+In-Reply-To: <f0c19830-d4e0-4585-b960-7dd3fa1a3c76@csgraf.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Migadu-Flow: FLOW_OUT
+Received-SPF: pass client-ip=2001:41d0:203:375::b5;
+ envelope-from=zenghui.yu@linux.dev; helo=out-181.mta1.migadu.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,27 +105,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MSBLLbsbHPOV
+X-TUID: WOd5uXtI0F5m
 
-Signed-off-by: Arnaud Minier <arnaud.minier@telecom-paris.fr>
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- hw/char/stm32l4x5_usart.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 2024/5/5 21:18, Alexander Graf wrote:
+> 
+> On 03.05.24 19:34, Zenghui Yu wrote:
+>> We wrongly encoded ID_AA64PFR1_EL1 using {3,0,0,4,2} in 
+>> hvf_sreg_match[] so
+>> we fail to get the expected ARMCPRegInfo from cp_regs hash table with the
+>> wrong key.
+>>
+>> Fix it with the correct encoding {3,0,0,4,1}. With that fixed, the Linux
+>> guest can properly detect FEAT_SSBS2 on my M1 HW.
+>>
+>> All DBG{B,W}{V,C}R_EL1 registers are also wrongly encoded with op0 == 14.
+>> It happens to work because HVF_SYSREG(CRn, CRm, 14, op1, op2) equals to
+>> HVF_SYSREG(CRn, CRm, 2, op1, op2), by definition. But we shouldn't 
+>> rely on
+>> it.
+>>
+>> Fixes: a1477da3ddeb ("hvf: Add Apple Silicon support")
+>> Signed-off-by: Zenghui Yu <zenghui.yu@linux.dev>
+> 
+> 
+> Nice catch! Did you find them only because of functional issues or have 
+> you taken an automated pass somehow to validate the sysreg definitions 
+> are correct?
 
-diff --git a/hw/char/stm32l4x5_usart.c b/hw/char/stm32l4x5_usart.c
-index 02f666308c..fc5dcac0c4 100644
---- a/hw/char/stm32l4x5_usart.c
-+++ b/hw/char/stm32l4x5_usart.c
-@@ -56,7 +56,7 @@ REG32(CR1, 0x00)
-     FIELD(CR1, UE, 0, 1)     /* USART enable */
- REG32(CR2, 0x04)
-     FIELD(CR2, ADD_1, 28, 4)    /* ADD[7:4] */
--    FIELD(CR2, ADD_0, 24, 1)    /* ADD[3:0] */
-+    FIELD(CR2, ADD_0, 24, 4)    /* ADD[3:0] */
-     FIELD(CR2, RTOEN, 23, 1)    /* Receiver timeout enable */
-     FIELD(CR2, ABRMOD, 21, 2)   /* Auto baud rate mode */
-     FIELD(CR2, ABREN, 20, 1)    /* Auto baud rate enable */
---=20
-2.43.2
+Neither, this was found by code inspection. I was just curious about how
+VMM would interact with hypervisor to expose features to the guest. Docs
+at https://developer.apple.com/documentation/hypervisor are not that
+detailed (I may need to read further ;-) ).
 
+P.S., I verified on M1 that ID_AA64PFR1_EL1 is 0x20 at
+hvf_arm_get_host_cpu_features() stage and is overwritten as 0x0 later
+w/o this patch, which indicates the (guest visible) feature ID registers
+are "writable" to some extent.
+
+> Reviewed-by: Alexander Graf <agraf@csgraf.de>
+
+Thanks!
+
+Zenghui

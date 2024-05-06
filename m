@@ -1,163 +1,569 @@
-Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp468688ejc;
-        Sat, 4 May 2024 06:41:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUEfwU2twCy+uqU5lDyjsLo08SgpupHOzh4JEo3VJbTUQoF46FQxXX4xiEzVYZ4F9Yaa3ZUO5gYx7fvBpk4cE9UiiDNTmTM
-X-Received: by 2002:a05:6512:b18:b0:51b:fcfe:ed with SMTP id w24-20020a0565120b1800b0051bfcfe00edmr4627811lfu.25.1714830060594;
-        Sat, 04 May 2024 06:41:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714830060; cv=none;
+Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1269326ejc;
+        Sun, 5 May 2024 18:04:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV0SF2OSDAr0Nv4sfoI98wXiVRmvdUR8pN+Q3OYYMp7CTTmV0EsN6qvbpYjnkFuS7OzLJtsAIxYSuGJ4p9JLTw9gim0BJST
+X-Google-Smtp-Source: AGHT+IFmz3Z7+P7FKhII/27Ou2s/kdUhaX9il7NOvv5TO+iRca3gEX22Yz7xQxyO8NFb44ec28DZ
+X-Received: by 2002:a05:620a:2993:b0:790:c7f3:abce with SMTP id r19-20020a05620a299300b00790c7f3abcemr13204919qkp.37.1714957469864;
+        Sun, 05 May 2024 18:04:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714957469; cv=none;
         d=google.com; s=arc-20160816;
-        b=xSArAZP1CCV6ae2oPAcvzkI5ll+DlSwjhKgpxG56s4Xqosktn9UpL2pwERxjjejl0D
-         YnuewkyYLZtvojGdGHjI6k7zYYKw0HQ3CKd94Ki/upVrB3WQ6SVIhK2XT20AMDHAE5Pq
-         5HPBjx+wzWgI4G4WepN7P4gFx07FMqg9lsRKoX943qO+ff1Xacn7GbXMwhMo0Oc4Vr/+
-         Iako4HXjnJ0WK57FFAXNQLpWVAUMQV2bQlHPim3ttJi6SOzBV6T0dbHitV4PSTIJrTNT
-         QwNCYfjAH+nK0jLsxcZAEltgnIznKX/XxUHMeDB8RMjTe7U392l7AfmoVZCiStFtFLce
-         Pp0A==
+        b=YDdJXNFFi3/uaXRIRaHjo32CMnv1/uGSqenBUUNJuHr+uAf3AZ97CWnBw3gQ+G8fFd
+         R+wa0IDfBfzWEymuIvGXfP0YfqHwLUckY77nPcPLWabXKhHlghYeKfwNYESE6DOMuCx4
+         y45Nx1KDMaPMD2q8/yjQ20fg3CfFWvjR/k4V2GcugMVruFAF9pFsF0ktLuQh5jQVpIs/
+         2zOttNJrcmw1DbFaO4qQ9+9UDOruYuH34ISTuB5sRMWcDGo3ZrYfD6CbUu6WmUl8kPdp
+         2EsX6AEronzUn/QEPDQH0/moOOcbIcZhcBG4o9ZItEWeniDVsx89l+EuYxfIK9dH4SeS
+         1njQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=Hm/autToj4DhlFSlV5COkbhV3epwF7npYCOhv4VZBBg=;
-        fh=ZdE20ywam3pox/mIu15ZjTWOWlgfB5WFCxnPNTfnqYs=;
-        b=SL3hxGNRFDFi00gN/bpc71F40hxhVX5u4MkXwhWHeK7X8Q+7wxC9p31iP/X1MGvxTc
-         o5IydvBjHxoXzPLWSizHdiOD/D53s166TNHN3gaw8d3OvVKyCjI7eQkAYilOHPUd2Z54
-         qkJqtvYR6S9RQPnAZQBMuld9vwI8vHbhsaKM7vWvjsDOUimp+3DR6BG9NHOd7HPFkjXt
-         PUkQ6cdnraVRNbQTfD9mRHf/RtuqqioNxRE2RJmcB+8MUBuJIAhqzNxK4v0Nw/td1bsS
-         BA9p9fUfi21ZO9IMBW6jlBiiwuyGsq/m484AscguEWn0MbYRUFjWG7mtasiwp/myUOmP
-         Lcnw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=dSa/7vypbJwbnH1dMvxjbflSOgZgpWf+dcwolGGLVOg=;
+        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
+        b=ZpsNJbf+WuK3/W4pfZ0AD+3NO5EZ/KfvluRFAkXU3DiMn/VOoEcS+cB71R5IQ7IwQa
+         PI/ug7gNeZE1M9JXFHNZZxrFjt7EUNduBuQbNTxsYCJBD29abTFeyDvzN4M7mLbV0Iqq
+         i823sIDfwL/12EaDPGD8KplOoEYpDmoIYzXpcgmBk1sjLPyzZp7QT3CGIct7VMMY3Zce
+         26j0C0gQC6BVo9nciMA8WMj4h0ALSrN11s6sHXN6IxzzAFpoC/vDkEN3BzjOFUxPHjjt
+         DaHaY/K3dUdxKstWi/DanKbz2g8qnxeyK221Rj7/dJqoD4qiccbQruLKUAMKKaS8sCG3
+         Yc4w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iflXEYzt;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yvtX36um;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id r26-20020a50aada000000b0056a253a7ec5sor1300386edc.12.2024.05.04.06.41.00
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id wd31-20020a05620a729f00b007929b9d5474si712974qkn.239.2024.05.05.18.04.29
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 04 May 2024 06:41:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 05 May 2024 18:04:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iflXEYzt;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yvtX36um;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s3mmB-0007bt-0u; Sun, 05 May 2024 21:04:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1s3mm6-0007a2-FR
+ for qemu-arm@nongnu.org; Sun, 05 May 2024 21:04:15 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1s3mm0-0002Pr-Uk
+ for qemu-arm@nongnu.org; Sun, 05 May 2024 21:04:11 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-1e4bf0b3e06so12697815ad.1
+ for <qemu-arm@nongnu.org>; Sun, 05 May 2024 18:04:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714830060; x=1715434860; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Hm/autToj4DhlFSlV5COkbhV3epwF7npYCOhv4VZBBg=;
-        b=iflXEYztz75JyofL8kqkXPuHi7tLYSJmc+HfnekdClPCHtkwZQm/abBfn+OQv5Q5a2
-         Uw+MjsbAbTvm+QBCs9OTD63eyJhU/unuLo5L14Psur4Bh9D1amcSz8/wsdAoNbIcifwN
-         9CqSZjnbzlH0d2x5ZYiPFHt6Enq0O1B9FjLAhFtYaTEkHjrzB0c3ksiFdxu4Z+5US8jb
-         P7lic7r8w9DD1Wy85vV1J63uXubUx8yoIFmcc2CWNofHvr9lmILPdoWDw7ifuB9ZdVlp
-         K41gMq3Wrqcq1/Jbhe+iqZJROeG/HDXvjT0Ebe7x8avtusGlDZRleFLRna4Qvdq095pz
-         xlWQ==
+ d=linaro.org; s=google; t=1714957447; x=1715562247; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=dSa/7vypbJwbnH1dMvxjbflSOgZgpWf+dcwolGGLVOg=;
+ b=yvtX36umn9rSz0OZtEpRC8FOv6zRulnhKnvTanmjkKN43ulXfDFZe0lo3n0jCm1rJV
+ GUZVk1L8cwpwrnZLYdYRHjC1UIukzUkMVKgb4Io/hgr6MTtODPD3XDasrYiCx6ElVVqR
+ i9Oef8dlbDT/EV7ZUsWVKtNqcjI1TnxUkrPmvYSbhiTMdKaeDQVefBvJ75aM5TjvITW6
+ YYqaIlgbI14v7cfriGtop4hs7MTFa3NRsY1fXnBkvBorTXgBloM6TXmLY+lzGQz6OxxX
+ D5K/sjBfAX9ehqZkiCCNq4bHrMmRCHhhVyLh5FvZGObMmcvqoNOodkfVjCQigsYcYNpv
+ FN9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714830060; x=1715434860;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Hm/autToj4DhlFSlV5COkbhV3epwF7npYCOhv4VZBBg=;
-        b=DpSLKPHjFXCeTRgu/V8M7TuanI2wspXn67kstBgYF/XAtuJ82gg5qebLDgUlHBaSuB
-         n1uMwtoiQOcLrpZuEv01BcNBT8w5i8MCyHOgtUeZfhisCRjrsoLytzas0Ea9PCdmQGje
-         0bAhjkaMuS5Dt0oCv10EFdLrXTKSCBGRMrDEQI8alU2q0xsTnEePTBEONVMcXkzpc9iC
-         ePgBdXxj8wf/YxiEFpoNdcj/U/Mn+8Jl5RlCMszIYA7Zjp5hWYguhvfOAWyREBfyqv4D
-         kicPjYzjDrZB5zszrEUe+CQfY6OeaaAduOPXmXM/yRaOxUOue76cFHGsSXx3M97Fb9AI
-         nnRw==
-X-Forwarded-Encrypted: i=1; AJvYcCU4mL+ohOvzKN2C+pGeDpQnM+kxS2Z38Tpc6qbyD46Av+fwSGSjdLbC8FRtgYyFowpwLzYzYSb6F+DnCP6IDZn2vb1UO2Tk
-X-Gm-Message-State: AOJu0YzmxP2B6mo928aXeQyzTKUz7M5VyB4JQHI/WdADq65jJCB58rRk
-	Oj7z4nbcw+Ggr7SfwLm832MwftAzARQnb0Qfnocs6xuFc2yMs6T3+eHF+aNYkgsHFNie/mZwVCP
-	jRYyCAJR26WBCzY7v5TavdymXQ2tl+YJ9yphS1uQd
-X-Google-Smtp-Source: AGHT+IEHGRSWkb8y+Iieyd4mYdMdgxuplZd/DwodXE6USmERlIMhUYPIsmXcXyYHDWBL7zw7Ho22M4KJrjuTLVfxg4I=
-X-Received: by 2002:a50:ab5a:0:b0:572:5f8c:42 with SMTP id t26-20020a50ab5a000000b005725f8c0042mr3395192edc.0.1714830059846;
- Sat, 04 May 2024 06:40:59 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1714957447; x=1715562247;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=dSa/7vypbJwbnH1dMvxjbflSOgZgpWf+dcwolGGLVOg=;
+ b=tDlUypCEbHKegiOEoJgdi54G/IeYo1UxAKfzdSolAGvDdvd95nvwOfZnABVTvRSrKa
+ j0LMQwID4HWZXDVmWzZTP+93VlcBx7V2Z0OAtr1+hHqW5sZPxqxMUwdI0jKIujdcYex0
+ eXz7/Lh4V0LvU4ZnOpd0C3wwjkDpSAE1pK9tY6BSh2QZVsbARSrHhOKhQW1hcWajOzNg
+ swK7O9MCx49+kC3G4l4EM13lxApTKteOBslaYNDgn4MY7wLF+vhHezLnO4/1EJkIX+qX
+ lfuR6+bPp4DAsUXjRfodrd1I5vgTK78/QdiRIbH3nn8KmHtHyjaGm+7KTyYd0dQ1PsK7
+ GxHQ==
+X-Gm-Message-State: AOJu0YxjejgqDeK5AH5WMZBrSZLpZSa7VsYpV5i7CGyP7hWN0GAwjxeM
+ EKdydgpWq8vNyyjAeWCCnu5W4LKXnshz6cUqOP8ofL0ZXHTAOgDWL1nNu+FTkXQ=
+X-Received: by 2002:a17:90b:3ec5:b0:2b4:b366:ad8f with SMTP id
+ rm5-20020a17090b3ec500b002b4b366ad8fmr3489000pjb.16.1714957447349; 
+ Sun, 05 May 2024 18:04:07 -0700 (PDT)
+Received: from stoup.. (174-21-72-5.tukw.qwest.net. [174.21.72.5])
+ by smtp.gmail.com with ESMTPSA id
+ pv7-20020a17090b3c8700b002a5f44353d2sm8958232pjb.7.2024.05.05.18.04.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 05 May 2024 18:04:06 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 02/57] target/arm: Split out gengvec64.c
+Date: Sun,  5 May 2024 18:03:08 -0700
+Message-Id: <20240506010403.6204-3-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240506010403.6204-1-richard.henderson@linaro.org>
+References: <20240506010403.6204-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-References: <20240312020000.12992-1-salil.mehta@huawei.com> <20240312020000.12992-7-salil.mehta@huawei.com>
-In-Reply-To: <20240312020000.12992-7-salil.mehta@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 4 May 2024 14:40:49 +0100
-Message-ID: <CAFEAcA93EotG4-LXRJF034_9dWAWgZJA1VF6dB-xCsXn0T059g@mail.gmail.com>
-Subject: Re: [PATCH V8 6/8] physmem: Add helper function to destroy CPU AddressSpace
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org, 
-	jean-philippe@linaro.org, jonathan.cameron@huawei.com, lpieralisi@kernel.org, 
-	richard.henderson@linaro.org, imammedo@redhat.com, andrew.jones@linux.dev, 
-	david@redhat.com, philmd@linaro.org, eric.auger@redhat.com, 
-	oliver.upton@linux.dev, pbonzini@redhat.com, mst@redhat.com, will@kernel.org, 
-	gshan@redhat.com, rafael@kernel.org, alex.bennee@linaro.org, 
-	linux@armlinux.org.uk, darren@os.amperecomputing.com, 
-	ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com, 
-	karl.heubaum@oracle.com, miguel.luis@oracle.com, salil.mehta@opnsrc.net, 
-	zhukeqian1@huawei.com, wangxiongfeng2@huawei.com, wangyanan55@huawei.com, 
-	jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn, 
-	linuxarm@huawei.com
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: Z4xwlhmMzS/7
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wd28lBPZXRkZ
 
-On Tue, 12 Mar 2024 at 02:02, Salil Mehta <salil.mehta@huawei.com> wrote:
->
-> Virtual CPU Hot-unplug leads to unrealization of a CPU object. This also
-> involves destruction of the CPU AddressSpace. Add common function to help
-> destroy the CPU AddressSpace.
->
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> Reviewed-by: Gavin Shan <gshan@redhat.com>
-> Tested-by: Xianglai Li <lixianglai@loongson.cn>
-> Tested-by: Miguel Luis <miguel.luis@oracle.com>
-> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+Split some routines out of translate-a64.c and translate-sve.c
+that are used by both.
 
-> diff --git a/system/physmem.c b/system/physmem.c
-> index 6e9ed97597..61b32ac4f2 100644
-> --- a/system/physmem.c
-> +++ b/system/physmem.c
-> @@ -761,6 +761,7 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
->
->      if (!cpu->cpu_ases) {
->          cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
-> +        cpu->cpu_ases_count = cpu->num_ases;
->      }
->
->      newas = &cpu->cpu_ases[asidx];
-> @@ -774,6 +775,34 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
->      }
->  }
->
-> +void cpu_address_space_destroy(CPUState *cpu, int asidx)
-> +{
-> +    CPUAddressSpace *cpuas;
-> +
-> +    assert(cpu->cpu_ases);
-> +    assert(asidx >= 0 && asidx < cpu->num_ases);
-> +    /* KVM cannot currently support multiple address spaces. */
-> +    assert(asidx == 0 || !kvm_enabled());
-> +
-> +    cpuas = &cpu->cpu_ases[asidx];
-> +    if (tcg_enabled()) {
-> +        memory_listener_unregister(&cpuas->tcg_as_listener);
-> +    }
-> +
-> +    address_space_destroy(cpuas->as);
-> +    g_free_rcu(cpuas->as, rcu);
-> +
-> +    if (asidx == 0) {
-> +        /* reset the convenience alias for address space 0 */
-> +        cpu->as = NULL;
-> +    }
-> +
-> +    if (--cpu->cpu_ases_count == 0) {
-> +        g_free(cpu->cpu_ases);
-> +        cpu->cpu_ases = NULL;
-> +    }
-> +}
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/translate-a64.h |   4 +
+ target/arm/tcg/gengvec64.c     | 190 +++++++++++++++++++++++++++++++++
+ target/arm/tcg/translate-a64.c |  26 -----
+ target/arm/tcg/translate-sve.c | 145 +------------------------
+ target/arm/tcg/meson.build     |   1 +
+ 5 files changed, 197 insertions(+), 169 deletions(-)
+ create mode 100644 target/arm/tcg/gengvec64.c
 
-When do we need to destroy a single address space in this way
-that means we need to keep a count of how many ASes the CPU
-currently has? The commit message talks about the case when we
-unrealize the whole CPU object, but in that situation you can
-just throw away all the ASes at once (eg by calling some
-cpu_destroy_address_spaces() function from cpu_common_unrealizefn()).
+diff --git a/target/arm/tcg/translate-a64.h b/target/arm/tcg/translate-a64.h
+index 7b811b8ac5..91750f0ca9 100644
+--- a/target/arm/tcg/translate-a64.h
++++ b/target/arm/tcg/translate-a64.h
+@@ -193,6 +193,10 @@ void gen_gvec_rax1(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+ void gen_gvec_xar(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+                   uint32_t rm_ofs, int64_t shift,
+                   uint32_t opr_sz, uint32_t max_sz);
++void gen_gvec_eor3(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
++                   uint32_t a, uint32_t oprsz, uint32_t maxsz);
++void gen_gvec_bcax(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
++                   uint32_t a, uint32_t oprsz, uint32_t maxsz);
+ 
+ void gen_sve_ldr(DisasContext *s, TCGv_ptr, int vofs, int len, int rn, int imm);
+ void gen_sve_str(DisasContext *s, TCGv_ptr, int vofs, int len, int rn, int imm);
+diff --git a/target/arm/tcg/gengvec64.c b/target/arm/tcg/gengvec64.c
+new file mode 100644
+index 0000000000..093b498b13
+--- /dev/null
++++ b/target/arm/tcg/gengvec64.c
+@@ -0,0 +1,190 @@
++/*
++ *  AArch64 generic vector expansion
++ *
++ *  Copyright (c) 2013 Alexander Graf <agraf@suse.de>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "translate.h"
++#include "translate-a64.h"
++
++
++static void gen_rax1_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m)
++{
++    tcg_gen_rotli_i64(d, m, 1);
++    tcg_gen_xor_i64(d, d, n);
++}
++
++static void gen_rax1_vec(unsigned vece, TCGv_vec d, TCGv_vec n, TCGv_vec m)
++{
++    tcg_gen_rotli_vec(vece, d, m, 1);
++    tcg_gen_xor_vec(vece, d, d, n);
++}
++
++void gen_gvec_rax1(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
++                   uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz)
++{
++    static const TCGOpcode vecop_list[] = { INDEX_op_rotli_vec, 0 };
++    static const GVecGen3 op = {
++        .fni8 = gen_rax1_i64,
++        .fniv = gen_rax1_vec,
++        .opt_opc = vecop_list,
++        .fno = gen_helper_crypto_rax1,
++        .vece = MO_64,
++    };
++    tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, &op);
++}
++
++static void gen_xar8_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
++{
++    TCGv_i64 t = tcg_temp_new_i64();
++    uint64_t mask = dup_const(MO_8, 0xff >> sh);
++
++    tcg_gen_xor_i64(t, n, m);
++    tcg_gen_shri_i64(d, t, sh);
++    tcg_gen_shli_i64(t, t, 8 - sh);
++    tcg_gen_andi_i64(d, d, mask);
++    tcg_gen_andi_i64(t, t, ~mask);
++    tcg_gen_or_i64(d, d, t);
++}
++
++static void gen_xar16_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
++{
++    TCGv_i64 t = tcg_temp_new_i64();
++    uint64_t mask = dup_const(MO_16, 0xffff >> sh);
++
++    tcg_gen_xor_i64(t, n, m);
++    tcg_gen_shri_i64(d, t, sh);
++    tcg_gen_shli_i64(t, t, 16 - sh);
++    tcg_gen_andi_i64(d, d, mask);
++    tcg_gen_andi_i64(t, t, ~mask);
++    tcg_gen_or_i64(d, d, t);
++}
++
++static void gen_xar_i32(TCGv_i32 d, TCGv_i32 n, TCGv_i32 m, int32_t sh)
++{
++    tcg_gen_xor_i32(d, n, m);
++    tcg_gen_rotri_i32(d, d, sh);
++}
++
++static void gen_xar_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
++{
++    tcg_gen_xor_i64(d, n, m);
++    tcg_gen_rotri_i64(d, d, sh);
++}
++
++static void gen_xar_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
++                        TCGv_vec m, int64_t sh)
++{
++    tcg_gen_xor_vec(vece, d, n, m);
++    tcg_gen_rotri_vec(vece, d, d, sh);
++}
++
++void gen_gvec_xar(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
++                  uint32_t rm_ofs, int64_t shift,
++                  uint32_t opr_sz, uint32_t max_sz)
++{
++    static const TCGOpcode vecop[] = { INDEX_op_rotli_vec, 0 };
++    static const GVecGen3i ops[4] = {
++        { .fni8 = gen_xar8_i64,
++          .fniv = gen_xar_vec,
++          .fno = gen_helper_sve2_xar_b,
++          .opt_opc = vecop,
++          .vece = MO_8 },
++        { .fni8 = gen_xar16_i64,
++          .fniv = gen_xar_vec,
++          .fno = gen_helper_sve2_xar_h,
++          .opt_opc = vecop,
++          .vece = MO_16 },
++        { .fni4 = gen_xar_i32,
++          .fniv = gen_xar_vec,
++          .fno = gen_helper_sve2_xar_s,
++          .opt_opc = vecop,
++          .vece = MO_32 },
++        { .fni8 = gen_xar_i64,
++          .fniv = gen_xar_vec,
++          .fno = gen_helper_gvec_xar_d,
++          .opt_opc = vecop,
++          .vece = MO_64 }
++    };
++    int esize = 8 << vece;
++
++    /* The SVE2 range is 1 .. esize; the AdvSIMD range is 0 .. esize-1. */
++    tcg_debug_assert(shift >= 0);
++    tcg_debug_assert(shift <= esize);
++    shift &= esize - 1;
++
++    if (shift == 0) {
++        /* xar with no rotate devolves to xor. */
++        tcg_gen_gvec_xor(vece, rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz);
++    } else {
++        tcg_gen_gvec_3i(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz,
++                        shift, &ops[vece]);
++    }
++}
++
++static void gen_eor3_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_i64 k)
++{
++    tcg_gen_xor_i64(d, n, m);
++    tcg_gen_xor_i64(d, d, k);
++}
++
++static void gen_eor3_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
++                         TCGv_vec m, TCGv_vec k)
++{
++    tcg_gen_xor_vec(vece, d, n, m);
++    tcg_gen_xor_vec(vece, d, d, k);
++}
++
++void gen_gvec_eor3(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
++                   uint32_t a, uint32_t oprsz, uint32_t maxsz)
++{
++    static const GVecGen4 op = {
++        .fni8 = gen_eor3_i64,
++        .fniv = gen_eor3_vec,
++        .fno = gen_helper_sve2_eor3,
++        .vece = MO_64,
++        .prefer_i64 = TCG_TARGET_REG_BITS == 64,
++    };
++    tcg_gen_gvec_4(d, n, m, a, oprsz, maxsz, &op);
++}
++
++static void gen_bcax_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_i64 k)
++{
++    tcg_gen_andc_i64(d, m, k);
++    tcg_gen_xor_i64(d, d, n);
++}
++
++static void gen_bcax_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
++                         TCGv_vec m, TCGv_vec k)
++{
++    tcg_gen_andc_vec(vece, d, m, k);
++    tcg_gen_xor_vec(vece, d, d, n);
++}
++
++void gen_gvec_bcax(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
++                   uint32_t a, uint32_t oprsz, uint32_t maxsz)
++{
++    static const GVecGen4 op = {
++        .fni8 = gen_bcax_i64,
++        .fniv = gen_bcax_vec,
++        .fno = gen_helper_sve2_bcax,
++        .vece = MO_64,
++        .prefer_i64 = TCG_TARGET_REG_BITS == 64,
++    };
++    tcg_gen_gvec_4(d, n, m, a, oprsz, maxsz, &op);
++}
++
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 976094a5c8..283078d385 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -13617,32 +13617,6 @@ static void disas_crypto_two_reg_sha(DisasContext *s, uint32_t insn)
+     gen_gvec_op2_ool(s, true, rd, rn, 0, genfn);
+ }
+ 
+-static void gen_rax1_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m)
+-{
+-    tcg_gen_rotli_i64(d, m, 1);
+-    tcg_gen_xor_i64(d, d, n);
+-}
+-
+-static void gen_rax1_vec(unsigned vece, TCGv_vec d, TCGv_vec n, TCGv_vec m)
+-{
+-    tcg_gen_rotli_vec(vece, d, m, 1);
+-    tcg_gen_xor_vec(vece, d, d, n);
+-}
+-
+-void gen_gvec_rax1(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+-                   uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz)
+-{
+-    static const TCGOpcode vecop_list[] = { INDEX_op_rotli_vec, 0 };
+-    static const GVecGen3 op = {
+-        .fni8 = gen_rax1_i64,
+-        .fniv = gen_rax1_vec,
+-        .opt_opc = vecop_list,
+-        .fno = gen_helper_crypto_rax1,
+-        .vece = MO_64,
+-    };
+-    tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, &op);
+-}
+-
+ /* Crypto three-reg SHA512
+  *  31                   21 20  16 15  14  13 12  11  10  9    5 4    0
+  * +-----------------------+------+---+---+-----+--------+------+------+
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index ada05aa530..798ab2bfb1 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -527,94 +527,6 @@ TRANS_FEAT(ORR_zzz, aa64_sve, gen_gvec_fn_arg_zzz, tcg_gen_gvec_or, a)
+ TRANS_FEAT(EOR_zzz, aa64_sve, gen_gvec_fn_arg_zzz, tcg_gen_gvec_xor, a)
+ TRANS_FEAT(BIC_zzz, aa64_sve, gen_gvec_fn_arg_zzz, tcg_gen_gvec_andc, a)
+ 
+-static void gen_xar8_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
+-{
+-    TCGv_i64 t = tcg_temp_new_i64();
+-    uint64_t mask = dup_const(MO_8, 0xff >> sh);
+-
+-    tcg_gen_xor_i64(t, n, m);
+-    tcg_gen_shri_i64(d, t, sh);
+-    tcg_gen_shli_i64(t, t, 8 - sh);
+-    tcg_gen_andi_i64(d, d, mask);
+-    tcg_gen_andi_i64(t, t, ~mask);
+-    tcg_gen_or_i64(d, d, t);
+-}
+-
+-static void gen_xar16_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
+-{
+-    TCGv_i64 t = tcg_temp_new_i64();
+-    uint64_t mask = dup_const(MO_16, 0xffff >> sh);
+-
+-    tcg_gen_xor_i64(t, n, m);
+-    tcg_gen_shri_i64(d, t, sh);
+-    tcg_gen_shli_i64(t, t, 16 - sh);
+-    tcg_gen_andi_i64(d, d, mask);
+-    tcg_gen_andi_i64(t, t, ~mask);
+-    tcg_gen_or_i64(d, d, t);
+-}
+-
+-static void gen_xar_i32(TCGv_i32 d, TCGv_i32 n, TCGv_i32 m, int32_t sh)
+-{
+-    tcg_gen_xor_i32(d, n, m);
+-    tcg_gen_rotri_i32(d, d, sh);
+-}
+-
+-static void gen_xar_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
+-{
+-    tcg_gen_xor_i64(d, n, m);
+-    tcg_gen_rotri_i64(d, d, sh);
+-}
+-
+-static void gen_xar_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
+-                        TCGv_vec m, int64_t sh)
+-{
+-    tcg_gen_xor_vec(vece, d, n, m);
+-    tcg_gen_rotri_vec(vece, d, d, sh);
+-}
+-
+-void gen_gvec_xar(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+-                  uint32_t rm_ofs, int64_t shift,
+-                  uint32_t opr_sz, uint32_t max_sz)
+-{
+-    static const TCGOpcode vecop[] = { INDEX_op_rotli_vec, 0 };
+-    static const GVecGen3i ops[4] = {
+-        { .fni8 = gen_xar8_i64,
+-          .fniv = gen_xar_vec,
+-          .fno = gen_helper_sve2_xar_b,
+-          .opt_opc = vecop,
+-          .vece = MO_8 },
+-        { .fni8 = gen_xar16_i64,
+-          .fniv = gen_xar_vec,
+-          .fno = gen_helper_sve2_xar_h,
+-          .opt_opc = vecop,
+-          .vece = MO_16 },
+-        { .fni4 = gen_xar_i32,
+-          .fniv = gen_xar_vec,
+-          .fno = gen_helper_sve2_xar_s,
+-          .opt_opc = vecop,
+-          .vece = MO_32 },
+-        { .fni8 = gen_xar_i64,
+-          .fniv = gen_xar_vec,
+-          .fno = gen_helper_gvec_xar_d,
+-          .opt_opc = vecop,
+-          .vece = MO_64 }
+-    };
+-    int esize = 8 << vece;
+-
+-    /* The SVE2 range is 1 .. esize; the AdvSIMD range is 0 .. esize-1. */
+-    tcg_debug_assert(shift >= 0);
+-    tcg_debug_assert(shift <= esize);
+-    shift &= esize - 1;
+-
+-    if (shift == 0) {
+-        /* xar with no rotate devolves to xor. */
+-        tcg_gen_gvec_xor(vece, rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz);
+-    } else {
+-        tcg_gen_gvec_3i(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz,
+-                        shift, &ops[vece]);
+-    }
+-}
+-
+ static bool trans_XAR(DisasContext *s, arg_rrri_esz *a)
+ {
+     if (a->esz < 0 || !dc_isar_feature(aa64_sve2, s)) {
+@@ -629,61 +541,8 @@ static bool trans_XAR(DisasContext *s, arg_rrri_esz *a)
+     return true;
+ }
+ 
+-static void gen_eor3_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_i64 k)
+-{
+-    tcg_gen_xor_i64(d, n, m);
+-    tcg_gen_xor_i64(d, d, k);
+-}
+-
+-static void gen_eor3_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
+-                         TCGv_vec m, TCGv_vec k)
+-{
+-    tcg_gen_xor_vec(vece, d, n, m);
+-    tcg_gen_xor_vec(vece, d, d, k);
+-}
+-
+-static void gen_eor3(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
+-                     uint32_t a, uint32_t oprsz, uint32_t maxsz)
+-{
+-    static const GVecGen4 op = {
+-        .fni8 = gen_eor3_i64,
+-        .fniv = gen_eor3_vec,
+-        .fno = gen_helper_sve2_eor3,
+-        .vece = MO_64,
+-        .prefer_i64 = TCG_TARGET_REG_BITS == 64,
+-    };
+-    tcg_gen_gvec_4(d, n, m, a, oprsz, maxsz, &op);
+-}
+-
+-TRANS_FEAT(EOR3, aa64_sve2, gen_gvec_fn_arg_zzzz, gen_eor3, a)
+-
+-static void gen_bcax_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_i64 k)
+-{
+-    tcg_gen_andc_i64(d, m, k);
+-    tcg_gen_xor_i64(d, d, n);
+-}
+-
+-static void gen_bcax_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
+-                         TCGv_vec m, TCGv_vec k)
+-{
+-    tcg_gen_andc_vec(vece, d, m, k);
+-    tcg_gen_xor_vec(vece, d, d, n);
+-}
+-
+-static void gen_bcax(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
+-                     uint32_t a, uint32_t oprsz, uint32_t maxsz)
+-{
+-    static const GVecGen4 op = {
+-        .fni8 = gen_bcax_i64,
+-        .fniv = gen_bcax_vec,
+-        .fno = gen_helper_sve2_bcax,
+-        .vece = MO_64,
+-        .prefer_i64 = TCG_TARGET_REG_BITS == 64,
+-    };
+-    tcg_gen_gvec_4(d, n, m, a, oprsz, maxsz, &op);
+-}
+-
+-TRANS_FEAT(BCAX, aa64_sve2, gen_gvec_fn_arg_zzzz, gen_bcax, a)
++TRANS_FEAT(EOR3, aa64_sve2, gen_gvec_fn_arg_zzzz, gen_gvec_eor3, a)
++TRANS_FEAT(BCAX, aa64_sve2, gen_gvec_fn_arg_zzzz, gen_gvec_bcax, a)
+ 
+ static void gen_bsl(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
+                     uint32_t a, uint32_t oprsz, uint32_t maxsz)
+diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+index bdb5c7352f..508932a249 100644
+--- a/target/arm/tcg/meson.build
++++ b/target/arm/tcg/meson.build
+@@ -43,6 +43,7 @@ arm_ss.add(files(
+ 
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'cpu64.c',
++  'gengvec64.c',
+   'translate-a64.c',
+   'translate-sve.c',
+   'translate-sme.c',
+-- 
+2.34.1
 
-Also, if we're leaking stuff here by failing to destroy it,
-is that a problem for existing CPU types like x86 that we
-can already hotplug?
-
-thanks
--- PMM

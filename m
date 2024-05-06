@@ -1,110 +1,111 @@
-Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1269856ejc;
-        Sun, 5 May 2024 18:05:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVvj0RDRHorC83bZZWjQXmsU/CwaDo/lijur7vIU9CpJindU+1Sdn5bjzgDn/vWrJmRkjc/+djqmiiHQx8/1+KQyVlODR53
-X-Google-Smtp-Source: AGHT+IGfdGxSQe4V6LS9NeDXfudnHFELEHWpFzWmJxCqz1E3T74QwGwG6geSr/QCMnH6kvsWfEDS
-X-Received: by 2002:a05:620a:4094:b0:790:9862:ce1e with SMTP id f20-20020a05620a409400b007909862ce1emr17585247qko.20.1714957550291;
-        Sun, 05 May 2024 18:05:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714957550; cv=none;
+Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1269939ejc;
+        Sun, 5 May 2024 18:06:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWevLbhAMR9yP97L1HAPV7uvtfPRXDAyl4nz8dHt2rOVFlcP3t8zxYEKpnLGjHShoJLzpQ8DU3X1EWOrKXsqWTP2GAJyk3a
+X-Google-Smtp-Source: AGHT+IEKcYbpXSRcAqEBh5h35dp4DQS5oXxjxOxH/TU47o/ABQFWEJe5D2aX4LINefcYG+nwWG6i
+X-Received: by 2002:a05:6214:2422:b0:6a0:def5:8281 with SMTP id gy2-20020a056214242200b006a0def58281mr16961048qvb.11.1714957563618;
+        Sun, 05 May 2024 18:06:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714957563; cv=none;
         d=google.com; s=arc-20160816;
-        b=HMlVtSbFKOxUP68EtvwBG7QveYxoekLoT2Nk3X0VLDcQahjWYgZUz4VylVR0d8SBN6
-         XXKJt1iGFZpQWOXwjxeGnbN95sCyyo6EwCbsp6TVHahoRDV/GyF54EgkvV1nn7Hf0sL5
-         k8Row1VRk0nNteqfD294ezk/FIeR/bQaVh/aZHUDHVlHWfVg9aztJRNL56K+cqhO80hj
-         fbSoJCWZG7MZ8GLZMKXCMjZpI17uLjWoVJpOYaPDES15bk/vfIjJzW55MpT476tiQhwK
-         p8xiUjd4/4Mo4sgtXp53HD4h5Fnfn2c+XH0pZR+w2uDiPfp7VReeePrdkzSymQrDlGZ6
-         MJZA==
+        b=v1WPJcawQWwNQI39JsSECAvYVF68tKnhkNCu470fRpHD1rqYfqU8RA3W0VDtEY1cNo
+         l9DWtHPhi5n0ikTG2KZGJfnFqASsCBD8CP+OZKvLGDCKVkKJeMczphTAtqu1cpngIkQL
+         KW+xPFYZLAYi8w+Rrynub+3iCGZw9z+gDH6gWc0ySG7+/ALvW6bru7eqwXCW9GRYIvq1
+         5nuyCPBV1F4LYbj1LbJrVCO+DcGsXoXcAfubE9CAhUUEkyftRWxxwqHlnFG9ZSGViKg6
+         sc2zAE97UDzOgNsLEkSVJrXnvSBzsxAGchoKkj2W/Osu13LEXTUvMJTi4uyjv4Yb9MqO
+         ZrGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=AzJX13H5XAT/STnLyLHYROGAmOMJ6FHS58wYnuWTLMg=;
+        bh=rHeFdqmSIrKSfhy0XSzjzXa9EfWTAIQsmCyzR/glZxk=;
         fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=a/lkXFm1LaeRa4uYYaPMyaMD1DVY38ki390NO01OmZWbHG1yDkwx3lpu/XYcFNtwvk
-         V+uuRPIqcssr3jzTDmgkmEFRVTpgFCQJ+ZL0WfT5nAZpx5OlLcLPhai8RujYN51BDMny
-         nmOwiBA2r/2Znrgm5s3H0nUMUKBl2TEm2zhQ5gpvxQ9iqHv9S5Jc/5/FOkC5sToAU6W6
-         d36bY/PY0w+BR1abhg+J+XE5TzS0tnES16qEYzJvaqTG8ajGRP/HpPEcSC553SGyDxwj
-         iym96rpDlPglBRuhPuZgsMeAjlGiSpFVlhs2YKr2U/mHs80BM/pFtnCWE8kuGDqkMvjt
-         jWHg==;
+        b=RQvJwE4KVDdrIkm+gU/v4BWUzgV4NZjd6WOm+zizQblrPMQYs4+PfJPAiHe1JBnoJ8
+         ay9/Rye8t85fJPG4kJ6CIqAkK8bkswmNvjwS/DNEBKVi0mPhbErIe/oJjkM0LzPQuz3Z
+         HtgX0HNDj3fEUuED89uvZD/0polu6J0FfQT3Q48UpgVxxfsEOyDNwGcJPnQTVqKHpBFX
+         Vcq5JDkfJ9yAPteRYNGGaVMC2YQ1ghLpdHPFzZHMUJAPY1QDH5gsbFq8PJGGhwcvsrUM
+         aS6q2ivAvgTWmrF4l06PwO7eKfxG0Ui7HHAMbRDB6M5wIuUbLwE2OthMOjLNINA0+Aip
+         cWtQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GH7RP8y9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fER7Dfm+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c12-20020a37e10c000000b007929646d1fasi1685845qkm.622.2024.05.05.18.05.50
+        by mx.google.com with ESMTPS id jk13-20020ad45d4d000000b006a0cd951464si8689733qvb.6.2024.05.05.18.06.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 May 2024 18:05:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 05 May 2024 18:06:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GH7RP8y9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fER7Dfm+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s3mmq-0008ID-1C; Sun, 05 May 2024 21:05:00 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1s3mml-0007xg-6u; Sun, 05 May 2024 21:04:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1s3mmm-00086v-TT
- for qemu-arm@nongnu.org; Sun, 05 May 2024 21:04:56 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1s3mma-0007rW-Io
+ for qemu-devel@nongnu.org; Sun, 05 May 2024 21:04:47 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1s3mmN-0002WP-QE
- for qemu-arm@nongnu.org; Sun, 05 May 2024 21:04:56 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-1ecd9a81966so22612875ad.0
- for <qemu-arm@nongnu.org>; Sun, 05 May 2024 18:04:29 -0700 (PDT)
+ id 1s3mmF-0002U0-Q1
+ for qemu-devel@nongnu.org; Sun, 05 May 2024 21:04:44 -0400
+Received: by mail-pg1-x532.google.com with SMTP id
+ 41be03b00d2f7-61f2dc31be4so1272147a12.1
+ for <qemu-devel@nongnu.org>; Sun, 05 May 2024 18:04:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1714957468; x=1715562268; darn=nongnu.org;
+ d=linaro.org; s=google; t=1714957460; x=1715562260; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AzJX13H5XAT/STnLyLHYROGAmOMJ6FHS58wYnuWTLMg=;
- b=GH7RP8y9IzevXJ75JktIpUVeTZvLSCXGxKAvWyLhaL+qFb28MUgaUVmAYJtMQcEcgw
- XY+JTDkkOAjq67HMBazXDMViPs4TVv8M/p7Q25muzcjd4TCvlJnCn6dgQVxz+umUA6s1
- 2H/0stCEdRj8J1Fj4rQXg9yM+TTh3g/iaw3wAb4rTOJwzB4ydF4RXOCvBadtPMVKjDTQ
- b41Y2jWH4X7SwWhkGU7smD/5I2GmfhSAxrrHy12A7SxFq/wwCdKSGe+5sY4PKoI8+7vL
- 4RdvOnY3rtZCOCc7KcoGFsBg8HLSlko+Qb+7RJr9srct6oSKB7KZwbVRnuoTgRiTUAVL
- 7SVw==
+ bh=rHeFdqmSIrKSfhy0XSzjzXa9EfWTAIQsmCyzR/glZxk=;
+ b=fER7Dfm+ww3d4b7Q3b0CTKmiUetoT3OuwzFDlt0hPPV6T6hPCanjfw7lwRR0aDn255
+ RziGueEr1W4wZJSui8fqcj85FKrilZh9uagbnMhXaMLOyVbbO94gRWowm5g9LmD3C6W5
+ n4/IpgJ3gZPA73NiH1jWXe/9ZNjciv+sjGpLgi7DIjPKNhFyrch9l9rvdv0VOBqrBt+3
+ iQyn9pdJQsL1J2aUvsMznFZiDZ1SJjt8MWAduIj8i8jOosFM5BMCvUJuePKuxACKW1BP
+ maYAR0sQ+VHkbUA++/fZatbClqgIMvoUY6ed2JHG5Oa3X9OWugsblHsT3ALu626x0uCs
+ 94qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714957468; x=1715562268;
+ d=1e100.net; s=20230601; t=1714957460; x=1715562260;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AzJX13H5XAT/STnLyLHYROGAmOMJ6FHS58wYnuWTLMg=;
- b=Bt1RHxC4lvcL9qJLiezfKTKyVOTc8O0Hdj3vn9+TRlDQ46stYKlBaEK3hgrRoluYRz
- pWZ1jFVL1t4nxYLQNSem80mlm5ZnCFwIrJDnsgOI0CJIxRDI5SOf42hMPs61k08h2K15
- xdrsEQ7+YscN+AgoDNCFGgC3i1NUumcEaAAejdwiHaI3AXfigpRThSLs+jnW9SXWBO/B
- MrrRAU39ZRRjEth+BETzTkSACe4xSvUAaezTUqD941SiC/0I6dpXOwxDDCfYxS7eplKr
- VhMAW4AOR3W+IET0GKW8QBuTCaA8TntpBOqqB7+w1fkFtLUufR3kWn4loYEj9vjBGpDY
- +Z1A==
-X-Gm-Message-State: AOJu0Yw42+VzXhDHC/j+hBkCIHgBYErRnO10IbxqgILN6WiHzS5k4ahG
- 5oqDPlSclXKgMSA1aLOY+p687fIUDNKZVSIy1QZQSciQzu/gmqEVXJ2e9GdO2V8=
-X-Received: by 2002:a17:90a:c24d:b0:2b2:826d:a387 with SMTP id
- d13-20020a17090ac24d00b002b2826da387mr12181278pjx.14.1714957468428; 
- Sun, 05 May 2024 18:04:28 -0700 (PDT)
+ bh=rHeFdqmSIrKSfhy0XSzjzXa9EfWTAIQsmCyzR/glZxk=;
+ b=Lxcsm5f3gNtG30bmeQ2Rc1hf1txrK+D2ydKkPGaPNQJEuPZrHOfmhM9BYevQjPKDFQ
+ QmWB5rG9b9d+ro9qZAzweK4z0xCj1n8OpfzIXUH8pzlZ2vt+psuNspyjt5PZmKoicHjp
+ i2JXoiDRLxHxBLb1iXDd9Ng9J7T2Bmi+hwNbwuOdMGTG0uhnED27e7paViyxZUCT8CCv
+ JB0AOrVGC9gK/xw19/zneG5fSI/M4HC/QsXmz2Qd1y9PWwnPAEg8sYP1miEpUgizOjXQ
+ L85aAQP3SW5/eDneJKtOoNv4udRMTUsRrISjb6rFoYRoTUCxOzijR9KgXMK3Rk8rojCi
+ hgGQ==
+X-Gm-Message-State: AOJu0YyQo5ZVEvsBJ+Y8eQ+BqGprQXZWq8t7E3eRGbq51UBnKs+56GE6
+ dAu/O0z1LBlqm8m3JACunfHjSif5F52Tj4MRXu2+z8M8TqzgDitryseHavhd88AbAvEz7wMjO/u
+ m
+X-Received: by 2002:a17:90a:17cb:b0:2a9:e879:c83d with SMTP id
+ q69-20020a17090a17cb00b002a9e879c83dmr16486572pja.5.1714957459853; 
+ Sun, 05 May 2024 18:04:19 -0700 (PDT)
 Received: from stoup.. (174-21-72-5.tukw.qwest.net. [174.21.72.5])
  by smtp.gmail.com with ESMTPSA id
- pv7-20020a17090b3c8700b002a5f44353d2sm8958232pjb.7.2024.05.05.18.04.27
+ pv7-20020a17090b3c8700b002a5f44353d2sm8958232pjb.7.2024.05.05.18.04.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 May 2024 18:04:28 -0700 (PDT)
+ Sun, 05 May 2024 18:04:19 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 28/57] target/arm: Convert FMLAL, FMLSL to decodetree
-Date: Sun,  5 May 2024 18:03:34 -0700
-Message-Id: <20240506010403.6204-29-richard.henderson@linaro.org>
+Subject: [PATCH 17/57] target/arm: Convert FMLA, FMLS to decodetree
+Date: Sun,  5 May 2024 18:03:23 -0700
+Message-Id: <20240506010403.6204-18-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240506010403.6204-1-richard.henderson@linaro.org>
 References: <20240506010403.6204-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,253 +114,539 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m7OiIZ3Ld4vx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZMgMSm6/Axbk
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/a64.decode      |  10 +++
- target/arm/tcg/translate-a64.c | 144 ++++++++++-----------------------
- 2 files changed, 51 insertions(+), 103 deletions(-)
+ target/arm/helper.h            |   2 +
+ target/arm/tcg/a64.decode      |  22 +++
+ target/arm/tcg/translate-a64.c | 241 +++++++++++++++++----------------
+ target/arm/tcg/vec_helper.c    |  14 ++
+ 4 files changed, 163 insertions(+), 116 deletions(-)
 
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 0fd01c9c52..e021c18517 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -770,9 +770,11 @@ DEF_HELPER_FLAGS_5(gvec_fmls_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ 
+ DEF_HELPER_FLAGS_5(gvec_vfma_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(gvec_vfma_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_vfma_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ 
+ DEF_HELPER_FLAGS_5(gvec_vfms_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_5(gvec_vfms_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_5(gvec_vfms_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
+ 
+ DEF_HELPER_FLAGS_5(gvec_ftsmul_h, TCG_CALL_NO_RWG,
+                    void, ptr, ptr, ptr, ptr, i32)
 diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 16e9675335..9aa4fb9bd0 100644
+index dbfdfd80f9..cb84a8685f 100644
 --- a/target/arm/tcg/a64.decode
 +++ b/target/arm/tcg/a64.decode
-@@ -797,6 +797,11 @@ FMLA_v          0.00 1110 0.1 ..... 11001 1 ..... ..... @qrrr_sd
- FMLS_v          0.00 1110 110 ..... 00001 1 ..... ..... @qrrr_h
- FMLS_v          0.00 1110 1.1 ..... 11001 1 ..... ..... @qrrr_sd
+@@ -742,12 +742,26 @@ FMINNM_v        0.00 1110 1.1 ..... 11000 1 ..... ..... @qrrr_sd
+ FMULX_v         0.00 0111 010 ..... 00011 1 ..... ..... @qrrr_h
+ FMULX_v         0.00 1110 0.1 ..... 11011 1 ..... ..... @qrrr_sd
  
-+FMLAL_v         0.00 1110 001 ..... 11101 1 ..... ..... @qrrr_h
-+FMLSL_v         0.00 1110 101 ..... 11101 1 ..... ..... @qrrr_h
-+FMLAL2_v        0.10 1110 001 ..... 11001 1 ..... ..... @qrrr_h
-+FMLSL2_v        0.10 1110 101 ..... 11001 1 ..... ..... @qrrr_h
++FMLA_v          0.00 1110 010 ..... 00001 1 ..... ..... @qrrr_h
++FMLA_v          0.00 1110 0.1 ..... 11001 1 ..... ..... @qrrr_sd
 +
- FCMEQ_v         0.00 1110 010 ..... 00100 1 ..... ..... @qrrr_h
- FCMEQ_v         0.00 1110 0.1 ..... 11100 1 ..... ..... @qrrr_sd
++FMLS_v          0.00 1110 110 ..... 00001 1 ..... ..... @qrrr_h
++FMLS_v          0.00 1110 1.1 ..... 11001 1 ..... ..... @qrrr_sd
++
+ ### Advanced SIMD scalar x indexed element
  
-@@ -877,3 +882,8 @@ FMLS_vi         0.00 1111 11 0 ..... 0101 . 0 ..... .....   @qrrx_d
+ FMUL_si         0101 1111 00 .. .... 1001 . 0 ..... .....   @rrx_h
+ FMUL_si         0101 1111 10 . ..... 1001 . 0 ..... .....   @rrx_s
+ FMUL_si         0101 1111 11 0 ..... 1001 . 0 ..... .....   @rrx_d
+ 
++FMLA_si         0101 1111 00 .. .... 0001 . 0 ..... .....   @rrx_h
++FMLA_si         0101 1111 10 .. .... 0001 . 0 ..... .....   @rrx_s
++FMLA_si         0101 1111 11 0. .... 0001 . 0 ..... .....   @rrx_d
++
++FMLS_si         0101 1111 00 .. .... 0101 . 0 ..... .....   @rrx_h
++FMLS_si         0101 1111 10 .. .... 0101 . 0 ..... .....   @rrx_s
++FMLS_si         0101 1111 11 0. .... 0101 . 0 ..... .....   @rrx_d
++
+ FMULX_si        0111 1111 00 .. .... 1001 . 0 ..... .....   @rrx_h
+ FMULX_si        0111 1111 10 . ..... 1001 . 0 ..... .....   @rrx_s
+ FMULX_si        0111 1111 11 0 ..... 1001 . 0 ..... .....   @rrx_d
+@@ -758,6 +772,14 @@ FMUL_vi         0.00 1111 00 .. .... 1001 . 0 ..... .....   @qrrx_h
+ FMUL_vi         0.00 1111 10 . ..... 1001 . 0 ..... .....   @qrrx_s
+ FMUL_vi         0.00 1111 11 0 ..... 1001 . 0 ..... .....   @qrrx_d
+ 
++FMLA_vi         0.00 1111 00 .. .... 0001 . 0 ..... .....   @qrrx_h
++FMLA_vi         0.00 1111 10 . ..... 0001 . 0 ..... .....   @qrrx_s
++FMLA_vi         0.00 1111 11 0 ..... 0001 . 0 ..... .....   @qrrx_d
++
++FMLS_vi         0.00 1111 00 .. .... 0101 . 0 ..... .....   @qrrx_h
++FMLS_vi         0.00 1111 10 . ..... 0101 . 0 ..... .....   @qrrx_s
++FMLS_vi         0.00 1111 11 0 ..... 0101 . 0 ..... .....   @qrrx_d
++
  FMULX_vi        0.10 1111 00 .. .... 1001 . 0 ..... .....   @qrrx_h
  FMULX_vi        0.10 1111 10 . ..... 1001 . 0 ..... .....   @qrrx_s
  FMULX_vi        0.10 1111 11 0 ..... 1001 . 0 ..... .....   @qrrx_d
-+
-+FMLAL_vi        0.00 1111 10 .. .... 0000 . 0 ..... .....   @qrrx_h
-+FMLSL_vi        0.00 1111 10 .. .... 0100 . 0 ..... .....   @qrrx_h
-+FMLAL2_vi       0.10 1111 10 .. .... 1000 . 0 ..... .....   @qrrx_h
-+FMLSL2_vi       0.10 1111 10 .. .... 1100 . 0 ..... .....   @qrrx_h
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index be63f46247..a082ce8441 100644
+index caf4d8154d..36aae079da 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -5257,6 +5257,24 @@ static gen_helper_gvec_3_ptr * const f_vector_fminnmp[3] = {
+@@ -5067,6 +5067,20 @@ static gen_helper_gvec_3_ptr * const f_vector_fmulx[3] = {
  };
- TRANS(FMINNMP_v, do_fp3_vector, a, f_vector_fminnmp)
+ TRANS(FMULX_v, do_fp3_vector, a, f_vector_fmulx)
  
-+static bool do_fmlal(DisasContext *s, arg_qrrr_e *a, bool is_s, bool is_2)
-+{
-+    if (fp_access_check(s)) {
-+        int data = (is_2 << 1) | is_s;
-+        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->rd),
-+                           vec_full_reg_offset(s, a->rn),
-+                           vec_full_reg_offset(s, a->rm), tcg_env,
-+                           a->q ? 16 : 8, vec_full_reg_size(s),
-+                           data, gen_helper_gvec_fmlal_a64);
-+    }
-+    return true;
-+}
++static gen_helper_gvec_3_ptr * const f_vector_fmla[3] = {
++    gen_helper_gvec_vfma_h,
++    gen_helper_gvec_vfma_s,
++    gen_helper_gvec_vfma_d,
++};
++TRANS(FMLA_v, do_fp3_vector, a, f_vector_fmla)
 +
-+TRANS_FEAT(FMLAL_v, aa64_fhm, do_fmlal, a, false, false)
-+TRANS_FEAT(FMLSL_v, aa64_fhm, do_fmlal, a, true, false)
-+TRANS_FEAT(FMLAL2_v, aa64_fhm, do_fmlal, a, false, true)
-+TRANS_FEAT(FMLSL2_v, aa64_fhm, do_fmlal, a, true, true)
-+
- TRANS(ADDP_v, do_gvec_fn3, a, gen_gvec_addp)
- TRANS(SMAXP_v, do_gvec_fn3_no64, a, gen_gvec_smaxp)
- TRANS(SMINP_v, do_gvec_fn3_no64, a, gen_gvec_sminp)
-@@ -5448,6 +5466,24 @@ static bool do_fmla_vector_idx(DisasContext *s, arg_qrrx_e *a, bool neg)
- TRANS(FMLA_vi, do_fmla_vector_idx, a, false)
- TRANS(FMLS_vi, do_fmla_vector_idx, a, true)
- 
-+static bool do_fmlal_idx(DisasContext *s, arg_qrrx_e *a, bool is_s, bool is_2)
-+{
-+    if (fp_access_check(s)) {
-+        int data = (a->idx << 2) | (is_2 << 1) | is_s;
-+        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->rd),
-+                           vec_full_reg_offset(s, a->rn),
-+                           vec_full_reg_offset(s, a->rm), tcg_env,
-+                           a->q ? 16 : 8, vec_full_reg_size(s),
-+                           data, gen_helper_gvec_fmlal_idx_a64);
-+    }
-+    return true;
-+}
-+
-+TRANS_FEAT(FMLAL_vi, aa64_fhm, do_fmlal_idx, a, false, false)
-+TRANS_FEAT(FMLSL_vi, aa64_fhm, do_fmlal_idx, a, true, false)
-+TRANS_FEAT(FMLAL2_vi, aa64_fhm, do_fmlal_idx, a, false, true)
-+TRANS_FEAT(FMLSL2_vi, aa64_fhm, do_fmlal_idx, a, true, true)
++static gen_helper_gvec_3_ptr * const f_vector_fmls[3] = {
++    gen_helper_gvec_vfms_h,
++    gen_helper_gvec_vfms_s,
++    gen_helper_gvec_vfms_d,
++};
++TRANS(FMLS_v, do_fp3_vector, a, f_vector_fmls)
 +
  /*
-  * Advanced SIMD scalar pairwise
+  * Advanced SIMD scalar/vector x indexed element
   */
-@@ -10905,78 +10941,6 @@ static void disas_simd_3same_logic(DisasContext *s, uint32_t insn)
+@@ -5116,6 +5130,64 @@ static bool do_fp3_scalar_idx(DisasContext *s, arg_rrx_e *a, const FPScalar *f)
+ TRANS(FMUL_si, do_fp3_scalar_idx, a, &f_scalar_fmul)
+ TRANS(FMULX_si, do_fp3_scalar_idx, a, &f_scalar_fmulx)
+ 
++static bool do_fmla_scalar_idx(DisasContext *s, arg_rrx_e *a, bool neg)
++{
++    switch (a->esz) {
++    case MO_64:
++        if (fp_access_check(s)) {
++            TCGv_i64 t0 = read_fp_dreg(s, a->rd);
++            TCGv_i64 t1 = read_fp_dreg(s, a->rn);
++            TCGv_i64 t2 = tcg_temp_new_i64();
++
++            read_vec_element(s, t2, a->rm, a->idx, MO_64);
++            if (neg) {
++                gen_vfp_negd(t1, t1);
++            }
++            gen_helper_vfp_muladdd(t0, t1, t2, t0, fpstatus_ptr(FPST_FPCR));
++            write_fp_dreg(s, a->rd, t0);
++        }
++        break;
++    case MO_32:
++        if (fp_access_check(s)) {
++            TCGv_i32 t0 = read_fp_sreg(s, a->rd);
++            TCGv_i32 t1 = read_fp_sreg(s, a->rn);
++            TCGv_i32 t2 = tcg_temp_new_i32();
++
++            read_vec_element_i32(s, t2, a->rm, a->idx, MO_32);
++            if (neg) {
++                gen_vfp_negs(t1, t1);
++            }
++            gen_helper_vfp_muladds(t0, t1, t2, t0, fpstatus_ptr(FPST_FPCR));
++            write_fp_sreg(s, a->rd, t0);
++        }
++        break;
++    case MO_16:
++        if (!dc_isar_feature(aa64_fp16, s)) {
++            return false;
++        }
++        if (fp_access_check(s)) {
++            TCGv_i32 t0 = read_fp_hreg(s, a->rd);
++            TCGv_i32 t1 = read_fp_hreg(s, a->rn);
++            TCGv_i32 t2 = tcg_temp_new_i32();
++
++            read_vec_element_i32(s, t2, a->rm, a->idx, MO_16);
++            if (neg) {
++                gen_vfp_negh(t1, t1);
++            }
++            gen_helper_advsimd_muladdh(t0, t1, t2, t0,
++                                       fpstatus_ptr(FPST_FPCR_F16));
++            write_fp_sreg(s, a->rd, t0);
++        }
++        break;
++    default:
++        g_assert_not_reached();
++    }
++    return true;
++}
++
++TRANS(FMLA_si, do_fmla_scalar_idx, a, false)
++TRANS(FMLS_si, do_fmla_scalar_idx, a, true)
++
+ static bool do_fp3_vector_idx(DisasContext *s, arg_qrrx_e *a,
+                               gen_helper_gvec_3_ptr * const fns[3])
+ {
+@@ -5158,6 +5230,42 @@ static gen_helper_gvec_3_ptr * const f_vector_idx_fmulx[3] = {
+ };
+ TRANS(FMULX_vi, do_fp3_vector_idx, a, f_vector_idx_fmulx)
+ 
++static bool do_fmla_vector_idx(DisasContext *s, arg_qrrx_e *a, bool neg)
++{
++    static gen_helper_gvec_4_ptr * const fns[3] = {
++        gen_helper_gvec_fmla_idx_h,
++        gen_helper_gvec_fmla_idx_s,
++        gen_helper_gvec_fmla_idx_d,
++    };
++    MemOp esz = a->esz;
++
++    switch (esz) {
++    case MO_64:
++        if (!a->q) {
++            return false;
++        }
++        break;
++    case MO_32:
++        break;
++    case MO_16:
++        if (!dc_isar_feature(aa64_fp16, s)) {
++            return false;
++        }
++        break;
++    default:
++        g_assert_not_reached();
++    }
++    if (fp_access_check(s)) {
++        gen_gvec_op4_fpst(s, a->q, a->rd, a->rn, a->rm, a->rd,
++                          esz == MO_16, (a->idx << 1) | neg,
++                          fns[esz - 1]);
++    }
++    return true;
++}
++
++TRANS(FMLA_vi, do_fmla_vector_idx, a, false)
++TRANS(FMLS_vi, do_fmla_vector_idx, a, true)
++
+ 
+ /* Shift a TCGv src by TCGv shift_amount, put result in dst.
+  * Note that it is the caller's responsibility to ensure that the
+@@ -9113,15 +9221,6 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
+             read_vec_element(s, tcg_op2, rm, pass, MO_64);
+ 
+             switch (fpopcode) {
+-            case 0x39: /* FMLS */
+-                /* As usual for ARM, separate negation for fused multiply-add */
+-                gen_vfp_negd(tcg_op1, tcg_op1);
+-                /* fall through */
+-            case 0x19: /* FMLA */
+-                read_vec_element(s, tcg_res, rd, pass, MO_64);
+-                gen_helper_vfp_muladdd(tcg_res, tcg_op1, tcg_op2,
+-                                       tcg_res, fpst);
+-                break;
+             case 0x1c: /* FCMEQ */
+                 gen_helper_neon_ceq_f64(tcg_res, tcg_op1, tcg_op2, fpst);
+                 break;
+@@ -9149,10 +9248,12 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
+                 break;
+             default:
+             case 0x18: /* FMAXNM */
++            case 0x19: /* FMLA */
+             case 0x1a: /* FADD */
+             case 0x1b: /* FMULX */
+             case 0x1e: /* FMAX */
+             case 0x38: /* FMINNM */
++            case 0x39: /* FMLS */
+             case 0x3a: /* FSUB */
+             case 0x3e: /* FMIN */
+             case 0x5b: /* FMUL */
+@@ -9171,15 +9272,6 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
+             read_vec_element_i32(s, tcg_op2, rm, pass, MO_32);
+ 
+             switch (fpopcode) {
+-            case 0x39: /* FMLS */
+-                /* As usual for ARM, separate negation for fused multiply-add */
+-                gen_vfp_negs(tcg_op1, tcg_op1);
+-                /* fall through */
+-            case 0x19: /* FMLA */
+-                read_vec_element_i32(s, tcg_res, rd, pass, MO_32);
+-                gen_helper_vfp_muladds(tcg_res, tcg_op1, tcg_op2,
+-                                       tcg_res, fpst);
+-                break;
+             case 0x1c: /* FCMEQ */
+                 gen_helper_neon_ceq_f32(tcg_res, tcg_op1, tcg_op2, fpst);
+                 break;
+@@ -9207,10 +9299,12 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
+                 break;
+             default:
+             case 0x18: /* FMAXNM */
++            case 0x19: /* FMLA */
+             case 0x1a: /* FADD */
+             case 0x1b: /* FMULX */
+             case 0x1e: /* FMAX */
+             case 0x38: /* FMINNM */
++            case 0x39: /* FMLS */
+             case 0x3a: /* FSUB */
+             case 0x3e: /* FMIN */
+             case 0x5b: /* FMUL */
+@@ -11134,8 +11228,6 @@ static void disas_simd_3same_float(DisasContext *s, uint32_t insn)
+     case 0x3f: /* FRSQRTS */
+     case 0x5d: /* FACGE */
+     case 0x7d: /* FACGT */
+-    case 0x19: /* FMLA */
+-    case 0x39: /* FMLS */
+     case 0x1c: /* FCMEQ */
+     case 0x5c: /* FCMGE */
+     case 0x7a: /* FABD */
+@@ -11168,10 +11260,12 @@ static void disas_simd_3same_float(DisasContext *s, uint32_t insn)
+ 
+     default:
+     case 0x18: /* FMAXNM */
++    case 0x19: /* FMLA */
+     case 0x1a: /* FADD */
+     case 0x1b: /* FMULX */
+     case 0x1e: /* FMAX */
+     case 0x38: /* FMINNM */
++    case 0x39: /* FMLS */
+     case 0x3a: /* FSUB */
+     case 0x3e: /* FMIN */
+     case 0x5b: /* FMUL */
+@@ -11517,10 +11611,8 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
+     int pass;
+ 
+     switch (fpopcode) {
+-    case 0x1: /* FMLA */
+     case 0x4: /* FCMEQ */
+     case 0x7: /* FRECPS */
+-    case 0x9: /* FMLS */
+     case 0xf: /* FRSQRTS */
+     case 0x14: /* FCMGE */
+     case 0x15: /* FACGE */
+@@ -11538,10 +11630,12 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
+         break;
+     default:
+     case 0x0: /* FMAXNM */
++    case 0x1: /* FMLA */
+     case 0x2: /* FADD */
+     case 0x3: /* FMULX */
+     case 0x6: /* FMAX */
+     case 0x8: /* FMINNM */
++    case 0x9: /* FMLS */
+     case 0xa: /* FSUB */
+     case 0xe: /* FMIN */
+     case 0x13: /* FMUL */
+@@ -11611,24 +11705,12 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
+             read_vec_element_i32(s, tcg_op2, rm, pass, MO_16);
+ 
+             switch (fpopcode) {
+-            case 0x1: /* FMLA */
+-                read_vec_element_i32(s, tcg_res, rd, pass, MO_16);
+-                gen_helper_advsimd_muladdh(tcg_res, tcg_op1, tcg_op2, tcg_res,
+-                                           fpst);
+-                break;
+             case 0x4: /* FCMEQ */
+                 gen_helper_advsimd_ceq_f16(tcg_res, tcg_op1, tcg_op2, fpst);
+                 break;
+             case 0x7: /* FRECPS */
+                 gen_helper_recpsf_f16(tcg_res, tcg_op1, tcg_op2, fpst);
+                 break;
+-            case 0x9: /* FMLS */
+-                /* As usual for ARM, separate negation for fused multiply-add */
+-                tcg_gen_xori_i32(tcg_op1, tcg_op1, 0x8000);
+-                read_vec_element_i32(s, tcg_res, rd, pass, MO_16);
+-                gen_helper_advsimd_muladdh(tcg_res, tcg_op1, tcg_op2, tcg_res,
+-                                           fpst);
+-                break;
+             case 0xf: /* FRSQRTS */
+                 gen_helper_rsqrtsf_f16(tcg_res, tcg_op1, tcg_op2, fpst);
+                 break;
+@@ -11650,10 +11732,12 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
+                 break;
+             default:
+             case 0x0: /* FMAXNM */
++            case 0x1: /* FMLA */
+             case 0x2: /* FADD */
+             case 0x3: /* FMULX */
+             case 0x6: /* FMAX */
+             case 0x8: /* FMINNM */
++            case 0x9: /* FMLS */
+             case 0xa: /* FSUB */
+             case 0xe: /* FMIN */
+             case 0x13: /* FMUL */
+@@ -12874,10 +12958,6 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+     case 0x0c: /* SQDMULH */
+     case 0x0d: /* SQRDMULH */
+         break;
+-    case 0x01: /* FMLA */
+-    case 0x05: /* FMLS */
+-        is_fp = 1;
+-        break;
+     case 0x1d: /* SQRDMLAH */
+     case 0x1f: /* SQRDMLSH */
+         if (!dc_isar_feature(aa64_rdm, s)) {
+@@ -12944,6 +13024,8 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+         /* is_fp, but we pass tcg_env not fp_status.  */
+         break;
+     default:
++    case 0x01: /* FMLA */
++    case 0x05: /* FMLS */
+     case 0x09: /* FMUL */
+     case 0x19: /* FMULX */
+         unallocated_encoding(s);
+@@ -12952,20 +13034,8 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+ 
+     switch (is_fp) {
+     case 1: /* normal fp */
+-        /* convert insn encoded size to MemOp size */
+-        switch (size) {
+-        case 0: /* half-precision */
+-            size = MO_16;
+-            is_fp16 = true;
+-            break;
+-        case MO_32: /* single precision */
+-        case MO_64: /* double precision */
+-            break;
+-        default:
+-            unallocated_encoding(s);
+-            return;
+-        }
+-        break;
++        unallocated_encoding(s); /* in decodetree */
++        return;
+ 
+     case 2: /* complex fp */
+         /* Each indexable element is a complex pair.  */
+@@ -13144,38 +13214,7 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
      }
+ 
+     if (size == 3) {
+-        TCGv_i64 tcg_idx = tcg_temp_new_i64();
+-        int pass;
+-
+-        assert(is_fp && is_q && !is_long);
+-
+-        read_vec_element(s, tcg_idx, rm, index, MO_64);
+-
+-        for (pass = 0; pass < (is_scalar ? 1 : 2); pass++) {
+-            TCGv_i64 tcg_op = tcg_temp_new_i64();
+-            TCGv_i64 tcg_res = tcg_temp_new_i64();
+-
+-            read_vec_element(s, tcg_op, rn, pass, MO_64);
+-
+-            switch (16 * u + opcode) {
+-            case 0x05: /* FMLS */
+-                /* As usual for ARM, separate negation for fused multiply-add */
+-                gen_vfp_negd(tcg_op, tcg_op);
+-                /* fall through */
+-            case 0x01: /* FMLA */
+-                read_vec_element(s, tcg_res, rd, pass, MO_64);
+-                gen_helper_vfp_muladdd(tcg_res, tcg_op, tcg_idx, tcg_res, fpst);
+-                break;
+-            default:
+-            case 0x09: /* FMUL */
+-            case 0x19: /* FMULX */
+-                g_assert_not_reached();
+-            }
+-
+-            write_vec_element(s, tcg_res, rd, pass, MO_64);
+-        }
+-
+-        clear_vec_high(s, !is_scalar, rd);
++        g_assert_not_reached();
+     } else if (!is_long) {
+         /* 32 bit floating point, or 16 or 32 bit integer.
+          * For the 16 bit scalar case we use the usual Neon helpers and
+@@ -13231,38 +13270,6 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+                 genfn(tcg_res, tcg_op, tcg_res);
+                 break;
+             }
+-            case 0x05: /* FMLS */
+-            case 0x01: /* FMLA */
+-                read_vec_element_i32(s, tcg_res, rd, pass,
+-                                     is_scalar ? size : MO_32);
+-                switch (size) {
+-                case 1:
+-                    if (opcode == 0x5) {
+-                        /* As usual for ARM, separate negation for fused
+-                         * multiply-add */
+-                        tcg_gen_xori_i32(tcg_op, tcg_op, 0x80008000);
+-                    }
+-                    if (is_scalar) {
+-                        gen_helper_advsimd_muladdh(tcg_res, tcg_op, tcg_idx,
+-                                                   tcg_res, fpst);
+-                    } else {
+-                        gen_helper_advsimd_muladd2h(tcg_res, tcg_op, tcg_idx,
+-                                                    tcg_res, fpst);
+-                    }
+-                    break;
+-                case 2:
+-                    if (opcode == 0x5) {
+-                        /* As usual for ARM, separate negation for
+-                         * fused multiply-add */
+-                        tcg_gen_xori_i32(tcg_op, tcg_op, 0x80000000);
+-                    }
+-                    gen_helper_vfp_muladds(tcg_res, tcg_op, tcg_idx,
+-                                           tcg_res, fpst);
+-                    break;
+-                default:
+-                    g_assert_not_reached();
+-                }
+-                break;
+             case 0x0c: /* SQDMULH */
+                 if (size == 1) {
+                     gen_helper_neon_qdmulh_s16(tcg_res, tcg_env,
+@@ -13304,6 +13311,8 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
+                 }
+                 break;
+             default:
++            case 0x01: /* FMLA */
++            case 0x05: /* FMLS */
+             case 0x09: /* FMUL */
+             case 0x19: /* FMULX */
+                 g_assert_not_reached();
+diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
+index 99ef676071..b925b9f21b 100644
+--- a/target/arm/tcg/vec_helper.c
++++ b/target/arm/tcg/vec_helper.c
+@@ -1309,6 +1309,12 @@ static float32 float32_muladd_f(float32 dest, float32 op1, float32 op2,
+     return float32_muladd(op1, op2, dest, 0, stat);
  }
  
--/* Floating point op subgroup of C3.6.16. */
--static void disas_simd_3same_float(DisasContext *s, uint32_t insn)
--{
--    /* For floating point ops, the U, size[1] and opcode bits
--     * together indicate the operation. size[0] indicates single
--     * or double.
--     */
--    int fpopcode = extract32(insn, 11, 5)
--        | (extract32(insn, 23, 1) << 5)
--        | (extract32(insn, 29, 1) << 6);
--    int is_q = extract32(insn, 30, 1);
--    int size = extract32(insn, 22, 1);
--    int rm = extract32(insn, 16, 5);
--    int rn = extract32(insn, 5, 5);
--    int rd = extract32(insn, 0, 5);
--
--    if (size == 1 && !is_q) {
--        unallocated_encoding(s);
--        return;
--    }
--
--    switch (fpopcode) {
--    case 0x1d: /* FMLAL  */
--    case 0x3d: /* FMLSL  */
--    case 0x59: /* FMLAL2 */
--    case 0x79: /* FMLSL2 */
--        if (size & 1 || !dc_isar_feature(aa64_fhm, s)) {
--            unallocated_encoding(s);
--            return;
--        }
--        if (fp_access_check(s)) {
--            int is_s = extract32(insn, 23, 1);
--            int is_2 = extract32(insn, 29, 1);
--            int data = (is_2 << 1) | is_s;
--            tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, rd),
--                               vec_full_reg_offset(s, rn),
--                               vec_full_reg_offset(s, rm), tcg_env,
--                               is_q ? 16 : 8, vec_full_reg_size(s),
--                               data, gen_helper_gvec_fmlal_a64);
--        }
--        return;
--
--    default:
--    case 0x18: /* FMAXNM */
--    case 0x19: /* FMLA */
--    case 0x1a: /* FADD */
--    case 0x1b: /* FMULX */
--    case 0x1c: /* FCMEQ */
--    case 0x1e: /* FMAX */
--    case 0x1f: /* FRECPS */
--    case 0x38: /* FMINNM */
--    case 0x39: /* FMLS */
--    case 0x3a: /* FSUB */
--    case 0x3e: /* FMIN */
--    case 0x3f: /* FRSQRTS */
--    case 0x58: /* FMAXNMP */
--    case 0x5a: /* FADDP */
--    case 0x5b: /* FMUL */
--    case 0x5c: /* FCMGE */
--    case 0x5d: /* FACGE */
--    case 0x5e: /* FMAXP */
--    case 0x5f: /* FDIV */
--    case 0x78: /* FMINNMP */
--    case 0x7a: /* FABD */
--    case 0x7d: /* FACGT */
--    case 0x7c: /* FCMGT */
--    case 0x7e: /* FMINP */
--        unallocated_encoding(s);
--        return;
--    }
--}
--
- /* Integer op subgroup of C3.6.16. */
- static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
++static float64 float64_muladd_f(float64 dest, float64 op1, float64 op2,
++                                 float_status *stat)
++{
++    return float64_muladd(op1, op2, dest, 0, stat);
++}
++
+ static float16 float16_mulsub_f(float16 dest, float16 op1, float16 op2,
+                                  float_status *stat)
  {
-@@ -11245,16 +11209,13 @@ static void disas_simd_three_reg_same(DisasContext *s, uint32_t insn)
-     case 0x3: /* logic ops */
-         disas_simd_3same_logic(s, insn);
-         break;
--    case 0x18 ... 0x31:
--        /* floating point ops, sz[1] and U are part of opcode */
--        disas_simd_3same_float(s, insn);
--        break;
-     default:
-         disas_simd_3same_int(s, insn);
-         break;
-     case 0x14: /* SMAXP, UMAXP */
-     case 0x15: /* SMINP, UMINP */
-     case 0x17: /* ADDP */
-+    case 0x18 ... 0x31: /* floating point ops */
-         unallocated_encoding(s);
-         break;
-     }
-@@ -12520,22 +12481,15 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-         }
-         is_fp = 2;
-         break;
--    case 0x00: /* FMLAL */
--    case 0x04: /* FMLSL */
--    case 0x18: /* FMLAL2 */
--    case 0x1c: /* FMLSL2 */
--        if (is_scalar || size != MO_32 || !dc_isar_feature(aa64_fhm, s)) {
--            unallocated_encoding(s);
--            return;
--        }
--        size = MO_16;
--        /* is_fp, but we pass tcg_env not fp_status.  */
--        break;
-     default:
-+    case 0x00: /* FMLAL */
-     case 0x01: /* FMLA */
-+    case 0x04: /* FMLSL */
-     case 0x05: /* FMLS */
-     case 0x09: /* FMUL */
-+    case 0x18: /* FMLAL2 */
-     case 0x19: /* FMULX */
-+    case 0x1c: /* FMLSL2 */
-         unallocated_encoding(s);
-         return;
-     }
-@@ -12654,22 +12608,6 @@ static void disas_simd_indexed(DisasContext *s, uint32_t insn)
-         }
-         return;
+@@ -1321,6 +1327,12 @@ static float32 float32_mulsub_f(float32 dest, float32 op1, float32 op2,
+     return float32_muladd(float32_chs(op1), op2, dest, 0, stat);
+ }
  
--    case 0x00: /* FMLAL */
--    case 0x04: /* FMLSL */
--    case 0x18: /* FMLAL2 */
--    case 0x1c: /* FMLSL2 */
--        {
--            int is_s = extract32(opcode, 2, 1);
--            int is_2 = u;
--            int data = (index << 2) | (is_2 << 1) | is_s;
--            tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, rd),
--                               vec_full_reg_offset(s, rn),
--                               vec_full_reg_offset(s, rm), tcg_env,
--                               is_q ? 16 : 8, vec_full_reg_size(s),
--                               data, gen_helper_gvec_fmlal_idx_a64);
--        }
--        return;
--
-     case 0x08: /* MUL */
-         if (!is_long && !is_scalar) {
-             static gen_helper_gvec_3 * const fns[3] = {
++static float64 float64_mulsub_f(float64 dest, float64 op1, float64 op2,
++                                 float_status *stat)
++{
++    return float64_muladd(float64_chs(op1), op2, dest, 0, stat);
++}
++
+ #define DO_MULADD(NAME, FUNC, TYPE)                                     \
+ void HELPER(NAME)(void *vd, void *vn, void *vm, void *stat, uint32_t desc) \
+ {                                                                          \
+@@ -1340,9 +1352,11 @@ DO_MULADD(gvec_fmls_s, float32_mulsub_nf, float32)
+ 
+ DO_MULADD(gvec_vfma_h, float16_muladd_f, float16)
+ DO_MULADD(gvec_vfma_s, float32_muladd_f, float32)
++DO_MULADD(gvec_vfma_d, float64_muladd_f, float64)
+ 
+ DO_MULADD(gvec_vfms_h, float16_mulsub_f, float16)
+ DO_MULADD(gvec_vfms_s, float32_mulsub_f, float32)
++DO_MULADD(gvec_vfms_d, float64_mulsub_f, float64)
+ 
+ /* For the indexed ops, SVE applies the index per 128-bit vector segment.
+  * For AdvSIMD, there is of course only one such vector segment.
 -- 
 2.34.1
 

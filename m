@@ -1,233 +1,243 @@
-Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1354590ejc;
-        Sun, 5 May 2024 22:47:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCW3i4wKrB2JjFjsMAnadyY/ddGnw/P7l4Lh1+wB97tEmv3GXCExBPf3KUfo8TbIZH5h20eLVoVyv+aoGZ0gpyBEGej7aIG0
-X-Google-Smtp-Source: AGHT+IFtOQDhhu3swzzljvC63JMn6kgE0V9p2J4Ki7nAQFvkZFALUiVFFm73+WNiw4+Ze705gZSu
-X-Received: by 2002:a05:622a:1ba7:b0:43c:562f:e07b with SMTP id bp39-20020a05622a1ba700b0043c562fe07bmr11185915qtb.7.1714974455063;
-        Sun, 05 May 2024 22:47:35 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1714974455; cv=pass;
+Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1363967ejc;
+        Sun, 5 May 2024 23:14:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWQam/PkIZA/eXGHbkkp6mDwjDmF5vgXpjY0CoyqegqZnLk8mnYqs0UiLLhbHbTxBTOo8QrEWOoD9ViOAWn81A5/3EXKPQb
+X-Google-Smtp-Source: AGHT+IGRN/Q6hOcUZ28t01A9nDbYKrBwI1eISbpcEeGMpBkjkgL7zDk4pyRhat1vZ+8b1PhGOauS
+X-Received: by 2002:ac8:7f46:0:b0:43a:f22a:8f56 with SMTP id g6-20020ac87f46000000b0043af22a8f56mr11400106qtk.55.1714976094033;
+        Sun, 05 May 2024 23:14:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714976094; cv=none;
         d=google.com; s=arc-20160816;
-        b=woOaGdxt1mo4uP02BgM5YKCR6j5Q7xETJGBRqqOrbIqe/q+mgtM2iQ5e2F2sOidvFT
-         advt1PKK2NDxXAmXHQ42RXBp3IY9slnzj/8ebR4YNM/jpOhAcYkKkxBFSrGfffSAAbCo
-         vwBVdzx5A3FE15FiRnfB/jewHiB3cpfJnOJfJ7HL3ODfL8rWhtoVqMtbYgE/rY4QD1aH
-         NuZyHXTRqECwxgQD5D91hCAJX5ApOLlNVscIM026iPzWdXjiJCyj9i5yfrbRHmqyYHv7
-         cBkDO8Trxum6NtZkWsiGaKg4NPj8b6FB4WIrNG7KgQoVNaUN147jTORBD0Qw+gKeUnZL
-         KI3Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=bPGb/fP7RMdhV2DmSx0BOn15nwZXUK1PwXxc9nM/CXNSYhYHZNuTxbnWJ4zhY6kqvk
+         +GhAFDHARDt6IjdrudD3pKVFUAid69hQctpiLsElf6oNnlzeGo9PX8lT+dpsFXoyRBFL
+         eGzh8XUjZkX530+EnXwHqZyExDR215/sTKioWTiP1IEFfLfRPNXsDVpf59MsIaVDh7jv
+         vKClQV3LPk6+10QA6DKh0kwHnfHKRnPO+0Xh/OXs6n9+oz3ByHOHN1TphrE4wq6ugjfP
+         LJHPFx2LzxOs8VHRYyvwBqANPkhr982DgECJFSwK5LKNjVxY0oW5RCbKsAh9xwo31mN1
+         fvtg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from;
-        bh=soINnmFFapw1a4ZiYQ4Op3sbyioJxy1Oo/jJBkWGxco=;
-        fh=JQfIRYj3FrWQYkeq839C+y2bmt4N2wnTSHea6PpmP84=;
-        b=uAeEjOcpK+1GvQqZLhAIBCq2V39jJLZhZ/07wB5qA75CzU1XliIdlTmy31uwIiQ6ZL
-         M+vRnmu04FGtzAV2/Xg/lH/F1cYa+QzmBSIc5eanW/IxCi/lZWbdWf3cf2XTXXcOnQi3
-         yjxYCS3Y+SPsN0BsrlCcCRrKLaM/dxdBL16az+YAmJboymgs+kT3Pux0k7S0XJpyLdsG
-         htLx8Rbk/Ku2ylqIvABp0RCyJVQ204QRSRZlKBOuxZfM10DT5RdGDOrNSy7/hOaBb7lU
-         6QPtHUlu2FOlJ8Ve2ep0pZppPwvMxcGmhSWZq2LDv0v7EEdhMTFULHCsBRWNvs0mbk0T
-         PYLg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=LxY3MdHLQZIJ5XxGkqaAGJG/lJ+KlyDPtuW9nPr43jw=;
+        fh=t2c/Q1mu5K+ATVm0gHV0wsaM55DIU+RT5LSx7/H/4mk=;
+        b=LUhSTQvOYD82yu6KSYbLAIe42AC2CAhChKroRMTGCSReIOejigKhsGFcupIAfO0dwg
+         769HGprwQEYdhbWhTs1GMp4rweODkbcbTTlCPR63lwLLrk3CfQSR7PdZwgOraYdqlC2s
+         Hg8VOP0M+XCQo1EqAxdPw8d6GCpniGrV5QS+VC5OvaW9dcm6JXJUjlDYJ6MMIyb+APr1
+         +UMyAhsyGwYnm6jhv+xeSwy9blieIsb02qUEGqTbl0daXme1lWQh8eCDYvUnWBHFdD6d
+         toeCa9ZS02O6Yd7AkpcKelvP75krek61YFz+ZI8xECWZ4FLLQUWkjNq9/OAoIYJSvqpX
+         rftQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Bph4BrNO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dr18-20020a05622a529200b0043afbac2ad9si8007792qtb.713.2024.05.05.22.47.34
+        by mx.google.com with ESMTPS id s13-20020a05622a1a8d00b00439f676f48csi8944547qtc.355.2024.05.05.23.14.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 May 2024 22:47:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 05 May 2024 23:14:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Bph4BrNO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s3rBs-0007yX-E5; Mon, 06 May 2024 01:47:09 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1s3rcK-0007eQ-Cz; Mon, 06 May 2024 02:14:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1s3rBW-0007nD-JA; Mon, 06 May 2024 01:46:56 -0400
-Received: from mail-sh0chn02on2071d.outbound.protection.partner.outlook.cn
- ([2406:e500:4420:2::71d]
- helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1s3rBQ-0005oD-1v; Mon, 06 May 2024 01:46:45 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dRbF6h+Pv01o4u8Xbq9T7C87+wFwG/aBBYLX2Qoc15TrB5QQJcVyMUNceh2QMK8Hoa1zir0JiSsBgXndzQ38vfw70NqPDW069+7hioLBhWuN5azRSDvoD4YC8gWbYo8ZyHYRrFsxXoRz80c4JFFROPiFkp2OKF2q77i6WdXOdioKjYFY40EzEtNE6eTpTDuJyXpq8zs/R8o0O1UWi3VDArLLv89+/jEOhWREJHkoZrmv1Wc+pQ8uWnBce39nSfdyRvEbF7xCoL1Fs8ahx2bOWPzHrbenAUc2LMGmpjGrnKSr1saHTdQu4YcYswZriPetkzv2Y0oJ/5qKKmyy2k0bIQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=soINnmFFapw1a4ZiYQ4Op3sbyioJxy1Oo/jJBkWGxco=;
- b=C4467Ed4yJfiaUDtZ6fBu4oqwoBQXAKYXIhntjXXooJUBKLMVMzgLANtM9F/KRJehqn/zV1/UYdi23+s4qllCIqOM/KFE21DgluYNn2Ty2XHrZ3PU/WnThPOBJYFRr9CCO0tRklY3ZaGzXLys84pre4rrp4dOoZTzG+IUJHhSEFqf1DGRGSura75Y3de74850a8dDOMD4rMNuyroWqW+Mr+TC5YKcPZZW7nBeEa+mLWuylym/aTBv6zl50p5aIjZIlTQTR8rvnU5UHJQUb1U9QiBGHB3/qGElpxgJNW5PkdX6tMlEmbTja57eIDaoLsyBflmQSr+GpM29X0atgzniQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=starfivetech.com; dmarc=pass action=none
- header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
-Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c510:12::10) by NT0PR01MB1040.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c510:d::14) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.33; Mon, 6 May
- 2024 05:46:24 +0000
-Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
- ([fe80::e604:661e:e939:4c87]) by
- NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn ([fe80::e604:661e:e939:4c87%4])
- with mapi id 15.20.7472.044; Mon, 6 May 2024 05:46:24 +0000
-From: JeeHeng Sia <jeeheng.sia@starfivetech.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- "mst@redhat.com" <mst@redhat.com>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "anisinha@redhat.com" <anisinha@redhat.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "sunilvl@ventanamicro.com" <sunilvl@ventanamicro.com>, "palmer@dabbelt.com"
- <palmer@dabbelt.com>, "alistair.francis@wdc.com" <alistair.francis@wdc.com>,
- "bin.meng@windriver.com" <bin.meng@windriver.com>, "liwei1518@gmail.com"
- <liwei1518@gmail.com>, "dbarboza@ventanamicro.com"
- <dbarboza@ventanamicro.com>, "zhiwei_liu@linux.alibaba.com"
- <zhiwei_liu@linux.alibaba.com>
-Subject: RE: [PATCH v1 0/2] Upgrade ACPI SPCR table to support SPCR table
- version 4 format
-Thread-Topic: [PATCH v1 0/2] Upgrade ACPI SPCR table to support SPCR table
- version 4 format
-Thread-Index: AQHanE9f4TY4Mv2Vj0W7wml1LjpFr7GDqtWAgAYLrAA=
-Date: Mon, 6 May 2024 05:46:24 +0000
-Message-ID: <NT0PR01MB12781A762B996998AF0B7FDD9C1CA@NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn>
-References: <20240502051233.50749-1-jeeheng.sia@starfivetech.com>
- <CAFEAcA_FO7BvUDbnJdUTkuatFse7bWR2mjL2OQ_vsB_dLdKbow@mail.gmail.com>
-In-Reply-To: <CAFEAcA_FO7BvUDbnJdUTkuatFse7bWR2mjL2OQ_vsB_dLdKbow@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=starfivetech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: NT0PR01MB1278:EE_|NT0PR01MB1040:EE_
-x-ms-office365-filtering-correlation-id: be68fc63-9511-4cd7-87e2-08dc6d8fdd67
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: Akt23vHCeXkjWHpbw5oaTGQZBIWup7ELBfE4CuyitYNiSuw8iMAQTfNjqBdgSQ4/cfHbwf1x8/PFbWdLHXU36XmFWNkGKdg4csYtgtbxPy/1keubpcoZKP5wRdxrw/P1Wwj0u9Uc55Kg25QSy569jH8ol/Eo6rJSBht10RDc8xSIuYZaMgQ+NB8Z8QlMT+SFa5ea1ooYj0e2khcagOmoQIDZJxOQp1wXPa6T2RJoATyaBDFYGHAy6WGml/O8ocAqH79Eb3OABwkqAEmb880nzqBh7irrUepxEJxau58O9DFfYcp8Wy5Ds+E3BN7mR2vT3W8vFxUJ1Zf2SDVy/hnv0SnB2qKrT472FePu86SHhar0O51LiP9nRRU/4PNAMITa6IJLUA6p5fitt5wVcO3lg2m4Grt5yZxBFAQcSXDUDBcpqmPUD5Hewt68z7DlWNEXeAKt8vp6TBcXit7+cEXVgwxZnZdJ2vMK4uFPFPQ0KN/PQiAYKNCEXg0/ALU7QMMydIaeC0VTA1z5vRfBVPx8vJrg08GztHV7I62wYdfNok5sMSo7cBMLLHPnxP1h6crESZ45osOXlFXiyCLbDzE/PfpSWLXnsU9xKnNhaHev5K/awvj2CxGeohVYfeDSOyxe
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn; PTR:;
- CAT:NONE;
- SFS:(13230031)(366007)(41320700004)(7416005)(1800799015)(38070700009); DIR:OUT;
- SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MzRESDJkaTYvWWRVV1V3SDlKNTcwUm9iQ2tHOGgweE9yWFF5S0xXSlpRTEZY?=
- =?utf-8?B?cTVwNU91MU5BbFFaMzVDSGtyeTNTTG1zckZPaE1CUk9oTTlwQXZhR1lvTGtt?=
- =?utf-8?B?S0lmRTkyQURtL3Z3UzltLzBOdmNBS0NPc1F3Q0NIbEZDQ2NJRi9xTEo0L1R4?=
- =?utf-8?B?bmx4MXQrbi9KZTBZZStVdlBQeVZjYVZmcDdtT2M3U0VQc3dkSE40TWZlWUZZ?=
- =?utf-8?B?S004d00vcFQ0MnBpeXpSR0ZQSTl0SE9YeUhYQkV5Qy9aL2NReDVYZS9JUXlz?=
- =?utf-8?B?WUZGeGZyRjlzWkg2cm9acEVFNXBHTVdEcU05cmNBbldLc3VFZ1pyTms4U3ls?=
- =?utf-8?B?RjNpbHR3M1VUdzRyM1RXQ0NHL3VMSkRmQ2NqQ0RweWRwVUpYYU9jZ3JjZ1Y5?=
- =?utf-8?B?ZDBxWTQwWkV1ZTYzbTdjc1NuV0d1cFh5VE5sdFJuTENDOXFDZmZxRlJFQktw?=
- =?utf-8?B?bi90V1duQi9COFpRNEY5Qzg1TWIwWkhFY0ppSk5VYXh1V1YrRDlMQXZGNHRx?=
- =?utf-8?B?dmRwOHFnOEU4NnBVZUMzZ3VDYXZ2S0lLaWZZN0kzZDZOQ0FBRUhDSUhOS2h4?=
- =?utf-8?B?aDBma0V6VFREYk43L25aNlFmQVo3bTJzbFI5SElkSzJuRjlqNENDczdhSTJL?=
- =?utf-8?B?YTQyeTRzRWxrbnJKK3oxdzJIc1RUbmpZTGZKbCt6UVkrQ2lQWkFnc3VIUHcw?=
- =?utf-8?B?c09IQUl1aVp5cVUrUGtFTWlrVXlpczJwbHljelJCSCttN1dwTmkxdFJmbG1Y?=
- =?utf-8?B?L2FJVktjTWFUb1BCSUdrU0EwSHVPUVRxVzBUMitZb1lHNXdIejQ1OHpnaTIv?=
- =?utf-8?B?UUtGWklMaWRhSmlZQ2ZYTTBaT29rS0lPRU5LeHVRYlhMejhPb3JzNGRleWFh?=
- =?utf-8?B?OTBidXN6ejJNcXhKWkZGN1A0Zkk0eTRGUCtZbkhnNWgzbFdrbWp5bHBhdWlo?=
- =?utf-8?B?RTBXSWJWZHl6TW5KTlllN29Fd09RV0grQmRQSllUZG1SWDlWODZrV1lCWXVX?=
- =?utf-8?B?NkduQ1FRcVdmbk9Od0s0bUljbXAxYjNnODZIQ1NDU3RKbGNPK0VPYXVxZFNO?=
- =?utf-8?B?bjRoVGd4M25hM0ZRZkRCTTJnaVVvQ05lR0g5UmhPcjllVDR2UUYycW1iQUo0?=
- =?utf-8?B?alM3OEUwSHJPYktiK3NUcmx2NjJISkRMMFNpQVQrbk5QS1NLdmp1ais0QWd5?=
- =?utf-8?B?aFl6Rnd0dEtONnE4eDdoZm4rZ2E3eU1YNmRYUWZiUElPc05SNFo4N2hmTFpR?=
- =?utf-8?B?dTRGQ0VONFVhVTJ2b0J2OHd0TkRLY3A1aVpRQllpYVJtYVJrUnl4bitZSnIv?=
- =?utf-8?B?MjBURVV2akRvN21JSE5xVGYwQ0FiZWVkNllxMjRQMHRCUXRreENpQStRcmgx?=
- =?utf-8?B?S2laWmpwQnNLQlJmd3E3NG5VL21QMkVzc0F4b2NjUTVOaVNvWkVibVFzNkVY?=
- =?utf-8?B?bzVkcWtBbE0rQ3F4djNFaFZobEV2VnpmS1JhVFRBMmF5YkZHQXpUYmZQSFE3?=
- =?utf-8?B?ZGhQaEpNdWF1STNqemp5WHVTNUdZSm5Ca3V3VUN4bUlKV3FYTVFCbnRQeC9j?=
- =?utf-8?B?eC9TYmlFNExaQ0J2Vkk5SFdzWFFwelZiNXNoaDJPS21oaEpKZWJGUlJabU1p?=
- =?utf-8?B?djVzVlJvcTExVTJrdUxiYnVFMFRkNEJnVmg1aTB6ZUFHa1pWWEVHczBmK1NF?=
- =?utf-8?B?WEo4Nndrbnp5aTdiMTBjaFNRcVBFMElob1JFMkVGYUJReW0wa0VWempXVUta?=
- =?utf-8?B?a2RhU3VMdjhmdkdzY2V1SjNqeGpCQVp3K3hNWTdLTnhVQjJCeXVBZ3F3c2Q1?=
- =?utf-8?B?Q1F6TnUzQVhxaTVFNmFvRXZOUDBDcE5JTk1YakdwZFBkV1B4NTZsU2laZnp5?=
- =?utf-8?B?VXVaZFRhMWU5QzJ2eHpPcjdOT0QyMmdOTGlJKzdwbVZJcFRyUVpOUituR1ZL?=
- =?utf-8?B?UlNZUDJXYW5RNUkrMDAwWmpNY0RlUTRRUFFuOEJWT3Y2ZHRnc2I0OFpFdWtT?=
- =?utf-8?B?QzhvbEY2WU53Mm1ja1B6Qk1Cb0tFUm5GTGRZWUF1eGhzVTBWUGh1Sytaeklv?=
- =?utf-8?B?dmNiRklKMS83MWc5K0V6TFl0dFY0K0l2MVdYVFhRK0pYTTF4dmRUU2J6aWNs?=
- =?utf-8?B?V2Iyc0lHQWhsS3dTZHBiMzUvSDN3Y1htbkdOSmhISjV2ZzRjT0gzU2t4NjR6?=
- =?utf-8?B?R2cxUmtPRGpncWxPaW83dDN0WlVEZzRBS0RodE45SXF4M3FuSk15UE9yaTBu?=
- =?utf-8?B?U3R1cENBMU5PeHZLTUpSNjdtUlJ3PT0=?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <tanmaynpatil105@gmail.com>)
+ id 1s3rcH-0007dK-Jh; Mon, 06 May 2024 02:14:25 -0400
+Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tanmaynpatil105@gmail.com>)
+ id 1s3rcF-0004m6-B1; Mon, 06 May 2024 02:14:25 -0400
+Received: by mail-oa1-x2d.google.com with SMTP id
+ 586e51a60fabf-23f9d07829bso272167fac.3; 
+ Sun, 05 May 2024 23:14:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1714976061; x=1715580861; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=LxY3MdHLQZIJ5XxGkqaAGJG/lJ+KlyDPtuW9nPr43jw=;
+ b=Bph4BrNO2hy5QBRKrdd8XuUFRWzhG/C8U7pvc/0KokMkIzTT03oJ1sDyzVq4/k+EOA
+ CWJQyrjv95DMXi0JXtcZfq7EXkqX7w7SHqcmFLDwSgwqZWxBObSPyyoWXOKlB0Y0JP7B
+ zKsT02fEceaFxaPTNSYZPXfClm9sn6b9m+Vbby7/VGjTQlMsPK3RHePjQaEiqqv7Makv
+ SHNtJkEy+flgr6zHd/FWjK7lg68jbHhshfm34BHtllvFW8LsJNQrzdLc3TbXFpHWXn2t
+ gv/xv2ugezQdSdKILqVY+IyvAEgKDlFKlIrB7dfjGBgzprvz4SqipPyIT6OwGgIjugeM
+ D2qg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1714976061; x=1715580861;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=LxY3MdHLQZIJ5XxGkqaAGJG/lJ+KlyDPtuW9nPr43jw=;
+ b=Te9LiIX+bs5heGEtTmnfkRWLRss8XAkddd4p2g6Jagpc4uVpKURtt7IbhPa9sQ9edR
+ jXaigIw0fud8p7Pu4iSWcDxgl91VG+l6Au4g/J80pEQUec5yyBumlARNJI0UeX19W7xl
+ 8CNq23PGGJfJ4jqbfkMV9Cup0A7pi1S9MQn+b0zsNJFxFweMq21fVFbJFt4igVB2pC/W
+ 6k1V20rj2CYfEC+oLejo0P3fXS5mXP0DqmBaSWNDRtJkFsoGlSBnArw80S2BurQWgdnZ
+ 3O4xlgtAm5ll+dMHRFuWbROoTBvb+A/4QZE6Ql8eyRLF9wLhhrA8+3b0EU80o7YWt0iv
+ +Vkw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVMmuVWqMT7OVoDR6wBL54P8d7sZqAiBkHYlWOSNnvCeCzmC2Qcdqwsq9M6CQS6/AKzQrMMFjPgMHWjWH7FvGy5CKw7QDMyWCqkNsV+NCPHCz/5JeebTX7bg2i5EM22ivvwfD/cH/AijulG20em2vZt6sI=
+X-Gm-Message-State: AOJu0YyDNTDrNfbSnOhVyJcGqpNbH1MOq+/dYI2onrgo77nJQIGs9z/3
+ i3PZXy8h6CFgZBUcgKy5MIj7g5/mDrxiCKYS1fVyBjIbheF1DmX83oZxxTOVUhOZXa+ZPnVzW5W
+ iI13HMUYVCjQYSW3rJUByKkUPwl0=
+X-Received: by 2002:a05:6870:8898:b0:23a:67d0:9919 with SMTP id
+ m24-20020a056870889800b0023a67d09919mr11253219oam.1.1714976060978; Sun, 05
+ May 2024 23:14:20 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: starfivetech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
-X-MS-Exchange-CrossTenant-Network-Message-Id: be68fc63-9511-4cd7-87e2-08dc6d8fdd67
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 May 2024 05:46:24.1499 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: IOM9NZNqrPVvsVPe2nfHpqZZQowgHY/SDJjdIddawQscs8EDdnDDyoOKmE+wJwbJFVzZwjkh1SDQnSYQuJrvpPxW4tFKfQIvnvr2AdAwT1o=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: NT0PR01MB1040
-Received-SPF: pass client-ip=2406:e500:4420:2::71d;
- envelope-from=jeeheng.sia@starfivetech.com;
- helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+References: <CAHnsOnM6gzcjpmEqCN0cFjZKXZCK_ZGAphuf46xWmUyBcNrAxQ@mail.gmail.com>
+ <df14595f-3a26-4b7f-948d-df522f487b92@tls.msk.ru>
+ <b655fa90-d9a8-475b-ac65-27bf12a48916@redhat.com>
+In-Reply-To: <b655fa90-d9a8-475b-ac65-27bf12a48916@redhat.com>
+From: Tanmay <tanmaynpatil105@gmail.com>
+Date: Mon, 6 May 2024 11:44:07 +0530
+Message-ID: <CAHnsOnP8bV+e6wfB02rmO583g3qSgW=O0FadUu2R71e3BMm4rA@mail.gmail.com>
+Subject: Re: [PATCH] Fixes: Indentation using TABs and improve formatting
+To: Thomas Huth <thuth@redhat.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-stable@nongnu.org, 
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000e9bf940617c2fa22"
+Received-SPF: pass client-ip=2001:4860:4864:20::2d;
+ envelope-from=tanmaynpatil105@gmail.com; helo=mail-oa1-x2d.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aEfZbbuW/alH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DokHCZ6QVVuA
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogUGV0ZXIgTWF5ZGVsbCA8
-cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPg0KPiBTZW50OiBUaHVyc2RheSwgTWF5IDIsIDIwMjQg
-NToxOSBQTQ0KPiBUbzogSmVlSGVuZyBTaWEgPGplZWhlbmcuc2lhQHN0YXJmaXZldGVjaC5jb20+
-DQo+IENjOiBxZW11LWFybUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5vcmc7IHFlbXUt
-cmlzY3ZAbm9uZ251Lm9yZzsgbXN0QHJlZGhhdC5jb207IGltYW1tZWRvQHJlZGhhdC5jb207DQo+
-IGFuaXNpbmhhQHJlZGhhdC5jb207IHNoYW5ub24uemhhb3NsQGdtYWlsLmNvbTsgc3VuaWx2bEB2
-ZW50YW5hbWljcm8uY29tOyBwYWxtZXJAZGFiYmVsdC5jb207IGFsaXN0YWlyLmZyYW5jaXNAd2Rj
-LmNvbTsNCj4gYmluLm1lbmdAd2luZHJpdmVyLmNvbTsgbGl3ZWkxNTE4QGdtYWlsLmNvbTsgZGJh
-cmJvemFAdmVudGFuYW1pY3JvLmNvbTsgemhpd2VpX2xpdUBsaW51eC5hbGliYWJhLmNvbQ0KPiBT
-dWJqZWN0OiBSZTogW1BBVENIIHYxIDAvMl0gVXBncmFkZSBBQ1BJIFNQQ1IgdGFibGUgdG8gc3Vw
-cG9ydCBTUENSIHRhYmxlIHZlcnNpb24gNCBmb3JtYXQNCj4gDQo+IE9uIFRodSwgMiBNYXkgMjAy
-NCBhdCAwNjoxMiwgU2lhIEplZSBIZW5nIDxqZWVoZW5nLnNpYUBzdGFyZml2ZXRlY2guY29tPiB3
-cm90ZToNCj4gPg0KPiA+IFVwZGF0ZSB0aGUgU1BDUiB0YWJsZSB0byBhY2NvbW1vZGF0ZSB0aGUg
-U1BDUiBUYWJsZSB2ZXJzaW9uIDQgWzFdLg0KPiA+IFRoZSBTUENSIHRhYmxlIGhhcyBiZWVuIG1v
-ZGlmaWVkIHRvIGFkaGVyZSB0byB0aGUgdmVyc2lvbiA0IGZvcm1hdCBbMl0uDQo+ID4NCj4gPiBN
-ZWFud2hpbGUsIHRoZSB2aXJ0IFNQQ1IgZ29sZGVuIHJlZmVyZW5jZSBmaWxlcyBoYXZlIGJlZW4g
-dXBkYXRlZCB0bw0KPiA+IGFjY29tbW9kYXRlIHRoZSBTUENSIFRhYmxlIHZlcnNpb24gNC4NCj4g
-Pg0KPiA+IFsxXTogaHR0cHM6Ly9sZWFybi5taWNyb3NvZnQuY29tL2VuLXVzL3dpbmRvd3MtaGFy
-ZHdhcmUvZHJpdmVycy9zZXJwb3J0cy9zZXJpYWwtcG9ydC1jb25zb2xlLXJlZGlyZWN0aW9uLXRh
-YmxlDQo+ID4gWzJdOiBodHRwczovL2dpdGh1Yi5jb20vYWNwaWNhL2FjcGljYS9wdWxsLzkzMQ0K
-PiA+DQo+ID4gU2lhIEplZSBIZW5nICgyKToNCj4gPiAgIHRlc3RzL3F0ZXN0L2Jpb3MtdGFibGVz
-LXRlc3Q6IFVwZGF0ZSB2aXJ0IFNQQ1IgZ29sZGVuIHJlZmVyZW5jZXMNCj4gPiAgIGh3L2FjcGk6
-IFVwZ3JhZGUgQUNQSSBTUENSIHRhYmxlIHRvIHN1cHBvcnQgU1BDUiB0YWJsZSB2ZXJzaW9uIDQN
-Cj4gPiAgICAgZm9ybWF0DQo+IA0KPiBUaGlzIGlzbid0IHRoZSByaWdodCB3YXkgdG8gbWFrZSBh
-IGNoYW5nZSB0aGF0IHJlcXVpcmVzDQo+IHVwZGF0ZXMgdG8gdGhlIGJpb3MtdGFibGVzLXRlc3Qg
-cmVmZXJlbmNlIGZpbGVzLCBiZWNhdXNlDQo+ICJtYWtlIGNoZWNrIiB3aWxsIGZhaWwgYWZ0ZXIg
-cGF0Y2ggMSBidXQgYmVmb3JlIHBhdGNoIDIuDQo+IA0KPiBZb3UgbmVlZCBhIHRocmVlLXBhdGNo
-IGFwcHJvYWNoLiBIb3cgdG8gZG8gdGhhdCBpcyBkb2N1bWVudGVkDQo+IGluIHRoZSBjb21tZW50
-IGF0IHRoZSB0b3Agb2YgYmlvcy10YWJsZXMtdGVzdC5jLiBUaGUgcmVzdWx0aW5nDQo+IHRocmVl
-IHBhdGNoZXMgc2hvdWxkIGxvb2sgbGlrZToNCj4gICogcGF0Y2ggMSB1cGRhdGVzIGJpb3MtdGFi
-bGVzLXRlc3QtYWxsb3dlZC1kaWZmLmggdG8NCj4gICAgbWFyayB0aGUgYWZmZWN0ZWQgdGVzdCBv
-ciB0ZXN0cyBhcyAiT0sgdG8gZmFpbCINCj4gICogcGF0Y2ggMiBtYWtlcyB0aGUgY2hhbmdlcyB0
-byBRRU1VIHRoYXQgYWx0ZXIgdGhlDQo+ICAgIHJlcXVpcmVkIHRhYmxlIG91dHB1dA0KPiAgKiBw
-YXRjaCAzIHVwZGF0ZXMgdGhlIHJlZmVyZW5jZSBmaWxlcyBhbmQgcmVtb3ZlcyB0aGUNCj4gICAg
-dGVzdHMgZnJvbSB0aGUgYWxsb3dlZC1kaWZmIGZpbGUNCj4gDQo+IFNlZSBmb3IgaW5zdGFuY2Ug
-Y29tbWl0cyA2YzFjMmU5MTJmY2Y5LCAxZWM4OTZmZTdjYTkzOCwNCj4gZWEyZmRlNWJjY2M1MTQg
-YXMgYW4gZXhhbXBsZS4NClRoYW5rIHlvdSBmb3IgdGhlIGd1aWRhbmNlLiBJIHdpbGwgaW1wcm92
-ZSB0aGUgcGF0Y2ggYnkgcmVmZXJyaW5nIHRvIHRoZSBleGFtcGxlIHByb3ZpZGVkLg0KPiANCj4g
-U2lkZSBub3RlOiBpZiByaXNjdiB2aXJ0IGhhcyBBUENJIHRhYmxlcyBub3csIG1heWJlIHdlDQo+
-IHNob3VsZCBhZGQgdGVzdGluZyBvZiB0aGVtIHRvIHRoZSBiaW9zLXRhYmxlcy10ZXN0ID8NClN1
-cmUuIEkgd2lsbCBtYWtlIG1vZGlmaWNhdGlvbnMgYmFzZWQgb24gdGhlIFJJU0MtViB0ZXN0Lg0K
-PiANCj4gdGhhbmtzDQo+IC0tIFBNTQ0K
+--000000000000e9bf940617c2fa22
+Content-Type: text/plain; charset="UTF-8"
+
+Sure, I'll do it!
+
+Thanks,
+Tanmay
+
+On Mon, 6 May 2024 at 10:11, Thomas Huth <thuth@redhat.com> wrote:
+
+> On 04/05/2024 22.34, Michael Tokarev wrote:
+> > 04.05.2024 21:58, Tanmay wrote:
+> >> Hi,
+> >>
+> >> I have attached a patch file that fixes indentation and formatting for
+> >> some files as listed in
+> https://gitlab.com/qemu-project/qemu/-/issues/373
+> >> <https://gitlab.com/qemu-project/qemu/-/issues/373>.
+> >
+> > it is sort of good you posted this patch to stable@.  It has absolutely
+> > nothing to do
+> > with stable, but it serves as a an example of things which should - in
+> my
+> > opinion -
+> > not be done at all.
+>
+> I disagree. Yes, clean-up patches like this make it somewhat difficult to
+> backport other patches to stable, but that should not be the reason to not
+> do cleanups at all. If we keep badly formatted code in the repository,
+> people will copy-n-paste it to other places, or if you have to do fixes in
+> sources that have mixed TABs and spaces, you often get complaints from
+> checkpatch.pl though it is not your fault. So we should get this straight
+> at
+> one point in time.
+>
+> So, Tanmay, could you please resend your patch, this time to
+> qemu-devel@nongnu.org instead of qemu-stable, and CC: qemu-arm@nongnu.org
+> and the corresponding ARM maintainers (you can use
+> scripts/get_maintainers.pl to find out the correct maintainers that
+> should
+> be CC:-ed). And if possible, please send your patch inline and not as an
+> attachment (so it's possible to comment on the patch via hitting the reply
+> button), preferably with "git send-email" instead of using your e-mail
+> program.
+>
+>   Thanks!
+>    Thomas
+>
+>
+
+--000000000000e9bf940617c2fa22
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div><div>Sure, I&#39;ll do it!<br><br></div>Thanks,<br></=
+div>Tanmay<br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=
+=3D"gmail_attr">On Mon, 6 May 2024 at 10:11, Thomas Huth &lt;<a href=3D"mai=
+lto:thuth@redhat.com">thuth@redhat.com</a>&gt; wrote:<br></div><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex">On 04/05/2024 22.34, Michael Tokarev =
+wrote:<br>
+&gt; 04.05.2024 21:58, Tanmay wrote:<br>
+&gt;&gt; Hi,<br>
+&gt;&gt;<br>
+&gt;&gt; I have attached a patch file that fixes indentation and formatting=
+ for <br>
+&gt;&gt; some files as listed in <a href=3D"https://gitlab.com/qemu-project=
+/qemu/-/issues/373" rel=3D"noreferrer" target=3D"_blank">https://gitlab.com=
+/qemu-project/qemu/-/issues/373</a> <br>
+&gt;&gt; &lt;<a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/373" =
+rel=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-project/qemu/-=
+/issues/373</a>&gt;.<br>
+&gt; <br>
+&gt; it is sort of good you posted this patch to stable@.=C2=A0 It has abso=
+lutely <br>
+&gt; nothing to do<br>
+&gt; with stable, but it serves as a an example of things which should - in=
+ my <br>
+&gt; opinion -<br>
+&gt; not be done at all.<br>
+<br>
+I disagree. Yes, clean-up patches like this make it somewhat difficult to <=
+br>
+backport other patches to stable, but that should not be the reason to not =
+<br>
+do cleanups at all. If we keep badly formatted code in the repository, <br>
+people will copy-n-paste it to other places, or if you have to do fixes in =
+<br>
+sources that have mixed TABs and spaces, you often get complaints from <br>
+<a href=3D"http://checkpatch.pl" rel=3D"noreferrer" target=3D"_blank">check=
+patch.pl</a> though it is not your fault. So we should get this straight at=
+ <br>
+one point in time.<br>
+<br>
+So, Tanmay, could you please resend your patch, this time to <br>
+<a href=3D"mailto:qemu-devel@nongnu.org" target=3D"_blank">qemu-devel@nongn=
+u.org</a> instead of qemu-stable, and CC: <a href=3D"mailto:qemu-arm@nongnu=
+.org" target=3D"_blank">qemu-arm@nongnu.org</a> <br>
+and the corresponding ARM maintainers (you can use <br>
+scripts/<a href=3D"http://get_maintainers.pl" rel=3D"noreferrer" target=3D"=
+_blank">get_maintainers.pl</a> to find out the correct maintainers that sho=
+uld <br>
+be CC:-ed). And if possible, please send your patch inline and not as an <b=
+r>
+attachment (so it&#39;s possible to comment on the patch via hitting the re=
+ply <br>
+button), preferably with &quot;git send-email&quot; instead of using your e=
+-mail program.<br>
+<br>
+=C2=A0 Thanks!<br>
+=C2=A0 =C2=A0Thomas<br>
+<br>
+</blockquote></div>
+
+--000000000000e9bf940617c2fa22--

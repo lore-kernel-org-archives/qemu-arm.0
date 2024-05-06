@@ -1,269 +1,230 @@
-Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1273545ejc;
-        Sun, 5 May 2024 18:16:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWY+EScHEqCtXh0LOWYU+DZhBXqwzUa+zmIqyKimtCULI7VAvURJBO2zMwnpadG70XOsaW0mcgkhM+yIf+XJxfWZLzBCmiT
-X-Google-Smtp-Source: AGHT+IHT3KFheQ3tyjL6jJ6/DcdsN705f5bnE8r65tNNCAk7GFC/55cnBkqdgI12dnxT06B36IsJ
-X-Received: by 2002:ae9:e013:0:b0:792:987f:ed76 with SMTP id m19-20020ae9e013000000b00792987fed76mr2011687qkk.50.1714958167033;
-        Sun, 05 May 2024 18:16:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714958167; cv=none;
+Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1278121ejc;
+        Sun, 5 May 2024 18:30:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU2mVBDZhijvZJ9zcSrH7k9uKKrW/+r/Kb36gOqegQEdDYxeOM5IjoR+5TNXmsWfzBBNpWDhVxTDxtmmfIEH9MpS9qf+EOo
+X-Google-Smtp-Source: AGHT+IGesdES5iGnw4DDXaKxT6jJlhs/a4IUhC+Rv3am05G+vVsm1eYFmqmXB6cWZOejnlRyyPyM
+X-Received: by 2002:a05:620a:9c7:b0:792:90f5:89b3 with SMTP id y7-20020a05620a09c700b0079290f589b3mr4563579qky.7.1714959049397;
+        Sun, 05 May 2024 18:30:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714959049; cv=none;
         d=google.com; s=arc-20160816;
-        b=rmUF7uRsVQ3jC7CJnqch11AeA1NWed1pJnG94azTz+h70L6qehtmK6mH03Z8UQZCKf
-         xIJcJtRZLSNqLHnv1tAq/PVHHqklDPzPTCJSoY7u0vqmo5c/r/z51v8HG7v/wmkmwKWe
-         fCpVjcwtunpnd5gQIHCPewx22b2FCCopiC558lxRxtpHDPl9V6KfI36t5nOsbXPaVz5V
-         RqvCGmyw4mnE6ruwsyAwIvrQZlL88t7W18gLjD4Ps9rDgXNeD2t649W+wACr8rDbr2fY
-         LLq6dq8MVEAtJqBIXysK4F186HCca68Fv3qW1neligPw0oGvKKkMqej7SCn+LBshYK9q
-         GCpw==
+        b=QlkANE69CergMUTqIyqg7tWH94ivg9+yVZtK+h/ifgzpQziPMlr6XcwpK3ZRw40WRy
+         r5m6XBx4meJychHpWoL1x0FsuZ2zv66zkPpEfm//UYHCf3NJO7t08bRWsgtDDAQyDxLP
+         wJa9StF8yGK29UG9jDhVQZ8RJunxQyyeF1x67rxdNuUszfx3ylKd4h0x/fh4sLeWg94W
+         IdB374eCFvQ0h3zSufvnz4tlctEhGHlNBne98yUn4FVd7Gpyt5puWio5cGvXQ+n76ilG
+         8MBeAup6hd4P7wLJa50eJutlh/4dFnNEHe3MTgYoyTvr0qqmOQPZQiyhC6MIas9R2DTf
+         93GQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=u1Ts/EYc+1LlpK9l+wLpuZ0OTtKRZlajE82BAcIYv58=;
-        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=QxQ/ic70ghb940h5za2BhbKR6nZljxMu7qEgjUMVtQA+cYZZbf6fbPVBLFWAG3wfp9
-         e/7iTZJVfRTF/XJ2YKci5FeL/X3n7NhLiFUzW6A6G9+jdi0woeKyen11u2XlUQm7zhQY
-         iK/FjxmPNesA0LweZPNbge6C8a/Y9neEVB/Ab3tEI1b7QQDFkSTBcg9xBUVsEJZK+TG3
-         68mtGWTaWHBDzhaXx9usSpHgGYtsCDUnaqe9UqapCIBR/LMfYY6d+Rlwb7ndNPFm4qCt
-         qArDI9Jysteifog5lKV051265sSDxWfT2J1AtbEw38lRjJCyzH/jZMDd5PLdIoDgrR/i
-         oi5A==;
+         :list-unsubscribe:list-id:precedence:to:in-reply-to:references
+         :message-id:date:subject:mime-version:from:content-transfer-encoding
+         :dkim-signature;
+        bh=4Hb2mmnXv2C0z+ctoR57PeZM/HR/seCmZTdJzxcLpaU=;
+        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
+        b=Nl0wEH/qQcYvO5PKVGt+4TnkvlficHR4ihhkRVP3+bfKcvRENYlIUbLNMrFXVLy5HA
+         JuizfELGByh6txgomUBuB8UUhX2NuZUsUMykrLetT6M2Tvq2L3yievmHXYFAK4C/557w
+         XEW2aGwbtG8KVdruHktnEQAGszCuSZE/ivGUmKl+Ap4VtOQCmEjlKQQCvXXLn9fngdQO
+         +HbSoNCTkfJOEJ3eBW3VY5MpFhnYDCjNzQChGRlSWwy3jDH0zhIhAdsgAsiaFVNyMVGs
+         TqC/MsBmE78/A9Fs8/30TD86lYPL6ms0sO5G7CPdt75sOoQuZZQD4g10CTfYFEpjHTwH
+         nQ7A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NdV7Asr7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AEhPy3bo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a21-20020a05620a02f500b00792948c0f51si2113590qko.149.2024.05.05.18.16.06
+        by mx.google.com with ESMTPS id u5-20020ac858c5000000b0043ac84e8349si9105905qta.686.2024.05.05.18.30.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 05 May 2024 18:16:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 05 May 2024 18:30:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NdV7Asr7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AEhPy3bo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1s3mqH-00017j-IK; Sun, 05 May 2024 21:08:33 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s3nBe-00033j-4x; Sun, 05 May 2024 21:30:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1s3mps-0008C2-TH
- for qemu-devel@nongnu.org; Sun, 05 May 2024 21:08:12 -0400
+ (Exim 4.90_1) (envelope-from <krishna125g@gmail.com>)
+ id 1s3nBQ-0002x1-0x
+ for qemu-arm@nongnu.org; Sun, 05 May 2024 21:30:28 -0400
 Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1s3mpc-0003Of-RW
- for qemu-devel@nongnu.org; Sun, 05 May 2024 21:08:02 -0400
+ (Exim 4.90_1) (envelope-from <krishna125g@gmail.com>)
+ id 1s3nBD-0004Iq-Qo
+ for qemu-arm@nongnu.org; Sun, 05 May 2024 21:30:23 -0400
 Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-6f4551f2725so1431546b3a.1
- for <qemu-devel@nongnu.org>; Sun, 05 May 2024 18:07:52 -0700 (PDT)
+ d2e1a72fcca58-6f447976de7so884116b3a.1
+ for <qemu-arm@nongnu.org>; Sun, 05 May 2024 18:30:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1714957671; x=1715562471; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=u1Ts/EYc+1LlpK9l+wLpuZ0OTtKRZlajE82BAcIYv58=;
- b=NdV7Asr75usfDW+BS6xcFr6BBFVmEbDfGnXdMuFDJKe+Fi8BASWI2dr6ar1my6zhAP
- qjyqNzgRefSt6wbDj8XCH/Umm4Y3KrShKu0T001K/dIjExgMyMz4ltBD7Wcq996okCuy
- e6Z/3CVc7Nwamlu3/3kit3J3M5oigSffDYa87pRmZX4tVlCq9QdztFksHm7Bid9mRW7v
- b3igeFa3uXHXvcbXp1c0jGsJRTZ96BcEndf8VAlJi+6E7F5u9yzvQT3cbL67LgYIYOGk
- GHYJgRODdWf/gvX6PP7liXonRkSN7glXyeCGDhtE+Vylrc6EsW+Bh9UNgnMU1rc4SNdB
- /kZg==
+ d=gmail.com; s=20230601; t=1714959007; x=1715563807; darn=nongnu.org;
+ h=to:in-reply-to:references:message-id:date:subject:mime-version:from
+ :content-transfer-encoding:from:to:cc:subject:date:message-id
+ :reply-to; bh=4Hb2mmnXv2C0z+ctoR57PeZM/HR/seCmZTdJzxcLpaU=;
+ b=AEhPy3bo+I9b7WBXWlRa9mVWoqgz0PjLrGL/tJf0XVnHfpP0KcI+27AMSswjua4QYr
+ +mLu4iaWk83GEWfPEZ/dK2l4gFshMSkIRUD2N+YL7ki+v2/Kmqgqwsy4sBT9/o5i6fcT
+ wvBlRUhQsBO3SFpflVsj3eds8gCTKKub4R6T//X1yA6GuHy5TkPEq5rozB/4vYCCyD5X
+ Y18vJMMLw6wy2pZl/4XMysSp8fYsqTWnyhckyA1/SQwjPJ+qsX5MiImrmMcXENcoWEeg
+ GAMWdGGmPTiGgN1E2oWSHolHteHPevT69pUJjh/vtp+vYsrihZPxzD+BDgVioypOtCbu
+ 3ADQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714957671; x=1715562471;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=u1Ts/EYc+1LlpK9l+wLpuZ0OTtKRZlajE82BAcIYv58=;
- b=l0qypW4N0rF9AH+Y7gKRB2IYoYIn3l4UW7TYFewWN4Z8t3lI4dUe2q3d9zIOTpjn4V
- Razqjfr4mZmCAOQa4Ve1gq9TJRbrwdSpcweyEpmnRPVLUQBFOdZXqtcr+esthJNecVvn
- Uyv4hdpBol7lGz6yno+USbu42qXxJ84A5gcZhOHn7Lgw+zD3Vr7KlCly+8bMbBGnAj+W
- cOwOFUp/ZrwFBO/guL25U5hCjkC+dIRElqvFakRW5201oTI5anTVVx7baR9V08KdQLjL
- BPuWt8inrWS9bCw+FSTpbGoP/fFT3Nt9RmBghVFoOQZHotHlHuYoaOGOnahK9kdw2KFU
- i4MA==
-X-Gm-Message-State: AOJu0YxRiWT0V1F6jD8jxNLJXm2O1TMWaS8rYoxSGeuT2gomimJ+JZVD
- da8r9sXeYv8jDRnvvv8v7Ew/+vI12p2a45pIOZu222RReNSoZw4nXSOlr6NBNzxBbj6wAi3rZdl
- x
-X-Received: by 2002:a05:6a00:2290:b0:6f0:b53c:dfb4 with SMTP id
- f16-20020a056a00229000b006f0b53cdfb4mr11622693pfe.22.1714957671516; 
- Sun, 05 May 2024 18:07:51 -0700 (PDT)
-Received: from stoup.. (174-21-72-5.tukw.qwest.net. [174.21.72.5])
+ d=1e100.net; s=20230601; t=1714959007; x=1715563807;
+ h=to:in-reply-to:references:message-id:date:subject:mime-version:from
+ :content-transfer-encoding:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=4Hb2mmnXv2C0z+ctoR57PeZM/HR/seCmZTdJzxcLpaU=;
+ b=TBsj8IxsOXBKKmXQ1/Oa7BiY6o03O6wBy0PTsxZy/BkLE6MiJnjhZWdfgt+yDKUVd/
+ jGK3WgfNF6BNO1xx3wvSOSbt5O0PUA8XYLn4neqQbG298x6/FTnH1R3DOBW7Pcf91zNO
+ 0QOYmcx/4LshkmcAPGSgzhKnaR7P5oDlll/8MMJiCp50S77v0O7xbKTXk/M1E0qlzQDy
+ u7hVl8MpkdO8OrotQ4lPxL9Y0TIRCLXxwXLjPs/lpFpO/hm0OtYS7JMSZB0V7ycx/GD0
+ f9jbW3CndhCsIB7jFJwszZnBkbp1T8tXIsMmeLM2hqfGEzoLRg9Ilc3I7yeXbByh8Qrn
+ Qiww==
+X-Gm-Message-State: AOJu0YzC5v3Dvmlqj0r+xMxojHaRLM7SnV4iGlUFJHFLSGvq/RDlDYat
+ QVWQs19hlbeWHQMg6IrmZB5wmHxkQnA5zXf4PrSixX/INuHagXOZLMes6w==
+X-Received: by 2002:a05:6a00:2295:b0:6e7:b3c4:43a4 with SMTP id
+ f21-20020a056a00229500b006e7b3c443a4mr9713106pfe.25.1714959007048; 
+ Sun, 05 May 2024 18:30:07 -0700 (PDT)
+Received: from smtpclient.apple ([2401:4900:1cc4:edd0:b17b:388:5805:17a])
  by smtp.gmail.com with ESMTPSA id
- kp4-20020a056a00464400b006e580678dfbsm6577287pfb.193.2024.05.05.18.07.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 May 2024 18:07:51 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 56/57] target/arm: Tidy SQDMULH, SQRDMULH (vector)
-Date: Sun,  5 May 2024 18:04:02 -0700
-Message-Id: <20240506010403.6204-57-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240506010403.6204-1-richard.henderson@linaro.org>
-References: <20240506010403.6204-1-richard.henderson@linaro.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+ z17-20020aa79911000000b006f46a0e6874sm2093178pff.62.2024.05.05.18.30.06
+ for <qemu-arm@nongnu.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 05 May 2024 18:30:06 -0700 (PDT)
+Content-Type: multipart/alternative;
+ boundary=Apple-Mail-8FA931D6-B62C-429A-A4C2-CC57BDD578B4
+Content-Transfer-Encoding: 7bit
+From: Krishna Gururaj <krishna125g@gmail.com>
+Mime-Version: 1.0 (1.0)
+Subject: Re: QNX in qemu
+Date: Mon, 6 May 2024 06:59:54 +0530
+Message-Id: <1279AECF-3BAD-41BB-8ECF-0E27063D725B@gmail.com>
+References: <CAH9tv=MSO2ooq=8Vt63uWCNV3sWMkZC2DihLvUkbpeOhYphkDg@mail.gmail.com>
+In-Reply-To: <CAH9tv=MSO2ooq=8Vt63uWCNV3sWMkZC2DihLvUkbpeOhYphkDg@mail.gmail.com>
+To: qemu-arm@nongnu.org
+X-Mailer: iPhone Mail (20G81)
 Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ envelope-from=krishna125g@gmail.com; helo=mail-pf1-x42b.google.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, MIME_HTML_ONLY=0.1, MIME_HTML_ONLY_MULTI=0.001,
+ MIME_QP_LONG_LINE=0.001, MPART_ALT_DIFF=0.79, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URI_NOVOWEL=0.5 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TEMFHXdV3wtH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZO0z2e8LZxST
 
-We already have a gvec helper for the operations, but we aren't
-using it on the aa32 neon side.  Create a unified expander for
-use by both aa32 and aa64 translators.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/translate.h      |  4 ++++
- target/arm/tcg/gengvec.c        | 20 ++++++++++++++++++++
- target/arm/tcg/translate-a64.c  | 23 ++++-------------------
- target/arm/tcg/translate-neon.c | 23 +++--------------------
- 4 files changed, 31 insertions(+), 39 deletions(-)
+--Apple-Mail-8FA931D6-B62C-429A-A4C2-CC57BDD578B4
+Content-Type: text/html;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index 3b1e68b779..aba21f730f 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -539,6 +539,10 @@ void gen_gvec_sri(unsigned vece, uint32_t rd_ofs, uint32_t rm_ofs,
- void gen_gvec_sli(unsigned vece, uint32_t rd_ofs, uint32_t rm_ofs,
-                   int64_t shift, uint32_t opr_sz, uint32_t max_sz);
- 
-+void gen_gvec_sqdmulh_qc(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                         uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz);
-+void gen_gvec_sqrdmulh_qc(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                          uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz);
- void gen_gvec_sqrdmlah_qc(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-                           uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz);
- void gen_gvec_sqrdmlsh_qc(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-diff --git a/target/arm/tcg/gengvec.c b/target/arm/tcg/gengvec.c
-index a4133bf5f8..beedf46184 100644
---- a/target/arm/tcg/gengvec.c
-+++ b/target/arm/tcg/gengvec.c
-@@ -34,6 +34,26 @@ static void gen_gvec_fn3_qc(uint32_t rd_ofs, uint32_t rn_ofs, uint32_t rm_ofs,
-                        opr_sz, max_sz, 0, fn);
- }
- 
-+void gen_gvec_sqdmulh_qc(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                         uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz)
-+{
-+    static gen_helper_gvec_3_ptr * const fns[2] = {
-+        gen_helper_neon_sqdmulh_h, gen_helper_neon_sqdmulh_s
-+    };
-+    tcg_debug_assert(vece >= 1 && vece <= 2);
-+    gen_gvec_fn3_qc(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, fns[vece - 1]);
-+}
-+
-+void gen_gvec_sqrdmulh_qc(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                         uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz)
-+{
-+    static gen_helper_gvec_3_ptr * const fns[2] = {
-+        gen_helper_neon_sqrdmulh_h, gen_helper_neon_sqrdmulh_s
-+    };
-+    tcg_debug_assert(vece >= 1 && vece <= 2);
-+    gen_gvec_fn3_qc(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, fns[vece - 1]);
-+}
-+
- void gen_gvec_sqrdmlah_qc(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-                           uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz)
- {
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index c217522b2b..0d8aba7a88 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -725,19 +725,6 @@ static void gen_gvec_op3_fpst(DisasContext *s, bool is_q, int rd, int rn,
-                        is_q ? 16 : 8, vec_full_reg_size(s), data, fn);
- }
- 
--/* Expand a 3-operand + qc + operation using an out-of-line helper.  */
--static void gen_gvec_op3_qc(DisasContext *s, bool is_q, int rd, int rn,
--                            int rm, gen_helper_gvec_3_ptr *fn)
--{
--    TCGv_ptr qc_ptr = tcg_temp_new_ptr();
--
--    tcg_gen_addi_ptr(qc_ptr, tcg_env, offsetof(CPUARMState, vfp.qc));
--    tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, rd),
--                       vec_full_reg_offset(s, rn),
--                       vec_full_reg_offset(s, rm), qc_ptr,
--                       is_q ? 16 : 8, vec_full_reg_size(s), 0, fn);
--}
--
- /* Expand a 4-operand operation using an out-of-line helper.  */
- static void gen_gvec_op4_ool(DisasContext *s, bool is_q, int rd, int rn,
-                              int rm, int ra, int data, gen_helper_gvec_4 *fn)
-@@ -11001,12 +10988,10 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
- 
-     switch (opcode) {
-     case 0x16: /* SQDMULH, SQRDMULH */
--        {
--            static gen_helper_gvec_3_ptr * const fns[2][2] = {
--                { gen_helper_neon_sqdmulh_h, gen_helper_neon_sqrdmulh_h },
--                { gen_helper_neon_sqdmulh_s, gen_helper_neon_sqrdmulh_s },
--            };
--            gen_gvec_op3_qc(s, is_q, rd, rn, rm, fns[size - 1][u]);
-+        if (u) {
-+            gen_gvec_fn3(s, is_q, rd, rn, rm, gen_gvec_sqrdmulh_qc, size);
-+        } else {
-+            gen_gvec_fn3(s, is_q, rd, rn, rm, gen_gvec_sqdmulh_qc, size);
-         }
-         return;
-     }
-diff --git a/target/arm/tcg/translate-neon.c b/target/arm/tcg/translate-neon.c
-index f9a8753906..915c9e56db 100644
---- a/target/arm/tcg/translate-neon.c
-+++ b/target/arm/tcg/translate-neon.c
-@@ -937,28 +937,11 @@ DO_SHA2(SHA256SU1, gen_helper_crypto_sha256su1)
-     }
- 
- #define DO_3SAME_VQDMULH(INSN, FUNC)                                    \
--    WRAP_ENV_FN(gen_##INSN##_tramp16, gen_helper_neon_##FUNC##_s16);    \
--    WRAP_ENV_FN(gen_##INSN##_tramp32, gen_helper_neon_##FUNC##_s32);    \
--    static void gen_##INSN##_3s(unsigned vece, uint32_t rd_ofs,         \
--                                uint32_t rn_ofs, uint32_t rm_ofs,       \
--                                uint32_t oprsz, uint32_t maxsz)         \
--    {                                                                   \
--        static const GVecGen3 ops[2] = {                                \
--            { .fni4 = gen_##INSN##_tramp16 },                           \
--            { .fni4 = gen_##INSN##_tramp32 },                           \
--        };                                                              \
--        tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, oprsz, maxsz, &ops[vece - 1]); \
--    }                                                                   \
-     static bool trans_##INSN##_3s(DisasContext *s, arg_3same *a)        \
--    {                                                                   \
--        if (a->size != 1 && a->size != 2) {                             \
--            return false;                                               \
--        }                                                               \
--        return do_3same(s, a, gen_##INSN##_3s);                         \
--    }
-+    { return a->size >= 1 && a->size <= 2 && do_3same(s, a, FUNC); }
- 
--DO_3SAME_VQDMULH(VQDMULH, qdmulh)
--DO_3SAME_VQDMULH(VQRDMULH, qrdmulh)
-+DO_3SAME_VQDMULH(VQDMULH, gen_gvec_sqdmulh_qc)
-+DO_3SAME_VQDMULH(VQRDMULH, gen_gvec_sqrdmulh_qc)
- 
- #define WRAP_FP_GVEC(WRAPNAME, FPST, FUNC)                              \
-     static void WRAPNAME(unsigned vece, uint32_t rd_ofs,                \
--- 
-2.34.1
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charset=3D=
+utf-8"></head><body dir=3D"auto">Hello,<div><br></div><div><br></div><div><b=
+r></div><div>I request somebody to please respond to my query.</div><div><br=
+></div><div>Regards,</div><div>Krishna G</div><div><br><div dir=3D"ltr">Sent=
+ from my iPhone</div><div dir=3D"ltr"><br><blockquote type=3D"cite">On 03-Ma=
+y-2024, at 15:14, Krishna Gururaj &lt;krishna125g@gmail.com&gt; wrote:<br><b=
+r></blockquote></div><blockquote type=3D"cite"><div dir=3D"ltr">=EF=BB=BF<di=
+v dir=3D"ltr">Hello,<br><br>&nbsp; &nbsp; &nbsp;Firstly thank you for the re=
+sponse. Now when I remove the -nographic option a gtk screen opens and it di=
+splays that ' Guest has not initialized the display (yet) and in the log I s=
+ee this : (qemu:15068): Gtk-WARNING **: 10:54:03.341: Could not load a pixbu=
+f from icon theme.This may indicate that pixbuf loaders or the mime database=
+ could not be found.&nbsp;<br><br>QNX is not getting loaded when I remove th=
+is option.<br><br><br>I think the below logs might help you help me better :=
+<br><br>I get this when I run this command 'qemu-system-aarch64.exe -machine=
+ vexpress-a15 -cpu cortex-a57 -smp 4 -m 30G -kernel ifs.bin -drive file=3Ddi=
+sk-qemu.vmdk,if=3Dnone,id=3Ddrv0 -device virtio-blk-device,drive=3Ddrv0 -net=
+dev tap,id=3Dmynet0,ifname=3DTAP_Ethernet,script=3Dno,downscript=3Dno -devic=
+e virtio-net-device,netdev=3Dmynet0,mac=3D52:55:00:d1:55:01 -device virtio-r=
+ng-device -nographic'<br><br>---&gt; Starting slogger2<br>---&gt; Starting P=
+CI Services<br>---&gt; Starting devb<br>Path=3D0 -<br>&nbsp;target=3D0 lun=3D=
+0 &nbsp; &nbsp; Direct-Access(0) - VIRTIO &nbsp;Rev:<br>---&gt; Mounting fil=
+e systems<br>---&gt; Mounting file systems<br>=E2=97=84---&gt; Starting Netw=
+orking<br># net.inet.icmp.bmcastecho: 0 -&gt; 1<br>qnx.kern.droproot: 0 -&gt=
+; 1<br>---&gt; Starting sshd<br>---&gt; Starting misc<br>-U deprecated, use s=
+ecurity policies.<br>pps: NOTICE: PPS initializing<br>pps: NOTICE: PPS attac=
+hing /pps<br>pps: NOTICE: PPS attached /pps major 2 minor 6<br>---&gt; Start=
+ing graphics<br>io_hid_dlopen, devh-ps2ser-vm.so DLL Error Library cannot be=
+ found<br>libkhronos: dlopen() err No valid library found, path: '/system/gr=
+aphics/vmwgfx-drm/libwfdcfg-vmwgfx-generic.so'<br>libkhronos: dlopen() err L=
+ibrary cannot be found, path: 'libwfdcfg-vmwgfx-generic.so'<br>libkhronos: E=
+nsure directory containing graphics libraries is appended to LD_LIBRARY_PATH=
+ envar.<br><b>Unable to access /dev/screen&nbsp;</b><br>Process count: 26<br=
+>Startup complete<br>QNX noname 7.1.0 2020/06/13-20:07:59EDT ARMv8_Foundatio=
+n_Model aarch64le<div><br></div><div><br></div><div>I am configuring the scr=
+een with the follwoing command after boot up :&nbsp;</div><div><br></div><di=
+v>screen -c /system/lib/graphics/swiftshader/graphics.conf<br><br><br>graphi=
+cs.conf :<br><br>begin khronos<br>&nbsp; begin egl display 1<br>&nbsp; &nbsp=
+; vk-icds =3D vk_swiftshader_icd.json<br>&nbsp; &nbsp; egl-dlls =3D libEGL_A=
+ngle.so<br>&nbsp; &nbsp; glesv2-dlls =3D libGLESv2_Angle.so<br>&nbsp; end eg=
+l display<br><br>&nbsp; begin wfd device 1<br>&nbsp; &nbsp; pipeline-ids =3D=
+ 1<br>&nbsp; &nbsp; display-ids =3D 1<br>&nbsp; &nbsp; wfd-dlls =3D libwfdcf=
+g-sample.so libWFDdummy.so<br>&nbsp; end wfd device<br>end khronos<br><br>be=
+gin winmgr<br>&nbsp; begin globals<br>&nbsp; &nbsp; default-display =3D 1<br=
+>&nbsp; &nbsp; alloc-config =3D stdbuf<br>&nbsp; &nbsp; stack-size =3D 65536=
+<br>&nbsp; &nbsp; blit-config =3D sw<br>&nbsp; &nbsp; input =3D keyboard,mou=
+se<br>&nbsp; &nbsp; requests-logsize =3D 65536<br>&nbsp; &nbsp; blits-logsiz=
+e =3D 4096<br>&nbsp; end globals<br><br>&nbsp; begin display 1<br>&nbsp; &nb=
+sp;formats =3D rgba8888<br>&nbsp; &nbsp;force-composition =3D true<br>&nbsp;=
+ &nbsp;video-mode =3D 1920 x 1080 @ 60<br>&nbsp; &nbsp;stack-size =3D 65536<=
+br>&nbsp; end display<br><br>&nbsp; begin class framebuffer1<br>&nbsp; &nbsp=
+; display =3D 1<br>&nbsp; &nbsp; pipeline =3D 1<br>&nbsp; &nbsp; format =3D r=
+gba8888<br>&nbsp; &nbsp; usage =3D sw<br>&nbsp; end class<br><br>end winmgr<=
+br><br><br>Thank You,&nbsp;<br>Krishna G.</div><br><br><br>Regards,<br>Krish=
+na Gururaj.<br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D=
+"gmail_attr">On Mon, Apr 29, 2024 at 8:56=E2=80=AFPM Peter Maydell &lt;<a hr=
+ef=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrot=
+e:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.=
+8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Mon, 29 Apr 2=
+024 at 13:26, Krishna Gururaj &lt;<a href=3D"mailto:krishna125g@gmail.com" t=
+arget=3D"_blank">krishna125g@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Hello,<br>
+&gt;<br>
+&gt; I am trying to run the gles2-gears binary in qnx with the following con=
+figuration :<br>
+&gt;<br>
+&gt; qemu-system-aarch64.exe -machine vexpress-a15 -cpu cortex-a57 -smp 4 -m=
+ 30G -kernel ifs.bin -drive file=3Ddisk-qemu.vmdk,if=3Dnone,id=3Ddrv0 -devic=
+e virtio-blk-device,drive=3Ddrv0 -netdev tap,id=3Dmynet0,ifname=3DTAP_Ethern=
+et,script=3Dno,downscript=3Dno -device virtio-net-device,netdev=3Dmynet0,mac=
+=3D52:55:00:d1:55:01 -device virtio-rng-device -nographic<br>
+<br>
+This command line is not correct, because it takes a machine<br>
+that is only supposed to work with a Cortex-A15 ("vexpress-a15")<br>
+and tries to create a Cortex-A57 CPU with it. This will either<br>
+ignore the -cpu option or create something weird and unsupported,<br>
+I forget which. You should either fix the machine type or the<br>
+CPU type.<br>
+<br>
+That's unrelated to your graphics question -- the answer there<br>
+is that you say "-nographic" which means "I don't want to see<br>
+a GUI window". If you do that then you obviously won't see any<br>
+graphics. (Beyond that, the guest OS will need to have support<br>
+for whatever graphics device/framebuffer the machine provides.)<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div>
+</div></blockquote></div></body></html>=
 
+--Apple-Mail-8FA931D6-B62C-429A-A4C2-CC57BDD578B4--

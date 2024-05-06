@@ -1,147 +1,145 @@
-Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1440577ejc;
-        Mon, 6 May 2024 02:29:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW7coCgK2g94MltZ/hOu1vmaWCLvDFmP6Z+SnoGIZZBs+4SlYSfSyqvVjnLH9R67DpHfO6mM+lumAYQhrzMzTGFHMZCfAt0
-X-Received: by 2002:a50:8717:0:b0:572:72ff:da34 with SMTP id i23-20020a508717000000b0057272ffda34mr6517082edb.14.1714987744692;
-        Mon, 06 May 2024 02:29:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714987744; cv=none;
+Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1895952ejc;
+        Mon, 6 May 2024 15:34:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVSAK++ZYKkbmLZuF2L9YNl2SuOVy/Sa3GeHDAxbso60f/HadH29GrlJCa1VPd9uH12Soskiye+MidwE2vHbOkAKmaYlprM
+X-Google-Smtp-Source: AGHT+IGabygyW5gpI74NGcQ1zF4rNRC1gFW3pekS2j23dS5bp3cw+wfKBN9dmehO3O2BPi9GLRaD
+X-Received: by 2002:a05:6214:2303:b0:6a0:c96e:c4e3 with SMTP id gc3-20020a056214230300b006a0c96ec4e3mr13144959qvb.4.1715034853375;
+        Mon, 06 May 2024 15:34:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715034853; cv=none;
         d=google.com; s=arc-20160816;
-        b=tbSRPOHXHqSAOf66BG+/K+m4F2MRjH+jBvk2TyVIautzZ/xlMZ7NBpodS0QQlmYRUR
-         /gn1ogYm0EbFcIf+zJZmkGGCfQenaQ8RbxQPZQdb2pjo5M13Kk8sJ5LLue2KRxsWvXxN
-         nRCKuGUeG+KktXnUJOzJzFl2Y0OTKIYUKi+M/cTbWBbt4hcnxj+jTu4uFajtQvEVfyf4
-         iXVxdMfUIftzlhn0vi8z1fAOasNChGcbOyzBtGn4JxpvWuDbs2+Bhz9g4SP1QZBfmqH6
-         enTvJ3qM5+yD+nyrxq1dKUAh3B1+E4mwXy86jLLjSgpLjFEUEzlbZIf1gQhojfIvQzz0
-         aQ6Q==
+        b=ejGbJlIaQeBJMkfv4hJ0yn5a+vm08gzSqScI2y8THOBWuuR/V7qBshDcZW/kcR0cFS
+         PCnjb8AfLvtaiMOamjNUUZan9eEDb4GiOKWQufu3TaZkmAA9A6LAcOmCMOw/TSyKSi3P
+         nB0oklqHcAoFQ7exbuxu+9WK6apv0HxIF5145zYbFdVm6B50fIvRsWmD9AYAKuK9aDB2
+         ZNVT+4eT2GseQlwWapXZzdtdHFl/PCIxHfIsMGnYhQxVwuzjW1c9gEGDKnJqL7znVGtz
+         EuLGPV8tZeTtqerr5RbdTNY2TbHui3QPbx+YEp8qnrARtVz8VxVraEfxLiP9hAFzid4e
+         gDYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=NDFtcL5t4gXzrN/uQPJUI7ZcnUDtAe2YPjtW9fAQBEw=;
-        fh=fLLd5XuZOLRfkuZCTMfReS46qsV7XgmwtcMNVt0y/30=;
-        b=FDxKHeNIM9MsRTwRuOuRksVAn4k9qhJPNa3WtO9Wo8Ti88a5DwSacw35AXf9+grM/3
-         0zCGQyXveAkmzPD0r0C+XqLQWtEC+ebIJj8tY2Goa12ac4wyrWQ3ZrKWyiJrT3eNZx5u
-         E161gwH5uon8bGF4rR8UPZm0uNSkfKugxM+j/m3RYae9Zod4rnltATusxkg3DCocEEZo
-         3Bi28mAKwZ/V+IqHCEHCLBNqwnNaFciz7LYd3fXVCfDuPzeFULuXAN1NkP96M0ikuese
-         ARN8Hcd1axiKqUNnAx95SOG5ZJc3oi19cJV9VSh7uehOy56wu37j2r08I/OqG9NIs5E/
-         rYCw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=H7ZJustMiW7nPUhItgoQuxYxEP3+MgCQY5iJTzlGbgQ=;
+        fh=UMlouvVl3Ph4Ne7UvGTvosqVcNxKyKMHDiGsZppDwks=;
+        b=HFSqhNL9rVTMwqIBvzzPf+E2Gbs4+FqMO5zLOcuVb2n0R36FCcQOVSWj50gG0kF79s
+         4wpVlCgRnx/CJoBWyoOhLtXRliNq+woxxxz6N8fT4sppjNZzvN0jwQQlv6AX7rpuKGsa
+         SnTGsBwtbK9sqaGXIp1TWTBrBAL2NKq7iAi/31EA5jd1uw2yqdoWYPuTJ1yDfy4LIpKQ
+         xfFwOXzKNbzWgC8+Ext2Ncy9LikivBgyQQKPzGd02rTf2pm4NGcjTVASFuNZmq7fc0IB
+         6c0xGVYjqPojHiT4xvyBf0iTh/ToYK1eVoy3wyb6ueNTYZEZtW0R/AzvISY287tp+xju
+         lsAQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oKhkQB7E;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="hOg/fywD";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id t27-20020a50d71b000000b00572a6f5bc84sor1825284edi.10.2024.05.06.02.29.04
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 9-20020a05621420e900b006a0cb1183basi10265090qvk.165.2024.05.06.15.34.13
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 06 May 2024 02:29:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 06 May 2024 15:34:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oKhkQB7E;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="hOg/fywD";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s46tx-000326-Aq; Mon, 06 May 2024 18:33:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s46tw-00031w-UU
+ for qemu-arm@nongnu.org; Mon, 06 May 2024 18:33:40 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s46tv-0007gA-1U
+ for qemu-arm@nongnu.org; Mon, 06 May 2024 18:33:40 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-34e0d47bd98so2723973f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 06 May 2024 15:33:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1714987744; x=1715592544; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=NDFtcL5t4gXzrN/uQPJUI7ZcnUDtAe2YPjtW9fAQBEw=;
-        b=oKhkQB7EIkwPPFcuAXJ9/ft+/FVR3Fl/209QrzKjrTOmeuLfvQ7pe/GqiTxNmzaPRn
-         /6/HEUa5XgL88rtAhKiWRtm65wdGy2jJLRLOlY3aDfwxy8PYknVnJhFlqVDcvv4ObIlc
-         bYrwOVzd7a8IqlVNPEHM23rvvFx7tt3dkkXHoOr99xJh4RIxlqZlNSRYuBcJLSwjI7CP
-         XZWRo3NHjfX8T/ILazk85EPpeErjct3kzlXelDhnKuRJWHA5IPiFgKP1eXlhTKKDvN8A
-         jBkdiKMS4hN76Ov+6mzPQu+lPJvkxCDZzzBCTalmQQzKxW5c4PZ5/wUohgS25AfarOkX
-         bEOQ==
+ d=linaro.org; s=google; t=1715034817; x=1715639617; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=H7ZJustMiW7nPUhItgoQuxYxEP3+MgCQY5iJTzlGbgQ=;
+ b=hOg/fywDe4BEAtu8OzY/V/WtyMg3aD+dml5VBPXNF63gxUeuN+yoRtjAQ0GDnACk1D
+ M1/sPEZKbmlRcZwqsXhseCaIF4Y7tmGK7rh8lkJdv34myrJpYmhdRTRBja/VPa8W8wXN
+ SdS2v9TRR/5tzb/NyKUQ72h32t4lKqxE7BPPZkEXk33ipAdcNF3LNPhiFeXXqzg+KJ0s
+ bkFzYnLBBeQbySEITtT9rKshSASXimZ0pVfUg/mn3vaRVys4I+g/kBCoYx8PKFPGyFQb
+ kwqMO6SCRtIFEt5wgF5MtvDn7XnD0PLfREEiBIg8Pq3gthx0zJiDTNmukaUyAVuiPno+
+ D3xQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1714987744; x=1715592544;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=NDFtcL5t4gXzrN/uQPJUI7ZcnUDtAe2YPjtW9fAQBEw=;
-        b=OvONyNOmcHAZBlrA+bLOCk5BcJ0VHShgH1/9mvKE5Zi5L7Qv1AtIOVU3Ooh+4/EXSG
-         ru6SPLrHC/rHFPp0A7kw1sPY3la08hRovIC6iFeby/qNihppkJPzzOMAdvdeFNx/tnIh
-         2HWHRm1GEC89Aiw4b62+/0S96MXvanc0MzKnqFteMDoiK3qIav9y+RHYEA+a5remnCHr
-         uOUj38fWERdCcK2PZH0SSKvqRV/RXgiqAuosmu/9kAZYFxmt5L87E9kvQvxbn4C6rsCG
-         o4XrPPtB3msNUePuOIZS1+Db98k1YxhhLswKWg3XYfBpFLur1XGE03eM5V+Ys62q4LRM
-         auSw==
-X-Forwarded-Encrypted: i=1; AJvYcCXUZu6m47xwPMnDh4nvQofkEeyFZkNmr9hCxo71bHTfZpgv84bxYQ0CWtAHwDc/CRvdx5RUT803BhR6xvAhCkFvX710NMaK
-X-Gm-Message-State: AOJu0YwOhrx4YZbp5+x4/PiOWipPzdzXW7b8t1q1eLMMMU8DDrx0L+mT
-	Lak+lYwZgaplayXAmQR09sxA8Vr7zEdWHQTu+XcN64auMh8sc0+Wke514xkhHkYClv+V5dfOlnF
-	v6XE1xKU0rKxA0ePRF1bUT78mlIuGVZ2ZL1+5b0fj
-X-Google-Smtp-Source: AGHT+IEqIDgMe2oDZ5RHq9MbU78RQXnYjCtvPqFtl7gl7Mutky36zjfwIX03Jme46gdh/TtmGKOA/vo0RCOy1YbvXv0=
-X-Received: by 2002:a50:a696:0:b0:568:d5e7:37a1 with SMTP id
- e22-20020a50a696000000b00568d5e737a1mr6219741edc.36.1714987744248; Mon, 06
- May 2024 02:29:04 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1715034817; x=1715639617;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=H7ZJustMiW7nPUhItgoQuxYxEP3+MgCQY5iJTzlGbgQ=;
+ b=QoI5uXkFusl13xVo0+BcD2tKReoM5lhPVhGeahNV3WFUErTTnbbWTAQ+TMAZsm0g9d
+ Ay2Wb8UNgPvEIZyk4ruD1plaQF/J3LZiBx0q6zdxIP3qJHuB3/MEkcH+jo6INbJPbfgU
+ 9rHwng94ZoKSy4b5pZDec8h2Q4XU6Lewx+ytZWMomJmruuGl4+CFVfvR2zZ84z0C1ljz
+ 4xyBHgdeRqEytJFNokDZXamb9W9112S7DJnOTw0bpRQwRuU9Yn+rHuJe2nBChSj8Ykrd
+ 4dL8I9N7E9bYYwaBT8B5ExyDYU3b4Shmq+FynWMyhPYEf9zLTCRUU6amGLYCJpmpiB0f
+ elfQ==
+X-Gm-Message-State: AOJu0YwkKmvohjhAzK9uOfbtVW7lC35THspZVfkfmO9v8s5S+6Ri+avo
+ +SV6QkNHgyxeVkR6FeJ0oLB8HLooyFR98zmnY2WXr5PKxGfXYwhdWlG+9/WWX9s=
+X-Received: by 2002:adf:f04c:0:b0:34d:a19b:56b2 with SMTP id
+ t12-20020adff04c000000b0034da19b56b2mr840269wro.3.1715034816899; 
+ Mon, 06 May 2024 15:33:36 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.211.4])
+ by smtp.gmail.com with ESMTPSA id
+ z18-20020adff752000000b0034e19861891sm11555047wrp.33.2024.05.06.15.33.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 06 May 2024 15:33:36 -0700 (PDT)
+Message-ID: <b7367d66-f4be-463c-87cf-105235a04c68@linaro.org>
+Date: Tue, 7 May 2024 00:33:34 +0200
 MIME-Version: 1.0
-References: <20240312020000.12992-1-salil.mehta@huawei.com>
- <20240312020000.12992-7-salil.mehta@huawei.com> <CAFEAcA93EotG4-LXRJF034_9dWAWgZJA1VF6dB-xCsXn0T059g@mail.gmail.com>
- <10f35804a55e460a8ce6ecdb3f0c79b6@huawei.com>
-In-Reply-To: <10f35804a55e460a8ce6ecdb3f0c79b6@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 May 2024 10:28:52 +0100
-Message-ID: <CAFEAcA-w7wf9F4VVAnZR3b34ydEWq=QNw=CxhTMobsr+AP_LCg@mail.gmail.com>
-Subject: Re: [PATCH V8 6/8] physmem: Add helper function to destroy CPU AddressSpace
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
-	"maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>, 
-	Jonathan Cameron <jonathan.cameron@huawei.com>, 
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, 
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>, 
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>, 
-	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>, 
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>, 
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, 
-	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>, 
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>, 
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>, 
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>, 
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, 
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>, 
-	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian <zhukeqian1@huawei.com>, 
-	"wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>, 
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>, 
-	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, Linuxarm <linuxarm@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 66IaKa/pmW7Y
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/57] target/arm: Split out gengvec.c
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20240506010403.6204-1-richard.henderson@linaro.org>
+ <20240506010403.6204-2-richard.henderson@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240506010403.6204-2-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Wld2p48ST1Co
 
-On Mon, 6 May 2024 at 10:06, Salil Mehta <salil.mehta@huawei.com> wrote:
->
-> Hi Peter,
->
-> Thanks for the review.
->
-> >  From: Peter Maydell <peter.maydell@linaro.org>
-> >  When do we need to destroy a single address space in this way that mea=
-ns
-> >  we need to keep a count of how many ASes the CPU currently has? The
-> >  commit message talks about the case when we unrealize the whole CPU
-> >  object, but in that situation you can just throw away all the ASes at =
-once (eg
-> >  by calling some
-> >  cpu_destroy_address_spaces() function from cpu_common_unrealizefn()).
->
->
-> Yes, maybe, we can destroy all at once from common leg as well. I'd prefe=
-r this
-> to be done from the arch specific function for ARM to maintain the clarit=
-y &
-> symmetry of initialization and un-initialization legs.  For now, all of t=
-hese address
-> space destruction is happening in context to the arm_cpu_unrealizefn().
->
-> It=E2=80=99s a kind of trade-off between little more code and clarity but=
- I'm open to
-> further suggestions.
->
->
-> >
-> >  Also, if we're leaking stuff here by failing to destroy it, is that a =
-problem for
-> >  existing CPU types like x86 that we can already hotplug?
->
-> No we are not. We are taking care of these in the ARM arch specific legs
-> within functions arm_cpu_(un)realizefn().
+On 6/5/24 03:03, Richard Henderson wrote:
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/arm/tcg/translate.h |    5 +
+>   target/arm/tcg/gengvec.c   | 1612 ++++++++++++++++++++++++++++++++++++
+>   target/arm/tcg/translate.c | 1588 -----------------------------------
+>   target/arm/tcg/meson.build |    1 +
+>   4 files changed, 1618 insertions(+), 1588 deletions(-)
+>   create mode 100644 target/arm/tcg/gengvec.c
 
-How can you be taking care of *x86* CPU types in the Arm unrealize?
+Reviewed using git-diff --color-moved=dimmed-zebra
 
-thanks
--- PMM
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+

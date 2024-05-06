@@ -1,161 +1,147 @@
-Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1431219ejc;
-        Mon, 6 May 2024 02:06:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXq9gFVogN0RoyrN4CQ0HgfpQBrHwmVLxC1Gi2Sa85sZnSlipwDFuRF0hXwA+BySGMNJeQt4ZjD5ZlM1726rrAACQK5xXIC
-X-Google-Smtp-Source: AGHT+IEgL9cdiF021jomMVBy5jzuyZFY087vbvzggm+y1LEca4Y7tx0gjodivLRB2ks5AXKQ/fwu
-X-Received: by 2002:a05:600c:1c06:b0:418:7ec1:7bdb with SMTP id j6-20020a05600c1c0600b004187ec17bdbmr11067773wms.5.1714986366078;
-        Mon, 06 May 2024 02:06:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1714986366; cv=none;
+Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1440577ejc;
+        Mon, 6 May 2024 02:29:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW7coCgK2g94MltZ/hOu1vmaWCLvDFmP6Z+SnoGIZZBs+4SlYSfSyqvVjnLH9R67DpHfO6mM+lumAYQhrzMzTGFHMZCfAt0
+X-Received: by 2002:a50:8717:0:b0:572:72ff:da34 with SMTP id i23-20020a508717000000b0057272ffda34mr6517082edb.14.1714987744692;
+        Mon, 06 May 2024 02:29:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1714987744; cv=none;
         d=google.com; s=arc-20160816;
-        b=I1cZT4ydRVhVffnxQlQX4Fgyytdxv585yh0t3tqgtF7m07m5/IhPzpvEIK6E8CxEWs
-         QYYLmUfGsoRg/xR8Na/MbRsqGm2wJauYldR/MFmRGdnCXS0HFg8iaBDnCIM8s+xelyX0
-         sgCmGHoA7xyWb2rjPzk+4d/ZeUMlpNP3Vfo9zHzLuULDGNfoTE3925J0FKJWnydRuk58
-         258o38VG92TTkbiqT5Bq3sxgJ1VwHaFepFRPMo83HTjmajk4HekZ8/grtC5UA41vzCtu
-         KymOgLSxPU1cx2+sZxy6uGF4p8h55hpOIAhMB26z3VNNMZg4foxCYZpT7dYORFjjLhD9
-         Zo+Q==
+        b=tbSRPOHXHqSAOf66BG+/K+m4F2MRjH+jBvk2TyVIautzZ/xlMZ7NBpodS0QQlmYRUR
+         /gn1ogYm0EbFcIf+zJZmkGGCfQenaQ8RbxQPZQdb2pjo5M13Kk8sJ5LLue2KRxsWvXxN
+         nRCKuGUeG+KktXnUJOzJzFl2Y0OTKIYUKi+M/cTbWBbt4hcnxj+jTu4uFajtQvEVfyf4
+         iXVxdMfUIftzlhn0vi8z1fAOasNChGcbOyzBtGn4JxpvWuDbs2+Bhz9g4SP1QZBfmqH6
+         enTvJ3qM5+yD+nyrxq1dKUAh3B1+E4mwXy86jLLjSgpLjFEUEzlbZIf1gQhojfIvQzz0
+         aQ6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=uuw6GxJmpU8OovQJrbo5+DBUQPZlkAgNMakSadExA8I=;
-        fh=QWMYmS1AHbKc5j9IFDJwJUxEST1+zYikw0L2XprMdGs=;
-        b=XUbBgcdo00y/OTeO/TdEtNCBi+rIZhXrYv3UexQAaoguySy9cAhjsVCMX5n5KfIakL
-         zP4QF9dmEsM1YFZ6sl8Stqym+amk7bOo30Flk/gFujVyeipSceGtiDW6S0Dd3wE5ANwL
-         J28Sj5ca02/dGbI5+dH0WBn9uyi5JGyde3pV1PZEkZswwv75B+I3jP28bpxe7eULSYcF
-         ieEUmsAzCKN1g5KYJ77e9v9AbtRG/U3ePanJMV2BDp1yZemWhUwhS9ZQ/denKA8bvgB8
-         4Qn1P84UY2FoEUR/XXyTDfn5Rk3tnjXiBZoNO22NshE8TDP6cm1IMhdBcmOVBm9Pyt1B
-         VA9A==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=NDFtcL5t4gXzrN/uQPJUI7ZcnUDtAe2YPjtW9fAQBEw=;
+        fh=fLLd5XuZOLRfkuZCTMfReS46qsV7XgmwtcMNVt0y/30=;
+        b=FDxKHeNIM9MsRTwRuOuRksVAn4k9qhJPNa3WtO9Wo8Ti88a5DwSacw35AXf9+grM/3
+         0zCGQyXveAkmzPD0r0C+XqLQWtEC+ebIJj8tY2Goa12ac4wyrWQ3ZrKWyiJrT3eNZx5u
+         E161gwH5uon8bGF4rR8UPZm0uNSkfKugxM+j/m3RYae9Zod4rnltATusxkg3DCocEEZo
+         3Bi28mAKwZ/V+IqHCEHCLBNqwnNaFciz7LYd3fXVCfDuPzeFULuXAN1NkP96M0ikuese
+         ARN8Hcd1axiKqUNnAx95SOG5ZJc3oi19cJV9VSh7uehOy56wu37j2r08I/OqG9NIs5E/
+         rYCw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id l1-20020adfe9c1000000b0034cc4de33cfsi5364833wrn.401.2024.05.06.02.06.05
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 May 2024 02:06:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=oKhkQB7E;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id t27-20020a50d71b000000b00572a6f5bc84sor1825284edi.10.2024.05.06.02.29.04
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 06 May 2024 02:29:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VXwRY1jGKz6K5x4;
-	Mon,  6 May 2024 17:03:05 +0800 (CST)
-Received: from lhrpeml500002.china.huawei.com (unknown [7.191.160.78])
-	by mail.maildlp.com (Postfix) with ESMTPS id 08E80140447;
-	Mon,  6 May 2024 17:06:04 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500002.china.huawei.com (7.191.160.78) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 6 May 2024 10:06:03 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
- Mon, 6 May 2024 10:06:03 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "maz@kernel.org" <maz@kernel.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron
-	<jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
-	<lpieralisi@kernel.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V8 6/8] physmem: Add helper function to destroy CPU
- AddressSpace
-Thread-Topic: [PATCH V8 6/8] physmem: Add helper function to destroy CPU
- AddressSpace
-Thread-Index: AQHadCFXcU6yTs2isEyCNhmIUrtCDrGHWFKAgALjoLA=
-Date: Mon, 6 May 2024 09:06:03 +0000
-Message-ID: <10f35804a55e460a8ce6ecdb3f0c79b6@huawei.com>
-References: <20240312020000.12992-1-salil.mehta@huawei.com>
- <20240312020000.12992-7-salil.mehta@huawei.com>
- <CAFEAcA93EotG4-LXRJF034_9dWAWgZJA1VF6dB-xCsXn0T059g@mail.gmail.com>
-In-Reply-To: <CAFEAcA93EotG4-LXRJF034_9dWAWgZJA1VF6dB-xCsXn0T059g@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.48.159.236]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@linaro.org header.s=google header.b=oKhkQB7E;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1714987744; x=1715592544; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NDFtcL5t4gXzrN/uQPJUI7ZcnUDtAe2YPjtW9fAQBEw=;
+        b=oKhkQB7EIkwPPFcuAXJ9/ft+/FVR3Fl/209QrzKjrTOmeuLfvQ7pe/GqiTxNmzaPRn
+         /6/HEUa5XgL88rtAhKiWRtm65wdGy2jJLRLOlY3aDfwxy8PYknVnJhFlqVDcvv4ObIlc
+         bYrwOVzd7a8IqlVNPEHM23rvvFx7tt3dkkXHoOr99xJh4RIxlqZlNSRYuBcJLSwjI7CP
+         XZWRo3NHjfX8T/ILazk85EPpeErjct3kzlXelDhnKuRJWHA5IPiFgKP1eXlhTKKDvN8A
+         jBkdiKMS4hN76Ov+6mzPQu+lPJvkxCDZzzBCTalmQQzKxW5c4PZ5/wUohgS25AfarOkX
+         bEOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714987744; x=1715592544;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=NDFtcL5t4gXzrN/uQPJUI7ZcnUDtAe2YPjtW9fAQBEw=;
+        b=OvONyNOmcHAZBlrA+bLOCk5BcJ0VHShgH1/9mvKE5Zi5L7Qv1AtIOVU3Ooh+4/EXSG
+         ru6SPLrHC/rHFPp0A7kw1sPY3la08hRovIC6iFeby/qNihppkJPzzOMAdvdeFNx/tnIh
+         2HWHRm1GEC89Aiw4b62+/0S96MXvanc0MzKnqFteMDoiK3qIav9y+RHYEA+a5remnCHr
+         uOUj38fWERdCcK2PZH0SSKvqRV/RXgiqAuosmu/9kAZYFxmt5L87E9kvQvxbn4C6rsCG
+         o4XrPPtB3msNUePuOIZS1+Db98k1YxhhLswKWg3XYfBpFLur1XGE03eM5V+Ys62q4LRM
+         auSw==
+X-Forwarded-Encrypted: i=1; AJvYcCXUZu6m47xwPMnDh4nvQofkEeyFZkNmr9hCxo71bHTfZpgv84bxYQ0CWtAHwDc/CRvdx5RUT803BhR6xvAhCkFvX710NMaK
+X-Gm-Message-State: AOJu0YwOhrx4YZbp5+x4/PiOWipPzdzXW7b8t1q1eLMMMU8DDrx0L+mT
+	Lak+lYwZgaplayXAmQR09sxA8Vr7zEdWHQTu+XcN64auMh8sc0+Wke514xkhHkYClv+V5dfOlnF
+	v6XE1xKU0rKxA0ePRF1bUT78mlIuGVZ2ZL1+5b0fj
+X-Google-Smtp-Source: AGHT+IEqIDgMe2oDZ5RHq9MbU78RQXnYjCtvPqFtl7gl7Mutky36zjfwIX03Jme46gdh/TtmGKOA/vo0RCOy1YbvXv0=
+X-Received: by 2002:a50:a696:0:b0:568:d5e7:37a1 with SMTP id
+ e22-20020a50a696000000b00568d5e737a1mr6219741edc.36.1714987744248; Mon, 06
+ May 2024 02:29:04 -0700 (PDT)
 MIME-Version: 1.0
-X-TUID: 25V6/pcA4mYG
+References: <20240312020000.12992-1-salil.mehta@huawei.com>
+ <20240312020000.12992-7-salil.mehta@huawei.com> <CAFEAcA93EotG4-LXRJF034_9dWAWgZJA1VF6dB-xCsXn0T059g@mail.gmail.com>
+ <10f35804a55e460a8ce6ecdb3f0c79b6@huawei.com>
+In-Reply-To: <10f35804a55e460a8ce6ecdb3f0c79b6@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 6 May 2024 10:28:52 +0100
+Message-ID: <CAFEAcA-w7wf9F4VVAnZR3b34ydEWq=QNw=CxhTMobsr+AP_LCg@mail.gmail.com>
+Subject: Re: [PATCH V8 6/8] physmem: Add helper function to destroy CPU AddressSpace
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+	"maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>, 
+	Jonathan Cameron <jonathan.cameron@huawei.com>, 
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, 
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>, 
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>, 
+	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>, 
+	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>, 
+	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, 
+	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>, 
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>, 
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>, 
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>, 
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, 
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>, 
+	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian <zhukeqian1@huawei.com>, 
+	"wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>, 
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>, 
+	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, Linuxarm <linuxarm@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 66IaKa/pmW7Y
 
-SGkgUGV0ZXIsDQoNClRoYW5rcyBmb3IgdGhlIHJldmlldy4NCg0KPiAgRnJvbTogUGV0ZXIgTWF5
-ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPg0KPiAgU2VudDogU2F0dXJkYXksIE1heSA0
-LCAyMDI0IDI6NDEgUE0NCj4gIA0KPiAgT24gVHVlLCAxMiBNYXIgMjAyNCBhdCAwMjowMiwgU2Fs
-aWwgTWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+DQo+ICB3cm90ZToNCj4gID4NCj4gID4g
-VmlydHVhbCBDUFUgSG90LXVucGx1ZyBsZWFkcyB0byB1bnJlYWxpemF0aW9uIG9mIGEgQ1BVIG9i
-amVjdC4gVGhpcw0KPiAgPiBhbHNvIGludm9sdmVzIGRlc3RydWN0aW9uIG9mIHRoZSBDUFUgQWRk
-cmVzc1NwYWNlLiBBZGQgY29tbW9uIGZ1bmN0aW9uDQo+ICA+IHRvIGhlbHAgZGVzdHJveSB0aGUg
-Q1BVIEFkZHJlc3NTcGFjZS4NCj4gID4NCj4gID4gU2lnbmVkLW9mZi1ieTogU2FsaWwgTWVodGEg
-PHNhbGlsLm1laHRhQGh1YXdlaS5jb20+DQo+ICA+IFRlc3RlZC1ieTogVmlzaG51IFBhamp1cmkg
-PHZpc2hudUBvcy5hbXBlcmVjb21wdXRpbmcuY29tPg0KPiAgPiBSZXZpZXdlZC1ieTogR2F2aW4g
-U2hhbiA8Z3NoYW5AcmVkaGF0LmNvbT4NCj4gID4gVGVzdGVkLWJ5OiBYaWFuZ2xhaSBMaSA8bGl4
-aWFuZ2xhaUBsb29uZ3Nvbi5jbj4NCj4gID4gVGVzdGVkLWJ5OiBNaWd1ZWwgTHVpcyA8bWlndWVs
-Lmx1aXNAb3JhY2xlLmNvbT4NCj4gID4gUmV2aWV3ZWQtYnk6IFNoYW9xaW4gSHVhbmcgPHNoYWh1
-YW5nQHJlZGhhdC5jb20+DQo+ICANCj4gID4gZGlmZiAtLWdpdCBhL3N5c3RlbS9waHlzbWVtLmMg
-Yi9zeXN0ZW0vcGh5c21lbS5jIGluZGV4DQo+ICA+IDZlOWVkOTc1OTcuLjYxYjMyYWM0ZjIgMTAw
-NjQ0DQo+ICA+IC0tLSBhL3N5c3RlbS9waHlzbWVtLmMNCj4gID4gKysrIGIvc3lzdGVtL3BoeXNt
-ZW0uYw0KPiAgPiBAQCAtNzYxLDYgKzc2MSw3IEBAIHZvaWQgY3B1X2FkZHJlc3Nfc3BhY2VfaW5p
-dChDUFVTdGF0ZSAqY3B1LCBpbnQNCj4gID4gYXNpZHgsDQo+ICA+DQo+ICA+ICAgICAgaWYgKCFj
-cHUtPmNwdV9hc2VzKSB7DQo+ICA+ICAgICAgICAgIGNwdS0+Y3B1X2FzZXMgPSBnX25ldzAoQ1BV
-QWRkcmVzc1NwYWNlLCBjcHUtPm51bV9hc2VzKTsNCj4gID4gKyAgICAgICAgY3B1LT5jcHVfYXNl
-c19jb3VudCA9IGNwdS0+bnVtX2FzZXM7DQo+ICA+ICAgICAgfQ0KPiAgPg0KPiAgPiAgICAgIG5l
-d2FzID0gJmNwdS0+Y3B1X2FzZXNbYXNpZHhdOw0KPiAgPiBAQCAtNzc0LDYgKzc3NSwzNCBAQCB2
-b2lkIGNwdV9hZGRyZXNzX3NwYWNlX2luaXQoQ1BVU3RhdGUgKmNwdSwgaW50DQo+ICBhc2lkeCwN
-Cj4gID4gICAgICB9DQo+ICA+ICB9DQo+ICA+DQo+ICA+ICt2b2lkIGNwdV9hZGRyZXNzX3NwYWNl
-X2Rlc3Ryb3koQ1BVU3RhdGUgKmNwdSwgaW50IGFzaWR4KSB7DQo+ICA+ICsgICAgQ1BVQWRkcmVz
-c1NwYWNlICpjcHVhczsNCj4gID4gKw0KPiAgPiArICAgIGFzc2VydChjcHUtPmNwdV9hc2VzKTsN
-Cj4gID4gKyAgICBhc3NlcnQoYXNpZHggPj0gMCAmJiBhc2lkeCA8IGNwdS0+bnVtX2FzZXMpOw0K
-PiAgPiArICAgIC8qIEtWTSBjYW5ub3QgY3VycmVudGx5IHN1cHBvcnQgbXVsdGlwbGUgYWRkcmVz
-cyBzcGFjZXMuICovDQo+ICA+ICsgICAgYXNzZXJ0KGFzaWR4ID09IDAgfHwgIWt2bV9lbmFibGVk
-KCkpOw0KPiAgPiArDQo+ICA+ICsgICAgY3B1YXMgPSAmY3B1LT5jcHVfYXNlc1thc2lkeF07DQo+
-ICA+ICsgICAgaWYgKHRjZ19lbmFibGVkKCkpIHsNCj4gID4gKyAgICAgICAgbWVtb3J5X2xpc3Rl
-bmVyX3VucmVnaXN0ZXIoJmNwdWFzLT50Y2dfYXNfbGlzdGVuZXIpOw0KPiAgPiArICAgIH0NCj4g
-ID4gKw0KPiAgPiArICAgIGFkZHJlc3Nfc3BhY2VfZGVzdHJveShjcHVhcy0+YXMpOw0KPiAgPiAr
-ICAgIGdfZnJlZV9yY3UoY3B1YXMtPmFzLCByY3UpOw0KPiAgPiArDQo+ICA+ICsgICAgaWYgKGFz
-aWR4ID09IDApIHsNCj4gID4gKyAgICAgICAgLyogcmVzZXQgdGhlIGNvbnZlbmllbmNlIGFsaWFz
-IGZvciBhZGRyZXNzIHNwYWNlIDAgKi8NCj4gID4gKyAgICAgICAgY3B1LT5hcyA9IE5VTEw7DQo+
-ICA+ICsgICAgfQ0KPiAgPiArDQo+ICA+ICsgICAgaWYgKC0tY3B1LT5jcHVfYXNlc19jb3VudCA9
-PSAwKSB7DQo+ICA+ICsgICAgICAgIGdfZnJlZShjcHUtPmNwdV9hc2VzKTsNCj4gID4gKyAgICAg
-ICAgY3B1LT5jcHVfYXNlcyA9IE5VTEw7DQo+ICA+ICsgICAgfQ0KPiAgPiArfQ0KPiAgDQo+ICBX
-aGVuIGRvIHdlIG5lZWQgdG8gZGVzdHJveSBhIHNpbmdsZSBhZGRyZXNzIHNwYWNlIGluIHRoaXMg
-d2F5IHRoYXQgbWVhbnMNCj4gIHdlIG5lZWQgdG8ga2VlcCBhIGNvdW50IG9mIGhvdyBtYW55IEFT
-ZXMgdGhlIENQVSBjdXJyZW50bHkgaGFzPyBUaGUNCj4gIGNvbW1pdCBtZXNzYWdlIHRhbGtzIGFi
-b3V0IHRoZSBjYXNlIHdoZW4gd2UgdW5yZWFsaXplIHRoZSB3aG9sZSBDUFUNCj4gIG9iamVjdCwg
-YnV0IGluIHRoYXQgc2l0dWF0aW9uIHlvdSBjYW4ganVzdCB0aHJvdyBhd2F5IGFsbCB0aGUgQVNl
-cyBhdCBvbmNlIChlZw0KPiAgYnkgY2FsbGluZyBzb21lDQo+ICBjcHVfZGVzdHJveV9hZGRyZXNz
-X3NwYWNlcygpIGZ1bmN0aW9uIGZyb20gY3B1X2NvbW1vbl91bnJlYWxpemVmbigpKS4NCg0KDQpZ
-ZXMsIG1heWJlLCB3ZSBjYW4gZGVzdHJveSBhbGwgYXQgb25jZSBmcm9tIGNvbW1vbiBsZWcgYXMg
-d2VsbC4gSSdkIHByZWZlciB0aGlzDQp0byBiZSBkb25lIGZyb20gdGhlIGFyY2ggc3BlY2lmaWMg
-ZnVuY3Rpb24gZm9yIEFSTSB0byBtYWludGFpbiB0aGUgY2xhcml0eSAmDQpzeW1tZXRyeSBvZiBp
-bml0aWFsaXphdGlvbiBhbmQgdW4taW5pdGlhbGl6YXRpb24gbGVncy4gIEZvciBub3csIGFsbCBv
-ZiB0aGVzZSBhZGRyZXNzDQpzcGFjZSBkZXN0cnVjdGlvbiBpcyBoYXBwZW5pbmcgaW4gY29udGV4
-dCB0byB0aGUgYXJtX2NwdV91bnJlYWxpemVmbigpLg0KDQpJdOKAmXMgYSBraW5kIG9mIHRyYWRl
-LW9mZiBiZXR3ZWVuIGxpdHRsZSBtb3JlIGNvZGUgYW5kIGNsYXJpdHkgYnV0IEknbSBvcGVuIHRv
-DQpmdXJ0aGVyIHN1Z2dlc3Rpb25zLg0KDQoNCj4gIA0KPiAgQWxzbywgaWYgd2UncmUgbGVha2lu
-ZyBzdHVmZiBoZXJlIGJ5IGZhaWxpbmcgdG8gZGVzdHJveSBpdCwgaXMgdGhhdCBhIHByb2JsZW0g
-Zm9yDQo+ICBleGlzdGluZyBDUFUgdHlwZXMgbGlrZSB4ODYgdGhhdCB3ZSBjYW4gYWxyZWFkeSBo
-b3RwbHVnPw0KDQpObyB3ZSBhcmUgbm90LiBXZSBhcmUgdGFraW5nIGNhcmUgb2YgdGhlc2UgaW4g
-dGhlIEFSTSBhcmNoIHNwZWNpZmljIGxlZ3MNCndpdGhpbiBmdW5jdGlvbnMgYXJtX2NwdV8odW4p
-cmVhbGl6ZWZuKCkuIA0KDQpodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAyMzA5MjYxMDM2
-NTQuMzQ0MjQtMS1zYWxpbC5tZWh0YUBodWF3ZWkuY29tLw0KDQpBYm92ZSBjaGFuZ2Ugbm93IHdv
-dWxkIGJlIHBhcnQgb2YgQXJjaCBzcGVjaWZpYyBwYXRjaC1zZXQgUkZDIFYzIGJlaW5nIHByZXBh
-cmVkLg0KDQoNClRoYW5rcw0KU2FsaWwuDQoNCg==
+On Mon, 6 May 2024 at 10:06, Salil Mehta <salil.mehta@huawei.com> wrote:
+>
+> Hi Peter,
+>
+> Thanks for the review.
+>
+> >  From: Peter Maydell <peter.maydell@linaro.org>
+> >  When do we need to destroy a single address space in this way that mea=
+ns
+> >  we need to keep a count of how many ASes the CPU currently has? The
+> >  commit message talks about the case when we unrealize the whole CPU
+> >  object, but in that situation you can just throw away all the ASes at =
+once (eg
+> >  by calling some
+> >  cpu_destroy_address_spaces() function from cpu_common_unrealizefn()).
+>
+>
+> Yes, maybe, we can destroy all at once from common leg as well. I'd prefe=
+r this
+> to be done from the arch specific function for ARM to maintain the clarit=
+y &
+> symmetry of initialization and un-initialization legs.  For now, all of t=
+hese address
+> space destruction is happening in context to the arm_cpu_unrealizefn().
+>
+> It=E2=80=99s a kind of trade-off between little more code and clarity but=
+ I'm open to
+> further suggestions.
+>
+>
+> >
+> >  Also, if we're leaking stuff here by failing to destroy it, is that a =
+problem for
+> >  existing CPU types like x86 that we can already hotplug?
+>
+> No we are not. We are taking care of these in the ARM arch specific legs
+> within functions arm_cpu_(un)realizefn().
+
+How can you be taking care of *x86* CPU types in the Arm unrealize?
+
+thanks
+-- PMM

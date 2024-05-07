@@ -1,183 +1,208 @@
-Received: by 2002:a05:7022:ef03:b0:7c:9548:a19d with SMTP id qy3csp1883960dlb;
-        Tue, 7 May 2024 02:02:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWzGscuwtwpwSnLROHym1EejDTGznfuEEIN9dJbf7XUKO0q1xb4lU+fnsNP9Sonlmk4k7IdX24fT/HGQeuNADlKxq7p/zMn
-X-Received: by 2002:a17:906:57da:b0:a59:ef1f:83e4 with SMTP id u26-20020a17090657da00b00a59ef1f83e4mr697904ejr.59.1715072569952;
-        Tue, 07 May 2024 02:02:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715072569; cv=none;
+Received: by 2002:a05:7022:ef03:b0:7c:9548:a19d with SMTP id qy3csp1906935dlb;
+        Tue, 7 May 2024 02:55:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXEG8A8wRYGzD5eQf1WQ+PEu5nuASBPw5RKCW7GJF02SmVTN5026sf40TB+e0e7GYVB4GOUfv2Sm2hel/wlLm41ASWk7wWm
+X-Google-Smtp-Source: AGHT+IH2LoF1DF8EKxGdfLNslHn5pHODsecbFGxgltxktXCjEIHHrxLSUHA16P6SL3Zit6Mwiam7
+X-Received: by 2002:ac8:5888:0:b0:43a:7b64:2fcc with SMTP id d75a77b69052e-43d8f2f5c76mr35965051cf.7.1715075734666;
+        Tue, 07 May 2024 02:55:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715075734; cv=none;
         d=google.com; s=arc-20160816;
-        b=D/XCtQo0tXR21/tjR+/Cx+0mJ5fztCdnz33zAgaaA5+Q7Jm0EmaV//FzPaYw4jx2ch
-         ilo+yeMbORn6uLkvk+Ccc98694ExVYUN13hglNOeEe8KEJLhPQvpncdVa2+GoDxAc4f5
-         4FehMV/Zj9pwYKvO21YS4GUj3a/JH211YuJBYkExEHSbz4cD4/P1piH1DMI0r7ZqORVx
-         R/ul2+oEdcka6PcKQpIdMr4LPJvG1xQSt1IbBYMJaxA9g4Pt115/SegGmam6pqnZlOQ9
-         ap689cPAVLPss21QxB/OpDJysLlvyMAHKr0TKU7yjZA7CQ9GFmbc8BtrW9opaI5Aa+Wx
-         ke/g==
+        b=0uMXbdaY6qU5LBAKToYz3/ZTTwom7Iign2bKSlgeMZ2MIN8uNmg9ZKlCiBV6jXAoDG
+         hIDQ+GxqT4nLIGfYrbe29SLMqZida6szGgpUX5piIZqq/XSiaR4eDrmDa3oWLw4w77Ru
+         1Xd/1EJ0kBb4Fwu2yoMRHuy5iGCGo3CTdEfUoOoOwobgds6O07xt7pTKBAwmX6fetTda
+         IEbbVhCMBx9fwBmXfdynISkbN4LjnJfnavbxBPJC/OdhtG8F5Ns1jOrVyx1Xa/6Ahr2m
+         FtFa1XRZcXJ6ByTbzpaspaEH22MWNqQlLSpBzsJosj66PcgIW70rep7QJov5kNTYbyte
+         EGSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Z2jE5qDfx8bS3LJas2UapfjwL3dy12JCUJWy1N4nJtY=;
-        fh=cJMZ7VTsUd8ltzlYbtMmpx1bJhnyFbjesr8XPxiVfpg=;
-        b=BGXRaMMT7RET0jim9ozqjdvk4yUGrUX4Cx5RcZDHJZxesPBLEZm7bPIsUym5Pf4n4J
-         yzsSwavN0MUgB4NHJhLSJTkxohJjtXTn+5V++u44KDQLM9MGTh0Zipo9vSLBb/xOIOjS
-         YdXDTh+cFoK7h84mCxc45h6NzQPeTnfr91JLAAOKsUOJDB5gP1vXfZbRAuB/NNmQLDvj
-         Izy1GagjZ30XqznUZhH+2wZR/IUWBVWwa9J2OisCXApKmBwpntyTuJlYRP9OPXUB5oRw
-         HQPdeGz2sCxYWJbrvcYErooTfbyuoh0CUQtgfrE07unCekzEtbnvgoT50iNPRSz66hsi
-         NWlQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=oZhmjIXKYgZr53hDN6H3dymNuLmy1NqHDwPG6SPwx0I=;
+        fh=E1rX8SFu6hWCV1mS5o2rej7sBoQxcYLg4ecxbMHxsLo=;
+        b=tRckxeYAwBp2r9MfX9lWwC0hDmaTLqvep3JYiIgK8Z+UOI0yJCRa2tYxNR7Pv4BbuL
+         PLs9vIhyeSc/zLR9HOHhQYdMqoqItwXPMVnkde+wEIwlG2nUwmjuyZ3iCFmewMDsI2fW
+         EWXFU9obrCGNoObNcaNjKgOcYfb33mQpsXeBNHaUmSWwecb4WR1IQ+roCEUPXqiBTP9a
+         KngpXwg0uHe6Fuc+Ufq7L6qEtoo8gAcnA8nzCehBCxlcVhHDndGsztYEQnLhbOVCVph0
+         Ljz2OPUAlAspKvhE2b3iaT8vLoYGLoSWUdVtEy0hy2wn5nI1i+77HyCvZUgBdMqcYkqA
+         En7Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="eHPI7/AD";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NvRZXbdV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id m18-20020a170906235200b00a59ab5af9adsor1645743eja.0.2024.05.07.02.02.49
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f3-20020ac85d03000000b0043ad4e11dc7si11291014qtx.26.2024.05.07.02.55.34
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 07 May 2024 02:02:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 07 May 2024 02:55:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="eHPI7/AD";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NvRZXbdV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s4HXm-000539-4U; Tue, 07 May 2024 05:55:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1s4HXR-0004wv-OQ
+ for qemu-arm@nongnu.org; Tue, 07 May 2024 05:55:11 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1s4HXJ-0004py-4Z
+ for qemu-arm@nongnu.org; Tue, 07 May 2024 05:55:09 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-a59c5c9c6aeso525505566b.2
+ for <qemu-arm@nongnu.org>; Tue, 07 May 2024 02:55:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1715072569; x=1715677369; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Z2jE5qDfx8bS3LJas2UapfjwL3dy12JCUJWy1N4nJtY=;
-        b=eHPI7/ADFoHlpQD4Z60MyoTB+A0E6Gm/g6S3wD7xHfwatGDafTjHnPHKN2fv5Xj9T8
-         P7PAV/NfacWgEcKoCpf7HR/QxHXNpNUm56ai1+etCcSuAUXqud77+L0644FJZcG6OmZ4
-         42ojiOK9XDXEt2+etagYphCcoykDQdkavUKOQOrCHJObwXP3AAHVHhEHAHPy6GCNHeyQ
-         ZhOl09DKUvo/X+6LzqQpMQu/TWsyAYnjUiOBpPcVCNJqMpyKKr9lq2CTOy7/fc4x9SrZ
-         UbUbJ+W9aXJAXH+jN5JeBK1hf2vlydzTXSxEukDVhYmJmDN6mtyN6V/0eMIvfmAgIRpf
-         XDgw==
+ d=linaro.org; s=google; t=1715075699; x=1715680499; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=oZhmjIXKYgZr53hDN6H3dymNuLmy1NqHDwPG6SPwx0I=;
+ b=NvRZXbdVXwC+Kjh+aG2x4JtUzluYHpSBQ3G5sCO6su4j2zxb1tRc7bZUMz6cMTNruu
+ AehWY8tpn2TjYhEHO4v663+aN+RjZZwGnlCbnhSTAGflFtEbO1SAXOR1h4upaMeMlxBF
+ wG7tAC1g+0RRJOoka+gjm9FRax4IV6MR4D62PIsQYPlTB8+Qir3EujlgA9aqKMyYkhYG
+ YslBGz0vpyjn/tEL4L0pW2/JlKG0qlQSPFxGfXBgqRWhIBxovhSt9O5ePk2+5NhvFqnW
+ 8FGlUZ+JZjF8KLe0lCTIl9m9Xf193I9j4cVsVOeMMMHEskTb6woFtiaqsskEs0nP7plL
+ CUKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715072569; x=1715677369;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Z2jE5qDfx8bS3LJas2UapfjwL3dy12JCUJWy1N4nJtY=;
-        b=TsO3sHqhfMDNmCetGRWfGhvVcBL9hSiEbF/WM0YEXZ5lbMvRSIYuvQ9lmfOY6Vn2IV
-         12xUM5Rfifb9fuis3Thx3EjCsNE9xDjLpUwvEXOGZ9YRbhxsUUIsfgPSS9FarT88G1zW
-         PrgHuyAmeSd6jve3p9mrq6Q7hyAYFtKFouEhZvJ2HCmrCs092Q1Sx3iNuqUeE+txp8P7
-         mo2/fSFIar3qW7L0KPkNZRrbBhGScai8hI0tJSUjnIBJNWd12InUSRoCwOZ5IpOvqKm6
-         hiHT0ttlbxbC6QY4Kmc1DB5Ioo3LTj0KjiG3DkPwrZoCyx0GdjdKrWOiLqBeB5kqgAjv
-         niwg==
-X-Forwarded-Encrypted: i=1; AJvYcCWUb3z999eoTOhjYW7FYr39zMuWj4tlPkxuuplqzhiyZmcUWvKYJyrycVbD7VG9lLJfwABEA5EKqXtx/+oektwyvTWelvEI
-X-Gm-Message-State: AOJu0YwKj7prdX6jZ2x2qpKIkA7YvN9W08/ql3EunsN4emk9x7lIIj9l
-	YDxnNp9i1FDIPtmrCByFleR6Txh8S13pdHvVNBO8rR8I1SsW/R/Wbi0ODLAjRSIPSckUhrS1Ntt
-	uTDl3Tbq1FeOk8EiU0oC6H2Psgr3/RP8T6cjYyyO8
-X-Google-Smtp-Source: AGHT+IGRKbUd3xCeyVnFWisL15Tu+azAc7g+Ys9aQHJHCKi0yT/uNqNOD6ylCW1UdjC1qCIAoBcMsGi2by5IjZeQDnk=
-X-Received: by 2002:a50:cc96:0:b0:572:32e4:daca with SMTP id
- q22-20020a50cc96000000b0057232e4dacamr7264208edi.25.1715072569373; Tue, 07
- May 2024 02:02:49 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1715075699; x=1715680499;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=oZhmjIXKYgZr53hDN6H3dymNuLmy1NqHDwPG6SPwx0I=;
+ b=WxxnBM7Vk0qRF9+kc10gsyp5yL8peLIdeOneUDEMJ2F8oxzn2hOSlB1arTQY6qbR5U
+ ++RS+dSAoSWSDZILCNvdx93uQ/TBl8ni0biNhLnA5d9NsqkJx23bEoPZQywCB3HOPkNj
+ JNq20bfIkKou32b8clPCwnauVpRkbeBCNaFlqO2AgCXhcaU3PCUz6ib+r2LuWK8a02RL
+ l42CVzuOu5INSAMSvu/p+r6gXA5ffbJw2GseCxng9RrZbF0WJFCOYcN90gWsgM9VFlgS
+ FiPmXE/75CJVWBqDs4tevbkdUS4huac9tIRbpAiV9XobbL4n/XHleaX2t5DTYGZN4kXc
+ KYaw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVXB+cvFA+R7iGJ9mFrRTduMxDCNwnCdzXUL8pGRhl3vpKfqsPQEDscPPGBsAye0iSaTyefLQhO2BAXchP8b9FC1tHI
+X-Gm-Message-State: AOJu0Yxh+z4UVDZRQKQiWy8HonDyr5XxdvUrgUyW8mntMpnVtKw/PGR9
+ Px35X82tvwFciGLSysRCKvZDJf9YWLXifoT9u8coByqIly8Xz2pKIigPKSRZ9i53Xb9Iv4nOj7e
+ dkOzjDOs7w347l+QcDlqaeDc9jdfP1NGqG789pQ==
+X-Received: by 2002:a50:9faa:0:b0:572:326b:c055 with SMTP id
+ c39-20020a509faa000000b00572326bc055mr9358675edf.13.1715075699100; Tue, 07
+ May 2024 02:54:59 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240312020000.12992-1-salil.mehta@huawei.com>
- <20240312020000.12992-7-salil.mehta@huawei.com> <CAFEAcA93EotG4-LXRJF034_9dWAWgZJA1VF6dB-xCsXn0T059g@mail.gmail.com>
- <10f35804a55e460a8ce6ecdb3f0c79b6@huawei.com> <CAFEAcA-w7wf9F4VVAnZR3b34ydEWq=QNw=CxhTMobsr+AP_LCg@mail.gmail.com>
- <55f942d2a3644bdaaff759014e3a4c20@huawei.com>
-In-Reply-To: <55f942d2a3644bdaaff759014e3a4c20@huawei.com>
+References: <20240505140556.373711-1-ines.varhol@telecom-paris.fr>
+ <20240505140556.373711-4-ines.varhol@telecom-paris.fr>
+ <06e98554-3430-49d5-94f3-c5d683327f55@linaro.org>
+In-Reply-To: <06e98554-3430-49d5-94f3-c5d683327f55@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 7 May 2024 10:02:37 +0100
-Message-ID: <CAFEAcA92nCPPk0Qa6XjRqRGTq_XDyRSVVaz67WgJBEZcxoEtOQ@mail.gmail.com>
-Subject: Re: [PATCH V8 6/8] physmem: Add helper function to destroy CPU AddressSpace
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
-	"maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>, 
-	Jonathan Cameron <jonathan.cameron@huawei.com>, 
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, 
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>, 
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>, 
-	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>, 
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>, 
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, 
-	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>, 
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>, 
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>, 
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>, 
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, 
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>, 
-	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian <zhukeqian1@huawei.com>, 
-	"wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>, 
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>, 
-	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, Linuxarm <linuxarm@huawei.com>
+Date: Tue, 7 May 2024 10:54:47 +0100
+Message-ID: <CAFEAcA83cgqq3yh3=d=gHd-LK3qh2g-pE2v734apKmcNTJTvww@mail.gmail.com>
+Subject: Re: [PATCH 3/4] hw/char: Add QOM property for STM32L4x5 USART clock
+ frequency
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>, 
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Laurent Vivier <lvivier@redhat.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: sXvSYrDnG2Qb
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AbglN9hShCpi
 
-On Tue, 7 May 2024 at 01:11, Salil Mehta <salil.mehta@huawei.com> wrote:
+On Mon, 6 May 2024 at 10:34, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
 >
-> >  From: Peter Maydell <peter.maydell@linaro.org>
-> >  Sent: Monday, May 6, 2024 10:29 AM
-> >  To: Salil Mehta <salil.mehta@huawei.com>
+> Hi,
+>
+> On 5/5/24 16:05, In=C3=A8s Varhol wrote:
+> > Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+> > ---
+> >   hw/char/stm32l4x5_usart.c | 12 ++++++++++++
+> >   1 file changed, 12 insertions(+)
 > >
-> >  On Mon, 6 May 2024 at 10:06, Salil Mehta <salil.mehta@huawei.com>
-> >  wrote:
-> >  >
-> >  > Hi Peter,
-> >  >
-> >  > Thanks for the review.
-> >  >
-> >  > >  From: Peter Maydell <peter.maydell@linaro.org>  When do we need t=
-o
-> >  > > destroy a single address space in this way that means  we need to
-> >  > > keep a count of how many ASes the CPU currently has? The  commit
-> >  > > message talks about the case when we unrealize the whole CPU
-> >  > > object, but in that situation you can just throw away all the ASes
-> >  > > at once (eg  by calling some
-> >  > >  cpu_destroy_address_spaces() function from
-> >  cpu_common_unrealizefn()).
-> >  >
-> >  >
-> >  > Yes, maybe, we can destroy all at once from common leg as well. I'd
-> >  > prefer this to be done from the arch specific function for ARM to
-> >  > maintain the clarity & symmetry of initialization and
-> >  > un-initialization legs.  For now, all of these address space destruc=
-tion is
-> >  happening in context to the arm_cpu_unrealizefn().
-> >  >
-> >  > It=E2=80=99s a kind of trade-off between little more code and clarit=
-y but I'm
-> >  > open to further suggestions.
-> >  >
-> >  >
-> >  > >
-> >  > >  Also, if we're leaking stuff here by failing to destroy it, is th=
-at
-> >  > > a problem for  existing CPU types like x86 that we can already hot=
-plug?
-> >  >
-> >  > No we are not. We are taking care of these in the ARM arch specific
-> >  > legs within functions arm_cpu_(un)realizefn().
+> > diff --git a/hw/char/stm32l4x5_usart.c b/hw/char/stm32l4x5_usart.c
+> > index fc5dcac0c4..ee7727481c 100644
+> > --- a/hw/char/stm32l4x5_usart.c
+> > +++ b/hw/char/stm32l4x5_usart.c
+> > @@ -26,6 +26,7 @@
+> >   #include "hw/clock.h"
+> >   #include "hw/irq.h"
+> >   #include "hw/qdev-clock.h"
+> > +#include "qapi/visitor.h"
+> >   #include "hw/qdev-properties.h"
+> >   #include "hw/qdev-properties-system.h"
+> >   #include "hw/registerfields.h"
+> > @@ -523,6 +524,14 @@ static Property stm32l4x5_usart_base_properties[] =
+=3D {
+> >       DEFINE_PROP_END_OF_LIST(),
+> >   };
 > >
-> >  How can you be taking care of *x86* CPU types in the Arm unrealize?
+> > +static void clock_freq_get(Object *obj, Visitor *v,
+> > +    const char *name, void *opaque, Error **errp)
+> > +{
+> > +    Stm32l4x5UsartBaseState *s =3D STM32L4X5_USART_BASE(obj);
+> > +    uint32_t clock_freq_hz =3D clock_get_hz(s->clk);
+> > +    visit_type_uint32(v, name, &clock_freq_hz, errp);
+> > +}
+> > +
+> >   static void stm32l4x5_usart_base_init(Object *obj)
+> >   {
+> >       Stm32l4x5UsartBaseState *s =3D STM32L4X5_USART_BASE(obj);
+> > @@ -534,6 +543,9 @@ static void stm32l4x5_usart_base_init(Object *obj)
+> >       sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+> >
+> >       s->clk =3D qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
+> > +
+> > +    object_property_add(obj, "clock-freq-hz", "uint32",
+> > +                        clock_freq_get, NULL, NULL, NULL);
 >
->
-> Sorry, yes, I missed to reply that clearly. There was indeed a leak with =
-x86 reported
-> by Phillipe/David last year. In fact, Phillipe floated a patch last year =
-for this.
-> I thought it was fixed already as part of cpu_common_unrealize() but I ju=
-st
-> checked and realized that the below proposed changed still isn=E2=80=99t =
-part of the
-> mainline
->
-> https://lore.kernel.org/qemu-devel/20230918160257.30127-9-philmd@linaro.o=
-rg/
+> Patch LGTM, but I wonder if registering QOM getter without setter
+> is recommended. Perhaps we should encourage parity? In normal HW
+> emulation we shouldn't update this clock externally, but thinking
+> about testing, this could be interesting to introduce jitter.
 
-That seems like the right way to clean these up -- Philippe, do you want
-to fish that bugfix out of your big patchset and submit it separately ?
+object_property_add() with the set function NULL is fine,
+and is documented to mean "property cannot be set". Attempts
+to set it will be failed (in object_property_set()) with a
+reasonable error.
 
-> I can definitely add a common CPU AddressSpace destruction leg as part of=
- this
-> patch if in case arch specific CPU unrealize does not cleans up its CPU
-> AddressSpace?
-
-Arch-specific CPU unrealize shouldn't need to do anything -- if we
-fix this similarly to Philippe's patch above then that will do
-the cleanup required. Handling this kind of cleanup in common code
-is more reliable because it doesn't require every target-arch
-maintainer to remember it needs to be done, plus it's less code.
+But it's not clear to me why we want the property in the first
+place -- we don't generally have devices which take a Clock
+input have properties exposing its frequency. If we did want
+that it would probably be better if we could do it generically
+rather than by adding more boilerplate code to each device.
+Mostly "frequency" properties on devices are for the case
+where  they *don't* have a Clock input and instead have
+ad-hoc legacy handling where the board/SoC that creates the
+device sets an integer property to define the input frequency
+because it doesn't model the clock tree with Clock objects.
 
 thanks
 -- PMM

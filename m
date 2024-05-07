@@ -1,83 +1,83 @@
-Received: by 2002:a05:7022:ef03:b0:7c:9548:a19d with SMTP id qy3csp2229954dlb;
-        Tue, 7 May 2024 11:59:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXzx5iH7X/NQEK130n+bZST1eqPVBncMdoeys6UPCOZCe2sU+zKnTPTcfxkjmubX35XOgiiLNz6Q/51rrnOC9W6qwKi++UR
-X-Google-Smtp-Source: AGHT+IGrLonTCNSw4uzFvZAOI/MtJfBfBMS1KJjaKFyH8K72IkQ8dGcptzQCdHvOIh75M+i/bMKT
-X-Received: by 2002:ac8:5f47:0:b0:43b:1472:1671 with SMTP id d75a77b69052e-43dbf5148f4mr7158881cf.17.1715108369116;
-        Tue, 07 May 2024 11:59:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715108369; cv=none;
+Received: by 2002:a05:7022:ef03:b0:7c:9548:a19d with SMTP id qy3csp2229972dlb;
+        Tue, 7 May 2024 11:59:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXqzVDOBObRLf3GkglbRGf7IgXRBkiwe+1FMuZinLdSYC1jH+yPgpu/RzYIxD8W5K/OWdlPhrlOE/uisKMo6FgXQwzzIKcu
+X-Google-Smtp-Source: AGHT+IH4gxPe4LeWgZlU3NEV4R7Epl9LXd9j1kXDQwHQfczEpVivMgcf5vU/mvsykWod/VWQWDLm
+X-Received: by 2002:ad4:5bac:0:b0:6a0:cafc:ac2 with SMTP id 6a1803df08f44-6a1515222bdmr8831576d6.15.1715108372438;
+        Tue, 07 May 2024 11:59:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715108372; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q5Y0hTkdKhlNQaqwKQnIP8wsiQ2/6yWSqqPu1QbSuJAnF6YyQx3Lq5PZ6zw3ug3X6v
-         pT4erodioMThoVWx+L9s87HdztaIlYZxbNbHk+aFjhWgr+jgDybNq8KGY05Hq5BUzTRB
-         DI6P6VUCl2aCmbJSCii8jdPqwxplCVfSW27JwzN995Lm8k/LP2RYdtEDPVDDN86QQ1cC
-         ow+FTWzLL8rRDLLOLzBb1lu2Ez9ePRQ+STpVUWix9av9gX6EQaRh2B2EWACYg6IBqTCO
-         zaJt/k88NLYCD0PRhd1TLN83taV/9ttJo0xdUvvXq5Qzz6MKeSpHOAkTzaaarYaZ4LuB
-         RJcQ==
+        b=qoVlWQh/GO8A73R8dBB+Nv7+j1dIH6mfwLGt4gXlsEtz/CN8g59XfhWHcD1wLJhKNB
+         I1HNqlRpjTeGI89NvzW2Eae3d0Jk2lVb9FRTpEZybqcDjbK/wZG/poW292ybtDOxNI3K
+         tk0xKLBR1ubTzutay0SiD9u0rW4NckeYWlO4WFmYfDFpvssumswhR8sS0pF3N6/ELTeH
+         66dChQKRyGX+utZiesHcT0eKLf6goeN6aFGMOGANLFBhGH9Wyi4VuxRovGkJspOlWYUF
+         1s6R+irj7GqVsrgK7fGgmKAs14VnutQNhCncEtey+fIDY/cjLhlLlIXJitplYujoJBXW
+         GRiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature:dkim-filter;
-        bh=4q9F1KFq8sdqxwF5xSxJc78lBnQxNP2O8xDUaS5oTfI=;
+        bh=QnpJKaskVydt3M9JeeJ+YmrTlVQ6dW0qxexbTyP/ZYg=;
         fh=ecsk0JsTjjFV0jZ++009JHVO0qembwrIS4hjTG7H9mQ=;
-        b=VnnIjIFYwOPd0bB1zCK7tCP+t/4j36cmQSrmWrTYClmmBi2Mg/gIZn9pmlNt4s7dBb
-         e4WSVIZXTkixkviNYDiYdqFo4K/pRCy/BVXZmhsoWaRbQ/0/6cesSsJQIbTMBPe7kF+L
-         74pZJZyt+y6Q/QCd+go0vBg5lVle1J3ytdA0ZB4abBthIyn/XjhsaxvL1/FJqRG9zX+8
-         b9E0a5krq8wpdDruk7nPyLxedyzNFaYuepWP1m1rLse3uipFK3CZUldLU5RpdLMY5DvZ
-         vX+rCoOlYpleRxkfrc2Vno5bMNBu+qVDkbmco65irx+iC6JoDcngvME1xnSKRII5kcin
-         EqMQ==;
+        b=HQldzjkAnzl00VOOe+JKUfTMzGr9waQgov/MOnleJ0505W/Hicuf/lnqiLU2+Y0HFv
+         czXRQfGFz/ztbFsLpRYdngfeMD7+IsiwTWC5RMLyiTej9KPXex0/uvP6iw7bT/uek0p+
+         PKTXjL9BYS9OUpyMj3rzcytHxCPYKFsKKVSkpx4I8i75YPI7CeciY80IxxkQZExLABuj
+         VHNLIOsBQsV5vg1mlxHU/m1KZdQNKmBBAhW/hgBoTh6ytUNRUUQXeujkBcz57+VZlKfz
+         wHR7M7i7QU+u8+qtCdj80HywLVFFEL2TIFDib8R+ZSNrhK4mx3RQ9E62r9mHfiGHLd8A
+         uPrg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=CkOpbmBN;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=XgKLuwJb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a18-20020a05622a065200b0043ab583f976si13020154qtb.361.2024.05.07.11.59.28
+        by mx.google.com with ESMTPS id kj25-20020a056214529900b006a0c7f2bd90si12116103qvb.53.2024.05.07.11.59.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 May 2024 11:59:29 -0700 (PDT)
+        Tue, 07 May 2024 11:59:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=CkOpbmBN;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=XgKLuwJb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s4Q1z-0008GP-F5; Tue, 07 May 2024 14:59:15 -0400
+	id 1s4Q1x-0008CY-NU; Tue, 07 May 2024 14:59:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1s4Q1w-0008BZ-9H; Tue, 07 May 2024 14:59:12 -0400
+ id 1s4Q1v-0008BM-VG; Tue, 07 May 2024 14:59:11 -0400
 Received: from zproxy1.enst.fr ([137.194.2.220])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1s4Q1t-0006AY-Oi; Tue, 07 May 2024 14:59:12 -0400
+ id 1s4Q1t-0006AL-KZ; Tue, 07 May 2024 14:59:11 -0400
 Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 684E0C0D42;
- Tue,  7 May 2024 20:59:06 +0200 (CEST)
+ by zproxy1.enst.fr (Postfix) with ESMTP id 5A52FC0D41;
+ Tue,  7 May 2024 20:59:05 +0200 (CEST)
 Received: from zproxy1.enst.fr ([IPv6:::1])
  by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id g9swbZKmrxF5; Tue,  7 May 2024 20:59:06 +0200 (CEST)
+ id Ya_-fyY7R5nH; Tue,  7 May 2024 20:59:05 +0200 (CEST)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 1F267C0D05;
- Tue,  7 May 2024 20:59:06 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 1F267C0D05
+ by zproxy1.enst.fr (Postfix) with ESMTP id 17814C0D05;
+ Tue,  7 May 2024 20:59:05 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 17814C0D05
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1715108346;
- bh=4q9F1KFq8sdqxwF5xSxJc78lBnQxNP2O8xDUaS5oTfI=;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1715108345;
+ bh=QnpJKaskVydt3M9JeeJ+YmrTlVQ6dW0qxexbTyP/ZYg=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=CkOpbmBN4kXG4LKSrs4+H4Eftbab8Ro19UjTkb3oS5uaiPwYq1PfDvmWyKgBrzaQn
- nTLXcE8HKlFjXg85UIxAofNcyRRBmO1KRUAJkoVTyuctIZtXWvs4lDlSGTqbdwUKWQ
- acPgAqmTbXD06YTk+y0rUyAdSCQtlgiHB1Xli2+Q=
+ b=XgKLuwJbF0eNnKSiouecPoGnjcnrnpsPvWzNBZCCJgENbNcuyeBS2BJTVIT6mFu7/
+ mPHMS75c5WaEvTRkKfUJgV+ybRA5zak5GZtFMd6ZeeMWX4O20Lsg2VmV9ljcQGZoh8
+ eELRGOUVEkpeYKJNuDmv3UBA3qjRWBx7H9HMT7SI=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy1.enst.fr ([IPv6:::1])
  by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id 2XikcvDPsNp8; Tue,  7 May 2024 20:59:06 +0200 (CEST)
+ id f9IRu4IZ5MYc; Tue,  7 May 2024 20:59:05 +0200 (CEST)
 Received: from inesv-Inspiron-3501.enst.fr (unknown
  [IPv6:2a04:8ec0:0:124::190c])
- by zproxy1.enst.fr (Postfix) with ESMTPSA id 27E13C0D30;
- Tue,  7 May 2024 20:59:05 +0200 (CEST)
+ by zproxy1.enst.fr (Postfix) with ESMTPSA id 1D8AFC0D30;
+ Tue,  7 May 2024 20:59:04 +0200 (CEST)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
@@ -88,10 +88,9 @@ Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 3/4] hw/char: Add QOM property for STM32L4x5 USART clock
- frequency
-Date: Tue,  7 May 2024 20:55:40 +0200
-Message-ID: <20240507185854.34572-4-ines.varhol@telecom-paris.fr>
+Subject: [PATCH 2/4] hw/gpio: Handle clock migration in STM32L4x5 gpios
+Date: Tue,  7 May 2024 20:55:39 +0200
+Message-ID: <20240507185854.34572-3-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.2
 In-Reply-To: <20240507185854.34572-1-ines.varhol@telecom-paris.fr>
 References: <20240507185854.34572-1-ines.varhol@telecom-paris.fr>
@@ -120,65 +119,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /qaXeOzSD748
+X-TUID: 1eBecu9/PtEo
 
-This QOM property will be used to check the clock frequency from QTests.
+STM32L4x5 GPIO wasn't migrating its clock.
 
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 ---
- hw/char/stm32l4x5_usart.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ hw/gpio/stm32l4x5_gpio.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/hw/char/stm32l4x5_usart.c b/hw/char/stm32l4x5_usart.c
-index fc5dcac0c4..5fb3874f35 100644
---- a/hw/char/stm32l4x5_usart.c
-+++ b/hw/char/stm32l4x5_usart.c
-@@ -26,6 +26,7 @@
- #include "hw/clock.h"
+diff --git a/hw/gpio/stm32l4x5_gpio.c b/hw/gpio/stm32l4x5_gpio.c
+index 71bf5fddb2..30d8d6cba4 100644
+--- a/hw/gpio/stm32l4x5_gpio.c
++++ b/hw/gpio/stm32l4x5_gpio.c
+@@ -20,6 +20,7 @@
+ #include "qemu/log.h"
+ #include "hw/gpio/stm32l4x5_gpio.h"
  #include "hw/irq.h"
++#include "hw/clock.h"
  #include "hw/qdev-clock.h"
-+#include "qapi/visitor.h"
  #include "hw/qdev-properties.h"
- #include "hw/qdev-properties-system.h"
- #include "hw/registerfields.h"
-@@ -523,6 +524,14 @@ static Property stm32l4x5_usart_base_properties[] =3D=
- {
-     DEFINE_PROP_END_OF_LIST(),
- };
+ #include "qapi/visitor.h"
+@@ -426,8 +427,8 @@ static void stm32l4x5_gpio_realize(DeviceState *dev, =
+Error **errp)
 =20
-+static void clock_freq_get(Object *obj, Visitor *v,
-+    const char *name, void *opaque, Error **errp)
-+{
-+    Stm32l4x5UsartBaseState *s =3D STM32L4X5_USART_BASE(obj);
-+    uint32_t clock_freq_hz =3D clock_get_hz(s->clk);
-+    visit_type_uint32(v, name, &clock_freq_hz, errp);
-+}
-+
- static void stm32l4x5_usart_base_init(Object *obj)
- {
-     Stm32l4x5UsartBaseState *s =3D STM32L4X5_USART_BASE(obj);
-@@ -534,6 +543,9 @@ static void stm32l4x5_usart_base_init(Object *obj)
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-=20
-     s->clk =3D qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
-+
-+    object_property_add(obj, "clock-freq-hz", "uint32",
-+                        clock_freq_get, NULL, NULL, NULL);
- }
-=20
- static int stm32l4x5_usart_base_post_load(void *opaque, int version_id)
-@@ -546,8 +558,8 @@ static int stm32l4x5_usart_base_post_load(void *opaqu=
-e, int version_id)
-=20
- static const VMStateDescription vmstate_stm32l4x5_usart_base =3D {
-     .name =3D TYPE_STM32L4X5_USART_BASE,
+ static const VMStateDescription vmstate_stm32l4x5_gpio =3D {
+     .name =3D TYPE_STM32L4X5_GPIO,
 -    .version_id =3D 1,
 -    .minimum_version_id =3D 1,
 +    .version_id =3D 2,
 +    .minimum_version_id =3D 2,
-     .post_load =3D stm32l4x5_usart_base_post_load,
-     .fields =3D (VMStateField[]) {
-         VMSTATE_UINT32(cr1, Stm32l4x5UsartBaseState),
+     .fields =3D (VMStateField[]){
+         VMSTATE_UINT32(moder, Stm32l4x5GpioState),
+         VMSTATE_UINT32(otyper, Stm32l4x5GpioState),
+@@ -441,6 +442,7 @@ static const VMStateDescription vmstate_stm32l4x5_gpi=
+o =3D {
+         VMSTATE_UINT32(ascr, Stm32l4x5GpioState),
+         VMSTATE_UINT16(disconnected_pins, Stm32l4x5GpioState),
+         VMSTATE_UINT16(pins_connected_high, Stm32l4x5GpioState),
++        VMSTATE_CLOCK(clk, Stm32l4x5GpioState),
+         VMSTATE_END_OF_LIST()
+     }
+ };
 --=20
 2.43.2
 

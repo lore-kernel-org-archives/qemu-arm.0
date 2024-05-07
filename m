@@ -1,184 +1,214 @@
-Received: by 2002:a05:7022:ef03:b0:7c:9548:a19d with SMTP id qy3csp1907442dlb;
-        Tue, 7 May 2024 02:56:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUoK0JoH/Yn13lcXOVC6zqLrd7nDJFPNHRnRXeTAX0HwYCoFYtI4/cSyQG2x49ldJID0nW33RhRgBaE7eUp1rgfAyYCmpZF
-X-Google-Smtp-Source: AGHT+IFxwoJJqRB81of62KI8QNujsw1GlscF+/rnbwDDELq8aUe6ySxXPHBx3SHya5sNAUNoljIS
-X-Received: by 2002:a2e:83d0:0:b0:2e2:9416:a63f with SMTP id s16-20020a2e83d0000000b002e29416a63fmr7233521ljh.53.1715075817248;
-        Tue, 07 May 2024 02:56:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715075817; cv=none;
+Received: by 2002:a05:7022:ef03:b0:7c:9548:a19d with SMTP id qy3csp1923068dlb;
+        Tue, 7 May 2024 03:26:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVx/czbiA+JYmbpSEOLXPRJvECwNYOaDbvhBlBgC3qrq/78iDdq6D8KX9t8L7W0kSZlLFIyUSXG/oyCfzp9oJVCe5CkxGjR
+X-Google-Smtp-Source: AGHT+IGecySHUeZjt3uQ1YM87qMoWYEUJj2TQQUin4ZjdvQM1jDpr51whJC4SchH1m/U20WRq2x9
+X-Received: by 2002:a05:620a:3bc1:b0:790:797d:2c4a with SMTP id yf1-20020a05620a3bc100b00790797d2c4amr11334348qkn.14.1715077607483;
+        Tue, 07 May 2024 03:26:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715077607; cv=none;
         d=google.com; s=arc-20160816;
-        b=TLX/eeu79Fm2bQ9n0lFB8J9gypXeII+CAFSNkE5SGTOCj9E7HMXjnpZD/uXdMeMzSJ
-         SRJlcdsixRirhzOkhHmD/AHiAQjwh1oG7Q8lkM6335u5FfLJokO8Cg4tRWhwyigoZlPg
-         fj/3DUlRDy9GQHLmRftfeWQkOexBnuN9IAvyx2zReVlhVWpBg74DuxkxdSHne3+8Nnbs
-         eEldlwKi9ITd7OKWrYwuxnRquyBcfLnK5fINAJsx5cpcpefx2f2o2SbgyXsRdD5xDc2m
-         P+5WzBdkGdGOTDf4Of5L0pfRG4Y7AbCF0lLQlF/GnkTptrOpS/hEG7oD3sdmXMQ+H+eJ
-         32og==
+        b=TYHVmzhl5GBX4JSlZQM8Dfs3gRkMmn0iLxgfRIkUHTRXEopL3ciDihxJHn3SeWyArR
+         bN7qQmKtv880PAOlURfnInB1NSDe0NEBh4Cbx3PbXPMtPTyWDzkaNc3nu8+wuufsZ4e5
+         XtO6rTAVc5Kpw5VsAEODLxImbuz/wRurXzF0JryQw34CfYdxlU+z6id61RiqaGfJvb9i
+         tyKnXnL/eUPV0JoJswr/xWm9UEMwa+77T67Z97Xez+BzD4YGNQmwtH2znrZaWTlNx1o9
+         N9YGh0aA9fdX+BEY+svHgimajoejelystz1tRmJRCD5QKO/ugxp8NEa3opcooQlyVfAx
+         szFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=Do6aXdWIX8HnMTverHw1D2t60PfrwhTfmYGbd9r+FFM=;
-        fh=QWMYmS1AHbKc5j9IFDJwJUxEST1+zYikw0L2XprMdGs=;
-        b=IDYZkggpopYNU5wRvpETodgYy8N5KtOgQbWBAeWgcDHGPxOIWWMtasJ+pnPG4/7V1a
-         0UeXS8t4l38twWGNH3zOoFbHyvIEnz2TVy3TjJK9mAuENXznSdVGvg5yjzRNr1fUzgYt
-         cVNLuhuUx/tJdY1tmocXVD2FWesUs9UouDTWIfU54TFBHvdYl0M2I+rjhmvnFwbcF2z7
-         iZD6GaBENO3c7xwvWJQNnxJ77Oabj/N6AdEyLlPD73vdsUqrP7drmOs4IZ0fx0RcVcvL
-         VRRr5FI82HSKbV9G9xwpe2FNSzkIX2FXNlAizrdq2Q5DyVl+nxWqXpvqupIx/p6pVCOR
-         w/aw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=cQnw0Lr91mm91QCQbo0hvaxzztmipIFdNFt3BeGuD0g=;
+        fh=b0caXY4CPe/psykXhmIC1ATq16ArCjqG/j8OdW1a7lM=;
+        b=qpDN/l25tOudq1ipBduZzA2Byc0HBc0ZS3JbqBGVh0B41NOE6HG99I9Dgu0Uxi3nJf
+         F5vR68pBMz1L/MYbTOyHOPZv8VR7gQK7eOrbSIZjMDGFInOG+xXA+GjhS/HErsOVk06X
+         HGmeYKAlwYVKwXekv2atICxn8P5P71ytkjlp2oD6S7p75//U9Jeq42Z9IlaFENU6v9+e
+         VP2ZyJYDhRW/mN6JLZt2QPiRzMpvfmZmJsOmZHI2lfhcH3jtA9fSS3rfo/zgbj0UBQTp
+         sgPlR0fdVPtAKP35i+PYEef/lsfb3eXirdm8NoBTTmpTKj/+u4/fuYnUakjBNeRQb67j
+         maxQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id f6-20020a05600c4e8600b0041bc4d94869si8354563wmq.110.2024.05.07.02.56.56
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 May 2024 02:56:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=RsmbSjE5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id de30-20020a05620a371e00b0078d63a91645si12886096qkb.366.2024.05.07.03.26.47
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 07 May 2024 03:26:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VYYZg4mnGz67y8R;
-	Tue,  7 May 2024 17:56:27 +0800 (CST)
-Received: from lhrpeml100002.china.huawei.com (unknown [7.191.160.241])
-	by mail.maildlp.com (Postfix) with ESMTPS id 496181400CD;
-	Tue,  7 May 2024 17:56:55 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml100002.china.huawei.com (7.191.160.241) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 7 May 2024 10:56:54 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
- Tue, 7 May 2024 10:56:54 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "maz@kernel.org" <maz@kernel.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron
-	<jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
-	<lpieralisi@kernel.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V8 6/8] physmem: Add helper function to destroy CPU
- AddressSpace
-Thread-Topic: [PATCH V8 6/8] physmem: Add helper function to destroy CPU
- AddressSpace
-Thread-Index: AQHadCFXcU6yTs2isEyCNhmIUrtCDrGHWFKAgALjoLD///qlAIAAEQrggAF59YCAABVhIA==
-Date: Tue, 7 May 2024 09:56:54 +0000
-Message-ID: <a308e1f4f06f4e3ab6ab51f353601f43@huawei.com>
-References: <20240312020000.12992-1-salil.mehta@huawei.com>
- <20240312020000.12992-7-salil.mehta@huawei.com>
- <CAFEAcA93EotG4-LXRJF034_9dWAWgZJA1VF6dB-xCsXn0T059g@mail.gmail.com>
- <10f35804a55e460a8ce6ecdb3f0c79b6@huawei.com>
- <CAFEAcA-w7wf9F4VVAnZR3b34ydEWq=QNw=CxhTMobsr+AP_LCg@mail.gmail.com>
- <55f942d2a3644bdaaff759014e3a4c20@huawei.com>
- <CAFEAcA92nCPPk0Qa6XjRqRGTq_XDyRSVVaz67WgJBEZcxoEtOQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA92nCPPk0Qa6XjRqRGTq_XDyRSVVaz67WgJBEZcxoEtOQ@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.48.159.236]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@linaro.org header.s=google header.b=RsmbSjE5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s4I1v-0006ML-7E; Tue, 07 May 2024 06:26:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1s4I1p-0006Hq-2G
+ for qemu-arm@nongnu.org; Tue, 07 May 2024 06:26:33 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1s4I1l-0005oe-8U
+ for qemu-arm@nongnu.org; Tue, 07 May 2024 06:26:30 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-a59a17fcc6bso657353066b.1
+ for <qemu-arm@nongnu.org>; Tue, 07 May 2024 03:26:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1715077586; x=1715682386; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=cQnw0Lr91mm91QCQbo0hvaxzztmipIFdNFt3BeGuD0g=;
+ b=RsmbSjE5fZHVVTthPsGrqmqDrxqvzVnEKQBqYmS+CTBNri+cyH/cp4dCyto9PlNmcn
+ OQMmQeIP68wO7MQ7M+j9/DMEk5p21S2S5OH+p1U6J5h3ALwS9SmaK22QvAT1ARbSre6a
+ EE+1pIv1xNGvgw8qEp/E8yabtysqfaJ2CDZuLJI2/g11lAVQfa1FrzVO9Br9A7ZwTxVy
+ JuiI5YqREIrr1YXfLsFDcMcaYNM04dXA67ecS/v3W5ZrGcGPcJQP0mQL2mdev/kvr2Wg
+ xNbFDweoKZ7QIg8eyq4sz6xGAtWCIFV1fbD+VkFv+3umIHCxb932K+XukZisl5Olp86/
+ XzDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1715077586; x=1715682386;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=cQnw0Lr91mm91QCQbo0hvaxzztmipIFdNFt3BeGuD0g=;
+ b=PB0EKlpN++GzU35fxmJABvwEZMvuRsCL5dP5XcMUtmXzlqTYAHxg2CKKhwitrFrRx8
+ ZgmcsV1/unQ7FQaVuWQ7A6a8KksQDasOQQc1jD7fEc0if8Vlgn7m3DvrvYhJiLCd2YGH
+ bg21ge+hNrLQ0P7IU1uGIimbU15nmk7vvbAm5uFIUi0U0YRiI4qPdxNSkt12O+B3ZGCd
+ 7b0xGEPTBpnUH14ncBxkkRp43AHD2VqIRKJZo4P8bsanEGaNF7f3M3szrEEwLqPv3o78
+ q3DlVr3GSCOs9V4D0KojTk4vkyLYGsNfS2sWPfTqMtrzaj6vb2lj66nyL+jcdvzLeQug
+ iKOA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWgH4BWjJBZQ9J3N+l8pr3PB8UzbrBc0a7e6p4y0GF3+Jr+rf0J/tvBMRQpbJVZP7vXUJydG72XTHFBmXFDthEzT6Y6
+X-Gm-Message-State: AOJu0Yx4ANNRDAivRZ/NvxEpW37p+Y1X+4EX6w1m0ZFlC9ZVaYJrSD0R
+ sdeNpKMmP5b6A/3ZiITN6qXhd8GmeDJOH2lnNLi/tIBMFv5lRDuvyHznB+9H8G3tqJK+7CbKT+y
+ yqEHC1/zy1T7WkbcSTiAGSz5psyfs1B3oGmxDuA==
+X-Received: by 2002:a50:ab5a:0:b0:572:5f8c:42 with SMTP id
+ t26-20020a50ab5a000000b005725f8c0042mr8214873edc.0.1715077586524; 
+ Tue, 07 May 2024 03:26:26 -0700 (PDT)
 MIME-Version: 1.0
-X-TUID: 22bwOnqve+5H
+References: <CAHnsOnN6AkE3visU9jaycp61G87XRJFwDGx4D1=HJSJpA2tfXw@mail.gmail.com>
+In-Reply-To: <CAHnsOnN6AkE3visU9jaycp61G87XRJFwDGx4D1=HJSJpA2tfXw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 7 May 2024 11:26:15 +0100
+Message-ID: <CAFEAcA8S1HJgcJdC5M=V1UHZHwNKhX_ii9PNNc88uC2Gi2E3sw@mail.gmail.com>
+Subject: Re: [PATCH] Fixes: Indentation using TABs and improve formatting
+To: Tanmay <tanmaynpatil105@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org, 
+ "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
+ pbonzini@redhat.com, richard.henderson@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Z4ddtXaEm7OS
 
-SGkgUGV0ZXIsDQoNCj4gIEZyb206IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJv
-Lm9yZz4NCj4gIFNlbnQ6IFR1ZXNkYXksIE1heSA3LCAyMDI0IDEwOjAzIEFNDQo+ICANCj4gIE9u
-IFR1ZSwgNyBNYXkgMjAyNCBhdCAwMToxMSwgU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQGh1YXdl
-aS5jb20+IHdyb3RlOg0KPiAgPg0KPiAgPiA+ICBGcm9tOiBQZXRlciBNYXlkZWxsIDxwZXRlci5t
-YXlkZWxsQGxpbmFyby5vcmc+DQo+ICA+ID4gIFNlbnQ6IE1vbmRheSwgTWF5IDYsIDIwMjQgMTA6
-MjkgQU0NCj4gID4gPiAgVG86IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPg0K
-PiAgPiA+DQo+ICA+ID4gIE9uIE1vbiwgNiBNYXkgMjAyNCBhdCAxMDowNiwgU2FsaWwgTWVodGEg
-PHNhbGlsLm1laHRhQGh1YXdlaS5jb20+DQo+ICA+ID4gIHdyb3RlOg0KPiAgPiA+ICA+DQo+ICA+
-ID4gID4gSGkgUGV0ZXIsDQo+ICA+ID4gID4NCj4gID4gPiAgPiBUaGFua3MgZm9yIHRoZSByZXZp
-ZXcuDQo+ICA+ID4gID4NCj4gID4gPiAgPiA+ICBGcm9tOiBQZXRlciBNYXlkZWxsIDxwZXRlci5t
-YXlkZWxsQGxpbmFyby5vcmc+ICBXaGVuIGRvIHdlDQo+ICA+ID4gbmVlZCB0byAgPiA+IGRlc3Ry
-b3kgYSBzaW5nbGUgYWRkcmVzcyBzcGFjZSBpbiB0aGlzIHdheSB0aGF0IG1lYW5zDQo+ICA+ID4g
-d2UgbmVlZCB0byAgPiA+IGtlZXAgYSBjb3VudCBvZiBob3cgbWFueSBBU2VzIHRoZSBDUFUgY3Vy
-cmVudGx5IGhhcz8NCj4gID4gPiBUaGUgIGNvbW1pdCAgPiA+IG1lc3NhZ2UgdGFsa3MgYWJvdXQg
-dGhlIGNhc2Ugd2hlbiB3ZSB1bnJlYWxpemUgdGhlDQo+ICA+ID4gd2hvbGUgQ1BVICA+ID4gb2Jq
-ZWN0LCBidXQgaW4gdGhhdCBzaXR1YXRpb24geW91IGNhbiBqdXN0IHRocm93IGF3YXkNCj4gID4g
-PiBhbGwgdGhlIEFTZXMgID4gPiBhdCBvbmNlIChlZyAgYnkgY2FsbGluZyBzb21lICA+ID4NCj4g
-ID4gPiBjcHVfZGVzdHJveV9hZGRyZXNzX3NwYWNlcygpIGZ1bmN0aW9uIGZyb20NCj4gID4gPiBj
-cHVfY29tbW9uX3VucmVhbGl6ZWZuKCkpLg0KPiAgPiA+ICA+DQo+ICA+ID4gID4NCj4gID4gPiAg
-PiBZZXMsIG1heWJlLCB3ZSBjYW4gZGVzdHJveSBhbGwgYXQgb25jZSBmcm9tIGNvbW1vbiBsZWcg
-YXMgd2VsbC4NCj4gID4gPiBJJ2QgID4gcHJlZmVyIHRoaXMgdG8gYmUgZG9uZSBmcm9tIHRoZSBh
-cmNoIHNwZWNpZmljIGZ1bmN0aW9uIGZvcg0KPiAgPiA+IEFSTSB0byAgPiBtYWludGFpbiB0aGUg
-Y2xhcml0eSAmIHN5bW1ldHJ5IG9mIGluaXRpYWxpemF0aW9uIGFuZCAgPg0KPiAgPiA+IHVuLWlu
-aXRpYWxpemF0aW9uIGxlZ3MuICBGb3Igbm93LCBhbGwgb2YgdGhlc2UgYWRkcmVzcyBzcGFjZQ0K
-PiAgPiA+IGRlc3RydWN0aW9uIGlzICBoYXBwZW5pbmcgaW4gY29udGV4dCB0byB0aGUgYXJtX2Nw
-dV91bnJlYWxpemVmbigpLg0KPiAgPiA+ICA+DQo+ICA+ID4gID4gSXTigJlzIGEga2luZCBvZiB0
-cmFkZS1vZmYgYmV0d2VlbiBsaXR0bGUgbW9yZSBjb2RlIGFuZCBjbGFyaXR5IGJ1dA0KPiAgPiA+
-IEknbSAgPiBvcGVuIHRvIGZ1cnRoZXIgc3VnZ2VzdGlvbnMuDQo+ICA+ID4gID4NCj4gID4gPiAg
-Pg0KPiAgPiA+ICA+ID4NCj4gID4gPiAgPiA+ICBBbHNvLCBpZiB3ZSdyZSBsZWFraW5nIHN0dWZm
-IGhlcmUgYnkgZmFpbGluZyB0byBkZXN0cm95IGl0LCBpcw0KPiAgPiA+IHRoYXQgID4gPiBhIHBy
-b2JsZW0gZm9yICBleGlzdGluZyBDUFUgdHlwZXMgbGlrZSB4ODYgdGhhdCB3ZSBjYW4gYWxyZWFk
-eSAgaG90cGx1Zz8NCj4gID4gPiAgPg0KPiAgPiA+ICA+IE5vIHdlIGFyZSBub3QuIFdlIGFyZSB0
-YWtpbmcgY2FyZSBvZiB0aGVzZSBpbiB0aGUgQVJNIGFyY2gNCj4gID4gPiBzcGVjaWZpYyAgPiBs
-ZWdzIHdpdGhpbiBmdW5jdGlvbnMgYXJtX2NwdV8odW4pcmVhbGl6ZWZuKCkuDQo+ICA+ID4NCj4g
-ID4gPiAgSG93IGNhbiB5b3UgYmUgdGFraW5nIGNhcmUgb2YgKng4NiogQ1BVIHR5cGVzIGluIHRo
-ZSBBcm0gdW5yZWFsaXplPw0KPiAgPg0KPiAgPg0KPiAgPiBTb3JyeSwgeWVzLCBJIG1pc3NlZCB0
-byByZXBseSB0aGF0IGNsZWFybHkuIFRoZXJlIHdhcyBpbmRlZWQgYSBsZWFrDQo+ICA+IHdpdGgg
-eDg2IHJlcG9ydGVkIGJ5IFBoaWxsaXBlL0RhdmlkIGxhc3QgeWVhci4gSW4gZmFjdCwgUGhpbGxp
-cGUgZmxvYXRlZCBhDQo+ICBwYXRjaCBsYXN0IHllYXIgZm9yIHRoaXMuDQo+ICA+IEkgdGhvdWdo
-dCBpdCB3YXMgZml4ZWQgYWxyZWFkeSBhcyBwYXJ0IG9mIGNwdV9jb21tb25fdW5yZWFsaXplKCkg
-YnV0IEkNCj4gID4ganVzdCBjaGVja2VkIGFuZCByZWFsaXplZCB0aGF0IHRoZSBiZWxvdyBwcm9w
-b3NlZCBjaGFuZ2VkIHN0aWxsIGlzbuKAmXQNCj4gID4gcGFydCBvZiB0aGUgbWFpbmxpbmUNCj4g
-ID4NCj4gID4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDIzMDkxODE2MDI1
-Ny4zMDEyNy05LQ0KPiAgcGhpbG1kQGxpbmFyDQo+ICA+IG8ub3JnLw0KPiAgDQo+ICBUaGF0IHNl
-ZW1zIGxpa2UgdGhlIHJpZ2h0IHdheSB0byBjbGVhbiB0aGVzZSB1cCAtLSBQaGlsaXBwZSwgZG8g
-eW91IHdhbnQgdG8NCj4gIGZpc2ggdGhhdCBidWdmaXggb3V0IG9mIHlvdXIgYmlnIHBhdGNoc2V0
-IGFuZCBzdWJtaXQgaXQgc2VwYXJhdGVseSA/DQo+ICANCj4gID4gSSBjYW4gZGVmaW5pdGVseSBh
-ZGQgYSBjb21tb24gQ1BVIEFkZHJlc3NTcGFjZSBkZXN0cnVjdGlvbiBsZWcgYXMgcGFydA0KPiAg
-PiBvZiB0aGlzIHBhdGNoIGlmIGluIGNhc2UgYXJjaCBzcGVjaWZpYyBDUFUgdW5yZWFsaXplIGRv
-ZXMgbm90IGNsZWFucw0KPiAgPiB1cCBpdHMgQ1BVIEFkZHJlc3NTcGFjZT8NCj4gIA0KPiAgQXJj
-aC1zcGVjaWZpYyBDUFUgdW5yZWFsaXplIHNob3VsZG4ndCBuZWVkIHRvIGRvIGFueXRoaW5nIC0t
-IGlmIHdlIGZpeCB0aGlzDQo+ICBzaW1pbGFybHkgdG8gUGhpbGlwcGUncyBwYXRjaCBhYm92ZSB0
-aGVuIHRoYXQgd2lsbCBkbyB0aGUgY2xlYW51cCByZXF1aXJlZC4NCj4gIEhhbmRsaW5nIHRoaXMg
-a2luZCBvZiBjbGVhbnVwIGluIGNvbW1vbiBjb2RlIGlzIG1vcmUgcmVsaWFibGUgYmVjYXVzZSBp
-dA0KPiAgZG9lc24ndCByZXF1aXJlIGV2ZXJ5IHRhcmdldC1hcmNoIG1haW50YWluZXIgdG8gcmVt
-ZW1iZXIgaXQgbmVlZHMgdG8gYmUNCj4gIGRvbmUsIHBsdXMgaXQncyBsZXNzIGNvZGUuDQoNCg0K
-QWdyZWVkIGJ1dCBJdCBpcyBhIHRyYWRlLW9mZiBiZXR3ZWVuICdsaW5lcyBvZiBjb2RlJyBhbmQg
-J2NsYXJpdHkgb2YgdGhlIGNvZGUnLg0KSWRlYWxseSwgaWYgc29tZW9uZSBpcyBhZGRpbmcgYSBp
-bml0aWFsaXphdGlvbiBwYXJ0IG9uZSBtdXN0IGNvbnNjaW91c2x5IHZlcmlmeQ0KdGhlIGxvY2F0
-aW9ucyB3aGVyZSB0aGVzZSB3aWxsIGdldCBkZWFsbG9jYXRlZC9kZWluaXRlZCBhcyB3ZWxsIHNv
-IEkgZG8gbm90DQp0aGluayB0aGVyZSBpcyBhbiBlc2NhcGUgZnJvbSB0aGF0IGtpbmQgb2YgbWFp
-bnRlbmFuY2UgcGFydC4gDQoNCkZvciBhcmNoIGxpa2UgeDg2LCB3aGVyZSB3ZSBhcmUgZG9pbmcg
-ZGVmYXVsdCBBZGRyZXNzU3BhY2UgYWxsb2NhdGlvbiBmcm9tDQpjb21tb24gcmVhbGl6ZSwgaXQg
-aXMgbW9yZSBvYnZpb3VzIHRvIHN5bW1ldHJpY2FsbHkgZGVzdHJveSBmcm9tIGNvbW1vbg0KbGVn
-IGJ1dCBmb3IgYW55IG90aGVyIGFyY2hpdGVjdHVyZSBpbmNsdWRpbmcgQVJNIHdoZXJlIG1hbnkg
-dHlwZXMgb2YgQ1BVDQpBZGRyZXNzU3BhY2UgYXJlIGdldHRpbmcgYWxsb2NhdGVkIGl0IHdvdWxk
-IG5vdCBiZSBvYnZpb3VzIHRvIGZpbmQgaXRzDQpkZXN0cnVjdGlvbiBsZWcgYnVyaWVkIHNvbWV3
-aGVyZSBpbiB0aGUgY29tbW9uIGNvZGUuIA0KDQpIZW5jZSwgSSB3b3VsZCBzdWdnZXN0IHRvIG1h
-a2UgcmVsZWFzZSBvZiB0aGUgQWRkcmVzc1NwYWNlIGZyb20gY29tbW9uDQp1bnJlYWxpemF0aW9u
-IHBhcnQgb3B0aW9uYWwgd2hpY2ggYnkgZGVmYXVsdCBpdCBpcyBpbiB0aGUgY29kZSBleGNlcnB0
-IGZyb20gdGhlDQpwYXRjaDoNCg0KaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8y
-MDIzMDkxODE2MDI1Ny4zMDEyNy05LXBoaWxtZEBsaW5hcm8ub3JnLw0KDQorICAgIC8qIERlc3Ry
-b3kgQ1BVIGFkZHJlc3Mgc3BhY2UgKi8NCisgICAgZm9yICh1bnNpZ25lZCBpZHggPSAwOyBpZHgg
-PCBjcHUtPm51bV9hc2VzOyBpZHgrKykgew0KKyAgICAgICAgY3B1X2FkZHJlc3Nfc3BhY2VfZGVz
-dHJveShjcHUsIGlkeCk7DQorICAgIH0NCg0KY3B1LT5udW1fYXNlcyB3aWxsIGJlIDAgaW4gY2Fz
-ZSBBcmNoIHNwZWNpZmljIGNvZGUgaGFzIGFscmVhZHkgZGVzdHJveWVkIGl0Lg0KDQpUaGF0IHNh
-aWQgd2Ugd2lsbCBzdGlsbCBuZWVkIHNvbWUgbW9kaWZpY2F0aW9uIGluIHRoZSBhZGRyZXNzIHNw
-YWNlIGRlc3RydWN0aW9uDQpmdW5jdGlvbiB0byBncmFjZWZ1bGx5IHJldHVybiBpbiBjYXNlIHRo
-YXQgQ1BVIEFkZHJlc3NTcGFjZSB3YXMgYWxyZWFkeQ0KZGVzdHJveWVkIG9yIGRvZXMgbm90IGV4
-aXN0LiBUaGlzIHdpbGwga2VlcCBib3RoIG9wdGlvbnMgb3Blbi4NCg0KDQpUaGFua3MNClNhbGls
-Lg0KDQo+ICANCj4gIHRoYW5rcw0KPiAgLS0gUE1NDQo=
+On Mon, 6 May 2024 at 07:20, Tanmay <tanmaynpatil105@gmail.com> wrote:
+>
+> Hi,
+>
+> I have added a patch inline that fixes indentation and formatting for some files as listed in https://gitlab.com/qemu-project/qemu/-/issues/373.
+>
+> Thanks,
+> Tanmay
+
+Hi; thanks for this patch. Unfortunately there seem to be some
+problems with the formatting, which mean it doesn't apply correctly.
+
+In particular you've sent it as a plain/text + HTML email, and
+something (probably your mail client) is wrapping long lines.
+I can usually fix something like this up on my end for a first
+time submitter, but in this case the patch is just way too big
+for that to be practical.
+
+I generally don't recommend trying to send patch emails directly
+through the gmail web UI -- it unfortunately mangles them too
+much. Personally I use git-send-email; it is a bit awkward to
+set up, but https://git-send-email.io/ has a nice step-by-step
+guide including specific details on how to configure it to send
+via Gmail.
+
+> From 46026574821c46804111eea6607a1b39314b7abe Mon Sep 17 00:00:00 2001
+> From: Tanmay Patil <tanmaynpatil105@gmail.com>
+> Date: Sat, 25 Nov 2023 00:53:54 +0530
+> Subject: [PATCH] Fixes: Indentation using TABs and improve formatting
+>  Resolves: https://gitlab.com/qemu-project/qemu/-/issues/373
+>
+>    Files changed:
+>         - hw/arm/boot.c
+>         - hw/char/omap_uart.c
+>         - hw/dma/pxa2xx_dma.c
+>         - hw/gpio/omap_gpio.c
+>         - hw/gpio/zaurus.c
+>         - hw/input/tsc2005.c
+>         - hw/input/tsc210x.c
+>         - hw/intc/omap_intc.c
+>         - hw/misc/cbus.c
+>         - hw/misc/omap_clk.c
+>         - hw/misc/omap_l4.c
+>         - hw/misc/omap_sdrc.c
+>         - hw/misc/omap_tap.c
+>         - hw/sd/omap_mmc.c
+>         - hw/sd/pxa2xx_mmci.c
+>         - hw/timer/omap_gptimer.c
+>         - hw/timer/omap_synctimer.c
+>         - hw/timer/pxa2xx_timer.c
+>         - include/hw/arm/pxa.h
+>         - include/hw/arm/sharpsl.h
+>         - include/hw/arm/soc_dma.h
+>         - tcg/arm/tcg-target.h
+>
+> Signed-off-by: Tanmay Patil <tanmaynpatil105@gmail.com>
+> ---
+>  hw/arm/boot.c             |   8 +-
+>  hw/char/omap_uart.c       |  49 +-
+>  hw/dma/pxa2xx_dma.c       | 198 ++++----
+>  hw/gpio/omap_gpio.c       | 243 +++++-----
+>  hw/gpio/zaurus.c          |  61 +--
+>  hw/input/tsc2005.c        | 130 ++---
+>  hw/input/tsc210x.c        | 442 +++++++++--------
+>  hw/intc/omap_intc.c       | 261 +++++-----
+>  hw/misc/cbus.c            | 202 ++++----
+>  hw/misc/omap_clk.c        | 999 +++++++++++++++++++-------------------
+>  hw/misc/omap_l4.c         |  21 +-
+>  hw/misc/omap_sdrc.c       | 135 +++---
+>  hw/misc/omap_tap.c        |  28 +-
+>  hw/sd/omap_mmc.c          | 208 ++++----
+>  hw/sd/pxa2xx_mmci.c       | 149 +++---
+>  hw/timer/omap_gptimer.c   | 126 ++---
+>  hw/timer/omap_synctimer.c |   7 +-
+>  hw/timer/pxa2xx_timer.c   | 279 ++++++-----
+>  include/hw/arm/pxa.h      | 100 ++--
+>  include/hw/arm/sharpsl.h  |   2 +-
+>  include/hw/arm/soc_dma.h  |   4 +-
+>  tcg/arm/tcg-target.h      |   4 +-
+>  22 files changed, 1903 insertions(+), 1753 deletions(-)
+
+This is a lot of changes to do all in one commit, even though they're
+all just whitespace fixes. Could you split them up, please, into
+multiple patches that tackle fewer files at a time?
+
+thanks
+-- PMM

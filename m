@@ -1,206 +1,183 @@
-Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp2067003ejc;
-        Mon, 6 May 2024 22:42:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXRbD+tF+KJA4j1AZgz8/Zj5avxiJw2zrRpyLgZGbI9A46LbsFRAkZtYfiY6VP6+QJBZUq4Rq4sagXoANckN3kkXW4NKKky
-X-Google-Smtp-Source: AGHT+IFor9M3fa4nUZvc+6e1beFnCqfv/vPaSDj12ek0G/7iZNFijXiQYrpE7bWPhQHX31AQgFyB
-X-Received: by 2002:a05:620a:4402:b0:78f:1596:e71e with SMTP id v2-20020a05620a440200b0078f1596e71emr17015508qkp.50.1715060577301;
-        Mon, 06 May 2024 22:42:57 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1715060577; cv=pass;
+Received: by 2002:a05:7022:ef03:b0:7c:9548:a19d with SMTP id qy3csp1883960dlb;
+        Tue, 7 May 2024 02:02:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWzGscuwtwpwSnLROHym1EejDTGznfuEEIN9dJbf7XUKO0q1xb4lU+fnsNP9Sonlmk4k7IdX24fT/HGQeuNADlKxq7p/zMn
+X-Received: by 2002:a17:906:57da:b0:a59:ef1f:83e4 with SMTP id u26-20020a17090657da00b00a59ef1f83e4mr697904ejr.59.1715072569952;
+        Tue, 07 May 2024 02:02:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715072569; cv=none;
         d=google.com; s=arc-20160816;
-        b=0n628PJkDHuY5UKBHeplvdllUKa4zzBCSCBlsd9REBTOek4Asmf7Tr6LWPUFtVkqKZ
-         sOkUNGrdG0lK9NETY7UKbOWLO7kENE0EEur8vNQtCXCCw8oTNqNfFMyu6QAMrAp7JOAW
-         dojSJxcnT/AUfrMvQfzs91RlVcoV4ED4HzbJh0O59wEGoD9EV8+bIirjVx4NUOKQoRmU
-         uE9fK9xF/m/S+nSn+tCUPHJooLAUj0swheOAPo/XhDE0/7250sJM7CqYdxTor5a9+rwZ
-         uGiVdbj0HUCoXq19dLYVnDeSL4pN9vjp5TO9b7v18Xjyvi+01TFZbjjSs2W5I0DzLJQR
-         Sz5Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:cc:to:from;
-        bh=WqFcqPKO/+mldgGzvm9zW25vFaxFJoopkuCQHD+vhis=;
-        fh=BPqx+tT0l4/T42nLjlbaMbNPkbDvuI5V4MIQ4GAZFPU=;
-        b=iVYS0F3wLYM/E20y96NkdcG/IHo/lVBvqSzPh4+An+FERg3jo2dpkXQo62+4tMTUrB
-         AV/C8baEfavdCsm2TusHzqOr4pLIyYSjOE2g46ZJzpBVnJ9zrENA9AqWXkRasyYsDvbG
-         9GsEr/P2bezIiI88tgFbeFeR6NDNeMbxxI4uCJ27mnkdvwu8yDXdah+a2myqZcCuBjJW
-         55L+JOhEV6Fm4qT88VISQ0VKy9FCruXnJ+wm3vG9c2M9X4mP/VXPRFGeQeni6bBNd7w6
-         1C6x0wjMUaJE/q4lW0Hrhrmx6sVGwBT/jDyg1M3xvSb+dXpyv2S0UlIHrqAqDZzlYR8d
-         B2IA==;
+        b=D/XCtQo0tXR21/tjR+/Cx+0mJ5fztCdnz33zAgaaA5+Q7Jm0EmaV//FzPaYw4jx2ch
+         ilo+yeMbORn6uLkvk+Ccc98694ExVYUN13hglNOeEe8KEJLhPQvpncdVa2+GoDxAc4f5
+         4FehMV/Zj9pwYKvO21YS4GUj3a/JH211YuJBYkExEHSbz4cD4/P1piH1DMI0r7ZqORVx
+         R/ul2+oEdcka6PcKQpIdMr4LPJvG1xQSt1IbBYMJaxA9g4Pt115/SegGmam6pqnZlOQ9
+         ap689cPAVLPss21QxB/OpDJysLlvyMAHKr0TKU7yjZA7CQ9GFmbc8BtrW9opaI5Aa+Wx
+         ke/g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Z2jE5qDfx8bS3LJas2UapfjwL3dy12JCUJWy1N4nJtY=;
+        fh=cJMZ7VTsUd8ltzlYbtMmpx1bJhnyFbjesr8XPxiVfpg=;
+        b=BGXRaMMT7RET0jim9ozqjdvk4yUGrUX4Cx5RcZDHJZxesPBLEZm7bPIsUym5Pf4n4J
+         yzsSwavN0MUgB4NHJhLSJTkxohJjtXTn+5V++u44KDQLM9MGTh0Zipo9vSLBb/xOIOjS
+         YdXDTh+cFoK7h84mCxc45h6NzQPeTnfr91JLAAOKsUOJDB5gP1vXfZbRAuB/NNmQLDvj
+         Izy1GagjZ30XqznUZhH+2wZR/IUWBVWwa9J2OisCXApKmBwpntyTuJlYRP9OPXUB5oRw
+         HQPdeGz2sCxYWJbrvcYErooTfbyuoh0CUQtgfrE07unCekzEtbnvgoT50iNPRSz66hsi
+         NWlQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b5-20020a05620a04e500b00792a1ae5db7si2232743qkh.735.2024.05.06.22.42.56
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="eHPI7/AD";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m18-20020a170906235200b00a59ab5af9adsor1645743eja.0.2024.05.07.02.02.49
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 May 2024 22:42:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 07 May 2024 02:02:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s4Db3-0002eJ-Ay; Tue, 07 May 2024 01:42:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1s4Daz-0002dF-AA; Tue, 07 May 2024 01:42:33 -0400
-Received: from mail-sh0chn02on2070e.outbound.protection.partner.outlook.cn
- ([2406:e500:4420:2::70e]
- helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1s4Dav-0007IG-2H; Tue, 07 May 2024 01:42:32 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TQKkW7Ll8uWtNC5VQ1p/qM2EW1u0UTH7+bVrb1X3/BsTs3gob8jUdOZftP5ZsvLJBMwLdJuxes5naIBgb7208v+/IEQ9ke7pnjTgoVnwS5HH7D35f1OUe3/nGzyJac8y3s+5F8PZBaOvyUyR6GI0bFSV/BO1nbnNZVA8o9IhAgBPowF3Z2uUR6tBWpygEh4kcoSwgQVvb1/YVwfkAbE3SKGKbY0/3f0uzhzVMLmN4hOM0d4EVTLHVXqCwMqk4SrQ4BQnX6HyXmJvqlsWWnOIKsFhh/KZByGlPTNtg0nDqqMnXGxl3vQClZo8ddFdjGeqaFx6bzeJW+8oXumJhkEeBQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WqFcqPKO/+mldgGzvm9zW25vFaxFJoopkuCQHD+vhis=;
- b=Hxa8b5lEMgEo3SvdTXngSNXu3HFRNqj7myREOwm1nMo6bZARq27RM7f1qXWIl3itHxYfuXwhL/LAKolr1wKpHiYiJVNmjiSLujJDJ0ZPYJPG/1XsVnDAEk+Ewq14EcScFKGTHbWRfxp6h62HTYw+hVeU1MmzKw+9If02xfbv8IDYrfCNoTgZipGC+YNBYyd+hliNg5nOUoMNsk2AA6PydlxWfqI+XlosnajfnjgalJzp0ss3kH9ma3NhP1/E0b9nL0m3j7LpH3CLwoo1VqsCJEfuVwdlmgIvZjrIVDXRAzp1iuq2xSgJOdqPweL4ymRabmY5ldRM3sT6ASHXeoWWEQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=starfivetech.com; dmarc=pass action=none
- header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=starfivetech.com;
-Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c510:12::10) by NT0PR01MB1072.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c510:3::14) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.33; Tue, 7 May
- 2024 05:22:27 +0000
-Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
- ([fe80::e604:661e:e939:4c87]) by
- NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn ([fe80::e604:661e:e939:4c87%4])
- with mapi id 15.20.7472.044; Tue, 7 May 2024 05:22:27 +0000
-From: Sia Jee Heng <jeeheng.sia@starfivetech.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
- peter.maydell@linaro.org, jeeheng.sia@starfivetech.com,
- shannon.zhaosl@gmail.com, sunilvl@ventanamicro.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bin.meng@windriver.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
-Subject: [PATCH v2 0/3] Upgrade ACPI SPCR table to support SPCR table version
- 4 format
-Date: Mon,  6 May 2024 22:22:09 -0700
-Message-Id: <20240507052212.291137-1-jeeheng.sia@starfivetech.com>
-X-Mailer: git-send-email 2.34.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: NT0PR01CA0024.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c510:c::8) To NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c510:12::10)
+       dkim=pass header.i=@linaro.org header.s=google header.b="eHPI7/AD";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1715072569; x=1715677369; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Z2jE5qDfx8bS3LJas2UapfjwL3dy12JCUJWy1N4nJtY=;
+        b=eHPI7/ADFoHlpQD4Z60MyoTB+A0E6Gm/g6S3wD7xHfwatGDafTjHnPHKN2fv5Xj9T8
+         P7PAV/NfacWgEcKoCpf7HR/QxHXNpNUm56ai1+etCcSuAUXqud77+L0644FJZcG6OmZ4
+         42ojiOK9XDXEt2+etagYphCcoykDQdkavUKOQOrCHJObwXP3AAHVHhEHAHPy6GCNHeyQ
+         ZhOl09DKUvo/X+6LzqQpMQu/TWsyAYnjUiOBpPcVCNJqMpyKKr9lq2CTOy7/fc4x9SrZ
+         UbUbJ+W9aXJAXH+jN5JeBK1hf2vlydzTXSxEukDVhYmJmDN6mtyN6V/0eMIvfmAgIRpf
+         XDgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715072569; x=1715677369;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Z2jE5qDfx8bS3LJas2UapfjwL3dy12JCUJWy1N4nJtY=;
+        b=TsO3sHqhfMDNmCetGRWfGhvVcBL9hSiEbF/WM0YEXZ5lbMvRSIYuvQ9lmfOY6Vn2IV
+         12xUM5Rfifb9fuis3Thx3EjCsNE9xDjLpUwvEXOGZ9YRbhxsUUIsfgPSS9FarT88G1zW
+         PrgHuyAmeSd6jve3p9mrq6Q7hyAYFtKFouEhZvJ2HCmrCs092Q1Sx3iNuqUeE+txp8P7
+         mo2/fSFIar3qW7L0KPkNZRrbBhGScai8hI0tJSUjnIBJNWd12InUSRoCwOZ5IpOvqKm6
+         hiHT0ttlbxbC6QY4Kmc1DB5Ioo3LTj0KjiG3DkPwrZoCyx0GdjdKrWOiLqBeB5kqgAjv
+         niwg==
+X-Forwarded-Encrypted: i=1; AJvYcCWUb3z999eoTOhjYW7FYr39zMuWj4tlPkxuuplqzhiyZmcUWvKYJyrycVbD7VG9lLJfwABEA5EKqXtx/+oektwyvTWelvEI
+X-Gm-Message-State: AOJu0YwKj7prdX6jZ2x2qpKIkA7YvN9W08/ql3EunsN4emk9x7lIIj9l
+	YDxnNp9i1FDIPtmrCByFleR6Txh8S13pdHvVNBO8rR8I1SsW/R/Wbi0ODLAjRSIPSckUhrS1Ntt
+	uTDl3Tbq1FeOk8EiU0oC6H2Psgr3/RP8T6cjYyyO8
+X-Google-Smtp-Source: AGHT+IGRKbUd3xCeyVnFWisL15Tu+azAc7g+Ys9aQHJHCKi0yT/uNqNOD6ylCW1UdjC1qCIAoBcMsGi2by5IjZeQDnk=
+X-Received: by 2002:a50:cc96:0:b0:572:32e4:daca with SMTP id
+ q22-20020a50cc96000000b0057232e4dacamr7264208edi.25.1715072569373; Tue, 07
+ May 2024 02:02:49 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: NT0PR01MB1278:EE_|NT0PR01MB1072:EE_
-X-MS-Office365-Filtering-Correlation-Id: 828fc01b-0f8b-40d9-e9be-08dc6e55af14
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: M7GaCVuk8agZz9o5ObJc57pZPFkzCFk1UDfaz7lT7UcIgPYM7t2KUILwNu7mTsRQnWDS/hLe21/U4v2+0SkTGCeMr8D0GFDbR0oGGmqO62DL+mfl5cBJwJ2u2bWQwSyXz3qMzKeH5tTOpDjFBIOfpCRW0sMHKPMdf1aeNDa7YIH+Gjj1wqPMXElZHNrNPBM8DtbHiFFa1ygSf6sRvIyfRqcXPsRK/SIGDKpMmUirM735vFVKmV9D6r8ZoY05pI0gGHKBj428u2JDPZ5uL+ok4xCnR0NLxDXAy2X4lcwiUZTQ71PR6gAD6/C0CJGoc42jw5YD35/DjfG8s1zWUIUHZOtW13r6rKrkeeQ+5oqUY7NNp4lng/na3B5ZZ/a+44N0UrECwyHfzKK3cvGp2mZWiaWOxDerrTHhO/3KpF7Htlypfr9T117ItXLGa7XSKNOmdGrM4jXRmOA04cVBzagci7a2k8zvHnJyPH7U8wgoa/r4DgGnUhGslGnaNtRZF3G4qbYR1hOw+ZcTqed/ivpuU8bMQvmUTNSfBgiz3EVTzug2q45dtvv2eXbNb7RYUshsNkjoE40xfPPC2xvGfkYfGLzhFthHNGy+Hp+Q7RBKB+Tl/igHYJc79N6oEElcsHPi
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn; PTR:;
- CAT:NONE;
- SFS:(13230031)(366007)(52116005)(41320700004)(7416005)(1800799015)(38350700005);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Lbr8FjBt3pjPOC05SNXYqDomyvDFm26N4IRcb0HH9GQFLGsd+5RETv/RmPoR?=
- =?us-ascii?Q?qqumrqDlEiABJsR+98X4KNO/xIATw51zpFHj9r6n7eChJyOXXdRyTf+qjyp0?=
- =?us-ascii?Q?PECo4thPZcCjZMCw9dDn+CWQ3y01mO2Us/4e4bcl+uX5NiiP0Gy6VsnyfaWf?=
- =?us-ascii?Q?Ya25WKeHo35wrhcc3bPbWICzKoY2i2qvbd9A7sCkjPSPI5/WLOCWcCM8o0AW?=
- =?us-ascii?Q?dJ7N73thkrNX3snNFoD9myjd5oWHWg8kMeum1bYS3SanLOM9ghaI511qP2HH?=
- =?us-ascii?Q?XY7WdfcotvtLutQaMeqWseYha0lrNTWTR2RB4NoZyBtmR2/OgF9JP0gxUN2l?=
- =?us-ascii?Q?HXon6K1ewEVQsmy9xIXHlFG4TZPKzPnBhfUrKEGZIBjAEKagy/YbFvmpoWgg?=
- =?us-ascii?Q?GwJ5ExhTJP3F32uPN2K3chh1eVtTozI2CJMZsTzB3UufskiSYA2BoGdF0Qai?=
- =?us-ascii?Q?tpbEvQ8cFW+zKProXhNl1Z02rZ12iKsh54qQeoDy8Bmr5r5fXsS0a/JWWPG7?=
- =?us-ascii?Q?Tw88zrPn62l+fZu6W88Vb+vbyLYuV1z85YynlEYOPY2AUXjLNp1Meq3wmoek?=
- =?us-ascii?Q?peY50bHyVqziKFtSkPiomCkPyaf/sdGkMg2tzavz75/xl6XqJkLhCsSikLsN?=
- =?us-ascii?Q?xjNXHNzhtd+dEVpdCqXA5b5l96J/MoyfMNZARN1WABfYtXqsBPJZvIwfJeVG?=
- =?us-ascii?Q?VnfBqvNkYhvBTf2M9sI5/+SRG5bkw7kzRxNdg6qz6KqAXSZtmqkFMpdBg6db?=
- =?us-ascii?Q?og2RLjCldGIwv7CEPGsOQTUoZuhPEFVavlobtZWRYnY/jgGtsVfHxB4rE58g?=
- =?us-ascii?Q?NgeaGSJT3/QS9ciNfIekIykE6xFlhrfDYj/kWGK8YiNvogusyfcc+DHuWlM4?=
- =?us-ascii?Q?Dk3/0p+LxjBREKn6OWYduNYvtRtfNJ4sqVnib0dxqGrPvtxchbSpDj+SyTWU?=
- =?us-ascii?Q?3MdEtSwG2Ev5umMFa8QbEZUN3N5/MCDkmDx+k2Vw/OeZid5FQY4upTWr6Uls?=
- =?us-ascii?Q?eYmVi85jA6RR8S/zaLCBmvudP+zzjxrehQvG3XHTogLIrbTNAJTppniVku/a?=
- =?us-ascii?Q?ucduQ2N2FpPbrKlYx4b2sGDwMMto11sZt7b/3nT16rROTydhxk+cg6AchNPs?=
- =?us-ascii?Q?eimuoVURy/SzPi0W0GDe4Ylcw+1HUDVfMKk8S9LYuO4FiUASNxVJcSHK0fxN?=
- =?us-ascii?Q?zzq8W0xgd0PAetlNMLfT4dji9kgvl0FZjYsKBQJTaRTcAU/ECxUOtRBPXhsh?=
- =?us-ascii?Q?DL3aD/M7fh8mR51TMD2Zjk+gbGFy21a8wAqLrQVJrA4rwiqLc2rgvuvSvbpi?=
- =?us-ascii?Q?Lk0njCdZB+LgN2O0PSPMgMnO6D4ScO44J4OPonANusr0JSROytUL4kyreEmD?=
- =?us-ascii?Q?W/PWgI7j1A47Owm+1TXJExQYcwzzwsCdBfOGyNbb6WXzziv+u6mYUz5ZvArR?=
- =?us-ascii?Q?gfWy6d3zdov/3JZfcsBYqHwjswksgbf9/Qsyyzs8GHdG6fTgl8EkB0RJJkpO?=
- =?us-ascii?Q?I/sYOuZA/JaIq37M/fJHnrDzfzPN1woARm7ZqPHPmvog+puo+yYG6rgdwA2b?=
- =?us-ascii?Q?zG6GNhqGDaF6xi7ded2ovG72M7q0AZjQb6pGG9U1fPjKbM6lITSEWMb+a/hw?=
- =?us-ascii?Q?TA=3D=3D?=
-X-OriginatorOrg: starfivetech.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 828fc01b-0f8b-40d9-e9be-08dc6e55af14
-X-MS-Exchange-CrossTenant-AuthSource: NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 May 2024 05:22:26.9957 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: tHRc5UzpObRnQWQAygvgTV5MU/GziITwzkfu4YWAsz1SZk1jctJ7K8bIp7ad8rgQfqoiBtgHpGFJbQBZybQ+ub9jxSysP5g1rM5dOAca3VM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: NT0PR01MB1072
-Received-SPF: pass client-ip=2406:e500:4420:2::70e;
- envelope-from=jeeheng.sia@starfivetech.com;
- helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn
-X-Spam_score_int: 1
-X-Spam_score: 0.1
-X-Spam_bar: /
-X-Spam_report: (0.1 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, URI_TRY_3LD=1.997 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WZJOx4/lcVz/
+References: <20240312020000.12992-1-salil.mehta@huawei.com>
+ <20240312020000.12992-7-salil.mehta@huawei.com> <CAFEAcA93EotG4-LXRJF034_9dWAWgZJA1VF6dB-xCsXn0T059g@mail.gmail.com>
+ <10f35804a55e460a8ce6ecdb3f0c79b6@huawei.com> <CAFEAcA-w7wf9F4VVAnZR3b34ydEWq=QNw=CxhTMobsr+AP_LCg@mail.gmail.com>
+ <55f942d2a3644bdaaff759014e3a4c20@huawei.com>
+In-Reply-To: <55f942d2a3644bdaaff759014e3a4c20@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 7 May 2024 10:02:37 +0100
+Message-ID: <CAFEAcA92nCPPk0Qa6XjRqRGTq_XDyRSVVaz67WgJBEZcxoEtOQ@mail.gmail.com>
+Subject: Re: [PATCH V8 6/8] physmem: Add helper function to destroy CPU AddressSpace
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+	"maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>, 
+	Jonathan Cameron <jonathan.cameron@huawei.com>, 
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, 
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>, 
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>, 
+	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>, 
+	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>, 
+	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, 
+	"rafael@kernel.org" <rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>, 
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>, 
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>, 
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>, 
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, 
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>, 
+	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian <zhukeqian1@huawei.com>, 
+	"wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>, 
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>, 
+	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, Linuxarm <linuxarm@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: sXvSYrDnG2Qb
 
-Update the SPCR table to accommodate the SPCR Table version 4 [1].
-The SPCR table has been modified to adhere to the version 4 format [2].
+On Tue, 7 May 2024 at 01:11, Salil Mehta <salil.mehta@huawei.com> wrote:
+>
+> >  From: Peter Maydell <peter.maydell@linaro.org>
+> >  Sent: Monday, May 6, 2024 10:29 AM
+> >  To: Salil Mehta <salil.mehta@huawei.com>
+> >
+> >  On Mon, 6 May 2024 at 10:06, Salil Mehta <salil.mehta@huawei.com>
+> >  wrote:
+> >  >
+> >  > Hi Peter,
+> >  >
+> >  > Thanks for the review.
+> >  >
+> >  > >  From: Peter Maydell <peter.maydell@linaro.org>  When do we need t=
+o
+> >  > > destroy a single address space in this way that means  we need to
+> >  > > keep a count of how many ASes the CPU currently has? The  commit
+> >  > > message talks about the case when we unrealize the whole CPU
+> >  > > object, but in that situation you can just throw away all the ASes
+> >  > > at once (eg  by calling some
+> >  > >  cpu_destroy_address_spaces() function from
+> >  cpu_common_unrealizefn()).
+> >  >
+> >  >
+> >  > Yes, maybe, we can destroy all at once from common leg as well. I'd
+> >  > prefer this to be done from the arch specific function for ARM to
+> >  > maintain the clarity & symmetry of initialization and
+> >  > un-initialization legs.  For now, all of these address space destruc=
+tion is
+> >  happening in context to the arm_cpu_unrealizefn().
+> >  >
+> >  > It=E2=80=99s a kind of trade-off between little more code and clarit=
+y but I'm
+> >  > open to further suggestions.
+> >  >
+> >  >
+> >  > >
+> >  > >  Also, if we're leaking stuff here by failing to destroy it, is th=
+at
+> >  > > a problem for  existing CPU types like x86 that we can already hot=
+plug?
+> >  >
+> >  > No we are not. We are taking care of these in the ARM arch specific
+> >  > legs within functions arm_cpu_(un)realizefn().
+> >
+> >  How can you be taking care of *x86* CPU types in the Arm unrealize?
+>
+>
+> Sorry, yes, I missed to reply that clearly. There was indeed a leak with =
+x86 reported
+> by Phillipe/David last year. In fact, Phillipe floated a patch last year =
+for this.
+> I thought it was fixed already as part of cpu_common_unrealize() but I ju=
+st
+> checked and realized that the below proposed changed still isn=E2=80=99t =
+part of the
+> mainline
+>
+> https://lore.kernel.org/qemu-devel/20230918160257.30127-9-philmd@linaro.o=
+rg/
 
-Meanwhile, the virt SPCR golden reference files have been updated to
-accommodate the SPCR Table version 4.
+That seems like the right way to clean these up -- Philippe, do you want
+to fish that bugfix out of your big patchset and submit it separately ?
 
-This patch series depends on Sunil's patch series [3], where Bios-Table-Test
-is now supported by both ARM and RISC-V.
+> I can definitely add a common CPU AddressSpace destruction leg as part of=
+ this
+> patch if in case arch specific CPU unrealize does not cleans up its CPU
+> AddressSpace?
 
-[1]: https://learn.microsoft.com/en-us/windows-hardware/drivers/serports/serial-port-console-redirection-table
-[2]: https://github.com/acpica/acpica/pull/931
-[3]: https://lore.kernel.org/all/20240315130519.2378765-1-sunilvl@ventanamicro.com/
+Arch-specific CPU unrealize shouldn't need to do anything -- if we
+fix this similarly to Philippe's patch above then that will do
+the cleanup required. Handling this kind of cleanup in common code
+is more reliable because it doesn't require every target-arch
+maintainer to remember it needs to be done, plus it's less code.
 
-Changes in v2:
-- Utilizes a three-patch approach to modify the ACPI pre-built binary
-  files required by the Bios-Table-Test.
-- Rebases and incorporates changes to support both ARM and RISC-V ACPI
-  pre-built binary files.
-
-Sia Jee Heng (3):
-  qtest: allow SPCR acpi table changes
-  hw/acpi: Upgrade ACPI SPCR table to support SPCR table version 4
-    format
-  tests/qtest/bios-tables-test: Update virt SPCR golden references
-
- hw/acpi/aml-build.c               |  14 +++++++++++---
- hw/arm/virt-acpi-build.c          |  10 ++++++++--
- hw/riscv/virt-acpi-build.c        |  12 +++++++++---
- include/hw/acpi/acpi-defs.h       |   7 +++++--
- include/hw/acpi/aml-build.h       |   2 +-
- tests/data/acpi/virt/aarch64/SPCR | Bin 80 -> 90 bytes
- tests/data/acpi/virt/riscv64/SPCR | Bin 80 -> 90 bytes
- 7 files changed, 34 insertions(+), 11 deletions(-)
-
--- 
-2.34.1
-
+thanks
+-- PMM

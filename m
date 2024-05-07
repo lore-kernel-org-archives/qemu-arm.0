@@ -1,163 +1,141 @@
-Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1752903ejc;
-        Mon, 6 May 2024 10:57:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXVNWpEd6Vdsh3WN6kGej0G1JUVXvPrGgO+nJX+Vsrj5+SeDCj5/ZeIpU0baNpP1+VzGeQzufROMIQOEagfStTa1mO8k74F
-X-Google-Smtp-Source: AGHT+IHA+cIc4t6OX7rItf0IZyU2q4LIAVczPOE6MY5QfDe5QyahzSHMDq4ILatQ4G4hJAUCtcu4
-X-Received: by 2002:ac8:7dc8:0:b0:43a:a82d:4fa with SMTP id c8-20020ac87dc8000000b0043aa82d04famr12729634qte.15.1715018269829;
-        Mon, 06 May 2024 10:57:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715018269; cv=none;
+Received: by 2002:a17:907:a09:b0:a52:4db9:938b with SMTP id bb9csp1942351ejc;
+        Mon, 6 May 2024 17:11:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUCQlXtA8w8UmZJF0o99Z5ShAQ4mdZENy2jOEcEuf6CT3yrh2Z8ZKU8XATaY+8zxN6oybjd7eVooP4Nq2Uc72Xq6GMxXm5Y
+X-Google-Smtp-Source: AGHT+IF/VSJUIHco2iP3t7IXiy5OwFetMbQ1l0hi3Fbe50p8VchGQrXdkD45VdXKUPd6x3FtWsOZ
+X-Received: by 2002:a5d:6d88:0:b0:34d:a738:30b8 with SMTP id l8-20020a5d6d88000000b0034da73830b8mr10567981wrs.12.1715040675810;
+        Mon, 06 May 2024 17:11:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715040675; cv=none;
         d=google.com; s=arc-20160816;
-        b=zUXKD2nJT/eKSgas+NTVJLAFnWQtQARzHTs/hp+YE5P0JFdqS20fRC71PrCE7gmwLr
-         bDELeSJk8f8/57VcbegXMjhkSlgcLPQvtnNZ4tGfWm963XjPeWtgQYfrOecFcnnT2k9t
-         wnMFnNHLnFQO63n5qi9eElCw2voVSxJCXjiXp0mbLtOmx2cOhKrn6Zjvt8qVaJTZJvYK
-         svt/wgSxhahfEQgloxCYftAQXCAdRAjms8PrTKYNbnRgA/sNq1tdG4EVpEeIBreEqO/X
-         9o6QTQy0rtRa0nEEcSAkMH7w4tbIM49BqdSn8ZCdK/Y0PfM7KT9ORuKy2hn6qH6rEvMO
-         gDdw==
+        b=lmFoEK6xsFq27VpXqgyrcXzsYLG0G9oUzJkr8KYClFVwwovZ6JIucMNkkbHDoDL+x8
+         EQhP2IrTnktx1r48hy9e33Z1y5Wb9u7IRMVkr6FIEoFxQOV8keZzsnLdhUYiHGlzWqIN
+         IcoSfyPTm9/AJoefBT0i2XqNM1oLeMP0cOxzlKBd5v/BVS8Wp4UDHNzWBM8hp6h2pcj1
+         Ipbo0N48n7QvTTwUbQX/ViT1P67Mm3+zqhdx48qykkTKzRZfA0PItFGdg3JKoA9mIsy7
+         hgm3hnuFh+I3DvGdkYDjrybZVJANnRt05AV0kXfdgo6Ss4WaRVhz0+IXGrCUEXy3yVRk
+         V40Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:thread-index:thread-topic
-         :content-transfer-encoding:mime-version:subject:references
-         :in-reply-to:message-id:cc:to:from:date:dkim-signature:dkim-filter;
-        bh=vmw06Qox83AKkQJWjlT22YUALewD7ZEpz6nr+31ZcdE=;
-        fh=UbViaqukE01yO80Y+bZmC3Hb6OFr4lAB63+jwPfkNJ4=;
-        b=g2fdNVFaZCffuE91mwuOPnzoxkvBGtAnrhGkd6sPyd038aP4td3QCmbwBDqpDx9KqN
-         esO9pgzIrfaYXJN+jQ5REVuZYPrPCQpJshiXaFWNJQC6+V/BXIgWascnt+INxBzIi5kD
-         fWdYFTEZw0wfPkeCqO9Hb1FONQpxPENeAAi1cU/jP1F+sFxnY26GZGsVY5VZMbag5AFg
-         qudBaeM/UUmFgY5qpG1MUAZGN9XPmyfV6BtbbUC8YA59PpXSwNFGUjRdHV3XhYunHaJ7
-         a3N2g2WmphIwUCOWBa6sLNI3e8c0re1IqyXaNPBufcs70eRETrRVqo1PaWRwWR3Ehcxw
-         853g==;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=o0MfLP/Tz4tTL5qlsr/7Bug9+JhW/fAFj4IJBDjrtE8=;
+        fh=QWMYmS1AHbKc5j9IFDJwJUxEST1+zYikw0L2XprMdGs=;
+        b=RP8ZqsLaHRwXHDNizwnIyuHQkny2dwHQPnZnSiGymf7wt8TQaVmzdg42ulJAJdvIL3
+         N+26Fwk3WL7tisjDzqvSzSVHtCW5uFsRBNsOYVwzFvPFt6PBV9fM8L6Y2rTRXLm5wY/T
+         E41GvXRAPKqT1tsTaqPO7yZWmUAw4eOPl1WENtgwwFdAVQixocuXFnkTzBpYylgC+oZI
+         +mPESiDf9f0oGhUEaQlK2Sj2bnsiLwi32bKeM/XpXxbzntfIsM5q2GX9DEcuzENThmnx
+         I+Odo+71F99TqTIbpCR/xOGHzW4Ex2eQLqevhIA7UEmyEdAWn3iWqaA0l/INtcCQRKjp
+         oePA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Go7Wtubu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f5-20020ac87f05000000b004314898c23dsi10154524qtk.501.2024.05.06.10.57.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 May 2024 10:57:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id j15-20020adfea4f000000b0034d743f7c66si6115905wrn.878.2024.05.06.17.11.15
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 06 May 2024 17:11:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Go7Wtubu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s42af-0008E1-0o; Mon, 06 May 2024 13:57:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ivarhol-21@enst.fr>)
- id 1s42ae-0008D2-6u; Mon, 06 May 2024 13:57:28 -0400
-Received: from zproxy3.enst.fr ([137.194.2.222])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ivarhol-21@enst.fr>)
- id 1s42ac-0007tq-2I; Mon, 06 May 2024 13:57:27 -0400
-Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 160CCA05A4;
- Mon,  6 May 2024 19:57:22 +0200 (CEST)
-Received: from zproxy3.enst.fr ([IPv6:::1])
- by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id 8MdzYGTSPzDP; Mon,  6 May 2024 19:57:21 +0200 (CEST)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy3.enst.fr (Postfix) with ESMTP id 72CE2A05BB;
- Mon,  6 May 2024 19:57:21 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy3.enst.fr 72CE2A05BB
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1715018241;
- bh=vmw06Qox83AKkQJWjlT22YUALewD7ZEpz6nr+31ZcdE=;
- h=Date:From:To:Message-ID:MIME-Version;
- b=Go7Wtubu1ZxnkWJwWzy4usfTlxaSOGIhr5FsOzv91f/yFsA7/bQDssVsLPL8tkPhK
- qeXn8rhg8GL3r9+9sRWJL5M6KqKG7Q/tlazZyArBPsNEYJF6wPn7gVtnT1tS2J9slf
- dtRUEQetRIDFawBvMRjPOVclyQ+ByEFZOFUSYqzI=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy3.enst.fr ([IPv6:::1])
- by localhost (zproxy3.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id EGjEvQV5SwiT; Mon,  6 May 2024 19:57:21 +0200 (CEST)
-Received: from zmail-tp2.enst.fr (zmail-tp2.enst.fr [137.194.2.199])
- by zproxy3.enst.fr (Postfix) with ESMTP id 00442A05A4;
- Mon,  6 May 2024 19:57:20 +0200 (CEST)
-Date: Mon, 6 May 2024 19:57:20 +0200 (CEST)
-From: =?utf-8?B?SW7DqHM=?= Varhol <ines.varhol@telecom-paris.fr>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
- Laurent Vivier <lvivier@redhat.com>, 
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
- peter maydell <peter.maydell@linaro.org>, 
- Alistair Francis <alistair@alistair23.me>, 
- Samuel Tardieu <samuel.tardieu@telecom-paris.fr>, 
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <1102315161.3797279.1715018240611.JavaMail.zimbra@enst.fr>
-In-Reply-To: <cf86b648-b150-428e-b415-01db237158ef@redhat.com>
-References: <20240505140556.373711-1-ines.varhol@telecom-paris.fr>
- <20240505140556.373711-5-ines.varhol@telecom-paris.fr>
- <cf86b648-b150-428e-b415-01db237158ef@redhat.com>
-Subject: Re: [PATCH 4/4] tests/qtest: Check STM32L4x5 clock connections
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VYJX31Y29z67ydF;
+	Tue,  7 May 2024 08:08:19 +0800 (CST)
+Received: from lhrpeml100006.china.huawei.com (unknown [7.191.160.224])
+	by mail.maildlp.com (Postfix) with ESMTPS id 67FA81400CB;
+	Tue,  7 May 2024 08:11:14 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
+ lhrpeml100006.china.huawei.com (7.191.160.224) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 7 May 2024 01:11:14 +0100
+Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
+ lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
+ Tue, 7 May 2024 01:11:13 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "maz@kernel.org" <maz@kernel.org>,
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron
+	<jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
+	<lpieralisi@kernel.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
+	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
+	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
+	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
+	"gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
+	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
+	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
+	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
+	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+	Linuxarm <linuxarm@huawei.com>
+Subject: RE: [PATCH V8 6/8] physmem: Add helper function to destroy CPU
+ AddressSpace
+Thread-Topic: [PATCH V8 6/8] physmem: Add helper function to destroy CPU
+ AddressSpace
+Thread-Index: AQHadCFXcU6yTs2isEyCNhmIUrtCDrGHWFKAgALjoLD///qlAIAAEQrg
+Date: Tue, 7 May 2024 00:11:13 +0000
+Message-ID: <55f942d2a3644bdaaff759014e3a4c20@huawei.com>
+References: <20240312020000.12992-1-salil.mehta@huawei.com>
+ <20240312020000.12992-7-salil.mehta@huawei.com>
+ <CAFEAcA93EotG4-LXRJF034_9dWAWgZJA1VF6dB-xCsXn0T059g@mail.gmail.com>
+ <10f35804a55e460a8ce6ecdb3f0c79b6@huawei.com>
+ <CAFEAcA-w7wf9F4VVAnZR3b34ydEWq=QNw=CxhTMobsr+AP_LCg@mail.gmail.com>
+In-Reply-To: <CAFEAcA-w7wf9F4VVAnZR3b34ydEWq=QNw=CxhTMobsr+AP_LCg@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.48.159.236]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [2a02:1808:204:9e3b:a413:1409:5494:38ad]
-X-Mailer: Zimbra 9.0.0_GA_4612 (ZimbraWebClient - FF125 (Linux)/9.0.0_GA_4612)
-Thread-Topic: tests/qtest: Check STM32L4x5 clock connections
-Thread-Index: /bXIl7YHwsppfV9lbUhw7w2YFATabA==
-Received-SPF: pass client-ip=137.194.2.222; envelope-from=ivarhol-21@enst.fr;
- helo=zproxy3.enst.fr
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uSomesTiM9x1
+X-TUID: 6EoPtz7jwwDO
 
-
-
------ Le 6 Mai 24, =C3=A0 6:16, Thomas Huth thuth@redhat.com a =C3=A9crit :
-
-> On 05/05/2024 16.05, In=C3=A8s Varhol wrote:
->> For USART, GPIO and SYSCFG devices, check that clock frequency before
->> and after enabling the peripheral clock in RCC is correct.
->>=20
->> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
->> ---
->> Hello,
->>=20
->> Should these tests be regrouped in stm32l4x5_rcc-test.c ?
->=20
->  Hi,
->=20
-> sounds mostly like a matter of taste at a first glance. Or what would be =
-the
-> benefit of putting everything into the *rcc-test.c file? Could you maybe
-> consolidate the get_clock_freq_hz() function that way? (maybe that
-> get_clock_freq_hz() function could also be consolidated as a inline funct=
-ion
-> in a shared header instead?)
->=20
->  Thomas
-
-Hello,
-
-I was indeed looking to consolidate the functions get_clock_freq_hz() and
-check_clock() from *usart-test.c (along with the definitions for RCC
-registers).
-Thank you for your suggestion, I'll use a header file.
-
-In=C3=A8s Varhol
-
+PiAgRnJvbTogUGV0ZXIgTWF5ZGVsbCA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPg0KPiAgU2Vu
+dDogTW9uZGF5LCBNYXkgNiwgMjAyNCAxMDoyOSBBTQ0KPiAgVG86IFNhbGlsIE1laHRhIDxzYWxp
+bC5tZWh0YUBodWF3ZWkuY29tPg0KPiAgDQo+ICBPbiBNb24sIDYgTWF5IDIwMjQgYXQgMTA6MDYs
+IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPg0KPiAgd3JvdGU6DQo+ICA+DQo+
+ICA+IEhpIFBldGVyLA0KPiAgPg0KPiAgPiBUaGFua3MgZm9yIHRoZSByZXZpZXcuDQo+ICA+DQo+
+ICA+ID4gIEZyb206IFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz4gIFdo
+ZW4gZG8gd2UgbmVlZCB0bw0KPiAgPiA+IGRlc3Ryb3kgYSBzaW5nbGUgYWRkcmVzcyBzcGFjZSBp
+biB0aGlzIHdheSB0aGF0IG1lYW5zICB3ZSBuZWVkIHRvDQo+ICA+ID4ga2VlcCBhIGNvdW50IG9m
+IGhvdyBtYW55IEFTZXMgdGhlIENQVSBjdXJyZW50bHkgaGFzPyBUaGUgIGNvbW1pdA0KPiAgPiA+
+IG1lc3NhZ2UgdGFsa3MgYWJvdXQgdGhlIGNhc2Ugd2hlbiB3ZSB1bnJlYWxpemUgdGhlIHdob2xl
+IENQVQ0KPiAgPiA+IG9iamVjdCwgYnV0IGluIHRoYXQgc2l0dWF0aW9uIHlvdSBjYW4ganVzdCB0
+aHJvdyBhd2F5IGFsbCB0aGUgQVNlcw0KPiAgPiA+IGF0IG9uY2UgKGVnICBieSBjYWxsaW5nIHNv
+bWUNCj4gID4gPiAgY3B1X2Rlc3Ryb3lfYWRkcmVzc19zcGFjZXMoKSBmdW5jdGlvbiBmcm9tDQo+
+ICBjcHVfY29tbW9uX3VucmVhbGl6ZWZuKCkpLg0KPiAgPg0KPiAgPg0KPiAgPiBZZXMsIG1heWJl
+LCB3ZSBjYW4gZGVzdHJveSBhbGwgYXQgb25jZSBmcm9tIGNvbW1vbiBsZWcgYXMgd2VsbC4gSSdk
+DQo+ICA+IHByZWZlciB0aGlzIHRvIGJlIGRvbmUgZnJvbSB0aGUgYXJjaCBzcGVjaWZpYyBmdW5j
+dGlvbiBmb3IgQVJNIHRvDQo+ICA+IG1haW50YWluIHRoZSBjbGFyaXR5ICYgc3ltbWV0cnkgb2Yg
+aW5pdGlhbGl6YXRpb24gYW5kDQo+ICA+IHVuLWluaXRpYWxpemF0aW9uIGxlZ3MuICBGb3Igbm93
+LCBhbGwgb2YgdGhlc2UgYWRkcmVzcyBzcGFjZSBkZXN0cnVjdGlvbiBpcw0KPiAgaGFwcGVuaW5n
+IGluIGNvbnRleHQgdG8gdGhlIGFybV9jcHVfdW5yZWFsaXplZm4oKS4NCj4gID4NCj4gID4gSXTi
+gJlzIGEga2luZCBvZiB0cmFkZS1vZmYgYmV0d2VlbiBsaXR0bGUgbW9yZSBjb2RlIGFuZCBjbGFy
+aXR5IGJ1dCBJJ20NCj4gID4gb3BlbiB0byBmdXJ0aGVyIHN1Z2dlc3Rpb25zLg0KPiAgPg0KPiAg
+Pg0KPiAgPiA+DQo+ICA+ID4gIEFsc28sIGlmIHdlJ3JlIGxlYWtpbmcgc3R1ZmYgaGVyZSBieSBm
+YWlsaW5nIHRvIGRlc3Ryb3kgaXQsIGlzIHRoYXQNCj4gID4gPiBhIHByb2JsZW0gZm9yICBleGlz
+dGluZyBDUFUgdHlwZXMgbGlrZSB4ODYgdGhhdCB3ZSBjYW4gYWxyZWFkeSBob3RwbHVnPw0KPiAg
+Pg0KPiAgPiBObyB3ZSBhcmUgbm90LiBXZSBhcmUgdGFraW5nIGNhcmUgb2YgdGhlc2UgaW4gdGhl
+IEFSTSBhcmNoIHNwZWNpZmljDQo+ICA+IGxlZ3Mgd2l0aGluIGZ1bmN0aW9ucyBhcm1fY3B1Xyh1
+bilyZWFsaXplZm4oKS4NCj4gIA0KPiAgSG93IGNhbiB5b3UgYmUgdGFraW5nIGNhcmUgb2YgKng4
+NiogQ1BVIHR5cGVzIGluIHRoZSBBcm0gdW5yZWFsaXplPw0KDQoNClNvcnJ5LCB5ZXMsIEkgbWlz
+c2VkIHRvIHJlcGx5IHRoYXQgY2xlYXJseS4gVGhlcmUgd2FzIGluZGVlZCBhIGxlYWsgd2l0aCB4
+ODYgcmVwb3J0ZWQNCmJ5IFBoaWxsaXBlL0RhdmlkIGxhc3QgeWVhci4gSW4gZmFjdCwgUGhpbGxp
+cGUgZmxvYXRlZCBhIHBhdGNoIGxhc3QgeWVhciBmb3IgdGhpcy4NCkkgdGhvdWdodCBpdCB3YXMg
+Zml4ZWQgYWxyZWFkeSBhcyBwYXJ0IG9mIGNwdV9jb21tb25fdW5yZWFsaXplKCkgYnV0IEkganVz
+dA0KY2hlY2tlZCBhbmQgcmVhbGl6ZWQgdGhhdCB0aGUgYmVsb3cgcHJvcG9zZWQgY2hhbmdlZCBz
+dGlsbCBpc27igJl0IHBhcnQgb2YgdGhlDQptYWlubGluZQ0KDQpodHRwczovL2xvcmUua2VybmVs
+Lm9yZy9xZW11LWRldmVsLzIwMjMwOTE4MTYwMjU3LjMwMTI3LTktcGhpbG1kQGxpbmFyby5vcmcv
+DQoNCkkgY2FuIGRlZmluaXRlbHkgYWRkIGEgY29tbW9uIENQVSBBZGRyZXNzU3BhY2UgZGVzdHJ1
+Y3Rpb24gbGVnIGFzIHBhcnQgb2YgdGhpcw0KcGF0Y2ggaWYgaW4gY2FzZSBhcmNoIHNwZWNpZmlj
+IENQVSB1bnJlYWxpemUgZG9lcyBub3QgY2xlYW5zIHVwIGl0cyBDUFUNCkFkZHJlc3NTcGFjZT8N
+Cg0KDQpUaGFua3MNClNhbGlsLg0KDQo+ICANCj4gIHRoYW5rcw0KPiAgLS0gUE1NDQo=

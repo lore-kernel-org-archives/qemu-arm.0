@@ -1,112 +1,124 @@
-Received: by 2002:a17:907:a184:b0:a52:4db9:938b with SMTP id om4csp356361ejc;
-        Wed, 8 May 2024 01:19:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXiug/L9EcBMCjaQ/2oRqOro+ytZhy6jPyzCwDdKca03tcoH/WzRxGGUeQ5uPPQjlOLeb6h8Q8K0xtzMwMRIyORqKbltG9h
-X-Google-Smtp-Source: AGHT+IEAOEnXS0/K/4bxTyaTdouIjoBTVAwJ1DpYBb589/cVfOqBcX0M8PFw622PfSit9z/fR9XD
-X-Received: by 2002:a67:ec02:0:b0:47e:ecb:4f12 with SMTP id ada2fe7eead31-47f3c2ea8e9mr1745103137.21.1715156395640;
-        Wed, 08 May 2024 01:19:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715156395; cv=none;
+Received: by 2002:a17:907:a184:b0:a52:4db9:938b with SMTP id om4csp359344ejc;
+        Wed, 8 May 2024 01:26:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXB5ilcpw8GOc3zwlu3jyYRw11JOeT23a2EXcofO8UaS5rmbVCsppFVpn3UYWB9pR07MEpdMnfy/wZZ/wam1veUn2iuqowM
+X-Google-Smtp-Source: AGHT+IGW5WoMoDLq+C0xTULfRyJU3R4QRc3JSLbSs0O5WYCyWKZ8ElRYz62Pbvo2zhm+HJiyjGcB
+X-Received: by 2002:a05:6214:4001:b0:6a0:d291:a35e with SMTP id 6a1803df08f44-6a1514d099emr20529496d6.52.1715156798549;
+        Wed, 08 May 2024 01:26:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715156798; cv=none;
         d=google.com; s=arc-20160816;
-        b=YTx/ELCGyFCF1gUNlJPxlHEISxaB5I20JeyjjTV/3TuTvNtA5Xki6Nuk19UFt1qx45
-         NMsd26aXL/Ry9Rx4Mm/eYWELi5yWFH+KmD5dESe4dB4MZ5QQA3Sz3Ix2XDIA7Lme1YmJ
-         uyfZBk4tgGaOko2NQOMrUa085fHiEaefp+HvvpCH5orhL4B0mCK1Oc0mTgoJflyj5LVk
-         Pf1MqB8jjkXOwUJ9tpjKDaZs6LGHfGNBO+FZFuS5xjzvErJGlbPk8YFWQa+cuWhvFKwv
-         HWA/baTTs1lHIcEMtAWqSHt9jQvXo8BGIhXMXPHwuSmlH1wexYomJquFa5ULBdJdLqhL
-         vEow==
+        b=Cyt3ZiL+1P4/gVqCm9nFnHyqnT0KtpMhpVvHRsrXb9yQkcX6Fp6lwlssPZoNJaKeCs
+         oRU5e8nZOgMkamXuN4jUhUBoHCV+3f0PsuxCGelS3wCiz0Wo/UNEK/SCvJMZwa/686QN
+         5pOb2pFAPosbcriKj5K/Yj96gO6N8g9UVIVO3CLjCQeYANGSG2WH/bx2M8VLTZzoh2q1
+         lGAKVPctIEBHGjc8SRLLhcStY4+aYiRjG7NvEnyzMtOGU2Uew8I7QavtO5/ThQaAO+PU
+         Gatv/Q47BQjKPbfJPfCe80zwuQiuhHARplylWIz5d9ulurEz4QDh1Vx5vf5faTS5IduA
+         qvOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=XI2BpQK6OsL3TbZxQJOFvnNA6HfZALkfZfMV8OVrxts=;
-        fh=d20r1zatvqjC7HzK6x75E/qgtbbkQ/UMCb3klKlnOqU=;
-        b=KRXXDQBKR5msK3iLix+HgD93/Ab+SGzbKbGtNj8M5ULRxn388FtvcX59rZdhoiKMv1
-         Cr2eh9PX1Rkf15x66ABLtXQgRALooSePgMDlZM0LtLrANqifqFrA2uuH9CZ1ncleYtoQ
-         9xM0qmYb5Pdfn0sHf6Jp5dtbm+alfs62HiITOMqaB6kLzQ+R2L49ruvYSzwe5YtgazQf
-         RxXmCImvgInymm6cfHvaqhZHVZ9nq/8kWAYOE/DBPOvRrhZGhw6ft53app8ZmrzU6hcd
-         FrI75GgmWb0FSdyC3NzRapZ2NmAheMc+kNyv+obH/zBNJQnDjP6uGWge9S+5IVGq5szC
-         4RkA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=FzRXoUwxh4wkhYay+Snd3nbpb+LJezX0f1ITgy4dTOQ=;
+        fh=acuOKXoH2COvi5QHCrHOCGUjY+p89AFgphjL+giFucU=;
+        b=gxBNDxHUAy+K4qRalgH57wA8KzrAPriJ6UtElmmKG3tFH4XVSxQD+KIY8OCSeX4wvj
+         kYSxFAuwCPVNDrfNKEnBuAnuzAeqQrRjBDVz9v3QlUNPZhZxhCbVRgClT8qBQmdfnlny
+         jI4NUivW00FkTZC8fwBIg7Z6vD56h+p4CAAuMUFV13nlqFmrDITXNytEdHn8DiHDLuOT
+         ynZOR26sOOjT+oOgHSpQZ6R/zX1yuxwxWWMXH7q19+q4mqmPKRrt7YTP54zuuP5UtaU4
+         j2sP4F2AsctAhJAswhtgd9q+hep84tyiCzXZdd+mrvEvQS+MqK7fWmbW+Dc+2fgzaiJu
+         kTzg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cYOrYNPy;
+       dkim=pass header.i=@linaro.org header.s=google header.b=C4zlT1TZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pt6-20020a056214048600b006a0c12054casi13381083qvb.182.2024.05.08.01.19.55
+        by mx.google.com with ESMTPS id fo10-20020ad45f0a000000b0069927228578si13953945qvb.150.2024.05.08.01.26.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 May 2024 01:19:55 -0700 (PDT)
+        Wed, 08 May 2024 01:26:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cYOrYNPy;
+       dkim=pass header.i=@linaro.org header.s=google header.b=C4zlT1TZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s4cWm-00052x-M4; Wed, 08 May 2024 04:19:53 -0400
+	id 1s4cdB-0008Cq-Qg; Wed, 08 May 2024 04:26:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tanmaynpatil105@gmail.com>)
- id 1s4cWh-00051m-9h; Wed, 08 May 2024 04:19:47 -0400
-Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s4cd9-0008A9-Bk
+ for qemu-arm@nongnu.org; Wed, 08 May 2024 04:26:27 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tanmaynpatil105@gmail.com>)
- id 1s4cWf-0004wN-2w; Wed, 08 May 2024 04:19:47 -0400
-Received: by mail-ot1-x332.google.com with SMTP id
- 46e09a7af769-6f0812c4500so1419662a34.0; 
- Wed, 08 May 2024 01:19:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s4cd6-00079K-FF
+ for qemu-arm@nongnu.org; Wed, 08 May 2024 04:26:25 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-a5200afe39eso1067727866b.1
+ for <qemu-arm@nongnu.org>; Wed, 08 May 2024 01:26:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1715156383; x=1715761183; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=XI2BpQK6OsL3TbZxQJOFvnNA6HfZALkfZfMV8OVrxts=;
- b=cYOrYNPyRBQNfXvgMJYXiuZNV/T0NktXabYevRuxAE5l7Jw4oHfQyho2SM9amsQKIb
- DCLGNrepGkjAgu9+baZeG4klBfCGRC/u8I1ZwtREObTtZhs+v1zLCqWjsT70x8XjfX+k
- S/W6XoJuA2mp6SjLT9VjgpJqeXsJoxk0d297cBnVLikLLmalaDp8YhrXEgBCrGEXH8au
- WG46O0u01AnZXr8fg8sP6vPykbqzKyGgh49wrPh1+oMjUR3RSwqqXwIAAiZNSOXyZyfF
- E4b+V8VmkQUG8YTx11fLRrARCMdxejlPWk6qYiTJ/4Sd6+6iHqoaf5DZiPG8afpVp9ER
- dTNQ==
+ d=linaro.org; s=google; t=1715156783; x=1715761583; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=FzRXoUwxh4wkhYay+Snd3nbpb+LJezX0f1ITgy4dTOQ=;
+ b=C4zlT1TZ/5HvL8CahmKBpir4AtbKRCkcidxR0rNco5uHx8Z+9EcFNl+7ypbCdPOUP5
+ i59lKcItKEv3DovyXqJR0qTVVbf1otI9WQhLzF2G9srDJOvT0+eEzZcPzO182OLbNqp0
+ oh0V8b3ohIuxeOx/V1sNmb+MSIafgUTTqZuVz+mmfvJ0ocxCBtfeM96zQ49Wz8GBIebU
+ yAewTk7LGfm9iO6pBFk4DxPR4bH5GIpNZh2wVjh69alKldP0qhEB5oZJ8iTCd1xIfseK
+ E23Dda8eavmeoN1i5+lHO5n9L7EK2rxKYU046Jm28+eAUlD2CDIsVNEzWhxfQIWGcZxM
+ zYKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715156383; x=1715761183;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=XI2BpQK6OsL3TbZxQJOFvnNA6HfZALkfZfMV8OVrxts=;
- b=PpwqFM+Z4tDUibPrYOnLcGlVUQLutpZh+mI/BBBhkorjoxTrxAzFrUYKBZnJk+1Kz/
- QsJhU+TiPJFqD0dQZyZBmxbYSBcDLsnsJI4RHOyOI6UBLFDncr2DgO+vDpBFY7rjI8In
- NVuoWQCT7lhroDYi520If9mjCkyYnUJJlnaonzW2If3Tvst4wscFdfy3klChGULyFV8v
- kfs44zglPZYXI4FcaXgHk5G0Cbw58swIOEYOKzPuRBqVHz9GyGau/tnfNdiMdcW3spph
- k+C2KjU60xe8LDil061PYgdgcmDyGk68UVARbb8EW8OWwXtRS7VCo4DtsUlplDfpOIlr
- PUeA==
+ d=1e100.net; s=20230601; t=1715156783; x=1715761583;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=FzRXoUwxh4wkhYay+Snd3nbpb+LJezX0f1ITgy4dTOQ=;
+ b=HAFhpwre10Tgi/OcWf/Yd5U0N2H45V1BhuBVKnUW920mt8+i9ijnKdK1O03xVa1hmX
+ 1KyO1BaFE/wj8lmxFP9vW/TX6S2kCJ+LvjQrhp7ahDtJkG9IYgjdlUPMioWpt2l9uZCH
+ UPWLMWUNquIIc//B5zLKi7QyG0JTiO8a1vALCDo5RX1zpOUxt8qmVBrbtwBqBTqLHrOD
+ v+VKQaEF379LOKhMNn7ABEyr3tDeoH36qBuW6ioClnDHw7HOtbW7B5eeQsovZPpRrAnW
+ 57Q4wA/wRxGfF+TC10xw8i/Vx0Gdc31DJcZvezatZ5Rs/TbhIzgd5SAiF+UwQnor31dE
+ 2UIw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXO5/hSD+JSALvplXbK2/HvG+ebUOQP7H3sjscNiUFwoJSjLavPajbbYUwnJBoGbjzhcVaYe7P2Ck8fUMCfcl8qQMvy
-X-Gm-Message-State: AOJu0YwnZCpEM9LY6hPtOuxQvLsTqo8uwXukmSx7r+HpfEb1sTg1OKkm
- IQjt2btoqdoyxFNRRkzkEyHzHRNh0MDjtQCNBI7SNsL9fvsb5CRQw5lT6ifSTwQ01rKjOKPGd3U
- Dw1rP7yAGTCv8jCEpsD+z5v7GX6I=
-X-Received: by 2002:a05:6870:b418:b0:23e:7432:6f1d with SMTP id
- 586e51a60fabf-24097bdf635mr2056859fac.7.1715156383344; Wed, 08 May 2024
- 01:19:43 -0700 (PDT)
+ AJvYcCXIidv0mnT5g89TH7YxM6f0C2uSa1AO4Vg8i/greg5DESquVlaWskiWrYWEA8gJ6SRh0365PHwr+2LlTRsZTPf43noV
+X-Gm-Message-State: AOJu0YwJQGS4lTJ3EpUEd85o18aRFOO4n0tbuxLQ+RwP2NMuYmjPc7su
+ DqvCX66MweqsLZzPXYcBIlMYdqawj0Yl7OWHjNkUGv04LTFFKq5WzvsBfAYe4Zk=
+X-Received: by 2002:a17:907:5c4:b0:a59:bdb7:73ec with SMTP id
+ a640c23a62f3a-a59fb9dbd54mr207331566b.72.1715156782913; 
+ Wed, 08 May 2024 01:26:22 -0700 (PDT)
+Received: from [192.168.69.100] (sar95-h02-176-184-10-250.dsl.sta.abo.bbox.fr.
+ [176.184.10.250]) by smtp.gmail.com with ESMTPSA id
+ r19-20020a170906c29300b00a59c6859824sm4010137ejz.143.2024.05.08.01.26.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 May 2024 01:26:22 -0700 (PDT)
+Message-ID: <d01f4b13-ba38-4050-99de-9db557eb7bc2@linaro.org>
+Date: Wed, 8 May 2024 10:26:20 +0200
 MIME-Version: 1.0
-References: <CAHnsOnN6AkE3visU9jaycp61G87XRJFwDGx4D1=HJSJpA2tfXw@mail.gmail.com>
- <CAFEAcA8S1HJgcJdC5M=V1UHZHwNKhX_ii9PNNc88uC2Gi2E3sw@mail.gmail.com>
-In-Reply-To: <CAFEAcA8S1HJgcJdC5M=V1UHZHwNKhX_ii9PNNc88uC2Gi2E3sw@mail.gmail.com>
-From: Tanmay <tanmaynpatil105@gmail.com>
-Date: Wed, 8 May 2024 13:49:32 +0530
-Message-ID: <CAHnsOnPmo1FmDWgF-cnJKhjQ5sXJ7AmNvcf_Mg03+UKP+u+LXw@mail.gmail.com>
-Subject: Re: [PATCH] Fixes: Indentation using TABs and improve formatting
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org, 
- "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- pbonzini@redhat.com, richard.henderson@linaro.org
-Content-Type: multipart/alternative; boundary="000000000000f6af1e0617ecf6f0"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::332;
- envelope-from=tanmaynpatil105@gmail.com; helo=mail-ot1-x332.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/4] hw/gpio: Handle clock migration in STM32L4x5 gpios
+To: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
+ qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20240507185854.34572-1-ines.varhol@telecom-paris.fr>
+ <20240507185854.34572-3-ines.varhol@telecom-paris.fr>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240507185854.34572-3-ines.varhol@telecom-paris.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -123,230 +135,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Kxv88Wpz0N/3
+X-TUID: KFoqh9GL+8Bv
 
---000000000000f6af1e0617ecf6f0
-Content-Type: text/plain; charset="UTF-8"
+On 7/5/24 20:55, Inès Varhol wrote:
+> STM32L4x5 GPIO wasn't migrating its clock.
+> 
+> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+> ---
+>   hw/gpio/stm32l4x5_gpio.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
 
-Hi,
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-I just sent a patch with fewer files to address using git-send-email.
-
-Thanks,
-Tanmay
-
-On Tue, 7 May 2024 at 15:56, Peter Maydell <peter.maydell@linaro.org> wrote:
-
-> On Mon, 6 May 2024 at 07:20, Tanmay <tanmaynpatil105@gmail.com> wrote:
-> >
-> > Hi,
-> >
-> > I have added a patch inline that fixes indentation and formatting for
-> some files as listed in https://gitlab.com/qemu-project/qemu/-/issues/373.
-> >
-> > Thanks,
-> > Tanmay
->
-> Hi; thanks for this patch. Unfortunately there seem to be some
-> problems with the formatting, which mean it doesn't apply correctly.
->
-> In particular you've sent it as a plain/text + HTML email, and
-> something (probably your mail client) is wrapping long lines.
-> I can usually fix something like this up on my end for a first
-> time submitter, but in this case the patch is just way too big
-> for that to be practical.
->
-> I generally don't recommend trying to send patch emails directly
-> through the gmail web UI -- it unfortunately mangles them too
-> much. Personally I use git-send-email; it is a bit awkward to
-> set up, but https://git-send-email.io/ has a nice step-by-step
-> guide including specific details on how to configure it to send
-> via Gmail.
->
-> > From 46026574821c46804111eea6607a1b39314b7abe Mon Sep 17 00:00:00 2001
-> > From: Tanmay Patil <tanmaynpatil105@gmail.com>
-> > Date: Sat, 25 Nov 2023 00:53:54 +0530
-> > Subject: [PATCH] Fixes: Indentation using TABs and improve formatting
-> >  Resolves: https://gitlab.com/qemu-project/qemu/-/issues/373
-> >
-> >    Files changed:
-> >         - hw/arm/boot.c
-> >         - hw/char/omap_uart.c
-> >         - hw/dma/pxa2xx_dma.c
-> >         - hw/gpio/omap_gpio.c
-> >         - hw/gpio/zaurus.c
-> >         - hw/input/tsc2005.c
-> >         - hw/input/tsc210x.c
-> >         - hw/intc/omap_intc.c
-> >         - hw/misc/cbus.c
-> >         - hw/misc/omap_clk.c
-> >         - hw/misc/omap_l4.c
-> >         - hw/misc/omap_sdrc.c
-> >         - hw/misc/omap_tap.c
-> >         - hw/sd/omap_mmc.c
-> >         - hw/sd/pxa2xx_mmci.c
-> >         - hw/timer/omap_gptimer.c
-> >         - hw/timer/omap_synctimer.c
-> >         - hw/timer/pxa2xx_timer.c
-> >         - include/hw/arm/pxa.h
-> >         - include/hw/arm/sharpsl.h
-> >         - include/hw/arm/soc_dma.h
-> >         - tcg/arm/tcg-target.h
-> >
-> > Signed-off-by: Tanmay Patil <tanmaynpatil105@gmail.com>
-> > ---
-> >  hw/arm/boot.c             |   8 +-
-> >  hw/char/omap_uart.c       |  49 +-
-> >  hw/dma/pxa2xx_dma.c       | 198 ++++----
-> >  hw/gpio/omap_gpio.c       | 243 +++++-----
-> >  hw/gpio/zaurus.c          |  61 +--
-> >  hw/input/tsc2005.c        | 130 ++---
-> >  hw/input/tsc210x.c        | 442 +++++++++--------
-> >  hw/intc/omap_intc.c       | 261 +++++-----
-> >  hw/misc/cbus.c            | 202 ++++----
-> >  hw/misc/omap_clk.c        | 999 +++++++++++++++++++-------------------
-> >  hw/misc/omap_l4.c         |  21 +-
-> >  hw/misc/omap_sdrc.c       | 135 +++---
-> >  hw/misc/omap_tap.c        |  28 +-
-> >  hw/sd/omap_mmc.c          | 208 ++++----
-> >  hw/sd/pxa2xx_mmci.c       | 149 +++---
-> >  hw/timer/omap_gptimer.c   | 126 ++---
-> >  hw/timer/omap_synctimer.c |   7 +-
-> >  hw/timer/pxa2xx_timer.c   | 279 ++++++-----
-> >  include/hw/arm/pxa.h      | 100 ++--
-> >  include/hw/arm/sharpsl.h  |   2 +-
-> >  include/hw/arm/soc_dma.h  |   4 +-
-> >  tcg/arm/tcg-target.h      |   4 +-
-> >  22 files changed, 1903 insertions(+), 1753 deletions(-)
->
-> This is a lot of changes to do all in one commit, even though they're
-> all just whitespace fixes. Could you split them up, please, into
-> multiple patches that tackle fewer files at a time?
->
-> thanks
-> -- PMM
->
-
---000000000000f6af1e0617ecf6f0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><p>Hi,</p><p>I just sent a patch with fewer files to addre=
-ss using git-send-email.</p><p>Thanks,<br>Tanmay</p></div><br><div class=3D=
-"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, 7 May 2024 at 1=
-5:56, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.m=
-aydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
- style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
-adding-left:1ex">On Mon, 6 May 2024 at 07:20, Tanmay &lt;<a href=3D"mailto:=
-tanmaynpatil105@gmail.com" target=3D"_blank">tanmaynpatil105@gmail.com</a>&=
-gt; wrote:<br>
-&gt;<br>
-&gt; Hi,<br>
-&gt;<br>
-&gt; I have added a patch inline that fixes indentation and formatting for =
-some files as listed in <a href=3D"https://gitlab.com/qemu-project/qemu/-/i=
-ssues/373" rel=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-pro=
-ject/qemu/-/issues/373</a>.<br>
-&gt;<br>
-&gt; Thanks,<br>
-&gt; Tanmay<br>
-<br>
-Hi; thanks for this patch. Unfortunately there seem to be some<br>
-problems with the formatting, which mean it doesn&#39;t apply correctly.<br=
->
-<br>
-In particular you&#39;ve sent it as a plain/text + HTML email, and<br>
-something (probably your mail client) is wrapping long lines.<br>
-I can usually fix something like this up on my end for a first<br>
-time submitter, but in this case the patch is just way too big<br>
-for that to be practical.<br>
-<br>
-I generally don&#39;t recommend trying to send patch emails directly<br>
-through the gmail web UI -- it unfortunately mangles them too<br>
-much. Personally I use git-send-email; it is a bit awkward to<br>
-set up, but <a href=3D"https://git-send-email.io/" rel=3D"noreferrer" targe=
-t=3D"_blank">https://git-send-email.io/</a> has a nice step-by-step<br>
-guide including specific details on how to configure it to send<br>
-via Gmail.<br>
-<br>
-&gt; From 46026574821c46804111eea6607a1b39314b7abe Mon Sep 17 00:00:00 2001=
-<br>
-&gt; From: Tanmay Patil &lt;<a href=3D"mailto:tanmaynpatil105@gmail.com" ta=
-rget=3D"_blank">tanmaynpatil105@gmail.com</a>&gt;<br>
-&gt; Date: Sat, 25 Nov 2023 00:53:54 +0530<br>
-&gt; Subject: [PATCH] Fixes: Indentation using TABs and improve formatting<=
-br>
-&gt;=C2=A0 Resolves: <a href=3D"https://gitlab.com/qemu-project/qemu/-/issu=
-es/373" rel=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-projec=
-t/qemu/-/issues/373</a><br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 Files changed:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/arm/boot.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/char/omap_uart.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/dma/pxa2xx_dma.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/gpio/omap_gpio.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/gpio/zaurus.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/input/tsc2005.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/input/tsc210x.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/intc/omap_intc.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/misc/cbus.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/misc/omap_clk.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/misc/omap_l4.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/misc/omap_sdrc.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/misc/omap_tap.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/sd/omap_mmc.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/sd/pxa2xx_mmci.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/timer/omap_gptimer.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/timer/omap_synctimer.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/timer/pxa2xx_timer.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- include/hw/arm/pxa.h<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- include/hw/arm/sharpsl.h<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- include/hw/arm/soc_dma.h<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- tcg/arm/tcg-target.h<br>
-&gt;<br>
-&gt; Signed-off-by: Tanmay Patil &lt;<a href=3D"mailto:tanmaynpatil105@gmai=
-l.com" target=3D"_blank">tanmaynpatil105@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 hw/arm/boot.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
-=C2=A0 =C2=A08 +-<br>
-&gt;=C2=A0 hw/char/omap_uart.c=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 49 +-<br>
-&gt;=C2=A0 hw/dma/pxa2xx_dma.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 198 ++++----<br>
-&gt;=C2=A0 hw/gpio/omap_gpio.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 243 +++++-----<b=
-r>
-&gt;=C2=A0 hw/gpio/zaurus.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 61 +-=
--<br>
-&gt;=C2=A0 hw/input/tsc2005.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 130 ++---<br>
-&gt;=C2=A0 hw/input/tsc210x.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 442 +++++++++---=
------<br>
-&gt;=C2=A0 hw/intc/omap_intc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 261 +++++-----<b=
-r>
-&gt;=C2=A0 hw/misc/cbus.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 202 ++=
-++----<br>
-&gt;=C2=A0 hw/misc/omap_clk.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 999 ++++++++++++=
-+++++++-------------------<br>
-&gt;=C2=A0 hw/misc/omap_l4.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 21 +-=
-<br>
-&gt;=C2=A0 hw/misc/omap_sdrc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 135 +++---<br>
-&gt;=C2=A0 hw/misc/omap_tap.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 28 +-<br>
-&gt;=C2=A0 hw/sd/omap_mmc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 208 ++++---=
--<br>
-&gt;=C2=A0 hw/sd/pxa2xx_mmci.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 149 +++---<br>
-&gt;=C2=A0 hw/timer/omap_gptimer.c=C2=A0 =C2=A0| 126 ++---<br>
-&gt;=C2=A0 hw/timer/omap_synctimer.c |=C2=A0 =C2=A07 +-<br>
-&gt;=C2=A0 hw/timer/pxa2xx_timer.c=C2=A0 =C2=A0| 279 ++++++-----<br>
-&gt;=C2=A0 include/hw/arm/pxa.h=C2=A0 =C2=A0 =C2=A0 | 100 ++--<br>
-&gt;=C2=A0 include/hw/arm/sharpsl.h=C2=A0 |=C2=A0 =C2=A02 +-<br>
-&gt;=C2=A0 include/hw/arm/soc_dma.h=C2=A0 |=C2=A0 =C2=A04 +-<br>
-&gt;=C2=A0 tcg/arm/tcg-target.h=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A04 +-<br>
-&gt;=C2=A0 22 files changed, 1903 insertions(+), 1753 deletions(-)<br>
-<br>
-This is a lot of changes to do all in one commit, even though they&#39;re<b=
-r>
-all just whitespace fixes. Could you split them up, please, into<br>
-multiple patches that tackle fewer files at a time?<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---000000000000f6af1e0617ecf6f0--

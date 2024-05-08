@@ -1,193 +1,219 @@
-Received: by 2002:a17:907:a184:b0:a52:4db9:938b with SMTP id om4csp423689ejc;
-        Wed, 8 May 2024 03:46:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWvjOdwHAG1BIa8gd5PWyYVm7Zxo2W8NXrdhW7f26H8fzLau97yDO96Z3b6Ss32skdmsP7uf4xtGqWrHrED1EpzCmgsjDjY
-X-Google-Smtp-Source: AGHT+IEAOZLLp8F4kKsjzb+WWf6OJ6VYwRXoFqOQuPtqDvSkO/6+oK1PyxgjvuRTGWt7QWWWaRRO
-X-Received: by 2002:adf:fec2:0:b0:34d:a23c:cb4a with SMTP id ffacd0b85a97d-34fca149b57mr1888447f8f.7.1715165188414;
-        Wed, 08 May 2024 03:46:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715165188; cv=none;
+Received: by 2002:a17:907:a184:b0:a52:4db9:938b with SMTP id om4csp548752ejc;
+        Wed, 8 May 2024 07:09:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVzwAY1SUZMxUFueen965lz0H5fcD1q8XZDcVLjou59oY+j5PsFpvrUNBCVgkqGs+zGbfaurpG7h5LErm6YTzkXURb+lO16
+X-Google-Smtp-Source: AGHT+IG0G+Ufl9iT2BMKIj0Fdh3MF34pfOMGPglQb4neCG9fOiWW9dY9TTKj+X2ESpV0a7WkfHNH
+X-Received: by 2002:ad4:5fcf:0:b0:6a0:7df4:90b8 with SMTP id 6a1803df08f44-6a15149072amr29792336d6.35.1715177340083;
+        Wed, 08 May 2024 07:09:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715177340; cv=none;
         d=google.com; s=arc-20160816;
-        b=AgaC76hIZLTXw08fBV479UvslL30NkmjZI8Hhjf1QKi5SXY5rHxuyvCfF8lBbR3hYo
-         FSBtc/a7WyR02zzl1Mc5FRhWazXyQkUSnG73cvWdWrx0i9CRzF0YmTTL1dBja5C1XKYn
-         sLc7ev3WcbtA3ESDfBClnlx3/oaWG/zQu/tATBX1wDIszOa7uW8qWLFMnKQXpyOQ79OY
-         MsnoLpyMK1UZc61JaE9Z3vf0Psys0cOWwVzBKtkntDbpVthWE1u4qAfwmLSBVqmaZJ0V
-         ofXlKVQvhk5+VIQJQH9ra4Dx00h2fj/dXoFrMPFpfNz+2DTj7w2aFixo78pYx2tMp4LX
-         SLDw==
+        b=mAVavH3u9YyYBH13NDC7U8T1PzMJNipqUnPj5Fj5xrgjL39wofz28qzWIuBdJ/IwoN
+         N7ibzFCTLN4pp7j9zUF+wobL1+RZZl01PydmaWUZFcSouzEaZi2JuheLWmvA5VU9b4jX
+         yZqU2e6GtZg+QeF3OnqEuVTKXpGdRSqXsj9y6Xp9y/nMCMaOuMdFT57rI/XozhOFIEvK
+         +WddPQM+OsVGknIcZC8871uCatgB9Q0WY3VYC/KwHv1Di2T40sOCp9+r3z5TLs5/Pr2x
+         ajrjtS/k4CyIY7NQfWJdT883iLbrqw/nrhK4GHSDUHWoE0xWFTGmS1thzAiCAg60YjXX
+         Cl0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=yuItftvyJAMIv98UbEUAELrAYcS7MBqAyyk37GJgng0=;
-        fh=zTxF4K31/x2suaSeNht4oFXyiv8u4xMnsyBgdgJgfgo=;
-        b=Qdh9qsmgRE8eML0xyqMHJQGkZhyMMP3w6dbLnxZ1q4h3GZF589plgkgI46pcLPjwch
-         hmvzfR1KBnQ37dE7Q7j2vdE8IXxD7edDuLNzC2ks55/AcNHeAGlB++49tehtErLhC6Ef
-         wYFegYQb7A32jNp3TEx6x4QGQ9dShT76qEcKvMeKrdwhnsvA1lKWDt/0Ndo9T9Rpd+v3
-         XnKdadXvBECDLUbhmYrLa8BdMUZ+uo/oB9DQ0rsW7ZRGFZmi5z26blFg0AeSsOEBoVDt
-         QUl/q7totT4IGIBOwZ6mNDs5jR5R/eIlQbkbbPu/jWRc5u5EaKU4EgGmQahSd2cFIOgb
-         NlAQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=5RHqHsuiLiPA/oyCgbngDHmPlwOj1ZNaC9uXrn1XVW8=;
+        fh=rz3dKNHLKN5B8pJEVqKymKY7LoNJkvFkM3e5oITJ8M8=;
+        b=Ufv7QBkFeu65TNKqSZ+xTs8yc/KlY9q0ifAUwzGWvEa3HMka85Mq3C70FKpxVfcrmL
+         xZxCpwaxMNA7v1ae+LVoML5wucDUQAsiPhZi/6vOAbbdevyBwhkJteyhGX81mddGRu6b
+         LdTswN4T6xs6JBP/6Q6J2Qv88whossmuGXH88Br7VmfkufN2ywIWxMug611wKpyj5eg/
+         n9sd9ksQ7Gpzoe4/AzxrgOWVFsstQcphVqiqCKT6JICJUGiDVC1ANRfJEbkm3m/QtBGP
+         if4CHchpP8hCIamt+3n8NTV6tY4ZPgRIB3gzVAoXGH6ehqjDZXrvDD3sRWPEOjPmBtky
+         Nzuw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id i13-20020a5d558d000000b0034bb59c91c1si8226675wrv.492.2024.05.08.03.46.28
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 May 2024 03:46:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b="F/bBcKI8";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id if3-20020a0562141c4300b0069b720b263asi14027645qvb.540.2024.05.08.07.08.59
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 08 May 2024 07:09:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VZBZK4nV6z6K6MM;
-	Wed,  8 May 2024 18:43:21 +0800 (CST)
-Received: from lhrpeml500002.china.huawei.com (unknown [7.191.160.78])
-	by mail.maildlp.com (Postfix) with ESMTPS id 0DE0F140B38;
-	Wed,  8 May 2024 18:46:27 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500002.china.huawei.com (7.191.160.78) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 8 May 2024 11:46:26 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
- Wed, 8 May 2024 11:46:26 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
-	<pbonzini@redhat.com>, "mst@redhat.com" <mst@redhat.com>, "will@kernel.org"
-	<will@kernel.org>, "gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V8 1/8] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-Thread-Topic: [PATCH V8 1/8] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-Thread-Index: AQHadCEigDg8Rw6JCkW/vDs/2Ez4xbGFgsCAgAB5OpCAABjHgIAHWGwg
-Date: Wed, 8 May 2024 10:46:26 +0000
-Message-ID: <ec1f4df024d94542a55835c852eededb@huawei.com>
-References: <20240312020000.12992-1-salil.mehta@huawei.com>
- <20240312020000.12992-2-salil.mehta@huawei.com>
- <9747db79-4444-4d31-b014-8c368936cab4@linaro.org>
- <ed20ba7ef8d949fea9b81ed194c59bf6@huawei.com>
- <2f817b76-8090-418b-8547-98d366c52838@linaro.org>
-In-Reply-To: <2f817b76-8090-418b-8547-98d366c52838@linaro.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.126.172.42]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@linaro.org header.s=google header.b="F/bBcKI8";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s4hyX-0007su-6Z; Wed, 08 May 2024 10:08:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s4hyV-0007sS-UD
+ for qemu-arm@nongnu.org; Wed, 08 May 2024 10:08:51 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s4hyU-0002gR-6N
+ for qemu-arm@nongnu.org; Wed, 08 May 2024 10:08:51 -0400
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-a59a352bbd9so166867966b.1
+ for <qemu-arm@nongnu.org>; Wed, 08 May 2024 07:08:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1715177328; x=1715782128; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=5RHqHsuiLiPA/oyCgbngDHmPlwOj1ZNaC9uXrn1XVW8=;
+ b=F/bBcKI8/qGW+48XCB/jsKwBcfJfFVWISIix9o3CyecMf3phcR4IirdC74Hq6Bv2Uq
+ SPrCrPz0RJ0xVFr7yvq/VDHepstkHMDmh5vDCSpbn3e0YzHv3nicsII0P15VX6/EcErw
+ TVnfIUekt52SgID592ZqsJ8v1LGkdZz80QLKNz19UVYoSDqFHYDYCXExKuQy1YEN2KnO
+ jwOyhNJ+M/0D2IXUEetAl4kruhOLGQYz02ZnE5Xi5JHyA7MkI5OXO2iadaQjBFTV0UZh
+ ewx3NFCZUpcDivtm9IeJ8KMHJflnHnxTUp9+2a1eqUikF01tFR5ovNsitEWBcrlM5x+5
+ U55Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1715177328; x=1715782128;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=5RHqHsuiLiPA/oyCgbngDHmPlwOj1ZNaC9uXrn1XVW8=;
+ b=EMiq+kqDSUb6yp9oyb8XDyJDh1bV3GPjxgTO8P9xDOUH7wJxFvpGSy8D1vltufVKGp
+ uQbZgcEUvt+S0p3FPdz5/LPwMnGOatAKD5aamKHc2OPA/5GZ975+9ycBTkl9YOnJM0He
+ rUNW53hFeQyQECnGnyKFuQSPXus1r8AQR2o81hU0nnx8zpi1n+Z8c2ZN0ReMudQPxCvd
+ UqMw0smYvoS5Q2E+9bgYQ32fjblRy6maJoSfh8eWMuGlLYEwg59V/hWw61obttxwjVJY
+ EQ/K1LJe74BjValsYAsSB+64yCwWWRAwNNoeQ+GIgNIyyIOylcPVoSWQobAR7/d1T2ip
+ d69g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXP5Qdimx7y0WID3AQmXKx4r5rCWPCNDNvAb1UWI4DTnEkwtzO7f6SpNNZdz8PA3Zwy0IKBUQ3Oe7j5MtVtjZJsI3xV
+X-Gm-Message-State: AOJu0YxfaIQYp8PE1yKQmdoUdtgoJK+ftrbERy9ky8i45/AenebHTMpd
+ bvWnFIF3QmzwexdYy3dPdmxbM0odhc5VuHbwgvEtzgQJWlj2QXJomsa9a5gF5/w=
+X-Received: by 2002:a17:907:9490:b0:a59:fb06:5d35 with SMTP id
+ a640c23a62f3a-a59fb065e31mr295445866b.8.1715177328136; 
+ Wed, 08 May 2024 07:08:48 -0700 (PDT)
+Received: from [192.168.69.100] (sar95-h02-176-184-10-250.dsl.sta.abo.bbox.fr.
+ [176.184.10.250]) by smtp.gmail.com with ESMTPSA id
+ jt26-20020a170906ca1a00b00a558206b2c5sm7748013ejb.99.2024.05.08.07.08.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 May 2024 07:08:47 -0700 (PDT)
+Message-ID: <d03ca96e-53e9-43ed-886e-0cffd15994fb@linaro.org>
+Date: Wed, 8 May 2024 16:08:45 +0200
 MIME-Version: 1.0
-X-TUID: AT58koEwTIyy
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/4] hw/char: Add QOM property for STM32L4x5 USART clock
+ frequency
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>,
+ Laurent Vivier <lvivier@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
+ Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
+References: <20240505140556.373711-1-ines.varhol@telecom-paris.fr>
+ <20240505140556.373711-4-ines.varhol@telecom-paris.fr>
+ <06e98554-3430-49d5-94f3-c5d683327f55@linaro.org>
+ <CAFEAcA83cgqq3yh3=d=gHd-LK3qh2g-pE2v734apKmcNTJTvww@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA83cgqq3yh3=d=gHd-LK3qh2g-pE2v734apKmcNTJTvww@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /f7bhXJs+nmt
 
-SGkgUGhpbGxpcGUsDQoNClNvcnJ5LCBJIG1pc3NlZCB0aGlzIG1haWwgZWFybGllci4NCg0KPiAg
-RnJvbTogUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgPHBoaWxtZEBsaW5hcm8ub3JnPg0KPiAgU2Vu
-dDogRnJpZGF5LCBNYXkgMywgMjAyNCA3OjIzIFBNDQo+ICBUbzogU2FsaWwgTWVodGEgPHNhbGls
-Lm1laHRhQGh1YXdlaS5jb20+OyBxZW11LWRldmVsQG5vbmdudS5vcmc7DQo+ICBxZW11LWFybUBu
-b25nbnUub3JnDQo+ICANCj4gIE9uIDMvNS8yNCAxNzo1NywgU2FsaWwgTWVodGEgd3JvdGU6DQo+
-ICA+IEhpIFBoaWxpcHBlLA0KPiAgPg0KPiAgPj4gICBGcm9tOiBQaGlsaXBwZSBNYXRoaWV1LURh
-dWTDqSA8cGhpbG1kQGxpbmFyby5vcmc+DQo+ICA+PiAgIFNlbnQ6IEZyaWRheSwgTWF5IDMsIDIw
-MjQgMTA6NDAgQU0NCj4gID4+ICAgU3ViamVjdDogUmU6IFtQQVRDSCBWOCAxLzhdIGFjY2VsL2t2
-bTogRXh0cmFjdCBjb21tb24gS1ZNIHZDUFUNCj4gID4+ICAge2NyZWF0aW9uLHBhcmtpbmd9IGNv
-ZGUNCj4gID4+DQo+ICA+PiAgIEhpIFNhbGlsLA0KPiAgPj4NCj4gID4+ICAgT24gMTIvMy8yNCAw
-Mjo1OSwgU2FsaWwgTWVodGEgd3JvdGU6DQo+ICA+PiAgID4gS1ZNIHZDUFUgY3JlYXRpb24gaXMg
-ZG9uZSBvbmNlIGR1cmluZyB0aGUgdkNQVSByZWFsaXphdGlvbiB3aGVuIFFlbXUNCj4gID4+ICAg
-PiB2Q1BVIHRocmVhZCBpcyBzcGF3bmVkLiBUaGlzIGlzIGNvbW1vbiB0byBhbGwgdGhlIGFyY2hp
-dGVjdHVyZXMgYXMgb2Ygbm93Lg0KPiAgPj4gICA+DQo+ICA+PiAgID4gSG90LXVucGx1ZyBvZiB2
-Q1BVIHJlc3VsdHMgaW4gZGVzdHJ1Y3Rpb24gb2YgdGhlIHZDUFUgb2JqZWN0IGluIFFPTQ0KPiAg
-Pj4gICA+IGJ1dCB0aGUgY29ycmVzcG9uZGluZyBLVk0gdkNQVSBvYmplY3QgaW4gdGhlIEhvc3Qg
-S1ZNIGlzIG5vdCBkZXN0cm95ZWQNCj4gID4+ICAgPiBhcyBLVk0gZG9lc24ndCBzdXBwb3J0IHZD
-UFUgcmVtb3ZhbC4gVGhlcmVmb3JlLCBpdHMgcmVwcmVzZW50YXRpdmUgS1ZNDQo+ICA+PiAgID4g
-dkNQVSBvYmplY3QvY29udGV4dCBpbiBRZW11IGlzIHBhcmtlZC4NCj4gID4+ICAgPg0KPiAgPj4g
-ICA+IFJlZmFjdG9yIGFyY2hpdGVjdHVyZSBjb21tb24gbG9naWMgc28gdGhhdCBzb21lIEFQSXMg
-Y291bGQgYmUgcmV1c2VkDQo+ICA+PiAgID4gYnkgdkNQVSBIb3RwbHVnIGNvZGUgb2Ygc29tZSBh
-cmNoaXRlY3R1cmVzIGxpa2VzIEFSTSwgTG9vbmdzb24gZXRjLg0KPiAgPj4gICA+IFVwZGF0ZSBu
-ZXcvb2xkIEFQSXMgd2l0aCB0cmFjZSBldmVudHMgaW5zdGVhZCBvZiBEUFJJTlRGLiBObyBmdW5j
-dGlvbmFsDQo+ICA+PiAgIGNoYW5nZSBpcyBpbnRlbmRlZCBoZXJlLg0KPiAgPj4gICA+DQo+ICA+
-PiAgID4gU2lnbmVkLW9mZi1ieTogU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+
-DQo+ICA+PiAgID4gUmV2aWV3ZWQtYnk6IEdhdmluIFNoYW4gPGdzaGFuQHJlZGhhdC5jb20+DQo+
-ICA+PiAgID4gVGVzdGVkLWJ5OiBWaXNobnUgUGFqanVyaSA8dmlzaG51QG9zLmFtcGVyZWNvbXB1
-dGluZy5jb20+DQo+ICA+PiAgID4gUmV2aWV3ZWQtYnk6IEpvbmF0aGFuIENhbWVyb24gPEpvbmF0
-aGFuLkNhbWVyb25AaHVhd2VpLmNvbT4NCj4gID4+ICAgPiBUZXN0ZWQtYnk6IFhpYW5nbGFpIExp
-IDxsaXhpYW5nbGFpQGxvb25nc29uLmNuPg0KPiAgPj4gICA+IFRlc3RlZC1ieTogTWlndWVsIEx1
-aXMgPG1pZ3VlbC5sdWlzQG9yYWNsZS5jb20+DQo+ICA+PiAgID4gUmV2aWV3ZWQtYnk6IFNoYW9x
-aW4gSHVhbmcgPHNoYWh1YW5nQHJlZGhhdC5jb20+DQo+ICA+PiAgID4gLS0tDQo+ICA+PiAgID4g
-ICBhY2NlbC9rdm0va3ZtLWFsbC5jICAgIHwgNjQgKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKystDQo+ICAtLS0tLQ0KPiAgPj4gICAtLS0tDQo+ICA+PiAgID4gICBhY2NlbC9rdm0vdHJh
-Y2UtZXZlbnRzIHwgIDUgKysrLQ0KPiAgPj4gICA+ICAgaW5jbHVkZS9zeXNlbXUva3ZtLmggICB8
-IDE2ICsrKysrKysrKysrDQo+ICA+PiAgID4gICAzIGZpbGVzIGNoYW5nZWQsIDY5IGluc2VydGlv
-bnMoKyksIDE2IGRlbGV0aW9ucygtKQ0KPiAgPj4gICA+DQo+ICA+PiAgID4gZGlmZiAtLWdpdCBh
-L2FjY2VsL2t2bS9rdm0tYWxsLmMgYi9hY2NlbC9rdm0va3ZtLWFsbC5jIGluZGV4DQo+ICA+PiAg
-ID4gYThjZWNkMDQwZS4uM2JjMzIwN2JkYSAxMDA2NDQNCj4gID4+ICAgPiAtLS0gYS9hY2NlbC9r
-dm0va3ZtLWFsbC5jDQo+ICA+PiAgID4gKysrIGIvYWNjZWwva3ZtL2t2bS1hbGwuYw0KPiAgPj4g
-ICA+IEBAIC0xMjYsNiArMTI2LDcgQEAgc3RhdGljIFFlbXVNdXRleCBrbWxfc2xvdHNfbG9jazsN
-Cj4gID4+ICAgPiAgICNkZWZpbmUga3ZtX3Nsb3RzX3VubG9jaygpICBxZW11X211dGV4X3VubG9j
-aygma21sX3Nsb3RzX2xvY2spDQo+ICA+PiAgID4NCj4gID4+ICAgPiAgIHN0YXRpYyB2b2lkIGt2
-bV9zbG90X2luaXRfZGlydHlfYml0bWFwKEtWTVNsb3QgKm1lbSk7DQo+ICA+PiAgID4gK3N0YXRp
-YyBpbnQga3ZtX2dldF92Y3B1KEtWTVN0YXRlICpzLCB1bnNpZ25lZCBsb25nIHZjcHVfaWQpOw0K
-PiAgPj4gICA+DQo+ICA+PiAgID4gICBzdGF0aWMgaW5saW5lIHZvaWQga3ZtX3Jlc2FtcGxlX2Zk
-X3JlbW92ZShpbnQgZ3NpKQ0KPiAgPj4gICA+ICAgew0KPiAgPj4gICA+IEBAIC0zMTQsMTQgKzMx
-NSw1MyBAQCBlcnI6DQo+ICA+PiAgID4gICAgICAgcmV0dXJuIHJldDsNCj4gID4+ICAgPiAgIH0N
-Cj4gID4+ICAgPg0KPiAgPj4gICA+ICt2b2lkIGt2bV9wYXJrX3ZjcHUoQ1BVU3RhdGUgKmNwdSkN
-Cj4gID4+ICAgPiArew0KPiAgPj4gICA+ICsgICAgc3RydWN0IEtWTVBhcmtlZFZjcHUgKnZjcHU7
-DQo+ICA+PiAgID4gKw0KPiAgPj4gICA+ICsgICAgdHJhY2Vfa3ZtX3BhcmtfdmNwdShjcHUtPmNw
-dV9pbmRleCwga3ZtX2FyY2hfdmNwdV9pZChjcHUpKTsNCj4gID4+ICAgPiArDQo+ICA+PiAgID4g
-KyAgICB2Y3B1ID0gZ19tYWxsb2MwKHNpemVvZigqdmNwdSkpOw0KPiAgPj4gICA+ICsgICAgdmNw
-dS0+dmNwdV9pZCA9IGt2bV9hcmNoX3ZjcHVfaWQoY3B1KTsNCj4gID4+ICAgPiArICAgIHZjcHUt
-Pmt2bV9mZCA9IGNwdS0+a3ZtX2ZkOw0KPiAgPj4gICA+ICsgICAgUUxJU1RfSU5TRVJUX0hFQUQo
-Jmt2bV9zdGF0ZS0+a3ZtX3BhcmtlZF92Y3B1cywgdmNwdSwgbm9kZSk7IH0NCj4gID4+ICAgPiAr
-DQo+ICA+PiAgID4gK2ludCBrdm1fY3JlYXRlX3ZjcHUoQ1BVU3RhdGUgKmNwdSkNCj4gID4+ICAg
-PiArew0KPiAgPj4gICA+ICsgICAgdW5zaWduZWQgbG9uZyB2Y3B1X2lkID0ga3ZtX2FyY2hfdmNw
-dV9pZChjcHUpOw0KPiAgPj4gICA+ICsgICAgS1ZNU3RhdGUgKnMgPSBrdm1fc3RhdGU7DQo+ICA+
-PiAgID4gKyAgICBpbnQga3ZtX2ZkOw0KPiAgPj4gICA+ICsNCj4gID4+ICAgPiArICAgIHRyYWNl
-X2t2bV9jcmVhdGVfdmNwdShjcHUtPmNwdV9pbmRleCwga3ZtX2FyY2hfdmNwdV9pZChjcHUpKTsN
-Cj4gID4+ICAgPiArDQo+ICA+PiAgID4gKyAgICAvKiBjaGVjayBpZiB0aGUgS1ZNIHZDUFUgYWxy
-ZWFkeSBleGlzdCBidXQgaXMgcGFya2VkICovDQo+ICA+PiAgID4gKyAgICBrdm1fZmQgPSBrdm1f
-Z2V0X3ZjcHUocywgdmNwdV9pZCk7DQo+ICA+PiAgID4gKyAgICBpZiAoa3ZtX2ZkIDwgMCkgew0K
-PiAgPj4gICA+ICsgICAgICAgIC8qIHZDUFUgbm90IHBhcmtlZDogY3JlYXRlIGEgbmV3IEtWTSB2
-Q1BVICovDQo+ICA+PiAgID4gKyAgICAgICAga3ZtX2ZkID0ga3ZtX3ZtX2lvY3RsKHMsIEtWTV9D
-UkVBVEVfVkNQVSwgdmNwdV9pZCk7DQo+ICA+PiAgID4gKyAgICAgICAgaWYgKGt2bV9mZCA8IDAp
-IHsNCj4gID4+ICAgPiArICAgICAgICAgICAgZXJyb3JfcmVwb3J0KCJLVk1fQ1JFQVRFX1ZDUFUg
-SU9DVEwgZmFpbGVkIGZvciB2Q1BVICVsdSIsIHZjcHVfaWQpOw0KPiAgPj4gICA+ICsgICAgICAg
-ICAgICByZXR1cm4ga3ZtX2ZkOw0KPiAgPj4gICA+ICsgICAgICAgIH0NCj4gID4+ICAgPiArICAg
-IH0NCj4gID4+ICAgPiArDQo+ICA+PiAgID4gKyAgICBjcHUtPmt2bV9mZCA9IGt2bV9mZDsNCj4g
-ID4+ICAgPiArICAgIGNwdS0+a3ZtX3N0YXRlID0gczsNCj4gID4+ICAgPiArICAgIGNwdS0+dmNw
-dV9kaXJ0eSA9IHRydWU7DQo+ICA+PiAgID4gKyAgICBjcHUtPmRpcnR5X3BhZ2VzID0gMDsNCj4g
-ID4+ICAgPiArICAgIGNwdS0+dGhyb3R0bGVfdXNfcGVyX2Z1bGwgPSAwOw0KPiAgPj4gICA+ICsN
-Cj4gID4+ICAgPiArICAgIHJldHVybiAwOw0KPiAgPj4gICA+ICt9DQo+ICA+Pg0KPiAgPj4gICBU
-aGlzIHNlZW1zIGdlbmVyaWMgZW5vdWdoIHRvIGJlIGltcGxlbWVudGVkIGZvciBhbGwgYWNjZWxl
-cmF0b3JzLg0KPiAgPj4NCj4gID4+ICAgU2VlIEFjY2VsT3BzQ2xhc3MgaW4gaW5jbHVkZS9zeXNl
-bXUvYWNjZWwtb3BzLmguDQo+ICA+Pg0KPiAgPj4gICBUaGF0IHNhaWQsIGNhbiBiZSBkb25lIGxh
-dGVyIG9uIHRvcC4NCj4gID4NCj4gID4gTGV0IG1lIHVuZGVyc3RhbmQgY29ycmVjdGx5LiBBcmUg
-eW91IHN1Z2dlc3RpbmcgdG8gaW1wbGVtZW50IGFib3ZlDQo+ICA+IGV2ZW4gZm9yIEhWRiwgVENH
-LCBRVEVTVCBldGM/DQo+ICANCj4gIE5vdCBmb3IgeW91IHRvIGltcGxlbWVudCB0aGUgb3RoZXIg
-bm9uLUtWTSBhY2NlbGVyYXRvcnMsIGJ1dCBzaW5jZSB5b3UNCj4gIGFyZSBpbnRyb2R1Y2luZyB0
-aGlzLCBub3cgaXMgYSBnb29kIHRpbWUgdG8gdGhpbmsgYWJvdXQgYSBnZW5lcmljIGludGVyZmFj
-ZS4NCj4gIA0KPiAgU28gZmFyIEFjY2VsT3BzQ2xhc3M6Olt1bl1wYXJrX3ZjcHUoKSBoYW5kbGVy
-cyBtYWtlIHNlbnNlIHRvIG1lLg0KDQpTdXJlLCBidXQgd2hhdCBpcyB0aGUgYWR2YW50YWdlIG9m
-IGRlZmluaW5nIHRoZXNlICdzdXBwb3J0aW5nJyBmdW5jdGlvbnMNCmFzIHBhcnQgb2YgdGhlIEFj
-Y2VsT3BzQ2xhc3M/IEVhY2ggb2YgdGhlc2UgZnVuY3Rpb25zIGluIGFueSBjYXNlIHdpbGwgbmVl
-ZA0KdG8gYmUgZGVmaW5lZCBpbmRpdmlkdWFsbHkgZm9yIGRpZmZlcmVudCBBY2NlbGVyYXRvcnMg
-b3IgdW5sZXNzIHdlIGFyZQ0KcGxhbm5pbmcgdG8gZXh0cmFjdCBzb21lIGNvbW1vbiBhY2NlbGVy
-YXRvciBmdW5jdGlvbnMgaW4gYSBzZXBhcmF0ZSBmaWxlDQphbmQgdXNlIHRoZW0gYWNyb3NzIGFs
-bCB0aGUgYWNjZWxlcmF0b3JzPw0KDQpJJ20gc3VyZWx5IG1pc3Npbmcgc29tZSBrZXkgcG9pbnQg
-aGVyZS4NCg0KVGhhbmtzDQpTYWxpbC4NCg0KDQoNCg0KDQo=
+Hi,
+
+On 7/5/24 11:54, Peter Maydell wrote:
+> On Mon, 6 May 2024 at 10:34, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> Hi,
+>>
+>> On 5/5/24 16:05, Inès Varhol wrote:
+>>> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
+>>> ---
+>>>    hw/char/stm32l4x5_usart.c | 12 ++++++++++++
+>>>    1 file changed, 12 insertions(+)
+>>>
+>>> diff --git a/hw/char/stm32l4x5_usart.c b/hw/char/stm32l4x5_usart.c
+>>> index fc5dcac0c4..ee7727481c 100644
+>>> --- a/hw/char/stm32l4x5_usart.c
+>>> +++ b/hw/char/stm32l4x5_usart.c
+>>> @@ -26,6 +26,7 @@
+>>>    #include "hw/clock.h"
+>>>    #include "hw/irq.h"
+>>>    #include "hw/qdev-clock.h"
+>>> +#include "qapi/visitor.h"
+>>>    #include "hw/qdev-properties.h"
+>>>    #include "hw/qdev-properties-system.h"
+>>>    #include "hw/registerfields.h"
+>>> @@ -523,6 +524,14 @@ static Property stm32l4x5_usart_base_properties[] = {
+>>>        DEFINE_PROP_END_OF_LIST(),
+>>>    };
+>>>
+>>> +static void clock_freq_get(Object *obj, Visitor *v,
+>>> +    const char *name, void *opaque, Error **errp)
+>>> +{
+>>> +    Stm32l4x5UsartBaseState *s = STM32L4X5_USART_BASE(obj);
+>>> +    uint32_t clock_freq_hz = clock_get_hz(s->clk);
+>>> +    visit_type_uint32(v, name, &clock_freq_hz, errp);
+>>> +}
+>>> +
+>>>    static void stm32l4x5_usart_base_init(Object *obj)
+>>>    {
+>>>        Stm32l4x5UsartBaseState *s = STM32L4X5_USART_BASE(obj);
+>>> @@ -534,6 +543,9 @@ static void stm32l4x5_usart_base_init(Object *obj)
+>>>        sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+>>>
+>>>        s->clk = qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
+>>> +
+>>> +    object_property_add(obj, "clock-freq-hz", "uint32",
+>>> +                        clock_freq_get, NULL, NULL, NULL);
+>>
+>> Patch LGTM, but I wonder if registering QOM getter without setter
+>> is recommended. Perhaps we should encourage parity? In normal HW
+>> emulation we shouldn't update this clock externally, but thinking
+>> about testing, this could be interesting to introduce jitter.
+> 
+> object_property_add() with the set function NULL is fine,
+> and is documented to mean "property cannot be set". Attempts
+> to set it will be failed (in object_property_set()) with a
+> reasonable error.
+> 
+> But it's not clear to me why we want the property in the first
+> place -- we don't generally have devices which take a Clock
+> input have properties exposing its frequency. If we did want
+> that it would probably be better if we could do it generically
+> rather than by adding more boilerplate code to each device.
+
+Inès qtest checking (via HMP) the configured clock has a
+correct scaled frequency seems a good use case.
+
+> Mostly "frequency" properties on devices are for the case
+> where  they *don't* have a Clock input and instead have
+> ad-hoc legacy handling where the board/SoC that creates the
+> device sets an integer property to define the input frequency
+> because it doesn't model the clock tree with Clock objects.
+> 
+> thanks
+> -- PMM
+

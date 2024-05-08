@@ -1,352 +1,352 @@
-Received: by 2002:a05:7022:ef03:b0:7c:9548:a19d with SMTP id qy3csp2230480dlb;
-        Tue, 7 May 2024 12:00:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVPSV/8myZO51VD0GF+1thLK1tUDy82Q+Uj93tLY1ZBv+g/EJKMOFbAexDOOiKA7xhyrur9g4j1G8XjopMmAdcg8Pxth60J
-X-Google-Smtp-Source: AGHT+IHFr4ga2XqwWJcm6AAeV3qV6lmrlif3f94YCOeJg/O9WMA8LRiHutI/hRjskXUEaVrZwaew
-X-Received: by 2002:a05:6102:21d0:b0:47d:f7db:524d with SMTP id ada2fe7eead31-47f3c2f82bbmr326717137.17.1715108424652;
-        Tue, 07 May 2024 12:00:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715108424; cv=none;
+Received: by 2002:a17:907:a184:b0:a52:4db9:938b with SMTP id om4csp356361ejc;
+        Wed, 8 May 2024 01:19:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXiug/L9EcBMCjaQ/2oRqOro+ytZhy6jPyzCwDdKca03tcoH/WzRxGGUeQ5uPPQjlOLeb6h8Q8K0xtzMwMRIyORqKbltG9h
+X-Google-Smtp-Source: AGHT+IEAOEnXS0/K/4bxTyaTdouIjoBTVAwJ1DpYBb589/cVfOqBcX0M8PFw622PfSit9z/fR9XD
+X-Received: by 2002:a67:ec02:0:b0:47e:ecb:4f12 with SMTP id ada2fe7eead31-47f3c2ea8e9mr1745103137.21.1715156395640;
+        Wed, 08 May 2024 01:19:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715156395; cv=none;
         d=google.com; s=arc-20160816;
-        b=HD+2syOC5Q0dEwlXBOXjbg6tGyvdCFl0rcTufXTKBLEUwhZqctP50V8kPIKXN0ic8N
-         rY3wHEILCDpsuZwCBqoBYHquCY4clESW6tgop+Ym9kt8BlpitFvGAsIzPHyUeZ/O4KqW
-         MG8B4Gz/N8ZC027NUqTzzYL4a2hGiffn/s+kqyNA1O6xMtDv1zUDhJ+2wun7EH41hqI7
-         Iv5uG7wFn1o+tWfHwefMl5YOq49MMO1+ch2IEp8RSNnJpeE9lJL3sHELUMh6iRMUbRPh
-         1VqLvHk1sDil2+IZsMKUDejmUxz6/m7VOVhqFJhJyuc8Uw46O/kX+kb9HPMIaYyRKK1r
-         0Adw==
+        b=YTx/ELCGyFCF1gUNlJPxlHEISxaB5I20JeyjjTV/3TuTvNtA5Xki6Nuk19UFt1qx45
+         NMsd26aXL/Ry9Rx4Mm/eYWELi5yWFH+KmD5dESe4dB4MZ5QQA3Sz3Ix2XDIA7Lme1YmJ
+         uyfZBk4tgGaOko2NQOMrUa085fHiEaefp+HvvpCH5orhL4B0mCK1Oc0mTgoJflyj5LVk
+         Pf1MqB8jjkXOwUJ9tpjKDaZs6LGHfGNBO+FZFuS5xjzvErJGlbPk8YFWQa+cuWhvFKwv
+         HWA/baTTs1lHIcEMtAWqSHt9jQvXo8BGIhXMXPHwuSmlH1wexYomJquFa5ULBdJdLqhL
+         vEow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=IrR2Qad9VCbTE2UXFB7znMO4uXFwPBsww9btUNUzoLQ=;
-        fh=ecsk0JsTjjFV0jZ++009JHVO0qembwrIS4hjTG7H9mQ=;
-        b=eeO/Rcy4JV1DPUy+BiX7Dyd0dzSMY/xS/NMfUaZRPJzN0Nsgd97RGQTYTYrIhEzt+K
-         GIhTJrmCaHaJSvYVtJP7XboQUgZCUpDiWxSRCzg9+/gCVynhQuFjlMLSnfjuxxwX2gJN
-         9X/or9zDJ/OsCQxWY0HHbi2hOi/dHvsMwvlkDav/X6rJFIzijQNc03yks8Ylql34na+d
-         G/h9B8E5IaaS49gdrxNhO4kX0aglN9+NTtLMnEdUrjz+pzUm5L/WMErZ1Z5b0ATkT1f/
-         TuadV6F4s2nURJ/RKTULd8UEuRCewv98bQrZptutTMY6qC8A8YCi1ULypPKhl0f9t4k4
-         5KDg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=XI2BpQK6OsL3TbZxQJOFvnNA6HfZALkfZfMV8OVrxts=;
+        fh=d20r1zatvqjC7HzK6x75E/qgtbbkQ/UMCb3klKlnOqU=;
+        b=KRXXDQBKR5msK3iLix+HgD93/Ab+SGzbKbGtNj8M5ULRxn388FtvcX59rZdhoiKMv1
+         Cr2eh9PX1Rkf15x66ABLtXQgRALooSePgMDlZM0LtLrANqifqFrA2uuH9CZ1ncleYtoQ
+         9xM0qmYb5Pdfn0sHf6Jp5dtbm+alfs62HiITOMqaB6kLzQ+R2L49ruvYSzwe5YtgazQf
+         RxXmCImvgInymm6cfHvaqhZHVZ9nq/8kWAYOE/DBPOvRrhZGhw6ft53app8ZmrzU6hcd
+         FrI75GgmWb0FSdyC3NzRapZ2NmAheMc+kNyv+obH/zBNJQnDjP6uGWge9S+5IVGq5szC
+         4RkA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=iBJWW5Iu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cYOrYNPy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id jd5-20020a05610212c500b0047c32f47bfesi2120007vsb.200.2024.05.07.12.00.24
+        by mx.google.com with ESMTPS id pt6-20020a056214048600b006a0c12054casi13381083qvb.182.2024.05.08.01.19.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 May 2024 12:00:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 08 May 2024 01:19:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=iBJWW5Iu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cYOrYNPy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1s4Q21-0008H7-Fn; Tue, 07 May 2024 14:59:17 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s4cWm-00052x-M4; Wed, 08 May 2024 04:19:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1s4Q1w-0008Bz-KA; Tue, 07 May 2024 14:59:12 -0400
-Received: from zproxy1.enst.fr ([2001:660:330f:2::dc])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1s4Q1t-0006Aq-QR; Tue, 07 May 2024 14:59:12 -0400
-Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 950FFC0D30;
- Tue,  7 May 2024 20:59:07 +0200 (CEST)
-Received: from zproxy1.enst.fr ([IPv6:::1])
- by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id rRhCOOj9oPHE; Tue,  7 May 2024 20:59:07 +0200 (CEST)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 20766C0D05;
- Tue,  7 May 2024 20:59:07 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 20766C0D05
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1715108347;
- bh=IrR2Qad9VCbTE2UXFB7znMO4uXFwPBsww9btUNUzoLQ=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=iBJWW5Iushq9As6knhZAr2A6kTMU6O0DT2RCom6Xa1EMibDuVCxMFtUkiJcCwwg36
- d3hjqp4lYE2l09iEiw4znVXs+GyQu1yAHPMNTZ5ZeGO1rnNaedcrpkvx1yOfZ6NW8X
- S6XFU6OaI2Pyh93/8blmrgaZmgktdEWuPi9m6G7U=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy1.enst.fr ([IPv6:::1])
- by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id giaDoVpdQgOG; Tue,  7 May 2024 20:59:07 +0200 (CEST)
-Received: from inesv-Inspiron-3501.enst.fr (unknown
- [IPv6:2a04:8ec0:0:124::190c])
- by zproxy1.enst.fr (Postfix) with ESMTPSA id 25264C0D30;
- Tue,  7 May 2024 20:59:06 +0200 (CEST)
-From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
- Peter Maydell <peter.maydell@linaro.org>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 4/4] tests/qtest: Check STM32L4x5 clock connections
-Date: Tue,  7 May 2024 20:55:41 +0200
-Message-ID: <20240507185854.34572-5-ines.varhol@telecom-paris.fr>
-X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240507185854.34572-1-ines.varhol@telecom-paris.fr>
-References: <20240507185854.34572-1-ines.varhol@telecom-paris.fr>
+ (Exim 4.90_1) (envelope-from <tanmaynpatil105@gmail.com>)
+ id 1s4cWh-00051m-9h; Wed, 08 May 2024 04:19:47 -0400
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tanmaynpatil105@gmail.com>)
+ id 1s4cWf-0004wN-2w; Wed, 08 May 2024 04:19:47 -0400
+Received: by mail-ot1-x332.google.com with SMTP id
+ 46e09a7af769-6f0812c4500so1419662a34.0; 
+ Wed, 08 May 2024 01:19:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1715156383; x=1715761183; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=XI2BpQK6OsL3TbZxQJOFvnNA6HfZALkfZfMV8OVrxts=;
+ b=cYOrYNPyRBQNfXvgMJYXiuZNV/T0NktXabYevRuxAE5l7Jw4oHfQyho2SM9amsQKIb
+ DCLGNrepGkjAgu9+baZeG4klBfCGRC/u8I1ZwtREObTtZhs+v1zLCqWjsT70x8XjfX+k
+ S/W6XoJuA2mp6SjLT9VjgpJqeXsJoxk0d297cBnVLikLLmalaDp8YhrXEgBCrGEXH8au
+ WG46O0u01AnZXr8fg8sP6vPykbqzKyGgh49wrPh1+oMjUR3RSwqqXwIAAiZNSOXyZyfF
+ E4b+V8VmkQUG8YTx11fLRrARCMdxejlPWk6qYiTJ/4Sd6+6iHqoaf5DZiPG8afpVp9ER
+ dTNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1715156383; x=1715761183;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XI2BpQK6OsL3TbZxQJOFvnNA6HfZALkfZfMV8OVrxts=;
+ b=PpwqFM+Z4tDUibPrYOnLcGlVUQLutpZh+mI/BBBhkorjoxTrxAzFrUYKBZnJk+1Kz/
+ QsJhU+TiPJFqD0dQZyZBmxbYSBcDLsnsJI4RHOyOI6UBLFDncr2DgO+vDpBFY7rjI8In
+ NVuoWQCT7lhroDYi520If9mjCkyYnUJJlnaonzW2If3Tvst4wscFdfy3klChGULyFV8v
+ kfs44zglPZYXI4FcaXgHk5G0Cbw58swIOEYOKzPuRBqVHz9GyGau/tnfNdiMdcW3spph
+ k+C2KjU60xe8LDil061PYgdgcmDyGk68UVARbb8EW8OWwXtRS7VCo4DtsUlplDfpOIlr
+ PUeA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXO5/hSD+JSALvplXbK2/HvG+ebUOQP7H3sjscNiUFwoJSjLavPajbbYUwnJBoGbjzhcVaYe7P2Ck8fUMCfcl8qQMvy
+X-Gm-Message-State: AOJu0YwnZCpEM9LY6hPtOuxQvLsTqo8uwXukmSx7r+HpfEb1sTg1OKkm
+ IQjt2btoqdoyxFNRRkzkEyHzHRNh0MDjtQCNBI7SNsL9fvsb5CRQw5lT6ifSTwQ01rKjOKPGd3U
+ Dw1rP7yAGTCv8jCEpsD+z5v7GX6I=
+X-Received: by 2002:a05:6870:b418:b0:23e:7432:6f1d with SMTP id
+ 586e51a60fabf-24097bdf635mr2056859fac.7.1715156383344; Wed, 08 May 2024
+ 01:19:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:660:330f:2::dc;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy1.enst.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+References: <CAHnsOnN6AkE3visU9jaycp61G87XRJFwDGx4D1=HJSJpA2tfXw@mail.gmail.com>
+ <CAFEAcA8S1HJgcJdC5M=V1UHZHwNKhX_ii9PNNc88uC2Gi2E3sw@mail.gmail.com>
+In-Reply-To: <CAFEAcA8S1HJgcJdC5M=V1UHZHwNKhX_ii9PNNc88uC2Gi2E3sw@mail.gmail.com>
+From: Tanmay <tanmaynpatil105@gmail.com>
+Date: Wed, 8 May 2024 13:49:32 +0530
+Message-ID: <CAHnsOnPmo1FmDWgF-cnJKhjQ5sXJ7AmNvcf_Mg03+UKP+u+LXw@mail.gmail.com>
+Subject: Re: [PATCH] Fixes: Indentation using TABs and improve formatting
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org, 
+ "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
+ pbonzini@redhat.com, richard.henderson@linaro.org
+Content-Type: multipart/alternative; boundary="000000000000f6af1e0617ecf6f0"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::332;
+ envelope-from=tanmaynpatil105@gmail.com; helo=mail-ot1-x332.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0dzOoh0qb6cQ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Kxv88Wpz0N/3
 
-For USART, GPIO and SYSCFG devices, check that clock frequency before
-and after enabling the peripheral clock in RCC is correct.
+--000000000000f6af1e0617ecf6f0
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- tests/qtest/stm32l4x5.h             | 40 +++++++++++++++++++++++++++++
- tests/qtest/stm32l4x5_gpio-test.c   | 23 +++++++++++++++++
- tests/qtest/stm32l4x5_syscfg-test.c | 19 ++++++++++++--
- tests/qtest/stm32l4x5_usart-test.c  | 26 +++++++++++++++++++
- 4 files changed, 106 insertions(+), 2 deletions(-)
- create mode 100644 tests/qtest/stm32l4x5.h
+Hi,
 
-diff --git a/tests/qtest/stm32l4x5.h b/tests/qtest/stm32l4x5.h
-new file mode 100644
-index 0000000000..b8ef6698b2
---- /dev/null
-+++ b/tests/qtest/stm32l4x5.h
-@@ -0,0 +1,40 @@
-+/*
-+ * QTest testcase header for STM32L4X5 :
-+ * used for consolidating common objects in stm32l4x5_*-test.c
-+ *
-+ * Copyright (c) 2024 Arnaud Minier <arnaud.minier@telecom-paris.fr>
-+ * Copyright (c) 2024 In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+
-+/*
-+ * MSI (4 MHz) is used as system clock source after startup
-+ * from Reset.
-+ * AHB, APB1 and APB2 prescalers are set to 1 at reset.
-+ */
-+#define SYSCLK_FREQ_HZ 4000000
-+#define RCC_AHB2ENR 0x4002104C
-+#define RCC_APB1ENR1 0x40021058
-+#define RCC_APB1ENR2 0x4002105C
-+#define RCC_APB2ENR 0x40021060
-+
-+
-+static inline uint32_t get_clock_freq_hz(QTestState *qts, const char *pa=
-th)
-+{
-+    uint32_t clock_freq_hz =3D 0;
-+    QDict *r;
-+
-+    r =3D qtest_qmp(qts, "{ 'execute': 'qom-get', 'arguments':"
-+        " { 'path': %s, 'property': 'clock-freq-hz'} }", path);
-+    g_assert_false(qdict_haskey(r, "error"));
-+    clock_freq_hz =3D qdict_get_int(r, "return");
-+    qobject_unref(r);
-+    return clock_freq_hz;
-+}
-+
-+
-diff --git a/tests/qtest/stm32l4x5_gpio-test.c b/tests/qtest/stm32l4x5_gp=
-io-test.c
-index 72a7823406..5c62125736 100644
---- a/tests/qtest/stm32l4x5_gpio-test.c
-+++ b/tests/qtest/stm32l4x5_gpio-test.c
-@@ -10,6 +10,7 @@
-=20
- #include "qemu/osdep.h"
- #include "libqtest-single.h"
-+#include "stm32l4x5.h"
-=20
- #define GPIO_BASE_ADDR 0x48000000
- #define GPIO_SIZE      0x400
-@@ -505,6 +506,26 @@ static void test_bsrr_brr(const void *data)
-     gpio_writel(gpio, ODR, reset(gpio, ODR));
- }
-=20
-+static void test_clock_enable(void)
-+{
-+    /*
-+     * For each GPIO, enable its clock in RCC
-+     * and check that its clock frequency changes to SYSCLK_FREQ_HZ
-+     */
-+    unsigned int gpio_id;
-+
-+    for (uint32_t gpio =3D GPIO_A; gpio <=3D GPIO_H; gpio +=3D GPIO_B - =
-GPIO_A) {
-+        gpio_id =3D get_gpio_id(gpio);
-+        g_autofree char *path =3D g_strdup_printf("/machine/soc/gpio%c",
-+                                                gpio_id + 'a');
-+        g_assert_cmpuint(get_clock_freq_hz(global_qtest, path), =3D=3D, =
-0);
-+        /* Enable the gpio clock */
-+        writel(RCC_AHB2ENR, readl(RCC_AHB2ENR) | (0x1 << gpio_id));
-+        g_assert_cmpuint(get_clock_freq_hz(global_qtest, path), =3D=3D,
-+                         SYSCLK_FREQ_HZ);
-+    }
-+}
-+
- int main(int argc, char **argv)
- {
-     int ret;
-@@ -556,6 +577,8 @@ int main(int argc, char **argv)
-     qtest_add_data_func("stm32l4x5/gpio/test_bsrr_brr2",
-                         test_data(GPIO_D, 0),
-                         test_bsrr_brr);
-+    qtest_add_func("stm32l4x5/gpio/test_clock_enable",
-+                   test_clock_enable);
-=20
-     qtest_start("-machine b-l475e-iot01a");
-     ret =3D g_test_run();
-diff --git a/tests/qtest/stm32l4x5_syscfg-test.c b/tests/qtest/stm32l4x5_=
-syscfg-test.c
-index 506ca08bc2..2ff0d5e9e0 100644
---- a/tests/qtest/stm32l4x5_syscfg-test.c
-+++ b/tests/qtest/stm32l4x5_syscfg-test.c
-@@ -10,6 +10,7 @@
-=20
- #include "qemu/osdep.h"
- #include "libqtest-single.h"
-+#include "stm32l4x5.h"
-=20
- #define SYSCFG_BASE_ADDR 0x40010000
- #define SYSCFG_MEMRMP 0x00
-@@ -26,7 +27,8 @@
- #define INVALID_ADDR 0x2C
-=20
- /* SoC forwards GPIOs to SysCfg */
--#define SYSCFG "/machine/soc"
-+#define SOC "/machine/soc"
-+#define SYSCFG "/machine/soc/syscfg"
- #define EXTI "/machine/soc/exti"
-=20
- static void syscfg_writel(unsigned int offset, uint32_t value)
-@@ -41,7 +43,7 @@ static uint32_t syscfg_readl(unsigned int offset)
-=20
- static void syscfg_set_irq(int num, int level)
- {
--   qtest_set_irq_in(global_qtest, SYSCFG, NULL, num, level);
-+   qtest_set_irq_in(global_qtest, SOC, NULL, num, level);
- }
-=20
- static void system_reset(void)
-@@ -301,6 +303,17 @@ static void test_irq_gpio_multiplexer(void)
-     syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
- }
-=20
-+static void test_clock_enable(void)
-+{
-+    g_assert_cmpuint(get_clock_freq_hz(global_qtest, SYSCFG), =3D=3D, 0)=
-;
-+
-+    /* Enable SYSCFG clock */
-+    writel(RCC_APB2ENR, readl(RCC_APB2ENR) | (0x1 << 0));
-+
-+    g_assert_cmpuint(get_clock_freq_hz(global_qtest, SYSCFG), =3D=3D,
-+                                       SYSCLK_FREQ_HZ);
-+}
-+
- int main(int argc, char **argv)
- {
-     int ret;
-@@ -325,6 +338,8 @@ int main(int argc, char **argv)
-                    test_irq_pin_multiplexer);
-     qtest_add_func("stm32l4x5/syscfg/test_irq_gpio_multiplexer",
-                    test_irq_gpio_multiplexer);
-+    qtest_add_func("stm32l4x5/syscfg/test_clock_enable",
-+                   test_clock_enable);
-=20
-     qtest_start("-machine b-l475e-iot01a");
-     ret =3D g_test_run();
-diff --git a/tests/qtest/stm32l4x5_usart-test.c b/tests/qtest/stm32l4x5_u=
-sart-test.c
-index 8902518233..7a5671be99 100644
---- a/tests/qtest/stm32l4x5_usart-test.c
-+++ b/tests/qtest/stm32l4x5_usart-test.c
-@@ -12,6 +12,7 @@
- #include "libqtest.h"
- #include "hw/misc/stm32l4x5_rcc_internals.h"
- #include "hw/registerfields.h"
-+#include "stm32l4x5.h"
-=20
- #define RCC_BASE_ADDR 0x40021000
- /* Use USART 1 ADDR, assume the others work the same */
-@@ -296,6 +297,30 @@ static void test_send_str(void)
-     qtest_quit(qts);
- }
-=20
-+static void check_clock(QTestState *qts, const char *path, uint32_t rcc_=
-reg,
-+                        uint32_t reg_offset)
-+{
-+    g_assert_cmpuint(get_clock_freq_hz(qts, path), =3D=3D, 0);
-+    qtest_writel(qts, rcc_reg, qtest_readl(qts, rcc_reg) | (0x1 << reg_o=
-ffset));
-+    g_assert_cmpuint(get_clock_freq_hz(qts, path), =3D=3D, SYSCLK_FREQ_H=
-Z);
-+}
-+
-+static void test_clock_enable(void)
-+{
-+    /*
-+     * For each USART device, enable its clock in RCC
-+     * and check that its clock frequency is SYSCLK_FREQ_HZ
-+     */
-+    QTestState *qts =3D qtest_init("-M b-l475e-iot01a");
-+
-+    check_clock(qts, "machine/soc/usart[0]", RCC_APB2ENR, 14);
-+    check_clock(qts, "machine/soc/usart[1]", RCC_APB1ENR1, 17);
-+    check_clock(qts, "machine/soc/usart[2]", RCC_APB1ENR1, 18);
-+    check_clock(qts, "machine/soc/uart[0]", RCC_APB1ENR1, 19);
-+    check_clock(qts, "machine/soc/uart[1]", RCC_APB1ENR1, 20);
-+    check_clock(qts, "machine/soc/lpuart1", RCC_APB1ENR2, 0);
-+}
-+
- int main(int argc, char **argv)
- {
-     int ret;
-@@ -308,6 +333,7 @@ int main(int argc, char **argv)
-     qtest_add_func("stm32l4x5/usart/send_char", test_send_char);
-     qtest_add_func("stm32l4x5/usart/receive_str", test_receive_str);
-     qtest_add_func("stm32l4x5/usart/send_str", test_send_str);
-+    qtest_add_func("stm32l4x5/usart/clock_enable", test_clock_enable);
-     ret =3D g_test_run();
-=20
-     return ret;
---=20
-2.43.2
+I just sent a patch with fewer files to address using git-send-email.
 
+Thanks,
+Tanmay
+
+On Tue, 7 May 2024 at 15:56, Peter Maydell <peter.maydell@linaro.org> wrote:
+
+> On Mon, 6 May 2024 at 07:20, Tanmay <tanmaynpatil105@gmail.com> wrote:
+> >
+> > Hi,
+> >
+> > I have added a patch inline that fixes indentation and formatting for
+> some files as listed in https://gitlab.com/qemu-project/qemu/-/issues/373.
+> >
+> > Thanks,
+> > Tanmay
+>
+> Hi; thanks for this patch. Unfortunately there seem to be some
+> problems with the formatting, which mean it doesn't apply correctly.
+>
+> In particular you've sent it as a plain/text + HTML email, and
+> something (probably your mail client) is wrapping long lines.
+> I can usually fix something like this up on my end for a first
+> time submitter, but in this case the patch is just way too big
+> for that to be practical.
+>
+> I generally don't recommend trying to send patch emails directly
+> through the gmail web UI -- it unfortunately mangles them too
+> much. Personally I use git-send-email; it is a bit awkward to
+> set up, but https://git-send-email.io/ has a nice step-by-step
+> guide including specific details on how to configure it to send
+> via Gmail.
+>
+> > From 46026574821c46804111eea6607a1b39314b7abe Mon Sep 17 00:00:00 2001
+> > From: Tanmay Patil <tanmaynpatil105@gmail.com>
+> > Date: Sat, 25 Nov 2023 00:53:54 +0530
+> > Subject: [PATCH] Fixes: Indentation using TABs and improve formatting
+> >  Resolves: https://gitlab.com/qemu-project/qemu/-/issues/373
+> >
+> >    Files changed:
+> >         - hw/arm/boot.c
+> >         - hw/char/omap_uart.c
+> >         - hw/dma/pxa2xx_dma.c
+> >         - hw/gpio/omap_gpio.c
+> >         - hw/gpio/zaurus.c
+> >         - hw/input/tsc2005.c
+> >         - hw/input/tsc210x.c
+> >         - hw/intc/omap_intc.c
+> >         - hw/misc/cbus.c
+> >         - hw/misc/omap_clk.c
+> >         - hw/misc/omap_l4.c
+> >         - hw/misc/omap_sdrc.c
+> >         - hw/misc/omap_tap.c
+> >         - hw/sd/omap_mmc.c
+> >         - hw/sd/pxa2xx_mmci.c
+> >         - hw/timer/omap_gptimer.c
+> >         - hw/timer/omap_synctimer.c
+> >         - hw/timer/pxa2xx_timer.c
+> >         - include/hw/arm/pxa.h
+> >         - include/hw/arm/sharpsl.h
+> >         - include/hw/arm/soc_dma.h
+> >         - tcg/arm/tcg-target.h
+> >
+> > Signed-off-by: Tanmay Patil <tanmaynpatil105@gmail.com>
+> > ---
+> >  hw/arm/boot.c             |   8 +-
+> >  hw/char/omap_uart.c       |  49 +-
+> >  hw/dma/pxa2xx_dma.c       | 198 ++++----
+> >  hw/gpio/omap_gpio.c       | 243 +++++-----
+> >  hw/gpio/zaurus.c          |  61 +--
+> >  hw/input/tsc2005.c        | 130 ++---
+> >  hw/input/tsc210x.c        | 442 +++++++++--------
+> >  hw/intc/omap_intc.c       | 261 +++++-----
+> >  hw/misc/cbus.c            | 202 ++++----
+> >  hw/misc/omap_clk.c        | 999 +++++++++++++++++++-------------------
+> >  hw/misc/omap_l4.c         |  21 +-
+> >  hw/misc/omap_sdrc.c       | 135 +++---
+> >  hw/misc/omap_tap.c        |  28 +-
+> >  hw/sd/omap_mmc.c          | 208 ++++----
+> >  hw/sd/pxa2xx_mmci.c       | 149 +++---
+> >  hw/timer/omap_gptimer.c   | 126 ++---
+> >  hw/timer/omap_synctimer.c |   7 +-
+> >  hw/timer/pxa2xx_timer.c   | 279 ++++++-----
+> >  include/hw/arm/pxa.h      | 100 ++--
+> >  include/hw/arm/sharpsl.h  |   2 +-
+> >  include/hw/arm/soc_dma.h  |   4 +-
+> >  tcg/arm/tcg-target.h      |   4 +-
+> >  22 files changed, 1903 insertions(+), 1753 deletions(-)
+>
+> This is a lot of changes to do all in one commit, even though they're
+> all just whitespace fixes. Could you split them up, please, into
+> multiple patches that tackle fewer files at a time?
+>
+> thanks
+> -- PMM
+>
+
+--000000000000f6af1e0617ecf6f0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><p>Hi,</p><p>I just sent a patch with fewer files to addre=
+ss using git-send-email.</p><p>Thanks,<br>Tanmay</p></div><br><div class=3D=
+"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, 7 May 2024 at 1=
+5:56, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.m=
+aydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
+ style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
+adding-left:1ex">On Mon, 6 May 2024 at 07:20, Tanmay &lt;<a href=3D"mailto:=
+tanmaynpatil105@gmail.com" target=3D"_blank">tanmaynpatil105@gmail.com</a>&=
+gt; wrote:<br>
+&gt;<br>
+&gt; Hi,<br>
+&gt;<br>
+&gt; I have added a patch inline that fixes indentation and formatting for =
+some files as listed in <a href=3D"https://gitlab.com/qemu-project/qemu/-/i=
+ssues/373" rel=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-pro=
+ject/qemu/-/issues/373</a>.<br>
+&gt;<br>
+&gt; Thanks,<br>
+&gt; Tanmay<br>
+<br>
+Hi; thanks for this patch. Unfortunately there seem to be some<br>
+problems with the formatting, which mean it doesn&#39;t apply correctly.<br=
+>
+<br>
+In particular you&#39;ve sent it as a plain/text + HTML email, and<br>
+something (probably your mail client) is wrapping long lines.<br>
+I can usually fix something like this up on my end for a first<br>
+time submitter, but in this case the patch is just way too big<br>
+for that to be practical.<br>
+<br>
+I generally don&#39;t recommend trying to send patch emails directly<br>
+through the gmail web UI -- it unfortunately mangles them too<br>
+much. Personally I use git-send-email; it is a bit awkward to<br>
+set up, but <a href=3D"https://git-send-email.io/" rel=3D"noreferrer" targe=
+t=3D"_blank">https://git-send-email.io/</a> has a nice step-by-step<br>
+guide including specific details on how to configure it to send<br>
+via Gmail.<br>
+<br>
+&gt; From 46026574821c46804111eea6607a1b39314b7abe Mon Sep 17 00:00:00 2001=
+<br>
+&gt; From: Tanmay Patil &lt;<a href=3D"mailto:tanmaynpatil105@gmail.com" ta=
+rget=3D"_blank">tanmaynpatil105@gmail.com</a>&gt;<br>
+&gt; Date: Sat, 25 Nov 2023 00:53:54 +0530<br>
+&gt; Subject: [PATCH] Fixes: Indentation using TABs and improve formatting<=
+br>
+&gt;=C2=A0 Resolves: <a href=3D"https://gitlab.com/qemu-project/qemu/-/issu=
+es/373" rel=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-projec=
+t/qemu/-/issues/373</a><br>
+&gt;<br>
+&gt;=C2=A0 =C2=A0 Files changed:<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/arm/boot.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/char/omap_uart.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/dma/pxa2xx_dma.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/gpio/omap_gpio.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/gpio/zaurus.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/input/tsc2005.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/input/tsc210x.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/intc/omap_intc.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/misc/cbus.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/misc/omap_clk.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/misc/omap_l4.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/misc/omap_sdrc.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/misc/omap_tap.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/sd/omap_mmc.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/sd/pxa2xx_mmci.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/timer/omap_gptimer.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/timer/omap_synctimer.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/timer/pxa2xx_timer.c<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- include/hw/arm/pxa.h<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- include/hw/arm/sharpsl.h<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- include/hw/arm/soc_dma.h<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- tcg/arm/tcg-target.h<br>
+&gt;<br>
+&gt; Signed-off-by: Tanmay Patil &lt;<a href=3D"mailto:tanmaynpatil105@gmai=
+l.com" target=3D"_blank">tanmaynpatil105@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 hw/arm/boot.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
+=C2=A0 =C2=A08 +-<br>
+&gt;=C2=A0 hw/char/omap_uart.c=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 49 +-<br>
+&gt;=C2=A0 hw/dma/pxa2xx_dma.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 198 ++++----<br>
+&gt;=C2=A0 hw/gpio/omap_gpio.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 243 +++++-----<b=
+r>
+&gt;=C2=A0 hw/gpio/zaurus.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 61 +-=
+-<br>
+&gt;=C2=A0 hw/input/tsc2005.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 130 ++---<br>
+&gt;=C2=A0 hw/input/tsc210x.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 442 +++++++++---=
+-----<br>
+&gt;=C2=A0 hw/intc/omap_intc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 261 +++++-----<b=
+r>
+&gt;=C2=A0 hw/misc/cbus.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 202 ++=
+++----<br>
+&gt;=C2=A0 hw/misc/omap_clk.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 999 ++++++++++++=
++++++++-------------------<br>
+&gt;=C2=A0 hw/misc/omap_l4.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 21 +-=
+<br>
+&gt;=C2=A0 hw/misc/omap_sdrc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 135 +++---<br>
+&gt;=C2=A0 hw/misc/omap_tap.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 28 +-<br>
+&gt;=C2=A0 hw/sd/omap_mmc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 208 ++++---=
+-<br>
+&gt;=C2=A0 hw/sd/pxa2xx_mmci.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 149 +++---<br>
+&gt;=C2=A0 hw/timer/omap_gptimer.c=C2=A0 =C2=A0| 126 ++---<br>
+&gt;=C2=A0 hw/timer/omap_synctimer.c |=C2=A0 =C2=A07 +-<br>
+&gt;=C2=A0 hw/timer/pxa2xx_timer.c=C2=A0 =C2=A0| 279 ++++++-----<br>
+&gt;=C2=A0 include/hw/arm/pxa.h=C2=A0 =C2=A0 =C2=A0 | 100 ++--<br>
+&gt;=C2=A0 include/hw/arm/sharpsl.h=C2=A0 |=C2=A0 =C2=A02 +-<br>
+&gt;=C2=A0 include/hw/arm/soc_dma.h=C2=A0 |=C2=A0 =C2=A04 +-<br>
+&gt;=C2=A0 tcg/arm/tcg-target.h=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A04 +-<br>
+&gt;=C2=A0 22 files changed, 1903 insertions(+), 1753 deletions(-)<br>
+<br>
+This is a lot of changes to do all in one commit, even though they&#39;re<b=
+r>
+all just whitespace fixes. Could you split them up, please, into<br>
+multiple patches that tackle fewer files at a time?<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div>
+
+--000000000000f6af1e0617ecf6f0--

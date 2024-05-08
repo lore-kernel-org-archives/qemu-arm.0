@@ -1,123 +1,107 @@
-Received: by 2002:a17:907:a184:b0:a52:4db9:938b with SMTP id om4csp548752ejc;
-        Wed, 8 May 2024 07:09:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVzwAY1SUZMxUFueen965lz0H5fcD1q8XZDcVLjou59oY+j5PsFpvrUNBCVgkqGs+zGbfaurpG7h5LErm6YTzkXURb+lO16
-X-Google-Smtp-Source: AGHT+IG0G+Ufl9iT2BMKIj0Fdh3MF34pfOMGPglQb4neCG9fOiWW9dY9TTKj+X2ESpV0a7WkfHNH
-X-Received: by 2002:ad4:5fcf:0:b0:6a0:7df4:90b8 with SMTP id 6a1803df08f44-6a15149072amr29792336d6.35.1715177340083;
-        Wed, 08 May 2024 07:09:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715177340; cv=none;
+Received: by 2002:a17:907:a184:b0:a52:4db9:938b with SMTP id om4csp567902ejc;
+        Wed, 8 May 2024 07:35:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWGd1HkoNwHSHhz3PXQvanrS7wMzkGZc+oTgK51FT2LuG1MP2Z9A1tO3vYEdScqNyXnuzcnDVWoTotrKigAysE45e8dtELh
+X-Google-Smtp-Source: AGHT+IEwe3AudwVwXLq0A74f2bLA/ZLg+5wF4BKPHwOiqMu1uhjJQ9ZPPVBOX/Ce8TkVjcZaehW8
+X-Received: by 2002:a05:620a:290b:b0:78e:e8ae:c15d with SMTP id af79cd13be357-792b287c9ffmr339829285a.63.1715178929960;
+        Wed, 08 May 2024 07:35:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715178929; cv=none;
         d=google.com; s=arc-20160816;
-        b=mAVavH3u9YyYBH13NDC7U8T1PzMJNipqUnPj5Fj5xrgjL39wofz28qzWIuBdJ/IwoN
-         N7ibzFCTLN4pp7j9zUF+wobL1+RZZl01PydmaWUZFcSouzEaZi2JuheLWmvA5VU9b4jX
-         yZqU2e6GtZg+QeF3OnqEuVTKXpGdRSqXsj9y6Xp9y/nMCMaOuMdFT57rI/XozhOFIEvK
-         +WddPQM+OsVGknIcZC8871uCatgB9Q0WY3VYC/KwHv1Di2T40sOCp9+r3z5TLs5/Pr2x
-         ajrjtS/k4CyIY7NQfWJdT883iLbrqw/nrhK4GHSDUHWoE0xWFTGmS1thzAiCAg60YjXX
-         Cl0Q==
+        b=fYf66vQocgWdeR6iru0R3yN4U004IwxPV4LHHAvIibVfw22lnSJ8diubD4pFAC2sfD
+         JhU/P9NcVSmibEEwnh7Tmtd31KrGuuoDgmhm/I3Eu/F4Gs4g9q88+3A9QStDjFOff/pV
+         WQiy4D/jW1MHN8wJ0QoI53bc+4T6piXZkOsUxuO+8bQ5tynb5PXgsKBw7HOvC5xeUbQ1
+         a8xE/bOZpAY1nFwMLdQh0PldofwooGvwCd0P6tMM0JFm7S9SVLH39tLWVjiMe5wdATNl
+         U1qrIG8XCjM5aPFAN5MHgBzQ1bqwlETLMB0fHmx0KHj6R26utG0Fe66UcZQqYsdjlzHo
+         MBCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=5RHqHsuiLiPA/oyCgbngDHmPlwOj1ZNaC9uXrn1XVW8=;
-        fh=rz3dKNHLKN5B8pJEVqKymKY7LoNJkvFkM3e5oITJ8M8=;
-        b=Ufv7QBkFeu65TNKqSZ+xTs8yc/KlY9q0ifAUwzGWvEa3HMka85Mq3C70FKpxVfcrmL
-         xZxCpwaxMNA7v1ae+LVoML5wucDUQAsiPhZi/6vOAbbdevyBwhkJteyhGX81mddGRu6b
-         LdTswN4T6xs6JBP/6Q6J2Qv88whossmuGXH88Br7VmfkufN2ywIWxMug611wKpyj5eg/
-         n9sd9ksQ7Gpzoe4/AzxrgOWVFsstQcphVqiqCKT6JICJUGiDVC1ANRfJEbkm3m/QtBGP
-         if4CHchpP8hCIamt+3n8NTV6tY4ZPgRIB3gzVAoXGH6ehqjDZXrvDD3sRWPEOjPmBtky
-         Nzuw==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Znvm/tKg0F+01QfyX6rQqjcFA81lmYWx+WoExy2PfEY=;
+        fh=DKQFoSm5rvXVk6AUqpSavFv+IR+qPwKdgcCOIx8jJm4=;
+        b=MTwgt12+Nqzgq5hSHtNsy0rKAZNs6GcAxUaooDpG45q7f3tLTHXaGfPuI/zLZWoFsn
+         ptU5Afl30P20cjFYbb8KrWwT8I6WM84WLuOmFalnPwAYjTxWe1Dr/kOpBp/xVp8A2zc/
+         5u4raNOvt2mgZRR7OIZtgdOgWy561ui9CZhW2q//4OkBekwahIU4T3mCPOX8YnoGZeAO
+         9T1pV0U76EU369NskeVKK3l+L/cv5KOeefKEx677mCS8MKbj3ihiI6N81AvYp3xJLmI/
+         GP9m6ZuyVreNBocmSELbj/4ogP8rbfuM1eNpoJHW0fPu5S97XkagX214WORzR7BQ4lQD
+         pHfA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="F/bBcKI8";
+       dkim=pass header.i=@linaro.org header.s=google header.b=l2SQ8HD6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id if3-20020a0562141c4300b0069b720b263asi14027645qvb.540.2024.05.08.07.08.59
+        by mx.google.com with ESMTPS id ow29-20020a05620a821d00b0079064bf0de8si13161999qkn.585.2024.05.08.07.35.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 May 2024 07:09:00 -0700 (PDT)
+        Wed, 08 May 2024 07:35:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="F/bBcKI8";
+       dkim=pass header.i=@linaro.org header.s=google header.b=l2SQ8HD6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s4hyX-0007su-6Z; Wed, 08 May 2024 10:08:53 -0400
+	id 1s4iO9-0002hH-Ti; Wed, 08 May 2024 10:35:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s4hyV-0007sS-UD
- for qemu-arm@nongnu.org; Wed, 08 May 2024 10:08:51 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s4iO8-0002ej-0x
+ for qemu-arm@nongnu.org; Wed, 08 May 2024 10:35:20 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s4hyU-0002gR-6N
- for qemu-arm@nongnu.org; Wed, 08 May 2024 10:08:51 -0400
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-a59a352bbd9so166867966b.1
- for <qemu-arm@nongnu.org>; Wed, 08 May 2024 07:08:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s4iO5-0004g4-SU
+ for qemu-arm@nongnu.org; Wed, 08 May 2024 10:35:19 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-51f71e4970bso5251064e87.2
+ for <qemu-arm@nongnu.org>; Wed, 08 May 2024 07:35:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1715177328; x=1715782128; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=5RHqHsuiLiPA/oyCgbngDHmPlwOj1ZNaC9uXrn1XVW8=;
- b=F/bBcKI8/qGW+48XCB/jsKwBcfJfFVWISIix9o3CyecMf3phcR4IirdC74Hq6Bv2Uq
- SPrCrPz0RJ0xVFr7yvq/VDHepstkHMDmh5vDCSpbn3e0YzHv3nicsII0P15VX6/EcErw
- TVnfIUekt52SgID592ZqsJ8v1LGkdZz80QLKNz19UVYoSDqFHYDYCXExKuQy1YEN2KnO
- jwOyhNJ+M/0D2IXUEetAl4kruhOLGQYz02ZnE5Xi5JHyA7MkI5OXO2iadaQjBFTV0UZh
- ewx3NFCZUpcDivtm9IeJ8KMHJflnHnxTUp9+2a1eqUikF01tFR5ovNsitEWBcrlM5x+5
- U55Q==
+ d=linaro.org; s=google; t=1715178916; x=1715783716; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Znvm/tKg0F+01QfyX6rQqjcFA81lmYWx+WoExy2PfEY=;
+ b=l2SQ8HD6YP7oG0IlxktHvI9s/0Ks3yGwFhvjBqgkr+Ka+S1cf4JzlJJmSsG5Y0lTWp
+ 3q8JNaTVB42vE7mBh5K/Fqy3UY7uW3ZJFVwxTHvr2t79poVZHM2i1B3uBkOPYYeBNRoV
+ /gqLRd7j97uNRw4XDdpzhm48MDZm4lsFHffspI+ijipPfiMhC5fdxySCofdpCbXcJakZ
+ zr0GTZ6EsPlaz3GHvMXmGnA/t5v5UZ+LYn5weEhAYSyw10Wne1Yv+sK4YXUkXGqzhpw9
+ ThX1minno+KfdL2m3DeRKC6jwoAxEpV0laVZ4sl8ZHhLToWGP0sl5b417zepM2c60AqZ
+ wk5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715177328; x=1715782128;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=5RHqHsuiLiPA/oyCgbngDHmPlwOj1ZNaC9uXrn1XVW8=;
- b=EMiq+kqDSUb6yp9oyb8XDyJDh1bV3GPjxgTO8P9xDOUH7wJxFvpGSy8D1vltufVKGp
- uQbZgcEUvt+S0p3FPdz5/LPwMnGOatAKD5aamKHc2OPA/5GZ975+9ycBTkl9YOnJM0He
- rUNW53hFeQyQECnGnyKFuQSPXus1r8AQR2o81hU0nnx8zpi1n+Z8c2ZN0ReMudQPxCvd
- UqMw0smYvoS5Q2E+9bgYQ32fjblRy6maJoSfh8eWMuGlLYEwg59V/hWw61obttxwjVJY
- EQ/K1LJe74BjValsYAsSB+64yCwWWRAwNNoeQ+GIgNIyyIOylcPVoSWQobAR7/d1T2ip
- d69g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXP5Qdimx7y0WID3AQmXKx4r5rCWPCNDNvAb1UWI4DTnEkwtzO7f6SpNNZdz8PA3Zwy0IKBUQ3Oe7j5MtVtjZJsI3xV
-X-Gm-Message-State: AOJu0YxfaIQYp8PE1yKQmdoUdtgoJK+ftrbERy9ky8i45/AenebHTMpd
- bvWnFIF3QmzwexdYy3dPdmxbM0odhc5VuHbwgvEtzgQJWlj2QXJomsa9a5gF5/w=
-X-Received: by 2002:a17:907:9490:b0:a59:fb06:5d35 with SMTP id
- a640c23a62f3a-a59fb065e31mr295445866b.8.1715177328136; 
- Wed, 08 May 2024 07:08:48 -0700 (PDT)
-Received: from [192.168.69.100] (sar95-h02-176-184-10-250.dsl.sta.abo.bbox.fr.
+ d=1e100.net; s=20230601; t=1715178916; x=1715783716;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Znvm/tKg0F+01QfyX6rQqjcFA81lmYWx+WoExy2PfEY=;
+ b=Cqz5U0CWC1cb3UJDaUNNXqVBOu9cf7Lntz41fvcZGAaJhZnuxSNHB28022NtTnldfs
+ YxagYuJ5aFcKrPhRX9ZaUSERsU7/AQ4r1MTBtzfuNh24ozwUKpxcxW2bjRR2r6XmGuC7
+ YRPzuGf87oatvw1oha+TfAinF/++XQUusFvX0GCUUZWFNlxBobAMGbyOa551apjnx6rq
+ eq35pU3S5pV+Wyo1TPkeXH1ak1AlfN+JlyAbpC53N1DWKO42FaavQDttcb4fv9xD0sPa
+ gAHni5tj3nd4dHHyR2f6bKDL3UQxR1MedOO8QJWmU3R3GVFRRhrdBM9kW2nDoVaklhN6
+ cggg==
+X-Gm-Message-State: AOJu0YxBUiQ5jNCEDB+lgAfE4px46Y568v6rLyV6tGi4f2vmsVFMOXq6
+ evcXtxd5S/GZVs27p8LpBbRekruUwtWzmxFpnQRgJWhXASkgBwUgQAU+n6OYgKc=
+X-Received: by 2002:a05:6512:3157:b0:518:eef0:45c0 with SMTP id
+ 2adb3069b0e04-5217cc520d0mr2390867e87.48.1715178915749; 
+ Wed, 08 May 2024 07:35:15 -0700 (PDT)
+Received: from m1x-phil.lan (sar95-h02-176-184-10-250.dsl.sta.abo.bbox.fr.
  [176.184.10.250]) by smtp.gmail.com with ESMTPSA id
- jt26-20020a170906ca1a00b00a558206b2c5sm7748013ejb.99.2024.05.08.07.08.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 May 2024 07:08:47 -0700 (PDT)
-Message-ID: <d03ca96e-53e9-43ed-886e-0cffd15994fb@linaro.org>
-Date: Wed, 8 May 2024 16:08:45 +0200
+ n4-20020aa7d044000000b005720e083878sm7610286edo.49.2024.05.08.07.35.14
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 08 May 2024 07:35:15 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2] hw/input/tsc2005: Fix -Wchar-subscripts warning in
+ tsc2005_txrx()
+Date: Wed,  8 May 2024 16:35:13 +0200
+Message-ID: <20240508143513.44996-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] hw/char: Add QOM property for STM32L4x5 USART clock
- frequency
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Laurent Vivier <lvivier@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Samuel Tardieu <samuel.tardieu@telecom-paris.fr>,
- Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>
-References: <20240505140556.373711-1-ines.varhol@telecom-paris.fr>
- <20240505140556.373711-4-ines.varhol@telecom-paris.fr>
- <06e98554-3430-49d5-94f3-c5d683327f55@linaro.org>
- <CAFEAcA83cgqq3yh3=d=gHd-LK3qh2g-pE2v734apKmcNTJTvww@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA83cgqq3yh3=d=gHd-LK3qh2g-pE2v734apKmcNTJTvww@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -139,81 +123,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /f7bhXJs+nmt
+X-TUID: fHzGy27W6kev
 
-Hi,
+Check the function index is in range and use an unsigned
+variable to avoid the following warning with GCC 13.2.0:
 
-On 7/5/24 11:54, Peter Maydell wrote:
-> On Mon, 6 May 2024 at 10:34, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Hi,
->>
->> On 5/5/24 16:05, Inès Varhol wrote:
->>> Signed-off-by: Inès Varhol <ines.varhol@telecom-paris.fr>
->>> ---
->>>    hw/char/stm32l4x5_usart.c | 12 ++++++++++++
->>>    1 file changed, 12 insertions(+)
->>>
->>> diff --git a/hw/char/stm32l4x5_usart.c b/hw/char/stm32l4x5_usart.c
->>> index fc5dcac0c4..ee7727481c 100644
->>> --- a/hw/char/stm32l4x5_usart.c
->>> +++ b/hw/char/stm32l4x5_usart.c
->>> @@ -26,6 +26,7 @@
->>>    #include "hw/clock.h"
->>>    #include "hw/irq.h"
->>>    #include "hw/qdev-clock.h"
->>> +#include "qapi/visitor.h"
->>>    #include "hw/qdev-properties.h"
->>>    #include "hw/qdev-properties-system.h"
->>>    #include "hw/registerfields.h"
->>> @@ -523,6 +524,14 @@ static Property stm32l4x5_usart_base_properties[] = {
->>>        DEFINE_PROP_END_OF_LIST(),
->>>    };
->>>
->>> +static void clock_freq_get(Object *obj, Visitor *v,
->>> +    const char *name, void *opaque, Error **errp)
->>> +{
->>> +    Stm32l4x5UsartBaseState *s = STM32L4X5_USART_BASE(obj);
->>> +    uint32_t clock_freq_hz = clock_get_hz(s->clk);
->>> +    visit_type_uint32(v, name, &clock_freq_hz, errp);
->>> +}
->>> +
->>>    static void stm32l4x5_usart_base_init(Object *obj)
->>>    {
->>>        Stm32l4x5UsartBaseState *s = STM32L4X5_USART_BASE(obj);
->>> @@ -534,6 +543,9 @@ static void stm32l4x5_usart_base_init(Object *obj)
->>>        sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
->>>
->>>        s->clk = qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
->>> +
->>> +    object_property_add(obj, "clock-freq-hz", "uint32",
->>> +                        clock_freq_get, NULL, NULL, NULL);
->>
->> Patch LGTM, but I wonder if registering QOM getter without setter
->> is recommended. Perhaps we should encourage parity? In normal HW
->> emulation we shouldn't update this clock externally, but thinking
->> about testing, this could be interesting to introduce jitter.
-> 
-> object_property_add() with the set function NULL is fine,
-> and is documented to mean "property cannot be set". Attempts
-> to set it will be failed (in object_property_set()) with a
-> reasonable error.
-> 
-> But it's not clear to me why we want the property in the first
-> place -- we don't generally have devices which take a Clock
-> input have properties exposing its frequency. If we did want
-> that it would probably be better if we could do it generically
-> rather than by adding more boilerplate code to each device.
+  [666/5358] Compiling C object libcommon.fa.p/hw_input_tsc2005.c.o
+  hw/input/tsc2005.c: In function 'tsc2005_timer_tick':
+  hw/input/tsc2005.c:416:26: warning: array subscript has type 'char' [-Wchar-subscripts]
+    416 |     s->dav |= mode_regs[s->function];
+        |                         ~^~~~~~~~~~
 
-Inès qtest checking (via HMP) the configured clock has a
-correct scaled frequency seems a good use case.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+v2: Use Peter suggestion
+---
+ hw/input/tsc2005.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-> Mostly "frequency" properties on devices are for the case
-> where  they *don't* have a Clock input and instead have
-> ad-hoc legacy handling where the board/SoC that creates the
-> device sets an integer property to define the input frequency
-> because it doesn't model the clock tree with Clock objects.
-> 
-> thanks
-> -- PMM
+diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
+index 941f163d36..8d35892c09 100644
+--- a/hw/input/tsc2005.c
++++ b/hw/input/tsc2005.c
+@@ -406,6 +406,9 @@ uint32_t tsc2005_txrx(void *opaque, uint32_t value, int len)
+ static void tsc2005_timer_tick(void *opaque)
+ {
+     TSC2005State *s = opaque;
++    unsigned int function = s->function;
++
++    assert(function < ARRAY_SIZE(mode_regs);
+ 
+     /* Timer ticked -- a set of conversions has been finished.  */
+ 
+@@ -413,7 +416,7 @@ static void tsc2005_timer_tick(void *opaque)
+         return;
+ 
+     s->busy = false;
+-    s->dav |= mode_regs[s->function];
++    s->dav |= mode_regs[function];
+     s->function = -1;
+     tsc2005_pin_update(s);
+ }
+-- 
+2.41.0
 

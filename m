@@ -1,113 +1,112 @@
-Received: by 2002:a05:7022:ef03:b0:7c:9548:a19d with SMTP id qy3csp2183281dlb;
-        Tue, 7 May 2024 10:30:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVBwmV/hD8Fy3i0cdZ0hxYPdCvEbrOywsXL2HLV4qJ/Y3zrrkqWah7HkVtf1lmN0Ymneu0BEgN7gm5VUMIRzZyWG+BVd+OK
-X-Google-Smtp-Source: AGHT+IFPBj8HVJZvmKcYXCz0Bdyjz2XOGGhIHj09WGUQ8zSDSnrvqYQABI7pCwIP6B5bzeiNivJ7
-X-Received: by 2002:ae9:ee1a:0:b0:78e:e432:3f0f with SMTP id af79cd13be357-792b2814e65mr35328485a.72.1715103055253;
-        Tue, 07 May 2024 10:30:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715103055; cv=none;
+Received: by 2002:a17:907:a184:b0:a52:4db9:938b with SMTP id om4csp354550ejc;
+        Wed, 8 May 2024 01:16:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUtMBhxfy0OmWlRZ2nkSm/Bx0TN8fTMUOqfkMxH3P7D55vUP25ZP5MHxUJQk7PG3AS2lH4AgEaujwMcBLnqXSrdxTzK/eWS
+X-Google-Smtp-Source: AGHT+IEFkcynOKwp+OvCP73g2SJPrMC/9EllYTMQb11E4jdOOtIwftLEHatOhr5DzkFLaAYRcODX
+X-Received: by 2002:a25:53c6:0:b0:dcc:56b6:6606 with SMTP id 3f1490d57ef6-debb9dbd948mr1808929276.40.1715156170824;
+        Wed, 08 May 2024 01:16:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715156170; cv=none;
         d=google.com; s=arc-20160816;
-        b=lJGzvFfJqaIiMIZsFbR3PqaJiOMKWM3xY3XBEqg4tQ2K1kkT8gGsIYqd6NGb+Yz0JU
-         xYLrNIe+8FOswnqGs1YhsPUFmKgvDP16T8h4YTHJYgh85Uj2aKHLOYNiAcVf+mUYiw9E
-         6Amd9XvNe3DIvWQr0Y0QUYPtO/fxFBZjuN25gGB2A+TJpNEEjkhJLS74l3ZctH1Ve1zq
-         pUujg0kMFdepQtdiDlIm0Z4GY8spaU4EEivO++z1YduSQP4l86v2xDQmJcEDrvtZAekb
-         daem69euqZOKeo75M2xCQhqEIIaUy4sy9IogDgM1Ti4KGAPbR0FERdvdnJmQrE9JmzFm
-         Mq3w==
+        b=KT3jgScfFEDNcKRUmvd1S6bE05xz+8btyGJoRNH+jNLEVwj9X7toXwoEIMvg+MKfI1
+         sLQUBwnn0FbLPF9l5EGkzjwvuiI0kkOV74EWqi68s/pH9y4ZMh1/eLOPDeqlFMoqmFvL
+         NlMnPRy9NUE1XuaqKegsDCHmbQARYAJAl3N3/yionNZwnyGI7Lo5jqZdhPFgaQ9vo9me
+         IcgTyMREL0G9HXp1q4FNFAQqRxjrvDRL91JqQuePURyRB5Zd15t+Hy8T5JZ/RCgZwgzi
+         TSardZLstgDaMPJOPQnFANsyxNV8MRwKE5SXG1LK6HxwDZtVZbhWyf2fLciudS13yy2K
+         OQAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:thread-index:thread-topic
-         :content-transfer-encoding:mime-version:subject:references
-         :in-reply-to:message-id:cc:to:from:date:dkim-signature:dkim-filter;
-        bh=VBspK0ispGSoTOtP1gqM8CgfnYM0RKjv6t3GKcSvJmw=;
-        fh=6BfdrQDA+HKUAy4em4gKapbu4BVb1/PQAYveAQapuYY=;
-        b=adGlVSOqv+r0PKC/0t3aeBCVfdL77inTNcG5bG7p2ztPaisTneZiF5Gwq79saDAc/L
-         v5EbqLpxND0MEgrzOiD+ayyHre5fCI8vDgoiY/V6Ev/7iSmr+SD1hi6e8+E3BxJ+eN8G
-         ybxTokTQ9z9jwlnQl94ZJ5H19Bl4QCP1ca/QC3ogZLnFlvI0bZKwB4Lq8k+B2lfO3SzK
-         KUhWRidIjenIEDxKTbgabl2/+wL4sCX55VXDgmntScD9Iff29CFxRfbO2QZlzt+RQrkE
-         fAV/e449X/ZI3qGqpwZbvqQ9W0/YdtyzyX3kNmJZ4Gh1SbZ3oc7KTVdRcso2DPrwchGC
-         GJ+g==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=AZUCr1Guq0/0+ArlIk+yUmdy2BZ8Zk8BwEWS1an6HS4=;
+        fh=/ntpjvupysfRJGRiClKGCINyJ6eVH/uMv+oqu1s3eFw=;
+        b=mSHHzI2OhGo9fSviGHJUiTFwywmJ2FleT6o4RV2qggcoH4GNnYaLynyVwUQHtBqxP3
+         ajjVB8K5LJJHjzhPQ7MpcpK52NJKqudJDaKhLwtm65TPurvqlgOFMhWOYbFnz0rxevNN
+         O0NIcccJYSrIC354ZdfwQ+XN98m2SAHf+737C/9j82ZGCHyy1dgLPy5F4X9VtS7dvzwu
+         F7IAkpXVpFHZgdJzPsb3aEqZiPPgaIvSutAbYLxsKhNUP5ZgpiaRJw3fMQv/WaldpNJR
+         ld30NIp+12Nq0uTx083Xi4eHWJC9avFaVv4h3PeY6LhOtnRUIHhN523ykQ+OKKmH6fb5
+         ud2Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=dmjY2hYT;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cJJ3wIU2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id os5-20020a05620a810500b007928ef84ed5si6844324qkn.556.2024.05.07.10.30.55
+        by mx.google.com with ESMTPS id g1-20020ac87f41000000b0043ac1631bd8si13378694qtk.15.2024.05.08.01.16.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 May 2024 10:30:55 -0700 (PDT)
+        Wed, 08 May 2024 01:16:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=dmjY2hYT;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cJJ3wIU2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s4OeD-0000In-8n; Tue, 07 May 2024 13:30:37 -0400
+	id 1s4cT3-00030q-7T; Wed, 08 May 2024 04:16:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ivarhol-21@enst.fr>)
- id 1s4Oe4-0000H8-VU; Tue, 07 May 2024 13:30:29 -0400
-Received: from zproxy4.enst.fr ([137.194.2.223])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ivarhol-21@enst.fr>)
- id 1s4Oe2-0007xd-S5; Tue, 07 May 2024 13:30:28 -0400
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id C523F20733;
- Tue,  7 May 2024 19:30:23 +0200 (CEST)
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id 5oa0K2VQqN22; Tue,  7 May 2024 19:30:22 +0200 (CEST)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 5967D20752;
- Tue,  7 May 2024 19:30:22 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 5967D20752
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1715103022;
- bh=VBspK0ispGSoTOtP1gqM8CgfnYM0RKjv6t3GKcSvJmw=;
- h=Date:From:To:Message-ID:MIME-Version;
- b=dmjY2hYThChjOHAj5hR6GSg4as5925pZAfAf/VOjf+wxA/CSyK2r7MCWDbA+8W3ai
- alTfmMvWGb+ugaKkg2N+C4acRAfks8eun0Niv38cOZr+3NtJKUo0h5eWV6VGOnXSoF
- 3gl3R5MtKUy4CcgazbopcTATLCe1gYDm0r3Om9MQ=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id TbI69PgpwVVC; Tue,  7 May 2024 19:30:22 +0200 (CEST)
-Received: from zmail-tp2.enst.fr (zmail-tp2.enst.fr [137.194.2.199])
- by zproxy4.enst.fr (Postfix) with ESMTP id 7C51020733;
- Tue,  7 May 2024 19:30:21 +0200 (CEST)
-Date: Tue, 7 May 2024 19:30:21 +0200 (CEST)
-From: =?utf-8?B?SW7DqHM=?= Varhol <ines.varhol@telecom-paris.fr>
-To: peter maydell <peter.maydell@linaro.org>
-Cc: qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
- Thomas Huth <thuth@redhat.com>, 
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, 
- Laurent Vivier <lvivier@redhat.com>, 
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>, 
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <477144958.4192868.1715103021362.JavaMail.zimbra@enst.fr>
-In-Reply-To: <CAFEAcA9kOhzn+9pXOTBwRdLmMcFfPQzwwX6Nv_90RLPiUH6JAA@mail.gmail.com>
-References: <20240505140556.373711-1-ines.varhol@telecom-paris.fr>
- <20240505140556.373711-2-ines.varhol@telecom-paris.fr>
- <CAFEAcA9kOhzn+9pXOTBwRdLmMcFfPQzwwX6Nv_90RLPiUH6JAA@mail.gmail.com>
-Subject: Re: [PATCH 1/4] hw/misc: Create STM32L4x5 SYSCFG clock
+ (Exim 4.90_1) (envelope-from <tanmaynpatil105@gmail.com>)
+ id 1s4cSu-0002yH-L0; Wed, 08 May 2024 04:15:58 -0400
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <tanmaynpatil105@gmail.com>)
+ id 1s4cSr-0004KK-7A; Wed, 08 May 2024 04:15:51 -0400
+Received: by mail-ot1-x336.google.com with SMTP id
+ 46e09a7af769-6f08ce51e02so1028254a34.3; 
+ Wed, 08 May 2024 01:15:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1715156147; x=1715760947; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=AZUCr1Guq0/0+ArlIk+yUmdy2BZ8Zk8BwEWS1an6HS4=;
+ b=cJJ3wIU2eGedYFiTE8q8nVnpsV+OBvvuQGKD9p1J05WWedDPH+UtsKwv47HZ78yi+i
+ vY+VXA0lB0ua3uLqYEOFoZmgR7730akD93/p3GmdRk6A44bfu4Cmx2CbfBfsE/yBEQOp
+ m/hKJHAUlVIXb1c0Y1w1Mogp3GA8SOsNolFfuofUh5ER4OsQPn8xPz4nbyXSv1or/Jii
+ DEiA9hCevZoumD1pZVctySMBSvt16bAMfVEbI7iBV3srfW4eX/vipoe3nit2KiiF67g2
+ XmzY2Gv7s58OlrMnAXuSCDzwq4ivjLLHzAqFk1MC7naUxIdPog5bBcTUU2IM/V4wpRJk
+ H/8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1715156147; x=1715760947;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=AZUCr1Guq0/0+ArlIk+yUmdy2BZ8Zk8BwEWS1an6HS4=;
+ b=bj8SUlGUpiA6SgHqd3HbnRAuDjnYsqYLemnDqm2Tf3dj7P4J4JkjS4A95BobDJl6kr
+ 8E3yIV4xnp3nRguHON5fM+5o065zLchjOH6NFW0smON2tuZSOHmfNVL2sQFGLkuoeKI9
+ trQ+qG2A06Oyc6I47MyMNWDHcVkQQYSG9mvP4dsDsJzf2dhKLCjStae2ojzJ7e1w0d0J
+ 8JY03ntz0T4N4PmiHgipNsc/SRyuqM3weaGNHLu0V+QRFp9UA7pCfmhLjRYCyza+5cUi
+ 5wqtWumXbnrayntt936mX9Oas+pjWgqzvKI3VlVQBp2J6HXATXA6VaJHydkjpsTbAvs5
+ JMhA==
+X-Gm-Message-State: AOJu0YzgBsdk+7NoALM0wMO6VQ6TGbuuJ0Oex7oKftU8Awq/VWLECZdr
+ qcl6Oo1CNSfgRGfWzzcau1f3rQNMRG2d+3G2I8MCKmx7eWXmBGrTFI+fVRb1ib8=
+X-Received: by 2002:a05:6830:1e73:b0:6ef:9ec1:2bf8 with SMTP id
+ 46e09a7af769-6f0b7e8e7e7mr1897422a34.23.1715156146577; 
+ Wed, 08 May 2024 01:15:46 -0700 (PDT)
+Received: from tanmay-lenovo.. ([210.212.183.2])
+ by smtp.gmail.com with ESMTPSA id
+ bf5-20020a656d05000000b0062070308b0esm6527740pgb.46.2024.05.08.01.15.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 08 May 2024 01:15:46 -0700 (PDT)
+From: Tanmay Patil <tanmaynpatil105@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, marcandre.lureau@redhat.com,
+ pbonzini@redhat.com, Tanmay Patil <tanmaynpatil105@gmail.com>
+Subject: [PATCH] Fixes: Indentation using spaces instead of TABS and improve
+ formatting
+Date: Wed,  8 May 2024 13:45:02 +0530
+Message-ID: <20240508081502.88375-1-tanmaynpatil105@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [2a02:1808:204:9e3b:7f83:7ccf:566e:c9d1]
-X-Mailer: Zimbra 9.0.0_GA_4612 (ZimbraWebClient - FF125 (Linux)/9.0.0_GA_4612)
-Thread-Topic: hw/misc: Create STM32L4x5 SYSCFG clock
-Thread-Index: C73i5XvdsIRigMGHZA025iNGNhrHbw==
-Received-SPF: pass client-ip=137.194.2.223; envelope-from=ivarhol-21@enst.fr;
- helo=zproxy4.enst.fr
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::336;
+ envelope-from=tanmaynpatil105@gmail.com; helo=mail-ot1-x336.google.com
+X-Spam_score_int: 15
+X-Spam_score: 1.5
+X-Spam_bar: +
+X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -123,111 +122,572 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4jwWIkeQgrbg
+X-TUID: Fy9HxJfh9W5F
 
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/373
 
+Files changed:
+	- hw/arm/boot.c
+	- hw/char/omap_uart.c
+	- hw/gpio/zaurus.c
+	- hw/input/tsc2005.c
 
------ Le 7 Mai 24, =C3=A0 11:50, peter maydell peter.maydell@linaro.org a =
-=C3=A9crit :
+Signed-off-by: Tanmay Patil <tanmaynpatil105@gmail.com>
+---
+ hw/arm/boot.c       |   8 +--
+ hw/char/omap_uart.c |  49 +++++++++--------
+ hw/gpio/zaurus.c    |  61 +++++++++++----------
+ hw/input/tsc2005.c  | 130 ++++++++++++++++++++++++--------------------
+ 4 files changed, 131 insertions(+), 117 deletions(-)
 
-> On Sun, 5 May 2024 at 15:06, In=C3=A8s Varhol <ines.varhol@telecom-paris.=
-fr> wrote:
->>
->> Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
->=20
-> In general you should try to avoid commits with no commit message.
-> Sometimes there really isn't anything to say beyond what the
-> subject line is, but that should be the exception rather than
-> the usual thing.
-
-Hello,
-
-Understood, I'll add messages.
-
->=20
->> ---
->>  include/hw/misc/stm32l4x5_syscfg.h |  1 +
->>  hw/arm/stm32l4x5_soc.c             |  2 ++
->>  hw/misc/stm32l4x5_syscfg.c         | 26 ++++++++++++++++++++++++++
->>  3 files changed, 29 insertions(+)
->>
->> diff --git a/include/hw/misc/stm32l4x5_syscfg.h
->> b/include/hw/misc/stm32l4x5_syscfg.h
->> index 23bb564150..c450df2b9e 100644
->> --- a/include/hw/misc/stm32l4x5_syscfg.h
->> +++ b/include/hw/misc/stm32l4x5_syscfg.h
->> @@ -48,6 +48,7 @@ struct Stm32l4x5SyscfgState {
->>      uint32_t swpr2;
->>
->>      qemu_irq gpio_out[GPIO_NUM_PINS];
->> +    Clock *clk;
->>  };
->>
->>  #endif
->> diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
->> index 38f7a2d5d9..fb2afa6cfe 100644
->> --- a/hw/arm/stm32l4x5_soc.c
->> +++ b/hw/arm/stm32l4x5_soc.c
->> @@ -236,6 +236,8 @@ static void stm32l4x5_soc_realize(DeviceState *dev_s=
-oc,
->> Error **errp)
->>
->>      /* System configuration controller */
->>      busdev =3D SYS_BUS_DEVICE(&s->syscfg);
->> +    qdev_connect_clock_in(DEVICE(&s->syscfg), "clk",
->> +        qdev_get_clock_out(DEVICE(&(s->rcc)), "syscfg-out"));
->>      if (!sysbus_realize(busdev, errp)) {
->>          return;
->>      }
->> diff --git a/hw/misc/stm32l4x5_syscfg.c b/hw/misc/stm32l4x5_syscfg.c
->> index a5a1ce2680..a82864c33d 100644
->> --- a/hw/misc/stm32l4x5_syscfg.c
->> +++ b/hw/misc/stm32l4x5_syscfg.c
->> @@ -26,6 +26,10 @@
->>  #include "trace.h"
->>  #include "hw/irq.h"
->>  #include "migration/vmstate.h"
->> +#include "hw/clock.h"
->> +#include "hw/qdev-clock.h"
->> +#include "qapi/visitor.h"
->> +#include "qapi/error.h"
->>  #include "hw/misc/stm32l4x5_syscfg.h"
->>  #include "hw/gpio/stm32l4x5_gpio.h"
->>
->> @@ -202,6 +206,14 @@ static void stm32l4x5_syscfg_write(void *opaque, hw=
-addr
->> addr,
->>      }
->>  }
->>
->> +static void clock_freq_get(Object *obj, Visitor *v,
->> +    const char *name, void *opaque, Error **errp)
->> +{
->> +    Stm32l4x5SyscfgState *s =3D STM32L4X5_SYSCFG(obj);
->> +    uint32_t clock_freq_hz =3D clock_get_hz(s->clk);
->> +    visit_type_uint32(v, name, &clock_freq_hz, errp);
->> +}
->> +
->>  static const MemoryRegionOps stm32l4x5_syscfg_ops =3D {
->>      .read =3D stm32l4x5_syscfg_read,
->>      .write =3D stm32l4x5_syscfg_write,
->> @@ -225,6 +237,18 @@ static void stm32l4x5_syscfg_init(Object *obj)
->>      qdev_init_gpio_in(DEVICE(obj), stm32l4x5_syscfg_set_irq,
->>                        GPIO_NUM_PINS * NUM_GPIOS);
->>      qdev_init_gpio_out(DEVICE(obj), s->gpio_out, GPIO_NUM_PINS);
->> +    s->clk =3D qdev_init_clock_in(DEVICE(s), "clk", NULL, s, 0);
->> +    object_property_add(obj, "clock-freq-hz", "uint32", clock_freq_get,=
- NULL,
->> +                        NULL, NULL);
->=20
-> Why do we need this property? The clock on this device is an input,
-> so the device doesn't control its frequency.
-
-Using a QOM property allows to read the clock frequency from a QTest.
-(npcm7xx_pwm-test.c does this, I didn't find other examples of reading a
-frequency)
-
-Best regards,
-
-In=C3=A8s Varhol
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 84ea6a807a..d480a7da02 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -347,13 +347,13 @@ static void set_kernel_args_old(const struct arm_boot_info *info,
+     WRITE_WORD(p, info->ram_size / 4096);
+     /* ramdisk_size */
+     WRITE_WORD(p, 0);
+-#define FLAG_READONLY	1
+-#define FLAG_RDLOAD	4
+-#define FLAG_RDPROMPT	8
++#define FLAG_READONLY 1
++#define FLAG_RDLOAD   4
++#define FLAG_RDPROMPT 8
+     /* flags */
+     WRITE_WORD(p, FLAG_READONLY | FLAG_RDLOAD | FLAG_RDPROMPT);
+     /* rootdev */
+-    WRITE_WORD(p, (31 << 8) | 0);	/* /dev/mtdblock0 */
++    WRITE_WORD(p, (31 << 8) | 0); /* /dev/mtdblock0 */
+     /* video_num_cols */
+     WRITE_WORD(p, 0);
+     /* video_num_rows */
+diff --git a/hw/char/omap_uart.c b/hw/char/omap_uart.c
+index 6848bddb4e..c2ef4c137e 100644
+--- a/hw/char/omap_uart.c
++++ b/hw/char/omap_uart.c
+@@ -61,7 +61,7 @@ struct omap_uart_s *omap_uart_init(hwaddr base,
+     s->fclk = fclk;
+     s->irq = irq;
+     s->serial = serial_mm_init(get_system_memory(), base, 2, irq,
+-                               omap_clk_getrate(fclk)/16,
++                               omap_clk_getrate(fclk) / 16,
+                                chr ?: qemu_chr_new(label, "null", NULL),
+                                DEVICE_NATIVE_ENDIAN);
+     return s;
+@@ -76,27 +76,27 @@ static uint64_t omap_uart_read(void *opaque, hwaddr addr, unsigned size)
+     }
+ 
+     switch (addr) {
+-    case 0x20:	/* MDR1 */
++    case 0x20:  /* MDR1 */
+         return s->mdr[0];
+-    case 0x24:	/* MDR2 */
++    case 0x24:  /* MDR2 */
+         return s->mdr[1];
+-    case 0x40:	/* SCR */
++    case 0x40:  /* SCR */
+         return s->scr;
+-    case 0x44:	/* SSR */
++    case 0x44:  /* SSR */
+         return 0x0;
+-    case 0x48:	/* EBLR (OMAP2) */
++    case 0x48:  /* EBLR (OMAP2) */
+         return s->eblr;
+-    case 0x4C:	/* OSC_12M_SEL (OMAP1) */
++    case 0x4C:  /* OSC_12M_SEL (OMAP1) */
+         return s->clksel;
+-    case 0x50:	/* MVR */
++    case 0x50:  /* MVR */
+         return 0x30;
+-    case 0x54:	/* SYSC (OMAP2) */
++    case 0x54:  /* SYSC (OMAP2) */
+         return s->syscontrol;
+-    case 0x58:	/* SYSS (OMAP2) */
++    case 0x58:  /* SYSS (OMAP2) */
+         return 1;
+-    case 0x5c:	/* WER (OMAP2) */
++    case 0x5c:  /* WER (OMAP2) */
+         return s->wkup;
+-    case 0x60:	/* CFPS (OMAP2) */
++    case 0x60:  /* CFPS (OMAP2) */
+         return s->cfps;
+     }
+ 
+@@ -115,35 +115,36 @@ static void omap_uart_write(void *opaque, hwaddr addr,
+     }
+ 
+     switch (addr) {
+-    case 0x20:	/* MDR1 */
++    case 0x20:  /* MDR1 */
+         s->mdr[0] = value & 0x7f;
+         break;
+-    case 0x24:	/* MDR2 */
++    case 0x24:  /* MDR2 */
+         s->mdr[1] = value & 0xff;
+         break;
+-    case 0x40:	/* SCR */
++    case 0x40:  /* SCR */
+         s->scr = value & 0xff;
+         break;
+-    case 0x48:	/* EBLR (OMAP2) */
++    case 0x48:  /* EBLR (OMAP2) */
+         s->eblr = value & 0xff;
+         break;
+-    case 0x4C:	/* OSC_12M_SEL (OMAP1) */
++    case 0x4C:  /* OSC_12M_SEL (OMAP1) */
+         s->clksel = value & 1;
+         break;
+-    case 0x44:	/* SSR */
+-    case 0x50:	/* MVR */
+-    case 0x58:	/* SYSS (OMAP2) */
++    case 0x44:  /* SSR */
++    case 0x50:  /* MVR */
++    case 0x58:  /* SYSS (OMAP2) */
+         OMAP_RO_REG(addr);
+         break;
+-    case 0x54:	/* SYSC (OMAP2) */
++    case 0x54:  /* SYSC (OMAP2) */
+         s->syscontrol = value & 0x1d;
+-        if (value & 2)
++        if (value & 2) {
+             omap_uart_reset(s);
++        }
+         break;
+-    case 0x5c:	/* WER (OMAP2) */
++    case 0x5c:  /* WER (OMAP2) */
+         s->wkup = value & 0x7f;
+         break;
+-    case 0x60:	/* CFPS (OMAP2) */
++    case 0x60:  /* CFPS (OMAP2) */
+         s->cfps = value & 0xff;
+         break;
+     default:
+diff --git a/hw/gpio/zaurus.c b/hw/gpio/zaurus.c
+index 5884804c58..7342440b95 100644
+--- a/hw/gpio/zaurus.c
++++ b/hw/gpio/zaurus.c
+@@ -49,19 +49,20 @@ struct ScoopInfo {
+     uint16_t isr;
+ };
+ 
+-#define SCOOP_MCR	0x00
+-#define SCOOP_CDR	0x04
+-#define SCOOP_CSR	0x08
+-#define SCOOP_CPR	0x0c
+-#define SCOOP_CCR	0x10
+-#define SCOOP_IRR_IRM	0x14
+-#define SCOOP_IMR	0x18
+-#define SCOOP_ISR	0x1c
+-#define SCOOP_GPCR	0x20
+-#define SCOOP_GPWR	0x24
+-#define SCOOP_GPRR	0x28
+-
+-static inline void scoop_gpio_handler_update(ScoopInfo *s) {
++#define SCOOP_MCR       0x00
++#define SCOOP_CDR       0x04
++#define SCOOP_CSR       0x08
++#define SCOOP_CPR       0x0c
++#define SCOOP_CCR       0x10
++#define SCOOP_IRR_IRM   0x14
++#define SCOOP_IMR       0x18
++#define SCOOP_ISR       0x1c
++#define SCOOP_GPCR      0x20
++#define SCOOP_GPWR      0x24
++#define SCOOP_GPRR      0x28
++
++static inline void scoop_gpio_handler_update(ScoopInfo *s)
++{
+     uint32_t level, diff;
+     int bit;
+     level = s->gpio_level & s->gpio_dir;
+@@ -125,8 +126,9 @@ static void scoop_write(void *opaque, hwaddr addr,
+         break;
+     case SCOOP_CPR:
+         s->power = value;
+-        if (value & 0x80)
++        if (value & 0x80) {
+             s->power |= 0x8040;
++        }
+         break;
+     case SCOOP_CCR:
+         s->ccr = value;
+@@ -145,7 +147,7 @@ static void scoop_write(void *opaque, hwaddr addr,
+         scoop_gpio_handler_update(s);
+         break;
+     case SCOOP_GPWR:
+-    case SCOOP_GPRR:	/* GPRR is probably R/O in real HW */
++    case SCOOP_GPRR:    /* GPRR is probably R/O in real HW */
+         s->gpio_level = value & s->gpio_dir;
+         scoop_gpio_handler_update(s);
+         break;
+@@ -166,10 +168,11 @@ static void scoop_gpio_set(void *opaque, int line, int level)
+ {
+     ScoopInfo *s = (ScoopInfo *) opaque;
+ 
+-    if (level)
++    if (level) {
+         s->gpio_level |= (1 << line);
+-    else
++    } else {
+         s->gpio_level &= ~(1 << line);
++    }
+ }
+ 
+ static void scoop_init(Object *obj)
+@@ -203,7 +206,7 @@ static int scoop_post_load(void *opaque, int version_id)
+     return 0;
+ }
+ 
+-static bool is_version_0 (void *opaque, int version_id)
++static bool is_version_0(void *opaque, int version_id)
+ {
+     return version_id == 0;
+ }
+@@ -265,7 +268,7 @@ type_init(scoop_register_types)
+ 
+ /* Write the bootloader parameters memory area.  */
+ 
+-#define MAGIC_CHG(a, b, c, d)	((d << 24) | (c << 16) | (b << 8) | a)
++#define MAGIC_CHG(a, b, c, d)   ((d << 24) | (c << 16) | (b << 8) | a)
+ 
+ static struct QEMU_PACKED sl_param_info {
+     uint32_t comadj_keyword;
+@@ -286,16 +289,16 @@ static struct QEMU_PACKED sl_param_info {
+     uint32_t phad_keyword;
+     int32_t phadadj;
+ } zaurus_bootparam = {
+-    .comadj_keyword	= MAGIC_CHG('C', 'M', 'A', 'D'),
+-    .comadj		= 125,
+-    .uuid_keyword	= MAGIC_CHG('U', 'U', 'I', 'D'),
+-    .uuid		= { -1 },
+-    .touch_keyword	= MAGIC_CHG('T', 'U', 'C', 'H'),
+-    .touch_xp		= -1,
+-    .adadj_keyword	= MAGIC_CHG('B', 'V', 'A', 'D'),
+-    .adadj		= -1,
+-    .phad_keyword	= MAGIC_CHG('P', 'H', 'A', 'D'),
+-    .phadadj		= 0x01,
++    .comadj_keyword     = MAGIC_CHG('C', 'M', 'A', 'D'),
++    .comadj             = 125,
++    .uuid_keyword       = MAGIC_CHG('U', 'U', 'I', 'D'),
++    .uuid               = { -1 },
++    .touch_keyword      = MAGIC_CHG('T', 'U', 'C', 'H'),
++    .touch_xp           = -1,
++    .adadj_keyword      = MAGIC_CHG('B', 'V', 'A', 'D'),
++    .adadj              = -1,
++    .phad_keyword       = MAGIC_CHG('P', 'H', 'A', 'D'),
++    .phadadj            = 0x01,
+ };
+ 
+ void sl_bootparam_write(hwaddr ptr)
+diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
+index 941f163d36..05094ab2b1 100644
+--- a/hw/input/tsc2005.c
++++ b/hw/input/tsc2005.c
+@@ -28,10 +28,10 @@
+ #include "migration/vmstate.h"
+ #include "trace.h"
+ 
+-#define TSC_CUT_RESOLUTION(value, p)	((value) >> (16 - (p ? 12 : 10)))
++#define TSC_CUT_RESOLUTION(value, p)  ((value) >> (16 - (p ? 12 : 10)))
+ 
+ typedef struct {
+-    qemu_irq pint;	/* Combination of the nPENIRQ and DAV signals */
++    qemu_irq pint;  /* Combination of the nPENIRQ and DAV signals */
+     QEMUTimer *timer;
+     uint16_t model;
+ 
+@@ -63,7 +63,7 @@ typedef struct {
+ } TSC2005State;
+ 
+ enum {
+-    TSC_MODE_XYZ_SCAN	= 0x0,
++    TSC_MODE_XYZ_SCAN = 0x0,
+     TSC_MODE_XY_SCAN,
+     TSC_MODE_X,
+     TSC_MODE_Y,
+@@ -82,100 +82,100 @@ enum {
+ };
+ 
+ static const uint16_t mode_regs[16] = {
+-    0xf000,	/* X, Y, Z scan */
+-    0xc000,	/* X, Y scan */
+-    0x8000,	/* X */
+-    0x4000,	/* Y */
+-    0x3000,	/* Z */
+-    0x0800,	/* AUX */
+-    0x0400,	/* TEMP1 */
+-    0x0200,	/* TEMP2 */
+-    0x0800,	/* AUX scan */
+-    0x0040,	/* X test */
+-    0x0020,	/* Y test */
+-    0x0080,	/* Short-circuit test */
+-    0x0000,	/* Reserved */
+-    0x0000,	/* X+, X- drivers */
+-    0x0000,	/* Y+, Y- drivers */
+-    0x0000,	/* Y+, X- drivers */
++    0xf000, /* X, Y, Z scan */
++    0xc000, /* X, Y scan */
++    0x8000, /* X */
++    0x4000, /* Y */
++    0x3000, /* Z */
++    0x0800, /* AUX */
++    0x0400, /* TEMP1 */
++    0x0200, /* TEMP2 */
++    0x0800, /* AUX scan */
++    0x0040, /* X test */
++    0x0020, /* Y test */
++    0x0080, /* Short-circuit test */
++    0x0000, /* Reserved */
++    0x0000, /* X+, X- drivers */
++    0x0000, /* Y+, Y- drivers */
++    0x0000, /* Y+, X- drivers */
+ };
+ 
+-#define X_TRANSFORM(s)			\
++#define X_TRANSFORM(s)      \
+     ((s->y * s->tr[0] - s->x * s->tr[1]) / s->tr[2] + s->tr[3])
+-#define Y_TRANSFORM(s)			\
++#define Y_TRANSFORM(s)      \
+     ((s->y * s->tr[4] - s->x * s->tr[5]) / s->tr[6] + s->tr[7])
+-#define Z1_TRANSFORM(s)			\
++#define Z1_TRANSFORM(s)     \
+     ((400 - ((s)->x >> 7) + ((s)->pressure << 10)) << 4)
+-#define Z2_TRANSFORM(s)			\
++#define Z2_TRANSFORM(s)     \
+     ((4000 + ((s)->y >> 7) - ((s)->pressure << 10)) << 4)
+ 
+-#define AUX_VAL				(700 << 4)	/* +/- 3 at 12-bit */
+-#define TEMP1_VAL			(1264 << 4)	/* +/- 5 at 12-bit */
+-#define TEMP2_VAL			(1531 << 4)	/* +/- 5 at 12-bit */
++#define AUX_VAL       (700 << 4)  /* +/- 3 at 12-bit */
++#define TEMP1_VAL     (1264 << 4) /* +/- 5 at 12-bit */
++#define TEMP2_VAL     (1531 << 4) /* +/- 5 at 12-bit */
+ 
+ static uint16_t tsc2005_read(TSC2005State *s, int reg)
+ {
+     uint16_t ret;
+ 
+     switch (reg) {
+-    case 0x0:	/* X */
++    case 0x0: /* X */
+         s->dav &= ~mode_regs[TSC_MODE_X];
+         return TSC_CUT_RESOLUTION(X_TRANSFORM(s), s->precision) +
+                 (s->noise & 3);
+-    case 0x1:	/* Y */
++    case 0x1: /* Y */
+         s->dav &= ~mode_regs[TSC_MODE_Y];
+-        s->noise ++;
++        s->noise++;
+         return TSC_CUT_RESOLUTION(Y_TRANSFORM(s), s->precision) ^
+                 (s->noise & 3);
+-    case 0x2:	/* Z1 */
++    case 0x2: /* Z1 */
+         s->dav &= 0xdfff;
+         return TSC_CUT_RESOLUTION(Z1_TRANSFORM(s), s->precision) -
+                 (s->noise & 3);
+-    case 0x3:	/* Z2 */
++    case 0x3: /* Z2 */
+         s->dav &= 0xefff;
+         return TSC_CUT_RESOLUTION(Z2_TRANSFORM(s), s->precision) |
+                 (s->noise & 3);
+ 
+-    case 0x4:	/* AUX */
++    case 0x4: /* AUX */
+         s->dav &= ~mode_regs[TSC_MODE_AUX];
+         return TSC_CUT_RESOLUTION(AUX_VAL, s->precision);
+ 
+-    case 0x5:	/* TEMP1 */
++    case 0x5: /* TEMP1 */
+         s->dav &= ~mode_regs[TSC_MODE_TEMP1];
+         return TSC_CUT_RESOLUTION(TEMP1_VAL, s->precision) -
+                 (s->noise & 5);
+-    case 0x6:	/* TEMP2 */
++    case 0x6: /* TEMP2 */
+         s->dav &= 0xdfff;
+         s->dav &= ~mode_regs[TSC_MODE_TEMP2];
+         return TSC_CUT_RESOLUTION(TEMP2_VAL, s->precision) ^
+                 (s->noise & 3);
+ 
+-    case 0x7:	/* Status */
++    case 0x7: /* Status */
+         ret = s->dav | (s->reset << 7) | (s->pdst << 2) | 0x0;
+         s->dav &= ~(mode_regs[TSC_MODE_X_TEST] | mode_regs[TSC_MODE_Y_TEST] |
+                         mode_regs[TSC_MODE_TS_TEST]);
+         s->reset = true;
+         return ret;
+ 
+-    case 0x8:   /* AUX high threshold */
++    case 0x8: /* AUX high threshold */
+         return s->aux_thr[1];
+-    case 0x9:   /* AUX low threshold */
++    case 0x9: /* AUX low threshold */
+         return s->aux_thr[0];
+ 
+-    case 0xa:   /* TEMP high threshold */
++    case 0xa: /* TEMP high threshold */
+         return s->temp_thr[1];
+-    case 0xb:   /* TEMP low threshold */
++    case 0xb: /* TEMP low threshold */
+         return s->temp_thr[0];
+ 
+-    case 0xc:	/* CFR0 */
++    case 0xc: /* CFR0 */
+         return (s->pressure << 15) | ((!s->busy) << 14) |
+-                (s->nextprecision << 13) | s->timing[0]; 
+-    case 0xd:	/* CFR1 */
++                (s->nextprecision << 13) | s->timing[0];
++    case 0xd: /* CFR1 */
+         return s->timing[1];
+-    case 0xe:	/* CFR2 */
++    case 0xe: /* CFR2 */
+         return (s->pin_func << 14) | s->filter;
+ 
+-    case 0xf:	/* Function select status */
++    case 0xf: /* Function select status */
+         return s->function >= 0 ? 1 << s->function : 0;
+     }
+ 
+@@ -200,13 +200,14 @@ static void tsc2005_write(TSC2005State *s, int reg, uint16_t data)
+         s->temp_thr[0] = data;
+         break;
+ 
+-    case 0xc:	/* CFR0 */
++    case 0xc: /* CFR0 */
+         s->host_mode = (data >> 15) != 0;
+         if (s->enabled != !(data & 0x4000)) {
+             s->enabled = !(data & 0x4000);
+             trace_tsc2005_sense(s->enabled ? "enabled" : "disabled");
+-            if (s->busy && !s->enabled)
++            if (s->busy && !s->enabled) {
+                 timer_del(s->timer);
++            }
+             s->busy = s->busy && s->enabled;
+         }
+         s->nextprecision = (data >> 13) & 1;
+@@ -216,10 +217,10 @@ static void tsc2005_write(TSC2005State *s, int reg, uint16_t data)
+                           "tsc2005_write: illegal conversion clock setting\n");
+         }
+         break;
+-    case 0xd:	/* CFR1 */
++    case 0xd: /* CFR1 */
+         s->timing[1] = data & 0xf07;
+         break;
+-    case 0xe:	/* CFR2 */
++    case 0xe: /* CFR2 */
+         s->pin_func = (data >> 14) & 3;
+         s->filter = data & 0x3fff;
+         break;
+@@ -258,10 +259,12 @@ static void tsc2005_pin_update(TSC2005State *s)
+     switch (s->nextfunction) {
+     case TSC_MODE_XYZ_SCAN:
+     case TSC_MODE_XY_SCAN:
+-        if (!s->host_mode && s->dav)
++        if (!s->host_mode && s->dav) {
+             s->enabled = false;
+-        if (!s->pressure)
++        }
++        if (!s->pressure) {
+             return;
++        }
+         /* Fall through */
+     case TSC_MODE_AUX_SCAN:
+         break;
+@@ -269,8 +272,9 @@ static void tsc2005_pin_update(TSC2005State *s)
+     case TSC_MODE_X:
+     case TSC_MODE_Y:
+     case TSC_MODE_Z:
+-        if (!s->pressure)
++        if (!s->pressure) {
+             return;
++        }
+         /* Fall through */
+     case TSC_MODE_AUX:
+     case TSC_MODE_TEMP1:
+@@ -278,8 +282,9 @@ static void tsc2005_pin_update(TSC2005State *s)
+     case TSC_MODE_X_TEST:
+     case TSC_MODE_Y_TEST:
+     case TSC_MODE_TS_TEST:
+-        if (s->dav)
++        if (s->dav) {
+             s->enabled = false;
++        }
+         break;
+ 
+     case TSC_MODE_RESERVED:
+@@ -290,13 +295,14 @@ static void tsc2005_pin_update(TSC2005State *s)
+         return;
+     }
+ 
+-    if (!s->enabled || s->busy)
++    if (!s->enabled || s->busy) {
+         return;
++    }
+ 
+     s->busy = true;
+     s->precision = s->nextprecision;
+     s->function = s->nextfunction;
+-    s->pdst = !s->pnd0;	/* Synchronised on internal clock */
++    s->pdst = !s->pnd0; /* Synchronised on internal clock */
+     expires = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+         (NANOSECONDS_PER_SECOND >> 7);
+     timer_mod(s->timer, expires);
+@@ -331,7 +337,7 @@ static uint8_t tsc2005_txrx_word(void *opaque, uint8_t value)
+     TSC2005State *s = opaque;
+     uint32_t ret = 0;
+ 
+-    switch (s->state ++) {
++    switch (s->state++) {
+     case 0:
+         if (value & 0x80) {
+             /* Command */
+@@ -343,8 +349,9 @@ static uint8_t tsc2005_txrx_word(void *opaque, uint8_t value)
+                 if (s->enabled != !(value & 1)) {
+                     s->enabled = !(value & 1);
+                     trace_tsc2005_sense(s->enabled ? "enabled" : "disabled");
+-                    if (s->busy && !s->enabled)
++                    if (s->busy && !s->enabled) {
+                         timer_del(s->timer);
++                    }
+                     s->busy = s->busy && s->enabled;
+                 }
+                 tsc2005_pin_update(s);
+@@ -368,10 +375,11 @@ static uint8_t tsc2005_txrx_word(void *opaque, uint8_t value)
+         break;
+ 
+     case 1:
+-        if (s->command)
++        if (s->command) {
+             ret = (s->data >> 8) & 0xff;
+-        else
++        } else {
+             s->data |= value << 8;
++        }
+         break;
+ 
+     case 2:
+@@ -409,8 +417,9 @@ static void tsc2005_timer_tick(void *opaque)
+ 
+     /* Timer ticked -- a set of conversions has been finished.  */
+ 
+-    if (!s->busy)
++    if (!s->busy) {
+         return;
++    }
+ 
+     s->busy = false;
+     s->dav |= mode_regs[s->function];
+@@ -435,8 +444,9 @@ static void tsc2005_touchscreen_event(void *opaque,
+      * signaling TS events immediately, but for now we simulate
+      * the first conversion delay for sake of correctness.
+      */
+-    if (p != s->pressure)
++    if (p != s->pressure) {
+         tsc2005_pin_update(s);
++    }
+ }
+ 
+ static int tsc2005_post_load(void *opaque, int version_id)
+-- 
+2.43.0
 

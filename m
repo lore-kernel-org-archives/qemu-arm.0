@@ -1,119 +1,120 @@
-Received: by 2002:a17:907:90c2:b0:a52:4db9:938b with SMTP id gk2csp2072534ejb;
-        Mon, 13 May 2024 03:12:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUyl302KsFSE0tIgdSIT7q7Neo+Rd/r3tgq9cVVDu33sbA+q7g+/OC/mvRgjrJKZOo+HBKIsNqfnUwZbj1NQIXSBo7NbN97
-X-Google-Smtp-Source: AGHT+IEdTmdeklADs6eD6Z3R/gahg0J4f+7CVl8RbW28Zwg+93JFBxgpfzm3aHDTB8P+EY46F8eD
-X-Received: by 2002:a05:6214:54c2:b0:6a0:73a1:b471 with SMTP id 6a1803df08f44-6a168206a32mr137279476d6.41.1715595165785;
-        Mon, 13 May 2024 03:12:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715595165; cv=none;
+Received: by 2002:a17:907:90c2:b0:a52:4db9:938b with SMTP id gk2csp2084649ejb;
+        Mon, 13 May 2024 03:37:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUTX3hghIksBwINsikC0zX1qMpkqt/Wlp6KFE6k9yG7zUEdUarh51D+wYn9P+Ipo+C2Ltih2JxD4Q7ZNkgdUXUh+YsKo+WS
+X-Google-Smtp-Source: AGHT+IFSme7ar0knagv7+ADbJaxx9mT58GvrsWEeK0k3oH1JzTqhDrgDyDc9c5+Kx7MPt7JYNvQI
+X-Received: by 2002:ae9:c009:0:b0:792:c268:fbf0 with SMTP id af79cd13be357-792c7576ff6mr969024985a.6.1715596640084;
+        Mon, 13 May 2024 03:37:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715596640; cv=none;
         d=google.com; s=arc-20160816;
-        b=1E7kP/cgeOaJF9UCl1FGGNiXppBuTi3g33EqEQm+HSG/REzR3meVHojStu7CZem7Nk
-         e+pB3vdW7w1L2I2a6/V6AXN1mjjOKS0lFSBm7tg7xhyPAWbar35Wxpfpu1wv7HFoh6cG
-         6dDgL0Nn+W1t0hihCj9yPU8Gj7Whef8XwbDAACwq0HeNcCQGZxRK+nwykf0Yt7V5CLoD
-         2Zi+dbVrARSYie5SHXlWKUogH6IRvot+zJ4mKNPdQX1D+Z46E1I9DDLYKLSSWnI+M4eT
-         y7yMGKN86VgEQuN9rzMOEbGD7QR8muqYMpfyvH+Yp+e/URdBVJSqSHp/4LRPwGixdoT9
-         q3Yg==
+        b=PX9ITKpoond4d3EObXbSatr2fRsDq6sPYpV4HE2QngZcu1MSe+WOX+cZcJu7DkwbfS
+         Z9JD+ip5+RFJVmpJHHR4YDi5TkkAsuZJ0zKcqtUblIBEbvMiOzUMEorvQ3lTa9Vh0NnM
+         NaDn0WvY49fpVwpqBHBvlKpXMCLK7T4rDmuElkLJ2pmvHjuLZ/KupcGC6II+F36DT/CT
+         DsHWiwLQmc54N4FU65HoZ5Ur9LDMObkLi+1oXERbebRnJzKiiVjlYVjFEitIAGmKTitW
+         TejByoDwlREEXAr9LUIHYgRT5D7Eu+8e+oB0Q24VBVXRbFMi/SbT3mNTJvagDya8ID9P
+         h+Kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=uTlmaVG3MgnpSaFXvkPmHZXU1e4/64o+61NDr9XBH+I=;
-        fh=5rYXpbsvlzpy8br0ml611iXk290w3Vg9i8QJ331IAWw=;
-        b=ck9YbX6mAxBpW38A/6/up3W8OqeI/kZQ6Pri/zXmBbZSv9yca+by8sNQxQ85gQAktQ
-         caZ80Tx2TwPpjNEL8v99bj5laJHkWiW8VHKoYQAnQ3axmaCKFuGGcwnkClK7dgPw1xd1
-         /m51I6OyYd28XKQYGp3lJSx4c6Of6HG6igrccp28wBu0jsi3GJAEIqt4rGIRzUMRfq5Q
-         A4fUCF4fdsbWIgX3NKJMbjn2NhOAGD5l5wR78X/91CIa+wd72EItieVv6BO2D9UA/+0h
-         x4gDGh2BC8cTFOk1iA7EUcL17rNOXPq2K3IR7VMu0shQMC4/h22hxSNMjZiuVqWt0WG6
-         9Qeg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=74BE1kBokuyrBS5zaS6ZNTdWvkN4NdLOXCPer1bfnaw=;
+        fh=B9JULoQfI26EuCQytIg7m5FxZWmwqBr24ETuAahxRpU=;
+        b=OarglCg8G9Ba8LEj1hk3qZQ+baDa4kGdxb5xa+XE/XSJIn+SzPh1EwzCAUhlI1oIPA
+         MYsyX7yh16/GrYnyK+PPyZXMkAVefin6rQlNyrtBrQ+BhmDlgzVizYdZ8VkAT3LWSr2a
+         qneUGM1vqh8tbsjoZJ+18LH1NLdxnYF/P07MotXwkYMIfrVguRPCxxqAcAVRbJrRZSky
+         6e2eXDV5L7x3CmvCQdkDK3vmFeMPYLQPQLgfuTeHaQDA8UvU8mxgrbCStKM9sNhpXTPY
+         bTMuTwVQfNZdb4JYICU0RJrqPpfkDCefBvJzh+gW06Ais1SHL2QxtzF7mzPw8GBGXnMy
+         T1Jg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fCuckwRD;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gY8qlerd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6a15f29b748si91809126d6.211.2024.05.13.03.12.45
+        by mx.google.com with ESMTPS id af79cd13be357-792d89f4fd9si407828985a.109.2024.05.13.03.37.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 May 2024 03:12:45 -0700 (PDT)
+        Mon, 13 May 2024 03:37:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fCuckwRD;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gY8qlerd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s6SeV-0005rH-5Q; Mon, 13 May 2024 06:11:27 -0400
+	id 1s6T3I-0006wx-4U; Mon, 13 May 2024 06:37:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1s6SeS-0005p4-Ce; Mon, 13 May 2024 06:11:24 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1s6T3G-0006wH-9f; Mon, 13 May 2024 06:37:02 -0400
+Received: from mail-vs1-xe35.google.com ([2607:f8b0:4864:20::e35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1s6SeP-0006Nv-GH; Mon, 13 May 2024 06:11:23 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-a59cf8140d0so949491066b.3; 
- Mon, 13 May 2024 03:11:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1s6T30-0003g5-Id; Mon, 13 May 2024 06:37:02 -0400
+Received: by mail-vs1-xe35.google.com with SMTP id
+ ada2fe7eead31-47f3e985a84so1482387137.2; 
+ Mon, 13 May 2024 03:36:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1715595078; x=1716199878; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1715596604; x=1716201404; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=uTlmaVG3MgnpSaFXvkPmHZXU1e4/64o+61NDr9XBH+I=;
- b=fCuckwRDkGQfaO9K9gx5XqdArWXie8DuDaskZdYur+Q/yb6utSjEyLwE5llW246Z/f
- 30BAxoY7xkiTdBuimMDsWVrEKe4DjFCeoNBsVCrPT1zrVIWjtAVGfgLv3eNa7xnVd8Xa
- V/x4dAj9oEJDl+GqpBx0zxEBLIu7GoYIr7TOr5bXJp8wvgXbO639o9oxSr8kOmyuWF0V
- UdYItUr6qpIKO7W204OZSvXAh2rZU3FGFkLHd2CgZAaz8JSiaZrM5ASiFx1B5jV+VJQk
- lHxfVJDKaCGc04zheVo/VCntxyWMAlvyBDSzQ5xp2cFqiqBuCOTVbvl69Pe7uHBb0Zj5
- Jo0A==
+ bh=74BE1kBokuyrBS5zaS6ZNTdWvkN4NdLOXCPer1bfnaw=;
+ b=gY8qlerdLHwF/FISfUkwwGBBv/z5BaYmzqWn2KBY3tTf0vL28c4SdidFRDSV5OiW2G
+ vTT5fwN8ZL00Cp7bK8OrpSqsKaMT0If36DNnUQhSxqohnb+cEokadLNkvdpiKko/IOgw
+ bJs/SF4AKlYEuNaBAfoQa+hmzeJUEIlcG3GAvGyAmc9EcZMohZWg1QMp7AaMijqUxoq+
+ 0M2QU8EOgWenOeYHWRJdyyJic14VJ0zcWt7UzQJptbwTOIZhElE5QNb+jYwTnNiSs5Nq
+ ZGeRD3ShDPZrnNs3NV0dn6AzFOukft1tb3QIOt7hlhIiq9cY0hGvabNdJeyvgpPIVGY7
+ 5SVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715595078; x=1716199878;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1715596604; x=1716201404;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=uTlmaVG3MgnpSaFXvkPmHZXU1e4/64o+61NDr9XBH+I=;
- b=sm3Zaw4aieany1Q0HDUok9EWJo5nnLBQZ4TxA2qTf0IxaN4LALK+5A9CcQsMffcvL8
- 4930tipKrv0nb/ZQKR4/Um/0w7pZ0hAYdL329Y/ZJbKzPCMQFvDi6PH/75RKlCsUDWvm
- guh/MWwt7aps9Tfvd3k2rs9ZFGmCCqkR4ZhEuXBNZ4ddouEEnRdLiNkx4bTjFrXwJcsZ
- Eiak4j4bj5ulL9++/bHsVmuxD7zAx01V1/kruCJwlmIWu+JzMNkk4aDh3YiJZhLkSr5Y
- ga43fuOB6ZdycI41IN/KA/BckzAIdmQUlSKwBmtBjykSHCdQkv2ocCw3tTudoI+2tzOp
- MCTw==
+ bh=74BE1kBokuyrBS5zaS6ZNTdWvkN4NdLOXCPer1bfnaw=;
+ b=Zx2rMI5zAQmW8RhGB1dre6+KiF5S+x2M0/QOOsmaSaT/Kmj3Wh+uLaiCABCV5e1xUN
+ SpNIvQTzNFSu9XHyZU8+VzCP8+X8NHypFDwgNYP8bzIUUt/a10so+ODNFrXImrQtgnhe
+ jXy+B6RJcLm/Nivvm70AEhl5W3smsFMJfJ+9KAhxQ7bL1yAiNgrzAc4YSJ7Q0vevAD5j
+ asOgZNUq6n+08gW74KDHHTHIjzDTS/ThSu3vLsqnJWhxeBlganqtdrQuBREIATOKnZcz
+ HYcppDjqCTIGuCSypca98NoMDPYBf7R8pqkZYQoGidzv7FYJXRx5krZv631/nWyG3cpQ
+ J06w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUn2a1lPh1ZBRe31XvktuDHMo/wNxwRp9OXM1Yjhfw2hkFuMDeM+7gZlDCRPZe2PwbxTeaNKletmAPvDG6R0ZUtL4BCahXftLSaTWoHtEYUQZs6etzTI5JmzxUauA==
-X-Gm-Message-State: AOJu0YxklvIvPK20h6WDToO0TCTyrGw113ax2RQ2M0N/sDl1RwfxILrl
- xkGQbq/PLjEqJmuqv51Cyoj6IHDrttX9aJS2HqDh6Qlvu5yYX5CRXPbHtA==
-X-Received: by 2002:a17:906:4f08:b0:a58:725b:a021 with SMTP id
- a640c23a62f3a-a5a2d54c467mr522854066b.15.1715595078229; 
- Mon, 13 May 2024 03:11:18 -0700 (PDT)
-Received: from archlinux.. (business-90-187-110-129.pool2.vodafone-ip.de.
- [90.187.110.129]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a5a17894d2asm574906666b.87.2024.05.13.03.11.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 May 2024 03:11:17 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-trivial@nongnu.org,
- qemu-arm@nongnu.org, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 2/3] hw/timer/imx_gpt: Convert DPRINTF to trace events
-Date: Mon, 13 May 2024 12:11:07 +0200
-Message-ID: <20240513101108.5237-3-shentey@gmail.com>
-X-Mailer: git-send-email 2.45.0
-In-Reply-To: <20240513101108.5237-1-shentey@gmail.com>
-References: <20240513101108.5237-1-shentey@gmail.com>
+ AJvYcCXz8m2rf3Rzzjf4b3yZ8NqHjaTQCsIcGZfqvlDaGNCcRDD/4FYKy96GjI3TCkS2/OFj80gKvQNZ4Ik8HYP10DGl90feiR3kScaNvJQhn7aXIFn9ki0qK/pYLkj7V3WwXoVRVAO8/L2Fgm6jH1a7f7VAsQ==
+X-Gm-Message-State: AOJu0YyLSuBrzVy/1tYo8i9Kmoui/wlXBfYvoAE+Cf45TIVt1h27TzeC
+ 4diCHxz/lvlNsl6Q6dI/2jcaiWUjVlJ5AWVzKPUwTPIBU0Zd0UC5HFcCQjsB1ncL9kMLPUEZPyB
+ Ud7bNPtD5uUVaakL9cXQn637RNgo=
+X-Received: by 2002:a05:6102:3e8d:b0:47c:14eb:5fdd with SMTP id
+ ada2fe7eead31-48077eb638cmr10423783137.29.1715596604693; Mon, 13 May 2024
+ 03:36:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x634.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+References: <20240507052212.291137-1-jeeheng.sia@starfivetech.com>
+ <20240507052212.291137-2-jeeheng.sia@starfivetech.com>
+ <CAKmqyKOmt1UAbSnVbQ2fLVwoPP3u=6r5hX+gVO2xhLKidQ-8-A@mail.gmail.com>
+ <20240513023110-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20240513023110-mutt-send-email-mst@kernel.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 13 May 2024 20:36:18 +1000
+Message-ID: <CAKmqyKP1fmvyNsY0uXasK7jdHK9C_cizJdiqivK=Nxtfo37OxA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] qtest: allow SPCR acpi table changes
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org, qemu-riscv@nongnu.org, imammedo@redhat.com, 
+ anisinha@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com, 
+ sunilvl@ventanamicro.com, palmer@dabbelt.com, alistair.francis@wdc.com, 
+ bin.meng@windriver.com, liwei1518@gmail.com, dbarboza@ventanamicro.com, 
+ zhiwei_liu@linux.alibaba.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e35;
+ envelope-from=alistair23@gmail.com; helo=mail-vs1-xe35.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,93 +130,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vehketuV7OjO
+X-TUID: iBXGeQrDbOHz
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/timer/imx_gpt.c    | 18 +++++-------------
- hw/timer/trace-events |  6 ++++++
- 2 files changed, 11 insertions(+), 13 deletions(-)
+On Mon, May 13, 2024 at 4:32=E2=80=AFPM Michael S. Tsirkin <mst@redhat.com>=
+ wrote:
+>
+> On Mon, May 13, 2024 at 01:55:50PM +1000, Alistair Francis wrote:
+> > On Tue, May 7, 2024 at 3:24=E2=80=AFPM Sia Jee Heng
+> > <jeeheng.sia@starfivetech.com> wrote:
+> >
+> > Can you describe why you are doing this and that it will be reverted
+> > in the commit message?
+> >
+> > Alistair
+>
+> What motivation are you asking? This follows the normal acpi test update
+> procedure.
 
-diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
-index a8edaec867..3c3b044622 100644
---- a/hw/timer/imx_gpt.c
-+++ b/hw/timer/imx_gpt.c
-@@ -18,19 +18,12 @@
- #include "migration/vmstate.h"
- #include "qemu/module.h"
- #include "qemu/log.h"
-+#include "trace.h"
- 
- #ifndef DEBUG_IMX_GPT
- #define DEBUG_IMX_GPT 0
- #endif
- 
--#define DPRINTF(fmt, args...) \
--    do { \
--        if (DEBUG_IMX_GPT) { \
--            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_GPT, \
--                                             __func__, ##args); \
--        } \
--    } while (0)
--
- static const char *imx_gpt_reg_name(uint32_t reg)
- {
-     switch (reg) {
-@@ -145,7 +138,7 @@ static void imx_gpt_set_freq(IMXGPTState *s)
-     s->freq = imx_ccm_get_clock_frequency(s->ccm,
-                                           s->clocks[clksrc]) / (1 + s->pr);
- 
--    DPRINTF("Setting clksrc %d to frequency %d\n", clksrc, s->freq);
-+    trace_imx_gpt_set_freq(clksrc, s->freq);
- 
-     if (s->freq) {
-         ptimer_set_freq(s->timer, s->freq);
-@@ -317,7 +310,7 @@ static uint64_t imx_gpt_read(void *opaque, hwaddr offset, unsigned size)
-         break;
-     }
- 
--    DPRINTF("(%s) = 0x%08x\n", imx_gpt_reg_name(offset >> 2), reg_value);
-+    trace_imx_gpt_read(imx_gpt_reg_name(offset >> 2), reg_value);
- 
-     return reg_value;
- }
-@@ -384,8 +377,7 @@ static void imx_gpt_write(void *opaque, hwaddr offset, uint64_t value,
-     IMXGPTState *s = IMX_GPT(opaque);
-     uint32_t oldreg;
- 
--    DPRINTF("(%s, value = 0x%08x)\n", imx_gpt_reg_name(offset >> 2),
--            (uint32_t)value);
-+    trace_imx_gpt_write(imx_gpt_reg_name(offset >> 2), (uint32_t)value);
- 
-     switch (offset >> 2) {
-     case 0:
-@@ -485,7 +477,7 @@ static void imx_gpt_timeout(void *opaque)
- {
-     IMXGPTState *s = IMX_GPT(opaque);
- 
--    DPRINTF("\n");
-+    trace_imx_gpt_timeout();
- 
-     s->sr |= s->next_int;
-     s->next_int = 0;
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index de769f4b71..c9bcc85455 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -49,6 +49,12 @@ cmsdk_apb_dualtimer_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK A
- cmsdk_apb_dualtimer_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB dualtimer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
- 
-+# imx_gpt.c
-+imx_gpt_set_freq(uint32_t clksrc, uint32_t freq) "Setting clksrc %d to %d Hz"
-+imx_gpt_read(const char *name, uint32_t value) "%s -> 0x%08x"
-+imx_gpt_write(const char *name, uint32_t value) "%s <- 0x%08x"
-+imx_gpt_timeout(void) ""
-+
- # npcm7xx_timer.c
- npcm7xx_timer_read(const char *id, uint64_t offset, uint64_t value) " %s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
- npcm7xx_timer_write(const char *id, uint64_t offset, uint64_t value) "%s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
--- 
-2.45.0
+I find it clearer to have commits describe that they are disabling
+tests for a specific reason. That way it's easier to track what's
+going on.
 
+If ACPI test updates don't usually do that then that's fine with me
+
+Alistair
+
+>
+> > >
+> > > Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+> > > ---
+> > >  tests/qtest/bios-tables-test-allowed-diff.h | 2 ++
+> > >  1 file changed, 2 insertions(+)
+> > >
+> > > diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtes=
+t/bios-tables-test-allowed-diff.h
+> > > index dfb8523c8b..3f12ca546b 100644
+> > > --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> > > +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> > > @@ -1 +1,3 @@
+> > >  /* List of comma-separated changed AML files to ignore */
+> > > +"tests/data/acpi/virt/riscv64/SPCR",
+> > > +"tests/data/acpi/virt/aarch64/SPCR",
+> > > --
+> > > 2.34.1
+> > >
+> > >
+>

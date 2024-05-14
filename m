@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a5a179c7fcfsm738917166b.119.2024.05.14.10.42.57
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57421480d99sm5758823a12.8.2024.05.14.10.42.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 14 May 2024 10:42:59 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 0ABD65FA2D;
-	Tue, 14 May 2024 18:42:55 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id E419C5FA2C;
+	Tue, 14 May 2024 18:42:54 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -18,105 +18,101 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>
-Subject: [PATCH 11/11] plugins: remove op from qemu_plugin_inline_cb
-Date: Tue, 14 May 2024 18:42:53 +0100
-Message-Id: <20240514174253.694591-12-alex.bennee@linaro.org>
+Subject: [PATCH 10/11] plugins: extract cpu_index generate
+Date: Tue, 14 May 2024 18:42:52 +0100
+Message-Id: <20240514174253.694591-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240514174253.694591-1-alex.bennee@linaro.org>
 References: <20240514174253.694591-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: NPBWWLxqim/T
+X-TUID: dyAm+Bi8IUoh
 
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-This field is not needed as the callback type already holds this
-information.
+Factorizes function to access current cpu index for a given vcpu.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20240502211522.346467-10-pierrick.bouvier@linaro.org>
+Message-Id: <20240502211522.346467-9-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/qemu/plugin.h |  1 -
- plugins/plugin.h      |  4 +++-
- plugins/core.c        | 13 +++++++------
- 3 files changed, 10 insertions(+), 8 deletions(-)
+ accel/tcg/plugin-gen.c | 24 +++++++++++-------------
+ 1 file changed, 11 insertions(+), 13 deletions(-)
 
-diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
-index 98d27dded9..796fc13706 100644
---- a/include/qemu/plugin.h
-+++ b/include/qemu/plugin.h
-@@ -83,7 +83,6 @@ struct qemu_plugin_regular_cb {
- 
- struct qemu_plugin_inline_cb {
-     qemu_plugin_u64 entry;
--    enum qemu_plugin_op op;
-     uint64_t imm;
-     enum qemu_plugin_mem_rw rw;
- };
-diff --git a/plugins/plugin.h b/plugins/plugin.h
-index 80d5daa917..30e2299a54 100644
---- a/plugins/plugin.h
-+++ b/plugins/plugin.h
-@@ -108,7 +108,9 @@ void plugin_register_vcpu_mem_cb(GArray **arr,
-                                  enum qemu_plugin_mem_rw rw,
-                                  void *udata);
- 
--void exec_inline_op(struct qemu_plugin_inline_cb *cb, int cpu_index);
-+void exec_inline_op(enum plugin_dyn_cb_type type,
-+                    struct qemu_plugin_inline_cb *cb,
-+                    int cpu_index);
- 
- int plugin_num_vcpus(void);
- 
-diff --git a/plugins/core.c b/plugins/core.c
-index 1c85edc5e5..0726bc7f25 100644
---- a/plugins/core.c
-+++ b/plugins/core.c
-@@ -338,7 +338,6 @@ void plugin_register_inline_op_on_entry(GArray **arr,
- 
-     struct qemu_plugin_inline_cb inline_cb = { .rw = rw,
-                                                .entry = entry,
--                                               .op = op,
-                                                .imm = imm };
-     dyn_cb = plugin_get_dyn_cb(arr);
-     dyn_cb->type = op_to_cb_type(op);
-@@ -557,7 +556,9 @@ void qemu_plugin_flush_cb(void)
-     plugin_cb__simple(QEMU_PLUGIN_EV_FLUSH);
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index e018728573..c9b298667f 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -101,12 +101,17 @@ static void gen_disable_mem_helper(void)
+                    offsetof(ArchCPU, env));
  }
  
--void exec_inline_op(struct qemu_plugin_inline_cb *cb, int cpu_index)
-+void exec_inline_op(enum plugin_dyn_cb_type type,
-+                    struct qemu_plugin_inline_cb *cb,
-+                    int cpu_index)
+-static void gen_udata_cb(struct qemu_plugin_regular_cb *cb)
++static TCGv_i32 gen_cpu_index(void)
  {
-     char *ptr = cb->entry.score->data->data;
-     size_t elem_size = g_array_get_element_size(
-@@ -565,11 +566,11 @@ void exec_inline_op(struct qemu_plugin_inline_cb *cb, int cpu_index)
-     size_t offset = cb->entry.offset;
-     uint64_t *val = (uint64_t *)(ptr + offset + cpu_index * elem_size);
+     TCGv_i32 cpu_index = tcg_temp_ebb_new_i32();
+-
+     tcg_gen_ld_i32(cpu_index, tcg_env,
+                    -offsetof(ArchCPU, env) + offsetof(CPUState, cpu_index));
++    return cpu_index;
++}
++
++static void gen_udata_cb(struct qemu_plugin_regular_cb *cb)
++{
++    TCGv_i32 cpu_index = gen_cpu_index();
+     tcg_gen_call2(cb->f.vcpu_udata, cb->info, NULL,
+                   tcgv_i32_temp(cpu_index),
+                   tcgv_ptr_temp(tcg_constant_ptr(cb->userp)));
+@@ -121,9 +126,7 @@ static TCGv_ptr gen_plugin_u64_ptr(qemu_plugin_u64 entry)
+     char *base_ptr = arr->data + entry.offset;
+     size_t entry_size = g_array_get_element_size(arr);
  
--    switch (cb->op) {
--    case QEMU_PLUGIN_INLINE_ADD_U64:
-+    switch (type) {
-+    case PLUGIN_CB_INLINE_ADD_U64:
-         *val += cb->imm;
-         break;
--    case QEMU_PLUGIN_INLINE_STORE_U64:
-+    case PLUGIN_CB_INLINE_STORE_U64:
-         *val = cb->imm;
-         break;
-     default:
-@@ -601,7 +602,7 @@ void qemu_plugin_vcpu_mem_cb(CPUState *cpu, uint64_t vaddr,
-         case PLUGIN_CB_INLINE_ADD_U64:
-         case PLUGIN_CB_INLINE_STORE_U64:
-             if (rw && cb->inline_insn.rw) {
--                exec_inline_op(&cb->inline_insn, cpu->cpu_index);
-+                exec_inline_op(cb->type, &cb->inline_insn, cpu->cpu_index);
-             }
-             break;
-         default:
+-    TCGv_i32 cpu_index = tcg_temp_ebb_new_i32();
+-    tcg_gen_ld_i32(cpu_index, tcg_env,
+-                   -offsetof(ArchCPU, env) + offsetof(CPUState, cpu_index));
++    TCGv_i32 cpu_index = gen_cpu_index();
+     tcg_gen_muli_i32(cpu_index, cpu_index, entry_size);
+     tcg_gen_ext_i32_ptr(ptr, cpu_index);
+     tcg_temp_free_i32(cpu_index);
+@@ -156,7 +159,6 @@ static TCGCond plugin_cond_to_tcgcond(enum qemu_plugin_cond cond)
+ static void gen_udata_cond_cb(struct qemu_plugin_conditional_cb *cb)
+ {
+     TCGv_ptr ptr = gen_plugin_u64_ptr(cb->entry);
+-    TCGv_i32 cpu_index = tcg_temp_ebb_new_i32();
+     TCGv_i64 val = tcg_temp_ebb_new_i64();
+     TCGLabel *after_cb = gen_new_label();
+ 
+@@ -165,15 +167,14 @@ static void gen_udata_cond_cb(struct qemu_plugin_conditional_cb *cb)
+ 
+     tcg_gen_ld_i64(val, ptr, 0);
+     tcg_gen_brcondi_i64(cond, val, cb->imm, after_cb);
+-    tcg_gen_ld_i32(cpu_index, tcg_env,
+-                   -offsetof(ArchCPU, env) + offsetof(CPUState, cpu_index));
++    TCGv_i32 cpu_index = gen_cpu_index();
+     tcg_gen_call2(cb->f.vcpu_udata, cb->info, NULL,
+                   tcgv_i32_temp(cpu_index),
+                   tcgv_ptr_temp(tcg_constant_ptr(cb->userp)));
++    tcg_temp_free_i32(cpu_index);
+     gen_set_label(after_cb);
+ 
+     tcg_temp_free_i64(val);
+-    tcg_temp_free_i32(cpu_index);
+     tcg_temp_free_ptr(ptr);
+ }
+ 
+@@ -203,10 +204,7 @@ static void gen_inline_store_u64_cb(struct qemu_plugin_inline_cb *cb)
+ static void gen_mem_cb(struct qemu_plugin_regular_cb *cb,
+                        qemu_plugin_meminfo_t meminfo, TCGv_i64 addr)
+ {
+-    TCGv_i32 cpu_index = tcg_temp_ebb_new_i32();
+-
+-    tcg_gen_ld_i32(cpu_index, tcg_env,
+-                   -offsetof(ArchCPU, env) + offsetof(CPUState, cpu_index));
++    TCGv_i32 cpu_index = gen_cpu_index();
+     tcg_gen_call4(cb->f.vcpu_mem, cb->info, NULL,
+                   tcgv_i32_temp(cpu_index),
+                   tcgv_i32_temp(tcg_constant_i32(meminfo)),
 -- 
 2.39.2

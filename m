@@ -1,124 +1,170 @@
-Received: by 2002:a17:907:90c2:b0:a52:4db9:938b with SMTP id gk2csp2754910ejb;
-        Tue, 14 May 2024 02:23:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUYA5ida+niQIeY721whUCScFhekQYTBXqCFdPrfGiUpRdqPaNjbvEM0qd12P0Bdt+xmrbHPU8/deWJrw3pvgHb7NtbEUdD
-X-Google-Smtp-Source: AGHT+IGODBdzqgsoqhj9LYV1BZHQtULgeMxo+Ul5707ubhTWA9+P6k1VlYRDwyKZTkD185/fiCMg
-X-Received: by 2002:a05:6122:221c:b0:4d1:34a1:c892 with SMTP id 71dfb90a1353d-4df8837f9b5mr9783048e0c.13.1715678606391;
-        Tue, 14 May 2024 02:23:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715678606; cv=none;
+Received: by 2002:a17:907:90c2:b0:a52:4db9:938b with SMTP id gk2csp2813134ejb;
+        Tue, 14 May 2024 04:18:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWMROVYvvwaqKEVLypJBOxrZMxmRsFRNxB9trqcARk3R5tv6fXhlUPuJOCwps24yiDI8gLJOD+/B7U2Vje1JCgnpAz+L1EX
+X-Google-Smtp-Source: AGHT+IFSWA/J23PJVJaNmiDYyYgeOQId9ludbngAN1dT4tGlvZrfVjgHjBz9wYxiUEDHZS+sLsoK
+X-Received: by 2002:a05:6214:5508:b0:6a0:e84a:1b7d with SMTP id 6a1803df08f44-6a1681532e3mr159408786d6.18.1715685513270;
+        Tue, 14 May 2024 04:18:33 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1715685513; cv=pass;
         d=google.com; s=arc-20160816;
-        b=0OTfXmaX8lnxfttxiwVX9exKP38oc2vZsOgLdKZwt+zwyIUdrwJ+qOhB1ppSms85eZ
-         UZHC5dTY+xHLc7hmG1hFz/llHmGRNNMZQIrUVv3MdOfjbfVp+1tbWYHAzDsZ5pQZioGV
-         aRYamntaFc3ct94VvqDdasSfothcyHphwgCjQnyHvKq3DluNE9bnjGPK8H6gbCQMtFqE
-         5l7ts7KI7L9TgSZanyt+Pd9AN95YqQUhCHayfwLW2zG9cpRfBR1ZHZP1in5ae9hthPOC
-         tB5HVQwzPUT+HPizuNBz34zU7TBHQLu8hgA9I01BYDRttXGc5MSFl0ZL4Z6qmV9qczHW
-         AL2Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=JzYqIz0zPWzgTZ/CPLwSOEnTNzH/XPzKXVWdbvGTr0H9qCisQt+47NApoMLk8X0JoG
+         +SYJXiyIMRP4kVGdeB0+2DmyWqp254eVIVdV4lZ+EuQqQJ8GAXT7CW6Xr/RDaRf3Rnie
+         7rAZKhZw0B5kdFnuhbieiwbdxNCYInyxBRR1B6+dKJVYtLDwyHtUXWdwu+rZMZrAEYEJ
+         d9XHiQzDoNG4RRyFPKfoT1F0uz1H7/giKbag6rzsGNVDKhwcM+4R0B4mGf6hOaMFKHvu
+         2i90zUz4dqXBKtLjH2jaYt6fkFybIZ3fzejZuupP5rsd4tykbwBIvtQtza8d5oyjooJS
+         5yFA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=sQqtgD0BAbOpn3bhvamG0qImrAv7heRdXbr5/huWwMA=;
-        fh=BMjs3e8MgoHzy5U0/r/1VEXhXdYYarjv6w95KoEYR2I=;
-        b=Xl7t/2NDh7Nff1avuB+vGr/bKiTtrdvv4sltOCOd/irgHmuA4p4ryuFJsO5hsiar5i
-         BpGSvP2DqLaQ+f82XYBUrbwgN7xs0YE3rfCfnXamLjZCXvHV3qGYvlb9a1UHtK941Fn2
-         /DcawcpZYjeIHKv30otMVVR18o2yxSp996OJViTAizR5KwAziEYFn6rq/1fKvT/bYMrN
-         q1kba2tm7CAEz8ab/hPl/VFQT4qq2H6BH/kUuFAInpHJLS1E0jpJT7GtvjNDX9ysmi7K
-         GQSuaBU7AOUcRzXrVIImfL+EDN1G6Ux2oUZV0dHe7ggre0talNwLvcMITSrkZTiuO3OZ
-         MCfg==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from;
+        bh=PRWJI0Ty2t5CRIOpNvaMqqmsaQmv2cN9ltve5K6keMg=;
+        fh=OhhDyosO++8kJ5pj/gx18JH1E/ywoDMa0eNhDO6JoSs=;
+        b=Y7C88FtDN56dH/Stwt6FUYAJSC3Wkstqzvafc4kXb0+1GpzYiDsxOXEfBxMV0W8xcC
+         sAFuKcOBhoW/BZD/LrQzUBJWw8/qiYvHPpZM5QFA0e+Aq754Y6wBNiqpIKJ+8vJMyKwQ
+         9YugZwr/JHtvuG3OxC0jOK1DnW5/6UtR/MArfIPGBmgKd6RIPNAYJacCpQrWmXoQaWGm
+         /GlO4wzYwIhDiYn0lNQWoOnJE0Q0RS2cXoZuxO+gRINSvST8/Si0KF/hR8Hx5M4bSDDQ
+         iP5yAYfwZF9bV+DBT4lvhiqFxNTqH/MmIqIqg7ynHPMmEPu95C8Jbf5LY5+MOdWgVK2n
+         hr+w==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="k4jNm+W/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-792d7a867dbsi639233385a.92.2024.05.14.02.23.26
+        by mx.google.com with ESMTPS id 6a1803df08f44-6a15f2b4e44si117559386d6.319.2024.05.14.04.18.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 May 2024 02:23:26 -0700 (PDT)
+        Tue, 14 May 2024 04:18:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="k4jNm+W/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s6oN7-0006T2-PM; Tue, 14 May 2024 05:22:57 -0400
+	id 1s6q9v-00014r-33; Tue, 14 May 2024 07:17:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1s6oN5-0006Q4-L9
- for qemu-arm@nongnu.org; Tue, 14 May 2024 05:22:55 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1s6oN3-0005Zh-Ny
- for qemu-arm@nongnu.org; Tue, 14 May 2024 05:22:55 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-a59b58fe083so1133200866b.0
- for <qemu-arm@nongnu.org>; Tue, 14 May 2024 02:22:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1715678572; x=1716283372; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sQqtgD0BAbOpn3bhvamG0qImrAv7heRdXbr5/huWwMA=;
- b=k4jNm+W/tEMmRFfJ4jgDomcD0a/P/bd5Brt5KicZiI2WkQqTWgHtNDynW5hQIXj1bE
- ceIW1iH0Id+Rpatou0VesxLacBUIl37A/CJYbsLPF8urh4ewtGCx0fjT4K9JIO0WUWlA
- eksDt+dysl5V9hH9x5SnddirdjJVPR3G3gw4BdTeXhtzSMQwcW+OvwPPRqpBJji8KYun
- BohKde2a0jvg6fDVjQ1GmitH3q4upvfCQccXRrbXa+bcYJoQ0nhowD6o4Qm/xK0E5fP+
- NH1v+Tp12MxEgqOfBOp0iVY0ERBcqUm1MVZE1SNawV1jwNxUlu7lN7H/nWu/rUErdzbj
- LORA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715678572; x=1716283372;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=sQqtgD0BAbOpn3bhvamG0qImrAv7heRdXbr5/huWwMA=;
- b=aIOyZfKl4t9bSUoAxRNAX1B0oeQuKqJsiyQ1uhCtJlq1u9qaJz3Q5rcdBOZwLj9FwW
- BSUb+gQVhZh6EPrrbvhDAPEDpRbDNZVVOjXph6Sc4rxADtAJn2ElwiycUSUA5G/Z5Q+L
- ZhxLJfaHWKIMsCmJL1Qhgllw+N2lzRwFcSPbYQGmmjGfFOV/2zRVwq+t7bxGksPd1gUq
- BRzwV7+nbAUCzm+KTiF7lRxCeof5Q9GucOOFsEDKwCjWG9BafcA0qoXKh0xpxvSsJ1Fi
- 5A32PstqDBFOaKEWKOAicz2JpeFtVx1cUK5rukH8Xp8aosX63DbkF81mtsKNhPjACciP
- +4UQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV9iUfsIHjvfcT6HOlX+qkCsDtqxXTj1EiY81EzQgkYmJ9yZwyjtLqtYTz8+ohCPNj/J4x6KZ8SfAaMfakP7+ywJp4n
-X-Gm-Message-State: AOJu0YxLlNJZmg/V6GCq4QzOct05DVvqEXSY7n7ScLpwwJKKbrmasORI
- fB+hXKtfJEwn8c94cmVw70tJZFeMjX46jWMrd9Lamy7GJzRieft963ShNTlnpKsLAdjN1mGH9Eh
- 7Km/9NtcNhk+Z62U+Lo9+9H+zuDWkqsWZggHM1g==
-X-Received: by 2002:a05:6402:1746:b0:573:50a6:d3b0 with SMTP id
- 4fb4d7f45d1cf-57350a6d402mr7933301a12.3.1715678571755; Tue, 14 May 2024
- 02:22:51 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
+ id 1s6q9r-000145-Je; Tue, 14 May 2024 07:17:24 -0400
+Received: from mail-sh0chn02on20730.outbound.protection.partner.outlook.cn
+ ([2406:e500:4420:2::730]
+ helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
+ id 1s6q9n-0000JF-SO; Tue, 14 May 2024 07:17:23 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=HK1dV2JYRHvGrx/whlize8+Si0mCAKRAiBv4N1toivp1rLiq209f744eJQpmAT56C+Nc4frm62zuvnIzd4FvxZjkbS+3mAVXUp3R4td7qEqdBzAn2OtM93A+nokXeg+cnKpJpE1zE4aw03F9kTgK2tA9FQZt9AB9h1o5YHmt3w6HWyHjAk2pmln92waMgvCL9I11V0+QjsV52Ze7h0KAkU/tQlqys1G+PhvqeqwX8taUv5RlfMs3PdM1CjLK3WHSU+bArjvl+N6q2NMIQT/VRFJMks+p7k9NAyjU3ZJ1WZr/z5TyitdsKDXr4GIJ8DocvmjeI37g8BQX20GcGb97qw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=PRWJI0Ty2t5CRIOpNvaMqqmsaQmv2cN9ltve5K6keMg=;
+ b=X5+YTqC2ECcd7HBi9uUIfMaIcfszvcbGmCF8jp72Y/fIimFkaDgLN6HzXhqqJnjmsFF4zxjgoZ9/C6EPvMFLYnM274wj7F6Gq8kRglqSQWaXXvT+hPzz8IJd7shYc9siV9z6Wcc+UEhtnXpZ/rTK8+MgiwFqbKgql8s0saECDtVd9pz5PCe1fiw+9+X2prYz1U31SGCq0gj2LUtFuKDY9KSaV86CNQEqGxqiv8XQzK7d+tGJTJQq3tLkUJ2WOVeYf4K+QCjhIn98OMGN4xR80GZjlWGyCGNthDNyIDfA5HwbJoA18XP/bPuWJA0na4yUcSVpcljoNpGKb+fp+mt+5w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=starfivetech.com; dmarc=pass action=none
+ header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
+Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c510:12::10) by NT0PR01MB0990.CHNPR01.prod.partner.outlook.cn
+ (2406:e500:c510:7::9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.29; Tue, 14 May
+ 2024 11:16:59 +0000
+Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
+ ([fe80::e604:661e:e939:4c87]) by
+ NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn ([fe80::e604:661e:e939:4c87%4])
+ with mapi id 15.20.7472.044; Tue, 14 May 2024 11:16:59 +0000
+From: JeeHeng Sia <jeeheng.sia@starfivetech.com>
+To: Sunil V L <sunilvl@ventanamicro.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ "mst@redhat.com" <mst@redhat.com>, "imammedo@redhat.com"
+ <imammedo@redhat.com>, "anisinha@redhat.com" <anisinha@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>, "palmer@dabbelt.com"
+ <palmer@dabbelt.com>, "alistair.francis@wdc.com" <alistair.francis@wdc.com>,
+ "bin.meng@windriver.com" <bin.meng@windriver.com>, "liwei1518@gmail.com"
+ <liwei1518@gmail.com>, "dbarboza@ventanamicro.com"
+ <dbarboza@ventanamicro.com>, "zhiwei_liu@linux.alibaba.com"
+ <zhiwei_liu@linux.alibaba.com>
+Subject: RE: [PATCH v2 2/3] hw/acpi: Upgrade ACPI SPCR table to support SPCR
+ table version 4 format
+Thread-Topic: [PATCH v2 2/3] hw/acpi: Upgrade ACPI SPCR table to support SPCR
+ table version 4 format
+Thread-Index: AQHaoD6TJusz/RVVrkmf1vrsO+W0+bGUqM+AgAH2FWA=
+Date: Tue, 14 May 2024 11:16:59 +0000
+Message-ID: <NT0PR01MB12782432813293E9D7B17D889CE32@NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn>
 References: <20240507052212.291137-1-jeeheng.sia@starfivetech.com>
- <20240507052212.291137-2-jeeheng.sia@starfivetech.com>
- <CAKmqyKOmt1UAbSnVbQ2fLVwoPP3u=6r5hX+gVO2xhLKidQ-8-A@mail.gmail.com>
- <20240513023110-mutt-send-email-mst@kernel.org>
- <CAKmqyKP1fmvyNsY0uXasK7jdHK9C_cizJdiqivK=Nxtfo37OxA@mail.gmail.com>
-In-Reply-To: <CAKmqyKP1fmvyNsY0uXasK7jdHK9C_cizJdiqivK=Nxtfo37OxA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 14 May 2024 10:22:39 +0100
-Message-ID: <CAFEAcA-cF7EXRd1VZAJ=ApuBuU8=zkjhLAKkcbms9wqJy_WObA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/3] qtest: allow SPCR acpi table changes
-To: Alistair Francis <alistair23@gmail.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org, qemu-riscv@nongnu.org, imammedo@redhat.com, 
- anisinha@redhat.com, shannon.zhaosl@gmail.com, sunilvl@ventanamicro.com, 
- palmer@dabbelt.com, alistair.francis@wdc.com, bin.meng@windriver.com, 
- liwei1518@gmail.com, dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com
-Content-Type: text/plain; charset="UTF-8"
+ <20240507052212.291137-3-jeeheng.sia@starfivetech.com>
+ <ZkGiE68wMiVwZi/E@sunil-laptop>
+In-Reply-To: <ZkGiE68wMiVwZi/E@sunil-laptop>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=starfivetech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: NT0PR01MB1278:EE_|NT0PR01MB0990:EE_
+x-ms-office365-filtering-correlation-id: 47c39810-264b-492c-aba9-08dc74075f7f
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: oFLzDaOVfA/Yw0eSF4dZEiN36vIYdv73RjuTlM/v1KEAIy3Tg656M/df1gFLL2GX27U14Zq9xxQrlsZPAToA1Lg0GWHz+EmDz1kLpCD/5ERus0Z5JH0gppJfB04Vu/1oFkb1ffhcXo473JlqR8DHKuT47V7oDrjFhq9snbNq9A8jJEB4CxQNLQuxuPOZlA6AdoiRB4gXVxtX+mjeyIu68armpbXNJm6K6GqbHNLr7mvMZM1DExefM76BaOIIKsXBtcBp544Ie8HtuZPfMxMBk3wDiVBzKh+LmOE8qjQFnIAqbZf/WxnMY7YcEAAqobbGr1XOlmRZV24Azqpq0aq8+qRN+AcNh095FI++yHRjsvoTNT8VXXpZFwwUt51C2/cuGGiRpkqdl70aPhWXwX7Ych/hdM/acKNueQ6Fv5m1GPn0lbjmvkGyvkuYRCSrOYLZKH00lCpBTgZNZTE1gJB+/fv8CoAs6Xfr1cA1g6/WJW0recbJoOX4M6GYHINQzFi02sn652ssGpXDKCKBaB608JIb7V3PyoyOg3w4MWrzaQDj/iFi/a9tQpO5dgySF5lWzQM6+rzeg/cJZ2xRPFOfsEFh7A4tGRrWnjuDkgvbeyWWUAxZwFudgmpdTKzRk9C0
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn; PTR:;
+ CAT:NONE;
+ SFS:(13230031)(366007)(41320700004)(7416005)(1800799015)(38070700009); DIR:OUT;
+ SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Ed06lyRgqwJSJ7EAwpCFKSChKJ2erZlJzHeOUXCRbmZPErkrVy4KtGzs4iTw?=
+ =?us-ascii?Q?78AvtZk9mFPX5YKVLD2fCjniCXeF72nZuFzz1qN/5Kr3G02v5sCY8kU9J660?=
+ =?us-ascii?Q?aA0a/2YZtcSOSQWMNc4oWs/9rWFgHCiBRshejR2+Uttf2nXgIcTWooAOnisQ?=
+ =?us-ascii?Q?l/ikpFXOh136aDRykg9CJ+jZRIBbVgfrE3ef2Yw9EgVdwZzSOqiJXdGxzgKx?=
+ =?us-ascii?Q?CuJ4lKJNAXGciTWsTkE2IUkAEIN4WarCHwV/oP0spadTFHCBlPh+7NjZgid1?=
+ =?us-ascii?Q?BA0djxgonzQlSLs9t2h2NAQi2Vn7j8Yeg/CfHjHB81L3bkb8vqwG6qmWLKy8?=
+ =?us-ascii?Q?UVbqvBmVn/1L54PGthBhL/+ZVUKqgTUYEwhHQw9SXsEIB3k+YzXQYDAHFfUe?=
+ =?us-ascii?Q?gSYMVYitR0rjhPLRa24WYDjYW/1BRAWasTkUPnHEFUNF9klDcRxIIJAXDnQH?=
+ =?us-ascii?Q?FX0/NqFsgkDzpg2x03PegdQEySU4lnuHew1wIaHLSfWmFeqv2JtGWbIZ/cKP?=
+ =?us-ascii?Q?mjHAcnUDWfQUz0lazBrsRSc7tC18nogQZW2/bZsNABUZQRsQAj8ZeXbH4S3e?=
+ =?us-ascii?Q?6pZZ9mmRuhesp8DOx4wPtAUhO7EuLm05sOEL6aAxvJZrj0tL0uw0AP7jj+uA?=
+ =?us-ascii?Q?ePtBuviWf60OTggejKEBccP84PZ3XYeCjzPJ9W85Rg1p9KoIew/CZSXkbYFY?=
+ =?us-ascii?Q?fiGO+5KqxCno03rr9pNRtEAT6ZrTp6/BU/eCMg8PeqiwFF0MzGsEgay3LSLd?=
+ =?us-ascii?Q?nMfXQ96ahLmUrcfvZMmeHSuk/hNtmWoOSgPz/bs5GRgklhA5kKl5b6orcBIj?=
+ =?us-ascii?Q?zZ8CjgheQniIiypoG0rO+tfc7ETaE4/ZYeQt/i3LfujxGVEm/sJjk/ztgfWa?=
+ =?us-ascii?Q?n52cU19RNGaLK92TsFeLUOGkFRraeQNHWaUP4S1vf/PdM1fM/hov5NHBFhKC?=
+ =?us-ascii?Q?wv0xTYDk0K0qbCnltQXST31JR8ULkG+CGTDkixm+n4hVVSk/V4RxRLacLNcU?=
+ =?us-ascii?Q?XcDXya9G+PfPKt4dAOdyjAO7qGO+Rk6ZI8znwmQIEPLaorvvy288uTjp41xH?=
+ =?us-ascii?Q?uvqzlf+jfZPsJuv/f0nykBG8ru2bUljHHjwDHDt7kJEV3A4HvD/wVDtkZjUi?=
+ =?us-ascii?Q?8osQBP2fnb+HMPB111tbgg5onvIWJYiMXlHW9fDq1QjF0EeCgcfKByvDeDv8?=
+ =?us-ascii?Q?3m/9lt5FY6bpB8Og8vaER1EHxHtGgg27ndhwaIIG+CS+b9LJvE4iunt0iT5Z?=
+ =?us-ascii?Q?nlfVVMYgf80Q4wiyE5FUTxl3YnBaJzYeRuETEveFEaxQGnWFtlzD0hgl8cp6?=
+ =?us-ascii?Q?UBGEegXKiuw2GZz69SdXgeqdWf4crSq7kkapHbMLFA4Mrfjs3HSGH/kSzDTA?=
+ =?us-ascii?Q?Vejm4F68vhYNVARiTx7OcWX+FmYAz0Krv4It4YyaCQqOoxeXcoBE3nBOcT8B?=
+ =?us-ascii?Q?XYkTnCsOc7zGlm6ZggaHLOvNVRU6favu8hr7Fytwqmg93YBKL2dNvOWtxWqM?=
+ =?us-ascii?Q?uzEqvjb7ohiEMN0MrU+gR4zhee9zkVyPq2WhTi1Eo/oitM4nLHTSBU4Yo+EJ?=
+ =?us-ascii?Q?j2sdiOCcROhZq1ZHGvYk8GbiRzsVevsAXRO2hzm0FjKXhbg13YzLagWkO8Vn?=
+ =?us-ascii?Q?Ozh4i6O+saFJbdw7SghjLz8X7xLFPc/GXpy6kwYgeW3XQqcc/SwpHJn++bOX?=
+ =?us-ascii?Q?9PHx7w=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+MIME-Version: 1.0
+X-OriginatorOrg: starfivetech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
+X-MS-Exchange-CrossTenant-Network-Message-Id: 47c39810-264b-492c-aba9-08dc74075f7f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 May 2024 11:16:59.5365 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: hm3rmuAT0uhEX6RoYJFOGKMQk3HqP4xubUj4r0U0UlocjdOkUOE5xkKI0c/XXTKV4h5S9lDsdtt1H4VJ5Be1d8jnaqrMR0zu+gFZD0dDuCA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: NT0PR01MB0990
+Received-SPF: pass client-ip=2406:e500:4420:2::730;
+ envelope-from=jeeheng.sia@starfivetech.com;
+ helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,42 +179,208 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KhPY8AElrXRi
+X-TUID: CoYzNSbwlQEY
 
-On Mon, 13 May 2024 at 11:36, Alistair Francis <alistair23@gmail.com> wrote=
-:
->
-> On Mon, May 13, 2024 at 4:32=E2=80=AFPM Michael S. Tsirkin <mst@redhat.co=
-m> wrote:
+
+
+> -----Original Message-----
+> From: Sunil V L <sunilvl@ventanamicro.com>
+> Sent: Monday, May 13, 2024 1:16 PM
+> To: JeeHeng Sia <jeeheng.sia@starfivetech.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org; qemu-riscv@nongnu.org; ms=
+t@redhat.com; imammedo@redhat.com;
+> anisinha@redhat.com; peter.maydell@linaro.org; shannon.zhaosl@gmail.com; =
+palmer@dabbelt.com; alistair.francis@wdc.com;
+> bin.meng@windriver.com; liwei1518@gmail.com; dbarboza@ventanamicro.com; z=
+hiwei_liu@linux.alibaba.com
+> Subject: Re: [PATCH v2 2/3] hw/acpi: Upgrade ACPI SPCR table to support S=
+PCR table version 4 format
+>=20
+> Hi Sia Jee Heng,
+>=20
+> On Mon, May 06, 2024 at 10:22:11PM -0700, Sia Jee Heng wrote:
+> > Update the SPCR table to accommodate the SPCR Table version 4 [1].
+> > The SPCR table has been modified to adhere to the version 4 format [2].
 > >
-> > On Mon, May 13, 2024 at 01:55:50PM +1000, Alistair Francis wrote:
-> > > On Tue, May 7, 2024 at 3:24=E2=80=AFPM Sia Jee Heng
-> > > <jeeheng.sia@starfivetech.com> wrote:
-> > >
-> > > Can you describe why you are doing this and that it will be reverted
-> > > in the commit message?
-> > >
-> > > Alistair
+> > [1]: https://learn.microsoft.com/en-us/windows-hardware/drivers/serport=
+s/serial-port-console-redirection-table
+> > [2]: https://github.com/acpica/acpica/pull/931
 > >
-> > What motivation are you asking? This follows the normal acpi test updat=
-e
-> > procedure.
->
-> I find it clearer to have commits describe that they are disabling
-> tests for a specific reason. That way it's easier to track what's
-> going on.
->
-> If ACPI test updates don't usually do that then that's fine with me
-
-The only reason for the existence of this ignore-these-blobs file
-is for the purpose of the commit sequence:
- * add the blobs to the whitelist
- * make a change that alters what the expected blobs are
- * regenerate the golden-reference blobs and remove the items
-   from the whitelist
-
-So we don't usually say much in the commit that is adding a blob
-to the whitelist.
-
-thanks
--- PMM
+> > Signed-off-by: Sia Jee Heng <jeeheng.sia@starfivetech.com>
+> > ---
+> >  hw/acpi/aml-build.c         | 14 +++++++++++---
+> >  hw/arm/virt-acpi-build.c    | 10 ++++++++--
+> >  hw/riscv/virt-acpi-build.c  | 12 +++++++++---
+> >  include/hw/acpi/acpi-defs.h |  7 +++++--
+> >  include/hw/acpi/aml-build.h |  2 +-
+> >  5 files changed, 34 insertions(+), 11 deletions(-)
+> >
+> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> > index 6d4517cfbe..7c43573eef 100644
+> > --- a/hw/acpi/aml-build.c
+> > +++ b/hw/acpi/aml-build.c
+> > @@ -1996,7 +1996,7 @@ static void build_processor_hierarchy_node(GArray=
+ *tbl, uint32_t flags,
+> >
+> >  void build_spcr(GArray *table_data, BIOSLinker *linker,
+> >                  const AcpiSpcrData *f, const uint8_t rev,
+> > -                const char *oem_id, const char *oem_table_id)
+> > +                const char *oem_id, const char *oem_table_id, const ch=
+ar *name)
+> >  {
+> >      AcpiTable table =3D { .sig =3D "SPCR", .rev =3D rev, .oem_id =3D o=
+em_id,
+> >                          .oem_table_id =3D oem_table_id };
+> > @@ -2042,8 +2042,16 @@ void build_spcr(GArray *table_data, BIOSLinker *=
+linker,
+> >      build_append_int_noprefix(table_data, f->pci_flags, 4);
+> >      /* PCI Segment */
+> >      build_append_int_noprefix(table_data, f->pci_segment, 1);
+> > -    /* Reserved */
+> > -    build_append_int_noprefix(table_data, 0, 4);
+> > +    /* UartClkFreq */
+> > +    build_append_int_noprefix(table_data, f->uart_clk_freq, 4);
+> > +    /* PreciseBaudrate */
+> > +    build_append_int_noprefix(table_data, f->precise_baudrate, 4);
+> > +    /* NameSpaceStringLength */
+> > +    build_append_int_noprefix(table_data, f->namespace_string_length, =
+2);
+> > +    /* NameSpaceStringOffset */
+> > +    build_append_int_noprefix(table_data, f->namespace_string_offset, =
+2);
+> > +    /* NamespaceString[] */
+> > +    g_array_append_vals(table_data, name, f->namespace_string_length);
+> >
+> Is it possible to check the revision here and add new fields only if the
+> revision supports it? ARM maintainers are better to comment but IMO, we
+> better keep ARM's SPCR in the same current version since I don't know
+> how consumers like linux (and other OSs) react to the change.
+Hi Sunil, there is only one prebuilt SPCR binary. By doing this, the qtest
+will fail. I think I will let ARM maintainer to comment.
+>=20
+> Thanks!
+> Sunil
+> >      acpi_table_end(linker, &table);
+> >  }
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index 6a1bde61ce..cb345e8659 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -428,11 +428,12 @@ build_iort(GArray *table_data, BIOSLinker *linker=
+, VirtMachineState *vms)
+> >
+> >  /*
+> >   * Serial Port Console Redirection Table (SPCR)
+> > - * Rev: 1.07
+> > + * Rev: 1.10
+> >   */
+> >  static void
+> >  spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *v=
+ms)
+> >  {
+> > +    const char name[] =3D ".";
+> >      AcpiSpcrData serial =3D {
+> >          .interface_type =3D 3,       /* ARM PL011 UART */
+> >          .base_addr.id =3D AML_AS_SYSTEM_MEMORY,
+> > @@ -456,9 +457,14 @@ spcr_setup(GArray *table_data, BIOSLinker *linker,=
+ VirtMachineState *vms)
+> >          .pci_function =3D 0,
+> >          .pci_flags =3D 0,
+> >          .pci_segment =3D 0,
+> > +        .uart_clk_freq =3D 0,
+> > +        .precise_baudrate =3D 0,
+> > +        .namespace_string_length =3D sizeof(name),
+> > +        .namespace_string_offset =3D 88,
+> >      };
+> >
+> > -    build_spcr(table_data, linker, &serial, 2, vms->oem_id, vms->oem_t=
+able_id);
+> > +    build_spcr(table_data, linker, &serial, 4, vms->oem_id, vms->oem_t=
+able_id,
+> > +               name);
+> >  }
+> >
+> >  /*
+> > diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+> > index 0925528160..5fa3942491 100644
+> > --- a/hw/riscv/virt-acpi-build.c
+> > +++ b/hw/riscv/virt-acpi-build.c
+> > @@ -176,14 +176,15 @@ acpi_dsdt_add_uart(Aml *scope, const MemMapEntry =
+*uart_memmap,
+> >
+> >  /*
+> >   * Serial Port Console Redirection Table (SPCR)
+> > - * Rev: 1.07
+> > + * Rev: 1.10
+> >   */
+> >
+> >  static void
+> >  spcr_setup(GArray *table_data, BIOSLinker *linker, RISCVVirtState *s)
+> >  {
+> > +    const char name[] =3D ".";
+> >      AcpiSpcrData serial =3D {
+> > -        .interface_type =3D 0,       /* 16550 compatible */
+> > +        .interface_type =3D 0x12,       /* 16550 compatible */
+> >          .base_addr.id =3D AML_AS_SYSTEM_MEMORY,
+> >          .base_addr.width =3D 32,
+> >          .base_addr.offset =3D 0,
+> > @@ -205,9 +206,14 @@ spcr_setup(GArray *table_data, BIOSLinker *linker,=
+ RISCVVirtState *s)
+> >          .pci_function =3D 0,
+> >          .pci_flags =3D 0,
+> >          .pci_segment =3D 0,
+> > +        .uart_clk_freq =3D 0,
+> > +        .precise_baudrate =3D 0,
+> > +        .namespace_string_length =3D sizeof(name),
+> > +        .namespace_string_offset =3D 88,
+> >      };
+> >
+> > -    build_spcr(table_data, linker, &serial, 2, s->oem_id, s->oem_table=
+_id);
+> > +    build_spcr(table_data, linker, &serial, 4, s->oem_id, s->oem_table=
+_id,
+> > +               name);
+> >  }
+> >
+> >  /* RHCT Node[N] starts at offset 56 */
+> > diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> > index 0e6e82b339..2e6e341998 100644
+> > --- a/include/hw/acpi/acpi-defs.h
+> > +++ b/include/hw/acpi/acpi-defs.h
+> > @@ -112,7 +112,6 @@ typedef struct AcpiSpcrData {
+> >      uint8_t flow_control;
+> >      uint8_t terminal_type;
+> >      uint8_t language;
+> > -    uint8_t reserved1;
+> >      uint16_t pci_device_id;    /* Must be 0xffff if not PCI device */
+> >      uint16_t pci_vendor_id;    /* Must be 0xffff if not PCI device */
+> >      uint8_t pci_bus;
+> > @@ -120,7 +119,11 @@ typedef struct AcpiSpcrData {
+> >      uint8_t pci_function;
+> >      uint32_t pci_flags;
+> >      uint8_t pci_segment;
+> > -    uint32_t reserved2;
+> > +    uint32_t uart_clk_freq;
+> > +    uint32_t precise_baudrate;
+> > +    uint32_t namespace_string_length;
+> > +    uint32_t namespace_string_offset;
+> > +    char namespace_string[];
+> >  } AcpiSpcrData;
+> >
+> >  #define ACPI_FADT_ARM_PSCI_COMPLIANT  (1 << 0)
+> > diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> > index a3784155cb..68c0f2dbee 100644
+> > --- a/include/hw/acpi/aml-build.h
+> > +++ b/include/hw/acpi/aml-build.h
+> > @@ -500,5 +500,5 @@ void build_tpm2(GArray *table_data, BIOSLinker *lin=
+ker, GArray *tcpalog,
+> >
+> >  void build_spcr(GArray *table_data, BIOSLinker *linker,
+> >                  const AcpiSpcrData *f, const uint8_t rev,
+> > -                const char *oem_id, const char *oem_table_id);
+> > +                const char *oem_id, const char *oem_table_id, const ch=
+ar *name);
+> >  #endif
+> > --
+> > 2.34.1
+> >

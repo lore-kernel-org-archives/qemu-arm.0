@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5733c322c85sm7790031a12.84.2024.05.14.10.42.54
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-574d8f5501esm1666982a12.75.2024.05.14.10.42.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 May 2024 10:42:54 -0700 (PDT)
+        Tue, 14 May 2024 10:42:56 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id E552D5F8B0;
-	Tue, 14 May 2024 18:42:53 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 4D8C45FA1B;
+	Tue, 14 May 2024 18:42:54 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -18,47 +18,76 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>
-Subject: [PATCH 00/11] maintainer updates (plugins, testing) pre-PR
-Date: Tue, 14 May 2024 18:42:42 +0100
-Message-Id: <20240514174253.694591-1-alex.bennee@linaro.org>
+Subject: [PATCH 04/11] plugins: extract generate ptr for qemu_plugin_u64
+Date: Tue, 14 May 2024 18:42:46 +0100
+Message-Id: <20240514174253.694591-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240514174253.694591-1-alex.bennee@linaro.org>
+References: <20240514174253.694591-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: I0gqlN0j3U8X
+X-TUID: q+1Jjevo4PIz
 
-This is mostly plugin related stuff which is all ready to go however
-I have a few miscellaneous testing updates which would appreciate the
-review.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Thanks.
+Plugin operations can access a scoreboard. This function factorizes code
+generation for accessing entry associated to a given vcpu.
 
-Alex Bennée (2):
-  tests/tcg: don't append QEMU_OPTS for armv6m-undef test
-  scripts/update-linux-header.sh: be more src tree friendly
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20240502211522.346467-3-pierrick.bouvier@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ accel/tcg/plugin-gen.c | 27 ++++++++++++++++++---------
+ 1 file changed, 18 insertions(+), 9 deletions(-)
 
-Pierrick Bouvier (9):
-  plugins: prepare introduction of new inline ops
-  plugins: extract generate ptr for qemu_plugin_u64
-  plugins: add new inline op STORE_U64
-  tests/plugin/inline: add test for STORE_U64 inline op
-  plugins: conditional callbacks
-  tests/plugin/inline: add test for conditional callback
-  plugins: distinct types for callbacks
-  plugins: extract cpu_index generate
-  plugins: remove op from qemu_plugin_inline_cb
-
- include/qemu/plugin.h                 |  42 +++++---
- include/qemu/qemu-plugin.h            |  80 ++++++++++++++-
- plugins/plugin.h                      |  12 ++-
- accel/tcg/plugin-gen.c                | 136 ++++++++++++++++++++------
- plugins/api.c                         |  39 ++++++++
- plugins/core.c                        | 109 +++++++++++++++------
- tests/plugin/inline.c                 | 130 ++++++++++++++++++++++--
- plugins/qemu-plugins.symbols          |   2 +
- scripts/update-linux-headers.sh       |  80 +++++++--------
- tests/tcg/arm/Makefile.softmmu-target |   2 +-
- 10 files changed, 508 insertions(+), 124 deletions(-)
-
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index 4069d51daf..97868781fe 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -113,24 +113,33 @@ static void gen_udata_cb(struct qemu_plugin_dyn_cb *cb)
+     tcg_temp_free_i32(cpu_index);
+ }
+ 
+-static void gen_inline_add_u64_cb(struct qemu_plugin_dyn_cb *cb)
++static TCGv_ptr gen_plugin_u64_ptr(qemu_plugin_u64 entry)
+ {
+-    GArray *arr = cb->inline_insn.entry.score->data;
+-    size_t offset = cb->inline_insn.entry.offset;
+-    TCGv_i32 cpu_index = tcg_temp_ebb_new_i32();
+-    TCGv_i64 val = tcg_temp_ebb_new_i64();
+     TCGv_ptr ptr = tcg_temp_ebb_new_ptr();
+ 
++    GArray *arr = entry.score->data;
++    char *base_ptr = arr->data + entry.offset;
++    size_t entry_size = g_array_get_element_size(arr);
++
++    TCGv_i32 cpu_index = tcg_temp_ebb_new_i32();
+     tcg_gen_ld_i32(cpu_index, tcg_env,
+                    -offsetof(ArchCPU, env) + offsetof(CPUState, cpu_index));
+-    tcg_gen_muli_i32(cpu_index, cpu_index, g_array_get_element_size(arr));
++    tcg_gen_muli_i32(cpu_index, cpu_index, entry_size);
+     tcg_gen_ext_i32_ptr(ptr, cpu_index);
+     tcg_temp_free_i32(cpu_index);
++    tcg_gen_addi_ptr(ptr, ptr, (intptr_t) base_ptr);
++
++    return ptr;
++}
++
++static void gen_inline_add_u64_cb(struct qemu_plugin_dyn_cb *cb)
++{
++    TCGv_ptr ptr = gen_plugin_u64_ptr(cb->inline_insn.entry);
++    TCGv_i64 val = tcg_temp_ebb_new_i64();
+ 
+-    tcg_gen_addi_ptr(ptr, ptr, (intptr_t)arr->data);
+-    tcg_gen_ld_i64(val, ptr, offset);
++    tcg_gen_ld_i64(val, ptr, 0);
+     tcg_gen_addi_i64(val, val, cb->inline_insn.imm);
+-    tcg_gen_st_i64(val, ptr, offset);
++    tcg_gen_st_i64(val, ptr, 0);
+ 
+     tcg_temp_free_i64(val);
+     tcg_temp_free_ptr(ptr);
 -- 
 2.39.2

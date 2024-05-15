@@ -1,49 +1,47 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a5a1781cf91sm900672366b.1.2024.05.15.13.23.35
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5733c2c7d79sm9570291a12.59.2024.05.15.13.26.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 May 2024 13:23:35 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id AFA105F8D3;
-	Wed, 15 May 2024 21:23:34 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PULL 01/11] tests/tcg: don't append QEMU_OPTS for armv6m-undef test
-Date: Wed, 15 May 2024 21:23:24 +0100
-Message-Id: <20240515202334.710324-2-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240515202334.710324-1-alex.bennee@linaro.org>
-References: <20240515202334.710324-1-alex.bennee@linaro.org>
+        Wed, 15 May 2024 13:26:00 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id E903E5F78B;
+	Wed, 15 May 2024 21:25:59 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Mostafa Saleh <smostafa@google.com>
+Cc: qemu-arm@nongnu.org,  eric.auger@redhat.com,  peter.maydell@linaro.org,
+  qemu-devel@nongnu.org,  jean-philippe@linaro.org,  maz@kernel.org,
+  nicolinc@nvidia.com,  julien@xen.org,  richard.henderson@linaro.org,
+  marcin.juszkiewicz@linaro.org
+Subject: Re: [RFC PATCH v3 04/18] hw/arm/smmu: Use enum for SMMU stage
+In-Reply-To: <20240429032403.74910-5-smostafa@google.com> (Mostafa Saleh's
+	message of "Mon, 29 Apr 2024 03:23:48 +0000")
+References: <20240429032403.74910-1-smostafa@google.com>
+	<20240429032403.74910-5-smostafa@google.com>
+Date: Wed, 15 May 2024 21:25:59 +0100
+Message-ID: <878r0arfe0.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 1IxjwtX6iwJ7
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: jkmT2lK6eiFo
 
-We don't want to build on the default machine setup here but define a
-custom one for the microbit.
+Mostafa Saleh <smostafa@google.com> writes:
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20240514174253.694591-2-alex.bennee@linaro.org>
+> Currently, translation stage is represented as an int, where 1 is stage-1=
+ and
+> 2 is stage-2, when nested is added, 3 would be confusing to represent nes=
+ting,
+> so we use an enum instead.
+>
+> While keeping the same values, this is useful for:
+>  - Doing tricks with bit masks, where BIT(0) is stage-1 and BIT(1) is
+>    stage-2 and both is nested.
+>  - Tracing, as stage is printed as int.
+>
+> Signed-off-by: Mostafa Saleh <smostafa@google.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
-index 4c9264057f..39e01ce49d 100644
---- a/tests/tcg/arm/Makefile.softmmu-target
-+++ b/tests/tcg/arm/Makefile.softmmu-target
-@@ -16,7 +16,7 @@ test-armv6m-undef: test-armv6m-undef.S
- 		$< -o $@ -nostdlib -N -static \
- 		-T $(ARM_SRC)/$@.ld
- 
--run-test-armv6m-undef: QEMU_OPTS+=-semihosting -M microbit -kernel
-+run-test-armv6m-undef: QEMU_OPTS=-semihosting-config enable=on,target=native,chardev=output -M microbit -kernel
- 
- ARM_TESTS+=test-armv6m-undef
- 
--- 
-2.39.2
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

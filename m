@@ -1,239 +1,150 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp662778ejl;
-        Wed, 15 May 2024 06:48:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUStpqMDXrjaW00twL5cDdQHE36uxcon0pyV39RJiUfoup/pPjoAEugshSKtTasO/tFFsjcyEaJT/CieitX2K4yrFSxpTbG
-X-Google-Smtp-Source: AGHT+IGeHgxVWXKPx2d7hdE2XO6q/DSpsVzARC3lc0wXUOaj2FE4yayxSRw2LRtMCcJqCR0pVrbz
-X-Received: by 2002:a05:6870:d69c:b0:232:f9da:5cf3 with SMTP id 586e51a60fabf-24172a77b3dmr17400053fac.15.1715780892678;
-        Wed, 15 May 2024 06:48:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715780892; cv=none;
+Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp796961ejl;
+        Wed, 15 May 2024 10:02:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW6+rzhgEM9hxmOgrbNmqEcRKoY2goq2gXmoXiRtbRyQhoMRZv6w06htpfL1eCuyh269c3YGFBv3WLM6J4zfhKfAOJYs3LZ
+X-Google-Smtp-Source: AGHT+IGlPy24WsFVNqnMw2KTNVozKvctsURXDqAuMcp1uOT40fHx1Z0yrAETcDdL/tpew/E6N0ux
+X-Received: by 2002:a05:6214:5f02:b0:6a0:a9dc:b117 with SMTP id 6a1803df08f44-6a1680bf323mr188102286d6.0.1715792563215;
+        Wed, 15 May 2024 10:02:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715792563; cv=none;
         d=google.com; s=arc-20160816;
-        b=vEkTgq5//Ft133iESwcLM+InPapf1cN+0EYcUTcAxPvXwR4s2FgSIS22GHSsrSAY7v
-         jlXtyVBje4Bx2msh9UAKKRajuZTBRGHI/WPKsp9s6ntswWsK648PAc96+NyoLd4Llfpr
-         q/iBvgxXPoKR11IaD5a+3Ocy8+6636DMk6sRcaisqn8QoWpQgTIi/gZO40+SF38BGndx
-         sv4v/kL24qoz0Yi2pqQiEPSDs9AO8S9Eqskxe0eVJeBNwBLU2d72/cH3sgWbQEmI41tt
-         F9SaDbuDgtU6qIDyHB/MOsjSudI4Lvn8gSFWcq1rb7IzzpTyosI/BpxzrajlRgXdEAir
-         BkWw==
+        b=Xh7MoiW89JqnH7gPg1LIXrTqTJKCXSo3rnlIhx00w2HXTarS8Pi6TDChUgyhs9pi6S
+         mogGCUbQTDAEAGY2gCQ8UTtHwVUqhuALd/yA47dYQKpoU1+1iZ0M34TeV1YDYonrTAjo
+         JwolsrMXasGkdLpqdXJzGjPiOE9SiQK+HomKcLaGdaC2hTKs10qEbdHH3AQiEtJSMoEf
+         M9wphMgTPCWzzujUgbYqkwKYYdjx+JyOH3E274TPQNxm9ztQo2qbOp170OOC4HHC3POj
+         RVEnu78llUVkZKGedCLiu2d+IVB08NzvECzu4ru7oc2xsNQ/HHWlr6fUT02LWPEqqORP
+         oPqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=yN/W4znmh25KeMkw0tN9v+vwAvSt9Dl+q3bnDyXcLEo=;
-        fh=MZq+jrRvL0VxnEZgu1R+P8tQ3CkybJP6oPLPMEBWKOk=;
-        b=ERPwIoQK7oUirzMYer2A+FLbyMwWzUV13CjTtAvixdta9HttAS68Lr2A0sRi147kjI
-         ScA4c7A9SAFK4B49xb+4OJ0H0BzQZ14u2EiAjvTHZu9XXOxJFUBg0RNUdlf7lKBDyxyT
-         H3+d+iq2lFai2sXfqLLo1U9QzmzM5VxbF1f+N2iRFZ5U5XeAJbnIZJORG0UOKVbI/RSd
-         tdB1QAbqzH/0rJWWYT9pMVEU2l0/oAZMirN2xGkXHO0bm+cJ5TJBRoe+NwyMGPaGFmUx
-         jxqc7pUVJHG+FQ/xsY4fM6Da7FfD/axVTebRTPJwKnGFBUbGh5y7c7kY/1Nmo9d4Uq/x
-         EceQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=yiRGsrw3DKaavdRwWZkHwGKJpiiOH6ylD1utjko87eg=;
+        fh=nfM1/D4GizVuH8Ka5J2R/xf9aR4hOaQCG1XHaxSueMw=;
+        b=d15MVRvuXfDSP8/+kNbUxQJYTvcO6rCyT/hoHlPpdtdIrBmMN/ptf8qkrMUCh5VgPK
+         CKNrrEOqEWmPStn1S0VxAwO6G+elb0YcKh2LwKAjLuELkXdc3ScvdCaYkMGXzfSOE/7C
+         iO4BSmsMwz3R72xgAj8NHZotPzP8KYCGBwH4VucUJCU9fjQgfsBtkjAe4w5ofAhI1Jrz
+         jB9J15ENZFU2lKpy8qTqwwXxCbvNjK7cSVLFOekxOSHRMfhpcl7XvGJ5lZDhQPCf6d99
+         296YowzNt9gl/Svk/P5Z2CeTuOs1dQC8XZ5K5jNi326YVGjxoccwfLxmeN9rvEAjg+Wl
+         4DZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DfqX38H8;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-792bf30ab6esi1398393185a.295.2024.05.15.06.48.12
+       dkim=pass header.i=@linaro.org header.s=google header.b="F70/jRin";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6a15f1d8373si145509856d6.100.2024.05.15.10.02.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 May 2024 06:48:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 15 May 2024 10:02:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DfqX38H8;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1715780892;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=yN/W4znmh25KeMkw0tN9v+vwAvSt9Dl+q3bnDyXcLEo=;
-	b=DfqX38H8F2rH6axmts/fbOvjgKJYrc5mEy9GWInHWSCQB7jxE+mOW1Kcd1mnX32XsubsPX
-	fjB1wKMfOPYELtdKeoQ93c7boSK22yS94a/OUwwARGT1K814EFm5qLuZ55xrwf1ZQCIlMX
-	QLHpE97bHCg5vcCs+N0jDQHf/pEn/Wo=
-Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
- [209.85.128.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-615-gbv-zq3LNuu_wYEgnW2JPg-1; Wed, 15 May 2024 09:48:11 -0400
-X-MC-Unique: gbv-zq3LNuu_wYEgnW2JPg-1
-Received: by mail-yw1-f199.google.com with SMTP id 00721157ae682-62079696c58so118591447b3.0
-        for <alex.bennee@linaro.org>; Wed, 15 May 2024 06:48:11 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b="F70/jRin";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1s7I1S-00035y-B5; Wed, 15 May 2024 13:02:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s7I1O-00034V-Pf
+ for qemu-devel@nongnu.org; Wed, 15 May 2024 13:02:32 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s7I1N-0007rp-BW
+ for qemu-devel@nongnu.org; Wed, 15 May 2024 13:02:30 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-351d4909711so37280f8f.1
+ for <qemu-devel@nongnu.org>; Wed, 15 May 2024 10:02:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1715792546; x=1716397346; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=yiRGsrw3DKaavdRwWZkHwGKJpiiOH6ylD1utjko87eg=;
+ b=F70/jRin1QueN4QR8o6yLNnB1tc3A/4amLsGSw6Ho8Fm/u2L5ctTL9mvj5m0+p3aVn
+ yT43FbEV2ikzJbyUvPJB0+Oke6TjG72pFxmgzL13hPJJ8QaT73Ch6k8hujBWOl40iois
+ W5zAWNxI2tYJQ6Y7jBrX/zlJ9Ti1taGANUo+Jh612HCXScUKvnwiIqAi8ecOaeRiIIWR
+ F1+xWYRFm9PDptevjEmbMa6WRa925aO5/gbsGTuxEF2pxp6IucOm590XBhAto25prCT5
+ MDanzuoy5Nk4Sj46SzkHVhHJZAESml3O75OzNyQAeTxc63w7usz7WJo9GnzkYvzjSumG
+ w5RA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715780890; x=1716385690;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=yN/W4znmh25KeMkw0tN9v+vwAvSt9Dl+q3bnDyXcLEo=;
-        b=o+az1xhOhZqUad25ViLoG/23Jp72AbwQ0YmCSeSGSexBuJd1ZcUXiQa0oEabgBLNe8
-         /RBh3jaQncxdFvnlIb4yx/9xYg7OkAKZSA3LyXWW7xWgsIwqgQ2f6ZaZpABjVujUz5FR
-         WkRQrNI6zj16jqjEckh0ZvTbHxTb8oYEi1yBIUQfARi0NSREM7/7IeTHyKr8wt0PMnOa
-         R7p7/KC90WXsVqEz2mjk2e5EsneLvipUMiYW2OysVRJavpszP2KJ26bTrrJ0YjsaP7K7
-         9MNHCi7yJsKVDR6c7VDCGvvnylI0jVncGXDJ7LO7bQzKZW2cVNJBlcnMxMVx68CixTzQ
-         4TdQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWuyPTAkdd6r/5q/3JyI7bWCQwxr6Rj9gRvmzLmfC812Cb9gh0zkJNsajRv+LOr+uf8WM6RalouTUcgZNAGP2tP1vM/bwux
-X-Gm-Message-State: AOJu0Yz2KbMiXRLzwffv0FlMCvivkJD9K6L+Ota5P0ZuYOzypAeQvdyM
-	FtaHy10Ao7nDZfEtAmpMr4G5MpqJszRRsPGMmTOHwu8VEviXI9xlwxQxKO2LhB8CwBZFnjLKg2E
-	h5PfMCTRQIw+glecjZuMxQnimRFwXnRJJ59VuS/mnsu+7kGgTbdo+aQ==
-X-Received: by 2002:a05:690c:4382:b0:618:79f5:8d32 with SMTP id 00721157ae682-622b0164185mr115967217b3.48.1715780890218;
-        Wed, 15 May 2024 06:48:10 -0700 (PDT)
-X-Received: by 2002:a05:690c:4382:b0:618:79f5:8d32 with SMTP id 00721157ae682-622b0164185mr115966947b3.48.1715780889669;
-        Wed, 15 May 2024 06:48:09 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-43e0d56dce5sm54520001cf.58.2024.05.15.06.48.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 15 May 2024 06:48:09 -0700 (PDT)
-Message-ID: <dc8d52ac-68af-4426-9a60-07ad909c86b0@redhat.com>
-Date: Wed, 15 May 2024 15:48:05 +0200
+ d=1e100.net; s=20230601; t=1715792546; x=1716397346;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=yiRGsrw3DKaavdRwWZkHwGKJpiiOH6ylD1utjko87eg=;
+ b=X1pViU3jggrylbE/6osQKWtWIRXw4akfkX2bwHrIiPf3by/0fnDSPbIlWfZiiTbBpB
+ cKhFsT5QINzB4mh9rSu8bYFXS7yU7sJVpp3tdiVH0aAri/flUQLAK3hRbW5aCmnDde6Z
+ KCapVFRrLYOQnW+aXDRyY9ormoNniKULB6iD44kAJJirFzJAHxpvdVXnwRG8LuFWq5tH
+ PyproppNaTz0LKmThdHO1jvGF+6P/uXB2ZV7kILdtZHo5qVuqc35A9jBBjb6yYwX49Af
+ hNP28OJWt+V4uRvhq8lx7mQ17y2nGHjiTiPnUAf2BUQniQm9XdLG4NW58eC7OwRL2zG7
+ Ocrw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUfsoHaB4fSJG3MbAIi89tyhhseA43G9xiAdaiZm1f5KZhYy/P3+pI4xOlSRUYpiGxkd6MrS8kKshogMe0EqE7Vh9aes4c=
+X-Gm-Message-State: AOJu0YxEaO/1KFG59pivNSV6SCVNr+R6kgETMSiLt0QN3LASFOQ2l9Be
+ W444JB/jt/35F5m1Ix71NQWCBvn68gI/sTicBxs66uA6LJuyKHxy2Qthe5Z5GPnM/zXWttLmuEt
+ A
+X-Received: by 2002:adf:e80b:0:b0:34e:5284:4753 with SMTP id
+ ffacd0b85a97d-3504979cd90mr14335006f8f.1.1715792546034; 
+ Wed, 15 May 2024 10:02:26 -0700 (PDT)
+Received: from [10.91.1.102] ([149.14.240.163])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3502baacff4sm17015230f8f.79.2024.05.15.10.02.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 15 May 2024 10:02:25 -0700 (PDT)
+Message-ID: <311452d7-15f5-4e8a-b45c-b9184bcfe06a@linaro.org>
+Date: Wed, 15 May 2024 19:02:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [RFC PATCH v3 08/18] hw/arm/smmu-common: Add support for nested
- TLB
-To: Mostafa Saleh <smostafa@google.com>, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
- marcin.juszkiewicz@linaro.org
-References: <20240429032403.74910-1-smostafa@google.com>
- <20240429032403.74910-9-smostafa@google.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20240429032403.74910-9-smostafa@google.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH 1/5] tcg: Introduce TCG_TARGET_HAS_tst_vec
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20240515145900.252870-1-richard.henderson@linaro.org>
+ <20240515145900.252870-2-richard.henderson@linaro.org>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240515145900.252870-2-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: BWqRXsJ/OGWb
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PqyqwohGVHDZ
 
-Hi Mostafa,
-
-On 4/29/24 05:23, Mostafa Saleh wrote:
-> This patch adds support for nested(combined) TLB entries.
-space between nested and (.
-> The main function combine_tlb() is not used here but in the next
-> patches, but to simplify the patches it is introduced first.
->
-> Main changes:
-> 1) New entry added in the TLB, parent_perm, for nested TLB, holds the
-s/entry/field, s/TLB/SMMUTLBEntry struct
->    stage-2 permission, this can be used to know the origin of a
->    permission fault from a cached entry as caching the “and” of the
->    permissions loses this information.
->
->    SMMUPTWEventInfo is used to hold information about PTW faults so
->    the event can be populated, the value of stage (which maps to S2
->    in the event) used to be set based on the current stage for TLB
-I don't understand "(which maps to S2 in the event)". What do you mean?
-This could be S1 or S2 depending on the active stage, no?
->    permission faults, however with the parent_perm, it is now set
->    based on which perm has the missing permission
->
->    When nesting is not enabled it has the same value as perm which
->    doesn't change the logic.
->
-> 2) As combined TLB implementation is used, the combination logic
->    chooses:
->    - tg and level from the entry which has the smallest addr_mask.
-tbh I am scared bout swapping s1/s2 tg and level. In smmu_iotlb_lookup()
-I see tt->granule_sz being used which is s1 data. I mean it is not
-obvious to me this is correct. Could you maybe give more explanations
-detailing why/how this is guaranted to work.
-
-Can you give additional details about what s1+s2 combinations were tested?
->    - Based on that the iova that would be cached is recalculated.
->    - Translated_addr is chosen from stage-2.
->
-> Signed-off-by: Mostafa Saleh <smostafa@google.com>
+On 15/5/24 16:58, Richard Henderson wrote:
+> Prelude to supporting TCG_COND_TST* in vector comparisons.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  hw/arm/smmu-common.c         | 32 ++++++++++++++++++++++++++++----
->  include/hw/arm/smmu-common.h |  1 +
->  2 files changed, 29 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 21982621c0..0d6945fa54 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -394,7 +394,7 @@ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
->          tlbe->entry.translated_addr = gpa;
->          tlbe->entry.iova = iova & ~mask;
->          tlbe->entry.addr_mask = mask;
-> -        tlbe->entry.perm = PTE_AP_TO_PERM(ap);
-> +        tlbe->parent_perm = tlbe->entry.perm = PTE_AP_TO_PERM(ap);
-nit: I would prefer on separate lines.
->          tlbe->level = level;
->          tlbe->granule = granule_sz;
->          return 0;
-> @@ -515,7 +515,7 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
->          tlbe->entry.translated_addr = gpa;
->          tlbe->entry.iova = ipa & ~mask;
->          tlbe->entry.addr_mask = mask;
-> -        tlbe->entry.perm = s2ap;
-> +        tlbe->parent_perm = tlbe->entry.perm = s2ap;
->          tlbe->level = level;
->          tlbe->granule = granule_sz;
->          return 0;
-> @@ -530,6 +530,27 @@ error:
->      return -EINVAL;
->  }
->  
-> +/* combine 2 TLB entries and return in tlbe in nested config. */
-suggestion: combine S1 and S2 TLB entries into a single entry. As a
-result the S1 entry is overriden with combined data.
-> +static void __attribute__((unused)) combine_tlb(SMMUTLBEntry *tlbe,
-> +                                                SMMUTLBEntry *tlbe_s2,
-> +                                                dma_addr_t iova,
-> +                                                SMMUTransCfg *cfg)
-> +{
-> +    if (tlbe_s2->entry.addr_mask < tlbe->entry.addr_mask) {
-> +        tlbe->entry.addr_mask = tlbe_s2->entry.addr_mask;
-> +        tlbe->granule = tlbe_s2->granule;
-> +        tlbe->level = tlbe_s2->level;
-> +    }
-> +
-> +    tlbe->entry.translated_addr = CACHED_ENTRY_TO_ADDR(tlbe_s2,
-> +                                    tlbe->entry.translated_addr);
-> +
-> +    tlbe->entry.iova = iova & ~tlbe->entry.addr_mask;
-> +    /* parent_perm has s2 perm while perm has s1 perm. */
+>   include/tcg/tcg.h            | 1 +
+>   tcg/aarch64/tcg-target.h     | 1 +
+>   tcg/arm/tcg-target.h         | 1 +
+>   tcg/i386/tcg-target.h        | 1 +
+>   tcg/loongarch64/tcg-target.h | 1 +
+>   tcg/ppc/tcg-target.h         | 1 +
+>   tcg/s390x/tcg-target.h       | 1 +
+>   7 files changed, 7 insertions(+)
 
- suggestion: while perm keeps s1 perm.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> +    tlbe->parent_perm = tlbe_s2->entry.perm;
-> +    return;
-> +}
-> +
->  /**
->   * smmu_ptw - Walk the page tables for an IOVA, according to @cfg
->   *
-> @@ -607,9 +628,12 @@ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t addr,
->  
->      cached_entry = smmu_iotlb_lookup(bs, cfg, &tt_combined, aligned_addr);
->      if (cached_entry) {
-> -        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm & IOMMU_WO)) {
-> +        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm &
-> +            cached_entry->parent_perm & IOMMU_WO)) {
->              info->type = SMMU_PTW_ERR_PERMISSION;
-> -            info->stage = cfg->stage;
-> +            info->stage = !(cached_entry->entry.perm & IOMMU_WO) ?
-> +                          SMMU_STAGE_1 :
-> +                          SMMU_STAGE_2;
->              return NULL;
->          }
->          return cached_entry;
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index 09d3b9e734..1db566d451 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -77,6 +77,7 @@ typedef struct SMMUTLBEntry {
->      IOMMUTLBEntry entry;
->      uint8_t level;
->      uint8_t granule;
-> +    IOMMUAccessFlags parent_perm;
->  } SMMUTLBEntry;
->  
->  /* Stage-2 configuration. */
-Thanks
-
-Eric

@@ -1,128 +1,112 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp755186ejl;
-        Wed, 15 May 2024 09:03:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXa+QoW/2lkUuWydaQKUPogh1INtWwiVxNC6wSOpVRLlvAXWvwskjWa3zXyAvNRckd3mNWtL36xxWobDfNQxqWq8RcAi2AV
-X-Google-Smtp-Source: AGHT+IFsnS+wTHEgVpVNOWMT6eJuLgmmZYUQt8j4MUbteM3iBnckOGDB0DyuKDw4NBZCafWNFG4s
-X-Received: by 2002:a05:6214:469d:b0:6a0:c9eb:25db with SMTP id 6a1803df08f44-6a168179d57mr211024446d6.8.1715789019539;
-        Wed, 15 May 2024 09:03:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715789019; cv=none;
+Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp755710ejl;
+        Wed, 15 May 2024 09:04:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXmuxoCDd9aQcVs+IwvuSAwAwE+UhxOMtEyeZ6QDnyJNn/RS4A8NP9bDhUKbcyPPttI3CZZmkHfb08xETqi4ZX6glW0L2Bk
+X-Google-Smtp-Source: AGHT+IFGieYJt2/5E+UQLC30Bs38hn2sBLtsyS4fd0FItrkM8dXuVP6NVt28HGKdPppl48gFCRnv
+X-Received: by 2002:a25:8145:0:b0:de6:159d:c4bd with SMTP id 3f1490d57ef6-dee4f37dba2mr13667675276.62.1715789054408;
+        Wed, 15 May 2024 09:04:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715789054; cv=none;
         d=google.com; s=arc-20160816;
-        b=AzrIKAAIeOpQiOkdfkgCXRW6gKYBtBmbuHfMqedOUwULl2afm08I1ksZGbc/UUR5qm
-         eNHYZEveA7d3NyWrKJGdWmGFqfA6MulAMp20jUAodbx+qpr4QtuElaTzZDv2GGkZjKOG
-         +/f8+N6xyLvhT0cJN8bKqcwSV0ovuKxN/Sg3C1yvlynI0/6Rn3cTXfBNv5NPQjYSYzwT
-         KOJqJBJStKgDD/smOV7HskTiNznQRKSrE+jva0dN4Edl/EKy2HNXTNn7io0wDtK0Sha0
-         RGf8zRJ2ob3nb7kAISNId5O48/bJRThn/x38tbDh+pxgUhxxu0QRiZybJcjC+DUeQbfH
-         W+bA==
+        b=fUbv8zqWcQb6VlrWcRLHEqJqDybptrfaruF4eNJzv8TKwr2Fi82vO5UL8U9FqqrQ9y
+         JdiLMcFY2/AmDw29XIKZ7O6HE7rP8Z7c3N39MYirBJCqBAmR/Pgdm9f72twCxIvBuwA9
+         1PWy52C5C/Way2Q6+M4A6cRbRC/sUcgltjBJf3E4x1hcCiC9MDOfaYylcwW53yQF2ioB
+         4tjtaj/pgbJGglW4PKXqqaulYFA6IID/uY/Dt1caG4UHz1TujmzqHpMA+68OjQ71Frs5
+         6Y5a2OLzCPhyI8Wq1sOQLdakfz66U9yRRTeSjpaA98GyaFO7KWwNL3ON6M3SZnvl4a9i
+         l/7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=oBPMHWk/3X9EOsFM9ZyHhxSqY4SAOc/HnPCkNSCS9iE=;
-        fh=Cj298MC1O1uS/H2UOTZWU0x6wa3shLIF5bjKOhNuLI0=;
-        b=lM0wP8BQnVatJcLhICMs29Qjv+csNVUT4mCAnHjc6CmSLVB8MS2lqUg5Z4ycfKekji
-         cnCsfv87u/Z5fq2Y9PselcGmXjDjNSBmWl6sd9m0l64In3MHuEBFGicUgYicbd1fMXgC
-         zPK1uwtlaXIbxFloulvuH0lFzZ0Po/wg8IgXAA4RSTy1qkQUxrtRa4sCVtUiqde+o++Z
-         EfHwqYnrfEbJ5m1VxO1xBCkyeJq8rijLGwzCvwR3qwZwwS8ISN6f1Hp7s5Sa6NbObllS
-         l7ZdiIC6ktCdO1vvsOX9aY3YwSn07PI8ZqBt6V4lQaijiM/XQNhUQKMdths7cn76SmEF
-         CGsg==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=yul14Iba9gQ06KAp3BAHzUcXKv21bZcrm8jPtqpFSvE=;
+        fh=dUf3VhAOX85SRcpLa+KuoQv7iPjqTStFOGhYPTZUWKU=;
+        b=nfFk/jXbRN93fE0LdYm1XkUwYrXXco3Bj3JFSN+4xBxwcZJaeXy3zoj1aNoMPytAX0
+         13RtTI2U3DFwzCUpMiv0rXg9lltKpBZBO2OMjFY4dsJS0LfsL0sRvsiDVbn56uEhC3k/
+         l9IeXpuGfBNxmDPlNTcyHZo1v2UNltKHNMMafUJ9or04VdDVbozmwXrjgoxDbUUdCqvM
+         5MwCJUP5H3ouohdbRlWVXnQfw7QMGchnXaKm+7c3ptvf9Gy34FfXQPKxqZSt/3y1Seip
+         /gVL0lKAkmPS9TaDVQjNN37mU8GGS7jn0qKwzH+NhI3K8mQSux+KDg/fTcaoNMGBt1B9
+         Ifuw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XUJkoC4K;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ij63PwpM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6a15f2e570csi142926776d6.434.2024.05.15.09.03.39
+        by mx.google.com with ESMTPS id 3f1490d57ef6-debd388a88csi7056247276.585.2024.05.15.09.04.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 May 2024 09:03:39 -0700 (PDT)
+        Wed, 15 May 2024 09:04:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XUJkoC4K;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ij63PwpM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s7H5t-000186-6C; Wed, 15 May 2024 12:03:05 -0400
+	id 1s7H6q-0002SX-7S; Wed, 15 May 2024 12:04:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1s7H5q-00014J-8T
- for qemu-arm@nongnu.org; Wed, 15 May 2024 12:03:03 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1s7H6k-0002F8-Ok
+ for qemu-arm@nongnu.org; Wed, 15 May 2024 12:03:58 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1s7H5o-0000Qp-Nx
- for qemu-arm@nongnu.org; Wed, 15 May 2024 12:03:02 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1s7H6g-0000Wh-Vp
+ for qemu-arm@nongnu.org; Wed, 15 May 2024 12:03:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1715788979;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1715789033;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=oBPMHWk/3X9EOsFM9ZyHhxSqY4SAOc/HnPCkNSCS9iE=;
- b=XUJkoC4Kfp5Hj6AG55ZKTD6JDiuPkOTlV21iJESG8oJHJ63bVtWMid1Ih1bfMw8pjahW0s
- uA8D0MsmQMe79t61vSB7kySY90UwH79mLDk+c5yZjlOeHUTa1Oeha11M63wFty5F/xmnWC
- b5qJHMBT3I9n/15izoaVj88u+pVu6/Q=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-564-xCEB7kspOFWRMYUkwWWCIQ-1; Wed, 15 May 2024 12:02:55 -0400
-X-MC-Unique: xCEB7kspOFWRMYUkwWWCIQ-1
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-351baf27b00so2275152f8f.0
- for <qemu-arm@nongnu.org>; Wed, 15 May 2024 09:02:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715788974; x=1716393774;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oBPMHWk/3X9EOsFM9ZyHhxSqY4SAOc/HnPCkNSCS9iE=;
- b=DAAcPgNGTk9HLcydYZz0Wdsz0l++neQKAVAD4LDT8cZd1GnkKvhm2jOzhJtyEG3Hxr
- 2EXScpF5A7q/6Oe+EfjdRG/2kz3fMzWLegcyZmlVV/ErmrqOpk9llbBQxT+ZniU9l+rP
- ddmvosa6ZHSBBrWPaRPsCHENAQm8RZeiOfEzGAPYZ39C+Aek78+BIbScxBqqIjxXn+Ru
- 2MhlGHwXlITCQADikzah0KnWhehvokyvlRQF317KKpbHVM0jCQ8XNw1DgZAQbP/fgQ4F
- 3LvTvIQA87gh5kmM3d9+eS4lctPIeTJCM4s0TyHWjnZl/zsaBeaU0RGxC4+91PwEyy+m
- JQjg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUg2TBtygxERPomIYDvPL3TPNcyIjCjti5FnybHF8BAYOjmf3xV2dffZ8SFnSgWnDmI4M6iitcUKiUETpcYRvzIm6dw
-X-Gm-Message-State: AOJu0YwC5JHgPuH/rGCPVmuWyuRLqbQJcyCu31EV4z/3ncvyFIzRQ/TG
- 3xTA/xSTj0pqHWp9g5qMSc9XjDBs9cyQBR7ix3izuTmhD6zoGBnzCRFZ/qEczgUOol6A1T9cpMA
- dvNCYa2x5QbiAT2OVdbs2xsM5eUjXVN2AXY4OY/3Kl3BufSl12A==
-X-Received: by 2002:adf:ff92:0:b0:34c:9b4d:a7ee with SMTP id
- ffacd0b85a97d-3504aa66822mr13132983f8f.67.1715788974440; 
- Wed, 15 May 2024 09:02:54 -0700 (PDT)
-X-Received: by 2002:adf:ff92:0:b0:34c:9b4d:a7ee with SMTP id
- ffacd0b85a97d-3504aa66822mr13132944f8f.67.1715788973742; 
- Wed, 15 May 2024 09:02:53 -0700 (PDT)
-Received: from redhat.com ([2a02:14f:175:c01e:6df5:7e14:ad03:85bd])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-351cb0fb6b4sm3632961f8f.24.2024.05.15.09.02.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 May 2024 09:02:53 -0700 (PDT)
-Date: Wed, 15 May 2024 12:02:49 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
+ bh=yul14Iba9gQ06KAp3BAHzUcXKv21bZcrm8jPtqpFSvE=;
+ b=Ij63PwpMgBEEKG4hP/Wx6G6/a7caV+9WuRgHFzImzXx01vIW57IA7a7KzjEMr80LXyvVgP
+ Do/hQ08KLwt6VBUTS47+5mQC5NXVH3CE1MenW+wjRYZQM1Rg/Oy+cZJwufWOSJfbZBSqci
+ kfL/to3w37nwFzh8tLuLC1+my1a/l9A=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-128-rY8yE26YPZ2OePFvyWsgeA-1; Wed,
+ 15 May 2024 12:03:50 -0400
+X-MC-Unique: rY8yE26YPZ2OePFvyWsgeA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 97AB53C00096;
+ Wed, 15 May 2024 16:03:49 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.55])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9960B2026D68;
+ Wed, 15 May 2024 16:03:46 +0000 (UTC)
+Date: Wed, 15 May 2024 17:03:44 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: marcandre.lureau@redhat.com
 Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Fiona Ebner <f.ebner@proxmox.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Fabiano Rosas <farosas@suse.de>, Gerd Hoffmann <kraxel@redhat.com>,
  Yanan Wang <wangyanan55@huawei.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Xu <peterx@redhat.com>
 Subject: Re: [PATCH v3 5/5] virtio-gpu: fix v2 migration
-Message-ID: <20240515120104-mutt-send-email-mst@kernel.org>
+Message-ID: <ZkTc4Ott5M15k55R@redhat.com>
 References: <20240515141557.1277999-1-marcandre.lureau@redhat.com>
  <20240515141557.1277999-6-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20240515141557.1277999-6-marcandre.lureau@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+In-Reply-To: <20240515141557.1277999-6-marcandre.lureau@redhat.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -143,12 +127,13 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: r7cTmZBE1jQa
+X-TUID: XYKcFK//5Cws
 
 On Wed, May 15, 2024 at 06:15:56PM +0400, marcandre.lureau@redhat.com wrote:
-> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+> From: Marc-AndrÃ© Lureau <marcandre.lureau@redhat.com>
 > 
 > Commit dfcf74fa ("virtio-gpu: fix scanout migration post-load") broke
 > forward/backward version migration. Versioning of nested VMSD structures
@@ -161,18 +146,7 @@ On Wed, May 15, 2024 at 06:15:56PM +0400, marcandre.lureau@redhat.com wrote:
 > 
 > Fixes: dfcf74fa ("virtio-gpu: fix scanout migration post-load")
 > Suggested-by: Peter Xu <peterx@redhat.com>
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-
-I don't get it. Our standard way to do it is:
-- add a property (begin name with x- so we don't commit to an API)
-- set from compat machinery
-- test property value in VMSTATE macros
-
-Big advantage is, it works well with any downstreams
-which pick any properties they like.
-Why is this not a good fit here?
-
-
+> Signed-off-by: Marc-AndrÃ© Lureau <marcandre.lureau@redhat.com>
 > ---
 >  hw/display/virtio-gpu.c | 21 +++++++++++++--------
 >  1 file changed, 13 insertions(+), 8 deletions(-)
@@ -197,6 +171,40 @@ Why is this not a good fit here?
 > +{
 > +    return machine_check_version(9, 0);
 > +}
+
+I think applying version number checks to decide machine type
+compatibility is a highly undesirable direction for QEMU to
+take.
+
+Machine type compatibility is a difficult problem, but one of
+the good aspects about our current solution is that it is
+clear what the differences are for each version. We can see
+all the compatibility properties/flags/values being set in
+one place, in the declaration of each machine's class.
+
+Sprinkling version number checks around the codebase in
+arbitrary files will harm visibility of what ABI is expressd
+by each machine, and thus is liable to increase the liklihood
+of mistakes.
+
+This will negatively impact downstream vendors cherry-picking
+patches to their stable branches, as the version number logic
+may have incorrect semantics. 
+
+It will also create trouble for downstream vendors who define
+their own machines with distinct versioning from upstream, as
+there will be confusion over whether a version check is for
+the base QEMU version, or the downstream version, and such
+code added to the tree is less visible than the machine type
+definitions.
+
+Above all, I'm failing to see why there's a compelling reason
+for virtio_gpu to diverge from our long standing practice of
+adding a named property flag "virtio_scanout_vmstate_fix"
+on the machine class, and then setting it in machine types
+which need it.
+
+
 > +
 >  static const VMStateDescription vmstate_virtio_gpu_scanout = {
 >      .name = "virtio-gpu-one-scanout",
@@ -227,4 +235,13 @@ Why is this not a good fit here?
 >  };
 > -- 
 > 2.41.0.28.gd7d8841f67
+> 
+> 
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 

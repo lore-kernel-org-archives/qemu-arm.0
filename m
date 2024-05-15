@@ -1,179 +1,188 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp770426ejl;
-        Wed, 15 May 2024 09:22:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVncYvSfdnndXdztXriPunImdFnfP3ZIctl6nsNC5w6M8/2advvh9pKwkhANGz0SKMYmQ8oqI9jgAF48i+Dshh4aOg0NIa0
-X-Google-Smtp-Source: AGHT+IH6+iveLH8bKV+IoJsTJ+GiDbQTxnDqcTZjko8cATSoycR6hPcQjlwK06yT0u1yvQMp67m7
-X-Received: by 2002:a25:e20e:0:b0:dc6:ddfc:1736 with SMTP id 3f1490d57ef6-dee4f32a723mr14562683276.17.1715790135138;
-        Wed, 15 May 2024 09:22:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715790135; cv=none;
+Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp777116ejl;
+        Wed, 15 May 2024 09:32:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX/ZmAa/+iPySqjnhika+mifFNt8uW+UH3l+MqFkLftNxjN70rxsSm/DR00GxzPfp4/1pFjTN5ySKklmqLixwE5ygtguIdH
+X-Google-Smtp-Source: AGHT+IFXfZE6HSO66vGO8XyfA/VD6fd2+0S18z87F14y7cjubddXICH0bH1KNgxibsKyFwXRR0uO
+X-Received: by 2002:a05:620a:25ce:b0:790:c91a:73ae with SMTP id af79cd13be357-792bbdc4dffmr3241903585a.2.1715790728900;
+        Wed, 15 May 2024 09:32:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715790728; cv=none;
         d=google.com; s=arc-20160816;
-        b=dmZ0BLDVJA4byiui0JWm1ujBZwc3dzIAbfBx85kfYyExYYtln3urai2P4g2sMVlb8I
-         dcLmrZXTsZ6DIsDGUuT/dPxlN4VjyiJ2FhJEUZ3x9Op5Bbdv6zEvv/2m7ZRFL1LDSCLW
-         x9voJglcf4Fkg6uijRvD2GEMzJXHQ+JtjvCAe5Y8EY5b5Honr7CA+gbzb4LgEV+vBhox
-         leo7jkFccvAcz+tA4fPTn8PrFMmUdGD5tNLrMqQI/MmNymQ1nKBuC8nePxfcKryHXex+
-         eOgbNmc6zEds9G+ATFfOIiYkaQQO2TaNyI/XOyMv/OZLGRK9VqvpDKa72s7IQBxcvQfc
-         WF3g==
+        b=EESGCy0nBL+WqAcgrBgTAHL8B3peyJ6pWUHnI92EVGk8/IWCWVT0cUGhYjZ7S4bbRD
+         F6sLEGx84eyCxhYsUXgNKcyF8BwrhOJ1dW016g0gnYzeDu8+5dAO49+i45Ovao/bZCdi
+         47JDvcczSAlBt5beDiw/VPr1ai3uOnjxJjtUOFEWsysjd2ysbyioFUmSmyD8k4PJthCk
+         lXKfndRarrFI2rn9Ptfp6TaPffXJ33Kdq1CsrRg7rXRSSVI3GTnRc+SNHTFrGo/lsbRZ
+         IinYjkcl4ALpNvwAQV2Hv0iksPiRu+ZL2Dv+NVZVp6j3RNQcljDZYmQt/hBJen/RGLBZ
+         QA8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=nmkTWaisy4R2Mu7NUhC46zzhrGGene3P5HaV6fxWV04=;
-        fh=/uKE6QiKKM35cOFAAq5elCEuHK69ydv6F6oZ+yfkDHQ=;
-        b=Flb+OqvRKDG3J2qf5s2LSz1XidO+Je23Y+laNvIqCWthtOxgMb5qjUByzazmx9qLvi
-         9pnNK6kojJWCp9VNo89iYvKE+xDoUCiOjmB81QppTmrDAARRFZiACCYoIFYGeW3u8YjZ
-         L41Y6xl0ja879OxiwHER7e5qX95FO+1Zpe+Nl0X943w4q9cG26w5FvUcy2VyJ2Yu6SQz
-         ZLJM783MT2qfta5yP7w1kAhTpPxjwlu2h2LTP3hT2opugHHrC9YCz9p20KuEeN/ThhoX
-         AC28oXB53V3TOYlF7Vu1cA3pknRGQnN4AN4SNGmmL9dyg5sZDt3kowYWMKpxQgLojlzD
-         GsRw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=tKz9jTX0SjVIbKmKK2PGDRuQtBFnZep0+IXsw1Ugmh0=;
+        fh=W9o1F9ICqf7cemFN029ptAaEuHYQ7tLGFgZyN2CF/BQ=;
+        b=YKyZA0hsvUhEkt5pwLEqDTIquPxczIy7UTUgOOGPkca5y/M5mySbThAjONhmHblGpO
+         6w65hTZpQzqw25BmY5vXCUuUYiZJnGf5sE9sK2aEs8NhmScjlR3CkvhnvmZz/4UTCRRJ
+         OKCPLpKAqJI8LX68PuVJXuoMHtVfcXnh+/EHX2PHRC81Xzv/FIwG1gdGNGuVt/jWthzH
+         LX9Dubr8zaRzgI1/NZRfjTym7/Qgb+ka5BpFkpfcVmMeGASqtmmQGSEjESx+GviKWb5U
+         lDyqtxMMYeX7cbf9m/KmHUc68HlviKCmmj/MmVkv3f81hgH1JbQLB1jzjxeg9YcNXaKh
+         220w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Iow/CFwi";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hjn17l5G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43df566f3aesi140510771cf.381.2024.05.15.09.22.14
+        by mx.google.com with ESMTPS id af79cd13be357-792bf33bac3si1439922185a.506.2024.05.15.09.32.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 May 2024 09:22:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 May 2024 09:32:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Iow/CFwi";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hjn17l5G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1s7HOL-0004CL-5q; Wed, 15 May 2024 12:22:09 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s7HXu-00015C-6d; Wed, 15 May 2024 12:32:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s7HOJ-0004Bv-O1
- for qemu-devel@nongnu.org; Wed, 15 May 2024 12:22:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1s7HXs-00014s-K2
+ for qemu-arm@nongnu.org; Wed, 15 May 2024 12:32:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s7HOG-0007jd-De
- for qemu-devel@nongnu.org; Wed, 15 May 2024 12:22:07 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1s7HXq-0003ED-Ut
+ for qemu-arm@nongnu.org; Wed, 15 May 2024 12:32:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1715790123;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1715790718;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nmkTWaisy4R2Mu7NUhC46zzhrGGene3P5HaV6fxWV04=;
- b=Iow/CFwiw26ZwFYGM7AUYv+EzfTmDHtu2sRU3CUNZ7PppQ+U6BufPu/hGh8ZsyQDz7OBDG
- RNdVfV02eYmG8p80vv32ZjiCUuwg38RPTOa/d8f3UG8/C/ExRWMiLPAbxAL8BhALilQ9cu
- WdZ6ZLl4SqSjCVUWv5HwvjimX5WQDYY=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-303-2Khz-HrLOcK4JNNGKh6JCg-1; Wed,
- 15 May 2024 12:22:00 -0400
-X-MC-Unique: 2Khz-HrLOcK4JNNGKh6JCg-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 574FD3803908;
- Wed, 15 May 2024 16:21:59 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.55])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0A0D3491032;
- Wed, 15 May 2024 16:21:55 +0000 (UTC)
-Date: Wed, 15 May 2024 17:21:53 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Xu <peterx@redhat.com>
+ bh=tKz9jTX0SjVIbKmKK2PGDRuQtBFnZep0+IXsw1Ugmh0=;
+ b=hjn17l5G0XKruwg/Oj2p+HMNYZL6jT8I8kUoxbAiclI+738ko08iE/Cb3+175G2Wpeto2O
+ F3ffgAMefQ8nAk4ag9Schdiwh44ju4mNGvwbcXkdauZdr6WW/dKkAJUHzX+jmQUUEAbZkv
+ 9Pid3KhMytDeAy5byO1N60EVqPrGASg=
+Received: from mail-pf1-f199.google.com (mail-pf1-f199.google.com
+ [209.85.210.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-672-fiy21kSFMceKqE9NS0oQ9w-1; Wed, 15 May 2024 12:31:46 -0400
+X-MC-Unique: fiy21kSFMceKqE9NS0oQ9w-1
+Received: by mail-pf1-f199.google.com with SMTP id
+ d2e1a72fcca58-6f05561060aso51654b3a.3
+ for <qemu-arm@nongnu.org>; Wed, 15 May 2024 09:31:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1715790705; x=1716395505;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=tKz9jTX0SjVIbKmKK2PGDRuQtBFnZep0+IXsw1Ugmh0=;
+ b=wqggL+Gucak20/bj79KBMvWlLk+xzjVxsmUoGwqbl8NDHJxUo/prpUT+T5VhAHGinX
+ cTRSQJjrkHHbmsj53tMk00V+Kqwspx2J35qQnYHpZggBPd4nVEJGjZ+vRXbckmgH4RE8
+ ottk+ERX27Aqh0tjE4oAu3rpsoyYg0/xFeZa2e+czLdPXiFSKdoXGWhnO4vclWlR2gzI
+ jfSQNNw255UJCX89pIwj2l7a4c1XCUrpUF9Oh0q+D31lKm26T7NqKWzOlC5gCz8dcGAr
+ Je826s0sg384n+agUlvXdIxFaCp78xzJ7aMOvr2MQzxr5ht2vj+GfyMxswQNLBemedOz
+ hIgg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUGn5d68ICDjoHPRMMyELAaernc6fLHhVLD7qFVcosdzEh/3LYszekG5W18WV6pi03LMHRHp6NkExyDANGHO0FBI5SO
+X-Gm-Message-State: AOJu0YzWTSgjp+s2C0W5cvfRi7GcCJKx2MzhNgU4u8/zOrCBSUzQnGJa
+ +LRId1Lt41Bo2gaXHrST8wHRyGDQIJMClldxCK9/GYKiY4XXFqpD9wUnixEMSWSWjKRSn7qN1Ct
+ pyttDAiUPBhQc8YeJsEjOvuHb0tJMswv0Ced9osVyRt9zdlsjmg==
+X-Received: by 2002:a05:6a21:7896:b0:1ae:42c8:4f69 with SMTP id
+ adf61e73a8af0-1afddf12a2cmr19760296637.0.1715790705340; 
+ Wed, 15 May 2024 09:31:45 -0700 (PDT)
+X-Received: by 2002:a05:6a21:7896:b0:1ae:42c8:4f69 with SMTP id
+ adf61e73a8af0-1afddf12a2cmr19760255637.0.1715790704735; 
+ Wed, 15 May 2024 09:31:44 -0700 (PDT)
+Received: from x1n ([50.204.89.32]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-6f679902e57sm824350b3a.110.2024.05.15.09.31.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 15 May 2024 09:31:44 -0700 (PDT)
+Date: Wed, 15 May 2024 10:31:32 -0600
+From: Peter Xu <peterx@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
 Cc: marcandre.lureau@redhat.com, qemu-devel@nongnu.org,
  Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Fiona Ebner <f.ebner@proxmox.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Fabiano Rosas <farosas@suse.de>, Gerd Hoffmann <kraxel@redhat.com>,
  Yanan Wang <wangyanan55@huawei.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v3 0/5] Fix "virtio-gpu: fix scanout migration post-load"
-Message-ID: <ZkThIRggOlig2tv0@redhat.com>
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: Re: [PATCH v3 5/5] virtio-gpu: fix v2 migration
+Message-ID: <ZkTjZCTwIbkZIVZd@x1n>
 References: <20240515141557.1277999-1-marcandre.lureau@redhat.com>
- <ZkTdwyxWcTTMwtAp@x1n>
+ <20240515141557.1277999-6-marcandre.lureau@redhat.com>
+ <20240515120104-mutt-send-email-mst@kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <20240515120104-mutt-send-email-mst@kernel.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZkTdwyxWcTTMwtAp@x1n>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.935,
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.935,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: U3vSZX6YKrui
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: nEQGCbYPfMqb
 
-On Wed, May 15, 2024 at 10:07:31AM -0600, Peter Xu wrote:
-> On Wed, May 15, 2024 at 06:15:51PM +0400, marcandre.lureau@redhat.com wrote:
+On Wed, May 15, 2024 at 12:02:49PM -0400, Michael S. Tsirkin wrote:
+> On Wed, May 15, 2024 at 06:15:56PM +0400, marcandre.lureau@redhat.com wrote:
 > > From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > > 
-> > Hi,
+> > Commit dfcf74fa ("virtio-gpu: fix scanout migration post-load") broke
+> > forward/backward version migration. Versioning of nested VMSD structures
+> > is not straightforward, as the wire format doesn't have nested
+> > structures versions.
 > > 
-> > The aforementioned patch breaks virtio-gpu device migrations for versions
-> > pre-9.0/9.0, both forwards and backwards. Versioning of `VMS_STRUCT` is more
-> > complex than it may initially appear, as evidenced in the problematic commit
-> > dfcf74fa68c ("virtio-gpu: fix scanout migration post-load").
+> > Use the previously introduced check_machine_version() function as a
+> > field test to ensure proper saving/loading based on the machine version.
+> > The VMSD.version is irrelevant now.
 > > 
-> > v2:
-> >  - use a manual version field test (instead of the more complex struct variant)
-> > 
-> > v3:
-> >  - introduce machine_check_version()
-> >  - drop the VMSD version, and use machine version field test
+> > Fixes: dfcf74fa ("virtio-gpu: fix scanout migration post-load")
+> > Suggested-by: Peter Xu <peterx@redhat.com>
+> > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
-> Thanks for trying this out already.
+> I don't get it. Our standard way to do it is:
+> - add a property (begin name with x- so we don't commit to an API)
+> - set from compat machinery
+> - test property value in VMSTATE macros
 > 
-> Last time I mentioned this may for the long term because I remember Dan and
-> Thomas were trying to work on some machine deprecation work, and maybe such
-> things may collapse with that work (and perhaps easier with that work
-> landed, too?).  Just to copy them both here so we know where we are now, as
-> I didn't follow that discussion.  IOW, patch 3/4 may need separate review
-> from outside migration..
+> Big advantage is, it works well with any downstreams
+> which pick any properties they like.
+> Why is this not a good fit here?
 
-You'll be refering to my series here:
+I think it'll simplify upstream to avoid introducing one new field + one
+new property for each of such protocol change, which fundamentally are the
+same thing.  But it's indeed a good point that such helper can slightly
+complicate the backport a bit.. I assume a global replacement of versions
+over the helper will be needed after downstream settles on how to map
+downstream MCs to upstream's.
 
-  https://lists.nongnu.org/archive/html/qemu-devel/2024-05/msg00084.html
+Thanks,
 
-Note that series very delibrately did *not* expose the version numbers
-as accessible fields to code. The version number info is only accessible
-within the machine type macros, and once the macros are expanded, the
-version digits remains hidden within the opaque machine type name strings,
-and/or method names.
-
-With regards,
-Daniel
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Peter Xu
 

@@ -1,113 +1,130 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp807260ejl;
-        Wed, 15 May 2024 10:16:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWK6gdxm6E/fjCB0vDnHbqeANNb219FCT/clfS6F8+jf8fpc0fvMLXmEuTI8SHyGsrP6ZJqprUFBejksbsORKPK5hNxbU0e
-X-Google-Smtp-Source: AGHT+IEglQ2q5npqnHb59XiMIVYU9nnkU9Df43dQpz6CpGDXGO8gsibmD1DrZbC9Y3j2nXVaCnYf
-X-Received: by 2002:ac8:5790:0:b0:43d:f527:a755 with SMTP id d75a77b69052e-43dfcca5260mr264736571cf.13.1715793392477;
-        Wed, 15 May 2024 10:16:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715793392; cv=none;
+Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp964015ejl;
+        Wed, 15 May 2024 15:02:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW7X84qDVGhNm9pyotvejaS9UsBgLvjfWWI66kkvgDh1RAmFHeSaojdEGZDjbI6myOXH4kAlBJNBqRqdl82HH5bbBk+8uDj
+X-Google-Smtp-Source: AGHT+IFUC/9shDkrMA/SM32mURBxwEpaYqgmRhb42uU/x+5GraajvN7UEdtwoMb8q34JfWwQrkv7
+X-Received: by 2002:a05:620a:4ad2:b0:792:fe50:33af with SMTP id af79cd13be357-792fe503626mr225650085a.63.1715810550463;
+        Wed, 15 May 2024 15:02:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715810550; cv=none;
         d=google.com; s=arc-20160816;
-        b=hgGhNDdzdln0ua9uUElRHyzLIG73AvGCAkBVQDyjOPNAPIzbeNVV6wGqvP8bVtx74k
-         KuyfiGU+Q+RqteK+BIicBikp14S2XtYIfdptRJJgAZ+zuIRkdjKtvO+lcfIMz6hoVgb+
-         UZ38Vm2+P0u2m+MJFCEP7swzxIBF3Zo6yKBt2TcSxMfAwhKP7kTijlWgO1C0zEXhw/CH
-         neVrwUtwI2+x7IDVvcH80Lz0je5HBUkDcrkUwUJQXf8PM7XPjW9E794JvWSxth0nnMq7
-         4q9AIQK7EMZwVOTJ1JIKtRHMEboVgh6AKKIZiEFsXV7lUf74x3/6QPlUQo3W64C04ExZ
-         JIxg==
+        b=Knk3nhI88cO9/yNniEkjkDT2zU42mN+St0niXoirx2iZ5dPUX3gP9k1qlgDPn/Le6i
+         FmBGOA583++KDwOPJdZDGIH1w23uBgzAUuDshV0/MTNFe+3tZ3GNA6FeHKN4zpkMch9h
+         5vgx32/m0JL2lUdCtJ6HGaUbnuOaqtoAzA0NEh0QXRhQpBOIAhruHKo2jJ1IF73dY6Zj
+         rlmt7OHSurK4opCxR+tQ2RAqQb1hG1o58b2QvBF0F2je3YcT6p+Drf9dFPyO32KUM5lJ
+         XgR9FNZBtq8qLaMOa4al4NVxZ0hdU0v+UzBHgNvH+zH4c4Bxdz5rd3zQlbz3rZcNrFQ5
+         s3Iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=ylikw8ccb4mPv+LeyJnZKvuPdfRqWuZV3CXPrn9Nvx0=;
-        fh=GuZCKpfr+VlDDGZOUgDiBHAPPxrV+uY3bO8yTNq0FbE=;
-        b=WaHiGhb1NXvpVr74Aq6AM9K1JQwE6sPPz5I9UDeHTmAvF1NA5yQ9PxaG4bC9QOGNkS
-         riyJM5m87kkAvwaDBcT6Fq6Qd3LjIeGF97lzeZ0W4P6HEIBzVhZU2CojWVQGrrFLUUhS
-         w8cxENVjMVgSeNedraW+TP7vnh840rrvP7FqVWX/eTe/diM9NYdAYTeIcUkPaRC8m59D
-         vsvL0SbJONOL2SWC/w18OIZH1ACuFpvGNI9p1JNPQy9tz29JsaWUEZA55z+MaOZVwhV8
-         8hZZiqMDbMPaSgrk3DkqNxx2RYQahHVaYo4XoWZFAMz+gFLkHxG8C1hUyxS7eFIGRRtF
-         CDrw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=xElT5ZYqp5D7rh3ZWiAAfUyWXd6KJ/0bkqeudsbUmic=;
+        fh=gUzTq4tolmFW3Q+fOqmLxnoFbDg61iXA0WxRZYlF3dM=;
+        b=CUol+BEZPWszCDodBeF+2x7FuRjHTI/KUh/wAsLg6W9T1rqfV30oecq+8Li1kj18Lo
+         TyfSu8/VXsak+DNbXuoAVkN7NY+UHRN7qhScdvnnSrkbIn9XiSZScExyswzvYTjaiwVj
+         5yQMg29K68/3JDfYqrQazNDTnSLwk8RLTBR36fDG6zoiMhqZP1OozdjyWlPGQlRJnCEF
+         BuZfHLM3vIU/NdwSgzAEj1lH13QLGnHXLHQm5DQtIFsulNjlXNxlo6MJNkk+4ooYHDnx
+         qmaASi89PdDcLnxPUX47P+Pk0pZiVVrTEussG9Qa3KomaJB8quN5ihfdZYinWvVz3a8R
+         DLeg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FBuM7VC9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IkImwTG5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43e0aa65301si97959381cf.171.2024.05.15.10.16.32
+        by mx.google.com with ESMTPS id af79cd13be357-792bf2772a1si1491416485a.58.2024.05.15.15.02.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 May 2024 10:16:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 May 2024 15:02:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FBuM7VC9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IkImwTG5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1s7IEj-0003Dp-UK; Wed, 15 May 2024 13:16:18 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s7Mha-0006zZ-0M; Wed, 15 May 2024 18:02:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s7IEa-00033s-FE
- for qemu-devel@nongnu.org; Wed, 15 May 2024 13:16:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1s7MhY-0006zR-P7
+ for qemu-arm@nongnu.org; Wed, 15 May 2024 18:02:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s7IEY-0004Yi-KO
- for qemu-devel@nongnu.org; Wed, 15 May 2024 13:16:08 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1s7MhW-0007pm-7G
+ for qemu-arm@nongnu.org; Wed, 15 May 2024 18:02:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1715793365;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1715810536;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ylikw8ccb4mPv+LeyJnZKvuPdfRqWuZV3CXPrn9Nvx0=;
- b=FBuM7VC9cS+HZ/flSeLj8YjzrH6v6jL6oDkrdqtaNmiG6awAqu1twTSeIWZswh+9BdeMkA
- Wy6qPzpmeOlIwfb1bQ4pi1zm165qu44wIoGtgL6Vqq/KQRgiLZL2n8Gud3i9eyz0gUi75d
- 58cpddOgYB01iEzVd1QAPaaOXso3XNA=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-593-K__IdceSMHyvBdS5wPCoRA-1; Wed,
- 15 May 2024 13:15:54 -0400
-X-MC-Unique: K__IdceSMHyvBdS5wPCoRA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B35C929ABA13;
- Wed, 15 May 2024 17:15:53 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.55])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A8F01103A3AF;
- Wed, 15 May 2024 17:15:50 +0000 (UTC)
-Date: Wed, 15 May 2024 18:15:48 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+ bh=xElT5ZYqp5D7rh3ZWiAAfUyWXd6KJ/0bkqeudsbUmic=;
+ b=IkImwTG5yUs7BOtJAqGGqKm2u9vhJqfjyWJjh7sbGqh53o3PbJOAzL3MxlWUtQ5I9BoYZE
+ ngH5NdgBGwFhccar0ARDVC0C/lryVU6+xnxueHqV4sKP82oCQbCs0jyR03aukGLdgPOapY
+ zNuSWkJpDU/uasl22hWbNHMSIvPrx0E=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-354-szJL2G12NLSR8bEtI2_vzQ-1; Wed, 15 May 2024 18:02:14 -0400
+X-MC-Unique: szJL2G12NLSR8bEtI2_vzQ-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-41fe6df6ef3so29032925e9.2
+ for <qemu-arm@nongnu.org>; Wed, 15 May 2024 15:02:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1715810533; x=1716415333;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xElT5ZYqp5D7rh3ZWiAAfUyWXd6KJ/0bkqeudsbUmic=;
+ b=F62ZcNNXIMPX7xGAISDvgZB+eqzHfNVRUwg7Pya12MpaHcxraCYi+sADQeM+pE6zY1
+ vknVgzrgF63tI4Nz2PfXBb2rLXBTLE7adKAFojqzKtEfK+XcKt0hUUa8/k7NjMtr/dLY
+ 1n6/H6B2QgtnHoitdJSPueNvIKyTTKLl9y0Byn9m+naoRUgetBaWVe3Sipz53uyqE7As
+ X7DSN4idTSDLozgPOsC7vNzFRIIzZnfcVFbdQyiv4luw6oMjyGxGXy6r/o1MpV1y7Plw
+ xScDDMKHIfh3v4bSeOxJYHFz0ANlw90lGhmbZhwajFT6kZwNzRWjuFS4hYc3cGwSW8+P
+ Ga1g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXDJKR/UrxAeCTAhoPii5/DymmoUVC0P3QGzQ9In7zgosp5t2KrxOin4jEJYrl9oUJBFNxkAKMdkFDqr7CEmMsQ2aMt
+X-Gm-Message-State: AOJu0Yx1Qk2z0IeMB4V17btggtuRbe4n4GJZam94N4qFUmzoEn3Y2Hbt
+ nC0QA1PDJEu1PEqGV3hoAjD+GhbkrA1VjbMRcnAtCbf8nkscI1PGRTdK9sWCMCaxqBwaSo/WQk9
+ ND0KC5jnOFSotMag4GUCl59gCT5H7fBE8dfvR3MRgFjv2SmoXtQ==
+X-Received: by 2002:a05:600c:444c:b0:41c:83aa:18b7 with SMTP id
+ 5b1f17b1804b1-41fead6d1c8mr117537305e9.33.1715810533171; 
+ Wed, 15 May 2024 15:02:13 -0700 (PDT)
+X-Received: by 2002:a05:600c:444c:b0:41c:83aa:18b7 with SMTP id
+ 5b1f17b1804b1-41fead6d1c8mr117537055e9.33.1715810532546; 
+ Wed, 15 May 2024 15:02:12 -0700 (PDT)
+Received: from redhat.com ([2a0d:6fc7:443:357d:1f98:7ef8:1117:f7bb])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-41fccbe8f9bsm248654525e9.6.2024.05.15.15.02.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 15 May 2024 15:02:11 -0700 (PDT)
+Date: Wed, 15 May 2024 18:02:07 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
 To: Peter Xu <peterx@redhat.com>
 Cc: marcandre.lureau@redhat.com, qemu-devel@nongnu.org,
  Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Fiona Ebner <f.ebner@proxmox.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Fabiano Rosas <farosas@suse.de>, Gerd Hoffmann <kraxel@redhat.com>,
  Yanan Wang <wangyanan55@huawei.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
 Subject: Re: [PATCH v3 5/5] virtio-gpu: fix v2 migration
-Message-ID: <ZkTtxLcgoZlzWH8A@redhat.com>
+Message-ID: <20240515175905-mutt-send-email-mst@kernel.org>
 References: <20240515141557.1277999-1-marcandre.lureau@redhat.com>
  <20240515141557.1277999-6-marcandre.lureau@redhat.com>
- <ZkTc4Ott5M15k55R@redhat.com> <ZkTq3xBP-0UiLV2X@x1n>
+ <20240515120104-mutt-send-email-mst@kernel.org>
+ <ZkTjZCTwIbkZIVZd@x1n>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <ZkTjZCTwIbkZIVZd@x1n>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZkTq3xBP-0UiLV2X@x1n>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -117,67 +134,63 @@ X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.935,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rxiiXxFzm+2W
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vLy3vjaxYaH+
 
-On Wed, May 15, 2024 at 11:03:27AM -0600, Peter Xu wrote:
-> On Wed, May 15, 2024 at 05:03:44PM +0100, Daniel P. BerrangÃ© wrote:
-> > Above all, I'm failing to see why there's a compelling reason
-> > for virtio_gpu to diverge from our long standing practice of
-> > adding a named property flag "virtio_scanout_vmstate_fix"
-> > on the machine class, and then setting it in machine types
-> > which need it.
+On Wed, May 15, 2024 at 10:31:32AM -0600, Peter Xu wrote:
+> On Wed, May 15, 2024 at 12:02:49PM -0400, Michael S. Tsirkin wrote:
+> > On Wed, May 15, 2024 at 06:15:56PM +0400, marcandre.lureau@redhat.com wrote:
+> > > From: Marc-André Lureau <marcandre.lureau@redhat.com>
+> > > 
+> > > Commit dfcf74fa ("virtio-gpu: fix scanout migration post-load") broke
+> > > forward/backward version migration. Versioning of nested VMSD structures
+> > > is not straightforward, as the wire format doesn't have nested
+> > > structures versions.
+> > > 
+> > > Use the previously introduced check_machine_version() function as a
+> > > field test to ensure proper saving/loading based on the machine version.
+> > > The VMSD.version is irrelevant now.
+> > > 
+> > > Fixes: dfcf74fa ("virtio-gpu: fix scanout migration post-load")
+> > > Suggested-by: Peter Xu <peterx@redhat.com>
+> > > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> > 
+> > I don't get it. Our standard way to do it is:
+> > - add a property (begin name with x- so we don't commit to an API)
+> > - set from compat machinery
+> > - test property value in VMSTATE macros
+> > 
+> > Big advantage is, it works well with any downstreams
+> > which pick any properties they like.
+> > Why is this not a good fit here?
 > 
-> The reason to introduce that is definitely avoid introducing fields /
-> properties in similar cases in which case all the fields may represent the
-> same thing ("return true if MC is older than xxx version").  Especially
-> when such change is not bound to a new feature so in which case it won't
-> make sense to allow user to even control that propoerty, even if we
-> exported this "x-virtio-scanout-fix" property, but now we must export it
-> because compat fields require it.
+> I think it'll simplify upstream to avoid introducing one new field + one
+> new property for each of such protocol change, which fundamentally are the
+> same thing.  But it's indeed a good point that such helper can slightly
+> complicate the backport a bit.. I assume a global replacement of versions
+> over the helper will be needed after downstream settles on how to map
+> downstream MCs to upstream's.
 > 
-> However I think agree that having upstream specific MC versions in VMSD
-> checks is kind of unwanted.  I think the major problem is we don't have
-> that extra machine type abstract where we can have simply a number showing
-> the release of QEMU, then we can map that number to whatever
-> upstream/downstream machine types.  E.g.:
-> 
->   Release No.         Upstream version       Downstream version
->   50                  9.0                    Y.0
->   51                  9.1
->   52                  9.2                    Y.1
->   ...
+> Thanks,
 
-Downstream versions do not map cleanly to individual upstream versions
-across the whole code base. If we have two distinct features in upstream
-version X, each of them may map to a different downstream release. 
+There's nothing special about this specific code. If we want to rework
+how machine compat is handled we can do it, but I wouldn't start with
+this virtio gpu bug.
 
-This can happen when downstream skips one or more upstream releases.
-One feature from the skipped release might be backported to an earlier
-downstream release, while other feature might not arrive downstream
-until they later rebase. Version based checks are an inherantly
-undesirable idea for a situation where there is any backporting taking
-place, whether its machine type versions or something else. Named feature
-/ flag based checks are always the way to go.
+It's a big if though, I don't like how this patch works at all.
 
-
-With regards,
-Daniel
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+MST
 

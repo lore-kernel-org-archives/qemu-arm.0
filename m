@@ -1,116 +1,116 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp683827ejl;
-        Wed, 15 May 2024 07:18:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVvzJKY1gx7eu/7RsGb9W7Rtp1ncHYH0jI9BjaQcun5m7PE82Yz2sWhVTW1IcZzVUcTx8ywGiYttoS52B1dk3m50r/Yjx8Z
-X-Google-Smtp-Source: AGHT+IEdqDgNl9KRo2CYiya7vn33Ic0TuSPR++/WRLP1kBghw0LSb1daoAGhRlj69kuHFgdODhzd
-X-Received: by 2002:a05:622a:1453:b0:43d:eaa0:f2ba with SMTP id d75a77b69052e-43dfcc86f59mr245281251cf.12.1715782686325;
-        Wed, 15 May 2024 07:18:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715782686; cv=none;
+Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp708496ejl;
+        Wed, 15 May 2024 07:59:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV4HOrgkMxgzy9Ve17GfmPsx8/GpdTOX3fGVAsyJ/wqduIriLzpd/kkjal//rUs8Kv3FQ55v9EUdDeCFFKwICw2T9VE/ZwO
+X-Google-Smtp-Source: AGHT+IG9HQ6vz5CHg5q0BNQEAn1KSsFmOFr/Ce5OXOdx4Eaa4v1HfxLcvSUmG46ybNzYuJOoKWwR
+X-Received: by 2002:ac8:7d86:0:b0:43a:3fce:32c2 with SMTP id d75a77b69052e-43debf55b93mr296496971cf.3.1715785173601;
+        Wed, 15 May 2024 07:59:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715785173; cv=none;
         d=google.com; s=arc-20160816;
-        b=keFjUduxBjTqlzBNuySTQA8ourbRhD9RjiueW7sbrz1TVatV016xFRt7fS+F1X7f4c
-         zX9vGrVYzpCkouG/CigUS5tIASvo1hAzlpmeOZEHoj4ut28u2GO8wH21M80PFHmpdrFF
-         eBoEuBAQwVn9BGrCzsbCM9+1vgfumvrjxtsfdVriZ1H7bAzfQjbP++TkYcIfmICSUYbG
-         CwFcsKz09kKz3Oa2k0z0bhWjUUFblfbkUx/tXjhEG2eqRw7RKxOwj8QX3ZJr6aKhHmGr
-         yJM4k09abeNVJfpPB467GpVQvyzTpPRM+2cjIsoiOu/nsgEaQ8PC+3EayVqzXsnpjrgK
-         996w==
+        b=iVbgywDMeDKYegdlBj6sBcQdG8CqJptttmkj0q77K9+U3kS6Tl8l/uKyM9ABvXT0lx
+         Jl+X7LAEN1M7B4F+AP/5n+sobf7WiEq5OsfqzvgnWeYLLiCvYZ+zcVOEOSPeI2qgbtD7
+         6H44Kzt5xM+HF9PIdxtobYtpBMeZfFSyNG3sDuDN118tFDLPwjf6iYL2CB+VuPu09W7H
+         G0QA/g0XZ9kKfQnVt/pl/xFh4MAh6OAjzrMiX1dZxljL12+g71wvdxntNnv9pDDIs2eM
+         hLT4ckLBtX65dB4koU6sbW4VFbKu2irC7C8+211sb6qfATD32PxFu4D5L2mplj9hQmTh
+         SWVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=YVltdMOfJZaoPdko/20Tns7l7mBmkOC/58R9Onag+EY=;
-        fh=dv7M3Vyx/D9iF5hjzj0SFl7wXFXIDctWrq9i0V0YiQI=;
-        b=yWSVvIrpG6CU5/GCGqydWVa3HDBXK3w+osd3eYgaX5O9EnzLp+gO8rou6iCPG0zSE4
-         jRjm7pg2c2MzAXeHPqmwV9PkDFiJCk7jxZ3ity8C1MTu8XvMSWLIjChoINJ8cY5bB+bn
-         w+TOKfkl2Dx7LOIiwIFmKXY7HR25nCbYNYtY/IuQ3uJFyI7Of10XhNvRMHJI0zQpVvIb
-         2FdGaQYGiT0v56gsB6suqohXl/zxK/zCHiu3MndyzqM7OFFLD1lX/fOI+0DhY55NMyaw
-         bmTG1D8DCxo+NZmgBug/rxuHO4nBL0zn1tHolV6cqo0cgAzmzS7C2iBppzqLGWiWCEf7
-         uUqA==;
+        bh=zWr5b7ogG/rKIVgZ3ajQkJPbaaMpVh+KqxIFrCgh+w4=;
+        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
+        b=NVi3Lp7+X0tJaVCWce/xzV18/o2ImTOK0oCETUOh0eZ46AYa3jXq7tarRDq+UbvOrH
+         ebV3UKnD52P+DGEUSzjyROf7kn8/TrssglMGxMuflyHbb+m8l0jBWCxFpJ2yWWWlUL9G
+         5mL3sMbPEP71SqtPiwkyA98Y7jC2C496RO6hKLCWOhqMD74FCfJSN5/tns87O73jy5l/
+         TYwP/PDNpzRQZmkBP3D0TH+AoczONL4h7L24wVYJRORvwfpijAO0BOw4Uz+SRkMHi/T/
+         z60S3vfLVuF4IV9SH7LW7HEUAHimv0i/c+45QS3JEuiquL3QOl1UbkY/b+bxnEZk1P2R
+         Dx8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IeZKdGiH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x1wtNjVb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43df56d048csi137493391cf.639.2024.05.15.07.18.06
+        by mx.google.com with ESMTPS id d75a77b69052e-43df54b56d6si142581521cf.203.2024.05.15.07.59.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 May 2024 07:18:06 -0700 (PDT)
+        Wed, 15 May 2024 07:59:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IeZKdGiH;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x1wtNjVb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s7FRF-0004fx-Dm; Wed, 15 May 2024 10:17:01 -0400
+	id 1s7G6I-0005Hk-0o; Wed, 15 May 2024 10:59:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1s7FR3-0004cA-6n
- for qemu-arm@nongnu.org; Wed, 15 May 2024 10:16:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1s7FQu-0005t9-R5
- for qemu-arm@nongnu.org; Wed, 15 May 2024 10:16:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1715782596;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YVltdMOfJZaoPdko/20Tns7l7mBmkOC/58R9Onag+EY=;
- b=IeZKdGiH3ft80H8J5cpukn7ZTg3aiLBZyNtLg44+khkRztoG+PkFm7a1ythuxkbrC+eDSS
- RG6Gu0wYpqP73v2c4RlmN8XbwJduqL7ggly+BFBfXDDcozb4o4Ep1et/RdyHbJIuYSnup6
- 9INT0EgstfpRkNmwbFKNB2uc+qjUMDY=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-575-eDSWXkZ2PISAXALxevtbKg-1; Wed, 15 May 2024 10:16:22 -0400
-X-MC-Unique: eDSWXkZ2PISAXALxevtbKg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EFA6E8001F7;
- Wed, 15 May 2024 14:16:21 +0000 (UTC)
-Received: from localhost (unknown [10.39.208.9])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 47DBB3C27;
- Wed, 15 May 2024 14:16:19 +0000 (UTC)
-From: marcandre.lureau@redhat.com
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1s7G6G-0005HX-KG
+ for qemu-arm@nongnu.org; Wed, 15 May 2024 10:59:24 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1s7G5x-00077R-Jb
+ for qemu-arm@nongnu.org; Wed, 15 May 2024 10:59:24 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-41fd5dc04f0so44899655e9.0
+ for <qemu-arm@nongnu.org>; Wed, 15 May 2024 07:59:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1715785142; x=1716389942; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=zWr5b7ogG/rKIVgZ3ajQkJPbaaMpVh+KqxIFrCgh+w4=;
+ b=x1wtNjVbvhSf3e2YDLi0sAwqIHh57VwN5E8bJbAfwJgt8rapDxMKbN52PXT9wSNpVR
+ THIcP706bp0kXr0o+UlM1/kIxjH5f17IDZGvcaOC9AWJzjVe6K4BeZbuR8D1dJ8fR1aI
+ gbP4uVRO2lWc1b+jzAeOd2y1hjXRv0QX6iuHWFy4TOe0478VEgzsa6baX56gfugFvfqj
+ Zp7nc4dyeJqQ0aT6P2EiguzRcsNaKXKoWD5AMGOTnU8emwUQL/iHLJ3AOyguQ1ZVO53L
+ z6w7YqxQ1stl4riFIRyWB/KBx+M9UpzDYEOGd1ifTlUalTaDNBffOSY/IwSgaPdhQ5BH
+ WYjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1715785142; x=1716389942;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=zWr5b7ogG/rKIVgZ3ajQkJPbaaMpVh+KqxIFrCgh+w4=;
+ b=qgpd99WHnjWiWy0KWCTqImnrDYXtPYvehe+QsrI1+Q5mqpupCXHKDxBT6PR0EfexyL
+ 8DALPoCAWO2E4nBoy7l9HT3BipuSOJDy6uYZwybBhkjuwcc0y1TXMrqnfqEFvRzCgRm7
+ 0beiS645Do1oZlf6fk0/0gej5rzrZpjHairfIR3tid8oVujDZK5bm+Iz4sFinhZnu4hF
+ kcyemOk9A1PjXFDGRgAUggtDzBTFKEc1SBaLyWMzUI5bg3/4VseSJnDtUz1E21FBPXr6
+ umF5ZtNzKJ7IjxxltrS4AZ2ooINcmpeYoE/caKsJR6uHKdq8RWdCvwlE6QcOswGU0BEN
+ c9+Q==
+X-Gm-Message-State: AOJu0YxQtz+567wI4yt61LVGz8d9aOF3MGxP/ens65caWsGtPjoHBfBf
+ 0+CAQNQY9KIsyg3FbKXsTw+tRAUqvwcn09h/0st3HjLAehC2Dm+vQTutSKlWmsbfQ6UFRUIcLxa
+ DoJw=
+X-Received: by 2002:a05:600c:4f0c:b0:420:1f0f:fe19 with SMTP id
+ 5b1f17b1804b1-4201f0fff56mr61846545e9.13.1715785142301; 
+ Wed, 15 May 2024 07:59:02 -0700 (PDT)
+Received: from stoup.. ([149.14.240.163]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-41f88111033sm272134645e9.34.2024.05.15.07.59.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 15 May 2024 07:59:02 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Fiona Ebner <f.ebner@proxmox.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
- Gerd Hoffmann <kraxel@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v3 4/5] Set major/minor for PC and arm machines
-Date: Wed, 15 May 2024 18:15:55 +0400
-Message-ID: <20240515141557.1277999-5-marcandre.lureau@redhat.com>
-In-Reply-To: <20240515141557.1277999-1-marcandre.lureau@redhat.com>
-References: <20240515141557.1277999-1-marcandre.lureau@redhat.com>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 1/5] tcg: Introduce TCG_TARGET_HAS_tst_vec
+Date: Wed, 15 May 2024 16:58:56 +0200
+Message-Id: <20240515145900.252870-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240515145900.252870-1-richard.henderson@linaro.org>
+References: <20240515145900.252870-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.935,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,668 +125,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wthsLRjlnfYQ
+X-TUID: OesqccBHFsJp
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+Prelude to supporting TCG_COND_TST* in vector comparisons.
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/hw/i386/pc.h |  4 ++-
- hw/arm/virt.c        |  2 ++
- hw/i386/pc_piix.c    | 74 ++++++++++++++++++++++----------------------
- hw/i386/pc_q35.c     | 62 ++++++++++++++++++-------------------
- 4 files changed, 73 insertions(+), 69 deletions(-)
+ include/tcg/tcg.h            | 1 +
+ tcg/aarch64/tcg-target.h     | 1 +
+ tcg/arm/tcg-target.h         | 1 +
+ tcg/i386/tcg-target.h        | 1 +
+ tcg/loongarch64/tcg-target.h | 1 +
+ tcg/ppc/tcg-target.h         | 1 +
+ tcg/s390x/tcg-target.h       | 1 +
+ 7 files changed, 7 insertions(+)
 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index e52290916c..fa91bb7603 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -292,12 +292,14 @@ extern const size_t pc_compat_2_1_len;
- extern GlobalProperty pc_compat_2_0[];
- extern const size_t pc_compat_2_0_len;
- 
--#define DEFINE_PC_MACHINE(suffix, namestr, initfn, optsfn) \
-+#define DEFINE_PC_MACHINE(maj, min, suffix, namestr, initfn, optsfn) \
-     static void pc_machine_##suffix##_class_init(ObjectClass *oc, void *data) \
-     { \
-         MachineClass *mc = MACHINE_CLASS(oc); \
-         optsfn(mc); \
-         mc->init = initfn; \
-+        mc->major = maj; \
-+        mc->minor = min; \
-     } \
-     static const TypeInfo pc_machine_type_##suffix = { \
-         .name       = namestr TYPE_MACHINE_SUFFIX, \
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 3c93c0c0a6..7e3a03b39a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -109,6 +109,8 @@ static void arm_virt_compat_set(MachineClass *mc)
-         arm_virt_compat_set(mc); \
-         virt_machine_##major##_##minor##_options(mc); \
-         mc->desc = "QEMU " # major "." # minor " ARM Virtual Machine"; \
-+        mc->ma##jor = major; \
-+        mc->mi##nor = minor; \
-         if (latest) { \
-             mc->alias = "virt"; \
-         } \
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 99efb3c45c..bb6767d8d0 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -477,7 +477,7 @@ static void pc_xen_hvm_init(MachineState *machine)
- }
+diff --git a/include/tcg/tcg.h b/include/tcg/tcg.h
+index 2a1c080bab..21d5884741 100644
+--- a/include/tcg/tcg.h
++++ b/include/tcg/tcg.h
+@@ -155,6 +155,7 @@ typedef uint64_t TCGRegSet;
+ #define TCG_TARGET_HAS_minmax_vec       0
+ #define TCG_TARGET_HAS_bitsel_vec       0
+ #define TCG_TARGET_HAS_cmpsel_vec       0
++#define TCG_TARGET_HAS_tst_vec          0
+ #else
+ #define TCG_TARGET_MAYBE_vec            1
  #endif
- 
--#define DEFINE_I440FX_MACHINE(suffix, name, compatfn, optionfn) \
-+#define DEFINE_I440FX_MACHINE(major, minor, suffix, name, compatfn, optionfn) \
-     static void pc_init_##suffix(MachineState *machine) \
-     { \
-         void (*compat)(MachineState *m) = (compatfn); \
-@@ -486,7 +486,7 @@ static void pc_xen_hvm_init(MachineState *machine)
-         } \
-         pc_init1(machine, TYPE_I440FX_PCI_DEVICE); \
-     } \
--    DEFINE_PC_MACHINE(suffix, name, pc_init_##suffix, optionfn)
-+    DEFINE_PC_MACHINE(major, minor, suffix, name, pc_init_##suffix, optionfn)
- 
- static void pc_i440fx_machine_options(MachineClass *m)
- {
-@@ -521,7 +521,7 @@ static void pc_i440fx_9_1_machine_options(MachineClass *m)
-     m->is_default = true;
- }
- 
--DEFINE_I440FX_MACHINE(v9_1, "pc-i440fx-9.1", NULL,
-+DEFINE_I440FX_MACHINE(9, 1, v9_1, "pc-i440fx-9.1", NULL,
-                       pc_i440fx_9_1_machine_options);
- 
- static void pc_i440fx_9_0_machine_options(MachineClass *m)
-@@ -534,7 +534,7 @@ static void pc_i440fx_9_0_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_9_0, pc_compat_9_0_len);
- }
- 
--DEFINE_I440FX_MACHINE(v9_0, "pc-i440fx-9.0", NULL,
-+DEFINE_I440FX_MACHINE(9, 0, v9_0, "pc-i440fx-9.0", NULL,
-                       pc_i440fx_9_0_machine_options);
- 
- static void pc_i440fx_8_2_machine_options(MachineClass *m)
-@@ -549,7 +549,7 @@ static void pc_i440fx_8_2_machine_options(MachineClass *m)
-     pcmc->default_smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_64;
- }
- 
--DEFINE_I440FX_MACHINE(v8_2, "pc-i440fx-8.2", NULL,
-+DEFINE_I440FX_MACHINE(8, 2, v8_2, "pc-i440fx-8.2", NULL,
-                       pc_i440fx_8_2_machine_options);
- 
- static void pc_i440fx_8_1_machine_options(MachineClass *m)
-@@ -563,7 +563,7 @@ static void pc_i440fx_8_1_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_8_1, pc_compat_8_1_len);
- }
- 
--DEFINE_I440FX_MACHINE(v8_1, "pc-i440fx-8.1", NULL,
-+DEFINE_I440FX_MACHINE(8, 1, v8_1, "pc-i440fx-8.1", NULL,
-                       pc_i440fx_8_1_machine_options);
- 
- static void pc_i440fx_8_0_machine_options(MachineClass *m)
-@@ -578,7 +578,7 @@ static void pc_i440fx_8_0_machine_options(MachineClass *m)
-     pcmc->default_smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_32;
- }
- 
--DEFINE_I440FX_MACHINE(v8_0, "pc-i440fx-8.0", NULL,
-+DEFINE_I440FX_MACHINE(8, 0, v8_0, "pc-i440fx-8.0", NULL,
-                       pc_i440fx_8_0_machine_options);
- 
- static void pc_i440fx_7_2_machine_options(MachineClass *m)
-@@ -588,7 +588,7 @@ static void pc_i440fx_7_2_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
- }
- 
--DEFINE_I440FX_MACHINE(v7_2, "pc-i440fx-7.2", NULL,
-+DEFINE_I440FX_MACHINE(7, 2, v7_2, "pc-i440fx-7.2", NULL,
-                       pc_i440fx_7_2_machine_options);
- 
- static void pc_i440fx_7_1_machine_options(MachineClass *m)
-@@ -598,7 +598,7 @@ static void pc_i440fx_7_1_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_7_1, pc_compat_7_1_len);
- }
- 
--DEFINE_I440FX_MACHINE(v7_1, "pc-i440fx-7.1", NULL,
-+DEFINE_I440FX_MACHINE(7, 1, v7_1, "pc-i440fx-7.1", NULL,
-                       pc_i440fx_7_1_machine_options);
- 
- static void pc_i440fx_7_0_machine_options(MachineClass *m)
-@@ -610,7 +610,7 @@ static void pc_i440fx_7_0_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_7_0, pc_compat_7_0_len);
- }
- 
--DEFINE_I440FX_MACHINE(v7_0, "pc-i440fx-7.0", NULL,
-+DEFINE_I440FX_MACHINE(7, 0, v7_0, "pc-i440fx-7.0", NULL,
-                       pc_i440fx_7_0_machine_options);
- 
- static void pc_i440fx_6_2_machine_options(MachineClass *m)
-@@ -620,7 +620,7 @@ static void pc_i440fx_6_2_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_6_2, pc_compat_6_2_len);
- }
- 
--DEFINE_I440FX_MACHINE(v6_2, "pc-i440fx-6.2", NULL,
-+DEFINE_I440FX_MACHINE(6, 2, v6_2, "pc-i440fx-6.2", NULL,
-                       pc_i440fx_6_2_machine_options);
- 
- static void pc_i440fx_6_1_machine_options(MachineClass *m)
-@@ -631,7 +631,7 @@ static void pc_i440fx_6_1_machine_options(MachineClass *m)
-     m->smp_props.prefer_sockets = true;
- }
- 
--DEFINE_I440FX_MACHINE(v6_1, "pc-i440fx-6.1", NULL,
-+DEFINE_I440FX_MACHINE(6, 1, v6_1, "pc-i440fx-6.1", NULL,
-                       pc_i440fx_6_1_machine_options);
- 
- static void pc_i440fx_6_0_machine_options(MachineClass *m)
-@@ -641,7 +641,7 @@ static void pc_i440fx_6_0_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_6_0, pc_compat_6_0_len);
- }
- 
--DEFINE_I440FX_MACHINE(v6_0, "pc-i440fx-6.0", NULL,
-+DEFINE_I440FX_MACHINE(6, 0, v6_0, "pc-i440fx-6.0", NULL,
-                       pc_i440fx_6_0_machine_options);
- 
- static void pc_i440fx_5_2_machine_options(MachineClass *m)
-@@ -651,7 +651,7 @@ static void pc_i440fx_5_2_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_5_2, pc_compat_5_2_len);
- }
- 
--DEFINE_I440FX_MACHINE(v5_2, "pc-i440fx-5.2", NULL,
-+DEFINE_I440FX_MACHINE(5, 2, v5_2, "pc-i440fx-5.2", NULL,
-                       pc_i440fx_5_2_machine_options);
- 
- static void pc_i440fx_5_1_machine_options(MachineClass *m)
-@@ -665,7 +665,7 @@ static void pc_i440fx_5_1_machine_options(MachineClass *m)
-     pcmc->pci_root_uid = 1;
- }
- 
--DEFINE_I440FX_MACHINE(v5_1, "pc-i440fx-5.1", NULL,
-+DEFINE_I440FX_MACHINE(5, 1, v5_1, "pc-i440fx-5.1", NULL,
-                       pc_i440fx_5_1_machine_options);
- 
- static void pc_i440fx_5_0_machine_options(MachineClass *m)
-@@ -677,7 +677,7 @@ static void pc_i440fx_5_0_machine_options(MachineClass *m)
-     m->auto_enable_numa_with_memdev = false;
- }
- 
--DEFINE_I440FX_MACHINE(v5_0, "pc-i440fx-5.0", NULL,
-+DEFINE_I440FX_MACHINE(5, 0, v5_0, "pc-i440fx-5.0", NULL,
-                       pc_i440fx_5_0_machine_options);
- 
- static void pc_i440fx_4_2_machine_options(MachineClass *m)
-@@ -687,7 +687,7 @@ static void pc_i440fx_4_2_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
- }
- 
--DEFINE_I440FX_MACHINE(v4_2, "pc-i440fx-4.2", NULL,
-+DEFINE_I440FX_MACHINE(4, 2, v4_2, "pc-i440fx-4.2", NULL,
-                       pc_i440fx_4_2_machine_options);
- 
- static void pc_i440fx_4_1_machine_options(MachineClass *m)
-@@ -697,7 +697,7 @@ static void pc_i440fx_4_1_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_4_1, pc_compat_4_1_len);
- }
- 
--DEFINE_I440FX_MACHINE(v4_1, "pc-i440fx-4.1", NULL,
-+DEFINE_I440FX_MACHINE(4, 1, v4_1, "pc-i440fx-4.1", NULL,
-                       pc_i440fx_4_1_machine_options);
- 
- static void pc_i440fx_4_0_machine_options(MachineClass *m)
-@@ -709,7 +709,7 @@ static void pc_i440fx_4_0_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_4_0, pc_compat_4_0_len);
- }
- 
--DEFINE_I440FX_MACHINE(v4_0, "pc-i440fx-4.0", NULL,
-+DEFINE_I440FX_MACHINE(4, 0, v4_0, "pc-i440fx-4.0", NULL,
-                       pc_i440fx_4_0_machine_options);
- 
- static void pc_i440fx_3_1_machine_options(MachineClass *m)
-@@ -723,7 +723,7 @@ static void pc_i440fx_3_1_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_3_1, pc_compat_3_1_len);
- }
- 
--DEFINE_I440FX_MACHINE(v3_1, "pc-i440fx-3.1", NULL,
-+DEFINE_I440FX_MACHINE(3, 1, v3_1, "pc-i440fx-3.1", NULL,
-                       pc_i440fx_3_1_machine_options);
- 
- static void pc_i440fx_3_0_machine_options(MachineClass *m)
-@@ -733,7 +733,7 @@ static void pc_i440fx_3_0_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_3_0, pc_compat_3_0_len);
- }
- 
--DEFINE_I440FX_MACHINE(v3_0, "pc-i440fx-3.0", NULL,
-+DEFINE_I440FX_MACHINE(3, 0, v3_0, "pc-i440fx-3.0", NULL,
-                       pc_i440fx_3_0_machine_options);
- 
- static void pc_i440fx_2_12_machine_options(MachineClass *m)
-@@ -743,7 +743,7 @@ static void pc_i440fx_2_12_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_12, pc_compat_2_12_len);
- }
- 
--DEFINE_I440FX_MACHINE(v2_12, "pc-i440fx-2.12", NULL,
-+DEFINE_I440FX_MACHINE(2, 12, v2_12, "pc-i440fx-2.12", NULL,
-                       pc_i440fx_2_12_machine_options);
- 
- static void pc_i440fx_2_11_machine_options(MachineClass *m)
-@@ -753,7 +753,7 @@ static void pc_i440fx_2_11_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_11, pc_compat_2_11_len);
- }
- 
--DEFINE_I440FX_MACHINE(v2_11, "pc-i440fx-2.11", NULL,
-+DEFINE_I440FX_MACHINE(2, 11, v2_11, "pc-i440fx-2.11", NULL,
-                       pc_i440fx_2_11_machine_options);
- 
- static void pc_i440fx_2_10_machine_options(MachineClass *m)
-@@ -764,7 +764,7 @@ static void pc_i440fx_2_10_machine_options(MachineClass *m)
-     m->auto_enable_numa_with_memhp = false;
- }
- 
--DEFINE_I440FX_MACHINE(v2_10, "pc-i440fx-2.10", NULL,
-+DEFINE_I440FX_MACHINE(2, 10, v2_10, "pc-i440fx-2.10", NULL,
-                       pc_i440fx_2_10_machine_options);
- 
- static void pc_i440fx_2_9_machine_options(MachineClass *m)
-@@ -774,7 +774,7 @@ static void pc_i440fx_2_9_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_9, pc_compat_2_9_len);
- }
- 
--DEFINE_I440FX_MACHINE(v2_9, "pc-i440fx-2.9", NULL,
-+DEFINE_I440FX_MACHINE(2, 9, v2_9, "pc-i440fx-2.9", NULL,
-                       pc_i440fx_2_9_machine_options);
- 
- static void pc_i440fx_2_8_machine_options(MachineClass *m)
-@@ -784,7 +784,7 @@ static void pc_i440fx_2_8_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_8, pc_compat_2_8_len);
- }
- 
--DEFINE_I440FX_MACHINE(v2_8, "pc-i440fx-2.8", NULL,
-+DEFINE_I440FX_MACHINE(2, 8, v2_8, "pc-i440fx-2.8", NULL,
-                       pc_i440fx_2_8_machine_options);
- 
- static void pc_i440fx_2_7_machine_options(MachineClass *m)
-@@ -794,7 +794,7 @@ static void pc_i440fx_2_7_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_7, pc_compat_2_7_len);
- }
- 
--DEFINE_I440FX_MACHINE(v2_7, "pc-i440fx-2.7", NULL,
-+DEFINE_I440FX_MACHINE(2, 7, v2_7, "pc-i440fx-2.7", NULL,
-                       pc_i440fx_2_7_machine_options);
- 
- static void pc_i440fx_2_6_machine_options(MachineClass *m)
-@@ -809,7 +809,7 @@ static void pc_i440fx_2_6_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_6, pc_compat_2_6_len);
- }
- 
--DEFINE_I440FX_MACHINE(v2_6, "pc-i440fx-2.6", NULL,
-+DEFINE_I440FX_MACHINE(2, 6, v2_6, "pc-i440fx-2.6", NULL,
-                       pc_i440fx_2_6_machine_options);
- 
- static void pc_i440fx_2_5_machine_options(MachineClass *m)
-@@ -823,7 +823,7 @@ static void pc_i440fx_2_5_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_5, pc_compat_2_5_len);
- }
- 
--DEFINE_I440FX_MACHINE(v2_5, "pc-i440fx-2.5", NULL,
-+DEFINE_I440FX_MACHINE(2, 5, v2_5, "pc-i440fx-2.5", NULL,
-                       pc_i440fx_2_5_machine_options);
- 
- static void pc_i440fx_2_4_machine_options(MachineClass *m)
-@@ -837,7 +837,7 @@ static void pc_i440fx_2_4_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_4, pc_compat_2_4_len);
- }
- 
--DEFINE_I440FX_MACHINE(v2_4, "pc-i440fx-2.4", NULL,
-+DEFINE_I440FX_MACHINE(2, 4, v2_4, "pc-i440fx-2.4", NULL,
-                       pc_i440fx_2_4_machine_options)
- 
- static void pc_i440fx_2_3_machine_options(MachineClass *m)
-@@ -849,7 +849,7 @@ static void pc_i440fx_2_3_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_3, pc_compat_2_3_len);
- }
- 
--DEFINE_I440FX_MACHINE(v2_3, "pc-i440fx-2.3", pc_compat_2_3_fn,
-+DEFINE_I440FX_MACHINE(2, 3, v2_3, "pc-i440fx-2.3", pc_compat_2_3_fn,
-                       pc_i440fx_2_3_machine_options);
- 
- static void pc_i440fx_2_2_machine_options(MachineClass *m)
-@@ -865,7 +865,7 @@ static void pc_i440fx_2_2_machine_options(MachineClass *m)
-     pcmc->resizable_acpi_blob = false;
- }
- 
--DEFINE_I440FX_MACHINE(v2_2, "pc-i440fx-2.2", pc_compat_2_2_fn,
-+DEFINE_I440FX_MACHINE(2, 2, v2_2, "pc-i440fx-2.2", pc_compat_2_2_fn,
-                       pc_i440fx_2_2_machine_options);
- 
- static void pc_i440fx_2_1_machine_options(MachineClass *m)
-@@ -881,7 +881,7 @@ static void pc_i440fx_2_1_machine_options(MachineClass *m)
-     pcmc->enforce_aligned_dimm = false;
- }
- 
--DEFINE_I440FX_MACHINE(v2_1, "pc-i440fx-2.1", pc_compat_2_1_fn,
-+DEFINE_I440FX_MACHINE(2, 1, v2_1, "pc-i440fx-2.1", pc_compat_2_1_fn,
-                       pc_i440fx_2_1_machine_options);
- 
- static void pc_i440fx_2_0_machine_options(MachineClass *m)
-@@ -913,7 +913,7 @@ static void pc_i440fx_2_0_machine_options(MachineClass *m)
-     pcmc->acpi_data_size = 0x10000;
- }
- 
--DEFINE_I440FX_MACHINE(v2_0, "pc-i440fx-2.0", pc_compat_2_0_fn,
-+DEFINE_I440FX_MACHINE(2, 0, v2_0, "pc-i440fx-2.0", pc_compat_2_0_fn,
-                       pc_i440fx_2_0_machine_options);
- 
- #ifdef CONFIG_ISAPC
-@@ -936,7 +936,7 @@ static void isapc_machine_options(MachineClass *m)
-     m->no_parallel = !module_object_class_by_name(TYPE_ISA_PARALLEL);
- }
- 
--DEFINE_PC_MACHINE(isapc, "isapc", pc_init_isa,
-+DEFINE_PC_MACHINE(0, 0, isapc, "isapc", pc_init_isa,
-                   isapc_machine_options);
- #endif
- 
-@@ -949,7 +949,7 @@ static void xenfv_4_2_machine_options(MachineClass *m)
-     m->default_machine_opts = "accel=xen,suppress-vmdesc=on";
- }
- 
--DEFINE_PC_MACHINE(xenfv_4_2, "xenfv-4.2", pc_xen_hvm_init,
-+DEFINE_PC_MACHINE(4, 2, xenfv_4_2, "xenfv-4.2", pc_xen_hvm_init,
-                   xenfv_4_2_machine_options);
- 
- static void xenfv_3_1_machine_options(MachineClass *m)
-@@ -961,6 +961,6 @@ static void xenfv_3_1_machine_options(MachineClass *m)
-     m->default_machine_opts = "accel=xen,suppress-vmdesc=on";
- }
- 
--DEFINE_PC_MACHINE(xenfv, "xenfv-3.1", pc_xen_hvm_init,
-+DEFINE_PC_MACHINE(3, 1, xenfv, "xenfv-3.1", pc_xen_hvm_init,
-                   xenfv_3_1_machine_options);
- #endif
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index bb53a51ac1..df3614b9bc 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -331,7 +331,7 @@ static void pc_q35_init(MachineState *machine)
-     }
- }
- 
--#define DEFINE_Q35_MACHINE(suffix, name, compatfn, optionfn) \
-+#define DEFINE_Q35_MACHINE(major, minor, suffix, name, compatfn, optionfn) \
-     static void pc_init_##suffix(MachineState *machine) \
-     { \
-         void (*compat)(MachineState *m) = (compatfn); \
-@@ -340,7 +340,7 @@ static void pc_q35_init(MachineState *machine)
-         } \
-         pc_q35_init(machine); \
-     } \
--    DEFINE_PC_MACHINE(suffix, name, pc_init_##suffix, optionfn)
-+    DEFINE_PC_MACHINE(major, minor, suffix, name, pc_init_##suffix, optionfn)
- 
- 
- static void pc_q35_machine_options(MachineClass *m)
-@@ -373,7 +373,7 @@ static void pc_q35_9_1_machine_options(MachineClass *m)
-     m->alias = "q35";
- }
- 
--DEFINE_Q35_MACHINE(v9_1, "pc-q35-9.1", NULL,
-+DEFINE_Q35_MACHINE(9, 1, v9_1, "pc-q35-9.1", NULL,
-                    pc_q35_9_1_machine_options);
- 
- static void pc_q35_9_0_machine_options(MachineClass *m)
-@@ -384,7 +384,7 @@ static void pc_q35_9_0_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_9_0, pc_compat_9_0_len);
- }
- 
--DEFINE_Q35_MACHINE(v9_0, "pc-q35-9.0", NULL,
-+DEFINE_Q35_MACHINE(9, 0, v9_0, "pc-q35-9.0", NULL,
-                    pc_q35_9_0_machine_options);
- 
- static void pc_q35_8_2_machine_options(MachineClass *m)
-@@ -398,7 +398,7 @@ static void pc_q35_8_2_machine_options(MachineClass *m)
-     pcmc->default_smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_64;
- }
- 
--DEFINE_Q35_MACHINE(v8_2, "pc-q35-8.2", NULL,
-+DEFINE_Q35_MACHINE(8, 2, v8_2, "pc-q35-8.2", NULL,
-                    pc_q35_8_2_machine_options);
- 
- static void pc_q35_8_1_machine_options(MachineClass *m)
-@@ -410,7 +410,7 @@ static void pc_q35_8_1_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_8_1, pc_compat_8_1_len);
- }
- 
--DEFINE_Q35_MACHINE(v8_1, "pc-q35-8.1", NULL,
-+DEFINE_Q35_MACHINE(8, 1, v8_1, "pc-q35-8.1", NULL,
-                    pc_q35_8_1_machine_options);
- 
- static void pc_q35_8_0_machine_options(MachineClass *m)
-@@ -426,7 +426,7 @@ static void pc_q35_8_0_machine_options(MachineClass *m)
-     m->max_cpus = 288;
- }
- 
--DEFINE_Q35_MACHINE(v8_0, "pc-q35-8.0", NULL,
-+DEFINE_Q35_MACHINE(8, 0, v8_0, "pc-q35-8.0", NULL,
-                    pc_q35_8_0_machine_options);
- 
- static void pc_q35_7_2_machine_options(MachineClass *m)
-@@ -436,7 +436,7 @@ static void pc_q35_7_2_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_7_2, pc_compat_7_2_len);
- }
- 
--DEFINE_Q35_MACHINE(v7_2, "pc-q35-7.2", NULL,
-+DEFINE_Q35_MACHINE(7, 2, v7_2, "pc-q35-7.2", NULL,
-                    pc_q35_7_2_machine_options);
- 
- static void pc_q35_7_1_machine_options(MachineClass *m)
-@@ -446,7 +446,7 @@ static void pc_q35_7_1_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_7_1, pc_compat_7_1_len);
- }
- 
--DEFINE_Q35_MACHINE(v7_1, "pc-q35-7.1", NULL,
-+DEFINE_Q35_MACHINE(7, 1, v7_1, "pc-q35-7.1", NULL,
-                    pc_q35_7_1_machine_options);
- 
- static void pc_q35_7_0_machine_options(MachineClass *m)
-@@ -458,7 +458,7 @@ static void pc_q35_7_0_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_7_0, pc_compat_7_0_len);
- }
- 
--DEFINE_Q35_MACHINE(v7_0, "pc-q35-7.0", NULL,
-+DEFINE_Q35_MACHINE(7, 0, v7_0, "pc-q35-7.0", NULL,
-                    pc_q35_7_0_machine_options);
- 
- static void pc_q35_6_2_machine_options(MachineClass *m)
-@@ -468,7 +468,7 @@ static void pc_q35_6_2_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_6_2, pc_compat_6_2_len);
- }
- 
--DEFINE_Q35_MACHINE(v6_2, "pc-q35-6.2", NULL,
-+DEFINE_Q35_MACHINE(6, 2, v6_2, "pc-q35-6.2", NULL,
-                    pc_q35_6_2_machine_options);
- 
- static void pc_q35_6_1_machine_options(MachineClass *m)
-@@ -479,7 +479,7 @@ static void pc_q35_6_1_machine_options(MachineClass *m)
-     m->smp_props.prefer_sockets = true;
- }
- 
--DEFINE_Q35_MACHINE(v6_1, "pc-q35-6.1", NULL,
-+DEFINE_Q35_MACHINE(6, 1, v6_1, "pc-q35-6.1", NULL,
-                    pc_q35_6_1_machine_options);
- 
- static void pc_q35_6_0_machine_options(MachineClass *m)
-@@ -489,7 +489,7 @@ static void pc_q35_6_0_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_6_0, pc_compat_6_0_len);
- }
- 
--DEFINE_Q35_MACHINE(v6_0, "pc-q35-6.0", NULL,
-+DEFINE_Q35_MACHINE(6, 0, v6_0, "pc-q35-6.0", NULL,
-                    pc_q35_6_0_machine_options);
- 
- static void pc_q35_5_2_machine_options(MachineClass *m)
-@@ -499,7 +499,7 @@ static void pc_q35_5_2_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_5_2, pc_compat_5_2_len);
- }
- 
--DEFINE_Q35_MACHINE(v5_2, "pc-q35-5.2", NULL,
-+DEFINE_Q35_MACHINE(5, 2, v5_2, "pc-q35-5.2", NULL,
-                    pc_q35_5_2_machine_options);
- 
- static void pc_q35_5_1_machine_options(MachineClass *m)
-@@ -513,7 +513,7 @@ static void pc_q35_5_1_machine_options(MachineClass *m)
-     pcmc->pci_root_uid = 1;
- }
- 
--DEFINE_Q35_MACHINE(v5_1, "pc-q35-5.1", NULL,
-+DEFINE_Q35_MACHINE(5, 1, v5_1, "pc-q35-5.1", NULL,
-                    pc_q35_5_1_machine_options);
- 
- static void pc_q35_5_0_machine_options(MachineClass *m)
-@@ -525,7 +525,7 @@ static void pc_q35_5_0_machine_options(MachineClass *m)
-     m->auto_enable_numa_with_memdev = false;
- }
- 
--DEFINE_Q35_MACHINE(v5_0, "pc-q35-5.0", NULL,
-+DEFINE_Q35_MACHINE(5, 0, v5_0, "pc-q35-5.0", NULL,
-                    pc_q35_5_0_machine_options);
- 
- static void pc_q35_4_2_machine_options(MachineClass *m)
-@@ -535,7 +535,7 @@ static void pc_q35_4_2_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_4_2, pc_compat_4_2_len);
- }
- 
--DEFINE_Q35_MACHINE(v4_2, "pc-q35-4.2", NULL,
-+DEFINE_Q35_MACHINE(4, 2, v4_2, "pc-q35-4.2", NULL,
-                    pc_q35_4_2_machine_options);
- 
- static void pc_q35_4_1_machine_options(MachineClass *m)
-@@ -545,7 +545,7 @@ static void pc_q35_4_1_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_4_1, pc_compat_4_1_len);
- }
- 
--DEFINE_Q35_MACHINE(v4_1, "pc-q35-4.1", NULL,
-+DEFINE_Q35_MACHINE(4, 1, v4_1, "pc-q35-4.1", NULL,
-                    pc_q35_4_1_machine_options);
- 
- static void pc_q35_4_0_1_machine_options(MachineClass *m)
-@@ -562,7 +562,7 @@ static void pc_q35_4_0_1_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_4_0, pc_compat_4_0_len);
- }
- 
--DEFINE_Q35_MACHINE(v4_0_1, "pc-q35-4.0.1", NULL,
-+DEFINE_Q35_MACHINE(4, 0, v4_0_1, "pc-q35-4.0.1", NULL,
-                    pc_q35_4_0_1_machine_options);
- 
- static void pc_q35_4_0_machine_options(MachineClass *m)
-@@ -572,7 +572,7 @@ static void pc_q35_4_0_machine_options(MachineClass *m)
-     /* Compat props are applied by the 4.0.1 machine */
- }
- 
--DEFINE_Q35_MACHINE(v4_0, "pc-q35-4.0", NULL,
-+DEFINE_Q35_MACHINE(4, 0, v4_0, "pc-q35-4.0", NULL,
-                    pc_q35_4_0_machine_options);
- 
- static void pc_q35_3_1_machine_options(MachineClass *m)
-@@ -587,7 +587,7 @@ static void pc_q35_3_1_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_3_1, pc_compat_3_1_len);
- }
- 
--DEFINE_Q35_MACHINE(v3_1, "pc-q35-3.1", NULL,
-+DEFINE_Q35_MACHINE(3, 1, v3_1, "pc-q35-3.1", NULL,
-                    pc_q35_3_1_machine_options);
- 
- static void pc_q35_3_0_machine_options(MachineClass *m)
-@@ -597,7 +597,7 @@ static void pc_q35_3_0_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_3_0, pc_compat_3_0_len);
- }
- 
--DEFINE_Q35_MACHINE(v3_0, "pc-q35-3.0", NULL,
-+DEFINE_Q35_MACHINE(3, 0, v3_0, "pc-q35-3.0", NULL,
-                     pc_q35_3_0_machine_options);
- 
- static void pc_q35_2_12_machine_options(MachineClass *m)
-@@ -607,7 +607,7 @@ static void pc_q35_2_12_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_12, pc_compat_2_12_len);
- }
- 
--DEFINE_Q35_MACHINE(v2_12, "pc-q35-2.12", NULL,
-+DEFINE_Q35_MACHINE(2, 12, v2_12, "pc-q35-2.12", NULL,
-                    pc_q35_2_12_machine_options);
- 
- static void pc_q35_2_11_machine_options(MachineClass *m)
-@@ -618,7 +618,7 @@ static void pc_q35_2_11_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_11, pc_compat_2_11_len);
- }
- 
--DEFINE_Q35_MACHINE(v2_11, "pc-q35-2.11", NULL,
-+DEFINE_Q35_MACHINE(2, 11, v2_11, "pc-q35-2.11", NULL,
-                    pc_q35_2_11_machine_options);
- 
- static void pc_q35_2_10_machine_options(MachineClass *m)
-@@ -629,7 +629,7 @@ static void pc_q35_2_10_machine_options(MachineClass *m)
-     m->auto_enable_numa_with_memhp = false;
- }
- 
--DEFINE_Q35_MACHINE(v2_10, "pc-q35-2.10", NULL,
-+DEFINE_Q35_MACHINE(2, 10, v2_10, "pc-q35-2.10", NULL,
-                    pc_q35_2_10_machine_options);
- 
- static void pc_q35_2_9_machine_options(MachineClass *m)
-@@ -639,7 +639,7 @@ static void pc_q35_2_9_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_9, pc_compat_2_9_len);
- }
- 
--DEFINE_Q35_MACHINE(v2_9, "pc-q35-2.9", NULL,
-+DEFINE_Q35_MACHINE(2, 9, v2_9, "pc-q35-2.9", NULL,
-                    pc_q35_2_9_machine_options);
- 
- static void pc_q35_2_8_machine_options(MachineClass *m)
-@@ -649,7 +649,7 @@ static void pc_q35_2_8_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_8, pc_compat_2_8_len);
- }
- 
--DEFINE_Q35_MACHINE(v2_8, "pc-q35-2.8", NULL,
-+DEFINE_Q35_MACHINE(2, 8, v2_8, "pc-q35-2.8", NULL,
-                    pc_q35_2_8_machine_options);
- 
- static void pc_q35_2_7_machine_options(MachineClass *m)
-@@ -660,7 +660,7 @@ static void pc_q35_2_7_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_7, pc_compat_2_7_len);
- }
- 
--DEFINE_Q35_MACHINE(v2_7, "pc-q35-2.7", NULL,
-+DEFINE_Q35_MACHINE(2, 7, v2_7, "pc-q35-2.7", NULL,
-                    pc_q35_2_7_machine_options);
- 
- static void pc_q35_2_6_machine_options(MachineClass *m)
-@@ -675,7 +675,7 @@ static void pc_q35_2_6_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_6, pc_compat_2_6_len);
- }
- 
--DEFINE_Q35_MACHINE(v2_6, "pc-q35-2.6", NULL,
-+DEFINE_Q35_MACHINE(2, 6, v2_6, "pc-q35-2.6", NULL,
-                    pc_q35_2_6_machine_options);
- 
- static void pc_q35_2_5_machine_options(MachineClass *m)
-@@ -689,7 +689,7 @@ static void pc_q35_2_5_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_5, pc_compat_2_5_len);
- }
- 
--DEFINE_Q35_MACHINE(v2_5, "pc-q35-2.5", NULL,
-+DEFINE_Q35_MACHINE(2, 5, v2_5, "pc-q35-2.5", NULL,
-                    pc_q35_2_5_machine_options);
- 
- static void pc_q35_2_4_machine_options(MachineClass *m)
-@@ -703,5 +703,5 @@ static void pc_q35_2_4_machine_options(MachineClass *m)
-     compat_props_add(m->compat_props, pc_compat_2_4, pc_compat_2_4_len);
- }
- 
--DEFINE_Q35_MACHINE(v2_4, "pc-q35-2.4", NULL,
-+DEFINE_Q35_MACHINE(2, 4, v2_4, "pc-q35-2.4", NULL,
-                    pc_q35_2_4_machine_options);
+diff --git a/tcg/aarch64/tcg-target.h b/tcg/aarch64/tcg-target.h
+index 85d5746e47..138bafb9da 100644
+--- a/tcg/aarch64/tcg-target.h
++++ b/tcg/aarch64/tcg-target.h
+@@ -167,6 +167,7 @@ typedef enum {
+ #define TCG_TARGET_HAS_minmax_vec       1
+ #define TCG_TARGET_HAS_bitsel_vec       1
+ #define TCG_TARGET_HAS_cmpsel_vec       0
++#define TCG_TARGET_HAS_tst_vec          0
+ 
+ #define TCG_TARGET_DEFAULT_MO (0)
+ #define TCG_TARGET_NEED_LDST_LABELS
+diff --git a/tcg/arm/tcg-target.h b/tcg/arm/tcg-target.h
+index a43875cb09..434a892e07 100644
+--- a/tcg/arm/tcg-target.h
++++ b/tcg/arm/tcg-target.h
+@@ -150,6 +150,7 @@ extern bool use_neon_instructions;
+ #define TCG_TARGET_HAS_minmax_vec       1
+ #define TCG_TARGET_HAS_bitsel_vec       1
+ #define TCG_TARGET_HAS_cmpsel_vec       0
++#define TCG_TARGET_HAS_tst_vec          0
+ 
+ #define TCG_TARGET_DEFAULT_MO (0)
+ #define TCG_TARGET_NEED_LDST_LABELS
+diff --git a/tcg/i386/tcg-target.h b/tcg/i386/tcg-target.h
+index a10d4e1fce..2f67a97e05 100644
+--- a/tcg/i386/tcg-target.h
++++ b/tcg/i386/tcg-target.h
+@@ -224,6 +224,7 @@ typedef enum {
+ #define TCG_TARGET_HAS_minmax_vec       1
+ #define TCG_TARGET_HAS_bitsel_vec       have_avx512vl
+ #define TCG_TARGET_HAS_cmpsel_vec       -1
++#define TCG_TARGET_HAS_tst_vec          0
+ 
+ #define TCG_TARGET_deposit_i32_valid(ofs, len) \
+     (((ofs) == 0 && ((len) == 8 || (len) == 16)) || \
+diff --git a/tcg/loongarch64/tcg-target.h b/tcg/loongarch64/tcg-target.h
+index fede627bf7..29e4860d20 100644
+--- a/tcg/loongarch64/tcg-target.h
++++ b/tcg/loongarch64/tcg-target.h
+@@ -194,6 +194,7 @@ typedef enum {
+ #define TCG_TARGET_HAS_minmax_vec       1
+ #define TCG_TARGET_HAS_bitsel_vec       1
+ #define TCG_TARGET_HAS_cmpsel_vec       0
++#define TCG_TARGET_HAS_tst_vec          0
+ 
+ #define TCG_TARGET_DEFAULT_MO (0)
+ 
+diff --git a/tcg/ppc/tcg-target.h b/tcg/ppc/tcg-target.h
+index 04a7aba4d3..e154fb14df 100644
+--- a/tcg/ppc/tcg-target.h
++++ b/tcg/ppc/tcg-target.h
+@@ -173,6 +173,7 @@ typedef enum {
+ #define TCG_TARGET_HAS_minmax_vec       1
+ #define TCG_TARGET_HAS_bitsel_vec       have_vsx
+ #define TCG_TARGET_HAS_cmpsel_vec       0
++#define TCG_TARGET_HAS_tst_vec          0
+ 
+ #define TCG_TARGET_DEFAULT_MO (0)
+ #define TCG_TARGET_NEED_LDST_LABELS
+diff --git a/tcg/s390x/tcg-target.h b/tcg/s390x/tcg-target.h
+index ae448c3a3a..62ce9d792a 100644
+--- a/tcg/s390x/tcg-target.h
++++ b/tcg/s390x/tcg-target.h
+@@ -163,6 +163,7 @@ extern uint64_t s390_facilities[3];
+ #define TCG_TARGET_HAS_minmax_vec     1
+ #define TCG_TARGET_HAS_bitsel_vec     1
+ #define TCG_TARGET_HAS_cmpsel_vec     0
++#define TCG_TARGET_HAS_tst_vec        0
+ 
+ /* used for function call generation */
+ #define TCG_TARGET_STACK_ALIGN		8
 -- 
-2.41.0.28.gd7d8841f67
+2.34.1
 

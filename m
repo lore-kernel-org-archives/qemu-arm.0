@@ -1,194 +1,247 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1420309ejl;
-        Thu, 16 May 2024 07:50:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWev6kNDLWHhmL9czY7nBvATZj1qAHM6PSZbJFNHxMgg1z52kKyPdh1A9x/F08ZZQze4q5whP87daA7uEySuEkZEzf8luSk
-X-Received: by 2002:a05:600c:4585:b0:41f:cf63:3ace with SMTP id 5b1f17b1804b1-41fead65ab1mr129532695e9.34.1715871051592;
-        Thu, 16 May 2024 07:50:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715871051; cv=none;
+Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1447317ejl;
+        Thu, 16 May 2024 08:26:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXC7vfFlr3JLwSJrobo8BfE4sfCe0jqxyCfIo1VAGbfhWhXriV899+SpWuwyA6gbijcUn8O6dZN4H0FnTSqzzNpIn7lqTCq
+X-Google-Smtp-Source: AGHT+IHc92YdXlvaZDEhJypDzoZ93afIcwoquLhLeLRKUc/WuP1T22jFAQqKw8cNqh1EtUTJf9+n
+X-Received: by 2002:a05:622a:1354:b0:43e:1a17:10f9 with SMTP id d75a77b69052e-43e1a1746a4mr127590061cf.52.1715873188381;
+        Thu, 16 May 2024 08:26:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715873188; cv=none;
         d=google.com; s=arc-20160816;
-        b=z5uhbQd98CW3ATx1aDpx18TpTjcxbQGNLCA8wWLqh6iYa1kMYVO0hvSuPzSdMQnxm4
-         wC/dlmzQm5XOgnaVhqxTVysDk9B7pg5aVjr0JBeMPgsr8JPZkLomVtFMFiGVj32X3AY4
-         p/x/2Q2ZAMDNF9KOVmJRlZBPZEnNDvvaokOivS5AoDd94hG8l749zZrRb0KGMCpxAfHy
-         xfWAFy3Qk7dcNfctsQcNuievmVcjQRg+fj7XKB4YQUIaw0wEoB0obHS15tiwTB/zz5Ah
-         AgNDYZnG5e3xPUi5m7rs4svVwbO32TV5jdkVYr2H31T66aLn0NaVitPfR8LLdrm8an3d
-         7zfw==
+        b=w5NbfLjJbl+DWOTrCMMNAbH3ivd9YP+yMbu19BFVOnbQR35DwDkL+DMhyV3DpMO7P+
+         7JYFHc8/8LwlwDxFASz/ZW4ND7E9atxuGxNYrAtRLChBczOf5mXEcXfz2VRqgZhaqZ6q
+         ngn7xwoQbpDqE8chmBgMlT/jnyv5TfOIkv+qlQdgK5aRtKSzX1m3KLevh5bl8zsknpaL
+         FagsVFsVGR0P1vDPh5eQJod1jF8ETIHmSXUr/XmeEZTD3ty/6TnYO4JR6LjBMyVMgWeU
+         tD5N1CyG3its1JVPVS9FukNnx28LKh35FavjOg0EvmDQgI+VVrJBS7VtfjJ9dIRr/o5M
+         3Lrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=0fMJVCubVaRpMDCSR7hSQVqaNqRKdkVSa3v5hqLU758=;
-        fh=buSXzjZM122wj0dSnVzt2JNcXHUdNmB8DTfA24TBg7Q=;
-        b=XgMQ5VvvByI10gDDo7wD/eMUd3HAPQLxK9tHt2d7AzEidPUNXIlXOh9UlH/VKipCuB
-         92oU81GDTB4ska7fW4m7/ZGnDdowDKhLiwuahr+F6qwBYJaW1uxDIagY0lLbG9p3DVGJ
-         VM5//Jcf8RVmuvf+6K+MrU/9u6AXXGAbY8eJ0u1xBVU1devhHwtDx9ZEa5BrnTJBOVPL
-         5Er7sXJHCANgEPBFqe96p/XT5swFXTFG0aQrjfbAG0LYW3vkakzLk1Yhj7NfrsL4mCXX
-         8URkg2JAOIK/v39yFBnynGOtgeXONHwJPfmc1KUUoCgMiDIJAjbnJhwVBdJ9BpWd5zbp
-         mFcQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=IYdMWOF4Cn/jq10inMPb5g39OtCoSDX7MqpcXyJIx48=;
+        fh=OrAbs+5FNS/8CM3sP/CUPjsHmV4PD4ldPwGTIZYXeoc=;
+        b=Ae8WPQFJqjQkkCCLl0I3Xyua0ES12CnFKVqLuh6iGY4pLufwQqFRfe5dPqXZfCu46l
+         NNtTArEHbbkXUmHHzszTutUtUwXei6+axhWY5XW1RyIQjxR0MWxjCHlZnmCkfBjEKQh3
+         9/DK+mNMNWwp4GhCjpiXFDwFFfHPoota84xggKFZRw+s6CoAtrD/g4xu05h22P6InhNn
+         5X+niHVluuEkE2Sq6YV+hzHU3yUH2orNa/aPb1G8Yp5YzrxS3fFBa9k7O+X2vWs18QeU
+         xK46jqa+Gv+dZQI8Hf9q6zrkaXrUIZ32wugbvM6LDnl4AtpWR3H/DS1eZbamlDEQdECV
+         NMkw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=wvIqz39t;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <smostafa@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4200eeccf70sor4199475e9.10.2024.05.16.07.50.51
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a4T6KdRr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-43df56d061fsi168170541cf.652.2024.05.16.08.26.28
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 16 May 2024 07:50:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 16 May 2024 08:26:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=wvIqz39t;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1715871051; x=1716475851; darn=linaro.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=0fMJVCubVaRpMDCSR7hSQVqaNqRKdkVSa3v5hqLU758=;
-        b=wvIqz39tQwZ0oCLmRbAIfqjpuAvseWOHoDs/Qa6AnAOeEkWJ+1FpTNWbomJTFCA68S
-         edmHpCtYxH56HvFm/BahlfUqiCGU1rp6hjlJIb/DsBBYFWHU1Gsc/NA9H8OU4nTzGdCB
-         DXRokptC4useQZCppPGhlFBMmmPCASN5dDoQp3Zh5IJBBxGLB+8S6SEQD8K5CVqimHgN
-         aSXnxBH2mmE76IL2ISSpv3Pqjf/xzg4zg9DEsZ+i6df0X7ykSomV3PDvZ19vbor5vboQ
-         syba8AWjNjHlGWHEzKaN4aJk/jAzFbkVqphc+eyKH/pL5c9V5LhXwukzxmhhWdHX04TJ
-         TtwA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a4T6KdRr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s7czl-0007Dm-5A; Thu, 16 May 2024 11:26:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhexu@redhat.com>) id 1s7czk-0007Cd-FR
+ for qemu-arm@nongnu.org; Thu, 16 May 2024 11:26:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhexu@redhat.com>) id 1s7cze-0005fo-An
+ for qemu-arm@nongnu.org; Thu, 16 May 2024 11:26:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1715873163;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=IYdMWOF4Cn/jq10inMPb5g39OtCoSDX7MqpcXyJIx48=;
+ b=a4T6KdRrAGLMLdRzmkmnvwxInSbN5lc2DUCce3XuGLktoijzxcRShYoGpt70ertgme2d9r
+ 09DxtTm6VdXjhs6qUZpeSHXJB94Ne1/9eNZHn/D99FyIXzZMF6t65aPmuVmKPPA6ccpP4f
+ ujMRi+JyBO+kjN9Gcf6ahhV0CWtf+ns=
+Received: from mail-yb1-f199.google.com (mail-yb1-f199.google.com
+ [209.85.219.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-677-VW_1Mk6XMPeJndhEuiPRRQ-1; Thu, 16 May 2024 11:26:02 -0400
+X-MC-Unique: VW_1Mk6XMPeJndhEuiPRRQ-1
+Received: by mail-yb1-f199.google.com with SMTP id
+ 3f1490d57ef6-de5b0b420dcso485026276.2
+ for <qemu-arm@nongnu.org>; Thu, 16 May 2024 08:26:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715871051; x=1716475851;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0fMJVCubVaRpMDCSR7hSQVqaNqRKdkVSa3v5hqLU758=;
-        b=M9njvX9P5xsKcHwpbToNL0vopb+7eFZzz4sux5XOl6Q9cnG+SKo6h80Gs+WqtVpv04
-         tfLXKr+Tip+nu9QBeCeRiJQnfIubAOkse7+vn41bpH5SaV08rJDk4ZXG2HyLpXaUzcL3
-         ZtlLumGMeFXqqHe7Tf6voQjLmRzSraVmoPKekJILENT37FBkWsKoQhNutGG3GqRLDzCz
-         bvTzJs6V+gYTnPDLMGbDfvkNDgYTSs6ATMsV7h/BDGydmXrZeBqBXLORbUMrRf6Q3jZ8
-         nwE1CSg+3zbuqYvKAsyHqhbu8RtKZT+AY6g17vum+KtPQT3y6n5nRv/5PboNY338C6ww
-         3DTQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX/Sc9QimF/LGuZbdMI7qviwtpEMfrdJn0pBbfJyGsUywCwaVYo0m4HwLkz9zzs9/h8ZdC5/KzgJX2QqKamDDtX+lG9muJ/
-X-Gm-Message-State: AOJu0YzIZWdNOkQQL5mu3jKN4nRE4ydV8yJNDAv+ejMp9C04b8nGhH1L
-	rheMEr83oPsEUd273vpRM89gcRVjAQ5sUo4BV8XNqEYzQbblag3ijLwyd+9EOQ==
-X-Google-Smtp-Source: AGHT+IGvBKsbNqZ2C0szf2K5UUJxaiEKlzZXy+jJ37XfQmuXY8ZsvfRD+1ZL+U1yCM1ZmC63Av/JWQ==
-X-Received: by 2002:a05:600c:5010:b0:41b:4c6a:de6d with SMTP id 5b1f17b1804b1-4200f8b159fmr11168565e9.5.1715871050937;
-        Thu, 16 May 2024 07:50:50 -0700 (PDT)
-Return-Path: <smostafa@google.com>
-Received: from google.com (180.232.140.34.bc.googleusercontent.com. [34.140.232.180])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3518d817ee2sm15520099f8f.2.2024.05.16.07.50.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 May 2024 07:50:50 -0700 (PDT)
-Date: Thu, 16 May 2024 14:50:46 +0000
-From: Mostafa Saleh <smostafa@google.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
-	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
-	marcin.juszkiewicz@linaro.org
-Subject: Re: [RFC PATCH v3 03/18] hw/arm/smmuv3: Fix encoding of CLASS in
- events
-Message-ID: <ZkYdRmCf4KJzIe9a@google.com>
-References: <20240429032403.74910-1-smostafa@google.com>
- <20240429032403.74910-4-smostafa@google.com>
- <2ca04dfa-61bb-4f35-954a-b5f107bf8f36@redhat.com>
+ d=1e100.net; s=20230601; t=1715873161; x=1716477961;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=IYdMWOF4Cn/jq10inMPb5g39OtCoSDX7MqpcXyJIx48=;
+ b=C4rmNXBdfchgUfpptehWaAZYfgu/FMr8n4/tuBXXGWuwFs4NLkOUQtn6ICAyAa5WWd
+ 8Z8rxvFf8NDTQUWP/WlFnpilypM4dQ51V6j5JA6G4rQuc0/ufxodKbqJwQuLzrShylXk
+ 7cvlIuUmPEf6IGl35psse0BMUfkvm85IVgWERSw6+SM1zL8jIjc8F04eSx6vFdxZpWYH
+ mSRTxYU2bOF/v7kI46RY7NI4xBVvkkc/amW6HxxaSz67QD9f4jZZnTdLGrfgj+Xuai+A
+ y/PsospHKEYUuXjwFeY7dvRgq0QcrZnAlb7eq3JYP9a5qNDsY/LCN4qgnSuO5CZhjlBU
+ sRLw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU97R1FsaHpfM6gtFGOk9WOK9e/uNXiAGjUofKwWuC3+hTmUB31aheI5BuWGXHqYroUrsO+ofG3Lvhj6vJ+VLgSnkf1
+X-Gm-Message-State: AOJu0YzkzPcs+IIXZfTOfdB65BVT7A0MrZ6FSeel/AbOYbmp12pYcmeO
+ AVyw3L7GmdDisza+L81soY4OeogGMA1eI/Yy+vs2oYt3LwlcpcnoMe6pEw49BxsYTH+hL4U/s9v
+ QWPZjK1drOfoZ359jjddbsjS18NobjrPXA9IkTgHI5cJjQOrDcPw+vtM7wuofC2/U5eVoojYgZr
+ dShyTa4gNkg/mZoWADZksx+k7t
+X-Received: by 2002:a05:6902:220a:b0:dee:7ff9:a053 with SMTP id
+ 3f1490d57ef6-dee7ff9a1c3mr10661629276.3.1715873161382; 
+ Thu, 16 May 2024 08:26:01 -0700 (PDT)
+X-Received: by 2002:a05:6902:220a:b0:dee:7ff9:a053 with SMTP id
+ 3f1490d57ef6-dee7ff9a1c3mr10661577276.3.1715873160642; Thu, 16 May 2024
+ 08:26:00 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2ca04dfa-61bb-4f35-954a-b5f107bf8f36@redhat.com>
-X-TUID: tutQIyO5WCRB
+References: <20240516084022.1398919-1-marcandre.lureau@redhat.com>
+In-Reply-To: <20240516084022.1398919-1-marcandre.lureau@redhat.com>
+From: Peter Xu <peterx@redhat.com>
+Date: Thu, 16 May 2024 09:25:49 -0600
+Message-ID: <CADLectnt6_G9trMjfEVZ7tn--bGfEy8iMAdjntjDSTeHUw2cqg@mail.gmail.com>
+Subject: Re: [PATCH v4 0/3] Fix "virtio-gpu: fix scanout migration post-load"
+To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fiona Ebner <f.ebner@proxmox.com>, 
+ Fabiano Rosas <farosas@suse.de>, Yanan Wang <wangyanan55@huawei.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Gerd Hoffmann <kraxel@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ "Michael S. Tsirkin" <mst@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative; boundary="000000000000385c24061893dafd"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=zhexu@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.022,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: J4yZ0rtnlBYC
 
-Hi Eric,
+--000000000000385c24061893dafd
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On Wed, May 15, 2024 at 02:27:45PM +0200, Eric Auger wrote:
-> Hi Mostafa,
-> On 4/29/24 05:23, Mostafa Saleh wrote:
-> > The SMMUv3 spec (ARM IHI 0070 F.b - 7.3 Event records) defines the
-> > class of events faults as:
-> >
-> > CLASS: The class of the operation that caused the fault:
-> > - 0b00: CD, CD fetch.
-> > - 0b01: TTD, Stage 1 translation table fetch.
-> > - 0b10: IN, Input address
-> >
-> > However, this value was not set and left as 0 which means CD and not
-> > IN (0b10).
-> > While at it, add an enum for class as it would be used for nesting.
-> If this fixes somethings please add a Fixes: tag.
-> 
-> Also you may add that until nested gets implemented, CLASS values are
-> the same for stage 1 and stage2. This will change later on.
-Will do.
+Looks good here, thanks.
 
-Thanks,
-Mostafa
+On Thu, May 16, 2024, 2:40=E2=80=AFa.m. <marcandre.lureau@redhat.com> wrote=
+:
 
-> 
-> Besides
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> 
-> Eric
-> 
-> >
-> > Signed-off-by: Mostafa Saleh <smostafa@google.com>
-> > ---
-> >  hw/arm/smmuv3-internal.h | 6 ++++++
-> >  hw/arm/smmuv3.c          | 6 +++++-
-> >  2 files changed, 11 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> > index e4dd11e1e6..0f3ecec804 100644
-> > --- a/hw/arm/smmuv3-internal.h
-> > +++ b/hw/arm/smmuv3-internal.h
-> > @@ -32,6 +32,12 @@ typedef enum SMMUTranslationStatus {
-> >      SMMU_TRANS_SUCCESS,
-> >  } SMMUTranslationStatus;
-> >  
-> > +typedef enum SMMUTranslationClass {
-> > +    SMMU_CLASS_CD,
-> > +    SMMU_CLASS_TT,
-> > +    SMMU_CLASS_IN,
-> > +} SMMUTranslationClass;
-> > +
-> >  /* MMIO Registers */
-> >  
-> >  REG32(IDR0,                0x0)
-> > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> > index 9dd3ea48e4..1eb5b160d2 100644
-> > --- a/hw/arm/smmuv3.c
-> > +++ b/hw/arm/smmuv3.c
-> > @@ -942,7 +942,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-> >              event.type = SMMU_EVT_F_WALK_EABT;
-> >              event.u.f_walk_eabt.addr = addr;
-> >              event.u.f_walk_eabt.rnw = flag & 0x1;
-> > -            event.u.f_walk_eabt.class = 0x1;
-> > +            event.u.f_walk_eabt.class = SMMU_CLASS_TT;
-> >              event.u.f_walk_eabt.addr2 = ptw_info.addr;
-> >              break;
-> >          case SMMU_PTW_ERR_TRANSLATION:
-> > @@ -950,6 +950,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-> >                  event.type = SMMU_EVT_F_TRANSLATION;
-> >                  event.u.f_translation.addr = addr;
-> >                  event.u.f_translation.addr2 = ptw_info.addr;
-> > +                event.u.f_translation.class = SMMU_CLASS_IN;
-> >                  event.u.f_translation.rnw = flag & 0x1;
-> >              }
-> >              break;
-> > @@ -958,6 +959,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-> >                  event.type = SMMU_EVT_F_ADDR_SIZE;
-> >                  event.u.f_addr_size.addr = addr;
-> >                  event.u.f_addr_size.addr2 = ptw_info.addr;
-> > +                event.u.f_translation.class = SMMU_CLASS_IN;
-> >                  event.u.f_addr_size.rnw = flag & 0x1;
-> >              }
-> >              break;
-> > @@ -966,6 +968,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-> >                  event.type = SMMU_EVT_F_ACCESS;
-> >                  event.u.f_access.addr = addr;
-> >                  event.u.f_access.addr2 = ptw_info.addr;
-> > +                event.u.f_translation.class = SMMU_CLASS_IN;
-> >                  event.u.f_access.rnw = flag & 0x1;
-> >              }
-> >              break;
-> > @@ -974,6 +977,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-> >                  event.type = SMMU_EVT_F_PERMISSION;
-> >                  event.u.f_permission.addr = addr;
-> >                  event.u.f_permission.addr2 = ptw_info.addr;
-> > +                event.u.f_translation.class = SMMU_CLASS_IN;
-> >                  event.u.f_permission.rnw = flag & 0x1;
-> >              }
-> >              break;
-> 
+> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>
+> Hi,
+>
+> The aforementioned patch breaks virtio-gpu device migrations for versions
+> pre-9.0/9.0, both forwards and backwards. Versioning of `VMS_STRUCT` is
+> more
+> complex than it may initially appear, as evidenced in the problematic
+> commit
+> dfcf74fa68c ("virtio-gpu: fix scanout migration post-load").
+>
+> v2:
+>  - use a manual version field test (instead of the more complex struct
+> variant)
+>
+> v3:
+>  - introduce machine_check_version()
+>  - drop the VMSD version, and use machine version field test
+>
+> v4:
+>  - drop machine_check_version() approach
+>  - property renamed to x-scanout-vmstate-version
+>
+> Marc-Andr=C3=A9 Lureau (3):
+>   migration: add "exists" info to load-state-field trace
+>   migration: fix a typo
+>   virtio-gpu: fix v2 migration
+>
+>  include/hw/virtio/virtio-gpu.h |  1 +
+>  hw/core/machine.c              |  1 +
+>  hw/display/virtio-gpu.c        | 24 ++++++++++++++++--------
+>  migration/vmstate.c            |  7 ++++---
+>  migration/trace-events         |  2 +-
+>  5 files changed, 23 insertions(+), 12 deletions(-)
+>
+> --
+> 2.41.0.28.gd7d8841f67
+>
+>
+
+--000000000000385c24061893dafd
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Looks good here, thanks.</div><br><div class=3D"gmail_quo=
+te"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, May 16, 2024, 2:40=E2=80=
+=AFa.m.  &lt;<a href=3D"mailto:marcandre.lureau@redhat.com">marcandre.lurea=
+u@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">From: M=
+arc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lureau@redhat.com" ta=
+rget=3D"_blank" rel=3D"noreferrer">marcandre.lureau@redhat.com</a>&gt;<br>
+<br>
+Hi,<br>
+<br>
+The aforementioned patch breaks virtio-gpu device migrations for versions<b=
+r>
+pre-9.0/9.0, both forwards and backwards. Versioning of `VMS_STRUCT` is mor=
+e<br>
+complex than it may initially appear, as evidenced in the problematic commi=
+t<br>
+dfcf74fa68c (&quot;virtio-gpu: fix scanout migration post-load&quot;).<br>
+<br>
+v2:<br>
+=C2=A0- use a manual version field test (instead of the more complex struct=
+ variant)<br>
+<br>
+v3:<br>
+=C2=A0- introduce machine_check_version()<br>
+=C2=A0- drop the VMSD version, and use machine version field test<br>
+<br>
+v4:<br>
+=C2=A0- drop machine_check_version() approach<br>
+=C2=A0- property renamed to x-scanout-vmstate-version<br>
+<br>
+Marc-Andr=C3=A9 Lureau (3):<br>
+=C2=A0 migration: add &quot;exists&quot; info to load-state-field trace<br>
+=C2=A0 migration: fix a typo<br>
+=C2=A0 virtio-gpu: fix v2 migration<br>
+<br>
+=C2=A0include/hw/virtio/virtio-gpu.h |=C2=A0 1 +<br>
+=C2=A0hw/core/machine.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
+=C2=A0 1 +<br>
+=C2=A0hw/display/virtio-gpu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 24 +++++++++++++=
++++--------<br>
+=C2=A0migration/vmstate.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =
+7 ++++---<br>
+=C2=A0migration/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 2 +-<=
+br>
+=C2=A05 files changed, 23 insertions(+), 12 deletions(-)<br>
+<br>
+-- <br>
+2.41.0.28.gd7d8841f67<br>
+<br>
+</blockquote></div>
+
+--000000000000385c24061893dafd--
+

@@ -1,247 +1,176 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1447317ejl;
-        Thu, 16 May 2024 08:26:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXC7vfFlr3JLwSJrobo8BfE4sfCe0jqxyCfIo1VAGbfhWhXriV899+SpWuwyA6gbijcUn8O6dZN4H0FnTSqzzNpIn7lqTCq
-X-Google-Smtp-Source: AGHT+IHc92YdXlvaZDEhJypDzoZ93afIcwoquLhLeLRKUc/WuP1T22jFAQqKw8cNqh1EtUTJf9+n
-X-Received: by 2002:a05:622a:1354:b0:43e:1a17:10f9 with SMTP id d75a77b69052e-43e1a1746a4mr127590061cf.52.1715873188381;
-        Thu, 16 May 2024 08:26:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715873188; cv=none;
+Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1449817ejl;
+        Thu, 16 May 2024 08:30:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWCmVsjPc3Ws882AqkxPWfWpFIVmJ20Mb6wXZKcLKExBOd2R6KXoPtxhXkXTMGK6pLgnL0W8KxP01vnbKPRMwRWI0WtzvY/
+X-Received: by 2002:a05:600c:55da:b0:41b:e55c:8de0 with SMTP id 5b1f17b1804b1-41feaa3937fmr129279325e9.22.1715873406516;
+        Thu, 16 May 2024 08:30:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715873406; cv=none;
         d=google.com; s=arc-20160816;
-        b=w5NbfLjJbl+DWOTrCMMNAbH3ivd9YP+yMbu19BFVOnbQR35DwDkL+DMhyV3DpMO7P+
-         7JYFHc8/8LwlwDxFASz/ZW4ND7E9atxuGxNYrAtRLChBczOf5mXEcXfz2VRqgZhaqZ6q
-         ngn7xwoQbpDqE8chmBgMlT/jnyv5TfOIkv+qlQdgK5aRtKSzX1m3KLevh5bl8zsknpaL
-         FagsVFsVGR0P1vDPh5eQJod1jF8ETIHmSXUr/XmeEZTD3ty/6TnYO4JR6LjBMyVMgWeU
-         tD5N1CyG3its1JVPVS9FukNnx28LKh35FavjOg0EvmDQgI+VVrJBS7VtfjJ9dIRr/o5M
-         3Lrg==
+        b=fUqccQ6ZyU7z4sZ6eFrPlqkXGvKvV0BVWDuuGv6M5zj/yvwQp9h43SR00Pas1wr7mY
+         cbU3l/RwIUFihpkqNPtIyEMsgFGtNqW8XAAv11314teNLHZL3xuW4I1G/CMDS9qN8nBe
+         rqHBBR3WCMOehnVfCMCTCM7rHBtAB37AMhYh6FXcvBCzPJA2sdoG9ybufv9AmchO/3Nh
+         7Kuwrcfybr03ApkKx30xWQ/zc5oczEpItLfqSPBiU14nX5uifjkEliQkpR/j+Vt1Efdh
+         qfJpZUZo6USc2UOE0Jg62M1w+cAH1pJZrixPpjQSCGIHL79pUBTlv3PXk8eqaBkeC44A
+         pm1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=IYdMWOF4Cn/jq10inMPb5g39OtCoSDX7MqpcXyJIx48=;
-        fh=OrAbs+5FNS/8CM3sP/CUPjsHmV4PD4ldPwGTIZYXeoc=;
-        b=Ae8WPQFJqjQkkCCLl0I3Xyua0ES12CnFKVqLuh6iGY4pLufwQqFRfe5dPqXZfCu46l
-         NNtTArEHbbkXUmHHzszTutUtUwXei6+axhWY5XW1RyIQjxR0MWxjCHlZnmCkfBjEKQh3
-         9/DK+mNMNWwp4GhCjpiXFDwFFfHPoota84xggKFZRw+s6CoAtrD/g4xu05h22P6InhNn
-         5X+niHVluuEkE2Sq6YV+hzHU3yUH2orNa/aPb1G8Yp5YzrxS3fFBa9k7O+X2vWs18QeU
-         xK46jqa+Gv+dZQI8Hf9q6zrkaXrUIZ32wugbvM6LDnl4AtpWR3H/DS1eZbamlDEQdECV
-         NMkw==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=jinLSx1Bi957v0doVAhmp1h/kFD3OvDhTl6ISPr3gNU=;
+        fh=3Uh4MAkSUhZVj6mGkIoXjyOzkrKFOQSUoF1+dfOha8w=;
+        b=HDIZW0lzQwVMCh7QE/SaOJSdKyq71ESAaLMskoUkZF/hUP2dsQQxp9KMnbWXGrU3uk
+         3hZAOCX6K1V3FD8LJscnbrOH10e8b5+mGNNcRELilgmaFrDrlcuI8ZTTt2LLR5gRdxyQ
+         z+HL8tMfjDacfBuIcM9zZ6RKi+AS1MVF46WFWSe7hpu+4Rho6K/1GSAsGZtZ2m7C0053
+         cdU4tMS25Ke+Tq2v81zZcYLRfk0bgrTPsY6y/fSssap8U2LzOiTaFHOrtcMfC2sCtKxf
+         VyW94pnSUpiWjTPSfK54MoQkHll8yDIYobjjkvDs6aUzZcwWml1GogDRR3X26a/RwidQ
+         O/9A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a4T6KdRr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43df56d061fsi168170541cf.652.2024.05.16.08.26.28
+       dkim=pass header.i=@google.com header.s=20230601 header.b=KlMwCFNi;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <smostafa@google.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4201592a0adsor3682925e9.3.2024.05.16.08.30.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 May 2024 08:26:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 16 May 2024 08:30:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a4T6KdRr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s7czl-0007Dm-5A; Thu, 16 May 2024 11:26:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhexu@redhat.com>) id 1s7czk-0007Cd-FR
- for qemu-arm@nongnu.org; Thu, 16 May 2024 11:26:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhexu@redhat.com>) id 1s7cze-0005fo-An
- for qemu-arm@nongnu.org; Thu, 16 May 2024 11:26:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1715873163;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=IYdMWOF4Cn/jq10inMPb5g39OtCoSDX7MqpcXyJIx48=;
- b=a4T6KdRrAGLMLdRzmkmnvwxInSbN5lc2DUCce3XuGLktoijzxcRShYoGpt70ertgme2d9r
- 09DxtTm6VdXjhs6qUZpeSHXJB94Ne1/9eNZHn/D99FyIXzZMF6t65aPmuVmKPPA6ccpP4f
- ujMRi+JyBO+kjN9Gcf6ahhV0CWtf+ns=
-Received: from mail-yb1-f199.google.com (mail-yb1-f199.google.com
- [209.85.219.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-677-VW_1Mk6XMPeJndhEuiPRRQ-1; Thu, 16 May 2024 11:26:02 -0400
-X-MC-Unique: VW_1Mk6XMPeJndhEuiPRRQ-1
-Received: by mail-yb1-f199.google.com with SMTP id
- 3f1490d57ef6-de5b0b420dcso485026276.2
- for <qemu-arm@nongnu.org>; Thu, 16 May 2024 08:26:02 -0700 (PDT)
+       dkim=pass header.i=@google.com header.s=20230601 header.b=KlMwCFNi;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1715873406; x=1716478206; darn=linaro.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=jinLSx1Bi957v0doVAhmp1h/kFD3OvDhTl6ISPr3gNU=;
+        b=KlMwCFNi4T/EWnZVZYt7CnJz01mqu9lndt2wnah3ZqKA+iXsU0bAVJdGN1QQful1oL
+         Hk9Wx+68UFKIbvpiFZRqEBLUcNMq09opiaspu5ceAe2TCnZFnsjZ9acleN6u7k8vpYO3
+         AaWgkrgXtllUCAxKRbZ/TdsPP++G/wfDuyOUBiwey3fFqetO2ytgQYPabOfthSM2So5P
+         H2M3K+6yEZ1br8rSdpZTmTA40fSSMituPEsI+uGNJ7LuKMECTE8u9vr4aBMxHnwjC0BX
+         jtrCfucnn/C8HXmDZ6odd6J+zj6qmLDVbbKdDRuqDR+DFXo82O9tkOUCsXtfOEuazL4W
+         /Exw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715873161; x=1716477961;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=IYdMWOF4Cn/jq10inMPb5g39OtCoSDX7MqpcXyJIx48=;
- b=C4rmNXBdfchgUfpptehWaAZYfgu/FMr8n4/tuBXXGWuwFs4NLkOUQtn6ICAyAa5WWd
- 8Z8rxvFf8NDTQUWP/WlFnpilypM4dQ51V6j5JA6G4rQuc0/ufxodKbqJwQuLzrShylXk
- 7cvlIuUmPEf6IGl35psse0BMUfkvm85IVgWERSw6+SM1zL8jIjc8F04eSx6vFdxZpWYH
- mSRTxYU2bOF/v7kI46RY7NI4xBVvkkc/amW6HxxaSz67QD9f4jZZnTdLGrfgj+Xuai+A
- y/PsospHKEYUuXjwFeY7dvRgq0QcrZnAlb7eq3JYP9a5qNDsY/LCN4qgnSuO5CZhjlBU
- sRLw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU97R1FsaHpfM6gtFGOk9WOK9e/uNXiAGjUofKwWuC3+hTmUB31aheI5BuWGXHqYroUrsO+ofG3Lvhj6vJ+VLgSnkf1
-X-Gm-Message-State: AOJu0YzkzPcs+IIXZfTOfdB65BVT7A0MrZ6FSeel/AbOYbmp12pYcmeO
- AVyw3L7GmdDisza+L81soY4OeogGMA1eI/Yy+vs2oYt3LwlcpcnoMe6pEw49BxsYTH+hL4U/s9v
- QWPZjK1drOfoZ359jjddbsjS18NobjrPXA9IkTgHI5cJjQOrDcPw+vtM7wuofC2/U5eVoojYgZr
- dShyTa4gNkg/mZoWADZksx+k7t
-X-Received: by 2002:a05:6902:220a:b0:dee:7ff9:a053 with SMTP id
- 3f1490d57ef6-dee7ff9a1c3mr10661629276.3.1715873161382; 
- Thu, 16 May 2024 08:26:01 -0700 (PDT)
-X-Received: by 2002:a05:6902:220a:b0:dee:7ff9:a053 with SMTP id
- 3f1490d57ef6-dee7ff9a1c3mr10661577276.3.1715873160642; Thu, 16 May 2024
- 08:26:00 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1715873406; x=1716478206;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=jinLSx1Bi957v0doVAhmp1h/kFD3OvDhTl6ISPr3gNU=;
+        b=MiRsf0kVlX5fXsggOHYSHpyR528NdrIyvuxPn8SCsQDxUsT7+cQjimjQ6DwzmuyuSr
+         YfUY/K1PrycbYEoL/7BwbISVjot5Ty5tJoqEM0986+8jamaLyZ8KN3SSljXnj0w4mwDu
+         dwA0JdKPpK+t33Y3WA886wKyhz0zzUh6E4s4yPoB2AQe8z85uWdfh75mb5HxsjinPSNB
+         o/7XWkCZ8OkyPutGEOsPx/rJypesFT2Dy6RMRnQ4F+mn0UY/3NgBf+9puR9NI0ggC0W+
+         IYXL31vspShW74iiDYDjo6P0jw7U4Zu4FZVI+MnoJ7K1DEwQR8gZEimYa58/g0ScvLKS
+         kq3g==
+X-Forwarded-Encrypted: i=1; AJvYcCVdRyaoeqlzvzS9BQI+pBQ/1L/x+GAgicdQVusHS23ubJObgckQXSpju9f3PBbQG7+BJuCTPtXhO1Z/HovN9QyI+XjUqbB9
+X-Gm-Message-State: AOJu0YzDzv1UMcWg+VwLa6RXeq+3lJdBT2QlL3Sx94KGrEY2+EnEDh5t
+	vhQS8060+0f2sHLKMgTNZQndWOvge/dTyXVQ6/gEwr7FfxGSj2jb866klkphJQ==
+X-Google-Smtp-Source: AGHT+IEQn1WPGq1X/VJV81JrV7ibIaep5s4Zt2ExJV4yXQect/QS33902BWt98J9Hmu6k510FE2fiA==
+X-Received: by 2002:a05:600c:1e12:b0:419:b16:9c14 with SMTP id 5b1f17b1804b1-4200f8697eemr11861635e9.1.1715873405853;
+        Thu, 16 May 2024 08:30:05 -0700 (PDT)
+Return-Path: <smostafa@google.com>
+Received: from google.com (180.232.140.34.bc.googleusercontent.com. [34.140.232.180])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-41ff063d8cesm239609605e9.46.2024.05.16.08.30.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 May 2024 08:30:05 -0700 (PDT)
+Date: Thu, 16 May 2024 15:30:01 +0000
+From: Mostafa Saleh <smostafa@google.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+	jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
+	marcin.juszkiewicz@linaro.org
+Subject: Re: [RFC PATCH v3 09/18] hw/arm/smmu-common: Rework TLB lookup for
+ nesting
+Message-ID: <ZkYmedM5uHf3DM2O@google.com>
+References: <20240429032403.74910-1-smostafa@google.com>
+ <20240429032403.74910-10-smostafa@google.com>
+ <6afc41f6-7127-46f2-833f-6eb4abb2730d@redhat.com>
 MIME-Version: 1.0
-References: <20240516084022.1398919-1-marcandre.lureau@redhat.com>
-In-Reply-To: <20240516084022.1398919-1-marcandre.lureau@redhat.com>
-From: Peter Xu <peterx@redhat.com>
-Date: Thu, 16 May 2024 09:25:49 -0600
-Message-ID: <CADLectnt6_G9trMjfEVZ7tn--bGfEy8iMAdjntjDSTeHUw2cqg@mail.gmail.com>
-Subject: Re: [PATCH v4 0/3] Fix "virtio-gpu: fix scanout migration post-load"
-To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, Fiona Ebner <f.ebner@proxmox.com>, 
- Fabiano Rosas <farosas@suse.de>, Yanan Wang <wangyanan55@huawei.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Gerd Hoffmann <kraxel@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- "Michael S. Tsirkin" <mst@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000385c24061893dafd"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=zhexu@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.022,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J4yZ0rtnlBYC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <6afc41f6-7127-46f2-833f-6eb4abb2730d@redhat.com>
+X-TUID: Er8HSE7QEoex
 
---000000000000385c24061893dafd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi Eric,
 
-Looks good here, thanks.
+On Wed, May 15, 2024 at 03:54:36PM +0200, Eric Auger wrote:
+> 
+> 
+> On 4/29/24 05:23, Mostafa Saleh wrote:
+> > In the previous patch, comine_tlb() was added which combines 2 TLB
+> combine
+Will do.
 
-On Thu, May 16, 2024, 2:40=E2=80=AFa.m. <marcandre.lureau@redhat.com> wrote=
-:
+> > entries into one, which chooses the granule and level from the
+> > smallest entry.
+> >
+> > This means that a nested translation, an entry can be cached with the
+> that with nested translation
+Will do.
 
-> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->
-> Hi,
->
-> The aforementioned patch breaks virtio-gpu device migrations for versions
-> pre-9.0/9.0, both forwards and backwards. Versioning of `VMS_STRUCT` is
-> more
-> complex than it may initially appear, as evidenced in the problematic
-> commit
-> dfcf74fa68c ("virtio-gpu: fix scanout migration post-load").
->
-> v2:
->  - use a manual version field test (instead of the more complex struct
-> variant)
->
-> v3:
->  - introduce machine_check_version()
->  - drop the VMSD version, and use machine version field test
->
-> v4:
->  - drop machine_check_version() approach
->  - property renamed to x-scanout-vmstate-version
->
-> Marc-Andr=C3=A9 Lureau (3):
->   migration: add "exists" info to load-state-field trace
->   migration: fix a typo
->   virtio-gpu: fix v2 migration
->
->  include/hw/virtio/virtio-gpu.h |  1 +
->  hw/core/machine.c              |  1 +
->  hw/display/virtio-gpu.c        | 24 ++++++++++++++++--------
->  migration/vmstate.c            |  7 ++++---
->  migration/trace-events         |  2 +-
->  5 files changed, 23 insertions(+), 12 deletions(-)
->
-> --
-> 2.41.0.28.gd7d8841f67
->
->
+> > granule of stage-2 and not stage-1.
+> >
+> > However, the lookup for an IOVA in nested configuration is done with
+> > stage-1 granule, this patch reworks lookup in that case, so it falls
+> > back to stage-2 granule if no entry is found using stage-1 granule.
+> I should have read that before commenting previous patch ;-)
+> Anyway this shows that something is missing in previous patch, at least
+> the above explanation ;-)
 
---000000000000385c24061893dafd
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Yup, I can add a comment in the previous patch or reorder them, let me
+know what you prefer.
 
-<div dir=3D"auto">Looks good here, thanks.</div><br><div class=3D"gmail_quo=
-te"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, May 16, 2024, 2:40=E2=80=
-=AFa.m.  &lt;<a href=3D"mailto:marcandre.lureau@redhat.com">marcandre.lurea=
-u@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
-e=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">From: M=
-arc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lureau@redhat.com" ta=
-rget=3D"_blank" rel=3D"noreferrer">marcandre.lureau@redhat.com</a>&gt;<br>
-<br>
-Hi,<br>
-<br>
-The aforementioned patch breaks virtio-gpu device migrations for versions<b=
-r>
-pre-9.0/9.0, both forwards and backwards. Versioning of `VMS_STRUCT` is mor=
-e<br>
-complex than it may initially appear, as evidenced in the problematic commi=
-t<br>
-dfcf74fa68c (&quot;virtio-gpu: fix scanout migration post-load&quot;).<br>
-<br>
-v2:<br>
-=C2=A0- use a manual version field test (instead of the more complex struct=
- variant)<br>
-<br>
-v3:<br>
-=C2=A0- introduce machine_check_version()<br>
-=C2=A0- drop the VMSD version, and use machine version field test<br>
-<br>
-v4:<br>
-=C2=A0- drop machine_check_version() approach<br>
-=C2=A0- property renamed to x-scanout-vmstate-version<br>
-<br>
-Marc-Andr=C3=A9 Lureau (3):<br>
-=C2=A0 migration: add &quot;exists&quot; info to load-state-field trace<br>
-=C2=A0 migration: fix a typo<br>
-=C2=A0 virtio-gpu: fix v2 migration<br>
-<br>
-=C2=A0include/hw/virtio/virtio-gpu.h |=C2=A0 1 +<br>
-=C2=A0hw/core/machine.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=
-=C2=A0 1 +<br>
-=C2=A0hw/display/virtio-gpu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 24 +++++++++++++=
-+++--------<br>
-=C2=A0migration/vmstate.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =
-7 ++++---<br>
-=C2=A0migration/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 2 +-<=
-br>
-=C2=A05 files changed, 23 insertions(+), 12 deletions(-)<br>
-<br>
--- <br>
-2.41.0.28.gd7d8841f67<br>
-<br>
-</blockquote></div>
+Thanks,
+Mostafa
 
---000000000000385c24061893dafd--
-
+> 
+> Eric
+> >
+> > Signed-off-by: Mostafa Saleh <smostafa@google.com>
+> > ---
+> >  hw/arm/smmu-common.c | 24 ++++++++++++++++++++++--
+> >  1 file changed, 22 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> > index 0d6945fa54..c67af3bc6d 100644
+> > --- a/hw/arm/smmu-common.c
+> > +++ b/hw/arm/smmu-common.c
+> > @@ -66,8 +66,10 @@ SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
+> >      return key;
+> >  }
+> >  
+> > -SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+> > -                                SMMUTransTableInfo *tt, hwaddr iova)
+> > +static SMMUTLBEntry *smmu_iotlb_lookup_all_levels(SMMUState *bs,
+> > +                                                  SMMUTransCfg *cfg,
+> > +                                                  SMMUTransTableInfo *tt,
+> > +                                                  hwaddr iova)
+> >  {
+> >      uint8_t tg = (tt->granule_sz - 10) / 2;
+> >      uint8_t inputsize = 64 - tt->tsz;
+> > @@ -88,6 +90,24 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+> >          }
+> >          level++;
+> >      }
+> > +    return entry;
+> > +}
+> > +
+> > +SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+> > +                                SMMUTransTableInfo *tt, hwaddr iova)
+> > +{
+> > +    SMMUTLBEntry *entry = NULL;
+> > +
+> > +    entry = smmu_iotlb_lookup_all_levels(bs, cfg, tt, iova);
+> > +    /*
+> > +     * For nested translation also try the s2 granule, as the TLB will insert
+> > +     * it if the size of s2 tlb entry was smaller.
+> > +     */
+> > +    if (!entry && (cfg->stage == SMMU_NESTED) &&
+> > +        (cfg->s2cfg.granule_sz != tt->granule_sz)) {
+> > +        tt->granule_sz = cfg->s2cfg.granule_sz;
+> > +        entry = smmu_iotlb_lookup_all_levels(bs, cfg, tt, iova);
+> > +    }
+> >  
+> >      if (entry) {
+> >          cfg->iotlb_hits++;
+> 

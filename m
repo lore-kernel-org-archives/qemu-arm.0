@@ -1,454 +1,238 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1410181ejl;
-        Thu, 16 May 2024 07:35:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUvMYgHsuGXbRSb2llDrNqva3afcD1sC0Fe6JBq566Ah/h4IDeCjSIFNWLtHP9Y8Uo/lKeRwUP+foVlI4ZHFTCD+B0IZYlu
-X-Google-Smtp-Source: AGHT+IEbyovejPm4HGTTlmnWpDccW/VkE6ppWnDZBFowhhvxeP579DhtnWIXZbBfa1wMvJWGP606
-X-Received: by 2002:a25:a428:0:b0:de6:40c:1910 with SMTP id 3f1490d57ef6-dee5229146amr16072690276.50.1715870102752;
-        Thu, 16 May 2024 07:35:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715870102; cv=none;
+Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1415749ejl;
+        Thu, 16 May 2024 07:43:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCULy5ENpvZ3TB6KqIKlnS6DYXGLPJinw/VsvAr8V9VuwVrhEqvZXFWMrb6cr5EFcCNkb4ZTo9cdTQhP+alNFBQMJJM2yQqR
+X-Received: by 2002:a2e:460a:0:b0:2e6:bb81:ba0b with SMTP id 38308e7fff4ca-2e6bb81ba18mr60424041fa.25.1715870624757;
+        Thu, 16 May 2024 07:43:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715870624; cv=none;
         d=google.com; s=arc-20160816;
-        b=VDFllT43cFn5WGz/e4XA3aEslIGd6PFMUIMy1EwIoN6uOviYLvrG3RjY7XR+Le6u9q
-         h3KBDAIR8Vw6peKA22iV8azKbumJ+yblABmklAPRS6lnkeKwthma0UZK2wG1zENvBL5f
-         X0/QYZb6K0YE/htxaFgH1mGIzP8nDn1kP6iIgTzSSMgTyCmfVWzzPeaj5XB/WD49rbSj
-         vRWbj57Rn/jTgAl4l0RFTz6zjV4gIeYyuj+QWrsGEDqBKMHZHzNCQQqglxE4f9AgxI18
-         L2DbIu+zNctCc6DCOtlO5KdfNlIjtq3oaDt9MEWDSHic/wza5ORw4jF+OqOlwh79mnFb
-         mp0A==
+        b=mYj+iOkvM6xkKye9aqC+xXQUmS0LO/plF3XWXMIS/0jUOEWXvklYSH6XQIdYTpcgRu
+         mUGYMB1EiBCMlmJhz/F/fa170xy6BG0TpI9lOOH9agjN6698sF0RB0PFCCurdM17zJUt
+         ovLTzxpah80YNGbFOuXEdHAKHv/YoC8RTJanir2BrKalTFdfjuPOCeisoLZWx/gGTDBX
+         Zs8qZx8r1xGP0lVBn2GI/KMfrI4+WkM/aW9w8OJ5yTR4jllgODqf/BYxVUvSBaxDZXBx
+         iqQXB/rRcsqxJPtoSvxi0+cpMWVkeQXnFOIRQKjN+3e8fhlBJA2oBiTwptMrDXF9S4wh
+         AgrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=3Aas5Srfo2SnprTQJac8rs6PzK/6A1BIOIIX2CJw7t0=;
-        fh=F8lI6APrpOpRMGxIPqCutMXITf12uKef9cJV3DxjelY=;
-        b=tw3NR33ElJ27pEu87q6jyjOWSv8pWAN/+IYMrryvpHkMfyuKhMOaz0sh1wFeAI5dOk
-         TIsJ3zNzy7+7BH42zgg/XC2nRVGsztrGNPEYFzlzNvkVSFFi/8I6ZYnfqvY8Z3i1Oxvy
-         XCSryMGLiOU5G553a+mOGx93J686admul2SfeRnGwF/4LoZGnXlQR9trkC2wBFS+ziOK
-         W54KmG/HlMUsU91bTc/tzGk+7/tLYfmStm38ONoDz9/ZvQgP0FwV7xvBWb9dxblhrygJ
-         ConDDh7mlrXBxYnhkUgE0rZH2cSUV7UOwwsDLszfuTcmmN2SQDVJeMO4GZMZ5lMonN4G
-         1N5Q==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=NWkcSf/8im92H27wvNg3Z2ek6JT78ooJ7tgguzoBa8Q=;
+        fh=2EC/z01xSlmvILE4VfpNIEJMQ2RGyDX82k/kE0iZT0w=;
+        b=SSP8AKubqD9Q/6lvi+x5uj/x/fKhLD1nHyiQaroFX8X1LT+jv/8Vs5yPt4UTeszCcx
+         2yF8r8tm9hroSEXdrGTgdlNV54EuVu6f8EPs9BOyd3YmyanSvjukMiYtsZvWUOmN135M
+         xKSVVQ0Y2OQF/hk58zW5RDqhs1akICru94zO5qDeUYv8toFINqBbTjOdmU4neBNTPnyU
+         v8xGQE6E2sgQ+DIj3DfbQZG7tTIT6JKkwVHaTbZdQRYsR66yVSvzhxmyLelGWjdOcZL/
+         r8z9NstnE7krlSdpwQ/bPQdlgtTt872g+gpXuxTU24tuf+9TwrUNRk85l6x8iJ/tCs0Q
+         6b3g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=X7zFEPua;
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <quic_svaddagi@quicinc.com>
-Received: from mx0b-0031df01.pphosted.com (mx0b-0031df01.pphosted.com. [205.220.180.131])
-        by mx.google.com with ESMTPS id 3f1490d57ef6-debd371260csi6893959276.41.2024.05.16.07.35.02
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 May 2024 07:35:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) client-ip=205.220.180.131;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=YsQzCTEe;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <smostafa@google.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-41f440ccfb5sor7857975e9.6.2024.05.16.07.43.44
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 16 May 2024 07:43:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=X7zFEPua;
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 44G84bEw007625;
-	Thu, 16 May 2024 14:35:02 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	from:to:cc:subject:date:message-id:in-reply-to:references
-	:mime-version:content-transfer-encoding:content-type; s=
-	qcppdkim1; bh=3Aas5Srfo2SnprTQJac8rs6PzK/6A1BIOIIX2CJw7t0=; b=X7
-	zFEPuaLLN6EAaVkv2Qdxzuv/ZoKE3MhC4ZZWLhXMdB1VFlfbZNjpnfSLxMmM5XfJ
-	YO1ZWYqHAOz0KVcgQNcY7LSk0HaVWOR/6U37kdeChwWYi3DchKHuOlzIZOTYsnaO
-	m0bEBMlmTgX6XgRR1xulkq3xOXaMaiNWnNbx8gBojuIt6r3AdZwqXoOd4mQCEVXv
-	BldyKBXJ/P/B+DLma+Wwu09wAp8uh/n7j0QX+xgpUfgfclfS5DrxTVr1SMGpmfgL
-	nibrY8Doid9Qt0c+Bo+9IOm8xN/e9psjWICPHLH152LPXZh7a4s2K24GMXS6oOk5
-	xqXJYOXOMxeZw8rA5SjQ==
-Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3y47f45ubm-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 16 May 2024 14:35:02 +0000 (GMT)
-Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
-	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 44GEZ0uu009021
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 16 May 2024 14:35:01 GMT
-Received: from blr-ubuntu-31.qualcomm.com (10.80.80.8) by
- nalasex01b.na.qualcomm.com (10.47.209.197) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.9; Thu, 16 May 2024 07:34:56 -0700
-From: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-To: <peter.maydell@linaro.org>, <philmd@linaro.org>, <alex.bennee@linaro.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <quic_svaddagi@quicinc.com>, <quic_tsoni@quicinc.com>,
-        <quic_pheragu@quicinc.com>, <quic_eberman@quicinc.com>,
-        <quic_yvasi@quicinc.com>, <quic_cvanscha@quicinc.com>,
-        <quic_mnalajal@quicinc.com>
-Subject: [RFC/PATCH v2 12/12] gunyah: Documentation
-Date: Thu, 16 May 2024 14:33:56 +0000
-Message-ID: <20240516143356.1739402-13-quic_svaddagi@quicinc.com>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240516143356.1739402-1-quic_svaddagi@quicinc.com>
-References: <20240516143356.1739402-1-quic_svaddagi@quicinc.com>
+       dkim=pass header.i=@google.com header.s=20230601 header.b=YsQzCTEe;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1715870624; x=1716475424; darn=linaro.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=NWkcSf/8im92H27wvNg3Z2ek6JT78ooJ7tgguzoBa8Q=;
+        b=YsQzCTEeNpAim65W1hdjIvWQQ+1fOCvk2eO2Os3nbqCEyczRFGZuTS1uGifpo93GRv
+         3VY0KmnH7qkUv/pRFSq1KiaJUllibINx7cA+cAFmo1P3YftCIes++J7FLUp97vNMfHkk
+         FJT4eroFifTSDk0wHB65OC2WrILbueW0o/tEXIU36DIVnfB9mxmKRQdzkZs2FeulYwpY
+         OMF8j/E3dIM/1fIAPYizZ5Ha5k7+W4xzNCzr5YvguND/9UOoHHOVlAKBGaW3VhXTwHHB
+         Un9UMsoII6wVjdCFibjJ2WMBq+TNxAoDVOe0//lOPMw4TAVWk92mF8MOU/tLTRrTudJ+
+         +u3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715870624; x=1716475424;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=NWkcSf/8im92H27wvNg3Z2ek6JT78ooJ7tgguzoBa8Q=;
+        b=eJtJWxku8BChEuq8Mvi8izoiCkYqwUKaqKJTXCRtNUPPiG2c1LXRx25K3fx/m0C96J
+         XGy66iGkWap1IPGIHP/u1Rre3cAQJvygNNthnMwSbOtZO+rW7n7s6eIQeSC0qXb9wLCo
+         MApA+caLiNrEazN+Za/OHPhouIRWtdsLC/mcZ/em21GhL2oQe6VbYSBPob4Yomp72i6T
+         YBbgMBfYVg3pE8waa4WjIpTaGJJm8QmozPlU43LCNXqaIfoPXNuWdwgxltlI50iDkEKI
+         lKtinUE4Svj9mhFKtG6mdEO27P9rMZ52PpvPZSEoBPJBmwfo09Y/xQmMdX7ba9cvXtwD
+         z7Xw==
+X-Forwarded-Encrypted: i=1; AJvYcCV3eQwiK7MRoZqI2OM+kArSgyzU2DUpRzakfMCVdGqHXWlKYRqUn6g4FXNsh9KFi8LaxH6mDkD3aeMmAWfx3zHZ9YrW6Wmt
+X-Gm-Message-State: AOJu0YypYSDw5JDbeLuEBIYosHlUkRM0O0MY99ggodv1G97q4WLCbTbZ
+	Je0N4AKnqVEjXm9cHhQUt0hR/C4kf1uny7CY+2EBkXbkuOsHEILr6UY7h0gX4g==
+X-Google-Smtp-Source: AGHT+IFRYVanbhYW8BmcC3n1FeDtASd2iWzN0nlBA6T7Qhfh4hbQq7qbD603QECiovVm3qK2FP+BKg==
+X-Received: by 2002:a05:600c:a4a:b0:41a:444b:e1d9 with SMTP id 5b1f17b1804b1-4200ee37a4cmr11750855e9.4.1715870623671;
+        Thu, 16 May 2024 07:43:43 -0700 (PDT)
+Return-Path: <smostafa@google.com>
+Received: from google.com (180.232.140.34.bc.googleusercontent.com. [34.140.232.180])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-41fe004eae9sm257098935e9.1.2024.05.16.07.43.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 May 2024 07:43:43 -0700 (PDT)
+Date: Thu, 16 May 2024 14:43:39 +0000
+From: Mostafa Saleh <smostafa@google.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+	jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
+	marcin.juszkiewicz@linaro.org
+Subject: Re: [RFC PATCH v3 02/18] hw/arm/smmu: Fix IPA for stage-2 events
+Message-ID: <ZkYbm91fd0Flwo2r@google.com>
+References: <20240429032403.74910-1-smostafa@google.com>
+ <20240429032403.74910-3-smostafa@google.com>
+ <4161c29f-411c-480e-abca-84e8963ce0ab@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01b.na.qualcomm.com (10.47.209.197)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: amMviz2bTaM6VHRI06uY_cNDmn7mZIOd
-X-Proofpoint-ORIG-GUID: amMviz2bTaM6VHRI06uY_cNDmn7mZIOd
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.11.176.26
- definitions=2024-05-16_07,2024-05-15_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
- phishscore=0 bulkscore=0 clxscore=1015 malwarescore=0 adultscore=0
- lowpriorityscore=0 impostorscore=0 suspectscore=0 mlxlogscore=999
- mlxscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2405010000 definitions=main-2405160102
-X-TUID: 4WqSnBfeUXXV
+In-Reply-To: <4161c29f-411c-480e-abca-84e8963ce0ab@redhat.com>
+X-TUID: //FAwtkVkpPF
 
-Add gunyah.rst that provide some informaiton on how to build and test
-'gunyah' accelerator with open-source Gunyah hypervisor.
+Hi Eric,
 
-Signed-off-by: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
----
- MAINTAINERS                |   1 +
- docs/system/arm/gunyah.rst | 326 +++++++++++++++++++++++++++++++++++++
- 2 files changed, 327 insertions(+)
- create mode 100644 docs/system/arm/gunyah.rst
+On Mon, May 13, 2024 at 01:47:44PM +0200, Eric Auger wrote:
+> Hi Mostafa,
+> 
+> On 4/29/24 05:23, Mostafa Saleh wrote:
+> > For the following events (ARM IHI 0070 F.b - 7.3 Event records):
+> > - F_TRANSLATION
+> > - F_ACCESS
+> > - F_PERMISSION
+> > - F_ADDR_SIZE
+> >
+> > If fault occurs at stage 2, S2 == 1 and:
+> >   - If translating an IPA for a transaction (whether by input to
+> >     stage 2-only configuration, or after successful stage 1 translation),
+> >     CLASS == IN, and IPA is provided.
+> CLASS == IN sounds a bit confusing here since the class value depends on
+> what is being translated and class is not handled in that patch.
+At this point only CLASS IN is used as nesting is not supported,
+I will clarify that in the commit message.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c42fdc2afd..2f69114814 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -532,6 +532,7 @@ F: include/sysemu/gunyah.h
- F: include/sysemu/gunyah_int.h
- F: target/arm/arm_gicv3_gunyah.c
- F: hw/intc/arm_gicv3_gunyah.c
-+F: docs/system/arm/gunyah.rst
- 
- WHPX CPUs
- M: Sunil Muthuswamy <sunilmut@microsoft.com>
-diff --git a/docs/system/arm/gunyah.rst b/docs/system/arm/gunyah.rst
-new file mode 100644
-index 0000000000..971bfd30c1
---- /dev/null
-+++ b/docs/system/arm/gunyah.rst
-@@ -0,0 +1,326 @@
-+'gunyah' accelerator (``gunyah``)
-+=================================
-+
-+Gunyah is a high performance, scalable and flexible hypervisor built for
-+demanding battery powered, real-time, safety and security use cases.
-+
-+The Gunyah Hypervisor open source project provides a reference Type-1 hypervisor
-+configuration suitable for general purpose hosting of multiple trusted and
-+dependent VMs. Further information on open-source version of Gunyah Hypervisor
-+can be obtained from:
-+
-+https://github.com/quic/gunyah-hypervisor
-+
-+To get started with open-source version of Gunyah Hypervisor, refer to the
-+instructions available at:
-+
-+https://github.com/quic/gunyah-support-scripts
-+
-+Build and testing
-+-----------------
-+
-+Configure and build Qemu
-+````````````````````````
-+
-+Apply the proposed patches for 'gunyah' accelerator support in Qemu and build
-+it.
-+
-+.. code-block:: bash
-+
-+        $ ./configure --target-list=aarch64-softmmu --enable-debug --enable-gunyah --static
-+        $ make -j4
-+        $ mv build/qemu-system-aarch64 build/qemu-gunyah
-+
-+Clone gunyah-support scripts
-+````````````````````````````
-+
-+.. code-block:: bash
-+
-+        $ git clone https://github.com/quic/gunyah-support-scripts
-+
-+Instructions in this document to build and test Gunyah hypervisor was validated
-+with the latest commit in gunyah-support-scripts being:
-+
-+6a959c8 tools: Fix permission and version related
-+
-+Patch gunyah-support scripts
-+````````````````````````````
-+Apply below patch to gunyah-support scripts. This is required **temporarily** until
-+the scripts can be updated to support Qemu as VMM (in addition to CrosVM) and
-+also to fix some issues.
-+
-+.. code-block:: bash
-+
-+    diff --git a/scripts/build-docker-img.sh b/scripts/build-docker-img.sh
-+    index 98e7881..a6aa774 100755
-+    --- a/scripts/build-docker-img.sh
-+    +++ b/scripts/build-docker-img.sh
-+    @@ -38,7 +38,7 @@ DOCKER_OPTIONS=" build . "
-+     #DOCKER_OPTIONS+=" --progress=plain "
-+
-+     #  no-cache alleviates some install errors for not finding some packages
-+    -#DOCKER_OPTIONS+=" --no-cache "
-+    +DOCKER_OPTIONS+=" --no-cache "
-+
-+     # user environment related so the permissions will same as the host machine
-+     DOCKER_OPTIONS+=" --build-arg UID=$(id -u) "
-+    diff --git a/scripts/core-utils/clone-linux.sh b/scripts/core-utils/clone-linux.sh
-+    index 714162e..2b79bc7 100755
-+    --- a/scripts/core-utils/clone-linux.sh
-+    +++ b/scripts/core-utils/clone-linux.sh
-+    @@ -26,8 +26,7 @@ cd ${LINUX_DIR}/src
-+     LINUX_VER="v6.5"
-+     echo -e "\nCloning Linux ${LINUX_VER}:"
-+     git clone \
-+    -    --depth=1 --progress -c advice.detachedHead=false \
-+    -    -b ${LINUX_VER}  \
-+    +    --progress -c advice.detachedHead=false \
-+         https://github.com/torvalds/linux.git   || {
-+        echo "Unable to clone Linux"
-+        return
-+    @@ -58,7 +57,11 @@ echo "Installed b4 to ${LINUX_DIR}/tools/b4"
-+
-+     cd ${LINUX_DIR}/src/linux
-+
-+    -${LINUX_DIR}/tools/b4/b4.sh shazam https://lore.kernel.org/all/20230613172054.3959700-1-quic_eberman@quicinc.com/
-+    +
-+    +${LINUX_DIR}/tools/b4/b4.sh am https://lore.kernel.org/all/20230613172054.3959700-1-quic_eberman@quicinc.com/
-+    +git checkout -b v14_20230613_quic_eberman_quicinc_com 858fd168a95c5b9669aac8db6c14a9aeab446375
-+    +git am ./v14_20230613_quic_eberman_drivers_for_gunyah_hypervisor.mbx
-+    +
-+     echo "Applied gunyah drivers patch successfully"
-+
-+     echo "Generate gunyah.config"
-+    diff --git a/scripts/install-wsp-imgs.sh b/scripts/install-wsp-imgs.sh
-+    index 12150f3..32107e0 100755
-+    --- a/scripts/install-wsp-imgs.sh
-+    +++ b/scripts/install-wsp-imgs.sh
-+    @@ -100,15 +100,23 @@ if [[ ! -f ${WORKSPACE}/run-qemu.sh ]]; then
-+         cp ${BASE_DIR}/utils/run-qemu.sh ${WORKSPACE}/run-qemu.sh
-+     fi
-+
-+    -if [[ ! -f ${WORKSPACE}/crosvm/crosvm ]]; then
-+    -    mkdir -p ${WORKSPACE}/crosvm
-+    -    cd ${WORKSPACE}/crosvm
-+    -    . clone-crosvm.sh
-+    -    . build-crosvm.sh
-+    -
-+    -    echo -e 'export CROSVM_FILE_PATH=${WORKSPACE}/crosvm/crosvm' >> ${WORKSPACE}/.wsp-env
-+    -    . ${WORKSPACE}/.wsp-env
-+    -fi
-+    +cp ${BASE_DIR}/utils/qemu-gunyah ${WORKSPACE}/
-+    +cp ${BASE_DIR}/utils/efi-virtio.rom ${WORKSPACE}/
-+    +cp ${BASE_DIR}/utils/en-us ${WORKSPACE}/
-+    +cp ${BASE_DIR}/utils/svm_disk.img ${WORKSPACE}/
-+    +
-+    +#if [[ ! -f ${WORKSPACE}/crosvm/crosvm ]]; then
-+    +#    mkdir -p ${WORKSPACE}/crosvm
-+    +#    cd ${WORKSPACE}/crosvm
-+    +#    . clone-crosvm.sh
-+    +#    . build-crosvm.sh
-+    +
-+    +#    echo -e 'export CROSVM_FILE_PATH=${WORKSPACE}/crosvm/crosvm' >> ${WORKSPACE}/.wsp-env
-+    +#    . ${WORKSPACE}/.wsp-env
-+    +#fi
-+    +
-+    +echo -e 'export CROSVM_FILE_PATH=${WORKSPACE}/qemu-gunyah' >> ${WORKSPACE}/.wsp-env
-+    +. ${WORKSPACE}/.wsp-env
-+
-+     if [[ ! -f ${WORKSPACE}/rootfs/rootfs-extfs-disk.img ]]; then
-+         echo -e "\nrootfs image not found, creating new one"
-+    diff --git a/scripts/migrate-tools-to-vol.sh b/scripts/migrate-tools-to-vol.sh
-+    index e5240c6..330f807 100755
-+    --- a/scripts/migrate-tools-to-vol.sh
-+    +++ b/scripts/migrate-tools-to-vol.sh
-+    @@ -76,14 +76,14 @@ if [[ ! -d ${WORKSPACE}/linux ]]; then
-+         echo "Done copying linux files"
-+     fi
-+
-+    -if [[ -d ~/share/docker-share/crosvm ]]; then
-+    -    mv ~/share/docker-share/crosvm ${WORKSPACE}/
-+    -    echo "Found crosvm, moved into workspace folder"
-+    -    mv ${WORKSPACE}/crosvm/crosvm ${WORKSPACE}/crosvm/crosvm-src
-+    -    cp ${WORKSPACE}/crosvm/crosvm-src/crosvm  ${WORKSPACE}/crosvm/crosvm
-+    -    rm -rf ${WORKSPACE}/crosvm/crosvm-src
-+    -    echo -e 'export CROSVM_FILE_PATH=${WORKSPACE}/crosvm/crosvm' >> ${WORKSPACE}/.wsp-env
-+    -fi
-+    +#if [[ -d ~/share/docker-share/crosvm ]]; then
-+    +#    mv ~/share/docker-share/crosvm ${WORKSPACE}/
-+    +#    echo "Found crosvm, moved into workspace folder"
-+    +#    mv ${WORKSPACE}/crosvm/crosvm ${WORKSPACE}/crosvm/crosvm-src
-+    +#    cp ${WORKSPACE}/crosvm/crosvm-src/crosvm  ${WORKSPACE}/crosvm/crosvm
-+    +#    rm -rf ${WORKSPACE}/crosvm/crosvm-src
-+    +#    echo -e 'export CROSVM_FILE_PATH=${WORKSPACE}/crosvm/crosvm' >> ${WORKSPACE}/.wsp-env
-+    +#fi
-+
-+     if [[ -d ~/share/docker-share/rootfs ]]; then
-+         mv ~/share/docker-share/rootfs ${WORKSPACE}/
-+    diff --git a/scripts/utils/build-rootfs-img.sh b/scripts/utils/build-rootfs-img.sh
-+    index d110965..9ffe530 100755
-+    --- a/scripts/utils/build-rootfs-img.sh
-+    +++ b/scripts/utils/build-rootfs-img.sh
-+    @@ -177,6 +177,9 @@ if [[ ! -f ${SVM_DESTINATION}/svm.sh ]]; then
-+        echo -e '--params "rw root=/dev/ram rdinit=/sbin/init earlyprintk=serial panic=0" \\' >> ./svm.sh
-+        echo -e ' /usr/gunyah/Image $@\n' >> ./svm.sh
-+
-+    +   sudo cp ${WORKSPACE}/svm_disk.img ${SVM_DESTINATION}
-+    +   sudo cp ${WORKSPACE}/efi-virtio.rom ${SVM_DESTINATION}
-+    +   sudo cp ${WORKSPACE}/en-us ${SVM_DESTINATION}
-+        sudo cp ./svm.sh ${SVM_DESTINATION}
-+        rm -f ./svm.sh
-+        sudo chmod 0775 ${SVM_DESTINATION}/svm.sh
-+    @@ -216,13 +219,15 @@ if [[ ! -f ${ROOTFS_REFERENCE_DIR}/lib/libgcc_s.so.1 ]]; then
-+        export MACHINE=qemuarm64
-+        export DISTRO=rpb
-+
-+    -   mkdir ${ROOTFS_BASE}/oe-rpb
-+    +   mkdir -p ${ROOTFS_BASE}/oe-rpb
-+        cd ${ROOTFS_BASE}/oe-rpb
-+
-+        # fetch
-+        ~/bin/repo init -u https://github.com/96boards/oe-rpb-manifest.git -b qcom/master
-+        ~/bin/repo sync
-+
-+    +   rm layers/meta-qcom/recipes-kernel/linux/linux-yocto_6.6.bbappend
-+    +
-+        # add config for libgcc and other virtualization options
-+        echo -e "\n" > ./extra_local.conf
-+        echo "INHERIT += 'buildstats buildstats-summary'" >> ./extra_local.conf
-+    @@ -269,5 +274,5 @@ if [[ -f ${WORKSPACE}/rootfs/rootfs-extfs-disk.img ]]; then
-+     else
-+        echo "Creating rootfs image file from reference : `pwd`"
-+        cd ${WORKSPACE}/rootfs
-+    -   . ~/utils/bldextfs.sh -f ${WORKSPACE}/rootfs/reference -o ${WORKSPACE}/rootfs/rootfs-extfs-disk.img -s 800M
-+    +   . ~/utils/bldextfs.sh -f ${WORKSPACE}/rootfs/reference -o ${WORKSPACE}/rootfs/rootfs-extfs-disk.img -s 2G
-+     fi
-+
-+Copy Qemu files
-+```````````````
-+
-+Copy Qemu and related files to `utils` directory of gunyah-support scripts.
-+
-+.. code-block:: bash
-+
-+        # qemu-gunyah is nothing but qemu-system-aarch64 binary that supports gunyah accelerator
-+        cp qemu-gunyah scripts/utils
-+
-+        # efi-virtio.rom is found under `pc-bios` directory of Qemu
-+        cp efi-virtio.rom scripts/utils
-+
-+        # en-us is found under `pc-bios/keymaps` directory of Qemu
-+        cp en-us scripts/utils
-+
-+        # svm_disk.img will serve as the root disk for VM. It will have init and
-+        # other programs that are required to boot VM. It can be prepared from
-+        # any aarch64-based distro such as Ubuntu.
-+        cp svm_disk.img scripts/utils
-+
-+Build docker image
-+``````````````````
-+
-+.. code-block:: bash
-+
-+        cd scripts
-+        ./build-docker-img.sh
-+
-+Rest of steps below need to be run inside docker. Launch the docker as:
-+
-+.. code-block:: bash
-+
-+        # SOME_FOLDER is any directory on host. This will be accessible from
-+        # inside docker and is useful to share files between host and docker
-+        # environments.
-+        export HOST_TO_DOCKER_SHARED_DIR=SOME_FOLDER
-+        cd scripts
-+        ./run-docker.sh
-+
-+Clone and build a Gunyah Hypervisor image
-+`````````````````````````````````````````
-+
-+.. code-block:: bash
-+
-+        cd ~/share/gunyah
-+        clone-gunyah.sh
-+
-+Cloned sources includes that for Resource Manager (RM) under `resource-manager`
-+directory. RM is a privileged VM that acts as an extension of Gunyah
-+hypervisor and assists the hypervisor in various tasks related to creation and
-+management of VMs. More information on RM is provided at:
-+
-+https://github.com/quic/gunyah-resource-manager
-+
-+Gunyah hypervisor source is available under `hyp` directory.
-+
-+Patch Gunyah hypervisor and Resource Manager
-+````````````````````````````````````````````
-+
-+Apply below changes to hypervisor and RM on which 'gunyah' Qemu accelerator
-+currently depends. These changes are being discussed with maintainers and if
-+accepted this document will be modified appropriately.
-+
-+RM patch (in 'resource-manager' directory):
-+
-+.. code-block:: bash
-+
-+    diff --git a/src/vm_creation/vm_creation.c b/src/vm_creation/vm_creation.c
-+    index df8edfb..b73b37e 100644
-+    --- a/src/vm_creation/vm_creation.c
-+    +++ b/src/vm_creation/vm_creation.c
-+    @@ -510,7 +510,10 @@ process_dtb(vm_t *vm)
-+            // Estimate a final dtb size after applying the overlay.
-+            size_t original_dtb_size =
-+                    util_balign_up(fdt_totalsize(temp_addr), sizeof(uint32_t));
-+    -       size_t final_dtb_size = original_dtb_size + dtbo_ret.size;
-+    +       size_t final_dtb_size = util_balign_up(original_dtb_size + dtbo_ret.size, 8);
-+
-+Hypervisor patch (in 'hyp' directory):
-+
-+.. code-block:: bash
-+
-+    diff --git a/config/platform/qemu.conf b/config/platform/qemu.conf
-+    index bc612f2..9a292a4 100644
-+    --- a/config/platform/qemu.conf
-+    +++ b/config/platform/qemu.conf
-+    @@ -35,7 +35,7 @@ configs HLOS_RAM_FS_BASE=0x40800000
-+     configs PLATFORM_HEAP_PRIVATE_SIZE=0x200000
-+     configs PLATFORM_RW_DATA_SIZE=0x200000
-+     configs PLATFORM_ROOTVM_LMA_BASE=0x80480000U
-+    -configs PLATFORM_ROOTVM_LMA_SIZE=0xa0000U
-+    +configs PLATFORM_ROOTVM_LMA_SIZE=0x100000U
-+     configs PLATFORM_PHYS_ADDRESS_BITS=36
-+     configs PLATFORM_VM_ADDRESS_SPACE_BITS=36
-+     configs PLATFORM_PGTABLE_4K_GRANULE=1
-+
-+Build Gunyah hypervisor
-+```````````````````````
-+
-+.. code-block:: bash
-+
-+        cd ~/share
-+        build-gunyah.sh qemu
-+
-+Launch host-VM under Gunyah hypervisor
-+``````````````````````````````````````
-+
-+.. code-block:: bash
-+
-+        cd ~/mnt/workspace
-+        run-qemu.sh dtb
-+        run-qemu.sh
-+
-+Running a secondary VM with Qemu as VMM
-+```````````````````````````````````````
-+
-+.. code-block:: bash
-+
-+        $ cd /usr/gunyah
-+        $ ./qemu-gunyah -cpu cortex-a57 -nographic -hda svm_disk.img -m 256M -smp cpus=8 --accel gunyah -machine virt,highmem=off -append "rw root=/dev/vda   rdinit=/sbin/init earlyprintk=serial panic=0" -kernel ./Image
-+
-+Limitations
-+-----------
-+
-+* Linux Gunyah kernel driver published upstream does not yet support
-+  confidential VM. Confidential VM related changes proposed in this patch series
-+  has been tested on a variant of driver that is available in Android Common
-+  kernel. Details to test confidential VM will be provided once the upstream
-+  Gunyah driver supports same.
--- 
-2.25.1
+> >
+> > However, this was not implemented correctly, as for stage 2, we Qemu
+> s/we QEMU/ the code
+Will do.
+
+> > only sets the  S2 bit but not the IPA.
+> If this is a fix, please add the "Fixes:" tag and fixed commit sha1.
+Will do.
+
+> >
+> > This field has the same bits as FetchAddr in F_WALK_EABT which is
+> > populated correctly, so we don’t change that.
+> > The population of this field should be done from the walker as the IPA address
+> s/population/setting? I am not a native english speaker though
+Me neither :), I will change it.
+
+Thanks,
+Mostafa
+> > wouldn't be known in case of nesting.
+> >
+> > For stage 1, the spec says:
+> >   If fault occurs at stage 1, S2 == 0 and:
+> >   CLASS == IN, IPA is UNKNOWN.
+> >
+> > So, no need to set it to for stage 1, as ptw_info is initialised by zero in
+> > smmuv3_translate().
+> >
+> > Signed-off-by: Mostafa Saleh <smostafa@google.com>
+> > ---
+> >  hw/arm/smmu-common.c | 10 ++++++----
+> >  hw/arm/smmuv3.c      |  4 ++++
+> >  2 files changed, 10 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> > index eb2356bc35..8a8c718e6b 100644
+> > --- a/hw/arm/smmu-common.c
+> > +++ b/hw/arm/smmu-common.c
+> > @@ -448,7 +448,7 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
+> >       */
+> >      if (ipa >= (1ULL << inputsize)) {
+> >          info->type = SMMU_PTW_ERR_TRANSLATION;
+> > -        goto error;
+> > +        goto error_ipa;
+> >      }
+> >  
+> >      while (level < VMSA_LEVELS) {
+> > @@ -494,13 +494,13 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
+> >           */
+> >          if (!PTE_AF(pte) && !cfg->s2cfg.affd) {
+> >              info->type = SMMU_PTW_ERR_ACCESS;
+> > -            goto error;
+> > +            goto error_ipa;
+> >          }
+> >  
+> >          s2ap = PTE_AP(pte);
+> >          if (is_permission_fault_s2(s2ap, perm)) {
+> >              info->type = SMMU_PTW_ERR_PERMISSION;
+> > -            goto error;
+> > +            goto error_ipa;
+> >          }
+> >  
+> >          /*
+> > @@ -509,7 +509,7 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
+> >           */
+> >          if (gpa >= (1ULL << cfg->s2cfg.eff_ps)) {
+> >              info->type = SMMU_PTW_ERR_ADDR_SIZE;
+> > -            goto error;
+> > +            goto error_ipa;
+> >          }
+> >  
+> >          tlbe->entry.translated_addr = gpa;
+> > @@ -522,6 +522,8 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
+> >      }
+> >      info->type = SMMU_PTW_ERR_TRANSLATION;
+> >  
+> > +error_ipa:
+> > +    info->addr = ipa;
+> >  error:
+> >      info->stage = 2;
+> >      tlbe->entry.perm = IOMMU_NONE;
+> > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> > index 2d1e0d55ec..9dd3ea48e4 100644
+> > --- a/hw/arm/smmuv3.c
+> > +++ b/hw/arm/smmuv3.c
+> > @@ -949,6 +949,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+> >              if (PTW_RECORD_FAULT(cfg)) {
+> >                  event.type = SMMU_EVT_F_TRANSLATION;
+> >                  event.u.f_translation.addr = addr;
+> > +                event.u.f_translation.addr2 = ptw_info.addr;
+> >                  event.u.f_translation.rnw = flag & 0x1;
+> >              }
+> >              break;
+> > @@ -956,6 +957,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+> >              if (PTW_RECORD_FAULT(cfg)) {
+> >                  event.type = SMMU_EVT_F_ADDR_SIZE;
+> >                  event.u.f_addr_size.addr = addr;
+> > +                event.u.f_addr_size.addr2 = ptw_info.addr;
+> >                  event.u.f_addr_size.rnw = flag & 0x1;
+> >              }
+> >              break;
+> > @@ -963,6 +965,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+> >              if (PTW_RECORD_FAULT(cfg)) {
+> >                  event.type = SMMU_EVT_F_ACCESS;
+> >                  event.u.f_access.addr = addr;
+> > +                event.u.f_access.addr2 = ptw_info.addr;
+> >                  event.u.f_access.rnw = flag & 0x1;
+> >              }
+> >              break;
+> > @@ -970,6 +973,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+> >              if (PTW_RECORD_FAULT(cfg)) {
+> >                  event.type = SMMU_EVT_F_PERMISSION;
+> >                  event.u.f_permission.addr = addr;
+> > +                event.u.f_permission.addr2 = ptw_info.addr;
+> >                  event.u.f_permission.rnw = flag & 0x1;
+> >              }
+> >              break;
+> >
+> After taking into account above comments,
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> 
+> Eric
+> 

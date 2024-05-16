@@ -1,373 +1,263 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1430353ejl;
-        Thu, 16 May 2024 08:04:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXA+N/uWDacLPwAjq/cQFm4rSh3vdpCc8GVjHKG64ZSDPsHF4L3OpN+A9+MJ09DSNSawjULNVweRcPkrR+Sf/p6QzqlK65i
-X-Google-Smtp-Source: AGHT+IFdBmFJoPQ24P1jvQw+AxA+uFBeb6jFnL5RmANUeQU3peaIATR1XgOTu/tA/YPu0xZPvtds
-X-Received: by 2002:a9d:7991:0:b0:6f0:4947:8392 with SMTP id 46e09a7af769-6f0e9127806mr22166797a34.16.1715871880297;
-        Thu, 16 May 2024 08:04:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715871880; cv=none;
+Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1443556ejl;
+        Thu, 16 May 2024 08:20:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX45PfKVAqyLTeJO+Iah8UGgctGcT1BkV3F+z1EvqJPjkLe4zy0NHDc8OfrVcaGFX8pAiuKRuWgvp8veoV8myFMeXThF5Jk
+X-Received: by 2002:a05:600c:3b86:b0:41c:2313:da8d with SMTP id 5b1f17b1804b1-41fea539615mr188220855e9.0.1715872850861;
+        Thu, 16 May 2024 08:20:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715872850; cv=none;
         d=google.com; s=arc-20160816;
-        b=gBJZ7cDlbr8DgvA4EkHZQv4HBK5U+LYSx7e1DoQ8IHzXthEp1O1+aGx3TX49zq944P
-         cqhJMe7Kvm67NKcKCW5rvg/yD9FJoXUp3TSkY2767JzGI3qb8GZLm1BYW9QdG+A2/QvS
-         e7J+c1HetQqKkKK787Aun8LQKl3a4S1L5NrhAVz2YZqXYfV7tl4eWvb7afCadgBm/3Wn
-         ZpZ7dMVF7Ps+5WGtTzNzFBg2NmhLAf5VgN/axrStA1iByBMWLMPg72rvzlF9zqV6W6FI
-         +GUoCWZQ4wFUFGd3gR2LHHVOXSGr6+CxzwYCEmUkxeqPrybLvv7Q4r5OpC6I3qsBwKNs
-         6s9Q==
+        b=wyCVweWgxt1tLdqy+pUDRt7UvtN+dMqTOZ/6FIpv1znWv784HTaKu/YaB1AEAf1G6E
+         c0m7utNiJ86RY84z+lZMpj/V+XAZ1k5tq1uwz83N6cpqUFm9fDYo26p3hWZqukEpWVP6
+         CMEeEMe/NZJ9ICpziSLBPXrBJ5pqwukbeAvAvKI++va4C/tr1hHnyssCoUwpp/IXcVe5
+         6nKRKiKasCrhdm426Lp3VyurUoPItk/EIsINkf+ZzDBBtkFCOVZ+SFrzG2KhEpLIUaad
+         nxVooswDpu1ji/irQf85pjAuvE02xQSuzPiH3B0avxeAqK4ED8ruAEFVZR81mXt2HGLX
+         AxoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=qrQkV1p0QTpVS/kfYXtWZWbb3QILJbvMnewfbyJI0ug=;
-        fh=7x+pudbpTgwRT4pRIDYB29U/3BbKUWTi9px/kKwj3Vc=;
-        b=vMxtWaXR6AcRCBQF76F7lunN9yP2o8Yj7dSxV8N/VnYezhqwEFCg5uIZtk25OLhvg8
-         WDQI8tuq4V0YkP9TH4u3vYMSJsQHpaqauYugbq7qKp13dBMlu28++NSsV94Md2dhsojW
-         Ns6NBWf1b9suy7GaP8vwFxZLgAgEAhdSGpQYCh8PYeUM/jPqavtiy4sx4xJEw8ib3WIC
-         VDewrsfrrpbK0TGCV6HEKDIDY6JtrdIPnB7Q2+zIbfcs5M7s1xPgL0L9AsWFWpaHYz5T
-         yzoAxXX+tmbg09Oo8lPzJZf4ezWWlCcvavrxWn95Dv9KftRVmwZtKrjkWMhDd/2/pCP4
-         RLqw==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=rKBkDfuu4ovIlFS5i9OYlDEjCa+HYlUUd2BNYILbC1I=;
+        fh=fsGKiDiMsgj+BlCKUsVbbgLFISXUGCNN2bDMNMNhm0E=;
+        b=D92Dgke7JEwaNylDf6sHMzitPBujeYa0TYtP75yon4ZQPwKFthkDaOAmC27BbCJwaV
+         XSDlyy5YPd09ni51fohtO+cEwnvT+e3zC2nStKfc4eOP6sY951K8P+oprNQDIpRf6XFz
+         QvI/jNY7SEJttRRfD61Roe5x/C3Q2Gsljdn0H9Y8ZRgT4WdZY+E/DTLbEO5TOx8HKUCv
+         EbnqgSv6rjL0+LvTQmNA6WdoJ4A+4mChT6BL5XaKJkZd5ca0BOGb/cQ9fany2Jf939Cx
+         pZagjScqu2XS9ChK5KLkSgFGP2Bh9+oCg/2KClS0mHw2PFRbzIUYJr3kiXAFLF4sqEiT
+         8p2g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dv1UaIWW;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4806cb7cce1si3454803137.156.2024.05.16.08.04.39
+       dkim=pass header.i=@google.com header.s=20230601 header.b=20xvfMTq;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <smostafa@google.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-41fc2f7fbf2sor6118845e9.7.2024.05.16.08.20.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 May 2024 08:04:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Thu, 16 May 2024 08:20:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dv1UaIWW;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1715871879;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=qrQkV1p0QTpVS/kfYXtWZWbb3QILJbvMnewfbyJI0ug=;
-	b=Dv1UaIWWltIaTbMz51CF6qqxvy3jvUqAh1auESbAzzxz6JQRBt1ia/siYdvXztaDdB4VrZ
-	Cg/zGXscnNs3Hukkc9JMP8/QWowYNQfms+dWk3z8NWm7Av0KYL2YN2til6MA5p/7lr5Txc
-	rwtueBgzh3LJ7atua7M1lCWU+jOCISA=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-122-XrUbFtUyMtiX7ogs4LJzZg-1; Thu,
- 16 May 2024 11:04:37 -0400
-X-MC-Unique: XrUbFtUyMtiX7ogs4LJzZg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B16BC3800096;
-	Thu, 16 May 2024 15:04:36 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.51])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B923B200B4D2;
-	Thu, 16 May 2024 15:04:28 +0000 (UTC)
-Date: Thu, 16 May 2024 16:04:24 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-Cc: peter.maydell@linaro.org, philmd@linaro.org, alex.bennee@linaro.org,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, quic_tsoni@quicinc.com,
-	quic_pheragu@quicinc.com, quic_eberman@quicinc.com,
-	quic_yvasi@quicinc.com, quic_cvanscha@quicinc.com,
-	quic_mnalajal@quicinc.com
-Subject: Re: [RFC/PATCH v2 03/12] hw/arm/virt: confidential guest support
-Message-ID: <ZkYgeGSPxD_yt5oa@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240516143356.1739402-1-quic_svaddagi@quicinc.com>
- <20240516143356.1739402-4-quic_svaddagi@quicinc.com>
+       dkim=pass header.i=@google.com header.s=20230601 header.b=20xvfMTq;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1715872850; x=1716477650; darn=linaro.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=rKBkDfuu4ovIlFS5i9OYlDEjCa+HYlUUd2BNYILbC1I=;
+        b=20xvfMTqWNNANo/rvxgRrbdp/D7kyODUP7ZEXGo235YhNDHt5oY4GdCmIHt5FIZuFE
+         OoCYmu3lg55xVIEPe81/6sggNPkaEkqmTxDApSBQc480nDPXc/ZapClnsRkvUFku3ihO
+         4EXB02KjLLo01H7cgHtkG38hhNRMAheVAGQd7jCRQApMOOZ9McInluRQGar3OLIiI+BO
+         XYGE8xgxQSoAOmXbLVDO7UD2wg/vgSLFaS/6bvpB7I6uUC/DKRfkYAyHrOfJW8eBQ2Sv
+         Be2hd2nSYy4CncnMNGcX9elh5CvvaHmRAvIlB2rk4wPvQQjD5yQG1/0rlslWOP05awTT
+         ETPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715872850; x=1716477650;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=rKBkDfuu4ovIlFS5i9OYlDEjCa+HYlUUd2BNYILbC1I=;
+        b=seiM0D+Elf8AUqnio5extyRmOMzYcv3q63wYIC7bysrToR+uM059w8N3WaiWWOb7/c
+         FBAbtQwYkMXJcvVLQkKNAYaf6FCpDvhbHhMvo/TT3O9Bi0IxQy6So3oKsb/jmL2WQTUO
+         QC4oRzMcxeU1ruXYXRkQud2LcHpbgM24Pt2HdCTkwNPfnkZn7ZoMqqDDt8k9lZRGIbTm
+         z0dxmFy5fG+OBuSGs8wTjV/nM9i0J2mGZNCJ5Awz33sft+SgEKPEbyueAhO7bZ8928vP
+         +QYpiZdB/hcb3sMd9HzFYjoVtG/0AfVunTeAUQXLMm1YgK+55CZ59VNywT/q9dxYfVnA
+         2n5w==
+X-Forwarded-Encrypted: i=1; AJvYcCUVCw1HDpHcnaoBo0wE1zZWgHuEIyJVAzZnI34mFi9tGvg/3xwsODqHaLl/E8eEGw7CyWQwihh9umsncDODOeZ89MxxB6q5
+X-Gm-Message-State: AOJu0YxeuoWN4Ej/LTYH6OlsQf0KJcjt4UyyCcj3KGmV07h2OxEG+KUL
+	YhOTbg/dbMdLSHUMu6SwB3vQNpmL2oe/WJZTmbvpR90Gf9UtTwEs3WX36npPeg==
+X-Google-Smtp-Source: AGHT+IFgMAeYxnuW2uFNhhf9/gQCKbo+IFo2Sh8OwOx+8HLGqZeVaM874LWFf5HJC24SZz1TR2oTCA==
+X-Received: by 2002:a05:600c:3d0c:b0:41c:ab7:f9af with SMTP id 5b1f17b1804b1-4200f8ac9c8mr11310135e9.3.1715872850174;
+        Thu, 16 May 2024 08:20:50 -0700 (PDT)
+Return-Path: <smostafa@google.com>
+Received: from google.com (180.232.140.34.bc.googleusercontent.com. [34.140.232.180])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3502b79be1dsm19430571f8f.10.2024.05.16.08.20.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 May 2024 08:20:49 -0700 (PDT)
+Date: Thu, 16 May 2024 15:20:46 +0000
+From: Mostafa Saleh <smostafa@google.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+	jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
+	marcin.juszkiewicz@linaro.org
+Subject: Re: [RFC PATCH v3 08/18] hw/arm/smmu-common: Add support for nested
+ TLB
+Message-ID: <ZkYkTgDztEyX6GT_@google.com>
+References: <20240429032403.74910-1-smostafa@google.com>
+ <20240429032403.74910-9-smostafa@google.com>
+ <dc8d52ac-68af-4426-9a60-07ad909c86b0@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240516143356.1739402-4-quic_svaddagi@quicinc.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-X-TUID: RMj5qAdz95/q
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <dc8d52ac-68af-4426-9a60-07ad909c86b0@redhat.com>
+X-TUID: yp3SmePpwOaL
 
-On Thu, May 16, 2024 at 02:33:47PM +0000, Srivatsa Vaddagiri wrote:
-> This adds support to launch hypervisor-assisted confidential guests,
-> where guest's memory is protected from a potentially untrusted host.
-> Hypervisor can setup host's page-tables so that it loses access to guest
-> memory.
-> 
-> Since some guest drivers may need to communicate data with their host
-> counterparts via shared memory, optionally allow setting aside some part
-> of the confidential guest's memory as "shared". The size of this shared
-> memory is specified via the optional "swiotlb-size" parameter.
-> 
-> -machine virt,confidential-guest-support=prot0 \
-> 	-object arm-confidential-guest,id=prot0,swiotlb-size=16777216
-> 
-> The size of this shared memory is indicated to the guest in size/reg
-> property of device-tree node "/reserved-memory/restricted_dma_reserved".
-> A memory-region property is added to device-tree node representing
-> virtio-pcie hub, so that all DMA allocations requested by guest's virtio-pcie
-> device drivers are satisfied from the shared swiotlb region.
+Hi Eric,
 
-For reference, there is another series proposing confidential guest
-support for the 'virt' machine on AArch64 with KVM
+On Wed, May 15, 2024 at 03:48:05PM +0200, Eric Auger wrote:
+> Hi Mostafa,
+> 
+> On 4/29/24 05:23, Mostafa Saleh wrote:
+> > This patch adds support for nested(combined) TLB entries.
+> space between nested and (.
+Will do.
+> > The main function combine_tlb() is not used here but in the next
+> > patches, but to simplify the patches it is introduced first.
+> >
+> > Main changes:
+> > 1) New entry added in the TLB, parent_perm, for nested TLB, holds the
+> s/entry/field, s/TLB/SMMUTLBEntry struct
+Will do.
+> >    stage-2 permission, this can be used to know the origin of a
+> >    permission fault from a cached entry as caching the “and” of the
+> >    permissions loses this information.
+> >
+> >    SMMUPTWEventInfo is used to hold information about PTW faults so
+> >    the event can be populated, the value of stage (which maps to S2
+> >    in the event) used to be set based on the current stage for TLB
+> I don't understand "(which maps to S2 in the event)". What do you mean?
+> This could be S1 or S2 depending on the active stage, no?
 
- https://lists.nongnu.org/archive/html/qemu-devel/2024-04/msg02742.html
+Not really, if the IPA size is larger than S2 input size, this is
+considered stage-1 fault.
 
-I've no idea how closely your impl matches the KVM proposed impl. ie
-whether we need 2 distinct "ConfidentialGuest" subclasses for KVM vs
-Gunyah, or whether 1 can cope with both.  If we do need 2 distinct
-subclasses for each hypervisor, then calling this Gunyah targetted
-object 'arm-confidential-guest' is too broad of an name.
+For TLB permission fault, yes, that is how it is decided.
+However, with nesting, a permission fault from a cached entry can be
+from a stage-1 or stage-2, that’s why we now cache both and not just
+the combined permission, and the logic to set fault stage is modified
+accordingly.
+
+> >    permission faults, however with the parent_perm, it is now set
+> >    based on which perm has the missing permission
+> >
+> >    When nesting is not enabled it has the same value as perm which
+> >    doesn't change the logic.
+> >
+> > 2) As combined TLB implementation is used, the combination logic
+> >    chooses:
+> >    - tg and level from the entry which has the smallest addr_mask.
+> tbh I am scared bout swapping s1/s2 tg and level. In smmu_iotlb_lookup()
+> I see tt->granule_sz being used which is s1 data. I mean it is not
+> obvious to me this is correct. Could you maybe give more explanations
+> detailing why/how this is guaranted to work.
+
+As you mentioned the next patch reworks the lookup logic, I can reorder
+the 2 patches if that is better, please let me know what you think?
 
 > 
-> Signed-off-by: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-> ---
->  qapi/qom.json         |  14 +++++
->  include/hw/arm/virt.h |   1 +
->  hw/arm/virt.c         | 141 +++++++++++++++++++++++++++++++++++++++++-
->  3 files changed, 155 insertions(+), 1 deletion(-)
-> 
-> diff --git a/qapi/qom.json b/qapi/qom.json
-> index 38dde6d785..9b3cd7ce22 100644
-> --- a/qapi/qom.json
-> +++ b/qapi/qom.json
-> @@ -874,6 +874,18 @@
->    'base': 'RngProperties',
->    'data': { '*filename': 'str' } }
->  
-> +##
-> +# @ArmConfidentialGuestProperties:
-> +#
-> +# Properties for arm-confidential-guest objects.
-> +#
-> +# @swiotlb-size: swiotlb size
-> +#
-> +# Since: 2.12
-> +##
-> +{ 'struct': 'ArmConfidentialGuestProperties',
-> +  'data': { 'swiotlb-size' : 'uint64' } }
-> +
->  ##
->  # @SevGuestProperties:
->  #
-> @@ -997,6 +1009,7 @@
->      { 'name': 'secret_keyring',
->        'if': 'CONFIG_SECRET_KEYRING' },
->      'sev-guest',
-> +    'arm-confidential-guest',
->      'thread-context',
->      's390-pv-guest',
->      'throttle-group',
-> @@ -1067,6 +1080,7 @@
->        'secret_keyring':             { 'type': 'SecretKeyringProperties',
->                                        'if': 'CONFIG_SECRET_KEYRING' },
->        'sev-guest':                  'SevGuestProperties',
-> +      'arm-confidential-guest':     'ArmConfidentialGuestProperties',
->        'thread-context':             'ThreadContextProperties',
->        'throttle-group':             'ThrottleGroupProperties',
->        'tls-creds-anon':             'TlsCredsAnonProperties',
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index bb486d36b1..1e23f20972 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -165,6 +165,7 @@ struct VirtMachineState {
->      uint32_t clock_phandle;
->      uint32_t gic_phandle;
->      uint32_t msi_phandle;
-> +    uint32_t restricted_dma_phandle;
->      uint32_t iommu_phandle;
->      int psci_conduit;
->      hwaddr highest_gpa;
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 3c93c0c0a6..2a3eb4075d 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -84,6 +84,9 @@
->  #include "hw/virtio/virtio-iommu.h"
->  #include "hw/char/pl011.h"
->  #include "qemu/guest-random.h"
-> +#include "sysemu/cpus.h"
-> +#include "exec/confidential-guest-support.h"
-> +#include "qom/object_interfaces.h"
->  
->  static GlobalProperty arm_virt_compat[] = {
->      { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
-> @@ -1545,6 +1548,11 @@ static void create_pcie(VirtMachineState *vms)
->                             nr_pcie_buses - 1);
->      qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
->  
-> +    if (vms->restricted_dma_phandle) {
-> +        qemu_fdt_setprop_cell(ms->fdt, nodename, "memory-region",
-> +                                vms->restricted_dma_phandle);
-> +    }
-> +
->      if (vms->msi_phandle) {
->          qemu_fdt_setprop_cells(ms->fdt, nodename, "msi-map",
->                                 0, vms->msi_phandle, 0, 0x10000);
-> @@ -2065,6 +2073,129 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
->      }
->  }
->  
-> +#define TYPE_ARM_CONFIDENTIAL_GUEST "arm-confidential-guest"
-> +OBJECT_DECLARE_SIMPLE_TYPE(ArmConfidentialGuestState, ARM_CONFIDENTIAL_GUEST)
-> +
-> +struct ArmConfidentialGuestState {
-> +    ConfidentialGuestSupport parent_obj;
-> +
-> +    hwaddr swiotlb_size;
-> +};
-> +
-> +static ArmConfidentialGuestState *acg;
-> +
-> +static void
-> +arm_confidential_guest_instance_init(Object *obj)
-> +{
-> +    ArmConfidentialGuestState *acg = ARM_CONFIDENTIAL_GUEST(obj);
-> +
-> +    object_property_add_uint64_ptr(obj, "swiotlb-size", &acg->swiotlb_size,
-> +                                   OBJ_PROP_FLAG_READWRITE);
-> +}
-> +
-> +static const TypeInfo confidential_guest_info = {
-> +    .parent = TYPE_CONFIDENTIAL_GUEST_SUPPORT,
-> +    .name = TYPE_ARM_CONFIDENTIAL_GUEST,
-> +    .instance_size = sizeof(ArmConfidentialGuestState),
-> +    .instance_init = arm_confidential_guest_instance_init,
-> +    .interfaces = (InterfaceInfo[]) {
-> +        { TYPE_USER_CREATABLE },
-> +        { }
-> +    }
-> +};
-> +
-> +static void
-> +confidential_guest_register_types(void)
-> +{
-> +    type_register_static(&confidential_guest_info);
-> +}
-> +type_init(confidential_guest_register_types);
-> +
-> +static int confidential_guest_init(MachineState *ms)
-> +{
-> +    ConfidentialGuestSupport *cgs = ms->cgs;
-> +    ArmConfidentialGuestState *obj = (ArmConfidentialGuestState *)
-> +        object_dynamic_cast(OBJECT(cgs), TYPE_ARM_CONFIDENTIAL_GUEST);
-> +    const AccelOpsClass *ops = cpus_get_accel();
-> +
-> +    if (!obj) {
-> +        return 0;
-> +    }
-> +
-> +    if (!ops->check_capability ||
-> +            !ops->check_capability(CONFIDENTIAL_GUEST_SUPPORTED)) {
-> +        error_report("confidential guests are not supported");
-> +        return -1;
-> +    }
-> +
-> +    if (obj->swiotlb_size > ms->ram_size) {
-> +        error_report("swiotlb_size exceeds RAM size");
-> +        return -1;
-> +    }
-> +
-> +    acg = obj;
-> +    cgs->ready = true;
-> +
-> +    return 0;
-> +}
-> +
-> +static void fdt_add_reserved_memory(VirtMachineState *vms)
-> +{
-> +    MachineState *ms = MACHINE(vms);
-> +    hwaddr membase = vms->memmap[VIRT_MEM].base;
-> +    hwaddr memsize = ms->ram_size;
-> +    hwaddr resv_start;
-> +    const char compat[] = "restricted-dma-pool";
-> +    const AccelOpsClass *ops = cpus_get_accel();
-> +    char *nodename;
-> +
-> +    if (!acg || !acg->swiotlb_size) {
-> +        return;
-> +    }
-> +
-> +    nodename = g_strdup_printf("/reserved-memory");
-> +
-> +    qemu_fdt_add_subnode(ms->fdt, nodename);
-> +    qemu_fdt_setprop_cell(ms->fdt, nodename, "#address-cells", 2);
-> +    qemu_fdt_setprop_cell(ms->fdt, nodename, "#size-cells", 2);
-> +    qemu_fdt_setprop(ms->fdt, nodename, "ranges", NULL, 0);
-> +    g_free(nodename);
-> +
-> +    resv_start = membase + memsize - acg->swiotlb_size;
-> +    if (ops->check_capability &&
-> +            ops->check_capability(CONFIDENTIAL_GUEST_CAN_SHARE_MEM_WITH_HOST)) {
-> +        /*
-> +         * Indicate only the size of swiotlb buffer needed. Guest will
-> +         * determine where in its private memory the buffer will be placed and
-> +         * will use appropriate (hypervisor) APIs to share that with host.
-> +         */
-> +        nodename = g_strdup_printf("/reserved-memory/restricted_dma_reserved");
-> +        qemu_fdt_add_subnode(ms->fdt, nodename);
-> +        qemu_fdt_setprop_cell(ms->fdt, nodename, "size", acg->swiotlb_size);
-> +        qemu_fdt_setprop_cell(ms->fdt, nodename, "alignment", 4096);
-> +    } else {
-> +        /*
-> +         * On hypervisors that don't support APIs for guest to share
-> +         * its (private) memory with host, indicate to the guest where in its
-> +         * address space shared memory can be found. Host should make arrangents
-> +         * with hypervisor to assign some memory to guest at the indicated range
-> +         * and mark it as shared.
-> +         */
-> +        nodename = g_strdup_printf("/reserved-memory/restricted_dma_reserved@%"
-> +                PRIx64, resv_start);
-> +        qemu_fdt_add_subnode(ms->fdt, nodename);
-> +        qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
-> +                                         2, resv_start,
-> +                                         2, acg->swiotlb_size);
-> +    }
-> +
-> +    vms->restricted_dma_phandle = qemu_fdt_alloc_phandle(ms->fdt);
-> +    qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle",
-> +            vms->restricted_dma_phandle);
-> +    qemu_fdt_setprop(ms->fdt, nodename, "compatible", compat, sizeof(compat));
-> +    g_free(nodename);
-> +}
-> +
->  static void machvirt_init(MachineState *machine)
->  {
->      VirtMachineState *vms = VIRT_MACHINE(machine);
-> @@ -2075,7 +2206,7 @@ static void machvirt_init(MachineState *machine)
->      MemoryRegion *secure_sysmem = NULL;
->      MemoryRegion *tag_sysmem = NULL;
->      MemoryRegion *secure_tag_sysmem = NULL;
-> -    int n, virt_max_cpus;
-> +    int n, virt_max_cpus, ret;
->      bool firmware_loaded;
->      bool aarch64 = true;
->      bool has_ged = !vmc->no_ged;
-> @@ -2084,6 +2215,12 @@ static void machvirt_init(MachineState *machine)
->  
->      possible_cpus = mc->possible_cpu_arch_ids(machine);
->  
-> +    ret = confidential_guest_init(machine);
-> +    if (ret != 0) {
-> +        error_report("Failed to initialize confidential guest");
-> +        exit(1);
-> +    }
-> +
->      /*
->       * In accelerated mode, the memory map is computed earlier in kvm_type()
->       * to create a VM with the right number of IPA bits.
-> @@ -2195,6 +2332,8 @@ static void machvirt_init(MachineState *machine)
->  
->      create_fdt(vms);
->  
-> +    fdt_add_reserved_memory(vms);
-> +
->      assert(possible_cpus->len == max_cpus);
->      for (n = 0; n < possible_cpus->len; n++) {
->          Object *cpuobj;
-> -- 
-> 2.25.1
-> 
-> 
+> Can you give additional details about what s1+s2 combinations were tested?
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+I tested with S1 and S2 4K pages
+S1 level = 3 and S2 level = 3
+S1 level = 2 and S2 level = 3
+S1 level = 3 and S2 level = 2
+S1 level = 1 and S2 level = 2
+
+And also tested with with S1 64K granule and S2 4K.
+
+> >    - Based on that the iova that would be cached is recalculated.
+> >    - Translated_addr is chosen from stage-2.
+> >
+> > Signed-off-by: Mostafa Saleh <smostafa@google.com>
+> > ---
+> >  hw/arm/smmu-common.c         | 32 ++++++++++++++++++++++++++++----
+> >  include/hw/arm/smmu-common.h |  1 +
+> >  2 files changed, 29 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> > index 21982621c0..0d6945fa54 100644
+> > --- a/hw/arm/smmu-common.c
+> > +++ b/hw/arm/smmu-common.c
+> > @@ -394,7 +394,7 @@ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
+> >          tlbe->entry.translated_addr = gpa;
+> >          tlbe->entry.iova = iova & ~mask;
+> >          tlbe->entry.addr_mask = mask;
+> > -        tlbe->entry.perm = PTE_AP_TO_PERM(ap);
+> > +        tlbe->parent_perm = tlbe->entry.perm = PTE_AP_TO_PERM(ap);
+> nit: I would prefer on separate lines.
+Will do.
+
+> >          tlbe->level = level;
+> >          tlbe->granule = granule_sz;
+> >          return 0;
+> > @@ -515,7 +515,7 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
+> >          tlbe->entry.translated_addr = gpa;
+> >          tlbe->entry.iova = ipa & ~mask;
+> >          tlbe->entry.addr_mask = mask;
+> > -        tlbe->entry.perm = s2ap;
+> > +        tlbe->parent_perm = tlbe->entry.perm = s2ap;
+> >          tlbe->level = level;
+> >          tlbe->granule = granule_sz;
+> >          return 0;
+> > @@ -530,6 +530,27 @@ error:
+> >      return -EINVAL;
+> >  }
+> >  
+> > +/* combine 2 TLB entries and return in tlbe in nested config. */
+> suggestion: combine S1 and S2 TLB entries into a single entry. As a
+> result the S1 entry is overriden with combined data.
+Will do.
+
+> > +static void __attribute__((unused)) combine_tlb(SMMUTLBEntry *tlbe,
+> > +                                                SMMUTLBEntry *tlbe_s2,
+> > +                                                dma_addr_t iova,
+> > +                                                SMMUTransCfg *cfg)
+> > +{
+> > +    if (tlbe_s2->entry.addr_mask < tlbe->entry.addr_mask) {
+> > +        tlbe->entry.addr_mask = tlbe_s2->entry.addr_mask;
+> > +        tlbe->granule = tlbe_s2->granule;
+> > +        tlbe->level = tlbe_s2->level;
+> > +    }
+> > +
+> > +    tlbe->entry.translated_addr = CACHED_ENTRY_TO_ADDR(tlbe_s2,
+> > +                                    tlbe->entry.translated_addr);
+> > +
+> > +    tlbe->entry.iova = iova & ~tlbe->entry.addr_mask;
+> > +    /* parent_perm has s2 perm while perm has s1 perm. */
+> 
+>  suggestion: while perm keeps s1 perm.
+> 
+Will do.
+
+Thanks,
+Mostafa
+> > +    tlbe->parent_perm = tlbe_s2->entry.perm;
+> > +    return;
+> > +}
+> > +
+> >  /**
+> >   * smmu_ptw - Walk the page tables for an IOVA, according to @cfg
+> >   *
+> > @@ -607,9 +628,12 @@ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t addr,
+> >  
+> >      cached_entry = smmu_iotlb_lookup(bs, cfg, &tt_combined, aligned_addr);
+> >      if (cached_entry) {
+> > -        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm & IOMMU_WO)) {
+> > +        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm &
+> > +            cached_entry->parent_perm & IOMMU_WO)) {
+> >              info->type = SMMU_PTW_ERR_PERMISSION;
+> > -            info->stage = cfg->stage;
+> > +            info->stage = !(cached_entry->entry.perm & IOMMU_WO) ?
+> > +                          SMMU_STAGE_1 :
+> > +                          SMMU_STAGE_2;
+> >              return NULL;
+> >          }
+> >          return cached_entry;
+> > diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+> > index 09d3b9e734..1db566d451 100644
+> > --- a/include/hw/arm/smmu-common.h
+> > +++ b/include/hw/arm/smmu-common.h
+> > @@ -77,6 +77,7 @@ typedef struct SMMUTLBEntry {
+> >      IOMMUTLBEntry entry;
+> >      uint8_t level;
+> >      uint8_t granule;
+> > +    IOMMUAccessFlags parent_perm;
+> >  } SMMUTLBEntry;
+> >  
+> >  /* Stage-2 configuration. */
+> Thanks
+> 
+> Eric
+> 

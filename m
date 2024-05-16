@@ -1,130 +1,130 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp964015ejl;
-        Wed, 15 May 2024 15:02:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW7X84qDVGhNm9pyotvejaS9UsBgLvjfWWI66kkvgDh1RAmFHeSaojdEGZDjbI6myOXH4kAlBJNBqRqdl82HH5bbBk+8uDj
-X-Google-Smtp-Source: AGHT+IFUC/9shDkrMA/SM32mURBxwEpaYqgmRhb42uU/x+5GraajvN7UEdtwoMb8q34JfWwQrkv7
-X-Received: by 2002:a05:620a:4ad2:b0:792:fe50:33af with SMTP id af79cd13be357-792fe503626mr225650085a.63.1715810550463;
-        Wed, 15 May 2024 15:02:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715810550; cv=none;
+Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1105939ejl;
+        Wed, 15 May 2024 21:12:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVudxU3o5cmMJAvBuinPD8U6bsDpiB8bnFaQosic5tKJtti0ZNOLg2W3yJxpjTuhW37wZ3DEBSLdfSWw/ZUCZiYCv+yy1nt
+X-Google-Smtp-Source: AGHT+IFyLhBbE8zKqWxYwY1M6M/lS1A/l+krvKI4lZhLgTCRJ80a5Ch57udB1MYte3NgutV/It4T
+X-Received: by 2002:a05:6214:3a05:b0:6a0:de8b:4bfb with SMTP id 6a1803df08f44-6a1683769a3mr184495986d6.45.1715832720580;
+        Wed, 15 May 2024 21:12:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715832720; cv=none;
         d=google.com; s=arc-20160816;
-        b=Knk3nhI88cO9/yNniEkjkDT2zU42mN+St0niXoirx2iZ5dPUX3gP9k1qlgDPn/Le6i
-         FmBGOA583++KDwOPJdZDGIH1w23uBgzAUuDshV0/MTNFe+3tZ3GNA6FeHKN4zpkMch9h
-         5vgx32/m0JL2lUdCtJ6HGaUbnuOaqtoAzA0NEh0QXRhQpBOIAhruHKo2jJ1IF73dY6Zj
-         rlmt7OHSurK4opCxR+tQ2RAqQb1hG1o58b2QvBF0F2je3YcT6p+Drf9dFPyO32KUM5lJ
-         XgR9FNZBtq8qLaMOa4al4NVxZ0hdU0v+UzBHgNvH+zH4c4Bxdz5rd3zQlbz3rZcNrFQ5
-         s3Iw==
+        b=GPC8ziuJZeGzxW2HB5uPonHBRwaSo8+bmNyoxo/bHR+z5w8O2LxR8J64Y53cvhkGPP
+         kaUu9bm8CKjMglcjS1+Q5ZPKMuZf0piA+j89ZzFUaaa1tDNlq+gO91ZJ8crJl8sBiiRH
+         InOIRRgAEMn3lBC7kL/FY4ZnF4KXBNvpmIn61oYFzJqGyDTM2I413v3sKR9b9mmJ9P9A
+         eBg5pMzxs77Z4nAJKo0z4udNuACHTnL2hdMiTzl8rGVI7BrPtkr9nKwD41xF5jtUpbey
+         KNIj+FBp/hbIYEjQ9QBm4G3zYXmse0PgZi1osddyTGsW+os1J8RpwQA48g951KHUzJq6
+         AqMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-disposition:in-reply-to:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=xElT5ZYqp5D7rh3ZWiAAfUyWXd6KJ/0bkqeudsbUmic=;
-        fh=gUzTq4tolmFW3Q+fOqmLxnoFbDg61iXA0WxRZYlF3dM=;
-        b=CUol+BEZPWszCDodBeF+2x7FuRjHTI/KUh/wAsLg6W9T1rqfV30oecq+8Li1kj18Lo
-         TyfSu8/VXsak+DNbXuoAVkN7NY+UHRN7qhScdvnnSrkbIn9XiSZScExyswzvYTjaiwVj
-         5yQMg29K68/3JDfYqrQazNDTnSLwk8RLTBR36fDG6zoiMhqZP1OozdjyWlPGQlRJnCEF
-         BuZfHLM3vIU/NdwSgzAEj1lH13QLGnHXLHQm5DQtIFsulNjlXNxlo6MJNkk+4ooYHDnx
-         qmaASi89PdDcLnxPUX47P+Pk0pZiVVrTEussG9Qa3KomaJB8quN5ihfdZYinWvVz3a8R
-         DLeg==;
+        bh=RgsmUie6oNRshpsUHGjExxGQpjucuEvOk67Y+fIg6zY=;
+        fh=7Tejv7yUirOc/WKFyXDSVq3i9rhiGvHfnxAoi16yfxk=;
+        b=mfRK84Fsi/XH4daExqmGrw4XpNoPZ3mUxTYSFD9CEoSRlwFBR7uauOP5z5urTilgr+
+         LtESPuChS5PEn2z+y6GGjgxAd4qi9tlG9+lpuKdf65fuh7Rfp3yuJdvFUo/0VipN3cw2
+         kvbmQaL6bNtId5mFtBnIDxQPZdJ42ZZTiFrSFb+b5Ms/Enxof3AuqrVuy2rXSmHCNUT9
+         482awbbodi0j124JJ4ImtnQ5XWHZv1bS64Xkn4M3UnC6DUYudGWPIoZAvkSDp1cUQTrj
+         H0hFrldr9Tlrra9cw40gBFFptqaDtr7gGxdDVlXOG6bbvlLz17PmpZVOtPUry/0NWEW+
+         JkQQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IkImwTG5;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TdyQFTuH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-792bf2772a1si1491416485a.58.2024.05.15.15.02.30
+        by mx.google.com with ESMTPS id 6a1803df08f44-6a15f29a71asi158640426d6.238.2024.05.15.21.12.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 May 2024 15:02:30 -0700 (PDT)
+        Wed, 15 May 2024 21:12:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IkImwTG5;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TdyQFTuH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s7Mha-0006zZ-0M; Wed, 15 May 2024 18:02:22 -0400
+	id 1s7SSx-0001aj-13; Thu, 16 May 2024 00:11:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1s7MhY-0006zR-P7
- for qemu-arm@nongnu.org; Wed, 15 May 2024 18:02:20 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1s7SSv-0001aG-4M
+ for qemu-arm@nongnu.org; Thu, 16 May 2024 00:11:37 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1s7MhW-0007pm-7G
- for qemu-arm@nongnu.org; Wed, 15 May 2024 18:02:20 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1s7SSt-0003ZY-AQ
+ for qemu-arm@nongnu.org; Thu, 16 May 2024 00:11:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1715810536;
+ s=mimecast20190719; t=1715832694;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xElT5ZYqp5D7rh3ZWiAAfUyWXd6KJ/0bkqeudsbUmic=;
- b=IkImwTG5yUs7BOtJAqGGqKm2u9vhJqfjyWJjh7sbGqh53o3PbJOAzL3MxlWUtQ5I9BoYZE
- ngH5NdgBGwFhccar0ARDVC0C/lryVU6+xnxueHqV4sKP82oCQbCs0jyR03aukGLdgPOapY
- zNuSWkJpDU/uasl22hWbNHMSIvPrx0E=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=RgsmUie6oNRshpsUHGjExxGQpjucuEvOk67Y+fIg6zY=;
+ b=TdyQFTuHB8IR5GCmJ60Fc8ZZJuJCQ7OChD3+o6sPNpJvv89yzXV706E2FgNPTSZFVIJHmX
+ mTx78/XGrTwviEy/fLy5pOYFqMjkKWFGHNaMMXNGL3BWMTMsDyqZGAU2DmWnjV4kUkTKDA
+ AZJ3VL4tMxyzqE+iQkoLIa4OPWb+dk4=
+Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
+ [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-354-szJL2G12NLSR8bEtI2_vzQ-1; Wed, 15 May 2024 18:02:14 -0400
-X-MC-Unique: szJL2G12NLSR8bEtI2_vzQ-1
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-41fe6df6ef3so29032925e9.2
- for <qemu-arm@nongnu.org>; Wed, 15 May 2024 15:02:14 -0700 (PDT)
+ us-mta-250-m5vQzpVuNbSU60qrMj5TkA-1; Thu, 16 May 2024 00:11:17 -0400
+X-MC-Unique: m5vQzpVuNbSU60qrMj5TkA-1
+Received: by mail-pj1-f70.google.com with SMTP id
+ 98e67ed59e1d1-2b8a9cd19e9so615441a91.1
+ for <qemu-arm@nongnu.org>; Wed, 15 May 2024 21:11:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715810533; x=1716415333;
+ d=1e100.net; s=20230601; t=1715832676; x=1716437476;
  h=in-reply-to:content-transfer-encoding:content-disposition
  :mime-version:references:message-id:subject:cc:to:from:date
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xElT5ZYqp5D7rh3ZWiAAfUyWXd6KJ/0bkqeudsbUmic=;
- b=F62ZcNNXIMPX7xGAISDvgZB+eqzHfNVRUwg7Pya12MpaHcxraCYi+sADQeM+pE6zY1
- vknVgzrgF63tI4Nz2PfXBb2rLXBTLE7adKAFojqzKtEfK+XcKt0hUUa8/k7NjMtr/dLY
- 1n6/H6B2QgtnHoitdJSPueNvIKyTTKLl9y0Byn9m+naoRUgetBaWVe3Sipz53uyqE7As
- X7DSN4idTSDLozgPOsC7vNzFRIIzZnfcVFbdQyiv4luw6oMjyGxGXy6r/o1MpV1y7Plw
- xScDDMKHIfh3v4bSeOxJYHFz0ANlw90lGhmbZhwajFT6kZwNzRWjuFS4hYc3cGwSW8+P
- Ga1g==
+ bh=RgsmUie6oNRshpsUHGjExxGQpjucuEvOk67Y+fIg6zY=;
+ b=UyrbvXO+yRCirvkL700/TFftFgTaza1B1jIjFYdghRrpi8RExa5sggwqSPRcG8EhFn
+ tOTlC3FiiXtCWbNoXv2zqrMqS6+Cy+eQg5xVOWbqmjlvwttQeg6XaH/dC70D40b0AWPs
+ 3XpcVwd6Iuv5tFAkBDr1yVuo4es+A7UPQMDxS7uvVuz1AO1VV9h0B1zIUz6uyY2lNfvO
+ Op9NhPRcB5iCoFKRX3vVXfBExAw7HIQyt/fPk2+v4uuMW3Dv8d8a7KZqrlMOVFt57ILy
+ 8QDO5pf2k9cJS3YPuosKRMGcjlcOjT7sIVPpNduLMX741rXkP63fc0SoTsa0lvOI4cB5
+ 6apQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXDJKR/UrxAeCTAhoPii5/DymmoUVC0P3QGzQ9In7zgosp5t2KrxOin4jEJYrl9oUJBFNxkAKMdkFDqr7CEmMsQ2aMt
-X-Gm-Message-State: AOJu0Yx1Qk2z0IeMB4V17btggtuRbe4n4GJZam94N4qFUmzoEn3Y2Hbt
- nC0QA1PDJEu1PEqGV3hoAjD+GhbkrA1VjbMRcnAtCbf8nkscI1PGRTdK9sWCMCaxqBwaSo/WQk9
- ND0KC5jnOFSotMag4GUCl59gCT5H7fBE8dfvR3MRgFjv2SmoXtQ==
-X-Received: by 2002:a05:600c:444c:b0:41c:83aa:18b7 with SMTP id
- 5b1f17b1804b1-41fead6d1c8mr117537305e9.33.1715810533171; 
- Wed, 15 May 2024 15:02:13 -0700 (PDT)
-X-Received: by 2002:a05:600c:444c:b0:41c:83aa:18b7 with SMTP id
- 5b1f17b1804b1-41fead6d1c8mr117537055e9.33.1715810532546; 
- Wed, 15 May 2024 15:02:12 -0700 (PDT)
-Received: from redhat.com ([2a0d:6fc7:443:357d:1f98:7ef8:1117:f7bb])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-41fccbe8f9bsm248654525e9.6.2024.05.15.15.02.09
+ AJvYcCVw3FkbrSwTj+Js7j+duW7/j/NssQ11niSI8mVrZgVN+EYIk40XyzVtkQQK6NJEHtHU7aeV+Bpr2Mxc4k27NWNiUneJ
+X-Gm-Message-State: AOJu0YzxkPPgFzp4p88Yst8X3u7PiyQdHFYDNBb3pLu0NvSvRRbAzT/W
+ 27DLVedKQFgPQ/E0SrM1VHkzZECkj+EKx9qvVtLzyISL4CH2pOqWwE7O0/ac9yIwso8tPJhvvrV
+ R/HdLnaGsxQjH2vLbbb49KcNtrncS+oTK37lRgIvNAxklD6kiyg==
+X-Received: by 2002:a05:6a20:4306:b0:1ad:8f18:8621 with SMTP id
+ adf61e73a8af0-1afde28cf65mr20831436637.6.1715832676453; 
+ Wed, 15 May 2024 21:11:16 -0700 (PDT)
+X-Received: by 2002:a05:6a20:4306:b0:1ad:8f18:8621 with SMTP id
+ adf61e73a8af0-1afde28cf65mr20831412637.6.1715832675762; 
+ Wed, 15 May 2024 21:11:15 -0700 (PDT)
+Received: from x1n ([67.214.252.166]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2b9f5820ce9sm1624392a91.56.2024.05.15.21.11.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 May 2024 15:02:11 -0700 (PDT)
-Date: Wed, 15 May 2024 18:02:07 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Peter Xu <peterx@redhat.com>
+ Wed, 15 May 2024 21:11:15 -0700 (PDT)
+Date: Wed, 15 May 2024 22:11:12 -0600
+From: Peter Xu <peterx@redhat.com>
+To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Cc: marcandre.lureau@redhat.com, qemu-devel@nongnu.org,
  Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Fiona Ebner <f.ebner@proxmox.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Fabiano Rosas <farosas@suse.de>, Gerd Hoffmann <kraxel@redhat.com>,
  Yanan Wang <wangyanan55@huawei.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Subject: Re: [PATCH v3 5/5] virtio-gpu: fix v2 migration
-Message-ID: <20240515175905-mutt-send-email-mst@kernel.org>
+Message-ID: <ZkWHYAM_iaPSamAw@x1n>
 References: <20240515141557.1277999-1-marcandre.lureau@redhat.com>
  <20240515141557.1277999-6-marcandre.lureau@redhat.com>
- <20240515120104-mutt-send-email-mst@kernel.org>
- <ZkTjZCTwIbkZIVZd@x1n>
+ <ZkTc4Ott5M15k55R@redhat.com> <ZkTq3xBP-0UiLV2X@x1n>
+ <ZkTtxLcgoZlzWH8A@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <ZkTjZCTwIbkZIVZd@x1n>
+In-Reply-To: <ZkTtxLcgoZlzWH8A@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -29
 X-Spam_score: -3.0
@@ -147,50 +147,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vLy3vjaxYaH+
+X-TUID: Zyzlbspnv5jV
 
-On Wed, May 15, 2024 at 10:31:32AM -0600, Peter Xu wrote:
-> On Wed, May 15, 2024 at 12:02:49PM -0400, Michael S. Tsirkin wrote:
-> > On Wed, May 15, 2024 at 06:15:56PM +0400, marcandre.lureau@redhat.com wrote:
-> > > From: Marc-André Lureau <marcandre.lureau@redhat.com>
-> > > 
-> > > Commit dfcf74fa ("virtio-gpu: fix scanout migration post-load") broke
-> > > forward/backward version migration. Versioning of nested VMSD structures
-> > > is not straightforward, as the wire format doesn't have nested
-> > > structures versions.
-> > > 
-> > > Use the previously introduced check_machine_version() function as a
-> > > field test to ensure proper saving/loading based on the machine version.
-> > > The VMSD.version is irrelevant now.
-> > > 
-> > > Fixes: dfcf74fa ("virtio-gpu: fix scanout migration post-load")
-> > > Suggested-by: Peter Xu <peterx@redhat.com>
-> > > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+On Wed, May 15, 2024 at 06:15:48PM +0100, Daniel P. BerrangÃ© wrote:
+> On Wed, May 15, 2024 at 11:03:27AM -0600, Peter Xu wrote:
+> > On Wed, May 15, 2024 at 05:03:44PM +0100, Daniel P. BerrangÃ© wrote:
+> > > Above all, I'm failing to see why there's a compelling reason
+> > > for virtio_gpu to diverge from our long standing practice of
+> > > adding a named property flag "virtio_scanout_vmstate_fix"
+> > > on the machine class, and then setting it in machine types
+> > > which need it.
 > > 
-> > I don't get it. Our standard way to do it is:
-> > - add a property (begin name with x- so we don't commit to an API)
-> > - set from compat machinery
-> > - test property value in VMSTATE macros
+> > The reason to introduce that is definitely avoid introducing fields /
+> > properties in similar cases in which case all the fields may represent the
+> > same thing ("return true if MC is older than xxx version").  Especially
+> > when such change is not bound to a new feature so in which case it won't
+> > make sense to allow user to even control that propoerty, even if we
+> > exported this "x-virtio-scanout-fix" property, but now we must export it
+> > because compat fields require it.
 > > 
-> > Big advantage is, it works well with any downstreams
-> > which pick any properties they like.
-> > Why is this not a good fit here?
+> > However I think agree that having upstream specific MC versions in VMSD
+> > checks is kind of unwanted.  I think the major problem is we don't have
+> > that extra machine type abstract where we can have simply a number showing
+> > the release of QEMU, then we can map that number to whatever
+> > upstream/downstream machine types.  E.g.:
+> > 
+> >   Release No.         Upstream version       Downstream version
+> >   50                  9.0                    Y.0
+> >   51                  9.1
+> >   52                  9.2                    Y.1
+> >   ...
 > 
-> I think it'll simplify upstream to avoid introducing one new field + one
-> new property for each of such protocol change, which fundamentally are the
-> same thing.  But it's indeed a good point that such helper can slightly
-> complicate the backport a bit.. I assume a global replacement of versions
-> over the helper will be needed after downstream settles on how to map
-> downstream MCs to upstream's.
+> Downstream versions do not map cleanly to individual upstream versions
+> across the whole code base. If we have two distinct features in upstream
+> version X, each of them may map to a different downstream release. 
 > 
-> Thanks,
+> This can happen when downstream skips one or more upstream releases.
+> One feature from the skipped release might be backported to an earlier
+> downstream release, while other feature might not arrive downstream
+> until they later rebase. Version based checks are an inherantly
+> undesirable idea for a situation where there is any backporting taking
+> place, whether its machine type versions or something else. Named feature
+> / flag based checks are always the way to go.
 
-There's nothing special about this specific code. If we want to rework
-how machine compat is handled we can do it, but I wouldn't start with
-this virtio gpu bug.
+I thought this should work better with things like this where we only want
+to fix a break in ABI, and none of downstream should special case things
+like such fix.. but I agree even with that in mind such case could be so
+rare to bother with above scheme.  I could have raised a bad idea I
+suppose. :-( Let's stick with the simple until someone has better idea.
 
-It's a big if though, I don't like how this patch works at all.
+Thanks,
 
 -- 
-MST
+Peter Xu
 

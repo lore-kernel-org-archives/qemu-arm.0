@@ -1,383 +1,136 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1480238ejl;
-        Thu, 16 May 2024 09:11:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXr+QNf0qWL24FS58BRLhxcQy9IRySiHoRnKE+vMxIN/pWs3bQBPU+O9YpoMe2ySYbkGX1GsozP4UlgaoP09p9IUp7uEhYN
-X-Received: by 2002:a50:d4d4:0:b0:572:4761:1947 with SMTP id 4fb4d7f45d1cf-5734d703619mr12160937a12.36.1715875916302;
-        Thu, 16 May 2024 09:11:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715875916; cv=none;
+Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1608752ejl;
+        Thu, 16 May 2024 12:42:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVRd8WkjJ6+RZT6RLUg4e/FW7nQIm+34gd5j5H+k242pOU8oBSsT2TBSN0Sma/ylj2nii4mXGqrRbSEQIxb8Ho92WKQKdcb
+X-Google-Smtp-Source: AGHT+IE/D4z6Iet/SMiYvYpqRK3ex+8d2EgDqPPn13YIpwEmnDdUVGTzN1sFzhEGJ5ku/82Klx3/
+X-Received: by 2002:a05:6e02:1fe2:b0:36c:4b60:3568 with SMTP id e9e14a558f8ab-36cc150311dmr256352535ab.29.1715888529567;
+        Thu, 16 May 2024 12:42:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715888529; cv=none;
         d=google.com; s=arc-20160816;
-        b=0j4K3FBeDxbHRyUCauIItvhfcChjtpAfmiHtLoKd2ctCXUbL5ExacCHVsS/LOkSg9k
-         lENdtp8Pk4hJvmSOtmpWWxrBtjQNSb2C187JnQuF+KNnXWUuGQ64KBF+vd4oJmBkAbnG
-         7LU0VeRY4MGJ5po339ELEol9ulZZbK1gri9p/1+o5+Ui8q/Xg7kd+WViVGkxlzGzc0Dy
-         Qk/zUFsRFWuJo7wE1q4QyD8mZdjW2vqsDRXF9dg2Eutkp7x9AZrz20OlNl4YTl0TIr6P
-         aUZdtdY2FZiWdBnzgR68/ty9eL7/XHioBMQWHm5IGgwSN8S1WFRhOMkK6P3ag2jbzZH5
-         eklA==
+        b=U3d0o66QNufY1SPf7RlsGJ424uyLkUWA+ePsT6WEmSHuHqEcEfJu4L0ZMq99Uj+pmA
+         fh6R4ZBQ2EFlIPtJ6h237lMhaFHXu5WZ75/fMxzUPtKpau7IKMMrakbKrtzQPSu7qQNN
+         tGegV9eB8fimak8TSOgG6LfyQsLiJDJKjRM2lkzmauo0X03uFQOIaIYYhSNdGrXkmeUh
+         YKQVOyIMBWF6NANMZrQBHG+KgShMBdz7jbWTuwC4SSjwKzWqnR0cYu1iW1whVKd18PiC
+         DMy33e3sA3OAa2Q7g0EdKFFWAyOSjGJANBjM16uA9M/nF5jWWckHgF0ThfmcVjuYVdaM
+         eCVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=HBq674saoFEEAoKSou+e+8DdajwlH6jfYyW5XuVaTyg=;
-        fh=ccDSyb1N3OCUPJf5Lp9iYcmExi1KZ0pzqL2oIg0eoYI=;
-        b=VKBQzBqmURgo4gq+iBTW9K8PgqNSPfts3l3TM81Jz4d8O1lpTifbq0+EUlEsczMDXB
-         HfSoNgpswXKDzNkG6tKKO+hPcjb6a8ZIwGwIHmapy0154OmEmth4fALFcR2bhqDX9da3
-         GxW/JsCZ0wooHITM9FWq7WEQFh55Z5GPGZbO+KujZdQfzW/Nat9iHeqlDLak1nMqixVj
-         0Jn6uUNIQtI1DlCJ8j3INZgdFgaqVPBhSMZXfD0v+ZEEJWBaClF3wT8slDlfiCprjajX
-         gA7FR3EBWyVDG9j32wk6+q2MPu/V8yXpQzQppblcI85OStlJa38EfWaL4FoSYJfjJDMU
-         H2uQ==;
+        h=in-reply-to:content-disposition:mime-version:references:reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=OnUlYBuD8UjKSLFNZBxpwgTLeP+MqQOeusbC1aDUHL4=;
+        fh=iQY2wHJsZZYZ4/33azmH3EUwzomNaT+kbmfZS4ZjW2U=;
+        b=JiXAjugYqD3buBoqHvUUf2gTw8T4tGePE5cYctaBff0QOyGRx35harNohp8mxdgbSE
+         etoKeRvWKP3eiiVV16UIPTdYNeLsfD7P2GhayeAE+Hav0BDE2SLJa9whF+y0elSL/kEu
+         RcJY7FgJ2OMIDN/oiE3beItAvr+1Vi3jFses4RubBYNZfhwxy1Nonnla5g+zuzHOAgpb
+         +hfNJvX10j7JUjtVYx4c47WJzdtqojsJ2RPXMUCBtg1zHmvqHCltAPOul7iYP0umlF8O
+         FEb+NaNWb6kE91MO2OORWJaNrETl7g5JfV2d06AXya/duIyFU9dm0/BwY9b50jeIY5Ga
+         qTOg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=lx6WE9o5;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <smostafa@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5750a7e53c7sor74708a12.1.2024.05.16.09.11.56
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 16 May 2024 09:11:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=Ud6Qwbb0;
+       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Return-Path: <quic_svaddagi@quicinc.com>
+Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com. [205.220.168.131])
+        by mx.google.com with ESMTPS id e9e14a558f8ab-36cb9dcaa82si85405235ab.115.2024.05.16.12.42.08
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 16 May 2024 12:42:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) client-ip=205.220.168.131;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=lx6WE9o5;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1715875916; x=1716480716; darn=linaro.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=HBq674saoFEEAoKSou+e+8DdajwlH6jfYyW5XuVaTyg=;
-        b=lx6WE9o5fP4Uvc3k9KZKmjRP1JZbWaaeSKvz+x5z04VCIcSfEyE8tx+ztwNO1lN07F
-         S7Emhikjz9h5deeNjLY68Qcc3C+TYgvVg02ZWo+elIERAx2RM2ObJTj1/hhv7CpBRW9y
-         TTV9Nkpam/w5ls2Mpee7XSMvgRSwkOt4aIPIRlPODQd+R/qWZlS9GkQY9i5TEqK5QcPO
-         B9XQnrOX4obNKMEA8qzr+ZDtLfHIXCohitiMRzjMlc6gkM7VTLjpBP5pS198vJDcycr7
-         BDiW/bnrMVMiJ5UQmeiH98pAbLJO4YiTO+88A7eaN755+0CP2rY8G5omnR5kddj5CqXY
-         ToSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1715875916; x=1716480716;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HBq674saoFEEAoKSou+e+8DdajwlH6jfYyW5XuVaTyg=;
-        b=r7tEL3JBBStGkL6XAQzM9EVothmva13Vendf8R3sQzZs4M3J5IWwkmYQnn5CCQSLvp
-         dACtFujetiq/uiASnMxJOMO7Hr0n3SbyS6N5MCgJBQNEMf7xtsZThwy0OUrIUMJ0MKll
-         UcNgp0/pwl+2lWVpKSKcSF3DX8O2sHHISJHgErkJca3N+TaDpSWjVm7UEE7DUD+OeMYU
-         ALjq7MF342z+x7ca8r+NxHLhYNePVC3c2Bcli/Iyou2+JxX0n6ieMqu5uKS1Uxc88ykh
-         l21SyqWGWHloke/Pw1bF/UBKsyocEHtITKU4GFS1pzLBhzktrmXzJ8PYtCL2NrOVQEvm
-         q4VQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVw/84IXxBiwEsTNzWgsiypCKaCCoK4DB49QqFKhHXB+nSeYPkDh2Kzwz1+lY5t0bCAayMhg0lATand7KeFKWlNzd9UejCa
-X-Gm-Message-State: AOJu0YwSw/9Q+ieZLZktGn/DLC+Q3cCwR7bNfG0P8y+q3a77h41hL1qj
-	nAv2glydV9t6SBv7zX9qTOJtwD3pftIRTwv/UdbqrUJ35ISqXgkv4zVWwwZlqA==
-X-Google-Smtp-Source: AGHT+IHtuWd67aPiImbdrg/fX9Lh1bX41vMJm/NdbdOil7RS0PoeDB/JkP9V5ZwtEkFfw4fL6hus+w==
-X-Received: by 2002:a05:600c:c0c:b0:419:fa3c:fb46 with SMTP id 5b1f17b1804b1-4200f8c08eemr11635495e9.5.1715875915527;
-        Thu, 16 May 2024 09:11:55 -0700 (PDT)
-Return-Path: <smostafa@google.com>
-Received: from google.com (180.232.140.34.bc.googleusercontent.com. [34.140.232.180])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-42018b5e1e8sm138846215e9.5.2024.05.16.09.11.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 May 2024 09:11:55 -0700 (PDT)
-Date: Thu, 16 May 2024 16:11:51 +0000
-From: Mostafa Saleh <smostafa@google.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
-	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
-	marcin.juszkiewicz@linaro.org
-Subject: Re: [RFC PATCH v3 07/18] hw/arm/smmuv3: Translate CD and TT using
- stage-2 table
-Message-ID: <ZkYwR0JeHGhwLm6c@google.com>
-References: <20240429032403.74910-1-smostafa@google.com>
- <20240429032403.74910-8-smostafa@google.com>
- <b5808f6e-cead-4291-8274-079ad11a922d@redhat.com>
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=Ud6Qwbb0;
+       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 44GB15cp006187;
+	Thu, 16 May 2024 19:42:08 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	date:from:to:cc:subject:message-id:reply-to:references
+	:mime-version:content-type:in-reply-to; s=qcppdkim1; bh=OnUlYBuD
+	8UjKSLFNZBxpwgTLeP+MqQOeusbC1aDUHL4=; b=Ud6Qwbb0FeZi+ge2+3pswrNc
+	VjYhHsXHdkfcJBoet99Hp5vRnnP2OSsdniFzot83/ltTkUxg1UvBkRb4zEU6X4by
+	AS2uiKC8Ds9fpSNWeL67DoirtS6mfTDMOF+CFtL71+AxiUWlXSjEienMozzA9u4d
+	QQdSfS2L55dSt4xLTeLExfV/y1xbb7Y2jkiIzM+atyQDAyeGdkYoajqzMZ8feoWA
+	dCu3ENHZQOayUMZ9u1eRjp2JW9qEzwzX6Ya9HlBn7YEV9uptXWQaXB7HX00tCKfi
+	OSlE9lb4ihXXWSM4vewhyzUWxykpQCJkRSxpLGVd1D9uRJp3A2n9Aa1Pjmw5pA==
+Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3y51tujvkr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 16 May 2024 19:42:07 +0000 (GMT)
+Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
+	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 44GJg6MY011490
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 16 May 2024 19:42:06 GMT
+Received: from quicinc.com (10.80.80.8) by nalasex01b.na.qualcomm.com
+ (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Thu, 16 May
+ 2024 12:42:01 -0700
+Date: Fri, 17 May 2024 01:11:57 +0530
+From: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
+To: "Daniel P. Berrang?" <berrange@redhat.com>
+CC: <peter.maydell@linaro.org>, <philmd@linaro.org>, <alex.bennee@linaro.org>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <quic_tsoni@quicinc.com>, <quic_pheragu@quicinc.com>,
+        <quic_eberman@quicinc.com>, <quic_yvasi@quicinc.com>,
+        <quic_cvanscha@quicinc.com>, <quic_mnalajal@quicinc.com>
+Subject: Re: [RFC/PATCH v2 03/12] hw/arm/virt: confidential guest support
+Message-ID: <20240516194157.GA440762@quicinc.com>
+Reply-To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
+References: <20240516143356.1739402-1-quic_svaddagi@quicinc.com>
+ <20240516143356.1739402-4-quic_svaddagi@quicinc.com>
+ <ZkYgeGSPxD_yt5oa@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Disposition: inline
-In-Reply-To: <b5808f6e-cead-4291-8274-079ad11a922d@redhat.com>
-X-TUID: KFMMV4Y/dSCS
+In-Reply-To: <ZkYgeGSPxD_yt5oa@redhat.com>
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+ nalasex01b.na.qualcomm.com (10.47.209.197)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-ORIG-GUID: YJfy-5VEm_NC79rR5vJlEN91NlZZ49R2
+X-Proofpoint-GUID: YJfy-5VEm_NC79rR5vJlEN91NlZZ49R2
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.11.176.26
+ definitions=2024-05-16_07,2024-05-15_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 adultscore=0 phishscore=0
+ spamscore=0 impostorscore=0 bulkscore=0 suspectscore=0 clxscore=1011
+ mlxscore=0 lowpriorityscore=0 mlxlogscore=886 malwarescore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2405010000 definitions=main-2405160142
+X-TUID: R2qSN8QNurTh
 
-Hi Eric,
+* Daniel P. Berrang? <berrange@redhat.com> [2024-05-16 16:04:24]:
 
-On Wed, May 15, 2024 at 03:15:02PM +0200, Eric Auger wrote:
-> Hi Mostafa,
+> On Thu, May 16, 2024 at 02:33:47PM +0000, Srivatsa Vaddagiri wrote:
+> > This adds support to launch hypervisor-assisted confidential guests,
+> > where guest's memory is protected from a potentially untrusted host.
+> > Hypervisor can setup host's page-tables so that it loses access to guest
+> > memory.
+> > 
+> > Since some guest drivers may need to communicate data with their host
+> > counterparts via shared memory, optionally allow setting aside some part
+> > of the confidential guest's memory as "shared". The size of this shared
+> > memory is specified via the optional "swiotlb-size" parameter.
+> > 
+> > -machine virt,confidential-guest-support=prot0 \
+> > 	-object arm-confidential-guest,id=prot0,swiotlb-size=16777216
+> > 
+> > The size of this shared memory is indicated to the guest in size/reg
+> > property of device-tree node "/reserved-memory/restricted_dma_reserved".
+> > A memory-region property is added to device-tree node representing
+> > virtio-pcie hub, so that all DMA allocations requested by guest's virtio-pcie
+> > device drivers are satisfied from the shared swiotlb region.
 > 
-> On 4/29/24 05:23, Mostafa Saleh wrote:
-> > According to ARM SMMU architecture specification (ARM IHI 0070 F.b),
-> > In "5.2 Stream Table Entry":
-> >  [51:6] S1ContextPtr
-> >  If Config[1] == 1 (stage 2 enabled), this pointer is an IPA translated by
-> >  stage 2 and the programmed value must be within the range of the IAS.
-> >
-> > In "5.4.1 CD notes":
-> >  The translation table walks performed from TTB0 or TTB1 are always performed
-> >  in IPA space if stage 2 translations are enabled.
-> >
-> > This patch implements translation of the S1 context descriptor pointer and
-> > TTBx base addresses through the S2 stage (IPA -> PA)
-> >
-> > smmuv3_do_translate() is updated to have one arg which is translation
-> > class, this is useful for:
-> s/for/to?
-Will do.
-> >  - Decide wether a translation is stage-2 only or use the STE config.
-> >  - Populate the class in case of faults, WALK_EABT is lefat as it as
-> left unchanged?
-Yup, that's a typo.
-> >    it is always triggered from TT access so no need to use the input
-> >    class.
-> >
-> > In case for stage-2 only translation, which only used in nesting, the
-> in case of S2 translation used in the contexted of a nested translation, ...
-Will do.
-> > stage and asid are saved and restored before and after calling
-> > smmu_translate().
-> >
-> > Translating CD or TTBx can fail for the following reasons:
-> > 1) Large address size: This is described in
-> >    (3.4.3 Address sizes of SMMU-originated accesses)
-> >    - For CD ptr larger than IAS, for SMMUv3.1, it can trigger either
-> >      C_BAD_STE or Translation fault, we implement the latter as it
-> >      requires no extra code.
-> >    - For TTBx, if larger than the effective stage 1 output address size, it
-> >      triggers C_BAD_CD.
-> >
-> > 2) Faults from PTWs (7.3 Event records)
-> >    - F_ADDR_SIZE: large address size after first level causes stage 2 Address
-> >      Size fault (Also in 3.4.3 Address sizes of SMMU-originated accesses)
-> >    - F_PERMISSION: Same as an address translation. However, when
-> >      CLASS == CD, the access is implicitly Data and a read.
-> >    - F_ACCESS: Same as an address translation.
-> >    - F_TRANSLATION: Same as an address translation.
-> >    - F_WALK_EABT: Same as an address translation.
-> >   These are already implemented in the PTW logic, so no extra handling
-> >   required.
-> >
-> > As, there is multiple locations where the address is calculated from
-> > cached entry, a new macro is introduced CACHED_ENTRY_TO_ADDR.
-> >
-> > Signed-off-by: Mostafa Saleh <smostafa@google.com>
-> > ---
-> >  hw/arm/smmuv3.c              | 76 ++++++++++++++++++++++++++++++------
-> >  include/hw/arm/smmu-common.h |  3 ++
-> >  2 files changed, 66 insertions(+), 13 deletions(-)
-> >
-> > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> > index cc61708160..cc61c82321 100644
-> > --- a/hw/arm/smmuv3.c
-> > +++ b/hw/arm/smmuv3.c
-> > @@ -337,14 +337,33 @@ static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
-> >  
-> >  }
-> >  
-> > +static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
-> > +                                                 SMMUTransCfg *cfg,
-> > +                                                 SMMUEventInfo *event,
-> > +                                                 IOMMUAccessFlags flag,
-> > +                                                 SMMUTLBEntry **out_entry,
-> > +                                                 SMMUTranslationClass class);
-> >  /* @ssid > 0 not supported yet */
-> > -static int smmu_get_cd(SMMUv3State *s, STE *ste, uint32_t ssid,
-> > -                       CD *buf, SMMUEventInfo *event)
-> > +static int smmu_get_cd(SMMUv3State *s, STE *ste, SMMUTransCfg *cfg,
-> > +                       uint32_t ssid, CD *buf, SMMUEventInfo *event)
-> >  {
-> >      dma_addr_t addr = STE_CTXPTR(ste);
-> >      int ret, i;
-> > +    SMMUTranslationStatus status;
-> > +    SMMUTLBEntry *entry;
-> >  
-> >      trace_smmuv3_get_cd(addr);
-> > +
-> > +    if (cfg->stage == SMMU_NESTED) {
-> > +        status = smmuv3_do_translate(s, addr, cfg, event,
-> > +                                     IOMMU_RO, &entry, SMMU_CLASS_CD);
-> > +        if (status != SMMU_TRANS_SUCCESS) {
-> So I guess you rely on event being populated by above CD S2 translate().
-> it does not need to be patched, correct?
-> May be worth a comment.
-Yes, only the class is different, I will add a comment.
-> > +            return -EINVAL;
-> > +        }
-> > +
-> > +        addr = CACHED_ENTRY_TO_ADDR(entry, addr);
-> > +    }
-> > +
-> >      /* TODO: guarantee 64-bit single-copy atomicity */
-> >      ret = dma_memory_read(&address_space_memory, addr, buf, sizeof(*buf),
-> >                            MEMTXATTRS_UNSPECIFIED);
-> > @@ -659,10 +678,13 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
-> >      return 0;
-> >  }
-> >  
-> > -static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
-> > +static int decode_cd(SMMUv3State *s, SMMUTransCfg *cfg,
-> > +                     CD *cd, SMMUEventInfo *event)
-> >  {
-> >      int ret = -EINVAL;
-> >      int i;
-> > +    SMMUTranslationStatus status;
-> > +    SMMUTLBEntry *entry;
-> >  
-> >      if (!CD_VALID(cd) || !CD_AARCH64(cd)) {
-> >          goto bad_cd;
-> > @@ -713,9 +735,21 @@ static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
-> >  
-> >          tt->tsz = tsz;
-> >          tt->ttb = CD_TTB(cd, i);
-> > +
-> >          if (tt->ttb & ~(MAKE_64BIT_MASK(0, cfg->oas))) {
-> >              goto bad_cd;
-> >          }
-> > +
-> > +        /* Translate the TTBx, from IPA to PA if nesting is enabled. */
-> > +        if (cfg->stage == SMMU_NESTED) {
-> > +            status = smmuv3_do_translate(s, tt->ttb, cfg, event, IOMMU_RO,
-> > +                                         &entry, SMMU_CLASS_TT);
-> > +            if (status != SMMU_TRANS_SUCCESS) {
-> same here.
-> > +                return -EINVAL;
-> > +            }
-> > +            tt->ttb = CACHED_ENTRY_TO_ADDR(entry, tt->ttb);
-> > +        }
-> > +
-> >          tt->had = CD_HAD(cd, i);
-> >          trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb, tt->granule_sz, tt->had);
-> >      }
-> > @@ -767,12 +801,12 @@ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
-> >          return 0;
-> >      }
-> >  
-> > -    ret = smmu_get_cd(s, &ste, 0 /* ssid */, &cd, event);
-> > +    ret = smmu_get_cd(s, &ste, cfg, 0 /* ssid */, &cd, event);
-> >      if (ret) {
-> >          return ret;
-> >      }
-> >  
-> > -    return decode_cd(cfg, &cd, event);
-> > +    return decode_cd(s, cfg, &cd, event);
-> >  }
-> >  
-> >  /**
-> > @@ -832,13 +866,29 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
-> >                                                   SMMUTransCfg *cfg,
-> >                                                   SMMUEventInfo *event,
-> >                                                   IOMMUAccessFlags flag,
-> > -                                                 SMMUTLBEntry **out_entry)
-> > +                                                 SMMUTLBEntry **out_entry,
-> > +                                                 SMMUTranslationClass class)
-> >  {
-> >      SMMUPTWEventInfo ptw_info = {};
-> >      SMMUState *bs = ARM_SMMU(s);
-> >      SMMUTLBEntry *cached_entry = NULL;
-> > +    int asid, stage;
-> > +    bool S2_only = class != SMMU_CLASS_IN;
-> > +
-> > +    if (S2_only) {
-> Please add a comment explaining that class value is used to identify
-> S2-only forced translation in the context of a nested translation.
-> In that case we hackily override the original config to reach our goal
-> and then restore the original config.
-> That's pretty hacky. Let's see if any other reviewer has a better idea
-> ;-) on my end I understand it and I can bear the trick :)
+> For reference, there is another series proposing confidential guest
+> support for the 'virt' machine on AArch64 with KVM
 > 
-Indeed, this is unclear, I will add a comment.
-I thought about this case a lot, I found this to be the least intrusive
-way while having tolerable readability, it'd be great if someone has a
-better idea.
+>  https://lists.nongnu.org/archive/html/qemu-devel/2024-04/msg02742.html
+> 
+> I've no idea how closely your impl matches the KVM proposed impl. ie
+> whether we need 2 distinct "ConfidentialGuest" subclasses for KVM vs
+> Gunyah, or whether 1 can cope with both.  If we do need 2 distinct
+> subclasses for each hypervisor, then calling this Gunyah targetted
+> object 'arm-confidential-guest' is too broad of an name.
 
-> 
-> > +        asid = cfg->asid;
-> > +        stage = cfg->stage;
-> > +        cfg->asid = -1;
-> > +        cfg->stage = SMMU_STAGE_2;
-> > +    }
-> >  
-> >      cached_entry = smmu_translate(bs, cfg, addr, flag, &ptw_info);
-> > +
-> > +    if (S2_only) {
-> > +        cfg->asid = asid;
-> > +        cfg->stage = stage;
-> > +    }
-> > +
-> >      if (!cached_entry) {
-> >          /* All faults from PTW has S2 field. */
-> >          event->u.f_walk_eabt.s2 = (ptw_info.stage == SMMU_STAGE_2);
-> > @@ -855,7 +905,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
-> >                  event->type = SMMU_EVT_F_TRANSLATION;
-> >                  event->u.f_translation.addr = addr;
-> >                  event->u.f_translation.addr2 = ptw_info.addr;
-> > -                event->u.f_translation.class = SMMU_CLASS_IN;
-> > +                event->u.f_translation.class = class;
-> >                  event->u.f_translation.rnw = flag & 0x1;
-> >              }
-> >              break;
-> > @@ -864,7 +914,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
-> >                  event->type = SMMU_EVT_F_ADDR_SIZE;
-> >                  event->u.f_addr_size.addr = addr;
-> >                  event->u.f_addr_size.addr2 = ptw_info.addr;
-> > -                event->u.f_addr_size.class = SMMU_CLASS_IN;
-> > +                event->u.f_addr_size.class = class;
-> >                  event->u.f_addr_size.rnw = flag & 0x1;
-> >              }
-> >              break;
-> > @@ -873,7 +923,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
-> >                  event->type = SMMU_EVT_F_ACCESS;
-> >                  event->u.f_access.addr = addr;
-> >                  event->u.f_access.addr2 = ptw_info.addr;
-> > -                event->u.f_access.class = SMMU_CLASS_IN;
-> > +                event->u.f_access.class = class;
-> >                  event->u.f_access.rnw = flag & 0x1;
-> >              }
-> >              break;
-> > @@ -882,7 +932,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
-> >                  event->type = SMMU_EVT_F_PERMISSION;
-> >                  event->u.f_permission.addr = addr;
-> >                  event->u.f_permission.addr2 = ptw_info.addr;
-> > -                event->u.f_permission.class = SMMU_CLASS_IN;
-> > +                event->u.f_permission.class = class;
-> >                  event->u.f_permission.rnw = flag & 0x1;
-> >              }
-> >              break;
-> > @@ -943,15 +993,15 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-> >          goto epilogue;
-> >      }
-> >  
-> > -    status = smmuv3_do_translate(s, addr, cfg, &event, flag, &cached_entry);
-> > +    status = smmuv3_do_translate(s, addr, cfg, &event, flag,
-> > +                                 &cached_entry, SMMU_CLASS_IN);
-> >  
-> >  epilogue:
-> >      qemu_mutex_unlock(&s->mutex);
-> >      switch (status) {
-> >      case SMMU_TRANS_SUCCESS:
-> >          entry.perm = cached_entry->entry.perm;
-> > -        entry.translated_addr = cached_entry->entry.translated_addr +
-> > -                                    (addr & cached_entry->entry.addr_mask);
-> > +        entry.translated_addr = CACHED_ENTRY_TO_ADDR(cached_entry, addr);
-> >          entry.addr_mask = cached_entry->entry.addr_mask;
-> >          trace_smmuv3_translate_success(mr->parent_obj.name, sid, addr,
-> >                                         entry.translated_addr, entry.perm,
-> > diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> > index 96eb017e50..09d3b9e734 100644
-> > --- a/include/hw/arm/smmu-common.h
-> > +++ b/include/hw/arm/smmu-common.h
-> > @@ -37,6 +37,9 @@
-> >  #define VMSA_IDXMSK(isz, strd, lvl)         ((1ULL << \
-> >                                               VMSA_BIT_LVL(isz, strd, lvl)) - 1)
-> >  
-> > +#define CACHED_ENTRY_TO_ADDR(ent, addr)      (ent)->entry.translated_addr + \
-> > +                                             ((addr) & (ent)->entry.addr_mask);
-> > +
-> nit; this could be introduced in a separate patch since you have a
-> caller in smmuv3_translate(). This may help the reviewer to focus on the
-> most important class related changes.
+Thanks for that pointer! Let me study the proposed KVM implementation and 
+see how we can consolidate support for KVM and Gunyah hypervisors.
 
-Sure, I can introduce a small patch before this one with this macro.
-
-Thanks,
-Mostafa
-
-> Besides
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> 
-> Eric
-> 
-> >  /*
-> >   * Page table walk error types
-> >   */
-> 
+- vatsa

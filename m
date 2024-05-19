@@ -1,167 +1,211 @@
-Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp857087ejb;
-        Sun, 19 May 2024 02:43:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVy6KzuXxLRkG1hiTQBgOOGoGw1T4JyF28BWRgjdPvgfXnPCXiql2NQ1cvDn1Wzr8uPfK9JbTMeIDfBd6MO7dLnw9TCu6s9
-X-Google-Smtp-Source: AGHT+IF49PKGLutmPoewZXfeKSYfjZVz5/HVhdxe7fRRRAwAEJJddpSagF64Y0SzhSVX2w3RwLDw
-X-Received: by 2002:ae9:f212:0:b0:792:9136:1d92 with SMTP id af79cd13be357-792c75ae6e4mr2514497285a.38.1716111837397;
-        Sun, 19 May 2024 02:43:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716111837; cv=none;
+Received: by 2002:a05:7022:fd07:b0:7c:9548:a19d with SMTP id up7csp4597692dlb;
+        Sun, 19 May 2024 14:07:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVUqrWNlVPhVMTqH/7WlYTttsTpBIbIm/bkMfMXpt7Gi+6DTkKyzvESq7FbQL3yiYWqTPlDiqdXAAn5BbOBudAu/Yvd0OX/
+X-Google-Smtp-Source: AGHT+IH7bCfz2BsPdsDLdkV5zrN2A3qtpQIR0HVPDq3ngH5AVA7Ii1oXvMjpni2LDHIdKXGK/OaW
+X-Received: by 2002:a05:600c:3582:b0:418:29d4:1964 with SMTP id 5b1f17b1804b1-41fea539b5amr211198445e9.0.1716152864598;
+        Sun, 19 May 2024 14:07:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716152864; cv=none;
         d=google.com; s=arc-20160816;
-        b=n38DGxjdK6cixOWf3tb1cD6ZnGZ4cSTkD7D3ZKB3XmNW7s6BT6LPfuEU1kFUSqtetB
-         U7FS61hT9B69p+bYOK1fZDV172IubxgV3v6+HIxBhszV86//NW8UgFW+RlU0YYVP3xTw
-         G6H5FsH6D4ZpQ2XWaQOFfKOf8Y2g8AJDu/K5ildqMMQfmpGXISJDA+VjYhllabYz+9UY
-         MByqGy7OGZJR5HCD2qTL32Lncb7VRehw970S1V0ooVtZn7ZZsKDkRhJ3XAV5WYJBMrFw
-         fo2z+pGzHwmKHimki3uJRT2Ovb1WfmFIcK6ReGO694qe7SvChSxkUf2DH/0q1Q3BU/6O
-         tsMg==
+        b=sYxQ13OxAH9n3oINBjuNe/c6v4VbBOF62rCHnRSrnzFWu1S3NrH6yG3YPWx7L6Xa2J
+         l0YTgvbTXo2yWqQqVXDwv3QpZyNg1dVBk5PJJR06rtwLv0MAW8Gt0cHDTzH/kblYq1kS
+         R0pjKKcPlxVjW72WR5i3iCXhSW77kqHDvAuHYUDJWbuN3DQNEw0OVwGukRmp99lB5ZkS
+         EIlj+Pypi01dFcAgqrSVKN7q26VZnuE0HJySYHWXuvPE/JiI3jaxLEXUMaypm4brs1md
+         e792emQFmjFVw9KxbsxH3Xuz43fton5XJZXrlXqPuvaWoobHNJFbC/3TV8EDJ6mUq6yQ
+         E/WA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/LDWpHwHgNc5ou1ACtf6yw2EFoNe3kKL5zlH1rq5LfQ=;
-        fh=uobGJT4CIynhdc2wU066L3fjWOAeQtKgF493TCCUp5g=;
-        b=lYAvsRyla7nl2GsEER6jNz6VYNDOmApWFwCmBmH5qYjApHgjTGACFTCfwE9myA0CQz
-         d1DKGVygK1bGpBSLr0yloHVCI7E8E2v33DOZA0PIoheAM61Aod2VElamB6/rgRjk4KFd
-         u76UD1dTgNUb1YInjYYdkoePqiIFuYbUklldHsbPlZbf4l3AJI5y7c+vfNDoSjAZ+zP5
-         SLPx0Pr3fVahyPcB1+GNAOE1sC6645MxocIknX6Q4j56X6QQWwOddxDb+Qr+K6atrer5
-         YMxtfE3jXF0acMETlSMDFAJiTOZi3LhnIUAJckxoKdyEFdTw85VHMit2BCn/mmdv99+h
-         X+hA==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=+mU2M+y27LlO6yiJjz3o2FM5AgZlwbsYZ0MO+dF0Xcg=;
+        fh=M0HTAxrI6BYZKxYd63sfeObsGy+Uhk81OO6h++LFq4Q=;
+        b=Q9xndTi5Z6soM4ydzVN4k3MPV+NeNSMWjW9vDxYEPu1C1rf7DsUhPXyiQd0vc3M86i
+         uroSD4geTSUpG6TPKQeXIJ0sZ+yYoXks7eFYed24dXNGyGLNrclIVWm2JBvTQR4v4vxN
+         pXK/bCrmT2+NdNDsujBgAb5ELC90U6OhHIjb7syBevUp4CRQOLEj/1Q39KWAllIKrq0G
+         FceqGDS02cwIwB4p18CoXFtQ5RpbZK7IkqE8Jy0/5BWgp19Zs/i4qQ6VmCM8yfxMktnP
+         +IBG8TXdaKQk74dO53iBINUpHoWxgrMl4SGpzxaPQke9+HHQLYI5H6PECoLP20y5YDfx
+         NmJA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZiR7CpEv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-792bf297ba2si2190322385a.194.2024.05.19.02.43.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 19 May 2024 02:43:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-354c46b81ecsi824244f8f.1016.2024.05.19.14.07.43
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 19 May 2024 14:07:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZiR7CpEv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1s8d3x-00021y-7O; Sun, 19 May 2024 05:42:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1s8d3v-00020O-EZ; Sun, 19 May 2024 05:42:39 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1s8d3o-0004Xc-TA; Sun, 19 May 2024 05:42:39 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-1ee7963db64so50459365ad.1; 
- Sun, 19 May 2024 02:42:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1716111750; x=1716716550; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=/LDWpHwHgNc5ou1ACtf6yw2EFoNe3kKL5zlH1rq5LfQ=;
- b=ZiR7CpEvN6cSA+I/NXeVTamf/yAqqaI+Bl3nxvvqp9idfg6bKlRog1L5emQ3eqm4YS
- 9rJj27uob6oAzzkpdBjVnoeMtMKUGiBBe6sroMVQlwA40iRuJJFr/xELylXWsezSNdbf
- bJzJ3/XYKnO4mT6idzDZhzKRaAmUNzf26vXstPzvN1eG4xSitm7cejb5xcH9mN13joe3
- Wja3iaH3vI+oXFreR4R/6hx6AEaorg6ELouvwikLVkQ6ihQquPmpnoX2VRrdU90HTg4h
- /3ridY88+ACWZd36VvfCjqQiyGlX/neJgR+MoihRlyUM3dABnLCLIfDFoBLKJRZIaBYd
- yc1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716111750; x=1716716550;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/LDWpHwHgNc5ou1ACtf6yw2EFoNe3kKL5zlH1rq5LfQ=;
- b=weLnqLJkixe/oDF5lHHvoR3B5TjivObXKzE7Oi9V549uMN5NjQKZgpHEWCAZM+PrKR
- 1FFn2l+pAnDRhgm1chrzFPoibBTNNwsmtQiLB5o32iRqlYNLkmmBxOQy4NLXhvs3Rm7f
- ar3bDabLgKQ8PfFrQJ2YMo5HerJnGdRNTZrbVdR1WL8tPdVpFZ0cVpRtUFFzedCLom2n
- gkU9+PcBoJr7CZktNM9umIbFjxNVcT/NmuxYbpZ8IUvfRsxZCvSDlg0Yfm5+CV4dql//
- FTvSnarAht9yLcohsutn07cBxChU0ILlrdP8MmqGfn60hjP8R1XZLJmGjJJRoJTcQag8
- x8ZQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW1oegOH/qJSavcSwhjtWjx3EUWLGBJF0O5tJuBWV5MX5NnrO+Nn6CHMEoerqVz1vRUN66eIoWL2+//v3S6HRBRAAFi
-X-Gm-Message-State: AOJu0YyXDWgbQ3uglwzUy6wOYnltGpP4tSDxKpdJYPTvBslka5t8BQJs
- MKgGjGlerkK6O39oK4keqkT+hLu1Ty0yaRoQb+e2VWJLJxBqCpyvRHWXxg==
-X-Received: by 2002:a05:6a20:2595:b0:1af:d2f8:382a with SMTP id
- adf61e73a8af0-1afde10f1bemr35914561637.34.1716111749785; 
- Sun, 19 May 2024 02:42:29 -0700 (PDT)
-Received: from localhost.localdomain ([49.47.193.102])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2b62863a265sm19977932a91.10.2024.05.19.02.42.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 19 May 2024 02:42:29 -0700 (PDT)
-From: Rayhan Faizel <rayhan.faizel@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: philmd@linaro.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- Rayhan Faizel <rayhan.faizel@gmail.com>
-Subject: [PATCH v3 0/3] Initial support for One-Time Programmable Memory (OTP)
- in BCM2835
-Date: Sun, 19 May 2024 15:11:03 +0530
-Message-Id: <20240519094106.2142896-1-rayhan.faizel@gmail.com>
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VjCqM5h9Pz6K5ts;
+	Mon, 20 May 2024 05:03:59 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
+	by mail.maildlp.com (Postfix) with ESMTPS id 4CC0A140DDB;
+	Mon, 20 May 2024 05:07:43 +0800 (CST)
+Received: from 00293818-MRGF.china.huawei.com (10.126.174.235) by
+ lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Sun, 19 May 2024 22:07:22 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
+	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>
+Subject: [PATCH V9 0/8] Add architecture agnostic code to support vCPU Hotplug
+Date: Sun, 19 May 2024 22:06:12 +0100
+Message-ID: <20240519210620.228342-1-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=rayhan.faizel@gmail.com; helo=mail-pl1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ML5fK+HFa8PF
+X-Originating-IP: [10.126.174.235]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ lhrpeml500001.china.huawei.com (7.191.163.213)
+X-TUID: w7eK/B8ey0sF
 
-All BCM2835 boards have on-board OTP memory with 66 32-bit rows. Usually,
-its contents are accessible via mailbox commands.
+Virtual CPU hotplug support is being added across various architectures[1][3].
+This series adds various code bits common across all architectures:
 
-[Changes in v3]
+1. vCPU creation and Parking code refactor [Patch 1]
+2. Update ACPI GED framework to support vCPU Hotplug [Patch 2,3]
+3. ACPI CPUs AML code change [Patch 4,5]
+4. Helper functions to support unrealization of CPU objects [Patch 6,7]
+5. Docs [Patch 8]
 
-- Forgot to replace constant with macro in one particular spot.
 
-[Changes in v2]
+Repository:
 
-- Replace read/write with get/set in bcm2835_otp.c.
-- Use impl instead of valid in bcm2835_otp.c.
-- Replace all constant values with macros defined in bcm2835_otp.h.
-- Change memory region size of OTP device to 0x80.
-- After further testing on a real Raspberry Pi 3, I noticed a few things
-contrary to my initial assumptions:
--- The customer OTP lock bit is bit 6 of row 32, NOT bit 30 of row 30. This is
-currently undocumented to my knowledge.
--- The above lock indeed applies to the private key as well.
+[*] https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v3.arch.agnostic.v9
 
-Rayhan Faizel (3):
-  hw/nvram: Add BCM2835 OTP device
-  hw/arm: Connect OTP device to BCM2835
-  hw/misc: Implement mailbox properties for customer OTP and device
-    specific private keys
+NOTE: For ARM, above will work in combination of the architecture specific part based on
+RFC V2 [1]. This architecture specific patch-set RFC V3 shall be floated soon and is present
+at below location
 
- hw/arm/bcm2835_peripherals.c         |  15 ++-
- hw/misc/bcm2835_property.c           |  87 +++++++++++++
- hw/nvram/bcm2835_otp.c               | 187 +++++++++++++++++++++++++++
- hw/nvram/meson.build                 |   1 +
- include/hw/arm/bcm2835_peripherals.h |   3 +-
- include/hw/arm/raspberrypi-fw-defs.h |   2 +
- include/hw/misc/bcm2835_property.h   |   2 +
- include/hw/nvram/bcm2835_otp.h       |  68 ++++++++++
- 8 files changed, 363 insertions(+), 2 deletions(-)
- create mode 100644 hw/nvram/bcm2835_otp.c
- create mode 100644 include/hw/nvram/bcm2835_otp.h
+[*] https://github.com/salil-mehta/qemu/tree/virt-cpuhp-armv8/rfc-v3-rc1
+
+
+Revision History:
+
+Patch-set  V8 -> V9
+1. Addressed Vishnu Pajjuri's (Ampere) comments
+   - Added kvm_fd to trace in kvm_create_vcpu
+   - Some clean ups: arch vcpu-id and sbd variable
+   - Added the missed initialization of cpu->gdb_num_regs
+2. Addressed the commnet from Zhao Liu (Intel)
+   - Make initialization of CPU Hotplug state conditional (possible_cpu_arch_ids!=NULL)
+Link: https://lore.kernel.org/qemu-devel/20240312020000.12992-1-salil.mehta@huawei.com/
+
+Patch-set V7 -> V8
+1. Rebased and Fixed the conflicts
+
+Patch-set  V6 -> V7
+1. Addressed Alex Bennée's comments
+   - Updated the docs
+2. Addressed Igor Mammedov's comments
+   - Merged patches [Patch V6 3/9] & [Patch V6 7/9] with [Patch V6 4/9]
+   - Updated commit-log of [Patch V6 1/9] and [Patch V6 5/9]     
+3. Added Shaoqin Huang's Reviewed-by tags for whole series.
+Link: https://lore.kernel.org/qemu-devel/20231013105129.25648-1-salil.mehta@huawei.com/
+
+Patch-set  V5 -> V6
+1. Addressed Gavin Shan's comments
+   - Fixed the assert() ranges of address spaces
+   - Rebased the patch-set to latest changes in the qemu.git
+   - Added Reviewed-by tags for patches {8,9}
+2. Addressed Jonathan Cameron's comments
+   - Updated commit-log for [Patch V5 1/9] with mention of trace events
+   - Added Reviewed-by tags for patches {1,5}
+3. Added Tested-by tags from Xianglai Li
+4. Fixed checkpatch.pl error "Qemu -> QEMU" in [Patch V5 1/9] 
+Link: https://lore.kernel.org/qemu-devel/20231011194355.15628-1-salil.mehta@huawei.com/
+
+Patch-set  V4 -> V5
+1. Addressed Gavin Shan's comments
+   - Fixed the trace events print string for kvm_{create,get,park,destroy}_vcpu
+   - Added Reviewed-by tag for patch {1}
+2. Added Shaoqin Huang's Reviewed-by tags for Patches {2,3}
+3. Added Tested-by Tag from Vishnu Pajjuri to the patch-set
+4. Dropped the ARM specific [Patch V4 10/10]
+Link: https://lore.kernel.org/qemu-devel/20231009203601.17584-1-salil.mehta@huawei.com/
+
+Patch-set  V3 -> V4
+1. Addressed David Hilderbrand's comments
+   - Fixed the wrong doc comment of kvm_park_vcpu API prototype
+   - Added Reviewed-by tags for patches {2,4}
+Link: https://lore.kernel.org/qemu-devel/20231009112812.10612-1-salil.mehta@huawei.com/
+
+Patch-set  V2 -> V3
+1. Addressed Jonathan Cameron's comments
+   - Fixed 'vcpu-id' type wrongly changed from 'unsigned long' to 'integer'
+   - Removed unnecessary use of variable 'vcpu_id' in kvm_park_vcpu
+   - Updated [Patch V2 3/10] commit-log with details of ACPI_CPU_SCAN_METHOD macro
+   - Updated [Patch V2 5/10] commit-log with details of conditional event handler method
+   - Added Reviewed-by tags for patches {2,3,4,6,7}
+2. Addressed Gavin Shan's comments
+   - Remove unnecessary use of variable 'vcpu_id' in kvm_par_vcpu
+   - Fixed return value in kvm_get_vcpu from -1 to -ENOENT
+   - Reset the value of 'gdb_num_g_regs' in gdb_unregister_coprocessor_all
+   - Fixed the kvm_{create,park}_vcpu prototypes docs
+   - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,10}
+3. Addressed one earlier missed comment by Alex Bennée in RFC V1
+   - Added traces instead of DPRINTF in the newly added and some existing functions
+Link: https://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.mehta@huawei.com/
+
+Patch-set V1 -> V2
+1. Addressed Alex Bennée's comments
+   - Refactored the kvm_create_vcpu logic to get rid of goto
+   - Added the docs for kvm_{create,park}_vcpu prototypes
+   - Splitted the gdbstub and AddressSpace destruction change into separate patches
+   - Added Reviewed-by tags for patches {2,10}
+Link: https://lore.kernel.org/qemu-devel/20230929124304.13672-1-salil.mehta@huawei.com/
+
+References:
+
+[1] https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@huawei.com/
+[2] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
+[3] https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongson.cn/
+
+
+
+Salil Mehta (8):
+  accel/kvm: Extract common KVM vCPU {creation,parking} code
+  hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
+  hw/acpi: Update ACPI GED framework to support vCPU Hotplug
+  hw/acpi: Update GED _EVT method AML with CPU scan
+  hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
+  physmem: Add helper function to destroy CPU AddressSpace
+  gdbstub: Add helper function to unregister GDB register space
+  docs/specs/acpi_hw_reduced_hotplug: Add the CPU Hotplug Event Bit
+
+ accel/kvm/kvm-all.c                    | 64 ++++++++++++++++++++------
+ accel/kvm/kvm-cpus.h                   | 14 ++++++
+ accel/kvm/trace-events                 |  5 +-
+ docs/specs/acpi_hw_reduced_hotplug.rst |  3 +-
+ gdbstub/gdbstub.c                      | 13 ++++++
+ hw/acpi/acpi-cpu-hotplug-stub.c        |  6 +++
+ hw/acpi/cpu.c                          | 33 +++++++++----
+ hw/acpi/generic_event_device.c         | 21 +++++++++
+ hw/core/cpu-common.c                   |  1 -
+ hw/i386/acpi-build.c                   |  3 +-
+ include/exec/cpu-common.h              |  8 ++++
+ include/exec/gdbstub.h                 |  6 +++
+ include/hw/acpi/cpu.h                  |  5 +-
+ include/hw/acpi/cpu_hotplug.h          |  4 ++
+ include/hw/acpi/generic_event_device.h |  4 ++
+ include/hw/core/cpu.h                  |  1 +
+ system/physmem.c                       | 29 ++++++++++++
+ 17 files changed, 189 insertions(+), 31 deletions(-)
 
 -- 
 2.34.1
-

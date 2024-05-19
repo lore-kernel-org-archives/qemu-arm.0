@@ -1,136 +1,201 @@
-Received: by 2002:a17:907:2723:b0:a5a:9152:cbdc with SMTP id d3csp1608752ejl;
-        Thu, 16 May 2024 12:42:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVRd8WkjJ6+RZT6RLUg4e/FW7nQIm+34gd5j5H+k242pOU8oBSsT2TBSN0Sma/ylj2nii4mXGqrRbSEQIxb8Ho92WKQKdcb
-X-Google-Smtp-Source: AGHT+IE/D4z6Iet/SMiYvYpqRK3ex+8d2EgDqPPn13YIpwEmnDdUVGTzN1sFzhEGJ5ku/82Klx3/
-X-Received: by 2002:a05:6e02:1fe2:b0:36c:4b60:3568 with SMTP id e9e14a558f8ab-36cc150311dmr256352535ab.29.1715888529567;
-        Thu, 16 May 2024 12:42:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1715888529; cv=none;
+Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp856945ejb;
+        Sun, 19 May 2024 02:43:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV8EFg5PMORKokPErzqQxM6+uR+sTg7yb3Xk547VDKxXe/TKWqQOElibTjVqa9ht2b2OgVeP7v3p0wUTONKTUJ8v5Brjvth
+X-Google-Smtp-Source: AGHT+IGv6DJW60i3UFukhxPsTXsof3dsdaq/354P7hWx7rTqAu+8sB6eVz7Wtuh4AtAA8Tzhrd2Z
+X-Received: by 2002:a05:6214:4a0a:b0:6a9:3497:d38c with SMTP id 6a1803df08f44-6a93497d6e6mr25567116d6.16.1716111802969;
+        Sun, 19 May 2024 02:43:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716111802; cv=none;
         d=google.com; s=arc-20160816;
-        b=U3d0o66QNufY1SPf7RlsGJ424uyLkUWA+ePsT6WEmSHuHqEcEfJu4L0ZMq99Uj+pmA
-         fh6R4ZBQ2EFlIPtJ6h237lMhaFHXu5WZ75/fMxzUPtKpau7IKMMrakbKrtzQPSu7qQNN
-         tGegV9eB8fimak8TSOgG6LfyQsLiJDJKjRM2lkzmauo0X03uFQOIaIYYhSNdGrXkmeUh
-         YKQVOyIMBWF6NANMZrQBHG+KgShMBdz7jbWTuwC4SSjwKzWqnR0cYu1iW1whVKd18PiC
-         DMy33e3sA3OAa2Q7g0EdKFFWAyOSjGJANBjM16uA9M/nF5jWWckHgF0ThfmcVjuYVdaM
-         eCVA==
+        b=wl2BuBh57zdOXbx0sowdLPDm6TnSXgPnrPd1/z0rPTXlixjbnaGD2ZfPA+6RJT+oHX
+         ok3mNbe6tgZnYhFHuXMVUJ/u9Wbsibmkg1qJZDJzemHVSVtDsDxo9a5I3PxjgCWkg0nG
+         xNePgVPGsd5JwoSXAIry3ME84rvqbfteeNpYbf6+cfqaCR9426nVhb/oYFLbio6CTTBK
+         YsbUZAnG8K90UN4QLVPmXdHbt4v47F4VSDbsjeoYx7w+0cWMtV/ml5GifAqix4zHkmoa
+         9h/rvPxYxh0ruKvKP95yWb9sNYa4FYKi8vSCnywQKACm4QCw2kH5tZJbHAtwWMgAPmho
+         CHDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=OnUlYBuD8UjKSLFNZBxpwgTLeP+MqQOeusbC1aDUHL4=;
-        fh=iQY2wHJsZZYZ4/33azmH3EUwzomNaT+kbmfZS4ZjW2U=;
-        b=JiXAjugYqD3buBoqHvUUf2gTw8T4tGePE5cYctaBff0QOyGRx35harNohp8mxdgbSE
-         etoKeRvWKP3eiiVV16UIPTdYNeLsfD7P2GhayeAE+Hav0BDE2SLJa9whF+y0elSL/kEu
-         RcJY7FgJ2OMIDN/oiE3beItAvr+1Vi3jFses4RubBYNZfhwxy1Nonnla5g+zuzHOAgpb
-         +hfNJvX10j7JUjtVYx4c47WJzdtqojsJ2RPXMUCBtg1zHmvqHCltAPOul7iYP0umlF8O
-         FEb+NaNWb6kE91MO2OORWJaNrETl7g5JfV2d06AXya/duIyFU9dm0/BwY9b50jeIY5Ga
-         qTOg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=nR1fFYfnhfe8OWUbCv/jg5IVIW3zj6nZbcBspKeIn5Q=;
+        fh=F1oLrNJl6x+dMZE9ahIPUfYFMQstyilklVITsf9EEl8=;
+        b=WzKzFTOFzYQ0qz4sxBJtiibfvmW3tN3xqGhIvmRIyNciQJQRnPKQBaeaxfCkYOBUi9
+         Vw/ThgSRl6V+1wWggRrVrRaxEOFkdtXCBgYc0nnjutuVBVzo+kOSzSN/uxUkYQIwCS8v
+         tHA6U7nMnmI8yxCrPClyyYN7GVxugrJ6NrAQpNmP4W4rejpv1gPw8PdALUlCJNZDGSmV
+         sqRLHOPgK6HCEPtCNuVQQNCYF4o5aDsKlbWUE6e8ufDe4ntxs1UKPRd05CaPA3oEOO9j
+         srAZdP0gwS2YmKa73B25klHQjDpQUTB0b5u4NIFVtFq/JvXRyZiwBMR2djef+LsHpkM6
+         OCZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=Ud6Qwbb0;
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Return-Path: <quic_svaddagi@quicinc.com>
-Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com. [205.220.168.131])
-        by mx.google.com with ESMTPS id e9e14a558f8ab-36cb9dcaa82si85405235ab.115.2024.05.16.12.42.08
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 May 2024 12:42:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) client-ip=205.220.168.131;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SxHvqIe8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6a35f3f9b67si87527346d6.102.2024.05.19.02.43.22
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 19 May 2024 02:43:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=Ud6Qwbb0;
-       spf=pass (google.com: domain of quic_svaddagi@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_svaddagi@quicinc.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 44GB15cp006187;
-	Thu, 16 May 2024 19:42:08 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	date:from:to:cc:subject:message-id:reply-to:references
-	:mime-version:content-type:in-reply-to; s=qcppdkim1; bh=OnUlYBuD
-	8UjKSLFNZBxpwgTLeP+MqQOeusbC1aDUHL4=; b=Ud6Qwbb0FeZi+ge2+3pswrNc
-	VjYhHsXHdkfcJBoet99Hp5vRnnP2OSsdniFzot83/ltTkUxg1UvBkRb4zEU6X4by
-	AS2uiKC8Ds9fpSNWeL67DoirtS6mfTDMOF+CFtL71+AxiUWlXSjEienMozzA9u4d
-	QQdSfS2L55dSt4xLTeLExfV/y1xbb7Y2jkiIzM+atyQDAyeGdkYoajqzMZ8feoWA
-	dCu3ENHZQOayUMZ9u1eRjp2JW9qEzwzX6Ya9HlBn7YEV9uptXWQaXB7HX00tCKfi
-	OSlE9lb4ihXXWSM4vewhyzUWxykpQCJkRSxpLGVd1D9uRJp3A2n9Aa1Pjmw5pA==
-Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3y51tujvkr-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 16 May 2024 19:42:07 +0000 (GMT)
-Received: from nalasex01b.na.qualcomm.com (nalasex01b.na.qualcomm.com [10.47.209.197])
-	by NALASPPMTA05.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 44GJg6MY011490
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 16 May 2024 19:42:06 GMT
-Received: from quicinc.com (10.80.80.8) by nalasex01b.na.qualcomm.com
- (10.47.209.197) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Thu, 16 May
- 2024 12:42:01 -0700
-Date: Fri, 17 May 2024 01:11:57 +0530
-From: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-To: "Daniel P. Berrang?" <berrange@redhat.com>
-CC: <peter.maydell@linaro.org>, <philmd@linaro.org>, <alex.bennee@linaro.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <quic_tsoni@quicinc.com>, <quic_pheragu@quicinc.com>,
-        <quic_eberman@quicinc.com>, <quic_yvasi@quicinc.com>,
-        <quic_cvanscha@quicinc.com>, <quic_mnalajal@quicinc.com>
-Subject: Re: [RFC/PATCH v2 03/12] hw/arm/virt: confidential guest support
-Message-ID: <20240516194157.GA440762@quicinc.com>
-Reply-To: Srivatsa Vaddagiri <quic_svaddagi@quicinc.com>
-References: <20240516143356.1739402-1-quic_svaddagi@quicinc.com>
- <20240516143356.1739402-4-quic_svaddagi@quicinc.com>
- <ZkYgeGSPxD_yt5oa@redhat.com>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SxHvqIe8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1s8d3w-00021B-Hx; Sun, 19 May 2024 05:42:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1s8d3v-00020M-Ao; Sun, 19 May 2024 05:42:39 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1s8d3t-0004ZF-Fd; Sun, 19 May 2024 05:42:39 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-1f2ecea41deso37282985ad.1; 
+ Sun, 19 May 2024 02:42:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1716111755; x=1716716555; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=nR1fFYfnhfe8OWUbCv/jg5IVIW3zj6nZbcBspKeIn5Q=;
+ b=SxHvqIe83QpqRUibBcvfh9bBVHjAwfbl9OvwCYO9gHvF1JQgJzds+CmG0VxpMIqo1D
+ ExMuHIPB7G7biBQQ/0Q1vLy+9LwQlM89JPhcnhiKVmkHYf+gJH7HnZ7b9zkmV9M6zRVc
+ 80mu6zCsfcn4blFzDNMrSSem+646biRTlgGAzoBL2g8F/ncj5UtqxWTYc4P6s7BhqwGq
+ TE1Ij09ZT/MP0NuhGwLf/jz7xMgCnCabxYgNjGE0sfgf6uYljJ/iQFpdjmTkk+nz3/x4
+ Mdb6kcDbPScGf+pJ6ih79dQoE1OaUmBMISLROo0mmiDFkR6XF/y2P1iHLlDBHLkbdjnJ
+ nkPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1716111755; x=1716716555;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=nR1fFYfnhfe8OWUbCv/jg5IVIW3zj6nZbcBspKeIn5Q=;
+ b=tOwcZRDysSC/+jUx9osvtWUx6sZ4ZpqsiTgR2Fq0dTEyJS4AuiLQrQxjUSyAjTo+WC
+ X3p0VDhjizg3cyrtYcXijFnytHNxD0TFZR+od/moxMayz4UoUZ5TUtRDST8V29yrwUSB
+ UmFAtv2Ci91KHXlozWlsxrhLd/FBAxeBkMxfqtqu/aMgwNxRAcTFrbqjIrJT/D137dy5
+ f7FIW+Cadhb5E3pu1vmiZKE1grTwsxjOdODmCkjqbaayrGXaGFZO/BDVq+W23w1+nffZ
+ gXHIT+1MChWE99XSPQ7dv4hJPPtVHISZgCNBMJuU8CmoewyyqGsxiwyRVm1hqhuIKk9W
+ Xvgg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVtwOPzzJ5g6PqFHo5ecr7Tz8kQsO/ZMi3+SEbizCUuzS3aQE+TSWE068v717HH+XYIVSFfZzf2zhdDpUt+M4aeevrN
+X-Gm-Message-State: AOJu0Yxu6Yqbg95DifkAt80tQuRPRMgThdvw+U4ccZzhdQanD++Z6ni4
+ x0fKSGApiCaKM994S19oDrOvrOZY2ouGchxDNSzSOk0gU3Bju6PYLJLYKA==
+X-Received: by 2002:a17:90b:124b:b0:2ad:af1c:4fc with SMTP id
+ 98e67ed59e1d1-2b6cc76d23fmr22469754a91.25.1716111754804; 
+ Sun, 19 May 2024 02:42:34 -0700 (PDT)
+Received: from localhost.localdomain ([49.47.193.102])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2b62863a265sm19977932a91.10.2024.05.19.02.42.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 19 May 2024 02:42:34 -0700 (PDT)
+From: Rayhan Faizel <rayhan.faizel@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: philmd@linaro.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ Rayhan Faizel <rayhan.faizel@gmail.com>
+Subject: [PATCH v3 2/3] hw/arm: Connect OTP device to BCM2835
+Date: Sun, 19 May 2024 15:11:05 +0530
+Message-Id: <20240519094106.2142896-3-rayhan.faizel@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240519094106.2142896-1-rayhan.faizel@gmail.com>
+References: <20240519094106.2142896-1-rayhan.faizel@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Disposition: inline
-In-Reply-To: <ZkYgeGSPxD_yt5oa@redhat.com>
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01b.na.qualcomm.com (10.47.209.197)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: YJfy-5VEm_NC79rR5vJlEN91NlZZ49R2
-X-Proofpoint-GUID: YJfy-5VEm_NC79rR5vJlEN91NlZZ49R2
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.11.176.26
- definitions=2024-05-16_07,2024-05-15_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 adultscore=0 phishscore=0
- spamscore=0 impostorscore=0 bulkscore=0 suspectscore=0 clxscore=1011
- mlxscore=0 lowpriorityscore=0 mlxlogscore=886 malwarescore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2405010000 definitions=main-2405160142
-X-TUID: R2qSN8QNurTh
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=rayhan.faizel@gmail.com; helo=mail-pl1-x629.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rPOrEwAvZRc2
 
-* Daniel P. Berrang? <berrange@redhat.com> [2024-05-16 16:04:24]:
+Replace stubbed OTP memory region with the new OTP device.
 
-> On Thu, May 16, 2024 at 02:33:47PM +0000, Srivatsa Vaddagiri wrote:
-> > This adds support to launch hypervisor-assisted confidential guests,
-> > where guest's memory is protected from a potentially untrusted host.
-> > Hypervisor can setup host's page-tables so that it loses access to guest
-> > memory.
-> > 
-> > Since some guest drivers may need to communicate data with their host
-> > counterparts via shared memory, optionally allow setting aside some part
-> > of the confidential guest's memory as "shared". The size of this shared
-> > memory is specified via the optional "swiotlb-size" parameter.
-> > 
-> > -machine virt,confidential-guest-support=prot0 \
-> > 	-object arm-confidential-guest,id=prot0,swiotlb-size=16777216
-> > 
-> > The size of this shared memory is indicated to the guest in size/reg
-> > property of device-tree node "/reserved-memory/restricted_dma_reserved".
-> > A memory-region property is added to device-tree node representing
-> > virtio-pcie hub, so that all DMA allocations requested by guest's virtio-pcie
-> > device drivers are satisfied from the shared swiotlb region.
-> 
-> For reference, there is another series proposing confidential guest
-> support for the 'virt' machine on AArch64 with KVM
-> 
->  https://lists.nongnu.org/archive/html/qemu-devel/2024-04/msg02742.html
-> 
-> I've no idea how closely your impl matches the KVM proposed impl. ie
-> whether we need 2 distinct "ConfidentialGuest" subclasses for KVM vs
-> Gunyah, or whether 1 can cope with both.  If we do need 2 distinct
-> subclasses for each hypervisor, then calling this Gunyah targetted
-> object 'arm-confidential-guest' is too broad of an name.
+Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
+---
+ hw/arm/bcm2835_peripherals.c         | 13 ++++++++++++-
+ include/hw/arm/bcm2835_peripherals.h |  3 ++-
+ 2 files changed, 14 insertions(+), 2 deletions(-)
 
-Thanks for that pointer! Let me study the proposed KVM implementation and 
-see how we can consolidate support for KVM and Gunyah hypervisors.
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 1695d8b453..7d735bb56c 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -116,6 +116,10 @@ static void raspi_peripherals_base_init(Object *obj)
+     object_property_add_const_link(OBJECT(&s->fb), "dma-mr",
+                                    OBJECT(&s->gpu_bus_mr));
+ 
++    /* OTP */
++    object_initialize_child(obj, "bcm2835-otp", &s->otp,
++                            TYPE_BCM2835_OTP);
++
+     /* Property channel */
+     object_initialize_child(obj, "property", &s->property,
+                             TYPE_BCM2835_PROPERTY);
+@@ -374,6 +378,14 @@ void bcm_soc_peripherals_common_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->fb), 0,
+                        qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_FB));
+ 
++    /* OTP */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->otp), errp)) {
++        return;
++    }
++
++    memory_region_add_subregion(&s->peri_mr, OTP_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->otp), 0));
++
+     /* Property channel */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->property), errp)) {
+         return;
+@@ -500,7 +512,6 @@ void bcm_soc_peripherals_common_realize(DeviceState *dev, Error **errp)
+     create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
+     create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
+     create_unimp(s, &s->bscsl, "bcm2835-spis", BSC_SL_OFFSET, 0x100);
+-    create_unimp(s, &s->otp, "bcm2835-otp", OTP_OFFSET, 0x80);
+     create_unimp(s, &s->dbus, "bcm2835-dbus", DBUS_OFFSET, 0x8000);
+     create_unimp(s, &s->ave0, "bcm2835-ave0", AVE0_OFFSET, 0x8000);
+     create_unimp(s, &s->v3d, "bcm2835-v3d", V3D_OFFSET, 0x1000);
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index 636203baa5..1eeaeec9e0 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -33,6 +33,7 @@
+ #include "hw/usb/hcd-dwc2.h"
+ #include "hw/ssi/bcm2835_spi.h"
+ #include "hw/i2c/bcm2835_i2c.h"
++#include "hw/nvram/bcm2835_otp.h"
+ #include "hw/misc/unimp.h"
+ #include "qom/object.h"
+ 
+@@ -71,7 +72,7 @@ struct BCMSocPeripheralBaseState {
+     BCM2835SPIState spi[1];
+     BCM2835I2CState i2c[3];
+     OrIRQState orgated_i2c_irq;
+-    UnimplementedDeviceState otp;
++    BCM2835OTPState otp;
+     UnimplementedDeviceState dbus;
+     UnimplementedDeviceState ave0;
+     UnimplementedDeviceState v3d;
+-- 
+2.34.1
 
-- vatsa

@@ -1,118 +1,114 @@
-Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp652865ejb;
-        Sat, 18 May 2024 13:06:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW1P3cgAxHTjJkRCYfvkwAA8j+XbnQQaBNlh+wgpKt97JdpQZW2aTVVJnyPpdZFv3vspR47dryeVvsbD7WYHFrcvt9IZUYJ
-X-Google-Smtp-Source: AGHT+IHm6FpUQrnK5MknmrATF6s3dH4sX1b/OmuT81kI++V1nV8vSgIGZrV5Uy+BhsFVaZbKVSOt
-X-Received: by 2002:a05:622a:1648:b0:43b:173e:ce1b with SMTP id d75a77b69052e-43f7a30c519mr41489501cf.32.1716062770951;
-        Sat, 18 May 2024 13:06:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716062770; cv=none;
+Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp857087ejb;
+        Sun, 19 May 2024 02:43:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVy6KzuXxLRkG1hiTQBgOOGoGw1T4JyF28BWRgjdPvgfXnPCXiql2NQ1cvDn1Wzr8uPfK9JbTMeIDfBd6MO7dLnw9TCu6s9
+X-Google-Smtp-Source: AGHT+IF49PKGLutmPoewZXfeKSYfjZVz5/HVhdxe7fRRRAwAEJJddpSagF64Y0SzhSVX2w3RwLDw
+X-Received: by 2002:ae9:f212:0:b0:792:9136:1d92 with SMTP id af79cd13be357-792c75ae6e4mr2514497285a.38.1716111837397;
+        Sun, 19 May 2024 02:43:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716111837; cv=none;
         d=google.com; s=arc-20160816;
-        b=skMDo0C75Zd4cgohNbpDKpRjDw7MzjZX2964U/tXMhZn27TNtqWKjm23yk862v7OIY
-         IJNILhD+m1E9c1c/pJwS8K5nrLmxe0Bc0jjkMLqBZD1nsFRQifC2FA4ltSub530ijt/d
-         lm2kyPYEv3iRPC8oubOPY7NnfyBxC6sTzAvVwjqk/YVmJHbmQGza+f4UdFiSlMXA2gZb
-         rtgDIYQMQtXCzMuu3SaCny5i8HTOMJx6/0MGsDN99SynLMpBqvCvKA350l3kXGKOZukh
-         pQ8bhJgRTlT4SALl3vQyWr9F4PYCJfwRKdlL99qD91Y1xeZFYDrfUAlRaMwu4LHXMn++
-         mJOg==
+        b=n38DGxjdK6cixOWf3tb1cD6ZnGZ4cSTkD7D3ZKB3XmNW7s6BT6LPfuEU1kFUSqtetB
+         U7FS61hT9B69p+bYOK1fZDV172IubxgV3v6+HIxBhszV86//NW8UgFW+RlU0YYVP3xTw
+         G6H5FsH6D4ZpQ2XWaQOFfKOf8Y2g8AJDu/K5ildqMMQfmpGXISJDA+VjYhllabYz+9UY
+         MByqGy7OGZJR5HCD2qTL32Lncb7VRehw970S1V0ooVtZn7ZZsKDkRhJ3XAV5WYJBMrFw
+         fo2z+pGzHwmKHimki3uJRT2Ovb1WfmFIcK6ReGO694qe7SvChSxkUf2DH/0q1Q3BU/6O
+         tsMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=nR1fFYfnhfe8OWUbCv/jg5IVIW3zj6nZbcBspKeIn5Q=;
-        fh=gMWD5jyqo8eIYcuwecvpFm3P58RI5jtm4ZVXIr3MkZ4=;
-        b=GehhIjQEvhKHo/ypK/MGk/JW9o+g/a+uOAzgxSaigvBzE3zDHhekwRMJ8Cd3eZVPi2
-         pymoTsQkSu4aAqLz7fgY4A/1SBPuqym+lPeQvY3p2zIH17hfJSY4L0L96FwPiphSvDnU
-         6t0o0XXV3eugAsJ+UxQtiKtLIUDMiorfB2IjfZNcB+7Cr/+ipVCndSM3yspgpgHFDYej
-         E7xch95p3Pkhu/Y28HyybWAM9SgS9cgH1oNGrQJePsdxtsVCVWL6lKJhxRfRPFOKwLc3
-         YGzVor+KQouTf26EEXAzjhJqU5hYM0NXApMl9KUcfE8J19k5ReYl616rsTzmlJeKsAKE
-         e8jQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=/LDWpHwHgNc5ou1ACtf6yw2EFoNe3kKL5zlH1rq5LfQ=;
+        fh=uobGJT4CIynhdc2wU066L3fjWOAeQtKgF493TCCUp5g=;
+        b=lYAvsRyla7nl2GsEER6jNz6VYNDOmApWFwCmBmH5qYjApHgjTGACFTCfwE9myA0CQz
+         d1DKGVygK1bGpBSLr0yloHVCI7E8E2v33DOZA0PIoheAM61Aod2VElamB6/rgRjk4KFd
+         u76UD1dTgNUb1YInjYYdkoePqiIFuYbUklldHsbPlZbf4l3AJI5y7c+vfNDoSjAZ+zP5
+         SLPx0Pr3fVahyPcB1+GNAOE1sC6645MxocIknX6Q4j56X6QQWwOddxDb+Qr+K6atrer5
+         YMxtfE3jXF0acMETlSMDFAJiTOZi3LhnIUAJckxoKdyEFdTw85VHMit2BCn/mmdv99+h
+         X+hA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=CuekIlHJ;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZiR7CpEv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43e1a9ec417si10446651cf.511.2024.05.18.13.06.10
+        by mx.google.com with ESMTPS id af79cd13be357-792bf297ba2si2190322385a.194.2024.05.19.02.43.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 18 May 2024 13:06:10 -0700 (PDT)
+        Sun, 19 May 2024 02:43:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=CuekIlHJ;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ZiR7CpEv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1s8QIW-0003en-5Y; Sat, 18 May 2024 16:04:52 -0400
+	id 1s8d3x-00021y-7O; Sun, 19 May 2024 05:42:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1s8QIU-0003eQ-Qc; Sat, 18 May 2024 16:04:50 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ id 1s8d3v-00020O-EZ; Sun, 19 May 2024 05:42:39 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1s8QIT-00062k-6n; Sat, 18 May 2024 16:04:50 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-6f4302187c0so1692916b3a.1; 
- Sat, 18 May 2024 13:04:48 -0700 (PDT)
+ id 1s8d3o-0004Xc-TA; Sun, 19 May 2024 05:42:39 -0400
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-1ee7963db64so50459365ad.1; 
+ Sun, 19 May 2024 02:42:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1716062687; x=1716667487; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=nR1fFYfnhfe8OWUbCv/jg5IVIW3zj6nZbcBspKeIn5Q=;
- b=CuekIlHJMGPeFTzwSjASRjhyrGFIe7DZvudEmnQ6gGiuA4ZVB2xBfg093BfX3TTv6F
- rSCa7E19Oc48vAB06331CxfemKEQue4ENYzFPGG6jN7v84N+106Tfodh6/C7hq0xdg6l
- VpolAf7xhJY1pZlxvSy8eQKQEzi0sEJNh2ksMelRrhNMrZelhxCHjTg0A4KeocvnMu1B
- CvPHHD3kRwDEqgon7/1uZ28ipIDVm2/PoKPULZeyVT79IbJo4YbfEDLJ1GRooFNpHXka
- JccyMImIYTZ3mDPe8tIo988bkbNcFHnDs5TVJ2s0T0oSbkMHYlD+7CE/orvQdQuGrmru
- 4Pvg==
+ d=gmail.com; s=20230601; t=1716111750; x=1716716550; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=/LDWpHwHgNc5ou1ACtf6yw2EFoNe3kKL5zlH1rq5LfQ=;
+ b=ZiR7CpEvN6cSA+I/NXeVTamf/yAqqaI+Bl3nxvvqp9idfg6bKlRog1L5emQ3eqm4YS
+ 9rJj27uob6oAzzkpdBjVnoeMtMKUGiBBe6sroMVQlwA40iRuJJFr/xELylXWsezSNdbf
+ bJzJ3/XYKnO4mT6idzDZhzKRaAmUNzf26vXstPzvN1eG4xSitm7cejb5xcH9mN13joe3
+ Wja3iaH3vI+oXFreR4R/6hx6AEaorg6ELouvwikLVkQ6ihQquPmpnoX2VRrdU90HTg4h
+ /3ridY88+ACWZd36VvfCjqQiyGlX/neJgR+MoihRlyUM3dABnLCLIfDFoBLKJRZIaBYd
+ yc1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716062687; x=1716667487;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=nR1fFYfnhfe8OWUbCv/jg5IVIW3zj6nZbcBspKeIn5Q=;
- b=vl9J8ylOnfzchbpoXSnyBbtVByiLXDt7To1xhWnUH/rXgMSaz8CcUt1bEwZXrxh6xC
- oHZ+WBvP+wqQFvDd1NhzFq2EUMXMNeUi+5zMMuCcNHIjXlQ0LSvIpDM7ZG+eowZvBkuQ
- YoxnYm0UTFhBr/DNfVIr28j6rQejCv7NKMsJl/CPsxq1ky9vLoy9Z+e8I7HT7Tpr0h/y
- OAW7TFCC8R/3/4J/05En6xLwL4JIDyr5mtYGEbKjReFiOjyn0umJXEtnd5cdRqSdgOtj
- 2hR8UfvOy+oAyiiI2v/4OwvUfETB5ckZAoUkrRhKQg8WOFMt/lI9zb0ki4lnhRo4ZfEL
- lknw==
+ d=1e100.net; s=20230601; t=1716111750; x=1716716550;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/LDWpHwHgNc5ou1ACtf6yw2EFoNe3kKL5zlH1rq5LfQ=;
+ b=weLnqLJkixe/oDF5lHHvoR3B5TjivObXKzE7Oi9V549uMN5NjQKZgpHEWCAZM+PrKR
+ 1FFn2l+pAnDRhgm1chrzFPoibBTNNwsmtQiLB5o32iRqlYNLkmmBxOQy4NLXhvs3Rm7f
+ ar3bDabLgKQ8PfFrQJ2YMo5HerJnGdRNTZrbVdR1WL8tPdVpFZ0cVpRtUFFzedCLom2n
+ gkU9+PcBoJr7CZktNM9umIbFjxNVcT/NmuxYbpZ8IUvfRsxZCvSDlg0Yfm5+CV4dql//
+ FTvSnarAht9yLcohsutn07cBxChU0ILlrdP8MmqGfn60hjP8R1XZLJmGjJJRoJTcQag8
+ x8ZQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXeXx7N1Lric7ElccrqwKk6yh3rSgXNHw6NbZl8yM64vvuRTMLogsR0Id0OF5zb4UwEBVy4U8ngbJDLJX0gjirVDwcp
-X-Gm-Message-State: AOJu0YwS6zQjQBmxBkrRFOE3FBVXuZPijj1m4y24zED2O7vsY8wv27l0
- YfLvfdxS6O+U75X7BSoFIXq/H4EIA7jl2t8s2RHjo8H94GYD6UQ0Ih0M9w==
-X-Received: by 2002:a05:6a20:3949:b0:1af:58f8:1190 with SMTP id
- adf61e73a8af0-1b1ca3c3ebfmr3180971637.12.1716062686671; 
- Sat, 18 May 2024 13:04:46 -0700 (PDT)
+ AJvYcCW1oegOH/qJSavcSwhjtWjx3EUWLGBJF0O5tJuBWV5MX5NnrO+Nn6CHMEoerqVz1vRUN66eIoWL2+//v3S6HRBRAAFi
+X-Gm-Message-State: AOJu0YyXDWgbQ3uglwzUy6wOYnltGpP4tSDxKpdJYPTvBslka5t8BQJs
+ MKgGjGlerkK6O39oK4keqkT+hLu1Ty0yaRoQb+e2VWJLJxBqCpyvRHWXxg==
+X-Received: by 2002:a05:6a20:2595:b0:1af:d2f8:382a with SMTP id
+ adf61e73a8af0-1afde10f1bemr35914561637.34.1716111749785; 
+ Sun, 19 May 2024 02:42:29 -0700 (PDT)
 Received: from localhost.localdomain ([49.47.193.102])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-6f4d2ae0de0sm16637481b3a.116.2024.05.18.13.04.44
+ 98e67ed59e1d1-2b62863a265sm19977932a91.10.2024.05.19.02.42.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 18 May 2024 13:04:46 -0700 (PDT)
+ Sun, 19 May 2024 02:42:29 -0700 (PDT)
 From: Rayhan Faizel <rayhan.faizel@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: philmd@linaro.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
  Rayhan Faizel <rayhan.faizel@gmail.com>
-Subject: [PATCH v2 2/3] hw/arm: Connect OTP device to BCM2835
-Date: Sun, 19 May 2024 01:31:35 +0530
-Message-Id: <20240518200136.1448672-3-rayhan.faizel@gmail.com>
+Subject: [PATCH v3 0/3] Initial support for One-Time Programmable Memory (OTP)
+ in BCM2835
+Date: Sun, 19 May 2024 15:11:03 +0530
+Message-Id: <20240519094106.2142896-1-rayhan.faizel@gmail.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240518200136.1448672-1-rayhan.faizel@gmail.com>
-References: <20240518200136.1448672-1-rayhan.faizel@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=rayhan.faizel@gmail.com; helo=mail-pf1-x42c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=rayhan.faizel@gmail.com; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,75 +123,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QRQYR4C8zyam
+X-TUID: ML5fK+HFa8PF
 
-Replace stubbed OTP memory region with the new OTP device.
+All BCM2835 boards have on-board OTP memory with 66 32-bit rows. Usually,
+its contents are accessible via mailbox commands.
 
-Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
----
- hw/arm/bcm2835_peripherals.c         | 13 ++++++++++++-
- include/hw/arm/bcm2835_peripherals.h |  3 ++-
- 2 files changed, 14 insertions(+), 2 deletions(-)
+[Changes in v3]
 
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 1695d8b453..7d735bb56c 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -116,6 +116,10 @@ static void raspi_peripherals_base_init(Object *obj)
-     object_property_add_const_link(OBJECT(&s->fb), "dma-mr",
-                                    OBJECT(&s->gpu_bus_mr));
- 
-+    /* OTP */
-+    object_initialize_child(obj, "bcm2835-otp", &s->otp,
-+                            TYPE_BCM2835_OTP);
-+
-     /* Property channel */
-     object_initialize_child(obj, "property", &s->property,
-                             TYPE_BCM2835_PROPERTY);
-@@ -374,6 +378,14 @@ void bcm_soc_peripherals_common_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->fb), 0,
-                        qdev_get_gpio_in(DEVICE(&s->mboxes), MBOX_CHAN_FB));
- 
-+    /* OTP */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->otp), errp)) {
-+        return;
-+    }
-+
-+    memory_region_add_subregion(&s->peri_mr, OTP_OFFSET,
-+                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->otp), 0));
-+
-     /* Property channel */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->property), errp)) {
-         return;
-@@ -500,7 +512,6 @@ void bcm_soc_peripherals_common_realize(DeviceState *dev, Error **errp)
-     create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
-     create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
-     create_unimp(s, &s->bscsl, "bcm2835-spis", BSC_SL_OFFSET, 0x100);
--    create_unimp(s, &s->otp, "bcm2835-otp", OTP_OFFSET, 0x80);
-     create_unimp(s, &s->dbus, "bcm2835-dbus", DBUS_OFFSET, 0x8000);
-     create_unimp(s, &s->ave0, "bcm2835-ave0", AVE0_OFFSET, 0x8000);
-     create_unimp(s, &s->v3d, "bcm2835-v3d", V3D_OFFSET, 0x1000);
-diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-index 636203baa5..1eeaeec9e0 100644
---- a/include/hw/arm/bcm2835_peripherals.h
-+++ b/include/hw/arm/bcm2835_peripherals.h
-@@ -33,6 +33,7 @@
- #include "hw/usb/hcd-dwc2.h"
- #include "hw/ssi/bcm2835_spi.h"
- #include "hw/i2c/bcm2835_i2c.h"
-+#include "hw/nvram/bcm2835_otp.h"
- #include "hw/misc/unimp.h"
- #include "qom/object.h"
- 
-@@ -71,7 +72,7 @@ struct BCMSocPeripheralBaseState {
-     BCM2835SPIState spi[1];
-     BCM2835I2CState i2c[3];
-     OrIRQState orgated_i2c_irq;
--    UnimplementedDeviceState otp;
-+    BCM2835OTPState otp;
-     UnimplementedDeviceState dbus;
-     UnimplementedDeviceState ave0;
-     UnimplementedDeviceState v3d;
+- Forgot to replace constant with macro in one particular spot.
+
+[Changes in v2]
+
+- Replace read/write with get/set in bcm2835_otp.c.
+- Use impl instead of valid in bcm2835_otp.c.
+- Replace all constant values with macros defined in bcm2835_otp.h.
+- Change memory region size of OTP device to 0x80.
+- After further testing on a real Raspberry Pi 3, I noticed a few things
+contrary to my initial assumptions:
+-- The customer OTP lock bit is bit 6 of row 32, NOT bit 30 of row 30. This is
+currently undocumented to my knowledge.
+-- The above lock indeed applies to the private key as well.
+
+Rayhan Faizel (3):
+  hw/nvram: Add BCM2835 OTP device
+  hw/arm: Connect OTP device to BCM2835
+  hw/misc: Implement mailbox properties for customer OTP and device
+    specific private keys
+
+ hw/arm/bcm2835_peripherals.c         |  15 ++-
+ hw/misc/bcm2835_property.c           |  87 +++++++++++++
+ hw/nvram/bcm2835_otp.c               | 187 +++++++++++++++++++++++++++
+ hw/nvram/meson.build                 |   1 +
+ include/hw/arm/bcm2835_peripherals.h |   3 +-
+ include/hw/arm/raspberrypi-fw-defs.h |   2 +
+ include/hw/misc/bcm2835_property.h   |   2 +
+ include/hw/nvram/bcm2835_otp.h       |  68 ++++++++++
+ 8 files changed, 363 insertions(+), 2 deletions(-)
+ create mode 100644 hw/nvram/bcm2835_otp.c
+ create mode 100644 include/hw/nvram/bcm2835_otp.h
+
 -- 
 2.34.1
 

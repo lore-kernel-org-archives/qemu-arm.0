@@ -1,253 +1,283 @@
-Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp1459454ejb;
-        Mon, 20 May 2024 06:59:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV06fkpJDkdEb8eorjfSQBh1eX/samlijcGofG76Hy0hv+vRngUp7q4nqX2vor1GFxNj7v0sVuyQdZES0wu5ysJOKCqm8tP
-X-Google-Smtp-Source: AGHT+IGGFGnjIPP2vAqhs9sY7veRTI8C/F7N6Ov+GD4NepNgPSbQu2kb8ay33qUmvEzEvsPfVAfE
-X-Received: by 2002:a05:6808:15a2:b0:3c9:cab7:dfa7 with SMTP id 5614622812f47-3c9cab7e149mr11443177b6e.47.1716213553949;
-        Mon, 20 May 2024 06:59:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716213553; cv=none;
+Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp1459475ejb;
+        Mon, 20 May 2024 06:59:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWkrUrYfDyLOkg2f9cbYgA6mIqsSN455slBqQDlwd0cLuL1FEqbNb84NVTi4mFDPouaiez5AepkZh0xntKPfY60IXGKpCc0
+X-Google-Smtp-Source: AGHT+IF2bpLiajOdE21Qi7ngDw/gg/e+nJ9o4WcgfueA6tj82e6xLG5/agqTWAi38Ic0swOkt7r8
+X-Received: by 2002:a05:620a:2281:b0:792:c0bd:bd5c with SMTP id af79cd13be357-792c760106emr2977400185a.69.1716213558287;
+        Mon, 20 May 2024 06:59:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716213558; cv=none;
         d=google.com; s=arc-20160816;
-        b=avjUo96TXgcJMi6A7JLqLTpVic5p2hXa2mPaoK4labqzelbrGUXl0FLLhLXUwzYYpU
-         u9JAAaiDcx+/j7Q7chvYXNxT2kVUeUQVk8PxQY62qNtz2FRhKsOU2yH3qVSPlSeD1FKn
-         KX3vBj35GapXGvoYJFNDwTj9HyI35MiWeZya/V4AG9+vKqO5dLhnIFBlR+Vgq6Vhr5Lv
-         1QHUxKwFYWt2ByZNciuWYx1xFRBFn5fPwyEiPtaFDsIZ1IlFxnTmGDp4Iz8VJ/8iHs5g
-         v988MrmDzHhG+Tp7kavBrhdPSEwblbRhFU4ti4+wEFw4fo0T1RbomkYteSzp5DsyA9FN
-         G/Pw==
+        b=I5+jH7rgeIZcZWrVtMQrtHmm9bbBa4QKHWAmbOllUTERGwvtUooY5wj8cZnzELVF1D
+         FT3dWXPzYH38hXnkeVOFw4gU2OBtYeRrho/P8chVPjjawnMW9G/g5vZ1nUbReI4m4lpL
+         QPdYW9+H8ba2Gc8AzyDx7bMu+R8B6RqKIbVOxDdxVmmTXZJ3k8/l28tyF/xAmtLc8GCn
+         2Hxlre+5bRWRn90gYK7d1mTj71d+5BGAzvHpm6TMQa4KUQ9JjhikLQqjFoUX9XGxjQYB
+         fyzzw0F9jxZ6Uco7jMvD969bzKF1TFQ0NG2ZXkn+jJe6UYR2l4raMU/93golsMZ0hcs+
+         XbaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=XUNEEf6o0vIvlGoVCkOBNOApbEzu6uUelzCwIt8oTZw=;
-        fh=itlL97t53OQthv3qUNyw5UXJx6VMCz2b+/8edCRI08k=;
-        b=tRIU759RVVWP2cp8W4PJrzxT/YIXqPCWyty4SyR2q1luG1YjlNsMSMTDN0p7j8JBx0
-         sGnSTqnOniH5m7xJ+NK0TFzXBuA9jVJBtNAvBaUINDbxMq+ODXV/Y6K3K1CkdfU3XV5R
-         Huk4YMMPXdFMR9c0z9jz7yeBekJJGwQuTXXMy/12fd6JQljgElyyyV8a0Vqwz2riKtio
-         eBYwzPgV490ITg9n/2xRskM4ZIrJVAbkoLOcKKnfDcLQLYC0j5CK4dI7gn1FKnrimdxB
-         /VduHLcoQyPiit4G4toZZD6/mk0GW+rkHeQz0JthbOh+FGnBK6+TkI1Ky3foIvRkQRTf
-         S8BA==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=W/2cXgJlqem1GpJTLgOvNgLkMQei9LGhhfTBhbVymVM=;
+        fh=KOp1gAo/y+cnSyjO29jwtBiHKiQtxFHcJRlBRJjBwdw=;
+        b=dKWxZDzYmEUa9edVsRE7KRJyo/qDE99gKwY4SH5GppiMb1TecFFW/+G8MrWbHHFDX8
+         0QdGcPnpPLWag2xYnWZYykpO8+LY/Y2p/vF4q8UG72M1b+8knZNM6ZiIaP+NwtvuVrxo
+         x0RDNGFuZtVboQkf2mQTPWfq3K5f7Kq4sozM1Q4UuHMR9JeCR/fYr8VqfM8MaWkRck1A
+         yFXXLDMAPFMtQhoeWT68EvgZkGndDZT92ir9bPvnQ4WLVhkSvTE6gSvZdIVvQ3oHA9x6
+         5ECJXWyaP1x7nFB72QVcpChxMPrXbO5Znyj/Iq3zODIvawXW1zQYek8zYrw5PqWBmCB1
+         SUGQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RRxTfyuc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7948713c713si172827485a.178.2024.05.20.06.59.13
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FUbWOcjr;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-794769863d2si5153885a.644.2024.05.20.06.59.18
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 May 2024 06:59:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 May 2024 06:59:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RRxTfyuc;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s93XT-0005kw-K3; Mon, 20 May 2024 09:58:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1s93XQ-0005jn-3f
- for qemu-arm@nongnu.org; Mon, 20 May 2024 09:58:52 -0400
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1s93XO-0000zT-0Q
- for qemu-arm@nongnu.org; Mon, 20 May 2024 09:58:51 -0400
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-51fc01b6fe7so3044066e87.0
- for <qemu-arm@nongnu.org>; Mon, 20 May 2024 06:58:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1716213528; x=1716818328; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=XUNEEf6o0vIvlGoVCkOBNOApbEzu6uUelzCwIt8oTZw=;
- b=RRxTfyucRxDOJnsc0adxc7pkvSG0SKWyQ0oS0ZITKJn2D0aZzhqE6VNP2mba9dWP18
- +B8m2to+PYgsPWHWnXTA763CdeBLmMhDue6fiB8V5jAnhn5+BWBK/EbJzxgqPqbcWbxo
- dNgaIOPHylEilcFpVrWc93dNKGjeqvLQIXF5M3gcGIzlPIryZiS3Z4CvbAYL0917YMWU
- kwlPuGzFhfqm87AQXiRrm5ECwkxZ4mpZD4Evzb45Y9/0BOT+T2l++coFwyfTNDrH2Dvk
- nnnl995RdSQ9jRe7DCjwlZaeNGuk8nyDG3eFXCLGc73iPVE4CyTJYg04lzXvbBmG+lis
- PDCA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FUbWOcjr;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1716213557;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=W/2cXgJlqem1GpJTLgOvNgLkMQei9LGhhfTBhbVymVM=;
+	b=FUbWOcjrHx+OEuaBFUulKlySEjhXoetScq3oe1TE9QpBGKyPoclEX/02ZDKEGNmgANdzwb
+	jh/Ol+VndjvRm/pVZvPjvFTB8k0wNs6n0AXCxBuNd7WQTaWZue1T7Q1X8HP71eT8r5/uBw
+	n7V82zt8vQ75PVWzB4kZHbYFwr6Fh9I=
+Received: from mail-yb1-f199.google.com (mail-yb1-f199.google.com
+ [209.85.219.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-372-7k_GlladP0uAGRqC0_M94w-1; Mon, 20 May 2024 09:59:14 -0400
+X-MC-Unique: 7k_GlladP0uAGRqC0_M94w-1
+Received: by mail-yb1-f199.google.com with SMTP id 3f1490d57ef6-de0b4063e59so10519745276.3
+        for <alex.bennee@linaro.org>; Mon, 20 May 2024 06:59:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716213528; x=1716818328;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=XUNEEf6o0vIvlGoVCkOBNOApbEzu6uUelzCwIt8oTZw=;
- b=D3BI7B84EBoZEFKKD/I9J+UFJoAI+rbmeSeYv7lGklq/C6iY/mg8tU7EvyNcTmcKUt
- RPSGDCM8Y7VewdXQ+gCc8TeXvVSk3wKAmtZHPDYdrMZPDdKx6Y2hRraOxBJN0BOZJ5LF
- /Ks8jsTkOjPX88cyFgwA9B/7WrQLHm6cr7Nwe19MizLsXh//ARjoS8zKtCWFNcZ346TQ
- qvrXXiWGbIi3stuEJEkId8vEOrN3LPUwbn1S/bczBfpSTUmb2YQtQUvLQn+K9cJSxDcd
- 2D9863UhlAgBKF1ruS7bCRCSsDUzixTW2Nxwf3uAuZL6PgxqQkkw7trkdG5mYMVQoz16
- KEag==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVn8bxU2IPs7cZyAqCqfAC/hUUnSY+RzshHG0+5PMqoSi6KRtbQJhIqKysbsZS9jrTb7uDqZbUf1iD/tpsZrHs01/bK
-X-Gm-Message-State: AOJu0YwnTXa30Oj+1vH0X6zhBhneS7L3dmsbPe8ehq7C858eCJ/qMwKT
- TUJK08wPojm1WQ9lxsgEqCk9Sc91mqSfZgRsPHsYAeF1P1kIp4ioYzGTYFVhlyOGOZLelWUAs0w
- 4VWnHrFA2pNdA6QfWZ+DgoaXh635dukl/e7MV6Q==
-X-Received: by 2002:a05:6512:15a8:b0:51d:9ea3:5649 with SMTP id
- 2adb3069b0e04-5220ff71d30mr24451019e87.10.1716213527923; Mon, 20 May 2024
- 06:58:47 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1716213554; x=1716818354;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=W/2cXgJlqem1GpJTLgOvNgLkMQei9LGhhfTBhbVymVM=;
+        b=fpUJ8dJlE/ddEa7YuMnXKt7N2LN8Zx1+IZ8Yx6KD+F62X5TBKYDwyNN8TrFwxsYvov
+         W+agEyO6i2TDXZcyLLL8BSQq9+XEhrF3Hih5Ff+e+g8KPRqyGeT5EKsD1NaNalwXrzuO
+         WUVd5WWr/1r2pESELohO5pYp0IYJBGTqdVhucpMg0htIOjn5xL2RLIHvzy4QXUPSdQmk
+         lgAp+0LahWSSzs4YU14cxgu8SoL8YFhZOotk0IyUn6OnWsGtepK1dfslhGzRT7wNX8za
+         6bCCe5qe9w5h+EYIKH6MOB0FlhqhgEk0hIn1lzSZYHeWqAWbzFmrHcdtlUTP4JCMqFoB
+         +tTg==
+X-Forwarded-Encrypted: i=1; AJvYcCXkvQDIPpFV1vqirVuhhoIe8+biibQI7jJNdS0awIMErgWL9mHtbxUEB7D00QXG0kLGevviFMms3POkhxkh8sA6+yf2VBDk
+X-Gm-Message-State: AOJu0YwIEVW/mSgTuMQ1mdyFMaobqvtnAciyJyP3lHpBqeD3BN3IRVFL
+	Bw3Wj/xcaalabAnAoXHr7Xh8KDvk66dcvUWjI2PR9PEwr1UMm84u4ik+yLgAZ8KY24MXdmMLUW6
+	WpfTFLO3vY6NkaxsUR2ipS8lwkIlGsvzElK9zHli72tjzK1ASegmsBg==
+X-Received: by 2002:a25:d68d:0:b0:df4:43f6:5b75 with SMTP id 3f1490d57ef6-df443f65dd6mr16503945276.24.1716213553661;
+        Mon, 20 May 2024 06:59:13 -0700 (PDT)
+X-Received: by 2002:a25:d68d:0:b0:df4:43f6:5b75 with SMTP id 3f1490d57ef6-df443f65dd6mr16503926276.24.1716213553254;
+        Mon, 20 May 2024 06:59:13 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-43df550c10fsm148338501cf.43.2024.05.20.06.59.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 May 2024 06:59:12 -0700 (PDT)
+Message-ID: <d254ae5a-baf9-49c6-a28c-fe7313a45311@redhat.com>
+Date: Mon, 20 May 2024 15:59:08 +0200
 MIME-Version: 1.0
-References: <20240507130349.86851-1-sebastian.huber@embedded-brains.de>
- <20240507130349.86851-3-sebastian.huber@embedded-brains.de>
-In-Reply-To: <20240507130349.86851-3-sebastian.huber@embedded-brains.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 20 May 2024 14:58:36 +0100
-Message-ID: <CAFEAcA_KBcL9UsqpOMk7GhWwokdEmC3fKZg_q7tdyt9LM7RFpA@mail.gmail.com>
-Subject: Re: [PATCH 2/2] hw/arm/xilinx_zynq: Support up to two CPU cores
-To: Sebastian Huber <sebastian.huber@embedded-brains.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x134.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: awiKlKmGCEPQ
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [RFC PATCH v3 16/18] hw/arm/smmu: Refactor SMMU OAS
+To: Mostafa Saleh <smostafa@google.com>, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, qemu-devel@nongnu.org
+Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+ nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
+ marcin.juszkiewicz@linaro.org
+References: <20240429032403.74910-1-smostafa@google.com>
+ <20240429032403.74910-17-smostafa@google.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20240429032403.74910-17-smostafa@google.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-TUID: yadqCNh0CHBD
 
-On Tue, 7 May 2024 at 14:04, Sebastian Huber
-<sebastian.huber@embedded-brains.de> wrote:
+Hi Mostafa,
+On 4/29/24 05:24, Mostafa Saleh wrote:
+> SMMUv3 OAS is hardcoded to 44 bits, for nested configurations that
+is currently hardcoded in the code.
+> can be a problem as stage-2 might be shared with the CPU which might
+> have different PARANGE, and according to SMMU manual ARM IHI 0070F.b:
+>     6.3.6 SMMU_IDR5, OAS must match the system physical address size.
 >
-> The Zynq 7000 SoCs contain two Arm Cortex-A9 MPCore (the Zynq 7000S have only
-> one core).  Add support for up to two simulated cores.
+> This patch doesn't change the SMMU OAS, but refactors the code to
+> make it easier to do that:
+> - Rely everywhere on IDR5 for reading OAS instead of using the macro so
+instead of using the SMMU_IDR5_OAS macro.
+Also add additional checks when OAS is greater than 48bits
+>   it is easier just change IDR5 and it propagages correctly.
+> - Remove unused functions/macros: pa_range/MAX_PA
 >
-> Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
+> Signed-off-by: Mostafa Saleh <smostafa@google.com>
 > ---
->  hw/arm/xilinx_zynq.c | 42 +++++++++++++++++++++++++++---------------
->  1 file changed, 27 insertions(+), 15 deletions(-)
+>  hw/arm/smmu-common.c     |  7 ++++---
+>  hw/arm/smmuv3-internal.h | 13 -------------
+>  hw/arm/smmuv3.c          | 35 ++++++++++++++++++++++++++++-------
+>  3 files changed, 32 insertions(+), 23 deletions(-)
 >
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 078abd77bd..3b858e3e9a 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -184,6 +184,8 @@ static void zynq_init(MachineState *machine)
->      SysBusDevice *busdev;
->      qemu_irq pic[64];
->      int n;
-> +    unsigned int smp_cpus = machine->smp.cpus;
-> +    qemu_irq cpu_irq[2];
-
-We prefer not to have arrays of qemu_irq like this that are
-just passing qemu_irqs from one place to another. Instead
-at the point where you want the ARM_CPU_IRQ of a particular
-CPU, call qdev_get_gpio_in() on the CPU object there.
-
-I suggest dropping the "ARMCPU *cpu" local from this function
-and instead adding an "ARMCPU *cpu[ZYNQ_MAX_CPUS]" array to
-the ZynqMachineState struct.
-
->      /* max 2GB ram */
->      if (machine->ram_size > 2 * GiB) {
-> @@ -191,21 +193,27 @@ static void zynq_init(MachineState *machine)
->          exit(EXIT_FAILURE);
->      }
->
-> -    cpu = ARM_CPU(object_new(machine->cpu_type));
-> +    for (n = 0; n < smp_cpus; n++) {
-> +        Object *cpuobj = object_new(machine->cpu_type);
->
-> -    /* By default A9 CPUs have EL3 enabled.  This board does not
-> -     * currently support EL3 so the CPU EL3 property is disabled before
-> -     * realization.
-> -     */
-> -    if (object_property_find(OBJECT(cpu), "has_el3")) {
-> -        object_property_set_bool(OBJECT(cpu), "has_el3", false, &error_fatal);
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 3ed0be05ef..b559878aef 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -434,7 +434,8 @@ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
+>      inputsize = 64 - tt->tsz;
+>      level = 4 - (inputsize - 4) / stride;
+>      indexmask = VMSA_IDXMSK(inputsize, stride, level);
+> -    baseaddr = extract64(tt->ttb, 0, 48);
+> +
+> +    baseaddr = extract64(tt->ttb, 0, cfg->oas);
+>      baseaddr &= ~indexmask;
+>  
+>      while (level < VMSA_LEVELS) {
+> @@ -557,8 +558,8 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
+>       * Get the ttb from concatenated structure.
+>       * The offset is the idx * size of each ttb(number of ptes * (sizeof(pte))
+>       */
+> -    uint64_t baseaddr = extract64(cfg->s2cfg.vttb, 0, 48) + (1 << stride)
+> -                                  idx * sizeof(uint64_t);
+> +    uint64_t baseaddr = extract64(cfg->s2cfg.vttb, 0, cfg->s2cfg.eff_ps) +
+> +                                  (1 << stride) * idx * sizeof(uint64_t);
+>      dma_addr_t indexmask = VMSA_IDXMSK(inputsize, stride, level);
+>  
+>      baseaddr &= ~indexmask;
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index 0f3ecec804..0ebf2eebcf 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -602,19 +602,6 @@ static inline int oas2bits(int oas_field)
+>      return -1;
+>  }
+>  
+> -static inline int pa_range(STE *ste)
+> -{
+> -    int oas_field = MIN(STE_S2PS(ste), SMMU_IDR5_OAS);
+> -
+> -    if (!STE_S2AA64(ste)) {
+> -        return 40;
 > -    }
-> +        /* By default A9 CPUs have EL3 enabled.  This board does not
-> +         * currently support EL3 so the CPU EL3 property is disabled before
-> +         * realization.
+> -
+> -    return oas2bits(oas_field);
+> -}
+> -
+> -#define MAX_PA(ste) ((1 << pa_range(ste)) - 1)
+> -
+>  /* CD fields */
+>  
+>  #define CD_VALID(x)   extract32((x)->word[0], 31, 1)
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 8a11e41144..4ac818cf7a 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -408,10 +408,10 @@ static bool s2t0sz_valid(SMMUTransCfg *cfg)
+>      }
+>  
+>      if (cfg->s2cfg.granule_sz == 16) {
+> -        return (cfg->s2cfg.tsz >= 64 - oas2bits(SMMU_IDR5_OAS));
+> +        return (cfg->s2cfg.tsz >= 64 - cfg->s2cfg.eff_ps);
+>      }
+>  
+> -    return (cfg->s2cfg.tsz >= MAX(64 - oas2bits(SMMU_IDR5_OAS), 16));
+> +    return (cfg->s2cfg.tsz >= MAX(64 - cfg->s2cfg.eff_ps, 16));
+>  }
+>  
+>  /*
+> @@ -432,8 +432,11 @@ static bool s2_pgtable_config_valid(uint8_t sl0, uint8_t t0sz, uint8_t gran)
+>      return nr_concat <= VMSA_MAX_S2_CONCAT;
+>  }
+>  
+> -static int decode_ste_s2_cfg(SMMUTransCfg *cfg, STE *ste)
+> +static int decode_ste_s2_cfg(SMMUv3State *s, SMMUTransCfg *cfg,
+> +                             STE *ste)
+>  {
+> +    uint8_t oas = FIELD_EX32(s->idr[5], IDR5, OAS);
+> +
+>      if (STE_S2AA64(ste) == 0x0) {
+>          qemu_log_mask(LOG_UNIMP,
+>                        "SMMUv3 AArch32 tables not supported\n");
+> @@ -466,7 +469,15 @@ static int decode_ste_s2_cfg(SMMUTransCfg *cfg, STE *ste)
+>      }
+>  
+>      /* For AA64, The effective S2PS size is capped to the OAS. */
+> -    cfg->s2cfg.eff_ps = oas2bits(MIN(STE_S2PS(ste), SMMU_IDR5_OAS));
+> +    cfg->s2cfg.eff_ps = oas2bits(MIN(STE_S2PS(ste), oas));
+> +    /*
+> +     * For SMMUv3.1 and later, when OAS == IAS == 52, the stage 2 input
+> +     * range is further limited to 48 bits unless STE.S2TG indicates a
+> +     * 64KB granule.
+> +     */
+> +    if (cfg->s2cfg.granule_sz != 16) {
+> +        cfg->s2cfg.eff_ps = MIN(cfg->s2cfg.eff_ps, 48);
+> +    }
+>      /*
+>       * It is ILLEGAL for the address in S2TTB to be outside the range
+>       * described by the effective S2PS value.
+> @@ -542,6 +553,7 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+>                        STE *ste, SMMUEventInfo *event)
+>  {
+>      uint32_t config;
+> +    uint8_t oas = FIELD_EX32(s->idr[5], IDR5, OAS);
+>      int ret;
+>  
+>      if (!STE_VALID(ste)) {
+> @@ -585,8 +597,8 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+>           * Stage-1 OAS defaults to OAS even if not enabled as it would be used
+>           * in input address check for stage-2.
+>           */
+> -        cfg->oas = oas2bits(SMMU_IDR5_OAS);
+> -        ret = decode_ste_s2_cfg(cfg, ste);
+> +        cfg->oas = oas2bits(oas);
+> +        ret = decode_ste_s2_cfg(s, cfg, ste);
+>          if (ret) {
+>              goto bad_ste;
+>          }
+> @@ -712,6 +724,7 @@ static int decode_cd(SMMUv3State *s, SMMUTransCfg *cfg,
+>      int i;
+>      SMMUTranslationStatus status;
+>      SMMUTLBEntry *entry;
+> +    uint8_t oas = FIELD_EX32(s->idr[5], IDR5, OAS);
+>  
+>      if (!CD_VALID(cd) || !CD_AARCH64(cd)) {
+>          goto bad_cd;
+> @@ -730,7 +743,7 @@ static int decode_cd(SMMUv3State *s, SMMUTransCfg *cfg,
+>      cfg->aa64 = true;
+>  
+>      cfg->oas = oas2bits(CD_IPS(cd));
+> -    cfg->oas = MIN(oas2bits(SMMU_IDR5_OAS), cfg->oas);
+> +    cfg->oas = MIN(oas2bits(oas), cfg->oas);
+>      cfg->tbi = CD_TBI(cd);
+>      cfg->asid = CD_ASID(cd);
+>      cfg->affd = CD_AFFD(cd);
+> @@ -759,6 +772,14 @@ static int decode_cd(SMMUv3State *s, SMMUTransCfg *cfg,
+>              goto bad_cd;
+>          }
+>  
+> +        /*
+> +         * An address greater than 48 bits in size can only be output from a
+> +         * TTD when, in SMMUv3.1 and later, the effective IPS is 52 and a 64KB
+> +         * granule is in use for that translation table
 > +         */
-
-If you're moving comment text around checkpatch will suggest that
-you fix it up to our current coding standard, which is that
-a multiline comment has the "/*" on a line of its own.
-
-> +        if (object_property_find(cpuobj, "has_el3")) {
-> +            object_property_set_bool(cpuobj, "has_el3", false, &error_fatal);
+> +        if (tt->granule_sz != 16) {
+> +            cfg->oas = MIN(cfg->oas, 48);
 > +        }
-> +
-> +        object_property_set_int(cpuobj, "midr", ZYNQ_BOARD_MIDR,
-> +                                &error_fatal);
-> +        object_property_set_int(cpuobj, "reset-cbar", MPCORE_PERIPHBASE,
-> +                                &error_fatal);
->
-> -    object_property_set_int(OBJECT(cpu), "midr", ZYNQ_BOARD_MIDR,
-> -                            &error_fatal);
-> -    object_property_set_int(OBJECT(cpu), "reset-cbar", MPCORE_PERIPHBASE,
-> -                            &error_fatal);
-> -    qdev_realize(DEVICE(cpu), NULL, &error_fatal);
-> +        qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
-> +
-> +        cpu_irq[n] = qdev_get_gpio_in(DEVICE(cpuobj), ARM_CPU_IRQ);
-> +    }
-> +    cpu = ARM_CPU(first_cpu);
->
->      /* DDR remapped to address zero.  */
->      memory_region_add_subregion(address_space_mem, 0, machine->ram);
-> @@ -238,10 +246,14 @@ static void zynq_init(MachineState *machine)
->      sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
->
->      dev = qdev_new(TYPE_A9MPCORE_PRIV);
-> -    qdev_prop_set_uint32(dev, "num-cpu", 1);
-> +    qdev_prop_set_uint32(dev, "num-cpu", smp_cpus);
->      busdev = SYS_BUS_DEVICE(dev);
->      sysbus_realize_and_unref(busdev, &error_fatal);
->      sysbus_mmio_map(busdev, 0, MPCORE_PERIPHBASE);
-> +    for (n = 0; n < smp_cpus; n++) {
-> +        sysbus_connect_irq(busdev, n, cpu_irq[n]);
-> +    }
+>          tt->tsz = tsz;
+>          tt->ttb = CD_TTB(cd, i);
+>  
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-Looks like you have based this on a version of QEMU which doesn't
-have commit 68a5827b80117973 which wires up the FIQ line of the
-A9MPCORE_PRIV device to the CPUs.
+Eric
 
-> +    zynq_binfo.gic_cpu_if_addr = MPCORE_PERIPHBASE + 0x100;
->      sysbus_create_varargs("l2x0", MPCORE_PERIPHBASE + 0x2000, NULL);
->      sysbus_connect_irq(busdev, 0,
->                         qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_IRQ));
-> @@ -357,7 +369,7 @@ static void zynq_machine_class_init(ObjectClass *oc, void *data)
->      MachineClass *mc = MACHINE_CLASS(oc);
->      mc->desc = "Xilinx Zynq Platform Baseboard for Cortex-A9";
->      mc->init = zynq_init;
-> -    mc->max_cpus = 1;
-> +    mc->max_cpus = 2;
->      mc->no_sdcard = 1;
->      mc->ignore_memory_transaction_failures = true;
->      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a9");
-> --
-
-I'm not making this a condition for accepting this patch, but
-since you're working on this board model would you consider
-writing up some documentation for it? It's one of the boards
-we do not currently have documented at all. This doesn't have to
-be very extensive: a few paragraphs describing what the board
-type is, maybe linking to a reference to the hardware, listing
-what is and isn't implemented, and (if there are some convenient
-examples available) perhaps listing some examples of use.
-docs/system/arm/xlnx-versal-virt.rst is the docs for the
-Xilinx Versal board; the rendered version of that is:
-https://www.qemu.org/docs/master/system/arm/xlnx-versal-virt.html
-or https://www.qemu.org/docs/master/system/arm/realview.html
-is an example of a more minimal board documentation page.
-
-thanks
--- PMM
+Eric

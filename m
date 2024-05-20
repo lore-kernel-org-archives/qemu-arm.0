@@ -1,193 +1,131 @@
-Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp1493002ejb;
-        Mon, 20 May 2024 07:51:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXq+F5XrNzO/CU50SpxKLOLVtHmn+cfdgpY/EkGXNoXrHdeBVmS5ZrmgghR9JBN+JbVxAXkPXOyfD4vXcsNp1J0iQPaJAzF
-X-Google-Smtp-Source: AGHT+IGvq1WZm2suvPnEZSatbYBW51bAW7Pto1P6vt9NeiBCnfOUBM9uxH1citVrKrUzS8U0r91V
-X-Received: by 2002:a05:6358:419d:b0:17f:565c:8db2 with SMTP id e5c5f4694b2df-1974d9087bamr89278155d.12.1716216662050;
-        Mon, 20 May 2024 07:51:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716216662; cv=none;
+Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp1752597ejb;
+        Mon, 20 May 2024 16:34:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXb4xP0W4SZIUdULlxqZjnJk3LeOuocAEcMjGSlqbVf3wADeqZ5AOq+l0sQ+7PgnOOOIRnHWkKPalhirucH6zBnU76XVG4X
+X-Google-Smtp-Source: AGHT+IEcEEYnPyVTzY946i/oEnUMgQoPNe4eCVvjry8pJ8cfJ/m0OEPI/0Co7RKg/VrTF8dcxoId
+X-Received: by 2002:adf:e8d0:0:b0:34d:93c1:c7d8 with SMTP id ffacd0b85a97d-354b8deaf60mr6998575f8f.4.1716248055120;
+        Mon, 20 May 2024 16:34:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716248055; cv=none;
         d=google.com; s=arc-20160816;
-        b=NZEvOep1+iWDo33EOKNxIdKHF1+JV/VjPPEHrV3/5J9EGKhpd0C4sOQSAjv0/eiYgL
-         K9QM1MnqQwH+5X+lDbhAl3dGWayqJrG4BamTWr/xjtXTJr6ldE18Oh0rNLyPamAT2BpW
-         s5PEbhra5tvETKaxs+r3RBX2zZJdkR+Pke2qrYv0jFKOVZ0m50KbTokiTfvaPA2fwZCL
-         ztAlcrFUdvFk2dwz8+TL974TlQgGdAHu1YoU8e42PdctmL6mDBYc9YqNjhYDc93tizCh
-         2kpOkejvupiK25lhsiYZannADIftWqSnpPlWTQJdRBOIdGdQg1wjQtWt4obQlsKoX9xJ
-         XC6A==
+        b=ljGao3+YUB7WRphLiqGt2zV/fLYva06H9crqFlXf0ndC4TJqoiWfLSbul76v3FbYiN
+         wvvcFLlZdjqR9BfF65FNYsDC3fbewaqoIeR5KKguLbVWZCOFozudHGgQsYdGhfhJP+w+
+         uTTikhR0BAmED4Fz2x3BPMNr7W7blseB9BGwNmfMUw8SJOpwbpl4vXYHBswX4nhst+/R
+         xW0SilJ2cO/Dvrk20IdquNajocJNvARQnn47yOHaOafyXDck/1NDdyf0C7CIdzn1hgCt
+         jY1dah5fyU6DUsxVghNxeabnFPWgwawwr0TRQCm3ExHoPHbp2r9R7L/T3ttGSb59rFRm
+         H/6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=M+RY37ILR+bGutCGqlDSpT5t/N+Xf3qdqRVhsE5xMYs=;
-        fh=itTzUIN6ux3qOEWlEJM+YlgvejpJncHONliLXCBVSaM=;
-        b=l6hI26QTo5bUb3v4afQm5MdDzthn7bwt+sCcSAGVcCB673Pftw3yvczo+Np9j6iiOc
-         A3L7d9vHiK6IJAWZCsD9iazonJGYgX7NVv+wEz3IhdaA16K8Ty7eddtJbB2+HEtcrQpq
-         Xg39tMstb8qP3mOqogHV/hWBLzArS3qRxWL6sKOmC+tikLHw9ZIqcDHwUGcVLs/tX2jn
-         g1G7EgYRWJ0hnnBQw0MbzzaFRfqQNttDKSfrnif2g9M/HiR1CA7cew5zre2hB/iEFR8g
-         LGy35po36KYxYsM7QvnLsmPKcDyyL+hkcl65fpVlZqtV786lWbCmq6CpIhnsIU8UpbQa
-         TceA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=vN4vqiGhLFVB+e1YfxJFmI3rKnzu7/qUiiTuFHaD4TE=;
+        fh=ESkCDJy4SlBfmiW/LaxStj1s4ONFbSiMcQYeaiK5m7w=;
+        b=k3k8DCEwpy/3I3h69zL53DGAhlXELAYPrycIrb4tK9t1g+eDRFHg9QRCrY5vTmjkQX
+         brv4xskqT3z9/WFS3IAcgAA1OXkjQNnkgAgjAMVus8l1KwkRhwbPr+j9REWHCbapNVrv
+         wmyTykEqB04ZCZjQWqeiKanuirCuP1+6uFn62mfAr3Aty5MbDobsUeVhW+Rj8tCTsU/7
+         vrVNQwO9GzAjo8IsYMNmkbUCGMIObGRovxwYwYFaOwjT5TSvheJ4hfqNBqe7QhY8ZODS
+         CFoqc/LBplVoDBt9zGKvkUb5Tdw7MNNnsKEb5hZdWERLE6vXncjWMzXaCyI6Cvup+I9A
+         Pf5Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Xn0UsB8t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43e3bab80c4si33694731cf.352.2024.05.20.07.51.01
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 May 2024 07:51:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3502bd1a165si14559999f8f.794.2024.05.20.16.34.14
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 20 May 2024 16:34:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Xn0UsB8t;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s94LZ-0004tq-3l; Mon, 20 May 2024 10:50:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tanmaynpatil105@gmail.com>)
- id 1s94LX-0004tX-PN; Mon, 20 May 2024 10:50:39 -0400
-Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tanmaynpatil105@gmail.com>)
- id 1s94LP-0001Rc-FC; Mon, 20 May 2024 10:50:39 -0400
-Received: by mail-oi1-x22d.google.com with SMTP id
- 5614622812f47-3c999d53e04so2068262b6e.2; 
- Mon, 20 May 2024 07:50:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1716216629; x=1716821429; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=M+RY37ILR+bGutCGqlDSpT5t/N+Xf3qdqRVhsE5xMYs=;
- b=Xn0UsB8tgiZTtQG2j2HHVFTulIouqhPu8TJvNVlMP/FVSQsXIeornv+84W/6XztZNT
- O8GTJhCiyH3IVvUemiFucHRXJHBWyIVoxcN2QQjVActyPdlMrQog46ZwKSfPK0lSUhT2
- T0xI+ipT8VhMeo5alghq8OVpEbeG200TN1/1N6ibSPikEgl1nEfI0HGOjH9wKVJMIsiv
- e/RdAxpuDjuiN343LfNpVfn35lu5xjuChKd4ddOFGGM7J/f5g0UNG+BYZn6Y7YOU3J73
- GC4HrizGejsLXhU1XYF8DEL7NmRBlicaJv3CkRgiB/QQZ3ZfbVpySUQ4VZiS6fv6ZyuB
- m4Zg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716216629; x=1716821429;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=M+RY37ILR+bGutCGqlDSpT5t/N+Xf3qdqRVhsE5xMYs=;
- b=MrK56ZOk/i0drGCs77RgSJP2k/FlD31WkN4QvIxre8W9rh5mEcaF7xznNKKkfHimV4
- 0l0/lo34eqgR9hDQPnR4QlJYdJsedrSvhdbrQ4YmlvFz1kfPGOnL/gD2H8jyZNa3C9L6
- HP1F6QHVvMZX0ruzo5M7Jc1DRpvcnIVLJDIm7mVBjxYs0uUQf3994SPU14s3P0HUWXeB
- ucW+q660whifZclAM9fotWAb5/eCVzs+V2u3tefPSm7f6Gxod69T/QPvBN3DQTelEvrv
- m90mHAaovtG0k2d5hOSqTkJKO71mXQQ+ZBgvxPjmrBFvaxPz+nZUY46NFQa5YgZXhpIR
- QYAA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXRWg7wB9RxqWCj3ugUu6ezvIVMr99aYyrYdq6DtSVURR/1yfTfOYzDNRHnnU/ciJ6ihtBthcRMmUIGpPppm2zFh4Ys
-X-Gm-Message-State: AOJu0Yzzo70iPF80s79Hd6vPPYITcMFPAwCRYgP470NDnQ6oSJV7j2eJ
- l91RyYOFp0tc6evMITi3rubUGRa7Q2XfOfWEgkZI0XMU2zdTpBMeQv09jtXbuK/7zQ1XPeikMLf
- Wn3NBfYdTWH8kTbazrz8UTgfuMUc=
-X-Received: by 2002:a05:6808:178b:b0:3c9:6f53:ee11 with SMTP id
- 5614622812f47-3c9970251camr40434136b6e.8.1716216629347; Mon, 20 May 2024
- 07:50:29 -0700 (PDT)
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Vjv266Yrcz6JBkp;
+	Tue, 21 May 2024 07:30:38 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
+	by mail.maildlp.com (Postfix) with ESMTPS id BCD7B140B35;
+	Tue, 21 May 2024 07:34:13 +0800 (CST)
+Received: from 00293818-MRGF.china.huawei.com (10.126.174.235) by
+ lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 21 May 2024 00:33:51 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
+	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>, Jonathan
+ Cameron <Jonathan.Cameron@huawei.com>, Shaoqin Huang <shahuang@redhat.com>
+Subject: [PATCH V10 2/8] hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
+Date: Tue, 21 May 2024 00:32:35 +0100
+Message-ID: <20240520233241.229675-3-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240520233241.229675-1-salil.mehta@huawei.com>
+References: <20240520233241.229675-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-References: <20240508081502.88375-1-tanmaynpatil105@gmail.com>
- <CAFEAcA_867TphLCF8NeG5OaH9cKwUQjMqXcT9ewgr1QSV57QNQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA_867TphLCF8NeG5OaH9cKwUQjMqXcT9ewgr1QSV57QNQ@mail.gmail.com>
-From: Tanmay <tanmaynpatil105@gmail.com>
-Date: Mon, 20 May 2024 20:20:15 +0530
-Message-ID: <CAHnsOnNL_ZbHG48iGSRzoLMsQPUfa2jmOf_aApru3SAgWUCsmQ@mail.gmail.com>
-Subject: Re: [PATCH] Fixes: Indentation using spaces instead of TABS and
- improve formatting
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
- marcandre.lureau@redhat.com, pbonzini@redhat.com
-Content-Type: multipart/alternative; boundary="0000000000008cccef0618e3d2a9"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22d;
- envelope-from=tanmaynpatil105@gmail.com; helo=mail-oi1-x22d.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rRJRlsEfOoso
-
---0000000000008cccef0618e3d2a9
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.126.174.235]
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ lhrpeml500001.china.huawei.com (7.191.163.213)
+X-TUID: 3mQMXsw49IXY
 
-Sure! Thanks for the update.
+CPU ctrl-dev MMIO region length could be used in ACPI GED and various other
+architecture specific places. Move ACPI_CPU_HOTPLUG_REG_LEN macro to more
+appropriate common header file.
 
-~ Tanmay
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
+Reviewed-by: David Hildenbrand <david@redhat.com>
+Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+Tested-by: Xianglai Li <lixianglai@loongson.cn>
+Tested-by: Miguel Luis <miguel.luis@oracle.com>
+---
+ hw/acpi/cpu.c                 | 2 +-
+ include/hw/acpi/cpu_hotplug.h | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-On Mon, 20 May, 2024, 6:32 pm Peter Maydell, <peter.maydell@linaro.org>
-wrote:
-
-> On Wed, 8 May 2024 at 09:15, Tanmay Patil <tanmaynpatil105@gmail.com>
-> wrote:
-> >
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/373
-> >
-> > Files changed:
-> >         - hw/arm/boot.c
-> >         - hw/char/omap_uart.c
-> >         - hw/gpio/zaurus.c
-> >         - hw/input/tsc2005.c
-> >
-> > Signed-off-by: Tanmay Patil <tanmaynpatil105@gmail.com>
->
-> Thanks for this patch; I've applied it to my target-arm.next
-> queue and it will get upstream within the next week or so.
-> (I tweaked the commit message format a bit.)
->
-> -- PMM
->
-
---0000000000008cccef0618e3d2a9
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">Sure! Thanks for the update.<div dir=3D"auto"><br></div><=
-div dir=3D"auto">~ Tanmay</div></div><br><div class=3D"gmail_quote"><div di=
-r=3D"ltr" class=3D"gmail_attr">On Mon, 20 May, 2024, 6:32 pm Peter Maydell,=
- &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</=
-a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 =
-0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On Wed, 8 May 2024 at=
- 09:15, Tanmay Patil &lt;<a href=3D"mailto:tanmaynpatil105@gmail.com" targe=
-t=3D"_blank" rel=3D"noreferrer">tanmaynpatil105@gmail.com</a>&gt; wrote:<br=
->
-&gt;<br>
-&gt; Resolves: <a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/373=
-" rel=3D"noreferrer noreferrer" target=3D"_blank">https://gitlab.com/qemu-p=
-roject/qemu/-/issues/373</a><br>
-&gt;<br>
-&gt; Files changed:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/arm/boot.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/char/omap_uart.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/gpio/zaurus.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0- hw/input/tsc2005.c<br>
-&gt;<br>
-&gt; Signed-off-by: Tanmay Patil &lt;<a href=3D"mailto:tanmaynpatil105@gmai=
-l.com" target=3D"_blank" rel=3D"noreferrer">tanmaynpatil105@gmail.com</a>&g=
-t;<br>
-<br>
-Thanks for this patch; I&#39;ve applied it to my target-arm.next<br>
-queue and it will get upstream within the next week or so.<br>
-(I tweaked the commit message format a bit.)<br>
-<br>
--- PMM<br>
-</blockquote></div>
-
---0000000000008cccef0618e3d2a9--
+diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+index 2d81c1e790..69aaa563db 100644
+--- a/hw/acpi/cpu.c
++++ b/hw/acpi/cpu.c
+@@ -1,13 +1,13 @@
+ #include "qemu/osdep.h"
+ #include "migration/vmstate.h"
+ #include "hw/acpi/cpu.h"
++#include "hw/acpi/cpu_hotplug.h"
+ #include "hw/core/cpu.h"
+ #include "qapi/error.h"
+ #include "qapi/qapi-events-acpi.h"
+ #include "trace.h"
+ #include "sysemu/numa.h"
+ 
+-#define ACPI_CPU_HOTPLUG_REG_LEN 12
+ #define ACPI_CPU_SELECTOR_OFFSET_WR 0
+ #define ACPI_CPU_FLAGS_OFFSET_RW 4
+ #define ACPI_CPU_CMD_OFFSET_WR 5
+diff --git a/include/hw/acpi/cpu_hotplug.h b/include/hw/acpi/cpu_hotplug.h
+index 3b932abbbb..48b291e45e 100644
+--- a/include/hw/acpi/cpu_hotplug.h
++++ b/include/hw/acpi/cpu_hotplug.h
+@@ -19,6 +19,8 @@
+ #include "hw/hotplug.h"
+ #include "hw/acpi/cpu.h"
+ 
++#define ACPI_CPU_HOTPLUG_REG_LEN 12
++
+ typedef struct AcpiCpuHotplug {
+     Object *device;
+     MemoryRegion io;
+-- 
+2.34.1

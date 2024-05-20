@@ -1,51 +1,51 @@
-Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp1752473ejb;
-        Mon, 20 May 2024 16:33:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUC2cJbi1W8ySsChj1+JxlU159jJexE0HgGko2m0/vczbaF+mp9C+qYpWoBf+q4Tev2M3vbQfUIKyIBTcgv5k3bMUm9kgz+
-X-Google-Smtp-Source: AGHT+IFxAyX+dU5wsp6uY6PO9phQqDXP1e1LI7ghZAG5JCdBZ37+2AzQXonY+lsMSwRSwMZ/cIG0
-X-Received: by 2002:a05:600c:458f:b0:41b:fad8:45de with SMTP id 5b1f17b1804b1-41feac5a454mr230839425e9.30.1716248032176;
-        Mon, 20 May 2024 16:33:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716248032; cv=none;
+Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp1753265ejb;
+        Mon, 20 May 2024 16:36:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXiVb7EveSa8Kw4j6WUNt9965XaNU7lc6ahR9ZavPwodtaWd+2U+kH80NfhaazJ+OG0sSwK8pzcrwdfMSRpHSPMSggssysx
+X-Google-Smtp-Source: AGHT+IGxhSEJIhCJT+R/PLCC/uEsUKKmuU1ANTvEDRz91/rJACEvPdCbmYtTjWM3+yrn/90u8tth
+X-Received: by 2002:a05:600c:5020:b0:420:1592:da3f with SMTP id 5b1f17b1804b1-4201592e454mr167604545e9.11.1716248167576;
+        Mon, 20 May 2024 16:36:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716248167; cv=none;
         d=google.com; s=arc-20160816;
-        b=UGWFXNvq3gms5K8LLuroa5hmZHqhy+umI5dCstmoPOlZiY08q90ZL7wlRT4FSYmrlB
-         FdnDOvH52vUbqmVF7GhLMtgqDGhB+HYcB0Sk/RRxCT6/ztglJ0Sxpf8V4E39gBfbqpkE
-         Fjm2SpQuaHrAqYatb3EZiQxjyWAEsiLXTQ8Jb9pcFUI91ha+PQ0q9CvgOESwkb6ky6Sx
-         dG9G7VjuO9h+dzE6wu2S1uONSgT9ds9U7RfEgUHHMLANeOaIMZ8F42D4NrCpDlBSw6K1
-         ffMGA4Gc4ULzExsSehQ2xEzOa8VpZ1dYir0mlvqsv+XndcPvpU7g3E5v3CZStf76Dsvz
-         0qlQ==
+        b=G3JgjJFxhW0pCCD3DEu/CQhZfKROI3CpHKnEbqgxen2RBOXh5LrGCYOx6dFNttAxJk
+         GSd/hLlqahzuQruoh+XquDUIoMHtuLsJLlgcjr5VfljTWNJ7Qm55EOGQOPkGhqkjmoGE
+         07VUOpyclMUyiJj8c3IyEE/somtQ0nHlt/RFUipmmo+kdvBOQtFP2Y6fEZscbb2YoBS2
+         R6aeZVhLQ5wuPFKFHgt58huqC+1eQCTtUiEWi5RbvOkTbTKrd94RJ1m5+c2NahP5QTms
+         3/dlJdb4+tRCShSgIys5yG5MtGRlvIpZh855Mpp2JFd40r6hJrqruRq7yMA0fUxEns/P
+         6KyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=lR1AKulc+PyyuuIw1+eePac8yeo7uus1uVSf5soatpY=;
-        fh=ESkCDJy4SlBfmiW/LaxStj1s4ONFbSiMcQYeaiK5m7w=;
-        b=eJJTYgznw5L7hcpkFi+pTC735hqDDcQW7+NfF2NfsOGKmc27ZCCAzYqW3YCWUtE2rq
-         skfSfOEhyXHFQzTnIqDcPfxqzHao1KIQsGq0dTpOM4px/oRrZ30C0V/kafz4jNF17WEZ
-         LGC2mIViYiMTUvL96z3UqIixeHiaTIhWjFpL1rllb1T5kv73q7DqCcifO2H50yRnlCAc
-         FaWkCjfGLKbcz+ysQ47Pnh7wait6S5ew0PWouAWVEISZUEmk7cN9VB7ZYLPV+VZhtJEn
-         suJPkqNN/foFW+T1rG9Nw+81zdOHVhHxetyneTT9H+/Tp6EwjcnkRGyEG8H9ooTbOool
-         vPLQ==;
+        bh=eZraRWXWqU3ldPOOQ/gTW1eW7uZF66L/ky8P0jTeHlI=;
+        fh=H0Ocb1F6OX7lJ2ZIq00L95YQd0stuI+T6mW0qgz5F80=;
+        b=E6hNwxiHwZgA0N8pB4p7ioJvRtC3xYa7BANafdknVH46yT8B+AKkAfbBWCPkifH33t
+         LU7t9FEYTqGKx5vO/DLIfQvs/SulkwdjT0NF8fg4xJl6ib01Gwahxk+mDJchRkyqeiOU
+         CdrW1/CTD+CESkrDQOx4397PiXOxQjnaxSF97Kl8RZWziiWy1pC5uFMeSPDtjptvsPiX
+         +bA0JUwEqvkzjzJ5qCfWixPDTIvjDIofdY4GfGZ2ByeOR727xhL6ImYmFRz63CpSRMEA
+         L3HwIeHHcmRPilH+KU87n279BJnPRUlWAWEABpRM0AD/Os6cWLzMdWALwQHWX4B4Wokr
+         rWVA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-41fccce4abfsi152015955e9.36.2024.05.20.16.33.51
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3502c0fd91esi14791164f8f.1056.2024.05.20.16.36.07
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 20 May 2024 16:33:52 -0700 (PDT)
+        Mon, 20 May 2024 16:36:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Vjv4v3c4yz6J682;
-	Tue, 21 May 2024 07:33:03 +0800 (CST)
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Vjv7V68rKz6J682;
+	Tue, 21 May 2024 07:35:18 +0800 (CST)
 Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
-	by mail.maildlp.com (Postfix) with ESMTPS id 2425F1400D4;
-	Tue, 21 May 2024 07:33:51 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 7D8C31400D4;
+	Tue, 21 May 2024 07:36:06 +0800 (CST)
 Received: from 00293818-MRGF.china.huawei.com (10.126.174.235) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 21 May 2024 00:33:28 +0100
+ 15.1.2507.39; Tue, 21 May 2024 00:35:44 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -61,11 +61,11 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>, Jonathan
- Cameron <Jonathan.Cameron@huawei.com>, Shaoqin Huang <shahuang@redhat.com>
-Subject: [PATCH V10 1/8] accel/kvm: Extract common KVM vCPU {creation,parking} code
-Date: Tue, 21 May 2024 00:32:34 +0100
-Message-ID: <20240520233241.229675-2-salil.mehta@huawei.com>
+	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>, Shaoqin
+ Huang <shahuang@redhat.com>
+Subject: [PATCH V10 7/8] gdbstub: Add helper function to unregister GDB register space
+Date: Tue, 21 May 2024 00:32:40 +0100
+Message-ID: <20240520233241.229675-8-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240520233241.229675-1-salil.mehta@huawei.com>
 References: <20240520233241.229675-1-salil.mehta@huawei.com>
@@ -75,229 +75,76 @@ Content-Type: text/plain
 X-Originating-IP: [10.126.174.235]
 X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
-X-TUID: GktBbVYWmzGw
+X-TUID: N94Uot+GcEG7
 
-KVM vCPU creation is done once during the vCPU realization when Qemu vCPU thread
-is spawned. This is common to all the architectures as of now.
-
-Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
-corresponding KVM vCPU object in the Host KVM is not destroyed as KVM doesn't
-support vCPU removal. Therefore, its representative KVM vCPU object/context in
-Qemu is parked.
-
-Refactor architecture common logic so that some APIs could be reused by vCPU
-Hotplug code of some architectures likes ARM, Loongson etc. Update new/old APIs
-with trace events. No functional change is intended here.
+Add common function to help unregister the GDB register space. This shall be
+done in context to the CPU unrealization.
 
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
 Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
 Tested-by: Xianglai Li <lixianglai@loongson.cn>
 Tested-by: Miguel Luis <miguel.luis@oracle.com>
 Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
 Reviewed-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
 ---
- accel/kvm/kvm-all.c    | 97 ++++++++++++++++++++++++++++--------------
- accel/kvm/kvm-cpus.h   | 23 ++++++++++
- accel/kvm/trace-events |  5 ++-
- 3 files changed, 92 insertions(+), 33 deletions(-)
+ gdbstub/gdbstub.c      | 13 +++++++++++++
+ hw/core/cpu-common.c   |  1 -
+ include/exec/gdbstub.h |  6 ++++++
+ 3 files changed, 19 insertions(+), 1 deletion(-)
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index c0be9f5eed..a8f93078dc 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -340,14 +340,73 @@ err:
-     return ret;
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index b3574997ea..1949b09240 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -617,6 +617,19 @@ void gdb_register_coprocessor(CPUState *cpu,
+     }
  }
  
-+void kvm_park_vcpu(CPUState *cpu)
++void gdb_unregister_coprocessor_all(CPUState *cpu)
 +{
-+    struct KVMParkedVcpu *vcpu;
++    /*
++     * Safe to nuke everything. GDBRegisterState::xml is static const char so
++     * it won't be freed
++     */
++    g_array_free(cpu->gdb_regs, true);
 +
-+    trace_kvm_park_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-+
-+    vcpu = g_malloc0(sizeof(*vcpu));
-+    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-+    vcpu->kvm_fd = cpu->kvm_fd;
-+    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
++    cpu->gdb_regs = NULL;
++    cpu->gdb_num_regs = 0;
++    cpu->gdb_num_g_regs = 0;
 +}
 +
-+int kvm_unpark_vcpu(KVMState *s, unsigned long vcpu_id)
-+{
-+    struct KVMParkedVcpu *cpu;
-+
-+    QLIST_FOREACH(cpu, &s->kvm_parked_vcpus, node) {
-+        if (cpu->vcpu_id == vcpu_id) {
-+            int kvm_fd;
-+
-+            trace_kvm_unpark_vcpu(vcpu_id);
-+
-+            QLIST_REMOVE(cpu, node);
-+            kvm_fd = cpu->kvm_fd;
-+            g_free(cpu);
-+            return kvm_fd;
-+        }
-+    }
-+
-+    return -ENOENT;
-+}
-+
-+int kvm_create_vcpu(CPUState *cpu)
-+{
-+    unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
-+    KVMState *s = kvm_state;
-+    int kvm_fd;
-+
-+    /* check if the KVM vCPU already exist but is parked */
-+    kvm_fd = kvm_unpark_vcpu(s, vcpu_id);
-+    if (kvm_fd < 0) {
-+        /* vCPU not parked: create a new KVM vCPU */
-+        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
-+        if (kvm_fd < 0) {
-+            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %lu", vcpu_id);
-+            return kvm_fd;
-+        }
-+    }
-+
-+    trace_kvm_create_vcpu(cpu->cpu_index, vcpu_id, kvm_fd);
-+
-+    cpu->kvm_fd = kvm_fd;
-+    cpu->kvm_state = s;
-+    cpu->vcpu_dirty = true;
-+    cpu->dirty_pages = 0;
-+    cpu->throttle_us_per_full = 0;
-+
-+    return 0;
-+}
-+
- static int do_kvm_destroy_vcpu(CPUState *cpu)
+ static void gdb_process_breakpoint_remove_all(GDBProcess *p)
  {
-     KVMState *s = kvm_state;
-     long mmap_size;
--    struct KVMParkedVcpu *vcpu = NULL;
-     int ret = 0;
- 
--    trace_kvm_destroy_vcpu();
-+    trace_kvm_destroy_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
- 
-     ret = kvm_arch_destroy_vcpu(cpu);
-     if (ret < 0) {
-@@ -373,10 +432,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
-         }
-     }
- 
--    vcpu = g_malloc0(sizeof(*vcpu));
--    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
--    vcpu->kvm_fd = cpu->kvm_fd;
--    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-+    kvm_park_vcpu(cpu);
- err:
-     return ret;
- }
-@@ -389,24 +445,6 @@ void kvm_destroy_vcpu(CPUState *cpu)
-     }
- }
- 
--static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
--{
--    struct KVMParkedVcpu *cpu;
--
--    QLIST_FOREACH(cpu, &s->kvm_parked_vcpus, node) {
--        if (cpu->vcpu_id == vcpu_id) {
--            int kvm_fd;
--
--            QLIST_REMOVE(cpu, node);
--            kvm_fd = cpu->kvm_fd;
--            g_free(cpu);
--            return kvm_fd;
--        }
--    }
--
--    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
--}
--
- int kvm_init_vcpu(CPUState *cpu, Error **errp)
+     CPUState *cpu = gdb_get_first_cpu_in_process(p);
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index 0f0a247f56..e5140b4bc1 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -274,7 +274,6 @@ static void cpu_common_finalize(Object *obj)
  {
-     KVMState *s = kvm_state;
-@@ -415,19 +453,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+     CPUState *cpu = CPU(obj);
  
-     trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
- 
--    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
-+    ret = kvm_create_vcpu(cpu);
-     if (ret < 0) {
--        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
-+        error_setg_errno(errp, -ret,
-+                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
-                          kvm_arch_vcpu_id(cpu));
-         goto err;
-     }
- 
--    cpu->kvm_fd = ret;
--    cpu->kvm_state = s;
--    cpu->vcpu_dirty = true;
--    cpu->dirty_pages = 0;
--    cpu->throttle_us_per_full = 0;
--
-     mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
-     if (mmap_size < 0) {
-         ret = mmap_size;
-diff --git a/accel/kvm/kvm-cpus.h b/accel/kvm/kvm-cpus.h
-index ca40add32c..2e6bb38b5d 100644
---- a/accel/kvm/kvm-cpus.h
-+++ b/accel/kvm/kvm-cpus.h
-@@ -22,5 +22,28 @@ bool kvm_supports_guest_debug(void);
- int kvm_insert_breakpoint(CPUState *cpu, int type, vaddr addr, vaddr len);
- int kvm_remove_breakpoint(CPUState *cpu, int type, vaddr addr, vaddr len);
- void kvm_remove_all_breakpoints(CPUState *cpu);
-+/**
-+ * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
-+ * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
-+ *
-+ * @returns: 0 when success, errno (<0) when failed.
-+ */
-+int kvm_create_vcpu(CPUState *cpu);
+-    g_array_free(cpu->gdb_regs, TRUE);
+     qemu_lockcnt_destroy(&cpu->in_ioctl_lock);
+     qemu_mutex_destroy(&cpu->work_mutex);
+ }
+diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+index eb14b91139..249d4d4bc8 100644
+--- a/include/exec/gdbstub.h
++++ b/include/exec/gdbstub.h
+@@ -49,6 +49,12 @@ void gdb_register_coprocessor(CPUState *cpu,
+                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
+                               const GDBFeature *feature, int g_pos);
  
 +/**
-+ * kvm_park_vcpu - Park QEMU KVM vCPU context
-+ * @cpu: QOM CPUState object for which QEMU KVM vCPU context has to be parked.
-+ *
-+ * @returns: none
++ * gdb_unregister_coprocessor_all() - unregisters supplemental set of registers
++ * @cpu - the CPU associated with registers
 + */
-+void kvm_park_vcpu(CPUState *cpu);
++void gdb_unregister_coprocessor_all(CPUState *cpu);
 +
-+/**
-+ * kvm_unpark_vcpu - unpark QEMU KVM vCPU context
-+ * @s: KVM State
-+ * @cpu: Architecture vCPU ID of the parked vCPU
-+ *
-+ * @returns: KVM fd
-+ */
-+int kvm_unpark_vcpu(KVMState *s, unsigned long vcpu_id);
- #endif /* KVM_CPUS_H */
-diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
-index 681ccb667d..bd43a0ef26 100644
---- a/accel/kvm/trace-events
-+++ b/accel/kvm/trace-events
-@@ -9,6 +9,10 @@ kvm_device_ioctl(int fd, int type, void *arg) "dev fd %d, type 0x%x, arg %p"
- kvm_failed_reg_get(uint64_t id, const char *msg) "Warning: Unable to retrieve ONEREG %" PRIu64 " from KVM: %s"
- kvm_failed_reg_set(uint64_t id, const char *msg) "Warning: Unable to set ONEREG %" PRIu64 " to KVM: %s"
- kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-+kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id, int kvm_fd) "index: %d, id: %lu, kvm fd: %d"
-+kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-+kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-+kvm_unpark_vcpu(unsigned long arch_cpu_id) "id: %lu"
- kvm_irqchip_commit_routes(void) ""
- kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
- kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
-@@ -25,7 +29,6 @@ kvm_dirty_ring_reaper(const char *s) "%s"
- kvm_dirty_ring_reap(uint64_t count, int64_t t) "reaped %"PRIu64" pages (took %"PRIi64" us)"
- kvm_dirty_ring_reaper_kick(const char *reason) "%s"
- kvm_dirty_ring_flush(int finished) "%d"
--kvm_destroy_vcpu(void) ""
- kvm_failed_get_vcpu_mmap_size(void) ""
- kvm_cpu_exec(void) ""
- kvm_interrupt_exit_request(void) ""
+ /**
+  * gdbserver_start: start the gdb server
+  * @port_or_device: connection spec for gdb
 -- 
 2.34.1

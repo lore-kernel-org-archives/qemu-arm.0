@@ -1,55 +1,55 @@
-Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp1359330ejb;
-        Mon, 20 May 2024 03:55:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXiT9H9wWpnDRH8U78IlXnxf9hFpZZB6yqeColGaS/oBqijLjKQZfMNIc93LK7zolw5UtHsAteY3ukk4BHSyewQKXwEjXl5
-X-Google-Smtp-Source: AGHT+IF2U1oRjzDAFiXhw1gWEqPwYWp9yfL3ka2DzwHLQ3Q3luTW3HupY/DXCcKjDrEOML+vTtnb
-X-Received: by 2002:adf:f791:0:b0:34d:9066:dd81 with SMTP id ffacd0b85a97d-3504a955ad7mr27021770f8f.47.1716202515324;
-        Mon, 20 May 2024 03:55:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716202515; cv=none;
+Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp1376449ejb;
+        Mon, 20 May 2024 04:27:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWYL5bvvlzY5lYQuNv5WSv0sJ/4eZb4WcPKBtVulPaHPZrAELUXktOMij2sc4+BsxU2CAikv0d1a4uSPOoEcTNFDkFZWFO7
+X-Google-Smtp-Source: AGHT+IHcl6OUdRU72MEjwcCyLqMSNLDIt2z/BpPghww3xr1VTb0J4aA+HZUNWNbKN7DlbUT6URxk
+X-Received: by 2002:a05:600c:470f:b0:41b:285:8417 with SMTP id 5b1f17b1804b1-41fead6dc93mr202844985e9.40.1716204462448;
+        Mon, 20 May 2024 04:27:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716204462; cv=none;
         d=google.com; s=arc-20160816;
-        b=mJREO3oMPYKSgIVGEddRRr2M698TUFEB7u87jEvINWY3eoMWqbGhkyjuDPFlJDr4yw
-         hwNhSxdS9xhHkEGclQOnkEqt7jYJuVUm5lt4S/mgHGEBwKAXfpfuF7q9GSnTkQ/LrBhJ
-         2GWXRUzeMl5sJ3z8uUPB5geXCbxNlL8tSwFiINKIj609gBFVFdUT4dYruUso+l4jR3gd
-         sSxIyrCg5eL3QOUAdUk9U7x6nGebNt1jShENMtgIJMLYbrH8UmRvKl7Mv6uOIeJ3mARZ
-         8TjvFhHQAesE5LIezT8HVimYrwjvi7wgkSKpdJar+5j5X3XwqtUSsSXu0YTB9GCXn9gn
-         WWbw==
+        b=ZR5IE8SIkrV8HFfqaLvBicLrIIXbQfsuRL5yc1Va1cu4GrVwuVFqbUQMUIhapnuCnL
+         r7/Rkr9iR02e3UiBJwmnQzGAFN9+Tk/ePvrwU7hFSHF1V2ZXIizB6MbuO8P9ehOrOY0M
+         GA1yl8Q6LpN5RCGWakuaeKG+1kWG4h50OayJQ4SAOwW+Yy4sDmcPmzOwS+SLeyNAqE+Q
+         lJyAA7FV9fyVB2eHCA6ywQvHsZqNspQejUmA/6Fsy+PsbEtRKVxe1M1+NfbD1J6GctjB
+         6rZqvhYkARhjqTF1VZVt/SVYdDjeL4sfH/IVMEIsihU3Byp1a51u2SPH2kA3UNaS7VZz
+         G1xg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:content-transfer-encoding:content-language
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:subject:cc:to:from;
-        bh=R/9LbjHJjcq2pBMXxWxSQf9lYwed4bRCWUlwMIB4nZ4=;
-        fh=aHAXn5ULFh3z7g8FRbmqCv/v2U7g/I2GswevBF/9Qlw=;
-        b=l8mvAwqF6ZTxlAigM/z5iZM6VLGP2z7OACwkALf8S2Z0Erh+dWUZD3MqfjpHV97BjN
-         KdOxzisYvY75Z20aJcpE7z24ppHCX01jS0RdLHgnn13prp+JWSaIfHmQl6oiVFabJVrh
-         oJxYD68HaE3GchjusRZ5W+nnMTEsgdXbV/ZsYCZM1HpSiPqN0tHGyiuo4Zoa2sUOm0lf
-         tYCKeaASiiAX9xjt7b4vMKnxT00YJupt3Gr3guBZPFJnxYWZNqn4OIb290M11hBQtsWw
-         LGOrnmPgQckJ0VSefuPuuIye1/8DKeAz+VEgriMypaD96vc4mrawMCpCh1xaAEbmkioT
-         /ATQ==;
+        bh=cwc1AEfJXtbbuY6Dr1CgJS22NYNoX01EWdHNCe3HT8Y=;
+        fh=oA8Sg+ZUpvRlZGMzEQydWETcyLsuqDK5ZfZPUqVv4kM=;
+        b=Z5JxWZBJCojpd1PlrumTiEOKHsdlq3nZTmGXzEv7n7FEgNTMQRnL0i5hOjbPgu4Kik
+         Qb32SP3Qi9fOf7aBboVR78POfzGapgM3wAOZsA8B414D4Ee9rUomnphq6IHEkh4g4AWd
+         RBkj8xz6vrtaThmHTTHX1xk6bqyUHks/xI4lHBr52On537J3mlJHoUt0hEdBAIy3fomi
+         BJhJeOU8tLHmWBUi1Af+sdK0UEpWnskt7Ru4GlDESt4CDka4PW3CGqglkiOa6Gx6v4+0
+         8PcGN5FuH2PjFf4SPRzFWbTQ2t4jIp5IICLSmC4cwndSULc8mwjRfTKGdswzmGUuTRNL
+         TtLQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-354b7655e33si2912107f8f.652.2024.05.20.03.55.15
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-41fd4d1f805si31559655e9.191.2024.05.20.04.27.41
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 20 May 2024 03:55:15 -0700 (PDT)
+        Mon, 20 May 2024 04:27:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VjZB91nPzz6J67Z;
-	Mon, 20 May 2024 18:51:29 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VjZz205J3z67G9M;
+	Mon, 20 May 2024 19:26:54 +0800 (CST)
 Received: from lhrpeml100005.china.huawei.com (unknown [7.191.160.25])
-	by mail.maildlp.com (Postfix) with ESMTPS id 26D871400D4;
-	Mon, 20 May 2024 18:55:14 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id DFBEF140B67;
+	Mon, 20 May 2024 19:27:40 +0800 (CST)
 Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
  lhrpeml100005.china.huawei.com (7.191.160.25) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 20 May 2024 11:55:13 +0100
+ 15.1.2507.39; Mon, 20 May 2024 12:27:40 +0100
 Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
  lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
- Mon, 20 May 2024 11:55:13 +0100
+ Mon, 20 May 2024 12:27:40 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: Nicholas Piggin <npiggin@gmail.com>, "qemu-devel@nongnu.org"
 	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
@@ -76,18 +76,19 @@ CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
 	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
 	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
 	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, Linuxarm
-	<linuxarm@huawei.com>, Shaoqin Huang <shahuang@redhat.com>
-Subject: RE: [PATCH V9 6/8] physmem: Add helper function to destroy CPU
- AddressSpace
-Thread-Topic: [PATCH V9 6/8] physmem: Add helper function to destroy CPU
- AddressSpace
-Thread-Index: AQHaqjDkHC86gPbskES/QKJueu2z1rGft5QAgAA7LuA=
-Date: Mon, 20 May 2024 10:55:13 +0000
-Message-ID: <46d1577dc27a4012bb90d9871d03fabe@huawei.com>
+	<linuxarm@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+	Shaoqin Huang <shahuang@redhat.com>
+Subject: RE: [PATCH V9 1/8] accel/kvm: Extract common KVM vCPU
+ {creation,parking} code
+Thread-Topic: [PATCH V9 1/8] accel/kvm: Extract common KVM vCPU
+ {creation,parking} code
+Thread-Index: AQHaqjCk+Krm+sEOpEGrtSE0xbsEKbGfs2mAgABBGrA=
+Date: Mon, 20 May 2024 11:27:40 +0000
+Message-ID: <e02713782ae34f6caad43283b9608e5e@huawei.com>
 References: <20240519210620.228342-1-salil.mehta@huawei.com>
- <20240519210620.228342-7-salil.mehta@huawei.com>
- <D1EBOZTRN8SZ.Q9F4CFDZ8VYW@gmail.com>
-In-Reply-To: <D1EBOZTRN8SZ.Q9F4CFDZ8VYW@gmail.com>
+ <20240519210620.228342-2-salil.mehta@huawei.com>
+ <D1EBDKJQ19G2.7K7FS8Z9BA5D@gmail.com>
+In-Reply-To: <D1EBDKJQ19G2.7K7FS8Z9BA5D@gmail.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach:
@@ -96,25 +97,33 @@ x-originating-ip: [10.126.174.235]
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-TUID: TbTVPOH6fYgW
+X-TUID: EPiGp8LeZySN
 
 PiAgRnJvbTogTmljaG9sYXMgUGlnZ2luIDxucGlnZ2luQGdtYWlsLmNvbT4NCj4gIFNlbnQ6IE1v
-bmRheSwgTWF5IDIwLCAyMDI0IDk6MTkgQU0NCj4gIA0KPiAgT24gTW9uIE1heSAyMCwgMjAyNCBh
-dCA3OjA2IEFNIEFFU1QsIFNhbGlsIE1laHRhIHdyb3RlOg0KPiAgPiBWaXJ0dWFsIENQVSBIb3Qt
-dW5wbHVnIGxlYWRzIHRvIHVucmVhbGl6YXRpb24gb2YgYSBDUFUgb2JqZWN0LiBUaGlzDQo+ICA+
-IGFsc28gaW52b2x2ZXMgZGVzdHJ1Y3Rpb24gb2YgdGhlIENQVSBBZGRyZXNzU3BhY2UuIEFkZCBj
-b21tb24gZnVuY3Rpb24NCj4gID4gdG8gaGVscCBkZXN0cm95IHRoZSBDUFUgQWRkcmVzc1NwYWNl
-Lg0KPiAgDQo+ICBQYXRjaGVzIDYsNyBzZWVtIG9rYXkgdG8gbWUuIEkgd291bGQgbGlrZSB0byBz
-ZWUgYSBzZXJpZXMgd2hlcmUgdGhleSBnZXQNCj4gIHVzZWQuIFdvdWxkIGl0IGJlIHBvc3NpYmxl
-IHRvIGluY2x1ZGUgYXQgbGVhc3QgYSBUQ0cgdXNlciBpbiB5b3VyIHNlcmllcz8gVGhhdA0KPiAg
-d291bGQgbWFrZSBpdCBlYXNpZXIgdG8gcmV2aWV3IGFuZCB0ZXN0Lg0KDQoNCklmIHlvdSB3aXNo
-IHRvIHBsYXkgdGhlbiB5b3UgY2FuIHVzZSBiZWxvdyByZXBvc2l0b3J5IHdoaWNoIGlzIFY4IHZl
-cnNpb24gb2YNCmFyY2hpdGVjdHVyZSBhZ25vc3RpYyBwYXRjaC1zZXQgcGx1cyBhcmNoaXRlY3R1
-cmUgZGVwZW5kZW50IHBhdGNoLXNldA0Kc3RhY2tlZCB1cCB0b2dldGhlci4gVGhpcyBlZmZlY3Rp
-dmVseSBSRkMgVjIgcmVhcnJhbmdlZCB3aXRoIGNsZWFyIHNlcGFyYXRpb24NCm9mIGFyY2ggYWdu
-b3N0aWMgYW5kIHNwZWNpZmljIHBhcnRzIGFuZCBzb21lIHJldmlldyBjb21tZW50cyBpbmNvcnBv
-cmF0ZWQuDQoNCmh0dHBzOi8vZ2l0aHViLmNvbS9zYWxpbC1tZWh0YS9xZW11L2NvbW1pdHMvdmly
-dC1jcHVocC1hcm12OC9yZmMtdjMtcmMxLw0KDQoNCkl0IGhhcyBUQ0cgYnV0IGl0IGhhcyBzb21l
-IGlzc3VlcyBhbmQgaGVuY2Ugd2UgaGF2ZSBkaXNhYmxlZCBpdCBmb3Igbm93LiBXZSBhcmUNCndv
-cmtpbmcgdG8gZml4IGl0Lg0KDQoNClRoYW5rcw0KU2FsaWwuDQoNCj4gIA0KPiAgVGhhbmtzLA0K
-PiAgTmljaw0K
+bmRheSwgTWF5IDIwLCAyMDI0IDk6MDQgQU0NCj4gIA0KPiAgT24gTW9uIE1heSAyMCwgMjAyNCBh
+dCA3OjA2IEFNIEFFU1QsIFNhbGlsIE1laHRhIHdyb3RlOg0KPiAgPiBLVk0gdkNQVSBjcmVhdGlv
+biBpcyBkb25lIG9uY2UgZHVyaW5nIHRoZSB2Q1BVIHJlYWxpemF0aW9uIHdoZW4gUWVtdQ0KPiAg
+PiB2Q1BVIHRocmVhZCBpcyBzcGF3bmVkLiBUaGlzIGlzIGNvbW1vbiB0byBhbGwgdGhlIGFyY2hp
+dGVjdHVyZXMgYXMgb2Ygbm93Lg0KPiAgPg0KPiAgPiBIb3QtdW5wbHVnIG9mIHZDUFUgcmVzdWx0
+cyBpbiBkZXN0cnVjdGlvbiBvZiB0aGUgdkNQVSBvYmplY3QgaW4gUU9NDQo+ICA+IGJ1dCB0aGUg
+Y29ycmVzcG9uZGluZyBLVk0gdkNQVSBvYmplY3QgaW4gdGhlIEhvc3QgS1ZNIGlzIG5vdCBkZXN0
+cm95ZWQNCj4gID4gYXMgS1ZNIGRvZXNuJ3Qgc3VwcG9ydCB2Q1BVIHJlbW92YWwuIFRoZXJlZm9y
+ZSwgaXRzIHJlcHJlc2VudGF0aXZlIEtWTQ0KPiAgPiB2Q1BVIG9iamVjdC9jb250ZXh0IGluIFFl
+bXUgaXMgcGFya2VkLg0KPiAgPg0KPiAgPiBSZWZhY3RvciBhcmNoaXRlY3R1cmUgY29tbW9uIGxv
+Z2ljIHNvIHRoYXQgc29tZSBBUElzIGNvdWxkIGJlIHJldXNlZA0KPiAgPiBieSB2Q1BVIEhvdHBs
+dWcgY29kZSBvZiBzb21lIGFyY2hpdGVjdHVyZXMgbGlrZXMgQVJNLCBMb29uZ3NvbiBldGMuDQo+
+ICA+IFVwZGF0ZSBuZXcvb2xkIEFQSXMgd2l0aCB0cmFjZSBldmVudHMgaW5zdGVhZCBvZiBEUFJJ
+TlRGLiBObyBmdW5jdGlvbmFsDQo+ICBjaGFuZ2UgaXMgaW50ZW5kZWQgaGVyZS4NCj4gIA0KDQpb
+Li4uXQ0KDQp2b2lkIGt2bV9wYXJrX3ZjcHUoQ1BVU3RhdGUgKmNwdSkNCj4gID4gK3sNCj4gID4g
+KyAgICBzdHJ1Y3QgS1ZNUGFya2VkVmNwdSAqdmNwdTsNCj4gID4gKw0KPiAgPiArICAgIHRyYWNl
+X2t2bV9wYXJrX3ZjcHUoY3B1LT5jcHVfaW5kZXgsIGt2bV9hcmNoX3ZjcHVfaWQoY3B1KSk7DQo+
+ICA+ICsNCj4gID4gKyAgICB2Y3B1ID0gZ19tYWxsb2MwKHNpemVvZigqdmNwdSkpOw0KPiAgPiAr
+ICAgIHZjcHUtPnZjcHVfaWQgPSBrdm1fYXJjaF92Y3B1X2lkKGNwdSk7DQo+ICA+ICsgICAgdmNw
+dS0+a3ZtX2ZkID0gY3B1LT5rdm1fZmQ7DQo+ICA+ICsgICAgUUxJU1RfSU5TRVJUX0hFQUQoJmt2
+bV9zdGF0ZS0+a3ZtX3BhcmtlZF92Y3B1cywgdmNwdSwgbm9kZSk7IH0NCj4gIA0KPiAgQ291bGQg
+eW91IG1vdmUga3ZtX2dldF92Y3B1IHVwIGhlcmUgc28gaXQncyBuZXh0IHRvIGt2bV9wYXJrX3Zj
+cHUsIGFuZA0KPiAgdGhlbiB5b3UgZG9uJ3QgbmVlZCB0byBmb3J3YXJkIGRlY2xhcmUgaXQuIENh
+bGwgaXQga3ZtX3VucGFya192Y3B1KCkgZm9yDQo+ICBzeW1tZXRyeSB3aXRoIHBhcmsuDQoNCg0K
+c29ycnkgSSBtaXNzZWQgdGhpcyBwYXJ0IGVhcmxpZXIgYW5kIFBoaWwgYWxzbyBzdWdnZXN0ZWQg
+dGhlIHNhbWUuIFllcywgSSBjYW4uDQoNCg0KVGhhbmtzDQpTYWxpbC4NCg0KPiAgDQo+ICBUaGFu
+a3MsDQo+ICBOaWNrDQo=

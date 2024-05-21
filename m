@@ -1,321 +1,83 @@
-Received: by 2002:a17:906:eec5:b0:a5d:17e5:aef9 with SMTP id wu5csp856972ejb;
-        Sun, 19 May 2024 02:43:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWhy/N1ZZChDHkNjRsc4V9ibYC8A/JxieDZ9zuXNg+MRIhoAT4u43UBoPI2/0+fJm04O172ULwTCHY8E5nFbYsJP08YQxB9
-X-Google-Smtp-Source: AGHT+IElAjtId1qFL98lMlqmo/76NQZtNO+DiqZZ1MhGJnRXMCVxez60njFyYltplCI8Eo4sjVG7
-X-Received: by 2002:a05:620a:ce5:b0:792:b835:19be with SMTP id af79cd13be357-792c75af7abmr2719608185a.43.1716111811075;
-        Sun, 19 May 2024 02:43:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716111811; cv=none;
-        d=google.com; s=arc-20160816;
-        b=y9F5NCyCpLLFlt9oL8eDaMmaxXmEiIvIeYx95fZ3K9g34A4Ci2DGv3zxbMBf7ALV5Y
-         6XxnIEchmu05HtHlFV0WOLjG7VeZw+v3axjaHvoIchHEaI9xfzHB5RRSkIL7Ve3raOUh
-         5CcnilwFGSvg29lMf+JQqgUgr8LOibz8Ee8N9V/LgLSE35hreTzvtva4dQPUI5uGdQhd
-         vkKU95Dw72Z7shEENchzYOGAsCLlGj9/EwNF5amy7y0XnwfN2RF9Msx3Epls85JGfTTE
-         mWWbbMCBx2Oub/CH3QjgzRjPBAVV7yc5DUn3NTEYu2+xQ4wfH/zEVxzJ8IP97HgiSNqE
-         tZlw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=aaz6YUca/EDsN6sz3NrbzFJ3pzsAImLY6LO7ZyVY8kw=;
-        fh=aYE9Y54+sG3BFF/IJlTIo33pe3WiL9PkYQHR4brxkXQ=;
-        b=T8/NgQMyDwA4p62kYi5MW2aMF+G6P+cg9CvMY2nrI2oEIrrE0hRJjAK5DiX5KJG1RV
-         g5CJ8CSnFFxYFoDAZ2qbLbsBKBT7ZL6gDvEGKubKn9rlcQSzQn1VIUDDPT0ASGdwBExG
-         9fWxLD5Cn2pT9cQ0wPOHroIaJoSSnQIm0UWwu/rapQ0f3Sr563CvVenIpHgtnK1k4Yhz
-         VpNRvaLtkjPSfabh/gNwvcRZyU22goExN2nmhTcMEtnQcinzvjD3YWgxqZ1ODP4mcUcQ
-         QHzRn+6kMFFnrhtr4iMmufn66vwqJln2Di6kLR2/B1skF9rlhTdCaqpzGK1aOmObl9LZ
-         x9fQ==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DLsTl+AH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-794753d95fasi257338585a.711.2024.05.19.02.43.30
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 19 May 2024 02:43:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=DLsTl+AH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1s8d3z-000230-AW; Sun, 19 May 2024 05:42:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1s8d3x-00021w-5Y; Sun, 19 May 2024 05:42:41 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1s8d3v-0004ZV-AM; Sun, 19 May 2024 05:42:40 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-1ecddf96313so28105565ad.2; 
- Sun, 19 May 2024 02:42:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1716111757; x=1716716557; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=aaz6YUca/EDsN6sz3NrbzFJ3pzsAImLY6LO7ZyVY8kw=;
- b=DLsTl+AH9bXCOPR6osR9yJkrRQhpqG+5xJdFKv5q4DvL9/1aUe2Vlldqu40Sh8G//o
- q3FNUVAWDRyNHULPXe13c7igtDF1EsfOeZhmf1WwEIBbYF0sEWQVH73jmE1I1AD3Dqpl
- Bfi6Kd6oaTBAjgTSVlRIk1R7SHNbIZ8IhThMn7hgGQrZcODIF6yMhYyEa7Ldqxn6pyaP
- sB9FHCmODsmsK0NveYgvC4JDTX6a4hkNtYM8VMvs7GojeaUrIIXDmNLxSpUyuNA+AnCS
- E42NznR9nQwrMYUyK6ExIOoi24biMgHp3pjjK/yVPo6XJ6KdppVvSHJLnOn7P4VdvbQY
- H/lw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716111757; x=1716716557;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=aaz6YUca/EDsN6sz3NrbzFJ3pzsAImLY6LO7ZyVY8kw=;
- b=oKbkNCvviKh/+1UgRMFWNfCi4STAiCiC+iN6KpSIzn1yIqL1//zGfUGmmkQFAx+7lM
- 8S07HVsrRBHiiaWis0saACZIPasdPJfsTxqSbfiIqLk2WG1744tlr2zvU8kSpyDIsgGh
- 010A94oB/hjUHEiR5kxRG0UYOekxnvnP667UXUQmFvTQLHFi/JnaTaz+W/9XILTREHk9
- 7beCuEaojCR2jnU85IGnblEB5zk0X/WiPtTxiUzmPLJIlsmYiMoIfZdgPrQcFqqdcmy3
- RIYHkN58Qj34D6sZNWMZg3NwxPgYXtoY21hmh9JrhoO7vSSw1zPvo5x/gPPSZNyhEskg
- 84Eg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVW36Y5xbmefQXMXLsJzXL2At8VVtnD6l6FwWTsMWjVrSyw13pfsTjgxyM/nB6d9xQFKYjHNymV1YrXkZ1M9B8qf2p7
-X-Gm-Message-State: AOJu0Ywyxb8UVJ1rkwNktkU1Ii4mo75QaZVf3DHlxDpzTA+ihLZe2WXP
- U2bm5noUlr9p2h3O9HqhVtFyKBF52JENOXGiirSemUnyaknFnOY9tBHDcg==
-X-Received: by 2002:a17:90a:fc89:b0:2ac:513b:b316 with SMTP id
- 98e67ed59e1d1-2b6cc450dd9mr30465753a91.10.1716111757350; 
- Sun, 19 May 2024 02:42:37 -0700 (PDT)
-Received: from localhost.localdomain ([49.47.193.102])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2b62863a265sm19977932a91.10.2024.05.19.02.42.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 19 May 2024 02:42:37 -0700 (PDT)
-From: Rayhan Faizel <rayhan.faizel@gmail.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5733c2c7d3esm16607686a12.73.2024.05.21.05.53.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 May 2024 05:53:15 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 0ED4A5FA1B;
+	Tue, 21 May 2024 13:53:15 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: philmd@linaro.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- Rayhan Faizel <rayhan.faizel@gmail.com>
-Subject: [PATCH v3 3/3] hw/misc: Implement mailbox properties for customer OTP
- and device specific private keys
-Date: Sun, 19 May 2024 15:11:06 +0530
-Message-Id: <20240519094106.2142896-4-rayhan.faizel@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240519094106.2142896-1-rayhan.faizel@gmail.com>
-References: <20240519094106.2142896-1-rayhan.faizel@gmail.com>
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Beraldo Leal <bleal@redhat.com>,
+	qemu-s390x@nongnu.org,
+	John Snow <jsnow@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Joel Stanley <joel@jms.id.au>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Thomas Huth <thuth@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 3/4] tests/vm: update centos.aarch64 image to 9
+Date: Tue, 21 May 2024 13:53:13 +0100
+Message-Id: <20240521125314.1255403-4-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240521125314.1255403-1-alex.bennee@linaro.org>
+References: <20240521125314.1255403-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=rayhan.faizel@gmail.com; helo=mail-pl1-x633.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: me0Xj6W49FmW
+X-TUID: BrvK3jPhfosj
 
-Four mailbox properties are implemented as follows:
-1. Customer OTP: GET_CUSTOMER_OTP and SET_CUSTOMER_OTP
-2. Device-specific private key: GET_PRIVATE_KEY and
-SET_PRIVATE_KEY.
+As Centos Stream 8 goes out of support we need to update. To do this
+powertools is replaced by crb and we don't over specify the python3 we
+want.
 
-The customer OTP is located in the rows 36-43. The device-specific private key
-is located in the rows 56-63.
-
-The customer OTP can be locked with the magic numbers 0xffffffff 0xaffe0000
-when running the SET_CUSTOMER_OTP mailbox command. Bit 6 of row 32 indicates
-this lock, which is undocumented. The lock also applies to the device-specific
-private key.
-
-Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/arm/bcm2835_peripherals.c         |  2 +
- hw/misc/bcm2835_property.c           | 87 ++++++++++++++++++++++++++++
- include/hw/arm/raspberrypi-fw-defs.h |  2 +
- include/hw/misc/bcm2835_property.h   |  2 +
- 4 files changed, 93 insertions(+)
+ tests/vm/centos.aarch64 | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 7d735bb56c..ac153a96b9 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -132,6 +132,8 @@ static void raspi_peripherals_base_init(Object *obj)
-                                    OBJECT(&s->fb));
-     object_property_add_const_link(OBJECT(&s->property), "dma-mr",
-                                    OBJECT(&s->gpu_bus_mr));
-+    object_property_add_const_link(OBJECT(&s->property), "otp",
-+                                   OBJECT(&s->otp));
+diff --git a/tests/vm/centos.aarch64 b/tests/vm/centos.aarch64
+index 3f58de1e64..fcf9e08c87 100755
+--- a/tests/vm/centos.aarch64
++++ b/tests/vm/centos.aarch64
+@@ -25,9 +25,9 @@ DEFAULT_CONFIG = {
+     'cpu'          : "max",
+     'machine'      : "virt,gic-version=max",
+     'install_cmds' : (
+-        "dnf config-manager --set-enabled powertools, "
++        "dnf config-manager --enable crb, "
+         "dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo, "
+-        "dnf install -y make ninja-build git python38 gcc gcc-c++ flex bison "\
++        "dnf install -y make ninja-build git python3 gcc gcc-c++ flex bison "\
+             "glib2-devel pixman-devel zlib-devel docker-ce.aarch64, "
+         "systemctl enable docker, "
+     ),
+@@ -38,10 +38,10 @@ DEFAULT_CONFIG = {
  
-     /* Extended Mass Media Controller */
-     object_initialize_child(obj, "sdhci", &s->sdhci, TYPE_SYSBUS_SDHCI);
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index bdd9a6bbce..63de3db621 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -32,6 +32,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-     uint32_t tmp;
-     int n;
-     uint32_t offset, length, color;
-+    uint32_t start_num, number, otp_row;
  
-     /*
-      * Copy the current state of the framebuffer config; we will update
-@@ -322,6 +323,89 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-                         0);
-             resplen = VCHI_BUSADDR_SIZE;
-             break;
-+
-+        /* Customer OTP */
-+
-+        case RPI_FWREQ_GET_CUSTOMER_OTP:
-+            start_num = ldl_le_phys(&s->dma_as, value + 12);
-+            number = ldl_le_phys(&s->dma_as, value + 16);
-+
-+            resplen = 8 + 4 * number;
-+
-+            for (n = start_num; n < start_num + number &&
-+                 n < BCM2835_OTP_CUSTOMER_OTP_LEN; n++) {
-+                otp_row = bcm2835_otp_get_row(s->otp,
-+                                              BCM2835_OTP_CUSTOMER_OTP + n);
-+                stl_le_phys(&s->dma_as,
-+                            value + 20 + ((n - start_num) << 2), otp_row);
-+            }
-+            break;
-+        case RPI_FWREQ_SET_CUSTOMER_OTP:
-+            start_num = ldl_le_phys(&s->dma_as, value + 12);
-+            number = ldl_le_phys(&s->dma_as, value + 16);
-+
-+            resplen = 4;
-+
-+            /* Magic numbers to permanently lock customer OTP */
-+            if (start_num == BCM2835_OTP_LOCK_NUM1 &&
-+                number == BCM2835_OTP_LOCK_NUM2) {
-+                bcm2835_otp_set_row(s->otp,
-+                                    BCM2835_OTP_ROW_32,
-+                                    BCM2835_OTP_ROW_32_LOCK);
-+                break;
-+            }
-+
-+            /* If row 32 has the lock bit, don't allow further writes */
-+            if (bcm2835_otp_get_row(s->otp, BCM2835_OTP_ROW_32) &
-+                                    BCM2835_OTP_ROW_32_LOCK) {
-+                break;
-+            }
-+
-+            for (n = start_num; n < start_num + number &&
-+                 n < BCM2835_OTP_CUSTOMER_OTP_LEN; n++) {
-+                otp_row = ldl_le_phys(&s->dma_as,
-+                                      value + 20 + ((n - start_num) << 2));
-+                bcm2835_otp_set_row(s->otp,
-+                                    BCM2835_OTP_CUSTOMER_OTP + n, otp_row);
-+            }
-+            break;
-+
-+        /* Device-specific private key */
-+
-+        case RPI_FWREQ_GET_PRIVATE_KEY:
-+            start_num = ldl_le_phys(&s->dma_as, value + 12);
-+            number = ldl_le_phys(&s->dma_as, value + 16);
-+
-+            resplen = 8 + 4 * number;
-+
-+            for (n = start_num; n < start_num + number &&
-+                 n < BCM2835_OTP_PRIVATE_KEY_LEN; n++) {
-+                otp_row = bcm2835_otp_get_row(s->otp,
-+                                              BCM2835_OTP_PRIVATE_KEY + n);
-+                stl_le_phys(&s->dma_as,
-+                            value + 20 + ((n - start_num) << 2), otp_row);
-+            }
-+            break;
-+        case RPI_FWREQ_SET_PRIVATE_KEY:
-+            start_num = ldl_le_phys(&s->dma_as, value + 12);
-+            number = ldl_le_phys(&s->dma_as, value + 16);
-+
-+            resplen = 4;
-+
-+            /* If row 32 has the lock bit, don't allow further writes */
-+            if (bcm2835_otp_get_row(s->otp, BCM2835_OTP_ROW_32) &
-+                                    BCM2835_OTP_ROW_32_LOCK) {
-+                break;
-+            }
-+
-+            for (n = start_num; n < start_num + number &&
-+                 n < BCM2835_OTP_PRIVATE_KEY_LEN; n++) {
-+                otp_row = ldl_le_phys(&s->dma_as,
-+                                      value + 20 + ((n - start_num) << 2));
-+                bcm2835_otp_set_row(s->otp,
-+                                    BCM2835_OTP_PRIVATE_KEY + n, otp_row);
-+            }
-+            break;
-         default:
-             qemu_log_mask(LOG_UNIMP,
-                           "bcm2835_property: unhandled tag 0x%08x\n", tag);
-@@ -449,6 +533,9 @@ static void bcm2835_property_realize(DeviceState *dev, Error **errp)
-     s->dma_mr = MEMORY_REGION(obj);
-     address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_PROPERTY "-memory");
- 
-+    obj = object_property_get_link(OBJECT(dev), "otp", &error_abort);
-+    s->otp = BCM2835_OTP(obj);
-+
-     /* TODO: connect to MAC address of USB NIC device, once we emulate it */
-     qemu_macaddr_default_if_unset(&s->macaddr);
- 
-diff --git a/include/hw/arm/raspberrypi-fw-defs.h b/include/hw/arm/raspberrypi-fw-defs.h
-index 8b404e0533..60b8e5b451 100644
---- a/include/hw/arm/raspberrypi-fw-defs.h
-+++ b/include/hw/arm/raspberrypi-fw-defs.h
-@@ -56,6 +56,7 @@ enum rpi_firmware_property_tag {
-     RPI_FWREQ_GET_THROTTLED =                          0x00030046,
-     RPI_FWREQ_GET_CLOCK_MEASURED =                     0x00030047,
-     RPI_FWREQ_NOTIFY_REBOOT =                          0x00030048,
-+    RPI_FWREQ_GET_PRIVATE_KEY =                        0x00030081,
-     RPI_FWREQ_SET_CLOCK_STATE =                        0x00038001,
-     RPI_FWREQ_SET_CLOCK_RATE =                         0x00038002,
-     RPI_FWREQ_SET_VOLTAGE =                            0x00038003,
-@@ -73,6 +74,7 @@ enum rpi_firmware_property_tag {
-     RPI_FWREQ_SET_PERIPH_REG =                         0x00038045,
-     RPI_FWREQ_GET_POE_HAT_VAL =                        0x00030049,
-     RPI_FWREQ_SET_POE_HAT_VAL =                        0x00038049,
-+    RPI_FWREQ_SET_PRIVATE_KEY =                        0x00038081,
-     RPI_FWREQ_SET_POE_HAT_VAL_OLD =                    0x00030050,
-     RPI_FWREQ_NOTIFY_XHCI_RESET =                      0x00030058,
-     RPI_FWREQ_GET_REBOOT_FLAGS =                       0x00030064,
-diff --git a/include/hw/misc/bcm2835_property.h b/include/hw/misc/bcm2835_property.h
-index ba8896610c..2f93fd0c75 100644
---- a/include/hw/misc/bcm2835_property.h
-+++ b/include/hw/misc/bcm2835_property.h
-@@ -11,6 +11,7 @@
- #include "hw/sysbus.h"
- #include "net/net.h"
- #include "hw/display/bcm2835_fb.h"
-+#include "hw/nvram/bcm2835_otp.h"
- #include "qom/object.h"
- 
- #define TYPE_BCM2835_PROPERTY "bcm2835-property"
-@@ -26,6 +27,7 @@ struct BCM2835PropertyState {
-     MemoryRegion iomem;
-     qemu_irq mbox_irq;
-     BCM2835FBState *fbdev;
-+    BCM2835OTPState *otp;
- 
-     MACAddr macaddr;
-     uint32_t board_rev;
+ class CentosAarch64VM(basevm.BaseVM):
+-    name = "centos8.aarch64"
++    name = "centos9.aarch64"
+     arch = "aarch64"
+-    image_name = "CentOS-Stream-GenericCloud-8-20220125.1.aarch64.qcow2"
+-    image_link = "https://cloud.centos.org/centos/8-stream/aarch64/images/"
++    image_name = "CentOS-Stream-GenericCloud-9-20230501.0.aarch64.qcow2"
++    image_link = "https://cloud.centos.org/centos/9-stream/aarch64/images/"
+     image_link += image_name
+     BUILD_SCRIPT = """
+         set -e;
 -- 
-2.34.1
-
+2.39.2

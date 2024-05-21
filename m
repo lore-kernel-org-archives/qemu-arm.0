@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a5a179c7d7csm1627709666b.140.2024.05.21.05.53.15
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a5a1781cd7asm1630614266b.10.2024.05.21.05.53.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 21 May 2024 05:53:15 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BFDA15F8B0;
+	by draig.lan (Postfix) with ESMTP id EE37F5FA1A;
 	Tue, 21 May 2024 13:53:14 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -29,48 +29,56 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	Markus Armbruster <armbru@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 0/4] testing/next: purging remaining centos 8 bits
-Date: Tue, 21 May 2024 13:53:10 +0100
-Message-Id: <20240521125314.1255403-1-alex.bennee@linaro.org>
+Subject: [PATCH 2/4] docs/devel: update references to centos to later version
+Date: Tue, 21 May 2024 13:53:12 +0100
+Message-Id: <20240521125314.1255403-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240521125314.1255403-1-alex.bennee@linaro.org>
+References: <20240521125314.1255403-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 5eaQeqSODiJL
+X-TUID: yoJhbggt0hgh
 
-There are a few more bits referencing centos8 in the tree which needed
-cleaning up. After this we can remove the dedicated runner from the
-gitlab registration. If we want to keep a dedicated Centos runner then
-we can add back the bits needed to set it up (although arguably we
-could have a single build-environment setup that handles all distros
-and integrates with lcitool).
+From the website:
 
-Alex.
+"After May 31, 2024, CentOS Stream 8 will be archived and no further
+updates will be provided."
 
-Alex Bennée (4):
-  ci: remove centos-steam-8 customer runner
-  docs/devel: update references to centos to later version
-  tests/vm: update centos.aarch64 image to 9
-  tests/vm: remove plain centos image
+We have updated a few bits but there are still references that need
+fixing.
 
- docs/devel/ci-jobs.rst.inc                    |   7 -
- docs/devel/testing.rst                        |   8 +-
- .gitlab-ci.d/custom-runners.yml               |   1 -
- .../custom-runners/centos-stream-8-x86_64.yml |  24 ---
- .../org.centos/stream/8/build-environment.yml |  82 --------
- .../ci/org.centos/stream/8/x86_64/configure   | 198 ------------------
- .../org.centos/stream/8/x86_64/test-avocado   |  65 ------
- scripts/ci/org.centos/stream/README           |  17 --
- tests/vm/Makefile.include                     |   1 -
- tests/vm/centos                               |  51 -----
- tests/vm/centos.aarch64                       |  10 +-
- 11 files changed, 9 insertions(+), 455 deletions(-)
- delete mode 100644 .gitlab-ci.d/custom-runners/centos-stream-8-x86_64.yml
- delete mode 100644 scripts/ci/org.centos/stream/8/build-environment.yml
- delete mode 100755 scripts/ci/org.centos/stream/8/x86_64/configure
- delete mode 100755 scripts/ci/org.centos/stream/8/x86_64/test-avocado
- delete mode 100644 scripts/ci/org.centos/stream/README
- delete mode 100755 tests/vm/centos
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ docs/devel/testing.rst | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index fa28e3ecb2..c312465fa7 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -387,9 +387,9 @@ make target):
+ 
+ .. code::
+ 
+-  make docker-test-build@centos8
++  make docker-test-build@centos9
+ 
+-This will create a container instance using the ``centos8`` image (the image
++This will create a container instance using the ``centos9`` image (the image
+ is downloaded and initialized automatically), in which the ``test-build`` job
+ is executed.
+ 
+@@ -410,8 +410,8 @@ locally by using the ``NOCACHE`` build option:
+ Images
+ ~~~~~~
+ 
+-Along with many other images, the ``centos8`` image is defined in a Dockerfile
+-in ``tests/docker/dockerfiles/``, called ``centos8.docker``. ``make docker-help``
++Along with many other images, the ``centos9`` image is defined in a Dockerfile
++in ``tests/docker/dockerfiles/``, called ``centos9.docker``. ``make docker-help``
+ command will list all the available images.
+ 
+ A ``.pre`` script can be added beside the ``.docker`` file, which will be
 -- 
 2.39.2

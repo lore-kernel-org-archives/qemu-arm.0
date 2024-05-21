@@ -1,122 +1,76 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-574ea09b972sm9599851a12.47.2024.05.21.05.44.54
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a5a179c7d7csm1627709666b.140.2024.05.21.05.53.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 May 2024 05:44:54 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 2D0005F8B0;
-	Tue, 21 May 2024 13:44:54 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: <qemu-devel@nongnu.org>,  <qemu-arm@nongnu.org>,  <maz@kernel.org>,
-  <jean-philippe@linaro.org>,  <jonathan.cameron@huawei.com>,
-  <lpieralisi@kernel.org>,  <peter.maydell@linaro.org>,
-  <richard.henderson@linaro.org>,  <imammedo@redhat.com>,
-  <andrew.jones@linux.dev>,  <david@redhat.com>,  <philmd@linaro.org>,
-  <eric.auger@redhat.com>,  <oliver.upton@linux.dev>,
-  <pbonzini@redhat.com>,  <mst@redhat.com>,  <will@kernel.org>,
-  <gshan@redhat.com>,  <rafael@kernel.org>,  <linux@armlinux.org.uk>,
-  <darren@os.amperecomputing.com>,  <ilkka@os.amperecomputing.com>,
-  <vishnu@os.amperecomputing.com>,  <karl.heubaum@oracle.com>,
-  <miguel.luis@oracle.com>,  <salil.mehta@opnsrc.net>,
-  <zhukeqian1@huawei.com>,  <wangxiongfeng2@huawei.com>,
-  <wangyanan55@huawei.com>,  <jiakernel2@gmail.com>,
-  <maobibo@loongson.cn>,  <lixianglai@loongson.cn>,  <npiggin@gmail.com>,
-  <harshpb@linux.ibm.com>,  <linuxarm@huawei.com>,  Shaoqin Huang
- <shahuang@redhat.com>
-Subject: Re: [PATCH V10 7/8] gdbstub: Add helper function to unregister GDB
- register space
-In-Reply-To: <20240520233241.229675-8-salil.mehta@huawei.com> (Salil Mehta's
-	message of "Tue, 21 May 2024 00:32:40 +0100")
-References: <20240520233241.229675-1-salil.mehta@huawei.com>
-	<20240520233241.229675-8-salil.mehta@huawei.com>
-Date: Tue, 21 May 2024 13:44:54 +0100
-Message-ID: <87seybibax.fsf@draig.linaro.org>
+        Tue, 21 May 2024 05:53:15 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id BFDA15F8B0;
+	Tue, 21 May 2024 13:53:14 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Beraldo Leal <bleal@redhat.com>,
+	qemu-s390x@nongnu.org,
+	John Snow <jsnow@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Joel Stanley <joel@jms.id.au>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Thomas Huth <thuth@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 0/4] testing/next: purging remaining centos 8 bits
+Date: Tue, 21 May 2024 13:53:10 +0100
+Message-Id: <20240521125314.1255403-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: FSb/xzuKLDQ3
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: 5eaQeqSODiJL
 
-Salil Mehta <salil.mehta@huawei.com> writes:
+There are a few more bits referencing centos8 in the tree which needed
+cleaning up. After this we can remove the dedicated runner from the
+gitlab registration. If we want to keep a dedicated Centos runner then
+we can add back the bits needed to set it up (although arguably we
+could have a single build-environment setup that handles all distros
+and integrates with lcitool).
 
-> Add common function to help unregister the GDB register space. This shall=
- be
-> done in context to the CPU unrealization.
->
-> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> Reviewed-by: Gavin Shan <gshan@redhat.com>
-> Tested-by: Xianglai Li <lixianglai@loongson.cn>
-> Tested-by: Miguel Luis <miguel.luis@oracle.com>
-> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
-> Reviewed-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> ---
->  gdbstub/gdbstub.c      | 13 +++++++++++++
->  hw/core/cpu-common.c   |  1 -
->  include/exec/gdbstub.h |  6 ++++++
->  3 files changed, 19 insertions(+), 1 deletion(-)
->
-> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-> index b3574997ea..1949b09240 100644
-> --- a/gdbstub/gdbstub.c
-> +++ b/gdbstub/gdbstub.c
-> @@ -617,6 +617,19 @@ void gdb_register_coprocessor(CPUState *cpu,
->      }
->  }
->=20=20
-> +void gdb_unregister_coprocessor_all(CPUState *cpu)
-> +{
-> +    /*
-> +     * Safe to nuke everything. GDBRegisterState::xml is static const ch=
-ar so
-> +     * it won't be freed
-> +     */
-> +    g_array_free(cpu->gdb_regs, true);
-> +
-> +    cpu->gdb_regs =3D NULL;
-> +    cpu->gdb_num_regs =3D 0;
-> +    cpu->gdb_num_g_regs =3D 0;
-> +}
-> +
->  static void gdb_process_breakpoint_remove_all(GDBProcess *p)
->  {
->      CPUState *cpu =3D gdb_get_first_cpu_in_process(p);
-> diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-> index 0f0a247f56..e5140b4bc1 100644
-> --- a/hw/core/cpu-common.c
-> +++ b/hw/core/cpu-common.c
-> @@ -274,7 +274,6 @@ static void cpu_common_finalize(Object *obj)
->  {
->      CPUState *cpu =3D CPU(obj);
->=20=20
-> -    g_array_free(cpu->gdb_regs, TRUE);
+Alex.
 
-Is this patch missing something? As far as I can tell the new function
-never gets called.
+Alex Bennée (4):
+  ci: remove centos-steam-8 customer runner
+  docs/devel: update references to centos to later version
+  tests/vm: update centos.aarch64 image to 9
+  tests/vm: remove plain centos image
 
->      qemu_lockcnt_destroy(&cpu->in_ioctl_lock);
->      qemu_mutex_destroy(&cpu->work_mutex);
->  }
-> diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-> index eb14b91139..249d4d4bc8 100644
-> --- a/include/exec/gdbstub.h
-> +++ b/include/exec/gdbstub.h
-> @@ -49,6 +49,12 @@ void gdb_register_coprocessor(CPUState *cpu,
->                                gdb_get_reg_cb get_reg, gdb_set_reg_cb set=
-_reg,
->                                const GDBFeature *feature, int g_pos);
->=20=20
-> +/**
-> + * gdb_unregister_coprocessor_all() - unregisters supplemental set of re=
-gisters
-> + * @cpu - the CPU associated with registers
-> + */
-> +void gdb_unregister_coprocessor_all(CPUState *cpu);
-> +
->  /**
->   * gdbserver_start: start the gdb server
->   * @port_or_device: connection spec for gdb
+ docs/devel/ci-jobs.rst.inc                    |   7 -
+ docs/devel/testing.rst                        |   8 +-
+ .gitlab-ci.d/custom-runners.yml               |   1 -
+ .../custom-runners/centos-stream-8-x86_64.yml |  24 ---
+ .../org.centos/stream/8/build-environment.yml |  82 --------
+ .../ci/org.centos/stream/8/x86_64/configure   | 198 ------------------
+ .../org.centos/stream/8/x86_64/test-avocado   |  65 ------
+ scripts/ci/org.centos/stream/README           |  17 --
+ tests/vm/Makefile.include                     |   1 -
+ tests/vm/centos                               |  51 -----
+ tests/vm/centos.aarch64                       |  10 +-
+ 11 files changed, 9 insertions(+), 455 deletions(-)
+ delete mode 100644 .gitlab-ci.d/custom-runners/centos-stream-8-x86_64.yml
+ delete mode 100644 scripts/ci/org.centos/stream/8/build-environment.yml
+ delete mode 100755 scripts/ci/org.centos/stream/8/x86_64/configure
+ delete mode 100755 scripts/ci/org.centos/stream/8/x86_64/test-avocado
+ delete mode 100644 scripts/ci/org.centos/stream/README
+ delete mode 100755 tests/vm/centos
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+-- 
+2.39.2

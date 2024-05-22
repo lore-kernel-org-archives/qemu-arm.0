@@ -1,51 +1,51 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp682798ejb;
-        Wed, 22 May 2024 14:13:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXnTn1fbNCcc1oYr3sK8O3PhWWGU+2jOMkEmcF/Kkvc/IeDqSAzCd8m8EfUR36+EM9ss8vtwKl7xaFUdCvz1oyIhn4ejtuf
-X-Google-Smtp-Source: AGHT+IHnd4qbn+qiAR8c2QvTz3t8MPdiFEBSWnbOaVYEATMj6sPuVG8x1z2TfKWWYHd71+BJS6VW
-X-Received: by 2002:a05:600c:3b82:b0:41a:34c3:2297 with SMTP id 5b1f17b1804b1-420fd2efc89mr22067185e9.5.1716412420953;
-        Wed, 22 May 2024 14:13:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716412420; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp682926ejb;
+        Wed, 22 May 2024 14:14:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUYWgSnhdv9js24Rc2cm6am8Re8cKt8J6hNm4suYQGjbSW/c59nMlZGSeSRmJIEqPe9wBNx/+QCuKvq4uAtFVaIM6v0I5/D
+X-Google-Smtp-Source: AGHT+IES8M1xtN9d8dN0AAsGbpST67deOMe1NLYbEwX4Sc5K5TVGXZg3D1ueI0v+dB/qHs8eXZe9
+X-Received: by 2002:a5d:4084:0:b0:354:ba86:393 with SMTP id ffacd0b85a97d-354d8dafb37mr2434131f8f.67.1716412442352;
+        Wed, 22 May 2024 14:14:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716412442; cv=none;
         d=google.com; s=arc-20160816;
-        b=l0t05RU1heUQw99UDj5599Uhz1KXH+AellTG7K2g4n2o1k0qELX/77GrrOPs9AeQB0
-         13ZjosEm71zXTrJDBKtx3eKDF8iKp2CURlCTkKMnTxJwytXzwhcTZZt/2QeH1cIizsRk
-         tNqKyvWT2PxujI1f6db9Buy1qD9Jw3chKftJLmDkUklfP01qeFJO7BfHT+eefDMCIiah
-         bF03/4bVMlhKaD9fioRTrKU0sXHkBGGr9U8vluE9hjOALZOF1GetAtbS2+fD27KZMdip
-         XlJgaqD6CzcSqZlQBPvcO/Rvzgjfc95sStaFt+PoVWEvUcpZL+08lxmV2dbuaK5pBjVl
-         h3vQ==
+        b=jTBr8KzwoOJW0rOsneRZ+0PcAie+e4NOrW/cX46Yw3gbM9EM4W46axWS34lb7yLIlR
+         4FY/bKEy5Mqjqr3iqmcDeGFWnEIlAg6BueE+ro8jQSaecl07qX6oD+c4U2q/vqeax36U
+         jBEJx8U+0qoRUfpvyLVtledIe1zrB43Jxe6z0mlN8W1nLgwKrImCI5FQn+wmn4U1NYYx
+         TqQHznRAmMWI7CWJhSs8OEQl64N1wlLKgn04N5UYGhGc5P2sAnd5oBanHRMnHdKbup2v
+         jvhNfAKT0t6a5hoANARZf+6PLbzAxu7I6oxhVhnU/qdVzNFzIhH1GPDaNeFDSP40Fq7Z
+         FErw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=xOxtPV54mOZzPh34LQeNF2CBM1BnpW/+D+eFL4KmjtQ=;
-        fh=ESkCDJy4SlBfmiW/LaxStj1s4ONFbSiMcQYeaiK5m7w=;
-        b=j2uHaxu9GF3gPGsyV2wtJVWeWJbehJcUppW1bcxge+b99+e7uOQlFg5G7qBL9ie8b7
-         SaQE1vzVoAKpRxzMLkN9cNiUJDjAGQfZgh6sn+y3Pa/vT1T0/QHwZGlyRCSlpjb6Kn2f
-         8cgs2OO7Kf/xIm/rODDLYwHPzf2zBvaVF2xeYc2tv+SOR/oIazkpo/ZGnbbFFUeWIMTU
-         ovWIz0/JN5olCF19os42Rpy7Nyq3JVMQsiZzRvlOkVdKvZjGZMQD3xns9WK2FhQADXY5
-         YUl8XWf9o7aM7W1f2bRi+w3xY4uX9120/37o0zGk7hgP0MDjJyB9Vqc4yp2KBvpZddYI
-         cBQg==;
+        bh=Kbp3lWXuKoYK8bc+4BNhpBDv+ayDXaYg3uuzWeL4Agc=;
+        fh=H0Ocb1F6OX7lJ2ZIq00L95YQd0stuI+T6mW0qgz5F80=;
+        b=yXc/7gQACakYPmGvcq0NC2HiHCRckwWfKCg02cfOI9edUNsp/MusT6QS7rM0hB9xiw
+         8VWYG6v1snf27KJ9Z2A8rggJRgcFrtYkhFiPEa4u0sJOVILWWBbFZkQiWY5PgKOqntRK
+         EnT93AMjnUo5pjdX23qVSLSYsT668du2MyWWc7Gfb6NQ+LmPLs4vHz1wxCu7juhyVxau
+         X3oq0l7h1pUkVdmQlzNJ3FI5ykjiR89ulMHi5ezu8miaxC6/J0qc7vjkSCr0I4Pz2Ocp
+         wqVc5I/Q+ldbV6EvtRItqpdfwXw3u8MCT/LlmYoTeagYe4n/HTjdmvabZYoOLJYstwU+
+         5LVg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-354c9bcaa35si3700081f8f.104.2024.05.22.14.13.40
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3502bbc439dsi17402040f8f.444.2024.05.22.14.14.02
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 22 May 2024 14:13:40 -0700 (PDT)
+        Wed, 22 May 2024 14:14:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Vl3pf5lCgz6K6LW;
-	Thu, 23 May 2024 05:09:46 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Vl3qK0Yv3z6J9yC;
+	Thu, 23 May 2024 05:10:21 +0800 (CST)
 Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
-	by mail.maildlp.com (Postfix) with ESMTPS id 72455140B63;
-	Thu, 23 May 2024 05:13:39 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 52B3F140A36;
+	Thu, 23 May 2024 05:14:01 +0800 (CST)
 Received: from 00293818-MRGF.china.huawei.com (10.48.156.123) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 22 May 2024 22:13:17 +0100
+ 15.1.2507.39; Wed, 22 May 2024 22:13:39 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -61,11 +61,11 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>, Jonathan
- Cameron <Jonathan.Cameron@huawei.com>, Shaoqin Huang <shahuang@redhat.com>
-Subject: [PATCH V11 5/8] hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
-Date: Wed, 22 May 2024 22:11:08 +0100
-Message-ID: <20240522211111.232114-6-salil.mehta@huawei.com>
+	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>, Shaoqin
+ Huang <shahuang@redhat.com>
+Subject: [PATCH V11 6/8] physmem: Add helper function to destroy CPU AddressSpace
+Date: Wed, 22 May 2024 22:11:09 +0100
+Message-ID: <20240522211111.232114-7-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240522211111.232114-1-salil.mehta@huawei.com>
 References: <20240522211111.232114-1-salil.mehta@huawei.com>
@@ -75,121 +75,101 @@ Content-Type: text/plain
 X-Originating-IP: [10.48.156.123]
 X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
-X-TUID: 2vn86FTKk6Vb
+X-TUID: pFDn9l4efRuT
 
-CPUs Control device(\\_SB.PCI0) register interface for the x86 arch is IO port
-based and existing CPUs AML code assumes _CRS objects would evaluate to a system
-resource which describes IO Port address. But on ARM arch CPUs control
-device(\\_SB.PRES) register interface is memory-mapped hence _CRS object should
-evaluate to system resource which describes memory-mapped base address. Update
-build CPUs AML function to accept both IO/MEMORY region spaces and accordingly
-update the _CRS object.
+Virtual CPU Hot-unplug leads to unrealization of a CPU object. This also
+involves destruction of the CPU AddressSpace. Add common function to help
+destroy the CPU AddressSpace.
 
-On x86, CPU Hotplug uses Generic ACPI GPE Block Bit 2 (GPE.2) event handler to
-notify OSPM about any CPU hot(un)plug events. Latest CPU Hotplug is based on
-ACPI Generic Event Device framework and uses ACPI GED device for the same. Not
-all architectures support GPE based CPU Hotplug event handler. Hence, make AML
-for GPE.2 event handler conditional.
-
-Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
 Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Gavin Shan <gshan@redhat.com>
 Tested-by: Xianglai Li <lixianglai@loongson.cn>
 Tested-by: Miguel Luis <miguel.luis@oracle.com>
 Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
 ---
- hw/acpi/cpu.c         | 23 ++++++++++++++++-------
- hw/i386/acpi-build.c  |  3 ++-
- include/hw/acpi/cpu.h |  5 +++--
- 3 files changed, 21 insertions(+), 10 deletions(-)
+ include/exec/cpu-common.h |  8 ++++++++
+ include/hw/core/cpu.h     |  1 +
+ system/physmem.c          | 29 +++++++++++++++++++++++++++++
+ 3 files changed, 38 insertions(+)
 
-diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index af2b6655d2..4c63514b16 100644
---- a/hw/acpi/cpu.c
-+++ b/hw/acpi/cpu.c
-@@ -343,9 +343,10 @@ const VMStateDescription vmstate_cpu_hotplug = {
- #define CPU_FW_EJECT_EVENT "CEJF"
+diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
+index 815342d043..240ee04369 100644
+--- a/include/exec/cpu-common.h
++++ b/include/exec/cpu-common.h
+@@ -129,6 +129,14 @@ size_t qemu_ram_pagesize_largest(void);
+  */
+ void cpu_address_space_init(CPUState *cpu, int asidx,
+                             const char *prefix, MemoryRegion *mr);
++/**
++ * cpu_address_space_destroy:
++ * @cpu: CPU for which address space needs to be destroyed
++ * @asidx: integer index of this address space
++ *
++ * Note that with KVM only one address space is supported.
++ */
++void cpu_address_space_destroy(CPUState *cpu, int asidx);
  
- void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
--                    build_madt_cpu_fn build_madt_cpu, hwaddr io_base,
-+                    build_madt_cpu_fn build_madt_cpu, hwaddr base_addr,
-                     const char *res_root,
--                    const char *event_handler_method)
-+                    const char *event_handler_method,
-+                    AmlRegionSpace rs)
- {
-     Aml *ifctx;
-     Aml *field;
-@@ -370,13 +371,19 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
-         aml_append(cpu_ctrl_dev, aml_mutex(CPU_LOCK, 0));
+ void cpu_physical_memory_rw(hwaddr addr, void *buf,
+                             hwaddr len, bool is_write);
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index bb398e8237..60b160d0b4 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -486,6 +486,7 @@ struct CPUState {
+     QSIMPLEQ_HEAD(, qemu_work_item) work_list;
  
-         crs = aml_resource_template();
--        aml_append(crs, aml_io(AML_DECODE16, io_base, io_base, 1,
-+        if (rs == AML_SYSTEM_IO) {
-+            aml_append(crs, aml_io(AML_DECODE16, base_addr, base_addr, 1,
-                                ACPI_CPU_HOTPLUG_REG_LEN));
-+        } else {
-+            aml_append(crs, aml_memory32_fixed(base_addr,
-+                               ACPI_CPU_HOTPLUG_REG_LEN, AML_READ_WRITE));
-+        }
-+
-         aml_append(cpu_ctrl_dev, aml_name_decl("_CRS", crs));
+     struct CPUAddressSpace *cpu_ases;
++    int cpu_ases_count;
+     int num_ases;
+     AddressSpace *as;
+     MemoryRegion *memory;
+diff --git a/system/physmem.c b/system/physmem.c
+index 342b7a8fd4..146f17826a 100644
+--- a/system/physmem.c
++++ b/system/physmem.c
+@@ -763,6 +763,7 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
  
-         /* declare CPU hotplug MMIO region with related access fields */
-         aml_append(cpu_ctrl_dev,
--            aml_operation_region("PRST", AML_SYSTEM_IO, aml_int(io_base),
-+            aml_operation_region("PRST", rs, aml_int(base_addr),
-                                  ACPI_CPU_HOTPLUG_REG_LEN));
- 
-         field = aml_field("PRST", AML_BYTE_ACC, AML_NOLOCK,
-@@ -700,9 +707,11 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
-     aml_append(sb_scope, cpus_dev);
-     aml_append(table, sb_scope);
- 
--    method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
--    aml_append(method, aml_call0("\\_SB.CPUS." CPU_SCAN_METHOD));
--    aml_append(table, method);
-+    if (event_handler_method) {
-+        method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
-+        aml_append(method, aml_call0("\\_SB.CPUS." CPU_SCAN_METHOD));
-+        aml_append(table, method);
-+    }
- 
-     g_free(cphp_res_path);
- }
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index 53f804ac16..b73b136605 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -1537,7 +1537,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-             .fw_unplugs_cpu = pm->smi_on_cpu_unplug,
-         };
-         build_cpus_aml(dsdt, machine, opts, pc_madt_cpu_entry,
--                       pm->cpu_hp_io_base, "\\_SB.PCI0", "\\_GPE._E02");
-+                       pm->cpu_hp_io_base, "\\_SB.PCI0", "\\_GPE._E02",
-+                       AML_SYSTEM_IO);
+     if (!cpu->cpu_ases) {
+         cpu->cpu_ases = g_new0(CPUAddressSpace, cpu->num_ases);
++        cpu->cpu_ases_count = cpu->num_ases;
      }
  
-     if (pcms->memhp_io_base && nr_mem) {
-diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
-index e6e1a9ef59..48cded697c 100644
---- a/include/hw/acpi/cpu.h
-+++ b/include/hw/acpi/cpu.h
-@@ -61,9 +61,10 @@ typedef void (*build_madt_cpu_fn)(int uid, const CPUArchIdList *apic_ids,
-                                   GArray *entry, bool force_enabled);
+     newas = &cpu->cpu_ases[asidx];
+@@ -776,6 +777,34 @@ void cpu_address_space_init(CPUState *cpu, int asidx,
+     }
+ }
  
- void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
--                    build_madt_cpu_fn build_madt_cpu, hwaddr io_base,
-+                    build_madt_cpu_fn build_madt_cpu, hwaddr base_addr,
-                     const char *res_root,
--                    const char *event_handler_method);
-+                    const char *event_handler_method,
-+                    AmlRegionSpace rs);
- 
- void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list);
- 
++void cpu_address_space_destroy(CPUState *cpu, int asidx)
++{
++    CPUAddressSpace *cpuas;
++
++    assert(cpu->cpu_ases);
++    assert(asidx >= 0 && asidx < cpu->num_ases);
++    /* KVM cannot currently support multiple address spaces. */
++    assert(asidx == 0 || !kvm_enabled());
++
++    cpuas = &cpu->cpu_ases[asidx];
++    if (tcg_enabled()) {
++        memory_listener_unregister(&cpuas->tcg_as_listener);
++    }
++
++    address_space_destroy(cpuas->as);
++    g_free_rcu(cpuas->as, rcu);
++
++    if (asidx == 0) {
++        /* reset the convenience alias for address space 0 */
++        cpu->as = NULL;
++    }
++
++    if (--cpu->cpu_ases_count == 0) {
++        g_free(cpu->cpu_ases);
++        cpu->cpu_ases = NULL;
++    }
++}
++
+ AddressSpace *cpu_get_address_space(CPUState *cpu, int asidx)
+ {
+     /* Return the AddressSpace corresponding to the specified index */
 -- 
 2.34.1

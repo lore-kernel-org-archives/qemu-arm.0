@@ -1,51 +1,51 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp683120ejb;
-        Wed, 22 May 2024 14:14:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXYnjwpmSHLvMRMqogYr3sSC7a9tcPNSmmDxHnrbJmTEWKtkPq1hYvBrkiXx1M88hXjbkZ7HDmzGmMfG7g6xotVCZtiLXlb
-X-Google-Smtp-Source: AGHT+IERdydGLPVxjfR6vK24wl3yU5ytzb4VU9toBFh/vsJSB4DvmocO3kyiBLToTd0KbEhaIdko
-X-Received: by 2002:adf:fc03:0:b0:34a:a754:eb48 with SMTP id ffacd0b85a97d-354d8d9562bmr1914400f8f.48.1716412464271;
-        Wed, 22 May 2024 14:14:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716412464; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp683265ejb;
+        Wed, 22 May 2024 14:14:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVtkZbis7sJkRuCFypS2ZBClfXK3QPI2Z7Vs36gk8UrW7inGs0u5Jxso9v6ssDW07qby8K5aRGaTQ88z71ECG7O6uLys7mX
+X-Google-Smtp-Source: AGHT+IGbFTojsHZw6+r9OibZIJuRVBy2cn7FPoxxpiDdx53majqYWyoF0+zyeM6/v7AbRV9U9BfX
+X-Received: by 2002:adf:f70d:0:b0:34a:d19:d553 with SMTP id ffacd0b85a97d-354d8ccd6b7mr2674164f8f.5.1716412485458;
+        Wed, 22 May 2024 14:14:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716412485; cv=none;
         d=google.com; s=arc-20160816;
-        b=jLYZgXTzLfnmnW3tnaYfpC3MGPCAtGzML4gPngjHGZLv97la1Q4Pno8LoGeSpLdhJo
-         c5bmbxtpnV+fcVuOZQGZsfmz0xFdelDmQB/VYmqaA01ZCjnnYXwhF1wH81pX/EAy/EO7
-         ArBieQjF/T7CnRJTZYW87Uu9YEEGiy5h99/2kr4tNhAKIL6akagr8J0eRoQ9OUFoi45F
-         IvXb+o9BMugbOpA4XkD3ptKq/R5GUKKvle3LV80nH3NlmwtzH0fNRJsZdi3boklZK2+i
-         myPknjl554FIIuMZtwUOeLJ/IOGtzl3SbRaraT0dQSDkL9YwjL5EnfLspxaI1ZosFmdD
-         0O1g==
+        b=U43i1572khU3n2+GD6AnjEGqZr0vEFaRWRN3ggGgW+b6LvPWrMZ/b65LoPnJav2dRu
+         nflFe0gvImrWO2U4rzFjKj8UcB/k/O0ih6l41FaXHVRavhbOlr+1J/m08nTqfkB6/oo0
+         GKp91YYMdc73emG3hhnqewlRdaq6kXiFNHbd4k1MTFspgSEmBR9uIYQalTQAsmvGmPSQ
+         kqDb/GhciiaP00DKvIe6PbmfFP/dRTp45xKtvFlmF6KmQhf4SfnBnoDUAHVPWZ6cvuT/
+         93+1Yun6q0lNALMM74ViPUDdaQlBx2KimzEjszJZa8X4n514Jc1ZeN+zsz4gAQvc7vgG
+         4GCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=pYXhnQ4UWkQ7wFS6R8BfGdIwRZEiTw05+Prg9/TV8DM=;
-        fh=H0Ocb1F6OX7lJ2ZIq00L95YQd0stuI+T6mW0qgz5F80=;
-        b=Tg2LtY07/r6wlpyDlwYINa2V/fxeuVxhV/ipDILbhnOT6FpHvykhUZRnEx7D68JS3o
-         6SteBbK53vSEbLDAC/QeiCLaSFW/p+vgdJVb3pEVhdxRAvbv/nktEPmw4NeoM5a7uNZZ
-         G7wYj5w+WqqLhk6Ql09/SaoFAwCdeFp6x6UmTR9cHa2Xif2gi3coRlN5dONCyUrXMXCW
-         G42attey4fLqIcng2nfHOY9Kp70MflNTL1HNkx99zwTAG3gBectqkxRGfCsFm3IRxTzm
-         NdTfPSh9FwezXmF5bUqPLSfHHdD9oCWGZzg9rFkouOjj7qrjJ9YmHnS+7IV/LMWhs4uN
-         5K0Q==;
+        bh=uBUJDLrGpdWmnp4ClXutksJ3WX3nuq0vvvTIEOir7yo=;
+        fh=M0HTAxrI6BYZKxYd63sfeObsGy+Uhk81OO6h++LFq4Q=;
+        b=Ap2eTBq8Q0oqjauP/l3eYluCAonItJaPm/xLjhRsLRp9nWMzdZmWCODReY3JPjRnkf
+         eZWs8HQz3bUo2xmjxfS6lc3g4RvmK0PpVbQPwbH8sWsKma6fHPl9NJzxcvq1JZf7gi0j
+         01LE6M8dqctm56TVwZLJ5kc2FGl6uPZtnbl9Z4lFaaXkpqPIftzjmqdm6+2ICDe0tGN4
+         H+OGvnDv1/YnvSyBoKNhVi63WN92QjnCHX3KD6atT9ivuBhSw75coNjCVqkH9sfPTuic
+         lLn5iEyarW6EfRIY9/UKMw73cyVEIdx5M+Grwi+SH+N3xR2IxmiPl5kQCyh+sVYHov5B
+         Vvuw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-354f19049ebsi866927f8f.291.2024.05.22.14.14.24
+        by mx.google.com with ESMTPS id ffacd0b85a97d-351c613adb4si11258001f8f.1082.2024.05.22.14.14.45
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 22 May 2024 14:14:24 -0700 (PDT)
+        Wed, 22 May 2024 14:14:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Vl3qk6rmPz6JB1s;
-	Thu, 23 May 2024 05:10:42 +0800 (CST)
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Vl3r81j4jz6JB1G;
+	Thu, 23 May 2024 05:11:04 +0800 (CST)
 Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
-	by mail.maildlp.com (Postfix) with ESMTPS id 35D1A140B18;
-	Thu, 23 May 2024 05:14:23 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 790C7140B18;
+	Thu, 23 May 2024 05:14:44 +0800 (CST)
 Received: from 00293818-MRGF.china.huawei.com (10.48.156.123) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 22 May 2024 22:14:01 +0100
+ 15.1.2507.39; Wed, 22 May 2024 22:14:23 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -61,11 +61,10 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>, Shaoqin
- Huang <shahuang@redhat.com>
-Subject: [PATCH V11 7/8] gdbstub: Add helper function to unregister GDB register space
-Date: Wed, 22 May 2024 22:11:10 +0100
-Message-ID: <20240522211111.232114-8-salil.mehta@huawei.com>
+	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>
+Subject: [PATCH V11 8/8] docs/specs/acpi_hw_reduced_hotplug: Add the CPU Hotplug Event Bit
+Date: Wed, 22 May 2024 22:11:11 +0100
+Message-ID: <20240522211111.232114-9-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240522211111.232114-1-salil.mehta@huawei.com>
 References: <20240522211111.232114-1-salil.mehta@huawei.com>
@@ -75,81 +74,32 @@ Content-Type: text/plain
 X-Originating-IP: [10.48.156.123]
 X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
-X-TUID: PxRfh4Ndgy7R
+X-TUID: d2pzGQyw/kWw
 
-Add common function to help unregister the GDB register space. This shall be
-done in context to the CPU unrealization.
-
-Note: These are common functions exported to arch specific code. For example,
-for ARM this code is being referred in associated arch specific patch-set:
-
-Link: https://lore.kernel.org/qemu-devel/20230926103654.34424-1-salil.mehta@huawei.com/
+GED interface is used by many hotplug events like memory hotplug, NVDIMM hotplug
+and non-hotplug events like system power down event. Each of these can be
+selected using a bit in the 32 bit GED IO interface. A bit has been reserved for
+the CPU hotplug event.
 
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
 Reviewed-by: Gavin Shan <gshan@redhat.com>
-Tested-by: Xianglai Li <lixianglai@loongson.cn>
-Tested-by: Miguel Luis <miguel.luis@oracle.com>
-Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
-Reviewed-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
 ---
- gdbstub/gdbstub.c      | 13 +++++++++++++
- hw/core/cpu-common.c   |  1 -
- include/exec/gdbstub.h |  6 ++++++
- 3 files changed, 19 insertions(+), 1 deletion(-)
+ docs/specs/acpi_hw_reduced_hotplug.rst | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index b3574997ea..1949b09240 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -617,6 +617,19 @@ void gdb_register_coprocessor(CPUState *cpu,
-     }
- }
+diff --git a/docs/specs/acpi_hw_reduced_hotplug.rst b/docs/specs/acpi_hw_reduced_hotplug.rst
+index 0bd3f9399f..3acd6fcd8b 100644
+--- a/docs/specs/acpi_hw_reduced_hotplug.rst
++++ b/docs/specs/acpi_hw_reduced_hotplug.rst
+@@ -64,7 +64,8 @@ GED IO interface (4 byte access)
+        0: Memory hotplug event
+        1: System power down event
+        2: NVDIMM hotplug event
+-    3-31: Reserved
++       3: CPU hotplug event
++    4-31: Reserved
  
-+void gdb_unregister_coprocessor_all(CPUState *cpu)
-+{
-+    /*
-+     * Safe to nuke everything. GDBRegisterState::xml is static const char so
-+     * it won't be freed
-+     */
-+    g_array_free(cpu->gdb_regs, true);
-+
-+    cpu->gdb_regs = NULL;
-+    cpu->gdb_num_regs = 0;
-+    cpu->gdb_num_g_regs = 0;
-+}
-+
- static void gdb_process_breakpoint_remove_all(GDBProcess *p)
- {
-     CPUState *cpu = gdb_get_first_cpu_in_process(p);
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index 0f0a247f56..e5140b4bc1 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -274,7 +274,6 @@ static void cpu_common_finalize(Object *obj)
- {
-     CPUState *cpu = CPU(obj);
+ **write_access:**
  
--    g_array_free(cpu->gdb_regs, TRUE);
-     qemu_lockcnt_destroy(&cpu->in_ioctl_lock);
-     qemu_mutex_destroy(&cpu->work_mutex);
- }
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index eb14b91139..249d4d4bc8 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -49,6 +49,12 @@ void gdb_register_coprocessor(CPUState *cpu,
-                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
-                               const GDBFeature *feature, int g_pos);
- 
-+/**
-+ * gdb_unregister_coprocessor_all() - unregisters supplemental set of registers
-+ * @cpu - the CPU associated with registers
-+ */
-+void gdb_unregister_coprocessor_all(CPUState *cpu);
-+
- /**
-  * gdbserver_start: start the gdb server
-  * @port_or_device: connection spec for gdb
 -- 
 2.34.1

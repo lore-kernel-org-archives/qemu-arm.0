@@ -1,105 +1,198 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp683265ejb;
-        Wed, 22 May 2024 14:14:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVtkZbis7sJkRuCFypS2ZBClfXK3QPI2Z7Vs36gk8UrW7inGs0u5Jxso9v6ssDW07qby8K5aRGaTQ88z71ECG7O6uLys7mX
-X-Google-Smtp-Source: AGHT+IGbFTojsHZw6+r9OibZIJuRVBy2cn7FPoxxpiDdx53majqYWyoF0+zyeM6/v7AbRV9U9BfX
-X-Received: by 2002:adf:f70d:0:b0:34a:d19:d553 with SMTP id ffacd0b85a97d-354d8ccd6b7mr2674164f8f.5.1716412485458;
-        Wed, 22 May 2024 14:14:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716412485; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp701723ejb;
+        Wed, 22 May 2024 15:03:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWf8xDWjdpNmOYSNsye/cv7h1h5nnIbKSnvHb+GFcW5vWMJmvXSsWCKW2M2yziB8zXKS7nftw2T1KuYL/vd2EDk13FnsUSP
+X-Google-Smtp-Source: AGHT+IEvLC9UOtXbpmUolGdXLv3yY018kunuakw1ZXVSBVsP0/DlJBkQKplkP9ccGPOja1YnXTSY
+X-Received: by 2002:a05:620a:1111:b0:792:9eaa:b562 with SMTP id af79cd13be357-79499445edemr352810885a.33.1716415395708;
+        Wed, 22 May 2024 15:03:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716415395; cv=none;
         d=google.com; s=arc-20160816;
-        b=U43i1572khU3n2+GD6AnjEGqZr0vEFaRWRN3ggGgW+b6LvPWrMZ/b65LoPnJav2dRu
-         nflFe0gvImrWO2U4rzFjKj8UcB/k/O0ih6l41FaXHVRavhbOlr+1J/m08nTqfkB6/oo0
-         GKp91YYMdc73emG3hhnqewlRdaq6kXiFNHbd4k1MTFspgSEmBR9uIYQalTQAsmvGmPSQ
-         kqDb/GhciiaP00DKvIe6PbmfFP/dRTp45xKtvFlmF6KmQhf4SfnBnoDUAHVPWZ6cvuT/
-         93+1Yun6q0lNALMM74ViPUDdaQlBx2KimzEjszJZa8X4n514Jc1ZeN+zsz4gAQvc7vgG
-         4GCg==
+        b=rnaBTZoEbNfqJFgB+5OfRxzfB8JJuWSxdIXk+JoQRhzrv5XGRTfh6bXfYB6jdYJgD9
+         q0Cug+Xz6j/Jh+qc8LGlfABZc5D/+/+NxkvwKdM3IQgjztQfX/kyWC/OW74S9GGQ0gJU
+         Uk86zuGfVbd1qlC8+C/zSJUg0SQNWrqbSvSdwujArqhWI6dvxBn6wfExJPacDc2g7L88
+         ZOwqoHs0CeJgw3O0wVzvIBGwRcNeShDyTF2uIuDQOVBzZqAwdw3Y29rO+pCFZixYxvru
+         WYJR4Twc4EGuugDwEqXoa2YvEzupa0T0ccFRgjpuGDoSF/MKc2v3mPhoyDethY+Ld2od
+         2/mQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=uBUJDLrGpdWmnp4ClXutksJ3WX3nuq0vvvTIEOir7yo=;
-        fh=M0HTAxrI6BYZKxYd63sfeObsGy+Uhk81OO6h++LFq4Q=;
-        b=Ap2eTBq8Q0oqjauP/l3eYluCAonItJaPm/xLjhRsLRp9nWMzdZmWCODReY3JPjRnkf
-         eZWs8HQz3bUo2xmjxfS6lc3g4RvmK0PpVbQPwbH8sWsKma6fHPl9NJzxcvq1JZf7gi0j
-         01LE6M8dqctm56TVwZLJ5kc2FGl6uPZtnbl9Z4lFaaXkpqPIftzjmqdm6+2ICDe0tGN4
-         H+OGvnDv1/YnvSyBoKNhVi63WN92QjnCHX3KD6atT9ivuBhSw75coNjCVqkH9sfPTuic
-         lLn5iEyarW6EfRIY9/UKMw73cyVEIdx5M+Grwi+SH+N3xR2IxmiPl5kQCyh+sVYHov5B
-         Vvuw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-signature:dkim-signature:dkim-signature;
+        bh=YObUwLRvdwpgSzig0Bl4P1ZNluYtEh4wclfH7CFNdew=;
+        fh=N/bkpVgdsFlrKXE0ToalPzHHzkgIIqDc1wDQNWH/ksY=;
+        b=sBfYw30uWxAGcR9/7+VMU4eq4falYGbl8wtH/2Gw+3F2S3AT1wdKFMkVpcxhCJcxBu
+         OBZOygnytWNVu2Sy63frXn2NP/s6lBbPRndaplcownB0I3VaoApfcH4lfbQDxa54jvbr
+         u6rKUXtqdjk5ioQGNSrWBSX/yPR/2O58zQNoHsZa/9GBb1P6/nq6NJ8ff3aFegwPAhpY
+         JipBeBD7ReWA3ayOeSTRvU6TEq3lAuZnqmDsBPK8VFh/qrmIHYHMBAB37KSVUQSUAH10
+         9ysP+097sNSO8sisdA/hcYRxylFttKWt2PPAvhkxhFk6STWk1Asteqt8FS2npDJF4kmN
+         ScYA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-351c613adb4si11258001f8f.1082.2024.05.22.14.14.45
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 22 May 2024 14:14:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zKlDXubI;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zKlDXubI;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-79308a6e5b9si1800623385a.616.2024.05.22.15.03.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 22 May 2024 15:03:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Vl3r81j4jz6JB1G;
-	Thu, 23 May 2024 05:11:04 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
-	by mail.maildlp.com (Postfix) with ESMTPS id 790C7140B18;
-	Thu, 23 May 2024 05:14:44 +0800 (CST)
-Received: from 00293818-MRGF.china.huawei.com (10.48.156.123) by
- lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 22 May 2024 22:14:23 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
-	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
-	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
-	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
-	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
-	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
-	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
-	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
-	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
-	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>
-Subject: [PATCH V11 8/8] docs/specs/acpi_hw_reduced_hotplug: Add the CPU Hotplug Event Bit
-Date: Wed, 22 May 2024 22:11:11 +0100
-Message-ID: <20240522211111.232114-9-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240522211111.232114-1-salil.mehta@huawei.com>
-References: <20240522211111.232114-1-salil.mehta@huawei.com>
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zKlDXubI;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zKlDXubI;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1s9u2W-0005tq-F7; Wed, 22 May 2024 18:02:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>)
+ id 1s9u2U-0005tL-Uq; Wed, 22 May 2024 18:02:26 -0400
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>)
+ id 1s9u2S-0000fz-3H; Wed, 22 May 2024 18:02:26 -0400
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
+ [IPv6:2a07:de40:b281:104:10:150:64:97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id 685C621C00;
+ Wed, 22 May 2024 22:02:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1716415339; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YObUwLRvdwpgSzig0Bl4P1ZNluYtEh4wclfH7CFNdew=;
+ b=zKlDXubIzLMDKvnjHxq5y9OqIpZ6hKFz0xiyzqT/4qrKlGoszJBP9qeJdejsuGSKMMILkQ
+ KaPIQMRMkihR0KLh1+XtkEFsWopCFFmCSsypqlOdjStWzcaF15NHNQVgbmQmF9J7NUfSxc
+ 9UXqRruuihi2ZsGoFrYxFSHZVl9QzwQ=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1716415339;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YObUwLRvdwpgSzig0Bl4P1ZNluYtEh4wclfH7CFNdew=;
+ b=ZXfT+zg7GClExYj8fYvtkFT2iSvVPWgu9RWRmc1ROe/94W/KO6kSnWjmWpW5YpwWztW3LA
+ 4uMI5SMtnw24sOAQ==
+Authentication-Results: smtp-out1.suse.de;
+ dkim=pass header.d=suse.de header.s=susede2_rsa header.b=zKlDXubI;
+ dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=ZXfT+zg7
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1716415339; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YObUwLRvdwpgSzig0Bl4P1ZNluYtEh4wclfH7CFNdew=;
+ b=zKlDXubIzLMDKvnjHxq5y9OqIpZ6hKFz0xiyzqT/4qrKlGoszJBP9qeJdejsuGSKMMILkQ
+ KaPIQMRMkihR0KLh1+XtkEFsWopCFFmCSsypqlOdjStWzcaF15NHNQVgbmQmF9J7NUfSxc
+ 9UXqRruuihi2ZsGoFrYxFSHZVl9QzwQ=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1716415339;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=YObUwLRvdwpgSzig0Bl4P1ZNluYtEh4wclfH7CFNdew=;
+ b=ZXfT+zg7GClExYj8fYvtkFT2iSvVPWgu9RWRmc1ROe/94W/KO6kSnWjmWpW5YpwWztW3LA
+ 4uMI5SMtnw24sOAQ==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id B1CBB13A1E;
+ Wed, 22 May 2024 22:02:15 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id KNn+HWdrTmbwKwAAD6G6ig
+ (envelope-from <farosas@suse.de>); Wed, 22 May 2024 22:02:15 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: qemu-devel@nongnu.org,
+	marcandre.lureau@redhat.com
+Cc: qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Fiona Ebner <f.ebner@proxmox.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [PATCH v4 0/3] Fix "virtio-gpu: fix scanout migration post-load"
+Date: Wed, 22 May 2024 19:02:07 -0300
+Message-Id: <171641446560.2133.13462276597044860318.b4-ty@suse.de>
+X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20240516084022.1398919-1-marcandre.lureau@redhat.com>
+References: <20240516084022.1398919-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.48.156.123]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- lhrpeml500001.china.huawei.com (7.191.163.213)
-X-TUID: d2pzGQyw/kWw
+X-Spam-Score: -1.60
+X-Rspamd-Action: no action
+X-Rspamd-Queue-Id: 685C621C00
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Spamd-Result: default: False [-1.60 / 50.00]; BAYES_HAM(-1.59)[92.37%];
+ SUSPICIOUS_RECIPS(1.50)[]; NEURAL_HAM_LONG(-1.00)[-1.000];
+ NEURAL_HAM_SHORT(-0.20)[-1.000];
+ R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ MIME_GOOD(-0.10)[text/plain]; MX_GOOD(-0.01)[];
+ TO_MATCH_ENVRCPT_ALL(0.00)[];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from]; 
+ ARC_NA(0.00)[]; RCPT_COUNT_TWELVE(0.00)[14];
+ FUZZY_BLOCKED(0.00)[rspamd.com]; MIME_TRACE(0.00)[0:+];
+ SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
+ FREEMAIL_ENVRCPT(0.00)[gmail.com];
+ FREEMAIL_CC(0.00)[nongnu.org,redhat.com,proxmox.com,huawei.com,gmail.com,linaro.org,habkost.net];
+ RCVD_TLS_ALL(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
+ FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
+ TO_DN_SOME(0.00)[]; MID_RHS_MATCH_FROM(0.00)[];
+ TAGGED_RCPT(0.00)[];
+ RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
+ DKIM_TRACE(0.00)[suse.de:+]; RCVD_VIA_SMTP_AUTH(0.00)[];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:dkim]
+Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:1;
+ envelope-from=farosas@suse.de; helo=smtp-out1.suse.de
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8YH1nBHnQY9r
 
-GED interface is used by many hotplug events like memory hotplug, NVDIMM hotplug
-and non-hotplug events like system power down event. Each of these can be
-selected using a bit in the 32 bit GED IO interface. A bit has been reserved for
-the CPU hotplug event.
+On Thu, 16 May 2024 12:40:19 +0400, marcandre.lureau@redhat.com wrote:
+> The aforementioned patch breaks virtio-gpu device migrations for versions
+> pre-9.0/9.0, both forwards and backwards. Versioning of `VMS_STRUCT` is more
+> complex than it may initially appear, as evidenced in the problematic commit
+> dfcf74fa68c ("virtio-gpu: fix scanout migration post-load").
+> 
+> v2:
+>  - use a manual version field test (instead of the more complex struct variant)
+> 
+> [...]
 
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
----
- docs/specs/acpi_hw_reduced_hotplug.rst | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/docs/specs/acpi_hw_reduced_hotplug.rst b/docs/specs/acpi_hw_reduced_hotplug.rst
-index 0bd3f9399f..3acd6fcd8b 100644
---- a/docs/specs/acpi_hw_reduced_hotplug.rst
-+++ b/docs/specs/acpi_hw_reduced_hotplug.rst
-@@ -64,7 +64,8 @@ GED IO interface (4 byte access)
-        0: Memory hotplug event
-        1: System power down event
-        2: NVDIMM hotplug event
--    3-31: Reserved
-+       3: CPU hotplug event
-+    4-31: Reserved
- 
- **write_access:**
- 
--- 
-2.34.1
+Queued, thanks!

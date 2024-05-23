@@ -1,83 +1,83 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp1283043ejb;
-        Thu, 23 May 2024 12:45:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUzCNL7mn+1eq+VSQCeFVgkBjCGIxY3/646uBilohNZlw7+TUj8IQZDdwmEd0eFZTbUWWGAMkCrfYk594VL9u61l4T7fedd
-X-Google-Smtp-Source: AGHT+IFmwvlZHBQZyl6rIBlvep29k6sxNiKmpegqBtE2YL/opiis9S13QnGEUbIrVtCGJtfSjUQm
-X-Received: by 2002:a05:620a:3620:b0:790:f36b:5360 with SMTP id af79cd13be357-794ab052b3cmr19502485a.15.1716493507882;
-        Thu, 23 May 2024 12:45:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716493507; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp1283093ejb;
+        Thu, 23 May 2024 12:45:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU+KcDpPRBdadYFI9RRY/IvVzhyvHS+YfjKSdXx7nDTaM/yBB+g+idv02wN0mmwDhQK0UZhsQuD2kxh2YCeHf7ekvBgAw3p
+X-Google-Smtp-Source: AGHT+IFP68oismGa9Ms4jMmof40RZzeLwQeA121rzI0HtgwITItCRmS+mgrpNWzSoELgh+PWf2C8
+X-Received: by 2002:a05:6358:9048:b0:17e:6a5b:4d3a with SMTP id e5c5f4694b2df-197e50f1702mr55097555d.8.1716493514962;
+        Thu, 23 May 2024 12:45:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716493514; cv=none;
         d=google.com; s=arc-20160816;
-        b=zFGqaIQWR6sLnPU3PeitX0478yp1kS6c2Ua7Qek1bQ1gP305Z5cCk7dIY5x8c2H3/L
-         +5BoWhWHlk2jSMlD0p97LxWdRISCQwJ+6ee9IpGUfQ2ob/S44u/TrvHcoEGaCF4Ksmxb
-         h5K29PY2Qvg9kTFejjYSqsXZnIGcS6kyRP7ZslBkPluDBditpmN8x5d6QVd1S509RplU
-         bOiBEati8tEVof7UqRPQkmSOUcU4UDNC+RNdCCGdYQ3n+SYlYOrAEnbD05SUNENzyGbO
-         YeQ53Pix4eeQXTBTKi7T0O8so+3o8z/z7zRWbMe1XALSUaf70eb0B7SMtH2YcSW6dI2s
-         igdw==
+        b=VJQwBAwTzdF+DwXXCkfUqTfeAM+WDCCLCUAPSRyR6/aywTbfR5DAS2klN1pY7GKpNH
+         wrUu+HvEcVR6aoJYsirkzDyJZZaVxSf/QUww28wATDaBnTjWvz6UjsjExCiQc4fF0W1H
+         B0odk8NZemQ5yRlb7/BsWjfpGd+Q79vTNIjTBg0Mk7U3p4yrMFvhBzj8aOiaQYKOvGLW
+         denkv1j2mWpUkMycRZPtpVlZDi5ovGrBVvERngJY6PL+ruZXOd0yTzMtKINRl8uFCy4t
+         E7YYXsPetBD/aHM0AW7XJo+K+VMntxP1HHfAHMfD+CnSb3FRTH3dPjuz5jHtuWIMpvjX
+         meJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
-         :dkim-filter;
-        bh=pgzxAEJxEFi3a+StKG5BA+dPFpv0eGIpNRlffze6I28=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-filter;
+        bh=+TPEuDUJb4GKbnMob/9aAMazf8jg2/VuqRrT+6nPsVY=;
         fh=eN0x/CTOvxxw5NUPtsJP+w8vf031I24wpq4YCOSTmPU=;
-        b=BaCXWr/5+3kBoSmZj3SETzgm6jjHC/pZfDyZ9L6i9Tn1QfM3BgkH8bjqx4eQvweF94
-         tT1JHbZjteuPRDO6o4D5AFiGqwcG3FBGDd5wSLu65lAMCnpFF4IkwIGAihQ+xYTSbFyH
-         TUKqIt3QNRb/r55UZ620EZCp0apBrsVJu5cYo4qmIhR9ptw/0nQRjvPZ8o2t6ZSKxU6t
-         ++hY0taBF5QwG0AsmxW7YQfIvGozrVc+XtqckAaVWmxDMFZon5rTj2UE5bysv4GKW5z3
-         Fa8wVOjhmbOk4jK+r2EBPfNL0qHpw8TKb/n7A7BXYFtCu3irTuNXTNf9f0VmwJuJU9Ad
-         eaEg==;
+        b=yySVAsZJ0NWm9wOVljYHbVC1SsrJP40OPk5k3NQ6q6xw6SJy16vhhuZCeiSgMHplyg
+         aqwGf88zFvosmLwD9PTWrjyfUVbrKIGjcr4kPqntA87JSAoyM+P02VfdTjx4LxLsrr5W
+         PUdqR+pPI7gXkYdBafW1NQvwm0Z4Vxzesd+Y3nlbV5Npg9+r0Lusy7c/bBJLZH2Z1QLu
+         3jFppW1Dk54m7fx1xgG3xMQqfRDwMblqni3pnugH5sfK2QETTdy5RCg0LqoezxlWPGJn
+         GZBCN6P44LJ6f9GaHWeblQrw5Gb+LsLWwndNaLGbBnhL2JH4D1VSOQtqYQNOOubmc6U5
+         61ig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=11LYPZMC;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=cxrkKCmS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43e38526922si184896611cf.732.2024.05.23.12.45.07
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ab6d627114si37251646d6.539.2024.05.23.12.45.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 May 2024 12:45:07 -0700 (PDT)
+        Thu, 23 May 2024 12:45:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=11LYPZMC;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=cxrkKCmS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sAEN1-0003q9-IV; Thu, 23 May 2024 15:45:00 -0400
+	id 1sAEN6-00041f-3B; Thu, 23 May 2024 15:45:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1sAEN0-0003ou-L4; Thu, 23 May 2024 15:44:58 -0400
+ id 1sAEN2-0003qz-FE; Thu, 23 May 2024 15:45:00 -0400
 Received: from zproxy1.enst.fr ([137.194.2.220])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1sAEMv-00034m-LX; Thu, 23 May 2024 15:44:57 -0400
+ id 1sAEMw-00035Y-P9; Thu, 23 May 2024 15:44:59 -0400
 Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 7076FC056E;
- Thu, 23 May 2024 21:44:50 +0200 (CEST)
+ by zproxy1.enst.fr (Postfix) with ESMTP id 257A9C0CB3;
+ Thu, 23 May 2024 21:44:53 +0200 (CEST)
 Received: from zproxy1.enst.fr ([IPv6:::1])
  by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id UD_yBUHMmLMI; Thu, 23 May 2024 21:44:49 +0200 (CEST)
+ id 0GtVLG7XMPa8; Thu, 23 May 2024 21:44:52 +0200 (CEST)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy1.enst.fr (Postfix) with ESMTP id 67139C05A5;
- Thu, 23 May 2024 21:44:49 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 67139C05A5
+ by zproxy1.enst.fr (Postfix) with ESMTP id 92B0CC0C9D;
+ Thu, 23 May 2024 21:44:52 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy1.enst.fr 92B0CC0C9D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1716493489;
- bh=pgzxAEJxEFi3a+StKG5BA+dPFpv0eGIpNRlffze6I28=;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1716493492;
+ bh=+TPEuDUJb4GKbnMob/9aAMazf8jg2/VuqRrT+6nPsVY=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=11LYPZMCBx6Qe38+BC0yroJ9QM9UzvVXMuVunqL9uNODYvW1OtLH+i77QTH/AlCKr
- eJM7YqzQc4nSJZy9Uax1XmsUIdU+Ac2mcSR1tMHH0pJVOKILY+zcjhzgB+3vBa2a+t
- svYscsPo0zz3W+k4C1qYy4qEx6Vi3xD45PCB5UNg=
+ b=cxrkKCmSS19ZCwxhNz6tBH6iWPoUKZcPgAq0TKi8fS4JKsUouG8p2PsiPQBi/ZSt1
+ iMdMBa85lxWi6bfBvjfE/Os3L0qewGCZgwZIAHZfUfyO4BNtYLXSlSd0Ni7ucOQ56X
+ Bhhe5HQn0QGOh6/1nnc9DeD1Im/sumUoYsyAST+A=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy1.enst.fr ([IPv6:::1])
  by localhost (zproxy1.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id iqGjNknowc5E; Thu, 23 May 2024 21:44:49 +0200 (CEST)
+ id NuFotSz7Ts4Y; Thu, 23 May 2024 21:44:52 +0200 (CEST)
 Received: from inesv-Inspiron-3501.enst.fr (unknown
  [IPv6:2a04:8ec0:0:124::190c])
- by zproxy1.enst.fr (Postfix) with ESMTPSA id 304AEC056E;
- Thu, 23 May 2024 21:44:48 +0200 (CEST)
+ by zproxy1.enst.fr (Postfix) with ESMTPSA id 8E4FCC07A3;
+ Thu, 23 May 2024 21:44:51 +0200 (CEST)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
@@ -89,11 +89,13 @@ Cc: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Thomas Huth <thuth@redhat.com>
-Subject: [PATCH v3 0/4] Check clock connection between STM32L4x5 RCC and
- peripherals
-Date: Thu, 23 May 2024 21:41:46 +0200
-Message-ID: <20240523194441.21036-1-ines.varhol@telecom-paris.fr>
+Subject: [PATCH v3 3/4] hw/clock: Expose 'qtest-clock-period' QOM property for
+ QTests
+Date: Thu, 23 May 2024 21:41:49 +0200
+Message-ID: <20240523194441.21036-4-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.2
+In-Reply-To: <20240523194441.21036-1-ines.varhol@telecom-paris.fr>
+References: <20240523194441.21036-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
@@ -119,52 +121,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rnDJRSntiLlr
+X-TUID: K20JGhr2GS0v
 
-Among implemented STM32L4x5 devices, USART, GPIO and SYSCFG
-have a clock source, but none has a corresponding test in QEMU.
+Expose the clock period via the QOM 'qtest-clock-period' property so it
+can be used in QTests. This property is only accessible in QTests (not
+via HMP).
 
-This patch makes sure that all 3 devices create a clock correctly,
-adds a QOM property to access clocks' periods from QTests,
-and adds QTests checking that clock enable in RCC has the
-expected results for all 3 devices.
-
-Thank you for the reviews.
-
-Changes from "v1" to v3:
-- adding a commit to expose `qtest-clock-period`, a QOM property for
-all clocks, only accessible from QTests, and mention it in clock.rst
-- adapt QTests so that they use clock period instead of clock frequency
-- remove `clock-freq-hz` QOM property in STM32L4x5 USART and SYSCFG
-- dropping the commit migrating GPIO clocks as it's already upstream
-
-Changes from v1 to an unfortunate second "v1":
-- upgrading `VMStateDescription` to version 2 to account for
-`VMSTATE_CLOCK()`
-- QTests : consolidating `get_clock_freq_hz()` in a header
-and making appropriate changes in stm32l4x5q_*-test.c
-
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+---
+ docs/devel/clocks.rst |  3 +++
+ hw/core/clock.c       | 16 ++++++++++++++++
+ 2 files changed, 19 insertions(+)
 
-In=C3=A8s Varhol (4):
-  hw/misc: Create STM32L4x5 SYSCFG clock
-  hw/char: Use v2 VMStateDescription for STM32L4x5 USART
-  hw/clock: Expose 'qtest-clock-period' QOM property for QTests
-  tests/qtest: Check STM32L4x5 clock connections
-
- docs/devel/clocks.rst               |  3 ++
- include/hw/misc/stm32l4x5_syscfg.h  |  1 +
- tests/qtest/stm32l4x5.h             | 43 +++++++++++++++++++++++++++++
- hw/arm/stm32l4x5_soc.c              |  2 ++
- hw/char/stm32l4x5_usart.c           |  4 +--
- hw/core/clock.c                     | 16 +++++++++++
- hw/misc/stm32l4x5_syscfg.c          | 19 +++++++++++--
- tests/qtest/stm32l4x5_gpio-test.c   | 23 +++++++++++++++
- tests/qtest/stm32l4x5_syscfg-test.c | 20 ++++++++++++--
- tests/qtest/stm32l4x5_usart-test.c  | 26 +++++++++++++++++
- 10 files changed, 151 insertions(+), 6 deletions(-)
- create mode 100644 tests/qtest/stm32l4x5.h
-
+diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
+index 177ee1c90d..19e67601ec 100644
+--- a/docs/devel/clocks.rst
++++ b/docs/devel/clocks.rst
+@@ -358,6 +358,9 @@ humans (for instance in debugging), use ``clock_displ=
+ay_freq()``,
+ which returns a prettified string-representation, e.g. "33.3 MHz".
+ The caller must free the string with g_free() after use.
+=20
++It's also possible to retrieve the clock period from a QTest by
++accessing QOM property ``qtest-clock-period`` using a QMP command.
++
+ Calculating expiry deadlines
+ ----------------------------
+=20
+diff --git a/hw/core/clock.c b/hw/core/clock.c
+index e212865307..216b54b8df 100644
+--- a/hw/core/clock.c
++++ b/hw/core/clock.c
+@@ -13,6 +13,8 @@
+=20
+ #include "qemu/osdep.h"
+ #include "qemu/cutils.h"
++#include "qapi/visitor.h"
++#include "sysemu/qtest.h"
+ #include "hw/clock.h"
+ #include "trace.h"
+=20
+@@ -158,6 +160,15 @@ bool clock_set_mul_div(Clock *clk, uint32_t multipli=
+er, uint32_t divider)
+     return true;
+ }
+=20
++static void clock_period_prop_get(Object *obj, Visitor *v, const char *n=
+ame,
++                                void *opaque, Error **errp)
++{
++    Clock *clk =3D CLOCK(obj);
++    uint64_t freq_hz =3D clock_get(clk);
++    visit_type_uint64(v, name, &freq_hz, errp);
++}
++
++
+ static void clock_initfn(Object *obj)
+ {
+     Clock *clk =3D CLOCK(obj);
+@@ -166,6 +177,11 @@ static void clock_initfn(Object *obj)
+     clk->divider =3D 1;
+=20
+     QLIST_INIT(&clk->children);
++
++    if (qtest_enabled()) {
++        object_property_add(obj, "qtest-clock-period", "uint64",
++                            clock_period_prop_get, NULL, NULL, NULL);
++    }
+ }
+=20
+ static void clock_finalizefn(Object *obj)
 --=20
 2.43.2
 

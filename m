@@ -1,145 +1,167 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp881090ejb;
-        Thu, 23 May 2024 00:05:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX79AvtCfb43sIY2TqWSAjPlCbNRPOjlPyqPWlG6XX8phEOEwNlRaZAY3oGjUQi675sZZKyis2x6DlD7JERpv2a7NKShtDO
-X-Google-Smtp-Source: AGHT+IEDgKH5Wh8YGmMXoVQ3DNxMhwEYhYvP5rkilGgvpPv/wsM18gHm2DyNPDyc8itGwcOilxyj
-X-Received: by 2002:a0d:cb58:0:b0:61b:34b0:ff04 with SMTP id 00721157ae682-627e4846b5dmr39415107b3.32.1716447957274;
-        Thu, 23 May 2024 00:05:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716447957; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp896689ejb;
+        Thu, 23 May 2024 00:48:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVXZ7KPQIn4EK532vYyTjGjgpXiL41DcWOKwRLaqMahvjPa5qrtNZ2VYHTYV3x48ZCZBzapY6P9cWD4rKYRzR5I4bb9p66v
+X-Google-Smtp-Source: AGHT+IHXtIT61abBLBFAzwP9oIvKf6RKSCBDJLZtkSWzpqZyHSzjCjv3V53CizaICK+gnHDfX2aT
+X-Received: by 2002:a05:620a:1026:b0:792:927e:940 with SMTP id af79cd13be357-79499440e90mr437264085a.18.1716450516108;
+        Thu, 23 May 2024 00:48:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716450516; cv=none;
         d=google.com; s=arc-20160816;
-        b=EdP4yeNU71FatOs7FgBIBTsfvIzqPeU5m3jGC7rOFxV20WJJhqLGZiYcbsMArKVq+C
-         zmv15PmcYSBwQl2vHfdgGaBn6kfKbs0T12d3FUzJu2Hn9uMX4lle0PHcWYTJN4Ty20do
-         2BlWK8cDeIGWKkY9/HxPsbTcqynrQFBFF4PS26LWba6Bo+bkb5qE1CxIfV2UN9Zs3W2h
-         KO9zlbMtQf/iIeY3How2qYLQ24R+gUNmFyc0yEACVRMR3IOXQI1b6nd0CY3nCML4pzZz
-         DxPzaB/mkU5ZRDe/huzK2oXjKYIFZOxoemaFGQcbPFgp3FW3/sOrTKinqvJNcd4G0XBU
-         4Ojg==
+        b=b8yD6pc4Cvj4NwBZb4I/SMQ8yUzyvOGRr+3N4CklRb5uEYJPAg+rfW9CK/WEYigLuC
+         VVE9Y9PruLdSNUGkKMCWIDSwBn6PFY+Is0YL0PTiYkMH3LZeyMZBtJSh7DcWD7BpVrnN
+         GGvwpSt6S/aahEarru+yyzNJXDjBZEg4JnWcKBr2Xz2GgR/8hKBYW+mX0TaAnja77l8+
+         z+5+EkpQE6/6op6GYVrfP5cdAsYlJOcr3iOo3C6i1+wDijgmUXbiTXL8cZWq2TGpcsug
+         RE1zp9JFb5ByBV4IA2+TUM4nDMZJOrC0dp5AVRfKvuuKBl7NVUEJuuv9fiXTnbCPBU5h
+         T5cw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=aqf4+Qv3dUYxAzYu5cRaT10hnzSfHy1IWF1VvgLdWJ8=;
-        fh=2akEwGyYYotRF0QbSCoCGNFKhexddu7/CVj7WiNtaRk=;
-        b=OJ0dZIGbvZ9gRRYi5pffO3by84f1bfCb9HdAlHqh5A8i5JpJ9IWCYCoIcCoQXncGb9
-         /tmWr1C1E4lAFAFwf9sjlo2igzyCrBlJ0kJCGZzBiF3JtqO9P1wrvIbkUoPxz+eel54v
-         ogHkZpF6mYdc7VRR0ZkJ/I3j0rRHfpRUAWai+57+fm7eeypT0EOZVsiNi46iPlTIZXpZ
-         BA9wqApXh8MsyHm7oeboG9QzQopMC9ftFIX66hQsd1isgUdZ3NDL038KmI5PVIl/UHHy
-         ALlbGknvpP04F7g1a9DFN2OtTDRRPbKhSQojcy1VyI+x8j2TwZl2KGVzTC1uQIHcuMXu
-         GPKA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:in-reply-to:references:user-agent:subject
+         :cc:to:from:date:dkim-signature;
+        bh=4rdqYFkyNFnGGla35++FglrsXfHudAsuNgYo2FmltAA=;
+        fh=vpCixXoM6+tTd1AGs+ISLqy2WoWpFnc4JtYaaECAFKU=;
+        b=ItjL9EC3WHlSzuH67IgRW1zZMPFPsMrsCeEjnvRVSlCJGPzZcAX8z8ysmK/y71OsMU
+         lF9x9MYKncV2tO6SQYgXJ3FAapl0XWId5GDleNKPaZZ5cI+iF3AkV+9nGpzpLbkqzuyT
+         2TrTeZ1Pxw/i4rhTk4lcNurc/jE83nINtrFW3Mjn4Q3SGQfuqtm3tmYDCXw2HC1vfV9Q
+         jfvECiA2FgameVqAwCMjyjpulXEQ357GXvWXydvy7uz+tPtN7P6VRIrZpzyEHDTwEeOI
+         8rRrDjPnbUCr3iAqsx5uO3ggYUL/CW+4n3bMsb3erUDvBwQlr3WHOWZJbkFGYJ56XU7i
+         s2Eg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=hl2L4Rhu;
-       spf=pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=harshpb@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <harshpb@linux.ibm.com>
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id 00721157ae682-6209e71a6b6si138447877b3.222.2024.05.23.00.05.56
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 23 May 2024 00:05:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+       dkim=pass header.i=@linaro.org header.s=google header.b="dyvjaO/g";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7930179c15dsi1789694785a.131.2024.05.23.00.48.35
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 23 May 2024 00:48:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=hl2L4Rhu;
-       spf=pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=harshpb@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 44N6pL2r009574;
-	Thu, 23 May 2024 07:05:33 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=aqf4+Qv3dUYxAzYu5cRaT10hnzSfHy1IWF1VvgLdWJ8=;
- b=hl2L4Rhutkkx0WfFA7FWj6mMlN5ZRl95zn/BPn5aKV3leewvLmwNcuE28uVP8T7BDCll
- +E7pADluaUxEan9CZGRXNcdxDRWC5VeUGZfp5igtCdjXryr+6mkYR0e87cT65hAlOyun
- xQeTBkuvnNIUR2NbwfroSdiOtd3R/q4myK/FT86uA/DKcgxxYrqSeL3sDu/+rtkKmoJx
- DmyYFXXbN9wFJjfsRwU1mA69yrVyYtVboUfJyb/M/ovQY7eruqWWYj942HuOcrM7ydTo
- WLG31VElPN52Tak7EZKZ/IrBvd3chIudhdwHJcNNQwAN1ekOy9hPjyVnqA9FZMPQ0biF Mw== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3y9wkm8g6q-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 23 May 2024 07:05:32 +0000
-Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 44N75WGf030873;
-	Thu, 23 May 2024 07:05:32 GMT
-Received: from ppma23.wdc07v.mail.ibm.com (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3y9wkm8g6j-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 23 May 2024 07:05:32 +0000
-Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 44N4JpEZ026447;
-	Thu, 23 May 2024 07:05:31 GMT
-Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
-	by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3y785mrfqy-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 23 May 2024 07:05:31 +0000
-Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com [10.39.53.232])
-	by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 44N75SX842008936
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 23 May 2024 07:05:30 GMT
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 0622358043;
-	Thu, 23 May 2024 07:05:28 +0000 (GMT)
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id DF0CB58067;
-	Thu, 23 May 2024 07:05:15 +0000 (GMT)
-Received: from [9.109.242.165] (unknown [9.109.242.165])
-	by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
-	Thu, 23 May 2024 07:05:15 +0000 (GMT)
-Message-ID: <a5f3d78e-cfed-441f-9c56-e3e78fa5edee@linux.ibm.com>
-Date: Thu, 23 May 2024 12:35:14 +0530
+       dkim=pass header.i=@linaro.org header.s=google header.b="dyvjaO/g";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sA3BV-0001i9-Mq; Thu, 23 May 2024 03:48:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1sA3BU-0001fB-DU
+ for qemu-devel@nongnu.org; Thu, 23 May 2024 03:48:20 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1sA3BR-0004V7-Az
+ for qemu-devel@nongnu.org; Thu, 23 May 2024 03:48:20 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-354de3c5d00so733636f8f.1
+ for <qemu-devel@nongnu.org>; Thu, 23 May 2024 00:48:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1716450495; x=1717055295; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to
+ :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=4rdqYFkyNFnGGla35++FglrsXfHudAsuNgYo2FmltAA=;
+ b=dyvjaO/gv2IXeGFVlXaHc9Wik2IiwHAbejWX9VmtXN1KOGfFzUsDgRSClBTLQnLzEe
+ t+dxL0gTdn/DMebrAnmJjYVJTyR/9EoU2EMCq0jqGfE7YGQOKIgxEyLd6nhYLWaBGh4e
+ y69stnGWqqFl2jdS+oGcq35nKDopy0DfSwFy/K3oIEEdl1KxAjImhk9CVGbd73cl1Tr6
+ BlY7qBiUMgkrg6eZsvjf89wM8N2/ZYRZZC3ng2FfVZWRrGbEtNC1XyhmQSYWeXt9Kk0n
+ iQ/vwDMyyQJlCLQKuQH2veqA7tr5dMNw9zCHdd4luNTdsup9tJF/4NNADx1HmPcHpZTQ
+ EKyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1716450495; x=1717055295;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to
+ :references:user-agent:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=4rdqYFkyNFnGGla35++FglrsXfHudAsuNgYo2FmltAA=;
+ b=OPbav+tZG0xWbOlWRJ0ZpGXDi59A82POttM/lMzLgewWd70gBX2v0RgG5H5IuOCRhW
+ g/PExwwp2NYK7csa0R8gmSO+rUcsikTrEEW87TTI0N4mPKPsf5Ftb8HaGm1CdMmyAUXl
+ WOfg2Kr5Sefb67pBXG7ratZEFTRYQHjtbyjP11kKe5+SR9mJu3Mk1lRHrNqp/Oh1voLj
+ 8Yk9Igqkl0XMntvcXk7cen5Vko1u19PwImY4lD8y4fE+RTPBNCM+0QNZtpaPxntXSWAW
+ gz+VuBLUsEJnnJSMPmh3ZmSlkLM3ePemXxDV3NYUy6EhALn3xMi8xtaYjTX/m4Ar8Qdg
+ 81Qg==
+X-Gm-Message-State: AOJu0Yz5JvT6hvpWop2MYjQx3KjQOXkXbjBQyyV9lLlfNFBNNoccy/tO
+ nojEbGhCYLyfvbo6WJuuwvZOWvJASxUNAOvHjQySkjJZ8sHbqauwiwUfBQGRTsJ77mA4+950u5W
+ +
+X-Received: by 2002:adf:eec3:0:b0:34d:9604:3500 with SMTP id
+ ffacd0b85a97d-354f74ff878mr1180049f8f.4.1716450495200; 
+ Thu, 23 May 2024 00:48:15 -0700 (PDT)
+Received: from meli-email.org (adsl-49.37.6.163.tellas.gr. [37.6.163.49])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-354fc0212c5sm435954f8f.83.2024.05.23.00.48.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 May 2024 00:48:14 -0700 (PDT)
+Date: Thu, 23 May 2024 10:48:04 +0300
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: edgar.iglesias@gmail.com, sstabellini@kernel.org, jgross@suse.com,
+ "Edgar E. Iglesias" <edgar.iglesias@amd.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Bcc: 
+Subject: Re: [PATCH v6 8/8] hw/arm: xen: Enable use of grant mappings
+User-Agent: meli 0.8.5
+References: <20240516154804.1114245-1-edgar.iglesias@gmail.com>
+ <20240516154804.1114245-9-edgar.iglesias@gmail.com>
+In-Reply-To: <20240516154804.1114245-9-edgar.iglesias@gmail.com>
+Message-ID: <dxhod.epa52okca38f@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V11 1/8] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org
-Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
-        lpieralisi@kernel.org, peter.maydell@linaro.org,
-        richard.henderson@linaro.org, imammedo@redhat.com,
-        andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
-        eric.auger@redhat.com, oliver.upton@linux.dev, pbonzini@redhat.com,
-        mst@redhat.com, will@kernel.org, gshan@redhat.com, rafael@kernel.org,
-        alex.bennee@linaro.org, linux@armlinux.org.uk,
-        darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
-        vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
-        miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
-        wangxiongfeng2@huawei.com, wangyanan55@huawei.com,
-        jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
-        npiggin@gmail.com, linuxarm@huawei.com,
-        Shaoqin Huang <shahuang@redhat.com>
-References: <20240522211111.232114-1-salil.mehta@huawei.com>
- <20240522211111.232114-2-salil.mehta@huawei.com>
-Content-Language: en-US
-From: Harsh Prateek Bora <harshpb@linux.ibm.com>
-In-Reply-To: <20240522211111.232114-2-salil.mehta@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: eQ0Si8-1UY7Or45sVHGBpHTIG4N_oPhz
-X-Proofpoint-GUID: Ylb2JmW30nSgPF0nUNOME4KdUvrkIfdy
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.12.28.16
- definitions=2024-05-23_03,2024-05-22_01,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 bulkscore=0 impostorscore=0
- lowpriorityscore=0 priorityscore=1501 phishscore=0 malwarescore=0
- suspectscore=0 adultscore=0 clxscore=1011 mlxscore=0 mlxlogscore=872
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2405010000 definitions=main-2405230045
-X-TUID: WOkJRl1DCWS8
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0wPwsxPgxZph
 
-Hi Salil,
+On Thu, 16 May 2024 18:48, "Edgar E. Iglesias" <edgar.iglesias@gmail.com> wrote:
+>From: "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+>
+>Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+>Reviewed-by: Stefano Stabellini <sstabellini@kernel.org>
+>---
+> hw/arm/xen_arm.c | 5 +++++
+> 1 file changed, 5 insertions(+)
+>
+>diff --git a/hw/arm/xen_arm.c b/hw/arm/xen_arm.c
+>index 15fa7dfa84..6fad829ede 100644
+>--- a/hw/arm/xen_arm.c
+>+++ b/hw/arm/xen_arm.c
+>@@ -125,6 +125,11 @@ static void xen_init_ram(MachineState *machine)
+>                                  GUEST_RAM1_BASE, ram_size[1]);
+>         memory_region_add_subregion(sysmem, GUEST_RAM1_BASE, &ram_hi);
+>     }
+>+
+>+    /* Setup support for grants.  */
+>+    memory_region_init_ram(&xen_grants, NULL, "xen.grants", block_len,
+>+                           &error_fatal);
+>+    memory_region_add_subregion(sysmem, XEN_GRANT_ADDR_OFF, &xen_grants);
+> }
+> 
+> void arch_handle_ioreq(XenIOState *state, ioreq_t *req)
+>-- 
+>2.40.1
+>
+>
 
-On 5/23/24 02:41, Salil Mehta wrote:
-> +void kvm_park_vcpu(CPUState *cpu);
-> +
-> +/**
-> + * kvm_unpark_vcpu - unpark QEMU KVM vCPU context
-> + * @s: KVM State
-> + * @cpu: Architecture vCPU ID of the parked vCPU
-
-s/@cpu/@vcpuid ?
-
-Thanks
-Harsh
-> + *
-> + * @returns: KVM fd
-> + */
-> +int kvm_unpark_vcpu(KVMState *s, unsigned long vcpu_id);
->   #endif /* KVM_CPUS_H */
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>

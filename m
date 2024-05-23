@@ -1,198 +1,145 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp701723ejb;
-        Wed, 22 May 2024 15:03:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWf8xDWjdpNmOYSNsye/cv7h1h5nnIbKSnvHb+GFcW5vWMJmvXSsWCKW2M2yziB8zXKS7nftw2T1KuYL/vd2EDk13FnsUSP
-X-Google-Smtp-Source: AGHT+IEvLC9UOtXbpmUolGdXLv3yY018kunuakw1ZXVSBVsP0/DlJBkQKplkP9ccGPOja1YnXTSY
-X-Received: by 2002:a05:620a:1111:b0:792:9eaa:b562 with SMTP id af79cd13be357-79499445edemr352810885a.33.1716415395708;
-        Wed, 22 May 2024 15:03:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716415395; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp881090ejb;
+        Thu, 23 May 2024 00:05:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX79AvtCfb43sIY2TqWSAjPlCbNRPOjlPyqPWlG6XX8phEOEwNlRaZAY3oGjUQi675sZZKyis2x6DlD7JERpv2a7NKShtDO
+X-Google-Smtp-Source: AGHT+IEDgKH5Wh8YGmMXoVQ3DNxMhwEYhYvP5rkilGgvpPv/wsM18gHm2DyNPDyc8itGwcOilxyj
+X-Received: by 2002:a0d:cb58:0:b0:61b:34b0:ff04 with SMTP id 00721157ae682-627e4846b5dmr39415107b3.32.1716447957274;
+        Thu, 23 May 2024 00:05:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716447957; cv=none;
         d=google.com; s=arc-20160816;
-        b=rnaBTZoEbNfqJFgB+5OfRxzfB8JJuWSxdIXk+JoQRhzrv5XGRTfh6bXfYB6jdYJgD9
-         q0Cug+Xz6j/Jh+qc8LGlfABZc5D/+/+NxkvwKdM3IQgjztQfX/kyWC/OW74S9GGQ0gJU
-         Uk86zuGfVbd1qlC8+C/zSJUg0SQNWrqbSvSdwujArqhWI6dvxBn6wfExJPacDc2g7L88
-         ZOwqoHs0CeJgw3O0wVzvIBGwRcNeShDyTF2uIuDQOVBzZqAwdw3Y29rO+pCFZixYxvru
-         WYJR4Twc4EGuugDwEqXoa2YvEzupa0T0ccFRgjpuGDoSF/MKc2v3mPhoyDethY+Ld2od
-         2/mQ==
+        b=EdP4yeNU71FatOs7FgBIBTsfvIzqPeU5m3jGC7rOFxV20WJJhqLGZiYcbsMArKVq+C
+         zmv15PmcYSBwQl2vHfdgGaBn6kfKbs0T12d3FUzJu2Hn9uMX4lle0PHcWYTJN4Ty20do
+         2BlWK8cDeIGWKkY9/HxPsbTcqynrQFBFF4PS26LWba6Bo+bkb5qE1CxIfV2UN9Zs3W2h
+         KO9zlbMtQf/iIeY3How2qYLQ24R+gUNmFyc0yEACVRMR3IOXQI1b6nd0CY3nCML4pzZz
+         DxPzaB/mkU5ZRDe/huzK2oXjKYIFZOxoemaFGQcbPFgp3FW3/sOrTKinqvJNcd4G0XBU
+         4Ojg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-signature:dkim-signature:dkim-signature;
-        bh=YObUwLRvdwpgSzig0Bl4P1ZNluYtEh4wclfH7CFNdew=;
-        fh=N/bkpVgdsFlrKXE0ToalPzHHzkgIIqDc1wDQNWH/ksY=;
-        b=sBfYw30uWxAGcR9/7+VMU4eq4falYGbl8wtH/2Gw+3F2S3AT1wdKFMkVpcxhCJcxBu
-         OBZOygnytWNVu2Sy63frXn2NP/s6lBbPRndaplcownB0I3VaoApfcH4lfbQDxa54jvbr
-         u6rKUXtqdjk5ioQGNSrWBSX/yPR/2O58zQNoHsZa/9GBb1P6/nq6NJ8ff3aFegwPAhpY
-         JipBeBD7ReWA3ayOeSTRvU6TEq3lAuZnqmDsBPK8VFh/qrmIHYHMBAB37KSVUQSUAH10
-         9ysP+097sNSO8sisdA/hcYRxylFttKWt2PPAvhkxhFk6STWk1Asteqt8FS2npDJF4kmN
-         ScYA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=aqf4+Qv3dUYxAzYu5cRaT10hnzSfHy1IWF1VvgLdWJ8=;
+        fh=2akEwGyYYotRF0QbSCoCGNFKhexddu7/CVj7WiNtaRk=;
+        b=OJ0dZIGbvZ9gRRYi5pffO3by84f1bfCb9HdAlHqh5A8i5JpJ9IWCYCoIcCoQXncGb9
+         /tmWr1C1E4lAFAFwf9sjlo2igzyCrBlJ0kJCGZzBiF3JtqO9P1wrvIbkUoPxz+eel54v
+         ogHkZpF6mYdc7VRR0ZkJ/I3j0rRHfpRUAWai+57+fm7eeypT0EOZVsiNi46iPlTIZXpZ
+         BA9wqApXh8MsyHm7oeboG9QzQopMC9ftFIX66hQsd1isgUdZ3NDL038KmI5PVIl/UHHy
+         ALlbGknvpP04F7g1a9DFN2OtTDRRPbKhSQojcy1VyI+x8j2TwZl2KGVzTC1uQIHcuMXu
+         GPKA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zKlDXubI;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zKlDXubI;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79308a6e5b9si1800623385a.616.2024.05.22.15.03.15
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 May 2024 15:03:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=hl2L4Rhu;
+       spf=pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=harshpb@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <harshpb@linux.ibm.com>
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id 00721157ae682-6209e71a6b6si138447877b3.222.2024.05.23.00.05.56
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 23 May 2024 00:05:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zKlDXubI;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=zKlDXubI;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1s9u2W-0005tq-F7; Wed, 22 May 2024 18:02:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1s9u2U-0005tL-Uq; Wed, 22 May 2024 18:02:26 -0400
-Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1s9u2S-0000fz-3H; Wed, 22 May 2024 18:02:26 -0400
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
- [IPv6:2a07:de40:b281:104:10:150:64:97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id 685C621C00;
- Wed, 22 May 2024 22:02:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1716415339; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YObUwLRvdwpgSzig0Bl4P1ZNluYtEh4wclfH7CFNdew=;
- b=zKlDXubIzLMDKvnjHxq5y9OqIpZ6hKFz0xiyzqT/4qrKlGoszJBP9qeJdejsuGSKMMILkQ
- KaPIQMRMkihR0KLh1+XtkEFsWopCFFmCSsypqlOdjStWzcaF15NHNQVgbmQmF9J7NUfSxc
- 9UXqRruuihi2ZsGoFrYxFSHZVl9QzwQ=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1716415339;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YObUwLRvdwpgSzig0Bl4P1ZNluYtEh4wclfH7CFNdew=;
- b=ZXfT+zg7GClExYj8fYvtkFT2iSvVPWgu9RWRmc1ROe/94W/KO6kSnWjmWpW5YpwWztW3LA
- 4uMI5SMtnw24sOAQ==
-Authentication-Results: smtp-out1.suse.de;
- dkim=pass header.d=suse.de header.s=susede2_rsa header.b=zKlDXubI;
- dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=ZXfT+zg7
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1716415339; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YObUwLRvdwpgSzig0Bl4P1ZNluYtEh4wclfH7CFNdew=;
- b=zKlDXubIzLMDKvnjHxq5y9OqIpZ6hKFz0xiyzqT/4qrKlGoszJBP9qeJdejsuGSKMMILkQ
- KaPIQMRMkihR0KLh1+XtkEFsWopCFFmCSsypqlOdjStWzcaF15NHNQVgbmQmF9J7NUfSxc
- 9UXqRruuihi2ZsGoFrYxFSHZVl9QzwQ=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1716415339;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YObUwLRvdwpgSzig0Bl4P1ZNluYtEh4wclfH7CFNdew=;
- b=ZXfT+zg7GClExYj8fYvtkFT2iSvVPWgu9RWRmc1ROe/94W/KO6kSnWjmWpW5YpwWztW3LA
- 4uMI5SMtnw24sOAQ==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id B1CBB13A1E;
- Wed, 22 May 2024 22:02:15 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id KNn+HWdrTmbwKwAAD6G6ig
- (envelope-from <farosas@suse.de>); Wed, 22 May 2024 22:02:15 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org,
-	marcandre.lureau@redhat.com
-Cc: qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Fiona Ebner <f.ebner@proxmox.com>, Yanan Wang <wangyanan55@huawei.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Peter Xu <peterx@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH v4 0/3] Fix "virtio-gpu: fix scanout migration post-load"
-Date: Wed, 22 May 2024 19:02:07 -0300
-Message-Id: <171641446560.2133.13462276597044860318.b4-ty@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240516084022.1398919-1-marcandre.lureau@redhat.com>
-References: <20240516084022.1398919-1-marcandre.lureau@redhat.com>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=hl2L4Rhu;
+       spf=pass (google.com: domain of harshpb@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=harshpb@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0353724.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 44N6pL2r009574;
+	Thu, 23 May 2024 07:05:33 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=message-id : date :
+ mime-version : subject : to : cc : references : from : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=aqf4+Qv3dUYxAzYu5cRaT10hnzSfHy1IWF1VvgLdWJ8=;
+ b=hl2L4Rhutkkx0WfFA7FWj6mMlN5ZRl95zn/BPn5aKV3leewvLmwNcuE28uVP8T7BDCll
+ +E7pADluaUxEan9CZGRXNcdxDRWC5VeUGZfp5igtCdjXryr+6mkYR0e87cT65hAlOyun
+ xQeTBkuvnNIUR2NbwfroSdiOtd3R/q4myK/FT86uA/DKcgxxYrqSeL3sDu/+rtkKmoJx
+ DmyYFXXbN9wFJjfsRwU1mA69yrVyYtVboUfJyb/M/ovQY7eruqWWYj942HuOcrM7ydTo
+ WLG31VElPN52Tak7EZKZ/IrBvd3chIudhdwHJcNNQwAN1ekOy9hPjyVnqA9FZMPQ0biF Mw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3y9wkm8g6q-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 23 May 2024 07:05:32 +0000
+Received: from m0353724.ppops.net (m0353724.ppops.net [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 44N75WGf030873;
+	Thu, 23 May 2024 07:05:32 GMT
+Received: from ppma23.wdc07v.mail.ibm.com (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3y9wkm8g6j-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 23 May 2024 07:05:32 +0000
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+	by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id 44N4JpEZ026447;
+	Thu, 23 May 2024 07:05:31 GMT
+Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
+	by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3y785mrfqy-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 23 May 2024 07:05:31 +0000
+Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com [10.39.53.232])
+	by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 44N75SX842008936
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 23 May 2024 07:05:30 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 0622358043;
+	Thu, 23 May 2024 07:05:28 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id DF0CB58067;
+	Thu, 23 May 2024 07:05:15 +0000 (GMT)
+Received: from [9.109.242.165] (unknown [9.109.242.165])
+	by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+	Thu, 23 May 2024 07:05:15 +0000 (GMT)
+Message-ID: <a5f3d78e-cfed-441f-9c56-e3e78fa5edee@linux.ibm.com>
+Date: Thu, 23 May 2024 12:35:14 +0530
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Spam-Score: -1.60
-X-Rspamd-Action: no action
-X-Rspamd-Queue-Id: 685C621C00
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Spamd-Result: default: False [-1.60 / 50.00]; BAYES_HAM(-1.59)[92.37%];
- SUSPICIOUS_RECIPS(1.50)[]; NEURAL_HAM_LONG(-1.00)[-1.000];
- NEURAL_HAM_SHORT(-0.20)[-1.000];
- R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- MIME_GOOD(-0.10)[text/plain]; MX_GOOD(-0.01)[];
- TO_MATCH_ENVRCPT_ALL(0.00)[];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from]; 
- ARC_NA(0.00)[]; RCPT_COUNT_TWELVE(0.00)[14];
- FUZZY_BLOCKED(0.00)[rspamd.com]; MIME_TRACE(0.00)[0:+];
- SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
- FREEMAIL_ENVRCPT(0.00)[gmail.com];
- FREEMAIL_CC(0.00)[nongnu.org,redhat.com,proxmox.com,huawei.com,gmail.com,linaro.org,habkost.net];
- RCVD_TLS_ALL(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
- FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
- TO_DN_SOME(0.00)[]; MID_RHS_MATCH_FROM(0.00)[];
- TAGGED_RCPT(0.00)[];
- RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
- DKIM_TRACE(0.00)[suse.de:+]; RCVD_VIA_SMTP_AUTH(0.00)[];
- DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:dkim]
-Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:1;
- envelope-from=farosas@suse.de; helo=smtp-out1.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8YH1nBHnQY9r
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V11 1/8] accel/kvm: Extract common KVM vCPU
+ {creation,parking} code
+To: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org
+Cc: maz@kernel.org, jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+        lpieralisi@kernel.org, peter.maydell@linaro.org,
+        richard.henderson@linaro.org, imammedo@redhat.com,
+        andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
+        eric.auger@redhat.com, oliver.upton@linux.dev, pbonzini@redhat.com,
+        mst@redhat.com, will@kernel.org, gshan@redhat.com, rafael@kernel.org,
+        alex.bennee@linaro.org, linux@armlinux.org.uk,
+        darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+        vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+        miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com,
+        wangxiongfeng2@huawei.com, wangyanan55@huawei.com,
+        jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
+        npiggin@gmail.com, linuxarm@huawei.com,
+        Shaoqin Huang <shahuang@redhat.com>
+References: <20240522211111.232114-1-salil.mehta@huawei.com>
+ <20240522211111.232114-2-salil.mehta@huawei.com>
+Content-Language: en-US
+From: Harsh Prateek Bora <harshpb@linux.ibm.com>
+In-Reply-To: <20240522211111.232114-2-salil.mehta@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: eQ0Si8-1UY7Or45sVHGBpHTIG4N_oPhz
+X-Proofpoint-GUID: Ylb2JmW30nSgPF0nUNOME4KdUvrkIfdy
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.12.28.16
+ definitions=2024-05-23_03,2024-05-22_01,2024-05-17_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 bulkscore=0 impostorscore=0
+ lowpriorityscore=0 priorityscore=1501 phishscore=0 malwarescore=0
+ suspectscore=0 adultscore=0 clxscore=1011 mlxscore=0 mlxlogscore=872
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2405010000 definitions=main-2405230045
+X-TUID: WOkJRl1DCWS8
 
-On Thu, 16 May 2024 12:40:19 +0400, marcandre.lureau@redhat.com wrote:
-> The aforementioned patch breaks virtio-gpu device migrations for versions
-> pre-9.0/9.0, both forwards and backwards. Versioning of `VMS_STRUCT` is more
-> complex than it may initially appear, as evidenced in the problematic commit
-> dfcf74fa68c ("virtio-gpu: fix scanout migration post-load").
-> 
-> v2:
->  - use a manual version field test (instead of the more complex struct variant)
-> 
-> [...]
+Hi Salil,
 
-Queued, thanks!
+On 5/23/24 02:41, Salil Mehta wrote:
+> +void kvm_park_vcpu(CPUState *cpu);
+> +
+> +/**
+> + * kvm_unpark_vcpu - unpark QEMU KVM vCPU context
+> + * @s: KVM State
+> + * @cpu: Architecture vCPU ID of the parked vCPU
+
+s/@cpu/@vcpuid ?
+
+Thanks
+Harsh
+> + *
+> + * @returns: KVM fd
+> + */
+> +int kvm_unpark_vcpu(KVMState *s, unsigned long vcpu_id);
+>   #endif /* KVM_CPUS_H */

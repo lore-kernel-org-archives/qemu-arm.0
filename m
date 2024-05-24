@@ -1,96 +1,96 @@
-Received: by 2002:a05:7022:4391:b0:7c:9548:a19d with SMTP id bo17csp996922dlb;
-        Thu, 23 May 2024 23:16:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW+HLAsD3FCNiPeS/lgAMICabm3F3HDiVx03uSxh9VOFr3b54YIkNp5wAyS3RUB3bjsywqQ2M2I73MmLwgzmlhRXxDRmygt
-X-Google-Smtp-Source: AGHT+IGx0XljB37z787NJSZA5brleuvu6vKRCY1MHBSXD8Z8hvkweLi1ogWWjFQ7s1CKZw85OvY5
-X-Received: by 2002:a05:6214:3386:b0:6a0:ca4c:c37a with SMTP id 6a1803df08f44-6abcdaa6929mr15521446d6.53.1716531361672;
-        Thu, 23 May 2024 23:16:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716531361; cv=none;
+Received: by 2002:a05:7022:4391:b0:7c:9548:a19d with SMTP id bo17csp997019dlb;
+        Thu, 23 May 2024 23:16:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWdo2TW2TvSPo7JZNNRpageC0Jm7MACiQN0Lm27+9c+1gxGAc7yY1g1O76AhjPmFuhjluTnw+ctvxX2Q+uewuTCRnHaWB2G
+X-Google-Smtp-Source: AGHT+IFV7BMl/ns8x64Ox/G1UNTB2y3eaaojw6klxW8f2W00tLxpsEYzN77sKj1HWcyXaUjs55AF
+X-Received: by 2002:a05:6214:4888:b0:6ab:842b:daee with SMTP id 6a1803df08f44-6abcd0de170mr15136536d6.53.1716531374022;
+        Thu, 23 May 2024 23:16:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716531374; cv=none;
         d=google.com; s=arc-20160816;
-        b=vvlR/u2Fx/dNQTmS4DahoX6B82L1ESGv0ljtngHh62ukj2i/5ClqexXJeDYQnn2w0q
-         WnqngSEENKmyuMNgAFYIcWEM1kM4f003dWKVZGaVKNSJhWxPvQq34BEuqWTiotGb7Go5
-         XERGEDTzwb0gnvZzFXExCa0dm1AZiG0Tyw81wxIqR+2ptCgGqM38A+Pr0rjoclCHfIpe
-         eguIGZ8nfggOZKWsVtxNGMEjcpR8I6EQAl8MQdfrZNZHmPBrSu3RteuEPsAGgxxMI62S
-         YeHUEhrRdkOCtQqbBPlEhxydAtDOzeAzctD9l3KH01aUxEJTbid5F45sLePkrCJC1qRL
-         bnbg==
+        b=iJG+mI2Dz93VOfb6fDOH33lFxBP2Ptqaa6N/uhCjtLNBwBqj1doC9VMpfK7P+pnUpW
+         tJiwtVV+JJI7CaADkrWNjDm5JkdPi+GXGkpICj6ZteF9J0UAM51Jpbef419jVXWATzZ2
+         uWu8GhVGijxLZJ1bgSfFHcABUHuMrK3Te0kdy/uWbD7g3Rf6/pY5Rbedoz4r2Xnwk9a4
+         OfNjRbWdnaRowVPXdI6veEGKLN3CdKSueZREm775MTt9FgsVyodTrhYMBA2Eokna46GH
+         Ajw1E4NEcb2Ib43+ooqgRRGwYkq5thXuED+VxWdS+PAQJkwwMha18UpMNr270JFUO2S2
+         y3pQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=77QEVMRELZi8HUu5rAEqjjLVKC1iehF0W9sw1N8UasQ=;
-        fh=2M7juJbraFC8RjaPEPKLIoCGnlKsgTIkUKLv17Xo6RY=;
-        b=c3ORwxfhsSCjEAbQW+I5UxTRRVdbGgyO6l2TrSXikZ25U//FIQS12ceNsZUIZ0qKfW
-         45Ny+/ICy9SfJ5XANZSifDATY9TNCoigm0RXwirZ1ERtsLxcQ9qBSUv0SNIVA0msjf0V
-         PoLPETNgeMCKyzpb8Ve6Y9xDOy4s5hOIOqprUYfKzIpof6qT5HxjLkez1aUAbCcZ8u/q
-         d9kwLbsJM804wXoGh4AyWfwcS3iBTb0HuvbZEE3uodorfPvwkZkDttvoJKrQNvay8KLB
-         Is3oRA79qh0M4WkvCuuqU2oCxcx90S7uhOH3namN5r14mw9Gb1AJ3GUAtQ3fj5XSNuz2
-         HmtA==;
+        bh=0BD/3bkbfti/sxehilpLJYRZElpAI3Ovze0/5RgjFlY=;
+        fh=FUElS1R31tSZ3iV0O5RWS4E5lUSSRajW6UIjzULHa6s=;
+        b=HhP22pzfbJsnM4mCvuSAmabHSZJhCLYfkN+IxAd36Im45SvbgjN1taAOKqhWkPqmNz
+         mmmoewqJ+UEVoKLpAlX6QLfcEgwBmXfsO8xCsmWVOAbf5NtXyCx2nSEVYTYV+QbHA8+h
+         4DdG7/vGlUYKbOgh+UWZqBGVrcRVUTbA8thPcQHHDIMY/xhfPWJ8Kze9mZiJjllhWD83
+         0xlbKDxmS/XJ39BeKQzgHpe9dx8h/CCIuJtx3uXfqq/krWgckjIeiuxK1gme0CUhDDVv
+         IwZfVzeNvpzN4fIFbUiFiE+MrA3/i0XNO9Y7zrlC15Z0LHg7EivHqLEWprJjqaOam1Ck
+         Ft2g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=daAcQZxK;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=eYWTorw3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ac06f4faf8si9298716d6.105.2024.05.23.23.16.01
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ac162b4c75si9989236d6.482.2024.05.23.23.16.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 May 2024 23:16:01 -0700 (PDT)
+        Thu, 23 May 2024 23:16:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=daAcQZxK;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=eYWTorw3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sAOCl-0002GD-UR; Fri, 24 May 2024 02:15:04 -0400
+	id 1sAODd-0003P4-UJ; Fri, 24 May 2024 02:15:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sAOCk-0002FS-RX
- for qemu-devel@nongnu.org; Fri, 24 May 2024 02:15:02 -0400
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ id 1sAODW-00032J-Lw
+ for qemu-devel@nongnu.org; Fri, 24 May 2024 02:15:52 -0400
+Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sAOCh-0001Gi-UZ
- for qemu-devel@nongnu.org; Fri, 24 May 2024 02:15:02 -0400
-Received: by mail-pf1-x432.google.com with SMTP id
- d2e1a72fcca58-6f8edddf756so455010b3a.3
- for <qemu-devel@nongnu.org>; Thu, 23 May 2024 23:14:59 -0700 (PDT)
+ id 1sAODO-0001U7-1w
+ for qemu-devel@nongnu.org; Fri, 24 May 2024 02:15:50 -0400
+Received: by mail-oa1-x34.google.com with SMTP id
+ 586e51a60fabf-24ca0876a83so292799fac.2
+ for <qemu-devel@nongnu.org>; Thu, 23 May 2024 23:15:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1716531297; x=1717136097; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1716531339; x=1717136139; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=77QEVMRELZi8HUu5rAEqjjLVKC1iehF0W9sw1N8UasQ=;
- b=daAcQZxK/c3iEC/lBaBRRazsGRT0ziVAgNdibtEtUYYWy3tHDIrm7AkE1TyiVyuNUG
- /kZeqBtdZm65dio+Q0H9pGXo5BngeSYdVz4CbtSfbpLe2qw0oxZoCu2Ceygf8/lr/gYk
- oPfVobs39uL8jfd0+a5EMfWJZMN59ksKIvrDlXVR4JPQLyHXzYalrEmMIt7ctetWTZfj
- RXitfl/6wAw4FBY6a4/SU7SeqEYK7O32rlPkDZ+Jx/K+i9kP4EjUxwtLCFe6sYfYTE/p
- 9vQ/hjrXLgRk+PHzdkKWLqD5qRAGXL/yitGZc5QKOG+8ewLqrHh62FdJz58i6cVtLJjR
- 1zEQ==
+ bh=0BD/3bkbfti/sxehilpLJYRZElpAI3Ovze0/5RgjFlY=;
+ b=eYWTorw32CmdIEEmzufpMx2LllFUwoK6j6F1NL961e/EbdfDwmsnR0YoFE6tdxxeqf
+ BmGfiogNCzMBNQEITCxHJZDnaAGKlrb862tExJhFk2f9ba1lYfD/rC7Br6Zh0F/REHD5
+ dS4SnFYXhdtq+R1fbinD8exd/tZLoGcxl349JhFa789302xq+QhsekszJ3OVVQK5RzCd
+ hMCejFEhFevWIK9XEQ0sgSIFiIKBgSuZkBa+QfszaefW4XflvFkBu/U7VCiIOpt17nKn
+ xOM3FFKWx+DHrqZCpw9CWtfrArU202WCQd5YZEl5f+rm/dnmzjmgQ51WUS2+S1Ms4wSz
+ /V9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716531297; x=1717136097;
+ d=1e100.net; s=20230601; t=1716531339; x=1717136139;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=77QEVMRELZi8HUu5rAEqjjLVKC1iehF0W9sw1N8UasQ=;
- b=BpZ2LdyRuqv7n/ssl4vbK6ab79i7cmzbg11ST7C4AjDmwcRibU8NXYfRc9jsfjCYqQ
- 2A2A8ISHa9Qu9qKgt+MWKLQE5Tw4QdJm7UKLRvvlEAnb5I+kP21xRv4uKkcDUxCWoPe6
- gTUxaykrBzknxDABC0m8d8T5oiwy8wyHRFsHhg6SMRZSy2/oZpw4TAay5ldkbQoxUH0d
- p3a9sKwRy0vlnLXYnzg/LKOs9heu+6elpVZ0wi+et/wif+lnKtFlgeZOszVR+hFUTIrD
- AuHnp/CCm9HZ5pt2K9ffXavuGmHtuCwuDMjMCbZN5zDEXB7mTws2xSirEhCYALJXedMb
- qQmQ==
-X-Gm-Message-State: AOJu0YzjEcR1Ln3ld4EcApYjGUEjHSutiJSsOZCehHl9Pypoayz8fmbH
- NCzvicoWDE5Af9HzbpN/APRB3d/mYb1wmXXAM+MJLI361MsVclsKn81givO31dsjNa5HbUj/C8y
- WqHE=
-X-Received: by 2002:a05:6a20:6a1d:b0:1af:f939:8553 with SMTP id
- adf61e73a8af0-1b212df0a3fmr2084071637.46.1716531296708; 
- Thu, 23 May 2024 23:14:56 -0700 (PDT)
+ bh=0BD/3bkbfti/sxehilpLJYRZElpAI3Ovze0/5RgjFlY=;
+ b=Gduvmp/yymCXrOhrTXo1Qos2LF0uZ7c60eOAfKhb6dggT9es8epu1CD6meZxHAdH8D
+ pWjNWTInPTF8wkQbsoeTkkpjwtPBnf11u726XhzW2zaOxkIUJbSFxK/RUS7KdY+U19MO
+ 2bFLztGDFuAJbJrW8iSuMFhJJiADRDbPCPGMch8dVtdM5tbDBWC5N8zYcy1um7sIjduG
+ n3FLkqXMnsTjPFWr4bYpAiIkN8qmnPmzwEpLUd31jBeMmQEXdqon5sOD7ivvG2bvVt5k
+ m9hiG2nmZmM8yPKM6UWfYeAe7EXPbEvmp86lWGgwObPFCKVlj6eTTnFx7ktkph6rsCWi
+ FGtw==
+X-Gm-Message-State: AOJu0Yx/n2VBS02uF8Sosj0asD7KXBaSbGesTDyCrhgzse3DhzdxIkj9
+ 22PEbzM7ZeViVlHKzvujw7FTsLybVjnbEf1BxMfXzjyG+I2s/5Rtz5f5/3uBKY6fy7fP9YYjvpj
+ XVEA=
+X-Received: by 2002:a05:6870:a70e:b0:24c:59f7:e840 with SMTP id
+ 586e51a60fabf-24ca12039a1mr1413445fac.17.1716531338655; 
+ Thu, 23 May 2024 23:15:38 -0700 (PDT)
 Received: from sunil-pc.Dlink ([106.51.188.31])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-6f8fcbea487sm516106b3a.107.2024.05.23.23.14.50
+ d2e1a72fcca58-6f8fcbea487sm516106b3a.107.2024.05.23.23.15.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 May 2024 23:14:56 -0700 (PDT)
+ Thu, 23 May 2024 23:15:38 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -111,19 +111,18 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
  Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Sunil V L <sunilvl@ventanamicro.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v2 05/12] tests/qtest/bios-tables-test.c: Add support for arch
- in path
-Date: Fri, 24 May 2024 11:44:04 +0530
-Message-Id: <20240524061411.341599-6-sunilvl@ventanamicro.com>
+ Sunil V L <sunilvl@ventanamicro.com>
+Subject: [PATCH v2 11/12] tests/qtest/bios-tables-test.c: Enable basic testing
+ for RISC-V
+Date: Fri, 24 May 2024 11:44:10 +0530
+Message-Id: <20240524061411.341599-12-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240524061411.341599-1-sunilvl@ventanamicro.com>
 References: <20240524061411.341599-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::34;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-oa1-x34.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -145,132 +144,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OIMtG3lG48e+
+X-TUID: INckeQ/+4bqi
 
-Since virt machine is common for multiple architectures, add "arch" in
-the path to search expected AML files. Since the AML files are still
-under old path, support both by searching with and without arch in the
-path.
+Add basic ACPI table test case for RISC-V.
 
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- tests/qtest/bios-tables-test.c | 31 ++++++++++++++++++++++++++++---
- 1 file changed, 28 insertions(+), 3 deletions(-)
+ tests/qtest/bios-tables-test.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
 diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index c4a4d1c7bf..c73174ad00 100644
+index c73174ad00..880435a5fa 100644
 --- a/tests/qtest/bios-tables-test.c
 +++ b/tests/qtest/bios-tables-test.c
-@@ -78,6 +78,7 @@
- typedef struct {
-     bool tcg_only;
-     const char *machine;
-+    const char *arch;
-     const char *machine_param;
-     const char *variant;
-     const char *uefi_fl1;
-@@ -262,8 +263,19 @@ static void dump_aml_files(test_data *data, bool rebuild)
-         g_assert(exp_sdt->aml);
+@@ -1935,6 +1935,29 @@ static void test_acpi_microvm_acpi_erst(void)
+ }
+ #endif /* CONFIG_POSIX */
  
-         if (rebuild) {
--            aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir, data->machine,
-+            aml_file = g_strdup_printf("%s/%s/%s/%.4s%s", data_dir,
-+                                       data->machine, data->arch,
-                                        sdt->aml, ext);
++static void test_acpi_riscv64_virt_tcg(void)
++{
++    test_data data = {
++        .machine = "virt",
++        .arch = "riscv64",
++        .tcg_only = true,
++        .uefi_fl1 = "pc-bios/edk2-riscv-code.fd",
++        .uefi_fl2 = "pc-bios/edk2-riscv-vars.fd",
++        .ram_start = 0x80000000ULL,
++        .scan_len = 128ULL * 1024 * 1024,
++    };
 +
-+            /*
-+             * To keep test cases not failing when the DATA files are moved to
-+             * ARCH under virt folder, add this check as well.
-+             */
-+            if (!g_file_test(aml_file, G_FILE_TEST_EXISTS)) {
-+                aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir,
-+                                           data->machine, sdt->aml, ext);
-+            }
++    /*
++     * RHCT will have ISA string encoded. To reduce the effort
++     * of updating expected AML file for any new default ISA extension,
++     * use the profile rva22s64.
++     */
++    test_acpi_one("-cpu rva22s64 -device virtio-blk-device,drive=hd0 "
++                  "-drive file=tests/data/uefi-boot-images/bios-tables-test.riscv64.iso.qcow2,id=hd0",
++                  &data);
++    free_test_data(&data);
++}
 +
-             if (!g_file_test(aml_file, G_FILE_TEST_EXISTS) &&
-                 sdt->aml_len == exp_sdt->aml_len &&
-                 !memcmp(sdt->aml, exp_sdt->aml, sdt->aml_len)) {
-@@ -398,8 +410,13 @@ static GArray *load_expected_aml(test_data *data)
-         memset(&exp_sdt, 0, sizeof(exp_sdt));
- 
- try_again:
--        aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir, data->machine,
--                                   sdt->aml, ext);
-+        aml_file = g_strdup_printf("%s/%s/%s/%.4s%s", data_dir, data->machine,
-+                                   data->arch, sdt->aml, ext);
-+        if (!g_file_test(aml_file, G_FILE_TEST_EXISTS)) {
-+            aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir, data->machine,
-+                                       sdt->aml, ext);
-+        }
-+
-         if (verbosity_level >= 2) {
-             fprintf(stderr, "Looking for expected file '%s'\n", aml_file);
+ static void test_acpi_aarch64_virt_tcg(void)
+ {
+     test_data data = {
+@@ -2404,6 +2427,10 @@ int main(int argc, char *argv[])
+                 qtest_add_func("acpi/virt/viot", test_acpi_aarch64_virt_viot);
+             }
          }
-@@ -1574,6 +1591,7 @@ static void test_acpi_aarch64_virt_tcg_memhp(void)
- {
-     test_data data = {
-         .machine = "virt",
-+        .arch = "aarch64",
-         .tcg_only = true,
-         .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-         .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-@@ -1667,6 +1685,7 @@ static void test_acpi_aarch64_virt_tcg_numamem(void)
- {
-     test_data data = {
-         .machine = "virt",
-+        .arch = "aarch64",
-         .tcg_only = true,
-         .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-         .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-@@ -1689,6 +1708,7 @@ static void test_acpi_aarch64_virt_tcg_pxb(void)
- {
-     test_data data = {
-         .machine = "virt",
-+        .arch = "aarch64",
-         .tcg_only = true,
-         .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-         .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-@@ -1762,6 +1782,7 @@ static void test_acpi_aarch64_virt_tcg_acpi_hmat(void)
- {
-     test_data data = {
-         .machine = "virt",
-+        .arch = "aarch64",
-         .tcg_only = true,
-         .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-         .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-@@ -1918,6 +1939,7 @@ static void test_acpi_aarch64_virt_tcg(void)
- {
-     test_data data = {
-         .machine = "virt",
-+        .arch = "aarch64",
-         .tcg_only = true,
-         .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-         .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-@@ -1937,6 +1959,7 @@ static void test_acpi_aarch64_virt_tcg_topology(void)
- {
-     test_data data = {
-         .machine = "virt",
-+        .arch = "aarch64",
-         .variant = ".topology",
-         .tcg_only = true,
-         .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-@@ -2020,6 +2043,7 @@ static void test_acpi_aarch64_virt_viot(void)
- {
-     test_data data = {
-         .machine = "virt",
-+        .arch = "aarch64",
-         .tcg_only = true,
-         .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-         .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-@@ -2196,6 +2220,7 @@ static void test_acpi_aarch64_virt_oem_fields(void)
- {
-     test_data data = {
-         .machine = "virt",
-+        .arch = "aarch64",
-         .tcg_only = true,
-         .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-         .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
++    } else if (strcmp(arch, "riscv64") == 0) {
++        if (has_tcg && qtest_has_device("virtio-blk-pci")) {
++            qtest_add_func("acpi/virt", test_acpi_riscv64_virt_tcg);
++        }
+     }
+     ret = g_test_run();
+     boot_sector_cleanup(disk);
 -- 
 2.40.1
 

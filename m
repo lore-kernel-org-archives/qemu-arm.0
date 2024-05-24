@@ -1,202 +1,278 @@
-Received: by 2002:a05:7022:4391:b0:7c:9548:a19d with SMTP id bo17csp997548dlb;
-        Thu, 23 May 2024 23:17:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUGn4q9p1/JJgXKFRKwtZDYFjetwUruKLuYS4q8FGu0nqpKbyokQ7Kcj4gpJtI73IJr2BI/c3Qi7puIHOMRw7U5+6D5y5JO
-X-Google-Smtp-Source: AGHT+IGO0kQohNopD2WMir6oaXIDgP1gIRqj3Ybl7iHyWCFJNiy9eWXSMvh/PdmwX6so3rTe2oHg
-X-Received: by 2002:ac8:7c44:0:b0:43e:b52:eea1 with SMTP id d75a77b69052e-43fa746b00cmr83769081cf.16.1716531458397;
-        Thu, 23 May 2024 23:17:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716531458; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp1635933ejb;
+        Fri, 24 May 2024 04:46:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUQSrfK25dscV7wFoOzpAiNxV77sEWD9w1sq8T/C9CoFQwcBNnpgHtvDxaynCAn8iyF5aMUK3OorHJ5MeWoCFvlHq2n4uZO
+X-Google-Smtp-Source: AGHT+IEqFX76plXQVQj3Pqq0FW4VaoykHDWc8xDDAUvIwA7rwZDMqS4iazLumqP8mlUUa6WgI6FX
+X-Received: by 2002:a05:622a:19a2:b0:43a:cdb9:a8ef with SMTP id d75a77b69052e-43fb0d6fffemr18743961cf.0.1716551208635;
+        Fri, 24 May 2024 04:46:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716551208; cv=none;
         d=google.com; s=arc-20160816;
-        b=oNJkwys92JetDvqfKMoLLpYk/5sKj4Zuh17EBgggvsdOoknMT1x4FIYuvT8cj+XYnW
-         itCDuKUPA5Eai3zZJA1aTZ4cqin+qmOmighuAntO3zQJwq8cGl7VMbmR91YsHGSMNhaM
-         DepqE2BALxV5jEu2f5hyBVzVhif/VUmOyMHEVuMniXgHGxwbNi02+3QEh7RpUhPkIc97
-         bvUh+8PpaGERhujJeoIj5z1KhizQ2Jkuf7l4xbJSZoz9sBAla/VlV1VU6H1wXte3HcRW
-         tFkZR15Fp6NumLnLYhVDEyeu4Ou9V9vLPQhc05J+Fm0AMShsoQAYvArXAKeVo5vFovh6
-         ZkEQ==
+        b=xdDvlt91Fd4HghGp8RtL1FwqETD/JgG4695gm8HEIjFv2GBoPJHs8QlmFDFzVwEjwG
+         RllELHlAGyG/2XpLkHQPJrJ+r7gOt9fy/xt0Vbx9XKZkqPtw+vOywCtaclHG9f6NsccY
+         DU6J2iyK9bse3SD8N+gaN66fIDL72JoSEPBkRlF4cFGhOp5gE3f+f/lrgmHxkhLq0LRb
+         1VK5Gh061LeIjFnjudOcxCWh/ji6teOneKwIwxwmJJ6BIRJqrUX/S1kDFpDm3R96upTa
+         X1G4biF0PDn4GU+y+vkgfDTIX9D4tFX1bIe9i3e7JMAIna3J2TcdmArY0MOgx+uhvDTX
+         zNbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=tsa6//hDacH3c+JfwYsMFNnpZVOmhl0+Dj2RJG6LSfI=;
-        fh=FUElS1R31tSZ3iV0O5RWS4E5lUSSRajW6UIjzULHa6s=;
-        b=NxLBl9zPo+eSghtuMtdskNbNRc0SK/I0V0YyttdvHsLgjxhkoVs/LlUTAXYp+Gm7gX
-         G3qStFTntS3WFezmsscjyjPYLnijmUlnJgCPhUteM2L5wbMfS0c1KoKCxVF8fL9V5QTj
-         Vgj2w7ETqvRbumBfLnVZR+R3TwCHmgXI1cf0pUHUEdZR5dBc33VCXGny1SIR5D4t84RN
-         /7pbTOrxHVlTbN1rBKW4KIL5kyDbmwwJb0hvOHGhTo8udCSK2eWO2nrwJEYc0eYL75nx
-         4HVgWJx8sifQYqq8z5Avo7UvxLB+U56U13CIhOswirXaQfI3gphvddmKfohRth0UMQM9
-         ilug==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=bmfljEUxitQ41kcEkIC06kaDQKyuxNPt6MXJBnYPQv8=;
+        fh=VQUMc85x8ANizanga/Uk0eVpSOWbPwTPWK+d/C2OKHM=;
+        b=mi2OcJ+yACaswgOz2W+vlWWIcYqwcd8b27xwlUth1EWWUZAdQ28pjJ44OfPeklR2OJ
+         ox/LKPGBNn0uqeEDpMWGO4Ly/LY1JsPSHGALjzVI8lY19dBade1fnU0ituW50EKUeeM8
+         KCtaTar495a2vEXLg0vk0NHhMyR8MDgnodKuZ5AITuwhIqIAa8mUxY6VqvwK4OlqJVow
+         cbSgM3/8WA3744WRZtDm5sE19OfGjTWN/iEdIvvJ7qMmPliaLRU24qd4VYRfl3d3tX9X
+         WD/UImxUBySgyDdrh33yjkDqUNaGQFwFXmJsL7LEeBcHYaQ7F2vQ1CRWzUH9xS0vDFQc
+         v7yw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=RNS20LcR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43fb17bb0aasi11632571cf.72.2024.05.23.23.17.38
+        by mx.google.com with ESMTPS id d75a77b69052e-43fb18b2d09si16250161cf.411.2024.05.24.04.46.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 May 2024 23:17:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 24 May 2024 04:46:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=RNS20LcR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sAODb-0003Eh-I8; Fri, 24 May 2024 02:15:55 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sATNN-0006Gp-Sy; Fri, 24 May 2024 07:46:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sAODT-0002yM-31
- for qemu-devel@nongnu.org; Fri, 24 May 2024 02:15:49 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sAODI-0001TP-0z
- for qemu-devel@nongnu.org; Fri, 24 May 2024 02:15:46 -0400
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-6f8f30712d3so255691b3a.0
- for <qemu-devel@nongnu.org>; Thu, 23 May 2024 23:15:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1716531332; x=1717136132; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=tsa6//hDacH3c+JfwYsMFNnpZVOmhl0+Dj2RJG6LSfI=;
- b=RNS20LcRvskTYBdSoRSLhmMr+Sq+pgTODiHUByq/03kp7Svi/7sIPjQbaiT60gVn8o
- VkNpsyNPYePEHbfluD1w5tY1+yPqhZ8F/FDpBMsfz0lzXnzxHhx4vOBPfWTL/SmSXaph
- Ry2lw8oJ+Vpmyux+Yv28K2iR3+dturZ+IbIjU4/rk9s7KW2B3TxPyAupoOBe9xWaEgFt
- X33q09GCk+zZl2MUkxRDhvJ0fB/uKiStkmIy0SwGVihf51P50PrRefdBfHyAhHyrTTDj
- WXvbdPsAuQbrxUeNR5+lTT7/SdKDIPiJrr/YtBk/m15b5QwaUmEyJjOcSBfO9Ou7rhRI
- BiZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716531332; x=1717136132;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=tsa6//hDacH3c+JfwYsMFNnpZVOmhl0+Dj2RJG6LSfI=;
- b=Jes3wpM9H+VaUiHHv7qclxAmNMfgL5C1MSMD8KCROO2T+lT85ET6Vc2Ic47u2bQKMr
- Dx/9gQ+QRWLMi34iHQoFCQ9fndKODcHLXMtsC9xVHh6ihzvCa7Vxo5e9RGHcal0pz9Yc
- qfpazNVtcxpxBsOjMQqc9CGDFubPlK86Iml5GMmFyRG73gWbX1WjCu4DAo3jOiqGB/1H
- j9r7vH5NJDFOB3NUOv1ZDxLmL0xbq2Jkc4oT+LvqUcni4MyyhUC3LIA4l/jxTjvN5XlW
- ckBXTfy/Mw93rxyO0Upk2fcKssOofiqo9PKI7ZhVFJorq6HG4NzstfRQ4Lii2WdcU2S1
- AzQw==
-X-Gm-Message-State: AOJu0YwSgYfArDyaT74qHCvxgGt759eN3AfpJaf2cNJ55yUAjnMlQvPj
- D8ArKGF086wbQSGGjzghm3iHRumgxdsM8TVXlsYaoFv3AXFqMFK2RRcqhymob6qLzwp+6lo63Nh
- NdHo=
-X-Received: by 2002:a05:6a20:5646:b0:1b1:d74d:87b0 with SMTP id
- adf61e73a8af0-1b205ce9273mr5104824637.22.1716531331796; 
- Thu, 23 May 2024 23:15:31 -0700 (PDT)
-Received: from sunil-pc.Dlink ([106.51.188.31])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-6f8fcbea487sm516106b3a.107.2024.05.23.23.15.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 May 2024 23:15:31 -0700 (PDT)
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Alistair Francis <alistair23@gmail.com>,
- Sia Jee Heng <jeeheng.sia@starfivetech.com>,
- Haibo1 Xu <haibo1.xu@intel.com>, Anup Patel <apatel@ventanamicro.com>,
- Andrew Jones <ajones@ventanamicro.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH v2 10/12] tests/qtest/bios-tables-test: Add empty ACPI data
- files for RISC-V
-Date: Fri, 24 May 2024 11:44:09 +0530
-Message-Id: <20240524061411.341599-11-sunilvl@ventanamicro.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20240524061411.341599-1-sunilvl@ventanamicro.com>
-References: <20240524061411.341599-1-sunilvl@ventanamicro.com>
+ (Exim 4.90_1) (envelope-from <sebastian.huber@embedded-brains.de>)
+ id 1sATNE-0005qC-Ts; Fri, 24 May 2024 07:46:14 -0400
+Received: from dedi548.your-server.de ([85.10.215.148])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebastian.huber@embedded-brains.de>)
+ id 1sATN5-00026b-Pn; Fri, 24 May 2024 07:46:09 -0400
+Received: from sslproxy02.your-server.de ([78.47.166.47])
+ by dedi548.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.96.2) (envelope-from <sebastian.huber@embedded-brains.de>)
+ id 1sATN2-000I1c-06; Fri, 24 May 2024 13:46:00 +0200
+Received: from [82.100.198.138] (helo=mail.embedded-brains.de)
+ by sslproxy02.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.96) (envelope-from <sebastian.huber@embedded-brains.de>)
+ id 1sATN2-000JGF-2D; Fri, 24 May 2024 13:46:00 +0200
+Received: from localhost (localhost [127.0.0.1])
+ by mail.embedded-brains.de (Postfix) with ESMTP id 8A3E64800E9;
+ Fri, 24 May 2024 13:45:59 +0200 (CEST)
+Received: from mail.embedded-brains.de ([127.0.0.1])
+ by localhost (zimbra.eb.localhost [127.0.0.1]) (amavis, port 10032)
+ with ESMTP id ZF7SOVh3qLJW; Fri, 24 May 2024 13:45:59 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.embedded-brains.de (Postfix) with ESMTP id 1A67E480197;
+ Fri, 24 May 2024 13:45:59 +0200 (CEST)
+X-Virus-Scanned: amavis at zimbra.eb.localhost
+Received: from mail.embedded-brains.de ([127.0.0.1])
+ by localhost (zimbra.eb.localhost [127.0.0.1]) (amavis, port 10026)
+ with ESMTP id XBrXEF1hWdfM; Fri, 24 May 2024 13:45:59 +0200 (CEST)
+Received: from [10.10.171.10] (unknown [10.10.171.10])
+ by mail.embedded-brains.de (Postfix) with ESMTPSA id C88354800E9;
+ Fri, 24 May 2024 13:45:58 +0200 (CEST)
+Message-ID: <4c09228c-55b5-48e8-8383-6edbc78dd4da@embedded-brains.de>
+Date: Fri, 24 May 2024 13:45:58 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x435.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] hw/arm/xilinx_zynq: Support up to two CPU cores
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20240507130349.86851-1-sebastian.huber@embedded-brains.de>
+ <20240507130349.86851-3-sebastian.huber@embedded-brains.de>
+ <CAFEAcA_KBcL9UsqpOMk7GhWwokdEmC3fKZg_q7tdyt9LM7RFpA@mail.gmail.com>
+Content-Language: en-US
+From: Sebastian Huber <sebastian.huber@embedded-brains.de>
+In-Reply-To: <CAFEAcA_KBcL9UsqpOMk7GhWwokdEmC3fKZg_q7tdyt9LM7RFpA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-Authenticated-Sender: smtp-embedded@poldi-networks.de
+X-Virus-Scanned: Clear (ClamAV 1.0.3/27285/Fri May 24 10:30:55 2024)
+Received-SPF: pass client-ip=85.10.215.148;
+ envelope-from=sebastian.huber@embedded-brains.de; helo=dedi548.your-server.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: h4B5oDDQULUB
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wprngja0JajR
 
-As per process documented (steps 1-3) in bios-tables-test.c, add empty
-AML data files for RISC-V ACPI tables and add the entries in
-bios-tables-test-allowed-diff.h.
+Hello Peter,
 
-Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
----
- tests/data/acpi/virt/riscv64/APIC           | 0
- tests/data/acpi/virt/riscv64/DSDT           | 0
- tests/data/acpi/virt/riscv64/FACP           | 0
- tests/data/acpi/virt/riscv64/MCFG           | 0
- tests/data/acpi/virt/riscv64/RHCT           | 0
- tests/data/acpi/virt/riscv64/SPCR           | 0
- tests/qtest/bios-tables-test-allowed-diff.h | 6 ++++++
- 7 files changed, 6 insertions(+)
- create mode 100644 tests/data/acpi/virt/riscv64/APIC
- create mode 100644 tests/data/acpi/virt/riscv64/DSDT
- create mode 100644 tests/data/acpi/virt/riscv64/FACP
- create mode 100644 tests/data/acpi/virt/riscv64/MCFG
- create mode 100644 tests/data/acpi/virt/riscv64/RHCT
- create mode 100644 tests/data/acpi/virt/riscv64/SPCR
+thanks for the review.
 
-diff --git a/tests/data/acpi/virt/riscv64/APIC b/tests/data/acpi/virt/riscv64/APIC
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/riscv64/DSDT b/tests/data/acpi/virt/riscv64/DSDT
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/riscv64/FACP b/tests/data/acpi/virt/riscv64/FACP
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/riscv64/MCFG b/tests/data/acpi/virt/riscv64/MCFG
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/riscv64/RHCT b/tests/data/acpi/virt/riscv64/RHCT
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/virt/riscv64/SPCR b/tests/data/acpi/virt/riscv64/SPCR
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..d8610c8d72 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,7 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/virt/riscv64/APIC",
-+"tests/data/acpi/virt/riscv64/DSDT",
-+"tests/data/acpi/virt/riscv64/FACP",
-+"tests/data/acpi/virt/riscv64/MCFG",
-+"tests/data/acpi/virt/riscv64/RHCT",
-+"tests/data/acpi/virt/riscv64/SPCR",
--- 
-2.40.1
+On 20.05.24 15:58, Peter Maydell wrote:
+> On Tue, 7 May 2024 at 14:04, Sebastian Huber
+> <sebastian.huber@embedded-brains.de>  wrote:
+>> The Zynq 7000 SoCs contain two Arm Cortex-A9 MPCore (the Zynq 7000S ha=
+ve only
+>> one core).  Add support for up to two simulated cores.
+>>
+>> Signed-off-by: Sebastian Huber<sebastian.huber@embedded-brains.de>
+>> ---
+>>   hw/arm/xilinx_zynq.c | 42 +++++++++++++++++++++++++++---------------
+>>   1 file changed, 27 insertions(+), 15 deletions(-)
+>>
+>> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+>> index 078abd77bd..3b858e3e9a 100644
+>> --- a/hw/arm/xilinx_zynq.c
+>> +++ b/hw/arm/xilinx_zynq.c
+>> @@ -184,6 +184,8 @@ static void zynq_init(MachineState *machine)
+>>       SysBusDevice *busdev;
+>>       qemu_irq pic[64];
+>>       int n;
+>> +    unsigned int smp_cpus =3D machine->smp.cpus;
+>> +    qemu_irq cpu_irq[2];
+> We prefer not to have arrays of qemu_irq like this that are
+> just passing qemu_irqs from one place to another. Instead
+> at the point where you want the ARM_CPU_IRQ of a particular
+> CPU, call qdev_get_gpio_in() on the CPU object there.
+>=20
+> I suggest dropping the "ARMCPU *cpu" local from this function
+> and instead adding an "ARMCPU *cpu[ZYNQ_MAX_CPUS]" array to
+> the ZynqMachineState struct.
 
+I used the hw/arm/realview.c as a template for this change. I will try=20
+to implement the suggested changes.
+
+>=20
+>>       /* max 2GB ram */
+>>       if (machine->ram_size > 2 * GiB) {
+>> @@ -191,21 +193,27 @@ static void zynq_init(MachineState *machine)
+>>           exit(EXIT_FAILURE);
+>>       }
+>>
+>> -    cpu =3D ARM_CPU(object_new(machine->cpu_type));
+>> +    for (n =3D 0; n < smp_cpus; n++) {
+>> +        Object *cpuobj =3D object_new(machine->cpu_type);
+>>
+>> -    /* By default A9 CPUs have EL3 enabled.  This board does not
+>> -     * currently support EL3 so the CPU EL3 property is disabled befo=
+re
+>> -     * realization.
+>> -     */
+>> -    if (object_property_find(OBJECT(cpu), "has_el3")) {
+>> -        object_property_set_bool(OBJECT(cpu), "has_el3", false, &erro=
+r_fatal);
+>> -    }
+>> +        /* By default A9 CPUs have EL3 enabled.  This board does not
+>> +         * currently support EL3 so the CPU EL3 property is disabled =
+before
+>> +         * realization.
+>> +         */
+> If you're moving comment text around checkpatch will suggest that
+> you fix it up to our current coding standard, which is that
+> a multiline comment has the "/*" on a line of its own.
+
+Ok.
+
+>=20
+>> +        if (object_property_find(cpuobj, "has_el3")) {
+>> +            object_property_set_bool(cpuobj, "has_el3", false, &error=
+_fatal);
+>> +        }
+>> +
+>> +        object_property_set_int(cpuobj, "midr", ZYNQ_BOARD_MIDR,
+>> +                                &error_fatal);
+>> +        object_property_set_int(cpuobj, "reset-cbar", MPCORE_PERIPHBA=
+SE,
+>> +                                &error_fatal);
+>>
+>> -    object_property_set_int(OBJECT(cpu), "midr", ZYNQ_BOARD_MIDR,
+>> -                            &error_fatal);
+>> -    object_property_set_int(OBJECT(cpu), "reset-cbar", MPCORE_PERIPHB=
+ASE,
+>> -                            &error_fatal);
+>> -    qdev_realize(DEVICE(cpu), NULL, &error_fatal);
+>> +        qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+>> +
+>> +        cpu_irq[n] =3D qdev_get_gpio_in(DEVICE(cpuobj), ARM_CPU_IRQ);
+>> +    }
+>> +    cpu =3D ARM_CPU(first_cpu);
+>>
+>>       /* DDR remapped to address zero.  */
+>>       memory_region_add_subregion(address_space_mem, 0, machine->ram);
+>> @@ -238,10 +246,14 @@ static void zynq_init(MachineState *machine)
+>>       sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
+>>
+>>       dev =3D qdev_new(TYPE_A9MPCORE_PRIV);
+>> -    qdev_prop_set_uint32(dev, "num-cpu", 1);
+>> +    qdev_prop_set_uint32(dev, "num-cpu", smp_cpus);
+>>       busdev =3D SYS_BUS_DEVICE(dev);
+>>       sysbus_realize_and_unref(busdev, &error_fatal);
+>>       sysbus_mmio_map(busdev, 0, MPCORE_PERIPHBASE);
+>> +    for (n =3D 0; n < smp_cpus; n++) {
+>> +        sysbus_connect_irq(busdev, n, cpu_irq[n]);
+>> +    }
+> Looks like you have based this on a version of QEMU which doesn't
+> have commit 68a5827b80117973 which wires up the FIQ line of the
+> A9MPCORE_PRIV device to the CPUs.
+
+Yes, indeed. I originally used a Qemu version from Xilinx. They have a=20
+huge set of patches which is not integrated in Qemu.
+
+>=20
+>> +    zynq_binfo.gic_cpu_if_addr =3D MPCORE_PERIPHBASE + 0x100;
+>>       sysbus_create_varargs("l2x0", MPCORE_PERIPHBASE + 0x2000, NULL);
+>>       sysbus_connect_irq(busdev, 0,
+>>                          qdev_get_gpio_in(DEVICE(cpu), ARM_CPU_IRQ));
+>> @@ -357,7 +369,7 @@ static void zynq_machine_class_init(ObjectClass *o=
+c, void *data)
+>>       MachineClass *mc =3D MACHINE_CLASS(oc);
+>>       mc->desc =3D "Xilinx Zynq Platform Baseboard for Cortex-A9";
+>>       mc->init =3D zynq_init;
+>> -    mc->max_cpus =3D 1;
+>> +    mc->max_cpus =3D 2;
+>>       mc->no_sdcard =3D 1;
+>>       mc->ignore_memory_transaction_failures =3D true;
+>>       mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a9");
+>> --
+> I'm not making this a condition for accepting this patch, but
+> since you're working on this board model would you consider
+> writing up some documentation for it? It's one of the boards
+> we do not currently have documented at all. This doesn't have to
+> be very extensive: a few paragraphs describing what the board
+> type is, maybe linking to a reference to the hardware, listing
+> what is and isn't implemented, and (if there are some convenient
+> examples available) perhaps listing some examples of use.
+> docs/system/arm/xlnx-versal-virt.rst is the docs for the
+> Xilinx Versal board; the rendered version of that is:
+> https://www.qemu.org/docs/master/system/arm/xlnx-versal-virt.html
+> orhttps://www.qemu.org/docs/master/system/arm/realview.html
+> is an example of a more minimal board documentation page.
+
+Ok, I add this to my TODO list or try to delegate this, but it will take=20
+some time.
+
+--=20
+embedded brains GmbH & Co. KG
+Herr Sebastian HUBER
+Dornierstr. 4
+82178 Puchheim
+Germany
+email: sebastian.huber@embedded-brains.de
+phone: +49-89-18 94 741 - 16
+fax:   +49-89-18 94 741 - 08
+
+Registergericht: Amtsgericht M=C3=BCnchen
+Registernummer: HRB 157899
+Vertretungsberechtigte Gesch=C3=A4ftsf=C3=BChrer: Peter Rasmussen, Thomas=
+ D=C3=B6rfler
+Unsere Datenschutzerkl=C3=A4rung finden Sie hier:
+https://embedded-brains.de/datenschutzerklaerung/

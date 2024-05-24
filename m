@@ -1,96 +1,97 @@
-Received: by 2002:a05:7022:4391:b0:7c:9548:a19d with SMTP id bo17csp997090dlb;
-        Thu, 23 May 2024 23:16:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWY9scrY2ywIMxYkMjV+/Z/MSzc8qM4CAkgjcUui2Yd5M2mS0qFFPMkK3V2vgzm1rNyntyDc+3Qd6c7ajDE3/WX+wosvc1X
-X-Google-Smtp-Source: AGHT+IHnRI/3w0CmFLhucTgIGVzN6FdabIAwkUeYbjfvPtmEO78GoAPG15oBZ+B0/tSwsnYYqmCN
-X-Received: by 2002:a05:622a:120c:b0:43a:b558:4ab7 with SMTP id d75a77b69052e-43fafb119cfmr27077181cf.15.1716531383599;
-        Thu, 23 May 2024 23:16:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716531383; cv=none;
+Received: by 2002:a05:7022:4391:b0:7c:9548:a19d with SMTP id bo17csp997268dlb;
+        Thu, 23 May 2024 23:16:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWzzYlNpj3/NkYINk9Gwn6QChZOi/DDkH8VVkN5gh1uLWZ77ZDTgOoyNumzpJklkN+YqdQrl1MWEGyCTescGARBvleSlzoH
+X-Google-Smtp-Source: AGHT+IH9talPUNh5lXIbhzMOYz00iN3b171zfWJfCCL6uw+n8sTsr74Axw54yhXvDzIMV6+dp+Gw
+X-Received: by 2002:a81:840c:0:b0:620:255a:a5c5 with SMTP id 00721157ae682-62a08ea7e3fmr12501247b3.32.1716531411343;
+        Thu, 23 May 2024 23:16:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716531411; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gob1BfMcdr4Jgrit20vt31bImXbKhsFVpgtxciDHasSzilxrFWLLBRB0SZNRwVJpvH
-         NgRnywky8slad13w5PhdfNyTq4V7Te6aFmzQil+I64o4mGvY4mLnElp5wIsa+8dGUdw/
-         0OQWH1hf8CNYcXJVVD1no9t7mMiDUDD8OPSRIsmg4gqbEUqbiTQPzUx31MJA9cov37VO
-         0eTTzkjsY8ymnGuTEXCCNWltzGY2zTMZ6CB6qjR/KmbrvYCDMwLDePMHG33x77tEMk5p
-         6pW8a7ujNbdQS7wnnZ0LoDGif3DroCiGs8ggbAWPZ2YtarxBlqp7ksyuxuQZAgYtLwNr
-         Pxdg==
+        b=vClLXoE73+uZnt9dTPg3t9XfFKYDBO0f+G62HLBMbs8HGTVKFFGWK2KcKpa94LQ5Fx
+         3DPSSVy5G7tTM+21DGazxk6poDIa4OrsBd6ZUNS/KhWpYuDCr+eD0BaDwimG7Zim//2V
+         9r5YkUBjME+3kXah2SxcKw6txIqucYOAY5qvJvxZekhJCW6GirwM6c4oM2zCwcbzeUp2
+         IOXAFPxZOdw/ioo7Ld9YgQR/nKWZkGgh6nPMwgSLSaO+tVmHsaqLV5L/3dFkqUmZG8kA
+         ly/9pVQBd/KhTZx3zQstXFxIGstCX3mgz3uoxr+wBMrekOxO01DVJmF5N0YPF+dfDTrc
+         GFrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=RcfoEn0r+dUFaV9tSzSbjgDAo5LS0QTZp+0mzHs9Iww=;
-        fh=2M7juJbraFC8RjaPEPKLIoCGnlKsgTIkUKLv17Xo6RY=;
-        b=qgPe3zRhmM0Xuevx8MGe0S/Vx5te9pPPCd1kfB8O9Lv43l+8aLAA5K0DQwUubWQGU5
-         gHEe6WeMYIipDMToFZySZSc3mahz6/zFiMYK0so+SDVBmN7zIa7HkxwzDQMwnu9XIuR4
-         f3o8Skb5/cyXBurVvJhqPgoL7Sm/PkJfP2IFShciJxueKwdShPZg9+uK/NV5RYePKdsy
-         olZaKwdaRlb02I7jgBUN/CNXYYjktGsv5lna5dzfhutPgrT9q0Sl4gKjSDC+Oa5FZiJR
-         oth9ZN7RbemA4Q3NO1EjqDPQhqjzoziTXxAVLowI8OTCu2e7nFX816O6REGZPTdHJzSr
-         l1Hg==;
+        bh=2sFSRuC8+CxMlP5PVNh1RPxJK2RXSojBm6McPGcyLX8=;
+        fh=wdkWUhvMqxGb98W/2iMZr6rkLyg1EbtS/IVeWjcBk5E=;
+        b=TCD1HNEoanogxiVcW7PrLujZsKqpoBft6EJSeVv+DlEoKEW7lMklLKRutw1oU0TQHc
+         /cdg8gh6ErZtEPPQDz7h3PtlCu5KmKVTpRRp3vX0mVz9Nloi17zAE8MTfQAThL54rW+K
+         gy5lQyZSmKkE8fAs8Zkt3WaRPDR0erNXaVHwEG1GSdiRek4P0yChG+5xxPm6q2JAsQrh
+         7+U5tACN7/EdAGsk4s0cZB/wguKly5kdLkEVZtlsdqG6x0G4wZxem6m+LjrR6n425THt
+         ICSqXpa0DX2KpstKjrwSYN1XuM83wPdKk0QA/k1tk42Y3KSme0LNSQXjcUUnRt8hQ2R0
+         GLNg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=am7n+mBR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="K/FOn/3/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43fb18a6c3asi10918691cf.379.2024.05.23.23.16.23
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ac07086d34si9550236d6.184.2024.05.23.23.16.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 May 2024 23:16:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 23 May 2024 23:16:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=am7n+mBR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b="K/FOn/3/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sAODZ-00034H-0h; Fri, 24 May 2024 02:15:53 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sAODE-0002jq-6j; Fri, 24 May 2024 02:15:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sAOD7-0002Xs-Cl
- for qemu-devel@nongnu.org; Fri, 24 May 2024 02:15:28 -0400
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+ id 1sAOD5-0002Tf-VF
+ for qemu-arm@nongnu.org; Fri, 24 May 2024 02:15:25 -0400
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sAOD3-0001LO-2j
- for qemu-devel@nongnu.org; Fri, 24 May 2024 02:15:24 -0400
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-6f4ed9dc7beso2167157b3a.1
- for <qemu-devel@nongnu.org>; Thu, 23 May 2024 23:15:19 -0700 (PDT)
+ id 1sAOCv-0001Kc-Fn
+ for qemu-arm@nongnu.org; Fri, 24 May 2024 02:15:23 -0400
+Received: by mail-oa1-x35.google.com with SMTP id
+ 586e51a60fabf-24c9f628e71so273814fac.1
+ for <qemu-arm@nongnu.org>; Thu, 23 May 2024 23:15:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1716531318; x=1717136118; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1716531311; x=1717136111; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=RcfoEn0r+dUFaV9tSzSbjgDAo5LS0QTZp+0mzHs9Iww=;
- b=am7n+mBRmMHwm/C+V3LMfQsj6tFcV1EdFD5QSGSB9dQppzPzwF06oBDdRiwWTFKiYq
- UbonILHERSqJXWOgAHsy9wuKJafGdxprmWgnIIFnQp2h0JHeZPuXna7TyMg3UMSWwDVF
- 5UxlSFgyMFuHmg6v2GfpdckZOkOY851tcdtawrpY1DToQzUzYZp7Tyzmz9wOLl8q2Emq
- RPkHT6tAz5JEDTderXJLtcvF4cuFs+ABGKGqFcsQsXgxJNWouB5DYyTNGzjMUMUhvMNv
- //dZPpVxgIrZcHMbcENf0A8Bo8nxjL8TTaGRdG3GUodYgYDWWidPjAA5Ak2dbaEdsp1k
- zPWA==
+ bh=2sFSRuC8+CxMlP5PVNh1RPxJK2RXSojBm6McPGcyLX8=;
+ b=K/FOn/3/zAEnbbCQfIuTccMln61Hn9789BkVcuOYDyjwVstGAAPF6H0xFI70TMwO80
+ U8X4jSamAmtz3Skaqi1dXpFrwXnO1vNA+1/v2YthdJaqH3wdNORV5wl70RRoKw5Hoy1v
+ w7EaGXXgPUICupVF+QmTrByKcHRs+b0ZpX2sybthQXYXBQCS/zHb0BoAHsJ+U9sELXeh
+ Sm5voLjPGC4zdY5EOZK/38N9wkBRMUIt2LMaq2iY2bx4pKyQxj9MHbkDB6zUVrL8f7+c
+ co8R6gdzvVgJj9XJ4aPTF85+/c+KzVt6NsPPKU/2P527n2SemgqUqobQPV6FACRre65k
+ 48RA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716531318; x=1717136118;
+ d=1e100.net; s=20230601; t=1716531311; x=1717136111;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=RcfoEn0r+dUFaV9tSzSbjgDAo5LS0QTZp+0mzHs9Iww=;
- b=WeBBUSMpARcRq9cgNqQDWhL4/Fe25wT5NMVm/OjycFlk4RO+PxybM7QjXoPTltxmzq
- iWR3d6z6yuGs3jc0X5DIT/Y2cM5GFh8heRqbHhvUN7v9zaFaEDvfPJxEPBAFDgiRDsyT
- V3HlvSf6KwDKq+O/TDqcIQPeEabwXjpVREEoMAxvYDAUG+kBKYx2z1Spj9hqeef0NkwZ
- I+IKpGz/Telm/EiMPSF1BWfeiyLKyBCcMNg8cVkO59gkScNCQl1nNBZqR/uTencNCKkH
- ZWE9W3RlxlXBnXYugQwLU/L2q7eJ1LTAVemQIBX45TjajpV4QpQrmDt9zjT9CcrTgZpR
- im6Q==
-X-Gm-Message-State: AOJu0YxAPpXQDLpv0LHbmD+NvAy6xekNPC8PZfWLoosI9ul2W1q/PVdw
- 7qGF6pubtLah52XpUuWwXbkwKNQDafDv2baz74hJ4lxG3TVlqPK0vtIERbiZXD3aW0dqA8gRUHj
- HJ7M=
-X-Received: by 2002:a05:6a00:301c:b0:6f3:eb71:af90 with SMTP id
- d2e1a72fcca58-6f8e924aa5amr2060584b3a.4.1716531317800; 
- Thu, 23 May 2024 23:15:17 -0700 (PDT)
+ bh=2sFSRuC8+CxMlP5PVNh1RPxJK2RXSojBm6McPGcyLX8=;
+ b=pq+dGmnNaa75iT+I/l5f0YEiga7fYUEPcDz8KJG6/0VtnR2a/pY3EgDFkQi4iEoAqh
+ 4zU8JgvKSd2wJCWeNBt0VD53Aned9DpuSKR+GtLV8o/eV/u7AP6feXRDjOFE0KkSTN1d
+ q7SeKUPvH41sr9C7VAOJ2scADB3GmPzOOhjT/6HNw0hkSEIwVUrhhlZmODjxyZOFiq6/
+ Zgx9grX5HUUeZS+y0fNILOvB+nqir4PCxGtAM7CAE9isIgcPPofFiaZAr7jRz4xgmZtR
+ IGjvocfHhgwtuFX8u162COhkeq1jsVNuahkFLULvNI7ai8GJS/4dfQQTAqKvgV8Wy2NL
+ T2Ng==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXAEDHxchqbC5YbbBNq9vLBGUrROgakeulHySVvyPxyLS7Er/OMIcoHtb/xW5/IfiabGKB1kTE1VyPhD4HOo9/NlzkY
+X-Gm-Message-State: AOJu0Yzu78gwoMZPgwDC8XkLcG3vSxd6lkI3cku27TTmJWCCAuSCoTnR
+ 8tDgSjWfarff9rYoglJaA8kUv3FFJ4Lt9tjZPG+oIaL6N9tFklyulONUoqhqK1Y=
+X-Received: by 2002:a05:6871:112:b0:24c:5d25:ed48 with SMTP id
+ 586e51a60fabf-24ca14e1c25mr1500113fac.46.1716531310853; 
+ Thu, 23 May 2024 23:15:10 -0700 (PDT)
 Received: from sunil-pc.Dlink ([106.51.188.31])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-6f8fcbea487sm516106b3a.107.2024.05.23.23.15.11
+ d2e1a72fcca58-6f8fcbea487sm516106b3a.107.2024.05.23.23.15.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 May 2024 23:15:17 -0700 (PDT)
+ Thu, 23 May 2024 23:15:10 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -113,77 +114,59 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Sunil V L <sunilvl@ventanamicro.com>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v2 08/12] pc-bios/meson.build: Add support for RISC-V in
- unpack_edk2_blobs
-Date: Fri, 24 May 2024 11:44:07 +0530
-Message-Id: <20240524061411.341599-9-sunilvl@ventanamicro.com>
+Subject: [PATCH v2 07/12] meson.build: Add RISC-V to the edk2-target list
+Date: Fri, 24 May 2024 11:44:06 +0530
+Message-Id: <20240524061411.341599-8-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240524061411.341599-1-sunilvl@ventanamicro.com>
 References: <20240524061411.341599-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x430.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::35;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-oa1-x35.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iOkPGDvT77T1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YjTCPntT4OC4
 
-Update list of images supported in unpack_edk2_blobs to enable RISC-V
-ACPI table testing.
+so that ACPI table test can be supported.
 
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- pc-bios/meson.build     | 2 ++
- tests/qtest/meson.build | 3 +++
- 2 files changed, 5 insertions(+)
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/pc-bios/meson.build b/pc-bios/meson.build
-index 0760612bea..8602b45b9b 100644
---- a/pc-bios/meson.build
-+++ b/pc-bios/meson.build
-@@ -4,6 +4,8 @@ if unpack_edk2_blobs
-     'edk2-aarch64-code.fd',
-     'edk2-arm-code.fd',
-     'edk2-arm-vars.fd',
-+    'edk2-riscv-code.fd',
-+    'edk2-riscv-vars.fd',
-     'edk2-i386-code.fd',
-     'edk2-i386-secure-code.fd',
-     'edk2-i386-vars.fd',
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 86293051dc..2f60f6aed8 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -259,6 +259,9 @@ qtests_s390x = \
- qtests_riscv32 = \
-   (config_all_devices.has_key('CONFIG_SIFIVE_E_AON') ? ['sifive-e-aon-watchdog-test'] : [])
+diff --git a/meson.build b/meson.build
+index a9de71d450..576c803a8a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -93,7 +93,7 @@ else
+   iasl = find_program(get_option('iasl'), required: true)
+ endif
  
-+qtests_riscv64 = \
-+  (unpack_edk2_blobs ? ['bios-tables-test'] : [])
-+
- qos_test_ss = ss.source_set()
- qos_test_ss.add(
-   'ac97-test.c',
+-edk2_targets = [ 'arm-softmmu', 'aarch64-softmmu', 'i386-softmmu', 'x86_64-softmmu' ]
++edk2_targets = [ 'arm-softmmu', 'aarch64-softmmu', 'i386-softmmu', 'x86_64-softmmu', 'riscv64-softmmu' ]
+ unpack_edk2_blobs = false
+ foreach target : edk2_targets
+   if target in target_dirs
 -- 
 2.40.1
 

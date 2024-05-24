@@ -1,117 +1,119 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp1994245ejb;
-        Fri, 24 May 2024 16:26:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW5QVajC5U3EX6GGOEzJRH5s6eijrA16WmDq574/nBbuqMQ7qonsjOkkSkBdwD+YfqXdYBSZ6Vx/vsvQ91Yxp/bFtBDOZ4g
-X-Google-Smtp-Source: AGHT+IFUXNpGXZVdceISR3M/mlRqv05DGz8mgit/GIqc2XApaWCbekQXg7uwkCOZ9NHMDJrzzyTd
-X-Received: by 2002:a05:6214:2b9c:b0:6ab:9a03:ff96 with SMTP id 6a1803df08f44-6ab9cfbe9d3mr61634326d6.7.1716593214135;
-        Fri, 24 May 2024 16:26:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716593214; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp1994272ejb;
+        Fri, 24 May 2024 16:27:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVIar+YEZKlH6EeyWkCe3+nN5hDZfLzEfVbxeSzhgk1sM04ELkqCT0r/Rj5VhuCHGzYC06ZL/6/jkoqHpifDH7nScP4Lgb2
+X-Google-Smtp-Source: AGHT+IHhVaRo6UP+IBBv2SDivOpc5xv5qoVEpRDdJFvrmHgnkjpANMyNzX4UADVee7/RHiTKW2ht
+X-Received: by 2002:a05:6808:1281:b0:3c9:6e96:88fb with SMTP id 5614622812f47-3d1a5483b98mr4733293b6e.4.1716593220569;
+        Fri, 24 May 2024 16:27:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716593220; cv=none;
         d=google.com; s=arc-20160816;
-        b=1H4e8euajTNcdmg2GMQZ3NGipaSiuzv4UjfVR4SB47ePqmFQgwza+1f1HWmXbGJvjw
-         uESZUDHjiATOm903FD+jMueZn+15QqW0TUJybmJBdBM9/LTMBbKbkR5v+77fcbP4EUzi
-         uXUQXAiLcebDwmjRR4DmU6A3GnFpjTmjV3MFD/QYhD0AtXXA3lHEQN/zrjxD9tfkHAd7
-         YMJapoMfRxKc43Y2W0EqqBSnCVWBdS8NOBYLjfcs4lOuSe7l6KIv93r2g/yAoADrDyWr
-         IyoYYRkjhS9MMZP7ZeNy3J8l5CGmnfK4UYYorXihQCKaVmSdCcY4VV5m6xFh+LcQIOoC
-         /Siw==
+        b=TFZhc+8b6iOy0GiFE9thCkFrs4Vq9n8IUSB3sJLW9ykdTVENQwWaffQ0JUqriNGmAR
+         Z8RFXFUR+Z3k1gxpZASwvpp0IuywWMRL3/LLaQGyszp12UpO/HnpXCkL+QpjKz6I6ew6
+         ruqHw3y9/nincCjxyhuCifTP7PJmXK8joIcF8kv21EUSosheMQNVKhDT9KwKdd7ukqXf
+         F+wWLTcod0Cmzif/SnNIK/2HNwC4kMz+5KIsiyAyLgEJPKoXqukWPMESX6/5yfoGiEEQ
+         6Qr29/PcX3xeUpaV0VTuZqt2L5redFjaDdROUSQCUJlePviiLIoVAKz06Y3mBdSXp6Qp
+         od6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=7DNXHK5xqHy7EXmKEeWHyhfM7wr361NDLjffbThLrQE=;
+        bh=uJ0q4kYSciCCJ5iNnH0cT/11J4ZEDfTPyyL262CCOCQ=;
         fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=YD8xYIYELcCLkBtMbhHKhzgEMqm24YYobIHE7fgrqpp6MZnQqxkcdygZDKKQCsqv3V
-         Gybl16a9e0MLsRaHMNWyS2njR9ORF1SPByTTdzCtfEIDEAvu6T0eAUyDJA+22NWbJUax
-         be2SlDNy4b17y4PndGupjP0OVznAu2BBPk6/R8vdDiAgMagI3EEsbT955typIwZmgxN4
-         oDxrpH4Aqz4lPLa6Tp5ZDPfMlKKb3nvXTVaRzrMV75SvI21CjIeN8748ZtxhaTMj19rr
-         9wZNfD1BHmrN0j2EtW8Q9DE+eNpd/x9jy0OvqiOLsFopuH8kSl6UqcdougDmndppfgat
-         V8zw==;
+        b=nYiZ3Xw5lkl1eQ6GjfgCfDQZ0510qTH7dCI2y2CJd5FAO82vleKtRpDhfXES20FBZc
+         5X6N2+ilVh7Cu0+FOKGMAw0y4Un5Up8/Qe81yP3GElmo3Fy1JlYQ/Lj+65c8OeHEVDJb
+         8PuryS7/FsXl481QOW+SWqOmfT2ItYWR7xl+RCB4S2FjHvO7GfWk2YR5Xo2TxmXM3KBN
+         OCyep54P6VVkAgCuj4z7gsQ8/W0qUHpPfqvteAvrhIppovvoQ0Lez9MRCRLIQ0ulTNFX
+         Fkux5u1yFNC8pQJckQdSHmDhZ7C+y+O02JQ9pV+tAyrASkntjmPSCOsRkVoXZmAt9t2A
+         Y3qw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Nn/qN8AF";
+       dkim=pass header.i=@linaro.org header.s=google header.b="m/PfeRW9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ac070f0fa3si27908266d6.256.2024.05.24.16.26.53
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ac070f0decsi27719276d6.199.2024.05.24.16.27.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 May 2024 16:26:54 -0700 (PDT)
+        Fri, 24 May 2024 16:27:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Nn/qN8AF";
+       dkim=pass header.i=@linaro.org header.s=google header.b="m/PfeRW9";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sAeI6-00083A-Fn; Fri, 24 May 2024 19:25:39 -0400
+	id 1sAeJB-0003Fr-I8; Fri, 24 May 2024 19:26:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sAeHj-0007Je-V0
- for qemu-arm@nongnu.org; Fri, 24 May 2024 19:25:20 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ id 1sAeI3-0007ob-R9
+ for qemu-arm@nongnu.org; Fri, 24 May 2024 19:25:35 -0400
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sAeHW-0006fz-MK
- for qemu-arm@nongnu.org; Fri, 24 May 2024 19:25:13 -0400
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-6f4ed9dc7beso2815165b3a.1
- for <qemu-arm@nongnu.org>; Fri, 24 May 2024 16:25:02 -0700 (PDT)
+ id 1sAeHt-0006wF-At
+ for qemu-arm@nongnu.org; Fri, 24 May 2024 19:25:35 -0400
+Received: by mail-pf1-x435.google.com with SMTP id
+ d2e1a72fcca58-6f8ea5e3812so1320468b3a.2
+ for <qemu-arm@nongnu.org>; Fri, 24 May 2024 16:25:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1716593101; x=1717197901; darn=nongnu.org;
+ d=linaro.org; s=google; t=1716593115; x=1717197915; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7DNXHK5xqHy7EXmKEeWHyhfM7wr361NDLjffbThLrQE=;
- b=Nn/qN8AFMuiqv0jOct0ln2BCI6RV2vISDczcfTCmRPUhPXG8I4ZOo2cyte6JI9ndZP
- Jmllxm8e+7uWHgDFPseowIXXmSsTJnVqpkDy0rbBUyZwpU1bbwQIsMwvga24/ZRVINsG
- H4ZUkKBKqceIbK/9md/PtvhMyJYFbGpIhp4TX197rilRPwxkRKMGqUy3ZbD9Mp8iCAId
- DWwBLLUhJQRt3HkuW4aJJucvvvC5xZGgjTQD0j3YBKI3gS99/Tj8LRKDNGIqupLSLxFZ
- OF9Umdp/pXJR+LNiAy+nmyS1foXLZuvrIU78kqjO6lgPq2eCMkau2gwnqRRkBo+OA11v
- vZ8A==
+ bh=uJ0q4kYSciCCJ5iNnH0cT/11J4ZEDfTPyyL262CCOCQ=;
+ b=m/PfeRW9mPt6DQ7OXihTEGWyVk3C/nVlqDJT78WF/JSffTqiW9g6W7ohSlHRzrU5X3
+ rDvrDu1doTxB5muO9Vr/e8TwmAmhAhe4PQLByQUrNlBz1C1nKeboUz/pISa2zTNOZJd1
+ 9qfSMYi666m4txlCQm3omIDb587UKkANCLit1N6X9Qvtp1xBr9GytG2q3/0KXrimkGct
+ DP10Wo0f2jjUwy3kNmTcIljSnusRDXchaGGkjsF5VCJh3G61Wro5c/qlELwIpBAomNnF
+ TzxeLx/mCwr5OD4r2Qe2Nn+syj0DgBqtt4qLoZTY83aaDYklx20N245CDOMdKqAKUemF
+ ECAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716593101; x=1717197901;
+ d=1e100.net; s=20230601; t=1716593115; x=1717197915;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7DNXHK5xqHy7EXmKEeWHyhfM7wr361NDLjffbThLrQE=;
- b=RUenDBe8tz3PUB6d2F0y/bML7TdPPmSLnm3jF8QKfnEUTdGyDr8cZqd5qgqU1YmyNF
- F5FLXQ2q8c+UXj1TH/gPnVblyN5CgzK42hI7rA7NKleW9s9YJ2KjCWXMZ9RT0ylsWTM6
- quTzKPBO0iJqz7SYqzjBThsP5XwEQFN1w/hqzAHD2Zx0UwLU+MZXxFbYFEcTOlLby4gn
- w7QQ6yoS1Ieff8CzbKdSiNC5yXApLnASKrjGSB9fTcu1lp+GwXclLAGBvsFwlMHo9/XC
- EHmQG4eP9zxoD6J+cjKN4Wv9OVr18InT+VmG/FF7EjT9KHvrmPZBrq0shMg9CIpkuSEa
- aDIg==
-X-Gm-Message-State: AOJu0YxbJZ3jl4W9R88DCwAdwG69Imd/RlKNCGqIG7jZHRa0HpN94JXI
- huHs4PlIL8xr0CER0jcFpmAbrPf+eBRqPLlfaQMOxEiMqjaDoXwQwmjKpP/TfOc=
-X-Received: by 2002:a05:6a00:7c8:b0:6f4:74b8:3d57 with SMTP id
- d2e1a72fcca58-6f7726eb231mr6708525b3a.7.1716593100890; 
- Fri, 24 May 2024 16:25:00 -0700 (PDT)
+ bh=uJ0q4kYSciCCJ5iNnH0cT/11J4ZEDfTPyyL262CCOCQ=;
+ b=qkSt+mTfX7mhPXInsL4kUDzLpxBIEbP1Yi66ZmIR+OhjIDz9jrMQX0vithJjPBU9aD
+ wazbiT+Ycz8sJwEF4LyL4UpJHmzeY1pvCZeRyy0z+EfJwT2p80S3+0XxunZoqOziRWwz
+ zwyN1LgeNCusFpjxOkWw0gfBB8uhty/g5w5tHi8azVuS74sht+sA8wlqdV5sNmQO5JnZ
+ q4rhkDo9G7sCFO1DbeRaoUp8dLG6GEKfkqfCEDudtqZLnsJFulyYKkUO1Kqyn627H137
+ OgeSrOgTY7J7Y7d4EmDrrhjdY37kUyqGq6kRjA5BmdXCn/10UB7K/1Qedjgi5IKKLjVA
+ 94Eg==
+X-Gm-Message-State: AOJu0YzRUoXXjaGSGht3VSmY8P3XSiOQ29PI3jJwnzjCeIrul6bFzBoH
+ 6PBeLPXVjt1Hds7Tw99wkQDPsSznfvd9blb8/cH6py//Irpg8l1H5oFWLkZ649zUXF8rrb38YZD
+ i
+X-Received: by 2002:a05:6a00:418a:b0:6e6:970f:a809 with SMTP id
+ d2e1a72fcca58-6f8f392b6a8mr4068086b3a.20.1716593115251; 
+ Fri, 24 May 2024 16:25:15 -0700 (PDT)
 Received: from stoup.. (174-21-72-5.tukw.qwest.net. [174.21.72.5])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-6f8fbf2cfd1sm1591695b3a.3.2024.05.24.16.24.59
+ d2e1a72fcca58-6f8fbf2cfd1sm1591695b3a.3.2024.05.24.16.25.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 May 2024 16:25:00 -0700 (PDT)
+ Fri, 24 May 2024 16:25:14 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 42/67] target/arm: Convert SUQADD, USQADD to decodetree
-Date: Fri, 24 May 2024 16:20:56 -0700
-Message-Id: <20240524232121.284515-43-richard.henderson@linaro.org>
+Subject: [PATCH v2 60/67] target/arm: Convert SMAX, SMIN, UMAX,
+ UMIN to decodetree
+Date: Fri, 24 May 2024 16:21:14 -0700
+Message-Id: <20240524232121.284515-61-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240524232121.284515-1-richard.henderson@linaro.org>
 References: <20240524232121.284515-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,174 +128,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6brrxA9JB5VK
-
-These are faux 2-operand instructions, reading from rd.
-Sort them next to the other three-operand same insns for clarity.
+X-TUID: y5wveJfzZlnA
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/a64.decode      |  8 +++++
- target/arm/tcg/translate-a64.c | 64 ++++------------------------------
- 2 files changed, 14 insertions(+), 58 deletions(-)
+ target/arm/tcg/a64.decode      |  4 ++++
+ target/arm/tcg/translate-a64.c | 22 ++++++----------------
+ 2 files changed, 10 insertions(+), 16 deletions(-)
 
 diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 19010af03b..7c350ba833 100644
+index 1c448b4f7c..bc98963bc5 100644
 --- a/target/arm/tcg/a64.decode
 +++ b/target/arm/tcg/a64.decode
-@@ -45,6 +45,7 @@
- @rrr_sd         ........ ... rm:5 ...... rn:5 rd:5      &rrr_e esz=%esz_sd
- @rrr_hsd        ........ ... rm:5 ...... rn:5 rd:5      &rrr_e esz=%esz_hsd
- @rrr_e          ........ esz:2 . rm:5 ...... rn:5 rd:5  &rrr_e
-+@r2r_e          ........ esz:2 . ..... ...... rm:5 rd:5 &rrr_e rn=%rd
+@@ -918,6 +918,10 @@ SHSUB_v         0.00 1110 ..1 ..... 00100 1 ..... ..... @qrrr_e
+ UHSUB_v         0.10 1110 ..1 ..... 00100 1 ..... ..... @qrrr_e
+ SRHADD_v        0.00 1110 ..1 ..... 00010 1 ..... ..... @qrrr_e
+ URHADD_v        0.10 1110 ..1 ..... 00010 1 ..... ..... @qrrr_e
++SMAX_v          0.00 1110 ..1 ..... 01100 1 ..... ..... @qrrr_e
++UMAX_v          0.10 1110 ..1 ..... 01100 1 ..... ..... @qrrr_e
++SMIN_v          0.00 1110 ..1 ..... 01101 1 ..... ..... @qrrr_e
++UMIN_v          0.10 1110 ..1 ..... 01101 1 ..... ..... @qrrr_e
  
- @rrx_h          ........ .. .. rm:4 .... . . rn:5 rd:5  &rrx_e esz=1 idx=%hlm
- @rrx_s          ........ .. . rm:5  .... . . rn:5 rd:5  &rrx_e esz=2 idx=%hl
-@@ -60,6 +61,7 @@
- @qrrr_h         . q:1 ...... ... rm:5 ...... rn:5 rd:5  &qrrr_e esz=1
- @qrrr_sd        . q:1 ...... ... rm:5 ...... rn:5 rd:5  &qrrr_e esz=%esz_sd
- @qrrr_e         . q:1 ...... esz:2 . rm:5 ...... rn:5 rd:5  &qrrr_e
-+@qr2r_e         . q:1 ...... esz:2 . ..... ...... rm:5 rd:5 &qrrr_e rn=%rd
- 
- @qrrx_h         . q:1 .. .... .. .. rm:4 .... . . rn:5 rd:5 \
-                 &qrrx_e esz=1 idx=%hlm
-@@ -750,6 +752,9 @@ UQADD_s         0111 1110 ..1 ..... 00001 1 ..... ..... @rrr_e
- SQSUB_s         0101 1110 ..1 ..... 00101 1 ..... ..... @rrr_e
- UQSUB_s         0111 1110 ..1 ..... 00101 1 ..... ..... @rrr_e
- 
-+SUQADD_s        0101 1110 ..1 00000 00111 0 ..... ..... @r2r_e
-+USQADD_s        0111 1110 ..1 00000 00111 0 ..... ..... @r2r_e
-+
- ### Advanced SIMD scalar pairwise
- 
- FADDP_s         0101 1110 0011 0000 1101 10 ..... ..... @rr_h
-@@ -868,6 +873,9 @@ UQADD_v         0.10 1110 ..1 ..... 00001 1 ..... ..... @qrrr_e
- SQSUB_v         0.00 1110 ..1 ..... 00101 1 ..... ..... @qrrr_e
- UQSUB_v         0.10 1110 ..1 ..... 00101 1 ..... ..... @qrrr_e
- 
-+SUQADD_v        0.00 1110 ..1 00000 00111 0 ..... ..... @qr2r_e
-+USQADD_v        0.10 1110 ..1 00000 00111 0 ..... ..... @qr2r_e
-+
  ### Advanced SIMD scalar x indexed element
  
- FMUL_si         0101 1111 00 .. .... 1001 . 0 ..... .....   @rrx_h
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 2f7298811d..fbcf18f92a 100644
+index 9ef5de6755..db6f59df17 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -5096,6 +5096,8 @@ TRANS(SQADD_s, do_satacc_s, a, MO_SIGN, MO_SIGN, gen_sqadd_bhs, gen_sqadd_d)
- TRANS(SQSUB_s, do_satacc_s, a, MO_SIGN, MO_SIGN, gen_sqsub_bhs, gen_sqsub_d)
- TRANS(UQADD_s, do_satacc_s, a, 0, 0, gen_uqadd_bhs, gen_uqadd_d)
- TRANS(UQSUB_s, do_satacc_s, a, 0, 0, gen_uqsub_bhs, gen_uqsub_d)
-+TRANS(SUQADD_s, do_satacc_s, a, MO_SIGN, 0, gen_suqadd_bhs, gen_suqadd_d)
-+TRANS(USQADD_s, do_satacc_s, a, 0, MO_SIGN, gen_usqadd_bhs, gen_usqadd_d)
+@@ -5460,6 +5460,10 @@ TRANS(SHSUB_v, do_gvec_fn3_no64, a, gen_gvec_shsub)
+ TRANS(UHSUB_v, do_gvec_fn3_no64, a, gen_gvec_uhsub)
+ TRANS(SRHADD_v, do_gvec_fn3_no64, a, gen_gvec_srhadd)
+ TRANS(URHADD_v, do_gvec_fn3_no64, a, gen_gvec_urhadd)
++TRANS(SMAX_v, do_gvec_fn3_no64, a, tcg_gen_gvec_smax)
++TRANS(UMAX_v, do_gvec_fn3_no64, a, tcg_gen_gvec_umax)
++TRANS(SMIN_v, do_gvec_fn3_no64, a, tcg_gen_gvec_smin)
++TRANS(UMIN_v, do_gvec_fn3_no64, a, tcg_gen_gvec_umin)
  
- static bool do_fp3_vector(DisasContext *s, arg_qrrr_e *a,
-                           gen_helper_gvec_3_ptr * const fns[3])
-@@ -5339,6 +5341,8 @@ TRANS(SQADD_v, do_gvec_fn3, a, gen_gvec_sqadd_qc)
- TRANS(UQADD_v, do_gvec_fn3, a, gen_gvec_uqadd_qc)
- TRANS(SQSUB_v, do_gvec_fn3, a, gen_gvec_sqsub_qc)
- TRANS(UQSUB_v, do_gvec_fn3, a, gen_gvec_uqsub_qc)
-+TRANS(SUQADD_v, do_gvec_fn3, a, gen_gvec_suqadd_qc)
-+TRANS(USQADD_v, do_gvec_fn3, a, gen_gvec_usqadd_qc)
- 
- /*
-  * Advanced SIMD scalar/vector x indexed element
-@@ -10009,48 +10013,6 @@ static void handle_2misc_narrow(DisasContext *s, bool scalar,
-     clear_vec_high(s, is_q, rd);
- }
- 
--/* Remaining saturating accumulating ops */
--static void handle_2misc_satacc(DisasContext *s, bool is_scalar, bool is_u,
--                                bool is_q, unsigned size, int rn, int rd)
--{
--    TCGv_i64 res, qc, a, b;
--
--    if (!is_scalar) {
--        gen_gvec_fn3(s, is_q, rd, rd, rn,
--                     is_u ? gen_gvec_usqadd_qc : gen_gvec_suqadd_qc, size);
--        return;
--    }
--
--    res = tcg_temp_new_i64();
--    qc = tcg_temp_new_i64();
--    a = tcg_temp_new_i64();
--    b = tcg_temp_new_i64();
--
--    /* Read and extend scalar inputs to 64-bits. */
--    read_vec_element(s, a, rd, 0, size | (is_u ? 0 : MO_SIGN));
--    read_vec_element(s, b, rn, 0, size | (is_u ? MO_SIGN : 0));
--    tcg_gen_ld_i64(qc, tcg_env, offsetof(CPUARMState, vfp.qc));
--
--    if (size == MO_64) {
--        if (is_u) {
--            gen_usqadd_d(res, qc, a, b);
--        } else {
--            gen_suqadd_d(res, qc, a, b);
--        }
--    } else {
--        if (is_u) {
--            gen_usqadd_bhs(res, qc, a, b, size);
--        } else {
--            gen_suqadd_bhs(res, qc, a, b, size);
--            /* Truncate signed 64-bit result for writeback. */
--            tcg_gen_ext_i64(res, res, size);
--        }
--    }
--
--    write_fp_dreg(s, rd, res);
--    tcg_gen_st_i64(qc, tcg_env, offsetof(CPUARMState, vfp.qc));
--}
--
- /* AdvSIMD scalar two reg misc
-  *  31 30  29 28       24 23  22 21       17 16    12 11 10 9    5 4    0
-  * +-----+---+-----------+------+-----------+--------+-----+------+------+
-@@ -10070,12 +10032,6 @@ static void disas_simd_scalar_two_reg_misc(DisasContext *s, uint32_t insn)
-     TCGv_ptr tcg_fpstatus;
- 
-     switch (opcode) {
--    case 0x3: /* USQADD / SUQADD*/
--        if (!fp_access_check(s)) {
--            return;
--        }
--        handle_2misc_satacc(s, true, u, false, size, rn, rd);
--        return;
-     case 0x7: /* SQABS / SQNEG */
-         break;
-     case 0xa: /* CMLT */
-@@ -10175,6 +10131,7 @@ static void disas_simd_scalar_two_reg_misc(DisasContext *s, uint32_t insn)
-         }
-         break;
-     default:
-+    case 0x3: /* USQADD / SUQADD */
-         unallocated_encoding(s);
-         return;
-     }
-@@ -11666,16 +11623,6 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
+ static bool do_cmop_v(DisasContext *s, arg_qrrr_e *a, TCGCond cond)
+ {
+@@ -10925,8 +10929,6 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
              return;
          }
-         break;
--    case 0x3: /* SUQADD, USQADD */
--        if (size == 3 && !is_q) {
--            unallocated_encoding(s);
--            return;
--        }
--        if (!fp_access_check(s)) {
--            return;
--        }
--        handle_2misc_satacc(s, false, u, is_q, size, rn, rd);
--        return;
-     case 0x7: /* SQABS, SQNEG */
-         if (size == 3 && !is_q) {
-             unallocated_encoding(s);
-@@ -11850,6 +11797,7 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-         break;
-     }
-     default:
-+    case 0x3: /* SUQADD, USQADD */
+         /* fall through */
+-    case 0xc: /* SMAX, UMAX */
+-    case 0xd: /* SMIN, UMIN */
+     case 0xe: /* SABD, UABD */
+     case 0xf: /* SABA, UABA */
+     case 0x12: /* MLA, MLS */
+@@ -10959,6 +10961,8 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
+     case 0x09: /* SQSHL, UQSHL */
+     case 0x0a: /* SRSHL, URSHL */
+     case 0x0b: /* SQRSHL, UQRSHL */
++    case 0x0c: /* SMAX, UMAX */
++    case 0x0d: /* SMIN, UMIN */
+     case 0x10: /* ADD, SUB */
+     case 0x11: /* CMTST, CMEQ */
          unallocated_encoding(s);
-         return;
+@@ -10970,20 +10974,6 @@ static void disas_simd_3same_int(DisasContext *s, uint32_t insn)
      }
+ 
+     switch (opcode) {
+-    case 0x0c: /* SMAX, UMAX */
+-        if (u) {
+-            gen_gvec_fn3(s, is_q, rd, rn, rm, tcg_gen_gvec_umax, size);
+-        } else {
+-            gen_gvec_fn3(s, is_q, rd, rn, rm, tcg_gen_gvec_smax, size);
+-        }
+-        return;
+-    case 0x0d: /* SMIN, UMIN */
+-        if (u) {
+-            gen_gvec_fn3(s, is_q, rd, rn, rm, tcg_gen_gvec_umin, size);
+-        } else {
+-            gen_gvec_fn3(s, is_q, rd, rn, rm, tcg_gen_gvec_smin, size);
+-        }
+-        return;
+     case 0xe: /* SABD, UABD */
+         if (u) {
+             gen_gvec_fn3(s, is_q, rd, rn, rm, gen_gvec_uabd, size);
 -- 
 2.34.1
 

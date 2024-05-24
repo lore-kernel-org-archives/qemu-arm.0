@@ -1,88 +1,85 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp1629822ejb;
-        Fri, 24 May 2024 04:33:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWYBy/l8cSl5uIif0K4msHOWdxdMnD3Vfsu0mnPl+pLcOvGK+4J3tKwffU9FpZIbQT/UU/HzJIixLT9mus+tlrmt+HY75UK
-X-Google-Smtp-Source: AGHT+IHBcPiWhGn7LipqeyHq4EmhvLUNSY+yxx+oAFJgaXOaJHUHM2p81DL+5svIzQ7x32pBLZ/g
-X-Received: by 2002:a05:6808:49:b0:3d1:4261:6460 with SMTP id 5614622812f47-3d1a71728e6mr2558150b6e.38.1716550434127;
-        Fri, 24 May 2024 04:33:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716550434; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp1629854ejb;
+        Fri, 24 May 2024 04:33:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUNkhCFKJJMlqAclc2+gmvqRJeq117lQEVJhOakCXjF4U8rJk15d19g+I2SjkYGOo8mzhgDEMocrSJZ4CcFkSfFtpRm92hf
+X-Google-Smtp-Source: AGHT+IE1toR3nDdlCT/uXWHS7LNfOIoq4E3ykK8pk/kklxzLdBibXI/6Mu3zvfp4g2YJ4+LS5OEx
+X-Received: by 2002:ae9:e713:0:b0:790:f4dc:ba36 with SMTP id af79cd13be357-794ab0c253dmr244855185a.33.1716550437854;
+        Fri, 24 May 2024 04:33:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716550437; cv=none;
         d=google.com; s=arc-20160816;
-        b=SwA9Jlbkb/rXUjbCm4i/+pmuLrowP1BxvI8ZqYDZCvqBM77paewoKN+76jmJbBcr16
-         4mQnNsAJfLSMfbTS8RI3j+LrEGNFN1IPdQlYy1LJZo8uMlepuTqnjI2cXYTKD7uzH8wi
-         M6ojXTc8x1AjWglZukM34juPjdmWzZMn8CNH+owUdkvCCPLy0t7D0plHnxr9Tl3pEumw
-         klBrgjPeQUApTU3EmsajKbB67rZ+yKdZnUvrF2cY0pIPdEnW8nFvtqTcS4ijO2g7+gvO
-         ED9GiiEwNmuOJHNr9h3yZDVHBqmoILZkwgOHMrUKJBLLlhcVnL/CrRKDQ/NbUJrnZaz1
-         OIvQ==
+        b=i1ZQfjp/5tdf7HI+fV8DLhY/BR2J0mubC3AgAJQbYpWypX70aWeNOixn3OfXOP/oeV
+         DvD8u1gmm8NffBm6jfqAm1A2/rGVmnFvkATmbVFuqv9DO+NyqxH+zaoqwLdLBQOHrH2m
+         4Oa8D+b9vP9emG/ruLy4XHO6rujBqm0dVR1TghC6L7B8gYeNztiOLYNO2obHTQ6N40kh
+         cxc77kF5CYItqWNIe/eL00mLEO7Thn8x8gWgQ29UHGsqbbRswIJ7km/2WHpI1EBPVWwk
+         CayGBRgY3co47BSQg6tXGqBrJzeYMCFAnx1N9rPavArYWoKcdqIFS4XbJaoyuyA4gkE2
+         IHhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=nnjzZ2bFH86s/9WYiAY8smHkgXvWJg9Q9w2Yn92S/C0=;
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=PfKmQLweMdrZKhK/1R0uAgncFqU8++bllF7zjSpylWo=;
         fh=c2LyUu5T4HvIPebxySNfbc/Fi+5MyC4524KDSeSAZYk=;
-        b=fZCWnTDWSLL1rc27Dq4vfLBMcMAP28A6odSoB9HlhetjOsjnT625BPWyjpHaFdfKOh
-         BATx82pajaZA8/SOY2y5gjHR3aA+OPBB4vEjkW7SlwtfpW8+7J/P3R1nGtk76zw+gSu7
-         XAUQl+5Eiyzf5afTCwVALOqs+iSqDaKkjgoVBXkww2bPIPlf1UXfFDvIGlx17YJHeBY5
-         KxsPLHVrR4bLtsrytTY+caTse8uN1N3kMZMao+QUc+2Pir51ZVaIOsBL+MxOWp+/sdFW
-         Wl5jNL1ym59wJ2zSPNopq2MTAmQIGrDs7j32qi3+J8N1hxWDqePJqNP8KyNJJ99KM1cq
-         JVRg==;
+        b=x2jb0h/W9XaZvvPXa9MYTZ1g43IMrlZmyIuqOIZvKpssv3moJEBi5V8aiTrox3VXmR
+         H1TNQTb0pBwaxQWTkmt8N2CkUhyAb8kt+ypwWGkqyCRz+EbAKrH4/0qxvDdcYAUII4j+
+         mwfVa/+zwAgeR/Idr8EDk/uT/nlLUPBuuQFUtF78iJGfagBA3sc5mVeiRFl72oLhkcT4
+         IghWY98Md38Vm5bFz8HYPylIh4apqNsFZThm2/N6jX9I/OP3sfPHxzfdMfoP6niQmiIm
+         D/vDffVk8+wIoCXtiLAyha1mRGaMS18ZYTC+DQIjIFwP/r7afD6p3SDTXQimyCSb7Lg/
+         u3jA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-794abcab588si134376685a.112.2024.05.24.04.33.53
+        by mx.google.com with ESMTPS id af79cd13be357-794abcac258si133348285a.118.2024.05.24.04.33.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 May 2024 04:33:54 -0700 (PDT)
+        Fri, 24 May 2024 04:33:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sATAe-00080t-HC; Fri, 24 May 2024 07:33:12 -0400
+	id 1sATAf-00081k-83; Fri, 24 May 2024 07:33:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1sATAb-00080C-4y; Fri, 24 May 2024 07:33:09 -0400
+ id 1sATAb-00080E-85; Fri, 24 May 2024 07:33:09 -0400
 Received: from dedi548.your-server.de ([85.10.215.148])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1sATAZ-000861-Bk; Fri, 24 May 2024 07:33:08 -0400
+ id 1sATAZ-00085z-Mv; Fri, 24 May 2024 07:33:08 -0400
 Received: from sslproxy02.your-server.de ([78.47.166.47])
  by dedi548.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96.2) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1sATAT-000HaM-1y; Fri, 24 May 2024 13:33:01 +0200
+ id 1sATAT-000HaK-1i; Fri, 24 May 2024 13:33:01 +0200
 Received: from [82.100.198.138] (helo=mail.embedded-brains.de)
  by sslproxy02.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.96) (envelope-from <sebastian.huber@embedded-brains.de>)
- id 1sATAU-000A8r-0x; Fri, 24 May 2024 13:33:01 +0200
+ id 1sATAU-000A7y-0h; Fri, 24 May 2024 13:33:01 +0200
 Received: from localhost (localhost [127.0.0.1])
- by mail.embedded-brains.de (Postfix) with ESMTP id 32901480049;
+ by mail.embedded-brains.de (Postfix) with ESMTP id 18937480197;
  Fri, 24 May 2024 13:33:01 +0200 (CEST)
 Received: from mail.embedded-brains.de ([127.0.0.1])
  by localhost (zimbra.eb.localhost [127.0.0.1]) (amavis, port 10032)
- with ESMTP id f9yf7b3Hvxuh; Fri, 24 May 2024 13:33:00 +0200 (CEST)
+ with ESMTP id m3kjKpI6PHYS; Fri, 24 May 2024 13:33:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by mail.embedded-brains.de (Postfix) with ESMTP id CE0834801F6;
+ by mail.embedded-brains.de (Postfix) with ESMTP id C07674801F0;
  Fri, 24 May 2024 13:33:00 +0200 (CEST)
 X-Virus-Scanned: amavis at zimbra.eb.localhost
 Received: from mail.embedded-brains.de ([127.0.0.1])
  by localhost (zimbra.eb.localhost [127.0.0.1]) (amavis, port 10026)
- with ESMTP id VrTqsqfEdEzm; Fri, 24 May 2024 13:33:00 +0200 (CEST)
+ with ESMTP id FWfNSfQ2wmVS; Fri, 24 May 2024 13:33:00 +0200 (CEST)
 Received: from zimbra.eb.localhost (unknown [192.168.96.242])
- by mail.embedded-brains.de (Postfix) with ESMTPSA id 9E5DF480197;
+ by mail.embedded-brains.de (Postfix) with ESMTPSA id 8DC43480049;
  Fri, 24 May 2024 13:33:00 +0200 (CEST)
 From: Sebastian Huber <sebastian.huber@embedded-brains.de>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Luc Michel <luc@lmichel.fr>
-Subject: [PATCH v2 1/2] hw/intc/arm_gic: Fix set pending of PPIs
-Date: Fri, 24 May 2024 13:32:55 +0200
-Message-Id: <20240524113256.8102-2-sebastian.huber@embedded-brains.de>
+Subject: [PATCH v2 0/2] Fix GICv2 handling of pending interrupts
+Date: Fri, 24 May 2024 13:32:54 +0200
+Message-Id: <20240524113256.8102-1-sebastian.huber@embedded-brains.de>
 X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240524113256.8102-1-sebastian.huber@embedded-brains.de>
-References: <20240524113256.8102-1-sebastian.huber@embedded-brains.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 X-Authenticated-Sender: smtp-embedded@poldi-networks.de
@@ -108,45 +105,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9dBFFTdqMfHX
+X-TUID: 99dMpBvvsswJ
 
-According to the GICv2 specification section 4.3.7, "Interrupt Set-Pendin=
-g
-Registers, GICD_ISPENDRn":
+v2:
 
-"In a multiprocessor implementation, GICD_ISPENDR0 is banked for each con=
-nected
-processor. This register holds the Set-pending bits for interrupts 0-31."
+* Fix handling of SPIs.
 
-Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
----
- hw/intc/arm_gic.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+* Remove pending state if not in new target list.
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 074cf50af2..241255081d 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -1308,12 +1308,15 @@ static void gic_dist_writeb(void *opaque, hwaddr =
-offset,
-=20
-         for (i =3D 0; i < 8; i++) {
-             if (value & (1 << i)) {
-+                int mask =3D (irq < GIC_INTERNAL) ? (1 << cpu)
-+                                                : GIC_DIST_TARGET(irq + =
-i);
-+
-                 if (s->security_extn && !attrs.secure &&
-                     !GIC_DIST_TEST_GROUP(irq + i, 1 << cpu)) {
-                     continue; /* Ignore Non-secure access of Group0 IRQ =
-*/
-                 }
-=20
--                GIC_DIST_SET_PENDING(irq + i, GIC_DIST_TARGET(irq + i));
-+                GIC_DIST_SET_PENDING(irq + i, mask);
-             }
-         }
-     } else if (offset < 0x300) {
+Sebastian Huber (2):
+  hw/intc/arm_gic: Fix set pending of PPIs
+  hw/intc/arm_gic: Fix writes to GICD_ITARGETSRn
+
+ hw/intc/arm_gic.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
 --=20
 2.35.3
 

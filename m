@@ -1,113 +1,111 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp1993268ejb;
-        Fri, 24 May 2024 16:23:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXJwsmpvX2M4gxGmUus9PrNCK4dKbbwLSSXwVxVUa+FzZp9sICoATEu38TfqHOQgL+jDQzYL7B6wkY/92owUC3QkQHMD8g4
-X-Google-Smtp-Source: AGHT+IG6nbL/YWr5Dw5yziuUA8/OHSzfRfbPkmTEy88HM16tLSyv0BGeQ8WeGnngsE3YjFOEvdZ9
-X-Received: by 2002:ac8:7fca:0:b0:43a:3fce:32c2 with SMTP id d75a77b69052e-43fa7430c87mr118722761cf.3.1716593006955;
-        Fri, 24 May 2024 16:23:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716593006; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp1993313ejb;
+        Fri, 24 May 2024 16:23:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXZOexI43zTOMrs8gGum23kq0cJHW2085sxKZpa38lSGxDRu3Ob61j6dltNJ3UDMo74N9+T/gbbGjrKdh8aLbRbhdSJzv+U
+X-Google-Smtp-Source: AGHT+IGIqOtzZ+scXh2YONYRSS6ZxIOfpJQCoFKoT3CfMjmSuCTs2OPZy6nd9QgjLoBetthYgpJc
+X-Received: by 2002:aca:180d:0:b0:3c9:7097:748f with SMTP id 5614622812f47-3d1a5f24939mr3639520b6e.29.1716593020077;
+        Fri, 24 May 2024 16:23:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716593020; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ym7e6Kr5I+6Lpt1X1iN/EVmgTrhLK/4dCZQ4Ekz67gke3bI1slIArlDxX2tjYNhTHG
-         XER9zg5f0zesaL7A19kMsjdRxQqprnfyCvmYHkfLU2m52TiKDuFwCbEQUh5spYZcdFlu
-         Q4H/D2Dr3l0PEPV3VIYw2J1mryt+9uZSVShxYz5KBlw7eCJP4Nj1iRlmBqnBoOOkL6eV
-         ptfP4AiILYbcYDpmKjTzZ38Gnx4dU8CwgrrSBCszJZsd7Z0POaurc0OF7nlbGGQe1IgR
-         pNkcFUO+3la5O5NII/Cim5L63epx2VIKGUa6GbT0ElSV4+gDx6WktZ5TNpdilz4FSZkN
-         rtPA==
+        b=pRNkEgN0ViHgkcHFSLTee6NBQDNc/XWwqGo1noep8RE6mOxs8BgxHX34lYBNTIDWXi
+         XKtwK4lyldqmOC4rPMXKYlV+2M9ArLkRyLR1xQEcqFXYHlIgAPWTcv8oruoc8dYQShv9
+         aSDAOlBRZjYHlRxnG2K5I20qzvy2sPtP8f/lh4nGzGrIuvnEDSWYTVJ3QzfPnd6RGIBy
+         JjVRE/wY/GOuV0GlNZtuUetXsWs2UeqsVHnJvAsWUWWBjgcNYdfvZmqypOSs5UNVlO9b
+         HkGpGz/bwy12UpJXJ/exC8jUEb56uCNroN+8vGdedPVFEpkwtz5kZHoob+Q2jRaIFZRz
+         9HHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=hKzExuS78evw1+jkab3GaKK0wmUSLT9rJpAkd6pvgss=;
-        fh=DKQFoSm5rvXVk6AUqpSavFv+IR+qPwKdgcCOIx8jJm4=;
-        b=atEWjEa5hfrqET1izk45UjArFZGXwJB+Qwlv+8rCXl5ERVuQy93RHEKhVxVvyxTYaa
-         9aGAr2tTAHKW/PBJQ4UYRK1e/xmqdBxSe6QusmOc4AuRZNFC5OJCblzHIKPP6M62k2/P
-         XQKXaf62GoqojXAiBdwWmwZAttCJkcVSYRs8BOHkJzwjOdqfiOut1BnFnd1S2jWDhiWl
-         l7Jp724l5ub5dmi5n/qyVPtBr7HKRoSNfLLWuxmgkgGLT+/xdPYXhIGbsYjvnWsud9TK
-         RuDmM3xQSETZ2yCIu9xh3vSK+x3Ql5l8fE08CTtkTRDPKFWPfXjzyq+tQ1lEIppgsoE2
-         DjSQ==;
+        bh=nJubyT1NfWkcukaKcWaokzntrf+qNDVZUUMp7AEhbOw=;
+        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
+        b=NL9/L1PjApoO+JHabYlTgQE/hpQn5dZA4orpnWlqC3p1+Z5gwd9Hmwc7CfxnAA1BML
+         k2+QcSyV8U4yOVoIioVYDCCC37vF+2XsIB63rLycgWdGuk84UARGXLIHgpLnKAtBUCkX
+         CB0vhIFrbnGlo/e1ehCc1g6RntoU9as9tRG9cjKlMxRQNswJfmmzTg5OWaCC+ATtOex5
+         k3iBidYYRhKlXKIr52KyXVlnppsa6g/skEaTftzgF/SWDKJbZgYCE1sUmcQHyskxefdN
+         03j1hQ44H/sfeSKiWedDoRtDkfsZEi2b7eRIh86Tk5+Rf83ziMYOzRGG6fI1c0zQlOHm
+         Uh9Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=t8tO5RgV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VWu1fPKC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43fb18a6c50si28020411cf.297.2024.05.24.16.23.26
+        by mx.google.com with ESMTPS id d75a77b69052e-43fb18a61aasi28575861cf.351.2024.05.24.16.23.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 May 2024 16:23:26 -0700 (PDT)
+        Fri, 24 May 2024 16:23:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=t8tO5RgV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VWu1fPKC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sAeEB-0006SS-Ra; Fri, 24 May 2024 19:21:35 -0400
+	id 1sAeE6-0006OD-Ph; Fri, 24 May 2024 19:21:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sAeE9-0006R8-Vg
- for qemu-arm@nongnu.org; Fri, 24 May 2024 19:21:33 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ id 1sAeE4-0006MJ-Tv
+ for qemu-arm@nongnu.org; Fri, 24 May 2024 19:21:28 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sAeE7-0005jp-A0
- for qemu-arm@nongnu.org; Fri, 24 May 2024 19:21:33 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-1f449f09476so8483455ad.1
- for <qemu-arm@nongnu.org>; Fri, 24 May 2024 16:21:30 -0700 (PDT)
+ id 1sAeE2-0005ep-1R
+ for qemu-arm@nongnu.org; Fri, 24 May 2024 19:21:28 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-1f44b6f9363so10790085ad.3
+ for <qemu-arm@nongnu.org>; Fri, 24 May 2024 16:21:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1716592890; x=1717197690; darn=nongnu.org;
+ d=linaro.org; s=google; t=1716592885; x=1717197685; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=hKzExuS78evw1+jkab3GaKK0wmUSLT9rJpAkd6pvgss=;
- b=t8tO5RgVtBNx7Qtc+RvifEM2t1/nDqPJjFpSw7vYAYLMD4cFLAw/CBxVNsG/owcpfA
- hn4z+nI2IZu7UC1158zFXJYa3bLiIC8JOK/dJHDU5oZWg1FDf2kkS6TUljv22RhoQ/TV
- 54LJSTLRQjH6oZQHtJ/8hrd2zrPf/FEk3p02ufsvAgVrmCEWp42cG5/RkQMK4tNtSmoH
- rAeWXm5yLGjLyuPjj4W4DwKtjMCRHI9QyfLy/7wsk/fiaU8Z1SNjG5fJSwj1NwMAWzwj
- G7J3q5SoRiTbB24X0HLr1MQm5dNRIQKtZZ5jLpd0c4xSQkOpQxXYupBnZGkgx+mfBdGF
- Qiiw==
+ bh=nJubyT1NfWkcukaKcWaokzntrf+qNDVZUUMp7AEhbOw=;
+ b=VWu1fPKCFJrg5T/VsDmkirgDzcvJ+k7g3rOQD6Z9L/d5jUKWbplWrnxMt+9BAq5I4y
+ 0qV6OwKqbMh6FcN7kqo0sYDYa2HLnA+EnswYqwNuOnOiqmI1z5WfHVGygQUrdctpaCl3
+ D6D6X9w5Cz8IHUYh9EYCfk9I5RF//sxaTcao4Io6dc8ZuQ/YfpPlV/v1AMT0Eko07Glf
+ V7godXZrLLgFIpF4eAiNSWIQq2tahOG53Ew3TqZdu8a6m52NHyqx2VRS3jL8g0XUMbQY
+ ajrXwfbndU0/Q1lphDvlz4y286FRln0bW5e0QK4+oqwGBuhCmIZBpU3c8k8BUUORNDqj
+ KfBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716592890; x=1717197690;
+ d=1e100.net; s=20230601; t=1716592885; x=1717197685;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=hKzExuS78evw1+jkab3GaKK0wmUSLT9rJpAkd6pvgss=;
- b=nITadVI/yqrKxyJ/MBbP9mylWHaLF+0vhRr7kAl95RYGnXr2aB6DCufTROJ5rsturd
- nVj0kke5bJnxmOpqIReRl0FPyWXybHQvYSGtafrfowzTjhqQ+cjYzScrLQlHaM/B0pir
- 6bIbl0vFRUAmQ9TfuMdCPtijQjfnOX58UzMbMy75oLeVWrBMP9rQnY4l5EpWVwfvBENN
- 9CsFuluI7W0af+nW5CzA8TT1YOA1++ibRMtcCnpSxTOXG9ASahm7xqsfkhtrAXUzbTiK
- reJyAJmxgxuIY8fDVRkdMaXGnUz+Fj2GgJBH/6w6EJTvtGpy6o3LcsPCILTLMQ8eIWLz
- TZpg==
-X-Gm-Message-State: AOJu0Yz6FJZzhCHtT7C9GnelEccTLmeoP57APNC0fJhMOk11tCJJs1ne
- x6MZk91TAqc1MiBviVlgME3MS+r68J4pjzOAu4sJF9OiSMAwOCdXNBdmfZrCqsCAcqdu1bYKBD+
- 8
-X-Received: by 2002:a17:902:e88e:b0:1f2:f4e7:f880 with SMTP id
- d9443c01a7336-1f44815b9ccmr51311765ad.13.1716592889741; 
- Fri, 24 May 2024 16:21:29 -0700 (PDT)
+ bh=nJubyT1NfWkcukaKcWaokzntrf+qNDVZUUMp7AEhbOw=;
+ b=iTs1BK3pV4bxmyp8gNuFCKn38Xrb1KvgiphPbPBLGPHTi84qrQxOQIWbaC6FKyTEZd
+ 4ulFvNu5P5TyN5uCzR/l7OK7td8upcDh4+AhN1cHAisM1OaNKZiWo8ceVfTQsRdimERX
+ HUq6UFrXAqiw9pY70TlNkM18+UrBsSKlrSzleSJqO2odRRnvjI+Btk/kCe6rSMii3pOL
+ od8DpkX5Q9WztFe1He0HnaufBO4DvbkauFaRhl9pZrZkeUl8ctZJLToSv8u18c5JjrOp
+ S1L8lplxKJhn4MX+vZtiB3+xHmBdTaqj2LwWnFT275MD3MCLD8rIWg/BSnQFmXzBZTmR
+ j9YA==
+X-Gm-Message-State: AOJu0Yy8os+Te1fn0ZHQkxU/lYRotlQ21UWvgFwHMn5kfGZv3zFGD9h5
+ ZZfRsJ/l7RdtK/zJ6P07qiqqc2tDh0+Wu4r1aYkw+luLSFwpkp9UbQDKv5xbrmJJ2b+OTvElHBF
+ K
+X-Received: by 2002:a17:902:64d7:b0:1f3:3f33:2873 with SMTP id
+ d9443c01a7336-1f4486ed8afmr34218245ad.25.1716592884682; 
+ Fri, 24 May 2024 16:21:24 -0700 (PDT)
 Received: from stoup.. (174-21-72-5.tukw.qwest.net. [174.21.72.5])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f44c759ceesm19178305ad.10.2024.05.24.16.21.29
+ d9443c01a7336-1f44c759ceesm19178305ad.10.2024.05.24.16.21.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 May 2024 16:21:29 -0700 (PDT)
+ Fri, 24 May 2024 16:21:24 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 08/67] target/arm: Split out gengvec64.c
-Date: Fri, 24 May 2024 16:20:22 -0700
-Message-Id: <20240524232121.284515-9-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v2 02/67] target/arm: Use PLD, PLDW, PLI not NOP for t32
+Date: Fri, 24 May 2024 16:20:16 -0700
+Message-Id: <20240524232121.284515-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240524232121.284515-1-richard.henderson@linaro.org>
 References: <20240524232121.284515-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,446 +127,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uP59rQgClmM5
+X-TUID: YfX9PstcUWMM
 
-Split some routines out of translate-a64.c and translate-sve.c
-that are used by both.
+This fixes a bug in that neither PLI nor PLDW are present in ARMv6T2,
+but are introduced with ARMv7 and ARMv7MP respectively.
+For clarity, do not use NOP for PLD.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Note that there is no PLDW (literal) -- bit 5 of the first word
+is not decoded, and is PLD (literal).  Confirmed on neoverse-n1
+host which does *not* trap on the (0) bit in the decode.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-a64.h |   4 +
- target/arm/tcg/gengvec64.c     | 190 +++++++++++++++++++++++++++++++++
- target/arm/tcg/translate-a64.c |  26 -----
- target/arm/tcg/translate-sve.c | 145 +------------------------
- target/arm/tcg/meson.build     |   1 +
- 5 files changed, 197 insertions(+), 169 deletions(-)
- create mode 100644 target/arm/tcg/gengvec64.c
+ target/arm/tcg/t32.decode  | 25 ++++++++++++-------------
+ target/arm/tcg/translate.c |  4 ++--
+ 2 files changed, 14 insertions(+), 15 deletions(-)
 
-diff --git a/target/arm/tcg/translate-a64.h b/target/arm/tcg/translate-a64.h
-index 7b811b8ac5..91750f0ca9 100644
---- a/target/arm/tcg/translate-a64.h
-+++ b/target/arm/tcg/translate-a64.h
-@@ -193,6 +193,10 @@ void gen_gvec_rax1(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
- void gen_gvec_xar(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-                   uint32_t rm_ofs, int64_t shift,
-                   uint32_t opr_sz, uint32_t max_sz);
-+void gen_gvec_eor3(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
-+                   uint32_t a, uint32_t oprsz, uint32_t maxsz);
-+void gen_gvec_bcax(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
-+                   uint32_t a, uint32_t oprsz, uint32_t maxsz);
- 
- void gen_sve_ldr(DisasContext *s, TCGv_ptr, int vofs, int len, int rn, int imm);
- void gen_sve_str(DisasContext *s, TCGv_ptr, int vofs, int len, int rn, int imm);
-diff --git a/target/arm/tcg/gengvec64.c b/target/arm/tcg/gengvec64.c
-new file mode 100644
-index 0000000000..093b498b13
---- /dev/null
-+++ b/target/arm/tcg/gengvec64.c
-@@ -0,0 +1,190 @@
-+/*
-+ *  AArch64 generic vector expansion
-+ *
-+ *  Copyright (c) 2013 Alexander Graf <agraf@suse.de>
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2.1 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "translate.h"
-+#include "translate-a64.h"
-+
-+
-+static void gen_rax1_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m)
-+{
-+    tcg_gen_rotli_i64(d, m, 1);
-+    tcg_gen_xor_i64(d, d, n);
-+}
-+
-+static void gen_rax1_vec(unsigned vece, TCGv_vec d, TCGv_vec n, TCGv_vec m)
-+{
-+    tcg_gen_rotli_vec(vece, d, m, 1);
-+    tcg_gen_xor_vec(vece, d, d, n);
-+}
-+
-+void gen_gvec_rax1(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                   uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz)
-+{
-+    static const TCGOpcode vecop_list[] = { INDEX_op_rotli_vec, 0 };
-+    static const GVecGen3 op = {
-+        .fni8 = gen_rax1_i64,
-+        .fniv = gen_rax1_vec,
-+        .opt_opc = vecop_list,
-+        .fno = gen_helper_crypto_rax1,
-+        .vece = MO_64,
-+    };
-+    tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, &op);
-+}
-+
-+static void gen_xar8_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
-+{
-+    TCGv_i64 t = tcg_temp_new_i64();
-+    uint64_t mask = dup_const(MO_8, 0xff >> sh);
-+
-+    tcg_gen_xor_i64(t, n, m);
-+    tcg_gen_shri_i64(d, t, sh);
-+    tcg_gen_shli_i64(t, t, 8 - sh);
-+    tcg_gen_andi_i64(d, d, mask);
-+    tcg_gen_andi_i64(t, t, ~mask);
-+    tcg_gen_or_i64(d, d, t);
-+}
-+
-+static void gen_xar16_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
-+{
-+    TCGv_i64 t = tcg_temp_new_i64();
-+    uint64_t mask = dup_const(MO_16, 0xffff >> sh);
-+
-+    tcg_gen_xor_i64(t, n, m);
-+    tcg_gen_shri_i64(d, t, sh);
-+    tcg_gen_shli_i64(t, t, 16 - sh);
-+    tcg_gen_andi_i64(d, d, mask);
-+    tcg_gen_andi_i64(t, t, ~mask);
-+    tcg_gen_or_i64(d, d, t);
-+}
-+
-+static void gen_xar_i32(TCGv_i32 d, TCGv_i32 n, TCGv_i32 m, int32_t sh)
-+{
-+    tcg_gen_xor_i32(d, n, m);
-+    tcg_gen_rotri_i32(d, d, sh);
-+}
-+
-+static void gen_xar_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
-+{
-+    tcg_gen_xor_i64(d, n, m);
-+    tcg_gen_rotri_i64(d, d, sh);
-+}
-+
-+static void gen_xar_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
-+                        TCGv_vec m, int64_t sh)
-+{
-+    tcg_gen_xor_vec(vece, d, n, m);
-+    tcg_gen_rotri_vec(vece, d, d, sh);
-+}
-+
-+void gen_gvec_xar(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                  uint32_t rm_ofs, int64_t shift,
-+                  uint32_t opr_sz, uint32_t max_sz)
-+{
-+    static const TCGOpcode vecop[] = { INDEX_op_rotli_vec, 0 };
-+    static const GVecGen3i ops[4] = {
-+        { .fni8 = gen_xar8_i64,
-+          .fniv = gen_xar_vec,
-+          .fno = gen_helper_sve2_xar_b,
-+          .opt_opc = vecop,
-+          .vece = MO_8 },
-+        { .fni8 = gen_xar16_i64,
-+          .fniv = gen_xar_vec,
-+          .fno = gen_helper_sve2_xar_h,
-+          .opt_opc = vecop,
-+          .vece = MO_16 },
-+        { .fni4 = gen_xar_i32,
-+          .fniv = gen_xar_vec,
-+          .fno = gen_helper_sve2_xar_s,
-+          .opt_opc = vecop,
-+          .vece = MO_32 },
-+        { .fni8 = gen_xar_i64,
-+          .fniv = gen_xar_vec,
-+          .fno = gen_helper_gvec_xar_d,
-+          .opt_opc = vecop,
-+          .vece = MO_64 }
-+    };
-+    int esize = 8 << vece;
-+
-+    /* The SVE2 range is 1 .. esize; the AdvSIMD range is 0 .. esize-1. */
-+    tcg_debug_assert(shift >= 0);
-+    tcg_debug_assert(shift <= esize);
-+    shift &= esize - 1;
-+
-+    if (shift == 0) {
-+        /* xar with no rotate devolves to xor. */
-+        tcg_gen_gvec_xor(vece, rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz);
-+    } else {
-+        tcg_gen_gvec_3i(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz,
-+                        shift, &ops[vece]);
-+    }
-+}
-+
-+static void gen_eor3_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_i64 k)
-+{
-+    tcg_gen_xor_i64(d, n, m);
-+    tcg_gen_xor_i64(d, d, k);
-+}
-+
-+static void gen_eor3_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
-+                         TCGv_vec m, TCGv_vec k)
-+{
-+    tcg_gen_xor_vec(vece, d, n, m);
-+    tcg_gen_xor_vec(vece, d, d, k);
-+}
-+
-+void gen_gvec_eor3(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
-+                   uint32_t a, uint32_t oprsz, uint32_t maxsz)
-+{
-+    static const GVecGen4 op = {
-+        .fni8 = gen_eor3_i64,
-+        .fniv = gen_eor3_vec,
-+        .fno = gen_helper_sve2_eor3,
-+        .vece = MO_64,
-+        .prefer_i64 = TCG_TARGET_REG_BITS == 64,
-+    };
-+    tcg_gen_gvec_4(d, n, m, a, oprsz, maxsz, &op);
-+}
-+
-+static void gen_bcax_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_i64 k)
-+{
-+    tcg_gen_andc_i64(d, m, k);
-+    tcg_gen_xor_i64(d, d, n);
-+}
-+
-+static void gen_bcax_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
-+                         TCGv_vec m, TCGv_vec k)
-+{
-+    tcg_gen_andc_vec(vece, d, m, k);
-+    tcg_gen_xor_vec(vece, d, d, n);
-+}
-+
-+void gen_gvec_bcax(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
-+                   uint32_t a, uint32_t oprsz, uint32_t maxsz)
-+{
-+    static const GVecGen4 op = {
-+        .fni8 = gen_bcax_i64,
-+        .fniv = gen_bcax_vec,
-+        .fno = gen_helper_sve2_bcax,
-+        .vece = MO_64,
-+        .prefer_i64 = TCG_TARGET_REG_BITS == 64,
-+    };
-+    tcg_gen_gvec_4(d, n, m, a, oprsz, maxsz, &op);
-+}
-+
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 0bdddb8517..8842ff634d 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -13623,32 +13623,6 @@ static void disas_crypto_two_reg_sha(DisasContext *s, uint32_t insn)
-     gen_gvec_op2_ool(s, true, rd, rn, 0, genfn);
- }
- 
--static void gen_rax1_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m)
--{
--    tcg_gen_rotli_i64(d, m, 1);
--    tcg_gen_xor_i64(d, d, n);
--}
--
--static void gen_rax1_vec(unsigned vece, TCGv_vec d, TCGv_vec n, TCGv_vec m)
--{
--    tcg_gen_rotli_vec(vece, d, m, 1);
--    tcg_gen_xor_vec(vece, d, d, n);
--}
--
--void gen_gvec_rax1(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
--                   uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz)
--{
--    static const TCGOpcode vecop_list[] = { INDEX_op_rotli_vec, 0 };
--    static const GVecGen3 op = {
--        .fni8 = gen_rax1_i64,
--        .fniv = gen_rax1_vec,
--        .opt_opc = vecop_list,
--        .fno = gen_helper_crypto_rax1,
--        .vece = MO_64,
--    };
--    tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, &op);
--}
--
- /* Crypto three-reg SHA512
-  *  31                   21 20  16 15  14  13 12  11  10  9    5 4    0
-  * +-----------------------+------+---+---+-----+--------+------+------+
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index ada05aa530..798ab2bfb1 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -527,94 +527,6 @@ TRANS_FEAT(ORR_zzz, aa64_sve, gen_gvec_fn_arg_zzz, tcg_gen_gvec_or, a)
- TRANS_FEAT(EOR_zzz, aa64_sve, gen_gvec_fn_arg_zzz, tcg_gen_gvec_xor, a)
- TRANS_FEAT(BIC_zzz, aa64_sve, gen_gvec_fn_arg_zzz, tcg_gen_gvec_andc, a)
- 
--static void gen_xar8_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
--{
--    TCGv_i64 t = tcg_temp_new_i64();
--    uint64_t mask = dup_const(MO_8, 0xff >> sh);
--
--    tcg_gen_xor_i64(t, n, m);
--    tcg_gen_shri_i64(d, t, sh);
--    tcg_gen_shli_i64(t, t, 8 - sh);
--    tcg_gen_andi_i64(d, d, mask);
--    tcg_gen_andi_i64(t, t, ~mask);
--    tcg_gen_or_i64(d, d, t);
--}
--
--static void gen_xar16_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
--{
--    TCGv_i64 t = tcg_temp_new_i64();
--    uint64_t mask = dup_const(MO_16, 0xffff >> sh);
--
--    tcg_gen_xor_i64(t, n, m);
--    tcg_gen_shri_i64(d, t, sh);
--    tcg_gen_shli_i64(t, t, 16 - sh);
--    tcg_gen_andi_i64(d, d, mask);
--    tcg_gen_andi_i64(t, t, ~mask);
--    tcg_gen_or_i64(d, d, t);
--}
--
--static void gen_xar_i32(TCGv_i32 d, TCGv_i32 n, TCGv_i32 m, int32_t sh)
--{
--    tcg_gen_xor_i32(d, n, m);
--    tcg_gen_rotri_i32(d, d, sh);
--}
--
--static void gen_xar_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, int64_t sh)
--{
--    tcg_gen_xor_i64(d, n, m);
--    tcg_gen_rotri_i64(d, d, sh);
--}
--
--static void gen_xar_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
--                        TCGv_vec m, int64_t sh)
--{
--    tcg_gen_xor_vec(vece, d, n, m);
--    tcg_gen_rotri_vec(vece, d, d, sh);
--}
--
--void gen_gvec_xar(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
--                  uint32_t rm_ofs, int64_t shift,
--                  uint32_t opr_sz, uint32_t max_sz)
--{
--    static const TCGOpcode vecop[] = { INDEX_op_rotli_vec, 0 };
--    static const GVecGen3i ops[4] = {
--        { .fni8 = gen_xar8_i64,
--          .fniv = gen_xar_vec,
--          .fno = gen_helper_sve2_xar_b,
--          .opt_opc = vecop,
--          .vece = MO_8 },
--        { .fni8 = gen_xar16_i64,
--          .fniv = gen_xar_vec,
--          .fno = gen_helper_sve2_xar_h,
--          .opt_opc = vecop,
--          .vece = MO_16 },
--        { .fni4 = gen_xar_i32,
--          .fniv = gen_xar_vec,
--          .fno = gen_helper_sve2_xar_s,
--          .opt_opc = vecop,
--          .vece = MO_32 },
--        { .fni8 = gen_xar_i64,
--          .fniv = gen_xar_vec,
--          .fno = gen_helper_gvec_xar_d,
--          .opt_opc = vecop,
--          .vece = MO_64 }
--    };
--    int esize = 8 << vece;
--
--    /* The SVE2 range is 1 .. esize; the AdvSIMD range is 0 .. esize-1. */
--    tcg_debug_assert(shift >= 0);
--    tcg_debug_assert(shift <= esize);
--    shift &= esize - 1;
--
--    if (shift == 0) {
--        /* xar with no rotate devolves to xor. */
--        tcg_gen_gvec_xor(vece, rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz);
--    } else {
--        tcg_gen_gvec_3i(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz,
--                        shift, &ops[vece]);
--    }
--}
--
- static bool trans_XAR(DisasContext *s, arg_rrri_esz *a)
+diff --git a/target/arm/tcg/t32.decode b/target/arm/tcg/t32.decode
+index f21ad0167a..d327178829 100644
+--- a/target/arm/tcg/t32.decode
++++ b/target/arm/tcg/t32.decode
+@@ -458,41 +458,41 @@ STR_ri           1111 1000 1100 .... .... ............        @ldst_ri_pos
+ # Note that Load, unsigned (literal) overlaps all other load encodings.
  {
-     if (a->esz < 0 || !dc_isar_feature(aa64_sve2, s)) {
-@@ -629,61 +541,8 @@ static bool trans_XAR(DisasContext *s, arg_rrri_esz *a)
-     return true;
+   {
+-    NOP          1111 1000 -001 1111 1111 ------------        # PLD
++    PLD          1111 1000 -001 1111 1111 ------------        # (literal)
+     LDRB_ri      1111 1000 .001 1111 .... ............        @ldst_ri_lit
+   }
+   {
+-    NOP          1111 1000 1001 ---- 1111 ------------        # PLD
++    PLD          1111 1000 1001 ---- 1111 ------------        # (immediate T1)
+     LDRB_ri      1111 1000 1001 .... .... ............        @ldst_ri_pos
+   }
+   LDRB_ri        1111 1000 0001 .... .... 1..1 ........       @ldst_ri_idx
+   {
+-    NOP          1111 1000 0001 ---- 1111 1100 --------       # PLD
++    PLD          1111 1000 0001 ---- 1111 1100 --------       # (immediate T2)
+     LDRB_ri      1111 1000 0001 .... .... 1100 ........       @ldst_ri_neg
+   }
+   LDRBT_ri       1111 1000 0001 .... .... 1110 ........       @ldst_ri_unp
+   {
+-    NOP          1111 1000 0001 ---- 1111 000000 -- ----      # PLD
++    PLD          1111 1000 0001 ---- 1111 000000 -- ----      # (register)
+     LDRB_rr      1111 1000 0001 .... .... 000000 .. ....      @ldst_rr
+   }
+ }
+ {
+   {
+-    NOP          1111 1000 -011 1111 1111 ------------        # PLD
++    PLD          1111 1000 -011 1111 1111 ------------        # (literal)
+     LDRH_ri      1111 1000 .011 1111 .... ............        @ldst_ri_lit
+   }
+   {
+-    NOP          1111 1000 1011 ---- 1111 ------------        # PLDW
++    PLDW         1111 1000 1011 ---- 1111 ------------        # (immediate T1)
+     LDRH_ri      1111 1000 1011 .... .... ............        @ldst_ri_pos
+   }
+   LDRH_ri        1111 1000 0011 .... .... 1..1 ........       @ldst_ri_idx
+   {
+-    NOP          1111 1000 0011 ---- 1111 1100 --------       # PLDW
++    PLDW         1111 1000 0011 ---- 1111 1100 --------       # (immediate T2)
+     LDRH_ri      1111 1000 0011 .... .... 1100 ........       @ldst_ri_neg
+   }
+   LDRHT_ri       1111 1000 0011 .... .... 1110 ........       @ldst_ri_unp
+   {
+-    NOP          1111 1000 0011 ---- 1111 000000 -- ----      # PLDW
++    PLDW         1111 1000 0011 ---- 1111 000000 -- ----      # (register)
+     LDRH_rr      1111 1000 0011 .... .... 000000 .. ....      @ldst_rr
+   }
+ }
+@@ -504,24 +504,23 @@ STR_ri           1111 1000 1100 .... .... ............        @ldst_ri_pos
+   LDRT_ri        1111 1000 0101 .... .... 1110 ........       @ldst_ri_unp
+   LDR_rr         1111 1000 0101 .... .... 000000 .. ....      @ldst_rr
+ }
+-# NOPs here are PLI.
+ {
+   {
+-    NOP          1111 1001 -001 1111 1111 ------------
++    PLI          1111 1001 -001 1111 1111 ------------        # (literal T3)
+     LDRSB_ri     1111 1001 .001 1111 .... ............        @ldst_ri_lit
+   }
+   {
+-    NOP          1111 1001 1001 ---- 1111 ------------
++    PLI          1111 1001 1001 ---- 1111 ------------        # (immediate T1)
+     LDRSB_ri     1111 1001 1001 .... .... ............        @ldst_ri_pos
+   }
+   LDRSB_ri       1111 1001 0001 .... .... 1..1 ........       @ldst_ri_idx
+   {
+-    NOP          1111 1001 0001 ---- 1111 1100 --------
++    PLI          1111 1001 0001 ---- 1111 1100 --------       # (immediate T2)
+     LDRSB_ri     1111 1001 0001 .... .... 1100 ........       @ldst_ri_neg
+   }
+   LDRSBT_ri      1111 1001 0001 .... .... 1110 ........       @ldst_ri_unp
+   {
+-    NOP          1111 1001 0001 ---- 1111 000000 -- ----
++    PLI          1111 1001 0001 ---- 1111 000000 -- ----      # (register)
+     LDRSB_rr     1111 1001 0001 .... .... 000000 .. ....      @ldst_rr
+   }
+ }
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index d605e10f11..187eacffd9 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -8765,12 +8765,12 @@ static bool trans_PLD(DisasContext *s, arg_PLD *a)
+     return ENABLE_ARCH_5TE;
  }
  
--static void gen_eor3_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_i64 k)
--{
--    tcg_gen_xor_i64(d, n, m);
--    tcg_gen_xor_i64(d, d, k);
--}
--
--static void gen_eor3_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
--                         TCGv_vec m, TCGv_vec k)
--{
--    tcg_gen_xor_vec(vece, d, n, m);
--    tcg_gen_xor_vec(vece, d, d, k);
--}
--
--static void gen_eor3(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
--                     uint32_t a, uint32_t oprsz, uint32_t maxsz)
--{
--    static const GVecGen4 op = {
--        .fni8 = gen_eor3_i64,
--        .fniv = gen_eor3_vec,
--        .fno = gen_helper_sve2_eor3,
--        .vece = MO_64,
--        .prefer_i64 = TCG_TARGET_REG_BITS == 64,
--    };
--    tcg_gen_gvec_4(d, n, m, a, oprsz, maxsz, &op);
--}
--
--TRANS_FEAT(EOR3, aa64_sve2, gen_gvec_fn_arg_zzzz, gen_eor3, a)
--
--static void gen_bcax_i64(TCGv_i64 d, TCGv_i64 n, TCGv_i64 m, TCGv_i64 k)
--{
--    tcg_gen_andc_i64(d, m, k);
--    tcg_gen_xor_i64(d, d, n);
--}
--
--static void gen_bcax_vec(unsigned vece, TCGv_vec d, TCGv_vec n,
--                         TCGv_vec m, TCGv_vec k)
--{
--    tcg_gen_andc_vec(vece, d, m, k);
--    tcg_gen_xor_vec(vece, d, d, n);
--}
--
--static void gen_bcax(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
--                     uint32_t a, uint32_t oprsz, uint32_t maxsz)
--{
--    static const GVecGen4 op = {
--        .fni8 = gen_bcax_i64,
--        .fniv = gen_bcax_vec,
--        .fno = gen_helper_sve2_bcax,
--        .vece = MO_64,
--        .prefer_i64 = TCG_TARGET_REG_BITS == 64,
--    };
--    tcg_gen_gvec_4(d, n, m, a, oprsz, maxsz, &op);
--}
--
--TRANS_FEAT(BCAX, aa64_sve2, gen_gvec_fn_arg_zzzz, gen_bcax, a)
-+TRANS_FEAT(EOR3, aa64_sve2, gen_gvec_fn_arg_zzzz, gen_gvec_eor3, a)
-+TRANS_FEAT(BCAX, aa64_sve2, gen_gvec_fn_arg_zzzz, gen_gvec_bcax, a)
+-static bool trans_PLDW(DisasContext *s, arg_PLD *a)
++static bool trans_PLDW(DisasContext *s, arg_PLDW *a)
+ {
+     return arm_dc_feature(s, ARM_FEATURE_V7MP);
+ }
  
- static void gen_bsl(unsigned vece, uint32_t d, uint32_t n, uint32_t m,
-                     uint32_t a, uint32_t oprsz, uint32_t maxsz)
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index bdb5c7352f..508932a249 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -43,6 +43,7 @@ arm_ss.add(files(
- 
- arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'cpu64.c',
-+  'gengvec64.c',
-   'translate-a64.c',
-   'translate-sve.c',
-   'translate-sme.c',
+-static bool trans_PLI(DisasContext *s, arg_PLD *a)
++static bool trans_PLI(DisasContext *s, arg_PLI *a)
+ {
+     return ENABLE_ARCH_7;
+ }
 -- 
 2.34.1
 

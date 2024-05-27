@@ -1,66 +1,66 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp3026022ejb;
-        Mon, 27 May 2024 01:05:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV7rL7+cYmjxUcWlcgT6cxKq9v8WnK/89nfIkybjAADDMx04cN5NmVInrMZNCFzBeZ8TMPPjaVZ5cQ8XIcSIzw0K3JKfI5i
-X-Google-Smtp-Source: AGHT+IGjeeF43TFpJ/PRTyeACNm8gd6fkRlUTQlso0vgal89PQNRN7XBbcdB2twTepiyccsuinF9
-X-Received: by 2002:a05:6808:181:b0:3c8:62fc:2654 with SMTP id 5614622812f47-3d1a745c287mr9555644b6e.43.1716797115759;
-        Mon, 27 May 2024 01:05:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716797115; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp3026473ejb;
+        Mon, 27 May 2024 01:06:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXWdp8/mfqf8NCwtU+6t8IuC+O5Q3PFZ4SJZpO7FgfC3Ubi/BnSALJu8qGBJVCfrQg+DUhGaBUFVGxz8XkGVwCVXxIODaOl
+X-Google-Smtp-Source: AGHT+IFektBo2wUQ+kAqQu36hg05mQNmWj6rqMlrnZEdgJU7AgCkRrK9KOxflXgxL2ss3reFzrW3
+X-Received: by 2002:a05:6214:2b0b:b0:6ad:7070:4e1c with SMTP id 6a1803df08f44-6ad707059e8mr77511716d6.19.1716797176910;
+        Mon, 27 May 2024 01:06:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716797176; cv=none;
         d=google.com; s=arc-20160816;
-        b=cW92ZYX4jGTtzAMM1AZ1ILdFyvkp/QCg0APbFYT4ASlrqz1LNLkjgPbKFKkiliFWng
-         iPLyP8u0LHoxgntmjZLleZJ4Ra4yvJjeBtj+A3zZVO/3/p5ymqn+QvgGCl110TCuBKeR
-         Y0wCwgkSbLPvoGdl2vzOm5xM9lcP7+KMfbGf4O2Dvp5xHFRSuWZIomu1PBdz5AnsouG2
-         V//4T2RwuJ7PX0fR6XGauFqTB0XUf67/dgkBquR2YRoaC64qAmzud/UzImkSS5XjrI7R
-         x1yMYA2dxbTIw3wxMz+3WvpF61YM0ohdo7GsQYI3vn3QsL6IEKJgHuKIMkfh3TeLNOLy
-         j3Ng==
+        b=iBZcuxIUZeFg3AXNowN5nUUSg5910gUw65w+3LnDtN/Pd5u0U3P8eUr3c7seusUwIb
+         +v4aBueTGshIpSfkg9m59EdmsWiFu/2+iT2Neqnt+p7QZpzIb2CLmImyM27qun0PqCVa
+         3YrALPzcn8zOWpK/D9zEOG6lm55JxstAa1ZGiffy8zPuq+q1JhunAWMcF+l3CsqZzfcj
+         jmSATLnEjSMwFy4TPWLTQ6KTfvvMtvqEP1qZRVEYMLPNLw5hFbdxGNWFDyWeUbgFsCYL
+         1jHOA/yUAEZI67U1gutWtqiegbxH3gUBTyZmEVD4duIGCBcchI2NmhklWLLC+IYoXMRW
+         QGkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=SiU3vVtvMTWJJk6L4/BSUSTHGfAHaBVjsiL5ZrioNVE=;
+        bh=dh4FO6FS/XO2T0sxf0umpAesdmz/B0CDTGXlzISgHxI=;
         fh=4qsXPuPQQYwauqV4GBfUuJ135n2gY4LbnQu8KHliids=;
-        b=fp7p8FNZDLGl1rqgfKDUocEg7YUPrlXXoaU70qpLhWD7v5VayjSKjqK9fXyljfNThf
-         bwnOI54vkxwqfac4HUA7s4Emn9V41Uo3x/vXYIaUNXbcwGy5jdBqcqeTmybBAbKQDE7B
-         LcPfcMIzJCXoObzXF7k3uq6mvMLl/savsjsD9NmiEImtu8zLxjp9vP6aGt1llQfoqeIR
-         P8oPcCCa7ov00cVfX/v8IMEwHGYXfmngwqlFRHmLtfChV1eWGu2Xy+o+2VkNav/QQb7p
-         srv6KFUowF/IhvayAQ6nGGBgjzxOLDY+6j/EsSeVjNKreMvbB+xOGwmQPWHXssIuHQj+
-         W/yQ==;
+        b=Z5mmGo5YJMBWpI/+vQf0An63H6jI14KvRcKBe5txRE7nzq1bESvuHPNjkOPaowtDdn
+         UTrGDZlJMERjNTxjyylkTDE2wjwrV53FBMF32lDm6iWbf5hbnsESHCqhBk3y2NqJzs8C
+         gDZzPHq4ifyqdzcsAxzohKRxHVvAaJmNdr3+QcGKgl98toIiNmCBpPeRSGPexvOXTnE6
+         gdf08sN0RiInp2/6CIjL6ze5RFDZoDSYgN9DAtWKdjL8vHrUvCkU8I0DW25SQYF9FJCD
+         EthvGecN8HVxUY/L2jHycG2T3T5O74hf5eg/vp5EGrGjsQ0YadPejcTVPONyGWdE7a/k
+         ThjA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43fb18ea32dsi85452571cf.767.2024.05.27.01.05.15
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ac16286b93si74794276d6.425.2024.05.27.01.06.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 May 2024 01:05:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 May 2024 01:06:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sBVLP-0003uZ-He; Mon, 27 May 2024 04:04:35 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sBVMe-0005ce-9W; Mon, 27 May 2024 04:05:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sBVKk-0001fg-Mk; Mon, 27 May 2024 04:03:54 -0400
+ id 1sBVJu-0000KL-0e; Mon, 27 May 2024 04:03:09 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sBVKi-0005H2-W2; Mon, 27 May 2024 04:03:54 -0400
+ id 1sBVJr-0005H2-TN; Mon, 27 May 2024 04:03:01 -0400
 Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Mon, 27 May
- 2024 16:02:39 +0800
+ 2024 16:02:34 +0800
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX02.aspeed.com
  (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 27 May
- 2024 16:02:40 +0800
+ 2024 16:02:35 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Mon, 27 May 2024 16:02:38 +0800
+ Transport; Mon, 27 May 2024 16:02:33 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
  Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
@@ -71,15 +71,15 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v4 14/16] aspeed/soc: fix incorrect dram size for AST2700
-Date: Mon, 27 May 2024 16:02:28 +0800
-Message-ID: <20240527080231.1576609-15-jamin_lin@aspeedtech.com>
+Subject: [PATCH v4 04/16] aspeed/sdmc: fix coding style
+Date: Mon, 27 May 2024 16:02:18 +0800
+Message-ID: <20240527080231.1576609-5-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
 References: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
  does not designate 192.168.10.10 as permitted sender)
  receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
@@ -92,176 +92,71 @@ X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jcHK4oi3L1Em
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Wmbx8tZ+vz/P
 
-AST2700 dram size calculation is not back compatible AST2600.
-According to the DDR capacity hardware behavior,
-if users write the data to address which is beyond the ram size,
-it would write the data to address 0.
-For example:
-a. sdram base address "0x4 00000000"
-b. sdram size is 1 GiB
-The available address range is from "0x4 00000000" to "0x4 40000000".
-If users write 0xdeadbeef to address "0x6 00000000",
-the value of DRAM address 0 (base address 0x4 00000000) should be 0xdeadbeef.
+Fix coding style issues from checkpatch.pl
 
-Add aspeed_soc_ast2700_dram_init to calculate the dram size and add
-memory I/O whose address range is from max_ram_size - ram_size to max_ram_size
-and its read/write handler to emulate DDR capacity hardware behavior.
+Test command:
+scripts/checkpatch.pl --no-tree -f hw/misc/aspeed_sdmc.c
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed_ast27x0.c     | 94 ++++++++++++++++++++++++++++++++++++-
- include/hw/arm/aspeed_soc.h |  1 +
- 2 files changed, 94 insertions(+), 1 deletion(-)
+ hw/misc/aspeed_sdmc.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index a3a03fc1ca..19380087fa 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -20,6 +20,7 @@
- #include "sysemu/sysemu.h"
- #include "hw/intc/arm_gicv3.h"
- #include "qapi/qmp/qlist.h"
-+#include "qemu/log.h"
- 
- static const hwaddr aspeed_soc_ast2700_memmap[] = {
-     [ASPEED_DEV_SPI_BOOT]  =  0x400000000,
-@@ -191,6 +192,97 @@ static qemu_irq aspeed_soc_ast2700_get_irq(AspeedSoCState *s, int dev)
-     return qdev_get_gpio_in(a->intc.gic, sc->irqmap[dev]);
- }
- 
-+static uint64_t aspeed_ram_capacity_read(void *opaque, hwaddr addr,
-+                                                    unsigned int size)
-+{
-+    qemu_log_mask(LOG_GUEST_ERROR,
-+                  "%s: read @%" PRIx64 " out of ram size\n",
-+                   __func__, addr);
-+    return 0;
-+}
-+
-+static void aspeed_ram_capacity_write(void *opaque, hwaddr addr, uint64_t data,
-+                                                unsigned int size)
-+{
-+    AspeedSoCState *s = ASPEED_SOC(opaque);
-+    uint32_t test_pattern = 0xdeadbeef;
-+    bool invalid_pattern = true;
-+    uint32_t *ram_ptr;
-+    int sz;
-+
-+    ram_ptr = memory_region_get_ram_ptr(s->dram_mr);
-+
-+   /*
-+    * Emulate ddr capacity hardware behavior.
-+    * If writes the test_pattern to address which is beyond the ram size,
-+    * it would write the test_pattern to address 0.
-+    */
-+    for (sz = 4; sz > 0 ; sz--) {
-+        test_pattern = (test_pattern << 4) + sz;
-+        if (data == test_pattern) {
-+            ram_ptr[0] = test_pattern;
-+            invalid_pattern = false;
-+            break;
-+        }
-+    }
-+
-+    if (invalid_pattern) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: write invalid pattern @%" PRIx64
-+                      " to addr @%" HWADDR_PRIx "]\n",
-+                      __func__, data, addr);
-+    }
-+}
-+
-+static const MemoryRegionOps aspeed_ram_capacity_ops = {
-+    .read = aspeed_ram_capacity_read,
-+    .write = aspeed_ram_capacity_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 8,
-+    },
-+};
-+
-+/*
-+ * SDMC should be realized first to get correct RAM size and max size
-+ * values
-+ */
-+static bool aspeed_soc_ast2700_dram_init(DeviceState *dev, Error **errp)
-+{
-+    ram_addr_t ram_size, max_ram_size;
-+    Aspeed27x0SoCState *a = ASPEED27X0_SOC(dev);
-+    AspeedSoCState *s = ASPEED_SOC(dev);
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-+
-+    ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
-+                                        &error_abort);
-+    max_ram_size = object_property_get_uint(OBJECT(&s->sdmc), "max-ram-size",
-+                                            &error_abort);
-+
-+    memory_region_init(&s->dram_container, OBJECT(s), "ram-container",
-+                       ram_size);
-+    memory_region_add_subregion(&s->dram_container, 0, s->dram_mr);
-+
-+    /*
-+     * Add a memory region beyond the RAM region to emulate
-+     * ddr capacity hardware behavior.
-+     */
-+    if (ram_size < max_ram_size) {
-+        memory_region_init_io(&a->dram_empty, OBJECT(s),
-+                              &aspeed_ram_capacity_ops, s,
-+                              "ram-empty", max_ram_size - ram_size);
-+
-+        memory_region_add_subregion(s->memory,
-+                                    sc->memmap[ASPEED_DEV_SDRAM] + ram_size,
-+                                    &a->dram_empty);
-+    }
-+
-+    memory_region_add_subregion(s->memory,
-+                      sc->memmap[ASPEED_DEV_SDRAM], &s->dram_container);
-+    return true;
-+}
-+
- static void aspeed_soc_ast2700_init(Object *obj)
+diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+index 74279bbe8e..873d67c592 100644
+--- a/hw/misc/aspeed_sdmc.c
++++ b/hw/misc/aspeed_sdmc.c
+@@ -296,7 +296,8 @@ static void aspeed_2400_sdmc_write(AspeedSDMCState *s, uint32_t reg,
+                                    uint32_t data)
  {
-     Aspeed27x0SoCState *a = ASPEED27X0_SOC(obj);
-@@ -461,7 +553,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-                     sc->memmap[ASPEED_DEV_SDMC]);
- 
-     /* RAM */
--    if (!aspeed_soc_dram_init(s, errp)) {
-+    if (!aspeed_soc_ast2700_dram_init(dev, errp)) {
+     if (reg == R_PROT) {
+-        s->regs[reg] = (data == PROT_KEY_UNLOCK) ? PROT_UNLOCKED : PROT_SOFTLOCKED;
++        s->regs[reg] =
++            (data == PROT_KEY_UNLOCK) ? PROT_UNLOCKED : PROT_SOFTLOCKED;
          return;
      }
  
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 9f177b6037..9dbf48f873 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -127,6 +127,7 @@ struct Aspeed27x0SoCState {
+@@ -354,7 +355,8 @@ static void aspeed_2500_sdmc_write(AspeedSDMCState *s, uint32_t reg,
+                                    uint32_t data)
+ {
+     if (reg == R_PROT) {
+-        s->regs[reg] = (data == PROT_KEY_UNLOCK) ? PROT_UNLOCKED : PROT_SOFTLOCKED;
++        s->regs[reg] =
++            (data == PROT_KEY_UNLOCK) ? PROT_UNLOCKED : PROT_SOFTLOCKED;
+         return;
+     }
  
-     ARMCPU cpu[ASPEED_CPUS_NUM];
-     AspeedINTCState intc;
-+    MemoryRegion dram_empty;
- };
+@@ -434,8 +436,9 @@ static void aspeed_2600_sdmc_write(AspeedSDMCState *s, uint32_t reg,
+     }
  
- #define TYPE_ASPEED27X0_SOC "aspeed27x0-soc"
+     if (s->regs[R_PROT] == PROT_HARDLOCKED) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: SDMC is locked until system reset!\n",
+-                __func__);
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: SDMC is locked until system reset!\n",
++                      __func__);
+         return;
+     }
+ 
 -- 
 2.25.1
 

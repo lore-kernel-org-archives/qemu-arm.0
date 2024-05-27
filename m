@@ -1,152 +1,290 @@
-Received: by 2002:a05:7022:4391:b0:7c:9548:a19d with SMTP id bo17csp2874760dlb;
-        Mon, 27 May 2024 09:10:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUVPsw3nh9b3flFFPtoDdakIY92RjsQ6nUblMaXxA3zwtMZoyH+q6L/gQPpoEu3fVeRzB+dKebFrrpU3sVkWjc+/NiwCLAN
-X-Google-Smtp-Source: AGHT+IGt5fB2BUfthxP27gqHlhfoB3nK+HMZQzKgwLmQUl8CO/QmeJ9mt4BlE1s6qsaTqcPOjR/P
-X-Received: by 2002:a05:6214:4a07:b0:6ab:9213:f250 with SMTP id 6a1803df08f44-6abcd10fc55mr116790276d6.60.1716826252802;
-        Mon, 27 May 2024 09:10:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716826252; cv=none;
+Received: by 2002:a05:7022:4391:b0:7c:9548:a19d with SMTP id bo17csp2876236dlb;
+        Mon, 27 May 2024 09:12:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUbGRNZaNQAEe+75/bViavhvCQ76+loioLFqAcacjoh4Blg7+vPXgNv3tgGl7nPZIJS6LXw9ZXwnRm3l6ci72YWI4X8hxJw
+X-Received: by 2002:a05:622a:164b:b0:43e:3a16:a85 with SMTP id d75a77b69052e-43fb0dd7403mr117587971cf.18.1716826377416;
+        Mon, 27 May 2024 09:12:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716826377; cv=none;
         d=google.com; s=arc-20160816;
-        b=saBnxttyL9FXVG/2/3GUE5mjPxPCN1iocGKsjTgmLPOBuCxC2tN9RXUkQefFzUFj2Z
-         X4dqxAdyPjcR8in1UY7kKhcrqyf4e9g69PtmxqkHANvOrkzlnk1sbJ6FVlMDbJygd4RO
-         3DmaFvFYRTqsbcbu3smwtrvbyAB8+45iMEgbvWAEQYDezhIx95odPI6/pEW67OxGV2b8
-         TlvcMomPHvSrrSfghl7lO1XNyszsQwQso59821RZ3KuVQDl61QpY39xuyV5JH8c4Jfh2
-         FilDcja+d7htV5GMXIp1wwgN68L7ooiQnafiNe693y+7+5TFRFwlqReENMbICPMhaJaX
-         oaNw==
+        b=vemX1mTSPqqZeCQyz825jXqPlhCU4X+uWDUnXBoZuPej0b7DIIdAOIroQHMlZYbq+5
+         Poef25SuztYfkNSfHEiqm5a0ARKiW0J5eNsAKpS7z0paklvhxAvA/dHN3lEa084Ib4wA
+         GpoT9L3qM1VbFof3MCCD+k0TJ2Y78WyaDXmCBlH7ToHGkgGnpJce1p+w1EHZ2RbTp7uA
+         Ka8Esdx1W4yJMMOfLUlAx4HlLaRDg0a9mJlTVcKBedhnswn2HiIbJoDTlS7BNN0nU6XA
+         kYYZKPY7CT0e3vT+Z4IR3t4u7LxM9YQ5ED6xGqcvPeSFRgFf19pweBJIk3guXG4OL7+y
+         jQXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=R9qSmOdrCVnRR6Mk4dZsp5uLeuOZ6apDqnW//et28CY=;
-        fh=GFN6Y1WPC+/eoxgviPbQjxqIdT1U1VoJGM2w+bjwVr0=;
-        b=Fh63wjAFvkNXuUa3iR6Bd6L6LqfguG1YQyZq1KhANR2sX2/4/PuuJ4MmjQ6lp+GEgh
-         VOQUSagPBanxAHRENVlYAcCUSLrbl3g4XqxOII1u1GCGtg6vmhRudEMNTz50vTVcq4rn
-         YAwI27yQ8cXC7TLgk3d+Ef4KwNlwJDtA9gDD/Xv0eLDfQErsnsuf205grDrXNIBsx9Ig
-         xS2IELpZyTGm8yBdrdPJxinbIZF8lGaePIbrS2d+4saVi4pKe59A0Nb2nl6WFRjRGHMh
-         y5JQwBeGEpTzyI7O0rIi3U1tLFJ1hFhgg7xA+Xxwg3KO9j7MEeub4B0fuks5w9gIYMPQ
-         Udxw==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Y4eu7mtU1yIw30xnv4hGiBdkzIsN8Ou0azGVT2RvdL0=;
+        fh=pq3N/KA0aT/mD60q7iSYM4lxByZ1Wctg2QnuRK7jRbs=;
+        b=nr9wl4F0CKcvtIDotbqAoNNNDmLQo436aYwEUNTmS23iCRIIY9GNSI73wjweadND11
+         1XzCI3AXQWM8AvxOjVzUjC+h4EbpcnPshckoOFNib/jZhJ+5baE9llpQnv4xbnrGkedG
+         7U0Bl4/8PBZzSYPAhuOi3TBNJFoTp8gxxKDm7uSiWVaVBiEwX0v6azxVGjcnyViPhy0z
+         Ocs6/G5AuAU+HO9s2knttvFJXJ3PzmRxWxdTm6WEAMQVrTQBox3m3CkayB1rAKr8auAN
+         3akDhr+DZ8IAHJeVvEJxxr3pFQk6TlKQkKBDoEoK6Ax/0fFmd4muKtyS21M4WhNS+3aK
+         gn7g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KprlFfGv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ac162d9e6asi81117186d6.579.2024.05.27.09.10.52
+       dkim=pass header.i=@google.com header.s=20230601 header.b=ssFTXZB9;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <smostafa@google.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d75a77b69052e-43f9e7334edsor21925341cf.3.2024.05.27.09.12.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 May 2024 09:10:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 27 May 2024 09:12:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KprlFfGv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sBcvh-00058D-6E; Mon, 27 May 2024 12:10:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sBcvf-00057n-Lp
- for qemu-arm@nongnu.org; Mon, 27 May 2024 12:10:31 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sBcvQ-0001by-Kx
- for qemu-arm@nongnu.org; Mon, 27 May 2024 12:10:31 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-42102c51524so24723505e9.1
- for <qemu-arm@nongnu.org>; Mon, 27 May 2024 09:10:16 -0700 (PDT)
+       dkim=pass header.i=@google.com header.s=20230601 header.b=ssFTXZB9;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1716826215; x=1717431015; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=R9qSmOdrCVnRR6Mk4dZsp5uLeuOZ6apDqnW//et28CY=;
- b=KprlFfGvgUOMXuMQvUfTs/ch/kDLdtI61lWvvJ1ZFVP6vZ7bFx5vJoAryT48PnPNWm
- EMH3bGIU7LSC8mcYrQWepX3qrgIRTGsmn3neeqZdFGi40ySKXFspOJhtKfNk89CiBqP3
- 0smB7iZTVlVOy1/06vU+dinCYlBAgd08xZhuJJzv6Y8yO7ObJLNpTsKY8hXuAzFJBpfg
- ek/dAhLKopNcCiBIwouFXW5uZt+EDr9IzJgpSRRbGwb7DJuPsMfTU4gUevs4wnGkfYDM
- iXmVbn1Cup0LmSqgLqVgPYtKXQUH8+KDJR87nb5rvswrHnpBpvmU21pkztgynj8CqT1M
- tM0Q==
+        d=google.com; s=20230601; t=1716826377; x=1717431177; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Y4eu7mtU1yIw30xnv4hGiBdkzIsN8Ou0azGVT2RvdL0=;
+        b=ssFTXZB9bYx+dRELb7QJrKqTqpeeUpPOGQFw1jFtbPKhcoax73mweWdJi12wfUKSn8
+         hm7zoXgBD7TLL0TvxSzS170F0swHIYQlG9pxab5TKYzip06goafeqwROtGqVh9JYXGei
+         EVZ4NefN0TsD8TWFjCzoeRkldaM64rZ2fzUxWikRifdH7sO29+H/+15a0Q2v+atMr7dU
+         mOHKBvJVfMvn9xWQrGAcXLzvThqucL2WInfIHMWdOvQRJDe/pmEgnENJB5LyzxWnPNMB
+         ORnGA9cqCuMxNWC8+bvR9Z041LArdt7eUNz4Owcd1UCpgM4DcD7uz/FK2DC8dNhBabZJ
+         P3PQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716826215; x=1717431015;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=R9qSmOdrCVnRR6Mk4dZsp5uLeuOZ6apDqnW//et28CY=;
- b=qZmL5/2B+kqBW+rZv6IHcqnW9/B3tlzXBK4D6hP80Hta6chzXHjJYhr6dP0e8AuHOu
- XXiz7aQLOHQ8E766ascdARQ5ueKdCNwjNmnNmWsPRNvP3MTo+0DGIuudLwUBSE7g+Jqd
- 9v82oz64FTC0VcnjwnnLBTSthBBxr6eQLqdeKixDi24V6MYxZ2TVCGhjOsIqKv7C5/Pc
- aBg9rssR6gSbg3DLkeFoiSxkt9pzTKH5TmRYpSKxz74gQGeq5y1dwxzPRlq1c3GjZNV8
- RL0/RvvVDUQTcuhDt6+u74k4ccpOg4VBAhWBl/GYbRXjlnRBvBun5LcrtD9Op54f3EDs
- IRuA==
-X-Gm-Message-State: AOJu0YxO6XHDj8Il9G8IBj0e1Hmo7AzGiOISzGJojYiDHmOk2mllrWIz
- 0eZAnK9EZRODjXwIc4A41oA/vb0a5ZcPcS8gU83X9c2d5P6H4q8Fq6Pd81L+ll8=
-X-Received: by 2002:a05:600c:1386:b0:41c:66:18c2 with SMTP id
- 5b1f17b1804b1-421015a6086mr105678435e9.4.1716826214964; 
- Mon, 27 May 2024 09:10:14 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.152.134])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-421089afcfdsm113725695e9.36.2024.05.27.09.10.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 May 2024 09:10:14 -0700 (PDT)
-Message-ID: <f8ef776b-3ae8-416f-ba73-bf141bbd33b8@linaro.org>
-Date: Mon, 27 May 2024 18:10:13 +0200
+        d=1e100.net; s=20230601; t=1716826377; x=1717431177;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Y4eu7mtU1yIw30xnv4hGiBdkzIsN8Ou0azGVT2RvdL0=;
+        b=Eqfo6UhwqSvxOMmtRAfEd+JZVveQypTtg2uDmrwuSpPX8FG58dNLzQ64uzftUlQ5zm
+         0+hP/L04mYs5wAVwysKSsEncJjMAD/bRT8Bk7SlIyHz/Ip3SowqvNhQuzRv/aCw5TR+e
+         UZ/OJbdzRdifUgmsHVPpBZy1Dpv+gA5mp80j4Xv3M0NP+5ztQGAQfLNMDl8dsjGlKLMh
+         ofA4sNVqS8c4Jmb+x87zNhYXNoa8eqb8J+9fY+ymfj0cqn4gSbpPf6RFr0edxSHb6o+2
+         gRHmkEfmAJ5N90y+oIqONhuBbF9jEbj+bThJAsTLtNha5WQuYvNR/DMgwwcm1CzjmfS/
+         OYbA==
+X-Forwarded-Encrypted: i=1; AJvYcCWz1BIxcIF4oPOpTNhUDyCI+LX8V0trt2n3pTUs2XA3YOf+YB/2SR/27xvovz5VXxPWcE9ulo4clO+Cl8bt0/mVPaIBghsM
+X-Gm-Message-State: AOJu0YzpJp9CxmUnFIRCvSf785jT/ASReUK1crH3+a/hLPfDDrT569f1
+	r2RsIO5qSHIFTcjyW9r2NqNTT5+va8Ks6/IHTIBGtBNCHm07X2mkU7SYoZyWHuQ7JYlz2Hhbnb3
+	BhZ8PoFLUOLeQM3PvFTFfkfw0Bnixl2ohH0vH
+X-Google-Smtp-Source: AGHT+IG67vof6kzEmRNwjJwo+msAxjb8w/SDZBojX8XliziE6sx9rs5cd1qry+1eyHZyc7EtRYqN3STAIiiv8Q1FOnc=
+X-Received: by 2002:a05:622a:5989:b0:43e:3d52:3e0b with SMTP id
+ d75a77b69052e-43fb9f596ccmr4667851cf.16.1716826376797; Mon, 27 May 2024
+ 09:12:56 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] aspeed/smc: Reintroduce "dram-base" property for AST2700
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>
-References: <20240527124315.35356-1-clg@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240527124315.35356-1-clg@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pD1fQPA/cS7p
+References: <20240429032403.74910-1-smostafa@google.com> <7a30b326-df0e-4907-8ca0-6289665c4708@redhat.com>
+In-Reply-To: <7a30b326-df0e-4907-8ca0-6289665c4708@redhat.com>
+From: Mostafa Saleh <smostafa@google.com>
+Date: Mon, 27 May 2024 17:12:37 +0100
+Message-ID: <CAFgf54qyexuZjSt32UTAKPL2+sZv8uS5ecZyLAL00MLROGYUog@mail.gmail.com>
+Subject: Re: [RFC PATCH v3 00/18] SMMUv3 nested translation support
+To: eric.auger@redhat.com
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org, 
+	jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org, 
+	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org, 
+	marcin.juszkiewicz@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: LLumyoeo7/oN
 
-On 27/5/24 14:43, Cédric Le Goater wrote:
-> The Aspeed SMC device model use to have a 'sdram_base' property. It
-> was removed by commit d177892d4a48 ("aspeed/smc: Remove unused
-> "sdram-base" property") because previous changes simplified the DMA
-> transaction model to use an offset in RAM and not the physical
-> address.
-> 
-> The AST2700 SoC has larger address space (64-bit) and a new register
-> DMA DRAM Side Address High Part (0x7C) is introduced to deal with the
-> high bits of the DMA address. To be able to compute the offset of the
-> DMA transaction, as done on the other SoCs, we will need to know where
-> the DRAM is mapped in the address space. Re-introduce a "dram-base"
-> property to hold this value.
-> 
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> ---
->   include/hw/ssi/aspeed_smc.h | 1 +
->   hw/ssi/aspeed_smc.c         | 1 +
->   2 files changed, 2 insertions(+)
+Hi Eric,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Tue, May 21, 2024 at 10:47=E2=80=AFAM Eric Auger <eric.auger@redhat.com>=
+ wrote:
+>
+> Hi Mostafa,
+>
+> On 4/29/24 05:23, Mostafa Saleh wrote:
+> > Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
+> > but not nested instances.
+> > This patch series adds support for nested translation in SMMUv3,
+> > this is controlled by property =E2=80=9Carm-smmuv3.stage=3Dnested=E2=80=
+=9D, and
+> > advertised to guests as (IDR0.S1P =3D=3D 1 && IDR0.S2P =3D=3D 2)
+> >
+> > Main changes(architecture):
+> > =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D
+> > 1) CDs are considered IPA and translated with stage-2.
+> > 2) TTBx and tables for stage-1 are considered IPA and translated
+> >    with stage-2.
+> > 3) Translate the IPA address with stage-2.
+> >
+> > TLBs:
+> > =3D=3D=3D=3D=3D=3D
+> > TLBs are the most tricky part.
+> >
+> > 1) General design
+> >    Unified(Combined) design is used, where entries with ASID=3D-1 are
+> >    IPAs(cached from stage-2 config)
+> >
+> >    TLBs are also modified to cache 2 permissions, a new permission adde=
+d
+> >    "parent_perm."
+> >
+> >    For non-nested configuration, perm =3D=3D parent_perm and nothing
+> >    changes. This is used to know which stage to use in case there is
+> >    a permission fault from a TLB entry.
+> >
+> > 2) Caching in TLB
+> >    Stage-1 and stage-2 are inserted in the TLB as is.
+> >    For nested translation, both entries are combined into one TLB
+> >    entry. The size (level and granule) are chosen from the smallest ent=
+ries.
+> >    That means that a stage-1 translation can be cached with sage-2
+> >    granule in key, this is take into account lookup.
+> >
+> > 3) TLB Lookup
+> >    TLB lookup already uses ASID in key, so it can distinguish between
+> >    stage-1 and stage-2.
+> >    And as mentioned above, the granule for stage-1 can be different,
+> >    If stage-1 lookup failed, we try again with the stage-2 granule.
+> >
+> > 4) TLB invalidation
+> >    - Address invalidation is split, for IOVA(CMD_TLBI_NH_VA
+> >      /CMD_TLBI_NH_VAA) and IPA(CMD_TLBI_S2_IPA) based on ASID value
+> >    - CMD_TLBI_NH_ASID/CMD_TLBI_NH_ALL: Consider VMID if stage-2 is
+> >      supported, and invalidate stage-1 only by VMIDs
+> >
+> > As far as I understand, this is compliant with the ARM architecture:
+> > - ARM ARM DDI 0487J.a: RLGSCG, RTVTYQ, RGNJPZ
+> > - ARM IHI 0070F.b: 16.2 Caching
+> >
+> > An alternative approach would be to instantiate 2 TLBs, one per each
+> > stage. I haven=E2=80=99t investigated that.
+> >
+> > Others
+> > =3D=3D=3D=3D=3D=3D=3D
+> > - Advertise SMMUv3.2-S2FWB, it is NOP for QEMU as it doesn=E2=80=99t su=
+pport
+> >   attributes.
+> >
+> > - OAS: A typical setup with nesting is to share CPU stage-2 with the
+> >   SMMU, and according to the user manual, SMMU OAS must match the
+> >   system physical address.
+> >
+> >   This was discussed before in
+> >   https://lore.kernel.org/all/20230226220650.1480786-11-smostafa@google=
+.com/
+> >   The implementation here, follows the discussion, where migration is
+> >   added and oas is set up from the board (virt). However, the OAS is
+> >   chosen based on the CPU PARANGE as there is no fixed one.
+> >
+> > - For nested configuration, IOVA notifier only notifies for stage-1
+> >   invalidations (as far as I understand this is the intended
+> >   behaviour as it notifies for IOVA)
+> >
+> > - Stop ignoring VMID for stage-1 if stage-2 is also supported.
+>
+> I completed the review pass on my end. I strongly encourage you to move
+> the series into a non RFC series to attract more reviewers. Migration
+> needs to be fixed and compat handling as well I think but overall the
+> nested support looks mostly OK for me. Some stuff are a bit hacky (like
+> config local patching to force S2 only) as I mentionned in my comments
+> but let see if other reviewers find some more elegant ways to handle thin=
+gs
+>
 
+Thanks a lot, I really appreciate your thorough review.
+I will send a v4 without RFC in ~2 weeks as I am off for a while.
+I will probably drop the OAS changes (again) to avoid the migration
+hassle and this can be a separate series after this one,
+
+Thanks,
+Mostafa
+
+> Eric
+> >
+> >
+> > Future improvements:
+> > =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> > 1) One small improvement, that I don=E2=80=99t think it=E2=80=99s worth=
+ the extra
+> >    complexity, is in case of Stage-1 TLB miss for nested translation,
+> >    we can do stage-1 walk and lookup for stage-2 TLBs, instead of
+> >    doing the full walk.
+> >
+> > Testing
+> > =3D=3D=3D=3D=3D=3D=3D=3D
+> > 1) IOMMUFD + VFIO
+> >    Kernel: https://lore.kernel.org/all/cover.1683688960.git.nicolinc@nv=
+idia.com/
+> >    VMM: https://qemu-devel.nongnu.narkive.com/o815DqpI/rfc-v5-0-8-arm-s=
+mmuv3-emulation-support
+> >
+> >    By assigning =E2=80=9Cvirtio-net-pci,netdev=3Dnet0,disable-legacy=3D=
+on,iommu_platform=3Don,ats=3Don=E2=80=9D,
+> >    to a guest VM (on top of QEMU guest) with VIFO and IOMMUFD.
+> >
+> > 2) Work in progress prototype I am hacking on for nesting on KVM
+> >    (this is nowhere near complete, and misses many stuff but it
+> >    doesn't require VMs/VFIO) also with virtio-net-pci and git
+> >    cloning a bunch of stuff and also observing traces.
+> >    https://android-kvm.googlesource.com/linux/+log/refs/heads/smostafa/=
+android15-6.6-smmu-nesting-wip
+> >
+> > I also modified the Linux driver to test with mixed granules/levels.
+> >
+> > hw/arm/smmuv3: Split smmuv3_translate() better viewed with --color-move=
+d
+> >
+> > The first 3 patches are fixes.
+> >
+> > Changes in v3
+> > v2: https://lore.kernel.org/qemu-devel/20240408140818.3799590-1-smostaf=
+a@google.com/
+> > - Collected Eric Rbs.
+> > - Rebased on master.
+> > - Fix an existing bug in class encoding.
+> > - Fix an existing bug in S2 events missing IPA.
+> > - Fix nesting event population (missing class and wrong events)
+> > - Remove CALL_FUNC_CFG_S2.
+> > - Rework TLB combination logic to cache the largest possible entries.
+> > - Refactor nested translation code to be more clear.
+> > - Split patch 05 to 4 patches.
+> > - Convert asid/vmid in trace events to int also.
+> > - Remove some extra traces as it was not needed.
+> > - Improve commit messages.
+> >
+> > Changes in v2:
+> > v1: https://lore.kernel.org/qemu-devel/20240325101442.1306300-1-smostaf=
+a@google.com/
+> > - Collected Eric Rbs
+> > - Rework TLB to rely on VMID/ASID instead of an extra key.
+> > - Fixed TLB issue with large stage-1 reported by Julian.
+> > - Cap the OAS to 48 bits as PTW doesn=E2=80=99t support 52 bits.
+> > - Fix ASID/VMID representation in some contexts as 16 bits while
+> >   they can be -1
+> > - Increase visibility in trace points
+> >
+> > Mostafa Saleh (18):
+> >   hw/arm/smmu-common: Add missing size check for stage-1
+> >   hw/arm/smmu: Fix IPA for stage-2 events
+> >   hw/arm/smmuv3: Fix encoding of CLASS in events
+> >   hw/arm/smmu: Use enum for SMMU stage
+> >   hw/arm/smmu: Split smmuv3_translate()
+> >   hw/arm/smmu: Consolidate ASID and VMID types
+> >   hw/arm/smmuv3: Translate CD and TT using stage-2 table
+> >   hw/arm/smmu-common: Add support for nested TLB
+> >   hw/arm/smmu-common: Rework TLB lookup for nesting
+> >   hw/arm/smmu-common: Support nested translation
+> >   hw/arm/smmu: Support nesting in smmuv3_range_inval()
+> >   hw/arm/smmu: Support nesting in the rest of commands
+> >   hw/arm/smmuv3: Support nested SMMUs in smmuv3_notify_iova()
+> >   hw/arm/smmuv3: Support and advertise nesting
+> >   hw/arm/smmuv3: Advertise S2FWB
+> >   hw/arm/smmu: Refactor SMMU OAS
+> >   hw/arm/smmuv3: Add property for OAS
+> >   hw/arm/virt: Set SMMU OAS based on CPU PARANGE
+> >
+> >  hw/arm/smmu-common.c         | 298 ++++++++++++++++++++---
+> >  hw/arm/smmuv3-internal.h     |  22 +-
+> >  hw/arm/smmuv3.c              | 441 +++++++++++++++++++++++------------
+> >  hw/arm/trace-events          |  26 ++-
+> >  hw/arm/virt.c                |  14 +-
+> >  include/hw/arm/smmu-common.h |  43 +++-
+> >  include/hw/arm/smmuv3.h      |   1 +
+> >  target/arm/cpu.h             |   2 +
+> >  target/arm/cpu64.c           |   5 +
+> >  9 files changed, 625 insertions(+), 227 deletions(-)
+> >
+>

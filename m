@@ -1,151 +1,183 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp3073668ejb;
-        Mon, 27 May 2024 03:09:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCU3M7Fpi89EXAATD5OzsaVygHNfGVe4nr96N981pdmJFloluFz3kspwGdWSw3EsYlobVjzwtDKEWg/lYyGjL5xiKVl/zQxe
-X-Google-Smtp-Source: AGHT+IEfclPeV7pyBct/ZR1LRuB4gFtcICPqDNzwlN3onENM7jJdQActagcuse37dlWwAsFoaPXZ
-X-Received: by 2002:a17:903:1c8:b0:1ee:1fcf:e19a with SMTP id d9443c01a7336-1f4499010c4mr105263475ad.59.1716804588435;
-        Mon, 27 May 2024 03:09:48 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1716804588; cv=pass;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp3075036ejb;
+        Mon, 27 May 2024 03:12:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUT5hZrjAqolk1Z2r8KFXE9v+0MRO/raX0A0qtjRLDfWBrzYzfyXnJn34x2c8RKNfTFJMdg0/mBL6aLHNz4c4fpCOoVyiE8
+X-Google-Smtp-Source: AGHT+IGOt0D5/Jb3mPqOlyqhoXRPOhdN56PcIZCOtMn62gG7vTT85TzafQY10WLUYSSx/cClkJ9J
+X-Received: by 2002:a05:622a:301:b0:43b:82d:d2cc with SMTP id d75a77b69052e-43fb0e88c8cmr108376601cf.55.1716804763032;
+        Mon, 27 May 2024 03:12:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716804763; cv=none;
         d=google.com; s=arc-20160816;
-        b=OzXl6fmIqk058w/C4uJxTOHzjVeeKTX/PaeVEQ/4gdW+tiCUMmUisOvS/7p2BLcaKn
-         gAttSjKawgzHlSP6rn0FZTtRws/dFs8aRG54zeZ8shqh629MjrduWLlWTcwMCCGy8xyk
-         Tb7FV/lPpUXVkRHfyIhTI36Tve5fmk4+VmL8zev3zat682XA87AxxqrM1qB2sHWJfuwb
-         IuCQ4jfrfOMLkI50dJv5NL0aVStKobcj1zo7Ud6g6gXhE42hFLVRT8/qbnNIs/ikvhsX
-         aITy2omV//p+tQ4tAfFktYzTqs5y136LudPNV5iLDR1+FP14Hl3U5fVKqRZRQENiW93+
-         XTHw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=20QoxCQaTC3p1vb/lYfCfKnwhyfEuGXg5cw0m/CuMYM=;
-        fh=3GR4+MCgfsMbFzCI2skOjY2AiG8d+xko4b8Ap+dnQ+o=;
-        b=F2kU3ieIT7h84y1RtRyA7U+moox0LL2qJue7UhuNVsRdEQtG9t8G6US3JVEk+ftLkw
-         gb7N9nKy+z1l2RekwoUu2If8mDOANDUp7caa2EobqyuDhPFzOF/S7WiUkloCuFcUqtES
-         99WgVA7FVR8mSTgZt3wR/U9gbH9ofy4L811ZfK6OfjC06o4ap68VDGkO00ScCNo5gHka
-         zSngxGW4RqfUzln88Aa5l0DV/X3tpeAcKFoGwVA+r7I31R2HReD2Jo7o3O53kCm3Weuo
-         TtCV5bIOWtw5BCOAOdIEcGiEHMeXj/lVFX0Q/efdtaoMlvFuDIkTbzl/HOR8VzQ7RFxH
-         sNWQ==;
+        b=lgzJ13fDPLFuI86pAMktwA36mzaobYOwVOi79AxlFLz13F3vbuL7IjpVFaBwiuRxWp
+         I16mrj/yDTXHd6AI9XyLfBJU6tTT80TFLIBok9v5lA7gUmIXi7+STppDOnx571xzquiW
+         iQHH+D4thG+5Y7JY/jXUQ/YCwf7JlEb6xkOm7MZWjjli58tEvd8ukgBjCzpOQl5WnDgT
+         8qyReDE4hBrRImHFsictF0yc6JoBbfXerMEc5zvFK9LeA2hkXq0UO5KuLYGZFxLsXOUL
+         3QLdcAhiNAWor5st91MJhqH5UBHxUMBvJoJnDBJVJVXFvreA3iMSMPWZdBRI9x0Qj8gi
+         HssA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=hejdxdT776/YXS6vd7fdFoEy259e/wrDau3iwUXTDU8=;
+        fh=CQVNc+4yaImxOgv9FbDc+7pA5klkTqdmrhGwqp7KW2g=;
+        b=uCfnLQe5pgNCIP7zpg/G9Bsn7lzd15NsImZOjvMTl4kITjTKdCyolcn7hx5Ukj9iVT
+         86Cu5hVt2Vqy6lNyvQOCsof8s60bSVGkWMpLttVY0owRZXG1Wvik66ONjMtoNu5pMOYz
+         TF/E9XeYjAyLQ2dN6kk/BUHMBloO/sFSNQh8joTaR/SarkGq+d2UXnIRUgLo0FQU9yta
+         eZ2lh5pSemBUEWOXvXpgeaWJSE512y0vu7FQj3ZrGdr4nc4AUzO8VPrCMl18JGG0m2+g
+         masBbA5qB9iOiggJU44L33/TiMgvc6nRLpF34a2IBEVItYNu4Rq6K+9ERv+R03MVQPON
+         r+Aw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=S1A8kgmV;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-18175-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-18175-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-18175-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id d9443c01a7336-1f4b859dbbasi2453635ad.439.2024.05.27.03.09.47
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AA9rp+91;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-43fb18c57c9si89606781cf.580.2024.05.27.03.12.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 May 2024 03:09:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-18175-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 27 May 2024 03:12:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=S1A8kgmV;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-18175-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-18175-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 4DBD8B22C26
-	for <alex.bennee@linaro.org>; Mon, 27 May 2024 10:09:46 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id AD7DC13AA4C;
-	Mon, 27 May 2024 10:09:43 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="S1A8kgmV"
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B12AC8830
-	for <kvm@vger.kernel.org>; Mon, 27 May 2024 10:09:41 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.10
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1716804583; cv=none; b=hFvWB4nCS+TnFgR7G6JRrcSaoo207z3WT7GEeMCWyJM5f2dHGwjQ9BdqScRLLCWc/2XVEIm17dpcCvkzDpDRdiPm7wK0QuFRyjbk7ejRn33ZWaDX8NcR1+m7/Hj1NfWyyqgJMcYwkvU193a9IXKj3OW56HE4rGOXz+6IRLIOfKQ=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1716804583; c=relaxed/simple;
-	bh=5J8dHaMU3LQO+Etnmc1tE5Tep1M6eKHy+YAZCgxJqxA=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=C9pSJP1IYYdDoIIuXcZdZ/YPCivnfp6xlcxyLEYBKZ0vJS2eQUMqufexMfVNVn2Z0ohtN0usIEUa8sr3BwwdgokA3cZfxbxgHanq6p44YH4Whqujf0Ej9OEMeBqzh/ix8Kq0wgQZMCgFFkOnpl60sUXW2izdwgB3XdAT5QzaRtg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=S1A8kgmV; arc=none smtp.client-ip=198.175.65.10
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1716804582; x=1748340582;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=5J8dHaMU3LQO+Etnmc1tE5Tep1M6eKHy+YAZCgxJqxA=;
-  b=S1A8kgmVGhw2zC1IuGodIVFZp3d312oBg/0iAv1PH4eFQ5oZ4Fvmzt66
-   CCSgWNaKuuXktzd9xMCh33VTaHIXYPtMWWnyXYVXpgFbngCZlXy4EXHWx
-   AmGzuTpIoFBCKdF8ypm+tNrEWC/h6AxHCEUqTYe1CdFHciaT8UicO9cj8
-   iiT5IijCrGfEULT/Ut9zTRDRoLyDOVe/njraAZPGVjvsqJuw7Tqj95k+p
-   n4XS1jTaoe6rk2raGeLpI2yHFfeQlHvPmpY81RiW8HmPNorG7mqhymHMa
-   uDBV78jxLzvD93HxahGuCK9tLYKLBiTiXJAh9Bvf/5BkBTUMESa2JDSmn
-   A==;
-X-CSE-ConnectionGUID: F71jyVFERAOt7nj/Oj33/A==
-X-CSE-MsgGUID: qU/DEyYESNq8wtBJEkyXaA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11084"; a="30625312"
-X-IronPort-AV: E=Sophos;i="6.08,192,1712646000"; 
-   d="scan'208";a="30625312"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 May 2024 03:09:36 -0700
-X-CSE-ConnectionGUID: M48rnGhUScyrvvdsO0jQuA==
-X-CSE-MsgGUID: M+HxXaNOQ9KGLkbl3BaYaA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,192,1712646000"; 
-   d="scan'208";a="35324709"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by orviesa007.jf.intel.com with ESMTP; 27 May 2024 03:09:21 -0700
-Date: Mon, 27 May 2024 18:24:43 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Shaoqin Huang <shahuang@redhat.com>
-Cc: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
-	qemu-arm@nongnu.org, Eric Auger <eauger@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@intel.com>
-Subject: Re: [PATCH v9] arm/kvm: Enable support for KVM_ARM_VCPU_PMU_V3_FILTER
-Message-ID: <ZlRfawZPkuAZCtIy@intel.com>
-References: <20240409024940.180107-1-shahuang@redhat.com>
- <Zh1j9b92UGPzr1-a@redhat.com>
- <Zjyb43JqMZA+bO4r@intel.com>
- <ZjyZ1ZV7BGME_bY9@redhat.com>
- <ZkG4nlwRnvz9oUXX@intel.com>
- <d3733e25-eb1e-4c19-b77f-d68e871c9f0f@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=AA9rp+91;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sBXL2-0000u7-AZ; Mon, 27 May 2024 06:12:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sBXL1-0000tO-Cp
+ for qemu-arm@nongnu.org; Mon, 27 May 2024 06:12:19 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sBXKy-0003Ac-O6
+ for qemu-arm@nongnu.org; Mon, 27 May 2024 06:12:19 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-35507e3a5deso1595970f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 27 May 2024 03:12:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1716804735; x=1717409535; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=hejdxdT776/YXS6vd7fdFoEy259e/wrDau3iwUXTDU8=;
+ b=AA9rp+913GFa4aMmYTGmfAgf3chrNzIJTjzmFrcKiho2BGrm+wux+T+uw/JcnLIwHs
+ 6mHPuxW/VB5HeXXVEwQk13w0mIQa9Y8Y447rPMrjXLCgwUh+x2xrTazqYGGZZrbD0vXJ
+ l3DSw4QJLpGOxQLl5fL7Sv3K6/YRY5B9bi0oWPoRxkA3kOrFxFYXV6QLDrLWm+qIsxc+
+ Z6NVGch8GDbXR7oKLiUIqF594iHhh5gyZ/mRHIiTrC6jHyLXdFZ0TY0KoW4j7drMQ57U
+ m7VbjDAhLeZMHbZSCdz/w1gfzae/0IwuztKPSjKNEseqdyZDJ32fwlaQYr9Rb9/g4f8d
+ G05w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1716804735; x=1717409535;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=hejdxdT776/YXS6vd7fdFoEy259e/wrDau3iwUXTDU8=;
+ b=efVyAlZaI5ZbWAFVzAz+D3peKZidb5bXB/RDCCx6lvyl6sax7S7vqnUbPzoK8M3JZe
+ nCzDf6bCNAmuXNzSMNX6CzSxzyCXR4FJCjSXf5gZXEeyGRFLKJeinq9I7ZM3boaazhnT
+ 2weI6UJ8bbwrj0RmlkiVvo5Fy4AB7UCc6puDAY3GrZE6X94J1d2IHAyzXQVSQsYmkU03
+ nEvMmO4Vz9ZaKjLLmQdBCem1OBYmFPyyMynCjLyGXKt8vR0cBsIvhSNd/Uv7BHJ/6nY2
+ Lz1aFYVKDS2ypxwY0e+AXKy5r6POo9CCSmV9eMmnqSfQP2jhjj6eYKIuD8acvJn9geFW
+ TI9w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXWl3trjBrcrr9VUcReXtBywKSRn4JBIDTmULEczvY06+lFrBil/h3cN+Z0XlN6kpcUuAFCzMjpI6+1oy/xIiEEhr42
+X-Gm-Message-State: AOJu0YxdfstvSYo90iX/Wb+C7LwwOlzT3iiwUiNaLLsuUoJOkRaboA7O
+ R/U308pJBVsFKSBYQkGjEQLaelX/o2tXLvRsb2XNMXnPYYzaGnJB0awd9x+yw4Z3gCIDMaTwwkz
+ pWlA=
+X-Received: by 2002:a05:6000:11cf:b0:351:debf:a39e with SMTP id
+ ffacd0b85a97d-354f757d1a5mr10775266f8f.27.1716804734715; 
+ Mon, 27 May 2024 03:12:14 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.152.134])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-35586a15f7csm8663904f8f.94.2024.05.27.03.12.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 May 2024 03:12:14 -0700 (PDT)
+Message-ID: <27cef750-262a-402a-97fe-c4a55700a376@linaro.org>
+Date: Mon, 27 May 2024 12:12:10 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <d3733e25-eb1e-4c19-b77f-d68e871c9f0f@redhat.com>
-X-TUID: Sc0Vuj9tP9L2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 06/12] tests/data/acpi/virt: Move ACPI tables under
+ aarch64
+To: Sunil V L <sunilvl@ventanamicro.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Alistair Francis <alistair23@gmail.com>,
+ Sia Jee Heng <jeeheng.sia@starfivetech.com>, Haibo1 Xu
+ <haibo1.xu@intel.com>, Anup Patel <apatel@ventanamicro.com>,
+ Andrew Jones <ajones@ventanamicro.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Palmer Dabbelt
+ <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+References: <20240524061411.341599-1-sunilvl@ventanamicro.com>
+ <20240524061411.341599-7-sunilvl@ventanamicro.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240524061411.341599-7-sunilvl@ventanamicro.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tkdyOcP8nJCp
 
-On Mon, May 27, 2024 at 02:41:01PM +0800, Shaoqin Huang wrote:
-> Date: Mon, 27 May 2024 14:41:01 +0800
-> From: Shaoqin Huang <shahuang@redhat.com>
-> Subject: Re: [PATCH v9] arm/kvm: Enable support for
->  KVM_ARM_VCPU_PMU_V3_FILTER
+Hi Sunil,
+
+On 24/5/24 08:14, Sunil V L wrote:
+> Since virt is a common machine name across architectures like ARM64 and
+> RISC-V, move existing ARM64 ACPI tables under aarch64 folder so that
+> RISC-V tables can be added under riscv64 folder in future.
 > 
-> Hi Zhao,
-> 
-> Thanks for your proposed idea. If you are willing to take the PMU Filter
-> Enabling work, you can do it. I won't update this series anymore due to the
-> QAPI restriction. I really appreciate if you can implement that.
->
+> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> ---
+>   tests/data/acpi/virt/{ => aarch64}/APIC             | Bin
 
-Welcome Shaoqin, I'll cc you when I'm done with the first version (it'll
-take some time).
+The usual pattern is {target}/{machine}, so instead of:
 
-There are also some issues that I might take up and revisit, such as
-whether to place the kvm-pmu-filter in -cpu or in -kvm.
+   microvm/
+   pc/
+   q35/
+   virt/aarch64/
+   virt/riscv64/
 
-Anyway, hopefully eventually we can implement this feature for QEMU and
-users can benefit from it!
+(which is odd because q35 is the x86 'virt'), I'd rather see:
 
-Thanks,
-Zhao
+   x86/microvm/
+   x86/pc/
+   x86/q35/
+   aarch64/virt/
+   riscv64/virt/
 
+Anyhow just my 2 cents, up to the ACPI maintainers :)
+
+Regards,
+
+Phil.

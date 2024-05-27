@@ -1,63 +1,63 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp3025472ejb;
-        Mon, 27 May 2024 01:04:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVmDdC4u1vUdoYpqYeQIxHLpvgF+MzarzrUiVhcZFaUZsI4Ck29MqQN9jYz2WHVrJF82tR+4QZjRWgQXVkI98UfTMHZPOnJ
-X-Google-Smtp-Source: AGHT+IFjqEkqvcWWQP/PTMMvzhYrmlEIdiKll1/2KWcIrPR3E2ISZ6ywzuiRQi/eHARU6bWD+xWt
-X-Received: by 2002:a05:6122:4103:b0:4d4:15d2:8b3b with SMTP id 71dfb90a1353d-4e4f0293533mr7964261e0c.9.1716797039791;
-        Mon, 27 May 2024 01:03:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716797039; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp3025569ejb;
+        Mon, 27 May 2024 01:04:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXKz3CHJtiqzt3MoTPE0kr98+cRP3vKyrOiByXlZ4ikwYrZvATGgyTKpYiy79VA4uxY5HYF2U48Fs9MzZP4TzwTa9V9dILD
+X-Google-Smtp-Source: AGHT+IGGSp2dzbGB41epnaKUqRN7Nf2WSdSywmW2OJ5gaBgY7lPS3XmsyKP9S3LQfEteK/pfhaBu
+X-Received: by 2002:a05:620a:72b5:b0:792:d298:7d68 with SMTP id af79cd13be357-794ab083f0cmr943161785a.23.1716797053674;
+        Mon, 27 May 2024 01:04:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716797053; cv=none;
         d=google.com; s=arc-20160816;
-        b=GMTkrNf559+xp/ePjSecSUKlEMyUDLbM3JdAeGkbD6aLA5oexWHBnywXdwtAu7GGMI
-         iZljX5uqsW221V30v3iCm55vGy2DZlLF7fdU8Q5X9pIwM7HKkQrlGjGE1hGDJFS77Gmd
-         llsMsWbbYV9eo1q/7BMsL0EsJ8XpbTyUA5IX6gAJWvm17fGspZzDghJKBdwLJtr5ydhp
-         3eO24y0csDqjxfdlw57bVk/1F4RUAiWP7J7B4bYJ2z6uOvH4azI6dKGfI9Slj9xOpRGz
-         WJsQYzjx2uP50kfW7IltHsv7dGhQ1zKR5UsoHt6btfJxAtjIyb6FIy4ay8xOT8yTJTMv
-         BN+g==
+        b=0imKhlbvZ01fO1QiP6MFdaI0nuFh+TGLypcYxbk+aK7dHOH6m4oGxd9KmKoguItzHi
+         a7PEqJIT1tAQVGaFbGJUQcFZcxMTuXI/hmyjyTbyu0uBUge44FkFQsIQvuvUjnvz4PGB
+         PzIXNR74OKk2Gbt8BaXsEgD8wx/TpfwdGZp9EPr6Klbi4njhxmVBSkX8HwWamHCgSJH6
+         DdxBT4Ju6bTO0VTifmza6tDjQpvkv5D0VzvQpcQkGcCcgenai1H5pvUKPOsdoHh9N+J8
+         4nKPv56/0A/4H5PXF/WA3eXYQMciuQYVWGAjwFwtZQI5ldsxm72Jp5Z4V/0lDG+ZH2fA
+         uD8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=H2XGJKKUrx/ByTXmc/nS0BQJr3kDnB2I+5AkWD8avIA=;
+        bh=bkPbZrWkfn1gLPyX+TFyjtkATCVhqBjw5ey+1ijIzsc=;
         fh=4qsXPuPQQYwauqV4GBfUuJ135n2gY4LbnQu8KHliids=;
-        b=VgkRaODWhE8zoNUnv1b4ALkr6yB00dE6g/P/5MEXVdw3Ip96mXE08rf92j11AO42zB
-         AzdpIIwNCP25GRF8lU9HjbuFn03aGg+QJcyRSGHekb92jpEUnVDxvpnI5ONTjHR83udW
-         2XyvvPoNyQ6/AvSyiF44yqbYTWeUt0g6K246WTuKan0BHPV1yiRVjK4rfJTZkTxzRtc7
-         U/p8KiHvtMyzXlyZ6fDCl7J4389TniMfM9T2coF6yhb9I2IHAwOSWE2Dom8/JRCPQNfh
-         8L1Qy7clvpau9IToS+Ql52Fre19d63pkBdOkxKHOU6j/NBz8MaAYgTJ+oUql/FVw8HDJ
-         706w==;
+        b=IBXmJLVmkCubhVCNjGv3TVgCJ7ShNvDM12QwNH2XQNDSTo4k2bDIlcJpW3SEjGtrwm
+         aOQzEprHGGviC1tbi44oaEzVA9H3FYIM6DZQV1k8uTUl1JJvdga5iFnrdRDCGtXX5ftj
+         FAL2ArLTBlYqStY180uluuawSW7WvqO9GQ5LkPcKtpEk2nUy79E0fg7LwDILdnDk98jG
+         +YV0nIjOhdAazjeJM3TQS9dcm0yu+rS3DlzRtrihB8wie2ze0xlEFUisMNTFGVMq3Es7
+         YAFys/7JfcLb1Xg4NKIM/RggYRaft+TrywmuW15+as6Sd6oHMi+xVcwhWOgYdsLfw0pF
+         A+NA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-794abcc74aesi731641585a.180.2024.05.27.01.03.59
+        by mx.google.com with ESMTPS id d75a77b69052e-43fb18b2b4dsi74333661cf.480.2024.05.27.01.04.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 May 2024 01:03:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 May 2024 01:04:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sBVKk-0001fe-F9; Mon, 27 May 2024 04:03:54 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sBVKN-0001Jv-5I; Mon, 27 May 2024 04:03:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sBVKO-0001Kc-1b; Mon, 27 May 2024 04:03:32 -0400
+ id 1sBVJj-0000CK-7u; Mon, 27 May 2024 04:02:57 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sBVKM-0005H2-Ia; Mon, 27 May 2024 04:03:31 -0400
+ id 1sBVJf-0005H2-6X; Mon, 27 May 2024 04:02:50 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Mon, 27 May
- 2024 16:02:38 +0800
+ 2024 16:02:32 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Mon, 27 May 2024 16:02:38 +0800
+ Transport; Mon, 27 May 2024 16:02:32 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
  Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
@@ -68,9 +68,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v4 13/16] aspeed: Add an AST2700 eval board
-Date: Mon, 27 May 2024 16:02:27 +0800
-Message-ID: <20240527080231.1576609-14-jamin_lin@aspeedtech.com>
+Subject: [PATCH v4 01/16] aspeed/wdt: Add AST2700 support
+Date: Mon, 27 May 2024 16:02:15 +0800
+Message-ID: <20240527080231.1576609-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
 References: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
@@ -85,98 +85,93 @@ X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MugvktImkwy0
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ct0O214gbnQ8
 
-AST2700 CPU is ARM Cortex-A35 which is 64 bits.
-Add TARGET_AARCH64 to build this machine.
-
-According to the design of ast2700, it has a bootmcu(riscv-32) which
-is used for executing SPL.
-Then, CPUs(cortex-a35) execute u-boot, kernel and rofs.
-
-Currently, qemu not support emulate two CPU architectures
-at the same machine. Therefore, qemu will only support
-to emulate CPU(cortex-a35) side for ast2700
+AST2700 wdt controller is similiar to AST2600's wdt, but
+the AST2700 has 8 watchdogs, and they each have 0x80 of registers.
+Introduce ast2700 object class and increase the number of regs(offset) of
+ast2700 model.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ hw/watchdog/wdt_aspeed.c         | 24 ++++++++++++++++++++++++
+ include/hw/watchdog/wdt_aspeed.h |  3 ++-
+ 2 files changed, 26 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 93ca87fda2..40dc0e4c76 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -178,6 +178,12 @@ struct AspeedMachineState {
- #define AST2600_EVB_HW_STRAP1 0x000000C0
- #define AST2600_EVB_HW_STRAP2 0x00000003
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index d70b656f8e..75685c5647 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -422,12 +422,36 @@ static const TypeInfo aspeed_1030_wdt_info = {
+     .class_init = aspeed_1030_wdt_class_init,
+ };
  
-+#ifdef TARGET_AARCH64
-+/* AST2700 evb hardware value */
-+#define AST2700_EVB_HW_STRAP1 0x000000C0
-+#define AST2700_EVB_HW_STRAP2 0x00000003
-+#endif
++static void aspeed_2700_wdt_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedWDTClass *awc = ASPEED_WDT_CLASS(klass);
 +
- /* Tacoma hardware value */
- #define TACOMA_BMC_HW_STRAP1  0x00000000
- #define TACOMA_BMC_HW_STRAP2  0x00000040
-@@ -1588,6 +1594,26 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-     aspeed_machine_class_init_cpus_defaults(mc);
++    dc->desc = "ASPEED 2700 Watchdog Controller";
++    awc->iosize = 0x80;
++    awc->ext_pulse_width_mask = 0xfffff; /* TODO */
++    awc->reset_ctrl_reg = AST2600_SCU_RESET_CONTROL1;
++    awc->reset_pulse = aspeed_2500_wdt_reset_pulse;
++    awc->wdt_reload = aspeed_wdt_reload_1mhz;
++    awc->sanitize_ctrl = aspeed_2600_sanitize_ctrl;
++    awc->default_status = 0x014FB180;
++    awc->default_reload_value = 0x014FB180;
++}
++
++static const TypeInfo aspeed_2700_wdt_info = {
++    .name = TYPE_ASPEED_2700_WDT,
++    .parent = TYPE_ASPEED_WDT,
++    .instance_size = sizeof(AspeedWDTState),
++    .class_init = aspeed_2700_wdt_class_init,
++};
++
+ static void wdt_aspeed_register_types(void)
+ {
+     type_register_static(&aspeed_wdt_info);
+     type_register_static(&aspeed_2400_wdt_info);
+     type_register_static(&aspeed_2500_wdt_info);
+     type_register_static(&aspeed_2600_wdt_info);
++    type_register_static(&aspeed_2700_wdt_info);
+     type_register_static(&aspeed_1030_wdt_info);
  }
  
-+#ifdef TARGET_AARCH64
-+static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc = "Aspeed AST2700 EVB (Cortex-A35)";
-+    amc->soc_name  = "ast2700-a0";
-+    amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
-+    amc->hw_strap2 = AST2700_EVB_HW_STRAP2;
-+    amc->fmc_model = "w25q01jvq";
-+    amc->spi_model = "w25q512jv";
-+    amc->num_cs    = 2;
-+    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
-+    amc->uart_default = ASPEED_DEV_UART12;
-+    mc->default_ram_size = 1 * GiB;
-+    aspeed_machine_class_init_cpus_defaults(mc);
-+}
-+#endif
-+
- static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
-                                                      void *data)
- {
-@@ -1711,6 +1737,12 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name           = MACHINE_TYPE_NAME("ast1030-evb"),
-         .parent         = TYPE_ASPEED_MACHINE,
-         .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
-+#ifdef TARGET_AARCH64
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("ast2700-evb"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_ast2700_evb_class_init,
-+#endif
-     }, {
-         .name          = TYPE_ASPEED_MACHINE,
-         .parent        = TYPE_MACHINE,
+diff --git a/include/hw/watchdog/wdt_aspeed.h b/include/hw/watchdog/wdt_aspeed.h
+index e90ef86651..830b0a7936 100644
+--- a/include/hw/watchdog/wdt_aspeed.h
++++ b/include/hw/watchdog/wdt_aspeed.h
+@@ -19,9 +19,10 @@ OBJECT_DECLARE_TYPE(AspeedWDTState, AspeedWDTClass, ASPEED_WDT)
+ #define TYPE_ASPEED_2400_WDT TYPE_ASPEED_WDT "-ast2400"
+ #define TYPE_ASPEED_2500_WDT TYPE_ASPEED_WDT "-ast2500"
+ #define TYPE_ASPEED_2600_WDT TYPE_ASPEED_WDT "-ast2600"
++#define TYPE_ASPEED_2700_WDT TYPE_ASPEED_WDT "-ast2700"
+ #define TYPE_ASPEED_1030_WDT TYPE_ASPEED_WDT "-ast1030"
+ 
+-#define ASPEED_WDT_REGS_MAX        (0x30 / 4)
++#define ASPEED_WDT_REGS_MAX        (0x80 / 4)
+ 
+ struct AspeedWDTState {
+     /*< private >*/
 -- 
 2.25.1
 

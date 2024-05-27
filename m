@@ -1,152 +1,116 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp3027140ejb;
-        Mon, 27 May 2024 01:07:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX/vuEG7cBl2MMbDqSuYRnXyXQGDP69Hq++ZGZhUulQExUHK0SJ+wbX1cVsLqTEcG8NBX6yfivl5w31rExWJ0ziqYgu47Q9
-X-Google-Smtp-Source: AGHT+IEZRDFCSVKHdeh1aeEdgpUZKmTvKF7B9YDYpNmIriMN+333ulEvDMYwV71DptCaCiqDHONE
-X-Received: by 2002:a05:6214:3011:b0:6ad:6ece:aa7b with SMTP id 6a1803df08f44-6ad6eceac00mr70764326d6.30.1716797276916;
-        Mon, 27 May 2024 01:07:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716797276; cv=none;
+Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp3052031ejb;
+        Mon, 27 May 2024 02:13:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWzrqA/p79+zaen2uuTbQ+0FjAf6tucRPt7YVWMmLVmEDai7FuF1i35gufhbQGBRiKxWXGwX4/urGTl8u5afwe5I6UkGjFA
+X-Google-Smtp-Source: AGHT+IHdzwE9MIEcvpRLUQgX5oemfuIRfln2bM1mUFBHqmvITBlU23DvG2bUBBwzy7Lo3a1KCwzS
+X-Received: by 2002:a81:7303:0:b0:61b:91e3:f971 with SMTP id 00721157ae682-62a08ed7255mr87677347b3.39.1716801197962;
+        Mon, 27 May 2024 02:13:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716801197; cv=none;
         d=google.com; s=arc-20160816;
-        b=iynbN0yNlLD423Wole8wElCK8u9xfHXVnWbd5GqqfVv8nXOeonJFUEyA7xLl4v8iA4
-         nwT3M46oabYqPY2va023B/6BsOe3VWJ2IW9sb+YtXvArOUD7Xh6gSCWWhVXuh2De2nYJ
-         WqNj+ZGe3jhdFKZZT/JcQMUnWorDf2hKSE48lzKodvFBtwuSgvVVkUl6e18Y4kKavKTA
-         qxOIREA1csA7WaMlGqBCCSOiPt20pu6bQz+Q3X8DHQ1dOO9/MmpjXNxHWr2e2MRgZoD0
-         +rTVr43z3KhIqSTi44YUp0mhTLomBht7dXVlprZYbHkWu+998VpAkgMILOKlTAIE9V6/
-         WrXQ==
+        b=tMT9Spk1AyqYknRrhvoUrlGOPZ9Hg8gGePTVJyobZDh7/yuCRa1EodTq+OFTthgan1
+         D5GjteAG/IZuFWKiQiBAoSmGpNn8zU6ZMwHK1YLeeC05WBcaImNFooixdhaoflseecLY
+         MiitVuL9XbXW5cEPeQsiAJYvC+q2iNVjyGgdkS2uqZk9lWSiLzKBvnASULlTDsVdDVM8
+         6/KbDFkTVytQneI1TZKbkepeXcW8bq+8TREcuHf5BC6DbiJJlYTcnAnd4IBuEzzSHFM7
+         otKEHvsb0ZfugqyB2DkDZ0VJkQcPHrnu/66Jfemz6RAMJt6QoSksD66S6UfCl25y9l2n
+         JsWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=yRVuZ/3YfSuzPOOOUrJl8byeWA2/7J2Rv+BCn4xFaXw=;
-        fh=4qsXPuPQQYwauqV4GBfUuJ135n2gY4LbnQu8KHliids=;
-        b=S3egDchfUKNJ6HP3cvEmdV5QAiw/l7m8IANgN5dPH9ZoC9LHBx/EGZYNAW6BMF99uX
-         Hqe9GzxomwqlttZKxxlEtBbUSlM6tAoayXWrxQ14qJdb0y7iDQPreg93t/zJ4rq1DsCD
-         gK/lO6O03QUf3dvPJfC2nFFgRnqOpc73Io8mhY7KFohatMnFa6g588s/8q2dPSoPicHW
-         3/TUxi/offgtbTfkYWls8kSCn+US7FR7A8lcSAGhppO+reCR/CPkJrKHIPwKnIYFcgs9
-         7cDey39jFfMjM+tfyEpjCJZJoRkGiaystO3JA1ajekqZOAVyfVE4UOg3kaEqPTcaCBff
-         JCCQ==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=iVvNAoHMNiJoUUyHKjLaS+k+f4cnS5B2Jr44bAML6Pc=;
+        fh=8HrJMzH/t2XErAq17HehcZAm1OlzjMx3QjRMdNLRncM=;
+        b=gP+G8icEwtIVx0Rkv1A4Hv0nIeYV382MKR94jNjUNzuuUrqolA+m0faU0F6BamFRrY
+         qjul+ShiHgltIWU6v97YbjUBM1gdEI9wB+p1TNwYhDdE9U4pivklbV2I/R+hxaXpqNS9
+         oOIV7uejl5WVW/k6eW12cWzCwviE2pTQe6s6RTnP+NZ372kM4yBOpWs48GXNHJJjQxxm
+         VMivx45f2tvPTGgSFZnVLM5dZUy25r7nTlvHxlWiHHoE4JsEavJNZkziMIxY1gkwCPfJ
+         iDHuKJvpk8/hhNIDE8+Sks1IUksQO+rWEypEb5M2TKwR9+zz+d96mdlEkfdRAbs4oPrm
+         lwtg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ac1625f172si75408756d6.376.2024.05.27.01.07.56
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=gpquwO89;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.14 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.14])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ac070f0ee9si77160386d6.211.2024.05.27.02.13.16
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 May 2024 01:07:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 May 2024 02:13:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.14 as permitted sender) client-ip=192.198.163.14;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sBVNV-00070n-SE; Mon, 27 May 2024 04:06:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sBVK2-0000VN-H2; Mon, 27 May 2024 04:03:10 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sBVJy-0005H2-Px; Mon, 27 May 2024 04:03:10 -0400
-Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Mon, 27 May
- 2024 16:02:35 +0800
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX02.aspeed.com
- (192.168.0.24) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 27 May
- 2024 16:02:36 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Mon, 27 May 2024 16:02:34 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
- Cleber Rosa <crosa@redhat.com>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v4 06/16] aspeed/smc: correct device description
-Date: Mon, 27 May 2024 16:02:20 +0800
-Message-ID: <20240527080231.1576609-7-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
-References: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=gpquwO89;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.14 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1716801197; x=1748337197;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=LsG0NLsb5plzK+avJgF7+hm1ZHCZyBHLoqlRGeaxzhw=;
+  b=gpquwO892thxtSFZZBrV1WE+1MzTg6DHAhfmhb6hgpMvZP9KIzKWXFH9
+   9ZkX94y2OYxEWGQTfwah3N56MaLRUp3DCNJW6LEMfJIzlNafDLqGRPYFO
+   AbjtCqtN36AI3BlMYxg0wM1in0L+hZH9tF0Iuhvx0tWoXdmxPkCJrSnPG
+   Apd1JiNHRFrPYNX6WwARRkXNXPrypiH7CsHMl7jQX0G468N4iUHAojsqM
+   ir8CWsG5NkO8tlM2ZbMDSNwng7TMCc4s1ZnbHWljTD7Sfsd1hyzXR6bJn
+   M+zdjnHYJm4wOKlHqM0YVDRQmZtAr9AGkRjRuhk2t/W3ZTj3vtgjoXkD4
+   Q==;
+X-CSE-ConnectionGUID: +yJ3HF6HRNaOkAtUOf4Qpg==
+X-CSE-MsgGUID: eLRobHZeTLWH29GqkA5UzQ==
+X-IronPort-AV: E=McAfee;i="6600,9927,11084"; a="13331230"
+X-IronPort-AV: E=Sophos;i="6.08,192,1712646000"; 
+   d="scan'208";a="13331230"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 May 2024 02:13:15 -0700
+X-CSE-ConnectionGUID: n0LwNNVDRLSA5yHjI2bAxw==
+X-CSE-MsgGUID: ToIL70hdRumgFncpPohcaA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,192,1712646000"; 
+   d="scan'208";a="39673742"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa004.jf.intel.com with ESMTP; 27 May 2024 02:13:07 -0700
+Date: Mon, 27 May 2024 17:28:30 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org,
+	jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+	lpieralisi@kernel.org, peter.maydell@linaro.org,
+	richard.henderson@linaro.org, imammedo@redhat.com,
+	andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
+	eric.auger@redhat.com, oliver.upton@linux.dev, pbonzini@redhat.com,
+	mst@redhat.com, will@kernel.org, gshan@redhat.com,
+	rafael@kernel.org, alex.bennee@linaro.org, linux@armlinux.org.uk,
+	darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+	vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+	miguel.luis@oracle.com, salil.mehta@opnsrc.net,
+	zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
+	wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
+	lixianglai@loongson.cn, npiggin@gmail.com, harshpb@linux.ibm.com,
+	linuxarm@huawei.com
+Subject: Re: [PATCH V11 0/8] Add architecture agnostic code to support vCPU
+ Hotplug
+Message-ID: <ZlRSPuJGBgyEUW6w@intel.com>
+References: <20240522211111.232114-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
- does not designate 192.168.10.10 as permitted sender)
- receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
- helo=localhost.localdomain;
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Xh9BSzDK9+n4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240522211111.232114-1-salil.mehta@huawei.com>
+X-TUID: Xrl6sFYG2GZg
 
-Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
----
- hw/ssi/aspeed_smc.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+On Wed, May 22, 2024 at 10:11:03PM +0100, Salil Mehta via wrote:
+> Date: Wed, 22 May 2024 22:11:03 +0100
+> From: Salil Mehta via <qemu-devel@nongnu.org>
+> Subject: [PATCH V11 0/8] Add architecture agnostic code to support vCPU
+>  Hotplug
+> X-Mailer: git-send-email 2.34.1
+> 
+> Virtual CPU hotplug support is being added across various architectures[1][3].
+> This series adds various code bits common across all architectures:
+> 
+> 1. vCPU creation and Parking code refactor [Patch 1]
+> 2. Update ACPI GED framework to support vCPU Hotplug [Patch 2,3]
+> 3. ACPI CPUs AML code change [Patch 4,5]
+> 4. Helper functions to support unrealization of CPU objects [Patch 6,7]
+> 5. Docs [Patch 8]
+>
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 6e1a84c197..8a8d77b480 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -1448,7 +1448,7 @@ static void aspeed_2500_fmc_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
- 
--    dc->desc               = "Aspeed 2600 FMC Controller";
-+    dc->desc               = "Aspeed 2500 FMC Controller";
-     asc->r_conf            = R_CONF;
-     asc->r_ce_ctrl         = R_CE_CTRL;
-     asc->r_ctrl0           = R_CTRL0;
-@@ -1486,7 +1486,7 @@ static void aspeed_2500_spi1_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
- 
--    dc->desc               = "Aspeed 2600 SPI1 Controller";
-+    dc->desc               = "Aspeed 2500 SPI1 Controller";
-     asc->r_conf            = R_CONF;
-     asc->r_ce_ctrl         = R_CE_CTRL;
-     asc->r_ctrl0           = R_CTRL0;
-@@ -1521,7 +1521,7 @@ static void aspeed_2500_spi2_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     AspeedSMCClass *asc = ASPEED_SMC_CLASS(klass);
- 
--    dc->desc               = "Aspeed 2600 SPI2 Controller";
-+    dc->desc               = "Aspeed 2500 SPI2 Controller";
-     asc->r_conf            = R_CONF;
-     asc->r_ce_ctrl         = R_CE_CTRL;
-     asc->r_ctrl0           = R_CTRL0;
--- 
-2.25.1
+Ran QTESTs on x86 platform, now this series no longer breaks x86-related
+tests, so,
 
+Tested-by: Zhao Liu <zhao1.liu@intel.com>

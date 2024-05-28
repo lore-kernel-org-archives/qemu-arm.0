@@ -1,89 +1,88 @@
-Received: by 2002:a17:906:ca8a:b0:a63:3083:985b with SMTP id js10csp304734ejb;
-        Mon, 27 May 2024 23:38:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWpjnzAh8ikhdXxf5F4zV5fICc8FeQw0fUv/Bo4bTXeHbhq5EOyMRXULvQL7Xqt6DkyjslKo7jk5uHB9izoYwKdCV4/rTEQ
-X-Google-Smtp-Source: AGHT+IH8vOuaQha/GIh4ugr7VCXwhCgm6wLJKTF1vKnE/xYvNgE6ruM2+dPOnP8VYqaAhOb0vri9
-X-Received: by 2002:a05:620a:2611:b0:792:c60e:2b10 with SMTP id af79cd13be357-794ab1249efmr1475824085a.73.1716878314098;
-        Mon, 27 May 2024 23:38:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716878314; cv=none;
+Received: by 2002:a17:906:ca8a:b0:a63:3083:985b with SMTP id js10csp309372ejb;
+        Mon, 27 May 2024 23:54:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUGSY1FS4xalDuybS9j94SLyCuEqiwn5CTB/Uq4qxZqllJgYliWLvyEmbpEvcmQTp0KVSlk5Pmprh2vhTEdRrd60AR1y5ms
+X-Google-Smtp-Source: AGHT+IFuMczd9gPKsq9ZgFr/TUXSYgksQ8Mp+NCFxlSNCy+J6ktTgui5l5UWkunH0IB2mvul7Am2
+X-Received: by 2002:a81:431c:0:b0:627:972f:babe with SMTP id 00721157ae682-62a08eeddb6mr111100137b3.50.1716879244031;
+        Mon, 27 May 2024 23:54:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716879244; cv=none;
         d=google.com; s=arc-20160816;
-        b=GTX0nGIgzLqRbeojedYvx0Rbp0fh3/ppFQExidvmd6zFlFRSlRY2XuD3i1Hwd6CeMC
-         kdffpW9kkLTkHdYgTvCdyCOgqXsVP5ztOvh7yBYf8ZuGvC3fdoTPSrPt5pdfavrW88CW
-         OjYCOrjyJVz48o3AqeVkxAQ6LU3RjDIalngD1Lnklg/SICm27U617KT+TpYAXIuEzXot
-         Nu2UcBXhT5Lgx+OyqoEEk1aGz+LHSI/LNbJ0nL3tRjPQy9uayweicZQC9oruyeAOSB7H
-         QRTn9myFMPqcWJ5xmU6nyUm1AQIcUqRqTKejEGoLQspaiH065De5jD3XSQk3Dm7+Oj8X
-         yVzw==
+        b=WEBh3vSkrpI0iNuAu2rr9GfVaXVqfaheKcHa/V3lsZSvfq/ALCsoYkQibN9g4pINw1
+         ke6NWWvxvm0nWrDLhDHyFsSwLmK5oTcbJGj4P+8TF7eQbIKDvx5c8l+3YK1ftt5Hmeq4
+         Y51q+Y4TQAmN7VhjvTLF5LQlTkD3TRhmFgI8raVYo11MyFaClCC2PH3BkwL8I90wVmX1
+         xJuK7/mrfe86m+ZG+uVr8KEhpJhXm/S+oM9OXDZ8a5pxp9UemXyFXwPPy6JWSmo4p6VZ
+         LQSam/hZ2pW8tkl3ixsineHSjt4N6rRhF3rV2U0kD69sn2bVYXrfgsP9pR5RUvX5wKnv
+         Pffw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=yp2w3c5M/dtSlxKN3XjQEqytazHT1O7H67dxL2Zcfxg=;
-        fh=wBNV7UiSATYaVKmE7Xme8a9dwVo8oS3HDnEeSM4b3WE=;
-        b=WNjPEaJAhvYcspAsbeWAzKuEXdF7VJlZKHa3oMnPkgytufg+WFBtmk9rCZuXuvQjCx
-         Ay1SQsp8i/QfCm6MlX24Dd9aE2e/Tx775DvAnPzxOEEpn5M2S8nSI73GtvrXtF893LBg
-         onZEIuh1dbIz4Ta6Wg4Ofu9SSds5VEIAH7LfieYLEEV+mX+vlKcW1VTjyra9XgvGwBNF
-         nrpXELxRqY4GeFmMwyychJJeslXVFbVXd+/uHEL9r+u28CKJsxS4M1AMkBUP4/FxOTtu
-         EAjKB12WWU9V+o5vGS73OyT0/CPJtI8t0LcCa0CvEgEV3WusGHhYPrEUz+egRHnVWnsR
-         NVVQ==;
+        bh=FWRVfVkC/GcdinKQllAmwMeuY7FRNh4mGqAWHz1ITBs=;
+        fh=GVpuD+f5VFhxVLzAQQCzEs7iUI2e/2dlSxojvjPsRcA=;
+        b=xCy1KkyrOdprvN4mIN9TzyaZad0nvoMGLXl9RURej/mCe+G0rkvnDakzN9GtPenMqm
+         /Wo9FHDsn4isdJ+laEzK0ydfJ1KO0yKlHMBfIKSiTOb7dcPJmiEdkBF41lIpj6QvLXZ/
+         MamiePaiNm8cld1Moa65r/RsWOyzojXOzkQ04ik1+e/kZeLeWLtdkNUWdSsfKJOesYGh
+         P5LidKb1P1HOgFW5MJ2Ny2PZWX6Y5WCJ8ryAH6C0UVzm70++Yp90L/hoqHddj49yDcRG
+         WPidM8fTT4MDMPO6W/vVjqB22dT6W+uFsQZNQ1kR0ok+KDMD7TmLG+WVBd+xwcOTVKOI
+         BIsw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-794abd51119si944976085a.613.2024.05.27.23.38.33
+        by mx.google.com with ESMTPS id af79cd13be357-794d5984100si23880185a.247.2024.05.27.23.54.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 May 2024 23:38:34 -0700 (PDT)
+        Mon, 27 May 2024 23:54:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sBqSs-0007rS-SG; Tue, 28 May 2024 02:37:42 -0400
+	id 1sBqiW-0001FL-GV; Tue, 28 May 2024 02:53:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=HxTW=M7=kaod.org=clg@ozlabs.org>)
- id 1sBqSr-0007rB-LK; Tue, 28 May 2024 02:37:41 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1sBqiU-0001DG-Qh; Tue, 28 May 2024 02:53:50 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=HxTW=M7=kaod.org=clg@ozlabs.org>)
- id 1sBqSp-00087V-0I; Tue, 28 May 2024 02:37:41 -0400
+ id 1sBqiS-0002J4-2K; Tue, 28 May 2024 02:53:50 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4VpN9T2g18z4x23;
- Tue, 28 May 2024 16:37:33 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4VpNX66Gf7z4x2d;
+ Tue, 28 May 2024 16:53:42 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4VpN9M3wgSz4wyj;
- Tue, 28 May 2024 16:37:26 +1000 (AEST)
-Message-ID: <00e9e21a-a793-407c-8fef-0ed082959fdb@kaod.org>
-Date: Tue, 28 May 2024 08:37:23 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4VpNX13BlGz4wyj;
+ Tue, 28 May 2024 16:53:37 +1000 (AEST)
+Message-ID: <4cc3df8f-6d61-4c70-a7ce-94e2cbf96a7d@kaod.org>
+Date: Tue, 28 May 2024 08:53:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 08/16] aspeed/smc: support 64 bits dma dram address
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
+Subject: Re: [SPAM] Re: [PATCH v4 08/16] aspeed/smc: support 64 bits dma dram
+ address
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
  Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
  <20240527080231.1576609-9-jamin_lin@aspeedtech.com>
- <4bc9c170-52ff-48a9-a3a1-4c9c0f2c7153@kaod.org>
- <SI2PR06MB50414DFFD5AEF3FC245AC4CEFCF12@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ <2d64463d-0694-4d6e-a8c4-5bfad2cf801d@linaro.org>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <SI2PR06MB50414DFFD5AEF3FC245AC4CEFCF12@SI2PR06MB5041.apcprd06.prod.outlook.com>
+In-Reply-To: <2d64463d-0694-4d6e-a8c4-5bfad2cf801d@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=HxTW=M7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -106,261 +105,147 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gS1LnkJJKo6D
+X-TUID: 6qU66sEyDzkL
 
-On 5/28/24 03:34, Jamin Lin wrote:
-> Hi Cedric,
+On 5/27/24 18:06, Philippe Mathieu-Daudé wrote:
+> Hi Jamin,
 > 
->> On 5/27/24 10:02, Jamin Lin wrote:
->>> AST2700 support the maximum dram size is 8GiB and has a "DMA DRAM
->> Side
->>> Address High Part(0x7C)"
->>> register to support 64 bits dma dram address.
->>> Add helper routines functions to compute the dma dram address, new
->>> features and update trace-event to support 64 bits dram address.
->>>
->>> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
->>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> On 27/5/24 10:02, Jamin Lin wrote:
+>> AST2700 support the maximum dram size is 8GiB
+>> and has a "DMA DRAM Side Address High Part(0x7C)"
+>> register to support 64 bits dma dram address.
+>> Add helper routines functions to compute the dma dram
+>> address, new features and update trace-event
+>> to support 64 bits dram address.
 >>
->> I will move the addition of the "dram-base" property to another patch. See :
->>
->>     https://patchew.org/QEMU/20240527124315.35356-1-clg@redhat.com/
->>
->> (Please review)
-> Review done.
-> If I need to resend v5 patch series, I will remove "dram-base property" from this patch.
+>> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>> ---
+>>   hw/ssi/aspeed_smc.c         | 52 +++++++++++++++++++++++++++++++------
+>>   hw/ssi/trace-events         |  2 +-
+>>   include/hw/ssi/aspeed_smc.h |  1 +
+>>   3 files changed, 46 insertions(+), 9 deletions(-)
+> 
+> 
+>> +static uint64_t aspeed_smc_dma_dram_addr(AspeedSMCState *s)
+>> +{
+>> +    return s->regs[R_DMA_DRAM_ADDR] |
+>> +        ((uint64_t) s->regs[R_DMA_DRAM_ADDR_HIGH] << 32);
+>> +}
+>> +
+>>   static uint32_t aspeed_smc_dma_len(AspeedSMCState *s)
+>>   {
+>>       AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
+>> @@ -903,24 +921,34 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+>>   static void aspeed_smc_dma_rw(AspeedSMCState *s)
+>>   {
+>> +    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
+>> +    uint64_t dma_dram_offset;
+>> +    uint64_t dma_dram_addr;
+>>       MemTxResult result;
+>>       uint32_t dma_len;
+>>       uint32_t data;
+>>       dma_len = aspeed_smc_dma_len(s);
+>> +    dma_dram_addr = aspeed_smc_dma_dram_addr(s);
+>> +
+>> +    if (aspeed_smc_has_dma64(asc)) {
+>> +        dma_dram_offset = dma_dram_addr - s->dram_base;
+>> +    } else {
+>> +        dma_dram_offset = dma_dram_addr;
+> 
+> Here s->dram_base is 0x0. Do we really need to check
+> aspeed_smc_has_dma64?
 
-ok. Wait a bit before resending though. We are not done with v4 yet !
+You are right, it could be done as your proposal below. However,
+we should add a comment regarding some values :
+
+R_DMA_DRAM_ADDR_HIGH and s->dram_base are only set on the AST2700
+SoC and zero on other Aspeed SoCs.
+
+>> +    }
+> 
+> Maybe simplify improving aspeed_smc_dma_dram_addr() as:
+> 
+>    static uint64_t aspeed_smc_dma_dram_addr(AspeedSMCState *s)
+>    {
+>        return (s->regs[R_DMA_DRAM_ADDR]
+>                | ((uint64_t) s->regs[R_DMA_DRAM_ADDR_HIGH] << 32))
+>                - s->dram_base;
+>    }
+> 
+> Then no need for dma_dram_offset, dma_dram_addr is enough.
+
+we need both, dma_dram_offset for the transaction and dma_dram_addr
+to update the R_DMA_DRAM_ADDR_HIGH reg. A bit cumbersome, I agree.
 
 Thanks,
 
 C.
 
 
-> Thanks for your help, Jamin
-
-
->>
->> Else,
->>
->> Reviewed-by: Cédric Le Goater <clg@redhat.com>
->>
->> Thanks,
->>
->> C.
->>
->>
->>> ---
->>>    hw/ssi/aspeed_smc.c         | 52
->> +++++++++++++++++++++++++++++++------
->>>    hw/ssi/trace-events         |  2 +-
->>>    include/hw/ssi/aspeed_smc.h |  1 +
->>>    3 files changed, 46 insertions(+), 9 deletions(-)
->>>
->>> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c index
->>> ffb13a12e8..df0c63469c 100644
->>> --- a/hw/ssi/aspeed_smc.c
->>> +++ b/hw/ssi/aspeed_smc.c
->>> @@ -132,6 +132,9 @@
->>>    #define   FMC_WDT2_CTRL_BOOT_SOURCE      BIT(4) /* O: primary
->> 1: alternate */
->>>    #define   FMC_WDT2_CTRL_EN               BIT(0)
->>>
->>> +/* DMA DRAM Side Address High Part (AST2700) */
->>> +#define R_DMA_DRAM_ADDR_HIGH   (0x7c / 4)
->>> +
->>>    /* DMA Control/Status Register */
->>>    #define R_DMA_CTRL        (0x80 / 4)
->>>    #define   DMA_CTRL_REQUEST      (1 << 31)
->>> @@ -187,6 +190,7 @@
->>>     *   0x1FFFFFF: 32M bytes
->>>     */
->>>    #define DMA_DRAM_ADDR(asc, val)   ((val) & (asc)->dma_dram_mask)
->>> +#define DMA_DRAM_ADDR_HIGH(val)   ((val) & 0xf)
->>>    #define DMA_FLASH_ADDR(asc, val)  ((val) & (asc)->dma_flash_mask)
->>>    #define DMA_LENGTH(val)         ((val) & 0x01FFFFFF)
->>>
->>> @@ -207,6 +211,7 @@ static const AspeedSegments
->> aspeed_2500_spi2_segments[];
->>>    #define ASPEED_SMC_FEATURE_DMA       0x1
->>>    #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
->>>    #define ASPEED_SMC_FEATURE_WDT_CONTROL 0x4
->>> +#define ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH 0x08
->>>
->>>    static inline bool aspeed_smc_has_dma(const AspeedSMCClass *asc)
->>>    {
->>> @@ -218,6 +223,11 @@ static inline bool
->> aspeed_smc_has_wdt_control(const AspeedSMCClass *asc)
->>>        return !!(asc->features & ASPEED_SMC_FEATURE_WDT_CONTROL);
->>>    }
->>>
->>> +static inline bool aspeed_smc_has_dma64(const AspeedSMCClass *asc) {
->>> +    return !!(asc->features &
->> ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH);
->>> +}
->>> +
->>>    #define aspeed_smc_error(fmt, ...)
->> \
->>>        qemu_log_mask(LOG_GUEST_ERROR, "%s: " fmt "\n", __func__, ##
->>> __VA_ARGS__)
->>>
->>> @@ -747,6 +757,8 @@ static uint64_t aspeed_smc_read(void *opaque,
->> hwaddr addr, unsigned int size)
->>>            (aspeed_smc_has_dma(asc) && addr == R_DMA_CTRL) ||
->>>            (aspeed_smc_has_dma(asc) && addr == R_DMA_FLASH_ADDR)
->> ||
->>>            (aspeed_smc_has_dma(asc) && addr == R_DMA_DRAM_ADDR)
->> ||
->>> +        (aspeed_smc_has_dma(asc) && aspeed_smc_has_dma64(asc)
->> &&
->>> +         addr == R_DMA_DRAM_ADDR_HIGH) ||
->>>            (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN) ||
->>>            (aspeed_smc_has_dma(asc) && addr == R_DMA_CHECKSUM)
->> ||
->>>            (addr >= R_SEG_ADDR0 &&
->>> @@ -847,6 +859,12 @@ static bool
->> aspeed_smc_inject_read_failure(AspeedSMCState *s)
->>>        }
->>>    }
->>>
->>> +static uint64_t aspeed_smc_dma_dram_addr(AspeedSMCState *s) {
->>> +    return s->regs[R_DMA_DRAM_ADDR] |
->>> +        ((uint64_t) s->regs[R_DMA_DRAM_ADDR_HIGH] << 32); }
->>> +
->>>    static uint32_t aspeed_smc_dma_len(AspeedSMCState *s)
->>>    {
->>>        AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s); @@ -903,24
->>> +921,34 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
->>>
->>>    static void aspeed_smc_dma_rw(AspeedSMCState *s)
->>>    {
->>> +    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
->>> +    uint64_t dma_dram_offset;
->>> +    uint64_t dma_dram_addr;
->>>        MemTxResult result;
->>>        uint32_t dma_len;
->>>        uint32_t data;
->>>
->>>        dma_len = aspeed_smc_dma_len(s);
->>> +    dma_dram_addr = aspeed_smc_dma_dram_addr(s);
->>> +
->>> +    if (aspeed_smc_has_dma64(asc)) {
->>> +        dma_dram_offset = dma_dram_addr - s->dram_base;
->>> +    } else {
->>> +        dma_dram_offset = dma_dram_addr;
->>> +    }
->>>
->>>        trace_aspeed_smc_dma_rw(s->regs[R_DMA_CTRL] &
->> DMA_CTRL_WRITE ?
->>>                                "write" : "read",
->>>                                s->regs[R_DMA_FLASH_ADDR],
->>> -                            s->regs[R_DMA_DRAM_ADDR],
->>> +                            dma_dram_offset,
->>>                                dma_len);
->>>        while (dma_len) {
->>>            if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
->>> -            data = address_space_ldl_le(&s->dram_as,
->> s->regs[R_DMA_DRAM_ADDR],
->>> +            data = address_space_ldl_le(&s->dram_as,
->> dma_dram_offset,
->>>
->> MEMTXATTRS_UNSPECIFIED, &result);
->>>                if (result != MEMTX_OK) {
->>> -                aspeed_smc_error("DRAM read failed @%08x",
->>> -                                 s->regs[R_DMA_DRAM_ADDR]);
->>> +                aspeed_smc_error("DRAM read failed @%" PRIx64,
->>> +                                 dma_dram_offset);
->>>                    return;
->>>                }
->>>
->>> @@ -940,11 +968,11 @@ static void aspeed_smc_dma_rw(AspeedSMCState
->> *s)
->>>                    return;
->>>                }
->>>
->>> -            address_space_stl_le(&s->dram_as,
->> s->regs[R_DMA_DRAM_ADDR],
->>> +            address_space_stl_le(&s->dram_as, dma_dram_offset,
->>>                                     data,
->> MEMTXATTRS_UNSPECIFIED, &result);
->>>                if (result != MEMTX_OK) {
->>> -                aspeed_smc_error("DRAM write failed @%08x",
->>> -                                 s->regs[R_DMA_DRAM_ADDR]);
->>> +                aspeed_smc_error("DRAM write failed @%" PRIx64,
->>> +                                 dma_dram_offset);
->>>                    return;
->>>                }
->>>            }
->>> @@ -953,8 +981,12 @@ static void aspeed_smc_dma_rw(AspeedSMCState
->> *s)
->>>             * When the DMA is on-going, the DMA registers are updated
->>>             * with the current working addresses and length.
->>>             */
->>> +        dma_dram_offset += 4;
->>> +        dma_dram_addr += 4;
->>> +
->>> +        s->regs[R_DMA_DRAM_ADDR_HIGH] = dma_dram_addr >> 32;
->>> +        s->regs[R_DMA_DRAM_ADDR] = dma_dram_addr & 0xffffffff;
->>>            s->regs[R_DMA_FLASH_ADDR] += 4;
->>> -        s->regs[R_DMA_DRAM_ADDR] += 4;
->>>            dma_len -= 4;
->>>            s->regs[R_DMA_LEN] = dma_len;
->>>            s->regs[R_DMA_CHECKSUM] += data; @@ -1107,6 +1139,9
->> @@
->>> static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
->>>        } else if (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN &&
->>>                   aspeed_smc_dma_granted(s)) {
->>>            s->regs[addr] = DMA_LENGTH(value);
->>> +    } else if (aspeed_smc_has_dma(asc) && aspeed_smc_has_dma64(asc)
->> &&
->>> +               addr == R_DMA_DRAM_ADDR_HIGH) {
->>> +        s->regs[addr] = DMA_DRAM_ADDR_HIGH(value);
->>>        } else {
->>>            qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%"
->> HWADDR_PRIx "\n",
->>>                          __func__, addr); @@ -1239,6 +1274,7 @@
->> static
->>> const VMStateDescription vmstate_aspeed_smc = {
->>>
->>>    static Property aspeed_smc_properties[] = {
->>>        DEFINE_PROP_BOOL("inject-failure", AspeedSMCState,
->>> inject_failure, false),
->>> +    DEFINE_PROP_UINT64("dram-base", AspeedSMCState, dram_base, 0),
->>>        DEFINE_PROP_LINK("dram", AspeedSMCState, dram_mr,
->>>                         TYPE_MEMORY_REGION, MemoryRegion *),
->>>        DEFINE_PROP_END_OF_LIST(),
->>> diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events index
->>> 2d5bd2b83d..7b5ad6a939 100644
->>> --- a/hw/ssi/trace-events
->>> +++ b/hw/ssi/trace-events
->>> @@ -6,7 +6,7 @@ aspeed_smc_do_snoop(int cs, int index, int dummies, int
->> data) "CS%d index:0x%x d
->>>    aspeed_smc_flash_write(int cs, uint64_t addr,  uint32_t size, uint64_t
->> data, int mode) "CS%d @0x%" PRIx64 " size %u: 0x%" PRIx64" mode:%d"
->>>    aspeed_smc_read(uint64_t addr,  uint32_t size, uint64_t data) "@0x%"
->> PRIx64 " size %u: 0x%" PRIx64
->>>    aspeed_smc_dma_checksum(uint32_t addr, uint32_t data) "0x%08x:
->> 0x%08x"
->>> -aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint32_t
->> dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%08x size:0x%08x"
->>> +aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint64_t
->> dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%" PRIx64 "
->> size:0x%08x"
->>>    aspeed_smc_write(uint64_t addr,  uint32_t size, uint64_t data) "@0x%"
->> PRIx64 " size %u: 0x%" PRIx64
->>>    aspeed_smc_flash_select(int cs, const char *prefix) "CS%d %sselect"
->>>
->>> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
->>> index f359ed22cc..fb36c386c0 100644
->>> --- a/include/hw/ssi/aspeed_smc.h
->>> +++ b/include/hw/ssi/aspeed_smc.h
->>> @@ -76,6 +76,7 @@ struct AspeedSMCState {
->>>        AddressSpace flash_as;
->>>        MemoryRegion *dram_mr;
->>>        AddressSpace dram_as;
->>> +    uint64_t dram_base;
->>>
->>>        AspeedSMCFlash flashes[ASPEED_SMC_CS_MAX];
->>>
+> 
+>>       trace_aspeed_smc_dma_rw(s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE ?
+>>                               "write" : "read",
+>>                               s->regs[R_DMA_FLASH_ADDR],
+>> -                            s->regs[R_DMA_DRAM_ADDR],
+>> +                            dma_dram_offset,
+>>                               dma_len);
+>>       while (dma_len) {
+>>           if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
+>> -            data = address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
+>> +            data = address_space_ldl_le(&s->dram_as, dma_dram_offset,
+>>                                           MEMTXATTRS_UNSPECIFIED, &result);
+>>               if (result != MEMTX_OK) {
+>> -                aspeed_smc_error("DRAM read failed @%08x",
+>> -                                 s->regs[R_DMA_DRAM_ADDR]);
+>> +                aspeed_smc_error("DRAM read failed @%" PRIx64,
+>> +                                 dma_dram_offset);
+>>                   return;
+>>               }
+>> @@ -940,11 +968,11 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
+>>                   return;
+>>               }
+>> -            address_space_stl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
+>> +            address_space_stl_le(&s->dram_as, dma_dram_offset,
+>>                                    data, MEMTXATTRS_UNSPECIFIED, &result);
+>>               if (result != MEMTX_OK) {
+>> -                aspeed_smc_error("DRAM write failed @%08x",
+>> -                                 s->regs[R_DMA_DRAM_ADDR]);
+>> +                aspeed_smc_error("DRAM write failed @%" PRIx64,
+>> +                                 dma_dram_offset);
+>>                   return;
+>>               }
+>>           }
+>> @@ -953,8 +981,12 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
+>>            * When the DMA is on-going, the DMA registers are updated
+>>            * with the current working addresses and length.
+>>            */
+>> +        dma_dram_offset += 4;
+>> +        dma_dram_addr += 4;
+>> +
+>> +        s->regs[R_DMA_DRAM_ADDR_HIGH] = dma_dram_addr >> 32;
+>> +        s->regs[R_DMA_DRAM_ADDR] = dma_dram_addr & 0xffffffff;
+>>           s->regs[R_DMA_FLASH_ADDR] += 4;
+>> -        s->regs[R_DMA_DRAM_ADDR] += 4;
+>>           dma_len -= 4;
+>>           s->regs[R_DMA_LEN] = dma_len;
+>>           s->regs[R_DMA_CHECKSUM] += data;
+>> @@ -1107,6 +1139,9 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
+>>       } else if (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN &&
+>>                  aspeed_smc_dma_granted(s)) {
+>>           s->regs[addr] = DMA_LENGTH(value);
+>> +    } else if (aspeed_smc_has_dma(asc) && aspeed_smc_has_dma64(asc) &&
+>> +               addr == R_DMA_DRAM_ADDR_HIGH) {
+>> +        s->regs[addr] = DMA_DRAM_ADDR_HIGH(value);
+>>       } else {
+>>           qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
+>>                         __func__, addr);
+>> @@ -1239,6 +1274,7 @@ static const VMStateDescription vmstate_aspeed_smc = {
+>>   static Property aspeed_smc_properties[] = {
+>>       DEFINE_PROP_BOOL("inject-failure", AspeedSMCState, inject_failure, false),
+>> +    DEFINE_PROP_UINT64("dram-base", AspeedSMCState, dram_base, 0),
+>>       DEFINE_PROP_LINK("dram", AspeedSMCState, dram_mr,
+>>                        TYPE_MEMORY_REGION, MemoryRegion *),
+>>       DEFINE_PROP_END_OF_LIST(),
 > 
 

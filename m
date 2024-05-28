@@ -1,119 +1,94 @@
-Received: by 2002:a17:906:d149:b0:a5d:17e5:aef9 with SMTP id br9csp1993498ejb;
-        Fri, 24 May 2024 16:24:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVc9NUdBh1SWK5U+PxPSInJPHoXA/d2HL2H2Zox/hEn0EfAZk/6QReBjeoG2KMeGwhxHhkP3D1+bg7BJ9G3bHxwGENt/P2r
-X-Google-Smtp-Source: AGHT+IH2pZr4ezuQhBGOKNyDycUXSsncXPcVzHVab14eT5DBL4Q06DBwxXek/26FyaGDQEpJaODQ
-X-Received: by 2002:a05:620a:2949:b0:792:c683:1f48 with SMTP id af79cd13be357-794ab0ad310mr459765685a.36.1716593055352;
-        Fri, 24 May 2024 16:24:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716593055; cv=none;
+Received: by 2002:a17:906:ca8a:b0:a63:3083:985b with SMTP id js10csp352636ejb;
+        Tue, 28 May 2024 01:48:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVnqi6FrRBER9n7BZbrcoILtmx9MhWp+GWEIdwOyDmHl5Eh82bPpLV4qEe6X4e5IHv+7NUQrzepY9JYPNnIcDR0nCdTPIBP
+X-Google-Smtp-Source: AGHT+IFRkm37pctPiF3/TFgLd1kBuHB/vLlSKYxMY5hM7fWRiVvGd1ylm7GekVbJ6J7TWuHPkw5m
+X-Received: by 2002:a81:52cb:0:b0:617:c9b0:dd9a with SMTP id 00721157ae682-62a08d93c54mr114472277b3.18.1716886131491;
+        Tue, 28 May 2024 01:48:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716886131; cv=none;
         d=google.com; s=arc-20160816;
-        b=BdYmNbb+KaPzQVEPG6Huc7LqDNl1+Xt8++zjZwRs6N8ooWEzHFuKClkMfFvbLGDN9X
-         0A7ovbI4tfVEUaxfCFDQWopGA9cNdEX4mvbgKTO2n4pr/17yfvnLVxx+ngbBDON+YCyR
-         YNuv3WC6bLOV3fGTUh5AXK2GtDIFDBLvbAAQz1AkMRp+4i8ISz56/SBVgD2Ns/OS4eJJ
-         01VRRspzVRVzQZ7u8mbc7CirbHVgnna7uewgb62BKpWfGGeGR7fnoSoHy+R+MzG2WlJd
-         RAQwDVpYpeyjN0kKW/WrHel4zilKFd+G/hELUo5S4KustrVOxnQ1/+IIshZBKZf32ucI
-         S7sg==
+        b=irxqcNgUNkkAzNswv1SaO973ttlnl6sjVaEXofK/PNufCPmMCmDfKu1sD+pdTdOA2R
+         bnw+V3/tDgeDX9905kz/1I8Tfgnz3EM+veX/VJmQKtUvtPdg03e48iWW6rvbg2C4WOLx
+         bq3q/IP0qvHZp5nT4BdHQ/zkMTwnstX3C5uN77Ik7L/opihz3zJdkrDdwGiynZgDE1vc
+         wYu8499iXgUn2V3AdC8k00P3zE1ElR0IPdOHkJV8rfp8YfZKEEyiIxuWkN0FKzPguAqz
+         5i4B1H/fTv0xSAampOHU3pM+jGfE06N8Xs/f0iP6+47PcGkQSQQHLtd8gGHmFi1ATXeu
+         DGUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=XeumEwoZxJnp4HQ3EMMiPgDqZ0FCMOyu53kU0EM+sNw=;
-        fh=ZhBia3nL9o1nuf7SbgdYn/0pDmAeja6gisyWXi2cqYE=;
-        b=pj4GZMGKoxEFi87l3Nz9wW8+n2iW/Sgi24guQJAMhJ+P7ZHDtkAIRPRvE3pa1nJ8Dx
-         gaq8r8h6RSAfbC5w7vEsDyW6zSDnLEpmXsSb2/H4IQHQFtx0USKTceEJqQ9iGz6ejQO3
-         GNQERA1KzjgcS/sKsd+iHhNfPErcBZ0bPuVQZ8MrcsEGCq53W6zewd5OCTsMiSG4r+8N
-         dMHYJXxuCIXr+PlJIRxmlMRKlc86eSGVLLwsOgUktmhEvBOp5cuG3/q04FP42+bF3naC
-         ft9rkRNPYr+QQJmf5gBHNYREFmE7hwGXQSetMjKMque2DwhejyY13CeylmbK1RsQmoU0
-         i2ug==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=HXNqzIq1GSejiSWwdfPSxPTDHenqx2l0IVptQNZzj3Q=;
+        fh=dkl4W7Ty5DQDYblIuR6iwQV8rfkW6Bl5VLJjLin9mSc=;
+        b=I9nvIIMPTLx6Sif462thXTKKSzABAcj/Rm7lEFqLf1lURAHxDZ4DgcG+fRMpZbZAIP
+         cCo/ehXk6Ko9gXU1FMnvUttLLlbVjRItlVr8MhlDCu8aLKmL6v1HOCxErtdy+kCbWiGL
+         sUgjnwTj+RYW6UK22RDPZcerpGoqOuQWhlJNHiDWqHIrIgnfIk+Da7iPApUHHcNOlsGw
+         SXIGkfeejMeNjNCqq5LRi5PtRJl8XW6Be5das6G0mV1MZqB1sXLSIc7s4Atf2zUUpZhI
+         IoA9+7baUnCr45JHOp4afz5R/ZlXLCnZSBsT3Qluji9+G9oKiuRWR/ZfuRlrfgbDm7uu
+         28zA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BAcr6Xw5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-794abcac68bsi292560185a.13.2024.05.24.16.24.15
+        by mx.google.com with ESMTPS id af79cd13be357-794abd51103si947337285a.581.2024.05.28.01.48.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 May 2024 16:24:15 -0700 (PDT)
+        Tue, 28 May 2024 01:48:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BAcr6Xw5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sAeEb-0006ns-Bx; Fri, 24 May 2024 19:22:01 -0400
+	id 1sBsVJ-0000xY-6F; Tue, 28 May 2024 04:48:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sAeEP-0006Zx-0N
- for qemu-arm@nongnu.org; Fri, 24 May 2024 19:21:49 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sAeEJ-0005nu-Uk
- for qemu-arm@nongnu.org; Fri, 24 May 2024 19:21:48 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-6f8edde1013so1238699b3a.2
- for <qemu-arm@nongnu.org>; Fri, 24 May 2024 16:21:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1716592901; x=1717197701; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=XeumEwoZxJnp4HQ3EMMiPgDqZ0FCMOyu53kU0EM+sNw=;
- b=BAcr6Xw5cTiU1t1YnDVEX9qSHkx+6SlhoqLREF3aUwGu9L/tdiAtsJTC75HOsQcXNV
- +FWu2ri68mW3f9dMD6W5q4BYKacNsdnSauxErDM9y4crn/TG+3xNbk1PUwJ6KwVbvLL8
- 8rccKzLKPKA5rK56fH4MwKR27JrK6udHYwV09qCoyUoFF45vBres9BUpKKemgJbiQAC9
- HTXVbwYyThmGcpAJgsrRiP2lO5zqQd5nOEeHyPSkiB4lw/SEnI9nlGkEORDicz1zjX9Z
- 9QS+FKvWQxtJ1be17Ugb3wrML0s5oAKN5GxQ7J7lZot9igKe0ueFydqnCMeKYG7SwMN4
- fWew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716592901; x=1717197701;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=XeumEwoZxJnp4HQ3EMMiPgDqZ0FCMOyu53kU0EM+sNw=;
- b=SEjjcMbfPcAFHUMKDJx355nJcgYudUXPpj2LWu+c5SnsGKX6y7AilZANqtGfU3reMh
- sWcmQzRSFDEPKwEKEe7horlO1b6kRMAWWYJkWvwfGneCqD4JzXozQSJcMhAukSTThvHJ
- dN62ar4U/e3eQG/HQWnySTTb61XyD/Vk1TbbJXt3QT67zXhrNKL6ixPeemtvIb6lF80h
- aSUJoUU0RbNI/nqsOIGyjtw4VtBLt9GvO0KAb5pm6KWxCeO3sxldh6q6pCP5nfpbf/Hq
- RLMzGBRoAypFtvS+Eg25PrbODAIYagt/I5upyupWvyMaNFFJWN57tW2wo4tMmhD6gQ3q
- 2vJg==
-X-Gm-Message-State: AOJu0YxFs53+hV59bsiokl3J8PxttlLdZ4CdoeY/RDTH7gZfhp/QMx0I
- tRgnAT4jwVZKeTrV0N9MfRe2aLFtJbCNS3HHutL8Sbv3sJpQXYRTjrwN/x8gtEw=
-X-Received: by 2002:a17:902:650d:b0:1f3:675:a68c with SMTP id
- d9443c01a7336-1f4486f5c15mr36096965ad.23.1716592900554; 
- Fri, 24 May 2024 16:21:40 -0700 (PDT)
-Received: from stoup.. (174-21-72-5.tukw.qwest.net. [174.21.72.5])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f44c759ceesm19178305ad.10.2024.05.24.16.21.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 May 2024 16:21:40 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 20/67] target/arm: Convert FMAX, FMIN, FMAXNM,
- FMINNM to decodetree
-Date: Fri, 24 May 2024 16:20:34 -0700
-Message-Id: <20240524232121.284515-21-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240524232121.284515-1-richard.henderson@linaro.org>
-References: <20240524232121.284515-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <SRS0=HxTW=M7=kaod.org=clg@ozlabs.org>)
+ id 1sBsVH-0000xH-S2; Tue, 28 May 2024 04:48:20 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=HxTW=M7=kaod.org=clg@ozlabs.org>)
+ id 1sBsVB-0006oq-Lk; Tue, 28 May 2024 04:48:18 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4VpR473PKhz4x2J;
+ Tue, 28 May 2024 18:48:07 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4VpR412b6zz4wcq;
+ Tue, 28 May 2024 18:48:00 +1000 (AEST)
+Message-ID: <d013e728-246c-4bef-9a24-b0f0f48d172b@kaod.org>
+Date: Tue, 28 May 2024 10:47:55 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 11/16] aspeed/intc: Add AST2700 support
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
+ <20240527080231.1576609-12-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240527080231.1576609-12-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=HxTW=M7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,444 +103,548 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mGApjNox8Qp7
+X-TUID: Z6y1SdGUHO+W
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper.h            |   4 +
- target/arm/tcg/a64.decode      |  17 ++++
- target/arm/tcg/translate-a64.c | 168 +++++++++++++++++----------------
- target/arm/tcg/vec_helper.c    |   4 +
- 4 files changed, 113 insertions(+), 80 deletions(-)
+On 5/27/24 10:02, Jamin Lin wrote:
+> AST2700 interrupt controller(INTC) provides hardware interrupt interfaces
+> to interrupt of processors PSP, SSP and TSP. In INTC, each interrupt of
+> INT 128 to INT136 combines 32 interrupts.
+> 
+> Introduce a new aspeed_intc class with instance_init and realize handlers.
+> 
+> So far, this model only supports GICINT128 to GICINT136.
+> It creates 9 GICINT or-gates to connect 32 interrupts sources
+> from GICINT128 to GICINT136 as IRQ GPIO-OUTPUT pins.
+> Then, this model registers IRQ handler with its IRQ GPIO-INPUT pins which
+> connect to GICINT or-gates. And creates 9 GICINT IRQ GPIO-OUTPUT pins which
+> connect to GIC device with GIC IRQ 128 to 136.
+> 
+> If one interrupt source from GICINT128 to GICINT136
+> set irq, the OR-GATE irq callback function is called and set irq to INTC by
+> OR-GATE GPIO-OUTPUT pins. Then, the INTC irq callback function is called and
+> set irq to GIC by its GICINT IRQ GPIO-OUTPUT pins. Finally, the GIC irq
+> callback function is called and set irq to CPUs and
+> CPUs execute Interrupt Service Routine (ISR).
+> 
+> Block diagram of GICINT132:
+> 
+>              GICINT132
+>    ETH1    +-----------+
+> +-------->+0         3|
+>    ETH2    |          4|
+> +-------->+1         5|
+>    ETH3    |          6|
+> +-------->+2        19|                          INTC                          GIC
+>    UART0   |         20|            +--------------------------+
+> +-------->+7        21|            |                          |            +--------------+
+>    UART1   |         22|            |orgate0 +----> output_pin0+----------->+GIC128        |
+> +-------->+8        23|            |                          |            |              |
+>    UART2   |         24|            |orgate1 +----> output_pin1+----------->+GIC129        |
+> +-------->+9        25|            |                          |            |              |
+>    UART3   |         26|            |orgate2 +----> output_pin2+----------->+GIC130        |
+> +--------->10       27|            |                          |            |              |
+>    UART5   |         28|            |orgate3 +----> output_pin3+----------->+GIC131        |
+> +-------->+11       29|            |                          |            |              |
+>    UART6   |           +----------->+orgate4 +----> output_pin4+----------->+GIC132        |
+> +-------->+12       30|            |                          |            |              |
+>    UART7   |         31|            |orgate5 +----> output_pin5+----------->+GIC133        |
+> +-------->+13         |            |                          |            |              |
+>    UART8   |  OR[0:31] |            |orgate6 +----> output_pin6+----------->+GIC134        |
+> ---------->14         |            |                          |            |              |
+>    UART9   |           |            |orgate7 +----> output_pin7+----------->+GIC135        |
+> --------->+15         |            |                          |            |              |
+>    UART10  |           |            |orgate8 +----> output_pin8+----------->+GIC136        |
+> --------->+16         |            |                          |            +--------------+
+>    UART11  |           |            +--------------------------+
+> +-------->+17         |
+>    UART12  |           |
+> +--------->18         |
+>            |           |
+>            |           |
+>            |           |
+>            +-----------+
+> 
+> Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/intc/aspeed_intc.c         | 355 ++++++++++++++++++++++++++++++++++
+>   hw/intc/meson.build           |   1 +
+>   hw/intc/trace-events          |   6 +
+>   include/hw/intc/aspeed_intc.h |  46 +++++
+>   4 files changed, 408 insertions(+)
+>   create mode 100644 hw/intc/aspeed_intc.c
+>   create mode 100644 include/hw/intc/aspeed_intc.h
+> 
+> diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+> new file mode 100644
+> index 0000000000..cb6111d79c
+> --- /dev/null
+> +++ b/hw/intc/aspeed_intc.c
+> @@ -0,0 +1,355 @@
+> +/*
+> + * ASPEED INTC Controller
+> + *
+> + * Copyright (C) 2024 ASPEED Technology Inc.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/intc/aspeed_intc.h"
+> +#include "hw/irq.h"
+> +#include "migration/vmstate.h"
+> +#include "qemu/bitops.h"
+> +#include "qemu/log.h"
+> +#include "qemu/module.h"
+> +#include "hw/intc/arm_gicv3.h"
+> +#include "trace.h"
+> +#include "hw/registerfields.h"
+> +#include "qapi/error.h"
+> +#include "hw/qdev-properties.h"
+> +
+> +/* INTC Registers */
+> +REG32(GICINT128_EN,         0x1000)
+> +REG32(GICINT128_STATUS,     0x1004)
+> +REG32(GICINT129_EN,         0x1100)
+> +REG32(GICINT129_STATUS,     0x1104)
+> +REG32(GICINT130_EN,         0x1200)
+> +REG32(GICINT130_STATUS,     0x1204)
+> +REG32(GICINT131_EN,         0x1300)
+> +REG32(GICINT131_STATUS,     0x1304)
+> +REG32(GICINT132_EN,         0x1400)
+> +REG32(GICINT132_STATUS,     0x1404)
+> +REG32(GICINT133_EN,         0x1500)
+> +REG32(GICINT133_STATUS,     0x1504)
+> +REG32(GICINT134_EN,         0x1600)
+> +REG32(GICINT134_STATUS,     0x1604)
+> +REG32(GICINT135_EN,         0x1700)
+> +REG32(GICINT135_STATUS,     0x1704)
+> +REG32(GICINT136_EN,         0x1800)
+> +REG32(GICINT136_STATUS,     0x1804)
+> +
+> +#define GICINT_STATUS_BASE     R_GICINT128_STATUS
+> +
+> +static void aspeed_intc_update(AspeedINTCState *s, int irq, int level)
+> +{
+> +    trace_aspeed_intc_update_irq(irq, level);
+> +    qemu_set_irq(s->output_pins[irq], level);
+> +}
+> +
+> +/*
+> + * The address of GICINT128 to GICINT136 are from 0x1000 to 0x1804.
+> + * Utilize "address & 0x0f00" to get the irq and irq output pin index
+> + * The value of irq should be 0 to num_ints.
+> + * The irq 0 indicates GICINT128, irq 1 indicates GICINT129 and so on.
+> + */
+> +static void aspeed_intc_set_irq(void *opaque, int irq, int level)
+> +{
+> +    AspeedINTCState *s = (AspeedINTCState *)opaque;
+> +    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+> +    uint32_t status_addr = GICINT_STATUS_BASE + ((0x100 * irq) >> 2);
+> +    uint32_t enable = s->enable[irq];
+> +    uint32_t select = 0;
+> +    int i;
+> +
+> +    if (irq > aic->num_ints) {
 
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 2b02733305..7ee15b9651 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -748,15 +748,19 @@ DEF_HELPER_FLAGS_5(gvec_facgt_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_5(gvec_fmax_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(gvec_fmax_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_fmax_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_5(gvec_fmin_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(gvec_fmin_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_fmin_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_5(gvec_fmaxnum_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(gvec_fmaxnum_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_fmaxnum_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_5(gvec_fminnum_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(gvec_fminnum_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_5(gvec_fminnum_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_5(gvec_recps_nf_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_5(gvec_recps_nf_s, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
-diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 82daafbef5..e2678d919e 100644
---- a/target/arm/tcg/a64.decode
-+++ b/target/arm/tcg/a64.decode
-@@ -704,6 +704,11 @@ FSUB_s          0001 1110 ..1 ..... 0011 10 ..... ..... @rrr_hsd
- FDIV_s          0001 1110 ..1 ..... 0001 10 ..... ..... @rrr_hsd
- FMUL_s          0001 1110 ..1 ..... 0000 10 ..... ..... @rrr_hsd
- 
-+FMAX_s          0001 1110 ..1 ..... 0100 10 ..... ..... @rrr_hsd
-+FMIN_s          0001 1110 ..1 ..... 0101 10 ..... ..... @rrr_hsd
-+FMAXNM_s        0001 1110 ..1 ..... 0110 10 ..... ..... @rrr_hsd
-+FMINNM_s        0001 1110 ..1 ..... 0111 10 ..... ..... @rrr_hsd
-+
- FMULX_s         0101 1110 010 ..... 00011 1 ..... ..... @rrr_h
- FMULX_s         0101 1110 0.1 ..... 11011 1 ..... ..... @rrr_sd
- 
-@@ -721,6 +726,18 @@ FDIV_v          0.10 1110 0.1 ..... 11111 1 ..... ..... @qrrr_sd
- FMUL_v          0.10 1110 010 ..... 00011 1 ..... ..... @qrrr_h
- FMUL_v          0.10 1110 0.1 ..... 11011 1 ..... ..... @qrrr_sd
- 
-+FMAX_v          0.00 1110 010 ..... 00110 1 ..... ..... @qrrr_h
-+FMAX_v          0.00 1110 0.1 ..... 11110 1 ..... ..... @qrrr_sd
-+
-+FMIN_v          0.00 1110 110 ..... 00110 1 ..... ..... @qrrr_h
-+FMIN_v          0.00 1110 1.1 ..... 11110 1 ..... ..... @qrrr_sd
-+
-+FMAXNM_v        0.00 1110 010 ..... 00000 1 ..... ..... @qrrr_h
-+FMAXNM_v        0.00 1110 0.1 ..... 11000 1 ..... ..... @qrrr_sd
-+
-+FMINNM_v        0.00 1110 110 ..... 00000 1 ..... ..... @qrrr_h
-+FMINNM_v        0.00 1110 1.1 ..... 11000 1 ..... ..... @qrrr_sd
-+
- FMULX_v         0.00 1110 010 ..... 00011 1 ..... ..... @qrrr_h
- FMULX_v         0.00 1110 0.1 ..... 11011 1 ..... ..... @qrrr_sd
- 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 97c3d758d6..6f8207d842 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -4915,6 +4915,34 @@ static const FPScalar f_scalar_fmul = {
- };
- TRANS(FMUL_s, do_fp3_scalar, a, &f_scalar_fmul)
- 
-+static const FPScalar f_scalar_fmax = {
-+    gen_helper_advsimd_maxh,
-+    gen_helper_vfp_maxs,
-+    gen_helper_vfp_maxd,
-+};
-+TRANS(FMAX_s, do_fp3_scalar, a, &f_scalar_fmax)
-+
-+static const FPScalar f_scalar_fmin = {
-+    gen_helper_advsimd_minh,
-+    gen_helper_vfp_mins,
-+    gen_helper_vfp_mind,
-+};
-+TRANS(FMIN_s, do_fp3_scalar, a, &f_scalar_fmin)
-+
-+static const FPScalar f_scalar_fmaxnm = {
-+    gen_helper_advsimd_maxnumh,
-+    gen_helper_vfp_maxnums,
-+    gen_helper_vfp_maxnumd,
-+};
-+TRANS(FMAXNM_s, do_fp3_scalar, a, &f_scalar_fmaxnm)
-+
-+static const FPScalar f_scalar_fminnm = {
-+    gen_helper_advsimd_minnumh,
-+    gen_helper_vfp_minnums,
-+    gen_helper_vfp_minnumd,
-+};
-+TRANS(FMINNM_s, do_fp3_scalar, a, &f_scalar_fminnm)
-+
- static const FPScalar f_scalar_fmulx = {
-     gen_helper_advsimd_mulxh,
-     gen_helper_vfp_mulxs,
-@@ -4978,6 +5006,34 @@ static gen_helper_gvec_3_ptr * const f_vector_fmul[3] = {
- };
- TRANS(FMUL_v, do_fp3_vector, a, f_vector_fmul)
- 
-+static gen_helper_gvec_3_ptr * const f_vector_fmax[3] = {
-+    gen_helper_gvec_fmax_h,
-+    gen_helper_gvec_fmax_s,
-+    gen_helper_gvec_fmax_d,
-+};
-+TRANS(FMAX_v, do_fp3_vector, a, f_vector_fmax)
-+
-+static gen_helper_gvec_3_ptr * const f_vector_fmin[3] = {
-+    gen_helper_gvec_fmin_h,
-+    gen_helper_gvec_fmin_s,
-+    gen_helper_gvec_fmin_d,
-+};
-+TRANS(FMIN_v, do_fp3_vector, a, f_vector_fmin)
-+
-+static gen_helper_gvec_3_ptr * const f_vector_fmaxnm[3] = {
-+    gen_helper_gvec_fmaxnum_h,
-+    gen_helper_gvec_fmaxnum_s,
-+    gen_helper_gvec_fmaxnum_d,
-+};
-+TRANS(FMAXNM_v, do_fp3_vector, a, f_vector_fmaxnm)
-+
-+static gen_helper_gvec_3_ptr * const f_vector_fminnm[3] = {
-+    gen_helper_gvec_fminnum_h,
-+    gen_helper_gvec_fminnum_s,
-+    gen_helper_gvec_fminnum_d,
-+};
-+TRANS(FMINNM_v, do_fp3_vector, a, f_vector_fminnm)
-+
- static gen_helper_gvec_3_ptr * const f_vector_fmulx[3] = {
-     gen_helper_gvec_fmulx_h,
-     gen_helper_gvec_fmulx_s,
-@@ -6891,18 +6947,6 @@ static void handle_fp_2src_single(DisasContext *s, int opcode,
-     tcg_op2 = read_fp_sreg(s, rm);
- 
-     switch (opcode) {
--    case 0x4: /* FMAX */
--        gen_helper_vfp_maxs(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
--    case 0x5: /* FMIN */
--        gen_helper_vfp_mins(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
--    case 0x6: /* FMAXNM */
--        gen_helper_vfp_maxnums(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
--    case 0x7: /* FMINNM */
--        gen_helper_vfp_minnums(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
-     case 0x8: /* FNMUL */
-         gen_helper_vfp_muls(tcg_res, tcg_op1, tcg_op2, fpst);
-         gen_helper_vfp_negs(tcg_res, tcg_res);
-@@ -6912,6 +6956,10 @@ static void handle_fp_2src_single(DisasContext *s, int opcode,
-     case 0x1: /* FDIV */
-     case 0x2: /* FADD */
-     case 0x3: /* FSUB */
-+    case 0x4: /* FMAX */
-+    case 0x5: /* FMIN */
-+    case 0x6: /* FMAXNM */
-+    case 0x7: /* FMINNM */
-         g_assert_not_reached();
-     }
- 
-@@ -6933,18 +6981,6 @@ static void handle_fp_2src_double(DisasContext *s, int opcode,
-     tcg_op2 = read_fp_dreg(s, rm);
- 
-     switch (opcode) {
--    case 0x4: /* FMAX */
--        gen_helper_vfp_maxd(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
--    case 0x5: /* FMIN */
--        gen_helper_vfp_mind(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
--    case 0x6: /* FMAXNM */
--        gen_helper_vfp_maxnumd(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
--    case 0x7: /* FMINNM */
--        gen_helper_vfp_minnumd(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
-     case 0x8: /* FNMUL */
-         gen_helper_vfp_muld(tcg_res, tcg_op1, tcg_op2, fpst);
-         gen_helper_vfp_negd(tcg_res, tcg_res);
-@@ -6954,6 +6990,10 @@ static void handle_fp_2src_double(DisasContext *s, int opcode,
-     case 0x1: /* FDIV */
-     case 0x2: /* FADD */
-     case 0x3: /* FSUB */
-+    case 0x4: /* FMAX */
-+    case 0x5: /* FMIN */
-+    case 0x6: /* FMAXNM */
-+    case 0x7: /* FMINNM */
-         g_assert_not_reached();
-     }
- 
-@@ -6975,18 +7015,6 @@ static void handle_fp_2src_half(DisasContext *s, int opcode,
-     tcg_op2 = read_fp_hreg(s, rm);
- 
-     switch (opcode) {
--    case 0x4: /* FMAX */
--        gen_helper_advsimd_maxh(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
--    case 0x5: /* FMIN */
--        gen_helper_advsimd_minh(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
--    case 0x6: /* FMAXNM */
--        gen_helper_advsimd_maxnumh(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
--    case 0x7: /* FMINNM */
--        gen_helper_advsimd_minnumh(tcg_res, tcg_op1, tcg_op2, fpst);
--        break;
-     case 0x8: /* FNMUL */
-         gen_helper_advsimd_mulh(tcg_res, tcg_op1, tcg_op2, fpst);
-         tcg_gen_xori_i32(tcg_res, tcg_res, 0x8000);
-@@ -6996,6 +7024,10 @@ static void handle_fp_2src_half(DisasContext *s, int opcode,
-     case 0x1: /* FDIV */
-     case 0x2: /* FADD */
-     case 0x3: /* FSUB */
-+    case 0x4: /* FMAX */
-+    case 0x5: /* FMIN */
-+    case 0x6: /* FMAXNM */
-+    case 0x7: /* FMINNM */
-         g_assert_not_reached();
-     }
- 
-@@ -9221,24 +9253,12 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
-                 gen_helper_vfp_muladdd(tcg_res, tcg_op1, tcg_op2,
-                                        tcg_res, fpst);
-                 break;
--            case 0x18: /* FMAXNM */
--                gen_helper_vfp_maxnumd(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
-             case 0x1c: /* FCMEQ */
-                 gen_helper_neon_ceq_f64(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
--            case 0x1e: /* FMAX */
--                gen_helper_vfp_maxd(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
-             case 0x1f: /* FRECPS */
-                 gen_helper_recpsf_f64(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
--            case 0x38: /* FMINNM */
--                gen_helper_vfp_minnumd(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
--            case 0x3e: /* FMIN */
--                gen_helper_vfp_mind(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
-             case 0x3f: /* FRSQRTS */
-                 gen_helper_rsqrtsf_f64(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
-@@ -9259,9 +9279,13 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
-                 gen_helper_neon_acgt_f64(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
-             default:
-+            case 0x18: /* FMAXNM */
-             case 0x1a: /* FADD */
-             case 0x1b: /* FMULX */
-+            case 0x1e: /* FMAX */
-+            case 0x38: /* FMINNM */
-             case 0x3a: /* FSUB */
-+            case 0x3e: /* FMIN */
-             case 0x5b: /* FMUL */
-             case 0x5f: /* FDIV */
-                 g_assert_not_reached();
-@@ -9290,21 +9314,9 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
-             case 0x1c: /* FCMEQ */
-                 gen_helper_neon_ceq_f32(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
--            case 0x1e: /* FMAX */
--                gen_helper_vfp_maxs(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
-             case 0x1f: /* FRECPS */
-                 gen_helper_recpsf_f32(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
--            case 0x18: /* FMAXNM */
--                gen_helper_vfp_maxnums(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
--            case 0x38: /* FMINNM */
--                gen_helper_vfp_minnums(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
--            case 0x3e: /* FMIN */
--                gen_helper_vfp_mins(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
-             case 0x3f: /* FRSQRTS */
-                 gen_helper_rsqrtsf_f32(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
-@@ -9325,9 +9337,13 @@ static void handle_3same_float(DisasContext *s, int size, int elements,
-                 gen_helper_neon_acgt_f32(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
-             default:
-+            case 0x18: /* FMAXNM */
-             case 0x1a: /* FADD */
-             case 0x1b: /* FMULX */
-+            case 0x1e: /* FMAX */
-+            case 0x38: /* FMINNM */
-             case 0x3a: /* FSUB */
-+            case 0x3e: /* FMIN */
-             case 0x5b: /* FMUL */
-             case 0x5f: /* FDIV */
-                 g_assert_not_reached();
-@@ -11251,11 +11267,7 @@ static void disas_simd_3same_float(DisasContext *s, uint32_t insn)
-     case 0x7d: /* FACGT */
-     case 0x19: /* FMLA */
-     case 0x39: /* FMLS */
--    case 0x18: /* FMAXNM */
-     case 0x1c: /* FCMEQ */
--    case 0x1e: /* FMAX */
--    case 0x38: /* FMINNM */
--    case 0x3e: /* FMIN */
-     case 0x5c: /* FCMGE */
-     case 0x7a: /* FABD */
-     case 0x7c: /* FCMGT */
-@@ -11286,9 +11298,13 @@ static void disas_simd_3same_float(DisasContext *s, uint32_t insn)
-         return;
- 
-     default:
-+    case 0x18: /* FMAXNM */
-     case 0x1a: /* FADD */
-     case 0x1b: /* FMULX */
-+    case 0x1e: /* FMAX */
-+    case 0x38: /* FMINNM */
-     case 0x3a: /* FSUB */
-+    case 0x3e: /* FMIN */
-     case 0x5b: /* FMUL */
-     case 0x5f: /* FDIV */
-         unallocated_encoding(s);
-@@ -11632,14 +11648,10 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
-     int pass;
- 
-     switch (fpopcode) {
--    case 0x0: /* FMAXNM */
-     case 0x1: /* FMLA */
-     case 0x4: /* FCMEQ */
--    case 0x6: /* FMAX */
-     case 0x7: /* FRECPS */
--    case 0x8: /* FMINNM */
-     case 0x9: /* FMLS */
--    case 0xe: /* FMIN */
-     case 0xf: /* FRSQRTS */
-     case 0x14: /* FCMGE */
-     case 0x15: /* FACGE */
-@@ -11656,9 +11668,13 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
-         pairwise = true;
-         break;
-     default:
-+    case 0x0: /* FMAXNM */
-     case 0x2: /* FADD */
-     case 0x3: /* FMULX */
-+    case 0x6: /* FMAX */
-+    case 0x8: /* FMINNM */
-     case 0xa: /* FSUB */
-+    case 0xe: /* FMIN */
-     case 0x13: /* FMUL */
-     case 0x17: /* FDIV */
-         unallocated_encoding(s);
-@@ -11726,9 +11742,6 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
-             read_vec_element_i32(s, tcg_op2, rm, pass, MO_16);
- 
-             switch (fpopcode) {
--            case 0x0: /* FMAXNM */
--                gen_helper_advsimd_maxnumh(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
-             case 0x1: /* FMLA */
-                 read_vec_element_i32(s, tcg_res, rd, pass, MO_16);
-                 gen_helper_advsimd_muladdh(tcg_res, tcg_op1, tcg_op2, tcg_res,
-@@ -11737,15 +11750,9 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
-             case 0x4: /* FCMEQ */
-                 gen_helper_advsimd_ceq_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
--            case 0x6: /* FMAX */
--                gen_helper_advsimd_maxh(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
-             case 0x7: /* FRECPS */
-                 gen_helper_recpsf_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
--            case 0x8: /* FMINNM */
--                gen_helper_advsimd_minnumh(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
-             case 0x9: /* FMLS */
-                 /* As usual for ARM, separate negation for fused multiply-add */
-                 tcg_gen_xori_i32(tcg_op1, tcg_op1, 0x8000);
-@@ -11753,9 +11760,6 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
-                 gen_helper_advsimd_muladdh(tcg_res, tcg_op1, tcg_op2, tcg_res,
-                                            fpst);
-                 break;
--            case 0xe: /* FMIN */
--                gen_helper_advsimd_minh(tcg_res, tcg_op1, tcg_op2, fpst);
--                break;
-             case 0xf: /* FRSQRTS */
-                 gen_helper_rsqrtsf_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
-@@ -11776,9 +11780,13 @@ static void disas_simd_three_reg_same_fp16(DisasContext *s, uint32_t insn)
-                 gen_helper_advsimd_acgt_f16(tcg_res, tcg_op1, tcg_op2, fpst);
-                 break;
-             default:
-+            case 0x0: /* FMAXNM */
-             case 0x2: /* FADD */
-             case 0x3: /* FMULX */
-+            case 0x6: /* FMAX */
-+            case 0x8: /* FMINNM */
-             case 0xa: /* FSUB */
-+            case 0xe: /* FMIN */
-             case 0x13: /* FMUL */
-             case 0x17: /* FDIV */
-                 g_assert_not_reached();
-diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
-index 4106536371..99ef676071 100644
---- a/target/arm/tcg/vec_helper.c
-+++ b/target/arm/tcg/vec_helper.c
-@@ -1231,15 +1231,19 @@ DO_3OP(gvec_facgt_s, float32_acgt, float32)
- 
- DO_3OP(gvec_fmax_h, float16_max, float16)
- DO_3OP(gvec_fmax_s, float32_max, float32)
-+DO_3OP(gvec_fmax_d, float64_max, float64)
- 
- DO_3OP(gvec_fmin_h, float16_min, float16)
- DO_3OP(gvec_fmin_s, float32_min, float32)
-+DO_3OP(gvec_fmin_d, float64_min, float64)
- 
- DO_3OP(gvec_fmaxnum_h, float16_maxnum, float16)
- DO_3OP(gvec_fmaxnum_s, float32_maxnum, float32)
-+DO_3OP(gvec_fmaxnum_d, float64_maxnum, float64)
- 
- DO_3OP(gvec_fminnum_h, float16_minnum, float16)
- DO_3OP(gvec_fminnum_s, float32_minnum, float32)
-+DO_3OP(gvec_fminnum_d, float64_minnum, float64)
- 
- DO_3OP(gvec_recps_nf_h, float16_recps_nf, float16)
- DO_3OP(gvec_recps_nf_s, float32_recps_nf, float32)
--- 
-2.34.1
+This check should be done before setting the enable variable. Or use an assert().
+
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid interrupt number: %d\n",
+> +                      __func__, irq);
+> +        return;
+> +    }
+> +
+> +    trace_aspeed_intc_set_irq(irq, level);
+> +
+> +    if (!level) {
+> +        return;
+> +    }
+> +
+> +    for (i = 0; i < aic->num_lines; i++) {
+> +        if (s->orgates[irq].levels[i]) {
+> +            if (enable & BIT(i)) {
+> +                select |= BIT(i);
+> +            }
+> +        }
+> +    }
+> +
+> +    if (!select) {
+> +        return;
+> +    }
+> +
+> +    trace_aspeed_intc_debug("select", select);
+> +    trace_aspeed_intc_debug("mask", s->mask[irq]);
+> +    trace_aspeed_intc_debug("status", s->regs[status_addr]);
+
+Hmm, trace_aspeed_intc_debug seems a bit overuse to me. May be you could
+remove a few or introduce specific trace events ?
+
+> +    if (s->mask[irq] || s->regs[status_addr]) {
+> +        /*
+> +         * a. mask is not 0 means in ISR mode
+> +         * sources interrupt routine are executing.
+> +         * b. status register value is not 0 means previous
+> +         * source interrupt does not be executed, yet.
+> +         *
+> +         * save source interrupt to pending variable.
+> +         */
+> +        s->pending[irq] |= select;
+> +        trace_aspeed_intc_debug("pending source interrupt", s->pending[irq]);
+> +    } else {
+> +        /*
+> +         * notify firmware which source interrupt are coming
+> +         * by setting status register
+> +         */
+> +        s->regs[status_addr] = select;
+> +        trace_aspeed_intc_debug("trigger source interrupt",
+> +                                s->regs[status_addr]);
+> +        aspeed_intc_update(s, irq, 1);
+> +    }
+> +}
+> +
+> +static uint64_t aspeed_intc_read(void *opaque, hwaddr offset, unsigned int size)
+> +{
+> +    AspeedINTCState *s = ASPEED_INTC(opaque);
+> +    uint32_t addr = offset >> 2;
+> +    uint32_t value = 0;
+> +
+> +    if (addr >= ASPEED_INTC_NR_REGS) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
+> +                      __func__, offset);
+> +        return 0;
+> +    }
+> +
+> +    value = s->regs[addr];
+> +    trace_aspeed_intc_read(offset, size, value);
+> +
+> +    return value;
+> +}
+> +
+> +static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+> +                                        unsigned size)
+> +{
+> +    AspeedINTCState *s = ASPEED_INTC(opaque);
+> +    uint32_t irq = (offset & 0x0f00) >> 8;
+> +    uint32_t addr = offset >> 2;
+> +    uint32_t old_enable;
+> +    uint32_t change;
+> +
+> +    if (addr >= ASPEED_INTC_NR_REGS) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
+> +                      __func__, offset);
+> +        return;
+> +    }
+
+
+irq needs a check also.
+
+> +    trace_aspeed_intc_write(offset, size, data);
+> +
+> +    switch (addr) {
+> +    case R_GICINT128_EN:
+> +    case R_GICINT129_EN:
+> +    case R_GICINT130_EN:
+> +    case R_GICINT131_EN:
+> +    case R_GICINT132_EN:
+> +    case R_GICINT133_EN:
+> +    case R_GICINT134_EN:
+> +    case R_GICINT135_EN:
+> +    case R_GICINT136_EN:
+> +        /*
+> +         * These registers are used for enable sources interrupt and
+> +         * mask and unmask source interrupt while executing source ISR.
+> +         */
+> +
+> +        /* disable all source interrupt */
+> +        if (!data && !s->enable[irq]) {
+> +            s->regs[addr] = data;
+> +            trace_aspeed_intc_debug("disable all source interrupt", irq);
+> +            return;
+> +        }
+> +
+> +        old_enable = s->enable[irq];
+> +        s->enable[irq] |= data;
+> +
+> +        /* enable new source interrupt */
+> +        if (old_enable != s->enable[irq]) {
+> +            trace_aspeed_intc_debug("enable new source interrupt",
+> +                                    s->enable[irq]);
+> +            s->regs[addr] = data;
+> +            return;
+> +        }
+> +
+> +        /* mask and unmask source interrupt */
+> +        change = s->regs[addr] ^ data;
+> +        trace_aspeed_intc_debug("enable change bit", change);
+> +        if (change & data) {
+> +            s->mask[irq] &= ~change;
+> +            trace_aspeed_intc_debug("enable umask", s->mask[irq]);
+> +        } else {
+> +            s->mask[irq] |= change;
+> +            trace_aspeed_intc_debug("enable mask", s->mask[irq]);
+> +        }
+> +        s->regs[addr] = data;
+> +        break;
+> +    case R_GICINT128_STATUS:
+> +    case R_GICINT129_STATUS:
+> +    case R_GICINT130_STATUS:
+> +    case R_GICINT131_STATUS:
+> +    case R_GICINT132_STATUS:
+> +    case R_GICINT133_STATUS:
+> +    case R_GICINT134_STATUS:
+> +    case R_GICINT135_STATUS:
+> +    case R_GICINT136_STATUS:
+> +        /* clear status */
+> +        s->regs[addr] &= ~data;
+> +
+> +        /*
+> +         * These status registers are used for notify sources ISR are executed.
+> +         * If one source ISR is executed, it will clear one bit.
+> +         * If it clear all bits, it means to initialize this register status
+> +         * rather than sources ISR are executed.
+> +         */
+> +        if (data == 0xffffffff) {
+> +            trace_aspeed_intc_debug("clear all source interrupt status",
+> +                                    s->regs[addr]);
+> +            return;
+> +        }
+> +
+> +        /* All source ISR execution are done */
+> +        if (!s->regs[addr]) {
+> +            trace_aspeed_intc_debug("all source ISR execution are done",
+> +                                    s->regs[addr]);
+> +            if (s->pending[irq]) {
+> +                /*
+> +                 * handle pending source interrupt
+> +                 * notify firmware which source interrupt are pending
+> +                 * by setting status register
+> +                 */
+> +                s->regs[addr] = s->pending[irq];
+> +                s->pending[irq] = 0;
+> +                trace_aspeed_intc_debug("trigger pending interrupt",
+> +                                        s->regs[addr]);
+> +                aspeed_intc_update(s, irq, 1);
+> +            } else {
+> +                /* clear irq */
+> +                aspeed_intc_update(s, irq, 0);
+> +            }
+> +        }
+> +        break;
+> +    default:
+> +        s->regs[addr] = data;
+> +        break;
+> +    }
+> +
+> +    return;
+> +}
+> +
+> +static const MemoryRegionOps aspeed_intc_ops = {
+> +    .read = aspeed_intc_read,
+> +    .write = aspeed_intc_write,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +    .valid = {
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+> +    }
+> +};
+> +
+> +static void aspeed_intc_instance_init(Object *obj)
+> +{
+> +    AspeedINTCState *s = ASPEED_INTC(obj);
+> +    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+> +    int i;
+
+I would add an assert on aic->num_ints to make sure it is not greater
+than ASPEED_INTC_NR_INTS.
+
+
+> +    for (i = 0; i < aic->num_ints; i++) {
+> +        object_initialize_child(obj, "intc-orgates[*]", &s->orgates[i],
+> +                                TYPE_OR_IRQ);
+> +        object_property_set_int(OBJECT(&s->orgates[i]), "num-lines",
+> +                                aic->num_lines, &error_abort);
+> +    }
+> +
+> +    s->num_ints = aic->num_ints;
+
+Seems unused ?
+
+> +}
+> +
+> +static void aspeed_intc_reset(DeviceState *dev)
+> +{
+> +    AspeedINTCState *s = ASPEED_INTC(dev);
+> +
+> +    memset(s->regs, 0, sizeof(s->regs));
+> +    memset(s->enable, 0, sizeof(s->enable));
+> +    memset(s->mask, 0, sizeof(s->mask));
+> +    memset(s->pending, 0, sizeof(s->pending));
+> +}
+> +
+> +static void aspeed_intc_realize(DeviceState *dev, Error **errp)
+> +{
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +    AspeedINTCState *s = ASPEED_INTC(dev);
+> +    AspeedINTCClass *aic = ASPEED_INTC_GET_CLASS(s);
+> +    int i;
+> +
+> +    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_intc_ops, s,
+> +                          TYPE_ASPEED_INTC ".regs", ASPEED_INTC_NR_REGS << 2);
+> +
+> +    sysbus_init_mmio(sbd, &s->iomem);
+> +    qdev_init_gpio_in(dev, aspeed_intc_set_irq, aic->num_ints);
+> +
+> +    for (i = 0; i < aic->num_ints; i++) {
+> +        if (!qdev_realize(DEVICE(&s->orgates[i]), NULL, errp)) {
+> +            return;
+> +        }
+> +        sysbus_init_irq(sbd, &s->output_pins[i]);
+> +    }
+> +}
+> +
+> +static Property aspeed_intc_properties[] = {
+> +    DEFINE_PROP_UINT32("num-ints", AspeedINTCState, num_ints, 0),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+
+This property doesn't seem useful. Please use the num_ints value from the
+AspeedINTCClass instead.
+
+> +
+> +static void aspeed_intc_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED INTC Controller";
+> +    dc->realize = aspeed_intc_realize;
+> +    dc->reset = aspeed_intc_reset;
+> +    device_class_set_props(dc, aspeed_intc_properties);
+> +    dc->vmsd = NULL;
+> +}
+> +
+> +static const TypeInfo aspeed_intc_info = {
+> +    .name = TYPE_ASPEED_INTC,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_init = aspeed_intc_instance_init,
+> +    .instance_size = sizeof(AspeedINTCState),
+> +    .class_init = aspeed_intc_class_init,
+> +    .abstract = true,
+> +};
+> +
+> +static void aspeed_2700_intc_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED 2700 INTC Controller";
+> +    aic->num_lines = 32;
+> +    aic->num_ints = 9;
+
+Use ASPEED_INTC_NR_INTS ?
+
+
+Thanks,
+
+C.
+
+
+
+> +}
+> +
+> +static const TypeInfo aspeed_2700_intc_info = {
+> +    .name = TYPE_ASPEED_2700_INTC,
+> +    .parent = TYPE_ASPEED_INTC,
+> +    .class_init = aspeed_2700_intc_class_init,
+> +};
+> +
+> +static void aspeed_intc_register_types(void)
+> +{
+> +    type_register_static(&aspeed_intc_info);
+> +    type_register_static(&aspeed_2700_intc_info);
+> +}
+> +
+> +type_init(aspeed_intc_register_types);
+> diff --git a/hw/intc/meson.build b/hw/intc/meson.build
+> index ed355941d1..f5c574f584 100644
+> --- a/hw/intc/meson.build
+> +++ b/hw/intc/meson.build
+> @@ -14,6 +14,7 @@ system_ss.add(when: 'CONFIG_ARM_GICV3_TCG', if_true: files(
+>   ))
+>   system_ss.add(when: 'CONFIG_ALLWINNER_A10_PIC', if_true: files('allwinner-a10-pic.c'))
+>   system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_vic.c'))
+> +system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_intc.c'))
+>   system_ss.add(when: 'CONFIG_ETRAXFS', if_true: files('etraxfs_pic.c'))
+>   system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_gic.c', 'exynos4210_combiner.c'))
+>   system_ss.add(when: 'CONFIG_GOLDFISH_PIC', if_true: files('goldfish_pic.c'))
+> diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+> index 1ef29d0256..05f2c235bd 100644
+> --- a/hw/intc/trace-events
+> +++ b/hw/intc/trace-events
+> @@ -79,6 +79,12 @@ aspeed_vic_update_fiq(int flags) "Raising FIQ: %d"
+>   aspeed_vic_update_irq(int flags) "Raising IRQ: %d"
+>   aspeed_vic_read(uint64_t offset, unsigned size, uint32_t value) "From 0x%" PRIx64 " of size %u: 0x%" PRIx32
+>   aspeed_vic_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
+> +# aspeed_intc.c
+> +aspeed_intc_read(uint64_t offset, unsigned size, uint32_t value) "From 0x%" PRIx64 " of size %u: 0x%" PRIx32
+> +aspeed_intc_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
+> +aspeed_intc_set_irq(int irq, int level) "Set IRQ %d: %d"
+> +aspeed_intc_update_irq(int irq, int level) "Update IRQ: %d: %d"
+> +aspeed_intc_debug(const char *str, uint32_t value) "%s: 0x%x"
+>   
+>   # arm_gic.c
+>   gic_enable_irq(int irq) "irq %d enabled"
+> diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+> new file mode 100644
+> index 0000000000..8f1909dcbd
+> --- /dev/null
+> +++ b/include/hw/intc/aspeed_intc.h
+> @@ -0,0 +1,46 @@
+> +/*
+> + * ASPEED INTC Controller
+> + *
+> + * Copyright (C) 2024 ASPEED Technology Inc.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +#ifndef ASPEED_INTC_H
+> +#define ASPEED_INTC_H
+> +
+> +#include "hw/sysbus.h"
+> +#include "qom/object.h"
+> +#include "hw/or-irq.h"
+> +
+> +#define TYPE_ASPEED_INTC "aspeed.intc"
+> +#define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
+> +OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
+> +
+> +#define ASPEED_INTC_NR_REGS (0x2000 >> 2)
+> +#define ASPEED_INTC_NR_INTS 9
+> +
+> +struct AspeedINTCState {
+> +    /*< private >*/
+> +    SysBusDevice parent_obj;
+> +    DeviceState *gic;
+> +
+> +    /*< public >*/
+> +    MemoryRegion iomem;
+> +    uint32_t regs[ASPEED_INTC_NR_REGS];
+> +    OrIRQState orgates[ASPEED_INTC_NR_INTS];
+> +    qemu_irq output_pins[ASPEED_INTC_NR_INTS];
+> +
+> +    uint32_t enable[ASPEED_INTC_NR_INTS];
+> +    uint32_t mask[ASPEED_INTC_NR_INTS];
+> +    uint32_t pending[ASPEED_INTC_NR_INTS];
+> +    uint32_t num_ints;
+> +};
+> +
+> +struct AspeedINTCClass {
+> +    SysBusDeviceClass parent_class;
+> +
+> +    uint32_t num_lines;
+> +    uint32_t num_ints;
+> +};
+> +
+> +#endif /* ASPEED_INTC_H */
 

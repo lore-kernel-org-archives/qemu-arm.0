@@ -1,85 +1,146 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a626cc8c975sm610976466b.167.2024.05.28.05.51.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 May 2024 05:51:16 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A539C5F88D;
-	Tue, 28 May 2024 13:51:15 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,
-  Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,  Beraldo Leal
- <bleal@redhat.com>,  qemu-s390x@nongnu.org,  John Snow <jsnow@redhat.com>,
-  Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Richard
- Henderson
- <richard.henderson@linaro.org>,  Paolo Bonzini <pbonzini@redhat.com>,
-  qemu-arm@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,  Jiaxun
- Yang <jiaxun.yang@flygoat.com>,  Joel Stanley <joel@jms.id.au>,  Wainer
- dos Santos Moschetta <wainersm@redhat.com>,  Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>,  Aurelien Jarno <aurelien@aurel32.net>,
-  Thomas Huth <thuth@redhat.com>,  Cleber Rosa <crosa@redhat.com>,  Markus
- Armbruster <armbru@redhat.com>,  Laurent Vivier <lvivier@redhat.com>
-Subject: Re: [PATCH 0/4] testing/next: purging remaining centos 8 bits
-In-Reply-To: <ed69a712-689a-4294-978d-d8d818a12b6f@linaro.org> ("Philippe
-	=?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 27 May 2024 11:32:17
- +0200")
-References: <20240521125314.1255403-1-alex.bennee@linaro.org>
-	<ed69a712-689a-4294-978d-d8d818a12b6f@linaro.org>
-Date: Tue, 28 May 2024 13:51:15 +0100
-Message-ID: <87plt6f6bg.fsf@draig.linaro.org>
+Received: by 2002:a17:906:32d0:b0:a63:3083:985b with SMTP id k16csp61207ejk;
+        Tue, 28 May 2024 09:20:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU+PEVCpp441aUw+pUdIgdv9sfZ+8v0hAycxZ1mbEeKQ2QQKdsgudlLGKUqq1IEUbEjuSwAArEXIKnZXq4Xf5foGJoVMF5+
+X-Google-Smtp-Source: AGHT+IFcqxoyZWLQRjcJvsidlm+zG4d4ypBmYfkkyEB7D3IVJfimKxTZQ1uLkG6iGtBRKPRh0PGq
+X-Received: by 2002:a05:622a:1801:b0:43a:c471:aa3d with SMTP id d75a77b69052e-43fb0e8f669mr101271451cf.20.1716913256801;
+        Tue, 28 May 2024 09:20:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716913256; cv=none;
+        d=google.com; s=arc-20160816;
+        b=p6M8e96/e2MhigqNpXAJRnE/FfM60udmiJQOBViuwvGaCC+8gB4sf6pVn4MzfcpZNl
+         f2+tQmVIz3qsm3Xcjbfc6cvIJ87LmTzUTHsX5R1rA4EM06irTxuhEt/YUHudrhfhY+eC
+         2JfyLCrgU6MsmJPsSGD0sdG+fZWeFr+PGl3clMxV3GxKRHVZr7u1xkjhlxz6x+jXeVO5
+         fBJD48p275mOYUhJPmsHfe5NFuAOWC5ITHvQ5es+cbbHCSywVH0gn5fWlcPVH7s36y/0
+         VRCtId1K9Afcn4DbiwbiABaGqPhXMur/IqY0GRYZJBeVnII+qxhYw3ps62wk+fdKshLt
+         jo5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=WnKnBqDMju2+kTOzdWij6cyOYKNfAnLsfvdkGPajW6Q=;
+        fh=/ftcwOPYeEIhzseC7WF42kR+xVR/IJiWpLC1+A7SOWQ=;
+        b=pNNYpk3OUpOpHSVE7+VR/HqAAWsZRVBEUxHpqcTTVQ7URQ7AlZw2z4cm7xdxmYQnv/
+         hqSEZUFew44SadHsMPvmkZXxGRpDDFpQXYUbHVeNpPUk8xo0tYkR8StINqfzsb1ttbvH
+         EeuCx/9+zXydD0+7wGfI9GiwSq7ENdm/hPHf13Z5fUwGS9Ik72V3SbiWW99yxiENg+Fm
+         1n2zOpfs4EMOMBVU1lbYZWTGAvik6LfiBnZMpXp9TrEW8ClPiWqQxE7pXz6bowiziwN+
+         tuePLycSJ8IxrrWngqxz0gXAjyHaaocKUsxxgnYHAdbedLLsEzBkWMcfJhKNj0tCDHxB
+         XsJw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="ze/o5eP0";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-43fb18a6df5si104769061cf.293.2024.05.28.09.20.56
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 28 May 2024 09:20:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="ze/o5eP0";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sBzZ3-00086Q-32; Tue, 28 May 2024 12:20:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sBzYt-000849-Oq
+ for qemu-devel@nongnu.org; Tue, 28 May 2024 12:20:32 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sBzYs-0002G0-87
+ for qemu-devel@nongnu.org; Tue, 28 May 2024 12:20:31 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-5785199e0d6so1521387a12.2
+ for <qemu-devel@nongnu.org>; Tue, 28 May 2024 09:20:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1716913226; x=1717518026; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=WnKnBqDMju2+kTOzdWij6cyOYKNfAnLsfvdkGPajW6Q=;
+ b=ze/o5eP0X+05BNPV++cXf/zJLo6DwIw9q7ZAc8pmeFhZLTIKmF1g6m24DsSn/GZq3K
+ sIUfXYC7BWJgAnLDwd3w5vIT2UiDqHJbop7RzWupu7gM78zztf6WYwBXLF7VUV+ebsr3
+ vhijbpYdnqaVsEk/Xoikr1NVg937Wddc4k4t6V+5Z2g5lr0/Vq4vk3m7ZoBfv8PJK4Uz
+ ks6k/88TlhyfZL2XvmcN9CvY/Mozxzyt49Kurw8kEb1TMx8GeRG2/rsZU872dcMBH/pQ
+ I7LF4FYwqD1h+DduaUgoriIhhdIZwOFVRMwJXBvDbLzmulGhPpHDgnCiL+HU/Cscv8Lr
+ A9xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1716913226; x=1717518026;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=WnKnBqDMju2+kTOzdWij6cyOYKNfAnLsfvdkGPajW6Q=;
+ b=V5dl/2zuWE+flJ+n0FJFITPFw+uieZBl2RZ37gZiB1QQJ4+pJsRUm+JJ99lxYa18kl
+ CBMkikIWbLDSkc8GR0mOQeEORIBaSdD4QhI0c3buaMx8CWx2XX2dkkEZT5R+phm4JmZi
+ KgK2/SIYFrFxmWuSaJ8S3uKVyFPsP/qzTnRqsBdOX7TnDegyhUIwNtWzhfi5N3j04GoL
+ 7qck4hPtwkIt+GpY3FAE5yksk2f95BzqDz3sbcomPd33LZHlGjAm99hADvu7P3RGxHIi
+ 5K/OPgR5i0FZQW4hCA4KnwOkkUTwJT9phIgdi1RaN+Ip0mu0lYtqe1DtCUupL7fhmyLM
+ sAXg==
+X-Gm-Message-State: AOJu0YzK2/MF5G0iGBTQsaJ9FNoe9nL32wimdVELENpAlfqlthtWCWJ1
+ 8Pl1zqxBzgqJGDzRIb69QpoEAhK6rAG8e5Z1B9gc2oAJPGl9/rlkNQ1Ikrf7sJEGTdguVz5SzWB
+ OcIE0iJfQfeBsij7F2CTNcZ16vvyC55p9XvIFew==
+X-Received: by 2002:a50:aa9b:0:b0:578:59f4:9a29 with SMTP id
+ 4fb4d7f45d1cf-57859f49b4bmr9527841a12.23.1716913226318; Tue, 28 May 2024
+ 09:20:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: jEZHfbsQONrN
+References: <20240524232121.284515-1-richard.henderson@linaro.org>
+In-Reply-To: <20240524232121.284515-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 May 2024 17:20:15 +0100
+Message-ID: <CAFEAcA_B7hCi0wH8vFgfBq6o7gfmpMd6i3QH6P3RO1Eo7Q1fNA@mail.gmail.com>
+Subject: Re: [PATCH v2 00/67] target/arm: Convert a64 advsimd to decodetree
+ (part 1)
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XtRcu8E0zk/N
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
-
-> Hi Alex,
+On Sat, 25 May 2024 at 00:22, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> On 21/5/24 14:53, Alex Benn=C3=A9e wrote:
->> There are a few more bits referencing centos8 in the tree which needed
->> cleaning up. After this we can remove the dedicated runner from the
->> gitlab registration. If we want to keep a dedicated Centos runner then
->> we can add back the bits needed to set it up (although arguably we
->> could have a single build-environment setup that handles all distros
->> and integrates with lcitool).
+> In the process, convert more code to gvec as well -- I will need
+> the gvec code for implementing SME2.  I guess this is about 1/3
+> of the job done, but there's no reason to wait until the patch
+> set is completely unwieldy.
 >
-> Do you you mean we should generate
-> scripts/ci/setup/build-environment.yml with lcitool?
-> Otherwise should we update it?
+> Changes for v2:
+>   * Fix existing RISU failures vs neoverse-n1.
+>   * Introduce vfp_load_reg16, fixing a regression wrt VNEG (scalar, hp).
+>   * Fix typo in SUQADD vectorization.
+>   * Two more conversions.
 
-Yes - I've got some WIP patches which I'll post soon.
+I've now finished review for this. I pulled 2 and 4-36 into my
+target-arm pullreq currently on list. To save you having to
+go through a lot of replies that are just me giving r-by tags,
+the patches I had comments/questions on are:
+  3, 38, 44, 46, 50, 65, 66.
 
->
->> Alex.
->> Alex Benn=C3=A9e (4):
->>    ci: remove centos-steam-8 customer runner
->>    docs/devel: update references to centos to later version
->>    tests/vm: update centos.aarch64 image to 9
->>    tests/vm: remove plain centos image
->>   docs/devel/ci-jobs.rst.inc                    |   7 -
->>   docs/devel/testing.rst                        |   8 +-
->>   .gitlab-ci.d/custom-runners.yml               |   1 -
->>   .../custom-runners/centos-stream-8-x86_64.yml |  24 ---
->>   .../org.centos/stream/8/build-environment.yml |  82 --------
->>   .../ci/org.centos/stream/8/x86_64/configure   | 198 ------------------
->>   .../org.centos/stream/8/x86_64/test-avocado   |  65 ------
->>   scripts/ci/org.centos/stream/README           |  17 --
->>   tests/vm/Makefile.include                     |   1 -
->>   tests/vm/centos                               |  51 -----
->>   tests/vm/centos.aarch64                       |  10 +-
->>   11 files changed, 9 insertions(+), 455 deletions(-)
->>   delete mode 100644 .gitlab-ci.d/custom-runners/centos-stream-8-x86_64.=
-yml
->>   delete mode 100644 scripts/ci/org.centos/stream/8/build-environment.yml
->>   delete mode 100755 scripts/ci/org.centos/stream/8/x86_64/configure
->>   delete mode 100755 scripts/ci/org.centos/stream/8/x86_64/test-avocado
->>   delete mode 100644 scripts/ci/org.centos/stream/README
->>   delete mode 100755 tests/vm/centos
->>=20
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+thanks
+-- PMM

@@ -1,65 +1,65 @@
-Received: by 2002:a17:906:ca8a:b0:a63:3083:985b with SMTP id js10csp345549ejb;
-        Tue, 28 May 2024 01:29:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUOGahOaY6xObclQb9ngQCWard0cw3mVPo4w3NudkjM+4jS/RoiILb7xBzBeANbSdk0g0Vtu29/BXcZfL5fk800io/OfK9N
-X-Google-Smtp-Source: AGHT+IGKPqRRJaVZFHBsVj+i5HiwL718Ehp8SdUlICkUQ8lwczupz6u8BrElYv9Lo7yeYnhy20dt
-X-Received: by 2002:aca:903:0:b0:3c7:523c:f980 with SMTP id 5614622812f47-3d1a50a97a4mr11684727b6e.2.1716884989487;
-        Tue, 28 May 2024 01:29:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716884989; cv=none;
+Received: by 2002:a17:906:ca8a:b0:a63:3083:985b with SMTP id js10csp352660ejb;
+        Tue, 28 May 2024 01:48:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWkMlpGGk8WYmCOqGzXrw6+jTDxK0OR/mfHvQ9lcJj1OQ/ntaofvn8UsbKK4NbeZw+rVFHZ4aWjkQy676lE7y9L8xwiu8ig
+X-Google-Smtp-Source: AGHT+IHzqCp1PIHTj7oMbIki/dVJHGoxVrcrtr4KtudlUT2fQDq/lK8kvyKi8TlXnTn0QOZ2vbhE
+X-Received: by 2002:a05:622a:1a8c:b0:43d:ebab:d4dd with SMTP id d75a77b69052e-43fb0b30ca0mr127357841cf.0.1716886135512;
+        Tue, 28 May 2024 01:48:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716886135; cv=none;
         d=google.com; s=arc-20160816;
-        b=fbHuv+CE3ybZN1xx7JTQNahmVRqny2xHaNn142lX+9TQtn7mZuupN9KVV/Oc6hMEqT
-         FH/JUslPWmXcrJNV8DdUfshO0f8i1g33OXMXPYlImzo4mWNU7XmmAk62fh/ZUEQQ9w+2
-         /GSnaqrXGzEhcfdpZ4tjxjae8KhvH17hZlVTzXNEm7cs57wuLv7Jnhn9WNDv421Shosu
-         gI+wBRhTGiZyVsevseTsiRFEwbJ+cw7yiFLdVbdkQntIUOavdxPF1geIMJjJI7nUoZEH
-         1pGUPrhcwAvNr5kZDbV/v45CNdmcmioFBOLPjoXFUiX3j7ZZzjrj3azkLyH2w9uIyfOr
-         6CDg==
+        b=GuAd9jJlr3AkKAMuOkiQYVzcpbAP2NhaKJjz5TC3KK3qB1nu25DEqm0i//4BTQlwRr
+         1KuOtVKnEDCxFxHW6F+wJBA8qZpeD7otbjvKGxWN+T/Z8CQ6JiaTZdCeoxWJPkEborB4
+         DOFQrVt6ZGk4ZdnFSzqrnA1J+8sTXXgAtX7nzU5t5O57WyHHCgHf5ENYCEGH+1jO8Acl
+         CWdh9Ky7z9EVO8PlpQNCaPuS4CpHEQLdjzW2cIXXPkukknJ0fwrB1FZE8nZE/+l9wbEK
+         vz/mKlMAvXGcq9n3vn5JLZ854LgtL5oQTRIcMsbdZDEQT7akXuds8NgWYT593Gg/iP2H
+         ndPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=r3eJGY0hzXDjG1jkch8CjFwKQrXCTS1lUD6YyHwwvSc=;
+        bh=XnAGcXUqcVnLze6k+uuEKDgFDsx4n1Zuv+p8Cna8k4U=;
         fh=dkl4W7Ty5DQDYblIuR6iwQV8rfkW6Bl5VLJjLin9mSc=;
-        b=XSdwIeYC2FFsLIaj39fNeMtu4XAYwpW3imMSk8zEGP9z2PeJqrWE4RUjxY43CRzhJc
-         ITv4LnNKi/4J64eMttuWleyWSsAUqUFIM4b5QfgGOiJLicWbSkloUz+ViEygs1VJ8d2J
-         UHqYyJJBSzGkBx8KSensqc+j481fXfbWkprb3h9RHqHZuXxoYTFSjI8+7dCiEIxUbMkd
-         mG1l1KQr+mvp4d4EjB18RtNdTosKG4moOFx0iwj0/twIG3u0+RYjd9goVXfJJFjFw3LW
-         Wivnn1+uLfmJbYlLx9MOUIwSg35XCnU9WELXfJYld/IgwYC2Svrnt5PJ6whcV+FbBdnA
-         JruQ==;
+        b=mQbBomg2jZS29UXxsqtiQdE3zrK/Nfx/a9w0+SEFspxwRn8Lsf9tPjnh1zuLRXatpg
+         URxqM+3AKHCLeoId8+DeHzgKIKWQNGCgWzcP9Y6XeqO43IxS7SGAJm9Le9tDuPqOv4Wi
+         8j7Hkp/pqPqzmCY5pD/6msd6hVLFWtlt7xhuDmJEnum/F2Ky+B66ppQNGY14tvMYlZBb
+         oxYVrYh9kqA55KS8dY3XMNOvawKTS6OGnmS9EutfJqLKY+IoW1flNKs504f25k0oL4Sz
+         fOooMAh7DWiZk3CxLCZsHaNUaqhK8kUCsPkBObUfnjh8BkWqosyN/5mSB5yL7RsI05kE
+         cv1w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43fb17baac4si110837241cf.90.2024.05.28.01.29.49
+        by mx.google.com with ESMTPS id d75a77b69052e-43fb18a86a1si97341071cf.389.2024.05.28.01.48.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 May 2024 01:29:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 May 2024 01:48:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sBsCj-0000WD-3s; Tue, 28 May 2024 04:29:09 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sBsVY-00011w-LW; Tue, 28 May 2024 04:48:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=HxTW=M7=kaod.org=clg@ozlabs.org>)
- id 1sBsCh-0000UB-Dv; Tue, 28 May 2024 04:29:07 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1sBsVQ-0000zA-Eb; Tue, 28 May 2024 04:48:28 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=HxTW=M7=kaod.org=clg@ozlabs.org>)
- id 1sBsCd-0003Ox-OT; Tue, 28 May 2024 04:29:06 -0400
+ id 1sBsVI-0006un-J7; Tue, 28 May 2024 04:48:28 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4VpQf036GZz4x2J;
- Tue, 28 May 2024 18:28:56 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4VpR4H1FK7z4x23;
+ Tue, 28 May 2024 18:48:15 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4VpQdt3RY0z4wbr;
- Tue, 28 May 2024 18:28:30 +1000 (AEST)
-Message-ID: <7ea55928-e61e-4112-992d-b899c65b4652@kaod.org>
-Date: Tue, 28 May 2024 10:28:27 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4VpR481vDRz4wx6;
+ Tue, 28 May 2024 18:48:07 +1000 (AEST)
+Message-ID: <e36b2a62-46a4-4c86-bfdc-e94055f11ced@kaod.org>
+Date: Tue, 28 May 2024 10:48:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 12/16] aspeed/soc: Add AST2700 support
@@ -80,7 +80,7 @@ From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 In-Reply-To: <20240527080231.1576609-13-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=HxTW=M7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -90,20 +90,20 @@ X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gqLNCiEK9onX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OT7hM7dHoMgl
 
 On 5/27/24 10:02, Jamin Lin wrote:
 > Initial definitions for a simple machine using an AST2700 SOC (Cortex-a35 CPU).
@@ -422,9 +422,6 @@ On 5/27/24 10:02, Jamin Lin wrote:
 > +    int i;
 > +
 > +    a->intc.gic = qdev_new(gicv3_class_name());
-
-This object doesn't need to be allocated. See versal_create_apu_gic()
-
 > +    qdev_prop_set_uint32(a->intc.gic, "revision", 3);
 > +    qdev_prop_set_uint32(a->intc.gic, "num-cpu", sc->num_cpus);
 > +    qdev_prop_set_uint32(a->intc.gic, "num-irq", AST2700_MAX_IRQ);
@@ -437,16 +434,7 @@ This object doesn't need to be allocated. See versal_create_apu_gic()
 > +    gicbusdev = SYS_BUS_DEVICE(a->intc.gic);
 > +    if (!sysbus_realize(gicbusdev, errp)) {
 > +        return false;
-
-I would find clearer to initialize/realize the underlying gic object
-under the AspeedINTCState model. You could add property aliases.
-
-or
-
-add a GICv3State gic object under the SoC. Probably better, since the
-AspeedINTCState doesn't need to know about the GIC.
-
-
+> +    }
 > +    sysbus_mmio_map(gicbusdev, 0, sc->memmap[ASPEED_GIC_DIST]);
 > +    sysbus_mmio_map(gicbusdev, 1, sc->memmap[ASPEED_GIC_REDIST]);
 > +
@@ -533,6 +521,16 @@ AspeedINTCState doesn't need to know about the GIC.
 > +    /* GICINT orgates -> INTC -> GIC */
 > +    num_ints = object_property_get_int(OBJECT(&a->intc), "num-ints",
 > +                                       &error_abort);
+
+Please use the num_ints value from the AspeedINTCClass instead.
+
+
+Thanks,
+
+C.
+
+
+
 > +    for (i = 0; i < num_ints; i++) {
 > +        qdev_connect_gpio_out(DEVICE(&a->intc.orgates[i]), 0,
 > +                                qdev_get_gpio_in(DEVICE(&a->intc), i));
@@ -730,19 +728,6 @@ AspeedINTCState doesn't need to know about the GIC.
 >     'aspeed_ast10x0.c',
 >     'aspeed_eeprom.c',
 >     'fby35.c'))
-
-Please change that to :
-
-  arm_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files('aspeed_ast27x0.c'))
-
-The AST2700 SoC model uses aarch64 CPUs.
-
-
-Thanks,
-
-C.
-
-
 > diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
 > index c60fac900a..9f177b6037 100644
 > --- a/include/hw/arm/aspeed_soc.h

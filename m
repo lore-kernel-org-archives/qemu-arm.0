@@ -1,93 +1,92 @@
-Received: by 2002:a17:906:ca8a:b0:a63:3083:985b with SMTP id js10csp307355ejb;
-        Mon, 27 May 2024 23:46:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF4Ga/YAOcVLTGAXP9Dv6jL743bWOdGlA0G+TuRT/78K6weU3qw7vkZOxXOSsU8JeI69wZ5
-X-Received: by 2002:a05:622a:52:b0:43e:3d8b:b6b9 with SMTP id d75a77b69052e-43fb0ef8abemr106374691cf.44.1716878806116;
-        Mon, 27 May 2024 23:46:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1716878806; cv=none;
+Received: by 2002:a17:906:ca8a:b0:a63:3083:985b with SMTP id js10csp307935ejb;
+        Mon, 27 May 2024 23:48:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGxQr/ZRw/qNkNRFBugOWCjjXaAJsjqEwpC6EO2+POnEpNDp+pt1dFpXg5ewAhFqAts7eAI
+X-Received: by 2002:a05:620a:72b5:b0:792:d298:7d68 with SMTP id af79cd13be357-794ab083f0cmr1201920485a.23.1716878925478;
+        Mon, 27 May 2024 23:48:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1716878925; cv=none;
         d=google.com; s=arc-20160816;
-        b=0Dl7O1GMUdkgFm6hENVAPWyGfSSpbaJhNu0fDoiV/QO1IWCSv4yPmAa3cJsBTQN2pL
-         DhMWyefM6IsOlV7ZCOShXJUfL/JU5cgJ/X2zEKgVG9fkElw+gsfbIiBX1chRtTkiiBhy
-         0XhejxIgavpW+IU9gXestIyhQoIJJVP0rVoe0aJcKsCTEC4keLdOHpsqd5hkTsj16F8F
-         4EgoJQYE8cJIKaUtbqIvzC+/d6KLi/TcKdbZ96y2nBjmI1kgv4eu1ORvOBpilkxb7dTx
-         jjYN/VhdeV4XoDmJw5QEXt6eSeskNbC9kgHuSsWqRyVEszDkl6V5iswx5xxoyMAqYVGB
-         maJw==
+        b=uVNiUCO1m3wwbKGYVBk2UMyAXNNKUtdZgoqci//P9jJy4lMIxinCFPAx0IlLCBVZjh
+         lIhEFdD2cluXmE9rNBJgtWqF8HSXjJMYLoPow0ussIwj5mkCqvhg87UZxqASZtU8iJGo
+         cmT5NWEaZVHPJbHkMepkBHcXFS0nmwTEYVF2gPrFezxDbO0G2zpKgafGEq/J6PTfdknz
+         f3Hakb7u4Uo7uq3408Lv69PL4k/9YIK10JdeSfaOAqeoMofxd61KD1ABgLd4IM4yo4pU
+         9TjRXgpN4AGuSJqaaTAQrKZsB2BVtEKaGyH8T/0LJBwyCnPrScqqqCifxg3cH1BzeQVV
+         0Mcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=4AM0fePRMtaS6q5DAVfXjTPy1MlJBxHVg+TTnn5GnqQ=;
+        bh=OUudq/bNpbLZZfwleUaRyTCx+BeeWwxLVUrh5W24O2Y=;
         fh=gGcVA5X7letqRIE6Ctru5irj0sr93cabC9fdYGNdecg=;
-        b=vFAcplmj9L6lQVa6V08+91rVx4Cc+GC1xqFe1fCv2BOkJECjfLn93xHGmL6P2LOzk2
-         XXJjpyulQbRrQxCcAypd5IaBgmFCZg+75z/8ruzZtwqa9qK/VEQ3a4bpwOT4LmrNDJtQ
-         ZGsXOfPyjTfyZhDwaAbsxC1mcQfdjbesG6MrCtF16yRFjlXi1VVLQupFMnVeT4HnDYEY
-         Efu7ZiydHAqUI3ySFWrMuYHQKG5q9xGEPDEffHtRwd5mxipu6GkCsFnibHFyHk5wdmrp
-         aGCfkhVcWbsz4MbBgOMypNs1b/3JLnOGS1iR5QYYnL0TZz4tcPG18KPUym4QHJvDYY9T
-         b0+w==;
+        b=pjDCOyxXL51Do1nOW0iBQhzcQLQCWMt7Cb1lxoC0Cr+vNxcg59Mlokvlgde7gaapA+
+         1enxhOTbSt/1aYbjzZ/qTvEZsRJL4l90bRC5JJduLOHCkq9+1BE6Br10W3uTXijmim2c
+         aZAkVbATiibiNxxQv2bPi3lv+ZYb5+kUeDyGSJg8zBxA2LAes3OL4KJBRSmsOn7wBnQS
+         k3LYzewkDEr104ICB1PZBqG16GiYU9Tc2Y2c0MHATxkYkwvde9GynVEhaUWqweFiiexV
+         YPzE2/uj15kdOahhXQThlmaMQAAk6FJhG/5JFwyDIataZP6nNGCM39G2V3Dr0GTs4cM2
+         L+jQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X3THNCoi;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZZ6S4TGJ;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-43fb18c572asi94644571cf.556.2024.05.27.23.46.45
+        by mx.google.com with ESMTPS id d75a77b69052e-43fb18eb064si97441331cf.748.2024.05.27.23.48.45
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 May 2024 23:46:46 -0700 (PDT)
+        Mon, 27 May 2024 23:48:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X3THNCoi;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZZ6S4TGJ;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1716878805;
+	s=mimecast20190719; t=1716878925;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=4AM0fePRMtaS6q5DAVfXjTPy1MlJBxHVg+TTnn5GnqQ=;
-	b=X3THNCoifZSDEB1o03p6DDa5sDLIQTQH/HsOVmmPpGG/EQYZGurqw5PQhDyo2ArIbMJY4t
-	XktRbd3Z6i2zklOxKHdhNIYiHWdqpt3GgGltqlp8aKhx1Z956k5qIhyOW64mF/85q1vUC/
-	jKds8llaiLRIl7hT5ee7uIoPuc1Kydg=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=OUudq/bNpbLZZfwleUaRyTCx+BeeWwxLVUrh5W24O2Y=;
+	b=ZZ6S4TGJoZamWrT8BJ8rLsM7kBJb63Vmk4qB9RuiJJavlz3tLQNEjAwAhIXZxUCDBVhNd3
+	xnKRccsLaQ2Ms5B4t+VoW5SSYTHbyg7EFkCuVmRdOZs/4rz1gYV9WfRFSW7ZWfo3LaNsK8
+	uJaVcGgl5cyK18AGJ7KkXIItbhHXwHo=
+Received: from mail-lf1-f72.google.com (mail-lf1-f72.google.com
+ [209.85.167.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-441-Yb1nGtrFP02Plw2gKmD3sA-1; Tue, 28 May 2024 02:46:40 -0400
-X-MC-Unique: Yb1nGtrFP02Plw2gKmD3sA-1
-Received: by mail-ej1-f69.google.com with SMTP id a640c23a62f3a-a6265d3cb34so23838666b.0
-        for <alex.bennee@linaro.org>; Mon, 27 May 2024 23:46:40 -0700 (PDT)
+ us-mta-519-ojp3He3qOcCUL4SU-IfAhQ-1; Tue, 28 May 2024 02:48:39 -0400
+X-MC-Unique: ojp3He3qOcCUL4SU-IfAhQ-1
+Received: by mail-lf1-f72.google.com with SMTP id 2adb3069b0e04-529a8d2c85cso370479e87.2
+        for <alex.bennee@linaro.org>; Mon, 27 May 2024 23:48:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1716878799; x=1717483599;
+        d=1e100.net; s=20230601; t=1716878918; x=1717483718;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=4AM0fePRMtaS6q5DAVfXjTPy1MlJBxHVg+TTnn5GnqQ=;
-        b=lgWjmfWnCB88k8DP3AVGvuw3S7kuJhBMd7mKaoNchWiu7XXGJ3nE7UFGKrOUoTLgVz
-         gKuuCxhULdwaePcEXPXYUZFzkOCpDnVN/BQNbkdyV7EM9aw/tt+N0tXt7TmAZlYsQk5B
-         QWXEtc3/JLV5RAB2vAW88SZs9Xf2PgHkolGGicT0CtDwJl4GbaUSTJMNb3jUu8hgNaJM
-         QoTgi9iHNnxudaVzKO4vo9zd9y2PlwFjIwf91YBXrk4OwMOcKr/tsWHyBnagCKMzZgrt
-         GBQfCt28zuvwqJViDpK5BWm2WLPTx17HNcXm58Dk+CB9PUoFSxHW59vOxR3STjrtlc1o
-         mmXA==
-X-Gm-Message-State: AOJu0Yws+7UQwbOOj9g66TnJiymLR5XNOogQOXdF+AIAiEOg1y8V+Q3E
-	n85w2iB0JBXNKrqTxw1Dmyp9AhNiEld6ogWZBg8ntzShYvUikhMQIFW6S/ma4cavb1Wwn3B0IK1
-	iu0eC1E5MozgW4Q3jU2OJUH3F9ZDeUdqtXcpVUjwPaDDLmqYNCRJjncTBC/yCd3nkk6jKbbtRfd
-	Z4LwLcW8r5HLMJ1bXPzSLwjQUfVLU+uTLR/A==
-X-Received: by 2002:a17:906:a287:b0:a59:cb29:3fb3 with SMTP id a640c23a62f3a-a6265148babmr762498866b.53.1716878799326;
-        Mon, 27 May 2024 23:46:39 -0700 (PDT)
-X-Received: by 2002:a17:906:a287:b0:a59:cb29:3fb3 with SMTP id a640c23a62f3a-a6265148babmr762495266b.53.1716878798848;
-        Mon, 27 May 2024 23:46:38 -0700 (PDT)
+        bh=OUudq/bNpbLZZfwleUaRyTCx+BeeWwxLVUrh5W24O2Y=;
+        b=pqY4GUJEfRw+rzpksYTpKtgAyjo1HmwimSiZ7VHIlTsuK68WC+vwF4C4nFzCRSveg3
+         VohJFLdqoE1Qt+KDQw5poLb+WtGdqU2Y6s1uMFJ73/3JcRBvFvCZYsHHSK9RL8yWRUM5
+         inURr06TTsQg18Qi1cn1QNBPBCcit7OZELoWqjPpVypPaFx+X/YSupbO/J7atEJngzij
+         QBejZfgjhrczsbZIVkSeGPs7ui8Rx1tEwo44FMrcVxNDbGESa9xWXl9K1FFpq/NzDd7T
+         viI/PGYgh1lfggQaj1VOV62ryGBGH7brHwDf2+AVdaJ5qJ3rdZuFz1NyzxhexembZOB2
+         d+PQ==
+X-Gm-Message-State: AOJu0Yw6zaDbVafbhgXBZndkWNSx8imxkrjJOn1AoauKNF9YbEPiq+/r
+	yZjmEW2oi2IGQN7RbEDdQX9GPgTC8XDnWn0esyWJhmEEjHFZWhki4I9wtkT49T/xE3QfZTGDeXX
+	uFZA55Lm81l8+xSmTNZ8de/xfpQ9cUpR0HdNlA+dnR63iGeXQB9YdMizTAxYLAnwUGtsi+psT4w
+	CGJIQVFoa9xnNfQvX0bfJxBqfuJzxuUGPLxQ==
+X-Received: by 2002:a19:760f:0:b0:520:36ea:9375 with SMTP id 2adb3069b0e04-5296736ba45mr8289954e87.43.1716878918298;
+        Mon, 27 May 2024 23:48:38 -0700 (PDT)
+X-Received: by 2002:a19:760f:0:b0:520:36ea:9375 with SMTP id 2adb3069b0e04-5296736ba45mr8289926e87.43.1716878917821;
+        Mon, 27 May 2024 23:48:37 -0700 (PDT)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.4] (ip-109-43-179-186.web.vodafone.de. [109.43.179.186])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a626cc8dcbdsm587998566b.175.2024.05.27.23.46.37
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a626c9377d8sm576665266b.55.2024.05.27.23.48.36
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 27 May 2024 23:46:38 -0700 (PDT)
-Message-ID: <ffc84cd2-f791-4758-a582-a92ad01993a0@redhat.com>
-Date: Tue, 28 May 2024 08:46:36 +0200
+        Mon, 27 May 2024 23:48:37 -0700 (PDT)
+Message-ID: <8939523c-ce4f-490a-86b4-21c0ba753d4a@redhat.com>
+Date: Tue, 28 May 2024 08:48:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] docs/devel: update references to centos to later
- version
+Subject: Re: [PATCH 3/4] tests/vm: update centos.aarch64 image to 9
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
@@ -104,7 +103,7 @@ Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Aurelien Jarno <aurelien@aurel32.net>, Cleber Rosa <crosa@redhat.com>,
  Markus Armbruster <armbru@redhat.com>, Laurent Vivier <lvivier@redhat.com>
 References: <20240521125314.1255403-1-alex.bennee@linaro.org>
- <20240521125314.1255403-3-alex.bennee@linaro.org>
+ <20240521125314.1255403-4-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -148,42 +147,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240521125314.1255403-3-alex.bennee@linaro.org>
+In-Reply-To: <20240521125314.1255403-4-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: cPap1RbXdggz
+X-TUID: fB6KbYd/n+ko
 
 On 21/05/2024 14.53, Alex Bennée wrote:
->  From the website:
-> 
-> "After May 31, 2024, CentOS Stream 8 will be archived and no further
-> updates will be provided."
-> 
-> We have updated a few bits but there are still references that need
-> fixing.
+> As Centos Stream 8 goes out of support we need to update. To do this
+> powertools is replaced by crb and we don't over specify the python3 we
+> want.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   docs/devel/testing.rst | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-> index fa28e3ecb2..c312465fa7 100644
-> --- a/docs/devel/testing.rst
-> +++ b/docs/devel/testing.rst
-> @@ -387,9 +387,9 @@ make target):
->   
->   .. code::
->   
-> -  make docker-test-build@centos8
-> +  make docker-test-build@centos9
+>   tests/vm/centos.aarch64 | 10 +++++-----
+>   1 file changed, 5 insertions(+), 5 deletions(-)
 
-Basically ACK, but I wonder whether we should maybe switch the documentation 
-to another container here that does not have a version in its name, so we 
-don't have to change it again and again each time a new version is released.
-For example, what about using @fedora instead of @centos9 ?
-
-  Thomas
+Reviewed-by: Thomas Huth <thuth@redhat.com>

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a626cc8c1a1sm729659166b.166.2024.05.29.09.09.37
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a626c934fd8sm727651966b.47.2024.05.29.09.09.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 29 May 2024 09:09:38 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id CF14D5FA93;
-	Wed, 29 May 2024 17:09:35 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 06C3F5FA95;
+	Wed, 29 May 2024 17:09:36 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <lvivier@redhat.com>,
@@ -32,349 +32,97 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-s390x@nongnu.org,
 	Radoslaw Biernacki <rad@semihalf.com>
-Subject: [PATCH 08/10] tests/lcitool: generate package lists for ansible
-Date: Wed, 29 May 2024 17:09:32 +0100
-Message-Id: <20240529160934.982373-9-alex.bennee@linaro.org>
+Subject: [PATCH 10/10] tests/avocado: update sbsa-ref firmware
+Date: Wed, 29 May 2024 17:09:34 +0100
+Message-Id: <20240529160934.982373-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240529160934.982373-1-alex.bennee@linaro.org>
 References: <20240529160934.982373-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: loY+5HqTrN4X
+X-TUID: HP5Q5wBAFne6
 
-This includes updating libvirt-ci to the currently in-flight MR:
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 
-  https://gitlab.com/libvirt/libvirt-ci/-/merge_requests/488
+Partial support for NUMA setup:
+- cpu nodes
+- memory nodes
 
-With the new ability to output YAML we can build the package list for
-our ansible setup scripts. We will integrate them in the next commit.
+Used versions:
 
+- Trusted Firmware v2.11.0
+- Tianocore EDK2 stable202405
+- Tianocore EDK2 Platforms code commit 4bbd0ed
+
+Firmware is built using Debian 'bookworm' cross toolchain (gcc 12.2.0).
+
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Reviewed-by: Leif Lindholm <quic_llindhol@quicinc.com>
+Message-Id: <20240528182917.91027-1-marcin.juszkiewicz@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - updated to latest revision of MR
----
- .../ci/setup/ubuntu/ubuntu-2204-aarch64.yaml  | 127 ++++++++++++++++++
- .../ci/setup/ubuntu/ubuntu-2204-s390x.yaml    | 125 +++++++++++++++++
- tests/lcitool/libvirt-ci                      |   2 +-
- tests/lcitool/refresh                         |  16 ++-
- 4 files changed, 268 insertions(+), 2 deletions(-)
- create mode 100644 scripts/ci/setup/ubuntu/ubuntu-2204-aarch64.yaml
- create mode 100644 scripts/ci/setup/ubuntu/ubuntu-2204-s390x.yaml
+ tests/avocado/machine_aarch64_sbsaref.py | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/scripts/ci/setup/ubuntu/ubuntu-2204-aarch64.yaml b/scripts/ci/setup/ubuntu/ubuntu-2204-aarch64.yaml
-new file mode 100644
-index 0000000000..8d7d8725fb
---- /dev/null
-+++ b/scripts/ci/setup/ubuntu/ubuntu-2204-aarch64.yaml
-@@ -0,0 +1,127 @@
-+# THIS FILE WAS AUTO-GENERATED
-+#
-+#  $ lcitool variables --host-arch aarch64 ubuntu-2204 qemu
-+#
-+# https://gitlab.com/libvirt/libvirt-ci
-+
-+packages:
-+  - bash
-+  - bc
-+  - bison
-+  - bsdextrautils
-+  - bzip2
-+  - ca-certificates
-+  - ccache
-+  - clang
-+  - dbus
-+  - debianutils
-+  - diffutils
-+  - exuberant-ctags
-+  - findutils
-+  - flex
-+  - gcc
-+  - gcovr
-+  - gettext
-+  - git
-+  - hostname
-+  - libaio-dev
-+  - libasan6
-+  - libasound2-dev
-+  - libattr1-dev
-+  - libbpf-dev
-+  - libbrlapi-dev
-+  - libbz2-dev
-+  - libc6-dev
-+  - libcacard-dev
-+  - libcap-ng-dev
-+  - libcapstone-dev
-+  - libcmocka-dev
-+  - libcurl4-gnutls-dev
-+  - libdaxctl-dev
-+  - libdrm-dev
-+  - libepoxy-dev
-+  - libfdt-dev
-+  - libffi-dev
-+  - libfuse3-dev
-+  - libgbm-dev
-+  - libgcrypt20-dev
-+  - libglib2.0-dev
-+  - libglusterfs-dev
-+  - libgnutls28-dev
-+  - libgtk-3-dev
-+  - libibumad-dev
-+  - libibverbs-dev
-+  - libiscsi-dev
-+  - libjemalloc-dev
-+  - libjpeg-turbo8-dev
-+  - libjson-c-dev
-+  - liblttng-ust-dev
-+  - liblzo2-dev
-+  - libncursesw5-dev
-+  - libnfs-dev
-+  - libnuma-dev
-+  - libpam0g-dev
-+  - libpcre2-dev
-+  - libpipewire-0.3-dev
-+  - libpixman-1-dev
-+  - libpng-dev
-+  - libpulse-dev
-+  - librbd-dev
-+  - librdmacm-dev
-+  - libsasl2-dev
-+  - libsdl2-dev
-+  - libsdl2-image-dev
-+  - libseccomp-dev
-+  - libselinux1-dev
-+  - libslirp-dev
-+  - libsnappy-dev
-+  - libsndio-dev
-+  - libspice-protocol-dev
-+  - libspice-server-dev
-+  - libssh-dev
-+  - libsystemd-dev
-+  - libtasn1-6-dev
-+  - libubsan1
-+  - libudev-dev
-+  - liburing-dev
-+  - libusb-1.0-0-dev
-+  - libusbredirhost-dev
-+  - libvdeplug-dev
-+  - libvirglrenderer-dev
-+  - libvte-2.91-dev
-+  - libxen-dev
-+  - libzstd-dev
-+  - llvm
-+  - locales
-+  - make
-+  - meson
-+  - mtools
-+  - multipath-tools
-+  - ncat
-+  - nettle-dev
-+  - ninja-build
-+  - openssh-client
-+  - pkgconf
-+  - python3
-+  - python3-numpy
-+  - python3-opencv
-+  - python3-pillow
-+  - python3-pip
-+  - python3-sphinx
-+  - python3-sphinx-rtd-theme
-+  - python3-tomli
-+  - python3-venv
-+  - python3-yaml
-+  - rpm2cpio
-+  - sed
-+  - socat
-+  - sparse
-+  - swtpm
-+  - systemtap-sdt-dev
-+  - tar
-+  - tesseract-ocr
-+  - tesseract-ocr-eng
-+  - xorriso
-+  - zlib1g-dev
-+  - zstd
-+
-diff --git a/scripts/ci/setup/ubuntu/ubuntu-2204-s390x.yaml b/scripts/ci/setup/ubuntu/ubuntu-2204-s390x.yaml
-new file mode 100644
-index 0000000000..16050a5058
---- /dev/null
-+++ b/scripts/ci/setup/ubuntu/ubuntu-2204-s390x.yaml
-@@ -0,0 +1,125 @@
-+# THIS FILE WAS AUTO-GENERATED
-+#
-+#  $ lcitool variables --host-arch s390x ubuntu-2204 qemu
-+#
-+# https://gitlab.com/libvirt/libvirt-ci
-+
-+packages:
-+  - bash
-+  - bc
-+  - bison
-+  - bsdextrautils
-+  - bzip2
-+  - ca-certificates
-+  - ccache
-+  - clang
-+  - dbus
-+  - debianutils
-+  - diffutils
-+  - exuberant-ctags
-+  - findutils
-+  - flex
-+  - gcc
-+  - gcovr
-+  - gettext
-+  - git
-+  - hostname
-+  - libaio-dev
-+  - libasan6
-+  - libasound2-dev
-+  - libattr1-dev
-+  - libbpf-dev
-+  - libbrlapi-dev
-+  - libbz2-dev
-+  - libc6-dev
-+  - libcacard-dev
-+  - libcap-ng-dev
-+  - libcapstone-dev
-+  - libcmocka-dev
-+  - libcurl4-gnutls-dev
-+  - libdaxctl-dev
-+  - libdrm-dev
-+  - libepoxy-dev
-+  - libfdt-dev
-+  - libffi-dev
-+  - libfuse3-dev
-+  - libgbm-dev
-+  - libgcrypt20-dev
-+  - libglib2.0-dev
-+  - libglusterfs-dev
-+  - libgnutls28-dev
-+  - libgtk-3-dev
-+  - libibumad-dev
-+  - libibverbs-dev
-+  - libiscsi-dev
-+  - libjemalloc-dev
-+  - libjpeg-turbo8-dev
-+  - libjson-c-dev
-+  - liblttng-ust-dev
-+  - liblzo2-dev
-+  - libncursesw5-dev
-+  - libnfs-dev
-+  - libnuma-dev
-+  - libpam0g-dev
-+  - libpcre2-dev
-+  - libpipewire-0.3-dev
-+  - libpixman-1-dev
-+  - libpng-dev
-+  - libpulse-dev
-+  - librbd-dev
-+  - librdmacm-dev
-+  - libsasl2-dev
-+  - libsdl2-dev
-+  - libsdl2-image-dev
-+  - libseccomp-dev
-+  - libselinux1-dev
-+  - libslirp-dev
-+  - libsnappy-dev
-+  - libsndio-dev
-+  - libspice-protocol-dev
-+  - libssh-dev
-+  - libsystemd-dev
-+  - libtasn1-6-dev
-+  - libubsan1
-+  - libudev-dev
-+  - liburing-dev
-+  - libusb-1.0-0-dev
-+  - libusbredirhost-dev
-+  - libvdeplug-dev
-+  - libvirglrenderer-dev
-+  - libvte-2.91-dev
-+  - libzstd-dev
-+  - llvm
-+  - locales
-+  - make
-+  - meson
-+  - mtools
-+  - multipath-tools
-+  - ncat
-+  - nettle-dev
-+  - ninja-build
-+  - openssh-client
-+  - pkgconf
-+  - python3
-+  - python3-numpy
-+  - python3-opencv
-+  - python3-pillow
-+  - python3-pip
-+  - python3-sphinx
-+  - python3-sphinx-rtd-theme
-+  - python3-tomli
-+  - python3-venv
-+  - python3-yaml
-+  - rpm2cpio
-+  - sed
-+  - socat
-+  - sparse
-+  - swtpm
-+  - systemtap-sdt-dev
-+  - tar
-+  - tesseract-ocr
-+  - tesseract-ocr-eng
-+  - xorriso
-+  - zlib1g-dev
-+  - zstd
-+
-diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
-index a300a26c0d..6e8fa79119 160000
---- a/tests/lcitool/libvirt-ci
-+++ b/tests/lcitool/libvirt-ci
-@@ -1 +1 @@
--Subproject commit a300a26c0d7f48544c40af268b3245ebd63c7351
-+Subproject commit 6e8fa79119d131d95502b20051dd84353be57816
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index ace4d08364..3577a411a6 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -80,7 +80,7 @@ def generate_dockerfile(host, target, project="qemu", cross=None, trailer=None):
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index 98c76c1ff7..6bb82f2a03 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -37,18 +37,18 @@ def fetch_firmware(self):
  
- def generate_cirrus(target, trailer=None):
-     filename = Path(src_dir, ".gitlab-ci.d", "cirrus", target + ".vars")
--    cmd = lcitool_cmd + ["variables", target, "qemu"]
-+    cmd = lcitool_cmd + ["variables", "--format", "shell", target, "qemu"]
-     generate(filename, cmd, trailer)
+         Used components:
  
+-        - Trusted Firmware 2.10.2
+-        - Tianocore EDK2 stable202402
+-        - Tianocore EDK2-platforms commit 085c2fb
++        - Trusted Firmware 2.11.0
++        - Tianocore EDK2 stable202405
++        - Tianocore EDK2-platforms commit 4bbd0ed
  
-@@ -90,6 +90,13 @@ def generate_pkglist(vm, target):
-     generate(filename, cmd, None)
+         """
  
+         # Secure BootRom (TF-A code)
+         fs0_xz_url = (
+             "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
+-            "20240313-116475/edk2/SBSA_FLASH0.fd.xz"
++            "20240528-140808/edk2/SBSA_FLASH0.fd.xz"
+         )
+-        fs0_xz_hash = "637593749cc307dea7dc13265c32e5d020267552f22b18a31850b8429fc5e159"
++        fs0_xz_hash = "fa6004900b67172914c908b78557fec4d36a5f784f4c3dd08f49adb75e1892a9"
+         tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash,
+                                       algorithm='sha256')
+         archive.extract(tar_xz_path, self.workdir)
+@@ -57,9 +57,9 @@ def fetch_firmware(self):
+         # Non-secure rom (UEFI and EFI variables)
+         fs1_xz_url = (
+             "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
+-            "20240313-116475/edk2/SBSA_FLASH1.fd.xz"
++            "20240528-140808/edk2/SBSA_FLASH1.fd.xz"
+         )
+-        fs1_xz_hash = "cb0a5e8cf5e303c5d3dc106cfd5943ffe9714b86afddee7164c69ee1dd41991c"
++        fs1_xz_hash = "5f3747d4000bc416d9641e33ff4ac60c3cc8cb74ca51b6e932e58531c62eb6f7"
+         tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash,
+                                       algorithm='sha256')
+         archive.extract(tar_xz_path, self.workdir)
+@@ -98,15 +98,15 @@ def test_sbsaref_edk2_firmware(self):
  
-+def generate_yaml(os, target, arch, trailer=None):
-+    filename = Path(src_dir, "scripts", "ci", "setup", os, f"{target}-{arch}.yaml")
-+    cmd = lcitool_cmd + ["variables", "--format", "yaml", "-a",
-+                         arch, target, "qemu"]
-+    generate(filename, cmd, trailer)
-+
-+
- # Netmap still needs to be manually built as it is yet to be packaged
- # into a distro. We also add cscope and gtags which are used in the CI
- # test
-@@ -209,6 +216,13 @@ try:
-     #
-     generate_pkglist("freebsd", "freebsd-13")
+         # AP Trusted ROM
+         wait_for_console_pattern(self, "Booting Trusted Firmware")
+-        wait_for_console_pattern(self, "BL1: v2.10.2(release):")
++        wait_for_console_pattern(self, "BL1: v2.11.0(release):")
+         wait_for_console_pattern(self, "BL1: Booting BL2")
  
-+    #
-+    # Ansible package lists
-+    #
-+    generate_yaml("ubuntu", "ubuntu-2204", "aarch64")
-+    generate_yaml("ubuntu", "ubuntu-2204", "s390x")
-+
-+
-     sys.exit(0)
- except Exception as ex:
-     print(str(ex), file=sys.stderr)
+         # Trusted Boot Firmware
+-        wait_for_console_pattern(self, "BL2: v2.10.2(release)")
++        wait_for_console_pattern(self, "BL2: v2.11.0(release)")
+         wait_for_console_pattern(self, "Booting BL31")
+ 
+         # EL3 Runtime Software
+-        wait_for_console_pattern(self, "BL31: v2.10.2(release)")
++        wait_for_console_pattern(self, "BL31: v2.11.0(release)")
+ 
+         # Non-trusted Firmware
+         wait_for_console_pattern(self, "UEFI firmware (version 1.0")
 -- 
 2.39.2

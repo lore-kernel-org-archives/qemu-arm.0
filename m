@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-579d41ef2f2sm4218078a12.41.2024.05.29.09.09.37
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a626cc500a1sm730713466b.125.2024.05.29.09.09.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 29 May 2024 09:09:38 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 9A69C5F9F9;
+	by draig.lan (Postfix) with ESMTP id B65815FA92;
 	Wed, 29 May 2024 17:09:35 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -32,96 +32,129 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-s390x@nongnu.org,
 	Radoslaw Biernacki <rad@semihalf.com>
-Subject: [PATCH 06/10] docs/ci: clean-up references for consistency
-Date: Wed, 29 May 2024 17:09:30 +0100
-Message-Id: <20240529160934.982373-7-alex.bennee@linaro.org>
+Subject: [PATCH 07/10] tests/lcitool: bump to latest version
+Date: Wed, 29 May 2024 17:09:31 +0100
+Message-Id: <20240529160934.982373-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240529160934.982373-1-alex.bennee@linaro.org>
 References: <20240529160934.982373-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: RFJDdVDiy9In
+X-TUID: 9FMtSxIQvskq
 
-Document we have split up build-environment by distro and update the
-references that exist in the code base to be correct.
+We have to simultaneously update a few bits on our side as lcitool has
+already deprecated fedora-38, alpine-3.18 and centos-8-stream. However
+there is no change to the package list yet.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- docs/devel/ci-runners.rst.inc                       | 13 ++++++-------
- .../custom-runners/ubuntu-22.04-aarch32.yml         |  2 +-
- .../custom-runners/ubuntu-22.04-aarch64.yml         |  2 +-
- .gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml  |  2 +-
- scripts/ci/setup/{ => ubuntu}/build-environment.yml |  0
- 5 files changed, 9 insertions(+), 10 deletions(-)
- rename scripts/ci/setup/{ => ubuntu}/build-environment.yml (100%)
 
-diff --git a/docs/devel/ci-runners.rst.inc b/docs/devel/ci-runners.rst.inc
-index 7817001fb2..67b23d3719 100644
---- a/docs/devel/ci-runners.rst.inc
-+++ b/docs/devel/ci-runners.rst.inc
-@@ -41,19 +41,18 @@ those hosts.  This would look like::
- Build environment
- ~~~~~~~~~~~~~~~~~
+---
+v2
+  - fix typo s/lci-tool/lcitool/
+---
+ tests/docker/dockerfiles/alpine.docker             | 4 ++--
+ tests/docker/dockerfiles/fedora-win64-cross.docker | 4 ++--
+ tests/docker/dockerfiles/fedora.docker             | 4 ++--
+ tests/lcitool/libvirt-ci                           | 2 +-
+ tests/lcitool/refresh                              | 6 +++---
+ tests/lcitool/targets/centos-stream-8.yml          | 3 ---
+ 6 files changed, 10 insertions(+), 13 deletions(-)
+ delete mode 100644 tests/lcitool/targets/centos-stream-8.yml
+
+diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
+index 554464f31e..b76cc2a35e 100644
+--- a/tests/docker/dockerfiles/alpine.docker
++++ b/tests/docker/dockerfiles/alpine.docker
+@@ -1,10 +1,10 @@
+ # THIS FILE WAS AUTO-GENERATED
+ #
+-#  $ lcitool dockerfile --layers all alpine-318 qemu
++#  $ lcitool dockerfile --layers all alpine-320 qemu
+ #
+ # https://gitlab.com/libvirt/libvirt-ci
  
--The ``scripts/ci/setup/build-environment.yml`` Ansible playbook will
--set up machines with the environment needed to perform builds and run
--QEMU tests.  This playbook consists on the installation of various
--required packages (and a general package update while at it).  It
--currently covers a number of different Linux distributions, but it can
--be expanded to cover other systems.
-+The ``scripts/ci/setup/$DISTRO/build-environment.yml`` Ansible
-+playbook will set up machines with the environment needed to perform
-+builds and run QEMU tests. This playbook consists on the installation
-+of various required packages (and a general package update while at
-+it).
+-FROM docker.io/library/alpine:3.18
++FROM docker.io/library/alpine:3.20
  
- The minimum required version of Ansible successfully tested in this
- playbook is 2.8.0 (a version check is embedded within the playbook
- itself).  To run the playbook, execute::
+ RUN apk update && \
+     apk upgrade && \
+diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
+index 0f78711876..cce6739613 100644
+--- a/tests/docker/dockerfiles/fedora-win64-cross.docker
++++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
+@@ -1,10 +1,10 @@
+ # THIS FILE WAS AUTO-GENERATED
+ #
+-#  $ lcitool dockerfile --layers all --cross-arch mingw64 fedora-38 qemu,qemu-win-installer
++#  $ lcitool dockerfile --layers all --cross-arch mingw64 fedora-40 qemu,qemu-win-installer
+ #
+ # https://gitlab.com/libvirt/libvirt-ci
  
-   cd scripts/ci/setup
--  ansible-playbook -i inventory build-environment.yml
-+  ansible-playbook -i inventory $DISTRO/build-environment.yml
+-FROM registry.fedoraproject.org/fedora:38
++FROM registry.fedoraproject.org/fedora:40
  
- Please note that most of the tasks in the playbook require superuser
- privileges, such as those from the ``root`` account or those obtained
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml
-index b8a0d75162..8727687e2b 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml
-@@ -1,5 +1,5 @@
- # All ubuntu-22.04 jobs should run successfully in an environment
--# setup by the scripts/ci/setup/qemu/build-environment.yml task
-+# setup by the scripts/ci/setup/ubuntu/build-environment.yml task
- # "Install basic packages to build QEMU on Ubuntu 22.04"
+ RUN dnf install -y nosync && \
+     printf '#!/bin/sh\n\
+diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
+index 098c894d10..bd51e1e149 100644
+--- a/tests/docker/dockerfiles/fedora.docker
++++ b/tests/docker/dockerfiles/fedora.docker
+@@ -1,10 +1,10 @@
+ # THIS FILE WAS AUTO-GENERATED
+ #
+-#  $ lcitool dockerfile --layers all fedora-38 qemu
++#  $ lcitool dockerfile --layers all fedora-40 qemu
+ #
+ # https://gitlab.com/libvirt/libvirt-ci
  
- ubuntu-22.04-aarch32-all:
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-index 374b0956c3..263a3c2140 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-@@ -1,5 +1,5 @@
- # All ubuntu-22.04 jobs should run successfully in an environment
--# setup by the scripts/ci/setup/qemu/build-environment.yml task
-+# setup by the scripts/ci/setup/ubuntu/build-environment.yml task
- # "Install basic packages to build QEMU on Ubuntu 22.04"
+-FROM registry.fedoraproject.org/fedora:38
++FROM registry.fedoraproject.org/fedora:40
  
- ubuntu-22.04-aarch64-all-linux-static:
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml
-index 25935048e2..69ddd3e7d5 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml
-@@ -1,5 +1,5 @@
- # All ubuntu-22.04 jobs should run successfully in an environment
--# setup by the scripts/ci/setup/build-environment.yml task
-+# setup by the scripts/ci/setup/ubuntu/build-environment.yml task
- # "Install basic packages to build QEMU on Ubuntu 22.04"
+ RUN dnf install -y nosync && \
+     printf '#!/bin/sh\n\
+diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
+index cec6703971..a300a26c0d 160000
+--- a/tests/lcitool/libvirt-ci
++++ b/tests/lcitool/libvirt-ci
+@@ -1 +1 @@
+-Subproject commit cec67039719becbfbab866f9c23574f389cf9559
++Subproject commit a300a26c0d7f48544c40af268b3245ebd63c7351
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index 789acefb75..ace4d08364 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -124,11 +124,11 @@ try:
+     #
+     # Standard native builds
+     #
+-    generate_dockerfile("alpine", "alpine-318")
++    generate_dockerfile("alpine", "alpine-320")
+     generate_dockerfile("centos9", "centos-stream-9")
+     generate_dockerfile("debian", "debian-12",
+                         trailer="".join(debian12_extras))
+-    generate_dockerfile("fedora", "fedora-38")
++    generate_dockerfile("fedora", "fedora-40")
+     generate_dockerfile("opensuse-leap", "opensuse-leap-15")
+     generate_dockerfile("ubuntu2204", "ubuntu-2204")
  
- ubuntu-22.04-s390x-all-linux:
-diff --git a/scripts/ci/setup/build-environment.yml b/scripts/ci/setup/ubuntu/build-environment.yml
-similarity index 100%
-rename from scripts/ci/setup/build-environment.yml
-rename to scripts/ci/setup/ubuntu/build-environment.yml
+@@ -191,7 +191,7 @@ try:
+                         trailer=cross_build("s390x-linux-gnu-",
+                                             "s390x-softmmu,s390x-linux-user"))
+ 
+-    generate_dockerfile("fedora-win64-cross", "fedora-38",
++    generate_dockerfile("fedora-win64-cross", "fedora-40",
+                         project='qemu,qemu-win-installer',
+                         cross="mingw64",
+                         trailer=cross_build("x86_64-w64-mingw32-",
+diff --git a/tests/lcitool/targets/centos-stream-8.yml b/tests/lcitool/targets/centos-stream-8.yml
+deleted file mode 100644
+index 6b11160fd1..0000000000
+--- a/tests/lcitool/targets/centos-stream-8.yml
++++ /dev/null
+@@ -1,3 +0,0 @@
+-paths:
+-  pip3: /usr/bin/pip3.8
+-  python: /usr/bin/python3.8
 -- 
 2.39.2

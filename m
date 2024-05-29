@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a626cc514e5sm734407366b.103.2024.05.29.09.09.35
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5785238d355sm8603309a12.31.2024.05.29.09.09.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 May 2024 09:09:35 -0700 (PDT)
+        Wed, 29 May 2024 09:09:36 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 3A9655F8E3;
+	by draig.lan (Postfix) with ESMTP id 5138D5F8E5;
 	Wed, 29 May 2024 17:09:35 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -32,63 +32,58 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-s390x@nongnu.org,
 	Radoslaw Biernacki <rad@semihalf.com>
-Subject: [PATCH 02/10] docs/devel: update references to centos to non-versioned container
-Date: Wed, 29 May 2024 17:09:26 +0100
-Message-Id: <20240529160934.982373-3-alex.bennee@linaro.org>
+Subject: [PATCH 03/10] tests/vm: update centos.aarch64 image to 9
+Date: Wed, 29 May 2024 17:09:27 +0100
+Message-Id: <20240529160934.982373-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240529160934.982373-1-alex.bennee@linaro.org>
 References: <20240529160934.982373-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: +HZI9F2iaXb/
+X-TUID: zVO3co/3mlNK
 
->>From the website:
-
-"After May 31, 2024, CentOS Stream 8 will be archived and no further
-updates will be provided."
-
-We have updated a few bits but there are still references that need
-fixing. Rather than bump I've replaced them with references to the
-Debian image so we don't have to bump at the next update.
+As Centos Stream 8 goes out of support we need to update. To do this
+powertools is replaced by crb and we don't over specify the python3 we
+want.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20240521125314.1255403-3-alex.bennee@linaro.org>
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20240521125314.1255403-4-alex.bennee@linaro.org>
 ---
-v2
-  - replaced centos with debian, tweaked commit message
----
- docs/devel/testing.rst | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ tests/vm/centos.aarch64 | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index fa28e3ecb2..23d3f44f52 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -387,9 +387,9 @@ make target):
+diff --git a/tests/vm/centos.aarch64 b/tests/vm/centos.aarch64
+index 3f58de1e64..fcf9e08c87 100755
+--- a/tests/vm/centos.aarch64
++++ b/tests/vm/centos.aarch64
+@@ -25,9 +25,9 @@ DEFAULT_CONFIG = {
+     'cpu'          : "max",
+     'machine'      : "virt,gic-version=max",
+     'install_cmds' : (
+-        "dnf config-manager --set-enabled powertools, "
++        "dnf config-manager --enable crb, "
+         "dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo, "
+-        "dnf install -y make ninja-build git python38 gcc gcc-c++ flex bison "\
++        "dnf install -y make ninja-build git python3 gcc gcc-c++ flex bison "\
+             "glib2-devel pixman-devel zlib-devel docker-ce.aarch64, "
+         "systemctl enable docker, "
+     ),
+@@ -38,10 +38,10 @@ DEFAULT_CONFIG = {
  
- .. code::
  
--  make docker-test-build@centos8
-+  make docker-test-build@debian
- 
--This will create a container instance using the ``centos8`` image (the image
-+This will create a container instance using the ``debian`` image (the image
- is downloaded and initialized automatically), in which the ``test-build`` job
- is executed.
- 
-@@ -410,8 +410,8 @@ locally by using the ``NOCACHE`` build option:
- Images
- ~~~~~~
- 
--Along with many other images, the ``centos8`` image is defined in a Dockerfile
--in ``tests/docker/dockerfiles/``, called ``centos8.docker``. ``make docker-help``
-+Along with many other images, the ``debian`` image is defined in a Dockerfile
-+in ``tests/docker/dockerfiles/``, called ``debian.docker``. ``make docker-help``
- command will list all the available images.
- 
- A ``.pre`` script can be added beside the ``.docker`` file, which will be
+ class CentosAarch64VM(basevm.BaseVM):
+-    name = "centos8.aarch64"
++    name = "centos9.aarch64"
+     arch = "aarch64"
+-    image_name = "CentOS-Stream-GenericCloud-8-20220125.1.aarch64.qcow2"
+-    image_link = "https://cloud.centos.org/centos/8-stream/aarch64/images/"
++    image_name = "CentOS-Stream-GenericCloud-9-20230501.0.aarch64.qcow2"
++    image_link = "https://cloud.centos.org/centos/9-stream/aarch64/images/"
+     image_link += image_name
+     BUILD_SCRIPT = """
+         set -e;
 -- 
 2.39.2

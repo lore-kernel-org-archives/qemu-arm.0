@@ -1,104 +1,104 @@
-Received: by 2002:a17:907:270b:b0:a66:557b:2f6e with SMTP id w11csp224143ejk;
-        Thu, 30 May 2024 06:27:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUa9PXNZ3kInnqGfQxDwC9yYQ32FhsI93iYr/Z9pRPN804FWkOKln+Z91RPVZnEUNyYYb80ypf+swPBryRgdP93vCi19CSV
-X-Google-Smtp-Source: AGHT+IEYMdlefKU3YYuUgn4jdMdG5DBkol7AjLSrAC8/i9N+E+Ir+mr9Jk7rUR3q5UHMI6sScvjd
-X-Received: by 2002:a05:6871:282:b0:23e:6d9a:8f45 with SMTP id 586e51a60fabf-25060d970admr2457132fac.48.1717075644864;
-        Thu, 30 May 2024 06:27:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717075644; cv=none;
+Received: by 2002:a17:907:270b:b0:a66:557b:2f6e with SMTP id w11csp191471ejk;
+        Thu, 30 May 2024 05:29:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVj5y8BQp95g0g7hY7CEr5lJYWAMuzoddFzV++gh2eVi6k/G1vDmjHdxxlE1jmF7kMAx4PrQca1b8pfyj0emZpzL0/D6y59
+X-Google-Smtp-Source: AGHT+IGCDUj3g0j0DFnwOKSTbggn/4Gfbci5XDOCENrNnNONYn8AsWhZ5+/D2YdRUYaiLGvuCFFj
+X-Received: by 2002:a25:dfcd:0:b0:df7:b7da:d217 with SMTP id 3f1490d57ef6-dfa5a7b42aamr1952318276.50.1717072196775;
+        Thu, 30 May 2024 05:29:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717072196; cv=none;
         d=google.com; s=arc-20160816;
-        b=HYWk7FMHiCUV5sfjC4X7G5WdRmGQIh/ihflpFWa7IBmbtJT06qreE6XCq+ZWIOY3rb
-         dPsB/dzh9pnhGiD7UVesdUZ796YlVQ8EIc8rEYcYgTBjLy8KSu2L0p8wvEab4RuGQSBk
-         B8zi7HZbORxZUQlo6t3qnmnxDk7Mw8h78U60Byo5b/T03ZsqF9RFZk5Lhol6JQ3BE9TB
-         PuWMsF2S7eqXfNpV90GRU1SiG0zOSnzlP8pKbVdt0ptj6a3SA+snWsnNiBRhcrMOahNl
-         3gAZBcnRBbEHMErrPT2sXdCNQiDS9jqzM0AXb1JOYYPIthuEtWoCbZiZ2K0awBYBu4nq
-         TSig==
+        b=J2bmFgfGtTIC46/acpAY1v78Gq9RZPuGEWvkvAy3H9Q1Y2znFDyoqxFj1HNjbTCq1q
+         G4V1NFPSqPTNjcoGXDyTmoNbQlTjdE5+AIROPsM1mb6d0criplPKugiXP/RD91nM5il8
+         oIA82qJ49zP0tjNYb5ypRf+WBQoEu2e+D11W6nwQYgcfLJXiv4HUfP+vvBvQofP0znns
+         2v6JlXoKjvBuNVd8rqLy8mwB8ejPYYSfPiHpFdqrmd1ZCSqqTrN4iPd7WYld57um7D0D
+         BRNWb7+rQVFXu5W+hH/bOXhwtv7+j3UtDniu70//tlaJvz9WtJqy7XqI7gpLqpmb06P3
+         8Yzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=nvK0Kt2NNELo3256QNX/h5HK9KE6QrWVrfLHacMI0Oc=;
+        bh=qRZ7ZnZOeXHTO8JumT5AdXrYgBeKK9mS6c+lZkJv7rY=;
         fh=yu/1iw6YLWXI7uXxSgrKK4x0RLaSttlZFKnA772xgXY=;
-        b=we4YuQHFniEuzj1OccR1IQuwpwKgJLNJmhF9eFGcxQu2ifvJp0PNiXyBcfPywQdoHZ
-         ZF8GvUF9EHugcOrfSxfVqkjMhqHNKbHP5noGkC0wWWAI90TYjD/5KRESBZeS7HiAFf6S
-         Sj8WtrFNewG0hE1SgncVreVeQs3oxH68vazxnQJXKGcTP1yGRLkInYNzMJtkPtO6x4jN
-         eazgXYF5z6wgM5/9dy/vu7suXE0iXRjUaPLzCEOXI4rS+t0IejNm2fPsSDGgulhaQsKl
-         Fuc7yjn+USb3ffw1spEeqQLFa/wXu292mLv1lVntPAOtPXMJdDpLai04PkuGKM7PTS2y
-         REzg==;
+        b=SPkSLE65eSRC8iHBUZ/QHT8I4Q1Foq52+fdQBAr5+YD+4lQiN6dEFB7sNOSeAXkdLz
+         JqQV6DVSTcWNm8jUvZbFaUTxByexMNVtaEqFnGXsw01iQyOUB88CckCrtt9GLPH5B3aa
+         S6IxSUyl+TEM4saLiXFewBd/Hlej311nwe91aeNFC6m20n2ea+P5rMNIw5CCggoWXUS3
+         qK8lojeDA9EDS7WRlf1PfTOHRapltDhPtX5dZSZbnJK4be+lh2xUk7fxVIk/j1cDr7Kn
+         ozzTBKxsSl2hobxFr+jE/jjtOIFivMJ9Ht8GB24ovDSbBfyvHeSkuOVLa4XmGgYV+MFR
+         WCgg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PTkZWe1T;
+       dkim=pass header.i=@linaro.org header.s=google header.b=D59qSO1z;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43fddd25ca2si56291781cf.84.2024.05.30.06.27.24
+        by mx.google.com with ESMTPS id af79cd13be357-794ae71eba8si1408338585a.167.2024.05.30.05.29.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 May 2024 06:27:24 -0700 (PDT)
+        Thu, 30 May 2024 05:29:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PTkZWe1T;
+       dkim=pass header.i=@linaro.org header.s=google header.b=D59qSO1z;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sCfoM-00011U-UB; Thu, 30 May 2024 09:27:18 -0400
+	id 1sCeui-0005YH-0I; Thu, 30 May 2024 08:29:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sCfoL-0000rt-5f
- for qemu-devel@nongnu.org; Thu, 30 May 2024 09:27:17 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ id 1sCeug-0005Xb-9F
+ for qemu-devel@nongnu.org; Thu, 30 May 2024 08:29:46 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sCfoJ-00017F-Ju
- for qemu-devel@nongnu.org; Thu, 30 May 2024 09:27:16 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-5785c1e7448so861978a12.2
- for <qemu-devel@nongnu.org>; Thu, 30 May 2024 06:27:15 -0700 (PDT)
+ id 1sCeue-0006vc-PR
+ for qemu-devel@nongnu.org; Thu, 30 May 2024 08:29:46 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-5788eaf5320so1003690a12.0
+ for <qemu-devel@nongnu.org>; Thu, 30 May 2024 05:29:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1717075634; x=1717680434; darn=nongnu.org;
+ d=linaro.org; s=google; t=1717072183; x=1717676983; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=nvK0Kt2NNELo3256QNX/h5HK9KE6QrWVrfLHacMI0Oc=;
- b=PTkZWe1TSUux4ByuUEic3kwi1mYae52YhEWE77hrU5d4qY5zJqS8DGslCfQQker2j3
- +oaO53Wm+ckAm4mt0O0uzf0R49DME6Rae4Lc9uuF4jdYT9NKbw2xxySwDztqPMLAAUZS
- UrMDMu1tYLhV4gbLGQKdD+JlCWpXR8nuVx9TPfGYL9uHQrsfH69MoOMqiVXAn6BgJ5Eg
- ypr8RxLG57JqzCguA0Hw30Ka2/88a0QSjvy6XYfCVj8TK1klSwT9HYfCljpfkRg/0dI0
- 8DHi6PRO/6BrsyEF0OVi5lsbP+eaHImtGiaiBMF81YQf4lB1yvx0nJu3BDe3DWW/fT01
- WbEg==
+ bh=qRZ7ZnZOeXHTO8JumT5AdXrYgBeKK9mS6c+lZkJv7rY=;
+ b=D59qSO1zRpleQ3ZDC89w/pR9xy5jKcSNZ2q8lIPM5OqDk+yqW4xkrM8emdZxyXEy+u
+ qv+GRkAXzTik6Pszi/1VKS3mI7Z3nVge8QVoSK6l8Gm7T8OQVyD/trcJvuPzqnEPch2A
+ +rLs4UunXkRNyXdtKIFsULvBKzJpyHAAIZQkK7cWZvd3HcNLyegR58xqg+mznXfaJx2f
+ 8+U+X6wO74lYzNeHIuirUSMLuh5/Xm3Qx/x38a4roG0OCjZsswwzSmczH6vybPO+ipaB
+ gacOpXhr1ZDpgN1EIyEIOrEB/nUsqy+2fxijDSVztvJIroFD5jGo56h2uICrllJLrZ5B
+ ojtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717075634; x=1717680434;
+ d=1e100.net; s=20230601; t=1717072183; x=1717676983;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=nvK0Kt2NNELo3256QNX/h5HK9KE6QrWVrfLHacMI0Oc=;
- b=vTCE/tgtvQSFSjPxW7fqLZaRREDwU3FvGL0mCG7ba9StfI7J0TEx1VZBKkoynI1sF5
- SxWYlxh5UUeUTMM6pxDlqKPb2MWgzh8ojQN7dj4O9yhWwh+qdcLgm4w3c3j6QbIleSY8
- WEaTCxr2eQ/KUErDzSlguTYKMOX8/2ji8flCSDV3h1dAUrR1aOwVwi4QtDxuiD5k+pvS
- yq9JgGDarB0StuIjJV7RveEwTmk2GM3gfwiFx/1w31sCSff0uvSZoTcno8PRR22R2/pl
- XJXb9RV424A++vT3uYUbzGm7BgvYH6uLWQWTbJyxF0ST+jV0x4KVuP3A2s3Ah+a4+gJQ
- NJ+w==
-X-Gm-Message-State: AOJu0YwPETnvnj2rLffM5oSEIcogPiUzZSSIKgbTor9GbkNsoloCkrgR
- qVX935fxCtDUSxekK7/+bUjCSDvIiDBTbatW0ijk6Nw5V1bc9sPrekImwXRSIlPm9y7vW9gFKO+
- HwC8DyaBWRL2FJKvZgjh2yAObiGTEBi0A5fSxrA==
-X-Received: by 2002:a50:9b56:0:b0:57a:2ccb:b3f2 with SMTP id
- 4fb4d7f45d1cf-57a2ccbb4eamr275587a12.16.1717075633951; Thu, 30 May 2024
- 06:27:13 -0700 (PDT)
+ bh=qRZ7ZnZOeXHTO8JumT5AdXrYgBeKK9mS6c+lZkJv7rY=;
+ b=na1UjHqFUYMctAtxymCxSS8M4Evc8Y8sfzWP6O7ySbPiVOz2Frxbi/DH2fx2aQKOb8
+ FoivUA1UtImL4Fc0VIWecN38IpsgNNhkTDDw/QauqtKRceHahtfG9+h4mNyDFBquciAz
+ iTn9n8NMDirgQb3LyTKM8MhnMg1Mkbe1Kk0BCPdRpS/Tx9Ase+8NFxucK85FxlgCJJiS
+ x8B32aJ/ql6+CO7IZQv6mm8YXCN0mFsk59DmgSqsdGjvCcJyvlehtmpuN+XGKuQlArOh
+ qr4fUujev3/tc8IU6pNd5W2yWgTxJvEQAbVxOn+EOAi4kZHWnMrHLp7QsN/kCDD3jmWv
+ SfKg==
+X-Gm-Message-State: AOJu0Yy6CL9DzAVMhNgGrKG9rW6U1KcJRTrkE5PpNJ7QTVgwiXZmfw+z
+ 5Y9Jti9f20yhpnr9+TJRz89+PbGYhcl112ptjoCalF8k6fQ053YvR8pWcJ3o8ouzzi3GrYjWmNR
+ Ps3ouJzk8mbGeOFzD9QUIExT+7UMVP1g3VtC+UQ==
+X-Received: by 2002:a50:8e15:0:b0:578:5771:dc2c with SMTP id
+ 4fb4d7f45d1cf-57a177cf233mr1450134a12.3.1717072182872; Thu, 30 May 2024
+ 05:29:42 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240519094106.2142896-1-rayhan.faizel@gmail.com>
-In-Reply-To: <20240519094106.2142896-1-rayhan.faizel@gmail.com>
+ <20240519094106.2142896-2-rayhan.faizel@gmail.com>
+In-Reply-To: <20240519094106.2142896-2-rayhan.faizel@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 May 2024 14:27:02 +0100
-Message-ID: <CAFEAcA_zBhe+HxOqtAzWSCbzApEhknr+NeheA1uLj641EXMM5w@mail.gmail.com>
-Subject: Re: [PATCH v3 0/3] Initial support for One-Time Programmable Memory
- (OTP) in BCM2835
+Date: Thu, 30 May 2024 13:29:31 +0100
+Message-ID: <CAFEAcA8kids+GheYkBDJ9+0=y51Xpgb1AEjRJfZtxxf-KYH2DQ@mail.gmail.com>
+Subject: Re: [PATCH v3 1/3] hw/nvram: Add BCM2835 OTP device
 To: Rayhan Faizel <rayhan.faizel@gmail.com>
 Cc: qemu-devel@nongnu.org, philmd@linaro.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,37 +120,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NdIPiIwkUj4o
+X-TUID: td27Kq86s3JI
 
 On Sun, 19 May 2024 at 10:42, Rayhan Faizel <rayhan.faizel@gmail.com> wrote:
 >
-> All BCM2835 boards have on-board OTP memory with 66 32-bit rows. Usually,
-> its contents are accessible via mailbox commands.
+> The OTP device registers are currently stubbed. For now, the device
+> houses the OTP rows which will be accessed directly by other peripherals.
 >
-> [Changes in v3]
->
-> - Forgot to replace constant with macro in one particular spot.
->
-> [Changes in v2]
->
-> - Replace read/write with get/set in bcm2835_otp.c.
-> - Use impl instead of valid in bcm2835_otp.c.
-> - Replace all constant values with macros defined in bcm2835_otp.h.
-> - Change memory region size of OTP device to 0x80.
-> - After further testing on a real Raspberry Pi 3, I noticed a few things
-> contrary to my initial assumptions:
-> -- The customer OTP lock bit is bit 6 of row 32, NOT bit 30 of row 30. This is
-> currently undocumented to my knowledge.
-> -- The above lock indeed applies to the private key as well.
->
-> Rayhan Faizel (3):
->   hw/nvram: Add BCM2835 OTP device
->   hw/arm: Connect OTP device to BCM2835
->   hw/misc: Implement mailbox properties for customer OTP and device
->     specific private keys
+> Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-
-Applied to target-arm.next, thanks.
-
+thanks
 -- PMM

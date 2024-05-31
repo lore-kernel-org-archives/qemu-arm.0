@@ -1,125 +1,111 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp430681ejs;
-        Fri, 31 May 2024 03:56:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX5uG4t8jcIE5QwxsxTAAtGGTwOFnB+afKUBz3WJy69VPB2csjqDKJQ1tkyHDR/ADGHwkME9vt/F/vD8xQDnuf21tZwv73H
-X-Google-Smtp-Source: AGHT+IG2qYB/gIAOOULUtIXUrDerVnz1Xj6nIB2Jn9KPpQyv7aZOtxWcURlCzOD26qGJ+UCfu8WL
-X-Received: by 2002:a05:6214:33c3:b0:6ae:174b:793e with SMTP id 6a1803df08f44-6aecd5a644amr18049806d6.20.1717153016666;
-        Fri, 31 May 2024 03:56:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717153016; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp486012ejs;
+        Fri, 31 May 2024 05:46:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUc1guw6gtmZFxbs1JNaWduZGL9oIU0U4NDuRTfFTRlG6IL1LvV/95p+yhT38PZyWgCyYHbTmxidaviwgoEcOaRXfEUP+OK
+X-Google-Smtp-Source: AGHT+IFv3MpZ6HxO/CoGvIsO6fx4X5xktfvcS+aDNEkH5VJ53T+EfMfDs0eHGKNym1e5/1ti1LcL
+X-Received: by 2002:ac8:5711:0:b0:43d:f71d:98d8 with SMTP id d75a77b69052e-43ff524bcacmr15869361cf.25.1717159598225;
+        Fri, 31 May 2024 05:46:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717159598; cv=none;
         d=google.com; s=arc-20160816;
-        b=N/HNILCIXAq3LRaMQj+V/LdY404MhgsKCTQCTGwKgJkaFNE2Z5iMM4aghHFWSpsGs8
-         zuZzHEOkT8VtoHL4IjoVnh1aOeDBs8pWs2c41b8q7iJ8cY/pH+OLTW2XNTUE42Ebp49/
-         k/oHEj+hUYp2G55SgomDDIm2PX9lzxY6rkKc6igOAdSNcr5n1eHbBuoY0uMO65wyGmOB
-         CZMytMk/TUmKIC051OtIkioCoBCHb6zyNiDBnrvEC0jOxfj1jraa+7Bdlrdyy8dCUlIq
-         A7R9vFugex8w26kTky5NLrw6dk+D1CTN9A7N+WrzGxfPq62p3mPp8Xtuz5wXsechiJ1G
-         E+Uw==
+        b=RiRu3K20EhEBlJeoZczzH51Usb1mTDGTlzGqMWfXhN6wLyoGxQuvxS8aFV5hQZz2Bi
+         1RC103CiZ5tHrktV+151CFRbi0/kvgzQPT22Yx8w8uqOVYN1UZ8mZBbNl34vaIk+AB9p
+         qyZyqE069Zi9S9vl4xSoxMPuph9Tj5MwlqT7jaF7yesbrvbkkZ3OBOiiOIhDSOeg6SJY
+         7NeiMGRPYXQeEPqTa55vvxHUnOyxvE4l4ALkstIc4m9S2Rd254KKK9nW4095WCDAV6KH
+         c6qvoFQN5XRDFqAD31BmK5d2kbslXsQ54weA+2Xjwe71fposc2uV/KkyzSGCh1UmiBqv
+         Arpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Tp0wCDPgtOUp4XCB4v5QEpIMFr9FdQc2XXblJrDYhrQ=;
-        fh=Lm/bqLeTcvtzV+RLds0UHPThACPSi8unRKN2PXAz3qc=;
-        b=gkNx+xeQO/tFmAjHOQLWBwIf/NzOIBjur1afBDb7yksoo3tGCvoPcLJxClwoxKBVFM
-         g9kTIdhuUOIhvMwFZgPmxq0sRM5EpBK+SuM5xPrc6/ZUHEn7ZbNIDsvqa4RocrXVjUCc
-         wXcGr1uCGRlIRkiwIhDAJJS6ngp6rsLMFGUvD711w88t+zRDm67NN6tczgSGfg95ssjN
-         UZwxEjKBiB0dMnTGmSG3YrvCLhKlbi1GupCXgRgovpmHNn1nb1uxNZnTF5jiKcvogwmW
-         s8nEEktL9K0f7Xv7sgA56u+CnivXFJb8bJ3soQ4FiauN/EV/rIx6DR8wjxt+SkX3s9hi
-         4AnQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=KNkb3HO1mvzGdO6PMr4OlLUGGePFzcV+YKoXtQ1aEQw=;
+        fh=MXw26uABifrty87+dX1qnWxaVbPh1TPVlOEhJxGdRfA=;
+        b=vK3kaFUFYpxlYhY/Xdju+pTiuUcdHgT1ZxSFOtFy4/JXd0YxNv+8upbQJ1VO6clFwh
+         LUBRtzfeHdnRWIwVH0yOR3GQpiL0zNl1u22GrHYp3XtitUrE0jgVR08baWAWaXTYHp4r
+         +bUgAh2GGpS137/bH1y6H1R+XmxSSVeYyWNJOy5bdGWoM1MEUq10dh/csZ1EmeKk6dtm
+         isCASvlDXjsvtmhOtzAJ0zg+8+nRa/Z29AUy0LbtH4/pW6H6VpsUI/+PQTUeEQTYRpSI
+         mf1oO7tZvEBYuhSR4n2Ahfamx8aq2LIrvoBCYh6Kv/sP+FnOng9aJPh7LCPAEP53KvTn
+         1HYw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kx0fvGhD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jJ2Dxt+e;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4b415228si18148096d6.390.2024.05.31.03.56.56
+        by mx.google.com with ESMTPS id d75a77b69052e-43ff23ae857si10590051cf.30.2024.05.31.05.46.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 31 May 2024 03:56:56 -0700 (PDT)
+        Fri, 31 May 2024 05:46:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kx0fvGhD;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jJ2Dxt+e;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sCzwB-0000kd-FP; Fri, 31 May 2024 06:56:44 -0400
+	id 1sD1eU-0008HP-OJ; Fri, 31 May 2024 08:46:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sCzw9-0000kJ-Ez
- for qemu-arm@nongnu.org; Fri, 31 May 2024 06:56:41 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sD1eT-0008H5-L8
+ for qemu-arm@nongnu.org; Fri, 31 May 2024 08:46:33 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sCzw7-0007Qi-M4
- for qemu-arm@nongnu.org; Fri, 31 May 2024 06:56:41 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-5785f7347cdso1928089a12.0
- for <qemu-arm@nongnu.org>; Fri, 31 May 2024 03:56:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sD1eS-0002vR-0I
+ for qemu-arm@nongnu.org; Fri, 31 May 2024 08:46:33 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-42011507a54so11329005e9.0
+ for <qemu-arm@nongnu.org>; Fri, 31 May 2024 05:46:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1717152996; x=1717757796; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Tp0wCDPgtOUp4XCB4v5QEpIMFr9FdQc2XXblJrDYhrQ=;
- b=Kx0fvGhDByDQRUr04ybK2UtVKFgeSRXw4CfbUCq3lyrjWyVINgt4e2TkCjVYw5af6c
- cclcOSz73fFVcsF+OFfm8q7lBWtovWEDiB2mcoRsZm5kbR1KAWxUl0ZHtZTd7yQ5kibq
- hZjKBdKW5Uqct3oeJvmCdDo0KXM7qX4kqLl+f+VBynBEujrkUxeuC2aZF8WN2i6nENRJ
- P2fkibLAOyhXfAOctw0Ad7FKjsbp/d0errKsfAocSRrQz/cnVjaO+F0qJnJvXq0uAHD1
- hUSDcw+7oQxpYrfB7hotl/I083jeXfW628PvWo50JTaCVxA8lWcYoiFoCSSHYKWh1BP1
- Pz8w==
+ d=linaro.org; s=google; t=1717159590; x=1717764390; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=KNkb3HO1mvzGdO6PMr4OlLUGGePFzcV+YKoXtQ1aEQw=;
+ b=jJ2Dxt+elG1xV10f1wiisVgRyrKsAh2rMAhHlxr6AbD8HnHoKDexktJmrIlFXf/qs6
+ 9q1pGZXCd3P5oJ0npy1eBvlHiIUQcmYnx+MWI0o/q1vtcXaAWXj4zd57rnzD5ddWHJyp
+ CT68oRyYZg4zLSyoQ8fwaWtrqONEoD8BbWU0fjmjLgKiZoq4zruvftlC6ds6gnVVK5pQ
+ Bpza0G4j8OD4RYrgbqKtaSov4M4GIaUPcCIN42fPj7b+IOGV3av9sAXsflws9UnEcDWh
+ tfiZbXCP+po7U1qccRDXb7N44DBNHqndRR99BBkJ6s97JKAvNaaadoeMiWhizqrJzymm
+ vjsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717152996; x=1717757796;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Tp0wCDPgtOUp4XCB4v5QEpIMFr9FdQc2XXblJrDYhrQ=;
- b=XrfmTKM9UkxhAlufDY3bziuUMPhXo4g1GBPud26H2va6iDU3MFkfMieHstnUBfNFoQ
- FiyofglvvS4psmgMit757zt/T6oeqolldrZfVfEVMahhLUk1BFRI/5Cg/oIONFHpvsJk
- qQh0XLkfJ1NDeSw0Rs00PXJaAF/obJcav4sSDcU5+DJ+LHRRDescit92pSWuRhq9fwvA
- bJaoGCoqrSaUmffocPoqPg6Ed+5fTD8C2kWuZ/dxU4/cCDNKKeW+CrBQg1sp7Y5bKduD
- uyj7Oa2LgkGisAuXwsUg/gSWM5K8lvFH44U8ghDcu/scptjXwce/m2HsmSN/mofcZKDb
- Slmw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXdBgA1AanM3EOLpZb6ZvTTCmHkH5IA/ervG9QqdqCp20Ww50qbAODsHgSan4G0cqC72v5hUSxj9YcE2XZ27b49yIx5
-X-Gm-Message-State: AOJu0YyrFCPjHPYXWCF3+aUruze2a2CZSc9t4jQ/3eaH3RCAbBpNHU+U
- CBT+XSjb2G1aE3/ePSh0aIRpIVFwZMbK4negr2e1qZT6TEHtXDdkhrTmf7sFAjk=
-X-Received: by 2002:a50:d502:0:b0:578:5c58:9fb2 with SMTP id
- 4fb4d7f45d1cf-57a363f15f3mr1143983a12.17.1717152996162; 
- Fri, 31 May 2024 03:56:36 -0700 (PDT)
-Received: from [192.168.69.100] (sml13-h01-176-184-15-35.dsl.sta.abo.bbox.fr.
- [176.184.15.35]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-57a3173c8c3sm876220a12.0.2024.05.31.03.56.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 31 May 2024 03:56:35 -0700 (PDT)
-Message-ID: <9e6b3c9c-4962-411f-8f3c-e3614074b96c@linaro.org>
-Date: Fri, 31 May 2024 12:56:32 +0200
+ d=1e100.net; s=20230601; t=1717159590; x=1717764390;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=KNkb3HO1mvzGdO6PMr4OlLUGGePFzcV+YKoXtQ1aEQw=;
+ b=aoUqxhI3MuOdjSvAcsovalX45/A0GcMwOi9g3XrTpUL2SwZFNxKxodL0lXDk7wH0f7
+ hwsPufblzA+PgZ4dc43g2u81ww9r8NH4ylG1uaEyqBnbYT+gfLKffaVVE/9vIjVF6m8s
+ IrBnu9ZosZJFuJsApYFx+XzL0SvjFCA/SJY+WUtYux9c7Tq8yJpNycHKJd8UD0KLgyrI
+ tulst4HDTPaAY+ZRglNuKNoNP4iPotpppX4B+WRFc44Y400rA/DPEltM7ycvB1xYJ7TP
+ HVGcwy1HATqxFFWKnEPbwHxsEL1XU6r1NQ1iPGtoz93e8mHqOqoJSq80uKPeP47fVMCp
+ GlLg==
+X-Gm-Message-State: AOJu0YyDkVjCgrv8uejmsvq2kWSYXoXTsS7niWgKwoVKizYGu4VNHT4M
+ CeyrxVJIkHpBHIy0xaMpWSWHEdN/GSohckrfU5AvhqSVbYhZwveDzN987m2pklz/SKdvh6O4f/e
+ 8
+X-Received: by 2002:a05:600c:444e:b0:421:29c0:b6c9 with SMTP id
+ 5b1f17b1804b1-42129c0b9bbmr35328005e9.12.1717159590354; 
+ Fri, 31 May 2024 05:46:30 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-42132471e01sm10905625e9.13.2024.05.31.05.46.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 31 May 2024 05:46:29 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alexandra Diupina <adiupina@astralinux.ru>
+Subject: [PATCH] hw/dma/xlnx_dpdma: Read descriptor into buffer,
+ not into pointer-to-buffer
+Date: Fri, 31 May 2024 13:46:28 +0100
+Message-Id: <20240531124628.476938-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 12/16] aspeed/soc: Add AST2700 support
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
- <20240527080231.1576609-13-jamin_lin@aspeedtech.com>
- <7ea55928-e61e-4112-992d-b899c65b4652@kaod.org>
- <SI2PR06MB50411ED51276574422E07948FCFC2@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <a2aa3c01-51dd-4517-9261-038fff11f091@kaod.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <a2aa3c01-51dd-4517-9261-038fff11f091@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,56 +127,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4kG4WMVNjtGx
+X-TUID: EAcODNc9f867
 
-On 31/5/24 09:46, Cédric Le Goater wrote:
-> 
-> Hello Jamin,
->> I refer to versal_create_apu_gic function, 
->> https://github.com/qemu/qemu/blob/master/hw/arm/xlnx-versal.c#L67
->> and updated aspeed_soc_ast2700_gic as following.
->> If you have any concerned about the new changes, please let me know.
->> Thanks-Jamin
->>
->> static bool aspeed_soc_ast2700_gic(DeviceState *dev, Error **errp)
-> 
-> Please rename to aspeed_soc_ast2700_gic_realize()
-> 
->> {
->>      Aspeed27x0SoCState *a = ASPEED27X0_SOC(dev);
->>      AspeedSoCState *s = ASPEED_SOC(dev);
->>      AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
->>      SysBusDevice *gicbusdev;
->>      DeviceState *gicdev;
->>      QList *redist_region_count;
->>      int i;
->>
->>      object_initialize_child(OBJECT(a), "ast2700-gic", &a->gic,
->>                              gicv3_class_name());
-> 
-> and object_initialize_child() can be called in aspeed_soc_ast2700_init().
-> 
->>      gicbusdev = SYS_BUS_DEVICE(&a->gic);
->>      gicdev = DEVICE(&a->gic);
->>      qdev_prop_set_uint32(gicdev, "revision", 3);
->>      qdev_prop_set_uint32(gicdev, "num-cpu", sc->num_cpus);
->>      qdev_prop_set_uint32(gicdev, "num-irq", AST2700_MAX_IRQ);
->>
->>      redist_region_count = qlist_new();
->>      qlist_append_int(redist_region_count, sc->num_cpus);
->>      qdev_prop_set_array(gicdev, "redist-region-count", 
->> redist_region_count);
->>
->>      if (!sysbus_realize(gicbusdev, errp)) {
->>          return false;
->>      }
->>      sysbus_mmio_map(gicbusdev, 0, sc->memmap[ASPEED_GIC_DIST]);
->>      sysbus_mmio_map(gicbusdev, 1, sc->memmap[ASPEED_GIC_REDIST]);
->>
->>      for (i = 0; i < sc->num_cpus; i++) {
->>          DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
-> 
-> Could we avoid qemu_get_cpu() and use the cpu array of the SoC instead ?
+In fdf029762f501 we factored out the handling of reading and writing
+DMA descriptors from guest memory.  Unfortunately we accidentally
+made the descriptor-read read the descriptor into the address of the
+buffer rather than into the buffer, because we didn't notice we
+needed to update the arguments to the dma_memory_read() call. Before
+the refactoring, "&desc" is the address of a local struct DPDMADescriptor
+variable in xlnx_dpdma_start_operation(), which is the correct target
+for the guest-memory-read. But after the refactoring 'desc' is the
+"DPDMADescriptor *desc" argument to the new function, and so it is
+already an address.
 
-If it is too invasive, I might take care of it later when respinning
-https://lore.kernel.org/qemu-devel/20231212162935.42910-1-philmd@linaro.org
+This bug is an overrun of a stack variable, since a pointer is at
+most 8 bytes long and we try to read 64 bytes, as well as being
+incorrect behaviour.
+
+Pass 'desc' rather than '&desc' as the dma_memory_read() argument
+to fix this.
+
+(The same bug is not present in xlnx_dpdma_write_descriptor(),
+because there we are writing the descriptor from a local struct
+variable "DPDMADescriptor tmp_desc" and so passing &tmp_desc to
+dma_memory_write() is correct.)
+
+Spotted by Coverity: CID 1546649
+
+Fixes: fdf029762f50101 ("xlnx_dpdma: fix descriptor endianness bug")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/dma/xlnx_dpdma.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c
+index dde4aeca401..a685bd28bb8 100644
+--- a/hw/dma/xlnx_dpdma.c
++++ b/hw/dma/xlnx_dpdma.c
+@@ -619,7 +619,7 @@ static MemTxResult xlnx_dpdma_read_descriptor(XlnxDPDMAState *s,
+                                               DPDMADescriptor *desc)
+ {
+     MemTxResult res = dma_memory_read(&address_space_memory, desc_addr,
+-                                      &desc, sizeof(DPDMADescriptor),
++                                      desc, sizeof(DPDMADescriptor),
+                                       MEMTXATTRS_UNSPECIFIED);
+     if (res) {
+         return res;
+-- 
+2.34.1
+

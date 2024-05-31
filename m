@@ -1,40 +1,39 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp396579ejs;
-        Fri, 31 May 2024 02:37:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVBOiegn3eJRWthb/7RV00J9vU7ZgbosRCiwtdtUBfyKnVVP4IjIZne0ss52ckATRBt7sWi1oPajoWz96ePYh4d5/4ztuNq
-X-Google-Smtp-Source: AGHT+IFOPwqOnEVn7L0hkY5y9koWuDovVIUmxcaJne+YmEm4SSTF2j5kqGvyKpqR6HcBudFrkaY9
-X-Received: by 2002:a05:620a:841b:b0:792:be53:8b46 with SMTP id af79cd13be357-794f5c87ad7mr128986585a.30.1717148277548;
-        Fri, 31 May 2024 02:37:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717148277; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp396716ejs;
+        Fri, 31 May 2024 02:38:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVGljHj0wjfu44RPT4vPxNH3RqpINyPZriJizOapbw4g6m7N4/qxvvaW/1HXehebHtAHyFwg4y9oJbTP6HRAkIN2AqyAG1O
+X-Google-Smtp-Source: AGHT+IHBL2TlmdGEXFHzC3hpc+NOdrhnAWYyGT4VIDEo0U4RezjAmUPsEjtG2UxISKhyDscWhdol
+X-Received: by 2002:a05:6214:440a:b0:6a9:f5d8:1d36 with SMTP id 6a1803df08f44-6aecd6f97e2mr13911056d6.54.1717148302967;
+        Fri, 31 May 2024 02:38:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717148302; cv=none;
         d=google.com; s=arc-20160816;
-        b=nNCzNZGOMH95gnvNRRUQNVhWqT1mPwd0N+bNs1B1nxVqQfnyGnANFvYCcsC1A6liLR
-         5u//z90DIHTJXmfncl8J4mtLNLEx70etZHbwOjKKfJ2SPrW05fPh73ho59OXo9C4L+2q
-         85mDq/D3RadAx+YbYem//sdN7UDcLUs8kvA2RmbGPqrlp62T8EU7u5HJr2sCNpGeWwGg
-         5Es+AH+Uij56rdbE62IvXBh3trGv8OM1ApfhAjsu24nWSVuIXhhOYoohSMBUvkjiEbEL
-         cDZLXY88sJOXqSa0oq8m//4wXvdqFrim2tqK1rTteSa5Z6uf1O4URkKcQCf5cyWi222r
-         fFaQ==
+        b=jNLunV3e75bo1g4XSMYQBJSMdJLUMxv+9qgdrn5mz80/6KXWDx0TAhosVzmnKJQ1ba
+         oZ4ph34wOpxe32FReStrc9Kue82FKpNoo08MpUA77btFYNUBVO7I1ZB6W//3nLqjq1FI
+         o4CimMGU72oM3x6rUaXIem9/DJb95Ima0dUWCUnrl5YZoAJLmgE2FDeqd/LMCarmzAG1
+         AgHyA977CLTLSJLWLem6ogpFOEj2nsfPDBd7px3H4gTIHfYx193M6zF/SzzCqnn888Dp
+         NZm0Y5aPTxbpcQpwlPrKWYYn0fWXi1i8vYFIbWllg3WXoeyfB7f8yKKnQT/yYrEEGKPI
+         gz0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=BRfbYd+7S3faR2bkMnPV5KMDp3Co44cDsT4v12ZowyQ=;
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=M3ZIscMaejGETYMZJSTx9H9551c3EEofRva9gnU0vKY=;
         fh=nKl8/G0rxCW7ugooXfO2GeaKcEIa1k4pK3AumDOEz4g=;
-        b=0qU61u6hmdLrv75TjX3d8mTF+G8/FNZjzvmylf/vbidZ8fhhOmo24Uiu16m/B60Ktq
-         0Nu75hCQuu7v2b9yUUK5OATt1mC4X4k40uy/WjDQysna3d0woX1leKm7VR+GcHhH8HDn
-         nOTQSO73ihzIMHK7YhC/FLyRiqJ1DHNJyO9PVC+YIioMVSgcd6x8yOtl4ABP2vKJ+/KE
-         0ZOIm+tBlh1HJGFltnraX4yAqD7RbHjLhfoP1ixFfhB+FVqVOIAQmWmLOjyBEje4M/wu
-         K8H8TgvsbzelBdbwpZRdc6lHnXY2xeriynqDyLCZuzVn8tOWuHzsykRb+HhS3m6g0zmc
-         Kfpw==;
+        b=xr6Sc4gBU8fKVi4aPxs3/GjWSVhH+JMvGWiWq4ETRSo8SgwbCZoMW7E8HnLXyCfBWt
+         RzhCjSIthPicstnG9dRwPY45hWaIMHrtx7FNTU8rtrlid5TOKcww2q56uZF7JVN2JWR6
+         Y70M6WsY4bTmS4spdh8HPGIqgIPMKr+K680OTeKvBK3FsPOagoMQkJI5x0YaWI+3tzBP
+         RiQBe/+qJzIBBTqrB1bE8Yo+royhxfU6HcdyX90PQMHRperxZRKgFbzgjQ42L+y+HImK
+         qRKykgCCKfhs1PUe361VKqNP83VCW2AiEKIyNTWakBiJ0S2Wyien8Ad1jrlbyD+o+401
+         2UlQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-794f32a5323si150883885a.589.2024.05.31.02.37.57
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4b42b778si10360446d6.470.2024.05.31.02.38.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 31 May 2024 02:37:57 -0700 (PDT)
+        Fri, 31 May 2024 02:38:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,25 +41,25 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sCyhk-0000qQ-4H; Fri, 31 May 2024 05:37:44 -0400
+	id 1sCyhm-0000rS-8W; Fri, 31 May 2024 05:37:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sCyhj-0000q3-JQ; Fri, 31 May 2024 05:37:43 -0400
+ id 1sCyhj-0000q2-GP; Fri, 31 May 2024 05:37:43 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sCyhh-0001pb-Ph; Fri, 31 May 2024 05:37:43 -0400
+ id 1sCyhh-0001pZ-Uv; Fri, 31 May 2024 05:37:43 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 887402601D2;
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 2DA3C2619EB;
  Fri, 31 May 2024 11:37:38 +0200 (CEST)
 X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id DuctskPxmdKX; Fri, 31 May 2024 11:37:36 +0200 (CEST)
+ with ESMTP id yDjaLWZT2qHM; Fri, 31 May 2024 11:37:35 +0200 (CEST)
 Received: from applejack.lan (83.11.37.15.ipv4.supernova.orange.pl
  [83.11.37.15])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 00F522619EA;
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 561DC2601D2;
  Fri, 31 May 2024 11:37:35 +0200 (CEST)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 To: qemu-devel@nongnu.org
@@ -68,12 +67,10 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Leif Lindholm <quic_llindhol@quicinc.com>,
  Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH 1/1] hw/arm/sbsa-ref: switch to 1GHz timer frequency
-Date: Fri, 31 May 2024 11:37:29 +0200
-Message-ID: <20240531093729.220758-2-marcin.juszkiewicz@linaro.org>
+Subject: [PATCH 0/1] hw/arm/sbsa-ref: switch to 1GHz timer frequency
+Date: Fri, 31 May 2024 11:37:28 +0200
+Message-ID: <20240531093729.220758-1-marcin.juszkiewicz@linaro.org>
 X-Mailer: git-send-email 2.45.1
-In-Reply-To: <20240531093729.220758-1-marcin.juszkiewicz@linaro.org>
-References: <20240531093729.220758-1-marcin.juszkiewicz@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: softfail client-ip=213.251.184.221;
@@ -97,44 +94,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pBpuBVVV6EDc
+X-TUID: fy5Lq1QYzhdn
 
-Updated firmware for QEMU CI is already in merge queue so we can move
-platform to be future proof.
+Trusted Firmware 2.11 got released, EDK2 202405 got released as well.
+Both were built for QEMU CI and proper patch is now in arm.next queue.
 
-All supported cpus work fine with 1GHz timer frequency when firmware is
-fresh enough.
+So all requirements to move from legacy 62.5MHz to armv8.6-ready 1GHz
+frequency are fulfiled.
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
----
+Marcin Juszkiewicz (1):
+  hw/arm/sbsa-ref: switch to 1GHz timer frequency
+
  hw/arm/sbsa-ref.c | 12 ++++--------
  1 file changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 57c337fd92..7bd6898edf 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -62,16 +62,12 @@
- 
- /*
-  * Generic timer frequency in Hz (which drives both the CPU generic timers
-- * and the SBSA watchdog-timer). Older versions of the TF-A firmware
-- * typically used with sbsa-ref (including the binaries in our Avocado test
-- * Aarch64SbsarefMachine.test_sbsaref_alpine_linux_max_pauth_impdef
-- * assume it is this value.
-+ * and the SBSA watchdog-timer). Older (<2.11) versions of the TF-A firmware
-+ * assumed 62.5MHz here.
-  *
-- * TODO: this value is not architecturally correct for an Armv8.6 or
-- * better CPU, so we should move to 1GHz once the TF-A fix above has
-- * made it into a release and into our Avocado test.
-+ * Starting with Armv8.6 CPU 1GHz timer frequency is mandated.
-  */
--#define SBSA_GTIMER_HZ 62500000
-+#define SBSA_GTIMER_HZ 1000000000
- 
- enum {
-     SBSA_FLASH,
 -- 
 2.45.1
 

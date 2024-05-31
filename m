@@ -1,115 +1,146 @@
-Received: by 2002:a17:907:270b:b0:a66:557b:2f6e with SMTP id w11csp305654ejk;
-        Thu, 30 May 2024 08:35:17 -0700 (PDT)
-X-Received: by 2002:a50:8ad8:0:b0:578:3335:f263 with SMTP id 4fb4d7f45d1cf-57a17691120mr1880516a12.0.1717083317141;
-        Thu, 30 May 2024 08:35:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717083317; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp281950ejs;
+        Thu, 30 May 2024 21:20:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXdar7nga0cOtDFGnjwGz5GMCArSLUuFQ0xDgV9CchbhfWb7Zv/KnGVstNJB0RwgSxYp+DGAKZwsnvdFSjnPcvcdEB9aDoK
+X-Google-Smtp-Source: AGHT+IF7UBvvK/klcoW/LVtn5RUJD36piiw8HjquXt0tMZbHWlw06NCga5wYbokbQO/Hj04lB+2m
+X-Received: by 2002:a05:6214:2025:b0:6ad:73f9:7ade with SMTP id 6a1803df08f44-6ae0e86f9ccmr79465466d6.8.1717129226097;
+        Thu, 30 May 2024 21:20:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717129226; cv=none;
         d=google.com; s=arc-20160816;
-        b=tYsl4LWlB1w91DRorlKSmcUx5y3ADBGmvKH2jHwoyOSB3U4u3jTGSyPJtxL+nM3Sjw
-         eesYeR0kGpPevMBMKo8bU4a/Rlc5Xb7XnJ4h65yulN/EGiEBJFgVigYkrICdyojgjsgX
-         U72vMg2mZ8H8p5WhTGMG5UsU2WJvYkpblCoAh5dXoLPvOahzjqDM/uF685LPQVar1qjJ
-         4NzEJdhXIybGRTtLCI4Z+8STdoTCAFO3EsW3wsvt0Ah00RkzQXl4+wVD4Znp2fnKBMnk
-         kKVKXK2ALg9Elt7arKOvoXcMGaLk9D08Iq3pQQuQP6jfUJLXJei00MeNoSOPAu2kypFr
-         sFAg==
+        b=dEY6Ky3nHqUB4Wbw1FcScrfayPrWjPD2X1vkq6au3gF7eiA3nEbrq73OKk+NqVCkd6
+         NTP/iNUihTSPZ4gVqbMcYX7eXGtO/ZUBS7B8biXfssPy7Ft2tA9Q++87sH8csMS5ttFl
+         wKwpdHkQqph7xfVl9r7Kln+vOx4VVgPuNM/xAR0/2w2RXEL+NS9eQkjKhj/QJddHHEDF
+         lDIkk3+9KTYcG4TrXlTSopVJZ+AVhNKZwWYGAvDNybxtjYRQfANNf0kAyo6aRMbTGym1
+         hM1AXsMwswYrYoUNq2BAiBsTJfpivPYye9gDI4P8Dnfx6/t3B6hPIXOJePxWKWv80P8l
+         HqqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=kffCTfVIgcPiSuaIdP7/qK5AEnvqYRNQ5sLQm7P7bT0=;
-        fh=lyYd5u/xP7MkSXnqR0B3Lug5GOOGoEqAPzvNtygcaUQ=;
-        b=vI75OjWo4b7Kvd1Bq1gVr527Oa0ogqBq/vrYurivwVoIFns/AT57jshppqRnzE9ISy
-         uS/k9iFTyjdt89Pxio2rv1viRQktdFMncYaQ3V/gtuH2mRGFRPZTQW2YUpimSmWXc8Kz
-         JHdAgNByYe7L7UnQKdluL+Io/w7g7T8V8y+YqUmU7YfXCgbybsDTyNcwJGEljEZ+mPJC
-         TR0AQ4bOB8o63sRLRVOp357l9YuhXmxb+9gFiRX+hP67o3Rp902CNgXjYpMTl63fX6P8
-         x/5N8u6PJrkSwmJp8kxC5uFvKC7kSK91UDp7hsn7bF0vsnUcNsZ892ve/9JpUjB5rDRT
-         +wmQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:references:message-id
+         :content-transfer-encoding:cc:date:in-reply-to:from:subject
+         :mime-version:dkim-signature;
+        bh=cVTDss2dlOigckry4MYMDgbefn+7J2pwfFpvzj3T2Pg=;
+        fh=Q6CewLiIYINRiwO7jtadspmbIw6Jq+xxkpz8gvKY8jU=;
+        b=XwmY4mtWvhDJxze0EGcjrB1h73n3jSovNwwUv+yvZEFTepx26XfQ28jZH7CRSww80m
+         utXXYZIPI/CxR9jok/ISkdC/2Xiq9Q1vuxMw0LCzZmd1M9P2zO4JKzVvvxm8A+CbOb3z
+         LTwG6owJ+Isc5SszLn1YR3VXAK5g9f7jUoyeHcHKbur4fG0IW3LDCoyCy0I+ijip0PoG
+         caBdKQqnZHuIK5ndct4AhSYbENxcsfvZWYOcqUtnJOImu/fwtWlKo4/Mv0MkS+Zaz8jY
+         YtDFO1qTTsqO64xboqQF8tBih86zWl1iWPpe8kiuCSgTsXGzwmnM8O/WDj6Kks2Z1WXP
+         YoCw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=J1LwHuyI;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5785231b5basor3669745a12.0.2024.05.30.08.35.17
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=S3GvzLGN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4b403b9fsi12229616d6.289.2024.05.30.21.20.25
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 30 May 2024 08:35:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 30 May 2024 21:20:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=J1LwHuyI;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1717083317; x=1717688117; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kffCTfVIgcPiSuaIdP7/qK5AEnvqYRNQ5sLQm7P7bT0=;
-        b=J1LwHuyIVQXoHDYFJC92rYNPY4T43jWDKB5U3UVDSEx/BiygHeFzVgtV3vPHuLhD72
-         AZCo0bznRWzGrEZ333DmanHLja1liKeRnYr7LrcKCHVzxM94kBNa2f0Ebhswpazs4H85
-         n1bv8evO6kW2l4JQD4fkgl0+qIE5eFNdHLTchHazyjFlak/3kUajRbJ3jbMSO1ZI1aym
-         f0DvcjEV9dW2pwlXkEDf5WIyuo7QzSGnH/RURWgpjrHtOOYKDOLDGQttffnUCWU45m8e
-         HOngAYS/RkC9rxHj5QF04Wu2zyn3kh31+4SHNrJfF1sAJFYHVG/rB1Ak9OnY+igpDZsP
-         O1Eg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717083317; x=1717688117;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kffCTfVIgcPiSuaIdP7/qK5AEnvqYRNQ5sLQm7P7bT0=;
-        b=r8yh3inptNVhN1gUSyF1HEsxeM1rffTWIOiQtRGWt0v/3mT4Fl7ZPQ5z/LTBsEk9O1
-         ZVDDG+bW3gzmX9No7WItIj91EQAVPwKhWduq8LABIAlkpNBn63Gg1H1WEiwwXTAauIaL
-         dG4Yh7N0r0hdaAyyR6FkmWoao6avgHEWQ91/zepIA57nzrWeaYFfoWqPYVMCx53TMdut
-         LCoJidpzu5ydlV/7ydE0CjQ8XouSceZKpdzEd6oIGphisit795cDT7KA4oB0L6LRFi6h
-         VwLwCX/km/5rUTkIrzZnSFSFQSbAbzMhoshSHtFmCSem30Lfvz4dprmniFtqAf3BlM7W
-         dKxQ==
-X-Gm-Message-State: AOJu0YyEbPYnCrhDQL06VuokKM+iXFCA2EQxYe3PfeAsM4Xs461NM/gR
-	nLCjBekc/VTRwTYal/EWGwhcoW84Y4O/3wiUnfNW+LKy2sawQAolN1jkMRiIHUw9BEdqDgBjDJo
-	BSLVgqgAThusc+mhYur6C/js236PmXg2EFW7MIh/BslS2DEiOjvQ=
-X-Google-Smtp-Source: AGHT+IEh5+tuqY+EJbGGqXbb2dRfkVFLmNUC4HfeJG9MYsl/f8PIxaiWQD/iz6ameEuhm67qaa6udj0dvrcoxfvGRTw=
-X-Received: by 2002:a50:9344:0:b0:578:56e1:7ba3 with SMTP id
- 4fb4d7f45d1cf-57a1791a129mr1474266a12.38.1717083316581; Thu, 30 May 2024
- 08:35:16 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240430140035.3889879-1-peter.maydell@linaro.org>
- <20240430140035.3889879-2-peter.maydell@linaro.org> <87ttji3h69.fsf@draig.linaro.org>
-In-Reply-To: <87ttji3h69.fsf@draig.linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 May 2024 16:35:05 +0100
-Message-ID: <CAFEAcA_DiLYdH_x88KtjjOH=7pVJdERe2-X+tDpgvN5qbj-_ng@mail.gmail.com>
-Subject: Re: [PATCH 1/2] accel/tcg: Make TCGCPUOps::cpu_exec_halt return bool
- for whether to halt
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=S3GvzLGN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sCtjs-0002R1-Qv; Fri, 31 May 2024 00:19:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <itaru.kitayama@linux.dev>)
+ id 1sCtjr-0002Qh-Uf
+ for qemu-devel@nongnu.org; Fri, 31 May 2024 00:19:35 -0400
+Received: from out-185.mta1.migadu.com ([95.215.58.185])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <itaru.kitayama@linux.dev>)
+ id 1sCtjp-0002HW-Dt
+ for qemu-devel@nongnu.org; Fri, 31 May 2024 00:19:35 -0400
+X-Envelope-To: philmd@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+ t=1717129171;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cVTDss2dlOigckry4MYMDgbefn+7J2pwfFpvzj3T2Pg=;
+ b=S3GvzLGNacstSnWC5KBB8DtfHHqydh3AXMP2MhjGec8jGtRTzvwDruby7EWLIb/OdZYnth
+ KqdqX5l33t1zYlVeuRhOHwUBBYdZOBSAUzCVedG2gRGIpncnDJl8JtPV/S6utZtaawcTdB
+ SeGnc/Oa+1b4lY1Uzz8LiPsk+OD6zM0=
+X-Envelope-To: qemu-devel@nongnu.org
+X-Envelope-To: qemu-arm@nongnu.org
+X-Envelope-To: richard.henderson@linaro.org
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
+Subject: Re: Unexpected error in rme_configure_one() at
+ ../target/arm/kvm-rme.c:159
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: Itaru Kitayama <itaru.kitayama@linux.dev>
+In-Reply-To: <4e7aa598-1a5d-47e1-aaa3-78af05947eeb@linaro.org>
+Date: Fri, 31 May 2024 13:19:13 +0900
+Cc: qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>
 Content-Transfer-Encoding: quoted-printable
-X-TUID: qYyxTGULzddJ
+Message-Id: <CB05CAA2-9301-45F6-8AE3-A2E27A160CDF@linux.dev>
+References: <0C6F517A-5686-4BCE-8D08-1CED02CB470E@linux.dev>
+ <4e7aa598-1a5d-47e1-aaa3-78af05947eeb@linaro.org>
+To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+X-Migadu-Flow: FLOW_OUT
+Received-SPF: pass client-ip=95.215.58.185;
+ envelope-from=itaru.kitayama@linux.dev; helo=out-185.mta1.migadu.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RoYfIPvqef+k
 
-On Tue, 30 Apr 2024 at 18:15, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
-> The x86 version is essentially being called for side effects. Do we want
-> to document this usage in the method?
 
-I plan to take these two patches into target-arm.next, with
-a slightly beefed up doc comment:
 
-    /**
-     * @cpu_exec_halt: Callback for handling halt in cpu_exec.
-     *
-     * The target CPU should do any special processing here that it needs
-     * to do when the CPU is in the halted state.
-     *
-     * Return true to indicate that the CPU should now leave halt, false
-     * if it should remain in the halted state.
-     *
-     * If this method is not provided, the default is to do nothing, and
-     * to leave halt if cpu_has_work() returns true.
-     */
+> On May 30, 2024, at 22:30, Philippe Mathieu-Daud=C3=A9 =
+<philmd@linaro.org> wrote:
+>=20
+> Cc'ing more developers
+>=20
+> On 30/5/24 06:30, Itaru Kitayama wrote:
+>> Hi,
+>> When I see a Realm VM creation fails with:
+>> Unexpected error in rme_configure_one() at =
+../target/arm/kvm-rme.c:159:
+>> qemu-system-aarch64: RME: failed to configure SVE: Invalid argument
+>> test.sh: line 8:  2502 Aborted                 qemu-system-aarch64 -M =
+'virt,acpi=3Doff,gic-version=3D3' -cpu host -enable-kvm -smp 2 -m 512M =
+-overcommit 'mem-lock=3Don' -M 'confidential-guest-support=3Drme0' =
+-object =
+'rme-guest,id=3Drme0,measurement-algo=3Dsha512,num-pmu-counters=3D6,sve-ve=
+ctor-length=3D256' -kernel Image -initrd rootfs.cpio -append 'earycon =
+console=3DttyAMA0 rdinit=3D/sbin/init' -nographic -net none
+>> do I need to suspect first the VMM, QEMU, or the Image? The kernel is =
+built with LLVM, does it matter?
+>> Thanks,
+>> Itaru.
+>=20
 
-which hopefully makes it a little clearer to the reader
-that "do stuff you need to do when in halt" is the
-primary purpose of the method.
+I=E2=80=99m testing Jean=E2=80=99s repo at:
 
-I'll do the follow-on tidyup rth suggests once these
-have made it into git.
+https://git.codelinaro.org/linaro/dcap/qemu/-/tree/cca/v2?ref_type=3Dheads=
 
-thanks
--- PMM
+
+Itaru.=

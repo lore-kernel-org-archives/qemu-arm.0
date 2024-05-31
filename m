@@ -1,135 +1,274 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp531134ejs;
-        Fri, 31 May 2024 07:03:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXvF/4K+IGQavlY0m9XfTv04ZsgF3Kec3Fl5v8Kez3RYpu7v8toE5RNwBTqyWcrk15QfFZ+Qb5EdbrJiIKsGRpLnPty6d5c
-X-Google-Smtp-Source: AGHT+IExITVZIC3mIMG2ATeB1g7w7CkWZZGAR1BKhyJQTx9vx7f01vBv36YAL2EWBl4Iaz1nwflL
-X-Received: by 2002:a05:600c:1912:b0:417:eb5d:281b with SMTP id 5b1f17b1804b1-4212811fea4mr47924825e9.17.1717164180210;
-        Fri, 31 May 2024 07:03:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717164180; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp533079ejs;
+        Fri, 31 May 2024 07:05:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX8KX3x28qUUApFUvl/Gk09n6QrakNw9UBDrhT+1q9u7vPN9NaUdLrdNcbOfW/ymcLk6aIQmjP7UIG4SZeaK1DostXpWYOS
+X-Google-Smtp-Source: AGHT+IHlRVWCFLTRsluem8POwsT5Gg14cEMs6XGDZRQbCBBWaRCN5jNcWyq1RG6Rb8Ss3R3bUhJD
+X-Received: by 2002:a05:6214:3f8c:b0:6ab:83a5:195 with SMTP id 6a1803df08f44-6aecd6f08b5mr23127286d6.41.1717164312565;
+        Fri, 31 May 2024 07:05:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717164312; cv=none;
         d=google.com; s=arc-20160816;
-        b=PjikW2UI/f67jG8J9qFCYqDxl8fcgPTXwdeCG1lpoMMLwg8a8sEjCsEEyECnUXMuqR
-         SMJkzTh0w3lAZruC3C1CcRs4aH0GW+KV4vOqMHsgI9OQ4VDtryKQ4hKhKde2K9w9qVps
-         qZ/vexdpgNPruhYd/DLvlXFv42ZbkmeO+iqjNYzZ4suX78u/5XCEl6UItRAffJ2UowBI
-         u3NwIPz3KaIHXWaqs0iptOTXaPpdMPneb50byb88YS3ml/d0nk0sy7+KYWNe3/XHKzz8
-         TYYtWUXHrw2GkG75Hk4bLeUSpf7i/gSXaS0NrXstw7oDc7X9usSgFgW2obz8nslzZJhQ
-         Sr6Q==
+        b=nXor4f5BDiVtn349R3n4uFMyjjiHcfmNYkbLtAJFNJ55GWdWL46O9lyuPFNPgSrgWZ
+         RWpEUCOPPBD+Ut4SML5AA5T9CzOyDNWnVzTRxucNcR1SD2F4jwgH0K83qFK/laOTzPFZ
+         3BGUVIavHYrijA+fXu9Gb6QDR4MAIduU37kC5JSHyXjVZcqSo2Ov8LtkBAV5qvyXzSB0
+         fnADyhvEjD28OkGOTVFCgZt4JMsF3M1VbKQORqmwmAqNH/U2EPV654LGRkGvBZrkTCBP
+         Xu2ZMpuFv+2v/CPUuVVBE2VyPdgym2pTWW8C1jfF1VjjRkLbssgDcbhHK5u7Zl2Ba01/
+         cw5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=PdMtr1N7TTcm4riWZLzhePUdK72d5QWd6KTPpxhQybs=;
-        fh=FDIXUSWxpDd3Snuck7tLfG1O5y/bsC0ZNwDehoLqcB4=;
-        b=UQAkD0owdCLzMkPkuRQrYo/H3KlAnE0ATM7vzcL+snisG6zFLODA+eKVQdyoC3f18C
-         8uy1jp4z/fDLdxObPh4P03gW54SkNzuUEk2L46x25EE24V7BTe/7UncPI0rlztFmfEgN
-         7CDnCvUspNwICqW/JCbNMeL4kAN5DWXJfjA5qhxX+OT5s/r8ud1hKCHOMr8Cd5jpdqC3
-         kXI3zTz8PZSwAhq+LyIVOm2NUCI4SnxLBeNXZLQn7i/X03MCDlsLpbUv5F+SMjsHhHHn
-         CQNOWSLhacdISdSFq2mvc22kv2clWehWUXpF4/iNXQpOvtLFKRk93zJv+jQ9zf29x90O
-         Upzw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Yx3MMKy7kCmDPaUS3Gyku7yDneFjGPHG6Jk5q4bpV+c=;
+        fh=YFDNKfTfynqhdRXAP5diFi2hSn6vAScMFo9e7LeHx/Y=;
+        b=ncKWR58wMEvexQHu7Gxmb7ArQQrmsJoyg+WBHfhZ0NVJ+FJfjU79/TOlElSjcV1NNK
+         2hz0iEcfnodtxWij10xeN4pNaMZHOpFDCtQjaXMJNi6i7K4FBBUAnOG1To/muOtwsKyZ
+         Y8hwrISPMHuDcvL93tyTQvSAw6mgUCQ+RgDX3g/EK9YwoTzhT0Jb5DAhKHcdHTJoGoN/
+         9zPziaXsmXVpF/4pKhs7ap8MdFDt+N6X7X+L7P9fPfg5/5+2t5OM68cKO7n1NUTw8/Ch
+         QRZUCZjuUWb9C+wgf4h2p41ToP1r2NZxAyiv0HewRdBm8cgI9NtqpXog4u7sQuRJlK8a
+         rOdQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b=VCXHwDMV;
-       spf=pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) smtp.mailfrom=dg@treblig.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
-Return-Path: <dg@treblig.org>
-Received: from mx.treblig.org (mx.treblig.org. [2a00:1098:5b::1])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-4212b8cc2a0si11068445e9.139.2024.05.31.07.02.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 31 May 2024 07:02:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) client-ip=2a00:1098:5b::1;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FchIuDg3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4b4148cdsi21712326d6.334.2024.05.31.07.05.12
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 31 May 2024 07:05:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b=VCXHwDMV;
-       spf=pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) smtp.mailfrom=dg@treblig.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
-	; s=bytemarkmx; h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
-	:Subject; bh=PdMtr1N7TTcm4riWZLzhePUdK72d5QWd6KTPpxhQybs=; b=VCXHwDMVA3tpW+cT
-	mM6QK3qPRGHOxIQAV68lCCNgxlpQFuVJhREQAtWpoW7RN/PuQ7Z+oEZoRFtaDGzI2aQJTC4/DtrBk
-	Uxsvs0ztEggxv5xRWACu1Y5mzUlVnJKHCVJigY0gnSQ76N3jl8VzkG7TVLREtdc7YwxSK9U2A7+Xf
-	aTXMBTDC9sGRFTqccB/mAV+NW+LHuy5CZS0vvVROH2jjK2YZDT3cYy0oEqf3D5BZLpgT19C7asGpo
-	N/GHY+t5jbbK2vEhgLenTonjkh9lKmsWjgIEeMcsb+Qv+gOirBz9z4/unoxjVnmOFMY6SjiAlNXDj
-	AINBRYq+Ic9Y1XQOxw==;
-Received: from dg by mx.treblig.org with local (Exim 4.96)
-	(envelope-from <dg@treblig.org>)
-	id 1sD2qQ-003aWI-14;
-	Fri, 31 May 2024 14:02:58 +0000
-Date: Fri, 31 May 2024 14:02:58 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
-	qemu-s390x@nongnu.org, devel@lists.libvirt.org,
-	Eric Farman <farman@linux.ibm.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
-	Anton Johansson <anjo@rev.ng>, qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 0/4] hw/s390x: Alias @dump-skeys -> @dump-s390-skey and
- deprecate
-Message-ID: <ZlnYkt9sLgDbQqVT@gallifrey>
-References: <20240530074544.25444-1-philmd@linaro.org>
- <cb4028fc-9596-47f3-9468-f8912dd48aed@redhat.com>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=FchIuDg3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sD2sP-00089p-9N; Fri, 31 May 2024 10:05:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sD2sN-000891-RV; Fri, 31 May 2024 10:04:59 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sD2sM-0001zq-2w; Fri, 31 May 2024 10:04:59 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-57a3bbc0209so806982a12.3; 
+ Fri, 31 May 2024 07:04:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1717164296; x=1717769096; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Yx3MMKy7kCmDPaUS3Gyku7yDneFjGPHG6Jk5q4bpV+c=;
+ b=FchIuDg3DNYBiTYXz35U3OciUxwCtQDQT8PkzkTVbRSxeFZ94y7QkkzH1aIc+zTkX+
+ w4AmooXKqD1sfzqOgcNh8hyTL/9AAFo+zq6O3Epbgv6GxZYpPoPR1C1AvK3qR2RtExYy
+ IvWEKPIVN6O/QjYKMNmOUmFVGCR8/CfwkiGQbNjZ1N4RynW7OcVJW/WzSZW5CAWccn9E
+ It4yJvzkvjdFj2/Rt2hse/JvWO1u0YoIjWRFKqRdfK8kIRyvtHmWK1MBfH7LkafHN/0C
+ xZddiQDjiyQwGbHkFDiJ/i3Gw1DT+j38MotMun/oXqHqaykvR7fiDlThSVVATYTsM37L
+ smtg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1717164296; x=1717769096;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Yx3MMKy7kCmDPaUS3Gyku7yDneFjGPHG6Jk5q4bpV+c=;
+ b=ekGpWWO261Q1tE03o84Pa4y3vDRa+l9vMYVhTY66brIfFi+via7puBTACERt7ZpT7z
+ o/swW+84/wWsyHHS36lmNnkwJcHeYFmAGLJG1tM2GgvtL5MQ/LF70ZFxQp4vJLm1+YyV
+ 23YvtEXkTQ3wE7cQsStn+FOVKoXC653y9ghJtaAwB0nqXIqRThBNf0DxmMMBH3an6NOM
+ LLWzNoYp5yuZrA4+aEyJSE3lnJkWO0ueU3ID4YmcKIURBh0cdT3VlK942d0hVoxrlE9p
+ jCHcoox3iGWt1uzHseWwrtLMPUSXWKPQlTNC7AmMHgz4KkoJTNQ83BI/cs7ShqqQv5Gs
+ 7soA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXlkOOooZWqb/s83/w/aw+hRiB8EOZn6Jb3f5eMD7D021yIXuzIShOOVmwCwMRkgnBJMSfYzZZgaulcJhLwl1k5zLhbV90=
+X-Gm-Message-State: AOJu0Yx93bhJPwbfv9iY/ZljCTi/KOo3SRNbkl5KuZp8SQ8y1Ek9eeVo
+ PZDpp3O2TRO9FvHOpaBzSnfqpDxjRgbT5t6JZwLQxnD6B8tcWrLalvu3A3FrBlHE3w2bg0ATaDo
+ YbwPfrGuhq0JhmMGDx5ekQAPUBXZM9Tb0fhE=
+X-Received: by 2002:a50:c302:0:b0:578:6865:3227 with SMTP id
+ 4fb4d7f45d1cf-57a36450bb7mr1463021a12.30.1717164295557; Fri, 31 May 2024
+ 07:04:55 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <cb4028fc-9596-47f3-9468-f8912dd48aed@redhat.com>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
-X-Uptime: 13:59:17 up 23 days,  1:13,  1 user,  load average: 0.26, 0.13, 0.03
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-TUID: N74E94I7Ub2R
+References: <20240531124628.476938-1-peter.maydell@linaro.org>
+In-Reply-To: <20240531124628.476938-1-peter.maydell@linaro.org>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Fri, 31 May 2024 16:04:43 +0200
+Message-ID: <CAJy5ezpwQ4e5KkYLPT8_2zAH=B-MykETWQYKAgapCqrVJLXBzA@mail.gmail.com>
+Subject: Re: [PATCH] hw/dma/xlnx_dpdma: Read descriptor into buffer,
+ not into pointer-to-buffer
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Alistair Francis <alistair@alistair23.me>,
+ Alexandra Diupina <adiupina@astralinux.ru>, 
+ "Konrad, Frederic" <frederic.konrad@amd.com>
+Content-Type: multipart/alternative; boundary="000000000000db98dc0619c0775d"
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Kwb1W29DAxkU
 
-* Thomas Huth (thuth@redhat.com) wrote:
-> On 30/05/2024 09.45, Philippe Mathieu-Daudé wrote:
-> > We are trying to unify all qemu-system-FOO to a single binary.
-> > In order to do that we need to remove QAPI target specific code.
-> > 
-> > @dump-skeys is only available on qemu-system-s390x. This series
-> > rename it as @dump-s390-skey, making it available on other
-> > binaries. We take care of backward compatibility via deprecation.
-> > 
-> > Philippe Mathieu-Daudé (4):
-> >    hw/s390x: Introduce the @dump-s390-skeys QMP command
-> >    hw/s390x: Introduce the 'dump_s390_skeys' HMP command
-> >    hw/s390x: Deprecate the HMP 'dump_skeys' command
-> >    hw/s390x: Deprecate the QMP @dump-skeys command
-> 
-> Why do we have to rename the command? Just for the sake of it? I think
-> renaming HMP commands is maybe ok, but breaking the API in QMP is something
-> you should consider twice.
-> 
-> And even if we decide to rename ... maybe we should discuss whether it makes
-> sense to come up with a generic command instead: As far as I know, ARM also
-> has something similar, called MTE. Maybe we also want to dump MTE keys one
-> day? So the new command should maybe be called "dump-memory-keys" instead?
+--000000000000db98dc0619c0775d
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I think there are at least two different concepts; but I agree it would be
-nice to keep a single command for matching concepts across different architectures;
-I can't say I know the details of any, but:
+On Fri, May 31, 2024 at 2:46=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org>
+wrote:
 
-  a) Page table things - I think x86 PKRU/PKEY (???) is a page table thing
-    where pages marked a special way are associated with keys.
-    That sounds similar to what the skeys are???
+> In fdf029762f501 we factored out the handling of reading and writing
+> DMA descriptors from guest memory.  Unfortunately we accidentally
+> made the descriptor-read read the descriptor into the address of the
+> buffer rather than into the buffer, because we didn't notice we
+> needed to update the arguments to the dma_memory_read() call. Before
+> the refactoring, "&desc" is the address of a local struct DPDMADescriptor
+> variable in xlnx_dpdma_start_operation(), which is the correct target
+> for the guest-memory-read. But after the refactoring 'desc' is the
+> "DPDMADescriptor *desc" argument to the new function, and so it is
+> already an address.
+>
+> This bug is an overrun of a stack variable, since a pointer is at
+> most 8 bytes long and we try to read 64 bytes, as well as being
+> incorrect behaviour.
+>
+> Pass 'desc' rather than '&desc' as the dma_memory_read() argument
+> to fix this.
+>
+> (The same bug is not present in xlnx_dpdma_write_descriptor(),
+> because there we are writing the descriptor from a local struct
+> variable "DPDMADescriptor tmp_desc" and so passing &tmp_desc to
+> dma_memory_write() is correct.)
+>
+> Spotted by Coverity: CID 1546649
+>
+>
++ CC Fred.
 
-  b) Upper bit things - where you steal a few bits from the virtual address
-    and then use that to associate some security; I think that's closer
-    to what MTE is isn't it?
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 
-I'm not sure the two fit in the same command.
 
-Dave
 
-> Or should it maybe rather be an option to the existing "dump-guest-memory"
-> command instead?
-> 
->  Thomas
-> 
--- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+
+> Fixes: fdf029762f50101 ("xlnx_dpdma: fix descriptor endianness bug")
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/dma/xlnx_dpdma.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c
+> index dde4aeca401..a685bd28bb8 100644
+> --- a/hw/dma/xlnx_dpdma.c
+> +++ b/hw/dma/xlnx_dpdma.c
+> @@ -619,7 +619,7 @@ static MemTxResult
+> xlnx_dpdma_read_descriptor(XlnxDPDMAState *s,
+>                                                DPDMADescriptor *desc)
+>  {
+>      MemTxResult res =3D dma_memory_read(&address_space_memory, desc_addr=
+,
+> -                                      &desc, sizeof(DPDMADescriptor),
+> +                                      desc, sizeof(DPDMADescriptor),
+>                                        MEMTXATTRS_UNSPECIFIED);
+>      if (res) {
+>          return res;
+> --
+> 2.34.1
+>
+>
+
+--000000000000db98dc0619c0775d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">On Fri, May 31, 2024 at 2:46=E2=80=AFPM P=
+eter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@=
+linaro.org</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
+d rgb(204,204,204);padding-left:1ex">In fdf029762f501 we factored out the h=
+andling of reading and writing<br>
+DMA descriptors from guest memory.=C2=A0 Unfortunately we accidentally<br>
+made the descriptor-read read the descriptor into the address of the<br>
+buffer rather than into the buffer, because we didn&#39;t notice we<br>
+needed to update the arguments to the dma_memory_read() call. Before<br>
+the refactoring, &quot;&amp;desc&quot; is the address of a local struct DPD=
+MADescriptor<br>
+variable in xlnx_dpdma_start_operation(), which is the correct target<br>
+for the guest-memory-read. But after the refactoring &#39;desc&#39; is the<=
+br>
+&quot;DPDMADescriptor *desc&quot; argument to the new function, and so it i=
+s<br>
+already an address.<br>
+<br>
+This bug is an overrun of a stack variable, since a pointer is at<br>
+most 8 bytes long and we try to read 64 bytes, as well as being<br>
+incorrect behaviour.<br>
+<br>
+Pass &#39;desc&#39; rather than &#39;&amp;desc&#39; as the dma_memory_read(=
+) argument<br>
+to fix this.<br>
+<br>
+(The same bug is not present in xlnx_dpdma_write_descriptor(),<br>
+because there we are writing the descriptor from a local struct<br>
+variable &quot;DPDMADescriptor tmp_desc&quot; and so passing &amp;tmp_desc =
+to<br>
+dma_memory_write() is correct.)<br>
+<br>
+Spotted by Coverity: CID 1546649<br>
+<br></blockquote><div><br></div><div>+ CC Fred.</div><div><br></div><div>Re=
+viewed-by: Edgar E. Iglesias &lt;<a href=3D"mailto:edgar.iglesias@amd.com">=
+edgar.iglesias@amd.com</a>&gt;<br></div><div><br></div><div><br></div><div>=
+=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
+.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+Fixes: fdf029762f50101 (&quot;xlnx_dpdma: fix descriptor endianness bug&quo=
+t;)<br>
+Signed-off-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org=
+" target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
+---<br>
+=C2=A0hw/dma/xlnx_dpdma.c | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c<br>
+index dde4aeca401..a685bd28bb8 100644<br>
+--- a/hw/dma/xlnx_dpdma.c<br>
++++ b/hw/dma/xlnx_dpdma.c<br>
+@@ -619,7 +619,7 @@ static MemTxResult xlnx_dpdma_read_descriptor(XlnxDPDMA=
+State *s,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0DPDMADescriptor *desc)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0MemTxResult res =3D dma_memory_read(&amp;address_space_=
+memory, desc_addr,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;desc, size=
+of(DPDMADescriptor),<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 desc, sizeof(DP=
+DMADescriptor),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0MEMTXATTR=
+S_UNSPECIFIED);<br>
+=C2=A0 =C2=A0 =C2=A0if (res) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return res;<br>
+-- <br>
+2.34.1<br>
+<br>
+</blockquote></div></div>
+
+--000000000000db98dc0619c0775d--

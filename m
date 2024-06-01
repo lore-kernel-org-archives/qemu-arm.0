@@ -1,128 +1,138 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp609845ejs;
-        Fri, 31 May 2024 09:09:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXsjtBAwzCyvvz76Fw8myHAbalsSuehY7F4Mwh+H3NEwHyVoz7UIRSOaQIdrWrlDFS91+NFfbu7rDHLd7YyJ/4iu9RhylG9
-X-Google-Smtp-Source: AGHT+IFF31tOVMjN1JpKxwYzFp/T54Io6hfG716SDuvfQxgZSnD6xbSD6KBHuYzXTmVuIcOtrzz8
-X-Received: by 2002:a05:6214:2f13:b0:6ad:625c:cb55 with SMTP id 6a1803df08f44-6aecd6f99ddmr32264236d6.55.1717171783011;
-        Fri, 31 May 2024 09:09:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717171782; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp1032819ejs;
+        Sat, 1 Jun 2024 03:15:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVCnvmXBKPs0W09JFkUOaNlLhv/BC4aadZNm+XbMDv7m43kKoDeQi/yUmgw9OK5MERAdAk0mc2OoPCQ5EB1CyDgau75kcxi
+X-Google-Smtp-Source: AGHT+IGFyzcUZ3k4VD3bCOrL4szSaO8i3Mw4Z9pR+Xqreb+Q6MQOInulWDSs3zFD4dnkVsNXz8Wv
+X-Received: by 2002:a05:620a:4006:b0:794:ee67:ec24 with SMTP id af79cd13be357-794f4f8a545mr897259785a.20.1717236938011;
+        Sat, 01 Jun 2024 03:15:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717236937; cv=none;
         d=google.com; s=arc-20160816;
-        b=iZYLSKigqH+1kFqLmRxcZwCMiwDUSiPN4z5kz5aam6IrhHLLWopk7Qbbf8ehButSWE
-         K9GI4PHjwVQBcfHCMGjiDNNQ58sWbWqX5uG9WVidVkpJ0Cu9dGS0D3YwLPsMvwOcAQUc
-         PKU8l/Kc/h4FZVDOtwhhffg80j3aJfsH6d/KhKN5yFYxQTWQJe/5pTGJyxhFs+rFwYmE
-         7cVqklCZYLYjhkL7Xl5xqLbTqxOmXcVS7yfcwGuRVd6qmmD/CzJt04SzC0s2VP6oL/DL
-         9pv3nde7l020h2xqlQ/f7rCBAnB9RE2C924i3oY8QTpgSbmB1CoUiXX5jtV8gbK1tG2d
-         R8vw==
+        b=uDG/GwpWWmTS7utdBLXauxxelqdR70PmZgLvvOzESl41m6GBOJqXib2QpGxI5pMY9P
+         DvZuUcVddlZ1BcNRRTF8ML9y8AULDuvwC8+Sa8Ve1ecuRNLsH0OypH0B+pz6m0iFToDd
+         x4PcVLKpyrr80lglUo2Mb3p46Cm3TaaSbM5aerSMRzAepGgWfHx4TvfP20/SO1yh1lTr
+         t76nJyivs/QX7KOA5y+FPvpuMkxkWR8Q6Vnxz8Q7eDHsvUTeUNI68kBiSYGgkY+xzBuN
+         /o0+2SegY8qwfhT6bNtb/FIqrmnYus4wTxIfWswOy5/ZbStfyoOCh+4b02z/Q4jlYvNF
+         0H0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=ZJociJhkICwIha+lzG1XPDXZhY/g4ozjgsEbhq1UJcU=;
-        fh=62qVlrzV5kmtEJqZ2incqige91utIpFZ6QFHn2KnuiM=;
-        b=jibXK5+i/CYMMG5YotYjWJos+sbXl5+UZEBO/H7ipJk0HMMcFgl/EgctU1glY45gFD
-         bX6JZQ24bbuICIxLO2scVrD56WrZczJnC2B9sgVknp0pKuZwdqkxMWIU+CkS/pmOXL//
-         vzW/0c7v5wpBgU1RY7BHKU3zpRpQNsLWzlp8SDlEGXQb17SO7d6059VQOc9I0M72FH/Z
-         B3mgX/RAnO7VNvzM/p2DxGDO4XfTIXnLSIG0s5JRlsjISqDQ9J+h2x7RB+xnqBZFr6c3
-         z5ngB8n0DlD37mdTmUNehax/r3XVUNzwBSwGYTVV8ZbJdVntZu8kAdWBprDBS3IiHRuz
-         ySqA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Y2DpfIgmiXljSAbvCsxE52pOuK29FTt6QPOWRmmD+tE=;
+        fh=xwdWTvTB6TcVXdeonQNRN5WWJGUDUnJGp6zvRgEzr4c=;
+        b=ttWbcDnMvn48kUxxNtcx5O+dby2dOIWOnGnTYSI4ODkT+cBhNSOKNlLq/GuKDzO5md
+         4UNX7InmXG5UFZsbI3XpzAMSfRjC6zPUnm46fJFxZlIOdPKSRmUAHCp6Ki893s/T1ojd
+         6WMXTvokkKXX7wTbLXmy1sUHhr5qmphherDEzA0vF6iylW9sWmbeZIDqnHjtvVpdeSCl
+         Sw9zIu3WAKwGQlO/yPLmK+jJyuNloWvl4w0jrFokYZjs1uRPKyShQLnpovnH98JfKEtl
+         tW+S8Xg1WnClqfw8b2HzugeICweHJVG0yV5mQbu6fgtw0kvdmtDNsVSg4TumTfoqB1dy
+         xxuA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LFCafKyW;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UIbYuG35;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4b42c5a6si23275926d6.530.2024.05.31.09.09.42
+        by mx.google.com with ESMTPS id af79cd13be357-794f8ae0628si268082885a.415.2024.06.01.03.15.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 31 May 2024 09:09:42 -0700 (PDT)
+        Sat, 01 Jun 2024 03:15:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LFCafKyW;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UIbYuG35;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sD4oa-0004yy-J3; Fri, 31 May 2024 12:09:13 -0400
+	id 1sDLlR-0007dw-U6; Sat, 01 Jun 2024 06:15:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1sD4oY-0004yf-OA
- for qemu-arm@nongnu.org; Fri, 31 May 2024 12:09:10 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1sD4oX-0007Dh-3N
- for qemu-arm@nongnu.org; Fri, 31 May 2024 12:09:10 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-42120fc8d1dso22759105e9.2
- for <qemu-arm@nongnu.org>; Fri, 31 May 2024 09:09:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1717171747; x=1717776547; darn=nongnu.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=ZJociJhkICwIha+lzG1XPDXZhY/g4ozjgsEbhq1UJcU=;
- b=LFCafKyWTDuHuyupzk+dHVepyscENh1RXbSwsse460zck8oSjZs88ObGOzUQbOXpg8
- tznke7ibj5J8DOsYeQ+fy326PAYDwgU+RcAMhQ3oaJU1t7EztzFkCIgPFFud7CPcrIE+
- WDmCjYvSJYmxjJwktKLGn7fc2CNOCARETg0E2Fs3u2Pi4i1B6rfArPtBi9LebXrybJ8Z
- jcyUhkXMUsETljhK5PrcU8uSlJ4aK0QHiJxUARYjy/oH12+pb1SKMMAa04pIfiisK4t8
- ajNH2w0U6YObUPOORXEoKMSQhr0tmXE7A5gThYYFcai1IGaDLL8YD4HmU6owUAoqzMH0
- s1MQ==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1sDLlP-0007cg-4n
+ for qemu-arm@nongnu.org; Sat, 01 Jun 2024 06:15:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1sDLlL-0004Ab-VO
+ for qemu-arm@nongnu.org; Sat, 01 Jun 2024 06:15:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1717236897;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Y2DpfIgmiXljSAbvCsxE52pOuK29FTt6QPOWRmmD+tE=;
+ b=UIbYuG35D0dFBX7o+nOC+Adu2VehcnEbsg9kpwcbjMisKlTIapYsSF3UVo3KyoOwQN26BB
+ jnUP7qqqTORUl/CE9ZMXVovVq6vuGzhKwAvQVe0c1mvWVfsSoJ9IN7HTq9PKwQfQHGcVjm
+ E1SUQQT0tvWEI/46Ehhw+44nooSXy4Y=
+Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
+ [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-13-PbEftcpwPfqOnIpQ6bosRA-1; Sat, 01 Jun 2024 06:14:54 -0400
+X-MC-Unique: PbEftcpwPfqOnIpQ6bosRA-1
+Received: by mail-pl1-f197.google.com with SMTP id
+ d9443c01a7336-1f627ab7cf7so18523755ad.0
+ for <qemu-arm@nongnu.org>; Sat, 01 Jun 2024 03:14:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717171747; x=1717776547;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
+ d=1e100.net; s=20230601; t=1717236893; x=1717841693;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ZJociJhkICwIha+lzG1XPDXZhY/g4ozjgsEbhq1UJcU=;
- b=SkBFzP2f34a0RnDh9Ju75H5cT3f5e91XO/zPkSAHuFcCLG7iN89avFgnCjW603u59A
- z9nrlWgIM2BoQvH1ZjOYksdtHX82but5ZAGCG3bS1VhRtaspRLX4Pkf60aEqWK5ExzaD
- i9Pd+3iREmsuWP9zl8uFsCgWhdhDnjZ2Ta3GzmRqEEvlWxMjtGjagIVy/VDZKsDyzAOl
- IDd2YeqVWFhkW4jvGe2Mhe9Z9Om72KWVfC5Sb+nEZ4pL1PFxE9nTHra25iI30TvWxd3c
- bjxDquHGADrWjyKKNrEdwPpmwKMZgeOu/yyy5sXHKDmwmlW2x8nEoNBFrUG9pQYtDZQs
- 7q6A==
+ bh=Y2DpfIgmiXljSAbvCsxE52pOuK29FTt6QPOWRmmD+tE=;
+ b=PRUhocG6YqVJ56PzbjO0bZQ2RLoovxXzmSE2RthVGQtAl10QAiw2qDKHvc++998xdg
+ mECPJKHm7q40P5wQ8cXF7HqDa017CQIhb+ABFWPjx/qupR3bp8cYHAuKcUoF8aU11fHh
+ cCoa6tWyxSJEtCdzu42srffmzRveT0N636WJOeZBqfZzyDZ9F/9+3+bBmy35eIWNTWcW
+ edc3n2hqlXx9bP2+4mO1qWwhzLSQgR23mTZtGclV89LTViftTMomyXXnPQc3IpPctmnN
+ q2z80Uu9bQCJWIgauPKQWoBojn5+fzTioJ7cB6S3Vv5e4kTiykCs58PXykbuE6O629I0
+ a12w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXdHoRySfuhRj/e+DGbSuViGgPK6d4IWHEfreFgjSx7XOkymeVknz6ciPr4KQ98tVSWVyzUTH4FjPc85fgvpvFiFZU1
-X-Gm-Message-State: AOJu0Yz08QvFLC33nDALIyX/BIg/D2dpey2nzEssIYU+a5Zf4u8ICeQI
- nv+ipncvIuxXiPAch7uKoGyq/qiCDytZmBophJ+0fn2OE+ufUCY7OCH+TFPFntE=
-X-Received: by 2002:a05:600c:444e:b0:420:f8a2:f2eb with SMTP id
- 5b1f17b1804b1-4212e061c6bmr20956285e9.19.1717171747216; 
- Fri, 31 May 2024 09:09:07 -0700 (PDT)
-Received: from myrica ([2.221.137.100]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4212b858424sm29918925e9.21.2024.05.31.09.09.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 31 May 2024 09:09:06 -0700 (PDT)
-Date: Fri, 31 May 2024 17:09:21 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Itaru Kitayama <itaru.kitayama@linux.dev>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>
+ AJvYcCWuPSOUx9WIe5odpLgK7fYFRPtEB23cqsfwOfkTwgyj7icWuO85ezGDZQ5NQEaW8gzmBoY6qHTmDRe91wos4jNGiGEt
+X-Gm-Message-State: AOJu0Yx+Iq99l0E0qrp95RvIp/Pt4ndt3ZGpFSZJZzvoF6lLtJaUm2tQ
+ 4ZQtYnHYnvZRDvMWjKDGpV/z1ZDcB2jb8i4T8SzdGo2TPRZ+MjKbOjnXhyGp4JvmXp6nBvhpIj0
+ 3zBT/KCq7juzgEBp/w/fLfRVYiBGwSUINw45cDz3nYTP8Srt25A==
+X-Received: by 2002:a17:902:cccb:b0:1f4:75ec:9968 with SMTP id
+ d9443c01a7336-1f61be6be90mr119351705ad.16.1717236892768; 
+ Sat, 01 Jun 2024 03:14:52 -0700 (PDT)
+X-Received: by 2002:a17:902:cccb:b0:1f4:75ec:9968 with SMTP id
+ d9443c01a7336-1f61be6be90mr119351465ad.16.1717236892206; 
+ Sat, 01 Jun 2024 03:14:52 -0700 (PDT)
+Received: from [192.168.68.50] ([103.210.27.211])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-1f6324013c3sm29984455ad.246.2024.06.01.03.14.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 01 Jun 2024 03:14:51 -0700 (PDT)
+Message-ID: <bd1f84bd-e23c-4f4b-bc0b-a2a1b70081f4@redhat.com>
+Date: Sat, 1 Jun 2024 20:14:46 +1000
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: Unexpected error in rme_configure_one() at
  ../target/arm/kvm-rme.c:159
-Message-ID: <20240531160921.GA217456@myrica>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: Itaru Kitayama <itaru.kitayama@linux.dev>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ard Biesheuvel <ardb@kernel.org>
 References: <0C6F517A-5686-4BCE-8D08-1CED02CB470E@linux.dev>
  <4e7aa598-1a5d-47e1-aaa3-78af05947eeb@linaro.org>
  <CB05CAA2-9301-45F6-8AE3-A2E27A160CDF@linux.dev>
- <CAFEAcA-gye9B1yJNKyT0fcZzR7TukNvaQyc7QkKQ_1FUGfAaYw@mail.gmail.com>
- <20240531102135.GA40178@myrica>
- <E5197AF2-EEB3-4568-9F25-78622AD41AE4@linux.dev>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <E5197AF2-EEB3-4568-9F25-78622AD41AE4@linux.dev>
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ <cbd630d7-01e8-49ba-9c8b-a6514d898ed2@redhat.com>
+ <20240531150922.GA83195@myrica>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20240531150922.GA83195@myrica>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 26
+X-Spam_score: 2.6
+X-Spam_bar: ++
+X-Spam_report: (2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.085,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,52 +147,226 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FLGfQoJHkv9v
+X-TUID: hsiibtFR0Jy4
 
-On Fri, May 31, 2024 at 11:16:30PM +0900, Itaru Kitayama wrote:
-> Thanks! I wasn’t aware of it The good news is that after whole day of try and error attempts I was able to
-> bring up a Realm VM on FVP. Here’s my version of overlay yaml, cca-v2.yaml:
+Hi Jean and Ard,
 
-That is good news, thanks for the update
+On 6/1/24 01:09, Jean-Philippe Brucker wrote:
+> On Fri, May 31, 2024 at 04:23:13PM +1000, Gavin Shan wrote:
+>> I got a chance to try CCA software components, suggested by [1]. However, the edk2
+>> is stuck somewhere. I didn't reach to stage of loading guest kernel yet. I'm replying
+>> to see if anyone has a idea.
+> ...
+>> INFO:    BL31: Preparing for EL3 exit to normal world
+>> INFO:    Entry point address = 0x60000000
+>> INFO:    SPSR = 0x3c9
+>> UEFI firmware (version  built at 01:31:23 on May 31 2024)
+>>
+>> The boot is stuck and no more output after that. I tried adding more verbose output
+>> from edk2 and found it's stuck at the following point.
+>>
+>>
+>> ArmVirtPkg/PrePi/PrePi.c::PrePiMain
+>> rmVirtPkg/Library/PlatformPeiLib/PlatformPeiLib.c::PlatformPeim
+>>
+>>   #ifdef MDE_CPU_AARCH64
+>>    //
+>>    // Set the SMCCC conduit to SMC if executing at EL2, which is typically the
+>>    // exception level that services HVCs rather than the one that invokes them.
+>>    //
+>>    if (ArmReadCurrentEL () == AARCH64_EL2) {
+>>      Status = PcdSetBoolS (PcdMonitorConduitHvc, FALSE);       // The function is never returned in my case
+>>      ASSERT_EFI_ERROR (Status);
+>>    }
+>>   #endif
+> 
+> I'm able to reproduce this even without RME. This code was introduced
+> recently by c98f7f755089 ("ArmVirtPkg: Use dynamic PCD to set the SMCCC
+> conduit"). Maybe Ard (Cc'd) knows what could be going wrong here.
+> 
+> A slightly reduced reproducer:
+> 
+> $ cd edk2/
+> $ build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemuKernel.dsc
+> $ cd ..
+> 
+> $ git clone https://github.com/ARM-software/arm-trusted-firmware.git tf-a
+> $ cd tf-a/
+> $ make -j CROSS_COMPILE=aarch64-linux-gnu- PLAT=qemu DEBUG=1 LOG_LEVEL=40 QEMU_USE_GIC_DRIVER=QEMU_GICV3 BL33=../edk2/Build/ArmVirtQemuKernel-AARCH64/DEBUG_GCC5/FV/QEMU_EFI.fd all fip && \
+>    dd if=build/qemu/debug/bl1.bin of=flash.bin && \
+>    dd if=build/qemu/debug/fip.bin of=flash.bin seek=64 bs=4096
+> $ qemu-system-aarch64 -M virt,virtualization=on,secure=on,gic-version=3 -cpu max -m 2G -smp 8 -monitor none -serial mon:stdio -nographic -bios flash.bin
+> 
 
-> build:
->   linux:
->     repo:
->       revision: cca-full/v2
-> 
-> #  kvmtool:
-> #    repo:
-> #      revision: cca/v2
-> 
->   rmm:
->     repo:
->       revision: main
-> 
-> 
-> 
->   tfa:
->     repo:
->       revision: master
-> 
->   kvm-unit-tests:
->     repo:
->       revision: cca/v2
-> 
-> … and the QEMU options are below:
-> 
-> qemu-system-aarch64 -M 'virt,acpi=off,gic-version=3' \
-> -cpu host -enable-kvm -smp 2 -m 512M -overcommit 'mem-lock=on' \
-> -M 'confidential-guest-support=rme0' \
-> -object 'rme-guest,id=rme0,measurement-algo=sha512,num-pmu-counters=6,sve-vector-length=256' \
-> -kernel Image -initrd rootfs.cpio \
-> -append 'earycon console=ttyAMA0 rdinit=/sbin/init' -nographic -net none
+Thanks for the hints. Eventually, I'm able to start the host with 'edk2-stable202402'.
+Note that 'edk2-stable202405' doesn't work. However, I failed to build the edk2 for
+guest and unable to start the guest successfully, more information is provided below.
 
-Note that the cca/v2 branch of QEMU would reject 'num-pmu-counters' and
-'sve-vector-length' arguments, so if this works it means an older version
-of the QEMU patches is being used (which also means an older Linux branch
-is being used). It's possible that shrinkwrap is caching all the build
-files, so I'd remove the ~/.shrinkwrap/ files to start fresh
+--> host's edk2
+
+# git clone git@github.com:gwshan/edk2.git edk2
+# cd edk2; git checkout edk2-stable202402 -b stable202402
+# git submodule update --init --recursive;      \
+   source edksetup.sh; make -j -C BaseTools;     \
+   export GCC5_AARCH64_PREFIX=;                  \
+   build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemuKernel.dsc
+
+---> tf-a: rebuild using commands as you suggested.
+
+---> Boot host
+
+/home/gavin/sandbox/qemu.main/build/qemu-system-aarch64                                           \
+-M virt,virtualization=on,secure=on,gic-version=3,acpi=off                                        \
+-cpu max,x-rme=on -m 8G -smp 8                                                                    \
+-nodefaults -monitor none -serial mon:stdio -nographic                                            \
+-bios /home/gavin/sandbox/CCA/tf-a/flash.bin                                                      \
+-kernel /home/gavin/sandbox/CCA/linux/arch/arm64/boot/Image                                       \
+-drive format=raw,if=none,file=/home/gavin/sandbox/CCA/buildroot/output/images/rootfs.ext4,id=hd0 \
+-device virtio-blk-pci,drive=hd0                                                                  \
+-netdev tap,id=tap0,vhost=false,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown                 \
+-device virtio-net-pci,netdev=tap0,mac=52:54:00:f1:26:b0                                          \
+-append root=/dev/vda console=ttyAMA0                                                             \
+-device virtio-9p-device,fsdev=shr0,mount_tag=shr0                                                \
+-fsdev local,security_model=none,path=/home/gavin/sandbox/CCA,id=shr0
+   :
+NOTICE:  Booting Trusted Firmware
+NOTICE:  BL1: v2.10.0(debug):99e0b97aa-dirty
+NOTICE:  BL1: Built : 00:31:35, May 31 2024
+INFO:    BL1: RAM 0xe0ee000 - 0xe0f7000
+INFO:    BL1: Loading BL2
+   :
+Booting RMM v.0.4.0(debug) 17924bc Built with GCC 11.4.1
+RMM-EL3 Interface v.0.2
+Boot Manifest Interface v.0.3
+RMI/RSI ABI v.1.0/1.0 built: May 31 2024 00:21:59
+INFO:    RMM init end.
+   :
+UEFI firmware (version  built at 04:07:42 on Jun  1 2024)
+PlatformPeim: PL011 UART (console) @ 0x9000000
+PlatformPeim: PL011 UART (debug) @ 0x9000000
+   :
+EFI stub: Booting Linux Kernel...
+EFI stub: EFI_RNG_PROTOCOL unavailable
+   :
+Welcome to Buildroot
+buildroot login:
+# ifconfig eth0 | grep 'inet addr'
+           inet addr:10.26.1.212  Bcast:10.26.1.255  Mask:255.255.255.0
+
+---> guest edk2
+
+# git clone https://git.codelinaro.org/linaro/dcap/edk2.git edk2-guest
+# cd edk2-guest; git checkout origin/cca/v2 -b cca/v2
+# git submodule update --init --recursive;  \
+   source edksetup.sh; make -j -C BaseTools; \
+   export GCC5_AARCH64_PREFIX=;              \
+   build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemu.dsc
+    :
+   WriteSections64(): /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll AARCH64 small code model requires identical ELF and PE/COFF section offsets modulo 4 KB.
+cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/OvmfPkg/VirtioFsDxe/VirtioFsDxe/DEBUG/VirtioFsDxe.dll /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/OvmfPkg/VirtioFsDxe/VirtioFsDxe/DEBUG/VirtioFsDxe.debug
+cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe/DEBUG/PartitionDxe.debug /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/PartitionDxe.debug
+"gcc" -MMD -MF /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/openssl/crypto/asn1/x_sig.obj.deps @/home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/cc_resp.txt  -c -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/openssl/crypto/asn1/x_sig.obj  /home/gavin/sandbox/CCA/edk2-guest/CryptoPkg/Library/OpensslLib/openssl/crypto/asn1/x_sig.c
+"GenFw" -e DXE_CORE -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Core/Dxe/DxeMain/OUTPUT/DxeCore.efi /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Core/Dxe/DxeMain/DEBUG/DxeCore.dll
+GenSec -s EFI_SECTION_USER_INTERFACE -n ArmCpuDxe -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/FV/Ffs/B8D9777E-D72A-451F-9BDB-BAFB52A68415ArmCpuDxe/B8D9777E-D72A-451F-9BDB-BAFB52A68415SEC3.ui
+cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/DisplayEngineDxe/DisplayEngineDxe/DEBUG/*.map /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/DisplayEngineDxe/DisplayEngineDxe/OUTPUT
+cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/UdfDxe/UdfDxe/OUTPUT/UdfDxe.efi /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/UdfDxe/UdfDxe/DEBUG
+GenFw: ERROR 3000: Invalid
+   :
+build.py...
+  : error 7000: Failed to execute command
+	make tbuild [/home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore]
+
+
+build.py...
+  : error F002: Failed to build module
+	/home/gavin/sandbox/CCA/edk2-guest/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore.inf [AARCH64, GCC5, DEBUG]
+
+- Failed -
+Build end time: 05:42:19, Jun.01 2024
+Build total time: 00:00:31
+
+---> Use the edk2 image from the latest QEMU source
+
+# cd /home/gavin/sandbox/CCA
+# cp /home/gavin/sandbox/qemu.main/build/pc-bios/edk2-aarch64-code.fd ./
+
+---> Start the guest and no output from the console
+
+host# mount | grep 9p
+shr0 on /mnt/shr0 type 9p (rw,relatime,access=client,trans=virtio)
+host# export SHR_DIR="/mnt/shr0"
+host# qemu-system-aarch64 -accel kvm                              \
+       -machine virt,gic-version=3,confidential-guest-support=rme0 \
+       -cpu host -smp 2 -m 512M                                    \
+       -object 'rme-guest,id=rme0,measurement-algo=sha512'         \
+       -monitor none -serial mon:stdio -nographic                  \
+       -bios /mnt/edk2-aarch64-code.fd                             \
+       -kernel ${SHR_DIR}/linux/arch/arm64/boot/Image              \
+       -initrd ${SHR_DIR}/buildroot/output/images/rootfs.cpio      \
+       -append 'console=ttyAMA0'
+         :
+       <no output from the console>
+         :
+       (QEMU) q
+
+There are some messages from host's console indicating RMI/RMM servicing
+states when the guest is running at background. After the guest is terminated,
+the host crashes.
+
+SMC_RMM_RTT_CREATE            102dff000 122c2e000 1e00000 3 > RMI_SUCCESS
+SMC_RMM_RTT_CREATE            102dff000 1234a7000 2000000 3 > RMI_SUCCESS
+SMC_RMM_RTT_CREATE            102dff000 1235bd000 2200000 3 > RMI_SUCCESS
+SMC_RMM_RTT_CREATE            102dff000 12387c000 2400000 3 > RMI_SUCCESS
+SMC_RMM_RTT_CREATE            102dff000 123a5a000 2600000 3 > RMI_SUCCESS
+SMC_RMM_RTT_CREATE            102dff000 12407d000 2800000 3 > RMI_SUCCESS
+SMC_RMM_RTT_CREATE            102dff000 124109000 2a00000 3 > RMI_SUCCESS
+SMC_RMM_RTT_CREATE            102dff000 123e49000 2c00000 3 > RMI_SUCCESS
+SMC_RMM_RTT_CREATE            102dff000 124275000 2e00000 3 > RMI_SUCCESS
+SMC_RMM_RTT_CREATE            102dff000 123138000 3000000 3 > RMI_SUCCESS
+SMC_RMM_RTT_CREATE            102dff000 124d07000 3200000 3 > RMI_SUCCESS
+  :
+  :
+[22768.994481] rcu: INFO: rcu_preempt self-detected stall on CPU
+[22769.006861] rcu: 	3-....: (2751 ticks this GP) idle=93ec/1/0x4000000000000000 softirq=114451/115721 fqs=1160
+[22769.020475] rcu: 	(t=5257 jiffies g=531913 q=7 ncpus=8)
+[22769.030547] CPU: 3 PID: 198 Comm: qemu-system-aar Not tainted 6.9.0-rc1-gavin-gfcfc92d6ff07 #1
+[22769.041847] Hardware name: QEMU QEMU Virtual Machine, BIOS unknown 2/2/2022
+[22769.050548] pstate: 60402009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[22769.059382] pc : kvm_realm_unmap_range+0x308/0x32c
+[22769.070275] lr : kvm_realm_unmap_range+0x304/0x32c
+[22769.075893] sp : ffff800080a3b930
+[22769.079929] x29: ffff800080a3b930 x28: 00000000003d7000 x27: 00000000003d6000
+[22769.092990] x26: 00000000c4000152 x25: ffffffffffffffff x24: 0000000000000000
+[22769.101150] x23: 0000010000000000 x22: 00000000c4000155 x21: 0000000102dff000
+[22769.109056] x20: ffff8000801a5e00 x19: 0000000000000000 x18: 0000000000000001
+[22769.117042] x17: 0000000000000000 x16: 000000000000000e x15: 0000000000000000
+[22769.124991] x14: 0000ffff7fa14000 x13: 0000000000000002 x12: 000000000010d594
+[22769.134213] x11: 0000000000000002 x10: 00000000ffffffff x9 : ffffffffffffffff
+[22769.142951] x8 : 0000000000000000 x7 : 0000000000000000 x6 : 00000000c2dff000
+[22769.151413] x5 : 0000000102f56000 x4 : 0000000000000015 x3 : 0000000000000000
+[22769.159932] x2 : 0000000000000000 x1 : 0000000000000000 x0 : 0000000000000000
+[22769.169674] Call trace:
+[22769.174026]  kvm_realm_unmap_range+0x308/0x32c
+[22769.181046]  __unmap_stage2_range+0x60/0x7c
+[22769.186396]  kvm_free_stage2_pgd+0xa0/0xd4
+[22769.191766]  kvm_arch_flush_shadow_all+0x1c/0x34
+[22769.197879]  kvm_mmu_notifier_release+0x30/0x84
+[22769.203304]  __mmu_notifier_release+0x7c/0x1f8
+[22769.209340]  exit_mmap+0x264/0x274
+[22769.213992]  __mmput+0x40/0x150
+[22769.218635]  mmput+0x50/0x5c
+[22769.222606]  do_exit+0x288/0x92c
+[22769.226935]  do_group_exit+0x34/0x90
+[22769.231359]  get_signal+0x814/0x820
+[22769.236537]  do_signal+0x90/0x1320
+[22769.241145]  do_notify_resume+0xc8/0x140
+[22769.246458]  el0_svc+0xc8/0xdc
+[22769.250913]  el0t_64_sync_handler+0x13c/0x158
+[22769.256045]  el0t_64_sync+0x190/0x194
 
 Thanks,
-Jean
+Gavin
+
+
+
 

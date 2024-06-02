@@ -1,372 +1,281 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp1032819ejs;
-        Sat, 1 Jun 2024 03:15:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVCnvmXBKPs0W09JFkUOaNlLhv/BC4aadZNm+XbMDv7m43kKoDeQi/yUmgw9OK5MERAdAk0mc2OoPCQ5EB1CyDgau75kcxi
-X-Google-Smtp-Source: AGHT+IGFyzcUZ3k4VD3bCOrL4szSaO8i3Mw4Z9pR+Xqreb+Q6MQOInulWDSs3zFD4dnkVsNXz8Wv
-X-Received: by 2002:a05:620a:4006:b0:794:ee67:ec24 with SMTP id af79cd13be357-794f4f8a545mr897259785a.20.1717236938011;
-        Sat, 01 Jun 2024 03:15:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717236937; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp1852906ejs;
+        Sun, 2 Jun 2024 15:03:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWtfIGJ8sA7tCwsELcDoXLlWwCv4MAQy7jrHBZqeiZ51si0179gulEbJTI5h//pw42NKiYjdEFp5JuFjpEIvnLsxfeHNEjm
+X-Google-Smtp-Source: AGHT+IFWJei+ITtCz35VTsKxk7lgttrG+GMPtlJIiqy4FUV6I07l4rIp63DkWGtstsXcYVLT8e8C
+X-Received: by 2002:a05:620a:2953:b0:792:8c59:f56d with SMTP id af79cd13be357-794f4fd312amr1554367485a.30.1717365800664;
+        Sun, 02 Jun 2024 15:03:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717365800; cv=none;
         d=google.com; s=arc-20160816;
-        b=uDG/GwpWWmTS7utdBLXauxxelqdR70PmZgLvvOzESl41m6GBOJqXib2QpGxI5pMY9P
-         DvZuUcVddlZ1BcNRRTF8ML9y8AULDuvwC8+Sa8Ve1ecuRNLsH0OypH0B+pz6m0iFToDd
-         x4PcVLKpyrr80lglUo2Mb3p46Cm3TaaSbM5aerSMRzAepGgWfHx4TvfP20/SO1yh1lTr
-         t76nJyivs/QX7KOA5y+FPvpuMkxkWR8Q6Vnxz8Q7eDHsvUTeUNI68kBiSYGgkY+xzBuN
-         /o0+2SegY8qwfhT6bNtb/FIqrmnYus4wTxIfWswOy5/ZbStfyoOCh+4b02z/Q4jlYvNF
-         0H0g==
+        b=bgvexpR2heN4VYRiqw6RjZqRajoPpo47kHPhbSgbY9yBQFnwuf0F16Cdm02oQG1RU0
+         YJXpxOxZSQPcpvW1UG/GYiD84KS9AU2Fb9UlPxPHRLY++Vs1IZ106czaw4oXhwGxU5iQ
+         UyeXuXYZEo4TyHkCrzW3AIr2bC9XLn93DfAzbl5UTm7+ZIF2wf+Ipoi3clVsnB8l+iwI
+         6DK15dkFGQkKG8Qe7NPXIrjrHIu6mvpSyQzUeQG21pZXZwPJpthjwxC8mZHUbPKRHmXC
+         V4R7Jb82ZOIlGaxqCMPHCBkKRcH9PuDowJgKXAKxj0D6hurLspmnmjAH4PPuM8ZIASA4
+         gWgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Y2DpfIgmiXljSAbvCsxE52pOuK29FTt6QPOWRmmD+tE=;
-        fh=xwdWTvTB6TcVXdeonQNRN5WWJGUDUnJGp6zvRgEzr4c=;
-        b=ttWbcDnMvn48kUxxNtcx5O+dby2dOIWOnGnTYSI4ODkT+cBhNSOKNlLq/GuKDzO5md
-         4UNX7InmXG5UFZsbI3XpzAMSfRjC6zPUnm46fJFxZlIOdPKSRmUAHCp6Ki893s/T1ojd
-         6WMXTvokkKXX7wTbLXmy1sUHhr5qmphherDEzA0vF6iylW9sWmbeZIDqnHjtvVpdeSCl
-         Sw9zIu3WAKwGQlO/yPLmK+jJyuNloWvl4w0jrFokYZjs1uRPKyShQLnpovnH98JfKEtl
-         tW+S8Xg1WnClqfw8b2HzugeICweHJVG0yV5mQbu6fgtw0kvdmtDNsVSg4TumTfoqB1dy
-         xxuA==;
+        h=content-transfer-encoding:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=+jq37LH30l2H7Ddx9L6ulHhQCtHKTxeeYK+jHiOAmYY=;
+        fh=eSBzNr9kZFD7jy0tJUPNrJkUKd2hr3zqTrUGSvKJogo=;
+        b=dC2oyFCqzOPPCDjC0iJlul37STKXUy40R8LjiKutnby20PRsuvbA+XSWIb9dZe6++3
+         VHDI90zqV0ikjbn4INjmBYlMOx5COvvzuQzceYNbCwv9Q0JLfugJXQVwDmefsfDPYgkL
+         HX37TtykqQCxpyq/0AF5fCXVc6SMveV6LswoaqejK0obm/dwr3AV2JDb3Qx+ER49qHAr
+         kiFTjjWBHsUbjjDHSzhEtc5HmaqNNy+nncfMLoBykVlQInw5OiwTFjS67R+VuOoy7cSk
+         vwOalHMyZQous/KWiIm/3Sn9SWMduI7cJMb6vq1NpHYPvW+ccGK2gLhYAhp0RrOd/Oqm
+         ZUtg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UIbYuG35;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dqsEshbw;
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-794f8ae0628si268082885a.415.2024.06.01.03.15.37
+Return-Path: <mst@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-794f32b8d90si785328885a.707.2024.06.02.15.03.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 01 Jun 2024 03:15:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 02 Jun 2024 15:03:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UIbYuG35;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dqsEshbw;
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sDLlR-0007dw-U6; Sat, 01 Jun 2024 06:15:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1sDLlP-0007cg-4n
- for qemu-arm@nongnu.org; Sat, 01 Jun 2024 06:15:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1sDLlL-0004Ab-VO
- for qemu-arm@nongnu.org; Sat, 01 Jun 2024 06:15:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1717236897;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Y2DpfIgmiXljSAbvCsxE52pOuK29FTt6QPOWRmmD+tE=;
- b=UIbYuG35D0dFBX7o+nOC+Adu2VehcnEbsg9kpwcbjMisKlTIapYsSF3UVo3KyoOwQN26BB
- jnUP7qqqTORUl/CE9ZMXVovVq6vuGzhKwAvQVe0c1mvWVfsSoJ9IN7HTq9PKwQfQHGcVjm
- E1SUQQT0tvWEI/46Ehhw+44nooSXy4Y=
-Received: from mail-pl1-f197.google.com (mail-pl1-f197.google.com
- [209.85.214.197]) by relay.mimecast.com with ESMTP with STARTTLS
+	s=mimecast20190719; t=1717365800;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+jq37LH30l2H7Ddx9L6ulHhQCtHKTxeeYK+jHiOAmYY=;
+	b=dqsEshbwXMOV+GeO1sYwRY5fwgV0sCflNeD8oTkEr+nElA6vi5CvDobFNNOxIjXw1ji876
+	v1+zduikJGFY+/jXH9EFmk4v99JO8fKiTub2lddyUFOwS72A44tu/pD9FgIoo5SCvT+WTh
+	4V+5eh6xOgU1CJLpIXa35PuQAFDo3ng=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-13-PbEftcpwPfqOnIpQ6bosRA-1; Sat, 01 Jun 2024 06:14:54 -0400
-X-MC-Unique: PbEftcpwPfqOnIpQ6bosRA-1
-Received: by mail-pl1-f197.google.com with SMTP id
- d9443c01a7336-1f627ab7cf7so18523755ad.0
- for <qemu-arm@nongnu.org>; Sat, 01 Jun 2024 03:14:54 -0700 (PDT)
+ us-mta-649-r2_U-8eMPIy9CC5W7m2Iiw-1; Sun, 02 Jun 2024 18:03:15 -0400
+X-MC-Unique: r2_U-8eMPIy9CC5W7m2Iiw-1
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-4212e2a3a1bso15631905e9.3
+        for <alex.bennee@linaro.org>; Sun, 02 Jun 2024 15:03:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717236893; x=1717841693;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Y2DpfIgmiXljSAbvCsxE52pOuK29FTt6QPOWRmmD+tE=;
- b=PRUhocG6YqVJ56PzbjO0bZQ2RLoovxXzmSE2RthVGQtAl10QAiw2qDKHvc++998xdg
- mECPJKHm7q40P5wQ8cXF7HqDa017CQIhb+ABFWPjx/qupR3bp8cYHAuKcUoF8aU11fHh
- cCoa6tWyxSJEtCdzu42srffmzRveT0N636WJOeZBqfZzyDZ9F/9+3+bBmy35eIWNTWcW
- edc3n2hqlXx9bP2+4mO1qWwhzLSQgR23mTZtGclV89LTViftTMomyXXnPQc3IpPctmnN
- q2z80Uu9bQCJWIgauPKQWoBojn5+fzTioJ7cB6S3Vv5e4kTiykCs58PXykbuE6O629I0
- a12w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWuPSOUx9WIe5odpLgK7fYFRPtEB23cqsfwOfkTwgyj7icWuO85ezGDZQ5NQEaW8gzmBoY6qHTmDRe91wos4jNGiGEt
-X-Gm-Message-State: AOJu0Yx+Iq99l0E0qrp95RvIp/Pt4ndt3ZGpFSZJZzvoF6lLtJaUm2tQ
- 4ZQtYnHYnvZRDvMWjKDGpV/z1ZDcB2jb8i4T8SzdGo2TPRZ+MjKbOjnXhyGp4JvmXp6nBvhpIj0
- 3zBT/KCq7juzgEBp/w/fLfRVYiBGwSUINw45cDz3nYTP8Srt25A==
-X-Received: by 2002:a17:902:cccb:b0:1f4:75ec:9968 with SMTP id
- d9443c01a7336-1f61be6be90mr119351705ad.16.1717236892768; 
- Sat, 01 Jun 2024 03:14:52 -0700 (PDT)
-X-Received: by 2002:a17:902:cccb:b0:1f4:75ec:9968 with SMTP id
- d9443c01a7336-1f61be6be90mr119351465ad.16.1717236892206; 
- Sat, 01 Jun 2024 03:14:52 -0700 (PDT)
-Received: from [192.168.68.50] ([103.210.27.211])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f6324013c3sm29984455ad.246.2024.06.01.03.14.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 01 Jun 2024 03:14:51 -0700 (PDT)
-Message-ID: <bd1f84bd-e23c-4f4b-bc0b-a2a1b70081f4@redhat.com>
-Date: Sat, 1 Jun 2024 20:14:46 +1000
+        d=1e100.net; s=20230601; t=1717365794; x=1717970594;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+jq37LH30l2H7Ddx9L6ulHhQCtHKTxeeYK+jHiOAmYY=;
+        b=MRYvvp3YBwiedWtutdpe6w7UxlNISWQ/z2lY3lGDa5j/7+fVW+UROOAYtqsNSS9lh1
+         yWjDAZ8UM0LXjeXUjEdLIauJ2AFw+s6Ep0YIl9U+wyFju0HZJlB2FleVGALkoZ8CU55+
+         qgYohybVk39Ojoa3rgHFLmZegi70uQmdTWNqXeblP1lj+e0QrcGoeyEDRVvDsbp82NUP
+         iktE56a+2u6zxn8tPHIEnzRii5Sh4ATko/eV0ywuCniC8EhoU54jY/0e2VReDd3vHNVZ
+         2zrAutrPJa5NgNmcgsiKfjpLquYqlmZiHW0oN4S44bIQz0rUY9kXx+YBBQ8oQEEDSRvj
+         vqNA==
+X-Forwarded-Encrypted: i=1; AJvYcCX6Js3x8pEcLlrTtQ6eXKZh7nlNtcLHGtXAAgNGXoWRxwM43cOO3FB0sQwQd/depSm1gsSQVeCxckEmNu/fBxKM2whD79ey
+X-Gm-Message-State: AOJu0YyZG3mAXcdQJ1tPi18CdWEBzzmcZtV8oOWi3QNfNx35oLmCWXp6
+	kDdnaNzjAO9WeIqBdf7aqx94LDd/HeS1sRAilvULKmqDkAw+tKZyXI4OTvVKxur4fOyhyxi2iQy
+	9KCMbR8bYGLnMFtVSNBIMzWOb7EB0KzjdQqC8mbn5b4z4DpTuw0tCCg==
+X-Received: by 2002:a05:600c:190b:b0:421:29f4:4f33 with SMTP id 5b1f17b1804b1-4212e047540mr57034575e9.1.1717365794048;
+        Sun, 02 Jun 2024 15:03:14 -0700 (PDT)
+X-Received: by 2002:a05:600c:190b:b0:421:29f4:4f33 with SMTP id 5b1f17b1804b1-4212e047540mr57034025e9.1.1717365793399;
+        Sun, 02 Jun 2024 15:03:13 -0700 (PDT)
+Return-Path: <mst@redhat.com>
+Received: from redhat.com ([2a0d:6fc7:440:950b:d4e:f17a:17d8:5699])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-35dd04d9c89sm7041692f8f.60.2024.06.02.15.03.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 02 Jun 2024 15:03:12 -0700 (PDT)
+Date: Sun, 2 Jun 2024 18:03:05 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org,
+	jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+	lpieralisi@kernel.org, peter.maydell@linaro.org,
+	richard.henderson@linaro.org, imammedo@redhat.com,
+	andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
+	eric.auger@redhat.com, oliver.upton@linux.dev, pbonzini@redhat.com,
+	will@kernel.org, gshan@redhat.com, rafael@kernel.org,
+	alex.bennee@linaro.org, linux@armlinux.org.uk,
+	darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+	vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+	miguel.luis@oracle.com, salil.mehta@opnsrc.net,
+	zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
+	wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
+	lixianglai@loongson.cn, npiggin@gmail.com, harshpb@linux.ibm.com,
+	linuxarm@huawei.com
+Subject: Re: [PATCH V12 0/8] Add architecture agnostic code to support vCPU
+ Hotplug
+Message-ID: <20240602180241-mutt-send-email-mst@kernel.org>
+References: <20240529234241.205053-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: Unexpected error in rme_configure_one() at
- ../target/arm/kvm-rme.c:159
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: Itaru Kitayama <itaru.kitayama@linux.dev>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ard Biesheuvel <ardb@kernel.org>
-References: <0C6F517A-5686-4BCE-8D08-1CED02CB470E@linux.dev>
- <4e7aa598-1a5d-47e1-aaa3-78af05947eeb@linaro.org>
- <CB05CAA2-9301-45F6-8AE3-A2E27A160CDF@linux.dev>
- <cbd630d7-01e8-49ba-9c8b-a6514d898ed2@redhat.com>
- <20240531150922.GA83195@myrica>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20240531150922.GA83195@myrica>
+In-Reply-To: <20240529234241.205053-1-salil.mehta@huawei.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 26
-X-Spam_score: 2.6
-X-Spam_bar: ++
-X-Spam_report: (2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.085,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hsiibtFR0Jy4
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+X-TUID: MI0D0z5Q7kN/
 
-Hi Jean and Ard,
-
-On 6/1/24 01:09, Jean-Philippe Brucker wrote:
-> On Fri, May 31, 2024 at 04:23:13PM +1000, Gavin Shan wrote:
->> I got a chance to try CCA software components, suggested by [1]. However, the edk2
->> is stuck somewhere. I didn't reach to stage of loading guest kernel yet. I'm replying
->> to see if anyone has a idea.
-> ...
->> INFO:    BL31: Preparing for EL3 exit to normal world
->> INFO:    Entry point address = 0x60000000
->> INFO:    SPSR = 0x3c9
->> UEFI firmware (version  built at 01:31:23 on May 31 2024)
->>
->> The boot is stuck and no more output after that. I tried adding more verbose output
->> from edk2 and found it's stuck at the following point.
->>
->>
->> ArmVirtPkg/PrePi/PrePi.c::PrePiMain
->> rmVirtPkg/Library/PlatformPeiLib/PlatformPeiLib.c::PlatformPeim
->>
->>   #ifdef MDE_CPU_AARCH64
->>    //
->>    // Set the SMCCC conduit to SMC if executing at EL2, which is typically the
->>    // exception level that services HVCs rather than the one that invokes them.
->>    //
->>    if (ArmReadCurrentEL () == AARCH64_EL2) {
->>      Status = PcdSetBoolS (PcdMonitorConduitHvc, FALSE);       // The function is never returned in my case
->>      ASSERT_EFI_ERROR (Status);
->>    }
->>   #endif
+On Thu, May 30, 2024 at 12:42:33AM +0100, Salil Mehta wrote:
+> Virtual CPU hotplug support is being added across various architectures[1][3].
+> This series adds various code bits common across all architectures:
 > 
-> I'm able to reproduce this even without RME. This code was introduced
-> recently by c98f7f755089 ("ArmVirtPkg: Use dynamic PCD to set the SMCCC
-> conduit"). Maybe Ard (Cc'd) knows what could be going wrong here.
+> 1. vCPU creation and Parking code refactor [Patch 1]
+> 2. Update ACPI GED framework to support vCPU Hotplug [Patch 2,3]
+> 3. ACPI CPUs AML code change [Patch 4,5]
+> 4. Helper functions to support unrealization of CPU objects [Patch 6,7]
+> 5. Docs [Patch 8]
 > 
-> A slightly reduced reproducer:
 > 
-> $ cd edk2/
-> $ build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemuKernel.dsc
-> $ cd ..
+> Repository:
 > 
-> $ git clone https://github.com/ARM-software/arm-trusted-firmware.git tf-a
-> $ cd tf-a/
-> $ make -j CROSS_COMPILE=aarch64-linux-gnu- PLAT=qemu DEBUG=1 LOG_LEVEL=40 QEMU_USE_GIC_DRIVER=QEMU_GICV3 BL33=../edk2/Build/ArmVirtQemuKernel-AARCH64/DEBUG_GCC5/FV/QEMU_EFI.fd all fip && \
->    dd if=build/qemu/debug/bl1.bin of=flash.bin && \
->    dd if=build/qemu/debug/fip.bin of=flash.bin seek=64 bs=4096
-> $ qemu-system-aarch64 -M virt,virtualization=on,secure=on,gic-version=3 -cpu max -m 2G -smp 8 -monitor none -serial mon:stdio -nographic -bios flash.bin
+> [*] https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v3.arch.agnostic.v12
+> 
+> NOTE: This series is meant to work in conjunction with Architecture specific patch-set.
+> For ARM, this will work in combination of the architecture specific part based on
+> RFC V2 [1]. This architecture specific patch-set RFC V3 shall be floated soon and is
+> present at below location
+> 
+> [*] https://github.com/salil-mehta/qemu/tree/virt-cpuhp-armv8/rfc-v3-rc1
 > 
 
-Thanks for the hints. Eventually, I'm able to start the host with 'edk2-stable202402'.
-Note that 'edk2-stable202405' doesn't work. However, I failed to build the edk2 for
-guest and unable to start the guest successfully, more information is provided below.
 
---> host's edk2
+Igor plan to take a look?
 
-# git clone git@github.com:gwshan/edk2.git edk2
-# cd edk2; git checkout edk2-stable202402 -b stable202402
-# git submodule update --init --recursive;      \
-   source edksetup.sh; make -j -C BaseTools;     \
-   export GCC5_AARCH64_PREFIX=;                  \
-   build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemuKernel.dsc
-
----> tf-a: rebuild using commands as you suggested.
-
----> Boot host
-
-/home/gavin/sandbox/qemu.main/build/qemu-system-aarch64                                           \
--M virt,virtualization=on,secure=on,gic-version=3,acpi=off                                        \
--cpu max,x-rme=on -m 8G -smp 8                                                                    \
--nodefaults -monitor none -serial mon:stdio -nographic                                            \
--bios /home/gavin/sandbox/CCA/tf-a/flash.bin                                                      \
--kernel /home/gavin/sandbox/CCA/linux/arch/arm64/boot/Image                                       \
--drive format=raw,if=none,file=/home/gavin/sandbox/CCA/buildroot/output/images/rootfs.ext4,id=hd0 \
--device virtio-blk-pci,drive=hd0                                                                  \
--netdev tap,id=tap0,vhost=false,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown                 \
--device virtio-net-pci,netdev=tap0,mac=52:54:00:f1:26:b0                                          \
--append root=/dev/vda console=ttyAMA0                                                             \
--device virtio-9p-device,fsdev=shr0,mount_tag=shr0                                                \
--fsdev local,security_model=none,path=/home/gavin/sandbox/CCA,id=shr0
-   :
-NOTICE:  Booting Trusted Firmware
-NOTICE:  BL1: v2.10.0(debug):99e0b97aa-dirty
-NOTICE:  BL1: Built : 00:31:35, May 31 2024
-INFO:    BL1: RAM 0xe0ee000 - 0xe0f7000
-INFO:    BL1: Loading BL2
-   :
-Booting RMM v.0.4.0(debug) 17924bc Built with GCC 11.4.1
-RMM-EL3 Interface v.0.2
-Boot Manifest Interface v.0.3
-RMI/RSI ABI v.1.0/1.0 built: May 31 2024 00:21:59
-INFO:    RMM init end.
-   :
-UEFI firmware (version  built at 04:07:42 on Jun  1 2024)
-PlatformPeim: PL011 UART (console) @ 0x9000000
-PlatformPeim: PL011 UART (debug) @ 0x9000000
-   :
-EFI stub: Booting Linux Kernel...
-EFI stub: EFI_RNG_PROTOCOL unavailable
-   :
-Welcome to Buildroot
-buildroot login:
-# ifconfig eth0 | grep 'inet addr'
-           inet addr:10.26.1.212  Bcast:10.26.1.255  Mask:255.255.255.0
-
----> guest edk2
-
-# git clone https://git.codelinaro.org/linaro/dcap/edk2.git edk2-guest
-# cd edk2-guest; git checkout origin/cca/v2 -b cca/v2
-# git submodule update --init --recursive;  \
-   source edksetup.sh; make -j -C BaseTools; \
-   export GCC5_AARCH64_PREFIX=;              \
-   build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemu.dsc
-    :
-   WriteSections64(): /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll AARCH64 small code model requires identical ELF and PE/COFF section offsets modulo 4 KB.
-cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/OvmfPkg/VirtioFsDxe/VirtioFsDxe/DEBUG/VirtioFsDxe.dll /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/OvmfPkg/VirtioFsDxe/VirtioFsDxe/DEBUG/VirtioFsDxe.debug
-cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe/DEBUG/PartitionDxe.debug /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/PartitionDxe.debug
-"gcc" -MMD -MF /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/openssl/crypto/asn1/x_sig.obj.deps @/home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/cc_resp.txt  -c -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/openssl/crypto/asn1/x_sig.obj  /home/gavin/sandbox/CCA/edk2-guest/CryptoPkg/Library/OpensslLib/openssl/crypto/asn1/x_sig.c
-"GenFw" -e DXE_CORE -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Core/Dxe/DxeMain/OUTPUT/DxeCore.efi /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Core/Dxe/DxeMain/DEBUG/DxeCore.dll
-GenSec -s EFI_SECTION_USER_INTERFACE -n ArmCpuDxe -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/FV/Ffs/B8D9777E-D72A-451F-9BDB-BAFB52A68415ArmCpuDxe/B8D9777E-D72A-451F-9BDB-BAFB52A68415SEC3.ui
-cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/DisplayEngineDxe/DisplayEngineDxe/DEBUG/*.map /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/DisplayEngineDxe/DisplayEngineDxe/OUTPUT
-cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/UdfDxe/UdfDxe/OUTPUT/UdfDxe.efi /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/UdfDxe/UdfDxe/DEBUG
-GenFw: ERROR 3000: Invalid
-   :
-build.py...
-  : error 7000: Failed to execute command
-	make tbuild [/home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore]
-
-
-build.py...
-  : error F002: Failed to build module
-	/home/gavin/sandbox/CCA/edk2-guest/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore.inf [AARCH64, GCC5, DEBUG]
-
-- Failed -
-Build end time: 05:42:19, Jun.01 2024
-Build total time: 00:00:31
-
----> Use the edk2 image from the latest QEMU source
-
-# cd /home/gavin/sandbox/CCA
-# cp /home/gavin/sandbox/qemu.main/build/pc-bios/edk2-aarch64-code.fd ./
-
----> Start the guest and no output from the console
-
-host# mount | grep 9p
-shr0 on /mnt/shr0 type 9p (rw,relatime,access=client,trans=virtio)
-host# export SHR_DIR="/mnt/shr0"
-host# qemu-system-aarch64 -accel kvm                              \
-       -machine virt,gic-version=3,confidential-guest-support=rme0 \
-       -cpu host -smp 2 -m 512M                                    \
-       -object 'rme-guest,id=rme0,measurement-algo=sha512'         \
-       -monitor none -serial mon:stdio -nographic                  \
-       -bios /mnt/edk2-aarch64-code.fd                             \
-       -kernel ${SHR_DIR}/linux/arch/arm64/boot/Image              \
-       -initrd ${SHR_DIR}/buildroot/output/images/rootfs.cpio      \
-       -append 'console=ttyAMA0'
-         :
-       <no output from the console>
-         :
-       (QEMU) q
-
-There are some messages from host's console indicating RMI/RMM servicing
-states when the guest is running at background. After the guest is terminated,
-the host crashes.
-
-SMC_RMM_RTT_CREATE            102dff000 122c2e000 1e00000 3 > RMI_SUCCESS
-SMC_RMM_RTT_CREATE            102dff000 1234a7000 2000000 3 > RMI_SUCCESS
-SMC_RMM_RTT_CREATE            102dff000 1235bd000 2200000 3 > RMI_SUCCESS
-SMC_RMM_RTT_CREATE            102dff000 12387c000 2400000 3 > RMI_SUCCESS
-SMC_RMM_RTT_CREATE            102dff000 123a5a000 2600000 3 > RMI_SUCCESS
-SMC_RMM_RTT_CREATE            102dff000 12407d000 2800000 3 > RMI_SUCCESS
-SMC_RMM_RTT_CREATE            102dff000 124109000 2a00000 3 > RMI_SUCCESS
-SMC_RMM_RTT_CREATE            102dff000 123e49000 2c00000 3 > RMI_SUCCESS
-SMC_RMM_RTT_CREATE            102dff000 124275000 2e00000 3 > RMI_SUCCESS
-SMC_RMM_RTT_CREATE            102dff000 123138000 3000000 3 > RMI_SUCCESS
-SMC_RMM_RTT_CREATE            102dff000 124d07000 3200000 3 > RMI_SUCCESS
-  :
-  :
-[22768.994481] rcu: INFO: rcu_preempt self-detected stall on CPU
-[22769.006861] rcu: 	3-....: (2751 ticks this GP) idle=93ec/1/0x4000000000000000 softirq=114451/115721 fqs=1160
-[22769.020475] rcu: 	(t=5257 jiffies g=531913 q=7 ncpus=8)
-[22769.030547] CPU: 3 PID: 198 Comm: qemu-system-aar Not tainted 6.9.0-rc1-gavin-gfcfc92d6ff07 #1
-[22769.041847] Hardware name: QEMU QEMU Virtual Machine, BIOS unknown 2/2/2022
-[22769.050548] pstate: 60402009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-[22769.059382] pc : kvm_realm_unmap_range+0x308/0x32c
-[22769.070275] lr : kvm_realm_unmap_range+0x304/0x32c
-[22769.075893] sp : ffff800080a3b930
-[22769.079929] x29: ffff800080a3b930 x28: 00000000003d7000 x27: 00000000003d6000
-[22769.092990] x26: 00000000c4000152 x25: ffffffffffffffff x24: 0000000000000000
-[22769.101150] x23: 0000010000000000 x22: 00000000c4000155 x21: 0000000102dff000
-[22769.109056] x20: ffff8000801a5e00 x19: 0000000000000000 x18: 0000000000000001
-[22769.117042] x17: 0000000000000000 x16: 000000000000000e x15: 0000000000000000
-[22769.124991] x14: 0000ffff7fa14000 x13: 0000000000000002 x12: 000000000010d594
-[22769.134213] x11: 0000000000000002 x10: 00000000ffffffff x9 : ffffffffffffffff
-[22769.142951] x8 : 0000000000000000 x7 : 0000000000000000 x6 : 00000000c2dff000
-[22769.151413] x5 : 0000000102f56000 x4 : 0000000000000015 x3 : 0000000000000000
-[22769.159932] x2 : 0000000000000000 x1 : 0000000000000000 x0 : 0000000000000000
-[22769.169674] Call trace:
-[22769.174026]  kvm_realm_unmap_range+0x308/0x32c
-[22769.181046]  __unmap_stage2_range+0x60/0x7c
-[22769.186396]  kvm_free_stage2_pgd+0xa0/0xd4
-[22769.191766]  kvm_arch_flush_shadow_all+0x1c/0x34
-[22769.197879]  kvm_mmu_notifier_release+0x30/0x84
-[22769.203304]  __mmu_notifier_release+0x7c/0x1f8
-[22769.209340]  exit_mmap+0x264/0x274
-[22769.213992]  __mmput+0x40/0x150
-[22769.218635]  mmput+0x50/0x5c
-[22769.222606]  do_exit+0x288/0x92c
-[22769.226935]  do_group_exit+0x34/0x90
-[22769.231359]  get_signal+0x814/0x820
-[22769.236537]  do_signal+0x90/0x1320
-[22769.241145]  do_notify_resume+0xc8/0x140
-[22769.246458]  el0_svc+0xc8/0xdc
-[22769.250913]  el0t_64_sync_handler+0x13c/0x158
-[22769.256045]  el0t_64_sync+0x190/0x194
-
-Thanks,
-Gavin
-
-
-
-
+> Revision History:
+> 
+> Patch-set  V11 -> V12
+> 1. Addressed Harsh Prateek Bora's (IBM) comment
+>    - Changed @cpu to @vcpu_id in the kvm_unpark_vcpu protoype header/
+> 2. Added Zhao Liu's (Intel) Tested-by for whole series
+>    - Qtest does not breaks on Intel platforms now.
+> 3. Added Zhao Liu's (Intel) Reviewed-by for [PATCH V11 {1/8 - 3/8}]
+> Link: https://lore.kernel.org/qemu-devel/ZlRSPuJGBgyEUW6w@intel.com/
+> Link: https://lore.kernel.org/qemu-devel/a5f3d78e-cfed-441f-9c56-e3e78fa5edee@linux.ibm.com/
+> 
+> Patch-set  V10 -> V11
+> 1. Addressed Nicholas Piggin's (IBM) comment
+>    - moved the traces in kvm_unpark_vcpu and kvm_create_vcpu at the end
+>    - Added the Reviewed-by Tag for [PATCH V10 1/8]
+> 2.  Addressed Alex Bennée's (Linaro) comments
+>    - Added a note explaining dependency of the [PATCH V10 7/8] on Arch specific patch-set
+> Link: https://lore.kernel.org/qemu-devel/D1FS5GOOFWWK.2PNRIVL0V6DBL@gmail.com/ 
+> Link: https://lore.kernel.org/qemu-devel/87frubi402.fsf@draig.linaro.org/
+> 
+> Patch-set  V9 -> V10
+> 1. Addressed Nicholas Piggin's (IBM) & Philippe Mathieu-Daudé (Linaro) comments
+>    - carved out kvm_unpark_vcpu and added its trace
+>    - Widened the scope of the kvm_unpark_vcpu so that it can be used by generic framework
+>      being thought out
+> Link: https://lore.kernel.org/qemu-devel/20240519210620.228342-1-salil.mehta@huawei.com/
+> Link: https://lore.kernel.org/qemu-devel/e94b0e14-efee-4050-9c9f-08382a36b63a@linaro.org/
+> 
+> Patch-set  V8 -> V9
+> 1. Addressed Vishnu Pajjuri's (Ampere) comments
+>    - Added kvm_fd to trace in kvm_create_vcpu
+>    - Some clean ups: arch vcpu-id and sbd variable
+>    - Added the missed initialization of cpu->gdb_num_regs
+> 2. Addressed the commnet from Zhao Liu (Intel)
+>    - Make initialization of CPU Hotplug state conditional (possible_cpu_arch_ids!=NULL)
+> Link: https://lore.kernel.org/qemu-devel/20240312020000.12992-1-salil.mehta@huawei.com/
+> 
+> Patch-set V7 -> V8
+> 1. Rebased and Fixed the conflicts
+> 
+> Patch-set  V6 -> V7
+> 1. Addressed Alex Bennée's comments
+>    - Updated the docs
+> 2. Addressed Igor Mammedov's comments
+>    - Merged patches [Patch V6 3/9] & [Patch V6 7/9] with [Patch V6 4/9]
+>    - Updated commit-log of [Patch V6 1/9] and [Patch V6 5/9]     
+> 3. Added Shaoqin Huang's Reviewed-by tags for whole series.
+> Link: https://lore.kernel.org/qemu-devel/20231013105129.25648-1-salil.mehta@huawei.com/
+> 
+> Patch-set  V5 -> V6
+> 1. Addressed Gavin Shan's comments
+>    - Fixed the assert() ranges of address spaces
+>    - Rebased the patch-set to latest changes in the qemu.git
+>    - Added Reviewed-by tags for patches {8,9}
+> 2. Addressed Jonathan Cameron's comments
+>    - Updated commit-log for [Patch V5 1/9] with mention of trace events
+>    - Added Reviewed-by tags for patches {1,5}
+> 3. Added Tested-by tags from Xianglai Li
+> 4. Fixed checkpatch.pl error "Qemu -> QEMU" in [Patch V5 1/9] 
+> Link: https://lore.kernel.org/qemu-devel/20231011194355.15628-1-salil.mehta@huawei.com/
+> 
+> Patch-set  V4 -> V5
+> 1. Addressed Gavin Shan's comments
+>    - Fixed the trace events print string for kvm_{create,get,park,destroy}_vcpu
+>    - Added Reviewed-by tag for patch {1}
+> 2. Added Shaoqin Huang's Reviewed-by tags for Patches {2,3}
+> 3. Added Tested-by Tag from Vishnu Pajjuri to the patch-set
+> 4. Dropped the ARM specific [Patch V4 10/10]
+> Link: https://lore.kernel.org/qemu-devel/20231009203601.17584-1-salil.mehta@huawei.com/
+> 
+> Patch-set  V3 -> V4
+> 1. Addressed David Hilderbrand's comments
+>    - Fixed the wrong doc comment of kvm_park_vcpu API prototype
+>    - Added Reviewed-by tags for patches {2,4}
+> Link: https://lore.kernel.org/qemu-devel/20231009112812.10612-1-salil.mehta@huawei.com/
+> 
+> Patch-set  V2 -> V3
+> 1. Addressed Jonathan Cameron's comments
+>    - Fixed 'vcpu-id' type wrongly changed from 'unsigned long' to 'integer'
+>    - Removed unnecessary use of variable 'vcpu_id' in kvm_park_vcpu
+>    - Updated [Patch V2 3/10] commit-log with details of ACPI_CPU_SCAN_METHOD macro
+>    - Updated [Patch V2 5/10] commit-log with details of conditional event handler method
+>    - Added Reviewed-by tags for patches {2,3,4,6,7}
+> 2. Addressed Gavin Shan's comments
+>    - Remove unnecessary use of variable 'vcpu_id' in kvm_par_vcpu
+>    - Fixed return value in kvm_get_vcpu from -1 to -ENOENT
+>    - Reset the value of 'gdb_num_g_regs' in gdb_unregister_coprocessor_all
+>    - Fixed the kvm_{create,park}_vcpu prototypes docs
+>    - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,10}
+> 3. Addressed one earlier missed comment by Alex Bennée in RFC V1
+>    - Added traces instead of DPRINTF in the newly added and some existing functions
+> Link: https://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.mehta@huawei.com/
+> 
+> Patch-set V1 -> V2
+> 1. Addressed Alex Bennée's comments
+>    - Refactored the kvm_create_vcpu logic to get rid of goto
+>    - Added the docs for kvm_{create,park}_vcpu prototypes
+>    - Splitted the gdbstub and AddressSpace destruction change into separate patches
+>    - Added Reviewed-by tags for patches {2,10}
+> Link: https://lore.kernel.org/qemu-devel/20230929124304.13672-1-salil.mehta@huawei.com/
+> 
+> References:
+> 
+> [1] https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@huawei.com/
+> [2] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
+> [3] https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongson.cn/
+> 
+> 
+> 
+> Salil Mehta (8):
+>   accel/kvm: Extract common KVM vCPU {creation,parking} code
+>   hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
+>   hw/acpi: Update ACPI GED framework to support vCPU Hotplug
+>   hw/acpi: Update GED _EVT method AML with CPU scan
+>   hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
+>   physmem: Add helper function to destroy CPU AddressSpace
+>   gdbstub: Add helper function to unregister GDB register space
+>   docs/specs/acpi_hw_reduced_hotplug: Add the CPU Hotplug Event Bit
+> 
+>  accel/kvm/kvm-all.c                    | 95 +++++++++++++++++---------
+>  accel/kvm/kvm-cpus.h                   | 23 +++++++
+>  accel/kvm/trace-events                 |  5 +-
+>  docs/specs/acpi_hw_reduced_hotplug.rst |  3 +-
+>  gdbstub/gdbstub.c                      | 13 ++++
+>  hw/acpi/acpi-cpu-hotplug-stub.c        |  6 ++
+>  hw/acpi/cpu.c                          | 33 ++++++---
+>  hw/acpi/generic_event_device.c         | 21 ++++++
+>  hw/core/cpu-common.c                   |  1 -
+>  hw/i386/acpi-build.c                   |  3 +-
+>  include/exec/cpu-common.h              |  8 +++
+>  include/exec/gdbstub.h                 |  6 ++
+>  include/hw/acpi/cpu.h                  |  5 +-
+>  include/hw/acpi/cpu_hotplug.h          |  4 ++
+>  include/hw/acpi/generic_event_device.h |  4 ++
+>  include/hw/core/cpu.h                  |  1 +
+>  system/physmem.c                       | 29 ++++++++
+>  17 files changed, 212 insertions(+), 48 deletions(-)
+> 
+> -- 
+> 2.34.1

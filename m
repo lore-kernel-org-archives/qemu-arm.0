@@ -1,100 +1,100 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2004107ejs;
-        Sun, 2 Jun 2024 22:49:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXC98oUSKDbMUC7PQ96kPNhREBtGJC7xJg9xPXlBhfvoOyO/+NcfKUFGQ5hHPDgmPCPP8IM/79ROg+111skQwFJrsLRf9Pk
-X-Google-Smtp-Source: AGHT+IGJx4d9l2Ntlzf5ipt/g4Si4Y6MkdS477d45CxcPFSvrqFxjwlBIRvYvFyznQPruVgcDCMd
-X-Received: by 2002:a05:620a:13d5:b0:792:9eaa:b562 with SMTP id af79cd13be357-794f5c8b892mr851634585a.33.1717393750011;
-        Sun, 02 Jun 2024 22:49:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717393749; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2004166ejs;
+        Sun, 2 Jun 2024 22:49:23 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW2dzTpoNL3rgV+xh8Y2UcXgYX2vhHzy1N6/S4CwcYWwvXEaS/LOAGkHfmbGUslDWK2mZMXiX5GAmwULf09kKbzjWkhoEhT
+X-Google-Smtp-Source: AGHT+IGTpQS7mHx30cLdspLBflI+4ixyOTuAZp+NZZbxuKtsCAN1g+KeU/VzGJum5cYeLImITi+g
+X-Received: by 2002:a05:620a:4509:b0:790:afc5:123b with SMTP id af79cd13be357-794f5c883a3mr1089623985a.46.1717393762777;
+        Sun, 02 Jun 2024 22:49:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717393762; cv=none;
         d=google.com; s=arc-20160816;
-        b=DMIjecEqFcESyQ6nuiWCpv02eaKsfMNg65ZZZZS76xYA1k6ZNHyVAKDeagfgPNNZgc
-         wq7/4tWvJBRzfY6W7ABqEAWN501xGnabWZEwsXtWJNipnoHGof4qSPtERqR3GIZGe+27
-         a1pvXevF6sssmoLzpM46DvZYFerBmUh/nKw0Ey6EB/mQSNfm0ZZhgylnWwgBQvX9rsNO
-         xfJfaul++/HYcf7jGpxuV/mMps3a6zju0eUrrtSk7SKjRHq450wU35l6wEhnWu2Zt9oI
-         EYJfIm+hY6Nl02gEL8UWUe/EMqlzPNnyKUGrpbK3pein+M0XP7h247b95qDJxIbsHuL6
-         c33w==
+        b=D5OEQT2eTtV0MpCPiJJalOFbNG53IvEzoLzjv1yRLU+l4rgSLbFtDWwnn0AnyPHp+D
+         qfhjX4veHQsD2rWMqFYaDyIZYzOzgy72xz1AEXJjuaEyYYgPRNoLGcrbxGmtaj9d/dip
+         MArpVQIH0YPp6aioqkaYRvkBobCIYRkKHRfpkjjQtmdIr6e+ueFnPFXlbVnWhb6Ydhxx
+         LLkIRObBRWZ5Hn5vfAzPvWD+maWOmD8CVXqBhp7cQMWFWuBwPWYQGdFdCJyG58rFaR1I
+         mfI3E8mv+4yxldukOWscID0ZdAZc71Y7GtYHgB6dUYYdKyVkIOPnFjKmP9L0ohD47uBY
+         EzWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=cIMV2nOWBCTz/Oo6LeglZMbxXhMl+MsC5E+aszYQKEM=;
+        bh=GVZpJhKtEcd9YCJGkGQF9gaW6VhHFLErv6FyXahbmsc=;
         fh=ppxrqpvAh8R6w81prY3bRtiwFppR56AWCCbOGauoMLA=;
-        b=duIqssg1UwRjehw1PTRn8KAw6X/pbRdfzl0EVmWo/mh8RurrlRLqzb/YWAuxlIZiph
-         /IdmC3X7M6BPft+mrodpeUCppVABUW4SJIPxGWTWVnj+vTRnFzuSnEGsN9k5sWzmo2Be
-         9SGtEFIQK3UFdjTBLGSis1Kf9qPwcl5DMC0h1IUQo4Z9O/YSi8C5IJQDvxbg1hiVetuK
-         CpOziAomS8GAbmuLAeOJT5CIxRhy77V4x6Ltr+R1v6z5BmkYqzXUDek3Wfahah+k03ww
-         I8R3z86TPT4L9en0FS2omYfUv3xb3E3ipUGNtigKsinIZD/Sfu3GIpmjrT8zgegA3+me
-         vkow==;
+        b=JZXf6rgreMW+XZMXSc7jMsA4Vap+qSKHxBRVG/dKi0MjRQGY9RavpIrcUoimcsJZ2R
+         79oLrDfwh2fOm75Ggv5LA3Z1nVcGoMedVZ4EGWar6O4NnspaoOxn+4iDRdwppJd/XZN9
+         HaFtjZikYpQxmOlKWQ+hPlPA5l30KAcVOjZ1IdoXLp84wdOPbNc8EnS0JyByzUJ3qWgF
+         CGZyThw5mAPXJtsoicj/LDZVInRTeZ6UxGXNNWlBvXAnemipaAfeWpwn067Hnko6/vf/
+         vNvJO37ZpBQ75isiYUt4qB9LVD2la2PpBGstjNBlIkayw6DYVvCmD3pjtZQtREuVB+Ua
+         210g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=ABMpQgkx;
+       dkim=pass header.i=@sifive.com header.s=google header.b=DtdQalAw;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-794f32a7397si793500185a.618.2024.06.02.22.49.09
+        by mx.google.com with ESMTPS id af79cd13be357-794f32a5323si747305285a.589.2024.06.02.22.49.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Jun 2024 22:49:09 -0700 (PDT)
+        Sun, 02 Jun 2024 22:49:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=ABMpQgkx;
+       dkim=pass header.i=@sifive.com header.s=google header.b=DtdQalAw;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sE0YH-00008q-Ed; Mon, 03 Jun 2024 01:48:13 -0400
+	id 1sE0YL-0000BT-84; Mon, 03 Jun 2024 01:48:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fea.wang@sifive.com>)
- id 1sE0YF-000088-K2
- for qemu-devel@nongnu.org; Mon, 03 Jun 2024 01:48:11 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+ id 1sE0YK-0000B9-C0
+ for qemu-devel@nongnu.org; Mon, 03 Jun 2024 01:48:16 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <fea.wang@sifive.com>)
- id 1sE0YD-0005Hs-3C
- for qemu-devel@nongnu.org; Mon, 03 Jun 2024 01:48:11 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-1f4c7b022f8so36082905ad.1
- for <qemu-devel@nongnu.org>; Sun, 02 Jun 2024 22:48:08 -0700 (PDT)
+ id 1sE0YI-0005OH-Sq
+ for qemu-devel@nongnu.org; Mon, 03 Jun 2024 01:48:16 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-1f62fae8c1aso24071915ad.3
+ for <qemu-devel@nongnu.org>; Sun, 02 Jun 2024 22:48:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1717393687; x=1717998487; darn=nongnu.org;
+ d=sifive.com; s=google; t=1717393693; x=1717998493; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cIMV2nOWBCTz/Oo6LeglZMbxXhMl+MsC5E+aszYQKEM=;
- b=ABMpQgkximJF4pdY0/0yqQ4X1Wq55FXsv8VWPfGkbL0/qi5Tg0g+u7DPtYaLbhFTqZ
- 4j/T5yDY8BJ416mk9DCh7i5/p2QZtXpkpdiiSqBu5Wqu8zNtg1jfik7/OXa9sDX3/ELe
- A32jh1f96EITmVeyxQ/RXNPLmWlzF5rKg9sJEo1Gu9gDU6BJF1ZssLpntiAmOqECQwdG
- p5zUdaBOXnd+dYqUAnoTMFtEN+ry89YuYp3fwWgRp11XNiqMldiKnQFqVNYx4pSCvXXf
- /H0vI8NadFGkwEK0TeXCNTH/wX0JDGMjzeGKn21t02mBdO4uuw7M6waqzH731CWRKKNI
- ixjQ==
+ bh=GVZpJhKtEcd9YCJGkGQF9gaW6VhHFLErv6FyXahbmsc=;
+ b=DtdQalAwp3XkTppTR1nIifPAc7lC7PDZiJeVE07pXmA+CGa0cMTIvfBQbgA9XXZu9C
+ GqHXtXB8JgU5ShZLZCdVIRb2HdxdQb5VzZ9u/0VK1XK6BNgjqEVIhfSLfkXZq47lLBwM
+ z63zjrwJ/dkr8yWEwKEcN9IPa6Lb2PPaer6zHcq1/axOHlDqy+HYd+WZN86qd8PFoM6y
+ lUCv1bC8wkAmYIzQGzoppTbN1Ao7wIuLc2qqdz7Pjvb8srdCSdPyIqn1up3wC0KrgVia
+ p8pyhokf9JyuMZEz+VjExw1KGDYb16TstlsQI+omQpIWTTDg9LSudc4UxUaRPBqAlHrJ
+ E6mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717393687; x=1717998487;
+ d=1e100.net; s=20230601; t=1717393693; x=1717998493;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=cIMV2nOWBCTz/Oo6LeglZMbxXhMl+MsC5E+aszYQKEM=;
- b=J76HqRg7vlJfYLv/fQORtA6yyx024rl3PEHWsmit5xMvUZfMFBgPjcPP4jLgPpXyV1
- sS5sbwl+Exq1sacs60PCR7/tK8b6dEZqSK/JBisIS7h33Tj4op6y1reXXzsR3V+m/qJJ
- rADNOOjq4IC/535MfMwdMRNjpS3DW3mFUxLh0CUj4M+P7cpwGkwNoSohgX0xunKtctRI
- 2qvIHHweN57PYZCXtVB6uMP2LcdXnM3pOOSIMchMBAKHHaOhmsnKX9L7XbW0oKtN+vE9
- 3MNoBM+0Oy51p7PyAGt7Ky5GY6tJYW03lLHDArHAZCuroF3acrRcws4ounqovDunykdu
- XiQw==
-X-Gm-Message-State: AOJu0YxoeJi94f6cXIUvjodIDS2gUd0FF0Ivq46xL2XXRvuDjO5a4+85
- EN7Dv7L/dYH3ZllKaxcYoDIvmF9vAPrA14Z5GQ9H9YhdAn42WTrrTPwT+uxNEzLkPSK4rHeh099
- ScqE2xiJKX/pcolEESdUn3Js5we0Acdzca4sQ835KX5YszddvwM6G3Eg0lKOgRx9PRoIsjrRFYj
- ryREzp82KN4il3i0JyaSredeSoxRz/K9XoG5o=
-X-Received: by 2002:a17:903:30cd:b0:1f4:7d47:b889 with SMTP id
- d9443c01a7336-1f6370209femr66241885ad.30.1717393686959; 
- Sun, 02 Jun 2024 22:48:06 -0700 (PDT)
+ bh=GVZpJhKtEcd9YCJGkGQF9gaW6VhHFLErv6FyXahbmsc=;
+ b=aob6qz7VoTMUFC+dhkAYV7GXhHVQeXlB1fiZAU4ixPZUV/yJ2xZPqhZaJE3RTRuuYO
+ ERk3UXwC/x+gz1zfwVFy7MnzB4PJ8M6Esn0MQuGoF3mqBC6FF994xNlpSpAGsdOFLyuF
+ W6DNdb3EYmNy9dVKsQaohbAilSguJSoDHU5EjcWpycluQWW3Zc1EyrGptvM+7bSDNs52
+ AWHjrTZ2NQnkD/5eksBzX+C21T6v0ydPl0atUUplpzFnvZV7MBa2Gj3Go/1B6kRIX7oF
+ Fee/b1Ss7Ws2Wt4No9Db8u8IcdqNLa07Pe9UQae1wapOeLI2o2nOpXiE/E+2sKvak4fW
+ hM2g==
+X-Gm-Message-State: AOJu0YzD6VogInyun3bgjR//uR4Vs5RynIqBGDpK0NGLauj3Eza75ptu
+ JY4rCSnDq6xXgv09JilC0pLNcNBKC5R7+AyxaFmDLhxA1p7Nu60wa2RELGm/e8wO61qT6Aw1ua2
+ UlrWibZv3J99qQyZ8sV0KMMWOk7X/PyCLJSAam3GfLPeeYjYQxRlULfG2bU6ajkABZkTwpks/tC
+ k+lp6VaGtSP3ZPYTM8IfpEQNr0mIDhVS3qhwU=
+X-Received: by 2002:a17:902:f908:b0:1f4:8faa:cd68 with SMTP id
+ d9443c01a7336-1f63702346cmr69194085ad.29.1717393693229; 
+ Sun, 02 Jun 2024 22:48:13 -0700 (PDT)
 Received: from hsinchu36-syssw02.internal.sifive.com
  (59-124-168-89.hinet-ip.hinet.net. [59.124.168.89])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f63241e085sm55824135ad.299.2024.06.02.22.48.05
+ d9443c01a7336-1f63241e085sm55824135ad.299.2024.06.02.22.48.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 02 Jun 2024 22:48:06 -0700 (PDT)
+ Sun, 02 Jun 2024 22:48:12 -0700 (PDT)
 From: "Fea.Wang" <fea.wang@sifive.com>
 To: qemu-devel@nongnu.org,
 	qemu-riscv@nongnu.org
@@ -103,16 +103,16 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
  qemu-arm@nongnu.org (open list:Xilinx Zynq),
  "Fea.Wang" <fea.wang@sifive.com>
-Subject: [PATCH 2/4] hw/dma: Break the loop when loading descriptions fails
-Date: Mon,  3 Jun 2024 13:52:46 +0800
-Message-Id: <20240603055248.3928469-3-fea.wang@sifive.com>
+Subject: [PATCH 4/4] hw/net: Fix the transmission return size
+Date: Mon,  3 Jun 2024 13:52:48 +0800
+Message-Id: <20240603055248.3928469-5-fea.wang@sifive.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240603055248.3928469-1-fea.wang@sifive.com>
 References: <20240603055248.3928469-1-fea.wang@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=fea.wang@sifive.com; helo=mail-pl1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=fea.wang@sifive.com; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -134,43 +134,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lY8kCGCisPDT
+X-TUID: 5H/UZBKnUsB5
 
-When calling the loading a description function, it should be noticed
-that the function may return a failure value. Breaking the loop is one
-of the possible ways to handle it.
+Fix the transmission return size because not all bytes could be
+transmitted successfully. So, return a successful length instead of a
+constant value.
 
 Signed-off-by: Fea.Wang <fea.wang@sifive.com>
 ---
- hw/dma/xilinx_axidma.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ hw/net/xilinx_axienet.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-index 4b475e5484..b8ab5a423d 100644
---- a/hw/dma/xilinx_axidma.c
-+++ b/hw/dma/xilinx_axidma.c
-@@ -291,7 +291,9 @@ static void stream_process_mem2s(struct Stream *s, StreamSink *tx_data_dev,
-     }
+diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+index 7d1fd37b4a..05d41bd548 100644
+--- a/hw/net/xilinx_axienet.c
++++ b/hw/net/xilinx_axienet.c
+@@ -847,7 +847,7 @@ static ssize_t eth_rx(NetClientState *nc, const uint8_t *buf, size_t size)
+     axienet_eth_rx_notify(s);
  
-     while (1) {
--        stream_desc_load(s, s->regs[R_CURDESC]);
-+        if (MEMTX_OK != stream_desc_load(s, s->regs[R_CURDESC])) {
-+            break;
-+        }
+     enet_update_irq(s);
+-    return size;
++    return s->rxpos;
+ }
  
-         if (s->desc.status & SDESC_STATUS_COMPLETE) {
-             s->regs[R_DMASR] |= DMASR_HALTED;
-@@ -348,7 +350,9 @@ static size_t stream_process_s2mem(struct Stream *s, unsigned char *buf,
-     }
- 
-     while (len) {
--        stream_desc_load(s, s->regs[R_CURDESC]);
-+        if (MEMTX_OK != stream_desc_load(s, s->regs[R_CURDESC])) {
-+            break;
-+        }
- 
-         if (s->desc.status & SDESC_STATUS_COMPLETE) {
-             s->regs[R_DMASR] |= DMASR_HALTED;
+ static size_t
 -- 
 2.34.1
 

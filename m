@@ -1,127 +1,125 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2066829ejs;
-        Mon, 3 Jun 2024 01:24:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUWOqc9GDf8cvBe7/caRBlhc2WkoGA3rxzIikFH+7c4rgWyyfjTpIVUkobJToFRZPsy/0vc7+RSXb88MeDrs4rLnK1TN0+Q
-X-Google-Smtp-Source: AGHT+IGB1fC8pX8eZrZKAK9auWlRJ+6KL/vF4O7uVrlMK9ES4KTKYs57I4T+rNBPPqNPY7BtqdRJ
-X-Received: by 2002:a05:622a:14d:b0:43f:ed86:45c2 with SMTP id d75a77b69052e-43ff551ce7cmr125249861cf.56.1717403065712;
-        Mon, 03 Jun 2024 01:24:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717403065; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2249575ejs;
+        Mon, 3 Jun 2024 06:45:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXMPW1KdEIJSa9+qzIG2ztUaOitibGor0eSmQ70PiWPu01XI5qeML2s9qVrI7rppr/KYPTcB6ykZez7hTO6g4vPmXbpWKZu
+X-Google-Smtp-Source: AGHT+IHXc6g8ahpQZnj+gwH1626sVgSmUV9c2Oq/6/RUZJI/ojIJi60BX6CK/PN6cZ9Pf6F2h+Hy
+X-Received: by 2002:a05:6214:3204:b0:6ae:abc:82fe with SMTP id 6a1803df08f44-6aecd59a276mr99889626d6.27.1717422352433;
+        Mon, 03 Jun 2024 06:45:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717422352; cv=none;
         d=google.com; s=arc-20160816;
-        b=Onss0x4fcW2KzH2ByoZqcFcGHRZ/HXcbiOgNzbem19LKMDZFTeikLFGpr7q6c3zfL5
-         HZwfgphZ29sZPMjx1db62X+g6cbBFNClh6Zfi6sXrWv196rpFacThXAddiIoy77yTiAm
-         3KLkfovnlwf/Dg/QqwLr/xoClRBRJuFYS7HP/2vIxBhsi8kqjjUrXmHZ5sptft5aY+4G
-         FAxkAQXri4IKtM2p4kvmTiOeMv8o5w8++vRLQS65/qMCWmWdXlQ3t7OGGQx7Pyg4cs2P
-         F8XxeaYcyqKhD0abehHCPLAsAt4T5pfZTRnl63F62Zr02UTgMdqM8ouZilRMqJiVlxft
-         4Ncw==
+        b=WwuEUeI88TkcdAhS8J3OPCy48/V2/vh4ZvhTS/isYHvg4AdRpppWfPpWt9w+K8op+U
+         35Rbv6O4XC7RvG+j15rI1IVz4kgzenLufubstS/mq2ne5NLQfJ3Itw7qHSKhaANVA+r0
+         2vfC7xam832OZRBik2rOKJY3r0PYoxgyMPvZzDoZ57j9ZO6l+/f15CKfq7xGiAR3x8Jh
+         z8ewlhRQeeskpD5ByEns8uDcCvfge9L3SR5UWbdbcN59m9RXfM5SrfdqYwqV1CxH3x8/
+         Xhno+/qahbGbAJ//11pRbj/0AEfiuNuqwYBBRSMGoXThzb7UvIXxuo/lNOx6+jN9wciz
+         yQHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=3HX8JrmOtAhh8WIgP6il8d9RXEl7zoJXJAvY2kVhcmw=;
-        fh=EZjqxU63RlDJEMdRckSaoNmznXILLPJr2G60Sgh6cQk=;
-        b=qv062vFMQKhczztMBYiWPNGv5HEeKh1rBAPdFk7mv6mkOqE3t5fZHZe4pGSeM80Jpr
-         rPCIykmDBBQvoJ3CFUvMzITlR1vlDaPVu3sRjlM+Y5i4/M4+Ui1rfO5JJhcub+zrPcc5
-         mO4CmPmJ3eSTPKURjAga8gq7LbXr871BLn4B1ZFUJEyjH3ozSTfAO/y8MuRMnyL5vQX/
-         C6yZImqFJOrDQqAa1qNbv1pDR/jVq1Dr+Rx2iwOsQB/XFl9Qv088aC6YEpU61HfPz3/h
-         P8QI3OR2iBK8pTf5ZvTAOjXI4lsXqePOx/hTJqPgHl8+xp8JqZmFHgJyo4HykcpJSh/5
-         QIRA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Vrc3zH2saHzPO80cYyYmvOtq7S4VVkmPp9w28dycxf0=;
+        fh=+g3MmMOB9C8Qud+eVhIpzoazYE+JzT5b8axOMo+uQZU=;
+        b=LhOfjOnE7MCE5ZN5kRJSKlwREFxe9yj7MiAb1+dovEAof97zd3zPnMKKV9/uPqilqn
+         tFoSu+xeUkwv61Zsirez2lKH6cH6qzPUXrNrhvMpY//cxZgd3jOKrIfbKuD+iqjoG9te
+         AauubbSWaJUdibYqYLPHO0yq4JHoy3QGIWW+nm6eekQiWWG4+/DcFjqfVZWT1nRLsSZD
+         AJGsbs8oXsWbf1cqbvAqo4RpDUfNcnzF0gUU5tS4DxgpmO97CErScOCrdo4PB3OQy2NY
+         HOZgMZMonxN4hXSOhEAopAGCh3KHqtIBp2l2OSFXRQyTlj6di8KPWFO6dufqq5A+rI76
+         6ISg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rlsnGUNN;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=AQ0BwBF+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43ff2468bb8si81950531cf.343.2024.06.03.01.24.25
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4b415362si73557466d6.328.2024.06.03.06.45.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jun 2024 01:24:25 -0700 (PDT)
+        Mon, 03 Jun 2024 06:45:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rlsnGUNN;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=AQ0BwBF+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sE2z3-0003Bv-MF; Mon, 03 Jun 2024 04:24:01 -0400
+	id 1sE80C-0003xg-Al; Mon, 03 Jun 2024 09:45:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1sE2z2-0003Bb-Pj
- for qemu-arm@nongnu.org; Mon, 03 Jun 2024 04:24:00 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1sE2ys-0007EZ-0d
- for qemu-arm@nongnu.org; Mon, 03 Jun 2024 04:24:00 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-35dce610207so1830702f8f.2
- for <qemu-arm@nongnu.org>; Mon, 03 Jun 2024 01:23:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1717403027; x=1718007827; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=3HX8JrmOtAhh8WIgP6il8d9RXEl7zoJXJAvY2kVhcmw=;
- b=rlsnGUNNJbMXgsO5SCqfksxgW1T4yRcbA65DN638kU4ADpb+xZ/4/MW4Fd7cm5qhKu
- jIMR+R/RKzDhV3JUjdmeGJKnBxITS50YuivehHR/5aqBojov0arpAPDPtnMsfZVQzXxq
- hR6EbIueazbt3LaKijIy3SuNiGexsNP0fvrp7FsPFN12xjdfitSWlQf+FqSMVoss8m0m
- VLlRAgpqFNLmeymRJSBNfUvzUdFjYWbuCsdrN8lM8eHqktE9KIcXInY5JWQjsuq9EXVS
- aziooEpwLaQGMlh7IQq3/YwGdojjeco3LAD4QiNjWJMDs0RXvG1ZqYA003RKtzyNGWQ6
- HyXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717403027; x=1718007827;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=3HX8JrmOtAhh8WIgP6il8d9RXEl7zoJXJAvY2kVhcmw=;
- b=CbIljdwAti+keFIYkpzf3otvyQw1Ba+rhkMmG0tWS9XrLCZ3ZMQ79r0jgguZupvBoo
- JmEWbI1BTGNouOeUfyg3bHpSSNskeSsfVRbQuvTzx1Sg356hu4gD90kJgcIB38TgAJS7
- 4RA/1xCgqXk3hQE6vuUaV9lTqNbgrlwQQ+C2UQMNjwbL2sUJVOJhevfHGkIkGn3TRGkv
- pcCdY9ysOByLnmrtxEGO3oNJFSzL9TbXzhD3Dt6EDPgDsK2XWeMtVEsuHRA79SDuajv2
- fo9D15uQgJPgN3bTv4X8akRhIXvyTNp4Sqxudy97E67sXwisJwJO8qYqwxGGFPzjrdJ0
- lTlw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX0BzPjNaZYzrJJqoZkIdVP2P2IO9dr211JMHFnG7F0BgBWUTmlufqecJ93kMXHtMITKnro+R7iBOSvQX/DOONeeCt+
-X-Gm-Message-State: AOJu0Yz3k4c7sQVO+coAg6csSTcmWV2xVi+CPFJX1NpPQQlYGdYXsWDk
- 9NB/uFs/H3OR3Y5m42l4IhyRzM8oI4ykRiNEX4k8L42ClTBgqVzi1a/6N0PYy3s=
-X-Received: by 2002:a5d:64ad:0:b0:35d:c988:6bd7 with SMTP id
- ffacd0b85a97d-35e0f281d6fmr9772583f8f.32.1717403027352; 
- Mon, 03 Jun 2024 01:23:47 -0700 (PDT)
-Received: from myrica ([2.221.137.100]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-35dd04c0e84sm8063840f8f.13.2024.06.03.01.23.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Jun 2024 01:23:46 -0700 (PDT)
-Date: Mon, 3 Jun 2024 09:24:02 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Gavin Shan <gshan@redhat.com>
-Cc: Itaru Kitayama <itaru.kitayama@linux.dev>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ard Biesheuvel <ardb@kernel.org>
-Subject: Re: Unexpected error in rme_configure_one() at
- ../target/arm/kvm-rme.c:159
-Message-ID: <20240603082402.GA25688@myrica>
-References: <0C6F517A-5686-4BCE-8D08-1CED02CB470E@linux.dev>
- <4e7aa598-1a5d-47e1-aaa3-78af05947eeb@linaro.org>
- <CB05CAA2-9301-45F6-8AE3-A2E27A160CDF@linux.dev>
- <cbd630d7-01e8-49ba-9c8b-a6514d898ed2@redhat.com>
- <20240531150922.GA83195@myrica>
- <bd1f84bd-e23c-4f4b-bc0b-a2a1b70081f4@redhat.com>
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1sE80A-0003x4-Vs; Mon, 03 Jun 2024 09:45:31 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1sE809-0004O6-24; Mon, 03 Jun 2024 09:45:30 -0400
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 453AkJEN008725;
+ Mon, 3 Jun 2024 13:45:06 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ Vrc3zH2saHzPO80cYyYmvOtq7S4VVkmPp9w28dycxf0=; b=AQ0BwBF+vsefu8Mw
+ JwlWgYXZbTn/sXJCSWkaIAF2hExJ/gWZuOKgcoJk7PvC0ODgzWTWFNaVaeT+lA1/
+ /FDtC2LXtVGXVMzanp9njYsgCEKx3tiaHdAAaEPibjSYex5V/sx/wrnbl2v3gbiI
+ ODggqplALwO8V64VqD0Wp4cUQWEjkqiUi15PhVG9cFD4nS4rpeLGyS4n4wPdFf7C
+ HcsTOjdWuu7cIOKG722CLIdBMoWQf2Ucgt+2KnGSOKJPAEC8BNfVWt2bUC+dEO/v
+ xy0E/MlgnSdIxAtXOLIaj8pqpL4yNW595vmwUuA46MeqRyU5zl4KkpDmyNVEb2qq
+ FCdFFA==
+Received: from nasanppmta04.qualcomm.com (i-global254.qualcomm.com
+ [199.106.103.254])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3yfw6qm294-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 03 Jun 2024 13:45:05 +0000 (GMT)
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
+ [10.45.79.139])
+ by NASANPPMTA04.qualcomm.com (8.17.1.5/8.17.1.5) with ESMTPS id 453Dj4ek021230
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 3 Jun 2024 13:45:04 GMT
+Received: from [10.111.137.228] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Mon, 3 Jun 2024
+ 06:45:03 -0700
+Message-ID: <5fcb50de-6a6d-4f97-b384-a79d99508a21@quicinc.com>
+Date: Mon, 3 Jun 2024 14:45:01 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <bd1f84bd-e23c-4f4b-bc0b-a2a1b70081f4@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x433.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: switch to 1GHz timer frequency
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, <qemu-devel@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Radoslaw Biernacki
+ <rad@semihalf.com>, <qemu-arm@nongnu.org>
+References: <20240531093729.220758-1-marcin.juszkiewicz@linaro.org>
+ <20240531093729.220758-2-marcin.juszkiewicz@linaro.org>
+Content-Language: en-GB
+From: Leif Lindholm <quic_llindhol@quicinc.com>
+In-Reply-To: <20240531093729.220758-2-marcin.juszkiewicz@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-GUID: BfDXCE8YiKpea6Y1Oiy9m9K5WkgMMIUh
+X-Proofpoint-ORIG-GUID: BfDXCE8YiKpea6Y1Oiy9m9K5WkgMMIUh
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.12.28.16
+ definitions=2024-06-03_09,2024-05-30_01,2024-05-17_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ bulkscore=0 mlxlogscore=999 clxscore=1015 impostorscore=0 malwarescore=0
+ mlxscore=0 adultscore=0 lowpriorityscore=0 suspectscore=0 spamscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2405170001 definitions=main-2406030114
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=quic_llindhol@quicinc.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,140 +134,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yPHtAF2KqK7b
+X-TUID: QIzXZd6CZvxF
 
-Hi Gavin,
+On 2024-05-31 10:37, Marcin Juszkiewicz wrote:
+> Updated firmware for QEMU CI is already in merge queue so we can move
+> platform to be future proof.
+> 
+> All supported cpus work fine with 1GHz timer frequency when firmware is
+> fresh enough.
+> 
+> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 
-On Sat, Jun 01, 2024 at 08:14:46PM +1000, Gavin Shan wrote:
-> ---> guest edk2
-> 
-> # git clone https://git.codelinaro.org/linaro/dcap/edk2.git edk2-guest
-> # cd edk2-guest; git checkout origin/cca/v2 -b cca/v2
-> # git submodule update --init --recursive;  \
->   source edksetup.sh; make -j -C BaseTools; \
->   export GCC5_AARCH64_PREFIX=;              \
+Reviewed-by: Leif Lindholm <quic_llindhol@quicinc.com>
 
-Doesn't this needs a cross-compiler, something like "aarch64-linux-gnu-" ?
+Thanks!
 
->   build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemu.dsc
->    :
->   WriteSections64(): /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll AARCH64 small code model requires identical ELF and PE/COFF section offsets modulo 4 KB.
-> cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/OvmfPkg/VirtioFsDxe/VirtioFsDxe/DEBUG/VirtioFsDxe.dll /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/OvmfPkg/VirtioFsDxe/VirtioFsDxe/DEBUG/VirtioFsDxe.debug
-> cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe/DEBUG/PartitionDxe.debug /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/PartitionDxe.debug
-> "gcc" -MMD -MF /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/openssl/crypto/asn1/x_sig.obj.deps @/home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/cc_resp.txt  -c -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/openssl/crypto/asn1/x_sig.obj  /home/gavin/sandbox/CCA/edk2-guest/CryptoPkg/Library/OpensslLib/openssl/crypto/asn1/x_sig.c
-> "GenFw" -e DXE_CORE -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Core/Dxe/DxeMain/OUTPUT/DxeCore.efi /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Core/Dxe/DxeMain/DEBUG/DxeCore.dll
-> GenSec -s EFI_SECTION_USER_INTERFACE -n ArmCpuDxe -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/FV/Ffs/B8D9777E-D72A-451F-9BDB-BAFB52A68415ArmCpuDxe/B8D9777E-D72A-451F-9BDB-BAFB52A68415SEC3.ui
-> cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/DisplayEngineDxe/DisplayEngineDxe/DEBUG/*.map /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/DisplayEngineDxe/DisplayEngineDxe/OUTPUT
-> cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/UdfDxe/UdfDxe/OUTPUT/UdfDxe.efi /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/UdfDxe/UdfDxe/DEBUG
-> GenFw: ERROR 3000: Invalid
->   :
-> build.py...
->  : error 7000: Failed to execute command
-> 	make tbuild [/home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore]
+> ---
+>   hw/arm/sbsa-ref.c | 12 ++++--------
+>   1 file changed, 4 insertions(+), 8 deletions(-)
 > 
-> 
-> build.py...
->  : error F002: Failed to build module
-> 	/home/gavin/sandbox/CCA/edk2-guest/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore.inf [AARCH64, GCC5, DEBUG]
-> 
-> - Failed -
-> Build end time: 05:42:19, Jun.01 2024
-> Build total time: 00:00:31
-> 
-> ---> Use the edk2 image from the latest QEMU source
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index 57c337fd92..7bd6898edf 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -62,16 +62,12 @@
+>   
+>   /*
+>    * Generic timer frequency in Hz (which drives both the CPU generic timers
+> - * and the SBSA watchdog-timer). Older versions of the TF-A firmware
+> - * typically used with sbsa-ref (including the binaries in our Avocado test
+> - * Aarch64SbsarefMachine.test_sbsaref_alpine_linux_max_pauth_impdef
+> - * assume it is this value.
+> + * and the SBSA watchdog-timer). Older (<2.11) versions of the TF-A firmware
+> + * assumed 62.5MHz here.
+>    *
+> - * TODO: this value is not architecturally correct for an Armv8.6 or
+> - * better CPU, so we should move to 1GHz once the TF-A fix above has
+> - * made it into a release and into our Avocado test.
+> + * Starting with Armv8.6 CPU 1GHz timer frequency is mandated.
+>    */
+> -#define SBSA_GTIMER_HZ 62500000
+> +#define SBSA_GTIMER_HZ 1000000000
+>   
+>   enum {
+>       SBSA_FLASH,
 
-Unfortunately this can't work at the moment because edk2 needs several
-changes in order to run in a Realm
-
-> 
-> # cd /home/gavin/sandbox/CCA
-> # cp /home/gavin/sandbox/qemu.main/build/pc-bios/edk2-aarch64-code.fd ./
-> 
-> ---> Start the guest and no output from the console
-> 
-> host# mount | grep 9p
-> shr0 on /mnt/shr0 type 9p (rw,relatime,access=client,trans=virtio)
-> host# export SHR_DIR="/mnt/shr0"
-> host# qemu-system-aarch64 -accel kvm                              \
->       -machine virt,gic-version=3,confidential-guest-support=rme0 \
->       -cpu host -smp 2 -m 512M                                    \
->       -object 'rme-guest,id=rme0,measurement-algo=sha512'         \
->       -monitor none -serial mon:stdio -nographic                  \
->       -bios /mnt/edk2-aarch64-code.fd                             \
->       -kernel ${SHR_DIR}/linux/arch/arm64/boot/Image              \
->       -initrd ${SHR_DIR}/buildroot/output/images/rootfs.cpio      \
->       -append 'console=ttyAMA0'
->         :
->       <no output from the console>
->         :
->       (QEMU) q
-> 
-> There are some messages from host's console indicating RMI/RMM servicing
-> states when the guest is running at background. After the guest is terminated,
-> the host crashes.
-> 
-> SMC_RMM_RTT_CREATE            102dff000 122c2e000 1e00000 3 > RMI_SUCCESS
-> SMC_RMM_RTT_CREATE            102dff000 1234a7000 2000000 3 > RMI_SUCCESS
-> SMC_RMM_RTT_CREATE            102dff000 1235bd000 2200000 3 > RMI_SUCCESS
-> SMC_RMM_RTT_CREATE            102dff000 12387c000 2400000 3 > RMI_SUCCESS
-> SMC_RMM_RTT_CREATE            102dff000 123a5a000 2600000 3 > RMI_SUCCESS
-> SMC_RMM_RTT_CREATE            102dff000 12407d000 2800000 3 > RMI_SUCCESS
-> SMC_RMM_RTT_CREATE            102dff000 124109000 2a00000 3 > RMI_SUCCESS
-> SMC_RMM_RTT_CREATE            102dff000 123e49000 2c00000 3 > RMI_SUCCESS
-> SMC_RMM_RTT_CREATE            102dff000 124275000 2e00000 3 > RMI_SUCCESS
-> SMC_RMM_RTT_CREATE            102dff000 123138000 3000000 3 > RMI_SUCCESS
-> SMC_RMM_RTT_CREATE            102dff000 124d07000 3200000 3 > RMI_SUCCESS
->  :
->  :
-> [22768.994481] rcu: INFO: rcu_preempt self-detected stall on CPU
-
-This is a warning rather than a crash. The current KVM patches spend too
-much time tearing down guest page tables (SMC calls to RMM) while holding
-the mmu lock. Not very nice but harmless.
-
-Thanks,
-Jean
-
-> [22769.006861] rcu: 	3-....: (2751 ticks this GP) idle=93ec/1/0x4000000000000000 softirq=114451/115721 fqs=1160
-> [22769.020475] rcu: 	(t=5257 jiffies g=531913 q=7 ncpus=8)
-> [22769.030547] CPU: 3 PID: 198 Comm: qemu-system-aar Not tainted 6.9.0-rc1-gavin-gfcfc92d6ff07 #1
-> [22769.041847] Hardware name: QEMU QEMU Virtual Machine, BIOS unknown 2/2/2022
-> [22769.050548] pstate: 60402009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> [22769.059382] pc : kvm_realm_unmap_range+0x308/0x32c
-> [22769.070275] lr : kvm_realm_unmap_range+0x304/0x32c
-> [22769.075893] sp : ffff800080a3b930
-> [22769.079929] x29: ffff800080a3b930 x28: 00000000003d7000 x27: 00000000003d6000
-> [22769.092990] x26: 00000000c4000152 x25: ffffffffffffffff x24: 0000000000000000
-> [22769.101150] x23: 0000010000000000 x22: 00000000c4000155 x21: 0000000102dff000
-> [22769.109056] x20: ffff8000801a5e00 x19: 0000000000000000 x18: 0000000000000001
-> [22769.117042] x17: 0000000000000000 x16: 000000000000000e x15: 0000000000000000
-> [22769.124991] x14: 0000ffff7fa14000 x13: 0000000000000002 x12: 000000000010d594
-> [22769.134213] x11: 0000000000000002 x10: 00000000ffffffff x9 : ffffffffffffffff
-> [22769.142951] x8 : 0000000000000000 x7 : 0000000000000000 x6 : 00000000c2dff000
-> [22769.151413] x5 : 0000000102f56000 x4 : 0000000000000015 x3 : 0000000000000000
-> [22769.159932] x2 : 0000000000000000 x1 : 0000000000000000 x0 : 0000000000000000
-> [22769.169674] Call trace:
-> [22769.174026]  kvm_realm_unmap_range+0x308/0x32c
-> [22769.181046]  __unmap_stage2_range+0x60/0x7c
-> [22769.186396]  kvm_free_stage2_pgd+0xa0/0xd4
-> [22769.191766]  kvm_arch_flush_shadow_all+0x1c/0x34
-> [22769.197879]  kvm_mmu_notifier_release+0x30/0x84
-> [22769.203304]  __mmu_notifier_release+0x7c/0x1f8
-> [22769.209340]  exit_mmap+0x264/0x274
-> [22769.213992]  __mmput+0x40/0x150
-> [22769.218635]  mmput+0x50/0x5c
-> [22769.222606]  do_exit+0x288/0x92c
-> [22769.226935]  do_group_exit+0x34/0x90
-> [22769.231359]  get_signal+0x814/0x820
-> [22769.236537]  do_signal+0x90/0x1320
-> [22769.241145]  do_notify_resume+0xc8/0x140
-> [22769.246458]  el0_svc+0xc8/0xdc
-> [22769.250913]  el0t_64_sync_handler+0x13c/0x158
-> [22769.256045]  el0t_64_sync+0x190/0x194
-> 
-> Thanks,
-> Gavin
-> 
-> 
-> 
-> 

@@ -1,100 +1,100 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2004106ejs;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2004107ejs;
         Sun, 2 Jun 2024 22:49:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW1XLPcUL6eFXdYzxaIt5cgOELg+UhR25FCTQfMx9AhRJ9vMgRL7Q16pJZIc6bA5CrJ0gq+ic1BKKSWvBr3l1MQT2bATRkM
-X-Google-Smtp-Source: AGHT+IFO0KrfgCh5+3IY1QvZEKqkyG7BEdiYew0WYPtKnC8DXGEJVVHQnBTrpES6U6QJmmkNa+o5
-X-Received: by 2002:a05:6214:4988:b0:6af:67b2:ff17 with SMTP id 6a1803df08f44-6af67b2ff7bmr42881196d6.59.1717393750112;
+X-Forwarded-Encrypted: i=2; AJvYcCXC98oUSKDbMUC7PQ96kPNhREBtGJC7xJg9xPXlBhfvoOyO/+NcfKUFGQ5hHPDgmPCPP8IM/79ROg+111skQwFJrsLRf9Pk
+X-Google-Smtp-Source: AGHT+IGJx4d9l2Ntlzf5ipt/g4Si4Y6MkdS477d45CxcPFSvrqFxjwlBIRvYvFyznQPruVgcDCMd
+X-Received: by 2002:a05:620a:13d5:b0:792:9eaa:b562 with SMTP id af79cd13be357-794f5c8b892mr851634585a.33.1717393750011;
         Sun, 02 Jun 2024 22:49:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717393750; cv=none;
+ARC-Seal: i=1; a=rsa-sha256; t=1717393749; cv=none;
         d=google.com; s=arc-20160816;
-        b=X7Mfu5EyKtnu/uQWwtv1YXKhfjxZClhtBiDJJBQkeXjLzRUN5+J0ES0m9dKQEDN8gx
-         bjFSV/VEBDYxvtamCkCiOSr7Fhog3fCUUU6nC6SoVQe5YlChlroxcyZeipXV6upfwXa4
-         gfC1e7VTwL/itCoTjF/Yq3YchiDnfVV4swDfNe9l2ai5V9nZbFF6W7qDYNyHolQdNlbX
-         Ifky3TgYn9SiNwVDzdSACchNPQx0q3Kx17IAZvGHB7/nU/YXA2OTAvTUBVJ0Tagy3a3q
-         Cfz4zKlE/tm442jQ9p4tQKegJT1ggGHxkkNpQbUCZ54+uf4NXhDtev5osz74x1VYiRgl
-         jSyQ==
+        b=DMIjecEqFcESyQ6nuiWCpv02eaKsfMNg65ZZZZS76xYA1k6ZNHyVAKDeagfgPNNZgc
+         wq7/4tWvJBRzfY6W7ABqEAWN501xGnabWZEwsXtWJNipnoHGof4qSPtERqR3GIZGe+27
+         a1pvXevF6sssmoLzpM46DvZYFerBmUh/nKw0Ey6EB/mQSNfm0ZZhgylnWwgBQvX9rsNO
+         xfJfaul++/HYcf7jGpxuV/mMps3a6zju0eUrrtSk7SKjRHq450wU35l6wEhnWu2Zt9oI
+         EYJfIm+hY6Nl02gEL8UWUe/EMqlzPNnyKUGrpbK3pein+M0XP7h247b95qDJxIbsHuL6
+         c33w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=GEhvW8mMXGFmnN1YikczckSrxHyJV9SouAqt0p1mFPM=;
+        bh=cIMV2nOWBCTz/Oo6LeglZMbxXhMl+MsC5E+aszYQKEM=;
         fh=ppxrqpvAh8R6w81prY3bRtiwFppR56AWCCbOGauoMLA=;
-        b=MS0bTiFgaKMibu6pge8+j5DRzubZ2s4ima+ts0RekLMKMVlOGuSjBjG+dOQBKaUKHf
-         cK6QnN1nJfTbsInIpWAH4NXxFUyOJwSJf9E36s84p8nuuLgxIy5h6FAjRxY7+XWrxLxD
-         OnEsjgHtpF0rsl4dHGqE+H42RE2SzXoOOmmR6at6HQUwojGeH6B48ddyn6AKd0RnZmP0
-         S/MguNSbKDB/hhJtkVtnHq1WzHEqRqylTI1v4nXs/ggBg+hr4Y+Dcuye4isZCwqlhm8C
-         aMKPaKWtzsIlEFhDzMnESyDvOsV2fJ4xNMByx5CYaHns20Fgej7B6pvQBzNpeP07jcuu
-         Lgtw==;
+        b=duIqssg1UwRjehw1PTRn8KAw6X/pbRdfzl0EVmWo/mh8RurrlRLqzb/YWAuxlIZiph
+         /IdmC3X7M6BPft+mrodpeUCppVABUW4SJIPxGWTWVnj+vTRnFzuSnEGsN9k5sWzmo2Be
+         9SGtEFIQK3UFdjTBLGSis1Kf9qPwcl5DMC0h1IUQo4Z9O/YSi8C5IJQDvxbg1hiVetuK
+         CpOziAomS8GAbmuLAeOJT5CIxRhy77V4x6Ltr+R1v6z5BmkYqzXUDek3Wfahah+k03ww
+         I8R3z86TPT4L9en0FS2omYfUv3xb3E3ipUGNtigKsinIZD/Sfu3GIpmjrT8zgegA3+me
+         vkow==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=OV7FobpQ;
+       dkim=pass header.i=@sifive.com header.s=google header.b=ABMpQgkx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4a732e15si81669786d6.100.2024.06.02.22.49.09
+        by mx.google.com with ESMTPS id af79cd13be357-794f32a7397si793500185a.618.2024.06.02.22.49.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 02 Jun 2024 22:49:10 -0700 (PDT)
+        Sun, 02 Jun 2024 22:49:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=OV7FobpQ;
+       dkim=pass header.i=@sifive.com header.s=google header.b=ABMpQgkx;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sE0Xx-0008Sf-NX; Mon, 03 Jun 2024 01:47:53 -0400
+	id 1sE0YH-00008q-Ed; Mon, 03 Jun 2024 01:48:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fea.wang@sifive.com>)
- id 1sE0Xw-0008RY-6z
- for qemu-devel@nongnu.org; Mon, 03 Jun 2024 01:47:52 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1sE0YF-000088-K2
+ for qemu-devel@nongnu.org; Mon, 03 Jun 2024 01:48:11 -0400
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <fea.wang@sifive.com>)
- id 1sE0Xt-0005BK-JY
- for qemu-devel@nongnu.org; Mon, 03 Jun 2024 01:47:51 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-1f47f07aceaso23721075ad.0
- for <qemu-devel@nongnu.org>; Sun, 02 Jun 2024 22:47:49 -0700 (PDT)
+ id 1sE0YD-0005Hs-3C
+ for qemu-devel@nongnu.org; Mon, 03 Jun 2024 01:48:11 -0400
+Received: by mail-pl1-x634.google.com with SMTP id
+ d9443c01a7336-1f4c7b022f8so36082905ad.1
+ for <qemu-devel@nongnu.org>; Sun, 02 Jun 2024 22:48:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1717393668; x=1717998468; darn=nongnu.org;
+ d=sifive.com; s=google; t=1717393687; x=1717998487; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GEhvW8mMXGFmnN1YikczckSrxHyJV9SouAqt0p1mFPM=;
- b=OV7FobpQpqeLVKtgsJn72Byc/xzLgtjGYN+WnypUL0sG5fIMo+0ECDssba+g4AcKTK
- Jgsolf2cHA+v9u0nGAQYjkiHk/wzvH3/7SvCabVLrRxBABkW6QfVZiFC4vTDBoxhFs5l
- YzW9M4fD6J4rW7sRx2nMDBZEGW1z0IxlvLN5sgcKz97uYbFHXrurQicKSi7M+WXbIq8R
- Col/+CO43qqUqDtsW3vbiY+LXLYrQefnAAgZ3lU3cc7RRDUiC5YxId3g3FbAXsFoz8CP
- 44CBb+hLKvUFCgHKy7ggNepaj9nPSDztk5OpHRzO8jvCuzY5DxFtrn6LALtQp+i53+OW
- hc2w==
+ bh=cIMV2nOWBCTz/Oo6LeglZMbxXhMl+MsC5E+aszYQKEM=;
+ b=ABMpQgkximJF4pdY0/0yqQ4X1Wq55FXsv8VWPfGkbL0/qi5Tg0g+u7DPtYaLbhFTqZ
+ 4j/T5yDY8BJ416mk9DCh7i5/p2QZtXpkpdiiSqBu5Wqu8zNtg1jfik7/OXa9sDX3/ELe
+ A32jh1f96EITmVeyxQ/RXNPLmWlzF5rKg9sJEo1Gu9gDU6BJF1ZssLpntiAmOqECQwdG
+ p5zUdaBOXnd+dYqUAnoTMFtEN+ry89YuYp3fwWgRp11XNiqMldiKnQFqVNYx4pSCvXXf
+ /H0vI8NadFGkwEK0TeXCNTH/wX0JDGMjzeGKn21t02mBdO4uuw7M6waqzH731CWRKKNI
+ ixjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717393668; x=1717998468;
+ d=1e100.net; s=20230601; t=1717393687; x=1717998487;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=GEhvW8mMXGFmnN1YikczckSrxHyJV9SouAqt0p1mFPM=;
- b=ZmDxRyNMUg0JAAr0cEUbo06hdKdcRnYwrqozgVjZC6ap1UUltLAbBomZWM2cLUbaPG
- NE/0x012MeIICHfxeMcqIM9LUQIP3tBhpGF5PwNmlGcIFNGlyXzy5h2h9kiKdBWdadzq
- JUlh/W5EoBhTgX77bbRgNEzVSjHjpDaEcxYLO2z94neKDDnOM+bzYjFc1cHEUj/9MWVs
- 9YPj9pGGEUQyz5TXKQF4/YKdngaYE41ogDBHD61AP4PxOQTkBXwL+uX3GiYRfYrdf/jK
- 0eBXWrnsaotA2LAsqBykFIHTiEru9TALdosPnKY3UkJLro+GpqBzEqYVcIrtI6wrbsKe
- ELKg==
-X-Gm-Message-State: AOJu0YxTvBAsxP4+9MhCb4HOTDYyTGPr7n1iOC7DqqFT9XMZyAZN6kOu
- iRYh1eTdge2AOLRP5t3kByQztiLrVMDg2avqh6vV/yoOgFsEKYso5d7fcECrQJuAqz+TWavw2xO
- papFLGHNW7wCpYAeBZVlZfhGY5r9o4pJ6bn/k8s/IauxpIhYck5mb1X+lpI/NYk/Zl7pK2z1LdR
- YHu9jBdlV97qE/M1Ect2mSUMyqp2bnFSAoeE8=
-X-Received: by 2002:a17:902:ea03:b0:1f4:a45b:8429 with SMTP id
- d9443c01a7336-1f636ffde39mr95009475ad.27.1717393667593; 
- Sun, 02 Jun 2024 22:47:47 -0700 (PDT)
+ bh=cIMV2nOWBCTz/Oo6LeglZMbxXhMl+MsC5E+aszYQKEM=;
+ b=J76HqRg7vlJfYLv/fQORtA6yyx024rl3PEHWsmit5xMvUZfMFBgPjcPP4jLgPpXyV1
+ sS5sbwl+Exq1sacs60PCR7/tK8b6dEZqSK/JBisIS7h33Tj4op6y1reXXzsR3V+m/qJJ
+ rADNOOjq4IC/535MfMwdMRNjpS3DW3mFUxLh0CUj4M+P7cpwGkwNoSohgX0xunKtctRI
+ 2qvIHHweN57PYZCXtVB6uMP2LcdXnM3pOOSIMchMBAKHHaOhmsnKX9L7XbW0oKtN+vE9
+ 3MNoBM+0Oy51p7PyAGt7Ky5GY6tJYW03lLHDArHAZCuroF3acrRcws4ounqovDunykdu
+ XiQw==
+X-Gm-Message-State: AOJu0YxoeJi94f6cXIUvjodIDS2gUd0FF0Ivq46xL2XXRvuDjO5a4+85
+ EN7Dv7L/dYH3ZllKaxcYoDIvmF9vAPrA14Z5GQ9H9YhdAn42WTrrTPwT+uxNEzLkPSK4rHeh099
+ ScqE2xiJKX/pcolEESdUn3Js5we0Acdzca4sQ835KX5YszddvwM6G3Eg0lKOgRx9PRoIsjrRFYj
+ ryREzp82KN4il3i0JyaSredeSoxRz/K9XoG5o=
+X-Received: by 2002:a17:903:30cd:b0:1f4:7d47:b889 with SMTP id
+ d9443c01a7336-1f6370209femr66241885ad.30.1717393686959; 
+ Sun, 02 Jun 2024 22:48:06 -0700 (PDT)
 Received: from hsinchu36-syssw02.internal.sifive.com
  (59-124-168-89.hinet-ip.hinet.net. [59.124.168.89])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f63241e085sm55824135ad.299.2024.06.02.22.47.45
+ d9443c01a7336-1f63241e085sm55824135ad.299.2024.06.02.22.48.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 02 Jun 2024 22:47:47 -0700 (PDT)
+ Sun, 02 Jun 2024 22:48:06 -0700 (PDT)
 From: "Fea.Wang" <fea.wang@sifive.com>
 To: qemu-devel@nongnu.org,
 	qemu-riscv@nongnu.org
@@ -103,16 +103,16 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
  qemu-arm@nongnu.org (open list:Xilinx Zynq),
  "Fea.Wang" <fea.wang@sifive.com>
-Subject: [PATCH 1/4] hw/dma: Enhance error handling in loading description
-Date: Mon,  3 Jun 2024 13:52:45 +0800
-Message-Id: <20240603055248.3928469-2-fea.wang@sifive.com>
+Subject: [PATCH 2/4] hw/dma: Break the loop when loading descriptions fails
+Date: Mon,  3 Jun 2024 13:52:46 +0800
+Message-Id: <20240603055248.3928469-3-fea.wang@sifive.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240603055248.3928469-1-fea.wang@sifive.com>
 References: <20240603055248.3928469-1-fea.wang@sifive.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=fea.wang@sifive.com; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
+ envelope-from=fea.wang@sifive.com; helo=mail-pl1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -134,62 +134,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VDgm5/s6/uZK
+X-TUID: lY8kCGCisPDT
 
-Loading a description from memory may cause a bus-error. In this
-case, the DMA should stop working, set the error flag, and return
-the error value.
+When calling the loading a description function, it should be noticed
+that the function may return a failure value. Breaking the loop is one
+of the possible ways to handle it.
 
 Signed-off-by: Fea.Wang <fea.wang@sifive.com>
 ---
- hw/dma/xilinx_axidma.c | 16 ++++++++++++++--
- 1 file changed, 14 insertions(+), 2 deletions(-)
+ hw/dma/xilinx_axidma.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-index 0ae056ed06..4b475e5484 100644
+index 4b475e5484..b8ab5a423d 100644
 --- a/hw/dma/xilinx_axidma.c
 +++ b/hw/dma/xilinx_axidma.c
-@@ -71,8 +71,10 @@ enum {
- enum {
-     DMASR_HALTED = 1,
-     DMASR_IDLE  = 2,
-+    DMASR_SLVERR = 1 << 5,
-     DMASR_IOC_IRQ  = 1 << 12,
-     DMASR_DLY_IRQ  = 1 << 13,
-+    DMASR_ERR_IRQ  = 1 << 14,
+@@ -291,7 +291,9 @@ static void stream_process_mem2s(struct Stream *s, StreamSink *tx_data_dev,
+     }
  
-     DMASR_IRQ_MASK = 7 << 12
- };
-@@ -190,17 +192,27 @@ static inline int streamid_from_addr(hwaddr addr)
-     return sid;
- }
+     while (1) {
+-        stream_desc_load(s, s->regs[R_CURDESC]);
++        if (MEMTX_OK != stream_desc_load(s, s->regs[R_CURDESC])) {
++            break;
++        }
  
--static void stream_desc_load(struct Stream *s, hwaddr addr)
-+static MemTxResult stream_desc_load(struct Stream *s, hwaddr addr)
- {
-     struct SDesc *d = &s->desc;
+         if (s->desc.status & SDESC_STATUS_COMPLETE) {
+             s->regs[R_DMASR] |= DMASR_HALTED;
+@@ -348,7 +350,9 @@ static size_t stream_process_s2mem(struct Stream *s, unsigned char *buf,
+     }
  
--    address_space_read(&s->dma->as, addr, MEMTXATTRS_UNSPECIFIED, d, sizeof *d);
-+    MemTxResult result = address_space_read(&s->dma->as,
-+                                            addr, MEMTXATTRS_UNSPECIFIED,
-+                                            d, sizeof *d);
-+    if (result != MEMTX_OK) {
-+        s->regs[R_DMACR] &= ~DMACR_RUNSTOP;
-+        s->regs[R_DMASR] |= DMASR_HALTED;
-+        s->regs[R_DMASR] |= DMASR_SLVERR;
-+        s->regs[R_DMASR] |= DMASR_ERR_IRQ;
-+        return result;
-+    }
+     while (len) {
+-        stream_desc_load(s, s->regs[R_CURDESC]);
++        if (MEMTX_OK != stream_desc_load(s, s->regs[R_CURDESC])) {
++            break;
++        }
  
-     /* Convert from LE into host endianness.  */
-     d->buffer_address = le64_to_cpu(d->buffer_address);
-     d->nxtdesc = le64_to_cpu(d->nxtdesc);
-     d->control = le32_to_cpu(d->control);
-     d->status = le32_to_cpu(d->status);
-+    return result;
- }
- 
- static void stream_desc_store(struct Stream *s, hwaddr addr)
+         if (s->desc.status & SDESC_STATUS_COMPLETE) {
+             s->regs[R_DMASR] |= DMASR_HALTED;
 -- 
 2.34.1
 

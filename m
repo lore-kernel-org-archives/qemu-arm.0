@@ -1,100 +1,114 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2108343ejs;
-        Mon, 3 Jun 2024 02:59:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWb2tXEeFJIgTv2havrN8OImcROhNBtUj42IlmkQQ+A43itTp3nEJRHvGs3yAcSZ8qeWZeD4Wwv+zYuOs/Vo8R8qvrFX6j0
-X-Google-Smtp-Source: AGHT+IGtTWFRTY3MQYoGo+KyPGNn/Fz9AYBKAcCRJvnkWnYuhxs9R1PFKKgZ6cIBxg/8foyiWHrn
-X-Received: by 2002:a67:fd99:0:b0:48b:ac7a:8de5 with SMTP id ada2fe7eead31-48bc215ad95mr8170873137.18.1717408783329;
-        Mon, 03 Jun 2024 02:59:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717408783; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2120414ejs;
+        Mon, 3 Jun 2024 03:19:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVw9KkFoELbRyVeerEIO50CJMYn4iJvp0iXp5aPng4GI+kkHwz06J3aDT9KlV8ZedQaZHScXMzigJt5pX0HWhg0b39p17xX
+X-Google-Smtp-Source: AGHT+IGAG64NwUuCWQr7dI/kzy+8URxfOW0kDFGp02/8J6ApaSZydOwULCRxyZINks8zzeLSNGHy
+X-Received: by 2002:ae9:f70f:0:b0:794:a719:6413 with SMTP id af79cd13be357-794f5ebe484mr946159085a.57.1717409967491;
+        Mon, 03 Jun 2024 03:19:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717409967; cv=none;
         d=google.com; s=arc-20160816;
-        b=bhMAfcoTo17EBVnmT37GH7bOHJ/1F3s4Yln4GBVH75EfRrLQlqLomtR7R9wznjn3XY
-         nU1dhiHU2DQCeH0O+KgQp7i68tox+7Irv+Ef3RQudndLFBfSWYblTO9M4CRL4ODyqnCd
-         ZDTmKfv94FnXv3LCX1ew6FweqEcYROgXZ3AClB4vsdIvDp4PLb9ZU63L9TvRr7eL2k9G
-         cMsEXtipGMBuNxbuoZbbHJC1X9QECrrcW4emNhfYRTH0/u3p50h2UCoNPVtpouHgl4/U
-         RIWVQBXRuoagw4w9jl7p+2yjnCTVdQnspcr1xttPQpw/m6RfxmeRl1a0jqVbykTknrq6
-         qYhQ==
+        b=K7ZDwa+mtRlFL45G+1iB1ds0QM8kiffFKyXji9Ww12qgsPPGojo2J75zf1hSRBhwfU
+         0rDC+/0DdkZxV9JyvHJRtxoDlDc5A32TIz3qw8NcPYa3wRMc0sTLKQJbjbML75CmyZJN
+         AitmsmzDrokyOHcROmLmw7pHNKJPVYDwVt6fUsUvPZePm4vEKUw9AvuvcM6YC60iYfmY
+         4Wf8nppSK3W6MQ+AWcpfTh+IqM4tiL4ECy/DvPwIh5Nwbvl2fHgbGy1ktEImn7NAk2Ac
+         Ad0rp6kWnrvSxPFMbB490Nv56SdLVSHuoAGG1KppNCCHwRXqgsa3CdHfWc7Y7UukdMf+
+         hN8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=LtOnousQVMyMmpyZ3Dp1orZv5/bZ4lZSqIvUqWKzR54=;
-        fh=kRicVupqyko4DJ1sS1OnU1mZPavTh9JtdM62mnuOdpE=;
-        b=d2d/+dyrjwsrqHUdzLWDBFX7jNvPdDIFSqfM03rT8X/3whYE4v8NTAak+M8qECEhI3
-         ejCOA4L7V/jmUcpY8GGrYFhE7E3WfmQ+EqjPO+fFp+MqY0X8i8PRN7z0XZ0hTV0GUtgl
-         BtxgtWd0S+twypJb6H3TkWmIXzM909p450iWuIHNg317L17nvL81Rf3rHh+0lxM4XN3K
-         hMzAzlG3ym8NFWjpBi5zoTeJalX3XzYgW0GrpuiQRGru0uGSHdv60Sd6DK0aRHtG4sSh
-         wTHbIUIv0fkM2PriD8Q+zQnaJmNQ+BBGgcgVLQ6KsL3OBF1lo0Acmb3bBoEbe6g1XgiF
-         MgFg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=23lg4niCLpouQl9oZZ4W9GefWlftzip5Spi8jpU1ZJE=;
+        fh=rrYgRTnx1+De+yhtTulxYP+B4TUMNGd/SpT4dZ+vVpo=;
+        b=duSD5mEKlddyp06LLXtZQM6+FHxO+bIosKVyzz4HpkOd/bMycntAS8yhK8lDKlmACD
+         979CLbfRcXZbB/xxP5LAsWq1kI4iXV8TBoqD7gzFFyy5FDzCoRtcpmHzIjWTgAee/upT
+         PnvNFpXU0ThCAcRz0yHXXxE4N76jfMS3f08RCHCWYCHldkrxY2gvsFpFr5xDXzo7hFHy
+         Uce/yepKDCxyldAuSTmsJ/UcoYcdcM7d9wiwKoNPbx2CR3nTfZdww/oGqH/zYSBDc5nG
+         jpCJ/TsDCTOHRwZAqoii0PdthVmEfUfNJSTnXF+eVcfnFuDHhi/E8q1Y5oBz6cv7Hbr7
+         TDrQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=l9tdsu86;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-794f306330fsi791998285a.232.2024.06.03.02.59.43
+        by mx.google.com with ESMTPS id af79cd13be357-794f32a35acsi819177785a.571.2024.06.03.03.19.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jun 2024 02:59:43 -0700 (PDT)
+        Mon, 03 Jun 2024 03:19:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=l9tdsu86;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sE4TL-0007YE-Pi; Mon, 03 Jun 2024 05:59:23 -0400
+	id 1sE4mc-0007Tg-8T; Mon, 03 Jun 2024 06:19:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=jUUh=NF=kaod.org=clg@ozlabs.org>)
- id 1sE4TK-0007Xj-2A; Mon, 03 Jun 2024 05:59:22 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=jUUh=NF=kaod.org=clg@ozlabs.org>)
- id 1sE4TC-0006uu-JN; Mon, 03 Jun 2024 05:59:21 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Vt8MG1LgLz4x2P;
- Mon,  3 Jun 2024 19:59:06 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Vt8M85Xrvz4wc8;
- Mon,  3 Jun 2024 19:59:00 +1000 (AEST)
-Message-ID: <747755fd-dc9d-4bbd-9b6d-eaabe398bb19@kaod.org>
-Date: Mon, 3 Jun 2024 11:58:56 +0200
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sE4mV-0007SK-Q9; Mon, 03 Jun 2024 06:19:11 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sE4mT-0002Kd-J3; Mon, 03 Jun 2024 06:19:11 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-572c65cea55so7260358a12.0; 
+ Mon, 03 Jun 2024 03:19:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1717409946; x=1718014746; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=23lg4niCLpouQl9oZZ4W9GefWlftzip5Spi8jpU1ZJE=;
+ b=l9tdsu86m0/osfAedfJRI7GjfHPgn8w4vjN/bUk/xWDrh8BKyEUHsp4WE390EmE9sa
+ HhHfUNHToCgEKIPfqELJA+x0fYCLv4Q4Q9xMoBvzsSYbf1gh+lZG3AlWuGNBULU38bG8
+ 9rB1ihlO4OxNcrUbF0nJ9Kvo2bsu6flLMkfKZ5RlbG8WZMLSrAM1i7V57i4CcszxJ+L5
+ d5hZmaNXOFNOGD5ON7tOTgQQAdp6HxbKQmm30fcZi7M1FlAmjtODlvezqiaRFeriyRxZ
+ Nt/6zn+nrQBjhx99B8VQIFE0AKKQIOL6Lws/g1RJnZg74ZV9PePgPH4T+k99FEIuoIri
+ merQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1717409946; x=1718014746;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=23lg4niCLpouQl9oZZ4W9GefWlftzip5Spi8jpU1ZJE=;
+ b=A403cafPySa3Jg0qQ35npzUOMPoM1qbANF0IpD0Occ3C1maUNeJyg06gcE2THf9mik
+ B3geTlIdMPZKNEoAhfiFjTA07nCKPo064WoMO0XgG04nWbmBt34/GbKHHCSNiQ9DX5Te
+ uI9zhDZtuLBQwEHYaZNTQubYx+LYaYMfR+7ERRaAZ3DcL5jYnBFXhj+agBP7jJvUoJ9l
+ 7Gdo22gbvWplZqQZ5rNE34Ny8YVsNkn/UAHHIGYT/OULdzSdH3UlY2gkntJejtI47B8e
+ zIN7kCBwPUlJHpLZ7J/WzmWQbzicc0tyWUxEmm2HkWkK1RF8BACFdfY8ZH5EuzyS93Ke
+ yTig==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXKlonpF4KtVt4g7jkIIyWIlPX38A/qAsYYpO9c/1NAe1QCVHYOqMiAK3C7Q+n13PRNjnPyI+moMb2uVRMh/ySJymA9JMaef81vCfyLdtYa9zAysnHgw4db4nQ=
+X-Gm-Message-State: AOJu0Yx6pUBTJZgcEmU0KsxwOB73sTfa5klgQkOPcZ/EfnnNdUC+vzwX
+ 7UVasI80BLmGBkrOHfVdHDHgpf8uCet5EOou8DAMananZJ5uriMVPgcLKlOo5cI1Pk3VbRnB0nz
+ lyy/YmPn+DQhqou5wB2b/ohezybI=
+X-Received: by 2002:a50:cd9a:0:b0:578:5c1e:45e5 with SMTP id
+ 4fb4d7f45d1cf-57a363b66eemr8045749a12.9.1717409945372; Mon, 03 Jun 2024
+ 03:19:05 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] Re: [PATCH v4 09/16] aspeed/smc: Add AST2700 support
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
- <20240527080231.1576609-10-jamin_lin@aspeedtech.com>
- <b641018c-e906-452b-8072-1b46f141808b@linaro.org>
- <41e59fa6-c74d-47c7-ba01-690cfaf7f5f1@kaod.org>
- <SI2PR06MB504115C43768F1DF7E9621B9FCFF2@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <98886224-8de7-41d7-9ae9-77ac85818605@kaod.org>
- <SI2PR06MB5041574C3A7283A1A29B81FCFCFF2@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <SI2PR06MB5041574C3A7283A1A29B81FCFCFF2@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=jUUh=NF=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <20240603055248.3928469-1-fea.wang@sifive.com>
+ <20240603055248.3928469-2-fea.wang@sifive.com>
+In-Reply-To: <20240603055248.3928469-2-fea.wang@sifive.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Mon, 3 Jun 2024 12:18:52 +0200
+Message-ID: <CAJy5ezr-_xnjXqtZnqaWSagMD8pGgU2bDUD0TsHxfkYvQYeHpw@mail.gmail.com>
+Subject: Re: [PATCH 1/4] hw/dma: Enhance error handling in loading description
+To: "Fea.Wang" <fea.wang@sifive.com>
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Jason Wang <jasowang@redhat.com>, "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
+Content-Type: multipart/alternative; boundary="000000000000ba4de90619f9a9e9"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,75 +123,189 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dfstpGvNjMne
+X-TUID: lIx/qz2BSjJh
 
-On 6/3/24 11:49, Jamin Lin wrote:
-> Hi Cedric,
-> 
->> From: Cédric Le Goater <clg@kaod.org>
->> Subject: Re: [SPAM] Re: [PATCH v4 09/16] aspeed/smc: Add AST2700 support
->>
->>>>>> @@ -670,7 +670,7 @@ static const MemoryRegionOps
->>>> aspeed_smc_flash_ops
->>>>>> = {
->>>>>>         .endianness = DEVICE_LITTLE_ENDIAN,
->>>>>>         .valid = {
->>>>>>             .min_access_size = 1,
->>>>>> -        .max_access_size = 4,
->>>>>> +        .max_access_size = 8,
->>>>>
->>>>> Is this a bugfix? If so, please use a separate patch. Otherwise
->>>>> please mention why it is OK to widen access for AST2600 & AST10x0.
->>>>
->>> According the design of SPI drivers, it uses this "memcpy_fromio" KERNEL API
->> for SPI calibration.
->>>
->> https://github.com/AspeedTech-BMC/linux/blob/1062a07420f9aed4ed7dc9deb
->>> 3429b8e7828f5cf/drivers/spi/spi-aspeed-smc.c#L1832
->>> AST2700 is a 64 bits quad core cpus(Cortex-a35), so kernel API use 64 bits for
->> data access.
->>> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/a
->>> rm64/kernel/io.c#L25 I simply set the max_access_size to 8 for AST2700
->>> support.
->>> AST2500, AST2600 and AST10x0 are all 32bits CPUS, that was why this
->> max_access_size 8 did not impact these models.
->>> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/a
->>> rm/kernel/io.c#L45
->>
->> Yes. I think we are safe on that side.
->>
->>> If you have any suggestion about this patch modification, please let me know.
->>> I am going to re-send v5 patch for AST2700 support.
->>
->> Please move this change in its own commit explaining the reason and add a
->> TODO comment in the code.
->>
->> The aspeed_smc_flash_ops MemoryRegionOps should be copied in _realize()
->> to set a different width for the AST2700 SoC. You could do that too.
->>
->> Thanks,
->>
->> C.
-> I will do the following changes. Could you give me any suggestion?
-> 
-> 1. add asc->max_access_size = 8 in aspeed_2700_fmc_class_init, aspeed_2700_spi0_class_init, aspeed_2700_spi1_class_init and aspeed_2700_spi2_class_init
-> 2. Update aspeed_smc_flash_realize as below
-> static void aspeed_smc_flash_realize(DeviceState *dev, Error **errp)
-> {
->     ------
->     s->asc = ASPEED_SMC_GET_CLASS(s->controller)
->     if (s->asc->max_access_size ==8) --> check max_access_size
->        aspeed_smc_flash_ops.valid.max_access_size = s->asc->max_access --> update max_access_size
+--000000000000ba4de90619f9a9e9
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-You can not because aspeed_smc_flash_ops is a static const shared
-by all models
+On Mon, Jun 3, 2024 at 7:47=E2=80=AFAM Fea.Wang <fea.wang@sifive.com> wrote=
+:
 
-Best option is to introduce a new 'const MemoryRegionOps*' attribute
-in AspeedSMCClass and use it in aspeed_smc_flash_realize().
+> Loading a description from memory may cause a bus-error. In this
+> case, the DMA should stop working, set the error flag, and return
+> the error value.
+>
+> Signed-off-by: Fea.Wang <fea.wang@sifive.com>
+>
 
 
-Thanks,
+Hi Fea,
 
-C.
+I've got a couple of small comments:
 
 
+---
+>  hw/dma/xilinx_axidma.c | 16 ++++++++++++++--
+>  1 file changed, 14 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+> index 0ae056ed06..4b475e5484 100644
+> --- a/hw/dma/xilinx_axidma.c
+> +++ b/hw/dma/xilinx_axidma.c
+> @@ -71,8 +71,10 @@ enum {
+>  enum {
+>      DMASR_HALTED =3D 1,
+>      DMASR_IDLE  =3D 2,
+> +    DMASR_SLVERR =3D 1 << 5,
+>
+
+We should also add DMASR_DECERR =3D 1 << 6
+
+
+>      DMASR_IOC_IRQ  =3D 1 << 12,
+>      DMASR_DLY_IRQ  =3D 1 << 13,
+> +    DMASR_ERR_IRQ  =3D 1 << 14,
+>
+>      DMASR_IRQ_MASK =3D 7 << 12
+>  };
+> @@ -190,17 +192,27 @@ static inline int streamid_from_addr(hwaddr addr)
+>      return sid;
+>  }
+>
+> -static void stream_desc_load(struct Stream *s, hwaddr addr)
+> +static MemTxResult stream_desc_load(struct Stream *s, hwaddr addr)
+>  {
+>      struct SDesc *d =3D &s->desc;
+>
+> -    address_space_read(&s->dma->as, addr, MEMTXATTRS_UNSPECIFIED, d,
+> sizeof *d);
+> +    MemTxResult result =3D address_space_read(&s->dma->as,
+> +                                            addr, MEMTXATTRS_UNSPECIFIED=
+,
+> +                                            d, sizeof *d);
+> +    if (result !=3D MEMTX_OK) {
+> +        s->regs[R_DMACR] &=3D ~DMACR_RUNSTOP;
+> +        s->regs[R_DMASR] |=3D DMASR_HALTED;
+> +        s->regs[R_DMASR] |=3D DMASR_SLVERR;
+>
+
+... and map MEMTX_DECODE_ERROR to DMASR_DECERR and everything else to
+SLVERR, for example:
+if (result =3D=3D MEMTX_DECODE_ERROR) {
+    s->regs[R_DMASR] |=3D DMASR_DECERR;
+} else {
+    s->regs[R_DMASR] |=3D DMASR_SLVERR;
+}
+
+
+> +        s->regs[R_DMASR] |=3D DMASR_ERR_IRQ;
+> +        return result;
+> +    }
+>
+>      /* Convert from LE into host endianness.  */
+>      d->buffer_address =3D le64_to_cpu(d->buffer_address);
+>      d->nxtdesc =3D le64_to_cpu(d->nxtdesc);
+>      d->control =3D le32_to_cpu(d->control);
+>      d->status =3D le32_to_cpu(d->status);
+> +    return result;
+>  }
+>
+>  static void stream_desc_store(struct Stream *s, hwaddr addr)
+> --
+> 2.34.1
+>
+>
+
+--000000000000ba4de90619f9a9e9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">On Mon, Jun 3, 2024 at 7:47=E2=80=AFAM Fe=
+a.Wang &lt;<a href=3D"mailto:fea.wang@sifive.com">fea.wang@sifive.com</a>&g=
+t; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex">Loading a description from memory may cause a bus-erro=
+r. In this<br>
+case, the DMA should stop working, set the error flag, and return<br>
+the error value.<br>
+<br>
+Signed-off-by: Fea.Wang &lt;<a href=3D"mailto:fea.wang@sifive.com" target=
+=3D"_blank">fea.wang@sifive.com</a>&gt;<br></blockquote><div><br></div><div=
+><br></div><div>Hi Fea,</div><div><br></div><div>I&#39;ve got a couple of s=
+mall comments:</div><div>=C2=A0</div><div><br></div><blockquote class=3D"gm=
+ail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,=
+204,204);padding-left:1ex">
+---<br>
+=C2=A0hw/dma/xilinx_axidma.c | 16 ++++++++++++++--<br>
+=C2=A01 file changed, 14 insertions(+), 2 deletions(-)<br>
+<br>
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c<br>
+index 0ae056ed06..4b475e5484 100644<br>
+--- a/hw/dma/xilinx_axidma.c<br>
++++ b/hw/dma/xilinx_axidma.c<br>
+@@ -71,8 +71,10 @@ enum {<br>
+=C2=A0enum {<br>
+=C2=A0 =C2=A0 =C2=A0DMASR_HALTED =3D 1,<br>
+=C2=A0 =C2=A0 =C2=A0DMASR_IDLE=C2=A0 =3D 2,<br>
++=C2=A0 =C2=A0 DMASR_SLVERR =3D 1 &lt;&lt; 5,<br></blockquote><div><br></di=
+v><div>We should also add DMASR_DECERR =3D 1 &lt;&lt; 6</div><div>=C2=A0</d=
+iv><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bord=
+er-left:1px solid rgb(204,204,204);padding-left:1ex">
+=C2=A0 =C2=A0 =C2=A0DMASR_IOC_IRQ=C2=A0 =3D 1 &lt;&lt; 12,<br>
+=C2=A0 =C2=A0 =C2=A0DMASR_DLY_IRQ=C2=A0 =3D 1 &lt;&lt; 13,<br>
++=C2=A0 =C2=A0 DMASR_ERR_IRQ=C2=A0 =3D 1 &lt;&lt; 14,<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0DMASR_IRQ_MASK =3D 7 &lt;&lt; 12<br>
+=C2=A0};<br>
+@@ -190,17 +192,27 @@ static inline int streamid_from_addr(hwaddr addr)<br>
+=C2=A0 =C2=A0 =C2=A0return sid;<br>
+=C2=A0}<br>
+<br>
+-static void stream_desc_load(struct Stream *s, hwaddr addr)<br>
++static MemTxResult stream_desc_load(struct Stream *s, hwaddr addr)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0struct SDesc *d =3D &amp;s-&gt;desc;<br>
+<br>
+-=C2=A0 =C2=A0 address_space_read(&amp;s-&gt;dma-&gt;as, addr, MEMTXATTRS_U=
+NSPECIFIED, d, sizeof *d);<br>
++=C2=A0 =C2=A0 MemTxResult result =3D address_space_read(&amp;s-&gt;dma-&gt=
+;as,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 addr, MEMTXATTRS_UNSPECIFIED,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 d, sizeof *d);<br>
++=C2=A0 =C2=A0 if (result !=3D MEMTX_OK) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_DMACR] &amp;=3D ~DMACR_RUNSTOP;<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_DMASR] |=3D DMASR_HALTED;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_DMASR] |=3D DMASR_SLVERR;<br></bl=
+ockquote><div><br></div><div>... and map MEMTX_DECODE_ERROR to DMASR_DECERR=
+ and everything else to SLVERR, for example:</div><div>if (result =3D=3D ME=
+MTX_DECODE_ERROR) {</div><div>=C2=A0 =C2=A0 s-&gt;regs[R_DMASR] |=3D DMASR_=
+DECERR;</div><div>} else {<br><div>=C2=A0 =C2=A0 s-&gt;regs[R_DMASR] |=3D D=
+MASR_SLVERR;</div></div><div>}</div><div>=C2=A0</div><blockquote class=3D"g=
+mail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;regs[R_DMASR] |=3D DMASR_ERR_IRQ;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return result;<br>
++=C2=A0 =C2=A0 }<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0/* Convert from LE into host endianness.=C2=A0 */<br>
+=C2=A0 =C2=A0 =C2=A0d-&gt;buffer_address =3D le64_to_cpu(d-&gt;buffer_addre=
+ss);<br>
+=C2=A0 =C2=A0 =C2=A0d-&gt;nxtdesc =3D le64_to_cpu(d-&gt;nxtdesc);<br>
+=C2=A0 =C2=A0 =C2=A0d-&gt;control =3D le32_to_cpu(d-&gt;control);<br>
+=C2=A0 =C2=A0 =C2=A0d-&gt;status =3D le32_to_cpu(d-&gt;status);<br>
++=C2=A0 =C2=A0 return result;<br>
+=C2=A0}<br>
+<br>
+=C2=A0static void stream_desc_store(struct Stream *s, hwaddr addr)<br>
+-- <br>
+2.34.1<br>
+<br>
+</blockquote></div></div>
+
+--000000000000ba4de90619f9a9e9--

@@ -1,73 +1,73 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2034906ejs;
-        Mon, 3 Jun 2024 00:10:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUiISDu3RELqG6cVozDOL12y10k4o9WMVdnMKLJs9UItY11ho1qDfoKgsFIs91vcUM9rXYYOZIiw4r++sb1sS6snArgp17J
-X-Google-Smtp-Source: AGHT+IEdvj+8/r9dVmrC3lmBZqm2NTJvegvhsWxx67xR+Ok9Rp7zOKkvmRE0Qss/HzK35GZOtCwn
-X-Received: by 2002:ac8:5d12:0:b0:43e:e6e:21d7 with SMTP id d75a77b69052e-43ff52851e2mr84409751cf.26.1717398599754;
-        Mon, 03 Jun 2024 00:09:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717398599; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2040668ejs;
+        Mon, 3 Jun 2024 00:23:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWwqQ+Mj1ymhMNc3j7HkLNYAHIhAgRuEfejSyJrw/YsZD64BlYbGvIl2edx3laf3vfVWatLh4Jo9VRuX0aH8+XD1jqGXUCQ
+X-Google-Smtp-Source: AGHT+IFgzCuYHaYLE6unEAYorVF+eizEmSTXrsuF6e9xoaHEUKm9K0kGsBt+scvz4n7FnRLptcsl
+X-Received: by 2002:a05:622a:1a18:b0:43a:d064:5118 with SMTP id d75a77b69052e-43ff5519702mr86011741cf.64.1717399386589;
+        Mon, 03 Jun 2024 00:23:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717399386; cv=none;
         d=google.com; s=arc-20160816;
-        b=iu6f5tlYQRrPkPKyZo6sdZNth4GRqV1fuhV4TEB/EwY3DKQP8bmdystRPwSoTWUCF2
-         w5Hd8kevjpLhq6M+X5cD4Ug3o8edcikrZ6UNm8vEBaokotC4B6f2+6qWhaPSVefGrmhQ
-         DXkGQW8zE3wDmUakYnvvJoyNERyBKdB61K1xcOXlnAiCSmSwcCIXJuiHjnW+j871xOCn
-         piIXshsfvMbY7QsdP2E60MX8dhuvx2ve2E9/5gXSx0zTwmzss/xy9gnkNw+ubClbhtZ4
-         rOAj6IHOB7A2R8lQP5HgoMxIJPHuXQJrGDjJcwZ4YvvRp9hW+ZHfefRBryTCDWbKUHL3
-         fdYg==
+        b=Q+EQKcEQt/v6qziNUKPaUl0YBnl8jlEI6b6eXUnN/ajU3VM7C5anyasS+Gx+TCUm87
+         c9emgq3MyuiiLEB+EigWRAt+euTx4jARV3tev3A9qFUHhF8BzbdqeaOH5EoJu7FbSt9D
+         yNpz/mkC45/b6iVbEJ7yiO21mz4n+A6YsD/Ei6I7BVp/orZ/GqLzbFny0zNeLxJNiFgU
+         3VaxyWtBIwoX23096hY2z+PfspweAhr0I98HiK1FnW6DFPA7K6Uhw4aBYmQBBshaC3iY
+         a9UKGr22fUf5PMF/czPFnMH/FXN+XfyZJ3iMDwPo8WpuXZaMj38DAB9dJ/yZwmX3/Qnc
+         NtkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=nv56nKfHcxAu+TXO5V0o2WCdTpYIT2vTzrX7efhS4Dg=;
-        fh=wBNV7UiSATYaVKmE7Xme8a9dwVo8oS3HDnEeSM4b3WE=;
-        b=E7gSfiPuFnyBOzx34iMiZDgz+4e2H1Rk1FW7tn/3F52ET9vkv5YHfA/hV7ahoVjfNw
-         ZrFDTtMuEDYmq5aQ69KH4Yx64eHHkbBxFP9BtiE0k85VpabnIZfbfPkZgOka/LAM1gp3
-         qoBltYOQYmo88phNdmJ6mXSsSENvHI2FSU5+amjlImV0Cn7pw2VF1UmlmEXwRXST0hRk
-         htBnt0AZInsCfGxKrdvDpiAI1C6hGDNgIgz8fL6IhRahfj2leA1RIqreP6tLCUqouX3y
-         YmgLBzNogOiKHm43WMfddZ3NLLsiJEJidI8+Q5+M+P3JL0QnO+zbDvg+S9BdlwaoXdyg
-         rLKg==;
+        bh=MUQFNnjxO92+vThduFKr/k+GHfj5oINzy72o+dSYv1c=;
+        fh=kRicVupqyko4DJ1sS1OnU1mZPavTh9JtdM62mnuOdpE=;
+        b=QbDnMAfNIATbNkRN+xgtvOmWXkOE68VWNyN6L8veP6f5Fi3O2E5ru4V/o5XoRaeIS1
+         7TsaM42avbvW95VbTiQRcjJPjLpOc0mmgg+02iaoHyy9MP8KydHnET17MA4vM3Ww/ZDU
+         qJFG+ShWPpR6WvMsGVU6E90YIbrJXCvrFBKV0oiMDSbR4O+nzURQRFHZW1IuPoJzLR0v
+         POJ0o/42sReuz/vLUzSc6/pMr+N9L6AEEp6M5dcJZ4GGVIBnl7lCOfNbiIiznS+8iNrg
+         bCFoX90g3XxMGPCQzsrUchZOc1cOpHtD9eb6R1JAlAkjJokhCxibQSn9o4a0gxsXaD4Z
+         FwNA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43ff259c87bsi77094411cf.593.2024.06.03.00.09.59
+        by mx.google.com with ESMTPS id d75a77b69052e-43ff257f181si82923781cf.445.2024.06.03.00.23.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jun 2024 00:09:59 -0700 (PDT)
+        Mon, 03 Jun 2024 00:23:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sE1p2-0002N2-LI; Mon, 03 Jun 2024 03:09:36 -0400
+	id 1sE21s-0006Pr-Us; Mon, 03 Jun 2024 03:22:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=jUUh=NF=kaod.org=clg@ozlabs.org>)
- id 1sE1p1-0002Mn-Vv; Mon, 03 Jun 2024 03:09:35 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1sE21s-0006PY-H5; Mon, 03 Jun 2024 03:22:52 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=jUUh=NF=kaod.org=clg@ozlabs.org>)
- id 1sE1oz-0001tp-MQ; Mon, 03 Jun 2024 03:09:35 -0400
+ id 1sE21p-0003wj-T5; Mon, 03 Jun 2024 03:22:52 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Vt4bS2HDsz4x1d;
- Mon,  3 Jun 2024 17:09:24 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Vt4tp52NBz4x2P;
+ Mon,  3 Jun 2024 17:22:42 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Vt4bL6kx8z4wny;
- Mon,  3 Jun 2024 17:09:15 +1000 (AEST)
-Message-ID: <d3d97491-fdf6-4fb1-a657-4eb00864ac9f@kaod.org>
-Date: Mon, 3 Jun 2024 09:09:10 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Vt4tj5L3Kz4wcJ;
+ Mon,  3 Jun 2024 17:22:37 +1000 (AEST)
+Message-ID: <98886224-8de7-41d7-9ae9-77ac85818605@kaod.org>
+Date: Mon, 3 Jun 2024 09:22:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 11/16] aspeed/intc: Add AST2700 support
+Subject: Re: [SPAM] Re: [PATCH v4 09/16] aspeed/smc: Add AST2700 support
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
  Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
@@ -75,15 +75,16 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
 Cc: Troy Lee <troy_lee@aspeedtech.com>,
  Yunlin Tang <yunlin.tang@aspeedtech.com>
 References: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
- <20240527080231.1576609-12-jamin_lin@aspeedtech.com>
- <d013e728-246c-4bef-9a24-b0f0f48d172b@kaod.org>
- <SI2PR06MB5041E687500B2CBFE850B96CFCFF2@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ <20240527080231.1576609-10-jamin_lin@aspeedtech.com>
+ <b641018c-e906-452b-8072-1b46f141808b@linaro.org>
+ <41e59fa6-c74d-47c7-ba01-690cfaf7f5f1@kaod.org>
+ <SI2PR06MB504115C43768F1DF7E9621B9FCFF2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <SI2PR06MB5041E687500B2CBFE850B96CFCFF2@SI2PR06MB5041.apcprd06.prod.outlook.com>
+In-Reply-To: <SI2PR06MB504115C43768F1DF7E9621B9FCFF2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=jUUh=NF=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -39
 X-Spam_score: -4.0
@@ -106,30 +107,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HJ1XJNzi5hOu
+X-TUID: 5yBYWlDUkmHT
 
->>> +static void aspeed_2700_intc_class_init(ObjectClass *klass, void
->>> +*data) {
->>> +    DeviceClass *dc = DEVICE_CLASS(klass);
->>> +    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
->>> +
->>> +    dc->desc = "ASPEED 2700 INTC Controller";
->>> +    aic->num_lines = 32;
->>> +    aic->num_ints = 9;
+>>>> @@ -670,7 +670,7 @@ static const MemoryRegionOps
+>> aspeed_smc_flash_ops
+>>>> = {
+>>>>        .endianness = DEVICE_LITTLE_ENDIAN,
+>>>>        .valid = {
+>>>>            .min_access_size = 1,
+>>>> -        .max_access_size = 4,
+>>>> +        .max_access_size = 8,
+>>>
+>>> Is this a bugfix? If so, please use a separate patch. Otherwise please
+>>> mention why it is OK to widen access for AST2600 & AST10x0.
 >>
->> Use ASPEED_INTC_NR_INTS ?
->>
-> I am considering to support INTC model for future BMC SOCs.
-> For example, if the num_ints has been changed to "18" in the future BMC Socs, users only need to update ASPEED_INTC_NR_INTS and
-> Create a aspeed_XXXX_intc_class_init to set its "aic->num_ints 18".
-> That was why I set aic->num_ints 9 in aspeed_2700_intc_class_init.
+> According the design of SPI drivers, it uses this "memcpy_fromio" KERNEL API for SPI calibration.
+> https://github.com/AspeedTech-BMC/linux/blob/1062a07420f9aed4ed7dc9deb3429b8e7828f5cf/drivers/spi/spi-aspeed-smc.c#L1832
+> AST2700 is a 64 bits quad core cpus(Cortex-a35), so kernel API use 64 bits for data access.
+> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/kernel/io.c#L25
+> I simply set the max_access_size to 8 for AST2700 support.
+> AST2500, AST2600 and AST10x0 are all 32bits CPUS, that was why this max_access_size 8 did not impact these models.
+> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm/kernel/io.c#L45
 
-OK. This is minor.
+Yes. I think we are safe on that side.
 
+> If you have any suggestion about this patch modification, please let me know.
+> I am going to re-send v5 patch for AST2700 support.
+
+Please move this change in its own commit explaining the reason and
+add a TODO comment in the code.
+  
+The aspeed_smc_flash_ops MemoryRegionOps should be copied in _realize()
+to set a different width for the AST2700 SoC. You could do that too.
 
 Thanks,
 
 C.
-
-
 

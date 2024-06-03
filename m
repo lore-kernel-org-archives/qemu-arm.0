@@ -1,157 +1,152 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2336981ejs;
-        Mon, 3 Jun 2024 08:46:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXPckaZ8G6u/EphpAuOQqH5QHcSi4VHU+p3yd+l5Fll5Rdxq+dy8RWu/LcqZEU0mClF8uh3rN+x5b4HyoZLbWUGaS1mIhrH
-X-Google-Smtp-Source: AGHT+IF/WhOSnZlZFPLYOck5QUD+NNhoHHYKqui6PRCqqqHu5njbGOTrqiuST0SvSU6nn/2VAPOG
-X-Received: by 2002:a05:6870:d248:b0:250:ff1e:7498 with SMTP id 586e51a60fabf-250ff1f166dmr160508fac.51.1717429579875;
-        Mon, 03 Jun 2024 08:46:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717429579; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2393658ejs;
+        Mon, 3 Jun 2024 10:06:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUJ9TEVhY6PKNCAWKMlaiOQj2dt1adjMJhWUuADKe/YadsCagy4rYu6IpZTrdYa2g+Ut6ZdrmTb7noUbThrne91LY7nEiLO
+X-Google-Smtp-Source: AGHT+IEi7H8CZSb/vqPNLQUylv6mQL7TF9Rv0ntC4sYfJ1T982dNYU2Kx4Xb0FCfy4KTBPdIlHlM
+X-Received: by 2002:a5d:690e:0:b0:35e:7cd4:6d24 with SMTP id ffacd0b85a97d-35e7cd46e31mr23231f8f.3.1717434400698;
+        Mon, 03 Jun 2024 10:06:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717434400; cv=none;
         d=google.com; s=arc-20160816;
-        b=ThLOk2rP69bkh9Nvh8HimvpHcCMrcUoAsWOT0JJhO6+GBmx2RsbLVfeoMe+ShY1eh9
-         ZPqrokJxD/fKb+yFQBtLw5eHca5jpIGZ0+DgBoQ7ILTnP91GzO0IPZI2veufPVgJVxHq
-         /10Su+d86R8xGyXHoEv4bEPiBTbkKYSdk4YU9KDgyV7OXD3NGw8CYA9PKQLe9f6NcX8K
-         MDHcfXRz70hNhA5+Ez4LwJw2L4quJkdPu8Q8H67jv8IJYU1ti07GcAiV4IrxHaDhrqV1
-         QMRt9AWcb+mWwOLQgMWFWBGlrLH1R4Ag8ELbvLDrm18odDP39hTV5aPKmyzu9TJ0UuoG
-         DrTA==
+        b=bOWAoH0mc4RTuxygU9a2Nmhv3DUnWdyh1x2yx9O5QJlqCfwtmVhHJM6l9Bvs3DDnuI
+         aJWRl8K4CE9bqWpUlxBnYphLl7nco7Z+9Tw/qCmmanixS75bQ/WWOr43unX2H5DLqdJy
+         HnLI7Uqmq3uv2mKBjgZyzEKMBYKvOOLKlGS1Njdf81oJ7O9ZWcIkXieSVsnCkz6D7Nsd
+         C+luTjuYuhKf+FUZXKzFO3xIuE5KuhLnSJZewzaOIqFlbQ/Ol/noXG+SVsFR2VhBDWYt
+         v79K74RUY5foz3qWbgRyQyouPbHxHQfF09dAEi1J0nDT7gu7OjCdQ2YkranWcXG5NPnn
+         lP9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=7Q4z+fdqmLk6WGblwhy0RyA2rPi84ZSa+o8Rfuc0Zhk=;
-        fh=sHSNURk47vs5rapqs1fE2QggVLpChJZwLxKxNqSk2Go=;
-        b=VRKL5iHgwpiCuaX6EBzzB+9ZQYtaQXWlgHnHGoGzWwifttwvhzpBn4aTTq9Af89LOw
-         GSMhb2dj78XHqc8VX2h5/rt+MlwQAhIgSwg/sw/ilwwgyx65h48/lFAxXPox5wfp5TPo
-         pVd3CRGGEGjxNZgobvGLp0SDj0VUCL9MBr/cYqBJAEPBQVbtCO6ItII5ynjZZfTjjIbk
-         eElZrlXPEOxscl5fcBEjjeQX+Tapyn6b4RcZgMl57H7jMSc537DFC7ONFvW15P67GfrA
-         e+KnmJZLRteqp60roZqvslSEhbp1zJlUn4oRH0oYUcrC8WLVOxx5JnnkzlEfkpButNM0
-         o/2g==;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=hIhvFG904StDLDEXs02aTwGPPyUmkI3bpXgRnoN+kU8=;
+        fh=GrXUC3EmOrP2QAXcvXVSOD8TU83smcF4En5EhKRyfoU=;
+        b=Qc4u71AOvHoek2KN9j4Svd0c+tgk3JM4SRL0dgAo5jpGxby/CBU+fnjFUeUPOT8uyF
+         nHjGm6BgEE9SfYBu8lKABQ5HL9TbHUnEZpq9yJ0KiHbQjOPaQxgCoc3KV2ibD8sv7Gu/
+         DnyuGjRLp91Sjt7WF/REHwjKM6haleWmZkO5vfREACBcoQ7/LKiDethShPN/9ioMMMPI
+         cgF2JyaV6U6qfPLAy77dfuk4R0h64hD/6C906Aw5fXeQewEppLvW55kp+6zgntefJtkl
+         0J98MOiulRCOoAufhPmxm4QaTRxyheEYdB7rKvFHRmrVjx1l1remZCkiKjpIjLrzKPnO
+         DIcw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U0LnDzVe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-80aded6d3a2si1333450241.90.2024.06.03.08.46.19
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jun 2024 08:46:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b="ELrkcLY/";
+       spf=pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) smtp.mailfrom=dg@treblig.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
+Return-Path: <dg@treblig.org>
+Received: from mx.treblig.org (mx.treblig.org. [2a00:1098:5b::1])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-35dd063e089si4578523f8f.687.2024.06.03.10.06.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Jun 2024 10:06:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) client-ip=2a00:1098:5b::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=U0LnDzVe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sE9t0-0003BU-Kv; Mon, 03 Jun 2024 11:46:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sE9st-00036g-3x
- for qemu-arm@nongnu.org; Mon, 03 Jun 2024 11:46:11 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sE9sr-0003HC-0R
- for qemu-arm@nongnu.org; Mon, 03 Jun 2024 11:46:06 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-57a1fe63947so3831194a12.1
- for <qemu-arm@nongnu.org>; Mon, 03 Jun 2024 08:46:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1717429563; x=1718034363; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=7Q4z+fdqmLk6WGblwhy0RyA2rPi84ZSa+o8Rfuc0Zhk=;
- b=U0LnDzVeD768r1AbGrqI4G1LNmINKlchsE2sMYijnW6lYZaZre3P3W58jEKFfs8FnD
- ow5UkcX9tizeGRk8aCKMcakzNQtwuY3o/vFoL7zmG8f0xV5BlYiyP/YNW73KR41Kx2TZ
- hLQk488q9hpojeUsjFgx8VuCms8hi/HpPuH+83EzkuQq7qwuiHIzXQZyP9c1ET4kGKzY
- JzZvAkoNga+2wVVPTShYJvJ0EyAuOtCmngytP8Y1dB5RSsm6IAi/XBy+/dLLNSpdAVOc
- ExBHfFE0PsPEWxUK1Tyx6398LUL4kyrY80ZYidLsYexu+pbNqB9WB3W6ETDmRI3Ad4pi
- RQcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717429563; x=1718034363;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=7Q4z+fdqmLk6WGblwhy0RyA2rPi84ZSa+o8Rfuc0Zhk=;
- b=jqg/116OKnL+y26MrAs+EzAuSidBQew8MLszutBSIkaLyeD+mqcrEtVP1LQLB6p9zx
- AJoXYRW5vYt3NrrHm2o4ohOo5XYNDB4E9UCHdYxx0WmmuImLRiHpTR5FkBA3cwLXUcuD
- t7DwziO/Sp7e3SFWbBmVOWm5Xnfjt0NjtJSDSj4Fl+wA73BRxR7poLAxlYlM9MvTAkbY
- aAfMXMURfAOc9wBbPvXwBmE1AEkHmnJZTARCDDF5jwvP9KFiK9DcNwJInzrOgkS+n40e
- hSy59Pc0lXJaG7UqY8IKCGB4D3FJXy9hnKbmNs9ZyJNfTUz6x7t536O31v/AzkbZ0WDg
- PKtQ==
-X-Gm-Message-State: AOJu0YwPNemAS5yG/JOc2pf10rzcofK/0emZahh6wo7ItbFmZlmdFAnZ
- y5NSPf+GrfPqKUT4iLCyl5f9Tnx414iEghmRrlXm7wW549jbiiMsMfs40gUQW3hIvVGC1l3WAKQ
- 98Py19/1fRTVPkmKw7EGbiHHqehqGAoj3UiKvD+/9AniY+uZC
-X-Received: by 2002:a50:9518:0:b0:57a:1924:a9a1 with SMTP id
- 4fb4d7f45d1cf-57a363b3f96mr6205544a12.1.1717429563145; Mon, 03 Jun 2024
- 08:46:03 -0700 (PDT)
+       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b="ELrkcLY/";
+       spf=pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) smtp.mailfrom=dg@treblig.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
+	; s=bytemarkmx; h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
+	:Subject; bh=hIhvFG904StDLDEXs02aTwGPPyUmkI3bpXgRnoN+kU8=; b=ELrkcLY/6EwMu8Ty
+	Eb52QEPH5cfiek1zT/RZ45JAm4u/p/wvFE03eS1QtjWA5U7XsdGL+Qj7NNtHTMIe6xIy3983dXjsP
+	v9jrevej3+AhJB0GTLi56AKUomd61zdrltr4a0PoKtybCt5Bwgfuu0YnYJBjGkD0CyXByGoq7Br+V
+	icQiRkgjJ3L83iOhXz9yEws9cPVdu7i3F8gP6yHLqAPYdSYNVrE5k/mAim1pLkpyPWP8tsQGhZusZ
+	F9xH9DV3JwgZv9L4cGqoeWkb5t9p7OdcPoSVqELZnMiav/Y3U4Phrrfd06t7f/qa83kI5k/Iz8DS2
+	X1fVlrzKuDNGJXQGPQ==;
+Received: from dg by mx.treblig.org with local (Exim 4.96)
+	(envelope-from <dg@treblig.org>)
+	id 1sEB8o-003zgA-1o;
+	Mon, 03 Jun 2024 17:06:38 +0000
+Date: Mon, 3 Jun 2024 17:06:38 +0000
+From: "Dr. David Alan Gilbert" <dave@treblig.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+	qemu-s390x@nongnu.org, devel@lists.libvirt.org,
+	Eric Farman <farman@linux.ibm.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+	Anton Johansson <anjo@rev.ng>, qemu-arm <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 0/4] hw/s390x: Alias @dump-skeys -> @dump-s390-skey and
+ deprecate
+Message-ID: <Zl34HkNkeWnVhssP@gallifrey>
+References: <20240530074544.25444-1-philmd@linaro.org>
+ <cb4028fc-9596-47f3-9468-f8912dd48aed@redhat.com>
+ <ZlnYkt9sLgDbQqVT@gallifrey>
+ <6fec1c49-c6a6-4e96-bc44-5dc7feb843e6@redhat.com>
 MIME-Version: 1.0
-References: <CAG3SUFynWvXY2bAbV0zeAypGL-=d4p6YV6KYpi3ho6TYnxQp0w@mail.gmail.com>
-In-Reply-To: <CAG3SUFynWvXY2bAbV0zeAypGL-=d4p6YV6KYpi3ho6TYnxQp0w@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 3 Jun 2024 16:45:51 +0100
-Message-ID: <CAFEAcA8zBEiV1XLvM3HPDA2kxV1rrmBqhgc1_9_W5+phUCkGLg@mail.gmail.com>
-Subject: Re: Running qemu-aarch64 emulator inside Termux
-To: Eboubaker <gpscrambor.4862500@gmail.com>
-Cc: qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T/1gWRYMzhf8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <6fec1c49-c6a6-4e96-bc44-5dc7feb843e6@redhat.com>
+X-Chocolate: 70 percent or better cocoa solids preferably
+X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
+X-Uptime: 17:00:10 up 26 days,  4:14,  1 user,  load average: 0.02, 0.01, 0.00
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-TUID: 8tT9fBE0lrLW
 
-On Mon, 3 Jun 2024 at 16:41, Eboubaker <gpscrambor.4862500@gmail.com> wrote:
-> Then I noticed I can get better performance by using aarch64 instead of x86_64 since my phone is using arm64 CPU This is what i tried:
-> ```shell
->
-> pkg install qemu-system-arm
-> qemu-img create -f raw alpine-arch64.img 2G
-> wget https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/aarch64/alpine-virt-3.20.0-aarch64.iso
-> qemu-system-arm \
+* Thomas Huth (thuth@redhat.com) wrote:
+> On 31/05/2024 16.02, Dr. David Alan Gilbert wrote:
+> > * Thomas Huth (thuth@redhat.com) wrote:
+> > > On 30/05/2024 09.45, Philippe Mathieu-Daudé wrote:
+> > > > We are trying to unify all qemu-system-FOO to a single binary.
+> > > > In order to do that we need to remove QAPI target specific code.
+> > > > 
+> > > > @dump-skeys is only available on qemu-system-s390x. This series
+> > > > rename it as @dump-s390-skey, making it available on other
+> > > > binaries. We take care of backward compatibility via deprecation.
+> > > > 
+> > > > Philippe Mathieu-Daudé (4):
+> > > >     hw/s390x: Introduce the @dump-s390-skeys QMP command
+> > > >     hw/s390x: Introduce the 'dump_s390_skeys' HMP command
+> > > >     hw/s390x: Deprecate the HMP 'dump_skeys' command
+> > > >     hw/s390x: Deprecate the QMP @dump-skeys command
+> > > 
+> > > Why do we have to rename the command? Just for the sake of it? I think
+> > > renaming HMP commands is maybe ok, but breaking the API in QMP is something
+> > > you should consider twice.
+> > > 
+> > > And even if we decide to rename ... maybe we should discuss whether it makes
+> > > sense to come up with a generic command instead: As far as I know, ARM also
+> > > has something similar, called MTE. Maybe we also want to dump MTE keys one
+> > > day? So the new command should maybe be called "dump-memory-keys" instead?
+> > 
+> > I think there are at least two different concepts; but I agree it would be
+> > nice to keep a single command for matching concepts across different architectures;
+> > I can't say I know the details of any, but:
+> > 
+> >    a) Page table things - I think x86 PKRU/PKEY (???) is a page table thing
+> >      where pages marked a special way are associated with keys.
+> >      That sounds similar to what the skeys are???
+> 
+> Sounds a little bit similar, but s390 storage keys are independent from page
+> tables. It's rather that each page (4096 bytes) of RAM has an additional
+> 7-bit value that contains the storage key and some additional bits. It's
+> also usable when page tables are still disabled.
+> 
+> > I'm not sure the two fit in the same command.
+> 
+> Does it make sense to dump all the MTE or x86 keys all at once? If so, we
+> could maybe come up with an unified command. Otherwise it might not make
+> sense, indeed.
 
-qemu-system-arm is for 32-bit CPUs...
+So they're all really different granularities:
+    s390 - one key/physical page
+    ARM MTE - one tag/16 bytes physical
+    x86 - per virtual page; then a current register with 16 permission
+         sets
 
-> -machine virt \
-> -m 1024 \
-> -smp cpus=2 \
-> -drive if=pflash,format=raw,read-only=on,file=$PREFIX/share/qemu/edk2-aarch64-code.fd \
+For x86 I guess it would be easy to dump the register, and then the
+values for a range of virtual addresses.
+But then if you dumped a range of physical addresses on ARM MTE you'd
+get hundreds times more output than for the equivalent s390.
 
-...but this is a 64-bit BIOS image. It will never boot on this
-QEMU command line.
+Dave
 
-You need to use qemu-system-aarch64 and specify a -cpu option
-that is a 64-bit CPU.
-
-If you want to actually get the speed improvement from the
-fact you're running a 64-bit guest on a 64-bit host then you
-will also need to tell QEMU to use the KVM accelerator,
-with eg '-enable-kvm'. Your phone's kernel will also
-need to support KVM, of course. I don't know how likely that
-is but I would not be too optimistic.
-
-For pure emulation, there is no particular advantage to having
-the host and target CPU architetures the same.
-
-thanks
--- PMM
+>  Thomas
+> 
+-- 
+ -----Open up your eyes, open up your mind, open up your code -------   
+/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
+\        dave @ treblig.org |                               | In Hex /
+ \ _________________________|_____ http://www.treblig.org   |_______/

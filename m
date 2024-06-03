@@ -1,200 +1,136 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2169137ejs;
-        Mon, 3 Jun 2024 04:47:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVmJpY+X/CZILuCClmb98MvChfI1akBDa1N3Ca71c+u+rjy9ipT9K9vSAC78ICAPabs1OJNjAcygZqXLDwQ273guFsMY9S9
-X-Google-Smtp-Source: AGHT+IHTX7f6el/ugMQB8Snz5vGSBJKotia4rjAX2Se43QlBwTwI2pDclhmACKj+uyrZPT/LCDVP
-X-Received: by 2002:a05:6808:98:b0:3c9:c3ad:53b0 with SMTP id 5614622812f47-3d1e35f17dcmr7847217b6e.59.1717415252712;
-        Mon, 03 Jun 2024 04:47:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717415252; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2190564ejs;
+        Mon, 3 Jun 2024 05:19:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX+RdRBfC+fJWVHlSMj9bXLQdSKLha8Cy+G5+e8+h0o+kMhD3CeCrLKFT4BOkZVh3woJDJE6TgyTf8zCXVfM5+8uOnRwInh
+X-Google-Smtp-Source: AGHT+IFkdP1WPyqz2bAEqwiDPtx4EPR/8taAy4wo+JYN5POGYUCpi94za2+HcHZN2kqzoiCsxo/+
+X-Received: by 2002:a05:6122:458d:b0:4d4:1cb7:f57a with SMTP id 71dfb90a1353d-4eb02dae015mr9583226e0c.9.1717417141634;
+        Mon, 03 Jun 2024 05:19:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717417141; cv=none;
         d=google.com; s=arc-20160816;
-        b=EyiQfJ0TT9ETryNXRL8Z+rU6sfN1ydqt8vk2zbEfXCuDocJ/8OgpAt5ERzAPMFG/yy
-         yR1dY3d2Do1GX+vtfqPm/tvxrB4twLG2sQMrYxDhv1QBYw+VbTcdMG0ojxVcsNFjQmIy
-         3frPOBhC8BTB1d5EOYwgCJImrcHVjCjqYX7tSp/lU8sY1wF6ZV3Ky2EhT+nrFMJY78xP
-         +nd/dZ5pxX2UU6KxN2VG1S3hKJ+eYliXkJVkekVvTkRIIrb0R9pKuYnbKVr7hCEXrT6W
-         sbFon5yXR8aVurmq93oeF59kS1i/CzKxBzaX6F4vo9Ode4fjAujzlSimuOpBx0qnM/62
-         7qoQ==
+        b=M33p2G42Ib4IlDPVl/Cf9JswM+nO8L5D1JBp77MiCb8HaoyyBai0nF9UbgPto8T4l+
+         a+WzMoAN+TCohSvhLhhvvBsPaqncA0qVOdV2CXss0vYnT4dBrLiCTpEuLcQc/m9+0bbv
+         ezD5RZLPP/OX2Ugr5dNGi4lRBCjnTldGhaTtt53suuW2o8V87LGKQIDUzzDxiCiiwuyW
+         gonpHNdezbCvvkFzr/BRJalyYg3jf/f05TX4sNpMr7Y+axEoCA7qowmjVo+hCsXdsrqQ
+         3vOlkZLIYD/pnxJtK9c+KvC2GxeVuo+qbTq9fUxBfyxuiL98rnLgRHwLAQww/y7lFvKu
+         DWbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=wXrodLI1nM8cw7TbRMRTOcWsETyEdupfvm74LYWylh8=;
-        fh=kRicVupqyko4DJ1sS1OnU1mZPavTh9JtdM62mnuOdpE=;
-        b=m+krWyXSK2Ri5f4V85Ur/jwBcRTikD8gcVt2vZnKT1BBfmIB7XkhHjLwmC3z8ryPxI
-         rqAz2NfBYgAEVzzfigEG4ucIzoS1em+E5NRSoLSUUUw/UX7EYMD3pq7sycRupb3tAvRp
-         llYfOopaifR8knG9F0zLRjbxnSAQ5GYlviTXOsVP1iup+BWPv2tFDetGXODH/m+LHOHK
-         hAds+tGizj10s1qNHAyIMCvwM2Xo0D3zrWVFDZAbROx3QjJdkF/tLK/13gb2kJv3q/iy
-         QW12rkRYUylqUKhC05jtw7+VDYfBAp0o4Cc0D8tLaauaPfdSg94EmuO7dIioHgegHVTq
-         aU3Q==;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=2LVKqb/lcDhE5tKG2mNLWEhBm6QIry3ro/YwOQeXrDA=;
+        fh=pwoR6NCdcacBrrBENMSwP9/RUr4kvado7ph94Z0EufU=;
+        b=gn75tJP555zdAyjItZbUokqM9tz3V9UUagtIq+wiDs2WfnmjmNNqWNSZKQmcm8Pn/l
+         eDRel456KXrw1LGP9CEwFoK1ua5V8avqlUCfe3RckvcAjmM8qsApu59PCCfSJWRrzdKz
+         z6N+v/GhhUIGxwb4mlDhUB/UEUrKRok0i/UcwYahvb6nDZMSt/XHKBtjAFbFBSzAIOqi
+         EIII03J1vicO1maLPRjCvI8oLfB5Jkz+hl3K7kPMKyE7XpObkyJdvo27vX7Niu6IMjUw
+         W3pV7uhT5zNFO5GiId7mfwlvzjkNZAGcuvTSv/QroeHckmrMArFObUsTdSpPG60TjIGj
+         01fg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4a733e10si85490486d6.50.2024.06.03.04.47.32
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WHOacald;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-794f2f0574bsi901934385a.75.2024.06.03.05.19.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jun 2024 04:47:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Jun 2024 05:19:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sE69q-0002fJ-9x; Mon, 03 Jun 2024 07:47:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=jUUh=NF=kaod.org=clg@ozlabs.org>)
- id 1sE69o-0002dn-6o; Mon, 03 Jun 2024 07:47:20 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=jUUh=NF=kaod.org=clg@ozlabs.org>)
- id 1sE69l-0004df-4s; Mon, 03 Jun 2024 07:47:19 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4VtBly3jQhz4x23;
- Mon,  3 Jun 2024 21:47:10 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4VtBls3RCyz4wcv;
- Mon,  3 Jun 2024 21:47:04 +1000 (AEST)
-Message-ID: <44a84ad3-797a-4c7e-ae6f-c80db047292f@kaod.org>
-Date: Mon, 3 Jun 2024 13:47:01 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WHOacald;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1717417141;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=2LVKqb/lcDhE5tKG2mNLWEhBm6QIry3ro/YwOQeXrDA=;
+	b=WHOacaldG9i3Bn0cWZbcU+aZ6RQCn1u0jdoea6JVpozfL4w2tGyBfGqezqZrjSxkehEX79
+	l5a/BqZmMyvl/PrOAYgj8aaG1+3zLSQzcy5LqYxY/iEX0F8jOR7ZXCmRWRgyurDtjZyhlQ
+	7Yw2IgfUC0v+6xieFlKtxjGvcJbMNDU=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-642-7sgSFcalPJOF7gtJEgMQ5g-1; Mon,
+ 03 Jun 2024 08:18:58 -0400
+X-MC-Unique: 7sgSFcalPJOF7gtJEgMQ5g-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6E2633C025A1;
+	Mon,  3 Jun 2024 12:18:57 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.80])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9455A1C008BB;
+	Mon,  3 Jun 2024 12:18:54 +0000 (UTC)
+Date: Mon, 3 Jun 2024 13:18:52 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
+	"Dr. David Alan Gilbert" <dave@treblig.org>,
+	David Hildenbrand <david@redhat.com>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	qemu-s390x@nongnu.org, devel@lists.libvirt.org,
+	Eric Farman <farman@linux.ibm.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+	Anton Johansson <anjo@rev.ng>, qemu-arm <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 0/4] hw/s390x: Alias @dump-skeys -> @dump-s390-skey and
+ deprecate
+Message-ID: <Zl20rAjHLJlZkwxE@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20240530074544.25444-1-philmd@linaro.org>
+ <cb4028fc-9596-47f3-9468-f8912dd48aed@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] Re: [PATCH v4 09/16] aspeed/smc: Add AST2700 support
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
- <20240527080231.1576609-10-jamin_lin@aspeedtech.com>
- <b641018c-e906-452b-8072-1b46f141808b@linaro.org>
- <41e59fa6-c74d-47c7-ba01-690cfaf7f5f1@kaod.org>
- <SI2PR06MB504115C43768F1DF7E9621B9FCFF2@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <98886224-8de7-41d7-9ae9-77ac85818605@kaod.org>
- <SI2PR06MB5041574C3A7283A1A29B81FCFCFF2@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <747755fd-dc9d-4bbd-9b6d-eaabe398bb19@kaod.org>
- <SI2PR06MB5041FCED8D307124D1747830FCFF2@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <SI2PR06MB5041FCED8D307124D1747830FCFF2@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=jUUh=NF=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TOV7y7uGlHzD
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <cb4028fc-9596-47f3-9468-f8912dd48aed@redhat.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
+X-TUID: qe8ZLZ6XAdys
 
-> Thanks for your suggestion. How about these changes?
+On Fri, May 31, 2024 at 06:47:45AM +0200, Thomas Huth wrote:
+> On 30/05/2024 09.45, Philippe Mathieu-Daudé wrote:
+> > We are trying to unify all qemu-system-FOO to a single binary.
+> > In order to do that we need to remove QAPI target specific code.
+> > 
+> > @dump-skeys is only available on qemu-system-s390x. This series
+> > rename it as @dump-s390-skey, making it available on other
+> > binaries. We take care of backward compatibility via deprecation.
+> > 
+> > Philippe Mathieu-Daudé (4):
+> >    hw/s390x: Introduce the @dump-s390-skeys QMP command
+> >    hw/s390x: Introduce the 'dump_s390_skeys' HMP command
+> >    hw/s390x: Deprecate the HMP 'dump_skeys' command
+> >    hw/s390x: Deprecate the QMP @dump-skeys command
 > 
-> 1. aspeed_smc.h
-> struct AspeedSMCClass {
->      const MemoryRegionOps *reg_ops;
-> }
+> Why do we have to rename the command? Just for the sake of it? I think
+> renaming HMP commands is maybe ok, but breaking the API in QMP is something
+> you should consider twice.
+
+That was going to be my question too. Seems like its possible to simply
+stub out the existing command for other targets.
+
+The renaming is just window dressing.
+
 > 
-> 2. aspeed_smc.c
-> a. create new memory region opts for ast2700
-> static const MemoryRegionOps aspeed_2700_smc_flash_ops = {
->      .read = aspeed_smc_flash_read,
->      .write = aspeed_smc_flash_write,
->      .endianness = DEVICE_LITTLE_ENDIAN,
->      .valid = {
->          .min_access_size = 1,
->          .max_access_size = 8,
->      },
-> };
-> 
-> b. set memory region opts in all model class init
-> static void aspeed_2400_smc_class_init(ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_2400_fmc_class_init (ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_2400_spi1_class_init (ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_2500_fmc_class_init (ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_2500_spi1_class_init (ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_2500_spi2_class_init (ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_2600_fmc_class_init (ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_2600_spi1_class_init (ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_2600_spi2_class_init (ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_1030_fmc_class_init (ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_1030_spi1_class_init (ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_1030_spi2_class_init (ObjectClass *klass, void *data){
->      asc->reg_ops           = &aspeed_smc_flash_ops;
-> }
-> static void aspeed_2700_fmc_class_init(ObjectClass *klass, void *data)
-> {
->    asc->reg_ops           = &aspeed_2700_smc_flash_ops;
-> }
-> static void aspeed_2700_spi0_class_init (ObjectClass *klass, void *data)
-> {
->    asc->reg_ops           = &aspeed_2700_smc_flash_ops;
-> }
-> static void aspeed_2700_spi1_class_init (ObjectClass *klass, void *data)
-> {
->    asc->reg_ops           = &aspeed_2700_smc_flash_ops;
-> }
-> static void aspeed_2700_spi2_class_init (ObjectClass *klass, void *data)
-> {
->    asc->reg_ops           = &aspeed_2700_smc_flash_ops;
-> }
-> 
-> c. update realize to use memory region opts from class reg_opts
-> static void aspeed_smc_flash_realize(DeviceState *dev, Error **errp) {
->      memory_region_init_io(&s->mmio, OBJECT(s), s->asc->reg_ops,
->                            s, name, s->asc->segments[s->cs].size);
-> }
+> And even if we decide to rename ... maybe we should discuss whether it makes
+> sense to come up with a generic command instead: As far as I know, ARM also
+> has something similar, called MTE. Maybe we also want to dump MTE keys one
+> day? So the new command should maybe be called "dump-memory-keys" instead?
+> Or should it maybe rather be an option to the existing "dump-guest-memory"
+> command instead?
 
-LGTM,
-
-
-Thanks,
-
-C.
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

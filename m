@@ -1,128 +1,277 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-35dd064bbb1sm9295671f8f.101.2024.06.03.10.53.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Jun 2024 10:53:31 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 1C8CB5F9FB;
-	Mon,  3 Jun 2024 18:53:29 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	John Snow <jsnow@redhat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-arm@nongnu.org,
-	Joel Stanley <joel@jms.id.au>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Cleber Rosa <crosa@redhat.com>,
-	Leif Lindholm <quic_llindhol@quicinc.com>,
-	qemu-s390x@nongnu.org,
-	Beraldo Leal <bleal@redhat.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Radoslaw Biernacki <rad@semihalf.com>
-Subject: [PATCH v3 06/12] docs/ci: clean-up references for consistency
-Date: Mon,  3 Jun 2024 18:53:22 +0100
-Message-Id: <20240603175328.3823123-7-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240603175328.3823123-1-alex.bennee@linaro.org>
-References: <20240603175328.3823123-1-alex.bennee@linaro.org>
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2664352ejs;
+        Mon, 3 Jun 2024 20:02:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVdpLhcfAfvKZXLgxvYTcYOGnAfVWxOdBZmRuqVN0+CJbL423wOTZYeOxnrwkWrmv9qJpwUQDTP37aF38kbJc3padlGppPn
+X-Google-Smtp-Source: AGHT+IEluM7m4zucUi4rHcQK2qUzunG+V77mEm6L+089rFWrfKH4iChrctp7kpSZjE9Yw74AKmQ8
+X-Received: by 2002:a05:620a:390c:b0:793:19a3:6fa3 with SMTP id af79cd13be357-7951353c0fcmr251943285a.1.1717470147236;
+        Mon, 03 Jun 2024 20:02:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717470147; cv=none;
+        d=google.com; s=arc-20160816;
+        b=IWtI2VisMLMQMU38S9QEBHmX91uMCTzIFBFwLQgIND72zju63IwEUVYzD9BK96MYja
+         MHbpHWWMQJKcWsUoGGYk07RY/NCtA7VWoJDZV859KsOZM/I2xqmmd7H2deuAxXBMZS0E
+         bgGuM3aY+vH/miFJwtn4FcmySVsMxTVwoopNgFwTNp2UvCMgHMd44UNfNraEUCKTj53M
+         lreOGzZU1FdArLOeBFyyC7KkWLynwd5YUN/lZO9pb2SX6XXO4XHc8CvVzZORpIofVUHs
+         /QibWzKkz6/I4VTX5JTD6roQ7YmB7FKkbtXmv6fYdetA/3ktLsRlbCPQW8EeFPp6hOg0
+         KvKQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=X4caMMEs04BIN2gFo1aaUNUVWiGoKOv1S6GuO5UnMGw=;
+        fh=KtQaIss9+pJLCWvTWTACah6LHeTpYn4YurN5NmNhQsY=;
+        b=UJX85ApHSrexO2XUZiIlWdvFhuSCcrabLtnewv10/85Yg0IqIUZnsCBnBx0KPO/hKy
+         A/He5i6pgPgJmYtZD3zIN7RYBMq2HlBX+Y3mPplG9+LsoGXxumjPRx9nuiFlk7CnwkDX
+         Kfknr+2PeFxGSxFQZBA9pRAiHGUMHXHkp/vpJgEBWZVDmxqqhL6UoOfqP5vIu6bHaX6c
+         bGMrFbN3C6LpfFSRf5NkzFK9f3P33P+lx4NF9S89DCohSYFwPxg6fxRW7F6T1koAtWk1
+         NDmNFDBZeTGayBrIWNvJp4bTX7rRj7Wp2AYxQiPEseeJtTsWCkVAyN5PmLblNM9EZMzw
+         w3vw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NPAUL+5S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-794f32c281fsi1034778785a.740.2024.06.03.20.02.27
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 03 Jun 2024 20:02:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NPAUL+5S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sEKRK-0005g5-Io; Mon, 03 Jun 2024 23:02:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1sEKRJ-0005fn-Fu
+ for qemu-arm@nongnu.org; Mon, 03 Jun 2024 23:02:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1sEKRH-0002Ya-BB
+ for qemu-arm@nongnu.org; Mon, 03 Jun 2024 23:02:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1717470137;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=X4caMMEs04BIN2gFo1aaUNUVWiGoKOv1S6GuO5UnMGw=;
+ b=NPAUL+5S6WjF41F3OFf+cZXoDpl7ZaRv8WphYZWrRd3+OyyTKpmDnya0PFfFSDHMQYb9lj
+ GOwTrvMEVtATO5+v5CtyIyurDY74g6vBzbiH/hSMvUjntu6ID3rJwf+GrjxGtJdO8ADXU3
+ ml+eOO+N7q9BFGGh5oTP1LS+sa+D1dc=
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-687-2vNWVYxPP2m9gPhSz7G7IQ-1; Mon, 03 Jun 2024 23:02:16 -0400
+X-MC-Unique: 2vNWVYxPP2m9gPhSz7G7IQ-1
+Received: by mail-pl1-f199.google.com with SMTP id
+ d9443c01a7336-1f6810e43e0so10371065ad.0
+ for <qemu-arm@nongnu.org>; Mon, 03 Jun 2024 20:02:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1717470135; x=1718074935;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=X4caMMEs04BIN2gFo1aaUNUVWiGoKOv1S6GuO5UnMGw=;
+ b=Fhht5XJy6Cfwxy2YEULGtPeVD3KoGBE0NkZna+xj4ZUeiX/TbaeFAVc77xMDdmhTYX
+ KSOtxqhW6X/sZBNqzY06N/Ji7MgckUDlb9QgKvKPjliJ5i1P4YPcslWkAwE1faYNUvtK
+ FkVd1SHTko04k9pDnhCtTsgfRpKUnH4QAfJvhLfYIMd9tjxXKC989Uc699n8sUlLEqgo
+ 7BC1Knb0sBnn6O/B75x5RZOeBLuzwJX3DMpn6p1EKqYv+gGwNi9LzJn4JKkYfPwy+My+
+ rqSPRxETAJpFsSd3LBW3AAvubAYrXpiXib1XEJlgN7Lc9lblbxRpCw8fC+wtfg8IwQwI
+ K6hg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXnaehRWM9jM7LE3fg5caMXwsyBQfJtKIN4G+8qJYLj+2a9RfzrsIV8tRRfyoxAwI6rReRdsk2AxEtIjkV5/SIS0Lgy
+X-Gm-Message-State: AOJu0YyNNbQXhmWpZceBnDhhWp1PcTMrQmgrMvdwJ+kqhPqGF5ShOeb3
+ BE6EnjWOuSRKk+40KJc0S0fDTW9QPuMy+O9I1TdTiD9EEYct/ZnFUJCZHZKZX4loHnXXWGgeqFU
+ czPFUoZJjgMonI6KPUkA4zyOt45UPPzkwVoC6qQ8RrlK0xxUwTA==
+X-Received: by 2002:a17:902:cecb:b0:1f2:f8b7:60cf with SMTP id
+ d9443c01a7336-1f69390b9b3mr23415605ad.27.1717470134857; 
+ Mon, 03 Jun 2024 20:02:14 -0700 (PDT)
+X-Received: by 2002:a17:902:cecb:b0:1f2:f8b7:60cf with SMTP id
+ d9443c01a7336-1f69390b9b3mr23415185ad.27.1717470134223; 
+ Mon, 03 Jun 2024 20:02:14 -0700 (PDT)
+Received: from [192.168.68.50] ([103.210.27.211])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-1f6323f6da2sm71867115ad.227.2024.06.03.20.02.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 03 Jun 2024 20:02:13 -0700 (PDT)
+Message-ID: <2c81cb47-b9bc-4875-a7fb-49c3a8ab6713@redhat.com>
+Date: Tue, 4 Jun 2024 13:02:08 +1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: of8JoQF/R3iS
+User-Agent: Mozilla Thunderbird
+Subject: Re: Unexpected error in rme_configure_one() at
+ ../target/arm/kvm-rme.c:159
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: Itaru Kitayama <itaru.kitayama@linux.dev>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ard Biesheuvel <ardb@kernel.org>
+References: <0C6F517A-5686-4BCE-8D08-1CED02CB470E@linux.dev>
+ <4e7aa598-1a5d-47e1-aaa3-78af05947eeb@linaro.org>
+ <CB05CAA2-9301-45F6-8AE3-A2E27A160CDF@linux.dev>
+ <cbd630d7-01e8-49ba-9c8b-a6514d898ed2@redhat.com>
+ <20240531150922.GA83195@myrica>
+ <bd1f84bd-e23c-4f4b-bc0b-a2a1b70081f4@redhat.com>
+ <20240603082402.GA25688@myrica>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20240603082402.GA25688@myrica>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tTa37RyHymrE
 
-Document we have split up build-environment by distro and update the
-references that exist in the code base to be correct.
+Hi Jean,
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20240529160934.982373-7-alex.bennee@linaro.org>
----
- docs/devel/ci-runners.rst.inc                       | 13 ++++++-------
- .../custom-runners/ubuntu-22.04-aarch32.yml         |  2 +-
- .../custom-runners/ubuntu-22.04-aarch64.yml         |  2 +-
- .gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml  |  2 +-
- scripts/ci/setup/{ => ubuntu}/build-environment.yml |  0
- 5 files changed, 9 insertions(+), 10 deletions(-)
- rename scripts/ci/setup/{ => ubuntu}/build-environment.yml (100%)
+On 6/3/24 18:24, Jean-Philippe Brucker wrote:
+> On Sat, Jun 01, 2024 at 08:14:46PM +1000, Gavin Shan wrote:
+>> ---> guest edk2
+>>
+>> # git clone https://git.codelinaro.org/linaro/dcap/edk2.git edk2-guest
+>> # cd edk2-guest; git checkout origin/cca/v2 -b cca/v2
+>> # git submodule update --init --recursive;  \
+>>    source edksetup.sh; make -j -C BaseTools; \
+>>    export GCC5_AARCH64_PREFIX=;              \
+> 
+> Doesn't this needs a cross-compiler, something like "aarch64-linux-gnu-" ?
+> 
 
-diff --git a/docs/devel/ci-runners.rst.inc b/docs/devel/ci-runners.rst.inc
-index 7817001fb2..67b23d3719 100644
---- a/docs/devel/ci-runners.rst.inc
-+++ b/docs/devel/ci-runners.rst.inc
-@@ -41,19 +41,18 @@ those hosts.  This would look like::
- Build environment
- ~~~~~~~~~~~~~~~~~
- 
--The ``scripts/ci/setup/build-environment.yml`` Ansible playbook will
--set up machines with the environment needed to perform builds and run
--QEMU tests.  This playbook consists on the installation of various
--required packages (and a general package update while at it).  It
--currently covers a number of different Linux distributions, but it can
--be expanded to cover other systems.
-+The ``scripts/ci/setup/$DISTRO/build-environment.yml`` Ansible
-+playbook will set up machines with the environment needed to perform
-+builds and run QEMU tests. This playbook consists on the installation
-+of various required packages (and a general package update while at
-+it).
- 
- The minimum required version of Ansible successfully tested in this
- playbook is 2.8.0 (a version check is embedded within the playbook
- itself).  To run the playbook, execute::
- 
-   cd scripts/ci/setup
--  ansible-playbook -i inventory build-environment.yml
-+  ansible-playbook -i inventory $DISTRO/build-environment.yml
- 
- Please note that most of the tasks in the playbook require superuser
- privileges, such as those from the ``root`` account or those obtained
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml
-index b8a0d75162..8727687e2b 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch32.yml
-@@ -1,5 +1,5 @@
- # All ubuntu-22.04 jobs should run successfully in an environment
--# setup by the scripts/ci/setup/qemu/build-environment.yml task
-+# setup by the scripts/ci/setup/ubuntu/build-environment.yml task
- # "Install basic packages to build QEMU on Ubuntu 22.04"
- 
- ubuntu-22.04-aarch32-all:
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-index 374b0956c3..263a3c2140 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-aarch64.yml
-@@ -1,5 +1,5 @@
- # All ubuntu-22.04 jobs should run successfully in an environment
--# setup by the scripts/ci/setup/qemu/build-environment.yml task
-+# setup by the scripts/ci/setup/ubuntu/build-environment.yml task
- # "Install basic packages to build QEMU on Ubuntu 22.04"
- 
- ubuntu-22.04-aarch64-all-linux-static:
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml b/.gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml
-index 25935048e2..69ddd3e7d5 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-22.04-s390x.yml
-@@ -1,5 +1,5 @@
- # All ubuntu-22.04 jobs should run successfully in an environment
--# setup by the scripts/ci/setup/build-environment.yml task
-+# setup by the scripts/ci/setup/ubuntu/build-environment.yml task
- # "Install basic packages to build QEMU on Ubuntu 22.04"
- 
- ubuntu-22.04-s390x-all-linux:
-diff --git a/scripts/ci/setup/build-environment.yml b/scripts/ci/setup/ubuntu/build-environment.yml
-similarity index 100%
-rename from scripts/ci/setup/build-environment.yml
-rename to scripts/ci/setup/ubuntu/build-environment.yml
--- 
-2.39.2
+No, I was building everything using a native compiler instead of a cross compiler.
+All packages were compiled on a NVidia's grace-hopper machine.
+
+[root@nvidia-grace-hopper-05 ~]# cat /etc/system-release
+Red Hat Enterprise Linux release 9.5 Beta (Plow)
+[root@nvidia-grace-hopper-05 ~]# uname -r
+6.7.0-rc2-gavin+
+[root@nvidia-grace-hopper-05 ~]# gcc --version
+gcc (GCC) 11.4.1 20231218 (Red Hat 11.4.1-3)
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+I tried the cross compiler and encountered the same build error.
+
+[root@nvidia-grace-hopper-05 edk2-guest]# export | grep GCC5_AARCH64_PREFIX
+declare -x GCC5_AARCH64_PREFIX="aarch64-linux-gnu-"
+[root@nvidia-grace-hopper-05 edk2-guest]# build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemu.dsc
+   :
+--add-gnu-debuglink=/home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.debug /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll
+cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.debug /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPrePeiCore.debug
+"GenFw" -e SEC -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/OUTPUT/ArmPlatformPrePeiCore.efi /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll
+GenFw: ERROR 3000: Invalid
+   WriteSections64(): /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll AARCH64 small code model requires identical ELF and PE/COFF section offsets modulo 4 KB.
+GenFw: ERROR 3000: Invalid
+   :
+
+>>    build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemu.dsc
+>>     :
+>>    WriteSections64(): /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll AARCH64 small code model requires identical ELF and PE/COFF section offsets modulo 4 KB.
+>> cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/OvmfPkg/VirtioFsDxe/VirtioFsDxe/DEBUG/VirtioFsDxe.dll /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/OvmfPkg/VirtioFsDxe/VirtioFsDxe/DEBUG/VirtioFsDxe.debug
+>> cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe/DEBUG/PartitionDxe.debug /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/PartitionDxe.debug
+>> "gcc" -MMD -MF /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/openssl/crypto/asn1/x_sig.obj.deps @/home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/cc_resp.txt  -c -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/CryptoPkg/Library/OpensslLib/OpensslLibCrypto/OUTPUT/openssl/crypto/asn1/x_sig.obj  /home/gavin/sandbox/CCA/edk2-guest/CryptoPkg/Library/OpensslLib/openssl/crypto/asn1/x_sig.c
+>> "GenFw" -e DXE_CORE -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Core/Dxe/DxeMain/OUTPUT/DxeCore.efi /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Core/Dxe/DxeMain/DEBUG/DxeCore.dll
+>> GenSec -s EFI_SECTION_USER_INTERFACE -n ArmCpuDxe -o /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/FV/Ffs/B8D9777E-D72A-451F-9BDB-BAFB52A68415ArmCpuDxe/B8D9777E-D72A-451F-9BDB-BAFB52A68415SEC3.ui
+>> cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/DisplayEngineDxe/DisplayEngineDxe/DEBUG/*.map /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/DisplayEngineDxe/DisplayEngineDxe/OUTPUT
+>> cp -p -f /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/UdfDxe/UdfDxe/OUTPUT/UdfDxe.efi /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/Disk/UdfDxe/UdfDxe/DEBUG
+>> GenFw: ERROR 3000: Invalid
+>>    :
+>> build.py...
+>>   : error 7000: Failed to execute command
+>> 	make tbuild [/home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore]
+>>
+>>
+>> build.py...
+>>   : error F002: Failed to build module
+>> 	/home/gavin/sandbox/CCA/edk2-guest/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore.inf [AARCH64, GCC5, DEBUG]
+>>
+>> - Failed -
+>> Build end time: 05:42:19, Jun.01 2024
+>> Build total time: 00:00:31
+>>
+>> ---> Use the edk2 image from the latest QEMU source
+> 
+> Unfortunately this can't work at the moment because edk2 needs several
+> changes in order to run in a Realm
+> 
+>>
+>> # cd /home/gavin/sandbox/CCA
+>> # cp /home/gavin/sandbox/qemu.main/build/pc-bios/edk2-aarch64-code.fd ./
+>>
+>> ---> Start the guest and no output from the console
+>>
+>> host# mount | grep 9p
+>> shr0 on /mnt/shr0 type 9p (rw,relatime,access=client,trans=virtio)
+>> host# export SHR_DIR="/mnt/shr0"
+>> host# qemu-system-aarch64 -accel kvm                              \
+>>        -machine virt,gic-version=3,confidential-guest-support=rme0 \
+>>        -cpu host -smp 2 -m 512M                                    \
+>>        -object 'rme-guest,id=rme0,measurement-algo=sha512'         \
+>>        -monitor none -serial mon:stdio -nographic                  \
+>>        -bios /mnt/edk2-aarch64-code.fd                             \
+>>        -kernel ${SHR_DIR}/linux/arch/arm64/boot/Image              \
+>>        -initrd ${SHR_DIR}/buildroot/output/images/rootfs.cpio      \
+>>        -append 'console=ttyAMA0'
+>>          :
+>>        <no output from the console>
+>>          :
+>>        (QEMU) q
+>>
+>> There are some messages from host's console indicating RMI/RMM servicing
+>> states when the guest is running at background. After the guest is terminated,
+>> the host crashes.
+>>
+>> SMC_RMM_RTT_CREATE            102dff000 122c2e000 1e00000 3 > RMI_SUCCESS
+>> SMC_RMM_RTT_CREATE            102dff000 1234a7000 2000000 3 > RMI_SUCCESS
+>> SMC_RMM_RTT_CREATE            102dff000 1235bd000 2200000 3 > RMI_SUCCESS
+>> SMC_RMM_RTT_CREATE            102dff000 12387c000 2400000 3 > RMI_SUCCESS
+>> SMC_RMM_RTT_CREATE            102dff000 123a5a000 2600000 3 > RMI_SUCCESS
+>> SMC_RMM_RTT_CREATE            102dff000 12407d000 2800000 3 > RMI_SUCCESS
+>> SMC_RMM_RTT_CREATE            102dff000 124109000 2a00000 3 > RMI_SUCCESS
+>> SMC_RMM_RTT_CREATE            102dff000 123e49000 2c00000 3 > RMI_SUCCESS
+>> SMC_RMM_RTT_CREATE            102dff000 124275000 2e00000 3 > RMI_SUCCESS
+>> SMC_RMM_RTT_CREATE            102dff000 123138000 3000000 3 > RMI_SUCCESS
+>> SMC_RMM_RTT_CREATE            102dff000 124d07000 3200000 3 > RMI_SUCCESS
+>>   :
+>>   :
+>> [22768.994481] rcu: INFO: rcu_preempt self-detected stall on CPU
+> 
+> This is a warning rather than a crash. The current KVM patches spend too
+> much time tearing down guest page tables (SMC calls to RMM) while holding
+> the mmu lock. Not very nice but harmless.
+> 
+
+Ok, I can look into this deeply after I can bring up the guest successfully.
+
+Thanks,
+Gavin
+

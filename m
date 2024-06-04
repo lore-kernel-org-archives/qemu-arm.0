@@ -1,71 +1,71 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2783119ejs;
-        Tue, 4 Jun 2024 01:18:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXytPFWI8VRZZ0tS6T7jnRKfwtcSXe4ulkiCSYc8eAV+cADKpqba+YK2iCCJ6F1ZGWxHNaR18AUmKMEbx2KbNIxuVRzZD7G
-X-Google-Smtp-Source: AGHT+IGkADKx00ETLrf6bnTd09OO+beMhECmC67pmhOK1p9laBSON5DidMPj8xWhWkxGMGRhATHc
-X-Received: by 2002:a25:ad03:0:b0:df4:a607:2429 with SMTP id 3f1490d57ef6-dfa73d90ac6mr12001413276.45.1717489112478;
-        Tue, 04 Jun 2024 01:18:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717489112; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2785696ejs;
+        Tue, 4 Jun 2024 01:24:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWjaYM6XKVDmCDAqW4tFTz1cHRL2l5iglo4JvbMMWziASjxfCg3UYOAsxKBZx95zJ9E8gPPn2kHO+nPr2gRQTDdcmJa+GJb
+X-Google-Smtp-Source: AGHT+IH8tZa4tEH6J57Iv2aC037ngQEbCyihF/gS+2gphUzdu441USy5CdqXNTBJQUd1bkCvspge
+X-Received: by 2002:ac8:7c47:0:b0:43a:db76:3884 with SMTP id d75a77b69052e-43ff5515c06mr137971211cf.68.1717489465809;
+        Tue, 04 Jun 2024 01:24:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717489465; cv=none;
         d=google.com; s=arc-20160816;
-        b=VI7ER0W7RSi3QD6OF1IugqIP2RYDVRoBXgOMcRzomakXHKT/JJ3AQkRJX3jzjKSJtu
-         G7kGdsur7+4sahgYjQSk6Jus1wolg+TKgNvm/oFrt3JZo0aro/YqWkd2tD+oP7nhuPJk
-         OH0ibrw7QddjqY3osbrkxxKFGmSHuA3AWSv81auuHFH+9B8RN3TFCkDn/fKeGOAqpXhP
-         gOBhs++JyoCof0Rq/7eZjDnU/DZk7nuqmfCc7wXxVDtE7wVx9FppI15P8zliRiUZwac0
-         rv9xqT/R9tX3m+E+wlw3EkwocyrfAmnslK8G+SPGH3JVhiR54K9baI4AwTipvuN5HDuM
-         71UA==
+        b=wcUMEs/nadw7qAry8REqOyXEPOkTEPOA/NFESXeTp04i19kAAOoaBjLIBv9/JdCgYk
+         Cv/sI7n+VWk6bGXm7HwWRx8xAWRVaEhaZDoCqnYwGXczHiuK0JNd6sP1+ghowUdxbJis
+         zhhWjw0AlhjvwO+j+LpMJv8hIaW651RBYrGwsZRs2dDGjx09SHV1lD4U2EF75mkvrFS2
+         Ipicih/eZ3NsPne26d9kasNLw0e+O+Rd054Qr7PlXQIzo9Dgg1pkpa25ZKJWxkCfGu2f
+         p+IIAUZVW4iwRHDiv7CmAEuUk7NOU8B6/WpOynu1tWDUz86wbzLMqYPdQprITVygvnAX
+         3bVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=DEodz0BFgKoplV2+TEF/wXfFDsm/bl7/hqFkkgMB6+g=;
+        bh=bZd7eAseS8ab/ZCyFFbkHC8gGpvFwHHYVxd52wG1D58=;
         fh=QsxuhUBNyq2F7/1UitCRN/j+l2ZGR7FJ1BwILMh3mGA=;
-        b=RX1b8Nnv2LkyCKvbOPQGvXtfUK1L1+rDlfsL4UqUTAEZnkUi072ilhpAx09TLX1ExA
-         HwsflEWD7NxHPY+8Bqtz6Cvfy6fm1avslnlmTAMF6kozhbvD1raac8/+MoqmG+R9dgZY
-         k8fMBVf9WS2cqgQJeIJ0FQW7N4Pzh7bjtnzMPDQJgsOb9MCTYT9SyWHJgia6pFIwAeNJ
-         ypJGgwFxGfKBfGHqI6uW9objJsE8FUqW+gTWxFlgNWzkmjYtWUzIf1/5GUmdr5K3bnUj
-         Z5zQ0TkpWVNze2oF0TyoZmDmlqeOvup/DEX1zwKVDMCzu7wz2/MRysrg8YcPZ2rCW1m3
-         4Kig==;
+        b=qhuEFAXKUulDL6g9atxXZIxeWIVaBUgkUbyVy16hcbn9uH3PazvZe5YeDndoxSk1dx
+         wJR+b07V26E9Ok1N87+/6N3wDVIUl7qi7p6LQkquxmiVqYhPVgGumZIOSWmYj8xwrcpv
+         qc0ELUDkn71In1TqpwC8QNm8mwBoczTpL8m55+XlNpYLgUZmIHsv0dD5yTGPxnj9qQBt
+         tYHdKsX6ruzvl1jl5LfwNdjyv7jqqSgHca4T5sV0lx1v6C/x2hCZIYakde6ptCXSwrOj
+         wbPz7XFp5rVwGRk+iCCj6VTSkUhWsn2WJl4Gkiq+kCYW5v3KMLv0DvmbPxzrUPXxf8PX
+         eG2w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=HFnffBSJ;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.10 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=XceCHVZN;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.11 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.10])
-        by mx.google.com with ESMTPS id d75a77b69052e-43ff23d91d0si107351691cf.166.2024.06.04.01.18.31
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.11])
+        by mx.google.com with ESMTPS id d75a77b69052e-43ff257e9absi107381591cf.440.2024.06.04.01.24.24
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Jun 2024 01:18:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.10 as permitted sender) client-ip=198.175.65.10;
+        Tue, 04 Jun 2024 01:24:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.11 as permitted sender) client-ip=192.198.163.11;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=HFnffBSJ;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.10 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=XceCHVZN;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.11 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1717489112; x=1749025112;
+  t=1717489466; x=1749025466;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=T6qZEH63FFuFYtelDyLGAv9Vpeeu3+M490fJp4SljgU=;
-  b=HFnffBSJn/WVVcopIT48e05M1LS76agE4yIojVQ3ASWL6Jxqg1iWM86O
-   MizWJzAslxFAW2IVl08d5/ngytf9tltf2eF/A9IAEXPs0Yd1rV0/rmXbQ
-   552VxE4j+nr8bKzv9YdO9WIk2Xz2ImBRde2lXtBgqUqPjxOjwJ3IxumRj
-   mmpUJChLGzDwhdV5XRbQJ+UPxjh2TqQoWE8H3yQZmY3rWMtIHUoH0W0MM
-   JnnvQPaYsqU7sgAyAbX4OQC8D8JWt2va22SBeFY9TqKe4VPiHLElroLIj
-   VfWC6k6E8ZdaQjeMorqkcGpaTIvvaaf8JZXmuSxYCq5lTLHBPI3CAaGam
-   g==;
-X-CSE-ConnectionGUID: dR09qljyRbmD5qMU9V9JhQ==
-X-CSE-MsgGUID: hVWqS+7US8+g3nym6bsnbQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11092"; a="31518824"
+  bh=atOfj9kWdFuVI1HtcdHLArsthwrM8mfXmtw15855REQ=;
+  b=XceCHVZNpIUmWHijqoi5/HuJ4VuBvsZ8cmMUEBd9YGD5X/ZMtkVIYjXm
+   CSyQ37rEa/rfYPifLb7ZIFxkbQZ27C6PciUD0OHuus1mPvEGnGKPFv7bc
+   3lNMb9mOh6OOnxBsCM5cr3kYkeOSNoU+tlRjPZhWcZCIy0/U90hxnvQis
+   h3tVxZAcMp7IhWswnxF88s8VBg1ZWzdlphWy+3HWUxLMG1AhFjQim360Z
+   WRTdCxc7Bal1oHSvOmKv5x5yQ7iHASqpa6ZeHOzTP5VsQTYEgU6sqY4uR
+   9ZND3KUaUZK8bNu/+pQ1NcgTlKo7j3qduLldPbdAKoTN1kwO9gP2D7p7C
+   A==;
+X-CSE-ConnectionGUID: 9sCY1xpBSMWyAcJTM9Sstw==
+X-CSE-MsgGUID: cHdZqmyeRFSPi/T62NUE3A==
+X-IronPort-AV: E=McAfee;i="6600,9927,11092"; a="24644298"
 X-IronPort-AV: E=Sophos;i="6.08,213,1712646000"; 
-   d="scan'208";a="31518824"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jun 2024 01:18:27 -0700
-X-CSE-ConnectionGUID: ZLkK9vr3Qi6T22a7gQdEpw==
-X-CSE-MsgGUID: WIUIwbV2QBChE1vi6Mj3Kw==
+   d="scan'208";a="24644298"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jun 2024 01:24:24 -0700
+X-CSE-ConnectionGUID: zjJrKqpcS86f3Y2Vz9QwYA==
+X-CSE-MsgGUID: jwlQwP8FTJCMn3VANeHNmw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.08,213,1712646000"; 
-   d="scan'208";a="37027956"
+   d="scan'208";a="37152758"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by fmviesa007.fm.intel.com with ESMTP; 04 Jun 2024 01:18:22 -0700
-Date: Tue, 4 Jun 2024 16:33:48 +0800
+  by fmviesa008.fm.intel.com with ESMTP; 04 Jun 2024 01:24:19 -0700
+Date: Tue, 4 Jun 2024 16:39:44 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Markus Armbruster <armbru@redhat.com>
 Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
@@ -87,62 +87,75 @@ Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>
 Subject: Re: [RFC v2 1/7] hw/core: Make CPU topology enumeration arch-agnostic
-Message-ID: <Zl7RbLrYUN0cg+t4@intel.com>
+Message-ID: <Zl7S0IOlLvnua319@intel.com>
 References: <20240530101539.768484-1-zhao1.liu@intel.com>
  <20240530101539.768484-2-zhao1.liu@intel.com>
- <87plsyfc1r.fsf@pond.sub.org>
+ <87y17mfccp.fsf@pond.sub.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <87plsyfc1r.fsf@pond.sub.org>
-X-TUID: QtmS0j92vtDm
+In-Reply-To: <87y17mfccp.fsf@pond.sub.org>
+X-TUID: JfT0Cff82rPl
 
-Hi Markus,
+[snip]
 
-On Mon, Jun 03, 2024 at 02:25:36PM +0200, Markus Armbruster wrote:
-> Date: Mon, 03 Jun 2024 14:25:36 +0200
-> From: Markus Armbruster <armbru@redhat.com>
-> Subject: Re: [RFC v2 1/7] hw/core: Make CPU topology enumeration
->  arch-agnostic
+> > +CPUTopoInfo cpu_topo_descriptors[] = {
+> > +    [CPU_TOPO_LEVEL_INVALID] = { .name = "invalid", },
+> > +    [CPU_TOPO_LEVEL_THREAD]  = { .name = "thread",  },
+> > +    [CPU_TOPO_LEVEL_CORE]    = { .name = "core",    },
+> > +    [CPU_TOPO_LEVEL_MODULE]  = { .name = "module",  },
+> > +    [CPU_TOPO_LEVEL_CLUSTER] = { .name = "cluster", },
+> > +    [CPU_TOPO_LEVEL_DIE]     = { .name = "die",     },
+> > +    [CPU_TOPO_LEVEL_SOCKET]  = { .name = "socket",  },
+> > +    [CPU_TOPO_LEVEL_BOOK]    = { .name = "book",    },
+> > +    [CPU_TOPO_LEVEL_DRAWER]  = { .name = "drawer",  },
+> > +    [CPU_TOPO_LEVEL__MAX]    = { .name = NULL,      },
+> > +};
 > 
-> Zhao Liu <zhao1.liu@intel.com> writes:
+> This looks redundant with generated
 > 
-> > Cache topology needs to be defined based on CPU topology levels. Thus,
-> > define CPU topology enumeration in qapi/machine.json to make it generic
-> > for all architectures.
-> >
-> > To match the general topology naming style, rename CPU_TOPO_LEVEL_SMT
-> > and CPU_TOPO_LEVEL_PACKAGE to CPU_TOPO_LEVEL_THREAD and
-> > CPU_TOPO_LEVEL_SOCKET.
-> >
-> > Also, enumerate additional topology levels for non-i386 arches, and add
-> > helpers for topology enumeration and string conversion.
-> >
-> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+>     const QEnumLookup CPUTopoLevel_lookup = {
+>         .array = (const char *const[]) {
+>             [CPU_TOPO_LEVEL_INVALID] = "invalid",
+>             [CPU_TOPO_LEVEL_THREAD] = "thread",
+>             [CPU_TOPO_LEVEL_CORE] = "core",
+>             [CPU_TOPO_LEVEL_MODULE] = "module",
+>             [CPU_TOPO_LEVEL_CLUSTER] = "cluster",
+>             [CPU_TOPO_LEVEL_DIE] = "die",
+>             [CPU_TOPO_LEVEL_SOCKET] = "socket",
+>             [CPU_TOPO_LEVEL_BOOK] = "book",
+>             [CPU_TOPO_LEVEL_DRAWER] = "drawer",
+>         },
+>         .size = CPU_TOPO_LEVEL__MAX
+>     };
 > 
-> [...]
+> > +
+> > +const char *cpu_topo_to_string(CPUTopoLevel topo)
+> > +{
+> > +    return cpu_topo_descriptors[topo].name;
+> > +}
 > 
-> > diff --git a/qapi/machine.json b/qapi/machine.json
-> > index bce6e1bbc412..7ac5a05bb9c9 100644
-> > --- a/qapi/machine.json
-> > +++ b/qapi/machine.json
-> > @@ -1667,6 +1667,46 @@
-> >       '*reboot-timeout': 'int',
-> >       '*strict': 'bool' } }
-> >  
+> And this with generated CPUTopoLevel_str().
+
+Thanks! I missed these generated helpers.
+
+[snip]
+
 > > +##
 > > +# @CPUTopoLevel:
-> 
-> I understand you're moving existing enum CPUTopoLevel into the QAPI
-> schema.  I think the idiomatic QAPI name would be CpuTopologyLevel.
-> Would you be willing to rename it, or would that be too much churn?
-
-Sure, I'll rename it as you suggested.
-
 > > +#
 > > +# An enumeration of CPU topology levels.
 > > +#
 > > +# @invalid: Invalid topology level, used as a placeholder.
+> 
+> Placeholder for what?
+
+I was trying to express that when no specific topology level is
+specified, it will be initialized to this value by default.
+
+Or what about just deleting this placeholder related words and just
+saying it's "Invalid topology level"?
+
 > > +#
 > > +# @thread: thread level, which would also be called SMT level or logical
 > > +#     processor level. The @threads option in -smp is used to configure
@@ -170,20 +183,11 @@ Sure, I'll rename it as you suggested.
 > > +# @drawer: drawer level. The @drawers option in -smp is used to
 > > +#     configure the topology of this level.
 > 
-> docs/devel/qapi-code-gen.rst section Documentation markup:
-> 
->     For legibility, wrap text paragraphs so every line is at most 70
->     characters long.
-> 
->     Separate sentences with two spaces.
+> As far as I can tell, -smp is sugar for machine property "smp" of QAPI
+> type SMPConfiguration.  Should we refer to SMPConfiguration instead of
+> -smp?
 
-Thank you for pointing this.
-
-About separating sentences, is this what I should be doing?
-
-# @drawer: drawer level. The @drawers option in -smp is used to
-#  configure the topology of this level.
-
+Yes, SMPConfiguration is better.
 
 Thanks,
 Zhao

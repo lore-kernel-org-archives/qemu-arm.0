@@ -1,231 +1,293 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2892137ejs;
-        Tue, 4 Jun 2024 04:52:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV6Hu/g713IE4xlY0HBjt4PEy1S09VP+faLxioPqDTCbPrkHWzWeXuLfZlFoCfsr6OztOxjYfrwpGexD/BiBpxsGFwkt/qk
-X-Google-Smtp-Source: AGHT+IEPqCa7g0tAfO/OaJsuG4CUdog8kePTMObr2UfUGIETN63cOCs3OTJRewFPw9dsjJcnxDPZ
-X-Received: by 2002:a05:6214:3a87:b0:6af:cd91:96ec with SMTP id 6a1803df08f44-6afcd919810mr31753876d6.31.1717501951583;
-        Tue, 04 Jun 2024 04:52:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717501951; cv=none;
+Received: by 2002:a05:7022:140a:b0:7e:eb73:5b3b with SMTP id pd10csp443594dlb;
+        Tue, 4 Jun 2024 08:15:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUiUfMqaEgfTwzWYIuNPt9Rg8px0Sd6lxU0OzxZLw/8TCpLQzKjpdEKa9KJs/uUYSgkalLEyq7KFJDsxvLt3DwlzqvruZs7
+X-Google-Smtp-Source: AGHT+IHtmJmtEMN6y+pHUQcypiBhmqoWHIH5CGm+3ymdmcFtIc6UXVyZRTtisLiqNoL9tFOhW4/C
+X-Received: by 2002:a05:620a:21c4:b0:794:f22e:c171 with SMTP id af79cd13be357-794f5c73de5mr1386982785a.31.1717514152425;
+        Tue, 04 Jun 2024 08:15:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717514152; cv=none;
         d=google.com; s=arc-20160816;
-        b=RH1qvcrozISHhJTFbZ/jczVC5SUM6/dyfaaiHjXHqDoKTtsiu2jOnV8IUOiz6GLnsu
-         5e3jsOObLGRtGIMWOzZNaJkgcU0yV1T+KGnor9fWifKBuPVatxQc1ghz8tKv8Kv3gIVc
-         aDaq39w5oA38MOEENJMB4RKc6KTvSm2BTiVgNyIO9ueJHruY80FbLqOSjsXs3MIMb9za
-         16B2nM6jSQDC6g/jBmNICwJQQZduCOsLNb6oj4NsCo7mC+AuoRlkIbXWBnjgXT8qgBjZ
-         0kHCIPbNXseW4I9necSdQDsVdyo9Fe/sDZoy86KrKaR4x/yP2IQsjo7YHaPMrwN0fa3v
-         /IMg==
+        b=BXvNQp6qDJDryy12XoCMDm1Wkpp7e0/U4DherDTNFrhOKT9/+rpjqw0Zg98BNoz7GM
+         hJk6QA8Vi4t32WaYQkM/Ne0x3Qapl6jND99LiPY83fi0t0PCBLARG54YvMIaML1uPkhl
+         m3L9z/+1ih6odvEk6lKcZiOluJdhKDYhPiwUt7QZ38M7hy42MO2MxburZFfq0h9G0Tb6
+         qlEOvytonkulAzdwts8c+JtQT1s69ZJlp2zlYSrprH3AQMb9nylMt56IJyhqJfwQ9ggo
+         ydUxykzZhYWblvYCul2Zp2jqiGwVve72/YCSGotfHO5J40FLxtC8lH6Qp0IdsVkZnm8A
+         nWMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=B3rpMxa/7JjZU34QbwPRiiCTVvqs/tT30l8aKlgQoCc=;
-        fh=dkl4W7Ty5DQDYblIuR6iwQV8rfkW6Bl5VLJjLin9mSc=;
-        b=QU9ZsYVF/fQMwpbin97tB7cYFwDv/bp3YerAG1NoD/nmcjAzgPHlFCKffHSrOn0Ni4
-         wd410HDCLUea0LL0TmvL3q5zZVKib3e8E+ZezVm58xAEfKg8/iZdfeVTqlH8C157Fmmd
-         7xV4DTZ2hQSzomsr3sea9mYUiwaWf14XZjRvBwHokY/YoljN8DSTM7TIvTWMM63t81/8
-         hMwWe3gjGNaTzi52FS2nFU0dnjs2O8tQ1IzHsEwjGSA49YeT/mO5ppOf02UsybkMOzI0
-         UcVE/5iWB3Uk7EbkOVy2qlcHjMCk86Hjw1OxHZmLKjBpIraDsqMZM/WBoPAenQamD2G4
-         tRxQ==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=oTKlBPYtaxivfRx0u4GFkPXAQx6rQ1dzroGiGynB4ek=;
+        fh=LqC9Sx1JVFWep3wU1+tpDLYPkzvbVkXR8Gi7aFVs7SY=;
+        b=qT5QZgkqzQT6DIXm2D6gC2PpbUpOX5TvjnnLrqQ9zik5T12LncEfnk7qDyzvppqOld
+         GMmHQgvML9Q5RvFhm42c2nJpNKHUJeu6f/7DY2enB5n0igKqXrwCXquHIYNAQDz9YRBC
+         MlMhAx8wzWz1YQznvqfdrMuVwNkgoOVn4AdIdYyis1vjjfwYyFWlC86CQpCbm+rX/scC
+         xOQYL6pnWlEWkNazYfGC5JZqUPYPNDL87jGSm4D32+9BLzWh6kO/TXUBriVUOcZ8Z8HE
+         FORMNthAAOSsyRvTa0u2akHNgRb986aBvZGqaz/tXCm1ngxca7AeUoRIoOwcGuxe2ArF
+         Td9g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4b415363si6209386d6.328.2024.06.04.04.52.31
-        for <alex.bennee@linaro.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=n4odPniQ;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.10 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.10])
+        by mx.google.com with ESMTPS id af79cd13be357-795183eb40dsi174566185a.329.2024.06.04.08.15.51
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Jun 2024 04:52:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Jun 2024 08:15:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.10 as permitted sender) client-ip=192.198.163.10;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sESiF-0002u8-18; Tue, 04 Jun 2024 07:52:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=OW7X=NG=kaod.org=clg@ozlabs.org>)
- id 1sESiD-0002tN-1B; Tue, 04 Jun 2024 07:52:21 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=OW7X=NG=kaod.org=clg@ozlabs.org>)
- id 1sESiA-0005mA-25; Tue, 04 Jun 2024 07:52:20 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4VtpqJ0K9rz4x1T;
- Tue,  4 Jun 2024 21:52:12 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4VtpqB3lytz4wcv;
- Tue,  4 Jun 2024 21:51:46 +1000 (AEST)
-Message-ID: <59b2f10a-5ff8-41c4-b5a6-92846b0c31a0@kaod.org>
-Date: Tue, 4 Jun 2024 13:51:43 +0200
+       dkim=pass header.i=@intel.com header.s=Intel header.b=n4odPniQ;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.10 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1717514152; x=1749050152;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=qXPxwp4Krxnak53hDhODVhsVAD6HPOWoEFdGvkvs9S0=;
+  b=n4odPniQvjg0zlaqRqywJeDdK9GWHeOz3+tppZ8T4HWVKlL2buuX86j6
+   TRBhdUBqxBlCuljtjlBdeLRfUQVDxbu0+rIkXs5ZpPP2GRhkudZRwW8pF
+   UWdypVpBWPbjmSDQNB+eyKv7OvA0YN4Mrb5ITqD9BZCcw90O3D3P2HE/B
+   6Z1mJA1R66QAxFeQhBkXlxxo7fJvv2hkX9IO1HckSZ7hzWuLZvjw4Ge/b
+   Bg6QDMxVkNsLvfT7D5eIsfvinhZea/ZOFqFIbL9OQUJeAzfcDM1ZoTOB2
+   NKlykGWFVGEfRU24ZmY5B3rWH3lgv6kPSfDGemhfKdoHHXF66iyNEl3F2
+   A==;
+X-CSE-ConnectionGUID: eNYTtccUSSCSUJT1XUxEzA==
+X-CSE-MsgGUID: hjApLhaaTUSIsowd4QhX9w==
+X-IronPort-AV: E=McAfee;i="6600,9927,11093"; a="25468254"
+X-IronPort-AV: E=Sophos;i="6.08,214,1712646000"; 
+   d="scan'208";a="25468254"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Jun 2024 08:15:50 -0700
+X-CSE-ConnectionGUID: zIy4auewSF6TmnhNZjiSLg==
+X-CSE-MsgGUID: rDc0TgSUTsGt7J+8QTX8CA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,214,1712646000"; 
+   d="scan'208";a="42379247"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by orviesa004.jf.intel.com with ESMTP; 04 Jun 2024 08:15:45 -0700
+Date: Tue, 4 Jun 2024 23:31:11 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
+Cc: Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
+	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>
+Subject: Re: [RFC v2 0/7] Introduce SMP Cache Topology
+Message-ID: <Zl8zP4pXjRmVs3VP@intel.com>
+References: <20240530101539.768484-1-zhao1.liu@intel.com>
+ <Zl7ea2o2aaxXMj9X@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 00/17] Add AST2700 support
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20240604054438.3424349-1-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240604054438.3424349-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=OW7X=NG=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UgdMPEn35Njs
+Content-Type: text/plain; charset=gb2312
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <Zl7ea2o2aaxXMj9X@redhat.com>
+X-TUID: 0o57ize2AeUr
 
-On 6/4/24 07:44, Jamin Lin wrote:
-> Changes from v1:
-> The patch series supports WDT, SDMC, SMC, SCU, SLI and INTC for AST2700 SoC.
-> 
-> Changes from v2:
-> - replace is_aarch64 with is_bus64bit for sdmc patch review.
-> - fix incorrect dram size for AST2700
-> 
-> Changes from v3:
-> - Add AST2700 Evaluation board in ASPEED document
-> - Add avocado test cases for AST2700 Evaluation board
-> - Fix reviewers review issues and add reviewers suggestions
-> - Implement INTC model GICINT 128 to GICINT136 for AST2700
-> 
-> Changes from v4:
-> - support 64 bits dma dram address associated with review issues
-> - support dma start length and 1 byte length unit associated with review issues
-> - refactor intc model to fix serial console stuck issue and associated with review issues
-> 
-> Changes from v5:
-> - sdmc: incrementing the version of vmstate to 2.
-> - smc: support different memory region ops for SMC flash region
->         introduce a new "const MemoryRegionOps *" attribute in AspeedSMCClass and
->         use it in aspeed_smc_flash_realize function.
-> - intc: fix associated with review issues
-> - dram size detect: change to use address space API and simplify with write
->                      transaction on the DRAM memory region of the SoC.
-> - ast27x0_soc: update aspeed_soc_ast2700_gic function associated with review issues
->                 and rename to aspeed_soc_ast2700_gic_realize
+Hi Daniel,
 
-v5 looks good to me.
+On Tue, Jun 04, 2024 at 10:29:15AM +0100, Daniel P. Berrang¨¦ wrote:
+> Date: Tue, 4 Jun 2024 10:29:15 +0100
+> From: "Daniel P. Berrang¨¦" <berrange@redhat.com>
+> Subject: Re: [RFC v2 0/7] Introduce SMP Cache Topology
+> 
+> On Thu, May 30, 2024 at 06:15:32PM +0800, Zhao Liu wrote:
+> > Hi,
+> > 
+> > Now that the i386 cache model has been able to define the topology
+> > clearly, it's time to move on to discussing/advancing this feature about
+> > configuring the cache topology with -smp as the following example:
+> > 
+> > -smp 32,sockets=2,dies=2,modules=2,cores=2,threads=2,maxcpus=32,\
+> >      l1d-cache=core,l1i-cache=core,l2-cache=core,l3-cache=die
+> > 
+> > With the new cache topology options ("l1d-cache", "l1i-cache",
+> > "l2-cache" and "l3-cache"), we could adjust the cache topology via -smp.
+> 
+> Switching to QAPI for a second, your proposal is effectively
+> 
+>     { 'enum': 'SMPCacheTopo',
+>       'data': [ 'default','socket','die','cluster','module','core','thread'] }
+> 
+>    { 'struct': 'SMPConfiguration',
+>      'data': {
+>        '*cpus': 'int',
+>        '*drawers': 'int',
+>        '*books': 'int',
+>        '*sockets': 'int',
+>        '*dies': 'int',
+>        '*clusters': 'int',
+>        '*modules': 'int',
+>        '*cores': 'int',
+>        '*threads': 'int',
+>        '*maxcpus': 'int',
+>        '*l1d-cache': 'SMPCacheTopo',
+>        '*l1i-cache': 'SMPCacheTopo',
+>        '*l2-cache': 'SMPCacheTopo',
+>        '*l3-cache': 'SMPCacheTopo',
+>      } }
+> 
+> I think that would be more natural to express as an array of structs
+> thus:
+> 
+>     { 'enum': 'SMPCacheTopo',
+>       'data': [ 'default','socket','die','cluster','module','core','thread'] }
+> 
+>     { 'enum': 'SMPCacheType',
+>       'data': [ 'l1d', 'l1i', 'l2', 'l3' ] }
+>      
+>     { 'struct': 'SMPCache',
+>       'data': {
+>         'type': 'SMPCacheType',
+>         'topo': 'SMPCacheTopo',
+>       } }
+> 
+>    { 'struct': 'SMPConfiguration',
+>      'data': {
+>        '*cpus': 'int',
+>        '*drawers': 'int',
+>        '*books': 'int',
+>        '*sockets': 'int',
+>        '*dies': 'int',
+>        '*clusters': 'int',
+>        '*modules': 'int',
+>        '*cores': 'int',
+>        '*threads': 'int',
+>        '*maxcpus': 'int',
+>        'caches': [ 'SMPCache' ]
+>      } }
+> 
+> Giving an example in (hypothetical) JSON cli syntax of:
+> 
+>   -smp  "{'cpus':32,'sockets':2,'dies':2,'modules':2,
+>           'cores':2,'threads':2,'maxcpus':32,'caches': [
+> 	    {'type':'l1d','topo':'core' },
+> 	    {'type':'l1i','topo':'core' },
+> 	    {'type':'l2','topo':'core' },
+> 	    {'type':'l3','topo':'die' },
+> 	  ]}"
+ 
+Thanks! Looks clean to me and I think it is ok.
 
-Do you plan to send a MAINTAINERS file ?
+Just one further question, for this case where it must be expressed in a
+raw JSON string, is there any requirement in QEMU that a simple
+command-line friendly variant must be provided that corresponds to it?
+
+> > Open about How to Handle the Default Options
+> > ============================================
+> > 
+> > (For the detailed description of this series, pls skip this "long"
+> > section and review the subsequent content.)
+> > 
+> > 
+> > Background of OPEN
+> > ------------------
+> > 
+> > Daniel and I discussed initial thoughts on cache topology, and there was
+> > an idea that the default *cache_topo is on the CORE level [3]:
+> > 
+> > > simply preferring "cores" for everything is a reasonable
+> > > default long term plan for everything, unless the specific
+> > > architecture target has no concept of "cores".
+> 
+> FYI, when I wrote that I wasn't specifically thinking about cache
+> mappings. I just meant that when exposing SMP topology to guests,
+> 'cores' is a good default, compared to 'sockets', or 'threads',etc.
+> 
+> Defaults for cache <-> topology  mappings should be whatever makes
+> most sense to the architecture target/cpu.
+
+Thank you for the additional clarification!
+
+> > Problem with this OPEN
+> > ----------------------
+> > 
+> > Some arches have their own arch-specific cache topology, such as l1 per
+> > core/l2 per core/l3 per die for i386. And as Jeehang proposed for
+> > RISC-V, the cache topologies are like: l1/l2 per core and l3 per
+> > cluster. 
+> > 
+> > Taking L3 as an example, logically there is a difference between the two
+> > starting points of user-specified core level and with the default core
+> > level.
+> > 
+> > For example,
+> > 
+> > "(user-specified) l3-cache-topo=core" should override i386's default l3
+> > per core, but i386's default l3 per core should also override
+> > "(default) l3-cache-topo=core" because this default value is like a
+> > placeholder that specifies nothing.
+> > 
+> > However, from a command line parsing perspective, it's impossible to
+> > tell what the ¡°l3-cache-topo=core¡± setting is for...
+> 
+> Yes, we need to explicitly distinguish built-in defaults from
+> user specified data, otherwise we risk too many mistakes.
+> 
+> > Options to solve OPEN
+> > ---------------------
+> > 
+> > So, I think we have the following options:
+> > 
+> > 
+> > 1. Can we avoid such default parameters?
+> > ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> > 
+> > This would reduce the pain in QEMU, but I'm not sure if it's possible to
+> > make libvirt happy?
+> 
+> I think having an explicit "defualt" value is inevitable, not simply
+> because of libvirt. Long experiance with QEMU shows that we need to
+> be able to reliably distinguish direct user input from  built-in
+> defaults in cases like this.
+
+Thanks, that gives me an answer to that question!
+
+> > 
+> > It is also possible to expose Cache topology information as the CPU
+> > properties in ¡°query-cpu-model-expansion type=full¡±, but that adds
+> > arch-specific work.
+> > 
+> > If omitted, I think it's just like omitting ¡°cores¡±/¡°sockets¡±,
+> > leaving it up to the machine to decide based on the specific CPU model
+> > (and now the cache topology is indeed determined by the CPU model as
+> > well).
+> > 
+> > 
+> > 2. If default is required, can we use a specific abstract word?
+> > ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> > 
+> > That is, is it possible to use a specific word like ¡°auto¡±/¡°invalid¡±
+> > /¡°default¡± and avoid a specific topology level?
+> 
+> "invalid" feels a bit wierd, but 'auto' or 'default' are fine,
+> and possibly "unspecified"
+
+I prefer the "default" like you listed in your QAPI example. :)
+
+> > Like setting ¡°l3-cache-topo=invalid¡± (since I've only added the invalid
+> > hierarchy so far ;-) ).
+> > 
+> > I found the cache topology of arches varies so much that I'm sorry to
+> > say it's hard to have a uniform default cache topology.
+> > 
+> > 
+> > I apologize for the very lengthy note and appreciate you reviewing it
+> > here as well as your time!
 
 Thanks,
-
-C.
-
-
-
-
-> 
-> Test Version:
-> qemu commit:
-> https://github.com/qemu/qemu/commit/74abb45dac6979e7ff76172b7f0a24e869405184
-> applied patch:
-> https://patchew.org/QEMU/20240527124315.35356-1-clg@redhat.com/
-> 
-> Test steps:
-> 1. Download the latest openbmc image for AST2700 from AspeedTech-BMC/openbmc
->     repository, https://github.com/AspeedTech-BMC/openbmc/releases/tag/v09.01
->     link: https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.01/ast2700-default-obmc.tar.gz
-> 2. untar ast2700-default-obmc.tar.gz
->     ```
->     tar -xf ast2700-default-obmc.tar.gz
->     ```
-> 3. Run and the contents of scripts as following
-> IMGDIR=ast2700-default
-> UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
-> UBOOT_DTB_ADDR=$((0x400000000 + ${UBOOT_SIZE}))
-> 
-> qemu-system-aarch64 -M ast2700-evb -nographic\
->   -device loader,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin,force-raw=on\
->   -device loader,addr=${UBOOT_DTB_ADDR},file=${IMGDIR}/u-boot.dtb,force-raw=on\
->   -device loader,addr=0x430000000,file=${IMGDIR}/bl31.bin,force-raw=on\
->   -device loader,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin,force-raw=on\
->   -device loader,addr=0x430000000,cpu-num=0\
->   -device loader,addr=0x430000000,cpu-num=1\
->   -device loader,addr=0x430000000,cpu-num=2\
->   -device loader,addr=0x430000000,cpu-num=3\
->   -smp 4\
->   -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd\
->   -serial mon:stdio\
->   -snapshot
-> 
-> Jamin Lin (17):
->    aspeed/wdt: Add AST2700 support
->    aspeed/sli: Add AST2700 support
->    aspeed/sdmc: remove redundant macros
->    aspeed/sdmc: fix coding style
->    aspeed/sdmc: Add AST2700 support
->    aspeed/smc: correct device description
->    aspeed/smc: support dma start length and 1 byte length unit
->    aspeed/smc: support 64 bits dma dram address
->    aspeed/smc: support different memory region ops for SMC flash region
->    aspeed/smc: Add AST2700 support
->    aspeed/scu: Add AST2700 support
->    aspeed/intc: Add AST2700 support
->    aspeed/soc: Add AST2700 support
->    aspeed: Add an AST2700 eval board
->    aspeed/soc: fix incorrect dram size for AST2700
->    test/avocado/machine_aspeed.py: Add AST2700 test case
->    docs:aspeed: Add AST2700 Evaluation board
-> 
->   docs/system/arm/aspeed.rst       |  39 +-
->   hw/arm/aspeed.c                  |  32 ++
->   hw/arm/aspeed_ast27x0.c          | 648 +++++++++++++++++++++++++++++++
->   hw/arm/meson.build               |   1 +
->   hw/intc/aspeed_intc.c            | 360 +++++++++++++++++
->   hw/intc/meson.build              |   1 +
->   hw/intc/trace-events             |  13 +
->   hw/misc/aspeed_scu.c             | 306 ++++++++++++++-
->   hw/misc/aspeed_sdmc.c            | 220 +++++++++--
->   hw/misc/aspeed_sli.c             | 177 +++++++++
->   hw/misc/meson.build              |   3 +-
->   hw/misc/trace-events             |  11 +
->   hw/ssi/aspeed_smc.c              | 346 ++++++++++++++++-
->   hw/ssi/trace-events              |   2 +-
->   hw/watchdog/wdt_aspeed.c         |  24 ++
->   include/hw/arm/aspeed_soc.h      |  30 +-
->   include/hw/intc/aspeed_intc.h    |  44 +++
->   include/hw/misc/aspeed_scu.h     |  47 ++-
->   include/hw/misc/aspeed_sdmc.h    |   5 +-
->   include/hw/misc/aspeed_sli.h     |  27 ++
->   include/hw/ssi/aspeed_smc.h      |   2 +
->   include/hw/watchdog/wdt_aspeed.h |   3 +-
->   tests/avocado/machine_aspeed.py  |  62 +++
->   23 files changed, 2345 insertions(+), 58 deletions(-)
->   create mode 100644 hw/arm/aspeed_ast27x0.c
->   create mode 100644 hw/intc/aspeed_intc.c
->   create mode 100644 hw/misc/aspeed_sli.c
->   create mode 100644 include/hw/intc/aspeed_intc.h
->   create mode 100644 include/hw/misc/aspeed_sli.h
-> 
-
+Zhao

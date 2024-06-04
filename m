@@ -1,40 +1,40 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2718447ejs;
-        Mon, 3 Jun 2024 22:48:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUiyoVGEmZAErqlxAlqMEJoU2XhRpb51kTQDpFvQClHKeVjC6CxziA0dWOay2O8I8tLblNqxSqWKaORuEtCdh9+svcM5UIQ
-X-Google-Smtp-Source: AGHT+IExAmVtXIR+xub0L5wcHc1BpD7Q0kZOKvyz2rPEras35DpcGEYNwTcVuavXyEW5qzQJ4LKq
-X-Received: by 2002:a05:620a:f05:b0:792:bb19:9ca4 with SMTP id af79cd13be357-794f5c733e3mr1366699585a.27.1717480112549;
-        Mon, 03 Jun 2024 22:48:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717480112; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2718483ejs;
+        Mon, 3 Jun 2024 22:48:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWas7wbY7htm+GocxdQa9OOLMF4UJ/0pF3deN97Du3Bvx4eo11Vw6yvx+eQNSkgnCtR7B/iWOwtTOGDoL1X4cUV0jisXrZK
+X-Google-Smtp-Source: AGHT+IHmtFyRELBFoV1rqdNSQIHjjdCuR0j1WFFAGm4gDSE7forJibv/Lhrenma0cK4gJyOyrx34
+X-Received: by 2002:a37:e30c:0:b0:792:bf10:3ebf with SMTP id af79cd13be357-794f5ccd457mr1223884385a.56.1717480118649;
+        Mon, 03 Jun 2024 22:48:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717480118; cv=none;
         d=google.com; s=arc-20160816;
-        b=n7jitDxaZRgJO+mlACWyhD3e2GnVwRAmNjkOXeTpEtM1SFjxFvgG2fH0sPLLdluxd8
-         3tVfOv5pf5L++skmb27sD32G+fqPeDNhxAp2KISIuGxwSd6F+UqEaOpQmWIP0gIgaLHF
-         qwCho5PSTw3/iieI+nmlujS21AfDEG2BhpbzAVYmQV3Rj77M8gbNJ3g8NjWMqHF+pn5e
-         d8Io4si/jybFv/lzKRQeHj7ZiOp3o/srW8WGeYeXtQ1ut7io6FYPyxIi9PrTX68f5UO3
-         kwGAKCjcG0PJ5LVZJ8LBY6SIjoZOZnaqheZrizso8Btj1vFNpg/9IPmm19Drs0G4hGaS
-         QIdA==
+        b=DbROmgO/Fj1g41ITAtTWAaumIkKDEpoRqxrGdiuZgY6DFMVshCOALIZ3HhmnIDwzQ/
+         dwHWiRDiKmflXzi6hbwvei9o+SCEbm3rp3wPvpoS6uK0l48h1PNkZaiZkD1gDwBixzQV
+         HNvGT6M+1wAbPOUNVTKi0SqdXiE3u+XZVo8vfR1GmmSW970T6LHSJzLVA6GMKXqL2Rbw
+         pKpRa15CT07MQlB9wlekVs619PpnrmHmX/GbfHlvhABn5QUiZZA6vb1LrZP/z8nq1+5Q
+         +gnLEnqySVnlLYAOHEe9+EXyxxZRx1g6s13z2uwqatnaFHhK++QqU1Ca5sTW8OqCDSKC
+         hWgA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=7nDFQiXLK68Pv5NZC2TfS7ZlDHvUlSf4fovInTilKMI=;
+        bh=GLaoS6G7xnU7i1HvPSvVknxshNXKyPWJm2fxVS7+cPc=;
         fh=4qsXPuPQQYwauqV4GBfUuJ135n2gY4LbnQu8KHliids=;
-        b=snplRECTsqGvdZKkPkX+ob6ZH+28y+SE44GmMjvjEYs1YFPh3tdjcHNCZBRUhAH17h
-         w4mBgJ+BcYn3Iyn4qck1ETLl2CNkeLBGVHQn/efcovTsQmaGx8vyjpZQ6qEuCAt6PSyd
-         +nmYH+d20KI0yB49WnIlvt2o2/0+BgLM3pBr1rGo0tYm8rnS4r3nWetD9wFYvYqxELDm
-         YimLNWvc1Lmn/+5E6AQ5Uw3vjFDyn5edxO7pRnb2JAeANAir3EOemyQ4vZ9rpoTPtpIm
-         g0bZwrSrNp2P7DpzO3wYgKOtUymvUrF959UzYBU9fdqR70xv/XX2lvYa1zmzGvd500ux
-         09eA==;
+        b=rLrgRtGa2MJI6XjRIQC2D7dKx4/+12yYW8OElB+8bAUdl8q/SbMsaxMOvG9MWaY2+y
+         XRTa7fAzJuJ6+I33FPugOXYR2DaL1C5b+uCKlcwNXTA06+9oeDjfVU9ZQBp2PRDlseeq
+         v6PjhIBIv3QVMl311mhYgpPNOB7Ugdx3s7lgq15wnBd+MxOiJv90sguHO4zd5kXiPM0s
+         kiq/I2IAYdd3QaHZ78o7WTcGlIieHnJatei5EwgTeejoStljtMqJ5mCgqxpdr0pKAWN2
+         n2dpW9um9QdBx0Ad3Z6RpFXQvVg8vyOGhrB3m5u3L/oNTEzzj7JwIBvZwAYxh9T3Is52
+         VKBg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7951af29befsi33555285a.114.2024.06.03.22.48.32
+        by mx.google.com with ESMTPS id af79cd13be357-794f318a01asi122024685a.471.2024.06.03.22.48.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jun 2024 22:48:32 -0700 (PDT)
+        Mon, 03 Jun 2024 22:48:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,25 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sEMz0-0005ry-1C; Tue, 04 Jun 2024 01:45:18 -0400
+	id 1sEMyj-0005aK-K3; Tue, 04 Jun 2024 01:45:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sEMyy-0005nP-6c; Tue, 04 Jun 2024 01:45:16 -0400
+ id 1sEMyh-0005ZU-U1; Tue, 04 Jun 2024 01:44:59 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sEMyw-0008TH-C5; Tue, 04 Jun 2024 01:45:15 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ id 1sEMyg-0008TH-Df; Tue, 04 Jun 2024 01:44:59 -0400
+Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 4 Jun
- 2024 13:44:43 +0800
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Tue, 4 Jun
+ 2024 13:44:40 +0800
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX02.aspeed.com
+ (192.168.0.25) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Tue, 4 Jun
+ 2024 13:44:41 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 4 Jun 2024 13:44:43 +0800
+ Transport; Tue, 4 Jun 2024 13:44:40 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
  Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
@@ -68,16 +71,19 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v5 09/17] aspeed/smc: support different memory region ops for
- SMC flash region
-Date: Tue, 4 Jun 2024 13:44:30 +0800
-Message-ID: <20240604054438.3424349-10-jamin_lin@aspeedtech.com>
+Subject: [PATCH v5 03/17] aspeed/sdmc: remove redundant macros
+Date: Tue, 4 Jun 2024 13:44:24 +0800
+Message-ID: <20240604054438.3424349-4-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240604054438.3424349-1-jamin_lin@aspeedtech.com>
 References: <20240604054438.3424349-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
+ does not designate 192.168.10.10 as permitted sender)
+ receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
+ helo=localhost.localdomain;
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -101,146 +107,50 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8mTQ3MlLClAp
+X-TUID: C6h/9BHnBicn
 
-It set "aspeed_smc_flash_ops" struct which containing
-read and write callbacks to be used when I/O is performed
-on the SMC flash region. And it set the valid max_access_size 4
-by default for all ASPEED SMC models.
-
-However, the valid max_access_size 4 only support 32 bits CPUs.
-To support all ASPEED SMC model, introduce a new
-"const MemoryRegionOps *" attribute in AspeedSMCClass and
-use it in aspeed_smc_flash_realize function.
+These macros are no longer used for ASPEED SOCs, so removes them.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/ssi/aspeed_smc.c         | 14 +++++++++++++-
- include/hw/ssi/aspeed_smc.h |  1 +
- 2 files changed, 14 insertions(+), 1 deletion(-)
+ hw/misc/aspeed_sdmc.c | 15 ---------------
+ 1 file changed, 15 deletions(-)
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index df0c63469c..129d06690d 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -1316,7 +1316,7 @@ static void aspeed_smc_flash_realize(DeviceState *dev, Error **errp)
-      * Use the default segment value to size the memory region. This
-      * can be changed by FW at runtime.
-      */
--    memory_region_init_io(&s->mmio, OBJECT(s), &aspeed_smc_flash_ops,
-+    memory_region_init_io(&s->mmio, OBJECT(s), s->asc->reg_ops,
-                           s, name, s->asc->segments[s->cs].size);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mmio);
- }
-@@ -1391,6 +1391,7 @@ static void aspeed_2400_smc_class_init(ObjectClass *klass, void *data)
-     asc->segment_to_reg    = aspeed_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_smc_dma_ctrl;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
+diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+index 64cd1a81dc..74279bbe8e 100644
+--- a/hw/misc/aspeed_sdmc.c
++++ b/hw/misc/aspeed_sdmc.c
+@@ -76,10 +76,6 @@
+ #define     ASPEED_SDMC_VGA_32MB            0x2
+ #define     ASPEED_SDMC_VGA_64MB            0x3
+ #define ASPEED_SDMC_DRAM_SIZE(x)        (x & 0x3)
+-#define     ASPEED_SDMC_DRAM_64MB           0x0
+-#define     ASPEED_SDMC_DRAM_128MB          0x1
+-#define     ASPEED_SDMC_DRAM_256MB          0x2
+-#define     ASPEED_SDMC_DRAM_512MB          0x3
  
- static const TypeInfo aspeed_2400_smc_info = {
-@@ -1441,6 +1442,7 @@ static void aspeed_2400_fmc_class_init(ObjectClass *klass, void *data)
-     asc->segment_to_reg    = aspeed_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_smc_dma_ctrl;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
+ #define ASPEED_SDMC_READONLY_MASK                       \
+     (ASPEED_SDMC_RESERVED | ASPEED_SDMC_VGA_COMPAT |    \
+@@ -100,17 +96,6 @@
+ #define ASPEED_SDMC_CACHE_ENABLE        (1 << 10) /* differs from AST2400 */
+ #define ASPEED_SDMC_DRAM_TYPE           (1 << 4)  /* differs from AST2400 */
  
- static const TypeInfo aspeed_2400_fmc_info = {
-@@ -1480,6 +1482,7 @@ static void aspeed_2400_spi1_class_init(ObjectClass *klass, void *data)
-     asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_smc_dma_ctrl;
-     asc->addr_width        = aspeed_2400_spi1_addr_width;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
- 
- static const TypeInfo aspeed_2400_spi1_info = {
-@@ -1525,6 +1528,7 @@ static void aspeed_2500_fmc_class_init(ObjectClass *klass, void *data)
-     asc->segment_to_reg    = aspeed_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_smc_dma_ctrl;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
- 
- static const TypeInfo aspeed_2500_fmc_info = {
-@@ -1560,6 +1564,7 @@ static void aspeed_2500_spi1_class_init(ObjectClass *klass, void *data)
-     asc->segment_to_reg    = aspeed_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_smc_dma_ctrl;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
- 
- static const TypeInfo aspeed_2500_spi1_info = {
-@@ -1595,6 +1600,7 @@ static void aspeed_2500_spi2_class_init(ObjectClass *klass, void *data)
-     asc->segment_to_reg    = aspeed_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_smc_dma_ctrl;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
- 
- static const TypeInfo aspeed_2500_spi2_info = {
-@@ -1682,6 +1688,7 @@ static void aspeed_2600_fmc_class_init(ObjectClass *klass, void *data)
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
- 
- static const TypeInfo aspeed_2600_fmc_info = {
-@@ -1721,6 +1728,7 @@ static void aspeed_2600_spi1_class_init(ObjectClass *klass, void *data)
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
- 
- static const TypeInfo aspeed_2600_spi1_info = {
-@@ -1761,6 +1769,7 @@ static void aspeed_2600_spi2_class_init(ObjectClass *klass, void *data)
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
- 
- static const TypeInfo aspeed_2600_spi2_info = {
-@@ -1843,6 +1852,7 @@ static void aspeed_1030_fmc_class_init(ObjectClass *klass, void *data)
-     asc->segment_to_reg    = aspeed_1030_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_1030_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
- 
- static const TypeInfo aspeed_1030_fmc_info = {
-@@ -1881,6 +1891,7 @@ static void aspeed_1030_spi1_class_init(ObjectClass *klass, void *data)
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
- 
- static const TypeInfo aspeed_1030_spi1_info = {
-@@ -1918,6 +1929,7 @@ static void aspeed_1030_spi2_class_init(ObjectClass *klass, void *data)
-     asc->segment_to_reg    = aspeed_2600_smc_segment_to_reg;
-     asc->reg_to_segment    = aspeed_2600_smc_reg_to_segment;
-     asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
-+    asc->reg_ops           = &aspeed_smc_flash_ops;
- }
- 
- static const TypeInfo aspeed_1030_spi2_info = {
-diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-index d305ce2e2f..234dca32b0 100644
---- a/include/hw/ssi/aspeed_smc.h
-+++ b/include/hw/ssi/aspeed_smc.h
-@@ -115,6 +115,7 @@ struct AspeedSMCClass {
-                            AspeedSegments *seg);
-     void (*dma_ctrl)(AspeedSMCState *s, uint32_t value);
-     int (*addr_width)(const AspeedSMCState *s);
-+    const MemoryRegionOps *reg_ops;
- };
- 
- #endif /* ASPEED_SMC_H */
+-/* DRAM size definitions differs */
+-#define     ASPEED_SDMC_AST2500_128MB       0x0
+-#define     ASPEED_SDMC_AST2500_256MB       0x1
+-#define     ASPEED_SDMC_AST2500_512MB       0x2
+-#define     ASPEED_SDMC_AST2500_1024MB      0x3
+-
+-#define     ASPEED_SDMC_AST2600_256MB       0x0
+-#define     ASPEED_SDMC_AST2600_512MB       0x1
+-#define     ASPEED_SDMC_AST2600_1024MB      0x2
+-#define     ASPEED_SDMC_AST2600_2048MB      0x3
+-
+ #define ASPEED_SDMC_AST2500_READONLY_MASK                               \
+     (ASPEED_SDMC_HW_VERSION(0xf) | ASPEED_SDMC_CACHE_INITIAL_DONE |     \
+      ASPEED_SDMC_AST2500_RESERVED | ASPEED_SDMC_VGA_COMPAT |            \
 -- 
 2.25.1
 

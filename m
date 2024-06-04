@@ -1,265 +1,164 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2673893ejs;
-        Mon, 3 Jun 2024 20:30:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWmuBj2o0bqYs3Y3CFdBIhboEViy1t+xtpZxICxkSqxMjrGhV5I7jIpRHX7W9YhkIzr8UlZ+HyloyBIH0NSy7yT+A9rzj1J
-X-Google-Smtp-Source: AGHT+IHM4RmsorVDLXvEKm9sJNgJhI2SueYJfZYzYS0j98u3dotyx9GXXHEnxqN2IdJvrNaQEutU
-X-Received: by 2002:a05:622a:2c5:b0:434:739e:4225 with SMTP id d75a77b69052e-43ff550bd1cmr111996391cf.67.1717471829330;
-        Mon, 03 Jun 2024 20:30:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717471829; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2701157ejs;
+        Mon, 3 Jun 2024 21:58:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWX6G3x+7HV+lHQiIP8b/lMyvYdhv7vYZb8GvWY8ptG/VEcDpq+6FuUlRHe8vqvEBg7mLSvDKUWjhhWKfRC3ZPYnMXaa01H
+X-Google-Smtp-Source: AGHT+IEHzPtaXmzK/m6TsaKjxUJ92OyF/pmccU34MFoh8Gs98J3tkBgzjqAlgl6F3u+AtU+8savS
+X-Received: by 2002:a05:620a:bc8:b0:792:f046:b51d with SMTP id af79cd13be357-794f5c89f4cmr1503049185a.46.1717477134847;
+        Mon, 03 Jun 2024 21:58:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717477134; cv=none;
         d=google.com; s=arc-20160816;
-        b=RVs6/CxOipkzoTQz0tZi4i6sXD728JMcg1C3dB0lih1g44rJghC3soVDITiVhjo5IH
-         7oZcu+j20R59EBcQwRsFns47KhgYUJoPSSQcPe6tBL1a2t119vND55XJJFWaIEbPNm9m
-         f7ncSlJYBnrseH3BC6h4JGUGA/C4RBXDssNz5vj/LJKSI4PDGMWJf5fNaW0XEqH6RsZs
-         TB5FSp7HbKPZJeD8ExK45UD8tWkO3E47VI+QkFy/NCH6GjQKJShT55H+ikhMBeW+9+0C
-         Q5zCPewS/aJkvZ/mRwBUgSRBZ2lHFtt0CawvyzbSabVCDZkDRbXvGuCvjv7HCzSjqffC
-         pn6A==
+        b=TitAngYx/LR2UrWSBa0roG23FuGiP1MlbykGBhLUpI0Go4g+lUWv6z3D9YhpDQtvMN
+         IWqsOrOJ+qq0NFA/XW9okAv47cWIeO9U98m/5Gsm4bm5cAPPOijYoGfqu39DDi0gAltY
+         QrJirsNnJe1Zk47QVL0Y2lc0CYBgPDptASqqtVAQushe+zQsB7PrQOtTZhX29k7vq/kh
+         xTdRtMVwmzC9wSHuwyP1ol4cFXip5jmUNfX4yzpgbArcTvTllU1qOL2qkmAn/0hnxZiq
+         UxbLmRDDHo1qnEaCraO2Qe88YswvF4x0jWbEx4Z9B2r5PAta3OUxEYBr1DK3lQ4v6+X3
+         Cj3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=CXB5nqjIpJ9CripEswHXbDBXna3nIZo6vZiUyZYXBj8=;
-        fh=veB4Te4/KCn4oWTeuUfAqNnzRErXfmY613FXJld+pp0=;
-        b=dVdNJaCZRb4Sq3+myUqjccEDoO7obhPVkwbH22jpi2MOVGKymTT+AXCRHId+R91cY2
-         oMcZ6jOtdyttV07HgG8BvS38WRrmwoHcSPDa6d9oB7iHPR5xr/TTRRXejhoz695EMnuM
-         9WYtMydSCWjGvxY/sw3gYpGGye6fB4SEtXv7jYgleh1geWluIh8laYl9mfnGfzJPKCRy
-         67NBMvnC6bA8HZGQaI0PebskJfvC1G59tm4kG/3N0/ZXx5vQYAbimJ2KhbhirPqSeuy5
-         eIPtheYNeoYE2sQ047kS/yseCa+z2HiPVwR6BIuFbz05cksXQSANpJSiSYYRk3mpiO2/
-         lSUQ==;
+        h=content-transfer-encoding:mime-version:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=Bq+7Q0aVVfcomC4fBqffFBZ1gvdnJxDCNC5r+0OIDjs=;
+        fh=m1/BsG0XtixjKFWnO27KIC/YCPTbibrETxjCIcDFGSM=;
+        b=jC53DW6qXExc1/U+SogAa+2u4ri1oZFromLQ5DPzgU6XC4pRjzbrFyZOcaD6TmzWez
+         1ul4DGc6QKydKfkSzbWcR3hjXbjc9+58GQ7pimyAh8PYhWeJPTjPvwVzgUNpNFuCDI+2
+         ERwcX5UhKXw4ysQx7Yx4XZd40cyNjdLkX5Al2TlQuVw1lsCIJnJeJm1eEWoEcseW++Cw
+         1F+vp5kdPFQej+RFqGzygg1V0dvi+3UC8kpJiLw6NucI9bYV2VRd9aK2Y+WZkIuRgFFu
+         hTvScsCGJhaIBdawCh9hTuQzfmPzPJHx4ng4xlOtXC6b4nK1kpHSYEP5ZyWl/KLkjbk5
+         D4cA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=H+NANRVy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43ff257f12asi11251441cf.471.2024.06.03.20.30.29
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QeDJf1qU;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-79510bda0f5si23412785a.370.2024.06.03.21.58.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jun 2024 20:30:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Jun 2024 21:58:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=H+NANRVy;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sEKsB-0007Le-6k; Mon, 03 Jun 2024 23:30:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1sEKs3-0007Kj-Hc; Mon, 03 Jun 2024 23:30:00 -0400
-Received: from mail-ua1-x92e.google.com ([2607:f8b0:4864:20::92e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1sEKs1-0004Fd-3x; Mon, 03 Jun 2024 23:29:59 -0400
-Received: by mail-ua1-x92e.google.com with SMTP id
- a1e0cc1a2514c-80ad0bb602eso1548528241.1; 
- Mon, 03 Jun 2024 20:29:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1717471795; x=1718076595; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CXB5nqjIpJ9CripEswHXbDBXna3nIZo6vZiUyZYXBj8=;
- b=H+NANRVyZvJbe/al1leEQunIYNFwXELeO2BtZUwozzUP/J6SihruITDVWS6Pte14hx
- u083MaT/h6MWq8Vhw7Tqqg7PrsaFmmxoHB4J9wgkg8xxo2Tvc0uzbpvq51gxcn3+SDEA
- BvMGUacek5bxxNiqRBjop2nmrkJFzem6xafW0Gn0fxtZdbGfFsgNMOcVdVWH+oryWDNf
- m184ps2AZsvsw0QUCL7s2vaIW1rIDMn+ku4w1qhd6LJ+jHNlHhvjaPSsqgFpWHKebPNG
- vL83PJsH03m5uARccBMl1NBrgdOMaZbUq+zmznNYGxFKzecgSHUr9BLcBXbQFs6uu5/h
- SLsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717471795; x=1718076595;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CXB5nqjIpJ9CripEswHXbDBXna3nIZo6vZiUyZYXBj8=;
- b=mOn5MEDKWqBjwKriVYd5eAG6SqB9lTTClagRb4Gb656ITDXOhmoBAozuIhsbOT/cuT
- Bedh1s+6C4h2F6Rw06heMf6zv6nyOB668oOqWQDZS1sNfRhMmPYuk5WFl61H7X7T+BTv
- 0dREWszloLY6eDG2IVGpNc3ePiUcXbkX6gpd6cf+ELmdxwyBDeS6NeS/XciE9Bye98Lp
- E3K2g71zQl1M7bb8VqZVysEackgYbvClDOJRkYq5TcCM5bJWlBLp1/BjPsdsHXwgjEfv
- u3nul0VIrBWvIgjZbWudvJo3gJrRDk0mkfDlBKWes2Xo7tQ9iLl5RkkVBTD1ym0eJImM
- Pq9Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW1tcgQcnrJ2BAwKJJUI20NPpbi0c8diCi4tRDwhmM7p7NTYfA+10Prk5NdQGRsYfTul0Erqk4GvRyD7JxPZf+ad2Qt46vt4LXkf7/DL6l1hr8EVD72BezpW9o=
-X-Gm-Message-State: AOJu0YxScEWB4PM7+vYovFpE9wFotSOxDOXahT7l5lELi8B2c8avQR/u
- dSr8rq91LM08mcvj3wBjljpKeLqaBocLm2+C4zWNqm5nCGVyG2f/afYfIc4zNkHx2xCbyySx5Kx
- LhGLvx10KrmNSsWMiZBUxAQvI6s81MEmJ
-X-Received: by 2002:a05:6102:3112:b0:48b:9296:762c with SMTP id
- ada2fe7eead31-48bc20801b4mr10831609137.2.1717471794808; Mon, 03 Jun 2024
- 20:29:54 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QeDJf1qU;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1717477134;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Bq+7Q0aVVfcomC4fBqffFBZ1gvdnJxDCNC5r+0OIDjs=;
+	b=QeDJf1qUc5L8Ob8zEIO+wubihfEAPLkZg3WgETZFH2Q4EG0omPdHwZsEVu7fyxds5pj71x
+	OZPcW26Z7fWFMCiJfX6M5WiO8tUMqllnaWOlLpN1qcrtFPk+DFi84oAE3dU7xHVj4rZmUM
+	TWl1RLr3asIdD+JjjjflR33OsxcHg6E=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-552-I6DWwb-cPxWL5Fo4JisOSw-1; Tue, 04 Jun 2024 00:58:42 -0400
+X-MC-Unique: I6DWwb-cPxWL5Fo4JisOSw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 28F8D85A58C;
+	Tue,  4 Jun 2024 04:58:42 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.93])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 5BE3F28A2;
+	Tue,  4 Jun 2024 04:58:41 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id 5B15821E6757; Tue,  4 Jun 2024 06:58:40 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: "Dr. David Alan Gilbert" <dave@treblig.org>
+Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Thomas Huth
+ <thuth@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+  qemu-devel@nongnu.org,  Cornelia Huck <cohuck@redhat.com>,  David
+ Hildenbrand <david@redhat.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+  Christian Borntraeger <borntraeger@linux.ibm.com>,
+  qemu-s390x@nongnu.org,  devel@lists.libvirt.org,  Eric Farman
+ <farman@linux.ibm.com>,  Ilya Leoshkevich <iii@linux.ibm.com>,  Richard
+ Henderson <richard.henderson@linaro.org>,  Eric Blake <eblake@redhat.com>,
+  Halil Pasic <pasic@linux.ibm.com>,  Anton Johansson <anjo@rev.ng>,
+  qemu-arm <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 0/4] hw/s390x: Alias @dump-skeys -> @dump-s390-skey and
+ deprecate
+In-Reply-To: <Zl4tgFuAdjU2bst6@gallifrey> (David Alan Gilbert's message of
+	"Mon, 3 Jun 2024 20:54:24 +0000")
+References: <20240530074544.25444-1-philmd@linaro.org>
+	<cb4028fc-9596-47f3-9468-f8912dd48aed@redhat.com>
+	<Zl20rAjHLJlZkwxE@redhat.com> <Zl4tgFuAdjU2bst6@gallifrey>
+Date: Tue, 04 Jun 2024 06:58:40 +0200
+Message-ID: <87y17lcni7.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-References: <20240524061411.341599-1-sunilvl@ventanamicro.com>
-In-Reply-To: <20240524061411.341599-1-sunilvl@ventanamicro.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 4 Jun 2024 13:29:28 +1000
-Message-ID: <CAKmqyKPQDpo541dF_inV1imL4i6U3KgpeOTPf7TcD-qUwe_O=w@mail.gmail.com>
-Subject: Re: [PATCH v2 00/12] Add support for RISC-V ACPI tests
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, 
- Laurent Vivier <lvivier@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, 
- Sia Jee Heng <jeeheng.sia@starfivetech.com>, Haibo1 Xu <haibo1.xu@intel.com>, 
- Anup Patel <apatel@ventanamicro.com>, Andrew Jones <ajones@ventanamicro.com>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::92e;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x92e.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: u+TwQ2Ok/hAd
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+X-TUID: EM9bGmWAHEMq
 
-On Fri, May 24, 2024 at 4:14=E2=80=AFPM Sunil V L <sunilvl@ventanamicro.com=
-> wrote:
->
-> Currently, bios-table-test doesn't support RISC-V. This series enables
-> the framework changes required and basic testing. Things like NUMA
-> related test cases will be added later.
->
-> This needs refactoring/renaming of ARM64 bios table tests. Importantly,
-> the test cases now look for the expected AML files under
-> tests/data/acpi/virt/aarch64 path instead of directly under
-> tests/data/acpi/virt. To keep test cases not to fail because of this
-> movement, they are updated to look for both paths first.
->
-> As part of this effort, it is found that uefi-test-tools is currently
-> broken to build. So, updated its Makefile as well to use python based
-> edk2 build script.
+"Dr. David Alan Gilbert" <dave@treblig.org> writes:
 
-It would be great to get someone who knows the UEFI world better than I
-do to ack these changes, especially the first few patches
+> * Daniel P. Berrang=C3=A9 (berrange@redhat.com) wrote:
+>> On Fri, May 31, 2024 at 06:47:45AM +0200, Thomas Huth wrote:
+>> > On 30/05/2024 09.45, Philippe Mathieu-Daud=C3=A9 wrote:
+>> > > We are trying to unify all qemu-system-FOO to a single binary.
+>> > > In order to do that we need to remove QAPI target specific code.
+>> > >=20
+>> > > @dump-skeys is only available on qemu-system-s390x. This series
+>> > > rename it as @dump-s390-skey, making it available on other
+>> > > binaries. We take care of backward compatibility via deprecation.
+>> > >=20
+>> > > Philippe Mathieu-Daud=C3=A9 (4):
+>> > >    hw/s390x: Introduce the @dump-s390-skeys QMP command
+>> > >    hw/s390x: Introduce the 'dump_s390_skeys' HMP command
+>> > >    hw/s390x: Deprecate the HMP 'dump_skeys' command
+>> > >    hw/s390x: Deprecate the QMP @dump-skeys command
+>> >=20
+>> > Why do we have to rename the command? Just for the sake of it? I think
+>> > renaming HMP commands is maybe ok, but breaking the API in QMP is some=
+thing
+>> > you should consider twice.
 
+PRO rename: the command's tie to S390 is them immediately obvious, which
+may be useful when the command becomes available in qemu-systems capable
+of running other targets.
 
-Alistair
+CON rename: users need to adapt.
 
->
-> The changes are also available at branch
-> https://gitlab.com/vlsunil/qemu/-/tree/riscv_bios_table_test_v2
->
-> Changes since v1:
->         1) Addressed feedback from Gerd and Alistair
->         2) Rebased and added tags received
->
-> Sunil V L (12):
->   uefi-test-tools/UefiTestToolsPkg: Add RISC-V support
->   uefi-test-tools: Add support for python based build script
->   tests/data/uefi-boot-images: Add RISC-V ISO image
->   qtest: bios-tables-test: Rename aarch64 tests with aarch64 in them
->   tests/qtest/bios-tables-test.c: Add support for arch in path
->   tests/data/acpi/virt: Move ACPI tables under aarch64
->   meson.build: Add RISC-V to the edk2-target list
->   pc-bios/meson.build: Add support for RISC-V in unpack_edk2_blobs
->   tests/data/acpi/rebuild-expected-aml.sh: Add RISC-V
->   tests/qtest/bios-tables-test: Add empty ACPI data files for RISC-V
->   tests/qtest/bios-tables-test.c: Enable basic testing for RISC-V
->   tests/qtest/bios-tables-test: Add expected ACPI data files for RISC-V
->
->  meson.build                                   |   2 +-
->  pc-bios/meson.build                           |   2 +
->  tests/data/acpi/rebuild-expected-aml.sh       |   5 +-
->  tests/data/acpi/virt/{ =3D> aarch64}/APIC       | Bin
->  .../acpi/virt/{ =3D> aarch64}/APIC.acpihmatvirt | Bin
->  .../acpi/virt/{ =3D> aarch64}/APIC.topology     | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/DBG2       | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/DSDT       | Bin
->  .../acpi/virt/{ =3D> aarch64}/DSDT.acpihmatvirt | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/DSDT.memhp | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/DSDT.pxb   | Bin
->  .../acpi/virt/{ =3D> aarch64}/DSDT.topology     | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/FACP       | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/GTDT       | Bin
->  .../acpi/virt/{ =3D> aarch64}/HMAT.acpihmatvirt | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/IORT       | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/MCFG       | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/NFIT.memhp | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/PPTT       | Bin
->  .../acpi/virt/{ =3D> aarch64}/PPTT.acpihmatvirt | Bin
->  .../acpi/virt/{ =3D> aarch64}/PPTT.topology     | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/SLIT.memhp | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/SPCR       | Bin
->  .../acpi/virt/{ =3D> aarch64}/SRAT.acpihmatvirt | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/SRAT.memhp | Bin
->  .../data/acpi/virt/{ =3D> aarch64}/SRAT.numamem | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/SSDT.memhp | Bin
->  tests/data/acpi/virt/{ =3D> aarch64}/VIOT       | Bin
->  tests/data/acpi/virt/riscv64/APIC             | Bin 0 -> 116 bytes
->  tests/data/acpi/virt/riscv64/DSDT             | Bin 0 -> 3518 bytes
->  tests/data/acpi/virt/riscv64/FACP             | Bin 0 -> 276 bytes
->  tests/data/acpi/virt/riscv64/MCFG             | Bin 0 -> 60 bytes
->  tests/data/acpi/virt/riscv64/RHCT             | Bin 0 -> 314 bytes
->  tests/data/acpi/virt/riscv64/SPCR             | Bin 0 -> 80 bytes
->  .../bios-tables-test.riscv64.iso.qcow2        | Bin 0 -> 16896 bytes
->  tests/qtest/bios-tables-test.c                |  93 ++++++++++++++----
->  tests/qtest/meson.build                       |   3 +
->  tests/uefi-test-tools/Makefile                |  19 ++--
->  .../UefiTestToolsPkg/UefiTestToolsPkg.dsc     |   6 +-
->  tests/uefi-test-tools/uefi-test-build.config  |  52 ++++++++++
->  40 files changed, 147 insertions(+), 35 deletions(-)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/APIC (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/APIC.acpihmatvirt (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/APIC.topology (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/DBG2 (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/DSDT (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/DSDT.acpihmatvirt (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/DSDT.memhp (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/DSDT.pxb (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/DSDT.topology (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/FACP (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/GTDT (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/HMAT.acpihmatvirt (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/IORT (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/MCFG (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/NFIT.memhp (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/PPTT (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/PPTT.acpihmatvirt (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/PPTT.topology (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/SLIT.memhp (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/SPCR (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/SRAT.acpihmatvirt (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/SRAT.memhp (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/SRAT.numamem (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/SSDT.memhp (100%)
->  rename tests/data/acpi/virt/{ =3D> aarch64}/VIOT (100%)
->  create mode 100644 tests/data/acpi/virt/riscv64/APIC
->  create mode 100644 tests/data/acpi/virt/riscv64/DSDT
->  create mode 100644 tests/data/acpi/virt/riscv64/FACP
->  create mode 100644 tests/data/acpi/virt/riscv64/MCFG
->  create mode 100644 tests/data/acpi/virt/riscv64/RHCT
->  create mode 100644 tests/data/acpi/virt/riscv64/SPCR
->  create mode 100644 tests/data/uefi-boot-images/bios-tables-test.riscv64.=
-iso.qcow2
->  create mode 100644 tests/uefi-test-tools/uefi-test-build.config
->
-> --
-> 2.40.1
->
+What are the users?  Not libvirt, as far as I can tell.
+
+>> That was going to be my question too. Seems like its possible to simply
+>> stub out the existing command for other targets.
+
+That's going to happen whether we rename the commands or not.
+
+> Are these commands really supposed to be stable, or are they just debug
+> commands?  If they are debug, then add the x- and don't worry too much.
+
+docs/devel/qapi-code-gen.rst:
+
+    Names beginning with ``x-`` used to signify "experimental".  This
+    convention has been replaced by special feature "unstable".
+
+Feature "unstable" is what makes something unstable, and is what
+machines should check.
+
+An "x-" prefix may still be useful for humans.  Machines should *not*
+key on the prefix.  It's unreliable anyway: InputBarrierProperties
+member @x-origin is stable despite it's name.  Renames to gain or lose
+the prefix may or may not be worth the bother.
+
+Making an existing part of the interface unstable should be treated
+similar to deprecating it: we keep it stable for at least the
+deprecation period.  Not written policy, because we didn't consider such
+changes when we documented our deprecation policy in
+docs/about/deprecated.rst.
+
+Alternative path to a renamed command (*if* we want that):
+
+1. Make it unstable.
+
+2. But keep it stable for two releases.
+
+3. Rename.
+
+[...]

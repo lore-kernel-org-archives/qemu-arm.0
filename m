@@ -1,108 +1,110 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2744466ejs;
-        Mon, 3 Jun 2024 23:52:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV9OQTxaD+4IR0T9yjvLPqtpw/0z5kB61sZqyrVnZzBvFqts0Fcyc5z89c/fe5SIcVw9t1SvJWnZ9uaDOOUF8kCfXFdxWh4
-X-Google-Smtp-Source: AGHT+IHf50ngG3JZ97LXXgyyt5f2Q1QumdEGqjhuI6zmE0FEz5sO7UvJUC/SliMHmHeqqxymhfzV
-X-Received: by 2002:ac8:57cc:0:b0:440:820:6545 with SMTP id d75a77b69052e-44019ee4770mr36718591cf.33.1717483946732;
-        Mon, 03 Jun 2024 23:52:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717483946; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2746198ejs;
+        Mon, 3 Jun 2024 23:57:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU7r9zAYJl7HI5/M8dZZK37NYlNHecgzBbSCMUEDb9DxsbOej604VA2Ufg8uvw9Vn1GVtTfnLqfiBN2ZwO9p93iF8oRqeUO
+X-Google-Smtp-Source: AGHT+IH1qfYxCbRC8wWwgfdh3KnW7PV7V3xS3LpqWE3lqh6zpvHWzqN8GHyZfUsSJ/ZyevO5gAIa
+X-Received: by 2002:a05:620a:400a:b0:794:9661:e039 with SMTP id af79cd13be357-794f5c666camr1468352685a.4.1717484258696;
+        Mon, 03 Jun 2024 23:57:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717484258; cv=none;
         d=google.com; s=arc-20160816;
-        b=q3+dvsE2h5hLSpkotLFQQcS9GsJ1uJphDVOtV9DUVLPhQcDJ9rlbXgUjP5Jfn0vQUK
-         xSnh9flL/xKDbR8N5OrE6meoWjjZWjQaags7/zZ7GgCOM34zLwzHLq4s04wO4PxRtjHV
-         ZgopRKrt5GkepotzNDapDA1yo7+v0VDtY7XY6NK6gK3z3dcaGy1R8nrkOZpgWXYuv4sI
-         6iCbRQZjhTvpajvHj+hMj5l2Bwrjz1okkpDNxEOqAcDQwpQlyBxv6WGWnmihWynYaRuC
-         U1UsCF8AKJpVIJ+uwVsOknJ2DWLPy/wUgSEDR6Xf57T3vpB8sGB/EO5bshhzVjrYknQB
-         yK3A==
+        b=Vx4c11RMX9n+VsyFQoM/iKVIie/EwrC9/mjkK/S7hZJ3pA8Jy/tuRn4hZNpEnMrqZK
+         8Pe5ZWgBHF9yPYFHhboJif5aodrbcqqyob6fuayaKNkpal+OCLnPmRywheB5lkWL5oPt
+         3i1xlwjbU0vlh+Whmk+dKzHkI62dCvXX0QwFrEJ7O0jUH/1zAOftLCnxahSMf6LvWToB
+         JpNqFVNTi+kFmCKvop2G7XibG0b/x6N6V6QjIj38Y5C2d1rItKRXz24zzSQHJ5xSfXBE
+         l3VRxnfCD8X4srmvKgSdA/fmD8w4mAbTVbLUbyWGSbpNmh94kqOn+RPUjMAdjpZl2p7m
+         blFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=qOC+SmDoNN1U0JhGwR655j1DQHHhWuybDBkRY9+XO30=;
-        fh=a+RObV5+JvTqeFmVdlZyBLWHMdX0DHzDIPvEiW+vbgM=;
-        b=r8PrgMMTjzhPfxsEtl9MRDeN/DY/p7Mht9FCd5qqqKptz80kzktA+aLo+kbgZv4RAo
-         OJ1tVB316qKZpC9pjuNwrKklIIpnoqKoFCGIkgPhl+BQrH6v527gZ2ziw80di/o6V1U/
-         3YtNuOklW9wTIfXQ802S6scbqBdCqwqc1QPUivYacX5NDOcWx8hX0ikxs/VlmX4DqHOf
-         p+X426QUo6RyblYClUkiYbCqVqi2NRWmJqPgU2B5iW4ppUKvQteVeVQJP900DqhlY6hy
-         y+fUYZGulrpIds/LZUYWbRVXynVZYvlIMrXP8mOfLZ2/o8Hr1gQVU4jndEHnyX2y9dXX
-         Agig==;
+        bh=4P4A9iepjzZGqS6yex/oat1l+Ol0L3OkNQUVBtpzWYs=;
+        fh=llDuCKGHMEI6IfLOkNZr0tHC2uZecVEWSQR7rgHnUTE=;
+        b=Ohwf0wOeZtqs+pLYrFYuyQlkpFtQtDf+6nighHEe6rziqDXT1hSEW8qEexqP95K+A5
+         qlCx4uNAz84vpNvGD+wbJ2obsJ+Wpxk5+vgTWIqidgLHMzX8Nl6mBKdHt2V0VxZkvrdp
+         0ddaHmK2/jRGZULNJzX8AmzQ2L3awfcKcg9/+dUGcTNplWIKSErswyNgILPuQwUK0ds2
+         p5Gx+NeXSr1UnHQG1CeX8bo5LqvbNIcVy3ynxqUDx1Z27/93JK6mkujAKyXdZlvC0Z+7
+         99LZf4Kt0yovSAr6fQKLF23521g6/2cKLHMabrPZjwiKUmBh20u30GfazDpL3ZOKgqYL
+         TZpg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=apTcDJpz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@sifive.com header.s=google header.b=N3txu6FI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-43ff23af0desi103158721cf.84.2024.06.03.23.52.26
+        by mx.google.com with ESMTPS id af79cd13be357-794f317c476si232462085a.421.2024.06.03.23.57.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Jun 2024 23:52:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Jun 2024 23:57:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=apTcDJpz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@sifive.com header.s=google header.b=N3txu6FI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sEO1p-0003eH-NS; Tue, 04 Jun 2024 02:52:17 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sEO6p-0005YS-8x; Tue, 04 Jun 2024 02:57:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fea.wang@sifive.com>)
- id 1sEO1o-0003dU-Kh
- for qemu-devel@nongnu.org; Tue, 04 Jun 2024 02:52:16 -0400
-Received: from mail-ua1-x935.google.com ([2607:f8b0:4864:20::935])
+ id 1sEO6m-0005XM-BB
+ for qemu-arm@nongnu.org; Tue, 04 Jun 2024 02:57:24 -0400
+Received: from mail-vk1-xa2a.google.com ([2607:f8b0:4864:20::a2a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <fea.wang@sifive.com>)
- id 1sEO1m-0000kh-SH
- for qemu-devel@nongnu.org; Tue, 04 Jun 2024 02:52:16 -0400
-Received: by mail-ua1-x935.google.com with SMTP id
- a1e0cc1a2514c-80ac76f1226so3136399241.0
- for <qemu-devel@nongnu.org>; Mon, 03 Jun 2024 23:52:14 -0700 (PDT)
+ id 1sEO6k-0001kw-8Q
+ for qemu-arm@nongnu.org; Tue, 04 Jun 2024 02:57:23 -0400
+Received: by mail-vk1-xa2a.google.com with SMTP id
+ 71dfb90a1353d-4eb053d4ce6so256805e0c.1
+ for <qemu-arm@nongnu.org>; Mon, 03 Jun 2024 23:57:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1717483934; x=1718088734; darn=nongnu.org;
+ d=sifive.com; s=google; t=1717484241; x=1718089041; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=qOC+SmDoNN1U0JhGwR655j1DQHHhWuybDBkRY9+XO30=;
- b=apTcDJpzFak7yzm+44gkag06lDgpW+mxT8XqSkwZctWlluK9qt3dsT98BksD0nqyPW
- 9BRay0RLgwrmw2vSK0lpVpp/mhKeERnlK4lQk+asLn1MzVOIist/nmJo26ljda/yub7s
- SnomYrTsuTdhpllr6aJ5tR55r+79Bue/EKzBiBWnnP+g56S+tvlQCMvGWwndNsP+cyT2
- 7/OFIvDisM2Z/GohDyM1ZJsEli1Z+egR7Foi9WUMBBc1dgFJnRlAB6YcjBBJAchqrIl/
- qfDgCmhRVWBvpkNKzvskkrLsi6VOUvn9cUynUm0z9kXEQX5VUc5mdCbM/7cD7WYC9Coe
- 669w==
+ bh=4P4A9iepjzZGqS6yex/oat1l+Ol0L3OkNQUVBtpzWYs=;
+ b=N3txu6FIAZ3cgY7qj28kuO+/mlt/aXFZwMcbFmyYHceP3CZnLx9FOA42rZn0+vt/fE
+ SNqQ2Ssfshvfnn2EyL0r9KrIqt42hRXxLMvYNB0nZExIm2lQuxy48i1XgraY5QFZ2IPG
+ zgEq7zZNBmlcWeclB1IbDHAccBcYZAxp8ams8AJjBPy1G2fs9OwQHfKQL9W+eZ2eXO+g
+ nYSqOgHQmb9p48u6S5awJ6ctZyQslx68uV5HlEzrCQdwke7TCAh8KlZjZkMaA5ErlWXH
+ 05ft+ZNNkhGeEFIKd3lIOmHKF3AFFXMy2BAE4QI0Uao7Y+4ssFjZPYAE2bjGqLsYvrN7
+ m6uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717483934; x=1718088734;
+ d=1e100.net; s=20230601; t=1717484241; x=1718089041;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=qOC+SmDoNN1U0JhGwR655j1DQHHhWuybDBkRY9+XO30=;
- b=uQRDjKq06h92z78k4tjIjiatKk0vU+Jcx5M0dUoKrldzX4pS8kiiY1NaEtJ9PgCggG
- eW/0usbzoWduu3DaqlChRExuxtXx9OcPlvD7Si1Vgx5BmulFYQRjV87JGHwAjDwnzV+y
- ehwt/7ndyDfO+xOcdLI5H8X8vs2mjHV5z+IMMH5fQZ0U+hG5dbAeaZqcnk7gLNbyfD0H
- ujusX6xpRDN1AIsar+p2CZf1xt510B1UBUiZ3kTQ4WbzVSkVXfJJyvHaGw6EgFwI0L2l
- 4GvF8RH2j5Q9M/wY7Yt+8pRaZcu3n5Dss0W8L5XIXM+tiqoWttK/pNnyP0j5Y3aIuppS
- 31bQ==
-X-Gm-Message-State: AOJu0YzsxdQciTFbvfb3A8+X1OfeeW4U9bIzru2yUsSMRCL4unwTsk9W
- 6OmVmIUfELFDwKPnjgzIyalKSjHqdNqF7PPFqMifhvbBrK01TPOmv2+LlpA0FbLB0C+IDE2zVZ4
- KVEIrR5b0b7P8gDdE8hvcD2D9XZ5qn6T+TzjqHHwFqWK0fcgv
-X-Received: by 2002:a05:6122:d23:b0:4eb:177c:a815 with SMTP id
- 71dfb90a1353d-4eb2bc02c7dmr1538446e0c.2.1717483933150; Mon, 03 Jun 2024
- 23:52:13 -0700 (PDT)
+ bh=4P4A9iepjzZGqS6yex/oat1l+Ol0L3OkNQUVBtpzWYs=;
+ b=hfn1rlQQ+GBFNbkgwX/Rd5Fsi0UgfI7JEH9i6eFd8Lu7u3CW3tLcB8nZQ6Pvspu9BP
+ rCElpGq41KR+uFsB1dvh149/fvNFuBKDw0pIlFXRugeJw3EGxru5aEJBqAFyCkZnarqf
+ +A65snE9T6ozu2sr2ASeFXIOB83m0v06g3QoiSp5msGBiJGvsMGPIgwH+MTP1UljDo1A
+ XGSEN+cwgJulILgqBLU3IGB+geCExgM58IMY2hpyi/4RZVzty0kaz44SGb/79i5dvtDg
+ 26njnpfA0FDn9BImTK21C35SfU5YA7s7C4OjeIFoqXGqR0aOt9kvGm4E7k/cXvXQLDW1
+ TeHw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU4nDqWjuXi3WoqHJsKPkCuItnphMMLM7jpDQrPgjNpVe3nBhLr+efgvMgkuR5RH177GtvzqzYlP5atMtsRNiBSW+sq
+X-Gm-Message-State: AOJu0Yx1UPo2BX2mVsuUP6El6Hr6mdUfbdY0BpCZQ05RYPpCwvOvkklI
+ 3vedMuzX9Z7nrR45AAEteVYjtmT/a7PPxrysvLyzn+7zMHB9ytcYvOP4yAUoB52Lv19U1ywQGAY
+ lsKpKg8w8Fmik6fqO8hVqMVmZE2IsVs+7/3piyw==
+X-Received: by 2002:ac5:c851:0:b0:4d4:21cc:5f4f with SMTP id
+ 71dfb90a1353d-4eb02e7bdf4mr9223483e0c.11.1717484241108; Mon, 03 Jun 2024
+ 23:57:21 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240603055248.3928469-1-fea.wang@sifive.com>
- <20240603055248.3928469-3-fea.wang@sifive.com>
- <CAJy5ezp6pkpEqCHc+ggXi+-VR+u+3HKyn5inzasyqBR9FaGiog@mail.gmail.com>
-In-Reply-To: <CAJy5ezp6pkpEqCHc+ggXi+-VR+u+3HKyn5inzasyqBR9FaGiog@mail.gmail.com>
+ <20240603055248.3928469-5-fea.wang@sifive.com>
+ <CAJy5ezocZnmYec5TenZNtOe6+2-OxzaRaSXLW1XYHL5X0Xd8dw@mail.gmail.com>
+In-Reply-To: <CAJy5ezocZnmYec5TenZNtOe6+2-OxzaRaSXLW1XYHL5X0Xd8dw@mail.gmail.com>
 From: Fea Wang <fea.wang@sifive.com>
-Date: Tue, 4 Jun 2024 14:52:02 +0800
-Message-ID: <CAKhCfsfnDK9A0hpV4cUQMfhg3VBS7_tzbZy783Q3xcePGZefJA@mail.gmail.com>
-Subject: Re: [PATCH 2/4] hw/dma: Break the loop when loading descriptions fails
+Date: Tue, 4 Jun 2024 14:57:10 +0800
+Message-ID: <CAKhCfscM=B0TD4k_SgKwAyRbg0zuzFAT+M8Rq3kTSrkUZBMefw@mail.gmail.com>
+Subject: Re: [PATCH 4/4] hw/net: Fix the transmission return size
 To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, 
  Alistair Francis <alistair@alistair23.me>,
  Peter Maydell <peter.maydell@linaro.org>, 
  Jason Wang <jasowang@redhat.com>, "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="000000000000be4b35061a0ae3f7"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::935;
- envelope-from=fea.wang@sifive.com; helo=mail-ua1-x935.google.com
+Content-Type: multipart/alternative; boundary="000000000000195ece061a0af665"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a2a;
+ envelope-from=fea.wang@sifive.com; helo=mail-vk1-xa2a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,162 +113,126 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YrSKEp4aE/RQ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: d+pirbObhM2Y
 
---000000000000be4b35061a0ae3f7
+--000000000000195ece061a0af665
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi Edgar,
-thank you for the advice, I will squash them in the next version of the
-patch series.
+I just encountered this issue when running Linux, and the trouble will be
+fixed after the patches. So I think they work.
 
 Sincerely,
 Fea
 
-On Mon, Jun 3, 2024 at 6:21=E2=80=AFPM Edgar E. Iglesias <edgar.iglesias@gm=
+On Mon, Jun 3, 2024 at 6:31=E2=80=AFPM Edgar E. Iglesias <edgar.iglesias@gm=
 ail.com>
 wrote:
 
 > On Mon, Jun 3, 2024 at 7:48=E2=80=AFAM Fea.Wang <fea.wang@sifive.com> wro=
 te:
 >
->> When calling the loading a description function, it should be noticed
->> that the function may return a failure value. Breaking the loop is one
->> of the possible ways to handle it.
+>> Fix the transmission return size because not all bytes could be
+>> transmitted successfully. So, return a successful length instead of a
+>> constant value.
 >>
+>>
+> How did you test this patch, on Linux or something else? I have some
+> memory that we had some trouble with similar patches before.
+>
+> Anyway, the change looks good to me:
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+>
+>
+>
 >> Signed-off-by: Fea.Wang <fea.wang@sifive.com>
->>
->
->
-> Looks good, a nitpick comment, I would either squash this with patch #1
-> or move the change to return of error code in stream_desc_load() to this
-> patch.
->
->
->
->
 >> ---
->>  hw/dma/xilinx_axidma.c | 8 ++++++--
->>  1 file changed, 6 insertions(+), 2 deletions(-)
+>>  hw/net/xilinx_axienet.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
 >>
->> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
->> index 4b475e5484..b8ab5a423d 100644
->> --- a/hw/dma/xilinx_axidma.c
->> +++ b/hw/dma/xilinx_axidma.c
->> @@ -291,7 +291,9 @@ static void stream_process_mem2s(struct Stream *s,
->> StreamSink *tx_data_dev,
->>      }
+>> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+>> index 7d1fd37b4a..05d41bd548 100644
+>> --- a/hw/net/xilinx_axienet.c
+>> +++ b/hw/net/xilinx_axienet.c
+>> @@ -847,7 +847,7 @@ static ssize_t eth_rx(NetClientState *nc, const
+>> uint8_t *buf, size_t size)
+>>      axienet_eth_rx_notify(s);
 >>
->>      while (1) {
->> -        stream_desc_load(s, s->regs[R_CURDESC]);
->> +        if (MEMTX_OK !=3D stream_desc_load(s, s->regs[R_CURDESC])) {
->> +            break;
->> +        }
+>>      enet_update_irq(s);
+>> -    return size;
+>> +    return s->rxpos;
+>>  }
 >>
->>          if (s->desc.status & SDESC_STATUS_COMPLETE) {
->>              s->regs[R_DMASR] |=3D DMASR_HALTED;
->> @@ -348,7 +350,9 @@ static size_t stream_process_s2mem(struct Stream *s,
->> unsigned char *buf,
->>      }
->>
->>      while (len) {
->> -        stream_desc_load(s, s->regs[R_CURDESC]);
->> +        if (MEMTX_OK !=3D stream_desc_load(s, s->regs[R_CURDESC])) {
->> +            break;
->> +        }
->>
->>          if (s->desc.status & SDESC_STATUS_COMPLETE) {
->>              s->regs[R_DMASR] |=3D DMASR_HALTED;
+>>  static size_t
 >> --
 >> 2.34.1
 >>
 >>
 
---000000000000be4b35061a0ae3f7
+--000000000000195ece061a0af665
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Hi Edgar,<div>thank you for the advice, I will squash them=
- in the next version of the patch series.</div><div><br></div><div>Sincerel=
-y,</div><div>Fea</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr"=
- class=3D"gmail_attr">On Mon, Jun 3, 2024 at 6:21=E2=80=AFPM Edgar E. Igles=
-ias &lt;<a href=3D"mailto:edgar.iglesias@gmail.com">edgar.iglesias@gmail.co=
-m</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin=
-:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
-><div dir=3D"ltr"><div dir=3D"ltr">On Mon, Jun 3, 2024 at 7:48=E2=80=AFAM F=
-ea.Wang &lt;<a href=3D"mailto:fea.wang@sifive.com" target=3D"_blank">fea.wa=
-ng@sifive.com</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquot=
-e class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px s=
-olid rgb(204,204,204);padding-left:1ex">When calling the loading a descript=
-ion function, it should be noticed<br>
-that the function may return a failure value. Breaking the loop is one<br>
-of the possible ways to handle it.<br>
-<br>
+<div dir=3D"ltr">I just encountered this issue when=C2=A0running Linux, and=
+ the trouble will be fixed after the patches. So I think they work.<div><br=
+></div><div>Sincerely,</div><div>Fea</div></div><br><div class=3D"gmail_quo=
+te"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Jun 3, 2024 at 6:31=E2=80=
+=AFPM Edgar E. Iglesias &lt;<a href=3D"mailto:edgar.iglesias@gmail.com">edg=
+ar.iglesias@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_qu=
+ote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,20=
+4);padding-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr">On Mon, Jun 3, 2024 =
+at 7:48=E2=80=AFAM Fea.Wang &lt;<a href=3D"mailto:fea.wang@sifive.com" targ=
+et=3D"_blank">fea.wang@sifive.com</a>&gt; wrote:<br></div><div class=3D"gma=
+il_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
+ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Fix the transmi=
+ssion return size because not all bytes could be<br>
+transmitted successfully. So, return a successful length instead of a<br>
+constant value.<br>
+<br></blockquote><div><br></div><div>How did you test this patch, on Linux =
+or something else? I have some</div><div>memory that we had some trouble wi=
+th similar patches before.</div><div><br></div><div>Anyway, the change look=
+s good to me:</div><div>Reviewed-by: Edgar E. Iglesias &lt;<a href=3D"mailt=
+o:edgar.iglesias@amd.com" target=3D"_blank">edgar.iglesias@amd.com</a>&gt;<=
+br></div><div><br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" =
+style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pa=
+dding-left:1ex">
 Signed-off-by: Fea.Wang &lt;<a href=3D"mailto:fea.wang@sifive.com" target=
-=3D"_blank">fea.wang@sifive.com</a>&gt;<br></blockquote><div><br></div><div=
-><br></div><div>Looks good, a nitpick comment, I would either squash this w=
-ith patch #1</div><div>or move the change to return of error code in stream=
-_desc_load() to this patch.</div><div><br></div><div><br></div><div>=C2=A0<=
-/div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bo=
-rder-left:1px solid rgb(204,204,204);padding-left:1ex">
+=3D"_blank">fea.wang@sifive.com</a>&gt;<br>
 ---<br>
-=C2=A0hw/dma/xilinx_axidma.c | 8 ++++++--<br>
-=C2=A01 file changed, 6 insertions(+), 2 deletions(-)<br>
+=C2=A0hw/net/xilinx_axienet.c | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
 <br>
-diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c<br>
-index 4b475e5484..b8ab5a423d 100644<br>
---- a/hw/dma/xilinx_axidma.c<br>
-+++ b/hw/dma/xilinx_axidma.c<br>
-@@ -291,7 +291,9 @@ static void stream_process_mem2s(struct Stream *s, Stre=
-amSink *tx_data_dev,<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
+diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c<br>
+index 7d1fd37b4a..05d41bd548 100644<br>
+--- a/hw/net/xilinx_axienet.c<br>
++++ b/hw/net/xilinx_axienet.c<br>
+@@ -847,7 +847,7 @@ static ssize_t eth_rx(NetClientState *nc, const uint8_t=
+ *buf, size_t size)<br>
+=C2=A0 =C2=A0 =C2=A0axienet_eth_rx_notify(s);<br>
 <br>
-=C2=A0 =C2=A0 =C2=A0while (1) {<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 stream_desc_load(s, s-&gt;regs[R_CURDESC]);<br=
->
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (MEMTX_OK !=3D stream_desc_load(s, s-&gt;re=
-gs[R_CURDESC])) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
+=C2=A0 =C2=A0 =C2=A0enet_update_irq(s);<br>
+-=C2=A0 =C2=A0 return size;<br>
++=C2=A0 =C2=A0 return s-&gt;rxpos;<br>
+=C2=A0}<br>
 <br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (s-&gt;desc.status &amp; SDESC_STATUS_=
-COMPLETE) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;regs[R_DMASR] |=3D DM=
-ASR_HALTED;<br>
-@@ -348,7 +350,9 @@ static size_t stream_process_s2mem(struct Stream *s, un=
-signed char *buf,<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0while (len) {<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 stream_desc_load(s, s-&gt;regs[R_CURDESC]);<br=
->
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (MEMTX_OK !=3D stream_desc_load(s, s-&gt;re=
-gs[R_CURDESC])) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (s-&gt;desc.status &amp; SDESC_STATUS_=
-COMPLETE) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;regs[R_DMASR] |=3D DM=
-ASR_HALTED;<br>
+=C2=A0static size_t<br>
 -- <br>
 2.34.1<br>
 <br>
 </blockquote></div></div>
 </blockquote></div>
 
---000000000000be4b35061a0ae3f7--
+--000000000000195ece061a0af665--

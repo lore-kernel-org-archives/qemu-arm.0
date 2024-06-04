@@ -1,203 +1,210 @@
-Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2823733ejs;
-        Tue, 4 Jun 2024 02:45:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVgOwK9fBjVOTMS4lJ8PVuRm3FZ3963T6uOrAWqUF7N9ZdEWa42gzZwDt+YUiUF2qGF5oQgld8/qUGqJERO6OWUxv0EOjTD
-X-Received: by 2002:a17:907:7e88:b0:a68:ce70:61f7 with SMTP id a640c23a62f3a-a68ce706471mr631505466b.17.1717494314945;
-        Tue, 04 Jun 2024 02:45:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717494314; cv=none;
+Received: by 2002:a17:906:7fcb:b0:a66:557b:2f6e with SMTP id r11csp2830057ejs;
+        Tue, 4 Jun 2024 02:59:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWJc+STCgUkUMiwZqnkY4TEvjIsEw4iB4R/BfBKYsxAFrT6tAtQRzA2+StwPispACIJhi8mX0lXjIIkpUvikHOrnZB3iUBp
+X-Google-Smtp-Source: AGHT+IHEKvCzDYER8Kug/iVA8sBPcEblA96qAznlHyDV4RTz/HgSwqmwiD4rweEYBactzP+tnXTL
+X-Received: by 2002:a05:690c:24a:b0:61b:9369:ef28 with SMTP id 00721157ae682-62c79674cbamr120417707b3.9.1717495181851;
+        Tue, 04 Jun 2024 02:59:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717495181; cv=none;
         d=google.com; s=arc-20160816;
-        b=WurHZFfBeYPuh5z3xMV93+ooQDeF2rAPTc034KKWgTOJsKWutrkwmpBy13xO/B2cb8
-         QkodaH7ILVDMN5ZGDzUeQHQVRff93U+BmU44JOuuDp9JX/yC6Mw8Qyu9RBy2988XRHEE
-         S/L+wOWV2eOZZ271uGJixSS+GgEOSUDqWRhyF0J8ba167rehhSShTPgr0Mc6asDPUqBQ
-         3At2P04D8CDRwnOFabVnpXGf67Pv4zOBR66RDq6TwLNzPBGAFOF8M6t4m7TytuXjvhyK
-         Z4RTK9vHnjK7bmlLzKrWdHu7GI6pWNz8Fcbv6eUjYDkiHR6/BwbZ/AHMWm2LiH8RYvIY
-         SaBQ==
+        b=rYJBokilxxtlqGI4dPzwxbPkEWC+ZqE3XIYJ5/cn9BCAkNMvrT4zuhTppoE3zDI6ap
+         NQLIRGsoybhW3ZgROz5d2iaZrRWEzAcg1mhiFNabdLRra2wO33THw5BhXFZIYf647NJA
+         FRUW3HymK2MkzepW0JbntzjiMpDku+Pjuuuwv2UNjJZzwgMwpixNoBS3FZMWa1ebSW6W
+         NFOLoOyzuYEWPVLJwI695m/ayTc90XuxWWA5MN10Hsn0+Z/QlTyyO252AW/cl+S2TfU0
+         xK70rqPJPD3NrDoTtL3nnJMMtBVgIvmVQ8LXEtfk4PyWQZxLa5Q4eCit9OxWGaABV9sL
+         nPpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=CDiA1iH3Is/8QelR5Op25gwEeDLmgqCOg99x/mjG4fk=;
-        fh=oqkyRW3WNdIU0pZVrmmg9pOKrAH36YbNr51/lwZMILc=;
-        b=DGYZ1xqiXB2rDUMmBimhrnd3rwlNl3WYAqed2p243Gnyj0u9+RRXpYzLbIbNYUPvdQ
-         reg/dPkXJOBjcHl+lv6JeGQ0pQ/vGiols25rkwyasdl05itBVy1rpGcy++ccg6DOkEF6
-         xA12/TZslMSV2O7kfuQj4IW3lCr/MzroXVRg0EzvBRN2k9+5gdkQMPbOIMZMZ3d0Fjta
-         JwGTTdj+kP9UMOphZ6/6e5Fsr7lK0RGmGLCjemv93r7iqiWWq0SUBG3dt++0Om3+w98A
-         6OtKHFpbXOV1nA1smo014cwBWZtc2tndTFXRJQpYQSSO4A7TF7ZJzSkj4OMNVam52XcV
-         beRA==;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=zr2w9n2Is7vHKdf2DbFcB71ShJzhn42yXCEfGd2PB0M=;
+        fh=QHhCo/cftrLHlZw3fC9Pme3mdpNEvkSnddu4B63gl7k=;
+        b=T8AvLeJ1dE+47D6S5UuEY/PwNUuWprEPzhfoIVrvJBgTyL6OYjrRPOFeszgbhmSNg9
+         ZFKXnnFSDVF5jSxczEGYkVMA8waRCkvuIkv9K7XspHxZvPdAR/GsrH4n5Kf3AMbxB8xM
+         Fe1mpmLNtJ2yrPIZN7HcPascKxwxN+RHjsIlAFz589P9rlz1NK9kcgqnO+6qeeTflBr5
+         92C9MU2gcjWhF3SLa0YtudCbK9TUtW2KcLiG1Usv6X2hHByI0MBjbnbHSb5f1MDtU6MN
+         3hpRnAGZ26PCtpywOIHMohpEk7S2nioJwYXcZgz7LtlToo5w2Cxp/FC4ATWqPZwQ9LMn
+         gRCA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vcnRuxWx;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-a67e75e83e4sor193183566b.3.2024.06.04.02.45.14
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=avl0GM1M;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4b4021c3si106277926d6.265.2024.06.04.02.59.41
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 04 Jun 2024 02:45:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 04 Jun 2024 02:59:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vcnRuxWx;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1717494314; x=1718099114; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=CDiA1iH3Is/8QelR5Op25gwEeDLmgqCOg99x/mjG4fk=;
-        b=vcnRuxWxLHBR6ZghuPHkXEA5y4ysDJE6UsjSbgq3QExgyqPgeVuX6wBdll+l7i4LTJ
-         Ct58aosLgTLsQnw3UkUG6WjZH7uu3nzsjYkjsrONjXWaRBmw8XFCC6+ma1mo8EAbYcM5
-         URV3BrXKSBsgPVNEKoe3npd8lrkFCpRXUf+a/yMxUvITae7ZU8OsZr62d/dcRKJvfBEl
-         QeaJbZcr49eeJleAf/XW5BbgJN9OHKoZwAb6697QimnmM9enoiAyh+F+sR50cdiooJoK
-         JUeNp9z2cNChP2i+exA2AbL2bNdrf922aFJ5/+QeupvUYrV8nahGP8BHEQGcktRl00+4
-         fOJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717494314; x=1718099114;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=CDiA1iH3Is/8QelR5Op25gwEeDLmgqCOg99x/mjG4fk=;
-        b=fOVNZUpMfJX6Op8xxta0RvRtpAZKcX6mD5E2JL1+g3ViIAMvSzpNCptzfcJzGRZpk7
-         p7eQMj3xLjilrIVrbFrrZus+eCaFIzf73ft3Iu5+MUONy3FkWiRb5BuC0xtl6NAKh1tZ
-         Q2M2lAUpuGapPYSccFTKZbwXCKlwjzJGO9MHxf/I1xUGRsG0Yf2tEUXEdbS3p5jAze6j
-         FPkUn6KxKh4TI065dKeL/mZFizmJeIGWk634wqn2zk4KqSrsFQDkAN6PNXUvpTcDJfHM
-         0Wm8hkm8dzzdairBDiFNEfALA/hhs1e3Gve69sFgCXo0wyzwxK+nw0Ko62bsiulqMW8f
-         4q1A==
-X-Forwarded-Encrypted: i=1; AJvYcCWjip4TiC3XcKpPHlcl76vW1YpLuFtN1mE8xThKlZMI3eBH9Bd8fVNgtyseVyA2qD8S+Ew+OgMdCfQrrZMnU0Qba9yh2cjV
-X-Gm-Message-State: AOJu0YwYcvkxx5o+G80W3MYt0tIwgR8D3fz9bi/aOdi8klQrpPIuHne4
-	4x5m4a1Zmw2z7l+EsPWkhYgl9xFsxsi59bFeTbriG+M4RZ+UBGC2scneDJhirBpZjA==
-X-Google-Smtp-Source: AGHT+IEHvEa9j4cG92UAr03wb2sMZwBzO7HNUulkcYcP5PACQ1RaK6qzU9j30BsYxhLKhDDaltZA1Q==
-X-Received: by 2002:a17:906:2845:b0:a68:b5f0:3b31 with SMTP id a640c23a62f3a-a68b5f04030mr519947966b.72.1717494314352;
-        Tue, 04 Jun 2024 02:45:14 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] ([176.176.159.34])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a691122859esm252602366b.224.2024.06.04.02.45.12
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 04 Jun 2024 02:45:13 -0700 (PDT)
-Message-ID: <fcb6ff5d-fcad-4eb1-9b64-0a8477954a0d@linaro.org>
-Date: Tue, 4 Jun 2024 11:45:11 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=avl0GM1M;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1717495181;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=zr2w9n2Is7vHKdf2DbFcB71ShJzhn42yXCEfGd2PB0M=;
+	b=avl0GM1MY4ff3Ef3jZTj31fVGL22c6mABM7B6MDcT9YmLvV9FSmvXls798nNzCoy0n9I3V
+	rENSsP//KnolUHePnpU2HNGVSiw370deA3NiF0brMoEsMOYUN6Dw0m5EKG6GCFq7C/BDWp
+	Nm7ERxBIQe+BFE5tuJsnYkjRt+R11ag=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-543-izeoHxjwMSiEeMotBzjQ2Q-1; Tue,
+ 04 Jun 2024 05:59:39 -0400
+X-MC-Unique: izeoHxjwMSiEeMotBzjQ2Q-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B725F1C0512B;
+	Tue,  4 Jun 2024 09:59:38 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.51])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0F0AD111E417;
+	Tue,  4 Jun 2024 09:59:33 +0000 (UTC)
+Date: Tue, 4 Jun 2024 10:59:32 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Markus Armbruster <armbru@redhat.com>,
+	"Dr. David Alan Gilbert" <dave@treblig.org>,
+	Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	Cornelia Huck <cohuck@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	qemu-s390x@nongnu.org, devel@lists.libvirt.org,
+	Eric Farman <farman@linux.ibm.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+	Anton Johansson <anjo@rev.ng>, qemu-arm <qemu-arm@nongnu.org>
 Subject: Re: [PATCH 0/4] hw/s390x: Alias @dump-skeys -> @dump-s390-skey and
  deprecate
-To: Markus Armbruster <armbru@redhat.com>,
- "Dr. David Alan Gilbert" <dave@treblig.org>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Cornelia Huck <cohuck@redhat.com>, David Hildenbrand <david@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Christian Borntraeger <borntraeger@linux.ibm.com>, qemu-s390x@nongnu.org,
- devel@lists.libvirt.org, Eric Farman <farman@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eric Blake <eblake@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Anton Johansson <anjo@rev.ng>, qemu-arm <qemu-arm@nongnu.org>
+Message-ID: <Zl7lhF3kAAHptDty@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20240530074544.25444-1-philmd@linaro.org>
  <cb4028fc-9596-47f3-9468-f8912dd48aed@redhat.com>
- <Zl20rAjHLJlZkwxE@redhat.com> <Zl4tgFuAdjU2bst6@gallifrey>
+ <Zl20rAjHLJlZkwxE@redhat.com>
+ <Zl4tgFuAdjU2bst6@gallifrey>
  <87y17lcni7.fsf@pond.sub.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <87y17lcni7.fsf@pond.sub.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <fcb6ff5d-fcad-4eb1-9b64-0a8477954a0d@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: DAd65bfVYUMy
+In-Reply-To: <fcb6ff5d-fcad-4eb1-9b64-0a8477954a0d@linaro.org>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
+X-TUID: Gtiuw8pVnqG2
 
-Hi Daniel, Dave, Markus & Thomas.
-
-On 4/6/24 06:58, Markus Armbruster wrote:
-> "Dr. David Alan Gilbert" <dave@treblig.org> writes:
->> * Daniel P. Berrangé (berrange@redhat.com) wrote:
->>> On Fri, May 31, 2024 at 06:47:45AM +0200, Thomas Huth wrote:
->>>> On 30/05/2024 09.45, Philippe Mathieu-Daudé wrote:
->>>>> We are trying to unify all qemu-system-FOO to a single binary.
->>>>> In order to do that we need to remove QAPI target specific code.
->>>>>
->>>>> @dump-skeys is only available on qemu-system-s390x. This series
->>>>> rename it as @dump-s390-skey, making it available on other
->>>>> binaries. We take care of backward compatibility via deprecation.
->>>>>
->>>>> Philippe Mathieu-Daudé (4):
->>>>>     hw/s390x: Introduce the @dump-s390-skeys QMP command
->>>>>     hw/s390x: Introduce the 'dump_s390_skeys' HMP command
->>>>>     hw/s390x: Deprecate the HMP 'dump_skeys' command
->>>>>     hw/s390x: Deprecate the QMP @dump-skeys command
->>>>
->>>> Why do we have to rename the command? Just for the sake of it? I think
->>>> renaming HMP commands is maybe ok, but breaking the API in QMP is something
->>>> you should consider twice.
-
-I'm looking at how to include this command in the new "single binary".
-
-Markus explained in an earlier series, just expanding this command as
-stub to targets that don't implement it is not backward compatible and
-breaks QMP introspection. Currently on s390x we get a result, on other
-targets the command doesn't exist. If we add a stubs, then other targets
-return something (even if it is an empty list), confusing management
-interface.
-
-So this approach use to deprecate process to include a new command
-which behaves differently on non-s390x targets.
-
-If we don't care for this particular case, better. However I'd still
-like to discuss this approach for other target-specific commands.
-
-> PRO rename: the command's tie to S390 is them immediately obvious, which
-> may be useful when the command becomes available in qemu-systems capable
-> of running other targets.
+On Tue, Jun 04, 2024 at 11:45:11AM +0200, Philippe Mathieu-Daudé wrote:
+> Hi Daniel, Dave, Markus & Thomas.
 > 
-> CON rename: users need to adapt.
+> On 4/6/24 06:58, Markus Armbruster wrote:
+> > "Dr. David Alan Gilbert" <dave@treblig.org> writes:
+> > > * Daniel P. Berrangé (berrange@redhat.com) wrote:
+> > > > On Fri, May 31, 2024 at 06:47:45AM +0200, Thomas Huth wrote:
+> > > > > On 30/05/2024 09.45, Philippe Mathieu-Daudé wrote:
+> > > > > > We are trying to unify all qemu-system-FOO to a single binary.
+> > > > > > In order to do that we need to remove QAPI target specific code.
+> > > > > > 
+> > > > > > @dump-skeys is only available on qemu-system-s390x. This series
+> > > > > > rename it as @dump-s390-skey, making it available on other
+> > > > > > binaries. We take care of backward compatibility via deprecation.
+> > > > > > 
+> > > > > > Philippe Mathieu-Daudé (4):
+> > > > > >     hw/s390x: Introduce the @dump-s390-skeys QMP command
+> > > > > >     hw/s390x: Introduce the 'dump_s390_skeys' HMP command
+> > > > > >     hw/s390x: Deprecate the HMP 'dump_skeys' command
+> > > > > >     hw/s390x: Deprecate the QMP @dump-skeys command
+> > > > > 
+> > > > > Why do we have to rename the command? Just for the sake of it? I think
+> > > > > renaming HMP commands is maybe ok, but breaking the API in QMP is something
+> > > > > you should consider twice.
 > 
-> What are the users?  Not libvirt, as far as I can tell.
+> I'm looking at how to include this command in the new "single binary".
+> 
+> Markus explained in an earlier series, just expanding this command as
+> stub to targets that don't implement it is not backward compatible and
+> breaks QMP introspection. Currently on s390x we get a result, on other
+> targets the command doesn't exist. If we add a stubs, then other targets
+> return something (even if it is an empty list), confusing management
+> interface.
 
-Years ago we said, "all HMP must be based on QMP". Now we realize HMP
-became stable because QMP-exposed, although not consumed externally...
+I'm not convinced about calling this "not backward compatible".
 
-Does the concept of "internal QMP commands" makes sense for HMP debug
-ones? (Looking at a way to not expose them). We could use the "x-"
-prefix to not care about stable / backward compat, but what is the point
-of exposing to QMP commands that will never be accessed there?
+We're always free to add new commands, and there's never any
+guarantee that you can execute a given command under every
+possible QEMU configuration.
 
->>> That was going to be my question too. Seems like its possible to simply
->>> stub out the existing command for other targets.
-> 
-> That's going to happen whether we rename the commands or not.
-> 
->> Are these commands really supposed to be stable, or are they just debug
->> commands?  If they are debug, then add the x- and don't worry too much.
+IOW, adding 'dump-skeys' and having it always return an error
+on non-s390x targets is valid IMHO, and I wouldn't call that
+a backwards compatibilit problem.
 
-OK.
+Apps shouldn't assume that just because a command is reported
+in introspection, it can be used in any scenario. An app is
+expected to itself understand the behaviour of any given command
+sufficiently well, to know when they can execute it, or be prpared
+to accept errors.
 
-> docs/devel/qapi-code-gen.rst:
+> > PRO rename: the command's tie to S390 is them immediately obvious, which
+> > may be useful when the command becomes available in qemu-systems capable
+> > of running other targets.
+> > 
+> > CON rename: users need to adapt.
+> > 
+> > What are the users?  Not libvirt, as far as I can tell.
 > 
->      Names beginning with ``x-`` used to signify "experimental".  This
->      convention has been replaced by special feature "unstable".
-> 
-> Feature "unstable" is what makes something unstable, and is what
-> machines should check.
+> Years ago we said, "all HMP must be based on QMP". Now we realize HMP
+> became stable because QMP-exposed, although not consumed externally...
 
-What I mentioned earlier could be 'Feature "internal" or "debug"'.
+That's not the case though. We've added plenty of conversions of
+HMP to QMP, while declaring them unstable. We might have missed
+that in some cases, but that's just a bug, and we can fix that
+any time by adding the 'unstable' feature tag to the schema.
 
-> An "x-" prefix may still be useful for humans.  Machines should *not*
-> key on the prefix.  It's unreliable anyway: InputBarrierProperties
-> member @x-origin is stable despite it's name.  Renames to gain or lose
-> the prefix may or may not be worth the bother.
+> Does the concept of "internal QMP commands" makes sense for HMP debug
+> ones? (Looking at a way to not expose them). We could use the "x-"
+> prefix to not care about stable / backward compat, but what is the point
+> of exposing to QMP commands that will never be accessed there?
 
-Could follow the rules and be renamed as "origin-coordinate-x".
+Debug only, unstable commands are totally valid for QMP. There's nothing
+that requires them to be inherantly HMP only.
 
-> Making an existing part of the interface unstable should be treated
-> similar to deprecating it: we keep it stable for at least the
-> deprecation period.  Not written policy, because we didn't consider such
-> changes when we documented our deprecation policy in
-> docs/about/deprecated.rst.
+QAPI modelling can benefit many debug only, unstable commands, but we
+can also still just return printf formatted strings as documented here:
+
+  https://www.qemu.org/docs/master/devel/writing-monitor-commands.html#writing-a-debugging-aid-returning-unstructured-text
+
+
+I remain convinced that we should eventually delete the HMP impl as it
+exists today, and just provide a QMP client whose interactive interface
+matches what HMP provides today. There's no compelling need for HMP to
+run inside QEMU, if QMP exposes all the required functionality.
+
+> > docs/devel/qapi-code-gen.rst:
+> > 
+> >      Names beginning with ``x-`` used to signify "experimental".  This
+> >      convention has been replaced by special feature "unstable".
+> > 
+> > Feature "unstable" is what makes something unstable, and is what
+> > machines should check.
 > 
-> Alternative path to a renamed command (*if* we want that):
-> 
-> 1. Make it unstable.
-> 
-> 2. But keep it stable for two releases.
-> 
-> 3. Rename.
-> 
-> [...]
-> 
+> What I mentioned earlier could be 'Feature "internal" or "debug"'.
+
+IMHO we don't need to invent new terms for this.
+
+"unstable" is sufficient as it expresses that the command's
+inputs and outputs are liable to change their format, which
+is the case for most of the historical debug only commands.
+
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

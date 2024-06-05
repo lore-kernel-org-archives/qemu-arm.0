@@ -1,261 +1,209 @@
-Received: by 2002:a17:906:bc9a:b0:a66:557b:2f6e with SMTP id lv26csp3190ejb;
-        Tue, 4 Jun 2024 20:48:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUyn221FfENuVh1Pws1hKutIl2N5ygqyk9fd7gShGjyBLx9aCRHOBGg9oVCusYYxe9ZnyNjIFZ1v72kxrWoaCO4Jwdiy2WO
-X-Google-Smtp-Source: AGHT+IGRL6IwCvWwA/sHq7gf7I0KvooZ3qtscFvZhTJrPM86Uln9YpfIjfeTPD2kxhKk+tP16/03
-X-Received: by 2002:a05:6214:5c08:b0:6a8:f314:385f with SMTP id 6a1803df08f44-6b030aab589mr11425946d6.60.1717559282033;
-        Tue, 04 Jun 2024 20:48:02 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1717559282; cv=pass;
+Received: by 2002:a17:906:bc9a:b0:a66:557b:2f6e with SMTP id lv26csp188113ejb;
+        Wed, 5 Jun 2024 04:44:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUXr/I00NaqgIzXnMDnjHF2XyXK3J+T/M4QUGo+CRMbBKi68D5vk0cO80/sgGQQga7DQgmC+be0BAdFMrTtJbLhPP8sfxiJ
+X-Google-Smtp-Source: AGHT+IFj8o8bPSRhNv6HfiPACvKxJOZpFw/HoCnqNDeCdB+aUZ3qEdKS/j8RhN69aKEJMFcImJGy
+X-Received: by 2002:a05:651c:446:b0:2e5:3f56:2a0e with SMTP id 38308e7fff4ca-2eac7a0d1b2mr13550361fa.24.1717587850409;
+        Wed, 05 Jun 2024 04:44:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717587850; cv=none;
         d=google.com; s=arc-20160816;
-        b=SKcfcYFQsFVQ1PIS90MN+yI5t74zgXvXRkvx1BrojU+C/WGplpP/V62gMlHA82tmKv
-         UAAwpRc115o5qEbiCfBnvVRp6RmNnlZPdM11rxx0Rp1n3I4by+JDVx8aFASmDtRtbIEd
-         BB0gxzR/Ii0ModrLOwedRb+WLXeDjBxy2mrISmYrb33N7wY6MZYL+vLX6XlJAvtpe7wJ
-         9IweBnabkXOERelYigJhODygmV1ALp1PsbHgyrHP8Z4k0VdYZEoXIfSDOYgoEAzomF5Z
-         QvaZSDCyn+eX062OHwQmk9dH3xLV6Dey0qGerYS768/YHyyr3j5Lf9T9mYBNss2f59RF
-         Dqdg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=0Z1bEz7ZTZTc99/jWCZ/gm4C0FJZlYcacuryhtV1Avs=;
-        fh=AagpXAH8uDksEau6DSHeZ8ZiSnivBm0AayPL1r6IWmA=;
-        b=ZD3fTg3dVuxUS9aYikFmRmD9V64/6DAY/Li9NeTU6JgjlXDPIm8/VKUaBFpxI7Efr+
-         m7F1wDRz4CCx3YPESZD1FlAU604DTn2wiOCdVWUfWg9GnEVED8fKXX8hMJugHaSZSgxH
-         qQhLTRjt1Z7Jvvd7+2xuXu42V4l5PjJLr7H7hABGLeS0VnmqShFaYc8UJrja3Uu4KT9W
-         Z6R7L0I24sUzJpMPyXnUKPj41XHvX+aWY6ravGR8bkqN/zsdQuR65y8cuOMir7Lhzhdu
-         IUb1t1Xup2klftYjKd0XLLAWI9+pctVU0hINcrnJxCFIETjBLqqPZz5ltDUKjVRlJ7f4
-         Z4PQ==;
+        b=A6xGyuw3Vrv44x3jKSAStCIutDaz7XeMLrTuIEdGf75xhgv8RVuQ0+yRFDRKuM3y83
+         aZ1tQZ+Zhfh5AqkafvzxR6qDfeWwmkxLFa5XJE/PozSLYpAub9BtkPI4vJr5gQy2Eftm
+         NFfhr0LIuh1o5iBrZldmSmZLAXjqlo74ycDnv/+EDf59GbSuwGRYCExSwgMdV+S91MaE
+         2xv8LQES4+3RCpMFPYMOMSCy1zf9Wi23UCrFzce97CAywyyV8uAgvdf43P1bweNPtXNk
+         0pzaksMf9Inohsxm1CR9etyHIRiTeYTfD90ISopoVSQERK8bEwLxqXCvKPnYtQHBOoGj
+         s2Ow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=oJ0SSFauIGrHm+2hvBfLoe69KArfehtAv7kHKWRi4JA=;
+        fh=PQLPyn1C4Gc1ndsw5Dwmh4k2pvwcsm2hWG5AArFPXMk=;
+        b=MwekzWLGS+Ro12tnsk4E0QOmXPSFrVy6YwIX5vPD9sGfyg3Lc8qLvHnH2SqnYF8jmq
+         EDtCR9DLz7IHr74KI1dTNRlJ1HURfK0Js4snWbxziZjbsmZ8MrbbrYUmDXAdyfwKMyFO
+         j7vIWn0bNqt2mSwrVOSho+NyH2uNMyxaw9O0XcjSOKEkKYYAjO3ClFuG3pwGs69X9H+s
+         rUk37HQ5FPpofDZnjqrSmV3INpALHu/Ag6JDcdg7GnTHNlxo3gsaOcjWmlXS4fQKPxoN
+         3JVVA+/lLJSG3Drq6UcyIvYmzBobQGgyz3hHjfgzaSzItl0xuZI6QKGhiDa/g745HD4i
+         Cxdw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=a+T7zuLf;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4a733ec2si34596676d6.94.2024.06.04.20.48.01
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Jun 2024 20:48:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b=Q6xWif4W;
+       spf=pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) smtp.mailfrom=dg@treblig.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
+Return-Path: <dg@treblig.org>
+Received: from mx.treblig.org (mx.treblig.org. [2a00:1098:5b::1])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-35e4f9f706csi5375772f8f.467.2024.06.05.04.44.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 05 Jun 2024 04:44:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) client-ip=2a00:1098:5b::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=a+T7zuLf;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sEhcd-00059t-3o; Tue, 04 Jun 2024 23:47:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sEhcb-00059P-F1; Tue, 04 Jun 2024 23:47:33 -0400
-Received: from mail-southeastasiaazlp170110003.outbound.protection.outlook.com
- ([2a01:111:f403:c401::3] helo=SINPR02CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sEhcZ-0002wR-0G; Tue, 04 Jun 2024 23:47:33 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=T5lmuj9eqcA8NYkSxV1BjW8avFMwqIYxB45Ths0RCEA9Js3EuBaeryT3e6PZ9cxgFdIHnQyeskrnYNUXBLYT9bjMmaCR5U9JK3/l87jLTcSswBLZO8aTjTLavCEL3SdaKYPyzXnzcF34Lp1BBSKzAxyJdsBe/+6IlUCjvmnCEIYWRKWrWuKjog4OmM57IoTK1toUab4tyIRcmK9gtU94v2sazwWw90QSVRanYR4Du88GjjK+0l8r/nk23XrSMeYgjYZ2oy09MtHzLULaX8O60XnqW5n8MnWwo42BSZ5DpaWljNw4HkxImz04zY+AlpW/7xGtBwT5pmAZQTHapEAmFg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0Z1bEz7ZTZTc99/jWCZ/gm4C0FJZlYcacuryhtV1Avs=;
- b=dTFyWE2wSqIosYUP0YMXnJjZzNi3VzDghlexHj12N88JcO9wjNko9G7BwT9GChlUd9o59+zWc73tAhKj8TRx7qkEZVKm65poLeB+upVmNOusJKlxtVTNnNkE1aULBgxVzIG2DbGnmKKyGSKPpDq5r8bBLk3y87KbWWrEKSi9vKIp2VgbGcO7mouwyG4Apw2hG0iwvZFhhQFMeA7YW3RLzPMHhxonP9x6Vq69yyyfpa1gjmMHqaCxdB0Z/oFtsyr7TDNdt8a4l9qseWg6csJqZq6cBW22OFSwNqMdqK5hnERrKlQBMFiOOhVFeIZ9uOqU4TuM6PGb1Zhlxs6CObu6ZQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0Z1bEz7ZTZTc99/jWCZ/gm4C0FJZlYcacuryhtV1Avs=;
- b=a+T7zuLfGjh62L5CKgBXH0m3bk3ItkVivBlTi+uj4SryQ6vTkP+dZ7xN/CBwnscPWRs7ic4xMkJllmEUSxbs/gZNl+nLLCQ09V1ub4Mt76ZgjkKtCokAXdXnWlHQZKibAzUsZLAH1yTNeI/uYgm2vMLjRXpJAAw9mYNhFuPmgVRX0oIRVNMqzqzvGdnnvmUkp+Xo+7jxzbR3gxOioksLRkZc1Wrr2zLo01PGvndJzCL65HZBe9J8w+QOfbdP/A5tKh6PsG9O5S87IOfiejv5QH0nOt2C/NFEOYt3EkbL1G1aP7HaUMSjgUXWs51dgsyqW3onnE58b0aeNYHPFu/UXQ==
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
- SEZPR06MB6814.apcprd06.prod.outlook.com (2603:1096:101:197::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7633.21; Wed, 5 Jun
- 2024 03:47:19 +0000
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56%4]) with mapi id 15.20.7633.021; Wed, 5 Jun 2024
- 03:47:19 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
- Cleber Rosa <crosa@redhat.com>, =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?=
- <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang
- <yunlin.tang@aspeedtech.com>, Steven Lee <steven_lee@aspeedtech.com>
-Subject: RE: [PATCH v4 00/16] Add AST2700 support
-Thread-Topic: [PATCH v4 00/16] Add AST2700 support
-Thread-Index: AQHasAw9vuAr/T43PEue8t3w9svr7LGsamWAgAAAoaCAAASJAIAA85HggAsyo3A=
-Date: Wed, 5 Jun 2024 03:47:19 +0000
-Message-ID: <SI2PR06MB504129FF83B8C6A40A1E87B2FCF92@SI2PR06MB5041.apcprd06.prod.outlook.com>
-References: <20240527080231.1576609-1-jamin_lin@aspeedtech.com>
- <f2c66f47-af78-436b-968c-c267e84b9a18@kaod.org>
- <SI2PR06MB5041C99C448D21D6DB8D8053FCF12@SI2PR06MB5041.apcprd06.prod.outlook.com>
- <104095bd-c492-49f2-887b-e97b4a030e5b@kaod.org>
- <SI2PR06MB504156ACED014A5DDB091479FCF22@SI2PR06MB5041.apcprd06.prod.outlook.com>
-In-Reply-To: <SI2PR06MB504156ACED014A5DDB091479FCF22@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|SEZPR06MB6814:EE_
-x-ms-office365-filtering-correlation-id: a309ab12-724a-4d49-251f-08dc85123357
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230031|1800799015|376005|7416005|366007|921011|38070700009; 
-x-microsoft-antispam-message-info: =?utf-8?B?T3UrdXJJZG9ibWp5TWhMZ2F6Q1libDFTZlBTR1dMRTR3TGJNcmVSU2E5U3pM?=
- =?utf-8?B?eXd1SHBTVDUrRGowb29jVzlxejkxd3NWaDJ3OHhRaUhaTXlMRG9BN1NFVGQr?=
- =?utf-8?B?OHZOUjl4c2dIT3p3a3VQK1Y4eUpXN0JHVE9yN0hYSnhORjhIV1E0cDlxbUU5?=
- =?utf-8?B?V2FPVTlaMXEyWWVoeGVSNjVIZTdibnhUSFcyTEdVeHZlcW01cDQ3SENQTDFZ?=
- =?utf-8?B?elJhYTRFR2lmMUF5dkZEMS9NbE9lTnJ6RmdGY1cyUExmbkRjZk1UeGFGZnpa?=
- =?utf-8?B?VWVIazNEb2hRL29ISDZsc3JLZmhJVXJzMjh3eEgxRGFTaThVa2xVcFI5MnJD?=
- =?utf-8?B?Nkl5aWZXTWs0WjQvVlpYMUd1TEN5NWU3WU84eXFOMWN5cUlSTWprZWhpdVUr?=
- =?utf-8?B?WUlFK3ZVR3FoSmdzMlErMnVldjdVYXdkbWpEdGQyK1JLMlRsNXYxYXBnNkxw?=
- =?utf-8?B?OEpCVXh4T2hEeWNYZUgydzZ2dVNyMXA0ZS9tWm5XbTdWcVBqTGE3RU1QUm9L?=
- =?utf-8?B?UUVvWWs5SHpvemFQT0NUWXM0T3VsUTNHUnozOS91VmFXVHVnbEc4NnBjcnFV?=
- =?utf-8?B?RCtzUnVwS2M3QzhlZWFyNXRmNDVDMkhYRU9EWUhnU0g1NVI0Qnltam9qaytu?=
- =?utf-8?B?ZE1NaHhaVVNrWUx4cHM1aWs3NDFaakdtaGJmUnN5ZzBORE9tNFhSSm90UkY2?=
- =?utf-8?B?dXJ6eGhQQTg5R2twaEI2OHNNK25tdkQvTXloL2JRTkhoSkZXeTZmeVdXaWlu?=
- =?utf-8?B?RlUycjhLbzloS296QVFXbEJwWGJHK3VVeVRzSEZjbzJJTzdiaXNzVEYrT24v?=
- =?utf-8?B?RnBjVStXQW0xcExwRXJiR0dBTzhQeEhNUlpLa1NiUElBelhqdnBZTTFrTDZS?=
- =?utf-8?B?djJYVnkwNkRUYjlJRUt3ZUFWWTNvTmFDTGFPN09IUGhrQXk1b0o4MUhnbVls?=
- =?utf-8?B?dkhGUnBlS3J3S3RsOEQxZzMyajRZbHE1RjJmck56bVpVWUF4VHBrVUZFMFV3?=
- =?utf-8?B?K1Z3YndqUElha3VWODNKdFJIYmE4aHhRaC9sRjRmQ3g5a2o2Q2p5bDBEbkcz?=
- =?utf-8?B?Y2E2bmp6RnBnK2lWS1BOeVBZUis4VXFVWWxBclNGb21qYnQ5NEtRdlY1WHRS?=
- =?utf-8?B?NUd5YTZYM05UeFBBU2V3VkZjTFdzZ2lldUJ5b2NiTitRamNIL250RjlDOExj?=
- =?utf-8?B?T1RpMkRWODdObHVCQ3lkaExNemwxWlJNemIydGoraDM2OFY5SlIwS0R0WDlV?=
- =?utf-8?B?bFlIVExpV3RjU0ZEOFlNL09XRjl2OVFYVnkvSmxHNEVmK014SW1RZ3Q5VnI3?=
- =?utf-8?B?ZGt3S1JFbEZ6amtkV2kzb3E0U1VzZmlnWVA4RHgrT3YwYkRGcFRhUjR5RHJq?=
- =?utf-8?B?VlJzMCsvOG9QNW9XaXlkVHFDMmgxRE9Nd3lCOUt5YXd0SEFsNVAxRk1veVI0?=
- =?utf-8?B?bE5ZeE9OQStlaVBodjl5MVIzandCZ3ZzS1VyVTAwRVF6a21xclR2MVYrUzl0?=
- =?utf-8?B?eGNuS05XOFNRSVJubTFjVTdRSlIxWEdUZzNpeVFqaThYcXNodkh3djlGMjdS?=
- =?utf-8?B?WjV4QzZNa2dxQVlyU3JXdlo3RnZrZmZLSE95b2JJaG5TbWM1cURiQk9TZ3BU?=
- =?utf-8?B?ZWE1NmI2V1JVbW11QURaM0VURW1aSGVZeXV2eURRZ3dqcm0vUklwSlp1cXZW?=
- =?utf-8?B?THpscEtIK281Uk9sU3k2RzIzRGpxQzVHVzRsTUU2SFlOMmpSL1UvQ2FXeDFV?=
- =?utf-8?Q?nr+rFexpLSw2KsTLa0=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230031)(1800799015)(376005)(7416005)(366007)(921011)(38070700009);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UFZiVTFDWWxpSDVKd1JhVFRyVUhWZ2FLUDhWbVU2TXpOMGk4c3hWdGpHcTZG?=
- =?utf-8?B?TGhsYnV6S28xb1RXK1hSSlFCUVJkbUw4a1VReFJiVlkzTVBlNGZwS1MwUDNo?=
- =?utf-8?B?Qk1MTHdmL3lpdkNucjhRTEJHWXNQTFdzd0JVbUN1RWhCSFBwQ2IvWDkvM1N0?=
- =?utf-8?B?OG53UGZ4U21lL0dUQnp3RW1obnd2Qm5rdG9CM1ljV25abzcycjRWbjRoRXp2?=
- =?utf-8?B?OUcwTkJGQVFRa1dhWFZJWm1XVndveTJTVjZlODRDYlA4TCtCMTNtUmRwbkxh?=
- =?utf-8?B?bFBVMXVHMWNQVW1WNUNqMkx5bjRnMXRaenorTjJ6b2FyeUQ5b29EQk4ranpk?=
- =?utf-8?B?R0Q0d2RNelh5U3pzWUxzZUxOaDBadVpNNi9OT1MwU1B4Ly93VncxNVRZa0Rt?=
- =?utf-8?B?MXE1empFRERXVTdWL3RJY1NLcEtmNmhxTmFXY0JBMUZWV2VCMVdmSnlvWjkz?=
- =?utf-8?B?Zy9WWUlHMFBFWm1VeUdSb1o2OUdTNC9oclJxalorTXlCTEFHZlZRZGJDYWY2?=
- =?utf-8?B?OHkrZkRIbXowVkRpRzNQOFRLSFFDUWtDY3hnWkJGSUxtcGFDazhhRWFlakY2?=
- =?utf-8?B?VmJwNzVHTnlUR2s1R1kzZ2NrV2hLUmVPbWg5OFRlcVFRbDZzeVJiZXBlMlc5?=
- =?utf-8?B?bTJnZDl0cHJtUm1jbkVsaXgwbEZaSkZvM0ZENUJXTldXVG9WYlp5OFZSUjBt?=
- =?utf-8?B?Z0NQd25ueERjL0RlVGlrejlpZEJtQ0R5TWd2dVdDSmhKOFV5UXhwcXYrcDhI?=
- =?utf-8?B?aFRpSGFuR0QzUkNMY3U5SUJlT1N3U2F3RG56bkNnb09MNW9wUTliV2tsejI5?=
- =?utf-8?B?WXBad1dkWWZmakdjVk1ndktJT1paUWhaM1VBem1paXhxVzJtak9teGZBS1VG?=
- =?utf-8?B?QWQzR0xTTUhnNXpXZTZDamhKTzJ0YmwrRHN6bjJZNUFOMzVuZ3YxWWVkc3RJ?=
- =?utf-8?B?ZlZJWXM5OEJmWkhFQ250dEEweFRqWlpvZ3ZVNVlFZngzN09CdVVVV2M5T0tP?=
- =?utf-8?B?Y3g0ekcreU56NmU3dlBlNkl1Mjg5WDZBZURHSmVTdEx2TGg4M1JlTjdRaTds?=
- =?utf-8?B?VFFIQmdWa3Bhd21Qa2lVQXp3TWxTWVBMTStaYWJKaVNlZlZudVhVN0NBY0tm?=
- =?utf-8?B?dDMzYkd1ZndTUVN1b2R1enNjbjAzRUs4Y1NrZklRWUdTN1hpZ01uT1BHZUhi?=
- =?utf-8?B?bVZjRVROY3h3Nng0YTJiVUJKUEJ2Z2FoWXcrQ3ZTVkxHTE5Vcmd5YlRJNkVN?=
- =?utf-8?B?ZGY0WUEyMkJVUmdMWGFNTXJqWTBVdmNha0xONXB3bG1leS9rcktqb3dlNGZG?=
- =?utf-8?B?VjBid0xJMmY5RlpsRzRreVFVVEd5RFp5NFlJT0J5V2xQSUp0SHQ4WlY1aUlU?=
- =?utf-8?B?Smd5NFUwL1FiUWIxdnJXZkVicVlhWFQxNm92c0ZVY0VMMVd3QVdPTUdNemlq?=
- =?utf-8?B?WnowZEtqZUFzNlhlM1RSUWtnMU0raU41TWd3SzF6cjNlcWs5Vk9sL3BVL1Q5?=
- =?utf-8?B?UG92NzJNRlp6OXN6ME5JSVBZeGk1ZGtTVjI5VUdFOUtJS0hHd1Y0Z3Z2NmVK?=
- =?utf-8?B?aW83N2NVWGlxZUJXWXNla2gzOFdmTG5TYnluUzh2Zktja2hObU8zZExaZndC?=
- =?utf-8?B?VUNxa2V0Mmp5OEZYVlRFc0IwWTIvcDBUREZwWG1RaGpUUExwdHNTNjVVM1Jn?=
- =?utf-8?B?QlJYMm5NN0plQldXMnQ3a204aGpLUWUrRUlxcXZLekVxeG9kdjU0SGNUWmd4?=
- =?utf-8?B?TkVxbXN4YWxMY0xJa3V0V0dvNlhpL2VkTmpCelRpRU5aRk1jbTVWVVJMZFor?=
- =?utf-8?B?RWw5VnVqREwwQmk3YU9NNko1ckR3amhvQ0F3dU0yUUkycEp1S3cwQ2trWnNy?=
- =?utf-8?B?WnROb21mekoyMjI1RzByUGVXNUtqU0IvK3REenZQYVV3OFpzdUVuUmowdi9v?=
- =?utf-8?B?RFZ4ZlduZ1NWeC9vNmkyUmY3cDF6UE94Ky9pTWlZWS9IYkc0NW9BMFp3ZkpD?=
- =?utf-8?B?Z2NTWGszMGZXbGNEenFMSGZRbFo3VE83aWZpT1ZHZGhqNlJTQTJSMEZ4TkE1?=
- =?utf-8?B?M1graHpaNVUxVXpqamZvdWlEdCtZQzJCRmNYaFl6QjJGMC9WOGN4Rnc1NTBm?=
- =?utf-8?Q?HL5i8ZXMMGEHpZ7J6tnWMWaVD?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b=Q6xWif4W;
+       spf=pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) smtp.mailfrom=dg@treblig.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
+	; s=bytemarkmx; h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
+	:Subject; bh=oJ0SSFauIGrHm+2hvBfLoe69KArfehtAv7kHKWRi4JA=; b=Q6xWif4WxErxBP4n
+	ncPmqfO6TAH7cYvSx2OMzSCJZuucdSY29gtl0WDPEAFbt1U7pORK0xiezyNnM1io7qWohmdGnKPOY
+	cL3/t9Pa1dmumUnw+J4yMdQha706UolYXkmYPJ1ZsrmJRGBe19O82Q+3IkOYgNZBvwnGcJPAGHUnz
+	1uPBtQm8V6xGkapI0n9Byb0HBYgvyHaHnS56e2q2sutpL7n3tNC0UiSNopS8a7j6OqyIpq0dRlnAP
+	14PUr7uJ2S+m7apMdS8jLApbK8Si9zOXSCNJQxlhg1mDDNtjR0vlhIOG3GujeVRNuXVNukAZjTio1
+	YEQ6FdYupZ1KjTP5NQ==;
+Received: from dg by mx.treblig.org with local (Exim 4.96)
+	(envelope-from <dg@treblig.org>)
+	id 1sEp3o-004PF3-08;
+	Wed, 05 Jun 2024 11:44:08 +0000
+Date: Wed, 5 Jun 2024 11:44:07 +0000
+From: "Dr. David Alan Gilbert" <dave@treblig.org>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+	Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+	Cornelia Huck <cohuck@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	qemu-s390x@nongnu.org, devel@lists.libvirt.org,
+	Eric Farman <farman@linux.ibm.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+	Anton Johansson <anjo@rev.ng>, qemu-arm <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 0/4] hw/s390x: Alias @dump-skeys -> @dump-s390-skey and
+ deprecate
+Message-ID: <ZmBPhxW85fqQWGSE@gallifrey>
+References: <20240530074544.25444-1-philmd@linaro.org>
+ <cb4028fc-9596-47f3-9468-f8912dd48aed@redhat.com>
+ <Zl20rAjHLJlZkwxE@redhat.com>
+ <Zl4tgFuAdjU2bst6@gallifrey>
+ <87y17lcni7.fsf@pond.sub.org>
+ <fcb6ff5d-fcad-4eb1-9b64-0a8477954a0d@linaro.org>
+ <875xup81u9.fsf@pond.sub.org>
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a309ab12-724a-4d49-251f-08dc85123357
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Jun 2024 03:47:19.6579 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: T+CbDQRsYScY5dND1p7jeuEOTub2BPVOIuytTquS93lqjgjOAUg+xZQtE0izpiwjYXxkJBXjIREJqoMkmz4XJU3yGctY/nkpNbpJ5lQe4sU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB6814
-Received-SPF: pass client-ip=2a01:111:f403:c401::3;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SINPR02CU002.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CUgLSwoSdoXE
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <875xup81u9.fsf@pond.sub.org>
+X-Chocolate: 70 percent or better cocoa solids preferably
+X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
+X-Uptime: 11:37:42 up 27 days, 22:51,  1 user,  load average: 0.00, 0.00, 0.00
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-TUID: cZL3F2jALfO9
 
-SGkgQ2VkcmljLCANCg0KPiBGcm9tOiBKYW1pbiBMaW4NCj4gU3ViamVjdDogUkU6IFtQQVRDSCB2
-NCAwMC8xNl0gQWRkIEFTVDI3MDAgc3VwcG9ydA0KPiANCj4gSGkgQ2VkcmljLA0KPiANCj4gPiBG
-cm9tOiBDw6lkcmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3JnPg0KPiA+IE9uIDUvMjgvMjQgMTI6
-MDIsIEphbWluIExpbiB3cm90ZToNCj4gPiA+IEhpIENlZHJpYywNCj4gPiA+DQo+ID4gPj4gLS0t
-LS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gPiA+PiBGcm9tOiBDw6lkcmljIExlIEdvYXRlciA8
-Y2xnQGthb2Qub3JnPg0KPiA+ID4+IFNlbnQ6IFR1ZXNkYXksIE1heSAyOCwgMjAyNCA1OjU2IFBN
-DQo+ID4gPj4gVG86IEphbWluIExpbiA8amFtaW5fbGluQGFzcGVlZHRlY2guY29tPjsgUGV0ZXIg
-TWF5ZGVsbA0KPiA+ID4+IDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+OyBBbmRyZXcgSmVmZmVy
-eQ0KPiA+ID4+IDxhbmRyZXdAY29kZWNvbnN0cnVjdC5jb20uYXU+OyBKb2VsIFN0YW5sZXkgPGpv
-ZWxAam1zLmlkLmF1PjsNCj4gPiA+PiBBbGlzdGFpciBGcmFuY2lzIDxhbGlzdGFpckBhbGlzdGFp
-cjIzLm1lPjsgQ2xlYmVyIFJvc2ENCj4gPiA+PiA8Y3Jvc2FAcmVkaGF0LmNvbT47IFBoaWxpcHBl
-IE1hdGhpZXUtRGF1ZMOpIDxwaGlsbWRAbGluYXJvLm9yZz47DQo+ID4gPj4gV2FpbmVyIGRvcyBT
-YW50b3MgTW9zY2hldHRhIDx3YWluZXJzbUByZWRoYXQuY29tPjsgQmVyYWxkbyBMZWFsDQo+ID4g
-Pj4gPGJsZWFsQHJlZGhhdC5jb20+OyBvcGVuIGxpc3Q6QVNQRUVEIEJNQ3MgPHFlbXUtYXJtQG5v
-bmdudS5vcmc+Ow0KPiA+IG9wZW4NCj4gPiA+PiBsaXN0OkFsbCBwYXRjaGVzIENDIGhlcmUgPHFl
-bXUtZGV2ZWxAbm9uZ251Lm9yZz4NCj4gPiA+PiBDYzogVHJveSBMZWUgPHRyb3lfbGVlQGFzcGVl
-ZHRlY2guY29tPjsgWXVubGluIFRhbmcNCj4gPiA+PiA8eXVubGluLnRhbmdAYXNwZWVkdGVjaC5j
-b20+DQo+ID4gPj4gU3ViamVjdDogUmU6IFtQQVRDSCB2NCAwMC8xNl0gQWRkIEFTVDI3MDAgc3Vw
-cG9ydA0KPiA+ID4+DQo+ID4gPj4gSmFtaW4sDQo+ID4gPj4NCj4gPiA+PiBJIHRoaW5rIHlvdSBz
-aG91bGQgYWRkIHlvdXIgc2VsZiBhcyBhIFJldmlld2VyIHRvIHRoZSBBU1BFRUQgQk1Dcw0KPiA+
-ID4+IG1hY2hpbmUgaW4gdGhlIE1BSU5UQUlORVJTIGZpbGVzLiBXb3VsZCB5b3UgYWdyZWUgPw0K
-PiA+ID4+DQo+ID4gPiBBZ3JlZS4NCj4gPiA+DQo+ID4gPiBDb3VsZCB5b3UgcGxlYXNlIGFkZCBt
-ZSwgVHJveSBhbmQgU3RldmVuIGluIHRoZSBNQUlOVEFJTkVSUyBmaWxlcz8NCj4gPiA+IHN0ZXZl
-bl9sZWVAYXNwZWVkdGVjaC5jb20NCj4gPiA+IHRyb3lfbGVlQGFzcGVlZHRlY2guY29tDQo+ID4g
-PiBqYW1pbl9saW5AYXNwZWVkdGVjaC5jb20NCj4gPg0KPiA+IFlvdSBzaG91bGQgc2VuZCBhIHBh
-dGNoIHVwZGF0aW5nIHRoZSBNQUlOVEFJTkVSUyBmaWxlIHdpdGggbmV3IG5hbWVzDQo+ID4gYW5k
-IHRob3NlIHByb21vdGVkIHNob3VsZCByZXBseSB0aGF0IHRoZXkgYWdyZWUsIG9yIG5vdC4NCj4g
-Pg0KPiA+IFNlZSBodHRwczovL3FlbXUucmVhZHRoZWRvY3MuaW8vZW4vdjkuMC4wL2RldmVsL21h
-aW50YWluZXJzLmh0bWwgZm9yDQo+ID4gbW9yZSBpbmZvIGFuZCB0aGUgZ2l0IGhpc3Rvcnkgb2Yg
-TUFJTlRBSU5FUlMgYWxzby4NCj4gPg0KPiBXaWxsIHNlbmQgYSBwYXRjaCB0byB1cGRhdGluZyB0
-aGUgTUFJTlRBSU5FUlMgZmlsZS4NCj4gVGhhbmtzLUphbWluDQo+ID4gVGhhbmtzLA0KaHR0cHM6
-Ly9wYXRjaGV3Lm9yZy9RRU1VLzIwMjQwNjA1MDM0NDEzLjEwNjQ4NDUtMS1qYW1pbi5fNUZsaW5A
-YXNwZWVkdGVjaC5jb20vDQpUaGFua3MtSmFtaW4NCg0KPiA+DQo+ID4gQy4NCj4gPg0KDQo=
+* Markus Armbruster (armbru@redhat.com) wrote:
+> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+> 
+> > Hi Daniel, Dave, Markus & Thomas.
+> >
+> > On 4/6/24 06:58, Markus Armbruster wrote:
+> >> "Dr. David Alan Gilbert" <dave@treblig.org> writes:
+> >>> * Daniel P. Berrangé (berrange@redhat.com) wrote:
+> >>>> On Fri, May 31, 2024 at 06:47:45AM +0200, Thomas Huth wrote:
+> >>>>> On 30/05/2024 09.45, Philippe Mathieu-Daudé wrote:
+> >>>>>> We are trying to unify all qemu-system-FOO to a single binary.
+> >>>>>> In order to do that we need to remove QAPI target specific code.
+> >>>>>>
+> >>>>>> @dump-skeys is only available on qemu-system-s390x. This series
+> >>>>>> rename it as @dump-s390-skey, making it available on other
+> >>>>>> binaries. We take care of backward compatibility via deprecation.
+> >>>>>>
+> >>>>>> Philippe Mathieu-Daudé (4):
+> >>>>>>     hw/s390x: Introduce the @dump-s390-skeys QMP command
+> >>>>>>     hw/s390x: Introduce the 'dump_s390_skeys' HMP command
+> >>>>>>     hw/s390x: Deprecate the HMP 'dump_skeys' command
+> >>>>>>     hw/s390x: Deprecate the QMP @dump-skeys command
+> >>>>>
+> >>>>> Why do we have to rename the command? Just for the sake of it? I think
+> >>>>> renaming HMP commands is maybe ok, but breaking the API in QMP is something
+> >>>>> you should consider twice.
+> >
+> > I'm looking at how to include this command in the new "single binary".
+> >
+> > Markus explained in an earlier series, just expanding this command as
+> > stub to targets that don't implement it is not backward compatible and
+> > breaks QMP introspection. Currently on s390x we get a result, on other
+> > targets the command doesn't exist. If we add a stubs, then other targets
+> > return something (even if it is an empty list), confusing management
+> > interface.
+> 
+> Loss of introspection precision is a concern, not a hard "no".
+> 
+> We weigh all the concerns, and pick a solution we hate the least :)
+> 
+> > So this approach use to deprecate process to include a new command
+> > which behaves differently on non-s390x targets.
+> >
+> > If we don't care for this particular case, better. However I'd still
+> > like to discuss this approach for other target-specific commands.
+> >
+> >> PRO rename: the command's tie to S390 is them immediately obvious, which
+> >> may be useful when the command becomes available in qemu-systems capable
+> >> of running other targets.
+> >>
+> >> CON rename: users need to adapt.
+> >>
+> >> What are the users?  Not libvirt, as far as I can tell.
+> >
+> > Years ago we said, "all HMP must be based on QMP".
+> 
+> In practice, it's closer to "HMP must be base on QMP when the
+> functionality does or should exist in QMP."
+> 
+> >                                                    Now we realize HMP
+> > became stable because QMP-exposed, although not consumed externally...
+> 
+> I'm afraid I didn't get this part.
+> 
+> > Does the concept of "internal QMP commands" makes sense for HMP debug
+> > ones? (Looking at a way to not expose them). We could use the "x-"
+> > prefix to not care about stable / backward compat, but what is the point
+> > of exposing to QMP commands that will never be accessed there?
+> >
+> >>>> That was going to be my question too. Seems like its possible to simply
+> >>>> stub out the existing command for other targets.
+> >>
+> >> That's going to happen whether we rename the commands or not.
+> >> 
+> >>> Are these commands really supposed to be stable, or are they just debug
+> >>> commands?  If they are debug, then add the x- and don't worry too much.
+> >
+> > OK.
+> >
+> >> docs/devel/qapi-code-gen.rst:
+> >>
+> >>      Names beginning with ``x-`` used to signify "experimental".  This
+> >>      convention has been replaced by special feature "unstable".
+> >>
+> >> Feature "unstable" is what makes something unstable, and is what
+> >> machines should check.
+> >
+> > What I mentioned earlier could be 'Feature "internal" or "debug"'.
+> 
+> What's the difference to "unstable"?
+
+It should be clear *why* something is marked x- - something that's
+marked 'x-' because the feature is still in development is expected to shake
+out at some point, and the interface designed so it can.
+(and at some point the developer should get a prod to be asked whethere the
+x- can be removed).
+That's different from it permenantly being x- because it's expected to
+change as the needs of the people debugging change.
+
+Dave
+
+> >> An "x-" prefix may still be useful for humans.  Machines should *not*
+> >> key on the prefix.  It's unreliable anyway: InputBarrierProperties
+> >> member @x-origin is stable despite it's name.  Renames to gain or lose
+> >> the prefix may or may not be worth the bother.
+> >
+> > Could follow the rules and be renamed as "origin-coordinate-x".
+> 
+> I don't think it's worth the trouble.  The "x-" prefix is now strictly
+> for humans, and humans can figure out what the x- in @x-origin,
+> @y-origin means.
+> 
+> [...]
+> 
+-- 
+ -----Open up your eyes, open up your mind, open up your code -------   
+/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
+\        dave @ treblig.org |                               | In Hex /
+ \ _________________________|_____ http://www.treblig.org   |_______/

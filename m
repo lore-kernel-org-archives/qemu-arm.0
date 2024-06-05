@@ -1,209 +1,236 @@
-Received: by 2002:a17:906:bc9a:b0:a66:557b:2f6e with SMTP id lv26csp188113ejb;
-        Wed, 5 Jun 2024 04:44:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUXr/I00NaqgIzXnMDnjHF2XyXK3J+T/M4QUGo+CRMbBKi68D5vk0cO80/sgGQQga7DQgmC+be0BAdFMrTtJbLhPP8sfxiJ
-X-Google-Smtp-Source: AGHT+IFj8o8bPSRhNv6HfiPACvKxJOZpFw/HoCnqNDeCdB+aUZ3qEdKS/j8RhN69aKEJMFcImJGy
-X-Received: by 2002:a05:651c:446:b0:2e5:3f56:2a0e with SMTP id 38308e7fff4ca-2eac7a0d1b2mr13550361fa.24.1717587850409;
-        Wed, 05 Jun 2024 04:44:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717587850; cv=none;
+Received: by 2002:a17:906:bc9a:b0:a66:557b:2f6e with SMTP id lv26csp403448ejb;
+        Wed, 5 Jun 2024 10:49:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUl7h261p/EsYhSTBUZtyNSlXwXOQt3CBTfB4hvU4RZQiSVeZm6MUg6JQfq6Ne5s4lR3DPcsz8NnFbJvKFWAtYqRlduhDdc
+X-Google-Smtp-Source: AGHT+IEitizNiCog9l31ek/27NMfUXFGAk0Z7B3lmtkhcl64d5OCBmSjk5d1ok0glOinML58JrE4
+X-Received: by 2002:a05:6214:3c9f:b0:6ae:1042:2229 with SMTP id 6a1803df08f44-6b02bf5f695mr41438546d6.18.1717609788530;
+        Wed, 05 Jun 2024 10:49:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717609788; cv=none;
         d=google.com; s=arc-20160816;
-        b=A6xGyuw3Vrv44x3jKSAStCIutDaz7XeMLrTuIEdGf75xhgv8RVuQ0+yRFDRKuM3y83
-         aZ1tQZ+Zhfh5AqkafvzxR6qDfeWwmkxLFa5XJE/PozSLYpAub9BtkPI4vJr5gQy2Eftm
-         NFfhr0LIuh1o5iBrZldmSmZLAXjqlo74ycDnv/+EDf59GbSuwGRYCExSwgMdV+S91MaE
-         2xv8LQES4+3RCpMFPYMOMSCy1zf9Wi23UCrFzce97CAywyyV8uAgvdf43P1bweNPtXNk
-         0pzaksMf9Inohsxm1CR9etyHIRiTeYTfD90ISopoVSQERK8bEwLxqXCvKPnYtQHBOoGj
-         s2Ow==
+        b=ndW7YHIDRZpWKDAZNfz74KC/dWkHLp/nd0Oj9PVE3KWkuryj6ppQkRzHj/W/DNxlcu
+         2XGziJ+QMl9wIj430sWrAcSm0JZeCozZuugEVgnDuC3if0DdxQsAPgFIecvC1m2yX82e
+         5u+7nSdnngiWL28gKbAqnpcMfpYrtuVf0R4hYeZEloCISPKWKQXXVhYmS0uxDGERyc4m
+         aJEHO1k9n0J6AVbf0LHZZWtzKJfN1+Ksx4xYvR5FOaZKPKho7Lap+t15PNg0LC3NCaZN
+         WkQpeLRWAlF3b3m6RtX2Jtbzm423EaNgOH5II2wSfibRGXmkh5dK2zCIFAjADWW6avJU
+         0H0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=oJ0SSFauIGrHm+2hvBfLoe69KArfehtAv7kHKWRi4JA=;
-        fh=PQLPyn1C4Gc1ndsw5Dwmh4k2pvwcsm2hWG5AArFPXMk=;
-        b=MwekzWLGS+Ro12tnsk4E0QOmXPSFrVy6YwIX5vPD9sGfyg3Lc8qLvHnH2SqnYF8jmq
-         EDtCR9DLz7IHr74KI1dTNRlJ1HURfK0Js4snWbxziZjbsmZ8MrbbrYUmDXAdyfwKMyFO
-         j7vIWn0bNqt2mSwrVOSho+NyH2uNMyxaw9O0XcjSOKEkKYYAjO3ClFuG3pwGs69X9H+s
-         rUk37HQ5FPpofDZnjqrSmV3INpALHu/Ag6JDcdg7GnTHNlxo3gsaOcjWmlXS4fQKPxoN
-         3JVVA+/lLJSG3Drq6UcyIvYmzBobQGgyz3hHjfgzaSzItl0xuZI6QKGhiDa/g745HD4i
-         Cxdw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=/mCDyOscSvOaHRbfVHpVWltEOtVTKewytlqkZLEIcOs=;
+        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
+        b=sEiN33cL2zNbtX0llKUxNHtArNRBdBoKDSQZZFYOF4qWJ/3lTVWvMEV0sqx9F/LHqq
+         H0IKC8XDJnujXd9uujXfD/XJfpfWfTJjLYd1GCfbQkbA+jmjc5+VT3+Lkr63ZDD3ge0G
+         UqAzelUpN94hALhZOuR0/JEN1eXOEF+wbHriBJIh4EtKIvsYI0zzduyksjRHO1njlSrZ
+         K0LTCzz5vkplRgamuIZSjwzRMTUhO/OypXrA0xPS8DHQ+dnnZ6ZNbuRDD26bjFfbWVka
+         P10D8fCdSmNhftIeGzooKaZikX8JU71KTeTgTzIRBeihsZ+0pzENBh6sIjaJP3XTSnqH
+         IKPw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b=Q6xWif4W;
-       spf=pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) smtp.mailfrom=dg@treblig.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
-Return-Path: <dg@treblig.org>
-Received: from mx.treblig.org (mx.treblig.org. [2a00:1098:5b::1])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-35e4f9f706csi5375772f8f.467.2024.06.05.04.44.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Jun 2024 04:44:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) client-ip=2a00:1098:5b::1;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bo6P42FY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ae4b4299c5si143405486d6.434.2024.06.05.10.49.48
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 05 Jun 2024 10:49:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b=Q6xWif4W;
-       spf=pass (google.com: domain of dg@treblig.org designates 2a00:1098:5b::1 as permitted sender) smtp.mailfrom=dg@treblig.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
-	; s=bytemarkmx; h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
-	:Subject; bh=oJ0SSFauIGrHm+2hvBfLoe69KArfehtAv7kHKWRi4JA=; b=Q6xWif4WxErxBP4n
-	ncPmqfO6TAH7cYvSx2OMzSCJZuucdSY29gtl0WDPEAFbt1U7pORK0xiezyNnM1io7qWohmdGnKPOY
-	cL3/t9Pa1dmumUnw+J4yMdQha706UolYXkmYPJ1ZsrmJRGBe19O82Q+3IkOYgNZBvwnGcJPAGHUnz
-	1uPBtQm8V6xGkapI0n9Byb0HBYgvyHaHnS56e2q2sutpL7n3tNC0UiSNopS8a7j6OqyIpq0dRlnAP
-	14PUr7uJ2S+m7apMdS8jLApbK8Si9zOXSCNJQxlhg1mDDNtjR0vlhIOG3GujeVRNuXVNukAZjTio1
-	YEQ6FdYupZ1KjTP5NQ==;
-Received: from dg by mx.treblig.org with local (Exim 4.96)
-	(envelope-from <dg@treblig.org>)
-	id 1sEp3o-004PF3-08;
-	Wed, 05 Jun 2024 11:44:08 +0000
-Date: Wed, 5 Jun 2024 11:44:07 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
-	Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
-	Cornelia Huck <cohuck@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	qemu-s390x@nongnu.org, devel@lists.libvirt.org,
-	Eric Farman <farman@linux.ibm.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
-	Anton Johansson <anjo@rev.ng>, qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 0/4] hw/s390x: Alias @dump-skeys -> @dump-s390-skey and
- deprecate
-Message-ID: <ZmBPhxW85fqQWGSE@gallifrey>
-References: <20240530074544.25444-1-philmd@linaro.org>
- <cb4028fc-9596-47f3-9468-f8912dd48aed@redhat.com>
- <Zl20rAjHLJlZkwxE@redhat.com>
- <Zl4tgFuAdjU2bst6@gallifrey>
- <87y17lcni7.fsf@pond.sub.org>
- <fcb6ff5d-fcad-4eb1-9b64-0a8477954a0d@linaro.org>
- <875xup81u9.fsf@pond.sub.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bo6P42FY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sEulZ-0003UQ-O8; Wed, 05 Jun 2024 13:49:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <koliagogsadze@gmail.com>)
+ id 1sEtLu-00030Q-VW
+ for qemu-arm@nongnu.org; Wed, 05 Jun 2024 12:19:06 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <koliagogsadze@gmail.com>)
+ id 1sEtLt-0004I6-08
+ for qemu-arm@nongnu.org; Wed, 05 Jun 2024 12:19:06 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-57a32b0211aso3118282a12.2
+ for <qemu-arm@nongnu.org>; Wed, 05 Jun 2024 09:19:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1717604343; x=1718209143; darn=nongnu.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=/mCDyOscSvOaHRbfVHpVWltEOtVTKewytlqkZLEIcOs=;
+ b=bo6P42FYblG4G5ZZ/ZWYqLCL6LkOuE2tpTRi7qYvCQViVqND35uDcE9o6CRfkTdBTp
+ x21LG5yIvSo68ZKGxSd2rK3f3KBv6LA4K3Dn3kZhOi3UCuKfHAwiBxQxSE7OzoX9UpKc
+ EN2gVaz/bHqOfNUTOsLSqaLh8y3u5UrPr6S0p90RcVFzjQbw7ieQS/QZE80dtmMBGdYY
+ Hdtg6KjPrPK6XEMn8mOdBuNYgUrRauO7uZu/Ub5krSH3IgF3n3Rr6n5ZvEuxX3j7zHFr
+ 8oIhKgWMAGUfnMSl85EzBzG8VXUSi08i6/ZE+5QsrnjfQIMXWSFjPHWBp7clI+6tB7IP
+ hmrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1717604343; x=1718209143;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=/mCDyOscSvOaHRbfVHpVWltEOtVTKewytlqkZLEIcOs=;
+ b=ntGYBSzL06qZbHUc6TGRXxbHppRq3ucnZJanJJFbAA3JFbJ0w7tZPFb0FBShXgAgLR
+ YaNdKfWRXh+W00jtITzsuVm6WeGx+bYDpTO1NBG+K2zzagFcxzrZu3ga4EotSQCj1jDx
+ 9zzIXIujcXlkXqfEEMHqqc9OwV/idcOU+PtmHrZJwyEaCK8prE6vpPiP/qpVb3TiEBjv
+ iTxIsaIvuLej9Cb9LtndQjs8/VSuqcB8DXGBTuY9detTiQS1RfUZcfdHkjLtX8qEHNYB
+ WyUymstcbBRVPn8uwtsiRFw7OtE7IGGAhrc+ejzSwPqjGjhM96JWeHmm0efH5nLiad5H
+ fb/Q==
+X-Gm-Message-State: AOJu0YySPV3u/OYQheCUas6YJ0DHqGlXqrsbhk8I9M9sGXL//i2UMxp9
+ rUy5wl/uiROKY92+8hGk7ZIS6OSX9a9O61eOD5D+qL66fFaFJW+NPgsWwiPAmTMyXR6qdTyjpgx
+ pL6Lp9h+4OVt/f7icc0C9YuhPLGuoAip4rfE=
+X-Received: by 2002:a50:cd81:0:b0:572:1589:eb98 with SMTP id
+ 4fb4d7f45d1cf-57a8b6a5379mr1844157a12.12.1717604342287; Wed, 05 Jun 2024
+ 09:19:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <875xup81u9.fsf@pond.sub.org>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
-X-Uptime: 11:37:42 up 27 days, 22:51,  1 user,  load average: 0.00, 0.00, 0.00
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-TUID: cZL3F2jALfO9
+From: Nikolay Gogsadze <koliagogsadze@gmail.com>
+Date: Wed, 5 Jun 2024 19:18:48 +0300
+Message-ID: <CANm_edoii9xoBNs6-hMdbmjjF9MXAo9UkbhduTMMkohZOvnviw@mail.gmail.com>
+Subject: Arm64 FEAT_MOPS option B support for heterogeneous systems
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000b021ee061a26ec25"
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=koliagogsadze@gmail.com; helo=mail-ed1-x534.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 05 Jun 2024 13:49:41 -0400
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: D/KLhBG02eGR
 
-* Markus Armbruster (armbru@redhat.com) wrote:
-> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
-> 
-> > Hi Daniel, Dave, Markus & Thomas.
-> >
-> > On 4/6/24 06:58, Markus Armbruster wrote:
-> >> "Dr. David Alan Gilbert" <dave@treblig.org> writes:
-> >>> * Daniel P. Berrangé (berrange@redhat.com) wrote:
-> >>>> On Fri, May 31, 2024 at 06:47:45AM +0200, Thomas Huth wrote:
-> >>>>> On 30/05/2024 09.45, Philippe Mathieu-Daudé wrote:
-> >>>>>> We are trying to unify all qemu-system-FOO to a single binary.
-> >>>>>> In order to do that we need to remove QAPI target specific code.
-> >>>>>>
-> >>>>>> @dump-skeys is only available on qemu-system-s390x. This series
-> >>>>>> rename it as @dump-s390-skey, making it available on other
-> >>>>>> binaries. We take care of backward compatibility via deprecation.
-> >>>>>>
-> >>>>>> Philippe Mathieu-Daudé (4):
-> >>>>>>     hw/s390x: Introduce the @dump-s390-skeys QMP command
-> >>>>>>     hw/s390x: Introduce the 'dump_s390_skeys' HMP command
-> >>>>>>     hw/s390x: Deprecate the HMP 'dump_skeys' command
-> >>>>>>     hw/s390x: Deprecate the QMP @dump-skeys command
-> >>>>>
-> >>>>> Why do we have to rename the command? Just for the sake of it? I think
-> >>>>> renaming HMP commands is maybe ok, but breaking the API in QMP is something
-> >>>>> you should consider twice.
-> >
-> > I'm looking at how to include this command in the new "single binary".
-> >
-> > Markus explained in an earlier series, just expanding this command as
-> > stub to targets that don't implement it is not backward compatible and
-> > breaks QMP introspection. Currently on s390x we get a result, on other
-> > targets the command doesn't exist. If we add a stubs, then other targets
-> > return something (even if it is an empty list), confusing management
-> > interface.
-> 
-> Loss of introspection precision is a concern, not a hard "no".
-> 
-> We weigh all the concerns, and pick a solution we hate the least :)
-> 
-> > So this approach use to deprecate process to include a new command
-> > which behaves differently on non-s390x targets.
-> >
-> > If we don't care for this particular case, better. However I'd still
-> > like to discuss this approach for other target-specific commands.
-> >
-> >> PRO rename: the command's tie to S390 is them immediately obvious, which
-> >> may be useful when the command becomes available in qemu-systems capable
-> >> of running other targets.
-> >>
-> >> CON rename: users need to adapt.
-> >>
-> >> What are the users?  Not libvirt, as far as I can tell.
-> >
-> > Years ago we said, "all HMP must be based on QMP".
-> 
-> In practice, it's closer to "HMP must be base on QMP when the
-> functionality does or should exist in QMP."
-> 
-> >                                                    Now we realize HMP
-> > became stable because QMP-exposed, although not consumed externally...
-> 
-> I'm afraid I didn't get this part.
-> 
-> > Does the concept of "internal QMP commands" makes sense for HMP debug
-> > ones? (Looking at a way to not expose them). We could use the "x-"
-> > prefix to not care about stable / backward compat, but what is the point
-> > of exposing to QMP commands that will never be accessed there?
-> >
-> >>>> That was going to be my question too. Seems like its possible to simply
-> >>>> stub out the existing command for other targets.
-> >>
-> >> That's going to happen whether we rename the commands or not.
-> >> 
-> >>> Are these commands really supposed to be stable, or are they just debug
-> >>> commands?  If they are debug, then add the x- and don't worry too much.
-> >
-> > OK.
-> >
-> >> docs/devel/qapi-code-gen.rst:
-> >>
-> >>      Names beginning with ``x-`` used to signify "experimental".  This
-> >>      convention has been replaced by special feature "unstable".
-> >>
-> >> Feature "unstable" is what makes something unstable, and is what
-> >> machines should check.
-> >
-> > What I mentioned earlier could be 'Feature "internal" or "debug"'.
-> 
-> What's the difference to "unstable"?
+--000000000000b021ee061a26ec25
+Content-Type: text/plain; charset="UTF-8"
 
-It should be clear *why* something is marked x- - something that's
-marked 'x-' because the feature is still in development is expected to shake
-out at some point, and the interface designed so it can.
-(and at some point the developer should get a prod to be asked whethere the
-x- can be removed).
-That's different from it permenantly being x- because it's expected to
-change as the needs of the people debugging change.
+Hello everyone,
 
-Dave
+I have a question related to Arm64 FEAT_MOPS support in qemu
+https://github.com/qemu/qemu/commit/5d7b37b5f675d9cee0c9c1f8b386b3daa3cc2d9a
+https://lore.kernel.org/all/20230907160340.260094-1-peter.maydell@linaro.org/T/
 
-> >> An "x-" prefix may still be useful for humans.  Machines should *not*
-> >> key on the prefix.  It's unreliable anyway: InputBarrierProperties
-> >> member @x-origin is stable despite it's name.  Renames to gain or lose
-> >> the prefix may or may not be worth the bother.
-> >
-> > Could follow the rules and be renamed as "origin-coordinate-x".
-> 
-> I don't think it's worth the trouble.  The "x-" prefix is now strictly
-> for humans, and humans can figure out what the x- in @x-origin,
-> @y-origin means.
-> 
-> [...]
-> 
--- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+It looks like there is no possibility to emulate MOPS instructions with
+option B, only option A is supported.
+https://github.com/qemu/qemu/blob/master/target/arm/tcg/helper-a64.c#L1579-L1590
+https://github.com/qemu/qemu/blob/master/target/arm/tcg/helper-a64.c#L1681-L1684
+
+I checked linux kernel patch add support FEAT_MOPS
+https://lore.kernel.org/lkml/20230216160012.272345-1-kristina.martsenko@arm.com/T/
+
+
+and found an interesting thing: a memory exception can happen in a
+heterogeneous system if one processor implements option A and executes
+prologue or main cpy/set instructions, and if after that the kernel
+re-scheduled to another processor that implements option B, it will be
+memory operation exception. Arm provided an algorithm for the linux kernel
+to reset the registers and resume execution from the prologue instruction:
+
+https://github.com/torvalds/linux/blob/32f88d65f01bf6f45476d7edbe675e44fb9e1d58/arch/arm64/include/asm/traps.h#L104-L154
+
+>On Thu, Feb 16, 2023 at 04:00:09PM +0000, Kristina Martsenko wrote:
+>> The memory copy/set instructions added as part of FEAT_MOPS can take an
+>> exception part-way through their execution and resume execution
+>> afterwards. If however the task is re-scheduled and execution resumes on
+>> a different CPU, then the CPU may take a new type of exception to
+>> indicate this. In this case the OS has to reset the registers and restart
+>> execution from the prologue instruction. The algorithm for doing this is
+>> provided as part of the Arm ARM.
+>>
+>> Add an exception handler for the new exception and wire it up for
+>> userspace tasks.
+>>
+>> Signed-off-by: Kristina Martsenko <kristina.martsenko@arm.com>
+
+>It may be worth adding a short note in the cover that the architecture
+>allows two options to implement the memory instructions and on a
+>heterogeneous system we can have different implementations between CPUs.
+>That's the reason for an exception after migration (it's not obvious
+>from your text above).
+
+>Reviewed-by: Catalin Marinas <catalin.marinas@arm.com>
+
+It would be great to add support for virt board to choose which option of
+mops implements CPU to emulate and test such cases.
+I didn't make patches to qemu but if this proposal is acceptable, then I
+would be happy to help add support.
+
+Best Regards,
+Mykola Hohsadze
+
+--000000000000b021ee061a26ec25
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hello everyone,</div><div><br></div><div>I have a que=
+stion related to Arm64 FEAT_MOPS support in qemu</div><div><a href=3D"https=
+://github.com/qemu/qemu/commit/5d7b37b5f675d9cee0c9c1f8b386b3daa3cc2d9a" ta=
+rget=3D"_blank">https://github.com/qemu/qemu/commit/5d7b37b5f675d9cee0c9c1f=
+8b386b3daa3cc2d9a</a><br></div><div><a href=3D"https://lore.kernel.org/all/=
+20230907160340.260094-1-peter.maydell@linaro.org/T/" target=3D"_blank">http=
+s://lore.kernel.org/all/20230907160340.260094-1-peter.maydell@linaro.org/T/=
+</a></div><div><br></div><div>It looks like there is no possibility=C2=A0to=
+ emulate MOPS instructions with option B, only option A is supported.</div>=
+<div><a href=3D"https://github.com/qemu/qemu/blob/master/target/arm/tcg/hel=
+per-a64.c#L1579-L1590" target=3D"_blank">https://github.com/qemu/qemu/blob/=
+master/target/arm/tcg/helper-a64.c#L1579-L1590</a><br></div><div><a href=3D=
+"https://github.com/qemu/qemu/blob/master/target/arm/tcg/helper-a64.c#L1681=
+-L1684" target=3D"_blank">https://github.com/qemu/qemu/blob/master/target/a=
+rm/tcg/helper-a64.c#L1681-L1684</a><br></div><div><br></div><div>I checked =
+linux kernel patch add support FEAT_MOPS=C2=A0<a href=3D"https://lore.kerne=
+l.org/lkml/20230216160012.272345-1-kristina.martsenko@arm.com/T/" target=3D=
+"_blank">https://lore.kernel.org/lkml/20230216160012.272345-1-kristina.mart=
+senko@arm.com/T/</a>=C2=A0</div><div><br></div><div>and found an interestin=
+g thing: a memory exception can happen in a heterogeneous system if one pro=
+cessor implements option A and executes prologue or main cpy/set instructio=
+ns, and if after that the kernel re-scheduled to another processor that imp=
+lements option B, it will be memory operation exception. Arm provided an al=
+gorithm for the linux kernel to reset the registers and resume execution fr=
+om the prologue instruction:<br></div><div><br></div><div><a href=3D"https:=
+//github.com/torvalds/linux/blob/32f88d65f01bf6f45476d7edbe675e44fb9e1d58/a=
+rch/arm64/include/asm/traps.h#L104-L154" target=3D"_blank">https://github.c=
+om/torvalds/linux/blob/32f88d65f01bf6f45476d7edbe675e44fb9e1d58/arch/arm64/=
+include/asm/traps.h#L104-L154</a><br></div><div><br></div><div>&gt;On Thu, =
+Feb 16, 2023 at 04:00:09PM +0000, Kristina Martsenko wrote:<br>&gt;&gt; The=
+ memory copy/set instructions added as part of FEAT_MOPS can take an<br>&gt=
+;&gt; exception part-way through their execution and resume execution<br>&g=
+t;&gt; afterwards. If however the task is re-scheduled and execution resume=
+s on<br>&gt;&gt; a different CPU, then the CPU may take a new type of excep=
+tion to<br>&gt;&gt; indicate this. In this case the OS has to reset the reg=
+isters and restart<br>&gt;&gt; execution from the prologue instruction. The=
+ algorithm for doing this is<br>&gt;&gt; provided as part of the Arm ARM.<b=
+r>&gt;&gt;<br>&gt;&gt; Add an exception handler for the new exception and w=
+ire it up for<br>&gt;&gt; userspace tasks.<br>&gt;&gt;<br>&gt;&gt; Signed-o=
+ff-by: Kristina Martsenko &lt;<a href=3D"mailto:kristina.martsenko@arm.com"=
+ target=3D"_blank">kristina.martsenko@arm.com</a>&gt;<br><br>&gt;It may be =
+worth adding a short note in the cover that the architecture<br>&gt;allows =
+two options to implement the memory instructions and on a<br>&gt;heterogene=
+ous system we can have different implementations between CPUs.<br>&gt;That&=
+#39;s the reason for an exception after migration (it&#39;s not obvious<br>=
+&gt;from your text above).<br></div><div><br>&gt;Reviewed-by: Catalin Marin=
+as &lt;<a href=3D"mailto:catalin.marinas@arm.com" target=3D"_blank">catalin=
+.marinas@arm.com</a>&gt;<br></div><div><br></div><div>It would be great to =
+add support for virt board to choose which option of mops implements CPU to=
+ emulate and test such cases.</div><div>I didn&#39;t make patches to qemu=
+=C2=A0but if this proposal is acceptable, then I would be happy to help add=
+ support.</div><div><br></div><div>Best Regards,</div><div>Mykola Hohsadze<=
+/div></div>
+
+--000000000000b021ee061a26ec25--

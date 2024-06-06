@@ -1,108 +1,116 @@
-Received: by 2002:a17:906:bc9a:b0:a66:557b:2f6e with SMTP id lv26csp337200ejb;
-        Wed, 5 Jun 2024 08:56:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXjwg3RHOZguDXel43hlN5mbEnntgCGEPr7YQXCEGd5sCWxQ4NlMBgGwapQSrsO+897Vuo6y8VDG0GQ+clW8/Aszr/g6jv9
-X-Google-Smtp-Source: AGHT+IF+00rnW6ZQd/stEJmDRPzNcu4B66SdSdMbXxXBpH7j2IXAMFR9RunBfM/zIjouKX2fdqN1
-X-Received: by 2002:a05:6870:8197:b0:24f:c5a6:2987 with SMTP id 586e51a60fabf-2512267b10dmr3111621fac.3.1717602999197;
-        Wed, 05 Jun 2024 08:56:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717602999; cv=none;
+Received: by 2002:a17:906:acd:b0:a66:557b:2f6e with SMTP id z13csp78291ejf;
+        Wed, 5 Jun 2024 22:05:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWd+9rAouWeRS6SUatojovReAdjxdr8RyNFRtASu7KlRszNQkP+oqT/R7KzzXC/WVyuskm8zD4afQQJ2K5PxVWXYL+KW4BT
+X-Google-Smtp-Source: AGHT+IHkZaPgGVEjvDXjrzvPaG9EeLhWaExPpisd6VDOB7jmp6wmoNJCsZyOvvuIQL9fp3iTWD6D
+X-Received: by 2002:a05:6870:808d:b0:24f:e000:a6f8 with SMTP id 586e51a60fabf-25121fed108mr5627118fac.41.1717650334134;
+        Wed, 05 Jun 2024 22:05:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717650334; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z5Yb0rglJx4jeJ4R9GCj+ekkbFWly+zLMIhOUnYolbGe/bSXNek+HyqdNiLG840nqS
-         3YCd9ay1NNxY69mmw4fCR5coUQce6chqEmdbkCM8mvb8ZcDk2rafujNEsUgLiTgBT/Qu
-         mf0qvgm9pVgNonQg8NumstaXNRerR/UfSS6zIxG6JdTzPE3jEedE1pyG+54VOSJQ7MAJ
-         r+YI4TyyVdxYEjXMsF9d9uupCdQKDfsVC2Z63HtGREnPFAq5wMeiZqMH3Ei9f6PZrspK
-         fbU+YeE0QLb5zSQCAi/5pu/HUs+SBHABvT85nZzZtLbO/6EOrChQFTt706OBxA6r5TVL
-         s8PQ==
+        b=UaqlZJhdyQ2jpMIJh5ziFKTlGG/KSO4NPJn/0jXL2wuJZuoMNgMqIThbzl7zHiA6wv
+         JqbXZuWAV7AVWKIuJ0j6HUtyLwMw9rFfd1Jq1J3HHbnLYhkaA0G5PCT2fExt9BDZ7R12
+         5TFAz0cyi2RQCGiBr6YL+ZCZYlhd/t8oeYbYBI5ixdxxwc+TH9RN5BoRGc1uKkR9UDHw
+         74q852CgeeRafMay3QqSeuoEUkWGb6TMw19oVH2fJYoWyHSGHLqxd9tc0pdws4eUrr8/
+         MUFUs7h7muBhQh0FTDB1wQh6w5S1fMZY47UaQoTEYKTp15jTJSH0QOMFxqW071MgBDoM
+         0pXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=g7yFTYJAQNbfV366A2NWikpPsZaDac6yP9Q77k6ZhiM=;
-        fh=KCF7jWwWUEgASJ2OUbvqyXGG2zizi9zWyTYX/MU41bQ=;
-        b=etiAW0XwpddCU1/eYhDr1r0vKscCwjM+/U+yRhHXf/uhnbnWZ/bV7cXKboc1ufqbgd
-         ni5+M4dxrLealaQQiSmLhnH6EW/bT/iyFUrMrzKcHUmK1wNcXiZU1AYzL76Onbze05uF
-         12fP2LUePJKwiLmxF4/rE4qiSslhGMT1+NLAdVcH+E7tsTZ7DL6WbPpejYPC4cPB4tsp
-         StHtLwrA/SriyqmoNReCPj0S5UjW6tB7XShdzMm19gq+49AIxVwrtaio0tv7gvTplzlR
-         c+daPXl84NbmwQR5cMeZkU0L3xyQE9Dszho2oP+kIHSXUBD542PqUTise7U8SN7Saz8u
-         aMmg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=RCSumzjzDmjPXJOUPEKDGuagiSsXbpz9zqtzk7gilmY=;
+        fh=yypcU2wAYyv+zHZpCCdlSKquDsPCojc4OluNhTK0ObI=;
+        b=ZzWqdSw3yIBmX6rlnQEqlEW1lQll/RqlWZ4w6MMUdcJZWaY2s1uNE3VzlYyBATbx0k
+         qpgba8B/cZQLe/DHy1XbaRrOGD1MjII+1jqThPqVMgzMGtXh8SQhhEsvXJ9VToC3i6Xs
+         Xhedo5S3f/ltfHQtVgxPIwDXwEw8WgT52gxenKFscqTEkkZK6LZnaAZXCgzPEOw9ME4Y
+         iTEvwd37fk3AS7ZclgrrOAh4uWfgN97IYqMJTBFt/CsDBJlb1U6Cld2GiZjdRCZa2z33
+         S/9v28nBcWdjWI8NzDOUvZjXarEDTLY6doSihDUhYybERcaQFQiJFqIuNZRGYz0/jRNK
+         tRUw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ve9MtDfr;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PlLr6gM2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-794f32a7fdbsi1342032485a.691.2024.06.05.08.56.39
+        by mx.google.com with ESMTPS id d75a77b69052e-44038b80b38si6954401cf.729.2024.06.05.22.05.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Jun 2024 08:56:39 -0700 (PDT)
+        Wed, 05 Jun 2024 22:05:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ve9MtDfr;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PlLr6gM2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sEszW-0002lF-Q4; Wed, 05 Jun 2024 11:55:58 -0400
+	id 1sF5JS-0006EI-AL; Thu, 06 Jun 2024 01:05:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1sEszV-0002kq-RG
- for qemu-arm@nongnu.org; Wed, 05 Jun 2024 11:55:57 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1sEszT-0006KC-UY
- for qemu-arm@nongnu.org; Wed, 05 Jun 2024 11:55:57 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-35dce6102f4so2120031f8f.3
- for <qemu-arm@nongnu.org>; Wed, 05 Jun 2024 08:55:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1717602953; x=1718207753; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=g7yFTYJAQNbfV366A2NWikpPsZaDac6yP9Q77k6ZhiM=;
- b=Ve9MtDfr2G5EimyZjqt22VqXJN8sx7s/XpITpMSlL2TEbNX9jtE3tkxKkwt/mgIPH5
- ZecfN9uOdj5y0Chw40Kr8mM49FsBuFHfrJsrKDjSnBhnHDjcy3AEFdMejcaIQkdKsFfH
- 2hVLiEKsUHGQAhinIWl5NRbsZBPYIq5gYPF5IPN7K/jhSTK+fKvbBQX1CsCbF09Jguei
- Wtf0VVKP1lGbfWzUMpK3BIeltZLfq/kn8i2UdcUMnOpQL6/Emp0x3sdPl3aMpandWnju
- 5atTsQdw4GeBJHz4LrkZXqDPqLt8ti1nVNNCeSjwERE//PeAXC2gsKcfV2S8CvfZenAj
- nxaw==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1sF5JQ-0006DQ-0w
+ for qemu-arm@nongnu.org; Thu, 06 Jun 2024 01:05:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1sF5JK-0003ju-Cb
+ for qemu-arm@nongnu.org; Thu, 06 Jun 2024 01:05:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1717650312;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=RCSumzjzDmjPXJOUPEKDGuagiSsXbpz9zqtzk7gilmY=;
+ b=PlLr6gM2WYf/xRAjLnNg0QCy7+CO614RElEUlNl67CMHZ3aVOrMs8bzP6pWP16kdHNbvJ7
+ ZZqg6799RrtHKKW46qz9WQT0FB7eszRph2yCIhLxw/0qp16uF4tfWiwIHLtFGBqPxsWqAZ
+ EclG4LlF+2WlFgbxFCCc0J0kphdsb1o=
+Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
+ [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-206-zFLS0qVxO9aTl97ZPDB5mQ-1; Thu, 06 Jun 2024 01:05:09 -0400
+X-MC-Unique: zFLS0qVxO9aTl97ZPDB5mQ-1
+Received: by mail-pg1-f198.google.com with SMTP id
+ 41be03b00d2f7-6658175f9d4so451522a12.0
+ for <qemu-arm@nongnu.org>; Wed, 05 Jun 2024 22:05:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717602953; x=1718207753;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=g7yFTYJAQNbfV366A2NWikpPsZaDac6yP9Q77k6ZhiM=;
- b=LHYCtZwoAqG4+xMbugf+NqY7Pr62N4flEXmoXQe6cMmkoleB4+c8yImBGrTsmHwgRd
- p990Cywi6JEKLAlZ10wafOQYolKkzZqTfJIEHm9Fcv/Zb7D8x5jWyqPWThBiqGqGxjex
- C8/WGcpJFeWmpeotrQjoEQyZfhkW4ey1NO5fJpGKeM4vRzFQ4ISul/LYb7S3Au+nDDfY
- TT6ks2o3mf9XaE5DfQ3t+dJ5SkRCdYGYXgaNdQqBOQUCWfOOOrVM+4L1UqcLNS+aCWCW
- /N6vj7BlV1Sjam0PPhHdORgSF+LXMhvDUrI5Pmh/xC5YRwGtwgXOUh04hCiShbnODj8H
- vYTA==
+ d=1e100.net; s=20230601; t=1717650309; x=1718255109;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=RCSumzjzDmjPXJOUPEKDGuagiSsXbpz9zqtzk7gilmY=;
+ b=txixhpI6gZclMosHyn0LF8z5hqwLElyAF5rlokvqlNj39IvTA0JhcpoEDY8d3+YMNN
+ WQgASA+wBCMDSyg79rxO12sr4F2V911iiZA1+mbJ18hCLwN7gX1SLE2yy0Q5OCjHAxFw
+ qaknD+/7jNUh+YZR4AQ4xjHvgpafoICOtfMj0IQu63H0eTegMzvDuDbBw6b5l9x1NOFF
+ 1yJDlIecL5pKwkawFeS9ZNJ+r1fBztCnmdTyHywScirvH/8VVyd+X7wvgRKvmrrQ2xbQ
+ OTQbHi9qtrF9wcAexS/YkP2t97fnR7Ib2z7Mj0mZvCvbWzkut+Wsq3JrG+Uj7GdvKhiI
+ HM8A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX+du8uip6uzrDpsIPNwm4a32j+ey5xtr2Gr1IQkPQtbkRrU+8iA2hJ4rOt9zTr6UfYSbFNHke0k7wSpiWKo4gH6dLS
-X-Gm-Message-State: AOJu0YwFEZAuWKhOdeUxmCGKiDhQLUCnTUsudcHG44K+sso2vFaSJRCz
- sn+k6TQ4OGSNQZoCneBHUDx/SX+EpWq+KqK5eD/NAXwidYOqLiYgm5AKXKt5sFI=
-X-Received: by 2002:a5d:5888:0:b0:354:f9f0:a7ed with SMTP id
- ffacd0b85a97d-35e8ef86d29mr2464245f8f.47.1717602953537; 
- Wed, 05 Jun 2024 08:55:53 -0700 (PDT)
-Received: from myrica ([2.221.137.100]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-35dd066eb35sm14912744f8f.115.2024.06.05.08.55.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Jun 2024 08:55:53 -0700 (PDT)
-Date: Wed, 5 Jun 2024 16:56:08 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Gavin Shan <gshan@redhat.com>
+ AJvYcCWZpfckt1P8NnJ+oinzAt3WW/MB06HSxOmUZgKsFyXfjxiUpfua6djgvAb9vdmcLd9RX+QO+o5pZC3Lq6MqGyvptTZY
+X-Gm-Message-State: AOJu0Yyk878SXyRJ9esdrzUZPlusfx9nNIJuSqbtSxKDYfVwB3xaY7H6
+ CE0pj1p96KD2dErAdoALYWRMXsocMNN1i/B0ynUKlNuSY8tXYCYEKxzJJxLf6hjKrvee8RBq66e
+ KZPHHDs8Sc9SNNtLQr1UJakeJmQFynBaIMCif2i2GkSJ6Yj/rDg==
+X-Received: by 2002:a05:6a20:2588:b0:1ad:999b:de34 with SMTP id
+ adf61e73a8af0-1b2b710b89bmr6256365637.38.1717650308403; 
+ Wed, 05 Jun 2024 22:05:08 -0700 (PDT)
+X-Received: by 2002:a05:6a20:2588:b0:1ad:999b:de34 with SMTP id
+ adf61e73a8af0-1b2b710b89bmr6256342637.38.1717650307814; 
+ Wed, 05 Jun 2024 22:05:07 -0700 (PDT)
+Received: from [192.168.68.50] ([43.252.112.224])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-1f6bd774bf4sm4517435ad.114.2024.06.05.22.05.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 05 Jun 2024 22:05:06 -0700 (PDT)
+Message-ID: <1089f920-aff9-4d16-829d-5d058908a11e@redhat.com>
+Date: Thu, 6 Jun 2024 15:05:02 +1000
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: Unexpected error in rme_configure_one() at
+ ../target/arm/kvm-rme.c:159
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Cc: Itaru Kitayama <itaru.kitayama@linux.dev>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Ard Biesheuvel <ardb@kernel.org>
-Subject: Re: Unexpected error in rme_configure_one() at
- ../target/arm/kvm-rme.c:159
-Message-ID: <20240605155608.GA3251699@myrica>
 References: <0C6F517A-5686-4BCE-8D08-1CED02CB470E@linux.dev>
  <4e7aa598-1a5d-47e1-aaa3-78af05947eeb@linaro.org>
  <CB05CAA2-9301-45F6-8AE3-A2E27A160CDF@linux.dev>
@@ -113,18 +121,23 @@ References: <0C6F517A-5686-4BCE-8D08-1CED02CB470E@linux.dev>
  <2c81cb47-b9bc-4875-a7fb-49c3a8ab6713@redhat.com>
  <20240604111517.GB875061@myrica>
  <e7748b25-a01b-49e9-bbeb-cd03abb91cf6@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e7748b25-a01b-49e9-bbeb-cd03abb91cf6@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x42e.google.com
+ <20240605155608.GA3251699@myrica>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20240605155608.GA3251699@myrica>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -140,130 +153,388 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HfGIGR1gqiTJ
+X-TUID: bG/b4w60panX
 
-On Wed, Jun 05, 2024 at 11:28:47AM +1000, Gavin Shan wrote:
-> > >    WriteSections64(): /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll AARCH64 small code model requires identical ELF and PE/COFF section offsets modulo 4 KB.
-> > 
-> > Ah I've seen this once but it disappeared as I tried to investigate and
-> > I've since changed the implementation, so I don't have many notes about
-> > it.
-> > 
-> > Maybe you could try to bisect from "ArmVirtPkg: ArmCcaIoMmu: Provide an
-> > implementation for SetAttribute", but it may give false positives if the
-> > error depends on some random linker placement. Could be
-> > "ArmVirtPkg/ArmPlatformLibQemu: Setup early UART mapping in a Realm" which
-> > adds a 4k page to the data section for the ealy RSI config call, though
-> > that has explicit 4kB alignment.
-> > 
-> > In my notes I also wrote that changing "-z common-page-size=0x20" to 4k in
-> > the link flags may have made the error disappear, but I doubt it's the
-> > right fix.
-> > 
-> > I'll try GCC 11 to see if I can reproduce.
-> > 
+
+On 6/6/24 01:56, Jean-Philippe Brucker wrote:
+> On Wed, Jun 05, 2024 at 11:28:47AM +1000, Gavin Shan wrote:
+>>>>     WriteSections64(): /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll AARCH64 small code model requires identical ELF and PE/COFF section offsets modulo 4 KB.
+>>>
+>>> Ah I've seen this once but it disappeared as I tried to investigate and
+>>> I've since changed the implementation, so I don't have many notes about
+>>> it.
+>>>
+>>> Maybe you could try to bisect from "ArmVirtPkg: ArmCcaIoMmu: Provide an
+>>> implementation for SetAttribute", but it may give false positives if the
+>>> error depends on some random linker placement. Could be
+>>> "ArmVirtPkg/ArmPlatformLibQemu: Setup early UART mapping in a Realm" which
+>>> adds a 4k page to the data section for the ealy RSI config call, though
+>>> that has explicit 4kB alignment.
+>>>
+>>> In my notes I also wrote that changing "-z common-page-size=0x20" to 4k in
+>>> the link flags may have made the error disappear, but I doubt it's the
+>>> right fix.
+>>>
+>>> I'll try GCC 11 to see if I can reproduce.
+>>>
+>>
+>> Ok. I run a git-bisect and the first problematic commit is 1153ae939c
+>> ("ArmVirtPkg/ArmPlatformLibQemu: Add a third-level page table for the UART idmap")
 > 
-> Ok. I run a git-bisect and the first problematic commit is 1153ae939c
-> ("ArmVirtPkg/ArmPlatformLibQemu: Add a third-level page table for the UART idmap")
-
-Ah thanks, I'm able to reproduce the problem now, it was my local config
-that masked it.
-
+> Ah thanks, I'm able to reproduce the problem now, it was my local config
+> that masked it.
 > 
-> I'm not familiar with edk2. The error is raised by BaseTools/Source/C/GenFw/Elf64Convert.c::WriteSections64()
-> where the relocatable address isn't properly aligned to 4KB. So I modified the code
-> as below, but I have to run two consecutive builds. In the first attempt build, I
-> still hit the same error.
-
-This seems to be because GenFw generates a file even on error, so it
-doesn't retry the second time.
-
-This commit moves the page tables from .rodata to .data. When linking
-IdMap.obj into ArmPlatformPrePeiCore.dll, the alignment of the .text
-section changes from 0x1000 to 0x800. This change comes from the linker
-script putting .rodata into .text. I don't know why the included .rodata
-alignment affects the .text alignment, but I don't think it matters here.
-
-In GenFw, ScanSections64() calculates a mCoffAlignment as the max
-.text/.data/.hii section alignement. Since with this commit, .data
-alignement (0x1000) becomes larger than .text (0x800), it picks 0x1000 as
-the output text offset, and then WriteSections64() complains that this
-offset isn't equal to the input .text alignment modulo 0x1000.
-
-The linker script says:
-
-  /*
-   * The alignment of the .data section should be less than or equal to the
-   * alignment of the .text section. This ensures that the relative offset
-   * between these sections is the same in the ELF and the PE/COFF versions of
-   * this binary.
-   */
-
-but that's not what we're getting. I don't have a fix yet, other than
-forcing the .text and .data alignment to 4k.
-
-> ---> VirtPkg/Library/ArmPlatformLibQemu/IdMap.S
+>>
+>> I'm not familiar with edk2. The error is raised by BaseTools/Source/C/GenFw/Elf64Convert.c::WriteSections64()
+>> where the relocatable address isn't properly aligned to 4KB. So I modified the code
+>> as below, but I have to run two consecutive builds. In the first attempt build, I
+>> still hit the same error.
 > 
->   .align    12
->   .globl    idmap
->   .globl    uart_pte
->   .section  ".data.idmap", "aw", %progbits
->   .align    12
+> This seems to be because GenFw generates a file even on error, so it
+> doesn't retry the second time.
 > 
-> # source edksetup.sh; export GCC5_AARCH64_PREFIX=
-> # make -j -C BaseTools; \                                               <<< Failed on the first attempt
->   build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemu.dsc
->    :
-> WriteSections64(): /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll AARCH64 small code model requires identical ELF and PE/COFF section offsets modulo 4 KB.
-> make: *** [GNUmakefile:405: /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/OUTPUT/ArmPlatformPrePeiCore.efi] Error 2
+> This commit moves the page tables from .rodata to .data. When linking
+> IdMap.obj into ArmPlatformPrePeiCore.dll, the alignment of the .text
+> section changes from 0x1000 to 0x800. This change comes from the linker
+> script putting .rodata into .text. I don't know why the included .rodata
+> alignment affects the .text alignment, but I don't think it matters here.
 > 
-> # make -j -C BaseTools; \                                              <<< Succeed on the second attempt
->   build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemu.dsc
->    :
-> Generating FVMAIN FV
-> ######
-> Fd File Name:QEMU_VARS (/home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/FV/QEMU_VARS.fd)
->    :
-> - Done -
-> Build end time: 21:04:05, Jun.04 2024
-> Build total time: 00:00:06
+> In GenFw, ScanSections64() calculates a mCoffAlignment as the max
+> .text/.data/.hii section alignement. Since with this commit, .data
+> alignement (0x1000) becomes larger than .text (0x800), it picks 0x1000 as
+> the output text offset, and then WriteSections64() complains that this
+> offset isn't equal to the input .text alignment modulo 0x1000.
 > 
-> After that, I'm unable to start the guest with the edk2 image successfully.
+> The linker script says:
 > 
-> host# # mount | grep 9p
-> shr0 on /mnt/shr0 type 9p (rw,relatime,access=client,trans=virtio)
-> host# cat ./realm.sh
-> #!/bin/sh
+>    /*
+>     * The alignment of the .data section should be less than or equal to the
+>     * alignment of the .text section. This ensures that the relative offset
+>     * between these sections is the same in the ELF and the PE/COFF versions of
+>     * this binary.
+>     */
 > 
-> SHR_DIR="/mnt/shr0"
+> but that's not what we're getting. I don't have a fix yet, other than
+> forcing the .text and .data alignment to 4k.
 > 
-> qemu-system-aarch64 -accel kvm                              \
-> -machine virt,gic-version=3,confidential-guest-support=rme0 \
-> -cpu host -smp 2 -m 512M                                    \
-> -object 'rme-guest,id=rme0,measurement-algo=sha512'         \
-> -monitor none -serial mon:stdio -nographic                  \
-> -bios ${SHR_DIR}/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/FV/QEMU_EFI.fd \
-> -kernel ${SHR_DIR}/linux/arch/arm64/boot/Image              \
-> -initrd ${SHR_DIR}/buildroot/output/images/rootfs.cpio      \
-> -append 'console=ttyAMA0'
-> 
-> host# ./realm.sh
-> UEFI firmware (version  built at 19:56:47 on Jun  4 2024)
-> add-symbol-file /home/gavin/sandbox/C                              <<< I don't see more output after it
 
-I'm guessing in this case the firmware was corrupted because GenFw fails the
-first time and never generated a complete binary
+Jean, thanks for your explanation. Right, the issue is caused by mismatched
+alignments for ELF and PE/COFF sections. I ever dumped the variables at the
+failing point, showing the mismatched alignments (0x800 vs 0x1000). Apart from
+that, the virtual address of 'text' section is aligned to 0x800 instead of
+0x1000 after ArmPlatformPrePeiCore.dll is dumped by 'readelf'.
 
-> > 
-> > Note that the guest edk2 is optional and experimental, you can use direct
-> > kernel boot to get a working demo quicker.
-> > 
+SecHdr->sh_addr:                    0x800              <<< Mismatched alignment between ELF and PE/COFF
+SecOffset:                          0x1000
+SymShdr->sh_addr:                   0x800
+mCoffSectionsOffset[Sym->st_shndx]: 0x1000
+GenFw: ERROR 3000: Invalid
+   WriteSections64(): /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll AARCH64 small code model requires identical ELF and PE/COFF section offsets modulo 4 KB.
+
+# readelf -S Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll
+Section Headers:
+   [Nr] Name              Type             Address           Offset
+        Size              EntSize          Flags  Link  Info  Align
+   [ 0]                   NULL             0000000000000000  00000000
+        0000000000000000  0000000000000000           0     0     0
+   [ 1] .text             PROGBITS         0000000000000800  00000800       <<< Aligned to 0x800
+        00000000000051b8  0000000000000000  AX       0     0     2048
+
+With the following changes, I'm able to build the firmware successfully. I don't
+see how COMMONPAGESIZE is sorted out because I don't find its definition in the
+source code.
+
+diff --git a/BaseTools/Scripts/GccBase.lds b/BaseTools/Scripts/GccBase.lds
+index 9f27e83bb0..5463df47a9 100644
+--- a/BaseTools/Scripts/GccBase.lds
++++ b/BaseTools/Scripts/GccBase.lds
+@@ -20,7 +20,8 @@ SECTIONS {
+     */
+    . = PECOFF_HEADER_SIZE;
+  
+-  .text : ALIGN(CONSTANT(COMMONPAGESIZE)) {
++  /* .text : ALIGN(CONSTANT(COMMONPAGESIZE)) { */^M
++  .text : ALIGN(4096) {^M
+
+# <rebuild>
+# readelf -S Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll
+There are 24 section headers, starting at offset 0x63050:
+
+Section Headers:
+   [Nr] Name              Type             Address           Offset
+        Size              EntSize          Flags  Link  Info  Align
+   [ 0]                   NULL             0000000000000000  00000000
+        0000000000000000  0000000000000000           0     0     0
+   [ 1] .text             PROGBITS         0000000000001000  00001000     <<< Aligned to 0x1000 now
+        00000000000051b8  0000000000000000  AX       0     0     4096
+
+Even the edk2 for the guest can be built successfully, but I'm not able to try it
+because I'm unable to bring up the host now. I tried to rebuild the environment
+from scratch, the host runs into crash inside EDK2 unfortunately...
+
+   TF-RMM:   https://git.codelinaro.org/linaro/dcap/rmm.git                       (branch: cca/v2)
+   EDK2:     git@github.com:tianocore/edk2.git                                    (tag:    edk2-stable202402)
+   TF-A:     https://git.codelinaro.org/linaro/dcap/tf-a/trusted-firmware-a.git   (branch: cca/v2)
+   QEMU:     https://git.qemu.org/git/qemu.git                                    (branch: master)
+   KERNEL:   https://git.gitlab.arm.com/linux-arm/linux-cca.git                   (branch: cca-full/v2)
+   BuildRoot: <doesn't matter at present>
+
+arm64-server# home/gavin/sandbox/qemu.main/build/qemu-system-aarch64      \
+               -M virt,virtualization=on,secure=on,gic-version=3,acpi=off  \
+               -cpu max,x-rme=on -m 8G -smp 8                              \
+               -monitor none -serial mon:stdio -nographic -nodefaults      \
+               -bios /home/gavin/sandbox/CCA/tf-a/flash.bin                \
+               -kernel /home/gavin/sandbox/CCA/linux/arch/arm64/boot/Image \
+               -append console=ttyAMA0 root=/dev/vda                       \
+               -drive format=raw,if=none,file=/home/gavin/sandbox/CCA/buildroot/output/images/rootfs.ext4,id=hd0 \
+               -device virtio-blk-pci,drive=hd0                            \
+               -netdev tap,id=tap0,vhost=false,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown \
+               -device virtio-net-pci,netdev=tap0,mac=52:54:00:f1:26:b0                          \
+               -fsdev local,security_model=none,path=/home/gavin/sandbox/CCA,id=shr0             \
+               -device virtio-9p-device,fsdev=shr0,mount_tag=shr0
+                  :
+NOTICE:  Booting Trusted Firmware
+NOTICE:  BL1: v2.10.0(debug):99e0b97aa-dirty
+NOTICE:  BL1: Built : 23:14:56, Jun  5 2024
+INFO:    BL1: RAM 0xe0ee000 - 0xe0f7000
+INFO:    BL1: Loading BL2
+INFO:    Loading image id=1 at address 0xe06b000
+INFO:    Image id=1 loaded: 0xe06b000 - 0xe0742d1
+NOTICE:  BL1: Booting BL2
+INFO:    Entry point address = 0xe06b000
+INFO:    SPSR = 0x3cd
+INFO:    [GPT] Boot Configuration
+INFO:      PPS/T:     0x2/40
+INFO:      PGS/P:     0x0/12
+INFO:      L0GPTSZ/S: 0x0/30
+INFO:      PAS count: 0x6
+INFO:      L0 base:   0xedfe000
+INFO:    [GPT] PAS[0]: base 0xe001000, size 0xff000, GPI 0xa, type 0x1
+INFO:    [GPT] PAS[1]: base 0xe100000, size 0xcfe000, GPI 0x8, type 0x1
+INFO:    [GPT] PAS[2]: base 0xedfe000, size 0x202000, GPI 0xa, type 0x1
+INFO:    [GPT] PAS[3]: base 0x40000000, size 0x100000, GPI 0x9, type 0x1
+INFO:    [GPT] PAS[4]: base 0x40100000, size 0x2800000, GPI 0xb, type 0x1
+INFO:    [GPT] PAS[5]: base 0x42900000, size 0x1fd700000, GPI 0x9, type 0x1
+INFO:    Enabling Granule Protection Checks
+NOTICE:  BL2: v2.10.0(debug):99e0b97aa-dirty
+NOTICE:  BL2: Built : 23:14:56, Jun  5 2024
+INFO:    BL2: Doing platform setup
+INFO:    Reserved RMM memory [0x40100000, 0x428fffff] in Device tree
+INFO:    BL2: Loading image id 3
+INFO:    Loading image id=3 at address 0xe0a0000
+INFO:    Image id=3 loaded: 0xe0a0000 - 0xe0b10c4
+INFO:    BL2: Loading image id 35
+INFO:    Loading image id=35 at address 0x40100000
+INFO:    Image id=35 loaded: 0x40100000 - 0x403033b0
+INFO:    BL2: Loading image id 5
+INFO:    Loading image id=5 at address 0x60000000
+INFO:    Image id=5 loaded: 0x60000000 - 0x60200000
+NOTICE:  BL2: Booting BL31
+INFO:    Entry point address = 0xe0a0000
+INFO:    SPSR = 0x3cd
+NOTICE:  BL31: v2.10.0(debug):99e0b97aa-dirty
+NOTICE:  BL31: Built : 23:14:56, Jun  5 2024
+INFO:    GICv3 without legacy support detected.
+INFO:    ARM GICv3 driver initialized in EL3
+INFO:    Maximum SPI INTID supported: 287
+INFO:    BL31: Initializing runtime services
+INFO:    RMM setup done.
+INFO:    BL31: Initializing RMM
+INFO:    RMM init start.
+Booting RMM v.0.4.0(debug) 17924bc Built with GCC 11.4.1
+RMM-EL3 Interface v.0.2
+Boot Manifest Interface v.0.3
+RMI/RSI ABI v.1.0/1.0 built: Jun  5 2024 23:03:00
+INFO:    RMM init end.
+INFO:    BL31: Preparing for EL3 exit to normal world
+INFO:    Entry point address = 0x60000000
+INFO:    SPSR = 0x3c9
+Loading driver at 0x00060009160 EntryPoint=0x00000000000
+ArmVirtGetMemoryMap: Dumping System DRAM Memory Map:
+	PhysicalBase: 0x40000000
+	VirtualBase: 0x40000000
+	Length: 0x200000000
+UEFI firmware (version  built at 23:28:51 on Jun  5 2024)
+PlatformPeim: PL011 UART (console) @ 0x9000000
+PlatformPeim: PL011 UART (debug) @ 0x9000000
+   :
+EFI stub: Booting Linux Kernel...
+EFI stub: EFI_RNG_PROTOCOL unavailable
+SetMemoryAttributes: BaseAddress == 0x22DC00000, Length == 0x1CE0000, Attributes == 0x20000
+SetMemoryAttributes: BaseAddress == 0x22F8E0000, Length == 0xE50000, Attributes == 0x4000
+EFI stub: Using DTB from configuration table
+EFI stub: Exiting boot services...
+EFI stub: update_fdt() ... done
+EFI stub: efi_exit_boot_services: enter
+EFI stub: efi_exit_boot_services: efi_pci_disable_bridge_busmaster
+EFI stub: efi_exit_boot_services: efi_get_memory_map
+EFI stub: efi_exit_boot_services: priv_func
+=====> CoreExitBootServices
+MemoryProtectionExitBootServicesCallback - 0
+SetUefiImageMemoryAttributes - 0x000000023BE60000 - 0x0000000000040000 (0x0000000000000008)
+MemoryProtectionExitBootServicesCallback - 0
+SetUefiImageMemoryAttributes - 0x0000000238AF0000 - 0x0000000000040000 (0x0000000000000008)
+MemoryProtectionExitBootServicesCallback - 0
+SetUefiImageMemoryAttributes - 0x0000000238AA0000 - 0x0000000000040000 (0x0000000000000008)
+MemoryProtectionExitBootServicesCallback - 0
+SetUefiImageMemoryAttributes - 0x0000000238A50000 - 0x0000000000040000 (0x0000000000000008)
+MemoryProtectionExitBootServicesCallback - 0
+SetUefiImageMemoryAttributes - 0x0000000238960000 - 0x0000000000040000 (0x0000000000000008)
+MemoryProtectionExitBootServicesCallback - 0
+SetUefiImageMemoryAttributes - 0x000000023BE20000 - 0x0000000000030000 (0x0000000000000008)
+MemoryProtectionExitBootServicesCallback - 0
+SetUefiImageMemoryAttributes - 0x0000000238860000 - 0x0000000000030000 (0x0000000000000008)
+MemoryProtectionExitBootServicesCallback - 0
+SetUefiImageMemoryAttributes - 0x0000000238820000 - 0x0000000000030000 (0x0000000000000008)
+CoreExitBootServices: MemoryProtectionExitBootServicesCallback
+CoreExitBootServices: SaveAndSetDebugTimer
+CoreExitBootServices: gCpu->DisableInterrupt
+CoreExitBootServices: CalculateEfiHdrCrc
+CoreExitBootServices: Return with status=0x0
+
+
+Synchronous Exception at 0x000000023248E9B4
+PC 0x00023248E9B4
+PC 0x00023248EA70
+PC 0x00023248EBA8
+PC 0x000232490FC8
+PC 0x00023248A004
+PC 0x00023248973C
+PC 0x0002324894DC
+PC 0x00023F2C7FA8 (0x00023F2C1000+0x00006FA8) [ 1] DxeCore.dll
+PC 0x00023BCC6604 (0x00023BCBE000+0x00008604) [ 2] BdsDxe.dll
+PC 0x00023F2CBC68 (0x00023F2C1000+0x0000AC68) [ 3] DxeCore.dll
+[ 1] /home/gavin/sandbox/CCA/edk2/Build/ArmVirtQemuKernel-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Core/Dxe/DxeMain/DEBUG/DxeCore.dll
+[ 2] /home/gavin/sandbox/CCA/edk2/Build/ArmVirtQemuKernel-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Universal/BdsDxe/BdsDxe/DEBUG/BdsDxe.dll
+[ 3] /home/gavin/sandbox/CCA/edk2/Build/ArmVirtQemuKernel-AARCH64/DEBUG_GCC5/AARCH64/MdeModulePkg/Core/Dxe/DxeMain/DEBUG/DxeCore.dll
+
+   X0 0x0000000000000000   X1 0x000000023F2C0740   X2 0x000000000000000A   X3 0x00000002325D3E26
+   X4 0x0000000000000020   X5 0xFFFFFFFFFFFFFFFE   X6 0x0000000000000000   X7 0x0000000000000000
+   X8 0x0000000000000000   X9 0x0000000238820000  X10 0x000000000000002E  X11 0x00000000000023D0
+  X12 0x00000000000023C4  X13 0x0000000000000001  X14 0x0000000000000002  X15 0x0000000000000000
+  X16 0x000000023BD30280  X17 0x000000000066BD90  X18 0x0000000000000000  X19 0x000000023F2C0740
+  X20 0x00000002325D3E27  X21 0x000000000000FFFF  X22 0x000000000000000D  X23 0x000000000010FFFF
+  X24 0x000000000000D800  X25 0x000000023F2C0AA8  X26 0x00000002325E2000  X27 0x0000000000000002
+  X28 0x0000000000000018   FP 0x000000023F2C06F0   LR 0x000000023248EA70
+
+   V0 0x0000000000000000 0000000000000000   V1 0xFFFFFF80FFFFFFD0 000000023F2C0800
+   V2 0x0000000000000000 0000000000000000   V3 0x0000000000000000 0000000000000000
+   V4 0x0000000000000000 0000000000000000   V5 0x0000000000000000 0000000000000000
+   V6 0x0000000000000000 0000000000000000   V7 0x0000000000000000 0000000000000000
+   V8 0x0000000000000000 0000000000000000   V9 0x0000000000000000 0000000000000000
+  V10 0x0000000000000000 0000000000000000  V11 0x0000000000000000 0000000000000000
+  V12 0x0000000000000000 0000000000000000  V13 0x0000000000000000 0000000000000000
+  V14 0x0000000000000000 0000000000000000  V15 0x0000000000000000 0000000000000000
+  V16 0x0000000000000000 0000000000000000  V17 0x0000000000000000 0000000000000000
+  V18 0x0000000000000000 0000000000000000  V19 0x0000000000000000 0000000000000000
+  V20 0x0000000000000000 0000000000000000  V21 0x0000000000000000 0000000000000000
+  V22 0x0000000000000000 0000000000000000  V23 0x0000000000000000 0000000000000000
+  V24 0x0000000000000000 0000000000000000  V25 0x0000000000000000 0000000000000000
+  V26 0x0000000000000000 0000000000000000  V27 0x0000000000000000 0000000000000000
+  V28 0x0000000000000000 0000000000000000  V29 0x0000000000000000 0000000000000000
+  V30 0x0000000000000000 0000000000000000  V31 0x0000000000000000 0000000000000000
+
+   SP 0x000000023F2C06F0  ELR 0x000000023248E9B4  SPSR 0xA00002C9  FPSR 0x00000000
+  ESR 0x96000006          FAR 0x0000000000000008
+
+  ESR : EC 0x25  IL 0x1  ISS 0x00000006
+
+Data abort: Translation fault, second level
+
+Stack dump:
+   000023F2C05F0: 000000023F2C06A0 000000023BD31FF4 0000000238820000 0000000000000002
+   000023F2C0610: 000000023B1E2000 000000023FFF9000 0000000000000E20 00000000001FFFFF
+   000023F2C0630: 0000000238850000 0000000000000001 0000000000000003 000000023FFF9E20
+   000023F2C0650: 000000000000070C 0000000000000000 000000023F2C06D0 000000023F2DD644
+   000023F2C0670: 000000023F2C07C8 000000023F2C095F 0000000000000001 000000023BD358ED
+   000023F2C0690: 000000000000070C 0000000000000000 000000023F2C0750 000000023BD31FF4
+   000023F2C06B0: 0000000238820000 0000000000000001 000000023FFF9000 000000023FFFA000
+   000023F2C06D0: 000000023F2C07F0 000000023F2C2534 0000000000000001 0000000000000000
+> 000023F2C06F0: 000000023F2C0700 000000023248EA70 000000023F2C0840 000000023248EBA8
+   000023F2C0710: 00000002325D42BF 000000023B17E918 00000002325E2000 0000000232489978
+   000023F2C0730: 000000023F2C0AB0 00000002325E2000 0020004900460045 0062007500740073
+   000023F2C0750: 000000000020003A 0000000000000001 000000023F2C0860 0000000000000001
+   000023F2C0770: 0000000000000002 00000000000000FF 0000000000000000 0000007F00000000
+   000023F2C0790: 000000023F2C07F0 000000023F2C2548 000000023F2C07C0 000000023F2DEDD8
+   000023F2C07B0: 000000023F2C088D 000000023F2EA000 000000023F2C07F0 000000023F2C2548
+   000023F2C07D0: 0000000000000001 0000000000000000 000000023F2EB000 000000023F2EA000
+ASSERT [ArmCpuDxe] /home/gavin/sandbox/CCA/edk2/ArmPkg/Library/DefaultExceptionHandlerLib/AArch64/DefaultExceptionHandler.c(343): ((BOOLEAN)(0==1))
+  
+
+>> ---> VirtPkg/Library/ArmPlatformLibQemu/IdMap.S
+>>
+>>    .align    12
+>>    .globl    idmap
+>>    .globl    uart_pte
+>>    .section  ".data.idmap", "aw", %progbits
+>>    .align    12
+>>
+>> # source edksetup.sh; export GCC5_AARCH64_PREFIX=
+>> # make -j -C BaseTools; \                                               <<< Failed on the first attempt
+>>    build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemu.dsc
+>>     :
+>> WriteSections64(): /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll AARCH64 small code model requires identical ELF and PE/COFF section offsets modulo 4 KB.
+>> make: *** [GNUmakefile:405: /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/OUTPUT/ArmPlatformPrePeiCore.efi] Error 2
+>>
+>> # make -j -C BaseTools; \                                              <<< Succeed on the second attempt
+>>    build -b DEBUG -a AARCH64 -t GCC5 -p ArmVirtPkg/ArmVirtQemu.dsc
+>>     :
+>> Generating FVMAIN FV
+>> ######
+>> Fd File Name:QEMU_VARS (/home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/FV/QEMU_VARS.fd)
+>>     :
+>> - Done -
+>> Build end time: 21:04:05, Jun.04 2024
+>> Build total time: 00:00:06
+>>
+>> After that, I'm unable to start the guest with the edk2 image successfully.
+>>
+>> host# # mount | grep 9p
+>> shr0 on /mnt/shr0 type 9p (rw,relatime,access=client,trans=virtio)
+>> host# cat ./realm.sh
+>> #!/bin/sh
+>>
+>> SHR_DIR="/mnt/shr0"
+>>
+>> qemu-system-aarch64 -accel kvm                              \
+>> -machine virt,gic-version=3,confidential-guest-support=rme0 \
+>> -cpu host -smp 2 -m 512M                                    \
+>> -object 'rme-guest,id=rme0,measurement-algo=sha512'         \
+>> -monitor none -serial mon:stdio -nographic                  \
+>> -bios ${SHR_DIR}/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/FV/QEMU_EFI.fd \
+>> -kernel ${SHR_DIR}/linux/arch/arm64/boot/Image              \
+>> -initrd ${SHR_DIR}/buildroot/output/images/rootfs.cpio      \
+>> -append 'console=ttyAMA0'
+>>
+>> host# ./realm.sh
+>> UEFI firmware (version  built at 19:56:47 on Jun  4 2024)
+>> add-symbol-file /home/gavin/sandbox/C                              <<< I don't see more output after it
 > 
-> I never did this before. Could you please provide the detailed steps on this?
+> I'm guessing in this case the firmware was corrupted because GenFw fails the
+> first time and never generated a complete binary
+> 
 
-Removing the -bios parameter to QEMU should be enough. You can also add
-'earlycon' to -append to show early boot errors.
+Yeah, the binary isn't reliable in this case.
+
+>>>
+>>> Note that the guest edk2 is optional and experimental, you can use direct
+>>> kernel boot to get a working demo quicker.
+>>>
+>>
+>> I never did this before. Could you please provide the detailed steps on this?
+> 
+> Removing the -bios parameter to QEMU should be enough. You can also add
+> 'earlycon' to -append to show early boot errors.
+> 
+
+I didn't get a chance to try this yet since the host can't be brought up now.
+I will try this later. I originally thought some sort of boot wrapper is needed
+so that the kernel image has the capability to boot itself. For example, Mark
+Rutland's boot wrapper [1] can be leveraged in this case. I don't think Image has
+the capability to boot itself, right?
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/mark/boot-wrapper-aarch64.git
 
 Thanks,
-Jean
+Gavin
 

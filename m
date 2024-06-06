@@ -1,115 +1,203 @@
-Received: by 2002:a17:906:acd:b0:a66:557b:2f6e with SMTP id z13csp328248ejf;
-        Thu, 6 Jun 2024 07:01:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV6diiaYJVhJNzYXGS/UyOiNX8maBMZkA0w6zWiBMxu1tncrNBxX4xWsI7aD8enKq4Sp4JjJUzoeVSM87IwduKxjO8JLmKS
-X-Google-Smtp-Source: AGHT+IFmFvUj072yeBJwtwNW7irNSNuDUouePc9fDTj+TQ9CDyCxILH+hTiJY0Pcj7NoZg2Fz6i/
-X-Received: by 2002:a05:6122:1da1:b0:4ea:f3ae:6349 with SMTP id 71dfb90a1353d-4eb3a41a294mr7167452e0c.7.1717682464253;
-        Thu, 06 Jun 2024 07:01:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717682464; cv=none;
+Received: by 2002:a17:906:acd:b0:a66:557b:2f6e with SMTP id z13csp384889ejf;
+        Thu, 6 Jun 2024 08:29:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVr9uxHaGmhcTPo5xaaQ7bNt+CbmUe5E7myAkWh6CxBPzgdoGLXxAoZy7vnpgAgvNedg9VfDAFReI1adiF5AeRf1fIPFhhM
+X-Google-Smtp-Source: AGHT+IH68L+tMbaCC+CCG2b8jSBlzhEhaE6nA9EUqXZkm5wKBtUu/To3UHem2yDXSRENumzQTZ3P
+X-Received: by 2002:a67:fe89:0:b0:48b:a4c1:88f5 with SMTP id ada2fe7eead31-48c048e5e3bmr6585264137.21.1717687743794;
+        Thu, 06 Jun 2024 08:29:03 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1717687743; cv=pass;
         d=google.com; s=arc-20160816;
-        b=T8gWEtMYk+5xhC8aujj3Fje4I2XxWxnJhEKrRw3QDFLElUEJiAOSzbFBKI9PkjF4r5
-         nzpuX/5QonXtwgXScqPB1n1101dko2zbrpWObn8QFhMqLvOE3xpsCneMxy+SNncPiOnl
-         PYA8D2hqhgahAU0LLCrnkXEdg/EGJDezWyeVOAMNRa/PFPG5M1b78YzqFV+IKSMPDQ1Z
-         Oq5GTGTnU79wj1TC3ka0BJi48auZ3lsSBGr9waMZKgYWUto2j8EtTSPimuJvJ5Oc9pSy
-         qhqNzN2++daEuf7PfRxThAqC2oWdZfcvUwC7JjdSv6RcmPQs6JEGCMojZsFvvmog+V64
-         nUQA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=E1rC58UZDa8Uc5yobckzObsaWPTr1CIFjIoPVkywgRHmVZ3a5hI+zyTRiYiZrxiQVR
+         M6Ia/UC4Oo6SUCOfnUkaW8V2y5DRXcCiPYs1RSqxuah9U27ejT0FlrS6qrkwWfjJoB5b
+         dX3jOGDLbnesr+FUzrZrC53IZ7L2oSjeCA/rn3DJl2CIise/pkdElICKyY61IRct56qo
+         L6t+e7leUi3dQFzNXFt76+sCaqc/D60OjApGaNYH3yiHkA4cKpn1cB2q8nIz9xKSA79w
+         Mjp1C1WmhDI0u+HNNOEzvB6Ot+6WwKfrO0uwQxobzhsys9xgY730exnwpU+IV/9csglE
+         pTZg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=OuysbczA2AOZKq7qXjXbjISEK3yoS23lBFuqU5TwJ4Y=;
-        fh=p5lTSlAgj3y+nGI1CUed2l8Dev+qzappjL+APY/pdaE=;
-        b=j46ymbZuiAlLNii+UYjxiTPMrTy43CwjqZZOtNsHtgcOJWcMPLeTsF6pQ9pHN2VZfq
-         bBaWe5f3mQbTZfiuIcdU2SGeEAiwsMNXTJ41YEN9leGzgSLQyu7YZcBnpBEB4sbU9Rjd
-         zdygPy/TwhgFDaVc9/kKnemHLn2Io5DUICgO0Ehk/7F+Mstbwbjt0cVIHvZYUI3JMTHj
-         v9YiDRtpTpE5MhOfgJQeoVKTPZsFLcHg2qKvI+eFlf5KR1jWIkHju0ClWhqGKMlDWitK
-         DMQ1yZKDXrg3NNYKXsfZiHIk+/GNFyutFXjxM5QM1DExeIpvd8WKkYdCYQ+z3NDLIx1I
-         yztw==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=148R7X1ib0+yDIg1UtkggluQAb02ZWf4CIi13gPlxvs=;
+        fh=bXzCdd3pPbjQxKKCyEZjZQ3hXG9fCFhJoM+CR069w58=;
+        b=HsZiT6/tTCS/y+tziRGHOHd0+tnxOTUIxL8v05lrRRY5XBFq7a8eYNOxYHRR1RvcGB
+         jx/vvpgycXWZWC2ACNDbBQ762xcDh8PytvRgKQNrcOZSPxVhT1Wm8BBjIqQx1DHAiEU2
+         9UYXWchZ7i7KWyXpRgF6EhqBmLpeCd+8sNYzHnsF7O0zrZEDPcO+W42lEaAF/HWIrL6n
+         Wd+tS7apqKOZJJKqiT7XcGMsOXzON7GpKNc37y3LiwFDs/LdonmIci8+GQmjHxUUd8UL
+         wvQaS9Y1CPJQSs57vt6NsZvzD6RdIdCwEHtTCriqbGS0cPrhoJhtuWjp1+JSRMgIBgIP
+         gTag==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ceJiW55z;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@jaguarmicro.com header.s=selector2 header.b=p02ZqQzc;
+       arc=pass (i=1 spf=pass spfdomain=jaguarmicro.com dkim=pass dkdomain=jaguarmicro.com dmarc=pass fromdomain=jaguarmicro.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jaguarmicro.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4eb4ad58074si232411e0c.228.2024.06.06.07.01.04
+        by mx.google.com with ESMTPS id ada2fe7eead31-48c1a264db9si459747137.778.2024.06.06.08.29.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Jun 2024 07:01:04 -0700 (PDT)
+        Thu, 06 Jun 2024 08:29:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ceJiW55z;
+       dkim=pass header.i=@jaguarmicro.com header.s=selector2 header.b=p02ZqQzc;
+       arc=pass (i=1 spf=pass spfdomain=jaguarmicro.com dkim=pass dkdomain=jaguarmicro.com dmarc=pass fromdomain=jaguarmicro.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jaguarmicro.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sFDfS-0001a5-Bb; Thu, 06 Jun 2024 10:00:38 -0400
+	id 1sFF2p-0007q4-FB; Thu, 06 Jun 2024 11:28:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1sFDfF-0001JA-2b; Thu, 06 Jun 2024 10:00:26 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1sFDfC-0002Us-JL; Thu, 06 Jun 2024 10:00:24 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-57a7dc13aabso1230770a12.0; 
- Thu, 06 Jun 2024 07:00:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1717682418; x=1718287218; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=OuysbczA2AOZKq7qXjXbjISEK3yoS23lBFuqU5TwJ4Y=;
- b=ceJiW55zjbsJ4kLDegTp1xjvWJncQjcqG/XSAyFr3+LIgSzJQt/WF2l9q9Sb41BVty
- K4P6niRYvt5mT8K/xCEybQtS+52sokYdLInRbc/o6XIMRqnLd0ezaFyjR4ZOwPjFh/0Z
- DBQBmRRmZsAe67KsUs2SiYNUDd4KPvu1r3HSc9VtdtLF23K1QonUC4DxfDJeElzGBYJw
- 2nXsUOkgaLH1SrhKBwQQ17epNrFQwciL47f2ehin+TYINF1LRqRdnLu4olCUf2gjzMXW
- FAgtCDIcuU+ZH/v5a0BV1MG65jV9OZxs0bRj1c6br93bSP+CmvveZPKk+BjL5HaKFWiq
- xurw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717682418; x=1718287218;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=OuysbczA2AOZKq7qXjXbjISEK3yoS23lBFuqU5TwJ4Y=;
- b=tFJBbCXZsNm7ReYBIKUVkJcVLSJ5PadMKjH65pGg7rKJGTOPEFC6d3FV8Pe8WQyk4B
- 65/E8U6bone+poflqZaRWQUDVKcBlf6EYlSKKeVu00LeySEboGi6H/ydf4nMZwU0MyYn
- Rc4pWD+KFgLhMfsX3fQRBWWLX98bugAfsU9Y+QQAM1wVi8jtTlUml2yfn3Ow8Bb3Cggi
- Rjxitiogi4Wh6i+k7eG0yqPfQDZAU7+qFG1/zSFNLu/FTai4JqSIoU7Qt/YnjHv/cIG9
- 8l8o5rdJTXr7AqGb/Txx0ayu0io8TQzG3Gpb4rfMObXja7z4OOqlwX8Exb8G7e7IpESF
- 0LDg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVSqo1PMeuqrPIoSQ+vbh/hLMtsAVDDe7u9NfJBO9uXZLjkqweE7QZoZLZAlbPn8I1hKDQaEhbbNpsoH9l2yO9qldcwnRlvUrqMg/X1916XzstpaCiZn41hsVs=
-X-Gm-Message-State: AOJu0YzTpACj5bIw2ZnP0adaNPYQ5xt2Ekhbc2xwBukLydgXDP05K+G9
- 7EENsIMappiKadUDiwGV0wNuDUxNvLtREL9JpAeZpV/QNWCNY+xZt/cbI9lH0RYPr3emgcJKUbq
- eYaJmKht+VQUVwcji5XPUSyK2Zbk=
-X-Received: by 2002:a50:c303:0:b0:57a:2de8:c47d with SMTP id
- 4fb4d7f45d1cf-57a8b6b88b6mr3350565a12.21.1717682417392; Thu, 06 Jun 2024
- 07:00:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <andrew.yuan@jaguarmicro.com>)
+ id 1sF9v7-0005RL-SI; Thu, 06 Jun 2024 06:00:34 -0400
+Received: from mail-southeastasiaazlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c401::3] helo=SINPR02CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew.yuan@jaguarmicro.com>)
+ id 1sF9v4-0003eU-MY; Thu, 06 Jun 2024 06:00:33 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ICr8sTvCRKgALtrJMzqlq7wHH2FoCHbYx38JImlgIy7dLG/uuACtIzlRlZppfp+WaLlGffUmFhvFEj6D4voKdkWGeHUBEmVyNZiy2MgK0YpOxnRfNjn0VXCX+PoIg6tGjrZwKU2gE27hxhrhCCn/xRu75bJLKiugIxY5Ssb/gNabjnLCh5cG0hzS3h9aH/h6AlGnV9nU6gLpg8Rq8P5Bj/p9N0XM7eocl6xckPHLPcNTNY3w7DsSHSb3sN/3Jz5Hw5natn9/QnPivWrXB4/djmaUp4h02x6OTdi32+YbkGC8Mw7WScPe/iPCDxtVk30ymjEyOuwXT3TOVBVqvIEJaQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=148R7X1ib0+yDIg1UtkggluQAb02ZWf4CIi13gPlxvs=;
+ b=b9PpHG7kU10kBTScESW3x8WlPysAo/uKeNoxrX9jeWs1Rwv/c3OlvOuyrPxcB33jJHeBqYBveZ7GqOTDueeEEd2zplgMnd14lY8TNr5gh+q90lUyrqztcGV5DMvFJ6S75n3GTW684n0bD0QAztJrao1O/3H8/w5mRSfzHQxTUJAgIc9Vpjiv2evqOcBPDPk6hrAxG6oWywXhB9FYbmCa2yVIofqKtb21k1zwslfoKWv+6H+RFS1l9qjuKQeEi4HphOVVoTZuBH1F0yBwnjBR8PdSw4rHruG8yatJCwK6pMwwpOe9LqJ47pCv1rhIEVC6iBU7MxOzOPYcbZFtJx6HoQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=jaguarmicro.com; dmarc=pass action=none
+ header.from=jaguarmicro.com; dkim=pass header.d=jaguarmicro.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jaguarmicro.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=148R7X1ib0+yDIg1UtkggluQAb02ZWf4CIi13gPlxvs=;
+ b=p02ZqQzc0MlR0GfTvy55mNojsrJfM8/ZsAL/2KE2ctfahI/tl3G53pvLRFw2+jLB8ogTrsekFItWmwYdS7jmTqReDxmM5rG2wzsYy9HrcbQ8jgjKAC7YUcX+GBjrqBIYdeF70c8RcKr2R49x7OcaLEpvRu9uscetobHUbPe54gNqmvLjKr0I8eKz4diNryiyAwYnL1awVbv54r6v7exKObJjAy/pb5iVqfE7nPBbh6UM7neoqIhXRy1iEs2XehV9+lLmevZx40yAqBG4uPlnDNKR4c0e49etzVYc9avI2jvXFAFMit+X1koiq6wflooUjmu0N36UC0ay1Wrdlrddqw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=jaguarmicro.com;
+Received: from KL1PR0601MB4891.apcprd06.prod.outlook.com (2603:1096:820:ae::7)
+ by PUZPR06MB5433.apcprd06.prod.outlook.com (2603:1096:301:e8::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7633.30; Thu, 6 Jun
+ 2024 10:00:16 +0000
+Received: from KL1PR0601MB4891.apcprd06.prod.outlook.com
+ ([fe80::8950:42de:2354:91b2]) by KL1PR0601MB4891.apcprd06.prod.outlook.com
+ ([fe80::8950:42de:2354:91b2%7]) with mapi id 15.20.7633.033; Thu, 6 Jun 2024
+ 10:00:15 +0000
+From: "Andrew.Yuan" <andrew.yuan@jaguarmicro.com>
+To: luc.michel@amd.com, edgar.iglesias@gmail.com, alistair@alistair23.me,
+ peter.maydell@linaro.org, jasowang@redhat.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ "Andrew.Yuan" <andrew.yuan@jaguarmicro.com>
+Subject: [PATCH]     hw/net: cadence_gem: fix: type2_compare_x_word_0 error
+Date: Thu,  6 Jun 2024 17:59:52 +0800
+Message-Id: <20240606095952.2133-1-andrew.yuan@jaguarmicro.com>
+X-Mailer: git-send-email 2.37.0.windows.1
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SI2PR06CA0014.apcprd06.prod.outlook.com
+ (2603:1096:4:186::11) To KL1PR0601MB4891.apcprd06.prod.outlook.com
+ (2603:1096:820:ae::7)
 MIME-Version: 1.0
-References: <20240606095952.2133-1-andrew.yuan@jaguarmicro.com>
- <CAJy5ezqq51bJG4O9HA-Pv4sw9rYqGdFW-EezCRPfDbTx=9SwyQ@mail.gmail.com>
- <CAFEAcA8fSS-qt6KmN_06uEMXddjbqjATh-FkUJVSrPuiu50+PQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA8fSS-qt6KmN_06uEMXddjbqjATh-FkUJVSrPuiu50+PQ@mail.gmail.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Thu, 6 Jun 2024 16:00:05 +0200
-Message-ID: <CAJy5ezobs9UUd37a05BtV_5Jm=B_jhsPuv068L-j=qAWGvZ72w@mail.gmail.com>
-Subject: Re: [PATCH] hw/net: cadence_gem: fix: type2_compare_x_word_0 error
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: "Andrew.Yuan" <andrew.yuan@jaguarmicro.com>, luc.michel@amd.com,
- alistair@alistair23.me, 
- jasowang@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000536a0f061a391ace"
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x530.google.com
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: KL1PR0601MB4891:EE_|PUZPR06MB5433:EE_
+X-MS-Office365-Filtering-Correlation-Id: 79126536-ceff-43d0-280a-08dc860f7695
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230031|366007|376005|1800799015|52116005|38350700005; 
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?MTZCcFJ0WENvVEEybEdDRVgrNWI3N0tOcDl0Z1JxMG9iRVMzL2VKUXlVbEdp?=
+ =?utf-8?B?cldOaGJ6MDgyY0FFbUFNM2tHU3krUmZZTU5nWFFFVWFuR2xFQXhKRWxKc1Fl?=
+ =?utf-8?B?cGVPNjBhazBtckp6UTZuV2xMTzhuQ25lZVp6QnUyWHRFY3Z5bllVYm50Qnk2?=
+ =?utf-8?B?VVkwSEd6QWovS2ptNkFYY3hHbWlhSFNNbzJXV3o5dzQ2TXAwVG5LL1pKV3Yr?=
+ =?utf-8?B?K2FTejdhS0g3cGxyR294QWl5TUJlSnJGMDNDRGRXMHZIM1hNVEgxQ0FKb1kv?=
+ =?utf-8?B?dnEvaCs5NlVtQTh2c1F1R1hEaVB5ZkxTYSt0UzIyRWZEZ29aQnFmbFlveHE4?=
+ =?utf-8?B?dFJDaEgyR01hM3ZxMnJlZHVvSFJSY09kSnlIMmdjZ2t0ckQvTDk5MHc3dnBE?=
+ =?utf-8?B?VGYzRGxLZWRoL3JRNFlrYjFsRUhQTXlFSWhzTGlvVTR0d2tmbGxLcEp4OTZm?=
+ =?utf-8?B?bnB4TkYzRHlyVzdMc2N3REMvb25TdWxXYWJlNjVZRmFNMG9ya0xLNXo1aURR?=
+ =?utf-8?B?U1dERU5jemEyM3k2U3BLdnhmRUdjbUU2VzExWlljemd1UmV4NmowNThvOUdP?=
+ =?utf-8?B?WkVqUFVJU2Z5RWx2czNyZVoreFdRYWIyZDRqQ09CWGZ5bXJlUEs1ODhKdXJT?=
+ =?utf-8?B?TVA2cGNWWGhXUStRWFVLcHJSbXJJRms3STJLSEwrcEhNVFNPMElyYTUvdGFz?=
+ =?utf-8?B?VjV6eW5CdHEzRU5TeDhVMERySVZRMGM4eVdjeDJvRG1aSk55NEwzZ0szRU94?=
+ =?utf-8?B?U0JxeDNOR1lyNHJRWVV2VThRVmRuNTZ2Y20wQlEzRTlrbnkyd0VuTkVWajdS?=
+ =?utf-8?B?cUxVekVzY2VKSEszM0lmUHJTSEk3dDJmZnFUeTlqajMvS3l1NUFENU9xd2Q1?=
+ =?utf-8?B?czh4M3JRZnBLc3hadDhyNXo1Q3NlbjhDa3lPek9JVDF5bFpFY1BOaVB2T3dI?=
+ =?utf-8?B?K1FDV2FiVUV6bSswc0wxSGduNTBTdjNBeURWaCs2WTJ4dzlVbW5FWnRmd1dp?=
+ =?utf-8?B?RXlsVE9WdGdTSXR2NjZpRW1wLzJWcWxpeDgrdE1oK29OaUpHTzBQeXhhSFFo?=
+ =?utf-8?B?cHB4bFBWVk1KOVJBU21YM1FWS3NWU3BPeWdNc085anFRYTl6bUh1OGQyTHQv?=
+ =?utf-8?B?U3A1MkVBZUMyOFZlc0JKWkNyUDBNd0ltNnhzR2FTL1FhV1M1Q2tTdXlRb21C?=
+ =?utf-8?B?ZEhMVW95SDVVMlAra3NENlNKN1FEQjZZVktxNzBiaFNieHMyU3NBcnc2bk9Y?=
+ =?utf-8?B?ODBsZGkyTTNLcVc2eFFhQzE0Ry9VMHFELzRKVmI1eU5nZFU1OVZtSndDMXhy?=
+ =?utf-8?B?ektoK1AvTnRyemlqbmtDMzA4SlplZTlJWExhSENHQ0pIRUowNXkvY1lkS1Q2?=
+ =?utf-8?B?SlRrOTRBSktOQkFCMUE2U2tqZ2FQR0dvc2ZVOEh3VHZBU3FsandMUHFUL3l0?=
+ =?utf-8?B?SHpKU2R5YTBSTHh4a2dYYVNlczBycndlRVlrNnhwZ0FPTy9GTXlhRFpEYkp4?=
+ =?utf-8?B?OU9PNVdLajJLakdFTmExYWhCSTZrTXhiZ3pJWWhsd0swNkxoekp2UUIxYkZR?=
+ =?utf-8?B?L3BCRGRud0kyZWNiVzJKeG5YUk42L01Ob0tINUNDYnN4d1JGbjZ3eStYUWFW?=
+ =?utf-8?B?OG9IRkZLV2ZMN0p1dHlGWGlWUEYwaGttaFZKeUQrSWduNmtydTV6R2p5eWZh?=
+ =?utf-8?B?dHRmczE2WXdZLzV0OWFtdkZnK2YwZVJVOWs1TFdsWGhHcWZPZk9TczlXR1Jw?=
+ =?utf-8?B?cDlQazlSNmMzbzFndGpXZXp5dXJYSG9xbDE4bDdNWlRsTnhadWVVdEZuOGZK?=
+ =?utf-8?Q?NakciuirR10whZMFsCxmkqkZjoE4sk2R06HBU=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:KL1PR0601MB4891.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366007)(376005)(1800799015)(52116005)(38350700005); DIR:OUT;
+ SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?QkRBVExvcEhBb1BFUUhQeVh6dFR6WkJmMUZOQ1MxODhyZWpHTklGUzJLaERH?=
+ =?utf-8?B?akhPRFRIK3BaN3lWVFF1d1lUaTRqRmkvbC8vSzB0WmlDUko4cGRKVTJhQUNq?=
+ =?utf-8?B?YWF5WllyM0ZOMjJxaFhQdlU2TDFQdWoxd210aWZscDhUR3BpOW5hRklRU3B4?=
+ =?utf-8?B?K1FvMXIwMWFQeFVZYm04SGl1VkVHNVJBdDhhOW1EL2QyRG02Y0pxdzVKelVV?=
+ =?utf-8?B?c2twbmh1aTNKbVZJcFpsUWJ3K2UxTURKZUJKYnpVRTVLMlZISzFicHlSbkFO?=
+ =?utf-8?B?dDNKN2hWWGp5UVVNVnRKSUNxaTg0TFcrckhhYUJzaXVpZGJRWlFXWDk0empo?=
+ =?utf-8?B?TDhic08rRjdndUUvbXVJOG9QT3JmS3lybzlOWTh3NUV2SGhqcGJhNGJBZk9v?=
+ =?utf-8?B?b29xTHpqa1RmNlI4bmJTZGhjQzRJVDRQaDVFUFBSY1U2ZXA1dHRUd0xOcjRC?=
+ =?utf-8?B?eVhuMjdNVzczc2JLeGtOVjYzb2I4WWQ4elMyRGdXVEZkRERXeDh6WG9UMThZ?=
+ =?utf-8?B?d0pMNHU3M1I5QkorbGxZS3lwa2NQNmhqdTJkRFgxNFBHTCtCZ2FzUk5yU0p6?=
+ =?utf-8?B?RGw5UFRQWUdIVWVJQVdHbWxFLzl1a0R5VVNtT3Z3ZDgxaWtlZExUVjRqanRZ?=
+ =?utf-8?B?REl5bDM0M08xaUM3TFhlam1DaStwOFdaNDU0SUFPaVVEOWo1Y05MQWlUaHhT?=
+ =?utf-8?B?Rk0zOXkvYURJMUl1MnhUWjJHaWdaU0Jac2NwaHlMVFlUV0JRdHNWaTdyaE1R?=
+ =?utf-8?B?ZlVYVko1VG9GRlpRUlVaMEhpT2JHcHUvQStwVWd0QTl4Q2dwSG1lbXZYbGdz?=
+ =?utf-8?B?dmNpSzBST08yZEdhaFRuT0JLdDdoc3dxTTB3YWF4KzVLMXo4R1YvR2FzYXNl?=
+ =?utf-8?B?VWR3MGNtQzlWcGJnNTlhcXYrbmFWUEdkeHZrODJXbWc5Y00rTVFMSUl4VlJD?=
+ =?utf-8?B?MXRUcnlCdEoyZXM2NDh1KzYycnA0MmFtTGpwblhzOVJ4TDFEQTVET0llaVhn?=
+ =?utf-8?B?MTFqRHptaWRkUFBtOGs5dkttcUt1cmo0akFPaGJCRlhxK2FDaWFSZk9nczc4?=
+ =?utf-8?B?ZkVKKzI2cDlqM25YUlJuVU1pRlBTR0hHSXBRYjJzL2graGtKaytUSWgrVzVB?=
+ =?utf-8?B?NUh1Nkt4STArMkNrK2RTKzJPeVdDVFVSZHNVOGtnakcyZ3Z3N21kdlN4VzEw?=
+ =?utf-8?B?M1hBdEpPNTFrZE5rQ3VyV2E2SytZL3pEeEh0eHhFSXFSZ2h4UFk0QjQ3L2ha?=
+ =?utf-8?B?UXBUYW5XMGJNQWhJNFRhVDlHcWhoMHpCZkxwYzJOaUwwV2ZEd3JEU0RDSW5X?=
+ =?utf-8?B?RVRnZ1k3Vm0rWlRRSWVJcHRvS29zMU91Wk5zcW45U3h4SVlFWllNeU5Felgy?=
+ =?utf-8?B?MCtVS251RmZlZm1lcnRMbUJhTVpwRWZBSHpzWGtjS3RHbjZGMFRqelJBcW1K?=
+ =?utf-8?B?N0ZFMEpyd2tVY3h0RHR0aVhucExDUm5rWGViVnUwVWw2VlBtK1JQQVlvWU5P?=
+ =?utf-8?B?eGQyS2g4OTA2NDRBMjhaUU5BdCt6WXJPeGswNW1BZEx5Y0U0emRKKzBvZUhX?=
+ =?utf-8?B?dllVOUdMdCtJcCttUit5TTA0SmxyNDlCSFNjMm9rMGk3QVdhY0ZmN2RRVzFO?=
+ =?utf-8?B?Wjdpek1vc2JYT3kvenp1OUFHZ2h2MWJicWJUQ1VFVXlPSDQyZllicWtQQmhl?=
+ =?utf-8?B?Sk5EV3FXUURnOXdsVktzUmprUVpPOUVEMCtrNXBudllHNjdDbElTQjhjVXF2?=
+ =?utf-8?B?UncxYkhtcWdGeTlBS2dxN2RUb0NVdmFaUHVvUVpoOE13S1JxODdoL3Y4QWJw?=
+ =?utf-8?B?TS9WWEZxYmFSazFiYlhidERra0JwNy9kN1hDYndwT0xTNlJrTnNSd3FkVGVp?=
+ =?utf-8?B?b0RZYVlqRkJvQXIzNXZZbXZQVUVYRjBpcWFJb0xCNy9LOFVHdjd0WkVPSnpO?=
+ =?utf-8?B?c3ZYV0J2dVZRQnlsQWJTVWd0Ulovam1KUUlubEJOdlVBdVUyeVRBd0dZbm1i?=
+ =?utf-8?B?QVpVaDZ0NEFhVHZEU3pQdEp1ZjM4ZEF1YmcyQXFiS0pZRnArUDcrejNKcFBt?=
+ =?utf-8?B?bFdCUEtUYlNrRlRJbDUyVmpIWnYrQW9EcmdKaDU1Q01pQ1MvMklMbWlZOXg1?=
+ =?utf-8?B?Y2ZCQjZPcXV2UHdaZVZab25tTWtqenRKUjZ6UXRmSkxQUG85QktVMkgyMGVj?=
+ =?utf-8?B?MHc9PQ==?=
+X-OriginatorOrg: jaguarmicro.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 79126536-ceff-43d0-280a-08dc860f7695
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR0601MB4891.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2024 10:00:15.5844 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 1e45a5c2-d3e1-46b3-a0e6-c5ebf6d8ba7b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: jF3M+LWaBsONC82Ttl2K9VkdJgPBJ6CcvphAO/PBUbm7cIBy7iEsqn070r7NVjnU9pWFyQfQtVoLcDNDUmgWw6VU//xUDN8xTOJh5+X/w54=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR06MB5433
+Received-SPF: pass client-ip=2a01:111:f403:c401::3;
+ envelope-from=andrew.yuan@jaguarmicro.com;
+ helo=SINPR02CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 06 Jun 2024 11:28:50 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,165 +211,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bzxZa4TEDDoS
+X-TUID: FxdoLn0SEaCR
 
---000000000000536a0f061a391ace
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+        In the Cadence IP for Gigabit Ethernet MAC Part Number: IP7014 IP Rev: R1p12 - Doc Rev: 1.3 User Guide, the specification for the type2_compare_x_word_0 register is as follows:
+        The byte stored in bits [23:16] is compared against the byte in the received frame from the selected offset+0, and the byte stored in bits [31:24] is compared against the byte in
+        the received frame from the selected offset+1.
 
-On Thu, Jun 6, 2024 at 2:06=E2=80=AFPM Peter Maydell <peter.maydell@linaro.=
-org>
-wrote:
+        However, there is an implementation error in the cadence_gem model in qemu：
+        the byte stored in bits [31:24] is compared against the byte in the received frame from the selected offset+0
 
-> On Thu, 6 Jun 2024 at 12:04, Edgar E. Iglesias <edgar.iglesias@gmail.com>
-> wrote:
-> >
-> > On Thu, Jun 6, 2024 at 12:00=E2=80=AFPM Andrew.Yuan <andrew.yuan@jaguar=
-micro.com>
-> wrote:
-> >>
-> >>         In the Cadence IP for Gigabit Ethernet MAC Part Number: IP7014
-> IP Rev: R1p12 - Doc Rev: 1.3 User Guide, the specification for the
-> type2_compare_x_word_0 register is as follows:
-> >>         The byte stored in bits [23:16] is compared against the byte i=
-n
-> the received frame from the selected offset+0, and the byte stored in bit=
-s
-> [31:24] is compared against the byte in
-> >>         the received frame from the selected offset+1.
-> >>
-> >>         However, there is an implementation error in the cadence_gem
-> model in qemu=EF=BC=9A
-> >>         the byte stored in bits [31:24] is compared against the byte i=
-n
-> the received frame from the selected offset+0
-> >>
-> >>         Now, the error code is as follows:
-> >>         rx_cmp =3D rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
-> >>
-> >>         and needs to be corrected to=EF=BC=9A
-> >>         rx_cmp =3D rxbuf_ptr[offset + 1] << 8 | rxbuf_ptr[offset];
-> >>
-> >> Signed-off-by: Andrew.Yuan <andrew.yuan@jaguarmicro.com>
-> >
-> >
-> >
-> > LGTM:
-> > Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
-> >
-> > At some point it would be nice to add the missing logic for the
-> DISABLE_MASK bit that
-> > extends the compare range from 16 to 32-bits.
->
-> I had a look at this device's code, and I'm trying to
-> figure out how we know at this point that there really are
-> two bytes pointed to by rxbuf_ptr.
->  * The get_queue_from_screen() function takes a rxbufsize
->    argument, but it never uses it...
->  * the callsite in gem_receive() will (in the "strip FCS" case)
->    pass its buf argument as rxbuf_ptr, but it will use a
->    rxbufsize argument which has been raised to at least
->    GEM_DMACFG_RBUFSZ_MUL, even if the input size argument
->    is smaller, so even if get_queue_from_screen() honoured
->    its rxbufsize argument it wouldn't help
->
-> Would somebody who understands the device like to have a look ?
->
->
-Yes, I agree that it looks strange. The padding to minimum 60B seems wrong
-since we're blindly extending buf from something less than 60B to 60B
-and then potentially copying from it...
+        Now, the error code is as follows:
+        rx_cmp = rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
 
-Cheers,
-Edgar
+        and needs to be corrected to：
+        rx_cmp = rxbuf_ptr[offset + 1] << 8 | rxbuf_ptr[offset];
 
+Signed-off-by: Andrew.Yuan <andrew.yuan@jaguarmicro.com>
+---
+ hw/net/cadence_gem.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> This is a separate issue from the incorrect array offset
-> argument this patch fixes, though.
->
-> thanks
-> -- PMM
->
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index ec7bf562e5..9c73ded0d3 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -946,7 +946,7 @@ static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
+                 break;
+             }
+ 
+-            rx_cmp = rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
++            rx_cmp = rxbuf_ptr[offset + 1] << 8 | rxbuf_ptr[offset];
+             mask = FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, MASK_VALUE);
+             compare = FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, COMPARE_VALUE);
+ 
+-- 
+2.37.0.windows.1
 
---000000000000536a0f061a391ace
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">On Thu, Jun 6, 2024 at 2:06=E2=80=AFPM Pe=
-ter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@l=
-inaro.org</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
- rgb(204,204,204);padding-left:1ex">On Thu, 6 Jun 2024 at 12:04, Edgar E. I=
-glesias &lt;<a href=3D"mailto:edgar.iglesias@gmail.com" target=3D"_blank">e=
-dgar.iglesias@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; On Thu, Jun 6, 2024 at 12:00=E2=80=AFPM Andrew.Yuan &lt;<a href=3D"mai=
-lto:andrew.yuan@jaguarmicro.com" target=3D"_blank">andrew.yuan@jaguarmicro.=
-com</a>&gt; wrote:<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0In the Cadence IP for Gigabit Eth=
-ernet MAC Part Number: IP7014 IP Rev: R1p12 - Doc Rev: 1.3 User Guide, the =
-specification for the type2_compare_x_word_0 register is as follows:<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0The byte stored in bits [23:16] i=
-s compared against the byte in the received frame from the selected offset+=
-0, and the byte stored in bits [31:24] is compared against the byte in<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0the received frame from the selec=
-ted offset+1.<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0However, there is an implementati=
-on error in the cadence_gem model in qemu=EF=BC=9A<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0the byte stored in bits [31:24] i=
-s compared against the byte in the received frame from the selected offset+=
-0<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Now, the error code is as follows=
-:<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0rx_cmp =3D rxbuf_ptr[offset] &lt;=
-&lt; 8 | rxbuf_ptr[offset];<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0and needs to be corrected to=EF=
-=BC=9A<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0rx_cmp =3D rxbuf_ptr[offset + 1] =
-&lt;&lt; 8 | rxbuf_ptr[offset];<br>
-&gt;&gt;<br>
-&gt;&gt; Signed-off-by: Andrew.Yuan &lt;<a href=3D"mailto:andrew.yuan@jagua=
-rmicro.com" target=3D"_blank">andrew.yuan@jaguarmicro.com</a>&gt;<br>
-&gt;<br>
-&gt;<br>
-&gt;<br>
-&gt; LGTM:<br>
-&gt; Reviewed-by: Edgar E. Iglesias &lt;<a href=3D"mailto:edgar.iglesias@am=
-d.com" target=3D"_blank">edgar.iglesias@amd.com</a>&gt;<br>
-&gt;<br>
-&gt; At some point it would be nice to add the missing logic for the DISABL=
-E_MASK bit that<br>
-&gt; extends the compare range from 16 to 32-bits.<br>
-<br>
-I had a look at this device&#39;s code, and I&#39;m trying to<br>
-figure out how we know at this point that there really are<br>
-two bytes pointed to by rxbuf_ptr.<br>
-=C2=A0* The get_queue_from_screen() function takes a rxbufsize<br>
-=C2=A0 =C2=A0argument, but it never uses it...<br>
-=C2=A0* the callsite in gem_receive() will (in the &quot;strip FCS&quot; ca=
-se)<br>
-=C2=A0 =C2=A0pass its buf argument as rxbuf_ptr, but it will use a<br>
-=C2=A0 =C2=A0rxbufsize argument which has been raised to at least<br>
-=C2=A0 =C2=A0GEM_DMACFG_RBUFSZ_MUL, even if the input size argument<br>
-=C2=A0 =C2=A0is smaller, so even if get_queue_from_screen() honoured<br>
-=C2=A0 =C2=A0its rxbufsize argument it wouldn&#39;t help<br>
-<br>
-Would somebody who understands the device like to have a look ?<br>
-<br></blockquote><div><br></div><div>Yes, I agree that it looks strange. Th=
-e padding to minimum 60B seems wrong</div><div>since we&#39;re blindly exte=
-nding buf from something less than 60B to 60B</div><div>and then potentiall=
-y copying from it...</div><div><br></div><div>Cheers,</div><div>Edgar</div>=
-<div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px =
-0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-This is a separate issue from the incorrect array offset<br>
-argument this patch fixes, though.<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div></div>
-
---000000000000536a0f061a391ace--

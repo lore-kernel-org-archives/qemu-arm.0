@@ -1,113 +1,94 @@
-Received: by 2002:a17:906:acd:b0:a66:557b:2f6e with SMTP id z13csp249523ejf;
-        Thu, 6 Jun 2024 04:57:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUEWQy/i/sr82QckuUL3yfmxGF5O1I3jgSjcu0HnqFqs20GNM7bMg73jROPC+jn8baYvpuqYqgKdSOqriFyXIK2AeWEehUB
-X-Google-Smtp-Source: AGHT+IEGhVpecIWRtgkQFyhxtzZlw5oVH96F+rrDThea+6zQ3W5zh8/6l6XP6nDLUYcg0hhL29CR
-X-Received: by 2002:a05:6214:5c01:b0:6ae:d3a7:aab with SMTP id 6a1803df08f44-6b02bf10248mr66917966d6.9.1717675059259;
-        Thu, 06 Jun 2024 04:57:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717675059; cv=none;
+Received: by 2002:a17:906:acd:b0:a66:557b:2f6e with SMTP id z13csp452520ejf;
+        Thu, 6 Jun 2024 10:14:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVo+1H/gygTh1nol8US3Ek8rVtvvN3VAzF8xYCXZFg6I+B4uijqfCULnNtvcd/XnyCb4Gxa5ZsD/BHvWFR6w4GlJVrm52yt
+X-Google-Smtp-Source: AGHT+IHMzUNVm88cmMItOiUV1yePs7H7UB0t5cWgbYO4Cw0HEG7cxQfHUKHi/uLWDg9Jl5ShbKzl
+X-Received: by 2002:ac5:c9ba:0:b0:4eb:39c9:c935 with SMTP id 71dfb90a1353d-4eb562ced40mr219754e0c.14.1717694049667;
+        Thu, 06 Jun 2024 10:14:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717694049; cv=none;
         d=google.com; s=arc-20160816;
-        b=JzSu8L/8Ixxasc4+e1H5dADMzmGirGAEVkevlaGIt/0n0/8ClzlD6ReCyi6aQuB5ys
-         Mk3Lok/1Ia6y9oh9Tyx/FNJhLmUlADCBrnM9ZWsfyGqgg7iOUF2+hh1WRjDPQ+RkIo26
-         10kVljO/oec1EEKTYaEv5d4BZkb+69h7nlwULy0welgXOMm2jAAmt9bHINn71nXObYST
-         nsrmIhQ82IFAxSsSw5bBjGAZ3bp4nzgW99/tfJ55D2vFeXHkf4TjZ/5YHpYEBGb3el4k
-         A8tvha4cGdCQ+7zAl4XpKUKBw+vw+woVpxL5QSF0jreHut9sv9bRR6ff32mnX2jH20+D
-         u22g==
+        b=EmBQoIkT7iIp23AmuwuY1hMA8PPWWEmJcPYdDguQ4hhGhgXZTCqhD7iEbSrlDr56Qx
+         Hc64WZTGkmDlJ8caphhs1wt3ZitwN3QA/wCpmtMcuMIqJWL7QGSXCZlGHR3fE3elxhvK
+         Th9J37FwmaLEjA1acZMjLYfptka70NIy9rmjoDvZU3aXYUdXNMV8GyQmcQxOOY0C1i+t
+         +DYgocU9oE+h+qUAV4iJyhDPg5nFQ1jr1PvMYBwBMix1eVqimmfj8+9aRjt+UdNwE8QC
+         xVqzeUlFJsBlEm7st3xwXJsrZVuLSptoH6wZzA0Sai2zNELDEXDGehVlKVsFzzVRtVVQ
+         OHQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Xqdoq/APR3bDO52VhiKSuVhnfFgHAXsLRW+In6BGibA=;
-        fh=vZTNirw2rvRB/TILnxMLAtv45CQxIWdiX3+CeqP3GjU=;
-        b=KTlofrKz9iWDUQz9JjSe8p3acTks5HlO09ulwbux22kgvqegVEjWZZ+n7OREtrwejv
-         h+GUKZLafGU2SM4lKzbA037/o22PnPDHcadUdl3gfUox2gZLgT3FgEXxE614DczDOOaO
-         DZyG01M7i8P75sYa7fMOjsa/nFTbkBgbagmYyczwVbseaZjF4uC3+cWds2MEjRgfrthz
-         z6eNrkWYOkUeNjDUnsApKmHX9kc+Sq2KREn/WkGSpkuCkyVghoa5hQFmxHJqwqBJ+0jZ
-         ulZRJzHN88bSOt/B97O4rQ1Sb8x84DaBKG9MYAbgTxV6Um7AyVA1zAtxqnYTBAbq2/ab
-         F47A==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=eRFlZeSzy+kmvKbA0kl/Ve/gRT0c5cO3omzPGDzdpDg=;
+        fh=k3kBtucoVHEJocDtqzz0ouBSveULzSEfMIBv0EtxVP8=;
+        b=TU+olo2AhmZHd+NpkZyUwCEABWAkPtjlIXt4lA+80bzmzBsgJyBWWl6dP5Rmqz8YTU
+         +BBBBLT/hTfeGGOplmaDeL4WP3d90STAE4Q+6P64sb0BXpTNaWr2C7ouXAEjKEB/Y/H5
+         TGHungF1rNDsJZMpiTFHmg9NYyK+H2PNK8/XZ+8l0P9YaTfRkvC4WlgaBW/ppnNpTIGb
+         qNYsXxu2iguUR1ryOwfT8CE55acrM1eDaf85TaFiST6hiXH/AANoRnQI6hCv8b/pyiJ6
+         Ubz1uVevK7NLZM4t5kP1zU9iKCtqsun78PC6WESopGICGZhKrqn+r9ZAFPE7rR4xKlk0
+         N6uQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bktwR+su;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b04f96809bsi12902856d6.209.2024.06.06.04.57.38
+        by mx.google.com with ESMTPS id 71dfb90a1353d-4eb4ad34778si431998e0c.133.2024.06.06.10.14.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Jun 2024 04:57:39 -0700 (PDT)
+        Thu, 06 Jun 2024 10:14:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bktwR+su;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sFBk5-00019o-Bb; Thu, 06 Jun 2024 07:57:17 -0400
+	id 1sFGga-0002gm-Pl; Thu, 06 Jun 2024 13:14:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sFBk3-00019G-Ft
- for qemu-arm@nongnu.org; Thu, 06 Jun 2024 07:57:15 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sFBk0-00028x-SY
- for qemu-arm@nongnu.org; Thu, 06 Jun 2024 07:57:15 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-57a4d7ba501so946677a12.2
- for <qemu-arm@nongnu.org>; Thu, 06 Jun 2024 04:57:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1717675031; x=1718279831; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Xqdoq/APR3bDO52VhiKSuVhnfFgHAXsLRW+In6BGibA=;
- b=bktwR+suN99VMxiDZ+Hjp07YfEM9j4o8/JVf4xNzN58XEidQGBreb/svdrr1TaaEZN
- Denav5w3Tg6QsXBpGrTr65j6owpFDv3ezne+LssZxFmCrWjEX66S5gY7cclkBVDagB0O
- PIWDhaX9s1xPhCu2yeLEznjrNPhf62iw8tZ4c2xXRAfq1q4NYFiLEYC2h9zBGasGQGWR
- HGj2FSlbovnAIt9WgTFoIeFOmzEQRnSCPVJU5X2ZaeYY0YCoWkb29fC0DyD9FFcZwxty
- Lbcr7cIAmfcM4PNpVWBhEN2P2i5btt7g9Xp5V3mFWq+DaZLzTi38WSckEjmZgGAcWB3x
- 3iYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717675031; x=1718279831;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Xqdoq/APR3bDO52VhiKSuVhnfFgHAXsLRW+In6BGibA=;
- b=JyWQFZDwtuBD7UySq0psLC1ojMizdQ0dHb2yDImAwC2gCK7SFMQCk7cVWQXtF7pfwV
- YZDTDn1Ezre8inQaWnZPWjHuv5WGQ3Xee7A+bpUy4O+sR4Epa6z/D3QPk+9x0oNyaFCM
- ogSGq0mUgRrPCAQLht1sVtaNWBikOpE0ZUI4D14DbMUQrXWJYW9wwarPh5+jHWXD7m0j
- jQhHRlrAxzvX/qaqLNaX/Zca/srOiKdKIa1sLTQmwsDVnxJIoi3wRDOaf65FXuhp5N+z
- ZlKGqnP+CQJD/VmLjqlID5jy2lQ955NJuK/aAQc9I56ikcASTLVmOhRg57XWRhHSgbGr
- QeTw==
-X-Gm-Message-State: AOJu0Ywf2jdLb3FW07GX8Np3CnEvLU2M51bNABMdq1964UTwUPV6IicC
- 2WY12m3T+oiEzcDFzjS7tbw3cXBNLyNpfkmLTqm1/xsX0CUL3OrVfIe1dIHZi4Z6Z6Is/xlK2D2
- DZPH7r5CK9YWbj4YVZ8EHsMDz387XryOEVVZYlQ==
-X-Received: by 2002:a50:875c:0:b0:57a:4af6:319e with SMTP id
- 4fb4d7f45d1cf-57a8b69d02amr3589351a12.1.1717675030743; Thu, 06 Jun 2024
- 04:57:10 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240606104745.291330-1-zhenyzha@redhat.com>
-In-Reply-To: <20240606104745.291330-1-zhenyzha@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Jun 2024 12:56:59 +0100
-Message-ID: <CAFEAcA_ovHZWFi8Xn1YdPNkFjNWQ+BGQTA0Oc9oXTNuPD+bmmA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1sFGgZ-0002gS-Gp; Thu, 06 Jun 2024 13:13:59 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1sFGgW-0007Vj-2i; Thu, 06 Jun 2024 13:13:59 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Vw9mG37XGz6HJP4;
+ Fri,  7 Jun 2024 01:09:18 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id 336401402CB;
+ Fri,  7 Jun 2024 01:13:40 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 6 Jun
+ 2024 18:13:39 +0100
+Date: Thu, 6 Jun 2024 18:13:38 +0100
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: Zhenyu Zhang <zhenyzha@redhat.com>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>, <gshan@redhat.com>, <eauger@redhat.com>,
+ <sebott@redhat.com>, <cohuck@redhat.com>, <ddutile@redhat.com>,
+ <shahuang@redhat.com>, Robin Murphy <robin.murphy@arm.com>
 Subject: Re: [PATCH RFC] hw/arm/virt: Avoid unexpected warning from Linux
  guest on host with Fujitsu CPUs
-To: Zhenyu Zhang <zhenyzha@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, gshan@redhat.com, 
- eauger@redhat.com, sebott@redhat.com, cohuck@redhat.com, ddutile@redhat.com, 
- shahuang@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Message-ID: <20240606181338.00003336@Huawei.com>
+In-Reply-To: <CAFEAcA_ovHZWFi8Xn1YdPNkFjNWQ+BGQTA0Oc9oXTNuPD+bmmA@mail.gmail.com>
+References: <20240606104745.291330-1-zhenyzha@redhat.com>
+ <CAFEAcA_ovHZWFi8Xn1YdPNkFjNWQ+BGQTA0Oc9oXTNuPD+bmmA@mail.gmail.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500004.china.huawei.com (7.191.163.9) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,157 +101,197 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Skr+1T+tWlkM
+X-TUID: oN1nDxH2+kAZ
 
-On Thu, 6 Jun 2024 at 11:48, Zhenyu Zhang <zhenyzha@redhat.com> wrote:
->
-> Multiple warning messages and corresponding backtraces are observed when Linux
-> guest is booted on the host with Fujitsu CPUs. One of them is shown as below.
->
-> [    0.032443] ------------[ cut here ]------------
-> [    0.032446] uart-pl011 9000000.pl011: ARCH_DMA_MINALIGN smaller than CTR_EL0.CWG (128 < 256)
-> [    0.032454] WARNING: CPU: 0 PID: 1 at arch/arm64/mm/dma-mapping.c:54 arch_setup_dma_ops+0xbc/0xcc
-> [    0.032470] Modules linked in:
-> [    0.032475] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-452.el9.aarch64 #1
-> [    0.032481] Hardware name: linux,dummy-virt (DT)
-> [    0.032484] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> [    0.032490] pc : arch_setup_dma_ops+0xbc/0xcc
-> [    0.032496] lr : arch_setup_dma_ops+0xbc/0xcc
-> [    0.032501] sp : ffff80008003b860
-> [    0.032503] x29: ffff80008003b860 x28: 0000000000000000 x27: ffffaae4b949049c
-> [    0.032510] x26: 0000000000000000 x25: 0000000000000000 x24: 0000000000000000
-> [    0.032517] x23: 0000000000000100 x22: 0000000000000000 x21: 0000000000000000
-> [    0.032523] x20: 0000000100000000 x19: ffff2f06c02ea400 x18: ffffffffffffffff
-> [    0.032529] x17: 00000000208a5f76 x16: 000000006589dbcb x15: ffffaae4ba071c89
-> [    0.032535] x14: 0000000000000000 x13: ffffaae4ba071c84 x12: 455f525443206e61
-> [    0.032541] x11: 68742072656c6c61 x10: 0000000000000029 x9 : ffffaae4b7d21da4
-> [    0.032547] x8 : 0000000000000029 x7 : 4c414e494d5f414d x6 : 0000000000000029
-> [    0.032553] x5 : 000000000000000f x4 : ffffaae4b9617a00 x3 : 0000000000000001
-> [    0.032558] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff2f06c029be40
-> [    0.032564] Call trace:
-> [    0.032566]  arch_setup_dma_ops+0xbc/0xcc
-> [    0.032572]  of_dma_configure_id+0x138/0x300
-> [    0.032591]  amba_dma_configure+0x34/0xc0
-> [    0.032600]  really_probe+0x78/0x3dc
-> [    0.032614]  __driver_probe_device+0x108/0x160
-> [    0.032619]  driver_probe_device+0x44/0x114
-> [    0.032624]  __device_attach_driver+0xb8/0x14c
-> [    0.032629]  bus_for_each_drv+0x88/0xe4
-> [    0.032634]  __device_attach+0xb0/0x1e0
-> [    0.032638]  device_initial_probe+0x18/0x20
-> [    0.032643]  bus_probe_device+0xa8/0xb0
-> [    0.032648]  device_add+0x4b4/0x6c0
-> [    0.032652]  amba_device_try_add.part.0+0x48/0x360
-> [    0.032657]  amba_device_add+0x104/0x144
-> [    0.032662]  of_amba_device_create.isra.0+0x100/0x1c4
-> [    0.032666]  of_platform_bus_create+0x294/0x35c
-> [    0.032669]  of_platform_populate+0x5c/0x150
-> [    0.032672]  of_platform_default_populate_init+0xd0/0xec
-> [    0.032697]  do_one_initcall+0x4c/0x2e0
-> [    0.032701]  do_initcalls+0x100/0x13c
-> [    0.032707]  kernel_init_freeable+0x1c8/0x21c
-> [    0.032712]  kernel_init+0x28/0x140
-> [    0.032731]  ret_from_fork+0x10/0x20
-> [    0.032735] ---[ end trace 0000000000000000 ]---
->
-> In Linux, a check is applied to every device which is exposed through device-tree
-> node. The warning message is raised when the device isn't DMA coherent and the
-> cache line size is larger than ARCH_DMA_MINALIGN (128 bytes). The cache line is
-> sorted from CTR_EL0[CWG], which corresponds to 256 bytes on the guest CPUs.
-> The DMA coherent capability is claimed through 'dma-coherent' in their
-> device-tree nodes.
+On Thu, 6 Jun 2024 12:56:59 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-For QEMU emulated all our DMA is always coherent, so where we
-have DMA-capable devices we should definitely tell the kernel
-that that DMA is coherent.
+> On Thu, 6 Jun 2024 at 11:48, Zhenyu Zhang <zhenyzha@redhat.com> wrote:
+> >
+> > Multiple warning messages and corresponding backtraces are observed when Linux
+> > guest is booted on the host with Fujitsu CPUs. One of them is shown as below.
+> >
+> > [    0.032443] ------------[ cut here ]------------
+> > [    0.032446] uart-pl011 9000000.pl011: ARCH_DMA_MINALIGN smaller than CTR_EL0.CWG (128 < 256)
+> > [    0.032454] WARNING: CPU: 0 PID: 1 at arch/arm64/mm/dma-mapping.c:54 arch_setup_dma_ops+0xbc/0xcc
+> > [    0.032470] Modules linked in:
+> > [    0.032475] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-452.el9.aarch64 #1
+> > [    0.032481] Hardware name: linux,dummy-virt (DT)
+> > [    0.032484] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> > [    0.032490] pc : arch_setup_dma_ops+0xbc/0xcc
+> > [    0.032496] lr : arch_setup_dma_ops+0xbc/0xcc
+> > [    0.032501] sp : ffff80008003b860
+> > [    0.032503] x29: ffff80008003b860 x28: 0000000000000000 x27: ffffaae4b949049c
+> > [    0.032510] x26: 0000000000000000 x25: 0000000000000000 x24: 0000000000000000
+> > [    0.032517] x23: 0000000000000100 x22: 0000000000000000 x21: 0000000000000000
+> > [    0.032523] x20: 0000000100000000 x19: ffff2f06c02ea400 x18: ffffffffffffffff
+> > [    0.032529] x17: 00000000208a5f76 x16: 000000006589dbcb x15: ffffaae4ba071c89
+> > [    0.032535] x14: 0000000000000000 x13: ffffaae4ba071c84 x12: 455f525443206e61
+> > [    0.032541] x11: 68742072656c6c61 x10: 0000000000000029 x9 : ffffaae4b7d21da4
+> > [    0.032547] x8 : 0000000000000029 x7 : 4c414e494d5f414d x6 : 0000000000000029
+> > [    0.032553] x5 : 000000000000000f x4 : ffffaae4b9617a00 x3 : 0000000000000001
+> > [    0.032558] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff2f06c029be40
+> > [    0.032564] Call trace:
+> > [    0.032566]  arch_setup_dma_ops+0xbc/0xcc
+> > [    0.032572]  of_dma_configure_id+0x138/0x300
+> > [    0.032591]  amba_dma_configure+0x34/0xc0
+> > [    0.032600]  really_probe+0x78/0x3dc
+> > [    0.032614]  __driver_probe_device+0x108/0x160
+> > [    0.032619]  driver_probe_device+0x44/0x114
+> > [    0.032624]  __device_attach_driver+0xb8/0x14c
+> > [    0.032629]  bus_for_each_drv+0x88/0xe4
+> > [    0.032634]  __device_attach+0xb0/0x1e0
+> > [    0.032638]  device_initial_probe+0x18/0x20
+> > [    0.032643]  bus_probe_device+0xa8/0xb0
+> > [    0.032648]  device_add+0x4b4/0x6c0
+> > [    0.032652]  amba_device_try_add.part.0+0x48/0x360
+> > [    0.032657]  amba_device_add+0x104/0x144
+> > [    0.032662]  of_amba_device_create.isra.0+0x100/0x1c4
+> > [    0.032666]  of_platform_bus_create+0x294/0x35c
+> > [    0.032669]  of_platform_populate+0x5c/0x150
+> > [    0.032672]  of_platform_default_populate_init+0xd0/0xec
+> > [    0.032697]  do_one_initcall+0x4c/0x2e0
+> > [    0.032701]  do_initcalls+0x100/0x13c
+> > [    0.032707]  kernel_init_freeable+0x1c8/0x21c
+> > [    0.032712]  kernel_init+0x28/0x140
+> > [    0.032731]  ret_from_fork+0x10/0x20
+> > [    0.032735] ---[ end trace 0000000000000000 ]---
+> >
+> > In Linux, a check is applied to every device which is exposed through device-tree
+> > node. The warning message is raised when the device isn't DMA coherent and the
+> > cache line size is larger than ARCH_DMA_MINALIGN (128 bytes). The cache line is
+> > sorted from CTR_EL0[CWG], which corresponds to 256 bytes on the guest CPUs.
+> > The DMA coherent capability is claimed through 'dma-coherent' in their
+> > device-tree nodes.  
+> 
+> For QEMU emulated all our DMA is always coherent, so where we
+> have DMA-capable devices we should definitely tell the kernel
+> that that DMA is coherent.
+> 
+> Our pl011 does not do DMA, though (we do not set the dmas property), so
+> it's kind of bogus for the kernel to complain about that.
+> 
+> So I think we should take these changes where they refer to DMA
+> capable devices and ask the kernel folks to fix the warnings
+> where they refer to devices that aren't doing DMA. Looking through
+> the patch, though, my initial impression is that all these are
+> in the latter category...
 
-Our pl011 does not do DMA, though (we do not set the dmas property), so
-it's kind of bogus for the kernel to complain about that.
+I was curious and have a very slow test running, so took a look.
+of_dma_configure() is being passed force_dma = true.
+https://elixir.bootlin.com/linux/v6.10-rc2/source/drivers/amba/bus.c#L361
 
-So I think we should take these changes where they refer to DMA
-capable devices and ask the kernel folks to fix the warnings
-where they refer to devices that aren't doing DMA. Looking through
-the patch, though, my initial impression is that all these are
-in the latter category...
+The is a comment in of_dma_configure()
+		/*
+		 * For legacy reasons, we have to assume some devices need
+		 * DMA configuration regardless of whether "dma-ranges" is
+		 * correctly specified or not.
+		 */
+So this I think this is being triggered by a workaround for broken DT.
 
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index d480a7da02..cdf99966e6 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -509,6 +509,7 @@ static void fdt_add_psci_node(void *fdt)
->      qemu_fdt_setprop_cell(fdt, "/psci", "cpu_off", cpu_off_fn);
->      qemu_fdt_setprop_cell(fdt, "/psci", "cpu_on", cpu_on_fn);
->      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
-> +    qemu_fdt_setprop(fdt, "/psci", "dma-coherent", NULL, 0);
+This was introduced by Robin Murphy +CC though you may need to ask on
+kernel list because ARM / QEMU fun.
 
-The PSCI node is describing the firmware interface for
-HVC or SMC calls -- I don't think it makes any sense
-to think of this as doing DMA. So I would query the kernel
-folks about this warning.
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=723288836628b
 
->  }
->
->  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 3c93c0c0a6..d3e5f512e2 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -652,6 +652,7 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
->          qemu_fdt_setprop_cells(ms->fdt, "/pmu", "interrupts",
->                                 GIC_FDT_IRQ_TYPE_PPI,
->                                 INTID_TO_PPI(VIRTUAL_PMU_IRQ), irqflags);
-> +        qemu_fdt_setprop(ms->fdt, "/pmu", "dma-coherent", NULL, 0);
+Relevant comment from that patch description:
 
-What DMA interface does the PMU have?
+"Certain bus types have a general expectation of
+DMA capability and carry a well-established precedent that an absent
+"dma-ranges" implies the same as the empty property, so we automatically
+opt those in to DMA configuration regardless, to avoid regressing most
+existing platforms."
 
->      }
->  }
->
-> @@ -936,6 +937,7 @@ static void create_uart(const VirtMachineState *vms, int uart,
->                                 vms->clock_phandle, vms->clock_phandle);
->      qemu_fdt_setprop(ms->fdt, nodename, "clock-names",
->                           clocknames, sizeof(clocknames));
-> +    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
+The patch implies that AMBA is one of those.
 
-As above, our PL011 doesn't do any DMA and we do not advertise
-to the kernel that it does.
+So not sure this is solveable without a hack such as eliding the warning
+message if dma_force was set as the situation probably isn't relevant then..
 
->      if (uart == VIRT_UART) {
->          qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path", nodename);
-> @@ -972,6 +974,7 @@ static void create_rtc(const VirtMachineState *vms)
->                             GIC_FDT_IRQ_FLAGS_LEVEL_HI);
->      qemu_fdt_setprop_cell(ms->fdt, nodename, "clocks", vms->clock_phandle);
->      qemu_fdt_setprop_string(ms->fdt, nodename, "clock-names", "apb_pclk");
-> +    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
->      g_free(nodename);
->  }
+Jonathan
 
-What DMA does the pl031 do?
+> 
+> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> > index d480a7da02..cdf99966e6 100644
+> > --- a/hw/arm/boot.c
+> > +++ b/hw/arm/boot.c
+> > @@ -509,6 +509,7 @@ static void fdt_add_psci_node(void *fdt)
+> >      qemu_fdt_setprop_cell(fdt, "/psci", "cpu_off", cpu_off_fn);
+> >      qemu_fdt_setprop_cell(fdt, "/psci", "cpu_on", cpu_on_fn);
+> >      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+> > +    qemu_fdt_setprop(fdt, "/psci", "dma-coherent", NULL, 0);  
+> 
+> The PSCI node is describing the firmware interface for
+> HVC or SMC calls -- I don't think it makes any sense
+> to think of this as doing DMA. So I would query the kernel
+> folks about this warning.
+> 
+> >  }
+> >
+> >  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index 3c93c0c0a6..d3e5f512e2 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -652,6 +652,7 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+> >          qemu_fdt_setprop_cells(ms->fdt, "/pmu", "interrupts",
+> >                                 GIC_FDT_IRQ_TYPE_PPI,
+> >                                 INTID_TO_PPI(VIRTUAL_PMU_IRQ), irqflags);
+> > +        qemu_fdt_setprop(ms->fdt, "/pmu", "dma-coherent", NULL, 0);  
+> 
+> What DMA interface does the PMU have?
+> 
+> >      }
+> >  }
+> >
+> > @@ -936,6 +937,7 @@ static void create_uart(const VirtMachineState *vms, int uart,
+> >                                 vms->clock_phandle, vms->clock_phandle);
+> >      qemu_fdt_setprop(ms->fdt, nodename, "clock-names",
+> >                           clocknames, sizeof(clocknames));
+> > +    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);  
+> 
+> As above, our PL011 doesn't do any DMA and we do not advertise
+> to the kernel that it does.
+> 
+> >      if (uart == VIRT_UART) {
+> >          qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path", nodename);
+> > @@ -972,6 +974,7 @@ static void create_rtc(const VirtMachineState *vms)
+> >                             GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> >      qemu_fdt_setprop_cell(ms->fdt, nodename, "clocks", vms->clock_phandle);
+> >      qemu_fdt_setprop_string(ms->fdt, nodename, "clock-names", "apb_pclk");
+> > +    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
+> >      g_free(nodename);
+> >  }  
+> 
+> What DMA does the pl031 do?
+> 
+> >
+> > @@ -1077,6 +1080,7 @@ static void create_gpio_devices(const VirtMachineState *vms, int gpio,
+> >      qemu_fdt_setprop_cell(ms->fdt, nodename, "clocks", vms->clock_phandle);
+> >      qemu_fdt_setprop_string(ms->fdt, nodename, "clock-names", "apb_pclk");
+> >      qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle", phandle);
+> > +    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);  
+> 
+> As far as I know the PL061 is also not a DMA-capable device.
+> 
+> >      if (gpio != VIRT_GPIO) {
+> >          /* Mark as not usable by the normal world */
+> > diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+> > index eebcd28f9a..da47071a95 100644
+> > --- a/hw/core/sysbus-fdt.c
+> > +++ b/hw/core/sysbus-fdt.c
+> > @@ -554,6 +554,7 @@ void platform_bus_add_all_fdt_nodes(void *fdt, const char *intc, hwaddr addr,
+> >      qemu_fdt_setprop_cells(fdt, node, "ranges", 0, addr >> 32, addr, bus_size);
+> >
+> >      qemu_fdt_setprop_phandle(fdt, node, "interrupt-parent", intc);
+> > +    qemu_fdt_setprop(fdt, node, "dma-coherent", NULL, 0);  
+> 
+> Isn't this the fdt node for a bus, not a device?
+> 
+> thanks
+> -- PMM
+> 
 
->
-> @@ -1077,6 +1080,7 @@ static void create_gpio_devices(const VirtMachineState *vms, int gpio,
->      qemu_fdt_setprop_cell(ms->fdt, nodename, "clocks", vms->clock_phandle);
->      qemu_fdt_setprop_string(ms->fdt, nodename, "clock-names", "apb_pclk");
->      qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle", phandle);
-> +    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
-
-As far as I know the PL061 is also not a DMA-capable device.
-
->      if (gpio != VIRT_GPIO) {
->          /* Mark as not usable by the normal world */
-> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
-> index eebcd28f9a..da47071a95 100644
-> --- a/hw/core/sysbus-fdt.c
-> +++ b/hw/core/sysbus-fdt.c
-> @@ -554,6 +554,7 @@ void platform_bus_add_all_fdt_nodes(void *fdt, const char *intc, hwaddr addr,
->      qemu_fdt_setprop_cells(fdt, node, "ranges", 0, addr >> 32, addr, bus_size);
->
->      qemu_fdt_setprop_phandle(fdt, node, "interrupt-parent", intc);
-> +    qemu_fdt_setprop(fdt, node, "dma-coherent", NULL, 0);
-
-Isn't this the fdt node for a bus, not a device?
-
-thanks
--- PMM

@@ -1,131 +1,113 @@
-Received: by 2002:a17:906:acd:b0:a66:557b:2f6e with SMTP id z13csp223170ejf;
-        Thu, 6 Jun 2024 04:03:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVKxR7fbOjCFRR5G64o6RPxbV00et4/bnim5k38Nyzd7/lKSM4su3Uriz0OD/N6PxeiFmytlc1/zzdFvHMwKTgy2XxW20As
-X-Google-Smtp-Source: AGHT+IHU1nXOUy+G4h8LZvl1WKCnxHbOzzLAvugyG/YC6mcXlQ8rJk4NCK5pDbRXMLAqPA/G8Tt6
-X-Received: by 2002:a05:6870:46ac:b0:24f:e73a:2b6f with SMTP id 586e51a60fabf-25122693c28mr5788474fac.13.1717671834244;
-        Thu, 06 Jun 2024 04:03:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717671834; cv=none;
+Received: by 2002:a17:906:acd:b0:a66:557b:2f6e with SMTP id z13csp249523ejf;
+        Thu, 6 Jun 2024 04:57:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUEWQy/i/sr82QckuUL3yfmxGF5O1I3jgSjcu0HnqFqs20GNM7bMg73jROPC+jn8baYvpuqYqgKdSOqriFyXIK2AeWEehUB
+X-Google-Smtp-Source: AGHT+IEGhVpecIWRtgkQFyhxtzZlw5oVH96F+rrDThea+6zQ3W5zh8/6l6XP6nDLUYcg0hhL29CR
+X-Received: by 2002:a05:6214:5c01:b0:6ae:d3a7:aab with SMTP id 6a1803df08f44-6b02bf10248mr66917966d6.9.1717675059259;
+        Thu, 06 Jun 2024 04:57:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717675059; cv=none;
         d=google.com; s=arc-20160816;
-        b=zEvRnJuOgmF386fzoj0sswwtzNyfyes1Yy8Mak0HmAMUjnbC+qH8IiEY7PDNwUayWN
-         QzNCHGAqErlM8rnyiBe22X6RcG5Em9DtvI5u7h2TAiOX1ltYAYXeJjvw8nkBZP8sVbr/
-         9aOt3rRJDkKeZ71gVB4NUIPNWd7fiTbIoXSab6gvd0EcchAHVLNxkOECJN83Lo5j4S8V
-         F5ksrrR0wlNnzcfwhU2YqDZuzvSGUkcYJme46xiCAMQT2gIgdphRvlDCvpzUWff2DGor
-         KyHLuVWjarDQGtkuv0uuU9fgp6SNwUGZp9TPUJNvsy6tuW0IYg5OKra2R9zleJqucyuC
-         hK9A==
+        b=JzSu8L/8Ixxasc4+e1H5dADMzmGirGAEVkevlaGIt/0n0/8ClzlD6ReCyi6aQuB5ys
+         Mk3Lok/1Ia6y9oh9Tyx/FNJhLmUlADCBrnM9ZWsfyGqgg7iOUF2+hh1WRjDPQ+RkIo26
+         10kVljO/oec1EEKTYaEv5d4BZkb+69h7nlwULy0welgXOMm2jAAmt9bHINn71nXObYST
+         nsrmIhQ82IFAxSsSw5bBjGAZ3bp4nzgW99/tfJ55D2vFeXHkf4TjZ/5YHpYEBGb3el4k
+         A8tvha4cGdCQ+7zAl4XpKUKBw+vw+woVpxL5QSF0jreHut9sv9bRR6ff32mnX2jH20+D
+         u22g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=YDtFm+bfOyx7ii8ukPFhPK6OMhezvNjUdfnyr+Oqe5I=;
-        fh=vlqnGXo4l0RfOTwzk8NVSFjBcNQwvS2lHCaiKpL8Osg=;
-        b=cHijlLzyS8oX1SqNEWjhAnyf/o0ibOUuceMrpXr2OJ0uBdfsq+VpehwT2sCMeFTC9C
-         pWUEJvi+vnqriBbvpd3sVtjfWUw1s7QPyxOWb/enJpL5QkjV0CoD7CrZK29tSEEhmZeQ
-         HLMTBITf1v4seqDP3ytYm9HJgIktlbVNZh/G31nfL03Qv1pZSyTkpbkvCr+TvEty58uE
-         Dg2ovFSxeowZoJABG7/CO3s7rhv1aONU3dRZAids4yw7oOtbsrxCoQzkrfIlaTWEnbxq
-         aicnViMvCumtrEVsYucm5pGIc6xrkJ2vCWBTADYOZT64HtRS3Ee1nysz5Re96CBIODgh
-         ANsw==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Xqdoq/APR3bDO52VhiKSuVhnfFgHAXsLRW+In6BGibA=;
+        fh=vZTNirw2rvRB/TILnxMLAtv45CQxIWdiX3+CeqP3GjU=;
+        b=KTlofrKz9iWDUQz9JjSe8p3acTks5HlO09ulwbux22kgvqegVEjWZZ+n7OREtrwejv
+         h+GUKZLafGU2SM4lKzbA037/o22PnPDHcadUdl3gfUox2gZLgT3FgEXxE614DczDOOaO
+         DZyG01M7i8P75sYa7fMOjsa/nFTbkBgbagmYyczwVbseaZjF4uC3+cWds2MEjRgfrthz
+         z6eNrkWYOkUeNjDUnsApKmHX9kc+Sq2KREn/WkGSpkuCkyVghoa5hQFmxHJqwqBJ+0jZ
+         ulZRJzHN88bSOt/B97O4rQ1Sb8x84DaBKG9MYAbgTxV6Um7AyVA1zAtxqnYTBAbq2/ab
+         F47A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Lw/Q8hAX";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bktwR+su;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44038b5f3d9si10890851cf.556.2024.06.06.04.03.54
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b04f96809bsi12902856d6.209.2024.06.06.04.57.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Jun 2024 04:03:54 -0700 (PDT)
+        Thu, 06 Jun 2024 04:57:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Lw/Q8hAX";
+       dkim=pass header.i=@linaro.org header.s=google header.b=bktwR+su;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sFAu4-0006OL-E0; Thu, 06 Jun 2024 07:03:32 -0400
+	id 1sFBk5-00019o-Bb; Thu, 06 Jun 2024 07:57:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1sFAu0-0006MI-0l
- for qemu-arm@nongnu.org; Thu, 06 Jun 2024 07:03:29 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sFBk3-00019G-Ft
+ for qemu-arm@nongnu.org; Thu, 06 Jun 2024 07:57:15 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1sFAtu-0007zb-18
- for qemu-arm@nongnu.org; Thu, 06 Jun 2024 07:03:24 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-42138eadf64so9313135e9.3
- for <qemu-arm@nongnu.org>; Thu, 06 Jun 2024 04:03:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sFBk0-00028x-SY
+ for qemu-arm@nongnu.org; Thu, 06 Jun 2024 07:57:15 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-57a4d7ba501so946677a12.2
+ for <qemu-arm@nongnu.org>; Thu, 06 Jun 2024 04:57:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1717671800; x=1718276600; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=YDtFm+bfOyx7ii8ukPFhPK6OMhezvNjUdfnyr+Oqe5I=;
- b=Lw/Q8hAX2TK7JWZW+adv63l8NPOx7qwADGoez3UsbGyv0wcWcJnN+0OLo+z59BvYkr
- q6lIrD5LBzLwTZlY1FUNE4Dyn9OgD5IbXbLvFau0smgaD0UJlTp0k30YjvENfWuMypaZ
- PUg9GphvKu2fbU6+luii/s4Xb5sFZ5x/D+koSApD06d2Y74M54uncKjn3077bURi+i8X
- BzytwoQcGuo6RhqZSFOg7mYNVjjzYp4QI7ssIUknUxAQ7c+LTXUCWyGhqZEsHhTIpQT2
- 8NQPvRHZDdwuaq+NX/DInsHZuJctcudnJSfv7zLVuvBdBn+8SNhzeDgRRzUb+f1er+as
- UeEA==
+ d=linaro.org; s=google; t=1717675031; x=1718279831; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Xqdoq/APR3bDO52VhiKSuVhnfFgHAXsLRW+In6BGibA=;
+ b=bktwR+suN99VMxiDZ+Hjp07YfEM9j4o8/JVf4xNzN58XEidQGBreb/svdrr1TaaEZN
+ Denav5w3Tg6QsXBpGrTr65j6owpFDv3ezne+LssZxFmCrWjEX66S5gY7cclkBVDagB0O
+ PIWDhaX9s1xPhCu2yeLEznjrNPhf62iw8tZ4c2xXRAfq1q4NYFiLEYC2h9zBGasGQGWR
+ HGj2FSlbovnAIt9WgTFoIeFOmzEQRnSCPVJU5X2ZaeYY0YCoWkb29fC0DyD9FFcZwxty
+ Lbcr7cIAmfcM4PNpVWBhEN2P2i5btt7g9Xp5V3mFWq+DaZLzTi38WSckEjmZgGAcWB3x
+ 3iYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717671800; x=1718276600;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YDtFm+bfOyx7ii8ukPFhPK6OMhezvNjUdfnyr+Oqe5I=;
- b=TxqOe97VuNegd+htt6pHJXW1gRLixnXwC1suMeeY51NkTw9mCcm7UCvm2gslZqbNPe
- WIEYDtdDpfk5O4vCVZ6PEMpwgqEGS4OfohVisqCyXNFQE4Nwrt06FLAQqEPXPfivoQIn
- zSj1Y04CWOI36t/ObUyMWbYIC6McOJmRi2yA2jN9rZTgMjgGshAhJheCuNHz3St0G7mt
- darQ31MOueSb9eSLwp3IUphLjlDsO6pdGg0bQUllttTV8VC9munk9XdsKRo9HKVRc1bY
- 0JC1091NKtNWdXAc0h/maSuuKEvEoytGo1q7Zv8632TZ7/zwBn6jZws5txv/7LYJupYI
- DLkQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXLKgXLCxYcg2uK+kAcEj4tf6PNTD+wWcnTGKr6LnJ67D4T5MmXGihjYoR02Wes/c6pQKJ5PTxMP42M4RzlUT0K7xlE
-X-Gm-Message-State: AOJu0YzpOLOUvqqY4dSsIFpXMYt1CfRTeBKVXbtbR3u1XYBpVCwkaDua
- CfnMXSiRCt9TOetnvLccpLHS4yc3UbDBD25/9PrtbFrtYqdQ0JmxzR4wDAtzWDc=
-X-Received: by 2002:a5d:4ec6:0:b0:35d:bed3:634e with SMTP id
- ffacd0b85a97d-35e8833a0ffmr3705182f8f.30.1717671800194; 
- Thu, 06 Jun 2024 04:03:20 -0700 (PDT)
-Received: from myrica ([2.221.137.100]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-35ef5d29b1bsm1258845f8f.3.2024.06.06.04.03.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Jun 2024 04:03:19 -0700 (PDT)
-Date: Thu, 6 Jun 2024 12:03:34 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Gavin Shan <gshan@redhat.com>
-Cc: Itaru Kitayama <itaru.kitayama@linux.dev>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ard Biesheuvel <ardb@kernel.org>
-Subject: Re: Unexpected error in rme_configure_one() at
- ../target/arm/kvm-rme.c:159
-Message-ID: <20240606110334.GA3707954@myrica>
-References: <CB05CAA2-9301-45F6-8AE3-A2E27A160CDF@linux.dev>
- <cbd630d7-01e8-49ba-9c8b-a6514d898ed2@redhat.com>
- <20240531150922.GA83195@myrica>
- <bd1f84bd-e23c-4f4b-bc0b-a2a1b70081f4@redhat.com>
- <20240603082402.GA25688@myrica>
- <2c81cb47-b9bc-4875-a7fb-49c3a8ab6713@redhat.com>
- <20240604111517.GB875061@myrica>
- <e7748b25-a01b-49e9-bbeb-cd03abb91cf6@redhat.com>
- <20240605155608.GA3251699@myrica>
- <1089f920-aff9-4d16-829d-5d058908a11e@redhat.com>
+ d=1e100.net; s=20230601; t=1717675031; x=1718279831;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Xqdoq/APR3bDO52VhiKSuVhnfFgHAXsLRW+In6BGibA=;
+ b=JyWQFZDwtuBD7UySq0psLC1ojMizdQ0dHb2yDImAwC2gCK7SFMQCk7cVWQXtF7pfwV
+ YZDTDn1Ezre8inQaWnZPWjHuv5WGQ3Xee7A+bpUy4O+sR4Epa6z/D3QPk+9x0oNyaFCM
+ ogSGq0mUgRrPCAQLht1sVtaNWBikOpE0ZUI4D14DbMUQrXWJYW9wwarPh5+jHWXD7m0j
+ jQhHRlrAxzvX/qaqLNaX/Zca/srOiKdKIa1sLTQmwsDVnxJIoi3wRDOaf65FXuhp5N+z
+ ZlKGqnP+CQJD/VmLjqlID5jy2lQ955NJuK/aAQc9I56ikcASTLVmOhRg57XWRhHSgbGr
+ QeTw==
+X-Gm-Message-State: AOJu0Ywf2jdLb3FW07GX8Np3CnEvLU2M51bNABMdq1964UTwUPV6IicC
+ 2WY12m3T+oiEzcDFzjS7tbw3cXBNLyNpfkmLTqm1/xsX0CUL3OrVfIe1dIHZi4Z6Z6Is/xlK2D2
+ DZPH7r5CK9YWbj4YVZ8EHsMDz387XryOEVVZYlQ==
+X-Received: by 2002:a50:875c:0:b0:57a:4af6:319e with SMTP id
+ 4fb4d7f45d1cf-57a8b69d02amr3589351a12.1.1717675030743; Thu, 06 Jun 2024
+ 04:57:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1089f920-aff9-4d16-829d-5d058908a11e@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=jean-philippe@linaro.org; helo=mail-wm1-x335.google.com
+References: <20240606104745.291330-1-zhenyzha@redhat.com>
+In-Reply-To: <20240606104745.291330-1-zhenyzha@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 6 Jun 2024 12:56:59 +0100
+Message-ID: <CAFEAcA_ovHZWFi8Xn1YdPNkFjNWQ+BGQTA0Oc9oXTNuPD+bmmA@mail.gmail.com>
+Subject: Re: [PATCH RFC] hw/arm/virt: Avoid unexpected warning from Linux
+ guest on host with Fujitsu CPUs
+To: Zhenyu Zhang <zhenyzha@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, gshan@redhat.com, 
+ eauger@redhat.com, sebott@redhat.com, cohuck@redhat.com, ddutile@redhat.com, 
+ shahuang@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,115 +122,155 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WeOAXNNMBk/w
+X-TUID: Skr+1T+tWlkM
 
-On Thu, Jun 06, 2024 at 03:05:02PM +1000, Gavin Shan wrote:
-> > This commit moves the page tables from .rodata to .data. When linking
-> > IdMap.obj into ArmPlatformPrePeiCore.dll, the alignment of the .text
-> > section changes from 0x1000 to 0x800. This change comes from the linker
-> > script putting .rodata into .text. I don't know why the included .rodata
-> > alignment affects the .text alignment, but I don't think it matters here.
-> > 
-> > In GenFw, ScanSections64() calculates a mCoffAlignment as the max
-> > .text/.data/.hii section alignement. Since with this commit, .data
-> > alignement (0x1000) becomes larger than .text (0x800), it picks 0x1000 as
-> > the output text offset, and then WriteSections64() complains that this
-> > offset isn't equal to the input .text alignment modulo 0x1000.
-> > 
-> > The linker script says:
-> > 
-> >    /*
-> >     * The alignment of the .data section should be less than or equal to the
-> >     * alignment of the .text section. This ensures that the relative offset
-> >     * between these sections is the same in the ELF and the PE/COFF versions of
-> >     * this binary.
-> >     */
-> > 
-> > but that's not what we're getting. I don't have a fix yet, other than
-> > forcing the .text and .data alignment to 4k.
-> > 
-> 
-> Jean, thanks for your explanation. Right, the issue is caused by mismatched
-> alignments for ELF and PE/COFF sections. I ever dumped the variables at the
-> failing point, showing the mismatched alignments (0x800 vs 0x1000). Apart from
-> that, the virtual address of 'text' section is aligned to 0x800 instead of
-> 0x1000 after ArmPlatformPrePeiCore.dll is dumped by 'readelf'.
-> 
-> SecHdr->sh_addr:                    0x800              <<< Mismatched alignment between ELF and PE/COFF
-> SecOffset:                          0x1000
-> SymShdr->sh_addr:                   0x800
-> mCoffSectionsOffset[Sym->st_shndx]: 0x1000
-> GenFw: ERROR 3000: Invalid
->   WriteSections64(): /home/gavin/sandbox/CCA/edk2-guest/Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll AARCH64 small code model requires identical ELF and PE/COFF section offsets modulo 4 KB.
-> 
-> # readelf -S Build/ArmVirtQemu-AARCH64/DEBUG_GCC5/AARCH64/ArmPlatformPkg/PrePeiCore/PrePeiCoreUniCore/DEBUG/ArmPlatformPrePeiCore.dll
-> Section Headers:
->   [Nr] Name              Type             Address           Offset
->        Size              EntSize          Flags  Link  Info  Align
->   [ 0]                   NULL             0000000000000000  00000000
->        0000000000000000  0000000000000000           0     0     0
->   [ 1] .text             PROGBITS         0000000000000800  00000800       <<< Aligned to 0x800
->        00000000000051b8  0000000000000000  AX       0     0     2048
-> 
-> With the following changes, I'm able to build the firmware successfully. I don't
-> see how COMMONPAGESIZE is sorted out because I don't find its definition in the
-> source code.
+On Thu, 6 Jun 2024 at 11:48, Zhenyu Zhang <zhenyzha@redhat.com> wrote:
+>
+> Multiple warning messages and corresponding backtraces are observed when Linux
+> guest is booted on the host with Fujitsu CPUs. One of them is shown as below.
+>
+> [    0.032443] ------------[ cut here ]------------
+> [    0.032446] uart-pl011 9000000.pl011: ARCH_DMA_MINALIGN smaller than CTR_EL0.CWG (128 < 256)
+> [    0.032454] WARNING: CPU: 0 PID: 1 at arch/arm64/mm/dma-mapping.c:54 arch_setup_dma_ops+0xbc/0xcc
+> [    0.032470] Modules linked in:
+> [    0.032475] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-452.el9.aarch64 #1
+> [    0.032481] Hardware name: linux,dummy-virt (DT)
+> [    0.032484] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [    0.032490] pc : arch_setup_dma_ops+0xbc/0xcc
+> [    0.032496] lr : arch_setup_dma_ops+0xbc/0xcc
+> [    0.032501] sp : ffff80008003b860
+> [    0.032503] x29: ffff80008003b860 x28: 0000000000000000 x27: ffffaae4b949049c
+> [    0.032510] x26: 0000000000000000 x25: 0000000000000000 x24: 0000000000000000
+> [    0.032517] x23: 0000000000000100 x22: 0000000000000000 x21: 0000000000000000
+> [    0.032523] x20: 0000000100000000 x19: ffff2f06c02ea400 x18: ffffffffffffffff
+> [    0.032529] x17: 00000000208a5f76 x16: 000000006589dbcb x15: ffffaae4ba071c89
+> [    0.032535] x14: 0000000000000000 x13: ffffaae4ba071c84 x12: 455f525443206e61
+> [    0.032541] x11: 68742072656c6c61 x10: 0000000000000029 x9 : ffffaae4b7d21da4
+> [    0.032547] x8 : 0000000000000029 x7 : 4c414e494d5f414d x6 : 0000000000000029
+> [    0.032553] x5 : 000000000000000f x4 : ffffaae4b9617a00 x3 : 0000000000000001
+> [    0.032558] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff2f06c029be40
+> [    0.032564] Call trace:
+> [    0.032566]  arch_setup_dma_ops+0xbc/0xcc
+> [    0.032572]  of_dma_configure_id+0x138/0x300
+> [    0.032591]  amba_dma_configure+0x34/0xc0
+> [    0.032600]  really_probe+0x78/0x3dc
+> [    0.032614]  __driver_probe_device+0x108/0x160
+> [    0.032619]  driver_probe_device+0x44/0x114
+> [    0.032624]  __device_attach_driver+0xb8/0x14c
+> [    0.032629]  bus_for_each_drv+0x88/0xe4
+> [    0.032634]  __device_attach+0xb0/0x1e0
+> [    0.032638]  device_initial_probe+0x18/0x20
+> [    0.032643]  bus_probe_device+0xa8/0xb0
+> [    0.032648]  device_add+0x4b4/0x6c0
+> [    0.032652]  amba_device_try_add.part.0+0x48/0x360
+> [    0.032657]  amba_device_add+0x104/0x144
+> [    0.032662]  of_amba_device_create.isra.0+0x100/0x1c4
+> [    0.032666]  of_platform_bus_create+0x294/0x35c
+> [    0.032669]  of_platform_populate+0x5c/0x150
+> [    0.032672]  of_platform_default_populate_init+0xd0/0xec
+> [    0.032697]  do_one_initcall+0x4c/0x2e0
+> [    0.032701]  do_initcalls+0x100/0x13c
+> [    0.032707]  kernel_init_freeable+0x1c8/0x21c
+> [    0.032712]  kernel_init+0x28/0x140
+> [    0.032731]  ret_from_fork+0x10/0x20
+> [    0.032735] ---[ end trace 0000000000000000 ]---
+>
+> In Linux, a check is applied to every device which is exposed through device-tree
+> node. The warning message is raised when the device isn't DMA coherent and the
+> cache line size is larger than ARCH_DMA_MINALIGN (128 bytes). The cache line is
+> sorted from CTR_EL0[CWG], which corresponds to 256 bytes on the guest CPUs.
+> The DMA coherent capability is claimed through 'dma-coherent' in their
+> device-tree nodes.
 
-It's a ld builtin, set on the command-line with "-z common-page-size=X" by
-Conf/tools_def.txt, in this case I believe DEBUG_GCC5_AARCH64_DLINK_XIPFLAGS. 
+For QEMU emulated all our DMA is always coherent, so where we
+have DMA-capable devices we should definitely tell the kernel
+that that DMA is coherent.
 
-> 
-> diff --git a/BaseTools/Scripts/GccBase.lds b/BaseTools/Scripts/GccBase.lds
-> index 9f27e83bb0..5463df47a9 100644
-> --- a/BaseTools/Scripts/GccBase.lds
-> +++ b/BaseTools/Scripts/GccBase.lds
-> @@ -20,7 +20,8 @@ SECTIONS {
->     */
->    . = PECOFF_HEADER_SIZE;
-> -  .text : ALIGN(CONSTANT(COMMONPAGESIZE)) {
-> +  /* .text : ALIGN(CONSTANT(COMMONPAGESIZE)) { */^M
-> +  .text : ALIGN(4096) {^M
+Our pl011 does not do DMA, though (we do not set the dmas property), so
+it's kind of bogus for the kernel to complain about that.
 
-Build (after clean) fails for me if I only change the .text 
-alignment, I need .data as well. So changing Conf/tools_def.txt is easier.
-I'll try to find a proper fix but it will take me some time to understand
-GenFw.
+So I think we should take these changes where they refer to DMA
+capable devices and ask the kernel folks to fix the warnings
+where they refer to devices that aren't doing DMA. Looking through
+the patch, though, my initial impression is that all these are
+in the latter category...
 
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index d480a7da02..cdf99966e6 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -509,6 +509,7 @@ static void fdt_add_psci_node(void *fdt)
+>      qemu_fdt_setprop_cell(fdt, "/psci", "cpu_off", cpu_off_fn);
+>      qemu_fdt_setprop_cell(fdt, "/psci", "cpu_on", cpu_on_fn);
+>      qemu_fdt_setprop_cell(fdt, "/psci", "migrate", migrate_fn);
+> +    qemu_fdt_setprop(fdt, "/psci", "dma-coherent", NULL, 0);
 
-> > > > Note that the guest edk2 is optional and experimental, you can use direct
-> > > > kernel boot to get a working demo quicker.
-> > > > 
-> > > 
-> > > I never did this before. Could you please provide the detailed steps on this?
-> > 
-> > Removing the -bios parameter to QEMU should be enough. You can also add
-> > 'earlycon' to -append to show early boot errors.
-> > 
-> 
-> I didn't get a chance to try this yet since the host can't be brought up now.
-> I will try this later. I originally thought some sort of boot wrapper is needed
-> so that the kernel image has the capability to boot itself. For example, Mark
-> Rutland's boot wrapper [1] can be leveraged in this case. I don't think Image has
-> the capability to boot itself, right?
+The PSCI node is describing the firmware interface for
+HVC or SMC calls -- I don't think it makes any sense
+to think of this as doing DMA. So I would query the kernel
+folks about this warning.
 
-Yes QEMU can set up everything so that the Image boots on its own. What
-the boot-wrapper does is minimal hardware initialization, handling PSCI
-calls and passing the DTB pointer in x0. But that's only needed when using
-the Arm FastModel (boot-wrapper is a lightweight firmware specifically for
-the FastModel). QEMU can do all that itself so you can boot a kernel
-without any firmware.
+>  }
+>
+>  int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 3c93c0c0a6..d3e5f512e2 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -652,6 +652,7 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+>          qemu_fdt_setprop_cells(ms->fdt, "/pmu", "interrupts",
+>                                 GIC_FDT_IRQ_TYPE_PPI,
+>                                 INTID_TO_PPI(VIRTUAL_PMU_IRQ), irqflags);
+> +        qemu_fdt_setprop(ms->fdt, "/pmu", "dma-coherent", NULL, 0);
 
-Using edk2 in the Realm guest will be needed for example to boot a distro
-image which contains the kernel, but direct kernel boot is useful both for
-prototyping and real-life use cases like confidential containers and some
-cloud VMs.
+What DMA interface does the PMU have?
 
-Thanks,
-Jean
+>      }
+>  }
+>
+> @@ -936,6 +937,7 @@ static void create_uart(const VirtMachineState *vms, int uart,
+>                                 vms->clock_phandle, vms->clock_phandle);
+>      qemu_fdt_setprop(ms->fdt, nodename, "clock-names",
+>                           clocknames, sizeof(clocknames));
+> +    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
 
-> 
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/mark/boot-wrapper-aarch64.git
-> 
-> Thanks,
-> Gavin
-> 
+As above, our PL011 doesn't do any DMA and we do not advertise
+to the kernel that it does.
+
+>      if (uart == VIRT_UART) {
+>          qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path", nodename);
+> @@ -972,6 +974,7 @@ static void create_rtc(const VirtMachineState *vms)
+>                             GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+>      qemu_fdt_setprop_cell(ms->fdt, nodename, "clocks", vms->clock_phandle);
+>      qemu_fdt_setprop_string(ms->fdt, nodename, "clock-names", "apb_pclk");
+> +    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
+>      g_free(nodename);
+>  }
+
+What DMA does the pl031 do?
+
+>
+> @@ -1077,6 +1080,7 @@ static void create_gpio_devices(const VirtMachineState *vms, int gpio,
+>      qemu_fdt_setprop_cell(ms->fdt, nodename, "clocks", vms->clock_phandle);
+>      qemu_fdt_setprop_string(ms->fdt, nodename, "clock-names", "apb_pclk");
+>      qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle", phandle);
+> +    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
+
+As far as I know the PL061 is also not a DMA-capable device.
+
+>      if (gpio != VIRT_GPIO) {
+>          /* Mark as not usable by the normal world */
+> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+> index eebcd28f9a..da47071a95 100644
+> --- a/hw/core/sysbus-fdt.c
+> +++ b/hw/core/sysbus-fdt.c
+> @@ -554,6 +554,7 @@ void platform_bus_add_all_fdt_nodes(void *fdt, const char *intc, hwaddr addr,
+>      qemu_fdt_setprop_cells(fdt, node, "ranges", 0, addr >> 32, addr, bus_size);
+>
+>      qemu_fdt_setprop_phandle(fdt, node, "interrupt-parent", intc);
+> +    qemu_fdt_setprop(fdt, node, "dma-coherent", NULL, 0);
+
+Isn't this the fdt node for a bus, not a device?
+
+thanks
+-- PMM

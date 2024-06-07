@@ -1,86 +1,86 @@
-Received: by 2002:a17:906:acd:b0:a66:557b:2f6e with SMTP id z13csp1234762ejf;
-        Fri, 7 Jun 2024 16:15:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV9kJIbIonBMvKITuzEXGSpQeFr+OR+T18dtofm7aXPnzVSl7vUP+SVqPheXNVVbftlvT0/o/VsrTjHYgy7ytLsUf6B7tvL
-X-Google-Smtp-Source: AGHT+IGs/3C4GVHstvxBX5ylpsgw3csNtrvhiFWewiwNE+Vh+nA9IMulwglxa+XWqBZ95Kr1kz7u
-X-Received: by 2002:a05:6808:1901:b0:3d2:1b8a:be4b with SMTP id 5614622812f47-3d21b8ac114mr1382468b6e.46.1717802126406;
-        Fri, 07 Jun 2024 16:15:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717802126; cv=none;
+Received: by 2002:a17:906:acd:b0:a66:557b:2f6e with SMTP id z13csp1237859ejf;
+        Fri, 7 Jun 2024 16:25:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWrWwoPjD0LCWFK8jfmRFR34usoeOuHSRfxqwuQYS/t2X2SFELwWGjUMiadg+mRGNo3mhEmR/3i+WVLxngJDeQQU7Wg5+VK
+X-Google-Smtp-Source: AGHT+IHGkg/PpZl2DSx15JsfYFPNps4mZOeDMwv7OoIP7BkE+DQX4uj9DUwrb61sgbO8xYMrRtwY
+X-Received: by 2002:a05:6870:c689:b0:24f:c42e:3124 with SMTP id 586e51a60fabf-254647ffe74mr4445068fac.40.1717802728363;
+        Fri, 07 Jun 2024 16:25:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717802728; cv=none;
         d=google.com; s=arc-20160816;
-        b=eX22pxGxicfvSYqgUCiRnoUB5qUcTo3eDFJbLydmivJ1HFDENO+hn4NrL9eH6RP/P9
-         wwPboIXZKGIfi7zwkJzUL8pqyAUxx6Lsq6NE7jdX6HPYiU/VHC43Hf7ajp5AuTNu5qsR
-         CtC7rATqySpUcpQt3AnqERF0f6+oi/ItZQoYETyhknK8rm3hZcBrY2hj+go1EblohHzO
-         Zw9ZtRCEQVBCldiJbbNLD5F6d+qp7KRzetlFKbaqnjb3Myk+5tp8PQDdFTEQzkQj4aUF
-         dwMg4HNy2NVRC1UZebowFNSkZDCaf5MQ+mLVyIMak1/KH1gCiWGOiThQjhgsCfVQ7M+M
-         e8AA==
+        b=T71fxCA0CM9g3RhplezA8RJp38a+xfXoFrxP/fHqmQLmL3eTFRo4QLwUdlDyotutuS
+         hJyWn1CE0rAIDu0p1Hi9EPlV0Vqs35rF5mX6szu/PPIl5GXi9rNH+qbbcUk1Oz054W2g
+         zayvu61BW0SkEjO/Jw/xhWaWaJAyhBZrZQno1UowPYUtO4FYly7DMd+KihrtgcDR1Mhh
+         BULWLgEcNYY3N1tDdIOfFJ+zkeyA/A8psRt7QsHQE1QTNrrQOlhNX82hs8Juuvuk+0uA
+         OpGIBIfUbUWjgXMv6vVrx/pJh5Mc3jlVLN3p8r4O1ulWtkK+WrWUbprGjkeeJmBX8FuU
+         du8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=8m2kYAzpkGJ3Ey1H6NVbak4uUSK3PzHJop1nhkRKo+c=;
+        bh=xK/OvgNzzcXSWIsdldMqiiYrOffSKwz7no1QQVoOC3M=;
         fh=RVuuaU7Ghp1omAcM/aHHQKcSvJxs+IjfJSTvOY2eDr8=;
-        b=wI1qUMjazJhzrqMDRXSEs+NmKnU3y1AQdwqFIJwuU0dXWjYVmXlzlZyGX6s1EUUbFI
-         oHQywZaArCJM8YXCRUWSOzTfGCgOlUjG/AuBx5BAcDQHl/sb+zR7JTHvk19VaKko+NrP
-         g4IvaEMiHB7wn3iFigcAK0t1PaAroNxoyiK7tnrQFXRJYIGwZlle4ALL3UNVvCs7ItZW
-         72/4TGVnZ+mA864a+xhEYR2D8eFg/aBrLkLj/6pzUWldpxjeqVArsYh73jxuvZvi65cf
-         TeZ3FoWQUAL9rlwZ6mZJotgs2m19nwLJapfX7R5Kjuy7FG3JFja6uXuPOylM3g3rEHf4
-         Rt3A==;
+        b=tgbp7ARcc541JycbOKX4FLUKXc02/0mMIvGxMYt8mbGDgcO/m70hr0pQ2Ccqm+2hB1
+         bY2tm3eGB5OgpkzZo1rMn2xX4yMFjBe32joVdtZvbHAZsuQ1g12tIBs6WQNJvyOZIjq8
+         dwsLeoLEOCmtvLT5mMdFnzY/uUKvLV/5/UpGYqt7XVmhmwkcfc8GYLEgCLiDnA6xKCrA
+         NXCaYk7eAEAVbIn6uf/oH1rrlD2G9UOzs82e/OWgrs8nomegs6CH5mFIafLBbFcE+Nx8
+         JQZuufblO7iH3dAfJnU9wNIcAGnqTRi8I5v3/gimInaZ0p7tu2IU7voLAmrYwU+4K1I1
+         o1ZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AyYzPR0L;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fIlPZpW6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b067958f14si8038056d6.258.2024.06.07.16.15.26
+        by mx.google.com with ESMTPS id af79cd13be357-795333364b1si548921185a.549.2024.06.07.16.25.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 07 Jun 2024 16:15:26 -0700 (PDT)
+        Fri, 07 Jun 2024 16:25:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AyYzPR0L;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fIlPZpW6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from [::1] (helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sFakc-00054p-1y; Fri, 07 Jun 2024 10:39:30 -0400
+	id 1sFalD-0007QT-Rs; Fri, 07 Jun 2024 10:40:07 -0400
 Received: from [2001:470:142:3::10] (helo=eggs.gnu.org)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sFaka-0004rC-0L
- for qemu-devel@nongnu.org; Fri, 07 Jun 2024 10:39:28 -0400
+ id 1sFalA-0007EV-6x
+ for qemu-devel@nongnu.org; Fri, 07 Jun 2024 10:40:04 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sFakY-0003MS-J8
- for qemu-devel@nongnu.org; Fri, 07 Jun 2024 10:39:27 -0400
+ id 1sFal8-0003Qs-Hz
+ for qemu-devel@nongnu.org; Fri, 07 Jun 2024 10:40:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1717771166;
+ s=mimecast20190719; t=1717771201;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8m2kYAzpkGJ3Ey1H6NVbak4uUSK3PzHJop1nhkRKo+c=;
- b=AyYzPR0L5hvqIZhIks6ViO8YA10LmppVikCkiqfblIxRHBLkvJokbhlOynoL5zN6WQNU7z
- MpzySzJPH2Yp7RpPGFLwv0aY1AP1dHWxoPtVRH7rGs5g1cHN/S4+mrgPVFTadkFR8AxYuN
- Ld8i7jUfqjgjKffkM63fIzt7Gq92smY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=xK/OvgNzzcXSWIsdldMqiiYrOffSKwz7no1QQVoOC3M=;
+ b=fIlPZpW6YG4o+TEa2FAQqDGFRSZ13OCRN+jIHqlMViSOQ8kVTEmsrDom5ZQ+OgjMtcXouO
+ UuqX+lxRINZu4ZRPjegeDI5kSc/kFlaGEr9xL6mgJQUwjz/KI0EUFEUoYNl3eKrAFbBE+h
+ /f3X4sKAvJunDx7qFIcDvBATrTJ6QUU=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-172-jz2ezpk1MUmu6D9BnI5Uxw-1; Fri,
- 07 Jun 2024 10:39:22 -0400
-X-MC-Unique: jz2ezpk1MUmu6D9BnI5Uxw-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-300-pWgggVlZOBGnrh-8JtS-AQ-1; Fri,
+ 07 Jun 2024 10:39:56 -0400
+X-MC-Unique: pWgggVlZOBGnrh-8JtS-AQ-1
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4D1EC1956063; Fri,  7 Jun 2024 14:39:21 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8836E19560B9; Fri,  7 Jun 2024 14:39:55 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.193.191])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 481B61956048; Fri,  7 Jun 2024 14:39:16 +0000 (UTC)
+ id B50DA1956048; Fri,  7 Jun 2024 14:39:50 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
@@ -88,9 +88,9 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  yanghliu@redhat.com, zhenzhong.duan@intel.com
 Cc: alex.williamson@redhat.com, jasowang@redhat.com, pbonzini@redhat.com,
  berrange@redhat.com
-Subject: [RFC v2 1/7] HostIOMMUDevice: Store the VFIO/VDPA agent
-Date: Fri,  7 Jun 2024 16:37:21 +0200
-Message-ID: <20240607143905.765133-2-eric.auger@redhat.com>
+Subject: [RFC v2 7/7] memory: Remove IOMMU MR iommu_set_iova_range API
+Date: Fri,  7 Jun 2024 16:37:27 +0200
+Message-ID: <20240607143905.765133-8-eric.auger@redhat.com>
 In-Reply-To: <20240607143905.765133-1-eric.auger@redhat.com>
 References: <20240607143905.765133-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -120,55 +120,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vN02YdRv7D5k
+X-TUID: heFEKwP+fbs5
 
-Store the agent device (VFIO or VDPA) in the host IOMMU device.
-This will allow easy access to some of its resources.
+Since the host IOVA ranges are now passed through the
+PCIIOMMUOps set_host_resv_regions and we have removed
+the only implementation of iommu_set_iova_range() in
+the virtio-iommu and the only call site in vfio/common,
+let's retire the IOMMU MR API and its memory wrapper.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/sysemu/host_iommu_device.h | 1 +
- hw/vfio/container.c                | 1 +
- hw/vfio/iommufd.c                  | 2 ++
- 3 files changed, 4 insertions(+)
+ include/exec/memory.h | 32 --------------------------------
+ system/memory.c       | 13 -------------
+ 2 files changed, 45 deletions(-)
 
-diff --git a/include/sysemu/host_iommu_device.h b/include/sysemu/host_iommu_device.h
-index a57873958b..3e5f058e7b 100644
---- a/include/sysemu/host_iommu_device.h
-+++ b/include/sysemu/host_iommu_device.h
-@@ -34,6 +34,7 @@ struct HostIOMMUDevice {
-     Object parent_obj;
- 
-     char *name;
-+    void *agent; /* pointer to agent device, ie. VFIO or VDPA device */
-     HostIOMMUDeviceCaps caps;
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 9cdd64e9c6..35d772e52b 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -530,26 +530,6 @@ struct IOMMUMemoryRegionClass {
+      int (*iommu_set_page_size_mask)(IOMMUMemoryRegion *iommu,
+                                      uint64_t page_size_mask,
+                                      Error **errp);
+-    /**
+-     * @iommu_set_iova_ranges:
+-     *
+-     * Propagate information about the usable IOVA ranges for a given IOMMU
+-     * memory region. Used for example to propagate host physical device
+-     * reserved memory region constraints to the virtual IOMMU.
+-     *
+-     * Optional method: if this method is not provided, then the default IOVA
+-     * aperture is used.
+-     *
+-     * @iommu: the IOMMUMemoryRegion
+-     *
+-     * @iova_ranges: list of ordered IOVA ranges (at least one range)
+-     *
+-     * Returns 0 on success, or a negative error. In case of failure, the error
+-     * object must be created.
+-     */
+-     int (*iommu_set_iova_ranges)(IOMMUMemoryRegion *iommu,
+-                                  GList *iova_ranges,
+-                                  Error **errp);
  };
  
-diff --git a/hw/vfio/container.c b/hw/vfio/container.c
-index 26e6f7fb4f..b728b978a2 100644
---- a/hw/vfio/container.c
-+++ b/hw/vfio/container.c
-@@ -1145,6 +1145,7 @@ static bool hiod_legacy_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
+ typedef struct RamDiscardListener RamDiscardListener;
+@@ -1945,18 +1925,6 @@ int memory_region_iommu_set_page_size_mask(IOMMUMemoryRegion *iommu_mr,
+                                            uint64_t page_size_mask,
+                                            Error **errp);
  
-     hiod->name = g_strdup(vdev->name);
-     hiod->caps.aw_bits = vfio_device_get_aw_bits(vdev);
-+    hiod->agent = opaque;
- 
-     return true;
+-/**
+- * memory_region_iommu_set_iova_ranges - Set the usable IOVA ranges
+- * for a given IOMMU MR region
+- *
+- * @iommu: IOMMU memory region
+- * @iova_ranges: list of ordered IOVA ranges (at least one range)
+- * @errp: pointer to Error*, to store an error if it happens.
+- */
+-int memory_region_iommu_set_iova_ranges(IOMMUMemoryRegion *iommu,
+-                                        GList *iova_ranges,
+-                                        Error **errp);
+-
+ /**
+  * memory_region_name: get a memory region's name
+  *
+diff --git a/system/memory.c b/system/memory.c
+index 9540caa8a1..248d514f83 100644
+--- a/system/memory.c
++++ b/system/memory.c
+@@ -1914,19 +1914,6 @@ int memory_region_iommu_set_page_size_mask(IOMMUMemoryRegion *iommu_mr,
+     return ret;
  }
-diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
-index 409ed3dcc9..dbdae1adbb 100644
---- a/hw/vfio/iommufd.c
-+++ b/hw/vfio/iommufd.c
-@@ -631,6 +631,8 @@ static bool hiod_iommufd_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
-         struct iommu_hw_info_vtd vtd;
-     } data;
  
-+    hiod->agent = opaque;
-+
-     if (!iommufd_backend_get_device_info(vdev->iommufd, vdev->devid,
-                                          &type, &data, sizeof(data), errp)) {
-         return false;
+-int memory_region_iommu_set_iova_ranges(IOMMUMemoryRegion *iommu_mr,
+-                                        GList *iova_ranges,
+-                                        Error **errp)
+-{
+-    IOMMUMemoryRegionClass *imrc = IOMMU_MEMORY_REGION_GET_CLASS(iommu_mr);
+-    int ret = 0;
+-
+-    if (imrc->iommu_set_iova_ranges) {
+-        ret = imrc->iommu_set_iova_ranges(iommu_mr, iova_ranges, errp);
+-    }
+-    return ret;
+-}
+-
+ int memory_region_register_iommu_notifier(MemoryRegion *mr,
+                                           IOMMUNotifier *n, Error **errp)
+ {
 -- 
 2.41.0
 

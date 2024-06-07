@@ -1,203 +1,99 @@
-Received: by 2002:a17:906:acd:b0:a66:557b:2f6e with SMTP id z13csp384889ejf;
-        Thu, 6 Jun 2024 08:29:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVr9uxHaGmhcTPo5xaaQ7bNt+CbmUe5E7myAkWh6CxBPzgdoGLXxAoZy7vnpgAgvNedg9VfDAFReI1adiF5AeRf1fIPFhhM
-X-Google-Smtp-Source: AGHT+IH68L+tMbaCC+CCG2b8jSBlzhEhaE6nA9EUqXZkm5wKBtUu/To3UHem2yDXSRENumzQTZ3P
-X-Received: by 2002:a67:fe89:0:b0:48b:a4c1:88f5 with SMTP id ada2fe7eead31-48c048e5e3bmr6585264137.21.1717687743794;
-        Thu, 06 Jun 2024 08:29:03 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1717687743; cv=pass;
+Received: by 2002:a17:906:acd:b0:a66:557b:2f6e with SMTP id z13csp814305ejf;
+        Fri, 7 Jun 2024 01:57:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXpP5k+s89JppEYOjPc/TUJOJXFRJML8Cmr1b+RlTFvVWotocf5ohWX6vksJWPBo1wKrhA4H0EPUqLaoV/k6xqG9KEXyJLd
+X-Google-Smtp-Source: AGHT+IGBTO9yr6Q4HCpYftydArhUpylitn+97UGLliAK2Mg+RtZUhfxTyuYvaLryAm6zn9YJEyv/
+X-Received: by 2002:ac5:cfc8:0:b0:4eb:100f:10e5 with SMTP id 71dfb90a1353d-4eb562c18b0mr2218109e0c.13.1717750623268;
+        Fri, 07 Jun 2024 01:57:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1717750623; cv=none;
         d=google.com; s=arc-20160816;
-        b=E1rC58UZDa8Uc5yobckzObsaWPTr1CIFjIoPVkywgRHmVZ3a5hI+zyTRiYiZrxiQVR
-         M6Ia/UC4Oo6SUCOfnUkaW8V2y5DRXcCiPYs1RSqxuah9U27ejT0FlrS6qrkwWfjJoB5b
-         dX3jOGDLbnesr+FUzrZrC53IZ7L2oSjeCA/rn3DJl2CIise/pkdElICKyY61IRct56qo
-         L6t+e7leUi3dQFzNXFt76+sCaqc/D60OjApGaNYH3yiHkA4cKpn1cB2q8nIz9xKSA79w
-         Mjp1C1WmhDI0u+HNNOEzvB6Ot+6WwKfrO0uwQxobzhsys9xgY730exnwpU+IV/9csglE
-         pTZg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=BqmPNtsplAr3ZkW27B89UlOkSl4ND5TqSs1zHSMDFBF8El7/5VDnvyB36CHEwna5Zz
+         +KZDzgTbxUNwceDifUJCM6HT/f6vXQrczjVh5Hd6HlK2rO9eTKGznEODe2xaVQP0kZfl
+         w3ju9YyRaaetFHkS8NdFvZtRdy/0rremG9XM3kKYrme2bUvZ28gZZSC+djsV0wy6U8mE
+         r38VPzFqhDRVxd6UG1odZkQmFbHQqxCrd8kLpvWyescvPDbTuU74g1Wt8q9jCAP3dpn7
+         m9hqbhnaCPb+TApJYkH0n13q7XvtR/vf6cwkbZdAZXwjvg+7MG0Y4MccOXeWjufCrAE4
+         Vcug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=148R7X1ib0+yDIg1UtkggluQAb02ZWf4CIi13gPlxvs=;
-        fh=bXzCdd3pPbjQxKKCyEZjZQ3hXG9fCFhJoM+CR069w58=;
-        b=HsZiT6/tTCS/y+tziRGHOHd0+tnxOTUIxL8v05lrRRY5XBFq7a8eYNOxYHRR1RvcGB
-         jx/vvpgycXWZWC2ACNDbBQ762xcDh8PytvRgKQNrcOZSPxVhT1Wm8BBjIqQx1DHAiEU2
-         9UYXWchZ7i7KWyXpRgF6EhqBmLpeCd+8sNYzHnsF7O0zrZEDPcO+W42lEaAF/HWIrL6n
-         Wd+tS7apqKOZJJKqiT7XcGMsOXzON7GpKNc37y3LiwFDs/LdonmIci8+GQmjHxUUd8UL
-         wvQaS9Y1CPJQSs57vt6NsZvzD6RdIdCwEHtTCriqbGS0cPrhoJhtuWjp1+JSRMgIBgIP
-         gTag==;
+         :list-unsubscribe:list-id:precedence:message-id:mime-version
+         :references:subject:cc:to:from:date;
+        bh=WKZgATWgZrKPVp5yMtpGzZrsxsuIKuyfZeD6g9EqBlw=;
+        fh=WPCSUgU0p0ln7MNAL4nvF+qjCMgvlMvdNQVZFK0FrLU=;
+        b=drR7JzvxlHFs2kEwLJv9odvFJecqQdTpN3wFzo8wN8Jh1nMp4XXnBmRWFs2IhJQykz
+         5skT4tKb7Frd6ZpAl02Un1HKUPxA0t3lao4XcV2zDeQH5jeL2S0EzSnb19+jXrTQtL/2
+         3mcG3R8ZuhkwfKIQXhKld8yMghCUcbAzltWuormi3byXfvrkIWVuh4WylxolM75QgSFQ
+         K70GgfcG/Osup+P3ow3x0Hjx2wkbyNt5T1g2mUfZ9+zLhVh6kuJLYMpZYgTiYDvDDBWK
+         qXlng790r3arzqjkoYLJ83Mz05Y1ynA1BSDwG7RqrAOrfvBURmOOngrc6JgFs353YEmn
+         Eraw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@jaguarmicro.com header.s=selector2 header.b=p02ZqQzc;
-       arc=pass (i=1 spf=pass spfdomain=jaguarmicro.com dkim=pass dkdomain=jaguarmicro.com dmarc=pass fromdomain=jaguarmicro.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jaguarmicro.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-48c1a264db9si459747137.778.2024.06.06.08.29.02
+        by mx.google.com with ESMTPS id af79cd13be357-795331d0a3dsi299526185a.367.2024.06.07.01.57.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Jun 2024 08:29:02 -0700 (PDT)
+        Fri, 07 Jun 2024 01:57:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jaguarmicro.com header.s=selector2 header.b=p02ZqQzc;
-       arc=pass (i=1 spf=pass spfdomain=jaguarmicro.com dkim=pass dkdomain=jaguarmicro.com dmarc=pass fromdomain=jaguarmicro.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jaguarmicro.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sFF2p-0007q4-FB; Thu, 06 Jun 2024 11:28:53 -0400
+	id 1sFVP3-0004Sb-Je; Fri, 07 Jun 2024 04:56:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew.yuan@jaguarmicro.com>)
- id 1sF9v7-0005RL-SI; Thu, 06 Jun 2024 06:00:34 -0400
-Received: from mail-southeastasiaazlp170110003.outbound.protection.outlook.com
- ([2a01:111:f403:c401::3] helo=SINPR02CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew.yuan@jaguarmicro.com>)
- id 1sF9v4-0003eU-MY; Thu, 06 Jun 2024 06:00:33 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ICr8sTvCRKgALtrJMzqlq7wHH2FoCHbYx38JImlgIy7dLG/uuACtIzlRlZppfp+WaLlGffUmFhvFEj6D4voKdkWGeHUBEmVyNZiy2MgK0YpOxnRfNjn0VXCX+PoIg6tGjrZwKU2gE27hxhrhCCn/xRu75bJLKiugIxY5Ssb/gNabjnLCh5cG0hzS3h9aH/h6AlGnV9nU6gLpg8Rq8P5Bj/p9N0XM7eocl6xckPHLPcNTNY3w7DsSHSb3sN/3Jz5Hw5natn9/QnPivWrXB4/djmaUp4h02x6OTdi32+YbkGC8Mw7WScPe/iPCDxtVk30ymjEyOuwXT3TOVBVqvIEJaQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=148R7X1ib0+yDIg1UtkggluQAb02ZWf4CIi13gPlxvs=;
- b=b9PpHG7kU10kBTScESW3x8WlPysAo/uKeNoxrX9jeWs1Rwv/c3OlvOuyrPxcB33jJHeBqYBveZ7GqOTDueeEEd2zplgMnd14lY8TNr5gh+q90lUyrqztcGV5DMvFJ6S75n3GTW684n0bD0QAztJrao1O/3H8/w5mRSfzHQxTUJAgIc9Vpjiv2evqOcBPDPk6hrAxG6oWywXhB9FYbmCa2yVIofqKtb21k1zwslfoKWv+6H+RFS1l9qjuKQeEi4HphOVVoTZuBH1F0yBwnjBR8PdSw4rHruG8yatJCwK6pMwwpOe9LqJ47pCv1rhIEVC6iBU7MxOzOPYcbZFtJx6HoQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=jaguarmicro.com; dmarc=pass action=none
- header.from=jaguarmicro.com; dkim=pass header.d=jaguarmicro.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jaguarmicro.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=148R7X1ib0+yDIg1UtkggluQAb02ZWf4CIi13gPlxvs=;
- b=p02ZqQzc0MlR0GfTvy55mNojsrJfM8/ZsAL/2KE2ctfahI/tl3G53pvLRFw2+jLB8ogTrsekFItWmwYdS7jmTqReDxmM5rG2wzsYy9HrcbQ8jgjKAC7YUcX+GBjrqBIYdeF70c8RcKr2R49x7OcaLEpvRu9uscetobHUbPe54gNqmvLjKr0I8eKz4diNryiyAwYnL1awVbv54r6v7exKObJjAy/pb5iVqfE7nPBbh6UM7neoqIhXRy1iEs2XehV9+lLmevZx40yAqBG4uPlnDNKR4c0e49etzVYc9avI2jvXFAFMit+X1koiq6wflooUjmu0N36UC0ay1Wrdlrddqw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=jaguarmicro.com;
-Received: from KL1PR0601MB4891.apcprd06.prod.outlook.com (2603:1096:820:ae::7)
- by PUZPR06MB5433.apcprd06.prod.outlook.com (2603:1096:301:e8::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7633.30; Thu, 6 Jun
- 2024 10:00:16 +0000
-Received: from KL1PR0601MB4891.apcprd06.prod.outlook.com
- ([fe80::8950:42de:2354:91b2]) by KL1PR0601MB4891.apcprd06.prod.outlook.com
- ([fe80::8950:42de:2354:91b2%7]) with mapi id 15.20.7633.033; Thu, 6 Jun 2024
- 10:00:15 +0000
-From: "Andrew.Yuan" <andrew.yuan@jaguarmicro.com>
-To: luc.michel@amd.com, edgar.iglesias@gmail.com, alistair@alistair23.me,
- peter.maydell@linaro.org, jasowang@redhat.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- "Andrew.Yuan" <andrew.yuan@jaguarmicro.com>
-Subject: [PATCH]     hw/net: cadence_gem: fix: type2_compare_x_word_0 error
-Date: Thu,  6 Jun 2024 17:59:52 +0800
-Message-Id: <20240606095952.2133-1-andrew.yuan@jaguarmicro.com>
-X-Mailer: git-send-email 2.37.0.windows.1
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SI2PR06CA0014.apcprd06.prod.outlook.com
- (2603:1096:4:186::11) To KL1PR0601MB4891.apcprd06.prod.outlook.com
- (2603:1096:820:ae::7)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: KL1PR0601MB4891:EE_|PUZPR06MB5433:EE_
-X-MS-Office365-Filtering-Correlation-Id: 79126536-ceff-43d0-280a-08dc860f7695
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230031|366007|376005|1800799015|52116005|38350700005; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?MTZCcFJ0WENvVEEybEdDRVgrNWI3N0tOcDl0Z1JxMG9iRVMzL2VKUXlVbEdp?=
- =?utf-8?B?cldOaGJ6MDgyY0FFbUFNM2tHU3krUmZZTU5nWFFFVWFuR2xFQXhKRWxKc1Fl?=
- =?utf-8?B?cGVPNjBhazBtckp6UTZuV2xMTzhuQ25lZVp6QnUyWHRFY3Z5bllVYm50Qnk2?=
- =?utf-8?B?VVkwSEd6QWovS2ptNkFYY3hHbWlhSFNNbzJXV3o5dzQ2TXAwVG5LL1pKV3Yr?=
- =?utf-8?B?K2FTejdhS0g3cGxyR294QWl5TUJlSnJGMDNDRGRXMHZIM1hNVEgxQ0FKb1kv?=
- =?utf-8?B?dnEvaCs5NlVtQTh2c1F1R1hEaVB5ZkxTYSt0UzIyRWZEZ29aQnFmbFlveHE4?=
- =?utf-8?B?dFJDaEgyR01hM3ZxMnJlZHVvSFJSY09kSnlIMmdjZ2t0ckQvTDk5MHc3dnBE?=
- =?utf-8?B?VGYzRGxLZWRoL3JRNFlrYjFsRUhQTXlFSWhzTGlvVTR0d2tmbGxLcEp4OTZm?=
- =?utf-8?B?bnB4TkYzRHlyVzdMc2N3REMvb25TdWxXYWJlNjVZRmFNMG9ya0xLNXo1aURR?=
- =?utf-8?B?U1dERU5jemEyM3k2U3BLdnhmRUdjbUU2VzExWlljemd1UmV4NmowNThvOUdP?=
- =?utf-8?B?WkVqUFVJU2Z5RWx2czNyZVoreFdRYWIyZDRqQ09CWGZ5bXJlUEs1ODhKdXJT?=
- =?utf-8?B?TVA2cGNWWGhXUStRWFVLcHJSbXJJRms3STJLSEwrcEhNVFNPMElyYTUvdGFz?=
- =?utf-8?B?VjV6eW5CdHEzRU5TeDhVMERySVZRMGM4eVdjeDJvRG1aSk55NEwzZ0szRU94?=
- =?utf-8?B?U0JxeDNOR1lyNHJRWVV2VThRVmRuNTZ2Y20wQlEzRTlrbnkyd0VuTkVWajdS?=
- =?utf-8?B?cUxVekVzY2VKSEszM0lmUHJTSEk3dDJmZnFUeTlqajMvS3l1NUFENU9xd2Q1?=
- =?utf-8?B?czh4M3JRZnBLc3hadDhyNXo1Q3NlbjhDa3lPek9JVDF5bFpFY1BOaVB2T3dI?=
- =?utf-8?B?K1FDV2FiVUV6bSswc0wxSGduNTBTdjNBeURWaCs2WTJ4dzlVbW5FWnRmd1dp?=
- =?utf-8?B?RXlsVE9WdGdTSXR2NjZpRW1wLzJWcWxpeDgrdE1oK29OaUpHTzBQeXhhSFFo?=
- =?utf-8?B?cHB4bFBWVk1KOVJBU21YM1FWS3NWU3BPeWdNc085anFRYTl6bUh1OGQyTHQv?=
- =?utf-8?B?U3A1MkVBZUMyOFZlc0JKWkNyUDBNd0ltNnhzR2FTL1FhV1M1Q2tTdXlRb21C?=
- =?utf-8?B?ZEhMVW95SDVVMlAra3NENlNKN1FEQjZZVktxNzBiaFNieHMyU3NBcnc2bk9Y?=
- =?utf-8?B?ODBsZGkyTTNLcVc2eFFhQzE0Ry9VMHFELzRKVmI1eU5nZFU1OVZtSndDMXhy?=
- =?utf-8?B?ektoK1AvTnRyemlqbmtDMzA4SlplZTlJWExhSENHQ0pIRUowNXkvY1lkS1Q2?=
- =?utf-8?B?SlRrOTRBSktOQkFCMUE2U2tqZ2FQR0dvc2ZVOEh3VHZBU3FsandMUHFUL3l0?=
- =?utf-8?B?SHpKU2R5YTBSTHh4a2dYYVNlczBycndlRVlrNnhwZ0FPTy9GTXlhRFpEYkp4?=
- =?utf-8?B?OU9PNVdLajJLakdFTmExYWhCSTZrTXhiZ3pJWWhsd0swNkxoekp2UUIxYkZR?=
- =?utf-8?B?L3BCRGRud0kyZWNiVzJKeG5YUk42L01Ob0tINUNDYnN4d1JGbjZ3eStYUWFW?=
- =?utf-8?B?OG9IRkZLV2ZMN0p1dHlGWGlWUEYwaGttaFZKeUQrSWduNmtydTV6R2p5eWZh?=
- =?utf-8?B?dHRmczE2WXdZLzV0OWFtdkZnK2YwZVJVOWs1TFdsWGhHcWZPZk9TczlXR1Jw?=
- =?utf-8?B?cDlQazlSNmMzbzFndGpXZXp5dXJYSG9xbDE4bDdNWlRsTnhadWVVdEZuOGZK?=
- =?utf-8?Q?NakciuirR10whZMFsCxmkqkZjoE4sk2R06HBU=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:KL1PR0601MB4891.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(366007)(376005)(1800799015)(52116005)(38350700005); DIR:OUT;
- SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?QkRBVExvcEhBb1BFUUhQeVh6dFR6WkJmMUZOQ1MxODhyZWpHTklGUzJLaERH?=
- =?utf-8?B?akhPRFRIK3BaN3lWVFF1d1lUaTRqRmkvbC8vSzB0WmlDUko4cGRKVTJhQUNq?=
- =?utf-8?B?YWF5WllyM0ZOMjJxaFhQdlU2TDFQdWoxd210aWZscDhUR3BpOW5hRklRU3B4?=
- =?utf-8?B?K1FvMXIwMWFQeFVZYm04SGl1VkVHNVJBdDhhOW1EL2QyRG02Y0pxdzVKelVV?=
- =?utf-8?B?c2twbmh1aTNKbVZJcFpsUWJ3K2UxTURKZUJKYnpVRTVLMlZISzFicHlSbkFO?=
- =?utf-8?B?dDNKN2hWWGp5UVVNVnRKSUNxaTg0TFcrckhhYUJzaXVpZGJRWlFXWDk0empo?=
- =?utf-8?B?TDhic08rRjdndUUvbXVJOG9QT3JmS3lybzlOWTh3NUV2SGhqcGJhNGJBZk9v?=
- =?utf-8?B?b29xTHpqa1RmNlI4bmJTZGhjQzRJVDRQaDVFUFBSY1U2ZXA1dHRUd0xOcjRC?=
- =?utf-8?B?eVhuMjdNVzczc2JLeGtOVjYzb2I4WWQ4elMyRGdXVEZkRERXeDh6WG9UMThZ?=
- =?utf-8?B?d0pMNHU3M1I5QkorbGxZS3lwa2NQNmhqdTJkRFgxNFBHTCtCZ2FzUk5yU0p6?=
- =?utf-8?B?RGw5UFRQWUdIVWVJQVdHbWxFLzl1a0R5VVNtT3Z3ZDgxaWtlZExUVjRqanRZ?=
- =?utf-8?B?REl5bDM0M08xaUM3TFhlam1DaStwOFdaNDU0SUFPaVVEOWo1Y05MQWlUaHhT?=
- =?utf-8?B?Rk0zOXkvYURJMUl1MnhUWjJHaWdaU0Jac2NwaHlMVFlUV0JRdHNWaTdyaE1R?=
- =?utf-8?B?ZlVYVko1VG9GRlpRUlVaMEhpT2JHcHUvQStwVWd0QTl4Q2dwSG1lbXZYbGdz?=
- =?utf-8?B?dmNpSzBST08yZEdhaFRuT0JLdDdoc3dxTTB3YWF4KzVLMXo4R1YvR2FzYXNl?=
- =?utf-8?B?VWR3MGNtQzlWcGJnNTlhcXYrbmFWUEdkeHZrODJXbWc5Y00rTVFMSUl4VlJD?=
- =?utf-8?B?MXRUcnlCdEoyZXM2NDh1KzYycnA0MmFtTGpwblhzOVJ4TDFEQTVET0llaVhn?=
- =?utf-8?B?MTFqRHptaWRkUFBtOGs5dkttcUt1cmo0akFPaGJCRlhxK2FDaWFSZk9nczc4?=
- =?utf-8?B?ZkVKKzI2cDlqM25YUlJuVU1pRlBTR0hHSXBRYjJzL2graGtKaytUSWgrVzVB?=
- =?utf-8?B?NUh1Nkt4STArMkNrK2RTKzJPeVdDVFVSZHNVOGtnakcyZ3Z3N21kdlN4VzEw?=
- =?utf-8?B?M1hBdEpPNTFrZE5rQ3VyV2E2SytZL3pEeEh0eHhFSXFSZ2h4UFk0QjQ3L2ha?=
- =?utf-8?B?UXBUYW5XMGJNQWhJNFRhVDlHcWhoMHpCZkxwYzJOaUwwV2ZEd3JEU0RDSW5X?=
- =?utf-8?B?RVRnZ1k3Vm0rWlRRSWVJcHRvS29zMU91Wk5zcW45U3h4SVlFWllNeU5Felgy?=
- =?utf-8?B?MCtVS251RmZlZm1lcnRMbUJhTVpwRWZBSHpzWGtjS3RHbjZGMFRqelJBcW1K?=
- =?utf-8?B?N0ZFMEpyd2tVY3h0RHR0aVhucExDUm5rWGViVnUwVWw2VlBtK1JQQVlvWU5P?=
- =?utf-8?B?eGQyS2g4OTA2NDRBMjhaUU5BdCt6WXJPeGswNW1BZEx5Y0U0emRKKzBvZUhX?=
- =?utf-8?B?dllVOUdMdCtJcCttUit5TTA0SmxyNDlCSFNjMm9rMGk3QVdhY0ZmN2RRVzFO?=
- =?utf-8?B?Wjdpek1vc2JYT3kvenp1OUFHZ2h2MWJicWJUQ1VFVXlPSDQyZllicWtQQmhl?=
- =?utf-8?B?Sk5EV3FXUURnOXdsVktzUmprUVpPOUVEMCtrNXBudllHNjdDbElTQjhjVXF2?=
- =?utf-8?B?UncxYkhtcWdGeTlBS2dxN2RUb0NVdmFaUHVvUVpoOE13S1JxODdoL3Y4QWJw?=
- =?utf-8?B?TS9WWEZxYmFSazFiYlhidERra0JwNy9kN1hDYndwT0xTNlJrTnNSd3FkVGVp?=
- =?utf-8?B?b0RZYVlqRkJvQXIzNXZZbXZQVUVYRjBpcWFJb0xCNy9LOFVHdjd0WkVPSnpO?=
- =?utf-8?B?c3ZYV0J2dVZRQnlsQWJTVWd0Ulovam1KUUlubEJOdlVBdVUyeVRBd0dZbm1i?=
- =?utf-8?B?QVpVaDZ0NEFhVHZEU3pQdEp1ZjM4ZEF1YmcyQXFiS0pZRnArUDcrejNKcFBt?=
- =?utf-8?B?bFdCUEtUYlNrRlRJbDUyVmpIWnYrQW9EcmdKaDU1Q01pQ1MvMklMbWlZOXg1?=
- =?utf-8?B?Y2ZCQjZPcXV2UHdaZVZab25tTWtqenRKUjZ6UXRmSkxQUG85QktVMkgyMGVj?=
- =?utf-8?B?MHc9PQ==?=
-X-OriginatorOrg: jaguarmicro.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 79126536-ceff-43d0-280a-08dc860f7695
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR0601MB4891.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2024 10:00:15.5844 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 1e45a5c2-d3e1-46b3-a0e6-c5ebf6d8ba7b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: jF3M+LWaBsONC82Ttl2K9VkdJgPBJ6CcvphAO/PBUbm7cIBy7iEsqn070r7NVjnU9pWFyQfQtVoLcDNDUmgWw6VU//xUDN8xTOJh5+X/w54=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR06MB5433
-Received-SPF: pass client-ip=2a01:111:f403:c401::3;
- envelope-from=andrew.yuan@jaguarmicro.com;
- helo=SINPR02CU002.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <xiongyining1480@phytium.com.cn>)
+ id 1sFVP1-0004RK-LD; Fri, 07 Jun 2024 04:56:51 -0400
+Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <xiongyining1480@phytium.com.cn>)
+ id 1sFVOv-0001rn-Kv; Fri, 07 Jun 2024 04:56:51 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwCXnw89y2JmH0EMAA--.5408S2;
+ Fri, 07 Jun 2024 16:56:29 +0800 (CST)
+Received: from DESKTOP-E65K6PP (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAfwDnkdc7y2Jmf7YAAA--.1076S3;
+ Fri, 07 Jun 2024 16:56:28 +0800 (CST)
+Date: Fri, 7 Jun 2024 16:56:28 +0800
+From: "xiongyining1480@phytium.com.cn" <xiongyining1480@phytium.com.cn>
+To: "Marcin Juszkiewicz" <marcin.juszkiewicz@linaro.org>, 
+ qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>
+Cc: rad <rad@semihalf.com>, peter.maydell <peter.maydell@linaro.org>, 
+ quic_llindhol <quic_llindhol@quicinc.com>
+Subject: Re: [PATCH v4 1/1] hw/arm/sbsa-ref: Enable CPU cluster on ARM sbsa
+ machine
+References: <20240426073553.326946-1-xiongyining1480@phytium.com.cn>, 
+ <20240426073553.326946-2-xiongyining1480@phytium.com.cn>, 
+ <456d4233-a1b3-41fb-9fd9-e89a4fbb5c18@linaro.org>
+X-Priority: 3
+X-GUID: E96D04C6-96C5-426E-8177-65651E3E14A7
+X-Has-Attach: no
+X-Mailer: Foxmail 7.2.25.228[cn]
+Mime-Version: 1.0
+Message-ID: <2024060716413143583852@phytium.com.cn>
+Content-Type: multipart/alternative;
+ boundary="----=_001_NextPart835020623601_=----"
+X-CM-TRANSID: AQAAfwDnkdc7y2Jmf7YAAA--.1076S3
+X-CM-SenderInfo: x0lr0wp1lqx0bjrumio6sk53xlxphulrpou0/1tbiAQAJBmZiD2QDeAABsb
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=xiongyinin
+ g1480@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoW7AryfKrWfGrWUAF17uryrXrb_yoW8AF4rpF
+ WUtrnIyw1DCrWDCa17Wa4xur95uw15uayUtry0qFWktr98ua18CrnxKanY9ry7G348K34j
+ vws2k34Uua90v3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=129.150.39.64;
+ envelope-from=xiongyining1480@phytium.com.cn;
+ helo=sgoci-sdnproxy-4.icoremail.net
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL=1.31, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_KAM_HTML_FONT_INVALID=0.01,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 06 Jun 2024 11:28:50 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -211,39 +107,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FxdoLn0SEaCR
+X-TUID: 990M8v0Y4JLZ
 
-        In the Cadence IP for Gigabit Ethernet MAC Part Number: IP7014 IP Rev: R1p12 - Doc Rev: 1.3 User Guide, the specification for the type2_compare_x_word_0 register is as follows:
-        The byte stored in bits [23:16] is compared against the byte in the received frame from the selected offset+0, and the byte stored in bits [31:24] is compared against the byte in
-        the received frame from the selected offset+1.
+This is a multi-part message in MIME format.
 
-        However, there is an implementation error in the cadence_gem model in qemu：
-        the byte stored in bits [31:24] is compared against the byte in the received frame from the selected offset+0
+------=_001_NextPart835020623601_=----
+Content-Type: text/plain;
+	charset="UTF-8"
+Content-Transfer-Encoding: base64
 
-        Now, the error code is as follows:
-        rx_cmp = rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
+DQoNCg0KDQp4aW9uZ3lpbmluZzE0ODBAcGh5dGl1bS5jb20uY24NCiANCkZyb206IE1hcmNpbiBK
+dXN6a2lld2ljeg0KRGF0ZTogMjAyNC0wNS0yNCAwMjo0Nw0KVG86IFhpb25nIFlpbmluZzsgcWVt
+dS1hcm07IHFlbXUtZGV2ZWwNCkNDOiByYWQ7IHBldGVyLm1heWRlbGw7IHF1aWNfbGxpbmRob2wN
+ClN1YmplY3Q6IFJlOiBbUEFUQ0ggdjQgMS8xXSBody9hcm0vc2JzYS1yZWY6IEVuYWJsZSBDUFUg
+Y2x1c3RlciBvbiBBUk0gc2JzYSBtYWNoaW5lDQpXIGRuaXUgMjYuMDQuMjAyNCBvIDA5OjM1LCBY
+aW9uZyBZaW5pbmcgcGlzemU6DQo+IEZyb206IHhpb25neWluaW5nMTQ4MDx4aW9uZ3lpbmluZzE0
+ODBAcGh5dGl1bS5jb20uY24+DQo+IA0KPiBFbmFibGUgQ1BVIGNsdXN0ZXIgc3VwcG9ydCBvbiBT
+YnNhUWVtdSBwbGF0Zm9ybSwgc28gdGhhdCB1c2VycyBjYW4NCj4gc3BlY2lmeSBhIDQtbGV2ZWwg
+Q1BVIGhpZXJhcmNoeSBzb2NrZXRzL2NsdXN0ZXJzL2NvcmVzL3RocmVhZHMuIEFuZA0KPiB0aGlz
+IHRvcG9sb2d5IGNhbiBiZSBwYXNzZWQgdG8gdGhlIGZpcm13YXJlIHRocm91Z2ggRFQgY3B1LW1h
+cC4NCj4gDQo+IFNpZ25lZC1vZmYtYnk6IFhpb25nIFlpbmluZzx4aW9uZ3lpbmluZzE0ODBAcGh5
+dGl1bS5jb20uY24+DQo+IHRlc3RlZC1ieTogTWFyY2luIEp1c3praWV3aWN6PG1hcmNpbi5qdXN6
+a2lld2ljekBsaW5hcm8ub3JnPg0KIA0KPkkgaGFkIHNvbWUgdGhpbmtpbmcgYWJvdXQgaXQgcmVj
+ZW50bHkuIFRoaXMgcGF0Y2ggZXhwb3J0ZWQgd2hvbGUgDQo+L2NwdXMvY3B1LW1hcC8gdHJlZSB3
+aGljaCB3ZSB0aGVuIHBhcnNlIGluIFRGLUEgdG8gZ2V0IGFtb3VudCBvZiANCj5zb2NrZXRzL2Ns
+dXN0ZXJzL2NvcmVzL3RocmVhZHMuDQogDQo+V2h5IG5vdCBleHBvcnQgdGhlbSBkaXJlY3RseT8g
+S2luZCBvZjoNCj4gDQo+ICAgICAgICBjcHVzIHsNCj4gICAgICAgICAgICAgICAgIHRvcG9sb2d5
+IHsNCj4gICAgICAgICAgICAgICAgICAgICAgICAgdGhyZWFkcyA9IDwweDAxPjsNCj4gICAgICAg
+ICAgICAgICAgICAgICAgICAgY29yZXMgPSA8MHgwND47DQo+ICAgICAgICAgICAgICAgICAgICAg
+ICAgIGNsdXN0ZXJzID0gPDB4MDE+Ow0KPiAgICAgICAgICAgICAgICAgICAgICAgICBzb2NrZXRz
+ID0gPDB4MDE+Ow0KPiAgICAgICAgICAgICAgICAgfTsNCj4gDQo+SXQgZ2l2ZXMgZXZlcnl0aGlu
+ZyB3ZSBuZWVkLg0KDQpGdWxseSBhZ3JlZS4NCiANCj5IYWQgc29tZSB0aGlua2luZyBhYm91dCBl
+eHBvcnRpbmcgYW1vdW50IG9mIGNvcmVzIHBlciBjbHVzdGVyICg4IG5vdywgDQo+dmlydCB1c2Vz
+IDE2IHdoaWNoIGlzIGFyY2hpdGVjdHVyZSBtYXhpbXVtIG5vdykgaW4gY2FzZSB3ZSB3b3VsZCB1
+c2UgaXQgDQo+aW4gZ2VuZXJhdGlvbiBvZiBQUFRUIGluIEVESzIuDQoNCkkgZG9uJ3QgZnVsbHkg
+dW5kZXJzdGFuZCAidGhlIGFtb3VudCBvZiBjb3JlcyBwZXIgY2x1c3RlciIsIGRvZXMgaXQgbWVh
+bnMgdGhlIHVzZXIgY29uZmlnOiAtc21wIGNsdXN0ZXJzPVgsIGNvcmVzPVkgd2hpY2ggaW5kaWNh
+dGVzDQp0aGUgbnVtYmVyIG9mIGNvcmVzIGluIG9uZSBjbHVzdGVyIGlzIFksIG9yIHRoZSBBRkYw
+L0FGRjEgaW4gTVBESVI/DQoNClRoZSBjcHUgdG9wb2xvZ3kgaXMgZGVmaW5lZCBieSB0aGUgdXNl
+ciBvbiBjb21tYW5kIGxpbmUgd2hpY2ggUFBUVCB3YW50IHRvIGFsaWduIHdpdGguICBBbmQgdGhl
+IHZhbHVlIG9mIEFGRjAvQUZGMSBpcyBnZW5lcmFsbHkgDQo4IG9yIDE2IHdoaWNoIHdpbGwgbm90
+IGFmZmVjdGVkIGJ5ICBvcHRpb24gLXNtcCBjb21tYW5kLiAgIENvbnNpZGVyaW5nIHRoYXQgTVBE
+SVIgY2Fubm90IHJlZmxlY3QgdGhlIGNwdSB0b3BvbG9neSBjb25maWd1cmF0ZWQgYnkgDQp1c2Vy
+LCBpIGd1ZXNzIHRoZSBQUFRUICBkb24ndCBuZWVkIHRvIHVzZSB0aGUgTVBESVIgdmFsdWUuDQoN
+Cg==
 
-        and needs to be corrected to：
-        rx_cmp = rxbuf_ptr[offset + 1] << 8 | rxbuf_ptr[offset];
+------=_001_NextPart835020623601_=----
+Content-Type: text/html;
+	charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Andrew.Yuan <andrew.yuan@jaguarmicro.com>
----
- hw/net/cadence_gem.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index ec7bf562e5..9c73ded0d3 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -946,7 +946,7 @@ static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
-                 break;
-             }
- 
--            rx_cmp = rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
-+            rx_cmp = rxbuf_ptr[offset + 1] << 8 | rxbuf_ptr[offset];
-             mask = FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, MASK_VALUE);
-             compare = FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, COMPARE_VALUE);
- 
--- 
-2.37.0.windows.1
+<html><head><meta http-equiv=3D"content-type" content=3D"text/html; charse=
+t=3DUTF-8"><style>body { line-height: 1.5; }blockquote { margin-top: 0px; =
+margin-bottom: 0px; margin-left: 0.5em; }body { font-size: 14px; font-fami=
+ly: "Microsoft YaHei UI"; color: rgb(0, 0, 0); line-height: 1.5; }</style>=
+</head><body>=0A<div><span></span><br></div>=0A<div><br></div><hr style=3D=
+"width: 210px; height: 1px;" color=3D"#b5c4df" size=3D"1" align=3D"left">=
+=0A<div><span><div style=3D"MARGIN: 10px; FONT-FAMILY: verdana; FONT-SIZE:=
+ 10pt"><div>xiongyining1480@phytium.com.cn</div></div></span></div>=0A<blo=
+ckquote style=3D"margin-Top: 0px; margin-Bottom: 0px; margin-Left: 0.5em; =
+margin-Right: inherit"><div>&nbsp;</div><div style=3D"border:none;border-t=
+op:solid #B5C4DF 1.0pt;padding:3.0pt 0cm 0cm 0cm"><div style=3D"PADDING-RI=
+GHT: 8px; PADDING-LEFT: 8px; FONT-SIZE: 12px;FONT-FAMILY:tahoma;COLOR:#000=
+000; BACKGROUND: #efefef; PADDING-BOTTOM: 8px; PADDING-TOP: 8px"><div><b>F=
+rom:</b>&nbsp;<a href=3D"mailto:marcin.juszkiewicz@linaro.org">Marcin Jusz=
+kiewicz</a></div><div><b>Date:</b>&nbsp;2024-05-24&nbsp;02:47</div><div><b=
+>To:</b>&nbsp;<a href=3D"mailto:xiongyining1480@phytium.com.cn">Xiong Yini=
+ng</a>; <a href=3D"mailto:qemu-arm@nongnu.org">qemu-arm</a>; <a href=3D"ma=
+ilto:qemu-devel@nongnu.org">qemu-devel</a></div><div><b>CC:</b>&nbsp;<a hr=
+ef=3D"mailto:rad@semihalf.com">rad</a>; <a href=3D"mailto:peter.maydell@li=
+naro.org" class=3D"">peter.maydell</a>; <a href=3D"mailto:quic_llindhol@qu=
+icinc.com" class=3D"">quic_llindhol</a></div><div><b>Subject:</b>&nbsp;Re:=
+ [PATCH v4 1/1] hw/arm/sbsa-ref: Enable CPU cluster on ARM sbsa machine</d=
+iv></div></div><div><div>W dniu 26.04.2024 o&nbsp;09:35, Xiong Yining pisz=
+e:</div>=0A<div>&gt; From: xiongyining1480&lt;xiongyining1480@phytium.com.=
+cn&gt;</div>=0A<div>&gt; </div>=0A<div>&gt; Enable CPU cluster support on =
+SbsaQemu platform, so that users can</div>=0A<div>&gt; specify a 4-level C=
+PU hierarchy sockets/clusters/cores/threads. And</div>=0A<div>&gt; this to=
+pology can be passed to the firmware through DT cpu-map.</div>=0A<div>&gt;=
+ </div>=0A<div>&gt; Signed-off-by: Xiong Yining&lt;xiongyining1480@phytium=
+.com.cn&gt;</div>=0A<div>&gt; tested-by: Marcin Juszkiewicz&lt;marcin.jusz=
+kiewicz@linaro.org&gt;</div>=0A<div>&nbsp;</div>=0A<div>&gt;I had some thi=
+nking about it recently. This patch exported whole </div>=0A<div>&gt;/cpus=
+/cpu-map/ tree which we then parse in TF-A to get amount of </div>=0A<div>=
+&gt;sockets/clusters/cores/threads.</div>=0A<div>&nbsp;</div>=0A<div>&gt;W=
+hy not export them directly? Kind of:</div>=0A<div>&gt;&nbsp;</div>=0A<div=
+>&gt;&nbsp; &nbsp; &nbsp; &nbsp; cpus {</div>=0A<div>&gt;&nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;topology {</div>=0A<div>&gt;&=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp;threads =3D &lt;0x01&gt;;</div>=0A<div>&gt;&nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+cores =3D &lt;0x04&gt;;</div>=0A<div>&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;clusters =3D &lt;=
+0x01&gt;;</div>=0A<div>&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;sockets =3D &lt;0x01&gt;;</div>=
+=0A<div>&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+};</div>=0A<div>&gt;&nbsp;</div>=0A<div>&gt;It gives everything we need.</=
+div><div><br></div><div>Fully agree.</div>=0A<div>&nbsp;</div>=0A<div>&gt;=
+Had some thinking about exporting amount of cores per cluster (8 now, </di=
+v>=0A<div>&gt;virt uses 16 which is architecture maximum now) in case we w=
+ould use it </div>=0A<div>&gt;in generation of PPTT in EDK2.</div><div><br=
+></div><div><span style=3D"background-color: transparent;">I don't fully u=
+nderstand "the amount of cores per cluster", does it means the user config=
+: -smp clusters=3DX, cores=3DY which indicates</span></div><div><span styl=
+e=3D"background-color: transparent;">the number of cores in one cluster is=
+ Y, or the AFF0/AFF1 in MPDIR?</span></div><div><span style=3D"background-=
+color: transparent;"><br></span></div><div><span style=3D"background-color=
+: transparent;">The cpu topology is defined by the user on command line wh=
+ich PPTT want to align with.&nbsp;</span><span style=3D"background-color: =
+transparent;">&nbsp;And t</span><span style=3D"background-color: transpare=
+nt;">he value of AFF0/AFF1 is generally&nbsp;</span></div><div><span style=
+=3D"background-color: transparent;">8 or 16&nbsp;</span><span style=3D"bac=
+kground-color: transparent;">which will not&nbsp;</span><span style=3D"bac=
+kground-color: transparent;">affected by&nbsp;</span><span style=3D"backgr=
+ound-color: transparent;">&nbsp;</span><span style=3D"background-color: tr=
+ansparent;">option -smp command.&nbsp; &nbsp;</span><span style=3D"backgro=
+und-color: transparent;">Considering that MPDIR cannot reflect the cpu top=
+ology configurated by&nbsp;</span></div><div><span style=3D"background-col=
+or: transparent;">user, i guess the PPTT&nbsp; don't need to use the MPDIR=
+ value.</span></div><div><br></div>=0A</div></blockquote>=0A</body></html>
+------=_001_NextPart835020623601_=------
 

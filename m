@@ -1,116 +1,85 @@
-Received: by 2002:a17:907:686:b0:a6f:1bf6:7fc1 with SMTP id wn6csp480903ejb;
-        Sun, 9 Jun 2024 23:05:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWMOrNAUG1uRIMHgKQ7k+ecp03fjg76g7/4IFWRvD3CXVtynHQjdxQBtPwZom6UvKpkF5zheZwuiV4Pq4I/wkuf2nAkR/ij
-X-Google-Smtp-Source: AGHT+IHqtlYVQ/hFK5lOu6PRHaUznzK5sNFKxNoIMrpEpo0JbiI7j5Bf5pVUifz1nO4YP5+54XlT
-X-Received: by 2002:a05:6808:13ca:b0:3d2:19da:9573 with SMTP id 5614622812f47-3d219da96b2mr9897428b6e.15.1717999534359;
-        Sun, 09 Jun 2024 23:05:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1717999534; cv=none;
+Received: by 2002:a17:907:686:b0:a6f:1bf6:7fc1 with SMTP id wn6csp550592ejb;
+        Mon, 10 Jun 2024 02:24:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXtnzVNYgLr4Yob4ipGZ93hiPbKAFniymFdesA6RvGB4/YrLciLpuYcO0VJon9c+zjzYci8xgcMtIb2iGMddn8dtOaEY0g6
+X-Google-Smtp-Source: AGHT+IGJRfe56s+2PMvWJ/DA7DnAkQgwUVMIp65EnAKPv/e5+RfOBYzADhMV4xrSklMvWPthyNT0
+X-Received: by 2002:ac8:5d01:0:b0:440:6115:ad4e with SMTP id d75a77b69052e-4406115ae02mr66844481cf.2.1718011483917;
+        Mon, 10 Jun 2024 02:24:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718011483; cv=none;
         d=google.com; s=arc-20160816;
-        b=L2ZYS490Nn5p+m7h7rltRefOqJYoZTFMVempbLvPXTeSk/B84W7wmeMyQWKF2NFK8W
-         tU7O9VPVVDFVxFSQuKIpGJFZRr+HJfduwC0AVQb7NmM7WsWoPuT5tjUu0ku/M+bwf3dD
-         do35v3qwjycrUmaDD1ngVbU4OGFQ7JFSHLLXGlK1EGULCCGG1L1e2tWE5rcUfE6NNfZn
-         hTrf9cMxtKYLjwMq2X6oeGqPCVfqn+n9RTAicvDHUqSNxcgtQLAYJKqYE30Vo9dA9U+q
-         Sw/f5ChTXyi8yiBlMJPRym69T64cx0ke6HMwu9KIREAq8GHQQ0zU5rV6wvD9FQOlva/x
-         D9Rg==
+        b=Xfnq+x2cNM6AhZ9RDbGh1BSR0RpPmKWSxA+9gP3Bx06cmbcyQrTjsYNQZXZ2IKeWrF
+         V9Qsx+qJzdRDN7WMqtiX9a1oSV0UQNmzXbf+82hNyeE7b7NDu20rz81UsWlwWNScoLjV
+         ed7cTK4781CqqVUXVT/ap1bBCMAmpytWiwKl3FuNx10x3jJxvPKvIaYZGqb2cAV8Uvv9
+         lmjirsMk8V7bVGpaCVDOgLhjlGdjuPTJ+7GmMxvwRjUgyZQCBA/b6p9POTSLxEDYKwQX
+         JT054GQv02bskL82mYzJYEqfIxStuMe87vIXvy+Hjbdzb7OGXmO6TzNk84fSDj08nOjV
+         6Z/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Mz5HlpAGy/kiQYJ3EPXYuRg/Ok6CveWjBpoGnYhVKsc=;
-        fh=1D7nN6XZk8w747bbJhCnZkJPKAAtXYXXwnkHXlTHNy0=;
-        b=cSXm7OuGoptusBZoOcA1vA+THcBZkEBXiEUK781eVWeQq8XVnHPghavgH5/7tTbZkY
-         lnd+lqOHlFqZrZ/A/nn1ZXETw0lseHNeeEfkIUqUFh7+mH4y5dOUj3Lh9f0bddPNxiIt
-         Npo9SAxDmeWGAHyR5CwJhJqNUmUyun0/JinbQVMjCrqYFLRfF+lN0St+nxmsPiIwW4do
-         vYuVVRHDr0EavH4x2TLPLMRa26bfD4TLJ6WPmbhPGfnzlV87P1ZAENc+NG0YnH1ks3O+
-         4hrz3o5DBESxH78MMPtVtItIucdJ1eeEQ6HHBnvffpFPwPJgG5iMlxFHShwnFRxozgE1
-         UPrg==;
+         :user-agent:mime-version:date:message-id;
+        bh=dvuVN3jxnXBxNjkLCA7Mdttc2nc3qwpapHxAAxAqO/o=;
+        fh=GFN6Y1WPC+/eoxgviPbQjxqIdT1U1VoJGM2w+bjwVr0=;
+        b=k/6Bq9XGyO7PvrmOVwkqps8oHO/UHWDlf0NYvlYSKGKGzOXj4giDV8Fxu7me5hsDhQ
+         LKbbXriqmwebNZ4MPlZGk3UjteXWyXGZByOgEzXSYqLV2jyNnC42vwJ0B6hKtkDfLfGY
+         hzqehNXdMc7DOTaxuWJml9YjlKpDPDdXzT8e54WjpT0qqWhKofyMwfI7yNDVccwfs1pt
+         HXQfzmKzOg7T88H/9O+uktwMPwqIr/d9G5loM0RDdeTmTscweZ/5B6s3MnfysXkKEye0
+         iLguB6DhLceg4trg/Qi/whkTY4GH/tjdxKwcVV3XPfLm7oDWuHBBw250H8xhjIBcVocn
+         LCpg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DWmapxjg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4405ca0ba7fsi42825371cf.17.2024.06.09.23.05.34
+        by mx.google.com with ESMTPS id d75a77b69052e-440649a1ebdsi30588101cf.139.2024.06.10.02.24.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 09 Jun 2024 23:05:34 -0700 (PDT)
+        Mon, 10 Jun 2024 02:24:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DWmapxjg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sGY9K-0003K0-0X; Mon, 10 Jun 2024 02:04:58 -0400
+	id 1sGbGA-0003FX-TD; Mon, 10 Jun 2024 05:24:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sGY9I-0003JZ-FB
- for qemu-arm@nongnu.org; Mon, 10 Jun 2024 02:04:56 -0400
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sGY9F-0000ni-Lq
- for qemu-arm@nongnu.org; Mon, 10 Jun 2024 02:04:54 -0400
-Received: by mail-lf1-x12c.google.com with SMTP id
- 2adb3069b0e04-52c804e092dso1729652e87.2
- for <qemu-arm@nongnu.org>; Sun, 09 Jun 2024 23:04:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1717999491; x=1718604291; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Mz5HlpAGy/kiQYJ3EPXYuRg/Ok6CveWjBpoGnYhVKsc=;
- b=DWmapxjgPhWmiMSSTRDZsqrro0d/wsJ5Re8URq0C3UdPsNdHY6l88ou1gq723xIZsn
- yi1eCtLzAx7Os02IClYe9Zg4F3oNZSEtv62KBUgNQaDq7Rzc6swN5DJe3s9XKHOH7f0O
- qYD7h15Nu3wiBReiOcl4Au1yPTxx2ldC9wG0oxW6+mhqYlzHfiRj55+hO+HUK2085AM/
- BC/Du6eiCLz73GfKQqKIiLwl5nj0mz3n0QzLVaalmiSWxu/oJ1gOfjOrl8MZnkeD1bsK
- YzhMnbfJrITL3dOWJVFEpNLHT/JzirdVbnePq7VDKxfezjb9xJiK+9rU0UhbN4E2cdwd
- VrQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717999491; x=1718604291;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Mz5HlpAGy/kiQYJ3EPXYuRg/Ok6CveWjBpoGnYhVKsc=;
- b=eQJ93jtoyPsFRhAlPo1WiXi6zTY/maFkyeHgp40vkmj+FjAh5i13T9lWac+EKeI2SS
- R2dmkeUpEdVLsLmUr+NGpyf+nIRClFVlldS6XyLRvJEpKn8kSVZqtSsijRXp6HUDzrrj
- 8N7nGoHAlbLy7RgMSHkIJovh2nW9Pp1PQv1KfGZczg8E+ANqPsYj2RnT8GbPa6L31ycA
- 7MPn/A/u8vfDA3NFCgT+Gs7wZkHKieR1z8M6yNZ4LotAsCUp9oayPkNDRl+T7bhvZwC6
- KvjFLrNSiVNQNVKHChNJlry14d8e4OTgdtQFWdLftYXvrk1Gid6OKJTExScph6bxx2K5
- cFDg==
-X-Gm-Message-State: AOJu0YzBa5N5JjhrP9k6dRHy6+DkSwgJgPILmS8PPm6lVci3xRJdajId
- 7AXrU24r9o8xpiDwWUUCLUQ+F/k8OZsKiLr0lXnlqVz+BPjosKXoah1d18S4epY=
-X-Received: by 2002:a19:8c42:0:b0:52c:7fbf:39f6 with SMTP id
- 2adb3069b0e04-52c7fbf3b15mr3517744e87.26.1717999490722; 
- Sun, 09 Jun 2024 23:04:50 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.129.242])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a6f1d8369casm119024066b.225.2024.06.09.23.04.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 09 Jun 2024 23:04:50 -0700 (PDT)
-Message-ID: <f04c5b61-2e73-4029-a614-a9c7686ec46d@linaro.org>
-Date: Mon, 10 Jun 2024 08:04:48 +0200
+ (Exim 4.90_1) (envelope-from <SRS0=l9v5=NM=kaod.org=clg@ozlabs.org>)
+ id 1sGbG9-0003FD-52; Mon, 10 Jun 2024 05:24:13 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=l9v5=NM=kaod.org=clg@ozlabs.org>)
+ id 1sGbG7-0003Xq-IV; Mon, 10 Jun 2024 05:24:12 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4VyRFb41Nlz4x2M;
+ Mon, 10 Jun 2024 19:24:03 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4VyRFY3hQ7z4x4T;
+ Mon, 10 Jun 2024 19:24:01 +1000 (AEST)
+Message-ID: <c8490af5-466d-44fd-ace5-2b32f653e4b6@kaod.org>
+Date: Mon, 10 Jun 2024 11:23:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/xilinx_zynq: Fix IRQ/FIQ routing
-To: Sebastian Huber <sebastian.huber@embedded-brains.de>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20240610052906.4432-1-sebastian.huber@embedded-brains.de>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240610052906.4432-1-sebastian.huber@embedded-brains.de>
+Subject: Re: [PATCH] aspeed/smc: Reintroduce "dram-base" property for AST2700
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>
+References: <20240527124315.35356-1-clg@redhat.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240527124315.35356-1-clg@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=l9v5=NM=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -126,15 +95,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /BdmT+bzRXPh
+X-TUID: soIiXip2AGiQ
 
-On 10/6/24 07:29, Sebastian Huber wrote:
-> Fix the system bus interrupt line to CPU core assignment.
+On 5/27/24 2:43 PM, Cédric Le Goater wrote:
+> The Aspeed SMC device model use to have a 'sdram_base' property. It
+> was removed by commit d177892d4a48 ("aspeed/smc: Remove unused
+> "sdram-base" property") because previous changes simplified the DMA
+> transaction model to use an offset in RAM and not the physical
+> address.
 > 
-> Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
+> The AST2700 SoC has larger address space (64-bit) and a new register
+> DMA DRAM Side Address High Part (0x7C) is introduced to deal with the
+> high bits of the DMA address. To be able to compute the offset of the
+> DMA transaction, as done on the other SoCs, we will need to know where
+> the DRAM is mapped in the address space. Re-introduce a "dram-base"
+> property to hold this value.
+> 
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
 > ---
->   hw/arm/xilinx_zynq.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
+>   include/hw/ssi/aspeed_smc.h | 1 +
+>   hw/ssi/aspeed_smc.c         | 1 +
+>   2 files changed, 2 insertions(+)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+Applied to aspeed-next.
+
+Thanks,
+
+C.
 

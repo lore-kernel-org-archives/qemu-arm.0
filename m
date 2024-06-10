@@ -1,112 +1,126 @@
-Received: by 2002:a17:907:686:b0:a6f:1bf6:7fc1 with SMTP id wn6csp574461ejb;
-        Mon, 10 Jun 2024 03:26:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVlNIeMA9fx06b+AlKhPK04tohSJtcYSQKPX3a7ANqxZrFNmb14OZj9fagBbFjlKOsXv/cJ9w6Ut1NkE7J0ytOB2e0PcrkX
-X-Google-Smtp-Source: AGHT+IEEYOa174u53aH/nWnNzLITOxC0mfHTEKrgB5p+6WCcGstyimD6yPWQC+N/GDErkccMwokb
-X-Received: by 2002:a05:620a:3941:b0:795:233c:6985 with SMTP id af79cd13be357-7953c2d326dmr1106784885a.4.1718015196201;
-        Mon, 10 Jun 2024 03:26:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718015196; cv=none;
+Received: by 2002:a17:907:686:b0:a6f:1bf6:7fc1 with SMTP id wn6csp612682ejb;
+        Mon, 10 Jun 2024 04:49:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWtDgaL4KKvuMd3xsW/0otg60kz62jtVmjlVgEtlWeX4RdFCBnm/HNdMLQ9I/7OMJjt7O5uIAmi7As2eKcZS57R+3rJ0Ruq
+X-Google-Smtp-Source: AGHT+IGyeBVG5+wDcftwlMVp9RqyZ6quDlaD/LZBGdSCx5DnMYURaqHlxJNCnr0utBfuBBtthI8w
+X-Received: by 2002:a05:6870:9188:b0:254:7f9f:3f21 with SMTP id 586e51a60fabf-2547fa006d3mr9072979fac.27.1718020174334;
+        Mon, 10 Jun 2024 04:49:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718020174; cv=none;
         d=google.com; s=arc-20160816;
-        b=MAktcWh3lmepKfsnCnF9hNUbck+YOxQeHe5D4kG9j6V2T/DRdL6zTLh2t0uSytkz4N
-         chyGAGSAk/7p4Fsz9N8kIpWN4tQ70UmFe8TbGUSGWZkbl1PJhzFVs0BWI58sc52/2po/
-         oPHnwVnqx/gOUHhvjpUuG/pgcJTejh7u13tCZdIVPnZhZO5WQN6LX8pE8y+/kYwOTQrr
-         AwBbsokHh4fMLEXo8GYFmNKTKIwqOdKEmv8Zbxx6FIrRyfYPK7lVV4UE5qEqUPtl5MCQ
-         IHvpUZaFQvQNJIs1Ps6UawGe3ged4+Zfg+dFnDpmarN/oQfig4s+GVVjxXWTok4ZQ7yY
-         1wYw==
+        b=Gulmyvb2rJdHEeC9vfKo5qPi3RZC65880cF5ZftC5UhveWuiN3nBddaG8Je7RDidrc
+         5pFtOX0FU4klZZPcfGLtPmj3aguTgr7d1fTnY8uBIIesXWD/gj4WQbOd7PBFt37ddqBa
+         249Ip+zxtgYFnK5/vBSDQTdgz9RAO/BKtLqZbeKtaC6gDnREJNKo4EZufCzaKy7/JsB4
+         fzB3PjAuIccIYj08jHwHf5lgB++MYErPJLLOvFrVSLOFHwOCm3cGRL40ldNVgxzhgXlU
+         No4lmfHMYGahcKzDZo6etsplp4DeeLgRTtR6EOJi6POghsSdX8b+y0MlZVZC+EhCPhLF
+         yv+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=B+0S2S3y/CMnhCnf/lsuxsN0Bi/akVzrpyE/1Oik1Ds=;
-        fh=2gnJje/I5ZDHeQgQUxPjo4l6feaXR2VccC5Y0FhK7e0=;
-        b=jekO+a90z0EpirunRgByRtDM8yEiLtdHsKsXec+cyO6Nhtr6FveoKoDg+Bq5dmMbcH
-         SltrHDJUZbREm2lIiO2TL+xKZKdrD9QXNjfgAkGTiEud02Z4oun5d3JIRBBM/6gOcsF8
-         hudrWzI/Q5dnP/g+jWkPi+JcwoXW5bvsmRp1W0fkFPWxeP9rsHwbX5smhD4kMEG54y44
-         icNFRerC1z8BHGcX6UH3cZIanJJjdT45MJHF8uROHJxaFEc/kkfNIDZP2VVmUyykk15Z
-         dups7H2TfkF3kphVVoD8XPec9D3myApXlfSj25MCwcQ2Lr4JuRX6eVjFa/5B+djmURpU
-         AWyw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=pa9ymKnAR4hIiL0jEThC5anaSYKiL9fDSMa9S/KtC2Y=;
+        fh=0lDLnvc/5fkqFdCICu+sKHD2oc+MZz+yG3bZ+Amo+g0=;
+        b=KCa5g8+nQAem14Ma/ocUitXs0WcVBIOb6/vZXbyosb7w7IjI3TgxGa6qavXwf5qTFq
+         ONOOO6CGVoADrBU6aaxjd8/imVdu5CpAiL3fdlLfRLWWGAYmXW2SCoweD//UYci6unJG
+         enSfNLxqVJjH3zdXNiQogJnNI2TgFRQrZE3BtbM1e6N36IOQRB6GE+/FNnr5VSC1q5hq
+         L8aGPkvq6o02m9+blw7WJAVunytGGHnGW4X8DjEBv/9MTDsygcraQ3m70qvZaSxrNxOh
+         t3WUTaZRTAZzA53dziLhOPvowytHoiNOpS86BbtQNnYNqtyPax3ZU4PP0xcseNeKMakx
+         cMKQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rPSctzwC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FuWQhkaR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7953333fbd4si992125685a.616.2024.06.10.03.26.36
+        by mx.google.com with ESMTPS id af79cd13be357-795515918absi655084085a.502.2024.06.10.04.49.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Jun 2024 03:26:36 -0700 (PDT)
+        Mon, 10 Jun 2024 04:49:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rPSctzwC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FuWQhkaR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sGcER-0006SV-NR; Mon, 10 Jun 2024 06:26:32 -0400
+	id 1sGdWO-0002Yg-9O; Mon, 10 Jun 2024 07:49:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sGcEP-0006PV-AZ
- for qemu-arm@nongnu.org; Mon, 10 Jun 2024 06:26:29 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sGdWM-0002Xi-6b
+ for qemu-arm@nongnu.org; Mon, 10 Jun 2024 07:49:06 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sGcEN-0006RV-FP
- for qemu-arm@nongnu.org; Mon, 10 Jun 2024 06:26:29 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-57c7440876bso1788835a12.0
- for <qemu-arm@nongnu.org>; Mon, 10 Jun 2024 03:26:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sGdWK-0006m2-Hk
+ for qemu-arm@nongnu.org; Mon, 10 Jun 2024 07:49:05 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-42121d27861so37603375e9.0
+ for <qemu-arm@nongnu.org>; Mon, 10 Jun 2024 04:49:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718015185; x=1718619985; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=B+0S2S3y/CMnhCnf/lsuxsN0Bi/akVzrpyE/1Oik1Ds=;
- b=rPSctzwCaMHm2w1FwGC77gd5hXgrks+gUQK4XBLHZqC8sUudbyYlmRUzUjtWz5ZaMa
- ES3raOtJPJZH+vFc1GPca5AIUIKvWCSEMEG7x3KLLN1cDQ2o/gZN6PR1VOvpuEzX7k0q
- vsnagYq7Y6DyyELwMYVJkAMW2zGu3WrqQXS6Klla4tShmpR1Bq0DvG1UPLOUInvJx2Fn
- 5trBwpDfWJthUSlQPK5oT9StIXave2aOugfql+egEhiFB6CoN9AAU3tsvmUy+tOAp38G
- Gm4wRbfjqnaq7eQqpV7WQfJz6qDUE4bXfy/pgHruSVw8GXf0uJPFXbiLCDwTCunjbI9u
- W0Kw==
+ d=linaro.org; s=google; t=1718020142; x=1718624942; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=pa9ymKnAR4hIiL0jEThC5anaSYKiL9fDSMa9S/KtC2Y=;
+ b=FuWQhkaR4a0pl4luTnjtorADOEOZ9rc0eI2Qa/2BLyxfmkgHna5wdRqjtN9QIeaby0
+ +fciIKEFEztgQ7QdNZW3FL36i66ZWv5DiyV78C2vxwL+v+B8xiNLjYvo4t1Q2NA7ZjTw
+ aV0QjcQjN3u8xHWRupl+NInsvjRdlnE9Ywm4RN67whPReuqyZ2sav7zxwsb/83IlmzjM
+ 9wegkMFqeZ2loRN5focPMj48HtcOYS8/PLVcVZkP5eyGygaqi9Nef14t/FnUwursndjK
+ 6amhxYyxmcAZPEwKUbo1L1ZsErqFXysNYyMIHOd0ZJmeHSKd+YlhoBmcSXdJBmz1mIl+
+ kzAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718015185; x=1718619985;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=B+0S2S3y/CMnhCnf/lsuxsN0Bi/akVzrpyE/1Oik1Ds=;
- b=MZkNif46Ol0u6zolMRgKeDZzuxJLdJfnb7mnCWBYg+q7iRtuvJpIxuZ19Shpos/lNi
- Zm6l1glA/UR8dIwKBHKEyD2kHX6dac8L9CB2SD7XPuWFEhz9XQLWxZ6z+OstKmQMviN+
- NkmTliOqDaE91ycLYdZ6eZiDu3SC25VpUevKZA6oIUyWaYRaQHxpCy3/4t75/eUbrjxj
- kfBbS/3Gl/fj6r0lRA1lwt+RMryikD62bBXMfHFGyOU3Ki3UqnU2QuAVhscOTiZcV6vI
- KyVKA0ZIcvBSc0IVoqOlCjyee19+qrhovls+3ybAuN0pU7x+y54QC5Y3ocWEc7Ve2/w5
- REww==
+ d=1e100.net; s=20230601; t=1718020142; x=1718624942;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=pa9ymKnAR4hIiL0jEThC5anaSYKiL9fDSMa9S/KtC2Y=;
+ b=Tj0qpGLtFOZGr7MqhoK9uk4VkuRfA/KVQTMS7ZKVt74lLoiGBLOYR/80nWYH/lsu++
+ Azc1Vb5/4KdyDuMxFNfXf1ZBjpObdKpDZoq3+tPKJ4traRMMozhMAisNKj99antOoTsu
+ hKEahTxuhhg4TshhLDx9mc4zkuPenQonXTpM3K2w4nJwI0BghmdG9lfJ/AYDgX6UYjag
+ Yq0RbqY4EjhTcMdXOOLxu+C6LOGr5D2Rou1XziJnv1yaxqkb1E2NpDtGBTjiYyqcgYkp
+ DhqyWtYr3gNQLfwwLsnF4tyWHEacYwixhENIGyej9W4beQudzO/0f1cuBLijFadCGEGb
+ vVKQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWfNdKWR51CocjV7ExDfWIEKwXhqomvj67MDr9kmThuoAi8/FjIiNKbmT7NhA58Waprb935WD+6i32/Wl37BU6qeN73
-X-Gm-Message-State: AOJu0YyCNv/JcSEZef3GvuCp1mz/Zuy4Hp+3U7q+ecYvgTlyOxZzl5m6
- g0LRWQcVqCa9gWT9DNlxpQtr5/krTSLe6LRDruu4x78qccQo0MEdhzZraMtNGg7aTYLPUTXqwai
- oV3OiYX/lFusp2p0Ru4tw7QuLYeLbmExnjrGiMGHyApWddxyE
-X-Received: by 2002:a50:8d1e:0:b0:57c:74b1:bf51 with SMTP id
- 4fb4d7f45d1cf-57c74b1bfb2mr3461690a12.20.1718015185260; Mon, 10 Jun 2024
- 03:26:25 -0700 (PDT)
+ AJvYcCUQrwIJW95U3/0LplmU3zC4Oxb2HsIuePcgSv5xEI7fRo2/R7bNhbvM67GKjEjOmfAN8/7duWWTeartyTg6E/rRqNTt
+X-Gm-Message-State: AOJu0YyDNhXq1dwUlfsJ147O0AD6/mQ4kVzZXZeEfxFVy0mzF8n2L/+H
+ Km7HsvdbntxHT/VzapiBliaZWz0va6yt/jd5dkW8snoyuL1914mjYHrfK/HVQc8=
+X-Received: by 2002:a05:600c:154a:b0:421:7e88:821 with SMTP id
+ 5b1f17b1804b1-4217e883770mr36064695e9.32.1718020141756; 
+ Mon, 10 Jun 2024 04:49:01 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.129.242])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4216412972fsm120793155e9.47.2024.06.10.04.49.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 10 Jun 2024 04:49:01 -0700 (PDT)
+Message-ID: <3a919e08-fcce-48d5-b609-cc97cd3ff22b@linaro.org>
+Date: Mon, 10 Jun 2024 13:48:59 +0200
 MIME-Version: 1.0
-References: <20240610052906.4432-1-sebastian.huber@embedded-brains.de>
-In-Reply-To: <20240610052906.4432-1-sebastian.huber@embedded-brains.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 10 Jun 2024 11:26:14 +0100
-Message-ID: <CAFEAcA_ixDoJWMvDgkU++kaF4D51YtQFbEX8joexVCZ-J0Xndw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/xilinx_zynq: Fix IRQ/FIQ routing
-To: Sebastian Huber <sebastian.huber@embedded-brains.de>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] hw/dma: Add a trace log for a description loading
+ failure
+To: "Fea.Wang" <fea.wang@sifive.com>, qemu-devel@nongnu.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
+ Frank Chang <frank.chang@sifive.com>
+References: <20240604071540.18138-1-fea.wang@sifive.com>
+ <20240604071540.18138-3-fea.wang@sifive.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240604071540.18138-3-fea.wang@sifive.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,37 +135,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Bhx43OBtzPj6
+X-TUID: fdGPcLj2dlye
 
-On Mon, 10 Jun 2024 at 06:29, Sebastian Huber
-<sebastian.huber@embedded-brains.de> wrote:
->
-> Fix the system bus interrupt line to CPU core assignment.
->
-> Signed-off-by: Sebastian Huber <sebastian.huber@embedded-brains.de>
+Hi Fea,
+
+On 4/6/24 09:15, Fea.Wang wrote:
+> Due to a description loading failure, adding a trace log makes observing
+> the DMA behavior easy.
+> 
+> Signed-off-by: Fea.Wang <fea.wang@sifive.com>
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+> Reviewed-by: Frank Chang <frank.chang@sifive.com>
 > ---
->  hw/arm/xilinx_zynq.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 7f7a3d23fb..c79661bbc1 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -252,10 +252,11 @@ static void zynq_init(MachineState *machine)
->      zynq_binfo.gic_cpu_if_addr = MPCORE_PERIPHBASE + 0x100;
->      sysbus_create_varargs("l2x0", MPCORE_PERIPHBASE + 0x2000, NULL);
->      for (n = 0; n < smp_cpus; n++) {
-> +        /* See "hw/intc/arm_gic.h" for the IRQ line association */
->          DeviceState *cpudev = DEVICE(zynq_machine->cpu[n]);
-> -        sysbus_connect_irq(busdev, (2 * n) + 0,
-> +        sysbus_connect_irq(busdev, n,
->                             qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-> -        sysbus_connect_irq(busdev, (2 * n) + 1,
-> +        sysbus_connect_irq(busdev, smp_cpus + n,
->                             qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
->      }
+>   hw/dma/trace-events    | 3 +++
+>   hw/dma/xilinx_axidma.c | 3 +++
+>   2 files changed, 6 insertions(+)
 
 
-Applied to target-arm.next, thanks.
+> +# xilinx_axidma.c
+> +xilinx_axidma_loading_desc_fail(uint32_t res) "error:%d"
 
--- PMM
+Unsigned format is "%u".
+
+Regards,
+
+Phil.

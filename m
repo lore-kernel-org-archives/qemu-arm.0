@@ -1,120 +1,121 @@
-Received: by 2002:a17:907:686:b0:a6f:1bf6:7fc1 with SMTP id wn6csp773639ejb;
-        Mon, 10 Jun 2024 09:24:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWMj+ctAa/kmYvk+TDaZbH+xFXREONlkrnVNBdiuR/Op+nl7u9RtWh9sHWlzZtrFmhNqjINAuGk7MEJOC4s40K8TyJmxrB2
-X-Google-Smtp-Source: AGHT+IGFXFGAaERcJC6Ly7Ck1Ff3qAMlkYGpcuZyUM+iRkO1TSzlMsFflMEqmVla3Pzm4fT9aLe/
-X-Received: by 2002:a05:6808:692:b0:3d1:e0ae:22d with SMTP id 5614622812f47-3d210d9adbdmr9426152b6e.28.1718036685767;
-        Mon, 10 Jun 2024 09:24:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718036685; cv=none;
+Received: by 2002:a17:907:686:b0:a6f:1bf6:7fc1 with SMTP id wn6csp774049ejb;
+        Mon, 10 Jun 2024 09:25:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWpneJcERa0y0n/aEssqJwvDOjwWIyCfAMb/rpKpCWtxduru9ws2q1x7oKNPC3/YM+E4HGrwyaeldCaXIsZBAPxFyWZlBZu
+X-Google-Smtp-Source: AGHT+IGPXK2GqVO2TOzQWYCSacJ1KHJFu9SX81/fpMWgKhHUg+LB7uhDCPbDTD0riIfHAg63K7WJ
+X-Received: by 2002:a05:6000:b10:b0:35f:17ca:882f with SMTP id ffacd0b85a97d-35f17ca8c12mr5216139f8f.7.1718036730689;
+        Mon, 10 Jun 2024 09:25:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718036730; cv=none;
         d=google.com; s=arc-20160816;
-        b=Akqai0L8hWp/A/p1bxYjhkzcmJCS6j/sYrWRUiHtdyQ0KZeQqh69iG/tf3mmTl0zLQ
-         yoy9TvKFGZX/uIniGOINe9LLSe5G//nWxYcbFiZd431PEgOQi4PJdKZBMTDLXwCpbRrx
-         kvzvUycZaI9GO5bz2xxKuZM0G/B2dwOBTSU2Tewe/peAl8Z/iO5mJYiQErOmu3vVtFYv
-         w1HpGF0RQcv8InWUDJQohUjly27HU6HQU+gJ4f6f+syIdBY3Nrz4Rb42mfxXxrnYYjRh
-         Rci0GTDXjGxDnvVduPpQUL90K5Cwv44OnsPMkY6BvjzKhOPA5wmCR6MtLTrbJ4w9oiae
-         29ug==
+        b=nPQZnUdLvBEAUNGAMrvBYELyiOTPd5wS2rf+daj+n6fWImaDnSl6vvF0OkTX3gMYpt
+         zCE3FYQuzd67DwYARtCfg5SV5usot3mHvskIU/QFjtP5HzwQ+mpMlXVzmpV9wXafwzXW
+         zAuhAcQIKLv+I1+12ryRb83Fe3lZihTyWRtv0grWQNsuZd6TZGGomQmOSWto5nwwCPUP
+         9CukJTJMaCr5+Xh3zt7eAOWlDboR6wJDH1Cgc2cD9iImbUTVkabDUSPnNcJE/xXvOso+
+         QTTDmbQlTbvW10AX4B+8nYXshVwH5G69NxCfjUGzn0v4YTONvEGp6BwZ5GkG4x590lqW
+         olMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=/dekw1Nq/R1iKuokZ48Fce0bxwVPPxY2BoQfPyzI3c4=;
-        fh=ju0ao5qpIPOgNChj+9VWHlPDBxQXQCaaH5ZKIXTrZaQ=;
-        b=h3zl74p5V8I1wC4kY96z+TRWYHpTPM9gaeQn3c/27Kc8en39Q0Jifd7Lw4cZT7zT5u
-         8yN/INmySNvSQh5b8azzfkydyzGRTGGvTGkm5q7tSdLvQLZzS+tBdaS/kT9hIp2qBwvB
-         53MiGFcD8Fu6DyykewSiI+U6l6IITvFhfauKiYXgcF7r8E7/uhMl6kw9k1MBD7PTASdI
-         4ZVZbxdmxIGMI1V0vzSn9xFPCSzCH3lCBBwmDQUAvmE/37Y0sJsWdVWVoHygYJ6m7dDn
-         s03O1iwaVHfsJG96QWlsfGtf2YblHzdixiDpS3drqZEAJt+OBY+4SmowVYP7l6z7DeFx
-         DBIw==;
+        bh=7Imr1z9bfFUSXc72Pq5zm13hYL6VZ46pb0N02MSoc4g=;
+        fh=rmMW20/j6Cl7rQUqkMiilTbj1FfnO6I6iVNIGNKJw5U=;
+        b=Tq9kgfbKQ7OisjeNGz1r7DwQMfpKXtYhvhTrklHPngAxawhOk2R1WSyxzXEMFaJsF9
+         IZd+Ui3x0eKp9DrbKMNEX9g3UkoKeFO+1wcGkHl+RO2fEh0LiRIAMEteN6oo8TJwQUB1
+         9TJHkizE1i+UPrTMlmC660ssqfDuVd+/7BSNs5do9JNCY9Uqc2SKF2YNqZaKCM0YV2QR
+         DjqrtzTYX1PmAfcdhZ9Ik+0RsUBgh+5DJ6W1jzcGsooU8qVoVi6Qj7mNLvtIgXEzGvNz
+         cuGtnpSTXfUhxAmMB5QXpGYJn7jMkWV+eNvc/eGF2U0JbMHywpZVIvVifq4WoM+TK8N2
+         Y3KA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fOBfi8B7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a1gfukT9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79553e27dd7si596126885a.239.2024.06.10.09.24.45
+        by mx.google.com with ESMTPS id ffacd0b85a97d-35f18bb5faesi3092838f8f.657.2024.06.10.09.25.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Jun 2024 09:24:45 -0700 (PDT)
+        Mon, 10 Jun 2024 09:25:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fOBfi8B7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=a1gfukT9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sGhoG-000461-NC; Mon, 10 Jun 2024 12:23:52 -0400
+	id 1sGhoI-000479-Oy; Mon, 10 Jun 2024 12:23:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sGhoE-00044n-KH
+ id 1sGhoE-000450-Rq
  for qemu-devel@nongnu.org; Mon, 10 Jun 2024 12:23:51 -0400
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sGhoC-0005l5-4K
+ id 1sGhoC-0005l9-6N
  for qemu-devel@nongnu.org; Mon, 10 Jun 2024 12:23:50 -0400
-Received: by mail-lf1-x12e.google.com with SMTP id
- 2adb3069b0e04-52bc274f438so177369e87.0
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-42133f8432aso1160905e9.3
  for <qemu-devel@nongnu.org>; Mon, 10 Jun 2024 09:23:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718036626; x=1718641426; darn=nongnu.org;
+ d=linaro.org; s=google; t=1718036627; x=1718641427; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=/dekw1Nq/R1iKuokZ48Fce0bxwVPPxY2BoQfPyzI3c4=;
- b=fOBfi8B7GXoFWoHSywI7b3jCkXMTdpEsZib6V+vwXdB7/8BotbGb8qHU7oNe1aXwIV
- XWux1YIA5DiK1RukgpP7VceXuaGKwZp6/m4eyNxOPr0YV8LLsCRP6PVnsM+tPOEWj/I2
- QRmbjtv5SDHFU+M9oQkaRepumMDY458eRNFnxJIqI5AhQM/s5ASyc+PNoKYm4o9TjGQP
- TjxLn4LWUOIZn+k3o2fHX9u/bD6BxvoObGUZiknJ/dBeauO2OiBc/RQfj+zXlpJ03bAZ
- CT4hRTYV4/Ii+wLB0b1K8FTHUh9XSUSvVEIWbnl/l39TT8QVA3APnQaL0ujj1B7aWQWa
- W0hw==
+ :reply-to; bh=7Imr1z9bfFUSXc72Pq5zm13hYL6VZ46pb0N02MSoc4g=;
+ b=a1gfukT98Bk9or3OzDi9vbeE3IOSOeecpWveHG4rt3l9tM/tQRVFMQQq29m4KehIui
+ 22EVihlguUc7Ny7O3lqKp7RrS3A9CszkUPnjgHL6f7q7wlNhj9zHO2Ds3++MT+I+2wsB
+ ODIF4/lxlb3gdppFpC0Gs39tOBRkvB6SNfcwg1hHOoPhtdQbcjxBxuVMLHJ+1U3AqmpG
+ ZxjawH8bL0YQ4PAPdvHvZvwi/3l+DBxopNLEaHNbl/8tSCp6zwTQWANpl24oVJ29BDSM
+ wi8wX3LmH0pnM1cY3dldrCrJdpocz9In51NafhdXwavJownl70AeYLGeyXTJR/izanZI
+ xGnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718036626; x=1718641426;
+ d=1e100.net; s=20230601; t=1718036627; x=1718641427;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=/dekw1Nq/R1iKuokZ48Fce0bxwVPPxY2BoQfPyzI3c4=;
- b=h+2Hw6IskL/O57q7cNX/sboutCI0u7NQcKKmgEKcczEH8QTVmCGnIK1Mb+u1A5Rwfq
- Ad4uKQbW43iGWG7zogZTalFZZ8YlnP0qZkTzRg12tBYO9/MfPmkgsJNtTZbcgDmoSR6g
- KFmeyVJhSV/IIw3R8/te8xiF0TjbdiH5mq/9j44SmeZ9tQdOsrK7644CuTd5dpMvi3W9
- LFqyGKnbq14JLL9DpNCswrxAZVo+3fZufWDAM63H+iCGFZeW6QonpWZoOso7R0ClGSvL
- Vx2wybTZ5YEQcThk2MG7fa30bTnUezJ7sS5/b++PTHgQCAnt9gF/ia7PPoXf1nuQQ23q
- jxlA==
+ bh=7Imr1z9bfFUSXc72Pq5zm13hYL6VZ46pb0N02MSoc4g=;
+ b=CIXsnUTflt4fxhzoQhHfzaez73WHLAK1zoyvbm9BmkgG4zsNXEL/Fs/QnkLFQ/vLWV
+ VpE/dpkp+OFD36iiK9eDk27Kg2Zcv95L9DI3aWrAYvdj2/9X+sjuxpggVSCbBAYv2D2f
+ 63iBJD2TyfdQTNknFttP1SBHpzp+oE1TuwWq1gHJ7Xt7ThtpAflGnPrpb/593MgISbyu
+ mbGxKP5SMiB4cTkUdfHn/KG01Qr2nt/9wE5Vnio1Fe1mZcKvShF+/jeJrqujIajy62St
+ A6J250YqURkfiqJfibiP440wG+01/J8wB1NacCaI1GgEJVy5/ADm/ddsViXPBjRIMRVi
+ MvUg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXXE9cygrEmGrROotS6v942PPrzRVvg5W14ZKdJujA8FpJAznnapgTRU/vlkmeXfKMzFQGeUWyhZAQpVW4YgN4GsWbhOXU=
-X-Gm-Message-State: AOJu0YwE5WodCMbHqYELzY/4PWJGBKQJLjnDMS0mehahTTYj2gp80iuk
- RbdXp1vjm73im0iJ/+Vw3SToCI6wyI//7PMtD5667Z52kdhLbO1WaTZUqY2cQ0PUmG1/wyf6dlb
- d
-X-Received: by 2002:a19:641a:0:b0:516:cc2d:f6a1 with SMTP id
- 2adb3069b0e04-52bb9fc572cmr5544207e87.51.1718036626155; 
+ AJvYcCWOam0rXV0J5/XgHskHeAYOCXSZOQYBcpZ/JrfHqpTn2ixpLAdt+4PQUpU8KBIhytLVyk3T2JmpzJyfsNV5LegzRgSf/e8=
+X-Gm-Message-State: AOJu0YztNxJTaicM8cV5Mm2zorhqVPub33xdvGeMSQOR8W3TYctiJCk9
+ SXeQf+AvyEL3gTljEbcQWl/T5kF4AusFfGNh5s0BqUDXqQKsXlf1ZquhYCOf52mSfUvOkGl8Bz8
+ h
+X-Received: by 2002:a05:600c:4752:b0:421:182d:9232 with SMTP id
+ 5b1f17b1804b1-42164a031c2mr88763325e9.18.1718036626656; 
  Mon, 10 Jun 2024 09:23:46 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4215c2a6225sm147250405e9.25.2024.06.10.09.23.45
+ 5b1f17b1804b1-4215c2a6225sm147250405e9.25.2024.06.10.09.23.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 10 Jun 2024 09:23:45 -0700 (PDT)
+ Mon, 10 Jun 2024 09:23:46 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 1/3] hw/arm/virt: Add serial aliases in DTB
-Date: Mon, 10 Jun 2024 17:23:41 +0100
-Message-Id: <20240610162343.2131524-2-peter.maydell@linaro.org>
+Subject: [PATCH v2 2/3] hw/arm/virt: Rename VIRT_UART and VIRT_SECURE_UART to
+ VIRT_UART[01]
+Date: Mon, 10 Jun 2024 17:23:42 +0100
+Message-Id: <20240610162343.2131524-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240610162343.2131524-1-peter.maydell@linaro.org>
 References: <20240610162343.2131524-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,47 +130,139 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: brpXYbi385u5
+X-TUID: +SZ95id2M7bg
 
-If there is more than one UART in the DTB, then there is no guarantee
-on which order a guest is supposed to initialise them.  The standard
-solution to this is "serialN" entries in the "/aliases" node of the
-dtb which give the nodename of the UARTs.
-
-At the moment we only have two UARTs in the DTB when one is for
-the Secure world and one for the Non-Secure world, so this isn't
-really a problem. However if we want to add a second NS UART we'll
-need the aliases to ensure guests pick the right one.
+We're going to make the second UART not always a secure-only device.
+Rename the constants VIRT_UART and VIRT_SECURE_UART to VIRT_UART0
+and VIRT_UART1 accordingly.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/virt.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ include/hw/arm/virt.h    |  4 ++--
+ hw/arm/virt-acpi-build.c | 12 ++++++------
+ hw/arm/virt.c            | 14 +++++++-------
+ 3 files changed, 15 insertions(+), 15 deletions(-)
 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index bb486d36b14..1227e7f7f08 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -59,7 +59,7 @@ enum {
+     VIRT_GIC_ITS,
+     VIRT_GIC_REDIST,
+     VIRT_SMMU,
+-    VIRT_UART,
++    VIRT_UART0,
+     VIRT_MMIO,
+     VIRT_RTC,
+     VIRT_FW_CFG,
+@@ -69,7 +69,7 @@ enum {
+     VIRT_PCIE_ECAM,
+     VIRT_PLATFORM_BUS,
+     VIRT_GPIO,
+-    VIRT_SECURE_UART,
++    VIRT_UART1,
+     VIRT_SECURE_MEM,
+     VIRT_SECURE_GPIO,
+     VIRT_PCDIMM_ACPI,
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index c3ccfef026f..eb5796e309b 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -440,10 +440,10 @@ spcr_setup(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         .base_addr.width = 32,
+         .base_addr.offset = 0,
+         .base_addr.size = 3,
+-        .base_addr.addr = vms->memmap[VIRT_UART].base,
++        .base_addr.addr = vms->memmap[VIRT_UART0].base,
+         .interrupt_type = (1 << 3),/* Bit[3] ARMH GIC interrupt*/
+         .pc_interrupt = 0,         /* IRQ */
+-        .interrupt = (vms->irqmap[VIRT_UART] + ARM_SPI_BASE),
++        .interrupt = (vms->irqmap[VIRT_UART0] + ARM_SPI_BASE),
+         .baud_rate = 3,            /* 9600 */
+         .parity = 0,               /* No Parity */
+         .stop_bits = 1,            /* 1 Stop bit */
+@@ -631,11 +631,11 @@ build_dbg2(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+ 
+     /* BaseAddressRegister[] */
+     build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 32, 0, 3,
+-                     vms->memmap[VIRT_UART].base);
++                     vms->memmap[VIRT_UART0].base);
+ 
+     /* AddressSize[] */
+     build_append_int_noprefix(table_data,
+-                              vms->memmap[VIRT_UART].size, 4);
++                              vms->memmap[VIRT_UART0].size, 4);
+ 
+     /* NamespaceString[] */
+     g_array_append_vals(table_data, name, namespace_length);
+@@ -816,8 +816,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+      */
+     scope = aml_scope("\\_SB");
+     acpi_dsdt_add_cpus(scope, vms);
+-    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+-                       (irqmap[VIRT_UART] + ARM_SPI_BASE));
++    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
++                       (irqmap[VIRT_UART0] + ARM_SPI_BASE));
+     if (vmc->acpi_expose_flash) {
+         acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+     }
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 3c93c0c0a61..0c1dab67c00 100644
+index 0c1dab67c00..920a9db22f2 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -284,6 +284,8 @@ static void create_fdt(VirtMachineState *vms)
-         }
+@@ -165,11 +165,11 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_GIC_ITS] =            { 0x08080000, 0x00020000 },
+     /* This redistributor space allows up to 2*64kB*123 CPUs */
+     [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
+-    [VIRT_UART] =               { 0x09000000, 0x00001000 },
++    [VIRT_UART0] =              { 0x09000000, 0x00001000 },
+     [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
+-    [VIRT_SECURE_UART] =        { 0x09040000, 0x00001000 },
++    [VIRT_UART1] =              { 0x09040000, 0x00001000 },
+     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
+     [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
+     [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
+@@ -212,11 +212,11 @@ static MemMapEntry extended_memmap[] = {
+ };
+ 
+ static const int a15irqmap[] = {
+-    [VIRT_UART] = 1,
++    [VIRT_UART0] = 1,
+     [VIRT_RTC] = 2,
+     [VIRT_PCIE] = 3, /* ... to 6 */
+     [VIRT_GPIO] = 7,
+-    [VIRT_SECURE_UART] = 8,
++    [VIRT_UART1] = 8,
+     [VIRT_ACPI_GED] = 9,
+     [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+     [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+@@ -939,7 +939,7 @@ static void create_uart(const VirtMachineState *vms, int uart,
+     qemu_fdt_setprop(ms->fdt, nodename, "clock-names",
+                          clocknames, sizeof(clocknames));
+ 
+-    if (uart == VIRT_UART) {
++    if (uart == VIRT_UART0) {
+         qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path", nodename);
+         qemu_fdt_setprop_string(ms->fdt, "/aliases", "serial0", nodename);
+     } else {
+@@ -2318,11 +2318,11 @@ static void machvirt_init(MachineState *machine)
+ 
+     fdt_add_pmu_nodes(vms);
+ 
+-    create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
++    create_uart(vms, VIRT_UART0, sysmem, serial_hd(0));
+ 
+     if (vms->secure) {
+         create_secure_ram(vms, secure_sysmem, secure_tag_sysmem);
+-        create_uart(vms, VIRT_SECURE_UART, secure_sysmem, serial_hd(1));
++        create_uart(vms, VIRT_UART1, secure_sysmem, serial_hd(1));
      }
  
-+    qemu_fdt_add_subnode(fdt, "/aliases");
-+
-     /* Clock node, for the benefit of the UART. The kernel device tree
-      * binding documentation claims the PL011 node clock properties are
-      * optional but in practice if you omit them the kernel refuses to
-@@ -939,7 +941,9 @@ static void create_uart(const VirtMachineState *vms, int uart,
- 
-     if (uart == VIRT_UART) {
-         qemu_fdt_setprop_string(ms->fdt, "/chosen", "stdout-path", nodename);
-+        qemu_fdt_setprop_string(ms->fdt, "/aliases", "serial0", nodename);
-     } else {
-+        qemu_fdt_setprop_string(ms->fdt, "/aliases", "serial1", nodename);
-         /* Mark as not usable by the normal world */
-         qemu_fdt_setprop_string(ms->fdt, nodename, "status", "disabled");
-         qemu_fdt_setprop_string(ms->fdt, nodename, "secure-status", "okay");
+     if (tag_sysmem) {
 -- 
 2.34.1
 

@@ -1,130 +1,144 @@
-Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp137632ejc;
-        Tue, 11 Jun 2024 20:07:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWRqZvrLl1VCptorhnETW6QzGF4ET3ZA/uRqVBMSKLZSEO2S5fSlTtEBKNQch9J9cRbLiTDmYVBx3BaR29vIFnOBXFLDlci
-X-Google-Smtp-Source: AGHT+IHSWIWsK44YbWxOkB7vkqeRLwQbaWHsfGRi8FPBfNP1q577WEyb63H4X+J6ZbTGDzrueu0l
-X-Received: by 2002:ac8:5d07:0:b0:441:37a0:25a0 with SMTP id d75a77b69052e-4415abc24ecmr7013391cf.4.1718161629891;
-        Tue, 11 Jun 2024 20:07:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718161629; cv=none;
+Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp242527ejc;
+        Wed, 12 Jun 2024 01:16:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUCsA8wO9YLO8hbFnES9uQs+s3QSMJNp6nCqZB9CfpZNWNhbMDELWq1g/bs54usGJhLDLoK/rZHJRtTRSAadVrjQk8VNkq4
+X-Google-Smtp-Source: AGHT+IFa9vrMrPao8NYo/LPWxhso5IoOpgdLB64ekrY9H7NwWPZWWCAJjQ3Q9mfLoa1ehx25lih+
+X-Received: by 2002:a05:6214:4a8f:b0:6b0:754e:9869 with SMTP id 6a1803df08f44-6b191778f5cmr10914146d6.15.1718180173861;
+        Wed, 12 Jun 2024 01:16:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718180173; cv=none;
         d=google.com; s=arc-20160816;
-        b=TvdUjxAx8B8AWDC7TrDfKGOjgpzlqSlBS0wNeaCnDjTVzOVe4/pmETPaqee6QFgBkn
-         XodDcFRB5Bw3plq/06StCPks0wonvv18LsMzULSAb7msfa2g45z6bfsqkmmNwrjUu9EW
-         Uj9efUm4YFp5B2xJ0d34hVFoO7EimicEuIoj52hiz7OgNH2HZnxpOG65r4fqqFlN+ppZ
-         /8XYE1guUA6Ub/7ch6ZbvEVM7DCU9zLBoVP1WnXrHuiwALDM31qArKugX1qeiWr05RTG
-         SyJuZjrOVxzGZkN1XK7uGKmIkfpvsr5pUn6xfBRKw4ysp3sLcbASnV41imcfzQCeDZDX
-         FoqA==
+        b=dPjvRsr+I92FJOzkE9ZcblZ9FS0D94WaVZS8jYO4jjRswjdb37jPklDnFsM7Qp2rct
+         uUSojs09MVe3zaqjb6l36iayMbIoMXdQbhyAR6i1iw8qUw6gYOHBpbKEtu6xzcLtOVO+
+         IQEmHTHT+asCvAtTR171nUsNJHg9+We/1OdySTec1Rm0VLzLQS+9df6DYl7RMuVBn49h
+         HMDyJlb5zAoydZKgd46HtvUDMpkXPbGv+cSIU8bGBjcGRZgDh8q/mFdfycyR5SmrJO2q
+         1a0Wqr8KT4rq7DRy635k9/7PcazbBDnEXxYzpHbYjgFXoKBi3qKix2blJIo5Or9Yw4CQ
+         Nl/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:references:cc:to:content-language:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=97jL+ek52SO1pBnnzFGCoCVEwNoneZ1fNFqX1sqmCpI=;
-        fh=3/AUSuMShuDDsZaeFWbU+4/QMOQO7iQe5oTq/eVFwkg=;
-        b=uoFleEpmYRAnF0SaJm1xR8JhwokpBqQpEYVRYwFG9NoE/7QYq9RcDGcG2BK+/L/hKZ
-         VW5hNl3k3uzYRTtGP+rUzv5ra8wAPLOkdkmn8UDGQOXABefUqIR9EYd1pvLsOv3DUVQw
-         PiwdX4ppONU/QmZ52kCYlF1t7NEQTdvxd/FHlFant5mOEaky30k3PRTglw1TIKgDM4XQ
-         aVopV7kTrvXDnRcFsv1F2i0G2Lmq7CDws7DXsRRz9SwmvxbcVdjXW5Nv79OeMBsHONVr
-         mYhjAUeItRF1ahCAhPJ4Ffle60Lr1YQrTpttTDcPBxXc8igh9gNZk52xmcdxu8BEhdmi
-         PeYw==;
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=XwMwVBT0fP270rWsEHSo2631M0ztS9piF83iSzYOuzw=;
+        fh=TDBzvxSfdE6oPbnRjgmpeHbbsHtVpAEN4utndjBnqmU=;
+        b=b+rMnDS5zq+mCE8+cGUoSIvudumEUAeX5uR5uJ9bO8lY6Ip6pUaiqVSYfbBtZKilFG
+         kf4asVZuGpXfzbQ4hesz5FcaoU+LDP7Dxr9STKTGVQUbJEBjo529fqtD7MsYtlE97Xxi
+         x6ZSlF5vPfOuk+GDKIT0QCAO08Cz5e7M5klIq+FN1uO9zHjB4e1dLgWzUCsQSCb1CQac
+         w5pvc0wwT40J8WLRRcY3LPwG7iGHgCAGVlx+6NRA8zUaA0x16soIYS7O1UeWKqbi1Nfr
+         GGhSIhWh34KYac2KSSLCDwP+/kf4LtcyxVx7TM9pOkiLqRPZJfpypEXU4pmd0kOWv2lw
+         t2ig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZXjpiGDz;
+       dkim=pass header.i=@sifive.com header.s=google header.b=N8bpuZp7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44155d3a488si19132551cf.645.2024.06.11.20.07.09
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b093ec0c7csi15731296d6.472.2024.06.12.01.16.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Jun 2024 20:07:09 -0700 (PDT)
+        Wed, 12 Jun 2024 01:16:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZXjpiGDz;
+       dkim=pass header.i=@sifive.com header.s=google header.b=N8bpuZp7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sHEJU-0008Qp-Tt; Tue, 11 Jun 2024 23:06:16 -0400
+	id 1sHJ80-00029M-88; Wed, 12 Jun 2024 04:14:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1sHEJT-0008PN-7a
- for qemu-devel@nongnu.org; Tue, 11 Jun 2024 23:06:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ddutile@redhat.com>)
- id 1sHEJR-0002g6-DV
- for qemu-devel@nongnu.org; Tue, 11 Jun 2024 23:06:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718161572;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=97jL+ek52SO1pBnnzFGCoCVEwNoneZ1fNFqX1sqmCpI=;
- b=ZXjpiGDzV75NzXPEpRg3n7D86tOYdDJb/DHNJ9PfOXQSWHO9RGAejAM0QuM5MdiuH2AiT0
- 2yJoV7CE7mEww3bMqu0cZc/JAywtiKVJxvVGV0nGdDn85xjXQzlmejZ4jcWhmw79HWGLKr
- YI+LtJGNzftfn/WDiWOifolec5eAnY0=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-484-buLt1jcBNjKR4CaOFrRFpA-1; Tue, 11 Jun 2024 23:05:02 -0400
-X-MC-Unique: buLt1jcBNjKR4CaOFrRFpA-1
-Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-4405af5cf90so18204861cf.1
- for <qemu-devel@nongnu.org>; Tue, 11 Jun 2024 20:05:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
+ id 1sHJ7y-00026I-9o
+ for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:14:42 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
+ id 1sHJ7v-0006HM-V5
+ for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:14:42 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-1f6fada63a6so29662205ad.3
+ for <qemu-devel@nongnu.org>; Wed, 12 Jun 2024 01:14:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sifive.com; s=google; t=1718180077; x=1718784877; darn=nongnu.org;
+ h=references:in-reply-to:message-id:date:subject:cc:to:from:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=XwMwVBT0fP270rWsEHSo2631M0ztS9piF83iSzYOuzw=;
+ b=N8bpuZp7gD6N3q70+D4kOG9fzrpjMjZT5hjOOWEXGHc4/lMrxDAfg9lokzwOR/Sbhi
+ MxO/uAJVrfkSTaHtN6XVLBn3i7JcY2LO/ijoT6xNDwZm4Tiox79vPDyLaNq7hWamb3J4
+ X9sJ3cQLkvk0fP44T6LKwxJ1T0obyMWdtg8fFKcBJTgMDAAcu3wbn9j5/emZWkW32b/+
+ e6oN0sKMtJiIZ11rtlKjsSTDAHcwoCcefpK3Vo6brAvbG+WbBeOxgyAO3ZuQfA4cIzyN
+ P5cEk5DhdsbdJF2/ZEVQ+rvf0cBjJ7XMyHLdEN6WdWr09HpjM6uCTFVkgYgbmfO2mGBp
+ SGpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718161502; x=1718766302;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1718180077; x=1718784877;
+ h=references:in-reply-to:message-id:date:subject:cc:to:from
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=97jL+ek52SO1pBnnzFGCoCVEwNoneZ1fNFqX1sqmCpI=;
- b=h9Iw1RscINhd2IdQo91H/a75yDlBWByuwLu30FJTblq1j/539c3yFKAmpH+0iv2JFo
- XI6HBDd/pnDZwuR1omcPi+H3rlg6rP9+HGK9Zp/MvYGP1g3q9p+UYmFGEJ4QFrZFiXXM
- W4TNANdoUr3DGTrs1QTUedH18zjpBvTS1LFNTt5GpcmCZlliRozPqAqezzMP2zvWiI6t
- OE713p+MFCvDMaG/Uu8+LGY81YLeSqxfvAshbP0egMUOTapuKXH8px5KBntnYAKIqiTe
- PymvKKav6LKdTFadx9W5zX/+OEeHErmM6qNPr9CIXIor0yUYBczzDaah5Yj+Clzwcpmv
- mAdQ==
-X-Gm-Message-State: AOJu0Yy6xwDj/n/CIJTkyUX0eBe+Hi4xPEaqR7dy6tJEC+0qPMUzVsOv
- VO/BxIl/1w3R3aTgImmgbK1e0mM7GnODNsLcitB46t9ozhcn4d+7syrJ/ZeqRvzj9n+VfHtA/zi
- imkXJP93MdNN+oKlflWyvEhiYeML32hQokqyVXcnTNktQ3Nm4IE1u
-X-Received: by 2002:ac8:5806:0:b0:441:4b3d:a637 with SMTP id
- d75a77b69052e-4415abbb66amr5336231cf.7.1718161501692; 
- Tue, 11 Jun 2024 20:05:01 -0700 (PDT)
-X-Received: by 2002:ac8:5806:0:b0:441:4b3d:a637 with SMTP id
- d75a77b69052e-4415abbb66amr5335831cf.7.1718161500930; 
- Tue, 11 Jun 2024 20:05:00 -0700 (PDT)
-Received: from [192.168.40.248] ([216.212.38.143])
+ bh=XwMwVBT0fP270rWsEHSo2631M0ztS9piF83iSzYOuzw=;
+ b=oVqRJvsJNBjGGD+RIOcAEPQckeH1r6Yh0ubA8+dqRKgqRklH77U4mNc55Bdd9AOW61
+ seuLf1miMxfhfoORbOLKAr7sY2sUfx5FNshan1vABLiHih9jB85pMIdrDiEavsk9o37G
+ GR19/pZ8hMxMA2E53UmUVeUIpY11+McgxwxRT1v79XO5WoG0Xo1+eoOknXS6nuiwhCi2
+ 9dBdC7xvp2Ld/nphrxmMlmri8YTkAT/JoooyhxbWimrCLXgVqEwMFBc9yupToBnEZBB+
+ Si+5YFe6+JgV8CD9LflJ/ynFPLiKBH/NG1w/4uUCPdiOIszcafrFtm13t3MdZlCUcDia
+ 8N2A==
+X-Gm-Message-State: AOJu0YxNQ9BvAfmVZkLm5D7EeLQh0MUScoEXauR1QqWw/b5q+K4ABAXj
+ AuWqtSMXydXkF7SYbIzF/lKH5lcOc1TXzUlFS6pENQR3ijvSs3FQFr16t8WnQb9v1s6CEy2J5Vt
+ oDn8+p4q1vgWIU2ihe7xtx8DNYkBFETecEmHPImM6Uq6UkI9ZWWtzwwpmQPIYRxdGTglL7MXwu8
+ esf9jnenriciRlDOlevJqAfBJHKU7Oq1VgWDoWBTG4Eg==
+X-Received: by 2002:a17:902:dacf:b0:1f7:9fb:9d0c with SMTP id
+ d9443c01a7336-1f83b74260emr11841995ad.56.1718180077162; 
+ Wed, 12 Jun 2024 01:14:37 -0700 (PDT)
+Received: from hsinchu26.internal.sifive.com
+ (59-124-168-89.hinet-ip.hinet.net. [59.124.168.89])
  by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-44054648fffsm38794221cf.97.2024.06.11.20.04.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 11 Jun 2024 20:05:00 -0700 (PDT)
-Message-ID: <19774806-3e16-4929-9bb1-dca29dd31395@redhat.com>
-Date: Tue, 11 Jun 2024 23:04:48 -0400
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] hw/arm/virt: Avoid unexpected warning from Linux guest
- on host with Fujitsu CPUs
-Content-Language: en-US
-To: Zhenyu Zhang <zhenyzha@redhat.com>, qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, robin.murphy@arm.com,
- Jonathan.Cameron@huawei.com, gshan@redhat.com, eauger@redhat.com,
- sebott@redhat.com, cohuck@redhat.com, shahuang@redhat.com
-References: <20240612020506.307793-1-zhenyzha@redhat.com>
-From: Donald Dutile <ddutile@redhat.com>
-In-Reply-To: <20240612020506.307793-1-zhenyzha@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=ddutile@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+ d9443c01a7336-1f8393e8e53sm11363875ad.16.2024.06.12.01.14.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 Jun 2024 01:14:36 -0700 (PDT)
+From: Jim Shu <jim.shu@sifive.com>
+To: qemu-devel@nongnu.org,
+	qemu-riscv@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, Laurent Vivier <laurent@vivier.eu>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>, Stafford Horne <shorne@gmail.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs),
+ qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
+ qemu-s390x@nongnu.org (open list:S390 TCG CPUs),
+ Jim Shu <jim.shu@sifive.com>
+Subject: [RFC PATCH 01/16] accel/tcg: Store section pointer in CPUTLBEntryFull
+Date: Wed, 12 Jun 2024 16:14:01 +0800
+Message-Id: <20240612081416.29704-2-jim.shu@sifive.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20240612081416.29704-1-jim.shu@sifive.com>
+References: <20240612081416.29704-1-jim.shu@sifive.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=jim.shu@sifive.com; helo=mail-pl1-x632.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,104 +153,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I523NUg/rrZo
+X-TUID: WJm10rufKI4H
 
+'CPUTLBEntryFull.xlat_section' stores section_index in last 12 bits to
+find the correct section when CPU access the IO region over the IOTLB
+(iotlb_to_section()).
 
+However, section_index is only unique inside single AddressSpace. If
+address space translation is over IOMMUMemoryRegion, it could return
+section from other AddressSpace. 'iotlb_to_section()' API only finds the
+sections from CPU's AddressSpace so that it couldn't find section in
+other AddressSpace. Thus, using 'iotlb_to_section()' API will find the
+wrong section and QEMU will have wrong load/store access.
 
-On 6/11/24 10:05 PM, Zhenyu Zhang wrote:
-> Multiple warning messages and corresponding backtraces are observed when Linux
-> guest is booted on the host with Fujitsu CPUs. One of them is shown as below.
-> 
-> [    0.032443] ------------[ cut here ]------------
-> [    0.032446] uart-pl011 9000000.pl011: ARCH_DMA_MINALIGN smaller than
-> CTR_EL0.CWG (128 < 256)
-> [    0.032454] WARNING: CPU: 0 PID: 1 at arch/arm64/mm/dma-mapping.c:54
-> arch_setup_dma_ops+0xbc/0xcc
-> [    0.032470] Modules linked in:
-> [    0.032475] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-452.el9.aarch64
-> [    0.032481] Hardware name: linux,dummy-virt (DT)
-> [    0.032484] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> [    0.032490] pc : arch_setup_dma_ops+0xbc/0xcc
-> [    0.032496] lr : arch_setup_dma_ops+0xbc/0xcc
-> [    0.032501] sp : ffff80008003b860
-> [    0.032503] x29: ffff80008003b860 x28: 0000000000000000 x27: ffffaae4b949049c
-> [    0.032510] x26: 0000000000000000 x25: 0000000000000000 x24: 0000000000000000
-> [    0.032517] x23: 0000000000000100 x22: 0000000000000000 x21: 0000000000000000
-> [    0.032523] x20: 0000000100000000 x19: ffff2f06c02ea400 x18: ffffffffffffffff
-> [    0.032529] x17: 00000000208a5f76 x16: 000000006589dbcb x15: ffffaae4ba071c89
-> [    0.032535] x14: 0000000000000000 x13: ffffaae4ba071c84 x12: 455f525443206e61
-> [    0.032541] x11: 68742072656c6c61 x10: 0000000000000029 x9 : ffffaae4b7d21da4
-> [    0.032547] x8 : 0000000000000029 x7 : 4c414e494d5f414d x6 : 0000000000000029
-> [    0.032553] x5 : 000000000000000f x4 : ffffaae4b9617a00 x3 : 0000000000000001
-> [    0.032558] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff2f06c029be40
-> [    0.032564] Call trace:
-> [    0.032566]  arch_setup_dma_ops+0xbc/0xcc
-> [    0.032572]  of_dma_configure_id+0x138/0x300
-> [    0.032591]  amba_dma_configure+0x34/0xc0
-> [    0.032600]  really_probe+0x78/0x3dc
-> [    0.032614]  __driver_probe_device+0x108/0x160
-> [    0.032619]  driver_probe_device+0x44/0x114
-> [    0.032624]  __device_attach_driver+0xb8/0x14c
-> [    0.032629]  bus_for_each_drv+0x88/0xe4
-> [    0.032634]  __device_attach+0xb0/0x1e0
-> [    0.032638]  device_initial_probe+0x18/0x20
-> [    0.032643]  bus_probe_device+0xa8/0xb0
-> [    0.032648]  device_add+0x4b4/0x6c0
-> [    0.032652]  amba_device_try_add.part.0+0x48/0x360
-> [    0.032657]  amba_device_add+0x104/0x144
-> [    0.032662]  of_amba_device_create.isra.0+0x100/0x1c4
-> [    0.032666]  of_platform_bus_create+0x294/0x35c
-> [    0.032669]  of_platform_populate+0x5c/0x150
-> [    0.032672]  of_platform_default_populate_init+0xd0/0xec
-> [    0.032697]  do_one_initcall+0x4c/0x2e0
-> [    0.032701]  do_initcalls+0x100/0x13c
-> [    0.032707]  kernel_init_freeable+0x1c8/0x21c
-> [    0.032712]  kernel_init+0x28/0x140
-> [    0.032731]  ret_from_fork+0x10/0x20
-> [    0.032735] ---[ end trace 0000000000000000 ]---
-> 
-> In Linux, a check is applied to every device which is exposed through
-> device-tree node. The warning message is raised when the device isn't
-> DMA coherent and the cache line size is larger than ARCH_DMA_MINALIGN
-> (128 bytes). The cache line is sorted from CTR_EL0[CWG], which corresponds
-> to 256 bytes on the guest CPUs. The DMA coherent capability is claimed
-> through 'dma-coherent' in their device-tree nodes or parent nodes.
-> 
-> Fix the issue by adding 'dma-coherent' property to the device-tree root
-> node, meaning all devices are capable of DMA coherent by default.
-> 
-> Signed-off-by: Zhenyu Zhang <zhenyzha@redhat.com>
-> ---
-> v3: Add comments explaining why we add 'dma-coherent' property (Peter)
-> ---
->   hw/arm/virt.c | 11 +++++++++++
->   1 file changed, 11 insertions(+)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 3c93c0c0a6..3cefac6d43 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -271,6 +271,17 @@ static void create_fdt(VirtMachineState *vms)
->       qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
->       qemu_fdt_setprop_string(fdt, "/", "model", "linux,dummy-virt");
->   
-> +    /*
-> +     * For QEMU, all DMA is coherent. Advertising this in the root node
-> +     * has two benefits:
-> +     *
-> +     * - It avoids potential bugs where we forget to mark a DMA
-> +     *   capable device as being dma-coherent
-> +     * - It avoids spurious warnings from the Linux kernel about
-> +     *   devices which can't do DMA at all
-> +     */
-> +    qemu_fdt_setprop(fdt, "/", "dma-coherent", NULL, 0);
-> +
->       /* /chosen must exist for load_dtb to fill in necessary properties later */
->       qemu_fdt_add_subnode(fdt, "/chosen");
->       if (vms->dtb_randomness) {
+To fix this bug, store complete MemoryRegionSection pointer in
+CPUTLBEntryFull instead of section_index.
 
-+1 to Peter's suggested comment, otherwise, unless privy to this thread,
-one would wonder how/why.
+This bug occurs only when
+(1) IOMMUMemoryRegion is in the path of CPU access.
+(2) IOMMUMemoryRegion returns different target_as and the section is in
+the IO region.
 
-Reviewed-by: Donald Dutile <ddutile@redhat.com
+Common IOMMU devices don't have this issue since they are only in the
+path of DMA access. Currently, the bug only occurs when ARM MPC device
+(hw/misc/tz-mpc.c) returns 'blocked_io_as' to emulate blocked access
+handling. Upcoming RISC-V wgChecker device is also affected by this bug.
+
+Signed-off-by: Jim Shu <jim.shu@sifive.com>
+---
+ accel/tcg/cputlb.c    | 19 +++++++++----------
+ include/hw/core/cpu.h |  3 +++
+ 2 files changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 117b516739..8cf124b760 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1169,6 +1169,7 @@ void tlb_set_page_full(CPUState *cpu, int mmu_idx,
+     desc->fulltlb[index] = *full;
+     full = &desc->fulltlb[index];
+     full->xlat_section = iotlb - addr_page;
++    full->section = section;
+     full->phys_addr = paddr_page;
+ 
+     /* Now calculate the new entry */
+@@ -1248,14 +1249,14 @@ static inline void cpu_unaligned_access(CPUState *cpu, vaddr addr,
+ }
+ 
+ static MemoryRegionSection *
+-io_prepare(hwaddr *out_offset, CPUState *cpu, hwaddr xlat,
++io_prepare(hwaddr *out_offset, CPUState *cpu, CPUTLBEntryFull *full,
+            MemTxAttrs attrs, vaddr addr, uintptr_t retaddr)
+ {
+     MemoryRegionSection *section;
+     hwaddr mr_offset;
+ 
+-    section = iotlb_to_section(cpu, xlat, attrs);
+-    mr_offset = (xlat & TARGET_PAGE_MASK) + addr;
++    section = full->section;
++    mr_offset = (full->xlat_section & TARGET_PAGE_MASK) + addr;
+     cpu->mem_io_pc = retaddr;
+     if (!cpu->neg.can_do_io) {
+         cpu_io_recompile(cpu, retaddr);
+@@ -1571,9 +1572,7 @@ bool tlb_plugin_lookup(CPUState *cpu, vaddr addr, int mmu_idx,
+ 
+     /* We must have an iotlb entry for MMIO */
+     if (tlb_addr & TLB_MMIO) {
+-        MemoryRegionSection *section =
+-            iotlb_to_section(cpu, full->xlat_section & ~TARGET_PAGE_MASK,
+-                             full->attrs);
++        MemoryRegionSection *section = full->section;
+         data->is_io = true;
+         data->mr = section->mr;
+     } else {
+@@ -1972,7 +1971,7 @@ static uint64_t do_ld_mmio_beN(CPUState *cpu, CPUTLBEntryFull *full,
+     tcg_debug_assert(size > 0 && size <= 8);
+ 
+     attrs = full->attrs;
+-    section = io_prepare(&mr_offset, cpu, full->xlat_section, attrs, addr, ra);
++    section = io_prepare(&mr_offset, cpu, full, attrs, addr, ra);
+     mr = section->mr;
+ 
+     BQL_LOCK_GUARD();
+@@ -1993,7 +1992,7 @@ static Int128 do_ld16_mmio_beN(CPUState *cpu, CPUTLBEntryFull *full,
+     tcg_debug_assert(size > 8 && size <= 16);
+ 
+     attrs = full->attrs;
+-    section = io_prepare(&mr_offset, cpu, full->xlat_section, attrs, addr, ra);
++    section = io_prepare(&mr_offset, cpu, full, attrs, addr, ra);
+     mr = section->mr;
+ 
+     BQL_LOCK_GUARD();
+@@ -2513,7 +2512,7 @@ static uint64_t do_st_mmio_leN(CPUState *cpu, CPUTLBEntryFull *full,
+     tcg_debug_assert(size > 0 && size <= 8);
+ 
+     attrs = full->attrs;
+-    section = io_prepare(&mr_offset, cpu, full->xlat_section, attrs, addr, ra);
++    section = io_prepare(&mr_offset, cpu, full, attrs, addr, ra);
+     mr = section->mr;
+ 
+     BQL_LOCK_GUARD();
+@@ -2533,7 +2532,7 @@ static uint64_t do_st16_mmio_leN(CPUState *cpu, CPUTLBEntryFull *full,
+     tcg_debug_assert(size > 8 && size <= 16);
+ 
+     attrs = full->attrs;
+-    section = io_prepare(&mr_offset, cpu, full->xlat_section, attrs, addr, ra);
++    section = io_prepare(&mr_offset, cpu, full, attrs, addr, ra);
+     mr = section->mr;
+ 
+     BQL_LOCK_GUARD();
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index a2c8536943..3f6c10897b 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -217,6 +217,9 @@ typedef struct CPUTLBEntryFull {
+      */
+     hwaddr xlat_section;
+ 
++    /* @section contains physical section. */
++    MemoryRegionSection *section;
++
+     /*
+      * @phys_addr contains the physical address in the address space
+      * given by cpu_asidx_from_attrs(cpu, @attrs).
+-- 
+2.17.1
 

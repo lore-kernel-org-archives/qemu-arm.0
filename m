@@ -1,97 +1,97 @@
-Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp242521ejc;
-        Wed, 12 Jun 2024 01:16:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWRloiCuV18/+oLJPsC/mm1aC9oAAOy7qebA3ulkOW7VEVpLubHAXf2mhNuMoIrd2RE6ihh1qjSYAA9gt/5yn/VtJrfQz1G
-X-Google-Smtp-Source: AGHT+IEZYbTZOFK41O+/ZaT/bkOgTsCWNsxtJZE85Ve3yzSzKdK52Bm1Zyq+AQR5SWLkuez+WA9m
-X-Received: by 2002:a05:620a:258b:b0:795:5d6f:8bbd with SMTP id af79cd13be357-797f613d22emr125896085a.73.1718180173806;
-        Wed, 12 Jun 2024 01:16:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718180173; cv=none;
+Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp242719ejc;
+        Wed, 12 Jun 2024 01:16:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUPVMlFRMiBL9p04jOEOJa9qv9K3NXNl13YbFwQcI0p3zI368y9c0LP2abnTXPl5i2eJVCtMSvDLNW53q8eYaGZj7LHdTSb
+X-Google-Smtp-Source: AGHT+IEQEKgNOsJRLTKffiJ6AGevb4vqjfI2wry4TftV8+DqK3/wkPtQW5aZaxdDQWJmldvzFINZ
+X-Received: by 2002:a05:620a:4151:b0:797:aa9a:de5e with SMTP id af79cd13be357-797f5ef50bdmr124711585a.3.1718180202394;
+        Wed, 12 Jun 2024 01:16:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718180202; cv=none;
         d=google.com; s=arc-20160816;
-        b=joRtLbAyMMxQnTpkYPSEEGZ0bUtokSrG+SNDFIq/0ZV3d6dtQKzr0zjbLkFL7Ddy3z
-         OJX4q2mjznPDffTPYWwUlFZLVPHCORhhfzoOdi21Vft7DCN0bZjXKpLP8oz5HAUer0Us
-         IpBZIyimuGRO2PDGlKr7lk0DPq54//r8lzOMJ0g8kKshj5yWWZOtRRHeS7G7y+vbnzg9
-         zUOrcLw9+n6FEExWdg+ng+p/jYo0GwWirDBKdDMNptOqubjH65I3EpsA/AJoqoc7xjCk
-         7tbciYQ99YLi/WZFJAe4Gsmf5Isa3TtTBNnENfmzPHqKO/cnQ/5uE1p4vVpnR4O5K/at
-         RjLw==
+        b=Ypyy1Emumy9JKzHm9gTIh5WUqCe1mjjjJ89I0AHORryiS0CdYGuPmSK7rUzkgkZUbO
+         Y3xEWQFCGaMRaOys0jPw8c3pZdkved4hklO6ZjQfUrKteWn0C+fyxhas6CaN+gFwbL4m
+         iIW8SzWZ7NHlT/XoBhyMuxgYNJnY32FYsn1FiZO92KF5FkNXrxSCgOcbHnbKncwdgVYK
+         DYaG7fu6lhhkB/40IfSrvYgtD7qDe7GQyPZ4zgjmt26Hkxed8PclG/QlUwkmitUK1uqQ
+         ZM3q7r6dHoVEy40321M6lLrZGcK3fIiUu5x7SDidUvdq6CBEHaA2lBQL1zNJNM1O2e5x
+         Kkyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=EnRKmLCd3tTTNF000mNJdg96ExcPAjbIehkU3yaHeR4=;
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=z8WTAPoocSujgw+1vjVdkNZkdKXDTPGs5Nu9dYO12uI=;
         fh=TDBzvxSfdE6oPbnRjgmpeHbbsHtVpAEN4utndjBnqmU=;
-        b=cFwC7KIgeQdVqeBma7tjWCcferuErSDmRTbVnqcRP/Hrquy7sIAss1KL8zjaRfkhOw
-         avTURZ7jSHSTvhid4Gx5eeY9Sp9RN0/6zfT7pXmsfX2UiW4Muc5Sw03LtU1d7CZ+kH+u
-         VQvjZqapB5+d6rUZPpj/1WHxksF44YkrNS/9ARATcauXa72ZEqW/XVUyUyWFgb6G+x6z
-         GfAbMLJtTGwkreDwNxuEX35TCveK7ipD2jkAwQEz3A1jMRlVnlZKkDXGKBzEg9gB7uPX
-         nB7tHfSYQ+8VDAWaJwMEkaqAw0z/aGybHKNTOZHw91K2S9c0He8wDu4LpM2IVz4qd4Zy
-         CnYw==;
+        b=hP/z1CwLguhDQu08SOe7wBwFLdyRFxFwsfllhcPLm0m7gzu7vchZo9SzCXrRP166VJ
+         Dbae/fvkpFcZzQWvXV1MqN4Hy3dG/7sd821LJ9t3Z94v5DEVIamlmSoa5JeEN3p2n1h8
+         xuKdw4W+VJx1tH+FxJZ57oPa62N6UVlkzcqN4ED8PAxgwqycKhIZYbAHvmvqj00x+B3H
+         QJnvLOTvGJZAjjAavRo1Rb6PIrJrSTJNovx7vNpo7r4+iW0PBIvVujmWVF8jFqwWo9eA
+         9YI7+Ng2HXhmFDaymrkcGVixKGMK7eJKRtxQ+3xfy4RLmTwUD4V/cO61y7ZRZanTWKSd
+         7lAw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=LlhhuXhX;
+       dkim=pass header.i=@sifive.com header.s=google header.b=ir6avT+L;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7954a3a7371si1134900385a.335.2024.06.12.01.16.13
+        by mx.google.com with ESMTPS id af79cd13be357-797c1dc5482si458929285a.519.2024.06.12.01.16.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jun 2024 01:16:13 -0700 (PDT)
+        Wed, 12 Jun 2024 01:16:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=LlhhuXhX;
+       dkim=pass header.i=@sifive.com header.s=google header.b=ir6avT+L;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sHJ8B-0002CL-3B; Wed, 12 Jun 2024 04:14:55 -0400
+	id 1sHJ7p-00022A-TP; Wed, 12 Jun 2024 04:14:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sHJ89-0002BH-UM
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:14:53 -0400
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ id 1sHJ7o-00021G-OK
+ for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:14:32 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sHJ86-0006IT-9O
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:14:53 -0400
-Received: by mail-pf1-x432.google.com with SMTP id
- d2e1a72fcca58-70435f4c330so1635886b3a.1
- for <qemu-devel@nongnu.org>; Wed, 12 Jun 2024 01:14:49 -0700 (PDT)
+ id 1sHJ7l-0006Eq-I7
+ for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:14:32 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-1f6fada63a6so29660775ad.3
+ for <qemu-devel@nongnu.org>; Wed, 12 Jun 2024 01:14:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1718180087; x=1718784887; darn=nongnu.org;
- h=references:in-reply-to:message-id:date:subject:cc:to:from:from:to
- :cc:subject:date:message-id:reply-to;
- bh=EnRKmLCd3tTTNF000mNJdg96ExcPAjbIehkU3yaHeR4=;
- b=LlhhuXhXzzSXpCQ0/ksG9Sa7Vm9NIuhbwIkb/xcuX/K9EIry5vzHFD9cA+bAkMGuNm
- 04mKWDtpVEFKsMFB6FLl5IAtXueWga/46L+WrfmPBSCp2E6mYUCLUxVASjcx4cZiWSbE
- 928fRli9enZQVz1FK3qJkz0eFc2vyJ9oIXxGJx9rdRX++Jbd2nvt359R0S14H5HL8HVs
- oogHtN20C4LSsx3xyoz+rjSErk/ZBIpcX6K2FZEiFrpCpCq6rJVNP6B7j6w/HP00CDfz
- pHyrYF07QTgvLogwY7w5s0N7Cm7IZqmRSraF5B5ZHIx16wq+gkKDtpP1UsD0K4fdntqQ
- EM9A==
+ d=sifive.com; s=google; t=1718180067; x=1718784867; darn=nongnu.org;
+ h=message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=z8WTAPoocSujgw+1vjVdkNZkdKXDTPGs5Nu9dYO12uI=;
+ b=ir6avT+L23KzBHOG4dB+EMaaVPkpWV8nLE4w2fwHi5z1PRLCbvwAx19p6bpDpuXUZW
+ yKcRWqxaw0xb7o45isdX1uqXXr0TqoSe5bTdnBzOZkDELlOYccx1yLt6yRj6sXmyZTby
+ ssRzvKWg916E3xZk8NbfJZW3knZqLF30ySXSrVrteoikh1iejUaBIMHDZZdnO51v7gx5
+ MMM2TNh5R9bz7c9LWPrEC2Bo6ln24m4lXfaC1JEviHB4qVv3SQLdwZ1DZ/LA/CDf0pQk
+ 5HDCQrQC3S4ujHtRL22N4pr/tAmCxraTKr1LnS3ZF4GrQxC5hx7iVZyz8zBP49B0rr+x
+ jXwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718180087; x=1718784887;
- h=references:in-reply-to:message-id:date:subject:cc:to:from
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=EnRKmLCd3tTTNF000mNJdg96ExcPAjbIehkU3yaHeR4=;
- b=nJPwnVBDCZj8Bc2CW0qNeC8kwIKW73jaTVPuMeVU2wPor4cxFrtgLgPhGwu4wWe30r
- j0TewNh7PE1Q6bOk/TelTPigVXKPpOMxV83YHpukp7ooUC9XzpPL+RIO6m7gwXR+tzKh
- iQ676fUeW3xQTdWs1c6uQ0Oy9TvUs2xrr9s+4YGaYA4k054wvRhLzAC/COcXbg9v7l4+
- D+cWNPIIxKht8VnS/2/N0LYAgxhawxOHoJ/laGA3RHUvCyTNSrF5AVlO1oGe2uD08aPD
- n55haP4058RzOn8lyZN0RUiiwKoi2Z0Irr4srRgWW95Ectb1/5hWS2E6qmddzUXXozqI
- 09ag==
-X-Gm-Message-State: AOJu0YxNYIUzr0Dd+hCHMH1KqLzHP8D8iNK0/L5YBnk+g+wpjpFEZdF2
- BsRWpoiwxYOUfpFjPjsVS3mlBFRlrJioM5F/cJEeFs4q7pYrsJrCMfCgehYUTlYrg3GgB6cUen8
- ST9+kzzalJ2ZIrcPs7Zaew4WwYuxCiD5uhzqCLWPkt5uRbSm0ocEBdLWNi9tQxw77aBuOA33pun
- jvUSSoH2phjpXImLE8L5//PAIsOqCCA3t2k2vKNZQDMw==
-X-Received: by 2002:a05:6a20:bc9b:b0:1b1:ed9d:f92e with SMTP id
- adf61e73a8af0-1b8a9c2c72bmr946171637.38.1718180087187; 
- Wed, 12 Jun 2024 01:14:47 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1718180067; x=1718784867;
+ h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=z8WTAPoocSujgw+1vjVdkNZkdKXDTPGs5Nu9dYO12uI=;
+ b=r2vinGniT41ig4QZUoXSbKYWlErYLf7bqY5bp/udfykRxAR+Gjjbh8IhRQkj4FkCO+
+ Wrpx8UuwA6SUUoLAwiAczySah51bm9Fqo5yQrkLxvyEY/GSWE5AquKfM/VT+0HoKFkRI
+ s0+zJqhl0vVgYngMLt4yiYXNFR4hy7ZIDdoEH8SHyltMJ4SAOOhvIVRJwmW+Ny6y8pDF
+ aLPmsl4k8AXpB9CyJETk5n/iJ5+diVfM1rAWRnfodFIDqWlso5f46BMie94k2uXePmow
+ f7Ql3YERSS/4gf7LsOnMOqkpgjx6ZOTXonssj0+6lAC6FZxFVf/Xtascgy3gv4YZYaHJ
+ seCA==
+X-Gm-Message-State: AOJu0YxG3D/ZhWbk+Ec3kvSJkTza3ga7BaKpVk9h5juRnrcv45iEuUHV
+ T/6sgpSQZK/e2h90uKZWuDndQVMHFJUveUXmKALJkV0abuq9DNk/0143dXZtPdYqWxyGcdt1c8R
+ EEODqdhnDE43nIDNCsVs3eYJ7m4isXS25KLsxI+E2M4kbZrl8UuD8nCNWPkPhAwCcdMS7cPRzYf
+ i/szhy4+WPxRK9wVvMG0/X1z6tYM1DdygBglZXRyGEpQ==
+X-Received: by 2002:a17:902:d4c1:b0:1f6:ea71:34ee with SMTP id
+ d9443c01a7336-1f83b5eba66mr11254755ad.16.1718180066907; 
+ Wed, 12 Jun 2024 01:14:26 -0700 (PDT)
 Received: from hsinchu26.internal.sifive.com
  (59-124-168-89.hinet-ip.hinet.net. [59.124.168.89])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f8393e8e53sm11363875ad.16.2024.06.12.01.14.41
+ d9443c01a7336-1f8393e8e53sm11363875ad.16.2024.06.12.01.14.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Jun 2024 01:14:46 -0700 (PDT)
+ Wed, 12 Jun 2024 01:14:26 -0700 (PDT)
 From: Jim Shu <jim.shu@sifive.com>
 To: qemu-devel@nongnu.org,
 	qemu-riscv@nongnu.org
@@ -124,15 +124,12 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
  qemu-s390x@nongnu.org (open list:S390 TCG CPUs),
  Jim Shu <jim.shu@sifive.com>
-Subject: [RFC PATCH 02/16] accel/tcg: memory access from CPU will pass
- access_type to IOMMU
-Date: Wed, 12 Jun 2024 16:14:02 +0800
-Message-Id: <20240612081416.29704-3-jim.shu@sifive.com>
+Subject: [RFC PATCH 00/16] Implements RISC-V WorldGuard extension v0.4
+Date: Wed, 12 Jun 2024 16:14:00 +0800
+Message-Id: <20240612081416.29704-1-jim.shu@sifive.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20240612081416.29704-1-jim.shu@sifive.com>
-References: <20240612081416.29704-1-jim.shu@sifive.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=jim.shu@sifive.com; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=jim.shu@sifive.com; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -154,506 +151,89 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pU3Jl3Pk7IJ7
+X-TUID: gLgHPMgCZ2N6
 
-It is the preparation patch for upcoming RISC-V wgChecker device.
+This patchset implements Smwg/Smwgd/Sswg CPU extension and wgChecker
+device defined in WorldGuard spec v0.4.
 
-Since RISC-V wgChecker could permit access in RO/WO permission, the
-IOMMUMemoryRegion could return different section for read & write
-access. The memory access from CPU should also pass the access_type to
-IOMMU translate function so that IOMMU could return the correct section
-of specified access_type.
+The WG v0.4 spec could be found here:
+https://lists.riscv.org/g/security/attachment/711/0/worldguard_rvia_spec-v0.4.pdf
 
-Signed-off-by: Jim Shu <jim.shu@sifive.com>
----
- accel/tcg/cputlb.c                   | 15 +++++++++------
- include/exec/exec-all.h              | 11 +++++++----
- system/physmem.c                     | 16 +++++++++++-----
- target/alpha/helper.c                |  2 +-
- target/arm/tcg/tlb_helper.c          |  2 +-
- target/avr/helper.c                  |  2 +-
- target/cris/helper.c                 |  2 +-
- target/hppa/mem_helper.c             |  2 +-
- target/i386/tcg/sysemu/excp_helper.c |  3 ++-
- target/loongarch/tcg/tlb_helper.c    |  2 +-
- target/m68k/helper.c                 | 10 +++++++---
- target/microblaze/helper.c           |  8 ++++----
- target/mips/tcg/sysemu/tlb_helper.c  |  4 ++--
- target/openrisc/mmu.c                |  2 +-
- target/ppc/mmu_helper.c              |  2 +-
- target/riscv/cpu_helper.c            |  2 +-
- target/rx/cpu.c                      |  3 ++-
- target/s390x/tcg/excp_helper.c       |  2 +-
- target/sh4/helper.c                  |  2 +-
- target/sparc/mmu_helper.c            |  6 +++---
- target/tricore/helper.c              |  2 +-
- target/xtensa/helper.c               |  3 ++-
- 22 files changed, 61 insertions(+), 42 deletions(-)
+To enable WG in QEMU, pass "wg=on" as machine parameter to virt machine.
+It enables both WG CPU CSRs to apply WID of CPU and wgCheckers on
+the DRAM, FLASH, and UART to protect these resources.
 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index 8cf124b760..f1b07f6926 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -1036,7 +1036,8 @@ static inline void tlb_set_compare(CPUTLBEntryFull *full, CPUTLBEntry *ent,
-  * critical section.
-  */
- void tlb_set_page_full(CPUState *cpu, int mmu_idx,
--                       vaddr addr, CPUTLBEntryFull *full)
-+                       vaddr addr, MMUAccessType access_type,
-+                       CPUTLBEntryFull *full)
- {
-     CPUTLB *tlb = &cpu->neg.tlb;
-     CPUTLBDesc *desc = &tlb->d[mmu_idx];
-@@ -1063,7 +1064,8 @@ void tlb_set_page_full(CPUState *cpu, int mmu_idx,
-     prot = full->prot;
-     asidx = cpu_asidx_from_attrs(cpu, full->attrs);
-     section = address_space_translate_for_iotlb(cpu, asidx, paddr_page,
--                                                &xlat, &sz, full->attrs, &prot);
-+                                                &xlat, &sz, full->attrs, &prot,
-+                                                access_type);
-     assert(sz >= TARGET_PAGE_SIZE);
- 
-     tlb_debug("vaddr=%016" VADDR_PRIx " paddr=0x" HWADDR_FMT_plx
-@@ -1200,7 +1202,8 @@ void tlb_set_page_full(CPUState *cpu, int mmu_idx,
- 
- void tlb_set_page_with_attrs(CPUState *cpu, vaddr addr,
-                              hwaddr paddr, MemTxAttrs attrs, int prot,
--                             int mmu_idx, uint64_t size)
-+                             MMUAccessType access_type, int mmu_idx,
-+                             uint64_t size)
- {
-     CPUTLBEntryFull full = {
-         .phys_addr = paddr,
-@@ -1210,15 +1213,15 @@ void tlb_set_page_with_attrs(CPUState *cpu, vaddr addr,
-     };
- 
-     assert(is_power_of_2(size));
--    tlb_set_page_full(cpu, mmu_idx, addr, &full);
-+    tlb_set_page_full(cpu, mmu_idx, addr, access_type, &full);
- }
- 
- void tlb_set_page(CPUState *cpu, vaddr addr,
--                  hwaddr paddr, int prot,
-+                  hwaddr paddr, int prot, MMUAccessType access_type,
-                   int mmu_idx, uint64_t size)
- {
-     tlb_set_page_with_attrs(cpu, addr, paddr, MEMTXATTRS_UNSPECIFIED,
--                            prot, mmu_idx, size);
-+                            prot, access_type, mmu_idx, size);
- }
- 
- /*
-diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-index b6b46ad13c..0d5363ac02 100644
---- a/include/exec/exec-all.h
-+++ b/include/exec/exec-all.h
-@@ -205,7 +205,7 @@ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *cpu,
-  * used by tlb_flush_page.
-  */
- void tlb_set_page_full(CPUState *cpu, int mmu_idx, vaddr addr,
--                       CPUTLBEntryFull *full);
-+                       MMUAccessType access_type, CPUTLBEntryFull *full);
- 
- /**
-  * tlb_set_page_with_attrs:
-@@ -231,7 +231,8 @@ void tlb_set_page_full(CPUState *cpu, int mmu_idx, vaddr addr,
-  */
- void tlb_set_page_with_attrs(CPUState *cpu, vaddr addr,
-                              hwaddr paddr, MemTxAttrs attrs,
--                             int prot, int mmu_idx, vaddr size);
-+                             int prot, MMUAccessType access_type, int mmu_idx,
-+                             vaddr size);
- /* tlb_set_page:
-  *
-  * This function is equivalent to calling tlb_set_page_with_attrs()
-@@ -240,7 +241,8 @@ void tlb_set_page_with_attrs(CPUState *cpu, vaddr addr,
-  */
- void tlb_set_page(CPUState *cpu, vaddr addr,
-                   hwaddr paddr, int prot,
--                  int mmu_idx, vaddr size);
-+                  MMUAccessType access_type, int mmu_idx,
-+                  vaddr size);
- #else
- static inline void tlb_init(CPUState *cpu)
- {
-@@ -591,7 +593,8 @@ void tlb_reset_dirty_range_all(ram_addr_t start, ram_addr_t length);
- MemoryRegionSection *
- address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr addr,
-                                   hwaddr *xlat, hwaddr *plen,
--                                  MemTxAttrs attrs, int *prot);
-+                                  MemTxAttrs attrs, int *prot,
-+                                  MMUAccessType access_type);
- hwaddr memory_region_section_get_iotlb(CPUState *cpu,
-                                        MemoryRegionSection *section);
- #endif
-diff --git a/system/physmem.c b/system/physmem.c
-index b7847db1a2..a5a0ea77bd 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -674,12 +674,14 @@ void tcg_iommu_init_notifier_list(CPUState *cpu)
- MemoryRegionSection *
- address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr orig_addr,
-                                   hwaddr *xlat, hwaddr *plen,
--                                  MemTxAttrs attrs, int *prot)
-+                                  MemTxAttrs attrs, int *prot,
-+                                  MMUAccessType access_type)
- {
-     MemoryRegionSection *section;
-     IOMMUMemoryRegion *iommu_mr;
-     IOMMUMemoryRegionClass *imrc;
-     IOMMUTLBEntry iotlb;
-+    IOMMUAccessFlags iommu_flags;
-     int iommu_idx;
-     hwaddr addr = orig_addr;
-     AddressSpaceDispatch *d = cpu->cpu_ases[asidx].memory_dispatch;
-@@ -696,10 +698,14 @@ address_space_translate_for_iotlb(CPUState *cpu, int asidx, hwaddr orig_addr,
- 
-         iommu_idx = imrc->attrs_to_index(iommu_mr, attrs);
-         tcg_register_iommu_notifier(cpu, iommu_mr, iommu_idx);
--        /* We need all the permissions, so pass IOMMU_NONE so the IOMMU
--         * doesn't short-cut its translation table walk.
--         */
--        iotlb = imrc->translate(iommu_mr, addr, IOMMU_NONE, iommu_idx);
-+
-+        if (access_type == MMU_DATA_STORE) {
-+            iommu_flags = IOMMU_WO;
-+        } else {
-+            iommu_flags = IOMMU_RO;
-+        }
-+
-+        iotlb = imrc->translate(iommu_mr, addr, iommu_flags, iommu_idx);
-         addr = ((iotlb.translated_addr & ~iotlb.addr_mask)
-                 | (addr & iotlb.addr_mask));
-         /* Update the caller's prot bits to remove permissions the IOMMU
-diff --git a/target/alpha/helper.c b/target/alpha/helper.c
-index 2f1000c99f..7ea548f1d0 100644
---- a/target/alpha/helper.c
-+++ b/target/alpha/helper.c
-@@ -318,7 +318,7 @@ bool alpha_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
-     }
- 
-     tlb_set_page(cs, addr & TARGET_PAGE_MASK, phys & TARGET_PAGE_MASK,
--                 prot, mmu_idx, TARGET_PAGE_SIZE);
-+                 prot, access_type, mmu_idx, TARGET_PAGE_SIZE);
-     return true;
- }
- 
-diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-index 885bf4ec14..186c612957 100644
---- a/target/arm/tcg/tlb_helper.c
-+++ b/target/arm/tcg/tlb_helper.c
-@@ -361,7 +361,7 @@ bool arm_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-         res.f.extra.arm.pte_attrs = res.cacheattrs.attrs;
-         res.f.extra.arm.shareability = res.cacheattrs.shareability;
- 
--        tlb_set_page_full(cs, mmu_idx, address, &res.f);
-+        tlb_set_page_full(cs, mmu_idx, address, access_type, &res.f);
-         return true;
-     } else if (probe) {
-         return false;
-diff --git a/target/avr/helper.c b/target/avr/helper.c
-index 345708a1b3..07d795848e 100644
---- a/target/avr/helper.c
-+++ b/target/avr/helper.c
-@@ -149,7 +149,7 @@ bool avr_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-         }
-     }
- 
--    tlb_set_page(cs, address, paddr, prot, mmu_idx, page_size);
-+    tlb_set_page(cs, address, paddr, prot, access_type, mmu_idx, page_size);
-     return true;
- }
- 
-diff --git a/target/cris/helper.c b/target/cris/helper.c
-index 1c3f86876f..644244312c 100644
---- a/target/cris/helper.c
-+++ b/target/cris/helper.c
-@@ -68,7 +68,7 @@ bool cris_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-         phy = res.phy & ~0x80000000;
-         prot = res.prot;
-         tlb_set_page(cs, address & TARGET_PAGE_MASK, phy,
--                     prot, mmu_idx, TARGET_PAGE_SIZE);
-+                     prot, access_type, mmu_idx, TARGET_PAGE_SIZE);
-         return true;
-     }
- 
-diff --git a/target/hppa/mem_helper.c b/target/hppa/mem_helper.c
-index b984f730aa..0a42d47ce9 100644
---- a/target/hppa/mem_helper.c
-+++ b/target/hppa/mem_helper.c
-@@ -461,7 +461,7 @@ bool hppa_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
-      * because we record the large page here in the hppa tlb.
-      */
-     tlb_set_page(cs, addr & TARGET_PAGE_MASK, phys & TARGET_PAGE_MASK,
--                 prot, mmu_idx, TARGET_PAGE_SIZE);
-+                 prot, type, mmu_idx, TARGET_PAGE_SIZE);
-     return true;
- }
- 
-diff --git a/target/i386/tcg/sysemu/excp_helper.c b/target/i386/tcg/sysemu/excp_helper.c
-index 8fb05b1f53..c7a53a1179 100644
---- a/target/i386/tcg/sysemu/excp_helper.c
-+++ b/target/i386/tcg/sysemu/excp_helper.c
-@@ -610,7 +610,8 @@ bool x86_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
-         tlb_set_page_with_attrs(cs, addr & TARGET_PAGE_MASK,
-                                 out.paddr & TARGET_PAGE_MASK,
-                                 cpu_get_mem_attrs(env),
--                                out.prot, mmu_idx, out.page_size);
-+                                out.prot, access_type, mmu_idx,
-+                                out.page_size);
-         return true;
-     }
- 
-diff --git a/target/loongarch/tcg/tlb_helper.c b/target/loongarch/tcg/tlb_helper.c
-index d6331f9b0b..7f9a44128a 100644
---- a/target/loongarch/tcg/tlb_helper.c
-+++ b/target/loongarch/tcg/tlb_helper.c
-@@ -490,7 +490,7 @@ bool loongarch_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-     if (ret == TLBRET_MATCH) {
-         tlb_set_page(cs, address & TARGET_PAGE_MASK,
-                      physical & TARGET_PAGE_MASK, prot,
--                     mmu_idx, TARGET_PAGE_SIZE);
-+                     access_type, mmu_idx, TARGET_PAGE_SIZE);
-         qemu_log_mask(CPU_LOG_MMU,
-                       "%s address=%" VADDR_PRIx " physical " HWADDR_FMT_plx
-                       " prot %d\n", __func__, address, physical, prot);
-diff --git a/target/m68k/helper.c b/target/m68k/helper.c
-index 7967ad13cb..e63ebe4e18 100644
---- a/target/m68k/helper.c
-+++ b/target/m68k/helper.c
-@@ -967,7 +967,7 @@ bool m68k_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-         tlb_set_page(cs, address & TARGET_PAGE_MASK,
-                      address & TARGET_PAGE_MASK,
-                      PAGE_READ | PAGE_WRITE | PAGE_EXEC,
--                     mmu_idx, TARGET_PAGE_SIZE);
-+                     qemu_access_type, mmu_idx, TARGET_PAGE_SIZE);
-         return true;
-     }
- 
-@@ -987,7 +987,8 @@ bool m68k_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                                address, access_type, &page_size);
-     if (likely(ret == 0)) {
-         tlb_set_page(cs, address & TARGET_PAGE_MASK,
--                     physical & TARGET_PAGE_MASK, prot, mmu_idx, page_size);
-+                     physical & TARGET_PAGE_MASK, prot, qemu_access_type,
-+                     mmu_idx, page_size);
-         return true;
-     }
- 
-@@ -1459,6 +1460,7 @@ void HELPER(ptest)(CPUM68KState *env, uint32_t addr, uint32_t is_read)
-     int prot;
-     int ret;
-     target_ulong page_size;
-+    MMUAccessType qemu_access_type;
- 
-     access_type = ACCESS_PTEST;
-     if (env->dfc & 4) {
-@@ -1466,9 +1468,11 @@ void HELPER(ptest)(CPUM68KState *env, uint32_t addr, uint32_t is_read)
-     }
-     if ((env->dfc & 3) == 2) {
-         access_type |= ACCESS_CODE;
-+        qemu_access_type = MMU_INST_FETCH;
-     }
-     if (!is_read) {
-         access_type |= ACCESS_STORE;
-+        qemu_access_type = MMU_DATA_STORE;
-     }
- 
-     env->mmu.mmusr = 0;
-@@ -1478,7 +1482,7 @@ void HELPER(ptest)(CPUM68KState *env, uint32_t addr, uint32_t is_read)
-     if (ret == 0) {
-         tlb_set_page(env_cpu(env), addr & TARGET_PAGE_MASK,
-                      physical & TARGET_PAGE_MASK,
--                     prot, access_type & ACCESS_SUPER ?
-+                     prot, qemu_access_type, access_type & ACCESS_SUPER ?
-                      MMU_KERNEL_IDX : MMU_USER_IDX, page_size);
-     }
- }
-diff --git a/target/microblaze/helper.c b/target/microblaze/helper.c
-index 5d3259ce31..5229daf1d5 100644
---- a/target/microblaze/helper.c
-+++ b/target/microblaze/helper.c
-@@ -53,8 +53,8 @@ bool mb_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-         /* MMU disabled or not available.  */
-         address &= TARGET_PAGE_MASK;
-         prot = PAGE_RWX;
--        tlb_set_page_with_attrs(cs, address, address, attrs, prot, mmu_idx,
--                                TARGET_PAGE_SIZE);
-+        tlb_set_page_with_attrs(cs, address, address, attrs, prot, access_type,
-+                                mmu_idx, TARGET_PAGE_SIZE);
-         return true;
-     }
- 
-@@ -65,8 +65,8 @@ bool mb_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
- 
-         qemu_log_mask(CPU_LOG_MMU, "MMU map mmu=%d v=%x p=%x prot=%x\n",
-                       mmu_idx, vaddr, paddr, lu.prot);
--        tlb_set_page_with_attrs(cs, vaddr, paddr, attrs, lu.prot, mmu_idx,
--                                TARGET_PAGE_SIZE);
-+        tlb_set_page_with_attrs(cs, vaddr, paddr, attrs, lu.prot, access_type,
-+                                mmu_idx, TARGET_PAGE_SIZE);
-         return true;
-     }
- 
-diff --git a/target/mips/tcg/sysemu/tlb_helper.c b/target/mips/tcg/sysemu/tlb_helper.c
-index 3ba6d369a6..90b9668bd0 100644
---- a/target/mips/tcg/sysemu/tlb_helper.c
-+++ b/target/mips/tcg/sysemu/tlb_helper.c
-@@ -931,7 +931,7 @@ bool mips_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-     if (ret == TLBRET_MATCH) {
-         tlb_set_page(cs, address & TARGET_PAGE_MASK,
-                      physical & TARGET_PAGE_MASK, prot,
--                     mmu_idx, TARGET_PAGE_SIZE);
-+                     access_type, mmu_idx, TARGET_PAGE_SIZE);
-         return true;
-     }
- #if !defined(TARGET_MIPS64)
-@@ -949,7 +949,7 @@ bool mips_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-             if (ret == TLBRET_MATCH) {
-                 tlb_set_page(cs, address & TARGET_PAGE_MASK,
-                              physical & TARGET_PAGE_MASK, prot,
--                             mmu_idx, TARGET_PAGE_SIZE);
-+                             access_type, mmu_idx, TARGET_PAGE_SIZE);
-                 return true;
-             }
-         }
-diff --git a/target/openrisc/mmu.c b/target/openrisc/mmu.c
-index c632d5230b..a04003c37e 100644
---- a/target/openrisc/mmu.c
-+++ b/target/openrisc/mmu.c
-@@ -128,7 +128,7 @@ bool openrisc_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
-     if (likely(excp == 0)) {
-         tlb_set_page(cs, addr & TARGET_PAGE_MASK,
-                      phys_addr & TARGET_PAGE_MASK, prot,
--                     mmu_idx, TARGET_PAGE_SIZE);
-+                     access_type, mmu_idx, TARGET_PAGE_SIZE);
-         return true;
-     }
-     if (probe) {
-diff --git a/target/ppc/mmu_helper.c b/target/ppc/mmu_helper.c
-index b0a0676beb..dd264ac335 100644
---- a/target/ppc/mmu_helper.c
-+++ b/target/ppc/mmu_helper.c
-@@ -1368,7 +1368,7 @@ bool ppc_cpu_tlb_fill(CPUState *cs, vaddr eaddr, int size,
-     if (ppc_xlate(cpu, eaddr, access_type, &raddr,
-                   &page_size, &prot, mmu_idx, !probe)) {
-         tlb_set_page(cs, eaddr & TARGET_PAGE_MASK, raddr & TARGET_PAGE_MASK,
--                     prot, mmu_idx, 1UL << page_size);
-+                     prot, access_type, mmu_idx, 1UL << page_size);
-         return true;
-     }
-     if (probe) {
-diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-index 6709622dd3..161df34626 100644
---- a/target/riscv/cpu_helper.c
-+++ b/target/riscv/cpu_helper.c
-@@ -1419,7 +1419,7 @@ bool riscv_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
- 
-     if (ret == TRANSLATE_SUCCESS) {
-         tlb_set_page(cs, address & ~(tlb_size - 1), pa & ~(tlb_size - 1),
--                     prot, mmu_idx, tlb_size);
-+                     prot, access_type, mmu_idx, tlb_size);
-         return true;
-     } else if (probe) {
-         return false;
-diff --git a/target/rx/cpu.c b/target/rx/cpu.c
-index 8a584f0a11..2e0fd20aef 100644
---- a/target/rx/cpu.c
-+++ b/target/rx/cpu.c
-@@ -163,7 +163,8 @@ static bool rx_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
-     /* Linear mapping */
-     address = physical = addr & TARGET_PAGE_MASK;
-     prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
--    tlb_set_page(cs, address, physical, prot, mmu_idx, TARGET_PAGE_SIZE);
-+    tlb_set_page(cs, address, physical, prot, access_type,
-+                 mmu_idx, TARGET_PAGE_SIZE);
-     return true;
- }
- 
-diff --git a/target/s390x/tcg/excp_helper.c b/target/s390x/tcg/excp_helper.c
-index 4c0b692c9e..bcd9f80474 100644
---- a/target/s390x/tcg/excp_helper.c
-+++ b/target/s390x/tcg/excp_helper.c
-@@ -178,7 +178,7 @@ bool s390_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                       "%s: set tlb %" PRIx64 " -> %" PRIx64 " (%x)\n",
-                       __func__, (uint64_t)vaddr, (uint64_t)raddr, prot);
-         tlb_set_page(cs, address & TARGET_PAGE_MASK, raddr, prot,
--                     mmu_idx, TARGET_PAGE_SIZE);
-+                     access_type, mmu_idx, TARGET_PAGE_SIZE);
-         return true;
-     }
-     if (probe) {
-diff --git a/target/sh4/helper.c b/target/sh4/helper.c
-index 6702910627..00b06898b7 100644
---- a/target/sh4/helper.c
-+++ b/target/sh4/helper.c
-@@ -807,7 +807,7 @@ bool superh_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-     if (ret == MMU_OK) {
-         address &= TARGET_PAGE_MASK;
-         physical &= TARGET_PAGE_MASK;
--        tlb_set_page(cs, address, physical, prot, mmu_idx, TARGET_PAGE_SIZE);
-+        tlb_set_page(cs, address, physical, prot, access_type, mmu_idx, TARGET_PAGE_SIZE);
-         return true;
-     }
-     if (probe) {
-diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
-index 9ff06026b8..1dade2eef8 100644
---- a/target/sparc/mmu_helper.c
-+++ b/target/sparc/mmu_helper.c
-@@ -229,7 +229,7 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                       "Translate at %" VADDR_PRIx " -> "
-                       HWADDR_FMT_plx ", vaddr " TARGET_FMT_lx "\n",
-                       address, full.phys_addr, vaddr);
--        tlb_set_page_full(cs, mmu_idx, vaddr, &full);
-+        tlb_set_page_full(cs, mmu_idx, vaddr, access_type, &full);
-         return true;
-     }
- 
-@@ -245,7 +245,7 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-            neverland. Fake/overridden mappings will be flushed when
-            switching to normal mode. */
-         full.prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
--        tlb_set_page_full(cs, mmu_idx, vaddr, &full);
-+        tlb_set_page_full(cs, mmu_idx, vaddr, access_type, &full);
-         return true;
-     } else {
-         if (access_type == MMU_INST_FETCH) {
-@@ -769,7 +769,7 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-         trace_mmu_helper_mmu_fault(address, full.phys_addr, mmu_idx, env->tl,
-                                    env->dmmu.mmu_primary_context,
-                                    env->dmmu.mmu_secondary_context);
--        tlb_set_page_full(cs, mmu_idx, address, &full);
-+        tlb_set_page_full(cs, mmu_idx, address, access_type, &full);
-         return true;
-     }
-     if (probe) {
-diff --git a/target/tricore/helper.c b/target/tricore/helper.c
-index 7014255f77..295f515772 100644
---- a/target/tricore/helper.c
-+++ b/target/tricore/helper.c
-@@ -84,7 +84,7 @@ bool tricore_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-     if (ret == TLBRET_MATCH) {
-         tlb_set_page(cs, address & TARGET_PAGE_MASK,
-                      physical & TARGET_PAGE_MASK, prot | PAGE_EXEC,
--                     mmu_idx, TARGET_PAGE_SIZE);
-+                     rw, mmu_idx, TARGET_PAGE_SIZE);
-         return true;
-     } else {
-         assert(ret < 0);
-diff --git a/target/xtensa/helper.c b/target/xtensa/helper.c
-index ca214b948a..3a155638c5 100644
---- a/target/xtensa/helper.c
-+++ b/target/xtensa/helper.c
-@@ -280,7 +280,8 @@ bool xtensa_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-         tlb_set_page(cs,
-                      address & TARGET_PAGE_MASK,
-                      paddr & TARGET_PAGE_MASK,
--                     access, mmu_idx, page_size);
-+                     access, access_type, mmu_idx,
-+                     page_size);
-         return true;
-     } else if (probe) {
-         return false;
+This patchset contains 5 parts:
+
+1. Commit  1: Bugfix of IOMMUMemoryRegion
+2. Commit  2 ~ 3: Extend IOMMUMemoryRegion and MemTxAttr for WG support
+3. Commit  4 ~ 11: Add WG global device and CPU extensions
+4. Commit 12 ~ 15: Add WG checker device
+5. Commit 16: Add WG support to the virt machine
+
+Jim Shu (16):
+  accel/tcg: Store section pointer in CPUTLBEntryFull
+  accel/tcg: memory access from CPU will pass access_type to IOMMU
+  exec: Add RISC-V WorldGuard WID to MemTxAttrs
+  hw/misc: riscv_worldguard: Add RISC-V WorldGuard global config
+  target/riscv: Add CPU options of WorldGuard CPU extension
+  target/riscv: Add hard-coded CPU state of WG extension
+  target/riscv: Add defines for WorldGuard CSRs
+  target/riscv: Allow global WG config to set WG CPU callbacks
+  target/riscv: Implement WorldGuard CSRs
+  target/riscv: Add WID to MemTxAttrs of CPU memory transactions
+  hw/misc: riscv_worldguard: Add API to enable WG extension of CPU
+  hw/misc: riscv_wgchecker: Implement RISC-V WorldGuard Checker
+  hw/misc: riscv_wgchecker: Implement wgchecker slot registers
+  hw/misc: riscv_wgchecker: Implement correct block-access behavior
+  hw/misc: riscv_wgchecker: Check the slot settings in translate
+  hw/riscv: virt: Add WorldGuard support
+
+ accel/tcg/cputlb.c                   |   34 +-
+ docs/system/riscv/virt.rst           |   10 +
+ hw/misc/Kconfig                      |    3 +
+ hw/misc/meson.build                  |    1 +
+ hw/misc/riscv_wgchecker.c            | 1161 ++++++++++++++++++++++++++
+ hw/misc/riscv_worldguard.c           |  273 ++++++
+ hw/misc/trace-events                 |    9 +
+ hw/riscv/Kconfig                     |    1 +
+ hw/riscv/virt.c                      |  163 +++-
+ include/exec/exec-all.h              |   11 +-
+ include/exec/memattrs.h              |    5 +
+ include/hw/core/cpu.h                |    3 +
+ include/hw/misc/riscv_worldguard.h   |  123 +++
+ include/hw/riscv/virt.h              |   17 +-
+ system/physmem.c                     |   16 +-
+ target/alpha/helper.c                |    2 +-
+ target/arm/tcg/tlb_helper.c          |    2 +-
+ target/avr/helper.c                  |    2 +-
+ target/cris/helper.c                 |    2 +-
+ target/hppa/mem_helper.c             |    2 +-
+ target/i386/tcg/sysemu/excp_helper.c |    3 +-
+ target/loongarch/tcg/tlb_helper.c    |    2 +-
+ target/m68k/helper.c                 |   10 +-
+ target/microblaze/helper.c           |    8 +-
+ target/mips/tcg/sysemu/tlb_helper.c  |    4 +-
+ target/openrisc/mmu.c                |    2 +-
+ target/ppc/mmu_helper.c              |    2 +-
+ target/riscv/cpu.c                   |   16 +-
+ target/riscv/cpu.h                   |   12 +
+ target/riscv/cpu_bits.h              |    5 +
+ target/riscv/cpu_cfg.h               |    5 +
+ target/riscv/cpu_helper.c            |   69 +-
+ target/riscv/csr.c                   |  107 +++
+ target/riscv/tcg/tcg-cpu.c           |   11 +
+ target/rx/cpu.c                      |    3 +-
+ target/s390x/tcg/excp_helper.c       |    2 +-
+ target/sh4/helper.c                  |    2 +-
+ target/sparc/mmu_helper.c            |    6 +-
+ target/tricore/helper.c              |    2 +-
+ target/xtensa/helper.c               |    3 +-
+ 40 files changed, 2054 insertions(+), 60 deletions(-)
+ create mode 100644 hw/misc/riscv_wgchecker.c
+ create mode 100644 hw/misc/riscv_worldguard.c
+ create mode 100644 include/hw/misc/riscv_worldguard.h
+
 -- 
 2.17.1
 

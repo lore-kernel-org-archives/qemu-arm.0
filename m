@@ -1,239 +1,206 @@
-Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp242719ejc;
-        Wed, 12 Jun 2024 01:16:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUPVMlFRMiBL9p04jOEOJa9qv9K3NXNl13YbFwQcI0p3zI368y9c0LP2abnTXPl5i2eJVCtMSvDLNW53q8eYaGZj7LHdTSb
-X-Google-Smtp-Source: AGHT+IEQEKgNOsJRLTKffiJ6AGevb4vqjfI2wry4TftV8+DqK3/wkPtQW5aZaxdDQWJmldvzFINZ
-X-Received: by 2002:a05:620a:4151:b0:797:aa9a:de5e with SMTP id af79cd13be357-797f5ef50bdmr124711585a.3.1718180202394;
-        Wed, 12 Jun 2024 01:16:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718180202; cv=none;
+Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp281304ejc;
+        Wed, 12 Jun 2024 02:54:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVdHTgpo1LQ4efYFCbgG2xYG7nyGugjg7av/gmsQm6+FRKNnXNvAq4Zayczmfz6YrOWTzKMjw3YLP7RbQVWRRdeFrRi/s6V
+X-Google-Smtp-Source: AGHT+IHm/tXJwftiQM4IVFcWhoSxj7CqgMESIpMfLu++PmyK88KwMz1eKwENUeuSO0RXBO+MkKVq
+X-Received: by 2002:ac8:5f47:0:b0:43a:bee9:ebc with SMTP id d75a77b69052e-44159afe813mr21531711cf.19.1718186065160;
+        Wed, 12 Jun 2024 02:54:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718186065; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ypyy1Emumy9JKzHm9gTIh5WUqCe1mjjjJ89I0AHORryiS0CdYGuPmSK7rUzkgkZUbO
-         Y3xEWQFCGaMRaOys0jPw8c3pZdkved4hklO6ZjQfUrKteWn0C+fyxhas6CaN+gFwbL4m
-         iIW8SzWZ7NHlT/XoBhyMuxgYNJnY32FYsn1FiZO92KF5FkNXrxSCgOcbHnbKncwdgVYK
-         DYaG7fu6lhhkB/40IfSrvYgtD7qDe7GQyPZ4zgjmt26Hkxed8PclG/QlUwkmitUK1uqQ
-         ZM3q7r6dHoVEy40321M6lLrZGcK3fIiUu5x7SDidUvdq6CBEHaA2lBQL1zNJNM1O2e5x
-         Kkyg==
+        b=vReQSfJTLjAVNbSbW70fxdhzy6tcsTFvqABSecMHZY8nV/rQlmnTilPcTJtxwYrNeY
+         2z1g4KgqK9WXuiKvUQHn4fvmHeYs49zWEIL9MNF01gQl0V6AM/UgBx1FhUK6/nrzVLLt
+         jsftA4ZK6bOE6NjdEFYRreeIWqF9Pck/7nfjEejawIhByB/40nB5WTJCqXyQtB3s3lo1
+         N5ERLufxcacwJJ6j+WPCjbyRCnwbEtgOCdeQSVJbDaltOkhDYcIrSBKV/sxXQ8gr6l9/
+         dcMA0cn7uc5XvweExIWR7rTwmyxAtfv5ZbuZKp5PurbNwXNZLTWJhrx9OUfGgPbIPel9
+         TyXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=z8WTAPoocSujgw+1vjVdkNZkdKXDTPGs5Nu9dYO12uI=;
-        fh=TDBzvxSfdE6oPbnRjgmpeHbbsHtVpAEN4utndjBnqmU=;
-        b=hP/z1CwLguhDQu08SOe7wBwFLdyRFxFwsfllhcPLm0m7gzu7vchZo9SzCXrRP166VJ
-         Dbae/fvkpFcZzQWvXV1MqN4Hy3dG/7sd821LJ9t3Z94v5DEVIamlmSoa5JeEN3p2n1h8
-         xuKdw4W+VJx1tH+FxJZ57oPa62N6UVlkzcqN4ED8PAxgwqycKhIZYbAHvmvqj00x+B3H
-         QJnvLOTvGJZAjjAavRo1Rb6PIrJrSTJNovx7vNpo7r4+iW0PBIvVujmWVF8jFqwWo9eA
-         9YI7+Ng2HXhmFDaymrkcGVixKGMK7eJKRtxQ+3xfy4RLmTwUD4V/cO61y7ZRZanTWKSd
-         7lAw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=gLMRpnKDKadwF/tUh2nZ+vLurezt77BKmiLqiwkS/yg=;
+        fh=pvtddvpBttEhgFAmD4FZqkRYXIsnyN0iFSsYRxfWif4=;
+        b=uKrE699kQSe6LkPPeOA0YZ4tVLV1i0xCC5Ij0CFbfL+o8hApuaj/FQQEIdpeiVmvbu
+         hwccEI2vGp0Ub57zmgYoZ3w+97wd75XQo7cIYOK77P9RCpAyP7eAky76NLqbZwXzvGFd
+         UT2rRTDgQe2N8FB32udVhM/4PwHv7rjgB+7/7+DPUgJSJ4/5nVzSAKO/XHzwp/YxRyLi
+         X7BCIkwVGU77thPM8edYT+wEdVIeUeUsuND7u+aeRJzHkFCeW6CMeUGCY6uYU3mLMpJB
+         jAxgtTwGpjHCacFe92If1w7nf9nuw8LiVt9jxKh35bCWyx70LYS7u2j0XSwNBZyT7pw5
+         JW7g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=ir6avT+L;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-797c1dc5482si458929285a.519.2024.06.12.01.16.42
+        by mx.google.com with ESMTPS id d75a77b69052e-44038b3c2bdsi153365961cf.467.2024.06.12.02.54.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jun 2024 01:16:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Jun 2024 02:54:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=ir6avT+L;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sHJ7p-00022A-TP; Wed, 12 Jun 2024 04:14:33 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sHKg1-0001k2-CK; Wed, 12 Jun 2024 05:53:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sHJ7o-00021G-OK
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:14:32 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sHJ7l-0006Eq-I7
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:14:32 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-1f6fada63a6so29660775ad.3
- for <qemu-devel@nongnu.org>; Wed, 12 Jun 2024 01:14:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1718180067; x=1718784867; darn=nongnu.org;
- h=message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=z8WTAPoocSujgw+1vjVdkNZkdKXDTPGs5Nu9dYO12uI=;
- b=ir6avT+L23KzBHOG4dB+EMaaVPkpWV8nLE4w2fwHi5z1PRLCbvwAx19p6bpDpuXUZW
- yKcRWqxaw0xb7o45isdX1uqXXr0TqoSe5bTdnBzOZkDELlOYccx1yLt6yRj6sXmyZTby
- ssRzvKWg916E3xZk8NbfJZW3knZqLF30ySXSrVrteoikh1iejUaBIMHDZZdnO51v7gx5
- MMM2TNh5R9bz7c9LWPrEC2Bo6ln24m4lXfaC1JEviHB4qVv3SQLdwZ1DZ/LA/CDf0pQk
- 5HDCQrQC3S4ujHtRL22N4pr/tAmCxraTKr1LnS3ZF4GrQxC5hx7iVZyz8zBP49B0rr+x
- jXwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718180067; x=1718784867;
- h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=z8WTAPoocSujgw+1vjVdkNZkdKXDTPGs5Nu9dYO12uI=;
- b=r2vinGniT41ig4QZUoXSbKYWlErYLf7bqY5bp/udfykRxAR+Gjjbh8IhRQkj4FkCO+
- Wrpx8UuwA6SUUoLAwiAczySah51bm9Fqo5yQrkLxvyEY/GSWE5AquKfM/VT+0HoKFkRI
- s0+zJqhl0vVgYngMLt4yiYXNFR4hy7ZIDdoEH8SHyltMJ4SAOOhvIVRJwmW+Ny6y8pDF
- aLPmsl4k8AXpB9CyJETk5n/iJ5+diVfM1rAWRnfodFIDqWlso5f46BMie94k2uXePmow
- f7Ql3YERSS/4gf7LsOnMOqkpgjx6ZOTXonssj0+6lAC6FZxFVf/Xtascgy3gv4YZYaHJ
- seCA==
-X-Gm-Message-State: AOJu0YxG3D/ZhWbk+Ec3kvSJkTza3ga7BaKpVk9h5juRnrcv45iEuUHV
- T/6sgpSQZK/e2h90uKZWuDndQVMHFJUveUXmKALJkV0abuq9DNk/0143dXZtPdYqWxyGcdt1c8R
- EEODqdhnDE43nIDNCsVs3eYJ7m4isXS25KLsxI+E2M4kbZrl8UuD8nCNWPkPhAwCcdMS7cPRzYf
- i/szhy4+WPxRK9wVvMG0/X1z6tYM1DdygBglZXRyGEpQ==
-X-Received: by 2002:a17:902:d4c1:b0:1f6:ea71:34ee with SMTP id
- d9443c01a7336-1f83b5eba66mr11254755ad.16.1718180066907; 
- Wed, 12 Jun 2024 01:14:26 -0700 (PDT)
-Received: from hsinchu26.internal.sifive.com
- (59-124-168-89.hinet-ip.hinet.net. [59.124.168.89])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f8393e8e53sm11363875ad.16.2024.06.12.01.14.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Jun 2024 01:14:26 -0700 (PDT)
-From: Jim Shu <jim.shu@sifive.com>
-To: qemu-devel@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Song Gao <gaosong@loongson.cn>, Laurent Vivier <laurent@vivier.eu>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>, Stafford Horne <shorne@gmail.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Max Filippov <jcmvbkbc@gmail.com>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs),
- qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
- qemu-s390x@nongnu.org (open list:S390 TCG CPUs),
- Jim Shu <jim.shu@sifive.com>
-Subject: [RFC PATCH 00/16] Implements RISC-V WorldGuard extension v0.4
-Date: Wed, 12 Jun 2024 16:14:00 +0800
-Message-Id: <20240612081416.29704-1-jim.shu@sifive.com>
-X-Mailer: git-send-email 2.17.1
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=jim.shu@sifive.com; helo=mail-pl1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1sHKfz-0001jI-CK; Wed, 12 Jun 2024 05:53:55 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1sHKfw-0007JR-Tu; Wed, 12 Jun 2024 05:53:55 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VzgnD6BDKz6K8xl;
+ Wed, 12 Jun 2024 17:52:16 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id 084BC140B2F;
+ Wed, 12 Jun 2024 17:53:38 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 12 Jun
+ 2024 10:53:30 +0100
+Date: Wed, 12 Jun 2024 10:53:29 +0100
+To: Zhenyu Zhang <zhenyzha@redhat.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
+ <peter.maydell@linaro.org>, <robin.murphy@arm.com>, <gshan@redhat.com>,
+ <eauger@redhat.com>, <sebott@redhat.com>, <cohuck@redhat.com>,
+ <ddutile@redhat.com>, <shahuang@redhat.com>
+Subject: Re: [PATCH v3] hw/arm/virt: Avoid unexpected warning from Linux
+ guest on host with Fujitsu CPUs
+Message-ID: <20240612105329.00004607@Huawei.com>
+In-Reply-To: <20240612020506.307793-1-zhenyzha@redhat.com>
+References: <20240612020506.307793-1-zhenyzha@redhat.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gLgHPMgCZ2N6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: W5553bsB0hR+
 
-This patchset implements Smwg/Smwgd/Sswg CPU extension and wgChecker
-device defined in WorldGuard spec v0.4.
+On Tue, 11 Jun 2024 22:05:06 -0400
+Zhenyu Zhang <zhenyzha@redhat.com> wrote:
 
-The WG v0.4 spec could be found here:
-https://lists.riscv.org/g/security/attachment/711/0/worldguard_rvia_spec-v0.4.pdf
+> Multiple warning messages and corresponding backtraces are observed when Linux
+> guest is booted on the host with Fujitsu CPUs. One of them is shown as below.
+> 
+> [    0.032443] ------------[ cut here ]------------
+> [    0.032446] uart-pl011 9000000.pl011: ARCH_DMA_MINALIGN smaller than
+> CTR_EL0.CWG (128 < 256)
+> [    0.032454] WARNING: CPU: 0 PID: 1 at arch/arm64/mm/dma-mapping.c:54
+> arch_setup_dma_ops+0xbc/0xcc
+> [    0.032470] Modules linked in:
+> [    0.032475] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.14.0-452.el9.aarch64
+> [    0.032481] Hardware name: linux,dummy-virt (DT)
+> [    0.032484] pstate: 60400005 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [    0.032490] pc : arch_setup_dma_ops+0xbc/0xcc
+> [    0.032496] lr : arch_setup_dma_ops+0xbc/0xcc
+> [    0.032501] sp : ffff80008003b860
+> [    0.032503] x29: ffff80008003b860 x28: 0000000000000000 x27: ffffaae4b949049c
+> [    0.032510] x26: 0000000000000000 x25: 0000000000000000 x24: 0000000000000000
+> [    0.032517] x23: 0000000000000100 x22: 0000000000000000 x21: 0000000000000000
+> [    0.032523] x20: 0000000100000000 x19: ffff2f06c02ea400 x18: ffffffffffffffff
+> [    0.032529] x17: 00000000208a5f76 x16: 000000006589dbcb x15: ffffaae4ba071c89
+> [    0.032535] x14: 0000000000000000 x13: ffffaae4ba071c84 x12: 455f525443206e61
+> [    0.032541] x11: 68742072656c6c61 x10: 0000000000000029 x9 : ffffaae4b7d21da4
+> [    0.032547] x8 : 0000000000000029 x7 : 4c414e494d5f414d x6 : 0000000000000029
+> [    0.032553] x5 : 000000000000000f x4 : ffffaae4b9617a00 x3 : 0000000000000001
+> [    0.032558] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff2f06c029be40
+> [    0.032564] Call trace:
+> [    0.032566]  arch_setup_dma_ops+0xbc/0xcc
+> [    0.032572]  of_dma_configure_id+0x138/0x300
+> [    0.032591]  amba_dma_configure+0x34/0xc0
+> [    0.032600]  really_probe+0x78/0x3dc
+> [    0.032614]  __driver_probe_device+0x108/0x160
+> [    0.032619]  driver_probe_device+0x44/0x114
+> [    0.032624]  __device_attach_driver+0xb8/0x14c
+> [    0.032629]  bus_for_each_drv+0x88/0xe4
+> [    0.032634]  __device_attach+0xb0/0x1e0
+> [    0.032638]  device_initial_probe+0x18/0x20
+> [    0.032643]  bus_probe_device+0xa8/0xb0
+> [    0.032648]  device_add+0x4b4/0x6c0
+> [    0.032652]  amba_device_try_add.part.0+0x48/0x360
+> [    0.032657]  amba_device_add+0x104/0x144
+> [    0.032662]  of_amba_device_create.isra.0+0x100/0x1c4
+> [    0.032666]  of_platform_bus_create+0x294/0x35c
+> [    0.032669]  of_platform_populate+0x5c/0x150
+> [    0.032672]  of_platform_default_populate_init+0xd0/0xec
+> [    0.032697]  do_one_initcall+0x4c/0x2e0
+> [    0.032701]  do_initcalls+0x100/0x13c
+> [    0.032707]  kernel_init_freeable+0x1c8/0x21c
+> [    0.032712]  kernel_init+0x28/0x140
+> [    0.032731]  ret_from_fork+0x10/0x20
+> [    0.032735] ---[ end trace 0000000000000000 ]---
+> 
+> In Linux, a check is applied to every device which is exposed through
+> device-tree node. The warning message is raised when the device isn't
+> DMA coherent and the cache line size is larger than ARCH_DMA_MINALIGN
+> (128 bytes). The cache line is sorted from CTR_EL0[CWG], which corresponds
+> to 256 bytes on the guest CPUs. The DMA coherent capability is claimed
+> through 'dma-coherent' in their device-tree nodes or parent nodes.
+> 
+> Fix the issue by adding 'dma-coherent' property to the device-tree root
+> node, meaning all devices are capable of DMA coherent by default.
+> 
+> Signed-off-by: Zhenyu Zhang <zhenyzha@redhat.com>
+Aligns with earlier discussion so...
 
-To enable WG in QEMU, pass "wg=on" as machine parameter to virt machine.
-It enables both WG CPU CSRs to apply WID of CPU and wgCheckers on
-the DRAM, FLASH, and UART to protect these resources.
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-This patchset contains 5 parts:
-
-1. Commit  1: Bugfix of IOMMUMemoryRegion
-2. Commit  2 ~ 3: Extend IOMMUMemoryRegion and MemTxAttr for WG support
-3. Commit  4 ~ 11: Add WG global device and CPU extensions
-4. Commit 12 ~ 15: Add WG checker device
-5. Commit 16: Add WG support to the virt machine
-
-Jim Shu (16):
-  accel/tcg: Store section pointer in CPUTLBEntryFull
-  accel/tcg: memory access from CPU will pass access_type to IOMMU
-  exec: Add RISC-V WorldGuard WID to MemTxAttrs
-  hw/misc: riscv_worldguard: Add RISC-V WorldGuard global config
-  target/riscv: Add CPU options of WorldGuard CPU extension
-  target/riscv: Add hard-coded CPU state of WG extension
-  target/riscv: Add defines for WorldGuard CSRs
-  target/riscv: Allow global WG config to set WG CPU callbacks
-  target/riscv: Implement WorldGuard CSRs
-  target/riscv: Add WID to MemTxAttrs of CPU memory transactions
-  hw/misc: riscv_worldguard: Add API to enable WG extension of CPU
-  hw/misc: riscv_wgchecker: Implement RISC-V WorldGuard Checker
-  hw/misc: riscv_wgchecker: Implement wgchecker slot registers
-  hw/misc: riscv_wgchecker: Implement correct block-access behavior
-  hw/misc: riscv_wgchecker: Check the slot settings in translate
-  hw/riscv: virt: Add WorldGuard support
-
- accel/tcg/cputlb.c                   |   34 +-
- docs/system/riscv/virt.rst           |   10 +
- hw/misc/Kconfig                      |    3 +
- hw/misc/meson.build                  |    1 +
- hw/misc/riscv_wgchecker.c            | 1161 ++++++++++++++++++++++++++
- hw/misc/riscv_worldguard.c           |  273 ++++++
- hw/misc/trace-events                 |    9 +
- hw/riscv/Kconfig                     |    1 +
- hw/riscv/virt.c                      |  163 +++-
- include/exec/exec-all.h              |   11 +-
- include/exec/memattrs.h              |    5 +
- include/hw/core/cpu.h                |    3 +
- include/hw/misc/riscv_worldguard.h   |  123 +++
- include/hw/riscv/virt.h              |   17 +-
- system/physmem.c                     |   16 +-
- target/alpha/helper.c                |    2 +-
- target/arm/tcg/tlb_helper.c          |    2 +-
- target/avr/helper.c                  |    2 +-
- target/cris/helper.c                 |    2 +-
- target/hppa/mem_helper.c             |    2 +-
- target/i386/tcg/sysemu/excp_helper.c |    3 +-
- target/loongarch/tcg/tlb_helper.c    |    2 +-
- target/m68k/helper.c                 |   10 +-
- target/microblaze/helper.c           |    8 +-
- target/mips/tcg/sysemu/tlb_helper.c  |    4 +-
- target/openrisc/mmu.c                |    2 +-
- target/ppc/mmu_helper.c              |    2 +-
- target/riscv/cpu.c                   |   16 +-
- target/riscv/cpu.h                   |   12 +
- target/riscv/cpu_bits.h              |    5 +
- target/riscv/cpu_cfg.h               |    5 +
- target/riscv/cpu_helper.c            |   69 +-
- target/riscv/csr.c                   |  107 +++
- target/riscv/tcg/tcg-cpu.c           |   11 +
- target/rx/cpu.c                      |    3 +-
- target/s390x/tcg/excp_helper.c       |    2 +-
- target/sh4/helper.c                  |    2 +-
- target/sparc/mmu_helper.c            |    6 +-
- target/tricore/helper.c              |    2 +-
- target/xtensa/helper.c               |    3 +-
- 40 files changed, 2054 insertions(+), 60 deletions(-)
- create mode 100644 hw/misc/riscv_wgchecker.c
- create mode 100644 hw/misc/riscv_worldguard.c
- create mode 100644 include/hw/misc/riscv_worldguard.h
-
--- 
-2.17.1
+> ---
+> v3: Add comments explaining why we add 'dma-coherent' property (Peter)
+> ---
+>  hw/arm/virt.c | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 3c93c0c0a6..3cefac6d43 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -271,6 +271,17 @@ static void create_fdt(VirtMachineState *vms)
+>      qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
+>      qemu_fdt_setprop_string(fdt, "/", "model", "linux,dummy-virt");
+>  
+> +    /*
+> +     * For QEMU, all DMA is coherent. Advertising this in the root node
+> +     * has two benefits:
+> +     *
+> +     * - It avoids potential bugs where we forget to mark a DMA
+> +     *   capable device as being dma-coherent
+> +     * - It avoids spurious warnings from the Linux kernel about
+> +     *   devices which can't do DMA at all
+> +     */
+> +    qemu_fdt_setprop(fdt, "/", "dma-coherent", NULL, 0);
+> +
+>      /* /chosen must exist for load_dtb to fill in necessary properties later */
+>      qemu_fdt_add_subnode(fdt, "/chosen");
+>      if (vms->dtb_randomness) {
 

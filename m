@@ -1,93 +1,125 @@
-Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp281304ejc;
-        Wed, 12 Jun 2024 02:54:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVdHTgpo1LQ4efYFCbgG2xYG7nyGugjg7av/gmsQm6+FRKNnXNvAq4Zayczmfz6YrOWTzKMjw3YLP7RbQVWRRdeFrRi/s6V
-X-Google-Smtp-Source: AGHT+IHm/tXJwftiQM4IVFcWhoSxj7CqgMESIpMfLu++PmyK88KwMz1eKwENUeuSO0RXBO+MkKVq
-X-Received: by 2002:ac8:5f47:0:b0:43a:bee9:ebc with SMTP id d75a77b69052e-44159afe813mr21531711cf.19.1718186065160;
-        Wed, 12 Jun 2024 02:54:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718186065; cv=none;
+Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp358620ejc;
+        Wed, 12 Jun 2024 05:34:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXcuF4DmSX7HDQsLc3fFCnoAruS+n2FLXo1kL2OOMzYAyrhSo0G8tN6n+wy/2vOS/r8tggwNDJumwkQQ/pVVoFUrmUpSD/I
+X-Google-Smtp-Source: AGHT+IHRQ98cYq6TJ+ZvU8OXhhJKbhdNaZKEzUOeSAfcCYDYUbUPpmh2xs+V8P5vZVOiTejYkshP
+X-Received: by 2002:a05:620a:190c:b0:795:b4ed:9bca with SMTP id af79cd13be357-797f619a4b5mr160680885a.63.1718195641747;
+        Wed, 12 Jun 2024 05:34:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718195641; cv=none;
         d=google.com; s=arc-20160816;
-        b=vReQSfJTLjAVNbSbW70fxdhzy6tcsTFvqABSecMHZY8nV/rQlmnTilPcTJtxwYrNeY
-         2z1g4KgqK9WXuiKvUQHn4fvmHeYs49zWEIL9MNF01gQl0V6AM/UgBx1FhUK6/nrzVLLt
-         jsftA4ZK6bOE6NjdEFYRreeIWqF9Pck/7nfjEejawIhByB/40nB5WTJCqXyQtB3s3lo1
-         N5ERLufxcacwJJ6j+WPCjbyRCnwbEtgOCdeQSVJbDaltOkhDYcIrSBKV/sxXQ8gr6l9/
-         dcMA0cn7uc5XvweExIWR7rTwmyxAtfv5ZbuZKp5PurbNwXNZLTWJhrx9OUfGgPbIPel9
-         TyXg==
+        b=R7y7RRTefCDI6fTZSDi5aw5F0cNo1m2UU/3dJGs7WyIDGMXKgBAvGFWqC3DGx46dZ6
+         ksKaF/obKL2I0eUdKsqhC+TB53/1bPFNKrF9tz38EFZdLwYHdBc/OJuCq/vV0lgrZNSe
+         nTcuKF7Vi7wtB2kTtkI912J3yq9QOu50oFfTA9WFft0oa4TJ7hscEV+G1WIWPhh4IAEZ
+         FPf57v0lWgUbqCtKh8f5gpzlX/Z7iOWo9lgUW5FNDxQWK1p8AC3lm6dpu9E5V/hc5pGV
+         CcjjPFM6deIFtpy8rabtBL7akaEQ1QOH2wSjrt71cq6RzJUXNdUBRI1OKK1UND/zvUKf
+         fT4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=gLMRpnKDKadwF/tUh2nZ+vLurezt77BKmiLqiwkS/yg=;
-        fh=pvtddvpBttEhgFAmD4FZqkRYXIsnyN0iFSsYRxfWif4=;
-        b=uKrE699kQSe6LkPPeOA0YZ4tVLV1i0xCC5Ij0CFbfL+o8hApuaj/FQQEIdpeiVmvbu
-         hwccEI2vGp0Ub57zmgYoZ3w+97wd75XQo7cIYOK77P9RCpAyP7eAky76NLqbZwXzvGFd
-         UT2rRTDgQe2N8FB32udVhM/4PwHv7rjgB+7/7+DPUgJSJ4/5nVzSAKO/XHzwp/YxRyLi
-         X7BCIkwVGU77thPM8edYT+wEdVIeUeUsuND7u+aeRJzHkFCeW6CMeUGCY6uYU3mLMpJB
-         jAxgtTwGpjHCacFe92If1w7nf9nuw8LiVt9jxKh35bCWyx70LYS7u2j0XSwNBZyT7pw5
-         JW7g==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=QEHScbmL4R3l7GYXJJElRuFgvpRPXJ+4HyME0GWSF7k=;
+        fh=iTHtc2qf4/gFX9SNtaqpGxu7tOBKFwGXGLI0t6Rq7aM=;
+        b=sMwRQ6apJ1j3GYDLpFeBzC0ZEkMnNm50fpNH25/AR8clcxyNOrWBkkCyQhO/yYWy+Y
+         CezFiGmS+Ar8tJ2+Jte83XnhFCXKsqKXsTgeqov62F9/HnPxCwTRHXG8JSdZ/s620rcB
+         ea4C2UBQmn9Fp/iKl2qMpb3eOcd4YxP+5dyHUS32dSD+6qk3WGlx1y+m7+tqTzMrmdWk
+         6UEXcIhQ2WQkochcKaaSSd2xd7eb02hDINcowyGG0eX7Ir55NjDGOyibI47hqMg/Wj8d
+         KDZ44Am9U8rF3RvfxhgKP97R0jTuifCnGWOeuHepno77FvIFYVR732KBAxD/78B4pO+T
+         psTA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=l2g6z8dp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44038b3c2bdsi153365961cf.467.2024.06.12.02.54.23
+        by mx.google.com with ESMTPS id d75a77b69052e-4416183cb53si4019181cf.431.2024.06.12.05.34.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jun 2024 02:54:25 -0700 (PDT)
+        Wed, 12 Jun 2024 05:34:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=l2g6z8dp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sHKg1-0001k2-CK; Wed, 12 Jun 2024 05:53:57 -0400
+	id 1sHNAU-000555-3N; Wed, 12 Jun 2024 08:33:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1sHKfz-0001jI-CK; Wed, 12 Jun 2024 05:53:55 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1sHKfw-0007JR-Tu; Wed, 12 Jun 2024 05:53:55 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4VzgnD6BDKz6K8xl;
- Wed, 12 Jun 2024 17:52:16 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id 084BC140B2F;
- Wed, 12 Jun 2024 17:53:38 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 12 Jun
- 2024 10:53:30 +0100
-Date: Wed, 12 Jun 2024 10:53:29 +0100
-To: Zhenyu Zhang <zhenyzha@redhat.com>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
- <peter.maydell@linaro.org>, <robin.murphy@arm.com>, <gshan@redhat.com>,
- <eauger@redhat.com>, <sebott@redhat.com>, <cohuck@redhat.com>,
- <ddutile@redhat.com>, <shahuang@redhat.com>
-Subject: Re: [PATCH v3] hw/arm/virt: Avoid unexpected warning from Linux
- guest on host with Fujitsu CPUs
-Message-ID: <20240612105329.00004607@Huawei.com>
-In-Reply-To: <20240612020506.307793-1-zhenyzha@redhat.com>
-References: <20240612020506.307793-1-zhenyzha@redhat.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sHNAS-00054k-Ik
+ for qemu-arm@nongnu.org; Wed, 12 Jun 2024 08:33:32 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sHNAQ-0002kB-Js
+ for qemu-arm@nongnu.org; Wed, 12 Jun 2024 08:33:32 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-35f2c9e23d3so576364f8f.0
+ for <qemu-arm@nongnu.org>; Wed, 12 Jun 2024 05:33:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1718195609; x=1718800409; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=QEHScbmL4R3l7GYXJJElRuFgvpRPXJ+4HyME0GWSF7k=;
+ b=l2g6z8dptuqjcYMo86woM3GouuHqLrUIBZaiVzqaSnWNAqfO3vmWeORP8Y9+vZERD1
+ lBcuxfQojoPi3RSXgQ3OEU79DqSJLh0JlF7L6XtTUdLkHTGP/VlO0tVdbZIWBpsLBa0i
+ 58sDIdLpnY1LMWj1KS88C3GyMVR2Ht92bpz+sC3fE/VdIdOZKDEDO89C+zMsrlAPReuO
+ 1tQBVkGajnLF8C5VLLSY4aBFdvQ4jSG2/ChOVPHnKcKi2qT5T+0yLX/xwQc/Tb+tIkFa
+ IAm8rhnIzP0tqgvugfWx7cAcKqeYwzeANBrlGE78VtLwK0QBbiqZD4/e5fhygkLHM/xf
+ rr4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718195609; x=1718800409;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=QEHScbmL4R3l7GYXJJElRuFgvpRPXJ+4HyME0GWSF7k=;
+ b=Rc3t1MdS9K2lqjN/PdK3e7m3tJPS10KrB10BjKQgUIQQGupB9MDXDzt9Y57d+B8ltK
+ qh92EcWEhoOgWnUvPsU6YJ+x2fVJ3V4wou8A7Dpntxsvy4/lZXiYfMcQVyEw+BC1yxSo
+ JrPz8Psi/+XjwFm9+AVqBpLdY9zrqtIsEIeovp2fpJ+v01TnRRmAFdzyPblLs7KAVXVd
+ 79ZCkhdqQgTEJHvdypJ/8vH92GVg3O1whjnidu7UwsvrT14ieO/3p8VDBUx7NeA42agk
+ iI/9J+HX0z+STCVTo2yv7Po+w1n9h0ihIbkB3pYxirYV+7/zpuip7N2XLyXOI8NTguMp
+ Qc/Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXMXXn+zaXon9Q3t1DbFJ/aPFtQ8n4TA/sQpihwfqSCDcBAgDHnTy1OiwPVFprc8xmXVshyw52CatAHdjbEONzabEk6
+X-Gm-Message-State: AOJu0YzYX57nSyxp9ILIsseTIbIlh2j5wP3ZsnyK9s1vPkjlBvN7Iw7P
+ I3P2JUzVh5jVezHCAfTAzhyRbWrBryhzskQTnikpO+u+qp1GBJIFZ4C3b+g/xIU=
+X-Received: by 2002:a5d:598f:0:b0:360:6e58:c41c with SMTP id
+ ffacd0b85a97d-3606e58c4a8mr1589917f8f.6.1718195608805; 
+ Wed, 12 Jun 2024 05:33:28 -0700 (PDT)
+Received: from [192.168.69.100] (ram94-h02-176-184-0-172.dsl.sta.abo.bbox.fr.
+ [176.184.0.172]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-35f23a00997sm8485204f8f.0.2024.06.12.05.33.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 12 Jun 2024 05:33:28 -0700 (PDT)
+Message-ID: <69649622-e52c-4d24-809b-3d8a97786a69@linaro.org>
+Date: Wed, 12 Jun 2024 14:33:25 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] hw/arm/virt: Avoid unexpected warning from Linux guest
+ on host with Fujitsu CPUs
+To: Zhenyu Zhang <zhenyzha@redhat.com>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, robin.murphy@arm.com,
+ Jonathan.Cameron@huawei.com, gshan@redhat.com, eauger@redhat.com,
+ sebott@redhat.com, cohuck@redhat.com, ddutile@redhat.com,
+ shahuang@redhat.com, qemu-riscv <qemu-riscv@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Song Gao <gaosong@loongson.cn>,
+ qemu-arm <qemu-arm@nongnu.org>
+References: <20240612020506.307793-1-zhenyzha@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240612020506.307793-1-zhenyzha@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,15 +132,13 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: W5553bsB0hR+
+X-TUID: RxJ9YiQAuEV2
 
-On Tue, 11 Jun 2024 22:05:06 -0400
-Zhenyu Zhang <zhenyzha@redhat.com> wrote:
+Hi Zhenyu,
 
+On 12/6/24 04:05, Zhenyu Zhang wrote:
 > Multiple warning messages and corresponding backtraces are observed when Linux
 > guest is booted on the host with Fujitsu CPUs. One of them is shown as below.
 > 
@@ -171,24 +201,20 @@ Zhenyu Zhang <zhenyzha@redhat.com> wrote:
 > node, meaning all devices are capable of DMA coherent by default.
 > 
 > Signed-off-by: Zhenyu Zhang <zhenyzha@redhat.com>
-Aligns with earlier discussion so...
-
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
 > ---
 > v3: Add comments explaining why we add 'dma-coherent' property (Peter)
 > ---
->  hw/arm/virt.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
+>   hw/arm/virt.c | 11 +++++++++++
+>   1 file changed, 11 insertions(+)
 > 
 > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
 > index 3c93c0c0a6..3cefac6d43 100644
 > --- a/hw/arm/virt.c
 > +++ b/hw/arm/virt.c
 > @@ -271,6 +271,17 @@ static void create_fdt(VirtMachineState *vms)
->      qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
->      qemu_fdt_setprop_string(fdt, "/", "model", "linux,dummy-virt");
->  
+>       qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
+>       qemu_fdt_setprop_string(fdt, "/", "model", "linux,dummy-virt");
+>   
 > +    /*
 > +     * For QEMU, all DMA is coherent. Advertising this in the root node
 > +     * has two benefits:
@@ -199,8 +225,12 @@ Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 > +     *   devices which can't do DMA at all
 > +     */
 > +    qemu_fdt_setprop(fdt, "/", "dma-coherent", NULL, 0);
-> +
->      /* /chosen must exist for load_dtb to fill in necessary properties later */
->      qemu_fdt_add_subnode(fdt, "/chosen");
->      if (vms->dtb_randomness) {
+
+OK, but why restrict that to the Aarch64 virt machine?
+Shouldn't advertise this generically in create_device_tree()?
+Or otherwise at least in the other virt machines?
+
+>       /* /chosen must exist for load_dtb to fill in necessary properties later */
+>       qemu_fdt_add_subnode(fdt, "/chosen");
+>       if (vms->dtb_randomness) {
 

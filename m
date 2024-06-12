@@ -1,137 +1,116 @@
-Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp243330ejc;
-        Wed, 12 Jun 2024 01:18:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWyrGzIEBadZ/W7fZcuVzTEpDL3trVJ90ZeLiX3qLhq50z5zRKC+7h/eNcnzL/OSU/oLq0OVf8ApmMClAzTKxlXwq5CBzvz
-X-Google-Smtp-Source: AGHT+IFP4AJASqXEL/hyz738ruQY8uEuuAU6w09jk7jQ6kRK0FHON2FdaD1/VLJYpe4QcaM2yqVu
-X-Received: by 2002:a05:620a:2729:b0:794:afc6:94b0 with SMTP id af79cd13be357-797f606a7f5mr102394885a.42.1718180292863;
-        Wed, 12 Jun 2024 01:18:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718180292; cv=none;
+Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp353475ejc;
+        Wed, 12 Jun 2024 05:23:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV+tJUlDbYGdamsEPygCeeU5vilzWk0GpT4qtdhYCtMqyHHkyZPom3E3kIzLq0jAQz3QfHVu2D8yFiWn5uYnTqOMT/QPHTH
+X-Google-Smtp-Source: AGHT+IFZFB1r/oW6C5Hb1FJMLpMvXL2cubfbS3o8mcM30n1RKiRZyqEnSiuWwJoAykJoxqLz98FX
+X-Received: by 2002:ac8:7f10:0:b0:43f:f238:f7bd with SMTP id d75a77b69052e-4415ac2fd8fmr20279241cf.18.1718195031585;
+        Wed, 12 Jun 2024 05:23:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718195031; cv=none;
         d=google.com; s=arc-20160816;
-        b=L3h8LdoFVFaLZKPQJ/5l/bt/oNTJym8B/2e+CgILMm23ma6x0rOXP3fvs3vyr1y+I/
-         otXZsVEzPNdclbf8UGMh922be965aPMenhSxh41M/xkCnGS3+Q+pPHWr9m/iJyYMe5dT
-         LdySJ3KtYM5gh7YYVzjrxdCwoEvlBKNfPgQFIBiRctA/T6xJwIGBeWD/+TltCLEH/Sui
-         vyWi/lgDBtLj9LzHKGUtmhKyQVKmH/Aaea+dmWzU7J0aL2YGnPh9hGxc/EPOF43lDUKq
-         1VGwzf4Ljo91UuGSyM3JNkcbNPjkic5pPEOnV5D1mF+5g80jbppkD9n0nhgMkY/vWVMb
-         Pepw==
+        b=0DjQYxDgrtyrpWi6itAa8xdW91xlu30kxWLQjcXZupAIlimL3NW1runqx1F3KQJGVZ
+         2HD1UrPqQ9Ih0rQbuC1PwTFXjvWpMHfJ4wkLjaCBOwj4SBV04dOoYF4aX0rFEwX4Vd1b
+         leR1hApuIAv26gN4e91tha45he7ygWnhO35LR6QrKt+b+8QVeBb62PqCw/TsVmOszkLi
+         KxodMvVECtkwYNKpBQC/XL23KWfuDf88cjO/QO7d0xJpF6UhqP0iou2acjzte+UMS6RG
+         SnFaHzapgn1bI+N+ndRSYtGOmnwuo+6fnllwI/nLdwTzSa4DPB19ozTnuMibH4NpIKCy
+         u7hQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=7Zs56IfQW4V8sqUEW1KobOHNpim94d18CajV+uj3sek=;
-        fh=TDBzvxSfdE6oPbnRjgmpeHbbsHtVpAEN4utndjBnqmU=;
-        b=bqPVOkjn5jPyZ5OVzkKx3nihYPEdFxBeGZPL5oDdiD1hFTuuzNx+RhgVxaO3Qo0PJi
-         DOZYn2WEVZljcAE7xcHvWMDNa+crgm26bMhcMn0AxWOlTPjuiMGPtoshlhAEfVGMievW
-         SWqKBNyXjXCvl+9Y6TBp9qnJSWtoMyr8Yey+BvhWEZ1EP5yUbFbJSTM1s3jEBWVSryJt
-         zCIScztlhA36q3N33GpQ6vrwF//PXwRBjkM2Qg7dhVb/N80xfBuh6hPFFJRCBAVkrvG7
-         c4aECmOm9b25ph4SsP1fbDbWTRZhciDSKgn05iQwPBjHFkaJzuqZc5D3orKTk6tH1B8B
-         xdRA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Acf3Mx7S45LMuhHwPGLrXU1u+Mid4/Y1POR7Yi8ngPU=;
+        fh=VlzBMz3j98jbA9QgBr8Soj9vmGEUofBpvztzy7HQy48=;
+        b=ViGCsZZX7YrMEha9sjZqpd53d9sGckOv8q1TQtmOwKCpkx+S2OkZoSrXJmBrM4f/xo
+         GwdYJs3Lse8VQWCL+rr2Ojjl1dSH77qrhGX68qQpvt9+UOvKxfXHOkJJ4iHP72MpICEu
+         Tf2++UtqzPv5rtrwDDkjBrIrqpCCLsKjcYRrTGSyTl9P9ubbk+buAQR0Oa9xDLAQZdJz
+         f2yQl4JxrKfgmGATcTXL33bNc7qKMXZrbnnSX2Fmi5U7v2qW0LSIYR6dI9uEqqKHo+4A
+         AYkQJvOG4b4ujec0Boh9NfPPpYN5ZlI6bAU9aya4Ddww+GbtHssG+AJmDslrXEVSgaTC
+         9HIQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=iU64JaUX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F6tsDgBB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-795332feb9fsi1571441285a.493.2024.06.12.01.18.12
+        by mx.google.com with ESMTPS id d75a77b69052e-44151a5e359si36399241cf.93.2024.06.12.05.23.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jun 2024 01:18:12 -0700 (PDT)
+        Wed, 12 Jun 2024 05:23:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=iU64JaUX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F6tsDgBB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sHJ9V-0005nL-Fg; Wed, 12 Jun 2024 04:16:17 -0400
+	id 1sHN0c-0000fi-P0; Wed, 12 Jun 2024 08:23:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sHJ9U-0005eA-4i
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:16:16 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sHN0a-0000eX-Vz
+ for qemu-devel@nongnu.org; Wed, 12 Jun 2024 08:23:21 -0400
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sHJ9P-0006qm-Ar
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:16:15 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-1f70131063cso16961535ad.2
- for <qemu-devel@nongnu.org>; Wed, 12 Jun 2024 01:16:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sHN0W-00011Y-07
+ for qemu-devel@nongnu.org; Wed, 12 Jun 2024 08:23:20 -0400
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-52bc335e49aso2911219e87.3
+ for <qemu-devel@nongnu.org>; Wed, 12 Jun 2024 05:23:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1718180169; x=1718784969; darn=nongnu.org;
- h=references:in-reply-to:message-id:date:subject:cc:to:from:from:to
- :cc:subject:date:message-id:reply-to;
- bh=7Zs56IfQW4V8sqUEW1KobOHNpim94d18CajV+uj3sek=;
- b=iU64JaUXOpMTAeRp3dYWTrEaWAPX9MxC/5KwT9aQFYKYeUyR0x9FjvYhH+N/tbXcFC
- KJjBHzIR8c1YGSDbrVsx/zobqZhoVQQdkWfNYAiRkxeZRwqALZduk4GESaQM5BkCVwd8
- nkXzO567aml6DK9B3ABS8i+wRtjRD6gs1NO/GORqfwPwKDwifwvy17MBwPPFnDt4E7P/
- FyZ2RvmTSLnm2QS1y9ncXoQJAGxX67IutFKATEP6Xoi3+Gc1Fhd7U2RDsp8IHcjbIE5H
- kWq5LFIaor+lHNJTQbHqobHWXIIrGf01HhmLR4jFeb94WdzrKLOLjmqn1zHIpn4q+Hu1
- wbFQ==
+ d=linaro.org; s=google; t=1718194993; x=1718799793; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Acf3Mx7S45LMuhHwPGLrXU1u+Mid4/Y1POR7Yi8ngPU=;
+ b=F6tsDgBBqZPDff/Ky918vcwgb2GVeensncUUXzEF54DMCXo0+8YqQkberDD65Q2AUX
+ t3kLYx3LN7yr+aBDmYcdzFQYrb3oKDjW8fvDpVRFVJe9RvR9dKNtHz6EQ0AdgRDmCBEf
+ 4Jlav2YIJ5h9wv0nmnGywF7Szwvv9ldyB9TyZpXSSd7gakhntUbVDowAqxPVMQhqGmtd
+ EJ2FZ6HqknPHvDzAAxvU15GtR8t1Occvpdd34vOi9JmfK9SaBq4NypNFi1suOWUixVDT
+ SkP/ilbHRtfMhqLmfbunR2coJb96jKsvj0IC1XtoWCcSlQxshk7kTbYUZHhT9y7IwrhV
+ /yZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718180169; x=1718784969;
- h=references:in-reply-to:message-id:date:subject:cc:to:from
+ d=1e100.net; s=20230601; t=1718194993; x=1718799793;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7Zs56IfQW4V8sqUEW1KobOHNpim94d18CajV+uj3sek=;
- b=JczqtIUIrvhsjqDR4L7u5r0MXPDh0HzK+ciiGflFMIDa2mKmWYwUpI/InwhJZFnqnU
- EO3zMZ7OZRolCbdV0xr+pA2liVmJF/Wy8MgRNxeXc8jPJCmwhqtW+euOPpaaH1j5tFpW
- UvWhU0QPOT+lxFan2XjLw7QiFxJjYgcDSiWHEH9GHR9TVPT9zgtEJpka1pWlZDq1utwB
- yxEAx+YgjwEka1zV6TohxmXdJEy+AEOYgc/i0NdtzInuFn20HoRwYLvTEuCYz10Dwnke
- uofXaBFxXmTFYL+FoXghT3MNIABRWV5cRYd0UET6IDqPfd6h/brFInw28WoGvqQkbwRQ
- rgWQ==
-X-Gm-Message-State: AOJu0Ywqb0qA/zecvr1Z4/bqC0Odq6Do3smg5LZK4zUnxbs6Tf1LKkKh
- xY0wQhddn6AnKr1pfBIDv1jpsjbbNutnUkieQtynd3WnwFpyY6kmAIvE+fv+MNgSMwtF04inuKT
- US69mz02fnDXi6zaX2ZKe2rCWk1bqDGn72bKojrmBgPX1uCU8vlXjiHWq2JU769dYPcdoaJa4kp
- PkpF+Ml4FtnY6P3J0jGzgQxMDWECmLAGTd/LuFUKNirw==
-X-Received: by 2002:a17:903:2283:b0:1f7:187f:cb5a with SMTP id
- d9443c01a7336-1f83b565eb1mr12729405ad.11.1718180168578; 
- Wed, 12 Jun 2024 01:16:08 -0700 (PDT)
-Received: from hsinchu26.internal.sifive.com
- (59-124-168-89.hinet-ip.hinet.net. [59.124.168.89])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f8393e8e53sm11363875ad.16.2024.06.12.01.16.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Jun 2024 01:16:08 -0700 (PDT)
-From: Jim Shu <jim.shu@sifive.com>
-To: qemu-devel@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Song Gao <gaosong@loongson.cn>, Laurent Vivier <laurent@vivier.eu>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>, Stafford Horne <shorne@gmail.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Max Filippov <jcmvbkbc@gmail.com>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs),
- qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
- qemu-s390x@nongnu.org (open list:S390 TCG CPUs),
- Jim Shu <jim.shu@sifive.com>
-Subject: [RFC PATCH 16/16] hw/riscv: virt: Add WorldGuard support
-Date: Wed, 12 Jun 2024 16:14:16 +0800
-Message-Id: <20240612081416.29704-17-jim.shu@sifive.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20240612081416.29704-1-jim.shu@sifive.com>
-References: <20240612081416.29704-1-jim.shu@sifive.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=jim.shu@sifive.com; helo=mail-pl1-x630.google.com
+ bh=Acf3Mx7S45LMuhHwPGLrXU1u+Mid4/Y1POR7Yi8ngPU=;
+ b=pqrZRFw5PI4qitnpoa6UrLeVeHjijHioloYttSAPdcph3AH+xzjbPzxhyc7xnE30NT
+ kinynHicoUvro05uEd1tCvJf/KOSMJupjwv5PDLY6Wzu+4cPNOGw4d1wgJGcHVHys+UI
+ d5GYwTZVUGUu5IPaqZ1e2WJCeWDLGr8f9dVFWrgZpbJTDTREtR5zIokmaPDqYfZFWgPs
+ jIgCQawOhqjtGAqJYdTVNReBuAK+aCC2gO9CILCuxA1Z6gCwUgqcuaj30VrJLL6sfM5T
+ RP4U3sJnmLPjjnj2PcaIX+xZrDYrDYBYscpPCKujR3doLCDrndiSX8zJlcO67cCrO070
+ 1tFQ==
+X-Gm-Message-State: AOJu0Yy0n6EVVYkmCkCL3kHk4DAYeZz/PYoiT6mZI4RBUHcWw0RVlOWk
+ 4Dr+NJ2fGeaKxyhWGhmhtf9MWgrctsA/gH2k9lVanVtTUZOULy+ee41z1HeKlPpZ+toZP7+6cTg
+ h
+X-Received: by 2002:ac2:53a2:0:b0:52b:c1d5:949d with SMTP id
+ 2adb3069b0e04-52c9a3fdec7mr988649e87.54.1718194992912; 
+ Wed, 12 Jun 2024 05:23:12 -0700 (PDT)
+Received: from [192.168.69.100] (ram94-h02-176-184-0-172.dsl.sta.abo.bbox.fr.
+ [176.184.0.172]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-422874e73e8sm25796105e9.43.2024.06.12.05.23.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 12 Jun 2024 05:23:12 -0700 (PDT)
+Message-ID: <18739a67-84bb-4fd3-adb6-0db0f0eb7af1@linaro.org>
+Date: Wed, 12 Jun 2024 14:23:09 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v2 21/22] qapi: Inline and remove QERR_UNSUPPORTED
+ definition
+To: Konstantin Kostiuk <kkostiuk@redhat.com>,
+ Michael Roth <michael.roth@amd.com>
+Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
+ qemu-s390x@nongnu.org
+References: <20231005045041.52649-1-philmd@linaro.org>
+ <20231005045041.52649-22-philmd@linaro.org> <87mswx5n63.fsf@pond.sub.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <87mswx5n63.fsf@pond.sub.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -153,370 +132,487 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EI9iuv6wCQ2y
+X-TUID: OAWNkjU3lN/8
 
-* Add 'wg=on' option to enable RISC-V WorldGuard
-* Add wgChecker to protect several resources:
-  DRAM, FLASH, UART.
+Michael, Konstantin, QERR_UNSUPPORTED is only used by QGA.
 
-Signed-off-by: Jim Shu <jim.shu@sifive.com>
----
- docs/system/riscv/virt.rst |  10 +++
- hw/riscv/Kconfig           |   1 +
- hw/riscv/virt.c            | 163 ++++++++++++++++++++++++++++++++++++-
- include/hw/riscv/virt.h    |  17 +++-
- 4 files changed, 186 insertions(+), 5 deletions(-)
+Do you mind giving our maintainer's position on Markus
+analysis so we can know how to proceed with this definition?
 
-diff --git a/docs/system/riscv/virt.rst b/docs/system/riscv/virt.rst
-index 9a06f95a34..2d2992dc34 100644
---- a/docs/system/riscv/virt.rst
-+++ b/docs/system/riscv/virt.rst
-@@ -116,6 +116,16 @@ The following machine-specific options are supported:
-   having AIA IMSIC (i.e. "aia=aplic-imsic" selected). When not specified,
-   the default number of per-HART VS-level AIA IMSIC pages is 0.
- 
-+- wg=[on|off]
-+
-+  When this option is "on", RISC-V WorldGuard will be enabled in the system
-+  to provide the isolation of multiple worlds. RISC-V HARTS will enable WG
-+  extensions to have WID in memory transaction. wgCheckers in front of RAMs
-+  and device MMIO will be enabled to provide the access control of resources
-+  if the transaction contains WID. When not specified, this option is assumed
-+  to be "off".
-+  This option is restricted to the TCG accelerator.
-+
- Running Linux kernel
- --------------------
- 
-diff --git a/hw/riscv/Kconfig b/hw/riscv/Kconfig
-index a2030e3a6f..7804fdbb7a 100644
---- a/hw/riscv/Kconfig
-+++ b/hw/riscv/Kconfig
-@@ -56,6 +56,7 @@ config RISCV_VIRT
-     select PLATFORM_BUS
-     select ACPI
-     select ACPI_PCI
-+    select RISCV_WORLDGUARD
- 
- config SHAKTI_C
-     bool
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index 4fdb660525..eed49ebd02 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -55,6 +55,7 @@
- #include "hw/acpi/aml-build.h"
- #include "qapi/qapi-visit-common.h"
- #include "hw/virtio/virtio-iommu.h"
-+#include "hw/misc/riscv_worldguard.h"
- 
- /* KVM AIA only supports APLIC MSI. APLIC Wired is always emulated by QEMU. */
- static bool virt_use_kvm_aia(RISCVVirtState *s)
-@@ -76,6 +77,9 @@ static const MemMapEntry virt_memmap[] = {
-     [VIRT_ACLINT_SSWI] =  {  0x2F00000,        0x4000 },
-     [VIRT_PCIE_PIO] =     {  0x3000000,       0x10000 },
-     [VIRT_PLATFORM_BUS] = {  0x4000000,     0x2000000 },
-+    [VIRT_WGC_DRAM] =     {  0x6000000,        0x1000 },
-+    [VIRT_WGC_FLASH] =    {  0x6001000,        0x1000 },
-+    [VIRT_WGC_UART] =     {  0x6002000,        0x1000 },
-     [VIRT_PLIC] =         {  0xc000000, VIRT_PLIC_SIZE(VIRT_CPUS_MAX * 2) },
-     [VIRT_APLIC_M] =      {  0xc000000, APLIC_SIZE(VIRT_CPUS_MAX) },
-     [VIRT_APLIC_S] =      {  0xd000000, APLIC_SIZE(VIRT_CPUS_MAX) },
-@@ -101,6 +105,38 @@ static MemMapEntry virt_high_pcie_memmap;
- 
- #define VIRT_FLASH_SECTOR_SIZE (256 * KiB)
- 
-+/* wgChecker helpers */
-+typedef struct WGCInfo {
-+    int memmap_idx;
-+    uint32_t irq_num;
-+    uint32_t slot_count;
-+
-+    int num_of_child;
-+    MemoryRegion *c_region[WGC_NUM_REGIONS];
-+    uint64_t c_offset[WGC_NUM_REGIONS];
-+} WGCInfo;
-+
-+enum {
-+    WGC_DRAM,
-+    WGC_FLASH,
-+    WGC_UART,
-+    WGC_NUM,
-+};
-+
-+static WGCInfo virt_wgcinfo[] = {
-+    [WGC_DRAM]  = { VIRT_WGC_DRAM, WGC_DRAM_IRQ, 16 },
-+    [WGC_FLASH] = { VIRT_WGC_FLASH, WGC_FLASH_IRQ, 16 },
-+    [WGC_UART]  = { VIRT_WGC_UART, WGC_UART_IRQ, 1 },
-+};
-+
-+static void wgc_append_child(WGCInfo *info, MemoryRegion *region,
-+                             uint64_t offset)
-+{
-+    info->c_region[info->num_of_child] = region;
-+    info->c_offset[info->num_of_child] = offset;
-+    info->num_of_child += 1;
-+}
-+
- static PFlashCFI01 *virt_flash_create1(RISCVVirtState *s,
-                                        const char *name,
-                                        const char *alias_prop_name)
-@@ -151,7 +187,8 @@ static void virt_flash_map1(PFlashCFI01 *flash,
- }
- 
- static void virt_flash_map(RISCVVirtState *s,
--                           MemoryRegion *sysmem)
-+                           MemoryRegion *sysmem,
-+                           WGCInfo *info)
- {
-     hwaddr flashsize = virt_memmap[VIRT_FLASH].size / 2;
-     hwaddr flashbase = virt_memmap[VIRT_FLASH].base;
-@@ -160,6 +197,15 @@ static void virt_flash_map(RISCVVirtState *s,
-                     sysmem);
-     virt_flash_map1(s->flash[1], flashbase + flashsize, flashsize,
-                     sysmem);
-+
-+    if (info) {
-+        wgc_append_child(info,
-+                         sysbus_mmio_get_region(SYS_BUS_DEVICE(s->flash[0]), 0),
-+                         flashbase);
-+        wgc_append_child(info,
-+                         sysbus_mmio_get_region(SYS_BUS_DEVICE(s->flash[1]), 0),
-+                         flashbase + flashsize);
-+    }
- }
- 
- static void create_pcie_irq_map(RISCVVirtState *s, void *fdt, char *nodename,
-@@ -1303,6 +1349,71 @@ static void virt_build_smbios(RISCVVirtState *s)
-     }
- }
- 
-+static DeviceState *create_wgc(WGCInfo *info, DeviceState *irqchip)
-+{
-+    MemoryRegion *system_memory = get_system_memory();
-+    DeviceState *wgc;
-+    MemoryRegion *upstream_mr, *downstream_mr;
-+    qemu_irq irq = qdev_get_gpio_in(irqchip, info->irq_num);
-+    hwaddr base, size;
-+
-+    /* Unmap downstream_mr from system_memory if it is already mapped. */
-+    for (int i=0; i<info->num_of_child; i++) {
-+        downstream_mr = info->c_region[i];
-+
-+        g_assert(downstream_mr);
-+        if (downstream_mr->container == system_memory) {
-+            memory_region_del_subregion(system_memory, downstream_mr);
-+        }
-+
-+        /*
-+         * Clear the offset of downstream_mr, so we could correctly do
-+         * address_space_init() to it in wgchecker.
-+         */
-+        memory_region_set_address(downstream_mr, 0);
-+    }
-+
-+    base = virt_memmap[info->memmap_idx].base;
-+    size = virt_memmap[info->memmap_idx].size;
-+
-+    wgc = riscv_wgchecker_create(
-+        base, size, irq, info->slot_count, 0, 0,
-+        info->num_of_child, info->c_region, info->c_offset, 0, NULL);
-+
-+    /* Map upstream_mr to system_memory */
-+    for (int i=0; i<info->num_of_child; i++) {
-+        upstream_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(wgc), i+1);
-+        g_assert(upstream_mr);
-+        memory_region_add_subregion(system_memory, info->c_offset[i], upstream_mr);
-+    }
-+
-+    return wgc;
-+}
-+
-+static void virt_create_worldguard(WGCInfo *wgcinfo, int wgc_num,
-+                                   DeviceState *irqchip)
-+{
-+    CPUState *cpu;
-+
-+    /* Global WG config */
-+    riscv_worldguard_create(VIRT_WG_NWORLDS,
-+                            VIRT_WG_TRUSTEDWID,
-+                            VIRT_WG_HWBYPASS,
-+                            VIRT_WG_TZCOMPAT);
-+
-+    /* Enable WG extension of each CPU */
-+    CPU_FOREACH(cpu) {
-+        CPURISCVState *env = cpu ? cpu_env(cpu) : NULL;
-+
-+        riscv_worldguard_apply_cpu(env->mhartid);
-+    }
-+
-+    /* Create all wgChecker devices */
-+    for (int i=0; i<wgc_num; i++) {
-+        create_wgc(&wgcinfo[i], DEVICE(irqchip));
-+    }
-+}
-+
- static void virt_machine_done(Notifier *notifier, void *data)
- {
-     RISCVVirtState *s = container_of(notifier, RISCVVirtState,
-@@ -1401,10 +1512,12 @@ static void virt_machine_done(Notifier *notifier, void *data)
- static void virt_machine_init(MachineState *machine)
- {
-     const MemMapEntry *memmap = virt_memmap;
-+    WGCInfo *wgcinfo = virt_wgcinfo;
-     RISCVVirtState *s = RISCV_VIRT_MACHINE(machine);
-     MemoryRegion *system_memory = get_system_memory();
-     MemoryRegion *mask_rom = g_new(MemoryRegion, 1);
-     DeviceState *mmio_irqchip, *virtio_irqchip, *pcie_irqchip;
-+    SerialMM *uart;
-     int i, base_hartid, hart_count;
-     int socket_count = riscv_socket_count(machine);
- 
-@@ -1420,6 +1533,11 @@ static void virt_machine_init(MachineState *machine)
-         exit(1);
-     }
- 
-+    if (!tcg_enabled() && s->have_wg) {
-+        error_report("'wg' is only available with TCG acceleration");
-+        exit(1);
-+    }
-+
-     /* Initialize sockets */
-     mmio_irqchip = virtio_irqchip = pcie_irqchip = NULL;
-     for (i = 0; i < socket_count; i++) {
-@@ -1547,6 +1665,10 @@ static void virt_machine_init(MachineState *machine)
-     memory_region_add_subregion(system_memory, memmap[VIRT_DRAM].base,
-         machine->ram);
- 
-+    if (tcg_enabled() && s->have_wg) {
-+        wgc_append_child(&wgcinfo[WGC_DRAM], machine->ram, memmap[VIRT_DRAM].base);
-+    }
-+
-     /* boot rom */
-     memory_region_init_rom(mask_rom, NULL, "riscv_virt_board.mrom",
-                            memmap[VIRT_MROM].size, &error_fatal);
-@@ -1574,10 +1696,16 @@ static void virt_machine_init(MachineState *machine)
- 
-     create_platform_bus(s, mmio_irqchip);
- 
--    serial_mm_init(system_memory, memmap[VIRT_UART0].base,
-+    uart = serial_mm_init(system_memory, memmap[VIRT_UART0].base,
-         0, qdev_get_gpio_in(mmio_irqchip, UART0_IRQ), 399193,
-         serial_hd(0), DEVICE_LITTLE_ENDIAN);
- 
-+    if (tcg_enabled() && s->have_wg) {
-+        wgc_append_child(&wgcinfo[WGC_UART],
-+                         sysbus_mmio_get_region(SYS_BUS_DEVICE(uart), 0),
-+                         memmap[VIRT_UART0].base);
-+    }
-+
-     sysbus_create_simple("goldfish_rtc", memmap[VIRT_RTC].base,
-         qdev_get_gpio_in(mmio_irqchip, RTC_IRQ));
- 
-@@ -1586,7 +1714,16 @@ static void virt_machine_init(MachineState *machine)
-         pflash_cfi01_legacy_drive(s->flash[i],
-                                   drive_get(IF_PFLASH, 0, i));
-     }
--    virt_flash_map(s, system_memory);
-+
-+    if (tcg_enabled() && s->have_wg) {
-+        virt_flash_map(s, system_memory, &wgcinfo[WGC_FLASH]);
-+    } else {
-+        virt_flash_map(s, system_memory, NULL);
-+    }
-+
-+    if (tcg_enabled() && s->have_wg) {
-+        virt_create_worldguard(wgcinfo, WGC_NUM, mmio_irqchip);
-+    }
- 
-     /* load/create device tree */
-     if (machine->dtb) {
-@@ -1614,6 +1751,20 @@ static void virt_machine_instance_init(Object *obj)
-     s->acpi = ON_OFF_AUTO_AUTO;
- }
- 
-+static bool virt_get_wg(Object *obj, Error **errp)
-+{
-+    RISCVVirtState *s = RISCV_VIRT_MACHINE(obj);
-+
-+    return s->have_wg;
-+}
-+
-+static void virt_set_wg(Object *obj, bool value, Error **errp)
-+{
-+    RISCVVirtState *s = RISCV_VIRT_MACHINE(obj);
-+
-+    s->have_wg = value;
-+}
-+
- static char *virt_get_aia_guests(Object *obj, Error **errp)
- {
-     RISCVVirtState *s = RISCV_VIRT_MACHINE(obj);
-@@ -1794,6 +1945,12 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-                               NULL, NULL);
-     object_class_property_set_description(oc, "acpi",
-                                           "Enable ACPI");
-+
-+    object_class_property_add_bool(oc, "wg", virt_get_wg,
-+                                   virt_set_wg);
-+    object_class_property_set_description(oc, "wg",
-+                                              "Set on/off to enable/disable the "
-+                                              "RISC-V WorldGuard.");
- }
- 
- static const TypeInfo virt_machine_typeinfo = {
-diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
-index 3db839160f..4d78702daf 100644
---- a/include/hw/riscv/virt.h
-+++ b/include/hw/riscv/virt.h
-@@ -57,6 +57,7 @@ struct RISCVVirtState {
-     bool have_aclint;
-     RISCVVirtAIAType aia_type;
-     int aia_guests;
-+    bool have_wg;
-     char *oem_id;
-     char *oem_table_id;
-     OnOffAuto acpi;
-@@ -84,12 +85,18 @@ enum {
-     VIRT_PCIE_MMIO,
-     VIRT_PCIE_PIO,
-     VIRT_PLATFORM_BUS,
--    VIRT_PCIE_ECAM
-+    VIRT_PCIE_ECAM,
-+    VIRT_WGC_DRAM,
-+    VIRT_WGC_FLASH,
-+    VIRT_WGC_UART
- };
- 
- enum {
-     UART0_IRQ = 10,
-     RTC_IRQ = 11,
-+    WGC_DRAM_IRQ = 15,
-+    WGC_FLASH_IRQ = 16,
-+    WGC_UART_IRQ = 17,
-     VIRTIO_IRQ = 1, /* 1 to 8 */
-     VIRTIO_COUNT = 8,
-     PCIE_IRQ = 0x20, /* 32 to 35 */
-@@ -99,7 +106,7 @@ enum {
- #define VIRT_PLATFORM_BUS_NUM_IRQS 32
- 
- #define VIRT_IRQCHIP_NUM_MSIS 255
--#define VIRT_IRQCHIP_NUM_SOURCES 96
-+#define VIRT_IRQCHIP_NUM_SOURCES 128
- #define VIRT_IRQCHIP_NUM_PRIO_BITS 3
- #define VIRT_IRQCHIP_MAX_GUESTS_BITS 3
- #define VIRT_IRQCHIP_MAX_GUESTS ((1U << VIRT_IRQCHIP_MAX_GUESTS_BITS) - 1U)
-@@ -153,4 +160,10 @@ uint32_t imsic_num_bits(uint32_t count);
- #error "Can't accommodate all IMSIC groups in address space"
- #endif
- 
-+/* WorldGuard */
-+#define VIRT_WG_NWORLDS         4
-+#define VIRT_WG_TRUSTEDWID      3
-+#define VIRT_WG_HWBYPASS        true
-+#define VIRT_WG_TZCOMPAT        false
-+
- #endif
--- 
-2.17.1
+Regards,
+
+Phil.
+
+On 5/10/23 13:22, Markus Armbruster wrote:
+> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+> 
+>> Address the comment added in commit 4629ed1e98
+>> ("qerror: Finally unused, clean up"), from 2015:
+>>
+>>    /*
+>>     * These macros will go away, please don't use
+>>     * in new code, and do not add new ones!
+>>     */
+>>
+>> Mechanical transformation using:
+>>
+>>    $ sed -i -e 's/QERR_UNSUPPORTED/"this feature or command is not currently supported"/' \
+>>      $(git grep -wl QERR_UNSUPPORTED)
+>>
+>> then manually removing the definition in include/qapi/qmp/qerror.h.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>> RFC: Not sure what is the best way to change the comment
+>>       in qga/qapi-schema.json...
+>> ---
+>>   qga/qapi-schema.json      |  5 +++--
+>>   include/qapi/qmp/qerror.h |  3 ---
+>>   qga/commands-bsd.c        |  8 +++----
+>>   qga/commands-posix.c      | 46 +++++++++++++++++++--------------------
+>>   qga/commands-win32.c      | 22 +++++++++----------
+>>   5 files changed, 41 insertions(+), 43 deletions(-)
+>>
+>> diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
+>> index b720dd4379..51683f4dc2 100644
+>> --- a/qga/qapi-schema.json
+>> +++ b/qga/qapi-schema.json
+>> @@ -6,8 +6,9 @@
+>     ##
+>     # = General note concerning the use of guest agent interfaces
+>>   #
+>>   # "unsupported" is a higher-level error than the errors that
+>>   # individual commands might document.  The caller should always be
+>> -# prepared to receive QERR_UNSUPPORTED, even if the given command
+>> -# doesn't specify it, or doesn't document any failure mode at all.
+>> +# prepared to receive the "this feature or command is not currently supported"
+>> +# message, even if the given command doesn't specify it, or doesn't document
+>> +# any failure mode at all.
+>>   ##
+>>   
+>>   ##
+> 
+> The comment is problematic before the patch.  It's a doc comment,
+> i.e. it goes into the "QEMU Guest Agent Protocol Reference" manual,
+> where QERR_UNSUPPORTED is meaningless.  Back when the comment was added
+> (commit 9481ecd737b "qga schema: document generic QERR_UNSUPPORTED"), it
+> was still internal documentation, where QERR_UNSUPPORTED made sense.  It
+> became external documentation four years later (commit 56e8bdd46a8
+> "build-sys: add qapi doc generation targets")
+> 
+> I'm not sure how useful the comment is.
+> 
+> I guess we could instead simply point out that clients should always be
+> prepared for errors, even when the command doesn't document any, simply
+> because commands need not exist in all versions or builds of qemu-ga.
+> 
+>> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
+>> index 840831cc6a..7606f4525d 100644
+>> --- a/include/qapi/qmp/qerror.h
+>> +++ b/include/qapi/qmp/qerror.h
+>> @@ -17,7 +17,4 @@
+>>    * add new ones!
+>>    */
+>>   
+>> -#define QERR_UNSUPPORTED \
+>> -    "this feature or command is not currently supported"
+>> -
+>>   #endif /* QERROR_H */
+>> diff --git a/qga/commands-bsd.c b/qga/commands-bsd.c
+>> index 17bddda1cf..11536f148f 100644
+>> --- a/qga/commands-bsd.c
+>> +++ b/qga/commands-bsd.c
+>> @@ -152,25 +152,25 @@ int qmp_guest_fsfreeze_do_thaw(Error **errp)
+>>   
+>>   GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+> 
+> These are all commands that are not supported by this build of qemu-ga.
+> We could use the opportunity to improve the error message: scratch
+> "feature or ".  Or maybe change the message to "this command is not
+> supported in this version of qemu-ga".
+> 
+> More of the same below, marked [*].
+> 
+> Taking a step back...  Do we really need to make this a failure of its
+> own?  Why not fail exactly as if the command didn't exist?  Why would a
+> client ever care for the difference between "command doesn't exist in
+> this build of qemu-ga (but it does in other builds of this version of
+> qemu-ga)" and "command doesn't exist in this build of qemu-ga (and it
+> won't in any build of this version of qemu-ga)"?
+> 
+> If clients don't care, we could instead unregister these commands,
+> i.e. undo qmp_register_command().  The command will then fail exactly
+> like any other unknown command.  We still need to provide the functions
+> to make the linker happy (unless we play with weak symbols), but they
+> can simply abort().
+> 
+> Michael and/or Konstantin, do you have comments as maintainers?  A
+> preference even?
+> 
+> Hmm, there's yet another mechanism to disable commands:
+> qmp_disable_command() & friends.  Looks like its purpose is letting
+> guest system administrators disable commands, and also to disable a
+> bunch of commands in "frozen state", whatever that is.  Alright, I
+> didn't see that, lalala.
+> 
+>>   #endif /* CONFIG_FSFREEZE */
+>> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+>> index 6169bbf7a0..f510add366 100644
+>> --- a/qga/commands-posix.c
+>> +++ b/qga/commands-posix.c
+>> @@ -165,7 +165,7 @@ void qmp_guest_set_time(bool has_time, int64_t time_ns, Error **errp)
+>>       }
+>>   
+>>       if (!hwclock_available) {
+>> -        error_setg(errp, QERR_UNSUPPORTED);
+>> +        error_setg(errp, "this feature or command is not currently supported");
+>>           return;
+>>       }
+>>   
+> 
+> !hwclock_available means /sbin/hwclock grants execute permission for the
+> process's real UID and GID.  I'm not sure why we bother to check that.
+> Why not let execl() fail, and report that error?  Oh, we don't:
+> 
+>             /* Use '/sbin/hwclock -w' to set RTC from the system time,
+>              * or '/sbin/hwclock -s' to set the system time from RTC. */
+>             execl(hwclock_path, "hwclock", has_time ? "-w" : "-s", NULL);
+>             _exit(EXIT_FAILURE);
+> 
+> This is wrong.  We should error_setg_errno(errp, errno, ...); return
+> instead.  Not your patch's problem.
+> 
+> Until we do that: [*]
+> 
+>> @@ -1540,7 +1540,7 @@ GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
+>>   
+>>   GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+> 
+> Command not supported by this build of qemu-qa: [*].
+> 
+>>   
+>> @@ -2235,7 +2235,7 @@ void qmp_guest_set_user_password(const char *username,
+>>                                    bool crypted,
+>>                                    Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>   }
+>>   #endif /* __linux__ || __FreeBSD__ */
+>>   
+>> @@ -2751,47 +2751,47 @@ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
+>>   
+>>   void qmp_guest_suspend_disk(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>   }
+>>   
+>>   void qmp_guest_suspend_ram(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>   }
+>>   
+>>   void qmp_guest_suspend_hybrid(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>   }
+>>   
+>>   GuestLogicalProcessorList *qmp_guest_get_vcpus(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   int64_t qmp_guest_set_vcpus(GuestLogicalProcessorList *vcpus, Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return -1;
+>>   }
+>>   
+>>   GuestMemoryBlockList *qmp_guest_get_memory_blocks(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   GuestMemoryBlockResponseList *
+>>   qmp_guest_set_memory_blocks(GuestMemoryBlockList *mem_blks, Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>> @@ -3056,7 +3056,7 @@ error:
+>>   
+>>   GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>> @@ -3066,20 +3066,20 @@ GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
+>>   
+>>   GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>   
+>>       return 0;
+>>   }
+>>   
+>>   int64_t qmp_guest_fsfreeze_freeze(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>   
+>>       return 0;
+>>   }
+>> @@ -3088,33 +3088,33 @@ int64_t qmp_guest_fsfreeze_freeze_list(bool has_mountpoints,
+>>                                          strList *mountpoints,
+>>                                          Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>   
+>>       return 0;
+>>   }
+>>   
+>>   int64_t qmp_guest_fsfreeze_thaw(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>   
+>>       return 0;
+>>   }
+>>   
+>>   GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>> @@ -3124,7 +3124,7 @@ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
+>>   GuestFilesystemTrimResponse *
+>>   qmp_guest_fstrim(bool has_minimum, int64_t minimum, Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   #endif
+>> @@ -3243,7 +3243,7 @@ GuestUserList *qmp_guest_get_users(Error **errp)
+>>   
+>>   GuestUserList *qmp_guest_get_users(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>> @@ -3386,7 +3386,7 @@ GuestOSInfo *qmp_guest_get_osinfo(Error **errp)
+>>   
+>>   GuestDeviceInfoList *qmp_guest_get_devices(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>   
+>>       return NULL;
+>>   }
+> 
+> Commands not supported by this build of qemu-qa: [*].
+> 
+>> diff --git a/qga/commands-win32.c b/qga/commands-win32.c
+>> index aa8c9770d4..5c9f8e0923 100644
+>> --- a/qga/commands-win32.c
+>> +++ b/qga/commands-win32.c
+>> @@ -1213,7 +1213,7 @@ GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
+>>   GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **errp)
+>>   {
+>>       if (!vss_initialized()) {
+>> -        error_setg(errp, QERR_UNSUPPORTED);
+>> +        error_setg(errp, "this feature or command is not currently supported");
+>>           return 0;
+>>       }
+>>   
+>> @@ -1241,7 +1241,7 @@ int64_t qmp_guest_fsfreeze_freeze_list(bool has_mountpoints,
+>>       Error *local_err = NULL;
+>>   
+>>       if (!vss_initialized()) {
+>> -        error_setg(errp, QERR_UNSUPPORTED);
+>> +        error_setg(errp, "this feature or command is not currently supported");
+>>           return 0;
+>>       }
+>>   
+>> @@ -1276,7 +1276,7 @@ int64_t qmp_guest_fsfreeze_thaw(Error **errp)
+>>       int i;
+>>   
+>>       if (!vss_initialized()) {
+>> -        error_setg(errp, QERR_UNSUPPORTED);
+>> +        error_setg(errp, "this feature or command is not currently supported");
+>>           return 0;
+>>       }
+>>   
+> 
+> !vss_initialized() means qga-vss.dll failed to load and initialize.
+> 
+> Another [*].
+> 
+>> @@ -1509,7 +1509,7 @@ out:
+>>   
+>>   void qmp_guest_suspend_hybrid(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>   }
+>>   
+>>   static IP_ADAPTER_ADDRESSES *guest_get_adapters_addresses(Error **errp)
+>> @@ -1877,7 +1877,7 @@ GuestLogicalProcessorList *qmp_guest_get_vcpus(Error **errp)
+>>   
+>>   int64_t qmp_guest_set_vcpus(GuestLogicalProcessorList *vcpus, Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return -1;
+>>   }
+>>   
+> 
+> Commands not supported by this build of qemu-qa: [*].
+> 
+>> @@ -1938,7 +1938,7 @@ void qmp_guest_set_user_password(const char *username,
+>>       GError *gerr = NULL;
+>>   
+>>       if (crypted) {
+>> -        error_setg(errp, QERR_UNSUPPORTED);
+>> +        error_setg(errp, "this feature or command is not currently supported");
+>>           return;
+>>       }
+> 
+> Command does not support "crypted": true in this build of qemu-ga.  The
+> error message is crap.  Better would be some variation of "this machine
+> supports only clear-text passwords".
+> 
+>>   
+>> @@ -1983,20 +1983,20 @@ done:
+>>   
+>>   GuestMemoryBlockList *qmp_guest_get_memory_blocks(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   GuestMemoryBlockResponseList *
+>>   qmp_guest_set_memory_blocks(GuestMemoryBlockList *mem_blks, Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>> @@ -2522,12 +2522,12 @@ char *qga_get_host_name(Error **errp)
+>>   
+>>   GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+>>   
+>>   GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
+>>   {
+>> -    error_setg(errp, QERR_UNSUPPORTED);
+>> +    error_setg(errp, "this feature or command is not currently supported");
+>>       return NULL;
+>>   }
+> 
+> Commands not supported by this build of qemu-qa: [*].
+> 
+> Summary of my review:
+> 
+> * You're unsure about your change to the "General note concerning the
+>    use of guest agent interfaces".  I suggested a way to rewrite it.
+> 
+> * Error messages could use improvement.  Since your patch doesn't change
+>    any, feel free to leave that for another day.
+> 
+> * How we do compiled-out commands could use improvement.  Feel even more
+>    free to leave for another day.  I'd like to hear the maintainers'
+>    opinion, though.
+> 
+> 
 

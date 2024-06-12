@@ -1,97 +1,97 @@
-Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp242889ejc;
-        Wed, 12 Jun 2024 01:17:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUN4KNCiPeasChAvwf0sYc3GhRGwRlxvjdoJ9kFXmR1dEYWgw2voDjDjw4WLfCdFvAVBXWG3IYYlGwOnjfj2T1CrMIYjCh2
-X-Google-Smtp-Source: AGHT+IEoEIHJCzlqmbKcMgiim0sWWrO+5oQ683eyvYwE+mOcQQBlQcjJQVrXvVL8m88Ak84OsHih
-X-Received: by 2002:a05:620a:1aa9:b0:796:50d6:39b1 with SMTP id af79cd13be357-797f60beea8mr126115385a.60.1718180232678;
-        Wed, 12 Jun 2024 01:17:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718180232; cv=none;
+Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp243046ejc;
+        Wed, 12 Jun 2024 01:17:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX/LkWHLpwS1wHv1Xq5ItmUAS/IjDB/CAmaYLoB6SUw+ly+OGWr8bEX0tbXB0TO0wh2Yttx0AzEDAIhur7eHB2KtGn5d6sU
+X-Google-Smtp-Source: AGHT+IFVGNafF8RCzQK6tekvUihGoiW7s/l+WKn0g3veMPwzXt9gR7x1jCBRhYhFwWFUZMi/iLXB
+X-Received: by 2002:ac8:5a05:0:b0:440:279c:f9e7 with SMTP id d75a77b69052e-4415ac9795bmr9903731cf.53.1718180253477;
+        Wed, 12 Jun 2024 01:17:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718180253; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ugu+ID3zB7WsEV7MU2GnTh8xlUcp4MWuBdnxLzo/2BS7hq0F9wzfBYbsrqTD4QCaNO
-         K4T6ZYhYBrFopYMs55xlp7un4MBcVhuYZKDVQpoeLmtXz1PdvewJG60WN7VNjAeAhvU7
-         gvVktSWqUnFrw5rnPAOBtSyEfV7CKqaLiLWCknJtrtAbFLuklSGlPwylOyxZFK1kwzTp
-         /w/1domtjTdClPWyoJpRLiDHij5MT8sYZsXW7iOf7nGGgxrj+bXrXo3jGKMri2LTSVIj
-         dueQAmnIo8YBUv2EOrYP/GiAkoRKxFIdrvjgwBhOHfGh2beeswsc7gmpW+SLMu75nAZH
-         InBQ==
+        b=RjFopgp0QE/Y9nsspBcbZ90MFuyMGH8Tnp1/GVQECRfzZmJqeoIR5ClSTPcJ+ES7jU
+         IdAMJYhTFvi16+3PunXagX2XXhUWHcf9f+BLiXYdeyBXIv4MIhPk7VTjavgPcl9tc9pJ
+         8H35d98un1ZV7EhAhydWESsbQzMOjwtf3bPTsNysXE6aeolg0/s7PDt7Khyw8j7kgKf7
+         SVx+2gFSWjSgZh4APuyFwEP3+mS4hZvIFbekf70gRl6hngWaJN34Ep3b+O0/nXtAByeg
+         yXV7krmhLiKfgx8XtmXq1otLQFyzeiOiSN7zgFDGCNoSVMUx+008z8Wi3G9jz5/pghG+
+         wLCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=t/AUOAInjkFfC7EhRiJBRMiTPdQ2lCm4ch6BlghBPuU=;
+        bh=UcDgwLrJ/vJ0LXvTIFwEowSYV1ch13n/xdEVQi7gzwg=;
         fh=TDBzvxSfdE6oPbnRjgmpeHbbsHtVpAEN4utndjBnqmU=;
-        b=WeKRU5OmqiO8BIHsTPJ9m2HOavcSMlEM8tYA9aniuqtKDdGoYX4C/vfywIn3+MVr/i
-         uN5jyh9RSRSR1A4vD5LUfF6J5PD1mX+8Af4UJqKWUEiaK0CPOwpMRL8OJToJ52cFx5/g
-         8sgHMSS8QpGst3LB9+YEumulbuK7FkosmYz6W44fBnyVnSOhCysUOOVXH83ZsoYCqMF+
-         hKw7xYuVxfSQEdGqpciIFA8WKK0HCjSi0fcahDyndffqJug+5iSXYDpaR5jT1+ZEe3Lh
-         iJlwZIt8tbmX28Tiz8509/7UPycds8rHXkoc3so+bK5aGsq4HGAki9xCpNuISsD0Px1Z
-         H+7g==;
+        b=TLc90Wo9e2+X3Qj7+vZMCY/a29bBxZFvSUos3xwathYal1UrG3BeFHlRqm+vf8Pxdf
+         XiV4IhxuHakqBYaTE9+tzzDW3zDPI2Mb4AmFeoDnUMbrNPeFlohLRSNc83XNf5gwzcX1
+         FkRPPWMl4riXcV9K4qL091DSy+KqKRHiwVT6So91BcGiDTZN8bs0tbcQCepFUR8BEAZC
+         SliTu63zTzujy3uL1se1y5YOH5/mlCKtlNe+hPOQ7ItcIqFlHVeVpmaGqSlowFEaJqs6
+         8oVW0guweCuUngKT2H21ovvBzYuaaEijd0AUkEkvYqoj2HtjCXM8FfdK/HRnChcJFlEu
+         05Rw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=aX6MP6oD;
+       dkim=pass header.i=@sifive.com header.s=google header.b=V7dqK03Y;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7954d1b45b3si1147510485a.745.2024.06.12.01.17.12
+        by mx.google.com with ESMTPS id d75a77b69052e-44038b19223si114971561cf.300.2024.06.12.01.17.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jun 2024 01:17:12 -0700 (PDT)
+        Wed, 12 Jun 2024 01:17:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=aX6MP6oD;
+       dkim=pass header.i=@sifive.com header.s=google header.b=V7dqK03Y;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sHJ8Q-0002QT-DN; Wed, 12 Jun 2024 04:15:10 -0400
+	id 1sHJ8c-0002iu-3q; Wed, 12 Jun 2024 04:15:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sHJ8P-0002Q3-I1
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:15:09 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1sHJ8a-0002hO-LG
+ for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:15:20 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sHJ8N-0006Mr-8p
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:15:09 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-1f68834bfdfso48623545ad.3
- for <qemu-devel@nongnu.org>; Wed, 12 Jun 2024 01:15:06 -0700 (PDT)
+ id 1sHJ8X-0006Pm-Um
+ for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:15:20 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-1f44b45d6abso52242005ad.0
+ for <qemu-devel@nongnu.org>; Wed, 12 Jun 2024 01:15:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1718180105; x=1718784905; darn=nongnu.org;
+ d=sifive.com; s=google; t=1718180116; x=1718784916; darn=nongnu.org;
  h=references:in-reply-to:message-id:date:subject:cc:to:from:from:to
  :cc:subject:date:message-id:reply-to;
- bh=t/AUOAInjkFfC7EhRiJBRMiTPdQ2lCm4ch6BlghBPuU=;
- b=aX6MP6oDirKKIplRDKeNZtxcVMIAo9p5Z1/F6DMVPKMte12z8pyX5h5YXaawEhAOnB
- NELYJRlkQy0sscSUAvsggWIdTD6pOANS2/+Tf6xwH3Vtu0oLmPvPieAvP0QHoDTcDMK6
- kfjJcxpENdHZ9Xcw2SxjvrqIz2caErFVNyQkVVUJnx3lcQP9hooU55OGGbtGsAOJ3Of8
- 0SwJIrmLnByEUhCI+hqizlSemZrJLl0ZlhBSjK2Eh/KfPSLIX2AS7l2UGqgx9r8GC2LG
- mgRUN6k6BVWgPkpj2LXDZfOHOnYtnNCjWjXCp5Z0vdJDXkftyr9YdIBmW5FTKlx/cMhx
- nxtQ==
+ bh=UcDgwLrJ/vJ0LXvTIFwEowSYV1ch13n/xdEVQi7gzwg=;
+ b=V7dqK03Yx9eDJ3inOzyA/GRofWPe86ycGZze/x7o1MqaYfSnRQ27RosOKXOm7X8w61
+ kL82GgTUK2R/E4OWvIKDjWS96Jdsd1zASo1DYLJHF9uJIhS2ImYvPEMHc663zFovoQgo
+ rkse+eQbcAgM7WJCFkTopP5Gt8cKm68U+ddhJI+LyEp3fStn6HAk5mj3SVMwSkPmG4EL
+ YSk2JOQ0y8Zs5zfQd6O69xE9lner7k+6MkT3lBRZI1pJIVmiGry9FBdMW44wohXtRs26
+ qA8fkLSWXZIdd2ouL3axajUpPW1NfQdHqs1Uhl6nChoCqw1Zvoo/KV7oX57Hg52bxxML
+ YA2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718180105; x=1718784905;
+ d=1e100.net; s=20230601; t=1718180116; x=1718784916;
  h=references:in-reply-to:message-id:date:subject:cc:to:from
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=t/AUOAInjkFfC7EhRiJBRMiTPdQ2lCm4ch6BlghBPuU=;
- b=kbS0tTgadsgjiHizjkkwSyYKmcpl5zlxpStZMR1iPotILSMJV+GqNpQJyu2ZgUWvo/
- jm6gVP4BZLG9bwelCkeY8SrIByEnUMmmyhIycIk7OFkYAQllahCmRJw4nEA8Mi6VZqcl
- GZ8YBVUErbrV3DEySbklAShXe4Fke/kQdA1orR+I0FZnYoSUZKEDJOZFxG/uXAHRLcQz
- 0jjKJRnrNxd7tSw+HtnmCbarFfn9yCbHDVWLh5FwVWlCeL4q4VHN/iw7a1AqZfDOz/10
- CjVyTrzOohjnWM88MztfYj0ma3Bmd6kexExf3NO4hvoFnph7yop2LrPR4YwwCOdsutWa
- 9Lug==
-X-Gm-Message-State: AOJu0YwtWeQGOMKJTgTbi64GFy4Od5nD6D0h0BqTN9QHvk8QM7o1GuBk
- NjAzhy5HYkH9x5+qLQd2Z8SS1JIvByNnScV0PJdE06rNjLbya+Wd6FMjATDEwlivfkPS87NB+Vu
- hahiuwqtt6LhFZjrv2FIHNQh76dbBlig+dVhc+y/5DPRHzOQ9mCfnY4ycvPSqJGg6izErm8ZQs3
- KTYL5btVNMvBxRQ6EICFdpwUNJVroqnI+ARZ/tbJsaGQ==
-X-Received: by 2002:a17:902:d48b:b0:1f7:345a:e23d with SMTP id
- d9443c01a7336-1f83b6f6b61mr11145425ad.31.1718180104409; 
- Wed, 12 Jun 2024 01:15:04 -0700 (PDT)
+ bh=UcDgwLrJ/vJ0LXvTIFwEowSYV1ch13n/xdEVQi7gzwg=;
+ b=aRfywJf4jueamut6o6HFj18OeIRZqmWdA33dZFdA1FAPTfzlKs5Q8vlBqIdiGWZEEJ
+ LKo2A3Pz7j99ogjD1lvGrq+NKCH9NLpL31Yd4oD/puGf6agn/Lma2NzOwvwS709Zh4vJ
+ RFsB3AKFKPGDg4CVxrksnKNhnKro65YD0MMkq0tKsEgLzooJNoueYFXvHbjZfyE91nbs
+ cc2z8sp8EYtovajv9qckd6oqJ/+SQh8hdvoiy83ZA2jg8rVEYviJIB4DhC6F2q5PEWD+
+ QdE4gdEnC2dghD6oRrtaSYNZDyZfBSEUPGCQ2ztCIg1F+tvoF3JDiLejHTrBtqwD+Fsm
+ J9qg==
+X-Gm-Message-State: AOJu0Yzj991Oh9EzAkoEvA6Y84h5EdThUubKJ2N0j7qGmk5dvwOIOjVI
+ 5rCXrx+KXzh5UC7xJEcd2wxiRZnrdGmhi4WVrCGRmVaWYMZEkIMIcVEnpbHP2CIzuC53I4BDJ+0
+ vUsVCZkf9Y1xRaJjhe7h3wnSWiWfOxWyVXQ4p2IXIGXZ83aR+q8BnT6Q/GHpMOO4L7sub3jfGEH
+ SX6urmogj08+kJKVv1JN2AWWHfhThvGBBelC4BNnGgGw==
+X-Received: by 2002:a17:902:db04:b0:1f7:17e4:b57b with SMTP id
+ d9443c01a7336-1f83b6abc85mr13533535ad.23.1718180115817; 
+ Wed, 12 Jun 2024 01:15:15 -0700 (PDT)
 Received: from hsinchu26.internal.sifive.com
  (59-124-168-89.hinet-ip.hinet.net. [59.124.168.89])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f8393e8e53sm11363875ad.16.2024.06.12.01.14.59
+ d9443c01a7336-1f8393e8e53sm11363875ad.16.2024.06.12.01.15.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Jun 2024 01:15:04 -0700 (PDT)
+ Wed, 12 Jun 2024 01:15:15 -0700 (PDT)
 From: Jim Shu <jim.shu@sifive.com>
 To: qemu-devel@nongnu.org,
 	qemu-riscv@nongnu.org
@@ -124,15 +124,14 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
  qemu-s390x@nongnu.org (open list:S390 TCG CPUs),
  Jim Shu <jim.shu@sifive.com>
-Subject: [RFC PATCH 05/16] target/riscv: Add CPU options of WorldGuard CPU
- extension
-Date: Wed, 12 Jun 2024 16:14:05 +0800
-Message-Id: <20240612081416.29704-6-jim.shu@sifive.com>
+Subject: [RFC PATCH 07/16] target/riscv: Add defines for WorldGuard CSRs
+Date: Wed, 12 Jun 2024 16:14:07 +0800
+Message-Id: <20240612081416.29704-8-jim.shu@sifive.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20240612081416.29704-1-jim.shu@sifive.com>
 References: <20240612081416.29704-1-jim.shu@sifive.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=jim.shu@sifive.com; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=jim.shu@sifive.com; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -154,81 +153,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lPmVuKXnWC3d
+X-TUID: zI7C/dnQKXrx
 
-We define CPU options for WG CSR support in RISC-V CPUs which
-can be set by machine/device emulation. The RISC-V CSR emulation
-will also check this feature for emulating WG CSRs.
+Add CSRs for 3 WG extensions: Smwg, Smwgd, and Sswg.
 
 Signed-off-by: Jim Shu <jim.shu@sifive.com>
 ---
- target/riscv/cpu.c         |  8 ++++++++
- target/riscv/cpu_cfg.h     |  3 +++
- target/riscv/tcg/tcg-cpu.c | 11 +++++++++++
- 3 files changed, 22 insertions(+)
+ target/riscv/cpu_bits.h | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 69a08e8c2c..d70eedf957 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -204,6 +204,9 @@ const RISCVIsaExtData isa_edata_arr[] = {
-     ISA_EXT_DATA_ENTRY(xtheadmempair, PRIV_VERSION_1_11_0, ext_xtheadmempair),
-     ISA_EXT_DATA_ENTRY(xtheadsync, PRIV_VERSION_1_11_0, ext_xtheadsync),
-     ISA_EXT_DATA_ENTRY(xventanacondops, PRIV_VERSION_1_12_0, ext_XVentanaCondOps),
-+    ISA_EXT_DATA_ENTRY(smwg, PRIV_VERSION_1_12_0, ext_smwg),
-+    ISA_EXT_DATA_ENTRY(smwgd, PRIV_VERSION_1_12_0, ext_smwgd),
-+    ISA_EXT_DATA_ENTRY(sswg, PRIV_VERSION_1_12_0, ext_sswg),
+diff --git a/target/riscv/cpu_bits.h b/target/riscv/cpu_bits.h
+index 74318a925c..3ea8a8e9a0 100644
+--- a/target/riscv/cpu_bits.h
++++ b/target/riscv/cpu_bits.h
+@@ -360,6 +360,11 @@
+ #define CSR_DPC             0x7b1
+ #define CSR_DSCRATCH        0x7b2
  
-     DEFINE_PROP_END_OF_LIST(),
- };
-@@ -1595,6 +1598,11 @@ const RISCVCPUMultiExtConfig riscv_cpu_experimental_exts[] = {
- const RISCVCPUMultiExtConfig riscv_cpu_named_features[] = {
-     MULTI_EXT_CFG_BOOL("zic64b", ext_zic64b, true),
- 
-+    /* RISC-V WorldGuard v0.4 */
-+    MULTI_EXT_CFG_BOOL("x-smwg", ext_smwg, false),
-+    MULTI_EXT_CFG_BOOL("x-smwgd", ext_smwgd, false),
-+    MULTI_EXT_CFG_BOOL("x-sswg", ext_sswg, false),
++/* RISC-V WorldGuard */
++#define CSR_MLWID           0x390
++#define CSR_SLWID           0x190
++#define CSR_MWIDDELEG       0x748
 +
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/target/riscv/cpu_cfg.h b/target/riscv/cpu_cfg.h
-index e1e4f32698..23e779ae08 100644
---- a/target/riscv/cpu_cfg.h
-+++ b/target/riscv/cpu_cfg.h
-@@ -120,6 +120,9 @@ struct RISCVCPUConfig {
-     bool ext_ssaia;
-     bool ext_sscofpmf;
-     bool ext_smepmp;
-+    bool ext_smwg;
-+    bool ext_smwgd;
-+    bool ext_sswg;
-     bool rvv_ta_all_1s;
-     bool rvv_ma_all_1s;
- 
-diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
-index 683f604d9f..dc86e6e1d5 100644
---- a/target/riscv/tcg/tcg-cpu.c
-+++ b/target/riscv/tcg/tcg-cpu.c
-@@ -726,6 +726,17 @@ void riscv_cpu_validate_set_extensions(RISCVCPU *cpu, Error **errp)
-         cpu->pmu_avail_ctrs = 0;
-     }
- 
-+    /* RISC-V WorldGuard */
-+    if (cpu->cfg.ext_sswg && !cpu->cfg.ext_smwg) {
-+        error_setg(errp, "Sswg extension requires Smwg extension");
-+        return;
-+    }
-+
-+    if (cpu->cfg.ext_smwgd != cpu->cfg.ext_sswg) {
-+        error_setg(errp, "Smwgd/Sswg extensions should be enabled together");
-+        return;
-+    }
-+
-     /*
-      * Disable isa extensions based on priv spec after we
-      * validated and set everything we need.
+ /* Performance Counters */
+ #define CSR_MHPMCOUNTER3    0xb03
+ #define CSR_MHPMCOUNTER4    0xb04
 -- 
 2.17.1
 

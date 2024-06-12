@@ -1,97 +1,97 @@
-Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp243238ejc;
-        Wed, 12 Jun 2024 01:18:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXLa5Ez3uoKBxtxKE/UazyIjzU80qWISeczYOL3MpAIjmEQjZoLvUOUPibzWVdxgVz4yrxW3pyVuNDybdM0HQ/MU+3my90u
-X-Google-Smtp-Source: AGHT+IFC5aJ7lIgiQdFHk5DM7WQwOv6y/IRckPw2aPw/HZbq7mVAO0VkKFs3UdZWozKiTq2xTf5L
-X-Received: by 2002:a05:6122:369d:b0:4ec:f4a2:69fc with SMTP id 71dfb90a1353d-4ed07afdc7emr1158244e0c.7.1718180281087;
-        Wed, 12 Jun 2024 01:18:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718180281; cv=none;
+Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp243285ejc;
+        Wed, 12 Jun 2024 01:18:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVclO4/mIp2LU3hTNNxwxO737wz+0sT/zxlnOaGOg52V/xrsjydDC11TZQ2p5Jo0sGSOWyZeW6QhrOWtXWsf9C+JiMoVKA8
+X-Google-Smtp-Source: AGHT+IF2cBugOSYXYIPbUEhwM9Zq0Ox2143LV9ZRHOZXCsXEFTsf8MfXYbFJ2b9v4VdAXQi7rrtw
+X-Received: by 2002:a05:620a:2410:b0:794:ecae:7a2f with SMTP id af79cd13be357-797f5ee1cf7mr125801285a.12.1718180288020;
+        Wed, 12 Jun 2024 01:18:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718180288; cv=none;
         d=google.com; s=arc-20160816;
-        b=yGdNxLX10M0Sk3K4Zyw9DSi3xcqZT+4yf5t6KHLN9RsyRbMAOmMXXKvndF46QJrNYF
-         MLYWz5fU0+Yw5yUW3f6yOa8fkIAUJWsHnmv/mslzcvDUG02htJ6p2K1Wz6pENDoJjNwd
-         e4zeBN6B6urp/vVfvOnXCmP8bNchZV9TwsFlbZI7OdCsgVVAofYoQAI3nT/MryO3/F/l
-         0j4qyJeM0HR/8pUpbeOVjo2D/j+JvhFzrRz5KC3TJIlHN8jHNZ5OgeBtW2bDd/Dc6Qh/
-         lvLsKVuzrKZNq9lzXieQ5qVihxaprSJDB/GHDbbZGKQNeXW1mp+BdfaNTZRyDHHdp+NA
-         ukhA==
+        b=l9Uwn88nCvxcsT4liAmJM4pik4Ecjf4pZGa4MDkgbax+iX1ryG6lA0a5FbarTqd1Is
+         7Ao5fzLS3uO2HDGpwGSSSiD/cg/PEvSYH/nd5DD3e4WWnbOmxWvn7mca9H7GnF/8uQQT
+         tTQ7XrTV9TlX5iXFNDdgpTbTTkG10moBggiKmtNWlVys8RWgQrLIjdQjY4pV054tOacl
+         OeQkSRtvg5H3W3xSv9kVv6A6SDWhN2GcUDfGu3QMMaRqa1p9Y/Q+mZKH10ulEbyqCdSq
+         bhXY30PdJZNlFA+nxQBfIUp0iAhK1PEHy/8DQUDl2SV7RfT/oyFQhk6xlxlBpkGQZxtf
+         639A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=YBsKz2cXW2irXTYX6EDVGeIkb/sGQaekYYfYimSeHNs=;
+        bh=htuMZxd9RVqlZETMagy8fsRybQcg5cD/2wiawbgeZIg=;
         fh=TDBzvxSfdE6oPbnRjgmpeHbbsHtVpAEN4utndjBnqmU=;
-        b=hEaQ6+OxrCyIsqAVL3RPEmn4r7BlGvqFPRQf8d8TP9s6M5gQ8jCoAR2AP0hqm0oKOl
-         jQrfYjmfWnTddwGSgsWTfssQOwsOg4WHcosJHM3dzLsHUsMg/SnCCb52SLDeVKsUFC/6
-         Gsg1ChK6clOaAiHdeqnykmivkzKZ7CsY6Hx3WhVhhxqg+TH2yzqdShiZxtJnVZ0BGH0l
-         bgD3Mpk2Bn8jDKDykLjKl7jm5ZMNP3X+OoeutuPOm8x1Z2nipgPDFagMrWlqSf/oxEoX
-         j6lZ9ZHyQj9yowALwcZvTLilfW8IShfqZIt4YSKcU9BiqgAjqVZwyxbaDqDOzJ2e8hyi
-         zE8g==;
+        b=fvbP37DlZk0Al6tckNg5+23lbfUEyA8B+bZH9Ios4egnfFcL8RXhg6LNaFdkvZTxqa
+         SdICprfh/druNVyQFSjtEoLCB8XODd4wtJMXK53p9sC7aKO2clConOxp5Ct2ZiKHD+lt
+         Yr7pyQV+Psbwa/OmVE17JO+iON2caAbGSF8u6BOQwI4XoXKJduOBg7bTRHf1djXSE/Sd
+         sU8LZ7ePI3P5Ows1s7HZAhP084tFNDSbkmw0lNp7d36ELthKQ3IdMo6PrwyHTXJxImR2
+         Hbs72+1JuFaJEXO8Y0HW3NjeGWtELtuPOu9wNdA5SMPKo4ml57lterezIUxBEAFjwKkL
+         J4rQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=HYYkazSe;
+       dkim=pass header.i=@sifive.com header.s=google header.b="FRUfg/gV";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-797bfdeb6e6si412965385a.757.2024.06.12.01.18.00
+        by mx.google.com with ESMTPS id af79cd13be357-795597caeb6si898012285a.392.2024.06.12.01.18.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jun 2024 01:18:01 -0700 (PDT)
+        Wed, 12 Jun 2024 01:18:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=HYYkazSe;
+       dkim=pass header.i=@sifive.com header.s=google header.b="FRUfg/gV";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sHJ9N-0005EV-FT; Wed, 12 Jun 2024 04:16:09 -0400
+	id 1sHJ8N-0002JO-1k; Wed, 12 Jun 2024 04:15:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sHJ9M-0005Cz-0J
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:16:08 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ id 1sHJ8L-0002Iv-HI
+ for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:15:05 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
- id 1sHJ9I-0006pL-SC
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:16:07 -0400
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-1f6f031549bso18335775ad.3
- for <qemu-devel@nongnu.org>; Wed, 12 Jun 2024 01:16:04 -0700 (PDT)
+ id 1sHJ8I-0006Le-SU
+ for qemu-devel@nongnu.org; Wed, 12 Jun 2024 04:15:05 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-1f6e183f084so34065145ad.1
+ for <qemu-devel@nongnu.org>; Wed, 12 Jun 2024 01:15:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1718180163; x=1718784963; darn=nongnu.org;
+ d=sifive.com; s=google; t=1718180099; x=1718784899; darn=nongnu.org;
  h=references:in-reply-to:message-id:date:subject:cc:to:from:from:to
  :cc:subject:date:message-id:reply-to;
- bh=YBsKz2cXW2irXTYX6EDVGeIkb/sGQaekYYfYimSeHNs=;
- b=HYYkazSea+v0kWRPaUOkwuoPTLEmjqUJsBfA4nWFPULem3yUJeZSrugi5ah1sLVbOB
- XMhsg8eXUF1dMp43rjyQeAn9RBXbsiElnypCR7Y2CGZEv+CcQF83KT9LjRalS3En7l+R
- IkGWoYlpQFDgLwrwd96SNo/SKcomLnhH3ZWVW62g6v2ciq24hRvXLyEaJHR2FTC2vEtt
- ae2l8wb93Sy97BzIS0cCz9WOtVephP+kMOle9bnKS2zTzq+UB84JCHeO1MdtrpZhi830
- wlQQppL2ohlst/JLRbiMCv/d1M5Yh+EtyOBjQkniHGCvlPv8ES9l58rB4Ks1EQDjQTTt
- YHYw==
+ bh=htuMZxd9RVqlZETMagy8fsRybQcg5cD/2wiawbgeZIg=;
+ b=FRUfg/gVw3Oxt4TX8NWhjtqz9ZanX2FS0qSuk0kaAJpUjfccp2JsTW/zkargcP17jv
+ GJjF3/77nsPUBWpHFB+2PZp1AL3M1Okn+0zzaW0OTj3PZKTlpdkntUYcbu1Gji80pzIX
+ TMSVF1PzrIiWSxDLzKHyWTmvdz7CzDOUt2Bjwar66M/OLoac5pVZ7kb4o2NQckLiOgzS
+ N6aakZ/7YuwpGzEiWMHukcLSBxLL6/qA10b0Qqn3GwGqw6lRd40DvOkb/XACOQP4ulEM
+ a6vS5/0avLB6jwidtaUj2brawpJBEdFyY+RDOcsVg/FUCEZ2JK2t0iK/gIXntM9sk3+O
+ 0HJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718180163; x=1718784963;
+ d=1e100.net; s=20230601; t=1718180099; x=1718784899;
  h=references:in-reply-to:message-id:date:subject:cc:to:from
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=YBsKz2cXW2irXTYX6EDVGeIkb/sGQaekYYfYimSeHNs=;
- b=txZw7ORv6OVQSjnevK8718xIZbr8ajvopTfNKp5hWdwY1THSENm+iTqSeGUHAVFHjM
- PIEEa7Ajbv1BkrGUVW1dUYyOnRf65QodWan3V04kWavHijteB8fKfO+WL/X7hLWdYimh
- moD4Ip7Ro7jyz3oEyFpijkBXLiLBkhDIAJjYWYDo+YKzeHCLJszhxjZn+892r/aoMDGm
- CR/z1qDOgjg0aBNJa68qd5rNnjMfxlDzE8+jm1BUxba8C2SbRWAvjMpAgcIm5VPFVUeB
- XlV1BpZuYd6ZvHTN86IQwUllSZGiJZerNxFQmxnHdDcMB8OH2WSwcYAzHJE6Elx1B+fy
- E6Dg==
-X-Gm-Message-State: AOJu0YwiUV2ft8LgF4TyUZlNoe3npNvdyadp1ekG4vMYPE20azNjMvuk
- 2cZFqy+2FAr7IWWQagLZgL88P3P9x8xYoQFlxZfZ5PvyXHdnKxuN8pGDTLU7GsPm6XXyJGT4sC9
- f+1YgT51HKgZsbpxBFdxbMIVA/Z8k8T8Q9PhqQJKbR+xa3iAeC2v1Rf6ERFebClc3b5kA62l+bs
- PoIL/npoC/E+r9PEFLP2IsbbRE6IDIM0CqUWkDjqpnMg==
-X-Received: by 2002:a17:902:d2c6:b0:1f7:178e:60a4 with SMTP id
- d9443c01a7336-1f83b517aabmr13665965ad.7.1718180162752; 
- Wed, 12 Jun 2024 01:16:02 -0700 (PDT)
+ bh=htuMZxd9RVqlZETMagy8fsRybQcg5cD/2wiawbgeZIg=;
+ b=krKMQ/9ClJBacn3M2oyLZ4i3m72LZbyTVJUJlP0YjctwZDXcCY5Nkj3oAQdX1oyoX5
+ Qc0M0O/a7AoQcRdEVGlH0xab8jiFPi9T4sDath616viPEs/bDKi5yB7E1M8oMu1j3Agx
+ PaxR7Z2SZ9qlaxfiVCzzVEwPWJyPnsrHT4HKMjyY59Sy8kvxMU8/wR9Q1zjYi4jZJUZi
+ jzfXpphsGaDOkLN0n4Tc/l9topr5cTrYDI2f/5+OAzmCjTtgDtqv/lyWXheZv88nCgBM
+ EE/2+Xjc7zIDDZF5x0LQvd13NmlxvLgLwdITSStloArGJKXG5FxUv4X/cViXmLM9rEFZ
+ K5vg==
+X-Gm-Message-State: AOJu0Yw3zDXyJ0UjBTzl3Pov0nodDiwnsI0UYbldLXqkaY0m11LBMGsY
+ jQA/G+fTjAQZc/0nsDawkkXEK1zJFNARdEiVXFQZfwcO6RFCv0K2Nr5tMOU9yIbtsRa3ZD4+AIC
+ g7L+OXvDUG5/7Ai5EYuKmRJjzmJTLQOp1Fp0/HOo8KEitAVqdlspWoTl1qvDV+MtnS+itM2wmg3
+ +Rh6+LEdWBO3UeA7zjwXfCrrJR6p9ZcykWoh73CVRRGw==
+X-Received: by 2002:a17:902:6546:b0:1f7:1931:7a8f with SMTP id
+ d9443c01a7336-1f83b709a39mr10224655ad.64.1718180098732; 
+ Wed, 12 Jun 2024 01:14:58 -0700 (PDT)
 Received: from hsinchu26.internal.sifive.com
  (59-124-168-89.hinet-ip.hinet.net. [59.124.168.89])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f8393e8e53sm11363875ad.16.2024.06.12.01.15.57
+ d9443c01a7336-1f8393e8e53sm11363875ad.16.2024.06.12.01.14.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Jun 2024 01:16:02 -0700 (PDT)
+ Wed, 12 Jun 2024 01:14:58 -0700 (PDT)
 From: Jim Shu <jim.shu@sifive.com>
 To: qemu-devel@nongnu.org,
 	qemu-riscv@nongnu.org
@@ -124,15 +124,15 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  qemu-ppc@nongnu.org (open list:PowerPC TCG CPUs),
  qemu-s390x@nongnu.org (open list:S390 TCG CPUs),
  Jim Shu <jim.shu@sifive.com>
-Subject: [RFC PATCH 15/16] hw/misc: riscv_wgchecker: Check the slot settings
- in translate
-Date: Wed, 12 Jun 2024 16:14:15 +0800
-Message-Id: <20240612081416.29704-16-jim.shu@sifive.com>
+Subject: [RFC PATCH 04/16] hw/misc: riscv_worldguard: Add RISC-V WorldGuard
+ global config
+Date: Wed, 12 Jun 2024 16:14:04 +0800
+Message-Id: <20240612081416.29704-5-jim.shu@sifive.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20240612081416.29704-1-jim.shu@sifive.com>
 References: <20240612081416.29704-1-jim.shu@sifive.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=jim.shu@sifive.com; helo=mail-pl1-x635.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=jim.shu@sifive.com; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -154,153 +154,297 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Z0zHVwkK2LZi
+X-TUID: YHuhz4Ir3zqA
 
-The final part of wgChecker we need to implement is actually using the
-wgChecker slots programmed by guest to determine whether to block the
-transaction or not.
+Add a device for RISCV WG global config, which contains the number of
+worlds, reset value, and trusted WID ... etc.
 
-Since this means we now change transaction mappings when
-the guest writes to wgChecker slots, we must also call the IOMMU
-notifiers at that point.
-
-One tricky part here is that the perm of 'blocked_io_as' is the
-condition of deny access. For example, if wgChecker only permits RO
-access, the perm of 'downstream_as' will be IOMMU_RO and the perm of
-'blocked_io_as' will be IOMMU_WO.
+This global config is used by both CPU WG extension and wgChecker devices.
 
 Signed-off-by: Jim Shu <jim.shu@sifive.com>
 ---
- hw/misc/riscv_wgchecker.c | 70 ++++++++++++++++++++++++++++++++++++---
- hw/misc/trace-events      |  1 +
- 2 files changed, 67 insertions(+), 4 deletions(-)
+ hw/misc/Kconfig                    |   3 +
+ hw/misc/meson.build                |   1 +
+ hw/misc/riscv_worldguard.c         | 183 +++++++++++++++++++++++++++++
+ include/hw/misc/riscv_worldguard.h |  55 +++++++++
+ 4 files changed, 242 insertions(+)
+ create mode 100644 hw/misc/riscv_worldguard.c
+ create mode 100644 include/hw/misc/riscv_worldguard.h
 
-diff --git a/hw/misc/riscv_wgchecker.c b/hw/misc/riscv_wgchecker.c
-index 55e5e8127f..cab4e40921 100644
---- a/hw/misc/riscv_wgchecker.c
-+++ b/hw/misc/riscv_wgchecker.c
-@@ -100,6 +100,52 @@ REG32(SLOT_CFG,             0x010)
- #define P_READ                  (1 << 0)
- #define P_WRITE                 (1 << 1)
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 1e08785b83..08fc0f2b8c 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -213,4 +213,7 @@ config IOSB
+ config XLNX_VERSAL_TRNG
+     bool
  
-+static IOMMUAccessFlags wgc_perm_to_iommu_flags(int wgc_perm)
-+{
-+    if (wgc_perm == (P_READ | P_WRITE)) {
-+        return IOMMU_RW;
-+    } else if (wgc_perm & P_WRITE) {
-+        return IOMMU_WO;
-+    } else if (wgc_perm & P_READ) {
-+        return IOMMU_RO;
-+    } else {
-+        return IOMMU_NONE;
-+    }
-+}
++config RISCV_WORLDGUARD
++    bool
 +
-+static void wgchecker_iommu_notify_all(RISCVWgCheckerState *s)
-+{
+ source macio/Kconfig
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 86596a3888..a75668ff86 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -34,6 +34,7 @@ system_ss.add(when: 'CONFIG_SIFIVE_E_PRCI', if_true: files('sifive_e_prci.c'))
+ system_ss.add(when: 'CONFIG_SIFIVE_E_AON', if_true: files('sifive_e_aon.c'))
+ system_ss.add(when: 'CONFIG_SIFIVE_U_OTP', if_true: files('sifive_u_otp.c'))
+ system_ss.add(when: 'CONFIG_SIFIVE_U_PRCI', if_true: files('sifive_u_prci.c'))
++specific_ss.add(when: 'CONFIG_RISCV_WORLDGUARD', if_true: files('riscv_worldguard.c'))
+ 
+ subdir('macio')
+ 
+diff --git a/hw/misc/riscv_worldguard.c b/hw/misc/riscv_worldguard.c
+new file mode 100644
+index 0000000000..c839cc4e87
+--- /dev/null
++++ b/hw/misc/riscv_worldguard.c
+@@ -0,0 +1,183 @@
++/*
++ * RISC-V WorldGuard Device
++ *
++ * Copyright (c) 2022 SiFive, Inc.
++ *
++ * This provides WorldGuard global config.
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "qemu/log.h"
++#include "exec/hwaddr.h"
++#include "hw/registerfields.h"
++#include "hw/sysbus.h"
++#include "hw/hw.h"
++#include "hw/qdev-properties.h"
++#include "hw/misc/riscv_worldguard.h"
++#include "hw/core/cpu.h"
++#include "target/riscv/cpu.h"
++#include "trace.h"
++
++/*
++ * WorldGuard global config:
++ * List the global setting of WG, like num-of-worlds. It is unique in the machine.
++ * All CPUs with WG extension and wgChecker devices will use it.
++ */
++struct RISCVWorldGuardState *worldguard_config = NULL;
++
++static Property riscv_worldguard_properties[] = {
++    DEFINE_PROP_UINT32("nworlds", RISCVWorldGuardState, nworlds, 0),
++
++    /* Only Trusted WID could access wgCheckers if it is enabled. */
++    DEFINE_PROP_UINT32("trustedwid", RISCVWorldGuardState, trustedwid, NO_TRUSTEDWID),
++
 +    /*
-+     * Do tlb_flush() to whole address space via memory_region_notify_iommu()
-+     * when wgChecker changes it's config.
++     * WG reset value is bypass mode in HW. All WG permission checkings are
++     * pass by default, so SW could correctly run on the machine w/o any WG
++     * programming.
 +     */
++    DEFINE_PROP_BOOL("hw-bypass", RISCVWorldGuardState, hw_bypass, false),
 +
-+    IOMMUTLBEvent event = {
-+        .entry = {
-+            .addr_mask = -1ULL,
-+        }
-+    };
++    /*
++     * TrustZone compatible mode:
++     * This mode is only supported in 2 worlds system. It converts WorldGuard
++     * WID to TZ NS signal on the bus so WG could be cooperated with
++     * TZ components. In QEMU, it converts WID to 'MemTxAttrs.secure' bit used
++     * by TZ.
++     */
++    DEFINE_PROP_BOOL("tz-compat", RISCVWorldGuardState, tz_compat, false),
++    DEFINE_PROP_END_OF_LIST(),
++};
 +
-+    trace_riscv_wgc_iommu_notify_all();
++/* WID to MemTxAttrs converter */
++static void wid_to_mem_attrs(MemTxAttrs *attrs, uint32_t wid)
++{
++    g_assert(wid < worldguard_config->nworlds);
 +
-+    for (int i=0; i<WGC_NUM_REGIONS; i++) {
-+        WgCheckerRegion *region = &s->mem_regions[i];
-+        uint32_t nworlds = worldguard_config->nworlds;
-+
-+        if (!region->downstream) {
-+            continue;
-+        }
-+        event.entry.iova = 0;
-+        event.entry.translated_addr = 0;
-+        event.type = IOMMU_NOTIFIER_UNMAP;
-+        event.entry.perm = IOMMU_NONE;
-+
-+        for (int wid=0; wid<nworlds; wid++) {
-+            memory_region_notify_iommu(&region->upstream, wid, event);
-+        }
++    attrs->unspecified = 0;
++    if (worldguard_config->tz_compat) {
++        attrs->secure = wid;
++    } else {
++        attrs->world_id = wid;
 +    }
 +}
 +
- static void decode_napot(hwaddr a, hwaddr *sa, hwaddr *ea)
- {
-     /*
-@@ -309,6 +355,9 @@ static IOMMUTLBEntry riscv_wgc_translate(IOMMUMemoryRegion *iommu,
- {
-     WgCheckerRegion *region = container_of(iommu, WgCheckerRegion, upstream);
-     RISCVWgCheckerState *s = RISCV_WGCHECKER(region->wgchecker);
-+    bool is_write;
-+    WgAccessResult result;
-+    int wgc_perm;
-     hwaddr phys_addr;
-     uint64_t region_size;
- 
-@@ -327,18 +376,25 @@ static IOMMUTLBEntry riscv_wgc_translate(IOMMUMemoryRegion *iommu,
-      * Look at the wgChecker configuration for this address, and
-      * return a TLB entry directing the transaction at either
-      * downstream_as or blocked_io_as, as appropriate.
--     * For the moment, always permit accesses.
-      */
- 
-     /* Use physical address instead of offset */
-     phys_addr = addr + region->region_offset;
-+    is_write = (flags == IOMMU_WO);
- 
--    is_success = true;
-+    result = wgc_check_access(s, phys_addr, iommu_idx, is_write);
- 
-     trace_riscv_wgc_translate(phys_addr, flags,
--        iommu_idx, is_success ? "pass" : "block");
-+        iommu_idx, result.is_success ? "pass" : "block");
- 
--    ret.target_as = is_success ? &region->downstream_as : &region->blocked_io_as;
-+    wgc_perm = result.perm;
-+    if (!result.is_success) {
-+        /* if target_as is blocked_io_as, the perm is the condition of deny access. */
-+        wgc_perm ^= (P_READ | P_WRITE);
++/* MemTxAttrs to WID converter */
++uint32_t mem_attrs_to_wid(MemTxAttrs attrs)
++{
++    if (attrs.unspecified) {
++        if (worldguard_config->trustedwid != NO_TRUSTEDWID) {
++            return worldguard_config->trustedwid;
++        } else {
++            return worldguard_config->nworlds - 1;
++        }
 +    }
-+    ret.perm = wgc_perm_to_iommu_flags(wgc_perm);
 +
-+    ret.target_as = result.is_success ? &region->downstream_as : &region->blocked_io_as;
-     return ret;
- }
- 
-@@ -604,6 +660,9 @@ static void riscv_wgchecker_writeq(void *opaque, hwaddr addr,
-             break;
-         }
- 
-+        /* Flush softmmu TLB when wgChecker changes config. */
-+        wgchecker_iommu_notify_all(s);
++    if (worldguard_config->tz_compat) {
++        return attrs.secure;
++    } else {
++        return attrs.world_id;
++    }
++}
 +
-         return;
-     }
- 
-@@ -699,6 +758,9 @@ static void riscv_wgchecker_writel(void *opaque, hwaddr addr,
-             break;
-         }
- 
-+        /* Flush softmmu TLB when wgChecker changes config. */
-+        wgchecker_iommu_notify_all(s);
++bool could_access_wgblocks(MemTxAttrs attrs, const char *wgblock)
++{
++    uint32_t wid = mem_attrs_to_wid(attrs);
++    uint32_t trustedwid = worldguard_config->trustedwid;
 +
-         return;
-     }
- 
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index a64c7f0f9f..80907c45d2 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -359,3 +359,4 @@ riscv_wgchecker_mmio_write(uint64_t base, uint64_t offset, unsigned int size, ui
- riscv_wgc_mem_blocked_read(uint64_t addr, unsigned size, uint32_t wid) "wgChecker blocked read: offset 0x%" PRIx64 " size %u wid %" PRIu32
- riscv_wgc_mem_blocked_write(uint64_t addr, uint64_t data, unsigned size, uint32_t wid) "wgChecker blocked write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u wid %" PRIu32
- riscv_wgc_translate(uint64_t addr, int flags, int wid, const char *res) "wgChecker translate: addr 0x%016" PRIx64 " flags 0x%x wid %d: %s"
-+riscv_wgc_iommu_notify_all(void) "wgChecker iommu: notifying UNMAP for all"
++    if ((trustedwid == NO_TRUSTEDWID) || (wid == trustedwid)) {
++        return true;
++    } else {
++        /*
++         * Only Trusted WID could access WG blocks if having it.
++         * Access them from other WIDs will get failed.
++         */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Invalid access to %s from non-trusted WID %d\n",
++                      __func__, wgblock, wid);
++
++        return false;
++    }
++}
++
++static void riscv_worldguard_realize(DeviceState *dev, Error **errp)
++{
++    RISCVWorldGuardState *s = RISCV_WORLDGUARD(dev);
++
++    if (worldguard_config != NULL) {
++        error_setg(errp, "Couldn't realize multiple global WorldGuard configs.");
++        return;
++    }
++
++    if ((s->nworlds) & (s->nworlds - 1)) {
++        error_setg(errp, "Current implementation only support power-of-2 NWorld.");
++        return;
++    }
++
++    if ((s->trustedwid != NO_TRUSTEDWID) && (s->trustedwid >= s->nworlds)) {
++        error_setg(errp, "Trusted WID must be less than the number of world.");
++        return;
++    }
++
++    if ((s->nworlds != 2) && (s->tz_compat)) {
++        error_setg(errp, "Only 2 worlds system could use TrustZone compatible mode.");
++        return;
++    }
++
++    /* Register WG global config */
++    worldguard_config = s;
++
++    /* Initialize global data for wgChecker */
++    wgc_slot_perm_mask = MAKE_64BIT_MASK(0, 2 * worldguard_config->nworlds);
++}
++
++static void riscv_worldguard_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    device_class_set_props(dc, riscv_worldguard_properties);
++    dc->user_creatable = true;
++    dc->realize = riscv_worldguard_realize;
++}
++
++static const TypeInfo riscv_worldguard_info = {
++    .name          = TYPE_RISCV_WORLDGUARD,
++    .parent        = TYPE_DEVICE,
++    .instance_size = sizeof(RISCVWorldGuardState),
++    .class_init    = riscv_worldguard_class_init,
++};
++
++/*
++ * Create WorldGuard global config
++ */
++DeviceState *riscv_worldguard_create(uint32_t nworlds, uint32_t trustedwid,
++                                     bool hw_bypass, bool tz_compat)
++{
++    DeviceState *dev = qdev_new(TYPE_RISCV_WORLDGUARD);
++    qdev_prop_set_uint32(dev, "nworlds", nworlds);
++    qdev_prop_set_uint32(dev, "trustedwid", trustedwid);
++    qdev_prop_set_bit(dev, "hw-bypass", hw_bypass);
++    qdev_prop_set_bit(dev, "tz-compat", tz_compat);
++    qdev_realize(DEVICE(dev), NULL, &error_fatal);
++    return dev;
++}
++
++static void riscv_worldguard_register_types(void)
++{
++    type_register_static(&riscv_worldguard_info);
++}
++
++type_init(riscv_worldguard_register_types)
+diff --git a/include/hw/misc/riscv_worldguard.h b/include/hw/misc/riscv_worldguard.h
+new file mode 100644
+index 0000000000..8a533a0517
+--- /dev/null
++++ b/include/hw/misc/riscv_worldguard.h
+@@ -0,0 +1,55 @@
++/*
++ * RISC-V WorldGuard Devices
++ *
++ * Copyright (c) 2022 RISCV, Inc.
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef HW_RISCV_WORLDGUARD_H
++#define HW_RISCV_WORLDGUARD_H
++
++#include "qom/object.h"
++#include "hw/sysbus.h"
++#include "exec/hwaddr.h"
++
++#define TYPE_RISCV_WORLDGUARD "riscv.worldguard"
++
++#define NO_TRUSTEDWID           UINT32_MAX
++
++typedef struct RISCVWorldGuardState RISCVWorldGuardState;
++DECLARE_INSTANCE_CHECKER(RISCVWorldGuardState, RISCV_WORLDGUARD,
++                         TYPE_RISCV_WORLDGUARD)
++
++struct RISCVWorldGuardState {
++    /*< private >*/
++    DeviceState parent_obj;
++
++    /*< public >*/
++
++    /* Property */
++    uint32_t nworlds;
++    uint32_t trustedwid;
++    bool hw_bypass;
++    bool tz_compat;
++};
++
++extern struct RISCVWorldGuardState *worldguard_config;
++
++DeviceState *riscv_worldguard_create(uint32_t nworlds, uint32_t trustedwid,
++                                     bool hw_bypass, bool tz_compat);
++
++uint32_t mem_attrs_to_wid(MemTxAttrs attrs);
++bool could_access_wgblocks(MemTxAttrs attrs, const char *wgblock);
++
++#endif
 -- 
 2.17.1
 

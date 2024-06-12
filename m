@@ -1,618 +1,149 @@
-Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp353475ejc;
-        Wed, 12 Jun 2024 05:23:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV+tJUlDbYGdamsEPygCeeU5vilzWk0GpT4qtdhYCtMqyHHkyZPom3E3kIzLq0jAQz3QfHVu2D8yFiWn5uYnTqOMT/QPHTH
-X-Google-Smtp-Source: AGHT+IFZFB1r/oW6C5Hb1FJMLpMvXL2cubfbS3o8mcM30n1RKiRZyqEnSiuWwJoAykJoxqLz98FX
-X-Received: by 2002:ac8:7f10:0:b0:43f:f238:f7bd with SMTP id d75a77b69052e-4415ac2fd8fmr20279241cf.18.1718195031585;
-        Wed, 12 Jun 2024 05:23:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718195031; cv=none;
+Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp379981ejc;
+        Wed, 12 Jun 2024 06:11:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWA+684/EuxkMuSr/6IALcEtsW19FISZa3cij3SfVqs/xbZ9p66evj40KPKMeAwAUa4fu9s+U26eELF4+AkR8KL/ZQ0IA7U
+X-Google-Smtp-Source: AGHT+IEe8wq/PQwSsjRKWusqiBvSgjuTkBreawVc5xug+ntRM8K4ZyKFMbCDpExHiRJrXeZwy9dc
+X-Received: by 2002:a67:eb0b:0:b0:48c:482a:cc50 with SMTP id ada2fe7eead31-48d91df3c08mr1837601137.21.1718197864485;
+        Wed, 12 Jun 2024 06:11:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718197864; cv=none;
         d=google.com; s=arc-20160816;
-        b=0DjQYxDgrtyrpWi6itAa8xdW91xlu30kxWLQjcXZupAIlimL3NW1runqx1F3KQJGVZ
-         2HD1UrPqQ9Ih0rQbuC1PwTFXjvWpMHfJ4wkLjaCBOwj4SBV04dOoYF4aX0rFEwX4Vd1b
-         leR1hApuIAv26gN4e91tha45he7ygWnhO35LR6QrKt+b+8QVeBb62PqCw/TsVmOszkLi
-         KxodMvVECtkwYNKpBQC/XL23KWfuDf88cjO/QO7d0xJpF6UhqP0iou2acjzte+UMS6RG
-         SnFaHzapgn1bI+N+ndRSYtGOmnwuo+6fnllwI/nLdwTzSa4DPB19ozTnuMibH4NpIKCy
-         u7hQ==
+        b=hR/kdzpW/qUi7uCJ7uvpidtjrBdT5zPPjFtB0UDORPrk7rkbkOsqGSo1P+91bbp472
+         Itz211ayaY7P1AY75Dvynvf+DZfvOFiGgc3kUNoP0kHbqPaxZCyt6VCT6NZ56xfjmtxS
+         QeVWumh81iOmA3WdHo/kb5J/v1+WYg2J3WemV51WjnEesQluP8d1e95z00RfK67ha/PI
+         p/b9RHrbd8x8IY8CrQZvwd5EzrFhGXjf1BRpNA3JZ/jTk1Plb87Fzvv3v8pBX8umRrpH
+         DSZDwMZ91+Il58aAQCyA0HfOypvjditg/B84b6+UaApkNGgKI/UN6WWiMjfBu4PXs8ON
+         Q6XA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Acf3Mx7S45LMuhHwPGLrXU1u+Mid4/Y1POR7Yi8ngPU=;
-        fh=VlzBMz3j98jbA9QgBr8Soj9vmGEUofBpvztzy7HQy48=;
-        b=ViGCsZZX7YrMEha9sjZqpd53d9sGckOv8q1TQtmOwKCpkx+S2OkZoSrXJmBrM4f/xo
-         GwdYJs3Lse8VQWCL+rr2Ojjl1dSH77qrhGX68qQpvt9+UOvKxfXHOkJJ4iHP72MpICEu
-         Tf2++UtqzPv5rtrwDDkjBrIrqpCCLsKjcYRrTGSyTl9P9ubbk+buAQR0Oa9xDLAQZdJz
-         f2yQl4JxrKfgmGATcTXL33bNc7qKMXZrbnnSX2Fmi5U7v2qW0LSIYR6dI9uEqqKHo+4A
-         AYkQJvOG4b4ujec0Boh9NfPPpYN5ZlI6bAU9aya4Ddww+GbtHssG+AJmDslrXEVSgaTC
-         9HIQ==;
+         :mime-version:user-agent:message-id:date:references:in-reply-to
+         :subject:cc:to:from:dkim-signature;
+        bh=BBfd6Z86Wbhg9+axntpREHq05oibhQASjFKI6YkK6pw=;
+        fh=6ThEABbZt40j1Z/FULqIgCb6OhddEejlvahWnHgpVKA=;
+        b=XVOePhEjV2n472ggycUZq6zSfKqaB7oMVOfLDD2yDjZMcBLIFYllGBMt3h9kxKLIbD
+         bwTEs010ZTMgPfvdSGRj6kF55FAcrm31PtLkWt9TAzy3F/GScG2zzE+XbVQZONRUCJji
+         isDZ8STh8Fn4Lj/eVaVLTOvLoQGeI06twXZXAFnYHpKZqopwk0XfPKmVTA3XSLS5t/NZ
+         +lkPVoZZXKU8z7wi2mZ/dFhHMoW/6//Uh5bVg9bCGF7og480FBXjDRWODw1oypDJindA
+         IDvuVu8MZmyrWxQDYQF8waCLEHchoYiGiRmRGMfvlViLywly0JttSVKkUQNI7wbBey1s
+         W0yg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F6tsDgBB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aWWtZXVy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44151a5e359si36399241cf.93.2024.06.12.05.23.51
+        by mx.google.com with ESMTPS id ada2fe7eead31-48ce7cf2848si1880406137.682.2024.06.12.06.11.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Jun 2024 05:23:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Jun 2024 06:11:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=F6tsDgBB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aWWtZXVy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sHN0c-0000fi-P0; Wed, 12 Jun 2024 08:23:22 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sHNhF-0007sx-9Z; Wed, 12 Jun 2024 09:07:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sHN0a-0000eX-Vz
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 08:23:21 -0400
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sHN0W-00011Y-07
- for qemu-devel@nongnu.org; Wed, 12 Jun 2024 08:23:20 -0400
-Received: by mail-lf1-x12f.google.com with SMTP id
- 2adb3069b0e04-52bc335e49aso2911219e87.3
- for <qemu-devel@nongnu.org>; Wed, 12 Jun 2024 05:23:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718194993; x=1718799793; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Acf3Mx7S45LMuhHwPGLrXU1u+Mid4/Y1POR7Yi8ngPU=;
- b=F6tsDgBBqZPDff/Ky918vcwgb2GVeensncUUXzEF54DMCXo0+8YqQkberDD65Q2AUX
- t3kLYx3LN7yr+aBDmYcdzFQYrb3oKDjW8fvDpVRFVJe9RvR9dKNtHz6EQ0AdgRDmCBEf
- 4Jlav2YIJ5h9wv0nmnGywF7Szwvv9ldyB9TyZpXSSd7gakhntUbVDowAqxPVMQhqGmtd
- EJ2FZ6HqknPHvDzAAxvU15GtR8t1Occvpdd34vOi9JmfK9SaBq4NypNFi1suOWUixVDT
- SkP/ilbHRtfMhqLmfbunR2coJb96jKsvj0IC1XtoWCcSlQxshk7kTbYUZHhT9y7IwrhV
- /yZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718194993; x=1718799793;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Acf3Mx7S45LMuhHwPGLrXU1u+Mid4/Y1POR7Yi8ngPU=;
- b=pqrZRFw5PI4qitnpoa6UrLeVeHjijHioloYttSAPdcph3AH+xzjbPzxhyc7xnE30NT
- kinynHicoUvro05uEd1tCvJf/KOSMJupjwv5PDLY6Wzu+4cPNOGw4d1wgJGcHVHys+UI
- d5GYwTZVUGUu5IPaqZ1e2WJCeWDLGr8f9dVFWrgZpbJTDTREtR5zIokmaPDqYfZFWgPs
- jIgCQawOhqjtGAqJYdTVNReBuAK+aCC2gO9CILCuxA1Z6gCwUgqcuaj30VrJLL6sfM5T
- RP4U3sJnmLPjjnj2PcaIX+xZrDYrDYBYscpPCKujR3doLCDrndiSX8zJlcO67cCrO070
- 1tFQ==
-X-Gm-Message-State: AOJu0Yy0n6EVVYkmCkCL3kHk4DAYeZz/PYoiT6mZI4RBUHcWw0RVlOWk
- 4Dr+NJ2fGeaKxyhWGhmhtf9MWgrctsA/gH2k9lVanVtTUZOULy+ee41z1HeKlPpZ+toZP7+6cTg
- h
-X-Received: by 2002:ac2:53a2:0:b0:52b:c1d5:949d with SMTP id
- 2adb3069b0e04-52c9a3fdec7mr988649e87.54.1718194992912; 
- Wed, 12 Jun 2024 05:23:12 -0700 (PDT)
-Received: from [192.168.69.100] (ram94-h02-176-184-0-172.dsl.sta.abo.bbox.fr.
- [176.184.0.172]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-422874e73e8sm25796105e9.43.2024.06.12.05.23.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Jun 2024 05:23:12 -0700 (PDT)
-Message-ID: <18739a67-84bb-4fd3-adb6-0db0f0eb7af1@linaro.org>
-Date: Wed, 12 Jun 2024 14:23:09 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sHNhD-0007mK-O8
+ for qemu-arm@nongnu.org; Wed, 12 Jun 2024 09:07:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sHNhC-0000Yg-4M
+ for qemu-arm@nongnu.org; Wed, 12 Jun 2024 09:07:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1718197641;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BBfd6Z86Wbhg9+axntpREHq05oibhQASjFKI6YkK6pw=;
+ b=aWWtZXVyex/0WlGVo4zOH4iuG7IVBICnRm22lQ5OY7i97GNNLyPmqtzgLxa7cP0y8o+dVX
+ fOKLLGeEQGgb3Xtb+2MPtHVkYHbgnm1TbTycLQENMKgUjKNp1JmUG8DrHWdXEWueOzJ4F3
+ Miq1m5Jz8afBcaT+gMPOvFazju9R5AE=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-84-BV-LNF3yOTOUy7iEhDe-LQ-1; Wed,
+ 12 Jun 2024 09:07:17 -0400
+X-MC-Unique: BV-LNF3yOTOUy7iEhDe-LQ-1
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8566F1954B0B; Wed, 12 Jun 2024 13:07:16 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.93])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id EEA4730000C4; Wed, 12 Jun 2024 13:07:15 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id C30B721E66E5; Wed, 12 Jun 2024 15:07:13 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Konstantin Kostiuk <kkostiuk@redhat.com>,  Michael Roth
+ <michael.roth@amd.com>,  qemu-devel@nongnu.org,  qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org,  qemu-block@nongnu.org,  qemu-s390x@nongnu.org
 Subject: Re: [RFC PATCH v2 21/22] qapi: Inline and remove QERR_UNSUPPORTED
  definition
-To: Konstantin Kostiuk <kkostiuk@redhat.com>,
- Michael Roth <michael.roth@amd.com>
-Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- qemu-s390x@nongnu.org
+In-Reply-To: <18739a67-84bb-4fd3-adb6-0db0f0eb7af1@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Wed, 12 Jun 2024 14:23:09
+ +0200")
 References: <20231005045041.52649-1-philmd@linaro.org>
- <20231005045041.52649-22-philmd@linaro.org> <87mswx5n63.fsf@pond.sub.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <87mswx5n63.fsf@pond.sub.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ <20231005045041.52649-22-philmd@linaro.org>
+ <87mswx5n63.fsf@pond.sub.org>
+ <18739a67-84bb-4fd3-adb6-0db0f0eb7af1@linaro.org>
+Date: Wed, 12 Jun 2024 15:07:13 +0200
+Message-ID: <87plsmfgxq.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 11
+X-Spam_score: 1.1
+X-Spam_bar: +
+X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.143,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OAWNkjU3lN/8
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4vDIwHUDa3LC
 
-Michael, Konstantin, QERR_UNSUPPORTED is only used by QGA.
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-Do you mind giving our maintainer's position on Markus
-analysis so we can know how to proceed with this definition?
+> Michael, Konstantin, QERR_UNSUPPORTED is only used by QGA.
+>
+> Do you mind giving our maintainer's position on Markus
+> analysis so we can know how to proceed with this definition?
 
-Regards,
+Daniel Berrang=C3=A9 recently posted patches that get rid of most instances
+of QERR_UNSUPPORTED:
 
-Phil.
+    [PATCH 00/20] qga: clean up command source locations and conditionals
+    https://lore.kernel.org/qemu-devel/20240604134933.220112-1-berrange@red=
+hat.com/
 
-On 5/10/23 13:22, Markus Armbruster wrote:
-> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
-> 
->> Address the comment added in commit 4629ed1e98
->> ("qerror: Finally unused, clean up"), from 2015:
->>
->>    /*
->>     * These macros will go away, please don't use
->>     * in new code, and do not add new ones!
->>     */
->>
->> Mechanical transformation using:
->>
->>    $ sed -i -e 's/QERR_UNSUPPORTED/"this feature or command is not currently supported"/' \
->>      $(git grep -wl QERR_UNSUPPORTED)
->>
->> then manually removing the definition in include/qapi/qmp/qerror.h.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->> RFC: Not sure what is the best way to change the comment
->>       in qga/qapi-schema.json...
->> ---
->>   qga/qapi-schema.json      |  5 +++--
->>   include/qapi/qmp/qerror.h |  3 ---
->>   qga/commands-bsd.c        |  8 +++----
->>   qga/commands-posix.c      | 46 +++++++++++++++++++--------------------
->>   qga/commands-win32.c      | 22 +++++++++----------
->>   5 files changed, 41 insertions(+), 43 deletions(-)
->>
->> diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
->> index b720dd4379..51683f4dc2 100644
->> --- a/qga/qapi-schema.json
->> +++ b/qga/qapi-schema.json
->> @@ -6,8 +6,9 @@
->     ##
->     # = General note concerning the use of guest agent interfaces
->>   #
->>   # "unsupported" is a higher-level error than the errors that
->>   # individual commands might document.  The caller should always be
->> -# prepared to receive QERR_UNSUPPORTED, even if the given command
->> -# doesn't specify it, or doesn't document any failure mode at all.
->> +# prepared to receive the "this feature or command is not currently supported"
->> +# message, even if the given command doesn't specify it, or doesn't document
->> +# any failure mode at all.
->>   ##
->>   
->>   ##
-> 
-> The comment is problematic before the patch.  It's a doc comment,
-> i.e. it goes into the "QEMU Guest Agent Protocol Reference" manual,
-> where QERR_UNSUPPORTED is meaningless.  Back when the comment was added
-> (commit 9481ecd737b "qga schema: document generic QERR_UNSUPPORTED"), it
-> was still internal documentation, where QERR_UNSUPPORTED made sense.  It
-> became external documentation four years later (commit 56e8bdd46a8
-> "build-sys: add qapi doc generation targets")
-> 
-> I'm not sure how useful the comment is.
-> 
-> I guess we could instead simply point out that clients should always be
-> prepared for errors, even when the command doesn't document any, simply
-> because commands need not exist in all versions or builds of qemu-ga.
-> 
->> diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
->> index 840831cc6a..7606f4525d 100644
->> --- a/include/qapi/qmp/qerror.h
->> +++ b/include/qapi/qmp/qerror.h
->> @@ -17,7 +17,4 @@
->>    * add new ones!
->>    */
->>   
->> -#define QERR_UNSUPPORTED \
->> -    "this feature or command is not currently supported"
->> -
->>   #endif /* QERROR_H */
->> diff --git a/qga/commands-bsd.c b/qga/commands-bsd.c
->> index 17bddda1cf..11536f148f 100644
->> --- a/qga/commands-bsd.c
->> +++ b/qga/commands-bsd.c
->> @@ -152,25 +152,25 @@ int qmp_guest_fsfreeze_do_thaw(Error **errp)
->>   
->>   GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
-> 
-> These are all commands that are not supported by this build of qemu-ga.
-> We could use the opportunity to improve the error message: scratch
-> "feature or ".  Or maybe change the message to "this command is not
-> supported in this version of qemu-ga".
-> 
-> More of the same below, marked [*].
-> 
-> Taking a step back...  Do we really need to make this a failure of its
-> own?  Why not fail exactly as if the command didn't exist?  Why would a
-> client ever care for the difference between "command doesn't exist in
-> this build of qemu-ga (but it does in other builds of this version of
-> qemu-ga)" and "command doesn't exist in this build of qemu-ga (and it
-> won't in any build of this version of qemu-ga)"?
-> 
-> If clients don't care, we could instead unregister these commands,
-> i.e. undo qmp_register_command().  The command will then fail exactly
-> like any other unknown command.  We still need to provide the functions
-> to make the linker happy (unless we play with weak symbols), but they
-> can simply abort().
-> 
-> Michael and/or Konstantin, do you have comments as maintainers?  A
-> preference even?
-> 
-> Hmm, there's yet another mechanism to disable commands:
-> qmp_disable_command() & friends.  Looks like its purpose is letting
-> guest system administrators disable commands, and also to disable a
-> bunch of commands in "frozen state", whatever that is.  Alright, I
-> didn't see that, lalala.
-> 
->>   #endif /* CONFIG_FSFREEZE */
->> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
->> index 6169bbf7a0..f510add366 100644
->> --- a/qga/commands-posix.c
->> +++ b/qga/commands-posix.c
->> @@ -165,7 +165,7 @@ void qmp_guest_set_time(bool has_time, int64_t time_ns, Error **errp)
->>       }
->>   
->>       if (!hwclock_available) {
->> -        error_setg(errp, QERR_UNSUPPORTED);
->> +        error_setg(errp, "this feature or command is not currently supported");
->>           return;
->>       }
->>   
-> 
-> !hwclock_available means /sbin/hwclock grants execute permission for the
-> process's real UID and GID.  I'm not sure why we bother to check that.
-> Why not let execl() fail, and report that error?  Oh, we don't:
-> 
->             /* Use '/sbin/hwclock -w' to set RTC from the system time,
->              * or '/sbin/hwclock -s' to set the system time from RTC. */
->             execl(hwclock_path, "hwclock", has_time ? "-w" : "-s", NULL);
->             _exit(EXIT_FAILURE);
-> 
-> This is wrong.  We should error_setg_errno(errp, errno, ...); return
-> instead.  Not your patch's problem.
-> 
-> Until we do that: [*]
-> 
->> @@ -1540,7 +1540,7 @@ GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
->>   
->>   GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
-> 
-> Command not supported by this build of qemu-qa: [*].
-> 
->>   
->> @@ -2235,7 +2235,7 @@ void qmp_guest_set_user_password(const char *username,
->>                                    bool crypted,
->>                                    Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>   }
->>   #endif /* __linux__ || __FreeBSD__ */
->>   
->> @@ -2751,47 +2751,47 @@ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
->>   
->>   void qmp_guest_suspend_disk(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>   }
->>   
->>   void qmp_guest_suspend_ram(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>   }
->>   
->>   void qmp_guest_suspend_hybrid(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>   }
->>   
->>   GuestLogicalProcessorList *qmp_guest_get_vcpus(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   int64_t qmp_guest_set_vcpus(GuestLogicalProcessorList *vcpus, Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return -1;
->>   }
->>   
->>   GuestMemoryBlockList *qmp_guest_get_memory_blocks(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   GuestMemoryBlockResponseList *
->>   qmp_guest_set_memory_blocks(GuestMemoryBlockList *mem_blks, Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->> @@ -3056,7 +3056,7 @@ error:
->>   
->>   GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->> @@ -3066,20 +3066,20 @@ GuestNetworkInterfaceList *qmp_guest_network_get_interfaces(Error **errp)
->>   
->>   GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>   
->>       return 0;
->>   }
->>   
->>   int64_t qmp_guest_fsfreeze_freeze(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>   
->>       return 0;
->>   }
->> @@ -3088,33 +3088,33 @@ int64_t qmp_guest_fsfreeze_freeze_list(bool has_mountpoints,
->>                                          strList *mountpoints,
->>                                          Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>   
->>       return 0;
->>   }
->>   
->>   int64_t qmp_guest_fsfreeze_thaw(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>   
->>       return 0;
->>   }
->>   
->>   GuestDiskInfoList *qmp_guest_get_disks(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->> @@ -3124,7 +3124,7 @@ GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
->>   GuestFilesystemTrimResponse *
->>   qmp_guest_fstrim(bool has_minimum, int64_t minimum, Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   #endif
->> @@ -3243,7 +3243,7 @@ GuestUserList *qmp_guest_get_users(Error **errp)
->>   
->>   GuestUserList *qmp_guest_get_users(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->> @@ -3386,7 +3386,7 @@ GuestOSInfo *qmp_guest_get_osinfo(Error **errp)
->>   
->>   GuestDeviceInfoList *qmp_guest_get_devices(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>   
->>       return NULL;
->>   }
-> 
-> Commands not supported by this build of qemu-qa: [*].
-> 
->> diff --git a/qga/commands-win32.c b/qga/commands-win32.c
->> index aa8c9770d4..5c9f8e0923 100644
->> --- a/qga/commands-win32.c
->> +++ b/qga/commands-win32.c
->> @@ -1213,7 +1213,7 @@ GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
->>   GuestFsfreezeStatus qmp_guest_fsfreeze_status(Error **errp)
->>   {
->>       if (!vss_initialized()) {
->> -        error_setg(errp, QERR_UNSUPPORTED);
->> +        error_setg(errp, "this feature or command is not currently supported");
->>           return 0;
->>       }
->>   
->> @@ -1241,7 +1241,7 @@ int64_t qmp_guest_fsfreeze_freeze_list(bool has_mountpoints,
->>       Error *local_err = NULL;
->>   
->>       if (!vss_initialized()) {
->> -        error_setg(errp, QERR_UNSUPPORTED);
->> +        error_setg(errp, "this feature or command is not currently supported");
->>           return 0;
->>       }
->>   
->> @@ -1276,7 +1276,7 @@ int64_t qmp_guest_fsfreeze_thaw(Error **errp)
->>       int i;
->>   
->>       if (!vss_initialized()) {
->> -        error_setg(errp, QERR_UNSUPPORTED);
->> +        error_setg(errp, "this feature or command is not currently supported");
->>           return 0;
->>       }
->>   
-> 
-> !vss_initialized() means qga-vss.dll failed to load and initialize.
-> 
-> Another [*].
-> 
->> @@ -1509,7 +1509,7 @@ out:
->>   
->>   void qmp_guest_suspend_hybrid(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>   }
->>   
->>   static IP_ADAPTER_ADDRESSES *guest_get_adapters_addresses(Error **errp)
->> @@ -1877,7 +1877,7 @@ GuestLogicalProcessorList *qmp_guest_get_vcpus(Error **errp)
->>   
->>   int64_t qmp_guest_set_vcpus(GuestLogicalProcessorList *vcpus, Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return -1;
->>   }
->>   
-> 
-> Commands not supported by this build of qemu-qa: [*].
-> 
->> @@ -1938,7 +1938,7 @@ void qmp_guest_set_user_password(const char *username,
->>       GError *gerr = NULL;
->>   
->>       if (crypted) {
->> -        error_setg(errp, QERR_UNSUPPORTED);
->> +        error_setg(errp, "this feature or command is not currently supported");
->>           return;
->>       }
-> 
-> Command does not support "crypted": true in this build of qemu-ga.  The
-> error message is crap.  Better would be some variation of "this machine
-> supports only clear-text passwords".
-> 
->>   
->> @@ -1983,20 +1983,20 @@ done:
->>   
->>   GuestMemoryBlockList *qmp_guest_get_memory_blocks(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   GuestMemoryBlockResponseList *
->>   qmp_guest_set_memory_blocks(GuestMemoryBlockList *mem_blks, Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   GuestMemoryBlockInfo *qmp_guest_get_memory_block_info(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->> @@ -2522,12 +2522,12 @@ char *qga_get_host_name(Error **errp)
->>   
->>   GuestDiskStatsInfoList *qmp_guest_get_diskstats(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
->>   
->>   GuestCpuStatsList *qmp_guest_get_cpustats(Error **errp)
->>   {
->> -    error_setg(errp, QERR_UNSUPPORTED);
->> +    error_setg(errp, "this feature or command is not currently supported");
->>       return NULL;
->>   }
-> 
-> Commands not supported by this build of qemu-qa: [*].
-> 
-> Summary of my review:
-> 
-> * You're unsure about your change to the "General note concerning the
->    use of guest agent interfaces".  I suggested a way to rewrite it.
-> 
-> * Error messages could use improvement.  Since your patch doesn't change
->    any, feel free to leave that for another day.
-> 
-> * How we do compiled-out commands could use improvement.  Feel even more
->    free to leave for another day.  I'd like to hear the maintainers'
->    opinion, though.
-> 
-> 
+I pointed out a possible opportunity to remove even more.
+
+I think we should let the dust settle there, then figure out how to
+eliminate remaining QERR_UNSUPPORTED, if any.
 

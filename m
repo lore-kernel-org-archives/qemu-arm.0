@@ -1,328 +1,212 @@
-Received: by 2002:a17:906:641:b0:a6f:1bf6:7fc1 with SMTP id t1csp192071ejb;
-        Thu, 13 Jun 2024 02:26:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVDHDTvmFfAMzarlp90u4UaBTdtpt4in6rpsPqREtksRteGNCxP/YvVpA6CqI481pIuEbsoZq8GqDLSOfMCQJ2/D3YTUvwp
-X-Google-Smtp-Source: AGHT+IFpHtO6+ltoYzLObfZDRI1gxNX0Zwcz4WIlCs4p7T+Pg1cr26a/bsNhJGHSa8R2+AVFEGJv
-X-Received: by 2002:a05:620a:8385:b0:795:5e4b:2ce6 with SMTP id af79cd13be357-797f5ed6a1bmr478486485a.2.1718270765288;
-        Thu, 13 Jun 2024 02:26:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718270765; cv=none;
+Received: by 2002:a17:906:641:b0:a6f:1bf6:7fc1 with SMTP id t1csp202726ejb;
+        Thu, 13 Jun 2024 02:52:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUkcH7gM+15StRvaq8RSZjTKzJGL2Xn4Iy0UWfWPfnX606FedxAZ2XL7laowki5He7b3KgARlXALWfEOOwimDRDzqKTRee4
+X-Google-Smtp-Source: AGHT+IGuuuZ3Dke/K4F7Gg7/fuDSGE6Trk6wMh9SALEYcJrEo3W0f6GC/PHwvQ0S+XLhO0RnvfGY
+X-Received: by 2002:a05:620a:31a5:b0:795:5473:999e with SMTP id af79cd13be357-797f6113bd6mr491448285a.68.1718272362292;
+        Thu, 13 Jun 2024 02:52:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718272362; cv=none;
         d=google.com; s=arc-20160816;
-        b=MeBbZ7RO5i7dkjl/LQwfsQiDcbQA2HdSn0lf59aBeRcJkJgdUhZDYcTppRu1SMaOZY
-         P9nqmkFRFr4o46bcP3BlyIZ5sdywgsztAgRb2tgRsNm08L+syDheBHgMyJNoYAIj7rLp
-         Iy8S6nIhe3vwkpgiOCrP0kkLt9aOnBhQdLUBuiCayBHMYxJJIa2N6ayHViixmQEUo3mK
-         TBoeQxCPj3o62hUmNc5O9z38Fv6Wj2t/+D2Jo1AvK4aTQdE+39Ly3Xd74wnMCMRZRMiK
-         hFGMlzQf2xAanhBLb75GPRv2N/DxutA2kyyAYiUUsrinql7cR0TbzJfldPsXQRAwwhwf
-         DOrQ==
+        b=elg2kAXICR68pQweWYGzI5FftUHwbYidOfNB6ZhvvgQrApnRZnP2fGwM2XCrSNmY/2
+         RmllFqU35o9atQC9LoOVPZHt9jS+ZY8VW0J1zdEy62eET/vED9AcOtFuODTi6i2WLwL+
+         n7W2EPsxBc4yg8XhJ3+2gVBQD/UNv1h+ZrMOXweJTs3OJbrl7Dijoqg8B/gbUG8Un1JN
+         FZaV37AB032QiglCU0azdwyiwjgmZdurBSWqW6huYA3ZBrJIlXdMeb0UFxsksK5uuN+h
+         SEACEwJlmcDPXQdZyWm5yvcLPngrdL+aGDaC0r/uwfJapElAb8Iv+TCOK5U2DI+vAera
+         r8yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=FFPPspNGpR3z2DWcghCZxs58lk0acCVx1fSicKWEyZk=;
-        fh=NBkbC8z0yxZVnBu5+T/osSPCS2NzeZu/yHpj5pv7NrY=;
-        b=EvHzniq8FdAPsY/5RYyfiQzW0NH2S2bFrh7ODisfEndIBo6DKDNikjZHkvdF1QPXwl
-         FG2sJ4Skm99Q9OpcyE9i/dC+9X1/SPRsDFm4TTBcoPDb9cKeUii5fhKyQ1ELsS7mwHwS
-         oCGOpAvM+ffhqhPreRwn1LpEsU14T6Hhk9XfYlfHb2/g87P+yDQR+gYVCqfs15IxSMEl
-         x4U+53GnljE0okXQXoCc0dTwmwoW/aCvWYWAIcknBRtnbn4DqmnP70urbCz8lMdxTXDF
-         juV8uLTTnGGB1LIYo3DWyCwpmum7WAZ2o8V5dd2N2vY8226Q4s4QYdYAEtUJRo1Dao18
-         wcLA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=aLogVWHAGRbH0gsjEVsGMBY9pF7extElnz5kVcP2ry0=;
+        fh=LWd8Kcrd6LzZ/O6rv9/2iVR4aVVh5jZO53t9K/eGd4w=;
+        b=jKyRy2VH7MDEoPZ+0nNM7dfnqCrY40RUGGI8H2cN7Eyk8lTwAxz0cbapPueAtcsWiJ
+         +0LD1E6y9ji9XeNHgaA7RdhR6gNhKgOHIYi26cyKeR66tsllWD7fDDkRJSDSEtjQSs4I
+         7KR7f6SKSalWsxtK8bBLs3z+2bqcB501TzLxviIhqdEpFd66mRfNCnIwwpq+NEvdZOsI
+         +CzS5sKEyIrdXKL7XqqgSbMyBTtEZPUtoxDiNdKP9fZiS5DxVx7SqozLTiQd+SSN60h0
+         wVDfbWAQVxO5w7WHGAC+ttHXexjoAGgFz7kiBkwCpVZD0CigmOM1RpvWDQ0JuAqwYqvx
+         VuDQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e+xia53D;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@sifive.com header.s=google header.b=KR2NUao0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-441ef3bd0e4si11082451cf.60.2024.06.13.02.26.05
+        by mx.google.com with ESMTPS id af79cd13be357-798ac096d86si101127385a.782.2024.06.13.02.52.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Jun 2024 02:26:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Jun 2024 02:52:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e+xia53D;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@sifive.com header.s=google header.b=KR2NUao0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sHghF-0004GH-Lr; Thu, 13 Jun 2024 05:24:41 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sHh8F-0006pc-Px; Thu, 13 Jun 2024 05:52:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sHghE-0004Fr-R0
- for qemu-devel@nongnu.org; Thu, 13 Jun 2024 05:24:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sHghD-0005X7-1j
- for qemu-devel@nongnu.org; Thu, 13 Jun 2024 05:24:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718270678;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FFPPspNGpR3z2DWcghCZxs58lk0acCVx1fSicKWEyZk=;
- b=e+xia53D1vlMxoKHUdNAHfisXlqww1zqccqWX6F8znSZKTKJbGTAYKqnZ2Ei2SdlILIMgF
- 6jPAf3sdEzP/Ju1oztfoslnrQ3yXKLNxLkLfWagvpMBM0BolqpjQ5zwJMjq2B3AGPSVUre
- 1ss2Pz/tAbCLvAS1kJfvpgCAm3whwYI=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-590-REv8KJS2OmeU2T7J3AsDlw-1; Thu,
- 13 Jun 2024 05:24:30 -0400
-X-MC-Unique: REv8KJS2OmeU2T7J3AsDlw-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 946E21955F1D; Thu, 13 Jun 2024 09:24:29 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.193.191])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 679501956050; Thu, 13 Jun 2024 09:24:25 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
- peter.maydell@linaro.org, clg@redhat.com, yanghliu@redhat.com,
- zhenzhong.duan@intel.com
-Cc: alex.williamson@redhat.com, jasowang@redhat.com, pbonzini@redhat.com,
- berrange@redhat.com
-Subject: [PATCH v3 4/7] virtio-iommu: Compute host reserved regions
-Date: Thu, 13 Jun 2024 11:20:06 +0200
-Message-ID: <20240613092359.847145-5-eric.auger@redhat.com>
-In-Reply-To: <20240613092359.847145-1-eric.auger@redhat.com>
-References: <20240613092359.847145-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
+ id 1sHh8E-0006n1-U6
+ for qemu-arm@nongnu.org; Thu, 13 Jun 2024 05:52:34 -0400
+Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jim.shu@sifive.com>)
+ id 1sHh8D-0002Ub-4v
+ for qemu-arm@nongnu.org; Thu, 13 Jun 2024 05:52:34 -0400
+Received: by mail-lj1-x235.google.com with SMTP id
+ 38308e7fff4ca-2ebe40673d8so7675751fa.3
+ for <qemu-arm@nongnu.org>; Thu, 13 Jun 2024 02:52:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sifive.com; s=google; t=1718272351; x=1718877151; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=aLogVWHAGRbH0gsjEVsGMBY9pF7extElnz5kVcP2ry0=;
+ b=KR2NUao0HlhHA5tG+zBao21WXp2V+p0U5gbbqmBUDv/ur7dNNFqAXhRIBm0g/DCP7d
+ hNcVErBolhaf4jVHdiRlUwTVhpRS9ibi70otJhIQhx5mQxAB/EJXMppGFhmaXnadh/Zo
+ B4ypwSNAeGvkOZbrZ//nBlqquJ1PlvLRz0A0kdce7eRCB8DMnNcsCI+mrRZL4tGUQjWx
+ nTh6jc1kK+ZeQnPaRAHax1u/PhlcGbBOvyF5MI74JgkpqGlsyrKBbyOcGuxdX7ILmoBS
+ ooCKWcnJ+qf3I8Q3qeTtwm/b305lh0Qiqa5UAVk0IvTocYis+agJaIWomF6J/KRE3RSw
+ o7eQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718272351; x=1718877151;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=aLogVWHAGRbH0gsjEVsGMBY9pF7extElnz5kVcP2ry0=;
+ b=B7wYekPSufQ7aVHpifkqrZO4hGVF1803ZwzR42G01VvE09QNbzcoqXN5crD8z8Nkk/
+ Y24X0fAyvW5f3lb5mDAJiXnhimg5A0o3h55dcQOsfxwVsuEfufJ4G0CHAi3pukVP5fNd
+ Q9gphb8WtXIjcEaqszX1jTQyPnJ3Bk819NFtjwDeVb3vbEW8wF8wex/2JjYQ4d6x7Mu8
+ l4NzOQYGQGmt6RVHLAPALkVuPEYwKDGAUOHapvHMlSf3pfRMcYf1RjG5w0S8Oij4OCKU
+ i7VVriglkjeUFGylFS+8cLGd0u1BMO4GGAUp3FbeZarZ+s9TRovSW0kMAjZGp/G1uFEL
+ 7JGg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUbM7PVnnWcGoPngdeHcFw52blndAcPYbPsEyrFWUJAXrPTxbgQUvIAojliRoRPBKkWNRqOQ0wM7ndCDhmoUGBywjeq
+X-Gm-Message-State: AOJu0YyEy1TRcEMMCq+QgSht3JoygPHeKt5dpRxZnsInpfR846UNzi3b
+ TUDw3n8tUkbMqXRZh2iO5fFPn4FbV5NkWQVGVM2m4CWaCSI0E0hKVkkPFLOgPyRpYR6PxOBMDg9
+ OXeDvj31/a/N4x1JJc4GpP6jiNHJrp9LESpPZcA==
+X-Received: by 2002:a2e:850c:0:b0:2eb:e580:7ac7 with SMTP id
+ 38308e7fff4ca-2ebfca6023emr25131191fa.43.1718272350888; Thu, 13 Jun 2024
+ 02:52:30 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.143,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+References: <20240612081416.29704-1-jim.shu@sifive.com>
+ <20240612081416.29704-3-jim.shu@sifive.com>
+ <ZmqEzUPsJwFs7w4+@ethan84-VirtualBox>
+In-Reply-To: <ZmqEzUPsJwFs7w4+@ethan84-VirtualBox>
+From: Jim Shu <jim.shu@sifive.com>
+Date: Thu, 13 Jun 2024 17:52:18 +0800
+Message-ID: <CALw707q1oSVZhq3kYEkbDvgZFV_bydN6EGgFpScbyE=6SSD9Yw@mail.gmail.com>
+Subject: Re: [RFC PATCH 02/16] accel/tcg: memory access from CPU will pass
+ access_type to IOMMU
+To: Ethan Chen <ethan84@andestech.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Bin Meng <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>, 
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>, 
+ David Hildenbrand <david@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Michael Rolnik <mrolnik@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Song Gao <gaosong@loongson.cn>, Laurent Vivier <laurent@vivier.eu>, 
+ Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Aleksandar Rikalo <arikalo@gmail.com>, Stafford Horne <shorne@gmail.com>, 
+ Nicholas Piggin <npiggin@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, 
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Max Filippov <jcmvbkbc@gmail.com>, 
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>, 
+ "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::235;
+ envelope-from=jim.shu@sifive.com; helo=mail-lj1-x235.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CQW8VtJacT4w
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uApwWaUxiCHl
 
-Compute the host reserved regions in virtio_iommu_set_iommu_device().
-The usable IOVA regions are retrieved from the HOSTIOMMUDevice.
-The virtio_iommu_set_host_iova_ranges() helper turns usable regions
-into complementary reserved regions while testing the inclusion
-into existing ones. virtio_iommu_set_host_iova_ranges() reuse the
-implementation of virtio_iommu_set_iova_ranges() which will be
-removed in subsequent patches. rebuild_resv_regions() is just moved.
+Hi Ethan,
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Yes, this mechanism could handle such situations.
 
----
+The important part is that the translate() function of
+IOMMUMemoryRegion only returns the correct permission of the section
+related to CPU access type.
+For example, if wgChecker only permits RO permission, it will return
+"downstream_as" with RO perm or "blocked_io_as" with WO perm.
+(depending on CPU access type).
 
-- added g_assert(!sdev->probe_done)
----
- hw/virtio/virtio-iommu.c | 146 ++++++++++++++++++++++++++++++---------
- 1 file changed, 112 insertions(+), 34 deletions(-)
+When the CPU access type is different from the previous one, it will
+get TLB miss due to mismatched permissions.
+Then, it will try to translate again, find the section of another
+access type, and fill into iotlb. (also kick out the previous iotlb
+entry).
 
-diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index db842555c8..04474ebd74 100644
---- a/hw/virtio/virtio-iommu.c
-+++ b/hw/virtio/virtio-iommu.c
-@@ -498,12 +498,109 @@ get_host_iommu_device(VirtIOIOMMU *viommu, PCIBus *bus, int devfn) {
-     return g_hash_table_lookup(viommu->host_iommu_devices, &key);
- }
- 
-+/**
-+ * rebuild_resv_regions: rebuild resv regions with both the
-+ * info of host resv ranges and property set resv ranges
-+ */
-+static int rebuild_resv_regions(IOMMUDevice *sdev)
-+{
-+    GList *l;
-+    int i = 0;
-+
-+    /* free the existing list and rebuild it from scratch */
-+    g_list_free_full(sdev->resv_regions, g_free);
-+    sdev->resv_regions = NULL;
-+
-+    /* First add host reserved regions if any, all tagged as RESERVED */
-+    for (l = sdev->host_resv_ranges; l; l = l->next) {
-+        ReservedRegion *reg = g_new0(ReservedRegion, 1);
-+        Range *r = (Range *)l->data;
-+
-+        reg->type = VIRTIO_IOMMU_RESV_MEM_T_RESERVED;
-+        range_set_bounds(&reg->range, range_lob(r), range_upb(r));
-+        sdev->resv_regions = resv_region_list_insert(sdev->resv_regions, reg);
-+        trace_virtio_iommu_host_resv_regions(sdev->iommu_mr.parent_obj.name, i,
-+                                             range_lob(&reg->range),
-+                                             range_upb(&reg->range));
-+        i++;
-+    }
-+    /*
-+     * then add higher priority reserved regions set by the machine
-+     * through properties
-+     */
-+    add_prop_resv_regions(sdev);
-+    return 0;
-+}
-+
-+static int virtio_iommu_set_host_iova_ranges(VirtIOIOMMU *s, PCIBus *bus,
-+                                             int devfn, GList *iova_ranges,
-+                                             Error **errp)
-+{
-+    IOMMUPciBus *sbus = g_hash_table_lookup(s->as_by_busptr, bus);
-+    IOMMUDevice *sdev;
-+    GList *current_ranges;
-+    GList *l, *tmp, *new_ranges = NULL;
-+    int ret = -EINVAL;
-+
-+    if (!sbus) {
-+        error_report("%s no sbus", __func__);
-+    }
-+
-+    sdev = sbus->pbdev[devfn];
-+
-+    current_ranges = sdev->host_resv_ranges;
-+
-+    g_assert(!sdev->probe_done);
-+
-+    /* check that each new resv region is included in an existing one */
-+    if (sdev->host_resv_ranges) {
-+        range_inverse_array(iova_ranges,
-+                            &new_ranges,
-+                            0, UINT64_MAX);
-+
-+        for (tmp = new_ranges; tmp; tmp = tmp->next) {
-+            Range *newr = (Range *)tmp->data;
-+            bool included = false;
-+
-+            for (l = current_ranges; l; l = l->next) {
-+                Range * r = (Range *)l->data;
-+
-+                if (range_contains_range(r, newr)) {
-+                    included = true;
-+                    break;
-+                }
-+            }
-+            if (!included) {
-+                goto error;
-+            }
-+        }
-+        /* all new reserved ranges are included in existing ones */
-+        ret = 0;
-+        goto out;
-+    }
-+
-+    range_inverse_array(iova_ranges,
-+                        &sdev->host_resv_ranges,
-+                        0, UINT64_MAX);
-+    rebuild_resv_regions(sdev);
-+
-+    return 0;
-+error:
-+    error_setg(errp, "%s Conflicting host reserved ranges set!",
-+               __func__);
-+out:
-+    g_list_free_full(new_ranges, g_free);
-+    return ret;
-+}
-+
- static bool virtio_iommu_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
-                                           HostIOMMUDevice *hiod, Error **errp)
- {
-     VirtIOIOMMU *viommu = opaque;
-     VirtioHostIOMMUDevice *vhiod;
-+    HostIOMMUDeviceClass *hiodc = HOST_IOMMU_DEVICE_GET_CLASS(hiod);
-     struct hiod_key *new_key;
-+    GList *host_iova_ranges = NULL;
- 
-     assert(hiod);
- 
-@@ -513,6 +610,20 @@ static bool virtio_iommu_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
-         return false;
-     }
- 
-+    if (hiodc->get_iova_ranges) {
-+        int ret;
-+        host_iova_ranges = hiodc->get_iova_ranges(hiod, errp);
-+        if (!host_iova_ranges) {
-+            return true; /* some old kernels may not support that capability */
-+        }
-+        ret = virtio_iommu_set_host_iova_ranges(viommu, bus, devfn,
-+                                                host_iova_ranges, errp);
-+        if (ret) {
-+            g_list_free_full(host_iova_ranges, g_free);
-+            return false;
-+        }
-+    }
-+
-     vhiod = g_malloc0(sizeof(VirtioHostIOMMUDevice));
-     vhiod->bus = bus;
-     vhiod->devfn = (uint8_t)devfn;
-@@ -525,6 +636,7 @@ static bool virtio_iommu_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
- 
-     object_ref(hiod);
-     g_hash_table_insert(viommu->host_iommu_devices, new_key, vhiod);
-+    g_list_free_full(host_iova_ranges, g_free);
- 
-     return true;
- }
-@@ -1246,40 +1358,6 @@ static int virtio_iommu_set_page_size_mask(IOMMUMemoryRegion *mr,
-     return 0;
- }
- 
--/**
-- * rebuild_resv_regions: rebuild resv regions with both the
-- * info of host resv ranges and property set resv ranges
-- */
--static int rebuild_resv_regions(IOMMUDevice *sdev)
--{
--    GList *l;
--    int i = 0;
--
--    /* free the existing list and rebuild it from scratch */
--    g_list_free_full(sdev->resv_regions, g_free);
--    sdev->resv_regions = NULL;
--
--    /* First add host reserved regions if any, all tagged as RESERVED */
--    for (l = sdev->host_resv_ranges; l; l = l->next) {
--        ReservedRegion *reg = g_new0(ReservedRegion, 1);
--        Range *r = (Range *)l->data;
--
--        reg->type = VIRTIO_IOMMU_RESV_MEM_T_RESERVED;
--        range_set_bounds(&reg->range, range_lob(r), range_upb(r));
--        sdev->resv_regions = resv_region_list_insert(sdev->resv_regions, reg);
--        trace_virtio_iommu_host_resv_regions(sdev->iommu_mr.parent_obj.name, i,
--                                             range_lob(&reg->range),
--                                             range_upb(&reg->range));
--        i++;
--    }
--    /*
--     * then add higher priority reserved regions set by the machine
--     * through properties
--     */
--    add_prop_resv_regions(sdev);
--    return 0;
--}
--
- /**
-  * virtio_iommu_set_iova_ranges: Conveys the usable IOVA ranges
-  *
--- 
-2.41.0
+This mechanism has poor performance if alternatively doing read/write
+access from CPU to IOMMUMemoryRegion with RO/WO perm due to TLB miss.
+I think it is the limitation that CPUTLBEntry doesn't support having
+different sections of each permission. At least this mechanism has the
+correct behavior.
 
+Thanks,
+Jim
+
+
+
+On Thu, Jun 13, 2024 at 1:34=E2=80=AFPM Ethan Chen <ethan84@andestech.com> =
+wrote:
+>
+> On Wed, Jun 12, 2024 at 04:14:02PM +0800, Jim Shu wrote:
+> > [EXTERNAL MAIL]
+> >
+> > It is the preparation patch for upcoming RISC-V wgChecker device.
+> >
+> > Since RISC-V wgChecker could permit access in RO/WO permission, the
+> > IOMMUMemoryRegion could return different section for read & write
+> > access. The memory access from CPU should also pass the access_type to
+> > IOMMU translate function so that IOMMU could return the correct section
+> > of specified access_type.
+> >
+>
+> Hi Jim,
+>
+> Does this method take into account the situation where the CPU access typ=
+e is
+> different from the access type when creating iotlb? I think the section
+> might be wrong in this situation.
+>
+> Thanks,
+> Ethan
+> >
+> >

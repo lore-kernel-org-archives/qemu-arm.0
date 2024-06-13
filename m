@@ -1,51 +1,51 @@
-Received: by 2002:a17:906:564e:b0:a6f:1bf6:7fc1 with SMTP id v14csp99092ejr;
-        Thu, 13 Jun 2024 16:46:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWOqbf2Va56IKWH7rYo49Slm4jUDB7xXDIej/cXzrwGV+uwKveV5H6ycBfrd+LevQhTuoDkloSNrkiuX47NfdqPdNcrYmtR
-X-Google-Smtp-Source: AGHT+IGhOPKQ8A+P9WXd7mrv8qUFphca6e4l5ZNaeETYloL/aiUx5BXhsqHHSa/ufUBTTEbjT1VL
-X-Received: by 2002:adf:f20b:0:b0:35f:2287:7ba6 with SMTP id ffacd0b85a97d-3607a77ad56mr831003f8f.53.1718322374145;
-        Thu, 13 Jun 2024 16:46:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718322374; cv=none;
+Received: by 2002:a17:906:564e:b0:a6f:1bf6:7fc1 with SMTP id v14csp99198ejr;
+        Thu, 13 Jun 2024 16:46:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVSknbIrx0ekluwivWYBJtN7rIJk+dV4vXrCQf7ObUk2n8HWs+m3qfWH8YIFlX4GgfMgksC4DjvYfF3is2uhE7DiT8BEKsa
+X-Google-Smtp-Source: AGHT+IGWchLlYbjhJDVe9AjfikVce/t6D841LxLhVxVqxDvRP1u06SnvD4I3ji8KpvuZ4FVUc43T
+X-Received: by 2002:a05:600c:4fc9:b0:421:81b6:e7f3 with SMTP id 5b1f17b1804b1-4230482131fmr11152665e9.8.1718322396971;
+        Thu, 13 Jun 2024 16:46:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718322396; cv=none;
         d=google.com; s=arc-20160816;
-        b=xSeDbOdpWyp1Y8d2FF7VHXZ8mG4a/RayZtf+6CufH1Q81wxqZfthobmsCQk0PIZLmZ
-         lO+ai3Tw/k9UMIj2rhSz98p95WhxaBwzU6QuRYMbKJojTFHq4uL0JFbsdP3ddfgUlPjf
-         tihMB909RhV7PscY98tlCc8D921nkT3p75uRmGQuFn+qbGPjeonUTeRA5RHk+rUd3sYu
-         6VTZztxSvm2OWi3hAKl4dxGbJPMGtbrimUfqQ7GkMmMn6KSNOrYW6xBas1Y/IoP5kV0E
-         sq2sV4pr1Nn0iP84ziWv0yGPCu6u+u86O445wIrrTKxd5LpsB3SxZkh20lKs19yHz/06
-         RHbg==
+        b=GhxVKNCAgwHHs3ffLiE4QSQ0883r/XgFZEIicVNCN8r5gpqWWulpDUprDb5vsJEO5u
+         oD6kEWPebo89RN+SaMJCpr0I/cmO2UeV4xPgiA+/+y8I2d4fccu5fjSg6g0ceP2Zuyij
+         Y+zyNdULS2l1MSz3YJPoCSHDAkn5rhCJhRXPuApG4Ca9eIm6DbTSuXEhotpfcJLxIjYf
+         /XyG4MZhDVBVMbyRnhlSk5QRdTWkVALC89cAOeEW6pBKAf0+Ss9JweLq4VUtnwksDUyS
+         JcIc1K5Lvq4WIwtF99sJjTC7CTbWExyaKPE7O5Qx55wWZ2/3ig9K0kUhcH6ocKHpl8y8
+         rFdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=UqjDGrMVpwBsxpYyT/rhxM4TQiMCLFl336upNWhqBCY=;
+        bh=yx5t+S54UPjh665c1r0yNTtps0C52OTTyBzhvvGkH7o=;
         fh=LTv9rZypFCL5Yl51dJY3ojnjwtjMOAtIYwj21UMTdvU=;
-        b=i2iBG5EpyMeRSYYWSj7VtaiUcQA3lwdOQmRNbbEi+c0Eqa3oC3I2nZkgptUFpDKOF2
-         vs6iNHzQrFCKASS/wjLQtynCpv9HeCQx+xgIQ/7IADhvjQKtthPWLrhN7IuE9x2YiyWS
-         qiGWTrSodwd6GmmLcTzltRfxknveBupY2/Um0YtxGvq9TwHB3t5e2NzY4pIWMkK7eehY
-         9DhqaShuB1X0qCJX68cZHdbDZ3A03y5Xxig8AX4ETCHm8NgcBFD0NzDnvB+Qrfyxu9sd
-         a1spRBSHnev4MFZSmRj5CluhK+tFsQWDxnGtrWMd0lcTOdxh07xx76Kfnn733XHwuMxa
-         7feQ==;
+        b=uUW2ho/Kv6FO3TOBtSlm30iKcBpENcgAng/zZmsoS8AoliWl6aZIrAZcCjUou6JQ0d
+         54dMSEPIn1cN/zndZ7vQqxPDAHWJopwZLxidnQNflyCe7hNgH2H5qhNU47ncIe+TFFBd
+         Mw+U6bCKhUXfF2GHeX5b2uKuvv41TymaaH4z9OeBkv86C9w5Q8CIS2UCjLpTQKvAZir2
+         x0iOT4m41iAWmQK8LRJ2IXBi+xcwBlxfd1TIUrmKpnoQ/ePhfNYdZT94CWvdBRO93Dgf
+         7FlJ+F+1AI8yUrnHQyOZlqz8ZDZorthzFRb2m/p84bbGG51bHAx5MbeLFAsHeZayw3gK
+         ZWIg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-36075138d39si1419766f8f.1067.2024.06.13.16.46.13
+        by mx.google.com with ESMTPS id ffacd0b85a97d-36075126b8bsi1450534f8f.600.2024.06.13.16.46.36
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Jun 2024 16:46:14 -0700 (PDT)
+        Thu, 13 Jun 2024 16:46:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4W0fCP3vpSz6H784;
-	Fri, 14 Jun 2024 07:44:49 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4W0f812cTjz6HJTP;
+	Fri, 14 Jun 2024 07:41:53 +0800 (CST)
 Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
-	by mail.maildlp.com (Postfix) with ESMTPS id 046F5140594;
-	Fri, 14 Jun 2024 07:46:13 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id A30AA140AE5;
+	Fri, 14 Jun 2024 07:46:35 +0800 (CST)
 Received: from 00293818-MRGF.china.huawei.com (10.195.245.24) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 14 Jun 2024 00:45:50 +0100
+ 15.1.2507.39; Fri, 14 Jun 2024 00:46:13 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -63,9 +63,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>
-Subject: [PATCH RFC V3 22/29] arm/virt: Update the guest(via GED) about CPU hot-(un)plug events
-Date: Fri, 14 Jun 2024 00:36:32 +0100
-Message-ID: <20240613233639.202896-23-salil.mehta@huawei.com>
+Subject: [PATCH RFC V3 23/29] hw/arm: Changes required for reset and to support next boot
+Date: Fri, 14 Jun 2024 00:36:33 +0100
+Message-ID: <20240613233639.202896-24-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240613233639.202896-1-salil.mehta@huawei.com>
 References: <20240613233639.202896-1-salil.mehta@huawei.com>
@@ -75,117 +75,109 @@ Content-Type: text/plain
 X-Originating-IP: [10.195.245.24]
 X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
-X-TUID: s8c8uaDWg/ur
+X-TUID: u9BrsTXgbHb1
 
-During any vCPU hot-(un)plug, running guest VM needs to be intimated about the
-new vCPU being added or request the deletion of the vCPU which is already part
-of the guest VM. This is done using the ACPI GED event which eventually gets
-demultiplexed to a CPU hotplug event and further to specific hot-(un)plug event
-of a particular vCPU.
-
-This change adds the ACPI calls to the existing hot-(un)plug hooks to trigger
-ACPI GED events from QEMU to guest VM.
+Updates the firmware config with the next boot cpus information and also
+registers the reset callback to be called when guest reboots to reset the cpu.
 
 Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt.c | 34 ++++++++++++++++++++++++++--------
- 1 file changed, 26 insertions(+), 8 deletions(-)
+ hw/arm/boot.c         |  2 +-
+ hw/arm/virt.c         | 17 ++++++++++++++---
+ include/hw/arm/boot.h |  2 ++
+ include/hw/arm/virt.h |  1 +
+ 4 files changed, 18 insertions(+), 4 deletions(-)
 
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index d480a7da02..cb5c1e4848 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -682,7 +682,7 @@ fail:
+     return -1;
+ }
+ 
+-static void do_cpu_reset(void *opaque)
++void do_cpu_reset(void *opaque)
+ {
+     ARMCPU *cpu = opaque;
+     CPUState *cs = CPU(cpu);
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 9f7e07bd8e..4fa2b7d9e7 100644
+index 4fa2b7d9e7..a2200099a1 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -3169,6 +3169,7 @@ static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-     MachineState *ms = MACHINE(hotplug_dev);
-     CPUState *cs = CPU(dev);
-+    Error *local_err = NULL;
-     CPUArchId *cpu_slot;
+@@ -45,6 +45,8 @@
+ #include "sysemu/device_tree.h"
+ #include "sysemu/numa.h"
+ #include "sysemu/runstate.h"
++#include "sysemu/reset.h"
++#include "sysemu/sysemu.h"
+ #include "sysemu/tpm.h"
+ #include "sysemu/tcg.h"
+ #include "sysemu/kvm.h"
+@@ -1405,7 +1407,7 @@ static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
+     char *nodename;
  
-     /* insert the cold/hot-plugged vcpu in the slot */
-@@ -3181,12 +3182,18 @@ static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-      * plugged, guest is also notified.
-      */
-     if (vms->acpi_dev) {
--        /* TODO: update acpi hotplug state. Send cpu hotplug event to guest */
-+        HotplugHandlerClass *hhc;
-+        /* update acpi hotplug state and send cpu hotplug event to guest */
-+        hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-+        hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
-+        if (local_err) {
-+            error_propagate(errp, local_err);
-+            return;
-+        }
-         /* TODO: register cpu for reset & update F/W info for the next boot */
+     fw_cfg = fw_cfg_init_mem_wide(base + 8, base, 8, base + 16, as);
+-    fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, (uint16_t)ms->smp.cpus);
++    fw_cfg_add_i16(fw_cfg, FW_CFG_NB_CPUS, vms->boot_cpus);
+ 
+     nodename = g_strdup_printf("/fw-cfg@%" PRIx64, base);
+     qemu_fdt_add_subnode(ms->fdt, nodename);
+@@ -3190,9 +3192,14 @@ static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+             error_propagate(errp, local_err);
+             return;
+         }
+-        /* TODO: register cpu for reset & update F/W info for the next boot */
++	/* register this cpu for reset & update F/W info for the next boot */
++	qemu_register_reset(do_cpu_reset, ARM_CPU(cs));
      }
  
++    vms->boot_cpus++;
++    if (vms->fw_cfg) {
++	    fw_cfg_modify_i16(vms->fw_cfg, FW_CFG_NB_CPUS, vms->boot_cpus);
++    }
      cs->disabled = false;
--    return;
  }
  
- static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
-@@ -3194,8 +3201,10 @@ static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
- {
-     MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
-     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+    HotplugHandlerClass *hhc;
-     ARMCPU *cpu = ARM_CPU(dev);
-     CPUState *cs = CPU(dev);
-+    Error *local_err = NULL;
- 
-     if (!vms->acpi_dev || !dev->realized) {
-         error_setg(errp, "GED does not exists or device is not realized!");
-@@ -3214,9 +3223,12 @@ static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
-         return;
-     }
- 
--    /* TODO: request cpu hotplug from guest */
--
--    return;
-+    /* request cpu hotplug from guest */
-+    hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-+    hhc->unplug_request(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+    }
- }
- 
- static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
-@@ -3224,7 +3236,9 @@ static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
- {
-     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-     MachineState *ms = MACHINE(hotplug_dev);
-+    HotplugHandlerClass *hhc;
-     CPUState *cs = CPU(dev);
-+    Error *local_err = NULL;
-     CPUArchId *cpu_slot;
- 
-     if (!vms->acpi_dev || !dev->realized) {
-@@ -3234,7 +3248,13 @@ static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
- 
-     cpu_slot = virt_find_cpu_slot(ms, cs->cpu_index);
- 
--    /* TODO: update the acpi cpu hotplug state for cpu hot-unplug */
-+    /* update the acpi cpu hotplug state for cpu hot-unplug */
-+    hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-+    hhc->unplug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
- 
+@@ -3259,7 +3266,11 @@ static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
      unwire_gic_cpu_irqs(vms, cs);
      virt_update_gic(vms, cs);
-@@ -3246,8 +3266,6 @@ static void virt_cpu_unplug(HotplugHandler *hotplug_dev, DeviceState *dev,
  
-     cpu_slot->cpu = NULL;
-     cs->disabled = true;
--
--    return;
- }
+-    /* TODO: unregister cpu for reset & update F/W info for the next boot */
++    qemu_unregister_reset(do_cpu_reset, ARM_CPU(cs));
++    vms->boot_cpus--;
++    if (vms->fw_cfg) {
++        fw_cfg_modify_i16(vms->fw_cfg, FW_CFG_NB_CPUS, vms->boot_cpus);
++    }
  
- static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+     qobject_unref(dev->opts);
+     dev->opts = NULL;
+diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
+index 80c492d742..f81326a1dc 100644
+--- a/include/hw/arm/boot.h
++++ b/include/hw/arm/boot.h
+@@ -178,6 +178,8 @@ AddressSpace *arm_boot_address_space(ARMCPU *cpu,
+ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+                  hwaddr addr_limit, AddressSpace *as, MachineState *ms);
+ 
++void do_cpu_reset(void *opaque);
++
+ /* Write a secure board setup routine with a dummy handler for SMCs */
+ void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
+                                             const struct arm_boot_info *info,
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 9c728ba042..8dce426cc0 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -167,6 +167,7 @@ struct VirtMachineState {
+     MemMapEntry *memmap;
+     char *pciehb_nodename;
+     const int *irqmap;
++    uint16_t boot_cpus;
+     int fdt_size;
+     uint32_t clock_phandle;
+     uint32_t gic_phandle;
 -- 
 2.34.1

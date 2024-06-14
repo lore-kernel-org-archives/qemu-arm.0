@@ -1,126 +1,113 @@
-Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp175473ejb;
-        Fri, 14 Jun 2024 03:50:16 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVP4LlwUD536h12G1hF9ny8fR94GUUWviKPJEi1SxZktL3j4EBYj7PQ1tl5RbDImK5DZoSu7BTIjNXLjHPykoKQWYVQFT9Z
-X-Google-Smtp-Source: AGHT+IGI8WyJK+9J2iVUzWl9GW3eMZTT/k15fJIkK17JRjO0mLkrukeDRjSg1hdGb8mCuF4IH5ND
-X-Received: by 2002:a05:620a:258a:b0:795:b4ec:bfb with SMTP id af79cd13be357-798d26a8491mr200441485a.63.1718362216058;
-        Fri, 14 Jun 2024 03:50:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718362216; cv=none;
+Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp184692ejb;
+        Fri, 14 Jun 2024 04:08:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXOqwJXASxBKW8uSaBdXhxTYagpMHrHSV7EtWw96bKdqOudFPdKLRBAVFDeSKteNXb6lOxUnuFiCv1lm+tN023Xyu8I97eG
+X-Google-Smtp-Source: AGHT+IE5DlWyJGww/W9LicKMPzn9y/T4oHm4Fg8v8o5c4QXhLJ5W7QgkZwCut9wSrCiM2kq7IJl9
+X-Received: by 2002:a05:620a:2a06:b0:797:9c76:3292 with SMTP id af79cd13be357-798d242d77cmr268621585a.36.1718363284790;
+        Fri, 14 Jun 2024 04:08:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718363284; cv=none;
         d=google.com; s=arc-20160816;
-        b=nhyh911TOdm2GUQncS2u7SkwCfGDBCkb21bp5n/tH6Vmk8H3HBki6640XBRezg5d9T
-         xt8sayysUrYSdOrdlcMkntTQwCHWqloPw3SfMUhdIaOtxIlE4Y26iObRll2nXxI2yfRH
-         RPn0J/LczlRWgeOa9poAxQKMvRCNjB6oG3cmVcPHi9IGLEA0RRUuTynz15TfN9Q2GKt2
-         R5r3cIWbWs+FNwSMhzpnY5IVrQcGAVfj44i2lVHSEQqb/3Wv2UAuN0gMO9aWD5oNfkWp
-         719gO08f9Qa06WMfohN0slt76R0UkkxSjTb/kYD/3eEGtNHFB3nylms2xw3iDcLbqssu
-         d33A==
+        b=ZgpzlGvcni4VtoqmmEDCN1UZZr83HMkWgYYnnxZbyIY9ot32HsTOznZCSs7zBaLkcz
+         vl+E5s8kIcahZEReucum4ch0gA+lgyCpLvco0HLkJU6gIxJD/Nk/4iu8RzbMPJSWlsp9
+         BuFwtUwR8F0zxhSyUreJ1P2rf9/IhVkcq/shdJb3v+LWQ3CcHTvFExwjPpIjrMshXF1x
+         CsQP2qDwDBMuEh09pFaBt+AuGdFPTr+plsB1PVJssqlWv4fe0E28y3cYIGWnsL+xdYE3
+         +/oIToI+ZD/P25lhnN3S1FnYYMF/DqAJTCJ3DUU3oBaEzMnfRYZgoA//9oMAUk1LV0z+
+         jztg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:organization:content-language:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=LyiZLDwZ2ruh2x/3JT28HfUwemba0ZVuFbD6YSVOYC4=;
-        fh=uz84LFEX/5GcNj4Iisn24lJ9V5UqlOK8rJqv9bLjCBs=;
-        b=0jI0d4GHO46+E8qCw/Icuur7UYPrAiFXw1gYckerwSGMbaD+h0Vzi22LloWKL/SK/B
-         CjvTyjWMAuLtXuCRx52BLrxflviujGAcV01RHJG2m5LjH3Tyx+KlYwhf9BWzHCuJVdUn
-         v92RGrUcfVS89wFIgp72ADyNGV/28Wt2K6+hUKEKoUBpapl5ukYEytgdIwp4HmfHjaLF
-         2WecTtrk1ujruEVvJ1pGB/Sqm8qIKQRzLL2MZkfK8LVT/SAjzCKlg8lVtiOTHKmCX+vH
-         5xsCJyFV0oIymT3d+Vr6XKkmBPu8q/Y1eZXJDS6V7MqUtwiClk1dp+Seh6+IhR3U32Re
-         D0sg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=+qFK3vcKlDVOP4/ltWPGwA7q/khSRTrFYIyxE6c1n9Q=;
+        fh=tHZdE1uPfphTy75kXBBHcjMCqr0LbJocTrH6K5F/h8I=;
+        b=tDlFnBKOIyMsjOLDHf6/NnKbFZS80mdxwSGp1qGtFU495FgbibibtRsaAId8jgfZCQ
+         Lf4nm9vWKSQBFDZRo34Oa1CN4QshvdrkU0F8x9V/+wIdapRS1f7Ohfxct2k+gscZNS7A
+         78+ZyKPAo4RpGidksgc6z8TZxueK8RRJhj+BVPxkbtG/cDWPfGwCK3zhRcvuUC11mBty
+         Rp3pl6Kg6o2t3+ee0RxXqfDQBFDb53cGW0eOafOW/CWKJBCKlUcxQjfAMxhq3FLwNdbK
+         GhdHx2etW/1Jhg0eQkmUmcdVTKcPfSuVPfrnbJ9GzLI5j8tdmQtOHXXZYDXQBdHagWTb
+         L2TA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ofcxvrjt;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mj020RQM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-798abe580d0si372022985a.580.2024.06.14.03.50.15
+        by mx.google.com with ESMTPS id af79cd13be357-798abe6e402si344429085a.673.2024.06.14.04.08.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jun 2024 03:50:16 -0700 (PDT)
+        Fri, 14 Jun 2024 04:08:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ofcxvrjt;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mj020RQM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sI4VL-00045Q-OK; Fri, 14 Jun 2024 06:49:59 -0400
+	id 1sI4mg-00065z-Qv; Fri, 14 Jun 2024 07:07:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sI4VJ-00042x-Pr
- for qemu-arm@nongnu.org; Fri, 14 Jun 2024 06:49:57 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sI4mf-000656-5g; Fri, 14 Jun 2024 07:07:53 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sI4VI-0004sn-4e
- for qemu-arm@nongnu.org; Fri, 14 Jun 2024 06:49:57 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-a6f1f33486eso123563466b.3
- for <qemu-arm@nongnu.org>; Fri, 14 Jun 2024 03:49:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sI4mc-0000AI-UO; Fri, 14 Jun 2024 07:07:52 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-57c923e03caso2221204a12.3; 
+ Fri, 14 Jun 2024 04:07:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718362194; x=1718966994; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:organization:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=LyiZLDwZ2ruh2x/3JT28HfUwemba0ZVuFbD6YSVOYC4=;
- b=ofcxvrjtYitaCd2zpRxlSiiOprjwzPBpVuSZBdi1mgAiuaiSyF3OGIfhxTZcLuIAee
- +nOod3VKgYvH4H9oj4ghYdJr/YbWlEGDagPaRCs6zTrCzsDf5UHwZknxAkLKK/JjzchK
- Z+E0VlsUYXpDrud+pBoeV2CI3zIU9+opyyZ5tltqZKXWLlHWjTVOKvaqJpAQqnlCVe5D
- kn8mtAZLFBUO5yCD8lAd8q8jXkpgAmpfCv0cXrDR/BwFiCO7b4ReGMGNkVRTQIMuCMPt
- cusOi+yYCNFeAuCY2Ke82tLc+x4J78Xwtg3nKtn9yNWzw0kOIFVkK+gi7Mso9h6RIzOC
- jC2A==
+ d=gmail.com; s=20230601; t=1718363263; x=1718968063; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=+qFK3vcKlDVOP4/ltWPGwA7q/khSRTrFYIyxE6c1n9Q=;
+ b=mj020RQMzumfCDNSxsJTEgZT+ZqT/s/phNi1xSaraIJDXhyMZE2Khts4fpiHKYiNa3
+ rAEOja6mYiOvz7iXEQ51Gqpc5QWhQ8aSfvzWqZaeHXFtPklL30GH0ei5zpVzVV/Tvnu+
+ OjNodoofXY336eDNPcKLcBJHkUg+F/ntsoZLLeW+xSjzuQg+a+xFyJ0ZoJC8BdY/C65y
+ FuqrzltRuF/NWBOA8rIPmGYYDnlQaYeZDgC6BCWVfmD5RfNzMqGf3O1upDhNrmWRso3C
+ a0Q/g98B8qBfYBakzHnLpsFtjbiQCt2+TQD2KEKq/bi7lx8AzPPD1QYsPk234pGlZtGW
+ H7VA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718362194; x=1718966994;
- h=content-transfer-encoding:in-reply-to:organization:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1718363263; x=1718968063;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=LyiZLDwZ2ruh2x/3JT28HfUwemba0ZVuFbD6YSVOYC4=;
- b=m6h6drJ3z/yt9jCfgax9nAmwywsL9WMYvihnxyWpT0E9oHS//feSUp/YFQHHTuK2mZ
- 4PS4Yh4M6lemnwofnGJh1Oc66RbZyMQzj1Tmks3WGwxuDl/IRwAPePf6YorAW7eZ4oaf
- U4I/YDrg/MJOJollZYb1x3nwxZ1YxRsSSRT23gHXf+ynoUrF3BSUIPbU3IcVXEh9VnuP
- j91Xa+9SbruHAb3ZnlZfrf9pdCODKAIEGOhYWymfatifHb6S9ev+0fjclszf//iECaWU
- 0Z7bqpLkPf1xyts5rvLzweDiWintzWV3a45vMhDuFCb29B6OmDyxc/Gggx2iLRmufYVP
- 4oQg==
+ bh=+qFK3vcKlDVOP4/ltWPGwA7q/khSRTrFYIyxE6c1n9Q=;
+ b=GhSJVHTW4KOiKZ/2vApgJxX1Ai6aajIp+mYpFdyRLSrwlgkzioHDrvOaZ7l2VzAeeQ
+ 5aqlEz4XIl1AKvCT4wplf6v/DLtE4Qee23pPiUXVw4ASMeC/sE4LYeb0SZm7q6zhQcKu
+ Jqf7fzZC6SqPic4RF75ifltEE7eGG2HD914XzeUxgSuMSMumYEw9oHgyIQ4a4V6at6a3
+ iDjuOWsSYTeVBcowrkGubXmkyG21hfVRU0GQVdBoH/oiy8CMqV+Ljcmr3C+gZjPUsbz0
+ KKjVkFLfxN9geBMBTjAp2FG+xodwa+KtZ4/sgrnkMeol2XJ4eA1SNJsc/RpRKXp5utED
+ R1Pg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVULTbQMjQH8DoHPXz0fz0p5SxKo937Lfn+d6SplajmQp3N/gCuuEQnam8NqWLR6/VlBk8yBd3TWg90GxUddxDfwua8
-X-Gm-Message-State: AOJu0Ywpc6NYPLB2bZ8xpu5HMVXkmC652QO4wiC39SLr0umY+p4f5NkI
- 3pEnFz0BRJqYWJEkONmknp2cpZG/eRVXi2Ml7g5LLzqtphtS47ZKMbu3nkUWrbE=
-X-Received: by 2002:a50:ccd5:0:b0:57c:8035:50ef with SMTP id
- 4fb4d7f45d1cf-57cbd8b98e6mr1852293a12.35.1718362193988; 
- Fri, 14 Jun 2024 03:49:53 -0700 (PDT)
-Received: from [192.168.200.106] (83.11.211.179.ipv4.supernova.orange.pl.
- [83.11.211.179]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-57cb741e782sm2081458a12.64.2024.06.14.03.49.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Jun 2024 03:49:53 -0700 (PDT)
-Message-ID: <7c28fa29-8d62-4553-82fb-098ed06a8774@linaro.org>
-Date: Fri, 14 Jun 2024 12:49:52 +0200
+ AJvYcCW/f8trxKsdbADeasqhS/L6N35tM+HGIESjV9kWCRHz+rhji7Y3gEnh/CAI2mQlKls9V/2gn2z4TBdwp2U0rklQhNqweFE=
+X-Gm-Message-State: AOJu0YzvhaeHDkH8PM9ji3hY9MMERiAI837ZfpaEeJ30w4qordHKrCFV
+ TIJJyRwELnRoGyJdVVCbEukJtyFyZEUplEG3tvdHigxlLd0/LDGvmT8eb9B/GpVv95JMKj+2jhf
+ xC3mj6nPTDWjija5csH/Is+4ZU07LL16rWcMd2A==
+X-Received: by 2002:a50:d502:0:b0:57c:a570:960f with SMTP id
+ 4fb4d7f45d1cf-57cbd67dba6mr1597881a12.21.1718363262819; Fri, 14 Jun 2024
+ 04:07:42 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/1] hw/arm/sbsa-ref: Enable CPU cluster on ARM sbsa
- machine
-To: Xiong Yining <xiongyining1480@phytium.com.cn>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: rad@semihalf.com, peter.maydell@linaro.org, quic_llindhol@quicinc.com
-References: <20240607103825.1295328-1-xiongyining1480@phytium.com.cn>
- <20240607103825.1295328-2-xiongyining1480@phytium.com.cn>
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Content-Language: pl-PL, en-GB, en-HK
-Organization: Linaro
-In-Reply-To: <20240607103825.1295328-2-xiongyining1480@phytium.com.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ej1-x630.google.com
+References: <20240613153638.3858853-1-sai.pavan.boddu@amd.com>
+ <20240613153638.3858853-3-sai.pavan.boddu@amd.com>
+In-Reply-To: <20240613153638.3858853-3-sai.pavan.boddu@amd.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Fri, 14 Jun 2024 13:07:30 +0200
+Message-ID: <CAJy5ezoo5bCMVG6GETvWTYn-y0VEFths0Uj3foXMQbyKPduU=A@mail.gmail.com>
+Subject: Re: [PATCH 2/2] hw/arm/xilinx_zynq: Add boot-mode property
+To: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, francisco.iglesias@amd.com
+Content-Type: multipart/alternative; boundary="000000000000e02385061ad79f6e"
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,16 +122,249 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UQl/NUdtsgSs
+X-TUID: AOvf7EQzP6w8
 
-W dniu 7.06.2024 o 12:38, Xiong Yining pisze:
-> Enable CPU cluster support on SbsaQemu platform, so that users can
-> specify a 4-level CPU hierarchy sockets/clusters/cores/threads. And
-> this topology can be passed to the firmware through /cpus/topology
-> Device Tree.
-> 
-> Signed-off-by: Xiong Yining <xiongyining1480@phytium.com.cn>
-> tested-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+--000000000000e02385061ad79f6e
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+On Thu, Jun 13, 2024 at 5:36=E2=80=AFPM Sai Pavan Boddu <sai.pavan.boddu@am=
+d.com>
+wrote:
 
+> Read boot-mode value as machine property and propagate that to
+> SLCR.BOOT_MODE register.
+>
+>
+Hi Sai,
+
+Directly exposing the register field to the user to set on the command-line
+probably makes usability a little too rough (user has to check the register
+specs in the TRM to change boot-mode).
+We could perhaps add friendly names that we internally map to the register
+field values.
+
+Another question, can we use the existing -boot command-line arg for this?
+Something along the lines of what x86 PC does:
+https://github.com/qemu/qemu/blob/master/hw/i386/pc.c#L395
+
+I don't know if the framework allows for long names but something like the
+following would be nice:
+qemu -boot spi,ethernet,jtag,uart,etc
+
+Would also be great to document a small example, perhaps in
+https://github.com/qemu/qemu/tree/master/docs/system/arm
+
+Best regards,
+Edgar
+
+
+
+> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+> ---
+>  hw/arm/xilinx_zynq.c | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+>
+> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+> index 7f7a3d23fb..4dfa9184ac 100644
+> --- a/hw/arm/xilinx_zynq.c
+> +++ b/hw/arm/xilinx_zynq.c
+> @@ -38,6 +38,7 @@
+>  #include "qom/object.h"
+>  #include "exec/tswap.h"
+>  #include "target/arm/cpu-qom.h"
+> +#include "qapi/visitor.h"
+>
+>  #define TYPE_ZYNQ_MACHINE MACHINE_TYPE_NAME("xilinx-zynq-a9")
+>  OBJECT_DECLARE_SIMPLE_TYPE(ZynqMachineState, ZYNQ_MACHINE)
+> @@ -90,6 +91,7 @@ struct ZynqMachineState {
+>      MachineState parent;
+>      Clock *ps_clk;
+>      ARMCPU *cpu[ZYNQ_MAX_CPUS];
+> +    uint8_t BootMode;
+>  };
+>
+>  static void zynq_write_board_setup(ARMCPU *cpu,
+> @@ -176,6 +178,19 @@ static inline int zynq_init_spi_flashes(uint32_t
+> base_addr, qemu_irq irq,
+>      return unit;
+>  }
+>
+> +static void zynq_set_boot_mode(Object *obj, Visitor *v,
+> +                               const char *name, void *opaque,
+> +                               Error **errp)
+> +{
+> +    ZynqMachineState *m =3D ZYNQ_MACHINE(obj);
+> +    uint8_t val;
+> +
+> +    if (!visit_type_uint8(v, name, &val, errp)) {
+> +        return;
+> +    }
+> +    m->BootMode =3D val;
+> +}
+> +
+>  static void zynq_init(MachineState *machine)
+>  {
+>      ZynqMachineState *zynq_machine =3D ZYNQ_MACHINE(machine);
+> @@ -241,6 +256,7 @@ static void zynq_init(MachineState *machine)
+>      /* Create slcr, keep a pointer to connect clocks */
+>      slcr =3D qdev_new("xilinx-zynq_slcr");
+>      qdev_connect_clock_in(slcr, "ps_clk", zynq_machine->ps_clk);
+> +    qdev_prop_set_uint8(slcr, "boot-mode", zynq_machine->BootMode);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(slcr), &error_fatal);
+>      sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
+>
+> @@ -372,6 +388,7 @@ static void zynq_machine_class_init(ObjectClass *oc,
+> void *data)
+>          NULL
+>      };
+>      MachineClass *mc =3D MACHINE_CLASS(oc);
+> +    ObjectProperty *prop;
+>      mc->desc =3D "Xilinx Zynq Platform Baseboard for Cortex-A9";
+>      mc->init =3D zynq_init;
+>      mc->max_cpus =3D ZYNQ_MAX_CPUS;
+> @@ -379,6 +396,11 @@ static void zynq_machine_class_init(ObjectClass *oc,
+> void *data)
+>      mc->ignore_memory_transaction_failures =3D true;
+>      mc->valid_cpu_types =3D valid_cpu_types;
+>      mc->default_ram_id =3D "zynq.ext_ram";
+> +    prop =3D object_class_property_add(oc, "boot-mode", "uint8_t", NULL,
+> +                              zynq_set_boot_mode, NULL, NULL);
+> +    object_class_property_set_description(oc, "boot-mode",
+> +                                          "Update SLCR.BOOT_MODE
+> register");
+> +    object_property_set_default_uint(prop, 1);
+>  }
+>
+>  static const TypeInfo zynq_machine_type =3D {
+> --
+> 2.34.1
+>
+>
+
+--000000000000e02385061ad79f6e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">On Thu, Jun 13, 2024 at 5:36=E2=80=AFPM S=
+ai Pavan Boddu &lt;<a href=3D"mailto:sai.pavan.boddu@amd.com">sai.pavan.bod=
+du@amd.com</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote c=
+lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
+d rgb(204,204,204);padding-left:1ex">Read boot-mode value as machine proper=
+ty and propagate that to<br>
+SLCR.BOOT_MODE register.<br>
+<br></blockquote><div><br></div><div>Hi Sai,</div><div><br></div><div>Direc=
+tly exposing the register field to the user to set on the command-line prob=
+ably makes usability a little too rough (user has to check the register spe=
+cs in the TRM to change boot-mode).</div><div>We could perhaps add friendly=
+ names that we internally map to the register field values.</div><div><br><=
+/div><div>Another question, can we use the existing -boot command-line arg =
+for this?</div><div>Something along the lines of what x86 PC does:</div><di=
+v><a href=3D"https://github.com/qemu/qemu/blob/master/hw/i386/pc.c#L395">ht=
+tps://github.com/qemu/qemu/blob/master/hw/i386/pc.c#L395</a><br></div><div>=
+<br></div><div>I don&#39;t know if the framework allows for long names but =
+something like the following would be nice:</div><div>qemu -boot spi,ethern=
+et,jtag,uart,etc</div><div><br></div><div>Would also be great to document a=
+ small example, perhaps in=C2=A0<a href=3D"https://github.com/qemu/qemu/tre=
+e/master/docs/system/arm">https://github.com/qemu/qemu/tree/master/docs/sys=
+tem/arm</a></div><div><br></div><div>Best regards,</div><div>Edgar</div><di=
+v><br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"mar=
+gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
+ex">
+Signed-off-by: Sai Pavan Boddu &lt;<a href=3D"mailto:sai.pavan.boddu@amd.co=
+m" target=3D"_blank">sai.pavan.boddu@amd.com</a>&gt;<br>
+---<br>
+=C2=A0hw/arm/xilinx_zynq.c | 22 ++++++++++++++++++++++<br>
+=C2=A01 file changed, 22 insertions(+)<br>
+<br>
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c<br>
+index 7f7a3d23fb..4dfa9184ac 100644<br>
+--- a/hw/arm/xilinx_zynq.c<br>
++++ b/hw/arm/xilinx_zynq.c<br>
+@@ -38,6 +38,7 @@<br>
+=C2=A0#include &quot;qom/object.h&quot;<br>
+=C2=A0#include &quot;exec/tswap.h&quot;<br>
+=C2=A0#include &quot;target/arm/cpu-qom.h&quot;<br>
++#include &quot;qapi/visitor.h&quot;<br>
+<br>
+=C2=A0#define TYPE_ZYNQ_MACHINE MACHINE_TYPE_NAME(&quot;xilinx-zynq-a9&quot=
+;)<br>
+=C2=A0OBJECT_DECLARE_SIMPLE_TYPE(ZynqMachineState, ZYNQ_MACHINE)<br>
+@@ -90,6 +91,7 @@ struct ZynqMachineState {<br>
+=C2=A0 =C2=A0 =C2=A0MachineState parent;<br>
+=C2=A0 =C2=A0 =C2=A0Clock *ps_clk;<br>
+=C2=A0 =C2=A0 =C2=A0ARMCPU *cpu[ZYNQ_MAX_CPUS];<br>
++=C2=A0 =C2=A0 uint8_t BootMode;<br>
+=C2=A0};<br>
+<br>
+=C2=A0static void zynq_write_board_setup(ARMCPU *cpu,<br>
+@@ -176,6 +178,19 @@ static inline int zynq_init_spi_flashes(uint32_t base_=
+addr, qemu_irq irq,<br>
+=C2=A0 =C2=A0 =C2=A0return unit;<br>
+=C2=A0}<br>
+<br>
++static void zynq_set_boot_mode(Object *obj, Visitor *v,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0const char *name, void *opaque,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Error **errp)<br>
++{<br>
++=C2=A0 =C2=A0 ZynqMachineState *m =3D ZYNQ_MACHINE(obj);<br>
++=C2=A0 =C2=A0 uint8_t val;<br>
++<br>
++=C2=A0 =C2=A0 if (!visit_type_uint8(v, name, &amp;val, errp)) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
++=C2=A0 =C2=A0 }<br>
++=C2=A0 =C2=A0 m-&gt;BootMode =3D val;<br>
++}<br>
++<br>
+=C2=A0static void zynq_init(MachineState *machine)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0ZynqMachineState *zynq_machine =3D ZYNQ_MACHINE(machine=
+);<br>
+@@ -241,6 +256,7 @@ static void zynq_init(MachineState *machine)<br>
+=C2=A0 =C2=A0 =C2=A0/* Create slcr, keep a pointer to connect clocks */<br>
+=C2=A0 =C2=A0 =C2=A0slcr =3D qdev_new(&quot;xilinx-zynq_slcr&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0qdev_connect_clock_in(slcr, &quot;ps_clk&quot;, zynq_ma=
+chine-&gt;ps_clk);<br>
++=C2=A0 =C2=A0 qdev_prop_set_uint8(slcr, &quot;boot-mode&quot;, zynq_machin=
+e-&gt;BootMode);<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_realize_and_unref(SYS_BUS_DEVICE(slcr), &amp;err=
+or_fatal);<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);<b=
+r>
+<br>
+@@ -372,6 +388,7 @@ static void zynq_machine_class_init(ObjectClass *oc, vo=
+id *data)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0NULL<br>
+=C2=A0 =C2=A0 =C2=A0};<br>
+=C2=A0 =C2=A0 =C2=A0MachineClass *mc =3D MACHINE_CLASS(oc);<br>
++=C2=A0 =C2=A0 ObjectProperty *prop;<br>
+=C2=A0 =C2=A0 =C2=A0mc-&gt;desc =3D &quot;Xilinx Zynq Platform Baseboard fo=
+r Cortex-A9&quot;;<br>
+=C2=A0 =C2=A0 =C2=A0mc-&gt;init =3D zynq_init;<br>
+=C2=A0 =C2=A0 =C2=A0mc-&gt;max_cpus =3D ZYNQ_MAX_CPUS;<br>
+@@ -379,6 +396,11 @@ static void zynq_machine_class_init(ObjectClass *oc, v=
+oid *data)<br>
+=C2=A0 =C2=A0 =C2=A0mc-&gt;ignore_memory_transaction_failures =3D true;<br>
+=C2=A0 =C2=A0 =C2=A0mc-&gt;valid_cpu_types =3D valid_cpu_types;<br>
+=C2=A0 =C2=A0 =C2=A0mc-&gt;default_ram_id =3D &quot;zynq.ext_ram&quot;;<br>
++=C2=A0 =C2=A0 prop =3D object_class_property_add(oc, &quot;boot-mode&quot;=
+, &quot;uint8_t&quot;, NULL,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 zynq_set_boot_mode, NULL, NULL);<br>
++=C2=A0 =C2=A0 object_class_property_set_description(oc, &quot;boot-mode&qu=
+ot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &=
+quot;Update SLCR.BOOT_MODE register&quot;);<br>
++=C2=A0 =C2=A0 object_property_set_default_uint(prop, 1);<br>
+=C2=A0}<br>
+<br>
+=C2=A0static const TypeInfo zynq_machine_type =3D {<br>
+-- <br>
+2.34.1<br>
+<br>
+</blockquote></div></div>
+
+--000000000000e02385061ad79f6e--

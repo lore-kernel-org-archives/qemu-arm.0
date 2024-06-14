@@ -1,370 +1,307 @@
-Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp184692ejb;
-        Fri, 14 Jun 2024 04:08:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXOqwJXASxBKW8uSaBdXhxTYagpMHrHSV7EtWw96bKdqOudFPdKLRBAVFDeSKteNXb6lOxUnuFiCv1lm+tN023Xyu8I97eG
-X-Google-Smtp-Source: AGHT+IE5DlWyJGww/W9LicKMPzn9y/T4oHm4Fg8v8o5c4QXhLJ5W7QgkZwCut9wSrCiM2kq7IJl9
-X-Received: by 2002:a05:620a:2a06:b0:797:9c76:3292 with SMTP id af79cd13be357-798d242d77cmr268621585a.36.1718363284790;
-        Fri, 14 Jun 2024 04:08:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718363284; cv=none;
+Received: by 2002:a17:906:d8b6:b0:a6f:6e8d:c7a2 with SMTP id qc22csp30243ejb;
+        Fri, 14 Jun 2024 06:30:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXHkvZR5q01MUI9ij8ZLouMI70pqfw92RAB5LQNFVrDblJBSBOmsxL98qzrYMUUX9OIosGMyhMCJuH7Hw1oQhXlzcnxb/iP
+X-Google-Smtp-Source: AGHT+IE5j5NxefYJBsQeCkd0E9xmTeh0Vs+lOClAdwV4tUjFUyVz1f8JjaO8oky8LAykbvtUD7bs
+X-Received: by 2002:a05:620a:28d4:b0:795:4772:178 with SMTP id af79cd13be357-798d242f517mr270921785a.41.1718371848520;
+        Fri, 14 Jun 2024 06:30:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718371848; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZgpzlGvcni4VtoqmmEDCN1UZZr83HMkWgYYnnxZbyIY9ot32HsTOznZCSs7zBaLkcz
-         vl+E5s8kIcahZEReucum4ch0gA+lgyCpLvco0HLkJU6gIxJD/Nk/4iu8RzbMPJSWlsp9
-         BuFwtUwR8F0zxhSyUreJ1P2rf9/IhVkcq/shdJb3v+LWQ3CcHTvFExwjPpIjrMshXF1x
-         CsQP2qDwDBMuEh09pFaBt+AuGdFPTr+plsB1PVJssqlWv4fe0E28y3cYIGWnsL+xdYE3
-         +/oIToI+ZD/P25lhnN3S1FnYYMF/DqAJTCJ3DUU3oBaEzMnfRYZgoA//9oMAUk1LV0z+
-         jztg==
+        b=Qj2I1TTVNeRWVIHiHcV7NrC5jXFYa3QjdNba863QVQqj0XeyVdg80oGtP98OmSs6h6
+         2JTgX3Etmlh72HYMkAgof50FBTY4r5fFf9mgnk3YR8atFpPdof2rXef17iHQZNfbdWW0
+         BwFbQY529GcEYwyjPoFAi7EDLiGkx9HDaOC6fG+sfZM3QVl58MC6rlSB7X5Il7hItUuQ
+         MNu6HdFZFnoP6pO8rB7fXRfIEnBWtkrxpcnqzcTt7y9vuLId0jP3bgIWx8Sv9dTzKU1f
+         A0XVbv00NG7LeiOZrZk9FNGAByky5VRP24UN6V3q/yyX9yheDS9LoUlVU2Y6XmZZseHk
+         oEMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=+qFK3vcKlDVOP4/ltWPGwA7q/khSRTrFYIyxE6c1n9Q=;
-        fh=tHZdE1uPfphTy75kXBBHcjMCqr0LbJocTrH6K5F/h8I=;
-        b=tDlFnBKOIyMsjOLDHf6/NnKbFZS80mdxwSGp1qGtFU495FgbibibtRsaAId8jgfZCQ
-         Lf4nm9vWKSQBFDZRo34Oa1CN4QshvdrkU0F8x9V/+wIdapRS1f7Ohfxct2k+gscZNS7A
-         78+ZyKPAo4RpGidksgc6z8TZxueK8RRJhj+BVPxkbtG/cDWPfGwCK3zhRcvuUC11mBty
-         Rp3pl6Kg6o2t3+ee0RxXqfDQBFDb53cGW0eOafOW/CWKJBCKlUcxQjfAMxhq3FLwNdbK
-         GhdHx2etW/1Jhg0eQkmUmcdVTKcPfSuVPfrnbJ9GzLI5j8tdmQtOHXXZYDXQBdHagWTb
-         L2TA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=NPAFKapehhOX/iQyykCUU+B2VPosHg4/5JSFSzTtVNA=;
+        fh=5vXKUMI9TwceLoQTjvxmEZoatysrJXX22ENraJ4JGNs=;
+        b=qN1DGLW+o/ZXeT9RQznF5SOqdL2HaSFl8N5pL9ATNXC5iGXAlqsBefnJeh+f7ttSmD
+         5Xzk1gIUOew/9Sxe69EFjF3svoaVqI50jOrnspuQpQx7g9n2swAo26xSvrZrdPRrtHui
+         AKRDXU4V9Op5RkQcZ4EaZ+R/gzhQVW+g2w0JA46XTUiq+dY4Zn43RYgSFlxCChfgnkQx
+         1Zu3xEEOUuinack3L8qNtDF9TPQjxsrVp0530m6AOTIWh0cZUgFVX/jA0Urq4uF9fXOQ
+         fsnVPFsO7nCNlzTXBuVfELeDyXrD+nQEeU5aRaB38xjzkYOqRrzBx83GzKJguOcsj/Pw
+         +hsA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mj020RQM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linux.alibaba.com header.s=default header.b=D5rMGetr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.alibaba.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-798abe6e402si344429085a.673.2024.06.14.04.08.04
+        by mx.google.com with ESMTPS id af79cd13be357-798abe57c61si406945985a.570.2024.06.14.06.30.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jun 2024 04:08:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Jun 2024 06:30:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=mj020RQM;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linux.alibaba.com header.s=default header.b=D5rMGetr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.alibaba.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sI4mg-00065z-Qv; Fri, 14 Jun 2024 07:07:55 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sI70A-0007Yg-DZ; Fri, 14 Jun 2024 09:29:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1sI4mf-000656-5g; Fri, 14 Jun 2024 07:07:53 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1sI4mc-0000AI-UO; Fri, 14 Jun 2024 07:07:52 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-57c923e03caso2221204a12.3; 
- Fri, 14 Jun 2024 04:07:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <zhiwei_liu@linux.alibaba.com>)
+ id 1sI705-0007Xe-PJ; Fri, 14 Jun 2024 09:29:55 -0400
+Received: from out30-131.freemail.mail.aliyun.com ([115.124.30.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhiwei_liu@linux.alibaba.com>)
+ id 1sI700-0001Ul-Of; Fri, 14 Jun 2024 09:29:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1718363263; x=1718968063; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+qFK3vcKlDVOP4/ltWPGwA7q/khSRTrFYIyxE6c1n9Q=;
- b=mj020RQMzumfCDNSxsJTEgZT+ZqT/s/phNi1xSaraIJDXhyMZE2Khts4fpiHKYiNa3
- rAEOja6mYiOvz7iXEQ51Gqpc5QWhQ8aSfvzWqZaeHXFtPklL30GH0ei5zpVzVV/Tvnu+
- OjNodoofXY336eDNPcKLcBJHkUg+F/ntsoZLLeW+xSjzuQg+a+xFyJ0ZoJC8BdY/C65y
- FuqrzltRuF/NWBOA8rIPmGYYDnlQaYeZDgC6BCWVfmD5RfNzMqGf3O1upDhNrmWRso3C
- a0Q/g98B8qBfYBakzHnLpsFtjbiQCt2+TQD2KEKq/bi7lx8AzPPD1QYsPk234pGlZtGW
- H7VA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718363263; x=1718968063;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+qFK3vcKlDVOP4/ltWPGwA7q/khSRTrFYIyxE6c1n9Q=;
- b=GhSJVHTW4KOiKZ/2vApgJxX1Ai6aajIp+mYpFdyRLSrwlgkzioHDrvOaZ7l2VzAeeQ
- 5aqlEz4XIl1AKvCT4wplf6v/DLtE4Qee23pPiUXVw4ASMeC/sE4LYeb0SZm7q6zhQcKu
- Jqf7fzZC6SqPic4RF75ifltEE7eGG2HD914XzeUxgSuMSMumYEw9oHgyIQ4a4V6at6a3
- iDjuOWsSYTeVBcowrkGubXmkyG21hfVRU0GQVdBoH/oiy8CMqV+Ljcmr3C+gZjPUsbz0
- KKjVkFLfxN9geBMBTjAp2FG+xodwa+KtZ4/sgrnkMeol2XJ4eA1SNJsc/RpRKXp5utED
- R1Pg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW/f8trxKsdbADeasqhS/L6N35tM+HGIESjV9kWCRHz+rhji7Y3gEnh/CAI2mQlKls9V/2gn2z4TBdwp2U0rklQhNqweFE=
-X-Gm-Message-State: AOJu0YzvhaeHDkH8PM9ji3hY9MMERiAI837ZfpaEeJ30w4qordHKrCFV
- TIJJyRwELnRoGyJdVVCbEukJtyFyZEUplEG3tvdHigxlLd0/LDGvmT8eb9B/GpVv95JMKj+2jhf
- xC3mj6nPTDWjija5csH/Is+4ZU07LL16rWcMd2A==
-X-Received: by 2002:a50:d502:0:b0:57c:a570:960f with SMTP id
- 4fb4d7f45d1cf-57cbd67dba6mr1597881a12.21.1718363262819; Fri, 14 Jun 2024
- 04:07:42 -0700 (PDT)
+ d=linux.alibaba.com; s=default;
+ t=1718371779; h=Message-ID:Date:MIME-Version:Subject:To:From:Content-Type;
+ bh=NPAFKapehhOX/iQyykCUU+B2VPosHg4/5JSFSzTtVNA=;
+ b=D5rMGetrk46o/dh96OHJ/URzD/TbV0sn0O7JrfiLnfl6WrfsRIJgLITSRlubtTNIYh9onYNAuYDEN1KId46PQaR8BM/0zrz22VmFs4yMkciHwtzJEkDRHcOsc7T3LnhOxH0GdblHIRdwQAujjorLf92OjIsAhnKiTGRPZFDnFYk=
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R241e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=maildocker-contentspam033037067113;
+ MF=zhiwei_liu@linux.alibaba.com; NM=1; PH=DS; RN=36; SR=0;
+ TI=SMTPD_---0W8RCFqL_1718371772; 
+Received: from 30.166.65.72(mailfrom:zhiwei_liu@linux.alibaba.com
+ fp:SMTPD_---0W8RCFqL_1718371772) by smtp.aliyun-inc.com;
+ Fri, 14 Jun 2024 21:29:33 +0800
+Message-ID: <c48aabc6-f5da-4e71-b65a-1fc35603e6e5@linux.alibaba.com>
+Date: Fri, 14 Jun 2024 21:28:22 +0800
 MIME-Version: 1.0
-References: <20240613153638.3858853-1-sai.pavan.boddu@amd.com>
- <20240613153638.3858853-3-sai.pavan.boddu@amd.com>
-In-Reply-To: <20240613153638.3858853-3-sai.pavan.boddu@amd.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Fri, 14 Jun 2024 13:07:30 +0200
-Message-ID: <CAJy5ezoo5bCMVG6GETvWTYn-y0VEFths0Uj3foXMQbyKPduU=A@mail.gmail.com>
-Subject: Re: [PATCH 2/2] hw/arm/xilinx_zynq: Add boot-mode property
-To: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, francisco.iglesias@amd.com
-Content-Type: multipart/alternative; boundary="000000000000e02385061ad79f6e"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 01/16] accel/tcg: Store section pointer in
+ CPUTLBEntryFull
+To: Jim Shu <jim.shu@sifive.com>
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Michael Rolnik
+ <mrolnik@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Song Gao <gaosong@loongson.cn>, Laurent Vivier <laurent@vivier.eu>,
+ Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <arikalo@gmail.com>,
+ Stafford Horne <shorne@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
+ "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>
+References: <20240612081416.29704-1-jim.shu@sifive.com>
+ <20240612081416.29704-2-jim.shu@sifive.com>
+ <501987cc-d8c1-47d8-b553-d81e95eadb1c@linux.alibaba.com>
+ <CALw707r1-94NOZ6CYV-aE-buXCh8v3mOQjUSm=wQrpLf0Pro9g@mail.gmail.com>
+Content-Language: en-US
+From: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
+In-Reply-To: <CALw707r1-94NOZ6CYV-aE-buXCh8v3mOQjUSm=wQrpLf0Pro9g@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=115.124.30.131;
+ envelope-from=zhiwei_liu@linux.alibaba.com;
+ helo=out30-131.freemail.mail.aliyun.com
+X-Spam_score_int: -174
+X-Spam_score: -17.5
+X-Spam_bar: -----------------
+X-Spam_report: (-17.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, ENV_AND_HDR_SPF_MATCH=-0.5,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01, UNPARSEABLE_RELAY=0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AOvf7EQzP6w8
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vide2DfQx3MH
 
---000000000000e02385061ad79f6e
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-On Thu, Jun 13, 2024 at 5:36=E2=80=AFPM Sai Pavan Boddu <sai.pavan.boddu@am=
-d.com>
-wrote:
+On 2024/6/13 18:37, Jim Shu wrote:
+> Hi Zhiwei,
+>
+> Common IOMMU devices will not have IOMMUMemoryRegion in the path of
+> CPU access since It only affects DMA access.
+> In QEMU, it usually places this IOMMU MR as the parent of
+> "system_memory", and changes the target_mr of DMA from "system_memory"
+> to IOMMU MR.
+>
+> For the wgChecker, it is in front of memory or device MMIO and
+> protects both CPU/DMA access to memory or device MMIO.
+> In QEMU, wgChecker re-use IOMMUMemoryRegion to implement the memory
+> protection inside the translate() function of IOMMU MR.
+> In the machine code, wgChecker replaces the MemoryRegion of protected
+> resources with the checker's IOMMU MR in the MemoryRegion tree of
+> "system_memory".
+> Both CPU/DMA access will go through the "system_memory". They will go
+> through the checker's IOMMU MR when accessing the protected resources.
 
-> Read boot-mode value as machine property and propagate that to
-> SLCR.BOOT_MODE register.
+Thanks. It is clear and very helpful.
+
+Zhiwei
+
+>
+> This mechanism is used by Cortex-M MPC devices (hw/misc/tz-mpc.c)
+> originally. I have leveraged it and extended it little (in patch 2) as
+> MPC doesn't support RO/WO permission.
+> If we'd like to have a device to do the memory protection of both CPU
+> & DMA access, we could implement it in this mechanism.
+> (p.s. Cortex-A TZASC is not supported in QEMU, which is similar to MPC
+> or wgChecker device.)
+>
+> Thanks,
+> Jim Shu
 >
 >
-Hi Sai,
-
-Directly exposing the register field to the user to set on the command-line
-probably makes usability a little too rough (user has to check the register
-specs in the TRM to change boot-mode).
-We could perhaps add friendly names that we internally map to the register
-field values.
-
-Another question, can we use the existing -boot command-line arg for this?
-Something along the lines of what x86 PC does:
-https://github.com/qemu/qemu/blob/master/hw/i386/pc.c#L395
-
-I don't know if the framework allows for long names but something like the
-following would be nice:
-qemu -boot spi,ethernet,jtag,uart,etc
-
-Would also be great to document a small example, perhaps in
-https://github.com/qemu/qemu/tree/master/docs/system/arm
-
-Best regards,
-Edgar
-
-
-
-> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-> ---
->  hw/arm/xilinx_zynq.c | 22 ++++++++++++++++++++++
->  1 file changed, 22 insertions(+)
->
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 7f7a3d23fb..4dfa9184ac 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -38,6 +38,7 @@
->  #include "qom/object.h"
->  #include "exec/tswap.h"
->  #include "target/arm/cpu-qom.h"
-> +#include "qapi/visitor.h"
->
->  #define TYPE_ZYNQ_MACHINE MACHINE_TYPE_NAME("xilinx-zynq-a9")
->  OBJECT_DECLARE_SIMPLE_TYPE(ZynqMachineState, ZYNQ_MACHINE)
-> @@ -90,6 +91,7 @@ struct ZynqMachineState {
->      MachineState parent;
->      Clock *ps_clk;
->      ARMCPU *cpu[ZYNQ_MAX_CPUS];
-> +    uint8_t BootMode;
->  };
->
->  static void zynq_write_board_setup(ARMCPU *cpu,
-> @@ -176,6 +178,19 @@ static inline int zynq_init_spi_flashes(uint32_t
-> base_addr, qemu_irq irq,
->      return unit;
->  }
->
-> +static void zynq_set_boot_mode(Object *obj, Visitor *v,
-> +                               const char *name, void *opaque,
-> +                               Error **errp)
-> +{
-> +    ZynqMachineState *m =3D ZYNQ_MACHINE(obj);
-> +    uint8_t val;
-> +
-> +    if (!visit_type_uint8(v, name, &val, errp)) {
-> +        return;
-> +    }
-> +    m->BootMode =3D val;
-> +}
-> +
->  static void zynq_init(MachineState *machine)
->  {
->      ZynqMachineState *zynq_machine =3D ZYNQ_MACHINE(machine);
-> @@ -241,6 +256,7 @@ static void zynq_init(MachineState *machine)
->      /* Create slcr, keep a pointer to connect clocks */
->      slcr =3D qdev_new("xilinx-zynq_slcr");
->      qdev_connect_clock_in(slcr, "ps_clk", zynq_machine->ps_clk);
-> +    qdev_prop_set_uint8(slcr, "boot-mode", zynq_machine->BootMode);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(slcr), &error_fatal);
->      sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
->
-> @@ -372,6 +388,7 @@ static void zynq_machine_class_init(ObjectClass *oc,
-> void *data)
->          NULL
->      };
->      MachineClass *mc =3D MACHINE_CLASS(oc);
-> +    ObjectProperty *prop;
->      mc->desc =3D "Xilinx Zynq Platform Baseboard for Cortex-A9";
->      mc->init =3D zynq_init;
->      mc->max_cpus =3D ZYNQ_MAX_CPUS;
-> @@ -379,6 +396,11 @@ static void zynq_machine_class_init(ObjectClass *oc,
-> void *data)
->      mc->ignore_memory_transaction_failures =3D true;
->      mc->valid_cpu_types =3D valid_cpu_types;
->      mc->default_ram_id =3D "zynq.ext_ram";
-> +    prop =3D object_class_property_add(oc, "boot-mode", "uint8_t", NULL,
-> +                              zynq_set_boot_mode, NULL, NULL);
-> +    object_class_property_set_description(oc, "boot-mode",
-> +                                          "Update SLCR.BOOT_MODE
-> register");
-> +    object_property_set_default_uint(prop, 1);
->  }
->
->  static const TypeInfo zynq_machine_type =3D {
-> --
-> 2.34.1
 >
 >
-
---000000000000e02385061ad79f6e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">On Thu, Jun 13, 2024 at 5:36=E2=80=AFPM S=
-ai Pavan Boddu &lt;<a href=3D"mailto:sai.pavan.boddu@amd.com">sai.pavan.bod=
-du@amd.com</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote c=
-lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
-d rgb(204,204,204);padding-left:1ex">Read boot-mode value as machine proper=
-ty and propagate that to<br>
-SLCR.BOOT_MODE register.<br>
-<br></blockquote><div><br></div><div>Hi Sai,</div><div><br></div><div>Direc=
-tly exposing the register field to the user to set on the command-line prob=
-ably makes usability a little too rough (user has to check the register spe=
-cs in the TRM to change boot-mode).</div><div>We could perhaps add friendly=
- names that we internally map to the register field values.</div><div><br><=
-/div><div>Another question, can we use the existing -boot command-line arg =
-for this?</div><div>Something along the lines of what x86 PC does:</div><di=
-v><a href=3D"https://github.com/qemu/qemu/blob/master/hw/i386/pc.c#L395">ht=
-tps://github.com/qemu/qemu/blob/master/hw/i386/pc.c#L395</a><br></div><div>=
-<br></div><div>I don&#39;t know if the framework allows for long names but =
-something like the following would be nice:</div><div>qemu -boot spi,ethern=
-et,jtag,uart,etc</div><div><br></div><div>Would also be great to document a=
- small example, perhaps in=C2=A0<a href=3D"https://github.com/qemu/qemu/tre=
-e/master/docs/system/arm">https://github.com/qemu/qemu/tree/master/docs/sys=
-tem/arm</a></div><div><br></div><div>Best regards,</div><div>Edgar</div><di=
-v><br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
-ex">
-Signed-off-by: Sai Pavan Boddu &lt;<a href=3D"mailto:sai.pavan.boddu@amd.co=
-m" target=3D"_blank">sai.pavan.boddu@amd.com</a>&gt;<br>
----<br>
-=C2=A0hw/arm/xilinx_zynq.c | 22 ++++++++++++++++++++++<br>
-=C2=A01 file changed, 22 insertions(+)<br>
-<br>
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c<br>
-index 7f7a3d23fb..4dfa9184ac 100644<br>
---- a/hw/arm/xilinx_zynq.c<br>
-+++ b/hw/arm/xilinx_zynq.c<br>
-@@ -38,6 +38,7 @@<br>
-=C2=A0#include &quot;qom/object.h&quot;<br>
-=C2=A0#include &quot;exec/tswap.h&quot;<br>
-=C2=A0#include &quot;target/arm/cpu-qom.h&quot;<br>
-+#include &quot;qapi/visitor.h&quot;<br>
-<br>
-=C2=A0#define TYPE_ZYNQ_MACHINE MACHINE_TYPE_NAME(&quot;xilinx-zynq-a9&quot=
-;)<br>
-=C2=A0OBJECT_DECLARE_SIMPLE_TYPE(ZynqMachineState, ZYNQ_MACHINE)<br>
-@@ -90,6 +91,7 @@ struct ZynqMachineState {<br>
-=C2=A0 =C2=A0 =C2=A0MachineState parent;<br>
-=C2=A0 =C2=A0 =C2=A0Clock *ps_clk;<br>
-=C2=A0 =C2=A0 =C2=A0ARMCPU *cpu[ZYNQ_MAX_CPUS];<br>
-+=C2=A0 =C2=A0 uint8_t BootMode;<br>
-=C2=A0};<br>
-<br>
-=C2=A0static void zynq_write_board_setup(ARMCPU *cpu,<br>
-@@ -176,6 +178,19 @@ static inline int zynq_init_spi_flashes(uint32_t base_=
-addr, qemu_irq irq,<br>
-=C2=A0 =C2=A0 =C2=A0return unit;<br>
-=C2=A0}<br>
-<br>
-+static void zynq_set_boot_mode(Object *obj, Visitor *v,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0const char *name, void *opaque,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Error **errp)<br>
-+{<br>
-+=C2=A0 =C2=A0 ZynqMachineState *m =3D ZYNQ_MACHINE(obj);<br>
-+=C2=A0 =C2=A0 uint8_t val;<br>
-+<br>
-+=C2=A0 =C2=A0 if (!visit_type_uint8(v, name, &amp;val, errp)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-+=C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 m-&gt;BootMode =3D val;<br>
-+}<br>
-+<br>
-=C2=A0static void zynq_init(MachineState *machine)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0ZynqMachineState *zynq_machine =3D ZYNQ_MACHINE(machine=
-);<br>
-@@ -241,6 +256,7 @@ static void zynq_init(MachineState *machine)<br>
-=C2=A0 =C2=A0 =C2=A0/* Create slcr, keep a pointer to connect clocks */<br>
-=C2=A0 =C2=A0 =C2=A0slcr =3D qdev_new(&quot;xilinx-zynq_slcr&quot;);<br>
-=C2=A0 =C2=A0 =C2=A0qdev_connect_clock_in(slcr, &quot;ps_clk&quot;, zynq_ma=
-chine-&gt;ps_clk);<br>
-+=C2=A0 =C2=A0 qdev_prop_set_uint8(slcr, &quot;boot-mode&quot;, zynq_machin=
-e-&gt;BootMode);<br>
-=C2=A0 =C2=A0 =C2=A0sysbus_realize_and_unref(SYS_BUS_DEVICE(slcr), &amp;err=
-or_fatal);<br>
-=C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);<b=
-r>
-<br>
-@@ -372,6 +388,7 @@ static void zynq_machine_class_init(ObjectClass *oc, vo=
-id *data)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0NULL<br>
-=C2=A0 =C2=A0 =C2=A0};<br>
-=C2=A0 =C2=A0 =C2=A0MachineClass *mc =3D MACHINE_CLASS(oc);<br>
-+=C2=A0 =C2=A0 ObjectProperty *prop;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;desc =3D &quot;Xilinx Zynq Platform Baseboard fo=
-r Cortex-A9&quot;;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;init =3D zynq_init;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;max_cpus =3D ZYNQ_MAX_CPUS;<br>
-@@ -379,6 +396,11 @@ static void zynq_machine_class_init(ObjectClass *oc, v=
-oid *data)<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;ignore_memory_transaction_failures =3D true;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;valid_cpu_types =3D valid_cpu_types;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;default_ram_id =3D &quot;zynq.ext_ram&quot;;<br>
-+=C2=A0 =C2=A0 prop =3D object_class_property_add(oc, &quot;boot-mode&quot;=
-, &quot;uint8_t&quot;, NULL,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 zynq_set_boot_mode, NULL, NULL);<br>
-+=C2=A0 =C2=A0 object_class_property_set_description(oc, &quot;boot-mode&qu=
-ot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &=
-quot;Update SLCR.BOOT_MODE register&quot;);<br>
-+=C2=A0 =C2=A0 object_property_set_default_uint(prop, 1);<br>
-=C2=A0}<br>
-<br>
-=C2=A0static const TypeInfo zynq_machine_type =3D {<br>
--- <br>
-2.34.1<br>
-<br>
-</blockquote></div></div>
-
---000000000000e02385061ad79f6e--
+>
+> On Thu, Jun 13, 2024 at 2:23 PM LIU Zhiwei <zhiwei_liu@linux.alibaba.com> wrote:
+>> On 2024/6/12 16:14, Jim Shu wrote:
+>>> 'CPUTLBEntryFull.xlat_section' stores section_index in last 12 bits to
+>>> find the correct section when CPU access the IO region over the IOTLB
+>>> (iotlb_to_section()).
+>>>
+>>> However, section_index is only unique inside single AddressSpace. If
+>>> address space translation is over IOMMUMemoryRegion, it could return
+>>> section from other AddressSpace. 'iotlb_to_section()' API only finds the
+>>> sections from CPU's AddressSpace so that it couldn't find section in
+>>> other AddressSpace. Thus, using 'iotlb_to_section()' API will find the
+>>> wrong section and QEMU will have wrong load/store access.
+>>>
+>>> To fix this bug, store complete MemoryRegionSection pointer in
+>>> CPUTLBEntryFull instead of section_index.
+>>>
+>>> This bug occurs only when
+>>> (1) IOMMUMemoryRegion is in the path of CPU access.
+>> Hi Jim,
+>>
+>> Can you explain a little more on when IOMMUMemoryRegion is in the path
+>> of CPU access?
+>>
+>> Thanks,
+>> Zhiwei
+>>
+>>> (2) IOMMUMemoryRegion returns different target_as and the section is in
+>>> the IO region.
+>>>
+>>> Common IOMMU devices don't have this issue since they are only in the
+>>> path of DMA access. Currently, the bug only occurs when ARM MPC device
+>>> (hw/misc/tz-mpc.c) returns 'blocked_io_as' to emulate blocked access
+>>> handling. Upcoming RISC-V wgChecker device is also affected by this bug.
+>>>
+>>> Signed-off-by: Jim Shu <jim.shu@sifive.com>
+>>> ---
+>>>    accel/tcg/cputlb.c    | 19 +++++++++----------
+>>>    include/hw/core/cpu.h |  3 +++
+>>>    2 files changed, 12 insertions(+), 10 deletions(-)
+>>>
+>>> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+>>> index 117b516739..8cf124b760 100644
+>>> --- a/accel/tcg/cputlb.c
+>>> +++ b/accel/tcg/cputlb.c
+>>> @@ -1169,6 +1169,7 @@ void tlb_set_page_full(CPUState *cpu, int mmu_idx,
+>>>        desc->fulltlb[index] = *full;
+>>>        full = &desc->fulltlb[index];
+>>>        full->xlat_section = iotlb - addr_page;
+>>> +    full->section = section;
+>>>        full->phys_addr = paddr_page;
+>>>
+>>>        /* Now calculate the new entry */
+>>> @@ -1248,14 +1249,14 @@ static inline void cpu_unaligned_access(CPUState *cpu, vaddr addr,
+>>>    }
+>>>
+>>>    static MemoryRegionSection *
+>>> -io_prepare(hwaddr *out_offset, CPUState *cpu, hwaddr xlat,
+>>> +io_prepare(hwaddr *out_offset, CPUState *cpu, CPUTLBEntryFull *full,
+>>>               MemTxAttrs attrs, vaddr addr, uintptr_t retaddr)
+>>>    {
+>>>        MemoryRegionSection *section;
+>>>        hwaddr mr_offset;
+>>>
+>>> -    section = iotlb_to_section(cpu, xlat, attrs);
+>>> -    mr_offset = (xlat & TARGET_PAGE_MASK) + addr;
+>>> +    section = full->section;
+>>> +    mr_offset = (full->xlat_section & TARGET_PAGE_MASK) + addr;
+>>>        cpu->mem_io_pc = retaddr;
+>>>        if (!cpu->neg.can_do_io) {
+>>>            cpu_io_recompile(cpu, retaddr);
+>>> @@ -1571,9 +1572,7 @@ bool tlb_plugin_lookup(CPUState *cpu, vaddr addr, int mmu_idx,
+>>>
+>>>        /* We must have an iotlb entry for MMIO */
+>>>        if (tlb_addr & TLB_MMIO) {
+>>> -        MemoryRegionSection *section =
+>>> -            iotlb_to_section(cpu, full->xlat_section & ~TARGET_PAGE_MASK,
+>>> -                             full->attrs);
+>>> +        MemoryRegionSection *section = full->section;
+>>>            data->is_io = true;
+>>>            data->mr = section->mr;
+>>>        } else {
+>>> @@ -1972,7 +1971,7 @@ static uint64_t do_ld_mmio_beN(CPUState *cpu, CPUTLBEntryFull *full,
+>>>        tcg_debug_assert(size > 0 && size <= 8);
+>>>
+>>>        attrs = full->attrs;
+>>> -    section = io_prepare(&mr_offset, cpu, full->xlat_section, attrs, addr, ra);
+>>> +    section = io_prepare(&mr_offset, cpu, full, attrs, addr, ra);
+>>>        mr = section->mr;
+>>>
+>>>        BQL_LOCK_GUARD();
+>>> @@ -1993,7 +1992,7 @@ static Int128 do_ld16_mmio_beN(CPUState *cpu, CPUTLBEntryFull *full,
+>>>        tcg_debug_assert(size > 8 && size <= 16);
+>>>
+>>>        attrs = full->attrs;
+>>> -    section = io_prepare(&mr_offset, cpu, full->xlat_section, attrs, addr, ra);
+>>> +    section = io_prepare(&mr_offset, cpu, full, attrs, addr, ra);
+>>>        mr = section->mr;
+>>>
+>>>        BQL_LOCK_GUARD();
+>>> @@ -2513,7 +2512,7 @@ static uint64_t do_st_mmio_leN(CPUState *cpu, CPUTLBEntryFull *full,
+>>>        tcg_debug_assert(size > 0 && size <= 8);
+>>>
+>>>        attrs = full->attrs;
+>>> -    section = io_prepare(&mr_offset, cpu, full->xlat_section, attrs, addr, ra);
+>>> +    section = io_prepare(&mr_offset, cpu, full, attrs, addr, ra);
+>>>        mr = section->mr;
+>>>
+>>>        BQL_LOCK_GUARD();
+>>> @@ -2533,7 +2532,7 @@ static uint64_t do_st16_mmio_leN(CPUState *cpu, CPUTLBEntryFull *full,
+>>>        tcg_debug_assert(size > 8 && size <= 16);
+>>>
+>>>        attrs = full->attrs;
+>>> -    section = io_prepare(&mr_offset, cpu, full->xlat_section, attrs, addr, ra);
+>>> +    section = io_prepare(&mr_offset, cpu, full, attrs, addr, ra);
+>>>        mr = section->mr;
+>>>
+>>>        BQL_LOCK_GUARD();
+>>> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+>>> index a2c8536943..3f6c10897b 100644
+>>> --- a/include/hw/core/cpu.h
+>>> +++ b/include/hw/core/cpu.h
+>>> @@ -217,6 +217,9 @@ typedef struct CPUTLBEntryFull {
+>>>         */
+>>>        hwaddr xlat_section;
+>>>
+>>> +    /* @section contains physical section. */
+>>> +    MemoryRegionSection *section;
+>>> +
+>>>        /*
+>>>         * @phys_addr contains the physical address in the address space
+>>>         * given by cpu_asidx_from_attrs(cpu, @attrs).

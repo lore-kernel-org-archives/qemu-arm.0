@@ -1,99 +1,100 @@
-Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp92796ejb;
-        Fri, 14 Jun 2024 00:28:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUPPJu2QzxH09v9Ulg7pFsOSTjzRrxf0MTJphTz+IEyIfHyDIShE76YD9y3Sb5fPjN0z7pmHEjabAzm6KC0obKNQamZgQBE
-X-Google-Smtp-Source: AGHT+IGd1O88fT+XrI0OlcGrjoC2Uzie5cGiTes4zr+KSWQ03kSsaZxMX5c71eRv91ukper090XE
-X-Received: by 2002:a05:620a:28c5:b0:796:783c:3c29 with SMTP id af79cd13be357-798d242f56fmr186499485a.38.1718350118716;
-        Fri, 14 Jun 2024 00:28:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718350118; cv=none;
+Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp92887ejb;
+        Fri, 14 Jun 2024 00:28:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXRBbBpbt55cZfQAi67FYznnKgvqszQSvRuwc1cquRnedBMObt5jwDp77HoTpL5hPYPnWJJ00Jhq6nN7mKfU4fA5OqB7OOS
+X-Google-Smtp-Source: AGHT+IFk4BBQhA+CYvHkU9z5HLlDLqJPq94SxtdF29sKjWfJeMp1oRiuD3hQ0hyx/W3plM+Moinj
+X-Received: by 2002:a05:6214:1bce:b0:6ad:7562:c286 with SMTP id 6a1803df08f44-6b2a33de154mr85808936d6.15.1718350134387;
+        Fri, 14 Jun 2024 00:28:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718350134; cv=none;
         d=google.com; s=arc-20160816;
-        b=BHBx67GTzMxvhM/glofHH5BbzPT1MkTlgSPIr1kuwk937M//e5lbh23tMy5G0klaRm
-         8BScrgsU4PMZ/olymRjceeh6DLWU50zyIx47XlVhCEdnoFPToXXfDMstpMcqWPUyVApB
-         lcNRQPMQ5bMMrSgDLFbwoBIglkoruVjuu/FAv1GoK1dDQfHqzRcrJr/gnTGyYcU9bMW3
-         l4CEM35Pjel2D1dPjtGDCrsER0auhLQ3pPoQy00cY6cVJeSHooqN2zFljobvSkcGwsut
-         99rORJGSuZLlOC8cIPppSxTk2nTyUnQhOpQWhjFflBhGUOG3H54Xx/jzRMIkp/tmNZRN
-         9dxw==
+        b=ziKp7PVMSKqih9/9H5xN8KqQuoP+Fo+eFiSLVsnD7YZCl7jNXD9bkGNSocxYSfL79u
+         knJ1+m7iD7bb7pDPzwcCl+OXqsyCYZaeOAmbdxyQdg/goX6hJQTwqKEWSFMDWbQYS5cT
+         2+SnYwojqLrZnefRVJKQORqU1VRiNVfOfOsQ6SMzFV3FHr5j9sLa1JzqJ0besArHHBAB
+         Zg1BvxZHOG4xQ70opKpMTIUV5eRuWffHwahReadLMh4QAnuq1aRz9zvg+alSl5Gsj3td
+         X4w8dEdDNybUIK2qA3sdYIbky3vifZjzjAM94zUawY13I027IxD1iAE2ughDeF31xCsL
+         ig0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+aHLk7nwr1ukJ4voNXZNsv4nvrC5BSxbI4+G89eCwJ4=;
-        fh=AcWSTBBcQtYb7MKLFQz0jAErn8oNU1WklmI8CXNUViI=;
-        b=GCGI8ejMi8R/27qpGGocIDZQDE2DiTmeUJAUTAXAO2ngi6NFOOQEFh+cF+OQoIDJ7L
-         oGAXD8aWR8qZNvz8DsS2rXT6oKiR053ALSWiNAswPVL04UwkhvpC0y4u37iUoNvzAZSJ
-         S/9fTXXEdiERgHP4RmfVnjUaSw/mRYDau/rPcojI5z++EkvG72jFbW2ENLySi9DUiQqT
-         Q+mjNKhKpWH/XUz7bHmZ/+KwoZlIZNf56bupo3642zl7cyMGB4MfsOGsDkGcqtMVPiwA
-         91ZLIX1nRCr0SoEjKJsZuloiAoiWj3On8QpDKH845e/JGEkxrARuB+zay31JkswcEkpD
-         xKWg==;
+        bh=aGFz00sOMUVuWd2OQ1tTLKSKBb3ZvhqhnSttbL2LqJc=;
+        fh=05X+9sxNrG/t1WrbkY61sGhLcI/v1z5CVESYwYExGF4=;
+        b=pGyg/CWwwxtq6RcWuHs8SXANGhSm6K9ATLakbRAgN+2Shvj6bRP/4ZYbJD7ms71Nuf
+         q4qhIdan7NpfSsA63OTp0J9l1resafGETrDuZgCNyk082BYspMJsDL6VO8krbAMP7a7p
+         ysplmLhxU1NprOXi3u3Mgz17bilCHstE9epl4EJwtFZDVZCDz1z1iDDVAy1HoB1mKAwF
+         mzdJP7oIyBOmCOzMI6Ckui2aHtA8/iQkkb9u8h6SlFEe07GTS8OWTm3/vU8KxLspHJgy
+         xdY29dSpiktxMeUv3fBDS78u/7RmTYVO6QtDOozVNnkAqghg2bYEx+ri2BqogwY0Tsub
+         amOw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xvdadcur;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g+XP/D/o";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-798aac9c79fsi312956285a.141.2024.06.14.00.28.38
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5afd311si33083986d6.245.2024.06.14.00.28.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jun 2024 00:28:38 -0700 (PDT)
+        Fri, 14 Jun 2024 00:28:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xvdadcur;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g+XP/D/o";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sI1MB-0004J9-1p; Fri, 14 Jun 2024 03:28:19 -0400
+	id 1sI1LO-00039y-St; Fri, 14 Jun 2024 03:27:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1M9-0004EK-7M
- for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:28:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1LN-00039e-G2
+ for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:27:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1M7-0000sN-AA
- for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:28:16 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1LL-0000ju-TF
+ for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:27:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718350094;
+ s=mimecast20190719; t=1718350046;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+aHLk7nwr1ukJ4voNXZNsv4nvrC5BSxbI4+G89eCwJ4=;
- b=XvdadcurmScwe3ZoSYcbcviCPMKPMd0J1286IHtZmL4FYBSULxiU37ZUMZPjDXA/mK+QTl
- jUz3yC1QrViUomslTyz/GwiGPfFIgkmoBXyqOUQNKT4R+HfnpDBmHFKPk1ogyj8VeNt/5p
- vBe3b375q6P2/TDqLgS9LhIsBjG8rhY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=aGFz00sOMUVuWd2OQ1tTLKSKBb3ZvhqhnSttbL2LqJc=;
+ b=g+XP/D/oCi7lIA5GehXqR9NJM4SuMTbKJ8AgIJIWbafXocBPZs2RlZ38ZlG7fSz7RycW32
+ v1762M//BwuDPNfaTFmnctdc30XHF24/KC1pxpee/UchSWCUsa5j0mD9eZJTV6N0kK3NJZ
+ GCiOt/9yFdwUEOsCTGedUlKn8AX5uWY=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-198-5ulapZ1FNUKx_HNa_MglrQ-1; Fri,
- 14 Jun 2024 03:28:07 -0400
-X-MC-Unique: 5ulapZ1FNUKx_HNa_MglrQ-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-589-07hMO7kWOwSXBowTwymhZA-1; Fri,
+ 14 Jun 2024 03:27:21 -0400
+X-MC-Unique: 07hMO7kWOwSXBowTwymhZA-1
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1BFF919560B8; Fri, 14 Jun 2024 07:28:05 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C02AA19560B8; Fri, 14 Jun 2024 07:27:19 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.49])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6E21B3000219; Fri, 14 Jun 2024 07:28:03 +0000 (UTC)
+ id C08FE300021A; Fri, 14 Jun 2024 07:27:10 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 18/19] docs:aspeed: Add AST2700 Evaluation board
-Date: Fri, 14 Jun 2024 09:26:19 +0200
-Message-ID: <20240614072620.1262053-19-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>
+Subject: [PULL 01/19] aspeed/smc: Reintroduce "dram-base" property for AST2700
+Date: Fri, 14 Jun 2024 09:26:02 +0200
+Message-ID: <20240614072620.1262053-2-clg@redhat.com>
 In-Reply-To: <20240614072620.1262053-1-clg@redhat.com>
 References: <20240614072620.1262053-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 11
 X-Spam_score: 1.1
@@ -117,98 +118,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SeCVOoh4rK1U
+X-TUID: n9Slgv6oHi6e
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+The Aspeed SMC device model use to have a 'sdram_base' property. It
+was removed by commit d177892d4a48 ("aspeed/smc: Remove unused
+"sdram-base" property") because previous changes simplified the DMA
+transaction model to use an offset in RAM and not the physical
+address.
 
-Add AST2700 Evaluation board and its boot command.
+The AST2700 SoC has larger address space (64-bit) and a new register
+DMA DRAM Side Address High Part (0x7C) is introduced to deal with the
+high bits of the DMA address. To be able to compute the offset of the
+DMA transaction, as done on the other SoCs, we will need to know where
+the DRAM is mapped in the address space. Re-introduce a "dram-base"
+property to hold this value.
 
-Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- docs/system/arm/aspeed.rst | 39 ++++++++++++++++++++++++++++++++++----
- 1 file changed, 35 insertions(+), 4 deletions(-)
+ include/hw/ssi/aspeed_smc.h | 1 +
+ hw/ssi/aspeed_smc.c         | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index b2dea54eedad..cd9559e3e291 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -1,11 +1,12 @@
--Aspeed family boards (``*-bmc``, ``ast2500-evb``, ``ast2600-evb``)
--==================================================================
-+Aspeed family boards (``*-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``)
-+===================================================================================
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 8e1dda556b91..8791cc0ecb11 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -76,6 +76,7 @@ struct AspeedSMCState {
+     AddressSpace flash_as;
+     MemoryRegion *dram_mr;
+     AddressSpace dram_as;
++    uint64_t     dram_base;
  
- The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
- Aspeed evaluation boards. They are based on different releases of the
- Aspeed SoC : the AST2400 integrating an ARM926EJ-S CPU (400MHz), the
--AST2500 with an ARM1176JZS CPU (800MHz) and more recently the AST2600
--with dual cores ARM Cortex-A7 CPUs (1.2GHz).
-+AST2500 with an ARM1176JZS CPU (800MHz), the AST2600
-+with dual cores ARM Cortex-A7 CPUs (1.2GHz) and more recently the AST2700
-+with quad cores ARM Cortex-A35 64 bits CPUs (1.6GHz)
+     AspeedSMCFlash flashes[ASPEED_SMC_CS_MAX];
  
- The SoC comes with RAM, Gigabit ethernet, USB, SD/MMC, USB, SPI, I2C,
- etc.
-@@ -38,6 +39,10 @@ AST2600 SoC based machines :
- - ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
- - ``qcom-firework-bmc``    Qualcomm Firework BMC
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 6e1a84c19713..7075bc9d61b0 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -1220,6 +1220,7 @@ static const VMStateDescription vmstate_aspeed_smc = {
  
-+AST2700 SoC based machines :
-+
-+- ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
-+
- Supported devices
- -----------------
- 
-@@ -66,6 +71,7 @@ Supported devices
-  * eMMC Boot Controller (dummy)
-  * PECI Controller (minimal)
-  * I3C Controller
-+ * Internal Bridge Controller (SLI dummy)
- 
- 
- Missing devices
-@@ -95,6 +101,10 @@ or directly from the OpenBMC GitHub release repository :
- 
-    https://github.com/openbmc/openbmc/releases
- 
-+or directly from the ASPEED Forked OpenBMC GitHub release repository :
-+
-+   https://github.com/AspeedTech-BMC/openbmc/releases
-+
- To boot a kernel directly from a Linux build tree:
- 
- .. code-block:: bash
-@@ -164,6 +174,27 @@ under Linux), use :
- 
-   -M ast2500-evb,bmc-console=uart3
- 
-+
-+Boot the AST2700 machine from the flash image, use an MTD drive :
-+
-+.. code-block:: bash
-+
-+  IMGDIR=ast2700-default
-+  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
-+
-+  $ qemu-system-aarch64 -M ast2700-evb \
-+       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
-+       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
-+       -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-+       -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
-+       -device loader,cpu-num=0,addr=0x430000000 \
-+       -device loader,cpu-num=1,addr=0x430000000 \
-+       -device loader,cpu-num=2,addr=0x430000000 \
-+       -device loader,cpu-num=3,addr=0x430000000 \
-+       -smp 4 \
-+       -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd \
-+       -nographic
-+
- Aspeed minibmc family boards (``ast1030-evb``)
- ==================================================================
- 
+ static Property aspeed_smc_properties[] = {
+     DEFINE_PROP_BOOL("inject-failure", AspeedSMCState, inject_failure, false),
++    DEFINE_PROP_UINT64("dram-base", AspeedSMCState, dram_base, 0),
+     DEFINE_PROP_LINK("dram", AspeedSMCState, dram_mr,
+                      TYPE_MEMORY_REGION, MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
 -- 
 2.45.2
 

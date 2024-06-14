@@ -1,188 +1,134 @@
-Received: by 2002:a05:7022:c43:b0:7e:eb73:5b3b with SMTP id ej3csp1477367dlb;
-        Thu, 13 Jun 2024 17:21:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXUb7HA0sij2eo6jbXji6tB+cqtUIpTPjeo/WQqNqUuHm/X6IacpGXYPDGKYl6H1efG98oRjQSQY5BboXWU/3SNbDxm82y8
-X-Google-Smtp-Source: AGHT+IF5Z3cb472pTkbUO/DVs8wMexyyVpwuj/pRhRQx06kkq1nl+GDntTJPtll9YPRQatQtLcbg
-X-Received: by 2002:a05:600c:4e92:b0:422:e7e8:588a with SMTP id 5b1f17b1804b1-42304827316mr14008175e9.16.1718324496163;
-        Thu, 13 Jun 2024 17:21:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718324496; cv=none;
+Received: by 2002:a17:906:18aa:b0:a6f:6ed6:9beb with SMTP id c10csp142484ejf;
+        Fri, 14 Jun 2024 10:36:45 -0700 (PDT)
+X-Received: by 2002:a05:6871:828:b0:254:a753:d1c0 with SMTP id 586e51a60fabf-25842b7b406mr4140580fac.48.1718386604912;
+        Fri, 14 Jun 2024 10:36:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718386604; cv=none;
         d=google.com; s=arc-20160816;
-        b=YW+yibuziJS8NboHDHu2FWjjrKRu83Rpwm5ccLZ1UkGFVD3LMfRiRJnF71TRjLdigg
-         xlqYyreN3yVDHNUxVzKb6/xnwUjKXmBrqwByM8o3TAz7xZRjicoyNSVJyqG07AZhQ/Dy
-         Bl6Nt7jJpIpb892f/hq0UshnTKDeXpaqPunVUopb80n01eGqBVRLufsmWMWHykfeX78f
-         8L27E/zBE369oLkpOX4m86FZ4/bTsaIZZCjLq3mYYHzf8ZV8ceyxbIEZp6TmxegizZRE
-         iRNK5Nga6nJGCi6aztMYaHSSmT4EvhJXPVN+5/rBNgSE4GXYiuODA9kPljNRghaqbIlb
-         M4sQ==
+        b=hGYzR7t5O0eYAAGXjoxHIkuOSD81CO+E7lKX3j2GDhgfDjE8FnTxvk+8aiY4W3ukM+
+         DnOr5d5kuaG72vf9TeXJBuxbe7VNc2vwWnkqzIXrO3PB24/RYQIRUWIIvSnJSBCIERSD
+         C+VgxTNmB3P4ZBA1rZ8qycDdxzfpbwU0TxSG4wfgGPHAJ67X91kUH+P+sUDYUJbiV3Om
+         /OHaSUstlHUGG4dI2WzJDKmg21MiHBZXTLZkrjC7kTQwqIHmsRDnR8F5zoq59U9G88A8
+         Yh99Ez6SCZoCukgeoJl8x2mPO72+F8dTG20bcclJGZyyQpVHUefGtWH5oqfCoPnzYJ4I
+         SG0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=g59Gho2DCi+2udBEJ1G+A3MddRGoG4bdeNWMZP+Foqc=;
-        fh=LTv9rZypFCL5Yl51dJY3ojnjwtjMOAtIYwj21UMTdvU=;
-        b=EIELsO1MjtkYBfqOScxrfxio5zO57t281KZ5hY2Z28QeGrU5M7fqwOcnELP/k0ZMS8
-         2M4L+OM9IbFZ7nJbC/+6eM1TxWA4gZ4XdI6t/9KvspDciR0cin6sewyQ7fmQDrmjat+I
-         mRFxgFs1nPZOHxsWFEHiGBY0szKxpEiVPQ2pZGUwsPBD2DMWLWqbcXs22ONdOXh4SDJv
-         U8Yng1jg3UsfTedlCyd7jg9H59li36ad5REHsCBCGkad1nbEJM952kDpXCHPDOCl7swj
-         YOGUjuH9q0V9JBrD4IKuLyWRwuLLaDgEvIX+Igz6eZ8KlAd9WibvyzvLHcnDEZeH7urV
-         Qbyg==;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=1LimRJM9cxSX2f5sFmiGnpuaZ10TrsMotLuL6FGbbKo=;
+        fh=KzqBICqIItO6zaTQH0fjH8zdX9pcpm9/WLbrIWvPinY=;
+        b=gBZvV2p+7N13qiHOu4xM7j8qME1yuxCowc+Smds5o/OHg0mPHBKrNwO1JUyqODecCB
+         8lGx5ZpqRIkM09DYH5LcprCeZR3PMzRvKtBXIres3NF+XqIJKm3BREUTRuOEmVGVIg+B
+         aI+0hM3yVm/EjI+dEkUOIyvruixGxRoH8pdFO3wN1podAUx3SXLortCLekz2abJZeQwa
+         XpsiJZqw4DuY37nWrVouiDpP1lWxgyvj2mbJvmBPGAMOmKvGofv6A6dkgVzqjtALyiPx
+         Awv7PY2ZGLCBrNyG6LKnjU1s2s5+O5BbVwGJrh/QmzwZTiWiQiCgM4MTWXaA40gmI+R5
+         yf0g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-422874e928csi29563995e9.167.2024.06.13.17.21.35
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Jun 2024 17:21:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EEtCxoap;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 586e51a60fabf-25832678ebasor1582678fac.7.2024.06.14.10.36.44
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 14 Jun 2024 10:36:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4W0g0C36Qwz6H7Jk;
-	Fri, 14 Jun 2024 08:20:11 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
-	by mail.maildlp.com (Postfix) with ESMTPS id E4C20140CF4;
-	Fri, 14 Jun 2024 08:21:34 +0800 (CST)
-Received: from 00293818-MRGF.china.huawei.com (10.195.245.24) by
- lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 14 Jun 2024 01:21:12 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
-CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
-	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
-	<ardb@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
-	<gshan@redhat.com>, <rafael@kernel.org>, <borntraeger@linux.ibm.com>,
-	<alex.bennee@linaro.org>, <npiggin@gmail.com>, <harshpb@linux.ibm.com>,
-	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
-	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
-	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
-	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
-	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
-	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>
-Subject: [PATCH RFC V3 29/29] hw/arm/virt: Expose cold-booted CPUs as MADT GICC Enabled
-Date: Fri, 14 Jun 2024 01:20:58 +0100
-Message-ID: <20240614002058.203058-1-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240613233639.202896-1-salil.mehta@huawei.com>
-References: <20240613233639.202896-1-salil.mehta@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=EEtCxoap;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1718386604; x=1718991404; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1LimRJM9cxSX2f5sFmiGnpuaZ10TrsMotLuL6FGbbKo=;
+        b=EEtCxoap7hcd/i6V65siMFbehhf48A8Em7U7432b2kUa0+ue2FLfBofocDOkAv84OL
+         SNBhA/zF1x9sSBzJBDt2l1O990h9xMy5gO6yh6G0cT+WZrlXPvh2LZoEpEL5VEOSDLlG
+         NrF/PaeYbWyAa2bnbfFm04KH+90gffNPL6ZTomYD/mYzf8FiUkCkNbmY23HFC3hXBzwb
+         YlrQXha22a4y1FLQD/dH7dND5phXlD5Tz9zAIVv328wbyFZnlf21WfzhVyuuuo36Jlfx
+         44/83P9oPZ5/gn89u3htSgajH4cWssS8mOn18JPP2wVNAtHhxlHbv8xvrOYdNMmNljx0
+         Db6w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1718386604; x=1718991404;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1LimRJM9cxSX2f5sFmiGnpuaZ10TrsMotLuL6FGbbKo=;
+        b=mOOgzK5HCQB/kU3PYbSRzSHqwAlauiFvUHDA/wYm19llFEaDSXZwkG5b7tLB2KO/g0
+         RIz2kxq/JQBH3JqP2zzMlTyxdS3wNkRGkXAZybKHv7OdTCnQqgULBLPKns1q4NgGSExC
+         U8hSOT88b0nBHCwAPSDKTrkgsh2zXpGsZ0OVId1zwV8Gt6p6on0w7qSrZmvaH/ASDek5
+         VoNBAuwWoGwq6Rcp3sxwNV1qrPEx2loTJfSXSyHaWa8q38JXY7Kg2ygDffcl3g9EZ4Ji
+         3/eTWNP2Bm9JBJGobi7eECibbXlVr3HZuP45s4P88MUwlJj+YW1A40JxARqKBChQDIzi
+         Folg==
+X-Gm-Message-State: AOJu0YxwHJLZDhAcXuaSbYYn62i9zd3qqvDEYlGPn6NEQ0ofQqwZOWHo
+	ud0li/CtqpSxxcvy5dsXBuRktCLvfmHc3XIGkMbbW77+0vzp8fjMaSqFv6DTZcLZ1omsojdHWWt
+	xKy7lHA==
+X-Google-Smtp-Source: AGHT+IFqp54QBTCWDMIIVSm8l3m8LBnykdkXpasQW4hnt2Hq/DpO3ONARm3we9JumapgK+vz7R3LgQ==
+X-Received: by 2002:a05:6870:4194:b0:254:b1b1:7ea5 with SMTP id 586e51a60fabf-25842af7079mr4304081fac.37.1718386604036;
+        Fri, 14 Jun 2024 10:36:44 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from ?IPV6:2604:3d08:9384:1d00:5b09:8db7:b002:cf61? ([2604:3d08:9384:1d00:5b09:8db7:b002:cf61])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-705cc91ed6asm3308225b3a.39.2024.06.14.10.36.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 14 Jun 2024 10:36:43 -0700 (PDT)
+Message-ID: <2812da25-495c-4356-a230-257ea96e6dcc@linaro.org>
+Date: Fri, 14 Jun 2024 10:36:41 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.195.245.24]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- lhrpeml500001.china.huawei.com (7.191.163.213)
-X-TUID: n9lKmUAf35Gl
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 8/9] plugins: add time control API
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Mark Burton <mburton@qti.qualcomm.com>, qemu-s390x@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+ Laurent Vivier <lvivier@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, Nicholas Piggin <npiggin@gmail.com>,
+ Marco Liebel <mliebel@qti.qualcomm.com>, Thomas Huth <thuth@redhat.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>, qemu-ppc@nongnu.org,
+ Mahmoud Mandour <ma.mandourr@gmail.com>, Cameron Esfahani <dirty@apple.com>,
+ Jamie Iles <quic_jiles@quicinc.com>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20240612153508.1532940-1-alex.bennee@linaro.org>
+ <20240612153508.1532940-9-alex.bennee@linaro.org>
+ <c4d36875-c70d-4e2c-b3a8-c50459c9db0f@linaro.org>
+ <87r0d0vnt8.fsf@draig.linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Language: en-US
+In-Reply-To: <87r0d0vnt8.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+X-TUID: pQYHSidNHVBV
 
-Hotpluggable CPUs MUST be exposed as 'online-capable' according to the new
-change. However, cold-booted CPUs, if marked as 'online-capable' during boot
-time, might not be detected by legacy operating systems. This could cause
-compatibility problems.
-
-Original Change Link: https://bugzilla.tianocore.org/show_bug.cgi?id=3706
-
-Since updating the specification might take time, it is necessary to disable the
-support for unplugging any cold-booted CPUs to preserve compatibility with
-legacy operating systems.
-
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
----
- hw/arm/virt-acpi-build.c | 29 ++++++++++++++++++++---------
- hw/arm/virt.c            | 16 ++++++++++++++++
- include/hw/core/cpu.h    |  2 ++
- 3 files changed, 38 insertions(+), 9 deletions(-)
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 6cb613103f..322ed8e35b 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -667,17 +667,28 @@ static uint32_t virt_acpi_get_gicc_flags(CPUState *cpu)
-     }
- 
-     /*
--     * ARM GIC CPU Interface can be 'online-capable' or 'enabled' at boot
--     * We MUST set 'online-capable' bit for all hotpluggable CPUs except the
--     * first/boot CPU. Cold-booted CPUs without 'Id' can also be unplugged.
--     * Though as-of-now this is only used as a debugging feature.
-+     * The ARM GIC CPU Interface can be either 'online-capable' or 'enabled' at
-+     * boot. We MUST set the 'online-capable' bit for all hotpluggable CPUs.
-      *
--     *   UEFI ACPI Specification 6.5
--     *   Section: 5.2.12.14. GIC CPU Interface (GICC) Structure
--     *   Table:   5.37 GICC CPU Interface Flags
--     *   Link: https://uefi.org/specs/ACPI/6.5
-+     * Change Link: https://bugzilla.tianocore.org/show_bug.cgi?id=3706
-+     *
-+     * Refer to the UEFI ACPI Specification 6.5:
-+     * Section: 5.2.12.14. GIC CPU Interface (GICC) Structure
-+     * Table: 5.37 GICC CPU Interface Flags
-+     * Link: https://uefi.org/specs/ACPI/6.5
-+     *
-+     * Cold-booted CPUs, except for the first/boot CPU, SHOULD be allowed to be
-+     * hot(un)plugged as well. However, for this to happen, these CPUs MUST have
-+     * the 'online-capable' bit set. This creates a compatibility problem with
-+     * legacy OS, as it might ignore 'online-capable' bits during boot time, and
-+     * hence some CPUs might not get detected.
-+     *
-+     * To fix this, the MADT GIC CPU interface flag should allow both
-+     * 'online-capable' and 'enabled' bits to be set together. This change will
-+     * require an update to the UEFI ACPI standard. Until this update occurs,
-+     * all cold-booted CPUs should be exposed as 'enabled' only.
-      */
--    return cpu && !cpu->cpu_index ? 1 : (1 << 3);
-+    return cpu && cpu->cold_booted ? 1 : (1 << 3);
- }
- 
- static void
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a2200099a1..770b599acf 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3163,6 +3163,10 @@ static void virt_cpu_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-      * This shall be used during the init of ACPI Hotplug state and hot-unplug
-      */
-      cs->acpi_persistent = true;
-+
-+    if (!dev->hotplugged) {
-+        cs->cold_booted = true;
-+    }
- }
- 
- static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-@@ -3223,6 +3227,18 @@ static void virt_cpu_unplug_request(HotplugHandler *hotplug_dev,
-         return;
-     }
- 
-+    /*
-+     * UEFI ACPI standard change is required to make both 'enabled' and the
-+     * 'online-capable' bit co-exist instead of being mutually exclusive.
-+     * check virt_acpi_get_gicc_flags() for more details.
-+     *
-+     * Disable the unplugging of cold-booted vCPUs as a temporary mitigation.
-+     */
-+    if (cs->cold_booted) {
-+        error_setg(errp, "Hot-unplug of cold-booted CPU not supported!");
-+        return;
-+    }
-+
-     if (cs->cpu_index == first_cpu->cpu_index) {
-         error_setg(errp, "Boot CPU(id%d=%d:%d:%d:%d) hot-unplug not supported",
-                    first_cpu->cpu_index, cpu->socket_id, cpu->cluster_id,
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index e13e542177..99b699b47f 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -556,6 +556,8 @@ struct CPUState {
-     uint32_t halted;
-     int32_t exception_index;
- 
-+    bool cold_booted;
-+
-     AccelCPUState *accel;
- 
-     /* Used to keep track of an outstanding cpu throttle thread for migration
--- 
-2.34.1
+T24gNi8xMy8yNCAwODo1NiwgQWxleCBCZW5uw6llIHdyb3RlOg0KPiBQaGlsaXBwZSBNYXRo
+aWV1LURhdWTDqSA8cGhpbG1kQGxpbmFyby5vcmc+IHdyaXRlczoNCj4gDQo+PiBPbiAxMi82
+LzI0IDE3OjM1LCBBbGV4IEJlbm7DqWUgd3JvdGU6DQo+Pj4gRXhwb3NlIHRoZSBhYmlsaXR5
+IHRvIGNvbnRyb2wgdGltZSB0aHJvdWdoIHRoZSBwbHVnaW4gQVBJLiBPbmx5IG9uZQ0KPj4+
+IHBsdWdpbiBjYW4gY29udHJvbCB0aW1lIHNvIGl0IGhhcyB0byByZXF1ZXN0IGNvbnRyb2wg
+d2hlbiBsb2FkZWQuDQo+Pj4gVGhlcmUgYXJlIHByb2JhYmx5IG1vcmUgY29ybmVyIGNhc2Vz
+IHRvIGNhdGNoIGhlcmUuDQo+Pj4gRnJvbTogQWxleCBCZW5uw6llIDxhbGV4LmJlbm5lZUBs
+aW5hcm8ub3JnPg0KPj4NCj4+IFNvbWUgb2YgeW91ciBwYXRjaGVzIGluY2x1ZGUgdGhpcyBk
+dWJpb3VzIEZyb206IGhlYWRlciwgbWF5YmUgc3RyaXA/DQo+IA0KPiBJIHRoaW5rIGJlY2F1
+c2UgbXkgb3JpZ2luYWwgUkZDIHBhdGNoZXMgd2VudCB2aWEgUGllcnJpY2sgYmVmb3JlIHB1
+bGxpbmcNCj4gYmFjayBpbnRvIG15IHRyZWUuIEkgY2FuIGNsZWFuIHRob3NlIHVwLg0KPiAN
+Cg0KVG8gYmUgaG9uZXN0LCBJIGRvbid0IHJlbWVtYmVyIHdoeSBJIGFkZGVkIHRob3NlLiBF
+aXRoZXIgSSBzYXcgdGhhdCBpbiANCmFub3RoZXIgc2VyaWVzLCBvciBpdCB3YXMgYXNrZWQg
+ZXhwbGljaXRlbHksIGJ1dCB5b3UgY2FuIHJlbW92ZSB0aGlzIGZvciANCnN1cmUuDQoNCj4+
+DQo+Pj4gU2lnbmVkLW9mZi1ieTogUGllcnJpY2sgQm91dmllciA8cGllcnJpY2suYm91dmll
+ckBsaW5hcm8ub3JnPg0KPj4+IFtBSkI6IHR3ZWFrZWQgdXNlci1tb2RlIGhhbmRsaW5nXQ0K
+Pj4+IFNpZ25lZC1vZmYtYnk6IEFsZXggQmVubsOpZSA8YWxleC5iZW5uZWVAbGluYXJvLm9y
+Zz4NCj4+PiBNZXNzYWdlLUlkOiA8MjAyNDA1MzAyMjA2MTAuMTI0NTQyNC02LXBpZXJyaWNr
+LmJvdXZpZXJAbGluYXJvLm9yZz4NCj4+PiAtLS0NCj4+PiBwbHVnaW5zL25leHQNCj4+PiAg
+ICAgLSBtYWtlIHFlbXVfcGx1Z2luX3VwZGF0ZV9ucyBhIE5PUCBpbiB1c2VyLW1vZGUNCj4+
+PiAtLS0NCj4+PiAgICBpbmNsdWRlL3FlbXUvcWVtdS1wbHVnaW4uaCAgIHwgMjUgKysrKysr
+KysrKysrKysrKysrKysrKysrKw0KPj4+ICAgIHBsdWdpbnMvYXBpLmMgICAgICAgICAgICAg
+ICAgfCAzNSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKw0KPj4+ICAgIHBs
+dWdpbnMvcWVtdS1wbHVnaW5zLnN5bWJvbHMgfCAgMiArKw0KPj4+ICAgIDMgZmlsZXMgY2hh
+bmdlZCwgNjIgaW5zZXJ0aW9ucygrKQ0KPiANCg==

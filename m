@@ -1,226 +1,392 @@
-Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp134416ejb;
-        Fri, 14 Jun 2024 02:14:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUPvOzF/VRxvIsW0ZcGbozSW9m1oYI+j40MMcLAKd2uqqo6/F6mi9Svud4Hz/lnjwpLwnx/UaNdYkRip1zRZHA5whWmg5Nd
-X-Google-Smtp-Source: AGHT+IHoWKh2reVfI8nZzyGAGzJhdcBix0apSYZ6p1nDIgrfQ8hCVfpXhegX28ympZ71pN8dXHbd
-X-Received: by 2002:a05:622a:1214:b0:43a:dce9:93c9 with SMTP id d75a77b69052e-4421689d6fbmr26695171cf.24.1718356470626;
-        Fri, 14 Jun 2024 02:14:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718356470; cv=none;
+Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp140516ejb;
+        Fri, 14 Jun 2024 02:31:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXK+PgBc1Hq3gfxkS12fWK8SSpbMOeVJMxrY6bx68h5BATD0Qf68VU4gS7woh5gmljmpTVJaGH9wMaOQ2U10Jd//mfi0BO9
+X-Google-Smtp-Source: AGHT+IE4Rqf5xq8P7/CyaBspBV+meUvqq2HPgXAEQo5y7d1CG4ZrllPPLJe4Lsy0Rj2zcDGFjKk5
+X-Received: by 2002:a05:620a:2412:b0:795:39fe:4391 with SMTP id af79cd13be357-798d24132c3mr209458885a.23.1718357497254;
+        Fri, 14 Jun 2024 02:31:37 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1718357497; cv=pass;
         d=google.com; s=arc-20160816;
-        b=qrtXPItScD25xvNyEhrWg0/dfAyyCbR0Aj3GnbPM/Ua0vMo07Qdg7aZwvC2kxHpzDO
-         Cn03kAHC3b1zNZ42cWggwBPw9ha4AOK4CR1kX860qL4Q88/yOeG9e3L+jQ820tuD5qNS
-         +mcDs3UcykGPnw+GNyg6DcXjem1nZsM2nTog5Yu8tgeP2cB3IIn2L4bXogESEC4bTBwR
-         dLcs2qjrU7b6mptgHIAhb/r5TcObmpGh0bGvfXX58+QcJJ27UcDmdFDaOwUctzsovc90
-         tDSNHrBLkN+lYOU0qIe2OdGb83oz0XXfA6emblvdZqjZBxWRKZerxMzfEkvgZUndchVz
-         zVZw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=kXU4s0wTqQp5EthL6iqIS0273rB1CWuYHQZYrPcIOjVOVDgwPu8j2uEtvxyUv1AW3O
+         f/BDonA5icN6IHMapHCBerMXtLTx+dLj6l/Hx2+eKxPP4j0IbuXgBPIRXrQDEo2uCx6U
+         oxAclLxL/nItkJduFwc3RLU5/9b0t5xLKThUdLhb1bkpGp6LVuNODzbyWMIlrJRdKyq+
+         NsHc/SMuTfsvq/qhjrVOo7yjfyfDWGCPpuKAaFsNF5NZUbbFabGIQrDpNVa7XGoAkV6B
+         n/HgV24x63PuvWTpJJ3gjDc6qb/GLGhBxqTEkB9ycPoySpT1cEP8/Xrj4DWegp2vecjh
+         rD/A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Hkd7uqIU71s3vfuSqbkouRdH9KhguF0eO9bE/dDV+pA=;
-        fh=Xc7uQMf2J9EDhiCwEJmqTr6NSRGLAF70gu2Yws3ZyS0=;
-        b=xwvtHqrqicUGamk3WrULe3EOsY0iEX7O35nUocuMhwTRK7jn/76GX131z6iHGNjdFt
-         mARwjJufVluZdQ3WldJggU65hUXAqw2qWPOVQRyGKYxL/EQgynvO3iq496XgzBNtESQW
-         Uex/fF3Q6xKgjJT2JpRVt95BUifccsc5VfK28pMcz0fm0KdobI1b8ct6SPg5WxUyGbrq
-         n2khZLDEJz+6E6yOy6Un5DH74oYT+HhYpK6CAAEFton7jjMadTBARhjpC2inu8l7iaCA
-         RPAbCja2Rlnh8V3Rk4sa3akFmlaOnGpDQlbgudM8FK+/JAzrD/ihw19/QyvRadSJzmbR
-         +EuA==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=CEAkfvPlzjkVKDakRzgzWnQQxLEbZQZrOiysI4IvU5s=;
+        fh=COLUgn0n0wMHSFNgp+WnvUbwzX7rF20PaYC+CQuUEbU=;
+        b=P2AquDGEwr/qAhlnuySZXeKx6wYyeSaiZY9wxXf1/XDcYrTSBHN0QgQ7J9xjOQoE6m
+         maZuop0GCEtG8/dQNLwG/l/2aEW0XUpY1ujLeM/+XoPj2HXyXFJpMiY1x+mjnxLiAkkX
+         awE+6lfBPQcpc1vISPvWkmt1GB14UVpRcRadNWciprLwYrZhz+mvh66w4xM43+Get+Bg
+         dLc29xJlaLtEobeyCRwHj12p/HgliwviI8Ov1V/RFCybtZ1shtuakruT2TyFO4yP86O9
+         pVdzXUR8jgmeHd4Akme0WEPo123rPeXLUvqzQmB+5uMG16IvJcRErnpa6/y0jDV9et2H
+         91OQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dv+BVMKQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=eIZyFDjK;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-441ef3ddbfbsi37041441cf.220.2024.06.14.02.14.30
+        by mx.google.com with ESMTPS id af79cd13be357-798aacc2ffasi357565085a.163.2024.06.14.02.31.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jun 2024 02:14:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Jun 2024 02:31:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Dv+BVMKQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=eIZyFDjK;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sI30Y-0000wp-I3; Fri, 14 Jun 2024 05:14:06 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sI3Gk-000843-Id; Fri, 14 Jun 2024 05:30:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI30X-0000vf-9Q
- for qemu-devel@nongnu.org; Fri, 14 Jun 2024 05:14:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1sI3Gh-00082q-Sj; Fri, 14 Jun 2024 05:30:47 -0400
+Received: from mail-bn7nam10on2061c.outbound.protection.outlook.com
+ ([2a01:111:f403:2009::61c]
+ helo=NAM10-BN7-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI30U-0003YA-EM
- for qemu-devel@nongnu.org; Fri, 14 Jun 2024 05:14:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718356441;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Hkd7uqIU71s3vfuSqbkouRdH9KhguF0eO9bE/dDV+pA=;
- b=Dv+BVMKQLQaBNixHx6qyn0A1pRiuN4mm3V5D44R+Jncgq5BSDDNOFyxoUw32aoJ8pVNZtJ
- 3F+xAHyU2vm2dAQAufZNPeZamIHMpd32nxRlw5/tgsceawK9GiZTv9wIcrsL6O/QUjCDBU
- uOEa+ahDEspnYEei3l9Izqom4frKRnw=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-610-kfP1icsuN9SNZxgkDGgosw-1; Fri, 14 Jun 2024 05:13:59 -0400
-X-MC-Unique: kfP1icsuN9SNZxgkDGgosw-1
-Received: by mail-qt1-f200.google.com with SMTP id
- d75a77b69052e-43fb05ef704so20534231cf.2
- for <qemu-devel@nongnu.org>; Fri, 14 Jun 2024 02:13:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718356438; x=1718961238;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Hkd7uqIU71s3vfuSqbkouRdH9KhguF0eO9bE/dDV+pA=;
- b=Thir4umVwN2iKRxTeI3g120pycwDhXalhhoRiZ9NQOme/myS3kJh4Xn74nCO8eRY0Z
- 5byJEn96AjGD42+H+4iTlhJpFk+AsznhdVM768Yye8px3FFp93u2S03iUCXgHdCxZoJ/
- 3ZsqHe9VkDgedX3/JR9Lza9Y4hkFeQVOTodEjTwpQv3u7XxDKaygB8BjZsrZZ8BZYmCP
- 77V7M3WNCcX6En0/o0zIFIeWTF77UngqAxLdD+1njiPawpjpJmqRe9xH4mg5F7AVWEwo
- LkeXjZ37G+/CyfO5RVB0Vxemw2lIebpzn2ZOrhC4SX4ZNbTw8SvAEOHQzpX4CjwHmo4i
- JzKg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWIUeNZ3UrClT7lqmgRkVlVUcHMVLIDZcX1C3f95NW2DlK/8rqrd41S5nFUN8KOpAx1jFNUwMzV1yjqU7JNyBA8quI1hak=
-X-Gm-Message-State: AOJu0Yx2my7CTzQw+vsnYbW/TC1ToHUihws7AaSW1umHCpGSwjdrXvxX
- wkqe75xzGED1MFy44vRzd9Nh5tJ+DtrDUzkZBWomtZy56lcHJwYC9LP42x/SENrCqZCe5hTLubu
- 7YBMF0M5b0wSgXBFGCQCxUfflP0ATava4Owk3eHCjXaGHoeGhvAip
-X-Received: by 2002:a05:622a:1999:b0:441:5428:6dea with SMTP id
- d75a77b69052e-4421687d21emr28793531cf.18.1718356438406; 
- Fri, 14 Jun 2024 02:13:58 -0700 (PDT)
-X-Received: by 2002:a05:622a:1999:b0:441:5428:6dea with SMTP id
- d75a77b69052e-4421687d21emr28793351cf.18.1718356438075; 
- Fri, 14 Jun 2024 02:13:58 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
- ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
- by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-441f2fcc541sm14291471cf.77.2024.06.14.02.13.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Jun 2024 02:13:57 -0700 (PDT)
-Message-ID: <ef400920-dcf4-4f37-b4ce-c5560b92d9c5@redhat.com>
-Date: Fri, 14 Jun 2024 11:13:54 +0200
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1sI3Gf-0006vh-9D; Fri, 14 Jun 2024 05:30:47 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CYu9caLWUEzszkpRzk8hVRTQ7wBCZcFFC1Wcu5mjW5iaFXih7a7dZYyFijhekShhzmTZViJ1c9IOquMW1tnqxclo0oIbwHdydL/a6lxMbEdhiv9318ZqCL9tZXbTtLDm8fnJRXsm+cS0ilhm6j8gDlCVpQMn2/Nn33a3sZmMNoLm25LXOiYjIAWIu3s3pAMlYKeIzA7PVVDlXqIEpqxl7PMga53yu5Mwc1LL31Uh8LW/SmCyv+iGXJyVfjO5WJNYlF9/2oGNoYaDk6zmS9UhV5z/1G8tPY/5qNwvlwj1Hg8oQ3opzo9sHc9CF4kg/8G1gnfSbc5IIk6JixSAICSdWg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=CEAkfvPlzjkVKDakRzgzWnQQxLEbZQZrOiysI4IvU5s=;
+ b=VU666WYox70HmeOsUE1jQ39/RztadNHPXVgQnSkegoSENJxP9SXzw/DI7tD4kYxBH1phNHLhw1ms7XT1E038wVE0gJ+hm/+mVYc0en7CpyBNnoOhr9wXYJx30xSzJDP8H+L71dN2KM3XuS1AVjPw71r3BGty77HtDf5fqmj5gsqECFsuutuy/o2zSiAwhXwFboAh1mlGRS4nXBjEzobEx2D2h8mVDszoR3x9tG+9DB/ZktdwXfvAwLb6kOPbAgNYGnnFMuRVlradJke57m2TiZC6xhz8QBLs6cTIfaqcFfC/dyQe6qnWvD+eiM1jhVarGlIEhOk8JPYCvsKZEjAJaA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CEAkfvPlzjkVKDakRzgzWnQQxLEbZQZrOiysI4IvU5s=;
+ b=eIZyFDjK7w97qxTemfRQDSK0W9pXYfk2g5KFEJ0fSMDIxMUegqzrYvZZP2cdyuM4AynG/VRzDYwYxp2FSLWLikoXghkLKc228yZI5M70I25CJ6y9r2ur6Ne/d2H8UQEkYRIySfuCxHUh+1wbGKgTMxIF4zFiq1ewMbKytPW1geA=
+Received: from BYAPR01CA0031.prod.exchangelabs.com (2603:10b6:a02:80::44) by
+ IA0PR12MB8253.namprd12.prod.outlook.com (2603:10b6:208:402::5) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7677.25; Fri, 14 Jun 2024 09:30:40 +0000
+Received: from SJ5PEPF000001E8.namprd05.prod.outlook.com
+ (2603:10b6:a02:80:cafe::e6) by BYAPR01CA0031.outlook.office365.com
+ (2603:10b6:a02:80::44) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.25 via Frontend
+ Transport; Fri, 14 Jun 2024 09:30:39 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ SJ5PEPF000001E8.mail.protection.outlook.com (10.167.242.196) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.7677.15 via Frontend Transport; Fri, 14 Jun 2024 09:30:38 +0000
+Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 14 Jun
+ 2024 04:30:37 -0500
+Received: from xhdsaipava41.xilinx.com (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.39 via
+ Frontend Transport; Fri, 14 Jun 2024 04:30:35 -0500
+From: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: "'Edgar E . Iglesias'" <edgar.iglesias@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, <francisco.iglesias@amd.com>
+Subject: [PATCH RFC 1/3] target/arm: Add dcc uart support
+Date: Fri, 14 Jun 2024 15:00:24 +0530
+Message-ID: <20240614093026.328271-2-sai.pavan.boddu@amd.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240614093026.328271-1-sai.pavan.boddu@amd.com>
+References: <20240614093026.328271-1-sai.pavan.boddu@amd.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/7] HostIOMMUDevice: Store the VFIO/VDPA agent
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com,
- jean-philippe@linaro.org, peter.maydell@linaro.org, yanghliu@redhat.com,
- zhenzhong.duan@intel.com
-Cc: alex.williamson@redhat.com, jasowang@redhat.com, pbonzini@redhat.com,
- berrange@redhat.com
-References: <20240613092359.847145-1-eric.auger@redhat.com>
- <20240613092359.847145-2-eric.auger@redhat.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-In-Reply-To: <20240613092359.847145-2-eric.auger@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: None (SATLEXMB04.amd.com: sai.pavan.boddu@amd.com does not
+ designate permitted sender hosts)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ5PEPF000001E8:EE_|IA0PR12MB8253:EE_
+X-MS-Office365-Filtering-Correlation-Id: fbe94256-eaf1-4dee-903c-08dc8c54a797
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230035|36860700008|376009|82310400021|1800799019; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?BIWFeajcSmc067v9ObP8xXwJaHIpcnbL2AKtGQLF1WA3LevphnT4YVzrBmy7?=
+ =?us-ascii?Q?ejuI/ijmKWCfRBKUO3x/FvfLIKFrVQsHrxRoc109uyjVidQ2TJajDVh4Twfo?=
+ =?us-ascii?Q?K4Sugk9H962ee3XUehm2b3gXDUFVT2FftEMvGZq7IFaOU5gTIq9XVrvxBHNv?=
+ =?us-ascii?Q?/T9RoLpUh4B8CsosG0WVXQsN7EfV+aghTXAP6FODgd83UbI7Cc5adeHQUj3z?=
+ =?us-ascii?Q?TNYsxxM8Da3lGttu2qGT4G2nuD+Xa64sT2leE+NslCMZ47Jy0i8ut8Q+O3/M?=
+ =?us-ascii?Q?kJI3HAjXLPB7iES8RD/jp15P+UmCOkMlGd2pF/9SXbisjoX2hKVV4BYfGny/?=
+ =?us-ascii?Q?zQuYndj9EkG1QO2yGpU+1NlFfhQmkF+9Z2RQG1MfOn/8NILn4+/H0yN4ac7J?=
+ =?us-ascii?Q?UXVfRvQDenRK2nlMkza2PdjJUWzuL8HUsutjDiAA116nm8++lB1jaPDCGlS6?=
+ =?us-ascii?Q?VuyQWIYcAhtXTyhmds/LZF/+zATXSg1R61rxITWhaKZkOke/SbZh+RI17Jbf?=
+ =?us-ascii?Q?T43tQ04FuZ3UQIECAf8ENGg7peeyedJNx6spH8HiuoAOOKGy0E6XnvMUEjC+?=
+ =?us-ascii?Q?Nc3YjTDtEOhubhpRIDu3LoZNMpXmqAQP/f7PrDKe1/UMvRi6DdXf7Gc39l/p?=
+ =?us-ascii?Q?fAeSvLDn3lqlCn0VP5nReaQ1DdsxsPR0tS/VXtmEMRJRMcA9BwPitEo18hVJ?=
+ =?us-ascii?Q?ADkSVMXgCTUwRS8DtymmnsvNC9/H6qkK+dtjWEKunvB7fTPBqH/iEH61fZFy?=
+ =?us-ascii?Q?LST6jbU0WHR53a/1tp1j0aKbqbg11dRbTfPs87ljaQjKq8TL+dp62lSDyXtk?=
+ =?us-ascii?Q?/5MXrT5LoTmTw+26T6O5nDXp7UkE1YziHlW6+eMjUzj7u8dC9jvKiP8F64sE?=
+ =?us-ascii?Q?rR+vqv9V3adSiNkqHDtWmNmilCLSzt7dU3W5/RHLOctb9ktxMTG+ry+tT3QJ?=
+ =?us-ascii?Q?FgNPf/EvDukTjRldfIXt6uFa2rbpF/FrEhgcNnvxGiVSVOVJ5VPdfA2zRa2A?=
+ =?us-ascii?Q?r6sc/DHL9/KrCLT0VJoXgM8MdREMcP540oPwDaGymq6zcYooZIi79+NNW1rl?=
+ =?us-ascii?Q?tkILcFyjsTkpNy0bUnS7GJZmL2FWHjsnEGv8nsIkMSCcUsX6Aa9WqE+1filh?=
+ =?us-ascii?Q?pcvD18Wbm8hF4rSVsgNhGaHqlT5iVovgE31LZncWMiU0M7+uz+FDBBJNXJrH?=
+ =?us-ascii?Q?ll10AGw2LDU1YGMdCbMzkydz1M0z23kXs7zPurMR6130u2NT4q6/Ng4K60Wt?=
+ =?us-ascii?Q?4bx5McQr+CUP3kCfqYDgz08CGAL4a99wv3QT76mxj0M7Lxy6lMa2+jhByM+s?=
+ =?us-ascii?Q?lSKckQC8vWrSJ6PBIRPMC418oevT3rHA4Q50XrCsuLTJhrOzETgFVo04PRoC?=
+ =?us-ascii?Q?uFtLMS7QQJUTCwws77fDw5gw2WZJQXca656tN1Lsg5Gaflff8w=3D=3D?=
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230035)(36860700008)(376009)(82310400021)(1800799019); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jun 2024 09:30:38.8824 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: fbe94256-eaf1-4dee-903c-08dc8c54a797
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ5PEPF000001E8.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB8253
+Received-SPF: permerror client-ip=2a01:111:f403:2009::61c;
+ envelope-from=sai.pavan.boddu@amd.com;
+ helo=NAM10-BN7-obe.outbound.protection.outlook.com
 X-Spam_score_int: -22
 X-Spam_score: -2.3
 X-Spam_bar: --
 X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.145,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XcQVOuntFhfE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 11aBIU2pNqAZ
 
-On 6/13/24 11:20 AM, Eric Auger wrote:
-> Store the agent device (VFIO or VDPA) in the host IOMMU device.
-> This will allow easy access to some of its resources.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
-> ---
->   include/sysemu/host_iommu_device.h | 1 +
->   hw/vfio/container.c                | 1 +
->   hw/vfio/iommufd.c                  | 2 ++
->   3 files changed, 4 insertions(+)
-> 
-> diff --git a/include/sysemu/host_iommu_device.h b/include/sysemu/host_iommu_device.h
-> index a57873958b..3e5f058e7b 100644
-> --- a/include/sysemu/host_iommu_device.h
-> +++ b/include/sysemu/host_iommu_device.h
-> @@ -34,6 +34,7 @@ struct HostIOMMUDevice {
->       Object parent_obj;
->   
->       char *name;
-> +    void *agent; /* pointer to agent device, ie. VFIO or VDPA device */
->       HostIOMMUDeviceCaps caps;
->   };
->   
-> diff --git a/hw/vfio/container.c b/hw/vfio/container.c
-> index 26e6f7fb4f..b728b978a2 100644
-> --- a/hw/vfio/container.c
-> +++ b/hw/vfio/container.c
-> @@ -1145,6 +1145,7 @@ static bool hiod_legacy_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
->   
->       hiod->name = g_strdup(vdev->name);
->       hiod->caps.aw_bits = vfio_device_get_aw_bits(vdev);
-> +    hiod->agent = opaque;
->   
->       return true;
->   }
-> diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
-> index 409ed3dcc9..dbdae1adbb 100644
-> --- a/hw/vfio/iommufd.c
-> +++ b/hw/vfio/iommufd.c
-> @@ -631,6 +631,8 @@ static bool hiod_iommufd_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
->           struct iommu_hw_info_vtd vtd;
->       } data;
->   
-> +    hiod->agent = opaque;
-> +
+DCC is a debug port to transfer some data between debugger and
+processor, we are using this feature to connect a chardev device.
+Chardev frontends should be named as "dcc<cpu-index>" inorder to connect
+to this interface.
 
-This opaque pointer could be assigned in vfio_attach_device().
+Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+---
+ target/arm/cpu.h       | 11 +++++
+ target/arm/internals.h |  4 ++
+ target/arm/debug-dcc.c | 99 ++++++++++++++++++++++++++++++++++++++++++
+ target/arm/helper.c    |  3 ++
+ target/arm/meson.build |  1 +
+ 5 files changed, 118 insertions(+)
+ create mode 100644 target/arm/debug-dcc.c
 
-Talking of which, why are we passing a 'VFIODevice *' parameter to
-HostIOMMUDeviceClass::realize ? I don't see a good reason
-
-I think a 'VFIOContainerBase *' would be more appropriate since
-'HostIOMMUDevice' represents a device on the host which is common
-to all VFIO devices.
-  
-In that case, HostIOMMUDevice::agent wouldn't need to be opaque
-anymore. It could  simply be a 'VFIOContainerBase *' and
-hiod_legacy_vfio_get_iova_ranges() in patch 3 would grab the
-'iova_ranges' from the 'VFIOContainerBase *' directly.
-
-This means some rework :
-
-* vfio_device_get_aw_bits() would use a  'VFIOContainerBase *' instead.
-* HostIOMMUDevice::name would be removed. This is just for error messages.
-* hiod_iommufd_vfio_realize() would use VFIOIOMMUFDContainer::be.
-
-That said, I think we need the QOMification changes first.
-
-Thanks,
-
-C.
-
-
-
-
->       if (!iommufd_backend_get_device_info(vdev->iommufd, vdev->devid,
->                                            &type, &data, sizeof(data), errp)) {
->           return false;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 3841359d0f..6b3cb8e70e 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -30,6 +30,8 @@
+ #include "qapi/qapi-types-common.h"
+ #include "target/arm/multiprocessing.h"
+ #include "target/arm/gtimer.h"
++#include "chardev/char.h"
++#include "chardev/char-fe.h"
+ 
+ #ifdef TARGET_AARCH64
+ #define KVM_HAVE_MCE_INJECTION 1
+@@ -523,6 +525,11 @@ typedef struct CPUArchState {
+ 
+         /* NV2 register */
+         uint64_t vncr_el2;
++        /*
++         * Debug Trace regsiters
++         */
++        uint32_t dbgdtr_tx;
++        uint32_t dbgdtr_rx;
+     } cp15;
+ 
+     struct {
+@@ -1097,6 +1104,9 @@ struct ArchCPU {
+ 
+     /* Generic timer counter frequency, in Hz */
+     uint64_t gt_cntfrq_hz;
++
++    /* dcc chardev */
++    CharBackend dcc;
+ };
+ 
+ typedef struct ARMCPUInfo {
+@@ -2388,6 +2398,7 @@ enum arm_features {
+      * CPU types added in future.
+      */
+     ARM_FEATURE_BACKCOMPAT_CNTFRQ, /* 62.5MHz timer default */
++    ARM_FEATURE_DCC,
+ };
+ 
+ static inline int arm_feature(CPUARMState *env, int feature)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 11b5da2562..2fa797c5df 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1778,4 +1778,8 @@ uint64_t gt_get_countervalue(CPUARMState *env);
+  * and CNTVCT_EL0 (this will be either 0 or the value of CNTVOFF_EL2).
+  */
+ uint64_t gt_virt_cnt_offset(CPUARMState *env);
++/*
++ * Initialise Coresight Debug interface
++ */
++void arm_dcc_init(ARMCPU *cpu);
+ #endif
+diff --git a/target/arm/debug-dcc.c b/target/arm/debug-dcc.c
+new file mode 100644
+index 0000000000..9144b54994
+--- /dev/null
++++ b/target/arm/debug-dcc.c
+@@ -0,0 +1,99 @@
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "internals.h"
++#include "cpregs.h"
++#include "chardev/char-fe.h"
++
++#define MDCCSR_EL0_RXFULL_MASK (1 << 30)
++#define MDCCSR_EL0_TXFULL_MASK (1 << 29)
++
++static void debug_dcc_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                        uint64_t value)
++{
++    ARMCPU *cpu = ri->opaque;
++    env->cp15.dbgdtr_tx = value;
++
++    if (qemu_chr_fe_get_driver(&cpu->dcc)) {
++        /*
++         * Usually dcc is used for putc/getc calls which expect only
++         * 1 byte from external debugger.
++         * TODO: This needs to be generalized for other use-cases.
++         */
++        qemu_chr_fe_write_all(&cpu->dcc, (uint8_t *)&env->cp15.dbgdtr_tx, 1);
++    }
++}
++
++static uint64_t debug_dcc_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    uint32_t ret = 0;
++    ARMCPU *cpu = ri->opaque;
++
++    if (env->cp15.mdscr_el1 & MDCCSR_EL0_RXFULL_MASK) {
++        ret = env->cp15.dbgdtr_rx;
++        env->cp15.dbgdtr_rx = 0;
++        env->cp15.mdscr_el1 &= ~MDCCSR_EL0_RXFULL_MASK;
++        qemu_chr_fe_accept_input(&cpu->dcc);
++    }
++    return ret;
++}
++
++static const ARMCPRegInfo dcc_cp_reginfo[] = {
++    /* DBGDTRTX_EL0/DBGDTRRX_EL0 depend on direction */
++    { .name = "DBGDTR_EL0", .state = ARM_CP_STATE_AA64,
++      .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 5, .opc2 = 0,
++      .access = PL0_RW, .writefn = debug_dcc_write,
++      .readfn = debug_dcc_read,
++      .type = ARM_CP_OVERRIDE, .resetvalue = 0 },
++    /* DBGDTRTXint/DBGDTRRXint depend on direction */
++    { .name = "DBGDTRint", .state = ARM_CP_STATE_AA32, .cp = 14,
++      .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 0,
++      .access = PL0_RW, .writefn = debug_dcc_write,
++      .readfn = debug_dcc_read,
++      .type = ARM_CP_OVERRIDE, .resetvalue = 0 },
++};
++
++
++static int dcc_chr_can_read(void *opaque)
++{
++    ARMCPU *cpu = opaque;
++    CPUARMState *env = &cpu->env;
++
++    if (!(env->cp15.mdscr_el1 & MDCCSR_EL0_RXFULL_MASK)) {
++        /*
++         * Usually dcc is used for putc/getc calls which expect only
++         * 1 byte from external debugger.
++         * TODO: This needs to be generalized for other use-cases.
++         */
++        return 1;
++    }
++
++    return 0;
++}
++
++static void dcc_chr_read(void *opaque, const uint8_t *buf, int size)
++{
++    ARMCPU *cpu = opaque;
++    CPUARMState *env = &cpu->env;
++
++    env->cp15.dbgdtr_rx = *buf;
++    env->cp15.mdscr_el1 |= MDCCSR_EL0_RXFULL_MASK;
++}
++
++void arm_dcc_init(ARMCPU *cpu)
++{
++    Chardev *chr;
++    char *dcc_name;
++    CPUState *p = CPU(cpu);
++
++    dcc_name = g_strdup_printf("dcc%d", p->cpu_index);
++    chr = qemu_chr_find(dcc_name);
++    define_arm_cp_regs_with_opaque(cpu, dcc_cp_reginfo, cpu);
++    if (chr) {
++        qemu_chr_fe_init(&cpu->dcc, chr, NULL);
++        qemu_chr_fe_set_handlers(&cpu->dcc,
++                      dcc_chr_can_read,
++                      dcc_chr_read,
++                      NULL, NULL, cpu, NULL, true);
++    }
++    g_free(dcc_name);
++}
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index ce31957235..2b594f91cb 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9268,6 +9268,9 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         }
+     }
+ 
++    if (arm_feature(&cpu->env, ARM_FEATURE_DCC)) {
++        arm_dcc_init(cpu);
++    }
+     /*
+      * Register the base EL2 cpregs.
+      * Pre v8, these registers are implemented only as part of the
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 2e10464dbb..3ee38c6b45 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -5,6 +5,7 @@ arm_ss.add(files(
+   'gdbstub.c',
+   'helper.c',
+   'vfp_helper.c',
++  'debug-dcc.c',
+ ))
+ arm_ss.add(zlib)
+ 
+-- 
+2.34.1
 

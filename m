@@ -1,99 +1,99 @@
-Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp92965ejb;
-        Fri, 14 Jun 2024 00:29:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXZcEKR6R6OuXam0EpqB2Mw1hesY3dHjDajvh/0pj9ggA28QfXtW+n4JRkswlPah2f//Hbxois9bOyWb1/kAsqHdYsR/EdH
-X-Google-Smtp-Source: AGHT+IHENKNZ9agqn2+sl28+l7Co8r3joXC23EhSQd/gPx17PtYitiVVGQuAQ7TewgzH8zVa6pyD
-X-Received: by 2002:a05:622a:4cb:b0:440:5d77:94 with SMTP id d75a77b69052e-4421685c75cmr19320101cf.5.1718350147604;
-        Fri, 14 Jun 2024 00:29:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718350147; cv=none;
+Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp93096ejb;
+        Fri, 14 Jun 2024 00:29:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVObTZp1aNh3hd5iuRq/8ZLYhzvh2eqTe0vRJzP8nMFHyvK4bQekqsQcLonECt6LMO7hPgimOUYnBKTrZdieBUEx0v4KLpk
+X-Google-Smtp-Source: AGHT+IEscR2ViWhCrhkDRz7iQE3MdpLxZ7cxhoa8oqov0WxrCBfshzMzsdQqO8980dksLcB1YgQ6
+X-Received: by 2002:a25:ac49:0:b0:dfb:359d:b762 with SMTP id 3f1490d57ef6-dff1534297amr1668369276.10.1718350166973;
+        Fri, 14 Jun 2024 00:29:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718350166; cv=none;
         d=google.com; s=arc-20160816;
-        b=U4l//ctOMtYk2ehOhLgQXUEqwlFwNPL/hk1z4YFrvnnxbGfN2mB0rVNLMJy4l3OOL1
-         YoZsl8tmTwKaEu2HJuHxzWj/2BBnePGkLWfhwUsTW7HhEkpTnPVLRQE6ebra1pajFLJo
-         o5xNeCpogNkXxYQQQCog64TjZfcJoQ3BDvWwJpaVCwofWdkKKhgRrFlkczDIdFoXI2OJ
-         CUx/vD5CWlguYk6Utluyp3Z2KQUJxHARqenEv5CnuFsVyb6bM2bCS0UVC0pGA0hByluu
-         32GvC9Q89YdcZGVTxFWvBZv7Z1liJy9F3Sd+oyUv5K9+YUXbe3USvrryDE4J32shG7Jl
-         oCUQ==
+        b=HmZ4ysimw2937n+D8iPF4+6ZCSpzaqHKEWcUb+Kl5006ixNWH5DW36KtbrB6C9PAe6
+         Bp1GQCkch+4/tz/vWeT1nNA0FQG3BAoTScHskCWWKdX7VGk3ZdPlk7a7NXkZs8ElL5ix
+         KkMSw/4Cc4lPrX7T25SD1mee4W8atzuIYldECa83hxtEaCVOxxhn8b4eKYX98JuXWIKJ
+         UTtkncWq9zjOybX9Atdw+a6AktRT7z6hK4Ih6JswWimzoqMewa5g+43ywZ63y63la9Te
+         2Ymd67TfeZPMhPY6JY1Wf4ll/qLItRQjfv8vKwQm8gB+t3wt7e1nLcEVIQfYvP2YZCUy
+         2rIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=50UHzxju/vgPYUlhxAkVmjUy9/fEsWgJ8psibIW6p6M=;
-        fh=OB4nhQX1bFwm+MLKNUzc1UcgBcUdSYXblZnVHN1xxIM=;
-        b=MwJL8fzRJCP/JV/32+QcfBS4eGpT3ZgjjLyRSTYlvZw1vnrVxPtNf1HGH3IpacOb/j
-         jEejDlpE4EmBPFLhKP6Jxm0UQZ9Vto0dOHe6ef5d6FAyeYA9H+GjUzFPzb9Pr2fSO85u
-         yiQUgSv5buXg2l4VFrq98g2NVCdC7zcR5FFsKoryH7rgQ+K54bDoajpjDKy7njFrl0U6
-         lGoho7ACTT7z75qMz3dakLcGxavPLCav3/VChqVcvFRdZLgsto2uVpY1MV/+H9ggcI0W
-         Ofxdn5iYb2tVl4/US6DzHe2Zs9qPuIlixI0i9LcnKUnXRaWlTvBkgL7FIymnssWUZe3N
-         bywg==;
+        bh=VFBy8wTmZ0Z+ivMqaCINY72LkpsM6vY8kBFB+mQtCUc=;
+        fh=AcWSTBBcQtYb7MKLFQz0jAErn8oNU1WklmI8CXNUViI=;
+        b=M1GDxHtaJwGudYFdUQPZV/cU6j0d4DKphpDopW2swTaN3UyUHX4ALisRgnJSFwpRWB
+         P27NqIm/Do1ET6Om5g2rc4s/1UHmk1JNleruaU3SJ3AYZAemwtf9wr/myrrmT7LcDIfx
+         7T+GVU94r/3syeHl8HoJjQAwaX0Jyrviwh1d25vaz2OkoZ72Px1IJR5O7d7dwjpJybL6
+         +ihYLzJZm2rlcrmin9PK2/bT/zOE6XYQpd+HcHmm+SyFXpBKhVEgCrmI44QvTuR88O/e
+         zLERDI6d0krBmsaphqvOn9oo8G/fXxzwEE4Tt5XDTgnsgUShrmnZ3glI441QgHTkaRrN
+         uQ8w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N2EcMDO2;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DrWIVTuj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-441f2fcc3e3si31415061cf.508.2024.06.14.00.29.07
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5b71030si32703216d6.503.2024.06.14.00.29.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jun 2024 00:29:07 -0700 (PDT)
+        Fri, 14 Jun 2024 00:29:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N2EcMDO2;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DrWIVTuj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sI1Lq-0003SX-Bi; Fri, 14 Jun 2024 03:27:58 -0400
+	id 1sI1Lt-0003bj-If; Fri, 14 Jun 2024 03:28:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1Lo-0003Qk-8k
- for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:27:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1Ls-0003UV-Bx
+ for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:28:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1Lm-0000nE-Gz
- for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:27:56 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1Lp-0000nk-W9
+ for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:28:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718350073;
+ s=mimecast20190719; t=1718350077;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=50UHzxju/vgPYUlhxAkVmjUy9/fEsWgJ8psibIW6p6M=;
- b=N2EcMDO2ZisMY+Qi2OLv4zyRrQHyaDuT9ZnvUK9VMyQRoWay2ir2FePGhkp7+C+udL7493
- wODtusbZe6+Dokjt5lp1EydvQcpXWMPH/vLQD2w2lK6jqmqSYxhnscLKKB8lx2VImxy+XS
- nWtWOf+4qmssNuo8AJj69RjfjdJvIOg=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ bh=VFBy8wTmZ0Z+ivMqaCINY72LkpsM6vY8kBFB+mQtCUc=;
+ b=DrWIVTujOniPbL32Q5TnvsatGsJNOdypYszU3Pe3ntIQz6CmdAKAuzPCgvpSuesMqPqKu9
+ KdJFoKwhH0kkZI8+c/2Oq9JJlYxXBnvLZ18yaLtOhcF548DL2jy3p3LMgHnpSMj5q1zm3U
+ wWKNguIiwcqEH3Ys8AfmoNBj//6zJQs=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-636-QBcrtVykMnKADnF845hlkQ-1; Fri,
- 14 Jun 2024 03:27:46 -0400
-X-MC-Unique: QBcrtVykMnKADnF845hlkQ-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-477-oSnUkc4_MT6ocJrcVFzfZQ-1; Fri,
+ 14 Jun 2024 03:27:52 -0400
+X-MC-Unique: oSnUkc4_MT6ocJrcVFzfZQ-1
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DF64319560B9; Fri, 14 Jun 2024 07:27:44 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 550A11956096; Fri, 14 Jun 2024 07:27:51 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.49])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 210D3300021A; Fri, 14 Jun 2024 07:27:42 +0000 (UTC)
+ id 4F3983000225; Fri, 14 Jun 2024 07:27:49 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 09/19] aspeed/smc: support 64 bits dma dram address
-Date: Fri, 14 Jun 2024 09:26:10 +0200
-Message-ID: <20240614072620.1262053-10-clg@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PULL 12/19] aspeed/scu: Add AST2700 support
+Date: Fri, 14 Jun 2024 09:26:13 +0200
+Message-ID: <20240614072620.1262053-13-clg@redhat.com>
 In-Reply-To: <20240614072620.1262053-1-clg@redhat.com>
 References: <20240614072620.1262053-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 11
 X-Spam_score: 1.1
@@ -117,180 +117,504 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GFECw473E3XY
+X-TUID: iAlTjUGSWPAS
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-AST2700 support the maximum dram size is 8GiB
-and has a "DMA DRAM Side Address High Part(0x7C)"
-register to support 64 bits dma dram address.
-Add helper routines functions to compute the dma dram
-address, new features and update trace-event
-to support 64 bits dram address.
+AST2700 have two SCU controllers which are SCU and SCUIO.
+Both SCU and SCUIO registers are not compatible previous SOCs
+, introduces new registers and adds ast2700 scu, sucio class init handler.
+
+The pclk divider selection of SCUIO is defined in SCUIO280[20:18] and
+the pclk divider selection of SCU is defined in SCU280[25:23].
+Both of them are not compatible AST2600 SOCs, adds a get_apb_freq function
+and trace-event for AST2700 SCU and SCUIO.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/ssi/aspeed_smc.c | 51 ++++++++++++++++++++++++++++++++++++++-------
- hw/ssi/trace-events |  2 +-
- 2 files changed, 44 insertions(+), 9 deletions(-)
+ include/hw/misc/aspeed_scu.h |  47 +++++-
+ hw/misc/aspeed_scu.c         | 306 ++++++++++++++++++++++++++++++++++-
+ hw/misc/trace-events         |   4 +
+ 3 files changed, 351 insertions(+), 6 deletions(-)
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 0b8488a113db..df0c63469cd7 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -132,6 +132,9 @@
- #define   FMC_WDT2_CTRL_BOOT_SOURCE      BIT(4) /* O: primary 1: alternate */
- #define   FMC_WDT2_CTRL_EN               BIT(0)
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index 7cb6018dbc14..58db28db45aa 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -19,10 +19,13 @@ OBJECT_DECLARE_TYPE(AspeedSCUState, AspeedSCUClass, ASPEED_SCU)
+ #define TYPE_ASPEED_2400_SCU TYPE_ASPEED_SCU "-ast2400"
+ #define TYPE_ASPEED_2500_SCU TYPE_ASPEED_SCU "-ast2500"
+ #define TYPE_ASPEED_2600_SCU TYPE_ASPEED_SCU "-ast2600"
++#define TYPE_ASPEED_2700_SCU TYPE_ASPEED_SCU "-ast2700"
++#define TYPE_ASPEED_2700_SCUIO TYPE_ASPEED_SCU "io" "-ast2700"
+ #define TYPE_ASPEED_1030_SCU TYPE_ASPEED_SCU "-ast1030"
  
-+/* DMA DRAM Side Address High Part (AST2700) */
-+#define R_DMA_DRAM_ADDR_HIGH   (0x7c / 4)
-+
- /* DMA Control/Status Register */
- #define R_DMA_CTRL        (0x80 / 4)
- #define   DMA_CTRL_REQUEST      (1 << 31)
-@@ -187,6 +190,7 @@
-  *   0x1FFFFFF: 32M bytes
+ #define ASPEED_SCU_NR_REGS (0x1A8 >> 2)
+ #define ASPEED_AST2600_SCU_NR_REGS (0xE20 >> 2)
++#define ASPEED_AST2700_SCU_NR_REGS (0xE20 >> 2)
+ 
+ struct AspeedSCUState {
+     /*< private >*/
+@@ -31,7 +34,7 @@ struct AspeedSCUState {
+     /*< public >*/
+     MemoryRegion iomem;
+ 
+-    uint32_t regs[ASPEED_AST2600_SCU_NR_REGS];
++    uint32_t regs[ASPEED_AST2700_SCU_NR_REGS];
+     uint32_t silicon_rev;
+     uint32_t hw_strap1;
+     uint32_t hw_strap2;
+@@ -48,6 +51,9 @@ struct AspeedSCUState {
+ #define AST2600_A3_SILICON_REV   0x05030303U
+ #define AST1030_A0_SILICON_REV   0x80000000U
+ #define AST1030_A1_SILICON_REV   0x80010000U
++#define AST2700_A0_SILICON_REV   0x06000103U
++#define AST2720_A0_SILICON_REV   0x06000203U
++#define AST2750_A0_SILICON_REV   0x06000003U
+ 
+ #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
+ 
+@@ -87,7 +93,8 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
+  *       1. 2012/12/29 Ryan Chen Create
   */
- #define DMA_DRAM_ADDR(asc, val)   ((val) & (asc)->dma_dram_mask)
-+#define DMA_DRAM_ADDR_HIGH(val)   ((val) & 0xf)
- #define DMA_FLASH_ADDR(asc, val)  ((val) & (asc)->dma_flash_mask)
- #define DMA_LENGTH(val)         ((val) & 0x01FFFFFF)
  
-@@ -207,6 +211,7 @@ static const AspeedSegments aspeed_2500_spi2_segments[];
- #define ASPEED_SMC_FEATURE_DMA       0x1
- #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
- #define ASPEED_SMC_FEATURE_WDT_CONTROL 0x4
-+#define ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH 0x08
+-/* SCU08   Clock Selection Register
++/*
++ * SCU08   Clock Selection Register
+  *
+  *  31     Enable Video Engine clock dynamic slow down
+  *  30:28  Video Engine clock slow down setting
+@@ -109,7 +116,8 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
+  */
+ #define SCU_CLK_GET_PCLK_DIV(x)                    (((x) >> 23) & 0x7)
  
- static inline bool aspeed_smc_has_dma(const AspeedSMCClass *asc)
- {
-@@ -218,6 +223,11 @@ static inline bool aspeed_smc_has_wdt_control(const AspeedSMCClass *asc)
-     return !!(asc->features & ASPEED_SMC_FEATURE_WDT_CONTROL);
+-/* SCU24   H-PLL Parameter Register (for Aspeed AST2400 SOC)
++/*
++ * SCU24   H-PLL Parameter Register (for Aspeed AST2400 SOC)
+  *
+  *  18     H-PLL parameter selection
+  *           0: Select H-PLL by strapping resistors
+@@ -127,7 +135,8 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
+ #define SCU_AST2400_H_PLL_BYPASS_EN                (0x1 << 17)
+ #define SCU_AST2400_H_PLL_OFF                      (0x1 << 16)
+ 
+-/* SCU24   H-PLL Parameter Register (for Aspeed AST2500 SOC)
++/*
++ * SCU24   H-PLL Parameter Register (for Aspeed AST2500 SOC)
+  *
+  *  21     Enable H-PLL reset
+  *  20     Enable H-PLL bypass mode
+@@ -144,7 +153,8 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
+ #define SCU_H_PLL_BYPASS_EN                        (0x1 << 20)
+ #define SCU_H_PLL_OFF                              (0x1 << 19)
+ 
+-/* SCU70  Hardware Strapping Register definition (for Aspeed AST2400 SOC)
++/*
++ * SCU70  Hardware Strapping Register definition (for Aspeed AST2400 SOC)
+  *
+  * 31:29  Software defined strapping registers
+  * 28:27  DRAM size setting (for VGA driver use)
+@@ -361,4 +371,31 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
+  */
+ #define SCU_AST1030_CLK_GET_PCLK_DIV(x)                    (((x) >> 8) & 0xf)
+ 
++/*
++ * SCU280   Clock Selection 1 Register (for Aspeed AST2700 SCUIO)
++ *
++ *  31:29  MHCLK_DIV
++ *  28     Reserved
++ *  27:25  RGMIICLK_DIV
++ *  24     Reserved
++ *  23:21  RMIICLK_DIV
++ *  20:18  PCLK_DIV
++ *  17:14  SDCLK_DIV
++ *  13     SDCLK_SEL
++ *  12     UART13CLK_SEL
++ *  11     UART12CLK_SEL
++ *  10     UART11CLK_SEL
++ *  9      UART10CLK_SEL
++ *  8      UART9CLK_SEL
++ *  7      UART8CLK_SEL
++ *  6      UART7CLK_SEL
++ *  5      UART6CLK_SEL
++ *  4      UARTDBCLK_SEL
++ *  3      UART4CLK_SEL
++ *  2      UART3CLK_SEL
++ *  1      UART2CLK_SEL
++ *  0      UART1CLK_SEL
++ */
++#define SCUIO_AST2700_CLK_GET_PCLK_DIV(x)                    (((x) >> 18) & 0x7)
++
+ #endif /* ASPEED_SCU_H */
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 1ac04b6cb020..eb38ea8e1971 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -134,6 +134,48 @@
+ 
+ #define AST2600_CLK TO_REG(0x40)
+ 
++#define AST2700_SILICON_REV       TO_REG(0x00)
++#define AST2700_HW_STRAP1         TO_REG(0x10)
++#define AST2700_HW_STRAP1_CLR     TO_REG(0x14)
++#define AST2700_HW_STRAP1_LOCK    TO_REG(0x20)
++#define AST2700_HW_STRAP1_SEC1    TO_REG(0x24)
++#define AST2700_HW_STRAP1_SEC2    TO_REG(0x28)
++#define AST2700_HW_STRAP1_SEC3    TO_REG(0x2C)
++
++#define AST2700_SCU_CLK_SEL_1       TO_REG(0x280)
++#define AST2700_SCU_HPLL_PARAM      TO_REG(0x300)
++#define AST2700_SCU_HPLL_EXT_PARAM  TO_REG(0x304)
++#define AST2700_SCU_DPLL_PARAM      TO_REG(0x308)
++#define AST2700_SCU_DPLL_EXT_PARAM  TO_REG(0x30c)
++#define AST2700_SCU_MPLL_PARAM      TO_REG(0x310)
++#define AST2700_SCU_MPLL_EXT_PARAM  TO_REG(0x314)
++#define AST2700_SCU_D1CLK_PARAM     TO_REG(0x320)
++#define AST2700_SCU_D2CLK_PARAM     TO_REG(0x330)
++#define AST2700_SCU_CRT1CLK_PARAM   TO_REG(0x340)
++#define AST2700_SCU_CRT2CLK_PARAM   TO_REG(0x350)
++#define AST2700_SCU_MPHYCLK_PARAM   TO_REG(0x360)
++#define AST2700_SCU_FREQ_CNTR       TO_REG(0x3b0)
++#define AST2700_SCU_CPU_SCRATCH_0   TO_REG(0x780)
++#define AST2700_SCU_CPU_SCRATCH_1   TO_REG(0x784)
++
++#define AST2700_SCUIO_CLK_STOP_CTL_1    TO_REG(0x240)
++#define AST2700_SCUIO_CLK_STOP_CLR_1    TO_REG(0x244)
++#define AST2700_SCUIO_CLK_STOP_CTL_2    TO_REG(0x260)
++#define AST2700_SCUIO_CLK_STOP_CLR_2    TO_REG(0x264)
++#define AST2700_SCUIO_CLK_SEL_1         TO_REG(0x280)
++#define AST2700_SCUIO_CLK_SEL_2         TO_REG(0x284)
++#define AST2700_SCUIO_HPLL_PARAM        TO_REG(0x300)
++#define AST2700_SCUIO_HPLL_EXT_PARAM    TO_REG(0x304)
++#define AST2700_SCUIO_APLL_PARAM        TO_REG(0x310)
++#define AST2700_SCUIO_APLL_EXT_PARAM    TO_REG(0x314)
++#define AST2700_SCUIO_DPLL_PARAM        TO_REG(0x320)
++#define AST2700_SCUIO_DPLL_EXT_PARAM    TO_REG(0x324)
++#define AST2700_SCUIO_DPLL_PARAM_READ   TO_REG(0x328)
++#define AST2700_SCUIO_DPLL_EXT_PARAM_READ TO_REG(0x32c)
++#define AST2700_SCUIO_UARTCLK_GEN       TO_REG(0x330)
++#define AST2700_SCUIO_HUARTCLK_GEN      TO_REG(0x334)
++#define AST2700_SCUIO_CLK_DUTY_MEAS_RST TO_REG(0x388)
++
+ #define SCU_IO_REGION_SIZE 0x1000
+ 
+ static const uint32_t ast2400_a0_resets[ASPEED_SCU_NR_REGS] = {
+@@ -244,6 +286,25 @@ static uint32_t aspeed_1030_scu_get_apb_freq(AspeedSCUState *s)
+         / asc->apb_divider;
  }
  
-+static inline bool aspeed_smc_has_dma64(const AspeedSMCClass *asc)
++static uint32_t aspeed_2700_scu_get_apb_freq(AspeedSCUState *s)
 +{
-+    return !!(asc->features & ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH);
++    AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(s);
++    uint32_t hpll = asc->calc_hpll(s, s->regs[AST2700_SCU_HPLL_PARAM]);
++
++    return hpll / (SCU_CLK_GET_PCLK_DIV(s->regs[AST2700_SCU_CLK_SEL_1]) + 1)
++           / asc->apb_divider;
 +}
 +
- #define aspeed_smc_error(fmt, ...)                                      \
-     qemu_log_mask(LOG_GUEST_ERROR, "%s: " fmt "\n", __func__, ## __VA_ARGS__)
- 
-@@ -747,6 +757,8 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_CTRL) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_FLASH_ADDR) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_DRAM_ADDR) ||
-+        (aspeed_smc_has_dma(asc) && aspeed_smc_has_dma64(asc) &&
-+         addr == R_DMA_DRAM_ADDR_HIGH) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN) ||
-         (aspeed_smc_has_dma(asc) && addr == R_DMA_CHECKSUM) ||
-         (addr >= R_SEG_ADDR0 &&
-@@ -847,6 +859,12 @@ static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
-     }
- }
- 
-+static uint64_t aspeed_smc_dma_dram_addr(AspeedSMCState *s)
++static uint32_t aspeed_2700_scuio_get_apb_freq(AspeedSCUState *s)
 +{
-+    return s->regs[R_DMA_DRAM_ADDR] |
-+        ((uint64_t) s->regs[R_DMA_DRAM_ADDR_HIGH] << 32);
++    AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(s);
++    uint32_t hpll = asc->calc_hpll(s, s->regs[AST2700_SCUIO_HPLL_PARAM]);
++
++    return hpll /
++        (SCUIO_AST2700_CLK_GET_PCLK_DIV(s->regs[AST2700_SCUIO_CLK_SEL_1]) + 1)
++        / asc->apb_divider;
 +}
 +
- static uint32_t aspeed_smc_dma_len(AspeedSMCState *s)
+ static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
  {
-     AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-@@ -903,24 +921,34 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+     AspeedSCUState *s = ASPEED_SCU(opaque);
+@@ -258,7 +319,8 @@ static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned size)
  
- static void aspeed_smc_dma_rw(AspeedSMCState *s)
- {
-+    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
-+    uint64_t dma_dram_offset;
-+    uint64_t dma_dram_addr;
-     MemTxResult result;
-     uint32_t dma_len;
-     uint32_t data;
- 
-     dma_len = aspeed_smc_dma_len(s);
-+    dma_dram_addr = aspeed_smc_dma_dram_addr(s);
-+
-+    if (aspeed_smc_has_dma64(asc)) {
-+        dma_dram_offset = dma_dram_addr - s->dram_base;
-+    } else {
-+        dma_dram_offset = dma_dram_addr;
-+    }
- 
-     trace_aspeed_smc_dma_rw(s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE ?
-                             "write" : "read",
-                             s->regs[R_DMA_FLASH_ADDR],
--                            s->regs[R_DMA_DRAM_ADDR],
-+                            dma_dram_offset,
-                             dma_len);
-     while (dma_len) {
-         if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
--            data = address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
-+            data = address_space_ldl_le(&s->dram_as, dma_dram_offset,
-                                         MEMTXATTRS_UNSPECIFIED, &result);
-             if (result != MEMTX_OK) {
--                aspeed_smc_error("DRAM read failed @%08x",
--                                 s->regs[R_DMA_DRAM_ADDR]);
-+                aspeed_smc_error("DRAM read failed @%" PRIx64,
-+                                 dma_dram_offset);
-                 return;
-             }
- 
-@@ -940,11 +968,11 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
-                 return;
-             }
- 
--            address_space_stl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
-+            address_space_stl_le(&s->dram_as, dma_dram_offset,
-                                  data, MEMTXATTRS_UNSPECIFIED, &result);
-             if (result != MEMTX_OK) {
--                aspeed_smc_error("DRAM write failed @%08x",
--                                 s->regs[R_DMA_DRAM_ADDR]);
-+                aspeed_smc_error("DRAM write failed @%" PRIx64,
-+                                 dma_dram_offset);
-                 return;
-             }
-         }
-@@ -953,8 +981,12 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
-          * When the DMA is on-going, the DMA registers are updated
-          * with the current working addresses and length.
+     switch (reg) {
+     case RNG_DATA:
+-        /* On hardware, RNG_DATA works regardless of
++        /*
++         * On hardware, RNG_DATA works regardless of
+          * the state of the enable bit in RNG_CTRL
           */
-+        dma_dram_offset += 4;
-+        dma_dram_addr += 4;
-+
-+        s->regs[R_DMA_DRAM_ADDR_HIGH] = dma_dram_addr >> 32;
-+        s->regs[R_DMA_DRAM_ADDR] = dma_dram_addr & 0xffffffff;
-         s->regs[R_DMA_FLASH_ADDR] += 4;
--        s->regs[R_DMA_DRAM_ADDR] += 4;
-         dma_len -= 4;
-         s->regs[R_DMA_LEN] = dma_len;
-         s->regs[R_DMA_CHECKSUM] += data;
-@@ -1107,6 +1139,9 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
-     } else if (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN &&
-                aspeed_smc_dma_granted(s)) {
-         s->regs[addr] = DMA_LENGTH(value);
-+    } else if (aspeed_smc_has_dma(asc) && aspeed_smc_has_dma64(asc) &&
-+               addr == R_DMA_DRAM_ADDR_HIGH) {
-+        s->regs[addr] = DMA_DRAM_ADDR_HIGH(value);
-     } else {
-         qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
-                       __func__, addr);
-diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
-index 2d5bd2b83d0c..7b5ad6a939e3 100644
---- a/hw/ssi/trace-events
-+++ b/hw/ssi/trace-events
-@@ -6,7 +6,7 @@ aspeed_smc_do_snoop(int cs, int index, int dummies, int data) "CS%d index:0x%x d
- aspeed_smc_flash_write(int cs, uint64_t addr,  uint32_t size, uint64_t data, int mode) "CS%d @0x%" PRIx64 " size %u: 0x%" PRIx64" mode:%d"
- aspeed_smc_read(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
- aspeed_smc_dma_checksum(uint32_t addr, uint32_t data) "0x%08x: 0x%08x"
--aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint32_t dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%08x size:0x%08x"
-+aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint64_t dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%" PRIx64 " size:0x%08x"
- aspeed_smc_write(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
- aspeed_smc_flash_select(int cs, const char *prefix) "CS%d %sselect"
+         s->regs[RNG_DATA] = aspeed_scu_get_random();
+@@ -494,6 +556,9 @@ static uint32_t aspeed_silicon_revs[] = {
+     AST2600_A3_SILICON_REV,
+     AST1030_A0_SILICON_REV,
+     AST1030_A1_SILICON_REV,
++    AST2700_A0_SILICON_REV,
++    AST2720_A0_SILICON_REV,
++    AST2750_A0_SILICON_REV,
+ };
  
+ bool is_supported_silicon_rev(uint32_t silicon_rev)
+@@ -783,6 +848,243 @@ static const TypeInfo aspeed_2600_scu_info = {
+     .class_init = aspeed_2600_scu_class_init,
+ };
+ 
++static uint64_t aspeed_ast2700_scu_read(void *opaque, hwaddr offset,
++                                        unsigned size)
++{
++    AspeedSCUState *s = ASPEED_SCU(opaque);
++    int reg = TO_REG(offset);
++
++    if (reg >= ASPEED_AST2700_SCU_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
++                __func__, offset);
++        return 0;
++    }
++
++    switch (reg) {
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Unhandled read at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++    }
++
++    trace_aspeed_ast2700_scu_read(offset, size, s->regs[reg]);
++    return s->regs[reg];
++}
++
++static void aspeed_ast2700_scu_write(void *opaque, hwaddr offset,
++                                     uint64_t data64, unsigned size)
++{
++    AspeedSCUState *s = ASPEED_SCU(opaque);
++    int reg = TO_REG(offset);
++    /* Truncate here so bitwise operations below behave as expected */
++    uint32_t data = data64;
++
++    if (reg >= ASPEED_AST2700_SCU_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
++                __func__, offset);
++        return;
++    }
++
++    trace_aspeed_ast2700_scu_write(offset, size, data);
++
++    switch (reg) {
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Unhandeled write at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++        break;
++    }
++
++    s->regs[reg] = data;
++}
++
++static const MemoryRegionOps aspeed_ast2700_scu_ops = {
++    .read = aspeed_ast2700_scu_read,
++    .write = aspeed_ast2700_scu_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 1,
++    .valid.max_access_size = 8,
++    .valid.unaligned = false,
++};
++
++static const uint32_t ast2700_a0_resets[ASPEED_AST2700_SCU_NR_REGS] = {
++    [AST2700_SILICON_REV]           = AST2700_A0_SILICON_REV,
++    [AST2700_HW_STRAP1]             = 0x00000800,
++    [AST2700_HW_STRAP1_CLR]         = 0xFFF0FFF0,
++    [AST2700_HW_STRAP1_LOCK]        = 0x00000FFF,
++    [AST2700_HW_STRAP1_SEC1]        = 0x000000FF,
++    [AST2700_HW_STRAP1_SEC2]        = 0x00000000,
++    [AST2700_HW_STRAP1_SEC3]        = 0x1000408F,
++    [AST2700_SCU_HPLL_PARAM]        = 0x0000009f,
++    [AST2700_SCU_HPLL_EXT_PARAM]    = 0x8000004f,
++    [AST2700_SCU_DPLL_PARAM]        = 0x0080009f,
++    [AST2700_SCU_DPLL_EXT_PARAM]    = 0x8000004f,
++    [AST2700_SCU_MPLL_PARAM]        = 0x00000040,
++    [AST2700_SCU_MPLL_EXT_PARAM]    = 0x80000000,
++    [AST2700_SCU_D1CLK_PARAM]       = 0x00050002,
++    [AST2700_SCU_D2CLK_PARAM]       = 0x00050002,
++    [AST2700_SCU_CRT1CLK_PARAM]     = 0x00050002,
++    [AST2700_SCU_CRT2CLK_PARAM]     = 0x00050002,
++    [AST2700_SCU_MPHYCLK_PARAM]     = 0x0000004c,
++    [AST2700_SCU_FREQ_CNTR]         = 0x000375eb,
++    [AST2700_SCU_CPU_SCRATCH_0]     = 0x00000000,
++    [AST2700_SCU_CPU_SCRATCH_1]     = 0x00000004,
++};
++
++static void aspeed_ast2700_scu_reset(DeviceState *dev)
++{
++    AspeedSCUState *s = ASPEED_SCU(dev);
++    AspeedSCUClass *asc = ASPEED_SCU_GET_CLASS(dev);
++
++    memcpy(s->regs, asc->resets, asc->nr_regs * 4);
++}
++
++static void aspeed_2700_scu_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSCUClass *asc = ASPEED_SCU_CLASS(klass);
++
++    dc->desc = "ASPEED 2700 System Control Unit";
++    dc->reset = aspeed_ast2700_scu_reset;
++    asc->resets = ast2700_a0_resets;
++    asc->calc_hpll = aspeed_2600_scu_calc_hpll;
++    asc->get_apb = aspeed_2700_scu_get_apb_freq;
++    asc->apb_divider = 4;
++    asc->nr_regs = ASPEED_AST2700_SCU_NR_REGS;
++    asc->clkin_25Mhz = true;
++    asc->ops = &aspeed_ast2700_scu_ops;
++}
++
++static uint64_t aspeed_ast2700_scuio_read(void *opaque, hwaddr offset,
++                                        unsigned size)
++{
++    AspeedSCUState *s = ASPEED_SCU(opaque);
++    int reg = TO_REG(offset);
++    if (reg >= ASPEED_AST2700_SCU_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
++                __func__, offset);
++        return 0;
++    }
++
++    switch (reg) {
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Unhandled read at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++    }
++
++    trace_aspeed_ast2700_scuio_read(offset, size, s->regs[reg]);
++    return s->regs[reg];
++}
++
++static void aspeed_ast2700_scuio_write(void *opaque, hwaddr offset,
++                                     uint64_t data64, unsigned size)
++{
++    AspeedSCUState *s = ASPEED_SCU(opaque);
++    int reg = TO_REG(offset);
++    /* Truncate here so bitwise operations below behave as expected */
++    uint32_t data = data64;
++    bool updated = false;
++
++    if (reg >= ASPEED_AST2700_SCU_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRIx "\n",
++                __func__, offset);
++        return;
++    }
++
++    trace_aspeed_ast2700_scuio_write(offset, size, data);
++
++    switch (reg) {
++    case AST2700_SCUIO_CLK_STOP_CTL_1:
++    case AST2700_SCUIO_CLK_STOP_CTL_2:
++        s->regs[reg] |= data;
++        updated = true;
++        break;
++    case AST2700_SCUIO_CLK_STOP_CLR_1:
++    case AST2700_SCUIO_CLK_STOP_CLR_2:
++        s->regs[reg - 1] ^= data;
++        updated = true;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Unhandeled write at offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++        break;
++    }
++
++    if (!updated) {
++        s->regs[reg] = data;
++    }
++}
++
++static const MemoryRegionOps aspeed_ast2700_scuio_ops = {
++    .read = aspeed_ast2700_scuio_read,
++    .write = aspeed_ast2700_scuio_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 1,
++    .valid.max_access_size = 8,
++    .valid.unaligned = false,
++};
++
++static const uint32_t ast2700_a0_resets_io[ASPEED_AST2700_SCU_NR_REGS] = {
++    [AST2700_SILICON_REV]               = 0x06000003,
++    [AST2700_HW_STRAP1]                 = 0x00000504,
++    [AST2700_HW_STRAP1_CLR]             = 0xFFF0FFF0,
++    [AST2700_HW_STRAP1_LOCK]            = 0x00000FFF,
++    [AST2700_HW_STRAP1_SEC1]            = 0x000000FF,
++    [AST2700_HW_STRAP1_SEC2]            = 0x00000000,
++    [AST2700_HW_STRAP1_SEC3]            = 0x1000408F,
++    [AST2700_SCUIO_CLK_STOP_CTL_1]      = 0xffff8400,
++    [AST2700_SCUIO_CLK_STOP_CTL_2]      = 0x00005f30,
++    [AST2700_SCUIO_CLK_SEL_1]           = 0x86900000,
++    [AST2700_SCUIO_CLK_SEL_2]           = 0x00400000,
++    [AST2700_SCUIO_HPLL_PARAM]          = 0x10000027,
++    [AST2700_SCUIO_HPLL_EXT_PARAM]      = 0x80000014,
++    [AST2700_SCUIO_APLL_PARAM]          = 0x1000001f,
++    [AST2700_SCUIO_APLL_EXT_PARAM]      = 0x8000000f,
++    [AST2700_SCUIO_DPLL_PARAM]          = 0x106e42ce,
++    [AST2700_SCUIO_DPLL_EXT_PARAM]      = 0x80000167,
++    [AST2700_SCUIO_DPLL_PARAM_READ]     = 0x106e42ce,
++    [AST2700_SCUIO_DPLL_EXT_PARAM_READ] = 0x80000167,
++    [AST2700_SCUIO_UARTCLK_GEN]         = 0x00014506,
++    [AST2700_SCUIO_HUARTCLK_GEN]        = 0x000145c0,
++    [AST2700_SCUIO_CLK_DUTY_MEAS_RST]   = 0x0c9100d2,
++};
++
++static void aspeed_2700_scuio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedSCUClass *asc = ASPEED_SCU_CLASS(klass);
++
++    dc->desc = "ASPEED 2700 System Control Unit I/O";
++    dc->reset = aspeed_ast2700_scu_reset;
++    asc->resets = ast2700_a0_resets_io;
++    asc->calc_hpll = aspeed_2600_scu_calc_hpll;
++    asc->get_apb = aspeed_2700_scuio_get_apb_freq;
++    asc->apb_divider = 2;
++    asc->nr_regs = ASPEED_AST2700_SCU_NR_REGS;
++    asc->clkin_25Mhz = true;
++    asc->ops = &aspeed_ast2700_scuio_ops;
++}
++
++static const TypeInfo aspeed_2700_scu_info = {
++    .name = TYPE_ASPEED_2700_SCU,
++    .parent = TYPE_ASPEED_SCU,
++    .instance_size = sizeof(AspeedSCUState),
++    .class_init = aspeed_2700_scu_class_init,
++};
++
++static const TypeInfo aspeed_2700_scuio_info = {
++    .name = TYPE_ASPEED_2700_SCUIO,
++    .parent = TYPE_ASPEED_SCU,
++    .instance_size = sizeof(AspeedSCUState),
++    .class_init = aspeed_2700_scuio_class_init,
++};
++
+ static const uint32_t ast1030_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+     [AST2600_SYS_RST_CTRL]      = 0xFFC3FED8,
+     [AST2600_SYS_RST_CTRL2]     = 0x09FFFFFC,
+@@ -841,6 +1143,8 @@ static void aspeed_scu_register_types(void)
+     type_register_static(&aspeed_2500_scu_info);
+     type_register_static(&aspeed_2600_scu_info);
+     type_register_static(&aspeed_1030_scu_info);
++    type_register_static(&aspeed_2700_scu_info);
++    type_register_static(&aspeed_2700_scuio_info);
+ }
+ 
+ type_init(aspeed_scu_register_types);
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index e13b64822110..1be0717c0c93 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -93,6 +93,10 @@ slavio_led_mem_readw(uint32_t ret) "Read diagnostic LED 0x%04x"
+ # aspeed_scu.c
+ aspeed_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
+ aspeed_scu_read(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
++aspeed_ast2700_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
++aspeed_ast2700_scu_read(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
++aspeed_ast2700_scuio_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
++aspeed_ast2700_scuio_read(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64 " of size %u: 0x%" PRIx32
+ 
+ # mps2-scc.c
+ mps2_scc_read(uint64_t offset, uint64_t data, unsigned size) "MPS2 SCC read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
 -- 
 2.45.2
 

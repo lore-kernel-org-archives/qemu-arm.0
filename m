@@ -1,99 +1,99 @@
-Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp92957ejb;
-        Fri, 14 Jun 2024 00:29:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVsjMiOOZEOpKnUFKQP+Ah6yCWarv60oIJ7ScUDdVXok9UCmFZJdaOXQI1j+u+yTf4j/79wJECizGo7giXAS4cX+LhEgM3l
-X-Google-Smtp-Source: AGHT+IEHu+znq3pV0hUOlu+bukmousIkFhX8fkt/qZdXfBkIxiKW2uh5IYKIWj3K2NWsCDIKx5q7
-X-Received: by 2002:ad4:434f:0:b0:6b2:b692:bd68 with SMTP id 6a1803df08f44-6b2b692bee6mr2098336d6.41.1718350145752;
-        Fri, 14 Jun 2024 00:29:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718350145; cv=none;
+Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp92965ejb;
+        Fri, 14 Jun 2024 00:29:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXZcEKR6R6OuXam0EpqB2Mw1hesY3dHjDajvh/0pj9ggA28QfXtW+n4JRkswlPah2f//Hbxois9bOyWb1/kAsqHdYsR/EdH
+X-Google-Smtp-Source: AGHT+IHENKNZ9agqn2+sl28+l7Co8r3joXC23EhSQd/gPx17PtYitiVVGQuAQ7TewgzH8zVa6pyD
+X-Received: by 2002:a05:622a:4cb:b0:440:5d77:94 with SMTP id d75a77b69052e-4421685c75cmr19320101cf.5.1718350147604;
+        Fri, 14 Jun 2024 00:29:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718350147; cv=none;
         d=google.com; s=arc-20160816;
-        b=E3WmZBRbzyf5auX8LMlUI89wQwX6YARQch0UPGmpyKnWVNA6fEwi8/AKn2F1J4FHlr
-         ToJMRfRL4GFaY8n1whWrCd6NdlyKnBhoHFkRSLePHm555nFGlqUmEmXLFu49wvWxpRaf
-         aAbvHxdf4wFRfTpo9op+ci2FbAfhAfkkv84iXIkKJKI7Qm42F4xDuUq5HolnaFOXRHf5
-         0pFYl2KMbTec7+30fsgts5TxiIc0xBz+5qtAOtVOUJ/MFT50WGtSXgGLgaXLLzBw1+bh
-         qY2E/ijqAgJhGXMZIeiMzGEsqKiL2wkxHe4pSiV+D2cRdjamdpQVtWtnXs/ECoX6XxG8
-         eCPg==
+        b=U4l//ctOMtYk2ehOhLgQXUEqwlFwNPL/hk1z4YFrvnnxbGfN2mB0rVNLMJy4l3OOL1
+         YoZsl8tmTwKaEu2HJuHxzWj/2BBnePGkLWfhwUsTW7HhEkpTnPVLRQE6ebra1pajFLJo
+         o5xNeCpogNkXxYQQQCog64TjZfcJoQ3BDvWwJpaVCwofWdkKKhgRrFlkczDIdFoXI2OJ
+         CUx/vD5CWlguYk6Utluyp3Z2KQUJxHARqenEv5CnuFsVyb6bM2bCS0UVC0pGA0hByluu
+         32GvC9Q89YdcZGVTxFWvBZv7Z1liJy9F3Sd+oyUv5K9+YUXbe3USvrryDE4J32shG7Jl
+         oCUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=mT67xMIBp6ZET7ERJdeOwGv7TN1Z8yNGX5Ar50EezKI=;
-        fh=AcWSTBBcQtYb7MKLFQz0jAErn8oNU1WklmI8CXNUViI=;
-        b=N9lxQv885tfJCxh/uN9P/vBRnHAM1NoU2eIgXZQZQFzrjkT3bM7DT2kLPwYzAmn9sT
-         P019LNRqJuX7WjLCxPG3ArTvS8IHlxWpGGLUCeS5Di+8WwTvkfpB/aQVbm8VDkgehBXo
-         FWSICrBEcEkOgUGM09ZIaG9M+YJYtQkVgUqwxmF6FKV9IE532aX7+T4AIiGucmldN4iY
-         qajWNtJqxxch9KBmuydvqJuTwF3pxwInkAHPKHk/GDmfUX6cRkHX9Hp/+qtRPtQaQlKC
-         GFtUx3dK8So12SV0vLE0dhyU1nVJV5SfDlUhJqcFVoYeGsk8H6+WFaoLVNIQ5KZMR8yA
-         u6Cw==;
+        bh=50UHzxju/vgPYUlhxAkVmjUy9/fEsWgJ8psibIW6p6M=;
+        fh=OB4nhQX1bFwm+MLKNUzc1UcgBcUdSYXblZnVHN1xxIM=;
+        b=MwJL8fzRJCP/JV/32+QcfBS4eGpT3ZgjjLyRSTYlvZw1vnrVxPtNf1HGH3IpacOb/j
+         jEejDlpE4EmBPFLhKP6Jxm0UQZ9Vto0dOHe6ef5d6FAyeYA9H+GjUzFPzb9Pr2fSO85u
+         yiQUgSv5buXg2l4VFrq98g2NVCdC7zcR5FFsKoryH7rgQ+K54bDoajpjDKy7njFrl0U6
+         lGoho7ACTT7z75qMz3dakLcGxavPLCav3/VChqVcvFRdZLgsto2uVpY1MV/+H9ggcI0W
+         Ofxdn5iYb2tVl4/US6DzHe2Zs9qPuIlixI0i9LcnKUnXRaWlTvBkgL7FIymnssWUZe3N
+         bywg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ECo2MGtW;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N2EcMDO2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b2b1035b16si13471416d6.280.2024.06.14.00.29.05
+        by mx.google.com with ESMTPS id d75a77b69052e-441f2fcc3e3si31415061cf.508.2024.06.14.00.29.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jun 2024 00:29:05 -0700 (PDT)
+        Fri, 14 Jun 2024 00:29:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ECo2MGtW;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N2EcMDO2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sI1M5-00045o-0m; Fri, 14 Jun 2024 03:28:13 -0400
+	id 1sI1Lq-0003SX-Bi; Fri, 14 Jun 2024 03:27:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1M3-00041o-FI
- for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:28:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1Lo-0003Qk-8k
+ for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:27:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1M1-0000qF-Iw
- for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:28:11 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI1Lm-0000nE-Gz
+ for qemu-arm@nongnu.org; Fri, 14 Jun 2024 03:27:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718350088;
+ s=mimecast20190719; t=1718350073;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mT67xMIBp6ZET7ERJdeOwGv7TN1Z8yNGX5Ar50EezKI=;
- b=ECo2MGtW3ldY9KzzE+/U1fSxWZ8EAlXm8fBHzhu65hUSFMm1mH87S9bfGbca/VaYckQxy6
- XuVrfJaNp8hhhIG11mHCkfksLqgqwl9NahQiojB5abT1oAEcS9l7mzZCmLdB4dKVvwTma0
- CHwaymKtgsAVLVpxxaVcatUb73s82XQ=
+ bh=50UHzxju/vgPYUlhxAkVmjUy9/fEsWgJ8psibIW6p6M=;
+ b=N2EcMDO2ZisMY+Qi2OLv4zyRrQHyaDuT9ZnvUK9VMyQRoWay2ir2FePGhkp7+C+udL7493
+ wODtusbZe6+Dokjt5lp1EydvQcpXWMPH/vLQD2w2lK6jqmqSYxhnscLKKB8lx2VImxy+XS
+ nWtWOf+4qmssNuo8AJj69RjfjdJvIOg=
 Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-85-eLg-FX4vO_yyLe-KG9tiPA-1; Fri,
- 14 Jun 2024 03:28:05 -0400
-X-MC-Unique: eLg-FX4vO_yyLe-KG9tiPA-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-636-QBcrtVykMnKADnF845hlkQ-1; Fri,
+ 14 Jun 2024 03:27:46 -0400
+X-MC-Unique: QBcrtVykMnKADnF845hlkQ-1
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0C0FE1954208; Fri, 14 Jun 2024 07:28:03 +0000 (UTC)
+ id DF64319560B9; Fri, 14 Jun 2024 07:27:44 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.49])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5C7D43000219; Fri, 14 Jun 2024 07:28:01 +0000 (UTC)
+ id 210D3300021A; Fri, 14 Jun 2024 07:27:42 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PULL 17/19] test/avocado/machine_aspeed.py: Add AST2700 test case
-Date: Fri, 14 Jun 2024 09:26:18 +0200
-Message-ID: <20240614072620.1262053-18-clg@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 09/19] aspeed/smc: support 64 bits dma dram address
+Date: Fri, 14 Jun 2024 09:26:10 +0200
+Message-ID: <20240614072620.1262053-10-clg@redhat.com>
 In-Reply-To: <20240614072620.1262053-1-clg@redhat.com>
 References: <20240614072620.1262053-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 11
 X-Spam_score: 1.1
@@ -117,117 +117,180 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P5nAnlBvhrd1
+X-TUID: GFECw473E3XY
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Add a test case to test Aspeed OpenBMC SDK v09.01 on AST2700 board.
-
-It loads u-boot-nodtb.bin, u-boot.dtb, tfa and optee-os
-images to dram first which base address is 0x400000000.
-Then, boot and launch 4 cpu cores.
-
-```
-qemu-system-aarch64 -machine ast2700-evb
-    -device loader,force-raw=on,addr=0x400000000,file=workdir/u-boot-nodtb.bin \
-    -device loader,force-raw=on,addr=uboot_dtb_load_addr,file=workdir/u-boot.dtb\
-    -device loader,force-raw=on,addr=0x430000000,file=workdir/bl31.bin\
-    -device loader,force-raw=on,addr=0x430080000,file=workdir/optee/tee-raw.bin\
-    -device loader,cpu-num=0,addr=0x430000000 \
-    -device loader,cpu-num=1,addr=0x430000000 \
-    -device loader,cpu-num=2,addr=0x430000000 \
-    -device loader,cpu-num=3,addr=0x430000000 \
-    -smp 4 \
-    -drive file=workdir/image-bmc,format=raw,if=mtd
-```
-
-A test image is downloaded from the ASPEED Forked OpenBMC GitHub release repository :
-https://github.com/AspeedTech-BMC/openbmc/releases/
+AST2700 support the maximum dram size is 8GiB
+and has a "DMA DRAM Side Address High Part(0x7C)"
+register to support 64 bits dma dram address.
+Add helper routines functions to compute the dma dram
+address, new features and update trace-event
+to support 64 bits dram address.
 
 Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/avocado/machine_aspeed.py | 62 +++++++++++++++++++++++++++++++++
- 1 file changed, 62 insertions(+)
+ hw/ssi/aspeed_smc.c | 51 ++++++++++++++++++++++++++++++++++++++-------
+ hw/ssi/trace-events |  2 +-
+ 2 files changed, 44 insertions(+), 9 deletions(-)
 
-diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-index cec018142453..3a20644fb2ad 100644
---- a/tests/avocado/machine_aspeed.py
-+++ b/tests/avocado/machine_aspeed.py
-@@ -311,6 +311,17 @@ def do_test_arm_aspeed_sdk_start(self, image):
-             self, 'boot', '## Loading kernel from FIT Image')
-         self.wait_for_console_pattern('Starting kernel ...')
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 0b8488a113db..df0c63469cd7 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -132,6 +132,9 @@
+ #define   FMC_WDT2_CTRL_BOOT_SOURCE      BIT(4) /* O: primary 1: alternate */
+ #define   FMC_WDT2_CTRL_EN               BIT(0)
  
-+    def do_test_aarch64_aspeed_sdk_start(self, image):
-+        self.vm.set_console()
-+        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw')
++/* DMA DRAM Side Address High Part (AST2700) */
++#define R_DMA_DRAM_ADDR_HIGH   (0x7c / 4)
 +
-+        self.vm.launch()
-+
-+        self.wait_for_console_pattern('U-Boot 2023.10')
-+        self.wait_for_console_pattern('## Loading kernel from FIT Image')
-+        self.wait_for_console_pattern('Starting kernel ...')
-+        self.wait_for_console_pattern("systemd[1]: Hostname set to")
-+
-     @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
+ /* DMA Control/Status Register */
+ #define R_DMA_CTRL        (0x80 / 4)
+ #define   DMA_CTRL_REQUEST      (1 << 31)
+@@ -187,6 +190,7 @@
+  *   0x1FFFFFF: 32M bytes
+  */
+ #define DMA_DRAM_ADDR(asc, val)   ((val) & (asc)->dma_dram_mask)
++#define DMA_DRAM_ADDR_HIGH(val)   ((val) & 0xf)
+ #define DMA_FLASH_ADDR(asc, val)  ((val) & (asc)->dma_flash_mask)
+ #define DMA_LENGTH(val)         ((val) & 0x01FFFFFF)
  
-     def test_arm_ast2500_evb_sdk(self):
-@@ -375,3 +386,54 @@ def test_arm_ast2600_evb_sdk(self):
-              'i2c i2c-5: new_device: Instantiated device ds1307 at 0x32');
-         year = time.strftime("%Y")
-         self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
+@@ -207,6 +211,7 @@ static const AspeedSegments aspeed_2500_spi2_segments[];
+ #define ASPEED_SMC_FEATURE_DMA       0x1
+ #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
+ #define ASPEED_SMC_FEATURE_WDT_CONTROL 0x4
++#define ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH 0x08
+ 
+ static inline bool aspeed_smc_has_dma(const AspeedSMCClass *asc)
+ {
+@@ -218,6 +223,11 @@ static inline bool aspeed_smc_has_wdt_control(const AspeedSMCClass *asc)
+     return !!(asc->features & ASPEED_SMC_FEATURE_WDT_CONTROL);
+ }
+ 
++static inline bool aspeed_smc_has_dma64(const AspeedSMCClass *asc)
++{
++    return !!(asc->features & ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH);
++}
 +
-+    def test_aarch64_ast2700_evb_sdk_v09_01(self):
-+        """
-+        :avocado: tags=arch:aarch64
-+        :avocado: tags=machine:ast2700-evb
-+        """
+ #define aspeed_smc_error(fmt, ...)                                      \
+     qemu_log_mask(LOG_GUEST_ERROR, "%s: " fmt "\n", __func__, ## __VA_ARGS__)
+ 
+@@ -747,6 +757,8 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
+         (aspeed_smc_has_dma(asc) && addr == R_DMA_CTRL) ||
+         (aspeed_smc_has_dma(asc) && addr == R_DMA_FLASH_ADDR) ||
+         (aspeed_smc_has_dma(asc) && addr == R_DMA_DRAM_ADDR) ||
++        (aspeed_smc_has_dma(asc) && aspeed_smc_has_dma64(asc) &&
++         addr == R_DMA_DRAM_ADDR_HIGH) ||
+         (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN) ||
+         (aspeed_smc_has_dma(asc) && addr == R_DMA_CHECKSUM) ||
+         (addr >= R_SEG_ADDR0 &&
+@@ -847,6 +859,12 @@ static bool aspeed_smc_inject_read_failure(AspeedSMCState *s)
+     }
+ }
+ 
++static uint64_t aspeed_smc_dma_dram_addr(AspeedSMCState *s)
++{
++    return s->regs[R_DMA_DRAM_ADDR] |
++        ((uint64_t) s->regs[R_DMA_DRAM_ADDR_HIGH] << 32);
++}
 +
-+        image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
-+                     'download/v09.01/ast2700-default-obmc.tar.gz')
-+        image_hash = 'b1cc0fd73c7650d34c9c8459a243f52a91e9e27144b8608b2645ab19461d1e07'
-+        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-+                                      algorithm='sha256')
-+        archive.extract(image_path, self.workdir)
+ static uint32_t aspeed_smc_dma_len(AspeedSMCState *s)
+ {
+     AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
+@@ -903,24 +921,34 @@ static void aspeed_smc_dma_checksum(AspeedSMCState *s)
+ 
+ static void aspeed_smc_dma_rw(AspeedSMCState *s)
+ {
++    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
++    uint64_t dma_dram_offset;
++    uint64_t dma_dram_addr;
+     MemTxResult result;
+     uint32_t dma_len;
+     uint32_t data;
+ 
+     dma_len = aspeed_smc_dma_len(s);
++    dma_dram_addr = aspeed_smc_dma_dram_addr(s);
 +
-+        num_cpu = 4
-+        image_dir = self.workdir + '/ast2700-default/'
-+        uboot_size = os.path.getsize(image_dir + 'u-boot-nodtb.bin')
-+        uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
++    if (aspeed_smc_has_dma64(asc)) {
++        dma_dram_offset = dma_dram_addr - s->dram_base;
++    } else {
++        dma_dram_offset = dma_dram_addr;
++    }
+ 
+     trace_aspeed_smc_dma_rw(s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE ?
+                             "write" : "read",
+                             s->regs[R_DMA_FLASH_ADDR],
+-                            s->regs[R_DMA_DRAM_ADDR],
++                            dma_dram_offset,
+                             dma_len);
+     while (dma_len) {
+         if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
+-            data = address_space_ldl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
++            data = address_space_ldl_le(&s->dram_as, dma_dram_offset,
+                                         MEMTXATTRS_UNSPECIFIED, &result);
+             if (result != MEMTX_OK) {
+-                aspeed_smc_error("DRAM read failed @%08x",
+-                                 s->regs[R_DMA_DRAM_ADDR]);
++                aspeed_smc_error("DRAM read failed @%" PRIx64,
++                                 dma_dram_offset);
+                 return;
+             }
+ 
+@@ -940,11 +968,11 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
+                 return;
+             }
+ 
+-            address_space_stl_le(&s->dram_as, s->regs[R_DMA_DRAM_ADDR],
++            address_space_stl_le(&s->dram_as, dma_dram_offset,
+                                  data, MEMTXATTRS_UNSPECIFIED, &result);
+             if (result != MEMTX_OK) {
+-                aspeed_smc_error("DRAM write failed @%08x",
+-                                 s->regs[R_DMA_DRAM_ADDR]);
++                aspeed_smc_error("DRAM write failed @%" PRIx64,
++                                 dma_dram_offset);
+                 return;
+             }
+         }
+@@ -953,8 +981,12 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
+          * When the DMA is on-going, the DMA registers are updated
+          * with the current working addresses and length.
+          */
++        dma_dram_offset += 4;
++        dma_dram_addr += 4;
 +
-+        load_images_list = [
-+            {
-+                'addr': '0x400000000',
-+                'file': image_dir + 'u-boot-nodtb.bin'
-+            },
-+            {
-+                'addr': str(uboot_dtb_load_addr),
-+                'file': image_dir + 'u-boot.dtb'
-+            },
-+            {
-+                'addr': '0x430000000',
-+                'file': image_dir + 'bl31.bin'
-+            },
-+            {
-+                'addr': '0x430080000',
-+                'file': image_dir + 'optee/tee-raw.bin'
-+            }
-+        ]
-+
-+        for load_image in load_images_list:
-+            addr = load_image['addr']
-+            file = load_image['file']
-+            self.vm.add_args('-device',
-+                             f'loader,force-raw=on,addr={addr},file={file}')
-+
-+        for i in range(num_cpu):
-+            self.vm.add_args('-device',
-+                             f'loader,addr=0x430000000,cpu-num={i}')
-+
-+        self.vm.add_args('-smp', str(num_cpu))
-+        self.do_test_aarch64_aspeed_sdk_start(image_dir + 'image-bmc')
-+
++        s->regs[R_DMA_DRAM_ADDR_HIGH] = dma_dram_addr >> 32;
++        s->regs[R_DMA_DRAM_ADDR] = dma_dram_addr & 0xffffffff;
+         s->regs[R_DMA_FLASH_ADDR] += 4;
+-        s->regs[R_DMA_DRAM_ADDR] += 4;
+         dma_len -= 4;
+         s->regs[R_DMA_LEN] = dma_len;
+         s->regs[R_DMA_CHECKSUM] += data;
+@@ -1107,6 +1139,9 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
+     } else if (aspeed_smc_has_dma(asc) && addr == R_DMA_LEN &&
+                aspeed_smc_dma_granted(s)) {
+         s->regs[addr] = DMA_LENGTH(value);
++    } else if (aspeed_smc_has_dma(asc) && aspeed_smc_has_dma64(asc) &&
++               addr == R_DMA_DRAM_ADDR_HIGH) {
++        s->regs[addr] = DMA_DRAM_ADDR_HIGH(value);
+     } else {
+         qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
+                       __func__, addr);
+diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
+index 2d5bd2b83d0c..7b5ad6a939e3 100644
+--- a/hw/ssi/trace-events
++++ b/hw/ssi/trace-events
+@@ -6,7 +6,7 @@ aspeed_smc_do_snoop(int cs, int index, int dummies, int data) "CS%d index:0x%x d
+ aspeed_smc_flash_write(int cs, uint64_t addr,  uint32_t size, uint64_t data, int mode) "CS%d @0x%" PRIx64 " size %u: 0x%" PRIx64" mode:%d"
+ aspeed_smc_read(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
+ aspeed_smc_dma_checksum(uint32_t addr, uint32_t data) "0x%08x: 0x%08x"
+-aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint32_t dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%08x size:0x%08x"
++aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint64_t dram_addr, uint32_t size) "%s flash:@0x%08x dram:@0x%" PRIx64 " size:0x%08x"
+ aspeed_smc_write(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" PRIx64 " size %u: 0x%" PRIx64
+ aspeed_smc_flash_select(int cs, const char *prefix) "CS%d %sselect"
+ 
 -- 
 2.45.2
 

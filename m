@@ -1,284 +1,394 @@
-Received: by 2002:a17:906:18aa:b0:a6f:6ed6:9beb with SMTP id c10csp145206ejf;
-        Fri, 14 Jun 2024 10:42:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVKXLR5/EHua6aYEh1R0cUdaoZ0ju58VciGwmb81+FUTXoD3atf5O0sMDEU6nUi3vMmuWYdZilBy+h4WvzU3LSnRbgZ2Ha9
-X-Received: by 2002:aa7:8e8e:0:b0:705:b9da:814c with SMTP id d2e1a72fcca58-705d71a6e4amr3781593b3a.23.1718386963676;
-        Fri, 14 Jun 2024 10:42:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718386963; cv=none;
+Received: by 2002:a17:906:18aa:b0:a6f:6ed6:9beb with SMTP id c10csp253865ejf;
+        Fri, 14 Jun 2024 15:01:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH1LT/pOT3VPaU1A34u66mWMgua54hLMhSEayP2eppqnnFeLpegm0AsduXXIpjVTDO3ukN1
+X-Received: by 2002:a17:90a:67c5:b0:2bd:8aca:f1e0 with SMTP id 98e67ed59e1d1-2c4db24c533mr4105836a91.19.1718402462506;
+        Fri, 14 Jun 2024 15:01:02 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1718402462; cv=pass;
         d=google.com; s=arc-20160816;
-        b=MDFJTdKBnwBvAKLxEnqNsRUDk3bVoOBx5d1onnVbuRLZKvNIV/S/7YGBc1blPUKx7q
-         nU7yvQwWRifSICBkbbUS2QyrFSvSnSzogsGB326oLfEHSdD000JaqFzzCzsixjFOcMOW
-         VA86YWUa9LuC6hX4XJVmYZy9TAyG7S/9z/0X3GU1zYcJWBZuZJ0Co7j8w41abpO1tdW/
-         3Bi3K2KIuUDkXVj/5foHgxS15vcIXQOTwp062HuuAnAgzVg05iNmb4xIrw018+0ZruXW
-         3yJqYzVaU45RHnBrYTq2nynLBHHJob+t8Xs2r7aNsBYfJ2Gq5+9Hy5ystSrAiJIg5qoS
-         t2Pw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        b=hkI+RPLxFHCVHIgwwk/MEcBL09GnXsPBn1PIP/1P1yw9O1yna4xTn0Aa4F7d7CnzHs
+         viJIHSM92g/DpQaXBh7pjOPzpMfmQQ1FSc3pgJY9EAZoygZ7eLwPsj3G/0q0cZaDxALf
+         Pq8THDCBpt0R7q7VMqzTLXHL26sMnnNlFgno0QzSYceUiovasMsUgQgGePWiWBO6hvc3
+         KLHCGJxCJbNxOruEtLJA21NBzgh/y8+fW7k63W7m1p+xG2J26JLrQp8X4EB6SKxxyIah
+         Z8CnRQZxj4/JZ2bDXMIdeT1w88B9CFnwDEk2tQoZ1aja6iIjV5LloGNDB4LPunRGh0yV
+         pkoA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:list-unsubscribe:list-subscribe
+         :list-id:precedence:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=bM1NMWKhTvBKDhiJvIABPQf7fWj9FQUyC1EGuMSIoHw=;
-        fh=CURW7o5ZafJCioKb+Vyni1oZefP6Hmc6ZpYigfXJ3l0=;
-        b=HPb8SIZIxYmrc35Kxtoak9/mgJK8hNW5tr/vdHRbdB/DXnZTeBB7/xh92RuqHOpLrE
-         u3zE8TmJw2J00jGr6n3LMWXTwQYMUSKTI+l051thctIX5sybIkdrFzIpD9iYpaBEBHaI
-         LU3b/UDp+wDGC9GlC06pG0IU/gxDRh3Y3183m1BQuk/iVvpt1I9tBgl+bL8pdbb+tBLe
-         MXiufsFdelQ8Ls1NGkZj71ah6QRJQJZI/EqsqBlA93N1aQupmOJmzN6TWIUZhCwspVvc
-         wlYiF3FylJUApgHhqxFDB1NEd74cGkKsrCkSrjnhRUd9o0b05PUR9QBEG9C6Oten3Onk
-         MwqQ==;
+        bh=gvkzE80Zx1aHM1GM+SHSE0nbTlEwUCR4IoOEEsugEgA=;
+        fh=SaL3oBmRuANBhwgCBVd++11MK0z+Zf7V6sGSeOVr3ko=;
+        b=nLXI+Z7e0Rw4iPpqSLPtwRhcPsbIxWd1dM1JpgIpEKYrhYfO1hulQfZqLGPAezBRLT
+         fOrbc/P5fnE/PVUHwNjvD+6d0L5LSNeXePOaytxJfmk4fMDu4zfejUXEzE+RFWi2LoGp
+         iImgrkb8II2MUuaTjWWQQ0JA4E8/2Y54q/2UuM+0j0H2z99kUTMl7guo6tcpI6saISoE
+         +3QBP6MQpH9l0W4CBGf4FSdHtAnklU+PL5ju1TeQvI4Tvld0mx56xHy/8jnS5bVXxM0s
+         sY3qe9/90w5ZDsqufKbjQLDmuzGrqRiLeLkVoZGEfP0HOW058NbDq04sM3iqaesx1TOx
+         ezdg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aD4RkdWp;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-705ccb86ad1sor3296331b3a.9.2024.06.14.10.42.43
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b=Hz+C7lLI;
+       arc=pass (i=1 spf=pass spfdomain=treblig.org dkim=pass dkdomain=treblig.org dmarc=pass fromdomain=treblig.org);
+       spf=pass (google.com: domain of kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
+Return-Path: <kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id d9443c01a7336-1f855e3abddsi42917305ad.110.2024.06.14.15.01.01
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 14 Jun 2024 10:42:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 14 Jun 2024 15:01:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aD4RkdWp;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718386963; x=1718991763; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=bM1NMWKhTvBKDhiJvIABPQf7fWj9FQUyC1EGuMSIoHw=;
-        b=aD4RkdWpjhBEB54xnyQ1KUAgcrFAcZDmaS+UG2e73AwE/fn7eXmCVbYPDUIZVY1FXv
-         mWJH/0U9nC+5D/x29s/jtLnBYwXhD4pgqcdtj/8sdW1PbYR8RuJPXeLBT9wjggLAWK6O
-         5u/7OGtoi5Qxc3spBkwzRSXB09nW9unVGzqlq2OU3u0Htpx4jnLa5CQBUyTNM/wbfZQH
-         vASh3VBZOKWwuHfaoXNnu83FgawGC7YscgmCsCuT/k3+nPPT3JCDPWLjYXbEKmNa1jaK
-         /fvkVxjKZ9DWFvR5KbXsTlwK4+s6F72rUpQjafFKU2nxp2n3C3xV2oHPnAfx7g/v98aL
-         Z/Qg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718386963; x=1718991763;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bM1NMWKhTvBKDhiJvIABPQf7fWj9FQUyC1EGuMSIoHw=;
-        b=vJ0eg2XPWVUnoND09Jqs0AQUHMofoQWchc7pI37R+ffl/NG3cuqABQTuvIcFMlQ7/5
-         mYgl3WBs8Uc5YKAIbxRnNMv7vvBNagp02QGE5HSn173ILBr/nJGFIeIHWM3enQq2Fr4m
-         oFbIf3gY8BX6djsD5Ea4LzdI5z2fWUVMnKX7YTvpze6sl1cq4EKC5JO32UHfnJiGwTl9
-         h4LrbDfvF4lKp1I/jK2VyhqsDCkvk/gbFST2Kg2k4V48kJnaNi98duO7NOPDhGSOX0Cw
-         LeSRcUdKNbpbfOLlkZuRe/DMzSBddVWzaTurGtD6AUNE0yUcJdmw6wJdLWMTyeEvCP5w
-         OwJA==
-X-Forwarded-Encrypted: i=1; AJvYcCVxIiMp5swAKxsMNJoe8GPd1s7wZIOjSBVSNbu2RdzVRsbOkYFK9t0rQ5uXyJZTcw7gSdMzesxmLXEgxrIc4e3QPdaLqxYw
-X-Gm-Message-State: AOJu0YwAKrrG3xXnaU9MgHYjXIXvQjTGsQsfdAghMiKJkBvM5hWsl+SS
-	imKuQ6n6UETF6P/+bQNuGiFVY/3Ahpqd8goSdRrv/4gzjzmV6iKKe034zk09yzuaN/Z/ip7Egv1
-	vYPQBhA==
-X-Google-Smtp-Source: AGHT+IEoSaj3uBMyNJHa+eM4H4IxiceSs8RIwrbyXlxmUTZWZTP9MCMC60FWMm4vkRSUxTEM/gfVyg==
-X-Received: by 2002:a05:6a20:6a1e:b0:1b6:ed32:4613 with SMTP id adf61e73a8af0-1bae7e340ecmr4153548637.2.1718386963038;
-        Fri, 14 Jun 2024 10:42:43 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from ?IPV6:2604:3d08:9384:1d00:5b09:8db7:b002:cf61? ([2604:3d08:9384:1d00:5b09:8db7:b002:cf61])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-705ccb3d231sm3305580b3a.112.2024.06.14.10.42.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 14 Jun 2024 10:42:42 -0700 (PDT)
-Message-ID: <777e1b13-9a4f-4c32-9ff7-9cedf7417695@linaro.org>
-Date: Fri, 14 Jun 2024 10:42:41 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b=Hz+C7lLI;
+       arc=pass (i=1 spf=pass spfdomain=treblig.org dkim=pass dkdomain=treblig.org dmarc=pass fromdomain=treblig.org);
+       spf=pass (google.com: domain of kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 9BE0B285674
+	for <alex.bennee@linaro.org>; Fri, 14 Jun 2024 22:01:00 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 066FC18413E;
+	Fri, 14 Jun 2024 22:00:48 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=treblig.org header.i=@treblig.org header.b="Hz+C7lLI"
+Received: from mx.treblig.org (mx.treblig.org [46.235.229.95])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A6789184126
+	for <kvm@vger.kernel.org>; Fri, 14 Jun 2024 22:00:44 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=46.235.229.95
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1718402447; cv=none; b=Li4xd+Z4FCQqTbBXZg/fligaPOA8O68uv8q68qKQ8PJc8fZZOE7IJ3Wdv+0OxiI63h8VB/F68oPYhrUiKqzBnT42v+N6R4QvXqFJBoGGXjaMJxvt5eFCekoid46TM44O21nRjfPkfvwfiMitMTI6AE3njGsLIMRf84ioNZoInVA=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1718402447; c=relaxed/simple;
+	bh=yaVkvuEhQePrjuOoUNvSpBxxjHjgzxzh4Lf9OmY2FYs=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=jC1023WOCyCVzCLXfTToTsOgBEerkHch1MPfCU7QaJNjHP+O7ozf4XeUg8s9lb0p7PqesiKs0vBlj3SiN64SoDo0r6ZPoVDM2y5Hz7xVWqE44+8zUmESp2Nj2X/iE/MAgLcsx6Utiq65bf82C2EqFLrJvHIJCRdLcbR0bKyMyfY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=treblig.org; spf=pass smtp.mailfrom=treblig.org; dkim=pass (2048-bit key) header.d=treblig.org header.i=@treblig.org header.b=Hz+C7lLI; arc=none smtp.client-ip=46.235.229.95
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=treblig.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=treblig.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
+	; s=bytemarkmx; h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
+	:Subject; bh=gvkzE80Zx1aHM1GM+SHSE0nbTlEwUCR4IoOEEsugEgA=; b=Hz+C7lLIw1mUgWdS
+	blI/UuhUPxrfhFZEl6eH3BIxRdwl3hntBxoMHNlCc/ZtJ2yNqlrdGYsDm/4Vlbqo0Jtl0AaDoZRkR
+	nY0oLejtrrIE8Y9V+lwWdITLq9Kmr1KK7MZiCrlcS3EgxqRpBdnO72bAePcTZ8aXgegupgtjxzPGJ
+	BgQkddXImomxqWUF3O1pszjp+Z9vwzsyUmO3dE9S2yRr2KilDhnCvVGkGFZNqbUriRhpg169ecIdg
+	KpTd+xHzQiiWns/q97VAgBAUQptVeSFWIOVlgnly/b6O76KmBxqiNDMbYrTZUoWUr50eO0NcTH/Fu
+	SbH/+/OSU0tzx9SMkg==;
+Received: from dg by mx.treblig.org with local (Exim 4.96)
+	(envelope-from <dg@treblig.org>)
+	id 1sIEyJ-006LYG-2n;
+	Fri, 14 Jun 2024 22:00:35 +0000
+Date: Fri, 14 Jun 2024 22:00:35 +0000
+From: "Dr. David Alan Gilbert" <dave@treblig.org>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Mark Burton <mburton@qti.qualcomm.com>, qemu-s390x@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+	Laurent Vivier <lvivier@redhat.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Alexandre Iooss <erdnaxe@crans.org>, qemu-arm@nongnu.org,
+	Alexander Graf <agraf@csgraf.de>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Marco Liebel <mliebel@qti.qualcomm.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>, qemu-ppc@nongnu.org,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Cameron Esfahani <dirty@apple.com>,
+	Jamie Iles <quic_jiles@quicinc.com>,
+	Richard Henderson <richard.henderson@linaro.org>
 Subject: Re: [PATCH 9/9] contrib/plugins: add ips plugin example for cost
  modeling
-Content-Language: en-US
-To: "Dr. David Alan Gilbert" <dave@treblig.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mark Burton <mburton@qti.qualcomm.com>, qemu-s390x@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- Laurent Vivier <lvivier@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Alexandre Iooss <erdnaxe@crans.org>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>, Nicholas Piggin <npiggin@gmail.com>,
- Marco Liebel <mliebel@qti.qualcomm.com>, Thomas Huth <thuth@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, qemu-ppc@nongnu.org,
- Mahmoud Mandour <ma.mandourr@gmail.com>, Cameron Esfahani <dirty@apple.com>,
- Jamie Iles <quic_jiles@quicinc.com>,
- Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <Zmy9g1U1uP1Vhx9N@gallifrey>
 References: <20240612153508.1532940-1-alex.bennee@linaro.org>
  <20240612153508.1532940-10-alex.bennee@linaro.org>
  <ZmoM2Sac97PdXWcC@gallifrey>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <ZmoM2Sac97PdXWcC@gallifrey>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: fG9yuLbD0oOS
+ <777e1b13-9a4f-4c32-9ff7-9cedf7417695@linaro.org>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <777e1b13-9a4f-4c32-9ff7-9cedf7417695@linaro.org>
+X-Chocolate: 70 percent or better cocoa solids preferably
+X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
+X-Uptime: 21:54:02 up 37 days,  9:08,  1 user,  load average: 0.00, 0.00, 0.00
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-TUID: EvRrGl9Ehbrr
 
-SGkgRGF2ZSwNCg0KT24gNi8xMi8yNCAxNDowMiwgRHIuIERhdmlkIEFsYW4gR2lsYmVydCB3
-cm90ZToNCj4gKiBBbGV4IEJlbm7DqWUgKGFsZXguYmVubmVlQGxpbmFyby5vcmcpIHdyb3Rl
-Og0KPj4gRnJvbTogUGllcnJpY2sgQm91dmllciA8cGllcnJpY2suYm91dmllckBsaW5hcm8u
-b3JnPg0KPj4NCj4+IFRoaXMgcGx1Z2luIHVzZXMgdGhlIG5ldyB0aW1lIGNvbnRyb2wgaW50
-ZXJmYWNlIHRvIG1ha2UgZGVjaXNpb25zDQo+PiBhYm91dCB0aGUgc3RhdGUgb2YgdGltZSBk
-dXJpbmcgdGhlIGVtdWxhdGlvbi4gVGhlIGFsZ29yaXRobSBpcw0KPj4gY3VycmVudGx5IHZl
-cnkgc2ltcGxlLiBUaGUgdXNlciBzcGVjaWZpZXMgYW4gaXBzIHJhdGUgd2hpY2ggYXBwbGll
-cw0KPj4gcGVyIGNvcmUuIElmIHRoZSBjb3JlIHJ1bnMgYWhlYWQgb2YgaXRzIGFsbG9jYXRl
-ZCBleGVjdXRpb24gdGltZSB0aGUNCj4+IHBsdWdpbiBzbGVlcHMgZm9yIGEgYml0IHRvIGxl
-dCByZWFsIHRpbWUgY2F0Y2ggdXAuIEVpdGhlciB3YXkgdGltZSBpcw0KPj4gdXBkYXRlZCBm
-b3IgdGhlIGVtdWxhdGlvbiBhcyBhIGZ1bmN0aW9uIG9mIHRvdGFsIGV4ZWN1dGVkIGluc3Ry
-dWN0aW9ucw0KPj4gd2l0aCBzb21lIGFkanVzdG1lbnRzIGZvciBjb3JlcyB0aGF0IGlkbGUu
-DQo+IA0KPiBBIGZldyByYW5kb20gdGhvdWdodHM6DQo+ICAgIGEpIEFyZSB0aGVyZSBhbnkg
-ZGVmaW5pdGlvbnMgb2Ygd2hhdCBhIHBsdWdpbiB0aGF0IGNvbnRyb2xzIHRpbWUNCj4gICAg
-ICAgc2hvdWxkIGRvIHdpdGggYSBsaXZlIG1pZ3JhdGlvbj8NCg0KSXQncyBub3Qgc29tZXRo
-aW5nIHRoYXQgd2FzIGNvbnNpZGVyZWQgYXMgcGFydCBvZiB0aGlzIHdvcmsuDQoNCj4gICAg
-YikgVGhlIHNsZWVwIGluIG1pZ3JhdGlvbi9kaXJ0eXJhdGUuYyBwb2ludHMgb3V0IGdfdXNs
-ZWVwIG1pZ2h0DQo+ICAgICAgIHNsZWVwIGZvciBsb25nZXIsIHNvIHJlYWRzIHRoZSBhY3R1
-YWwgd2FsbCBjbG9jayB0aW1lIHRvDQo+ICAgICAgIGZpZ3VyZSBvdXQgYSBuZXcgJ25vdycu
-DQoNClRoZSBjdXJyZW50IEFQSSBtZW50aW9ucyB0aW1lIHN0YXJ0cyBhdCAwIGZyb20gcWVt
-dSBzdGFydHVwLiBNYXliZSB3ZSANCmNvdWxkIGNvbnNpZGVyIGluIHRoZSBmdXR1cmUgdG8g
-Y2hhbmdlIHRoaXMgYmVoYXZpb3IgdG8gcmV0cmlldmUgdGltZSANCmZyb20gYW4gZXhpc3Rp
-bmcgbWlncmF0ZWQgbWFjaGluZS4NCg0KPiAgICBjKSBBIGZ1biB0aGluZyB0byBkbyB3aXRo
-IHRoaXMgd291bGQgYmUgdG8gZm9sbG93IGFuIGV4dGVybmFsIHNpbXVsYXRpb24NCj4gICAg
-ICAgb3IgMm5kIHFlbXUsIHRyeWluZyB0byBrZWVwIHRoZSB0d28gZnJvbSBydW5uaW5nIHRv
-byBmYXIgcGFzdA0KPiAgICAgICBlYWNoIG90aGVyLg0KPiANCg0KQmFzaWNhbGx5LCB0byBz
-bG93IHRoZSBmaXJzdCBvbmUsIHdhaXRpbmcgZm9yIHRoZSByZXBsaWNhdGVkIG9uZSB0byAN
-CmNhdGNoIHVwPw0KDQo+IERhdmUgPg0KPj4gRXhhbXBsZXMNCj4+IC0tLS0tLS0tDQo+Pg0K
-Pj4gU2xvdyBkb3duIGV4ZWN1dGlvbiBvZiAvYmluL3RydWU6DQo+PiAkIG51bV9pbnNuPSQo
-Li9idWlsZC9xZW11LXg4Nl82NCAtcGx1Z2luIC4vYnVpbGQvdGVzdHMvcGx1Z2luL2xpYmlu
-c24uc28gLWQgcGx1Z2luIC9iaW4vdHJ1ZSB8JiBncmVwIHRvdGFsIHwgc2VkIC1lICdzLy4q
-OiAvLycpDQo+PiAkIHRpbWUgLi9idWlsZC9xZW11LXg4Nl82NCAtcGx1Z2luIC4vYnVpbGQv
-Y29udHJpYi9wbHVnaW5zL2xpYmlwcy5zbyxpcHM9JCgoJG51bV9pbnNuLzQpKSAvYmluL3Ry
-dWUNCj4+IHJlYWwgNC4wMDBzDQo+Pg0KPj4gQm9vdCBhIExpbnV4IGtlcm5lbCBzaW11bGF0
-aW5nIGEgMjUwTUh6IGNwdToNCj4+ICQgL2J1aWxkL3FlbXUtc3lzdGVtLXg4Nl82NCAta2Vy
-bmVsIC9ib290L3ZtbGludXotNi4xLjAtMjEtYW1kNjQgLWFwcGVuZCAiY29uc29sZT10dHlT
-MCIgLXBsdWdpbiAuL2J1aWxkL2NvbnRyaWIvcGx1Z2lucy9saWJpcHMuc28saXBzPSQoKDI1
-MCoxMDAwKjEwMDApKSAtc21wIDEgLW0gNTEyDQo+PiBjaGVjayB0aW1lIHVudGlsIGtlcm5l
-bCBwYW5pYyBvbiBzZXJpYWwwDQo+Pg0KPj4gVGVzdGVkIGluIHN5c3RlbSBtb2RlIGJ5IGJv
-b3RpbmcgYSBmdWxsIGRlYmlhbiBzeXN0ZW0sIGFuZCB1c2luZzoNCj4+ICQgc3lzYmVuY2gg
-Y3B1IHJ1bg0KPj4gUGVyZm9ybWFuY2UgZGVjcmVhc2UgbGluZWFybHkgd2l0aCB0aGUgZ2l2
-ZW4gbnVtYmVyIG9mIGlwcy4NCj4+DQo+PiBTaWduZWQtb2ZmLWJ5OiBQaWVycmljayBCb3V2
-aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+DQo+PiBNZXNzYWdlLUlkOiA8MjAy
-NDA1MzAyMjA2MTAuMTI0NTQyNC03LXBpZXJyaWNrLmJvdXZpZXJAbGluYXJvLm9yZz4NCj4+
-IC0tLQ0KPj4gICBjb250cmliL3BsdWdpbnMvaXBzLmMgICAgfCAxNjQgKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrDQo+PiAgIGNvbnRyaWIvcGx1Z2lucy9NYWtl
-ZmlsZSB8ICAgMSArDQo+PiAgIDIgZmlsZXMgY2hhbmdlZCwgMTY1IGluc2VydGlvbnMoKykN
-Cj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGNvbnRyaWIvcGx1Z2lucy9pcHMuYw0KPj4NCj4+
-IGRpZmYgLS1naXQgYS9jb250cmliL3BsdWdpbnMvaXBzLmMgYi9jb250cmliL3BsdWdpbnMv
-aXBzLmMNCj4+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0DQo+PiBpbmRleCAwMDAwMDAwMDAwLi5k
-Yjc3NzI5MjY0DQo+PiAtLS0gL2Rldi9udWxsDQo+PiArKysgYi9jb250cmliL3BsdWdpbnMv
-aXBzLmMNCj4+IEBAIC0wLDAgKzEsMTY0IEBADQo+PiArLyoNCj4+ICsgKiBpcHMgcmF0ZSBs
-aW1pdGluZyBwbHVnaW4uDQo+PiArICoNCj4+ICsgKiBUaGlzIHBsdWdpbiBjYW4gYmUgdXNl
-ZCB0byByZXN0cmljdCB0aGUgZXhlY3V0aW9uIG9mIGEgc3lzdGVtIHRvIGENCj4+ICsgKiBw
-YXJ0aWN1bGFyIG51bWJlciBvZiBJbnN0cnVjdGlvbnMgUGVyIFNlY29uZCAoaXBzKS4gVGhp
-cyBjb250cm9scw0KPj4gKyAqIHRpbWUgYXMgc2VlbiBieSB0aGUgZ3Vlc3Qgc28gd2hpbGUg
-d2FsbC1jbG9jayB0aW1lIG1heSBiZSBsb25nZXINCj4+ICsgKiBmcm9tIHRoZSBndWVzdHMg
-cG9pbnQgb2YgdmlldyB0aW1lIHdpbGwgcGFzcyBhdCB0aGUgbm9ybWFsIHJhdGUuDQo+PiAr
-ICoNCj4+ICsgKiBUaGlzIHVzZXMgdGhlIG5ldyBwbHVnaW4gQVBJIHdoaWNoIGFsbG93cyB0
-aGUgcGx1Z2luIHRvIGNvbnRyb2wNCj4+ICsgKiBzeXN0ZW0gdGltZS4NCj4+ICsgKg0KPj4g
-KyAqIENvcHlyaWdodCAoYykgMjAyMyBMaW5hcm8gTHRkDQo+PiArICoNCj4+ICsgKiBTUERY
-LUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMC1vci1sYXRlcg0KPj4gKyAqLw0KPj4gKw0K
-Pj4gKyNpbmNsdWRlIDxzdGRpby5oPg0KPj4gKyNpbmNsdWRlIDxnbGliLmg+DQo+PiArI2lu
-Y2x1ZGUgPHFlbXUtcGx1Z2luLmg+DQo+PiArDQo+PiArUUVNVV9QTFVHSU5fRVhQT1JUIGlu
-dCBxZW11X3BsdWdpbl92ZXJzaW9uID0gUUVNVV9QTFVHSU5fVkVSU0lPTjsNCj4+ICsNCj4+
-ICsvKiBob3cgbWFueSB0aW1lcyBkbyB3ZSB1cGRhdGUgdGltZSBwZXIgc2VjICovDQo+PiAr
-I2RlZmluZSBOVU1fVElNRV9VUERBVEVfUEVSX1NFQyAxMA0KPj4gKyNkZWZpbmUgTlNFQ19J
-Tl9PTkVfU0VDICgxMDAwICogMTAwMCAqIDEwMDApDQo+PiArDQo+PiArc3RhdGljIEdNdXRl
-eCBnbG9iYWxfc3RhdGVfbG9jazsNCj4+ICsNCj4+ICtzdGF0aWMgdWludDY0X3QgbWF4X2lu
-c25fcGVyX3NlY29uZCA9IDEwMDAgKiAxMDAwICogMTAwMDsgLyogaXBzIHBlciBjb3JlLCBw
-ZXIgc2Vjb25kICovDQo+PiArc3RhdGljIHVpbnQ2NF90IG1heF9pbnNuX3Blcl9xdWFudHVt
-OyAvKiB0cmFwIGV2ZXJ5IE4gaW5zdHJ1Y3Rpb25zICovDQo+PiArc3RhdGljIGludDY0X3Qg
-dmlydHVhbF90aW1lX25zOyAvKiBsYXN0IHNldCB2aXJ0dWFsIHRpbWUgKi8NCj4+ICsNCj4+
-ICtzdGF0aWMgY29uc3Qgdm9pZCAqdGltZV9oYW5kbGU7DQo+PiArDQo+PiArdHlwZWRlZiBz
-dHJ1Y3Qgew0KPj4gKyAgICB1aW50NjRfdCB0b3RhbF9pbnNuOw0KPj4gKyAgICB1aW50NjRf
-dCBxdWFudHVtX2luc247IC8qIGluc24gaW4gbGFzdCBxdWFudHVtICovDQo+PiArICAgIGlu
-dDY0X3QgbGFzdF9xdWFudHVtX3RpbWU7IC8qIHRpbWUgd2hlbiBsYXN0IHF1YW50dW0gc3Rh
-cnRlZCAqLw0KPj4gK30gdkNQVVRpbWU7DQo+PiArDQo+PiArc3RydWN0IHFlbXVfcGx1Z2lu
-X3Njb3JlYm9hcmQgKnZjcHVzOw0KPj4gKw0KPj4gKy8qIHJldHVybiBlcG9jaCB0aW1lIGlu
-IG5zICovDQo+PiArc3RhdGljIGludDY0X3Qgbm93X25zKHZvaWQpDQo+PiArew0KPj4gKyAg
-ICByZXR1cm4gZ19nZXRfcmVhbF90aW1lKCkgKiAxMDAwOw0KPj4gK30NCj4+ICsNCj4+ICtz
-dGF0aWMgdWludDY0X3QgbnVtX2luc25fZHVyaW5nKGludDY0X3QgZWxhcHNlZF9ucykNCj4+
-ICt7DQo+PiArICAgIGRvdWJsZSBudW1fc2VjcyA9IGVsYXBzZWRfbnMgLyAoZG91YmxlKSBO
-U0VDX0lOX09ORV9TRUM7DQo+PiArICAgIHJldHVybiBudW1fc2VjcyAqIChkb3VibGUpIG1h
-eF9pbnNuX3Blcl9zZWNvbmQ7DQo+PiArfQ0KPj4gKw0KPj4gK3N0YXRpYyBpbnQ2NF90IHRp
-bWVfZm9yX2luc24odWludDY0X3QgbnVtX2luc24pDQo+PiArew0KPj4gKyAgICBkb3VibGUg
-bnVtX3NlY3MgPSAoZG91YmxlKSBudW1faW5zbiAvIChkb3VibGUpIG1heF9pbnNuX3Blcl9z
-ZWNvbmQ7DQo+PiArICAgIHJldHVybiBudW1fc2VjcyAqIChkb3VibGUpIE5TRUNfSU5fT05F
-X1NFQzsNCj4+ICt9DQo+PiArDQo+PiArc3RhdGljIHZvaWQgdXBkYXRlX3N5c3RlbV90aW1l
-KHZDUFVUaW1lICp2Y3B1KQ0KPj4gK3sNCj4+ICsgICAgaW50NjRfdCBlbGFwc2VkX25zID0g
-bm93X25zKCkgLSB2Y3B1LT5sYXN0X3F1YW50dW1fdGltZTsNCj4+ICsgICAgdWludDY0X3Qg
-bWF4X2luc24gPSBudW1faW5zbl9kdXJpbmcoZWxhcHNlZF9ucyk7DQo+PiArDQo+PiArICAg
-IGlmICh2Y3B1LT5xdWFudHVtX2luc24gPj0gbWF4X2luc24pIHsNCj4+ICsgICAgICAgIC8q
-IHRoaXMgdmNwdSByYW4gZmFzdGVyIHRoYW4gZXhwZWN0ZWQsIHNvIGl0IGhhcyB0byBzbGVl
-cCAqLw0KPj4gKyAgICAgICAgdWludDY0X3QgaW5zbl9hZHZhbmNlID0gdmNwdS0+cXVhbnR1
-bV9pbnNuIC0gbWF4X2luc247DQo+PiArICAgICAgICB1aW50NjRfdCB0aW1lX2FkdmFuY2Vf
-bnMgPSB0aW1lX2Zvcl9pbnNuKGluc25fYWR2YW5jZSk7DQo+PiArICAgICAgICBpbnQ2NF90
-IHNsZWVwX3VzID0gdGltZV9hZHZhbmNlX25zIC8gMTAwMDsNCj4+ICsgICAgICAgIGdfdXNs
-ZWVwKHNsZWVwX3VzKTsNCj4+ICsgICAgfQ0KPj4gKw0KPj4gKyAgICB2Y3B1LT50b3RhbF9p
-bnNuICs9IHZjcHUtPnF1YW50dW1faW5zbjsNCj4+ICsgICAgdmNwdS0+cXVhbnR1bV9pbnNu
-ID0gMDsNCj4+ICsgICAgdmNwdS0+bGFzdF9xdWFudHVtX3RpbWUgPSBub3dfbnMoKTsNCj4+
-ICsNCj4+ICsgICAgLyogYmFzZWQgb24gdG90YWwgbnVtYmVyIG9mIGluc3RydWN0aW9ucywg
-d2hhdCBzaG91bGQgYmUgdGhlIG5ldyB0aW1lPyAqLw0KPj4gKyAgICBpbnQ2NF90IG5ld192
-aXJ0dWFsX3RpbWUgPSB0aW1lX2Zvcl9pbnNuKHZjcHUtPnRvdGFsX2luc24pOw0KPj4gKw0K
-Pj4gKyAgICBnX211dGV4X2xvY2soJmdsb2JhbF9zdGF0ZV9sb2NrKTsNCj4+ICsNCj4+ICsg
-ICAgLyogVGltZSBvbmx5IG1vdmVzIGZvcndhcmQuIEFub3RoZXIgdmNwdSBtaWdodCBoYXZl
-IHVwZGF0ZWQgaXQgYWxyZWFkeS4gKi8NCj4+ICsgICAgaWYgKG5ld192aXJ0dWFsX3RpbWUg
-PiB2aXJ0dWFsX3RpbWVfbnMpIHsNCj4+ICsgICAgICAgIHFlbXVfcGx1Z2luX3VwZGF0ZV9u
-cyh0aW1lX2hhbmRsZSwgbmV3X3ZpcnR1YWxfdGltZSk7DQo+PiArICAgICAgICB2aXJ0dWFs
-X3RpbWVfbnMgPSBuZXdfdmlydHVhbF90aW1lOw0KPj4gKyAgICB9DQo+PiArDQo+PiArICAg
-IGdfbXV0ZXhfdW5sb2NrKCZnbG9iYWxfc3RhdGVfbG9jayk7DQo+PiArfQ0KPj4gKw0KPj4g
-K3N0YXRpYyB2b2lkIHZjcHVfaW5pdChxZW11X3BsdWdpbl9pZF90IGlkLCB1bnNpZ25lZCBp
-bnQgY3B1X2luZGV4KQ0KPj4gK3sNCj4+ICsgICAgdkNQVVRpbWUgKnZjcHUgPSBxZW11X3Bs
-dWdpbl9zY29yZWJvYXJkX2ZpbmQodmNwdXMsIGNwdV9pbmRleCk7DQo+PiArICAgIHZjcHUt
-PnRvdGFsX2luc24gPSAwOw0KPj4gKyAgICB2Y3B1LT5xdWFudHVtX2luc24gPSAwOw0KPj4g
-KyAgICB2Y3B1LT5sYXN0X3F1YW50dW1fdGltZSA9IG5vd19ucygpOw0KPj4gK30NCj4+ICsN
-Cj4+ICtzdGF0aWMgdm9pZCB2Y3B1X2V4aXQocWVtdV9wbHVnaW5faWRfdCBpZCwgdW5zaWdu
-ZWQgaW50IGNwdV9pbmRleCkNCj4+ICt7DQo+PiArICAgIHZDUFVUaW1lICp2Y3B1ID0gcWVt
-dV9wbHVnaW5fc2NvcmVib2FyZF9maW5kKHZjcHVzLCBjcHVfaW5kZXgpOw0KPj4gKyAgICB1
-cGRhdGVfc3lzdGVtX3RpbWUodmNwdSk7DQo+PiArfQ0KPj4gKw0KPj4gK3N0YXRpYyB2b2lk
-IGV2ZXJ5X3F1YW50dW1faW5zbih1bnNpZ25lZCBpbnQgY3B1X2luZGV4LCB2b2lkICp1ZGF0
-YSkNCj4+ICt7DQo+PiArICAgIHZDUFVUaW1lICp2Y3B1ID0gcWVtdV9wbHVnaW5fc2NvcmVi
-b2FyZF9maW5kKHZjcHVzLCBjcHVfaW5kZXgpOw0KPj4gKyAgICBnX2Fzc2VydCh2Y3B1LT5x
-dWFudHVtX2luc24gPj0gbWF4X2luc25fcGVyX3F1YW50dW0pOw0KPj4gKyAgICB1cGRhdGVf
-c3lzdGVtX3RpbWUodmNwdSk7DQo+PiArfQ0KPj4gKw0KPj4gK3N0YXRpYyB2b2lkIHZjcHVf
-dGJfdHJhbnMocWVtdV9wbHVnaW5faWRfdCBpZCwgc3RydWN0IHFlbXVfcGx1Z2luX3RiICp0
-YikNCj4+ICt7DQo+PiArICAgIHNpemVfdCBuX2luc25zID0gcWVtdV9wbHVnaW5fdGJfbl9p
-bnNucyh0Yik7DQo+PiArICAgIHFlbXVfcGx1Z2luX3U2NCBxdWFudHVtX2luc24gPQ0KPj4g
-KyAgICAgICAgcWVtdV9wbHVnaW5fc2NvcmVib2FyZF91NjRfaW5fc3RydWN0KHZjcHVzLCB2
-Q1BVVGltZSwgcXVhbnR1bV9pbnNuKTsNCj4+ICsgICAgLyogY291bnQgKGFuZCBldmVudHVh
-bGx5IHRyYXApIG9uY2UgcGVyIHRiICovDQo+PiArICAgIHFlbXVfcGx1Z2luX3JlZ2lzdGVy
-X3ZjcHVfdGJfZXhlY19pbmxpbmVfcGVyX3ZjcHUoDQo+PiArICAgICAgICB0YiwgUUVNVV9Q
-TFVHSU5fSU5MSU5FX0FERF9VNjQsIHF1YW50dW1faW5zbiwgbl9pbnNucyk7DQo+PiArICAg
-IHFlbXVfcGx1Z2luX3JlZ2lzdGVyX3ZjcHVfdGJfZXhlY19jb25kX2NiKA0KPj4gKyAgICAg
-ICAgdGIsIGV2ZXJ5X3F1YW50dW1faW5zbiwNCj4+ICsgICAgICAgIFFFTVVfUExVR0lOX0NC
-X05PX1JFR1MsIFFFTVVfUExVR0lOX0NPTkRfR0UsDQo+PiArICAgICAgICBxdWFudHVtX2lu
-c24sIG1heF9pbnNuX3Blcl9xdWFudHVtLCBOVUxMKTsNCj4+ICt9DQo+PiArDQo+PiArc3Rh
-dGljIHZvaWQgcGx1Z2luX2V4aXQocWVtdV9wbHVnaW5faWRfdCBpZCwgdm9pZCAqdWRhdGEp
-DQo+PiArew0KPj4gKyAgICBxZW11X3BsdWdpbl9zY29yZWJvYXJkX2ZyZWUodmNwdXMpOw0K
-Pj4gK30NCj4+ICsNCj4+ICtRRU1VX1BMVUdJTl9FWFBPUlQgaW50IHFlbXVfcGx1Z2luX2lu
-c3RhbGwocWVtdV9wbHVnaW5faWRfdCBpZCwNCj4+ICsgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgY29uc3QgcWVtdV9pbmZvX3QgKmluZm8sIGludCBhcmdj
-LA0KPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjaGFy
-ICoqYXJndikNCj4+ICt7DQo+PiArICAgIGZvciAoaW50IGkgPSAwOyBpIDwgYXJnYzsgaSsr
-KSB7DQo+PiArICAgICAgICBjaGFyICpvcHQgPSBhcmd2W2ldOw0KPj4gKyAgICAgICAgZ19h
-dXRvKEdTdHJ2KSB0b2tlbnMgPSBnX3N0cnNwbGl0KG9wdCwgIj0iLCAyKTsNCj4+ICsgICAg
-ICAgIGlmIChnX3N0cmNtcDAodG9rZW5zWzBdLCAiaXBzIikgPT0gMCkgew0KPj4gKyAgICAg
-ICAgICAgIG1heF9pbnNuX3Blcl9zZWNvbmQgPSBnX2FzY2lpX3N0cnRvdWxsKHRva2Vuc1sx
-XSwgTlVMTCwgMTApOw0KPj4gKyAgICAgICAgICAgIGlmICghbWF4X2luc25fcGVyX3NlY29u
-ZCAmJiBlcnJubykgew0KPj4gKyAgICAgICAgICAgICAgICBmcHJpbnRmKHN0ZGVyciwgIiVz
-OiBjb3VsZG4ndCBwYXJzZSAlcyAoJXMpXG4iLA0KPj4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgIF9fZnVuY19fLCB0b2tlbnNbMV0sIGdfc3RyZXJyb3IoZXJybm8pKTsNCj4+ICsgICAg
-ICAgICAgICAgICAgcmV0dXJuIC0xOw0KPj4gKyAgICAgICAgICAgIH0NCj4+ICsgICAgICAg
-IH0gZWxzZSB7DQo+PiArICAgICAgICAgICAgZnByaW50ZihzdGRlcnIsICJvcHRpb24gcGFy
-c2luZyBmYWlsZWQ6ICVzXG4iLCBvcHQpOw0KPj4gKyAgICAgICAgICAgIHJldHVybiAtMTsN
-Cj4+ICsgICAgICAgIH0NCj4+ICsgICAgfQ0KPj4gKw0KPj4gKyAgICB2Y3B1cyA9IHFlbXVf
-cGx1Z2luX3Njb3JlYm9hcmRfbmV3KHNpemVvZih2Q1BVVGltZSkpOw0KPj4gKyAgICBtYXhf
-aW5zbl9wZXJfcXVhbnR1bSA9IG1heF9pbnNuX3Blcl9zZWNvbmQgLyBOVU1fVElNRV9VUERB
-VEVfUEVSX1NFQzsNCj4+ICsNCj4+ICsgICAgdGltZV9oYW5kbGUgPSBxZW11X3BsdWdpbl9y
-ZXF1ZXN0X3RpbWVfY29udHJvbCgpOw0KPj4gKyAgICBnX2Fzc2VydCh0aW1lX2hhbmRsZSk7
-DQo+PiArDQo+PiArICAgIHFlbXVfcGx1Z2luX3JlZ2lzdGVyX3ZjcHVfdGJfdHJhbnNfY2Io
-aWQsIHZjcHVfdGJfdHJhbnMpOw0KPj4gKyAgICBxZW11X3BsdWdpbl9yZWdpc3Rlcl92Y3B1
-X2luaXRfY2IoaWQsIHZjcHVfaW5pdCk7DQo+PiArICAgIHFlbXVfcGx1Z2luX3JlZ2lzdGVy
-X3ZjcHVfZXhpdF9jYihpZCwgdmNwdV9leGl0KTsNCj4+ICsgICAgcWVtdV9wbHVnaW5fcmVn
-aXN0ZXJfYXRleGl0X2NiKGlkLCBwbHVnaW5fZXhpdCwgTlVMTCk7DQo+PiArDQo+PiArICAg
-IHJldHVybiAwOw0KPj4gK30NCj4+IGRpZmYgLS1naXQgYS9jb250cmliL3BsdWdpbnMvTWFr
-ZWZpbGUgYi9jb250cmliL3BsdWdpbnMvTWFrZWZpbGUNCj4+IGluZGV4IDBiNjRkMmMxZTMu
-LjQ0OWVhZDExMzAgMTAwNjQ0DQo+PiAtLS0gYS9jb250cmliL3BsdWdpbnMvTWFrZWZpbGUN
-Cj4+ICsrKyBiL2NvbnRyaWIvcGx1Z2lucy9NYWtlZmlsZQ0KPj4gQEAgLTI3LDYgKzI3LDcg
-QEAgZW5kaWYNCj4+ICAgTkFNRVMgKz0gaHdwcm9maWxlDQo+PiAgIE5BTUVTICs9IGNhY2hl
-DQo+PiAgIE5BTUVTICs9IGRyY292DQo+PiArTkFNRVMgKz0gaXBzDQo+PiAgIA0KPj4gICBp
-ZmVxICgkKENPTkZJR19XSU4zMikseSkNCj4+ICAgU09fU1VGRklYIDo9IC5kbGwNCj4+IC0t
-IA0KPj4gMi4zOS4yDQo+Pg0K
+* Pierrick Bouvier (pierrick.bouvier@linaro.org) wrote:
+> Hi Dave,
+> 
+> On 6/12/24 14:02, Dr. David Alan Gilbert wrote:
+> > * Alex Bennée (alex.bennee@linaro.org) wrote:
+> > > From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> > > 
+> > > This plugin uses the new time control interface to make decisions
+> > > about the state of time during the emulation. The algorithm is
+> > > currently very simple. The user specifies an ips rate which applies
+> > > per core. If the core runs ahead of its allocated execution time the
+> > > plugin sleeps for a bit to let real time catch up. Either way time is
+> > > updated for the emulation as a function of total executed instructions
+> > > with some adjustments for cores that idle.
+> > 
+> > A few random thoughts:
+> >    a) Are there any definitions of what a plugin that controls time
+> >       should do with a live migration?
+> 
+> It's not something that was considered as part of this work.
+
+That's OK, the only thing is we need to stop anyone from hitting problems
+when they don't realise it's not been addressed.
+One way might be to add a migration blocker; see include/migration/blocker.h
+then you might print something like 'Migration not available due to plugin ....'
+
+> >    b) The sleep in migration/dirtyrate.c points out g_usleep might
+> >       sleep for longer, so reads the actual wall clock time to
+> >       figure out a new 'now'.
+> 
+> The current API mentions time starts at 0 from qemu startup. Maybe we could
+> consider in the future to change this behavior to retrieve time from an
+> existing migrated machine.
+
+Ah, I meant for (b) to be independent of (a) - not related to migration; just
+down to the fact you used g_usleep in the plugin and a g_usleep might sleep
+for a different amount of time than you asked.
+
+> >    c) A fun thing to do with this would be to follow an external simulation
+> >       or 2nd qemu, trying to keep the two from running too far past
+> >       each other.
+> > 
+> 
+> Basically, to slow the first one, waiting for the replicated one to catch
+> up?
+
+Yes, something like that.
+
+Dave
+
+> > Dave >
+> > > Examples
+> > > --------
+> > > 
+> > > Slow down execution of /bin/true:
+> > > $ num_insn=$(./build/qemu-x86_64 -plugin ./build/tests/plugin/libinsn.so -d plugin /bin/true |& grep total | sed -e 's/.*: //')
+> > > $ time ./build/qemu-x86_64 -plugin ./build/contrib/plugins/libips.so,ips=$(($num_insn/4)) /bin/true
+> > > real 4.000s
+> > > 
+> > > Boot a Linux kernel simulating a 250MHz cpu:
+> > > $ /build/qemu-system-x86_64 -kernel /boot/vmlinuz-6.1.0-21-amd64 -append "console=ttyS0" -plugin ./build/contrib/plugins/libips.so,ips=$((250*1000*1000)) -smp 1 -m 512
+> > > check time until kernel panic on serial0
+> > > 
+> > > Tested in system mode by booting a full debian system, and using:
+> > > $ sysbench cpu run
+> > > Performance decrease linearly with the given number of ips.
+> > > 
+> > > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> > > Message-Id: <20240530220610.1245424-7-pierrick.bouvier@linaro.org>
+> > > ---
+> > >   contrib/plugins/ips.c    | 164 +++++++++++++++++++++++++++++++++++++++
+> > >   contrib/plugins/Makefile |   1 +
+> > >   2 files changed, 165 insertions(+)
+> > >   create mode 100644 contrib/plugins/ips.c
+> > > 
+> > > diff --git a/contrib/plugins/ips.c b/contrib/plugins/ips.c
+> > > new file mode 100644
+> > > index 0000000000..db77729264
+> > > --- /dev/null
+> > > +++ b/contrib/plugins/ips.c
+> > > @@ -0,0 +1,164 @@
+> > > +/*
+> > > + * ips rate limiting plugin.
+> > > + *
+> > > + * This plugin can be used to restrict the execution of a system to a
+> > > + * particular number of Instructions Per Second (ips). This controls
+> > > + * time as seen by the guest so while wall-clock time may be longer
+> > > + * from the guests point of view time will pass at the normal rate.
+> > > + *
+> > > + * This uses the new plugin API which allows the plugin to control
+> > > + * system time.
+> > > + *
+> > > + * Copyright (c) 2023 Linaro Ltd
+> > > + *
+> > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > + */
+> > > +
+> > > +#include <stdio.h>
+> > > +#include <glib.h>
+> > > +#include <qemu-plugin.h>
+> > > +
+> > > +QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
+> > > +
+> > > +/* how many times do we update time per sec */
+> > > +#define NUM_TIME_UPDATE_PER_SEC 10
+> > > +#define NSEC_IN_ONE_SEC (1000 * 1000 * 1000)
+> > > +
+> > > +static GMutex global_state_lock;
+> > > +
+> > > +static uint64_t max_insn_per_second = 1000 * 1000 * 1000; /* ips per core, per second */
+> > > +static uint64_t max_insn_per_quantum; /* trap every N instructions */
+> > > +static int64_t virtual_time_ns; /* last set virtual time */
+> > > +
+> > > +static const void *time_handle;
+> > > +
+> > > +typedef struct {
+> > > +    uint64_t total_insn;
+> > > +    uint64_t quantum_insn; /* insn in last quantum */
+> > > +    int64_t last_quantum_time; /* time when last quantum started */
+> > > +} vCPUTime;
+> > > +
+> > > +struct qemu_plugin_scoreboard *vcpus;
+> > > +
+> > > +/* return epoch time in ns */
+> > > +static int64_t now_ns(void)
+> > > +{
+> > > +    return g_get_real_time() * 1000;
+> > > +}
+> > > +
+> > > +static uint64_t num_insn_during(int64_t elapsed_ns)
+> > > +{
+> > > +    double num_secs = elapsed_ns / (double) NSEC_IN_ONE_SEC;
+> > > +    return num_secs * (double) max_insn_per_second;
+> > > +}
+> > > +
+> > > +static int64_t time_for_insn(uint64_t num_insn)
+> > > +{
+> > > +    double num_secs = (double) num_insn / (double) max_insn_per_second;
+> > > +    return num_secs * (double) NSEC_IN_ONE_SEC;
+> > > +}
+> > > +
+> > > +static void update_system_time(vCPUTime *vcpu)
+> > > +{
+> > > +    int64_t elapsed_ns = now_ns() - vcpu->last_quantum_time;
+> > > +    uint64_t max_insn = num_insn_during(elapsed_ns);
+> > > +
+> > > +    if (vcpu->quantum_insn >= max_insn) {
+> > > +        /* this vcpu ran faster than expected, so it has to sleep */
+> > > +        uint64_t insn_advance = vcpu->quantum_insn - max_insn;
+> > > +        uint64_t time_advance_ns = time_for_insn(insn_advance);
+> > > +        int64_t sleep_us = time_advance_ns / 1000;
+> > > +        g_usleep(sleep_us);
+> > > +    }
+> > > +
+> > > +    vcpu->total_insn += vcpu->quantum_insn;
+> > > +    vcpu->quantum_insn = 0;
+> > > +    vcpu->last_quantum_time = now_ns();
+> > > +
+> > > +    /* based on total number of instructions, what should be the new time? */
+> > > +    int64_t new_virtual_time = time_for_insn(vcpu->total_insn);
+> > > +
+> > > +    g_mutex_lock(&global_state_lock);
+> > > +
+> > > +    /* Time only moves forward. Another vcpu might have updated it already. */
+> > > +    if (new_virtual_time > virtual_time_ns) {
+> > > +        qemu_plugin_update_ns(time_handle, new_virtual_time);
+> > > +        virtual_time_ns = new_virtual_time;
+> > > +    }
+> > > +
+> > > +    g_mutex_unlock(&global_state_lock);
+> > > +}
+> > > +
+> > > +static void vcpu_init(qemu_plugin_id_t id, unsigned int cpu_index)
+> > > +{
+> > > +    vCPUTime *vcpu = qemu_plugin_scoreboard_find(vcpus, cpu_index);
+> > > +    vcpu->total_insn = 0;
+> > > +    vcpu->quantum_insn = 0;
+> > > +    vcpu->last_quantum_time = now_ns();
+> > > +}
+> > > +
+> > > +static void vcpu_exit(qemu_plugin_id_t id, unsigned int cpu_index)
+> > > +{
+> > > +    vCPUTime *vcpu = qemu_plugin_scoreboard_find(vcpus, cpu_index);
+> > > +    update_system_time(vcpu);
+> > > +}
+> > > +
+> > > +static void every_quantum_insn(unsigned int cpu_index, void *udata)
+> > > +{
+> > > +    vCPUTime *vcpu = qemu_plugin_scoreboard_find(vcpus, cpu_index);
+> > > +    g_assert(vcpu->quantum_insn >= max_insn_per_quantum);
+> > > +    update_system_time(vcpu);
+> > > +}
+> > > +
+> > > +static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+> > > +{
+> > > +    size_t n_insns = qemu_plugin_tb_n_insns(tb);
+> > > +    qemu_plugin_u64 quantum_insn =
+> > > +        qemu_plugin_scoreboard_u64_in_struct(vcpus, vCPUTime, quantum_insn);
+> > > +    /* count (and eventually trap) once per tb */
+> > > +    qemu_plugin_register_vcpu_tb_exec_inline_per_vcpu(
+> > > +        tb, QEMU_PLUGIN_INLINE_ADD_U64, quantum_insn, n_insns);
+> > > +    qemu_plugin_register_vcpu_tb_exec_cond_cb(
+> > > +        tb, every_quantum_insn,
+> > > +        QEMU_PLUGIN_CB_NO_REGS, QEMU_PLUGIN_COND_GE,
+> > > +        quantum_insn, max_insn_per_quantum, NULL);
+> > > +}
+> > > +
+> > > +static void plugin_exit(qemu_plugin_id_t id, void *udata)
+> > > +{
+> > > +    qemu_plugin_scoreboard_free(vcpus);
+> > > +}
+> > > +
+> > > +QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+> > > +                                           const qemu_info_t *info, int argc,
+> > > +                                           char **argv)
+> > > +{
+> > > +    for (int i = 0; i < argc; i++) {
+> > > +        char *opt = argv[i];
+> > > +        g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
+> > > +        if (g_strcmp0(tokens[0], "ips") == 0) {
+> > > +            max_insn_per_second = g_ascii_strtoull(tokens[1], NULL, 10);
+> > > +            if (!max_insn_per_second && errno) {
+> > > +                fprintf(stderr, "%s: couldn't parse %s (%s)\n",
+> > > +                        __func__, tokens[1], g_strerror(errno));
+> > > +                return -1;
+> > > +            }
+> > > +        } else {
+> > > +            fprintf(stderr, "option parsing failed: %s\n", opt);
+> > > +            return -1;
+> > > +        }
+> > > +    }
+> > > +
+> > > +    vcpus = qemu_plugin_scoreboard_new(sizeof(vCPUTime));
+> > > +    max_insn_per_quantum = max_insn_per_second / NUM_TIME_UPDATE_PER_SEC;
+> > > +
+> > > +    time_handle = qemu_plugin_request_time_control();
+> > > +    g_assert(time_handle);
+> > > +
+> > > +    qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
+> > > +    qemu_plugin_register_vcpu_init_cb(id, vcpu_init);
+> > > +    qemu_plugin_register_vcpu_exit_cb(id, vcpu_exit);
+> > > +    qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
+> > > +
+> > > +    return 0;
+> > > +}
+> > > diff --git a/contrib/plugins/Makefile b/contrib/plugins/Makefile
+> > > index 0b64d2c1e3..449ead1130 100644
+> > > --- a/contrib/plugins/Makefile
+> > > +++ b/contrib/plugins/Makefile
+> > > @@ -27,6 +27,7 @@ endif
+> > >   NAMES += hwprofile
+> > >   NAMES += cache
+> > >   NAMES += drcov
+> > > +NAMES += ips
+> > >   ifeq ($(CONFIG_WIN32),y)
+> > >   SO_SUFFIX := .dll
+> > > -- 
+> > > 2.39.2
+> > > 
+-- 
+ -----Open up your eyes, open up your mind, open up your code -------   
+/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
+\        dave @ treblig.org |                               | In Hex /
+ \ _________________________|_____ http://www.treblig.org   |_______/

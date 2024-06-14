@@ -1,136 +1,454 @@
-Received: by 2002:a17:906:6a09:b0:a6f:1bf6:7fc1 with SMTP id qw9csp481109ejc;
-        Wed, 12 Jun 2024 08:59:03 -0700 (PDT)
-X-Received: by 2002:a05:6a20:431a:b0:1b8:5ac6:4bd3 with SMTP id adf61e73a8af0-1b8a9b361d8mr2805455637.7.1718207943313;
-        Wed, 12 Jun 2024 08:59:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718207942; cv=none;
+Received: by 2002:a05:7022:c43:b0:7e:eb73:5b3b with SMTP id ej3csp1475105dlb;
+        Thu, 13 Jun 2024 17:16:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUk1Tp2YfjEAf/B2gxqH0qv96l+oA2IJwR95LQ19HBL9k2Xt4xSANkCYVY+xLCy11ICuQoAzwdh+LEzw66dxy64HHIeT9p+
+X-Google-Smtp-Source: AGHT+IEHSiM7IEBnGJhwikfrQDTQM8R21ezA/5uISyKY4ReLITMp/I9E893m4r44n69IpvaYAnj9
+X-Received: by 2002:a05:6359:4c82:b0:19f:315e:c8c with SMTP id e5c5f4694b2df-19fa9ded0bdmr174334355d.2.1718324169403;
+        Thu, 13 Jun 2024 17:16:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718324169; cv=none;
         d=google.com; s=arc-20160816;
-        b=ot2PwsvAaVLdNymRu2m3kPCMP9LKVc7uXKQYIJqd5b9Mmc5vTrth/rpdGR7Q5Eh2xS
-         dWh+1ZZCIJEebZoHYi62kWjnO33zdYO4uF5MFJHxDfY3hwMC7cGi2hSssbXu/v81OoE2
-         BlumbTgS3oGIlY91Ylq6Jp4CL+yTMuXlPKgQ+qGHluq3KQ2iiF9Tnt22fYlewNy8HofX
-         mAFSe+Ig5NqzO2GYLK5Y1U7Kl4ABsoqz7SWIL62OK6t1ZstxcHc+f6Gt3AraNpDQkBlR
-         VSQkLueeQwQeox90euOH0E/fODy2gA8p0+m5+KW1qI2NU8/r/D+rFuEIiQM322KTZ+Fa
-         K8KA==
+        b=Nlw/mXSylPS4x3fUwv8kdSR2hCbtcu779bNTubdwxTnNHspylBmOrRH4Mpo57Gb+mQ
+         kmHL2wVCtZCWEJZMS5UHBq0gg9v2sPiXejLCQ/XyfpGbhIoi2PevIjhcy5NAh3WUX60f
+         fF4SFr17gre5awyy8aKS/Ku/syAVix/EjIw2AzpITeJSuaF5FANxRKXQ8pCV5DeVURDj
+         sYuVMLlT5yoLykQfNM9OjocFU0I26p9ZeSHMNr6e55X61j8ywLdrR+VR6tKNAIySy2hW
+         gRQHVVYf6+gYfSsLl6iGCr/SRWUEijnhbe0qstAyKBL+EEC5c9vQFWhqOdkHOLTTpF1M
+         J4iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=w09RxZOBny7Sg1bz7VrqcLEIzdlX8GfmywPXOlJGEc0=;
-        fh=lKpKJSvDjnu6lZyPMvkKGic2ld026r93QR8NmjDsvdY=;
-        b=oG6Mfq7eGpUQ2Rm1p3wUwdIx45wVWG+f7k8aE5zOkI7CXQ5E6h2QsrGvNQdL3/XbBz
-         Y+qaQNC4Rt2IeMOWgMqPJTuFDPPxDkvK0BlZKY2uL6R3rniF3ES5h6ZHmSqN181B5yBW
-         j9+j08Wd3bfgmoAGNaunm7y7rJpjix7/Wc+fsnGjjbIMmTa7fHkEvhrqihUq/PhzIhqx
-         saaxLi1Ip1P+/0wqC89M1uSB4j2g9suLAlx1FoQLJ3A8eo2GBNKr3KN9InilpdrZ0hAe
-         Dnt9MmyZM3JxDeJRzEAZ7JRWHZZhbTr8i0fQkoSUazTQfyzYC1Qfc7eEam4fbvYbA509
-         2LfA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=MXmRHOHPrgY/nSitXWH4BzORwVkJjWkS7QjXQzDcEGc=;
+        fh=LTv9rZypFCL5Yl51dJY3ojnjwtjMOAtIYwj21UMTdvU=;
+        b=H/8PjHELy2a3YBTsxUsZBKJWxH60E4bthIO6kdaLsxJQMG+iONrQuqGI7UJPCH3JXM
+         gKNwaHv8CuPheBIy2wcz0DqUukzNrR2BhMLYe96a3xJnX6xCWozCWM77/7LSPnF7DRWL
+         mQQApjKWxzXBw3jiMGpuoxoduXcqjOY4pnDZ3M/Z0ygK11hLIIFC2ETZwA8NUa8eSwjC
+         6ikU+EfYnopO6BWfBTs9ciwI2KTKseI0wkVmNVdfWU6wbz7wGZVXxnlepY7MJKiDNoqR
+         qRssw54wgTwyBbIJjvWZDDDAAY80ht+GUmyrQZYOAP+3j0iTLLdJQrVXbfImXp/+BInN
+         hNKg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WSOFTdN9;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-703fd4f5079sor10521220b3a.12.2024.06.12.08.59.02
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 12 Jun 2024 08:59:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-6fede9189d4si2263041a12.215.2024.06.13.17.16.08
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 13 Jun 2024 17:16:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WSOFTdN9;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718207941; x=1718812741; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=w09RxZOBny7Sg1bz7VrqcLEIzdlX8GfmywPXOlJGEc0=;
-        b=WSOFTdN9MR/95ZoWtps//9wpb9eiPASOqwUWyZ/dHNiMg0zZWyb+A/KC8/HAsGYltU
-         i2PvlRANOAZgOxve6VpMH2+Dcsbds+mCKDL2fovdJRMZgT1N3ZU2NHd3mYu1puAfWsQC
-         XiT3GtMINThCyXzvI9lUcVV0TYV+Ed9ZTDJZmxibOjFWSTjQl1lkciRrYoKihCIlZeu1
-         xsObqqGqpVJEYUqqR2/KHQ3+sTtMm7cHpce/aWVKfg3pWhbgZiJS7IAo55XEWItyoPQe
-         AirEITkD9x4LRSwZDbj1X7FCPJ6J8AB6Rwh4h5336ouhd8mGD3Glf69Dp7L4/85SrbdB
-         vkaQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718207941; x=1718812741;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=w09RxZOBny7Sg1bz7VrqcLEIzdlX8GfmywPXOlJGEc0=;
-        b=boOYGxg/DUiilyDmKrfAofI/iQ3BcQMu3tChwy6GwGSy+dM25y1b22qIjD/zKNynZ4
-         njFtKSoRRfSizhVCZfI91VcYn8W70XEJMtOII4/OdlU6OFbo6g/QK8VB5wM656lA3Qea
-         dyJKLfOAapW9aEtNbYJMTxVtiE3wKRyyagESLsdjMPKb7t34N2/8/xdn/Bx4gQCv2NF2
-         M9GxHW6Wi5pJzHbzrbfnpl4VBdgkcEOLw7j7w/MbvFFKYLSzRsrLpdzq7+67Ec4oH+JH
-         xqtvrx0i6ehO/SDx388AsH4E56nqrBRs6HYcv07j/Vu8jHp85a9HpuISPpa0BCpa1l2A
-         wUOg==
-X-Gm-Message-State: AOJu0YyStbvSxWyTQ9LQe8f5aiFx1k3u+Sk9OKSsYfzpKwCNt3Eflpin
-	zzMVQqRgqxalHgsxJyFiaqjvtf9n1GJNKdCYDOsIZXcj6zehtg6In62TY3GTQTRn0fzY0T1mnU9
-	pDMD+lQ==
-X-Google-Smtp-Source: AGHT+IFoOB41A/pNuCVe7i10DhwZq0RfFVAAxo73DwlamIyd9qOnO1yuSNSWMDuxunZowX6e1t+sWA==
-X-Received: by 2002:a17:90a:5904:b0:2c2:f70a:3c17 with SMTP id 98e67ed59e1d1-2c4a772cbd0mr2100460a91.46.1718207941451;
-        Wed, 12 Jun 2024 08:59:01 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from ?IPV6:2604:3d08:9384:1d00::2193? ([2604:3d08:9384:1d00::2193])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2c4a75e1130sm1980891a91.3.2024.06.12.08.59.00
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 12 Jun 2024 08:59:01 -0700 (PDT)
-Message-ID: <757024bf-9da2-4f2e-9df1-dcbfac573582@linaro.org>
-Date: Wed, 12 Jun 2024 08:58:59 -0700
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4W0fsr72RRz6H7Jk;
+	Fri, 14 Jun 2024 08:14:40 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
+	by mail.maildlp.com (Postfix) with ESMTPS id 783A7140C98;
+	Fri, 14 Jun 2024 08:16:04 +0800 (CST)
+Received: from 00293818-MRGF.china.huawei.com (10.195.245.24) by
+ lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 14 Jun 2024 01:15:42 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
+	<ardb@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <borntraeger@linux.ibm.com>,
+	<alex.bennee@linaro.org>, <npiggin@gmail.com>, <harshpb@linux.ibm.com>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>
+Subject: [PATCH RFC V3 26/29] target/arm/kvm,tcg: Register/Handle SMCCC hypercall exits to VMM/Qemu
+Date: Fri, 14 Jun 2024 01:15:10 +0100
+Message-ID: <20240614001510.202991-1-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240613233639.202896-1-salil.mehta@huawei.com>
+References: <20240613233639.202896-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/9] plugins: Ensure register handles are not NULL
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>, Ilya Leoshkevich
- <iii@linux.ibm.com>, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mark Burton <mburton@qti.qualcomm.com>, qemu-s390x@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- Laurent Vivier <lvivier@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Alexandre Iooss <erdnaxe@crans.org>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>, Nicholas Piggin <npiggin@gmail.com>,
- Marco Liebel <mliebel@qti.qualcomm.com>, Thomas Huth <thuth@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, qemu-ppc@nongnu.org,
- Mahmoud Mandour <ma.mandourr@gmail.com>, Cameron Esfahani <dirty@apple.com>,
- Jamie Iles <quic_jiles@quicinc.com>,
- "Dr. David Alan Gilbert" <dave@treblig.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Akihiko Odaki <akihiko.odaki@daynix.com>
-References: <20240612153508.1532940-1-alex.bennee@linaro.org>
- <20240612153508.1532940-4-alex.bennee@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20240612153508.1532940-4-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: tCk7yMMCwU7O
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.195.245.24]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ lhrpeml500001.china.huawei.com (7.191.163.213)
+X-TUID: tT+43O022Pm0
 
-T24gNi8xMi8yNCAwODozNSwgQWxleCBCZW5uw6llIHdyb3RlOg0KPiBGcm9tOiBBa2loaWtv
-IE9kYWtpIDxha2loaWtvLm9kYWtpQGRheW5peC5jb20+DQo+IA0KPiBFbnN1cmUgcmVnaXN0
-ZXIgaGFuZGxlcyBhcmUgbm90IE5VTEwgc28gdGhhdCBhIHBsdWdpbiBjYW4gYXNzdW1lIE5V
-TEwgaXMNCj4gaW52YWxpZCBhcyBhIHJlZ2lzdGVyIGhhbmRsZS4NCj4gDQo+IFNpZ25lZC1v
-ZmYtYnk6IEFraWhpa28gT2Rha2kgPGFraWhpa28ub2Rha2lAZGF5bml4LmNvbT4NCj4gTWVz
-c2FnZS1JZDogPDIwMjQwMjI5LW51bGwtdjEtMS1lNzE2NTAxZDk4MWVAZGF5bml4LmNvbT4N
-Cj4gU2lnbmVkLW9mZi1ieTogQWxleCBCZW5uw6llIDxhbGV4LmJlbm5lZUBsaW5hcm8ub3Jn
-Pg0KPiAtLS0NCj4gICBwbHVnaW5zL2FwaS5jIHwgNCArKy0tDQo+ICAgMSBmaWxlIGNoYW5n
-ZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkNCj4gDQo+IGRpZmYgLS1naXQg
-YS9wbHVnaW5zL2FwaS5jIGIvcGx1Z2lucy9hcGkuYw0KPiBpbmRleCA1YTBhN2Y4YzcxLi42
-YmRiMjZiYmUzIDEwMDY0NA0KPiAtLS0gYS9wbHVnaW5zL2FwaS5jDQo+ICsrKyBiL3BsdWdp
-bnMvYXBpLmMNCj4gQEAgLTUwNyw3ICs1MDcsNyBAQCBzdGF0aWMgR0FycmF5ICpjcmVhdGVf
-cmVnaXN0ZXJfaGFuZGxlcyhHQXJyYXkgKmdkYnN0dWJfcmVncykNCj4gICAgICAgICAgIH0N
-Cj4gICANCj4gICAgICAgICAgIC8qIENyZWF0ZSBhIHJlY29yZCBmb3IgdGhlIHBsdWdpbiAq
-Lw0KPiAtICAgICAgICBkZXNjLmhhbmRsZSA9IEdJTlRfVE9fUE9JTlRFUihncmQtPmdkYl9y
-ZWcpOw0KPiArICAgICAgICBkZXNjLmhhbmRsZSA9IEdJTlRfVE9fUE9JTlRFUihncmQtPmdk
-Yl9yZWcgKyAxKTsNCj4gICAgICAgICAgIGRlc2MubmFtZSA9IGdfaW50ZXJuX3N0cmluZyhn
-cmQtPm5hbWUpOw0KPiAgICAgICAgICAgZGVzYy5mZWF0dXJlID0gZ19pbnRlcm5fc3RyaW5n
-KGdyZC0+ZmVhdHVyZV9uYW1lKTsNCj4gICAgICAgICAgIGdfYXJyYXlfYXBwZW5kX3ZhbChm
-aW5kX2RhdGEsIGRlc2MpOw0KPiBAQCAtNTI4LDcgKzUyOCw3IEBAIGludCBxZW11X3BsdWdp
-bl9yZWFkX3JlZ2lzdGVyKHN0cnVjdCBxZW11X3BsdWdpbl9yZWdpc3RlciAqcmVnLCBHQnl0
-ZUFycmF5ICpidWYpDQo+ICAgew0KPiAgICAgICBnX2Fzc2VydChjdXJyZW50X2NwdSk7DQo+
-ICAgDQo+IC0gICAgcmV0dXJuIGdkYl9yZWFkX3JlZ2lzdGVyKGN1cnJlbnRfY3B1LCBidWYs
-IEdQT0lOVEVSX1RPX0lOVChyZWcpKTsNCj4gKyAgICByZXR1cm4gZ2RiX3JlYWRfcmVnaXN0
-ZXIoY3VycmVudF9jcHUsIGJ1ZiwgR1BPSU5URVJfVE9fSU5UKHJlZykgLSAxKTsNCj4gICB9
-DQo+ICAgDQo+ICAgc3RydWN0IHFlbXVfcGx1Z2luX3Njb3JlYm9hcmQgKnFlbXVfcGx1Z2lu
-X3Njb3JlYm9hcmRfbmV3KHNpemVfdCBlbGVtZW50X3NpemUpDQoNClJldmlld2VkLWJ5OiBQ
-aWVycmljayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+DQo=
+From: Author Salil Mehta <salil.mehta@huawei.com>
+
+Add registration and Handling of HVC/SMC hypercall exits to VMM
+
+Co-developed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+---
+ target/arm/arm-powerctl.c   | 51 ++++++++++++++++----
+ target/arm/helper.c         |  2 +-
+ target/arm/internals.h      | 11 -----
+ target/arm/kvm.c            | 93 +++++++++++++++++++++++++++++++++++++
+ target/arm/kvm_arm.h        | 14 ++++++
+ target/arm/meson.build      |  1 +
+ target/arm/{tcg => }/psci.c |  8 ++++
+ target/arm/tcg/meson.build  |  4 --
+ 8 files changed, 159 insertions(+), 25 deletions(-)
+ rename target/arm/{tcg => }/psci.c (97%)
+
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index 2b2055c6ac..f567478e89 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -17,6 +17,7 @@
+ #include "qemu/main-loop.h"
+ #include "sysemu/tcg.h"
+ #include "target/arm/multiprocessing.h"
++#include "hw/boards.h"
+ 
+ #ifndef DEBUG_ARM_POWERCTL
+ #define DEBUG_ARM_POWERCTL 0
+@@ -29,18 +30,37 @@
+         } \
+     } while (0)
+ 
++static CPUArchId *arm_get_archid_by_id(uint64_t id)
++{
++    int n;
++    CPUArchId *arch_id;
++    MachineState *ms = MACHINE(qdev_get_machine());
++
++    /*
++     * At this point disabled CPUs don't have a CPUState, but their CPUArchId
++     * exists.
++     *
++     * TODO: Is arch_id == mp_affinity? This needs work.
++     */
++    for (n = 0; n < ms->possible_cpus->len; n++) {
++        arch_id = &ms->possible_cpus->cpus[n];
++
++        if (arch_id->arch_id == id) {
++            return arch_id;
++        }
++    }
++    return NULL;
++}
++
+ CPUState *arm_get_cpu_by_id(uint64_t id)
+ {
+-    CPUState *cpu;
++    CPUArchId *arch_id;
+ 
+     DPRINTF("cpu %" PRId64 "\n", id);
+ 
+-    CPU_FOREACH(cpu) {
+-        ARMCPU *armcpu = ARM_CPU(cpu);
+-
+-        if (arm_cpu_mp_affinity(armcpu) == id) {
+-            return cpu;
+-        }
++    arch_id = arm_get_archid_by_id(id);
++    if (arch_id && arch_id->cpu) {
++        return CPU(arch_id->cpu);
+     }
+ 
+     qemu_log_mask(LOG_GUEST_ERROR,
+@@ -98,6 +118,7 @@ int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
+ {
+     CPUState *target_cpu_state;
+     ARMCPU *target_cpu;
++    CPUArchId *arch_id;
+     struct CpuOnInfo *info;
+ 
+     assert(bql_locked());
+@@ -118,12 +139,24 @@ int arm_set_cpu_on(uint64_t cpuid, uint64_t entry, uint64_t context_id,
+     }
+ 
+     /* Retrieve the cpu we are powering up */
+-    target_cpu_state = arm_get_cpu_by_id(cpuid);
+-    if (!target_cpu_state) {
++    arch_id = arm_get_archid_by_id(cpuid);
++    if (!arch_id) {
+         /* The cpu was not found */
+         return QEMU_ARM_POWERCTL_INVALID_PARAM;
+     }
+ 
++    target_cpu_state = CPU(arch_id->cpu);
++    if (!qemu_enabled_cpu(target_cpu_state)) {
++        /*
++         * The cpu is not plugged in or disabled. We should return appropriate
++         * value as introduced in DEN0022E PSCI 1.2 issue E
++         */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "[ARM]%s: Denying attempt to online removed/disabled "
++                      "CPU%" PRId64"\n", __func__, cpuid);
++        return QEMU_ARM_POWERCTL_IS_OFF;
++    }
++
+     target_cpu = ARM_CPU(target_cpu_state);
+     if (target_cpu->power_state == PSCI_ON) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 9a2468347a..4ea0a42f52 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -11842,7 +11842,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+                       env->exception.syndrome);
+     }
+ 
+-    if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
++    if (arm_is_psci_call(cpu, cs->exception_index)) {
+         arm_handle_psci_call(cpu);
+         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
+         return;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 34dab0bb02..f7b7f7966a 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -480,21 +480,10 @@ vaddr arm_adjust_watchpoint_address(CPUState *cs, vaddr addr, int len);
+ /* Callback function for when a watchpoint or breakpoint triggers. */
+ void arm_debug_excp_handler(CPUState *cs);
+ 
+-#if defined(CONFIG_USER_ONLY) || !defined(CONFIG_TCG)
+-static inline bool arm_is_psci_call(ARMCPU *cpu, int excp_type)
+-{
+-    return false;
+-}
+-static inline void arm_handle_psci_call(ARMCPU *cpu)
+-{
+-    g_assert_not_reached();
+-}
+-#else
+ /* Return true if the r0/x0 value indicates that this SMC/HVC is a PSCI call. */
+ bool arm_is_psci_call(ARMCPU *cpu, int excp_type);
+ /* Actually handle a PSCI call */
+ void arm_handle_psci_call(ARMCPU *cpu);
+-#endif
+ 
+ /**
+  * arm_clear_exclusive: clear the exclusive monitor
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 7acd83ce64..eb1c623828 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -544,9 +544,51 @@ int kvm_arch_get_default_type(MachineState *ms)
+     return fixed_ipa ? 0 : size;
+ }
+ 
++static bool kvm_arm_set_vm_attr(struct kvm_device_attr *attr, const char *name)
++{
++    int err;
++
++    err = kvm_vm_ioctl(kvm_state, KVM_HAS_DEVICE_ATTR, attr);
++    if (err != 0) {
++        error_report("%s: KVM_HAS_DEVICE_ATTR: %s", name, strerror(-err));
++        return false;
++    }
++
++    err = kvm_vm_ioctl(kvm_state, KVM_SET_DEVICE_ATTR, attr);
++    if (err != 0) {
++        error_report("%s: KVM_SET_DEVICE_ATTR: %s", name, strerror(-err));
++        return false;
++    }
++
++    return true;
++}
++
++int kvm_arm_set_smccc_filter(uint64_t func, uint8_t faction)
++{
++    struct kvm_smccc_filter filter = {
++        .base = func,
++        .nr_functions = 1,
++        .action = faction,
++    };
++    struct kvm_device_attr attr = {
++        .group = KVM_ARM_VM_SMCCC_CTRL,
++        .attr = KVM_ARM_VM_SMCCC_FILTER,
++        .flags = 0,
++        .addr = (uintptr_t)&filter,
++    };
++
++    if (!kvm_arm_set_vm_attr(&attr, "SMCCC Filter")) {
++        error_report("failed to set SMCCC filter in KVM Host");
++        return -1;
++    }
++
++    return 0;
++}
++
+ int kvm_arch_init(MachineState *ms, KVMState *s)
+ {
+     int ret = 0;
++
+     /* For ARM interrupt delivery is always asynchronous,
+      * whether we are using an in-kernel VGIC or not.
+      */
+@@ -609,6 +651,22 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+     hw_breakpoints = g_array_sized_new(true, true,
+                                        sizeof(HWBreakpoint), max_hw_bps);
+ 
++    /*
++     * To be able to handle PSCI CPU ON calls in QEMU, we need to install SMCCC
++     * filter in the Host KVM. This is required to support features like
++     * virtual CPU Hotplug on ARM platforms.
++     */
++    if (kvm_arm_set_smccc_filter(PSCI_0_2_FN64_CPU_ON,
++                                 KVM_SMCCC_FILTER_FWD_TO_USER)) {
++        error_report("CPU On PSCI-to-user-space fwd filter install failed");
++        abort();
++    }
++    if (kvm_arm_set_smccc_filter(PSCI_0_2_FN_CPU_OFF,
++                                 KVM_SMCCC_FILTER_FWD_TO_USER)) {
++        error_report("CPU Off PSCI-to-user-space fwd filter install failed");
++        abort();
++    }
++
+     return ret;
+ }
+ 
+@@ -1459,6 +1517,38 @@ static bool kvm_arm_handle_debug(ARMCPU *cpu,
+     return false;
+ }
+ 
++static int kvm_arm_handle_hypercall(CPUState *cs, struct kvm_run *run)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    kvm_cpu_synchronize_state(cs);
++
++    /*
++     * hard coding immediate to 0 as we dont expect non-zero value as of now
++     * This might change in future versions. Hence, KVM_GET_ONE_REG  could be
++     * used in such cases but it must be enhanced then only synchronize will
++     * also fetch ESR_EL2 value.
++     */
++    if (run->hypercall.flags == KVM_HYPERCALL_EXIT_SMC) {
++        cs->exception_index = EXCP_SMC;
++        env->exception.syndrome = syn_aa64_smc(0);
++    } else {
++        cs->exception_index = EXCP_HVC;
++        env->exception.syndrome = syn_aa64_hvc(0);
++    }
++    env->exception.target_el = 1;
++    bql_lock();
++    arm_cpu_do_interrupt(cs);
++    bql_unlock();
++
++    /*
++     * For PSCI, exit the kvm_run loop and process the work. Especially
++     * important if this was a CPU_OFF command and we can't return to the guest.
++     */
++    return EXCP_INTERRUPT;
++}
++
+ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -1475,6 +1565,9 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+         ret = kvm_arm_handle_dabt_nisv(cpu, run->arm_nisv.esr_iss,
+                                        run->arm_nisv.fault_ipa);
+         break;
++    case KVM_EXIT_HYPERCALL:
++          ret = kvm_arm_handle_hypercall(cs, run);
++        break;
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
+                       __func__, run->exit_reason);
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 0be7e896d2..b9c2b0f501 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -225,6 +225,15 @@ void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa);
+ 
+ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
+ 
++/**
++ * kvm_arm_set_smccc_filter
++ * @func: funcion
++ * @faction: SMCCC filter action(handle, deny, fwd-to-user) to be deployed
++ *
++ * Sets the ARMs SMC-CC filter in KVM Host for selective hypercall exits
++ */
++int kvm_arm_set_smccc_filter(uint64_t func, uint8_t faction);
++
+ #else
+ 
+ /*
+@@ -294,6 +303,11 @@ static inline uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
+     g_assert_not_reached();
+ }
+ 
++static inline int kvm_arm_set_smccc_filter(uint64_t func, uint8_t faction)
++{
++    g_assert_not_reached();
++}
++
+ #endif
+ 
+ #endif
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 2e10464dbb..3e9f704f35 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -23,6 +23,7 @@ arm_system_ss.add(files(
+   'arm-qmp-cmds.c',
+   'cortex-regs.c',
+   'machine.c',
++  'psci.c',
+   'ptw.c',
+ ))
+ 
+diff --git a/target/arm/tcg/psci.c b/target/arm/psci.c
+similarity index 97%
+rename from target/arm/tcg/psci.c
+rename to target/arm/psci.c
+index 51d2ca3d30..b3fcb85079 100644
+--- a/target/arm/tcg/psci.c
++++ b/target/arm/psci.c
+@@ -21,7 +21,9 @@
+ #include "exec/helper-proto.h"
+ #include "kvm-consts.h"
+ #include "qemu/main-loop.h"
++#include "qemu/error-report.h"
+ #include "sysemu/runstate.h"
++#include "sysemu/tcg.h"
+ #include "internals.h"
+ #include "arm-powerctl.h"
+ #include "target/arm/multiprocessing.h"
+@@ -158,6 +160,11 @@ void arm_handle_psci_call(ARMCPU *cpu)
+     case QEMU_PSCI_0_1_FN_CPU_SUSPEND:
+     case QEMU_PSCI_0_2_FN_CPU_SUSPEND:
+     case QEMU_PSCI_0_2_FN64_CPU_SUSPEND:
++       if (!tcg_enabled()) {
++            warn_report("CPU suspend not supported in non-tcg mode");
++            break;
++       }
++#ifdef CONFIG_TCG
+         /* Affinity levels are not supported in QEMU */
+         if (param[1] & 0xfffe0000) {
+             ret = QEMU_PSCI_RET_INVALID_PARAMS;
+@@ -170,6 +177,7 @@ void arm_handle_psci_call(ARMCPU *cpu)
+             env->regs[0] = 0;
+         }
+         helper_wfi(env, 4);
++#endif
+         break;
+     case QEMU_PSCI_1_0_FN_PSCI_FEATURES:
+         switch (param[1]) {
+diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+index 508932a249..5b43c84c40 100644
+--- a/target/arm/tcg/meson.build
++++ b/target/arm/tcg/meson.build
+@@ -54,9 +54,5 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'sve_helper.c',
+ ))
+ 
+-arm_system_ss.add(files(
+-  'psci.c',
+-))
+-
+ arm_system_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('cpu-v7m.c'))
+ arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files('cpu-v7m.c'))
+-- 
+2.34.1

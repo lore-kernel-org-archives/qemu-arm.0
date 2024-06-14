@@ -1,51 +1,51 @@
-Received: by 2002:a17:906:564e:b0:a6f:1bf6:7fc1 with SMTP id v14csp99416ejr;
-        Thu, 13 Jun 2024 16:47:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUKUuOsjbV+XGxa6M7WCAdeqOtAIxtV+SzVp8TWgkbepnP6p0f9deSvdYpmozUJkTlRInClDydQI8HOfOuJL+Y3io0f/HbT
-X-Google-Smtp-Source: AGHT+IFj6jzyASuc8L6HhTARmWGBU5fiEitvpp0xx6FQcIceUj7IPJ2cUEaitbmxfJOzkJVppHTu
-X-Received: by 2002:a5d:4d08:0:b0:35f:2363:e4fc with SMTP id ffacd0b85a97d-3607a7606b3mr968407f8f.17.1718322442138;
-        Thu, 13 Jun 2024 16:47:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718322442; cv=none;
+Received: by 2002:a05:7022:c43:b0:7e:eb73:5b3b with SMTP id ej3csp1476443dlb;
+        Thu, 13 Jun 2024 17:19:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXZVocE7ykz1e3F486sPub6Li8wzknlgKaFNnA77UK2bOROchMtZljIyzXqBfsEmMdLW7QFgtF7ElBSrKQHWRQKgNG8rRhU
+X-Google-Smtp-Source: AGHT+IG7C/m9vPTi71ixflBzHfnZCfBJrNIexmgSWAEqOpyPFxu/5EcQB0vWgcwS5CKx0h/sFAqg
+X-Received: by 2002:a05:600c:470f:b0:421:81c1:65fa with SMTP id 5b1f17b1804b1-423048240ddmr11554975e9.13.1718324354345;
+        Thu, 13 Jun 2024 17:19:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718324354; cv=none;
         d=google.com; s=arc-20160816;
-        b=pL8LA3cwTHa0IcanRo4IeVoADljKdZj7+plzv3JDXzEXGDpcuCVzNZetzaYbhTc2RL
-         Ee2c8vGUDK7LZbhaOb5wm5vw83tMFTgX9LNqmeuV042cX6ZFZCNw2yMfT/I02nLiqpPx
-         Fw/NHgEwBoWnvcWERuzKHRbfhIQxHq/hgWj6sHsi4wlU21/kdP0xXDbHbVeamWdml6w9
-         lEk3ZlH0BzKhqliuu2yQYBF5VejOXmobgwSOBOPI31J//ChRiQxb/hs/8U3IjhlQWgnQ
-         EjV3fhTfmSNQtpcAspq1JfOnhLNBbuCl6DhLq0spi+KWp6QoYGTtq8BMnsREc4PacGOg
-         EylA==
+        b=FHp8bcP4d/dPptD1kBx+N85xAbjXxY5jeCz2/0/U2MFBkom55ZBoSXVi+tXVIz6+R+
+         pl2pE7kyiQOPITUmWyMCwfFpa2U7FO7m8MO1HwsotlX+4tnNYb+8B850e+XwIV2RiXpe
+         2dO9sfFc6QMUz1K/1GojmHK9Jegttx0cpfOrBqrMUDwBS9j7C77tgF5t1ljw/d8AeGjE
+         Nu6gFkatRtd1WaygrxhsEXwMzQwbpD+vOynwJrHklYuK6JDbHxLvl68tfITy5xQV2qL3
+         3Bt6UeLPUECIHuQ+sgXC15xK1zdijQcSfCw9vXXk4aKA9Hxe59zTwAYPIKK5tnO+VU34
+         BO3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=iwEEX2SADeXqAFnprFupM3er8ptrR9grKukQeyzG7Ds=;
+        bh=9ARSYZlsndBJtILYXEQq2NxjhAZAZEzpRksPPu5RnrU=;
         fh=LTv9rZypFCL5Yl51dJY3ojnjwtjMOAtIYwj21UMTdvU=;
-        b=TM3rgAuGQ1sZquJzWZ2aZ7zVSOd6Lsd1whTXpwAtqDjrAmaf8pVdcX2cIoAgmLO9wu
-         Ko5RI9wTIJCftNZ19BCukQqgBZXTecxG/jwL+s7AYpy55ENiWRwYAfbwlpE8AiIC4DNg
-         iSdSlPvTn+IADyAQydebmJMGWiXNKxsmzVeRAwgtJTIHilPSLopoAmW/snwwH2Ns9u+V
-         2pS3jJ3DDpGokJLaO8ISqL+HwrgfDaiOKwJnppjcrTdVD8D+Qifgs7GbzYjuuF4HfAtC
-         bUFGM90XRnETodCnVP2wZL7noaPQtktAQqM/tK6q5wY4XcJiTGlCLpxXi7LFaRPTtZEX
-         wOtA==;
+        b=aC6sZV81ZbMud9zaDNYjEMHtutFg35w606lAdLhOU66AfPG1Ei55F17BNHpWLWmuT9
+         dobvQYKqdj7XGFL+MX5a1u2MTDf46BoXTugCiLT+WJQsGcwoLHRbt6RJYo1+gWKJBwwe
+         D1dh2P4oTMUX74zRFPGWiYAe5nJLSyrN3zynd9iGKd8mM30LjNc74T/f6NSpz+6J0UAy
+         N4W5s6WDHpEWRNMnwfY9xx9qjm3cz07Z0qRG5Jq/fR04s6BI5HOO+B2u/eFe0tFXz3HH
+         Qu84VVFg0mgxYdItu0SU640iyodbLf53o5mrHi08irLc9lI4m7g+5IkNp0vVYmLu5yCA
+         0AmA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3607512ef90si1381818f8f.827.2024.06.13.16.47.21
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3607511da78si1436280f8f.477.2024.06.13.17.19.14
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 13 Jun 2024 16:47:22 -0700 (PDT)
+        Thu, 13 Jun 2024 17:19:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4W0f8t5WZ0z6H8xV;
-	Fri, 14 Jun 2024 07:42:38 +0800 (CST)
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4W0fxT4hWVz67MmR;
+	Fri, 14 Jun 2024 08:17:49 +0800 (CST)
 Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
-	by mail.maildlp.com (Postfix) with ESMTPS id 1A470140AE5;
-	Fri, 14 Jun 2024 07:47:21 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 2807714065C;
+	Fri, 14 Jun 2024 08:19:13 +0800 (CST)
 Received: from 00293818-MRGF.china.huawei.com (10.195.245.24) by
  lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 14 Jun 2024 00:46:58 +0100
+ 15.1.2507.39; Fri, 14 Jun 2024 01:18:50 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -63,9 +63,9 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>
-Subject: [PATCH RFC V3 25/29] target/arm/kvm: Write CPU state back to KVM on reset
-Date: Fri, 14 Jun 2024 00:36:35 +0100
-Message-ID: <20240613233639.202896-26-salil.mehta@huawei.com>
+Subject: [PATCH RFC V3 27/29] hw/arm: Support hotplug capability check using _OSC method
+Date: Fri, 14 Jun 2024 01:18:36 +0100
+Message-ID: <20240614001836.203018-1-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240613233639.202896-1-salil.mehta@huawei.com>
 References: <20240613233639.202896-1-salil.mehta@huawei.com>
@@ -73,47 +73,129 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.195.245.24]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  lhrpeml500001.china.huawei.com (7.191.163.213)
-X-TUID: iOXbAPZ7XYHM
+X-TUID: YXs7ltdJs45p
 
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Physical CPU hotplug results in (un)setting of ACPI _STA.Present bit. AARCH64
+platforms do not support physical CPU hotplug. Virtual CPU hotplug support being
+implemented toggles ACPI _STA.Enabled Bit to achieve hotplug functionality. This
+is not same as physical CPU hotplug support.
 
-When a KVM vCPU is reset following a PSCI CPU_ON call, its power state
-is not synchronized with KVM at the moment. Because the vCPU is not
-marked dirty, we miss the call to kvm_arch_put_registers() that writes
-to KVM's MP_STATE. Force mp_state synchronization.
+In future, if ARM architecture supports physical CPU hotplug then the current
+design of virtual CPU hotplug can be used unchanged. Hence, there is a need for
+firmware/VMM/Qemu to support evaluation of platform wide capabilitiy related to
+the *type* of CPU hotplug support present on the platform. OSPM might need this
+during boot time to correctly initialize the CPUs and other related components
+in the kernel.
 
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+NOTE: This implementation will be improved to add the support of *query* in the
+subsequent versions. This is very minimal support to assist kernel.
+
+ASL for the implemented _OSC method:
+
+Method (_OSC, 4, NotSerialized)  // _OSC: Operating System Capabilities
+{
+    CreateDWordField (Arg3, Zero, CDW1)
+    If ((Arg0 == ToUUID ("0811b06e-4a27-44f9-8d60-3cbbc22e7b48") /* Platform-wide Capabilities */))
+    {
+        CreateDWordField (Arg3, 0x04, CDW2)
+        Local0 = CDW2 /* \_SB_._OSC.CDW2 */
+        If ((Arg1 != One))
+        {
+            CDW1 |= 0x08
+        }
+
+        Local0 &= 0x00800000
+        If ((CDW2 != Local0))
+        {
+            CDW1 |= 0x10
+        }
+
+        CDW2 = Local0
+    }
+    Else
+    {
+        CDW1 |= 0x04
+    }
+
+    Return (Arg3)
+}
+
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- target/arm/kvm.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ hw/arm/virt-acpi-build.c | 52 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 1121771c4a..7acd83ce64 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -980,6 +980,7 @@ void kvm_arm_cpu_post_load(ARMCPU *cpu)
- void kvm_arm_reset_vcpu(ARMCPU *cpu)
- {
-     int ret;
-+    CPUState *cs = CPU(cpu);
- 
-     /* Re-init VCPU so that all registers are set to
-      * their respective reset values.
-@@ -1001,6 +1002,12 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu)
-      * for the same reason we do so in kvm_arch_get_registers().
-      */
-     write_list_to_cpustate(cpu);
-+
-+    /*
-+     * Ensure we call kvm_arch_put_registers(). The vCPU isn't marked dirty if
-+     * it was parked in KVM and is now booting from a PSCI CPU_ON call.
-+     */
-+    cs->vcpu_dirty = true;
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 4b4906f407..6cb613103f 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -818,6 +818,55 @@ static void build_fadt_rev6(GArray *table_data, BIOSLinker *linker,
+     build_fadt(table_data, linker, &fadt, vms->oem_id, vms->oem_table_id);
  }
  
- void kvm_arm_create_host_vcpu(ARMCPU *cpu)
++static void build_virt_osc_method(Aml *scope, VirtMachineState *vms)
++{
++    Aml *if_uuid, *else_uuid, *if_rev, *if_caps_masked, *method;
++    Aml *a_cdw1 = aml_name("CDW1");
++    Aml *a_cdw2 = aml_local(0);
++
++    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
++    aml_append(method, aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
++
++    /* match UUID */
++    if_uuid = aml_if(aml_equal(
++        aml_arg(0), aml_touuid("0811B06E-4A27-44F9-8D60-3CBBC22E7B48")));
++
++    aml_append(if_uuid, aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
++    aml_append(if_uuid, aml_store(aml_name("CDW2"), a_cdw2));
++
++    /* check unknown revision in arg(1) */
++    if_rev = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(1))));
++    /* set revision error bits,  DWORD1 Bit[3] */
++    aml_append(if_rev, aml_or(a_cdw1, aml_int(0x08), a_cdw1));
++    aml_append(if_uuid, if_rev);
++
++    /*
++     * check support for vCPU hotplug type(=enabled) platform-wide capability
++     * in DWORD2 as sepcified in the below ACPI Specification ECR,
++     *  # https://bugzilla.tianocore.org/show_bug.cgi?id=4481
++     */
++    if (vms->acpi_dev) {
++        aml_append(if_uuid, aml_and(a_cdw2, aml_int(0x800000), a_cdw2));
++        /* check if OSPM specified hotplug capability bits were masked */
++        if_caps_masked = aml_if(aml_lnot(aml_equal(aml_name("CDW2"), a_cdw2)));
++        aml_append(if_caps_masked, aml_or(a_cdw1, aml_int(0x10), a_cdw1));
++        aml_append(if_uuid, if_caps_masked);
++    }
++    aml_append(if_uuid, aml_store(a_cdw2, aml_name("CDW2")));
++
++    aml_append(method, if_uuid);
++    else_uuid = aml_else();
++
++    /* set unrecognized UUID error bits, DWORD1 Bit[2] */
++    aml_append(else_uuid, aml_or(a_cdw1, aml_int(4), a_cdw1));
++    aml_append(method, else_uuid);
++
++    aml_append(method, aml_return(aml_arg(3)));
++    aml_append(scope, method);
++
++    return;
++}
++
+ /* DSDT */
+ static void
+ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+@@ -852,6 +901,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     } else {
+         acpi_dsdt_add_cpus(scope, vms);
+     }
++
++    build_virt_osc_method(scope, vms);
++
+     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+                        (irqmap[VIRT_UART] + ARM_SPI_BASE));
+     if (vmc->acpi_expose_flash) {
 -- 
 2.34.1

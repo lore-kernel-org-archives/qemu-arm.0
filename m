@@ -1,237 +1,181 @@
-Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp149292ejb;
-        Fri, 14 Jun 2024 02:55:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWrLWHWbxx4uyuB73ZE3r9xJ73IQkJbW7hbAXNa2f5KKReV8HlrBINA0zDniLumUv8L2t6ScljAbjf0RwNIZhvjWc7UYDe+
-X-Google-Smtp-Source: AGHT+IFNszGgnjt8RpJxF3+AulTEddClATV6guY4F2+8gqjAgIXFg7pt+knykxYpd5pTlg/Gy5lU
-X-Received: by 2002:ac8:5d0c:0:b0:440:a1e2:3f92 with SMTP id d75a77b69052e-44216854bbdmr23206951cf.5.1718358900182;
-        Fri, 14 Jun 2024 02:55:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718358900; cv=none;
+Received: by 2002:a17:907:681:b0:a6f:694d:5ff8 with SMTP id wn1csp155364ejb;
+        Fri, 14 Jun 2024 03:05:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVAn2A5hPhl+sGTIPQLQzE2eg86lBbzYnTu+Z14igR4QWSfZMvGD4tUfh7ZR3F1cCVDyoMEcLfSZ0WGJglbm8u0BeLWU8q0
+X-Google-Smtp-Source: AGHT+IHp+PzwDM2B4MN5+aa3Rf8sp/2hIK3FnxgAqeQSOoglObRxA0xnXnNX6UNtglZ873x/hZgg
+X-Received: by 2002:ac8:5956:0:b0:441:55dd:b4f3 with SMTP id d75a77b69052e-44216b45da0mr20496891cf.63.1718359535583;
+        Fri, 14 Jun 2024 03:05:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718359535; cv=none;
         d=google.com; s=arc-20160816;
-        b=RQyHFFFCGyZJOwInEk9ri7sjXeFkHQedYNAORFtI+dvNQLKXSggDBs5iVUqSyPC0qC
-         k814s5uoQkqZWQeBJWbonFD9VsgBEaE2wnd1qpb33F3I4BF4gKC9YA/QkVH5h+3nLj0C
-         zlM/24tPhTc3okrsLwdw+tDJvfeorYk4yFAZG76UwtY7Ef1TfUYfPehlVRvaBygzG5uS
-         KMwq/GhOk6VMU3drG4gZrlByNBJs+cGS06gesnIPVqoO/oD+G17ykWgrzU0nVA7vmSWO
-         /1rmVKNqO5YMb4h7mvVkJHkYd9OYWb4RMp3vace+BHVW6ZZuVyScCnTmIp7ap77C6G64
-         jD0g==
+        b=J5WCQY7ieJaQZFXiZiOIe711Qn1iH4eIAM/Lv6ByZlBnlqsAM9z44KfGkAP0U5ea6p
+         mLLQPuE2yUOA9nxcs2DMRC8YV7VPaGhR/VPK+Xq+/Wln+AbyOsLcSPg3W/DPvLD9hz2P
+         348eDj+EZTeBcUyGf8Zl59uTj4U66LNq4PecOXVkzUb9ExIgTfzXoPn7M37NCUKrJxH9
+         zsrLRJIYGAltpGEzumU1FfiHu5zLkyXnGnq+xofxay/yAEfKbvw/YiJ5COt/EurC9IhK
+         5i+o+Ed4ugV5NkqoBHxDvH+ZoXmk/OKpqzFWZB9L6ZN0t1VdEaPOXs3oCFJdF+S4otZ3
+         Y6Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=xSMsGWiIDaWBh/1sOWutFdLDNKll+hfjQCTOA1Gx6t4=;
-        fh=NBkbC8z0yxZVnBu5+T/osSPCS2NzeZu/yHpj5pv7NrY=;
-        b=POhc39QwAi+OZuU5dTWDvNyj/+MPZt04G/cz8LfzMRKAYustIN6a9XTVcLk3Zi42Df
-         qd0XY7DQW6l4Ey4d5OrqdsVHrQ1KPilqKK9yywJUCnYFk9n5bUsevnOuBCTrngJUBT87
-         6VRKNGhmOi/IlwK5ECPcqGgZtjZwGaHKeLqRpebOWs7vGdmdjfMPKRIgbFA6UuoVRn3M
-         Mv45bAc3Pmx351diEazcW8LfBI9lmthEJ5NtIP0wzLHfzwXkilELCfCjJKjCeSSLjWzl
-         DAuMA/BHTO2Ytn5zXHSLaif8IGVVo5oRg99LfyfpyVDcwdI2UEVdfo8pwObqcAwODlYw
-         jrOw==;
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Gwo/Jsa13Ll3Es/y0yghFvctU2KH/rcsXeXQKCHBjPY=;
+        fh=bEbIFJsManpqhC40Gb/7RUr1cSH29SM4C2Azp4iZO7s=;
+        b=KuIUx6CScVVPcnaD6IGehCp+OMHrMcBUVCGc3yfMWvCWyWHCbW3anUpFAVv3inoqQR
+         cM1vQHsV21w3IWpDl/1TthGjFqnC5/U0GUhou2Mlc9Fo6NpdfyO6equgjgkfyYd3F1po
+         sr182mkzd+lkXHQQVXvte1UyQD711NwRgkKYeuvClzgCHwvwG+1bVSWrTNuRHSZnPQ2y
+         mAK3xko2PuF5vxH1os7Ai291HuJfarQV9gO3kiCSTOwS7h7mI9u6uNMpdVhVWyJwREW+
+         RDDWoPrkQYMWtNGrBuw9dpBe6JUgvuBdIHJZV3Uyo5/Pyr9BCP88p9egcg97Blq6cNCo
+         SKrg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IY6WmjNe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PodJ91i3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-441f2fb72ccsi33866461cf.395.2024.06.14.02.54.59
+        by mx.google.com with ESMTPS id d75a77b69052e-441ef3ba080si37111031cf.27.2024.06.14.03.05.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Jun 2024 02:55:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Jun 2024 03:05:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IY6WmjNe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PodJ91i3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sI3dX-00067s-Sk; Fri, 14 Jun 2024 05:54:23 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sI3nx-000899-L5; Fri, 14 Jun 2024 06:05:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sI3dW-00066q-9y
- for qemu-devel@nongnu.org; Fri, 14 Jun 2024 05:54:22 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI3nw-00088o-A2
+ for qemu-arm@nongnu.org; Fri, 14 Jun 2024 06:05:08 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sI3dU-0003Rw-5x
- for qemu-devel@nongnu.org; Fri, 14 Jun 2024 05:54:22 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sI3nu-0005vy-51
+ for qemu-arm@nongnu.org; Fri, 14 Jun 2024 06:05:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718358859;
+ s=mimecast20190719; t=1718359504;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=xSMsGWiIDaWBh/1sOWutFdLDNKll+hfjQCTOA1Gx6t4=;
- b=IY6WmjNehM+SxSjsVUe/ZgvtOcsP1qiG4B7I5LD7a8RfVbyPTY7L48UCbcAh1tKmmAz5xF
- +Ye1T2VD0kh0tGv5QxlsB1KUFB3cpLG86buPuGVLWYEXNtMm0HIJS+LG0nylP7mYnzlwa/
- qz1S4gFc5CA2d5YiqHvqnev8YtM1A4U=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-428-daRnIyRIP6WC9EAvuZ0VOA-1; Fri,
- 14 Jun 2024 05:54:15 -0400
-X-MC-Unique: daRnIyRIP6WC9EAvuZ0VOA-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B308819560B2; Fri, 14 Jun 2024 09:54:13 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.193.191])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 36C593000219; Fri, 14 Jun 2024 09:54:07 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Gwo/Jsa13Ll3Es/y0yghFvctU2KH/rcsXeXQKCHBjPY=;
+ b=PodJ91i32boJFEpAc2NaWs+GVczNv7leuqK5OxS+vzboYfOKdLcvCeabEJqFASmzamnTCU
+ YDFjkt0pnRK5GICdouEA5w0OuhBcVwKesh7I/vKIJIBHyFEGgE+e4Y7hztlYr7ABhnfGuw
+ NTDM9foBj/3mTjU5J9HQZQm72KIJAaQ=
+Received: from mail-oi1-f199.google.com (mail-oi1-f199.google.com
+ [209.85.167.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-158-_PEajnxLNWKJTlXoAGvHbA-1; Fri, 14 Jun 2024 06:04:59 -0400
+X-MC-Unique: _PEajnxLNWKJTlXoAGvHbA-1
+Received: by mail-oi1-f199.google.com with SMTP id
+ 5614622812f47-3d22f6e761eso1660436b6e.0
+ for <qemu-arm@nongnu.org>; Fri, 14 Jun 2024 03:04:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718359499; x=1718964299;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Gwo/Jsa13Ll3Es/y0yghFvctU2KH/rcsXeXQKCHBjPY=;
+ b=jGwMURRksfisw87RrQGCduOhCmJ3YNTCffvhGMRqNdzp8ST5RDbitkENhAG54uZynY
+ 54rVPPXoRWbE6vhMEU/ONeFB88pyFjwRqdLVRl2iQ/u4dKV7Yf3Qbi5kH6T7SnTcwLkb
+ FjwnzLWUcsS/HN8hwA0UQwbOskB1B4okxvmuwyde8X2YLLgSf1i8PU+BYBIiWnCJF7xu
+ n1FHFdgQy1dXGeeIQMDGlJjeej3bTOSp4RPwZphaW3rfg+HkXQL50Fk3gC7OzhG8DIJG
+ 6UgxZbd3L4ypIanVn9oA260okdqAXhkIUQIr04fp6BgXLgoLtItOQ3vApd6uMXqHNgXp
+ l4kQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXlFU3VqPxGEUDY0s9ricBJOBvDnvHzQu7zm8g7RiqR3LFmLjpJ3GStMfzel0KJ5BmCBaeUIn4qMNMlGYUw83e1dQzQ
+X-Gm-Message-State: AOJu0Yw1sSMzQ8L5mNpTgsH1+ApIqiwNhNwm8pA6QPPKSwrMcBXuPgEw
+ WBwmBhnKx95n3O6/o+lXVXTT8hXtcjhl/TpF87qqRlN95Jk3/hbhG1sQxEMb4ugygOqQJW5XQ2w
+ t0r1Bdgd6nrHq0/Vdy+M5oeq+Hcn96rLA3LiaUtwNRettxEAgPw==
+X-Received: by 2002:a05:6808:1485:b0:3d2:2293:9990 with SMTP id
+ 5614622812f47-3d24e8ace79mr2336682b6e.2.1718359498730; 
+ Fri, 14 Jun 2024 03:04:58 -0700 (PDT)
+X-Received: by 2002:a05:6808:1485:b0:3d2:2293:9990 with SMTP id
+ 5614622812f47-3d24e8ace79mr2336661b6e.2.1718359498325; 
+ Fri, 14 Jun 2024 03:04:58 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
+ ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-798abf64365sm127898885a.136.2024.06.14.03.04.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 14 Jun 2024 03:04:57 -0700 (PDT)
+Message-ID: <ec740f33-44ae-4d50-be65-5f717122f4f0@redhat.com>
+Date: Fri, 14 Jun 2024 12:04:54 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/7] HostIOMMUDevice: Store the VFIO/VDPA agent
+To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
- peter.maydell@linaro.org, clg@redhat.com, yanghliu@redhat.com,
- zhenzhong.duan@intel.com
+ peter.maydell@linaro.org, yanghliu@redhat.com, zhenzhong.duan@intel.com
 Cc: alex.williamson@redhat.com, jasowang@redhat.com, pbonzini@redhat.com,
  berrange@redhat.com
-Subject: [PATCH v4 0/8] VIRTIO-IOMMU/VFIO: Fix host iommu geometry handling
- for hotplugged devices
-Date: Fri, 14 Jun 2024 11:52:50 +0200
-Message-ID: <20240614095402.904691-1-eric.auger@redhat.com>
-MIME-Version: 1.0
+References: <20240613092359.847145-1-eric.auger@redhat.com>
+ <20240613092359.847145-2-eric.auger@redhat.com>
+ <ef400920-dcf4-4f37-b4ce-c5560b92d9c5@redhat.com>
+ <f6473f76-1d8f-41cb-9488-73edc960c996@redhat.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+In-Reply-To: <f6473f76-1d8f-41cb-9488-73edc960c996@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.145,
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.145,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jKg/VitQ5yvi
-
-This series is based on Zhenzhong HostIOMMUDevice: 
-
-[PATCH v7 00/17] Add a host IOMMU device abstraction to check with vIOMMU
-https://lore.kernel.org/all/20240605083043.317831-1-zhenzhong.duan@intel.com/
-
-It allows to convey host IOVA reserved regions to the virtio-iommu and
-uses the HostIOMMUDevice infrastructure. This replaces the usage of
-IOMMU MR ops which fail to satisfy this need for hotplugged devices.
-
-See below for additional background.
-
-In [1] we attempted to fix a case where a VFIO-PCI device protected
-with a virtio-iommu was assigned to an x86 guest. On x86 the physical
-IOMMU may have an address width (gaw) of 39 or 48 bits whereas the
-virtio-iommu used to expose a 64b address space by default.
-Hence the guest was trying to use the full 64b space and we hit
-DMA MAP failures. To work around this issue we managed to pass
-usable IOVA regions (excluding the out of range space) from VFIO
-to the virtio-iommu device. This was made feasible by introducing
-a new IOMMU Memory Region callback dubbed iommu_set_iova_regions().
-This latter gets called when the IOMMU MR is enabled which
-causes the vfio_listener_region_add() to be called.
-
-For coldplugged devices the technique works because we make sure all
-the IOMMU MR are enabled once on the machine init done: 94df5b2180
-("virtio-iommu: Fix 64kB host page size VFIO device assignment")
-for granule freeze. But I would be keen to get rid of this trick.
-
-However with VFIO-PCI hotplug, this technique fails due to the
-race between the call to the callback in the add memory listener
-and the virtio-iommu probe request. Indeed the probe request gets
-called before the attach to the domain. So in that case the usable
-regions are communicated after the probe request and fail to be
-conveyed to the guest.
-
-Using an IOMMU MR Ops is unpractical because this relies on the IOMMU
-MR to have been enabled and the corresponding vfio_listener_region_add()
-to be executed. Instead this series proposes to replace the usage of this
-API by the recently introduced PCIIOMMUOps: ba7d12eb8c  ("hw/pci: modify
-pci_setup_iommu() to set PCIIOMMUOps"). That way, the callback can be
-called earlier, once the usable IOVA regions have been collected by
-VFIO, without the need for the IOMMU MR to be enabled.
-
-This series also removes the spurious message:
-qemu-system-aarch64: warning: virtio-iommu-memory-region-7-0: Notified about new host reserved regions after probe
-
-In the short term this may also be used for passing the page size
-mask, which would allow to get rid of the hacky transient IOMMU
-MR enablement mentionned above.
-
-[1] [PATCH v4 00/12] VIRTIO-IOMMU/VFIO: Don't assume 64b IOVA space
-    https://lore.kernel.org/all/20231019134651.842175-1-eric.auger@redhat.com/
-
-Extra Notes:
-With that series, the reserved memory regions are communicated on time
-so that the virtio-iommu probe request grabs them. However this is not
-sufficient. In some cases (my case), I still see some DMA MAP failures
-and the guest keeps on using IOVA ranges outside the geometry of the
-physical IOMMU. This is due to the fact the VFIO-PCI device is in the
-same iommu group as the pcie root port. Normally the kernel
-iova_reserve_iommu_regions (dma-iommu.c) is supposed to call reserve_iova()
-for each reserved IOVA, which carves them out of the allocator. When
-iommu_dma_init_domain() gets called for the hotplugged vfio-pci device
-the iova domain is already allocated and set and we don't call
-iova_reserve_iommu_regions() again for the vfio-pci device. So its
-corresponding reserved regions are not properly taken into account.
-
-This is not trivial to fix because theoretically the 1st attached
-devices could already have allocated IOVAs within the reserved regions
-of the second device. Also we are somehow hijacking the reserved
-memory regions to model the geometry of the physical IOMMU so not sure
-any attempt to fix that upstream will be accepted. At the moment one
-solution is to make sure assigned devices end up in singleton group.
-Another solution is to work on a different approach where the gaw
-can be passed as an option to the virtio-iommu device, similarly at
-what is done with intel iommu.
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/iommufd_nesting_preq_v7_resv_regions_v4
-
-History:
-v3 -> v4:
-- add one patch to add aliased pci bus and devfn in the HostIOMMUDevice
-- Use those for resv regions computation
-- Remove VirtioHostIOMMUDevice and simply use the base object
-
-v2 -> v3:
-- moved the series from RFC to patch
-- collected Zhenzhong's R-bs and took into account most of his comments
-  (see replies on v2)
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QqW4kp9tixbl
 
 
-Eric Auger (8):
-  HostIOMMUDevice: Store the VFIO/VDPA agent
-  virtio-iommu: Implement set|unset]_iommu_device() callbacks
-  HostIOMMUDevice: Introduce get_iova_ranges callback
-  HostIOMMUDevice: Store the aliased bus and devfn
-  virtio-iommu: Compute host reserved regions
-  virtio-iommu: Remove the implementation of iommu_set_iova_range
-  hw/vfio: Remove memory_region_iommu_set_iova_ranges() call
-  memory: Remove IOMMU MR iommu_set_iova_range API
+>> Talking of which, why are we passing a 'VFIODevice *' parameter to
+>> HostIOMMUDeviceClass::realize ? I don't see a good reason
+>>
+>> I think a 'VFIOContainerBase *' would be more appropriate since
+>> 'HostIOMMUDevice' represents a device on the host which is common
+>> to all VFIO devices.
+>>   
+>> In that case, HostIOMMUDevice::agent wouldn't need to be opaque
+>> anymore. It could  simply be a 'VFIOContainerBase *' and
+>> hiod_legacy_vfio_get_iova_ranges() in patch 3 would grab the
+>> 'iova_ranges' from the 'VFIOContainerBase *' directly.
+>>
+>> This means some rework :
+>>
+>> * vfio_device_get_aw_bits() would use a  'VFIOContainerBase *' instead.
+>> * HostIOMMUDevice::name would be removed. This is just for error
+>> messages.
+>> * hiod_iommufd_vfio_realize() would use VFIOIOMMUFDContainer::be.
+>>
+>> That said, I think we need the QOMification changes first.
+> 
+> OK I need to review your series first. At the moment I have just
+> addressed Zhenzhong's comment in v4, just sent.
 
- include/exec/memory.h              |  32 ----
- include/hw/virtio/virtio-iommu.h   |   2 +
- include/sysemu/host_iommu_device.h |  11 ++
- hw/pci/pci.c                       |   8 +-
- hw/vfio/common.c                   |  10 -
- hw/vfio/container.c                |  17 ++
- hw/vfio/iommufd.c                  |  18 ++
- hw/virtio/virtio-iommu.c           | 296 +++++++++++++++++++----------
- system/memory.c                    |  13 --
- 9 files changed, 249 insertions(+), 158 deletions(-)
+Yep. Just take a look at mine. If both of you agree with above
+proposal, I can care of it and resend all 3. It's a small change.
 
--- 
-2.41.0
+Thanks,
+
+C.
 

@@ -1,394 +1,225 @@
-Received: by 2002:a17:906:18aa:b0:a6f:6ed6:9beb with SMTP id c10csp253865ejf;
-        Fri, 14 Jun 2024 15:01:02 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH1LT/pOT3VPaU1A34u66mWMgua54hLMhSEayP2eppqnnFeLpegm0AsduXXIpjVTDO3ukN1
-X-Received: by 2002:a17:90a:67c5:b0:2bd:8aca:f1e0 with SMTP id 98e67ed59e1d1-2c4db24c533mr4105836a91.19.1718402462506;
-        Fri, 14 Jun 2024 15:01:02 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1718402462; cv=pass;
+Received: by 2002:a17:906:18aa:b0:a6f:6ed6:9beb with SMTP id c10csp674300ejf;
+        Sat, 15 Jun 2024 11:56:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCX797PA4vn4YPuVhFF47EjsBN8qwwpFbtr6XGUlXE0KE7ix6U+xOUsZEVoVNYgcdBkcjY3T7szkAWe/M0FNg3emwnUqn5Wx
+X-Google-Smtp-Source: AGHT+IHYJoVlOXI7zQ5H1DIEBAw2exVArM4qj7dTK3hNnvOT77b/S8UZ4t0K2l1ziRTx/SSc2Eip
+X-Received: by 2002:a05:620a:2993:b0:798:1020:dd5b with SMTP id af79cd13be357-798d242f625mr680121985a.46.1718477802068;
+        Sat, 15 Jun 2024 11:56:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1718477802; cv=pass;
         d=google.com; s=arc-20160816;
-        b=hkI+RPLxFHCVHIgwwk/MEcBL09GnXsPBn1PIP/1P1yw9O1yna4xTn0Aa4F7d7CnzHs
-         viJIHSM92g/DpQaXBh7pjOPzpMfmQQ1FSc3pgJY9EAZoygZ7eLwPsj3G/0q0cZaDxALf
-         Pq8THDCBpt0R7q7VMqzTLXHL26sMnnNlFgno0QzSYceUiovasMsUgQgGePWiWBO6hvc3
-         KLHCGJxCJbNxOruEtLJA21NBzgh/y8+fW7k63W7m1p+xG2J26JLrQp8X4EB6SKxxyIah
-         Z8CnRQZxj4/JZ2bDXMIdeT1w88B9CFnwDEk2tQoZ1aja6iIjV5LloGNDB4LPunRGh0yV
-         pkoA==
+        b=NZ4Lk8wAm8zLjTMdNg9hVZ7QWZV3dR6QbE+KTVLjVpB2YtwYDseBWi8h/uYBHRjYVK
+         urtpOoOMMOiB7Q4A1LF2wyfQy7gr+J3vJnKmWeBJ1xDFRs1C6fPCCSNvLreY/LsVpD5V
+         cIrAeHrhu2jDDikPembAmEwYvw1T9bEpQahJa3DuUBBAsoWx5HHdSt5dC4CBKWtzl5Dz
+         cIwEkgkeMbJkoutHTwqw83qPp0tzdn2BbKkUMtcSgD+znQgUQLQoYMK3T47D7VHqOvXh
+         o3fr1lEUygYi+qEb5DM/kFRYY2nJFPt7UfLLETPKM0cxRAHjAPVE+L2I4gWhvG0Dsi4G
+         9vFg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:list-unsubscribe:list-subscribe
-         :list-id:precedence:references:message-id:subject:cc:to:from:date
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=gvkzE80Zx1aHM1GM+SHSE0nbTlEwUCR4IoOEEsugEgA=;
-        fh=SaL3oBmRuANBhwgCBVd++11MK0z+Zf7V6sGSeOVr3ko=;
-        b=nLXI+Z7e0Rw4iPpqSLPtwRhcPsbIxWd1dM1JpgIpEKYrhYfO1hulQfZqLGPAezBRLT
-         fOrbc/P5fnE/PVUHwNjvD+6d0L5LSNeXePOaytxJfmk4fMDu4zfejUXEzE+RFWi2LoGp
-         iImgrkb8II2MUuaTjWWQQ0JA4E8/2Y54q/2UuM+0j0H2z99kUTMl7guo6tcpI6saISoE
-         +3QBP6MQpH9l0W4CBGf4FSdHtAnklU+PL5ju1TeQvI4Tvld0mx56xHy/8jnS5bVXxM0s
-         sY3qe9/90w5ZDsqufKbjQLDmuzGrqRiLeLkVoZGEfP0HOW058NbDq04sM3iqaesx1TOx
-         ezdg==;
+        bh=dlJSt41gKHiEWb27Af6G6WBrPYOCMEPeGXr67enevB4=;
+        fh=D2ZM5oZynQf8IGWUrgxM+r+6qvTzm7e6XbJg4tGmwJE=;
+        b=NKFT0xemiEC47v237pnF6rBpUR7JCi49ccH4vmADjBU6gfUkx7fhheMJ/rTSn7NVH1
+         vgSo3mhsj6K+xih/X2dSafVa71KhD5OQfBUoSqfqFK/tMMYTsDSSlwNlPMvItwQUFxuP
+         5gnfxcEq6oum9r5Izq+3IYqfC+kiUDsrrT/OANfc7oMOxCzzS7ydivxPnhP7eQZKD7Xn
+         x7OlcwHvR7BqH81ojABRtWXGcdcx4lH2ERz/Of95kD0+dgNZL/M6Wtx9YRWxr/Xm3XVM
+         +4R2nDpWNRo72CntJBkcAineFbfXFvrif0xWxQpKo/XPcoFd7SzitoKxYjyX9IxNgqAn
+         8A/w==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b=Hz+C7lLI;
-       arc=pass (i=1 spf=pass spfdomain=treblig.org dkim=pass dkdomain=treblig.org dmarc=pass fromdomain=treblig.org);
-       spf=pass (google.com: domain of kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
-Return-Path: <kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d9443c01a7336-1f855e3abddsi42917305ad.110.2024.06.14.15.01.01
+       dkim=pass header.i=@provenrun.com header.s=selector1 header.b=eqBSdkPT;
+       arc=pass (i=1 spf=pass spfdomain=provenrun.com dkim=pass dkdomain=provenrun.com dmarc=pass fromdomain=provenrun.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=provenrun.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-798abe539adsi510634585a.540.2024.06.15.11.56.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 14 Jun 2024 15:01:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 15 Jun 2024 11:56:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@treblig.org header.s=bytemarkmx header.b=Hz+C7lLI;
-       arc=pass (i=1 spf=pass spfdomain=treblig.org dkim=pass dkdomain=treblig.org dmarc=pass fromdomain=treblig.org);
-       spf=pass (google.com: domain of kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-19723-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=treblig.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 9BE0B285674
-	for <alex.bennee@linaro.org>; Fri, 14 Jun 2024 22:01:00 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 066FC18413E;
-	Fri, 14 Jun 2024 22:00:48 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=treblig.org header.i=@treblig.org header.b="Hz+C7lLI"
-Received: from mx.treblig.org (mx.treblig.org [46.235.229.95])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A6789184126
-	for <kvm@vger.kernel.org>; Fri, 14 Jun 2024 22:00:44 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=46.235.229.95
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1718402447; cv=none; b=Li4xd+Z4FCQqTbBXZg/fligaPOA8O68uv8q68qKQ8PJc8fZZOE7IJ3Wdv+0OxiI63h8VB/F68oPYhrUiKqzBnT42v+N6R4QvXqFJBoGGXjaMJxvt5eFCekoid46TM44O21nRjfPkfvwfiMitMTI6AE3njGsLIMRf84ioNZoInVA=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1718402447; c=relaxed/simple;
-	bh=yaVkvuEhQePrjuOoUNvSpBxxjHjgzxzh4Lf9OmY2FYs=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=jC1023WOCyCVzCLXfTToTsOgBEerkHch1MPfCU7QaJNjHP+O7ozf4XeUg8s9lb0p7PqesiKs0vBlj3SiN64SoDo0r6ZPoVDM2y5Hz7xVWqE44+8zUmESp2Nj2X/iE/MAgLcsx6Utiq65bf82C2EqFLrJvHIJCRdLcbR0bKyMyfY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=treblig.org; spf=pass smtp.mailfrom=treblig.org; dkim=pass (2048-bit key) header.d=treblig.org header.i=@treblig.org header.b=Hz+C7lLI; arc=none smtp.client-ip=46.235.229.95
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=treblig.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=treblig.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
-	; s=bytemarkmx; h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
-	:Subject; bh=gvkzE80Zx1aHM1GM+SHSE0nbTlEwUCR4IoOEEsugEgA=; b=Hz+C7lLIw1mUgWdS
-	blI/UuhUPxrfhFZEl6eH3BIxRdwl3hntBxoMHNlCc/ZtJ2yNqlrdGYsDm/4Vlbqo0Jtl0AaDoZRkR
-	nY0oLejtrrIE8Y9V+lwWdITLq9Kmr1KK7MZiCrlcS3EgxqRpBdnO72bAePcTZ8aXgegupgtjxzPGJ
-	BgQkddXImomxqWUF3O1pszjp+Z9vwzsyUmO3dE9S2yRr2KilDhnCvVGkGFZNqbUriRhpg169ecIdg
-	KpTd+xHzQiiWns/q97VAgBAUQptVeSFWIOVlgnly/b6O76KmBxqiNDMbYrTZUoWUr50eO0NcTH/Fu
-	SbH/+/OSU0tzx9SMkg==;
-Received: from dg by mx.treblig.org with local (Exim 4.96)
-	(envelope-from <dg@treblig.org>)
-	id 1sIEyJ-006LYG-2n;
-	Fri, 14 Jun 2024 22:00:35 +0000
-Date: Fri, 14 Jun 2024 22:00:35 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	qemu-devel@nongnu.org, David Hildenbrand <david@redhat.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Mark Burton <mburton@qti.qualcomm.com>, qemu-s390x@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
-	Laurent Vivier <lvivier@redhat.com>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Alexandre Iooss <erdnaxe@crans.org>, qemu-arm@nongnu.org,
-	Alexander Graf <agraf@csgraf.de>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Marco Liebel <mliebel@qti.qualcomm.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Roman Bolshakov <rbolshakov@ddn.com>, qemu-ppc@nongnu.org,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Cameron Esfahani <dirty@apple.com>,
-	Jamie Iles <quic_jiles@quicinc.com>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH 9/9] contrib/plugins: add ips plugin example for cost
- modeling
-Message-ID: <Zmy9g1U1uP1Vhx9N@gallifrey>
-References: <20240612153508.1532940-1-alex.bennee@linaro.org>
- <20240612153508.1532940-10-alex.bennee@linaro.org>
- <ZmoM2Sac97PdXWcC@gallifrey>
- <777e1b13-9a4f-4c32-9ff7-9cedf7417695@linaro.org>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+       dkim=pass header.i=@provenrun.com header.s=selector1 header.b=eqBSdkPT;
+       arc=pass (i=1 spf=pass spfdomain=provenrun.com dkim=pass dkdomain=provenrun.com dmarc=pass fromdomain=provenrun.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=provenrun.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sIYZV-00019u-1E; Sat, 15 Jun 2024 14:56:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <florian.lugou@provenrun.com>)
+ id 1sIYZR-00014s-Th; Sat, 15 Jun 2024 14:56:14 -0400
+Received: from mail-mr2fra01on20715.outbound.protection.outlook.com
+ ([2a01:111:f403:261c::715]
+ helo=FRA01-MR2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <florian.lugou@provenrun.com>)
+ id 1sIYZQ-00076c-Ac; Sat, 15 Jun 2024 14:56:13 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=b9bDZVZsukwDycHc0WTXcrcUWkOpo4xau2KgBAeibwPhvunOYZ+NDTljRLECIO1mByQT74J1oGfPJQMLmVfr3A3AF1DyzK6fpHoeaBEbqe9+YnqFJOEZkamOt3oOEtXEj0eXJdhCk3htEzTruNYMJOELONCUZkCy1QvKKvuYLRVkJtuozXC5IqjIE1hZmyBkyL/LKcDZOhB9YEbZ8jsUeXaWFi1vkfvF9RU/IuO5I7cslpmji0Rkb5P9BuvDTo9CtUziv3y6+1Z3Ogy4XdGlx7oLGZS7f9NTMTvF8mLF12PPO/L4LT30zjGPLsv7CIC1/BGtGzoiKz86NCGZxu7Fvw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=dlJSt41gKHiEWb27Af6G6WBrPYOCMEPeGXr67enevB4=;
+ b=alJDlejTxtTbm0MKQ+6vx+LFUHpt4/kw3x6VJenZycVzWiRWIKzIfriyDHo+Esqs+n3Kr2u6DrapRUphqGxOE9IQi08FqS1SIow6jfEZAJ6sTihZa0wKnArksfofrHqNMPaUQwe3TKAheT6taK+brpNcOeGuCnuDROpT8kpaO0fk+uJwRAnfNIhyuocLNXhWQhBLznONzoriVfY6RSuxLISU/KQ0+Sd2IQMlEre5fEyx0aPnf8aLN163ytAYQc14OYzKRhj53ulD4+TYxGecwm8zL70o2BW+ZYkxtVvBYS6ROpv3kouvE0ogcjVtJgKMNhwfQigqzkL3UfhTc9G3XQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=provenrun.com; dmarc=pass action=none
+ header.from=provenrun.com; dkim=pass header.d=provenrun.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=provenrun.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dlJSt41gKHiEWb27Af6G6WBrPYOCMEPeGXr67enevB4=;
+ b=eqBSdkPTlAU6MwFyC2GQRACERg1VPvC8JBBksMjXXtjcFszoNifrD1IdTmukjwhq986fyPOrmmp1EXtuhOGTvAaRby1r8pURfUvcirThTrsoPzZ9zaE/OewMUvvpMYq/x6GGjSlEbUvKwTLkNrLyy21mQvSbDRrZtZrxcb5dxsATa7LE3yEJLpshFHZg2Nn84rjmPkq5iZv/Zs/ScrC5qXswfXetqaHCn1b0YPDD8c3ylhW7CuQk/PAhXinmYyyBy8zRnsZbRyrGM4VZSFMT7FDoJLvcvxcjTCFLRCZPyRs73sfif7eiVXQl9A1Rg6woQH9DQ1Y+VGRycb7SFFJwAg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=provenrun.com;
+Received: from PAZP264MB2990.FRAP264.PROD.OUTLOOK.COM (2603:10a6:102:1f2::18)
+ by MR1P264MB2210.FRAP264.PROD.OUTLOOK.COM (2603:10a6:501:15::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.29; Sat, 15 Jun
+ 2024 18:56:06 +0000
+Received: from PAZP264MB2990.FRAP264.PROD.OUTLOOK.COM
+ ([fe80::ef1:e8a1:244f:3ca7]) by PAZP264MB2990.FRAP264.PROD.OUTLOOK.COM
+ ([fe80::ef1:e8a1:244f:3ca7%3]) with mapi id 15.20.7677.029; Sat, 15 Jun 2024
+ 18:56:06 +0000
+From: Florian Lugou <florian.lugou@provenrun.com>
+To: qemu-devel@nongnu.org
+Cc: Florian Lugou <florian.lugou@provenrun.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH] target/arm/helper: Fix timer interrupt masking when
+ HCR_EL2.E2H == 0
+Date: Sat, 15 Jun 2024 20:54:23 +0200
+Message-Id: <20240615185423.49474-1-florian.lugou@provenrun.com>
+X-Mailer: git-send-email 2.34.1
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <777e1b13-9a4f-4c32-9ff7-9cedf7417695@linaro.org>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
-X-Uptime: 21:54:02 up 37 days,  9:08,  1 user,  load average: 0.00, 0.00, 0.00
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-TUID: EvRrGl9Ehbrr
+Content-Type: text/plain
+X-ClientProxiedBy: LO4P123CA0599.GBRP123.PROD.OUTLOOK.COM
+ (2603:10a6:600:295::11) To PAZP264MB2990.FRAP264.PROD.OUTLOOK.COM
+ (2603:10a6:102:1f2::18)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PAZP264MB2990:EE_|MR1P264MB2210:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4203f982-1c07-44bd-3a47-08dc8d6ccfe5
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230037|366013|52116011|376011|1800799021;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?R43vBvovqQppDXiUGnsWH8ebQgqf68CYyUZW0dGuhV6+3zqF+G5HMHaWVnzi?=
+ =?us-ascii?Q?2Rd3QoeF/W5IXWTR0k3JiAQrgVmz7lM7ru6t/lG6DnJnEe4MDG7IRvX2zd5n?=
+ =?us-ascii?Q?RhUhRauE558ou9+jNnSyvMdHDqwD3ESikC4VDtzW2XmBcS+y7OSAPHaKi5sj?=
+ =?us-ascii?Q?Ha98uI2yJ0TmOAKj+Hnb+1GHVeq4kAmjBfEDqmyGcNmsOY1vxb7FA0OzFvC9?=
+ =?us-ascii?Q?pTdPHkKkzUJ6bBXGvViXQ4apWsi4oD7D2ZesGJAatkmKICmptBQhZ8hFn33F?=
+ =?us-ascii?Q?pFXT6OnPRPefYRqZ0yKbjHIbulJpiYWdUDYcE5L9YBUruzxSEUTypvTkl6IV?=
+ =?us-ascii?Q?Ek+nhkCIBZNzmYjHHVwY7dc5viz+3p8jM9c0T49ouyTbfXtpf0oA9/90/Fl8?=
+ =?us-ascii?Q?Dk5OaBqSfz6f8hi8uvTOQ4E61LwWzK+46FgtwVfnTG5pRDlYv02Oj+1eaQ8G?=
+ =?us-ascii?Q?FzpnA8+7rhb6zm0ABuAEyetldD61UahAspQWvITbZ4A24ovS1pM7Z1qXMKgi?=
+ =?us-ascii?Q?czB3bCQhcQDEo/HxlRLwPO2ThtRyGLYHJue1mVTG8qHnXbekbg7Rxg8GsbhC?=
+ =?us-ascii?Q?Z4i7evRt2UvK+5DyEP90wQYul36tzB1yq7NwZR4IvHL/s2WJ8WA11zZtHuGp?=
+ =?us-ascii?Q?+NcEsjSZOnGsmjstud1WyoOWyic1002vxlGL1NH/xfqBMBClrG8JhrYBU/hr?=
+ =?us-ascii?Q?fyulCTYEnMxN11pJOmbKyl8xFcfB3AEHGM1UVhsPMiWt6AwC+4AROzh4ysMW?=
+ =?us-ascii?Q?orCKo/PuAXFFsRLGVkDCGmeUu0wsCqxf5FCy+wyhdNUcE3ZeIomklYAOvVt/?=
+ =?us-ascii?Q?c2RZeZybrQsvJhlz9QyRBCote+ZuV63mA+dhr1b4VRSYo0D88AvN0GPqS2iG?=
+ =?us-ascii?Q?D7nivOHPMTSUSkIeZaVgty+xiJXvMYY0qIfhna3yhPWC8DPjsH8706wbs8pO?=
+ =?us-ascii?Q?5c5wIhke+f7WgHvqDWt1rRh8F25KWKXxgeyb9RJWKaGPghtflzBakwOJL7IU?=
+ =?us-ascii?Q?Llwiu5MhxseM5oxlGyB1KRhrO2DtiRR+wajZ8a+EBkI9d9GPC0TegvJLgqBm?=
+ =?us-ascii?Q?4ybeQan88KgxWL3qQdYi1i4nOTkCGxHQ5j/mHf1L0hPmA6yy7Sj3M+oe/p7k?=
+ =?us-ascii?Q?k0zcayQVAxoUM7hPPoDGFjuhKhGzWkXGBrG83gtHSSvRZyqlGfRCttNZm+lR?=
+ =?us-ascii?Q?nn7D4fNmBbwxIp49os38mY7KbxDa8cIDzHD9yqC6ydKd2Q4ENgFeYYinGe/t?=
+ =?us-ascii?Q?fny/6sQXm09Y2oBer184yLkFjNdcdIPkAgtuPeKoZ/Gy/vIFtYeMHkIa6e7y?=
+ =?us-ascii?Q?ub8NxREcfpw5jkpLsYtNe1wB?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PAZP264MB2990.FRAP264.PROD.OUTLOOK.COM; PTR:; CAT:NONE;
+ SFS:(13230037)(366013)(52116011)(376011)(1800799021); DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?oCP6CVuiDkZ6sjCvF2Sa//DtjBEY2voWHwNdywi8w2iI7NZBMPX49uumtgVZ?=
+ =?us-ascii?Q?VGDJOudzj2pHiuiH+sIitQJt4jH9XFY+sibFwUT7MSjopY1WGDHB1aaJOzgh?=
+ =?us-ascii?Q?LeuL6KvAxtN/vE3QmRmhITVdDbOhY7ij1WNM93/HNN8B8vF5m+4CjhKOvo86?=
+ =?us-ascii?Q?LrszQ3C/PBdzemfU0EDqucvbSuYfMNRPgMbcssbVfR0fdhLUBvA68r1GTB9e?=
+ =?us-ascii?Q?dhlWFFwYTdkVJ79KsRU61/1RnHvqzwHA3M3BFGUKGjB2O3Ln/ADv2zEQ4UQx?=
+ =?us-ascii?Q?LuvyL+qTlfxUeOwdAV5wavygaNnKIbTzP+GKukHupCzWStXkMIxjvtSd4i64?=
+ =?us-ascii?Q?muLioSCncm1YW7+bZZqh8gGUZqvpCJMsB8bHT3Fz0HXPLD/MsOSgu0oqM7MH?=
+ =?us-ascii?Q?3CjxBFk0NYBHSeEYIkjmfvc3IoLt1BsYSOy/iaEw8IrB14iHVQ8iFAwKlZAH?=
+ =?us-ascii?Q?WLsM29Ha95YoEdQwUPCXYN0uuj3z1vSL9e6o2BZXYvh5FbqLl/m7XjsSbIEk?=
+ =?us-ascii?Q?CFuyVm7VsyG278mXGz3ieCUx3faeUT+AJKGGqJXKEv0YmehWsLggaaV87HK1?=
+ =?us-ascii?Q?hK3GZ6vXSkqbWqjVxPsMo3YpnWY1TWefHeBmbxYjQsyLwFAkSiCJb7DfD2LQ?=
+ =?us-ascii?Q?GPj2PrGS2vZ1L9GJdWyYrWgjVem2S3hltZPRFlLooqDeYy8YGFAX9Co9MC5w?=
+ =?us-ascii?Q?PJs9CWCW7WwKIaDs6ydj+zJeJ7WSJOCA8xVk5sARvl7I21kerMFfCpI5V98V?=
+ =?us-ascii?Q?FlJligpXnxWzR8EH3VckeyxeGKoTKX8zVSUodeff1fbaAbjQYYQpHTTZNqF3?=
+ =?us-ascii?Q?lZCwzvqwFQn5bDWKNDUS1XXXbEcq1ZO3fEHjnoG1X7f1Qw7hhGubS+IjegrM?=
+ =?us-ascii?Q?18EJ5iy+gpsZpqvktzk9H40RJDLPW5juDISSveQdgGsSAKEX9rLv8YRBH0xH?=
+ =?us-ascii?Q?z1qPGdR5L5i4XhTh1OVtBLLsmq1UGIRVa+25+k4cbBmNTqHhmOohfTbxnIS+?=
+ =?us-ascii?Q?8XACM9h4Veu7BXE+w+uAs/+ej7ezUwmvt43FIPWg+hpb5SMDoE069sbxptbc?=
+ =?us-ascii?Q?R1ZEy3JB8fDI03mqmkEoKlfLsRDgp0GABf8yrqdtt8W0O8klHZccLLD65Iuc?=
+ =?us-ascii?Q?eXWgPLrMvKKi+DwPxmVCa8ayPeSTOyLqO2TxcKGYR2rknHQ3WoI9sFThrFHF?=
+ =?us-ascii?Q?DmCq1BiNLItA36uzWN+88jYeGYZQ1fSOKOJa0LpPazUam1V9LI9l9TWojvkJ?=
+ =?us-ascii?Q?c0n1CAAYaIAapSNzS9UWSGW/po3wp619HECfO14StBGuaVXfTVtb6g6x4KnR?=
+ =?us-ascii?Q?0qpI6JIncsEI32fIJ+lxFfU37V0fxrlge1Ppv4f1QS07J0Nvze0/xT6b1Oga?=
+ =?us-ascii?Q?x7byoeWRNK/8Ah1ela1kkfkc2sef17zLByoIxOTTiQmHcDjFzkmuGCOj8NZL?=
+ =?us-ascii?Q?iGMblpC+cIrtB9gvdwxLNg7GICCjEA/vlfQiayBFRUhyiGKCWdv6gx3uEehN?=
+ =?us-ascii?Q?tzePSkdi+QicXHe8PuMcmeu4GRPnFey9jI4aAi4sNDbfH63sbZtUaGhEE7Rb?=
+ =?us-ascii?Q?9rfvHdna0GgVKtuE57/fb+BuGt+YP/naDIB5Eagtf5XcC+k6iQZvHMt12x1e?=
+ =?us-ascii?Q?OZCELr047Jb3WCpPbuTMTwt6iCBtO50yOUX6C7oHKqCASG79rE3XaVY1th16?=
+ =?us-ascii?Q?wyJ1QA=3D=3D?=
+X-OriginatorOrg: provenrun.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4203f982-1c07-44bd-3a47-08dc8d6ccfe5
+X-MS-Exchange-CrossTenant-AuthSource: PAZP264MB2990.FRAP264.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2024 18:56:06.4979 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: ff654c30-3eb4-4445-b89f-a54a92b1f03d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: s6xWJ3fnLKEPmSyHMkki5rJazIhRi7ay2rwMWJv4kitQMRBycuQxgIc39JWwxQeQ08ErLidmNbb/hxgJhK0JF5XJFlYZrpKD2NNHeqdq47c=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MR1P264MB2210
+Received-SPF: pass client-ip=2a01:111:f403:261c::715;
+ envelope-from=florian.lugou@provenrun.com;
+ helo=FRA01-MR2-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9Vlo1tmwCD9K
 
-* Pierrick Bouvier (pierrick.bouvier@linaro.org) wrote:
-> Hi Dave,
-> 
-> On 6/12/24 14:02, Dr. David Alan Gilbert wrote:
-> > * Alex Bennée (alex.bennee@linaro.org) wrote:
-> > > From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> > > 
-> > > This plugin uses the new time control interface to make decisions
-> > > about the state of time during the emulation. The algorithm is
-> > > currently very simple. The user specifies an ips rate which applies
-> > > per core. If the core runs ahead of its allocated execution time the
-> > > plugin sleeps for a bit to let real time catch up. Either way time is
-> > > updated for the emulation as a function of total executed instructions
-> > > with some adjustments for cores that idle.
-> > 
-> > A few random thoughts:
-> >    a) Are there any definitions of what a plugin that controls time
-> >       should do with a live migration?
-> 
-> It's not something that was considered as part of this work.
+CNTHCTL_EL2 based masking of timer interrupts was introduced in
+f6fc36deef6abcee406211f3e2f11ff894b87fa4. This masking was however
+effective no matter whether EL2 was enabled in the current security
+state or not, contrary to arm specification.
 
-That's OK, the only thing is we need to stop anyone from hitting problems
-when they don't realise it's not been addressed.
-One way might be to add a migration blocker; see include/migration/blocker.h
-then you might print something like 'Migration not available due to plugin ....'
+Signed-off-by: Florian Lugou <florian.lugou@provenrun.com>
+---
+ target/arm/helper.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> >    b) The sleep in migration/dirtyrate.c points out g_usleep might
-> >       sleep for longer, so reads the actual wall clock time to
-> >       figure out a new 'now'.
-> 
-> The current API mentions time starts at 0 from qemu startup. Maybe we could
-> consider in the future to change this behavior to retrieve time from an
-> existing migrated machine.
-
-Ah, I meant for (b) to be independent of (a) - not related to migration; just
-down to the fact you used g_usleep in the plugin and a g_usleep might sleep
-for a different amount of time than you asked.
-
-> >    c) A fun thing to do with this would be to follow an external simulation
-> >       or 2nd qemu, trying to keep the two from running too far past
-> >       each other.
-> > 
-> 
-> Basically, to slow the first one, waiting for the replicated one to catch
-> up?
-
-Yes, something like that.
-
-Dave
-
-> > Dave >
-> > > Examples
-> > > --------
-> > > 
-> > > Slow down execution of /bin/true:
-> > > $ num_insn=$(./build/qemu-x86_64 -plugin ./build/tests/plugin/libinsn.so -d plugin /bin/true |& grep total | sed -e 's/.*: //')
-> > > $ time ./build/qemu-x86_64 -plugin ./build/contrib/plugins/libips.so,ips=$(($num_insn/4)) /bin/true
-> > > real 4.000s
-> > > 
-> > > Boot a Linux kernel simulating a 250MHz cpu:
-> > > $ /build/qemu-system-x86_64 -kernel /boot/vmlinuz-6.1.0-21-amd64 -append "console=ttyS0" -plugin ./build/contrib/plugins/libips.so,ips=$((250*1000*1000)) -smp 1 -m 512
-> > > check time until kernel panic on serial0
-> > > 
-> > > Tested in system mode by booting a full debian system, and using:
-> > > $ sysbench cpu run
-> > > Performance decrease linearly with the given number of ips.
-> > > 
-> > > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> > > Message-Id: <20240530220610.1245424-7-pierrick.bouvier@linaro.org>
-> > > ---
-> > >   contrib/plugins/ips.c    | 164 +++++++++++++++++++++++++++++++++++++++
-> > >   contrib/plugins/Makefile |   1 +
-> > >   2 files changed, 165 insertions(+)
-> > >   create mode 100644 contrib/plugins/ips.c
-> > > 
-> > > diff --git a/contrib/plugins/ips.c b/contrib/plugins/ips.c
-> > > new file mode 100644
-> > > index 0000000000..db77729264
-> > > --- /dev/null
-> > > +++ b/contrib/plugins/ips.c
-> > > @@ -0,0 +1,164 @@
-> > > +/*
-> > > + * ips rate limiting plugin.
-> > > + *
-> > > + * This plugin can be used to restrict the execution of a system to a
-> > > + * particular number of Instructions Per Second (ips). This controls
-> > > + * time as seen by the guest so while wall-clock time may be longer
-> > > + * from the guests point of view time will pass at the normal rate.
-> > > + *
-> > > + * This uses the new plugin API which allows the plugin to control
-> > > + * system time.
-> > > + *
-> > > + * Copyright (c) 2023 Linaro Ltd
-> > > + *
-> > > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > > + */
-> > > +
-> > > +#include <stdio.h>
-> > > +#include <glib.h>
-> > > +#include <qemu-plugin.h>
-> > > +
-> > > +QEMU_PLUGIN_EXPORT int qemu_plugin_version = QEMU_PLUGIN_VERSION;
-> > > +
-> > > +/* how many times do we update time per sec */
-> > > +#define NUM_TIME_UPDATE_PER_SEC 10
-> > > +#define NSEC_IN_ONE_SEC (1000 * 1000 * 1000)
-> > > +
-> > > +static GMutex global_state_lock;
-> > > +
-> > > +static uint64_t max_insn_per_second = 1000 * 1000 * 1000; /* ips per core, per second */
-> > > +static uint64_t max_insn_per_quantum; /* trap every N instructions */
-> > > +static int64_t virtual_time_ns; /* last set virtual time */
-> > > +
-> > > +static const void *time_handle;
-> > > +
-> > > +typedef struct {
-> > > +    uint64_t total_insn;
-> > > +    uint64_t quantum_insn; /* insn in last quantum */
-> > > +    int64_t last_quantum_time; /* time when last quantum started */
-> > > +} vCPUTime;
-> > > +
-> > > +struct qemu_plugin_scoreboard *vcpus;
-> > > +
-> > > +/* return epoch time in ns */
-> > > +static int64_t now_ns(void)
-> > > +{
-> > > +    return g_get_real_time() * 1000;
-> > > +}
-> > > +
-> > > +static uint64_t num_insn_during(int64_t elapsed_ns)
-> > > +{
-> > > +    double num_secs = elapsed_ns / (double) NSEC_IN_ONE_SEC;
-> > > +    return num_secs * (double) max_insn_per_second;
-> > > +}
-> > > +
-> > > +static int64_t time_for_insn(uint64_t num_insn)
-> > > +{
-> > > +    double num_secs = (double) num_insn / (double) max_insn_per_second;
-> > > +    return num_secs * (double) NSEC_IN_ONE_SEC;
-> > > +}
-> > > +
-> > > +static void update_system_time(vCPUTime *vcpu)
-> > > +{
-> > > +    int64_t elapsed_ns = now_ns() - vcpu->last_quantum_time;
-> > > +    uint64_t max_insn = num_insn_during(elapsed_ns);
-> > > +
-> > > +    if (vcpu->quantum_insn >= max_insn) {
-> > > +        /* this vcpu ran faster than expected, so it has to sleep */
-> > > +        uint64_t insn_advance = vcpu->quantum_insn - max_insn;
-> > > +        uint64_t time_advance_ns = time_for_insn(insn_advance);
-> > > +        int64_t sleep_us = time_advance_ns / 1000;
-> > > +        g_usleep(sleep_us);
-> > > +    }
-> > > +
-> > > +    vcpu->total_insn += vcpu->quantum_insn;
-> > > +    vcpu->quantum_insn = 0;
-> > > +    vcpu->last_quantum_time = now_ns();
-> > > +
-> > > +    /* based on total number of instructions, what should be the new time? */
-> > > +    int64_t new_virtual_time = time_for_insn(vcpu->total_insn);
-> > > +
-> > > +    g_mutex_lock(&global_state_lock);
-> > > +
-> > > +    /* Time only moves forward. Another vcpu might have updated it already. */
-> > > +    if (new_virtual_time > virtual_time_ns) {
-> > > +        qemu_plugin_update_ns(time_handle, new_virtual_time);
-> > > +        virtual_time_ns = new_virtual_time;
-> > > +    }
-> > > +
-> > > +    g_mutex_unlock(&global_state_lock);
-> > > +}
-> > > +
-> > > +static void vcpu_init(qemu_plugin_id_t id, unsigned int cpu_index)
-> > > +{
-> > > +    vCPUTime *vcpu = qemu_plugin_scoreboard_find(vcpus, cpu_index);
-> > > +    vcpu->total_insn = 0;
-> > > +    vcpu->quantum_insn = 0;
-> > > +    vcpu->last_quantum_time = now_ns();
-> > > +}
-> > > +
-> > > +static void vcpu_exit(qemu_plugin_id_t id, unsigned int cpu_index)
-> > > +{
-> > > +    vCPUTime *vcpu = qemu_plugin_scoreboard_find(vcpus, cpu_index);
-> > > +    update_system_time(vcpu);
-> > > +}
-> > > +
-> > > +static void every_quantum_insn(unsigned int cpu_index, void *udata)
-> > > +{
-> > > +    vCPUTime *vcpu = qemu_plugin_scoreboard_find(vcpus, cpu_index);
-> > > +    g_assert(vcpu->quantum_insn >= max_insn_per_quantum);
-> > > +    update_system_time(vcpu);
-> > > +}
-> > > +
-> > > +static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
-> > > +{
-> > > +    size_t n_insns = qemu_plugin_tb_n_insns(tb);
-> > > +    qemu_plugin_u64 quantum_insn =
-> > > +        qemu_plugin_scoreboard_u64_in_struct(vcpus, vCPUTime, quantum_insn);
-> > > +    /* count (and eventually trap) once per tb */
-> > > +    qemu_plugin_register_vcpu_tb_exec_inline_per_vcpu(
-> > > +        tb, QEMU_PLUGIN_INLINE_ADD_U64, quantum_insn, n_insns);
-> > > +    qemu_plugin_register_vcpu_tb_exec_cond_cb(
-> > > +        tb, every_quantum_insn,
-> > > +        QEMU_PLUGIN_CB_NO_REGS, QEMU_PLUGIN_COND_GE,
-> > > +        quantum_insn, max_insn_per_quantum, NULL);
-> > > +}
-> > > +
-> > > +static void plugin_exit(qemu_plugin_id_t id, void *udata)
-> > > +{
-> > > +    qemu_plugin_scoreboard_free(vcpus);
-> > > +}
-> > > +
-> > > +QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
-> > > +                                           const qemu_info_t *info, int argc,
-> > > +                                           char **argv)
-> > > +{
-> > > +    for (int i = 0; i < argc; i++) {
-> > > +        char *opt = argv[i];
-> > > +        g_auto(GStrv) tokens = g_strsplit(opt, "=", 2);
-> > > +        if (g_strcmp0(tokens[0], "ips") == 0) {
-> > > +            max_insn_per_second = g_ascii_strtoull(tokens[1], NULL, 10);
-> > > +            if (!max_insn_per_second && errno) {
-> > > +                fprintf(stderr, "%s: couldn't parse %s (%s)\n",
-> > > +                        __func__, tokens[1], g_strerror(errno));
-> > > +                return -1;
-> > > +            }
-> > > +        } else {
-> > > +            fprintf(stderr, "option parsing failed: %s\n", opt);
-> > > +            return -1;
-> > > +        }
-> > > +    }
-> > > +
-> > > +    vcpus = qemu_plugin_scoreboard_new(sizeof(vCPUTime));
-> > > +    max_insn_per_quantum = max_insn_per_second / NUM_TIME_UPDATE_PER_SEC;
-> > > +
-> > > +    time_handle = qemu_plugin_request_time_control();
-> > > +    g_assert(time_handle);
-> > > +
-> > > +    qemu_plugin_register_vcpu_tb_trans_cb(id, vcpu_tb_trans);
-> > > +    qemu_plugin_register_vcpu_init_cb(id, vcpu_init);
-> > > +    qemu_plugin_register_vcpu_exit_cb(id, vcpu_exit);
-> > > +    qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
-> > > +
-> > > +    return 0;
-> > > +}
-> > > diff --git a/contrib/plugins/Makefile b/contrib/plugins/Makefile
-> > > index 0b64d2c1e3..449ead1130 100644
-> > > --- a/contrib/plugins/Makefile
-> > > +++ b/contrib/plugins/Makefile
-> > > @@ -27,6 +27,7 @@ endif
-> > >   NAMES += hwprofile
-> > >   NAMES += cache
-> > >   NAMES += drcov
-> > > +NAMES += ips
-> > >   ifeq ($(CONFIG_WIN32),y)
-> > >   SO_SUFFIX := .dll
-> > > -- 
-> > > 2.39.2
-> > > 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index ce31957235..60e2344c68 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2684,7 +2684,8 @@ static void gt_update_irq(ARMCPU *cpu, int timeridx)
+      * If bit CNTHCTL_EL2.CNT[VP]MASK is set, it overrides IMASK.
+      * It is RES0 in Secure and NonSecure state.
+      */
+-    if ((ss == ARMSS_Root || ss == ARMSS_Realm) &&
++    if ((arm_hcr_el2_eff(env) & HCR_E2H) &&
++        (ss == ARMSS_Root || ss == ARMSS_Realm) &&
+         ((timeridx == GTIMER_VIRT && (cnthctl & R_CNTHCTL_CNTVMASK_MASK)) ||
+          (timeridx == GTIMER_PHYS && (cnthctl & R_CNTHCTL_CNTPMASK_MASK)))) {
+         irqstate = 0;
 -- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+2.34.1
+

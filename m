@@ -1,249 +1,146 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp281697ejb;
-        Mon, 17 Jun 2024 08:03:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUuMa7Y+BqPTWnu/IEQCHoKfjFPbhBuPXlPPhdec7ZonL3C2NEEjV5KpfaBpIph0T2Lg7Y5CyvESk+hkRzvNWpugcfXk0lo
-X-Received: by 2002:a05:600c:91e:b0:421:f04d:ebd2 with SMTP id 5b1f17b1804b1-4230482fbafmr87414815e9.22.1718636623589;
-        Mon, 17 Jun 2024 08:03:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718636623; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp282769ejb;
+        Mon, 17 Jun 2024 08:04:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWjuKUfWt5BHQwqikzvPNm+9dYIKASb2eYA0DjyUA6rR97syrYEYduOjHSs0o8SZivxz10NA6NzWYz9sHl1n0/bq21Zl/kl
+X-Received: by 2002:a05:6000:1f8a:b0:360:98c8:c44a with SMTP id ffacd0b85a97d-36098c8c61dmr2166255f8f.63.1718636696462;
+        Mon, 17 Jun 2024 08:04:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718636696; cv=none;
         d=google.com; s=arc-20160816;
-        b=k/iyOwvuFpt+Jsiz/Rsh6mihlYWVc5ljLnTy0Z9bKGxz114gO3Ymy7tiRJcaoxBzUC
-         6jhtmHeOb+/dRny2waucQKxlU8zc1d1/yZtZ6XXizWZyvT7KVN4g9PyDNAB4bul6acgE
-         IxwVyAYrZmf2th79JBUgg+1XHQFB9u7gO2AuVVb+3AsaRrAvA9SCXTtZyU0ZkROqh8qk
-         NbD/d80CJKCAfBlun5QrWoEPbSbc66Bt6qgvHl4DVx9Q6wSFneWaJ9YL5gqfBopYOeiL
-         xUelDk9gWAJVocLk6w77tyoOklVxikG3gqEv/rD0lz6N0ko9oLjFTuEWCTg9lYnROdpX
-         wzwg==
+        b=ZuxVDo+jWNqW0S27068lfumVe/isJyJuscJ45DVr0oleF3ft0iVfi3VEHXHHhzmm2b
+         xHXr+OgW/bl16K8T2Eli2Lxj3rBZjn3TQ/20qmcYao5XBwamhpCpr1D42ExCax5N4Cep
+         D1eaV9MJyfbn7ez8AH7BRchq6x0dW+T9vfSlvWS7FegzR4CUw9uDvI5hRPdtkKSfHrin
+         OCCjlCwXyQGSha8EKTlUTPXkc7J/PRMa46X0vit9qfFR2+BfN+vHV9LV9uLvD3VihgN1
+         JpAySMp3hcNs7xC1bj9UpSKCzXUOk08hPEBLToogZnPm8hq6q6e7cMl1F7wPyBt4pFfI
+         RkCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=rOvfbNKeAp1OHxpNPkoYNzSFqsgvdhQULu/ykYcZVHc=;
-        fh=zGAhHk5F8mAU8aXL+UWUVo9ikYe5+Tf1JtDthmmiRRs=;
-        b=ElEEfC9JGG2uiCUS47My5hVlC6aBbZdF5mndmaDzzOc7Y81x2XqCG66aeXAFu/ADhk
-         J1NX508Ww9aT8PoJ2Tqlmb/+2W4KuBfan3iFhoceU/w//T6HpP/m13I6xFBRZcA2lPgm
-         3xYnf3YDqyaUyaVk2PcVhXzUdjrLPmnp7U2EPepCl731RmHZj06jvR0cbJg0c7prYpmW
-         NfODBJmufjcwN2RQA9+YC++A7Dh8EUQX6yynTYY9OzYi4c8ga2CzN/txR1jXKZsW2Zs7
-         A9Ouvuvs1zYqbgpLlMA3/eX6fTk6o6yhicJvo6dsXKO3FEix/xAAwMxCK1tCvmTS+bx6
-         isXA==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=JEb/dM6YDzVA2Zymea3s7EQXxCPBswSiGHuTJJHFw+o=;
+        fh=0jZpyj68wAEvAbwMpchA/ck1pxxviAWJ+Ne8atXjucA=;
+        b=J3czOyskDg+dq87l6B2uvYDOSGu0iZdFi7k9jIqqTC6cK5d9gG35Vj25AEeuXdFxuS
+         I9F9uqBY6DXxdhIHYDuMVpKqfileZjpci/XDjHDCHPSYMkAmiMeDrSlh6OSD3fP0jsnU
+         DnL2LTG4EaPO1t9XniBTE9tAVbG97hm8epGbExrnhtifKmAjdrHZ38aEKnAmjTP9aDQ/
+         ySFdtME33R2CDeL4f/JxHoEkx4WpthG2mqb6wObJPzdGbp37UW0gbFXpBAyA7gEwW5Ap
+         JBE6+lq9p/SiAOfOsJuQRuUq5Ze7BzRMGeO1Ppfnpf8oESADrL93xAdDxW4BRbfX/XH/
+         MOgg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=MVJCl03F;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=sEwl+7ui;
        spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <smostafa@google.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-423b9f37da1sor725915e9.10.2024.06.17.08.03.43
+        by mx.google.com with SMTPS id 5b1f17b1804b1-422612dad1bsor4380195e9.10.2024.06.17.08.04.56
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 17 Jun 2024 08:03:43 -0700 (PDT)
+        Mon, 17 Jun 2024 08:04:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=MVJCl03F;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=sEwl+7ui;
        spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1718636623; x=1719241423; darn=linaro.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=rOvfbNKeAp1OHxpNPkoYNzSFqsgvdhQULu/ykYcZVHc=;
-        b=MVJCl03Fu2YT4ti6xkkK6BPl+gOT40Qn9QwHnmarkB8e3IzTcJjB/GaK+r2UJfTAeW
-         mpyVefk3sQHX4u+Ewqr9pqnqD1nZ0Shq1uUWAF+KMKAdesWnapjna5A6uE96ZvVhnwJW
-         ifb9f2pT0JDBhzDRdEEFZp8UNomL/8a3qWING/iOpse3Y++gEK/IgWHkQZXlIgo4CRv+
-         zG/3BBUPmr27ISuLQvjolgzvNkkDj9xHnr+TA2Lm9Lj471khBKsqPP0Qh7FBzsuvsWYY
-         m4ynYTof00aOuUM3VkWgQdPAcWsWl5ZMAeLa2/8SuVCrXjm1trEbIkgr6YT001M9ArXL
-         /bqA==
+        d=google.com; s=20230601; t=1718636696; x=1719241496; darn=linaro.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=JEb/dM6YDzVA2Zymea3s7EQXxCPBswSiGHuTJJHFw+o=;
+        b=sEwl+7uiXhAeRjjHFThwM5uUJiz+mzZ2LMtqdvWaL3cTr8sgk6X7SXJeGYRjNEipiu
+         ckK68iP/g/4VhQ1UZ7NIMw4Wcrv0ca2+52NjKgip5qQpzRZlVL+5F7Ml3hJzsci1Nef9
+         Qiradv1YaHFfOi+szD2sZQORaA/7xOWPYHOGkShzrDHfRbwteb5XEsh70Fy5vSJthhb5
+         /+O7lggza3PaqCmVmd1ETETAkjokWiUMY0pEoomJw3Z4uY0M8yPqoxTLn2z4aiTXKANC
+         lBA0DvXvXKrd7DVlsd8gOCizoaDpF8E1YuQ2sS8WVHqxe9/61srVx/Kb7PbE4SJaDHXh
+         mF4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718636623; x=1719241423;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rOvfbNKeAp1OHxpNPkoYNzSFqsgvdhQULu/ykYcZVHc=;
-        b=TfhCZrJpb+FE0ed/q6hPyp9t0laVhLiR9UqtSkcnOCAHlJAxEhX84QFybVKPVM/7yN
-         WHJ4S0ztcZQf6cM+QV4Qbe0zmBAG1b+KgtTI5lX/houxFR7lDxxWa+s0TYZY4jPIZEP0
-         Ad15AJ/qcffFOwC5NKGLv0CnFUCWkZBQ/FOgryMoZKYh5nXTm7OwsJiXvFP1GEk3qf64
-         8y/xSgMdOm0CgUgpL64zwCOseCMkekyUx7yRITup6nstIly5JNlfpuxNGsaEa65ZoCZc
-         NGC6ncZ/BA/v6UPJEyAo8nnzQoXQ9XWBY/zM1RyOgvX1QOB2EP3cpiclR8tILsULvmVL
-         TiJw==
-X-Forwarded-Encrypted: i=1; AJvYcCUlvuB8EbQh2b9P7UKrdhOk32WgZoXe0VHU5ixnkPU9uK3lilws+jZ/dfrH6hFUu0fPb7+5rSicAhOYXbP0gAzSaDFBNtQH
-X-Gm-Message-State: AOJu0YzEozKHEs9AqndjxTJ9VQkd7W99UmJZp3mKgeqhfTR5g0agHray
-	2ZTZyMlkx7PF9a3RstJMgV1vpVLlta6JvVRVVp8kVu2Ic8N2BBZLpnJSccOjHg==
-X-Google-Smtp-Source: AGHT+IFLcOb7Y3G7ULHlJmHgWhrOf3QTI3TEDE4bBgWF/MDHU3Z40INphhmg9wNHJoUqfKnzm+LWcQ==
-X-Received: by 2002:a05:600c:3483:b0:421:5288:8360 with SMTP id 5b1f17b1804b1-423b5d68360mr3824035e9.0.1718636622815;
-        Mon, 17 Jun 2024 08:03:42 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1718636696; x=1719241496;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=JEb/dM6YDzVA2Zymea3s7EQXxCPBswSiGHuTJJHFw+o=;
+        b=sVmW9M03OUDC1ujMwVjwFMdS0+l2B07gjlfsWC1zXYUc6+MxXXe9kwxGWHss7Xn7vq
+         fh5gFdA6EM3B+//H1DzfVWjbxrUGNRYljnPH0EqJTv+AXHsqR9J3m+ZoDH70eIi/zY/m
+         DhrU9QXA1tZViH4BhsBlFKhjeuyvdKvT3oopD+j1uAA9B7Lxi9oiic1r6XoOHbi9pGdv
+         nzDvK/cv4JaW/k0e3egAhNABaIztPYJQaDD1cn2gkMcHanNmN1X01thhO6HjkBWiBkqZ
+         YE/FZSyTGonYEy0HykcQ8Ze5OxMH8rTVSC2DW/xZ0PivFiF5LUWVzTArw/eo1W/y0xwm
+         t6+A==
+X-Forwarded-Encrypted: i=1; AJvYcCUiHAv/PqHBMy1e6V9FookdMUvvyPwsDVU7E0EpcvLWzNamCiUfzpXh7v6f2QU27z8gxqDJzbUJeWw/W4s67zuGE0eq2Z4E
+X-Gm-Message-State: AOJu0YwMTP6nQlL30HlkGLJvW0A+HcFz77O4DH44uq1j8nIBHhqxtqe7
+	jzzgqyxzKb6kgayD+mOhiqtGYto551LmgKbz3vscJGY0x92nF+xGULw3I0giBw==
+X-Google-Smtp-Source: AGHT+IFcc8pAhmQFYM30VxZjzSVn4m/uUOG+18wjf7NT0dAe5wX6WXwuJeWRAA9xsUXbAMzQ7oJS7A==
+X-Received: by 2002:a05:600c:1d97:b0:421:8486:7d2d with SMTP id 5b1f17b1804b1-423b6687d82mr3468175e9.1.1718636695784;
+        Mon, 17 Jun 2024 08:04:55 -0700 (PDT)
 Return-Path: <smostafa@google.com>
 Received: from google.com (205.215.190.35.bc.googleusercontent.com. [35.190.215.205])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-422f6127d78sm163993445e9.25.2024.06.17.08.03.42
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-422f641a5b4sm161197725e9.41.2024.06.17.08.04.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Jun 2024 08:03:42 -0700 (PDT)
-Date: Mon, 17 Jun 2024 15:03:37 +0000
+        Mon, 17 Jun 2024 08:04:55 -0700 (PDT)
+Date: Mon, 17 Jun 2024 15:04:51 +0000
 From: Mostafa Saleh <smostafa@google.com>
 To: Eric Auger <eric.auger@redhat.com>
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
 	jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
 	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
 	marcin.juszkiewicz@linaro.org
-Subject: Re: [RFC PATCH v3 14/18] hw/arm/smmuv3: Support and advertise nesting
-Message-ID: <ZnBQSYqwdpKFGuDQ@google.com>
+Subject: Re: [RFC PATCH v3 15/18] hw/arm/smmuv3: Advertise S2FWB
+Message-ID: <ZnBQkyn60KO8Zyt-@google.com>
 References: <20240429032403.74910-1-smostafa@google.com>
- <20240429032403.74910-15-smostafa@google.com>
- <38005c2a-0e1d-4140-b046-8fbc82be7d8c@redhat.com>
+ <20240429032403.74910-16-smostafa@google.com>
+ <b3488980-2136-4620-b875-a11f75373462@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <38005c2a-0e1d-4140-b046-8fbc82be7d8c@redhat.com>
-X-TUID: bhv0Ht1b08kv
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <b3488980-2136-4620-b875-a11f75373462@redhat.com>
+X-TUID: ggacYbKhV6XF
 
 Hi Eric,
 
-On Mon, May 20, 2024 at 03:16:40PM +0200, Eric Auger wrote:
-> Hi Mostafa,
+On Mon, May 20, 2024 at 03:30:58PM +0200, Eric Auger wrote:
+> 
 > 
 > On 4/29/24 05:23, Mostafa Saleh wrote:
-> > Everything is in place, add the last missing bits:
-> > - Handle fault checking according to the actual PTW event and not the
-> >   the translation stage.
-> missing the "why". Can't it be moved in a separate patch?
-
-Sure, I will split.
-
-Thanks,
-Mostafa
-
-> > - Consolidate parsing of STE cfg and setting translation stage.
-> >
-> > Advertise nesting if stage requested is "nested".
-> I would move the introduction of the nested option in a separate patch
-> and in the associated commit msg properly document how the new option
-> shall be used.
+> > QEMU doesn's support memory attributes, so FWB is NOP, this
+> > might change in the future if memory attributre would be supported.
+> if mem attributes get supported
 > >
 > > Signed-off-by: Mostafa Saleh <smostafa@google.com>
 > > ---
-> >  hw/arm/smmuv3.c | 50 +++++++++++++++++++++++++++++++++----------------
-> >  1 file changed, 34 insertions(+), 16 deletions(-)
+> >  hw/arm/smmuv3.c | 8 ++++++++
+> >  1 file changed, 8 insertions(+)
 > >
 > > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> > index 96d07234fe..88f6473d33 100644
+> > index 88f6473d33..8a11e41144 100644
 > > --- a/hw/arm/smmuv3.c
 > > +++ b/hw/arm/smmuv3.c
-> > @@ -34,9 +34,10 @@
-> >  #include "smmuv3-internal.h"
-> >  #include "smmu-internal.h"
-> >  
-> > -#define PTW_RECORD_FAULT(cfg)   (((cfg)->stage == SMMU_STAGE_1) ? \
-> > -                                 (cfg)->record_faults : \
-> > -                                 (cfg)->s2cfg.record_faults)
-> > +#define PTW_RECORD_FAULT(ptw_info, cfg) (((ptw_info).stage == SMMU_STAGE_1 && \
-> > +                                        (cfg)->record_faults) || \
-> > +                                        ((ptw_info).stage == SMMU_STAGE_2 && \
-> > +                                        (cfg)->s2cfg.record_faults))
-> >  
-> >  /**
-> >   * smmuv3_trigger_irq - pulse @irq if enabled and update
-> > @@ -260,6 +261,9 @@ static void smmuv3_init_regs(SMMUv3State *s)
-> >      /* Based on sys property, the stages supported in smmu will be advertised.*/
-> >      if (s->stage && !strcmp("2", s->stage)) {
-> >          s->idr[0] = FIELD_DP32(s->idr[0], IDR0, S2P, 1);
-> > +    } else if (s->stage && !strcmp("nested", s->stage)) {
-> > +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, S1P, 1);
-> > +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, S2P, 1);
-> >      } else {
-> >          s->idr[0] = FIELD_DP32(s->idr[0], IDR0, S1P, 1);
-> >      }
-> > @@ -422,8 +426,6 @@ static bool s2_pgtable_config_valid(uint8_t sl0, uint8_t t0sz, uint8_t gran)
-> >  
-> >  static int decode_ste_s2_cfg(SMMUTransCfg *cfg, STE *ste)
-> >  {
-> > -    cfg->stage = SMMU_STAGE_2;
-> > -
-> >      if (STE_S2AA64(ste) == 0x0) {
-> >          qemu_log_mask(LOG_UNIMP,
-> >                        "SMMUv3 AArch32 tables not supported\n");
-> > @@ -506,6 +508,27 @@ bad_ste:
-> >      return -EINVAL;
-> >  }
-> >  
-> > +static void decode_ste_config(SMMUTransCfg *cfg, uint32_t config)
-> > +{
-> > +
-> > +    if (STE_CFG_ABORT(config)) {
-> > +        cfg->aborted = true;
-> > +        return;
-> > +    }
-> > +    if (STE_CFG_BYPASS(config)) {
-> > +        cfg->bypassed = true;
-> > +        return;
-> > +    }
-> > +
-> > +    if (STE_CFG_S1_ENABLED(config)) {
-> > +        cfg->stage = SMMU_STAGE_1;
-> > +    }
-> > +
-> > +    if (STE_CFG_S2_ENABLED(config)) {
-> > +        cfg->stage |= SMMU_STAGE_2;
-> > +    }
-> > +}
-> > +
-> >  /* Returns < 0 in case of invalid STE, 0 otherwise */
-> >  static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
-> >                        STE *ste, SMMUEventInfo *event)
-> > @@ -522,13 +545,9 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
-> >  
-> >      config = STE_CONFIG(ste);
-> >  
-> > -    if (STE_CFG_ABORT(config)) {
-> > -        cfg->aborted = true;
-> > -        return 0;
-> > -    }
-> > +    decode_ste_config(cfg, config);
-> >  
-> > -    if (STE_CFG_BYPASS(config)) {
-> > -        cfg->bypassed = true;
-> > +    if (cfg->aborted || cfg->bypassed) {
-> >          return 0;
-> >      }
-> >  
-> > @@ -701,7 +720,6 @@ static int decode_cd(SMMUv3State *s, SMMUTransCfg *cfg,
-> >  
-> >      /* we support only those at the moment */
-> >      cfg->aa64 = true;
-> > -    cfg->stage = SMMU_STAGE_1;
-> >  
-> >      cfg->oas = oas2bits(CD_IPS(cd));
-> >      cfg->oas = MIN(oas2bits(SMMU_IDR5_OAS), cfg->oas);
-> > @@ -901,7 +919,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
-> >              event->u.f_walk_eabt.addr2 = ptw_info.addr;
-> >              break;
-> >          case SMMU_PTW_ERR_TRANSLATION:
-> > -            if (PTW_RECORD_FAULT(cfg)) {
-> > +            if (PTW_RECORD_FAULT(ptw_info, cfg)) {
-> >                  event->type = SMMU_EVT_F_TRANSLATION;
-> >                  event->u.f_translation.addr = addr;
-> >                  event->u.f_translation.addr2 = ptw_info.addr;
-> > @@ -910,7 +928,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
-> >              }
-> >              break;
-> >          case SMMU_PTW_ERR_ADDR_SIZE:
-> > -            if (PTW_RECORD_FAULT(cfg)) {
-> > +            if (PTW_RECORD_FAULT(ptw_info, cfg)) {
-> >                  event->type = SMMU_EVT_F_ADDR_SIZE;
-> >                  event->u.f_addr_size.addr = addr;
-> >                  event->u.f_addr_size.addr2 = ptw_info.addr;
-> > @@ -919,7 +937,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
-> >              }
-> >              break;
-> >          case SMMU_PTW_ERR_ACCESS:
-> > -            if (PTW_RECORD_FAULT(cfg)) {
-> > +            if (PTW_RECORD_FAULT(ptw_info, cfg)) {
-> >                  event->type = SMMU_EVT_F_ACCESS;
-> >                  event->u.f_access.addr = addr;
-> >                  event->u.f_access.addr2 = ptw_info.addr;
-> > @@ -928,7 +946,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
-> >              }
-> >              break;
-> >          case SMMU_PTW_ERR_PERMISSION:
-> > -            if (PTW_RECORD_FAULT(cfg)) {
-> > +            if (PTW_RECORD_FAULT(ptw_info, cfg)) {
-> >                  event->type = SMMU_EVT_F_PERMISSION;
-> >                  event->u.f_permission.addr = addr;
-> >                  event->u.f_permission.addr2 = ptw_info.addr;
+> > @@ -287,6 +287,14 @@ static void smmuv3_init_regs(SMMUv3State *s)
+> >      if (FIELD_EX32(s->idr[0], IDR0, S2P)) {
+> >          /* XNX is a stage-2-specific feature */
+> >          s->idr[3] = FIELD_DP32(s->idr[3], IDR3, XNX, 1);
+> > +        if (FIELD_EX32(s->idr[0], IDR0, S1P)) {
+> > +            /*
+> > +             * QEMU doesn's support memory attributes, so FWB is NOP, this
+> > +             * might change in the future if memory attributre would be
+> if mem attributes get supported
+> > +             * supported.
+> > +             */
+> > +           s->idr[3] = FIELD_DP32(s->idr[3], IDR3, FWB, 1);
+> spec says:
+> 0b0    Stage 2 control of memory types and attributes is
+> not supported and the STE.S2FWB bit is RES 0.
+
+My understanding it is still OK for the SMMU to advertise that although as
+patch description indicates it is useless, but I thought it is similar to
+XNX recently added, but I can drop it if it is not useful.
+
+Thanks,
+Mostafa
+> 
+> 
 > Thanks
 > 
 > Eric
+> > +        }
+> >      }
+> >      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
+> >      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, BBML, 2);
 > 

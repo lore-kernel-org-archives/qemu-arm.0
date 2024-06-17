@@ -1,124 +1,136 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp39034ejb;
-        Sun, 16 Jun 2024 22:28:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWwZr/2rEZ+/OeNrFhqC/pzYYARh0TTU6tFH0ApkWh0eXcHKixI8W9b3VfRwU/YKEno4xvRtFSkZz6BlI1XZ9ekMn4qRisM
-X-Google-Smtp-Source: AGHT+IHK2mqrZTd1Jlc8jedVDdN07czZP3KfQUYnLWTo/OAov+RHePCzgXVuXfy8NL1WRdDuFGV5
-X-Received: by 2002:a05:6214:19e4:b0:6b0:7821:4026 with SMTP id 6a1803df08f44-6b2b00dc875mr113052226d6.52.1718602088725;
-        Sun, 16 Jun 2024 22:28:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718602088; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp55600ejb;
+        Sun, 16 Jun 2024 23:24:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXNBb3jqTWntWdrsaqrzqu9U4dDDyc8VOJal7oj33g7sUebXMfw5X6N2NQnNlLGqD3Rczsi0G2o1njkaKatfQTc3JYxq5Pe
+X-Google-Smtp-Source: AGHT+IEjfR8d4+ezZ4xw5+zxpiJ9Nn3IsQbxQGBnODhyzH/uQJB1Gk48A6NIEbFK6k6SSBhdJO0V
+X-Received: by 2002:a05:6902:1b01:b0:df7:6030:bb4e with SMTP id 3f1490d57ef6-dff154e1ea3mr9746278276.61.1718605458924;
+        Sun, 16 Jun 2024 23:24:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718605458; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ppc9201jayBXm477BFBnw/GpzfNzqkAz8Z52n72XRsg8crO0k4l47GIQ69YLYlEYhY
-         byrVFMvIOfUZcGdYymIBDXnKlSYfKtxrkRGM0cyBhxxtz3nuc0dlMy7shmEtkDaKFAIh
-         ZKI9bCSWff8AiWUPkWE7D2jhwgtWxT0VM7fSQodDuDIjaJEVv4xWVT3sNQxjDRuSBu0A
-         DjHS8rdDhlpc50nm6NBMvpu1JnDSsGSLczL0LP0ayRuSwnjOLSYP6Tr4qLSTq55jZst/
-         /OwMwgXK1LjqKjk2qDgimxxHCTcxv6NSs44gqw6Z6/0k6wHO6b5E6ZRlPa9+xEF3SZXK
-         hrAw==
+        b=R58yfao8uiezgdpfbxvzDS7XdO12SkRpYZXLsnB2p66cfZ+xNya39aOqamOOQDBxWi
+         GFoeKi0EvQF16UNlpMojp65pP2IcNL68sNjtfHse8CK1m28fYKGL12wNglZM2YBtJNAg
+         3Pl0U7eix7WOqhgKybXxcUDYjUCt5yzaXpziADNkhrZlKStzSfzsSPxaWuSEcldeAdZN
+         kWw5Dh4HgDJbNy7NtB4D2K+9a1VchlZonOIy9QGs5rgNZjwV2/p0pbSn2RhOLTn0KKJf
+         QmvLAUmGwSj9N0aHLxljrMdV96UHuwvdFmcME8sWdBzCpu76RFPwpxOLOEAYeOoJseBW
+         smKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=aS3vDlpG5JAr0kUzKjXG6xA9B7QpFmkY+r7SXcqM/V4=;
-        fh=yh4kTN2hd32/rDUbzyNo8TIHk+/FyrlZw9MLRbajYZo=;
-        b=ieXFuxVtHCcVOnT/AaCpoNXjmwWKQA4Lks8bNODmkOMTkZkjnUHQu9V5N5qpDmrxgx
-         15AhzYJ8vzmI3D+n8d5neeINktFiFpMrXxI4VWNWgsRTenVPCnzdGbSwuIrkNJ889fME
-         hj+mCAw0mbXN+ha3AzQTkBbAVbVpDqgGa8feyhBA8Z/m7hR4oEIufvOkHEM3uFcSgqzO
-         f5iqtbucHhRyE6rMNtQDsDduqHMlhkmzhnRgKl3shu5Fm5PD1W6uyBRZuYfega0P3cqU
-         YMX+gcQaQuy5ZDyWFuelgxP7pSaPk9L/Mdgv3e+UOcSGVczulvkQJg9CZZih3T0AYO/6
-         YnjQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=bUjPEcJygmqh88A3E2HTiznvD7K/obHptczgW4nqY54=;
+        fh=3k//9ZZ5yfhSKrC6eiDJdDDtzD5GRd7pE0hu2uBlPl4=;
+        b=yRtMfgS4aU13ClDbZI97Gc/HhCj9d79puUMJWdRSuCS4tsTZYToyWh4bTAJpOsQho0
+         ++0as0ec2wdK3B2uFu2Lo+mN3/HagDBVxY98FFCqm1AcyFKB46cUaRyOedpj5QpxY6Am
+         IprQM8GubYgyccQTu04J/YBuXq9cXYGArIHet4lsCFUHZMnnqVE2n24uLllccrWQmtWt
+         +GjSJfbENAs/Mr7a7nHXGTfEYfMA8PqMkVIvLlQofRp+LV6axgXY52CgOx6OmJuhQgDM
+         qLjxunBZNJ3yfXqYBR4ovTjj1k3TPkwNDah+fZnG2fTu6issNQDwb/G2WcsyzX9UxHEG
+         SXpQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e4sTdkKf;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dpWzPjDf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5aff7a0si93210006d6.265.2024.06.16.22.28.08
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5b88f69si94540856d6.565.2024.06.16.23.24.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Jun 2024 22:28:08 -0700 (PDT)
+        Sun, 16 Jun 2024 23:24:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=e4sTdkKf;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dpWzPjDf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sJ4ts-0006R7-Qk; Mon, 17 Jun 2024 01:27:28 -0400
+	id 1sJ5mh-0001ZS-Os; Mon, 17 Jun 2024 02:24:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenyzha@redhat.com>)
- id 1sJ4tr-0006QX-2Y
- for qemu-arm@nongnu.org; Mon, 17 Jun 2024 01:27:27 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sJ5mg-0001ZK-2u
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2024 02:24:06 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenyzha@redhat.com>)
- id 1sJ4tp-0002Dh-7r
- for qemu-arm@nongnu.org; Mon, 17 Jun 2024 01:27:26 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sJ5me-0002jF-6X
+ for qemu-arm@nongnu.org; Mon, 17 Jun 2024 02:24:05 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718602043;
+ s=mimecast20190719; t=1718605443;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=aS3vDlpG5JAr0kUzKjXG6xA9B7QpFmkY+r7SXcqM/V4=;
- b=e4sTdkKfXDzyKOTLwZSqHLA3gufMcgeFvvmefRoXvu+RLuDTz2uiizFBOVNGEXEdAS9cuM
- w0weE346I6UV++K9P+Ia73GPKzHYYUTJGXynnls8l6Q8FtezX+IL/XlnAH0guV7CaYcDPR
- 4oCcsnvDFuiJEwxTQDC3yiBeNmZsUww=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=bUjPEcJygmqh88A3E2HTiznvD7K/obHptczgW4nqY54=;
+ b=dpWzPjDf2/YQEzBSU2S4b/ZVV4Auv41JIVgx1xoVdLF+vVU42UgoXvUORcBkX5DsIqqrtg
+ ZQhGSm84p7dwTwWQZLllJomWfTFFu7Qm9sHkOuFBed5+UEyfgse188/dVAfVzXpTO9ZUIn
+ tLNTIuEZjy1rtLu3cWnxdV8VfLStntQ=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-384-gT3429eTOTam955lYDlxyQ-1; Mon, 17 Jun 2024 01:27:21 -0400
-X-MC-Unique: gT3429eTOTam955lYDlxyQ-1
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-a6ec06ed579so208262566b.2
- for <qemu-arm@nongnu.org>; Sun, 16 Jun 2024 22:27:21 -0700 (PDT)
+ us-mta-324-pQE6iaPiO9KdF7v5culEnA-1; Mon, 17 Jun 2024 02:24:00 -0400
+X-MC-Unique: pQE6iaPiO9KdF7v5culEnA-1
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-6ad706fab2aso51697236d6.1
+ for <qemu-arm@nongnu.org>; Sun, 16 Jun 2024 23:24:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718602041; x=1719206841;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=aS3vDlpG5JAr0kUzKjXG6xA9B7QpFmkY+r7SXcqM/V4=;
- b=nnVxk9MOBQVgs/bC9I9sefl5mIzFXJze7h438Py/pwRfRHJWqTRHgueL4KiQSQG00J
- 3LePua5GEUGKSQE5wYQ4s7ftlwiamiqKpO+yh8MsNrr4k7Hx8F3a4y6PRjSXr0POn2l7
- b8V1Pxdo1/nIGg6c8X8WMn8T9GYFna5vAaL/JhPXdyiTQj+PelFZ4U5Cqs1SNiEA+A0J
- QUFzyNLpbeq7VONFXfaCGX9R66taQDLklQ3tT+Vd7x0DjggCRd3p2GFY4ikkNS6tDE95
- chhpBLyeqCwzM83a4cM1x0oOQH2YzY7pXnHMLfP3yqAwAVuUiulzNUgfQLbAanyI4l4V
- dX8g==
-X-Gm-Message-State: AOJu0YxFKiQ7NMpz2DP8Bzum6WpqhLf2Sb/KZ9pIkr3H4YuXGFkaAeei
- LnTbzAg6K57qDaHQ6BQivze02A/MZr9v22Pls5VuKC1LDgUNWTd+QtDJW90RqwNI4i64Vw7W3DY
- FLOSfKFmtkhRWPtIJtMEzpWxP35I1u8Ob+XAARnJ699X0G959MA5n5/ONZef1KYzi2EjNhDHzUy
- nFb1DoCndb7QtGNua2S6eamwL/
-X-Received: by 2002:a17:906:b44:b0:a6f:1e88:37c1 with SMTP id
- a640c23a62f3a-a6f60d41c02mr569092566b.45.1718602040828; 
- Sun, 16 Jun 2024 22:27:20 -0700 (PDT)
-X-Received: by 2002:a17:906:b44:b0:a6f:1e88:37c1 with SMTP id
- a640c23a62f3a-a6f60d41c02mr569090666b.45.1718602040445; Sun, 16 Jun 2024
- 22:27:20 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1718605439; x=1719210239;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=bUjPEcJygmqh88A3E2HTiznvD7K/obHptczgW4nqY54=;
+ b=SV8jWteOpTeHp3TO2jyYdNUPPH/R1wuO3s844UEV9aFq8ldRL0BnkGifB+0QstLxmO
+ ym5uB3dYNAxfN8HoXq4Vfc2Y6N2xcWYn1UQhNcTHPwK1DMpH5GgXzBLypjKBEHKV2ow/
+ fxSG+wKKLaZ1ae9Mja/0vHMGewX1HlbYxZBBJN2OYe5iXlOlyCvk3/8zU6QMDCXtLs4V
+ RboBM+XX2ORDvsPVasQ1YmtOUsxadK4dJParX31/kDl6uLDx3sW6UIc/FRrOuce/hYcr
+ lXFOPHAhqtsRN6JvohOt+Uo4MWzfjrGMis5RPEwiDfRSxmVNpbN2a4blOCnwHBRv7LvB
+ rbkQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXmWdQ0xgmcgdUKy85D/87Fa2jMqPG9OkYR4haO06qVK60tpj+7mRo6KqEE/IS8LAHU8995UqukWKQzXI9LtBe3leOm
+X-Gm-Message-State: AOJu0YyvhegvUMi4YXz95Ra1B+pIOZVMUT5UlTuoc3X6sUXwbO4/SbaT
+ rAuUlrbXYiHBFcaZYyT7llo3IZs8hVKrGV5HDRcwiyxjiZHwULwlFAv/3ptoEbveFld1UfCFMli
+ wMDIOdbrEyS+nDaGQq4rn2iiu0jW7COZ3iOW5pRRJPtMNJZnIWw==
+X-Received: by 2002:a0c:cc13:0:b0:6b0:6cb3:1c0d with SMTP id
+ 6a1803df08f44-6b2afcd996emr91165786d6.28.1718605439723; 
+ Sun, 16 Jun 2024 23:23:59 -0700 (PDT)
+X-Received: by 2002:a0c:cc13:0:b0:6b0:6cb3:1c0d with SMTP id
+ 6a1803df08f44-6b2afcd996emr91165676d6.28.1718605439445; 
+ Sun, 16 Jun 2024 23:23:59 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-6b2a5eb4f4asm52021396d6.98.2024.06.16.23.23.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 16 Jun 2024 23:23:59 -0700 (PDT)
+Message-ID: <6753f002-2c9e-4491-8d6e-ccc91ff3c22d@redhat.com>
+Date: Mon, 17 Jun 2024 08:23:55 +0200
 MIME-Version: 1.0
-References: <20240612020506.307793-1-zhenyzha@redhat.com>
- <69649622-e52c-4d24-809b-3d8a97786a69@linaro.org>
- <CAFEAcA9wEjONgLfTObNYwJbwn5Gs1BDJiDivc9PEwmfOeZW6ww@mail.gmail.com>
- <8d7e111b-4f74-4a67-b01b-2af5ce009a06@linaro.org>
- <ed3df37e-fddd-465c-8ae9-1c5791966995@arm.com>
-In-Reply-To: <ed3df37e-fddd-465c-8ae9-1c5791966995@arm.com>
-From: Zhenyu Zhang <zhenyzha@redhat.com>
-Date: Mon, 17 Jun 2024 13:26:44 +0800
-Message-ID: <CAJFLiBLt4ig0XpDScq0M1EAPo1PEvZNiumf9kKMOErSE_OJ_cQ@mail.gmail.com>
-Subject: Re: [PATCH v3] hw/arm/virt: Avoid unexpected warning from Linux guest
- on host with Fujitsu CPUs
-To: Robin Murphy <robin.murphy@arm.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Jonathan.Cameron@huawei.com, 
- gshan@redhat.com, eauger@redhat.com, sebott@redhat.com, cohuck@redhat.com, 
- ddutile@redhat.com, shahuang@redhat.com, qemu-riscv <qemu-riscv@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, Song Gao <gaosong@loongson.cn>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/7] HostIOMMUDevice: Store the VFIO/VDPA agent
+To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com"
+ <mst@redhat.com>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "yanghliu@redhat.com" <yanghliu@redhat.com>
+Cc: "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "jasowang@redhat.com" <jasowang@redhat.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>
+References: <20240613092359.847145-1-eric.auger@redhat.com>
+ <20240613092359.847145-2-eric.auger@redhat.com>
+ <ef400920-dcf4-4f37-b4ce-c5560b92d9c5@redhat.com>
+ <f6473f76-1d8f-41cb-9488-73edc960c996@redhat.com>
+ <ec740f33-44ae-4d50-be65-5f717122f4f0@redhat.com>
+ <SJ0PR11MB674408FB45B20DC52E42193692CD2@SJ0PR11MB6744.namprd11.prod.outlook.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+In-Reply-To: <SJ0PR11MB674408FB45B20DC52E42193692CD2@SJ0PR11MB6744.namprd11.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=zhenyzha@redhat.com;
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -22
 X-Spam_score: -2.3
@@ -142,72 +154,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HdYwd58vObS2
+X-TUID: Ly6t1GTVK1qa
 
-On Thu, Jun 13, 2024 at 1:48=E2=80=AFAM Robin Murphy <robin.murphy@arm.com>=
- wrote:
->
-> On 2024-06-12 1:50 pm, Philippe Mathieu-Daud=C3=A9 wrote:
-> > On 12/6/24 14:48, Peter Maydell wrote:
-> >> On Wed, 12 Jun 2024 at 13:33, Philippe Mathieu-Daud=C3=A9
-> >> <philmd@linaro.org> wrote:
-> >>>
-> >>> Hi Zhenyu,
-> >>>
-Hello Philippe,
+On 6/17/24 3:25 AM, Duan, Zhenzhong wrote:
+> Hi Cédric,
+> 
+>> -----Original Message-----
+>> From: Cédric Le Goater <clg@redhat.com>
+>> Sent: Friday, June 14, 2024 6:05 PM
+>> To: eric.auger@redhat.com; eric.auger.pro@gmail.com; qemu-
+>> devel@nongnu.org; qemu-arm@nongnu.org; mst@redhat.com; jean-
+>> philippe@linaro.org; peter.maydell@linaro.org; yanghliu@redhat.com; Duan,
+>> Zhenzhong <zhenzhong.duan@intel.com>
+>> Cc: alex.williamson@redhat.com; jasowang@redhat.com;
+>> pbonzini@redhat.com; berrange@redhat.com
+>> Subject: Re: [PATCH v3 1/7] HostIOMMUDevice: Store the VFIO/VDPA agent
+>>
+>>
+>>>> Talking of which, why are we passing a 'VFIODevice *' parameter to
+>>>> HostIOMMUDeviceClass::realize ? I don't see a good reason
+>>>>
+>>>> I think a 'VFIOContainerBase *' would be more appropriate since
+>>>> 'HostIOMMUDevice' represents a device on the host which is common
+>>>> to all VFIO devices.
+>>>>
+>>>> In that case, HostIOMMUDevice::agent wouldn't need to be opaque
+>>>> anymore. It could  simply be a 'VFIOContainerBase *' and
+>>>> hiod_legacy_vfio_get_iova_ranges() in patch 3 would grab the
+>>>> 'iova_ranges' from the 'VFIOContainerBase *' directly.
+>>>>
+>>>> This means some rework :
+>>>>
+>>>> * vfio_device_get_aw_bits() would use a  'VFIOContainerBase *' instead.
+>>>> * HostIOMMUDevice::name would be removed. This is just for error
+>>>> messages.
+>>>> * hiod_iommufd_vfio_realize() would use VFIOIOMMUFDContainer::be.
+>>>>
+>>>> That said, I think we need the QOMification changes first.
+>>>
+>>> OK I need to review your series first. At the moment I have just
+>>> addressed Zhenzhong's comment in v4, just sent.
+>>
+>> Yep. Just take a look at mine. If both of you agree with above
+>> proposal, I can care of it and resend all 3. It's a small change.
+> 
+> I would suggest using opaque pointer and VFIODevice for two reasons,
+> 1. in nesting series vIOMMU needs to attach/detaching hwpt which is VFIODevice operations.
+> See https://github.com/yiliu1765/qemu/commit/3ca559d35adc9840555e361a56708af4c6338b3d
 
-> >>> On 12/6/24 04:05, Zhenyu Zhang wrote:
-> >>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> >>>> index 3c93c0c0a6..3cefac6d43 100644
-> >>>> --- a/hw/arm/virt.c
-> >>>> +++ b/hw/arm/virt.c
-> >>>> @@ -271,6 +271,17 @@ static void create_fdt(VirtMachineState *vms)
-> >>>>        qemu_fdt_setprop_cell(fdt, "/", "#size-cells", 0x2);
-> >>>>        qemu_fdt_setprop_string(fdt, "/", "model", "linux,dummy-virt"=
-);
-> >>>>
-> >>>> +    /*
-> >>>> +     * For QEMU, all DMA is coherent. Advertising this in the root
-> >>>> node
-> >>>> +     * has two benefits:
-> >>>> +     *
-> >>>> +     * - It avoids potential bugs where we forget to mark a DMA
-> >>>> +     *   capable device as being dma-coherent
-> >>>> +     * - It avoids spurious warnings from the Linux kernel about
-> >>>> +     *   devices which can't do DMA at all
-> >>>> +     */
-> >>>> +    qemu_fdt_setprop(fdt, "/", "dma-coherent", NULL, 0);
-> >>>
-> >>> OK, but why restrict that to the Aarch64 virt machine?
-> >>> Shouldn't advertise this generically in create_device_tree()?
-> >>> Or otherwise at least in the other virt machines?
-> >>
-> >> create_device_tree() creates an empty device tree, not one
-> >> with stuff in it. It seems reasonable to me for this property
-> >> on the root to be set in the same place we set other properties
-> >> of the root node.
-> >
-> > OK. Still the question about other virt machines remains
-> > unanswered :)
->
->  From the DT consumer point of view, the interpretation and assumptions
-> around coherency *are* generally architecture- or platform-specific. For
-> instance on RISC-V, many platforms want to assume coherency by default
-> (and potentially use "dma-noncoherent" to mark individual devices that
-> aren't), while others may still want to do the opposite and use
-> "dma-coherent" in the same manner as Arm and AArch64. Neither property
-> existed back in ePAPR, so typical PowerPC systems wouldn't even be
-> looking and will just make their own assumptions by other means.
->
-As Robin's comment says, each platform wants to assume coherency
-by default may be different. Adding it to all virt machines may
-introduce new risks. Currently, the issue is only valid on Fujitsu CPUs
-where the cache line size is 256 bytes, meaning the combination of
-kvm+virt-platform is needed to trigger the warning. So I'd be inclined
-to add this "dma-coherent" property for the "virt" platform first
-and advertise the property to other platforms if we hit the issue
-on those platforms.
+OK. I realized later on that we needed the device id anyhow.
+> 
+> 2. If we plan to support VDPA Device in future, the opaque pointer can also point
+> to an VDPADevice structure.
 
 Thanks,
-Zhenyu
+
+C.
 

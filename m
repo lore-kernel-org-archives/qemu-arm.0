@@ -1,198 +1,154 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp701425ejb;
-        Tue, 18 Jun 2024 02:50:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWXLGwgBVndopF2Eq0UMcHjxklv7WnBy0bHPvT/+C5XYeal28FjreFT+F+qvurVYDJsKzBlt7c3np7DybUcNeaeHViYwrdK
-X-Google-Smtp-Source: AGHT+IFY/+TsN4dPikUxwpg3hdOA1Vo1oIHLfe4q2GGl4C6rFqmV+0YorUTwGhPzMcPJ0+wjDbwm
-X-Received: by 2002:a05:6214:f05:b0:6b0:8534:ba47 with SMTP id 6a1803df08f44-6b2b00fd8e4mr166258056d6.61.1718704247591;
-        Tue, 18 Jun 2024 02:50:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718704247; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp727689ejb;
+        Tue, 18 Jun 2024 03:54:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU18Akv7VE5Ng8tJ4S0U/4bRcSur2LVKEYeR0uoN85reoH55yhosC4J3c1RZUuTD4+pgEFEcdEuYsc3AQ3UHbkrR8ND0JgE
+X-Google-Smtp-Source: AGHT+IEn7qCg1o4DFXIo3Xid0LzFC+k+b86yT0pSTolML/cHNHlA3Nxc1xyCKSzKD5rTnZ0b4/yW
+X-Received: by 2002:ad4:4206:0:b0:6b0:81c8:9f54 with SMTP id 6a1803df08f44-6b2afd8da1amr121592946d6.61.1718708095613;
+        Tue, 18 Jun 2024 03:54:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718708095; cv=none;
         d=google.com; s=arc-20160816;
-        b=vCW+jtxFsNlgNn7OtSyU/bBsY8Z4GYMgVbzeSsRdfFSoo6Tk4LxQlXWg1jO43yZr/7
-         0mxgq6OVDfea8YINP3boT5RnBe2E/YZ07WIDhl++WxYPUzQJArA6YQhVWyPbgpPmhHGK
-         XqCJB/Q+mEwJD2S0w/5t1EEmy0kFNOOBQf1pEC9S8UPXa0Asg7FpbATpgG4DnHYg5cMo
-         sCNdegh3JqrObV6SvYnXbr93JZlJXs93c95Xmr03LPzyBqgkoz098pXPvbshqsk0qW0T
-         bElEE/kedoxixDsuI2pSDQGobswk2vLuqA0h8mXVJ8ABK6/WyzZkT+RtfFczvh3PZsby
-         +TOw==
+        b=czJ6IQ5cck09inMursGJo8huuWkHuyTmnvTbV71KX1BhvNtFCTgcLdaBrFtw/rNZsh
+         7tcDkKdU8dHmdpftH8M8l4xOyd4mzJ1duptapNRhDAY0FqbiBZ3Ttm2oAVXajgSb0jwg
+         xR2EnSNWGxbRb8QB/N3kxZgMGcxaN4LmCm6p3/1/jKVeSdGxAgDgu2FNA8IxWa29R/oj
+         3qzinIetvtxH4a9o97BM8/UCjrL2X8WC+WxQhgf/u4rWLjpRU5gveXtfiBovYeNJhJ+T
+         DWaAQ9iJ1QK1s6Roo6v8UmVygY4GjlGgCxM4SbdR6izDN18PEY4ToTo+JKRyY1PfQ0+W
+         liYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=LRf7y9SmTWS1O7rTRQ7LZA0XDng8aTzanJkZ6/HRnAE=;
-        fh=jXZpWaZ2+Qw8/6CsEe3QvfFn/AgNajhW7Ii2/QW3RHA=;
-        b=sxitgZPJNCOs4bSB+4b+2KuN3wgaNy2fpyWB2QnJhGbj7HHb+rHZiFqUgScv1wpwgu
-         mUhAVMoDXL9itYbBKhFVmZlVWhi+3W9YEirjGixfxmcYzhCVw8geSQA/l2xz2yhRGsSy
-         7fp9IWrfwG9q19vpZ1Vhi+1hN+rlqYR2ITnF1I2Qw+lvEXMQg/s36vc/GdPDMwhhdgRW
-         YqOHKsR15Z7jSEgJ8bDLNXrslH4TFrgHwAXt8Ex6lYJv33jbE9+q5hpeOpZnhOIAHkej
-         i7Yx75HbOp318BUuWGFFhC7idxMWO9tMiSm/WhT9BngjxR7Ew2M1IFItPT+u31yB+uyo
-         VLnA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=xgIw9IKUSsnidIbwU0XCTiXGMITo0Ef+Km6UW4Y49Fk=;
+        fh=/THEWr1WCppVR9aQlkEj0ZlVgZe/lDKoatzDmpxqrPM=;
+        b=XIyOQwSvUNqVA+1wJGfJF2h9L5MOOax6C7wRWGzIrgoBfdcksAOu35uZkkqpjCMk2+
+         +SU80U2OLKd2X6jqQHu6L/buy5GI1NsF4cSAbqtKNPICw+H/7RfgqWJKBClZI/RykOFf
+         sDeP0C9HIHyodeljDZKn2KR+WziF7aF3xNaWEOmLx2Yw66FioV7zYOqsR5QgtFUM8afS
+         //09Y78THjtKLl9EhrlcqXSxEMxjYszUzwpKOzllF1wNczf8DV/jr9OA6TL17RyKcOL6
+         U2Z5cM9J5XWmBbi0A+5NyAzlK558PB9cPpsAp1L3Em9wSZHVVcc6byPgBUip3I733iqG
+         2eaA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=faxHAna5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="aCF/d6nf";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5b58cd2si120862966d6.428.2024.06.18.02.50.47
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5afce35si112346186d6.261.2024.06.18.03.54.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jun 2024 02:50:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Jun 2024 03:54:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=faxHAna5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b="aCF/d6nf";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sJVTv-0001QC-WE; Tue, 18 Jun 2024 05:50:28 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sJWUA-0003ea-SJ; Tue, 18 Jun 2024 06:54:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sJVTo-0001F8-1o
- for qemu-devel@nongnu.org; Tue, 18 Jun 2024 05:50:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sJVTl-00077w-Dl
- for qemu-devel@nongnu.org; Tue, 18 Jun 2024 05:50:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718704216;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=LRf7y9SmTWS1O7rTRQ7LZA0XDng8aTzanJkZ6/HRnAE=;
- b=faxHAna5fo37BllvWk+rA5eszj3WEaudoE96iGuFZCdbFTIB1w951IEpzzhO7ZzVByiW/8
- f75usNtorgKHktS1Cu7Hvpf7qs5kocS9VGJdfum32RHrUDQNp5QfS6bfnbFbq+EnoZ4OIA
- 3zNe450nKf4OnW3sPf5rzcm8PdrKmsA=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-155-11uRa1FTPVuW8r6COEjjew-1; Tue, 18 Jun 2024 05:50:10 -0400
-X-MC-Unique: 11uRa1FTPVuW8r6COEjjew-1
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-35f218c9950so2770568f8f.0
- for <qemu-devel@nongnu.org>; Tue, 18 Jun 2024 02:50:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sJWU9-0003dd-7T
+ for qemu-arm@nongnu.org; Tue, 18 Jun 2024 06:54:45 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sJWU6-0001fo-9K
+ for qemu-arm@nongnu.org; Tue, 18 Jun 2024 06:54:44 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-a6f7720e6e8so267372766b.3
+ for <qemu-arm@nongnu.org>; Tue, 18 Jun 2024 03:54:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1718708080; x=1719312880; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=xgIw9IKUSsnidIbwU0XCTiXGMITo0Ef+Km6UW4Y49Fk=;
+ b=aCF/d6nfyQ5Q/E4n0kz/gKvAxgGNZrpfaBwv4JTHxjnTOnrruB+YJBvKkcKqMa/17y
+ SjBhFdk8pI0uuPfl7djQVDDvUnWl0JXAACTqudqZzAXacywrDE7AWXzWJTz3x3v90q0e
+ GsdnGy8j59l3GJU2I6Z/ZOi3UAut9XbxmlZgzeTTpqfoYpMgH8OGkYauyOy0vTZRjAM5
+ sOG6kdtGbdenis97fmqXj1NpqM8i+1rqm0tW/eDGqfMAGo60HpIBhGgPv53kHtPeFNw6
+ 0Zf+PJ110IhkzdDIu34vakkgmALSJdODAjKIN8KfasfBie9pmn1uGng2hG/Eq1+exwAN
+ J1hQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718704209; x=1719309009;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=LRf7y9SmTWS1O7rTRQ7LZA0XDng8aTzanJkZ6/HRnAE=;
- b=CqR1Fv7AOYF/YaVOHXu0eBPi/tm6On63p4LI8z2ke1eRyzZ4dWhQH5pH1vY5Bzs5Ep
- QHS/RyIlmkmcne9myOVrW72Yd+3ju3/S2nuq6WsBbzl6fbupeX/dtpSp+et8on4vuPrg
- javcW/9xdM4sTRwci1CgSThusSWc99Ek9GPjm9Y8hOEFyqea+h4UDHF2eDuEKdTerGao
- EgV26xOshb8DhYbE9iQaecMtxvby0kojK99p6lDVEmHUs+6SWVwC9rnrT4gWx97oBLpa
- LMc+4w4tSF0975Aa43imrDXB6Mf1UZYJFecWBPiAuhsD4/HQcwhCpEgMdrCx9+r3CKKg
- bjSA==
+ d=1e100.net; s=20230601; t=1718708080; x=1719312880;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xgIw9IKUSsnidIbwU0XCTiXGMITo0Ef+Km6UW4Y49Fk=;
+ b=v5lPMguAiM9HZAwZ9sU5jmMC+n1t0H8eIpwBFpmEDg/4cwFPFUdB10C8GfwMcf/FAm
+ FSwLzXrAXi8kNqXyZV/TVYXEWQLQegp70Rsrg18B2IW+sdGs8uIPeqFHmYqjM1r6uHNb
+ C57P5R/6u8HU2CZxC+5b7VoXZL+GGpft40Li14jVo8Ha0C8IW7DW1tdgf4vnOukxhNNC
+ uHqpSccqY/B07v222Ihr/AC05R7icUYMyLXcwWJ7XaK9pcZ5uSHD+S6vkYb6Ctnm4YdY
+ y2MDOMkNVD0/hC+j3fgBXD2yz1p0ztb3UerisQGmYSW4F33xmPHOAVVmaw24IJOWAiYG
+ Ckig==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWS93p16r18MJ/LoW4+GiFjU7UDXfMqbQ06z04YNcLwYNAlue+jfj8xPSbfwNytEkbe4uKhQBhDiY3mAYDhsq4q41OuREQ=
-X-Gm-Message-State: AOJu0Yz9SH8+wvtY+vFqgpgmWhw4QMdR36prOnhO3Wl5Grqmog4BUKp/
- l/7gXLYBV2icAU0qY5YJGrH3C5pVBhUxEtDcxMYPvs+8s9bNPx+2Ww9ztnr/8XGWGG1dEL/7p7G
- NdyY1g1Wq5TSXeoTGSfqw/P8iS8Q6nnU7IgXIQaCauoefQQtfAGvk
-X-Received: by 2002:a5d:5452:0:b0:35f:2cd1:a394 with SMTP id
- ffacd0b85a97d-3607a745899mr10903704f8f.22.1718704209269; 
- Tue, 18 Jun 2024 02:50:09 -0700 (PDT)
-X-Received: by 2002:a5d:5452:0:b0:35f:2cd1:a394 with SMTP id
- ffacd0b85a97d-3607a745899mr10903659f8f.22.1718704208274; 
- Tue, 18 Jun 2024 02:50:08 -0700 (PDT)
-Received: from redhat.com ([2a0d:6fc7:441:67bf:ebbb:9f62:dc29:2bdc])
+ AJvYcCULTpqTcONmGAAXYtj64mliXpr++HYSbrccNBo5egt4knzQHs+Seb2dktUnwMEfY2zmgDsoX6cAnPYVxRTmU8VN+06n
+X-Gm-Message-State: AOJu0YzQ2fn6U73OMieoSJW+2+1uFZLVOjqAFzRSyNLXCtqmKEXvZoR/
+ n7XpZc4gqh/gxfXwKIBQidV0WHjQi+sNYUkCTt6rN2AAH8hllcnyYiJVF+/+nOs=
+X-Received: by 2002:a17:907:c086:b0:a6f:6389:4aba with SMTP id
+ a640c23a62f3a-a6f63894c9cmr1099538566b.3.1718708080320; 
+ Tue, 18 Jun 2024 03:54:40 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.212.55])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-36075114dcfsm13731296f8f.114.2024.06.18.02.50.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Jun 2024 02:50:07 -0700 (PDT)
-Date: Tue, 18 Jun 2024 05:49:58 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: peter.maydell@linaro.org, wangxingang5@huawei.com,
- shannon.zhaosl@gmail.com, imammedo@redhat.com, anisinha@redhat.com,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v2] hw/arm/virt-acpi-build: Fix IORT id_count
-Message-ID: <20240618054729-mutt-send-email-mst@kernel.org>
-References: <20240617223945.906996-1-nicolinc@nvidia.com>
+ a640c23a62f3a-a6f5f1c8d6fsm546611866b.0.2024.06.18.03.54.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 18 Jun 2024 03:54:39 -0700 (PDT)
+Message-ID: <dfa19fc2-b049-4856-b118-b7e5cc6a92ae@linaro.org>
+Date: Tue, 18 Jun 2024 12:54:37 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240617223945.906996-1-nicolinc@nvidia.com>
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/3] hw/dma: Add a trace log for a description loading
+ failure
+To: "Fea.Wang" <fea.wang@sifive.com>, qemu-devel@nongnu.org,
+ qemu-riscv@nongnu.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
+ Frank Chang <frank.chang@sifive.com>
+References: <20240613013501.426905-1-fea.wang@sifive.com>
+ <20240613013501.426905-3-fea.wang@sifive.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240613013501.426905-3-fea.wang@sifive.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.148,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VzbL1GrRd2jq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IPUxFSs4SmB0
 
-On Mon, Jun 17, 2024 at 03:39:45PM -0700, Nicolin Chen wrote:
-> The IORT doc defines "Number of IDs" ("id_count" in the virt-acpi-build)
-> to be "the number of IDs in the range minus one". Otherwise, Linux kernel
-> reports "conflicting mapping for input ID" FW_BUG at the overlapped ID.
+On 13/6/24 03:35, Fea.Wang wrote:
+> Due to a description loading failure, adding a trace log makes observing
+> the DMA behavior easy.
 > 
-> Fixes: 42e0f050e3a5 ("hw/arm/virt-acpi-build: Add IORT support to bypass SMMUv3")
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Fea.Wang <fea.wang@sifive.com>
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+> Reviewed-by: Frank Chang <frank.chang@sifive.com>
 > ---
-> Changelog
-> v2:
->  * Moved "-1" to the same line of id_count calculation
->  * Added "+1" to the next_range.input_base calculation
-> v1:
->  https://lore.kernel.org/all/20240613234802.828265-1-nicolinc@nvidia.com/
-> 
->  hw/arm/virt-acpi-build.c | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index c3ccfef026..631f2c6d04 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -243,7 +243,8 @@ iort_host_bridges(Object *obj, void *opaque)
->  
->              AcpiIortIdMapping idmap = {
->                  .input_base = min_bus << 8,
-> -                .id_count = (max_bus - min_bus + 1) << 8,
-> +                /* id_count is the number of IDs in the range minus one */
-> +                .id_count = ((max_bus - min_bus + 1) << 8) - 1,
->              };
->              g_array_append_val(idmap_blob, idmap);
->          }
-> @@ -298,11 +299,13 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->              idmap = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
->  
->              if (next_range.input_base < idmap->input_base) {
-> -                next_range.id_count = idmap->input_base - next_range.input_base;
-> +                /* id_count is the number of IDs in the range minus one */
-> +                next_range.id_count = idmap->input_base -
-> +                                      next_range.input_base - 1;
->                  g_array_append_val(its_idmaps, next_range);
+>   hw/dma/trace-events    | 3 +++
+>   hw/dma/xilinx_axidma.c | 3 +++
+>   2 files changed, 6 insertions(+)
 
-
-What about other places where id_count is set?
-
-
->              }
->  
-> -            next_range.input_base = idmap->input_base + idmap->id_count;
-> +            next_range.input_base = idmap->input_base + idmap->id_count + 1;
->          }
->  
-
-Given this was different previously, did you actually test with multiple ranges?
-
->          /* Append the last RC -> ITS ID mapping */
-> -- 
-> 2.43.0
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

@@ -1,241 +1,198 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp491584ejb;
-        Mon, 17 Jun 2024 15:40:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVjVQ6DORDliWtj2I0j0fbMpSX6qMUSC7rAQnJLlaw9bsVDydutvX/XiJ6lIGbLyTIDsMW2RBiCvBAuCnEXuDbUT8428gHM
-X-Google-Smtp-Source: AGHT+IHBVxhoBQZJHqgdoyfCZwWf/E1aMoSC+QVtoKS06CTMYLVv7v6DYuVORQKALQOr6SYT9Uyd
-X-Received: by 2002:a05:6214:d89:b0:6b0:78b6:e5e9 with SMTP id 6a1803df08f44-6b2afcd23a8mr152651956d6.27.1718664037926;
-        Mon, 17 Jun 2024 15:40:37 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1718664037; cv=pass;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp701425ejb;
+        Tue, 18 Jun 2024 02:50:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWXLGwgBVndopF2Eq0UMcHjxklv7WnBy0bHPvT/+C5XYeal28FjreFT+F+qvurVYDJsKzBlt7c3np7DybUcNeaeHViYwrdK
+X-Google-Smtp-Source: AGHT+IFY/+TsN4dPikUxwpg3hdOA1Vo1oIHLfe4q2GGl4C6rFqmV+0YorUTwGhPzMcPJ0+wjDbwm
+X-Received: by 2002:a05:6214:f05:b0:6b0:8534:ba47 with SMTP id 6a1803df08f44-6b2b00fd8e4mr166258056d6.61.1718704247591;
+        Tue, 18 Jun 2024 02:50:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718704247; cv=none;
         d=google.com; s=arc-20160816;
-        b=b/LKOD2heQExEULWeyg1o6OEE/tqasclMiGBlYi9p70tc1f9DMeyjvYpP2/8BOaOBs
-         WHnQmifV1YVrgaQ7yXM/TAXMmW/PBL1n5XSEf+I0Gdfrf+pmBU7IDs6+98ql/LlC6OJ1
-         fJzPbmOmwHzBlnZLmIOn4V/OSENn7eoinvBrIZnbj2SboCHEx91Id7UpHtm1FGEcl+1t
-         cjGotWH2coLPw99eaqbMxU8IgWFvGdd+L597xctuqnUSQ48wyjqVCQi3tVlqLXlulT8Y
-         0zNpQuIpYajD9r/j1o97Xcx8dvtNkuLrVhb1RFopXKonMgF0R6kzOYtayE129ojJS8Z+
-         En1Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=vCW+jtxFsNlgNn7OtSyU/bBsY8Z4GYMgVbzeSsRdfFSoo6Tk4LxQlXWg1jO43yZr/7
+         0mxgq6OVDfea8YINP3boT5RnBe2E/YZ07WIDhl++WxYPUzQJArA6YQhVWyPbgpPmhHGK
+         XqCJB/Q+mEwJD2S0w/5t1EEmy0kFNOOBQf1pEC9S8UPXa0Asg7FpbATpgG4DnHYg5cMo
+         sCNdegh3JqrObV6SvYnXbr93JZlJXs93c95Xmr03LPzyBqgkoz098pXPvbshqsk0qW0T
+         bElEE/kedoxixDsuI2pSDQGobswk2vLuqA0h8mXVJ8ABK6/WyzZkT+RtfFczvh3PZsby
+         +TOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=teZZVeUSDbzyQe2C133buV18UH33T1ln7UFS+rXbDVI=;
-        fh=/+RhblMqGAr8VthwRGofo6+1xN7hLOhHGH4a7cuHLjA=;
-        b=sVG0NGqqhZLxntioAnFpN1GkY72StGL0HLLaQz2irkk/NE0oPNmvVlHfDG+PmN3K75
-         AOugqrhgAxNW4DYmfNFXcuGyTXLZvizwuLmx/7moV7QzxHyjINlSrY1Lb1SMCralTh2s
-         rpYVX90WzzO0QWQugSHkScNB7EAlk6cE0MTYXsgNLdxe7obKVCoSqWrFhY4ipknZerMX
-         CmmGOE8rfIFlC+Jh+E0zxkQpdgEAmTGQsvbP9PXEYaV+meLvU8Ts9PFaiLUvmf1yJEyh
-         IY5InBS8DNIliTspAciZQ4oqjOKsunc9Zvf9wwVrR9Acx+tFm3xGgn+NQBYyfDY14XA0
-         jBAw==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=LRf7y9SmTWS1O7rTRQ7LZA0XDng8aTzanJkZ6/HRnAE=;
+        fh=jXZpWaZ2+Qw8/6CsEe3QvfFn/AgNajhW7Ii2/QW3RHA=;
+        b=sxitgZPJNCOs4bSB+4b+2KuN3wgaNy2fpyWB2QnJhGbj7HHb+rHZiFqUgScv1wpwgu
+         mUhAVMoDXL9itYbBKhFVmZlVWhi+3W9YEirjGixfxmcYzhCVw8geSQA/l2xz2yhRGsSy
+         7fp9IWrfwG9q19vpZ1Vhi+1hN+rlqYR2ITnF1I2Qw+lvEXMQg/s36vc/GdPDMwhhdgRW
+         YqOHKsR15Z7jSEgJ8bDLNXrslH4TFrgHwAXt8Ex6lYJv33jbE9+q5hpeOpZnhOIAHkej
+         i7Yx75HbOp318BUuWGFFhC7idxMWO9tMiSm/WhT9BngjxR7Ew2M1IFItPT+u31yB+uyo
+         VLnA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=Ih1Gk6Xm;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=faxHAna5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5b59a57si111408766d6.431.2024.06.17.15.40.37
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5b58cd2si120862966d6.428.2024.06.18.02.50.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Jun 2024 15:40:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Jun 2024 02:50:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=Ih1Gk6Xm;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=faxHAna5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sJL1E-0000yl-GC; Mon, 17 Jun 2024 18:40:08 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sJVTv-0001QC-WE; Tue, 18 Jun 2024 05:50:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1sJL1D-0000yK-9F; Mon, 17 Jun 2024 18:40:07 -0400
-Received: from mail-sn1nam02on20631.outbound.protection.outlook.com
- ([2a01:111:f400:7ea9::631]
- helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sJVTo-0001F8-1o
+ for qemu-devel@nongnu.org; Tue, 18 Jun 2024 05:50:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1sJL1A-0001B8-B2; Mon, 17 Jun 2024 18:40:06 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ifTk3bTHigReFKfQDj4d8Zreenl+yuZ7GSk/KhN8jURaiOAYx4whw99ESvD7A4URw8llPdTUx1cXTEGZ3Oxcxc7koX5IZxpGwllWualuk1oWYz9hD9cLxFnRm610wuEQJ03PA7dbHTgNOPMInJIbmgpHXxuZcyqAjfpldhLVmddVUNiw0w5zKCrU8YzHwD6z8EqYKsYpU7G1mbjggUVLH5nP0Tk7h8XtYgxbdVh0JRRp+kTtXVZ8RTb2MDKMh9iQpygq+8XgdiL21MU7TAKmIir4dt8QPsypFVLtQ07z9b26PXUbV0SIj8JARHikFiOyEPhTExk2NMuROwEmf+0aiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=teZZVeUSDbzyQe2C133buV18UH33T1ln7UFS+rXbDVI=;
- b=ehp+WPkSSJchzWOufbrEHLTXpXc+3sXygatxqMvNX3b40seIA1xCoRYKaqFhChbCFYXqSLnotUBOdmZXGXf08GAJh4H2NrQbq2sTplaT683eTkBB8XO6RWmIRS6MYGdtBFfoGyRdhmfmP2TVZlwE3NbE/WkSdCGeBvphB7230Of6zlD/1XMed0U5y4FxoONwDz9MLnhudPy0sU8YT6rDfYRwAM8+9xem154SE/W9UrNBdAIam6ynyT4O+6vKrdkJOjnhFES242P9j35kwP9pPjkfSKsw2jiJgjjAgngR8uYkcSXC6xWJJTzsSGyLYEMbNIbjEdvMpPCBi2Eq+J62vQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=linaro.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=teZZVeUSDbzyQe2C133buV18UH33T1ln7UFS+rXbDVI=;
- b=Ih1Gk6Xm0UlXQHttCoI07RQaOM+TTHSd0y9bDUFMWjvUQdr2TQx9GXBZMAGQz0htZRu1U/cWXJHAksDeIkwL8WkpbOjBaLh2QZfTNLl4i4R2vGQmGinwvduv+0+iIVUVUpxRaXAh5EfLKSsphLm9yJlTz4eKNWjCqFyFrBoKB6Kb9s1LFHAgM+aGBW6z3xl7e/KFdjpDHVQe8RFmmBdujP3IsbEieIB3AukZz0pqyVfdVShLWWCJ9BLUv7H/L5icm9ORre29NEQicE2UmqWUKMr7DH+ndCRACfoccLl2/EpnwQGHdCSao/W/M9awwdqRGy3E6RXoXG1TOZOO0Yqfkg==
-Received: from BN8PR12CA0024.namprd12.prod.outlook.com (2603:10b6:408:60::37)
- by MW4PR12MB7143.namprd12.prod.outlook.com (2603:10b6:303:222::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.30; Mon, 17 Jun
- 2024 22:39:55 +0000
-Received: from BN3PEPF0000B074.namprd04.prod.outlook.com
- (2603:10b6:408:60:cafe::1a) by BN8PR12CA0024.outlook.office365.com
- (2603:10b6:408:60::37) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.30 via Frontend
- Transport; Mon, 17 Jun 2024 22:39:55 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- BN3PEPF0000B074.mail.protection.outlook.com (10.167.243.119) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7677.15 via Frontend Transport; Mon, 17 Jun 2024 22:39:55 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Mon, 17 Jun
- 2024 15:39:46 -0700
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Mon, 17 Jun
- 2024 15:39:46 -0700
-Received: from Asurada-Nvidia.nvidia.com (10.127.8.13) by mail.nvidia.com
- (10.129.68.6) with Microsoft SMTP Server id 15.2.1544.4 via Frontend
- Transport; Mon, 17 Jun 2024 15:39:46 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <peter.maydell@linaro.org>, <wangxingang5@huawei.com>,
- <shannon.zhaosl@gmail.com>, <mst@redhat.com>, <imammedo@redhat.com>,
- <anisinha@redhat.com>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [PATCH v2] hw/arm/virt-acpi-build: Fix IORT id_count
-Date: Mon, 17 Jun 2024 15:39:45 -0700
-Message-ID: <20240617223945.906996-1-nicolinc@nvidia.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sJVTl-00077w-Dl
+ for qemu-devel@nongnu.org; Tue, 18 Jun 2024 05:50:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1718704216;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=LRf7y9SmTWS1O7rTRQ7LZA0XDng8aTzanJkZ6/HRnAE=;
+ b=faxHAna5fo37BllvWk+rA5eszj3WEaudoE96iGuFZCdbFTIB1w951IEpzzhO7ZzVByiW/8
+ f75usNtorgKHktS1Cu7Hvpf7qs5kocS9VGJdfum32RHrUDQNp5QfS6bfnbFbq+EnoZ4OIA
+ 3zNe450nKf4OnW3sPf5rzcm8PdrKmsA=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-155-11uRa1FTPVuW8r6COEjjew-1; Tue, 18 Jun 2024 05:50:10 -0400
+X-MC-Unique: 11uRa1FTPVuW8r6COEjjew-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-35f218c9950so2770568f8f.0
+ for <qemu-devel@nongnu.org>; Tue, 18 Jun 2024 02:50:10 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718704209; x=1719309009;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=LRf7y9SmTWS1O7rTRQ7LZA0XDng8aTzanJkZ6/HRnAE=;
+ b=CqR1Fv7AOYF/YaVOHXu0eBPi/tm6On63p4LI8z2ke1eRyzZ4dWhQH5pH1vY5Bzs5Ep
+ QHS/RyIlmkmcne9myOVrW72Yd+3ju3/S2nuq6WsBbzl6fbupeX/dtpSp+et8on4vuPrg
+ javcW/9xdM4sTRwci1CgSThusSWc99Ek9GPjm9Y8hOEFyqea+h4UDHF2eDuEKdTerGao
+ EgV26xOshb8DhYbE9iQaecMtxvby0kojK99p6lDVEmHUs+6SWVwC9rnrT4gWx97oBLpa
+ LMc+4w4tSF0975Aa43imrDXB6Mf1UZYJFecWBPiAuhsD4/HQcwhCpEgMdrCx9+r3CKKg
+ bjSA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWS93p16r18MJ/LoW4+GiFjU7UDXfMqbQ06z04YNcLwYNAlue+jfj8xPSbfwNytEkbe4uKhQBhDiY3mAYDhsq4q41OuREQ=
+X-Gm-Message-State: AOJu0Yz9SH8+wvtY+vFqgpgmWhw4QMdR36prOnhO3Wl5Grqmog4BUKp/
+ l/7gXLYBV2icAU0qY5YJGrH3C5pVBhUxEtDcxMYPvs+8s9bNPx+2Ww9ztnr/8XGWGG1dEL/7p7G
+ NdyY1g1Wq5TSXeoTGSfqw/P8iS8Q6nnU7IgXIQaCauoefQQtfAGvk
+X-Received: by 2002:a5d:5452:0:b0:35f:2cd1:a394 with SMTP id
+ ffacd0b85a97d-3607a745899mr10903704f8f.22.1718704209269; 
+ Tue, 18 Jun 2024 02:50:09 -0700 (PDT)
+X-Received: by 2002:a5d:5452:0:b0:35f:2cd1:a394 with SMTP id
+ ffacd0b85a97d-3607a745899mr10903659f8f.22.1718704208274; 
+ Tue, 18 Jun 2024 02:50:08 -0700 (PDT)
+Received: from redhat.com ([2a0d:6fc7:441:67bf:ebbb:9f62:dc29:2bdc])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-36075114dcfsm13731296f8f.114.2024.06.18.02.50.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 Jun 2024 02:50:07 -0700 (PDT)
+Date: Tue, 18 Jun 2024 05:49:58 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: peter.maydell@linaro.org, wangxingang5@huawei.com,
+ shannon.zhaosl@gmail.com, imammedo@redhat.com, anisinha@redhat.com,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v2] hw/arm/virt-acpi-build: Fix IORT id_count
+Message-ID: <20240618054729-mutt-send-email-mst@kernel.org>
+References: <20240617223945.906996-1-nicolinc@nvidia.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN3PEPF0000B074:EE_|MW4PR12MB7143:EE_
-X-MS-Office365-Filtering-Correlation-Id: e83a7d4e-2aec-4fab-729f-08dc8f1e68fc
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230037|36860700010|376011|82310400023|1800799021; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?9qM67wx/nBpIQo4iyDluQchdnGjWzCeEeTNgkW4sXUecE7e/fgVM5W7RWPKD?=
- =?us-ascii?Q?c2ICd+wjoKbJLXmzUQkmxvo0OiFwakuLtmOLSOmbgkT9VirPWy//9vum+vYt?=
- =?us-ascii?Q?kRGipfBYOeeV2UyZlmkkSTLDNKub9xBPhtBNrxYcrVle2HbBfklgT6UIHVWA?=
- =?us-ascii?Q?r5RgpveYQuU7v9Tav1JZmq0kgm+QMKw0ES2VnrtthpwIIL7iHgC5Kip+Eqie?=
- =?us-ascii?Q?m/U+AqYFZHG/D5SyWpCSaiYamTSwuNoz/XE8BqofEJrA3EDjGtoVfsKq6Hld?=
- =?us-ascii?Q?b9/RCjJ2iQLMY0xRAA7MWtjWx1Al8IC2U5+YAzsdpjpoix2hGTFZv5aJjBx/?=
- =?us-ascii?Q?zbnSLoJnVpYP84Ml9vAXkF1weK3+phH6SBm3ZMlRipHXUYzv1oAJG3xjaX23?=
- =?us-ascii?Q?wZ3zct5jXvVdpQg+IFUvuCXjOvB9LkVO9WreqnYiZQidzQ1IqNPLHOCHn/hP?=
- =?us-ascii?Q?uVB8paS6idxtpePMhvtmEWVakXB2tfRYuzB7QKqdWoc/L995Ef0lREd1xsUw?=
- =?us-ascii?Q?p0vW/QP7eHqr5tpPs7X1FzTWNGMTDqxyzpSG62H+hxX3pAq7UVjbDOP7yV4G?=
- =?us-ascii?Q?e9RR//uNZqY7DiMGTvixJ0bBavykRgRGt+9z2M4lJGWAi6zqnCogVP8Xoi72?=
- =?us-ascii?Q?ftZX0pALU+vIMQnosvMCjtmaCIBSFGCBFiC75Rztu1Yx68jSGZW8UwnB6T3/?=
- =?us-ascii?Q?JguRRjAWNIbbxIsZfAZjxuWOaMMF1sek1HC1rM0+H3rvAq1q2JyJ2TNoJqwU?=
- =?us-ascii?Q?23gbBQL066nGSC29PyjDqZ5R71Tezz6R4i1tNwjUVCSDI+EVzoQ9lSr8WZMT?=
- =?us-ascii?Q?7iU1pHe7ZDSEuprnX/+5N2kxhapM2gfXWiUqo1oXet95Ehdd/y5XoYwH5G0I?=
- =?us-ascii?Q?9dGmEZtM1UUvgKSQbfcdSW6f2On5z2HPeSjBOOhyRaSPtkTNym6conqIk4GN?=
- =?us-ascii?Q?QPIP3XeXgSlCRNoA9NE9jyI2TL+vMyBXZLcJ/1Y/Wh//s8jwuFjG+cpxrjQu?=
- =?us-ascii?Q?DBzX6mRPXYCicnAE3pk4VmVKYOwNYsNoGXjLvCUpk7lCgF+tVReRvaeGL19c?=
- =?us-ascii?Q?wcIhBcuMCOI2hGKht7kIl8Joe1EoghdNUXKRwfdnVC4VNVYS77SvqtCPFLLE?=
- =?us-ascii?Q?U6iaeVp9YVWLzD2yO6V3v/gIw432S3KmX711PcfoA9AHZPpVXmpDLszDVj/t?=
- =?us-ascii?Q?14MmysFFOl0sCTba+mou/yWvw8WINkc6V+A9eNdrb5SBrntPu3x1ZWibysFC?=
- =?us-ascii?Q?OjI0r01kyYY2LwabEmjApyiVCsyFV/1ql3qqYMc8OV4IVEph25EhZKC2wcB0?=
- =?us-ascii?Q?024Tt0PaKCA/o6kUA6BCFrNSSCUzMj0jAiE9rhTNGchDafhmAwAH3Rh20+Dh?=
- =?us-ascii?Q?4RMclRZKvItev6HtdrllkI+te7poFAmceN176wLEw2YesABNlQ=3D=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230037)(36860700010)(376011)(82310400023)(1800799021); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Jun 2024 22:39:55.1058 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: e83a7d4e-2aec-4fab-729f-08dc8f1e68fc
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN3PEPF0000B074.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB7143
-Received-SPF: softfail client-ip=2a01:111:f400:7ea9::631;
- envelope-from=nicolinc@nvidia.com;
- helo=NAM02-SN1-obe.outbound.protection.outlook.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240617223945.906996-1-nicolinc@nvidia.com>
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -22
 X-Spam_score: -2.3
 X-Spam_bar: --
 X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.148,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QkY0x7ZoZQ0g
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VzbL1GrRd2jq
 
-The IORT doc defines "Number of IDs" ("id_count" in the virt-acpi-build)
-to be "the number of IDs in the range minus one". Otherwise, Linux kernel
-reports "conflicting mapping for input ID" FW_BUG at the overlapped ID.
+On Mon, Jun 17, 2024 at 03:39:45PM -0700, Nicolin Chen wrote:
+> The IORT doc defines "Number of IDs" ("id_count" in the virt-acpi-build)
+> to be "the number of IDs in the range minus one". Otherwise, Linux kernel
+> reports "conflicting mapping for input ID" FW_BUG at the overlapped ID.
+> 
+> Fixes: 42e0f050e3a5 ("hw/arm/virt-acpi-build: Add IORT support to bypass SMMUv3")
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> ---
+> Changelog
+> v2:
+>  * Moved "-1" to the same line of id_count calculation
+>  * Added "+1" to the next_range.input_base calculation
+> v1:
+>  https://lore.kernel.org/all/20240613234802.828265-1-nicolinc@nvidia.com/
+> 
+>  hw/arm/virt-acpi-build.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index c3ccfef026..631f2c6d04 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -243,7 +243,8 @@ iort_host_bridges(Object *obj, void *opaque)
+>  
+>              AcpiIortIdMapping idmap = {
+>                  .input_base = min_bus << 8,
+> -                .id_count = (max_bus - min_bus + 1) << 8,
+> +                /* id_count is the number of IDs in the range minus one */
+> +                .id_count = ((max_bus - min_bus + 1) << 8) - 1,
+>              };
+>              g_array_append_val(idmap_blob, idmap);
+>          }
+> @@ -298,11 +299,13 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>              idmap = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
+>  
+>              if (next_range.input_base < idmap->input_base) {
+> -                next_range.id_count = idmap->input_base - next_range.input_base;
+> +                /* id_count is the number of IDs in the range minus one */
+> +                next_range.id_count = idmap->input_base -
+> +                                      next_range.input_base - 1;
+>                  g_array_append_val(its_idmaps, next_range);
 
-Fixes: 42e0f050e3a5 ("hw/arm/virt-acpi-build: Add IORT support to bypass SMMUv3")
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
----
-Changelog
-v2:
- * Moved "-1" to the same line of id_count calculation
- * Added "+1" to the next_range.input_base calculation
-v1:
- https://lore.kernel.org/all/20240613234802.828265-1-nicolinc@nvidia.com/
 
- hw/arm/virt-acpi-build.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+What about other places where id_count is set?
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index c3ccfef026..631f2c6d04 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -243,7 +243,8 @@ iort_host_bridges(Object *obj, void *opaque)
- 
-             AcpiIortIdMapping idmap = {
-                 .input_base = min_bus << 8,
--                .id_count = (max_bus - min_bus + 1) << 8,
-+                /* id_count is the number of IDs in the range minus one */
-+                .id_count = ((max_bus - min_bus + 1) << 8) - 1,
-             };
-             g_array_append_val(idmap_blob, idmap);
-         }
-@@ -298,11 +299,13 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-             idmap = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
- 
-             if (next_range.input_base < idmap->input_base) {
--                next_range.id_count = idmap->input_base - next_range.input_base;
-+                /* id_count is the number of IDs in the range minus one */
-+                next_range.id_count = idmap->input_base -
-+                                      next_range.input_base - 1;
-                 g_array_append_val(its_idmaps, next_range);
-             }
- 
--            next_range.input_base = idmap->input_base + idmap->id_count;
-+            next_range.input_base = idmap->input_base + idmap->id_count + 1;
-         }
- 
-         /* Append the last RC -> ITS ID mapping */
--- 
-2.43.0
+
+>              }
+>  
+> -            next_range.input_base = idmap->input_base + idmap->id_count;
+> +            next_range.input_base = idmap->input_base + idmap->id_count + 1;
+>          }
+>  
+
+Given this was different previously, did you actually test with multiple ranges?
+
+>          /* Append the last RC -> ITS ID mapping */
+> -- 
+> 2.43.0
 

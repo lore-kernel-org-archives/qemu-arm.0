@@ -1,215 +1,165 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp887452ejb;
-        Tue, 18 Jun 2024 08:40:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUVxof5i3zxtB2SNle1S+iQFMxWttmY8Nst5hjRfdnHe7RAd/c1UzAaAsQ0JxULdm6y77gS/fNAdtrhl+HvoMd12cAKHW4/
-X-Google-Smtp-Source: AGHT+IHcqfncPWHUoHJRmrfYSlh7xSQcC5nrbnXAh/KjlGcrvdn81HXq/ot2K8J76IfK/0+lY/wC
-X-Received: by 2002:ac8:7c52:0:b0:444:9d1a:9ff3 with SMTP id d75a77b69052e-444a7a1e052mr1614851cf.5.1718725211258;
-        Tue, 18 Jun 2024 08:40:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718725211; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp892415ejb;
+        Tue, 18 Jun 2024 08:50:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVNRmaIQBHk+JUA3WORyjrDgz1MEaacdz6zlXFlvPuGPnzAWAzxmUf+9F2avWNxvbsIKkCEy+1wOND+6KGZQ3iSWKLosWl2
+X-Google-Smtp-Source: AGHT+IGBNQZRTAoMjz/p9n5CPDwE0fMhneWSQPc+2pdk64mQ0CCzeha1UCg1q3cAUm8v4VjBbtEw
+X-Received: by 2002:a05:620a:40c3:b0:795:5973:b037 with SMTP id af79cd13be357-79bb3e3e79fmr8857085a.27.1718725808320;
+        Tue, 18 Jun 2024 08:50:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718725808; cv=none;
         d=google.com; s=arc-20160816;
-        b=VKC4pgXqu9woYK2Rseg2mMeUEGoAmtS7dGmdFgGB5rrdBFz8ZahiDs7NSMEkmfjyC0
-         EWkCeyaHlcz1bAXaeUwI3MwUe4xy+OQogi5vR1eNxxHZ1kCNJ9x6UGY5U52c/0+qodul
-         QDNqFuBfj3pymlQunCaX1RespXnRacDen2RpXr7cFd8l5dL06cTK2ZEI8kuhbZLPrv3Z
-         3tiRQZoWJwgV/KeTDSRG1zhEkPKz+ws204EV6AGMkwHxeftgbSqCOxb2QLk/w3c8zcnB
-         RROmCUYOZIyoT0OOeioB0WKlxirSuP/lGJPJ40gjtjAAN64MyssxE0UiGBkeKlOWpWgT
-         Mu8g==
+        b=rojX4rtvy2lpRGz/bbc7es8rCugy0fRaJDE4460L1jW+4p1Dq6OcDg8fQebDd/qQYJ
+         OMbIz+2lH7xHFMZkIvTq5Kgwy9cuA59lcpb60AVq3TaLWRg3fQjXjB44Cwup9Z/Ma+3U
+         ZL1EDmu603HY08ZjBOSedig75htZazZqtRNZ+ql14Od9zMTvUmHW85Ow+BhagoRvMbJO
+         s7XxbLAdQR3L0YbvMJorJiTiT854UUBq8KO2wuwJ2HX9gi8PzczKTt1pSrT9vvZPYSAO
+         y2pG1hm0ruVhmGO0Ey72xe4ETMTQ7ry1/ERaxBwXHuQJG1pizXkTK2P6prTIBllsKeTC
+         HURg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Yu6Dtl5Me2scqu5zqgdTdZQnMfpjxhir/OsuntZ3Lmk=;
-        fh=4tl4C2yj2pUT9YunqWEQuCJNjBXgY7yOIVSPuWyxGkE=;
-        b=vsbygk4j2iZ7gi+WmZkNHhptm5Qyl/Gj2Hgo8dX9AF8tkQmhfWGjnS93+tf59iX4HN
-         7eRP8udgt7w8a7P8oVBjNo2pfP7Ptx7CKg5Ln8OzGsn7cXO7Q6GkI4sWdRJfj8phcGVZ
-         y5YncRt4zb/1cRNU3Q5hj8vwEHfJwIDPwIR3CFcquXR6ZoqwWcqGmZxVjlkSLGarnIYH
-         zdjEOprlQCpxSityf85zoiQQRzTGQkKonP6In1fSokVLnF3wu6vVcStwKH29ZxISV2ou
-         o0hkpZRHlI9AbNUyw7wdvMvz+sgaRrmzTA96gRmNgCcOYt9pmRWKftD8953d4oXoL6WY
-         ekUA==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=oPLZtK0QeERyzwGrC6JZXHapbKvTNkLQ3lh1zZectkY=;
+        fh=xrPCjzOCmR3I8L8l1OOKSGhPqRvNRQRy9o8eS01AH1Y=;
+        b=HjvzXMF7PTxC4BSMTyqUJ98KN1VTw/+Ht96bqXfI4LZX4dB8PN03Dk3dxxTg+ra0Db
+         uzCaAB41zWeTpOrxsCiTAaVICsHqu4ADomyX7ppknDXHsy77MuU9hOqDZoff6LhfhAVZ
+         jrJj/5IVFdpulEuQbkNyvke74nAAUZNRigaEoteG1k6iBybJ8isW3qbx+JvwJwltGsz0
+         ARY8etpycfJc6Irb2OXO7gbak02wC9m6H6hZ2PMamFbe4nBu8FqdAkP8HR4J0YNowA4C
+         zk2BH7Yk1cRra01HiziQrfxW67+JMsEBS69ORNlaVqyOU9De5nUxEXzaTO8pLih4NqSW
+         mrvQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=d5DvPYGM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=buszedKb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-444a498adcbsi9335181cf.426.2024.06.18.08.40.11
+        by mx.google.com with ESMTPS id d75a77b69052e-441f2ea83f3si124180071cf.296.2024.06.18.08.50.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jun 2024 08:40:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Jun 2024 08:50:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=d5DvPYGM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=buszedKb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sJaw2-0007mj-QV; Tue, 18 Jun 2024 11:39:50 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sJb5k-0003Dj-4V; Tue, 18 Jun 2024 11:49:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sJaw1-0007mM-CC
- for qemu-devel@nongnu.org; Tue, 18 Jun 2024 11:39:49 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sJb5h-0003Ct-Pw; Tue, 18 Jun 2024 11:49:49 -0400
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sJavz-0003BM-MY
- for qemu-devel@nongnu.org; Tue, 18 Jun 2024 11:39:49 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-42172ed3597so35228755e9.0
- for <qemu-devel@nongnu.org>; Tue, 18 Jun 2024 08:39:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sJb5f-0004st-2R; Tue, 18 Jun 2024 11:49:49 -0400
+Received: by mail-lf1-x12c.google.com with SMTP id
+ 2adb3069b0e04-52cc9b887f1so246816e87.3; 
+ Tue, 18 Jun 2024 08:49:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718725186; x=1719329986; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Yu6Dtl5Me2scqu5zqgdTdZQnMfpjxhir/OsuntZ3Lmk=;
- b=d5DvPYGMPiO+xLFXQlUzdzMwrMinM9IL/pPbGegb1nDWXuHenUc9tk/WzUwBG7SOOl
- 5TcbTrOoMQHprT22bBLcFrszIKg7qrZCA8ddiX4M5nGhuxtL46Fc+OfbR9GOiN3/LuAh
- o1MIlRx5h1wU6hh/+88Ml4F8wDS11vgXosgtbqJJXPN+tBb4N9+eHUUmuV9J5V+5tfm4
- sLJ4aqiCIhWbG8ZMQWAwoI06aopoB6ibf5LL1wghoVMRdhLzTIZFMdncSW4CdC7CKXos
- myLp9dDmbohZGwAXI8I/zcy/GhJYY9tsR6DpcDAoZVTAxzAELssUAdztNT0Fn8lrdJLa
- 1czA==
+ d=gmail.com; s=20230601; t=1718725784; x=1719330584; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=oPLZtK0QeERyzwGrC6JZXHapbKvTNkLQ3lh1zZectkY=;
+ b=buszedKbezBEYyFs6Ul7GIxWkaM1cjUsVzZUxDkV+N4ezlmaBCps6Mu1f//J2L+8IY
+ sWeptqhrlu3oINXf+QVo3RMZ8Z3WOl5zZvidvBtfBonrPAO9KWyvxH3P9/zTYbEpBO7y
+ ko40U7KBpvugWhg9MAbnMe7BGYrSi6Uuu3wWf6WMmEMLMoqYBOtU+aoCKFUAFu7FggRY
+ BA/iNmKNWyE/5lV0kL10mx3HE6vpkwVXP16rzoNj6hhsyZE1nykKj00cVOezTZ764AGs
+ Crmy1XLLhAqA2Hc9vyk3EqDTcafMgV7piDg/owQq0iDdJzN6d/6U+t++JWAxNjbChLVm
+ Yo4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718725186; x=1719329986;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Yu6Dtl5Me2scqu5zqgdTdZQnMfpjxhir/OsuntZ3Lmk=;
- b=RlGkCJJYzmr0O7dduDtHo+QtQejXMh/ZgT7XLKh4Ol1q+RTihqEE/jB2fcRrKhtFxa
- ttVV06ld+cbnf4bL1Z95qRW/dTQUJB1DZTkkEK95NV8U9S2jgTOsv7iRM0VEtQwhG37A
- CzUJfUlXPGSMdTYqt3ISBeCmXURV1p/cvVcEd/dNSoAhcq0OKmrzR0Z+TxQiYAGD3Lg5
- tEddm1zNym9tYO2UQ+plstuvbjgx8PbSNNNU+ZTm0W1cqdzmJ71fJIXYk82p9P8uqp3m
- xQ4G9SJLpnEnuQYS7iCxJM4sBHukvZIJV06s9eWBEDmYIhf45dccDwg1bICddkbAjZyN
- yMlw==
+ d=1e100.net; s=20230601; t=1718725784; x=1719330584;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=oPLZtK0QeERyzwGrC6JZXHapbKvTNkLQ3lh1zZectkY=;
+ b=P8+wRtMyeiw93Go8zTalDP9RK21LWHHHbrQfRAAON3cFiMn1RhV1spsj+3hN/OzBXK
+ vrcCyc0EBqcj73wdvutOP7GTaRVULNZ0zOLEsnmS8S+RlDNfo/GvWypfs85iifBI0nSZ
+ ELl5VBS3eagbSkPxUJ2FzzgeGyZBJMAg0XZu+AgtYuKCupDW2QlZ4xqQKDPXIMUkfWdx
+ nO0h0v2qL03nX/VJRtve26IMbnZKwuK6VyptlwaFx873bXgJ1Dx3fO2OioPnc6PLxuta
+ 6RDmTB8bh2YOP5OsSJrdTd30GVzzZygaAiOG/9OVs2TdIG3tmetbVcGZfFk1qk4oyUk2
+ EBXQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUPlxebFLkFm6iZ6oBvFCYUyxvbl3Bv2WuIQmHZRqouRO7xGGZo2WF97tnhU4nstAIGnQvpyJ/my1Sc13Z05TB9ebv7OVI=
-X-Gm-Message-State: AOJu0YwvybXxADmTIIZzePLB7sjXeeci0BwbSjKCaY9eE5hZUHp6/iOV
- lE36SwvkUyBV/kYPaJOMlpxr46VItfACprdBnTwu40zsWxgHCiIYtvkFqcdjm1afOemKhoFiL4m
- e
-X-Received: by 2002:a05:600c:2d88:b0:422:12bf:27be with SMTP id
- 5b1f17b1804b1-42474d1ee2bmr2522145e9.11.1718725186078; 
- Tue, 18 Jun 2024 08:39:46 -0700 (PDT)
-Received: from [192.168.69.100] ([176.187.212.55])
+ AJvYcCX6yx3w//KLhlL/lnEWB+mQPBpxRKLhIUQymVhasL3xQ1+bywA2sK+ZWKW0Km/F0AMKui7htd6nt4our/WEyFyT5vAg
+X-Gm-Message-State: AOJu0YxRwQBKDlT10FbNxE0mJXV7LqSDDQK7OlaFRyAd60bda+XHzWZ4
+ 3F8uE4xjS80LEfo/U0qvHnacRtEfHnJgf5YERVbKuHwIiftwP8L1rTwb2SNimrx3AQ==
+X-Received: by 2002:a05:6512:3d0b:b0:52c:a8d8:4519 with SMTP id
+ 2adb3069b0e04-52ccaa92680mr5441e87.53.1718725784051; 
+ Tue, 18 Jun 2024 08:49:44 -0700 (PDT)
+Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-422874e74c7sm228213845e9.47.2024.06.18.08.39.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Jun 2024 08:39:45 -0700 (PDT)
-Message-ID: <9c61a7d8-c456-44ff-8062-c7eeca9dfd42@linaro.org>
-Date: Tue, 18 Jun 2024 17:39:43 +0200
+ 2adb3069b0e04-52ca287240asm1543182e87.177.2024.06.18.08.49.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 Jun 2024 08:49:43 -0700 (PDT)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: richard.henderson@linaro.org, edgar.iglesias@amd.com,
+ "Fea.Wang" <fea.wang@sifive.com>, Frank Chang <frank.chang@sifive.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ qemu-arm@nongnu.org
+Subject: [PULL v1 3/3] hw/net: Fix the transmission return size
+Date: Tue, 18 Jun 2024 17:49:35 +0200
+Message-ID: <20240618154935.203544-4-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240618154935.203544-1-edgar.iglesias@gmail.com>
+References: <20240618154935.203544-1-edgar.iglesias@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/misc: Fix invalid size assertions in exynos4210_rng
- read/write functions
-To: Zheyu Ma <zheyuma97@gmail.com>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20240618145054.3144311-1-zheyuma97@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240618145054.3144311-1-zheyuma97@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6ZhtApojAvNu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: kbrkjFdAypC1
 
-On 18/6/24 16:50, Zheyu Ma wrote:
-> This commit updates the exynos4210_rng_read() and exynos4210_rng_write()
-> functions to handle cases where the size is not 4 bytes. Instead of
-> asserting, which causes the program to abort, the functions now log an
-> error message and return a default value for reads or do nothing for
-> writes when the size is invalid.
-> 
-> Reproducer:
-> cat << EOF | qemu-system-aarch64 -display none \
-> -machine accel=qtest, -m 512M -machine smdkc210 -qtest stdio
-> readb 0x10830454
-> EOF
-> 
-> Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
-> ---
->   hw/misc/exynos4210_rng.c | 14 ++++++++++++--
->   1 file changed, 12 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/misc/exynos4210_rng.c b/hw/misc/exynos4210_rng.c
-> index 0756bd3205..307d4eea43 100644
-> --- a/hw/misc/exynos4210_rng.c
-> +++ b/hw/misc/exynos4210_rng.c
-> @@ -146,7 +146,12 @@ static uint64_t exynos4210_rng_read(void *opaque, hwaddr offset,
->       Exynos4210RngState *s = (Exynos4210RngState *)opaque;
->       uint32_t val = 0;
->   
-> -    assert(size == 4);
+From: "Fea.Wang" <fea.wang@sifive.com>
 
-Here if these registers are 32-bit only:
+Fix the transmission return size because not all bytes could be
+transmitted successfully. So, return a successful length instead of a
+constant value.
 
--- >8 --
-diff --git a/hw/misc/exynos4210_rng.c b/hw/misc/exynos4210_rng.c
-index 0756bd3205..674d8eece5 100644
---- a/hw/misc/exynos4210_rng.c
-+++ b/hw/misc/exynos4210_rng.c
-@@ -217,6 +217,8 @@ static const MemoryRegionOps exynos4210_rng_ops = {
-      .read = exynos4210_rng_read,
-      .write = exynos4210_rng_write,
-      .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid.min_access_size = 4,
-+    .valid.max_access_size = 4,
-  };
+Signed-off-by: Fea.Wang <fea.wang@sifive.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+Reviewed-by: Frank Chang <frank.chang@sifive.com>
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 ---
+ hw/net/xilinx_axienet.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Otherwise:
-
--- >8 --
-static const MemoryRegionOps exynos4210_rng_ops = {
-     .read = exynos4210_rng_read,
-     .write = exynos4210_rng_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-     .impl.min_access_size = 4,
-     .impl.max_access_size = 4,
-};
----
-
-> +    if (size != 4) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: invalid read size %u at offset 0x%" HWADDR_PRIx
-> +                      "\n", __func__, size, offset);
-> +        return 0;
-> +    }
->   
->       switch (offset) {
->       case EXYNOS4210_RNG_CONTROL_1:
-> @@ -181,7 +186,12 @@ static void exynos4210_rng_write(void *opaque, hwaddr offset,
->   {
->       Exynos4210RngState *s = (Exynos4210RngState *)opaque;
->   
-> -    assert(size == 4);
-> +    if (size != 4) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: invalid write size %u at offset 0x%" HWADDR_PRIx
-> +                      "\n", __func__, size, offset);
-> +        return;
-> +    }
->   
->       switch (offset) {
->       case EXYNOS4210_RNG_CONTROL_1:
+diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+index 7d1fd37b4a..05d41bd548 100644
+--- a/hw/net/xilinx_axienet.c
++++ b/hw/net/xilinx_axienet.c
+@@ -847,7 +847,7 @@ static ssize_t eth_rx(NetClientState *nc, const uint8_t *buf, size_t size)
+     axienet_eth_rx_notify(s);
+ 
+     enet_update_irq(s);
+-    return size;
++    return s->rxpos;
+ }
+ 
+ static size_t
+-- 
+2.43.0
 

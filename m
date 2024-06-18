@@ -1,132 +1,96 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1070474ejb;
-        Tue, 18 Jun 2024 15:05:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVFb1B/ub5SrE/92Yq1ytUvwWKpt6dnj2vENSXexXuaJSy7udZCbWJlElmc98s2e0zqWd+2SndvO4ppRTcVvBXpFt1s6Soh
-X-Google-Smtp-Source: AGHT+IEtq7nD/LVHPaiH0gLBl+i9wJpOjtyjLEuOTZcicML4o3XpgnWe3Mdn9UY6eJKQn2b/pVqI
-X-Received: by 2002:a05:6808:19a6:b0:3d2:2999:e14e with SMTP id 5614622812f47-3d51b97dce5mr1257829b6e.18.1718748343008;
-        Tue, 18 Jun 2024 15:05:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718748342; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1109338ejb;
+        Tue, 18 Jun 2024 16:58:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXMdHHjCmPXlI62glPqJ+iHmmR1KHvjdXKcxdcf6z4YcWdoysq+h7KPyGm7LKdvrNMrGDwgk80wZOt+4yXH6t7o37WLflJM
+X-Google-Smtp-Source: AGHT+IFOULSAQ54gSz/VOasQahUQ+jIr17Knz1/6jcqvl2ZWno9FUw0MT3UUpmJ8+S5NAWH2YY0Q
+X-Received: by 2002:a05:620a:2697:b0:795:5936:e983 with SMTP id af79cd13be357-79bb3e57e7cmr121226985a.45.1718755130102;
+        Tue, 18 Jun 2024 16:58:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718755130; cv=none;
         d=google.com; s=arc-20160816;
-        b=IUYGbzzx+S84H17u7z+F9UFhCv2V7xsqGW4rJuPnhoWYi7/SFpO63HiOItytZfUcoX
-         zECXA4+J7XLLpDJk1DuclRmwuH99XWOpSJWawx0AhFBQF8Ga5Yt5+LhnBgzLkZgWGKSb
-         eLpRZtRLaOHIjdmnKGruwifNMbUUW4/8CRnLrdTIcWn+s1cQ9tDMxwxdfNI/gs/gDuUe
-         hrMuwNapOMkeLm/n5j/AqvxH3raUC6cV8pI8gB3BPTqzd3fUSILFCee0JLALkK79ohEl
-         AIXMEUjOrTcIvCqBp4WXY8Bn0V5nKuvTXLRqfWZhA0w1GbbqFUdjqql/VMVsmnxF8vNs
-         dm8w==
+        b=WLusoNcYoERYamaBCU9uZW7DiPI0F+KzlTRGB0IDsQjDhx+3rZBZkXLMPgVkHKs4Fc
+         VG6HTrYJ/JJXLa35fXjoZXx3GyQpSL8HZ3liqLzuv7+NotTVsefaaaGYCsXkJ+ke6GAb
+         dw+pTbp7LW2WXvfUreZy/IEhvy1rV+MlsF1J6pBi3ISOGH5S9ad+gVlsivLpwZOvhR7e
+         i71rp+Slk4nUyahuYnbFSz/OaM58vIJX8u3VgPP7bYuQ0QWS5sp7pdRkgTtbU0K+tOql
+         m875qajjUZm4R1g69An0VZ9HLEwhpc4X7tBp9TlqNwz5IVgmOqFBMZpPZ4wX79Pnctd4
+         QZ9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=iMvIOYzPkVwpqcJA0MhGMbpGeGHqs/LPmuHKVZYPvvI=;
-        fh=tAZ/crXeGm5qaveCA52VM0DxlLjDl3Jb3T3bVPYlr+U=;
-        b=bHPTx+Y6COWWR7QmLxZaF9VbEzgjL9MrVIVqLraWeBA8Fodky7Il5X9LkvtFnPK9Ys
-         uz/S76hFr5yb+GqUIBKYuV2nYTfAnAwXb14RYnYYDA9Z2tJDqsYyTsKcWFiqDgZL788L
-         7sTYqEVnp7NImqXOgWwE4ALW+VRxpqXOtrTXf9IFjjfBsQE+gxu4c2V/pgD1JxbUBp1R
-         to6/TEbLDuNlFTATlUn09wa8fzIFiaj2FCAA6jhB1SajgE9px+QFddaz1PWLDFPP9dyx
-         NIcYK+bhMHfhbnYM9SG2esw0nlQtJeS63eNuebW1yIEjFlzuo5ELfPGHi6nNkb6qYHCr
-         IpSw==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=9W4PW0zYObPWa5VvdZ80quLsqvmKQ+u5HW4UxMKxKOc=;
+        fh=x5XuGiwkbRHK8ZRroBkdHiOQErlFxOugbQQGZXggGWU=;
+        b=nVVaSSmuz36cJs+0rAkmw4UWH0Ni1D2o6GHjH7GttS5iLOk75jRJRAdM6b4Fa+SgVl
+         wHfaRRUbzZY5M3BFPekCwyUuwfQCp8y15CTx9zbJjZU/pH339TpHfUsYCu1rdKfkaKAq
+         nkWrJhV3T1omalTSvLiWO4cjBM57QFx8hBL8hGsVV3qk+aVM36UJ899GtedJU8bluuY5
+         XaS4XIupZY1X/F4PIIhRm7ph8phIZ4EnuX28TzoO5/ebxV4OFulE8xkGnWWbKEbvnqmi
+         KOt0yPSnXVOVCZYT+Qzdxl99rGSUPyjn0rLRATBchD7gIM429kf8pnn6WtHwczKG50rI
+         bO9A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DQz99CEd;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=j+lt6iJs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-80da0c3aaa3si999855241.116.2024.06.18.15.05.42
+        by mx.google.com with ESMTPS id af79cd13be357-798abd1ed37si1412882385a.487.2024.06.18.16.58.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jun 2024 15:05:42 -0700 (PDT)
+        Tue, 18 Jun 2024 16:58:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DQz99CEd;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=j+lt6iJs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sJgx6-0001zH-CC; Tue, 18 Jun 2024 18:05:20 -0400
+	id 1sJiiT-0005GZ-Bd; Tue, 18 Jun 2024 19:58:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sJgx4-0001yf-HO
- for qemu-arm@nongnu.org; Tue, 18 Jun 2024 18:05:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1sJiiR-0005Ft-F9; Tue, 18 Jun 2024 19:58:19 -0400
+Received: from pi.codeconstruct.com.au ([203.29.241.158]
+ helo=codeconstruct.com.au)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sJgx2-0002H9-UJ
- for qemu-arm@nongnu.org; Tue, 18 Jun 2024 18:05:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718748315;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=iMvIOYzPkVwpqcJA0MhGMbpGeGHqs/LPmuHKVZYPvvI=;
- b=DQz99CEdzJkGRKeBbMChz+VjbP4wdSaC3EBeRG+d8pw9HhSrmuAJX0BXQBSkPFGo8gVvw+
- fdjq7PDpNWBgjFxKwS9l0W4uCu+/x6yBJIRUE1qHnSH/eoWGmpJHrwSsh8/nWv9oARM1Ei
- xP8uHUnYQIcha0rm8GK5sbYhNOCQucU=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-690-I7XrayDzPRKWdJ_G0-hkOw-1; Tue, 18 Jun 2024 18:05:14 -0400
-X-MC-Unique: I7XrayDzPRKWdJ_G0-hkOw-1
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3625503233eso107946f8f.0
- for <qemu-arm@nongnu.org>; Tue, 18 Jun 2024 15:05:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718748313; x=1719353113;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=iMvIOYzPkVwpqcJA0MhGMbpGeGHqs/LPmuHKVZYPvvI=;
- b=V1v4++9ejhujWtrjWlZngGoQ7YaJcc0qNq4jwWhs0nNknUrwxNo5+hVufRmVOR520G
- LqoGc7+FiPkmSOxG8pyDuRmwfWTINVAMYRKwQhS+4jJRxU1lfLq9bzexGmrb0567bqaY
- HnhhYkn7gLac5xmcWlUdhQnW9IQc62tN24Z0P1WUpUG1QElb3nNufcKtaozFumMIc5wH
- qp+kUT04vvt/BksxS9ANiYI9PYYhVXLu8ZDgabIiMlgIAiIesQr0coCC2GIGnUtwB9ze
- PabS1RreMcNEPpZ7iBb5IxbeSTxAWgmXRy37Ee+oB5Kxdv3UbglYaW1MTS8fSWY2NnAb
- 7yJA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVtvgr2EfDBVFRAkhHrAyxe5KZdSNZiQydZ+bn175qMhCuVNyjXVHMPPHQQu4rXPpwb/yIeQwFO6iRGhnHmE/MeE0QZ
-X-Gm-Message-State: AOJu0YxrwdyR3X/YBey6T/kOZYsoBRFCVTsBjOFO9KLNBVPxsp51sJmZ
- y1u1NHSKfnfDFw1Qdl+wHfCcSQS1sg3T6hj0yivUrPq+slZdyQcTUVWlIBkE93AFSZVZx7F3uMM
- u9pxLUeTCwrA56ccykHMuCh0sRz1FpdWlqrLZnyi1eP1tjNIv2A==
-X-Received: by 2002:adf:f4d1:0:b0:362:1d6c:b867 with SMTP id
- ffacd0b85a97d-3621d6cb9c6mr3340030f8f.3.1718748312922; 
- Tue, 18 Jun 2024 15:05:12 -0700 (PDT)
-X-Received: by 2002:adf:f4d1:0:b0:362:1d6c:b867 with SMTP id
- ffacd0b85a97d-3621d6cb9c6mr3339980f8f.3.1718748311931; 
- Tue, 18 Jun 2024 15:05:11 -0700 (PDT)
-Received: from redhat.com ([31.187.78.82]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3607510340fsm15251557f8f.93.2024.06.18.15.05.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Jun 2024 15:05:10 -0700 (PDT)
-Date: Tue, 18 Jun 2024 18:05:06 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: peter.maydell@linaro.org, wangxingang5@huawei.com,
- shannon.zhaosl@gmail.com, imammedo@redhat.com, anisinha@redhat.com,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v3] hw/arm/virt-acpi-build: Fix id_count in
- build_iort_id_mapping
-Message-ID: <20240618180459-mutt-send-email-mst@kernel.org>
-References: <20240618211110.922809-1-nicolinc@nvidia.com>
- <20240618171311-mutt-send-email-mst@kernel.org>
- <ZnH53Qaqp5+Xo1jo@Asurada-Nvidia>
- <20240618173233-mutt-send-email-mst@kernel.org>
- <ZnIBbeITxG4ZRVVm@Asurada-Nvidia>
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1sJiiO-0004FL-IC; Tue, 18 Jun 2024 19:58:19 -0400
+Received: from [192.168.68.112]
+ (ppp118-210-79-194.adl-adc-lon-bras32.tpg.internode.on.net [118.210.79.194])
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 5D5AB20127;
+ Wed, 19 Jun 2024 07:58:01 +0800 (AWST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=codeconstruct.com.au; s=2022a; t=1718755084;
+ bh=9W4PW0zYObPWa5VvdZ80quLsqvmKQ+u5HW4UxMKxKOc=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References;
+ b=j+lt6iJsbEv5LIb73yh7jWH56TSu6s2/UJuREFIbcRWWPXGs6JIUIPlHF0Ph8UyHK
+ u50MI57fcojYjqnH55HjN7BxAICo0jc+Svf+EOeR+9qNVYk9UEn3tpd7v3qnHCIPAc
+ Gn7gj0OUvqX+Dv1Tx6Z+Bh/PpvC0YOuZjQCg0qnHzV43g4W8EtrKCCpMMmxmiDv/dQ
+ Xf7wqAz+irUIVrkY2Kz8pKi+/BIAMBevhs5AoDs6tyAfFb00AIXCKKsnJBG2OWKBq6
+ wGC9sgcESqcQZNGFND8R5LH+4h9FE1jOvcRNZCyDta+CFhdooo/jxaDuQ5JsOeyj0O
+ Ph7CU76BgjIbA==
+Message-ID: <bd15ab0597caad4564ca8f9498dfd3bbbe67df89.camel@codeconstruct.com.au>
+Subject: Re: [PATCH] hw/gpio/aspeed: Add bounds checking for register table
+ access
+From: Andrew Jeffery <andrew@codeconstruct.com.au>
+To: Zheyu Ma <zheyuma97@gmail.com>, =?ISO-8859-1?Q?C=E9dric?= Le Goater
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Joel Stanley
+ <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Wed, 19 Jun 2024 09:27:59 +0930
+In-Reply-To: <20240618130928.3075494-1-zheyuma97@gmail.com>
+References: <20240618130928.3075494-1-zheyuma97@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-In-Reply-To: <ZnIBbeITxG4ZRVVm@Asurada-Nvidia>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+Received-SPF: pass client-ip=203.29.241.158;
+ envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.148,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,56 +105,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: USU05BbypmZb
+X-TUID: nL5Lzba0f/cV
 
-On Tue, Jun 18, 2024 at 02:51:41PM -0700, Nicolin Chen wrote:
-> On Tue, Jun 18, 2024 at 05:34:21PM -0400, Michael S. Tsirkin wrote:
-> > On Tue, Jun 18, 2024 at 02:19:25PM -0700, Nicolin Chen wrote:
-> > > On Tue, Jun 18, 2024 at 05:14:32PM -0400, Michael S. Tsirkin wrote:
-> > > > > @@ -306,8 +314,8 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> > > > >          }
-> > > > >
-> > > > >          /* Append the last RC -> ITS ID mapping */
-> > > > > -        if (next_range.input_base < 0xFFFF) {
-> > > > > -            next_range.id_count = 0xFFFF - next_range.input_base;
-> > > > > +        if (next_range.input_base < 0x10000) {
-> > > > > +            next_range.id_count = 0x10000 - next_range.input_base;
-> > > > >              g_array_append_val(its_idmaps, next_range);
-> > > > >          }
-> > > >
-> > > > A change of logic here - I think the new one is right and old
-> > > > one was wrong, actually. Right?
-> > >
-> > > Sorry, I don't quite follow that question...
-> > >
-> > > Doesn't a patch correct an old wrong one to a new right one?
-> > >
-> > > Thanks
-> > > Nicolin
-> > 
-> > 
-> > So if base is 0xFFFF what should happen? I think previously we
-> > skipped an entry and that is wrong. So that's another latent
-> > bug this patch fixes then?
-> > Worth documenting in the commit log too.
-> 
-> I had noticed that -- yes, ideally it should have been "<= 0xFFFF".
-> Yet, practically input_base can never be 0xFFFF as it's calculated:
-> 
-> hw/arm/virt-acpi-build.c:245:                .input_base = min_bus << 8,
-> hw/arm/virt-acpi-build.c:305:            next_range.input_base = idmap->input_base + idmap->id_count;
-> 
-> The first one always sets input_base to 0xXX00 (min_bus = 0xXX).
-> The second one, as we know for id_count, must be 0xZZ00 too since
-> input_base from the first place must be 0xXX00 and 0xYY00
-> hw/arm/virt-acpi-build.c:301:                next_range.id_count = idmap->input_base - next_range.input_base;
-> 
-> So, it's a case that could never be triggered? Probably not worth
-> highlighting IMOH...
-> 
-> Thanks
-> Nicolin
+Hello Zheyu Ma,
 
-Makes sense.
+On Tue, 2024-06-18 at 15:09 +0200, Zheyu Ma wrote:
+> Added bounds checking in the aspeed_gpio_read() and aspeed_gpio_write()
+> functions to ensure the index idx is within the valid range of the
+> reg_table array.
+>=20
+> The correct size of reg_table is determined dynamically based on whether
+> it is aspeed_3_3v_gpios or aspeed_1_8v_gpios. If idx exceeds the
+> size of reg_table, an error is logged, and the function returns.
+>=20
+> AddressSanitizer log indicating the issue:
+>=20
+> =3D=3D2602930=3D=3DERROR: AddressSanitizer: global-buffer-overflow on add=
+ress 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7fff096c4e90 sp 0x7fff096c4e8=
+8
+> READ of size 2 at 0x55a5da29e128 thread T0
+>     #0 0x55a5d700dc61 in aspeed_gpio_read hw/gpio/aspeed_gpio.c:564:14
+>     #1 0x55a5d933f3ab in memory_region_read_accessor system/memory.c:445:=
+11
+>     #2 0x55a5d92fba40 in access_with_adjusted_size system/memory.c:573:18
+>     #3 0x55a5d92f842c in memory_region_dispatch_read1 system/memory.c:142=
+6:16
+>     #4 0x55a5d92f7b68 in memory_region_dispatch_read system/memory.c:1459=
+:9
+>     #5 0x55a5d9376ad1 in flatview_read_continue_step system/physmem.c:283=
+6:18
+>     #6 0x55a5d9376399 in flatview_read_continue system/physmem.c:2877:19
+>     #7 0x55a5d93775b8 in flatview_read system/physmem.c:2907:12
 
+I'm mildly interested in what you were doing to trigger this. Certainly
+we could do with a guard in the model to prevent it, but I'm curious
+all the same.
 
+>=20
+> Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
+> ---
+>  hw/gpio/aspeed_gpio.c | 26 ++++++++++++++++++++++++++
+>  1 file changed, 26 insertions(+)
+>=20
+> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+> index c1781e2ba3..1441046f6c 100644
+> --- a/hw/gpio/aspeed_gpio.c
+> +++ b/hw/gpio/aspeed_gpio.c
+> @@ -550,6 +550,7 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr=
+ offset, uint32_t size)
+>      GPIOSets *set;
+>      uint32_t value =3D 0;
+>      uint64_t debounce_value;
+> +    uint32_t reg_table_size;
+> =20
+>      idx =3D offset >> 2;
+>      if (idx >=3D GPIO_DEBOUNCE_TIME_1 && idx <=3D GPIO_DEBOUNCE_TIME_3) =
+{
+> @@ -559,6 +560,18 @@ static uint64_t aspeed_gpio_read(void *opaque, hwadd=
+r offset, uint32_t size)
+>          return debounce_value;
+>      }
+> =20
+> +    if (agc->reg_table =3D=3D aspeed_3_3v_gpios) {
+> +        reg_table_size =3D GPIO_3_3V_REG_ARRAY_SIZE;
+> +    } else {
+> +        reg_table_size =3D GPIO_1_8V_REG_ARRAY_SIZE;
+> +    }
+
+I think I'd prefer we add reg_table_size as a member of AspeedGPIOClass
+and initialise it at the same time as we initialise reg_table. I feel
+it would help maintain safety in the face of future changes (i.e. if
+another reg table were introduced). With that approach the hunk above
+can be dropped.
+
+> +
+> +    if (idx >=3D reg_table_size) {
+
+This condition would then become:
+
+```
+if (idx >=3D agc->reg_table_size) {
+```
+
+Thoughts?
+
+Andrew

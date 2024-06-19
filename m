@@ -1,128 +1,255 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1594481ejb;
-        Wed, 19 Jun 2024 13:15:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUMczrq4EVGYTi8qNrI8PkUdnqW/8cT5Puo7j2EWOagnXt/hf1BxwxzusM0KgUTvzbNDoanBVyDSOaJzYDUtWhabP9h4sIE
-X-Received: by 2002:a05:600c:2d4c:b0:423:34d:b050 with SMTP id 5b1f17b1804b1-42475175515mr23055165e9.9.1718828118681;
-        Wed, 19 Jun 2024 13:15:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718828118; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1663484ejb;
+        Wed, 19 Jun 2024 16:49:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWMJuWpd3sKRO8zjPdE3GN7tFwRa7QyFZyxfOAf5jEZD6KOxzEvW6P/sU1Hwc54FT78DElpsinR/wzuf7eEpX39biR7GVpi
+X-Google-Smtp-Source: AGHT+IFAWc4Wykkh60Q7PEeKd0pvkcaeETzJ+EQjZLBOO8wCVE7d9LZF/a9snHTKMzM9tinXpvDQ
+X-Received: by 2002:a05:620a:2490:b0:795:5822:e8c6 with SMTP id af79cd13be357-79bb3e2e485mr479115385a.27.1718840965108;
+        Wed, 19 Jun 2024 16:49:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718840965; cv=none;
         d=google.com; s=arc-20160816;
-        b=i9IIG/0NUp94AeGHM/DxULgt5Lwm5cR4ZABN+X8z4owb9ky3LYQa+uNoPViqY3uYjS
-         HQOpVaU+1+46js8dQbJylWKtU2PT7z0JWlE2p+nwaIcLsDPVp44InI0IxuVowrN6cOBQ
-         +9mmgTC5X7294vD8tBWIA5xorX2PEfQs2rbG7Kzf834d1kx2BJBgobs/cWJ2QhwX7bUh
-         Ftl9FqzzxVHgM/rE+stppN4payVg9raS7YCbG9RQZQA8ItMi8ks92d7F9vPILOE3+54t
-         E/dju47MUQion8tcCDsxL1+qzylToyggo2MIptI49/DvUbcG9e9ddFRl6t4WQAk/m2Gk
-         WzqA==
+        b=k89nKOh+DfoOuSGNrGfAEyzUEBcCBJB70MzoeJeOe/UeTio44mJTCwcB7IZwG348R5
+         kI4uqwawuoCDg5qQ/gJP/Tpg040sn2JqufSlb5Bt7bRnpOLjGDEkSI+DoWAqWX8aD/q+
+         B/rw8BIi30GT7ian/czd3SFeQEs0hrxbsbK7fwC5Ekp7Tsg273w/rh21WAVcxaHo4c5R
+         B/MAuveYiQ8GqHIQnIq1+DvW+0jb1SrFSbTgxJldM3AxF+1hl2kOaM8g22JTMuQLYdwC
+         FSw+45c9mHkMX+ER/YqUvTiyXKOtc+Ci3deyE4JNt0QrUQE8KSZpgFTv/g0pgOA2PSpE
+         N9vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=kfBlhlKJNBiXVGnmXKNokqgloJowB7odFyWS6IGw2Bs=;
-        fh=yEKgGBm4WuUrTqnnHX0HpyKkT7dO+J96DDIQmt7J2UE=;
-        b=Mr6JRnUdLD0jC/ImIULQDkH09rEoJJcFwVs7pBEstJEY9Wc/bTg9l6qjeClDDAZb4k
-         mh9SAbAlmZ2Pb2MWNAXp6Uo8OlxxGnlv3+JT5fsfDY6zKCgEWQJBMiLb+rfIV8ScwmIs
-         3cRsvBxoowy5bcba9elV4+3ihV0QSp1cVmqhPjrKt0Q0Tl5cRt/pauChr+7fgXWbpaSb
-         8vU9pKLWxuZrkWYi1HZ7GzqyV5Zw2Dd3Kaw5gsaK84taVy+Y0N+V/lCNR5MRrKqAdOzs
-         DLUrz1arAOx6QZRwCeMlJ9ZlsPBTDyzTAXE6bP+ynGciSnkKxXpOv9Mb7RJJqsytupUK
-         3EKg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=IEgncZSK+nXv6/fbH5xMKM4cWSDqyVFNFDNZAR7rAck=;
+        fh=x5XuGiwkbRHK8ZRroBkdHiOQErlFxOugbQQGZXggGWU=;
+        b=lWVy8og6bPwCspJ7E+onOelug1SZklsKrww7g4HU5EBJAcEPGSOaU/J92INbyV0hzo
+         idA5Tl0wQu6wu5cp1i/+9dwqwDa+HT3Oj1N4ruqjTejEi/+uIIOao+fqYXjKG8OsXvPA
+         JQ2cr9sfapS2NQ9nC7/mAh1FIi72nvU7bwV1NJC3Pz4JjGwQ32QiDW1Ippy+D+ATN8MD
+         FJbu39WhzGbGCkwGkwWIHdd73U7mxKvhrtJK8kIUokX2sFFcQ8MZwlcy9m8UQDeILr8n
+         Lyu/DKyE98RP3TMhhh78dvuvV5aVBo35VRN3unmVCf9JO+/Jv4kXnOheqn+NdDr03dKW
+         Qitw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y3D47cCx;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <manos.pitsidianakis@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-42479aec089sor5072885e9.9.2024.06.19.13.15.18
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=cnJeAxGR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-79a2617a4e4si1312862585a.610.2024.06.19.16.49.24
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 19 Jun 2024 13:15:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 19 Jun 2024 16:49:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y3D47cCx;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=cnJeAxGR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sK52v-0000rD-2A; Wed, 19 Jun 2024 19:48:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1sK52t-0000qx-Bh; Wed, 19 Jun 2024 19:48:55 -0400
+Received: from pi.codeconstruct.com.au ([203.29.241.158]
+ helo=codeconstruct.com.au)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1sK52q-0003x1-Hi; Wed, 19 Jun 2024 19:48:55 -0400
+Received: from [192.168.68.112]
+ (ppp118-210-79-194.adl-adc-lon-bras32.tpg.internode.on.net [118.210.79.194])
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 88E5A20154;
+ Thu, 20 Jun 2024 07:48:43 +0800 (AWST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718828118; x=1719432918; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kfBlhlKJNBiXVGnmXKNokqgloJowB7odFyWS6IGw2Bs=;
-        b=Y3D47cCxubXV/LNN37UMiqdDNPOPmblZcnhcgcdQRcTTFSkEdFY9x4s/A82WoZWYsV
-         FUkgNjIM2YBAnykjy42nIK7BMOuieyZoBASXAPQmA1oXsy5hkza27e2c6AHFbFRhgfu+
-         HKeP/U7FHPHOAO+nygiarLINGGWjtFTZnhMYfBba7gXTdJGPTYKCQL7XK05fq/2a5Tg+
-         tg/OxZAz63JzJkoQL8FKonKogm4RjyIhVlcNH/rQ9+Xjfct0KvP5RbSgMQ5qwyjGyySX
-         olrgTIAZqH+hZ9Lm1wsdzXW2si6vIZinzosJMFANXOGjkSnx2GIBpPLZUbqB1dIIU1IF
-         JppQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718828118; x=1719432918;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kfBlhlKJNBiXVGnmXKNokqgloJowB7odFyWS6IGw2Bs=;
-        b=IOLZn6+IzHC4QyrLDHiox+Z6Ux1Ytm50IF7NGEl3id9snPdv32P7YTm7u8pIS08m6v
-         FMLGxUr7t9vxKYgW58gZwf+WSJicDYp2TDZT9KDY/Dy4NqAEMp9yq+Qv6ICXTh///e/Q
-         zO6YhTRa11e/AK7WP6igAVj8jkvX8qX337tMfXFcqLcLL+30+DXvy4SYw15wKG9VC87M
-         +5b5Q96d1/oRjsb3+yPWVp4L98/8t7csoWMJQ3r80vK9HVtIn4xel7A50MHBmfL4QfD/
-         xT6WQ1GhQ4eXnTIXTjP97zsn1Cp32d10GR8ZlMNu0R4gSJQA/QZ9tt48GzJjJVxokYuG
-         BPIQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXfKw5bfB8qsCN8UHjfS6KMqfHWHhmVjoSKY7BHZU02SiiNQu9YMNUNOKExj45RSDJFJFAZa1RzxavpBShoxbf6eICByfxg
-X-Gm-Message-State: AOJu0YwzXliMndWjP2zXFIWyJ9hY0c40eYrFfrK4aB/b5E4rrrk4J61J
-	JhQVjFWwRsiTbhfnm9w2WUCIJcwq0pA57KSWqOYwRmgtYH8lZlm7UI0/EtCT4QTCIQ==
-X-Google-Smtp-Source: AGHT+IFwh4Cg8fzxeEz6lV14WhbpQxy3K3e724v6u9ffOUFEWfQZU+O8YDORo10T7H+BZi+vCZIZnQ==
-X-Received: by 2002:a05:600c:3503:b0:422:1a82:3ebf with SMTP id 5b1f17b1804b1-4247529bdb6mr26227915e9.35.1718828118374;
-        Wed, 19 Jun 2024 13:15:18 -0700 (PDT)
-Return-Path: <manos.pitsidianakis@linaro.org>
-Received: from localhost.localdomain (adsl-103.37.6.162.tellas.gr. [37.6.162.103])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4247101aac6sm45623235e9.0.2024.06.19.13.15.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Jun 2024 13:15:18 -0700 (PDT)
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Stefan Hajnoczi <stefanha@redhat.com>,
-	Mads Ynddal <mads@ynddal.dk>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Zhao Liu <zhao1.liu@intel.com>,
-	Gustavo Romero <gustavo.romero@linaro.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	rowan.hart@intel.com,
-	Richard Henderson <richard.henderson@linaro.org>,
-	qemu-arm@nongnu.org
-Subject: [RFC PATCH v3 5/5] DO NOT MERGE: replace TYPE_PL011 with x-pl011-rust in arm virt machine
-Date: Wed, 19 Jun 2024 23:14:02 +0300
-Message-ID: <229703c7f4394691f254b02c012ee0d7dcf57afb.1718827153.git.manos.pitsidianakis@linaro.org>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <rust-pl011-rfc-v3.git.manos.pitsidianakis@linaro.org>
-References: <rust-pl011-rfc-v3.git.manos.pitsidianakis@linaro.org>
+ d=codeconstruct.com.au; s=2022a; t=1718840925;
+ bh=IEgncZSK+nXv6/fbH5xMKM4cWSDqyVFNFDNZAR7rAck=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References;
+ b=cnJeAxGRxdWrUM+S92Q/2YrFAKdVJHdxxh4dpNqLlknRL2slhLwYmZuc/tVr8k3o7
+ 0ydTZhFmfnTggHp9A/4M8Wa6W474Z5UmF5aZgFkzXrexutOhLO2nS/hMGbS5sWNPDu
+ J4hePohouezTKfKPs/Oi/Ne81W0i98XFnNaMpRZsmIFRDzvvA06ZN5ebk6lhcPISzx
+ 11ZntAPrP10DtRCGr6rX1iP/BaDXQc3zEhd4hYvXybb9/9TvP7Dqc4pTTdi4TunoqJ
+ 3mLbffNMGQZAQfXa4bjtYGvNg0fxkNqn0e1TvWeHfJrWoQ1JwyxHTb4d+DeJXAPKnb
+ dMnv3ALSFwj0A==
+Message-ID: <7fcbf65de8bc5668e036249d6408bf4e4cbc6efe.camel@codeconstruct.com.au>
+Subject: Re: [PATCH v3] hw/gpio/aspeed: Add reg_table_size to AspeedGPIOClass
+From: Andrew Jeffery <andrew@codeconstruct.com.au>
+To: Zheyu Ma <zheyuma97@gmail.com>, =?ISO-8859-1?Q?C=E9dric?= Le Goater
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Joel Stanley
+ <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Thu, 20 Jun 2024 09:18:43 +0930
+In-Reply-To: <20240619183638.4073070-1-zheyuma97@gmail.com>
+References: <20240619183638.4073070-1-zheyuma97@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF8
-Content-Transfer-Encoding: 8bit
-X-TUID: InJSXC7V3r+y
+Received-SPF: pass client-ip=203.29.241.158;
+ envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0dCt1tuic+Sm
 
-Convenience patch for testing the rust device.
+On Wed, 2024-06-19 at 20:36 +0200, Zheyu Ma wrote:
+> ASan detected a global-buffer-overflow error in the aspeed_gpio_read()
+> function. This issue occurred when reading beyond the bounds of the
+> reg_table.
+>=20
+> To enhance the safety and maintainability of the Aspeed GPIO code, this c=
+ommit
+> introduces a reg_table_size member to the AspeedGPIOClass structure. This
+> change ensures that the size of the GPIO register table is explicitly tra=
+cked
+> and initialized, reducing the risk of errors if new register tables are
+> introduced in the future.
+>=20
+> Reproducer:
+> cat << EOF | qemu-system-aarch64 -display none \
+> -machine accel=3Dqtest, -m 512M -machine ast1030-evb -qtest stdio
+> readq 0x7e780272
+> EOF
+>=20
+> ASAN log indicating the issue:
+> =3D=3D2602930=3D=3DERROR: AddressSanitizer: global-buffer-overflow on add=
+ress 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7fff096c4e90 sp 0x7fff096c4e8=
+8
+> READ of size 2 at 0x55a5da29e128 thread T0
+>     #0 0x55a5d700dc61 in aspeed_gpio_read hw/gpio/aspeed_gpio.c:564:14
+>     #1 0x55a5d933f3ab in memory_region_read_accessor system/memory.c:445:=
+11
+>     #2 0x55a5d92fba40 in access_with_adjusted_size system/memory.c:573:18
+>     #3 0x55a5d92f842c in memory_region_dispatch_read1 system/memory.c:142=
+6:16
+>     #4 0x55a5d92f7b68 in memory_region_dispatch_read system/memory.c:1459=
+:9
+>     #5 0x55a5d9376ad1 in flatview_read_continue_step system/physmem.c:283=
+6:18
+>     #6 0x55a5d9376399 in flatview_read_continue system/physmem.c:2877:19
+>     #7 0x55a5d93775b8 in flatview_read system/physmem.c:2907:12
+>=20
+> Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
 
-Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
----
- hw/arm/virt.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 3c93c0c0a6..f33b58ae0d 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -912,7 +912,11 @@ static void create_uart(const VirtMachineState *vms, int uart,
-     int irq = vms->irqmap[uart];
-     const char compat[] = "arm,pl011\0arm,primecell";
-     const char clocknames[] = "uartclk\0apb_pclk";
-+#ifdef CONFIG_WITH_RUST
-+    DeviceState *dev = qdev_new("x-pl011-rust");
-+#else
-     DeviceState *dev = qdev_new(TYPE_PL011);
-+#endif
-     SysBusDevice *s = SYS_BUS_DEVICE(dev);
-     MachineState *ms = MACHINE(vms);
- 
--- 
-γαῖα πυρί μιχθήτω
+> ---
+> Changes in v3:
+> - Add the reproducer
+>=20
+> Changes in v2:
+> - Introduce the reg_table_size to AspeedGPIOClass
+> ---
+>  hw/gpio/aspeed_gpio.c         | 17 +++++++++++++++++
+>  include/hw/gpio/aspeed_gpio.h |  1 +
+>  2 files changed, 18 insertions(+)
+>=20
+> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+> index c1781e2ba3..fd4912edae 100644
+> --- a/hw/gpio/aspeed_gpio.c
+> +++ b/hw/gpio/aspeed_gpio.c
+> @@ -559,6 +559,12 @@ static uint64_t aspeed_gpio_read(void *opaque, hwadd=
+r offset, uint32_t size)
+>          return debounce_value;
+>      }
+> =20
+> +    if (idx >=3D agc->reg_table_size) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: idx 0x%" PRIx64 " out of bou=
+nds\n",
+> +                      __func__, idx);
+> +        return 0;
+> +    }
+> +
+>      reg =3D &agc->reg_table[idx];
+>      if (reg->set_idx >=3D agc->nr_gpio_sets) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
+> @@ -785,6 +791,12 @@ static void aspeed_gpio_write(void *opaque, hwaddr o=
+ffset, uint64_t data,
+>          return;
+>      }
+> =20
+> +    if (idx >=3D agc->reg_table_size) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: idx 0x%" PRIx64 " out of bou=
+nds\n",
+> +                      __func__, idx);
+> +        return;
+> +    }
+> +
+>      reg =3D &agc->reg_table[idx];
+>      if (reg->set_idx >=3D agc->nr_gpio_sets) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
+> @@ -1117,6 +1129,7 @@ static void aspeed_gpio_ast2400_class_init(ObjectCl=
+ass *klass, void *data)
+>      agc->nr_gpio_pins =3D 216;
+>      agc->nr_gpio_sets =3D 7;
+>      agc->reg_table =3D aspeed_3_3v_gpios;
+> +    agc->reg_table_size =3D GPIO_3_3V_REG_ARRAY_SIZE;
+>  }
+> =20
+>  static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
+> @@ -1127,6 +1140,7 @@ static void aspeed_gpio_2500_class_init(ObjectClass=
+ *klass, void *data)
+>      agc->nr_gpio_pins =3D 228;
+>      agc->nr_gpio_sets =3D 8;
+>      agc->reg_table =3D aspeed_3_3v_gpios;
+> +    agc->reg_table_size =3D GPIO_3_3V_REG_ARRAY_SIZE;
+>  }
+> =20
+>  static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void=
+ *data)
+> @@ -1137,6 +1151,7 @@ static void aspeed_gpio_ast2600_3_3v_class_init(Obj=
+ectClass *klass, void *data)
+>      agc->nr_gpio_pins =3D 208;
+>      agc->nr_gpio_sets =3D 7;
+>      agc->reg_table =3D aspeed_3_3v_gpios;
+> +    agc->reg_table_size =3D GPIO_3_3V_REG_ARRAY_SIZE;
+>  }
+> =20
+>  static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void=
+ *data)
+> @@ -1147,6 +1162,7 @@ static void aspeed_gpio_ast2600_1_8v_class_init(Obj=
+ectClass *klass, void *data)
+>      agc->nr_gpio_pins =3D 36;
+>      agc->nr_gpio_sets =3D 2;
+>      agc->reg_table =3D aspeed_1_8v_gpios;
+> +    agc->reg_table_size =3D GPIO_1_8V_REG_ARRAY_SIZE;
+>  }
+> =20
+>  static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
+> @@ -1157,6 +1173,7 @@ static void aspeed_gpio_1030_class_init(ObjectClass=
+ *klass, void *data)
+>      agc->nr_gpio_pins =3D 151;
+>      agc->nr_gpio_sets =3D 6;
+>      agc->reg_table =3D aspeed_3_3v_gpios;
+> +    agc->reg_table_size =3D GPIO_3_3V_REG_ARRAY_SIZE;
+>  }
+> =20
+>  static const TypeInfo aspeed_gpio_info =3D {
+> diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.=
+h
+> index 904eecf62c..e66036ac39 100644
+> --- a/include/hw/gpio/aspeed_gpio.h
+> +++ b/include/hw/gpio/aspeed_gpio.h
+> @@ -75,6 +75,7 @@ struct AspeedGPIOClass {
+>      uint32_t nr_gpio_pins;
+>      uint32_t nr_gpio_sets;
+>      const AspeedGPIOReg *reg_table;
+> +    uint32_t reg_table_size;
+>  };
+> =20
+>  struct AspeedGPIOState {
+

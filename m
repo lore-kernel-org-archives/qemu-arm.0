@@ -1,130 +1,88 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1375044ejb;
-        Wed, 19 Jun 2024 05:59:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVvtOIekBkh4iWZ5m+7SEv/bI3PjBuArLGdzHPZ3ifAA9WhNl2uiCmjFN0hk36ImHFKDozksXCE7qtoddRd1wR1j3YBJ9ap
-X-Google-Smtp-Source: AGHT+IENOEgEYeBfbpiy770uwx6YDcmYdRGw6zbm38qQ04cl23ZVAAZpySN5Pgk8HX940L6o2Hq5
-X-Received: by 2002:a05:620a:2945:b0:795:59ed:21e3 with SMTP id af79cd13be357-79ba76b2588mr904341985a.3.1718801993951;
-        Wed, 19 Jun 2024 05:59:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718801993; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1401532ejb;
+        Wed, 19 Jun 2024 06:46:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW2r3wb8NKgWPc056QTXED/tl3VrobqGs4xPhY9exet/p/uJzzt/hvRRM4xqjKLV4irxSIJxLdiMXNMhJ+G0/PYY4hg26Qy
+X-Google-Smtp-Source: AGHT+IE0ba5koxfYoknwJNWjmGpE/IAKZc6vXd1deqr2F/TRtgc1V9ugPvv/lWTuouSh3Isklpu3
+X-Received: by 2002:a05:622a:1394:b0:440:51af:2986 with SMTP id d75a77b69052e-444a7a5e1bbmr26538141cf.57.1718804762795;
+        Wed, 19 Jun 2024 06:46:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718804762; cv=none;
         d=google.com; s=arc-20160816;
-        b=B9fVCiw5BXrFMT3eU/n+Us+IALeBIrrgGZKzxAR+xp9wDdgzC2g967cCbSJSzlQXRw
-         tA2Oa8NYTECMuT2dp7Vnh8Flh5VNuzgW3ALztctRG9Bb4hSgpFK8TFCANSNHrijYgmyD
-         ocwGGiP0BmQhtIEsde/TBbx29TipKIgpQ/RW83CNBkafLXbB0vE/yDF4oHi1u/rAQWk6
-         Aggm0QQQYPAx9lodoRpHoC38xCbtRnqvUP5f4xXwYksVWJv/VHWFg9T4QDc7j3T1G4Gs
-         dmyL/jBos7SYPVP6ETN777HaN/Tzrpgn2sxyEvhrM/Yx3FZRwlMhYoUJ7mZBPhHtQBkJ
-         paVA==
+        b=KN6RjnS+KBf0lDPMdvO/YeAC7ynCD4EN0KqsErY2IWDD9kQkHIaI/qp3FADSouTKpx
+         fsUMb3aAwcqnwcEqSQRCZPwNGur6BKy94GpKVOlY/hJRtWQkGLzWXsibC2nws/GyQ5dl
+         /yOcX9Ocz86W29fQRbND6aSFmwmuRr8dUYaT8CFB40Vl7ntb+9KC6JHR68IJxgvkLU3k
+         pYJ4userjJNq5Hfo+kWEB06OQeeiiZlYdW7+fYPql+XyhS1gyhOlcf6vpEYZhiNtxjtK
+         YmrIXu9kyzKtV8l430WV+XJ+lp/cfkDa1qwWh/jpGck1bOdIyNuOQXNebAfhir/QppEs
+         6JXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:from:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ndgKULfHbBt7KqzR0WHBvj2CUdfnVHZDXVN3f2R9o8I=;
-        fh=pN07si8EITfC/ZQbz8RJmcb2IsEQFZRoFbroMewrkdE=;
-        b=PIMEbPIl7P9SxFXUzrD5aBunzVjl1vj/1cq0TY06ERRmTwWWnTb05hLu3BxlttuicG
-         56hjJnpJJZ3BYEf/iPkvtrqecWqEZUMtce1Uv+SXw/7Q2MaWI8ayIRqIGaeSunbJpI2V
-         BlCBEHsKQpuD3WY5KsbTJ344owAusV+0rtWR/1GUmm6NY2mu5eC3E3fbWACt4s6jsF8j
-         BqI1en70060cJWbhjMsKustK5PehjrsH2ckl3wT1CrvWw15DiIvRcYx0vJhlaBazVJHk
-         WW2P5lX/O3pO5A3BP9C8HT5u9ADhvMRm7OsBeXA2KdCq6u2LyNjut5+VrG9Kg/TmDjaH
-         Wy/Q==;
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=yW7cNuHG57ahTZ6Z0a7Ck6lBhsGf7sVF2TrfDkE4dCw=;
+        fh=sMw5wUJBWGBtSuNC/py39k2nZzHQbArBDjR2xR28Mfo=;
+        b=LNu3LJ+u9OlnfbTGhozsqPvUSh4oTyH52QmtOkyWqqKx86Sq+VjBxLgjGw/NHcZtr9
+         OqWHSlMH/ndvSSsDnIOeBvBJTT17lZ0fJXeaL1EFBa64+j7Qul7xbK8zVk5mcBCDK6r1
+         5f0T6CaSvly2uxWBfCQoyVZgbqWjSAOFQ3ptiBIL7CORWcbCxx8s/m2+yZoaCi6LqWvq
+         w0xQpbAIZc9wFwkFenYN3hE1Ydd9VbygTAxBzmCb10gUyDGCKfQAOpsPV0lz6VUuQGP/
+         xENvHGSs34o96hGCj0F4//Q0vw+wiAE5ZNgAsc2oy5xRfQMSYkRbPtteK8BlDC7iQcMc
+         s9pg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hQwjQeM+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-798aac9bd9fsi1439013185a.63.2024.06.19.05.59.52
+        by mx.google.com with ESMTPS id d75a77b69052e-442136e8e92si150697641cf.148.2024.06.19.06.46.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Jun 2024 05:59:53 -0700 (PDT)
+        Wed, 19 Jun 2024 06:46:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hQwjQeM+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sJuuf-0008OX-48; Wed, 19 Jun 2024 08:59:45 -0400
+	id 1sJvcw-0006ro-7F; Wed, 19 Jun 2024 09:45:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1sJuud-0008Nj-KY
- for qemu-arm@nongnu.org; Wed, 19 Jun 2024 08:59:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sJvcu-0006qY-JI; Wed, 19 Jun 2024 09:45:28 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eauger@redhat.com>) id 1sJuuc-0001nT-0j
- for qemu-arm@nongnu.org; Wed, 19 Jun 2024 08:59:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718801980;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ndgKULfHbBt7KqzR0WHBvj2CUdfnVHZDXVN3f2R9o8I=;
- b=hQwjQeM+FCSqFfP5oJPz2KqgHKt+I8X4iOAK+9QYa6zgFT8l8SnLdn/Xgk60ars2uP4TM1
- iPCcJ5o9yfdK53lSV/GdncFo0UFeEo89XKlHaEcxQMT0AZedtdIaC79L7NJG/l6+EAgIqC
- q8GHSl7qrKN84zyASVGgzavQLEXypAA=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-124-bfobxxpkM9eftP19SE_hYg-1; Wed, 19 Jun 2024 08:59:39 -0400
-X-MC-Unique: bfobxxpkM9eftP19SE_hYg-1
-Received: by mail-qt1-f197.google.com with SMTP id
- d75a77b69052e-441034dce6bso16304161cf.1
- for <qemu-arm@nongnu.org>; Wed, 19 Jun 2024 05:59:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718801979; x=1719406779;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ndgKULfHbBt7KqzR0WHBvj2CUdfnVHZDXVN3f2R9o8I=;
- b=jp2WD5R+wBKOSTjQKmmKbuZe3QmrhS1eaPvtCYvRr+C9hIub03w+qbp1J5dGAU8xvQ
- 9NAy6afCdK69KQectoGVfEmFcFycRnoiwCUPYLa/5uD/K9SGlMjYOZOv2uMog1IFmTD4
- LjsEj22atv6HsdSqDDHDUBVlsNGXNtMEcruZAzbZ7nX8GGCoQvWfy/8S7xYFc1tKJt1z
- LlInfEMe7FLtgBjdYWAnt/LWAW4sgTZwFcmzWPO+sqAUH3C5al5IF3kpcp421hTn4mQz
- ifYQtoPUB7c1YH6a0X7NCHxstxqQME7AmLgRaZAsAwdpQufm9iWhzhfEK4KMwFNVks6L
- exPg==
-X-Gm-Message-State: AOJu0Yy23nQIOw4NpxnKq7DkVMfCDZZ02ZMjmeZFX6blMJU5STkkTt06
- rkjSYUN0hbztK20cvGbxBpzrirujii/Yaty1EmUPRJmocPYECrraRMvcT9uo8zpi3G8KTO+eiln
- c0t/Yf4f/UMx7MXnbQIVphDDq3KlxPpqFZP1gdzdyhDVQy5ad/A==
-X-Received: by 2002:a05:622a:144e:b0:444:a0b9:2ca3 with SMTP id
- d75a77b69052e-444a0b97bccmr74751581cf.7.1718801978809; 
- Wed, 19 Jun 2024 05:59:38 -0700 (PDT)
-X-Received: by 2002:a05:622a:144e:b0:444:a0b9:2ca3 with SMTP id
- d75a77b69052e-444a0b97bccmr74751361cf.7.1718801978482; 
- Wed, 19 Jun 2024 05:59:38 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-441f2ffb37bsm64689611cf.90.2024.06.19.05.59.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 19 Jun 2024 05:59:38 -0700 (PDT)
-Message-ID: <de7fd33e-b076-4743-80ae-99c146b42171@redhat.com>
-Date: Wed, 19 Jun 2024 14:59:32 +0200
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sJvcs-0001Yo-Nb; Wed, 19 Jun 2024 09:45:28 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 048832608AB;
+ Wed, 19 Jun 2024 15:45:23 +0200 (CEST)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id Y8V-fgRnT4P0; Wed, 19 Jun 2024 15:45:21 +0200 (CEST)
+Received: from applejack.lan (83.11.22.244.ipv4.supernova.orange.pl
+ [83.11.22.244])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 5F78C2600D9;
+ Wed, 19 Jun 2024 15:45:20 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Radoslaw Biernacki <rad@semihalf.com>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, qemu-arm@nongnu.org,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH 1/1] tests/avocado: use default amount of cores on sbsa-ref
+Date: Wed, 19 Jun 2024 15:45:12 +0200
+Message-ID: <20240619134512.595506-1-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.45.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/virt-acpi-build: Drop local iort_node_offset
-To: Nicolin Chen <nicolinc@nvidia.com>, peter.maydell@linaro.org,
- mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
- shannon.zhaosl@gmail.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20240619001708.926511-1-nicolinc@nvidia.com>
-From: Eric Auger <eauger@redhat.com>
-In-Reply-To: <20240619001708.926511-1-nicolinc@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eauger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,45 +97,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fDvJJCqnndXh
+X-TUID: KJA2BhFxnyQU
 
-Hi Nicolin,
+I was wondering why avocado tests passed with firmware which crashes
+when anyone else is using it.
 
-On 6/19/24 02:17, Nicolin Chen wrote:
-> Both the other two callers of build_iort_id_mapping() just directly pass
-> in the IORT_NODE_OFFSET macro. Keeping a "const uint32_t" local variable
-> storing the same value doesn't have any gain.
-> 
-> Simplify this by replacing the only place using this local variable with
-> the macro directly.
-> 
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Turned out that amount of cores matters. Have to find out why still.
 
-Eric
-> ---
->  hw/arm/virt-acpi-build.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index ee6f56b410..05af407bbd 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -277,7 +277,6 @@ static void
->  build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  {
->      int i, nb_nodes, rc_mapping_count;
-> -    const uint32_t iort_node_offset = IORT_NODE_OFFSET;
->      size_t node_size, smmu_offset = 0;
->      AcpiIortIdMapping *idmap;
->      uint32_t id = 0;
-> @@ -423,7 +422,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->              range = &g_array_index(its_idmaps, AcpiIortIdMapping, i);
->              /* output IORT node is the ITS group node (the first node) */
->              build_iort_id_mapping(table_data, range->input_base,
-> -                                  range->id_count, iort_node_offset);
-> +                                  range->id_count, IORT_NODE_OFFSET);
->          }
->      } else {
->          /* output IORT node is the ITS group node (the first node) */
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ tests/avocado/machine_aarch64_sbsaref.py | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index 6bb82f2a03..136b495096 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -75,8 +75,6 @@ def fetch_firmware(self):
+             f"if=pflash,file={fs0_path},format=raw",
+             "-drive",
+             f"if=pflash,file={fs1_path},format=raw",
+-            "-smp",
+-            "1",
+             "-machine",
+             "sbsa-ref",
+         )
+-- 
+2.45.1
 

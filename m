@@ -1,117 +1,182 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1554036ejb;
-        Wed, 19 Jun 2024 11:38:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWJuvazC8bAc2Tds+yo1+u8pnAad/QVGtQ3XPvub8GaTjyfUGAEBxUDMNA7yFlqq+WTcu3NI+uj+3YWvxo7NnDCHtredboc
-X-Google-Smtp-Source: AGHT+IHQK2UCsTXuix1OyZobZgzi59JypQ6alnQlCeMKaPEecQHhvimsnksvW3NXfZhL4Nns1kxs
-X-Received: by 2002:a05:690c:724:b0:61b:a7de:1f8c with SMTP id 00721157ae682-63a8d72d40emr33381447b3.2.1718822283905;
-        Wed, 19 Jun 2024 11:38:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718822283; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1586512ejb;
+        Wed, 19 Jun 2024 12:57:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXm0yBFITvpR3wj0cFrFNXQwG7e/HatZKGMO2bvy+hSOoDxretJGDRF2AsOmHcvl/thLhDCoMa4fsyOGhUzspuqeWYyW9Eo
+X-Google-Smtp-Source: AGHT+IGFaGi5LjkDtKLxLW7eD+uFKrnL7/zcsEZjEG2WXcad0IAdiBgDC+Fmpjpdwh5xP4awTE+b
+X-Received: by 2002:a05:620a:4248:b0:797:9a2c:7301 with SMTP id af79cd13be357-79ba76b24e3mr1183208885a.6.1718827071021;
+        Wed, 19 Jun 2024 12:57:51 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1718827070; cv=pass;
         d=google.com; s=arc-20160816;
-        b=tJ0B/i2DHnhp3XSlOrWeyPSPAKHQ6LWrRXj02Aw2omdnf6190yU+DSzq/PXvpSzlAx
-         f9MbEoeAqOThDvP5WVwjZWIp81M0aZOatdZ9PxpK6EHbaSP5wbrHFKV+NISSl45vkesk
-         msfVOSkU/LJ4uFiP/3zQjwgy/WckG7RwGvr1Gf5Kpi5UrlNbbmCF2tWggOlrTfQhDgoH
-         rMNz/dMi/Rac8mHPIr62vuCdYJCETeKnxq1YfC/P3azGSeL7F/UCWMUTSpXESg8Y2RB4
-         CI1RzUB2LQEtEjEW9GTpv1VCykwLJVUYxnpby/hIx6k06bivsy6fO4vG7Sc2sgk8y4Zt
-         fa6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=gXUNqCbdOTIQiKyvern4h/iWF9jXGA4Dx2senF6BNf2IRhjMjxJVQFLbvjr2QKDUXH
+         Hmm4suYNbXMrEWlr8Xukd0jdAkhjlfQAuYqO5b67OEdtGftLbhtvefhhOII0eZ/UaFev
+         pOEho42F9Ux/cxkQY84bJodyZP8fSX4z4Aw2Zw+yo5QeqLJKs/2PQphuxoPLpfEBCNP+
+         VtQV+1NFMQXUyWC3DF1aA9oWXsyMuaAho1S1CQl1aeLJf6rBOucPVC/B3wkVMlfyf6cy
+         Ne25DccRbQChRRJxk1wyAhg7Ai6os4R1B4MGKI4kKZcsLfuDX9RzJWWqsW12g8cr9F4G
+         warQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=x+Lw90YIBppABy+IKzM0yJDgLaz7wC7e5w5v5hc8fX8=;
-        fh=gIP7WbtOE7atsx1pyKfbNjEWibiuuUXyBl7Z0eEnFAg=;
-        b=ORY85Gk/lZP+Iowf3OVbUEXw5hB01KWor1z6iba6KRg1GgB3meU0S9akemV6u4uWEn
-         z2Bvn1MP98PdxqgH4eUWXn48aAClY1aXHk22Cx+b8azchjYdPfB+EP0recGt55xInWUB
-         xt1dp5t6nskaR8illE6wnhgVFZ9+XVIyI0ielBdzuJ0zKCpoUla/ujdIHTgXhIYUNdqC
-         q8i475Hz6oCq4uEhL03tJVqc0nwOuSLdkoVvNstZdMlhuO+pUYZE/RBQHNrhsXQDc9JB
-         /3k4Yj1MfIjJYUP9bhudMZeBfi/EQRuUctfCmvpU20Otqa0N+RZUPeZJcYXUnkAvsGKz
-         bSLA==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=lghh542nPXBMgokVGj7AwLrM/eULjav1fQM95QS5X/c=;
+        fh=Qy8XPTi8n827lBGHL0SkffTeuS2NNbiPUC8iWrg2mzI=;
+        b=vLBqFhn5lU0W583vgk3bZH+qfdF5tjDb9TdZnm2hxz1rr7X7xO13fSudePyg9ZJuv+
+         vpZaYpDkyqVADyuR15Q+L93zyUhA224Xwa70HmhzVY5ETkuYZi9pkyZ0zI/TI2Yi3S0I
+         2FA0t4wdtUENtHvhAeOI7Q6xuGtWDqUD0ybUhMdSC4h6hSjMPxOBxQ5noRhDE2+H1eQM
+         NP4wrqVMRm4Zsh/fX/hqh0d1/0NsZx9nkAcJKXRO8N0A8jQV0sS5x9oNiAQAydMUO3p4
+         3CaKC23Oh++z9Yxp2QVUV73BxaBhHd0dcqrSZLegkbPIKYq3seOySrW+5UJQZXkaSntL
+         iuJg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OGxaXbQV;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=NJc+jX9O;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b2c5672b1esi101873376d6.73.2024.06.19.11.38.03
+        by mx.google.com with ESMTPS id af79cd13be357-798aac9b95esi1488550285a.17.2024.06.19.12.57.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Jun 2024 11:38:03 -0700 (PDT)
+        Wed, 19 Jun 2024 12:57:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OGxaXbQV;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=NJc+jX9O;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sK0Bq-0004o8-GV; Wed, 19 Jun 2024 14:37:50 -0400
+	id 1sK1Qq-00055u-AJ; Wed, 19 Jun 2024 15:57:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zheyuma97@gmail.com>)
- id 1sK0Bo-0004mv-Au; Wed, 19 Jun 2024 14:37:48 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zheyuma97@gmail.com>)
- id 1sK0Bm-0000G7-8Z; Wed, 19 Jun 2024 14:37:48 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-a6f1da33826so9321566b.0; 
- Wed, 19 Jun 2024 11:37:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1718822264; x=1719427064; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=x+Lw90YIBppABy+IKzM0yJDgLaz7wC7e5w5v5hc8fX8=;
- b=OGxaXbQVrSlFt3cBpw7PqjZ4R42qVTPaBA07ZaD3xVJQR0VmhMYkDHA77lkrZdgt/0
- gk3HQnmSY7kIZvXGjT/unybgWm93X5K/JRH0he0mYpXrFAU7+dvHAr2lR85pIRyHtgSt
- m74BX1FJQeh0xtqoUGxKr04R+7XyTNPA/GjU6k44GjCohLKIN7dO9mdQqtrkVsBnUh2J
- pndGiQ/axsDVAxgQK1Y1V5LitysI1jIMO1cEBaGycbgW84zpnFbeUb8C8qc517Rt6fvY
- qn1NT0IzX7fgdxo0EM/F5NPfnk03EhZlGy4nnGe43CKbGkFwzVeHYAIhlri5bcgYK3pi
- MoPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718822264; x=1719427064;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=x+Lw90YIBppABy+IKzM0yJDgLaz7wC7e5w5v5hc8fX8=;
- b=Qq8funOKnBx+fn23brA4l7pMgkj1BnCRsQ2IqEjsy/nZkgJWdp/5iFNKOYtJLi/eP3
- Lf7snQkPGHGUBvRzJw6wRLjup25w6VFd8CWhNw6sYqiizuqGY08DdSCGwnMDTf+T1EyG
- 5YkTqN7+KXqiwf8Jh63rITkaxlgmuCUiVrrQ303t4RrbgDhv7KW0bNLN335gelH1EgdX
- 1k8rz2shxRGjgc83REEL5uglQQPgXccLdx2I9hzLZ8itIe+Yx3L+nrJyfezab/BeSkTS
- jnU1YF7PUaSTjDwq+ZS1r3nSdTCEN36CrrREsOVSoOvo4RhftNydxQh3sXht2iAMd1Jm
- /dnA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXrsK82DNcknuKCf+2GqOBH/1KjtJmwhDXI9eU1ODocUhwNblBGAMrwtRA18is4REmseVbrpj6pDIeKqTy/+zz3o1mEeiioO5SLVKadKxLOZNX1nQe6peQHaBU=
-X-Gm-Message-State: AOJu0YyoUMDl4U0wjLp8PNSz81sU9Ma8IvkMk8iqR1AsUXR6iZfzUU6R
- cc0tk8No35OnWiAh1al1Ec9204qPnzW5+/VrGixfXAZhU+VcMwbdtwxpie1E3camRDz/ePKXdDa
- NAF62ssNCpyeT6m9DCAUXkG3Sow==
-X-Received: by 2002:a17:906:57c6:b0:a6f:1004:dc30 with SMTP id
- a640c23a62f3a-a6fab7d6a75mr204584966b.65.1718822263834; Wed, 19 Jun 2024
- 11:37:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1sK1Qo-000509-RI; Wed, 19 Jun 2024 15:57:22 -0400
+Received: from mail-bn7nam10on2062a.outbound.protection.outlook.com
+ ([2a01:111:f403:2009::62a]
+ helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1sK1Qm-0007Du-GB; Wed, 19 Jun 2024 15:57:22 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=bHxvYgISCsBlfLguRpmXJJcS++QibWjjClfkgfBxAaZ64llunrJj08CGjk49M+h3EI4R1zJ7pUWib/LJU2d4CRlRPzw1DH1jWpfNAFzniM4DT8knJrfl5adWQ+OWpR84ufV/I2acEhxwTXT6nMHVHCywhOM0Q6sETsSIXX/EpVtPihPEsh+688Yua5G/MbFxP9urWmLITxzWPw9BLTVsLr/WmDAxcznsTj262y94LezBNfMElgnuk1jInyMaHufV1lpv+egIct2q2RmhFL0d+TRZGgUcdi/K5rDsPrQJ3rh7YBtp9Z3Zsg6rIVb2Kr8OOq2wcxNBzXZjVrI2ZPDPrQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=lghh542nPXBMgokVGj7AwLrM/eULjav1fQM95QS5X/c=;
+ b=Un4Z0wzuKCTim2VcS3uyN9pivfZ2VH20mU0ttk2bUGG/aJRGZ3rLa+7Fm/ilEZa0mz1tSLYAiqtTcXma6zX/BlWnzcYvxtek8kSCVM0AkiDAoaK4PCr+eG8bp0nSG5Hx5QzWr0PbRqnUqIs8D3Kpiod/spWyuFg6IobKsqOVfSw+39UYLxRm2i6yn++JUAcuL0psErox6SmokES/pYXXEuTvS7WjRyxKKLbk9AnlH8E4jS68HCohe5alUWkEXqXObrI6XBt4DRxyrC4RyL08OSS654sA/EVRl4ws0udRkR3ox6CIEfSQ9NF1DWbDdZoFsnvnBheoRaRtyGZt1H2nVw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=lghh542nPXBMgokVGj7AwLrM/eULjav1fQM95QS5X/c=;
+ b=NJc+jX9OKs3nReRyywItv1ulixbd/OQXObD5n0VyO8F8H5emuMYrIn/1j3i12hYJAMjjyi7G/CyBNNdQ/35HWs94v11Ea+/7SxHQ8P6VXbO8mG7joO3+25Xce3IyF083Xyx/r04UE5jzF6Alka0z+Eojebd/EF2L4eetkeGkDZTEaLU0Bs+vhWYjhkFOykEgKmw8dDehVuRdgxuMM/NVWyTorEDyzA7GkRQgop/wJUwGFhIuMBIa6hhjjxOzek2KQroFboUiKGzHL3gLM4Sta49i1SpUj5PcjHzbZdAS+uBryxxSkzyNqJeTn+OuC+83JjvePZYt4WMEJwZEXWecNg==
+Received: from CH2PR11CA0006.namprd11.prod.outlook.com (2603:10b6:610:54::16)
+ by SJ2PR12MB9162.namprd12.prod.outlook.com (2603:10b6:a03:555::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.29; Wed, 19 Jun
+ 2024 19:57:09 +0000
+Received: from DS2PEPF00003444.namprd04.prod.outlook.com
+ (2603:10b6:610:54:cafe::8f) by CH2PR11CA0006.outlook.office365.com
+ (2603:10b6:610:54::16) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.33 via Frontend
+ Transport; Wed, 19 Jun 2024 19:57:09 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ DS2PEPF00003444.mail.protection.outlook.com (10.167.17.71) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7677.15 via Frontend Transport; Wed, 19 Jun 2024 19:57:09 +0000
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Wed, 19 Jun
+ 2024 12:56:57 -0700
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail204.nvidia.com
+ (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Wed, 19 Jun
+ 2024 12:56:57 -0700
+Received: from Asurada-Nvidia (10.127.8.13) by mail.nvidia.com (10.129.68.9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4 via Frontend
+ Transport; Wed, 19 Jun 2024 12:56:56 -0700
+Date: Wed, 19 Jun 2024 12:56:55 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Eric Auger <eauger@redhat.com>
+CC: <peter.maydell@linaro.org>, <wangxingang5@huawei.com>,
+ <shannon.zhaosl@gmail.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+ <anisinha@redhat.com>, <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v3] hw/arm/virt-acpi-build: Fix id_count in
+ build_iort_id_mapping
+Message-ID: <ZnM4B+ZeN73UFpeQ@Asurada-Nvidia>
+References: <20240618211110.922809-1-nicolinc@nvidia.com>
+ <aa27c94c-099b-4383-a93f-30ffdf5cfd54@redhat.com>
 MIME-Version: 1.0
-References: <20240618130928.3075494-1-zheyuma97@gmail.com>
- <bd15ab0597caad4564ca8f9498dfd3bbbe67df89.camel@codeconstruct.com.au>
- <CAMhUBjm6vBO8RWx9OqCvFqGBNVRy3j2FyhZM4tTp0dZwh3L2aA@mail.gmail.com>
- <49028fcf-40a9-446c-9606-da4471a4456f@linaro.org>
-In-Reply-To: <49028fcf-40a9-446c-9606-da4471a4456f@linaro.org>
-From: Zheyu Ma <zheyuma97@gmail.com>
-Date: Wed, 19 Jun 2024 20:37:32 +0200
-Message-ID: <CAMhUBjk9iSG8ywMZ9wHdYZiFL+Z4btQ2_5_PN7QZTDd9AQn7pw@mail.gmail.com>
-Subject: Re: [PATCH] hw/gpio/aspeed: Add bounds checking for register table
- access
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Andrew Jeffery <andrew@codeconstruct.com.au>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000077ce53061b427e0b"
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=zheyuma97@gmail.com; helo=mail-ej1-x635.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <aa27c94c-099b-4383-a93f-30ffdf5cfd54@redhat.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS2PEPF00003444:EE_|SJ2PR12MB9162:EE_
+X-MS-Office365-Filtering-Correlation-Id: b00d753a-3fdd-47a7-520d-08dc909a00da
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230037|82310400023|1800799021|36860700010|376011; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?5LubJK3JUmgk9ufrBZxn1Y50uYIV1e5g1p9rm8y29XsGN8fBaC2PK0zlLoqh?=
+ =?us-ascii?Q?NM/NsOHNZNV+piFoPKowHqglkPucSi7L5qpGnIFXVAnqH3j9hiqKS2is9rmd?=
+ =?us-ascii?Q?N0YeInSxkSYL2CxfCtQRPSHHbauscX/2+ULgHiyLTD1DhkBTlKXD4uqBeaD3?=
+ =?us-ascii?Q?1YGs/hebcP80/kONxNOWakEueS5mi2UHHFV4AJQzutLFF8IEGO+GqSUtyOqq?=
+ =?us-ascii?Q?BtvaFLUJUjYSyzdC4TvypsHlzTzswRR1m/f9cr5VhawhmwAi/ovrkV+dltga?=
+ =?us-ascii?Q?fleGU3j8+s1MYQtqiG5tv51ZJ0YhlZFNDajXpzQbf8AwhFHgrZ4VLO/eOKMI?=
+ =?us-ascii?Q?1vz+QlPq4dPZSzTIzvSo7ZhTOVXocnBm5Mi590RP8zE3mjYSvG0yYcT5X1Dq?=
+ =?us-ascii?Q?g3E5uWyPsZzF5hz1CPUEIWueelcUcDBd7XqcWxGI4OSbtWiU7nvkbWNtWOty?=
+ =?us-ascii?Q?aoyD+1jIHykZvEMbEw2yPmQAAa3m2IU4w/uCKhJCngLUxZk5G5q9YMzAM1d1?=
+ =?us-ascii?Q?FoP9MNnFQ1njfzj+xZVj+9ePWQmTbp3QMfIzj8mvkje2R/w3HYX9sJU3Scyt?=
+ =?us-ascii?Q?tw6iEcT21SLIWRylo/CMNO2liFwDsOmkYNhwwoCUeT0sd4zmPUjRBXiBKrVJ?=
+ =?us-ascii?Q?T1d5QjMEkmuDqHXkLhqNWxL9UBVeb5zA5/BWZj+ENrx5iv9TAVC8LMlFHmjK?=
+ =?us-ascii?Q?rgO4HoTzKTQFq3+0JoUvvh3MjKwMJs7tZG3fnHm2CgGZGdieVg7smfuWY9HJ?=
+ =?us-ascii?Q?156jrYrf0XvdPAHP9EjSukCx9lr5J8RnK7VL+m573D4xZjQBlOTzQx3VrD6J?=
+ =?us-ascii?Q?F0NwCXfyYeSwUIccLx/vlqk689dF+pGYzoEAyhH+5yeyzYccdGfyO8l06I42?=
+ =?us-ascii?Q?lskngWVRyecUjyGZadomMthIIo8+yY+ZRp6m9KiC0XrdYLhOGc2hpsexFTAF?=
+ =?us-ascii?Q?rFsQr/aT9I4U+Kp2FLA2S9FcxCwOnVFCKN1jExGEYyjdl9ihQ4tMM0HIWet5?=
+ =?us-ascii?Q?TcQNzx6lwoOv/CuVNV7M68SXXZ3gOzW9xtLRb9RsFGlaVe6wFxBHx4vWgNku?=
+ =?us-ascii?Q?54WkUU92V7L0wOC/HoSF+o8FcB1X7Sm7RGXhc96T+8kZdBdlnGTb829kxeSx?=
+ =?us-ascii?Q?x6Cx4knSc/udKaYuE9VcwKf1dMc1wAmAP7q+vHA0pZRu8wADq6mRgsnBNmpX?=
+ =?us-ascii?Q?OAUm9ZcIHyLXccWsNwBQq216L6rC/l57QVO1MDFWjvY2QNMzWt2DRpZC7/Wo?=
+ =?us-ascii?Q?gHsZh1/fHsjYH9ad3LE7jL3rz81kBBdvLnWNFVd3sfwejWD5od4veHTArhD9?=
+ =?us-ascii?Q?MfTaGi52+R5Scqfyw7mMi4MKoO3rvr7GygR6m3DlH3bpSwShom8EVBYIqdwZ?=
+ =?us-ascii?Q?lJpeaLKhHNEJDxFpHoq2x3z53T96i1vYluPDyTQ7JJNUuVy5DQ=3D=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230037)(82310400023)(1800799021)(36860700010)(376011); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Jun 2024 19:57:09.2032 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: b00d753a-3fdd-47a7-520d-08dc909a00da
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: DS2PEPF00003444.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR12MB9162
+Received-SPF: softfail client-ip=2a01:111:f403:2009::62a;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM10-BN7-obe.outbound.protection.outlook.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -127,306 +192,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QGn9mTnwuxCU
+X-TUID: N6v18s+WtDkI
 
---00000000000077ce53061b427e0b
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Wed, Jun 19, 2024 at 04:15:35PM +0200, Eric Auger wrote:
+> > @@ -209,12 +209,20 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
+> >  #define ROOT_COMPLEX_ENTRY_SIZE 36
+> >  #define IORT_NODE_OFFSET 48
+> >
+> > +/*
+> > + * Input Output Remapping Table (IORT) -- Table 4 ID mapping format
+> > + * Conforms to "IO Remapping Table System Software on ARM Platforms",
+> > + * Document number: ARM DEN 0049E.b, Feb 2021
+> I would rather explain what the function does, ie append an ID mapping
+> entry as desribed in Tabble 4 ID Mapping format.
+> 
+> Also while at it you may use a more recent revision
+> There is DEN0049E_IO_Remapping_Table_E.f.pdf available
 
-Hi Philippe,
+Sure. Will do a v4 with something like:
 
-On Wed, Jun 19, 2024 at 6:29=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <philmd=
-@linaro.org>
-wrote:
++/*
++ * Append an ID mapping entry as described in "Table 4 ID mapping format"
++ * from "IO Remapping Table System Software on ARM Platforms", Chapter 3.
++ * Document number: ARM DEN 0049E.f, Apr 2024
 
-> On 19/6/24 08:49, Zheyu Ma wrote:
-> > Hi Andrew,
-> >
-> > On Wed, Jun 19, 2024 at 1:58=E2=80=AFAM Andrew Jeffery
-> > <andrew@codeconstruct.com.au <mailto:andrew@codeconstruct.com.au>>
-> wrote:
-> >
-> >     Hello Zheyu Ma,
-> >
-> >     On Tue, 2024-06-18 at 15:09 +0200, Zheyu Ma wrote:
-> >      > Added bounds checking in the aspeed_gpio_read() and
-> >     aspeed_gpio_write()
-> >      > functions to ensure the index idx is within the valid range of t=
-he
-> >      > reg_table array.
-> >      >
-> >      > The correct size of reg_table is determined dynamically based on
-> >     whether
-> >      > it is aspeed_3_3v_gpios or aspeed_1_8v_gpios. If idx exceeds the
-> >      > size of reg_table, an error is logged, and the function returns.
-> >      >
-> >      > AddressSanitizer log indicating the issue:
-> >      >
-> >      > =3D=3D2602930=3D=3DERROR: AddressSanitizer: global-buffer-overfl=
-ow on
-> >     address 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7fff096c4e90 sp
-> >     0x7fff096c4e88
-> >      > READ of size 2 at 0x55a5da29e128 thread T0
-> >      >     #0 0x55a5d700dc61 in aspeed_gpio_read
-> >     hw/gpio/aspeed_gpio.c:564:14
-> >      >     #1 0x55a5d933f3ab in memory_region_read_accessor
-> >     system/memory.c:445:11
-> >      >     #2 0x55a5d92fba40 in access_with_adjusted_size
-> >     system/memory.c:573:18
-> >      >     #3 0x55a5d92f842c in memory_region_dispatch_read1
-> >     system/memory.c:1426:16
-> >      >     #4 0x55a5d92f7b68 in memory_region_dispatch_read
-> >     system/memory.c:1459:9
-> >      >     #5 0x55a5d9376ad1 in flatview_read_continue_step
-> >     system/physmem.c:2836:18
-> >      >     #6 0x55a5d9376399 in flatview_read_continue
-> >     system/physmem.c:2877:19
-> >      >     #7 0x55a5d93775b8 in flatview_read system/physmem.c:2907:12
-> >
-> >     I'm mildly interested in what you were doing to trigger this.
-> Certainly
-> >     we could do with a guard in the model to prevent it, but I'm curiou=
-s
-> >     all the same.
-> >
-> >
-> > Actually, I'm doing the virtual device fuzzing test and trying to
-> > discover bugs.
->
-> Could you share the reproducer? (As you did in your other patches,
-> it is very useful to reproduce).
->
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-Sure, I've sent a v3 patch.
+Thanks for the review!
 
-Zheyu
-
->
-> >
-> >      >
-> >      > Signed-off-by: Zheyu Ma <zheyuma97@gmail.com
-> >     <mailto:zheyuma97@gmail.com>>
-> >      > ---
-> >      >  hw/gpio/aspeed_gpio.c | 26 ++++++++++++++++++++++++++
-> >      >  1 file changed, 26 insertions(+)
-> >      >
-> >      > diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> >      > index c1781e2ba3..1441046f6c 100644
-> >      > --- a/hw/gpio/aspeed_gpio.c
-> >      > +++ b/hw/gpio/aspeed_gpio.c
-> >      > @@ -550,6 +550,7 @@ static uint64_t aspeed_gpio_read(void
-> >     *opaque, hwaddr offset, uint32_t size)
-> >      >      GPIOSets *set;
-> >      >      uint32_t value =3D 0;
-> >      >      uint64_t debounce_value;
-> >      > +    uint32_t reg_table_size;
-> >      >
-> >      >      idx =3D offset >> 2;
-> >      >      if (idx >=3D GPIO_DEBOUNCE_TIME_1 && idx <=3D
-> >     GPIO_DEBOUNCE_TIME_3) {
-> >      > @@ -559,6 +560,18 @@ static uint64_t aspeed_gpio_read(void
-> >     *opaque, hwaddr offset, uint32_t size)
-> >      >          return debounce_value;
-> >      >      }
-> >      >
-> >      > +    if (agc->reg_table =3D=3D aspeed_3_3v_gpios) {
-> >      > +        reg_table_size =3D GPIO_3_3V_REG_ARRAY_SIZE;
-> >      > +    } else {
-> >      > +        reg_table_size =3D GPIO_1_8V_REG_ARRAY_SIZE;
-> >      > +    }
-> >
-> >     I think I'd prefer we add reg_table_size as a member of
-> AspeedGPIOClass
-> >     and initialise it at the same time as we initialise reg_table. I fe=
-el
-> >     it would help maintain safety in the face of future changes (i.e. i=
-f
-> >     another reg table were introduced). With that approach the hunk abo=
-ve
-> >     can be dropped.
-> >
-> >      > +
-> >      > +    if (idx >=3D reg_table_size) {
-> >
-> >     This condition would then become:
-> >
-> >     ```
-> >     if (idx >=3D agc->reg_table_size) {
-> >     ```
-> >
-> >     Thoughts?
-> >
-> >
-> > I agree with you, adding a new member is a more maintainable way, I'll
-> > send a v2 patch, thanks!
-> >
-> > Zheyu
->
->
-
---00000000000077ce53061b427e0b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi=C2=A0Philippe,</div><br><div class=3D"gmail_quote"=
-><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jun 19, 2024 at 6:29=E2=80=
-=AFPM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org">=
-philmd@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
- style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
-adding-left:1ex">On 19/6/24 08:49, Zheyu Ma wrote:<br>
-&gt; Hi=C2=A0Andrew,<br>
-&gt; <br>
-&gt; On Wed, Jun 19, 2024 at 1:58=E2=80=AFAM Andrew Jeffery <br>
-&gt; &lt;<a href=3D"mailto:andrew@codeconstruct.com.au" target=3D"_blank">a=
-ndrew@codeconstruct.com.au</a> &lt;mailto:<a href=3D"mailto:andrew@codecons=
-truct.com.au" target=3D"_blank">andrew@codeconstruct.com.au</a>&gt;&gt; wro=
-te:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Hello Zheyu Ma,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On Tue, 2024-06-18 at 15:09 +0200, Zheyu Ma wrote:<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Added bounds checking in the aspeed_gpio_read=
-() and<br>
-&gt;=C2=A0 =C2=A0 =C2=A0aspeed_gpio_write()<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; functions to ensure the index idx is within t=
-he valid range of the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; reg_table array.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; The correct size of reg_table is determined d=
-ynamically based on<br>
-&gt;=C2=A0 =C2=A0 =C2=A0whether<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; it is aspeed_3_3v_gpios or aspeed_1_8v_gpios.=
- If idx exceeds the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; size of reg_table, an error is logged, and th=
-e function returns.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; AddressSanitizer log indicating the issue:<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; =3D=3D2602930=3D=3DERROR: AddressSanitizer: g=
-lobal-buffer-overflow on<br>
-&gt;=C2=A0 =C2=A0 =C2=A0address 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7f=
-ff096c4e90 sp<br>
-&gt;=C2=A0 =C2=A0 =C2=A00x7fff096c4e88<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; READ of size 2 at 0x55a5da29e128 thread T0<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0#0 0x55a5d700dc61 in aspee=
-d_gpio_read<br>
-&gt;=C2=A0 =C2=A0 =C2=A0hw/gpio/aspeed_gpio.c:564:14<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0#1 0x55a5d933f3ab in memor=
-y_region_read_accessor<br>
-&gt;=C2=A0 =C2=A0 =C2=A0system/memory.c:445:11<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0#2 0x55a5d92fba40 in acces=
-s_with_adjusted_size<br>
-&gt;=C2=A0 =C2=A0 =C2=A0system/memory.c:573:18<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0#3 0x55a5d92f842c in memor=
-y_region_dispatch_read1<br>
-&gt;=C2=A0 =C2=A0 =C2=A0system/memory.c:1426:16<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0#4 0x55a5d92f7b68 in memor=
-y_region_dispatch_read<br>
-&gt;=C2=A0 =C2=A0 =C2=A0system/memory.c:1459:9<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0#5 0x55a5d9376ad1 in flatv=
-iew_read_continue_step<br>
-&gt;=C2=A0 =C2=A0 =C2=A0system/physmem.c:2836:18<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0#6 0x55a5d9376399 in flatv=
-iew_read_continue<br>
-&gt;=C2=A0 =C2=A0 =C2=A0system/physmem.c:2877:19<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0#7 0x55a5d93775b8 in flatv=
-iew_read system/physmem.c:2907:12<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0I&#39;m mildly interested in what you were doing to=
- trigger this. Certainly<br>
-&gt;=C2=A0 =C2=A0 =C2=A0we could do with a guard in the model to prevent it=
-, but I&#39;m curious<br>
-&gt;=C2=A0 =C2=A0 =C2=A0all the same.<br>
-&gt; <br>
-&gt; <br>
-&gt; Actually, I&#39;m doing the virtual device fuzzing test and trying to =
-<br>
-&gt; discover bugs.<br>
-<br>
-Could you share the reproducer? (As you did in your other patches,<br>
-it is very useful to reproduce).<br></blockquote><div><br></div><div>Sure, =
-I&#39;ve sent a v3 patch.</div><div><br></div><div>Zheyu=C2=A0</div><blockq=
-uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
-x solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: Zheyu Ma &lt;<a href=3D"mailto=
-:zheyuma97@gmail.com" target=3D"_blank">zheyuma97@gmail.com</a><br>
-&gt;=C2=A0 =C2=A0 =C2=A0&lt;mailto:<a href=3D"mailto:zheyuma97@gmail.com" t=
-arget=3D"_blank">zheyuma97@gmail.com</a>&gt;&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; ---<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 hw/gpio/aspeed_gpio.c | 26 ++++++++++++=
-++++++++++++++<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 1 file changed, 26 insertions(+)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/=
-aspeed_gpio.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; index c1781e2ba3..1441046f6c 100644<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; --- a/hw/gpio/aspeed_gpio.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +++ b/hw/gpio/aspeed_gpio.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -550,6 +550,7 @@ static uint64_t aspeed_gp=
-io_read(void<br>
-&gt;=C2=A0 =C2=A0 =C2=A0*opaque, hwaddr offset, uint32_t size)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 GPIOSets *set;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 uint32_t value =3D 0;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 uint64_t debounce_value;<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 uint32_t reg_table_size;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 idx =3D offset &gt;&gt; 2=
-;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 if (idx &gt;=3D GPIO_DEBO=
-UNCE_TIME_1 &amp;&amp; idx &lt;=3D<br>
-&gt;=C2=A0 =C2=A0 =C2=A0GPIO_DEBOUNCE_TIME_3) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -559,6 +560,18 @@ static uint64_t aspeed_g=
-pio_read(void<br>
-&gt;=C2=A0 =C2=A0 =C2=A0*opaque, hwaddr offset, uint32_t size)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return debo=
-unce_value;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 }<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (agc-&gt;reg_table =3D=3D a=
-speed_3_3v_gpios) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 reg_table_size =
-=3D GPIO_3_3V_REG_ARRAY_SIZE;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 } else {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 reg_table_size =
-=3D GPIO_1_8V_REG_ARRAY_SIZE;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 }<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0I think I&#39;d prefer we add reg_table_size as a m=
-ember of AspeedGPIOClass<br>
-&gt;=C2=A0 =C2=A0 =C2=A0and initialise it at the same time as we initialise=
- reg_table. I feel<br>
-&gt;=C2=A0 =C2=A0 =C2=A0it would help maintain safety in the face of future=
- changes (i.e. if<br>
-&gt;=C2=A0 =C2=A0 =C2=A0another reg table were introduced). With that appro=
-ach the hunk above<br>
-&gt;=C2=A0 =C2=A0 =C2=A0can be dropped.<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 if (idx &gt;=3D reg_table_size=
-) {<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0This condition would then become:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0```<br>
-&gt;=C2=A0 =C2=A0 =C2=A0if (idx &gt;=3D agc-&gt;reg_table_size) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0```<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Thoughts?<br>
-&gt; <br>
-&gt; <br>
-&gt; I agree with you, adding a new member is a more maintainable way, I&#3=
-9;ll <br>
-&gt; send a v2 patch, thanks!<br>
-&gt; <br>
-&gt; Zheyu<br>
-<br>
-</blockquote></div></div>
-
---00000000000077ce53061b427e0b--
+Nicolin

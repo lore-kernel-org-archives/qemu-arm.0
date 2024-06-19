@@ -1,152 +1,216 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1295150ejb;
-        Wed, 19 Jun 2024 03:02:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVhXQ0iyYXNKv9OVc4Y+tS9Fluz9PDYIBsRJPvTV7wYF5n9EGMV4OSyE3VpFm2QRryoqt46CJcFPuZX8ebwueNS+l75iX3Z
-X-Google-Smtp-Source: AGHT+IHAKGqZ5gOYGB3HOr+1IEITZl25BM3uFpcf2ffVqIN0I4WjlVFbXATtPqNC8rk2xT66UyGf
-X-Received: by 2002:a05:622a:4e87:b0:444:a8d0:ae81 with SMTP id d75a77b69052e-444a8d0b004mr23745561cf.7.1718791331594;
-        Wed, 19 Jun 2024 03:02:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718791331; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1300601ejb;
+        Wed, 19 Jun 2024 03:13:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWe1CJPWOn8mBzYviz6/RR3DlS1mvCXZtrphOEQUAF+RCIVjEfb8zjPUmUd80a4PREic+V40VTN+wJ0ZBt9sMbxrAW0RCon
+X-Google-Smtp-Source: AGHT+IFqf9oEIeqV0bk7y1nvFgyxrefKcftgM/t2N27NwRXqMqsZJ+BXLtv9m1wGAG4XiN6xPxwG
+X-Received: by 2002:ad4:57c7:0:b0:6b0:668e:9d2c with SMTP id 6a1803df08f44-6b501e4f2a0mr20138646d6.34.1718791992976;
+        Wed, 19 Jun 2024 03:13:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718791992; cv=none;
         d=google.com; s=arc-20160816;
-        b=SRqWRvZ0MCk2WyIj3OJg8N7vAXo6Ae1shvvJaMocA1Vxa4yd7HKXn/xycQx/J1y12L
-         5QeWJiNTDOTa1Yr7VnS4csyNJODn44ns2wrof7FRp3/iCv2Kv6GNmpwLADF5NNGBs3w8
-         cFF1riTOqJfzBuAMZnvvLZY++M3KrfBK0b06m7eMQ0xsQzqeQCtomEiy3QVvi0YRPk9M
-         PmUweO7/5z6be/Yahs61d/ZqN7+lxh2k66VjAw9pU0LDpUheHiVDs7V4NG8vV5vKDBty
-         J+HPlqaOQOSOqXNRUDpxljdtR5YPudOUjHORmD4Sow2koWAWMdRp5leeTr99Q/of1I4g
-         SeCA==
+        b=dV7Dbwz7YQe+4IAuA+ECDQ9yuxgMImRp/8Nrg+hCKhRpo1OqwzIWqQoQ870HUnywS2
+         oDr1TRZwdP7WEvgUy7H2A6mdx8xSY6YlJhVcmzFlELn43q/blhZGODZZHp6ewVm01j9n
+         SFC1/U/dPUbXUzvGad1Fm4CrR0BKxUgqKfNdD5vsJi7d7+Pn2lLpM1fmv4dDrKahwo0/
+         vsilBd8RJEn/CUfgEJDeFU/amWKhfDgw444lUPRLNkUFESGcWWmUPgoX2v4FNNhM6jEZ
+         aPDQooX/KFKe4UVL/Q2w17lYYM9ymKFgVZFl+gtUXrVMzz6dLxgK6SGv+B6lt9qJSxgS
+         OZIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=iCK/Guh5Rrrw54eAIhGQAU/zClxDgWg+i0Kytm+m6Js=;
-        fh=gjtid6HoGhvOYz7QfFN+itIzuUd5CxqvZTNm6mC+lyg=;
-        b=B99rJbmYP0mPj/1nzW9eYX3yTEYgRW+VeRUSowew7ku3gwxWH7R8BaArCy8wwnZJVZ
-         woU7D2Zc9sPgN6NLvaDbE6dWUm5G0U07zquLXXZpl9lzHmDEYmgAq9CnsIJScn5hnnl6
-         0e5ICMXRICi0D+juC22oxIihjifHmdOk71zz+Eh/iB5m0pSxWPWeL2p7aVnJl00ykk/c
-         EIjVBGkNXctj1a1C+fTkmAdjP7rrPqyZjhv93vF0Zc33NBBwfbak0JxtZBXaAVGh/oBA
-         voo2AUsl+A7c8zVUClIcZFXNz4yEkXNHbdr1ScB6DwKzGLz2fVymBIJJkPvxUQEUglHQ
-         yd3Q==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=yxcEACsROowAyIbQBJWZ0dhTLTQHNsHOEPITA/EhrVs=;
+        fh=ZxRFDSOil1FhUMUdb80VkjF27tzC1/EMOnoo8ziq0pw=;
+        b=UWmVyHSUZiz6eCPZ8+FzQdsvm7JpGHN/hwR0zPpqRa6sYRt1ozlsZkG1EZbChawuWR
+         jQjvBzxwQCpCGQVlTS0IGJEmSkqRwWxQZztnuZiWi4iBLGsORp5dnMXmbHSuoKTsDV8L
+         2bcRLmPoOJKUnN/MtdCopbKYZXR8gxakXKi47v99YLF6dKhj4cXYtD5x0n5PFDPYi25c
+         nmVscwGbBVhlBy4jv+CP0GK5cEWDPO2QLiQJ5XKO4i/b1Y+IpL3/TWeiX4389R5ZW7P6
+         zPGcqbe93Uc11cAjzvu/L7eeF2qd0HO0/jKz70hl/wpNggYveChEVocwyU/bIPDxmpLP
+         Znww==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XObLlucy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4449526c4a1si59098851cf.649.2024.06.19.03.02.10
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5afdcf2si142441366d6.195.2024.06.19.03.13.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Jun 2024 03:02:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 19 Jun 2024 03:13:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XObLlucy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sJs7v-0004ZW-8r; Wed, 19 Jun 2024 06:01:15 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sJsJI-0002oF-ED; Wed, 19 Jun 2024 06:13:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sJs7t-0004Yu-LQ; Wed, 19 Jun 2024 06:01:13 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sJsJG-0002ng-Gz
+ for qemu-arm@nongnu.org; Wed, 19 Jun 2024 06:12:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sJs7s-0002s9-3x; Wed, 19 Jun 2024 06:01:13 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 19 Jun
- 2024 18:01:02 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Wed, 19 Jun 2024 18:01:02 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Jason Wang <jasowang@redhat.com>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 1/2] hw/net:ftgmac100: fix coding style
-Date: Wed, 19 Jun 2024 18:01:01 +0800
-Message-ID: <20240619100102.3137941-2-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240619100102.3137941-1-jamin_lin@aspeedtech.com>
-References: <20240619100102.3137941-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sJsJE-0004mZ-QK
+ for qemu-arm@nongnu.org; Wed, 19 Jun 2024 06:12:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1718791975;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=yxcEACsROowAyIbQBJWZ0dhTLTQHNsHOEPITA/EhrVs=;
+ b=XObLlucyUq8y90nFvOihTkERIluYtavobnsigWwbwMzqs+04e+UjKC+mA0yThPABt4VxDO
+ Iw9n8UzLL3BGJq9ePts5fj7Np+GFBcPI36Or2i9moGkpIGLpSugu6x2gGr92rM2A+XIs26
+ dQBSNbCpA6r4OkmeK5OBc2sKSR6ryrc=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-478-_Ah7UJvKPMuRfY4ONTxBmw-1; Wed, 19 Jun 2024 06:12:54 -0400
+X-MC-Unique: _Ah7UJvKPMuRfY4ONTxBmw-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4215b0b1c11so49783845e9.3
+ for <qemu-arm@nongnu.org>; Wed, 19 Jun 2024 03:12:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718791972; x=1719396772;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=yxcEACsROowAyIbQBJWZ0dhTLTQHNsHOEPITA/EhrVs=;
+ b=kW2r0hMWvF6LZhh7tTchL+7CgSfWo+4ZeLCGaQGS/RXAHgv+GjHh6vyX1KLBqxtFZ2
+ GJBvoZklalXJsGXzWxKgw1th7l6r1sCtrnWRFTuoUnfg/Bv/bDmriPJNYV7S/xjfAx7g
+ V4uzmxtAQw0B9yCTOk1ss3FPHexbU52PEVYm6JtT685ldxG5HKKBJTe1H8SRDM3U94SA
+ LWtSBF78EdixcKr6IiYyZwd49EKEZiRetJXBHQhDL+cdO36VKbNKEO9R5xzJ3jbSPYT7
+ 8QH056fy3GzQAIa6Oxr1E9lg272OqiUpHthHfqYJ/QERdBPH+YzqhnJMoceQCJveGkQ/
+ Kayg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUZd4efHyIncogCS+d/WZSvQ9C1yJBr2d0LyQSTpwmSmSjJE5fg3T3WLkGp70jqJMrD/pQtf2KHzfaBuHIY2C1lQffM
+X-Gm-Message-State: AOJu0Yy896e2uMWCE9nKldC/dIzjWJSfdamrE6jVIWizDROTU020kcue
+ uFcnCjCM25Mz+jks6CogEV9PdUR2bqa1+aXYoRpumr2bY49sITImuILyUsWwyTbz7Ca5Ztv2n51
+ ZQUEuvXDHm8PbmSQ7kmvxSCtpJSGAc3l3ENV3x//UPzVRLdDZgA==
+X-Received: by 2002:a05:600c:3587:b0:422:6e65:a4cb with SMTP id
+ 5b1f17b1804b1-4247507865fmr15130945e9.3.1718791972552; 
+ Wed, 19 Jun 2024 03:12:52 -0700 (PDT)
+X-Received: by 2002:a05:600c:3587:b0:422:6e65:a4cb with SMTP id
+ 5b1f17b1804b1-4247507865fmr15130675e9.3.1718791972222; 
+ Wed, 19 Jun 2024 03:12:52 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-42307d5b78fsm174578745e9.6.2024.06.19.03.12.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 19 Jun 2024 03:12:51 -0700 (PDT)
+Date: Wed, 19 Jun 2024 12:12:50 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Sunil V L <sunilvl@ventanamicro.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, Paolo
+ Bonzini <pbonzini@redhat.com>, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
+ <marcandre.lureau@redhat.com>, "Daniel P . =?UTF-8?B?QmVycmFuZ8Op?="
+ <berrange@redhat.com>, Thomas Huth <thuth@redhat.com>, Philippe
+ =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, "Michael S . Tsirkin"
+ <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, Laurent Vivier
+ <lvivier@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Alistair Francis
+ <alistair23@gmail.com>, Sia Jee Heng <jeeheng.sia@starfivetech.com>, Haibo1
+ Xu <haibo1.xu@intel.com>, Anup Patel <apatel@ventanamicro.com>, Andrew
+ Jones <ajones@ventanamicro.com>, Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>, Weiwei
+ Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+Subject: Re: [PATCH v2 11/12] tests/qtest/bios-tables-test.c: Enable basic
+ testing for RISC-V
+Message-ID: <20240619121250.38040a20@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240524061411.341599-12-sunilvl@ventanamicro.com>
+References: <20240524061411.341599-1-sunilvl@ventanamicro.com>
+ <20240524061411.341599-12-sunilvl@ventanamicro.com>
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.148,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EItYlLBpRsu6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mG130psmxcOM
 
-Fix coding style issues from checkpatch.pl
+On Fri, 24 May 2024 11:44:10 +0530
+Sunil V L <sunilvl@ventanamicro.com> wrote:
 
-Test command:
-./scripts/checkpatch.pl --no-tree -f hw/net/ftgmac100.c
+> Add basic ACPI table test case for RISC-V.
+> 
+> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> ---
+>  tests/qtest/bios-tables-test.c | 27 +++++++++++++++++++++++++++
+>  1 file changed, 27 insertions(+)
+> 
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index c73174ad00..880435a5fa 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -1935,6 +1935,29 @@ static void test_acpi_microvm_acpi_erst(void)
+>  }
+>  #endif /* CONFIG_POSIX */
+>  
+> +static void test_acpi_riscv64_virt_tcg(void)
+> +{
+> +    ->cd data = {
+> +        .machine = "virt",
+> +        .arch = "riscv64",
+> +        .tcg_only = true,
+> +        .uefi_fl1 = "pc-bios/edk2-riscv-code.fd",
+> +        .uefi_fl2 = "pc-bios/edk2-riscv-vars.fd",
+> +        .ram_start = 0x80000000ULL,
+> +        .scan_len = 128ULL * 1024 * 1024,
+> +    };
+> +
+> +    /*
+> +     * RHCT will have ISA string encoded. To reduce the effort
+> +     * of updating expected AML file for any new default ISA extension,
+> +     * use the profile rva22s64.
+> +     */
+> +    test_acpi_one("-cpu rva22s64 -device virtio-blk-device,drive=hd0 "
+> +                  "-drive file=tests/data/uefi-boot-images/bios-tables-test.riscv64.iso.qcow2,id=hd0",
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/net/ftgmac100.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+Can you reuse test_data->cd, instead of specifying disk here? 
 
-diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-index 74b6c3d9a7..25e4c0cd5b 100644
---- a/hw/net/ftgmac100.c
-+++ b/hw/net/ftgmac100.c
-@@ -238,7 +238,8 @@ typedef struct {
-  */
- #define FTGMAC100_MAX_FRAME_SIZE    9220
- 
--/* Limits depending on the type of the frame
-+/*
-+ * Limits depending on the type of the frame
-  *
-  *   9216 for Jumbo frames (+ 4 for VLAN)
-  *   1518 for other frames (+ 4 for VLAN)
-@@ -533,8 +534,10 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
-             break;
-         }
- 
--        /* record transmit flags as they are valid only on the first
--         * segment */
-+        /*
-+         * record transmit flags as they are valid only on the first
-+         * segment
-+         */
-         if (bd.des0 & FTGMAC100_TXDES0_FTS) {
-             flags = bd.des1;
-         }
-@@ -639,7 +642,8 @@ static bool ftgmac100_can_receive(NetClientState *nc)
-  */
- static uint32_t ftgmac100_rxpoll(FTGMAC100State *s)
- {
--    /* Polling times :
-+    /*
-+     * Polling times :
-      *
-      * Speed      TIME_SEL=0    TIME_SEL=1
-      *
--- 
-2.34.1
+> +                  &data);
+> +    free_test_data(&data);
+> +}
+> +
+>  static void test_acpi_aarch64_virt_tcg(void)
+>  {
+>      test_data data = {
+> @@ -2404,6 +2427,10 @@ int main(int argc, char *argv[])
+>                  qtest_add_func("acpi/virt/viot", test_acpi_aarch64_virt_viot);
+>              }
+>          }
+> +    } else if (strcmp(arch, "riscv64") == 0) {
+> +        if (has_tcg && qtest_has_device("virtio-blk-pci")) {
+> +            qtest_add_func("acpi/virt", test_acpi_riscv64_virt_tcg);
+> +        }
+>      }
+>      ret = g_test_run();
+>      boot_sector_cleanup(disk);
 

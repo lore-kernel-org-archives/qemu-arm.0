@@ -1,194 +1,254 @@
-Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp1137033dlb;
-        Wed, 19 Jun 2024 11:06:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW2oHOsXUND7lhBJ4dN/fRHi5OvqRKfEZkrbLpSy/oCJdFBKey9NVEVijQp1+zTbbaA84vCl7+KcbmagM2t+UbXICUP4Uoj
-X-Google-Smtp-Source: AGHT+IHI6VwAw2aWUiNcTQo2Ni+inRGDWwmr/vJe4n7TUhLR927V2ahQ9IDV6GBdJj5vkyg7ryqU
-X-Received: by 2002:a05:6e02:1aa6:b0:375:ff24:f04a with SMTP id e9e14a558f8ab-3761d72504cmr38022745ab.29.1718820389129;
-        Wed, 19 Jun 2024 11:06:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718820389; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1553880ejb;
+        Wed, 19 Jun 2024 11:37:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU/Esdelzi2hYRoMtMcCFEI9EwjaEr1mWPsVXQ3U23NVber9e+bIayYIQ8vBX8A9TsznXISF+ATreNaB+hilZrVIguIRPnX
+X-Google-Smtp-Source: AGHT+IEF62d28l8ucS1yUV21U8FWSDSABRf0Qq5blspn2n9PiLM+VpleJRKd3Dsy/UF9pa5OLW7T
+X-Received: by 2002:a0c:f5d2:0:b0:6b5:116:b212 with SMTP id 6a1803df08f44-6b501ea92bamr36488316d6.45.1718822261582;
+        Wed, 19 Jun 2024 11:37:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718822261; cv=none;
         d=google.com; s=arc-20160816;
-        b=yyowm0TNKV1WGBLOVIFuGADoXB7OYW0nX86rI+y9x+48UqKbonXHBkW7fDpBGsprBt
-         NFCngtpgMTDoTqI/msv3oMz2Rc+dXrCTiWpPEDKl/XSbV1GevozkBNXSZ52krDTrWotE
-         bbtpkBPfBuW0TigFDahdkMldwEZxPcUbdGmeNnyxQ08rjBLNM/eCC9TRp9tnm0gvjgcQ
-         RUHG/ci7eqrheSIoYd4ABMfnLL+ji+0nv7CSW28wVQvTJxWsFn6Y9TiFuMiuSQo5xD55
-         S8oa6NKK0n8a7OwUQeWz3P/9NZl4G56hMW5S1eM/Uh01BlRcFL6F4pAz4P9iN8wMpNAA
-         QKTQ==
+        b=Bh5z8GFD7k1Ab0D4HAh9DuSaMueXEFzpPKI4XNGlLqRTCdBCvuS7HLaayzmM/M54Ev
+         4YFdUpvGTAr7URUumGgw0cKBqUfp+iKVFCBR65Wjjv+baBrZeOVesKEPQXY6WA7t+X2a
+         2PtIJ8bTauMRGUUbygVbrCXTHFpRUn+NeKCbCpqgIkSbw22f7MEXvveMQV7AQnjy2soW
+         E2tXMRCSyMDXsDOqWesPqvizJ3jlsFoerJFuSKJT5PUmTk68iUJSqU5wj9wUibNcd8oS
+         Mxx78XBU4vicIQ0Tq7fO/uDBRQd7RwWBQvAROhAbRnqjc+vp3Az8r3PUnmXCEwucZaJv
+         xDoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=tJQjaW+9SUe8Jd+0O933P+PkOF2hRXJTTop7a9IQrJU=;
-        fh=8cotAguXL8fmIOMLacleHlkXT+WdsbAANM3UHU9kp9M=;
-        b=r5wYwgRR9Oqdk2waPZHWC2TnCo1AJTBVCZVkukBqVGcSG24I/TDJi04ox3hytnIO1L
-         S4IVKHcvljXrpGu/AEPNU6oGUhnLYtASDkK9Nlqn1OK82dW+1ciIhOdoASFb5/17x8H2
-         p4ZNN9MNMHkIhIjPimK3mA9QabObdy3A9rePVJh476svyEmBHTun/ps/tilk7iplXJzA
-         Id+JN9ioM63ln3M5PdP9msi0DyARQmIeX3wxA9ZJQt9gv8blDxBshmIvinhdqKn5rxfT
-         c+/rSQzCGLdisxAE2qzVenBPZl+ENsZYZiyhHpHT2x/cx1e0ObfZzZ5h8Uv10AZaEiue
-         dtDg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=VGpiTZhwEEty9YTK3vcP9wWQVkaY76eUgrz1ZAi9qvs=;
+        fh=W2vHkeUvxZiygaIJiXX3ozq4ZBaL0vm01Srey+KVUoc=;
+        b=HAiRrmARp1NrVGgskJHR/9Dy7Db2NQWxslN4513lnE11j/UExiVrap9vcNEEDRcz9z
+         cJKZmVHSn1SWMmSTJ7LbtXlgf4yBNmowlaH1CTGuEKxboF5UC/SJcVwW7ZKTDYXD1nT2
+         ZHgeXjYEvgkmTxm0T8fXDsCZdCqB3FtpIp6LGe1+lJ0hy01+lnfIoVG2soHQUf/mAoKr
+         /+DTB5PFYDjHQys06ayYPr12q8ARm2Ayazy7VYdxmpIHaYT6glrmOuGBQ5DfE72T7732
+         WPShqZvXqzbM1QIVUlUwWXYW+okZ8lwOHg+XhABJUeAFVRtHKB5+/KKAE1Acgs090rli
+         RmuQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=WCAVuyKQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Hm3Rh2r0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-48f0722ed9dsi933587137.127.2024.06.19.11.06.27
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5b8a587si154946076d6.562.2024.06.19.11.37.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Jun 2024 11:06:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 19 Jun 2024 11:37:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=WCAVuyKQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Hm3Rh2r0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sJzh1-0001xr-Tr; Wed, 19 Jun 2024 14:05:59 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sK0B1-0004U2-EZ; Wed, 19 Jun 2024 14:36:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sJzh1-0001xZ-7F
- for qemu-devel@nongnu.org; Wed, 19 Jun 2024 14:05:59 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <zheyuma97@gmail.com>)
+ id 1sK0B0-0004TY-7d; Wed, 19 Jun 2024 14:36:58 -0400
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sJzgz-00024k-EZ
- for qemu-devel@nongnu.org; Wed, 19 Jun 2024 14:05:58 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-70635466708so106360b3a.1
- for <qemu-devel@nongnu.org>; Wed, 19 Jun 2024 11:05:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <zheyuma97@gmail.com>)
+ id 1sK0Ay-00004z-72; Wed, 19 Jun 2024 14:36:57 -0400
+Received: by mail-lf1-x131.google.com with SMTP id
+ 2adb3069b0e04-52c815e8e9eso111427e87.0; 
+ Wed, 19 Jun 2024 11:36:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1718820356; x=1719425156; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=tJQjaW+9SUe8Jd+0O933P+PkOF2hRXJTTop7a9IQrJU=;
- b=WCAVuyKQ0nLhiLDCGjhxXWJKfwDdqLZ234TKvO/SphgsOjqWeh61O7EjWVB7r95Enr
- OicbD1qFGtq5Ig7K0wqbLpZN20pUZiUkMlOphRssF1FPuroQMSIW6E/AVuLQrzWPvUn8
- YRcJJ6z2b4oOhOZQvCQR5Fdiq43ZcBAG9OYTT9+uQAhEcFUT9Ed9OHCprszIU9hQXupj
- OMpwF1lLfdBQTZgK994sO0YeXaKgkI9TfyLb6nq9flraV0XQdk78UHXgYz6ejqb6bs9C
- NYlB/UGlO9E5hJ/Zn+tTJ0aVMTZx83HnLqX4xFSurbyXie54/dtUEOZFfkD2Rvx85u+E
- sQtA==
+ d=gmail.com; s=20230601; t=1718822213; x=1719427013; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=VGpiTZhwEEty9YTK3vcP9wWQVkaY76eUgrz1ZAi9qvs=;
+ b=Hm3Rh2r07fltBUjiNiGmjiva80XVTvLU69A+IpO1QqsunLFy5nJpevvb18dq7zymIS
+ FDPE3aWYogmVjNzUDWm3u66e/YiUuM2pvN5PFIuKC8mXJupCTImQzF6c2pH3KRQUkNe6
+ NlECtRzbD/qT/m77xUtqJ/L/7zMP1cP1sqON64mRTqsr6iVNMgWhbVlzI637/PtEf+gi
+ iUjLTg4vCI0g1CePedR2dA/3l6ovzoGV9BUqKAJHhWGTp7tXlgIAv7ITgxNXwyZ3U5/f
+ 0Dnxa4/1QCgLFV3f2QVLOKgqRKZPkX61S3toGn0TXmIGvndJIovswJYWR9cqfyukIeX+
+ U+eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718820356; x=1719425156;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=tJQjaW+9SUe8Jd+0O933P+PkOF2hRXJTTop7a9IQrJU=;
- b=XcBcjk0YD8ThX9D9NeCWj6mPoj3gea+iWOezN6jt9kiQCUbM9e13B0oaLGVRhzpN8d
- n0ACj9W9vPbgDk/lEGtRDJt7vpMmlW7r3E9HebOdXVjPfWy+3ODaeeIK0/9lHlSfZwTG
- 4hmpHBru6V3bmhKgQhSnSmjTyHUCLPlG6xITwld8oJmMRQ5YhlJouoWTlo7WM0T9p86B
- pRZWQUPShyuU/7nhyZuBh4bmWl8pakY5V0webV5XbK2RfHvFbwPpl1ov3AZKOU2vcSv7
- rwzLbKpMbdSoekUUMnk8GZWr+71BgPKrh/pWngWoJ6favylkcqPDJ99KB+XBpaxZb4nA
- q0HA==
-X-Gm-Message-State: AOJu0YzMwHeLLOoytWAJHiaKnmmDyWn2V7Wb0zmUFMNfpXLD6yzRO1pe
- x8jEi+0CzBOXCV727RF+bRnC7Wd7KPY40nmOKRbMp/w+1ixWPuzn4CUbEvStbKE=
-X-Received: by 2002:a05:6a00:18aa:b0:705:ddb0:5260 with SMTP id
- d2e1a72fcca58-70629b19fb0mr3777805b3a.0.1718820355621; 
- Wed, 19 Jun 2024 11:05:55 -0700 (PDT)
-Received: from sunil-laptop ([106.51.187.237])
+ d=1e100.net; s=20230601; t=1718822213; x=1719427013;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=VGpiTZhwEEty9YTK3vcP9wWQVkaY76eUgrz1ZAi9qvs=;
+ b=WRFK6+7RaUV4FQRGQwBG5M1etvItHEHufoEkImERIXgbvY73zTp5wtFxBqIkwRO489
+ hnLZ9RRyebAtQTypUuZiSU6UgnaQumIFz5pvPxR6wp4o0N34qKsH17qIk0XLymi6O6KU
+ vfdJUtuHDOVuzICJ6xveo33u4YI9Sgbfax6mtsrBR1qJUdH9BTuykNP2lLYcJgX9Fvy3
+ ngX+VdxAhGsMxPQ+KqIBV8B1L8YbOO/2ZGlhrYws2Ripe+5xoQjdPt1mzO4NisDljGeY
+ P4bJLkzymp+MmwiiRUN0wGJAzb84lD8ddUWR26deEvjdtuK/Ffrmdl/3O6orw+85FIjI
+ rhOw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXk7vS8CtBheSTeam8iqtVpesT6F8LuKZmgFajmzDh5ygTmi97wcZj4ENxqj+03lTRGRsdeFXTbVoVCFEdoT5XoquY/0V4aj6ol70W1sBXQSePIQyRCelI7AIg=
+X-Gm-Message-State: AOJu0YyeRBggde8YL7602t4H76f6cbTp0rZ7sJfe1bITVv+DvAfhtUzD
+ 5fbrmjN12Lc8ABbXDUi/ZGkzlcrVm7lEiDbLTYdlZC6A+eItnhg=
+X-Received: by 2002:a05:6512:1392:b0:52c:c75c:e08c with SMTP id
+ 2adb3069b0e04-52ccaa37fa1mr1973906e87.39.1718822212601; 
+ Wed, 19 Jun 2024 11:36:52 -0700 (PDT)
+Received: from wing.epfl.ch (dhcp-122-dist-b-021.epfl.ch. [128.178.122.21])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-705cc91e13esm11366749b3a.11.2024.06.19.11.05.49
+ a640c23a62f3a-a6f56da4136sm687521066b.36.2024.06.19.11.36.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Jun 2024 11:05:55 -0700 (PDT)
-Date: Wed, 19 Jun 2024 23:35:45 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Alistair Francis <alistair23@gmail.com>,
- Sia Jee Heng <jeeheng.sia@starfivetech.com>,
- Haibo1 Xu <haibo1.xu@intel.com>, Anup Patel <apatel@ventanamicro.com>,
- Andrew Jones <ajones@ventanamicro.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Wed, 19 Jun 2024 11:36:52 -0700 (PDT)
+From: Zheyu Ma <zheyuma97@gmail.com>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Peter Maydell <peter.maydell@linaro.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Subject: Re: [PATCH v2 11/12] tests/qtest/bios-tables-test.c: Enable basic
- testing for RISC-V
-Message-ID: <ZnMd+WfmKGU6hRxY@sunil-laptop>
-References: <20240524061411.341599-1-sunilvl@ventanamicro.com>
- <20240524061411.341599-12-sunilvl@ventanamicro.com>
- <20240619121250.38040a20@imammedo.users.ipa.redhat.com>
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Cc: Zheyu Ma <zheyuma97@gmail.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH v3] hw/gpio/aspeed: Add reg_table_size to AspeedGPIOClass
+Date: Wed, 19 Jun 2024 20:36:38 +0200
+Message-Id: <20240619183638.4073070-1-zheyuma97@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240619121250.38040a20@imammedo.users.ipa.redhat.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x42a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::131;
+ envelope-from=zheyuma97@gmail.com; helo=mail-lf1-x131.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xpJ6AvAV0Iy7
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: p65zooY4b7yp
 
-On Wed, Jun 19, 2024 at 12:12:50PM +0200, Igor Mammedov wrote:
-> On Fri, 24 May 2024 11:44:10 +0530
-> Sunil V L <sunilvl@ventanamicro.com> wrote:
-> 
-> > Add basic ACPI table test case for RISC-V.
-> > 
-> > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> > ---
-> >  tests/qtest/bios-tables-test.c | 27 +++++++++++++++++++++++++++
-> >  1 file changed, 27 insertions(+)
-> > 
-> > diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-> > index c73174ad00..880435a5fa 100644
-> > --- a/tests/qtest/bios-tables-test.c
-> > +++ b/tests/qtest/bios-tables-test.c
-> > @@ -1935,6 +1935,29 @@ static void test_acpi_microvm_acpi_erst(void)
-> >  }
-> >  #endif /* CONFIG_POSIX */
-> >  
-> > +static void test_acpi_riscv64_virt_tcg(void)
-> > +{
-> > +    ->cd data = {
-> > +        .machine = "virt",
-> > +        .arch = "riscv64",
-> > +        .tcg_only = true,
-> > +        .uefi_fl1 = "pc-bios/edk2-riscv-code.fd",
-> > +        .uefi_fl2 = "pc-bios/edk2-riscv-vars.fd",
-> > +        .ram_start = 0x80000000ULL,
-> > +        .scan_len = 128ULL * 1024 * 1024,
-> > +    };
-> > +
-> > +    /*
-> > +     * RHCT will have ISA string encoded. To reduce the effort
-> > +     * of updating expected AML file for any new default ISA extension,
-> > +     * use the profile rva22s64.
-> > +     */
-> > +    test_acpi_one("-cpu rva22s64 -device virtio-blk-device,drive=hd0 "
-> > +                  "-drive file=tests/data/uefi-boot-images/bios-tables-test.riscv64.iso.qcow2,id=hd0",
-> 
-> Can you reuse test_data->cd, instead of specifying disk here? 
-> 
-Actually, currently there is an issue with RISC-V virt machine due to
-which -cdrom doesn't work properly. But I have a fix for that. With that
-fix in place , I can use cd here.
+ASan detected a global-buffer-overflow error in the aspeed_gpio_read()
+function. This issue occurred when reading beyond the bounds of the
+reg_table.
 
-I will send that fix tomorrow separately.
+To enhance the safety and maintainability of the Aspeed GPIO code, this commit
+introduces a reg_table_size member to the AspeedGPIOClass structure. This
+change ensures that the size of the GPIO register table is explicitly tracked
+and initialized, reducing the risk of errors if new register tables are
+introduced in the future.
 
-Thanks,
-Sunil
+Reproducer:
+cat << EOF | qemu-system-aarch64 -display none \
+-machine accel=qtest, -m 512M -machine ast1030-evb -qtest stdio
+readq 0x7e780272
+EOF
+
+ASAN log indicating the issue:
+==2602930==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7fff096c4e90 sp 0x7fff096c4e88
+READ of size 2 at 0x55a5da29e128 thread T0
+    #0 0x55a5d700dc61 in aspeed_gpio_read hw/gpio/aspeed_gpio.c:564:14
+    #1 0x55a5d933f3ab in memory_region_read_accessor system/memory.c:445:11
+    #2 0x55a5d92fba40 in access_with_adjusted_size system/memory.c:573:18
+    #3 0x55a5d92f842c in memory_region_dispatch_read1 system/memory.c:1426:16
+    #4 0x55a5d92f7b68 in memory_region_dispatch_read system/memory.c:1459:9
+    #5 0x55a5d9376ad1 in flatview_read_continue_step system/physmem.c:2836:18
+    #6 0x55a5d9376399 in flatview_read_continue system/physmem.c:2877:19
+    #7 0x55a5d93775b8 in flatview_read system/physmem.c:2907:12
+
+Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
+---
+Changes in v3:
+- Add the reproducer
+
+Changes in v2:
+- Introduce the reg_table_size to AspeedGPIOClass
+---
+ hw/gpio/aspeed_gpio.c         | 17 +++++++++++++++++
+ include/hw/gpio/aspeed_gpio.h |  1 +
+ 2 files changed, 18 insertions(+)
+
+diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+index c1781e2ba3..fd4912edae 100644
+--- a/hw/gpio/aspeed_gpio.c
++++ b/hw/gpio/aspeed_gpio.c
+@@ -559,6 +559,12 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
+         return debounce_value;
+     }
+ 
++    if (idx >= agc->reg_table_size) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: idx 0x%" PRIx64 " out of bounds\n",
++                      __func__, idx);
++        return 0;
++    }
++
+     reg = &agc->reg_table[idx];
+     if (reg->set_idx >= agc->nr_gpio_sets) {
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
+@@ -785,6 +791,12 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
+         return;
+     }
+ 
++    if (idx >= agc->reg_table_size) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: idx 0x%" PRIx64 " out of bounds\n",
++                      __func__, idx);
++        return;
++    }
++
+     reg = &agc->reg_table[idx];
+     if (reg->set_idx >= agc->nr_gpio_sets) {
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
+@@ -1117,6 +1129,7 @@ static void aspeed_gpio_ast2400_class_init(ObjectClass *klass, void *data)
+     agc->nr_gpio_pins = 216;
+     agc->nr_gpio_sets = 7;
+     agc->reg_table = aspeed_3_3v_gpios;
++    agc->reg_table_size = GPIO_3_3V_REG_ARRAY_SIZE;
+ }
+ 
+ static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
+@@ -1127,6 +1140,7 @@ static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
+     agc->nr_gpio_pins = 228;
+     agc->nr_gpio_sets = 8;
+     agc->reg_table = aspeed_3_3v_gpios;
++    agc->reg_table_size = GPIO_3_3V_REG_ARRAY_SIZE;
+ }
+ 
+ static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
+@@ -1137,6 +1151,7 @@ static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
+     agc->nr_gpio_pins = 208;
+     agc->nr_gpio_sets = 7;
+     agc->reg_table = aspeed_3_3v_gpios;
++    agc->reg_table_size = GPIO_3_3V_REG_ARRAY_SIZE;
+ }
+ 
+ static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
+@@ -1147,6 +1162,7 @@ static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
+     agc->nr_gpio_pins = 36;
+     agc->nr_gpio_sets = 2;
+     agc->reg_table = aspeed_1_8v_gpios;
++    agc->reg_table_size = GPIO_1_8V_REG_ARRAY_SIZE;
+ }
+ 
+ static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
+@@ -1157,6 +1173,7 @@ static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
+     agc->nr_gpio_pins = 151;
+     agc->nr_gpio_sets = 6;
+     agc->reg_table = aspeed_3_3v_gpios;
++    agc->reg_table_size = GPIO_3_3V_REG_ARRAY_SIZE;
+ }
+ 
+ static const TypeInfo aspeed_gpio_info = {
+diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
+index 904eecf62c..e66036ac39 100644
+--- a/include/hw/gpio/aspeed_gpio.h
++++ b/include/hw/gpio/aspeed_gpio.h
+@@ -75,6 +75,7 @@ struct AspeedGPIOClass {
+     uint32_t nr_gpio_pins;
+     uint32_t nr_gpio_sets;
+     const AspeedGPIOReg *reg_table;
++    uint32_t reg_table_size;
+ };
+ 
+ struct AspeedGPIOState {
+-- 
+2.34.1
+

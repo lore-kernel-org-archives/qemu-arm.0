@@ -1,144 +1,112 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1323914ejb;
-        Wed, 19 Jun 2024 04:08:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWL4bYGxal78VEgZIRteJpiRuhT9Euv6PVucjkVPJaZ1XBqBs4NQ27nrVOYo3eUjV83TnV66yEXb5/nkB8kCnCd1oJjnsu5
-X-Google-Smtp-Source: AGHT+IH3UsFv2h1CLSV20eej5a8EWoUiSxJ8ARtAumvl0gh+TKpF+Mk7a/wljiG703kL/OwkxL7F
-X-Received: by 2002:a05:622a:4b0f:b0:444:b132:bd8d with SMTP id d75a77b69052e-444b132be9emr3697911cf.49.1718795297155;
-        Wed, 19 Jun 2024 04:08:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718795297; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1369586ejb;
+        Wed, 19 Jun 2024 05:46:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUAFBvZd6PQz+1kB99FL8gdj8rpy+Pgrm9fPs8aHTRnYbcvg7f+tIhjRcVlsqiLEhVLg0iOykVLkqQBciOaSJyRPEUCptKq
+X-Google-Smtp-Source: AGHT+IHLg1V5SREXcHckR9WFXHj3B57BIfWAILZa7G6cwVNiHjNLXDUXThvvOoi55QVHf98yv/lw
+X-Received: by 2002:a05:6808:3a08:b0:3d2:1bf6:c56d with SMTP id 5614622812f47-3d51b9bc9f5mr3376820b6e.20.1718801181638;
+        Wed, 19 Jun 2024 05:46:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718801181; cv=none;
         d=google.com; s=arc-20160816;
-        b=h2eCJ8wNco8Of/WUj41NF7ci8Mv7uK6hrAOv3piulGxeihOtuIjIHodGtPeXYjEY3w
-         wYn3c4tj+A35rX1OAu96RVx+Z7xOIICrVoNgziv4fyUZ2cZXH8962Pe6WX1MUgyN3HmQ
-         ixiZ2HNJ12jBOkSV6zoWG1v7n2Z5fZBxShZFJ/Tzz70S9Tc4r7ZBCR6SYzoCZbwjzcPv
-         ZXr0JCQ5/Im9fcycXm8ufQ5ey/iN9a1LG3KLE081y5gOvyQZm4IXbe30xq63Z7GAZ8aT
-         NT1uaTXDdnDEZRZjvieBrckEmervle89SjOOtXIgtHdf2b5pGqiCIjIAj4t/ByZfNB3F
-         K7wg==
+        b=hGe3RWIFpjuSkCfEX600PXzaLOuQ5NWmaB4TLxFXReT6Jp6bR2JKCVd8+C6xjFqDUN
+         tzj5FpAQLyVX1t0oY0aTf93dSceqqj2rkGQl8IFRigv821PqMVZO1ObazUWdpBnKZdte
+         u3+kIPVg7RReFNrUCcyuJLxWYo7dxoN/cG+zpFZfgzNavu5l6p4LKNradyen+0UqNQQW
+         xSKrgDwHpuB02/UmCkZ5PuVGMwLbS+hp8l9CbRPiA7bv3YHDoP0496j1NHrIZJSAvirb
+         o/H/bynWh2sl4PRcq1Sv0R6zic3vVCubRigpJX9JUf8so/A8fseCQKMDeCB71odU118C
+         bcoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=FQtYhlDbANKAafkDXec+KSnQ3Vof1TGRu3LR91CGins=;
-        fh=BhnLEJEq6ajk2BkWltYMAeoxl97MV2RE5lxrEpFIdUM=;
-        b=xiNUJMti0JKQq8TdsrsrYPVZrA4Fd/tXEnWjXBlYfEITmMp9tf9XaFYTeN222EgeIY
-         +SpXONNLBKwmevmEZKdFwe6kCTX5F6g+uZXA5vHkoqHRcbcu9gesq5lgCiQYxq4z6tuj
-         t6DBoFKHsQNYH0Nl8EQK7VLTVw2axrruhWKFQ9cCQik1sVy8+hRg3Byy5wrwSLQAQPM7
-         gNRx7NUNlis23zP3Oh1B59ONWAy+OHU3UrwCJXoBxMABaNVbKKPL/GaFrHDk2/PQQeH+
-         ZnnxjWQvoEJdD061CbaOWhM2ePNqHhuy7kzAlbrJiXg6A/AWK+3NEtQN0A8XgTd+IzKI
-         Fqqg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=Rt+vMimWpCZ3tXCuIBMMYYTnbBLTe2/+Fe2vxefBHDE=;
+        fh=JqEF+VmKXmDnn0eSUNC8WnqNp1Zy1czN755rHNmOu6E=;
+        b=gjtPBbiXocT/5YdqGlTITplp1A6vfgnNSfOnPmC9MqH2pr9E3LDWWs+w5OuBg9eewk
+         wePccE46rIguMZsOfRU/Mxc2nIFwQX1M5XE1FIuwx1agRobQ545FUni36X8aZum1o6tm
+         tmQosMliqqb5iWdoLeHImNtS5AQyVT25OC2nSAaIE8fVGsqRz9hGxaSJuMH5F/iS9BPR
+         YG3LVySLMQn6t+dmAlOAi9+tQXOzZWHZj2NNxdT0/J9oTfTWVmwHMIt9Gwst6lJtCCRO
+         cwP9cwrkBDJ6dQHSmQLLhr83GG8dkJD1zQk/ZM3NESJVIN/sIfH8SfKrWYd6w82yK3UL
+         KFYQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FmpcPCm6;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=EWvPVmUl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-441f2fb757asi138882851cf.417.2024.06.19.04.08.16
+        by mx.google.com with ESMTPS id d75a77b69052e-441ef3dc31csi139969801cf.178.2024.06.19.05.46.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Jun 2024 04:08:17 -0700 (PDT)
+        Wed, 19 Jun 2024 05:46:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FmpcPCm6;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=EWvPVmUl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sJtAQ-0000zp-Cg; Wed, 19 Jun 2024 07:07:54 -0400
+	id 1sJuhG-0003je-Qd; Wed, 19 Jun 2024 08:45:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sJtAP-0000yb-14
- for qemu-arm@nongnu.org; Wed, 19 Jun 2024 07:07:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sJtAL-00067Z-RP
- for qemu-arm@nongnu.org; Wed, 19 Jun 2024 07:07:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718795268;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FQtYhlDbANKAafkDXec+KSnQ3Vof1TGRu3LR91CGins=;
- b=FmpcPCm6zXxWwhoLwyQTO/a3sLndgN3HruNwn0VLPPxY+Sxea+Em9tteEtxpq+IRY8xpep
- hWDWROASub4gZnxUWcUR+8M4ZvG2yuJAqYfwJRV5OFjToqOQyPCnbiCdrkZGCod+p8oiv5
- lnzJjmEV0o+s0PEphsT5kWfa41I68j8=
-Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
- [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-56-q-a9i563PZuvEZe-w11usw-1; Wed, 19 Jun 2024 07:07:47 -0400
-X-MC-Unique: q-a9i563PZuvEZe-w11usw-1
-Received: by mail-lj1-f200.google.com with SMTP id
- 38308e7fff4ca-2eaec29f8e3so50557791fa.1
- for <qemu-arm@nongnu.org>; Wed, 19 Jun 2024 04:07:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sJuhE-0003fa-Mp; Wed, 19 Jun 2024 08:45:52 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1sJuhC-0007c7-NH; Wed, 19 Jun 2024 08:45:52 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-57d07673185so1217178a12.1; 
+ Wed, 19 Jun 2024 05:45:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1718801148; x=1719405948; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Rt+vMimWpCZ3tXCuIBMMYYTnbBLTe2/+Fe2vxefBHDE=;
+ b=EWvPVmUlF7GW7Z/NyYb835SUXpiYEjN87OiUC/OzZtuesgDgrdE/Zbg1pMzZCRN1gj
+ UyvGCEj6Mc0NKdets1Bd3J0slbWgrA8cSAm+K16cXreDMDUrDXbPlVQRX4FHxoviGa7E
+ hSayexfCUHsu7jXvcQr6qnMF88xlXZ+DhY6WTvDCmCa3vYKwGcmyxL8VIz9uRf3RHmEr
+ ui0DrnWlliyDJ2RRMSmztgfmAIBjxtOrfvqfBCJufvB4MrvNDIQbPZRFB5WOo/2hFQ19
+ uv9ENDhtSI1qX6KCohaS298/+IrqIau0iSte3IueO5wfj9yd23n6eaPPf5APWgyGcAvX
+ au8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718795265; x=1719400065;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=FQtYhlDbANKAafkDXec+KSnQ3Vof1TGRu3LR91CGins=;
- b=qC+/QAgeGoeF3xoUx8ZipvU2tuSX7cyowd+qPcdgsMrurFHjzA7nUf/F0WMoFe200t
- xCv5qtIbqUswdWAFXploFBJLMhP6LBwfILD7V0Pnn4SxGoqTFah4INVp3M1D/LH1e5U6
- gPmUbfUVfK46LA9wk0dFRl2ACwLYnq3ufSw4z/joN4372v7pNYFZgLnVGWuy7DmWowG5
- sdDw7UpdZcG5HwZ6vIzKJfPKJnGWU5YN53ButtrGiMLfkGHru4PxunHq6kTt8YnsbYfD
- rYnt1O6WcIka+yrbAykeXnF8L5OyoqAeaxN/fncqWlXRm5er/zE8/wi9bpKfuUQw91WU
- PzsQ==
+ d=1e100.net; s=20230601; t=1718801148; x=1719405948;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Rt+vMimWpCZ3tXCuIBMMYYTnbBLTe2/+Fe2vxefBHDE=;
+ b=BMkSe7J/VFd2tTB75wogCpYW8NYWiWCGcLXDY1VO/f9kiqoCr6OLJBxfLwt9WUxFY8
+ oVCiCnHfEFSVIQ/t2nJlPdb+PvbhBBLd4aUdsOqGgUNU/nDoc/iaAmCnjBOe8BW5CBBu
+ HLYSEZ94XCyo/EpETyv46K2oL9AChhjKJHHhqn/z5UNnM3CPieujsBEC77HgjLSFJ0J3
+ cNylHv+NejgZzV2kDE2JaIHcAJ9Hle/IXMnD4wLGPflJwx22z5pYHBeVXBsOCE7UqsrZ
+ RxtG529o1EQLJQuF2bW8Tdj679DVkmgkMvp01705WtObvPxrDPGxRYrZLR9lqTt73W+S
+ WtLA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW8byh4UDM8wk+iXHqlZiI+jPvjpMHEzEM6scQzvwvjYcJC0RGJAauH9DYbFXTkziZ9+/Q3quwz/R5OtyuQpvD4AocP
-X-Gm-Message-State: AOJu0YztTn/aPWu0VUh39oKNkq/v7jHlywoFLOBelozIQQ/o0BFyeuML
- qtvjhkYeLxw33QmrGn3MYU/Gf8Ppdy9Tn4Ph39vN8sWYF80NTgv5z66sX+NEtkAU3ARfIZYREJy
- WLpiNQzT00DtHItLQpgE3tDe5UF/9ve7/8cHvRnpQcDq4POJzxg==
-X-Received: by 2002:a2e:a26c:0:b0:2ec:3daa:f0af with SMTP id
- 38308e7fff4ca-2ec3daaf202mr11367321fa.12.1718795265562; 
- Wed, 19 Jun 2024 04:07:45 -0700 (PDT)
-X-Received: by 2002:a2e:a26c:0:b0:2ec:3daa:f0af with SMTP id
- 38308e7fff4ca-2ec3daaf202mr11367001fa.12.1718795265125; 
- Wed, 19 Jun 2024 04:07:45 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42286fe92c6sm262983865e9.18.2024.06.19.04.07.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Jun 2024 04:07:44 -0700 (PDT)
-Date: Wed, 19 Jun 2024 13:07:42 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Sunil V L <sunilvl@ventanamicro.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, Paolo
- Bonzini <pbonzini@redhat.com>, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
- <marcandre.lureau@redhat.com>, "Daniel P . =?UTF-8?B?QmVycmFuZ8Op?="
- <berrange@redhat.com>, Thomas Huth <thuth@redhat.com>, Philippe
- =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, "Michael S . Tsirkin"
- <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, Laurent Vivier
- <lvivier@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Alistair Francis
- <alistair23@gmail.com>, Sia Jee Heng <jeeheng.sia@starfivetech.com>, Haibo1
- Xu <haibo1.xu@intel.com>, Anup Patel <apatel@ventanamicro.com>, Andrew
- Jones <ajones@ventanamicro.com>, Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>, Peter Maydell <peter.maydell@linaro.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>, Weiwei
- Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
-Subject: Re: [PATCH v2 12/12] tests/qtest/bios-tables-test: Add expected
- ACPI data files for RISC-V
-Message-ID: <20240619130742.69c635ed@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240524061411.341599-13-sunilvl@ventanamicro.com>
-References: <20240524061411.341599-1-sunilvl@ventanamicro.com>
- <20240524061411.341599-13-sunilvl@ventanamicro.com>
-X-Mailer: Claws Mail 4.2.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
+ AJvYcCX2meGPtsFg3r8zaB+CsYX9DgucS3xSve+5rxtwQgVT3uIzdSmxt1r3E9hQiWbtlJ/27DlYZDizuTH6Bpf8xk/gfNZaPYY=
+X-Gm-Message-State: AOJu0Yxx5b0k0cLlkTlBaLqFCyGq2eu/GoV2+kCW4+immzPM9qLsFCQu
+ BEK1i3aQHtV/ZcyBWLcQp2BeQu+OanAy3FrWx5YFVZxjXaGi29k3eDgCJgaEGEtICsi5vbjv3M3
+ LZ/IiRGxhNiv4eRcDSU+T9/3YAA4=
+X-Received: by 2002:a50:d74f:0:b0:57c:6c98:b622 with SMTP id
+ 4fb4d7f45d1cf-57d07ec1fc4mr1853623a12.38.1718801148114; Wed, 19 Jun 2024
+ 05:45:48 -0700 (PDT)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+References: <20240619091632.2825550-1-sai.pavan.boddu@amd.com>
+ <20240619091632.2825550-2-sai.pavan.boddu@amd.com>
+In-Reply-To: <20240619091632.2825550-2-sai.pavan.boddu@amd.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Wed, 19 Jun 2024 14:45:36 +0200
+Message-ID: <CAJy5ezpchrSME7YHE7L7VAtLrnuCdfsOEN51jQn7kmBVhYX62A@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] hw/misc/zynq_slcr: Add BootMode property
+To: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>, francisco.iglesias@amd.com
+Content-Type: multipart/alternative; boundary="000000000000df7fad061b3d93fe"
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,127 +121,227 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5siybO6SFK7B
+X-TUID: WqMApeeZNPc2
 
-On Fri, 24 May 2024 11:44:11 +0530
-Sunil V L <sunilvl@ventanamicro.com> wrote:
+--000000000000df7fad061b3d93fe
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> As per the step 5 in the process documented in bios-tables-test.c,
-> generate the expected ACPI AML data files for RISC-V using the
-> rebuild-expected-aml.sh script and update the
-> bios-tables-test-allowed-diff.h.
-> 
-> These are all new files being added for the first time. Hence, iASL diff
-> output is not added.
-> 
-> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+On Wed, Jun 19, 2024 at 11:16=E2=80=AFAM Sai Pavan Boddu <sai.pavan.boddu@a=
+md.com>
+wrote:
 
-Acked-by: Igor Mammedov <imammedo@redhat.com>
+> BootMode property sets user values into BOOT_MODE register, on hardware
+> these are derived from board switches.
+>
+>
 
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+
+
+
+> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
 > ---
->  tests/data/acpi/virt/riscv64/APIC           | Bin 0 -> 116 bytes
->  tests/data/acpi/virt/riscv64/DSDT           | Bin 0 -> 3518 bytes
->  tests/data/acpi/virt/riscv64/FACP           | Bin 0 -> 276 bytes
->  tests/data/acpi/virt/riscv64/MCFG           | Bin 0 -> 60 bytes
->  tests/data/acpi/virt/riscv64/RHCT           | Bin 0 -> 314 bytes
->  tests/data/acpi/virt/riscv64/SPCR           | Bin 0 -> 80 bytes
->  tests/qtest/bios-tables-test-allowed-diff.h |   6 ------
->  7 files changed, 6 deletions(-)
-> 
-> diff --git a/tests/data/acpi/virt/riscv64/APIC b/tests/data/acpi/virt/riscv64/APIC
-> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..66a25dfd2d6ea2b607c024722b2eab95873a01e9 100644
-> GIT binary patch
-> literal 116
-> zcmZ<^@N_O=U|?X|;^gn_5v<@85#X!<1dKp25F13pfP@Mo12P{Zj?R|`s)2!c7=s}J
-> I#NvT*0o0BN0RR91
-> 
-> literal 0
-> HcmV?d00001
-> 
-> diff --git a/tests/data/acpi/virt/riscv64/DSDT b/tests/data/acpi/virt/riscv64/DSDT
-> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..0fb2d5e0e389541209b765d5092d0706f40298f6 100644
-> GIT binary patch
-> literal 3518
-> zcmZvf%WvaU6vnR;w@IBxlQexl(t(j!ppl%0(ryq<oOYV3X-%9`q=14{b;M9K6c~^O
-> zgcx<fqhd2ti4B_~D)B!c1W2sdvE#L7!#}_>eCJ*}oI`D?w!iChKA+$9t$orAn%(bn
-> zN+n)t?0eh6a^of6TgGN7rRbcFh1Tyc_k%{iceZVNuIr}z+pT7<?)fc<HI?okw3^tr
-> z>)qm0&dr&dmZB`a{a^Ra*0&D5Eo1b;X8Qm}E3gQ<btjYVdtTkbz7rISPX6ODvMUs3
-> zVE91w&KfCiza7@#@A>YkTOF1_DRa)WNl^t#{A^TNmZNji{btZCtt5&QPNDqU;E!+b  
-> zecnEQ^xc;~?0jvN=B?69B6sx0n@1<N?!0~c*1N~|jvlD2+E~Xu>-LMCh<kUhvyXCD
-> z|GVk1+UV8=+`16nn$W3iZBaGE(t=R0Su8V)L_|(iti)M3i8v3Jc_g_<E!HC$=dr;&
-> zZ0_+)tcM-v;WLjB?y(x{F%swTD)SiS9?!;ljK+DKGLIDZSc~;Y#d$nr9_i3y=NsQ^
-> zu@zZ&*ReP}{EyK3th+T@*_*eqZ#4FX%O>b{iWO(USDtFAW3{YY{55g*p1P}!a8zWX
-> z7lz;IPVBzpJS=7G%wV8y2Q62ba|`EHRm#%1lYm%>L=vK=N;x|_7+?*WxKL3R0`umY
-> z&O>M<DHHxW7E8~>hKe$y(1g;N2-TU8l!<C|EEb%J4HacZp-Gd8P@M@$nW#v|VwsuP  
-> zP=$;-)Haz>@sOMoiwl`i1tW@cj+o4-cu3BPCB-VhD+4MD9hIDroD&Pl#Oi8OIy2%-
-> zNlr-4iRFXLXr|LTGn$gL<b>p$V}cX!M^n3=p)tt`$vN>NG_kr`M{qil6Owag1ZPHY
-> zW+W#h=gbPutl-Q_PDsv)?-Htwo@Y*Q<|HR1=gbSvyx`1BPDsu<E;z>p=eXpA<eYfp
-> zv*(GAkEvZhm4f7i<eWvpSrnW_$qC6hOM<f`I7^Zfl5<W7&I!ReAvqyAXIXHT1!q}u
-> zLUPVY!8s{7CnYB&=bRFpQ-X6!azb*>X~8)yIHx5iB<DoK!Jg-g;GB`1keqW?aLx+O
-> zS;+~>Ip+lDoZy_3oRFMzUU1F}&UwiR$vGDU=Yrr|kera5b5U?E3eH8z3CTH^1m}|A  
-> zT#}rSoU<Z0D}u8kIUx;a@2q9hqcop+`Y3zu*6>5@qiM`L8Qmx@>rXnqyVu6bqy3;0
-> zSfN$e$O$X-aop-gjFlN1TJ2C(VM8aZsGs9rPsDhcG3gaHcG3%d9rt=N#><R_Ugd1x
-> zYt+>h-rEXOMpLn!a_)bcQwbVUYCt>d6Z~go(OKwiV=x$e6rJOWm8FJLZ)jL(gSOQ9  
-> z(=101Q%{N90rg{iGreXyIPiUy_PU*2Ro)uw?+2cJexkhQVfAu5b@3W?^1b$-wSOuL
-> z8($pWumAYmuXoN*92)^EIHqx|osu9QI;oM>2efl4w7)DozPM|Bh$~ecUA>%od=bT&  
-> z;R0PerC=JrI{7MZ#_1;2tCR9A{Hkc%mp4o`zpVZISFrki`_c5@?b)Ba_T|{c>*}hQ  
-> pv@F`;cR<_jYzAT_(hnb+<eKANn;)0v1k>|8pBtRxTSGr9{slF`>K_0A
-> 
-> literal 0
-> HcmV?d00001
-> 
-> diff --git a/tests/data/acpi/virt/riscv64/FACP b/tests/data/acpi/virt/riscv64/FACP
-> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..a5276b65ea8ce46cc9b40d96d98f0669c9089ed4 100644
-> GIT binary patch
-> literal 276
-> zcmZ>BbPf<<WME(ucJg=j2v%^42yj*a0-z8Bhz+8t3k1-OV?`GjD1M-;Zz#xa0OIBc  
-> A0RR91
-> 
-> literal 0
-> HcmV?d00001
-> 
-> diff --git a/tests/data/acpi/virt/riscv64/MCFG b/tests/data/acpi/virt/riscv64/MCFG
-> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..37eb923a9320f5573c0c2cdb90bd98409cc7eb6f 100644
-> GIT binary patch
-> literal 60
-> rcmeZuc5}C3U|?Y6aq@Te2v%^42yj*a0!E-1hz+8VfB}^KA4CHH3`GY4
-> 
-> literal 0
-> HcmV?d00001
-> 
-> diff --git a/tests/data/acpi/virt/riscv64/RHCT b/tests/data/acpi/virt/riscv64/RHCT
-> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..beaa961bbf0f0486c0dee25f543377c928354f84 100644
-> GIT binary patch
-> literal 314
-> zcmXAlu}%Xq42FGxD#XNyI`tt=C&buWx`A2-wkXNvbP-K1O46&8iKjrk6)SI3ey5h~
-> z@3-SPa`wCa{iPvl)b_RC9X8vKw|)adiC8n)zP^7d?+~A>`lE(^DK1@Wog4=(iq&1K
-> z7;1J`gewX|OE=3Z>{xM3wM)ljIQKa+635YaZ7jrOeGc+eJEnks*|jl=GEUBVQ8WhX  
-> zK@<flJgso_nMF!k2aE&flg}m^e@2oQd6bm~m(n5!gJ?a<U{EgOALs#2D_Y&qJuA9g
-> Pp1|9>GjINg;u`)Bd);9H  
-> 
-> literal 0
-> HcmV?d00001
-> 
-> diff --git a/tests/data/acpi/virt/riscv64/SPCR b/tests/data/acpi/virt/riscv64/SPCR
-> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..4da9daf65f71a13ac2b488d4e9728f194b569a43 100644
-> GIT binary patch
-> literal 80
-> zcmWFza1IJ!U|?X{>E!S15v<@85#X!<1dKp25F12;fdT`FDF9*%FmM4$c8~z`e;@#f  
-> G!2kgKJqrN<
-> 
-> literal 0
-> HcmV?d00001
-> 
-> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> index d8610c8d72..dfb8523c8b 100644
-> --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> @@ -1,7 +1 @@
->  /* List of comma-separated changed AML files to ignore */
-> -"tests/data/acpi/virt/riscv64/APIC",
-> -"tests/data/acpi/virt/riscv64/DSDT",
-> -"tests/data/acpi/virt/riscv64/FACP",
-> -"tests/data/acpi/virt/riscv64/MCFG",
-> -"tests/data/acpi/virt/riscv64/RHCT",
-> -"tests/data/acpi/virt/riscv64/SPCR",
+>  hw/misc/zynq_slcr.c | 22 +++++++++++++++++++++-
+>  1 file changed, 21 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+> index 3412ff099ea..ad814c3a79b 100644
+> --- a/hw/misc/zynq_slcr.c
+> +++ b/hw/misc/zynq_slcr.c
+> @@ -24,6 +24,8 @@
+>  #include "hw/registerfields.h"
+>  #include "hw/qdev-clock.h"
+>  #include "qom/object.h"
+> +#include "hw/qdev-properties.h"
+> +#include "qapi/error.h"
+>
+>  #ifndef ZYNQ_SLCR_ERR_DEBUG
+>  #define ZYNQ_SLCR_ERR_DEBUG 0
+> @@ -121,6 +123,7 @@ REG32(RST_REASON, 0x250)
+>
+>  REG32(REBOOT_STATUS, 0x258)
+>  REG32(BOOT_MODE, 0x25c)
+> +    FIELD(BOOT_MODE, BOOT_MODE, 0, 4)
+>
+>  REG32(APU_CTRL, 0x300)
+>  REG32(WDT_CLK_SEL, 0x304)
+> @@ -195,6 +198,7 @@ struct ZynqSLCRState {
+>      Clock *ps_clk;
+>      Clock *uart0_ref_clk;
+>      Clock *uart1_ref_clk;
+> +    uint8_t boot_mode;
+>  };
+>
+>  /*
+> @@ -371,7 +375,7 @@ static void zynq_slcr_reset_init(Object *obj,
+> ResetType type)
+>      s->regs[R_FPGA_RST_CTRL]  =3D 0x01F33F0F;
+>      s->regs[R_RST_REASON]     =3D 0x00000040;
+>
+> -    s->regs[R_BOOT_MODE]      =3D 0x00000001;
+> +    s->regs[R_BOOT_MODE]      =3D s->boot_mode & R_BOOT_MODE_BOOT_MODE_M=
+ASK;
+>
+>      /* 0x700 - 0x7D4 */
+>      for (i =3D 0; i < 54; i++) {
+> @@ -588,6 +592,15 @@ static const ClockPortInitArray zynq_slcr_clocks =3D=
+ {
+>      QDEV_CLOCK_END
+>  };
+>
+> +static void zynq_slcr_realize(DeviceState *dev, Error **errp)
+> +{
+> +    ZynqSLCRState *s =3D ZYNQ_SLCR(dev);
+> +
+> +    if (s->boot_mode > 0xF) {
+> +        error_setg(errp, "Invalid boot mode %d specified", s->boot_mode)=
+;
+> +    }
+> +}
+> +
+>  static void zynq_slcr_init(Object *obj)
+>  {
+>      ZynqSLCRState *s =3D ZYNQ_SLCR(obj);
+> @@ -610,15 +623,22 @@ static const VMStateDescription vmstate_zynq_slcr =
+=3D {
+>      }
+>  };
+>
+> +static Property zynq_slcr_props[] =3D {
+> +    DEFINE_PROP_UINT8("boot-mode", ZynqSLCRState, boot_mode, 1),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+>  static void zynq_slcr_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>      ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+>
+>      dc->vmsd =3D &vmstate_zynq_slcr;
+> +    dc->realize =3D zynq_slcr_realize;
+>      rc->phases.enter =3D zynq_slcr_reset_init;
+>      rc->phases.hold  =3D zynq_slcr_reset_hold;
+>      rc->phases.exit  =3D zynq_slcr_reset_exit;
+> +    device_class_set_props(dc, zynq_slcr_props);
+>  }
+>
+>  static const TypeInfo zynq_slcr_info =3D {
+> --
+> 2.34.1
+>
+>
 
+--000000000000df7fad061b3d93fe
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">On Wed, Jun 19, 2024 at 11:16=E2=80=AFAM =
+Sai Pavan Boddu &lt;<a href=3D"mailto:sai.pavan.boddu@amd.com">sai.pavan.bo=
+ddu@amd.com</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote =
+class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
+id rgb(204,204,204);padding-left:1ex">BootMode property sets user values in=
+to BOOT_MODE register, on hardware<br>
+these are derived from board switches.<br>
+<br></blockquote><div><br></div><div><br></div><div>Reviewed-by: Edgar E. I=
+glesias &lt;<a href=3D"mailto:edgar.iglesias@amd.com">edgar.iglesias@amd.co=
+m</a>&gt;<br></div><div><br></div><div>=C2=A0</div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex">
+Signed-off-by: Sai Pavan Boddu &lt;<a href=3D"mailto:sai.pavan.boddu@amd.co=
+m" target=3D"_blank">sai.pavan.boddu@amd.com</a>&gt;<br>
+---<br>
+=C2=A0hw/misc/zynq_slcr.c | 22 +++++++++++++++++++++-<br>
+=C2=A01 file changed, 21 insertions(+), 1 deletion(-)<br>
+<br>
+diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c<br>
+index 3412ff099ea..ad814c3a79b 100644<br>
+--- a/hw/misc/zynq_slcr.c<br>
++++ b/hw/misc/zynq_slcr.c<br>
+@@ -24,6 +24,8 @@<br>
+=C2=A0#include &quot;hw/registerfields.h&quot;<br>
+=C2=A0#include &quot;hw/qdev-clock.h&quot;<br>
+=C2=A0#include &quot;qom/object.h&quot;<br>
++#include &quot;hw/qdev-properties.h&quot;<br>
++#include &quot;qapi/error.h&quot;<br>
+<br>
+=C2=A0#ifndef ZYNQ_SLCR_ERR_DEBUG<br>
+=C2=A0#define ZYNQ_SLCR_ERR_DEBUG 0<br>
+@@ -121,6 +123,7 @@ REG32(RST_REASON, 0x250)<br>
+<br>
+=C2=A0REG32(REBOOT_STATUS, 0x258)<br>
+=C2=A0REG32(BOOT_MODE, 0x25c)<br>
++=C2=A0 =C2=A0 FIELD(BOOT_MODE, BOOT_MODE, 0, 4)<br>
+<br>
+=C2=A0REG32(APU_CTRL, 0x300)<br>
+=C2=A0REG32(WDT_CLK_SEL, 0x304)<br>
+@@ -195,6 +198,7 @@ struct ZynqSLCRState {<br>
+=C2=A0 =C2=A0 =C2=A0Clock *ps_clk;<br>
+=C2=A0 =C2=A0 =C2=A0Clock *uart0_ref_clk;<br>
+=C2=A0 =C2=A0 =C2=A0Clock *uart1_ref_clk;<br>
++=C2=A0 =C2=A0 uint8_t boot_mode;<br>
+=C2=A0};<br>
+<br>
+=C2=A0/*<br>
+@@ -371,7 +375,7 @@ static void zynq_slcr_reset_init(Object *obj, ResetType=
+ type)<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;regs[R_FPGA_RST_CTRL]=C2=A0 =3D 0x01F33F0F;<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;regs[R_RST_REASON]=C2=A0 =C2=A0 =C2=A0=3D 0x00000=
+040;<br>
+<br>
+-=C2=A0 =C2=A0 s-&gt;regs[R_BOOT_MODE]=C2=A0 =C2=A0 =C2=A0 =3D 0x00000001;<=
+br>
++=C2=A0 =C2=A0 s-&gt;regs[R_BOOT_MODE]=C2=A0 =C2=A0 =C2=A0 =3D s-&gt;boot_m=
+ode &amp; R_BOOT_MODE_BOOT_MODE_MASK;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0/* 0x700 - 0x7D4 */<br>
+=C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; 54; i++) {<br>
+@@ -588,6 +592,15 @@ static const ClockPortInitArray zynq_slcr_clocks =3D {=
+<br>
+=C2=A0 =C2=A0 =C2=A0QDEV_CLOCK_END<br>
+=C2=A0};<br>
+<br>
++static void zynq_slcr_realize(DeviceState *dev, Error **errp)<br>
++{<br>
++=C2=A0 =C2=A0 ZynqSLCRState *s =3D ZYNQ_SLCR(dev);<br>
++<br>
++=C2=A0 =C2=A0 if (s-&gt;boot_mode &gt; 0xF) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp, &quot;Invalid boot mode %d sp=
+ecified&quot;, s-&gt;boot_mode);<br>
++=C2=A0 =C2=A0 }<br>
++}<br>
++<br>
+=C2=A0static void zynq_slcr_init(Object *obj)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0ZynqSLCRState *s =3D ZYNQ_SLCR(obj);<br>
+@@ -610,15 +623,22 @@ static const VMStateDescription vmstate_zynq_slcr =3D=
+ {<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0};<br>
+<br>
++static Property zynq_slcr_props[] =3D {<br>
++=C2=A0 =C2=A0 DEFINE_PROP_UINT8(&quot;boot-mode&quot;, ZynqSLCRState, boot=
+_mode, 1),<br>
++=C2=A0 =C2=A0 DEFINE_PROP_END_OF_LIST(),<br>
++};<br>
++<br>
+=C2=A0static void zynq_slcr_class_init(ObjectClass *klass, void *data)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
+=C2=A0 =C2=A0 =C2=A0ResettableClass *rc =3D RESETTABLE_CLASS(klass);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_zynq_slcr;<br>
++=C2=A0 =C2=A0 dc-&gt;realize =3D zynq_slcr_realize;<br>
+=C2=A0 =C2=A0 =C2=A0rc-&gt;phases.enter =3D zynq_slcr_reset_init;<br>
+=C2=A0 =C2=A0 =C2=A0rc-&gt;phases.hold=C2=A0 =3D zynq_slcr_reset_hold;<br>
+=C2=A0 =C2=A0 =C2=A0rc-&gt;phases.exit=C2=A0 =3D zynq_slcr_reset_exit;<br>
++=C2=A0 =C2=A0 device_class_set_props(dc, zynq_slcr_props);<br>
+=C2=A0}<br>
+<br>
+=C2=A0static const TypeInfo zynq_slcr_info =3D {<br>
+-- <br>
+2.34.1<br>
+<br>
+</blockquote></div></div>
+
+--000000000000df7fad061b3d93fe--

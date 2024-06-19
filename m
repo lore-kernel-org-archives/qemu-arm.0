@@ -1,37 +1,37 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1295146ejb;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1295150ejb;
         Wed, 19 Jun 2024 03:02:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXXswmeAWA0g/OXtuAT+4JpqCQTLJWZQW1o0CKcqnPq+JJnQyfqxS6a/nEGMLcHDxaPLgoN9RlkjRrKN9QODMN20+RrdKT/
-X-Google-Smtp-Source: AGHT+IHPXM0YWyMY87ek/zu4iO9LfFsqPQvJ39rN3B4oulMJ+azAoSKVStIqe1V3JV8+zH7jMuGq
-X-Received: by 2002:ac8:5a04:0:b0:43a:ea03:31b7 with SMTP id d75a77b69052e-444a7a4ab81mr25862401cf.52.1718791331451;
+X-Forwarded-Encrypted: i=2; AJvYcCVhXQ0iyYXNKv9OVc4Y+tS9Fluz9PDYIBsRJPvTV7wYF5n9EGMV4OSyE3VpFm2QRryoqt46CJcFPuZX8ebwueNS+l75iX3Z
+X-Google-Smtp-Source: AGHT+IHAKGqZ5gOYGB3HOr+1IEITZl25BM3uFpcf2ffVqIN0I4WjlVFbXATtPqNC8rk2xT66UyGf
+X-Received: by 2002:a05:622a:4e87:b0:444:a8d0:ae81 with SMTP id d75a77b69052e-444a8d0b004mr23745561cf.7.1718791331594;
         Wed, 19 Jun 2024 03:02:11 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1718791331; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z4gftle3IwobmRLVCa41UCAEEMdQwKxNuqnyvtogOO2GEJdTH5XRVv+nuscgrHR6XX
-         R8JTbSlgEHfTTiZ7lyE27ht1e6Kl6qsYxbkofvSl2kLFiE9SLEvMPgWCas7uS4LnL8I2
-         UQxB3+/HKoxBfluDYrHIuFheu9PJz1ECrsri3h4hRrQ2DaDHd1Sf2a9Z3/l675xGoC77
-         b4aLzDhnq86OLsFBw9BL14CnGyEmYrwCl5KWUVOTfiwxeYVgsaeFn9Pwce66KCn1f04o
-         FyMevgpTb8QiG7/pYy8AwXj951wHqyVG7YYumqj6M/kb3EiD4vjdyb/xwSNy7vjr0DYs
-         T0FA==
+        b=SRqWRvZ0MCk2WyIj3OJg8N7vAXo6Ae1shvvJaMocA1Vxa4yd7HKXn/xycQx/J1y12L
+         5QeWJiNTDOTa1Yr7VnS4csyNJODn44ns2wrof7FRp3/iCv2Kv6GNmpwLADF5NNGBs3w8
+         cFF1riTOqJfzBuAMZnvvLZY++M3KrfBK0b06m7eMQ0xsQzqeQCtomEiy3QVvi0YRPk9M
+         PmUweO7/5z6be/Yahs61d/ZqN7+lxh2k66VjAw9pU0LDpUheHiVDs7V4NG8vV5vKDBty
+         J+HPlqaOQOSOqXNRUDpxljdtR5YPudOUjHORmD4Sow2koWAWMdRp5leeTr99Q/of1I4g
+         SeCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=C4MGIvuegYe3Tn8Ww5jVQwRyZIhbAfB1of2EOY82n3w=;
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=iCK/Guh5Rrrw54eAIhGQAU/zClxDgWg+i0Kytm+m6Js=;
         fh=gjtid6HoGhvOYz7QfFN+itIzuUd5CxqvZTNm6mC+lyg=;
-        b=uSMyD2/7U01Wi/RIskZZpfFDx5mO0htf9oejr9Pl5jCrOfv66IRzyS9gePZl1WAZE/
-         e3lPWmuDoA9XKHc42gArPrwDuVckFeONxNpoflCy4Qhf4gvzPM000B5yxGsV4R7cfSYc
-         GvuiUgFNpiSpkfn48mxq5H18DoL923JQEJGNKGqfLsRIGL1W7Zpbc1FHgnCfLbrNKqDt
-         +qZbRP8eQF219g/lldd/qC/7zEpN0vjbI2LZjoQSNQ3HBBJPVKNHIKQdT4YRwrE34IGS
-         r+P2d9fmwAM0lqQejsbeXLoXI+xJwOuw8wlBjWJm5JpxFywBeapenUhVLS1hhCer6XC6
-         1sqw==;
+        b=B99rJbmYP0mPj/1nzW9eYX3yTEYgRW+VeRUSowew7ku3gwxWH7R8BaArCy8wwnZJVZ
+         woU7D2Zc9sPgN6NLvaDbE6dWUm5G0U07zquLXXZpl9lzHmDEYmgAq9CnsIJScn5hnnl6
+         0e5ICMXRICi0D+juC22oxIihjifHmdOk71zz+Eh/iB5m0pSxWPWeL2p7aVnJl00ykk/c
+         EIjVBGkNXctj1a1C+fTkmAdjP7rrPqyZjhv93vF0Zc33NBBwfbak0JxtZBXaAVGh/oBA
+         voo2AUsl+A7c8zVUClIcZFXNz4yEkXNHbdr1ScB6DwKzGLz2fVymBIJJkPvxUQEUglHQ
+         yd3Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4449caeb077si38904121cf.139.2024.06.19.03.02.10
+        by mx.google.com with ESMTPS id d75a77b69052e-4449526c4a1si59098851cf.649.2024.06.19.03.02.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 19 Jun 2024 03:02:11 -0700 (PDT)
@@ -42,21 +42,18 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sJs7s-0004Y6-Dn; Wed, 19 Jun 2024 06:01:12 -0400
+	id 1sJs7v-0004ZW-8r; Wed, 19 Jun 2024 06:01:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sJs7r-0004Xf-9t; Wed, 19 Jun 2024 06:01:11 -0400
+ id 1sJs7t-0004Yu-LQ; Wed, 19 Jun 2024 06:01:13 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sJs7p-0002s9-81; Wed, 19 Jun 2024 06:01:11 -0400
-Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX01.aspeed.com
+ id 1sJs7s-0002s9-3x; Wed, 19 Jun 2024 06:01:13 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Wed, 19 Jun
- 2024 18:01:02 +0800
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX02.aspeed.com
- (192.168.0.25) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Wed, 19 Jun
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 19 Jun
  2024 18:01:02 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
@@ -69,17 +66,15 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 0/2] hw/net:ftgmac100: support AST2700 
-Date: Wed, 19 Jun 2024 18:01:00 +0800
-Message-ID: <20240619100102.3137941-1-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 1/2] hw/net:ftgmac100: fix coding style
+Date: Wed, 19 Jun 2024 18:01:01 +0800
+Message-ID: <20240619100102.3137941-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240619100102.3137941-1-jamin_lin@aspeedtech.com>
+References: <20240619100102.3137941-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
- does not designate 192.168.10.10 as permitted sender)
- receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
- helo=localhost.localdomain;
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -103,21 +98,55 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uDiPrVlJiPW5
+X-TUID: EItYlLBpRsu6
 
-change from v1:
-- ftgmac100
- - fix coding style
- - support 64 bits dma dram address for AST2700
+Fix coding style issues from checkpatch.pl
 
-Jamin Lin (2):
-  hw/net:ftgmac100: fix coding style
-  hw/net:ftgmac100: support 64 bits dma dram address for AST2700
+Test command:
+./scripts/checkpatch.pl --no-tree -f hw/net/ftgmac100.c
 
- hw/net/ftgmac100.c         | 83 ++++++++++++++++++++++++++------------
- include/hw/net/ftgmac100.h |  9 ++---
- 2 files changed, 61 insertions(+), 31 deletions(-)
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ hw/net/ftgmac100.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
+diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+index 74b6c3d9a7..25e4c0cd5b 100644
+--- a/hw/net/ftgmac100.c
++++ b/hw/net/ftgmac100.c
+@@ -238,7 +238,8 @@ typedef struct {
+  */
+ #define FTGMAC100_MAX_FRAME_SIZE    9220
+ 
+-/* Limits depending on the type of the frame
++/*
++ * Limits depending on the type of the frame
+  *
+  *   9216 for Jumbo frames (+ 4 for VLAN)
+  *   1518 for other frames (+ 4 for VLAN)
+@@ -533,8 +534,10 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
+             break;
+         }
+ 
+-        /* record transmit flags as they are valid only on the first
+-         * segment */
++        /*
++         * record transmit flags as they are valid only on the first
++         * segment
++         */
+         if (bd.des0 & FTGMAC100_TXDES0_FTS) {
+             flags = bd.des1;
+         }
+@@ -639,7 +642,8 @@ static bool ftgmac100_can_receive(NetClientState *nc)
+  */
+ static uint32_t ftgmac100_rxpoll(FTGMAC100State *s)
+ {
+-    /* Polling times :
++    /*
++     * Polling times :
+      *
+      * Speed      TIME_SEL=0    TIME_SEL=1
+      *
 -- 
 2.34.1
 

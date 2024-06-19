@@ -1,169 +1,176 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp921768ejb;
-        Tue, 18 Jun 2024 09:37:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU4mlIw72jXkSnn1ulWprNEuYn8FhJzLKPzH3EShgFFYlRRP84og3fLLZyVQVXBm61plSiq36Fkz/z3hbBk4RNChKfRgUhY
-X-Google-Smtp-Source: AGHT+IHhucG82Tjqv4B9gFjMfBnGPUqrvclr8fFA+mdvBsAF83RLlKoLwa5MmzXQ3ilExP1exUMg
-X-Received: by 2002:a05:6870:d8c6:b0:24c:a395:1957 with SMTP id 586e51a60fabf-25c94b08ebbmr400105fac.26.1718728667951;
-        Tue, 18 Jun 2024 09:37:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718728667; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1188043ejb;
+        Tue, 18 Jun 2024 21:40:45 -0700 (PDT)
+X-Received: by 2002:a17:902:e5c7:b0:1f9:b121:35f0 with SMTP id d9443c01a7336-1f9b1213809mr4714725ad.54.1718772045489;
+        Tue, 18 Jun 2024 21:40:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718772045; cv=none;
         d=google.com; s=arc-20160816;
-        b=RNH/kHuNLJQ7a9L8reXgOk9kNmC+NShzdPNGH6pVW1wiZ0omu05bmMixsX1+mIKkJZ
-         2M+bPh4RWVewdFEzqbHl5he3tSA17eF+84Ft1QgqZLWgqAj7WEkB8G91xcofCJUaXC4b
-         6r6u9jIf6p7tOxHhZliD2D51JOajQrPhuu4e6r23Ey/3GxY/93GBWmC8DptuPiOzXbIW
-         ehDXq5D/su2LK4KqoFVm4ZZydnfSNdy7LLWr1zt9xyx3ROYCgfeVg1wUxyHv3bvZu7xI
-         FvYAFkCrLSgDyZKBU9of1Ge8kozst/yD1fA9n0mqboy2WPWEKWV/oP2GqNeWNrVh+6fQ
-         FL0Q==
+        b=T3xzVN7S6QImfzZCX9uMi2uryernWWuZMsbdZ3zvh8H866C1VIuRvR/xRyDAV0cN07
+         tniuECLdbXIj9scHpGdbKoGrl6tBmlknQfh34pJjhwvuUXXElOY5VKS3LQbZq3yhWeZ3
+         njXTnPPF1IcfeeESR9AoBK6b5CU3uEkzagbFVGD9SGoEVJtvGd1Z53qH6B2Mb7U6vALC
+         jfpT7gNhNZIrAsS9LBE7ofaYCzUOEr++5nHVgVk7/4rQzUNvJ25IxFBL8IvCbOoBkuIf
+         AU5odyepbaJmC59XAvKIrH5tL39tENVDVcdjo2rZ/fCl9vW8O4eo3k7KDDYMF2SDUVsB
+         /DGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=vcmJDQiSruIcaEPOxulSjKxCIvJVJZPab1Btx+x8YHM=;
-        fh=qEt2SreNiejJ4QS8JNJj0GbdE2Q3XWD9fuQ1zV2wy9o=;
-        b=cjoLCxIK4hsDAG6q+JVix9xjxqKjF/lvmAd1DqIBAYjGnCMaO7gX7iWP+y/KOATcvS
-         D5TNFOgBUvMWjI2yl4ku15Vn7zV5BeR6Sd0E+0+Iqvk6Qp+sBaPnFGrpF3k679U/LwAP
-         n1uFPsNlf1rEvnHVwPmHv/RRNJmhUzM/197kHxDTRPLUEsvGXuzNr7xjTONw1uR3//e6
-         bC3AIfwQfSfFi5YIzf2pZ05UdKFG/uFeF1wtP3sfAT/JyE+pqxZQaNuTmL3DcA1tiGrA
-         0RvKVCuJyHrgyhTFG6hmPjJaBXkFAdj3DDWvjjRNS8H988piSW90dRmTsTMaadMORFh+
-         HBew==;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=g4BmsQ1QJzxyLe7NE6YfkwAvTr4YTIzX0Wng0BIcdls=;
+        fh=OhY8Qz5Jy2LMvlSPrne2bIxXcEjgBukkEgQOhr7vfHQ=;
+        b=cxxr0sKeXTCB04nS0Y+BRUqkjCJfIQWMH+8eZGruOcvRTfhR68/OjRqvxb3Rh/zeJw
+         Lei/e+ADTCLgLNkn58RAEAjqxbtrNShkVxVrvMWEwYZ8koH3ya+k//q5tXM200MR2yRY
+         PPwAdo5O1MRKJ3VdfhG5sVuoSS5jPPlSz6InMGO9dFIDpgUhVC4UDIjk4yyivP2Eh4Pj
+         REHwVVBmrFKiVCiXxyaLnP5MH5l0V91H74Tl3rLYDu2YUqBDqYd6kMn1pXLWfBxptoNA
+         vw80XURK9zs4pWeZcaYYDTf0dFLNcgbYzvMsZaOsxlHes9pi/enHFugjhr18a8pKtm00
+         dgCg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Z8bWq8cw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-798ac08eb9asi1217556185a.734.2024.06.18.09.37.47
+       dkim=pass header.i=@linaro.org header.s=google header.b=LswR6sA9;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-1f855e2d1casor64798925ad.4.2024.06.18.21.40.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Jun 2024 09:37:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 18 Jun 2024 21:40:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Z8bWq8cw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sJbq3-0005Ji-2g; Tue, 18 Jun 2024 12:37:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zheyuma97@gmail.com>)
- id 1sJbq1-0005JC-VC; Tue, 18 Jun 2024 12:37:41 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zheyuma97@gmail.com>)
- id 1sJbq0-00050L-C9; Tue, 18 Jun 2024 12:37:41 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-57cc7e85b4bso2932a12.0; 
- Tue, 18 Jun 2024 09:37:39 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=LswR6sA9;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1718728658; x=1719333458; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=vcmJDQiSruIcaEPOxulSjKxCIvJVJZPab1Btx+x8YHM=;
- b=Z8bWq8cw0+Zr1zBilJJWPpyJMWGNY7y0s/gDS+IOyrp9FZaVNoYPPx6/FvBsDZ7wbJ
- Y00bmRmaFDhN+QFYy05TC0MZxx18rEyRSlMkUoX9UzHzuYecylFtluykvaBNgcogvL3X
- hDc3AcWLykAJWFWzVNMg8F+MBHirULqTngzVzw85u1RkauB0BHmDlxzDqKX/44A5PY5W
- izqPHSwtaoTvX123v/hsvdGQ/pIONVsFzyB1ccFRoC5PodbvmQbHnXOZYDY1z8bvGVYh
- VmfA+Pfs8YGxHDcnd0oa46KYBWFt+Cgh7rgWUyT91Ply2Q2GzMSbN9wXetPKPh1HdbFz
- GWwA==
+        d=linaro.org; s=google; t=1718772044; x=1719376844; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=g4BmsQ1QJzxyLe7NE6YfkwAvTr4YTIzX0Wng0BIcdls=;
+        b=LswR6sA9RcHPK/10GZWVeznk1xN6G8mWj8qpiRBPywGWxLnVEzXUm8V88YGxcJviI2
+         ygAI8HyAvovnM0UhczQwQLS6z8YkEEwC5XAxk9emIJBCLA5ApQ6zj1F8aEFshSIXyO0F
+         tWrtu6/vBur9D1H6c1s7R+aBmxhMQuO22E/KCH/+eM1x3CiK0tY/JfgfMvillMlo5owp
+         uXVY5PClFp4qjXKzelrVOg/5/CRvwn/CQeSjBJjjHYULsBDe7DUWnMWOp6A7in+EIK6X
+         xJZbCnw0Ulkg+IRRbNb0xQA9ZHb7ytQdybT2QVQFwXb6JJ0IS+Xb1tGBtyHosGIj0iI6
+         iGSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718728658; x=1719333458;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=vcmJDQiSruIcaEPOxulSjKxCIvJVJZPab1Btx+x8YHM=;
- b=evDAtr+ocSOwCfoH0KB6vwaAzPZ61FBLcVd3g4ArXiboxMC7MDEoKUS9jaGvUDPLHV
- lrgAdipYIWHA2qTg6YRb53gUD+C+VEoKl78hPKVimEG2u4pXTfKQw73zj/pZUe0+DqBT
- RKzk7/W8kZrP0yLsB+tJkG0WzFjfGNJdwAmfNw0cL8tHRRGfrHIzwo44gpkiOBAPzxlB
- p2NFvF7tI3qgrtDUW+9LJHnGsygF36hsMEOWGwqqrbtDSNWigex/jftfeBZ0w4FmQOeT
- PBZoT6wOEhHGzmwZT4FirRf9wrgnEhs7Q2haJHPuWvTMzJjka0SdC08Wyhel1zAAFd/6
- xIug==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWUeyML/26qxn34sfcakDldSFmSGxZVrRD9p6lMb5C75V86iY6ziLx91d6n7QKYJghQwG6sHWL7nwE/ntQNxY+mPM5YMML2EvsDQSgCoSkTGiitqT3LyOgK7j8=
-X-Gm-Message-State: AOJu0YzcUNC33kF9MCcCXEBVfrL3C4z1Hl/tvTuyASpHcLCsX/bsJ4t2
- d1gwOihmDlK1hHhcXXv8nEWUQ8ZVIPJ7MJgE5SBYp8k/K0ekmIA=
-X-Received: by 2002:a50:c04b:0:b0:57c:614c:56e7 with SMTP id
- 4fb4d7f45d1cf-57d06ad8d11mr181876a12.18.1718728657162; 
- Tue, 18 Jun 2024 09:37:37 -0700 (PDT)
-Received: from wing.epfl.ch (dhcp-122-dist-b-021.epfl.ch. [128.178.122.21])
- by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-57cb72cdffcsm7949309a12.6.2024.06.18.09.37.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Jun 2024 09:37:36 -0700 (PDT)
-From: Zheyu Ma <zheyuma97@gmail.com>
-To: Igor Mitsyanko <i.mitsyanko@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: Zheyu Ma <zheyuma97@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH v3] hw/misc: Set valid access size for Exynos4210 RNG
-Date: Tue, 18 Jun 2024 18:37:01 +0200
-Message-Id: <20240618163701.3204975-1-zheyuma97@gmail.com>
-X-Mailer: git-send-email 2.34.1
+        d=1e100.net; s=20230601; t=1718772044; x=1719376844;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=g4BmsQ1QJzxyLe7NE6YfkwAvTr4YTIzX0Wng0BIcdls=;
+        b=X10wiOsRLIxjc+79dsEqAxq7sQrUlwiK0I+mqK6Msr4+fJvqlpd41ASBl3YJX1NWzv
+         dWoXGEdO7uIsOl58o8yycXS90YoOh93SAewOQ6IcHTkjhsadjLbSYNWGd4Rmw9TRcc1s
+         YI9K8DJH8RrKKnseSzcAQ1AVom1joj/ZfMCAyZ5FNHDq8PfvA54RQhOwT0Fr/JfLEM/J
+         rqDCK7+dX/J6MZoXmapKGYsOjDQXkL8B5H5vvfB7OsQopZmrJGIgu2ycvNNJwbtybOH3
+         HsdxhVrjw9HS3JwZG9Ycu0oFdytMAxeCW9IcJgqSgrpmUovrk4cWkTL2WQVVa/yUUmTr
+         LBWA==
+X-Gm-Message-State: AOJu0Yzh9h3zZLibGSENtmgqxdS1SX7K0nAcIXP4KIuZB6pGMMiQw1ry
+	reg+soq0r7UvnG7yIq7QWhEyogIMNWzMOqOuUsoLNlbR2h4YCxiiiFt7yNEUh+TUAwVdbNGKfJt
+	sw8sN7w==
+X-Google-Smtp-Source: AGHT+IHFfqYIDFPB2Pn70eKtMLfzZPDMlN9O6iloy8dsexph+5biJsZB7KaVhUQUSQGsB2WaUEO6cQ==
+X-Received: by 2002:a17:902:a585:b0:1f6:343f:dc4d with SMTP id d9443c01a7336-1f9aa462941mr15179015ad.49.1718772044195;
+        Tue, 18 Jun 2024 21:40:44 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from ?IPV6:2604:3d08:9384:1d00::2193? ([2604:3d08:9384:1d00::2193])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f98fd829adsm23772835ad.231.2024.06.18.21.40.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Jun 2024 21:40:43 -0700 (PDT)
+Message-ID: <78003bee-08f7-4860-a675-b09721955e60@linaro.org>
+Date: Tue, 18 Jun 2024 21:40:32 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=zheyuma97@gmail.com; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ig/wX2oR4yxZ
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 9/9] contrib/plugins: add ips plugin example for cost
+ modeling
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: "Dr. David Alan Gilbert" <dave@treblig.org>, qemu-devel@nongnu.org,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mark Burton <mburton@qti.qualcomm.com>, qemu-s390x@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+ Laurent Vivier <lvivier@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, Nicholas Piggin <npiggin@gmail.com>,
+ Marco Liebel <mliebel@qti.qualcomm.com>, Thomas Huth <thuth@redhat.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>, qemu-ppc@nongnu.org,
+ Mahmoud Mandour <ma.mandourr@gmail.com>, Cameron Esfahani <dirty@apple.com>,
+ Jamie Iles <quic_jiles@quicinc.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20240612153508.1532940-1-alex.bennee@linaro.org>
+ <20240612153508.1532940-10-alex.bennee@linaro.org>
+ <ZmoM2Sac97PdXWcC@gallifrey>
+ <777e1b13-9a4f-4c32-9ff7-9cedf7417695@linaro.org>
+ <Zmy9g1U1uP1Vhx9N@gallifrey>
+ <616df287-a167-4a05-8f08-70a78a544929@linaro.org>
+ <ZnCi4hcyR8wMMnK4@gallifrey>
+ <4e5fded0-d1a9-4494-a66d-6488ce1bcb33@linaro.org>
+ <874j9qefv0.fsf@draig.linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Language: en-US
+In-Reply-To: <874j9qefv0.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+X-TUID: dLBdn0hSv2W4
 
-The Exynos4210 RNG module requires 32-bit (4-byte) accesses to its registers.
-According to the User Manual Section 25.3[1], the registers for RNG operations
-are 32-bit. This change ensures that the memory region operations for the
-RNG module enforce the correct access sizes, preventing invalid memory accesses.
-
-[1] http://www.mediafire.com/view/8ly2fqls3c9c31c/Exynos_4412_SCP_Users_Manual_Ver.0.10.00_Preliminary0.pdf
-
-Reproducer:
-cat << EOF | qemu-system-aarch64 -display none \
--machine accel=qtest, -m 512M -machine smdkc210 -qtest stdio
-readb 0x10830454
-EOF
-
-Suggested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
----
-Changes in v3:
-- point to the device specification
----
- hw/misc/exynos4210_rng.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/hw/misc/exynos4210_rng.c b/hw/misc/exynos4210_rng.c
-index 0756bd3205..674d8eece5 100644
---- a/hw/misc/exynos4210_rng.c
-+++ b/hw/misc/exynos4210_rng.c
-@@ -217,6 +217,8 @@ static const MemoryRegionOps exynos4210_rng_ops = {
-     .read = exynos4210_rng_read,
-     .write = exynos4210_rng_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid.min_access_size = 4,
-+    .valid.max_access_size = 4,
- };
- 
- static void exynos4210_rng_reset(DeviceState *dev)
--- 
-2.34.1
-
+T24gNi8xOC8yNCAwMjo1MywgQWxleCBCZW5uw6llIHdyb3RlOg0KPiBQaWVycmljayBCb3V2
+aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+IHdyaXRlczoNCj4gDQo+PiBPbiA2
+LzE3LzI0IDEzOjU2LCBEci4gRGF2aWQgQWxhbiBHaWxiZXJ0IHdyb3RlOg0KPj4+ICogUGll
+cnJpY2sgQm91dmllciAocGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnKSB3cm90ZToNCj4+
+Pj4gT24gNi8xNC8yNCAxNTowMCwgRHIuIERhdmlkIEFsYW4gR2lsYmVydCB3cm90ZToNCj4+
+Pj4+ICogUGllcnJpY2sgQm91dmllciAocGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnKSB3
+cm90ZToNCj4+Pj4+PiBIaSBEYXZlLA0KPj4+Pj4+DQo+Pj4+Pj4gT24gNi8xMi8yNCAxNDow
+MiwgRHIuIERhdmlkIEFsYW4gR2lsYmVydCB3cm90ZToNCj4+Pj4+Pj4gKiBBbGV4IEJlbm7D
+qWUgKGFsZXguYmVubmVlQGxpbmFyby5vcmcpIHdyb3RlOg0KPj4+Pj4+Pj4gRnJvbTogUGll
+cnJpY2sgQm91dmllciA8cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPg0KPj4+Pj4+Pj4N
+Cj4+Pj4+Pj4+IFRoaXMgcGx1Z2luIHVzZXMgdGhlIG5ldyB0aW1lIGNvbnRyb2wgaW50ZXJm
+YWNlIHRvIG1ha2UgZGVjaXNpb25zDQo+Pj4+Pj4+PiBhYm91dCB0aGUgc3RhdGUgb2YgdGlt
+ZSBkdXJpbmcgdGhlIGVtdWxhdGlvbi4gVGhlIGFsZ29yaXRobSBpcw0KPj4+Pj4+Pj4gY3Vy
+cmVudGx5IHZlcnkgc2ltcGxlLiBUaGUgdXNlciBzcGVjaWZpZXMgYW4gaXBzIHJhdGUgd2hp
+Y2ggYXBwbGllcw0KPj4+Pj4+Pj4gcGVyIGNvcmUuIElmIHRoZSBjb3JlIHJ1bnMgYWhlYWQg
+b2YgaXRzIGFsbG9jYXRlZCBleGVjdXRpb24gdGltZSB0aGUNCj4+Pj4+Pj4+IHBsdWdpbiBz
+bGVlcHMgZm9yIGEgYml0IHRvIGxldCByZWFsIHRpbWUgY2F0Y2ggdXAuIEVpdGhlciB3YXkg
+dGltZSBpcw0KPj4+Pj4+Pj4gdXBkYXRlZCBmb3IgdGhlIGVtdWxhdGlvbiBhcyBhIGZ1bmN0
+aW9uIG9mIHRvdGFsIGV4ZWN1dGVkIGluc3RydWN0aW9ucw0KPj4+Pj4+Pj4gd2l0aCBzb21l
+IGFkanVzdG1lbnRzIGZvciBjb3JlcyB0aGF0IGlkbGUuDQo+Pj4+Pj4+DQo+Pj4+Pj4+IEEg
+ZmV3IHJhbmRvbSB0aG91Z2h0czoNCj4+Pj4+Pj4gICAgICAgYSkgQXJlIHRoZXJlIGFueSBk
+ZWZpbml0aW9ucyBvZiB3aGF0IGEgcGx1Z2luIHRoYXQgY29udHJvbHMgdGltZQ0KPj4+Pj4+
+PiAgICAgICAgICBzaG91bGQgZG8gd2l0aCBhIGxpdmUgbWlncmF0aW9uPw0KPj4+Pj4+DQo+
+Pj4+Pj4gSXQncyBub3Qgc29tZXRoaW5nIHRoYXQgd2FzIGNvbnNpZGVyZWQgYXMgcGFydCBv
+ZiB0aGlzIHdvcmsuDQo+Pj4+Pg0KPj4+Pj4gVGhhdCdzIE9LLCB0aGUgb25seSB0aGluZyBp
+cyB3ZSBuZWVkIHRvIHN0b3AgYW55b25lIGZyb20gaGl0dGluZyBwcm9ibGVtcw0KPj4+Pj4g
+d2hlbiB0aGV5IGRvbid0IHJlYWxpc2UgaXQncyBub3QgYmVlbiBhZGRyZXNzZWQuDQo+Pj4+
+PiBPbmUgd2F5IG1pZ2h0IGJlIHRvIGFkZCBhIG1pZ3JhdGlvbiBibG9ja2VyOyBzZWUgaW5j
+bHVkZS9taWdyYXRpb24vYmxvY2tlci5oDQo+Pj4+PiB0aGVuIHlvdSBtaWdodCBwcmludCBz
+b21ldGhpbmcgbGlrZSAnTWlncmF0aW9uIG5vdCBhdmFpbGFibGUgZHVlIHRvIHBsdWdpbiAu
+Li4uJw0KPj4+Pj4NCj4+Pj4NCj4+Pj4gU28gYmFzaWNhbGx5LCB3ZSBjb3VsZCBtYWtlIGEg
+Y2FsbCB0byBtaWdyYXRlX2FkZF9ibG9ja2VyKCksIHdoZW4gc29tZW9uZQ0KPj4+PiByZXF1
+ZXN0IHRpbWVfY29udHJvbCB0aHJvdWdoIHBsdWdpbiBBUEk/DQo+Pj4+DQo+Pj4+IElNSE8s
+IGl0J3Mgc29tZXRoaW5nIHRoYXQgc2hvdWxkIGJlIHBhcnQgb2YgcGx1Z2luIEFQSSAoaWYg
+YW55IHBsdWdpbiBjYWxscw0KPj4+PiBxZW11X3BsdWdpbl9yZXF1ZXN0X3RpbWVfY29udHJv
+bCgpKSwgaW5zdGVhZCBvZiB0aGUgcGx1Z2luIGNvZGUgaXRzZWxmLiBUaGlzDQo+Pj4+IHdh
+eSwgYW55IHBsdWdpbiBnZXR0aW5nIHRpbWUgY29udHJvbCBhdXRvbWF0aWNhbGx5IGJsb2Nr
+cyBhbnkgcG90ZW50aWFsDQo+Pj4+IG1pZ3JhdGlvbi4NCj4+PiBOb3RlIG15IHF1ZXN0aW9u
+IGFza2VkIGZvciBhICdhbnkgZGVmaW5pdGlvbnMgb2Ygd2hhdCBhIHBsdWdpbiAuLicgLQ0K
+Pj4+IHNvDQo+Pj4geW91IGNvdWxkIGRlZmluZSBpdCB0aGF0IHdheSwgYW5vdGhlciBvbmUg
+aXMgdG8gdGhpbmsgdGhhdCBpbiB0aGUgZnV0dXJlDQo+Pj4geW91IG1heSBhbGxvdyBpdCBh
+bmQgdGhlIHBsdWdpbiBzb21laG93IGludGVyYWN0cyB3aXRoIG1pZ3JhdGlvbiBub3QgdG8N
+Cj4+PiBjaGFuZ2UgdGltZSBhdCBjZXJ0YWluIG1pZ3JhdGlvbiBwaGFzZXMuDQo+Pj4NCj4+
+DQo+PiBJIHdvdWxkIGJlIGluIGZhdm9yIHRvIGZvcmJpZCB1c2FnZSBmb3Igbm93IGluIHRo
+aXMgY29udGV4dC4gSSdtIG5vdA0KPj4gc3VyZSB3aHkgcGVvcGxlIHdvdWxkIHBsYXkgd2l0
+aCBtaWdyYXRpb24gYW5kIHBsdWdpbnMgZ2VuZXJhbGx5IGF0DQo+PiB0aGlzIHRpbWUgKHRo
+ZXJlIG1pZ2h0IGJlIGV4cGVyaW1lbnRzIG9yIHVzZSBjYXNlcyBJJ20gbm90IGF3YXJlIG9m
+KSwNCj4+IHNvIGEgc2ltcGxlIGJhcnJpZXIgcHJldmVudGluZyB0aGF0IHNlZW1zIG9rLg0K
+Pj4NCj4+IFRoaXMgcGx1Z2luIGlzIHBhcnQgb2YgYW4gZXhwZXJpbWVudCB3aGVyZSB3ZSBp
+bXBsZW1lbnQgYSBxZW11IGZlYXR1cmUNCj4+IChpY291bnQ9YXV0byBpbiB0aGlzIGNhc2Up
+IGJ5IHVzaW5nIHBsdWdpbnMuIElmIGl0IHR1cm5zIGludG8gYQ0KPj4gc3VjY2Vzc2Z1bCB1
+c2FnZSBhbmQgdGhpcyBwbHVnaW4gYmVjb21lcyBwb3B1bGFyLCB3ZSBjYW4gYWx3YXlzIGxp
+ZnQNCj4+IHRoZSBsaW1pdGF0aW9uIGxhdGVyLg0KPj4NCj4+IEBBbGV4LCB3b3VsZCB5b3Ug
+bGlrZSB0byBhZGQgdGhpcyBub3cgKGljb3VudD1hdXRvIGlzIHN0aWxsIG5vdA0KPj4gcmVt
+b3ZlZCBmcm9tIHFlbXUpLCBvciB3YWl0IGZvciBpbnRlZ3JhdGlvbiwgYW5kIGFkZCB0aGlz
+IGFzIGFub3RoZXINCj4+IHBhdGNoPw0KPiANCj4gSSB0aGluayB3ZSBmb2xsb3cgdGhlIGRl
+cHJlY2F0aW9uIHByb2Nlc3Mgc28gb25jZSBpbnRlZ3JhdGVkIHdlIHBvc3QgYQ0KPiBkZXBy
+ZWNhdGlvbiBub3RpY2UgaW46DQo+IA0KPiAgICBodHRwczovL3FlbXUucmVhZHRoZWRvY3Mu
+aW8vZW4vbWFzdGVyL2Fib3V0L2RlcHJlY2F0ZWQuaHRtbA0KPiANCj4gYW5kIHRoZW4gcmVt
+b3ZlIGl0IGFmdGVyIGEgY291cGxlIG9mIHJlbGVhc2VzLg0KPiANCg0KU29ycnksIEkgd2Fz
+IG5vdCBjbGVhci4gSSBtZWFudCBkbyB3ZSBhZGQgYSBibG9ja2VyIGluIGNhc2Ugc29tZW9u
+ZSANCnRyaWVzIHRvIG1pZ3JhdGUgYSB2bSB3aGlsZSB0aGlzIHBsdWdpbiBpcyB1c2VkPw0K

@@ -1,929 +1,184 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1371365ejb;
-        Wed, 19 Jun 2024 05:50:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXTtMpbWN7inkL5yEl7VhLUR3/P36pgwzc72XL4P+2bbdVF63DouAoBAUXGwOMVaHUNlqsO8pFfRZh6UPArD6iQSgsK2uKf
-X-Google-Smtp-Source: AGHT+IHWlinAbRRbrdRBifqQK/r2nr+lztHrtigatngPoT7hSZCKWOUEe1vVQHmX9YGT5nm8PRnH
-X-Received: by 2002:a5b:b05:0:b0:dfa:ff74:f24f with SMTP id 3f1490d57ef6-e02be16fd06mr2874925276.28.1718801432633;
-        Wed, 19 Jun 2024 05:50:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718801432; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1446399ejb;
+        Wed, 19 Jun 2024 08:06:28 -0700 (PDT)
+X-Received: by 2002:a17:902:c951:b0:1f7:12f3:b975 with SMTP id d9443c01a7336-1f9aa4508f1mr33213115ad.43.1718809588203;
+        Wed, 19 Jun 2024 08:06:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718809588; cv=none;
         d=google.com; s=arc-20160816;
-        b=1Dqbk7FotOSAObhJJ4kkN7IYFFMHcoEB2LjkuYZNpME9p1fpyeMaJbRnyZo5xaoQQo
-         Bi4JSXrVWky/cfkpYnwYfXvyEyXeMqaDeslGHGXEue+//cOdIv3QJNRqph4IWMwmxfJM
-         Bgv+4MTaYbexi4nSNYPPsnymnfptTiMM5vcQrGAE5XZZalVavUAM1vVDoNyOJCNZdUs5
-         ulw+q1njrV4c7n2aMY98GecI+sBwM8Ukt6FY8MjNyNKcWY/UXx+UC0Mf6innLqNHn0Yc
-         uBCFs0nRg0JITgp8fYY6qQbmfmxsGDEiAPx9+pIjMat6gmREfugq012MqMQbNxSD+uCO
-         H05w==
+        b=BnGD6/3eZWDO6tGMbHKhXSy7dP04Ua+WA2Gxw4RKPVxuNhj4h8WuhEJ1D3kj7jULxh
+         Pxj4xA8+KSsD04+IsQ0KpeIwfqmmlDYGC3Uhv3KLIAj0Rh79vHkQ2A5OZX/9cCBR/PXA
+         UOxHLLSIbt3tGl+ypGtqLYduPuMX4kSMvF+B2BJsG9Yrg0B71CfTpUl3WQRpI/NEO+RB
+         Iv+ZnMZgpr4bKnOan9rvXNBRrc3z6aQSLDeyk8KzEmJEBTKnXA4zMM1JXpYjsIHM3laO
+         8k3LUmd7v4oO0M44jLB2siOO92STiFSN3HGqyHWANUGfdj7ubBcA8SAOcl0+3HQl4LyP
+         2fqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=7LS7O9dFBi9P9NXcnsBVdZ2SR50qoYr4kXRSECVup2M=;
-        fh=/B4jBORy0vwqdm2BkteD4YJEAizsMgGaiVEt086pz30=;
-        b=BCZWHXYynWsBBfl5XWD+JA2RwMzjDvdCJAaoc/1S4TDOGGZBDqsPYgci0W0qrDl25z
-         YrltEbAQO2SSN5HFNPZ0QE7RJw7MGfteFUFyxGmb67AN1N6hGsao0OMqrRfpH8MC4oyu
-         yS5KWpozi/46MYaV/2TtkWgjS1WZnYNnyjBLPIEvGAiT4yU/PN9NRjoE4IM5InXqwD+Z
-         HTs46Kd60frfnYpyaHpEoAxDePJTxxivy1+xIsgKtb2mP5IDPtAPHtEgu8RiZBnvhkri
-         gY/485TxmGgvd0aXsbDU/I9ZHHNYs+MgcVAdhCNmTwtHJW4hN94LmCtXlPUaA4PNE+db
-         ZIwA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=53ccK+CjnnoeqgwrzL2MP2JpY9KmQHqgB9vFIPTJVYc=;
+        fh=OhY8Qz5Jy2LMvlSPrne2bIxXcEjgBukkEgQOhr7vfHQ=;
+        b=Bcj8S7hHyNt67t1M8fEKJoi3yEyq20xPSD0O2BALLdtD/vWEYaZBAwwR9ksYHbpM+I
+         tf78qXTymQPWaSHs6l6LUD6c67gQG9cJbWr9EaER4EAfzwd+TeV4F4CrFVHkhq7dO2qh
+         uhU+otBlPnRQQAaDvwCNEtlGMx78HZMGXcsMUf2F7XtuovMqj1sCu6k76wwoho8cyvLT
+         qb7fzkKrsLTKyA834SBnPNCZGPxhCgQM1A2EsCXO1L05OJCqJEb+u4tct5w4tt0GCO0f
+         LJ/o9gy0AgQja+b7qcvHsdyOtF9dodsmjiJuZ9hMfNihabHtnaV8Yg/e3BNlOU7t4Fqe
+         BsNA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FzoSGmDi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LECVkpXW;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-441f3128083si154388521cf.779.2024.06.19.05.50.32
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-1f9a0ee5857sor18250445ad.7.2024.06.19.08.06.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Jun 2024 05:50:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 19 Jun 2024 08:06:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FzoSGmDi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LECVkpXW;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sJuka-0005Zr-GH; Wed, 19 Jun 2024 08:49:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sJukY-0005ZF-IE
- for qemu-arm@nongnu.org; Wed, 19 Jun 2024 08:49:19 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sJukV-0008Mn-Ep
- for qemu-arm@nongnu.org; Wed, 19 Jun 2024 08:49:18 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-57d07673185so1220406a12.1
- for <qemu-arm@nongnu.org>; Wed, 19 Jun 2024 05:49:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718801354; x=1719406154; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7LS7O9dFBi9P9NXcnsBVdZ2SR50qoYr4kXRSECVup2M=;
- b=FzoSGmDixW/9NjYRB2i0eamBEKWbQjnJyfqu9WX8Poan0UMuBvTzfiVEXPIbUmo32T
- 56sB18je4J+AsJ/uHX6gFbbbRAfeBYjIKjVDIN3b+6o+si7sCPb/euJmhOm5S9r0MZdO
- MJqvvM+9cPMHHmN+nWYDlm5XWbhl9WFhdDQ3S9vHLgzrq81vwSxYHDmlFTuaFL8AjUPe
- Mly3/g7BU0PohJ4KvBLTGrw4rGHuWP67fDfziefDCeKy1E/VulWbdXdEvqKDBe+aOShb
- yzW6Z5Qhn5/95Kq37M5LJOMOpXY26Nm16twC6wXgqLJ+H/bxVXMnA2gZQ/mzIUOXg9Bp
- MRGQ==
+        d=linaro.org; s=google; t=1718809586; x=1719414386; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=53ccK+CjnnoeqgwrzL2MP2JpY9KmQHqgB9vFIPTJVYc=;
+        b=LECVkpXWBELd4luGNrrlansiDxom/GsnROH3W/axNXfy5PTBpojoei1se/hgk1y6gV
+         eM0MCrrvwSsgjczelzkdc3gml4xYkL1xK8dyhTv5YJx1QqxCCF2HUH7GYufooUkfPUvI
+         52/dZ0J3zAF+YEqM7SAj3TUEFctJqtMvNiefwPdt++4hji42q4ZvzqiDDZK+46SUxcS/
+         lZywrwsnAZ0CO3UtKu4XNaUIQ5bwKcIj1TISbjH4VTgxD5jF1kjWO5yU2qqbheU+VoqH
+         68iFv3n+nQlNEO2OG6J+ro2PQY01k0Rs8/SC4alBAG+lqVdOmZdk7P/jUYv9BF1Irfpl
+         TbZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718801354; x=1719406154;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7LS7O9dFBi9P9NXcnsBVdZ2SR50qoYr4kXRSECVup2M=;
- b=UKTzf9Lv4uRFy4Ur8X+f7glLdCj8nyIHU3RUEW+SxBvqZcqUpiV2uf5qf4SbEjXVjz
- xZRUslE/gn2ZtAv1ojTDc/SE/6lZjH0JTdWFMzfgPuE+i39DRa3D0uw630WOLXWNg+L6
- j1HYXcn81NaXidNyjRjoL6HRbTa0iCmxjNFsF3PkgTcQpNCEvEM7npN5ODIgKzKHUvkC
- GhBC009KLCX12TweWdpyqm6NafOfSTlKVXUKd+Cgl2ry4Rh7VHxSUNocqqQZXjZov5PO
- zPTLy0WWQ4eUrsyXVlmJ0C0HFv9+mpC8cTboG+KoylR0ke6A79cg1U/sevwwnVaxqJbO
- 8ULw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVf/NRPd1m7XvkeANd/tQbIntapls8GtF1mKWEFjt1eY+48dTdzMdtnn/I15YqipN8FnS8QR9pPV59nSZWuHBU3Gg59
-X-Gm-Message-State: AOJu0YwD1Txs3Xeq97W4rahUmhdfI34YL8akcXTyDBOEyjXoH3QA8xvF
- GHfG95wD2rLqWEicRvEc+5UfnwRMRSFUIJFAs8deT6jsO8aNRVP39OzngKYUv/w=
-X-Received: by 2002:a50:8719:0:b0:57c:571f:e52d with SMTP id
- 4fb4d7f45d1cf-57d07ebeaaamr1571053a12.36.1718801353752; 
- Wed, 19 Jun 2024 05:49:13 -0700 (PDT)
-Received: from m1x-phil.lan ([176.176.133.105])
- by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-57cb72da371sm8294617a12.24.2024.06.19.05.49.11
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 19 Jun 2024 05:49:12 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
- Anton Johansson <anjo@rev.ng>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/2] target/arm: Merge gdbstub64.c within gdbstub.c
-Date: Wed, 19 Jun 2024 14:49:02 +0200
-Message-ID: <20240619124903.56898-2-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240619124903.56898-1-philmd@linaro.org>
-References: <20240619124903.56898-1-philmd@linaro.org>
+        d=1e100.net; s=20230601; t=1718809586; x=1719414386;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=53ccK+CjnnoeqgwrzL2MP2JpY9KmQHqgB9vFIPTJVYc=;
+        b=Tg5O4id/5V6EcTSOeBTim7znkTrT/nfXWVqLFhlWBKxUC1C3ApyQuGMbBgQN1/TtHp
+         FOdZI/tazKZQgbFg9MKtnU7Fgdp1xkpEQwTgG+b/siRiKDJq5Oa9lfI94JYB2xUUyxTe
+         lhabbwoECyyrKUrX01g5HWV4QM0mbcXh7d4UmJ9iMYE3fYHXE/whfoBoSBtBJWnSIkz5
+         WdTabzEj0jpI7hYqJt1uJ6L/LXGcAZ85nSHRnkiGHzkD1/Q4WJKdMo4n4cts25Ow7L5e
+         sVyG6CPVtJrodh376Fn3zWbfHCBHbbb3+W2NnkoComWBWRCB69ebwZNrXk/HsouFkJjj
+         gB1A==
+X-Gm-Message-State: AOJu0YxE50kbP4LEK5sjw8bO67XnOl6uTzrOz0iyubu5CDx3g1Wxv1J/
+	4fy3Q3ulb5bQNSL3uCN1QrjyLQJ12I2tJCHCtFFoSSyrcLiU9Lkvd66Jz/DZVm1rxWHBpiwwVZO
+	t+aiMpQ==
+X-Google-Smtp-Source: AGHT+IEKSMPfsUN7rJwC84JD0vEhzz1T9Cqgy0kPSP6eSjrW7wTRT3cMKKmdmSZQ03B2BtAQgWO1yg==
+X-Received: by 2002:a17:902:dac6:b0:1f7:ff:b477 with SMTP id d9443c01a7336-1f9aa44fc25mr23739125ad.55.1718809583896;
+        Wed, 19 Jun 2024 08:06:23 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from ?IPV6:2604:3d08:9384:1d00::2193? ([2604:3d08:9384:1d00::2193])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f855e55e48sm118123385ad.37.2024.06.19.08.06.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 19 Jun 2024 08:06:23 -0700 (PDT)
+Message-ID: <b2975c54-2752-4375-a5ad-13a21f8dde14@linaro.org>
+Date: Wed, 19 Jun 2024 08:06:21 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XyQV4t6F0lin
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 9/9] contrib/plugins: add ips plugin example for cost
+ modeling
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: "Dr. David Alan Gilbert" <dave@treblig.org>, qemu-devel@nongnu.org,
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mark Burton <mburton@qti.qualcomm.com>, qemu-s390x@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+ Laurent Vivier <lvivier@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, Nicholas Piggin <npiggin@gmail.com>,
+ Marco Liebel <mliebel@qti.qualcomm.com>, Thomas Huth <thuth@redhat.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>, qemu-ppc@nongnu.org,
+ Mahmoud Mandour <ma.mandourr@gmail.com>, Cameron Esfahani <dirty@apple.com>,
+ Jamie Iles <quic_jiles@quicinc.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20240612153508.1532940-1-alex.bennee@linaro.org>
+ <20240612153508.1532940-10-alex.bennee@linaro.org>
+ <ZmoM2Sac97PdXWcC@gallifrey>
+ <777e1b13-9a4f-4c32-9ff7-9cedf7417695@linaro.org>
+ <Zmy9g1U1uP1Vhx9N@gallifrey>
+ <616df287-a167-4a05-8f08-70a78a544929@linaro.org>
+ <ZnCi4hcyR8wMMnK4@gallifrey>
+ <4e5fded0-d1a9-4494-a66d-6488ce1bcb33@linaro.org>
+ <874j9qefv0.fsf@draig.linaro.org>
+ <78003bee-08f7-4860-a675-b09721955e60@linaro.org>
+ <87jzilcleh.fsf@draig.linaro.org>
+Content-Language: en-US
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <87jzilcleh.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+X-TUID: rsSRkgb/gLKu
 
-Simple code movement adding #ifdef'ry on TARGET_AARCH64.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/gdbstub.c   | 363 ++++++++++++++++++++++++++++++++++++++
- target/arm/gdbstub64.c | 383 -----------------------------------------
- target/arm/meson.build |   1 -
- 3 files changed, 363 insertions(+), 384 deletions(-)
- delete mode 100644 target/arm/gdbstub64.c
-
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index a3bb73cfa7..508b3d8116 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -18,6 +18,7 @@
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/log.h"
- #include "cpu.h"
- #include "exec/gdbstub.h"
- #include "gdbstub/helpers.h"
-@@ -310,6 +311,368 @@ static GDBFeature *arm_gen_dynamic_sysreg_feature(CPUState *cs, int base_reg)
-     return &cpu->dyn_sysreg_feature.desc;
- }
- 
-+#ifdef TARGET_AARCH64
-+int aarch64_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    if (n < 31) {
-+        /* Core integer register.  */
-+        return gdb_get_reg64(mem_buf, env->xregs[n]);
-+    }
-+    switch (n) {
-+    case 31:
-+        return gdb_get_reg64(mem_buf, env->xregs[31]);
-+    case 32:
-+        return gdb_get_reg64(mem_buf, env->pc);
-+    case 33:
-+        return gdb_get_reg32(mem_buf, pstate_read(env));
-+    }
-+    /* Unknown register.  */
-+    return 0;
-+}
-+
-+int aarch64_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    uint64_t tmp;
-+
-+    tmp = ldq_p(mem_buf);
-+
-+    if (n < 31) {
-+        /* Core integer register.  */
-+        env->xregs[n] = tmp;
-+        return 8;
-+    }
-+    switch (n) {
-+    case 31:
-+        env->xregs[31] = tmp;
-+        return 8;
-+    case 32:
-+        env->pc = tmp;
-+        return 8;
-+    case 33:
-+        /* CPSR */
-+        pstate_write(env, tmp);
-+        return 4;
-+    }
-+    /* Unknown register.  */
-+    return 0;
-+}
-+
-+int aarch64_gdb_get_fpu_reg(CPUState *cs, GByteArray *buf, int reg)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    switch (reg) {
-+    case 0 ... 31:
-+    {
-+        /* 128 bit FP register - quads are in LE order */
-+        uint64_t *q = aa64_vfp_qreg(env, reg);
-+        return gdb_get_reg128(buf, q[1], q[0]);
-+    }
-+    case 32:
-+        /* FPSR */
-+        return gdb_get_reg32(buf, vfp_get_fpsr(env));
-+    case 33:
-+        /* FPCR */
-+        return gdb_get_reg32(buf, vfp_get_fpcr(env));
-+    default:
-+        return 0;
-+    }
-+}
-+
-+int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t *buf, int reg)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    switch (reg) {
-+    case 0 ... 31:
-+        /* 128 bit FP register */
-+        {
-+            uint64_t *q = aa64_vfp_qreg(env, reg);
-+            q[0] = ldq_le_p(buf);
-+            q[1] = ldq_le_p(buf + 8);
-+            return 16;
-+        }
-+    case 32:
-+        /* FPSR */
-+        vfp_set_fpsr(env, ldl_p(buf));
-+        return 4;
-+    case 33:
-+        /* FPCR */
-+        vfp_set_fpcr(env, ldl_p(buf));
-+        return 4;
-+    default:
-+        return 0;
-+    }
-+}
-+
-+int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    switch (reg) {
-+    /* The first 32 registers are the zregs */
-+    case 0 ... 31:
-+    {
-+        int vq, len = 0;
-+        for (vq = 0; vq < cpu->sve_max_vq; vq++) {
-+            len += gdb_get_reg128(buf,
-+                                  env->vfp.zregs[reg].d[vq * 2 + 1],
-+                                  env->vfp.zregs[reg].d[vq * 2]);
-+        }
-+        return len;
-+    }
-+    case 32:
-+        return gdb_get_reg32(buf, vfp_get_fpsr(env));
-+    case 33:
-+        return gdb_get_reg32(buf, vfp_get_fpcr(env));
-+    /* then 16 predicates and the ffr */
-+    case 34 ... 50:
-+    {
-+        int preg = reg - 34;
-+        int vq, len = 0;
-+        for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
-+            len += gdb_get_reg64(buf, env->vfp.pregs[preg].p[vq / 4]);
-+        }
-+        return len;
-+    }
-+    case 51:
-+    {
-+        /*
-+         * We report in Vector Granules (VG) which is 64bit in a Z reg
-+         * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
-+         */
-+        int vq = sve_vqm1_for_el(env, arm_current_el(env)) + 1;
-+        return gdb_get_reg64(buf, vq * 2);
-+    }
-+    default:
-+        /* gdbstub asked for something out our range */
-+        qemu_log_mask(LOG_UNIMP, "%s: out of range register %d", __func__, reg);
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    /* The first 32 registers are the zregs */
-+    switch (reg) {
-+    /* The first 32 registers are the zregs */
-+    case 0 ... 31:
-+    {
-+        int vq, len = 0;
-+        uint64_t *p = (uint64_t *) buf;
-+        for (vq = 0; vq < cpu->sve_max_vq; vq++) {
-+            env->vfp.zregs[reg].d[vq * 2 + 1] = *p++;
-+            env->vfp.zregs[reg].d[vq * 2] = *p++;
-+            len += 16;
-+        }
-+        return len;
-+    }
-+    case 32:
-+        vfp_set_fpsr(env, *(uint32_t *)buf);
-+        return 4;
-+    case 33:
-+        vfp_set_fpcr(env, *(uint32_t *)buf);
-+        return 4;
-+    case 34 ... 50:
-+    {
-+        int preg = reg - 34;
-+        int vq, len = 0;
-+        uint64_t *p = (uint64_t *) buf;
-+        for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
-+            env->vfp.pregs[preg].p[vq / 4] = *p++;
-+            len += 8;
-+        }
-+        return len;
-+    }
-+    case 51:
-+        /* cannot set vg via gdbstub */
-+        return 0;
-+    default:
-+        /* gdbstub asked for something out our range */
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    switch (reg) {
-+    case 0: /* pauth_dmask */
-+    case 1: /* pauth_cmask */
-+    case 2: /* pauth_dmask_high */
-+    case 3: /* pauth_cmask_high */
-+        /*
-+         * Note that older versions of this feature only contained
-+         * pauth_{d,c}mask, for use with Linux user processes, and
-+         * thus exclusively in the low half of the address space.
-+         *
-+         * To support system mode, and to debug kernels, two new regs
-+         * were added to cover the high half of the address space.
-+         * For the purpose of pauth_ptr_mask, we can use any well-formed
-+         * address within the address space half -- here, 0 and -1.
-+         */
-+        {
-+            bool is_data = !(reg & 1);
-+            bool is_high = reg & 2;
-+            ARMMMUIdx mmu_idx = arm_stage1_mmu_idx(env);
-+            ARMVAParameters param;
-+
-+            param = aa64_va_parameters(env, -is_high, mmu_idx, is_data, false);
-+            return gdb_get_reg64(buf, pauth_ptr_mask(param));
-+        }
-+    default:
-+        return 0;
-+    }
-+}
-+
-+int aarch64_gdb_set_pauth_reg(CPUState *cs, uint8_t *buf, int reg)
-+{
-+    /* All pseudo registers are read-only. */
-+    return 0;
-+}
-+
-+static void output_vector_union_type(GDBFeatureBuilder *builder, int reg_width,
-+                                     const char *name)
-+{
-+    struct TypeSize {
-+        const char *gdb_type;
-+        short size;
-+        char sz, suffix;
-+    };
-+
-+    static const struct TypeSize vec_lanes[] = {
-+        /* quads */
-+        { "uint128", 128, 'q', 'u' },
-+        { "int128", 128, 'q', 's' },
-+        /* 64 bit */
-+        { "ieee_double", 64, 'd', 'f' },
-+        { "uint64", 64, 'd', 'u' },
-+        { "int64", 64, 'd', 's' },
-+        /* 32 bit */
-+        { "ieee_single", 32, 's', 'f' },
-+        { "uint32", 32, 's', 'u' },
-+        { "int32", 32, 's', 's' },
-+        /* 16 bit */
-+        { "ieee_half", 16, 'h', 'f' },
-+        { "uint16", 16, 'h', 'u' },
-+        { "int16", 16, 'h', 's' },
-+        /* bytes */
-+        { "uint8", 8, 'b', 'u' },
-+        { "int8", 8, 'b', 's' },
-+    };
-+
-+    static const char suf[] = { 'b', 'h', 's', 'd', 'q' };
-+    int i, j;
-+
-+    /* First define types and totals in a whole VL */
-+    for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
-+        gdb_feature_builder_append_tag(
-+            builder, "<vector id=\"%s%c%c\" type=\"%s\" count=\"%d\"/>",
-+            name, vec_lanes[i].sz, vec_lanes[i].suffix,
-+            vec_lanes[i].gdb_type, reg_width / vec_lanes[i].size);
-+    }
-+
-+    /*
-+     * Now define a union for each size group containing unsigned and
-+     * signed and potentially float versions of each size from 128 to
-+     * 8 bits.
-+     */
-+    for (i = 0; i < ARRAY_SIZE(suf); i++) {
-+        int bits = 8 << i;
-+
-+        gdb_feature_builder_append_tag(builder, "<union id=\"%sn%c\">",
-+                                       name, suf[i]);
-+        for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
-+            if (vec_lanes[j].size == bits) {
-+                gdb_feature_builder_append_tag(
-+                    builder, "<field name=\"%c\" type=\"%s%c%c\"/>",
-+                    vec_lanes[j].suffix, name,
-+                    vec_lanes[j].sz, vec_lanes[j].suffix);
-+            }
-+        }
-+        gdb_feature_builder_append_tag(builder, "</union>");
-+    }
-+
-+    /* And now the final union of unions */
-+    gdb_feature_builder_append_tag(builder, "<union id=\"%s\">", name);
-+    for (i = ARRAY_SIZE(suf) - 1; i >= 0; i--) {
-+        gdb_feature_builder_append_tag(builder,
-+                                       "<field name=\"%c\" type=\"%sn%c\"/>",
-+                                       suf[i], name, suf[i]);
-+    }
-+    gdb_feature_builder_append_tag(builder, "</union>");
-+}
-+
-+GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int base_reg)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    int reg_width = cpu->sve_max_vq * 128;
-+    int pred_width = cpu->sve_max_vq * 16;
-+    GDBFeatureBuilder builder;
-+    char *name;
-+    int reg = 0;
-+    int i;
-+
-+    gdb_feature_builder_init(&builder, &cpu->dyn_svereg_feature.desc,
-+                             "org.gnu.gdb.aarch64.sve", "sve-registers.xml",
-+                             base_reg);
-+
-+    /* Create the vector union type. */
-+    output_vector_union_type(&builder, reg_width, "svev");
-+
-+    /* Create the predicate vector type. */
-+    gdb_feature_builder_append_tag(
-+        &builder, "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
-+        pred_width / 8);
-+
-+    /* Define the vector registers. */
-+    for (i = 0; i < 32; i++) {
-+        name = g_strdup_printf("z%d", i);
-+        gdb_feature_builder_append_reg(&builder, name, reg_width, reg++,
-+                                       "svev", NULL);
-+    }
-+
-+    /* fpscr & status registers */
-+    gdb_feature_builder_append_reg(&builder, "fpsr", 32, reg++,
-+                                   "int", "float");
-+    gdb_feature_builder_append_reg(&builder, "fpcr", 32, reg++,
-+                                   "int", "float");
-+
-+    /* Define the predicate registers. */
-+    for (i = 0; i < 16; i++) {
-+        name = g_strdup_printf("p%d", i);
-+        gdb_feature_builder_append_reg(&builder, name, pred_width, reg++,
-+                                       "svep", NULL);
-+    }
-+    gdb_feature_builder_append_reg(&builder, "ffr", pred_width, reg++,
-+                                   "svep", "vector");
-+
-+    /* Define the vector length pseudo-register. */
-+    gdb_feature_builder_append_reg(&builder, "vg", 64, reg++, "int", NULL);
-+
-+    gdb_feature_builder_end(&builder);
-+
-+    return &cpu->dyn_svereg_feature.desc;
-+}
-+#endif
-+
- #ifdef CONFIG_TCG
- typedef enum {
-     M_SYSREG_MSP,
-diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-deleted file mode 100644
-index caa31ff3fa..0000000000
---- a/target/arm/gdbstub64.c
-+++ /dev/null
-@@ -1,383 +0,0 @@
--/*
-- * ARM gdb server stub: AArch64 specific functions.
-- *
-- * Copyright (c) 2013 SUSE LINUX Products GmbH
-- *
-- * This library is free software; you can redistribute it and/or
-- * modify it under the terms of the GNU Lesser General Public
-- * License as published by the Free Software Foundation; either
-- * version 2.1 of the License, or (at your option) any later version.
-- *
-- * This library is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * Lesser General Public License for more details.
-- *
-- * You should have received a copy of the GNU Lesser General Public
-- * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-- */
--#include "qemu/osdep.h"
--#include "qemu/log.h"
--#include "cpu.h"
--#include "internals.h"
--#include "gdbstub/helpers.h"
--
--int aarch64_cpu_gdb_read_register(CPUState *cs, GByteArray *mem_buf, int n)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--
--    if (n < 31) {
--        /* Core integer register.  */
--        return gdb_get_reg64(mem_buf, env->xregs[n]);
--    }
--    switch (n) {
--    case 31:
--        return gdb_get_reg64(mem_buf, env->xregs[31]);
--    case 32:
--        return gdb_get_reg64(mem_buf, env->pc);
--    case 33:
--        return gdb_get_reg32(mem_buf, pstate_read(env));
--    }
--    /* Unknown register.  */
--    return 0;
--}
--
--int aarch64_cpu_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--    uint64_t tmp;
--
--    tmp = ldq_p(mem_buf);
--
--    if (n < 31) {
--        /* Core integer register.  */
--        env->xregs[n] = tmp;
--        return 8;
--    }
--    switch (n) {
--    case 31:
--        env->xregs[31] = tmp;
--        return 8;
--    case 32:
--        env->pc = tmp;
--        return 8;
--    case 33:
--        /* CPSR */
--        pstate_write(env, tmp);
--        return 4;
--    }
--    /* Unknown register.  */
--    return 0;
--}
--
--int aarch64_gdb_get_fpu_reg(CPUState *cs, GByteArray *buf, int reg)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--
--    switch (reg) {
--    case 0 ... 31:
--    {
--        /* 128 bit FP register - quads are in LE order */
--        uint64_t *q = aa64_vfp_qreg(env, reg);
--        return gdb_get_reg128(buf, q[1], q[0]);
--    }
--    case 32:
--        /* FPSR */
--        return gdb_get_reg32(buf, vfp_get_fpsr(env));
--    case 33:
--        /* FPCR */
--        return gdb_get_reg32(buf, vfp_get_fpcr(env));
--    default:
--        return 0;
--    }
--}
--
--int aarch64_gdb_set_fpu_reg(CPUState *cs, uint8_t *buf, int reg)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--
--    switch (reg) {
--    case 0 ... 31:
--        /* 128 bit FP register */
--        {
--            uint64_t *q = aa64_vfp_qreg(env, reg);
--            q[0] = ldq_le_p(buf);
--            q[1] = ldq_le_p(buf + 8);
--            return 16;
--        }
--    case 32:
--        /* FPSR */
--        vfp_set_fpsr(env, ldl_p(buf));
--        return 4;
--    case 33:
--        /* FPCR */
--        vfp_set_fpcr(env, ldl_p(buf));
--        return 4;
--    default:
--        return 0;
--    }
--}
--
--int aarch64_gdb_get_sve_reg(CPUState *cs, GByteArray *buf, int reg)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--
--    switch (reg) {
--    /* The first 32 registers are the zregs */
--    case 0 ... 31:
--    {
--        int vq, len = 0;
--        for (vq = 0; vq < cpu->sve_max_vq; vq++) {
--            len += gdb_get_reg128(buf,
--                                  env->vfp.zregs[reg].d[vq * 2 + 1],
--                                  env->vfp.zregs[reg].d[vq * 2]);
--        }
--        return len;
--    }
--    case 32:
--        return gdb_get_reg32(buf, vfp_get_fpsr(env));
--    case 33:
--        return gdb_get_reg32(buf, vfp_get_fpcr(env));
--    /* then 16 predicates and the ffr */
--    case 34 ... 50:
--    {
--        int preg = reg - 34;
--        int vq, len = 0;
--        for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
--            len += gdb_get_reg64(buf, env->vfp.pregs[preg].p[vq / 4]);
--        }
--        return len;
--    }
--    case 51:
--    {
--        /*
--         * We report in Vector Granules (VG) which is 64bit in a Z reg
--         * while the ZCR works in Vector Quads (VQ) which is 128bit chunks.
--         */
--        int vq = sve_vqm1_for_el(env, arm_current_el(env)) + 1;
--        return gdb_get_reg64(buf, vq * 2);
--    }
--    default:
--        /* gdbstub asked for something out our range */
--        qemu_log_mask(LOG_UNIMP, "%s: out of range register %d", __func__, reg);
--        break;
--    }
--
--    return 0;
--}
--
--int aarch64_gdb_set_sve_reg(CPUState *cs, uint8_t *buf, int reg)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--
--    /* The first 32 registers are the zregs */
--    switch (reg) {
--    /* The first 32 registers are the zregs */
--    case 0 ... 31:
--    {
--        int vq, len = 0;
--        uint64_t *p = (uint64_t *) buf;
--        for (vq = 0; vq < cpu->sve_max_vq; vq++) {
--            env->vfp.zregs[reg].d[vq * 2 + 1] = *p++;
--            env->vfp.zregs[reg].d[vq * 2] = *p++;
--            len += 16;
--        }
--        return len;
--    }
--    case 32:
--        vfp_set_fpsr(env, *(uint32_t *)buf);
--        return 4;
--    case 33:
--        vfp_set_fpcr(env, *(uint32_t *)buf);
--        return 4;
--    case 34 ... 50:
--    {
--        int preg = reg - 34;
--        int vq, len = 0;
--        uint64_t *p = (uint64_t *) buf;
--        for (vq = 0; vq < cpu->sve_max_vq; vq = vq + 4) {
--            env->vfp.pregs[preg].p[vq / 4] = *p++;
--            len += 8;
--        }
--        return len;
--    }
--    case 51:
--        /* cannot set vg via gdbstub */
--        return 0;
--    default:
--        /* gdbstub asked for something out our range */
--        break;
--    }
--
--    return 0;
--}
--
--int aarch64_gdb_get_pauth_reg(CPUState *cs, GByteArray *buf, int reg)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--
--    switch (reg) {
--    case 0: /* pauth_dmask */
--    case 1: /* pauth_cmask */
--    case 2: /* pauth_dmask_high */
--    case 3: /* pauth_cmask_high */
--        /*
--         * Note that older versions of this feature only contained
--         * pauth_{d,c}mask, for use with Linux user processes, and
--         * thus exclusively in the low half of the address space.
--         *
--         * To support system mode, and to debug kernels, two new regs
--         * were added to cover the high half of the address space.
--         * For the purpose of pauth_ptr_mask, we can use any well-formed
--         * address within the address space half -- here, 0 and -1.
--         */
--        {
--            bool is_data = !(reg & 1);
--            bool is_high = reg & 2;
--            ARMMMUIdx mmu_idx = arm_stage1_mmu_idx(env);
--            ARMVAParameters param;
--
--            param = aa64_va_parameters(env, -is_high, mmu_idx, is_data, false);
--            return gdb_get_reg64(buf, pauth_ptr_mask(param));
--        }
--    default:
--        return 0;
--    }
--}
--
--int aarch64_gdb_set_pauth_reg(CPUState *cs, uint8_t *buf, int reg)
--{
--    /* All pseudo registers are read-only. */
--    return 0;
--}
--
--static void output_vector_union_type(GDBFeatureBuilder *builder, int reg_width,
--                                     const char *name)
--{
--    struct TypeSize {
--        const char *gdb_type;
--        short size;
--        char sz, suffix;
--    };
--
--    static const struct TypeSize vec_lanes[] = {
--        /* quads */
--        { "uint128", 128, 'q', 'u' },
--        { "int128", 128, 'q', 's' },
--        /* 64 bit */
--        { "ieee_double", 64, 'd', 'f' },
--        { "uint64", 64, 'd', 'u' },
--        { "int64", 64, 'd', 's' },
--        /* 32 bit */
--        { "ieee_single", 32, 's', 'f' },
--        { "uint32", 32, 's', 'u' },
--        { "int32", 32, 's', 's' },
--        /* 16 bit */
--        { "ieee_half", 16, 'h', 'f' },
--        { "uint16", 16, 'h', 'u' },
--        { "int16", 16, 'h', 's' },
--        /* bytes */
--        { "uint8", 8, 'b', 'u' },
--        { "int8", 8, 'b', 's' },
--    };
--
--    static const char suf[] = { 'b', 'h', 's', 'd', 'q' };
--    int i, j;
--
--    /* First define types and totals in a whole VL */
--    for (i = 0; i < ARRAY_SIZE(vec_lanes); i++) {
--        gdb_feature_builder_append_tag(
--            builder, "<vector id=\"%s%c%c\" type=\"%s\" count=\"%d\"/>",
--            name, vec_lanes[i].sz, vec_lanes[i].suffix,
--            vec_lanes[i].gdb_type, reg_width / vec_lanes[i].size);
--    }
--
--    /*
--     * Now define a union for each size group containing unsigned and
--     * signed and potentially float versions of each size from 128 to
--     * 8 bits.
--     */
--    for (i = 0; i < ARRAY_SIZE(suf); i++) {
--        int bits = 8 << i;
--
--        gdb_feature_builder_append_tag(builder, "<union id=\"%sn%c\">",
--                                       name, suf[i]);
--        for (j = 0; j < ARRAY_SIZE(vec_lanes); j++) {
--            if (vec_lanes[j].size == bits) {
--                gdb_feature_builder_append_tag(
--                    builder, "<field name=\"%c\" type=\"%s%c%c\"/>",
--                    vec_lanes[j].suffix, name,
--                    vec_lanes[j].sz, vec_lanes[j].suffix);
--            }
--        }
--        gdb_feature_builder_append_tag(builder, "</union>");
--    }
--
--    /* And now the final union of unions */
--    gdb_feature_builder_append_tag(builder, "<union id=\"%s\">", name);
--    for (i = ARRAY_SIZE(suf) - 1; i >= 0; i--) {
--        gdb_feature_builder_append_tag(builder,
--                                       "<field name=\"%c\" type=\"%sn%c\"/>",
--                                       suf[i], name, suf[i]);
--    }
--    gdb_feature_builder_append_tag(builder, "</union>");
--}
--
--GDBFeature *arm_gen_dynamic_svereg_feature(CPUState *cs, int base_reg)
--{
--    ARMCPU *cpu = ARM_CPU(cs);
--    int reg_width = cpu->sve_max_vq * 128;
--    int pred_width = cpu->sve_max_vq * 16;
--    GDBFeatureBuilder builder;
--    char *name;
--    int reg = 0;
--    int i;
--
--    gdb_feature_builder_init(&builder, &cpu->dyn_svereg_feature.desc,
--                             "org.gnu.gdb.aarch64.sve", "sve-registers.xml",
--                             base_reg);
--
--    /* Create the vector union type. */
--    output_vector_union_type(&builder, reg_width, "svev");
--
--    /* Create the predicate vector type. */
--    gdb_feature_builder_append_tag(
--        &builder, "<vector id=\"svep\" type=\"uint8\" count=\"%d\"/>",
--        pred_width / 8);
--
--    /* Define the vector registers. */
--    for (i = 0; i < 32; i++) {
--        name = g_strdup_printf("z%d", i);
--        gdb_feature_builder_append_reg(&builder, name, reg_width, reg++,
--                                       "svev", NULL);
--    }
--
--    /* fpscr & status registers */
--    gdb_feature_builder_append_reg(&builder, "fpsr", 32, reg++,
--                                   "int", "float");
--    gdb_feature_builder_append_reg(&builder, "fpcr", 32, reg++,
--                                   "int", "float");
--
--    /* Define the predicate registers. */
--    for (i = 0; i < 16; i++) {
--        name = g_strdup_printf("p%d", i);
--        gdb_feature_builder_append_reg(&builder, name, pred_width, reg++,
--                                       "svep", NULL);
--    }
--    gdb_feature_builder_append_reg(&builder, "ffr", pred_width, reg++,
--                                   "svep", "vector");
--
--    /* Define the vector length pseudo-register. */
--    gdb_feature_builder_append_reg(&builder, "vg", 64, reg++, "int", NULL);
--
--    gdb_feature_builder_end(&builder);
--
--    return &cpu->dyn_svereg_feature.desc;
--}
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 2e10464dbb..10b7f8d509 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -13,7 +13,6 @@ arm_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
- 
- arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-   'cpu64.c',
--  'gdbstub64.c',
- ))
- 
- arm_system_ss = ss.source_set()
--- 
-2.41.0
-
+T24gNi8xOS8yNCAwMjo0OSwgQWxleCBCZW5uw6llIHdyb3RlOg0KPiBQaWVycmljayBCb3V2
+aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+IHdyaXRlczoNCj4gDQo+PiBPbiA2
+LzE4LzI0IDAyOjUzLCBBbGV4IEJlbm7DqWUgd3JvdGU6DQo+Pj4gUGllcnJpY2sgQm91dmll
+ciA8cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPiB3cml0ZXM6DQo+Pj4NCj4+Pj4gT24g
+Ni8xNy8yNCAxMzo1NiwgRHIuIERhdmlkIEFsYW4gR2lsYmVydCB3cm90ZToNCj4+Pj4+ICog
+UGllcnJpY2sgQm91dmllciAocGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnKSB3cm90ZToN
+Cj4+Pj4+PiBPbiA2LzE0LzI0IDE1OjAwLCBEci4gRGF2aWQgQWxhbiBHaWxiZXJ0IHdyb3Rl
+Og0KPj4+Pj4+PiAqIFBpZXJyaWNrIEJvdXZpZXIgKHBpZXJyaWNrLmJvdXZpZXJAbGluYXJv
+Lm9yZykgd3JvdGU6DQo+Pj4+Pj4+PiBIaSBEYXZlLA0KPj4+Pj4+Pj4NCj4+Pj4+Pj4+IE9u
+IDYvMTIvMjQgMTQ6MDIsIERyLiBEYXZpZCBBbGFuIEdpbGJlcnQgd3JvdGU6DQo+Pj4+Pj4+
+Pj4gKiBBbGV4IEJlbm7DqWUgKGFsZXguYmVubmVlQGxpbmFyby5vcmcpIHdyb3RlOg0KPj4+
+Pj4+Pj4+PiBGcm9tOiBQaWVycmljayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFy
+by5vcmc+DQo+Pj4+Pj4+Pj4+DQo+Pj4+Pj4+Pj4+IFRoaXMgcGx1Z2luIHVzZXMgdGhlIG5l
+dyB0aW1lIGNvbnRyb2wgaW50ZXJmYWNlIHRvIG1ha2UgZGVjaXNpb25zDQo+Pj4+Pj4+Pj4+
+IGFib3V0IHRoZSBzdGF0ZSBvZiB0aW1lIGR1cmluZyB0aGUgZW11bGF0aW9uLiBUaGUgYWxn
+b3JpdGhtIGlzDQo+Pj4+Pj4+Pj4+IGN1cnJlbnRseSB2ZXJ5IHNpbXBsZS4gVGhlIHVzZXIg
+c3BlY2lmaWVzIGFuIGlwcyByYXRlIHdoaWNoIGFwcGxpZXMNCj4+Pj4+Pj4+Pj4gcGVyIGNv
+cmUuIElmIHRoZSBjb3JlIHJ1bnMgYWhlYWQgb2YgaXRzIGFsbG9jYXRlZCBleGVjdXRpb24g
+dGltZSB0aGUNCj4+Pj4+Pj4+Pj4gcGx1Z2luIHNsZWVwcyBmb3IgYSBiaXQgdG8gbGV0IHJl
+YWwgdGltZSBjYXRjaCB1cC4gRWl0aGVyIHdheSB0aW1lIGlzDQo+Pj4+Pj4+Pj4+IHVwZGF0
+ZWQgZm9yIHRoZSBlbXVsYXRpb24gYXMgYSBmdW5jdGlvbiBvZiB0b3RhbCBleGVjdXRlZCBp
+bnN0cnVjdGlvbnMNCj4+Pj4+Pj4+Pj4gd2l0aCBzb21lIGFkanVzdG1lbnRzIGZvciBjb3Jl
+cyB0aGF0IGlkbGUuDQo+Pj4+Pj4+Pj4NCj4+Pj4+Pj4+PiBBIGZldyByYW5kb20gdGhvdWdo
+dHM6DQo+Pj4+Pj4+Pj4gICAgICAgIGEpIEFyZSB0aGVyZSBhbnkgZGVmaW5pdGlvbnMgb2Yg
+d2hhdCBhIHBsdWdpbiB0aGF0IGNvbnRyb2xzIHRpbWUNCj4+Pj4+Pj4+PiAgICAgICAgICAg
+c2hvdWxkIGRvIHdpdGggYSBsaXZlIG1pZ3JhdGlvbj8NCj4+Pj4+Pj4+DQo+Pj4+Pj4+PiBJ
+dCdzIG5vdCBzb21ldGhpbmcgdGhhdCB3YXMgY29uc2lkZXJlZCBhcyBwYXJ0IG9mIHRoaXMg
+d29yay4NCj4+Pj4+Pj4NCj4+Pj4+Pj4gVGhhdCdzIE9LLCB0aGUgb25seSB0aGluZyBpcyB3
+ZSBuZWVkIHRvIHN0b3AgYW55b25lIGZyb20gaGl0dGluZyBwcm9ibGVtcw0KPj4+Pj4+PiB3
+aGVuIHRoZXkgZG9uJ3QgcmVhbGlzZSBpdCdzIG5vdCBiZWVuIGFkZHJlc3NlZC4NCj4+Pj4+
+Pj4gT25lIHdheSBtaWdodCBiZSB0byBhZGQgYSBtaWdyYXRpb24gYmxvY2tlcjsgc2VlIGlu
+Y2x1ZGUvbWlncmF0aW9uL2Jsb2NrZXIuaA0KPj4+Pj4+PiB0aGVuIHlvdSBtaWdodCBwcmlu
+dCBzb21ldGhpbmcgbGlrZSAnTWlncmF0aW9uIG5vdCBhdmFpbGFibGUgZHVlIHRvIHBsdWdp
+biAuLi4uJw0KPj4+Pj4+Pg0KPj4+Pj4+DQo+Pj4+Pj4gU28gYmFzaWNhbGx5LCB3ZSBjb3Vs
+ZCBtYWtlIGEgY2FsbCB0byBtaWdyYXRlX2FkZF9ibG9ja2VyKCksIHdoZW4gc29tZW9uZQ0K
+Pj4+Pj4+IHJlcXVlc3QgdGltZV9jb250cm9sIHRocm91Z2ggcGx1Z2luIEFQST8NCj4+Pj4+
+Pg0KPj4+Pj4+IElNSE8sIGl0J3Mgc29tZXRoaW5nIHRoYXQgc2hvdWxkIGJlIHBhcnQgb2Yg
+cGx1Z2luIEFQSSAoaWYgYW55IHBsdWdpbiBjYWxscw0KPj4+Pj4+IHFlbXVfcGx1Z2luX3Jl
+cXVlc3RfdGltZV9jb250cm9sKCkpLCBpbnN0ZWFkIG9mIHRoZSBwbHVnaW4gY29kZSBpdHNl
+bGYuIFRoaXMNCj4+Pj4+PiB3YXksIGFueSBwbHVnaW4gZ2V0dGluZyB0aW1lIGNvbnRyb2wg
+YXV0b21hdGljYWxseSBibG9ja3MgYW55IHBvdGVudGlhbA0KPj4+Pj4+IG1pZ3JhdGlvbi4N
+Cj4+Pj4+IE5vdGUgbXkgcXVlc3Rpb24gYXNrZWQgZm9yIGEgJ2FueSBkZWZpbml0aW9ucyBv
+ZiB3aGF0IGEgcGx1Z2luIC4uJyAtDQo+Pj4+PiBzbw0KPj4+Pj4geW91IGNvdWxkIGRlZmlu
+ZSBpdCB0aGF0IHdheSwgYW5vdGhlciBvbmUgaXMgdG8gdGhpbmsgdGhhdCBpbiB0aGUgZnV0
+dXJlDQo+Pj4+PiB5b3UgbWF5IGFsbG93IGl0IGFuZCB0aGUgcGx1Z2luIHNvbWVob3cgaW50
+ZXJhY3RzIHdpdGggbWlncmF0aW9uIG5vdCB0bw0KPj4+Pj4gY2hhbmdlIHRpbWUgYXQgY2Vy
+dGFpbiBtaWdyYXRpb24gcGhhc2VzLg0KPj4+Pj4NCj4+Pj4NCj4+Pj4gSSB3b3VsZCBiZSBp
+biBmYXZvciB0byBmb3JiaWQgdXNhZ2UgZm9yIG5vdyBpbiB0aGlzIGNvbnRleHQuIEknbSBu
+b3QNCj4+Pj4gc3VyZSB3aHkgcGVvcGxlIHdvdWxkIHBsYXkgd2l0aCBtaWdyYXRpb24gYW5k
+IHBsdWdpbnMgZ2VuZXJhbGx5IGF0DQo+Pj4+IHRoaXMgdGltZSAodGhlcmUgbWlnaHQgYmUg
+ZXhwZXJpbWVudHMgb3IgdXNlIGNhc2VzIEknbSBub3QgYXdhcmUgb2YpLA0KPj4+PiBzbyBh
+IHNpbXBsZSBiYXJyaWVyIHByZXZlbnRpbmcgdGhhdCBzZWVtcyBvay4NCj4+Pj4NCj4+Pj4g
+VGhpcyBwbHVnaW4gaXMgcGFydCBvZiBhbiBleHBlcmltZW50IHdoZXJlIHdlIGltcGxlbWVu
+dCBhIHFlbXUgZmVhdHVyZQ0KPj4+PiAoaWNvdW50PWF1dG8gaW4gdGhpcyBjYXNlKSBieSB1
+c2luZyBwbHVnaW5zLiBJZiBpdCB0dXJucyBpbnRvIGENCj4+Pj4gc3VjY2Vzc2Z1bCB1c2Fn
+ZSBhbmQgdGhpcyBwbHVnaW4gYmVjb21lcyBwb3B1bGFyLCB3ZSBjYW4gYWx3YXlzIGxpZnQN
+Cj4+Pj4gdGhlIGxpbWl0YXRpb24gbGF0ZXIuDQo+Pj4+DQo+Pj4+IEBBbGV4LCB3b3VsZCB5
+b3UgbGlrZSB0byBhZGQgdGhpcyBub3cgKGljb3VudD1hdXRvIGlzIHN0aWxsIG5vdA0KPj4+
+PiByZW1vdmVkIGZyb20gcWVtdSksIG9yIHdhaXQgZm9yIGludGVncmF0aW9uLCBhbmQgYWRk
+IHRoaXMgYXMgYW5vdGhlcg0KPj4+PiBwYXRjaD8NCj4+PiBJIHRoaW5rIHdlIGZvbGxvdyB0
+aGUgZGVwcmVjYXRpb24gcHJvY2VzcyBzbyBvbmNlIGludGVncmF0ZWQgd2UgcG9zdA0KPj4+
+IGENCj4+PiBkZXByZWNhdGlvbiBub3RpY2UgaW46DQo+Pj4gICAgIGh0dHBzOi8vcWVtdS5y
+ZWFkdGhlZG9jcy5pby9lbi9tYXN0ZXIvYWJvdXQvZGVwcmVjYXRlZC5odG1sDQo+Pj4gYW5k
+IHRoZW4gcmVtb3ZlIGl0IGFmdGVyIGEgY291cGxlIG9mIHJlbGVhc2VzLg0KPj4+DQo+Pg0K
+Pj4gU29ycnksIEkgd2FzIG5vdCBjbGVhci4gSSBtZWFudCBkbyB3ZSBhZGQgYSBibG9ja2Vy
+IGluIGNhc2Ugc29tZW9uZQ0KPj4gdHJpZXMgdG8gbWlncmF0ZSBhIHZtIHdoaWxlIHRoaXMg
+cGx1Z2luIGlzIHVzZWQ/DQo+IA0KPiBPaCB5ZXMgLSBJIGNhbiBhZGQgdGhhdCBpbiB0aGUg
+Y29yZSBwbHVnaW4gY29kZS4NCj4gDQoNClRoYW5rcyENCg==

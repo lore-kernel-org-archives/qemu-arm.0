@@ -1,40 +1,40 @@
-Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp846544dlb;
-        Wed, 19 Jun 2024 02:36:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWMLCbTFTGezwYxDKgYJwJUhzN0KXSaeA6luSzrzwZJhdRztorHrWq3/0+7amE7n95uXVOXcAZVbcYaMvVNZj1srbXrgtF1
-X-Google-Smtp-Source: AGHT+IEEtBlJ3HdqJz2qTdj9zbVGOSRQd/OrPnKP6XajNmhbKkIWZOA0EESB4WJ/FLqnFVat3ijq
-X-Received: by 2002:a05:620a:45a0:b0:796:5bdf:3f51 with SMTP id af79cd13be357-79bb3e2dbdemr214598285a.20.1718789765081;
-        Wed, 19 Jun 2024 02:36:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718789765; cv=none;
+Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp846625dlb;
+        Wed, 19 Jun 2024 02:36:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUvoPIQy1Nql6PR4eNx7Hyg1rmtScwmz/KK6hoOe3Gm+cNDwiMkc0QtiTGvnUJ1k4lHU/paghLyt6DMHcKEQg0fwf9bu82M
+X-Google-Smtp-Source: AGHT+IHkyDCmMuNsAlacpxZqocFUSxzzLDdjJ10h4iVeUL+m+ZtstzOumbZUipkr4yGH2BR6ES3J
+X-Received: by 2002:a05:6214:176a:b0:6b2:a2bb:df2d with SMTP id 6a1803df08f44-6b501eb3812mr20994036d6.48.1718789775864;
+        Wed, 19 Jun 2024 02:36:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718789775; cv=none;
         d=google.com; s=arc-20160816;
-        b=b3lzbQUyMhF8lF/ScikvyuJqMKPa8UnbLHatT9HqqzTWHy8oNia22ukb7dBiMqH8NU
-         /qHwlTAdxCivknO4R1wMT7iSCEzBOfEaY3GB8jd1dnZOzWt6OpsFE5zRHKT0FWtYJZBA
-         CW8giUyMxI0jBmRala51d4DDw7oQp6CxzYptTaDdsUSSawEZ9ACtR2nHiNxuYlxEklNm
-         aK2ChfM0MMu6NP+Au5zAWLb9lO9D8kfhNprTcYTD67sZu092QqGko466UfQF70fODTDG
-         v5inHtUBvkDq/zZzgymMeSOzxrETfxI0m/HCljCHD2k+zt1nzIGBDgxYg21C+RHemG6Y
-         qo7g==
+        b=0QzVzHpC4igDZDdgR/9g2EWfJ/vIlbKsa8HIHNtyirQuFMrcW+jiOAJYzTu0K/b78u
+         95twAPkHybVXdmzgT7jHt11vK6Xsmrpr54Yy1WAFsNaQbEVGJZacN/qIUxX6JXp+k+Lm
+         QfioSL2Ay40UZDYOtu4MDM3+m7FVx+z1dhk4CGYbTS0/S59vhoQVwjKY0zDYSa8rVqnR
+         MT/V7VkRILL6QCII1BszgH4KMkWQq9rTwpo60rQRRDHcE+cAzVW1bt2P5ioFWO5oikK+
+         xySX/SPgkKRTwcbDjMmyJspUe+AHaNFCwn9gFcgWt8Okty5SrLCCCS8qAQu2jNG8X0Cd
+         Bzew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=k+OgVFD74iP8u8IvXujxrobtT+cvoAgVHkYsA9hwyXg=;
+        bh=TCG+zQnedb+BZn4xfGHvTCqNh7WeuNdghYvFdpt44Ro=;
         fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=NQZrRIhUJEruxbihkBovXqZB5vgZwSVqkZAUu3CLgKGwAW4yhpSXEarM3ilI79eXAx
-         0JqgwDOqJe0XsF3XB0sbIWUCvKs0s1l2J6eTgRC/9pSVElVbUJDCm1y5RhOboNtKB2n3
-         F3ZgPaDpi4VAhxRFRF8VWVCsChXCvtBNAdf/5wuIqpsX6WBYxa8JiUALAtPz7LjrHjJv
-         NLYdm/+wGKXhY++K30JpkVcWYWEHabuoZ3UGT+EFz4+9GX3qmbjl9rwRdZyVMFyTendx
-         WCxweoeSxx7+RMFd3USY6gKaIMKGlh1kUVIlW/xD4856RH+mRODU5bCXBMUPfNBIB3Nf
-         Q+uA==;
+        b=OzqHbAhJV7ftcL2DBXMRvpbIFLQOwPjAv0qAIshtVbnZyvkf2zqct9ltwAUAH4GNnI
+         L1+yI3MMoN/JATSdvGU2BxmkIsekhH8Rq+3hKIHAuwqOelHLXNlH1rxLsohiLoLicWV9
+         lrGJ+VifdmXjCMf/VKjDTwhm7fiGZKNFxQD5mP3ca6if5kVK4eDuLbS5gHnjuXtB72tn
+         zNOzI73OEpWPBrRoJAZaBfcbg8IQItn4udpEKOxKa1ocON8CFL9tlqtSrf80k9YPgUsd
+         HQuj1FMPJF+kcle+7merIGRB27AR+YenyGbfMbJ5GTlRSRxSxCJNdufD6C6YpNf4UsmC
+         UbHQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-798aac9db02si1421738585a.79.2024.06.19.02.36.04
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5afd856si140885076d6.253.2024.06.19.02.36.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Jun 2024 02:36:05 -0700 (PDT)
+        Wed, 19 Jun 2024 02:36:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,21 +42,18 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sJrix-0000dS-CN; Wed, 19 Jun 2024 05:35:27 -0400
+	id 1sJriv-0000cN-3u; Wed, 19 Jun 2024 05:35:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sJriv-0000cL-3R; Wed, 19 Jun 2024 05:35:25 -0400
+ id 1sJris-0000bu-TC; Wed, 19 Jun 2024 05:35:23 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sJrit-0006py-Mp; Wed, 19 Jun 2024 05:35:24 -0400
-Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX01.aspeed.com
+ id 1sJrir-0006py-Dd; Wed, 19 Jun 2024 05:35:22 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Wed, 19 Jun
- 2024 17:35:09 +0800
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX02.aspeed.com
- (192.168.0.25) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Wed, 19 Jun
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 19 Jun
  2024 17:35:09 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
@@ -68,19 +65,15 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 1/2] aspeed/soc: fix coverity issue
-Date: Wed, 19 Jun 2024 17:35:07 +0800
-Message-ID: <20240619093508.2528537-2-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 2/2] aspeed/sdmc: fix coverity issue
+Date: Wed, 19 Jun 2024 17:35:08 +0800
+Message-ID: <20240619093508.2528537-3-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240619093508.2528537-1-jamin_lin@aspeedtech.com>
 References: <20240619093508.2528537-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
- does not designate 192.168.10.10 as permitted sender)
- receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
- helo=localhost.localdomain;
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -104,32 +97,27 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 19SpCne9B03I
+X-TUID: gSY+Do26VICR
 
-Fix coverity defect: DIVIDE_BY_ZERO.
+Fix coverity defect: Control flow issues (DEADCODE)
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed_ast27x0.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ hw/misc/aspeed_sdmc.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index b6876b4862..d14a46df6f 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -211,6 +211,12 @@ static void aspeed_ram_capacity_write(void *opaque, hwaddr addr, uint64_t data,
-     ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
-                                         &error_abort);
- 
-+    if (!ram_size) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: ram_size is zero",  __func__);
-+        return;
-+    }
-+
-     /*
-      * Emulate ddr capacity hardware behavior.
-      * If writes the data to the address which is beyond the ram size,
+diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+index 93e2e29ead..94eed9264d 100644
+--- a/hw/misc/aspeed_sdmc.c
++++ b/hw/misc/aspeed_sdmc.c
+@@ -589,7 +589,6 @@ static void aspeed_2700_sdmc_write(AspeedSDMCState *s, uint32_t reg,
+     case R_INT_STATUS:
+     case R_INT_CLEAR:
+     case R_INT_MASK:
+-    case R_MAIN_STATUS:
+     case R_ERR_STATUS:
+     case R_ECC_FAIL_STATUS:
+     case R_ECC_FAIL_ADDR:
 -- 
 2.34.1
 

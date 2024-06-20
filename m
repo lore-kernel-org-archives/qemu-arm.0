@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f56ecd5bfsm774823766b.113.2024.06.20.08.22.21
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f600cde92sm708227466b.205.2024.06.20.08.22.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 20 Jun 2024 08:22:22 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 3A38F5F9F3;
-	Thu, 20 Jun 2024 16:22:21 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id F14C35F7B1;
+	Thu, 20 Jun 2024 16:22:20 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -36,244 +36,94 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Marcelo Tosatti <mtosatti@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 02/12] gdbstub: move enums into separate header
-Date: Thu, 20 Jun 2024 16:22:10 +0100
-Message-Id: <20240620152220.2192768-3-alex.bennee@linaro.org>
+Subject: [PATCH v2 00/12] maintainer updates pre-PR (gdbstub, plugins, time control)
+Date: Thu, 20 Jun 2024 16:22:08 +0100
+Message-Id: <20240620152220.2192768-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240620152220.2192768-1-alex.bennee@linaro.org>
-References: <20240620152220.2192768-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: FwAhvBanlj00
+X-TUID: 7H7sg+CUWQh+
 
-This is an experiment to further reduce the amount we throw into the
-exec headers. It might not be as useful as I initially thought because
-just under half of the users also need gdbserver_start().
+Hi,
 
-Message-Id: <20240612153508.1532940-3-alex.bennee@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- include/exec/gdbstub.h    |  9 ---------
- include/gdbstub/enums.h   | 21 +++++++++++++++++++++
- accel/hvf/hvf-accel-ops.c |  2 +-
- accel/kvm/kvm-all.c       |  2 +-
- accel/tcg/tcg-accel-ops.c |  2 +-
- gdbstub/user.c            |  1 +
- monitor/hmp-cmds.c        |  3 ++-
- system/vl.c               |  1 +
- target/arm/hvf/hvf.c      |  2 +-
- target/arm/hyp_gdbstub.c  |  2 +-
- target/arm/kvm.c          |  2 +-
- target/i386/kvm/kvm.c     |  2 +-
- target/ppc/kvm.c          |  2 +-
- target/s390x/kvm/kvm.c    |  2 +-
- 14 files changed, 34 insertions(+), 19 deletions(-)
+This is the current state of my maintainer trees. The gdbstub patches
+are just minor clean-ups. The main feature this brings in is the
+ability for plugins to control time. This has been discussed before
+but represents the first time plugins can "control" the execution of
+the core. The idea would be to eventually deprecate the icount auto
+modes in favour of a plugin and just use icount for deterministic
+execution and record/replay.
+
+v2
+  - merged in Pierrick's fixes
+  - added migration blocker
+  - added Max's plugin tweak
+
+I'll send the PR on Monday if nothing comes up. The following still need review:
+
+  plugins: add migration blocker
+
+Alex.
+
+Akihiko Odaki (1):
+  plugins: Ensure register handles are not NULL
+
+Alex Bennée (7):
+  include/exec: add missing include guard comment
+  gdbstub: move enums into separate header
+  sysemu: add set_virtual_time to accel ops
+  qtest: use cpu interface in qtest_clock_warp
+  sysemu: generalise qtest_warp_clock as qemu_clock_advance_virtual_time
+  plugins: add time control API
+  plugins: add migration blocker
+
+Max Chou (1):
+  accel/tcg: Avoid unnecessary call overhead from
+    qemu_plugin_vcpu_mem_cb
+
+Pierrick Bouvier (3):
+  qtest: move qtest_{get, set}_virtual_clock to accel/qtest/qtest.c
+  contrib/plugins: add Instructions Per Second (IPS) example for cost
+    modeling
+  plugins: fix inject_mem_cb rw masking
+
+ include/exec/gdbstub.h                        |  11 +-
+ include/gdbstub/enums.h                       |  21 +++
+ include/qemu/qemu-plugin.h                    |  27 +++
+ include/qemu/timer.h                          |  15 ++
+ include/sysemu/accel-ops.h                    |  18 +-
+ include/sysemu/cpu-timers.h                   |   3 +-
+ include/sysemu/qtest.h                        |   2 -
+ accel/hvf/hvf-accel-ops.c                     |   2 +-
+ accel/kvm/kvm-all.c                           |   2 +-
+ accel/qtest/qtest.c                           |  13 ++
+ accel/tcg/plugin-gen.c                        |   4 +-
+ accel/tcg/tcg-accel-ops.c                     |   2 +-
+ contrib/plugins/ips.c                         | 164 ++++++++++++++++++
+ gdbstub/user.c                                |   1 +
+ monitor/hmp-cmds.c                            |   3 +-
+ plugins/api.c                                 |  47 ++++-
+ plugins/core.c                                |   4 +-
+ ...t-virtual-clock.c => cpus-virtual-clock.c} |   5 +
+ system/cpus.c                                 |  11 ++
+ system/qtest.c                                |  37 +---
+ system/vl.c                                   |   1 +
+ target/arm/hvf/hvf.c                          |   2 +-
+ target/arm/hyp_gdbstub.c                      |   2 +-
+ target/arm/kvm.c                              |   2 +-
+ target/i386/kvm/kvm.c                         |   2 +-
+ target/ppc/kvm.c                              |   2 +-
+ target/s390x/kvm/kvm.c                        |   2 +-
+ util/qemu-timer.c                             |  26 +++
+ accel/tcg/ldst_common.c.inc                   |   8 +-
+ contrib/plugins/Makefile                      |   1 +
+ plugins/qemu-plugins.symbols                  |   2 +
+ stubs/meson.build                             |   2 +-
+ 32 files changed, 377 insertions(+), 67 deletions(-)
  create mode 100644 include/gdbstub/enums.h
+ create mode 100644 contrib/plugins/ips.c
+ rename stubs/{cpus-get-virtual-clock.c => cpus-virtual-clock.c} (68%)
 
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 008a92198a..1bd2c4ec2a 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -1,15 +1,6 @@
- #ifndef GDBSTUB_H
- #define GDBSTUB_H
- 
--#define DEFAULT_GDBSTUB_PORT "1234"
--
--/* GDB breakpoint/watchpoint types */
--#define GDB_BREAKPOINT_SW        0
--#define GDB_BREAKPOINT_HW        1
--#define GDB_WATCHPOINT_WRITE     2
--#define GDB_WATCHPOINT_READ      3
--#define GDB_WATCHPOINT_ACCESS    4
--
- typedef struct GDBFeature {
-     const char *xmlname;
-     const char *xml;
-diff --git a/include/gdbstub/enums.h b/include/gdbstub/enums.h
-new file mode 100644
-index 0000000000..c4d54a1d08
---- /dev/null
-+++ b/include/gdbstub/enums.h
-@@ -0,0 +1,21 @@
-+/*
-+ * gdbstub enums
-+ *
-+ * Copyright (c) 2024 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef GDBSTUB_ENUMS_H
-+#define GDBSTUB_ENUMS_H
-+
-+#define DEFAULT_GDBSTUB_PORT "1234"
-+
-+/* GDB breakpoint/watchpoint types */
-+#define GDB_BREAKPOINT_SW        0
-+#define GDB_BREAKPOINT_HW        1
-+#define GDB_WATCHPOINT_WRITE     2
-+#define GDB_WATCHPOINT_READ      3
-+#define GDB_WATCHPOINT_ACCESS    4
-+
-+#endif /* GDBSTUB_ENUMS_H */
-diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index b2a37a2229..ac08cfb9f3 100644
---- a/accel/hvf/hvf-accel-ops.c
-+++ b/accel/hvf/hvf-accel-ops.c
-@@ -52,7 +52,7 @@
- #include "qemu/main-loop.h"
- #include "exec/address-spaces.h"
- #include "exec/exec-all.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/enums.h"
- #include "sysemu/cpus.h"
- #include "sysemu/hvf.h"
- #include "sysemu/hvf_int.h"
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 854cb86b22..2b4ab89679 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -27,7 +27,7 @@
- #include "hw/pci/msi.h"
- #include "hw/pci/msix.h"
- #include "hw/s390x/adapter.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/enums.h"
- #include "sysemu/kvm_int.h"
- #include "sysemu/runstate.h"
- #include "sysemu/cpus.h"
-diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
-index 1433e38f40..3c19e68a79 100644
---- a/accel/tcg/tcg-accel-ops.c
-+++ b/accel/tcg/tcg-accel-ops.c
-@@ -35,7 +35,7 @@
- #include "exec/exec-all.h"
- #include "exec/hwaddr.h"
- #include "exec/tb-flush.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/enums.h"
- 
- #include "hw/core/cpu.h"
- 
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index edeb72efeb..e34b58b407 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -18,6 +18,7 @@
- #include "exec/gdbstub.h"
- #include "gdbstub/syscalls.h"
- #include "gdbstub/user.h"
-+#include "gdbstub/enums.h"
- #include "hw/core/cpu.h"
- #include "trace.h"
- #include "internals.h"
-diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
-index 45ee3a9e1f..f601d06ab8 100644
---- a/monitor/hmp-cmds.c
-+++ b/monitor/hmp-cmds.c
-@@ -15,8 +15,9 @@
- 
- #include "qemu/osdep.h"
- #include "exec/address-spaces.h"
--#include "exec/gdbstub.h"
- #include "exec/ioport.h"
-+#include "exec/gdbstub.h"
-+#include "gdbstub/enums.h"
- #include "monitor/hmp.h"
- #include "qemu/help_option.h"
- #include "monitor/monitor-internal.h"
-diff --git a/system/vl.c b/system/vl.c
-index a3eede5fa5..cfcb674425 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -68,6 +68,7 @@
- #include "sysemu/numa.h"
- #include "sysemu/hostmem.h"
- #include "exec/gdbstub.h"
-+#include "gdbstub/enums.h"
- #include "qemu/timer.h"
- #include "chardev/char.h"
- #include "qemu/bitmap.h"
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 45e2218be5..ef9bc42738 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -33,7 +33,7 @@
- #include "trace/trace-target_arm_hvf.h"
- #include "migration/vmstate.h"
- 
--#include "exec/gdbstub.h"
-+#include "gdbstub/enums.h"
- 
- #define MDSCR_EL1_SS_SHIFT  0
- #define MDSCR_EL1_MDE_SHIFT 15
-diff --git a/target/arm/hyp_gdbstub.c b/target/arm/hyp_gdbstub.c
-index ebde2899cd..f120d55caa 100644
---- a/target/arm/hyp_gdbstub.c
-+++ b/target/arm/hyp_gdbstub.c
-@@ -12,7 +12,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "internals.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/enums.h"
- 
- /* Maximum and current break/watch point counts */
- int max_hw_bps, max_hw_wps;
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 7cf5cf31de..70f79eda33 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -31,7 +31,7 @@
- #include "hw/pci/pci.h"
- #include "exec/memattrs.h"
- #include "exec/address-spaces.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/enums.h"
- #include "hw/boards.h"
- #include "hw/irq.h"
- #include "qapi/visitor.h"
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index 7ad8072748..dd8b0f3313 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -38,7 +38,7 @@
- #include "hyperv.h"
- #include "hyperv-proto.h"
- 
--#include "exec/gdbstub.h"
-+#include "gdbstub/enums.h"
- #include "qemu/host-utils.h"
- #include "qemu/main-loop.h"
- #include "qemu/ratelimit.h"
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index 005f2239f3..2c3932200b 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -39,7 +39,7 @@
- #include "migration/qemu-file-types.h"
- #include "sysemu/watchdog.h"
- #include "trace.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/enums.h"
- #include "exec/memattrs.h"
- #include "exec/ram_addr.h"
- #include "sysemu/hostmem.h"
-diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
-index 1b494ecc20..94181d9281 100644
---- a/target/s390x/kvm/kvm.c
-+++ b/target/s390x/kvm/kvm.c
-@@ -40,7 +40,7 @@
- #include "sysemu/hw_accel.h"
- #include "sysemu/runstate.h"
- #include "sysemu/device_tree.h"
--#include "exec/gdbstub.h"
-+#include "gdbstub/enums.h"
- #include "exec/ram_addr.h"
- #include "trace.h"
- #include "hw/s390x/s390-pci-inst.h"
 -- 
 2.39.2

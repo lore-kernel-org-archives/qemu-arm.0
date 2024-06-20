@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57cb72da156sm9758038a12.22.2024.06.20.08.22.29
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f56ed369bsm771539666b.100.2024.06.20.08.22.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 20 Jun 2024 08:22:36 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 3BD7D5FA0E;
+	by draig.lan (Postfix) with ESMTP id 259085FA0C;
 	Thu, 20 Jun 2024 16:22:22 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -35,58 +35,74 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	"Dr. David Alan Gilbert" <dave@treblig.org>,
 	Marcelo Tosatti <mtosatti@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Max Chou <max.chou@sifive.com>,
-	Frank Chang <frank.chang@sifive.com>
-Subject: [PATCH v2 12/12] accel/tcg: Avoid unnecessary call overhead from qemu_plugin_vcpu_mem_cb
-Date: Thu, 20 Jun 2024 16:22:20 +0100
-Message-Id: <20240620152220.2192768-13-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 11/12] plugins: fix inject_mem_cb rw masking
+Date: Thu, 20 Jun 2024 16:22:19 +0100
+Message-Id: <20240620152220.2192768-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240620152220.2192768-1-alex.bennee@linaro.org>
 References: <20240620152220.2192768-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Wh7ObJCuWNlr
+X-TUID: kOtH2/Aa+Yrm
 
-From: Max Chou <max.chou@sifive.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-If there are not any QEMU plugin memory callback functions, checking
-before calling the qemu_plugin_vcpu_mem_cb function can reduce the
-function call overhead.
+These are not booleans, but masks.
+Issue found by Richard Henderson.
 
-Signed-off-by: Max Chou <max.chou@sifive.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Frank Chang <frank.chang@sifive.com>
-Message-Id: <20240613175122.1299212-2-max.chou@sifive.com>
+Fixes: f86fd4d8721 ("plugins: distinct types for callbacks")
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20240612195147.93121-3-pierrick.bouvier@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- accel/tcg/ldst_common.c.inc | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ accel/tcg/plugin-gen.c | 4 ++--
+ plugins/core.c         | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/accel/tcg/ldst_common.c.inc b/accel/tcg/ldst_common.c.inc
-index c82048e377..87ceb95487 100644
---- a/accel/tcg/ldst_common.c.inc
-+++ b/accel/tcg/ldst_common.c.inc
-@@ -125,7 +125,9 @@ void helper_st_i128(CPUArchState *env, uint64_t addr, Int128 val, MemOpIdx oi)
- 
- static void plugin_load_cb(CPUArchState *env, abi_ptr addr, MemOpIdx oi)
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index cc1634e7a6..b6bae32b99 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -240,13 +240,13 @@ static void inject_mem_cb(struct qemu_plugin_dyn_cb *cb,
  {
--    qemu_plugin_vcpu_mem_cb(env_cpu(env), addr, oi, QEMU_PLUGIN_MEM_R);
-+    if (cpu_plugin_mem_cbs_enabled(env_cpu(env))) {
-+        qemu_plugin_vcpu_mem_cb(env_cpu(env), addr, oi, QEMU_PLUGIN_MEM_R);
-+    }
- }
+     switch (cb->type) {
+     case PLUGIN_CB_MEM_REGULAR:
+-        if (rw && cb->regular.rw) {
++        if (rw & cb->regular.rw) {
+             gen_mem_cb(&cb->regular, meminfo, addr);
+         }
+         break;
+     case PLUGIN_CB_INLINE_ADD_U64:
+     case PLUGIN_CB_INLINE_STORE_U64:
+-        if (rw && cb->inline_insn.rw) {
++        if (rw & cb->inline_insn.rw) {
+             inject_cb(cb);
+         }
+         break;
+diff --git a/plugins/core.c b/plugins/core.c
+index badede28cf..9d737d8278 100644
+--- a/plugins/core.c
++++ b/plugins/core.c
+@@ -589,7 +589,7 @@ void qemu_plugin_vcpu_mem_cb(CPUState *cpu, uint64_t vaddr,
  
- uint8_t cpu_ldb_mmu(CPUArchState *env, abi_ptr addr, MemOpIdx oi, uintptr_t ra)
-@@ -188,7 +190,9 @@ Int128 cpu_ld16_mmu(CPUArchState *env, abi_ptr addr,
- 
- static void plugin_store_cb(CPUArchState *env, abi_ptr addr, MemOpIdx oi)
- {
--    qemu_plugin_vcpu_mem_cb(env_cpu(env), addr, oi, QEMU_PLUGIN_MEM_W);
-+    if (cpu_plugin_mem_cbs_enabled(env_cpu(env))) {
-+        qemu_plugin_vcpu_mem_cb(env_cpu(env), addr, oi, QEMU_PLUGIN_MEM_W);
-+    }
- }
- 
- void cpu_stb_mmu(CPUArchState *env, abi_ptr addr, uint8_t val,
+         switch (cb->type) {
+         case PLUGIN_CB_MEM_REGULAR:
+-            if (rw && cb->regular.rw) {
++            if (rw & cb->regular.rw) {
+                 cb->regular.f.vcpu_mem(cpu->cpu_index,
+                                        make_plugin_meminfo(oi, rw),
+                                        vaddr, cb->regular.userp);
+@@ -597,7 +597,7 @@ void qemu_plugin_vcpu_mem_cb(CPUState *cpu, uint64_t vaddr,
+             break;
+         case PLUGIN_CB_INLINE_ADD_U64:
+         case PLUGIN_CB_INLINE_STORE_U64:
+-            if (rw && cb->inline_insn.rw) {
++            if (rw & cb->inline_insn.rw) {
+                 exec_inline_op(cb->type, &cb->inline_insn, cpu->cpu_index);
+             }
+             break;
 -- 
 2.39.2

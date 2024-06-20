@@ -1,114 +1,152 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1880662ejb;
-        Thu, 20 Jun 2024 03:43:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXzY7K214p+CbyS4uLdq+Qhf/liS05RBLmEsiZVq0FYoWRohQozLs1YIAOCJvPnsoRvTlY7Qg9EvW9jwXGdGllO20KblgAL
-X-Google-Smtp-Source: AGHT+IFy0zJemBpgmqGaNh8fAlhe+7/1GkdCuON62G9MHulycclv8oYn18EhUONZbDz6XByMmyp3
-X-Received: by 2002:a05:620a:19aa:b0:795:58aa:1b57 with SMTP id af79cd13be357-79bb3ecd304mr570825585a.60.1718880230819;
-        Thu, 20 Jun 2024 03:43:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718880230; cv=none;
-        d=google.com; s=arc-20160816;
-        b=E92dBAzFVqtR6jERIqRHHuhS2Xy5qwqRMpNySQUCRYBdm5sr1Q9R2MsFOfMb9xrt68
-         N5meoQW25XVgb8EUMcI3VClPRQaM1ValPoDkQVJYfYozQHrHgPMfGaIN+9WSotdLxah2
-         DNb3NWHu3caYRf9LfP9HlJVB9q7rJ1bjd0OWO84Afw609i/bWKwYCrnBQ7iwDqjIgiNC
-         iewfozp7VXsRIxrqa8v3DeQ5QBA129QjvUeKLteDnEjUxBfDTrNz4q9IXVFE3Q+upcTY
-         S79rkqC/qO8Ylfi0PzZ/xUhd/nE7fuL/TMSmAmFyy6OUvS2IgPd3VIFP+Ly4st8vN7sb
-         BMGw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=VCHaOBI/pzcWFl4PSGNo6VIcNzZ9wgQjXBKizEWy4ek=;
-        fh=r2uVO2rIcZn1DYXTHF+/O1RtzPIDQNyPqE8LYJBZYR4=;
-        b=NA6oBfJs0wumf0jmdwcYdQrblirTdyjed8bMSLuvgjukYc0xWzR93E1trDC2DrMVOn
-         OL7hHHPQoUBIVaKXHf3dviUdh6UmTW3mAf7PimuHZIruTEUT3DGCM7qbly1M9n437XjD
-         29hS6FIParDlSV60cGWY/JiTCPwjQpU3ZGKnO4bmxUMvSD1mj1iXa4fjjhoiC0Hbp9Oe
-         gSlBjMwUP5Jsqin50lnbvAh9K+KIsIq3OwiTrPefN3ROngVQBNmRGzXhnV9FLHydLQq+
-         2ZYv85niWv2Xyr+MFWNQoSpklH0oh5KT/qOlScpZkSHtiNo7VtF51AEjJAzq0mzJFOx6
-         pW0Q==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PodmgwQ+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1963478ejb;
+        Thu, 20 Jun 2024 06:23:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVY4CewbTfdIecNBL1RgS76OavbhL4PjhqAjt6S3qreT+B4Ik1FbctmMXWzFWZ8PDg482u+2JlVZO5hQN4QCaai8L9WhV2O
+X-Google-Smtp-Source: AGHT+IFFDVG5tq5Q5lerMGpO0jL0Go1jTnAqLy9GV3qOlnPgyVQ3NWspoONzQCgXDXPbq4pxXoRy
+X-Received: by 2002:a05:620a:2a16:b0:795:6086:c93 with SMTP id af79cd13be357-79bb3e10860mr569618285a.5.1718889785372;
+        Thu, 20 Jun 2024 06:23:05 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-798abe57d43si1780502485a.591.2024.06.20.03.43.50
+        by mx.google.com with ESMTPS id af79cd13be357-798ab8ff9d0si1709757785a.352.2024.06.20.06.23.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2024 03:43:50 -0700 (PDT)
+        Thu, 20 Jun 2024 06:23:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PodmgwQ+;
+       dkim=neutral (body hash did not verify) header.i=@amd.com header.s=selector1 header.b=wqpAQBjB;
+       arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKFGa-000501-TC; Thu, 20 Jun 2024 06:43:45 -0400
+	id 1sKHkZ-0004Qr-FL; Thu, 20 Jun 2024 09:22:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sKFGR-0004rv-5C
- for qemu-arm@nongnu.org; Thu, 20 Jun 2024 06:43:37 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sKFGM-0005is-LG
- for qemu-arm@nongnu.org; Thu, 20 Jun 2024 06:43:33 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-57d07673185so617746a12.1
- for <qemu-arm@nongnu.org>; Thu, 20 Jun 2024 03:43:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718880209; x=1719485009; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=VCHaOBI/pzcWFl4PSGNo6VIcNzZ9wgQjXBKizEWy4ek=;
- b=PodmgwQ++L+Idn51/gD95KMVDkesV9O82RrJaDs0NIK2ciYOiWkgqHs2f8cD1L/qJz
- 84cV9QeYnLlkxR2tt3fsoC6rifytvUxR/2Gj6uHyZD9dE/TNfFA34rgLXKadbyW5swkg
- s/vs64ied4zTt/x172/EwVhHLEf66cjFhjfaivUwv07zAcQ8bahqKLrwqJ/lxKZtKUVA
- sVv/3sQAQ14gQmOacOQcprer7CKjiFYOC5TrcVE1sIb8pFtXKc0Q+5caHRpvaq/+MDsk
- 5Y5h4rIMN5yrMe0r7aLbH/pwQ7ck0QmH9rgpEqCyeAzejpg2zV7B3K7UvPAsrff9I+7n
- EFIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718880209; x=1719485009;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=VCHaOBI/pzcWFl4PSGNo6VIcNzZ9wgQjXBKizEWy4ek=;
- b=WmV9BxgzPTuai11REBq21qGtG+1pyOwplpuw4uOWg+dXkSvs/keELpP/1JhwQ67EeV
- rZrUipw4G/QxO9V7KrZHFGI7Se+AmLbJC03ccfV2gXkweoKQVaACc4XDnQoILlDiaMP1
- jUBt2IWCFvpHsk6qntthDdmpCFWzTk24X1DeZXao5Bt8npfytwwUGASxfuLEJGl6a7Dc
- 39C8Ewm+JQUBLTzwNYYjqVdxkJ7qw4p9M4Ygb00xqtW1+ErcMOr8IxQQy9cfSSp/AMmg
- VlIC624t5fysFXEi2T9P7frDRdwf90jxd7bfBR7WBczhlclQG/wtL9G8ex5Z+2KiZALg
- IIJA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX+4s3B1Tb7/cS6z3DZWc7gCmasKh4CUD838il4wJD+ryk/d9b1CuCYI/tudpQpmmUtxKYNAKJBUcUZvM7xisbvfOiP
-X-Gm-Message-State: AOJu0YylkwuNgmDi7jQ0GnUtFwoK+cMKgXGvxRx33g4u46MWxkmDDLZt
- icyb6tGY3LCb8Df4JrC4Jeu77Iua1SKja8FUsVzw4Ji60d4Ac3qNUY78w+96FHSPSOJB5TJSKnV
- VdRUvMJK7lYKn7Mf+thFV8bHkiBUT6P52LllkZX2lGJqrs3ou
-X-Received: by 2002:a50:9b15:0:b0:57c:6861:d735 with SMTP id
- 4fb4d7f45d1cf-57d07e6b560mr3081170a12.19.1718880208839; Thu, 20 Jun 2024
- 03:43:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <Edgar.Iglesias@amd.com>)
+ id 1sKFmU-00068U-1m; Thu, 20 Jun 2024 07:16:42 -0400
+Received: from mail-dm6nam04on20600.outbound.protection.outlook.com
+ ([2a01:111:f403:2409::600]
+ helo=NAM04-DM6-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Edgar.Iglesias@amd.com>)
+ id 1sKFmQ-0003qf-CU; Thu, 20 Jun 2024 07:16:41 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gAPfQDeMKT3vBGBYRGXEx3WPKJjBZX/8mKNp+KYUVwzTJ1sSmmdn+NTv697nsbtIIFhS8+XnjycLCRY77Molt0QPy53ad2fyQk5V8xyigVNkURrVRremZyO9nNOBA5oA+1Symci1zTlRdXs8CNWisKbbvlCHk6G8y7K9HhLni7/mS2BC3oBsQSfpBVi7EdHuxWvUGcaHNz1Tb3QShrLc25g8rxOWydn4pKRIJJVThLx4zrtX8ZHVD0axsb3rbuUCWiAQqfBLmO7N3a4TWfIlzevTHtUzo6kCBilcPvJShqrG7NxYoiM8POYZRC8P6RNbVJS5EBMWJlOky38ALKWB2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3JYV5r9jQozpZTODbYlbPhY3oxRLQHLs3kkf++DbqA0=;
+ b=ocgQgDrOpzvXoFxEu2266J3fv6OKUCKOxKO6Bx/Z9p84XbF2U9BTB4HhzDP9xchbMm0xOIR637Yqi7lmO37PVxmhAfIlihCEi+SsXZKtqjVvgo8qlTEcmY76v9GmTZYo0kGoHvesx3ReP6WxcdXRaMgtBuAXhwrE0bbg5O357pSP/UCK+DyO1Z2rB8bpL354rHl+LHpBNQ17/9Kqoexjz0k2kl6uu1vaDLgKNYG0tEIpzz6vvFFbWufoX9tmgEaZywqH9Xma9Z6mW+pCMw5zi6nXze5Pzsyee+7IXEZTCP9/wUd0JT0xzItG1QjFnRPvM5x+08besYeRKQL5aL4uIg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=linaro.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3JYV5r9jQozpZTODbYlbPhY3oxRLQHLs3kkf++DbqA0=;
+ b=wqpAQBjBI0QFvFcE+4Ero8HhvLFWY0t+rNZGYYQkPmGTGjCToWRTjNvxxvupe2L/bOYyPtvyFna0yy19TI32wPFBPuCmMDaN/s2DrTXlDWcaJBbm69l0YlusXB2VRaROqzvSDoPs+PcJbzMDYvPW6EPdfpS2BvEW7mMXY4n2j2Y=
+Received: from BN9P220CA0021.NAMP220.PROD.OUTLOOK.COM (2603:10b6:408:13e::26)
+ by MN0PR12MB6126.namprd12.prod.outlook.com (2603:10b6:208:3c6::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7698.21; Thu, 20 Jun
+ 2024 11:16:31 +0000
+Received: from BN2PEPF00004FBC.namprd04.prod.outlook.com
+ (2603:10b6:408:13e:cafe::b4) by BN9P220CA0021.outlook.office365.com
+ (2603:10b6:408:13e::26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.32 via Frontend
+ Transport; Thu, 20 Jun 2024 11:16:31 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ BN2PEPF00004FBC.mail.protection.outlook.com (10.167.243.182) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.7677.15 via Frontend Transport; Thu, 20 Jun 2024 11:16:31 +0000
+Received: from localhost (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Thu, 20 Jun
+ 2024 06:16:30 -0500
+Date: Thu, 20 Jun 2024 13:16:28 +0200
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Zheyu Ma <zheyuma97@gmail.com>, 
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
+ Peter Xu <peterx@redhat.com>, Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH] hw/timer/a9gtimer: Handle QTest mode in
+ a9_gtimer_get_current_cpu
+Message-ID: <ZnQPjL4HjevwHh8R@toto>
+References: <20240618144009.3137806-1-zheyuma97@gmail.com>
+ <47a6e9d2-27f6-4e45-9de3-c4766bdf2566@linaro.org>
+ <CAFEAcA82T-hS0Armp6PVBkrywfqv+-u+L4z8rtrjBpnwvE8Hxg@mail.gmail.com>
+ <12471213-83da-4226-ba2a-2b8b6452d46b@linaro.org>
 MIME-Version: 1.0
-References: <20240615185423.49474-1-florian.lugou@provenrun.com>
-In-Reply-To: <20240615185423.49474-1-florian.lugou@provenrun.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Jun 2024 11:43:17 +0100
-Message-ID: <CAFEAcA_+WrzM4fXQMUxMi3L5yiUWMrUGTSZH=NDdYDKUCP+8NQ@mail.gmail.com>
-Subject: Re: [PATCH] target/arm/helper: Fix timer interrupt masking when
- HCR_EL2.E2H == 0
-To: Florian Lugou <florian.lugou@provenrun.com>
-Cc: qemu-devel@nongnu.org, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <12471213-83da-4226-ba2a-2b8b6452d46b@linaro.org>
+X-Originating-IP: [10.180.168.240]
+X-ClientProxiedBy: SATLEXMB03.amd.com (10.181.40.144) To SATLEXMB04.amd.com
+ (10.181.40.145)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN2PEPF00004FBC:EE_|MN0PR12MB6126:EE_
+X-MS-Office365-Filtering-Correlation-Id: 34be9431-fe31-49fe-4ce2-08dc911a6fd0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230037|82310400023|36860700010|1800799021|376011; 
+X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?4lNpG/u6jcFyANEF4HwVkpBB9vRAaAxJq0PLfVZMseWoJLZ+dYhN3N3Ygy?=
+ =?iso-8859-1?Q?JPOdPmee9rLyKTWatcE17aGCzX+h+kQCyeDfPqkhVGx6+QMzsmasFnkShk?=
+ =?iso-8859-1?Q?xnDK96EfpcT9P5xxLWVw3RVKY35rlK0egA4rsGw5aDWGBNxhgzZZLGnbYl?=
+ =?iso-8859-1?Q?IA18XhAra3ypsuG6F4JNqRpW8tAS9LlSSKAgUE1vyoox17Bsq8QjrSiCKu?=
+ =?iso-8859-1?Q?3AO2BIK0xxgqrCTnXN1vXCIeWuhh+KWzRrGJz2JA0QGNblslURnAWu2LhA?=
+ =?iso-8859-1?Q?1qx8A1GivlkgEb5AU3scAHi9FhEyp8dQeXaQ8ftdbUKi3/FZbnSH8EVSov?=
+ =?iso-8859-1?Q?z59RSZmCXbT82HaEz4b0u6ZT+xbQ1umu9xLDvITZATn5ky2ZvUo088HdTo?=
+ =?iso-8859-1?Q?umdp3KXKRzKbweVIooqaF7ahux3TXcJXz+jwS7rwvk6HWvfaNe0gb/WDPs?=
+ =?iso-8859-1?Q?x6tTr5ouDg2A8C4U3xJUZiFYWzfzHWf3nFQE1ahB95ToWdNO8a95HU8E2Y?=
+ =?iso-8859-1?Q?Y5GK8WoYs9zZPFSBdmWdS9D9ftGP1lllFnMppEHxdmZIW5/UxsQ11nTeUF?=
+ =?iso-8859-1?Q?QtxGYIKkCiwwvwm1wIpVW8ke2nCPqmTMSKc4rlnYl305eWaVcktvznRHg+?=
+ =?iso-8859-1?Q?gOr5py3jjUQlYC36uUm2QHw7PL6TXD+artefdwD2olYqe6MYgiFlyqa+9F?=
+ =?iso-8859-1?Q?M03DRThzJKy+OAegeQKUDJmaOjP25P7pZTcmCdHCVyP5uoWehxF8XAX9Y7?=
+ =?iso-8859-1?Q?lRld4Gd2qjtIWBZkxYNjBmkDV0PQFY5J6xHOl/qhQ5un/hUszJY7kIqeMT?=
+ =?iso-8859-1?Q?2z2wixs2viinIkYOl+Rrpg9LbBy49CV6aSessFxdIzA1tUZCV7/pBCU2Qa?=
+ =?iso-8859-1?Q?yj28P6DRlkTbwxUxpcQ1dwB+bMe38Ufq3SPJmaGoRkVIsLMURgtI3a1oPL?=
+ =?iso-8859-1?Q?9V7hwGmNLZBzHy+GfWvqrXqe/omFvG6MtgrIEE5KBEIF5gtkfP35+uo58U?=
+ =?iso-8859-1?Q?chwQ/KOhgJAIt0KtyDd2rTkgdX/c0DOignoyqw9ZzBOlG1lrwS2r1Sux4o?=
+ =?iso-8859-1?Q?CcbgQW4VF+MZ3J9Nui1ffrUmwpEeJzdS5HCy3yT7xzk/ABUL02aR1bystA?=
+ =?iso-8859-1?Q?+Q1CDGVUGqA0kFMUpgCjl4YG/LdQpz74fuDgB5pBrfPjQgj9T/wNT5l3c1?=
+ =?iso-8859-1?Q?kunye9zYXMIpsuOBe+I7SIX5lvwVdfugbusLRIHnGk67/KfMYBsXmVNja3?=
+ =?iso-8859-1?Q?2qsa0BqBSCrdOs7zg7CtpqyKUNAOWu1tyRjz/Tc324I3s8KxLKerNslwNO?=
+ =?iso-8859-1?Q?JYo8UbmHinJGYLjQW19IoThEfBD9eML0TmleePaH43lBUYR/xXNAA/SDTy?=
+ =?iso-8859-1?Q?bo4q4kUTRm+w/P36xXDqZLbH0ZCF816CfZsHVtZIDUc3RfW1ww8ntCLpjX?=
+ =?iso-8859-1?Q?lPrex/yJiUX2oqz4il7/aE94ZRBpi2Cni9Ih/g=3D=3D?=
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230037)(82310400023)(36860700010)(1800799021)(376011); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jun 2024 11:16:31.0242 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 34be9431-fe31-49fe-4ce2-08dc911a6fd0
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF00004FBC.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB6126
+Received-SPF: permerror client-ip=2a01:111:f403:2409::600;
+ envelope-from=Edgar.Iglesias@amd.com;
+ helo=NAM04-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 20 Jun 2024 09:22:50 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,54 +158,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+From:  "Edgar E. Iglesias" via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ncBlUEyAaAIK
+X-TUID: BYUlu1duFXeb
 
-On Sat, 15 Jun 2024 at 19:56, Florian Lugou <florian.lugou@provenrun.com> wrote:
+On Thu, Jun 20, 2024 at 12:25:51PM +0200, Philippe Mathieu-Daudé wrote:
+> On 20/6/24 12:10, Peter Maydell wrote:
+> > On Tue, 18 Jun 2024 at 15:51, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+> > > 
+> > > On 18/6/24 16:40, Zheyu Ma wrote:
+> > > > This commit updates the a9_gtimer_get_current_cpu() function to handle
+> > > > cases where QTest is enabled. When QTest is used, it returns 0 instead
+> > > > of dereferencing the current_cpu, which can be NULL. This prevents the
+> > > > program from crashing during QTest runs.
+> > > > 
+> > > > Reproducer:
+> > > > cat << EOF | qemu-system-aarch64 -display \
+> > > > none -machine accel=qtest, -m 512M -machine npcm750-evb -qtest stdio
+> > > > writel 0xf03fe20c 0x26d7468c
+> > > > EOF
+> > > > 
+> > > > Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
+> > > > ---
+> > > >    hw/timer/a9gtimer.c | 5 +++++
+> > > >    1 file changed, 5 insertions(+)
+> 
+> 
+> > > >        if (current_cpu->cpu_index >= s->num_cpu) {
+> > > 
+> > > That said, such accesses of @current_cpu from hw/ are dubious.
+> > 
+> > True, but I'm not sure we ever settled on the right way to avoid
+> > them, did we?
+> 
+> No we didn't, it is still in my TODO list; we might discuss it
+> when I post my RFC.
 >
-> CNTHCTL_EL2 based masking of timer interrupts was introduced in
-> f6fc36deef6abcee406211f3e2f11ff894b87fa4. This masking was however
-> effective no matter whether EL2 was enabled in the current security
-> state or not, contrary to arm specification.
->
-> Signed-off-by: Florian Lugou <florian.lugou@provenrun.com>
-> ---
->  target/arm/helper.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index ce31957235..60e2344c68 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -2684,7 +2684,8 @@ static void gt_update_irq(ARMCPU *cpu, int timeridx)
->       * If bit CNTHCTL_EL2.CNT[VP]MASK is set, it overrides IMASK.
->       * It is RES0 in Secure and NonSecure state.
->       */
-> -    if ((ss == ARMSS_Root || ss == ARMSS_Realm) &&
-> +    if ((arm_hcr_el2_eff(env) & HCR_E2H) &&
-> +        (ss == ARMSS_Root || ss == ARMSS_Realm) &&
 
-When the architecture says "is EL2 enabled in the current security state"
-it doesn't mean "is HCR_EL2.E2H set?", it means "is this either NonSecure/Realm
-or else is SCR_EL2.EEL2 set?". Compare the pseudocode EL2Enabled()
-and QEMU's arm_is_el2_enabled() and arm_is_el2_enabled_secstate() functions.
-This doesn't mean much in Root state, and for Realm state EL2 is always
-enabled (assuming it is implemented).
+Yeah, this way of getting the core id is a problem when having multiple
+ARM CPU subsystems (and for heterogenous cores).
 
-For this timer check, we're doing I think the same thing as the
-pseudocode AArch64.CheckTimerConditions(), which does:
+IIRC, when I looked at what the GIC v2 HW does, the GIC exposes an AMBA
+port for each CPU. In my mental model that would translate to exposing
+multiple Memory Reginos (sysbus_init_mmio) and mapping the appropriate
+device MR to each CPU AddressSpace.
 
-  if (IsFeatureImplemented(FEAT_RME) && ss IN {SS_Root, SS_Realm} &&
-      CNTHCTL_EL2.CNTPMASK == '1') then
-     imask = '1';
+We could also do it with memory attributes but I don't think the
+master Ids are standardised enough to extract a core-index from
+with out having SoC specific code,, at least not accross Xilinx devices.
 
-so I'm inclined to say that our current implementation in QEMU is correct.
+I never looked at newer GIC versions nor the mmio mapped timers
+though...
 
->          ((timeridx == GTIMER_VIRT && (cnthctl & R_CNTHCTL_CNTVMASK_MASK)) ||
->           (timeridx == GTIMER_PHYS && (cnthctl & R_CNTHCTL_CNTPMASK_MASK)))) {
->          irqstate = 0;
-> --
-
-thanks
--- PMM
+Cheers,
+Edgar

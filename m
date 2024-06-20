@@ -1,184 +1,177 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1446399ejb;
-        Wed, 19 Jun 2024 08:06:28 -0700 (PDT)
-X-Received: by 2002:a17:902:c951:b0:1f7:12f3:b975 with SMTP id d9443c01a7336-1f9aa4508f1mr33213115ad.43.1718809588203;
-        Wed, 19 Jun 2024 08:06:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718809588; cv=none;
+Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp1396869dlb;
+        Wed, 19 Jun 2024 23:01:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUptAFscP0NJPGnI50UiScAohYSU7EENRj2M9QxjSxDrOM/kZUEyykpTPlzOIeY1yQSb9ftQESNB5RsQeTfPx6o3gF5xnLh
+X-Google-Smtp-Source: AGHT+IGsBabrzs0QMgHuGlRd4rQYrPZJ25pO2wka3xaaci9ovdlao9FvgQhzj1atyODxBesZIFRP
+X-Received: by 2002:a67:e214:0:b0:48f:1a2c:48d1 with SMTP id ada2fe7eead31-48f1a2c4905mr3254924137.16.1718863278727;
+        Wed, 19 Jun 2024 23:01:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718863278; cv=none;
         d=google.com; s=arc-20160816;
-        b=BnGD6/3eZWDO6tGMbHKhXSy7dP04Ua+WA2Gxw4RKPVxuNhj4h8WuhEJ1D3kj7jULxh
-         Pxj4xA8+KSsD04+IsQ0KpeIwfqmmlDYGC3Uhv3KLIAj0Rh79vHkQ2A5OZX/9cCBR/PXA
-         UOxHLLSIbt3tGl+ypGtqLYduPuMX4kSMvF+B2BJsG9Yrg0B71CfTpUl3WQRpI/NEO+RB
-         Iv+ZnMZgpr4bKnOan9rvXNBRrc3z6aQSLDeyk8KzEmJEBTKnXA4zMM1JXpYjsIHM3laO
-         8k3LUmd7v4oO0M44jLB2siOO92STiFSN3HGqyHWANUGfdj7ubBcA8SAOcl0+3HQl4LyP
-         2fqQ==
+        b=aoSyReWx99B2fYtZtHbfcBFkhAMcDNVM/UET1wIpGo54h2HD6WN6v7RnyY5CgmTL6Z
+         N6F39e0brgGwXGLRzMFQHPtG6HXzRpsDQUZBzQ929H7b/kYvuGu8kPevunz/pIZ+c1Gb
+         CvBTck2yjFx67K4X78D2jSTmcj3/obswwQF/O6Zuj0daryHiFPz9liienYp8y6BDZyO2
+         CyOrAYW3i9cptNj+YKyxYvkzrbi2aj5K8YThZeMXC5hwNVBhBOKMoB+op7rh7IW8PSV0
+         obZYz7U6aA3G9tep2YJ+LnyRXHQc0g4nXxy4wcXtylLUZHS84GIKtUcyFt/4kBuOmCQo
+         5V1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=53ccK+CjnnoeqgwrzL2MP2JpY9KmQHqgB9vFIPTJVYc=;
-        fh=OhY8Qz5Jy2LMvlSPrne2bIxXcEjgBukkEgQOhr7vfHQ=;
-        b=Bcj8S7hHyNt67t1M8fEKJoi3yEyq20xPSD0O2BALLdtD/vWEYaZBAwwR9ksYHbpM+I
-         tf78qXTymQPWaSHs6l6LUD6c67gQG9cJbWr9EaER4EAfzwd+TeV4F4CrFVHkhq7dO2qh
-         uhU+otBlPnRQQAaDvwCNEtlGMx78HZMGXcsMUf2F7XtuovMqj1sCu6k76wwoho8cyvLT
-         qb7fzkKrsLTKyA834SBnPNCZGPxhCgQM1A2EsCXO1L05OJCqJEb+u4tct5w4tt0GCO0f
-         LJ/o9gy0AgQja+b7qcvHsdyOtF9dodsmjiJuZ9hMfNihabHtnaV8Yg/e3BNlOU7t4Fqe
-         BsNA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=njqU6ZtEZ9GEvXi4mg3rVyQh+AVKVYzFNstKdG9MPrU=;
+        fh=sMw5wUJBWGBtSuNC/py39k2nZzHQbArBDjR2xR28Mfo=;
+        b=VwEO/css9DlJrNijjEWCztGwsIIj1/YHvFUwQ7ppgnH9CFAgvHVLIbey35K+qjapdF
+         CxN9D+ff00douDxaiPt7KLDhHLVtRCqF3FR3gc3V/GR26sZWyx0gigdHZbkk+/+tgFoE
+         JQcOgy7jrhnWAiuDqOc0zZXF3bbA0+s5p25dL2SSTZZhRJycuJfnK/KbX2yhXIxsPBwz
+         efZmsX8HlqWeC8h2G1AXPWE8Y2nKLo1gvUBf19cLrIBZOJ1CdEYx+OjGQr8YHSHSioWr
+         zvzv5oGb3xycqa3xv3hJNA6xfR2cPs0Y+LEyBAGZkPGaqnb87jzpZ5fNA3DuQ9WP+Mk5
+         t+mg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LECVkpXW;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-1f9a0ee5857sor18250445ad.7.2024.06.19.08.06.27
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-798abd1ed05si1599500285a.465.2024.06.19.23.01.18
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 19 Jun 2024 08:06:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 19 Jun 2024 23:01:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LECVkpXW;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1718809586; x=1719414386; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=53ccK+CjnnoeqgwrzL2MP2JpY9KmQHqgB9vFIPTJVYc=;
-        b=LECVkpXWBELd4luGNrrlansiDxom/GsnROH3W/axNXfy5PTBpojoei1se/hgk1y6gV
-         eM0MCrrvwSsgjczelzkdc3gml4xYkL1xK8dyhTv5YJx1QqxCCF2HUH7GYufooUkfPUvI
-         52/dZ0J3zAF+YEqM7SAj3TUEFctJqtMvNiefwPdt++4hji42q4ZvzqiDDZK+46SUxcS/
-         lZywrwsnAZ0CO3UtKu4XNaUIQ5bwKcIj1TISbjH4VTgxD5jF1kjWO5yU2qqbheU+VoqH
-         68iFv3n+nQlNEO2OG6J+ro2PQY01k0Rs8/SC4alBAG+lqVdOmZdk7P/jUYv9BF1Irfpl
-         TbZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718809586; x=1719414386;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=53ccK+CjnnoeqgwrzL2MP2JpY9KmQHqgB9vFIPTJVYc=;
-        b=Tg5O4id/5V6EcTSOeBTim7znkTrT/nfXWVqLFhlWBKxUC1C3ApyQuGMbBgQN1/TtHp
-         FOdZI/tazKZQgbFg9MKtnU7Fgdp1xkpEQwTgG+b/siRiKDJq5Oa9lfI94JYB2xUUyxTe
-         lhabbwoECyyrKUrX01g5HWV4QM0mbcXh7d4UmJ9iMYE3fYHXE/whfoBoSBtBJWnSIkz5
-         WdTabzEj0jpI7hYqJt1uJ6L/LXGcAZ85nSHRnkiGHzkD1/Q4WJKdMo4n4cts25Ow7L5e
-         sVyG6CPVtJrodh376Fn3zWbfHCBHbbb3+W2NnkoComWBWRCB69ebwZNrXk/HsouFkJjj
-         gB1A==
-X-Gm-Message-State: AOJu0YxE50kbP4LEK5sjw8bO67XnOl6uTzrOz0iyubu5CDx3g1Wxv1J/
-	4fy3Q3ulb5bQNSL3uCN1QrjyLQJ12I2tJCHCtFFoSSyrcLiU9Lkvd66Jz/DZVm1rxWHBpiwwVZO
-	t+aiMpQ==
-X-Google-Smtp-Source: AGHT+IEKSMPfsUN7rJwC84JD0vEhzz1T9Cqgy0kPSP6eSjrW7wTRT3cMKKmdmSZQ03B2BtAQgWO1yg==
-X-Received: by 2002:a17:902:dac6:b0:1f7:ff:b477 with SMTP id d9443c01a7336-1f9aa44fc25mr23739125ad.55.1718809583896;
-        Wed, 19 Jun 2024 08:06:23 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from ?IPV6:2604:3d08:9384:1d00::2193? ([2604:3d08:9384:1d00::2193])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f855e55e48sm118123385ad.37.2024.06.19.08.06.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 19 Jun 2024 08:06:23 -0700 (PDT)
-Message-ID: <b2975c54-2752-4375-a5ad-13a21f8dde14@linaro.org>
-Date: Wed, 19 Jun 2024 08:06:21 -0700
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sKAqb-0004Ao-B8; Thu, 20 Jun 2024 02:00:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sKAqY-00046a-GK; Thu, 20 Jun 2024 02:00:36 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sKAqW-0004hK-OD; Thu, 20 Jun 2024 02:00:34 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id EE8AF2619AC;
+ Thu, 20 Jun 2024 08:00:28 +0200 (CEST)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id coPoNOgnA0W0; Thu, 20 Jun 2024 08:00:27 +0200 (CEST)
+Received: from applejack.lan (83.11.22.244.ipv4.supernova.orange.pl
+ [83.11.22.244])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 34F132619F3;
+ Thu, 20 Jun 2024 08:00:25 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Radoslaw Biernacki <rad@semihalf.com>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, qemu-arm@nongnu.org,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH v2 2/2] tests/avocado: update firmware for sbsa-ref
+Date: Thu, 20 Jun 2024 08:00:14 +0200
+Message-ID: <20240620060014.605563-3-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.45.1
+In-Reply-To: <20240620060014.605563-1-marcin.juszkiewicz@linaro.org>
+References: <20240620060014.605563-1-marcin.juszkiewicz@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 9/9] contrib/plugins: add ips plugin example for cost
- modeling
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: "Dr. David Alan Gilbert" <dave@treblig.org>, qemu-devel@nongnu.org,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mark Burton <mburton@qti.qualcomm.com>, qemu-s390x@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- Laurent Vivier <lvivier@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Alexandre Iooss <erdnaxe@crans.org>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>, Nicholas Piggin <npiggin@gmail.com>,
- Marco Liebel <mliebel@qti.qualcomm.com>, Thomas Huth <thuth@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, qemu-ppc@nongnu.org,
- Mahmoud Mandour <ma.mandourr@gmail.com>, Cameron Esfahani <dirty@apple.com>,
- Jamie Iles <quic_jiles@quicinc.com>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20240612153508.1532940-1-alex.bennee@linaro.org>
- <20240612153508.1532940-10-alex.bennee@linaro.org>
- <ZmoM2Sac97PdXWcC@gallifrey>
- <777e1b13-9a4f-4c32-9ff7-9cedf7417695@linaro.org>
- <Zmy9g1U1uP1Vhx9N@gallifrey>
- <616df287-a167-4a05-8f08-70a78a544929@linaro.org>
- <ZnCi4hcyR8wMMnK4@gallifrey>
- <4e5fded0-d1a9-4494-a66d-6488ce1bcb33@linaro.org>
- <874j9qefv0.fsf@draig.linaro.org>
- <78003bee-08f7-4860-a675-b09721955e60@linaro.org>
- <87jzilcleh.fsf@draig.linaro.org>
-Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <87jzilcleh.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: rsSRkgb/gLKu
+Content-Transfer-Encoding: 8bit
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: QgeNjYJWbiMH
 
-T24gNi8xOS8yNCAwMjo0OSwgQWxleCBCZW5uw6llIHdyb3RlOg0KPiBQaWVycmljayBCb3V2
-aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+IHdyaXRlczoNCj4gDQo+PiBPbiA2
-LzE4LzI0IDAyOjUzLCBBbGV4IEJlbm7DqWUgd3JvdGU6DQo+Pj4gUGllcnJpY2sgQm91dmll
-ciA8cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPiB3cml0ZXM6DQo+Pj4NCj4+Pj4gT24g
-Ni8xNy8yNCAxMzo1NiwgRHIuIERhdmlkIEFsYW4gR2lsYmVydCB3cm90ZToNCj4+Pj4+ICog
-UGllcnJpY2sgQm91dmllciAocGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnKSB3cm90ZToN
-Cj4+Pj4+PiBPbiA2LzE0LzI0IDE1OjAwLCBEci4gRGF2aWQgQWxhbiBHaWxiZXJ0IHdyb3Rl
-Og0KPj4+Pj4+PiAqIFBpZXJyaWNrIEJvdXZpZXIgKHBpZXJyaWNrLmJvdXZpZXJAbGluYXJv
-Lm9yZykgd3JvdGU6DQo+Pj4+Pj4+PiBIaSBEYXZlLA0KPj4+Pj4+Pj4NCj4+Pj4+Pj4+IE9u
-IDYvMTIvMjQgMTQ6MDIsIERyLiBEYXZpZCBBbGFuIEdpbGJlcnQgd3JvdGU6DQo+Pj4+Pj4+
-Pj4gKiBBbGV4IEJlbm7DqWUgKGFsZXguYmVubmVlQGxpbmFyby5vcmcpIHdyb3RlOg0KPj4+
-Pj4+Pj4+PiBGcm9tOiBQaWVycmljayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFy
-by5vcmc+DQo+Pj4+Pj4+Pj4+DQo+Pj4+Pj4+Pj4+IFRoaXMgcGx1Z2luIHVzZXMgdGhlIG5l
-dyB0aW1lIGNvbnRyb2wgaW50ZXJmYWNlIHRvIG1ha2UgZGVjaXNpb25zDQo+Pj4+Pj4+Pj4+
-IGFib3V0IHRoZSBzdGF0ZSBvZiB0aW1lIGR1cmluZyB0aGUgZW11bGF0aW9uLiBUaGUgYWxn
-b3JpdGhtIGlzDQo+Pj4+Pj4+Pj4+IGN1cnJlbnRseSB2ZXJ5IHNpbXBsZS4gVGhlIHVzZXIg
-c3BlY2lmaWVzIGFuIGlwcyByYXRlIHdoaWNoIGFwcGxpZXMNCj4+Pj4+Pj4+Pj4gcGVyIGNv
-cmUuIElmIHRoZSBjb3JlIHJ1bnMgYWhlYWQgb2YgaXRzIGFsbG9jYXRlZCBleGVjdXRpb24g
-dGltZSB0aGUNCj4+Pj4+Pj4+Pj4gcGx1Z2luIHNsZWVwcyBmb3IgYSBiaXQgdG8gbGV0IHJl
-YWwgdGltZSBjYXRjaCB1cC4gRWl0aGVyIHdheSB0aW1lIGlzDQo+Pj4+Pj4+Pj4+IHVwZGF0
-ZWQgZm9yIHRoZSBlbXVsYXRpb24gYXMgYSBmdW5jdGlvbiBvZiB0b3RhbCBleGVjdXRlZCBp
-bnN0cnVjdGlvbnMNCj4+Pj4+Pj4+Pj4gd2l0aCBzb21lIGFkanVzdG1lbnRzIGZvciBjb3Jl
-cyB0aGF0IGlkbGUuDQo+Pj4+Pj4+Pj4NCj4+Pj4+Pj4+PiBBIGZldyByYW5kb20gdGhvdWdo
-dHM6DQo+Pj4+Pj4+Pj4gICAgICAgIGEpIEFyZSB0aGVyZSBhbnkgZGVmaW5pdGlvbnMgb2Yg
-d2hhdCBhIHBsdWdpbiB0aGF0IGNvbnRyb2xzIHRpbWUNCj4+Pj4+Pj4+PiAgICAgICAgICAg
-c2hvdWxkIGRvIHdpdGggYSBsaXZlIG1pZ3JhdGlvbj8NCj4+Pj4+Pj4+DQo+Pj4+Pj4+PiBJ
-dCdzIG5vdCBzb21ldGhpbmcgdGhhdCB3YXMgY29uc2lkZXJlZCBhcyBwYXJ0IG9mIHRoaXMg
-d29yay4NCj4+Pj4+Pj4NCj4+Pj4+Pj4gVGhhdCdzIE9LLCB0aGUgb25seSB0aGluZyBpcyB3
-ZSBuZWVkIHRvIHN0b3AgYW55b25lIGZyb20gaGl0dGluZyBwcm9ibGVtcw0KPj4+Pj4+PiB3
-aGVuIHRoZXkgZG9uJ3QgcmVhbGlzZSBpdCdzIG5vdCBiZWVuIGFkZHJlc3NlZC4NCj4+Pj4+
-Pj4gT25lIHdheSBtaWdodCBiZSB0byBhZGQgYSBtaWdyYXRpb24gYmxvY2tlcjsgc2VlIGlu
-Y2x1ZGUvbWlncmF0aW9uL2Jsb2NrZXIuaA0KPj4+Pj4+PiB0aGVuIHlvdSBtaWdodCBwcmlu
-dCBzb21ldGhpbmcgbGlrZSAnTWlncmF0aW9uIG5vdCBhdmFpbGFibGUgZHVlIHRvIHBsdWdp
-biAuLi4uJw0KPj4+Pj4+Pg0KPj4+Pj4+DQo+Pj4+Pj4gU28gYmFzaWNhbGx5LCB3ZSBjb3Vs
-ZCBtYWtlIGEgY2FsbCB0byBtaWdyYXRlX2FkZF9ibG9ja2VyKCksIHdoZW4gc29tZW9uZQ0K
-Pj4+Pj4+IHJlcXVlc3QgdGltZV9jb250cm9sIHRocm91Z2ggcGx1Z2luIEFQST8NCj4+Pj4+
-Pg0KPj4+Pj4+IElNSE8sIGl0J3Mgc29tZXRoaW5nIHRoYXQgc2hvdWxkIGJlIHBhcnQgb2Yg
-cGx1Z2luIEFQSSAoaWYgYW55IHBsdWdpbiBjYWxscw0KPj4+Pj4+IHFlbXVfcGx1Z2luX3Jl
-cXVlc3RfdGltZV9jb250cm9sKCkpLCBpbnN0ZWFkIG9mIHRoZSBwbHVnaW4gY29kZSBpdHNl
-bGYuIFRoaXMNCj4+Pj4+PiB3YXksIGFueSBwbHVnaW4gZ2V0dGluZyB0aW1lIGNvbnRyb2wg
-YXV0b21hdGljYWxseSBibG9ja3MgYW55IHBvdGVudGlhbA0KPj4+Pj4+IG1pZ3JhdGlvbi4N
-Cj4+Pj4+IE5vdGUgbXkgcXVlc3Rpb24gYXNrZWQgZm9yIGEgJ2FueSBkZWZpbml0aW9ucyBv
-ZiB3aGF0IGEgcGx1Z2luIC4uJyAtDQo+Pj4+PiBzbw0KPj4+Pj4geW91IGNvdWxkIGRlZmlu
-ZSBpdCB0aGF0IHdheSwgYW5vdGhlciBvbmUgaXMgdG8gdGhpbmsgdGhhdCBpbiB0aGUgZnV0
-dXJlDQo+Pj4+PiB5b3UgbWF5IGFsbG93IGl0IGFuZCB0aGUgcGx1Z2luIHNvbWVob3cgaW50
-ZXJhY3RzIHdpdGggbWlncmF0aW9uIG5vdCB0bw0KPj4+Pj4gY2hhbmdlIHRpbWUgYXQgY2Vy
-dGFpbiBtaWdyYXRpb24gcGhhc2VzLg0KPj4+Pj4NCj4+Pj4NCj4+Pj4gSSB3b3VsZCBiZSBp
-biBmYXZvciB0byBmb3JiaWQgdXNhZ2UgZm9yIG5vdyBpbiB0aGlzIGNvbnRleHQuIEknbSBu
-b3QNCj4+Pj4gc3VyZSB3aHkgcGVvcGxlIHdvdWxkIHBsYXkgd2l0aCBtaWdyYXRpb24gYW5k
-IHBsdWdpbnMgZ2VuZXJhbGx5IGF0DQo+Pj4+IHRoaXMgdGltZSAodGhlcmUgbWlnaHQgYmUg
-ZXhwZXJpbWVudHMgb3IgdXNlIGNhc2VzIEknbSBub3QgYXdhcmUgb2YpLA0KPj4+PiBzbyBh
-IHNpbXBsZSBiYXJyaWVyIHByZXZlbnRpbmcgdGhhdCBzZWVtcyBvay4NCj4+Pj4NCj4+Pj4g
-VGhpcyBwbHVnaW4gaXMgcGFydCBvZiBhbiBleHBlcmltZW50IHdoZXJlIHdlIGltcGxlbWVu
-dCBhIHFlbXUgZmVhdHVyZQ0KPj4+PiAoaWNvdW50PWF1dG8gaW4gdGhpcyBjYXNlKSBieSB1
-c2luZyBwbHVnaW5zLiBJZiBpdCB0dXJucyBpbnRvIGENCj4+Pj4gc3VjY2Vzc2Z1bCB1c2Fn
-ZSBhbmQgdGhpcyBwbHVnaW4gYmVjb21lcyBwb3B1bGFyLCB3ZSBjYW4gYWx3YXlzIGxpZnQN
-Cj4+Pj4gdGhlIGxpbWl0YXRpb24gbGF0ZXIuDQo+Pj4+DQo+Pj4+IEBBbGV4LCB3b3VsZCB5
-b3UgbGlrZSB0byBhZGQgdGhpcyBub3cgKGljb3VudD1hdXRvIGlzIHN0aWxsIG5vdA0KPj4+
-PiByZW1vdmVkIGZyb20gcWVtdSksIG9yIHdhaXQgZm9yIGludGVncmF0aW9uLCBhbmQgYWRk
-IHRoaXMgYXMgYW5vdGhlcg0KPj4+PiBwYXRjaD8NCj4+PiBJIHRoaW5rIHdlIGZvbGxvdyB0
-aGUgZGVwcmVjYXRpb24gcHJvY2VzcyBzbyBvbmNlIGludGVncmF0ZWQgd2UgcG9zdA0KPj4+
-IGENCj4+PiBkZXByZWNhdGlvbiBub3RpY2UgaW46DQo+Pj4gICAgIGh0dHBzOi8vcWVtdS5y
-ZWFkdGhlZG9jcy5pby9lbi9tYXN0ZXIvYWJvdXQvZGVwcmVjYXRlZC5odG1sDQo+Pj4gYW5k
-IHRoZW4gcmVtb3ZlIGl0IGFmdGVyIGEgY291cGxlIG9mIHJlbGVhc2VzLg0KPj4+DQo+Pg0K
-Pj4gU29ycnksIEkgd2FzIG5vdCBjbGVhci4gSSBtZWFudCBkbyB3ZSBhZGQgYSBibG9ja2Vy
-IGluIGNhc2Ugc29tZW9uZQ0KPj4gdHJpZXMgdG8gbWlncmF0ZSBhIHZtIHdoaWxlIHRoaXMg
-cGx1Z2luIGlzIHVzZWQ/DQo+IA0KPiBPaCB5ZXMgLSBJIGNhbiBhZGQgdGhhdCBpbiB0aGUg
-Y29yZSBwbHVnaW4gY29kZS4NCj4gDQoNClRoYW5rcyENCg==
+Update firmware to have graphics card memory fix from EDK2 commit
+c1d1910be6e04a8b1a73090cf2881fb698947a6e:
+
+    OvmfPkg/QemuVideoDxe: add feature PCD to remap framebuffer W/C
+
+    Some platforms (such as SBSA-QEMU on recent builds of the emulator) only
+    tolerate misaligned accesses to normal memory, and raise alignment
+    faults on such accesses to device memory, which is the default for PCIe
+    MMIO BARs.
+
+    When emulating a PCIe graphics controller, the framebuffer is typically
+    exposed via a MMIO BAR, while the disposition of the region is closer to
+    memory (no side effects on reads or writes, except for the changing
+    picture on the screen; direct random access to any pixel in the image).
+
+    In order to permit the use of such controllers on platforms that only
+    tolerate these types of accesses for normal memory, it is necessary to
+    remap the memory. Use the DXE services to set the desired capabilities
+    and attributes.
+
+    Hide this behavior under a feature PCD so only platforms that really
+    need it can enable it. (OVMF on x86 has no need for this)
+
+With this fix enabled we can boot sbsa-ref with more than one cpu core.
+
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ tests/avocado/machine_aarch64_sbsaref.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index 136b495096..e920bbf08c 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -37,18 +37,18 @@ def fetch_firmware(self):
+ 
+         Used components:
+ 
+-        - Trusted Firmware 2.11.0
+-        - Tianocore EDK2 stable202405
+-        - Tianocore EDK2-platforms commit 4bbd0ed
++        - Trusted Firmware         v2.11.0
++        - Tianocore EDK2           4d4f569924
++        - Tianocore EDK2-platforms 3f08401
+ 
+         """
+ 
+         # Secure BootRom (TF-A code)
+         fs0_xz_url = (
+             "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
+-            "20240528-140808/edk2/SBSA_FLASH0.fd.xz"
++            "20240619-148232/edk2/SBSA_FLASH0.fd.xz"
+         )
+-        fs0_xz_hash = "fa6004900b67172914c908b78557fec4d36a5f784f4c3dd08f49adb75e1892a9"
++        fs0_xz_hash = "0c954842a590988f526984de22e21ae0ab9cb351a0c99a8a58e928f0c7359cf7"
+         tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash,
+                                       algorithm='sha256')
+         archive.extract(tar_xz_path, self.workdir)
+@@ -57,9 +57,9 @@ def fetch_firmware(self):
+         # Non-secure rom (UEFI and EFI variables)
+         fs1_xz_url = (
+             "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
+-            "20240528-140808/edk2/SBSA_FLASH1.fd.xz"
++            "20240619-148232/edk2/SBSA_FLASH1.fd.xz"
+         )
+-        fs1_xz_hash = "5f3747d4000bc416d9641e33ff4ac60c3cc8cb74ca51b6e932e58531c62eb6f7"
++        fs1_xz_hash = "c6ec39374c4d79bb9e9cdeeb6db44732d90bb4a334cec92002b3f4b9cac4b5ee"
+         tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash,
+                                       algorithm='sha256')
+         archive.extract(tar_xz_path, self.workdir)
+-- 
+2.45.1
+

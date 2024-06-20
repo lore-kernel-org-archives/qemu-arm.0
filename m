@@ -1,203 +1,124 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1892946ejb;
-        Thu, 20 Jun 2024 04:09:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUncrn7d+ma8lFavSgO/fXZyhKqi8lBQ4kEz0cp4WL2Jv4GHnApaf0bfy8HkpGgtUaQ138hkLVd5lXJqo9qYYSmbMwXgz7j
-X-Google-Smtp-Source: AGHT+IGLyQ0vxveqVJmi7gjO+/id7OfZ4DFDskAnoX+8PJFPN+01BF03n8sLJUJvYwwk+YmfqMWq
-X-Received: by 2002:ac8:5d86:0:b0:441:37b:cd6c with SMTP id d75a77b69052e-444a79c17femr51662621cf.25.1718881764932;
-        Thu, 20 Jun 2024 04:09:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718881764; cv=none;
+Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp1582500dlb;
+        Thu, 20 Jun 2024 05:35:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWZZAetIvxwAJQau7VLj2egBUTFUMMF8lNzvT8MVwqBB1XkHqbHnm9VpVEQ6qnvcSXSLb7HwT6IVQrPeQjrfRJmvYBMn3JG
+X-Google-Smtp-Source: AGHT+IEn5IWgaVNUGlg5vsiE7OkiBySKQgIM6/I/3pjmma48qcbUApItFtBkTu2t9cVLztbTShBo
+X-Received: by 2002:ac8:574f:0:b0:440:e39:372a with SMTP id d75a77b69052e-4449b8cc771mr138127691cf.3.1718886941895;
+        Thu, 20 Jun 2024 05:35:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718886941; cv=none;
         d=google.com; s=arc-20160816;
-        b=dpPQm5/mqoZKxQrVySwytPlQJxicztxc7/CMRgzSvhC3ebWVuxswOcMHrPobZrx7HC
-         p4Y8TxjRafdAsUTwvAt83/ctEqkVzfL8SM3AUJawXGzocjjmsifE3g8nRA01MIIiN94C
-         FvBga9GchjhP4mEyowrv3uQ7Tfv6tTKmlc4580cIchQ0AWfcKmngAyC0/XLGpzP1OEgj
-         yD7eIpoi4QoiqL0FMEN/2BzbCgbHWd+3JEqyn7NfuY3/XLXAfrHO2+eptMN+Bo16YHtG
-         j8vkdxji8LGiYIV90OC3lUyMo1G+X+Snrw70dazFuWjaQlxLXK35yaMEMvb51ADJ5HSc
-         FNhw==
+        b=WBxPEZwhXbmO5QtQh478/FgKapAvF/5/qhmtBf1bHstlRvniAASkV5+ITObdzXHJ/7
+         74mGLNKNpVYI9yNk72qZtbm6PdosthlMKpm8TlZMAs89xMHjyBw8nkdSfAxtE4IMpEjn
+         aUq9BQm/L6kkmN/FdHJr9yFro93R1Zzu4d+Z2UwhPEVt/wNz2pcydehNKrKdTkkus2v7
+         d9DAA+kmElT5xt1NL2UXAGjEhAgmdxVRFdC+xNB8g9oRfKsZwV5UvW5IM4F2zafgJGX6
+         UBfg06dK8Nr+HGmUJtAV5C5WEqdVhXETB9uv0LmZULA+OG1lZF/uNV6s3OKsMBM5/aHd
+         iEyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=o6QJ9SZ3OegkAAa1flGgzs96XVQRrdVLEc+wLqwcKo0=;
-        fh=xEkqWc1LPeWdYd8kTmAjrOsAlWFBIfM1C+lkKJIBcJ4=;
-        b=ZStQJB+Z4VhLI28Lb8BkjyyL0ZisAETjtxF7qVqBdHE52V+M1r8ME+nxwTaRusqJ0K
-         v163r5q0QHH2rcXE8PSaZ/t1kuMVklX2omh04ZmAXaYHNCVI+jHIM9BfFF6uFvyykHqV
-         pKgVAWDTbH2lCmYIFCFFlSUPGRJ/jFDy+9lmXW/4KS0TSExZVQcg7KwiJKj20s5S1r0F
-         5CFug2zwO1MReJ1smU0vCVuh3AaqgKbWeRCGqdQEJJIy7zdbVcuPHuSxBY4WmkQJu0x0
-         4gjvF2dEbNOhDvXmWU3UdL975+MMsDgbv7bBTpRTxx1M3eC8w8RCtDvr8v1oQNWh8P0Z
-         G58Q==;
+         :user-agent:mime-version:date:message-id;
+        bh=iTf8RmyhzP+/t6BU4yJ3kpeKkbFGuVjawjAwXjHpzjg=;
+        fh=mQC2nwEoSXvisbWtefPuVHLoQ1VP3FUdKyLtGSMxLc4=;
+        b=bdRxPlvPgAbSYOi/Zen2sCEJwAp0vtLqrfNcGaDIizNJR9+YvwxoqKr2F6fnJR4esN
+         MMGurIouOcnUKnuXJPV0gHLW7U4RjdgApL6NuY5xDL1VEMhXC0kfbyNIU3i2EjtnLd+k
+         36KUIpiSLQNaqM7uZxyrJ8fK5W5Jo5iT4Q986+mPwf8UTcEjOHOyQvD6o0YtcbocmHSd
+         t7yQN4AyARsUWWi30Oq6ZtegrWGtP+OZ06rUDC9g2bCd5+06WwjwKZCuuBwK2iy9vZSb
+         wAxhLPBFoHe5zrOc5NoGBj6j+m7/PY9rDdeTz/H1bvXX5AzBsAADEWqW0QDaPD2eI4j2
+         8oDA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xvW7647X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-444bc021290si3441961cf.720.2024.06.20.04.09.24
+        by mx.google.com with ESMTPS id d75a77b69052e-444ab69555csi35408391cf.781.2024.06.20.05.35.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2024 04:09:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Jun 2024 05:35:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xvW7647X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKFfG-0003ga-VL; Thu, 20 Jun 2024 07:09:15 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sKH0Z-00016i-JC; Thu, 20 Jun 2024 08:35:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sKFfE-0003fb-N3
- for qemu-arm@nongnu.org; Thu, 20 Jun 2024 07:09:12 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sKFfC-0002A0-Pj
- for qemu-arm@nongnu.org; Thu, 20 Jun 2024 07:09:12 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-57cd26347d3so740334a12.1
- for <qemu-arm@nongnu.org>; Thu, 20 Jun 2024 04:09:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718881749; x=1719486549; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=o6QJ9SZ3OegkAAa1flGgzs96XVQRrdVLEc+wLqwcKo0=;
- b=xvW7647Xw6QUDsTWtH7/JGb3Zp8WVk9AN5EHlVMeQED8AeKUn2laH8wu32mXCaoFUV
- J4Ft2vEmC+wt/N6xmgm4uL2n5GOBhFZo4B83el+WbdVUEIwne4+GOsFCIH2gvEU5mLpl
- Q8cYExIKp0Y5NXU+uUFCKI3UG/ynqMip6ZyZ4PwZTMet+8vhAffINHmeGyXdbrgY54ew
- xr3RTM9w0IHQiKYW6keW4Zrea6iwDGCwGVuI3Un9vsbjUlbSuFLVV9hU4tmDPeWs8HuW
- WCB5J0ADwmlxM+yTosTlGM9nqxGinchzLMlKD4VK/ILUqcH98L2lgYwAxKr+pOIPFhnW
- dGfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718881749; x=1719486549;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=o6QJ9SZ3OegkAAa1flGgzs96XVQRrdVLEc+wLqwcKo0=;
- b=vniS5YfB52m+PwWgYEWMUp9QMqlWj9fpdM2BcjWsP+pCzw25lxUCoaul7Dl2vINntA
- Rc3gNSThZZHrcdMrLcFRX7W+swOLxDY9F1+HB7jl6FDGK119fOIAEMTvvmzjpPMV7k4A
- PUNMo3Si4l0UW5vsjCva2CdgSRrtXTQZh1PmIvyuGCJl5CwP2gYTHhrQ01spK8ZDqIh+
- 813F9CEB4MGUdgvJ15/82yC7Xo2+pFI9sYCLCTZ5LWBiF4Dbb0tmm9RKYlbtZx0n397t
- 7cxQ3c29+earfmKp7xSeWM8VHw8tfCjaKFzuWuyjIPakqGPoLF4OS1+1O/si/bKgY/I/
- Qc/g==
-X-Gm-Message-State: AOJu0YyfEnJ7r+3abb5YG4OKdl4oVn2W4AhWdP9gshtYRqkTYjT4G7h/
- ISxyVmRTWrHWTcmnFQj4lTubLxaNmRvhTJAGBMviPt2q7aUY1NEDDKp2nb2VvtQ=
-X-Received: by 2002:a50:d012:0:b0:57c:bd49:9969 with SMTP id
- 4fb4d7f45d1cf-57d07ebf0cemr3567816a12.39.1718881748595; 
- Thu, 20 Jun 2024 04:09:08 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.151.40])
- by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-57cb72da82fsm9271355a12.32.2024.06.20.04.09.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Jun 2024 04:09:07 -0700 (PDT)
-Message-ID: <f446fdbf-90f2-4d07-8f1f-06b697ec8c01@linaro.org>
-Date: Thu, 20 Jun 2024 13:09:05 +0200
+ (Exim 4.90_1) (envelope-from <SRS0=7F4n=NW=kaod.org=clg@ozlabs.org>)
+ id 1sKH0W-00013G-KC; Thu, 20 Jun 2024 08:35:16 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=7F4n=NW=kaod.org=clg@ozlabs.org>)
+ id 1sKH0U-0001WL-Jy; Thu, 20 Jun 2024 08:35:16 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4W4g1T5QPsz4wcg;
+ Thu, 20 Jun 2024 22:35:09 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4W4g1Q6c2Qz4w2F;
+ Thu, 20 Jun 2024 22:35:06 +1000 (AEST)
+Message-ID: <5d617ff8-dc3d-4126-8466-ed1596d3389d@kaod.org>
+Date: Thu, 20 Jun 2024 14:35:02 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3] hw/gpio/aspeed: Add reg_table_size to AspeedGPIOClass
-To: Zheyu Ma <zheyuma97@gmail.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Zheyu Ma <zheyuma97@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20240619183638.4073070-1-zheyuma97@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240619183638.4073070-1-zheyuma97@gmail.com>
+ <f446fdbf-90f2-4d07-8f1f-06b697ec8c01@linaro.org>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <f446fdbf-90f2-4d07-8f1f-06b697ec8c01@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=7F4n=NW=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +RpdzsIybsoP
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cJ5fteD0jQ8/
 
-Hi,
 
-On 19/6/24 20:36, Zheyu Ma wrote:
-> ASan detected a global-buffer-overflow error in the aspeed_gpio_read()
-> function. This issue occurred when reading beyond the bounds of the
-> reg_table.
+>> @@ -75,6 +75,7 @@ struct AspeedGPIOClass {
+>>       uint32_t nr_gpio_pins;
+>>       uint32_t nr_gpio_sets;
+>>       const AspeedGPIOReg *reg_table;
+>> +    uint32_t reg_table_size;
+>>   };
 > 
-> To enhance the safety and maintainability of the Aspeed GPIO code, this commit
-> introduces a reg_table_size member to the AspeedGPIOClass structure. This
-> change ensures that the size of the GPIO register table is explicitly tracked
-> and initialized, reducing the risk of errors if new register tables are
-> introduced in the future.
+> - "reg_table_size" is a number of registers, using s/size/count/ might
+>    be clearer.
+> - No point in specifying 32-bit, "unsigned" is sufficient.
 > 
-> Reproducer:
-> cat << EOF | qemu-system-aarch64 -display none \
-> -machine accel=qtest, -m 512M -machine ast1030-evb -qtest stdio
-> readq 0x7e780272
-> EOF
+> (Cédric, if you agree, you might update your tree).
 > 
-> ASAN log indicating the issue:
-> ==2602930==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7fff096c4e90 sp 0x7fff096c4e88
-> READ of size 2 at 0x55a5da29e128 thread T0
->      #0 0x55a5d700dc61 in aspeed_gpio_read hw/gpio/aspeed_gpio.c:564:14
->      #1 0x55a5d933f3ab in memory_region_read_accessor system/memory.c:445:11
->      #2 0x55a5d92fba40 in access_with_adjusted_size system/memory.c:573:18
->      #3 0x55a5d92f842c in memory_region_dispatch_read1 system/memory.c:1426:16
->      #4 0x55a5d92f7b68 in memory_region_dispatch_read system/memory.c:1459:9
->      #5 0x55a5d9376ad1 in flatview_read_continue_step system/physmem.c:2836:18
->      #6 0x55a5d9376399 in flatview_read_continue system/physmem.c:2877:19
->      #7 0x55a5d93775b8 in flatview_read system/physmem.c:2907:12
-> 
-> Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
-> ---
-> Changes in v3:
-> - Add the reproducer
-> 
-> Changes in v2:
-> - Introduce the reg_table_size to AspeedGPIOClass
-> ---
->   hw/gpio/aspeed_gpio.c         | 17 +++++++++++++++++
->   include/hw/gpio/aspeed_gpio.h |  1 +
->   2 files changed, 18 insertions(+)
+> Unrelated to this patch but figured out while reviewing, in
+> aspeed_gpio_read/write 'idx' is
+> - pointlessly assigned to -1
+> - of type 'uint64_t', also pointless, 'unsigned' is clearer.
 
+Zheyu, could you please send a v4 ? Thanks,
 
->   static const TypeInfo aspeed_gpio_info = {
-> diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-> index 904eecf62c..e66036ac39 100644
-> --- a/include/hw/gpio/aspeed_gpio.h
-> +++ b/include/hw/gpio/aspeed_gpio.h
-> @@ -75,6 +75,7 @@ struct AspeedGPIOClass {
->       uint32_t nr_gpio_pins;
->       uint32_t nr_gpio_sets;
->       const AspeedGPIOReg *reg_table;
-> +    uint32_t reg_table_size;
->   };
-
-- "reg_table_size" is a number of registers, using s/size/count/ might
-   be clearer.
-- No point in specifying 32-bit, "unsigned" is sufficient.
-
-(Cédric, if you agree, you might update your tree).
-
-Unrelated to this patch but figured out while reviewing, in
-aspeed_gpio_read/write 'idx' is
-- pointlessly assigned to -1
-- of type 'uint64_t', also pointless, 'unsigned' is clearer.
-
-Regards,
-
-Phil.
+C.
 

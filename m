@@ -1,114 +1,117 @@
-Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp1639336dlb;
-        Thu, 20 Jun 2024 07:04:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVU69SHta+1paskV1D/ZhxezHCGm+xFOWi8fvQOO919iXE3Rw/k8fsj4jZXyC1ouCGG6lRgOERFkDdDrcGaGzzd/PjYWMwx
-X-Google-Smtp-Source: AGHT+IECKbYiL4akPaiB+7/mmLkiFbmPnhm6T1HW400KK9K14ctZ1NzOj0b7C8G3LryTLslOL33L
-X-Received: by 2002:a05:622a:305:b0:441:3417:ed8 with SMTP id d75a77b69052e-444a79a99b9mr56252661cf.9.1718892242763;
-        Thu, 20 Jun 2024 07:04:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718892242; cv=none;
+Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp1653364dlb;
+        Thu, 20 Jun 2024 07:20:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU+YiN8dv+oMAD9z+ss23QQnQAuggCNt6UcQHhafoIUzaS6As9iWDn7A2Mb4KQ2j4nZqzDXL/TmBM0Q1pQ1aMV6bhLbH46c
+X-Google-Smtp-Source: AGHT+IGvqV1mU14IFtwktIP3wN+p5V8fCMao6udJz9quf+/AinmWzMRTam6U5/QsrwuwZyYE0n4R
+X-Received: by 2002:a05:6830:2002:b0:6f9:c46e:af77 with SMTP id 46e09a7af769-700752aaf80mr6625034a34.17.1718893249985;
+        Thu, 20 Jun 2024 07:20:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718893249; cv=none;
         d=google.com; s=arc-20160816;
-        b=DBhwRyvWw/4JFrOGhoct4IhUlK/JuqAcGsa6nkjKoa4vjHt2SkdtJXvi687Z6mY6Vk
-         UKMYpJBMOy3GSPeTjE1LvYHD4duE7iau4DgiJVy38AQLJN17XEJcZ3tYsJyzjvb7bz0a
-         589o+C1Mv2AAySdnEJjdT1gOzPMZ4vutkw7jTnwq6wjsNvvp3oO9l6gMSlE+lrms1/gV
-         9O5/aIkZn66v5KpgARIkrD2mM0JC3/AOgKY2cwXNJM3/e+nzwey+4nltgeozW7grHOdE
-         STXkJvAGL/CU8wcrhADeG/O7YZoEZTImjWDwyDI50vcTr1d030nrvbuuJSz1n8N8sZCg
-         XU3g==
+        b=RbPruppzg5Rqpjsm3BiClChZsJyykO1Vf8pIf31XSkiY6xBQMSuyb+gsVZRHe36HMf
+         UOkcvKOjgvjtHXiyTJ7Jkl8MPxF2G8d2YMMY7H1v7JwHxwnPZ6av5HjetyR7YCow/bZc
+         X7rDPOw9HeHTGfUVCl6u7bZIuHweyNPNWsheIVLJUhdyuUhoUPdgW7fWtCsb56PR4lZz
+         xM12D1bTPWjuYB+DuOa6pwvoiYDzoTYaqzBl8wAv4+KGSwRgG9MYVDldy2xAjwQ5tg8i
+         7XVdQWNquJ7r/+gk5t3VJZDUzbaTuDxirIq9H7lXaUw8D3vrMBP2fy9drVdm4biVBAC8
+         enqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=+tu9WGfbjcq4lGy6RU0PDp8/3OjFL0eLiT8DXx0B/4I=;
-        fh=5Q2QLtAebaQzmjFW5Ku08b8dilwdIqZjRHUjMOKVlJ8=;
-        b=Pw4W9X6BZX4auNXc12LhsGbXHFecCaRKUimQoAv3jCBzosENCsnGF6O0k6P35mQp4j
-         n8rOfS8SUSjsw7N1Qan1Dj8qAuR/y7p0kcKIYV60AOq8dxO/wgBwu3XYLQRYGLnoIUI3
-         LYg4Q7sOMsXgUl/f7+ZZpieYsXQsY22YdR7RNW9AFFqbhX/qq+t0LftAitMXE/4CHhvb
-         j38XBhZrFyxEBtY8tNSZrx33Fcay90w0mFEoHszlOzR9o3Vtu2khs0gbdKOs3f9xNUMB
-         sFtc0W1wV/Fh/ZDEI+dZrnzAH+dc+DaWoeMnYxL8ti8GmW7UsbABWuFgBWhCsv/GKAr2
-         rSrQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=mVya9DJzD9bylNtCQPe8SLuSJyriwTot/7zJT0BCCqw=;
+        fh=xEkqWc1LPeWdYd8kTmAjrOsAlWFBIfM1C+lkKJIBcJ4=;
+        b=n16zjiGg12HCIeyNErB4l2IsJrfXwrfQ/pT4CFfJAr+/V8YOr2pkAu1v8wzwwX6W19
+         I4M5d+gSaLGL9gwaZnYbNl5Uo9iYpenUfvVojqDlcjz7GzgjP1XSdaffATkVBMPaCqD6
+         oLolhlnNeGw8VfnyrY8JYAmPtZo2/E/EdU/+w+z17tOySYsIs8Qu1YHtFIHwejuYMjWo
+         jUxfALSqwR+EvdIA5tsZrz9Qu38ylJA+WOWZP7aSReM3Fv0h4YPusi4ml0DSgQAS/2kq
+         2i2KulZqRbyRk9V1VETtC/3DsAmu7ySCfQjvCsP8HTLDj0JcnooDRSK/ewA/Bq7SkhGY
+         1c8Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JpxVTxE9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ylOuzOM0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-441f2fe51f6si166800751cf.565.2024.06.20.07.04.02
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b506c7a5b2si6987876d6.247.2024.06.20.07.20.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2024 07:04:02 -0700 (PDT)
+        Thu, 20 Jun 2024 07:20:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JpxVTxE9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ylOuzOM0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKIOD-0002Rp-Un; Thu, 20 Jun 2024 10:03:50 -0400
+	id 1sKIeS-0001NC-M0; Thu, 20 Jun 2024 10:20:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zheyuma97@gmail.com>)
- id 1sKIO6-0002Ny-Pv; Thu, 20 Jun 2024 10:03:43 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sKIeR-0001Mu-CC
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2024 10:20:35 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zheyuma97@gmail.com>)
- id 1sKIO5-0001fF-8Z; Thu, 20 Jun 2024 10:03:42 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-57d1d45ba34so995030a12.3; 
- Thu, 20 Jun 2024 07:03:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sKIeP-0004iA-OE
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2024 10:20:35 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-3629c517da9so1026882f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 20 Jun 2024 07:20:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1718892219; x=1719497019; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+tu9WGfbjcq4lGy6RU0PDp8/3OjFL0eLiT8DXx0B/4I=;
- b=JpxVTxE99dqaewPMsIr1mZ5vjNGsYFVXdzkUlO3JE+QZ76n/S+zprdUen4h8BFxLy4
- JIF1NwyBc6H0wb64JWSPXdomSwMxnyNhe0R1t+ny8XFY8+wIb+MXeHEw3dgqmgB7/8ob
- LfSJpMGP0VvNTgikaYfA2RgvRnYDpaNWVFGfwGyh/FHlti2L8VDPQ9lSaueREz9aXBv3
- fwagF3mbpWHiowvr6e7FkXs/nfZy4I1H+/+njQoiIgL9dpWPnYs1txpqnMIN4cGCRLeq
- 4RUJGpdm9liF3U61EUmIci1KPWMcFMr3R6jdm96PcqhnE6wL8Omgf5bNRfh2f1gyc+k5
- HjrQ==
+ d=linaro.org; s=google; t=1718893232; x=1719498032; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mVya9DJzD9bylNtCQPe8SLuSJyriwTot/7zJT0BCCqw=;
+ b=ylOuzOM08MmY+DL6gPdsOjmGdG3ELZx6p09KyHLRGSPG7Cc2313d9BotD+KMfhfVfz
+ N85Cd2NWy99GoQW5Xe08gled1YTFZToMWw+w4wHuWK91RrD9iUYvUWIQQKYuspnmBwew
+ DXReC4TZz8SOdF+Vh/hmbN/3E3i2fIYZPnBM5TEv5WXSw9l2BHOmE6rIklnFPg/8YW1w
+ mavSxFB2ASWPJsejX//dn6r0nRT50NzQZGAeH3s75qNjOsgP2KO6p6iQkLJsk0yjWfuN
+ vynBXM/0/JVBtD+gN2g8xyZ4xFnpnc9veUy+1RWj7aJ4Q98ac9zyp+2zqivupbv8EmJm
+ pJgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718892219; x=1719497019;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+tu9WGfbjcq4lGy6RU0PDp8/3OjFL0eLiT8DXx0B/4I=;
- b=ATYwDAQm8FjrkesFQYp7sCR013Zyr1R8SNDZRoFLqhe6m/+09jgotebr84Y6pfHu/D
- aNUFXqG+EOnelnaWI81h5Uhl3p+YJTpiT445F6cgBG/cnVhuCtfOG1naH16Rdou0+T2+
- ixRNWkWWw+xU+mC+GOt0PMhJN4lRS+ri0MrAHdzCaZKOnc/EhMhz57v5q7eDRHxaca1v
- 1WKTam4tnDfY/aTEWm8tDPA8l17zj8cBTLYd5p1Q2ODqnt4alnWpsbdX09b33LIbfJoF
- fJGIA9D3nVrR2/Ztx32ufqgPou15f/cmiNvcKI11uwJEsOEE4v6NMUZ2ED3/9k8Afz0z
- +ohQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU0i2bh8ppg/o0q2yuH2HQgPlSfbp1dKrLepqfmtWFvUJTNGslO7fpVeV/hVIsC+LSwuaPWjz24PkFcTF2rG5Dqz4MU9veHx7q696d0L896crS/SSy1wkeWPbA=
-X-Gm-Message-State: AOJu0Yw4YMYN+HXMVEOwrSQOdUbrq835kWglW6iLLi33x18fUHf+6aqO
- g7ZQeji+qyP2P7nQ54CIeK3MZbbyl+DM2hoRhGWTJdlzTvalrptxxgn+ZFyqdRFBZRJR1IOwGFt
- Bd9cyalhQvPJBBdXomjRYUMnaGA==
-X-Received: by 2002:a17:907:c24d:b0:a6f:6c57:603c with SMTP id
- a640c23a62f3a-a6fab7d7cbbmr410576766b.70.1718892218814; Thu, 20 Jun 2024
- 07:03:38 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1718893232; x=1719498032;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mVya9DJzD9bylNtCQPe8SLuSJyriwTot/7zJT0BCCqw=;
+ b=fuKM0A3wDzTjn6WMhk+gS8OpHbtCzNHBRuMez36bZHY0F6/Dm4Icc/nZEj6Iib8umk
+ 6DTOTblFgs35Wurp5MNo55RTsN9t+NABD8UwH7DZm+W/U0b/UBgWogKq2iJcw1FtpPCP
+ y2Fy9Muku3oiNKhzHCLM3KpdWa7V+yZHb/FECHdFoNy3E6rXhUiD5Si7+aHv3rOif4JP
+ DIy7wJC0NXE/ySFdUKSVnKvEtTUUWkbUPguBjehVz4LhqXItyYmec5cYx/SOfl2Ca3JM
+ JBPU6FyXTRsZFghl5YQu1HW/Q9aK3jSue0tbYAJN13Rsf1jKiSl6jKD52MC72eCx3qwT
+ r77Q==
+X-Gm-Message-State: AOJu0YzVcKqu7K2Oo/C5Myk7sl1PrsMO+GnShmcVeA3yPrKqeSfXKQW2
+ refMjUM94vkvD3XeVfkmWIoDyH9GFfK1SL1gA1PLQdSg16ljonXrKsLEOfN6Jss=
+X-Received: by 2002:a5d:444f:0:b0:35f:1ed7:f1fd with SMTP id
+ ffacd0b85a97d-363175b8fb7mr4542885f8f.19.1718893232055; 
+ Thu, 20 Jun 2024 07:20:32 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.151.40])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-364774423d5sm2453703f8f.70.2024.06.20.07.20.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 20 Jun 2024 07:20:30 -0700 (PDT)
+Message-ID: <6a817f44-27fe-432a-8118-bbcec790535f@linaro.org>
+Date: Thu, 20 Jun 2024 16:20:28 +0200
 MIME-Version: 1.0
-References: <20240619183638.4073070-1-zheyuma97@gmail.com>
- <f446fdbf-90f2-4d07-8f1f-06b697ec8c01@linaro.org>
- <5d617ff8-dc3d-4126-8466-ed1596d3389d@kaod.org>
-In-Reply-To: <5d617ff8-dc3d-4126-8466-ed1596d3389d@kaod.org>
-From: Zheyu Ma <zheyuma97@gmail.com>
-Date: Thu, 20 Jun 2024 16:03:27 +0200
-Message-ID: <CAMhUBjme1Pj7k5=O9yBwABqM0kF9f29upfpJRTxZJAyz43T9Kw@mail.gmail.com>
-Subject: Re: [PATCH v3] hw/gpio/aspeed: Add reg_table_size to AspeedGPIOClass
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000001c161e061b52c8a0"
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=zheyuma97@gmail.com; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] hw/gpio/aspeed: Add reg_table_count to AspeedGPIOClass
+To: Zheyu Ma <zheyuma97@gmail.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20240620140239.375338-1-zheyuma97@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240620140239.375338-1-zheyuma97@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -125,72 +128,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5fD/Feo0b5iC
+X-TUID: 28Oi5E4UAZ/0
 
---0000000000001c161e061b52c8a0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 20/6/24 16:02, Zheyu Ma wrote:
+> ASan detected a global-buffer-overflow error in the aspeed_gpio_read()
+> function. This issue occurred when reading beyond the bounds of the
+> reg_table.
+> 
+> To enhance the safety and maintainability of the Aspeed GPIO code, this commit
+> introduces a reg_table_count member to the AspeedGPIOClass structure. This
+> change ensures that the size of the GPIO register table is explicitly tracked
+> and initialized, reducing the risk of errors if new register tables are
+> introduced in the future.
+> 
+> Reproducer:
+> cat << EOF | qemu-system-aarch64 -display none \
+> -machine accel=qtest, -m 512M -machine ast1030-evb -qtest stdio
+> readq 0x7e780272
+> EOF
+> 
+> ASAN log indicating the issue:
+> ==2602930==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7fff096c4e90 sp 0x7fff096c4e88
+> READ of size 2 at 0x55a5da29e128 thread T0
+>      #0 0x55a5d700dc61 in aspeed_gpio_read hw/gpio/aspeed_gpio.c:564:14
+>      #1 0x55a5d933f3ab in memory_region_read_accessor system/memory.c:445:11
+>      #2 0x55a5d92fba40 in access_with_adjusted_size system/memory.c:573:18
+>      #3 0x55a5d92f842c in memory_region_dispatch_read1 system/memory.c:1426:16
+>      #4 0x55a5d92f7b68 in memory_region_dispatch_read system/memory.c:1459:9
+>      #5 0x55a5d9376ad1 in flatview_read_continue_step system/physmem.c:2836:18
+>      #6 0x55a5d9376399 in flatview_read_continue system/physmem.c:2877:19
+>      #7 0x55a5d93775b8 in flatview_read system/physmem.c:2907:12
+> 
+> Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
+> ---
+> Changes in v4:
+> - Change the variable name to 'reg_table_count'
+> - Change the 'reg_table_count' type to unsigned
 
-On Thu, Jun 20, 2024 at 2:35=E2=80=AFPM C=C3=A9dric Le Goater <clg@kaod.org=
-> wrote:
+Thanks,
 
->
-> >> @@ -75,6 +75,7 @@ struct AspeedGPIOClass {
-> >>       uint32_t nr_gpio_pins;
-> >>       uint32_t nr_gpio_sets;
-> >>       const AspeedGPIOReg *reg_table;
-> >> +    uint32_t reg_table_size;
-> >>   };
-> >
-> > - "reg_table_size" is a number of registers, using s/size/count/ might
-> >    be clearer.
-> > - No point in specifying 32-bit, "unsigned" is sufficient.
-> >
-> > (C=C3=A9dric, if you agree, you might update your tree).
-> >
-> > Unrelated to this patch but figured out while reviewing, in
-> > aspeed_gpio_read/write 'idx' is
-> > - pointlessly assigned to -1
-> > - of type 'uint64_t', also pointless, 'unsigned' is clearer.
->
-> Zheyu, could you please send a v4 ? Thanks,
->
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Sure. I've sent it.
+> Changes in v3:
+> - Add the reproducer
+> ---
+>   hw/gpio/aspeed_gpio.c         | 17 +++++++++++++++++
+>   include/hw/gpio/aspeed_gpio.h |  1 +
+>   2 files changed, 18 insertions(+)
 
-Zheyu
-
---0000000000001c161e061b52c8a0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div><br></div><br><div class=3D"gmail_quote"><div dir=3D"=
-ltr" class=3D"gmail_attr">On Thu, Jun 20, 2024 at 2:35=E2=80=AFPM C=C3=A9dr=
-ic Le Goater &lt;<a href=3D"mailto:clg@kaod.org">clg@kaod.org</a>&gt; wrote=
-:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.=
-8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><br>
-&gt;&gt; @@ -75,6 +75,7 @@ struct AspeedGPIOClass {<br>
-&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint32_t nr_gpio_pins;<br>
-&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint32_t nr_gpio_sets;<br>
-&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const AspeedGPIOReg *reg_table;<br>
-&gt;&gt; +=C2=A0=C2=A0=C2=A0 uint32_t reg_table_size;<br>
-&gt;&gt; =C2=A0 };<br>
-&gt; <br>
-&gt; - &quot;reg_table_size&quot; is a number of registers, using s/size/co=
-unt/ might<br>
-&gt;=C2=A0 =C2=A0 be clearer.<br>
-&gt; - No point in specifying 32-bit, &quot;unsigned&quot; is sufficient.<b=
-r>
-&gt; <br>
-&gt; (C=C3=A9dric, if you agree, you might update your tree).<br>
-&gt; <br>
-&gt; Unrelated to this patch but figured out while reviewing, in<br>
-&gt; aspeed_gpio_read/write &#39;idx&#39; is<br>
-&gt; - pointlessly assigned to -1<br>
-&gt; - of type &#39;uint64_t&#39;, also pointless, &#39;unsigned&#39; is cl=
-earer.<br>
-<br>
-Zheyu, could you please send a v4 ? Thanks,<br></blockquote><div>=C2=A0</di=
-v><div>Sure. I&#39;ve sent it.<br><br>Zheyu=C2=A0</div></div></div>
-
---0000000000001c161e061b52c8a0--

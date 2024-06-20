@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57cb72e9943sm9855578a12.51.2024.06.20.08.22.21
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f56f416dfsm775943366b.164.2024.06.20.08.22.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Jun 2024 08:22:22 -0700 (PDT)
+        Thu, 20 Jun 2024 08:22:28 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6C5285F9FB;
+	by draig.lan (Postfix) with ESMTP id 9CFFA5FA01;
 	Thu, 20 Jun 2024 16:22:21 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -36,137 +36,150 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Marcelo Tosatti <mtosatti@redhat.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 04/12] sysemu: add set_virtual_time to accel ops
-Date: Thu, 20 Jun 2024 16:22:12 +0100
-Message-Id: <20240620152220.2192768-5-alex.bennee@linaro.org>
+Subject: [PATCH v2 06/12] sysemu: generalise qtest_warp_clock as qemu_clock_advance_virtual_time
+Date: Thu, 20 Jun 2024 16:22:14 +0100
+Message-Id: <20240620152220.2192768-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240620152220.2192768-1-alex.bennee@linaro.org>
 References: <20240620152220.2192768-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Tk3E6Sbu0KMR
+X-TUID: AKGLRa2j9Bpe
 
-We are about to remove direct calls to individual accelerators for
-this information and will need a central point for plugins to hook
-into time changes.
+Move the key functionality of moving time forward into the clock
+sub-system itself. This will allow us to plumb in time control into
+plugins.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20240530220610.1245424-2-pierrick.bouvier@linaro.org>
----
- include/sysemu/accel-ops.h                     | 18 +++++++++++++++++-
- include/sysemu/cpu-timers.h                    |  3 ++-
- ...et-virtual-clock.c => cpus-virtual-clock.c} |  5 +++++
- system/cpus.c                                  | 11 +++++++++++
- stubs/meson.build                              |  2 +-
- 5 files changed, 36 insertions(+), 3 deletions(-)
- rename stubs/{cpus-get-virtual-clock.c => cpus-virtual-clock.c} (68%)
+Message-Id: <20240530220610.1245424-4-pierrick.bouvier@linaro.org>
 
-diff --git a/include/sysemu/accel-ops.h b/include/sysemu/accel-ops.h
-index ef91fc28bb..a088672230 100644
---- a/include/sysemu/accel-ops.h
-+++ b/include/sysemu/accel-ops.h
-@@ -20,7 +20,12 @@
- typedef struct AccelOpsClass AccelOpsClass;
- DECLARE_CLASS_CHECKERS(AccelOpsClass, ACCEL_OPS, TYPE_ACCEL_OPS)
+--
+v2
+  - use target_ns in docs and signature
+---
+ include/qemu/timer.h | 15 +++++++++++++++
+ system/qtest.c       | 25 +++----------------------
+ util/qemu-timer.c    | 26 ++++++++++++++++++++++++++
+ 3 files changed, 44 insertions(+), 22 deletions(-)
+
+diff --git a/include/qemu/timer.h b/include/qemu/timer.h
+index 9a366e551f..5ce83c7911 100644
+--- a/include/qemu/timer.h
++++ b/include/qemu/timer.h
+@@ -245,6 +245,21 @@ bool qemu_clock_run_timers(QEMUClockType type);
+  */
+ bool qemu_clock_run_all_timers(void);
  
--/* cpus.c operations interface */
 +/**
-+ * struct AccelOpsClass - accelerator interfaces
++ * qemu_clock_advance_virtual_time(): advance the virtual time tick
++ * @target_ns: target time in nanoseconds
 + *
-+ * This structure is used to abstract accelerator differences from the
-+ * core CPU code. Not all have to be implemented.
++ * This function is used where the control of the flow of time has
++ * been delegated to outside the clock subsystem (be it qtest, icount
++ * or some other external source). You can ask the clock system to
++ * return @early at the first expired timer.
++ *
++ * Time can only move forward, attempts to reverse time would lead to
++ * an error.
++ *
++ * Returns: new virtual time.
 + */
- struct AccelOpsClass {
-     /*< private >*/
-     ObjectClass parent_class;
-@@ -44,7 +49,18 @@ struct AccelOpsClass {
++int64_t qemu_clock_advance_virtual_time(int64_t target_ns);
  
-     void (*handle_interrupt)(CPUState *cpu, int mask);
- 
-+    /**
-+     * @get_virtual_clock: fetch virtual clock
-+     * @set_virtual_clock: set virtual clock
-+     *
-+     * These allow the timer subsystem to defer to the accelerator to
-+     * fetch time. The set function is needed if the accelerator wants
-+     * to track the changes to time as the timer is warped through
-+     * various timer events.
-+     */
-     int64_t (*get_virtual_clock)(void);
-+    void (*set_virtual_clock)(int64_t time);
-+
-     int64_t (*get_elapsed_ticks)(void);
- 
-     /* gdbstub hooks */
-diff --git a/include/sysemu/cpu-timers.h b/include/sysemu/cpu-timers.h
-index d86738a378..7bfa960fbd 100644
---- a/include/sysemu/cpu-timers.h
-+++ b/include/sysemu/cpu-timers.h
-@@ -96,8 +96,9 @@ int64_t cpu_get_clock(void);
- 
- void qemu_timer_notify_cb(void *opaque, QEMUClockType type);
- 
--/* get the VIRTUAL clock and VM elapsed ticks via the cpus accel interface */
-+/* get/set VIRTUAL clock and VM elapsed ticks via the cpus accel interface */
- int64_t cpus_get_virtual_clock(void);
-+void cpus_set_virtual_clock(int64_t new_time);
- int64_t cpus_get_elapsed_ticks(void);
- 
- #endif /* SYSEMU_CPU_TIMERS_H */
-diff --git a/stubs/cpus-get-virtual-clock.c b/stubs/cpus-virtual-clock.c
-similarity index 68%
-rename from stubs/cpus-get-virtual-clock.c
-rename to stubs/cpus-virtual-clock.c
-index fd447d53f3..af7c1a1d40 100644
---- a/stubs/cpus-get-virtual-clock.c
-+++ b/stubs/cpus-virtual-clock.c
-@@ -6,3 +6,8 @@ int64_t cpus_get_virtual_clock(void)
- {
-     return cpu_get_clock();
- }
-+
-+void cpus_set_virtual_clock(int64_t new_time)
-+{
-+    /* do nothing */
-+}
-diff --git a/system/cpus.c b/system/cpus.c
-index f8fa78f33d..d3640c9503 100644
---- a/system/cpus.c
-+++ b/system/cpus.c
-@@ -229,6 +229,17 @@ int64_t cpus_get_virtual_clock(void)
-     return cpu_get_clock();
- }
- 
-+/*
-+ * Signal the new virtual time to the accelerator. This is only needed
-+ * by accelerators that need to track the changes as we warp time.
-+ */
-+void cpus_set_virtual_clock(int64_t new_time)
-+{
-+    if (cpus_accel && cpus_accel->set_virtual_clock) {
-+        cpus_accel->set_virtual_clock(new_time);
-+    }
-+}
-+
  /*
-  * return the time elapsed in VM between vm_start and vm_stop.  Unless
-  * icount is active, cpus_get_elapsed_ticks() uses units of the host CPU cycle
-diff --git a/stubs/meson.build b/stubs/meson.build
-index f15b48d01f..772a3e817d 100644
---- a/stubs/meson.build
-+++ b/stubs/meson.build
-@@ -29,7 +29,7 @@ endif
- if have_block or have_ga
-   stub_ss.add(files('replay-tools.c'))
-   # stubs for hooks in util/main-loop.c, util/async.c etc.
--  stub_ss.add(files('cpus-get-virtual-clock.c'))
-+  stub_ss.add(files('cpus-virtual-clock.c'))
-   stub_ss.add(files('icount.c'))
-   stub_ss.add(files('graph-lock.c'))
-   if linux_io_uring.found()
+  * QEMUTimerList
+diff --git a/system/qtest.c b/system/qtest.c
+index 5be66b0140..8cb98966b4 100644
+--- a/system/qtest.c
++++ b/system/qtest.c
+@@ -337,26 +337,6 @@ void qtest_set_virtual_clock(int64_t count)
+     qatomic_set_i64(&qtest_clock_counter, count);
+ }
+ 
+-static void qtest_clock_warp(int64_t dest)
+-{
+-    int64_t clock = cpus_get_virtual_clock();
+-    AioContext *aio_context;
+-    assert(qtest_enabled());
+-    aio_context = qemu_get_aio_context();
+-    while (clock < dest) {
+-        int64_t deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
+-                                                      QEMU_TIMER_ATTR_ALL);
+-        int64_t warp = qemu_soonest_timeout(dest - clock, deadline);
+-
+-        cpus_set_virtual_clock(cpus_get_virtual_clock() + warp);
+-
+-        qemu_clock_run_timers(QEMU_CLOCK_VIRTUAL);
+-        timerlist_run_timers(aio_context->tlg.tl[QEMU_CLOCK_VIRTUAL]);
+-        clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+-    }
+-    qemu_clock_notify(QEMU_CLOCK_VIRTUAL);
+-}
+-
+ static bool (*process_command_cb)(CharBackend *chr, gchar **words);
+ 
+ void qtest_set_command_cb(bool (*pc_cb)(CharBackend *chr, gchar **words))
+@@ -751,7 +731,8 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+             ns = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
+                                             QEMU_TIMER_ATTR_ALL);
+         }
+-        qtest_clock_warp(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ns);
++        qemu_clock_advance_virtual_time(
++            qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ns);
+         qtest_send_prefix(chr);
+         qtest_sendf(chr, "OK %"PRIi64"\n",
+                     (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+@@ -777,7 +758,7 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+         g_assert(words[1]);
+         ret = qemu_strtoi64(words[1], NULL, 0, &ns);
+         g_assert(ret == 0);
+-        qtest_clock_warp(ns);
++        qemu_clock_advance_virtual_time(ns);
+         qtest_send_prefix(chr);
+         qtest_sendf(chr, "OK %"PRIi64"\n",
+                     (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+diff --git a/util/qemu-timer.c b/util/qemu-timer.c
+index 6a0de33dd2..213114be68 100644
+--- a/util/qemu-timer.c
++++ b/util/qemu-timer.c
+@@ -645,6 +645,11 @@ int64_t qemu_clock_get_ns(QEMUClockType type)
+     }
+ }
+ 
++static void qemu_virtual_clock_set_ns(int64_t time)
++{
++    return cpus_set_virtual_clock(time);
++}
++
+ void init_clocks(QEMUTimerListNotifyCB *notify_cb)
+ {
+     QEMUClockType type;
+@@ -675,3 +680,24 @@ bool qemu_clock_run_all_timers(void)
+ 
+     return progress;
+ }
++
++int64_t qemu_clock_advance_virtual_time(int64_t dest)
++{
++    int64_t clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    AioContext *aio_context;
++    aio_context = qemu_get_aio_context();
++    while (clock < dest) {
++        int64_t deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
++                                                      QEMU_TIMER_ATTR_ALL);
++        int64_t warp = qemu_soonest_timeout(dest - clock, deadline);
++
++        qemu_virtual_clock_set_ns(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + warp);
++
++        qemu_clock_run_timers(QEMU_CLOCK_VIRTUAL);
++        timerlist_run_timers(aio_context->tlg.tl[QEMU_CLOCK_VIRTUAL]);
++        clock = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    }
++    qemu_clock_notify(QEMU_CLOCK_VIRTUAL);
++
++    return clock;
++}
 -- 
 2.39.2

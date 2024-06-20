@@ -1,115 +1,113 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp2110941ejb;
-        Thu, 20 Jun 2024 10:15:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGwz3js7NEjIS/jivsJ6RvCQKM3LUJ0IFcPcwuQw/4eeyymQNTFnKJ3vLt+nF7YRPB9pXZZ
-X-Received: by 2002:a05:620a:2585:b0:795:5070:e559 with SMTP id af79cd13be357-79bb3ee24fdmr635423585a.72.1718903716420;
-        Thu, 20 Jun 2024 10:15:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718903716; cv=none;
+Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp1782185dlb;
+        Thu, 20 Jun 2024 10:35:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXIWzXb6gQAgPEBtfaXbS04KCr0qtzzLp7ql3J4oYgDvNM+fXpfP7dtHD49qsZ0MRp5Mhzck/H+b8VLhy/EGAD+ZLX8vmB4
+X-Google-Smtp-Source: AGHT+IGQVclNcAIsStK8ofbRZXZJJn93H747dFaf/R3/r+BWk3wNisQyNv2SOJMxIwRAQpRnzA27
+X-Received: by 2002:a0c:f28a:0:b0:6b0:938e:44e0 with SMTP id 6a1803df08f44-6b501ed5b23mr68893846d6.62.1718904900520;
+        Thu, 20 Jun 2024 10:35:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718904900; cv=none;
         d=google.com; s=arc-20160816;
-        b=CEqzlfmABtXwyy94uemgS9t4GhRQSzYBnzJg8RHNxubphBgrEa9gE3Lx32S8L5sLfm
-         WoWXLJVLSl3i3LRvZKB4APtpXdJzjSf2LT9mkkrioNt1KE8DVvNVt4vPDyKMeFH5+aHW
-         zWnvkskr37SCT6q7AN3zPZBBAXDMn/JEpJY6mMUwB5xwO220Lu3QG4FWFGb2CFKDKc6v
-         ywviLIBTvHL2G5iUm1nMY8qKBMq+BNaM1s4xN2Eop+nZNxU4MahVxm5855+w1aaZAjhZ
-         PDB2jnwDxK6Q4+W4dTPk4dN7zHTXPUbpMQrI+RjZ7abw6HIqwzp6C/Sq65mFJbJ47XcE
-         51/w==
+        b=ywntsbxoVMgpNZaoxG8NIG3+B64AZhsb1gd/BlkWNN0h69T8dzQv0vQ4RF26u67Tcy
+         THQa6vCBZxk5AztzkBKljXNTMb1oO5UzI8Q3nnXC6IqRguDLNByQokZ9XGlebrpXN5ys
+         le1TR4MgHtCrd5E2jWDdcCiWzYb+Ctqj5e6yKVXuJlsGv9GVYbwkfSiHwjV1v/ZcUyr8
+         zR6DaO4jL4B4Hdo1xlJLgyBG5Z2N70Gp99b10RK9ALBnLvtdNELijYjyn+zkLL+umvSA
+         tM8aHD2pTOc0/wxsLFZ26dYLdqrMCXVFzVXkDIF2NWAtIoKPdH0K+Ni8D2mcAGjGm5A1
+         axsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=cvReVOaxMOcLfFk/GJhrVgAzazDhgpmW/4bz55GggPg=;
-        fh=5VOOsMvPo6UW0ZskeugOsB3QuyBDVdsofqJXfDllUd4=;
-        b=RscgP3Kwrm/XiN72bhIKiFXvAu8ME6k8Nom9XY2B0wEwtKNtebgtT3P35/6eKsb5xp
-         xHNAoUBzPP1vt4obihsMiR11DconffDLiHQJX80H2VvOYHR1pCw2ZfgeZhCKJoJQf5BD
-         c0EtXQaXjIUaiolOWspESdjVWYUkz2uV7dJ0pPYSICI64AIq9S9QFsm8vRDVJNyMc2Xa
-         ammE0UEnMg73NJVw1EpJ0YW6hELjkyujdNhDvE5kjJZro6UA/U5L4tw7aGqVFSqwnNi8
-         51P5u90oFXqTGi30geKILdhUJKC2m9klu9cQt1PyLX544jQmLQqZIwLi9tDqOeoQI2Y7
-         VsiA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:cc:from:references:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=JSOwfNu+nTkhUY1sTluCY+7F6Z5c4YIiIQfEmoTmHHg=;
+        fh=o4ENYfGzzLpYMQGdTkob1fxsybfz8YYum1waCUTyBpU=;
+        b=F0LMqI3eWMyCzRIvrtnTmkAjVCPqJo4aY2ximhepJQd8+6OQR+bjhYFoM0lxIsz6Lu
+         LK37xJA1mqszMji9m6+n1d7Tt422fgPkAVDkydFt2ZAk0sg4URvLiBmJT88Zgqx7JsF9
+         bp+afGTdC76jHSweTdqVYDke9PFqoiqD6fUgOaAnFlFj0K+/kiKKRu/BpsSh4YAuZF4w
+         rc66Blf/Yi9mvLQSjwcV2WB4u6Yr6U2Mwe1DlunZM4tC2vJXc0xMcGf/BSWaqihOtzg0
+         IAcJhIxtNlNLFdz9vdxGq4G9Mc34fMjX+e2RXA7wZx/v08tIGxzPkDI1pphhQV9MmOCE
+         e1xQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DuKt+x/P";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=byCF8b82;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4434bf21f4csi134916391cf.491.2024.06.20.10.15.15
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b500141e4fsi59574906d6.206.2024.06.20.10.35.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 20 Jun 2024 10:15:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 20 Jun 2024 10:35:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="DuKt+x/P";
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=byCF8b82;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sKLg5-00072B-Bg; Thu, 20 Jun 2024 13:34:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sKLfp-0006p2-Kd
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2024 13:34:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sKLfi-00009z-BX
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2024 13:34:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1718903715;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=cvReVOaxMOcLfFk/GJhrVgAzazDhgpmW/4bz55GggPg=;
-	b=DuKt+x/PL+J8nGXGWx6aolwKlGmySkIGn6o5QFVOEvYbVsPQVBQUxK2ryxV2x5rlxFlloB
-	W7XwgniXsxBd/47p3k6ZDTw049kWGULu1r+sCYa4PXDQLpsoLplIfLY9PEFmsFEc4iFokk
-	8TyZaMMA2Hp7pH7gJ+GWyCZCyXUMIB8=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1718904845;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=JSOwfNu+nTkhUY1sTluCY+7F6Z5c4YIiIQfEmoTmHHg=;
+ b=byCF8b82UlnPovU27x4+He6ijXjD8QAvUtIch4nh9nHo6QFLVVZ56e9zesgKKML/AM2hec
+ vytq5bS3IPNIrGQqCMIGGzBelMZtEyBYJ0YlfgTYqhBRuc7Z5P3Ldu+C5P5PbU3uNQ+7Ir
+ r5QzTLsudKJpwLdE+wi5iCelecVqOgo=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-394-Pjxn61DtNwOgwfbwizgvXw-1; Thu, 20 Jun 2024 13:15:12 -0400
-X-MC-Unique: Pjxn61DtNwOgwfbwizgvXw-1
-Received: by mail-ed1-f72.google.com with SMTP id 4fb4d7f45d1cf-57c6e28b151so643415a12.2
-        for <alex.bennee@linaro.org>; Thu, 20 Jun 2024 10:15:12 -0700 (PDT)
+ us-mta-86-MxZKqSqQNFykea3aVK27KA-1; Thu, 20 Jun 2024 13:34:04 -0400
+X-MC-Unique: MxZKqSqQNFykea3aVK27KA-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ a640c23a62f3a-a6f2662d050so49114866b.3
+ for <qemu-arm@nongnu.org>; Thu, 20 Jun 2024 10:34:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718903711; x=1719508511;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=cvReVOaxMOcLfFk/GJhrVgAzazDhgpmW/4bz55GggPg=;
-        b=hKaxkG1hBVWWkAjw/gF+aWilUw+9eYfTN43pXpgJcHnmkaktMPesX8Xe/rPDnpN0GU
-         OcEYgNyGjDNSyMe8ATlfM5a2UYWVJ4SSKL2ITnu6YZ/LszwytRGH7caGeRmcmoQ1RKnS
-         ySmFSUSCbU4gv33Yey9mTZ9o1UIMlpQe3ILbYQNouuAzNTXD6UmuJM0X8IHR7AgP6Fp6
-         hFUDln0RKvLt7fGCQCX/W7nGcRgtqOJHa7dGB8UfZj+lS0M0Igc+1YOHAQTOJjA2fP9j
-         Ufc+h+tHuLbcE6Pmf8wJL9hMWAXQty+6OY5s8uM/twhzp4yuYjO63zyX95OReXV5i13t
-         LyCg==
-X-Gm-Message-State: AOJu0YxffEp5XyeWKkHfL7AaqtfiugRwZaHVvR8dJbYuhttFiig5JfOv
-	hF7q/C8Za5DnaaICVbf0OXHg4azz3iP86Ii8HgOIXh0Iw+fb/2jzqZCXTg3LuEyO4I9L3YDNoGd
-	GaUsafQCSuEac+D1Y1R++79BF+vXwjydmBcUcCpiybfcAKb9uEYBZpI/r04rxOoaHtKXWpsSpQS
-	k51mwGQPsVnKbURgnaC2K7ONNoboYi6LHWbA==
-X-Received: by 2002:a17:906:f902:b0:a6e:feb5:148e with SMTP id a640c23a62f3a-a6fab6171f0mr366336966b.27.1718903711193;
-        Thu, 20 Jun 2024 10:15:11 -0700 (PDT)
-X-Received: by 2002:a17:906:f902:b0:a6e:feb5:148e with SMTP id a640c23a62f3a-a6fab6171f0mr366332666b.27.1718903710718;
-        Thu, 20 Jun 2024 10:15:10 -0700 (PDT)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.4] (ip-109-43-178-117.web.vodafone.de. [109.43.178.117])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a6f57b5e7b2sm782086066b.68.2024.06.20.10.15.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 20 Jun 2024 10:15:10 -0700 (PDT)
-Message-ID: <de6a283f-7da8-4d2f-b2ea-9a3c12e754e4@redhat.com>
-Date: Thu, 20 Jun 2024 19:15:08 +0200
+ d=1e100.net; s=20230601; t=1718904843; x=1719509643;
+ h=content-transfer-encoding:in-reply-to:autocrypt:cc:from
+ :content-language:references:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=JSOwfNu+nTkhUY1sTluCY+7F6Z5c4YIiIQfEmoTmHHg=;
+ b=uGHymaRWKuRIIMWRKcuzUb13X+d+NybjMcGMVZc1t8OiOxowTlgAgGM/7DwSaAm0sk
+ /k9FkK5jJdM4YzfAYYmhgLHNfvSUkt9LoClBjLKG18rVS13eLGsXf5GZXvJ/BSkl/tVR
+ k/qgydB/mjuhxp5zc9qmZwe13aDylawipAznGhtGFph18v5nYoDhXWHItDfhiFRSCnQM
+ hCjCn/Vx6+FouVVzJniaYGkIbyQFlF3kuum1DPRa5SgY1Q/JeuDiVm+b1b/h0RaFigkN
+ VmnLMGoDW3Gcw4RmOTAmzG4UeA2eAYLaE6p/A44qUSURsTTa5nrWH/hThoqqPHi4Qf82
+ 7NTQ==
+X-Gm-Message-State: AOJu0YyMIwTH6WZ/1XWk94a13Npmuh+PE18tlYPKeAF17FQMq8zEGkw2
+ osfjOAg/5b5AcQTQKDvx4xI1zRBzBe8EmAxMfNpSMuu+dVYffOgNx5I3iW2d+OUWkEE16QiJwvL
+ AVoWOZBxEXYJywLA6uEzjp03wB9tRcyBrmIBbvRjNWSc+3LGy/w==
+X-Received: by 2002:a17:907:a4c5:b0:a6f:b5ff:a6fd with SMTP id
+ a640c23a62f3a-a6fb5ffab3cmr377265266b.12.1718904842893; 
+ Thu, 20 Jun 2024 10:34:02 -0700 (PDT)
+X-Received: by 2002:a17:907:a4c5:b0:a6f:b5ff:a6fd with SMTP id
+ a640c23a62f3a-a6fb5ffab3cmr377262766b.12.1718904842534; 
+ Thu, 20 Jun 2024 10:34:02 -0700 (PDT)
+Received: from [192.168.0.4] (ip-109-43-178-117.web.vodafone.de.
+ [109.43.178.117]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a6fb508211csm144940766b.19.2024.06.20.10.34.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 20 Jun 2024 10:34:02 -0700 (PDT)
+Message-ID: <6b1daa9c-6f37-4edb-86d4-782941f1bcca@redhat.com>
+Date: Thu, 20 Jun 2024 19:34:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/12] plugins: add migration blocker
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- qemu-ppc@nongnu.org, Christian Borntraeger <borntraeger@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Jamie Iles <quic_jiles@quicinc.com>,
- David Hildenbrand <david@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Mark Burton <mburton@qti.qualcomm.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-arm@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Marco Liebel <mliebel@qti.qualcomm.com>, Halil Pasic <pasic@linux.ibm.com>,
- qemu-s390x@nongnu.org, Cameron Esfahani <dirty@apple.com>,
- Alexandre Iooss <erdnaxe@crans.org>, Nicholas Piggin <npiggin@gmail.com>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- "Dr. David Alan Gilbert" <dave@treblig.org>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20240620152220.2192768-1-alex.bennee@linaro.org>
- <20240620152220.2192768-10-alex.bennee@linaro.org>
+Subject: Re: How to use designware-root-port and designware-root-host devices ?
+To: Arthur Tumanyan <arthurtumanyan@gmail.com>, qemu-devel@nongnu.org
+References: <CADueUgQh-=vmoO9kqL589Xeuf_LOM_K2Rr-rBxwe8iArdNdzsA@mail.gmail.com>
 From: Thomas Huth <thuth@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+ Andrey Smirnov <andrew.smirnov@gmail.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
  yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
@@ -152,56 +150,88 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240620152220.2192768-10-alex.bennee@linaro.org>
+In-Reply-To: <CADueUgQh-=vmoO9kqL589Xeuf_LOM_K2Rr-rBxwe8iArdNdzsA@mail.gmail.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: FcAFnh0IPJiP
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.152,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: eZROXF3JMIXd
 
-On 20/06/2024 17.22, Alex Bennée wrote:
-> If the plugin in controlling time there is some state that might be
-> missing from the plugin tracking it. Migration is unlikely to work in
-> this case so lets put a migration blocker in to let the user know if
-> they try.
+On 20/06/2024 10.28, Arthur Tumanyan wrote:
+> Hi all,
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Suggested-by: "Dr. David Alan Gilbert" <dave@treblig.org>
-> ---
->   plugins/api.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
-> 
-> diff --git a/plugins/api.c b/plugins/api.c
-> index 4431a0ea7e..c4239153af 100644
-> --- a/plugins/api.c
-> +++ b/plugins/api.c
-> @@ -47,6 +47,8 @@
->   #include "disas/disas.h"
->   #include "plugin.h"
->   #ifndef CONFIG_USER_ONLY
-> +#include "qapi/error.h"
-> +#include "migration/blocker.h"
->   #include "exec/ram_addr.h"
->   #include "qemu/plugin-memory.h"
->   #include "hw/boards.h"
-> @@ -589,11 +591,17 @@ uint64_t qemu_plugin_u64_sum(qemu_plugin_u64 entry)
->    * Time control
->    */
->   static bool has_control;
-> +Error *migration_blocker;
->   
->   const void *qemu_plugin_request_time_control(void)
->   {
->       if (!has_control) {
->           has_control = true;
-> +#ifdef CONFIG_SOFTMMU
-> +        error_setg(&migration_blocker,
-> +                   "TCG plugin time control does not support migration");
-> +        migrate_add_blocker(&migration_blocker, NULL);
-> +#endif
->           return &has_control;
->       }
->       return NULL;
+> My question may sound stupid, however...
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+  Hi Arthur,
+
+no worries, the question how to use which device in QEMU can be quite tricky ;-)
+
+> Currently I'm trying to make 
+> available designware-root-{port,host} devices  in linux when I run it in qemu.
+> 
+> I try the following way to run:
+> 
+> qemu-system-arm -M virt -m 2G \
+>       -kernel images/Image \
+>       -append "rootwait root=/dev/vda ro" \
+>       -drive file=images/rootfs.ext2,format=raw,id=hd0 \
+>       -device designware-root-port,id=rp0,chassis=1,slot=0,bus=pcie.0,addr=1 \
+>       -device e1000,netdev=net0,mac=52:54:00:12:34:56,bus=rp0,addr=0 \
+>       -netdev user,id=net0
+> 
+> but it seems designware device is not enabled by default: qemu-system-arm: 
+> -device designware-root-port,id=rp0,chassis=1,slot=0,bus=pcie.0,addr=1: 
+> 'designware-root-port' is not a valid device model name
+
+Are you sure about the names?
+
+$ grep -r 'designware' *
+...
+include/hw/pci-host/designware.h:#define TYPE_DESIGNWARE_PCIE_HOST 
+"designware-pcie-host"
+include/hw/pci-host/designware.h:#define TYPE_DESIGNWARE_PCIE_ROOT 
+"designware-pcie-root"
+
+> when I enable it from Kconfig/meson.build it says the device is already 
+> registered and exits with abort().
+> 
+>  From the other hand the device is declared as non pluggable: 
+> dc->user_creatable = false;
+
+Well, that means that you cannot use those with "-device". They can only be 
+instantiated via the code that creates the machine.
+
+> Can you please help me to use designware-root-host/port devices ?
+
+It seems like the i.MX7 SABRE machine is using this device, so instead of 
+"-M virt", you could have a try with "-M mcimx7d-sabre" (and a kernel that 
+supports this machine) instead.
+
+  HTH,
+   Thomas
+

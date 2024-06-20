@@ -1,176 +1,119 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1880305ejb;
-        Thu, 20 Jun 2024 03:42:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUMd6ZUPDdLQmDT8XiMPmrCdtCkmX+0Y/04KhX2gesTWfp9beB24IeQkuwQ9BdeQA53SY4kgYquhq3vdcQ/R1FohBg3RAQC
-X-Google-Smtp-Source: AGHT+IFKW9G0pxHunsC349EnPIa+CCQ6sD9HFvKQuiu3N4elQErO6dHMldEa5BST9X+6BxqGhyhl
-X-Received: by 2002:a05:6808:f01:b0:3d2:2721:8a7e with SMTP id 5614622812f47-3d51ba0db1dmr5227537b6e.34.1718880178720;
-        Thu, 20 Jun 2024 03:42:58 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1718880178; cv=pass;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1892946ejb;
+        Thu, 20 Jun 2024 04:09:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUncrn7d+ma8lFavSgO/fXZyhKqi8lBQ4kEz0cp4WL2Jv4GHnApaf0bfy8HkpGgtUaQ138hkLVd5lXJqo9qYYSmbMwXgz7j
+X-Google-Smtp-Source: AGHT+IGLyQ0vxveqVJmi7gjO+/id7OfZ4DFDskAnoX+8PJFPN+01BF03n8sLJUJvYwwk+YmfqMWq
+X-Received: by 2002:ac8:5d86:0:b0:441:37b:cd6c with SMTP id d75a77b69052e-444a79c17femr51662621cf.25.1718881764932;
+        Thu, 20 Jun 2024 04:09:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718881764; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uc8UHBAdwYkpsOViuIYOQUTZmlmuqeEAyL4lMn5kNd4Tr9ckT5rGDoU9o8Aorll34V
-         woE8ul5aixrCeK2Q6h9WaDj1vXK7d3eQ04o5KY+JSlVRNFW59xPhbJLYXacRfxawXYcG
-         bIB4f8aMeJL3GBI+l7zEeiXvwQ/4qzOefTreDr01YwcGo/cYDmNfaMFcffGvOGmbtfe6
-         yUYInwa2bL2+FCvFCixu6NYeSmQO4Cyg/18be6bJaB2Ysnu+OM+/eEVt6suqcx4OM9+c
-         Lm+pjq/I3RRntD6NiRiPUHGwEoW69ZSjKlJI3IygrZZWnCS/0et9OtP2PLY01wZjftga
-         voCQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=dpPQm5/mqoZKxQrVySwytPlQJxicztxc7/CMRgzSvhC3ebWVuxswOcMHrPobZrx7HC
+         p4Y8TxjRafdAsUTwvAt83/ctEqkVzfL8SM3AUJawXGzocjjmsifE3g8nRA01MIIiN94C
+         FvBga9GchjhP4mEyowrv3uQ7Tfv6tTKmlc4580cIchQ0AWfcKmngAyC0/XLGpzP1OEgj
+         yD7eIpoi4QoiqL0FMEN/2BzbCgbHWd+3JEqyn7NfuY3/XLXAfrHO2+eptMN+Bo16YHtG
+         j8vkdxji8LGiYIV90OC3lUyMo1G+X+Snrw70dazFuWjaQlxLXK35yaMEMvb51ADJ5HSc
+         FNhw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=0QtWRXaVYHO3xyKxfaWo0PfJ4Cs0EXokrOGNp/Ejot4=;
-        fh=Mgq1oZvz5rQpDtpkaQZ0ZO/qGR0vBPOPoCx1yXQy3g8=;
-        b=H5ZLuS+F2toWNmNDqad9aq+HVnPd6+64svx3e7iB/yBmucrWGhJ3D+l9Br1OfLBkV0
-         Lv7C/n00tVNz3I90Oe6h0H2XxU0/B9ywsqyH8rAoD2w8D82v57XeHgj+YfG7Hn5VNdqv
-         z1RFYB2r9I//evsJMJ4bXLc2tkneu4PgyDKNiZ6cQ6HIOoo205Mnjq6F+Xdj7wMm/HuT
-         5IWJ51Q3h7OrkWgMAufVxxw4M/BYZL6TT6AFZ+esUIagDYzUmmAW99Vv4vbZM8xNWXIT
-         yOUwBK/+8m5drJX1nIA+moZAZZaPzB4/rj3vyxBXt+rwdafIiyF/IU9/aml7Q3+a8zC7
-         0ZPA==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=o6QJ9SZ3OegkAAa1flGgzs96XVQRrdVLEc+wLqwcKo0=;
+        fh=xEkqWc1LPeWdYd8kTmAjrOsAlWFBIfM1C+lkKJIBcJ4=;
+        b=ZStQJB+Z4VhLI28Lb8BkjyyL0ZisAETjtxF7qVqBdHE52V+M1r8ME+nxwTaRusqJ0K
+         v163r5q0QHH2rcXE8PSaZ/t1kuMVklX2omh04ZmAXaYHNCVI+jHIM9BfFF6uFvyykHqV
+         pKgVAWDTbH2lCmYIFCFFlSUPGRJ/jFDy+9lmXW/4KS0TSExZVQcg7KwiJKj20s5S1r0F
+         5CFug2zwO1MReJ1smU0vCVuh3AaqgKbWeRCGqdQEJJIy7zdbVcuPHuSxBY4WmkQJu0x0
+         4gjvF2dEbNOhDvXmWU3UdL975+MMsDgbv7bBTpRTxx1M3eC8w8RCtDvr8v1oQNWh8P0Z
+         G58Q==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=rjYA4eLc;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xvW7647X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-798abd1cf72si1648340785a.490.2024.06.20.03.42.58
+        by mx.google.com with ESMTPS id d75a77b69052e-444bc021290si3441961cf.720.2024.06.20.04.09.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2024 03:42:58 -0700 (PDT)
+        Thu, 20 Jun 2024 04:09:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=rjYA4eLc;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       dkim=pass header.i=@linaro.org header.s=google header.b=xvW7647X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKFF6-0002fh-Os; Thu, 20 Jun 2024 06:42:12 -0400
+	id 1sKFfG-0003ga-VL; Thu, 20 Jun 2024 07:09:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
- id 1sKFF0-0002Y7-0R; Thu, 20 Jun 2024 06:42:06 -0400
-Received: from mail-bn8nam12on20606.outbound.protection.outlook.com
- ([2a01:111:f403:2418::606]
- helo=NAM12-BN8-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
- id 1sKFEy-0005YO-6D; Thu, 20 Jun 2024 06:42:05 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=i3SLZu4vFN+cfAE2mQ/k2Ly7VXHwAoEO0LbY3bUhV6bCeZu8DkKhRcCGdCUE7uKvQvaqQX9wZfTpmEm+ZBduH6z7PYJqzEaAHmobXKONSKJ/EsGHIbO8/qfLienAJndei3vxn0YZuyWypXlSjwkEjWTFV4pD1eo1yIVBNzL/Cs12Ls6DMDEcOl9QTElgI0p/8TNW7w2/mdYoRHX1EW6zFE5eXalY9z3tce+p4dSvWTimL+wwAvgjVoOzwjU1nZfuTGVXkVujfF6xa5e/gYlyoMy/wD83m94T7Dxl66ZfAY0FYno2NndFH8hVtqa5X+eA+CEmmlJWmN9MFnlandiFfw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0QtWRXaVYHO3xyKxfaWo0PfJ4Cs0EXokrOGNp/Ejot4=;
- b=kS/fpq6E18NqVOp5BGkV8zJZh3wQi6tgOWybzwDwNOpub/c4m1xjbJG9zMpSBwZE9Tsx9YrjueJn66IRpRV00mDO8zDYERZPAhmZ9LhEPT4y5V+sFGTTl/gyhHCXxgtm3D3iHtXc24tcjDUbqtUsIfGOA3eDoT936vlDOF12AV2I8SF0Maj8+5ZsKLtMspcjedIAqdSHJ0xcliQSL9NTf1e5qVlPWumW+r+pmkMcSLDLgzwJGYhICoHehkHuh/wvPbHX7pDEfIyUx+uP2TVwZWCa8iQ6Z9YAXklSACuZVLe//eWh4grzotczI6do1NHAASPOX12YbaEfvJCRKo+TyA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0QtWRXaVYHO3xyKxfaWo0PfJ4Cs0EXokrOGNp/Ejot4=;
- b=rjYA4eLcH7+g68Gu0zeqCEA8Gz6tZyyA5culPAEn72FHSsX/RLs5b4miPdfpCk0cnnhcamfLmw2C0Sg9/I+wd6Z00B5pFUPz9VeSRVxCQP6Z998ZReD2KnnSefEBPs4HwLwxFeRQS2gkALvTDHltSbq6ioYkHFhY+bdcrEZllDY=
-Received: from BYAPR05CA0080.namprd05.prod.outlook.com (2603:10b6:a03:e0::21)
- by SA3PR12MB9107.namprd12.prod.outlook.com (2603:10b6:806:381::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7698.19; Thu, 20 Jun
- 2024 10:41:57 +0000
-Received: from CO1PEPF000042A7.namprd03.prod.outlook.com
- (2603:10b6:a03:e0:cafe::bd) by BYAPR05CA0080.outlook.office365.com
- (2603:10b6:a03:e0::21) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.33 via Frontend
- Transport; Thu, 20 Jun 2024 10:41:57 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB03.amd.com; pr=C
-Received: from SATLEXMB03.amd.com (165.204.84.17) by
- CO1PEPF000042A7.mail.protection.outlook.com (10.167.243.36) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7677.15 via Frontend Transport; Thu, 20 Jun 2024 10:41:57 +0000
-Received: from SATLEXMB04.amd.com (10.181.40.145) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Thu, 20 Jun
- 2024 05:41:56 -0500
-Received: from xhdsaipava41.xilinx.com (10.180.168.240) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server id 15.1.2507.39 via
- Frontend Transport; Thu, 20 Jun 2024 05:41:54 -0500
-From: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: "'Edgar E . Iglesias'" <edgar.iglesias@gmail.com>, Peter Maydell
- <peter.maydell@linaro.org>, <francisco.iglesias@amd.com>, "Edgar E .
- Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v3 3/3] docs/system/arm: Add a doc for zynq board
-Date: Thu, 20 Jun 2024 16:11:39 +0530
-Message-ID: <20240620104139.217908-4-sai.pavan.boddu@amd.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240620104139.217908-1-sai.pavan.boddu@amd.com>
-References: <20240620104139.217908-1-sai.pavan.boddu@amd.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sKFfE-0003fb-N3
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2024 07:09:12 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sKFfC-0002A0-Pj
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2024 07:09:12 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-57cd26347d3so740334a12.1
+ for <qemu-arm@nongnu.org>; Thu, 20 Jun 2024 04:09:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1718881749; x=1719486549; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=o6QJ9SZ3OegkAAa1flGgzs96XVQRrdVLEc+wLqwcKo0=;
+ b=xvW7647Xw6QUDsTWtH7/JGb3Zp8WVk9AN5EHlVMeQED8AeKUn2laH8wu32mXCaoFUV
+ J4Ft2vEmC+wt/N6xmgm4uL2n5GOBhFZo4B83el+WbdVUEIwne4+GOsFCIH2gvEU5mLpl
+ Q8cYExIKp0Y5NXU+uUFCKI3UG/ynqMip6ZyZ4PwZTMet+8vhAffINHmeGyXdbrgY54ew
+ xr3RTM9w0IHQiKYW6keW4Zrea6iwDGCwGVuI3Un9vsbjUlbSuFLVV9hU4tmDPeWs8HuW
+ WCB5J0ADwmlxM+yTosTlGM9nqxGinchzLMlKD4VK/ILUqcH98L2lgYwAxKr+pOIPFhnW
+ dGfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718881749; x=1719486549;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=o6QJ9SZ3OegkAAa1flGgzs96XVQRrdVLEc+wLqwcKo0=;
+ b=vniS5YfB52m+PwWgYEWMUp9QMqlWj9fpdM2BcjWsP+pCzw25lxUCoaul7Dl2vINntA
+ Rc3gNSThZZHrcdMrLcFRX7W+swOLxDY9F1+HB7jl6FDGK119fOIAEMTvvmzjpPMV7k4A
+ PUNMo3Si4l0UW5vsjCva2CdgSRrtXTQZh1PmIvyuGCJl5CwP2gYTHhrQ01spK8ZDqIh+
+ 813F9CEB4MGUdgvJ15/82yC7Xo2+pFI9sYCLCTZ5LWBiF4Dbb0tmm9RKYlbtZx0n397t
+ 7cxQ3c29+earfmKp7xSeWM8VHw8tfCjaKFzuWuyjIPakqGPoLF4OS1+1O/si/bKgY/I/
+ Qc/g==
+X-Gm-Message-State: AOJu0YyfEnJ7r+3abb5YG4OKdl4oVn2W4AhWdP9gshtYRqkTYjT4G7h/
+ ISxyVmRTWrHWTcmnFQj4lTubLxaNmRvhTJAGBMviPt2q7aUY1NEDDKp2nb2VvtQ=
+X-Received: by 2002:a50:d012:0:b0:57c:bd49:9969 with SMTP id
+ 4fb4d7f45d1cf-57d07ebf0cemr3567816a12.39.1718881748595; 
+ Thu, 20 Jun 2024 04:09:08 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.151.40])
+ by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-57cb72da82fsm9271355a12.32.2024.06.20.04.09.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 20 Jun 2024 04:09:07 -0700 (PDT)
+Message-ID: <f446fdbf-90f2-4d07-8f1f-06b697ec8c01@linaro.org>
+Date: Thu, 20 Jun 2024 13:09:05 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] hw/gpio/aspeed: Add reg_table_size to AspeedGPIOClass
+To: Zheyu Ma <zheyuma97@gmail.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20240619183638.4073070-1-zheyuma97@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240619183638.4073070-1-zheyuma97@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: None (SATLEXMB03.amd.com: sai.pavan.boddu@amd.com does not
- designate permitted sender hosts)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PEPF000042A7:EE_|SA3PR12MB9107:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1e2a3e08-fb60-4fef-fa8d-08dc91159bdc
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230037|376011|36860700010|82310400023|1800799021; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?wNy9OX/l6as0nmkAvxtro7HDCE1eoSUG2G8bkF2PaL2kjFw1AnYOpZrgZMQ8?=
- =?us-ascii?Q?r3C2k9QTifalryK6rAypYFdO43nVqr08N670N3kJfgbZ6LfoA4+cjup/OQno?=
- =?us-ascii?Q?btccHpg7NHY6kuvnWau65V3WQYPeqFLZ+AhGKPfY7Fu642RbfqA+gn1kLBy/?=
- =?us-ascii?Q?wwCz545rO/+rXxYrtKW3CwUqp9hkBE8/kUv3m7Ibf6nNnhcS1M0epjj/OgpO?=
- =?us-ascii?Q?nkA1tjrcbGA2qCq9KU/WF9047JNvt5NMA59TgfxoWU94VQvz6VF916rfZTB1?=
- =?us-ascii?Q?OETy5YE3eoJ9m5dk1JGV7DRml5pdJCCL09ZsQUFdVHTXPJ60DpaQQSki4vZM?=
- =?us-ascii?Q?Z9X6HAYBbxW/s5ND9RFHigIkjqq5msm+u9drEVzUj4XgbndgvGXAU2WMA0wC?=
- =?us-ascii?Q?1ia250MHZ55UsjOOmLG5OUohXKyJ945P69EBtGgGWoR1xivRrlXrwEKB4AWL?=
- =?us-ascii?Q?eiCRdafumHIb6WtS+p+8Pu5zxL8Ybnu1LMQw2S5eAJ1juvAR+spy3g1g1YjJ?=
- =?us-ascii?Q?FsuzuUVxwWheRayVGcgamYEd49vghUCHZvl8JY8Gbu0RLmQi0gqbvvEMIdhl?=
- =?us-ascii?Q?sP6mekZf0A8aqwBtdJ/XYKMHPjITxNyKhgj5gmEg2u0LrSmri49Z1IvIGE9R?=
- =?us-ascii?Q?44/lF2sF1VMmDolUyTFQDwWCgTe20UPhINNq454Zo8Co2jq2N2aXKH0T/4jZ?=
- =?us-ascii?Q?FxHrwUvlc6QIO/bbQwGRyWfYilzB8f3NcTPURjHjZKIKmKoi4fvinzcM51og?=
- =?us-ascii?Q?6qutWzzVTu/jnh6uSS5dVrOwOWtp7c+oOqL5tMpO04hAjbokqVYIWkdd2ipZ?=
- =?us-ascii?Q?1qOBU3YbSA9/4ftAOKg6OczZkGHT/wDk5nxSd3Mxryy5FKeEr4bmbWur6Muy?=
- =?us-ascii?Q?27k5msZJ9mFRoBx87MfBz0kXV/aeSAdeZK4y1cmeJxU3UnVX/1I4EYTJzeZj?=
- =?us-ascii?Q?50IT/2Vi5jNfTUYSSS8Nyu4mcAeUCLikawdCC/q716BXoaY+sIIh8faJo2zL?=
- =?us-ascii?Q?0Xjeo5UDT1h5CW+gq7R3nDIbKx/wtyQm1+7pXacv6Y+Szx71ynnAQiAUYBr+?=
- =?us-ascii?Q?PO8kswneBfGGly+duPhGUPPISQo4oTe1Q1v2XaS57EushJsjncmnG9LKrQcC?=
- =?us-ascii?Q?n8lOgZwjrH3bgVezkC5t6Ez+Hl8+SYyNdOGFh5WJQlCtAtpsC1NbZGENkZRm?=
- =?us-ascii?Q?xEHHWa5DmaK1D6zmDKVMxNYkPwBO8Vvx3Uf3fiErlrMm7hOUnmYlkuyVevL3?=
- =?us-ascii?Q?MyF6mmeKBgdxwOt8cFfY3sGkc01dKJmVMsmphprDyand3jVi2hTYbekj7tfZ?=
- =?us-ascii?Q?9Cxl5eLmykM/NtA/Qu/MTysptS/CqXjDkYnkz+X2WngxW0NC8bI0lmoSEjeB?=
- =?us-ascii?Q?7V6/254=3D?=
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB03.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230037)(376011)(36860700010)(82310400023)(1800799021); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jun 2024 10:41:57.2402 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1e2a3e08-fb60-4fef-fa8d-08dc91159bdc
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB03.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF000042A7.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB9107
-Received-SPF: permerror client-ip=2a01:111:f403:2418::606;
- envelope-from=sai.pavan.boddu@amd.com;
- helo=NAM12-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -185,96 +128,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dt6l1KES5rD1
+X-TUID: +RpdzsIybsoP
 
-Added the supported device list and an example command.
+Hi,
 
-Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
----
- MAINTAINERS                   |  1 +
- docs/system/arm/xlnx-zynq.rst | 47 +++++++++++++++++++++++++++++++++++
- docs/system/target-arm.rst    |  1 +
- 3 files changed, 49 insertions(+)
- create mode 100644 docs/system/arm/xlnx-zynq.rst
+On 19/6/24 20:36, Zheyu Ma wrote:
+> ASan detected a global-buffer-overflow error in the aspeed_gpio_read()
+> function. This issue occurred when reading beyond the bounds of the
+> reg_table.
+> 
+> To enhance the safety and maintainability of the Aspeed GPIO code, this commit
+> introduces a reg_table_size member to the AspeedGPIOClass structure. This
+> change ensures that the size of the GPIO register table is explicitly tracked
+> and initialized, reducing the risk of errors if new register tables are
+> introduced in the future.
+> 
+> Reproducer:
+> cat << EOF | qemu-system-aarch64 -display none \
+> -machine accel=qtest, -m 512M -machine ast1030-evb -qtest stdio
+> readq 0x7e780272
+> EOF
+> 
+> ASAN log indicating the issue:
+> ==2602930==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7fff096c4e90 sp 0x7fff096c4e88
+> READ of size 2 at 0x55a5da29e128 thread T0
+>      #0 0x55a5d700dc61 in aspeed_gpio_read hw/gpio/aspeed_gpio.c:564:14
+>      #1 0x55a5d933f3ab in memory_region_read_accessor system/memory.c:445:11
+>      #2 0x55a5d92fba40 in access_with_adjusted_size system/memory.c:573:18
+>      #3 0x55a5d92f842c in memory_region_dispatch_read1 system/memory.c:1426:16
+>      #4 0x55a5d92f7b68 in memory_region_dispatch_read system/memory.c:1459:9
+>      #5 0x55a5d9376ad1 in flatview_read_continue_step system/physmem.c:2836:18
+>      #6 0x55a5d9376399 in flatview_read_continue system/physmem.c:2877:19
+>      #7 0x55a5d93775b8 in flatview_read system/physmem.c:2907:12
+> 
+> Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
+> ---
+> Changes in v3:
+> - Add the reproducer
+> 
+> Changes in v2:
+> - Introduce the reg_table_size to AspeedGPIOClass
+> ---
+>   hw/gpio/aspeed_gpio.c         | 17 +++++++++++++++++
+>   include/hw/gpio/aspeed_gpio.h |  1 +
+>   2 files changed, 18 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 951556224a1..2f06febc676 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1033,6 +1033,7 @@ F: hw/adc/zynq-xadc.c
- F: include/hw/misc/zynq_slcr.h
- F: include/hw/adc/zynq-xadc.h
- X: hw/ssi/xilinx_*
-+F: docs/system/arm/xlnx-zynq.rst
- 
- Xilinx ZynqMP and Versal
- M: Alistair Francis <alistair@alistair23.me>
-diff --git a/docs/system/arm/xlnx-zynq.rst b/docs/system/arm/xlnx-zynq.rst
-new file mode 100644
-index 00000000000..ade18a3fe13
---- /dev/null
-+++ b/docs/system/arm/xlnx-zynq.rst
-@@ -0,0 +1,47 @@
-+Xilinx Zynq board (``xilinx-zynq-a9``)
-+======================================
-+The Zynq 7000 family is based on the AMD SoC architecture. These products
-+integrate a feature-rich dual or single-core Arm Cortex-A9 MPCore based
-+processing system (PS) and AMD programmable logic (PL) in a single device.
-+
-+More details here:
-+https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/Zynq-7000-SoC-Technical-Reference-Manual
-+
-+QEMU xilinx-zynq-a9 board supports following devices:
-+    - A9 MPCORE
-+        - cortex-a9
-+        - GIC v1
-+        - Generic timer
-+        - wdt
-+    - OCM 256KB
-+    - SMC SRAM@0xe2000000 64MB
-+    - Zynq SLCR
-+    - SPI x2
-+    - QSPI
-+    - UART
-+    - TTC x2
-+    - Gigabit Ethernet Controller x2
-+    - SD Controller x2
-+    - XADC
-+    - Arm PrimeCell DMA Controller
-+    - DDR Memory
-+    - USB 2.0 x2
-+
-+Running
-+"""""""
-+Direct Linux boot of a generic ARM upstream Linux kernel:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-aarch64 -M xilinx-zynq-a9 \
-+        -dtb zynq-zc702.dtb  -serial null -serial mon:stdio \
-+        -display none  -m 1024 \
-+        -initrd rootfs.cpio.gz -kernel zImage
-+
-+For configuring the boot-mode provide the following on the command line:
-+
-+.. code-block:: bash
-+
-+   -machine boot-mode=qspi
-+
-+Supported values are jtag, sd, qspi, nor.
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index 870d30e3502..7b992722846 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -109,6 +109,7 @@ undocumented; you can get a complete list by running
-    arm/virt
-    arm/xenpvh
-    arm/xlnx-versal-virt
-+   arm/xlnx-zynq
- 
- Emulated CPU architecture support
- =================================
--- 
-2.34.1
+
+>   static const TypeInfo aspeed_gpio_info = {
+> diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
+> index 904eecf62c..e66036ac39 100644
+> --- a/include/hw/gpio/aspeed_gpio.h
+> +++ b/include/hw/gpio/aspeed_gpio.h
+> @@ -75,6 +75,7 @@ struct AspeedGPIOClass {
+>       uint32_t nr_gpio_pins;
+>       uint32_t nr_gpio_sets;
+>       const AspeedGPIOReg *reg_table;
+> +    uint32_t reg_table_size;
+>   };
+
+- "reg_table_size" is a number of registers, using s/size/count/ might
+   be clearer.
+- No point in specifying 32-bit, "unsigned" is sufficient.
+
+(Cédric, if you agree, you might update your tree).
+
+Unrelated to this patch but figured out while reviewing, in
+aspeed_gpio_read/write 'idx' is
+- pointlessly assigned to -1
+- of type 'uint64_t', also pointless, 'unsigned' is clearer.
+
+Regards,
+
+Phil.
 

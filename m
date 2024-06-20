@@ -1,175 +1,259 @@
-Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp1761578dlb;
-        Thu, 20 Jun 2024 10:03:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX0Tf1WmsMlZ0k0w6DDhsFhOvOzY1J8fPPO5n/jMT8GryABlLTr6HYFXhl5C1d+FXcDNCcbASDJSqP7DZGn1UXpZfnKUzNN
-X-Google-Smtp-Source: AGHT+IFd2z9S7e8FM3bVXtKga6McdKDQQ+32BKmyJoHOHNdg4gV96VDgZXCk7Pu7DWXQd8r1qZqr
-X-Received: by 2002:ad4:55e3:0:b0:6b4:fda0:ce18 with SMTP id 6a1803df08f44-6b501e9f66amr60151586d6.41.1718902982264;
-        Thu, 20 Jun 2024 10:03:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718902982; cv=none;
+Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp1775248dlb;
+        Thu, 20 Jun 2024 10:22:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXlj8wTm1SAq9nwmlFz66hcwQ2vLDyR4QLuz/BnuD+1umyNFTBgQiBHwjsKN55PyLf6Dze1ZYsciIWi/ArxO8KFXh7rV36o
+X-Google-Smtp-Source: AGHT+IHIQ4ePtgWB2YCte5fRTVxnFmjQnUOZVeVHW3kp7LlOAs9fmq1X5DgjZlPKhQ31szpboCHC
+X-Received: by 2002:a05:6122:d08:b0:4ec:fc20:a51a with SMTP id 71dfb90a1353d-4ef277013a1mr7140829e0c.9.1718903997713;
+        Thu, 20 Jun 2024 10:19:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718903997; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vb4VDoxRVDVqjRTXypHM91ZRtqgKOefOenZUgxljUQVxaFtPn4UJRKnffLGQPJVvtV
-         01F1QEiLwNrPxQAIBuM2N2e7KjaUXcfYWID6o6DoX2ONO0Pz0kVtXWRrRA34xiuGlkCQ
-         NsvT7WPsQqfHS2h2xwM63Ef+BXhapB2Fe9M/EwMc86SRdZo+1yJ6c2SNH1Noqs4KtcQL
-         zg8tPcRqGdLTxUR8xOzFm1SRc9A6ZdhzY/pSJGk4IzOwAgdi7r29lcXC1Lp6+OGg9lpO
-         2MNa2UU9ECQlhU6MYUexgEiWkcXY0riDUV/LGGZ+3v24rXISNvht2FTWVmcfo34qF5Wv
-         QpRw==
+        b=yGCgPioWhmSuaQEJ0xmgxteH1pvTYEsgz2ZRW18ze0VY0hbkKese9FKSYg/AHXynh/
+         Gj48A2TLShGcd+ukW9lKq5nqipOZIlcU9UTAJq+gs/pAp+Qu7E7tMG+H5lJG3c5BN+S6
+         I/pCq6lde2Kp3vdvOB7mlnQFZES5G0841TLkIP4KiSPuW5DXfRV403r/q+2xh3yLpoRK
+         zOIaAOlrVoxMzvqP4GLSko9y0Qlj7u3m6rv7rM/ezRqeQim18/xnDo8htyCQUns4SPss
+         JwjbCeWjAKyP9VETZrOphsvI6sZo1Oqh6MhZ9Cr0+1A9zEvkqx2DczNv3vQ0dyR9lIec
+         0MHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=cp5hTDyX0yXK7RBKij04gMtATUSvfKAIAWpFR+x0kC4=;
-        fh=3Wd8C5ILZWfK4GrPw00UkAAsfCUTnUYMb3cFGB6sOew=;
-        b=SKsCEz8ENzVtI8TxhMdOsjhSVAdZlDZOg1nta6B27nf8dRiJmXC5iNRgEVyn3ERUKM
-         RsHpFeg4o/W/n5vjjjWc7x4eqeOE8ZpzpoqDnnAeTGsggDlnijbLyiNLIT+QA2QmRmoq
-         Zt/0B2gWG7wDNTL1GObmbsydA2Njr/6SO+4nXgqKDo+nEIC6jz2fuXAvQ3oGflWaSTyK
-         efrX5ZsV3YkWCusm1UY0dHdiUCzKbwU7dS5CbYo/2BiWR2kM4P4UUlW+6R9WZEXhmEh5
-         0mtddrogY/sWREcG/3R1gBofYnPCw8ixG7Ygaq5JX49kkkqQ8hldGF34AFJKIoWN3m8A
-         z84w==;
+         :in-reply-to:autocrypt:content-language:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=4HV8IXNm9fsVPDhyNHFw3KBX78cttSIyqr1tkW2rGhY=;
+        fh=MTvQmwk+J2EMqHfSncS21VKHGN5YJzhb3EZVvoRKZB4=;
+        b=KKcAMPXQXisuUUSykGij4C9sC6IFbNzA9JqaO8GxQ3GTHlsyh/3NBhT9/OaVtci+Bp
+         PrR0Bpcg9l4lW/kZEgZ3arQFBGNzkeY8KAd/11ir1nZVh6AamuOO2gvEZLJ8f4gddofn
+         R2P/k1g47mg8SuZFmYHjO98u+lDr9rJD47cAQ80fMpfBRyBfU603aoSoz9AyZkSis9Ic
+         hfkCnznOHvukZWoVGgfQGzMVnb/MKT063J8NEibHiU8AbyrGr+hZNlt7WKZ7faPebUQE
+         6ThyUyPadcMj0UrV1jnoB8SzzNss2Z316sWU8M9TOKCeOcuC6h3AOA2qVfSK761ON7Ui
+         DMxA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J1o6+BkE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=frFzdKeL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b512bec8a5si20509006d6.134.2024.06.20.10.03.02
+        by mx.google.com with ESMTPS id 71dfb90a1353d-4ed4143585esi2714907e0c.190.2024.06.20.10.19.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2024 10:03:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Jun 2024 10:19:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J1o6+BkE;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=frFzdKeL;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKL99-0001fx-Tk; Thu, 20 Jun 2024 13:00:27 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sKLRC-0008KD-HG; Thu, 20 Jun 2024 13:19:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sKL8x-0001JR-KT
- for qemu-arm@nongnu.org; Thu, 20 Jun 2024 13:00:16 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sKLRA-0008JZ-Em
+ for qemu-devel@nongnu.org; Thu, 20 Jun 2024 13:19:04 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sKL8r-0001QB-HL
- for qemu-arm@nongnu.org; Thu, 20 Jun 2024 13:00:13 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sKLR8-0004vp-Nv
+ for qemu-devel@nongnu.org; Thu, 20 Jun 2024 13:19:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718902807;
+ s=mimecast20190719; t=1718903940;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cp5hTDyX0yXK7RBKij04gMtATUSvfKAIAWpFR+x0kC4=;
- b=J1o6+BkEZfMna6uC/16WwNk4aFlW9Ha1PP8FbsWld7ejw621tG3WUpjyvqo08Bw8ghZjnN
- bGrEIlBH1xXDygqV1ujQBSImBO6l3m+MYk0rvGbuwIDdYxVpBcff5F7an4jrZVpmea2u9L
- XYx8fYzMCtd0JV/Q/sHWD9j4jbedrFI=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-171-BEtTyNoYMYGeIfmCQyYrJQ-1; Thu,
- 20 Jun 2024 13:00:04 -0400
-X-MC-Unique: BEtTyNoYMYGeIfmCQyYrJQ-1
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8C66F19560B8; Thu, 20 Jun 2024 17:00:01 +0000 (UTC)
-Received: from toolbox.redhat.com (unknown [10.42.28.69])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 66BC019560AF; Thu, 20 Jun 2024 16:59:50 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=4HV8IXNm9fsVPDhyNHFw3KBX78cttSIyqr1tkW2rGhY=;
+ b=frFzdKeLChfd9oUUg5pYMA7BNUUlYtgKj30IyY4IK57d0t2hTJaUJCIqG3zmUbRgvvjtqQ
+ qhm4I64kmPjUoUESUH9Y1f9lOHxt1oA1V/xPmjcgzfteSpLInGahnlsdyAehfQlpTFh164
+ vtfWe0xVYYLGugIJzH3KyoqUxfyUFMk=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-557-qmc8FIasPoyVniVYn1E89A-1; Thu, 20 Jun 2024 13:18:56 -0400
+X-MC-Unique: qmc8FIasPoyVniVYn1E89A-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ 4fb4d7f45d1cf-57d22ea3e71so507734a12.2
+ for <qemu-devel@nongnu.org>; Thu, 20 Jun 2024 10:18:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718903935; x=1719508735;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=4HV8IXNm9fsVPDhyNHFw3KBX78cttSIyqr1tkW2rGhY=;
+ b=siGk0vF0aQbLrw5QJJRoM29cbV1ebpqpqRmHRp/DVLLN9nFGOG0Wl2UCTgoLXU6E/+
+ MIvXPhE6EmzahYxYJqhT61N7C0PW0+szZqNxKkyPcQtNpVWXos3JfYXHvQ92iGwsnHIw
+ ob6rOoTVYx1RMxvHfRzgXjJsZsXggBztUYUbqPaJNaSXG682yashtzlHxn2iKyOiTWVa
+ yUfW+6GAaUukeJRxWRkE+fsdxYJwRSjgtzO/Du4CbYa67C1AR2gSCMo03F3GIskmLP5y
+ KAup0C+zVeww6mxBy8gAt41z+d6CZuS1lr2KkGaqiwaCPJuZKfYd2SdhN4O/rOYWENdW
+ jVZA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUgImkrxYpm7junyLD3mfkkajmLsH2/RW/LRAND5Xf8L2K8bEuLNCWUCdGcfEo3Z5V3zvHsfsn8qfEK3Kmo5NgVB+cMwFM=
+X-Gm-Message-State: AOJu0YwtGs4VZ6hizz/OrXgMWTHZ/Q8LzYlQtkVPBY4dwZRkWdiWvtER
+ Wk3zYItEu893TddHMA9CaqI/ocT+kRh5Tm1LmjbKuX0W1wE0cqLbXnIJq3jEQUuAXgOPxve9L+S
+ uPbDHAubkLIAojIZEDzMwQsq6TT4zy0Jgl/y2M1ANNd35RHKxa1ZB
+X-Received: by 2002:a05:6402:50c9:b0:57d:15d4:a685 with SMTP id
+ 4fb4d7f45d1cf-57d15d4a9fdmr3555230a12.40.1718903935374; 
+ Thu, 20 Jun 2024 10:18:55 -0700 (PDT)
+X-Received: by 2002:a05:6402:50c9:b0:57d:15d4:a685 with SMTP id
+ 4fb4d7f45d1cf-57d15d4a9fdmr3555210a12.40.1718903934982; 
+ Thu, 20 Jun 2024 10:18:54 -0700 (PDT)
+Received: from [192.168.0.4] (ip-109-43-178-117.web.vodafone.de.
+ [109.43.178.117]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-57d0d9c3b7fsm1999762a12.55.2024.06.20.10.18.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 20 Jun 2024 10:18:54 -0700 (PDT)
+Message-ID: <fb06af10-2647-4f1b-9fbe-ab4e45a924d9@redhat.com>
+Date: Thu, 20 Jun 2024 19:18:52 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 09/14] include/hw: temporarily disable deletion of
+ versioned machine types
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>, devel@lists.libvirt.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Eric Farman <farman@linux.ibm.com>,
  qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Nicholas Piggin <npiggin@gmail.com>, David Hildenbrand <david@redhat.com>,
  Ilya Leoshkevich <iii@linux.ibm.com>,
  David Gibson <david@gibson.dropbear.id.au>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clegoate@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clegoate@redhat.com>,
  Harsh Prateek Bora <harshpb@linux.ibm.com>,
  Yanan Wang <wangyanan55@huawei.com>, Eduardo Habkost <eduardo@habkost.net>,
  Peter Maydell <peter.maydell@linaro.org>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 14/14] docs: document special exception for machine type
- deprecation & removal
-Date: Thu, 20 Jun 2024 17:57:42 +0100
-Message-ID: <20240620165742.1711389-15-berrange@redhat.com>
-In-Reply-To: <20240620165742.1711389-1-berrange@redhat.com>
+ Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org
 References: <20240620165742.1711389-1-berrange@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ <20240620165742.1711389-10-berrange@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Content-Language: en-US
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240620165742.1711389-10-berrange@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.152,
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.152,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AWkFpnxtXweC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: x2aSsE0Nyr7Y
 
-This extends the deprecation policy to indicate that versioned machine
-types will be marked deprecated after 3 years, and then subject to
-removal after a further 3 years has passed.
+On 20/06/2024 18.57, Daniel P. Berrangé wrote:
+> The new deprecation and deletion policy for versioned machine types is
+> being introduced in QEMU 9.1.0.
+> 
+> Under the new policy a number of old machine types (any prior to 2.12)
+> would be liable for immediate deletion which would be a violation of our
+> historical deprecation and removal policy
+> 
+> Thus automatic deletions (by skipping QOM registration) are temporarily
+> gated on existance of the env variable "QEMU_DELETE_MACHINES" / QEMU
+> version number >= 10.1.0. This allows opt-in testing of the automatic
+> deletion logic, while activating it fully in QEMU >= 10.1.0.
+> 
+> This whole commit should be reverted in the 10.1.0 dev cycle or shortly
+> thereafter.
+> 
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>   include/hw/boards.h | 19 ++++++++++++++++++-
+>   1 file changed, 18 insertions(+), 1 deletion(-)
+> 
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index 187ed76646..ef6f18f2c1 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -686,11 +686,28 @@ struct MachineState {
+>    * suitable period of time has passed, it will cause
+>    * execution of the method to return, avoiding registration
+>    * of the machine
+> + *
+> + * The new deprecation and deletion policy for versioned
+> + * machine types was introduced in QEMU 9.1.0.
+> + *
+> + * Under the new policy a number of old machine types (any
+> + * prior to 2.12) would be liable for immediate deletion
+> + * which would be a violation of our historical deprecation
+> + * and removal policy
+> + *
+> + * Thus deletions are temporarily gated on existance of
+> + * the env variable "QEMU_DELETE_MACHINES" / QEMU version
+> + * number >= 10.1.0. This gate can be deleted in the 10.1.0
+> + * dev cycle
+>    */
+>   #define MACHINE_VER_DELETION(...) \
+>       do { \
+>           if (MACHINE_VER_SHOULD_DELETE(__VA_ARGS__)) { \
+> -            return; \
+> +            if (getenv("QEMU_DELETE_MACHINES") || \
+> +                QEMU_VERSION_MAJOR > 10 || (QEMU_VERSION_MAJOR == 10 && \
+> +                                            QEMU_VERSION_MINOR >= 1)) { \
+> +                return; \
+> +            } \
+>           } \
+>       } while (0)
+>   
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
----
- docs/about/deprecated.rst | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index ff3da68208..bba12d1641 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -11,6 +11,19 @@ releases, the feature is liable to be removed. Deprecated features may also
- generate warnings on the console when QEMU starts up, or if activated via a
- monitor command, however, this is not a mandatory requirement.
- 
-+As a special exception to this general timeframe, rather than have an
-+indefinite lifetime, versioned machine types are only intended to be
-+supported for a period of 6 years, equivalent to 18 QEMU releases. All
-+versioned machine types will be automatically marked deprecated after an
-+initial 3 years (9 QEMU releases) has passed, and will then be deleted after
-+a further 3 year period has passed. It is recommended that a deprecated
-+machine type is only used for incoming migrations and restore of saved state,
-+for pre-existing VM deployments. They should be scheduled for updating to a
-+newer machine type during an appropriate service window. Newly deployed VMs
-+should exclusively use a non-deprecated machine type, with use of the most
-+recent version highly recommended. Non-versioned machine types follow the
-+general feature deprecation policy.
-+
- Prior to the 2.10.0 release there was no official policy on how
- long features would be deprecated prior to their removal, nor
- any documented list of which features were deprecated. Thus
--- 
-2.43.0
 

@@ -1,86 +1,86 @@
-Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp1760522dlb;
-        Thu, 20 Jun 2024 10:01:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXTjeEt/nqAR4i0f2HSi5NVTixwbgVwfr2v4XKusg9kUi91d9z1bAusn64+U84hMs0DslbK4QgIEW6FOdmGWyWV6OWESAhU
-X-Google-Smtp-Source: AGHT+IH4QDBL0qRsng/wJjHgbNF6NZdu7b4lRH0bwaoUP8oFHgClHBTcA8eNPPy4HKfVhDRAa+P7
-X-Received: by 2002:a0c:df82:0:b0:6b2:bc45:a7db with SMTP id 6a1803df08f44-6b501e0b7efmr72890006d6.2.1718902915363;
-        Thu, 20 Jun 2024 10:01:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718902915; cv=none;
+Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp1761178dlb;
+        Thu, 20 Jun 2024 10:02:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWLxw91fzEehG74JfMICYeQJSsfKWGRhhJAZXkVcfbmllpYU8dhzeOA6xpMoAMnx7TH1gyH8ltifD/E2E5O6YBm7QdrAfVb
+X-Google-Smtp-Source: AGHT+IEFVSernU8WCqCo+HNh2CPeVoEF865qDuRPECghtVh4vzJO0Jz6AWCHdmITahDockeMJF40
+X-Received: by 2002:a05:620a:170f:b0:79a:2fcb:ed4f with SMTP id af79cd13be357-79bb3e1a1b3mr714378985a.13.1718902957099;
+        Thu, 20 Jun 2024 10:02:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718902957; cv=none;
         d=google.com; s=arc-20160816;
-        b=S3VcEFIsxS4V0epxApC6VR/AGQaFJ1kBehG/hTQG+wgQh42x0Rgg7Qkxfoc1qKgnXX
-         owef2YG72K6w5vtgIepfbWrWr0CmTJKnWUu+EJ7M9qLcWVZvOqGuiyNfrEG4gJKTwSZW
-         AH2ho4zsojKFBZSsv8g3T9lGE2EGP03uQLBX1ZMXiZOEFgGwpmRaWLXnw7+ko4KmyJbK
-         9OvXu0h3aZ4DZysiQIbe2fgjA9illgmFjT9i8YIEOk0bh/U8kCLFrlDD0+p5btqBNrcp
-         cQiYGdY3+ekffBqFei1Q7CbJQ9OXH6O1Aa+OpKO3HOp/0VXCUj72HXfdXDc1B7t9/J9V
-         NrAA==
+        b=tNyitKv6urUTYujBu8WnpckGHf7Gl57+RYMSanIDatebgYPlJZzQKmhMslv1I5QtEx
+         UQdJqr4Y6GxwDH/dfDWz3az6purCHNHWRBwjjBASY0F5hbcYTnMmvBcUc5vota9yYIes
+         Gyj6bMwyHVH5rN7mln9gPptjTbIy0GKKxknOocqyKlud/KpeUtl0tAHWNh+PF2SgZSME
+         /ZoxFOYTO4vFx2mn1R25p0r7IguTgVYMcytnAIlRDPQd4w0tDDMfiubW+vXf9L6QfEiO
+         Co+rYICANLJDGZY+eiNp+3NV3vnMjE9mZFkMQK1t0I4ExoLGB+JK++L1RHuIKQppJx6f
+         xiug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=8/owPdu5/iJ48Xgy+KKO46Gh3iwTxELUGA2Cx8B6spU=;
+        bh=62rjxcJ3nmchiyP3ljOtuxEnPhE805Y+giHJJYqlDdU=;
         fh=3Wd8C5ILZWfK4GrPw00UkAAsfCUTnUYMb3cFGB6sOew=;
-        b=bT/FO3jzLTu7PD3mjr3GibcGZe/jKJeQNpVIgKH1DucAFKMeqYeoC7j/02ubt9ywbU
-         eZUGQPUYxRLRUrdIdQWjzbmfmLE7uED4a8mgvckgWjZzXLBvbDPO6OLIispDkX9OwyRN
-         qqkj7d5NLZjo8eL8SqXJgr86dp0a2RxYtUCHzRk4z4yuHTawUcOtrWYAC7iys3PkRbw+
-         X69UzYxSfoylAYuSLLAOkkPzSBYkxpVtfAofXY8oOrQCYEMj6CRCC6NZIXXJMlzDnwEX
-         iD0ndHCZSkVbhK8wIsXc+GfdFxLfYJ9DGR7zr4PXx5XJ21hhMuTEnXB51X4M4Ycc8tzn
-         UFCQ==;
+        b=jPr/cSEYlT6lTQBvpzTXhniSaYK3K/+mxQIWuRzd+vqdILi0r7m5z2lrKvDgzDLaVn
+         eatesiHF+hI/od4nfHXdMOXKRKDSYhKoBGmv7tqH/UXVbOEMERCH6M/7d924eUfn5DOL
+         gIeecue0GvMFt0tLa7ze7YUAvWR6pQAkVFindBhCFEEgzDJrNjCUmM7b3kYX/ZvAtkA9
+         Y5siAfRy8mdmQQeI6iMZZ0vYjjqzlhmPO3OX67LFB1gCo4vgBGi1SUs9HeRjiGtup7p6
+         SzzUbY9cl/2JSCtdJz37UdsFTy9s8ZaQzzfWvfME4gtxapo6M6Is1s/n5Uh7gO/Tp2Ia
+         5oYQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fznILTsV;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XVLqImQq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5a3420esi145800186d6.156.2024.06.20.10.01.55
+        by mx.google.com with ESMTPS id af79cd13be357-798ac089d5fsi1734403385a.741.2024.06.20.10.02.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2024 10:01:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Jun 2024 10:02:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fznILTsV;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XVLqImQq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sKL8W-0000Tk-E7; Thu, 20 Jun 2024 12:59:48 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sKL8L-0008PL-Hs; Thu, 20 Jun 2024 12:59:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sKL8R-0000Nq-5F
- for qemu-devel@nongnu.org; Thu, 20 Jun 2024 12:59:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1sKL8K-0008KN-Op
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2024 12:59:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sKL8O-0001BP-A6
- for qemu-devel@nongnu.org; Thu, 20 Jun 2024 12:59:42 -0400
+ id 1sKL8H-00018L-MD
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2024 12:59:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718902779;
+ s=mimecast20190719; t=1718902773;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8/owPdu5/iJ48Xgy+KKO46Gh3iwTxELUGA2Cx8B6spU=;
- b=fznILTsVclj4JJC7bITQfxFSbBONCaS7XaTB7Fmarl63QRYYYSUi8Mu3ogwMzjvi3HmT53
- OW6EH6U61600HH3hy9FMKfyF+ckx9/sEosYf5NQX5BpxmAxYWDE61w74k89nUd9OAf/pjU
- 7sphEOanlnhMBhysGCBdmzJoplELGPQ=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=62rjxcJ3nmchiyP3ljOtuxEnPhE805Y+giHJJYqlDdU=;
+ b=XVLqImQqaxeLVT3VA72N4pYVRd0w3oKhHdLl+2hGbWxv/+FDs1CLk03TdaNpmYAV+EtrwX
+ SZhnAQuapaT7yPsPIYV6oYofi0PMjy+7x9LV/L7UigXzyV7CjOZowjVIht8yF05Dp2iygd
+ nC/fJVZup6p/3XqatrjvquFzcRVKRO8=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-78-Hag_DufFMKSF0R3eIlsnVg-1; Thu,
- 20 Jun 2024 12:59:35 -0400
-X-MC-Unique: Hag_DufFMKSF0R3eIlsnVg-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-63-3_hYD_v-Nm2FIUWa37YF8Q-1; Thu,
+ 20 Jun 2024 12:59:27 -0400
+X-MC-Unique: 3_hYD_v-Nm2FIUWa37YF8Q-1
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 43C6F195608B; Thu, 20 Jun 2024 16:59:32 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BFC7219560A7; Thu, 20 Jun 2024 16:59:23 +0000 (UTC)
 Received: from toolbox.redhat.com (unknown [10.42.28.69])
  by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0657519560AF; Thu, 20 Jun 2024 16:59:23 +0000 (UTC)
+ id 2D45519560AF; Thu, 20 Jun 2024 16:59:13 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>, devel@lists.libvirt.org,
@@ -100,17 +100,17 @@ Cc: Halil Pasic <pasic@linux.ibm.com>, devel@lists.libvirt.org,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 11/14] hw: skip registration of outdated versioned machine
+Subject: [PATCH v2 10/14] hw: set deprecation info for all versioned machine
  types
-Date: Thu, 20 Jun 2024 17:57:39 +0100
-Message-ID: <20240620165742.1711389-12-berrange@redhat.com>
+Date: Thu, 20 Jun 2024 17:57:38 +0100
+Message-ID: <20240620165742.1711389-11-berrange@redhat.com>
 In-Reply-To: <20240620165742.1711389-1-berrange@redhat.com>
 References: <20240620165742.1711389-1-berrange@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 11
 X-Spam_score: 1.1
@@ -121,30 +121,25 @@ X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.152,
  RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wE8XM4+JRc3/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: //4l9JGysulT
 
-This calls the MACHINE_VER_DELETION() macro in the machine type
-registration method, so that when a versioned machine type reaches
-the end of its life, it is no longer registered with QOM and thus
-cannot be used.
-
-The actual definition of the machine type should be deleted at
-this point, but experience shows that can easily be forgotten.
-By skipping registration the manual code deletion task can be
-done at any later date.
+This calls the MACHINE_VER_DEPRECATION() macro in the definition of
+all machine type classes which support versioning. This ensures
+that they will automatically get deprecation info set when they
+reach the appropriate point in their lifecycle.
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
@@ -157,65 +152,65 @@ Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
  5 files changed, 5 insertions(+)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ef6591d914..ab4a0d9ed6 100644
+index a326aa24db..ef6591d914 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -123,6 +123,7 @@ static void arm_virt_compat_set(MachineClass *mc)
-     }; \
-     static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
-     { \
-+        MACHINE_VER_DELETION(__VA_ARGS__); \
-         type_register_static(&MACHINE_VER_SYM(info, virt, __VA_ARGS__)); \
-     } \
-     type_init(MACHINE_VER_SYM(register, virt, __VA_ARGS__));
+@@ -110,6 +110,7 @@ static void arm_virt_compat_set(MachineClass *mc)
+         arm_virt_compat_set(mc); \
+         MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
+         mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " ARM Virtual Machine"; \
++        MACHINE_VER_DEPRECATION(__VA_ARGS__); \
+         if (latest) { \
+             mc->alias = "virt"; \
+         } \
 diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-index 37bb36b385..cda199af8f 100644
+index cd6ee692f7..37bb36b385 100644
 --- a/hw/m68k/virt.c
 +++ b/hw/m68k/virt.c
-@@ -356,6 +356,7 @@ type_init(virt_machine_register_types)
-     }; \
-     static void MACHINE_VER_SYM(register, virt, __VA_ARGS__)(void) \
-     { \
-+        MACHINE_VER_DELETION(__VA_ARGS__); \
-         type_register_static(&MACHINE_VER_SYM(info, virt, __VA_ARGS__)); \
-     } \
-     type_init(MACHINE_VER_SYM(register, virt, __VA_ARGS__));
+@@ -343,6 +343,7 @@ type_init(virt_machine_register_types)
+         MachineClass *mc = MACHINE_CLASS(oc); \
+         MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
+         mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " M68K Virtual Machine"; \
++        MACHINE_VER_DEPRECATION(__VA_ARGS__); \
+         if (latest) { \
+             mc->alias = "virt"; \
+         } \
 diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 55268489d3..044e6a8d9d 100644
+index 2785b6b303..55268489d3 100644
 --- a/hw/ppc/spapr.c
 +++ b/hw/ppc/spapr.c
-@@ -4824,6 +4824,7 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
-     };                                                               \
-     static void MACHINE_VER_SYM(register, spapr, __VA_ARGS__)(void)  \
+@@ -4811,6 +4811,7 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
      {                                                                \
-+        MACHINE_VER_DELETION(__VA_ARGS__);                           \
-         type_register(&MACHINE_VER_SYM(info, spapr, __VA_ARGS__));   \
-     }                                                                \
-     type_init(MACHINE_VER_SYM(register, spapr, __VA_ARGS__))
+         MachineClass *mc = MACHINE_CLASS(oc);                        \
+         MACHINE_VER_SYM(class_options, spapr, __VA_ARGS__)(mc);      \
++        MACHINE_VER_DEPRECATION(__VA_ARGS__);                        \
+         if (latest) {                                                \
+             spapr_machine_latest_class_options(mc);                  \
+         }                                                            \
 diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 4cc7567872..0cb8c595a2 100644
+index efed539bc6..4cc7567872 100644
 --- a/hw/s390x/s390-virtio-ccw.c
 +++ b/hw/s390x/s390-virtio-ccw.c
-@@ -846,6 +846,7 @@ static const TypeInfo ccw_machine_info = {
-     };                                                                        \
-     static void MACHINE_VER_SYM(register, ccw, __VA_ARGS__)(void)             \
-     {                                                                         \
-+        MACHINE_VER_DELETION(__VA_ARGS__);                                    \
-         type_register_static(&MACHINE_VER_SYM(info, ccw, __VA_ARGS__));       \
-     }                                                                         \
-     type_init(MACHINE_VER_SYM(register, ccw, __VA_ARGS__))
+@@ -825,6 +825,7 @@ static const TypeInfo ccw_machine_info = {
+         MachineClass *mc = MACHINE_CLASS(oc);                                 \
+         MACHINE_VER_SYM(class_options, ccw, __VA_ARGS__)(mc);                 \
+         mc->desc = "Virtual s390x machine (version " MACHINE_VER_STR(__VA_ARGS__) ")"; \
++        MACHINE_VER_DEPRECATION(__VA_ARGS__);                                 \
+         if (latest) {                                                         \
+             mc->alias = "s390-ccw-virtio";                                    \
+             mc->is_default = true;                                            \
 diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 83d2e66498..4e55d7ef6e 100644
+index 027c6f29f7..83d2e66498 100644
 --- a/include/hw/i386/pc.h
 +++ b/include/hw/i386/pc.h
-@@ -340,6 +340,7 @@ extern const size_t pc_compat_2_3_len;
-     }; \
-     static void MACHINE_VER_SYM(register, namesym, __VA_ARGS__)(void) \
-     { \
-+        MACHINE_VER_DELETION(__VA_ARGS__); \
-         type_register(&MACHINE_VER_SYM(info, namesym, __VA_ARGS__)); \
+@@ -330,6 +330,7 @@ extern const size_t pc_compat_2_3_len;
+         MachineClass *mc = MACHINE_CLASS(oc); \
+         MACHINE_VER_SYM(options, namesym, __VA_ARGS__)(mc); \
+         mc->init = MACHINE_VER_SYM(init, namesym, __VA_ARGS__); \
++        MACHINE_VER_DEPRECATION(__VA_ARGS__); \
      } \
-     type_init(MACHINE_VER_SYM(register, namesym, __VA_ARGS__));
+     static const TypeInfo MACHINE_VER_SYM(info, namesym, __VA_ARGS__) = \
+     { \
 -- 
 2.43.0
 

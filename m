@@ -1,112 +1,118 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1864092ejb;
-        Thu, 20 Jun 2024 03:11:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWbvBXc3rTeus6CIDzoB3mhsGVqRpvu4L/m5eN/ODs/092ScLS970KY2hzSq7CbY50RCEUClY/b2RWM5Cb0XKBCxNh7Hski
-X-Google-Smtp-Source: AGHT+IGRhoj7eaQhVNKfBkkcbZIawwsQdHc7NyxX5E5ta6jMN857pIc2DWu/L87jD0QuhifTGzRS
-X-Received: by 2002:a67:f584:0:b0:48d:b7f2:fd1d with SMTP id ada2fe7eead31-48f13110156mr5160520137.23.1718878269156;
-        Thu, 20 Jun 2024 03:11:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718878269; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1873308ejb;
+        Thu, 20 Jun 2024 03:26:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWpET1PhqEfbyT2nT/jDdhb8WT4hyJkRvAsCjEycXwiUf7Vijb3XkqKD3UfPDruhAy2MS+kM3eYhiQdNegXkibDP2hWYkU2
+X-Google-Smtp-Source: AGHT+IGSc61YsaXRWepeMH0P8QVJAfom8tQUU7WBCcBQRi323vG+kKJtcq/oo08c7bWJeRnPg6cr
+X-Received: by 2002:a9d:7f91:0:b0:6fd:5875:5c87 with SMTP id 46e09a7af769-700776c3a7bmr5191269a34.36.1718879195678;
+        Thu, 20 Jun 2024 03:26:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718879195; cv=none;
         d=google.com; s=arc-20160816;
-        b=SdShWzY26WMTifPx23m1QNxSuPHeYrtUVlrFzwbHz9aBh2RIEsmKYs/tIrPotMahOV
-         NK7Tngj7JZrY+0KUt227P0cukqCSCwDd8kDdvRjqRxifGkUYJFejCUd6hMYzAk0YCr/c
-         xFWMqlhw1l+TfxDRGtKMxnABp8/YbI/kFYIpJdbZDFl216Wfrx+DjfCiUaduJcOlPz3Z
-         xbJfS0pEN7i1ngxkMVdP32ZVyh9/W1f/5pMeDQwx1/Yf3CxM6nnzqSMqNJBgCvKnt4BW
-         tvg0XNJ3nhNX+nexNnxnI2ztgTeSe2Zq+JDEbEf3TB8d4shJEsaTfSerR2flWTqfoifd
-         kinw==
+        b=XpwRG0cT5udJmtzuUzShNXTLhugpVsDI04w96nFjb+jKO0gt+teTJYZXYzpwNM7220
+         ZC6lIkBSjmvPeYEBNR67HzHyhhxW4VpkNTiFYtI1894sIOxE9CVbel2p5crjbHh8GNI3
+         JeojaEg9K7QcngdTkNzoHnR9Z3zJCaoJitAqzjOfV9wzTerdZhuLvWNnUqewef5K9EGY
+         KqGn4eC+oH/ni18ZU+05aYSq63Jlhb8gA+DUsmQWUYLlNkSlOlAezthrAmlFsmWH8mvD
+         TzfodCGvVnhO4Rr64E8XuBmVnnlLt/bfIIhGf0bxyvj2lJv/sOsAd5H8JoOC++O4Frv0
+         O6cA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=AtW2PjYDm2ZcTRvR96oon/PVVay2h/NrCdIjd+nEyTU=;
-        fh=s2y4y19pQ0Sbkl4b3KSJp1s8t9LU06EQjLN4ujRN8pE=;
-        b=L7P5ghPEv3L9FARJXJpI+J+o4fxvf/SS+Il3m9wCIltkbFvoOxn+sJBiojunjOr7Mk
-         +P+cYOxUHC66I4hm7tdLxHCCLM9tw3FAiyeUGfDvpNt0BAKeFfWOuL6mZWBS90EMCpec
-         gB+j/TvMwln5JtqiJCWqDehMZeOfrbNCd++1giDqxzgK/OWLuRBeEbmqeGcG+Xa7hKuc
-         jPlCSuh6YgzlHa8OodK2BcNzhqmzDxyB9DFXka8CWuQ8cJtkLRKluaEZDdCO73Pu13rM
-         Ea4AJy2xaJhxsWDXsa26XndGcTouzBXojuqw4BMOflHsIgcmoD5V5w78tZwqBjMJP5xC
-         GjLA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=1+GD1AiosH4ZlfQqVjaaQ/UFCGFvFSvfRT6gOEDeZeA=;
+        fh=wUQHS8kZY0DyQD63RAKHVTDrPwZpjKOvBt1ZC8TOLoM=;
+        b=sG1Wr4SQHo/hK5inDBDGAy1Ci23pTu602r3lepHSyqOKdzldZE+pMHmNn2JRp1dzal
+         NIP4p4CCHavdzWj+DbETyWah7gpnffoyV0hLeIvzXyTXNYvQp8EfIfq9xUAUy5PQlrEl
+         6i0GPYRvZdlsEZQPLsDfzfwp7E1byH9oYyMJ8vdb0qeS96Q7/otZRotuW7AY4SDb4CTD
+         8ip5t81GDWIz8l1+kSZ+bD68zyfC8yBXUhpbjpZ7WW9ZEGEFadkSiDFDKGJxsUYKvicY
+         utUiiZJo6R41J8ErgEnTMgxwiNM3ew93O8mncucsYkhkNaZmINqGplRtdolAeSyYuyBw
+         tX/g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yVGDmmf7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qkB7oDz3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-441f2fe905dsi167042121cf.591.2024.06.20.03.11.08
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b2a5b58cd2si171462576d6.428.2024.06.20.03.26.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2024 03:11:09 -0700 (PDT)
+        Thu, 20 Jun 2024 03:26:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=yVGDmmf7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qkB7oDz3;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sKEki-0007vO-IA; Thu, 20 Jun 2024 06:10:48 -0400
+	id 1sKEzY-0005N1-PZ; Thu, 20 Jun 2024 06:26:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sKEke-0007uv-Is
- for qemu-devel@nongnu.org; Thu, 20 Jun 2024 06:10:45 -0400
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sKEzX-0005Mj-QU
+ for qemu-devel@nongnu.org; Thu, 20 Jun 2024 06:26:07 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sKEkc-0008U8-Qk
- for qemu-devel@nongnu.org; Thu, 20 Jun 2024 06:10:44 -0400
-Received: by mail-lj1-x232.google.com with SMTP id
- 38308e7fff4ca-2ebe40673d8so7146251fa.3
- for <qemu-devel@nongnu.org>; Thu, 20 Jun 2024 03:10:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sKEzQ-0003Ci-R0
+ for qemu-devel@nongnu.org; Thu, 20 Jun 2024 06:26:07 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-a6fc30e3237so54500166b.1
+ for <qemu-devel@nongnu.org>; Thu, 20 Jun 2024 03:25:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718878241; x=1719483041; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=AtW2PjYDm2ZcTRvR96oon/PVVay2h/NrCdIjd+nEyTU=;
- b=yVGDmmf7jo8FSepcMLKMwPO37+A4eDWSZljP2AjAv4H8vy7LRhKBeaW+PzgPQU08Lj
- c+xle/jRI0Z19Jdxh1uuU6r8pTTITx5x0m/n7uz6UgW88M/UjEsELFy1msaJbp4KQV0L
- R/f8hDMYB+ALRPFUxv8MXt2QyP/XCNx3HcxUkjWHU/JQ19hl3bW2HgIU8CSxMEfY5jf4
- wAGpogun4jXK17sPjPozZpb91uYwNAsj3bRc1Jhra+HWkeyFSg1yHKcLEU729wujCPeW
- XPwru7J4IMGBJ3UvUMjFAIl8CMlPyGSdXuAMOYzn/p3e0ZIgjd4gyO4LTW9IswMACrjc
- cQXQ==
+ d=linaro.org; s=google; t=1718879154; x=1719483954; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=1+GD1AiosH4ZlfQqVjaaQ/UFCGFvFSvfRT6gOEDeZeA=;
+ b=qkB7oDz3AUQuBeHQUTJFcwYt5du4SoOvhkiAPbmDnsyKujiBCltMut+HJUQQpeohhN
+ 9vkoLx3q5aksw+d/7VILYtPxaxDjZfROw4s8tnHEOBcRf1HkT4PpMewHgidpl29oS1xo
+ 5cnR/dIqfrT4A2qnLzI+jenNKffivM2YMh0X+oOQItrMVf3g/AZUQ7gpTKIlerNZ24lq
+ AZmqsCvvxYdk/b1S/D6WNDwmMonie/QqAalv4n4lySemn0tu9WWxNQl0Gr+YDbQzKOOr
+ RQrw0SJcjT0LMPyd4fwZxQDk/K0LpU1yzX3EGAq0f4b9BB9g1PKuBDLIkV6iJmx3vj8J
+ 2maQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718878241; x=1719483041;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=AtW2PjYDm2ZcTRvR96oon/PVVay2h/NrCdIjd+nEyTU=;
- b=Z4FJSq/PztTihv3gvV3yKC4kJuGgbrgNXHij/F5Zz0mfe33ICLux3ThYPcCdbGrwkC
- PngIz8tS5cDEfAROJiPx7h15uid06PfssWyNfkMdu/cP9NZm4XCwnTouLa97Tc+QcxRQ
- YW0JyB10AYzvrOsS6fSXdaAA+XD3l7DZkyJ/3aBF6TdavsC+ufCsDo+oIKYK9ld5WPkG
- BWPvyH1Ge72EQNVx8U7awyxRq1rArDCom/VfwT7/aTGHqxXcD1wDivnc14SZ3/AA2Ndg
- 3t8d5ZOk23xH/uC//QHxSUZ/CDNmTmy6RLAIs2pyinDMUNd9R6ZmTmdjFQ7Pi+u6N3N1
- DQ1A==
+ d=1e100.net; s=20230601; t=1718879154; x=1719483954;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=1+GD1AiosH4ZlfQqVjaaQ/UFCGFvFSvfRT6gOEDeZeA=;
+ b=DnCoS2jfc6bV44MA013Ejjys0vt9xJS65IZmykuCcQ7fG1rJs9sxKie/VdPCvL3cj7
+ LAY/U8qpkbnra3L6RK0uYcANeNpo87ccauBWbSUmtlDNeP9V5vgzKevpPsKmd7yPCX5+
+ ZMWrO1/+fIO4/aXRy6YvJEXborQNsEcj087q+HalqBxojazCofSsSWtvXQkN8YeBEGuM
+ lbtdFN6kzBAUqa6SRLZOXqOR2rLmeVsda/h2iTnkHm/iKk/ICC/fFxJKt7be2432Soa6
+ 5smTCl5yPWKvZAMiR2wHgZEAXuCjrO1iTtDmOR9jZUDUWMZlVVz77stFAUO4r34HggC7
+ MXAg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUqzDG9qTgBxpr/bp/1m88vKXc01evEauRVEfTQ2dSdwKm0koOg3PbRA8pmjyCKfKOe+vSh8npeCitJeUql3hhNwm/GlcE=
-X-Gm-Message-State: AOJu0YxOZweWm29nyz1hp0GXM9KAaNF2qF3I5vJOVPY4un3FZVYBTpPN
- 70ICeVRo6Vmi7N8wXYxJhsXrQaPIWd+At6HCePY27uTAtRoz5/XyQUGKcVHeJYyNvEIS18BbeSD
- wcpx89j6TakJgexsR9xEPpWjMt/XUJYP0pTqBsQ==
-X-Received: by 2002:a2e:9257:0:b0:2ec:27d0:b28b with SMTP id
- 38308e7fff4ca-2ec3ce9f6d0mr32151901fa.5.1718878240607; Thu, 20 Jun 2024
- 03:10:40 -0700 (PDT)
+ AJvYcCXZzXBnBSvW3HEyFjuagbUC66B5KmKnc5PZ94tVcDxx5ZKH8yii3GAr+nXeVQ1h0X2BTNCheOy3LWxa8YODT9YaYBI+IoQ=
+X-Gm-Message-State: AOJu0Yx/oOZCmOLL18yPmqmITVTKmVXk0smxAbDvq+qUQKwziekmU8zO
+ q2eirrYQXYvo+CaslaS7pAydidAYh75XhkuBMkq27StO/JPg2hXmfvHh1v/kx8eJjAhsrdJ31JL
+ L
+X-Received: by 2002:a17:907:15c2:b0:a6f:64d7:a81f with SMTP id
+ a640c23a62f3a-a6fab778d3amr245397066b.59.1718879154254; 
+ Thu, 20 Jun 2024 03:25:54 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.151.40])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a6f56da40f6sm748936266b.43.2024.06.20.03.25.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 20 Jun 2024 03:25:53 -0700 (PDT)
+Message-ID: <12471213-83da-4226-ba2a-2b8b6452d46b@linaro.org>
+Date: Thu, 20 Jun 2024 12:25:51 +0200
 MIME-Version: 1.0
-References: <20240618144009.3137806-1-zheyuma97@gmail.com>
- <47a6e9d2-27f6-4e45-9de3-c4766bdf2566@linaro.org>
-In-Reply-To: <47a6e9d2-27f6-4e45-9de3-c4766bdf2566@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Jun 2024 11:10:29 +0100
-Message-ID: <CAFEAcA82T-hS0Armp6PVBkrywfqv+-u+L4z8rtrjBpnwvE8Hxg@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] hw/timer/a9gtimer: Handle QTest mode in
  a9_gtimer_get_current_cpu
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Zheyu Ma <zheyuma97@gmail.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Peter Xu <peterx@redhat.com>, Thomas Huth <thuth@redhat.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@amd.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::232;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x232.google.com
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Zheyu Ma <zheyuma97@gmail.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+References: <20240618144009.3137806-1-zheyuma97@gmail.com>
+ <47a6e9d2-27f6-4e45-9de3-c4766bdf2566@linaro.org>
+ <CAFEAcA82T-hS0Armp6PVBkrywfqv+-u+L4z8rtrjBpnwvE8Hxg@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA82T-hS0Armp6PVBkrywfqv+-u+L4z8rtrjBpnwvE8Hxg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,61 +134,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Ekg4Q7UqkhsC
+X-TUID: EH5s4oSW0fUZ
 
-On Tue, 18 Jun 2024 at 15:51, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> On 18/6/24 16:40, Zheyu Ma wrote:
-> > This commit updates the a9_gtimer_get_current_cpu() function to handle
-> > cases where QTest is enabled. When QTest is used, it returns 0 instead
-> > of dereferencing the current_cpu, which can be NULL. This prevents the
-> > program from crashing during QTest runs.
-> >
-> > Reproducer:
-> > cat << EOF | qemu-system-aarch64 -display \
-> > none -machine accel=3Dqtest, -m 512M -machine npcm750-evb -qtest stdio
-> > writel 0xf03fe20c 0x26d7468c
-> > EOF
-> >
-> > Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
-> > ---
-> >   hw/timer/a9gtimer.c | 5 +++++
-> >   1 file changed, 5 insertions(+)
-> >
-> > diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-> > index a2ac5bdfb9..64d80cdf6a 100644
-> > --- a/hw/timer/a9gtimer.c
-> > +++ b/hw/timer/a9gtimer.c
-> > @@ -32,6 +32,7 @@
-> >   #include "qemu/log.h"
-> >   #include "qemu/module.h"
-> >   #include "hw/core/cpu.h"
-> > +#include "sysemu/qtest.h"
-> >
-> >   #ifndef A9_GTIMER_ERR_DEBUG
-> >   #define A9_GTIMER_ERR_DEBUG 0
-> > @@ -48,6 +49,10 @@
-> >
-> >   static inline int a9_gtimer_get_current_cpu(A9GTimerState *s)
-> >   {
-> > +    if (qtest_enabled()) {
-> > +        return 0;
->
-> Indeed this is how we fixed hw/intc/arm_gic in commit 09bbdb89bc,
-> so:
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->
-> > +    }
-> > +
-> >       if (current_cpu->cpu_index >=3D s->num_cpu) {
->
-> That said, such accesses of @current_cpu from hw/ are dubious.
+On 20/6/24 12:10, Peter Maydell wrote:
+> On Tue, 18 Jun 2024 at 15:51, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> On 18/6/24 16:40, Zheyu Ma wrote:
+>>> This commit updates the a9_gtimer_get_current_cpu() function to handle
+>>> cases where QTest is enabled. When QTest is used, it returns 0 instead
+>>> of dereferencing the current_cpu, which can be NULL. This prevents the
+>>> program from crashing during QTest runs.
+>>>
+>>> Reproducer:
+>>> cat << EOF | qemu-system-aarch64 -display \
+>>> none -machine accel=qtest, -m 512M -machine npcm750-evb -qtest stdio
+>>> writel 0xf03fe20c 0x26d7468c
+>>> EOF
+>>>
+>>> Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
+>>> ---
+>>>    hw/timer/a9gtimer.c | 5 +++++
+>>>    1 file changed, 5 insertions(+)
 
-True, but I'm not sure we ever settled on the right way to avoid
-them, did we?
 
-Anyway, I've applied this patch to target-arm.next.
+>>>        if (current_cpu->cpu_index >= s->num_cpu) {
+>>
+>> That said, such accesses of @current_cpu from hw/ are dubious.
+> 
+> True, but I'm not sure we ever settled on the right way to avoid
+> them, did we?
 
--- PMM
+No we didn't, it is still in my TODO list; we might discuss it
+when I post my RFC.
+
+Regards,
+
+Phil.

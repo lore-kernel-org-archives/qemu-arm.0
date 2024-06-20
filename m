@@ -1,92 +1,118 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1789036ejb;
-        Thu, 20 Jun 2024 00:02:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW0hh/ZoGPgvSz0vN4h/I/BZ54PpJg2QRyy5LuAqctIIFXNK5DsPP7YueONCHv/Km7wJeN8v9Pp2QCaugt1PdCZkvOkGJIn
-X-Google-Smtp-Source: AGHT+IFPfwwh1g2SSX+RmWH/p5H2SCa+JUXQQjcY4G/g+PzeyQfgcIF4hNxjNmy0cB+7CxXZmLff
-X-Received: by 2002:a0c:cb09:0:b0:6b0:74b5:cd0 with SMTP id 6a1803df08f44-6b501ea5d77mr49645106d6.49.1718866940823;
-        Thu, 20 Jun 2024 00:02:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718866940; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1849612ejb;
+        Thu, 20 Jun 2024 02:35:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWl7TnjRcUXwL+Z69Y4ETF8ag1jrqvDucglwROBxoldlXs1lYfboVKKYckMbd9bzByXwsQDroZnaBIU1k4HZjBB9h4776ff
+X-Google-Smtp-Source: AGHT+IFIvqnudQg5QxzBF2rMxNvZwSCxvcp7sD9Ugu8FTilSn2tJSLoAukT8fjOjV84IMjvcXi5y
+X-Received: by 2002:a05:6808:10c7:b0:3d2:227e:a513 with SMTP id 5614622812f47-3d51b9975e8mr6285409b6e.22.1718876134544;
+        Thu, 20 Jun 2024 02:35:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718876134; cv=none;
         d=google.com; s=arc-20160816;
-        b=djIVVgYzgFniRQFoSQxlUzti53fNlX79NSCfZeYp50LAnN7xMYqBts6FpVH7i5p63A
-         NaCu8C66uyUhZaIoppTurj20ooCW/3xqkyw97ZxQEqUfFPtmcS+2YaWV5lKvaupN+WKs
-         j2Ns5Pi3FZABbF7zdFZwV7ck8ddVUC6KDCcdf+J+V8N0Jmtz5wqwWpdWK4r8+Ga2V1/R
-         xZnuTUA063xp7oVMwQqBA6Oz+iahAU9YRwd5wpHc4VLkbLY6QUgXIEmR+f3mQ7/hjqbx
-         NSZcjEZZ2gN3qC62Yao5fVIt1znaab9PVUMfknqA8sajo2mypl1HRfMTtlEl3cLyoeiI
-         mieA==
+        b=yfU5D/HjroG8FLznF+AYKirdTAgpz5njJbJvYLvB0P9n5qGn7uEJyny5P9Qe5l3IkN
+         9mSzwvvTw7a6jhBy75yahLjhuNLAlb/fUMyCFo0aAxh+R9PdQxOTWQhl394ASEhHJryn
+         +kLTvfaGyWJ47YD9D5OpuG5wlVZk/j4SNQhmT9tLBo49e/IpigtEihkKOrJQLY1gi9Zl
+         kAuXxXvzEPPZWbQU+kGdNQTQ4THqI3jy2a1UWuDTAg86X/RqHS4l9O24WMjTMNjIHAoZ
+         zJrOA7FaPxEi/ypggUGEDuBjvhqJb3Nw/Y1W7Ui2wNm1K2VGjTXEjvus7+g0GxlAjmy5
+         y5AA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=WIZLUYll8DDKyvjmURLLnr7OyEH8DCDP81HBfMJSUPU=;
-        fh=fNM2c6Md8egRT875ckR32/0m9IXdMkrafPYkFdQPgl0=;
-        b=xvZtube3WEoWci+YgbGsVjvRJyygOIt+Vvfk5DuRU8bppk5t/f2sIAdK55NipPYY5G
-         QCSE98LV01cBuHDTFZgzpDDeubCvl4f1YdWP55TnSCxBy6wFONtAAkU6GxNnjXtKO6XU
-         t1BvHXdCFeJoGQT7t0zqy++FR5QbgWxnJ5ZFr7omDAw1Mccypt0ji0m//0EngYrx3zid
-         u8pfeM4lchPBaIOJHOC4Jo+TAwLkjtOKp6YsIpkfCN0ZZH7EgUoMdmB7USrVFfXSwbJ+
-         +oKuoHGSDEKFAWl/wFysCTetq+q7T0katinmyLQ7bRLmtkvNNn24STzubcj+rH/za9EL
-         nsPQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=hbBsbkBy2PdD0EA2Zs5jFS/sdRgXA2mOSZ7j4O4WgI8=;
+        fh=+sg07TPt1fMaCeVe+FgVyvtKaXzR/PbFAptlCQac8FA=;
+        b=SGyd3JYuRPIc1I7Unaw31xlvciCY3fb+GIx5rOTvqQSnpRwQ1va0ngv3NoL7nYD45+
+         cT5yMf/EEUE2TM1ZdsM1rOXASXbpyL68WxHEbhftsVrGuDNfAgLyNDjJN2NrHalCSAmX
+         u4+M9XMIC+V6TfNduNX+1Asz81T41juh7AzDdQ2RIbuVP8N/cgJGcVrJ+Cldh3efJy4O
+         nUognLm2AGJGoi8Wc1o7axG3RwThi7HRU/jupzYLoIxgWCZeYA+lYKAg8+94cJ9I3clI
+         f2BonFF5Tp3hWLTZrbsfX1574LGkNF5PBUNzASTlMdULR0V86b8eNQTz23EpPB6pVePJ
+         UTzA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=jzbQHIwd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b3add64ccbsi60056366d6.92.2024.06.20.00.02.20
+        by mx.google.com with ESMTPS id af79cd13be357-798ac0859b7si1632617685a.703.2024.06.20.02.35.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2024 00:02:20 -0700 (PDT)
+        Thu, 20 Jun 2024 02:35:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=jzbQHIwd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKBo7-0001ZS-D3; Thu, 20 Jun 2024 03:02:07 -0400
+	id 1sKEC8-0006fB-LV; Thu, 20 Jun 2024 05:35:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=7F4n=NW=kaod.org=clg@ozlabs.org>)
- id 1sKBo6-0001ZE-9J; Thu, 20 Jun 2024 03:02:06 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=7F4n=NW=kaod.org=clg@ozlabs.org>)
- id 1sKBo4-0006vL-0o; Thu, 20 Jun 2024 03:02:06 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4W4Wd25Sjpz4x0H;
- Thu, 20 Jun 2024 17:01:58 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4W4Wcx6d0cz4wcC;
- Thu, 20 Jun 2024 17:01:53 +1000 (AEST)
-Message-ID: <1969c9c1-ddf6-4c09-b63d-a49d1b7683fd@kaod.org>
-Date: Thu, 20 Jun 2024 09:01:48 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sKEC7-0006e1-87
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2024 05:35:03 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sKEC5-0001g3-Ll
+ for qemu-arm@nongnu.org; Thu, 20 Jun 2024 05:35:02 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-57a1fe6392eso765809a12.0
+ for <qemu-arm@nongnu.org>; Thu, 20 Jun 2024 02:35:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1718876099; x=1719480899; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=hbBsbkBy2PdD0EA2Zs5jFS/sdRgXA2mOSZ7j4O4WgI8=;
+ b=jzbQHIwdk8j85FPFAf1TNxoGofyzcS7n7mY7clxKEKMTGLgiUHYg472OOhdOTtyywe
+ +uurQvAO2cC49e6hbygx6Ks6XBSowFK0SDr8Lr2okPHNsTfd0enPvoFH46GkcjnJcctK
+ Yq/RR7ZLUJAVhzbeB9Si0OVtP5kn2LMEenT9XOBr95T6WSf8wTlp6QhrIMDF0Nlan6CC
+ mmf4kOeGP5rNk/QkiVGMJCYxW9dnjBUIJG/3QHt+5uMVNfLCGt9w48bJDf88XEVPRkeo
+ CcfOuKHZiKuT3Ggd8wQqLr8V2Dxr4QZLAaKwJ6EbR4LRlSH4RokwyN1CeBGEzS8uE7D2
+ +DFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718876099; x=1719480899;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=hbBsbkBy2PdD0EA2Zs5jFS/sdRgXA2mOSZ7j4O4WgI8=;
+ b=bg+0yBtMc+rLTy1sIWYZgqqCbUtwRoT87ee6wlnYVSYj3vu0tVZctQxI3+aS1VJIR2
+ +wpWS0WmxfAUoYfOGBNHjmzoV9bIGbb1GzL4gp2mQzEhhr9VqVVxbyrbX9ZIUjKw18Zk
+ yPTCppDTSqnX142yfNus8/i6xN5f7/ZRCrU1uvdl2vhUsria+fi9sSxEy56VKwW0Ym/k
+ DbCa2CiOQDb7rv4cDutOZWXs8gSVw5RaLaJQxnIa9AGGvl+UEaMLRv0LeahwSHg0qi7g
+ 0rSF9kveIZoMNqpfXBPYxLzdiyf/e920uh9LO5KIv0P7R54d5lf8jThv3emU86d01PB0
+ tjmw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXDstVOWNgsU46jnxFrWm6Yak0HoBcc/kMkJlqotpPfHcKCbQKrFIfmoRjFWFH0FK0jZKx1oNoOaRUOnHCGxEKwxoZX
+X-Gm-Message-State: AOJu0Yw2kyRGxB2+fgItko5FU3kRgU3FQjXJWCJssXdVF9S8Lf4yRcsp
+ 60IE03BkQIv+G7jzGmrX//rITzylI54AGLfrL44nAqIisZ1CGl4PuZGGLTeT8qwDk6xSrjcyAWo
+ PSrTcPFTW0sl0AXE/sMyQXsn3qCkLYhao8tsvQw==
+X-Received: by 2002:a05:6402:3414:b0:57c:a7dc:b0de with SMTP id
+ 4fb4d7f45d1cf-57d07ee7906mr3004193a12.39.1718876099202; Thu, 20 Jun 2024
+ 02:34:59 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/2] hw/net:ftgmac100: fix coding style
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Jason Wang <jasowang@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20240619100102.3137941-1-jamin_lin@aspeedtech.com>
- <20240619100102.3137941-2-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240619100102.3137941-2-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=7F4n=NW=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <20240620060014.605563-1-marcin.juszkiewicz@linaro.org>
+ <20240620060014.605563-2-marcin.juszkiewicz@linaro.org>
+In-Reply-To: <20240620060014.605563-2-marcin.juszkiewicz@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 Jun 2024 10:34:48 +0100
+Message-ID: <CAFEAcA9XbYr9jzYm908_stCUrZCqixB+cysFTRCe2MnAFW1FVA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] tests/avocado: use default amount of cores on
+ sbsa-ref
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Cc: qemu-devel@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
+ Radoslaw Biernacki <rad@semihalf.com>, Cleber Rosa <crosa@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,63 +127,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JgP6dvq/eGdi
+X-TUID: wQXEGHfQtV35
 
-On 6/19/24 12:01 PM, Jamin Lin wrote:
-> Fix coding style issues from checkpatch.pl
-> 
-> Test command:
-> ./scripts/checkpatch.pl --no-tree -f hw/net/ftgmac100.c
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+On Thu, 20 Jun 2024 at 07:00, Marcin Juszkiewicz
+<marcin.juszkiewicz@linaro.org> wrote:
+>
+> I was wondering why avocado tests passed with firmware which crashes
+> when anyone else is using it.
+>
+> Turned out that amount of cores matters. Have to find out why still.
 
+This commit message confuses me. It reads like "running with
+two cores will make the guest crash", i.e. "apply this patch
+and the test suite will stop passing". I assume that's not
+the case, but what's actually going on here?
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
-
-> ---
->   hw/net/ftgmac100.c | 12 ++++++++----
->   1 file changed, 8 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-> index 74b6c3d9a7..25e4c0cd5b 100644
-> --- a/hw/net/ftgmac100.c
-> +++ b/hw/net/ftgmac100.c
-> @@ -238,7 +238,8 @@ typedef struct {
->    */
->   #define FTGMAC100_MAX_FRAME_SIZE    9220
->   
-> -/* Limits depending on the type of the frame
-> +/*
-> + * Limits depending on the type of the frame
->    *
->    *   9216 for Jumbo frames (+ 4 for VLAN)
->    *   1518 for other frames (+ 4 for VLAN)
-> @@ -533,8 +534,10 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
->               break;
->           }
->   
-> -        /* record transmit flags as they are valid only on the first
-> -         * segment */
-> +        /*
-> +         * record transmit flags as they are valid only on the first
-> +         * segment
-> +         */
->           if (bd.des0 & FTGMAC100_TXDES0_FTS) {
->               flags = bd.des1;
->           }
-> @@ -639,7 +642,8 @@ static bool ftgmac100_can_receive(NetClientState *nc)
->    */
->   static uint32_t ftgmac100_rxpoll(FTGMAC100State *s)
->   {
-> -    /* Polling times :
-> +    /*
-> +     * Polling times :
->        *
->        * Speed      TIME_SEL=0    TIME_SEL=1
->        *
-
+thanks
+-- PMM

@@ -1,95 +1,86 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1663484ejb;
-        Wed, 19 Jun 2024 16:49:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWMJuWpd3sKRO8zjPdE3GN7tFwRa7QyFZyxfOAf5jEZD6KOxzEvW6P/sU1Hwc54FT78DElpsinR/wzuf7eEpX39biR7GVpi
-X-Google-Smtp-Source: AGHT+IFAWc4Wykkh60Q7PEeKd0pvkcaeETzJ+EQjZLBOO8wCVE7d9LZF/a9snHTKMzM9tinXpvDQ
-X-Received: by 2002:a05:620a:2490:b0:795:5822:e8c6 with SMTP id af79cd13be357-79bb3e2e485mr479115385a.27.1718840965108;
-        Wed, 19 Jun 2024 16:49:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718840965; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1765339ejb;
+        Wed, 19 Jun 2024 22:45:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUFIJREGDNXpUKiOBd4aYn844zYVB82zVbL6IPXq883wPNhy1IXodebjRAKobmU6eTT98kt3r3/bpOzh7FHzLboJaPM4paU
+X-Google-Smtp-Source: AGHT+IGAN8WAgASUDKV6ulfU0ZdyO380ha9dtdgrAchk7ycoUivpIMgwYb19E4EaJsUeZqEY/2Gw
+X-Received: by 2002:ac8:7f0a:0:b0:43f:f361:1b22 with SMTP id d75a77b69052e-444a79cfe59mr47430041cf.36.1718862331578;
+        Wed, 19 Jun 2024 22:45:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718862331; cv=none;
         d=google.com; s=arc-20160816;
-        b=k89nKOh+DfoOuSGNrGfAEyzUEBcCBJB70MzoeJeOe/UeTio44mJTCwcB7IZwG348R5
-         kI4uqwawuoCDg5qQ/gJP/Tpg040sn2JqufSlb5Bt7bRnpOLjGDEkSI+DoWAqWX8aD/q+
-         B/rw8BIi30GT7ian/czd3SFeQEs0hrxbsbK7fwC5Ekp7Tsg273w/rh21WAVcxaHo4c5R
-         B/MAuveYiQ8GqHIQnIq1+DvW+0jb1SrFSbTgxJldM3AxF+1hl2kOaM8g22JTMuQLYdwC
-         FSw+45c9mHkMX+ER/YqUvTiyXKOtc+Ci3deyE4JNt0QrUQE8KSZpgFTv/g0pgOA2PSpE
-         N9vw==
+        b=AihlirjscRpzLcS8ib1j4K56N+HHfX/AX86FTdGhRoSKk56gkQs7Dl8xeBAa1IYs1N
+         QwZeA+9L67gFuDMO8iNnMCbKTbzfYVE8TMGoUxnbLnlww1A/YiWnzvtGvNHraebH1kRa
+         Jj0nIEJg162vbRyf55jLKY8jnIqPS2oxab5WKKuzSxS2EKPFfczFJb4jE2Cp+F1n39M6
+         gXcoJ3Sr/ESMKTb0YG0pYCML+DTBB4Z3hYluObjUmCw4Xqv9enGa28XyCsFwlFgESzuy
+         hoe3APMvcaOliDfTIvdKpA82u8aaeZopVRF1yUPlgU7a2oj8kHjfyddAmWAT5UjkrnOr
+         Tmgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=IEgncZSK+nXv6/fbH5xMKM4cWSDqyVFNFDNZAR7rAck=;
-        fh=x5XuGiwkbRHK8ZRroBkdHiOQErlFxOugbQQGZXggGWU=;
-        b=lWVy8og6bPwCspJ7E+onOelug1SZklsKrww7g4HU5EBJAcEPGSOaU/J92INbyV0hzo
-         idA5Tl0wQu6wu5cp1i/+9dwqwDa+HT3Oj1N4ruqjTejEi/+uIIOao+fqYXjKG8OsXvPA
-         JQ2cr9sfapS2NQ9nC7/mAh1FIi72nvU7bwV1NJC3Pz4JjGwQ32QiDW1Ippy+D+ATN8MD
-         FJbu39WhzGbGCkwGkwWIHdd73U7mxKvhrtJK8kIUokX2sFFcQ8MZwlcy9m8UQDeILr8n
-         Lyu/DKyE98RP3TMhhh78dvuvV5aVBo35VRN3unmVCf9JO+/Jv4kXnOheqn+NdDr03dKW
-         Qitw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=e6W9a+2GRszxthEeE1wKqGTlVICMfjGLkwiU71EthfA=;
+        fh=L8M9OuGVmbNJrDIPS4yoODPWkaGwVPKOMzYqjU69lMA=;
+        b=pNgRDi5XTPrdeVKectqjxqW/oyz+aDWYV1+laWo81DlynWPmTVhFxU4Z/XD4BixvUr
+         BNq19t/J1/N8tXV50/f+2yDf4QJpmctJ27NTxMLZrxfKtdEBvTO+l4eEE/gc8ujykCXZ
+         EWuThIfdzx3P7oFJ8BNcA7AT+X40GDmtDEOQnGJLOWfMkzcxMXO3Aw9fqptJkUlZzaw0
+         /Ttd56V/3f3iKRkuvqwpXXz7eXhKC401MIRI+dklAw9VBLHUzuz0H1Hbw0NpK2rX3Bg3
+         yEC86fymCcOfTEpeVD8nFHYEfiWNYk4xZcD2MLELjsMoZM+WiXNnXpArC6J8d8WYL9vA
+         kRcw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=cnJeAxGR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79a2617a4e4si1312862585a.610.2024.06.19.16.49.24
+        by mx.google.com with ESMTPS id d75a77b69052e-441f2fe8534si173705081cf.578.2024.06.19.22.45.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Jun 2024 16:49:25 -0700 (PDT)
+        Wed, 19 Jun 2024 22:45:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=cnJeAxGR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sK52v-0000rD-2A; Wed, 19 Jun 2024 19:48:57 -0400
+	id 1sKAbi-0006Sw-V3; Thu, 20 Jun 2024 01:45:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1sK52t-0000qx-Bh; Wed, 19 Jun 2024 19:48:55 -0400
-Received: from pi.codeconstruct.com.au ([203.29.241.158]
- helo=codeconstruct.com.au)
+ (Exim 4.90_1) (envelope-from <SRS0=7F4n=NW=kaod.org=clg@ozlabs.org>)
+ id 1sKAbh-0006Si-I0; Thu, 20 Jun 2024 01:45:13 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1sK52q-0003x1-Hi; Wed, 19 Jun 2024 19:48:55 -0400
-Received: from [192.168.68.112]
- (ppp118-210-79-194.adl-adc-lon-bras32.tpg.internode.on.net [118.210.79.194])
- by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 88E5A20154;
- Thu, 20 Jun 2024 07:48:43 +0800 (AWST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1718840925;
- bh=IEgncZSK+nXv6/fbH5xMKM4cWSDqyVFNFDNZAR7rAck=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References;
- b=cnJeAxGRxdWrUM+S92Q/2YrFAKdVJHdxxh4dpNqLlknRL2slhLwYmZuc/tVr8k3o7
- 0ydTZhFmfnTggHp9A/4M8Wa6W474Z5UmF5aZgFkzXrexutOhLO2nS/hMGbS5sWNPDu
- J4hePohouezTKfKPs/Oi/Ne81W0i98XFnNaMpRZsmIFRDzvvA06ZN5ebk6lhcPISzx
- 11ZntAPrP10DtRCGr6rX1iP/BaDXQc3zEhd4hYvXybb9/9TvP7Dqc4pTTdi4TunoqJ
- 3mLbffNMGQZAQfXa4bjtYGvNg0fxkNqn0e1TvWeHfJrWoQ1JwyxHTb4d+DeJXAPKnb
- dMnv3ALSFwj0A==
-Message-ID: <7fcbf65de8bc5668e036249d6408bf4e4cbc6efe.camel@codeconstruct.com.au>
-Subject: Re: [PATCH v3] hw/gpio/aspeed: Add reg_table_size to AspeedGPIOClass
-From: Andrew Jeffery <andrew@codeconstruct.com.au>
-To: Zheyu Ma <zheyuma97@gmail.com>, =?ISO-8859-1?Q?C=E9dric?= Le Goater
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Joel Stanley
- <joel@jms.id.au>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Thu, 20 Jun 2024 09:18:43 +0930
-In-Reply-To: <20240619183638.4073070-1-zheyuma97@gmail.com>
-References: <20240619183638.4073070-1-zheyuma97@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
+ (Exim 4.90_1) (envelope-from <SRS0=7F4n=NW=kaod.org=clg@ozlabs.org>)
+ id 1sKAbf-0001cG-IJ; Thu, 20 Jun 2024 01:45:13 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4W4TwD0W6bz4wyj;
+ Thu, 20 Jun 2024 15:45:00 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4W4Tw91Pwjz4w2S;
+ Thu, 20 Jun 2024 15:44:56 +1000 (AEST)
+Message-ID: <c6510e3f-9a28-463e-abed-3cff44c328c4@kaod.org>
+Date: Thu, 20 Jun 2024 07:44:52 +0200
 MIME-Version: 1.0
-Received-SPF: pass client-ip=203.29.241.158;
- envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] hw/gpio/aspeed: Add reg_table_size to AspeedGPIOClass
+To: Zheyu Ma <zheyuma97@gmail.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20240619183638.4073070-1-zheyuma97@gmail.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240619183638.4073070-1-zheyuma97@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=7F4n=NW=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,152 +95,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0dCt1tuic+Sm
+X-TUID: 2oeWqPPznIZr
 
-On Wed, 2024-06-19 at 20:36 +0200, Zheyu Ma wrote:
+On 6/19/24 8:36 PM, Zheyu Ma wrote:
 > ASan detected a global-buffer-overflow error in the aspeed_gpio_read()
 > function. This issue occurred when reading beyond the bounds of the
 > reg_table.
->=20
-> To enhance the safety and maintainability of the Aspeed GPIO code, this c=
-ommit
+> 
+> To enhance the safety and maintainability of the Aspeed GPIO code, this commit
 > introduces a reg_table_size member to the AspeedGPIOClass structure. This
-> change ensures that the size of the GPIO register table is explicitly tra=
-cked
+> change ensures that the size of the GPIO register table is explicitly tracked
 > and initialized, reducing the risk of errors if new register tables are
 > introduced in the future.
->=20
+> 
 > Reproducer:
 > cat << EOF | qemu-system-aarch64 -display none \
-> -machine accel=3Dqtest, -m 512M -machine ast1030-evb -qtest stdio
+> -machine accel=qtest, -m 512M -machine ast1030-evb -qtest stdio
 > readq 0x7e780272
 > EOF
->=20
+> 
 > ASAN log indicating the issue:
-> =3D=3D2602930=3D=3DERROR: AddressSanitizer: global-buffer-overflow on add=
-ress 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7fff096c4e90 sp 0x7fff096c4e8=
-8
+> ==2602930==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7fff096c4e90 sp 0x7fff096c4e88
 > READ of size 2 at 0x55a5da29e128 thread T0
->     #0 0x55a5d700dc61 in aspeed_gpio_read hw/gpio/aspeed_gpio.c:564:14
->     #1 0x55a5d933f3ab in memory_region_read_accessor system/memory.c:445:=
-11
->     #2 0x55a5d92fba40 in access_with_adjusted_size system/memory.c:573:18
->     #3 0x55a5d92f842c in memory_region_dispatch_read1 system/memory.c:142=
-6:16
->     #4 0x55a5d92f7b68 in memory_region_dispatch_read system/memory.c:1459=
-:9
->     #5 0x55a5d9376ad1 in flatview_read_continue_step system/physmem.c:283=
-6:18
->     #6 0x55a5d9376399 in flatview_read_continue system/physmem.c:2877:19
->     #7 0x55a5d93775b8 in flatview_read system/physmem.c:2907:12
->=20
+>      #0 0x55a5d700dc61 in aspeed_gpio_read hw/gpio/aspeed_gpio.c:564:14
+>      #1 0x55a5d933f3ab in memory_region_read_accessor system/memory.c:445:11
+>      #2 0x55a5d92fba40 in access_with_adjusted_size system/memory.c:573:18
+>      #3 0x55a5d92f842c in memory_region_dispatch_read1 system/memory.c:1426:16
+>      #4 0x55a5d92f7b68 in memory_region_dispatch_read system/memory.c:1459:9
+>      #5 0x55a5d9376ad1 in flatview_read_continue_step system/physmem.c:2836:18
+>      #6 0x55a5d9376399 in flatview_read_continue system/physmem.c:2877:19
+>      #7 0x55a5d93775b8 in flatview_read system/physmem.c:2907:12
+> 
 > Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
 
-Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
 
-> ---
-> Changes in v3:
-> - Add the reproducer
->=20
-> Changes in v2:
-> - Introduce the reg_table_size to AspeedGPIOClass
-> ---
->  hw/gpio/aspeed_gpio.c         | 17 +++++++++++++++++
->  include/hw/gpio/aspeed_gpio.h |  1 +
->  2 files changed, 18 insertions(+)
->=20
-> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> index c1781e2ba3..fd4912edae 100644
-> --- a/hw/gpio/aspeed_gpio.c
-> +++ b/hw/gpio/aspeed_gpio.c
-> @@ -559,6 +559,12 @@ static uint64_t aspeed_gpio_read(void *opaque, hwadd=
-r offset, uint32_t size)
->          return debounce_value;
->      }
-> =20
-> +    if (idx >=3D agc->reg_table_size) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: idx 0x%" PRIx64 " out of bou=
-nds\n",
-> +                      __func__, idx);
-> +        return 0;
-> +    }
-> +
->      reg =3D &agc->reg_table[idx];
->      if (reg->set_idx >=3D agc->nr_gpio_sets) {
->          qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
-> @@ -785,6 +791,12 @@ static void aspeed_gpio_write(void *opaque, hwaddr o=
-ffset, uint64_t data,
->          return;
->      }
-> =20
-> +    if (idx >=3D agc->reg_table_size) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: idx 0x%" PRIx64 " out of bou=
-nds\n",
-> +                      __func__, idx);
-> +        return;
-> +    }
-> +
->      reg =3D &agc->reg_table[idx];
->      if (reg->set_idx >=3D agc->nr_gpio_sets) {
->          qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
-> @@ -1117,6 +1129,7 @@ static void aspeed_gpio_ast2400_class_init(ObjectCl=
-ass *klass, void *data)
->      agc->nr_gpio_pins =3D 216;
->      agc->nr_gpio_sets =3D 7;
->      agc->reg_table =3D aspeed_3_3v_gpios;
-> +    agc->reg_table_size =3D GPIO_3_3V_REG_ARRAY_SIZE;
->  }
-> =20
->  static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-> @@ -1127,6 +1140,7 @@ static void aspeed_gpio_2500_class_init(ObjectClass=
- *klass, void *data)
->      agc->nr_gpio_pins =3D 228;
->      agc->nr_gpio_sets =3D 8;
->      agc->reg_table =3D aspeed_3_3v_gpios;
-> +    agc->reg_table_size =3D GPIO_3_3V_REG_ARRAY_SIZE;
->  }
-> =20
->  static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void=
- *data)
-> @@ -1137,6 +1151,7 @@ static void aspeed_gpio_ast2600_3_3v_class_init(Obj=
-ectClass *klass, void *data)
->      agc->nr_gpio_pins =3D 208;
->      agc->nr_gpio_sets =3D 7;
->      agc->reg_table =3D aspeed_3_3v_gpios;
-> +    agc->reg_table_size =3D GPIO_3_3V_REG_ARRAY_SIZE;
->  }
-> =20
->  static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void=
- *data)
-> @@ -1147,6 +1162,7 @@ static void aspeed_gpio_ast2600_1_8v_class_init(Obj=
-ectClass *klass, void *data)
->      agc->nr_gpio_pins =3D 36;
->      agc->nr_gpio_sets =3D 2;
->      agc->reg_table =3D aspeed_1_8v_gpios;
-> +    agc->reg_table_size =3D GPIO_1_8V_REG_ARRAY_SIZE;
->  }
-> =20
->  static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
-> @@ -1157,6 +1173,7 @@ static void aspeed_gpio_1030_class_init(ObjectClass=
- *klass, void *data)
->      agc->nr_gpio_pins =3D 151;
->      agc->nr_gpio_sets =3D 6;
->      agc->reg_table =3D aspeed_3_3v_gpios;
-> +    agc->reg_table_size =3D GPIO_3_3V_REG_ARRAY_SIZE;
->  }
-> =20
->  static const TypeInfo aspeed_gpio_info =3D {
-> diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.=
-h
-> index 904eecf62c..e66036ac39 100644
-> --- a/include/hw/gpio/aspeed_gpio.h
-> +++ b/include/hw/gpio/aspeed_gpio.h
-> @@ -75,6 +75,7 @@ struct AspeedGPIOClass {
->      uint32_t nr_gpio_pins;
->      uint32_t nr_gpio_sets;
->      const AspeedGPIOReg *reg_table;
-> +    uint32_t reg_table_size;
->  };
-> =20
->  struct AspeedGPIOState {
+Applied to aspeed-next.
+
+Thanks,
+
+C.
 

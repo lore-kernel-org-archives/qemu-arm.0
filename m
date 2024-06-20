@@ -1,193 +1,179 @@
-Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1861505ejb;
-        Thu, 20 Jun 2024 03:05:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXUapiifVvsHB3ImsOj7wju9iGL3V3K5MamJdW356ti9OgZf9ABjHD0g9q+uGY/yn7b+wYnzSGia1tgaH3R1c2Y2VDNaesm
-X-Google-Smtp-Source: AGHT+IGNE5hvw5HXQJ5XxI8IczJv5xfGmOOnEVOpYVMPJcvTz6eJcm1Ax4idd2a5Fjn/exLe3YWw
-X-Received: by 2002:a0c:c246:0:b0:6b2:b251:7d95 with SMTP id 6a1803df08f44-6b501e2436cmr46229176d6.17.1718877928215;
-        Thu, 20 Jun 2024 03:05:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718877928; cv=none;
+Received: by 2002:a17:907:60c:b0:a6f:8e2c:4d9d with SMTP id wp12csp1870290ejb;
+        Thu, 20 Jun 2024 03:20:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWwmH+M0eP6Po2dAlQN7BFgYfahIOCzGztntiLvSUFzH1/FWzuRLWGndgfJ0vOyn6uAozNgTrvdlzyOv9FqBxTxLUAe78v+
+X-Google-Smtp-Source: AGHT+IHwVq1morEcn3gzJV1TL6D2IJAlmC6MGTrlUttr9i7/OGsTPpg/sq8JBcMfs0OJd/oF/WJA
+X-Received: by 2002:a05:620a:4454:b0:795:573d:6192 with SMTP id af79cd13be357-79bb3ee353amr517812285a.77.1718878844435;
+        Thu, 20 Jun 2024 03:20:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718878844; cv=none;
         d=google.com; s=arc-20160816;
-        b=JL1nd+C/dSi5X6ksEXT8BL4tNAMha7b2NkxMJR83Q8sCYHnGZKo+oRtubrrAnxhVke
-         MCf3dfnpDFUFvve49Nb8oBVbmNm66aaDcDFkFFxqH0TA6mVuBLxLkByux5f6UbL9MlEU
-         r55W4Co+Ylsgccr743t8ecqFIOmN/KfZZSuLLFmUCCfJEYuKi2xG8/dDa+E8cbQLmZTu
-         oLlwWEsbWBYR07pLtsMTPMcsamT5qPYKypQQDOIZAaZhZNlKyvmfjnieWn1RSSyJUxud
-         jIF+sIvtW2ACvbQFoA1/uu75XNhbAU3wyaCpaFejF2/XwwRWgxyhANZqC1C5BBed8VTI
-         kqIA==
+        b=UatJ9RljZEokzkEwAnQ1Us+pk11nKABgnTOBXPTKXpg97mUJyKirErQNcI3uCfXdlE
+         ord+A10ecWjF5gDmjQ3cM1+eL52flwntPKnO6RH9tScp7hPJuzW7QARNoUhLnEqqd7tU
+         i9WWAoWOnoNZT/u3BGCGIskBjuT9H5VpTFCBX32Zc2HDHGlFVAmBQ+2dtWuFoFR8PUIq
+         Ly2wygaMgYVtTSKnZZHJsdnIYwf4PY9yffNNX6ByenWEiZkcrbVA/7raEPeJmou2nBqh
+         HU4+iXcUQZI15kcFWDEacJOR9+ogR1cBnLLWfSU9JMF73vxR0lVcd+hEaDAI35jErGzZ
+         W1Aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=BcjW6Xk7rpO6ZbCiQj+w7Y+/X3apRINHHNW3WYLCgSs=;
-        fh=Vq1ty4ELZxVCg9+qPZshZise0IO+cBv3g+/60ITE1zE=;
-        b=0xgEpI+F1OzoNtz2BuIeDdFewtBAP8YmLWQlNqq3M6rU82rdFtjFemhT+FZFAjKZXn
-         ZTtyBpS292AkPhGyQRRVU3CAtjzTkpedWV/El1WyBgfsDpNyz4ztoTdAgIxMK31AzuJf
-         +ghmHqapCl+NdNMx06mpViJhVpJ3VZQzQ/Mhb0yhtIRGmqA3LRom0qLFzZ6dQNt+sPPT
-         dVJLdOGnppc1k44fR8RLkLLmhH7IklIVUQ510ci1MgNNKY8ZhhqAt1uIqxOQ+CMXhpz7
-         2XwGUp0JqGnsvoHoU9nbL0hGOb4UyjJ8ObHMacMTfIdturlzCtz39HhjQLAlsjchbNo5
-         dBPg==;
+         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
+         :message-id:content-transfer-encoding:mime-version:subject:date:from;
+        bh=2AJE1qYqxwtxxBg7+lADhoMRVndOyx2JvS2Mmry6pT4=;
+        fh=V5vxXQ+IqdfQGwyC5zGLWXOc0z8EtcFzLjSj1F25uQo=;
+        b=AxiFvptlhm7TlojO3Hir+lDdSsFjjgJBZwf6hXTsCYEKdJQ9/DWJZbcst/stKQSKxK
+         jli7BG0rpUs2htVjHocF+lmjRkF852TsWB8VGoWrXMw9k95ifykga3tN2pJXbBugnCo0
+         q4jpahpistOak2xoIO1ew8KbRtbMiS8mYIhvmHSe6KCBEuOMa3h9huUutapxCDBTCRb5
+         tyr1yuGQDGmto5i61V2J0aNzRq1jVjZvnCenlmgYPstwe0FXhxyfGEAwNBQ0YgZs8QAC
+         34uZunM6xRoxke8vS7cksY2M5J2rmMTjMM+1azQ+Pft1/1RcEE8PGlwzIR8Qk7Bm/ESe
+         wXLg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bA2EcbFL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b500c76bb0si46771856d6.80.2024.06.20.03.05.27
+        by mx.google.com with ESMTPS id af79cd13be357-79bc396b5c5si178828985a.528.2024.06.20.03.20.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2024 03:05:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Jun 2024 03:20:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bA2EcbFL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKEfM-0006j0-Hq; Thu, 20 Jun 2024 06:05:17 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sKEth-00020T-SO; Thu, 20 Jun 2024 06:20:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sKEfJ-0006i9-Bw
- for qemu-arm@nongnu.org; Thu, 20 Jun 2024 06:05:13 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sKEfH-0007ey-Fq
- for qemu-arm@nongnu.org; Thu, 20 Jun 2024 06:05:13 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-57d1d614049so781769a12.1
- for <qemu-arm@nongnu.org>; Thu, 20 Jun 2024 03:05:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718877910; x=1719482710; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=BcjW6Xk7rpO6ZbCiQj+w7Y+/X3apRINHHNW3WYLCgSs=;
- b=bA2EcbFLn/JIYsbk1JvDrClaku8KEvj9mw6Z8pbG0PqfpPfxosSGNdGi8KbwBikdem
- NJWXleuiRZPOw04bp/BgPHo2FS+OzPh3oPP2cyCbB/BUK/Txk775xeWsTHd8G4cHfJKJ
- 8vDvlOsmhLV8MlbQBh0bV8DsfoAU18+AaRQJLUZmDfmxf7GunhrdAtKZFU2s/uLDt1VG
- 52NdMbXGyVC3UFyDzEJXCr0xxWT2U7SBWGcfDSJJYdXY9zXtO4+mFIp8mLsV7fUqoueJ
- n81u8zY8s0366xzhKo5dujuPw7GO8XKWpJFQ7jm27uTuFjEHqRSR8FV+AK7yZcZ+2D4f
- Ep5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718877910; x=1719482710;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BcjW6Xk7rpO6ZbCiQj+w7Y+/X3apRINHHNW3WYLCgSs=;
- b=mkwggFxFeYK85GC4iKQMNArXbqgqepVyYwLiUKhdnfdwFDu4L7cU5tUv+h6UZz68yO
- y6jAgl0kqFCaoV/1+1v3RDtaTk36sAHsGNog1PY7W+Dfhn5BXNAmyDfbvS4Qmie/YMiK
- 0Db+U1V12uNPaFaNyBPm9EEmQHN3OP2XW7Ry6tKbBCkZiDzNXXnrBbyK+3frgbbqmUVN
- M0tEsvZqnlarmo7PwoA+RpVitRar7ehFnmgfBUjhNYe22KChyzdsQi1hoJie7tvPQLSg
- m95tDDDhASEmluPTAb9oCzSXMRJ7atc+Lwy7WiBEsrjXDPniGbY36A72LGV8n8ijM1a7
- BjSA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXyl7hkSt0KSULnL3Wb6eN7/zdT7TfQghiisAdXvz7nb/qTP939kfns/SoaIHK71hJlYIGyK23HsX9RTjYwXQiAABFG
-X-Gm-Message-State: AOJu0YzWL8DqUvT7jl95Y/hDtXcrmdINuQcPLU64725k8CZOw5IzFZOG
- ze91TCFUUmpE40E9oFKrt60wcQT79VV6zqXteY7/nVZ/HXjxYJNJLo8GjaNre7nIPaZ3Pmoj22r
- /lz9tLZdudqtKg2oTUC0+9MrLCCgXKz9RNZzvpA==
-X-Received: by 2002:a50:9312:0:b0:57a:234d:abc0 with SMTP id
- 4fb4d7f45d1cf-57d07e6eccemr3507510a12.1.1718877909680; Thu, 20 Jun 2024
- 03:05:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sKEtg-0001ze-7Z; Thu, 20 Jun 2024 06:20:04 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sKEtd-0001T3-Ph; Thu, 20 Jun 2024 06:20:03 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id A24CF2619F3;
+ Thu, 20 Jun 2024 12:19:59 +0200 (CEST)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id A8L72k9JCi3L; Thu, 20 Jun 2024 12:19:57 +0200 (CEST)
+Received: from applejack.lan (83.11.22.244.ipv4.supernova.orange.pl
+ [83.11.22.244])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id BE88D26071F;
+ Thu, 20 Jun 2024 12:19:56 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Date: Thu, 20 Jun 2024 12:19:48 +0200
+Subject: [PATCH v3 1/2] tests/avocado: update firmware for sbsa-ref
 MIME-Version: 1.0
-References: <20240620060014.605563-1-marcin.juszkiewicz@linaro.org>
- <20240620060014.605563-2-marcin.juszkiewicz@linaro.org>
- <CAFEAcA9XbYr9jzYm908_stCUrZCqixB+cysFTRCe2MnAFW1FVA@mail.gmail.com>
- <d7880fca-2bfb-4368-9419-8227616f2ce9@linaro.org>
-In-Reply-To: <d7880fca-2bfb-4368-9419-8227616f2ce9@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Jun 2024 11:04:58 +0100
-Message-ID: <CAFEAcA9vM-5h8a_xmEUAiKTHoS3kOyutm4er+3+y1_T89U5biw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] tests/avocado: use default amount of cores on
- sbsa-ref
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Cc: qemu-devel@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240620-b4-new-firmware-v3-1-29a3a2f1be1e@linaro.org>
+References: <20240620-b4-new-firmware-v3-0-29a3a2f1be1e@linaro.org>
+In-Reply-To: <20240620-b4-new-firmware-v3-0-29a3a2f1be1e@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ Leif Lindholm <quic_llindhol@quicinc.com>, 
  Radoslaw Biernacki <rad@semihalf.com>, Cleber Rosa <crosa@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, qemu-arm@nongnu.org, 
- Rebecca Cran <rebecca@bsdio.com>, Ard Biesheuvel <ardb+tianocore@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, 
+ Beraldo Leal <bleal@redhat.com>, Ard Biesheuvel <ardb+tianocore@kernel.org>, 
+ Rebecca Cran <rebecca@bsdio.com>, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+X-Mailer: b4 0.13.0
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eEHe9wV/2wpB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mwIoAuBLbPBn
 
-On Thu, 20 Jun 2024 at 10:55, Marcin Juszkiewicz
-<marcin.juszkiewicz@linaro.org> wrote:
->
-> W dniu 20.06.2024 o 11:34, Peter Maydell pisze:
-> > On Thu, 20 Jun 2024 at 07:00, Marcin Juszkiewicz
-> > <marcin.juszkiewicz@linaro.org> wrote:
-> >>
-> >> I was wondering why avocado tests passed with firmware which
-> >> crashes when anyone else is using it.
-> >>
-> >> Turned out that amount of cores matters. Have to find out why
-> >> still.
-> >
-> > This commit message confuses me.
->
-> Had no idea how to write in more readable form. Will reword it for v3
-> (with reverse order of patches as recommended by Philippe.
->
-> > It reads like "running with two cores will make the guest crash",
-> > i.e. "apply this patch and the test suite will stop passing". I
-> > assume that's not the case, but what's actually going on here?
->
-> That's exactly the case. With sbsa-ref firmware which qemu uses now we
-> have crash if more than 1 core is used. Avocado test hardcoded "-smp 1"
-> and was passing fine.
->
-> And I forgot to mail qemu-devel when I got hit by that crash.
->
-> This week Rebecca Cran pointed me that crash is in BootLogoLib in EDK2
-> and I wrote some workaround for make things work. Then Ard Biesheuvel
-> found the real reason, fixed QemuVideoDxe in EDK2 and we got sbsa-ref
-> running with any amount of cores.
+Update firmware to have graphics card memory fix from EDK2 commit
+c1d1910be6e04a8b1a73090cf2881fb698947a6e:
 
-Oh, OK, so it's just random bad luck that enabling the second
-CPU means that we end up doing an unaligned access to the
-framebuffer, I guess.
+    OvmfPkg/QemuVideoDxe: add feature PCD to remap framebuffer W/C
 
-Then, yes, Philippe is right and we need to update our sbsa-ref
-firmware we're using for the test first, to avoid breaking bisection.
+    Some platforms (such as SBSA-QEMU on recent builds of the emulator) only
+    tolerate misaligned accesses to normal memory, and raise alignment
+    faults on such accesses to device memory, which is the default for PCIe
+    MMIO BARs.
 
-For a commit message for this patch, maybe something like:
+    When emulating a PCIe graphics controller, the framebuffer is typically
+    exposed via a MMIO BAR, while the disposition of the region is closer to
+    memory (no side effects on reads or writes, except for the changing
+    picture on the screen; direct random access to any pixel in the image).
 
- The version of the sbsa-ref EDK2 firmware we used to use in this
- test had a bug where it might make an unaligned access to the
- framebuffer, which causes a guest crash on newer versions of
- QEMU where we enforce the architectural requirement that
- unaligned accesses to Device memory should take an exception.
- We happened to not notice this because our test was booting with
- "-smp 1" and through luck this didn't write the boot logo to
- the framebuffer at an unaligned address; but trying to boot the
- same firmware with two CPUs would result in a guest crash.
- Now we have updated the firmware we're using for the test, we can
- make the test use all the cores on the board, so we are testing the
- SMP boot path.
+    In order to permit the use of such controllers on platforms that only
+    tolerate these types of accesses for normal memory, it is necessary to
+    remap the memory. Use the DXE services to set the desired capabilities
+    and attributes.
 
-?
+    Hide this behavior under a feature PCD so only platforms that really
+    need it can enable it. (OVMF on x86 has no need for this)
 
-thanks
--- PMM
+With this fix enabled we can boot sbsa-ref with more than one cpu core.
+
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ tests/avocado/machine_aarch64_sbsaref.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index 6bb82f2a03..e854ec6a1a 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -37,18 +37,18 @@ def fetch_firmware(self):
+ 
+         Used components:
+ 
+-        - Trusted Firmware 2.11.0
+-        - Tianocore EDK2 stable202405
+-        - Tianocore EDK2-platforms commit 4bbd0ed
++        - Trusted Firmware         v2.11.0
++        - Tianocore EDK2           4d4f569924
++        - Tianocore EDK2-platforms 3f08401
+ 
+         """
+ 
+         # Secure BootRom (TF-A code)
+         fs0_xz_url = (
+             "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
+-            "20240528-140808/edk2/SBSA_FLASH0.fd.xz"
++            "20240619-148232/edk2/SBSA_FLASH0.fd.xz"
+         )
+-        fs0_xz_hash = "fa6004900b67172914c908b78557fec4d36a5f784f4c3dd08f49adb75e1892a9"
++        fs0_xz_hash = "0c954842a590988f526984de22e21ae0ab9cb351a0c99a8a58e928f0c7359cf7"
+         tar_xz_path = self.fetch_asset(fs0_xz_url, asset_hash=fs0_xz_hash,
+                                       algorithm='sha256')
+         archive.extract(tar_xz_path, self.workdir)
+@@ -57,9 +57,9 @@ def fetch_firmware(self):
+         # Non-secure rom (UEFI and EFI variables)
+         fs1_xz_url = (
+             "https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/"
+-            "20240528-140808/edk2/SBSA_FLASH1.fd.xz"
++            "20240619-148232/edk2/SBSA_FLASH1.fd.xz"
+         )
+-        fs1_xz_hash = "5f3747d4000bc416d9641e33ff4ac60c3cc8cb74ca51b6e932e58531c62eb6f7"
++        fs1_xz_hash = "c6ec39374c4d79bb9e9cdeeb6db44732d90bb4a334cec92002b3f4b9cac4b5ee"
+         tar_xz_path = self.fetch_asset(fs1_xz_url, asset_hash=fs1_xz_hash,
+                                       algorithm='sha256')
+         archive.extract(tar_xz_path, self.workdir)
+
+-- 
+2.45.1
+

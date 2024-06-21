@@ -1,97 +1,97 @@
-Received: by 2002:a17:505:2e08:b0:1bd8:8c49:4f6d with SMTP id ya8csp150389njc;
-        Fri, 21 Jun 2024 05:00:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVbCefe8P2WhNNY1L8uloGPvpQQI1b7gMPKCR6qOHLUY3iGQY+NNDSAZGrRjBoAJN7nS2giDyO0C2UNy/UQ95ZsMDz0TvMD
-X-Google-Smtp-Source: AGHT+IGZ+X5Wl0tqf9cBhTe2aC7qPLxpEapcSdOGIAp/Gj0yyQ1URfSFinWSQyESX0PxI2KOhAt8
-X-Received: by 2002:a05:6122:17a5:b0:4e4:eab4:ba2a with SMTP id 71dfb90a1353d-4ef277dec55mr8977534e0c.16.1718971225571;
-        Fri, 21 Jun 2024 05:00:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718971225; cv=none;
+Received: by 2002:a17:505:2e08:b0:1bd8:8c49:4f6d with SMTP id ya8csp150542njc;
+        Fri, 21 Jun 2024 05:01:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW957cznyVH50X/xc8a0HMxLvLY4MrqKqGJdJCzs0au8nWo6vvHaYwIW5TSsl8kNTTeGTgkuFNSPgs/2mzp4NhjOiKsv3rk
+X-Google-Smtp-Source: AGHT+IHwf6H+PIw6v757pWXIrzvDDiqe4dHE+kUvvurSvUs4fG86aUOHsqt0BQA9nD3d/KIMJHCt
+X-Received: by 2002:ad4:4f86:0:b0:6ae:91:d621 with SMTP id 6a1803df08f44-6b501eac623mr75918666d6.56.1718971260326;
+        Fri, 21 Jun 2024 05:01:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718971260; cv=none;
         d=google.com; s=arc-20160816;
-        b=t+yntW810si7XU51FyFDQF/gRWuCMs2/HEX6JhJq/JoOw77Apr4YsWkecYVSkNelaL
-         TC52ccTD/nzvhvckBbzr5BNcoBp286ogA3czE1evxgnK6eawhABUQ0XrKAXoxMX4LKqW
-         02KZWILPr1E9ZXxc/FOOskImpOlD7bRS+yb1z3eokyN5NqTjE4HikJUbTneyOtSpUH2V
-         QfRB8dX+6gxlI612uoFlETwtWpBqD9nqNwAeei5n9mSLBYc8ORTRTdFxAjq7C/G7j/pI
-         F5F5FNB6yTtlPkYqFGmePqR6lJkqDRpLkp4ERxrhBEf9VQyPzzhojEKN55NiXQ78bls7
-         aHhQ==
+        b=GcjWyazJ31YOdr7ipQkUXYXA2ZDGZu4BOZv/obafIEb9wdXOYHcCOZXnP47XdLj0Wa
+         sb7KoifVajmxVQNX6j9ymIl5Q8J4GNuwj8XUTg4Vomwyu3yjbTNifBKQ9c0PpiXwr/wy
+         33vXjgXgqwatwwNkqfhaKEFjWvC5nqBajchA0TRDPBQck7GxYhK8Hnd6pVN86vCqBG/N
+         COKmZzFsRBT+B1ltYfiYxqj3qVJqokkGSxPrsa5DkhchZUxNAxrxGghjpEjvpEJt3EVn
+         3fxTWNQhJZ8luX64811IWSEiq5RZp4ZYi2u9f9HgSzSx1Ib9yCON3Xle+lGCyrbudSUl
+         Xy0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=UDbKEfyEUEiUxcuzENCLs5kF/Q2o0hJJx4pz7l2e6bk=;
-        fh=HW3k3p78fMD85z7DiBkC1An1NxltMTcmALo3QcvPt0U=;
-        b=ZigqOm2YpmSbflSF0lb97K+7/LF71kfh+SR3FyyKMri5unwKALgZztAYgZRJzwkQ6V
-         6oqIp8Cq32VW2dovvpMQoSpkJl3g3g8HkZQ2Xx52gAfW7h6a8iJqxDtYrPp0MkVeLCjQ
-         hMWVXxz0lC/1QUscfXGumjpSXB8p1uGkM7qtktkO7FsyDU4qTaN7/WbwO0PkpDXC5xZw
-         JM28NAjTxDek5P/C7K29C3SvkwRO6B9GLULxjcG4ZN9HJWft8anCmqYtgZuOABkGXZKf
-         KYFTNoyTFUwlhrbIu0RWZbIxBvXKl4va5aGmlA9m3FeNxZ96jiI5mKq2zaBnfKGhX2Zr
-         jgCA==;
+        bh=HZycHu1GawJwjwX4WxIIeJpZLZFE0AM425lGZ17tEhU=;
+        fh=qKd2r7ae3ex8RofMdMw3yR4VY0Xye+e2bFXt1B8DIUU=;
+        b=qb9nsg/9147ACinltvDQ8qN+DbwZ752icaP/s5lmXzSwaSIj+W4YDETYAuKbwnnFUq
+         triq5ixP7vvFScTyRlK3QBgdgiZWTn5g7BOxtq5kXwqPLAbkATCx+RweUvX2zWP7WbeS
+         AXjicVMtbMhYjocAFoZJE+L5P0JiHvD1YnSYAbGT+AXEiZMIfu0IZUyIrHQq5QGRElGc
+         6xrqTWk6kcL5nnAi/CI3jLpBAl9dWhFwelNdcz48jtP+c2HY7vlLC38lEv2a9ltzKCgY
+         H5fsH7kSR8bR7QFHkEcwi28dirP6ajnRILm3fBlaJvCMab3Kl5ewy0aFTrUPKBlQGNTT
+         O7dQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=fImpggof;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=IbUTkjIu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79bce91392csi164280485a.362.2024.06.21.05.00.25
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b51edd24efsi14044996d6.328.2024.06.21.05.01.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Jun 2024 05:00:25 -0700 (PDT)
+        Fri, 21 Jun 2024 05:01:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=fImpggof;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=IbUTkjIu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKcvS-000435-Mw; Fri, 21 Jun 2024 07:59:30 -0400
+	id 1sKcvj-0004DB-Lg; Fri, 21 Jun 2024 07:59:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sKcvL-00041c-M0
- for qemu-arm@nongnu.org; Fri, 21 Jun 2024 07:59:26 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ id 1sKcvi-0004CH-6O
+ for qemu-arm@nongnu.org; Fri, 21 Jun 2024 07:59:46 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sKcvJ-00034u-Vz
- for qemu-arm@nongnu.org; Fri, 21 Jun 2024 07:59:23 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-1f6559668e1so14491215ad.3
- for <qemu-arm@nongnu.org>; Fri, 21 Jun 2024 04:59:21 -0700 (PDT)
+ id 1sKcvg-0003Af-Jx
+ for qemu-arm@nongnu.org; Fri, 21 Jun 2024 07:59:45 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-1f480624d10so15595325ad.1
+ for <qemu-arm@nongnu.org>; Fri, 21 Jun 2024 04:59:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1718971160; x=1719575960; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1718971183; x=1719575983; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=UDbKEfyEUEiUxcuzENCLs5kF/Q2o0hJJx4pz7l2e6bk=;
- b=fImpggof5Dhwp9WJdAEUwUucDdupt2mN60wLQgCHiLWceheCKWqH1NLVzucM7t9ODr
- rcB5i8z7sJvezC9sD/pks4/l26DvzaE9U8hEVGaWhW9myPIwZtcNAJL86vPb594idrOo
- vmap37aR/9RKUkN59Vuq7YqqWDRUr978WZFxnQzHjStOvwBo3kB0ezNzT60uFDNZ33gl
- k9Q5pi9yS4Fh2WvbWGzZRTatxuTPJ9QVS6Z7aphRZKppwJoNDXX6kvIg2DPCFzvrwhi+
- c82pQug7T90u8GjAP3cddasNzC8FykP28yMQfkGIAgEgf8oCtAbNWeExmk3roXby6vjQ
- lgWg==
+ bh=HZycHu1GawJwjwX4WxIIeJpZLZFE0AM425lGZ17tEhU=;
+ b=IbUTkjIuHArbPDA+htOYVhJ+xW6dnjeYFUQwnk8tC0xIZo9Pe2HYR76OUlpVXwyxOk
+ lYh+ZjhSVWdb8i3vimvsHe1bbbb933szig7IpKpRLez9ii1LnSO/m1p2PgPYJ93GN3gy
+ XFkIT087Z9YRlgMpyWSKzTa3ZAl29TDJcg0G8AOZivWVGxEMiEAEb5rd5ZcohNyvorF5
+ nWKK5DCAuioJQEEbHSVI7M9ZPjGbRd83ICPhe1aoUUYj82RfOFheQxIjHkAjEJ441H3D
+ BFE5WhaQppDlgyjl+f6tMith4aXJwMcyF+arrs/HeFD4jDkG0HekZHAaA19Snsrd3l6e
+ M4ZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718971160; x=1719575960;
+ d=1e100.net; s=20230601; t=1718971183; x=1719575983;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=UDbKEfyEUEiUxcuzENCLs5kF/Q2o0hJJx4pz7l2e6bk=;
- b=E/DKkY1YOsJvFs4XhSY34I347Wsr+AulTuVDKMyJszf/6VXUWIHNnSWjbTV9JFURm1
- KsGY+9+rinWnPkxqi7edTmhfwoe4bm7KVCrZMkFcIlI2XhmcAOSc1wEjRo6gCf8gwqIc
- nEtduNK+gm+nv7Ir0raSiQSJZIvn4ELZT4o1Ds7pZwigInsVrScwgd8K77Swr8dKZFzx
- BAOAJkNT2HhRGcoq41O1aK733bb2qkJ13tPUL6LIklyaOVaLzlZTc8MVCPGiCMVg6AIC
- 2N0AcylvegadxtCLsiWFIiBJlVgC19i3bz58PtyCmv9OGeZiRFcCd/BZgIbfwIx/Xlmr
- Voqw==
+ bh=HZycHu1GawJwjwX4WxIIeJpZLZFE0AM425lGZ17tEhU=;
+ b=k0ZnbewuQPvJ9LR/xZP4hNxhaAkuMQSj6YXsFf4VW2IVIlmKamkA88pVJmDVV2IKrC
+ /el+iQZcWXws8/K7fu1nu2W/CvEKtZJCr6axCYSScLD1Gx9slJmh4OY5c++I9+buIUcw
+ 8fKrbU8h0zc4K1iWXua4uZXMQgXMGUPaKhZa0xdovB61nOYT4b2Z/PazLYSTWBKxnKqj
+ 7EX7tX+zOfkAuAYyIrL1ciK37nk1AeK2NH9VrT0pWp/A1QdVhpDkcgK6UXQ3m8nElSUz
+ XqDs9bE7OCd4ppCs866HdY1vXOkO81cIn6kN8toP3mUotDpLqBpvNnonD3RDXUR6AWUy
+ FoOQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWW+y4VPi7J4m02G3BnbgYD7Od+jnP4q3OJeUs26vJu2M0eQMeExvbu0ApHuvN8FeL4XtzCNadKn97e2HZ/8BwrrgUG
-X-Gm-Message-State: AOJu0YwpwYmQHSJqjTn9oDnpAlo07Dp8hV0HJqzzXjn1R26fcS51Ckeg
- SJFS7xIAhnYfbXUHTBHNQcmq/pWmM7sQY/Ro4fl+NeHPwmLRo+yRRmA1uBBYSIs=
-X-Received: by 2002:a17:902:da8e:b0:1f9:99d8:4a9e with SMTP id
- d9443c01a7336-1f9aa3ddab3mr93375545ad.25.1718971160582; 
- Fri, 21 Jun 2024 04:59:20 -0700 (PDT)
+ AJvYcCWaFn1EVOAyENOKNHPSwP75MTVidH0WECEGnr6p6Gd9QDbxfTs4bH4yAlySVKtpwNoH3LwGefsScMpi3Ex7Sj+6S/c0
+X-Gm-Message-State: AOJu0YyxhVk3pd1DeO4krythYHAMR7lBLpgQMi34lYxju8Qp5GPDcsBb
+ K/gs6CsB9a+N7Ar4cIODTDDE2BNKl3TPAmqwC135PkeJOnz6y/8UBYNY5W4sW7c=
+X-Received: by 2002:a17:902:d491:b0:1f9:a386:2bbd with SMTP id
+ d9443c01a7336-1f9aa3d0af5mr99598565ad.22.1718971183111; 
+ Fri, 21 Jun 2024 04:59:43 -0700 (PDT)
 Received: from sunil-pc.Dlink ([106.51.187.237])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f9ebbb606dsm12422995ad.270.2024.06.21.04.59.15
+ d9443c01a7336-1f9ebbb606dsm12422995ad.270.2024.06.21.04.59.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Jun 2024 04:59:20 -0700 (PDT)
+ Fri, 21 Jun 2024 04:59:42 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -109,18 +109,18 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
  Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Sunil V L <sunilvl@ventanamicro.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v3 01/15] uefi-test-tools/UefiTestToolsPkg: Add RISC-V support
-Date: Fri, 21 Jun 2024 17:28:52 +0530
-Message-Id: <20240621115906.1049832-2-sunilvl@ventanamicro.com>
+ Sunil V L <sunilvl@ventanamicro.com>
+Subject: [PATCH v3 05/15] tests/qtest/bios-tables-test.c: Add support for arch
+ in path
+Date: Fri, 21 Jun 2024 17:28:56 +0530
+Message-Id: <20240621115906.1049832-6-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240621115906.1049832-1-sunilvl@ventanamicro.com>
 References: <20240621115906.1049832-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x636.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -142,42 +142,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 09OWqxBUu9yf
+X-TUID: J8dn4hdAS7l+
 
-Enable building the test application for RISC-V with appropriate
-dependencies updated.
+Since machine name can be common for multiple architectures (ex: virt),
+add "arch" in the path to search for expected AML files. Since the AML
+files are still under old path, add support for searching with and
+without arch in the path.
 
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-Acked-by: Gerd Hoffmann <kraxel@redhat.com>
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- tests/uefi-test-tools/UefiTestToolsPkg/UefiTestToolsPkg.dsc | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ tests/qtest/bios-tables-test.c | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
 
-diff --git a/tests/uefi-test-tools/UefiTestToolsPkg/UefiTestToolsPkg.dsc b/tests/uefi-test-tools/UefiTestToolsPkg/UefiTestToolsPkg.dsc
-index c8511cd732..0902fd3c73 100644
---- a/tests/uefi-test-tools/UefiTestToolsPkg/UefiTestToolsPkg.dsc
-+++ b/tests/uefi-test-tools/UefiTestToolsPkg/UefiTestToolsPkg.dsc
-@@ -19,7 +19,7 @@
-   PLATFORM_VERSION        = 0.1
-   PLATFORM_NAME           = UefiTestTools
-   SKUID_IDENTIFIER        = DEFAULT
--  SUPPORTED_ARCHITECTURES = ARM|AARCH64|IA32|X64
-+  SUPPORTED_ARCHITECTURES = ARM|AARCH64|IA32|X64|RISCV64
-   BUILD_TARGETS           = DEBUG
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index c4a4d1c7bf..29c52952f4 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -78,6 +78,7 @@
+ typedef struct {
+     bool tcg_only;
+     const char *machine;
++    const char *arch;
+     const char *machine_param;
+     const char *variant;
+     const char *uefi_fl1;
+@@ -262,8 +263,19 @@ static void dump_aml_files(test_data *data, bool rebuild)
+         g_assert(exp_sdt->aml);
  
- [BuildOptions.IA32]
-@@ -60,6 +60,10 @@
- 
- [LibraryClasses.IA32, LibraryClasses.X64]
-   BaseMemoryLib|MdePkg/Library/BaseMemoryLibRepStr/BaseMemoryLibRepStr.inf
-+  RegisterFilterLib|MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf
+         if (rebuild) {
+-            aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir, data->machine,
++            aml_file = g_strdup_printf("%s/%s/%s/%.4s%s", data_dir,
++                                       data->arch, data->machine,
+                                        sdt->aml, ext);
 +
-+[LibraryClasses.RISCV64]
-+  BaseMemoryLib|MdePkg/Library/BaseMemoryLib/BaseMemoryLib.inf
++            /*
++             * To keep test cases not failing before the DATA files are moved to
++             * ${arch}/${machine} folder, add this check as well.
++             */
++            if (!g_file_test(aml_file, G_FILE_TEST_EXISTS)) {
++                aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir,
++                                           data->machine, sdt->aml, ext);
++            }
++
+             if (!g_file_test(aml_file, G_FILE_TEST_EXISTS) &&
+                 sdt->aml_len == exp_sdt->aml_len &&
+                 !memcmp(sdt->aml, exp_sdt->aml, sdt->aml_len)) {
+@@ -398,8 +410,13 @@ static GArray *load_expected_aml(test_data *data)
+         memset(&exp_sdt, 0, sizeof(exp_sdt));
  
- [PcdsFixedAtBuild]
-   gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x8040004F
+ try_again:
+-        aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir, data->machine,
+-                                   sdt->aml, ext);
++        aml_file = g_strdup_printf("%s/%s/%s/%.4s%s", data_dir, data->arch,
++                                   data->machine, sdt->aml, ext);
++        if (!g_file_test(aml_file, G_FILE_TEST_EXISTS)) {
++            aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir, data->machine,
++                                       sdt->aml, ext);
++        }
++
+         if (verbosity_level >= 2) {
+             fprintf(stderr, "Looking for expected file '%s'\n", aml_file);
+         }
 -- 
 2.40.1
 

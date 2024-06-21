@@ -1,259 +1,149 @@
-Received: by 2002:a05:7022:f201:b0:7e:eb73:5b3b with SMTP id rf1csp1775248dlb;
-        Thu, 20 Jun 2024 10:22:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXlj8wTm1SAq9nwmlFz66hcwQ2vLDyR4QLuz/BnuD+1umyNFTBgQiBHwjsKN55PyLf6Dze1ZYsciIWi/ArxO8KFXh7rV36o
-X-Google-Smtp-Source: AGHT+IHIQ4ePtgWB2YCte5fRTVxnFmjQnUOZVeVHW3kp7LlOAs9fmq1X5DgjZlPKhQ31szpboCHC
-X-Received: by 2002:a05:6122:d08:b0:4ec:fc20:a51a with SMTP id 71dfb90a1353d-4ef277013a1mr7140829e0c.9.1718903997713;
-        Thu, 20 Jun 2024 10:19:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718903997; cv=none;
+Received: by 2002:a17:906:5814:b0:a6f:8e2c:4d9d with SMTP id m20csp173438ejq;
+        Thu, 20 Jun 2024 17:17:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXX3YA/ckG/1/7ikGNWqVY8Wc8qT6hUvzz2kd5Nty61XkRIVZ32sXT5UerImzt0S2k2Ja+YhWN21z1zh6DGvvmOtHvOlAYs
+X-Google-Smtp-Source: AGHT+IGHn1yJX3LZDO3wscWkbSznO04l5NZtDuPC3hQ/k5SqJgl8eBUkfP/rUhVFUUuaf9TOLu9y
+X-Received: by 2002:ad4:51d2:0:b0:6b5:760:6818 with SMTP id 6a1803df08f44-6b507606c0fmr57872976d6.65.1718929078208;
+        Thu, 20 Jun 2024 17:17:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718929078; cv=none;
         d=google.com; s=arc-20160816;
-        b=yGCgPioWhmSuaQEJ0xmgxteH1pvTYEsgz2ZRW18ze0VY0hbkKese9FKSYg/AHXynh/
-         Gj48A2TLShGcd+ukW9lKq5nqipOZIlcU9UTAJq+gs/pAp+Qu7E7tMG+H5lJG3c5BN+S6
-         I/pCq6lde2Kp3vdvOB7mlnQFZES5G0841TLkIP4KiSPuW5DXfRV403r/q+2xh3yLpoRK
-         zOIaAOlrVoxMzvqP4GLSko9y0Qlj7u3m6rv7rM/ezRqeQim18/xnDo8htyCQUns4SPss
-         JwjbCeWjAKyP9VETZrOphsvI6sZo1Oqh6MhZ9Cr0+1A9zEvkqx2DczNv3vQ0dyR9lIec
-         0MHQ==
+        b=jSZaYlpnUgDdXB9St9Yg7sZBajvGYpqF0ofqUi8kL/7+DaSkNQIT2yO9hLZdeIDFWU
+         RKAenm+iZd/kXNxN4V2ZyOwZqDaVId2KZ5lfNLABCVN7nMUK9S8fjdFEzmYs/CEoeoqh
+         ObTWGiXsR/TzIvXoScCuPtIC4eMgsgb+b8fzXZGvjVIKO3xmb9/ioGf2o5+c+BCOVi6o
+         U9RbEG+eikaAdo7P3oYobmbNyIPbHK+fL5G6zzcNpfCaVqfKkvD/2vpj/C1SElWvItUB
+         20XW6Agh2Cxak9bJ38jFU9tR3Hh4SdB5S1iVli4ZRr3uiVi9yVj4PKXTTnLQvSCtkoxQ
+         Kesw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:content-language:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=4HV8IXNm9fsVPDhyNHFw3KBX78cttSIyqr1tkW2rGhY=;
-        fh=MTvQmwk+J2EMqHfSncS21VKHGN5YJzhb3EZVvoRKZB4=;
-        b=KKcAMPXQXisuUUSykGij4C9sC6IFbNzA9JqaO8GxQ3GTHlsyh/3NBhT9/OaVtci+Bp
-         PrR0Bpcg9l4lW/kZEgZ3arQFBGNzkeY8KAd/11ir1nZVh6AamuOO2gvEZLJ8f4gddofn
-         R2P/k1g47mg8SuZFmYHjO98u+lDr9rJD47cAQ80fMpfBRyBfU603aoSoz9AyZkSis9Ic
-         hfkCnznOHvukZWoVGgfQGzMVnb/MKT063J8NEibHiU8AbyrGr+hZNlt7WKZ7faPebUQE
-         6ThyUyPadcMj0UrV1jnoB8SzzNss2Z316sWU8M9TOKCeOcuC6h3AOA2qVfSK761ON7Ui
-         DMxA==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=8xdua9NJKnabCVQLyXKwp7FRMc4pNCd8IydECavlhh0=;
+        fh=x5XuGiwkbRHK8ZRroBkdHiOQErlFxOugbQQGZXggGWU=;
+        b=M/BKfx7nnHNMX6AQDcZNJypdw7GcIdl0yrAN3tW6nisE5NB4vI1lDV73qeGCgwbXO5
+         j/sKp7aCiqfYECRhIbYNOm4bkqJmqqYly4bBgyKdQKDE5mUslOEE3yYOpesDerqOBIIe
+         erggWCUP3A8D3ySjgQDyiBBjg8lFT8dxZX5OPIAG2sAdMacNU9FfgDBnRsrwPYRKN5dx
+         aKHTrXcCbD3k/NXyF/woWAZkkuG9iKGoY79/YzubfmmMtaek9KlvgIinc6MUz2VvzDHX
+         N3g9pZEyN4BHUzBoFef31X4/WsbPvLg9L+UsyZfnDgJE1f9iqM0w9LPEVPFHgkHcnxoT
+         2R/Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=frFzdKeL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=FQL2H0bE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4ed4143585esi2714907e0c.190.2024.06.20.10.19.48
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b51eceb875si4175686d6.45.2024.06.20.17.17.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2024 10:19:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Jun 2024 17:17:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=frFzdKeL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=FQL2H0bE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sKLRC-0008KD-HG; Thu, 20 Jun 2024 13:19:06 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sKRxv-0006Bq-Ig; Thu, 20 Jun 2024 20:17:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sKLRA-0008JZ-Em
- for qemu-devel@nongnu.org; Thu, 20 Jun 2024 13:19:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1sKRxu-0006BH-2h; Thu, 20 Jun 2024 20:17:18 -0400
+Received: from pi.codeconstruct.com.au ([203.29.241.158]
+ helo=codeconstruct.com.au)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sKLR8-0004vp-Nv
- for qemu-devel@nongnu.org; Thu, 20 Jun 2024 13:19:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718903940;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=4HV8IXNm9fsVPDhyNHFw3KBX78cttSIyqr1tkW2rGhY=;
- b=frFzdKeLChfd9oUUg5pYMA7BNUUlYtgKj30IyY4IK57d0t2hTJaUJCIqG3zmUbRgvvjtqQ
- qhm4I64kmPjUoUESUH9Y1f9lOHxt1oA1V/xPmjcgzfteSpLInGahnlsdyAehfQlpTFh164
- vtfWe0xVYYLGugIJzH3KyoqUxfyUFMk=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-557-qmc8FIasPoyVniVYn1E89A-1; Thu, 20 Jun 2024 13:18:56 -0400
-X-MC-Unique: qmc8FIasPoyVniVYn1E89A-1
-Received: by mail-ed1-f72.google.com with SMTP id
- 4fb4d7f45d1cf-57d22ea3e71so507734a12.2
- for <qemu-devel@nongnu.org>; Thu, 20 Jun 2024 10:18:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718903935; x=1719508735;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=4HV8IXNm9fsVPDhyNHFw3KBX78cttSIyqr1tkW2rGhY=;
- b=siGk0vF0aQbLrw5QJJRoM29cbV1ebpqpqRmHRp/DVLLN9nFGOG0Wl2UCTgoLXU6E/+
- MIvXPhE6EmzahYxYJqhT61N7C0PW0+szZqNxKkyPcQtNpVWXos3JfYXHvQ92iGwsnHIw
- ob6rOoTVYx1RMxvHfRzgXjJsZsXggBztUYUbqPaJNaSXG682yashtzlHxn2iKyOiTWVa
- yUfW+6GAaUukeJRxWRkE+fsdxYJwRSjgtzO/Du4CbYa67C1AR2gSCMo03F3GIskmLP5y
- KAup0C+zVeww6mxBy8gAt41z+d6CZuS1lr2KkGaqiwaCPJuZKfYd2SdhN4O/rOYWENdW
- jVZA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUgImkrxYpm7junyLD3mfkkajmLsH2/RW/LRAND5Xf8L2K8bEuLNCWUCdGcfEo3Z5V3zvHsfsn8qfEK3Kmo5NgVB+cMwFM=
-X-Gm-Message-State: AOJu0YwtGs4VZ6hizz/OrXgMWTHZ/Q8LzYlQtkVPBY4dwZRkWdiWvtER
- Wk3zYItEu893TddHMA9CaqI/ocT+kRh5Tm1LmjbKuX0W1wE0cqLbXnIJq3jEQUuAXgOPxve9L+S
- uPbDHAubkLIAojIZEDzMwQsq6TT4zy0Jgl/y2M1ANNd35RHKxa1ZB
-X-Received: by 2002:a05:6402:50c9:b0:57d:15d4:a685 with SMTP id
- 4fb4d7f45d1cf-57d15d4a9fdmr3555230a12.40.1718903935374; 
- Thu, 20 Jun 2024 10:18:55 -0700 (PDT)
-X-Received: by 2002:a05:6402:50c9:b0:57d:15d4:a685 with SMTP id
- 4fb4d7f45d1cf-57d15d4a9fdmr3555210a12.40.1718903934982; 
- Thu, 20 Jun 2024 10:18:54 -0700 (PDT)
-Received: from [192.168.0.4] (ip-109-43-178-117.web.vodafone.de.
- [109.43.178.117]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-57d0d9c3b7fsm1999762a12.55.2024.06.20.10.18.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Jun 2024 10:18:54 -0700 (PDT)
-Message-ID: <fb06af10-2647-4f1b-9fbe-ab4e45a924d9@redhat.com>
-Date: Thu, 20 Jun 2024 19:18:52 +0200
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1sKRxq-0002iS-Ib; Thu, 20 Jun 2024 20:17:17 -0400
+Received: from [192.168.68.112]
+ (ppp118-210-79-194.adl-adc-lon-bras32.tpg.internode.on.net [118.210.79.194])
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id C7CBA200DD;
+ Fri, 21 Jun 2024 08:17:00 +0800 (AWST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=codeconstruct.com.au; s=2022a; t=1718929023;
+ bh=8xdua9NJKnabCVQLyXKwp7FRMc4pNCd8IydECavlhh0=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References;
+ b=FQL2H0bEA5HeIuobAvzwTp4V0jspWN2kgGQsxyDIHomX60pmhJhfov9SfaLbLw0+G
+ F0WKr/Z4BJ2u+E4rKpgIDC2i8vo73YZq5dUrhpz2MTiUfcVhejbFxU+w/0i+8NoZGB
+ +Lgc0PMb8P5cVopBi06SkG2y3a4ZSR7WzBmFXXOimXut14PzeUVWvoJQ/x3R6nm/nj
+ X8+lw9vwK8dOOP8vcdI8dZEgAg4fu0z3WeF4CxyPCNxhAuJXWoJtbX4065BUEnhkL4
+ UMjG/YhUav5uo1k7SLonRLB2TAOsxwGRqrI41nb8nMHwpse04HfiGjliqqc9zo35Kb
+ ZvJOKzpL9/2aA==
+Message-ID: <ff5e7487c71ff6e07e89ac2a53e8b62463703a14.camel@codeconstruct.com.au>
+Subject: Re: [PATCH v4] hw/gpio/aspeed: Add reg_table_count to AspeedGPIOClass
+From: Andrew Jeffery <andrew@codeconstruct.com.au>
+To: Zheyu Ma <zheyuma97@gmail.com>, =?ISO-8859-1?Q?C=E9dric?= Le Goater
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Joel Stanley
+ <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Fri, 21 Jun 2024 09:46:58 +0930
+In-Reply-To: <20240620140239.375338-1-zheyuma97@gmail.com>
+References: <20240620140239.375338-1-zheyuma97@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/14] include/hw: temporarily disable deletion of
- versioned machine types
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Halil Pasic <pasic@linux.ibm.com>, devel@lists.libvirt.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, David Hildenbrand <david@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clegoate@redhat.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Yanan Wang <wangyanan55@huawei.com>, Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org
-References: <20240620165742.1711389-1-berrange@redhat.com>
- <20240620165742.1711389-10-berrange@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20240620165742.1711389-10-berrange@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+Received-SPF: pass client-ip=203.29.241.158;
+ envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.152,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: x2aSsE0Nyr7Y
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7er9M1rw3hrC
 
-On 20/06/2024 18.57, Daniel P. Berrangé wrote:
-> The new deprecation and deletion policy for versioned machine types is
-> being introduced in QEMU 9.1.0.
-> 
-> Under the new policy a number of old machine types (any prior to 2.12)
-> would be liable for immediate deletion which would be a violation of our
-> historical deprecation and removal policy
-> 
-> Thus automatic deletions (by skipping QOM registration) are temporarily
-> gated on existance of the env variable "QEMU_DELETE_MACHINES" / QEMU
-> version number >= 10.1.0. This allows opt-in testing of the automatic
-> deletion logic, while activating it fully in QEMU >= 10.1.0.
-> 
-> This whole commit should be reverted in the 10.1.0 dev cycle or shortly
-> thereafter.
-> 
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> ---
->   include/hw/boards.h | 19 ++++++++++++++++++-
->   1 file changed, 18 insertions(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index 187ed76646..ef6f18f2c1 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -686,11 +686,28 @@ struct MachineState {
->    * suitable period of time has passed, it will cause
->    * execution of the method to return, avoiding registration
->    * of the machine
-> + *
-> + * The new deprecation and deletion policy for versioned
-> + * machine types was introduced in QEMU 9.1.0.
-> + *
-> + * Under the new policy a number of old machine types (any
-> + * prior to 2.12) would be liable for immediate deletion
-> + * which would be a violation of our historical deprecation
-> + * and removal policy
-> + *
-> + * Thus deletions are temporarily gated on existance of
-> + * the env variable "QEMU_DELETE_MACHINES" / QEMU version
-> + * number >= 10.1.0. This gate can be deleted in the 10.1.0
-> + * dev cycle
->    */
->   #define MACHINE_VER_DELETION(...) \
->       do { \
->           if (MACHINE_VER_SHOULD_DELETE(__VA_ARGS__)) { \
-> -            return; \
-> +            if (getenv("QEMU_DELETE_MACHINES") || \
-> +                QEMU_VERSION_MAJOR > 10 || (QEMU_VERSION_MAJOR == 10 && \
-> +                                            QEMU_VERSION_MINOR >= 1)) { \
-> +                return; \
-> +            } \
->           } \
->       } while (0)
->   
+On Thu, 2024-06-20 at 16:02 +0200, Zheyu Ma wrote:
+> ASan detected a global-buffer-overflow error in the aspeed_gpio_read()
+> function. This issue occurred when reading beyond the bounds of the
+> reg_table.
+>=20
+> To enhance the safety and maintainability of the Aspeed GPIO code, this c=
+ommit
+> introduces a reg_table_count member to the AspeedGPIOClass structure. Thi=
+s
+> change ensures that the size of the GPIO register table is explicitly tra=
+cked
+> and initialized, reducing the risk of errors if new register tables are
+> introduced in the future.
+>=20
+> Reproducer:
+> cat << EOF | qemu-system-aarch64 -display none \
+> -machine accel=3Dqtest, -m 512M -machine ast1030-evb -qtest stdio
+> readq 0x7e780272
+> EOF
+>=20
+> ASAN log indicating the issue:
+> =3D=3D2602930=3D=3DERROR: AddressSanitizer: global-buffer-overflow on add=
+ress 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7fff096c4e90 sp 0x7fff096c4e8=
+8
+> READ of size 2 at 0x55a5da29e128 thread T0
+>     #0 0x55a5d700dc61 in aspeed_gpio_read hw/gpio/aspeed_gpio.c:564:14
+>     #1 0x55a5d933f3ab in memory_region_read_accessor system/memory.c:445:=
+11
+>     #2 0x55a5d92fba40 in access_with_adjusted_size system/memory.c:573:18
+>     #3 0x55a5d92f842c in memory_region_dispatch_read1 system/memory.c:142=
+6:16
+>     #4 0x55a5d92f7b68 in memory_region_dispatch_read system/memory.c:1459=
+:9
+>     #5 0x55a5d9376ad1 in flatview_read_continue_step system/physmem.c:283=
+6:18
+>     #6 0x55a5d9376399 in flatview_read_continue system/physmem.c:2877:19
+>     #7 0x55a5d93775b8 in flatview_read system/physmem.c:2907:12
+>=20
+> Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
+Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>

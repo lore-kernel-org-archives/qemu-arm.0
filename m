@@ -1,220 +1,503 @@
-Received: by 2002:a17:505:2e08:b0:1bd8:8c49:4f6d with SMTP id ya8csp164270njc;
-        Fri, 21 Jun 2024 06:00:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUc+8EUBE2k40h8nI9O0DAob+CXKtFj94T25B+bVVYEIT2CGTxYw2tmljc1xcZDqZswdNu1Y7ZBL3CCrPpCzDFu5cmzQN0h
-X-Google-Smtp-Source: AGHT+IGXge+Fo5DAN/P8pcinGn9rFf4BmH8C1vLJJkr7mXB9kl8PpWwVjbD78wgu8ha++L2uprGC
-X-Received: by 2002:a05:6122:ca8:b0:4eb:eb8:a8ee with SMTP id 71dfb90a1353d-4ef276c0433mr9812113e0c.6.1718974834804;
-        Fri, 21 Jun 2024 06:00:34 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1718974834; cv=pass;
+Received: by 2002:a17:505:2e08:b0:1bd8:8c49:4f6d with SMTP id ya8csp150149njc;
+        Fri, 21 Jun 2024 04:59:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUpG2uooPoC89WX748vEqrfBtTyRK329fumMvXssht8DW+qbIGi3so0IOfU19a5d9BE5eDeJ94nSpGa/m8BNB2kpIv388Bl
+X-Google-Smtp-Source: AGHT+IFftSRU5JkHo0f+rYSG/NxZ78NlNFFEDpENp7mzfvjXNjh7+ay86d5W9bkBUomR2UyYhTWE
+X-Received: by 2002:a0d:d0c2:0:b0:62c:eb81:29ec with SMTP id 00721157ae682-63a8f523c49mr79069097b3.33.1718971174488;
+        Fri, 21 Jun 2024 04:59:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718971174; cv=none;
         d=google.com; s=arc-20160816;
-        b=HHRH+3eOvAKR7Pg0kDHV+wXVH+UWZjAEPG7bPn/6B33ej5BpMG/qJGvHozgyzQcNa7
-         grdflzuhOMTBeZ8J5hYGjQ/YNLG6Mkl4uBsG9X/ArLA65gCk9x9kEwtJvZCecPFl34HF
-         wM2ONhc5AcKZRF4oCav32rv8COUIE458IE5bwSMjoB9qihsYOvtMAt38rPnAtwzNZyBp
-         S4AQuOsRf26lET0ke0EZwb6oR9VKFL+pEBeHuc0bCh50h9lRh5hTJ+PEsor2lFWZLF0j
-         dJ5BfiomplU998P4TYgBj7Veos60jHkY88aZiF2VN2sZ5sADsEVCsYfivSqq1lui+8cZ
-         E8pQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=y6uU6fXN4N4rN2/Wjlj4rfbyxyzf2v9iyl30RMl5bkTdfdHGSVZW5Va5aOVJMhID/A
+         PnFn4fpXbw+/FkwQBqPtkriuiu7/NRp3BRDDv2R9E8XPKHkyOpgz53B4ja9Zuton56jl
+         wHK0Vt9yh5CK70YPuJw4uhUCAt2BykfbRg/643qOzsoa29IE6sxtlwVfWzf3mlDZSwuR
+         LkJqj+STVRaf6RU+bQE3CPZfllIVnsUeB21P/hE43Cyc1Mjezh+4Ol01w5JrOVEDzoxF
+         4iVO+mSDDA3o0dJ76oaye/Y5ajD55bdJo/1q8++i0bIoH1qpXp0+RRq9HvgVEO1ZW5jG
+         h5bQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8W0eBB2admDx5I+eZSAmoS7l1ByXBREdjB/4M0MzeN8=;
-        fh=b/mCG+5vdAy13UhWchgVjqTO8dLDtjbgtrSVUQpGmRA=;
-        b=lnf5CwtN6vbPmRssMhRntuhbav3zRP9zQmWHegbGNj5Jx/RA+Sbs02TVfVwRcpUqtW
-         dnM+Im8CTKyuCx77h4bkH85flx82mlYpTaexKcmiBGJM04Ki5pQ+rM+w6gwE0bHUWyEG
-         C+A2nSfrnQ0A64MnaUsNGsXL5x1HV9fiHqCaMNSR8EsNlyxY0TAya6i01PnGp1ROodfK
-         oT5Mxg8exrLKejpWbgf250iYYF96Y14wBjjg0qCX6jyHTQw+NQEiQBLQVbLPZVZD5RGv
-         rKk4RNOEzw/D7TFG/RBCD5FrM3xkYEL0kooCjbtv/p+wpu2INAuQN9wZ1c62TLv3wCCP
-         IBJQ==;
+        bh=N8SW3M+Jw2WPyFDDnpJOKhkS8a0TIqDczKk8oeBdly0=;
+        fh=QfpvBjXOeWUSd7KlIQ5X1t45y94XddUCGjFbkSOB+us=;
+        b=middBcOoRRh+MQzjDF65wGnVzHn5M7heFFJV7SspaQrR1g4tSphVQg2cU9Ds4BfpQy
+         Ml+/3ujX+Z0T9+bVMtDzFP12blk9ZS6gQXQ0kvfYBrsGG3MpWMJQZyCjojTFgAoipTFL
+         mYds3ZImp21w5qnbgRGAhBmds5X2qodn4zhmZO7GwMF5/MU5doNX4nhb7D4wfc7jZVc2
+         x3esQtFRmlkZOisDmvAEStRJH6KgD9qnHd4J/8a/VSFxGCMKyho//8Ee/nlaGewNgJtk
+         WyAbgavAgN7RmcRMKjsmwRZXlyF+dbANm0nUWiWOAh9q+59FAxOth19QMmVHA/J7SLZK
+         +8Qg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=t40Q3JBi;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=lXPpEUjK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4ef584efecasi55409e0c.270.2024.06.21.06.00.33
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b51edbb9efsi14151416d6.243.2024.06.21.04.59.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Jun 2024 06:00:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Jun 2024 04:59:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=t40Q3JBi;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=lXPpEUjK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sKdrY-00012U-M6; Fri, 21 Jun 2024 08:59:32 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sKcvJ-00040p-Dd; Fri, 21 Jun 2024 07:59:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
- id 1sKdrW-00010l-Fr; Fri, 21 Jun 2024 08:59:30 -0400
-Received: from mail-bn7nam10on2060d.outbound.protection.outlook.com
- ([2a01:111:f403:2009::60d] helo=outbound.mail.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
- id 1sKdrS-00011C-RB; Fri, 21 Jun 2024 08:59:30 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JTDryLaKGLnxND3vLgBvWEacS9xsq8qVZxjVxNjUb8TzTy8jAuNdHJg0SO4h+FETvURsuY60hxbdXA+TybKNIb3336H9ArNnOpXqfDc5Vqskqq9JxPJS/bVouJjb/b6ev3k2LI08RaPiFqYUC8RvLyY5U13pIyeJo01vhQiKTxMXH9KfqK5QUMUzHYugHPRbjDa60ahtYOK0kh4uo6/YsBWvYFSgoBmnOoduvdIraW00QmTT/MP+4HpqticiIK8q2WorY7QtfgDvmpHZCIg0TYUZreDSrmdsEoFYgIq2CzEuh/WX3nW6s8S/lqVusATNgmrBArBNeI6hiNoLzMY62Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8W0eBB2admDx5I+eZSAmoS7l1ByXBREdjB/4M0MzeN8=;
- b=cCQHEB/2iNChlgyxklglvojLwRLF+RjlaKqVVJEnSfAV/ZvdWmbpD3Gxq400D+KbXJy5N2OeoetVMFNPxleN06ODVTmzzo1ZImbgbnlYI5keKIyhHEcyiGZKF492islcK9wa0gkexB/Xiiksldib/ZlSyu6cqj7kA6chujOgxglFnIUPLZSTP3KvUfbTO/yUqA/dEvjU6K3Xz8zNAqt+9qDozAYlC6+ja9WZjfgfgE5trn1m31HicA8XziMqfeEbJ5b80tVhn9Tvir91ZrxWsupHmxHsbkA7qCx+e3/U7rSTzYCwgTsV9TK208qWges3TvM2LY+z2u86w1hXZ3LHNg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8W0eBB2admDx5I+eZSAmoS7l1ByXBREdjB/4M0MzeN8=;
- b=t40Q3JBi5Tmyx26huNf5MskvIBkHYsNKUBnZDahOpzzLqqnX/hKy2DDowEVrzfB5Vk4jkDzgCtpNinS56Y8HTKRYW2POlSFZtV7Mp7sD3/2/k5AgmW4qrowWdiwIhBF0ifHkOLGoBPLm31iZycXrxMPBCLnGouKxFYVh9Q07drY=
-Received: from SJ0PR05CA0007.namprd05.prod.outlook.com (2603:10b6:a03:33b::12)
- by DS7PR12MB8275.namprd12.prod.outlook.com (2603:10b6:8:ec::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7698.24; Fri, 21 Jun
- 2024 12:59:19 +0000
-Received: from SJ1PEPF0000231A.namprd03.prod.outlook.com
- (2603:10b6:a03:33b:cafe::4e) by SJ0PR05CA0007.outlook.office365.com
- (2603:10b6:a03:33b::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.32 via Frontend
- Transport; Fri, 21 Jun 2024 12:59:18 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- SJ1PEPF0000231A.mail.protection.outlook.com (10.167.242.231) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7677.15 via Frontend Transport; Fri, 21 Jun 2024 12:59:18 +0000
-Received: from SATLEXMB05.amd.com (10.181.40.146) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 21 Jun
- 2024 07:59:17 -0500
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB05.amd.com
- (10.181.40.146) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 21 Jun
- 2024 07:59:17 -0500
-Received: from xhdsaipava41.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.39 via
- Frontend Transport; Fri, 21 Jun 2024 07:59:15 -0500
-From: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: "'Edgar E . Iglesias'" <edgar.iglesias@gmail.com>, Peter Maydell
- <peter.maydell@linaro.org>, <francisco.iglesias@amd.com>,
- <sai.pavan.boddu@amd.com>
-Subject: [PATCH v4 0/3] Add boot-mode property for zynq
-Date: Fri, 21 Jun 2024 18:29:03 +0530
-Message-ID: <20240621125906.1300995-1-sai.pavan.boddu@amd.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1sKcvH-0003za-St
+ for qemu-arm@nongnu.org; Fri, 21 Jun 2024 07:59:19 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
+ id 1sKcvF-00032i-3U
+ for qemu-arm@nongnu.org; Fri, 21 Jun 2024 07:59:19 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-1f47f07acd3so15772705ad.0
+ for <qemu-arm@nongnu.org>; Fri, 21 Jun 2024 04:59:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1718971155; x=1719575955; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=N8SW3M+Jw2WPyFDDnpJOKhkS8a0TIqDczKk8oeBdly0=;
+ b=lXPpEUjK2p8iCh59jvpufPqxhm5Oe3U0vrG8FYArGD22pTVKyf7N9gOFa1EqSs6BcF
+ u/evNPajHiH8uhpdkr0s5kgaGO2kx4KlNRgT/u7lDeDqOJipsWCWgeSkkIu3yMtNTy5Z
+ CJmxO5QgssMue/IUKOtAtetPQK9C+ZGb4KTNuiVAobI2SytQkDwlFRbqIXyZ0TAF5zyA
+ 4HGGhaF4LXdI5WlJHqT5Ww2vCHhDBPky26jH/5efj2mkQ9+EyjKL6O48AtJE6NibKmLs
+ U4kWJqlsvvdWZu37fvMzpODM79YefIZ1+DABDMvMCiuC6h7v63z92MPLL/AWbuUpR7Ht
+ d+VQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718971155; x=1719575955;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=N8SW3M+Jw2WPyFDDnpJOKhkS8a0TIqDczKk8oeBdly0=;
+ b=bHKGdPD7/heNeM8kEdkLgqAxD9sDbqXJ+G4dYXk0OuLyY+R9s752MBBZAJ0Z/Q3qRE
+ DvWtkxpPkl7wuN07/+00VgvFztsTyZpqK2VQf50HypwHJ76P86l+dAkQtjIY5+8et6W6
+ Iqr3XnxkszbPdwjPWoBGGvLJSo/iskWa5D0q22mcZkBdPqLpK5kQZmmkCqrvlELM5uOs
+ 5/w4tMTig6OVNuYEdiLSUQep4us8wuxweDaHGQB3rrEpT/ROrA/LomHdaFt59/reYcIg
+ BbXJLW4tPjzwVnPT1N1PgSKCrA9oEVuuptirsO3t8BPlBEPke5nyFJR6e0iTF2e5sf0U
+ u9aA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVj+JW4mH7IXyKZQA+KZ8Sm/LcXybTbIQpFjB4o29+Io3PHIO0h6/7nlwU752WC3wlf1TdsSB4dpHarlXZd3x/KOB/K
+X-Gm-Message-State: AOJu0YztkJtWqSAJy/7vDLk+C2p6E0DyT3C3z25l36ABv6QKl5sQ+IQ5
+ SK73tkP95E5KtHINAXr3LdEEu5P/sxR6r4Eaww+KloAOK8U1Gc/SCcsUq8cWnSY=
+X-Received: by 2002:a17:902:e54c:b0:1f6:93a0:9a45 with SMTP id
+ d9443c01a7336-1f9aa3ebf85mr102099045ad.36.1718971154864; 
+ Fri, 21 Jun 2024 04:59:14 -0700 (PDT)
+Received: from sunil-pc.Dlink ([106.51.187.237])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-1f9ebbb606dsm12422995ad.270.2024.06.21.04.59.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Jun 2024 04:59:14 -0700 (PDT)
+From: Sunil V L <sunilvl@ventanamicro.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-riscv@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Sia Jee Heng <jeeheng.sia@starfivetech.com>,
+ Alistair Francis <alistair23@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Sunil V L <sunilvl@ventanamicro.com>
+Subject: [PATCH v3 00/15] Add support for RISC-V ACPI tests
+Date: Fri, 21 Jun 2024 17:28:51 +0530
+Message-Id: <20240621115906.1049832-1-sunilvl@ventanamicro.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: None (SATLEXMB05.amd.com: sai.pavan.boddu@amd.com does not
- designate permitted sender hosts)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ1PEPF0000231A:EE_|DS7PR12MB8275:EE_
-X-MS-Office365-Filtering-Correlation-Id: 44fdf879-f574-4595-e18e-08dc91f1f62f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230037|1800799021|82310400023|376011|36860700010; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?LKgYvNZRYCzCOc+Qd8qKx6elqf7YQYj6w2hURFOIKHQhm4SPmWSXtVfr7QdL?=
- =?us-ascii?Q?aBivPFibj7y8vmQZ2AYAukH3sCECdJ9qhrSuaWmm7TPlMs9MrIPFNw0BWFMQ?=
- =?us-ascii?Q?tmWH5KMmY2dZupBK8S3FbymIDndM4Hv2LH8BUZSyygE5ynb09jyvrZ4N0u2D?=
- =?us-ascii?Q?f+OeD/SVA3bbBaRhyCMHvbFnAwPVKiIzCizl5LbZH2/Icq9af2NycJ5mPl9K?=
- =?us-ascii?Q?VrJZNZrkKoqVieQmqdVawxjSF9ByfLaLaGcvj3z9Ytgx6bgVbCPGxkILnwix?=
- =?us-ascii?Q?lIho9Lf5Ftt6//RMFD7zo+Xnp6Td9BB/AAh2rDeeriobAEwY/aSuLzwgd8fv?=
- =?us-ascii?Q?nHIyfnx7KmUJVeo8rj1CSK64/Dn0yWnTV6gnBDlX6mIUSSZhyLvh1eiGVxa4?=
- =?us-ascii?Q?cEjogv+dvqkjKMPbrBHGQcKi7In9c4da9aKMP27I3+sygU/wIIrRm4uwpPcl?=
- =?us-ascii?Q?kdHIpSzTr0x3mBO00cpOMbsquAyqgPyotukVMTzb0e+4MLq+/aNddIhcFMHF?=
- =?us-ascii?Q?EdglASiGSdny5iDp2A1lp6+khmbADFG6jRAQic4v8AkcYy7S3jj2awbXhIdR?=
- =?us-ascii?Q?Mi994zRbcS9cyfgVNyNNuow+nyNEN/eRzFnGTMl9ZEjdkFfEKD9YIewL9Ks8?=
- =?us-ascii?Q?uc8YgqRWWXGueZDmaAXVkM/OVc6OVMOXL1RDBd2hv4TMnsg32MmUal7ca/Tu?=
- =?us-ascii?Q?eECL37ra1Bdon5eAM8rthrFm9USjw8q/UULTfHUXwkJIvvbcLHdgXFKq1kiB?=
- =?us-ascii?Q?HtEWPGG9OTpxICWPOydozBJ7fG4H0SmhoI5dhkTMFCyY7+wuA6ld/m1LYf/5?=
- =?us-ascii?Q?4JE78nqFR6xr74QNkVT5ToXS4k5w3vAkvh7AIpiKNXqlRIdnoBcBTM9sgOJW?=
- =?us-ascii?Q?LqOQUmLdQ0NacBrDpe27B81haaXXWfM2BDcaFFELPKsRoHwwzqcpmRGJN3Bw?=
- =?us-ascii?Q?HJ8pzTxBQgtIeQI8BCq5Kgv8uLKN3+uvJRLNdZoUY7xoEqiy4aaYtvILiYL7?=
- =?us-ascii?Q?OSJF45I1U3TqeCUQ3IOUevr1gGoet0NGPvfd2QXOM/LFPVXZbO9x59a2ZjiR?=
- =?us-ascii?Q?ijm93xSBkw+r5/OhSIGqM5lq+Ox8GBcIve1B2uyaUpLRUxkYPu19Ta86YkoB?=
- =?us-ascii?Q?/MGjowYiCI13k6/8x2XX0O+nipuBb4ei5AFRpmnZustG/i1pmWveU41Cb6cQ?=
- =?us-ascii?Q?FfSAHgl3gKGdGNdZzdnSfq5LdmQAZMKwKEh16rFRIn59yqypTfAHXrOV61S6?=
- =?us-ascii?Q?4WqvBlJ7PQruo9vCA62jogCepdUHyjO8wGddMXsH6HB+yQbxBySj9iPMHERz?=
- =?us-ascii?Q?1zjq50cracLP+iwE6gLw9uczd/P1ll9KsnQIuM/xkblehPguaTM9yt+4bwog?=
- =?us-ascii?Q?zpuJ45N1sngc2J1SOjv52PyaBt20n3pSBst9cEk5sgy/EXhbyg=3D=3D?=
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230037)(1800799021)(82310400023)(376011)(36860700010); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jun 2024 12:59:18.1840 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 44fdf879-f574-4595-e18e-08dc91f1f62f
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF0000231A.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB8275
-Received-SPF: permerror client-ip=2a01:111:f403:2009::60d;
- envelope-from=sai.pavan.boddu@amd.com;
- helo=outbound.mail.protection.outlook.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pl1-x630.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) AC_FROM_MANY_DOTS=0.009, BAYES_00=-1.9,
- DKIMWL_WL_HIGH=-0.145, DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
- DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 54YgRuSvf8VJ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MFgl40czw9Pp
 
-Add a way to update the boot-mode via machine properties.
+Currently, bios-table-test doesn't support RISC-V. This series enables
+the framework changes required and basic testing. Things like NUMA
+related test cases will be added later.
 
-Changes for V2:
-    Make boot-mode property work with string,
-    Fixed few code style issues,
-    Added zynq board doc.
-Changes for V3:
-    Mentioned about zynq doc in MAINTAINERS file,
-    Stick to small case for mentioning boot modes in doc,
-    fixed commit message to mention right property name.
-Changes for V4:
-    Use strncasecmp,
-    Fix boot mode names to use small case in few other places,
-    Fix code indentation.
+This needs refactoring/renaming of ARM64 and x86 bios table tests.
+Importantly, the test cases now look for the expected AML files under
+tests/data/acpi/${arch}/${machine} path instead of directly under
+tests/data/acpi/${machine}. To keep test cases not to fail because of
+this movement, they are updated to look for both paths first.
 
-Sai Pavan Boddu (3):
-  hw/misc/zynq_slcr: Add boot-mode property
-  hw/arm/xilinx_zynq: Add boot-mode property
-  docs/system/arm: Add a doc for zynq board
+As part of this effort, it is found that uefi-test-tools is currently
+broken to build. So, updated its Makefile as well to use python based
+edk2 build script.
 
- MAINTAINERS                   |  1 +
- docs/system/arm/xlnx-zynq.rst | 47 +++++++++++++++++++++++++++++++++++
- docs/system/target-arm.rst    |  1 +
- hw/arm/xilinx_zynq.c          | 31 +++++++++++++++++++++++
- hw/misc/zynq_slcr.c           | 22 +++++++++++++++-
- 5 files changed, 101 insertions(+), 1 deletion(-)
- create mode 100644 docs/system/arm/xlnx-zynq.rst
+The changes are also available at branch
+https://gitlab.com/vlsunil/qemu/-/tree/riscv_bios_table_test_v3
+
+Changes since v2:
+	1) Used ${arch}/${machine} path instead of {machine}/${arch} as
+	   per the feedback.
+	2) Updated x86 AML files and test cases as well to use new path.
+	3) Used data->cd for RISC-V test which internally uses -cdrom
+	   option. This needs a fix in RISC-V virt machine [1]. So,
+	   the patch [1] is a dependency for this series.
+	3) Updated tags.
+
+Changes since v1:
+	1) Addressed feedback from Gerd and Alistair
+	2) Rebased and added tags received
+
+[1]: https://mail.gnu.org/archive/html/qemu-devel/2024-06/msg03683.html
+
+Sunil V L (15):
+  uefi-test-tools/UefiTestToolsPkg: Add RISC-V support
+  uefi-test-tools: Add support for python based build script
+  tests/data/uefi-boot-images: Add RISC-V ISO image
+  qtest: bios-tables-test: Rename aarch64 tests with aarch64 in them
+  tests/qtest/bios-tables-test.c: Add support for arch in path
+  tests/qtest/bios-tables-test.c: Set "arch" for aarch64 tests
+  tests/qtest/bios-tables-test.c: Set "arch" for x86 tests
+  tests/data/acpi: Move x86 ACPI tables under x86/${machine} path
+  tests/data/acpi/virt: Move ARM64 ACPI tables under aarch64/${machine}
+    path
+  meson.build: Add RISC-V to the edk2-target list
+  pc-bios/meson.build: Add support for RISC-V in unpack_edk2_blobs
+  tests/data/acpi/rebuild-expected-aml.sh: Add RISC-V
+  tests/qtest/bios-tables-test: Add empty ACPI data files for RISC-V
+  tests/qtest/bios-tables-test.c: Enable basic testing for RISC-V
+  tests/qtest/bios-tables-test: Add expected ACPI data files for RISC-V
+
+ meson.build                                   |   2 +-
+ pc-bios/meson.build                           |   2 +
+ tests/data/acpi/{ => aarch64}/virt/APIC       | Bin
+ .../acpi/{ => aarch64}/virt/APIC.acpihmatvirt | Bin
+ .../acpi/{ => aarch64}/virt/APIC.topology     | Bin
+ tests/data/acpi/{ => aarch64}/virt/DBG2       | Bin
+ tests/data/acpi/{ => aarch64}/virt/DSDT       | Bin
+ .../acpi/{ => aarch64}/virt/DSDT.acpihmatvirt | Bin
+ tests/data/acpi/{ => aarch64}/virt/DSDT.memhp | Bin
+ tests/data/acpi/{ => aarch64}/virt/DSDT.pxb   | Bin
+ .../acpi/{ => aarch64}/virt/DSDT.topology     | Bin
+ tests/data/acpi/{ => aarch64}/virt/FACP       | Bin
+ tests/data/acpi/{ => aarch64}/virt/GTDT       | Bin
+ .../acpi/{ => aarch64}/virt/HMAT.acpihmatvirt | Bin
+ tests/data/acpi/{ => aarch64}/virt/IORT       | Bin
+ tests/data/acpi/{ => aarch64}/virt/MCFG       | Bin
+ tests/data/acpi/{ => aarch64}/virt/NFIT.memhp | Bin
+ tests/data/acpi/{ => aarch64}/virt/PPTT       | Bin
+ .../acpi/{ => aarch64}/virt/PPTT.acpihmatvirt | Bin
+ .../acpi/{ => aarch64}/virt/PPTT.topology     | Bin
+ .../data/acpi/{pc => aarch64/virt}/SLIT.memhp | Bin
+ tests/data/acpi/{ => aarch64}/virt/SPCR       | Bin
+ .../acpi/{ => aarch64}/virt/SRAT.acpihmatvirt | Bin
+ tests/data/acpi/{ => aarch64}/virt/SRAT.memhp | Bin
+ .../data/acpi/{ => aarch64}/virt/SRAT.numamem | Bin
+ tests/data/acpi/{ => aarch64}/virt/SSDT.memhp | Bin
+ tests/data/acpi/{ => aarch64}/virt/VIOT       | Bin
+ tests/data/acpi/rebuild-expected-aml.sh       |   5 +-
+ tests/data/acpi/riscv64/virt/APIC             | Bin 0 -> 116 bytes
+ .../{microvm/DSDT.pcie => riscv64/virt/DSDT}  | Bin 3023 -> 3518 bytes
+ tests/data/acpi/riscv64/virt/FACP             | Bin 0 -> 276 bytes
+ tests/data/acpi/riscv64/virt/MCFG             | Bin 0 -> 60 bytes
+ tests/data/acpi/riscv64/virt/RHCT             | Bin 0 -> 314 bytes
+ tests/data/acpi/riscv64/virt/SPCR             | Bin 0 -> 80 bytes
+ tests/data/acpi/{ => x86}/microvm/APIC        | Bin
+ .../data/acpi/{ => x86}/microvm/APIC.ioapic2  | Bin
+ tests/data/acpi/{ => x86}/microvm/APIC.pcie   | Bin
+ tests/data/acpi/{ => x86}/microvm/DSDT        | Bin
+ .../data/acpi/{ => x86}/microvm/DSDT.ioapic2  | Bin
+ tests/data/acpi/{ => x86}/microvm/DSDT.pcie   | Bin
+ tests/data/acpi/{ => x86}/microvm/DSDT.rtc    | Bin
+ tests/data/acpi/{ => x86}/microvm/DSDT.usb    | Bin
+ tests/data/acpi/{ => x86}/microvm/ERST.pcie   | Bin
+ tests/data/acpi/{ => x86}/microvm/FACP        | Bin
+ tests/data/acpi/{ => x86}/pc/APIC             | Bin
+ tests/data/acpi/{ => x86}/pc/APIC.acpihmat    | Bin
+ tests/data/acpi/{ => x86}/pc/APIC.cphp        | Bin
+ tests/data/acpi/{ => x86}/pc/APIC.dimmpxm     | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT             | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.acpierst    | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.acpihmat    | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.bridge      | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.cphp        | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.dimmpxm     | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.hpbridge    | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.hpbrroot    | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.ipmikcs     | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.memhp       | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.nohpet      | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.numamem     | Bin
+ tests/data/acpi/{ => x86}/pc/DSDT.roothp      | Bin
+ tests/data/acpi/{ => x86}/pc/ERST.acpierst    | Bin
+ tests/data/acpi/{ => x86}/pc/FACP             | Bin
+ tests/data/acpi/{ => x86}/pc/FACP.nosmm       | Bin
+ tests/data/acpi/{ => x86}/pc/FACS             | Bin
+ tests/data/acpi/{ => x86}/pc/HMAT.acpihmat    | Bin
+ tests/data/acpi/{ => x86}/pc/HPET             | Bin
+ tests/data/acpi/{ => x86}/pc/NFIT.dimmpxm     | Bin
+ tests/data/acpi/{ => x86}/pc/SLIT.cphp        | Bin
+ tests/data/acpi/{q35 => x86/pc}/SLIT.memhp    | Bin
+ tests/data/acpi/{ => x86}/pc/SRAT.acpihmat    | Bin
+ tests/data/acpi/{ => x86}/pc/SRAT.cphp        | Bin
+ tests/data/acpi/{ => x86}/pc/SRAT.dimmpxm     | Bin
+ tests/data/acpi/{ => x86}/pc/SRAT.memhp       | Bin
+ tests/data/acpi/{ => x86}/pc/SRAT.numamem     | Bin
+ tests/data/acpi/{ => x86}/pc/SSDT.dimmpxm     | Bin
+ tests/data/acpi/{ => x86}/pc/WAET             | Bin
+ tests/data/acpi/{ => x86}/q35/APIC            | Bin
+ tests/data/acpi/{ => x86}/q35/APIC.acpihmat   | Bin
+ .../{ => x86}/q35/APIC.acpihmat-noinitiator   | Bin
+ tests/data/acpi/{ => x86}/q35/APIC.core-count | Bin
+ .../data/acpi/{ => x86}/q35/APIC.core-count2  | Bin
+ tests/data/acpi/{ => x86}/q35/APIC.cphp       | Bin
+ tests/data/acpi/{ => x86}/q35/APIC.dimmpxm    | Bin
+ .../data/acpi/{ => x86}/q35/APIC.thread-count | Bin
+ .../acpi/{ => x86}/q35/APIC.thread-count2     | Bin
+ .../data/acpi/{ => x86}/q35/APIC.type4-count  | Bin
+ tests/data/acpi/{ => x86}/q35/APIC.xapic      | Bin
+ tests/data/acpi/{ => x86}/q35/CEDT.cxl        | Bin
+ tests/data/acpi/{ => x86}/q35/DMAR.dmar       | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT            | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.acpierst   | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.acpihmat   | Bin
+ .../{ => x86}/q35/DSDT.acpihmat-noinitiator   | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.applesmc   | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.bridge     | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.core-count | Bin
+ .../data/acpi/{ => x86}/q35/DSDT.core-count2  | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.cphp       | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.cxl        | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.dimmpxm    | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.ipmibt     | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.ipmismbus  | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.ivrs       | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.memhp      | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.mmio64     | Bin
+ .../data/acpi/{ => x86}/q35/DSDT.multi-bridge | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.noacpihp   | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.nohpet     | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.numamem    | Bin
+ .../data/acpi/{ => x86}/q35/DSDT.pvpanic-isa  | Bin
+ .../data/acpi/{ => x86}/q35/DSDT.thread-count | Bin
+ .../acpi/{ => x86}/q35/DSDT.thread-count2     | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.tis.tpm12  | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.tis.tpm2   | Bin
+ .../data/acpi/{ => x86}/q35/DSDT.type4-count  | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.viot       | Bin
+ tests/data/acpi/{ => x86}/q35/DSDT.xapic      | Bin
+ tests/data/acpi/{ => x86}/q35/ERST.acpierst   | Bin
+ tests/data/acpi/{ => x86}/q35/FACP            | Bin
+ tests/data/acpi/{ => x86}/q35/FACP.core-count | Bin
+ .../data/acpi/{ => x86}/q35/FACP.core-count2  | Bin
+ tests/data/acpi/{ => x86}/q35/FACP.nosmm      | Bin
+ tests/data/acpi/{ => x86}/q35/FACP.slic       | Bin
+ .../data/acpi/{ => x86}/q35/FACP.thread-count | Bin
+ .../acpi/{ => x86}/q35/FACP.thread-count2     | Bin
+ .../data/acpi/{ => x86}/q35/FACP.type4-count  | Bin
+ tests/data/acpi/{ => x86}/q35/FACP.xapic      | Bin
+ tests/data/acpi/{ => x86}/q35/FACS            | Bin
+ tests/data/acpi/{ => x86}/q35/HMAT.acpihmat   | Bin
+ .../{ => x86}/q35/HMAT.acpihmat-noinitiator   | Bin
+ tests/data/acpi/{ => x86}/q35/HPET            | Bin
+ tests/data/acpi/{ => x86}/q35/IVRS.ivrs       | Bin
+ tests/data/acpi/{ => x86}/q35/MCFG            | Bin
+ tests/data/acpi/{ => x86}/q35/NFIT.dimmpxm    | Bin
+ tests/data/acpi/{ => x86}/q35/SLIC.slic       | Bin
+ tests/data/acpi/{ => x86}/q35/SLIT.cphp       | Bin
+ tests/data/acpi/{virt => x86/q35}/SLIT.memhp  | Bin
+ tests/data/acpi/{ => x86}/q35/SRAT.acpihmat   | Bin
+ .../{ => x86}/q35/SRAT.acpihmat-noinitiator   | Bin
+ tests/data/acpi/{ => x86}/q35/SRAT.cphp       | Bin
+ tests/data/acpi/{ => x86}/q35/SRAT.dimmpxm    | Bin
+ tests/data/acpi/{ => x86}/q35/SRAT.memhp      | Bin
+ tests/data/acpi/{ => x86}/q35/SRAT.mmio64     | Bin
+ tests/data/acpi/{ => x86}/q35/SRAT.numamem    | Bin
+ tests/data/acpi/{ => x86}/q35/SRAT.xapic      | Bin
+ tests/data/acpi/{ => x86}/q35/SSDT.dimmpxm    | Bin
+ tests/data/acpi/{ => x86}/q35/TCPA.tis.tpm12  | Bin
+ tests/data/acpi/{ => x86}/q35/TPM2.tis.tpm2   | Bin
+ tests/data/acpi/{ => x86}/q35/VIOT.viot       | Bin
+ tests/data/acpi/{ => x86}/q35/WAET            | Bin
+ .../bios-tables-test.riscv64.iso.qcow2        | Bin 0 -> 16896 bytes
+ tests/qtest/bios-tables-test.c                | 169 ++++++++++++++----
+ tests/qtest/meson.build                       |   3 +
+ tests/uefi-test-tools/Makefile                |  19 +-
+ .../UefiTestToolsPkg/UefiTestToolsPkg.dsc     |   6 +-
+ tests/uefi-test-tools/uefi-test-build.config  |  52 ++++++
+ 157 files changed, 210 insertions(+), 48 deletions(-)
+ rename tests/data/acpi/{ => aarch64}/virt/APIC (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/APIC.acpihmatvirt (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/APIC.topology (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/DBG2 (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/DSDT (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/DSDT.acpihmatvirt (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/DSDT.memhp (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/DSDT.pxb (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/DSDT.topology (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/FACP (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/GTDT (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/HMAT.acpihmatvirt (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/IORT (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/MCFG (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/NFIT.memhp (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/PPTT (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/PPTT.acpihmatvirt (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/PPTT.topology (100%)
+ rename tests/data/acpi/{pc => aarch64/virt}/SLIT.memhp (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/SPCR (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/SRAT.acpihmatvirt (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/SRAT.memhp (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/SRAT.numamem (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/SSDT.memhp (100%)
+ rename tests/data/acpi/{ => aarch64}/virt/VIOT (100%)
+ create mode 100644 tests/data/acpi/riscv64/virt/APIC
+ copy tests/data/acpi/{microvm/DSDT.pcie => riscv64/virt/DSDT} (62%)
+ create mode 100644 tests/data/acpi/riscv64/virt/FACP
+ create mode 100644 tests/data/acpi/riscv64/virt/MCFG
+ create mode 100644 tests/data/acpi/riscv64/virt/RHCT
+ create mode 100644 tests/data/acpi/riscv64/virt/SPCR
+ rename tests/data/acpi/{ => x86}/microvm/APIC (100%)
+ rename tests/data/acpi/{ => x86}/microvm/APIC.ioapic2 (100%)
+ rename tests/data/acpi/{ => x86}/microvm/APIC.pcie (100%)
+ rename tests/data/acpi/{ => x86}/microvm/DSDT (100%)
+ rename tests/data/acpi/{ => x86}/microvm/DSDT.ioapic2 (100%)
+ rename tests/data/acpi/{ => x86}/microvm/DSDT.pcie (100%)
+ rename tests/data/acpi/{ => x86}/microvm/DSDT.rtc (100%)
+ rename tests/data/acpi/{ => x86}/microvm/DSDT.usb (100%)
+ rename tests/data/acpi/{ => x86}/microvm/ERST.pcie (100%)
+ rename tests/data/acpi/{ => x86}/microvm/FACP (100%)
+ rename tests/data/acpi/{ => x86}/pc/APIC (100%)
+ rename tests/data/acpi/{ => x86}/pc/APIC.acpihmat (100%)
+ rename tests/data/acpi/{ => x86}/pc/APIC.cphp (100%)
+ rename tests/data/acpi/{ => x86}/pc/APIC.dimmpxm (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.acpierst (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.acpihmat (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.bridge (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.cphp (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.dimmpxm (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.hpbridge (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.hpbrroot (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.ipmikcs (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.memhp (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.nohpet (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.numamem (100%)
+ rename tests/data/acpi/{ => x86}/pc/DSDT.roothp (100%)
+ rename tests/data/acpi/{ => x86}/pc/ERST.acpierst (100%)
+ rename tests/data/acpi/{ => x86}/pc/FACP (100%)
+ rename tests/data/acpi/{ => x86}/pc/FACP.nosmm (100%)
+ rename tests/data/acpi/{ => x86}/pc/FACS (100%)
+ rename tests/data/acpi/{ => x86}/pc/HMAT.acpihmat (100%)
+ rename tests/data/acpi/{ => x86}/pc/HPET (100%)
+ rename tests/data/acpi/{ => x86}/pc/NFIT.dimmpxm (100%)
+ rename tests/data/acpi/{ => x86}/pc/SLIT.cphp (100%)
+ rename tests/data/acpi/{q35 => x86/pc}/SLIT.memhp (100%)
+ rename tests/data/acpi/{ => x86}/pc/SRAT.acpihmat (100%)
+ rename tests/data/acpi/{ => x86}/pc/SRAT.cphp (100%)
+ rename tests/data/acpi/{ => x86}/pc/SRAT.dimmpxm (100%)
+ rename tests/data/acpi/{ => x86}/pc/SRAT.memhp (100%)
+ rename tests/data/acpi/{ => x86}/pc/SRAT.numamem (100%)
+ rename tests/data/acpi/{ => x86}/pc/SSDT.dimmpxm (100%)
+ rename tests/data/acpi/{ => x86}/pc/WAET (100%)
+ rename tests/data/acpi/{ => x86}/q35/APIC (100%)
+ rename tests/data/acpi/{ => x86}/q35/APIC.acpihmat (100%)
+ rename tests/data/acpi/{ => x86}/q35/APIC.acpihmat-noinitiator (100%)
+ rename tests/data/acpi/{ => x86}/q35/APIC.core-count (100%)
+ rename tests/data/acpi/{ => x86}/q35/APIC.core-count2 (100%)
+ rename tests/data/acpi/{ => x86}/q35/APIC.cphp (100%)
+ rename tests/data/acpi/{ => x86}/q35/APIC.dimmpxm (100%)
+ rename tests/data/acpi/{ => x86}/q35/APIC.thread-count (100%)
+ rename tests/data/acpi/{ => x86}/q35/APIC.thread-count2 (100%)
+ rename tests/data/acpi/{ => x86}/q35/APIC.type4-count (100%)
+ rename tests/data/acpi/{ => x86}/q35/APIC.xapic (100%)
+ rename tests/data/acpi/{ => x86}/q35/CEDT.cxl (100%)
+ rename tests/data/acpi/{ => x86}/q35/DMAR.dmar (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.acpierst (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.acpihmat (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.acpihmat-noinitiator (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.applesmc (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.bridge (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.core-count (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.core-count2 (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.cphp (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.cxl (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.dimmpxm (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.ipmibt (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.ipmismbus (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.ivrs (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.memhp (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.mmio64 (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.multi-bridge (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.noacpihp (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.nohpet (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.numamem (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.pvpanic-isa (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.thread-count (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.thread-count2 (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.tis.tpm12 (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.tis.tpm2 (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.type4-count (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.viot (100%)
+ rename tests/data/acpi/{ => x86}/q35/DSDT.xapic (100%)
+ rename tests/data/acpi/{ => x86}/q35/ERST.acpierst (100%)
+ rename tests/data/acpi/{ => x86}/q35/FACP (100%)
+ rename tests/data/acpi/{ => x86}/q35/FACP.core-count (100%)
+ rename tests/data/acpi/{ => x86}/q35/FACP.core-count2 (100%)
+ rename tests/data/acpi/{ => x86}/q35/FACP.nosmm (100%)
+ rename tests/data/acpi/{ => x86}/q35/FACP.slic (100%)
+ rename tests/data/acpi/{ => x86}/q35/FACP.thread-count (100%)
+ rename tests/data/acpi/{ => x86}/q35/FACP.thread-count2 (100%)
+ rename tests/data/acpi/{ => x86}/q35/FACP.type4-count (100%)
+ rename tests/data/acpi/{ => x86}/q35/FACP.xapic (100%)
+ rename tests/data/acpi/{ => x86}/q35/FACS (100%)
+ rename tests/data/acpi/{ => x86}/q35/HMAT.acpihmat (100%)
+ rename tests/data/acpi/{ => x86}/q35/HMAT.acpihmat-noinitiator (100%)
+ rename tests/data/acpi/{ => x86}/q35/HPET (100%)
+ rename tests/data/acpi/{ => x86}/q35/IVRS.ivrs (100%)
+ rename tests/data/acpi/{ => x86}/q35/MCFG (100%)
+ rename tests/data/acpi/{ => x86}/q35/NFIT.dimmpxm (100%)
+ rename tests/data/acpi/{ => x86}/q35/SLIC.slic (100%)
+ rename tests/data/acpi/{ => x86}/q35/SLIT.cphp (100%)
+ rename tests/data/acpi/{virt => x86/q35}/SLIT.memhp (100%)
+ rename tests/data/acpi/{ => x86}/q35/SRAT.acpihmat (100%)
+ rename tests/data/acpi/{ => x86}/q35/SRAT.acpihmat-noinitiator (100%)
+ rename tests/data/acpi/{ => x86}/q35/SRAT.cphp (100%)
+ rename tests/data/acpi/{ => x86}/q35/SRAT.dimmpxm (100%)
+ rename tests/data/acpi/{ => x86}/q35/SRAT.memhp (100%)
+ rename tests/data/acpi/{ => x86}/q35/SRAT.mmio64 (100%)
+ rename tests/data/acpi/{ => x86}/q35/SRAT.numamem (100%)
+ rename tests/data/acpi/{ => x86}/q35/SRAT.xapic (100%)
+ rename tests/data/acpi/{ => x86}/q35/SSDT.dimmpxm (100%)
+ rename tests/data/acpi/{ => x86}/q35/TCPA.tis.tpm12 (100%)
+ rename tests/data/acpi/{ => x86}/q35/TPM2.tis.tpm2 (100%)
+ rename tests/data/acpi/{ => x86}/q35/VIOT.viot (100%)
+ rename tests/data/acpi/{ => x86}/q35/WAET (100%)
+ create mode 100644 tests/data/uefi-boot-images/bios-tables-test.riscv64.iso.qcow2
+ create mode 100644 tests/uefi-test-tools/uefi-test-build.config
 
 -- 
-2.34.1
+2.40.1
 

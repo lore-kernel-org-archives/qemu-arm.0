@@ -1,86 +1,180 @@
-Received: by 2002:a17:906:5814:b0:a6f:8e2c:4d9d with SMTP id m20csp265016ejq;
-        Thu, 20 Jun 2024 22:26:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXvAAZNjQFDYv4k4KCDounxrMCwqAyk6BsWGbPlnZyBv7pTDkWQ9+e/KbohqW1vlO4glt3qsf8iMcU2p4AB1SYp7W86hQxn
-X-Google-Smtp-Source: AGHT+IH7pFCwWhK1WW89J03j5NV4qd6cFijgAoYU2QN/XTjUUKK5/sNdeDiOYR+t6VfPP1LtsOql
-X-Received: by 2002:a05:622a:d3:b0:441:57b3:2d6f with SMTP id d75a77b69052e-444a79a9e3emr77291071cf.13.1718947559775;
-        Thu, 20 Jun 2024 22:25:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718947559; cv=none;
+Received: by 2002:a17:505:2e08:b0:1bd8:8c49:4f6d with SMTP id ya8csp164037njc;
+        Fri, 21 Jun 2024 05:59:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXtjt/Mcrn/UoOfp295Faz1prF8+4Rc8rTPh7+e30pA0TSh1JgiWkkqcySdT0ovMFA2HuGESDeu+PU365kzmCXV8Pz7dsfP
+X-Google-Smtp-Source: AGHT+IH7buwfXWu8ixdNaCb5yy7+eIUN1Zz6voNYBWt2cPLal3fVxRGzxHtnar5ApY0qtup0nE86
+X-Received: by 2002:a05:620a:258c:b0:795:9eb8:31e with SMTP id af79cd13be357-79bb3e58212mr929609585a.45.1718974786721;
+        Fri, 21 Jun 2024 05:59:46 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1718974786; cv=pass;
         d=google.com; s=arc-20160816;
-        b=d4d8W7u7m3uovQjGgf/ZtoeSN/PW1xCS9auKv6fwuKYE4hmBQaN66C2ODeTUjNkipH
-         8TIAJyStFDH6+LP/8oxDFgmpYGRPyqv76bAdzmsS6CRIbCMrawfgFGTSkyAG5M67sCXl
-         tF7MXFeqWhEjL/5lHrPoInYFk+6RV16uB1E6NQI9GATR9xB3PhEtZIkIsWIE61ZK2F4x
-         75m+FITSct9CbhaBxzbOeHWboI+vgYxKCakU/EXs8R17n+OFm6/grMAuUv4zYYCWFwMN
-         zMldO1+nARkw8UGFYI+cclhki+m8CJ+tckAThR55rMHRoLaWGMUYtm8TkDNqYug3i4FJ
-         MDTQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=gBkrtpgSPkO5Ca/sKa8lg3b9CPdu/Y7BdpukHwsXoKXgbVuT8u14Cla9N9044BS/zW
+         ZI332jKB5MUSgh0BrhNyBHTulOCHDzWWLpXr3ha+pYWkv82cfiJLzHuczhMN1bux1Ux9
+         1bR4mTOXDBoxYubS6g/o0rYAYQ2HIm+MOyaHRSoe+zooxRBAokXpWm1POYbu7z2hPTrT
+         70JcWLkPjVshJ331JXo/HeSEudQiNGZNH3Fn8qLhTFnQKNlc+/LjI6QM/BbrWh5sAgXN
+         pezFG0fLXCoUUkAVahLnvNqPXCSlj6L5u6F4gy22wD6YpTovN+dekIDKjIkmHECzuXVC
+         ZjFw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=O58388iXlJJdx2wNLaNer6ZKUK1R0tk4VCrRVfx+Jy0=;
-        fh=L8M9OuGVmbNJrDIPS4yoODPWkaGwVPKOMzYqjU69lMA=;
-        b=w/BAVSgm8Htcc7Bb3Os37mouNvVLoYXBex++9CWNNSMWRBYxrMSxAQd4SYDISrNcOG
-         d1QEksqe37/NAi6NoVuUwnwdV/qGtAje/NT1Y+84sLJK+CKst04ZkLyar9s8cakjHjOX
-         coPzZjp06Iuh1+om1g+DoC0oeKs4EQyBGoOUOhQzJX64khoc07p4SWC7koHaRmnzlnNA
-         vjmd6AOleJ+MOnBV/EpYyxtipMdTXGP3RSTr7Xer0k21KFrszJAQdsJZvWcowy3eyeAp
-         BLFVonhlgP0IOiBeJ3GNi+gIxA93ewLolL5cq0XfFDa/qhfGPYhXea5eQZhXOYeSYhxb
-         o5CA==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=vsbUIP9Ok9jpGdpzLD4Xs/YbIUf6TMu4/snoy+PHiAU=;
+        fh=BGnFiSt73hWTbeJdnzK7GKfW6i3fzbpv5HN2zjq8OLU=;
+        b=JYbdInEQJeyFGL+0K2+iLa6HACr9i4u8HdNbbHyTuYt9awRzPt5MxEFagdVhh9kjzz
+         99lwGspZGLgW0fwA3qzZswWuyFINb+HBWIGq8H7+9XJQ/aWzfm1Rowq0oxypC2t57ue8
+         L+7z4QMfxS+0826KIo1BRi/HADwKlKV4+fMApjXUgron7XXUlPVf68fGMEWJ1SutNEam
+         DdXVOZf1Tr6W3v00Ticjr96EzKYYW2EaVFqIg8weq+5ARVYF6yN+Tjp0eVz/HrUu2tU7
+         mrwj9uW+hP1aGIQ+MGO4k28k9b8LvBZaD3ZlBGJjUnXnkRAUapEp7SX0I83mD/uIb1h5
+         hj5A==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=3quZJ9gS;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-444c2c3e3d6si10758041cf.513.2024.06.20.22.25.59
+        by mx.google.com with ESMTPS id af79cd13be357-79bce881b55si179773185a.96.2024.06.21.05.59.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Jun 2024 22:25:59 -0700 (PDT)
+        Fri, 21 Jun 2024 05:59:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=3quZJ9gS;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKWmS-0004XL-VK; Fri, 21 Jun 2024 01:25:49 -0400
+	id 1sKdra-00013U-Kd; Fri, 21 Jun 2024 08:59:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=9ak7=NX=kaod.org=clg@ozlabs.org>)
- id 1sKWmR-0004Tk-59; Fri, 21 Jun 2024 01:25:47 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1sKdrZ-00012v-Mv; Fri, 21 Jun 2024 08:59:33 -0400
+Received: from mail-co1nam11on20600.outbound.protection.outlook.com
+ ([2a01:111:f403:2416::600]
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=9ak7=NX=kaod.org=clg@ozlabs.org>)
- id 1sKWmO-0004Uq-Px; Fri, 21 Jun 2024 01:25:46 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4W55RJ0JDqz4wyg;
- Fri, 21 Jun 2024 15:25:32 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4W55RF0xgQz4wc1;
- Fri, 21 Jun 2024 15:25:28 +1000 (AEST)
-Message-ID: <5a2d0a4f-8ff8-4fc1-9c15-4c1e533143f1@kaod.org>
-Date: Fri, 21 Jun 2024 07:25:23 +0200
+ (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
+ id 1sKdrX-00013Q-B2; Fri, 21 Jun 2024 08:59:33 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dW+dEkFKzQDI9a4/W7CgxfjwiQHMc0BbYSrxvIUvWaqanFd0djwIg7C5FOAs5MfOb5zxr58nTcyjvbK7D/RyY/Wt1RPasLF1VWFJrA9+7NgrifSkN6j/7Nz2r5LHYuUNRi45+j8ZnCLiuHe0/TMbAGMdPvMXjDjg0KsvTJhhp/kScOuqPI+Mw4nuMjZmbXEh/+SuF78989wUxA/nBv3kCc1Eyv/8rBzION+g3EkLkA5vH37SCB9opWQdFmlP8gxTKXcNveIp8jlAkQgNVa5ZziGY03eCal2uoXV1KBr6iDc0u6m+iPvz21Gz33AMBkNAILQRK/Jtb5vlx5KJdmMSrA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=vsbUIP9Ok9jpGdpzLD4Xs/YbIUf6TMu4/snoy+PHiAU=;
+ b=QInP9dmClIph4pXjy/cXWHL67iigi6taIqvi01KYzHPXyPR+3AXaAcCICEGNSbfnNJcWfbt7scCQRutL0hGwqdDfNtOjceg719fYBFPpERzQicJ6E0EiswmFZUt3ex49zD2nrs4gnNhwM8J7mlKXcqZ+5RZvvoOiZMTBzCINtIEnGrcMsFcDhe59AZmWM0PJmmjeYhXvx90xNikD5czd/972YyfK3d3dI5sS4aBZl/zoHHgb4phIs68MLpxwcro87/2gmDjBn60vITp0YleGu0+Bd/CLh7nRnOnJ7zhkNG+ZglUFa7BXWe2kgQGXt3gE5lswzE9lZ+xb5PVcxFZWlA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vsbUIP9Ok9jpGdpzLD4Xs/YbIUf6TMu4/snoy+PHiAU=;
+ b=3quZJ9gS1WS5M4XPL3Cb2TjMdw9RaF1Yl92+K0dplEn7xvUdyNy+7k21sMR0nNeE3UjvNC/p97nCH0LH+4fM36n4dUn5vOHSR8PAT3IyjBfcYgpkYVzh9HvrHE0s+n59mSlL/faUdxsUSbPiqvv3OGoPStdDJxTknoKWyTGe5aY=
+Received: from BYAPR08CA0038.namprd08.prod.outlook.com (2603:10b6:a03:117::15)
+ by SA0PR12MB4431.namprd12.prod.outlook.com (2603:10b6:806:95::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7698.21; Fri, 21 Jun
+ 2024 12:59:26 +0000
+Received: from SJ1PEPF0000231F.namprd03.prod.outlook.com
+ (2603:10b6:a03:117:cafe::ca) by BYAPR08CA0038.outlook.office365.com
+ (2603:10b6:a03:117::15) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.36 via Frontend
+ Transport; Fri, 21 Jun 2024 12:59:26 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ SJ1PEPF0000231F.mail.protection.outlook.com (10.167.242.235) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.7677.15 via Frontend Transport; Fri, 21 Jun 2024 12:59:25 +0000
+Received: from SATLEXMB05.amd.com (10.181.40.146) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 21 Jun
+ 2024 07:59:24 -0500
+Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB05.amd.com
+ (10.181.40.146) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 21 Jun
+ 2024 07:59:24 -0500
+Received: from xhdsaipava41.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.39 via
+ Frontend Transport; Fri, 21 Jun 2024 07:59:22 -0500
+From: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: "'Edgar E . Iglesias'" <edgar.iglesias@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, <francisco.iglesias@amd.com>,
+ <sai.pavan.boddu@amd.com>, "Edgar E . Iglesias" <edgar.iglesias@amd.com>
+Subject: [PATCH v4 3/3] docs/system/arm: Add a doc for zynq board
+Date: Fri, 21 Jun 2024 18:29:06 +0530
+Message-ID: <20240621125906.1300995-4-sai.pavan.boddu@amd.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240621125906.1300995-1-sai.pavan.boddu@amd.com>
+References: <20240621125906.1300995-1-sai.pavan.boddu@amd.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4] hw/gpio/aspeed: Add reg_table_count to AspeedGPIOClass
-To: Zheyu Ma <zheyuma97@gmail.com>, Peter Maydell <peter.maydell@linaro.org>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20240620140239.375338-1-zheyuma97@gmail.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240620140239.375338-1-zheyuma97@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=9ak7=NX=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: None (SATLEXMB05.amd.com: sai.pavan.boddu@amd.com does not
+ designate permitted sender hosts)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ1PEPF0000231F:EE_|SA0PR12MB4431:EE_
+X-MS-Office365-Filtering-Correlation-Id: ec10487c-c1ba-4e30-da7e-08dc91f1fac8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230037|82310400023|376011|1800799021|36860700010; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?BRzPN5sBgjZmX5EDYtyy+N79JK8/A+Vt+4dUyVvJedPx878vcxQLin5jbRAc?=
+ =?us-ascii?Q?I2QDN4Jl7/Ma3b9RyEb+G35+z1oNSCyB5FfCNwvbr1xbuZXPBp0oNqOkyadl?=
+ =?us-ascii?Q?1AwcaCEW19oY+zZDndOjIGIYntSkHCjYG58GeYuTJmyogan0uiQbfwLV0mn0?=
+ =?us-ascii?Q?OOcnhjaRD7Bj3jrUfn/x6PbcVKADYCXhK0tb35Lr9YhD5BxhVNmaBrUFeQsL?=
+ =?us-ascii?Q?O6G6xnAZ8zL4jmpU75JiCEXJrsv3qjucb7Y1RF63VQDcwjjDwAQg5yZFtkCw?=
+ =?us-ascii?Q?sCjvTUSAbCYYphYfsrmSPVuh7D4ljm3A/6rzIFZZMzSsFJSr4yo0rqULUnvr?=
+ =?us-ascii?Q?UoDtan/plD9w0bm/pdwwk+qOBzfDp9KyxlTQ8Tu5VozJQU/3IukjS8yqyLt2?=
+ =?us-ascii?Q?qTP8BlxeEw4e5bQTVvaaaOpsSL7t0mdpFebJTSfV5N5Ng4y5kET2KgHq33Pz?=
+ =?us-ascii?Q?bOe7SjUC6RV0GvtR7EsIDOfFHTFlFk0aOJRZCqlJkKmvTTsfY7+Ip2Ob2Lli?=
+ =?us-ascii?Q?mwRrtIoTXH3i1Ok0kgBSUUSWAtI1m7U8JhU4mMWzwTJwVI0i85N/XiF7C6R9?=
+ =?us-ascii?Q?DuiK5iXoylKZLr90WOq9yh9UM++ouzJQKpauz1uPnwcmUvPfnLxl4Uxgm7c6?=
+ =?us-ascii?Q?/QgAmWgxcda4LJzY+gL12w36pW1i40q4FD4LUNa3/A02lU3SVaeX4d0rabsT?=
+ =?us-ascii?Q?KDMEZ+X/D3o5dPG2TjlZNygaLqAxtWKxPVt1XZZkHYpAHCBBGXk6KoJC85l2?=
+ =?us-ascii?Q?sMnb9rzlQDRIiZV9FQa/pDWMMVobahYvT/34OYJ6R/+U22tmP8KPE9yyTUdt?=
+ =?us-ascii?Q?d90CKNIa1O3ePVhd7gUNM6VtR8xaYhKgwwGQT8g2qjX4y1ntLZ6b1Dbl39CA?=
+ =?us-ascii?Q?yhTNAclRMea5PLphREiPWQCLxYHQ02FZ1GHvP/YD68v187dy8sa7Yx1sRA4A?=
+ =?us-ascii?Q?8xruQFSfwCypJ6xtvvBcm+hAp7YsIPJUHxPqBHQYmENKogoZPQAfbvOwJAxb?=
+ =?us-ascii?Q?gyeVZ1bSJaUKuCoqXuAwQ2ZrPcAM/TRTw4m/ZmQnFM9jGaN7xVgQLsK7FW5b?=
+ =?us-ascii?Q?cDkKPffWPilAT5nxwLnAa+ymlvPrutdPT6NVyfE2/SztQMMyAuYUTuPiP31C?=
+ =?us-ascii?Q?KjtHJSI/3eN1x64FhzVn+HYeZ7gjfGYt7w31pHf5C4cNFVHwGEU0jQ/n8jFP?=
+ =?us-ascii?Q?2ESDY0kc0PzTVHlxwcwGN5atOVowA4xuMLmsNzkQpxen4tbsmg9tG7WUtZTG?=
+ =?us-ascii?Q?NDLjVpRjrVooQVwXYBO12D/rX33a7ivgjf9tWNGOZz+fbElBf7OuSZy0hsBU?=
+ =?us-ascii?Q?FaS3LIDh+Se3GfmZX0Lw39Ij9BzNyV5N3avVzpC++s89vTP1HLZmRYf6vAvw?=
+ =?us-ascii?Q?aeSBerc=3D?=
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230037)(82310400023)(376011)(1800799021)(36860700010); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jun 2024 12:59:25.8974 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ec10487c-c1ba-4e30-da7e-08dc91f1fac8
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF0000231F.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR12MB4431
+Received-SPF: permerror client-ip=2a01:111:f403:2416::600;
+ envelope-from=sai.pavan.boddu@amd.com;
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.145,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,137 +189,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3E8VSFzETlja
+X-TUID: O/GMw+BtUt5z
 
-On 6/20/24 4:02 PM, Zheyu Ma wrote:
-> ASan detected a global-buffer-overflow error in the aspeed_gpio_read()
-> function. This issue occurred when reading beyond the bounds of the
-> reg_table.
-> 
-> To enhance the safety and maintainability of the Aspeed GPIO code, this commit
-> introduces a reg_table_count member to the AspeedGPIOClass structure. This
-> change ensures that the size of the GPIO register table is explicitly tracked
-> and initialized, reducing the risk of errors if new register tables are
-> introduced in the future.
-> 
-> Reproducer:
-> cat << EOF | qemu-system-aarch64 -display none \
-> -machine accel=qtest, -m 512M -machine ast1030-evb -qtest stdio
-> readq 0x7e780272
-> EOF
-> 
-> ASAN log indicating the issue:
-> ==2602930==ERROR: AddressSanitizer: global-buffer-overflow on address 0x55a5da29e128 at pc 0x55a5d700dc62 bp 0x7fff096c4e90 sp 0x7fff096c4e88
-> READ of size 2 at 0x55a5da29e128 thread T0
->      #0 0x55a5d700dc61 in aspeed_gpio_read hw/gpio/aspeed_gpio.c:564:14
->      #1 0x55a5d933f3ab in memory_region_read_accessor system/memory.c:445:11
->      #2 0x55a5d92fba40 in access_with_adjusted_size system/memory.c:573:18
->      #3 0x55a5d92f842c in memory_region_dispatch_read1 system/memory.c:1426:16
->      #4 0x55a5d92f7b68 in memory_region_dispatch_read system/memory.c:1459:9
->      #5 0x55a5d9376ad1 in flatview_read_continue_step system/physmem.c:2836:18
->      #6 0x55a5d9376399 in flatview_read_continue system/physmem.c:2877:19
->      #7 0x55a5d93775b8 in flatview_read system/physmem.c:2907:12
-> 
-> Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
+Added the supported device list and an example command.
 
-Applied to aspeed-next.
+Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
+---
+ MAINTAINERS                   |  1 +
+ docs/system/arm/xlnx-zynq.rst | 47 +++++++++++++++++++++++++++++++++++
+ docs/system/target-arm.rst    |  1 +
+ 3 files changed, 49 insertions(+)
+ create mode 100644 docs/system/arm/xlnx-zynq.rst
 
-Thanks,
-
-C.
-
-
-> ---
-> Changes in v4:
-> - Change the variable name to 'reg_table_count'
-> - Change the 'reg_table_count' type to unsigned
-> Changes in v3:
-> - Add the reproducer
-> ---
->   hw/gpio/aspeed_gpio.c         | 17 +++++++++++++++++
->   include/hw/gpio/aspeed_gpio.h |  1 +
->   2 files changed, 18 insertions(+)
-> 
-> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> index c1781e2ba3..6474bb8de5 100644
-> --- a/hw/gpio/aspeed_gpio.c
-> +++ b/hw/gpio/aspeed_gpio.c
-> @@ -559,6 +559,12 @@ static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
->           return debounce_value;
->       }
->   
-> +    if (idx >= agc->reg_table_count) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: idx 0x%" PRIx64 " out of bounds\n",
-> +                      __func__, idx);
-> +        return 0;
-> +    }
-> +
->       reg = &agc->reg_table[idx];
->       if (reg->set_idx >= agc->nr_gpio_sets) {
->           qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
-> @@ -785,6 +791,12 @@ static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t data,
->           return;
->       }
->   
-> +    if (idx >= agc->reg_table_count) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: idx 0x%" PRIx64 " out of bounds\n",
-> +                      __func__, idx);
-> +        return;
-> +    }
-> +
->       reg = &agc->reg_table[idx];
->       if (reg->set_idx >= agc->nr_gpio_sets) {
->           qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
-> @@ -1117,6 +1129,7 @@ static void aspeed_gpio_ast2400_class_init(ObjectClass *klass, void *data)
->       agc->nr_gpio_pins = 216;
->       agc->nr_gpio_sets = 7;
->       agc->reg_table = aspeed_3_3v_gpios;
-> +    agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
->   }
->   
->   static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-> @@ -1127,6 +1140,7 @@ static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
->       agc->nr_gpio_pins = 228;
->       agc->nr_gpio_sets = 8;
->       agc->reg_table = aspeed_3_3v_gpios;
-> +    agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
->   }
->   
->   static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
-> @@ -1137,6 +1151,7 @@ static void aspeed_gpio_ast2600_3_3v_class_init(ObjectClass *klass, void *data)
->       agc->nr_gpio_pins = 208;
->       agc->nr_gpio_sets = 7;
->       agc->reg_table = aspeed_3_3v_gpios;
-> +    agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
->   }
->   
->   static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
-> @@ -1147,6 +1162,7 @@ static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
->       agc->nr_gpio_pins = 36;
->       agc->nr_gpio_sets = 2;
->       agc->reg_table = aspeed_1_8v_gpios;
-> +    agc->reg_table_count = GPIO_1_8V_REG_ARRAY_SIZE;
->   }
->   
->   static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
-> @@ -1157,6 +1173,7 @@ static void aspeed_gpio_1030_class_init(ObjectClass *klass, void *data)
->       agc->nr_gpio_pins = 151;
->       agc->nr_gpio_sets = 6;
->       agc->reg_table = aspeed_3_3v_gpios;
-> +    agc->reg_table_count = GPIO_3_3V_REG_ARRAY_SIZE;
->   }
->   
->   static const TypeInfo aspeed_gpio_info = {
-> diff --git a/include/hw/gpio/aspeed_gpio.h b/include/hw/gpio/aspeed_gpio.h
-> index 904eecf62c..90a12ae318 100644
-> --- a/include/hw/gpio/aspeed_gpio.h
-> +++ b/include/hw/gpio/aspeed_gpio.h
-> @@ -75,6 +75,7 @@ struct AspeedGPIOClass {
->       uint32_t nr_gpio_pins;
->       uint32_t nr_gpio_sets;
->       const AspeedGPIOReg *reg_table;
-> +    unsigned reg_table_count;
->   };
->   
->   struct AspeedGPIOState {
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 951556224a1..2f06febc676 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1033,6 +1033,7 @@ F: hw/adc/zynq-xadc.c
+ F: include/hw/misc/zynq_slcr.h
+ F: include/hw/adc/zynq-xadc.h
+ X: hw/ssi/xilinx_*
++F: docs/system/arm/xlnx-zynq.rst
+ 
+ Xilinx ZynqMP and Versal
+ M: Alistair Francis <alistair@alistair23.me>
+diff --git a/docs/system/arm/xlnx-zynq.rst b/docs/system/arm/xlnx-zynq.rst
+new file mode 100644
+index 00000000000..ade18a3fe13
+--- /dev/null
++++ b/docs/system/arm/xlnx-zynq.rst
+@@ -0,0 +1,47 @@
++Xilinx Zynq board (``xilinx-zynq-a9``)
++======================================
++The Zynq 7000 family is based on the AMD SoC architecture. These products
++integrate a feature-rich dual or single-core Arm Cortex-A9 MPCore based
++processing system (PS) and AMD programmable logic (PL) in a single device.
++
++More details here:
++https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/Zynq-7000-SoC-Technical-Reference-Manual
++
++QEMU xilinx-zynq-a9 board supports following devices:
++    - A9 MPCORE
++        - cortex-a9
++        - GIC v1
++        - Generic timer
++        - wdt
++    - OCM 256KB
++    - SMC SRAM@0xe2000000 64MB
++    - Zynq SLCR
++    - SPI x2
++    - QSPI
++    - UART
++    - TTC x2
++    - Gigabit Ethernet Controller x2
++    - SD Controller x2
++    - XADC
++    - Arm PrimeCell DMA Controller
++    - DDR Memory
++    - USB 2.0 x2
++
++Running
++"""""""
++Direct Linux boot of a generic ARM upstream Linux kernel:
++
++.. code-block:: bash
++
++  $ qemu-system-aarch64 -M xilinx-zynq-a9 \
++        -dtb zynq-zc702.dtb  -serial null -serial mon:stdio \
++        -display none  -m 1024 \
++        -initrd rootfs.cpio.gz -kernel zImage
++
++For configuring the boot-mode provide the following on the command line:
++
++.. code-block:: bash
++
++   -machine boot-mode=qspi
++
++Supported values are jtag, sd, qspi, nor.
+diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+index 870d30e3502..7b992722846 100644
+--- a/docs/system/target-arm.rst
++++ b/docs/system/target-arm.rst
+@@ -109,6 +109,7 @@ undocumented; you can get a complete list by running
+    arm/virt
+    arm/xenpvh
+    arm/xlnx-versal-virt
++   arm/xlnx-zynq
+ 
+ Emulated CPU architecture support
+ =================================
+-- 
+2.34.1
 

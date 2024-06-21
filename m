@@ -1,111 +1,112 @@
-Received: by 2002:a17:505:2e08:b0:1bd8:8c49:4f6d with SMTP id ya8csp203715njc;
-        Fri, 21 Jun 2024 08:29:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVTTQoN5yAxQ4WV6GfgFxtdY5uS6AobQ3viVaKw3R3LiwtiNaapoCsj4OpVnH+cCiDCHxYMa+pnqRyLvtBz98MWLffkwqqE
-X-Google-Smtp-Source: AGHT+IG9HKsKJNiZMBZQdTtgz+7uQV24va9PzkBnD61pOJa31Y6s5wGDTBEXd+Io0ZU4xbqev21D
-X-Received: by 2002:a05:6870:a54b:b0:25c:c73a:dce6 with SMTP id 586e51a60fabf-25cc73ae05cmr4499473fac.47.1718983786622;
-        Fri, 21 Jun 2024 08:29:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1718983786; cv=none;
+Received: by 2002:a17:505:2e08:b0:1bd8:8c49:4f6d with SMTP id ya8csp208139njc;
+        Fri, 21 Jun 2024 08:43:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWxiOLhwj81WUpZrSfMNL8XQFXMU4gEvvm86dMrN8aAuJlnUrmtKOpgoLVJ+GdbsamLiP2aYni/fPAiYyFENGCXZ2onSp9m
+X-Google-Smtp-Source: AGHT+IFJS4S3dJgTK17tkgSZWYoeFMOJcfgkB7gBfQXkri21ymoEtrwMDhg0jQGoRhmFAZGKXFj/
+X-Received: by 2002:a05:6214:162b:b0:6b4:fd84:1cdf with SMTP id 6a1803df08f44-6b501e1d9dbmr84317036d6.18.1718984598161;
+        Fri, 21 Jun 2024 08:43:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1718984598; cv=none;
         d=google.com; s=arc-20160816;
-        b=kOz7ZorlA5yCMfqlc276O0Gqm22rRXGqEDfYCuRpe8fIBjo5FMMCeJaQi0XPCw/92q
-         IfLZriY21YyR9eTXtEmhnnt88cfxhLf8hyaXuFeB+/7YjeoZ0JAaLt7XZqzupn4JHraU
-         6DH6G6CnxB/94fBHvfwycrChW+hD61yPY+NiVjsJMdFeVuIA/gdq9VVa4FeBPv4hkeDB
-         Fv1NIuXi8IeCGDaSO6IoUi7vd3Nl3Qq6+e2jd3IHiuP0jzBTX4Na1qABGD7LYRz2SlUv
-         IEA0OPMbWAH0AwOvFANIEVng4QiLuZVvP4kQUacJ55k28T1StTPtJ2q5YJJ37JHY1B6Z
-         sIUw==
+        b=dFn65jN6OPVkLNRel+cQag4cGm2IwKTCQ6vrFPE5dSO4Cb83Uz8sHgfokKQ+bPDPS/
+         WSEC91T3/2w8fG71huxubPucDLX56GFnLcqFVKcgmsIAHid3FL+2xrgDSRyJrcWv279U
+         SMACVr6t1bewxpaQgB6+Nq4SDdFDo95WtL71U9GVR6Hs3XTu8XlEp1GIPssbaICdLm3Y
+         cAY16Opw0hXjkXgZ71fYcOQH5FRNV7dXeARz3CtZFvwT1i1b4k0cc7Ob+Vlr9PaTCaZf
+         ZWsKgyzfGb0eHSAtThO5H4YXXwAPLI8M9JSylrnYYcSAkpwLIHuLbvDFQNINoxr8ZaIp
+         O3Hw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=fK45Tgn7t9B001rhEjJTjEdSoKL81n2m9smFzmhqBJA=;
+        bh=IXSj+NNNgXINRu4ZC/RcR1zjLwZ2WpiPQ2GU5bGPi0c=;
         fh=sPNB+wMByEmOmv0NA5LZ0sZcEjWhHctCq8XojzuPPiI=;
-        b=bEA6sJvdcREPu8DIkY5rl8044wBFyNE+tPTdjbclmVGRVJXUbV4V+C37sWUYRpQ/0F
-         qF/Vz0Uc4DKdZMfMGr60C4NaEt188OXYy33aqck9dgKtWnDPWveGiTUYSr0aSpAAKJXO
-         LiSVvKtwMWDi/01CnldmH9Hpg7W2dbUw2SeVyomK+iulg5Ce/Rzwe1FE9tDXqu0TnTqK
-         bLq+5veeyO+Fjdw55e78i6XjBUem32eenSIRqv19mhs35EmiPP5HZXDodhoothFk62FB
-         AmuLDHBWdQOqRYMlNOan9k0o3zIZIjFI02+4IrGhxoJV1tOeh4ea+6Z24g20lCW3Kgcc
-         z9Cw==;
+        b=VbP5omHPfM8/xM/9LqXNgIzNWjlpD4VW1RljNre3NB4AoXVmp7LiHFzoacsQPP6Tv+
+         xsEemoG8bXBLfNwjVBBCJXAi3Dqp4LXxTOGina909VKYxPZfKA2NVYlLYB+JOyJZUqKy
+         GoYF0rueEbHxbfYhh/j/TY2gy+2PwiAHucHKKny0ZU3I1XtWZRrGBYehaFNVXfe2fMa8
+         Jar4vOX5DWAaM8XMPLaFlqQhRe0mzq35fWYAhbCXUpClrjulXS/BmgiplbO/KS12Zwpg
+         3iPJ87chokEzjXPhPGgNFqmO7CPkbJy8nXSBT+mAw05LHlG6YImj7KvJG0aRy9An7oao
+         LUZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f2CgUMTX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=luICIPFM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79bce941351si204741285a.607.2024.06.21.08.29.46
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b51ef67482si18513666d6.611.2024.06.21.08.43.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Jun 2024 08:29:46 -0700 (PDT)
+        Fri, 21 Jun 2024 08:43:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=f2CgUMTX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=luICIPFM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKgCR-0003Bm-6Q; Fri, 21 Jun 2024 11:29:15 -0400
+	id 1sKgPq-0001v9-S8; Fri, 21 Jun 2024 11:43:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sKgCP-0003BL-TA
- for qemu-arm@nongnu.org; Fri, 21 Jun 2024 11:29:14 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ id 1sKgPi-0001mo-Mo
+ for qemu-arm@nongnu.org; Fri, 21 Jun 2024 11:42:59 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sKgCO-0001bV-9E
- for qemu-arm@nongnu.org; Fri, 21 Jun 2024 11:29:13 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-57d06101d76so2286202a12.3
- for <qemu-arm@nongnu.org>; Fri, 21 Jun 2024 08:29:11 -0700 (PDT)
+ id 1sKgPf-0004Hq-H3
+ for qemu-arm@nongnu.org; Fri, 21 Jun 2024 11:42:58 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-57d044aa5beso2429960a12.2
+ for <qemu-arm@nongnu.org>; Fri, 21 Jun 2024 08:42:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718983751; x=1719588551; darn=nongnu.org;
+ d=linaro.org; s=google; t=1718984574; x=1719589374; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=fK45Tgn7t9B001rhEjJTjEdSoKL81n2m9smFzmhqBJA=;
- b=f2CgUMTXv9vgIkUExfXUtdVgoEIn6+zOLjaeKi/T1rHktO0FGq5HHr++eY0hW1ZT9J
- 9dvVHmcaHGC0wYjmkna+dnxqSljIugyG8vtRTpaL1FcKGjeX6l8ZsBUXoCQH3lIImzxk
- 2+iLDn/j2exe90b7kwP6iHitkHJFim90yc39Elc2LRFxBmw55AZUpaEcgTPVhvfjGLEt
- zTl5iK8FmkE8kWcDrsRUkcDBALHyJii7muXsVOh0cT6NLBVET/xuWMyjs0vxtliqfJI7
- vRA3KDS6EQN70bYIyRKiVuoHyXTj+IP5Ogv83c1HLcrwKcYccyJQtMhRoATvnyxshzGs
- Xb9A==
+ bh=IXSj+NNNgXINRu4ZC/RcR1zjLwZ2WpiPQ2GU5bGPi0c=;
+ b=luICIPFMXSpNp/rxdbgnv6s+C3wvnzvyjDTWLWv/JS73O6qGQRAeIgRPqdo0BNCL0G
+ GJpVoZ8AHB6xRMygjWB4KWnUpwkUmb42xgOrAYF2rskjt2puiD8eQnd4nqOyrBqbDvw6
+ FibKCgjDw8n+b+eTDvv0sJJs+9BRnLYT0ws/tO/kwWXk4un8nUCSfb/A3cSouU4lyi4S
+ uyKb0rdXo4EL4UG86Gm2u8VCbd8Iw19vOrADLUXR2AYeWHKseKBSVad9/0m8N0Y9cBSm
+ qJoZ5STv2sgCOQHxIfZfCZ9A+u7Xg3mZes8MKPAdasT4t5dOeXPpaKoBUpjcnCpPnWoG
+ /5qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718983751; x=1719588551;
+ d=1e100.net; s=20230601; t=1718984574; x=1719589374;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=fK45Tgn7t9B001rhEjJTjEdSoKL81n2m9smFzmhqBJA=;
- b=tnhWN/fpeiaVQzh8E/N7x01zhJGCgfF5xx7tk9AMxfjQyZP/+bk7smsNS/iE1/bl1N
- xE2F+gDJFB1idpAwuEizesBNug2vEwOJlnDrWwM3sB81V974EkWmLvAgrLEVfo5RRkEg
- /yYAJxelr+dHQhGuqC6cBdDDflMWWXL5G/yxk1ns7O/yWyLtDknRrhfhKUXtvUqEEX8w
- bPbI1RYqup7mV2wAlvYz0rKeLrBJnYPcNLkPeXo34JsFEsL83oiW3WlKQZpvldxXHRxV
- YtnlVjA8vDfRk92ZC5B1UDZ40kEUvQyYlNdIXqmekQqWWvsWN5Llo3bwgMJtBtxPCJ2P
- xyCg==
-X-Gm-Message-State: AOJu0YyltrZP0I+BKVaa2nvTx95rci0pON2pM575kihl8/F5c1ogHzNq
- rNItDfOAPrFZ+Ikvk4aguuNixU1lu4LXFIgkjcuUxg54puRWp9FTkBkIZ3Zh/NEsGFLPNr2Hj1n
- Ipq/czlZSKcTiouQ5ckTz4GP+8LkUaQpETL5BjQ==
-X-Received: by 2002:a50:cd85:0:b0:57a:322c:b1a5 with SMTP id
- 4fb4d7f45d1cf-57d07ede1demr5571580a12.38.1718983750664; Fri, 21 Jun 2024
- 08:29:10 -0700 (PDT)
+ bh=IXSj+NNNgXINRu4ZC/RcR1zjLwZ2WpiPQ2GU5bGPi0c=;
+ b=RaOVvc5eIZgzyElafCH7xINHpyrOdkTStXV7m7LsMLg8Q/qVIoajtUHZHNPj7sc6Cx
+ x/2517KpuZb8YOw4lXZXvd2qdjM8hc80AMMnR/wYC2jLJahnCkU0xxXc5Q5YVZm5NmrK
+ OIueUKo4qAeW/IpZkhxMDODRaueI0+GJMAzhcJyY0fKr4euOSVrfCaBNjzT0q1DYb6CR
+ 8Rg5Gp+m9+IuqlfRpX7ZzEqie1Rrx1KTyAeIKl1qVpI90NbJOtXLTUyGgArnSeJkHGQ9
+ +kSjohIZid/eqkia5y6GuSE+OftVaYlxhPEMdgcwWm5omI0sopAPNpw620x7Yg34JfTk
+ RWbw==
+X-Gm-Message-State: AOJu0Yy9aRvW8lWC61ABGgCi49mwLOKMuHyZLqYUyU3qJVtsmnqZt7aZ
+ 3L7CGKnbeUqEWOjhSteJQWksSf5cNEYoXn6A9w6xVdGeE8/M9CXe3kontHMGoK0WR7hMxPbMusf
+ fXGE8ZYZcOPPffsDmMVc+iOlw1LxwGA4AJjxk1w==
+X-Received: by 2002:a50:8acf:0:b0:57c:5764:15f1 with SMTP id
+ 4fb4d7f45d1cf-57d07eaab6fmr4716563a12.29.1718984573959; Fri, 21 Jun 2024
+ 08:42:53 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240614093026.328271-1-sai.pavan.boddu@amd.com>
-In-Reply-To: <20240614093026.328271-1-sai.pavan.boddu@amd.com>
+ <20240614093026.328271-2-sai.pavan.boddu@amd.com>
+In-Reply-To: <20240614093026.328271-2-sai.pavan.boddu@amd.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 21 Jun 2024 16:28:59 +0100
-Message-ID: <CAFEAcA-YXi5EK5opz6pPX_70REcciWXoX3reDqRDRtiz4DaqZg@mail.gmail.com>
-Subject: Re: [PATCH RFC 0/3] Add DCC uart console support
+Date: Fri, 21 Jun 2024 16:42:43 +0100
+Message-ID: <CAFEAcA-A8xuJza+B8K3-6go=BBY+n9ruy7_FpEMTZKqKFPn+3w@mail.gmail.com>
+Subject: Re: [PATCH RFC 1/3] target/arm: Add dcc uart support
 To: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, francisco.iglesias@amd.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,28 +121,219 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SmkhX125ntqk
+X-TUID: vlxqp1FGVZHZ
 
 On Fri, 14 Jun 2024 at 10:30, Sai Pavan Boddu <sai.pavan.boddu@amd.com> wrote:
 >
-> This patch series attaches a chardev to  arm Debug Communication channel registers,
-> As each cpu has it own DBGDTRTX/RX register just tried to hook each cpu
-> with chardev iff we find a chardev with id "dcc<cpu-id>".
+> DCC is a debug port to transfer some data between debugger and
+> processor, we are using this feature to connect a chardev device.
+> Chardev frontends should be named as "dcc<cpu-index>" inorder to connect
+> to this interface.
 >
-> ex:
->     Below chardev switch would be connected to A53-0.
+> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+> ---
+>  target/arm/cpu.h       | 11 +++++
+>  target/arm/internals.h |  4 ++
+>  target/arm/debug-dcc.c | 99 ++++++++++++++++++++++++++++++++++++++++++
+>  target/arm/helper.c    |  3 ++
+>  target/arm/meson.build |  1 +
+>  5 files changed, 118 insertions(+)
+>  create mode 100644 target/arm/debug-dcc.c
 >
->     ./qemu-system-aarch64 -M xlnx-zcu102 -kernel u-boot-dtb.bin
->       -dtb zynqmp-zcu102-rev1.1.d -display none -m 2G
->       -chardev stdio,id=dcc0
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 3841359d0f..6b3cb8e70e 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -30,6 +30,8 @@
+>  #include "qapi/qapi-types-common.h"
+>  #include "target/arm/multiprocessing.h"
+>  #include "target/arm/gtimer.h"
+> +#include "chardev/char.h"
+> +#include "chardev/char-fe.h"
+>
+>  #ifdef TARGET_AARCH64
+>  #define KVM_HAVE_MCE_INJECTION 1
+> @@ -523,6 +525,11 @@ typedef struct CPUArchState {
+>
+>          /* NV2 register */
+>          uint64_t vncr_el2;
+> +        /*
+> +         * Debug Trace regsiters
+> +         */
+> +        uint32_t dbgdtr_tx;
+> +        uint32_t dbgdtr_rx;
+>      } cp15;
+>
+>      struct {
+> @@ -1097,6 +1104,9 @@ struct ArchCPU {
+>
+>      /* Generic timer counter frequency, in Hz */
+>      uint64_t gt_cntfrq_hz;
+> +
+> +    /* dcc chardev */
+> +    CharBackend dcc;
+>  };
+>
+>  typedef struct ARMCPUInfo {
+> @@ -2388,6 +2398,7 @@ enum arm_features {
+>       * CPU types added in future.
+>       */
+>      ARM_FEATURE_BACKCOMPAT_CNTFRQ, /* 62.5MHz timer default */
+> +    ARM_FEATURE_DCC,
 
-This is neat -- I've thought before that it would be nice to be able
-to use the DCC as a chardev destination, given that Linux has support
-for earlycon-over-DCC. The thing that put me off was the question
-of what the command-line syntax for setting it up ought to be, though.
-I'm not sure we want "look for the chardev with a particular ID string"
-but I don't know what existing in-tree precedent we have for this
-kind of thing.
+Generally speaking we want to avoid adding new ARM_FEATURE bits
+if there's some way to identify the presence of the feature via
+the ID registers. In this case, the debug registers always exist
+as long as we have ARM_FEATURE_V7, I think. So I think we should
+always provide this as part of the registers we define in
+debug_cp_reginfo[] in debug_helper.c, rather than having a
+separate feature bit.
+
+>  };
+>
+>  static inline int arm_feature(CPUARMState *env, int feature)
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 11b5da2562..2fa797c5df 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -1778,4 +1778,8 @@ uint64_t gt_get_countervalue(CPUARMState *env);
+>   * and CNTVCT_EL0 (this will be either 0 or the value of CNTVOFF_EL2).
+>   */
+>  uint64_t gt_virt_cnt_offset(CPUARMState *env);
+> +/*
+> + * Initialise Coresight Debug interface
+> + */
+> +void arm_dcc_init(ARMCPU *cpu);
+>  #endif
+> diff --git a/target/arm/debug-dcc.c b/target/arm/debug-dcc.c
+> new file mode 100644
+> index 0000000000..9144b54994
+> --- /dev/null
+> +++ b/target/arm/debug-dcc.c
+> @@ -0,0 +1,99 @@
+> +#include "qemu/osdep.h"
+> +#include "cpu.h"
+> +#include "internals.h"
+> +#include "cpregs.h"
+> +#include "chardev/char-fe.h"
+> +
+> +#define MDCCSR_EL0_RXFULL_MASK (1 << 30)
+> +#define MDCCSR_EL0_TXFULL_MASK (1 << 29)
+> +
+> +static void debug_dcc_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> +                        uint64_t value)
+> +{
+> +    ARMCPU *cpu = ri->opaque;
+> +    env->cp15.dbgdtr_tx = value;
+> +
+> +    if (qemu_chr_fe_get_driver(&cpu->dcc)) {
+
+This is a weird function to have to call. Generally we set things
+up so that you don't need to care if there's actually anything
+connected to the chardev -- qemu_chr_fe_write() and friends will
+do nothing if there's no chardev attached to this backend.
+
+> +        /*
+> +         * Usually dcc is used for putc/getc calls which expect only
+> +         * 1 byte from external debugger.
+> +         * TODO: This needs to be generalized for other use-cases.
+> +         */
+
+Is this referring to the way that the DCC is defined as a 64-bit
+(or 32-bit for AArch32) channel but we're ignoring all but the bottom
+8 bits of the values?
+
+> +        qemu_chr_fe_write_all(&cpu->dcc, (uint8_t *)&env->cp15.dbgdtr_tx, 1);
+
+The DCC has flow-control flags so we don't need to use _write_all, and
+generally we should avoid that in new code because it might block.
+
+> +    }
+> +}
+> +
+> +static uint64_t debug_dcc_read(CPUARMState *env, const ARMCPRegInfo *ri)
+> +{
+> +    uint32_t ret = 0;
+> +    ARMCPU *cpu = ri->opaque;
+> +
+> +    if (env->cp15.mdscr_el1 & MDCCSR_EL0_RXFULL_MASK) {
+> +        ret = env->cp15.dbgdtr_rx;
+> +        env->cp15.dbgdtr_rx = 0;
+> +        env->cp15.mdscr_el1 &= ~MDCCSR_EL0_RXFULL_MASK;
+> +        qemu_chr_fe_accept_input(&cpu->dcc);
+> +    }
+> +    return ret;
+> +}
+> +
+> +static const ARMCPRegInfo dcc_cp_reginfo[] = {
+> +    /* DBGDTRTX_EL0/DBGDTRRX_EL0 depend on direction */
+> +    { .name = "DBGDTR_EL0", .state = ARM_CP_STATE_AA64,
+> +      .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 5, .opc2 = 0,
+> +      .access = PL0_RW, .writefn = debug_dcc_write,
+> +      .readfn = debug_dcc_read,
+> +      .type = ARM_CP_OVERRIDE, .resetvalue = 0 },
+> +    /* DBGDTRTXint/DBGDTRRXint depend on direction */
+> +    { .name = "DBGDTRint", .state = ARM_CP_STATE_AA32, .cp = 14,
+> +      .opc1 = 0, .crn = 0, .crm = 5, .opc2 = 0,
+> +      .access = PL0_RW, .writefn = debug_dcc_write,
+> +      .readfn = debug_dcc_read,
+> +      .type = ARM_CP_OVERRIDE, .resetvalue = 0 },
+> +};
+
+Other registers that need updates for a real DCC:
+ * MDCCSR_EL0
+ * OSDTRRX_EL1
+ * OSDTRTX_EL1
+
+(all of which we currently have dummy versions of in
+debug_helper.c).
+
+> +
+> +
+> +static int dcc_chr_can_read(void *opaque)
+> +{
+> +    ARMCPU *cpu = opaque;
+> +    CPUARMState *env = &cpu->env;
+> +
+> +    if (!(env->cp15.mdscr_el1 & MDCCSR_EL0_RXFULL_MASK)) {
+> +        /*
+> +         * Usually dcc is used for putc/getc calls which expect only
+> +         * 1 byte from external debugger.
+> +         * TODO: This needs to be generalized for other use-cases.
+> +         */
+> +        return 1;
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> +static void dcc_chr_read(void *opaque, const uint8_t *buf, int size)
+> +{
+> +    ARMCPU *cpu = opaque;
+> +    CPUARMState *env = &cpu->env;
+> +
+> +    env->cp15.dbgdtr_rx = *buf;
+> +    env->cp15.mdscr_el1 |= MDCCSR_EL0_RXFULL_MASK;
+> +}
+> +
+> +void arm_dcc_init(ARMCPU *cpu)
+> +{
+> +    Chardev *chr;
+> +    char *dcc_name;
+> +    CPUState *p = CPU(cpu);
+> +
+> +    dcc_name = g_strdup_printf("dcc%d", p->cpu_index);
+> +    chr = qemu_chr_find(dcc_name);
+> +    define_arm_cp_regs_with_opaque(cpu, dcc_cp_reginfo, cpu);
+> +    if (chr) {
+> +        qemu_chr_fe_init(&cpu->dcc, chr, NULL);
+> +        qemu_chr_fe_set_handlers(&cpu->dcc,
+> +                      dcc_chr_can_read,
+> +                      dcc_chr_read,
+> +                      NULL, NULL, cpu, NULL, true);
+> +    }
+> +    g_free(dcc_name);
+> +}
 
 thanks
 -- PMM

@@ -1,285 +1,307 @@
-Received: by 2002:a17:505:2e08:b0:1bd8:8c49:4f6d with SMTP id ya8csp164037njc;
-        Fri, 21 Jun 2024 05:59:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXtjt/Mcrn/UoOfp295Faz1prF8+4Rc8rTPh7+e30pA0TSh1JgiWkkqcySdT0ovMFA2HuGESDeu+PU365kzmCXV8Pz7dsfP
-X-Google-Smtp-Source: AGHT+IH7buwfXWu8ixdNaCb5yy7+eIUN1Zz6voNYBWt2cPLal3fVxRGzxHtnar5ApY0qtup0nE86
-X-Received: by 2002:a05:620a:258c:b0:795:9eb8:31e with SMTP id af79cd13be357-79bb3e58212mr929609585a.45.1718974786721;
-        Fri, 21 Jun 2024 05:59:46 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1718974786; cv=pass;
+Received: by 2002:a05:7022:264e:b0:7e:eb73:5b3b with SMTP id er14csp262195dlb;
+        Fri, 21 Jun 2024 02:24:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUjnadx9obVu38kyLJ98AGWKTiiZbAP+SiSlqTaz4V+WCfJpwuBqsqZTgHQAT0qH8WXrFUczaEvyr4kxryAIJz8UZo/xhdc
+X-Google-Smtp-Source: AGHT+IFwNvTDQJ/W5ISGGKZKsLuB5jM87nI/2myZNWEVb0ZlyuMShoW0u3AQIwKX+S7edeEISlQG
+X-Received: by 2002:a05:6214:a88:b0:6b4:fa03:ab0b with SMTP id 6a1803df08f44-6b501e1fdf3mr76255216d6.17.1718961853094;
+        Fri, 21 Jun 2024 02:24:13 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1718961853; cv=pass;
         d=google.com; s=arc-20160816;
-        b=gBkrtpgSPkO5Ca/sKa8lg3b9CPdu/Y7BdpukHwsXoKXgbVuT8u14Cla9N9044BS/zW
-         ZI332jKB5MUSgh0BrhNyBHTulOCHDzWWLpXr3ha+pYWkv82cfiJLzHuczhMN1bux1Ux9
-         1bR4mTOXDBoxYubS6g/o0rYAYQ2HIm+MOyaHRSoe+zooxRBAokXpWm1POYbu7z2hPTrT
-         70JcWLkPjVshJ331JXo/HeSEudQiNGZNH3Fn8qLhTFnQKNlc+/LjI6QM/BbrWh5sAgXN
-         pezFG0fLXCoUUkAVahLnvNqPXCSlj6L5u6F4gy22wD6YpTovN+dekIDKjIkmHECzuXVC
-         ZjFw==
+        b=n6S3NYutx/eo2PE/sYkyoFuWYaCrqSjG1vaeY+jeUd+P5dEEwCbg+KSujy+//rOYO+
+         W7ogJb9e6neEeifSOCTXyGKASZx9WQ9jJJmGtFBh/o4AZF1AWUSbTPS/Kd6/GAuo6mRz
+         o7a3TxIo/RLLtHBn9TXGe2ygsfaTnw9/bP6+yIH9ZTNgUXNBcS+fL0cHKQvOVvvQUMnE
+         s+UUsknRLuX8j1xsSiEmPxAk4i/BtrimTPkclP6aTBEb+FcIj/lVUAthVxP6RkzIQ7V1
+         FYq/fX2YYmd12qNwPsNJAFmfhiqM9OyzXHbg6llzmjwvVdEv25dEnkT7Dif7BgKZU2s6
+         zV1w==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=vsbUIP9Ok9jpGdpzLD4Xs/YbIUf6TMu4/snoy+PHiAU=;
-        fh=BGnFiSt73hWTbeJdnzK7GKfW6i3fzbpv5HN2zjq8OLU=;
-        b=JYbdInEQJeyFGL+0K2+iLa6HACr9i4u8HdNbbHyTuYt9awRzPt5MxEFagdVhh9kjzz
-         99lwGspZGLgW0fwA3qzZswWuyFINb+HBWIGq8H7+9XJQ/aWzfm1Rowq0oxypC2t57ue8
-         L+7z4QMfxS+0826KIo1BRi/HADwKlKV4+fMApjXUgron7XXUlPVf68fGMEWJ1SutNEam
-         DdXVOZf1Tr6W3v00Ticjr96EzKYYW2EaVFqIg8weq+5ARVYF6yN+Tjp0eVz/HrUu2tU7
-         mrwj9uW+hP1aGIQ+MGO4k28k9b8LvBZaD3ZlBGJjUnXnkRAUapEp7SX0I83mD/uIb1h5
-         hj5A==;
+         :list-unsubscribe:list-id:precedence:mime-version:in-reply-to
+         :content-disposition:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=e2lLoTnw648KvbZps9FujgHaaROazEzHTs/AYYbHWlA=;
+        fh=eoNqbm/i/T5aneBYge5NH6cVCHXLWd3mPo3TnElh0x4=;
+        b=xiV/dRl1/Ilem9zM6UyVHHAmfbZNd+MzuYdEMARcvxwgpMnfuU8EEH38UfA9scxQlt
+         0ckoNFZXkr255+tMYpg73YpQ/psWQj3aGLHDijYTLSOhfhmtPKuTHkzx8EhTsKX6XwJI
+         30lpylnLMsHITsAojh6/ZmoHgD0Cei4mLiesSypSHOHP9bLufQdq4Qg52x2mFeh12+cP
+         q5oBdeTZ3CbQQqNhdGrgn9NuaI16tpqS5SxbKIWvtVA3vEW8Lt2laJGMU22V7C+unC/c
+         hF3XcPA36NVlJV/VE72Oje/kzjWOvMaZcow6rC2eu5hYuJaYHxuOQfYuM3xvtQ/BeiPr
+         SsTA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=3quZJ9gS;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=fHQjyujS;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79bce881b55si179773185a.96.2024.06.21.05.59.46
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b51ef678ccsi11433106d6.598.2024.06.21.02.24.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Jun 2024 05:59:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Jun 2024 02:24:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@amd.com header.s=selector1 header.b=3quZJ9gS;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=fHQjyujS;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKdra-00013U-Kd; Fri, 21 Jun 2024 08:59:35 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sKaUf-0003ZN-UJ; Fri, 21 Jun 2024 05:23:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
- id 1sKdrZ-00012v-Mv; Fri, 21 Jun 2024 08:59:33 -0400
-Received: from mail-co1nam11on20600.outbound.protection.outlook.com
- ([2a01:111:f403:2416::600]
- helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <francisco.iglesias@amd.com>)
+ id 1sKaUe-0003Yd-8y; Fri, 21 Jun 2024 05:23:40 -0400
+Received: from mail-dm6nam10on20628.outbound.protection.outlook.com
+ ([2a01:111:f400:7e88::628]
+ helo=NAM10-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sai.pavan.boddu@amd.com>)
- id 1sKdrX-00013Q-B2; Fri, 21 Jun 2024 08:59:33 -0400
+ (Exim 4.90_1) (envelope-from <francisco.iglesias@amd.com>)
+ id 1sKaUc-0005r0-Cn; Fri, 21 Jun 2024 05:23:39 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dW+dEkFKzQDI9a4/W7CgxfjwiQHMc0BbYSrxvIUvWaqanFd0djwIg7C5FOAs5MfOb5zxr58nTcyjvbK7D/RyY/Wt1RPasLF1VWFJrA9+7NgrifSkN6j/7Nz2r5LHYuUNRi45+j8ZnCLiuHe0/TMbAGMdPvMXjDjg0KsvTJhhp/kScOuqPI+Mw4nuMjZmbXEh/+SuF78989wUxA/nBv3kCc1Eyv/8rBzION+g3EkLkA5vH37SCB9opWQdFmlP8gxTKXcNveIp8jlAkQgNVa5ZziGY03eCal2uoXV1KBr6iDc0u6m+iPvz21Gz33AMBkNAILQRK/Jtb5vlx5KJdmMSrA==
+ b=T/2mQI9rWK2ZrTU7EbsXhy2sCIqs+39uWWzyyziFu0y4RG2G1IaJ05albJmIhwbaLgzUPMh/uTxi7TFSxAdYgI6nQ97i+oLlZCOsKqesGs55tb/bQcSdXrGieJXiXZkscZ/QBCALwCCLOICBYoAuN3rCJ3eW/w5cIGYA32TD8daJ5k4c3BqmNvOa9AlJCPHugXvaRaSqcVkB0kX8G4KurRyXxLKr1dA0jbRHQWc+KgABLU/8G6fAIGNq2ZMyQQPY56+5emImuSF9QAcc2NPr6UTeEt//v72jZtudMcuMtXHMI/5rmvV4fYEkIgw3fORNqCsFB1RmqlAPo4Pottslqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vsbUIP9Ok9jpGdpzLD4Xs/YbIUf6TMu4/snoy+PHiAU=;
- b=QInP9dmClIph4pXjy/cXWHL67iigi6taIqvi01KYzHPXyPR+3AXaAcCICEGNSbfnNJcWfbt7scCQRutL0hGwqdDfNtOjceg719fYBFPpERzQicJ6E0EiswmFZUt3ex49zD2nrs4gnNhwM8J7mlKXcqZ+5RZvvoOiZMTBzCINtIEnGrcMsFcDhe59AZmWM0PJmmjeYhXvx90xNikD5czd/972YyfK3d3dI5sS4aBZl/zoHHgb4phIs68MLpxwcro87/2gmDjBn60vITp0YleGu0+Bd/CLh7nRnOnJ7zhkNG+ZglUFa7BXWe2kgQGXt3gE5lswzE9lZ+xb5PVcxFZWlA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
+ bh=e2lLoTnw648KvbZps9FujgHaaROazEzHTs/AYYbHWlA=;
+ b=bAj3Mn610mp5Zoj08QIo0Vs/zR2m+imHCf1HUo5+KBGlBCl87bAtibCW/0QR1f0zq0AT0Etr778Sn/eIOyYwZRFsDByYNanWyXFoqqnAeoXEvJIhl8BP/wQyIu3SiO3EvHnn9rtVAu4aVr+nGdovKNjTr2br2FLzdz8d3GLuafwHOl8Ah7GtsXvnu0/tc0Vjsp3/DvfiHHr/2Lbhq0h/Eb6XsQa14V5LwgrII4Kzb4+5VgKnFP4ykPpZLM7CfAEATWG+JVGbQwyRlYiMiD+oxJkitkEo7/Kuk25bAfbTJo/3XtXubz2isLYuSPhMlMtvjEs0DZJAdOhjt8yuR7id0Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vsbUIP9Ok9jpGdpzLD4Xs/YbIUf6TMu4/snoy+PHiAU=;
- b=3quZJ9gS1WS5M4XPL3Cb2TjMdw9RaF1Yl92+K0dplEn7xvUdyNy+7k21sMR0nNeE3UjvNC/p97nCH0LH+4fM36n4dUn5vOHSR8PAT3IyjBfcYgpkYVzh9HvrHE0s+n59mSlL/faUdxsUSbPiqvv3OGoPStdDJxTknoKWyTGe5aY=
-Received: from BYAPR08CA0038.namprd08.prod.outlook.com (2603:10b6:a03:117::15)
- by SA0PR12MB4431.namprd12.prod.outlook.com (2603:10b6:806:95::11)
+ bh=e2lLoTnw648KvbZps9FujgHaaROazEzHTs/AYYbHWlA=;
+ b=fHQjyujSnZMXInHM2dTJO8Bbt/SPRq46PJy9irYL8wS5E9ZXRYYvjWhyXZpkxflqKVL9KTEwNXZMC4YPwTsAgb06+SwVzqfD9aeMYXMPNlz8brHErdUg7BJlIeyc7cZpojxkgMhT6bFTGhUYL2l3PYgQYx80McbA6mXz9bTasS4=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from SJ2PR12MB8739.namprd12.prod.outlook.com (2603:10b6:a03:549::10)
+ by MW5PR12MB5681.namprd12.prod.outlook.com (2603:10b6:303:19e::20)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7698.21; Fri, 21 Jun
- 2024 12:59:26 +0000
-Received: from SJ1PEPF0000231F.namprd03.prod.outlook.com
- (2603:10b6:a03:117:cafe::ca) by BYAPR08CA0038.outlook.office365.com
- (2603:10b6:a03:117::15) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.36 via Frontend
- Transport; Fri, 21 Jun 2024 12:59:26 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- SJ1PEPF0000231F.mail.protection.outlook.com (10.167.242.235) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7677.15 via Frontend Transport; Fri, 21 Jun 2024 12:59:25 +0000
-Received: from SATLEXMB05.amd.com (10.181.40.146) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 21 Jun
- 2024 07:59:24 -0500
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB05.amd.com
- (10.181.40.146) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 21 Jun
- 2024 07:59:24 -0500
-Received: from xhdsaipava41.xilinx.com (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server id 15.1.2507.39 via
- Frontend Transport; Fri, 21 Jun 2024 07:59:22 -0500
-From: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: "'Edgar E . Iglesias'" <edgar.iglesias@gmail.com>, Peter Maydell
- <peter.maydell@linaro.org>, <francisco.iglesias@amd.com>,
- <sai.pavan.boddu@amd.com>, "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v4 3/3] docs/system/arm: Add a doc for zynq board
-Date: Fri, 21 Jun 2024 18:29:06 +0530
-Message-ID: <20240621125906.1300995-4-sai.pavan.boddu@amd.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240621125906.1300995-1-sai.pavan.boddu@amd.com>
-References: <20240621125906.1300995-1-sai.pavan.boddu@amd.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7698.20; Fri, 21 Jun
+ 2024 09:23:33 +0000
+Received: from SJ2PR12MB8739.namprd12.prod.outlook.com
+ ([fe80::29bb:9aa:2a72:df1b]) by SJ2PR12MB8739.namprd12.prod.outlook.com
+ ([fe80::29bb:9aa:2a72:df1b%4]) with mapi id 15.20.7698.020; Fri, 21 Jun 2024
+ 09:23:33 +0000
+Date: Fri, 21 Jun 2024 11:23:19 +0200
+From: Francisco Iglesias <francisco.iglesias@amd.com>
+To: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ "'Edgar E . Iglesias'" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>
+Subject: Re: [PATCH v3 1/3] hw/misc/zynq_slcr: Add boot-mode property
+Message-ID: <ZnVGh+fz9SJsdFS0@xse-figlesia-l2.amd.com>
+References: <20240620104139.217908-1-sai.pavan.boddu@amd.com>
+ <20240620104139.217908-2-sai.pavan.boddu@amd.com>
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240620104139.217908-2-sai.pavan.boddu@amd.com>
+X-ClientProxiedBy: FR0P281CA0174.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:b4::7) To SJ2PR12MB8739.namprd12.prod.outlook.com
+ (2603:10b6:a03:549::10)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: None (SATLEXMB05.amd.com: sai.pavan.boddu@amd.com does not
- designate permitted sender hosts)
-X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ1PEPF0000231F:EE_|SA0PR12MB4431:EE_
-X-MS-Office365-Filtering-Correlation-Id: ec10487c-c1ba-4e30-da7e-08dc91f1fac8
+X-MS-TrafficTypeDiagnostic: SJ2PR12MB8739:EE_|MW5PR12MB5681:EE_
+X-MS-Office365-Filtering-Correlation-Id: 56ebaa97-cb59-4f7b-296a-08dc91d3d234
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230037|82310400023|376011|1800799021|36860700010; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?BRzPN5sBgjZmX5EDYtyy+N79JK8/A+Vt+4dUyVvJedPx878vcxQLin5jbRAc?=
- =?us-ascii?Q?I2QDN4Jl7/Ma3b9RyEb+G35+z1oNSCyB5FfCNwvbr1xbuZXPBp0oNqOkyadl?=
- =?us-ascii?Q?1AwcaCEW19oY+zZDndOjIGIYntSkHCjYG58GeYuTJmyogan0uiQbfwLV0mn0?=
- =?us-ascii?Q?OOcnhjaRD7Bj3jrUfn/x6PbcVKADYCXhK0tb35Lr9YhD5BxhVNmaBrUFeQsL?=
- =?us-ascii?Q?O6G6xnAZ8zL4jmpU75JiCEXJrsv3qjucb7Y1RF63VQDcwjjDwAQg5yZFtkCw?=
- =?us-ascii?Q?sCjvTUSAbCYYphYfsrmSPVuh7D4ljm3A/6rzIFZZMzSsFJSr4yo0rqULUnvr?=
- =?us-ascii?Q?UoDtan/plD9w0bm/pdwwk+qOBzfDp9KyxlTQ8Tu5VozJQU/3IukjS8yqyLt2?=
- =?us-ascii?Q?qTP8BlxeEw4e5bQTVvaaaOpsSL7t0mdpFebJTSfV5N5Ng4y5kET2KgHq33Pz?=
- =?us-ascii?Q?bOe7SjUC6RV0GvtR7EsIDOfFHTFlFk0aOJRZCqlJkKmvTTsfY7+Ip2Ob2Lli?=
- =?us-ascii?Q?mwRrtIoTXH3i1Ok0kgBSUUSWAtI1m7U8JhU4mMWzwTJwVI0i85N/XiF7C6R9?=
- =?us-ascii?Q?DuiK5iXoylKZLr90WOq9yh9UM++ouzJQKpauz1uPnwcmUvPfnLxl4Uxgm7c6?=
- =?us-ascii?Q?/QgAmWgxcda4LJzY+gL12w36pW1i40q4FD4LUNa3/A02lU3SVaeX4d0rabsT?=
- =?us-ascii?Q?KDMEZ+X/D3o5dPG2TjlZNygaLqAxtWKxPVt1XZZkHYpAHCBBGXk6KoJC85l2?=
- =?us-ascii?Q?sMnb9rzlQDRIiZV9FQa/pDWMMVobahYvT/34OYJ6R/+U22tmP8KPE9yyTUdt?=
- =?us-ascii?Q?d90CKNIa1O3ePVhd7gUNM6VtR8xaYhKgwwGQT8g2qjX4y1ntLZ6b1Dbl39CA?=
- =?us-ascii?Q?yhTNAclRMea5PLphREiPWQCLxYHQ02FZ1GHvP/YD68v187dy8sa7Yx1sRA4A?=
- =?us-ascii?Q?8xruQFSfwCypJ6xtvvBcm+hAp7YsIPJUHxPqBHQYmENKogoZPQAfbvOwJAxb?=
- =?us-ascii?Q?gyeVZ1bSJaUKuCoqXuAwQ2ZrPcAM/TRTw4m/ZmQnFM9jGaN7xVgQLsK7FW5b?=
- =?us-ascii?Q?cDkKPffWPilAT5nxwLnAa+ymlvPrutdPT6NVyfE2/SztQMMyAuYUTuPiP31C?=
- =?us-ascii?Q?KjtHJSI/3eN1x64FhzVn+HYeZ7gjfGYt7w31pHf5C4cNFVHwGEU0jQ/n8jFP?=
- =?us-ascii?Q?2ESDY0kc0PzTVHlxwcwGN5atOVowA4xuMLmsNzkQpxen4tbsmg9tG7WUtZTG?=
- =?us-ascii?Q?NDLjVpRjrVooQVwXYBO12D/rX33a7ivgjf9tWNGOZz+fbElBf7OuSZy0hsBU?=
- =?us-ascii?Q?FaS3LIDh+Se3GfmZX0Lw39Ij9BzNyV5N3avVzpC++s89vTP1HLZmRYf6vAvw?=
- =?us-ascii?Q?aeSBerc=3D?=
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230037)(82310400023)(376011)(1800799021)(36860700010); DIR:OUT;
- SFP:1101; 
+X-Microsoft-Antispam: BCL:0;ARA:13230037|376011|1800799021|366013;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?dXRDK1JRQk1IMHZCVFhsT0JtcG5LR0NwYThrYmdCK1d0MkJWaWxmWVc1eFo4?=
+ =?utf-8?B?TGtXUExKUXlPbTNaUjZ4a21NckQvWDFZZmFqcFg1WDJqTTJPM285azNnSndl?=
+ =?utf-8?B?Zkl0KzVmWHFCWGgxdHhncUltM1E1a2ZJNlNHVnRvQlNJb1k3SktOWVpOU2VV?=
+ =?utf-8?B?akkyZkxCckVDWXFSZ2I5ZytLQXNkNXM0LzhYYlhPSHByeFBPeWlqZDMvclJt?=
+ =?utf-8?B?bWJqVE91NXdicjNjOXQ1WDdYRCt2L2xrSSszNmVNYVZ0QkJtSHlFUTNEMnFS?=
+ =?utf-8?B?Vk5PVkd6VHJEVGloc3NYREgycmdYUlVNLzMzdEtuNWJUNXZaaDNmell3Y3FJ?=
+ =?utf-8?B?cGN0N2d5S2JXMDc2eitNdk56dGVPRGtSdTI4ekVSV2xGUnBmN0E1NW5PbU9B?=
+ =?utf-8?B?ZEVJVk5JNTNOczNiWHhSVm91Z0cycjFEandFRFJoZ0l0WnJvemRIa2xzOHNK?=
+ =?utf-8?B?aWFpSWtteHpJSnVsV0pxa255d2tRVElYUS9Jalo4RWU0SVBEbEFmdGt4enlP?=
+ =?utf-8?B?VEdrRTJ4VS93YS93UXZtYzdZdHIxb1h4YTFjSTZvK1NrblJ6b1ZwWngvOXUr?=
+ =?utf-8?B?ZnJaTzh4K1JDNEtUTjRoQ3NwbExhbHpGb3pUdlF3OWFPNlduM3ZiOFc3YjZR?=
+ =?utf-8?B?cytEOUVpMjlTckduUUVoaEcvbmwrU0VpWWt2R1piMHphTG5hVFhOQW10R3lC?=
+ =?utf-8?B?MUlkSFNOb3FxK2t1aEJRZFBBWFhQYmZuVnpZRG1HWkJ4QTFPUWtNOVJ5cWVR?=
+ =?utf-8?B?ekp0TmtUQ0pnS0dpczlaZmU0TzlDNitUK291N3FqZzRucU1rT001SkdYMURa?=
+ =?utf-8?B?ODlmMHM5cm5FM0s5cHVTN1hhRnBNaEVoS1ZYempEdjFxSXFoWmdLcFdRZUE2?=
+ =?utf-8?B?d2V1VkNOODJqaXpmeFJmakNrbi8wSnBMZFlRK1QyYmZYcEpETzQyeVhSLy9p?=
+ =?utf-8?B?eXhrVERoOUlJYldLOTBoRC8xSDlNc0hoQzNzb21tdFppOSt4Ym9aUmdkYUpC?=
+ =?utf-8?B?S1R2UnRjZ2xSWTdKanhmeWdCM2ZDYnZyR0xzeEIxT2NrejRjSktSWEdOZVJy?=
+ =?utf-8?B?eVZsbmMxMC9xRmFIRTA5ak5xMTlvQy84Ujl1RFExNWw2RlA4MUVLeVJmTDlM?=
+ =?utf-8?B?TFFPWU0zSWpiNlowQms2T2pOVkVJWXc4UWFDVVgvTndhb0dTUWNOam13YzFp?=
+ =?utf-8?B?RG5hUnN5MllaTlhiUlMvTXllbnAva3N4clEyclpNbFg1ZVRuOTErQ3VzYVBL?=
+ =?utf-8?B?eDNiUCtqRjQwT0RkdmxhL2lWdjhPVDZacVcvVmdBREZHQTgyRVhhOFc4N1BT?=
+ =?utf-8?B?TW1nb0ZsZW1TVUNTdmpsWmVFQmVDZ0wyUVZFZEttNjFGZ2JLRGVPSEtWZFpt?=
+ =?utf-8?B?dlFSV1E2NmFhN0RQT3ByamRQc21XUWVNQXU3Vmo2d3JzN0tiNGNna1haeEI3?=
+ =?utf-8?B?eG5jMzFhUlRKQldXOEVDWVo0ZVpYMWM2OHpjUURLenB2ZUpnbk82T2hsYmht?=
+ =?utf-8?B?Z0NHSFU5SWZHbWE5b1k2eHlpQUJDQ2VMNTFzR2lNa0dKRWZFUEtFbDdQWE44?=
+ =?utf-8?B?NktGWnVoTlJFYWsyemtUVEdPWDVBdWpqdUVORUZjOXgwK3BydVhON3dXSEdU?=
+ =?utf-8?B?eStObEc5S1Z6aHNTUWY0UTBVRlJKWWVMdVZZbjJUNUJvdXpLbHp2U3FEVHk2?=
+ =?utf-8?B?Mmg5OHlwaTVibmtQa242RGNPeDdLSHNHaWVsVnBLVXJLcDNLTEMwcEIzSWs3?=
+ =?utf-8?Q?CK5zubmmGk7AtkvtDc=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ2PR12MB8739.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230037)(376011)(1800799021)(366013); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dUpNdHJjMzc3NWdWejNDaXpuSHY3VjB6dzU0a2FIZ0RWby85RGU3S0ZwZDlQ?=
+ =?utf-8?B?VG0yYW1WSE1KL01WWjE1T2hEcEI3eThNemJhdEhXdk9HSDA2SWtBWFZrYy8x?=
+ =?utf-8?B?b0NqaDRSSjVNWGc4dXZYaDFVYXhSOVhjRWJjMExzOVhSZzJqMko0RXBFSXFu?=
+ =?utf-8?B?OVUwb3BvSk9WMlpwckFtOWF6eXlWUmpJa3BpbXJQcHpkMTZPc3MwVDJkUEVt?=
+ =?utf-8?B?UkpzdnhGSmNzQ1NMSDRndUJsTDlKOCtEZzZsWkJZZ2M4RmJ2TStzaVZOejBm?=
+ =?utf-8?B?bUVWRUx6cmpxNEc1U0FqOTBkeCt6QkUyRk9Tb0hJRlZCV2ZtMURWVkY3R1ds?=
+ =?utf-8?B?T2NsbGVkOUVSQ1A1UmxGRVZEYmlOeXkxSit4dGdZMWd0VFFIN3F4eHZSQk5z?=
+ =?utf-8?B?ODVtQmJlM3N6aUdpYWNNU1V3cXFzYWNBT1NTaHpSMFpIY1V4MmRZNkROemV5?=
+ =?utf-8?B?OHlkQkt6R1dxQkt0ekJ3clNXTHRzYVR4TzNrazV3SDZLdkFKMVh5RENYcnJw?=
+ =?utf-8?B?S3VxMCtKeVViSzdSYjlrRnRaVStka1o2Z3ZHMklneFJ5NjI3amg2TXRvTXF2?=
+ =?utf-8?B?Szh5NkxCVG5icjg2MEN0OFJWanJ1aVdEVGw1aFVFSE5kVURVNFVkVlBOblFJ?=
+ =?utf-8?B?Zk5pTm14SmszMG9RZVNJZEsxdFJFMCtRQklFWnVqM1I1czROYUt4QjJFbzdr?=
+ =?utf-8?B?VnJsVXFnSjBSbjU0ekRsT2kwV25vcEY0RXlvQ1EzTW5WOTNhMWVaZzdPRUJ3?=
+ =?utf-8?B?YmlwOEg1SUVNcU1hRE9WT0VldURzUDJiM1RQZ0grTk9oTmtFamQxZGwyMkl4?=
+ =?utf-8?B?cHBsV1ExNldYWmxlZnNlVTF1L0IxZVgycjdPci9wZ2F4U2cxWklMLzdkTERy?=
+ =?utf-8?B?N1pXT2k2ZXRsM3BqVUR4MFMzczR6T0JIRlkzdjFQZ3hzTU04NDdabVE0NGwr?=
+ =?utf-8?B?a21ZRmdGMGM0cXJqdmNFOU1BeERQRWFBc0hDc1BROXJVc2hVM01pejE1U3or?=
+ =?utf-8?B?SUJYVlZUZS9YQ3VmNnFLckVxQ3ViRkpuNWpncG9pZzZNanFTVUFsNW95S2Iz?=
+ =?utf-8?B?MEdVN1VabmxpN0VuOUxlcHFKRDBBQi9vdDN4NGljMHlNc0ZWKzR1bEx4M0tH?=
+ =?utf-8?B?c3hCYi9HMmFlRTU1T2RwV2xMWFRTcVU3TnRFdFZnazNHc1pxVEtsUk1sSmdT?=
+ =?utf-8?B?cmRVdVpVblp5TkE4TGs2bkgxRlByRlV4bHpMNG96RUVkdThSbkRrbE1KaG8y?=
+ =?utf-8?B?eGtxMkdBbHlreXRCeVRjc1JIajB3aHZwSWtSVTRyZzhQT1NGd2JITXNWaXZs?=
+ =?utf-8?B?U0dWKzZEQ1YycHJFZWkzcVlYa0ZSY2ZPejR3S1VZdDVwSmFQZ3l2NndCYmJm?=
+ =?utf-8?B?ODBZQk0xS21QM1dKdjg5QmY5OVhtREFuM1UyWmJPWGtML1ZZZHdlUUd4eWR3?=
+ =?utf-8?B?VHZMV1lQZnhCRU51QzBGbytGK1ZmZ2hwQ1FxYkt3NDRRVzlFTkI1UWtDTTgx?=
+ =?utf-8?B?d29hU09lYmVzcUMvNm54aWFuSHUxZjBxSHNiTHVFVUFDcnVhOEFzMFlEc1hN?=
+ =?utf-8?B?WnlOcXNpNExxUWtRZXhsUzllSUszWE9NVnFhb3BiVnVUMGtneW8xRm9IMHhz?=
+ =?utf-8?B?aDdjVmpxaDZxdTQyWTg0OEVvWHJnVWtKNmFtOEhvVjY3QUtRZlo2ZUlKdEp2?=
+ =?utf-8?B?T3dhdGphNWptRU5tbUFOS2hsTHBpaHFoNnhpSElyNWZSZGZVdnlFR2JoL053?=
+ =?utf-8?B?NndKVk5KVXlWVUFzdE1YeFZKNUpkL0dLdk1IYXRqNExnaDlId21QL0YyeFVJ?=
+ =?utf-8?B?K1NDZVRUT1FPZURVOENNY1JoSjV0aitranFrdHVvclB2MWN0QUxYUC9OeE5z?=
+ =?utf-8?B?RUFBQWg1alVkdG9oelVWWEp1SDV5WkpPVU9mcXJ4VjdHaGhDTmRRcnlGNjBr?=
+ =?utf-8?B?UDd1UHhXVHNKQ0twaFE2MjFzVDUrOWVpeDZRRlZzWUpMSkNCamhIeTAxby9r?=
+ =?utf-8?B?QTZjeVhFOGtSWWpudjZvVnpYbWhMd1V6R0lwTFl1K2dMT1lMWHZzWXdFZHJR?=
+ =?utf-8?B?eUZRbEZMVnZINnp5NklRRHdYeHpoT3hyNkorUFkrL1RwQVh3ZnBYM3cwWUpv?=
+ =?utf-8?Q?Zl5YCGs4WJ41dHLXQLAGZx1WP?=
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jun 2024 12:59:25.8974 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ec10487c-c1ba-4e30-da7e-08dc91f1fac8
+X-MS-Exchange-CrossTenant-Network-Message-Id: 56ebaa97-cb59-4f7b-296a-08dc91d3d234
+X-MS-Exchange-CrossTenant-AuthSource: SJ2PR12MB8739.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jun 2024 09:23:33.1947 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF0000231F.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR12MB4431
-Received-SPF: permerror client-ip=2a01:111:f403:2416::600;
- envelope-from=sai.pavan.boddu@amd.com;
- helo=NAM11-CO1-obe.outbound.protection.outlook.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: uwehfjhBqX0N8XwTr/NU50G9vyJZfE21GfxX8fCxjAGAVEVozAxn9p7o11f3OWRKutWBqeW07mDK4eMj8Ac8/w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR12MB5681
+Received-SPF: permerror client-ip=2a01:111:f400:7e88::628;
+ envelope-from=francisco.iglesias@amd.com;
+ helo=NAM10-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.145,
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.152,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: O/GMw+BtUt5z
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: NFdPxQkpEpqI
 
-Added the supported device list and an example command.
+On Thu, Jun 20, 2024 at 04:11:37PM +0530, Sai Pavan Boddu wrote:
+> boot-mode property sets user values into BOOT_MODE register, on hardware
+> these are derived from board switches.
+> 
+> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
 
-Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
----
- MAINTAINERS                   |  1 +
- docs/system/arm/xlnx-zynq.rst | 47 +++++++++++++++++++++++++++++++++++
- docs/system/target-arm.rst    |  1 +
- 3 files changed, 49 insertions(+)
- create mode 100644 docs/system/arm/xlnx-zynq.rst
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 951556224a1..2f06febc676 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1033,6 +1033,7 @@ F: hw/adc/zynq-xadc.c
- F: include/hw/misc/zynq_slcr.h
- F: include/hw/adc/zynq-xadc.h
- X: hw/ssi/xilinx_*
-+F: docs/system/arm/xlnx-zynq.rst
- 
- Xilinx ZynqMP and Versal
- M: Alistair Francis <alistair@alistair23.me>
-diff --git a/docs/system/arm/xlnx-zynq.rst b/docs/system/arm/xlnx-zynq.rst
-new file mode 100644
-index 00000000000..ade18a3fe13
---- /dev/null
-+++ b/docs/system/arm/xlnx-zynq.rst
-@@ -0,0 +1,47 @@
-+Xilinx Zynq board (``xilinx-zynq-a9``)
-+======================================
-+The Zynq 7000 family is based on the AMD SoC architecture. These products
-+integrate a feature-rich dual or single-core Arm Cortex-A9 MPCore based
-+processing system (PS) and AMD programmable logic (PL) in a single device.
-+
-+More details here:
-+https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/Zynq-7000-SoC-Technical-Reference-Manual
-+
-+QEMU xilinx-zynq-a9 board supports following devices:
-+    - A9 MPCORE
-+        - cortex-a9
-+        - GIC v1
-+        - Generic timer
-+        - wdt
-+    - OCM 256KB
-+    - SMC SRAM@0xe2000000 64MB
-+    - Zynq SLCR
-+    - SPI x2
-+    - QSPI
-+    - UART
-+    - TTC x2
-+    - Gigabit Ethernet Controller x2
-+    - SD Controller x2
-+    - XADC
-+    - Arm PrimeCell DMA Controller
-+    - DDR Memory
-+    - USB 2.0 x2
-+
-+Running
-+"""""""
-+Direct Linux boot of a generic ARM upstream Linux kernel:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-aarch64 -M xilinx-zynq-a9 \
-+        -dtb zynq-zc702.dtb  -serial null -serial mon:stdio \
-+        -display none  -m 1024 \
-+        -initrd rootfs.cpio.gz -kernel zImage
-+
-+For configuring the boot-mode provide the following on the command line:
-+
-+.. code-block:: bash
-+
-+   -machine boot-mode=qspi
-+
-+Supported values are jtag, sd, qspi, nor.
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index 870d30e3502..7b992722846 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -109,6 +109,7 @@ undocumented; you can get a complete list by running
-    arm/virt
-    arm/xenpvh
-    arm/xlnx-versal-virt
-+   arm/xlnx-zynq
- 
- Emulated CPU architecture support
- =================================
--- 
-2.34.1
-
+> Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+> ---
+>  hw/misc/zynq_slcr.c | 22 +++++++++++++++++++++-
+>  1 file changed, 21 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/misc/zynq_slcr.c b/hw/misc/zynq_slcr.c
+> index 3412ff099ea..ad814c3a79b 100644
+> --- a/hw/misc/zynq_slcr.c
+> +++ b/hw/misc/zynq_slcr.c
+> @@ -24,6 +24,8 @@
+>  #include "hw/registerfields.h"
+>  #include "hw/qdev-clock.h"
+>  #include "qom/object.h"
+> +#include "hw/qdev-properties.h"
+> +#include "qapi/error.h"
+>  
+>  #ifndef ZYNQ_SLCR_ERR_DEBUG
+>  #define ZYNQ_SLCR_ERR_DEBUG 0
+> @@ -121,6 +123,7 @@ REG32(RST_REASON, 0x250)
+>  
+>  REG32(REBOOT_STATUS, 0x258)
+>  REG32(BOOT_MODE, 0x25c)
+> +    FIELD(BOOT_MODE, BOOT_MODE, 0, 4)
+>  
+>  REG32(APU_CTRL, 0x300)
+>  REG32(WDT_CLK_SEL, 0x304)
+> @@ -195,6 +198,7 @@ struct ZynqSLCRState {
+>      Clock *ps_clk;
+>      Clock *uart0_ref_clk;
+>      Clock *uart1_ref_clk;
+> +    uint8_t boot_mode;
+>  };
+>  
+>  /*
+> @@ -371,7 +375,7 @@ static void zynq_slcr_reset_init(Object *obj, ResetType type)
+>      s->regs[R_FPGA_RST_CTRL]  = 0x01F33F0F;
+>      s->regs[R_RST_REASON]     = 0x00000040;
+>  
+> -    s->regs[R_BOOT_MODE]      = 0x00000001;
+> +    s->regs[R_BOOT_MODE]      = s->boot_mode & R_BOOT_MODE_BOOT_MODE_MASK;
+>  
+>      /* 0x700 - 0x7D4 */
+>      for (i = 0; i < 54; i++) {
+> @@ -588,6 +592,15 @@ static const ClockPortInitArray zynq_slcr_clocks = {
+>      QDEV_CLOCK_END
+>  };
+>  
+> +static void zynq_slcr_realize(DeviceState *dev, Error **errp)
+> +{
+> +    ZynqSLCRState *s = ZYNQ_SLCR(dev);
+> +
+> +    if (s->boot_mode > 0xF) {
+> +        error_setg(errp, "Invalid boot mode %d specified", s->boot_mode);
+> +    }
+> +}
+> +
+>  static void zynq_slcr_init(Object *obj)
+>  {
+>      ZynqSLCRState *s = ZYNQ_SLCR(obj);
+> @@ -610,15 +623,22 @@ static const VMStateDescription vmstate_zynq_slcr = {
+>      }
+>  };
+>  
+> +static Property zynq_slcr_props[] = {
+> +    DEFINE_PROP_UINT8("boot-mode", ZynqSLCRState, boot_mode, 1),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+>  static void zynq_slcr_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>      ResettableClass *rc = RESETTABLE_CLASS(klass);
+>  
+>      dc->vmsd = &vmstate_zynq_slcr;
+> +    dc->realize = zynq_slcr_realize;
+>      rc->phases.enter = zynq_slcr_reset_init;
+>      rc->phases.hold  = zynq_slcr_reset_hold;
+>      rc->phases.exit  = zynq_slcr_reset_exit;
+> +    device_class_set_props(dc, zynq_slcr_props);
+>  }
+>  
+>  static const TypeInfo zynq_slcr_info = {
+> -- 
+> 2.34.1
+> 

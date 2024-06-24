@@ -1,179 +1,145 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp66228njc;
-        Sat, 22 Jun 2024 02:45:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVCptlcrGYCns2bv+Y7SgbI+DSbU27aCeIDwTBSPsHc6OcxPh5GrfSpiIXJTSMq6sdAtwMujVK1Y3D5XxVNO+s2ppOoLve1
-X-Google-Smtp-Source: AGHT+IGAlsFppKIT43lJWetBtk68hAPCieL+dOSycwOQSFbCmkf1eUdeaiaFThdzU0rvj3QX8XnF
-X-Received: by 2002:a05:620a:460c:b0:795:5896:f847 with SMTP id af79cd13be357-79bb3e54ccamr1153705585a.32.1719049543114;
-        Sat, 22 Jun 2024 02:45:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719049543; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp371480njc;
+        Mon, 24 Jun 2024 01:05:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUOs25KGjxAIpzLdQtLg7LPa9SHuuq9snipG091Bp0cZGVM8BB0A3KPWtDCnUwEo4TlHReUc3IF0j5IYokZfTtqij6V4Y7t
+X-Google-Smtp-Source: AGHT+IGanwYS78r+EgIVnR1q25zJRK1lkmgfT74bGpDNKHxpW8ttKh5dLehNE+sPh+BjxgH9MBl+
+X-Received: by 2002:a05:622a:4b:b0:441:5629:86c with SMTP id d75a77b69052e-444d6441a45mr42650681cf.9.1719216305051;
+        Mon, 24 Jun 2024 01:05:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719216305; cv=none;
         d=google.com; s=arc-20160816;
-        b=rM8F3kGKLYrAV64Fy/PmQ8t3RK7NfJhvvz1qv2NxykQn7XrktqehYO3Nm7To39Z5ZA
-         /0hAaT5kiaH6OzUByLTeIgyJ3FdJhTc4B/RseMfy56SAgUGV6IC+jReGUk90NMAk6tzO
-         ebnUFYdG+TUjN13rQMade1D6vdN9F4aaEU9M9W8LwpDJ7QedxZbpdlppRhVeS85Qm3Lh
-         6xor4w0kgKedYVPkOkOyIaaZQtfRJJfG5SjKBA6HBO3MS3/3UA8DkTvrhV3v3y8ZZZxI
-         ZzyI1SyfarQCQ/3iQNTA96ZdTs2poGcXp8GRGg2ulfAPmWbVwUK/k7hhkT9P49brV+e2
-         Qd1A==
+        b=Ch/v6r0qmOZdd5J0+XOEqLaV/SrgjMwMakid5M6UT9spYu0pbtnlWyY90B/q7acd7p
+         G4Vlhv2zb++do8NXDq2jzyFlvHNxxCzlxePKs9Q407lYCEe1SlSk83N3hjbEU/AH3lNs
+         Tct0zxtSWrjxy+bm1HSSesA+8qsfTyyPi3orXi0rds5zSg9Bp0HLAhpYsumDuCP4NpP/
+         XrItsch63XaB69ntRruw9bdU4hmsASnrfSj8PTDb3/542U8PVjnKtZ2loS2MPpHcnpD4
+         pjm0ZbVeKMThsqwDWvrRbFx/veHQCypmosTo5IKH7r3xI0u8+/YVv4HovaO5hSLGK/eM
+         0q3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
-         :dkim-filter;
-        bh=Wku8nU4WuFOVlOrxwroV3y3glEG7WMuejPyRaGMEs9k=;
-        fh=ylG8qXrAnNyVtPUw6V2hogvMS4j1RbxBsm8NgWjFQ5o=;
-        b=tGI+jgpU5qRBh4KlMR3PR5+QgOMXTifA3pjBP+XQe7UKMmDmeB06bvxcXZ646is7w4
-         4a7ZXN8zLuinJtNwBsFI0hIJOWorcbIZGHRfaoz0CTcF/ezrbOzHcmf0OnVZzQRtv5YW
-         rVpLSVCh3FyAtuhP+XIQo483wvfIiMmm6ngnF0CubJHr7Y3MbZLCrgU4zcMlvXBZQuoF
-         UXnHsCLmWiIQkrWGds7faIaAqWZ7U2CPIxiovKmlhgrJYMz/RZsl6UzWat0raM4EuOXr
-         yIg+aDhzW8kYsBsdhXi7Dov77V80eKyKIVuPpxk8mwFmV6STE7I69l41gx8hfNfaFzB/
-         5fnQ==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=shwxxz+DWV07LZ8eQUPzz4OwHTAuOGqIFG0sQ0jp6pc=;
+        fh=YY82uJqk0jMR0DHT+52Bvbkomfkrje6PpoG6E4XYf6k=;
+        b=SuBWQb/v7FgaNK3wuuM3oszd07lll8+gD/pkvW/8NjDfvZdi4gs7KogQ/OGvbdQPN6
+         SA3lXDyZd0KuwZulLWyBbgG1pY//Ypx4A3u0rr0s3HRE/MWLMiG9qW69T8vamOHj3I9u
+         wBJKOgF3m3lO/KIzhFnmJkC/qR/bqN1SVbbMOLWq7WNdg/WI8O2OrgZAyuoQaeP547ZY
+         8L0iEb6Iva3BD87hwo+C2smRODv5ewulQ868kPvrWAeRbI+FwSd+bvWDiBuQV/iTnsXq
+         Z/4NtFF51sshtA+Nz/EmvIbpCQeFpzV77QTOjo+Kg43SL1mm7dVs6yrLzNvNatyjIN9Z
+         DwkA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Yk4EXa15;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UILzW494;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79bce941f36si371647685a.640.2024.06.22.02.45.42
+        by mx.google.com with ESMTPS id d75a77b69052e-444c2ca282bsi75078551cf.770.2024.06.24.01.05.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 22 Jun 2024 02:45:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Jun 2024 01:05:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Yk4EXa15;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UILzW494;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sKxIV-00027Q-DW; Sat, 22 Jun 2024 05:44:39 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sLegf-00064F-9l; Mon, 24 Jun 2024 04:04:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1sKxIT-00026s-V3; Sat, 22 Jun 2024 05:44:37 -0400
-Received: from zproxy2.enst.fr ([137.194.2.221])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1sLegc-00063C-JW
+ for qemu-devel@nongnu.org; Mon, 24 Jun 2024 04:04:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1sKxIR-0000zh-Rr; Sat, 22 Jun 2024 05:44:37 -0400
-Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id 47A4D806FE;
- Sat, 22 Jun 2024 11:44:30 +0200 (CEST)
-Received: from zproxy2.enst.fr ([IPv6:::1])
- by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id EIdDC7UP7Z3V; Sat, 22 Jun 2024 11:44:29 +0200 (CEST)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id C730F807D6;
- Sat, 22 Jun 2024 11:44:29 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy2.enst.fr C730F807D6
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1719049469;
- bh=Wku8nU4WuFOVlOrxwroV3y3glEG7WMuejPyRaGMEs9k=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=Yk4EXa15dazCW5x2UUFxVeZijV54NNhXcAAOcDyMxQuLyoRbL52NC9Lr0LEVUYlWm
- JldupnHL0lSLCVc4cRV/HfKNHyh5CT5y/iqKUGwUBQTmKOtAJy/SirOn26xDbZLAA4
- TZp7HdFUscy48KldIubKkPDeR+VPqf3ESRq2p0Bc=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy2.enst.fr ([IPv6:::1])
- by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id pEmuL8pcZAz7; Sat, 22 Jun 2024 11:44:29 +0200 (CEST)
-Received: from inesv-Inspiron-3501.enst.fr (unknown
- [IPv6:2a04:8ec0:0:124::190c])
- by zproxy2.enst.fr (Postfix) with ESMTPSA id 54D35806FE;
- Sat, 22 Jun 2024 11:44:28 +0200 (CEST)
-From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Luc Michel <luc@lmichel.fr>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-arm@nongnu.org,
- Thomas Huth <thuth@redhat.com>, Damien Hedde <damien.hedde@dahe.fr>
-Subject: [PATCH v4 0/3] Check clock connection between STM32L4x5 RCC and
- peripherals
-Date: Sat, 22 Jun 2024 11:43:52 +0200
-Message-ID: <20240622094402.244604-1-ines.varhol@telecom-paris.fr>
-X-Mailer: git-send-email 2.43.2
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1sLegb-0007HP-1n
+ for qemu-devel@nongnu.org; Mon, 24 Jun 2024 04:04:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1719216263;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=shwxxz+DWV07LZ8eQUPzz4OwHTAuOGqIFG0sQ0jp6pc=;
+ b=UILzW494NAM5Ec8+NCZri5GDwCpSPj5IGvWEaXGHx0VcFUatGAZzMtsGzYWK17kaU1XBcy
+ iVv7d/C1dMyAhL/9HGo+0VDV6E5uLcgRuOFvWW3dkhYnojseUaZlwsF0AM7X7OXSOSDqQJ
+ HrxFywxmJqF05DCrR82PYofHTwH8MUs=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-689-Vo-gAGArNrOb4N5HGVN-_A-1; Mon,
+ 24 Jun 2024 04:04:19 -0400
+X-MC-Unique: Vo-gAGArNrOb4N5HGVN-_A-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AAC3B19560AA; Mon, 24 Jun 2024 08:04:16 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.193.0])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E500619560AE; Mon, 24 Jun 2024 08:04:13 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id D27471801099; Mon, 24 Jun 2024 10:04:03 +0200 (CEST)
+Date: Mon, 24 Jun 2024 10:04:03 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Sunil V L <sunilvl@ventanamicro.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
+ Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, 
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, 
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
+ Laurent Vivier <lvivier@redhat.com>,
+ Sia Jee Heng <jeeheng.sia@starfivetech.com>, 
+ Alistair Francis <alistair23@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+Subject: Re: [PATCH v3 02/15] uefi-test-tools: Add support for python based
+ build script
+Message-ID: <n64h732pyizwasqsn33k3fecd34vllstfxxmb4qjtsx36fga2v@ew633bpyli25>
+References: <20240621115906.1049832-1-sunilvl@ventanamicro.com>
+ <20240621115906.1049832-3-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.221;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy2.enst.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240621115906.1049832-3-sunilvl@ventanamicro.com>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 11
+X-Spam_score: 1.1
+X-Spam_bar: +
+X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.149,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tBMhzf1s/O9j
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IZ0XRFOAesb3
 
-Among implemented STM32L4x5 devices, USART, GPIO and SYSCFG
-have a clock source, but none has a corresponding test in QEMU.
+On Fri, Jun 21, 2024 at 05:28:53PM GMT, Sunil V L wrote:
+> edk2-funcs.sh which is used in this Makefile, was removed in the commit
+> c28a2891f3 ("edk2: update build script"). It is replaced with a python
+> based script. So, update the Makefile and add the configuration file as
+> required to support the python based build script.
+> 
+> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
 
-This patch makes sure that all 3 devices create a clock correctly,
-adds a QOM property to access clocks' periods from QTests,
-and adds QTests checking that clock enable in RCC has the
-expected results for all 3 devices.
-
-Thank you for the reviews.
-
-Changes from v3 to v4:
-- removed 2nd commit (it was bumping up version id in
-`vmstate_stm32l4x5_usart_base`, which is useless when not adding
-any fields), it was a misunderstanding
-- in `clock.c`, `vmstate_stm32l4x5_usart_base`, renamed `freq_hz` to
-`period`
-- in `clocks.rst`, specified that `qtest-clock-period` is only usable
-from the QTests and not QEMU
-- in `qtest/stm32l4x5.h`, used macros from "clock.h" to compute
-the expected clock period in the right unit
-- in `qtest/stm32l4x5.h`, removed "osdep.h" include
-
-Changes from "v1" to v3:
-- adding a commit to expose `qtest-clock-period`, a QOM property for
-all clocks, only accessible from QTests, and mention it in clock.rst
-- adapt QTests so that they use clock period instead of clock frequency
-- remove `clock-freq-hz` QOM property in STM32L4x5 USART and SYSCFG
-- dropping the commit migrating GPIO clocks as it's already upstream
-
-Changes from v1 to an unfortunate second "v1":
-- upgrading `VMStateDescription` to version 2 to account for
-`VMSTATE_CLOCK()`
-- QTests : consolidating `get_clock_freq_hz()` in a header
-and making appropriate changes in stm32l4x5q_*-test.c
-
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-
-In=C3=A8s Varhol (3):
-  hw/misc: Create STM32L4x5 SYSCFG clock
-  hw/clock: Expose 'qtest-clock-period' QOM property for QTests
-  tests/qtest: Check STM32L4x5 clock connections
-
- docs/devel/clocks.rst               |  6 +++++
- include/hw/misc/stm32l4x5_syscfg.h  |  1 +
- tests/qtest/stm32l4x5.h             | 42 +++++++++++++++++++++++++++++
- hw/arm/stm32l4x5_soc.c              |  2 ++
- hw/core/clock.c                     | 16 +++++++++++
- hw/misc/stm32l4x5_syscfg.c          | 19 +++++++++++--
- tests/qtest/stm32l4x5_gpio-test.c   | 23 ++++++++++++++++
- tests/qtest/stm32l4x5_syscfg-test.c | 20 ++++++++++++--
- tests/qtest/stm32l4x5_usart-test.c  | 26 ++++++++++++++++++
- 9 files changed, 151 insertions(+), 4 deletions(-)
- create mode 100644 tests/qtest/stm32l4x5.h
-
---=20
-2.43.2
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
 

@@ -1,120 +1,113 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp372333njc;
-        Mon, 24 Jun 2024 01:11:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVFjk1/BijKPCvqA3cHzl6q1SMQr6z7SxEGKWW7zLz8U42dqckeLHDAytKV0QCjLKxYAvuxzpbPP20c7Q+iAtdHmRdZbD7x
-X-Google-Smtp-Source: AGHT+IHblZ/dPd6udHUqZvXbjUzOSTsZMJ+brnkCEy/gKehXAw7L2xNPWH4VwVEhplk08ACCO1DC
-X-Received: by 2002:a05:620a:450b:b0:795:758d:fbbc with SMTP id af79cd13be357-79be6e86bb8mr531229985a.14.1719216661896;
-        Mon, 24 Jun 2024 01:11:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719216661; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp381723njc;
+        Mon, 24 Jun 2024 02:12:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVkLq16AutDR365QAvHq+3qFb2hFpoa7OALqpvOgfNB/wbx1UmS3PAu5oLNnb8ysv6CH5emQd2kqSmZ8zXm71zFcO6r6QTV
+X-Google-Smtp-Source: AGHT+IFh7xCQvkSU+DF35FdaXXiqLoYCaZpVxvAzpO1q8dWJdurQLFwy7SolqaeNc7+yFkFnYx/K
+X-Received: by 2002:ac8:57c5:0:b0:444:dc05:f7eb with SMTP id d75a77b69052e-444dc05fa53mr36378841cf.35.1719220360797;
+        Mon, 24 Jun 2024 02:12:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719220360; cv=none;
         d=google.com; s=arc-20160816;
-        b=ppSdp53AdksPi0a+toOdSYURAYvPu4OL4R+rNLHRTdFIyGRmnDCWFG0vlare4bLga8
-         rm585gTewiu0JEpsiipdrQ8uxrHNeAwWhyor4hYjMADiwHLgHl52mJZzDi/I6M2ClgqU
-         WA15X5khzeYxlRmJwNr89l0Qj8O83QytLpmBYMUygWYbUHSDdNT8hTyKRyJy7si16tt/
-         qYMiWf2CAxXKuH/Cgh0uM9bRHmtSWH2nnIZ4qo/Nb7LWJNlaOFTakELML6Ra74Lvkmg5
-         y3nc3OcMP4v/OO4Nccy/H5MowhP15cILxt5ctJH1FPJ349RgyW1RzYFMeYdsN3n6GE7v
-         vUlA==
+        b=R4FGfTEQYjl1EDJnwDXbttnAM8CjtUhfOo4Mzg5CMquGGULMbJvLzFKrGUdPPlpvaY
+         YRnamTBTr7xdXIKJKdJSeRoBCN2Khk7qLv+iyBODSOuz/bl/N+mlniB1f7ODZ4spPx6o
+         3unHAY84VSzFzet4sSMWHlVeUzoS8w7KuVkhWnRGwV9z1cRyf3gyL3Z/KtRcKtdE9+Ry
+         YMd/2DyBM7k96nE3DxM2uAH+PWryyu75CCuYxviuwWA56+xOgfS24tmqn6PKN4i06W81
+         9Ck1kevMULR98AJORDc+nmrZVmcUj2bStOn8IQ8USdSj/zOvn7UmRHyvPz+OX+zmT1Fj
+         wD6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=4RTAQwadnmzU+2BsFPLzaRXRc6gtw+sJYjl6MK8WhZU=;
-        fh=d23DzD9q5KrJsTno3+nvj/pP1u9foNOYL/3X+QUq0Mw=;
-        b=r/QH7PHPBYq8eqG4He3FhXKqWdAiciK4tbbpItylPNodEGGCOVax9wY6NwMzL7Nr9G
-         htUUvdH3jvDonSJmh+VXCEV/hifeTiCLHL9F/JwY45oM3SQnyQezRUDfGeVXv04UPcOC
-         thD/0ncCWJ7HkkIzuxKJGHdvVWnAK3ujv8UhQ6szrP9tywb0fr7ARExFMEukT91mNaBD
-         /+HSs8gkWuK7jWvNmjTldGnhDVkFTcSC2EGUWmMB4oRV9yu/XczeClgyWBFGk6SaYgO7
-         5gr1QzDFJrS/D2NPyp0TEurr5q1PoKl8aY8v7QQqfClM/IgzszJ11PSFx1Xikvd+G3kp
-         73sw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=rQmGJCx2a/QLm1eOxOqwGqqV3/kxCAgqSMcL+my6qVo=;
+        fh=pQDapPXjabiYhz7ebYwYmJ4ppONFRp2xLf+qdyfym38=;
+        b=UdM3jQUjQ5CFoUsNSP9Xl7om3xd8RBi8rrlJbWyBkFglpza5cGB2FVOjibhzB3TwPL
+         /sJVZRVzmFUoxD8OkJHnAPctIGXqUSCXG5BtH7ubaG1MAWQQpK3xoQxT0Yd7igtOkdyn
+         SeaXKelRR6cSJS0bbyOsLqQeo6TvU/mlgOhScctoD6h6ZzekxDHzepz/65ZSs39mKJI1
+         N2oT5gH/3o0ri4eTj9AuMBSKfK4KuegM3VJe5tX28zPuSuNpKeUON51BlhzNneasGNo3
+         LEt4CiQLutuBudWdBPLPDEICifh79Ouu7x4ODuAPapzmPvpd4CmdLR5GiONhMfqPgdzi
+         1IPw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zawszadU;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QRnMNK62;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79bce941605si781800385a.590.2024.06.24.01.11.01
+        by mx.google.com with ESMTPS id d75a77b69052e-444c2ca7720si82133061cf.799.2024.06.24.02.12.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2024 01:11:01 -0700 (PDT)
+        Mon, 24 Jun 2024 02:12:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zawszadU;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QRnMNK62;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sLemc-0007HQ-Lg; Mon, 24 Jun 2024 04:10:38 -0400
+	id 1sLfkY-0002c1-9w; Mon, 24 Jun 2024 05:12:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sLema-0007Gb-KD
- for qemu-arm@nongnu.org; Mon, 24 Jun 2024 04:10:36 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1sLfkV-0002Jx-KQ; Mon, 24 Jun 2024 05:12:31 -0400
+Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sLemZ-00009e-0H
- for qemu-arm@nongnu.org; Mon, 24 Jun 2024 04:10:36 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-42179dafd6bso29282115e9.0
- for <qemu-arm@nongnu.org>; Mon, 24 Jun 2024 01:10:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1sLfkT-000429-L7; Mon, 24 Jun 2024 05:12:31 -0400
+Received: by mail-ot1-x330.google.com with SMTP id
+ 46e09a7af769-6f9b213ebf9so1639906a34.1; 
+ Mon, 24 Jun 2024 02:12:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719216633; x=1719821433; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4RTAQwadnmzU+2BsFPLzaRXRc6gtw+sJYjl6MK8WhZU=;
- b=zawszadUYbmpYjsZomjFz3OYZsDOx8WgpgXB+xyMbOGJU1EcqNdp4Z04aVNRpWcA+k
- QYWsX/OpO0gtJAgAEEpO5su0JKrVTUS7YHvORViB+75JtIslLhXElqdlVGm8qHLfUj3d
- z41b3d5pWdFcYPKKj3E401IeDZDDhZOUxiyW1KgEa6KjYKETalpE/IRUBrIkbKaZ291t
- tZc1lPIQmwW//n5SawXz2MrD02WGvJIeDaQhJKAUycAAUONya77GKrTRdd7K4AxwtF4/
- ARcUZAhtX52ZJ046UodQ761oWCxtoUlzDRJBTpqOE998X4Q3vnClso45WiCEnFAWQhrg
- f89A==
+ d=gmail.com; s=20230601; t=1719220346; x=1719825146; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=rQmGJCx2a/QLm1eOxOqwGqqV3/kxCAgqSMcL+my6qVo=;
+ b=QRnMNK621DHzfV1AVpEx/PvSQysO8NSrX+RfsJgjwaKoe3vi2eJcn/fjrABwK+1YdQ
+ nEcBj5ee81+BK9+eT2HPki+okrFsyTRqvqoKEirI6UdcUUPTT+eq3B2uR/V3TmpSxgLM
+ ubC113rRwYHWcgfz1s2e5TS4bLnNxiZJ4GmTbXdTY2a35jEm2F+RmOXCehI3YdwvuSQV
+ ipDUWoSHAtr8iy5Jgi0I19y3rX2ofcsP6li/xln5NoPQiVUrexdAkFmv6DHxhbD9uEpn
+ bbqIY9rGAOU5VRtrgY7+sG1t+Yzc5RoxO4f613M02U0Yb1/j8uAawS6UG6Ob0Yt1iT7c
+ BewQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719216633; x=1719821433;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4RTAQwadnmzU+2BsFPLzaRXRc6gtw+sJYjl6MK8WhZU=;
- b=A/k7CVUFG7TzIET98bQPznMiQ9uTeULtnLs1sOHSg92WR5GYvhJFHa4Uic5thvRpmj
- 0BN/y5rrkWWyk7YZh0/Ptcnq1AuROL90IBJ9lwRo214trETF/xRbVHR1i0Oi+MZUHXzJ
- STG76d0p7vyIw4qJ9EcYEBJfJp/ntaHV0wq4hZXMD5VEI4YNjfDDOlHLxGTTpu1SXmlR
- jqbqRh0a6DFSIaVJY8AFUrwlZYnGASt9M1Wdt3ucCrHo5+x7VG9wZ/sXWedmjRRzxSL0
- EmZK3vPga8l4cJZcu3Mw4O+XqgRfMkKhP5AWGwJ/RVBfq0LiSc+izh5kPbHyU8Idh3DC
- zIbQ==
-X-Gm-Message-State: AOJu0Yyq0Rhy9CW4Ca2cC3eIOSQFbuvgurrUSXVCkB/sdtp/ubWkCp9p
- 1Ma4X5t2Gd5N8UrStQh7SIKe7dfvJYJNeXB4ezF5VqWVKZ6rYH72la0LzSO3J/Y=
-X-Received: by 2002:a05:600c:470e:b0:421:79b5:6d84 with SMTP id
- 5b1f17b1804b1-42489540d0fmr42327055e9.17.1719216633255; 
- Mon, 24 Jun 2024 01:10:33 -0700 (PDT)
-Received: from [192.168.69.100] (bd137-h02-176-184-46-22.dsl.sta.abo.bbox.fr.
- [176.184.46.22]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-424817b6121sm125415505e9.27.2024.06.24.01.10.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Jun 2024 01:10:32 -0700 (PDT)
-Message-ID: <ba81d71b-ddda-4b17-af3d-2e4d7b46e554@linaro.org>
-Date: Mon, 24 Jun 2024 10:10:29 +0200
+ d=1e100.net; s=20230601; t=1719220346; x=1719825146;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=rQmGJCx2a/QLm1eOxOqwGqqV3/kxCAgqSMcL+my6qVo=;
+ b=ldHMmoVEm+M4Obji+Cw5URotGldr8tAmkICnj7ZZYm5DFM8cKZ84nYbt3nycc2Xuyn
+ 8Dq9boeFtBLLemUWvFgzPwAL3zRU0vVMrw/LNwqzfHCj6X8VRlkCaJQvblQiOZ1j+K3l
+ CeZehRcUrVTyoNX9iAwT9yaHPkWXTLKHWbs8/e2na/8s4VTLNuP3W9ELm0iZZqJ28tGD
+ DIDIrQvukx6vCQJLbY70OmdEMC4FPu2KxRQN4lKKxF+0uBc3KTXZodwgM5bY7GqdH8Ya
+ NKtLA39b1tnJiOAfefoCwVj+zV0O+00u0mXg1zR/UK8oQcTpT9JS0pcPb5vblJvhWRvd
+ /KhQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUG314ktbal09OnPUenvGyZ7X0VO/FOktgvKNBGzYW5ACoUvnZUWkiz1lLwVsMJynXTaLk8XhnAccA0XAfGxbYUEDLv
+X-Gm-Message-State: AOJu0Yws4l9etAiKfe59TyxjyZgrmaYRxs3tT+s5+sfMu0805nE4XQY9
+ ZENb44tjbIYuKp6TgkF1SXd1NUABnja+PGazEVWaHNwrR7CjfOkth1i/TuBtNfCt/bFFcRlceZ4
+ 8ez5leqF/5qec9yFitY/eRFErnp8=
+X-Received: by 2002:a9d:6e04:0:b0:700:b405:dac2 with SMTP id
+ 46e09a7af769-700b405dbe4mr1258600a34.35.1719220346045; Mon, 24 Jun 2024
+ 02:12:26 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/2] tests/avocado: make sbsa-ref working with >1 core
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Radoslaw Biernacki <rad@semihalf.com>, Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Ard Biesheuvel <ardb+tianocore@kernel.org>,
- Rebecca Cran <rebecca@bsdio.com>
-References: <20240620-b4-new-firmware-v3-0-29a3a2f1be1e@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240620-b4-new-firmware-v3-0-29a3a2f1be1e@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+References: <20240519094106.2142896-1-rayhan.faizel@gmail.com>
+ <CAFEAcA_zBhe+HxOqtAzWSCbzApEhknr+NeheA1uLj641EXMM5w@mail.gmail.com>
+In-Reply-To: <CAFEAcA_zBhe+HxOqtAzWSCbzApEhknr+NeheA1uLj641EXMM5w@mail.gmail.com>
+From: Rayhan Faizel <rayhan.faizel@gmail.com>
+Date: Mon, 24 Jun 2024 14:42:14 +0530
+Message-ID: <CAKUh+QfrT3SjxHA0Y5fERwnTnqKKbJg9SFb=5J5pfbci0asjLQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/3] Initial support for One-Time Programmable Memory
+ (OTP) in BCM2835
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, philmd@linaro.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::330;
+ envelope-from=rayhan.faizel@gmail.com; helo=mail-ot1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -131,24 +124,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7oyRnxIk4Y3W
+X-TUID: U3hdJNqcK6CH
 
-On 20/6/24 12:19, Marcin Juszkiewicz wrote:
-> Recent changes made sbsa-ref crash when more than 1 cpu core was used.
-> We handle it in firmware now so one patch updates it to the working
-> snapshot (TF-A 2.11 + EDK2 snapshot + EDK2-platforms snapshot).
-> 
-> Other change drops "-smp 1" from CI to make sure we test default setup
-> of sbsa-ref.
-> 
-> Previous firmware worked with 1 cpu by pure luck probably.
+Hi,
 
+The patch series is still not merged.
 
-> Marcin Juszkiewicz (2):
->        tests/avocado: update firmware for sbsa-ref
->        tests/avocado: use default amount of cores on sbsa-ref
-
-Series:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+On Thu, May 30, 2024 at 6:57=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org> wrote:
+>
+> On Sun, 19 May 2024 at 10:42, Rayhan Faizel <rayhan.faizel@gmail.com> wro=
+te:
+> >
+> > All BCM2835 boards have on-board OTP memory with 66 32-bit rows. Usuall=
+y,
+> > its contents are accessible via mailbox commands.
+> >
+> > [Changes in v3]
+> >
+> > - Forgot to replace constant with macro in one particular spot.
+> >
+> > [Changes in v2]
+> >
+> > - Replace read/write with get/set in bcm2835_otp.c.
+> > - Use impl instead of valid in bcm2835_otp.c.
+> > - Replace all constant values with macros defined in bcm2835_otp.h.
+> > - Change memory region size of OTP device to 0x80.
+> > - After further testing on a real Raspberry Pi 3, I noticed a few thing=
+s
+> > contrary to my initial assumptions:
+> > -- The customer OTP lock bit is bit 6 of row 32, NOT bit 30 of row 30. =
+This is
+> > currently undocumented to my knowledge.
+> > -- The above lock indeed applies to the private key as well.
+> >
+> > Rayhan Faizel (3):
+> >   hw/nvram: Add BCM2835 OTP device
+> >   hw/arm: Connect OTP device to BCM2835
+> >   hw/misc: Implement mailbox properties for customer OTP and device
+> >     specific private keys
+>
+>
+>
+> Applied to target-arm.next, thanks.
+>
+> -- PMM
+--=20
+Rayhan Faizel

@@ -1,113 +1,91 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp430725njc;
-        Mon, 24 Jun 2024 06:37:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVwGEy+x1YvHBv6MujB3flqdQUPAybF2nbTO+5IzCC0elifg2wmXVp9b3J+QGgY8+6TzdWWb2qud6iN4PdpAPpF8LxoOJIK
-X-Google-Smtp-Source: AGHT+IFnZzNBvZwR8RUCh+tfYMon101UFz0I3QCusYlibI2CYmcKRexItbkDChpscacimTirR1tv
-X-Received: by 2002:a05:620a:240a:b0:79a:2fcb:ed61 with SMTP id af79cd13be357-79bfd665c5amr100390585a.15.1719236228615;
-        Mon, 24 Jun 2024 06:37:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719236228; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp426855njc;
+        Mon, 24 Jun 2024 06:19:39 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVYu4bwN1XeQ4oRMBhp/iyKPDbNRqzCg1il5m5rJ0sPf+dsjXSNoCGYzbEfe3pt9Xm5afsW7RUz5GhqIp3TOkmbboFZPkSG
+X-Google-Smtp-Source: AGHT+IECbWTL6ibFPcxGrBkFDVnMJ9V7jDeR5XBg7Te9XOCe/KR2SDhh1C5DlY1QtrB0jMj5+O8u
+X-Received: by 2002:a05:620a:1983:b0:795:3cff:3b01 with SMTP id af79cd13be357-79be6f23e1amr668298385a.68.1719235179356;
+        Mon, 24 Jun 2024 06:19:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719235179; cv=none;
         d=google.com; s=arc-20160816;
-        b=OXAguv+tsN8ZNu2a8UDDSyipWtKySOmTA3MUg7GTHXW1uIA9+804CiIj0h8YLmgSF9
-         reNP4IFGb8ce41NJyEl0Mr49Bhr9mFaZ0YFunCLeaUVBei4nCj9O8jQvNokpcZWXJqMA
-         HTFv+EI1LF3PTGPKPD6kylpMEmHzbG1lZrJErGGHhBIJ80cxf3Lbio1s+rosaNcCxevN
-         ZhelZVt4E+nWqMopU/T60aGKa29y6ZIckCIu9VhOY77T0zhocNng9TF8qZJy3bnwMvgF
-         lflzUYTKPmOrZCz/mKYhoJkBlhG2WbLrx5mCfm9XseyjXgzFS765PmpksMs1pyNz9SVJ
-         Q2mQ==
+        b=0QDQBAnW1QEXZYopcqFORE0BIOn1iLAUjaA0gg62hvTxkt21RuswCLiuHHJnUJwhjv
+         iMIrUKSiTNNs0rwvCW5No/I9G10WEgfHEG3apWSAzpNmk5xeCdrjE/WHAa7BDIMxSUbx
+         M9MDv/T1I90K33zYHPEv9Is8tO+qdpBLDgAGV078C0w2xS27MecGxpZTomiDGB+iXhyV
+         kYFXmng/ogwq8cxqyEiUc9tO+BJ98fiD55DmoeDgPfeXCJ+PoWVkiM/v1s9/BDBQ/Yde
+         5PnrA3SoMvg2UvDL7nYljn33JNgciMtrqh9JwmFO494qOL9qqW1AiboqzjLBVntvQHix
+         qGdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=MS+wQnVORVY3/VovjZL2n0flSwot/Y7njZyC7HF+76E=;
-        fh=ZUvbNIwsYY2kiV4ka9cCSuqKttO8d0cuZo3BemIU+lc=;
-        b=mn7Yaw8BNzlWlSQNJeOtiIJLDhKH9GvOd/flxs5KnrW77eJwX0XBLtMsWjUSAaTLVW
-         HfP67fOr9VyJ5PQ7g/NlgC2AqYVO00ddA3kX9xUWrX06NKD9saRA0OK2Ekz65uhdGra5
-         zY3cZ70IjkIerHP+ePNglaPYVpzSCsrSghkBmD6nR4n4jHiVQrs3C3rCbQVSJY1D4nNZ
-         3CfQuBcJxNtiGQ2ve3iBKuyfhmkEIgHzsV8D59IP1ZR1FRrTqoC+CDWqUgVXWJHWdhyL
-         kjG6eHwIiEeW6xERLs8USDjpYZRALlEbzvA24G/njAULQBf4wQamk3+PwA0/vCbRlYl0
-         JsHw==;
+         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
+         :message-id:content-transfer-encoding:mime-version:subject:date:from;
+        bh=djrg/t59ErLFlD4Qo4KkokKu0OyywkOUAaQMISHZYWE=;
+        fh=2XNni5tFqqNsYuVOJGxzVTMSzHzZnaSMOOPrr5cXMU4=;
+        b=jQHPsTDT3pWA8wGPH32w/FHU2Fx5UKU9m7UjGmujh2Q/VmDymQD4TebABwKMQJ43RE
+         IB3On6hS4YchLAkhqA2xA0eVPZYGrAYFS9OkgiC5oXv/ZyjxIa20GQ/uHUapp1q65Zbb
+         k4mp9IAgwRLY4LrF0AP+hSzqtJboBUejWz3m4Md51O6G15i/o24eXePMGh4KTCGw+Nti
+         75BajOo+twRib0lzq4eS3Q0DLmB1a8c9RhJVXYtmMYlgl/bXwlvHfaSM4W1NkrTWDQ5F
+         kBst2S0SJWMiv4OZbcFzIks4jSwI6PhUk5tt3x4U4nD8jvotEBN7cVvHiplToTFuRCzu
+         CZWw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E2GpebTa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79bce8ab890si851480085a.210.2024.06.24.06.37.07
+        by mx.google.com with ESMTPS id af79cd13be357-79be5098d77si448673685a.758.2024.06.24.06.19.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2024 06:37:08 -0700 (PDT)
+        Mon, 24 Jun 2024 06:19:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E2GpebTa;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sLjsJ-0008HS-0j; Mon, 24 Jun 2024 09:36:51 -0400
+	id 1sLjWt-0001Ii-Ec; Mon, 24 Jun 2024 09:14:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sLjsH-0008HD-Kv
- for qemu-devel@nongnu.org; Mon, 24 Jun 2024 09:36:49 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sLjsF-0001yD-Tb
- for qemu-devel@nongnu.org; Mon, 24 Jun 2024 09:36:49 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-57a30dbdb7fso5448224a12.3
- for <qemu-devel@nongnu.org>; Mon, 24 Jun 2024 06:36:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719236206; x=1719841006; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=MS+wQnVORVY3/VovjZL2n0flSwot/Y7njZyC7HF+76E=;
- b=E2GpebTahFgcfSV/ZEjZKgiaFVRM+OhLKSmTuKtAoma7x5m5CbbGlumoDH7HAA1Pfp
- BGhCoNy8jSyNilBnS4aONhoLacLI1sesvjpzbGqgbc4mlwLPe5UFk0SMN0DNWHDFGL8p
- 09aWnFvHbl+TBxRqyfpauq5DvBlXJ4lO58YmDB0Rj6215HlThSWh1M2eany4OpwILjw0
- pTV9LDX9w/q6lcPZcMjrMHRUfusmw4NUfd5o6be0ynAsdmNzQm5/P/b1lpjt3RLq+tte
- +QJ9okw9P3DMp60/K84kASwEnteDp4iODqqIphtn6iSBOOhlopUK3fYQTIqe2/X+B3JT
- Hs7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719236206; x=1719841006;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=MS+wQnVORVY3/VovjZL2n0flSwot/Y7njZyC7HF+76E=;
- b=VLgCNtr5WgQtbaZcvwv8JzntckMm8OOY7X4/QMagOHmRjDcRtjOeImZXCKfIg0z0a3
- mTZgS4sKfW+KJEU3UXb6Z/n/MZyW/u5nxP+iC7Y8YVHc1pK3Of0Vyz4p41sRAaowSaX7
- 7KbwQWmrvv+LAv2W+cHhrfhUBydreowFlp0iOhvo4tF/zV1uu42YuULPHi0OTZ4aqhK3
- 6srqa8o10Dcn/nSuA8Rw1jkr8PneZHyXh0hIo0Xo8EF3t/nmEM8IR3Ur6bllMJrsDBzE
- p49MU1twpji2PQCvaI13dZT978klYr6c0OweN49dcJHAoe2PD7XteKi1J9ODPMZsWtaN
- 1qeg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWCQXS1cujSxm3Cnk8FYB5nMJ+j20d/EWu5yYtDB9FWUe+WH0Of9Cjakl2EJWvCuiXzBdTX4uNynVcYQysUx8bXlquSfcw=
-X-Gm-Message-State: AOJu0YzANRxxfpf1UH3/tS6S3NPsNAIG3W+m+MPnORS/9PWI9uJDKCHO
- EICd/OH4eJtN0Pk0ls/LI4XuvCiIYoFntASeBgHJq6B5zsDI9fawCXJFwTQunqU+LHDVfFYKQnS
- Q9FdMcqwNJiHmVisacrmrb9XySMow0qWcn1YooA==
-X-Received: by 2002:a50:c058:0:b0:572:4fc3:3a28 with SMTP id
- 4fb4d7f45d1cf-57d4a28e8bcmr4060764a12.23.1719236205654; Mon, 24 Jun 2024
- 06:36:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sLjWr-0001Hb-Vn; Mon, 24 Jun 2024 09:14:42 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sLjWq-0004sc-AX; Mon, 24 Jun 2024 09:14:41 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 3F5D8261A90;
+ Mon, 24 Jun 2024 15:14:38 +0200 (CEST)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id RknKwESWfuaG; Mon, 24 Jun 2024 15:14:36 +0200 (CEST)
+Received: from applejack.lan (83.11.22.244.ipv4.supernova.orange.pl
+ [83.11.22.244])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 76FAC261A96;
+ Mon, 24 Jun 2024 15:14:34 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Date: Mon, 24 Jun 2024 15:14:23 +0200
+Subject: [PATCH v2 2/2] tests/avocado: add test for default sbsa-ref cpu
 MIME-Version: 1.0
-References: <20240619002218.926674-1-nicolinc@nvidia.com>
-In-Reply-To: <20240619002218.926674-1-nicolinc@nvidia.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Jun 2024 14:36:34 +0100
-Message-ID: <CAFEAcA8MnL8+TKHsCZ2c18g0+-KyL1X4PeebFo88jQu-vU-Y5w@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/smmu-common: Replace smmu_iommu_mr with
- smmu_find_sdev
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240624-b4-move-to-freebsd-v2-2-64ea7b04998f@linaro.org>
+References: <20240624-b4-move-to-freebsd-v2-0-64ea7b04998f@linaro.org>
+In-Reply-To: <20240624-b4-move-to-freebsd-v2-0-64ea7b04998f@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
+ Radoslaw Biernacki <rad@semihalf.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, 
+ Beraldo Leal <bleal@redhat.com>, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+X-Mailer: b4 0.13.0
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,23 +100,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cahYnlUOidXR
+X-TUID: LNKjT+sYNWdp
 
-On Wed, 19 Jun 2024 at 01:22, Nicolin Chen <nicolinc@nvidia.com> wrote:
->
-> The caller of smmu_iommu_mr wants to get sdev for smmuv3_flush_config().
->
-> Do it directly instead of bridging with an iommu mr pointer.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> ---
->  hw/arm/smmu-common.c         |  8 ++------
->  hw/arm/smmuv3.c              | 12 ++++--------
->  include/hw/arm/smmu-common.h |  4 ++--
->  3 files changed, 8 insertions(+), 16 deletions(-)
+We changed sbsa-ref cpu several times already and may do it again in a
+future. To newer core or to enable/disable some properties.
 
+This change switches Neoverse-N2 tests to 'let test default cpu' ones.
 
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ tests/avocado/machine_aarch64_sbsaref.py | 29 ++++++++++++++++-------------
+ 1 file changed, 16 insertions(+), 13 deletions(-)
 
-Applied to target-arm.next, thanks.
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index d52f89f756..0e96e7ea16 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -115,7 +115,7 @@ def test_sbsaref_edk2_firmware(self):
+     # This tests the whole boot chain from EFI to Userspace
+     # We only boot a whole OS for the current top level CPU and GIC
+     # Other test profiles should use more minimal boots
+-    def boot_alpine_linux(self, cpu):
++    def boot_alpine_linux(self, cpu=False):
+         self.fetch_firmware()
+ 
+         iso_url = (
+@@ -128,12 +128,14 @@ def boot_alpine_linux(self, cpu):
+ 
+         self.vm.set_console()
+         self.vm.add_args(
+-            "-cpu",
+-            cpu,
+             "-drive",
+             f"file={iso_path},format=raw",
+         )
+ 
++        # let allow test which will use default cpu of platform
++        if cpu:
++            self.vm.add_args("-cpu", cpu)
++
+         self.vm.launch()
+         wait_for_console_pattern(self, "Welcome to Alpine Linux 3.17")
+ 
+@@ -144,12 +146,12 @@ def test_sbsaref_alpine_linux_cortex_a57(self):
+         """
+         self.boot_alpine_linux("cortex-a57")
+ 
+-    def test_sbsaref_alpine_linux_neoverse_n1(self):
++    # Let test whichever cpu is used as default
++    def test_sbsaref_alpine_linux_default(self):
+         """
+-        :avocado: tags=cpu:neoverse-n1
+         :avocado: tags=os:linux
+         """
+-        self.boot_alpine_linux("neoverse-n1")
++        self.boot_alpine_linux()
+ 
+     def test_sbsaref_alpine_linux_max_pauth_off(self):
+         """
+@@ -178,7 +180,7 @@ def test_sbsaref_alpine_linux_max(self):
+     # This tests the whole boot chain from EFI to Userspace
+     # We only boot a whole OS for the current top level CPU and GIC
+     # Other test profiles should use more minimal boots
+-    def boot_freebsd(self, cpu):
++    def boot_freebsd(self, cpu=False):
+         self.fetch_firmware()
+ 
+         img_url = (
+@@ -191,12 +193,14 @@ def boot_freebsd(self, cpu):
+ 
+         self.vm.set_console()
+         self.vm.add_args(
+-            "-cpu",
+-            cpu,
+             "-drive",
+             f"file={img_path},format=raw",
+         )
+ 
++        # let allow test which will use default cpu of platform
++        if cpu:
++            self.vm.add_args("-cpu", cpu)
++
+         self.vm.launch()
+         wait_for_console_pattern(self, "Welcome to FreeBSD!")
+ 
+@@ -207,13 +211,12 @@ def test_sbsaref_freebsd_cortex_a57(self):
+         """
+         self.boot_freebsd("cortex-a57")
+ 
+-    # We use Neoverse-N2 as default cpu
+-    def test_sbsaref_freebsd_neoverse_n2(self):
++    # Let test whichever cpu is used as default
++    def test_sbsaref_freebsd_default(self):
+         """
+-        :avocado: tags=cpu:neoverse-n2
+         :avocado: tags=os:freebsd
+         """
+-        self.boot_freebsd("neoverse-n2")
++        self.boot_freebsd()
+ 
+     def test_sbsaref_freebsd_max_pauth_off(self):
+         """
 
--- PMM
+-- 
+2.45.2
+

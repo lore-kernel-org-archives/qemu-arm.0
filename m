@@ -1,130 +1,144 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp426421njc;
-        Mon, 24 Jun 2024 06:17:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUSIVqmfskws74C3p7bzEw7euHXRxbW/qe/TL2++GjQZXsYnHArjzp7zTpH4hPW8W4IzulMo9T606Uf+VDPUWeLWg1GmV4L
-X-Google-Smtp-Source: AGHT+IFcxA292HMsLedOgHc5i4nttpwAcae9kQtI4Ze9zWDbBRRqJ9rfaCkMkJS6g/19pXdoMRda
-X-Received: by 2002:a05:6214:d2:b0:6b0:6965:511 with SMTP id 6a1803df08f44-6b5409a53d2mr46438556d6.7.1719235055604;
-        Mon, 24 Jun 2024 06:17:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719235055; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp430725njc;
+        Mon, 24 Jun 2024 06:37:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVwGEy+x1YvHBv6MujB3flqdQUPAybF2nbTO+5IzCC0elifg2wmXVp9b3J+QGgY8+6TzdWWb2qud6iN4PdpAPpF8LxoOJIK
+X-Google-Smtp-Source: AGHT+IFnZzNBvZwR8RUCh+tfYMon101UFz0I3QCusYlibI2CYmcKRexItbkDChpscacimTirR1tv
+X-Received: by 2002:a05:620a:240a:b0:79a:2fcb:ed61 with SMTP id af79cd13be357-79bfd665c5amr100390585a.15.1719236228615;
+        Mon, 24 Jun 2024 06:37:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719236228; cv=none;
         d=google.com; s=arc-20160816;
-        b=rxt/Yetg5ygVSH5Xq+QxUNRxzRscpcSMH1mrVMMLHc8bjj7cWhlzi9tAiVxOwtOLeb
-         +8xAKCn/Q8ydy47dHgL4NAcL9OsyTWj0ZXXqPZqbwnCZCsU7Vg0M7omgSn5cuzOzX+NL
-         GDX/jO1vaUGIL7vt0mXuy0S7IThx0lc1AGWaa+7MQbVNkHZ3WnIct5l3wJeYMvW8FY/D
-         E/e+Emc518TyXffSyBZIoMyDYkPJyloJ3JzlIinNjV5Z6UK/QFAOqUD8PsLw+CRbrkq5
-         yNDwnfXR+sRQiVXYHutqgyyKPBwyazQWojjhm2RiZxYGaLZH5t4J3HITRF6h03McU/x5
-         LMNg==
+        b=OXAguv+tsN8ZNu2a8UDDSyipWtKySOmTA3MUg7GTHXW1uIA9+804CiIj0h8YLmgSF9
+         reNP4IFGb8ce41NJyEl0Mr49Bhr9mFaZ0YFunCLeaUVBei4nCj9O8jQvNokpcZWXJqMA
+         HTFv+EI1LF3PTGPKPD6kylpMEmHzbG1lZrJErGGHhBIJ80cxf3Lbio1s+rosaNcCxevN
+         ZhelZVt4E+nWqMopU/T60aGKa29y6ZIckCIu9VhOY77T0zhocNng9TF8qZJy3bnwMvgF
+         lflzUYTKPmOrZCz/mKYhoJkBlhG2WbLrx5mCfm9XseyjXgzFS765PmpksMs1pyNz9SVJ
+         Q2mQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:content-transfer-encoding
-         :mime-version:message-id:date:subject:from;
-        bh=NrevwmYejJfVyW1DPyTTrBK2c4yBAb2dYSYDx2GrhG0=;
-        fh=2XNni5tFqqNsYuVOJGxzVTMSzHzZnaSMOOPrr5cXMU4=;
-        b=CSxEAdyRrLRSK3T2FPWVwPChs7wcQJYeUX8T+5kcFsy6u3F10yWbrx1IegekfFzgsm
-         BQW3OXmPNIh3r6wV9pUeoOpOiwQGqrwhJXwgxSLTQaDnlSaL3fSkMdA3t6qRl8BM6jCy
-         oPx9MyhAiBqcSOGM6wq8q/rSQSq2c08c756uCY7GesmkIZLAgVEWeO+MCfjsMx/kEs4P
-         +pBSJbXi2DcF/EK2tWh9i+iqsmdzNWn+2iGSEp1ZTgXV02l7G0Lx+N1L3gUw3d0mado4
-         4pP8Ns72LSBVsEyn05M5lJ9EYyZWOZtgpPzbnc88VHnxhstrFXM+YIub6+fRkxzME7n0
-         gazQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=MS+wQnVORVY3/VovjZL2n0flSwot/Y7njZyC7HF+76E=;
+        fh=ZUvbNIwsYY2kiV4ka9cCSuqKttO8d0cuZo3BemIU+lc=;
+        b=mn7Yaw8BNzlWlSQNJeOtiIJLDhKH9GvOd/flxs5KnrW77eJwX0XBLtMsWjUSAaTLVW
+         HfP67fOr9VyJ5PQ7g/NlgC2AqYVO00ddA3kX9xUWrX06NKD9saRA0OK2Ekz65uhdGra5
+         zY3cZ70IjkIerHP+ePNglaPYVpzSCsrSghkBmD6nR4n4jHiVQrs3C3rCbQVSJY1D4nNZ
+         3CfQuBcJxNtiGQ2ve3iBKuyfhmkEIgHzsV8D59IP1ZR1FRrTqoC+CDWqUgVXWJHWdhyL
+         kjG6eHwIiEeW6xERLs8USDjpYZRALlEbzvA24G/njAULQBf4wQamk3+PwA0/vCbRlYl0
+         JsHw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=E2GpebTa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b51ef58f79si84443896d6.568.2024.06.24.06.17.35
+        by mx.google.com with ESMTPS id af79cd13be357-79bce8ab890si851480085a.210.2024.06.24.06.37.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2024 06:17:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Jun 2024 06:37:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=E2GpebTa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sLjWs-0001Hi-8X; Mon, 24 Jun 2024 09:14:42 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sLjsJ-0008HS-0j; Mon, 24 Jun 2024 09:36:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sLjWq-0001Fg-RK; Mon, 24 Jun 2024 09:14:40 -0400
-Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sLjWo-0004rd-N6; Mon, 24 Jun 2024 09:14:40 -0400
-Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 23E22260662;
- Mon, 24 Jun 2024 15:14:35 +0200 (CEST)
-X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
-Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
- by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id 2XfFuepCScNn; Mon, 24 Jun 2024 15:14:33 +0200 (CEST)
-Received: from applejack.lan (83.11.22.244.ipv4.supernova.orange.pl
- [83.11.22.244])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id A1D9C260720;
- Mon, 24 Jun 2024 15:14:32 +0200 (CEST)
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH v2 0/2] tests/avocado: updates for sbsa-ref testing
-Date: Mon, 24 Jun 2024 15:14:21 +0200
-Message-Id: <20240624-b4-move-to-freebsd-v2-0-64ea7b04998f@linaro.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sLjsH-0008HD-Kv
+ for qemu-devel@nongnu.org; Mon, 24 Jun 2024 09:36:49 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sLjsF-0001yD-Tb
+ for qemu-devel@nongnu.org; Mon, 24 Jun 2024 09:36:49 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-57a30dbdb7fso5448224a12.3
+ for <qemu-devel@nongnu.org>; Mon, 24 Jun 2024 06:36:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1719236206; x=1719841006; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=MS+wQnVORVY3/VovjZL2n0flSwot/Y7njZyC7HF+76E=;
+ b=E2GpebTahFgcfSV/ZEjZKgiaFVRM+OhLKSmTuKtAoma7x5m5CbbGlumoDH7HAA1Pfp
+ BGhCoNy8jSyNilBnS4aONhoLacLI1sesvjpzbGqgbc4mlwLPe5UFk0SMN0DNWHDFGL8p
+ 09aWnFvHbl+TBxRqyfpauq5DvBlXJ4lO58YmDB0Rj6215HlThSWh1M2eany4OpwILjw0
+ pTV9LDX9w/q6lcPZcMjrMHRUfusmw4NUfd5o6be0ynAsdmNzQm5/P/b1lpjt3RLq+tte
+ +QJ9okw9P3DMp60/K84kASwEnteDp4iODqqIphtn6iSBOOhlopUK3fYQTIqe2/X+B3JT
+ Hs7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1719236206; x=1719841006;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=MS+wQnVORVY3/VovjZL2n0flSwot/Y7njZyC7HF+76E=;
+ b=VLgCNtr5WgQtbaZcvwv8JzntckMm8OOY7X4/QMagOHmRjDcRtjOeImZXCKfIg0z0a3
+ mTZgS4sKfW+KJEU3UXb6Z/n/MZyW/u5nxP+iC7Y8YVHc1pK3Of0Vyz4p41sRAaowSaX7
+ 7KbwQWmrvv+LAv2W+cHhrfhUBydreowFlp0iOhvo4tF/zV1uu42YuULPHi0OTZ4aqhK3
+ 6srqa8o10Dcn/nSuA8Rw1jkr8PneZHyXh0hIo0Xo8EF3t/nmEM8IR3Ur6bllMJrsDBzE
+ p49MU1twpji2PQCvaI13dZT978klYr6c0OweN49dcJHAoe2PD7XteKi1J9ODPMZsWtaN
+ 1qeg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWCQXS1cujSxm3Cnk8FYB5nMJ+j20d/EWu5yYtDB9FWUe+WH0Of9Cjakl2EJWvCuiXzBdTX4uNynVcYQysUx8bXlquSfcw=
+X-Gm-Message-State: AOJu0YzANRxxfpf1UH3/tS6S3NPsNAIG3W+m+MPnORS/9PWI9uJDKCHO
+ EICd/OH4eJtN0Pk0ls/LI4XuvCiIYoFntASeBgHJq6B5zsDI9fawCXJFwTQunqU+LHDVfFYKQnS
+ Q9FdMcqwNJiHmVisacrmrb9XySMow0qWcn1YooA==
+X-Received: by 2002:a50:c058:0:b0:572:4fc3:3a28 with SMTP id
+ 4fb4d7f45d1cf-57d4a28e8bcmr4060764a12.23.1719236205654; Mon, 24 Jun 2024
+ 06:36:45 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAC1xeWYC/x3MOwqAMBBF0a3I1A5IjB/cilgk5kWn0EgiIoh7N
- 1ie4t6HEqIg0VA8FHFJkrBnqLKgeTX7AhaXTapSumqVZqt5Cxf4DOwjYJNjY7yD7Rr4uqccHhF
- e7n86Tu/7AVg415VkAAAA
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
- Radoslaw Biernacki <rad@semihalf.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Wainer dos Santos Moschetta <wainersm@redhat.com>, 
- Beraldo Leal <bleal@redhat.com>, 
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-X-Mailer: b4 0.13.0
-Received-SPF: softfail client-ip=213.251.184.221;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
+References: <20240619002218.926674-1-nicolinc@nvidia.com>
+In-Reply-To: <20240619002218.926674-1-nicolinc@nvidia.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 24 Jun 2024 14:36:34 +0100
+Message-ID: <CAFEAcA8MnL8+TKHsCZ2c18g0+-KyL1X4PeebFo88jQu-vU-Y5w@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/smmu-common: Replace smmu_iommu_mr with
+ smmu_find_sdev
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Jaun49iDgSZQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cahYnlUOidXR
 
-We want to have some non-Linux OS in testing in case one of changes keep
-Linux booting but crash elsewhere. So far OpenBSD was used for it but we
-move to FreeBSD 14.x due to longer support cycles.
+On Wed, 19 Jun 2024 at 01:22, Nicolin Chen <nicolinc@nvidia.com> wrote:
+>
+> The caller of smmu_iommu_mr wants to get sdev for smmuv3_flush_config().
+>
+> Do it directly instead of bridging with an iommu mr pointer.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> ---
+>  hw/arm/smmu-common.c         |  8 ++------
+>  hw/arm/smmuv3.c              | 12 ++++--------
+>  include/hw/arm/smmu-common.h |  4 ++--
+>  3 files changed, 8 insertions(+), 16 deletions(-)
 
-At same time we add test to run on default cpu settings. For now it is
-plain Neoverse-N2 but we are considering either disabling PAuth or going
-with 'impdef' way.
 
-Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
 
----
-Marcin Juszkiewicz (2):
-      tests/avocado: sbsa-ref: switch from OpenBSD to FreeBSD
-      tests/avocado: add test for default sbsa-ref cpu
+Applied to target-arm.next, thanks.
 
- tests/avocado/machine_aarch64_sbsaref.py | 72 +++++++++++++++++---------------
- 1 file changed, 38 insertions(+), 34 deletions(-)
----
-base-commit: c9ba79baca7c673098361e3a687f72d458e0d18a
-change-id: 20240624-b4-move-to-freebsd-aafdeb75ef38
-
-Best regards,
--- 
-Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-
+-- PMM

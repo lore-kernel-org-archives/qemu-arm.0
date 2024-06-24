@@ -1,93 +1,91 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp446373njc;
-        Mon, 24 Jun 2024 07:31:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU3T2KJMwpMkBC5kFjoFNoSOJ63+WTwTZc1nAmxj3pSLn+yiFAOZYRkWRT2ZYLLAObhvMVkyBkrc7bq32CC8m45RoJCgfSO
-X-Google-Smtp-Source: AGHT+IHN2qkl3hMAqtbRvU+4oGwr97I9tOlXbmGOFwMaja8j22cWGgidfzvAlMS6DwouYYiPogcV
-X-Received: by 2002:a05:6122:4a1b:b0:4ec:f018:ee1e with SMTP id 71dfb90a1353d-4ef6a7394ebmr2708382e0c.12.1719239483072;
-        Mon, 24 Jun 2024 07:31:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719239483; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp471880njc;
+        Mon, 24 Jun 2024 09:21:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX4Fbb+wGMyz5SuIRxCK9b8z01S5Zs++9/yFg8hOlXogsmufXIrOLtRB6AbjjWPA9TMaMwluWF+3Jj3cr9E+K/iJwsjixcz
+X-Google-Smtp-Source: AGHT+IEXSgeYVTK/dzB0khcoWpNdQztaoickJ5Ah/Be/cK8SSV38gOIVnW6TgZTJ9oF73BFtvv7z
+X-Received: by 2002:ac8:5f89:0:b0:440:ab4a:a67 with SMTP id d75a77b69052e-444d904be2dmr65375361cf.0.1719246074652;
+        Mon, 24 Jun 2024 09:21:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719246074; cv=none;
         d=google.com; s=arc-20160816;
-        b=p4FcifyI9nG1KCCWqxPB3LyiUCCfYJg9g9Btsk06bEvD+Ak/N9ZcAZZTysSydr6O+l
-         00m6xXy7cXms/WYWbSLR3zdK/oKdt6QkVTSbUQ/0ww6o2+xrDT4xwizrUE1/Hy3FdTi0
-         grkQiIt9XBkhggfBGI1KTrDFoQTG2QHjYURM1prwPQiGDQTuokBa+5NTjdpD6v8OXaP3
-         Z673O3rTWp0/xfAmT4WbPF5gJv8SebDBsGMJ2aqxBd+7kDvAzz2F9A8xR8u98P25PsKW
-         cKKDnCXwPCjjfdxbA/AEGBMTG71vHbmW/rOYMK4PH0g40qR/ipIE3EgmWWqEDV/webJG
-         h3Ag==
+        b=IfXNmlPfj9qXM5zvZeYGN9jtjzptFQpc998RYe7V4B9OLna6ZyiFDnzMPOTaYMyC//
+         gqJdFcgi57NfNrEBmjeM34YRQCjs/9DWG2K90SdkuDoGMIERpe4KL4tTWWR2qVdHMTJT
+         1OWq1fNtIYnQOoAAO5qyGcpzTbXM7ju6btaVT/LjjK/5bvOJhi4TPfMKZbIP7kEpY/k7
+         bGaLkGs7ORA+ieh/ViQBJa0gQD1WVT1SN0eKyM02L+wv/bCdCzE5dIoa6DPgMEs//zpp
+         TYc0NyzoMMBxODH7hI/6FseI4XU/2lwZ4qLNAuZm5fLCPkaZ1OSpMtNg2qOw/li+8zRM
+         r5JA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=h97R74bC8049p7vZmEF3CL3xOS8kcuBIAD3n6DJzrqU=;
-        fh=zHVD9+77Ue0EM77bAINcJcJYtUyn0AokKotS6ukS/rA=;
-        b=BblfxSTqMnQOOzNPd5YRLbvGoKgrBscqHS05DPOC27ymazPo00L0G5IB06lJlJ5jPK
-         dJgs8wimwd8cXbbFDo6eaEdJMix+H1HsxbKgW4pCuM/sMbt/AYQmb7pg4HeWSgDZAWuB
-         DLODRpST8i4OFr5iPDVUBYFpTp/tqhhzZ3TY2nYUVIW66y9Pi/f1OoyQ7l33Jpn1ehUt
-         FNGnMhEO4rfUhnHQsx7OYJrrnLrBFEjh8qAuPDF8CLzXof/xVx2H4XReOpg79+cVnf8G
-         rixhcK6DMJIxJ4dA/hJC8JroS7SBbxCrsJqFl7HyfEGsYFKVwA4ysYm5cAQGKnnFi9GS
-         R2PQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
+         :message-id:content-transfer-encoding:mime-version:subject:date:from;
+        bh=KfalCElf11Tks0xWJ3IHAUKWCZoji7uWtUG9m29/xmw=;
+        fh=2XNni5tFqqNsYuVOJGxzVTMSzHzZnaSMOOPrr5cXMU4=;
+        b=gtTlYASYDdUpTFZq5laniCGJmS0wnBFmI1YqePEXIfusDMa1EgLLZzX/cyuyH2tWv3
+         dHgAmEGCkkAjYSppugPQBO4UZbWbwU/NcnXTWGbYrN7xNKjGDpSq4cIRr/0HOluxdDcp
+         nrMszdOtbE9+SjCokNaw+rWHLTTglpoqMlDdPYvZCdPB4WX6NRjOqqRPh1F7CMEck+VK
+         gehH/A8s62Nb2N3j+YC2Yw99qh7rDX6ZuOC+ybiJwasUZVy4QRBF0en5cOjDwK58U0rJ
+         lFPAZhaQsoCYMPOq4l5BILc4rm6I2iDrNdv8wGhlfHKg4b9YN9ouZBdc5NxjMCYDxmzV
+         pPxg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4ef5877fda1si766006e0c.5.2024.06.24.07.31.22
+        by mx.google.com with ESMTPS id d75a77b69052e-444c2c06cdfsi82190371cf.328.2024.06.24.09.21.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2024 07:31:23 -0700 (PDT)
+        Mon, 24 Jun 2024 09:21:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sLkiw-00022R-Ma; Mon, 24 Jun 2024 10:31:16 -0400
+	id 1sLmRC-0000D5-Vi; Mon, 24 Jun 2024 12:21:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=voaC=N2=kaod.org=clg@ozlabs.org>)
- id 1sLkiv-00021y-9i; Mon, 24 Jun 2024 10:31:13 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sLmRB-0000CR-7V; Mon, 24 Jun 2024 12:21:01 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=voaC=N2=kaod.org=clg@ozlabs.org>)
- id 1sLkir-0005Vn-LE; Mon, 24 Jun 2024 10:31:13 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4W79PN0YL4z4wqM;
- Tue, 25 Jun 2024 00:31:04 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4W79PJ2qsTz4wbp;
- Tue, 25 Jun 2024 00:31:00 +1000 (AEST)
-Message-ID: <e246a4e5-fe45-423d-8986-88f75fe6799e@kaod.org>
-Date: Mon, 24 Jun 2024 16:30:58 +0200
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sLmR8-00022x-VB; Mon, 24 Jun 2024 12:21:00 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id E6857260662;
+ Mon, 24 Jun 2024 18:20:55 +0200 (CEST)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id 4Ket3AMKbuMr; Mon, 24 Jun 2024 18:20:53 +0200 (CEST)
+Received: from applejack.lan (83.11.22.244.ipv4.supernova.orange.pl
+ [83.11.22.244])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 5980926071B;
+ Mon, 24 Jun 2024 18:20:53 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Date: Mon, 24 Jun 2024 18:20:43 +0200
+Subject: [PATCH v3 1/2] tests/avocado: sbsa-ref: add FreeBSD tests
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/2] aspeed/soc: fix coverity issue
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20240619093508.2528537-1-jamin_lin@aspeedtech.com>
- <20240619093508.2528537-2-jamin_lin@aspeedtech.com>
- <CAFEAcA8tTHusKOR7JhyU+wwA3JJWq1o5wVaNXugw2S9SjAsESw@mail.gmail.com>
- <b013bd79-c206-446e-b482-91eeb926c70a@kaod.org>
- <CAFEAcA_fWTUpfRvYjDDXnXBoFuiZZubzVaKDbgKpmsDr98uXtw@mail.gmail.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <CAFEAcA_fWTUpfRvYjDDXnXBoFuiZZubzVaKDbgKpmsDr98uXtw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=voaC=N2=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Message-Id: <20240624-b4-move-to-freebsd-v3-1-71496bf119d4@linaro.org>
+References: <20240624-b4-move-to-freebsd-v3-0-71496bf119d4@linaro.org>
+In-Reply-To: <20240624-b4-move-to-freebsd-v3-0-71496bf119d4@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
+ Radoslaw Biernacki <rad@semihalf.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, 
+ Beraldo Leal <bleal@redhat.com>, 
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+X-Mailer: b4 0.13.0
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,57 +100,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 92SqASTykYCN
+X-TUID: LWHSD7oFySJ8
 
-On 6/24/24 4:01 PM, Peter Maydell wrote:
-> On Mon, 24 Jun 2024 at 14:58, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> On 6/24/24 2:18 PM, Peter Maydell wrote:
->>> On Wed, 19 Jun 2024 at 10:35, Jamin Lin <jamin_lin@aspeedtech.com> wrote:
->>>>
->>>> Fix coverity defect: DIVIDE_BY_ZERO.
->>>>
->>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->>>> ---
->>>>    hw/arm/aspeed_ast27x0.c | 6 ++++++
->>>>    1 file changed, 6 insertions(+)
->>>>
->>>> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
->>>> index b6876b4862..d14a46df6f 100644
->>>> --- a/hw/arm/aspeed_ast27x0.c
->>>> +++ b/hw/arm/aspeed_ast27x0.c
->>>> @@ -211,6 +211,12 @@ static void aspeed_ram_capacity_write(void *opaque, hwaddr addr, uint64_t data,
->>>>        ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
->>>>                                            &error_abort);
->>>>
->>>> +    if (!ram_size) {
->>>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>>> +                      "%s: ram_size is zero",  __func__);
->>>> +        return;
->>>> +    }
->>>> +
->>>
->>> Isn't this a QEMU bug rather than a guest error? The
->>> RAM size presumably should never be zero unless the board
->>> set the ram-size property on the SDMC incorrectly. So the
->>> SDMC device should check (and return an error from its realize
->>> method) that the ram-size property is valid,
->>
->> That's the case in aspeed_sdmc_set_ram_size() which is called from
->> the aspeed machine init routine when the ram size is set.
-> 
-> True, but if the property is never set at all then the
-> struct field will be left at whatever value it had, which
-> is 0, I think. So if that's not valid then it either needs
-> to be a different default or else the realize method should
-> complain that the property was never set.
+FreeBSD has longer support cycle for stable release (14.x EoL in 2028)
+than OpenBSD (7.3 we used is already EoL). Also bugfixes are backported
+so we can stay on 14.x for longer. Tests done on OpenBSD will now be
+done using FreeBSD.
 
-Ah, yes, and the issue has been there for while. I will send a separate
-patch for this.
+OpenBSD 7.3 stays with Cortex-A57 test for local runs only.
 
-Thanks,
+Moved from Neoverse-N1 to Neoverse-N2 as sbsa-ref defaults were changed.
 
-C.
+Timeout messages expanded to mention being affected by PAuth emulation.
 
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ tests/avocado/machine_aarch64_sbsaref.py | 75 ++++++++++++++++++++++++--------
+ 1 file changed, 56 insertions(+), 19 deletions(-)
 
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index 6bb82f2a03..bb2c098aac 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -1,4 +1,4 @@
+-# Functional test that boots a Linux kernel and checks the console
++# Functional test that boots a kernel and checks the console
+ #
+ # SPDX-FileCopyrightText: 2023-2024 Linaro Ltd.
+ # SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
+@@ -8,7 +8,7 @@
+ 
+ import os
+ 
+-from avocado import skipUnless
++from avocado import skipIf, skipUnless
+ from avocado.utils import archive
+ 
+ from avocado_qemu import QemuSystemTest
+@@ -165,7 +165,8 @@ def test_sbsaref_alpine_linux_max_pauth_impdef(self):
+         """
+         self.boot_alpine_linux("max,pauth-impdef=on")
+ 
+-    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
++    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'),
++                'Test might timeout due to PAuth emulation')
+     def test_sbsaref_alpine_linux_max(self):
+         """
+         :avocado: tags=cpu:max
+@@ -173,7 +174,6 @@ def test_sbsaref_alpine_linux_max(self):
+         """
+         self.boot_alpine_linux("max")
+ 
+-
+     # This tests the whole boot chain from EFI to Userspace
+     # We only boot a whole OS for the current top level CPU and GIC
+     # Other test profiles should use more minimal boots
+@@ -200,6 +200,9 @@ def boot_openbsd73(self, cpu):
+                                  "Welcome to the OpenBSD/arm64"
+                                  " 7.3 installation program.")
+ 
++
++    # we keep OpenBSD 7.3 on Cortex-A57 by request
++    @skipIf(os.getenv('GITLAB_CI'), 'Running on GitLab')
+     def test_sbsaref_openbsd73_cortex_a57(self):
+         """
+         :avocado: tags=cpu:cortex-a57
+@@ -207,32 +210,66 @@ def test_sbsaref_openbsd73_cortex_a57(self):
+         """
+         self.boot_openbsd73("cortex-a57")
+ 
+-    def test_sbsaref_openbsd73_neoverse_n1(self):
++
++    # This tests the whole boot chain from EFI to Userspace
++    # We only boot a whole OS for the current top level CPU and GIC
++    # Other test profiles should use more minimal boots
++    def boot_freebsd(self, cpu):
++        self.fetch_firmware()
++
++        img_url = (
++            "https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES/"
++            "14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bootonly.iso"
++        )
++
++        img_hash = "44cdbae275ef1bb6dab1d5fbb59473d4f741e1c8ea8a80fd9e906b531d6ad461"
++        img_path = self.fetch_asset(img_url, algorithm="sha256", asset_hash=img_hash)
++
++        self.vm.set_console()
++        self.vm.add_args(
++            "-cpu",
++            cpu,
++            "-drive",
++            f"file={img_path},format=raw",
++        )
++
++        self.vm.launch()
++        wait_for_console_pattern(self, "Welcome to FreeBSD!")
++
++    def test_sbsaref_freebsd_cortex_a57(self):
+         """
+-        :avocado: tags=cpu:neoverse-n1
+-        :avocado: tags=os:openbsd
++        :avocado: tags=cpu:cortex-a57
++        :avocado: tags=os:freebsd
++        """
++        self.boot_freebsd("cortex-a57")
++
++    # We use Neoverse-N2 as default cpu
++    def test_sbsaref_freebsd_neoverse_n2(self):
+         """
+-        self.boot_openbsd73("neoverse-n1")
++        :avocado: tags=cpu:neoverse-n2
++        :avocado: tags=os:freebsd
++        """
++        self.boot_freebsd("neoverse-n2")
+ 
+-    def test_sbsaref_openbsd73_max_pauth_off(self):
++    def test_sbsaref_freebsd_max_pauth_off(self):
+         """
+         :avocado: tags=cpu:max
+-        :avocado: tags=os:openbsd
++        :avocado: tags=os:freebsd
+         """
+-        self.boot_openbsd73("max,pauth=off")
++        self.boot_freebsd("max,pauth=off")
+ 
+-    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+-    def test_sbsaref_openbsd73_max_pauth_impdef(self):
++    def test_sbsaref_freebsd_max_pauth_impdef(self):
+         """
+         :avocado: tags=cpu:max
+-        :avocado: tags=os:openbsd
++        :avocado: tags=os:freebsd
+         """
+-        self.boot_openbsd73("max,pauth-impdef=on")
++        self.boot_freebsd("max,pauth-impdef=on")
+ 
+-    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+-    def test_sbsaref_openbsd73_max(self):
++    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'),
++                'Test might timeout due to PAuth emulation')
++    def test_sbsaref_freebsd_max(self):
+         """
+         :avocado: tags=cpu:max
+-        :avocado: tags=os:openbsd
++        :avocado: tags=os:freebsd
+         """
+-        self.boot_openbsd73("max")
++        self.boot_freebsd("max")
+
+-- 
+2.45.2
 

@@ -1,268 +1,135 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp526130njc;
-        Mon, 24 Jun 2024 14:17:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXyadhJEafhcuXsVcO30Y37hZZt/d/mEU5+HoEcK/gzcl0hiWo+4GhZl5L3BxWTb+6AYe1EvYQy4slZ3wxDL+5Rbf2Qbw5Y
-X-Google-Smtp-Source: AGHT+IGKGBms3CWGPYOvDSU7cf7B3piT57qIRmGg9vf0gMFV0mF0HWd2CRqBTb66Mzx5GKtQ8JBa
-X-Received: by 2002:a05:6214:e4b:b0:6b5:4249:7c5 with SMTP id 6a1803df08f44-6b542491231mr74514846d6.36.1719263852751;
-        Mon, 24 Jun 2024 14:17:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719263852; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp562345njc;
+        Mon, 24 Jun 2024 18:51:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVnSlix95kyH9H55+mH8b3+eCd1iRZobdh3DHvpab1ap9dbZFS7hFzB8i2Qv4EFS37LOReMPEswc3Y/MY24KfxFLqOOYHi2
+X-Google-Smtp-Source: AGHT+IE6vErDdw7OdnWM21xeWOydNxFXHgS2eQa156PlLig2DCvD4uPpjDUzL2a8JKm/xhxqFLiB
+X-Received: by 2002:a05:622a:1a1a:b0:43a:f0a3:815 with SMTP id d75a77b69052e-444d9387645mr68077881cf.42.1719280262008;
+        Mon, 24 Jun 2024 18:51:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719280261; cv=none;
         d=google.com; s=arc-20160816;
-        b=vzC9wtHFKpSK94vo5YM0XvTg1YJNsI8j3/Yh4/Uuej/TkrmPKUKKhfIac2NM8ZuIfC
-         wfd/cKSb9PssTU2ubuNTmm1oRvftJlLiBMY9usGCwFhHSR7BevkuuzFZzJ3AigjMvenS
-         YYtPlFBg7KNxe02MoqjRPJMyFeU3GmK0e8/NgbD8h1VLcQu4sdkNJhFuIn8P8EodPYiq
-         VouiS4JfIy5O6QiGGciYol3VXOdsa8cx6WBOLVMKNjWfTu5zjwNj6FxQjFjGncbXV5Dl
-         r1xlZCzXnFTRw/lJO1qFas6seCdNNEs9JMct2AtA4x9kmuh8Ungok7y28fG1DdplX9kI
-         7ceQ==
+        b=cKEes318crRZ6778eEu9jeIL3zf6dbrRLTY/jXBl0S0Ugs8NJlEyhpMI/f4CoG94Aw
+         mc7t5lxbrASU0hYonHwYnNxt78uHz2Hr4Xw0us0rGo0oLHb6dcIwwJ2vuEmcng/M7qpV
+         +EP3/5FXu5qkyWzsYJFuVQ6BObgmzTBWPg91Pp1/+SkSg0Juzj8eVIOaZDmgvSmEvBv8
+         qhuj0SCR73hPryxryKoG7aW03U584BNwlz4+PNTshQFOQXFSufIbQtLIKaOJaCuaRssJ
+         RnpZI9rrQJF6EjpRXLBn17Blf0Mh7TET8V2yfEzxTIB6jFac8PMTvbQoH2jPZUTKxvRV
+         UukQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=7i86XXon0m8KCh7qZ7U0z744yZvCZjERZ3E1tfuh9hU=;
-        fh=CZ5ORORtlCOIsNVb7KPzMwyuVPZbLMInkE3T+BF9NQM=;
-        b=axM180cXjcv4xYFMY7P9phW1igd8nz7ZSKM64hA7SDhMoBbyvDATNX5eXklmK6MyuT
-         1lNvvKu7LvW9OkYJ8MhCuGnlZF9cvbiQ6qKlT/zK3QBCskye+e86WFUoKWa3q+mivaUJ
-         kIeixEf8dnVcbCjRDmIOToWlwg023bCZIBK/bmJ+IXiZd6j4yv692qsyyp74h5aMv6oN
-         Wfuq7BWHeyT94ZnP6niAIZ6Y2LnHclIgYLpNShkeFPs4Iymgn5E1iid+qNRMUBoVO4nW
-         XLOXVPyB09+q3fqKTYJb1yjnkEU8fo2LiI0ZZ7TUO9Yz//vGIuLwyR36YNs8pnWHggP3
-         Qsig==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=hI5hBSEOOTYzf5gyalo5NSsR6MI0k+qqnl287HS6wlg=;
+        fh=HrGJUFnZHz7hWxi+LYnD6UY3P1PFtgkIHq6jddVMKYw=;
+        b=nE3vKEp8VXniKKDwzFQMPE9LHBJi/XRn2E7HVuZeHLbCGvE7Rf+VOW2gOjCf/1mHXV
+         qAPjt70hhF9au5Z46eqMVQyufqFKU8wYI4UhzgBdLiDCQ0KAytfHoLjhuOfBST//TN4m
+         +ZcLRsxrCSej/BSGvpowoM/EJlJhdex944G7aC05KmtrvEqcRjSCsyZbeEBsyJAUrRIt
+         a3INnchOo7652oeWHeew2prUgd2CnWHoxt2/C7DJDxbehZ3s8Vhk42qB2eMUimI3nmik
+         M/suhKbBvXCXah58qo5lZruxak7OkbThjmfRPPLp99QDpKFhf7LlSVxMVLjSuH2ljkil
+         Pj5A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WOfJ7QC+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b53f5790f0si54221366d6.147.2024.06.24.14.17.32
+        by mx.google.com with ESMTPS id d75a77b69052e-444c2b71cdasi96059591cf.199.2024.06.24.18.51.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2024 14:17:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Jun 2024 18:51:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WOfJ7QC+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sLr3w-0000Db-Ul; Mon, 24 Jun 2024 17:17:21 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sLvKW-0001pi-Mi; Mon, 24 Jun 2024 21:50:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sLr3v-0000DF-M8
- for qemu-devel@nongnu.org; Mon, 24 Jun 2024 17:17:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1sLvKU-0001nr-Vo; Mon, 24 Jun 2024 21:50:42 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sLr3t-0005Ps-Nf
- for qemu-devel@nongnu.org; Mon, 24 Jun 2024 17:17:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1719263837;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7i86XXon0m8KCh7qZ7U0z744yZvCZjERZ3E1tfuh9hU=;
- b=WOfJ7QC+bt6wNXfmdO5dtbUp4b+GJdcfZBg+zP+ROVMBVmeA6/Utr5FJZd8u7XWl5Q1yRA
- Ori6khCXJftHWM388DcaH8HtJWYoRLOIDNMVOkPPdD5vaUotnZiXbnT0WbkQiHzBkrIH7v
- PRA/N4jAqbWHaAIwmDFeA5eb9WfJ+7w=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-616-qZEDXe2KNbao6swdGKNuoA-1; Mon, 24 Jun 2024 17:17:15 -0400
-X-MC-Unique: qZEDXe2KNbao6swdGKNuoA-1
-Received: by mail-qv1-f71.google.com with SMTP id
- 6a1803df08f44-6af35481ea6so77936576d6.1
- for <qemu-devel@nongnu.org>; Mon, 24 Jun 2024 14:17:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719263835; x=1719868635;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7i86XXon0m8KCh7qZ7U0z744yZvCZjERZ3E1tfuh9hU=;
- b=T2YyX0zd0uCAR2J1Hyl/ODwS221cpvSrj3qxtDlk1NW3WIG8ED42P+AcWW6Z2DbfJ+
- y2TtyJN/SrG4O/28o3pYF+Xk5pHX0SKa3KN8J7hNPiUEN986mJM7Mq7kV/8gD/FET1mp
- U17HQ5aaS0D46nTu2jQjBj2IVzuors61/usplJEt0ZQrrO6VC1jev+MB34naUQSNb2Qb
- 3jtS8NPGio53OwAcxZ6OBPxNMHlzVZXPCb4ZXjHk4n3s4lRz7w02FBJ7bCUa3lxdozUE
- CxVj8EQ6FGZvcWNkJMUQy+41IbNBLnxuKXNKsW1BqVgfk4XaQ4IgoMWc+tInPCyvS5yj
- d2gg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXeCgWqg0gobNurbNStmTYC/z9qRpN33xgj2sk2RVnWg/4f2yXNLkMApYWK89mYngwtL3W/eOV/faIaGO6eI961wK2cFgM=
-X-Gm-Message-State: AOJu0YycrjOCa6VCwQ8M5prz6oT0shCA+IDnqWLe0k5MXbz01hsbNwd1
- 6cbzFJBt3/Rai4JY59STA92fC5B0HWNju2uab7yweHrEidh3OGSLlRX+QQPQl7Cd9jLyLAVqahC
- HXQ4rayUMi9Ja8XohriF3/hwHVRKml5util91gH+7sW6eW0ktcQzg
-X-Received: by 2002:ad4:5fcf:0:b0:6b5:46ad:b92c with SMTP id
- 6a1803df08f44-6b546adbb20mr69284136d6.1.1719263834969; 
- Mon, 24 Jun 2024 14:17:14 -0700 (PDT)
-X-Received: by 2002:ad4:5fcf:0:b0:6b5:46ad:b92c with SMTP id
- 6a1803df08f44-6b546adbb20mr69283916d6.1.1719263834639; 
- Mon, 24 Jun 2024 14:17:14 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6b51ef6e795sm37225086d6.141.2024.06.24.14.17.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Jun 2024 14:17:14 -0700 (PDT)
-Message-ID: <8a655c20-3354-4b3b-b053-e0bfd10ab26e@redhat.com>
-Date: Mon, 24 Jun 2024 23:17:11 +0200
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1sLvKT-000106-JL; Mon, 24 Jun 2024 21:50:42 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 25 Jun
+ 2024 09:50:28 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Tue, 25 Jun 2024 09:50:28 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@redhat.com>
+Subject: [PATCH v2 1/2] aspeed/soc: Fix possible divide by zero
+Date: Tue, 25 Jun 2024 09:50:27 +0800
+Message-ID: <20240625015028.1382059-2-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240625015028.1382059-1-jamin_lin@aspeedtech.com>
+References: <20240625015028.1382059-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/8] VIRTIO-IOMMU/VFIO: Fix host iommu geometry
- handling for hotplugged devices
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com,
- jean-philippe@linaro.org, peter.maydell@linaro.org, yanghliu@redhat.com,
- zhenzhong.duan@intel.com
-Cc: alex.williamson@redhat.com, jasowang@redhat.com, pbonzini@redhat.com,
- berrange@redhat.com
-References: <20240614095402.904691-1-eric.auger@redhat.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-In-Reply-To: <20240614095402.904691-1-eric.auger@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.207,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /nTa2qeIdLP4
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: oV0LsVmoI8Xe
 
-On 6/14/24 11:52 AM, Eric Auger wrote:
-> This series is based on Zhenzhong HostIOMMUDevice:
-> 
-> [PATCH v7 00/17] Add a host IOMMU device abstraction to check with vIOMMU
-> https://lore.kernel.org/all/20240605083043.317831-1-zhenzhong.duan@intel.com/
-> 
-> It allows to convey host IOVA reserved regions to the virtio-iommu and
-> uses the HostIOMMUDevice infrastructure. This replaces the usage of
-> IOMMU MR ops which fail to satisfy this need for hotplugged devices.
-> 
-> See below for additional background.
-> 
-> In [1] we attempted to fix a case where a VFIO-PCI device protected
-> with a virtio-iommu was assigned to an x86 guest. On x86 the physical
-> IOMMU may have an address width (gaw) of 39 or 48 bits whereas the
-> virtio-iommu used to expose a 64b address space by default.
-> Hence the guest was trying to use the full 64b space and we hit
-> DMA MAP failures. To work around this issue we managed to pass
-> usable IOVA regions (excluding the out of range space) from VFIO
-> to the virtio-iommu device. This was made feasible by introducing
-> a new IOMMU Memory Region callback dubbed iommu_set_iova_regions().
-> This latter gets called when the IOMMU MR is enabled which
-> causes the vfio_listener_region_add() to be called.
-> 
-> For coldplugged devices the technique works because we make sure all
-> the IOMMU MR are enabled once on the machine init done: 94df5b2180
-> ("virtio-iommu: Fix 64kB host page size VFIO device assignment")
-> for granule freeze. But I would be keen to get rid of this trick.
-> 
-> However with VFIO-PCI hotplug, this technique fails due to the
-> race between the call to the callback in the add memory listener
-> and the virtio-iommu probe request. Indeed the probe request gets
-> called before the attach to the domain. So in that case the usable
-> regions are communicated after the probe request and fail to be
-> conveyed to the guest.
-> 
-> Using an IOMMU MR Ops is unpractical because this relies on the IOMMU
-> MR to have been enabled and the corresponding vfio_listener_region_add()
-> to be executed. Instead this series proposes to replace the usage of this
-> API by the recently introduced PCIIOMMUOps: ba7d12eb8c  ("hw/pci: modify
-> pci_setup_iommu() to set PCIIOMMUOps"). That way, the callback can be
-> called earlier, once the usable IOVA regions have been collected by
-> VFIO, without the need for the IOMMU MR to be enabled.
-> 
-> This series also removes the spurious message:
-> qemu-system-aarch64: warning: virtio-iommu-memory-region-7-0: Notified about new host reserved regions after probe
-> 
-> In the short term this may also be used for passing the page size
-> mask, which would allow to get rid of the hacky transient IOMMU
-> MR enablement mentionned above.
-> 
-> [1] [PATCH v4 00/12] VIRTIO-IOMMU/VFIO: Don't assume 64b IOVA space
->      https://lore.kernel.org/all/20231019134651.842175-1-eric.auger@redhat.com/
-> 
-> Extra Notes:
-> With that series, the reserved memory regions are communicated on time
-> so that the virtio-iommu probe request grabs them. However this is not
-> sufficient. In some cases (my case), I still see some DMA MAP failures
-> and the guest keeps on using IOVA ranges outside the geometry of the
-> physical IOMMU. This is due to the fact the VFIO-PCI device is in the
-> same iommu group as the pcie root port. Normally the kernel
-> iova_reserve_iommu_regions (dma-iommu.c) is supposed to call reserve_iova()
-> for each reserved IOVA, which carves them out of the allocator. When
-> iommu_dma_init_domain() gets called for the hotplugged vfio-pci device
-> the iova domain is already allocated and set and we don't call
-> iova_reserve_iommu_regions() again for the vfio-pci device. So its
-> corresponding reserved regions are not properly taken into account.
-> 
-> This is not trivial to fix because theoretically the 1st attached
-> devices could already have allocated IOVAs within the reserved regions
-> of the second device. Also we are somehow hijacking the reserved
-> memory regions to model the geometry of the physical IOMMU so not sure
-> any attempt to fix that upstream will be accepted. At the moment one
-> solution is to make sure assigned devices end up in singleton group.
-> Another solution is to work on a different approach where the gaw
-> can be passed as an option to the virtio-iommu device, similarly at
-> what is done with intel iommu.
-> 
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/iommufd_nesting_preq_v7_resv_regions_v4
-> 
-> History:
-> v3 -> v4:
-> - add one patch to add aliased pci bus and devfn in the HostIOMMUDevice
-> - Use those for resv regions computation
-> - Remove VirtioHostIOMMUDevice and simply use the base object
-> 
-> v2 -> v3:
-> - moved the series from RFC to patch
-> - collected Zhenzhong's R-bs and took into account most of his comments
->    (see replies on v2)
-> 
-> 
-> Eric Auger (8):
->    HostIOMMUDevice: Store the VFIO/VDPA agent
->    virtio-iommu: Implement set|unset]_iommu_device() callbacks
->    HostIOMMUDevice: Introduce get_iova_ranges callback
->    HostIOMMUDevice: Store the aliased bus and devfn
->    virtio-iommu: Compute host reserved regions
->    virtio-iommu: Remove the implementation of iommu_set_iova_range
->    hw/vfio: Remove memory_region_iommu_set_iova_ranges() call
->    memory: Remove IOMMU MR iommu_set_iova_range API
-> 
->   include/exec/memory.h              |  32 ----
->   include/hw/virtio/virtio-iommu.h   |   2 +
->   include/sysemu/host_iommu_device.h |  11 ++
->   hw/pci/pci.c                       |   8 +-
->   hw/vfio/common.c                   |  10 -
->   hw/vfio/container.c                |  17 ++
->   hw/vfio/iommufd.c                  |  18 ++
->   hw/virtio/virtio-iommu.c           | 296 +++++++++++++++++++----------
->   system/memory.c                    |  13 --
->   9 files changed, 249 insertions(+), 158 deletions(-)
-> 
+Coverity reports a possible DIVIDE_BY_ZERO issue regarding the
+"ram_size" object property. This can not happen because RAM has
+predefined valid sizes per SoC. Nevertheless, add a test to
+close the issue.
 
-Applied to vfio-next.
+Fixes: Coverity CID 1547113
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+[ clg: Rewrote commit log ]
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/arm/aspeed_ast27x0.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Thanks,
-
-C.
-
-
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index b6876b4862..d14a46df6f 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -211,6 +211,12 @@ static void aspeed_ram_capacity_write(void *opaque, hwaddr addr, uint64_t data,
+     ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
+                                         &error_abort);
+ 
++    if (!ram_size) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: ram_size is zero",  __func__);
++        return;
++    }
++
+     /*
+      * Emulate ddr capacity hardware behavior.
+      * If writes the data to the address which is beyond the ram size,
+-- 
+2.25.1
 

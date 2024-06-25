@@ -1,97 +1,97 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp699217njc;
-        Tue, 25 Jun 2024 08:10:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUK3j+Z/7zbkjBMEi1lwLH+Yl7To3IaU580TUV+oJG7KOeaNGiNXLCuETW+j3ciBFhc+MX5ys3DGVxwp6ZPOqXOKhzYAmYm
-X-Google-Smtp-Source: AGHT+IEBrs0AYqH9zMXBLKUfuA2t2cEyD60C3QOFBupHHRWbCPrP0WGsL8vwcFC1J88txXi0Om91
-X-Received: by 2002:ad4:5d4e:0:b0:6b5:40c:dfcc with SMTP id 6a1803df08f44-6b53bfdc130mr106194236d6.51.1719328209494;
-        Tue, 25 Jun 2024 08:10:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719328209; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp699254njc;
+        Tue, 25 Jun 2024 08:10:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWHQ0QNtsSwuyjFooVA6H6SEOglISwZKKwL9jEKxIwCfY/gkZt+/spktcU4OccC8Yd5CvVgBtAufTYHq0iqLEi8++L66JfK
+X-Google-Smtp-Source: AGHT+IHXYdzh08qaYti8VlbIw8tPXLvenqlhiuRHR1cboyO4WobJGpZlXJKAgLmRro0ciPRF737y
+X-Received: by 2002:a05:6808:1a1e:b0:3d5:1bd8:ab17 with SMTP id 5614622812f47-3d5459b4aa5mr9580275b6e.27.1719328215435;
+        Tue, 25 Jun 2024 08:10:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719328215; cv=none;
         d=google.com; s=arc-20160816;
-        b=eDyijpTRfSviI2bKvHknnOtV/6Tk2egxVmeo20ZfOy4XNhaPuZQ6qXIwxawwOGhoCX
-         mFvCvNDl1A71hGnC9Yu6CrfdioY8bFRvg91WmW/yTsHd+0CA1Q/8j9XwYXxBbI7RbHk1
-         EpFbnbT38hGRT3KOVFq/9Y+TH4ITlprL0ZuVJQ4/xi9pe8rZUVpmi+vj8J9wk0EqXUgf
-         xFwZzzk/5nQ59oMu88udQA4GEfdK8BTASAK7TJhyY8JP+6vE/ZlIh3AGQhokttQkcbVB
-         jP/NQroky6NNyd+90SHkoC6uS039/i+JoOgqq1RYAtp4RdjB0LVnImCViGfal/xK5hqa
-         QYkA==
+        b=ZnEpIOjBglWpVmzLtBVd1FJrz/62eVZ7Q89WFC4ZBVFuILW2j3QFPWKukpJrC8B1OO
+         omiY0sVZquU1TAP71re+vncji0eZWGFE8oE+/g7HulJnlB+MplpT/CRXASymELExp2sl
+         AmxUcLvtvHLly5hP6m2f7V2P4e+SB4niP5E35/pQUEaczB9V6aEzPqdcS+hiw7UHMbQI
+         E1XeXeZqwFbnpgPEqAj6K+erKZ7Iuu7WT7UnxPsmCvP4JD9wA/bSNv3HtNw3KGhAPfJR
+         kLYCfNNmROPhkFDbr50EalOv6lkD2amcmzaulaEBadSpDoMw6aVc3+S2+bf9zHz0PcYE
+         3Tqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=y1OPYRH+1jqNvqk3IUxnhH2KTsAwqrwXkGI6cFJybeA=;
-        fh=LYNMxr7Nz3T622FqKOE3zQM1mD6iN+vY99RwtOYtRy0=;
-        b=Adr92q6O68GIKBwoif3esl114K0ayoEgpyLDWVdtmzPpdiH4EvgxMIEN/qtU+bVT6S
-         1xP/jx/Mpyyr4HHLBjfIzY94nA+NGR47j6jjLogHk9lskeO4HiURz27eX4M44CtZo6fY
-         N5HwxmHSB/gjQJoF3td7h3kqA6D/gCP4bAa3KYEuhSc1hdxpdJrmGc6wbHebUg5vdHly
-         xXWufO5jOhPrkmWuZi8l7V7ZB0o24c5Sn1LPT8NEjmgJAlou7feT0kRFtWX856C3stqw
-         V1imK90Lal29M4xqmQTWl168VtrqZspyGvdCkInsqSwY+yOkMguQ3EX7KUiUnnv9hK5D
-         tCPg==;
+        bh=TlnNdGhu04ossposrlJzR1bD3NKaX/zo3I7lspvtgbQ=;
+        fh=/u5zJSmHDGKS77GEFhMC7YUUQe7hNPlXha/BlXshkFY=;
+        b=RyZAiOsqich2FKMRY7rgyVxfgtMBPmDpPT7bTxoAEwQ/01ufp/uweVNkrw89JCmIMr
+         CT8PHoqLtRsfIfRfHrIEFHlYuaZko6J/V3cBI0CdGS4r7G4aXdjnPLwX+Cgi/q2Lxd1P
+         bzRILgf99X6U4dRHizm3MvCo+qzfjoTMh0nshPnepKAaeDfHflMP5ULQmvp87RcmeD67
+         qm52WjhglspnGwE+I04jSiLtYtYWN7wTM2DgplvyyGO55Is/KW17V22KnmEcl0K0qQww
+         dyW9JJg4dliLD8NjptgzuI2EZLRp4wpz/dCu2b6gB8718ySzZKiB1MofEGSJ3w+SpmXx
+         YEYA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=EZJcknYv;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=k+euOehw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b51eceb8d3si104455056d6.19.2024.06.25.08.10.09
+        by mx.google.com with ESMTPS id 71dfb90a1353d-4ef64a27575si1049874e0c.133.2024.06.25.08.10.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jun 2024 08:10:09 -0700 (PDT)
+        Tue, 25 Jun 2024 08:10:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=EZJcknYv;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=k+euOehw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sM7nU-0001UM-Gn; Tue, 25 Jun 2024 11:09:28 -0400
+	id 1sM7n3-0001Db-7V; Tue, 25 Jun 2024 11:09:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sM7nT-0001Tm-2L
- for qemu-arm@nongnu.org; Tue, 25 Jun 2024 11:09:27 -0400
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+ id 1sM7n1-0001Ca-6L
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 11:08:59 -0400
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sM7nR-0006WI-Hd
- for qemu-arm@nongnu.org; Tue, 25 Jun 2024 11:09:26 -0400
-Received: by mail-pg1-x52d.google.com with SMTP id
- 41be03b00d2f7-6bce380eb9bso3409390a12.0
- for <qemu-arm@nongnu.org>; Tue, 25 Jun 2024 08:09:25 -0700 (PDT)
+ id 1sM7my-0006PX-Jd
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 11:08:58 -0400
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-70679845d69so1899167b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 25 Jun 2024 08:08:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1719328164; x=1719932964; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1719328135; x=1719932935; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=y1OPYRH+1jqNvqk3IUxnhH2KTsAwqrwXkGI6cFJybeA=;
- b=EZJcknYvHj4noK6B+gj6iG9ChCmUO4FIgibvBUQFQ1jsKJ61/23Z+MNzvdffp1wil5
- 32TAllwKyZxCwRsgN5LZNgJq9d4CokdkaTdgijhE6LVt92cSfwV9IknFIi1JGYvnU54b
- JtYv0zlO1Pc5hgHBzcZBD89ajtllgGuQLc4onqd3kI4n0039EHez8eQpcRekIN8aXnJ7
- sG4o95gn4RmTyG5HEVLuuXRjD3DnDxZ9XcftwV9x5hjT+0Kd/ev5immM0IQEmDU4zlAI
- e9eIGDncfCutlkh4u3nh6OBs2k2cTw5EZcz4KgJs1FZSsXqlpS5FLbeWd5zoFXzZ1bGH
- ehKQ==
+ bh=TlnNdGhu04ossposrlJzR1bD3NKaX/zo3I7lspvtgbQ=;
+ b=k+euOehwtAsnCIXdp+q1irZu49z1Z5GVos5dpwHH+ORDa34pNDHnfe0C5lnspYeRV3
+ PluWG2uAaytIyrI4WMx0u+z/LkM4eMA4bncPrRR22yUy67EoVb7HwA+I1eXWRjL6kl/i
+ 5WGVycZcQQ5HIz498vJHX0MEcBiWilpp8HlfhkcRA45Y0xs5KQkv9K8vzaK8Dnu+uZG/
+ S574oY9K2oYVDN5dh7qcq8FwpfKIBhr/2niCkpjs2MEWffZ2EmYjRzvybbIV+IxSjDR1
+ aW3Yt5fLHezBTq2Y7qvuRnrJgRewqKZVGxewh7xiuK6g0p+664Ysfp1Lu7JT5WsS3qyc
+ rJxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719328164; x=1719932964;
+ d=1e100.net; s=20230601; t=1719328135; x=1719932935;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=y1OPYRH+1jqNvqk3IUxnhH2KTsAwqrwXkGI6cFJybeA=;
- b=jHqAGVDYKyDE3NwQcStT/l9C6bY00I1/ARpGKznjkuOwKelxNSefzzNQyLd1+YlpZ9
- 70ub1kE20zBstamQKzjs2cqw9KfKS5pebQ2IQJdXaODfVJ7dhpTjrgYhZGq36DuoJoie
- HPWapm4zKcAs7XXnaeonjMELMUYwy/eftByE8XFUa0RCdytCoNMD4Jq7FXXiGAcPpNHG
- Zpn/nbj6YbC5Xb2KGgRaJ2NrHuvy98tocGqTj75MnrGlbOombA78n7ZtjwoT22D4/++O
- XC++zkprihuYtS0o4jt3agsLCykGMAJXA+/sfd6quU7KYw8Wlrx28XYP6KFNrhO5OhtT
- t+hA==
+ bh=TlnNdGhu04ossposrlJzR1bD3NKaX/zo3I7lspvtgbQ=;
+ b=FyiBZszr7yYjgyF+PfUc8h3WI6DJ8XoXoMhSeJmXgBw8FIWaHXFxHKaivRrwkLlUAZ
+ WcgKzvI7QdMGfTqs5eshdYh/B2iyBxvqDc+tv/uf80NVkrK7Bet+CNCzXWYWThAG1F2e
+ y5sBp6P6FRORD77J4WK4wPddW9vIhSpWm1YJYw/TEaJiNp1wxFIL6JHIYH31x0k6zW2Z
+ igK1tEk0U9svlU9uOsGilhjFwRMTF1TiGIs9X3KMH4PHemZTHyo/zjXBFZcX+mN8L4wu
+ P2qsoPIhwM4gieI1ywjvev7UQMK3MgKBjwsavkGhk/Vc0lUeIqp+NOxTYEtkQXNE9iV1
+ JozQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV3LxN55lpYhBNpH2DOhvn4dHViOy2EKIv2FvJT0qZjlfJu6EdlgF9LBVPvIYVkJ/TZHTxYIFNdU9nIIHMNB6gOt2Wc
-X-Gm-Message-State: AOJu0YyM9Kygfy1eDbLMXfFObeYHUXYlxU7vqSktKtOd8t4GOJlXTsMZ
- HdUd2pxW5EcRPGP/8inc+6ib9qklaqUTpTRFFX29ARhwu5KjTIUeUWTClrywv/w=
-X-Received: by 2002:a05:6a20:8914:b0:1bc:fff0:322a with SMTP id
- adf61e73a8af0-1bcfff03370mr6211022637.4.1719328163837; 
- Tue, 25 Jun 2024 08:09:23 -0700 (PDT)
+ AJvYcCWI+lml6Vo6MscWtVNpBi7WKyhMv8zc6of6VqWaDrEaHEAZuQ3ZmXZ54q0l+ZKC3YF5aQSdAn35UrI/DDGcur2DFfl3
+X-Gm-Message-State: AOJu0Yy81gRCWUO9KvQdH4QVWRSHSoOji5kldtcnlOqcXhSxt8YcxWX7
+ HRwlCMgA35BvFwQ31h55pnDW8UOnXeTeurUaQcH5m6n8bhQMdpzg5dhKKLGujgs=
+X-Received: by 2002:a05:6a00:4fcd:b0:706:8066:5cd8 with SMTP id
+ d2e1a72fcca58-70680665dc3mr7938064b3a.11.1719328134781; 
+ Tue, 25 Jun 2024 08:08:54 -0700 (PDT)
 Received: from sunil-pc.Dlink ([106.51.187.237])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-70681722219sm4142636b3a.73.2024.06.25.08.09.18
+ d2e1a72fcca58-70681722219sm4142636b3a.73.2024.06.25.08.08.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Jun 2024 08:09:23 -0700 (PDT)
+ Tue, 25 Jun 2024 08:08:53 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -111,24 +111,23 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Sunil V L <sunilvl@ventanamicro.com>,
  Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v4 06/16] tests/qtest/bios-tables-test.c: Add support for arch
- in path
-Date: Tue, 25 Jun 2024 20:38:29 +0530
-Message-Id: <20240625150839.1358279-7-sunilvl@ventanamicro.com>
+Subject: [PATCH v4 01/16] hw/riscv/virt.c: Make block devices default to virtio
+Date: Tue, 25 Jun 2024 20:38:24 +0530
+Message-Id: <20240625150839.1358279-2-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240625150839.1358279-1-sunilvl@ventanamicro.com>
 References: <20240625150839.1358279-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pg1-x52d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,69 +142,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7tmQwYNuWFbI
+X-TUID: 1gTAkfRX6LWR
 
-Since machine name can be common for multiple architectures (ex: virt),
-add "arch" in the path to search for expected AML files. Since the AML
-files are still under old path, add support for searching with and
-without arch in the path.
+RISC-V virt is currently missing default type for block devices. Without
+this being set, proper backend is not created when option like -cdrom
+is used. So, make the virt board's default block device type be
+IF_VIRTIO similar to other architectures.
+
+We also need to set no_cdrom to avoid getting a default cdrom device.
 
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- tests/qtest/bios-tables-test.c | 23 ++++++++++++++++++++---
- 1 file changed, 20 insertions(+), 3 deletions(-)
+ hw/riscv/virt.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index c4a4d1c7bf..29c52952f4 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -78,6 +78,7 @@
- typedef struct {
-     bool tcg_only;
-     const char *machine;
-+    const char *arch;
-     const char *machine_param;
-     const char *variant;
-     const char *uefi_fl1;
-@@ -262,8 +263,19 @@ static void dump_aml_files(test_data *data, bool rebuild)
-         g_assert(exp_sdt->aml);
- 
-         if (rebuild) {
--            aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir, data->machine,
-+            aml_file = g_strdup_printf("%s/%s/%s/%.4s%s", data_dir,
-+                                       data->arch, data->machine,
-                                        sdt->aml, ext);
-+
-+            /*
-+             * To keep test cases not failing before the DATA files are moved to
-+             * ${arch}/${machine} folder, add this check as well.
-+             */
-+            if (!g_file_test(aml_file, G_FILE_TEST_EXISTS)) {
-+                aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir,
-+                                           data->machine, sdt->aml, ext);
-+            }
-+
-             if (!g_file_test(aml_file, G_FILE_TEST_EXISTS) &&
-                 sdt->aml_len == exp_sdt->aml_len &&
-                 !memcmp(sdt->aml, exp_sdt->aml, sdt->aml_len)) {
-@@ -398,8 +410,13 @@ static GArray *load_expected_aml(test_data *data)
-         memset(&exp_sdt, 0, sizeof(exp_sdt));
- 
- try_again:
--        aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir, data->machine,
--                                   sdt->aml, ext);
-+        aml_file = g_strdup_printf("%s/%s/%s/%.4s%s", data_dir, data->arch,
-+                                   data->machine, sdt->aml, ext);
-+        if (!g_file_test(aml_file, G_FILE_TEST_EXISTS)) {
-+            aml_file = g_strdup_printf("%s/%s/%.4s%s", data_dir, data->machine,
-+                                       sdt->aml, ext);
-+        }
-+
-         if (verbosity_level >= 2) {
-             fprintf(stderr, "Looking for expected file '%s'\n", aml_file);
-         }
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 5676d66d12..e578c6dba7 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -1746,6 +1746,8 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->init = virt_machine_init;
+     mc->max_cpus = VIRT_CPUS_MAX;
+     mc->default_cpu_type = TYPE_RISCV_CPU_BASE;
++    mc->block_default_type = IF_VIRTIO;
++    mc->no_cdrom = 1;
+     mc->pci_allow_0_address = true;
+     mc->possible_cpu_arch_ids = riscv_numa_possible_cpu_arch_ids;
+     mc->cpu_index_to_instance_props = riscv_numa_cpu_index_to_props;
 -- 
 2.40.1
 

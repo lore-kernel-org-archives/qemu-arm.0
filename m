@@ -1,174 +1,237 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp590850njc;
-        Mon, 24 Jun 2024 23:00:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVW5yJnovaqTN49pY5KE5uKVsPufHgZE2VlnhI5d6bgp3Dm/MKAI/grmR31zac3W+Mr5OOJ8utzDV3K0b4/fnb1LJlAwdsV
-X-Google-Smtp-Source: AGHT+IHSQevj32cz01LBHVPPLo7rY0osOjSF7CVePyK/0esP3Z7idABlBLTTxY0eGHOp/sr4AeTD
-X-Received: by 2002:a9d:7587:0:b0:6f9:9307:4286 with SMTP id 46e09a7af769-700b12dcc13mr6930262a34.36.1719295225804;
-        Mon, 24 Jun 2024 23:00:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719295225; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp584798njc;
+        Mon, 24 Jun 2024 22:09:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUTQ9AmCBBtbmKUKxGB7GVcgE7iIqPw2NHKIhBIcchI6VGpK3V+qzGWktNTqjt05sStkUQU+TFGFfDYaq53Eu3eqg1X0Wmi
+X-Google-Smtp-Source: AGHT+IEWfg/hKHFvkx+85Lrw2TIInxwE0L6ZV31L9hHo6rwum6lwT4uzBUN16N2pvlkG8AKTQVhq
+X-Received: by 2002:a05:620a:3188:b0:799:7587:d1be with SMTP id af79cd13be357-79be47a5308mr834042785a.54.1719292141639;
+        Mon, 24 Jun 2024 22:09:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719292141; cv=none;
         d=google.com; s=arc-20160816;
-        b=daM8xUzKKogCql4Lb4KAgZwel8PCuuE+ABzTc5fpU/qZojIfovStdh7e2rMjt9SJeX
-         sVsDs4SE3sHb69biKh9JyFS07eqztwqcuagkK89BGOCn1VgE/l5np9fF5mPlMG2u7Drl
-         8DdAha8W2HRJhgPHO4X0qUAILxlllkux20pWvjd67DIObozMoFu9p48V4tv1J9JB0Dii
-         5zyFp5WoU6EWVdZRGQoKXcEZUDcoAslNXHd7laJrkh7qH0U7q8Yad1z+Uxd6e8z8nG6v
-         diUSZVdm3X25A2oKAHkJm8dextFZ/acZy81XcVWkuFoYRLJwFX3QTwz+uACMUT0jxEpl
-         268Q==
+        b=c+iAkldY1qLX2/7OpzXtQLPqbTN8xKv/FHBcybdiIYbDAAKiEn2qAgWF1lRO9vZmGg
+         goqzDkIZ3ebbC9xVgL8HleMqKZKRmbxjO8rZvENmkculA1cChxuMfmb8TstmdOCDHFkm
+         vy+26yHMz2RE03o4NvzOlG8SbWIVh82j4Aj0pCsMNu6pFNt6NZeWwfhFuxa0tZbnzQPe
+         IpMv3vpZzcRpbYf6khyaBhp3KRCs8u3bfH0QC0i1cF22CT2fK8SdcBwckl5CCjsep3Au
+         dAwTLJCVB5ZkbyHiA1QNb4/WT14TtOQYNNW3WhXjXg92R2Dv5lN3ynMG41xDMDAsZ85o
+         lSig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=kzV2R7UjISGN4klcLuozxDG84FUbG0/gq9Bmu7Iw+zc=;
-        fh=35azH/2PohRGpSzKqF8omiCTaUQ0i/9geUx/QvUuUg8=;
-        b=N5g5apBDfTa3+PWCos395KUtgIe6Rsk92Ddg+kr353odVcPmQg4qOKUlHP2imu+gQ8
-         MkK//c/HRdj6QY5wIbKJxB1xehGnw+X98+aMJQtEFrYrcNwQGNgbDifukwq427AN3PI1
-         4bkqKSVjcFzZJcxOmgFTe1gSTubKVza8RXUwjkMxGjRmT9pvHSeiYrYgNDKaw2MYvxBi
-         M5KgYq1VuhIg/JZnSmv2dZhSitkUZjdOGI3xk8PxknK4SjZRGFHbXvpBWM0dySrjClmY
-         yW6SD+iufgdSlrogM7ojDZuaNSBpk80Gv+cqkPCwqIbooR1tTHETTAORNK9mKZWlPcHl
-         NQAA==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=eCY0RuPqHu5iM13PrDmlYJVrVT2SB405qXFZ6R1XSxw=;
+        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
+        b=cFPJUTveqn0uf2WwxVSjA5Udrw+XvIovAIPg1sDRvmqadxFoZHt/MhI/R2DhjICGzf
+         W+2kJD25tcGHo0RiacygBKkua7VOUxzF7FnrcLJ10DH7fqZzo0dIRMyfBTvOKAK72zGI
+         PomhxUBHmxruWMAWj02q9tZ+FZJXdW/ErBVR8GGiXuf2bLc9bnKjXi+YNaNINcYZjk9m
+         sH4aGFTEwGuCJyLYNWLM4NY4zeKXNByIWfsS438J5uaN4oBHw0586Xd8/obNROPJKEwW
+         G2wj9R0KnIbrNd6VawiJ9T8yVt6Vc4rpz36GIWUrVkeJquoDVYAzR8tPj3cqG9nsBRGh
+         CQvg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NJMAIm16;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=OGw7Sqyq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79bce92befbsi1021924285a.465.2024.06.24.23.00.25
+        by mx.google.com with ESMTPS id af79cd13be357-79bd39a1afbsi901346585a.764.2024.06.24.22.09.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2024 23:00:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Jun 2024 22:09:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NJMAIm16;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=OGw7Sqyq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sLzDw-0002LZ-GK; Tue, 25 Jun 2024 02:00:13 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sLyPs-00019B-QN; Tue, 25 Jun 2024 01:08:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clement.mathieudrif.etu@gmail.com>)
- id 1sLzDk-0002IK-9S; Tue, 25 Jun 2024 02:00:00 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1sLyPq-00016s-Ub
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 01:08:26 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <clement.mathieudrif.etu@gmail.com>)
- id 1sLzDi-0002uP-Jj; Tue, 25 Jun 2024 01:59:59 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4217136a74dso42218585e9.2; 
- Mon, 24 Jun 2024 22:59:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1sLyPo-0001Y1-0P
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 01:08:26 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-1f44b45d6abso39664525ad.0
+ for <qemu-arm@nongnu.org>; Mon, 24 Jun 2024 22:08:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1719295196; x=1719899996; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=kzV2R7UjISGN4klcLuozxDG84FUbG0/gq9Bmu7Iw+zc=;
- b=NJMAIm16wEjQT2vRuROcq/MqZkX7tcds7FPMIeq871DxzUm82sRTE/D64/uEz0hBxs
- HyH31L4uO2DPbdOhQttp8UZ1UgxwOkj4Dc1ds+MAKqKc1cDjoJIUdlvOOJRcDIKOt8Wa
- c7D0G/HRty6H843xejLMOQknCy3S2XOVwVjPNCfjS06y8fQtJIpZ1UtqCFsqGHF+2jsT
- x8uMd6JtiCWPB4VRa//PJh5IT46SVq8Vy+JRWwYimyKIlKgnv3YavNqGVRHMmnRj7Gug
- Mtcp/V16z+vJwDXpgkOL2jwTmoGLl7kLNEaPvi/rnNhS8gcqP6R2I5AmaT8WFQqcuzlc
- gmLA==
+ d=linaro.org; s=google; t=1719292101; x=1719896901; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=eCY0RuPqHu5iM13PrDmlYJVrVT2SB405qXFZ6R1XSxw=;
+ b=OGw7SqyqP58h/6yQ1GL/wnUuKwe42/j/s+AdWGXVsc9kSbgD71TC3JneDog+Z4dJtT
+ L9CoutR+KYeyPFzetyBdoYFIbI9yWt9zjiNKEV55xwu3mbD3guuIcTOSZusCCfw5YedA
+ ImofbPoePNTUqNNFx+7smvLONAx9v6iqXAPOFSjlrNcsts7iDwcziLCQG9XGbUI7pEje
+ 4LRlTSVDPl9NJ3AR1lDLf9eX9epAmC5H/BfpATDCkeyhBPZp1T+y8rCyk6tN7twE+CjH
+ AISjsJwRAw7UL1SApgJ1M6SDW9LwkuZlxYQ+lQJbqjMpx+ftfDmpw86AgTOHGNfe5HAC
+ QkIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719295196; x=1719899996;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kzV2R7UjISGN4klcLuozxDG84FUbG0/gq9Bmu7Iw+zc=;
- b=biI4gccH89ksAbJOcpxpTLU2YR+6gCesNS0gTYNUDeOXmCpRuclwkdNbVHviRJt7cr
- bDQeTUNghphrSCC2NsFNjRZctRlCczvZb6w19PkF0Fd0e4yg2jwppImb3gxTD5qb+Vnr
- k+K2iQc8ltfblB7mPjEELWiuWh6SF1SIkCrxMFDZrL0jdaCoAb4zlCJll7lAB6UuBbXh
- RDJCBWHJe68S8Db8fS6zOaLtiU+6Pf2OZ85Fq2NEIztf0hZjUISrcGsawCcTFw4lpRc4
- m/VcDP1BssdxXNZoHr/i+ArCUIHg8Si4aYLNHQHkASf5avENJSi7cwLxD7h0ztx40CSq
- vR1w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXXY6t8ZEzgH3sHCprvTze4UxdfDZ3wHa59kB5jJ9iyEwAru3T2fKDw1xfqvhLNuQGyZdNYQiknEiCoOZd41tTDSiJOLjGlg4HKXZffbqrXvFXBZ9RUFkJCt9I=
-X-Gm-Message-State: AOJu0Yyz9vJjkwNHlZFRKyCWF9iacNI6ER466u6G2SDW+pTwhk/Tobc8
- mCaTZ0GQR1Iporc5QffboViu5M1ESrTjbFHu1lGIlzRy2bH0PH0A
-X-Received: by 2002:a05:600c:3b14:b0:424:8dba:4a4e with SMTP id
- 5b1f17b1804b1-4248dba4d43mr41758835e9.6.1719295196038; 
- Mon, 24 Jun 2024 22:59:56 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:136:9c60:df8c:dbac:5023:d101?
- ([2a01:e0a:136:9c60:df8c:dbac:5023:d101])
+ d=1e100.net; s=20230601; t=1719292101; x=1719896901;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=eCY0RuPqHu5iM13PrDmlYJVrVT2SB405qXFZ6R1XSxw=;
+ b=VCRjEUxhwFx6PiGKRuhPx0kmPtYdFLxzNuWPKncFXkfREl/ePho6cCLntkYLPLplY7
+ uVfdTwO8GmULBR4QIFzsYhiD+Lu50FRjmiSwbfUygzeb4sTN368f5wU4lOyJc3Fmd0KI
+ 53zL6dC65ALqUwCbyZiS7QkCMX0rk94LhlHqZhrHJHv1AwAU3DK1UB/Ah9Vl8RiXPdi4
+ DKmlUFLGdXOB2cQ9l102Jd0y8+38DdKBoOQd9OQAY2Z+Fd5eMqjtDaSVjEQEXQlvXGL7
+ RiYwWTBxMaYk9TONbjcuumDGhsSH01IMsGzD1MVJoIgYaNbMejFCWOY5FwFfSAzLypNi
+ Z32Q==
+X-Gm-Message-State: AOJu0YyEFmRMYKFXIejRhcrelTUbx0BBLRreiAFr1yjreG5wPbjK/9QH
+ D1puvN19pu2KhD293NH3v2s/uVBE6i5zdzNn757c5jRPm2HfaKOhAUqqhkkN8s4O32qmpCUFsEP
+ Y
+X-Received: by 2002:a17:902:d50b:b0:1f8:67e4:3979 with SMTP id
+ d9443c01a7336-1fa1d6533bcmr90624085ad.47.1719292101326; 
+ Mon, 24 Jun 2024 22:08:21 -0700 (PDT)
+Received: from stoup.. (174-21-76-141.tukw.qwest.net. [174.21.76.141])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-366f973b7e5sm3112986f8f.14.2024.06.24.22.59.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Jun 2024 22:59:55 -0700 (PDT)
-Message-ID: <24dbb79e-cdcc-4415-befa-e6351c8f29b4@gmail.com>
-Date: Tue, 25 Jun 2024 08:00:48 +0200
+ d9443c01a7336-1f9ebbc72e9sm70843865ad.296.2024.06.24.22.08.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 Jun 2024 22:08:20 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 09/13] target/arm: Convert BFMMLA, SMMLA, UMMLA,
+ USMMLA to decodetree
+Date: Mon, 24 Jun 2024 22:08:06 -0700
+Message-Id: <20240625050810.1475643-10-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240625050810.1475643-1-richard.henderson@linaro.org>
+References: <20240625050810.1475643-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] aspeed/soc: Fix possible divide by zero
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-References: <20240625015028.1382059-1-jamin_lin@aspeedtech.com>
- <20240625015028.1382059-2-jamin_lin@aspeedtech.com>
-Content-Language: en-US
-From: cmd <clement.mathieudrif.etu@gmail.com>
-In-Reply-To: <20240625015028.1382059-2-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=clement.mathieudrif.etu@gmail.com; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Jlt68H+te0/d
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3RmVGf7PG+Wb
 
-Hi
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/a64.decode      |  4 ++++
+ target/arm/tcg/translate-a64.c | 36 ++++++++--------------------------
+ 2 files changed, 12 insertions(+), 28 deletions(-)
 
-On 25/06/2024 03:50, Jamin Lin via wrote:
-> Coverity reports a possible DIVIDE_BY_ZERO issue regarding the
-> "ram_size" object property. This can not happen because RAM has
-> predefined valid sizes per SoC. Nevertheless, add a test to
-> close the issue.
->
-> Fixes: Coverity CID 1547113
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Reviewed-by: Cédric Le Goater <clg@redhat.com>
-> [ clg: Rewrote commit log ]
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> ---
->   hw/arm/aspeed_ast27x0.c | 6 ++++++
->   1 file changed, 6 insertions(+)
->
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index b6876b4862..d14a46df6f 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -211,6 +211,12 @@ static void aspeed_ram_capacity_write(void *opaque, hwaddr addr, uint64_t data,
->       ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
->                                           &error_abort);
->   
-> +    if (!ram_size) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: ram_size is zero",  __func__);
-> +        return;
-> +    }
-> +
-If we are sure that the error cannot happen, shouldn't we assert instead?
->       /*
->        * Emulate ddr capacity hardware behavior.
->        * If writes the data to the address which is beyond the ram size,
+diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
+index 15344a73de..b2c7e36969 100644
+--- a/target/arm/tcg/a64.decode
++++ b/target/arm/tcg/a64.decode
+@@ -952,6 +952,10 @@ UDOT_v          0.10 1110 100 ..... 10010 1 ..... ..... @qrrr_s
+ USDOT_v         0.00 1110 100 ..... 10011 1 ..... ..... @qrrr_s
+ BFDOT_v         0.10 1110 010 ..... 11111 1 ..... ..... @qrrr_s
+ BFMLAL_v        0.10 1110 110 ..... 11111 1 ..... ..... @qrrr_h
++BFMMLA          0110 1110 010 ..... 11101 1 ..... ..... @rrr_q1e0
++SMMLA           0100 1110 100 ..... 10100 1 ..... ..... @rrr_q1e0
++UMMLA           0110 1110 100 ..... 10100 1 ..... ..... @rrr_q1e0
++USMMLA          0100 1110 100 ..... 10101 1 ..... ..... @rrr_q1e0
+ 
+ ### Advanced SIMD scalar x indexed element
+ 
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 95be862dde..2697c4b305 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -5605,6 +5605,10 @@ TRANS_FEAT(SDOT_v, aa64_dp, do_dot_vector, a, gen_helper_gvec_sdot_b)
+ TRANS_FEAT(UDOT_v, aa64_dp, do_dot_vector, a, gen_helper_gvec_udot_b)
+ TRANS_FEAT(USDOT_v, aa64_i8mm, do_dot_vector, a, gen_helper_gvec_usdot_b)
+ TRANS_FEAT(BFDOT_v, aa64_bf16, do_dot_vector, a, gen_helper_gvec_bfdot)
++TRANS_FEAT(BFMMLA, aa64_bf16, do_dot_vector, a, gen_helper_gvec_bfmmla)
++TRANS_FEAT(SMMLA, aa64_i8mm, do_dot_vector, a, gen_helper_gvec_smmla_b)
++TRANS_FEAT(UMMLA, aa64_i8mm, do_dot_vector, a, gen_helper_gvec_ummla_b)
++TRANS_FEAT(USMMLA, aa64_i8mm, do_dot_vector, a, gen_helper_gvec_usmmla_b)
+ 
+ static bool trans_BFMLAL_v(DisasContext *s, arg_qrrr_e *a)
+ {
+@@ -10949,15 +10953,6 @@ static void disas_simd_three_reg_same_extra(DisasContext *s, uint32_t insn)
+     int rot;
+ 
+     switch (u * 16 + opcode) {
+-    case 0x04: /* SMMLA */
+-    case 0x14: /* UMMLA */
+-    case 0x05: /* USMMLA */
+-        if (!is_q || size != MO_32) {
+-            unallocated_encoding(s);
+-            return;
+-        }
+-        feature = dc_isar_feature(aa64_i8mm, s);
+-        break;
+     case 0x18: /* FCMLA, #0 */
+     case 0x19: /* FCMLA, #90 */
+     case 0x1a: /* FCMLA, #180 */
+@@ -10972,19 +10967,16 @@ static void disas_simd_three_reg_same_extra(DisasContext *s, uint32_t insn)
+         }
+         feature = dc_isar_feature(aa64_fcma, s);
+         break;
+-    case 0x1d: /* BFMMLA */
+-        if (size != MO_16 || !is_q) {
+-            unallocated_encoding(s);
+-            return;
+-        }
+-        feature = dc_isar_feature(aa64_bf16, s);
+-        break;
+     default:
+     case 0x02: /* SDOT (vector) */
+     case 0x03: /* USDOT */
++    case 0x04: /* SMMLA */
++    case 0x05: /* USMMLA */
+     case 0x10: /* SQRDMLAH (vector) */
+     case 0x11: /* SQRDMLSH (vector) */
+     case 0x12: /* UDOT (vector) */
++    case 0x14: /* UMMLA */
++    case 0x1d: /* BFMMLA */
+     case 0x1f: /* BFDOT / BFMLAL */
+         unallocated_encoding(s);
+         return;
+@@ -10998,15 +10990,6 @@ static void disas_simd_three_reg_same_extra(DisasContext *s, uint32_t insn)
+     }
+ 
+     switch (opcode) {
+-    case 0x04: /* SMMLA, UMMLA */
+-        gen_gvec_op4_ool(s, 1, rd, rn, rm, rd, 0,
+-                         u ? gen_helper_gvec_ummla_b
+-                         : gen_helper_gvec_smmla_b);
+-        return;
+-    case 0x05: /* USMMLA */
+-        gen_gvec_op4_ool(s, 1, rd, rn, rm, rd, 0, gen_helper_gvec_usmmla_b);
+-        return;
+-
+     case 0x8: /* FCMLA, #0 */
+     case 0x9: /* FCMLA, #90 */
+     case 0xa: /* FCMLA, #180 */
+@@ -11051,9 +11034,6 @@ static void disas_simd_three_reg_same_extra(DisasContext *s, uint32_t insn)
+         }
+         return;
+ 
+-    case 0xd: /* BFMMLA */
+-        gen_gvec_op4_ool(s, is_q, rd, rn, rm, rd, 0, gen_helper_gvec_bfmmla);
+-        return;
+     default:
+         g_assert_not_reached();
+     }
+-- 
+2.34.1
+

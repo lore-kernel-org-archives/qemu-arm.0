@@ -1,355 +1,228 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp756819njc;
-        Tue, 25 Jun 2024 12:14:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXJffnarAKDXhD/sjzR2Sws7oL5AUgZ2TH6YLA4nBpzK7w83oIbdRmxK2SJpzeRMulTqdLG7H5qI9qC2O8MT4u90U4eM2kk
-X-Google-Smtp-Source: AGHT+IGuPVwACLnpJxIaFDBO1dGGWhXyaLOKqRIGEzls778U4fM6iQm7A4rWlbahomqbRffAGXPW
-X-Received: by 2002:a05:6122:7ce:b0:4ef:6c71:9a2b with SMTP id 71dfb90a1353d-4ef6d8080b4mr7247151e0c.5.1719342893395;
-        Tue, 25 Jun 2024 12:14:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719342893; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp757628njc;
+        Tue, 25 Jun 2024 12:19:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW+V3Nbg/uHtc+p3puOF6MtyKVbe7bUGJWx7lLZX7sX5/MsfLoAhciz5V/gtEHLmlSNjy+f9FEh4BnzAmvyQAlTiTf3Gwdr
+X-Google-Smtp-Source: AGHT+IEoZAmb3L5zZltHqKWJe9PaCzsYsoKmezgQCCxbiFMFHKAyMTgwJmaiLTvTbZtsAtDWMzG1
+X-Received: by 2002:a05:6870:b254:b0:25b:7c67:64bf with SMTP id 586e51a60fabf-25d06cb7710mr8671661fac.27.1719343140366;
+        Tue, 25 Jun 2024 12:19:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719343140; cv=none;
         d=google.com; s=arc-20160816;
-        b=XW7f+oIntYK2soLhAfUPd+CT2RHbS3C8BchzJw9H0gqBOZfJhGI0eE7otRYrWRw0K+
-         +ZL97o5TouK0Fw0PiTVtgKHhVN56zkibPn9b7u8OeuP+UyV3VD0WPOeIYLkcGcWGwllJ
-         R1EdjZxgy2W33cyd8WH0qmk5n1OJ38Sn5ft87p6KkXtYs9hVL6SbddUSIlhwYhgONroK
-         lZJzvHXyGZaJxHXX7ilEGPsp0RcBeaVn3s3tJKeRfaPz4spTqWlLXHX4HrQnVW93vWbY
-         83pgMrPYNRotau9YnIhNYlxLq+2jDHSlAz7dctg5buIP/dLOSyVgUZppqCJP3BfxOJWa
-         atYA==
+        b=AHHUCT1AX3/rCqPJ+8bgvfVmZinkRmufmcbB6ehXRrML2qVmc64GbDNrcVfSKklLzl
+         0CIpvSskSs95VA2ui5tlOmQ5sP/kIdFyHRsK+9NAaenWUBoRqSy1buQCUpsBWhZRxL/8
+         3wi1jIR43VcoClK20mqmFDPB2xYXDr5ieYLvfh4P2RibpJoj9+pLn6+0kL+NQOKEA18Z
+         XNDFstRf43eNpDKaiCUUNDF77GykKEB/yESfta1y6Kh/1LKbDLZtN3ItkYuz9vfT4Fd0
+         iMw8ALBxTKE5K0KPQ0Cy+k0cU2qyDkuxdZxSS8vt95Udd+qIcJBwXbT+76tRxt7/b4+S
+         QZIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=u70FGhdj6+SDi8C75S6LZSmiHm3Th47xqHQlbQAfOcI=;
-        fh=ZhBia3nL9o1nuf7SbgdYn/0pDmAeja6gisyWXi2cqYE=;
-        b=CdkbpHl2aMcK7V1n07sxVawA9jDCcpquWHe20M/V4t2ZSGmGxFDs4+yZ+r2ZQGxmb2
-         Ev5WeKu4BDRncSgKJovMyDDnbf6ZqO1YT4jjkRxBLLdClEXrwyx0rx1yxXlYZpWBDyon
-         pisFkkRbXMnSRAxviOiiP1dmy4MowsORmkst0tAWTw3gbu0mQytMA4G054iLuLS4x/JB
-         jGN9PY25Ma4pfQ4k4okGm4Q+cYpdqtjjB/ILvkpQohfJklMQglLAY0mfry0f+Koc5MAG
-         321aJ98bohTREb4LQK5zLmoKaZpFPqXHgiGuL6q1YZLUQ4va5V1b+3+HVWecC7BoQOd9
-         wd4w==;
+        bh=SkIsJKtZUJAkO/lpIvhYyVEDLS6NoChogP/TAxQnzSI=;
+        fh=ZcJeIuJ0l6vALYCr1DZMZXnfBb1Sl86FXIV/sEmtGxc=;
+        b=v1qsnTipz+BdDg2mnHE1kT8W8AiKfF8tQ0vUOhWo4eA0+z7YNzZkJMakxhhdBXj+37
+         ke/+TiX862LVX+bKmMxT68aEKkbrH9h6EU5QEiBr0H3g5gnsAVuL0kdwWNvJD430UhKy
+         X5TAXpk0xmAfvti59bcyiKyYgf0Ae4OjGwvd9NNb4SIllelQZd9GCFR3jDMwwGVvaMt5
+         rkGmj0o+fYE8dqlmabo+AlI7LIDoYbXa9XzbqSMkIRfRuva56nAR80RXnrFGp6DkYH6X
+         7QjnoQr025IdVMsbecf33RMpu7fQ0KP62iwmOt8t50skh4u2mAZq2Ya/i6TY4yXluJC6
+         8Feg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Jodi/6k7";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=o6dJeh8s;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b51ecf9d37si112088196d6.57.2024.06.25.12.14.53
+        by mx.google.com with ESMTPS id af79cd13be357-79bce9411c4si1208814985a.617.2024.06.25.12.19.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jun 2024 12:14:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Jun 2024 12:19:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Jodi/6k7";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=o6dJeh8s;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sMBTT-0007VV-EN; Tue, 25 Jun 2024 15:05:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sMBeE-0001yz-7o; Tue, 25 Jun 2024 15:16:49 -0400
+Received: from [2001:470:142:3::10] (helo=eggs.gnu.org)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sMBBt-0002th-Pc
- for qemu-devel@nongnu.org; Tue, 25 Jun 2024 14:47:18 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ id 1sMBWI-0008Nw-7F
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 15:08:22 -0400
+Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sMBBB-0007Bm-30
- for qemu-devel@nongnu.org; Tue, 25 Jun 2024 14:46:41 -0400
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-70656b43fd4so3399723b3a.0
- for <qemu-devel@nongnu.org>; Tue, 25 Jun 2024 11:44:47 -0700 (PDT)
+ id 1sMBVF-00012L-P4
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 15:07:38 -0400
+Received: by mail-qt1-x82d.google.com with SMTP id
+ d75a77b69052e-445033fbc24so1812281cf.3
+ for <qemu-arm@nongnu.org>; Tue, 25 Jun 2024 12:05:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719341069; x=1719945869; darn=nongnu.org;
+ d=linaro.org; s=google; t=1719342306; x=1719947106; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=u70FGhdj6+SDi8C75S6LZSmiHm3Th47xqHQlbQAfOcI=;
- b=Jodi/6k7s3Ih+jiSPmaaz8zmC7y9UxJbJ+6xOTPm37cToQHFbjJcIhegVHMprDiGR7
- hd4ZSK7SmnOv9cGfZCQf0s3HFU0L9A3OnyWGjAaFvhCOvZxEcWC90sbCNrzkrCkH3fgD
- 0kittIlkMqFr3H9ueaaGRH+WVeI3OV2cjNDyjwCbn5rBONjJ+ljDY5H/YXhgw0uf/CdS
- c3awaLgB69u6ZxVeZPPz0zN+mw4jSBexGrvQNONxvVWcLxpammV78DBtLwBeFx7Qzd1h
- Qn5QAZops9cLhaXNHIVkw0L1Hq2yXzTkWp5CkTAOrX4mTSNh3zl+5KzLDP9g9hU2Oezi
- FN5Q==
+ bh=SkIsJKtZUJAkO/lpIvhYyVEDLS6NoChogP/TAxQnzSI=;
+ b=o6dJeh8sDYhBOYftwRACWbnvHQ4wDjEsHZGLz/g9H+d77C/nk7mMCAWwH+6L3T/ykl
+ x7C9oJVpx/2L9jjEUXaK7QpmrENfCIV3GvKFm4whNPO2+D1Tc+67bg+badQ6NXhyms1s
+ BcVJuQ7GzNSxQOLyJ9bOV7E+eaAdlp/b50rAJJ4R6Pz3N3/asK7JgiBopquDNpHo7R1b
+ 05G7Hmn/pgH+KwuGjt8L4L2aZvfciPXJHK/YL7dlakuTRBE6SIYMRdRlnBqJgYDm1bQl
+ jsVmme9I1mfEsFK6a9X+zQ6qQ2lrqQHfYK9LBcluVViBShWvubWok4zxyKGJ6wffTKzp
+ 2g1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719341069; x=1719945869;
+ d=1e100.net; s=20230601; t=1719342306; x=1719947106;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=u70FGhdj6+SDi8C75S6LZSmiHm3Th47xqHQlbQAfOcI=;
- b=gUWVr/jUFOS4ZdhFMwak+/DsW2vfsWrMglPQnbCUoqiBNjg/x/MX/gRtX+J1vIbDMn
- YCE8KGEd1BZSQ1I0duMxAfW6olgJmOibBnk7xcvu31woVzkhoHDJ9Mw/HrPvKb+Nlqrt
- KBE/0BQWru70eYnc6bag6yV1UVPlWyhlTPOtT4FMg5scnpHjQ7N6CVJRV2LyJ9x1Ocih
- plRFgdf5xGhSQBXx5d/mRHxBC0mziT45bR6iyMd2A8WjxkPHm/SZrAtfW356Q5BPc6jD
- XnTqplR++J7oidTrLy4nNU3te20b645hdiTFALXtGWZOqVGhhNt0dU/4XaRCMMaYQzc1
- 6Wsg==
-X-Gm-Message-State: AOJu0YyRBVqsiJjzRtWmRYZiUIaHAzhySfQb3YC07FyVnoy5lb6VnMbg
- mRT811rLRcQaHF/ZJJkqPEciLWlO0ZJOZ1UcBIp2X7hI50VasFbQqJv0dssFJo2cs0QjTCxB19C
- l
-X-Received: by 2002:a17:903:41cd:b0:1f9:bb35:f313 with SMTP id
- d9443c01a7336-1fa23edc8c2mr80059025ad.30.1719340546997; 
- Tue, 25 Jun 2024 11:35:46 -0700 (PDT)
+ bh=SkIsJKtZUJAkO/lpIvhYyVEDLS6NoChogP/TAxQnzSI=;
+ b=Vs9yfDTebz50OitL9KrzNLgxHi8DyTx3Hvf3sdiZmbtTsWXfh47APyCydis/8XkXgf
+ EwW02O12c2n4yqQyV9+60S8/MpWc9CWi18eDAa1hVEwX+G56OC+jEF7DqEn4qtkbgYAp
+ zjJpRtJnBgNW7gWWOE2377O1KbOAJ5NotzeKLf3f3gqCI0/Wup0e/azEWfgXcHXITqZY
+ Z1qdY5f9CoeNoT4e/Bwllyx6vHZesXakrfGR+VQjnRiaFEiNJInRgpEgdJcEtnoKc4Kh
+ cLa42dQX4lOrW9MQLa6e3RBuuICu4QVqRWkRTNTvYZ81FN79Jgc6qTSO/dW2GqaeeIpH
+ 0cbA==
+X-Gm-Message-State: AOJu0Yy4Wh6SWqMf3+sEfUiIhHxW4sXgikDbZutS9npfD9pmSuz//Sxx
+ qC3UD/MfgNF+R5NT0uLxQYhT+FIzhbZVDGPuGfeMbmrBFaey163ZhAxl+8HRK4+lqtdWK5+g/tG
+ S
+X-Received: by 2002:a17:902:c40e:b0:1fa:2568:5895 with SMTP id
+ d9443c01a7336-1fa256858femr93716095ad.63.1719340540561; 
+ Tue, 25 Jun 2024 11:35:40 -0700 (PDT)
 Received: from stoup.. (174-21-76-141.tukw.qwest.net. [174.21.76.141])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1f9eb3c6027sm84693235ad.133.2024.06.25.11.35.46
+ d9443c01a7336-1f9eb3c6027sm84693235ad.133.2024.06.25.11.35.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Jun 2024 11:35:46 -0700 (PDT)
+ Tue, 25 Jun 2024 11:35:40 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 10/13] target/arm: Add data argument to do_fp3_vector
-Date: Tue, 25 Jun 2024 11:35:33 -0700
-Message-Id: <20240625183536.1672454-11-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-stable@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 03/13] target/arm: Fix FJCVTZS vs flush-to-zero
+Date: Tue, 25 Jun 2024 11:35:26 -0700
+Message-Id: <20240625183536.1672454-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240625183536.1672454-1-richard.henderson@linaro.org>
 References: <20240625183536.1672454-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x82d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ T_SPF_HELO_TEMPERROR=0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JBpHolQQoCD1
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: EUoenPDs5ewT
 
+Input denormals cause the Javascript inexact bit
+(output to Z) to be set.
+
+Cc: qemu-stable@nongnu.org
+Fixes: 6c1f6f2733a ("target/arm: Implement ARMv8.3-JSConv")
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2375
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-a64.c | 52 +++++++++++++++++-----------------
- 1 file changed, 26 insertions(+), 26 deletions(-)
+ target/arm/vfp_helper.c           | 18 +++++++++---------
+ tests/tcg/aarch64/test-2375.c     | 21 +++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  3 ++-
+ 3 files changed, 32 insertions(+), 10 deletions(-)
+ create mode 100644 tests/tcg/aarch64/test-2375.c
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 2697c4b305..57cdde008e 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -5290,7 +5290,7 @@ TRANS(CMHS_s, do_cmop_d, a, TCG_COND_GEU)
- TRANS(CMEQ_s, do_cmop_d, a, TCG_COND_EQ)
- TRANS(CMTST_s, do_cmop_d, a, TCG_COND_TSTNE)
- 
--static bool do_fp3_vector(DisasContext *s, arg_qrrr_e *a,
-+static bool do_fp3_vector(DisasContext *s, arg_qrrr_e *a, int data,
-                           gen_helper_gvec_3_ptr * const fns[3])
+diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
+index ce26b8a71a..50d7042fa9 100644
+--- a/target/arm/vfp_helper.c
++++ b/target/arm/vfp_helper.c
+@@ -1091,8 +1091,8 @@ const FloatRoundMode arm_rmode_to_sf_map[] = {
+ uint64_t HELPER(fjcvtzs)(float64 value, void *vstatus)
  {
-     MemOp esz = a->esz;
-@@ -5313,7 +5313,7 @@ static bool do_fp3_vector(DisasContext *s, arg_qrrr_e *a,
-     }
-     if (fp_access_check(s)) {
-         gen_gvec_op3_fpst(s, a->q, a->rd, a->rn, a->rm,
--                          esz == MO_16, 0, fns[esz - 1]);
-+                          esz == MO_16, data, fns[esz - 1]);
-     }
-     return true;
- }
-@@ -5323,168 +5323,168 @@ static gen_helper_gvec_3_ptr * const f_vector_fadd[3] = {
-     gen_helper_gvec_fadd_s,
-     gen_helper_gvec_fadd_d,
- };
--TRANS(FADD_v, do_fp3_vector, a, f_vector_fadd)
-+TRANS(FADD_v, do_fp3_vector, a, 0, f_vector_fadd)
+     float_status *status = vstatus;
+-    uint32_t inexact, frac;
+-    uint32_t e_old, e_new;
++    uint32_t frac, e_old, e_new;
++    bool inexact;
  
- static gen_helper_gvec_3_ptr * const f_vector_fsub[3] = {
-     gen_helper_gvec_fsub_h,
-     gen_helper_gvec_fsub_s,
-     gen_helper_gvec_fsub_d,
- };
--TRANS(FSUB_v, do_fp3_vector, a, f_vector_fsub)
-+TRANS(FSUB_v, do_fp3_vector, a, 0, f_vector_fsub)
+     e_old = get_float_exception_flags(status);
+     set_float_exception_flags(0, status);
+@@ -1100,13 +1100,13 @@ uint64_t HELPER(fjcvtzs)(float64 value, void *vstatus)
+     e_new = get_float_exception_flags(status);
+     set_float_exception_flags(e_old | e_new, status);
  
- static gen_helper_gvec_3_ptr * const f_vector_fdiv[3] = {
-     gen_helper_gvec_fdiv_h,
-     gen_helper_gvec_fdiv_s,
-     gen_helper_gvec_fdiv_d,
- };
--TRANS(FDIV_v, do_fp3_vector, a, f_vector_fdiv)
-+TRANS(FDIV_v, do_fp3_vector, a, 0, f_vector_fdiv)
+-    if (value == float64_chs(float64_zero)) {
+-        /* While not inexact for IEEE FP, -0.0 is inexact for JavaScript. */
+-        inexact = 1;
+-    } else {
+-        /* Normal inexact or overflow or NaN */
+-        inexact = e_new & (float_flag_inexact | float_flag_invalid);
+-    }
++    /* Normal inexact, denormal with flush-to-zero, or overflow or NaN */
++    inexact = e_new & (float_flag_inexact |
++                       float_flag_input_denormal |
++                       float_flag_invalid);
++
++    /* While not inexact for IEEE FP, -0.0 is inexact for JavaScript. */
++    inexact |= value == float64_chs(float64_zero);
  
- static gen_helper_gvec_3_ptr * const f_vector_fmul[3] = {
-     gen_helper_gvec_fmul_h,
-     gen_helper_gvec_fmul_s,
-     gen_helper_gvec_fmul_d,
- };
--TRANS(FMUL_v, do_fp3_vector, a, f_vector_fmul)
-+TRANS(FMUL_v, do_fp3_vector, a, 0, f_vector_fmul)
+     /* Pack the result and the env->ZF representation of Z together.  */
+     return deposit64(frac, 32, 32, inexact);
+diff --git a/tests/tcg/aarch64/test-2375.c b/tests/tcg/aarch64/test-2375.c
+new file mode 100644
+index 0000000000..163eba422b
+--- /dev/null
++++ b/tests/tcg/aarch64/test-2375.c
+@@ -0,0 +1,21 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/* Copyright (c) 2024 Linaro Ltd */
++/* See https://gitlab.com/qemu-project/qemu/-/issues/2375 */
++
++#include <assert.h>
++
++int main(void)
++{
++   int r, z;
++
++   asm("msr fpcr, %2\n\t"
++       "fjcvtzs %w0, %d3\n\t"
++       "cset %1, eq"
++       : "=r"(r), "=r"(z)
++       : "r"(0x01000000L),	/* FZ = 1 */
++         "w"(0xfcff00L));       /* denormal */
++
++    assert(r == 0);
++    assert(z == 0);
++    return 0;
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 70d728ae9a..4ecbca6a41 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -41,8 +41,9 @@ endif
  
- static gen_helper_gvec_3_ptr * const f_vector_fmax[3] = {
-     gen_helper_gvec_fmax_h,
-     gen_helper_gvec_fmax_s,
-     gen_helper_gvec_fmax_d,
- };
--TRANS(FMAX_v, do_fp3_vector, a, f_vector_fmax)
-+TRANS(FMAX_v, do_fp3_vector, a, 0, f_vector_fmax)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fmin[3] = {
-     gen_helper_gvec_fmin_h,
-     gen_helper_gvec_fmin_s,
-     gen_helper_gvec_fmin_d,
- };
--TRANS(FMIN_v, do_fp3_vector, a, f_vector_fmin)
-+TRANS(FMIN_v, do_fp3_vector, a, 0, f_vector_fmin)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fmaxnm[3] = {
-     gen_helper_gvec_fmaxnum_h,
-     gen_helper_gvec_fmaxnum_s,
-     gen_helper_gvec_fmaxnum_d,
- };
--TRANS(FMAXNM_v, do_fp3_vector, a, f_vector_fmaxnm)
-+TRANS(FMAXNM_v, do_fp3_vector, a, 0, f_vector_fmaxnm)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fminnm[3] = {
-     gen_helper_gvec_fminnum_h,
-     gen_helper_gvec_fminnum_s,
-     gen_helper_gvec_fminnum_d,
- };
--TRANS(FMINNM_v, do_fp3_vector, a, f_vector_fminnm)
-+TRANS(FMINNM_v, do_fp3_vector, a, 0, f_vector_fminnm)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fmulx[3] = {
-     gen_helper_gvec_fmulx_h,
-     gen_helper_gvec_fmulx_s,
-     gen_helper_gvec_fmulx_d,
- };
--TRANS(FMULX_v, do_fp3_vector, a, f_vector_fmulx)
-+TRANS(FMULX_v, do_fp3_vector, a, 0, f_vector_fmulx)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fmla[3] = {
-     gen_helper_gvec_vfma_h,
-     gen_helper_gvec_vfma_s,
-     gen_helper_gvec_vfma_d,
- };
--TRANS(FMLA_v, do_fp3_vector, a, f_vector_fmla)
-+TRANS(FMLA_v, do_fp3_vector, a, 0, f_vector_fmla)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fmls[3] = {
-     gen_helper_gvec_vfms_h,
-     gen_helper_gvec_vfms_s,
-     gen_helper_gvec_vfms_d,
- };
--TRANS(FMLS_v, do_fp3_vector, a, f_vector_fmls)
-+TRANS(FMLS_v, do_fp3_vector, a, 0, f_vector_fmls)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fcmeq[3] = {
-     gen_helper_gvec_fceq_h,
-     gen_helper_gvec_fceq_s,
-     gen_helper_gvec_fceq_d,
- };
--TRANS(FCMEQ_v, do_fp3_vector, a, f_vector_fcmeq)
-+TRANS(FCMEQ_v, do_fp3_vector, a, 0, f_vector_fcmeq)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fcmge[3] = {
-     gen_helper_gvec_fcge_h,
-     gen_helper_gvec_fcge_s,
-     gen_helper_gvec_fcge_d,
- };
--TRANS(FCMGE_v, do_fp3_vector, a, f_vector_fcmge)
-+TRANS(FCMGE_v, do_fp3_vector, a, 0, f_vector_fcmge)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fcmgt[3] = {
-     gen_helper_gvec_fcgt_h,
-     gen_helper_gvec_fcgt_s,
-     gen_helper_gvec_fcgt_d,
- };
--TRANS(FCMGT_v, do_fp3_vector, a, f_vector_fcmgt)
-+TRANS(FCMGT_v, do_fp3_vector, a, 0, f_vector_fcmgt)
- 
- static gen_helper_gvec_3_ptr * const f_vector_facge[3] = {
-     gen_helper_gvec_facge_h,
-     gen_helper_gvec_facge_s,
-     gen_helper_gvec_facge_d,
- };
--TRANS(FACGE_v, do_fp3_vector, a, f_vector_facge)
-+TRANS(FACGE_v, do_fp3_vector, a, 0, f_vector_facge)
- 
- static gen_helper_gvec_3_ptr * const f_vector_facgt[3] = {
-     gen_helper_gvec_facgt_h,
-     gen_helper_gvec_facgt_s,
-     gen_helper_gvec_facgt_d,
- };
--TRANS(FACGT_v, do_fp3_vector, a, f_vector_facgt)
-+TRANS(FACGT_v, do_fp3_vector, a, 0, f_vector_facgt)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fabd[3] = {
-     gen_helper_gvec_fabd_h,
-     gen_helper_gvec_fabd_s,
-     gen_helper_gvec_fabd_d,
- };
--TRANS(FABD_v, do_fp3_vector, a, f_vector_fabd)
-+TRANS(FABD_v, do_fp3_vector, a, 0, f_vector_fabd)
- 
- static gen_helper_gvec_3_ptr * const f_vector_frecps[3] = {
-     gen_helper_gvec_recps_h,
-     gen_helper_gvec_recps_s,
-     gen_helper_gvec_recps_d,
- };
--TRANS(FRECPS_v, do_fp3_vector, a, f_vector_frecps)
-+TRANS(FRECPS_v, do_fp3_vector, a, 0, f_vector_frecps)
- 
- static gen_helper_gvec_3_ptr * const f_vector_frsqrts[3] = {
-     gen_helper_gvec_rsqrts_h,
-     gen_helper_gvec_rsqrts_s,
-     gen_helper_gvec_rsqrts_d,
- };
--TRANS(FRSQRTS_v, do_fp3_vector, a, f_vector_frsqrts)
-+TRANS(FRSQRTS_v, do_fp3_vector, a, 0, f_vector_frsqrts)
- 
- static gen_helper_gvec_3_ptr * const f_vector_faddp[3] = {
-     gen_helper_gvec_faddp_h,
-     gen_helper_gvec_faddp_s,
-     gen_helper_gvec_faddp_d,
- };
--TRANS(FADDP_v, do_fp3_vector, a, f_vector_faddp)
-+TRANS(FADDP_v, do_fp3_vector, a, 0, f_vector_faddp)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fmaxp[3] = {
-     gen_helper_gvec_fmaxp_h,
-     gen_helper_gvec_fmaxp_s,
-     gen_helper_gvec_fmaxp_d,
- };
--TRANS(FMAXP_v, do_fp3_vector, a, f_vector_fmaxp)
-+TRANS(FMAXP_v, do_fp3_vector, a, 0, f_vector_fmaxp)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fminp[3] = {
-     gen_helper_gvec_fminp_h,
-     gen_helper_gvec_fminp_s,
-     gen_helper_gvec_fminp_d,
- };
--TRANS(FMINP_v, do_fp3_vector, a, f_vector_fminp)
-+TRANS(FMINP_v, do_fp3_vector, a, 0, f_vector_fminp)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fmaxnmp[3] = {
-     gen_helper_gvec_fmaxnump_h,
-     gen_helper_gvec_fmaxnump_s,
-     gen_helper_gvec_fmaxnump_d,
- };
--TRANS(FMAXNMP_v, do_fp3_vector, a, f_vector_fmaxnmp)
-+TRANS(FMAXNMP_v, do_fp3_vector, a, 0, f_vector_fmaxnmp)
- 
- static gen_helper_gvec_3_ptr * const f_vector_fminnmp[3] = {
-     gen_helper_gvec_fminnump_h,
-     gen_helper_gvec_fminnump_s,
-     gen_helper_gvec_fminnump_d,
- };
--TRANS(FMINNMP_v, do_fp3_vector, a, f_vector_fminnmp)
-+TRANS(FMINNMP_v, do_fp3_vector, a, 0, f_vector_fminnmp)
- 
- static bool do_fmlal(DisasContext *s, arg_qrrr_e *a, bool is_s, bool is_2)
- {
+ # Pauth Tests
+ ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+-AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
++AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5 test-2375
+ pauth-%: CFLAGS += -march=armv8.3-a
++test-2375: CFLAGS += -march=armv8.3-a
+ run-pauth-1: QEMU_OPTS += -cpu max
+ run-pauth-2: QEMU_OPTS += -cpu max
+ # Choose a cpu with FEAT_Pauth but without FEAT_FPAC for pauth-[45].
 -- 
 2.34.1
 

@@ -1,271 +1,192 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp699734njc;
-        Tue, 25 Jun 2024 08:11:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWoge+GRtH4vJHIspc6NKe0058Ymq1f5Ug+eybCe1mzwZHed4BI3yBJjjfO57QYKQdAJM94kuBj30fJzTNKCjyCO8whN5XV
-X-Google-Smtp-Source: AGHT+IGit8C3dPRFedqZNd5AbkUfO7Pra8NrImHkx+LUQSdrDB/iPxbatK2rjweTiI36VPCDygCx
-X-Received: by 2002:a0c:e90d:0:b0:6b2:dd54:b634 with SMTP id 6a1803df08f44-6b5409ea981mr70909086d6.39.1719328298158;
-        Tue, 25 Jun 2024 08:11:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719328298; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp701936njc;
+        Tue, 25 Jun 2024 08:18:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUd1WBt6VFb2apAH26kvek/exi06Jq/DZKYosOyO4JvSUGFKZBiLsXF1KRB1GznyUUkmpTlPyHy913wrR1kdUWpBF8jlwpW
+X-Google-Smtp-Source: AGHT+IHQ6Ie4g7gMI+t/hpg9Ao5lshy0jsWcj5sDGMdIpBP5QXxQGUxZvd2Zj+4SAYeQRaZ/a02U
+X-Received: by 2002:a05:620a:44c3:b0:79b:bb97:4851 with SMTP id af79cd13be357-79be6d3d982mr955134285a.19.1719328726378;
+        Tue, 25 Jun 2024 08:18:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719328726; cv=none;
         d=google.com; s=arc-20160816;
-        b=v25HeBd5kOuGZQnIFcR8sGNbzXLpDB165Pi6c7RRbyiEgmDLxZQuFoDVd/piGDa+tL
-         aghrpkq8Vd8OseG9XzkSI9bVkTGUinICdwRnN7GCvHfBQ8FRiyJEiBYZrwRKbb3RZCjg
-         3lUWcKw6G0PiuSy0erkupNg0Xug6TIbsmcpeGJbC2fm6BTBNfmTpGJi1qbC7lQEUVRz5
-         lxsC+20hr0rir3SAApQA5iRcMN5xBmlyMxjTJbq/9vqFKkoEt9IfiliEuDrAl54M6UBI
-         moNc9FTlnbHSu4GmiTHuKEX+9MmwXFmOgWLmKllXcokr5M0qLuQVEeVIU5GE4GJeTkkt
-         levQ==
+        b=vj3orOuT6ypSToapWvl9UNWzPJFMJ5ZJileNXvBsqjAOENVMxoiiiEnzAE+Kf1jsC2
+         nxerC3+9mI8o23WWzADJ4DEsR/gBRbZKbo3Q8jtIUXgWy5bamEA1lgO//CPjorY6Yuvv
+         byshJBKwiJtpgqE2tpWcXd+da+430wepaE0wwjJiaxNf6o13sxcg7COLcvwvu+U880Ts
+         Uo8Ck3SqSpaQMWnGkAHwF1X3tIY+oG/ZZE8oHmDBMOtFkQDlXfcl1Q41Fvjn16cZdYzT
+         ssJXzrzmMrPNx5ECMCO0dng22Jx5/FDjc+ZZXsKWV4qfCXIT0LWuD8+zBrtdsWYBrOWB
+         j+YA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=t+WU0zaXr2nzJEcBKvNspcCJHZEY5CHeQAoYeWN//ug=;
-        fh=bQDQrlPrzZo1QI0iP5G1zwRQro6/5fB3OT1u7VoARm4=;
-        b=YYZercSYdV/SqEjCkWtdVkWJxAqBICVCdJYZEfgpxOUin1TD634XmQ+zcoE0f25/au
-         bRc+0jBhJ61y1VSLUkUbTWw7M3fIE19n1WP/w1cWezg1r9pz5BL4lG878X1IVkmLUU1N
-         7vk5ZKNlNQKrpoAO5N/sWm8otqK/ewij2KTjuIoDpvjasr6LaAOy3PCR3QdhnvgIEY8u
-         U0whcO7sy+ldCgA/4LLJ+iivdDnFc1HBiLsuo7b87n2TBwMFjtKgtrpBle3rNJdNohe5
-         6+k9q8DIbLI0ReHVN6hD1JdeL5UWiazhtnty2Tud35xzqCAR9HhWS5vqZhVeWpkYQZrF
-         FyIw==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=1eNQSJ1Cg3sKjP9f8CuJfSvHMNCcOvb284xbwUn5uzg=;
+        fh=Xqpne+8fmbk803X61qx6Orz929Xsm1n2TUcqNsVlw4A=;
+        b=Wa+wA9u13Y1eSvi2N9xUUSZw05Bca1LKrAtfogwYh9T0xEteyZ+n7jovMuWHzj9Orr
+         oylLFBXzAaUptU1ieg/Dp+Dzo/h8kjgSSH1RKTFzbJI1oRYLKUGrVRZzx70CLz5b7IVZ
+         vZ/eeqw1g5QB3+dg4+MiEJ1HZLJCl4qKaejj+8mkbzVpwqvKLM5brIWZ5YC9oQbxH/44
+         D+LvRkQP/qmX5OIXlAvN6KJHnPWH6c21UhfXXeUqeuIjykt9dUopwZGQCNkLuoS6dJ9f
+         UdR3pLIqlB4xRRUj6pIO3tpFojvVJZsDM9GMqUGev6CwRjnjM9s/KyfH5KHuPqi3WxIA
+         7WiA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=ON8N3Y3u;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Aws4o3IB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b51ef1d0e4si106220476d6.457.2024.06.25.08.11.37
+        by mx.google.com with ESMTPS id af79cd13be357-79bce9153aasi1117847285a.253.2024.06.25.08.18.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jun 2024 08:11:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Jun 2024 08:18:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=ON8N3Y3u;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Aws4o3IB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sM7nE-0001Hz-RS; Tue, 25 Jun 2024 11:09:12 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sM7w7-0000RR-20; Tue, 25 Jun 2024 11:18:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sM7nC-0001Gu-Ti
- for qemu-devel@nongnu.org; Tue, 25 Jun 2024 11:09:10 -0400
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+ id 1sM7w3-0000PH-Il
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 11:18:19 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sM7nA-0006S0-HN
- for qemu-devel@nongnu.org; Tue, 25 Jun 2024 11:09:10 -0400
-Received: by mail-pf1-x434.google.com with SMTP id
- d2e1a72fcca58-70698bcd19eso660375b3a.0
- for <qemu-devel@nongnu.org>; Tue, 25 Jun 2024 08:09:08 -0700 (PDT)
+ id 1sM7w1-0000O9-Kq
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 11:18:19 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-7024d571d8eso4426096b3a.0
+ for <qemu-arm@nongnu.org>; Tue, 25 Jun 2024 08:18:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1719328146; x=1719932946; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=t+WU0zaXr2nzJEcBKvNspcCJHZEY5CHeQAoYeWN//ug=;
- b=ON8N3Y3uqO8gbbTp95n07jom4N7cqSBcEDG8n33ii7bA6EsvlRcH4AbMZwkt4wFdZp
- fiUsaqrC3FOG3T1pNk/ctxjv8C96WqtVCaunnFb4HUsqEPW0BNpm5DHnqXSqQqMKnBJk
- ky5U3Q2nx/eDGrjHBKMzfANiX5tp10ZM7SBWZvy7/L9yl9UH0FzpLtCeOSmEnySnhkxS
- EybNzHQeW8WmcvB/DHJSNoVofLfOGNCKvxomIcPouKWAYx2/LdshWzgi0PFGfy0YAb4X
- B1w7790TwV9GNpdE+4FlA2hWTVyknJjoY7u2ast//LgKPGWJvnX9AdSr4OR8vhJEussB
- 980g==
+ d=ventanamicro.com; s=google; t=1719328696; x=1719933496; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=1eNQSJ1Cg3sKjP9f8CuJfSvHMNCcOvb284xbwUn5uzg=;
+ b=Aws4o3IB/1D1dmcPBA1jlMbKSdY11MZCPqHrnucYCZUeF0Zel6PmqLB5Xuwirtwevt
+ I+Bjqv6q8boKweXe363NrN33xFch1TFMAtim3dooUWYbNaTu4OrfldA61cdkeB8K0KR3
+ FpppgB2Gf1mkB/QqPjqiaXrcBaUc3lGe4chQs4S2ZRImogJoEqtUoAxkqj/TX0FWDJEw
+ PLx2S+v6GKfL08I34kzPqSyfmLTAwnqrcMr7gby64H79w/vzHIBb6ec1JJNEh4pVKbVF
+ ICVGidog2+ZUL5KJhWEXC91Z94IBlOX+dZvh6vtVXpo0/1GOCxaipa/BBn3tpMO2G1g7
+ fB9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719328146; x=1719932946;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=t+WU0zaXr2nzJEcBKvNspcCJHZEY5CHeQAoYeWN//ug=;
- b=XHvUouXaJ9s253xYhVq3AEOeIuAmkR4Db7K/TNJ8EZh0xvcL9m8ExkhJMFHsLYniQ5
- pIbmpFbTWHLruhuyAQKHbzlC/0jSpop8dRYC35UXh9acG2BySzzreT5EjJp9RRfNf0Bv
- nxQdT6CDQJaLrkbOfD9PfaN/wlprR8ZtxUsid6N6cPW7CzOeJ4k0EutctNM+5WuOnKzf
- 2LconIeA+5r+y4VSxtLprTP1P6D4hGKUm782/SmM7xqBQwqkUKLKM5Xu7XizyVl/nIdL
- VhhdQ0ZSRsAaImGrNxOJ/PygmrefJPFDM/cNpcoiIGYBHHquupkDTW4KFaAbTXZaowju
- SISg==
-X-Gm-Message-State: AOJu0YxtsE/ncQa+84ozs7Mw5oEuiWvs7JvUVFu+bVe8paJS6gADWPeZ
- juvLTlZ+yGFEZOgtou3GG8dLsIykfo116dgR0weBdt3NP2NafBmXho2q8COMjKt/eEaNtAD9FYh
- i
-X-Received: by 2002:a05:6a20:3419:b0:1b2:cf6c:d5a4 with SMTP id
- adf61e73a8af0-1bcf8025e10mr6370981637.61.1719328146313; 
- Tue, 25 Jun 2024 08:09:06 -0700 (PDT)
-Received: from sunil-pc.Dlink ([106.51.187.237])
+ d=1e100.net; s=20230601; t=1719328696; x=1719933496;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1eNQSJ1Cg3sKjP9f8CuJfSvHMNCcOvb284xbwUn5uzg=;
+ b=IoferYJE/hPkEkaAzMnr5il0oaFjxInQMxeTfbfZNoij1EOngutboyPfH5HJQcK41s
+ 6nr1DC5xKM0WtatY3UrA9BKwKOeT7bZSl/DhPiNBV6zbeBUtSgmaE9LEfEHx0f9zGrxL
+ GDlN9ht94K2rjjS6eJFh7Y/gFQ/dDKkqRQCVKVhEVxGOzragr7hAwd99KWmO0fz7NpI7
+ XZRNM2voj/UIB4YttmV+p9gw9ZWDNvKyrt/Ez63tI4/pxGIRqLxA0dBK7xz2wPIpTTDG
+ U6i2uU+oN80n4Dks7ZiJ3HWbkDZvcNpceLnB3RT3H+c7AhRSpaCkS5ljUWBNaydpAP+S
+ gRcQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWOwoF76HyIzNzCWHCGKIcVT53OfssGp3Y72cP7Teh1R+6rrLdmpssXrWpAbXRr/Uha61Y9mxoBglR7mSNuiUnQxYDS
+X-Gm-Message-State: AOJu0YwoZyJCJ0kKXQ4Mb+IXnvFnyGErZI2TTTxDHJIw2Jf+o37gtGzL
+ NerPSBvDtst4W4jcIXlsf26Vu5biV/0ilE2wRw3U6paoArVsuLnZ1JG2oXz3EoE=
+X-Received: by 2002:a05:6a20:4925:b0:1b2:be25:b5b0 with SMTP id
+ adf61e73a8af0-1bcf7e7ee16mr8159745637.20.1719328696079; 
+ Tue, 25 Jun 2024 08:18:16 -0700 (PDT)
+Received: from sunil-laptop ([106.51.187.237])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-70681722219sm4142636b3a.73.2024.06.25.08.09.01
+ d2e1a72fcca58-7068ca5a67esm3309744b3a.108.2024.06.25.08.18.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Jun 2024 08:09:05 -0700 (PDT)
+ Tue, 25 Jun 2024 08:18:15 -0700 (PDT)
+Date: Tue, 25 Jun 2024 20:48:07 +0530
 From: Sunil V L <sunilvl@ventanamicro.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
  Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
  Sia Jee Heng <jeeheng.sia@starfivetech.com>,
  Alistair Francis <alistair23@gmail.com>,
  Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
  Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Sunil V L <sunilvl@ventanamicro.com>
-Subject: [PATCH v4 03/16] uefi-test-tools: Add support for python based build
- script
-Date: Tue, 25 Jun 2024 20:38:26 +0530
-Message-Id: <20240625150839.1358279-4-sunilvl@ventanamicro.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20240625150839.1358279-1-sunilvl@ventanamicro.com>
-References: <20240625150839.1358279-1-sunilvl@ventanamicro.com>
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: Re: [PATCH v3 14/15] tests/qtest/bios-tables-test.c: Enable basic
+ testing for RISC-V
+Message-ID: <Znrfr7SsKPE56CDP@sunil-laptop>
+References: <20240621115906.1049832-1-sunilvl@ventanamicro.com>
+ <20240621115906.1049832-15-sunilvl@ventanamicro.com>
+ <20240625131959.67c2fc74@imammedo.users.ipa.redhat.com>
+ <20240625140558.168d1a9e@imammedo.users.ipa.redhat.com>
+ <Znq4LZCLbpT5zXbA@sunil-laptop>
+ <20240625160658.6781a17d@imammedo.users.ipa.redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x434.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240625160658.6781a17d@imammedo.users.ipa.redhat.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hZPufeBJCQSL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: d/6a5DpK7myh
 
-edk2-funcs.sh which is used in this Makefile, was removed in the commit
-c28a2891f3 ("edk2: update build script"). It is replaced with a python
-based script. So, update the Makefile and add the configuration file as
-required to support the python based build script.
+On Tue, Jun 25, 2024 at 04:06:58PM +0200, Igor Mammedov wrote:
+> On Tue, 25 Jun 2024 17:59:33 +0530
+> Sunil V L <sunilvl@ventanamicro.com> wrote:
+> 
+> > On Tue, Jun 25, 2024 at 02:05:58PM +0200, Igor Mammedov wrote:
+> > > On Tue, 25 Jun 2024 13:19:59 +0200
+> > > Igor Mammedov <imammedo@redhat.com> wrote:
+> > >   
+> > > > On Fri, 21 Jun 2024 17:29:05 +0530
+> > > > Sunil V L <sunilvl@ventanamicro.com> wrote:
+> > > >   
+> > > > > Add basic ACPI table test case for RISC-V.
+> > > > > 
+> > > > > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> > > > > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>    
+> > > > 
+> > > > Reviewed-by: Igor Mammedov <imammedo@redhat.com>  
+> > > 
+> > > I take ack back for now, since patch most likely to cause failures on weaker test host (CI infra)
+> > > 
+> > > test case never finishes and timeouts on my x86 host while consuming 100%,
+> > >   
+> > Hi Igor,
+> > 
+> > Many thanks for your kind review!. I think you are missing the patch [1]
+> > (which I mentioned in cover letter as well). This patch became a
+> > dependency since your suggestion to use -cdrom option needed this fix.
+> > 
+> > gitlab CI tests also passed for me with that patch included.
+> > 
+> > [1] - https://mail.gnu.org/archive/html/qemu-devel/2024-06/msg03683.html
+> 
+> ok, keep my RB but respin series with that patch included to make it complete.
+> (there is no harm if it gets merged 1st through another tree. but it makes 
+> life of reviewers/maintainers easier)
+> 
+Fair enough. Sorry about that. I have sent v4 as per your recommendation.
+It looks like the series has got sufficient reviews. May be it would be
+better if it goes via Alistair's tree since the dependent patch is
+already merged in his next branch but I will leave it to the
+maintainers.
 
-Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-Acked-by: Gerd Hoffmann <kraxel@redhat.com>
-Acked-by: Igor Mammedov <imammedo@redhat.com>
----
- tests/uefi-test-tools/Makefile               | 19 +++----
- tests/uefi-test-tools/uefi-test-build.config | 52 ++++++++++++++++++++
- 2 files changed, 59 insertions(+), 12 deletions(-)
- create mode 100644 tests/uefi-test-tools/uefi-test-build.config
-
-diff --git a/tests/uefi-test-tools/Makefile b/tests/uefi-test-tools/Makefile
-index 0c003f2877..f4eaebd8ff 100644
---- a/tests/uefi-test-tools/Makefile
-+++ b/tests/uefi-test-tools/Makefile
-@@ -12,7 +12,7 @@
- 
- edk2_dir              := ../../roms/edk2
- images_dir            := ../data/uefi-boot-images
--emulation_targets     := arm aarch64 i386 x86_64
-+emulation_targets     := arm aarch64 i386 x86_64 riscv64
- uefi_binaries         := bios-tables-test
- intermediate_suffixes := .efi .fat .iso.raw
- 
-@@ -56,7 +56,8 @@ Build/%.iso.raw: Build/%.fat
- # stripped from, the argument.
- map_arm_to_uefi     = $(subst arm,ARM,$(1))
- map_aarch64_to_uefi = $(subst aarch64,AA64,$(call map_arm_to_uefi,$(1)))
--map_i386_to_uefi    = $(subst i386,IA32,$(call map_aarch64_to_uefi,$(1)))
-+map_riscv64_to_uefi = $(subst riscv64,RISCV64,$(call map_aarch64_to_uefi,$(1)))
-+map_i386_to_uefi    = $(subst i386,IA32,$(call map_riscv64_to_uefi,$(1)))
- map_x86_64_to_uefi  = $(subst x86_64,X64,$(call map_i386_to_uefi,$(1)))
- map_to_uefi         = $(subst .,,$(call map_x86_64_to_uefi,$(1)))
- 
-@@ -70,7 +71,7 @@ Build/%.fat: Build/%.efi
- 	uefi_bin_b=$$(stat --format=%s -- $<) && \
- 		uefi_fat_kb=$$(( (uefi_bin_b * 11 / 10 + 1023) / 1024 )) && \
- 		uefi_fat_kb=$$(( uefi_fat_kb >= 64 ? uefi_fat_kb : 64 )) && \
--		mkdosfs -C $@ -n $(basename $(@F)) -- $$uefi_fat_kb
-+		mkdosfs -C $@ -n "bios-test" -- $$uefi_fat_kb
- 	MTOOLS_SKIP_CHECK=1 mmd -i $@ ::EFI
- 	MTOOLS_SKIP_CHECK=1 mmd -i $@ ::EFI/BOOT
- 	MTOOLS_SKIP_CHECK=1 mcopy -i $@ -- $< \
-@@ -95,15 +96,9 @@ Build/%.fat: Build/%.efi
- # we must mark the recipe manually as recursive, by using the "+" indicator.
- # This way, when the inner "make" starts a parallel build of the target edk2
- # module, it can communicate with the outer "make"'s job server.
--Build/bios-tables-test.%.efi: build-edk2-tools
--	+./build.sh $(edk2_dir) BiosTablesTest $* $@
--
--build-edk2-tools:
--	cd $(edk2_dir)/BaseTools && git submodule update --init --force
--	$(MAKE) -C $(edk2_dir)/BaseTools \
--		PYTHON_COMMAND=$${EDK2_PYTHON_COMMAND:-python3} \
--		EXTRA_OPTFLAGS='$(EDK2_BASETOOLS_OPTFLAGS)' \
--		EXTRA_LDFLAGS='$(EDK2_BASETOOLS_LDFLAGS)'
-+Build/bios-tables-test.%.efi:
-+	$(PYTHON) ../../roms/edk2-build.py --config uefi-test-build.config \
-+		--match $*
- 
- clean:
- 	rm -rf Build Conf log
-diff --git a/tests/uefi-test-tools/uefi-test-build.config b/tests/uefi-test-tools/uefi-test-build.config
-new file mode 100644
-index 0000000000..1f389ae541
---- /dev/null
-+++ b/tests/uefi-test-tools/uefi-test-build.config
-@@ -0,0 +1,52 @@
-+[global]
-+core = ../../roms/edk2
-+
-+####################################################################################
-+# arm
-+
-+[build.arm]
-+conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
-+plat = UefiTestTools
-+dest = ./Build
-+arch = ARM
-+cpy1 = ARM/BiosTablesTest.efi  bios-tables-test.arm.efi
-+
-+####################################################################################
-+# aarch64
-+
-+[build.aarch64]
-+conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
-+plat = UefiTestTools
-+dest = ./Build
-+arch = AARCH64
-+cpy1 = AARCH64/BiosTablesTest.efi  bios-tables-test.aarch64.efi
-+
-+####################################################################################
-+# riscv64
-+
-+[build.riscv]
-+conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
-+plat = UefiTestTools
-+dest = ./Build
-+arch = RISCV64
-+cpy1 = RISCV64/BiosTablesTest.efi  bios-tables-test.riscv64.efi
-+
-+####################################################################################
-+# ia32
-+
-+[build.ia32]
-+conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
-+plat = UefiTestTools
-+dest = ./Build
-+arch = IA32
-+cpy1 = IA32/BiosTablesTest.efi  bios-tables-test.i386.efi
-+
-+####################################################################################
-+# x64
-+
-+[build.x64]
-+conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
-+plat = UefiTestTools
-+dest = ./Build
-+arch = X64
-+cpy1 = X64/BiosTablesTest.efi  bios-tables-test.x86_64.efi
--- 
-2.40.1
-
+Thanks!
+Sunil

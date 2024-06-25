@@ -1,106 +1,86 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp598992njc;
-        Mon, 24 Jun 2024 23:59:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWdI/ltaQsK19IFYa/d366ARoEIMdpZiOlh9R41Vl9N4nkX7kBHqthmm07xTvqQHzL9A9eE2J8mkHZNLVJl+emPHCTSIikg
-X-Google-Smtp-Source: AGHT+IF8Nu8SwX7I3Ih3Fi07LSaZxk8airGqx9jl7mG5nmRCZugVQsvrf/rum906SP/zWpFD/G0h
-X-Received: by 2002:a0c:ac4c:0:b0:6b5:101d:201 with SMTP id 6a1803df08f44-6b53bbd2640mr71963716d6.39.1719298769688;
-        Mon, 24 Jun 2024 23:59:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719298769; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp600720njc;
+        Tue, 25 Jun 2024 00:08:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXdJtlE4DIr/5U+XCKSdAn+6ODS8yrjpCHttU8CeCi80Cz7t64D/h8s8XKw8mFpn18fepaYz6dM2TOtQFdVRfMzS7jSjNpS
+X-Google-Smtp-Source: AGHT+IGqdXDHF1M8qmlbtsNXRLQdyLCA7fGl0wLbuMPFiN2Nlz6EOvIGG/q7PDj/a7UfxaL9pUYg
+X-Received: by 2002:a05:620a:4503:b0:795:be11:c626 with SMTP id af79cd13be357-79bded4d5f0mr1288744185a.26.1719299307709;
+        Tue, 25 Jun 2024 00:08:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719299307; cv=none;
         d=google.com; s=arc-20160816;
-        b=ga+INmcfo7FJ0lDUGNJdd8lo3V3FZVNyguoTe3//820jyvkdtnmsbFbYvalWURsSuP
-         PVJ5b53drZn5mT8yaRrLAZkSb9jtNyS/gz+b6KTf/kMNilYnuAsIEw0M2VEnh3ph0IgX
-         kId0CIyBE4oCCFnuDN8x+dV7qIyccplz7P9i8mfEsbypP8Esy+xmufao2+7o05w+j0sD
-         TgeY1QZ1lQkbwX8a1DuVxUfhwAzko82eulHaX2oMilTY40tVGYMnmDHAZOt5TwIFBxHI
-         bfFyM4COzA3NOc0OYLYpJ5GWGU12Ch3m2szdErHOVsjXgVbR5s0G7sBRjCjeHKbYtBxO
-         V5sA==
+        b=MKVgfpR+TCr4ZI0jvIlvcd9pvZucrJ7VltwbJxmr/0eHsSykEnm447hPmO3DEETcwE
+         rvZ0VVvUbmZ2lJzZixhehARMj7HtEyU211HAyktDtoTum7xwCnEUB89v98binY/CukZK
+         xKnt6/xvUFOyRCPt3nQE3y8rlFQVjpwhMWYrF1XPJfszJGTa2AXeFRq9E+Wb6lJ7fO27
+         QNUZzWvdiK4znGhkKjUB+trqZlvJI3Jg073n5dJY0KFHrbzbu1BuGwHWsrOv9LjVLSeJ
+         yuAZX5pyJgsGtwvXRd1409RT95fGUKdjD7JipS9zujl11yjDClND+tUMzTncsiOk7ReW
+         N1YQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=B20vDn+y9X1k1NJBIFC+mmYFczc3oyCRES/8ggOE9QQ=;
-        fh=kyMSqG9PykyTgTE4kbSSDlDxQBIdOnAflmYaysdpJC4=;
-        b=lz9hO8/cYwRk7U8lOQO9HFDcWvStRsPJpoxStxv5537hNNXyQt5AUicQADCbw0wcpw
-         f0dyBcf3FGvkF5SjJnIh3mDB9vueIa1iEwH7gPqy6kgwRxC5+vFP3ER9qMXZWxsovKpI
-         ikMq3Lum1RFrLDrvI1RadBYz4taCH3Mh6g2Sqc3DvEcj8VUyrf2MwieKkgRl3GIR2QaO
-         wzPwQ8oYZOZRNLhoPo7w/v0+VjQ/zElvtku9p1qTsdcWrBDtLtu0jgF6+LQTw8mFeN+I
-         qz0mA0jh5BNI1rs1POEpodzuzo0qLHyViNdNbWIx7F9JDWJ19zZsZAlUBlzu8riVDAmE
-         I4DA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=556UwNOCEDY73+YmleRjNcS5ZeHYfcHgGnyyh9gKb5o=;
+        fh=HrGJUFnZHz7hWxi+LYnD6UY3P1PFtgkIHq6jddVMKYw=;
+        b=BlQ8Aetux79971Xr49wp8DygKdpnWHQVYZxnn1XKlxyqBh7WVr25KXBvRLdObf2EpG
+         dudx/flUgmq30oWry+JYOMUBifi9uzRWrwOuF7ilFY3PNM2WOBZqeMBjavKCvOS2MaMK
+         hlIeXewB9wB+pRF+oq0P/Lbh2JnrRDFYZ14mq4glCPiPi+rKsAULYCJd0XxFRXxNtqQE
+         425t6+VfoagB25XJhQZ+HVFlpF7cH3JW+ulKu/D8xvovf65Wt/WkTCXAfC8N/ic2gT1K
+         DP49T7RSMFpsPvl8AIXZ64uOLiaWKP5Ts04rouCS8AYckFZQ1cj7A0qCWnYtQU9K6DXE
+         vG7A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/iUwGsb";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b5295df072si89003256d6.432.2024.06.24.23.59.29
+        by mx.google.com with ESMTPS id af79cd13be357-79bce92c01csi1037975085a.445.2024.06.25.00.08.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2024 23:59:29 -0700 (PDT)
+        Tue, 25 Jun 2024 00:08:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/iUwGsb";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sM08v-0006uC-Rl; Tue, 25 Jun 2024 02:59:05 -0400
+	id 1sM0HR-00011r-Nj; Tue, 25 Jun 2024 03:07:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sM08t-0006tQ-U3
- for qemu-arm@nongnu.org; Tue, 25 Jun 2024 02:59:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1sM0HR-00011Z-5i; Tue, 25 Jun 2024 03:07:53 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sM08s-0005lZ-2i
- for qemu-arm@nongnu.org; Tue, 25 Jun 2024 02:59:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1719298740;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=B20vDn+y9X1k1NJBIFC+mmYFczc3oyCRES/8ggOE9QQ=;
- b=g/iUwGsbsNngkdje/YkpmuJ4rEbpUXVx57JVS3PJzdgr7zZkPMH1y5UzQYEx8pYsFAcnZD
- h2yCf7BZy0dMCiVjYO96ctxuDqvxEGuijW/wb+7zSn2yOCmM+JdPGFWFN88Ba72hlm6eP7
- MVniQMdpboK4h/64OydS1aD/mNiIvJk=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-52-OLL8hd-fPFWytE2fRww-qA-1; Tue,
- 25 Jun 2024 02:58:54 -0400
-X-MC-Unique: OLL8hd-fPFWytE2fRww-qA-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 661A919560AF; Tue, 25 Jun 2024 06:58:50 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.39.192.49])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0A10F3000229; Tue, 25 Jun 2024 06:58:41 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH] aspeed/sdmc: Check RAM size value at realize time
-Date: Tue, 25 Jun 2024 08:58:39 +0200
-Message-ID: <20240625065839.485034-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1sM0HP-0007Jh-PU; Tue, 25 Jun 2024 03:07:52 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 25 Jun
+ 2024 15:07:41 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Tue, 25 Jun 2024 15:07:41 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@redhat.com>
+Subject: [PATCH v3 2/2] aspeed/sdmc: Remove extra R_MAIN_STATUS case
+Date: Tue, 25 Jun 2024 15:07:40 +0800
+Message-ID: <20240625070741.2852946-3-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240625070741.2852946-1-jamin_lin@aspeedtech.com>
+References: <20240625070741.2852946-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 10
-X-Spam_score: 1.0
-X-Spam_bar: +
-X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.207,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,37 +93,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 275eRf1+rYax
+X-TUID: +jmq3kmK0OG9
 
-The RAM size of the SDMC device is validated for the SoC and set when
-the Aspeed machines are initialized and then later used by several
-SoC implementations. However, the SDMC model never checks that the RAM
-size has been actually set before being used. Do that at realize.
+Coverity reports that the newly added 'case R_MAIN_STATUS' is DEADCODE
+because it can not be reached. This is because R_MAIN_STATUS is handled
+before in the "Unprotected registers" switch statement. Remove it.
 
+Fixes: Coverity CID 1547112
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+[ clg: Rewrote commit log ]
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/misc/aspeed_sdmc.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ hw/misc/aspeed_sdmc.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-index 94eed9264d09..ebf139cb5c91 100644
+index 93e2e29ead..94eed9264d 100644
 --- a/hw/misc/aspeed_sdmc.c
 +++ b/hw/misc/aspeed_sdmc.c
-@@ -271,6 +271,12 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
-     AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
- 
-     assert(asc->max_ram_size < 4 * GiB || asc->is_bus64bit);
-+
-+    if (!s->ram_size) {
-+        error_setg(errp, "RAM size is not set");
-+        return;
-+    }
-+
-     s->max_ram_size = asc->max_ram_size;
- 
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
+@@ -589,7 +589,6 @@ static void aspeed_2700_sdmc_write(AspeedSDMCState *s, uint32_t reg,
+     case R_INT_STATUS:
+     case R_INT_CLEAR:
+     case R_INT_MASK:
+-    case R_MAIN_STATUS:
+     case R_ERR_STATUS:
+     case R_ECC_FAIL_STATUS:
+     case R_ECC_FAIL_ADDR:
 -- 
-2.45.2
+2.25.1
 

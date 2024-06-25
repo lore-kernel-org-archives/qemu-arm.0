@@ -1,95 +1,121 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp596436njc;
-        Mon, 24 Jun 2024 23:38:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVF/lf7yW+w/1p4tHdLoY7dLV/lvOnGv8ia1ypm6zh/GzztJLPWXZ/XCbcqYcpcmH1wW40pxfhu+gce936w+/jJrAbjtezz
-X-Google-Smtp-Source: AGHT+IGe2r41USIk5Wq9j/fBHJ2dis0Nfms2UHTLrcQ0dVd5QXiplKKVNXfdG3UWhRYliXErpRjM
-X-Received: by 2002:a05:6214:19ea:b0:6b4:febe:e86b with SMTP id 6a1803df08f44-6b54099c35amr86757906d6.4.1719297522313;
-        Mon, 24 Jun 2024 23:38:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719297522; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp598428njc;
+        Mon, 24 Jun 2024 23:54:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV/JWkbF3NYEHMRaE1aJ3Hli1ZtmIg3fZyRWA8uuw+TsLyI3DMMu20qaZGRiMzQChZh8FomULYmCNw1JkafYeRH8/y83v8m
+X-Google-Smtp-Source: AGHT+IEkWotsXsjmUPcWglg7Zwkm8x7/PzaQI59Xjxji7CakfB3Ei7WGvzO4jNn6JW8eRrzGMZDJ
+X-Received: by 2002:a05:620a:199a:b0:795:5e01:74f2 with SMTP id af79cd13be357-79be46b75f7mr941298485a.21.1719298480548;
+        Mon, 24 Jun 2024 23:54:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719298480; cv=none;
         d=google.com; s=arc-20160816;
-        b=iv2OZVBxKreUE8ccNVWpbdfeVZW1N4Cy5fH8R3u4YB39274L7oLHN6UT9osua+mlnK
-         JHhQO26BGV9dKXDxC/sXbi923tz0xo53aIbo7Iqn7Qwchd7v50I6WWeFt/vtHb3Bd7ub
-         irVXJ7Zj9tPYs5Hfj1jHkjk/pDlcA34x1in8gAJgksFl4e326gZxohyGm3WDMJ2FdjGr
-         ksoagNArej00Q0XTMHQZpXOyf2u6xt0nUW1UQFun3kunRINhMR9wLhX1CTDxFpbFMUnM
-         JK1sWTRp8vPmAOaW0ys6JbK2kbXkAgmBwVNBzxvJkMFIdjcERx11lUJ+fCR/sV14Qwj8
-         INpw==
+        b=D70x/o4MzPlcbwR+AhwOfSDL5iXoqqWjDSpeZQq4piYE8J4yi3kIBqVhBBMqoVD4UB
+         1P1yntuCL17PfdT7caKIwIR7BpI60BTdBDN7tGe6OW2YZMKLGXIONhewh9qGYOh44+UX
+         erXJo/X33gjdOOVhI4YUaLLS+4sFo/HcpyfJyyAC2XG4i/VXQ12p35wGsO8fwdJlckT1
+         j5k9I7NBdjBMTobM3ZrfBzg6MQbBnb5ZL9yFtiuHMyhR+4/HwCwUJ5GiyYIi5X2JeJN/
+         7L18TNAnAkhFYqKuAqg7reNYaeosiEOuTHk67B/iu7usWkYV9g4Z+36l3bxTkR9N/52x
+         9ESA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=UhjnsEnyWZWPyp7pwtPZGMdU2As0V86Gk8Rp66gQM3w=;
-        fh=I8kkexGAT3JUm6pORMZbUPY0+dzUONRojkOFPvbs0yE=;
-        b=aReUtRJeqU4cBiyS06UL+rVZL+w3sCasAKIPBhFG1rRTJEybwqh4AKhWTdN+emkpLo
-         igAroNywIh1xFsFLXWbWYBgD3hQZ1TjTfXk7SfDXMCJfM0pnlV8ov8SlCkvo3DaTIZIw
-         Lp+wsarKlgyN42bcA4BETKWwsKvrtHxNQVynQ0bwx1WnviCvFZqJlnF9MHXB4xLVkJB2
-         LAFTd1EBOpUrVULWWe6YmrFXxiKtZAcZxd6C1ZxHkYoRHlMyWhLj2q9Di3gDMleFZzoY
-         k4fauotNECGUEAHIPkwQT69wHeUg3gxrqxQ8B+COhbnRh/ufJoP8nOMtRFE/FdfKAS/D
-         3ulA==;
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=UySjzv+2JdHEvnpXeR3HI1Rtg6290dWP+wYHzkrUzmU=;
+        fh=WX5fgx8wk+huxiVsfSNwuHA8Evb9fhcdgegvKjGrDLI=;
+        b=sT0cX4xhJw5zVhpwiwntKLdCKC2wNOSfc/gCFiFV4R6sZpZ9c9m5ZJwuT6HOwwDP8z
+         xaUe/PH/67rSyhd4xJcrg08AHGdLEXQDyAJ6HzLH1J6PLkpAqlNlHOqCfM9jJLibZDW3
+         vpbZpibvj+OP6Alo4m8fo/aHnL9deQ42HSXc5GWMgGYySXQho7wcpcMKtleZFWJI+uAB
+         qrFS35xsK0gxKOgfNZsn22hRMQ4oCXRh96IK9wUZFpkSC7uOyRy8TL82BFdmV9pnBBFM
+         0Yz5oZGUGfb4q6yly8y7XyBHdLCl/6ywxdaxzaMiNJwHDPaiPTQi0/FaDNy1YdXq2JLF
+         gqeQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=FP1HQ3JI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b51ef44491si97369356d6.520.2024.06.24.23.38.42
+        by mx.google.com with ESMTPS id af79cd13be357-79c0c0deda7si2471585a.541.2024.06.24.23.54.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2024 23:38:42 -0700 (PDT)
+        Mon, 24 Jun 2024 23:54:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=FP1HQ3JI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sLzon-0000VA-SU; Tue, 25 Jun 2024 02:38:17 -0400
+	id 1sM04O-0004qr-6N; Tue, 25 Jun 2024 02:54:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=+2S4=N3=kaod.org=clg@ozlabs.org>)
- id 1sLzon-0000Ut-3S; Tue, 25 Jun 2024 02:38:17 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=+2S4=N3=kaod.org=clg@ozlabs.org>)
- id 1sLzok-0002Hi-BF; Tue, 25 Jun 2024 02:38:16 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4W7ZsB1r46z4wcS;
- Tue, 25 Jun 2024 16:38:06 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4W7Zs63b1wz4wbr;
- Tue, 25 Jun 2024 16:38:02 +1000 (AEST)
-Message-ID: <7974a26d-4ad4-445f-a3b3-71c08984ad16@kaod.org>
-Date: Tue, 25 Jun 2024 08:37:59 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sM04M-0004qC-HZ
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 02:54:22 -0400
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sM04J-0004ut-UY
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 02:54:22 -0400
+Received: by mail-lj1-x229.google.com with SMTP id
+ 38308e7fff4ca-2ebe0a81dc8so66398061fa.2
+ for <qemu-arm@nongnu.org>; Mon, 24 Jun 2024 23:54:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1719298457; x=1719903257; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=UySjzv+2JdHEvnpXeR3HI1Rtg6290dWP+wYHzkrUzmU=;
+ b=FP1HQ3JI8FcoJB1fquAjpoqc8rsSySKLK9EUENTQZ7S1lxlMY5rtjY9ABLRXJDyADG
+ 1MafUP/IfiUvBIXFfp3nBipLA95zzWZcLppfx11TECWayfHTmVzLI+xMPeQPKiJlurY+
+ x3UT3Mw6hIxr74SMaFM8J3jSS9GSaa6c8CX/8M7hdqpoocxnzAnAk4LtEprIcdmqN6FE
+ dLT+DOs3GGQY/1EGaBPRYeeaujk719Pw4HoJMgSntDSuwSdy3NnFYPAC1xdfZ0XK0jD+
+ GgxLgGJgE/S9cx1DOFzXGrSXwWtIfzOceg6RiedACzKAPGCsKA7UakqktYzhZx7lWXw4
+ agpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1719298457; x=1719903257;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=UySjzv+2JdHEvnpXeR3HI1Rtg6290dWP+wYHzkrUzmU=;
+ b=vyk2SvqUORIVDvtUtcXqHVCvRNANu+QCoqm7nIt2Qzgb2mWmivcwdnqsd9b7loo7pE
+ u5qefYklPC7qOBzOAnx2GD3oVZlclp1V8V9hSAWSemDPv7+S0A67APeBn7u/D/r40UY0
+ XGAAUIjjjpLRa/1L5pbQK6LAmCLsajBjYnORr6M1vcZuEGBF4x/6jUClBHs0Rlksm23n
+ UD4Ma01HlVrR+OYtv4HIRVT+qf1/FftwignWN2o6zl0eta3fMIP5UP4JKYZ3j/SOoXkU
+ tptplsJvuzt5Qslu7K1Ia2Nq0r5M4yLC6GOwpbdSmTDhCOjDZlqrbO76Yxu97r7ASv2N
+ TpIg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVKHl/Tvcy3rrXW6g1e8eU/FosQhV57qiFYXtTCXo0+FX8oTiqBIDgvAlcuPn5ivqYRy2GXLnq2YMC3PARdZirJCTc1
+X-Gm-Message-State: AOJu0YwayP1hkHFsIu1p4h+oUP0bGbzXN4lRaLjCCwtKGdp90wt5485Q
+ aQPZ/zATvjLL1THXBtDgmB7BvvjD+jUmRbU+eDApaCjRVIu7leUCyhKiwKibUso=
+X-Received: by 2002:a2e:a98e:0:b0:2ec:5d83:32cf with SMTP id
+ 38308e7fff4ca-2ec5d83332fmr56099721fa.34.1719298456708; 
+ Mon, 24 Jun 2024 23:54:16 -0700 (PDT)
+Received: from [192.168.69.100] (mau49-h01-176-184-41-129.dsl.sta.abo.bbox.fr.
+ [176.184.41.129]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-424817b5554sm164195525e9.26.2024.06.24.23.54.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 24 Jun 2024 23:54:16 -0700 (PDT)
+Message-ID: <e4571375-e659-479e-a4b8-00c82b227417@linaro.org>
+Date: Tue, 25 Jun 2024 08:54:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] aspeed/soc: Fix possible divide by zero
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- cmd <clement.mathieudrif.etu@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-References: <20240625015028.1382059-1-jamin_lin@aspeedtech.com>
- <20240625015028.1382059-2-jamin_lin@aspeedtech.com>
- <24dbb79e-cdcc-4415-befa-e6351c8f29b4@gmail.com>
- <69656db3-24a7-447d-b2b2-49a938744be4@kaod.org>
- <d698609b-4760-4932-999b-4d4754021421@gmail.com>
- <SI2PR06MB50415148B5224AB52D485D02FCD52@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <SI2PR06MB50415148B5224AB52D485D02FCD52@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Subject: Re: [PATCH] aspeed: Deprecate the tacoma-bmc machine
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>
+References: <20240625060927.440589-1-clg@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240625060927.440589-1-clg@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=+2S4=N3=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::229;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x229.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,99 +130,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mk6J0HDXIDXd
+X-TUID: AtgYntsYxdOV
 
-On 6/25/24 8:15 AM, Jamin Lin wrote:
-> Hi cmd, Cedric and Peter,
+On 25/6/24 08:09, Cédric Le Goater wrote:
+> The tacoma-bmc machine was a board including an AST2600 SoC based BMC
+> and a witherspoon like OpenPOWER system. It was used for bring up of
+> the AST2600 SoC in labs. It can be easily replaced by the rainier-bmc
+> machine which is part of a real product offering.
 > 
->> -----Original Message-----
->> From: cmd <clement.mathieudrif.etu@gmail.com>
->> Sent: Tuesday, June 25, 2024 2:07 PM
->> To: Cédric Le Goater <clg@kaod.org>; Jamin Lin <jamin_lin@aspeedtech.com>;
->> Peter Maydell <peter.maydell@linaro.org>; Steven Lee
->> <steven_lee@aspeedtech.com>; Troy Lee <leetroy@gmail.com>; Andrew
->> Jeffery <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; open
->> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
->> <qemu-devel@nongnu.org>
->> Cc: Cédric Le Goater <clg@redhat.com>
->> Subject: Re: [PATCH v2 1/2] aspeed/soc: Fix possible divide by zero
->>
->>
->> On 25/06/2024 08:03, Cédric Le Goater wrote:
->>> On 6/25/24 8:00 AM, cmd wrote:
->>>> Hi
->>>>
->>>> On 25/06/2024 03:50, Jamin Lin via wrote:
->>>>> Coverity reports a possible DIVIDE_BY_ZERO issue regarding the
->>>>> "ram_size" object property. This can not happen because RAM has
->>>>> predefined valid sizes per SoC. Nevertheless, add a test to close
->>>>> the issue.
->>>>>
->>>>> Fixes: Coverity CID 1547113
->>>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->>>>> Reviewed-by: Cédric Le Goater <clg@redhat.com> [ clg: Rewrote commit
->>>>> log ]
->>>>> Signed-off-by: Cédric Le Goater <clg@redhat.com>
->>>>> ---
->>>>>    hw/arm/aspeed_ast27x0.c | 6 ++++++
->>>>>    1 file changed, 6 insertions(+)
->>>>>
->>>>> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c index
->>>>> b6876b4862..d14a46df6f 100644
->>>>> --- a/hw/arm/aspeed_ast27x0.c
->>>>> +++ b/hw/arm/aspeed_ast27x0.c
->>>>> @@ -211,6 +211,12 @@ static void aspeed_ram_capacity_write(void
->>>>> *opaque, hwaddr addr, uint64_t data,
->>>>>        ram_size = object_property_get_uint(OBJECT(&s->sdmc),
->>>>> "ram-size",
->>>>>                                            &error_a
->> bort);
->>>>> +    if (!ram_size) {
->>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>>>> +                      "%s: ram_size is zero",  __func__);
->>>>> +        return;
->>>>> +    }
->>>>> +
->>>> If we are sure that the error cannot happen, shouldn't we assert
->>>> instead?
->>>
->>> Yes. That is what Peter suggested. This needs to be changed.
->>>
-> Thanks for review and suggestion.
-> How about this change?
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> ---
+>   docs/about/deprecated.rst | 9 +++++++++
+>   hw/arm/aspeed.c           | 3 +++
+>   2 files changed, 12 insertions(+)
 > 
-> assert(ram_size > 0);
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index ff3da68208ac..3f036c79a45a 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -256,6 +256,15 @@ images are not available, OpenWRT dropped support in 2019, U-Boot in
+>   2017, Linux also is dropping support in 2024. It is time to let go of
+>   this ancient hardware and focus on newer CPUs and platforms.
+>   
+> +Arm ``tacoma-bmc`` machine (since 9.1)
+> +''''''''''''''''''''''''''''''''''''''''
+> +
+> +The ``tacoma-bmc`` machine was a board including an AST2600 SoC based
+> +BMC and a witherspoon like OpenPOWER system. It was used for bring up
+> +of the AST2600 SoC in labs.  It can be easily replaced by the
+> +``rainier-bmc`` machine which is a real product.
+> +
+> +
+>   Backend options
+>   ---------------
+>   
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 40dc0e4c76db..823faff36a81 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -1379,6 +1379,9 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
+>       amc->i2c_init  = witherspoon_bmc_i2c_init; /* Same board layout */
+>       mc->default_ram_size = 1 * GiB;
+>       aspeed_machine_class_init_cpus_defaults(mc);
+> +
+> +    mc->deprecation_reason = "redundant board. Please use a similar "
+> +        "rainier-bmc";
 
-yes.
+mc->deprecation_reason = "Please use the similar 'rainier-bmc' machine";
 
-I will send another patch fixing a long standing issue in the SDMC
-model not checking the ram_size value in the realize handler. It
-relies on the "ram-size" property being set.
-
-Thanks,
-
-C.
-
-
-> If you agree, I will send v3 patch.
-> Thanks-Jamin
-> 
->>>
->>> Thanks,
->>>
->>> C.
->>>
->> Ok fine, I didn't see the message, sorry!
->>
->> Thanks
->>
->>   >cmd
->>
->>>
->>>
->>>>>        /*
->>>>>         * Emulate ddr capacity hardware behavior.
->>>>>         * If writes the data to the address which is beyond the ram
->>>>> size,
->>>
+>   };
+>   
+>   static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
 

@@ -1,97 +1,96 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp699728njc;
-        Tue, 25 Jun 2024 08:11:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWvdR3dO/0NzliRzRhivsBVrhe3qitFnNk6sGRg9iLbFlf48AFb2PNtx+YVzxsMOuIvbVG5UoGBjY5O5jCQUeg3GU5G9mhw
-X-Google-Smtp-Source: AGHT+IGDsSNv/nfVp8SBb3Hhl8MmhF/GoMKwOtw6R22KWCwnvTv2aPKAvCeTMiFZNruAO0YuM4fJ
-X-Received: by 2002:a05:620a:4621:b0:79b:f689:b228 with SMTP id af79cd13be357-79bf689b561mr494313285a.24.1719328295628;
-        Tue, 25 Jun 2024 08:11:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719328295; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp699734njc;
+        Tue, 25 Jun 2024 08:11:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWoge+GRtH4vJHIspc6NKe0058Ymq1f5Ug+eybCe1mzwZHed4BI3yBJjjfO57QYKQdAJM94kuBj30fJzTNKCjyCO8whN5XV
+X-Google-Smtp-Source: AGHT+IGit8C3dPRFedqZNd5AbkUfO7Pra8NrImHkx+LUQSdrDB/iPxbatK2rjweTiI36VPCDygCx
+X-Received: by 2002:a0c:e90d:0:b0:6b2:dd54:b634 with SMTP id 6a1803df08f44-6b5409ea981mr70909086d6.39.1719328298158;
+        Tue, 25 Jun 2024 08:11:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719328298; cv=none;
         d=google.com; s=arc-20160816;
-        b=EokxehFx1j/yFNbeF55m0e64hEHLc6jWFUREP3p8d1QNvSuieJBxjm/hJ4vQ9imLMl
-         062YZMA6p+aLmiYrBMPIUlru+up3cS0uY3KM6iGCKqi1oDJ3gId1R1C+XQYJhciK/KrC
-         zToJHxaNqnu7gJuvHq5CLR1mRLc+Y/lvuQNavOtL2ZjicHbocRXEZMh4VL7OzQey7c8D
-         iQwp2zwEm5KoVQbehbLxL+/EyFTnZ9R6q1L5Q3DPmZRN5vHOe9ls9HsukQ9em7zJK3eq
-         sM9pIbwcf/lx0mjCJ0opArHPuYUzp2pNMGz7x6vm81hhfB16OeBNfBn7tFkPpkh3qGGi
-         6R/A==
+        b=v25HeBd5kOuGZQnIFcR8sGNbzXLpDB165Pi6c7RRbyiEgmDLxZQuFoDVd/piGDa+tL
+         aghrpkq8Vd8OseG9XzkSI9bVkTGUinICdwRnN7GCvHfBQ8FRiyJEiBYZrwRKbb3RZCjg
+         3lUWcKw6G0PiuSy0erkupNg0Xug6TIbsmcpeGJbC2fm6BTBNfmTpGJi1qbC7lQEUVRz5
+         lxsC+20hr0rir3SAApQA5iRcMN5xBmlyMxjTJbq/9vqFKkoEt9IfiliEuDrAl54M6UBI
+         moNc9FTlnbHSu4GmiTHuKEX+9MmwXFmOgWLmKllXcokr5M0qLuQVEeVIU5GE4GJeTkkt
+         levQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=RHCVHGsnm67vgclIl82zPh5XLBIaF6XqB4NGAAUBUiE=;
-        fh=gmC4GW9vEZSIiJvoFOUgziNG2tzIe1Humf9dMtHd6+I=;
-        b=Pzt4dBgnaNc86p1777LoUJWvdiRoIgopReLo8w/Q//FQxaGvdeEGzkg1AXv6hMW6zP
-         WyQeI3XRCn6FjZ+z9OBMxpoDy65RxPpyKdouf4ND422QZAXorLov/DGx7q3m0n1INhG+
-         PjSqyza8oDM5glYdDahtexqmPH6sy44FV8MNJEEsr8D1q2s4BLksu29e+HflqpKQmP0u
-         SAvVnI4LdJth7UT59iw6CLwZ2KXOL4mydnmHJDaX0Kp+JSPzIq2NB0MleyuybSZe1vSJ
-         SrikT0S8kCziylFkfaKQ+k1nT5HBMF3oTB9pzyRsjQZUvXe9RPqq4xZTErak3+bZDRLl
-         C1Bw==;
+        bh=t+WU0zaXr2nzJEcBKvNspcCJHZEY5CHeQAoYeWN//ug=;
+        fh=bQDQrlPrzZo1QI0iP5G1zwRQro6/5fB3OT1u7VoARm4=;
+        b=YYZercSYdV/SqEjCkWtdVkWJxAqBICVCdJYZEfgpxOUin1TD634XmQ+zcoE0f25/au
+         bRc+0jBhJ61y1VSLUkUbTWw7M3fIE19n1WP/w1cWezg1r9pz5BL4lG878X1IVkmLUU1N
+         7vk5ZKNlNQKrpoAO5N/sWm8otqK/ewij2KTjuIoDpvjasr6LaAOy3PCR3QdhnvgIEY8u
+         U0whcO7sy+ldCgA/4LLJ+iivdDnFc1HBiLsuo7b87n2TBwMFjtKgtrpBle3rNJdNohe5
+         6+k9q8DIbLI0ReHVN6hD1JdeL5UWiazhtnty2Tud35xzqCAR9HhWS5vqZhVeWpkYQZrF
+         FyIw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=RViFI9hI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=ON8N3Y3u;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79bce92e4e3si1095310985a.532.2024.06.25.08.11.35
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b51ef1d0e4si106220476d6.457.2024.06.25.08.11.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jun 2024 08:11:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 25 Jun 2024 08:11:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=RViFI9hI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=ON8N3Y3u;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sM7oG-0002ok-AN; Tue, 25 Jun 2024 11:10:16 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sM7nE-0001Hz-RS; Tue, 25 Jun 2024 11:09:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sM7oF-0002nM-KU
- for qemu-arm@nongnu.org; Tue, 25 Jun 2024 11:10:15 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ id 1sM7nC-0001Gu-Ti
+ for qemu-devel@nongnu.org; Tue, 25 Jun 2024 11:09:10 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sM7oD-0006os-QH
- for qemu-arm@nongnu.org; Tue, 25 Jun 2024 11:10:15 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-7066cba4ebbso2114723b3a.3
- for <qemu-arm@nongnu.org>; Tue, 25 Jun 2024 08:10:13 -0700 (PDT)
+ id 1sM7nA-0006S0-HN
+ for qemu-devel@nongnu.org; Tue, 25 Jun 2024 11:09:10 -0400
+Received: by mail-pf1-x434.google.com with SMTP id
+ d2e1a72fcca58-70698bcd19eso660375b3a.0
+ for <qemu-devel@nongnu.org>; Tue, 25 Jun 2024 08:09:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1719328212; x=1719933012; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1719328146; x=1719932946; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=RHCVHGsnm67vgclIl82zPh5XLBIaF6XqB4NGAAUBUiE=;
- b=RViFI9hIVRh6mVRHK7WJGI0QtbzC9KL5AWXXup8n+e6HB696uD/ONv0DSe1n/MS1wS
- m9jW/U1olLWVARgBcnD3kQAyAspF+lCyDWv4muBPqvBifsGfPD547048Xj45n1fEEugz
- OmmbXkDEJMY20q0Z7DGY9vJcertuckSmxndhB0RUyWvfM1JoCqqLFLUPE7/3ZL2aAhzj
- cxa5D0SKVd5qtbO4FYWJQhEJtS+WdGYYtJkQkzMJOGlZP2V9RJfe2c/dX7zks9SOM2Xy
- veDOTiDSEnlGiMKzQLSe+rlIIwHTpToe0W36d2FFCla4ljh1y9XTwDRnJ2EqR45w8P38
- fZGQ==
+ bh=t+WU0zaXr2nzJEcBKvNspcCJHZEY5CHeQAoYeWN//ug=;
+ b=ON8N3Y3uqO8gbbTp95n07jom4N7cqSBcEDG8n33ii7bA6EsvlRcH4AbMZwkt4wFdZp
+ fiUsaqrC3FOG3T1pNk/ctxjv8C96WqtVCaunnFb4HUsqEPW0BNpm5DHnqXSqQqMKnBJk
+ ky5U3Q2nx/eDGrjHBKMzfANiX5tp10ZM7SBWZvy7/L9yl9UH0FzpLtCeOSmEnySnhkxS
+ EybNzHQeW8WmcvB/DHJSNoVofLfOGNCKvxomIcPouKWAYx2/LdshWzgi0PFGfy0YAb4X
+ B1w7790TwV9GNpdE+4FlA2hWTVyknJjoY7u2ast//LgKPGWJvnX9AdSr4OR8vhJEussB
+ 980g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719328212; x=1719933012;
+ d=1e100.net; s=20230601; t=1719328146; x=1719932946;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=RHCVHGsnm67vgclIl82zPh5XLBIaF6XqB4NGAAUBUiE=;
- b=RmifUzS/BdskVScQBagKHX9Z0AWyhsVy3rqNsuRrbnlP7mTppyhe7uP9+RjPBlnE0m
- 9QOa1ijPKJr20wr87Fj7Dzh/QxQ3TMoFaA5A2xEg65gFim5PQKJaviwDSNAg/MxHq/FK
- dBdL2u9/Y5R3KzXES0vhPjaI3Z2CJO4Ajeh8R3STKuSMIZbEwX9TRJZctZerLCz6JcDd
- hefASZTe/QXY/wamqj/RRbjNyuLP2h/sh1+x6XuU/Eg3lb61ZsnraPzePy+3dS/6nDqA
- xfnWPfU6v/CpJj7UupDXuBzb5xskNW3Gb20e9FmJ+McT96O9pSmg7I9/01xh3kffCcu6
- V40Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV4UTciWmMP0iGI1UgL74jcL+wYI0kvjcrZ0eKPmVUNm3JZu06Wpy7JkiTXmhXjhQQJ9xUcJXScfgstXQ7L6jO/ya8w
-X-Gm-Message-State: AOJu0YydvRpQejV7DFV8VfJ48RzIw2Aa26g7bXd8DvbZBGQH+UTGuOHC
- vRDB16BY6GIHOEbKI4SBZRr23iAS8rPs4xlWnRpJpFWooDW5ZPCtxrGa8TiMCmE=
-X-Received: by 2002:a05:6a20:2a05:b0:1bd:226e:6ce0 with SMTP id
- adf61e73a8af0-1bd226e6e9emr1428122637.48.1719328212462; 
- Tue, 25 Jun 2024 08:10:12 -0700 (PDT)
+ bh=t+WU0zaXr2nzJEcBKvNspcCJHZEY5CHeQAoYeWN//ug=;
+ b=XHvUouXaJ9s253xYhVq3AEOeIuAmkR4Db7K/TNJ8EZh0xvcL9m8ExkhJMFHsLYniQ5
+ pIbmpFbTWHLruhuyAQKHbzlC/0jSpop8dRYC35UXh9acG2BySzzreT5EjJp9RRfNf0Bv
+ nxQdT6CDQJaLrkbOfD9PfaN/wlprR8ZtxUsid6N6cPW7CzOeJ4k0EutctNM+5WuOnKzf
+ 2LconIeA+5r+y4VSxtLprTP1P6D4hGKUm782/SmM7xqBQwqkUKLKM5Xu7XizyVl/nIdL
+ VhhdQ0ZSRsAaImGrNxOJ/PygmrefJPFDM/cNpcoiIGYBHHquupkDTW4KFaAbTXZaowju
+ SISg==
+X-Gm-Message-State: AOJu0YxtsE/ncQa+84ozs7Mw5oEuiWvs7JvUVFu+bVe8paJS6gADWPeZ
+ juvLTlZ+yGFEZOgtou3GG8dLsIykfo116dgR0weBdt3NP2NafBmXho2q8COMjKt/eEaNtAD9FYh
+ i
+X-Received: by 2002:a05:6a20:3419:b0:1b2:cf6c:d5a4 with SMTP id
+ adf61e73a8af0-1bcf8025e10mr6370981637.61.1719328146313; 
+ Tue, 25 Jun 2024 08:09:06 -0700 (PDT)
 Received: from sunil-pc.Dlink ([106.51.187.237])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-70681722219sm4142636b3a.73.2024.06.25.08.10.06
+ d2e1a72fcca58-70681722219sm4142636b3a.73.2024.06.25.08.09.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Jun 2024 08:10:11 -0700 (PDT)
+ Tue, 25 Jun 2024 08:09:05 -0700 (PDT)
 From: Sunil V L <sunilvl@ventanamicro.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
@@ -109,95 +108,164 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
  Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
  Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Sunil V L <sunilvl@ventanamicro.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH v4 14/16] tests/qtest/bios-tables-test: Add empty ACPI data
- files for RISC-V
-Date: Tue, 25 Jun 2024 20:38:37 +0530
-Message-Id: <20240625150839.1358279-15-sunilvl@ventanamicro.com>
+ Sunil V L <sunilvl@ventanamicro.com>
+Subject: [PATCH v4 03/16] uefi-test-tools: Add support for python based build
+ script
+Date: Tue, 25 Jun 2024 20:38:26 +0530
+Message-Id: <20240625150839.1358279-4-sunilvl@ventanamicro.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240625150839.1358279-1-sunilvl@ventanamicro.com>
 References: <20240625150839.1358279-1-sunilvl@ventanamicro.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x433.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=sunilvl@ventanamicro.com; helo=mail-pf1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1rS5h6s5fB0x
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hZPufeBJCQSL
 
-As per process documented (steps 1-3) in bios-tables-test.c, add empty
-AML data files for RISC-V ACPI tables and add the entries in
-bios-tables-test-allowed-diff.h.
+edk2-funcs.sh which is used in this Makefile, was removed in the commit
+c28a2891f3 ("edk2: update build script"). It is replaced with a python
+based script. So, update the Makefile and add the configuration file as
+required to support the python based build script.
 
 Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-Acked-by: Alistair Francis <alistair.francis@wdc.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
 ---
- tests/data/acpi/riscv64/virt/APIC           | 0
- tests/data/acpi/riscv64/virt/DSDT           | 0
- tests/data/acpi/riscv64/virt/FACP           | 0
- tests/data/acpi/riscv64/virt/MCFG           | 0
- tests/data/acpi/riscv64/virt/RHCT           | 0
- tests/data/acpi/riscv64/virt/SPCR           | 0
- tests/qtest/bios-tables-test-allowed-diff.h | 6 ++++++
- 7 files changed, 6 insertions(+)
- create mode 100644 tests/data/acpi/riscv64/virt/APIC
- create mode 100644 tests/data/acpi/riscv64/virt/DSDT
- create mode 100644 tests/data/acpi/riscv64/virt/FACP
- create mode 100644 tests/data/acpi/riscv64/virt/MCFG
- create mode 100644 tests/data/acpi/riscv64/virt/RHCT
- create mode 100644 tests/data/acpi/riscv64/virt/SPCR
+ tests/uefi-test-tools/Makefile               | 19 +++----
+ tests/uefi-test-tools/uefi-test-build.config | 52 ++++++++++++++++++++
+ 2 files changed, 59 insertions(+), 12 deletions(-)
+ create mode 100644 tests/uefi-test-tools/uefi-test-build.config
 
-diff --git a/tests/data/acpi/riscv64/virt/APIC b/tests/data/acpi/riscv64/virt/APIC
+diff --git a/tests/uefi-test-tools/Makefile b/tests/uefi-test-tools/Makefile
+index 0c003f2877..f4eaebd8ff 100644
+--- a/tests/uefi-test-tools/Makefile
++++ b/tests/uefi-test-tools/Makefile
+@@ -12,7 +12,7 @@
+ 
+ edk2_dir              := ../../roms/edk2
+ images_dir            := ../data/uefi-boot-images
+-emulation_targets     := arm aarch64 i386 x86_64
++emulation_targets     := arm aarch64 i386 x86_64 riscv64
+ uefi_binaries         := bios-tables-test
+ intermediate_suffixes := .efi .fat .iso.raw
+ 
+@@ -56,7 +56,8 @@ Build/%.iso.raw: Build/%.fat
+ # stripped from, the argument.
+ map_arm_to_uefi     = $(subst arm,ARM,$(1))
+ map_aarch64_to_uefi = $(subst aarch64,AA64,$(call map_arm_to_uefi,$(1)))
+-map_i386_to_uefi    = $(subst i386,IA32,$(call map_aarch64_to_uefi,$(1)))
++map_riscv64_to_uefi = $(subst riscv64,RISCV64,$(call map_aarch64_to_uefi,$(1)))
++map_i386_to_uefi    = $(subst i386,IA32,$(call map_riscv64_to_uefi,$(1)))
+ map_x86_64_to_uefi  = $(subst x86_64,X64,$(call map_i386_to_uefi,$(1)))
+ map_to_uefi         = $(subst .,,$(call map_x86_64_to_uefi,$(1)))
+ 
+@@ -70,7 +71,7 @@ Build/%.fat: Build/%.efi
+ 	uefi_bin_b=$$(stat --format=%s -- $<) && \
+ 		uefi_fat_kb=$$(( (uefi_bin_b * 11 / 10 + 1023) / 1024 )) && \
+ 		uefi_fat_kb=$$(( uefi_fat_kb >= 64 ? uefi_fat_kb : 64 )) && \
+-		mkdosfs -C $@ -n $(basename $(@F)) -- $$uefi_fat_kb
++		mkdosfs -C $@ -n "bios-test" -- $$uefi_fat_kb
+ 	MTOOLS_SKIP_CHECK=1 mmd -i $@ ::EFI
+ 	MTOOLS_SKIP_CHECK=1 mmd -i $@ ::EFI/BOOT
+ 	MTOOLS_SKIP_CHECK=1 mcopy -i $@ -- $< \
+@@ -95,15 +96,9 @@ Build/%.fat: Build/%.efi
+ # we must mark the recipe manually as recursive, by using the "+" indicator.
+ # This way, when the inner "make" starts a parallel build of the target edk2
+ # module, it can communicate with the outer "make"'s job server.
+-Build/bios-tables-test.%.efi: build-edk2-tools
+-	+./build.sh $(edk2_dir) BiosTablesTest $* $@
+-
+-build-edk2-tools:
+-	cd $(edk2_dir)/BaseTools && git submodule update --init --force
+-	$(MAKE) -C $(edk2_dir)/BaseTools \
+-		PYTHON_COMMAND=$${EDK2_PYTHON_COMMAND:-python3} \
+-		EXTRA_OPTFLAGS='$(EDK2_BASETOOLS_OPTFLAGS)' \
+-		EXTRA_LDFLAGS='$(EDK2_BASETOOLS_LDFLAGS)'
++Build/bios-tables-test.%.efi:
++	$(PYTHON) ../../roms/edk2-build.py --config uefi-test-build.config \
++		--match $*
+ 
+ clean:
+ 	rm -rf Build Conf log
+diff --git a/tests/uefi-test-tools/uefi-test-build.config b/tests/uefi-test-tools/uefi-test-build.config
 new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/riscv64/virt/DSDT b/tests/data/acpi/riscv64/virt/DSDT
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/riscv64/virt/FACP b/tests/data/acpi/riscv64/virt/FACP
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/riscv64/virt/MCFG b/tests/data/acpi/riscv64/virt/MCFG
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/riscv64/virt/RHCT b/tests/data/acpi/riscv64/virt/RHCT
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/data/acpi/riscv64/virt/SPCR b/tests/data/acpi/riscv64/virt/SPCR
-new file mode 100644
-index 0000000000..e69de29bb2
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..70474a097f 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,7 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/riscv64/virt/APIC",
-+"tests/data/acpi/riscv64/virt/DSDT",
-+"tests/data/acpi/riscv64/virt/FACP",
-+"tests/data/acpi/riscv64/virt/MCFG",
-+"tests/data/acpi/riscv64/virt/RHCT",
-+"tests/data/acpi/riscv64/virt/SPCR",
+index 0000000000..1f389ae541
+--- /dev/null
++++ b/tests/uefi-test-tools/uefi-test-build.config
+@@ -0,0 +1,52 @@
++[global]
++core = ../../roms/edk2
++
++####################################################################################
++# arm
++
++[build.arm]
++conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
++plat = UefiTestTools
++dest = ./Build
++arch = ARM
++cpy1 = ARM/BiosTablesTest.efi  bios-tables-test.arm.efi
++
++####################################################################################
++# aarch64
++
++[build.aarch64]
++conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
++plat = UefiTestTools
++dest = ./Build
++arch = AARCH64
++cpy1 = AARCH64/BiosTablesTest.efi  bios-tables-test.aarch64.efi
++
++####################################################################################
++# riscv64
++
++[build.riscv]
++conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
++plat = UefiTestTools
++dest = ./Build
++arch = RISCV64
++cpy1 = RISCV64/BiosTablesTest.efi  bios-tables-test.riscv64.efi
++
++####################################################################################
++# ia32
++
++[build.ia32]
++conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
++plat = UefiTestTools
++dest = ./Build
++arch = IA32
++cpy1 = IA32/BiosTablesTest.efi  bios-tables-test.i386.efi
++
++####################################################################################
++# x64
++
++[build.x64]
++conf = UefiTestToolsPkg/UefiTestToolsPkg.dsc
++plat = UefiTestTools
++dest = ./Build
++arch = X64
++cpy1 = X64/BiosTablesTest.efi  bios-tables-test.x86_64.efi
 -- 
 2.40.1
 

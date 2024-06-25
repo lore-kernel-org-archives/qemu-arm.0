@@ -1,121 +1,106 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp429301njc;
-        Mon, 24 Jun 2024 06:31:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU/vmBnS7MCZ+EeFcmUfUlpiOKjwoxDvRamnv38P+TzIbuQ5RJqf2bCAYXqDv3gOVuS/OZNYkifRueqTDSTG6ib08v1YB4Z
-X-Google-Smtp-Source: AGHT+IFFfHbcAddUCjSA6aO0yD7QqWT384Ri3IZ9LFEAuEuAWJYvIPijenEVQhC2BxxbLPCSDHdP
-X-Received: by 2002:a05:622a:1487:b0:440:480a:8b69 with SMTP id d75a77b69052e-444d9218c13mr43800691cf.28.1719235892806;
-        Mon, 24 Jun 2024 06:31:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719235892; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp600825njc;
+        Tue, 25 Jun 2024 00:09:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUdGTLHlDX0pqRMZu1ZJjUc+8TQVLvI2xZMaoKpCD3gOAM9JZXngN1Pzwcs678LiYR1XSDcGMzftTlfe7mFMUwpPX1Nsqx3
+X-Google-Smtp-Source: AGHT+IG9RqK7j8zXheVYqmLXbBKrzCgSdALDD1JJ35T4yWQWMQGinE+gdX8j9wmtyR08xvndcctz
+X-Received: by 2002:a0c:e3d2:0:b0:6b5:25d:85c6 with SMTP id 6a1803df08f44-6b56330b688mr39730546d6.14.1719299341314;
+        Tue, 25 Jun 2024 00:09:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719299341; cv=none;
         d=google.com; s=arc-20160816;
-        b=kDs7C93V8wRMAe0r9QDs7hzjsooZ0MbXhedQ3zRWbXXzCeiFAbcx/j6imYHgSETrtA
-         7BhHyJoQPQIOBW6mGpzQvBndtQeiWw5Q49cF6av88bsZ891O2TK520qBIJn9o9MmQpB9
-         8IOJt3fi/kc54PWY+cPLK4uioM5K6IotioZ/JknyfZyvp+z0wBjOs6V0igHMj8g1I6Zc
-         TFXcL1Ek873HNqbAEJI+ItKAz/tKRpIZGx11DP8qhZEeRLiBIW5PXp4NfjDXqNbxp6yb
-         ca1XE4LsCkNwVy03igQzjI8JTveQmogHDn6IyNqLbus1BjFMOTqzLHLFlCqaWwYpfO83
-         Idvg==
+        b=aAW7ysMIkDg3u6jNCMOsa75yXVYNEhn2L0TYuFPnNrC4D3WhX4dqAZboykZPkcvhZ+
+         v1NiS8iyvoIYw1g+ao2SLsyBCr1E+Lc3WVn/uyFPjTSuEmH2Zm5mfY2c4sD/oRfkl0LB
+         yaWHJ9X4FAXHbIUhRx/KJ7uJ696TKjf3QFaIuKQjLcaeoIrDdbnTrpxcu6Rn315D+18h
+         E+nh1KHdBpkk47VpRt9VkruBhXcM9ppULV3Sd1BKdK6yE+15S4YeYIAwniXSD9zRFAD2
+         l9gupqfo7K4n1vAV8c3az/bXGUgSOgrvlfkVX9+p5B5azMfqQzjeDSW0Zm1kRWmbiYhF
+         u9GQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=QW3RvusqWOMaRnIRBchybfSTW6PaZ83JR7WIKVAo8WE=;
-        fh=QEw3TrYyd+HC9wOMIIqf5uThqx8R96PNtQ3tWD/r2qU=;
-        b=gNU9rM69toja4oDCEvlDKZ0G/FxIph5QNmcnpJBx+2XQWJO7xWo6oJtUVEgfvjZjYC
-         A1mZ5leIHuxzWpQjcDotPY1Ale7Urrj92uqi6bxra3OB1Nx+NYM7IKmbHnEd9n6aRCL9
-         NHZu+xkFnob/j5AspuyM+13FVFNfl3ubrJu++dXQtSyUZ8AUzXWp6fhPdox1/KbB5482
-         5ldVuBYWmPmTHLBKqdRf1EzxU7VJhwd/LnDXeD9lTwHORHdflTEC/T6nA8ASlfICvuo3
-         lYEGCxyKB8Axn/GAVXe+NUcdFDkYqNxyp7fDe2WofufSKpZkyuQjh74BtdxPcUODLPgj
-         Ttug==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=B+oPsGA0oLEyIitn0O+ZrxdARzY6Co0ty0Ofxn3S11M=;
+        fh=tLXkuqj04wTU1fPhWAQg7hGqnigcsIJqmNIxsogPMRs=;
+        b=bXrT4CorqQk0S2Jdm30ITPz7N47iE4PgxWgR4U/77JpRyK1DNl5GYstZt8g7/BeU9l
+         iWT15qYEFmU4AxK0sZdle2TSwQRAlQ3LIrWUgCkQatEGFR/urqLMs0V7L5sqhj/Rzd97
+         bFyFOuCe/iVPbYkfXVDC0q95ETOX4zxhMz/BlCR++6Ncb3dQRGHFpX/l9ImWVrg7cm6u
+         fgEDbUrSdJj3dkHCO59DkEMhcIu4uhEJABlWfXW6Fs4aQycFeWFoyQ4wxgdFYkIwUPBo
+         ygSpC4f6kzz3ME3AFLt3s8mBxU/0su0HPc7wOsvM6LGytpJ9qBcFeCF4K/AoKQEE4ujT
+         vNwg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kbnz74XB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mzzem6Kv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-444c2c389d4si80173931cf.463.2024.06.24.06.31.32
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b51ecf5edfsi103481706d6.112.2024.06.25.00.09.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2024 06:31:32 -0700 (PDT)
+        Tue, 25 Jun 2024 00:09:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kbnz74XB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mzzem6Kv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sLjn5-0005f2-MD; Mon, 24 Jun 2024 09:31:27 -0400
+	id 1sM0II-00021r-7G; Tue, 25 Jun 2024 03:08:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sLjn2-0005e0-W8
- for qemu-arm@nongnu.org; Mon, 24 Jun 2024 09:31:26 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sLjn1-0000x1-6M
- for qemu-arm@nongnu.org; Mon, 24 Jun 2024 09:31:24 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-57d07f07a27so4707518a12.3
- for <qemu-arm@nongnu.org>; Mon, 24 Jun 2024 06:31:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719235881; x=1719840681; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=QW3RvusqWOMaRnIRBchybfSTW6PaZ83JR7WIKVAo8WE=;
- b=kbnz74XBYoJftQK5SGQqC5HCSulXDLKWqJIMfPAvJNf8BisxYOVa2M8OgWbzSkfEBk
- iMSc7qrsWftkWP3mD1Q4HL8ToatkiWu9WAtW52h+Q0drJnmzkJzkW8ZEc2HZABkJ665K
- gGW204SP/OqWeC/m6gcVWTCQ6cJSzbyYvnc6/33aYeo5HTT/RNpvixaW/XHXwvW7amLU
- i6jJVfmT4RlZLWOb5cUr3Il5U/pm7M5WRQUkjETzcFUGJKS+SviAnICy4TTxl04Nmqs8
- tKIbKaPzq7YZDxY7Ob1RGQNQhFTTRTxDkylSElH4GpAZqSoD+0LC2Z7VtuGKPWw0VSnc
- MuTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719235881; x=1719840681;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=QW3RvusqWOMaRnIRBchybfSTW6PaZ83JR7WIKVAo8WE=;
- b=R4sScWwGzR2/fS7xhseEmkBTL3Li92chnLcZn84pPy6NkYWeCFXzu1DWnuPe/gMpgG
- Jyl7RD20m0a0Tfzmc92AV6IM2C4l+5SuwxOuuCTUBvJVqzinSjiVDenNMivGKyQMwQNA
- NIe0vcAhAJGAZK7Ju/Kz836O5Iz5lB7EslnVzz2ttD67OeECyVVD4pL8fKNtd/p2rUDw
- nzaEF5c+n0pP8TQbEIQjkNmdNMkRKjkKBBl0bBD4hwv9jetHEHjhVdA4jiWZwaPxF6yP
- CNKOUUbSfnOX4aBRl59ErMoIkSiiu7NIZbYrF+dh+e/nQhcTJflOSnLGwHOLpAU4c8l/
- I0Dg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX413bpKFqL5oYwUa+cWyXNhCC/IAY61R2qCz0vhiob42RM99KfCV3VOINV1I/JT62prllAYd/7dhkQS0/F62UAH3FI
-X-Gm-Message-State: AOJu0YyugVo+Wq/hY/QJNlQwWRcSVTOeK9YPET7tK0VWMBJaPew8VUbX
- XBDSUaNPtdHRjznPpy/dUoC7Io/dar8vuhtP1XkbJisMGec12VoqOXvXLhIOR/QOEKO5d8KwZEw
- WT4YBy5QZGNW55i2IYu1gcHQ3l5os/mP7mB/Zodf1nD+zapK+
-X-Received: by 2002:a50:8e5c:0:b0:57d:3691:baf9 with SMTP id
- 4fb4d7f45d1cf-57d4bd8151bmr2585313a12.22.1719235880992; Mon, 24 Jun 2024
- 06:31:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sM0IG-0001zk-My
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 03:08:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sM0IE-0007Tc-7q
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 03:08:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1719299319;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=B+oPsGA0oLEyIitn0O+ZrxdARzY6Co0ty0Ofxn3S11M=;
+ b=Mzzem6KvqXHHXzwrAETfhk8HcPZYrmlXP95Z/dCXjJ37hgtPfGBO+7zMM8YHA19ofoyfxv
+ eDS+Sxsbl62X9hdjc2y5jY8qlTflmUH2TnMcoeUV4XkvGN4TRJoyBJ5KPak7Q4HeRz2Ads
+ yCh+Y+BwAGnSzHiWgtpe/oDZkmm9Fkg=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-695-xrJneBXnPIWC03pKocz6QQ-1; Tue,
+ 25 Jun 2024 03:08:36 -0400
+X-MC-Unique: xrJneBXnPIWC03pKocz6QQ-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 018C519560B2; Tue, 25 Jun 2024 07:08:35 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.39.192.49])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 37ADA19560BF; Tue, 25 Jun 2024 07:08:31 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v2] aspeed: Deprecate the tacoma-bmc machine
+Date: Tue, 25 Jun 2024 09:08:30 +0200
+Message-ID: <20240625070830.492251-1-clg@redhat.com>
 MIME-Version: 1.0
-References: <20240620-b4-new-firmware-v3-0-29a3a2f1be1e@linaro.org>
-In-Reply-To: <20240620-b4-new-firmware-v3-0-29a3a2f1be1e@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Jun 2024 14:31:10 +0100
-Message-ID: <CAFEAcA-axo2kObbc_D4U2VvwrQJz+HDPnnSOGt9zmT5VU8e2TA@mail.gmail.com>
-Subject: Re: [PATCH v3 0/2] tests/avocado: make sbsa-ref working with >1 core
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Radoslaw Biernacki <rad@semihalf.com>, Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, 
- Ard Biesheuvel <ardb+tianocore@kernel.org>, Rebecca Cran <rebecca@bsdio.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 10
+X-Spam_score: 1.0
+X-Spam_bar: +
+X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.207,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,37 +115,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iph3TcHtuKP2
+X-TUID: IklwSQ78zP4S
 
-On Thu, 20 Jun 2024 at 11:19, Marcin Juszkiewicz
-<marcin.juszkiewicz@linaro.org> wrote:
->
-> Recent changes made sbsa-ref crash when more than 1 cpu core was used.
-> We handle it in firmware now so one patch updates it to the working
-> snapshot (TF-A 2.11 + EDK2 snapshot + EDK2-platforms snapshot).
->
-> Other change drops "-smp 1" from CI to make sure we test default setup
-> of sbsa-ref.
->
-> Previous firmware worked with 1 cpu by pure luck probably.
->
-> To: qemu-devel@nongnu.org
-> Cc: qemu-arm@nongnu.org,
-> Cc: Peter Maydell <peter.maydell@linaro.org>,
-> Cc: Leif Lindholm <quic_llindhol@quicinc.com>,
-> Cc: Radoslaw Biernacki <rad@semihalf.com>,
-> Cc: Cleber Rosa <crosa@redhat.com>,
-> Cc: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
-> Cc: Beraldo Leal <bleal@redhat.com>,
-> Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
-> Cc: Rebecca Cran <rebecca@bsdio.com>
->
-> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-> ---
+The tacoma-bmc machine was a board including an AST2600 SoC based BMC
+and a witherspoon like OpenPOWER system. It was used for bring up of
+the AST2600 SoC in labs. It can be easily replaced by the rainier-bmc
+machine which is part of a real product offering.
 
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
 
+ Changes since v2:
+ - rephrased deprecation reason
+ - remove extra line in docs
+ 
+ docs/about/deprecated.rst | 8 ++++++++
+ hw/arm/aspeed.c           | 2 ++
+ 2 files changed, 10 insertions(+)
 
-Applied to target-arm.next, thanks.
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index ff3da68208ac..5d9e4d8de725 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -256,6 +256,14 @@ images are not available, OpenWRT dropped support in 2019, U-Boot in
+ 2017, Linux also is dropping support in 2024. It is time to let go of
+ this ancient hardware and focus on newer CPUs and platforms.
+ 
++Arm ``tacoma-bmc`` machine (since 9.1)
++''''''''''''''''''''''''''''''''''''''''
++
++The ``tacoma-bmc`` machine was a board including an AST2600 SoC based
++BMC and a witherspoon like OpenPOWER system. It was used for bring up
++of the AST2600 SoC in labs.  It can be easily replaced by the
++``rainier-bmc`` machine which is a real product.
++
+ Backend options
+ ---------------
+ 
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 40dc0e4c76db..53a4f665d0d0 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1379,6 +1379,8 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
+     amc->i2c_init  = witherspoon_bmc_i2c_init; /* Same board layout */
+     mc->default_ram_size = 1 * GiB;
+     aspeed_machine_class_init_cpus_defaults(mc);
++
++    mc->deprecation_reason = "Please use the similar 'rainier-bmc' machine";
+ };
+ 
+ static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
+-- 
+2.45.2
 
--- PMM

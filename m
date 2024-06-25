@@ -1,188 +1,199 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp592006njc;
-        Mon, 24 Jun 2024 23:06:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUcwgMi+hrIB5vqBzAUHsTlHvs8PkEls62Y6Pb9a+XvHwhE6kQxz53Qcog+MaVklgvcpRQl2NkwcRBdZ7fAtAoECRwtNurE
-X-Google-Smtp-Source: AGHT+IF/rZ3fgH5B3XY/3lZ2DlRIQetHID1T3HeggT85faf8cUInJ81DQGz3Qd0AR1QI/E7mtcKj
-X-Received: by 2002:a05:6214:528b:b0:6b5:101c:6473 with SMTP id 6a1803df08f44-6b531fce5d2mr127317006d6.2.1719295577066;
-        Mon, 24 Jun 2024 23:06:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719295577; cv=none;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp592097njc;
+        Mon, 24 Jun 2024 23:06:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUPO9Ixjk1mDuAuxtd7dOkDFcE8SCwBHelUJW6IXuKGWy3xzMiQpIIMbkP+iGaMi2FgWQ7YiAuPhwuADmHVD4szHvIwvnIq
+X-Google-Smtp-Source: AGHT+IH94j6lsZbBCKPy9DlWJFhmISX15X18t+I/LCYUGtQzKVCzsYPSPpL/g0okkXXLaW533o3n
+X-Received: by 2002:a05:620a:240a:b0:79b:efe1:1221 with SMTP id af79cd13be357-79befe112f7mr651021085a.48.1719295612800;
+        Mon, 24 Jun 2024 23:06:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719295612; cv=none;
         d=google.com; s=arc-20160816;
-        b=jSERLUN7JdqI8MzKzKF1zwHS/hvmGimM1YcAkI/0QHYVi3pJfcT9D50Cx071OBu/dJ
-         ziZDN84u6EX6coWLmfrW7JIBmQjP3ytV152gYJbQpQt7Gd/zHbtJo+mbquQWi5uHUQRv
-         Nb8nWbDL0dkO32yTiRDb4mm8KV2a/5bojMbDRq2+foH8YO60gAoTdPIH70NNlkwCQ2uh
-         JZbRFRM90qhQ4Be7gX0WpkyYjDd0KtCCNVhsCFMpqL2GFU3EcBWlzW2i1WIkk3nZGhsU
-         Nm8guXXrk2qJ1c9PntLm+9WBb1nHKggcN81Aw3wzoyJVUGjQZOGS0soTCy1tVEj6cdpT
-         FenA==
+        b=dgc43ZHMcAyQEeCYatsKjDZ0CfCuhxZKtw/brh7HfPwMBMQlV27KH6WsOIwlgFTxXk
+         ZDxYI+Ftt6tM8ruqaBODMgiSCIluG/V9lCBqdZjvJ4NmK3mzzG507DpbuQtPlC5PlGOe
+         dn0ras3WCcbphXH0CVdzeID8PT6i0A3JKYSKKDGJ/B3k7Py/5TATsA1+uiCz+PkSEtC4
+         LzrqM185FD2tF/p3juxZgvdJI0EdanVeym/9X5qKISN/0dMWNg7B2ve+DMlTvTduH4N/
+         szuGfISQfDVMkbfb70pjGVSUZ6fDf4wn7UaelJrDlbyePnsUny/AcdBRA8gFlMMa6AnR
+         IXHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=sz93c/0zhkdcVc9YpbLReT1QydpJhTfhYK/sNofkaEw=;
-        fh=RV5QpqWW7tCQ1dEg4H+Gj5YCFBFQ0SC9zM+6DvlpjQA=;
-        b=cmInUUM0v2AZk4eX/mj7UQ/f9e9uDrLglSIsMPwk0L5g7kyR9B3pJsOmamH50uffeK
-         cZWEYarHok1GfhmvBRK/R/qd5ciC25oOujkK9FnMg+9iRF7NqbK1S3wcTN1gqjVtSafs
-         vt376VL0PyVXCpc55kq4qnzY1KWXxVHg9JZ3Ne+/NejsTfzejbQq1pFAhD1dUe+0l8DP
-         6CkdyXV7NY1h8+EMSJ6yRxUaEsIiGVj7dsNVMLAsYxeZyhjG6+3xiFaQDdaCQxHpCFRz
-         iWBMKGIVwWMfHm2LCYx75DcMBwu3L7yv4yIrseOQQaXqDC38ZNPibiJ6MTIexW1rjYCr
-         cOXQ==;
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=A1Ocl9vGWFzKOfsBS3B1qV9rv+MI2P8LnccLr3V2AHE=;
+        fh=E1wlLMGFEnqKW8+6pyudbxJC2xvY9MJ7rVzRCMLyzJI=;
+        b=LzzEhXDlBhs2TYX4D2l+nyjK1oqRrMZf+8P+oqt2TVTpJYNMcw2aG/LgosaHMBh37K
+         f/3cvb5YtWFA+IKyrt66bZMzELUvNRO0uBsj3R+jGjvAriBwMl6keJuGsLwdAMAPKpj5
+         LPnBkC42UTLzWLH027MjJTLfzPqoezZY1ihP5Zj6DRszhYWzhQKkQ/auBUCW1u+Hpfi6
+         JW9YgZVX1hX2diAdjIehxDA3UfALDj/H3msIjp4pSzD0QzfC0sUhwAeJcF5xFT6FR40Y
+         sG9+SnOSo7+5euZEJZKT8EyzTKpjTZP8fg4Qd9mGmvfuwoUasebpMnCK5Ki6852Qpfl5
+         xmEg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=MCbtVmjp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b53eb39c24si61883896d6.367.2024.06.24.23.06.16
+        by mx.google.com with ESMTPS id af79cd13be357-79bce942e6asi905180185a.666.2024.06.24.23.06.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2024 23:06:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Jun 2024 23:06:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=MCbtVmjp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sLzJW-0004U8-BG; Tue, 25 Jun 2024 02:05:58 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sLzKD-0005bk-3z; Tue, 25 Jun 2024 02:06:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=+2S4=N3=kaod.org=clg@ozlabs.org>)
- id 1sLzJU-0004Tg-6j; Tue, 25 Jun 2024 02:05:56 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=+2S4=N3=kaod.org=clg@ozlabs.org>)
- id 1sLzJR-0004m6-Kn; Tue, 25 Jun 2024 02:05:55 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4W7Z7w1X15z4wcJ;
- Tue, 25 Jun 2024 16:05:48 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4W7Z7r4J9rz4wbr;
- Tue, 25 Jun 2024 16:05:44 +1000 (AEST)
-Message-ID: <ff45f5c5-5586-4c21-bf86-ad82eb2c5f0d@kaod.org>
-Date: Tue, 25 Jun 2024 08:05:42 +0200
+ (Exim 4.90_1) (envelope-from <clement.mathieudrif.etu@gmail.com>)
+ id 1sLzKB-0005bM-CU; Tue, 25 Jun 2024 02:06:39 -0400
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <clement.mathieudrif.etu@gmail.com>)
+ id 1sLzK9-0004u7-JV; Tue, 25 Jun 2024 02:06:38 -0400
+Received: by mail-lj1-x233.google.com with SMTP id
+ 38308e7fff4ca-2eabd22d3f4so62497911fa.1; 
+ Mon, 24 Jun 2024 23:06:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1719295595; x=1719900395; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=A1Ocl9vGWFzKOfsBS3B1qV9rv+MI2P8LnccLr3V2AHE=;
+ b=MCbtVmjp7pP6bzjbG7F87YkIU1jk5m5Pnkg6rSMzNkuA9SxlDN71uHJsSiscmDu5mp
+ V71pGwCZ3A+0QumA4hKCkLkD6lklITmbzPL46105Gao+7FXGO595Rj+vPWglYMS7Mpj6
+ v1fUzt7zD2gZZXAuHXciKwtZ8Dr+JYsEHHl1J9zvU3qAm/S77tOGKHnN67bYNghKTxY/
+ sJGhTzK8HmpZxUNYNSL9QP9fP+6te3MGd2YPKsAOKA4s6NPVNFG1PfSaOA5JYKQ4PJ7x
+ hTukQ/xRYgduCcfxKgB2SYC/GDuxkLVTjQsTJPcvFWlnZI17lb30XyfO5HjTrNnBNhOl
+ eUSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1719295595; x=1719900395;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=A1Ocl9vGWFzKOfsBS3B1qV9rv+MI2P8LnccLr3V2AHE=;
+ b=iy2wopiQNsahqJ7lTPRpZWjMNRnVos9E1ysX1b0cHT4xRqyuEJ1nKBkcmd3Od7ExEc
+ otO6U39ypyqruXcFsMddyQKIpevNQFJXvBBN6dyxpHFdlWY+bd+yDEJS6FqldUesINdR
+ ZhpMVW0+GlBPl/xL+S6BP42B8x3AXIV14hT5h+KgCX6uSH0x614S7JO5drIeePXxOutz
+ rpQ646jsQxnCkVlpjQ/uLSD1knmgDFWqxgEtOQtR0lu9qaC0NipHPm6hEVsLcZ8bMfv7
+ ESPiDJSYaFOg90Oz0zGPsgBoZl0GIoY9BVMle6hdMPj90149T+p0CdJ31GKRktm1NuDn
+ bnrw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVCKaSiITZCzrSfu5ZA9KupEbRy3oqJZqpmblCi+RYRFWxTrNreu1BLO5ZYeqD57bZ7NYsSyPYnhar0kNRpgnq0Hf96cPGbglBAc5IoayCVCx9vNrCXeuHndms=
+X-Gm-Message-State: AOJu0Yyc0Qv76k/4qh6hSpYIetennBvIvB4UJkXE+S69m+J26ii2xcuY
+ bO3c/AYZ8JK7V/cSLbwIejEC/II2jxzqlwnMZEm02sAUVBsKNdO/
+X-Received: by 2002:a2e:b16e:0:b0:2ec:56d1:f28 with SMTP id
+ 38308e7fff4ca-2ec5b2b1ce4mr37533211fa.26.1719295594868; 
+ Mon, 24 Jun 2024 23:06:34 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:136:9c60:df8c:dbac:5023:d101?
+ ([2a01:e0a:136:9c60:df8c:dbac:5023:d101])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4248191fac8sm157359755e9.42.2024.06.24.23.06.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 24 Jun 2024 23:06:34 -0700 (PDT)
+Message-ID: <d698609b-4760-4932-999b-4d4754021421@gmail.com>
+Date: Tue, 25 Jun 2024 08:07:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/2] aspeed/soc: fix coverity issue
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+Subject: Re: [PATCH v2 1/2] aspeed/soc: Fix possible divide by zero
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20240619093508.2528537-1-jamin_lin@aspeedtech.com>
- <20240619093508.2528537-2-jamin_lin@aspeedtech.com>
- <CAFEAcA8tTHusKOR7JhyU+wwA3JJWq1o5wVaNXugw2S9SjAsESw@mail.gmail.com>
- <b013bd79-c206-446e-b482-91eeb926c70a@kaod.org>
- <SI2PR06MB50412C68BF0AD9B4ED91B75FFCD52@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <SI2PR06MB50412C68BF0AD9B4ED91B75FFCD52@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+References: <20240625015028.1382059-1-jamin_lin@aspeedtech.com>
+ <20240625015028.1382059-2-jamin_lin@aspeedtech.com>
+ <24dbb79e-cdcc-4415-befa-e6351c8f29b4@gmail.com>
+ <69656db3-24a7-447d-b2b2-49a938744be4@kaod.org>
+Content-Language: en-US
+From: cmd <clement.mathieudrif.etu@gmail.com>
+In-Reply-To: <69656db3-24a7-447d-b2b2-49a938744be4@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=+2S4=N3=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::233;
+ envelope-from=clement.mathieudrif.etu@gmail.com; helo=mail-lj1-x233.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qGjLXWGF/O6u
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: a1jMoKWI03Nu
 
-Hello
 
-On 6/25/24 3:55 AM, Jamin Lin wrote:
-> Hi Cedric,
->> -----Original Message-----
->> From: Cédric Le Goater <clg@kaod.org>
->> Sent: Monday, June 24, 2024 9:58 PM
->> To: Peter Maydell <peter.maydell@linaro.org>; Jamin Lin
->> <jamin_lin@aspeedtech.com>
->> Cc: Steven Lee <steven_lee@aspeedtech.com>; Troy Lee
->> <leetroy@gmail.com>; Andrew Jeffery <andrew@codeconstruct.com.au>; Joel
->> Stanley <joel@jms.id.au>; open list:ASPEED BMCs <qemu-arm@nongnu.org>;
->> open list:All patches CC here <qemu-devel@nongnu.org>; Troy Lee
->> <troy_lee@aspeedtech.com>; Yunlin Tang <yunlin.tang@aspeedtech.com>
->> Subject: Re: [PATCH v1 1/2] aspeed/soc: fix coverity issue
+On 25/06/2024 08:03, Cédric Le Goater wrote:
+> On 6/25/24 8:00 AM, cmd wrote:
+>> Hi
 >>
->> On 6/24/24 2:18 PM, Peter Maydell wrote:
->>> On Wed, 19 Jun 2024 at 10:35, Jamin Lin <jamin_lin@aspeedtech.com>
->> wrote:
->>>>
->>>> Fix coverity defect: DIVIDE_BY_ZERO.
->>>>
->>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->>>> ---
->>>>    hw/arm/aspeed_ast27x0.c | 6 ++++++
->>>>    1 file changed, 6 insertions(+)
->>>>
->>>> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c index
->>>> b6876b4862..d14a46df6f 100644
->>>> --- a/hw/arm/aspeed_ast27x0.c
->>>> +++ b/hw/arm/aspeed_ast27x0.c
->>>> @@ -211,6 +211,12 @@ static void aspeed_ram_capacity_write(void
->> *opaque, hwaddr addr, uint64_t data,
->>>>        ram_size = object_property_get_uint(OBJECT(&s->sdmc),
->> "ram-size",
->>>>                                            &error_abort);
->>>>
->>>> +    if (!ram_size) {
->>>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>>> +                      "%s: ram_size is zero",  __func__);
->>>> +        return;
->>>> +    }
->>>> +
+>> On 25/06/2024 03:50, Jamin Lin via wrote:
+>>> Coverity reports a possible DIVIDE_BY_ZERO issue regarding the
+>>> "ram_size" object property. This can not happen because RAM has
+>>> predefined valid sizes per SoC. Nevertheless, add a test to
+>>> close the issue.
 >>>
->>> Isn't this a QEMU bug rather than a guest error? The RAM size
->>> presumably should never be zero unless the board set the ram-size
->>> property on the SDMC incorrectly. So the SDMC device should check (and
->>> return an error from its realize
->>> method) that the ram-size property is valid,
->>
->> That's the case in aspeed_sdmc_set_ram_size() which is called from the
->> aspeed machine init routine when the ram size is set.
->>
->> Setting the machine ram size to zero on the command line doesn't report an
->> error though and the size is the default.
->>
->>> and then here we can just assert(ram_size != 0).
->>
->> Yes.
->>
->> Jamin, could you please send a v2 with the commit logs update I proposed ?
->> See the patches on my aspeed-9.1 branch.
-> I resend v2 patch with your commit log, https://www.mail-archive.com/qemu-devel@nongnu.org/msg1050302.html
+>>> Fixes: Coverity CID 1547113
+>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>>> Reviewed-by: Cédric Le Goater <clg@redhat.com>
+>>> [ clg: Rewrote commit log ]
+>>> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+>>> ---
+>>>   hw/arm/aspeed_ast27x0.c | 6 ++++++
+>>>   1 file changed, 6 insertions(+)
+>>>
+>>> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+>>> index b6876b4862..d14a46df6f 100644
+>>> --- a/hw/arm/aspeed_ast27x0.c
+>>> +++ b/hw/arm/aspeed_ast27x0.c
+>>> @@ -211,6 +211,12 @@ static void aspeed_ram_capacity_write(void 
+>>> *opaque, hwaddr addr, uint64_t data,
+>>>       ram_size = object_property_get_uint(OBJECT(&s->sdmc), "ram-size",
+>>>                                           &error_abort);
+>>> +    if (!ram_size) {
+>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>> +                      "%s: ram_size is zero",  __func__);
+>>> +        return;
+>>> +    }
+>>> +
+>> If we are sure that the error cannot happen, shouldn't we assert 
+>> instead?
+>
+> Yes. That is what Peter suggested. This needs to be changed.
+>
+>
+> Thanks,
+>
+> C.
+>
+Ok fine, I didn't see the message, sorry!
 
-We'll need a v3 with the assert. No hurries. We still have some time
-before the soft freeze.
+Thanks
 
-Thanks,
+ >cmd
 
-C.
-
-
-
-
-> Do we need to drop this patch, https://www.mail-archive.com/qemu-devel@nongnu.org/msg1050301.html?
-> 
-> Thanks-Jamin
->>
->> Thanks,
->>
->> C.
-
+>
+>
+>>>       /*
+>>>        * Emulate ddr capacity hardware behavior.
+>>>        * If writes the data to the address which is beyond the ram 
+>>> size,
+>

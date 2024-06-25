@@ -1,205 +1,116 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp603514njc;
-        Tue, 25 Jun 2024 00:26:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWFnjq0eXLL0a0sPeFNtB6ZuWIS5HCqCCZNeFVQ/K9n5dF97QQpVADBUzysNt/1pjvgLqnH0ZkRyfSZtKcX8oV6IZ8kuEpe
-X-Google-Smtp-Source: AGHT+IH5jnxk9We8Onc2qC7S6/HgA+OsdcI3Q4MDev4nTylmg2XBtuY8UZTR5+fJzFZLd29PZmlG
-X-Received: by 2002:a05:620a:1706:b0:79b:f567:8666 with SMTP id af79cd13be357-79bf56788a3mr468400285a.2.1719300387714;
-        Tue, 25 Jun 2024 00:26:27 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1719300387; cv=pass;
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp607258njc;
+        Tue, 25 Jun 2024 00:53:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVMLi4XKyh2xPnTxdFPLmUXxQuFVYhhenMN/O4E+XYkpLeBlPey/1s5mEPGPOFoN34ynxF+QWdTzQuxq3TzDi4IeqZdMbeI
+X-Google-Smtp-Source: AGHT+IG+Uo7bDggb+SbcOOdYrGzwmh5M0yNMa84m8KQSFzDXVcydBZG7BxUxhZ+wjpUJ2cDfJKe9
+X-Received: by 2002:a25:b198:0:b0:dff:c74:164 with SMTP id 3f1490d57ef6-e03010eda91mr6239237276.53.1719302009764;
+        Tue, 25 Jun 2024 00:53:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719302009; cv=none;
         d=google.com; s=arc-20160816;
-        b=b5bVfXvkrLLWeuTK2+HGHJXZOPNKaGbEFVIX9ZM8jorSa3oePmqfe1shPyGHx6TV7h
-         1/J6Np2txmmQIoyUUM0nKYYaWfy9xnRFFhnmm3wR4rp6y+bcdPf5e1yZErG2tZp5bpTb
-         DAdRTcntPY6OGHybVPe3pWnjudSEAaLED6RVa3KbQoijzb80ufs0WfL3HUTcx+/JK3Fl
-         qCuVCcVisdgKerQgofgphzvqAEM+Uqx2f00ajD9/oZBXbYBRxUgYywTFRGJsFXU/ykJe
-         JDcUNVzURADYZWhkbTWHsPryIUJz6gjdb58MYYbNj8O1fBozTovCfSsO3wuop1Bi0Wtg
-         AN+Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=EjeVua1IlxekdqP0GvQLf6NG8B4CheAa7A8H8p6XnQF/jrQjD6Oj66A3l1/C3HNdpx
+         7GZLPMxNXFuM2Nf63/5+UUBMfiDDv+pn9PCUNHTiLUYJV/VxZF1PPdwpWG1BShV1sOKx
+         h/QCoe96y1Sizh1S1xriMO/OisdMW4IuKLDMX29Lc5t0j2NtnGKorDOICddmRQ4mRJhr
+         99rkuZTC7nBzXbU8HrEfs/i6VeII0nlP9D59rnCEfUkxgZ9ZAuASoeXOwwaeiyZsnhVH
+         xx0Iaqe4ybgwzshymE1fK+wxLHI+bfIQhSNlSPsrZZaQvUK1HmzzlDodzyypJLusknQ6
+         gvBA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from:dkim-signature;
-        bh=OOFH7Z9O1oR/JAyAnakrCcZV73FQPVY5fiDa2LoVNaA=;
-        fh=YxQPX4OY7OYoddj0qwaWFase1f5JWzDTU0CoQ/ZP4RE=;
-        b=kdL14HEDrwboJrKLJ/6tcRfLJtoNfe1AWq/Ns/5TULPNSH3nxpeJgmqwkvnnRQbUCx
-         fK4FI13Rs0Ib4a9hKwHFXFTS97MNYYnkYZQdyI5CkLZsmp973REva6JoEf1PeocCEzDU
-         Gon92JCeoTypHzZSWLgDU+KggPV7Ux+ePRSjScpOsEczzH8Yeiz2CdF4/ENfwZgvUgee
-         T/dK0A2bm30fuGR1d0916/K39UQux1bMaBzag/7EHstxtow8spjFUA8rtDfLQNnGNNae
-         eKgIrXo4Yt2HJJ0bGeIN6uU66FPwpBjUI2AgChqcfnmHCoyjiP2KXv/Iqnoc52ZhDPTe
-         EFjQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=psxBGR4BEdSA8CxtBRYpCiDkFnYW9Y8BOVctpJ+Kmdk=;
+        fh=o+qy8AiPcosQ0kiFCPMpdU+WW4g5LCXZO1kMocf1aQI=;
+        b=hiBl0Jd1JSZX+E7ucnRPkXBsEa0S46tY9FpGfpaq3+NK1pjz0ZdWaeD9azR/YVtVdI
+         F1PH+Qu+wIvDiQ7zAH8crjTtQfnR44ahOYoSo03ThGktBK6Vgw+iTopEHpi86atiJ4g4
+         M2D4/CUm0FH4ta+SdZlDT/jT07Prz3LHepjbYhtZ97DffJ5c/NRS1ctcVUEAzVwYXAXZ
+         J3TUVhLHom2fy91AyXPVeBmMvfYRQXFmtSi6x1lvhUJ4WUu3CDDy3sOaGVynhzVd8KTx
+         Z0z1/pOjVRzAX1bLv4pR6zOijFQrrh4TC4NAQgBZL5yvPtUf/N8HPfSJu9VrHPJslibf
+         H7cg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=e9lpslaP;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lVCrVefj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79bce9415e2si1008283885a.603.2024.06.25.00.26.27
+        by mx.google.com with ESMTPS id d75a77b69052e-444c2c3fda5si100006931cf.517.2024.06.25.00.53.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Jun 2024 00:26:27 -0700 (PDT)
+        Tue, 25 Jun 2024 00:53:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=e9lpslaP;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=lVCrVefj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sM0ZN-0001yw-6Y; Tue, 25 Jun 2024 03:26:25 -0400
+	id 1sM0yt-00047L-Q4; Tue, 25 Jun 2024 03:52:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sM0ZM-0001yT-9X; Tue, 25 Jun 2024 03:26:24 -0400
-Received: from mail-psaapc01on2071e.outbound.protection.outlook.com
- ([2a01:111:f400:feae::71e]
- helo=APC01-PSA-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sM0ZK-0002DT-II; Tue, 25 Jun 2024 03:26:24 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=bwJotty4Tr51AVkX8QBfdKx6KXwo0JK8vE2ZS0NX4zFiPeyZVWOZd++rZX2psj2pGAdhKMvc7V2vkw+P/jdEwoamMU2LGiCCk6sds1pmgYTfCWihYmRk1F4dE4R3zF85cT7M2yb0PTngim6xqiyW1wQjyNQoOsiCKjagtv66UjjtU4eUF11r8o5esbBJXKrqN//Q+Bko4EnMHQlAgOucJZxQTjouuQtSnK4r19zbNgC9iIhvwYAQc80HfIUg4dsY7TuNS80AP3zGlOIrO4qsnDVXgT64arOj4VpEf8AiLw2/YxHxGI74FVkXso2hQVS5X/zHfN07MNYxXG3t4Rs6hg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OOFH7Z9O1oR/JAyAnakrCcZV73FQPVY5fiDa2LoVNaA=;
- b=MHANSNBhyfyxC9GjGCwPrVmfJFvazgrBpvb5Af+C+eB242CCnKe13AZvyvp7As9+ccV8CSza2fMrH0sy6N0o7iiDskuOuN9+pHS1z6260kCQAD58+2AUlFui8dwdR/+NmdVxkT5tQzggLnywbllWkIEoBTimC0FAuZNMJgOUVPsmyKk/UtRK+E8szzrnEo7BnSUpP19uFh+N5Dir5yymgRIrMb/SxZgcJp905C7Nt3tYbJ93lPLfl3Y08uBd2YyAdOSSE/+7N09/uZWEgIu8aMGH1jQWk+9fFAioSTdqjWrCPpyhfnYUA0eUSD8kkVuVNxU1vz3ydfr/lr35YvBO3Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OOFH7Z9O1oR/JAyAnakrCcZV73FQPVY5fiDa2LoVNaA=;
- b=e9lpslaPBMkO6NcPVkOjhsxrUIAzZEwC+gqWXtaOCWWFI1p52MVVDJRabQscXazFdD2jjSF9AU8LykFrexMUox6wMQ9xen9G2oQz5fjSBwS382DcjcST7Lihbe60VlVnaqRnLZjXdYISMAb89Bj3GIeLecViNjcJ6T47QJ+WQSv0iDdSIrsvSwfqJBruLQ2pDTegB6bg5q6EH0bMZEvkNPMzJg11Wp4c0QJCp9ShNbHZZfjkeXEjeBxA6jf5W4ajERtFDj35BiFtmknpmA7C0qXLOwi0I/F6CVbFtVnXUzklkkv1JjNRocWaSsaRVq2dUcIZmAU1jQLNf90QkPcEog==
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
- JH0PR06MB6835.apcprd06.prod.outlook.com (2603:1096:990:4d::7) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7698.29; Tue, 25 Jun 2024 07:26:14 +0000
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56%4]) with mapi id 15.20.7698.025; Tue, 25 Jun 2024
- 07:26:14 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Subject: RE: [PATCH v3 0/2] Fix coverity issues for AST2700
-Thread-Topic: [PATCH v3 0/2] Fix coverity issues for AST2700
-Thread-Index: AQHaxs5iDI1Qg+SaBk2v+NMM+okf67HYEzuAgAAA9aA=
-Date: Tue, 25 Jun 2024 07:26:14 +0000
-Message-ID: <SI2PR06MB5041E6DA2575769E07C2B58EFCD52@SI2PR06MB5041.apcprd06.prod.outlook.com>
-References: <20240625070741.2852946-1-jamin_lin@aspeedtech.com>
- <5bf32b3a-fe8f-4ec6-8133-4851d28eb90f@kaod.org>
-In-Reply-To: <5bf32b3a-fe8f-4ec6-8133-4851d28eb90f@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|JH0PR06MB6835:EE_
-x-ms-office365-filtering-correlation-id: 72a9f53e-8d4d-4479-36ec-08dc94e81857
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230037|366013|376011|1800799021|38070700015;
-x-microsoft-antispam-message-info: =?utf-8?B?dW9vcUxFVFFmTGxFVG1DL2puNnZCLzNpN2t1cEc5Zzh3L3dpdG9uQ2x3OFVW?=
- =?utf-8?B?ZHRVUVJXTFVCTFprQ243eHI5NXZXRDRWcUY2YWRmN1BTQUFaOVZ3V3dvcEtr?=
- =?utf-8?B?dGZiREM5Szk3U3RmTlpoaFhzWlBpNGtRYmdVbUJaa1BFczZEQkd0Ync3R09C?=
- =?utf-8?B?NnNMODdVUXBrSGg5eVZtTHRtdXc3dFRrWmtyaERFWHNSQ2hOd2RvUXE5Nk9W?=
- =?utf-8?B?RzhPejZnRG9NZS8vd1FYcUtZT1pZSmdwQUJTbVJZYmhWUzRXOVVOY3F1K3Rj?=
- =?utf-8?B?dEdVWjh5RHhFcXBwbXVLN3ZOODh5WW5NNVFlMnZXQmN6OWc4ckJ3a0hHakp1?=
- =?utf-8?B?WHdJZlA3Zmc1RUM5a0RwcnFrWW41TmFyNzRldXBXN1J0cHhGald1RDFjenpF?=
- =?utf-8?B?WHVaNzVZRVk0QzBHUS81VHFvbGljUXZhN05ETXJBNU4zRUZleFZwYWVDVkZ0?=
- =?utf-8?B?UDFtQzRFZWMzOUdwQ0VydTl2R1c3ZHNvckR6dC9hREI4UG9kbEt6bm1nUHd0?=
- =?utf-8?B?N25WeS9nMEh3ajFmeHVpSXlaVU5YRWpUWTc5bktLcGFXdDE4UVRwOW5rcXcy?=
- =?utf-8?B?UU02d3lsYVB5QkZHWitjRGZtTWVrQVd4M1NkZFV3WnJDblVpdWRTTHV5Y3g0?=
- =?utf-8?B?ZHVvNkxkUVRxU1VPM3l3Q0NSY1YvWVNZcFpBZmNjTEUyQVdwclRIK3hvWlNP?=
- =?utf-8?B?b3NoUGRNUVpyM2pTejB6UExiK1I0RXd4Z05sd012elFKbVAxTlk3TFNBRTZN?=
- =?utf-8?B?NUVadFdVMzQzN3I0NmFJVkw5TDR4ZVYrZWM0T0pOT09WZDh0OEluQXlFZDBr?=
- =?utf-8?B?NzdYODJha1VyZEZEbGZyNkNQVkRMN3RTcDRNUG43aEJCc3o4bmgyYXFSRG5U?=
- =?utf-8?B?L2F6ZENPUG5Bek42czl6S0IyQTdaait5NEtDVVJyUmlxSmo5VjN1T2U3N3B2?=
- =?utf-8?B?RGdnck1HTVExTzV0eFNQR1hxVCtXTzNzK0NJelRINkptcVI2VmtuN0QvU3Rt?=
- =?utf-8?B?cWpJcjgxMS92d2J5VFF6eHJRZ0RNRHc1d1hzMHRMcm9Qd3Q3WnhVc1l5eXJR?=
- =?utf-8?B?NXVvTTdyV3Z1L2tFWDBZdnFnZUZOOUlhQVZrakxXN1paYVZaWWt0Z3N0RkNI?=
- =?utf-8?B?V2tiYkFhTWZxUnQ5MHFSOC8zQVJybGNldzFCQzdYd1YwdTdMYmFlQzF3djN1?=
- =?utf-8?B?eUxmL2J6c1lwd2RJTnFWaWZ5N2lGSGdqditCNlBsc2hSamJQOCtMNEllbmw2?=
- =?utf-8?B?NmV2TUNOZ1ZpMEphMUp3MkVYcVFtdUFCb1NhSytRcmFseUJpQlNjbjRkOGxW?=
- =?utf-8?B?b0p6dFZTdVcxQjZoTlVESmFJUnp2Mng2SmgvYzNMNFdydlVZNXNKQmo3UzNK?=
- =?utf-8?B?RGF2SlljWnQvRVpiZGttOTdXdDhvS2FCL01hbHVpMG9FZHArN1YxVGtTbUw1?=
- =?utf-8?B?TUtIQXJNeC9hM0FFU04zN2JPNDdZdUp1Vmp4dnMvYjJjWm5BbWo1TUQwdjdM?=
- =?utf-8?B?VlEzd1BhQVd1MldVdDBIN2w1YUtVdktYRm5TaFBCa2lPb010dCtRR2JHaGxT?=
- =?utf-8?B?NEE2NnVuWmx4cHkyR2VUWmpneFhTdVBWZFRXYldCSDh6RE5xRmlXNjFhSG5X?=
- =?utf-8?B?KzBPSzB3SmdGd2NTWmphQnpmL1FGMDlOR1hrWjVvRXo4SmJPdWFjZVFnM2JJ?=
- =?utf-8?B?V2QrT0NNVXpHNW4xNHFLYjkzaVBoUWZyVlVwWllQZDAyMHY3eEl1YTFDa0dw?=
- =?utf-8?Q?K4oYR5J7tAQi/WNt98LYRK7IQ57dyIIudLXG2I3?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE; SFS:(13230037)(366013)(376011)(1800799021)(38070700015); DIR:OUT;
- SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?a2ZWZDdFUDRLd2Q1cmU1Y3B4MzVLUXQraE9OV0UwODlZNG02UW4ydllGejJV?=
- =?utf-8?B?LzBvOFZTckl5cUZCY3k3MlNUaEZMdU0xcnluZ3VqS2lEOVVHbWJoTkRBSEE2?=
- =?utf-8?B?OUloeXlmRU44Z2xiM1FLOVE3czJBVzJPaGxTSHVDM0c0VVBOc2V4cGRZb0tT?=
- =?utf-8?B?c0RhMWxETW5IYVR2TmYvT09pS1FVV2x3QXNvQVkwejhNM2F5RlJRUjFXOGRZ?=
- =?utf-8?B?bnFpTUNNK29keUNCSlA3MzIyZzFPSno1eXNHSjBaUlY2WjBwOC9HZno4L1RW?=
- =?utf-8?B?M0UrbHo1SGZMdHBaWU1iWlp3ekpZMFhDdkRqYjB4OUh4MWJQaFNzZXh4eFBU?=
- =?utf-8?B?MFZrN3JHNkdMMC92VHBYcUkvaFprR3U1ZWVuWWJvMTVveGk2RlphOVVJQWVm?=
- =?utf-8?B?NmQxOGo4RUpNSjhndkhpd09xeXpvRHU4cTV3UWNYQ3JvVzlpUE9NdVE1a2Q0?=
- =?utf-8?B?TFp6SnBUQkYwSDVISGdySFJrWjJNUVphTzArWGN3UE1CMGlBZFBoZFF4eWtx?=
- =?utf-8?B?alVhNUpVdGl6MlNObjMyUGp3NWFrUStqRFYwMTgzV3VmYlhSMGhFY2FqVVZK?=
- =?utf-8?B?Z0dMdTVoK0psMlB2U3ZXclNrUjZpcFlRVVJpdVRPbmxnWmpNVTh2S1ovaGZQ?=
- =?utf-8?B?aml4WEM2V1I4dTUyMjRsOU1VY2s4WU0yaGhtakpPZDhCUzZTdFBSaE1VMSsw?=
- =?utf-8?B?emQxcHNML1I0K0d5NU41ZTBnazdkRG5ldGFZN1lYSktvdUtlMzhIWE5FRzU2?=
- =?utf-8?B?MU1YQzR2bUI3S0xyZkgzNnFmcnZLZ2k1d2J3VW9uV1M0TTFhdjZmVHhNdkk4?=
- =?utf-8?B?cFA0ZE5ERG9DUmlhVTFnUnY1NVRVcmVidXg0a20zQ2YwUGxwUVhlMXhMMEJq?=
- =?utf-8?B?bU53bldNU3NRMXkzNlJzQjFpbVVodmo3akdFc29wWGZES0EwTFZWZ2NrOSty?=
- =?utf-8?B?NDlJYmtDZW5DdmUzY1pFSEpDYk13N2Z2TDVGcUM2QTlna3FtRDNmd2xudHEr?=
- =?utf-8?B?dGZhd3VsN0pBQmx5THBHODlsUExid2ZraTRmTk5PNU5YeUlwRjJsR3BXYXVI?=
- =?utf-8?B?TFZoMUwyZDd5QVkxOC9wd2liUU5jMjZ3RGhLZzlxZWsvZlpwaWFzMjBaMzM4?=
- =?utf-8?B?cW5XZFhCd2xKaEFwK3NxT1hURm5Ma3dpcGlyVkwzQ1FNSFVhakhUTlpBS2Nx?=
- =?utf-8?B?Z0p6eHVjcVRmbXdmaWtWckw2VEQvdHJDa1k0UzBLLzFuUFNPNC9zalJXMnBQ?=
- =?utf-8?B?SS9jKzRqUnd1RzRtQUdmVUdQT3U1citreWxYbUszNVV6dUhGWmpDMlBqOUFZ?=
- =?utf-8?B?MExBejZ4R1RTZndrV2p1c0UrZVFuUWdDZkRnYzJlWUNOdGUwRUF3TDVBVy9a?=
- =?utf-8?B?Z3NJWFNVNmRJaWtkNVdld1NIT2tPTmlVWU1HRjdMYnUyQjc0eUloUEVaN0ta?=
- =?utf-8?B?QnRYL3lzRGFrTmhZQ3YwMzJwTFlUaGNxSWNzNDBpUGhnQW03NXpjUzczR0dR?=
- =?utf-8?B?UjlObnVGNEZEd1hzTTdyNXk3ODc3TnF3aHpQaXhiRnJoTGMyZSsycTV0OWpL?=
- =?utf-8?B?OUZObnpQZXFPK0dGbTlVQVpnbFBleTlWeEx1RlZXODdHODJJSWhXaWFXQjhF?=
- =?utf-8?B?bzFpUVNqV21COFFBUWUzRGFpWEpjNVF0aStLUzFQc0krUmN2REdNWkR3RlZi?=
- =?utf-8?B?ZS82MjBSbUtEdXRBaHUzT1hNVE80RkFKU3NUWVdUNXVtSHVsRzd1eXUzMFc4?=
- =?utf-8?B?SDZSM25jdTF6dXVtMUI3d0dOQTBqWDdUTUs5YzJGblFLMnJGYVdJNFc2Mk1r?=
- =?utf-8?B?am1pcWQvejhPRklZeEZDUjFZSmxha2NpZDRjNSt1S2ttTzV6RU5nWVpWVTg2?=
- =?utf-8?B?ZW8wOXJjZ2o1WGpEYjA2blZtNWJaRzFYaS9HTXJlZi9TYlRHOHF2bVZXRW04?=
- =?utf-8?B?a0w1MWJNMHJENk0vL1BoK0JWd0wwRjZnbEpLS1RjVmlhRUhLUjJYcDlWM2pB?=
- =?utf-8?B?ejkyMWUwU0hxSHFXMkdleEQ0Q2Rac2xhUzM2djVHVkFiN0dQdXZlVEJWSG1o?=
- =?utf-8?B?RXZFNnBWS2ZUWTNNQUwvOEh1Q1dzSy9TekNTQ0hiOFozYzRETGNQdm5Lci93?=
- =?utf-8?Q?Mpsre/KE5uPm7jmIASArLm3Om?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <arthurtumanyan@gmail.com>)
+ id 1sM0yr-00046W-9r; Tue, 25 Jun 2024 03:52:45 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <arthurtumanyan@gmail.com>)
+ id 1sM0yp-0007As-1q; Tue, 25 Jun 2024 03:52:44 -0400
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-a6f8ebbd268so1024055366b.0; 
+ Tue, 25 Jun 2024 00:52:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1719301960; x=1719906760; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=psxBGR4BEdSA8CxtBRYpCiDkFnYW9Y8BOVctpJ+Kmdk=;
+ b=lVCrVefjm83FAD3ocr9D4VZ0h7ra6+/F6OyAsPK4Nfp99tbd0l8QO7erYBK01v+jpm
+ ZZsshqOqrAlz0QWwZrF0Eh3Hs9JwB2L0uhmXr+PJZlt66fdRgISv1CKhNqmN1Bbiq0vZ
+ sxdzt8hSprURzAOIQO57lJI1K48okIRFDbmEqnwjH+P4+p7D3Z6hjNkqWRcFw2BRxQ6+
+ vD+nq5U7kweXvqJK+e3jAYvtG/yV7U8w5ciCPIQ6oP3pStpbEpmod2CDVomwFXuIUUe9
+ zXFUiL1Z5YRSFMnxaVop4QdBaWFq5UzKHrOm1VaO6nC8eFqjB2qG2dpQs1UKzRt1mxpq
+ rEsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1719301960; x=1719906760;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=psxBGR4BEdSA8CxtBRYpCiDkFnYW9Y8BOVctpJ+Kmdk=;
+ b=o/RHVGjNuQBbbo9bnv+QBUhWXkYCloFT7tun94hu3fc/YkdYtA5aeDfwpsHU5vWmlg
+ UJlfOeeNAhpzVdvSVYNNmwE8Msmr7oDMnDD/PmdQOf/Nj6EeSnNcWuKVlhkcCL2yJ9rj
+ J/Ce37Kj0kzVKx2809oyYrY0gJLEzgf8aexT7fyc6X74z9LhRgytKtyrzu5S7nQW54az
+ 2iL5rnxDfim6K6+w/Hid5fc/UKtNHQkMCbkM8s0aD1EIDmqpNXryNLEcrJG0kai0ttMZ
+ P1EQ6q1L7zH3ba4de7ou9j1VATyK6OOurn6e+dX0G8fsDjRmDCXNmQMrjdG97CyBlzxN
+ xTlw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUaGR1ZAPCDHnbmAykCIQ66I2+DWpm70oe3KpvtrXfPTZE/lUea5WA6oEGZ0hwTZJQcAV1i4T7MBUL50/obchjfMAhRvriLjvLdNdN0ewrt7a7BJ3IenSTfnIM=
+X-Gm-Message-State: AOJu0YwN1IgFAbsWsKDvny7W+DBQvnu5XqIu0LWVD4/DlT/pkgwa7zna
+ rKEkXMWKpAnaov7JJ1XVd8Fr8QWBjQOqeQloIYnDsTTglIfwQW/iGfw4yVGjJOKP/LGEFffI0if
+ xnvQyhXQdoTbj8ZCCY+/kbMckXNw=
+X-Received: by 2002:a17:907:208b:b0:a6f:881a:cd52 with SMTP id
+ a640c23a62f3a-a6ffe3ccd23mr634567966b.17.1719301960224; Tue, 25 Jun 2024
+ 00:52:40 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 72a9f53e-8d4d-4479-36ec-08dc94e81857
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jun 2024 07:26:14.1069 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: e1yY3xcqOdBBLi2mpuGD7TNPrmgg1uRO/dQe2Jt64CoOus4K2l1no80s4xIc0l4qrlG3junNM4Gv6JlXx9TeRLowV7/QTBUx4xreriDqhbQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR06MB6835
-Received-SPF: pass client-ip=2a01:111:f400:feae::71e;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=APC01-PSA-obe.outbound.protection.outlook.com
+References: <CADueUgQh-=vmoO9kqL589Xeuf_LOM_K2Rr-rBxwe8iArdNdzsA@mail.gmail.com>
+ <6b1daa9c-6f37-4edb-86d4-782941f1bcca@redhat.com>
+ <CAFEAcA-Yda=XXspi49Z+-7bmBP-DzL2kFMg_XfNxMviHuAX18w@mail.gmail.com>
+ <CADueUgS1==4gAmNmTBLZzrnRUp9z2wxkce8+TcOeoR3w_Pg-bg@mail.gmail.com>
+ <CADueUgT4xDJft6On4j+oic65UcQRv_PcNSWJg-CcdBM8My3zow@mail.gmail.com>
+ <CAFEAcA-TV6MKC32zd3WP5yhLABkbDrLKtP7CCZ0kB5pbV+-5Vg@mail.gmail.com>
+ <76070bb3-abf6-491a-a9f3-549f615e23fd@redhat.com>
+In-Reply-To: <76070bb3-abf6-491a-a9f3-549f615e23fd@redhat.com>
+From: Arthur Tumanyan <arthurtumanyan@gmail.com>
+Date: Tue, 25 Jun 2024 11:52:29 +0400
+Message-ID: <CADueUgSoR4_WgCh4kZ0fsPsY_tq1YXQkPri5th73rK-pQqxu7Q@mail.gmail.com>
+Subject: Re: How to use designware-root-port and designware-root-host devices ?
+To: Thomas Huth <thuth@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, andrew.smirnov@gmail.com
+Content-Type: multipart/alternative; boundary="00000000000099d834061bb22e0d"
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=arthurtumanyan@gmail.com; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -215,29 +126,143 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dQQxkO88yXtk
+X-TUID: RICOWM3nwkfX
 
-SGkgQ2VkcmljLCANCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBDw6lk
-cmljIExlIEdvYXRlciA8Y2xnQGthb2Qub3JnPg0KPiBTZW50OiBUdWVzZGF5LCBKdW5lIDI1LCAy
-MDI0IDM6MjIgUE0NCj4gVG86IEphbWluIExpbiA8amFtaW5fbGluQGFzcGVlZHRlY2guY29tPjsg
-UGV0ZXIgTWF5ZGVsbA0KPiA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPjsgU3RldmVuIExlZSA8
-c3RldmVuX2xlZUBhc3BlZWR0ZWNoLmNvbT47IFRyb3kNCj4gTGVlIDxsZWV0cm95QGdtYWlsLmNv
-bT47IEFuZHJldyBKZWZmZXJ5IDxhbmRyZXdAY29kZWNvbnN0cnVjdC5jb20uYXU+Ow0KPiBKb2Vs
-IFN0YW5sZXkgPGpvZWxAam1zLmlkLmF1Pjsgb3BlbiBsaXN0OkFTUEVFRCBCTUNzDQo+IDxxZW11
-LWFybUBub25nbnUub3JnPjsgb3BlbiBsaXN0OkFsbCBwYXRjaGVzIENDIGhlcmUNCj4gPHFlbXUt
-ZGV2ZWxAbm9uZ251Lm9yZz4NCj4gU3ViamVjdDogUmU6IFtQQVRDSCB2MyAwLzJdIEZpeCBjb3Zl
-cml0eSBpc3N1ZXMgZm9yIEFTVDI3MDANCj4gDQo+IEhlbGxvIEphbWluDQo+IA0KPiBPbiA2LzI1
-LzI0IDk6MDcgQU0sIEphbWluIExpbiB3cm90ZToNCj4gPiBjaGFuZ2UgZnJvbSB2MToNCj4gPiBh
-c3BlZWQvc29jOiBjb3Zlcml0eSBkZWZlY3Q6IERJVklERV9CWV9aRVJPDQo+ID4gYXNwZWVkL3Nk
-bWM6IGNvdmVyaXR5IGRlZmVjdDogQ29udHJvbCBmbG93IGlzc3VlcyAoREVBRENPREUpDQo+ID4N
-Cj4gPiBjaGFuZ2UgZnJvbSB2MjoNCj4gPiBhZGQgbW9yZSBjb21taXQgbG9nIGZyb20gcmV2aWV3
-ZXIgc3VnZ2VzdGlvbiwgQ8OpZHJpYy4NCj4gPg0KPiA+IGNoYW5nZSBmcm9tIHYzOg0KPiA+IHJl
-cGxhY2UgcWVtdV9sb2dfbWFzayB3aXRoIGFzc2VydCBkcmFtIHNpemUgMC4NCj4gPg0KPiA+IEph
-bWluIExpbiAoMik6DQo+ID4gICAgYXNwZWVkL3NvYzogRml4IHBvc3NpYmxlIGRpdmlkZSBieSB6
-ZXJvDQo+ID4gICAgYXNwZWVkL3NkbWM6IFJlbW92ZSBleHRyYSBSX01BSU5fU1RBVFVTIGNhc2UN
-Cj4gPg0KPiA+ICAgaHcvYXJtL2FzcGVlZF9hc3QyN3gwLmMgfCAyICsrDQo+ID4gICBody9taXNj
-L2FzcGVlZF9zZG1jLmMgICB8IDEgLQ0KPiA+ICAgMiBmaWxlcyBjaGFuZ2VkLCAyIGluc2VydGlv
-bnMoKyksIDEgZGVsZXRpb24oLSkNCj4gPg0KPiANCj4gTEdUTS4NCj4gDQo+IENvdWxkIHlvdSBw
-bGVhc2UgcmV2aWV3IDoNCj4gDQpEb25lLg0KVGhhbmtzLUphbWluDQo+IGh0dHBzOi8vbG9yZS5r
-ZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAyNDA2MjUwNjU4MzkuNDg1MDM0LTEtY2xnQHJlZGhhdC5j
-bw0KPiBtL1QvI3UNCj4gDQo+IFRoYW5rcywNCj4gDQo+IEMuDQo+IA0KDQo=
+--00000000000099d834061bb22e0d
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+I ported DWC PCIE part from fsl-imx7.c to my new cusotm virt machine based
+on RISC-V "virt".
+
+It looks ok so far. Now i'm wondering whether there is a "standard/ready to
+use for most of cases" device tree description for the synopsis pcie host
+device ?
+
+Looking this way:
+https://mjmwired.net/kernel/Documentation/devicetree/bindings/pci/designwar=
+e-pcie.txt
+but would be glad to hear some advices if any.
+
+Best regards,
+Arthur
+
+On Fri, Jun 21, 2024 at 1:30=E2=80=AFPM Thomas Huth <thuth@redhat.com> wrot=
+e:
+
+> On 21/06/2024 11.16, Peter Maydell wrote:
+> > On Fri, 21 Jun 2024 at 08:07, Arthur Tumanyan <arthurtumanyan@gmail.com=
+>
+> wrote:
+> >>
+> >> Hi,
+> >>
+> >> I just tried to run mcimx7d-sabre machine this way:
+> >>
+> >> ${HOME}/cosim/usr/local/bin/qemu-system-arm -M mcimx7d-sabre -m 2G \
+> >> -kernel ${HOME}/cosim-arm/buildroot/output/images/uImage \
+> >>          --initrd
+> ${HOME}/cosim-arm/buildroot/output/images/rootfs.cpio.gz \
+> >> -nographic \
+> >> -net nic -net user
+> >>
+> >> and it just prints this and do nothing: qemu-system-arm: warning: nic
+> imx.enet.1 has no peer
+> >>
+> >> Based on what I see in the mcimx7d-sabre.c , it configures just very
+> basic things, no PCIe at all (may be I'm wrong ;) )
+> >
+> > The machine model in mcimx7d-sabre.c creates the SoC object
+> > (TYPE_FSL_IMX7). It's the code for that in hw/arm/fsl-imx7.c
+> > that creates all the SoC devices including the PCIe controller.
+> > (This structure is similar to real hardware where you have a
+> > board, which has one or two chips on it like RAM but most of
+> > the complicated stuff is inside the one big SoC chip.)
+> >
+> >> Is there any idea what goes wrong here ? Maybe someone has experience
+> with running this machine ?
+> >
+> > "No output" usually means "your guest kernel is not configured
+> > correctly for this machine type", and/or possibly "you didn't
+> > tell the kernel to output on the serial port".
+>
+> By the way, it seems like we don't even have an avocado test for that
+> machine available. Peter, do you know whether there is a kernel for this
+> machine available somewhere that we could use for testing?
+>
+>   Thomas
+>
+>
+>
+
+--00000000000099d834061bb22e0d
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi,</div><div><br></div>I ported DWC PCIE part from f=
+sl-imx7.c to my new cusotm virt machine based on RISC-V &quot;virt&quot;.=
+=C2=A0<div><br></div><div>It looks ok so far. Now i&#39;m wondering whether=
+ there is a &quot;standard/ready to use for most of cases&quot; device tree=
+ description for the synopsis pcie host device ?=C2=A0</div><div><br><div>L=
+ooking this way:=C2=A0<a href=3D"https://mjmwired.net/kernel/Documentation/=
+devicetree/bindings/pci/designware-pcie.txt">https://mjmwired.net/kernel/Do=
+cumentation/devicetree/bindings/pci/designware-pcie.txt</a> but would be gl=
+ad to hear some advices if any.</div></div><div><br></div><div>Best regards=
+,</div><div>Arthur</div></div><br><div class=3D"gmail_quote"><div dir=3D"lt=
+r" class=3D"gmail_attr">On Fri, Jun 21, 2024 at 1:30=E2=80=AFPM Thomas Huth=
+ &lt;<a href=3D"mailto:thuth@redhat.com">thuth@redhat.com</a>&gt; wrote:<br=
+></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;=
+border-left:1px solid rgb(204,204,204);padding-left:1ex">On 21/06/2024 11.1=
+6, Peter Maydell wrote:<br>
+&gt; On Fri, 21 Jun 2024 at 08:07, Arthur Tumanyan &lt;<a href=3D"mailto:ar=
+thurtumanyan@gmail.com" target=3D"_blank">arthurtumanyan@gmail.com</a>&gt; =
+wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; Hi,<br>
+&gt;&gt;<br>
+&gt;&gt; I just tried to run mcimx7d-sabre machine this way:<br>
+&gt;&gt;<br>
+&gt;&gt; ${HOME}/cosim/usr/local/bin/qemu-system-arm -M mcimx7d-sabre -m 2G=
+ \<br>
+&gt;&gt; -kernel ${HOME}/cosim-arm/buildroot/output/images/uImage \<br>
+&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 --initrd ${HOME}/cosim-arm/build=
+root/output/images/rootfs.cpio.gz \<br>
+&gt;&gt; -nographic \<br>
+&gt;&gt; -net nic -net user<br>
+&gt;&gt;<br>
+&gt;&gt; and it just prints this and do nothing: qemu-system-arm: warning: =
+nic imx.enet.1 has no peer<br>
+&gt;&gt;<br>
+&gt;&gt; Based on what I see in the mcimx7d-sabre.c , it configures just ve=
+ry basic things, no PCIe at all (may be I&#39;m wrong ;) )<br>
+&gt; <br>
+&gt; The machine model in mcimx7d-sabre.c creates the SoC object<br>
+&gt; (TYPE_FSL_IMX7). It&#39;s the code for that in hw/arm/fsl-imx7.c<br>
+&gt; that creates all the SoC devices including the PCIe controller.<br>
+&gt; (This structure is similar to real hardware where you have a<br>
+&gt; board, which has one or two chips on it like RAM but most of<br>
+&gt; the complicated stuff is inside the one big SoC chip.)<br>
+&gt; <br>
+&gt;&gt; Is there any idea what goes wrong here ? Maybe someone has experie=
+nce with running this machine ?<br>
+&gt; <br>
+&gt; &quot;No output&quot; usually means &quot;your guest kernel is not con=
+figured<br>
+&gt; correctly for this machine type&quot;, and/or possibly &quot;you didn&=
+#39;t<br>
+&gt; tell the kernel to output on the serial port&quot;.<br>
+<br>
+By the way, it seems like we don&#39;t even have an avocado test for that <=
+br>
+machine available. Peter, do you know whether there is a kernel for this <b=
+r>
+machine available somewhere that we could use for testing?<br>
+<br>
+=C2=A0 Thomas<br>
+<br>
+<br>
+</blockquote></div>
+
+--00000000000099d834061bb22e0d--

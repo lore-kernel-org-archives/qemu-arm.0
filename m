@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a724837222fsm408234466b.80.2024.06.26.09.12.46
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a7287b7e17asm87340966b.222.2024.06.26.09.15.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Jun 2024 09:12:46 -0700 (PDT)
+        Wed, 26 Jun 2024 09:15:10 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 2763C5F8AA;
-	Wed, 26 Jun 2024 17:12:45 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 790D95F8AA;
+	Wed, 26 Jun 2024 17:15:09 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Akihiko Odaki <akihiko.odaki@daynix.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>,  qemu-arm@nongnu.org,
@@ -15,12 +15,12 @@ In-Reply-To: <20240626-tcg-v1-2-0bad656307d8@daynix.com> (Akihiko Odaki's
 	message of "Wed, 26 Jun 2024 20:26:23 +0900")
 References: <20240626-tcg-v1-0-0bad656307d8@daynix.com>
 	<20240626-tcg-v1-2-0bad656307d8@daynix.com>
-Date: Wed, 26 Jun 2024 17:12:45 +0100
-Message-ID: <874j9fpts2.fsf@draig.linaro.org>
+Date: Wed, 26 Jun 2024 17:15:09 +0100
+Message-ID: <87zfr7of3m.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 0gQm5fiODt44
+X-TUID: e3oRHG8kpXVr
 
 Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
@@ -32,55 +32,33 @@ Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 > clang version 18.1.6 does not support such mixing so properly specify
 > the extension with the compiler option instead.
 
-I think we need fixes for older clangs supported by our distros as well:
+Also with gcc on aarch64.ci.qemu.org (Ubuntu 22.04.4 LTS) I get:
 
-  16:08:26 [alex@aarch64:~/l/q/b/all.clang] plugins/next|=E2=9C=9A1=E2=80=
-=A6(+0/-0) 2 + clang --version
-  Ubuntu clang version 14.0.0-1ubuntu1.1
-  Target: aarch64-unknown-linux-gnu
-  Thread model: posix
-  InstalledDir: /usr/bin
-
-Gives:
-
-  tests/tcg/aarch64-linux-user: -Wa,-march=3Darmv9-a+sme-i16i64 detected
-  /home/alex/lsrc/qemu.git/tests/tcg/aarch64/sme-smopa-1.c:17:19: error: in=
-struction requires: sve or sme
-          "smstart\n\t"
-                    ^
-  <inline asm>:3:2: note: instantiated into assembly here
-          index z0.b, #0, #1
-          ^
-  /home/alex/lsrc/qemu.git/tests/tcg/aarch64/sme-smopa-1.c:18:30: error: in=
-struction requires: sve or sme
-          "index z0.b, #0, #1\n\t"
-                               ^
-  <inline asm>:4:2: note: instantiated into assembly here
-          movprfx z1, z0
-          ^
-  /home/alex/lsrc/qemu.git/tests/tcg/aarch64/sme-smopa-1.c:19:26: error: in=
-struction requires: sve or sme
-          "movprfx z1, z0\n\t"
-                           ^
-  <inline asm>:5:2: note: instantiated into assembly here
-          add z1.b, z1.b, #16
-          ^
-  /home/alex/lsrc/qemu.git/tests/tcg/aarch64/sme-smopa-1.c:20:31: error: in=
-struction requires: sve or sme
-          "add z1.b, z1.b, #16\n\t"
-                                ^
-  <inline asm>:6:2: note: instantiated into assembly here
-          ptrue p0.b
-          ^
-  /home/alex/lsrc/qemu.git/tests/tcg/aarch64/sme-smopa-1.c:22:47: error: in=
-struction requires: sve or sme
-          "smopa za0.s, p0/m, p0/m, z0.b, z1.b\n\t"
-                                                ^
-  <inline asm>:8:2: note: instantiated into assembly here
-          ptrue p0.s, vl4
-          ^
-  5 errors generated.
-
+  16:05:44 [alex@aarch64:~/l/q/b/all] plugins/next|=E2=9C=9A1=E2=80=A6(+0/-=
+0) + make run-tcg-tests-aarch64-linux-user
+  ninja: no work to do.
+  /home/alex/lsrc/qemu.git/builds/all/pyvenv/bin/meson introspect --targets=
+ --tests --benchmarks | /home/alex/lsrc/qemu.git/builds/all/pyvenv/bin/pyth=
+on3 -B scripts/mtest2make.py > Makefile.mtest
+    BUILD   aarch64-linux-user guest-tests
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.1-a+sve detected
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.1-a+sve2 detected
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.2-a detected
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.3-a detected
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.5-a detected
+  tests/tcg/aarch64-linux-user: -mbranch-protection=3Dstandard detected
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.5-a+memtag detected
+  tests/tcg/aarch64-linux-user: -Wa,-march=3Darmv9-a+sme detected
+  tests/tcg/aarch64-linux-user: -Wa,-march=3Darmv9-a+sme-i16i64 not detected
+  cc1: error: unknown value =E2=80=98armv9-a+sme=E2=80=99 for =E2=80=98-mar=
+ch=E2=80=99
+  cc1: note: valid arguments are: armv8-a armv8.1-a armv8.2-a armv8.3-a arm=
+v8.4-a armv8.5-a armv8.6-a armv8-r native
+  make[1]: *** [Makefile:116: sme-outprod1] Error 1
+  make: *** [/home/alex/lsrc/qemu.git/tests/Makefile.include:50: build-tcg-=
+tests-aarch64-linux-user] Error 2
+  16:08:32 [alex@aarch64:~/l/q/b/all] plugins/next|=E2=9C=9A1=E2=80=A6(+0/-=
+0) 2 +=20
 >
 > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 > ---

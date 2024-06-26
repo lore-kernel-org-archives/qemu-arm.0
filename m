@@ -1,147 +1,61 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp930341njc;
-        Wed, 26 Jun 2024 05:00:07 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWAY7MkT5jSbiuOIBRy0QLBnEPS5ty2mPsr2gHqrgPcUC2Ll7WsB7fu0aWkEZ7IaDukFOxfiAgFYtlJaKOw+3+CyfiPYrkK
-X-Google-Smtp-Source: AGHT+IEq4zOQ3ULdwtYlA2ceyeiLs9+wRchkKvJ/NcTaf22mgFfAtC2w1bWc0Uug/Bqa8FzP56GB
-X-Received: by 2002:a0c:e2cc:0:b0:6b4:f853:3855 with SMTP id 6a1803df08f44-6b53bcd3bdbmr107682536d6.24.1719403206917;
-        Wed, 26 Jun 2024 05:00:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719403206; cv=none;
-        d=google.com; s=arc-20160816;
-        b=gSPzqSM5aZWZpUBvdeIAlAeHpw+qAiFoZ8KQxdkYSX8OWKurzyAzncvmpwltYFr9x+
-         gBw3OpY5py14+Gd4JkG7eH/i1Dju70w+ckBVr0EKSLV66gkvIU/pNmfrA3S457L26JpU
-         5X5hSLhd+ewzF9vdrdJlfAsF6THCShA9tXLKaLH8fNTAIJNjrZugMvhX0gjNA5eizduw
-         6R7e80v0C7vNSBToubE8347qu6DffFw8jQiknfev7iMBGdeaKOGkDwVN0EcNokugchBd
-         0I8kX/EeO4Xe80SOd/86c0AK6AEzeTyQ1GkNA4gOniMWl9JbktYRAKlRJXN+gNjaHaFP
-         /LJg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=7wHcWilqVSRZPvFxkj06uhy4pkzct8uXR1y7Br2IGyo=;
-        fh=fbLHMVPKLjofNgJIWty+2gGV0NPlsQ+jPPEVDrctiZA=;
-        b=z5Z40PVE+OzMfR5r4zhEcStL+NBtavFbyMeYOpZKd609JYaJ4ckA39sbxcv050I2Ui
-         GZJJ97/HN6BNXDnzm6MYDgvy5JScWr/WtacG43tYIPFCkxhW5mXsyzKjHx0A4keKVfuO
-         eiE/U93uHI1qXVj3LGS/QKRrToyuX/tekc8C2Wz54xBCQ/Y5oPvYdeKo56cSWnuTXyMY
-         7vN9BdNSfZxjgIlbSc82OfagwPFV6OhTrh8LmNc+OJRuXFTVDSqysZpDdHyPyubUKuSO
-         3wLFzgrKlZiA66swtz8/34kPfuog0ZXLuQszqet62/NVDq102Ft2SRTt1VzOTLFX47uq
-         GZHQ==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eiXqcgmA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b51edbbb50si129338326d6.216.2024.06.26.05.00.05
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Jun 2024 05:00:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eiXqcgmA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sMRJb-0003lE-NA; Wed, 26 Jun 2024 07:59:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sMRJa-0003kq-55
- for qemu-devel@nongnu.org; Wed, 26 Jun 2024 07:59:54 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sMRJY-0008RG-JH
- for qemu-devel@nongnu.org; Wed, 26 Jun 2024 07:59:53 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-42561c16ffeso581075e9.3
- for <qemu-devel@nongnu.org>; Wed, 26 Jun 2024 04:59:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719403190; x=1720007990; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=7wHcWilqVSRZPvFxkj06uhy4pkzct8uXR1y7Br2IGyo=;
- b=eiXqcgmAG1NTHiH6d9tUq228DWe1DQu+eTbGxf8y8XEsoSEeqPfvBiAdYPUwKykKtO
- faUHleJf8+rzkioLd9HnvEtCErY/3QmiN9tuK2FE60nuTCN5TywNlZbU9Xm74oZRfLLQ
- MAPGduEOcBoGbYO4AiCojJm6OJRrT0xs+M5C9F9oxs2g4EtPoe5x6OYXcLVoMrzkNCR/
- xV2P8VL6SVoQ46W+iuYaRbgRdbyXhwrRPi5Zvlg9XRXJJzg9fTd6RsgPu+fE51l13YOE
- 3NFe7vXsTWFRgVcD9bheqcVcWtB1OE/vC/nq2VgeUtfaOXoyiCfZrPCexTyizWUw3x2g
- PHxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719403190; x=1720007990;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7wHcWilqVSRZPvFxkj06uhy4pkzct8uXR1y7Br2IGyo=;
- b=n8wBKcM6S1ZfLek3HTULB9gYNxLa84mU/k2HO/m8gC/LdUyrCBl0mmLYmmE0FK4uKE
- FgqyuSjChWTseMR9rK0YDETMnYOCY2T+l5R4cW03lyIuTrRJDMCnmHrFLmxX9EAWTCpV
- 0NV2N7v8UhRYpY+UZOePbwP0HYiYT4i0v91DjHepWU/F7WtzdDGUVGeneBFqw8typRos
- iEVF/tcu77tFLrXLy7JDgkz+ZLnfW0/JEJr1chLvOMqXtGAdrlhWcGEHITXsY+9mHgOY
- 2Xb5qz9E+ri85fO3EkFfEZPJPbmbw0hlKDWZaFEH31iPlPmIccF0ALnVUtsrdyuTfLZi
- wQfw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXlZDwLYuiFDi69IAVjRxRDi8TAEl31Y1RlZKWynxmblfbskS3gB9l8IIXmgpDXg7DjOWBTyxNDMLVwrw/P0VSIuIpGeFA=
-X-Gm-Message-State: AOJu0Yyme5wdfS0ayQaqh4Ocwg2Pd760T2FEMcXjCNJ+28eP2B4zyXbA
- IjRp+TVvMcet22UfW6oyI6vCeGd+lswbuJdGDCV16wqeIOig+ufGyRDXqzGDGbw=
-X-Received: by 2002:adf:f48c:0:b0:35f:1753:7159 with SMTP id
- ffacd0b85a97d-366e948e6ccmr7028384f8f.19.1719403190135; 
- Wed, 26 Jun 2024 04:59:50 -0700 (PDT)
-Received: from [192.168.69.100] ([176.187.212.234])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-367011c4600sm4320196f8f.61.2024.06.26.04.59.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Jun 2024 04:59:49 -0700 (PDT)
-Message-ID: <6be35719-6dc0-4e3a-b0db-3614f0c028b0@linaro.org>
-Date: Wed, 26 Jun 2024 13:59:47 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/6] tests/tcg/aarch64: Explicitly specify register width
-To: Akihiko Odaki <akihiko.odaki@daynix.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72451fd535sm427734666b.149.2024.06.26.07.09.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Jun 2024 07:09:52 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 0EAFB5F8AA;
+	Wed, 26 Jun 2024 15:09:51 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,  qemu-arm@nongnu.org,
+  qemu-devel@nongnu.org
+Subject: Re: [PATCH 0/6] tests/tcg/aarch64: Fix inline assemblies for clang
+In-Reply-To: <20240626-tcg-v1-0-0bad656307d8@daynix.com> (Akihiko Odaki's
+	message of "Wed, 26 Jun 2024 20:26:21 +0900")
 References: <20240626-tcg-v1-0-0bad656307d8@daynix.com>
- <20240626-tcg-v1-3-0bad656307d8@daynix.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240626-tcg-v1-3-0bad656307d8@daynix.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bODnIHC37Rja
+Date: Wed, 26 Jun 2024 15:09:51 +0100
+Message-ID: <878qyrpzgw.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: QbamfiUSavuF
 
-On 26/6/24 13:26, Akihiko Odaki wrote:
-> clang version 18.1.6 assumes a register is 64-bit by default and
-> complains if a 32-bit value is given. Explicitly specify register width
-> when passing a 32-bit value.
-> 
+Akihiko Odaki <akihiko.odaki@daynix.com> writes:
+
+> Unlike GCC, clang checks if the operands in assembly matches with the
+> type in C. It also does not support "x" constraint for AArch64 and
+> complains about them.
+
+When are the test cases ever built with clang? Is this for Arm on Arm
+testing only?
+
+>
 > Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 > ---
->   tests/tcg/aarch64/bti-1.c | 6 +++---
->   tests/tcg/aarch64/bti-3.c | 6 +++---
->   2 files changed, 6 insertions(+), 6 deletions(-)
+> Akihiko Odaki (6):
+>       tests/tcg/arm: Fix fcvt result messages
+>       tests/tcg/aarch64: Fix test architecture specification
+>       tests/tcg/aarch64: Explicitly specify register width
+>       tests/tcg/aarch64: Fix irg operand type
+>       tests/tcg/aarch64: Do not use x constraint
+>       tests/tcg/arm: Manually bit-cast half-precision numbers
+>
+>  tests/tcg/aarch64/bti-1.c         |   6 +-
+>  tests/tcg/aarch64/bti-3.c         |   6 +-
+>  tests/tcg/aarch64/mte-1.c         |   2 +-
+>  tests/tcg/aarch64/sme-smopa-2.c   |   2 +-
+>  tests/tcg/arm/fcvt.c              |  20 +-
+>  tests/tcg/aarch64/Makefile.target |  12 +-
+>  tests/tcg/aarch64/fcvt.ref        | 604 +++++++++++++++++++-------------=
+------
+>  7 files changed, 331 insertions(+), 321 deletions(-)
+> ---
+> base-commit: 74abb45dac6979e7ff76172b7f0a24e869405184
+> change-id: 20240624-tcg-bf8116e80afa
+>
+> Best regards,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

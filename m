@@ -1,637 +1,468 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp801502njc;
-        Tue, 25 Jun 2024 16:51:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUlaazripLbXxhBvqvjUGMzev9Xuwszt7taatoHbRyuRsG5ABL6eFO7iqOKW3JjGHEcv9khbU8ZYBOFFg2iNxsp0dskCYei
-X-Received: by 2002:ac2:43ce:0:b0:52c:da39:e40d with SMTP id 2adb3069b0e04-52cdf7f1581mr5678665e87.26.1719359484838;
-        Tue, 25 Jun 2024 16:51:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719359484; cv=none;
-        d=google.com; s=arc-20160816;
-        b=KBQ6hUeVj1uhyHML7B7Fts1XgUJCVmGu4B03bJeo5r/2eNm1DE8WAvefaF5f0xvAJ2
-         TzYavvwjPM1wrJEyL4AeNdRsT2ijYNnHXTrk8eg12tGnUXaNu/I8XNFNveXpgh0dKYp2
-         S3u/tHpk6cKjz4ezzSTunL3KOdichoePdL5TEMss1Ueutfjpzq1kccQuQOcG2Qmg5kMr
-         6iFn+vPyNGJRMFVLOGCb7X1zLMOjVtof3MMCt1pMK9D7r00HJKtC1pK/oGONNLUc7cIJ
-         SEzD6BlynXtqW29WHJESlFC6CxR8t5Limpbkn2eGhj4PJ3IuZmMGKbqGlkdFtFkjDvPo
-         IT7Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=QtlLaNBH/RbSlotEEbZpY7+zgKvTQho2Lbmamu2yflA=;
-        fh=jgxpiSPtGOVpGV1qAs8kLnqTqb1qMOOtfDCnJEV9hHM=;
-        b=QiLozg5FCeHgFlkAC90HdtUismH4+OFPk34KcPfwLnbnhv+saKg7/5F0wNQ8m5qrcD
-         a/CL32C9Hrjy9gAb5fLzU/Cy0s8UdwHCeLrRFx1tkXRB3QzDltVMJC9qr6+mfsjsSSWY
-         VTFlKFwarQIwI5eLmeeQhthcoJMSBUOLTTKvBL3OL4td+zjzeuKEeI8u7OdRu8yYU2JG
-         8xnSeZFKeotpJMvAjl+qqPjq0Ijzg6nAaaug3z3tD5Mi8LtGThHEq0BfEfZLITOAuZX0
-         z1kpTXF6/VSiExlFasjN4t/VBuxT8PJz6Z8G1L4EsULSQpQhe5hQsfJrPMwsFaFa+363
-         Fqfw==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@opnsrc.net header.s=google header.b=cJNA56Up;
-       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net
-Return-Path: <salil.mehta@opnsrc.net>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-a6fcf428710sor291491066b.4.2024.06.25.16.51.24
+Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp810259njc;
+        Tue, 25 Jun 2024 17:50:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW2FiQ/rPeU2loYSRCNokX5EPdfC7ROl6V+haZvwVW/gk6FOgCdmr+GAcIX03UY6XjGdHAaSgYYBDvMrRiXBJxb2ugv/G8D
+X-Google-Smtp-Source: AGHT+IFOo31PyEVNoeRWb40hrvenb6I/V0gp25H8E+AX7rSfyOP3HpeiRPavotWost/58Z6HtiaM
+X-Received: by 2002:a05:620a:479f:b0:79c:a7f:c9e4 with SMTP id af79cd13be357-79c0a7fce23mr244594285a.78.1719363051178;
+        Tue, 25 Jun 2024 17:50:51 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-79bd17822b8si1160169285a.674.2024.06.25.17.50.50
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 25 Jun 2024 16:51:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 25 Jun 2024 17:50:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@opnsrc.net header.s=google header.b=cJNA56Up;
-       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=opnsrc.net; s=google; t=1719359484; x=1719964284; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=QtlLaNBH/RbSlotEEbZpY7+zgKvTQho2Lbmamu2yflA=;
-        b=cJNA56UpxET8Yug1TnXnILRNZVDOwWpKU1Ja/l1IB0aw4SEGr933ccWqO9fg2Ck/DC
-         wkq30SKNsVdZ3Zix7l2yaUnq0+Uoz2SG8mJ1mLvJ3IaUC8s1cveL/jzb0Cvg0tAEJcrv
-         7SmY9miUp/gj5gus+OQj0fiQl/a16jZPPVY4M6N6re3e43VVFus6xb9UpM24TJDUEK+T
-         UVhi5ZzHAjDqX3qBXDeFvCgebnJQrGxWG9wQKMS+yCGUuPZBAz+7jPFotPvTDfGRGd7p
-         kRmpfWbjz83g7s6ByL94i8Rpk8HXIGp6UvQe3MT50B34F10SErEgSaje32ETI/Bmrm0I
-         /Zsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719359484; x=1719964284;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=QtlLaNBH/RbSlotEEbZpY7+zgKvTQho2Lbmamu2yflA=;
-        b=Xw3n6ji/tx0WKotLYYUvtc5Q5sMOl+ctz3QqoJyrb9cX5ijNNlz427EwT22zqg3Z7E
-         cQ/tEJ+JQOcBCfpU4d+imVJGS2sA9pRR8WNHBxKQ7ioHiYud7AMwyRndaAS7G7VqwBDK
-         0qrDdaj7AaJVm2muI+Km0xGs44zq3Z8PwRqkhVit3AtkVWqCVJPB2D8bfoQPJISiCOnt
-         0hjggb/zDVzBu44kVvAE3MCpDrrAU8ozbqqEioAjy0kYyrceVU13wkLOBE41Iar3KNhB
-         8LuRIN0OpNmXz/Y8Pl7eHbNGKskgkiPcvcirEGomeepp3UmlN1aAi2wePDpDDYQcbWAV
-         PwEQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUPbnvn44kNXWAQ7kbIQ3qgcs3EcHPudaL6sqwukKeTIkJk057lxQSeSzhn47CAZO+2RqGus4MyS+K50LHT1nQnsFKQKEoN
-X-Gm-Message-State: AOJu0YwYKPfAj70lIrUa1/islbFtsD7mv5Pi8UgapAwXfRryRjIN7ybF
-	N2KoLdVBCXmdIvOx+xxZLPxv6qEIVadGCAANNyzi/s/+m/qRFurdGLKyLsw3Q1mwwXHIeGx2rq4
-	nYoFqJXJnnr1c4Of64BAbuJlJg8szDSdn5bcAXA==
-X-Google-Smtp-Source: AGHT+IGaQr2CmTJfMRAb0ZDgxI2m4hNF68Clz4thlMBXZ5rgoJuH0Kauotj6gBDpYBrxNr2/o80KX/xUDYR9VvS2Iko=
-X-Received: by 2002:a17:907:c086:b0:a72:7a8c:9885 with SMTP id
- a640c23a62f3a-a727a8c99e1mr213620466b.63.1719359484007; Tue, 25 Jun 2024
- 16:51:24 -0700 (PDT)
+       dkim=fail header.i=@Nvidia.com header.s=selector2 header.b=s3Z7khQM;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from [::1] (helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sMGpW-0007Gg-NU; Tue, 25 Jun 2024 20:48:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1sMGpJ-00079Y-6g
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 20:48:03 -0400
+Received: from mail-bn8nam12on20612.outbound.protection.outlook.com
+ ([2a01:111:f403:2418::612]
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1sMGoW-0008ML-Pk
+ for qemu-arm@nongnu.org; Tue, 25 Jun 2024 20:47:48 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=h9mz20+7Zc+3nDMJPq8YOF2kAb37d2iuqXdrXBPOlJ34CuWWSgG2mGlmjrVurLq/GGvIJJdpjP4LVmboT3qRD8MSlX6KwUK1Auqctf+WNSXmmp+8CZghVJ1LD1oNY7ZdWM+iuh6FLOvE+s1cXSm6EpI/bLhotKEeZHo0WbQ/+MdYi3rEHsusG4NCmvRhIYz8Yu5YgE92YUvaSL/+UoaxCkpHUvWKJ5iN8f/WoXQ4XiSMahJWRpHK+kOFdn8Sv/uZ3Ncd4RMyjGXw57Qm0Jp3b6LyXoYV98EWf4DrkE5NWPvY1KtR5vJ2dhMgmARiFn9FqOn9OwFhlOu2BkHGokFw+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3JMy6Or3KW8qCfpz3EkC9MUSXl+ggzi3XZvt+LeIJ38=;
+ b=i6ysUjPO3E7dJD17VW8Z7eyKsVO/4XqVjw9cHr2G6FLf0h4w6AiJ2hAAPbxLVyEp9Efvt0ueVvK7gX438eWtWiAHB+foHDdGPEu1vT+E2p747S9S1ex4FTPXnte+LRTnNB4WoX0TM2h1VhQ5i5uM5N0ySu778vixFOI28EX/O/mdos/V6mjGXpnHY72Qt/6/exWdg/NocVM2RKoqDp+YqC31cWgPn2ZVbT+3A4NJjCo/l528uFfagQdLXyPV35EpO7ppshbTwnfUDGbvob/Si1mGZl4VNWWhQxJJTwkSTkHdxDuYXbaDThLIsCkkQtJhqRNDM4jIEGh7UxdEDWsbzQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=linaro.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3JMy6Or3KW8qCfpz3EkC9MUSXl+ggzi3XZvt+LeIJ38=;
+ b=s3Z7khQMR8T9G2v1ft9JqpNMQtnTKgnWwhmlMQhHUrUiqyvXvkifPsmYMwsHC74WaXEg5VEgK7Quvz8YzMRX/Dr9hAf51dnDkXZDufV7AHDh8TZzrdtNzOfg8Igtbk8obhtjmn+IIntpbYPLKP4yJe+3+MN9fx7PbpsQhWaRJwwtiTB85uQYlx2vLLH2tiZXDZqRziNnraS6cRKZ+4q042AcNy0IRctdYmz4Lzhlo6I7+BxNDnWlqk0TFmXkjwE5+cc9LNxhvhgEWN6+YbShCaBPcmGYJ28zrgXO1KiBotldJNSFVa72iind5pwyaRZsz8KUlXqdL2J78ii+vVWBjA==
+Received: from BN0PR08CA0023.namprd08.prod.outlook.com (2603:10b6:408:142::17)
+ by LV3PR12MB9216.namprd12.prod.outlook.com (2603:10b6:408:1a5::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7698.30; Wed, 26 Jun
+ 2024 00:29:32 +0000
+Received: from BN3PEPF0000B077.namprd04.prod.outlook.com
+ (2603:10b6:408:142:cafe::7c) by BN0PR08CA0023.outlook.office365.com
+ (2603:10b6:408:142::17) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7719.22 via Frontend
+ Transport; Wed, 26 Jun 2024 00:29:32 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ BN3PEPF0000B077.mail.protection.outlook.com (10.167.243.122) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7677.15 via Frontend Transport; Wed, 26 Jun 2024 00:29:31 +0000
+Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Tue, 25 Jun
+ 2024 17:29:25 -0700
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.4; Tue, 25 Jun 2024 17:29:24 -0700
+Received: from Asurada-Nvidia.nvidia.com (10.127.8.10) by mail.nvidia.com
+ (10.126.190.182) with Microsoft SMTP Server id 15.2.1544.4 via Frontend
+ Transport; Tue, 25 Jun 2024 17:29:24 -0700
+To: <peter.maydell@linaro.org>, <shannon.zhaosl@gmail.com>, <mst@redhat.com>, 
+ <imammedo@redhat.com>, <anisinha@redhat.com>, <eric.auger@redhat.com>,
+ <peterx@redhat.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <jgg@nvidia.com>,
+ <shameerali.kolothum.thodi@huawei.com>, <jasowang@redhat.com>
+Subject: [PATCH RFCv1 01/10] hw/arm/virt-acpi-build: Add IORT RMR regions to
+ handle MSI nested binding
+Date: Tue, 25 Jun 2024 17:28:28 -0700
+Message-ID: <aef143f212f9ad9ac65f9bfd70f875ae5b452c7a.1719361174.git.nicolinc@nvidia.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1719361174.git.nicolinc@nvidia.com>
+References: <cover.1719361174.git.nicolinc@nvidia.com>
 MIME-Version: 1.0
-References: <20240529234241.205053-1-salil.mehta@huawei.com>
- <20240602180241-mutt-send-email-mst@kernel.org> <20240605160327.3c71f4ab@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240605160327.3c71f4ab@imammedo.users.ipa.redhat.com>
-From: Salil Mehta <salil.mehta@opnsrc.net>
-Date: Wed, 26 Jun 2024 00:51:12 +0100
-Message-ID: <CAJ7pxeYehVhPWfbEqRMMSCVHk31JQhtQhRSM_4e1WqBhqv0UHQ@mail.gmail.com>
-Subject: Re: [PATCH V12 0/8] Add architecture agnostic code to support vCPU Hotplug
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org, 
-	qemu-arm@nongnu.org, maz@kernel.org, jean-philippe@linaro.org, 
-	jonathan.cameron@huawei.com, lpieralisi@kernel.org, peter.maydell@linaro.org, 
-	richard.henderson@linaro.org, andrew.jones@linux.dev, david@redhat.com, 
-	philmd@linaro.org, eric.auger@redhat.com, oliver.upton@linux.dev, 
-	pbonzini@redhat.com, will@kernel.org, gshan@redhat.com, rafael@kernel.org, 
-	alex.bennee@linaro.org, linux@armlinux.org.uk, darren@os.amperecomputing.com, 
-	ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com, 
-	karl.heubaum@oracle.com, miguel.luis@oracle.com, zhukeqian1@huawei.com, 
-	wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com, 
-	maobibo@loongson.cn, lixianglai@loongson.cn, npiggin@gmail.com, 
-	harshpb@linux.ibm.com, linuxarm@huawei.com
-Content-Type: multipart/alternative; boundary="000000000000492ba6061bbf9379"
-X-TUID: Tkj8Sb4//nH7
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN3PEPF0000B077:EE_|LV3PR12MB9216:EE_
+X-MS-Office365-Filtering-Correlation-Id: aa58b68c-3716-4f24-dbbb-08dc95770c44
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230038|36860700011|376012|7416012|1800799022|82310400024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Z+UkL8PqjmL27JtixBriGNDW0AkCocb8MiF9RcGOwiLDdeamk+Im8/VB2RFb?=
+ =?us-ascii?Q?r2B7ucowSA0czC3cgWF/HIzSkTQAIrYsgWtp9ebMfhlxQcYwrs3iJkiIApa5?=
+ =?us-ascii?Q?1Zi+eOAGDUign46CbDrBuX/qo8URSXXsAOUJ1HOh+Yv89DO7oIizWLTTmZ+J?=
+ =?us-ascii?Q?QrhxsMzE+4PJWBonEQF5F73bjv3z5gA+g46RBL9OWK2/ybEpjZV+YJ1Bm8gP?=
+ =?us-ascii?Q?AXsilZ5EA0Qi+w/53fc10SACPfD95+c6tz63T/Z4IpRtiYvDhA57FStQIKX4?=
+ =?us-ascii?Q?l409a+B/1BwQgkomp9VnCHqTWWyIdrgJkpdlkrhB4fi5ahIREty77vYEoWqB?=
+ =?us-ascii?Q?rsW+Sa0x7v8ntZI7OExqvufkbpTwbvQ/qrp39wDV9shv8f8U1+RS18T7Fpq4?=
+ =?us-ascii?Q?fnSSi04YXG96bije+IM9Kbr4QvtOYTfvKqPMko6CUio5mgnPE99ePBEWMvW8?=
+ =?us-ascii?Q?QGcXxPAaLfW9UlwNRwFxkX0C/rnl7aoSnENz/Fu7Ra5RBpu9Vj8PpxaJX9QQ?=
+ =?us-ascii?Q?FLSm7DOyxc4KTW/zlnHJETaglXwsclkEbj4EBlMQ2doy7zrNzuQAWCLmhr6d?=
+ =?us-ascii?Q?kxFYsW6rozqBoKc9yJIAPnQj+XcUrB2MAfXaV5yH8zyfs036bYmNl44sVpcg?=
+ =?us-ascii?Q?0qVQPM/gUKWLtZ8FJe62MwTY6hpfm8HIRNW90WuG7z7jXqHFBOQpxO6ATVqL?=
+ =?us-ascii?Q?E9B9YRGeFsjOwlidQa/U0CJBEhq2lnBxfA6uR0P2fmYxVWFwMf5yy2V/3hvs?=
+ =?us-ascii?Q?8QQlqh8UyFcOLWmiSQZP4lf1gXb6+QdjUfwaMwCtNZWU5QGjevgqGocJz8AI?=
+ =?us-ascii?Q?UW6BBnUXa+hEZegmBGKJ8wXqMXzYaD1+8K47T8RJkpN9GsO1cG5h1tSsB7SV?=
+ =?us-ascii?Q?xN3lILUF1jYeRpypk7a32v2rE9EB9SA5WBd4VCXClE0uFa0gncudBgZ7K3vO?=
+ =?us-ascii?Q?eUic+faKdLNBakQYX8RKRnigvjaAlCj9K36+FsbN8jUXA1jXnfX3KJJybN9x?=
+ =?us-ascii?Q?KT9P5JNi0ebDxr8RlpUWb2ZoG+z32ii+CQppQItH3DFAAkZkkoSFFERhRSb5?=
+ =?us-ascii?Q?jQ/mhtdp/PVeFIoSjZH33hwwZ4fHqorc1rUAKhononsg9Eq6kUxhdHki2XWM?=
+ =?us-ascii?Q?tfSGIMRJgcFE5xl+nYwJZtORjIfOwD829IlrJ4tWYN8SYZO2ngoWw8kH3SuY?=
+ =?us-ascii?Q?SOVa/2/0HAD+bRnmOIiAuAO4Q29g0SCYHLSqCSccKgdvowfuIz+0fYVi3p3d?=
+ =?us-ascii?Q?TBUL8X9Mp0+/c8+KDTaeeoZAYNwbyUyvwdTUTLaKDkifjt/UZDpsZ1kmfMNC?=
+ =?us-ascii?Q?FcIMqkfn/WY8SRgHwmhgqoQ/yFor/TNMFM42USavParSBWtpNTncjoszYQj+?=
+ =?us-ascii?Q?8nnJ3Lll8pHq/QjOWvB49rm3MVEn7+eNPheEhYMDtoYf4PWZOw=3D=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
+ SFS:(13230038)(36860700011)(376012)(7416012)(1800799022)(82310400024); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jun 2024 00:29:31.7222 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: aa58b68c-3716-4f24-dbbb-08dc95770c44
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN3PEPF0000B077.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR12MB9216
+Received-SPF: softfail client-ip=2a01:111:f403:2418::612;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, KHOP_HELO_FCRDNS=0.4, T_SPF_HELO_TEMPERROR=0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Nicolin Chen <nicolinc@nvidia.com>
+From:  Nicolin Chen via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: emh7bdA0XynA
 
---000000000000492ba6061bbf9379
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: Eric Auger <eric.auger@redhat.com>
 
-Hi Igor,
+To handle SMMUv3 nested stage support it is practical to
+expose the guest with reserved memory regions (RMRs)
+covering the IOVAs used by the host kernel to map
+physical MSI doorbells.
 
-On Wed, Jun 5, 2024 at 3:03=E2=80=AFPM Igor Mammedov <imammedo@redhat.com> =
-wrote:
+Those IOVAs belong to [0x8000000, 0x8100000] matching
+MSI_IOVA_BASE and MSI_IOVA_LENGTH definitions in kernel
+arm-smmu-v3 driver. This is the window used to allocate
+IOVAs matching physical MSI doorbells.
 
-> On Sun, 2 Jun 2024 18:03:05 -0400
-> "Michael S. Tsirkin" <mst@redhat.com> wrote:
->
-> > On Thu, May 30, 2024 at 12:42:33AM +0100, Salil Mehta wrote:
-> > > Virtual CPU hotplug support is being added across various
-> architectures[1][3].
-> > > This series adds various code bits common across all architectures:
-> > >
-> > > 1. vCPU creation and Parking code refactor [Patch 1]
-> > > 2. Update ACPI GED framework to support vCPU Hotplug [Patch 2,3]
-> > > 3. ACPI CPUs AML code change [Patch 4,5]
-> > > 4. Helper functions to support unrealization of CPU objects [Patch 6,=
-7]
-> > > 5. Docs [Patch 8]
-> > >
-> > >
-> > > Repository:
-> > >
-> > > [*] https://github.com/salil-mehta/qemu.git
-> virt-cpuhp-armv8/rfc-v3.arch.agnostic.v12
-> > >
-> > > NOTE: This series is meant to work in conjunction with Architecture
-> specific patch-set.
-> > > For ARM, this will work in combination of the architecture specific
-> part based on
-> > > RFC V2 [1]. This architecture specific patch-set RFC V3 shall be
-> floated soon and is
-> > > present at below location
-> > >
-> > > [*]
-> https://github.com/salil-mehta/qemu/tree/virt-cpuhp-armv8/rfc-v3-rc1
-> > >
-> >
-> >
-> > Igor plan to take a look?
->
-> Yep, I plan to review it
->
+With those RMRs, the guest is forced to use a flat mapping
+for this range. Hence the assigned device is programmed
+with one IOVA from this range. Stage 1, owned by the guest
+has a flat mapping for this IOVA. Stage2, owned by the VMM
+then enforces a mapping from this IOVA to the physical
+MSI doorbell.
 
-A gentle reminder on this.
+The creation of those RMR nodes only is relevant if nested
+stage SMMU is in use, along with VFIO. As VFIO devices can be
+hotplugged, all RMRs need to be created in advance. Hence
+the patch introduces a new arm virt "nested-smmuv3" iommu type.
 
-Thanks
-Salil.
+ARM DEN 0049E.b IORT specification also mandates that when
+RMRs are present, the OS must preserve PCIe configuration
+performed by the boot FW. So along with the RMR IORT nodes,
+a _DSM function #5, as defined by PCI FIRMWARE SPECIFICATION
+EVISION 3.3, chapter 4.6.5 is added to PCIe host bridge
+and PCIe expander bridge objects.
 
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Suggested-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 
->
-> >
-> > > Revision History:
-> > >
-> > > Patch-set  V11 -> V12
-> > > 1. Addressed Harsh Prateek Bora's (IBM) comment
-> > >    - Changed @cpu to @vcpu_id in the kvm_unpark_vcpu protoype header/
-> > > 2. Added Zhao Liu's (Intel) Tested-by for whole series
-> > >    - Qtest does not breaks on Intel platforms now.
-> > > 3. Added Zhao Liu's (Intel) Reviewed-by for [PATCH V11 {1/8 - 3/8}]
-> > > Link: https://lore.kernel.org/qemu-devel/ZlRSPuJGBgyEUW6w@intel.com/
-> > > Link:
-> https://lore.kernel.org/qemu-devel/a5f3d78e-cfed-441f-9c56-e3e78fa5edee@l=
-inux.ibm.com/
-> > >
-> > > Patch-set  V10 -> V11
-> > > 1. Addressed Nicholas Piggin's (IBM) comment
-> > >    - moved the traces in kvm_unpark_vcpu and kvm_create_vcpu at the e=
-nd
-> > >    - Added the Reviewed-by Tag for [PATCH V10 1/8]
-> > > 2.  Addressed Alex Benn=C3=A9e's (Linaro) comments
-> > >    - Added a note explaining dependency of the [PATCH V10 7/8] on Arc=
-h
-> specific patch-set
-> > > Link:
-> https://lore.kernel.org/qemu-devel/D1FS5GOOFWWK.2PNRIVL0V6DBL@gmail.com/
-> > > Link:
-> https://lore.kernel.org/qemu-devel/87frubi402.fsf@draig.linaro.org/
-> > >
-> > > Patch-set  V9 -> V10
-> > > 1. Addressed Nicholas Piggin's (IBM) & Philippe Mathieu-Daud=C3=A9 (L=
-inaro)
-> comments
-> > >    - carved out kvm_unpark_vcpu and added its trace
-> > >    - Widened the scope of the kvm_unpark_vcpu so that it can be used
-> by generic framework
-> > >      being thought out
-> > > Link:
-> https://lore.kernel.org/qemu-devel/20240519210620.228342-1-salil.mehta@hu=
-awei.com/
-> > > Link:
-> https://lore.kernel.org/qemu-devel/e94b0e14-efee-4050-9c9f-08382a36b63a@l=
-inaro.org/
-> > >
-> > > Patch-set  V8 -> V9
-> > > 1. Addressed Vishnu Pajjuri's (Ampere) comments
-> > >    - Added kvm_fd to trace in kvm_create_vcpu
-> > >    - Some clean ups: arch vcpu-id and sbd variable
-> > >    - Added the missed initialization of cpu->gdb_num_regs
-> > > 2. Addressed the commnet from Zhao Liu (Intel)
-> > >    - Make initialization of CPU Hotplug state conditional
-> (possible_cpu_arch_ids!=3DNULL)
-> > > Link:
-> https://lore.kernel.org/qemu-devel/20240312020000.12992-1-salil.mehta@hua=
-wei.com/
-> > >
-> > > Patch-set V7 -> V8
-> > > 1. Rebased and Fixed the conflicts
-> > >
-> > > Patch-set  V6 -> V7
-> > > 1. Addressed Alex Benn=C3=A9e's comments
-> > >    - Updated the docs
-> > > 2. Addressed Igor Mammedov's comments
-> > >    - Merged patches [Patch V6 3/9] & [Patch V6 7/9] with [Patch V6 4/=
-9]
-> > >    - Updated commit-log of [Patch V6 1/9] and [Patch V6 5/9]
-> > > 3. Added Shaoqin Huang's Reviewed-by tags for whole series.
-> > > Link:
-> https://lore.kernel.org/qemu-devel/20231013105129.25648-1-salil.mehta@hua=
-wei.com/
-> > >
-> > > Patch-set  V5 -> V6
-> > > 1. Addressed Gavin Shan's comments
-> > >    - Fixed the assert() ranges of address spaces
-> > >    - Rebased the patch-set to latest changes in the qemu.git
-> > >    - Added Reviewed-by tags for patches {8,9}
-> > > 2. Addressed Jonathan Cameron's comments
-> > >    - Updated commit-log for [Patch V5 1/9] with mention of trace even=
-ts
-> > >    - Added Reviewed-by tags for patches {1,5}
-> > > 3. Added Tested-by tags from Xianglai Li
-> > > 4. Fixed checkpatch.pl error "Qemu -> QEMU" in [Patch V5 1/9]
-> > > Link:
-> https://lore.kernel.org/qemu-devel/20231011194355.15628-1-salil.mehta@hua=
-wei.com/
-> > >
-> > > Patch-set  V4 -> V5
-> > > 1. Addressed Gavin Shan's comments
-> > >    - Fixed the trace events print string for
-> kvm_{create,get,park,destroy}_vcpu
-> > >    - Added Reviewed-by tag for patch {1}
-> > > 2. Added Shaoqin Huang's Reviewed-by tags for Patches {2,3}
-> > > 3. Added Tested-by Tag from Vishnu Pajjuri to the patch-set
-> > > 4. Dropped the ARM specific [Patch V4 10/10]
-> > > Link:
-> https://lore.kernel.org/qemu-devel/20231009203601.17584-1-salil.mehta@hua=
-wei.com/
-> > >
-> > > Patch-set  V3 -> V4
-> > > 1. Addressed David Hilderbrand's comments
-> > >    - Fixed the wrong doc comment of kvm_park_vcpu API prototype
-> > >    - Added Reviewed-by tags for patches {2,4}
-> > > Link:
-> https://lore.kernel.org/qemu-devel/20231009112812.10612-1-salil.mehta@hua=
-wei.com/
-> > >
-> > > Patch-set  V2 -> V3
-> > > 1. Addressed Jonathan Cameron's comments
-> > >    - Fixed 'vcpu-id' type wrongly changed from 'unsigned long' to
-> 'integer'
-> > >    - Removed unnecessary use of variable 'vcpu_id' in kvm_park_vcpu
-> > >    - Updated [Patch V2 3/10] commit-log with details of
-> ACPI_CPU_SCAN_METHOD macro
-> > >    - Updated [Patch V2 5/10] commit-log with details of conditional
-> event handler method
-> > >    - Added Reviewed-by tags for patches {2,3,4,6,7}
-> > > 2. Addressed Gavin Shan's comments
-> > >    - Remove unnecessary use of variable 'vcpu_id' in kvm_par_vcpu
-> > >    - Fixed return value in kvm_get_vcpu from -1 to -ENOENT
-> > >    - Reset the value of 'gdb_num_g_regs' in
-> gdb_unregister_coprocessor_all
-> > >    - Fixed the kvm_{create,park}_vcpu prototypes docs
-> > >    - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,10}
-> > > 3. Addressed one earlier missed comment by Alex Benn=C3=A9e in RFC V1
-> > >    - Added traces instead of DPRINTF in the newly added and some
-> existing functions
-> > > Link:
-> https://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.mehta@huaw=
-ei.com/
-> > >
-> > > Patch-set V1 -> V2
-> > > 1. Addressed Alex Benn=C3=A9e's comments
-> > >    - Refactored the kvm_create_vcpu logic to get rid of goto
-> > >    - Added the docs for kvm_{create,park}_vcpu prototypes
-> > >    - Splitted the gdbstub and AddressSpace destruction change into
-> separate patches
-> > >    - Added Reviewed-by tags for patches {2,10}
-> > > Link:
-> https://lore.kernel.org/qemu-devel/20230929124304.13672-1-salil.mehta@hua=
-wei.com/
-> > >
-> > > References:
-> > >
-> > > [1]
-> https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@hua=
-wei.com/
-> > > [2]
-> https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
-> > > [3]
-> https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongs=
-on.cn/
-> > >
-> > >
-> > >
-> > > Salil Mehta (8):
-> > >   accel/kvm: Extract common KVM vCPU {creation,parking} code
-> > >   hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header
-> file
-> > >   hw/acpi: Update ACPI GED framework to support vCPU Hotplug
-> > >   hw/acpi: Update GED _EVT method AML with CPU scan
-> > >   hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
-> > >   physmem: Add helper function to destroy CPU AddressSpace
-> > >   gdbstub: Add helper function to unregister GDB register space
-> > >   docs/specs/acpi_hw_reduced_hotplug: Add the CPU Hotplug Event Bit
-> > >
-> > >  accel/kvm/kvm-all.c                    | 95 +++++++++++++++++-------=
---
-> > >  accel/kvm/kvm-cpus.h                   | 23 +++++++
-> > >  accel/kvm/trace-events                 |  5 +-
-> > >  docs/specs/acpi_hw_reduced_hotplug.rst |  3 +-
-> > >  gdbstub/gdbstub.c                      | 13 ++++
-> > >  hw/acpi/acpi-cpu-hotplug-stub.c        |  6 ++
-> > >  hw/acpi/cpu.c                          | 33 ++++++---
-> > >  hw/acpi/generic_event_device.c         | 21 ++++++
-> > >  hw/core/cpu-common.c                   |  1 -
-> > >  hw/i386/acpi-build.c                   |  3 +-
-> > >  include/exec/cpu-common.h              |  8 +++
-> > >  include/exec/gdbstub.h                 |  6 ++
-> > >  include/hw/acpi/cpu.h                  |  5 +-
-> > >  include/hw/acpi/cpu_hotplug.h          |  4 ++
-> > >  include/hw/acpi/generic_event_device.h |  4 ++
-> > >  include/hw/core/cpu.h                  |  1 +
-> > >  system/physmem.c                       | 29 ++++++++
-> > >  17 files changed, 212 insertions(+), 48 deletions(-)
-> > >
-> > > --
-> > > 2.34.1
-> >
->
->
+---
 
---000000000000492ba6061bbf9379
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+v2 -> v3:
+- Comply with IORT E.d spec. RMR node rev = 3; IORT rev = 5
+  With this spec revision, the restriction on number of
+  Stream IDs that can be associated with memory ranges in an
+  RMR node was removed. So no need anymore to define 1 RMR node per
+  SID!
+---
+ hw/arm/virt-acpi-build.c | 84 +++++++++++++++++++++++++++++++++-------
+ hw/arm/virt.c            |  7 +++-
+ include/hw/arm/virt.h    |  7 ++++
+ 3 files changed, 84 insertions(+), 14 deletions(-)
 
-<div dir=3D"ltr"><div dir=3D"ltr">Hi Igor,<br></div><br><div class=3D"gmail=
-_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jun 5, 2024 at 3:03=
-=E2=80=AFPM Igor Mammedov &lt;<a href=3D"mailto:imammedo@redhat.com">imamme=
-do@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" sty=
-le=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddi=
-ng-left:1ex">On Sun, 2 Jun 2024 18:03:05 -0400<br>
-&quot;Michael S. Tsirkin&quot; &lt;<a href=3D"mailto:mst@redhat.com" target=
-=3D"_blank">mst@redhat.com</a>&gt; wrote:<br>
-<br>
-&gt; On Thu, May 30, 2024 at 12:42:33AM +0100, Salil Mehta wrote:<br>
-&gt; &gt; Virtual CPU hotplug support is being added across various archite=
-ctures[1][3].<br>
-&gt; &gt; This series adds various code bits common across all architecture=
-s:<br>
-&gt; &gt; <br>
-&gt; &gt; 1. vCPU creation and Parking code refactor [Patch 1]<br>
-&gt; &gt; 2. Update ACPI GED framework to support vCPU Hotplug [Patch 2,3]<=
-br>
-&gt; &gt; 3. ACPI CPUs AML code change [Patch 4,5]<br>
-&gt; &gt; 4. Helper functions to support unrealization of CPU objects [Patc=
-h 6,7]<br>
-&gt; &gt; 5. Docs [Patch 8]<br>
-&gt; &gt; <br>
-&gt; &gt; <br>
-&gt; &gt; Repository:<br>
-&gt; &gt; <br>
-&gt; &gt; [*] <a href=3D"https://github.com/salil-mehta/qemu.git" rel=3D"no=
-referrer" target=3D"_blank">https://github.com/salil-mehta/qemu.git</a> vir=
-t-cpuhp-armv8/rfc-v3.arch.agnostic.v12<br>
-&gt; &gt; <br>
-&gt; &gt; NOTE: This series is meant to work in conjunction with Architectu=
-re specific patch-set.<br>
-&gt; &gt; For ARM, this will work in combination of the architecture specif=
-ic part based on<br>
-&gt; &gt; RFC V2 [1]. This architecture specific patch-set RFC V3 shall be =
-floated soon and is<br>
-&gt; &gt; present at below location<br>
-&gt; &gt; <br>
-&gt; &gt; [*] <a href=3D"https://github.com/salil-mehta/qemu/tree/virt-cpuh=
-p-armv8/rfc-v3-rc1" rel=3D"noreferrer" target=3D"_blank">https://github.com=
-/salil-mehta/qemu/tree/virt-cpuhp-armv8/rfc-v3-rc1</a><br>
-&gt; &gt;=C2=A0 =C2=A0<br>
-&gt; <br>
-&gt; <br>
-&gt; Igor plan to take a look?<br>
-<br>
-Yep, I plan to review it<br></blockquote><div><br></div><div>A gentle remin=
-der on this.</div><div><br></div><div>Thanks</div><div>Salil.</div><div>=C2=
-=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; <br>
-&gt; &gt; Revision History:<br>
-&gt; &gt; <br>
-&gt; &gt; Patch-set=C2=A0 V11 -&gt; V12<br>
-&gt; &gt; 1. Addressed Harsh Prateek Bora&#39;s (IBM) comment<br>
-&gt; &gt;=C2=A0 =C2=A0 - Changed @cpu to @vcpu_id in the kvm_unpark_vcpu pr=
-otoype header/<br>
-&gt; &gt; 2. Added Zhao Liu&#39;s (Intel) Tested-by for whole series<br>
-&gt; &gt;=C2=A0 =C2=A0 - Qtest does not breaks on Intel platforms now.<br>
-&gt; &gt; 3. Added Zhao Liu&#39;s (Intel) Reviewed-by for [PATCH V11 {1/8 -=
- 3/8}]<br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/ZlRSPuJGBgyEU=
-W6w@intel.com/" rel=3D"noreferrer" target=3D"_blank">https://lore.kernel.or=
-g/qemu-devel/ZlRSPuJGBgyEUW6w@intel.com/</a><br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/a5f3d78e-cfed=
--441f-9c56-e3e78fa5edee@linux.ibm.com/" rel=3D"noreferrer" target=3D"_blank=
-">https://lore.kernel.org/qemu-devel/a5f3d78e-cfed-441f-9c56-e3e78fa5edee@l=
-inux.ibm.com/</a><br>
-&gt; &gt; <br>
-&gt; &gt; Patch-set=C2=A0 V10 -&gt; V11<br>
-&gt; &gt; 1. Addressed Nicholas Piggin&#39;s (IBM) comment<br>
-&gt; &gt;=C2=A0 =C2=A0 - moved the traces in kvm_unpark_vcpu and kvm_create=
-_vcpu at the end<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added the Reviewed-by Tag for [PATCH V10 1/8]<br>
-&gt; &gt; 2.=C2=A0 Addressed Alex Benn=C3=A9e&#39;s (Linaro) comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added a note explaining dependency of the [PATCH V=
-10 7/8] on Arch specific patch-set<br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/D1FS5GOOFWWK.=
-2PNRIVL0V6DBL@gmail.com/" rel=3D"noreferrer" target=3D"_blank">https://lore=
-.kernel.org/qemu-devel/D1FS5GOOFWWK.2PNRIVL0V6DBL@gmail.com/</a> <br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/87frubi402.fs=
-f@draig.linaro.org/" rel=3D"noreferrer" target=3D"_blank">https://lore.kern=
-el.org/qemu-devel/87frubi402.fsf@draig.linaro.org/</a><br>
-&gt; &gt; <br>
-&gt; &gt; Patch-set=C2=A0 V9 -&gt; V10<br>
-&gt; &gt; 1. Addressed Nicholas Piggin&#39;s (IBM) &amp; Philippe Mathieu-D=
-aud=C3=A9 (Linaro) comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - carved out kvm_unpark_vcpu and added its trace<br>
-&gt; &gt;=C2=A0 =C2=A0 - Widened the scope of the kvm_unpark_vcpu so that i=
-t can be used by generic framework<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 being thought out<br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/2024051921062=
-0.228342-1-salil.mehta@huawei.com/" rel=3D"noreferrer" target=3D"_blank">ht=
-tps://lore.kernel.org/qemu-devel/20240519210620.228342-1-salil.mehta@huawei=
-.com/</a><br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/e94b0e14-efee=
--4050-9c9f-08382a36b63a@linaro.org/" rel=3D"noreferrer" target=3D"_blank">h=
-ttps://lore.kernel.org/qemu-devel/e94b0e14-efee-4050-9c9f-08382a36b63a@lina=
-ro.org/</a><br>
-&gt; &gt; <br>
-&gt; &gt; Patch-set=C2=A0 V8 -&gt; V9<br>
-&gt; &gt; 1. Addressed Vishnu Pajjuri&#39;s (Ampere) comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added kvm_fd to trace in kvm_create_vcpu<br>
-&gt; &gt;=C2=A0 =C2=A0 - Some clean ups: arch vcpu-id and sbd variable<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added the missed initialization of cpu-&gt;gdb_num=
-_regs<br>
-&gt; &gt; 2. Addressed the commnet from Zhao Liu (Intel)<br>
-&gt; &gt;=C2=A0 =C2=A0 - Make initialization of CPU Hotplug state condition=
-al (possible_cpu_arch_ids!=3DNULL)<br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/2024031202000=
-0.12992-1-salil.mehta@huawei.com/" rel=3D"noreferrer" target=3D"_blank">htt=
-ps://lore.kernel.org/qemu-devel/20240312020000.12992-1-salil.mehta@huawei.c=
-om/</a><br>
-&gt; &gt; <br>
-&gt; &gt; Patch-set V7 -&gt; V8<br>
-&gt; &gt; 1. Rebased and Fixed the conflicts<br>
-&gt; &gt; <br>
-&gt; &gt; Patch-set=C2=A0 V6 -&gt; V7<br>
-&gt; &gt; 1. Addressed Alex Benn=C3=A9e&#39;s comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - Updated the docs<br>
-&gt; &gt; 2. Addressed Igor Mammedov&#39;s comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - Merged patches [Patch V6 3/9] &amp; [Patch V6 7/9]=
- with [Patch V6 4/9]<br>
-&gt; &gt;=C2=A0 =C2=A0 - Updated commit-log of [Patch V6 1/9] and [Patch V6=
- 5/9]=C2=A0 =C2=A0 =C2=A0<br>
-&gt; &gt; 3. Added Shaoqin Huang&#39;s Reviewed-by tags for whole series.<b=
-r>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/2023101310512=
-9.25648-1-salil.mehta@huawei.com/" rel=3D"noreferrer" target=3D"_blank">htt=
-ps://lore.kernel.org/qemu-devel/20231013105129.25648-1-salil.mehta@huawei.c=
-om/</a><br>
-&gt; &gt; <br>
-&gt; &gt; Patch-set=C2=A0 V5 -&gt; V6<br>
-&gt; &gt; 1. Addressed Gavin Shan&#39;s comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - Fixed the assert() ranges of address spaces<br>
-&gt; &gt;=C2=A0 =C2=A0 - Rebased the patch-set to latest changes in the qem=
-u.git<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added Reviewed-by tags for patches {8,9}<br>
-&gt; &gt; 2. Addressed Jonathan Cameron&#39;s comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - Updated commit-log for [Patch V5 1/9] with mention=
- of trace events<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added Reviewed-by tags for patches {1,5}<br>
-&gt; &gt; 3. Added Tested-by tags from Xianglai Li<br>
-&gt; &gt; 4. Fixed <a href=3D"http://checkpatch.pl" rel=3D"noreferrer" targ=
-et=3D"_blank">checkpatch.pl</a> error &quot;Qemu -&gt; QEMU&quot; in [Patch=
- V5 1/9] <br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/2023101119435=
-5.15628-1-salil.mehta@huawei.com/" rel=3D"noreferrer" target=3D"_blank">htt=
-ps://lore.kernel.org/qemu-devel/20231011194355.15628-1-salil.mehta@huawei.c=
-om/</a><br>
-&gt; &gt; <br>
-&gt; &gt; Patch-set=C2=A0 V4 -&gt; V5<br>
-&gt; &gt; 1. Addressed Gavin Shan&#39;s comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - Fixed the trace events print string for kvm_{creat=
-e,get,park,destroy}_vcpu<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added Reviewed-by tag for patch {1}<br>
-&gt; &gt; 2. Added Shaoqin Huang&#39;s Reviewed-by tags for Patches {2,3}<b=
-r>
-&gt; &gt; 3. Added Tested-by Tag from Vishnu Pajjuri to the patch-set<br>
-&gt; &gt; 4. Dropped the ARM specific [Patch V4 10/10]<br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/2023100920360=
-1.17584-1-salil.mehta@huawei.com/" rel=3D"noreferrer" target=3D"_blank">htt=
-ps://lore.kernel.org/qemu-devel/20231009203601.17584-1-salil.mehta@huawei.c=
-om/</a><br>
-&gt; &gt; <br>
-&gt; &gt; Patch-set=C2=A0 V3 -&gt; V4<br>
-&gt; &gt; 1. Addressed David Hilderbrand&#39;s comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - Fixed the wrong doc comment of kvm_park_vcpu API p=
-rototype<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added Reviewed-by tags for patches {2,4}<br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/2023100911281=
-2.10612-1-salil.mehta@huawei.com/" rel=3D"noreferrer" target=3D"_blank">htt=
-ps://lore.kernel.org/qemu-devel/20231009112812.10612-1-salil.mehta@huawei.c=
-om/</a><br>
-&gt; &gt; <br>
-&gt; &gt; Patch-set=C2=A0 V2 -&gt; V3<br>
-&gt; &gt; 1. Addressed Jonathan Cameron&#39;s comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - Fixed &#39;vcpu-id&#39; type wrongly changed from =
-&#39;unsigned long&#39; to &#39;integer&#39;<br>
-&gt; &gt;=C2=A0 =C2=A0 - Removed unnecessary use of variable &#39;vcpu_id&#=
-39; in kvm_park_vcpu<br>
-&gt; &gt;=C2=A0 =C2=A0 - Updated [Patch V2 3/10] commit-log with details of=
- ACPI_CPU_SCAN_METHOD macro<br>
-&gt; &gt;=C2=A0 =C2=A0 - Updated [Patch V2 5/10] commit-log with details of=
- conditional event handler method<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added Reviewed-by tags for patches {2,3,4,6,7}<br>
-&gt; &gt; 2. Addressed Gavin Shan&#39;s comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - Remove unnecessary use of variable &#39;vcpu_id&#3=
-9; in kvm_par_vcpu<br>
-&gt; &gt;=C2=A0 =C2=A0 - Fixed return value in kvm_get_vcpu from -1 to -ENO=
-ENT<br>
-&gt; &gt;=C2=A0 =C2=A0 - Reset the value of &#39;gdb_num_g_regs&#39; in gdb=
-_unregister_coprocessor_all<br>
-&gt; &gt;=C2=A0 =C2=A0 - Fixed the kvm_{create,park}_vcpu prototypes docs<b=
-r>
-&gt; &gt;=C2=A0 =C2=A0 - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,=
-10}<br>
-&gt; &gt; 3. Addressed one earlier missed comment by Alex Benn=C3=A9e in RF=
-C V1<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added traces instead of DPRINTF in the newly added=
- and some existing functions<br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/2023093000193=
-3.2660-1-salil.mehta@huawei.com/" rel=3D"noreferrer" target=3D"_blank">http=
-s://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.mehta@huawei.com=
-/</a><br>
-&gt; &gt; <br>
-&gt; &gt; Patch-set V1 -&gt; V2<br>
-&gt; &gt; 1. Addressed Alex Benn=C3=A9e&#39;s comments<br>
-&gt; &gt;=C2=A0 =C2=A0 - Refactored the kvm_create_vcpu logic to get rid of=
- goto<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added the docs for kvm_{create,park}_vcpu prototyp=
-es<br>
-&gt; &gt;=C2=A0 =C2=A0 - Splitted the gdbstub and AddressSpace destruction =
-change into separate patches<br>
-&gt; &gt;=C2=A0 =C2=A0 - Added Reviewed-by tags for patches {2,10}<br>
-&gt; &gt; Link: <a href=3D"https://lore.kernel.org/qemu-devel/2023092912430=
-4.13672-1-salil.mehta@huawei.com/" rel=3D"noreferrer" target=3D"_blank">htt=
-ps://lore.kernel.org/qemu-devel/20230929124304.13672-1-salil.mehta@huawei.c=
-om/</a><br>
-&gt; &gt; <br>
-&gt; &gt; References:<br>
-&gt; &gt; <br>
-&gt; &gt; [1] <a href=3D"https://lore.kernel.org/qemu-devel/20230926100436.=
-28284-1-salil.mehta@huawei.com/" rel=3D"noreferrer" target=3D"_blank">https=
-://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@huawei.com=
-/</a><br>
-&gt; &gt; [2] <a href=3D"https://lore.kernel.org/all/20230913163823.7880-1-=
-james.morse@arm.com/" rel=3D"noreferrer" target=3D"_blank">https://lore.ker=
-nel.org/all/20230913163823.7880-1-james.morse@arm.com/</a><br>
-&gt; &gt; [3] <a href=3D"https://lore.kernel.org/qemu-devel/cover.169569770=
-1.git.lixianglai@loongson.cn/" rel=3D"noreferrer" target=3D"_blank">https:/=
-/lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongson.cn/</a=
-><br>
-&gt; &gt; <br>
-&gt; &gt; <br>
-&gt; &gt; <br>
-&gt; &gt; Salil Mehta (8):<br>
-&gt; &gt;=C2=A0 =C2=A0accel/kvm: Extract common KVM vCPU {creation,parking}=
- code<br>
-&gt; &gt;=C2=A0 =C2=A0hw/acpi: Move CPU ctrl-dev MMIO region len macro to c=
-ommon header file<br>
-&gt; &gt;=C2=A0 =C2=A0hw/acpi: Update ACPI GED framework to support vCPU Ho=
-tplug<br>
-&gt; &gt;=C2=A0 =C2=A0hw/acpi: Update GED _EVT method AML with CPU scan<br>
-&gt; &gt;=C2=A0 =C2=A0hw/acpi: Update CPUs AML with cpu-(ctrl)dev change<br=
->
-&gt; &gt;=C2=A0 =C2=A0physmem: Add helper function to destroy CPU AddressSp=
-ace<br>
-&gt; &gt;=C2=A0 =C2=A0gdbstub: Add helper function to unregister GDB regist=
-er space<br>
-&gt; &gt;=C2=A0 =C2=A0docs/specs/acpi_hw_reduced_hotplug: Add the CPU Hotpl=
-ug Event Bit<br>
-&gt; &gt; <br>
-&gt; &gt;=C2=A0 accel/kvm/kvm-all.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 95 +++++++++++++++++---------<br>
-&gt; &gt;=C2=A0 accel/kvm/kvm-cpus.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 23 +++++++<br>
-&gt; &gt;=C2=A0 accel/kvm/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 5 +-<br>
-&gt; &gt;=C2=A0 docs/specs/acpi_hw_reduced_hotplug.rst |=C2=A0 3 +-<br>
-&gt; &gt;=C2=A0 gdbstub/gdbstub.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 13 ++++<br>
-&gt; &gt;=C2=A0 hw/acpi/acpi-cpu-hotplug-stub.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-|=C2=A0 6 ++<br>
-&gt; &gt;=C2=A0 hw/acpi/cpu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 33 ++++++---<br>
-&gt; &gt;=C2=A0 hw/acpi/generic_event_device.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 21 ++++++<br>
-&gt; &gt;=C2=A0 hw/core/cpu-common.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 1 -<br>
-&gt; &gt;=C2=A0 hw/i386/acpi-build.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 3 +-<br>
-&gt; &gt;=C2=A0 include/exec/cpu-common.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 |=C2=A0 8 +++<br>
-&gt; &gt;=C2=A0 include/exec/gdbstub.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 6 ++<br>
-&gt; &gt;=C2=A0 include/hw/acpi/cpu.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 5 +-<br>
-&gt; &gt;=C2=A0 include/hw/acpi/cpu_hotplug.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 |=C2=A0 4 ++<br>
-&gt; &gt;=C2=A0 include/hw/acpi/generic_event_device.h |=C2=A0 4 ++<br>
-&gt; &gt;=C2=A0 include/hw/core/cpu.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 1 +<br>
-&gt; &gt;=C2=A0 system/physmem.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 29 ++++++++<br>
-&gt; &gt;=C2=A0 17 files changed, 212 insertions(+), 48 deletions(-)<br>
-&gt; &gt; <br>
-&gt; &gt; -- <br>
-&gt; &gt; 2.34.1=C2=A0 <br>
-&gt; <br>
-<br>
-</blockquote></div></div>
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 94363a6d65..d5e72800f6 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -132,6 +132,14 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+         .bus    = vms->bus,
+     };
+ 
++    /*
++     * Nested SMMU requires RMRs for MSI 1-1 mapping, which
++     * require _DSM for PreservingPCI Boot Configurations
++     */
++    if (vms->iommu == VIRT_IOMMU_NESTED_SMMUV3) {
++        cfg.preserve_config = true;
++    }
++
+     if (vms->highmem_mmio) {
+         cfg.mmio64 = memmap[VIRT_HIGH_PCIE_MMIO];
+     }
+@@ -216,16 +224,16 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
+  *
+  * Note that @id_count gets internally subtracted by one, following the spec.
+  */
+-static void build_iort_id_mapping(GArray *table_data, uint32_t input_base,
+-                                  uint32_t id_count, uint32_t out_ref)
++static void
++build_iort_id_mapping(GArray *table_data, uint32_t input_base,
++                      uint32_t id_count, uint32_t out_ref, uint32_t flags)
+ {
+     build_append_int_noprefix(table_data, input_base, 4); /* Input base */
+     /* Number of IDs - The number of IDs in the range minus one */
+     build_append_int_noprefix(table_data, id_count - 1, 4);
+     build_append_int_noprefix(table_data, input_base, 4); /* Output base */
+     build_append_int_noprefix(table_data, out_ref, 4); /* Output Reference */
+-    /* Flags */
+-    build_append_int_noprefix(table_data, 0 /* Single mapping (disabled) */, 4);
++    build_append_int_noprefix(table_data, flags, 4); /* Flags */
+ }
+ 
+ struct AcpiIortIdMapping {
+@@ -267,6 +275,48 @@ static int iort_idmap_compare(gconstpointer a, gconstpointer b)
+     return idmap_a->input_base - idmap_b->input_base;
+ }
+ 
++static void
++build_iort_rmr_nodes(GArray *table_data, GArray *smmu_idmaps, int smmu_offset, uint32_t *id) {
++    AcpiIortIdMapping *range;
++    int i;
++
++    for (i = 0; i < smmu_idmaps->len; i++) {
++        range = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
++        int bdf = range->input_base;
++
++        /* Table 18 Reserved Memory Range Node */
++
++        build_append_int_noprefix(table_data, 6 /* RMR */, 1); /* Type */
++        /* Length */
++        build_append_int_noprefix(table_data, 28 + ID_MAPPING_ENTRY_SIZE + 20, 2);
++        build_append_int_noprefix(table_data, 3, 1); /* Revision */
++        build_append_int_noprefix(table_data, *id, 4); /* Identifier */
++        /* Number of ID mappings */
++        build_append_int_noprefix(table_data, 1, 4);
++        /* Reference to ID Array */
++        build_append_int_noprefix(table_data, 28, 4);
++
++        /* RMR specific data */
++
++        /* Flags */
++        build_append_int_noprefix(table_data, 0 /* Disallow remapping */, 4);
++        /* Number of Memory Range Descriptors */
++        build_append_int_noprefix(table_data, 1 , 4);
++        /* Reference to Memory Range Descriptors */
++        build_append_int_noprefix(table_data, 28 + ID_MAPPING_ENTRY_SIZE, 4);
++        build_iort_id_mapping(table_data, bdf, range->id_count, smmu_offset, 1);
++
++        /* Table 19 Memory Range Descriptor */
++
++        /* Physical Range offset */
++        build_append_int_noprefix(table_data, 0x8000000, 8);
++        /* Physical Range length */
++        build_append_int_noprefix(table_data, 0x100000, 8);
++        build_append_int_noprefix(table_data, 0, 4); /* Reserved */
++        *id += 1;
++    }
++}
++
+ /*
+  * Input Output Remapping Table (IORT)
+  * Conforms to "IO Remapping Table System Software on ARM Platforms",
+@@ -282,17 +332,19 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     GArray *smmu_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
+     GArray *its_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
+ 
+-    AcpiTable table = { .sig = "IORT", .rev = 3, .oem_id = vms->oem_id,
++    AcpiTable table = { .sig = "IORT", .rev = 5, .oem_id = vms->oem_id,
+                         .oem_table_id = vms->oem_table_id };
+     /* Table 2 The IORT */
+     acpi_table_begin(&table, table_data);
+ 
+-    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
++    if (virt_has_smmuv3(vms)) {
+         AcpiIortIdMapping next_range = {0};
+ 
+         object_child_foreach_recursive(object_get_root(),
+                                        iort_host_bridges, smmu_idmaps);
+ 
++        nb_nodes = 3; /* RC, ITS, SMMUv3 */
++
+         /* Sort the smmu idmap by input_base */
+         g_array_sort(smmu_idmaps, iort_idmap_compare);
+ 
+@@ -309,6 +361,9 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             }
+ 
+             next_range.input_base = idmap->input_base + idmap->id_count;
++            if (vms->iommu == VIRT_IOMMU_NESTED_SMMUV3) {
++                nb_nodes++;
++            }
+         }
+ 
+         /* Append the last RC -> ITS ID mapping */
+@@ -317,7 +372,6 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             g_array_append_val(its_idmaps, next_range);
+         }
+ 
+-        nb_nodes = 3; /* RC, ITS, SMMUv3 */
+         rc_mapping_count = smmu_idmaps->len + its_idmaps->len;
+     } else {
+         nb_nodes = 2; /* RC, ITS */
+@@ -342,7 +396,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     /* GIC ITS Identifier Array */
+     build_append_int_noprefix(table_data, 0 /* MADT translation_id */, 4);
+ 
+-    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
++    if (virt_has_smmuv3(vms)) {
+         int irq =  vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
+ 
+         smmu_offset = table_data->len - table.table_offset;
+@@ -372,7 +426,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         build_append_int_noprefix(table_data, 0, 4);
+ 
+         /* output IORT node is the ITS group node (the first node) */
+-        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET);
++        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET, 0);
+     }
+ 
+     /* Table 17 Root Complex Node */
+@@ -405,7 +459,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, 0, 3); /* Reserved */
+ 
+     /* Output Reference */
+-    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
++    if (virt_has_smmuv3(vms)) {
+         AcpiIortIdMapping *range;
+ 
+         /* translated RIDs connect to SMMUv3 node: RC -> SMMUv3 -> ITS */
+@@ -413,7 +467,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             range = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
+             /* output IORT node is the smmuv3 node */
+             build_iort_id_mapping(table_data, range->input_base,
+-                                  range->id_count, smmu_offset);
++                                  range->id_count, smmu_offset, 0);
+         }
+ 
+         /* bypassed RIDs connect to ITS group node directly: RC -> ITS */
+@@ -421,11 +475,15 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             range = &g_array_index(its_idmaps, AcpiIortIdMapping, i);
+             /* output IORT node is the ITS group node (the first node) */
+             build_iort_id_mapping(table_data, range->input_base,
+-                                  range->id_count, IORT_NODE_OFFSET);
++                                  range->id_count, IORT_NODE_OFFSET, 0);
+         }
+     } else {
+         /* output IORT node is the ITS group node (the first node) */
+-        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET);
++        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET, 0);
++    }
++
++    if (vms->iommu == VIRT_IOMMU_NESTED_SMMUV3) {
++        build_iort_rmr_nodes(table_data, smmu_idmaps, smmu_offset, &id);
+     }
+ 
+     acpi_table_end(linker, &table);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 3c93c0c0a6..78af2d2195 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1396,7 +1396,7 @@ static void create_smmu(const VirtMachineState *vms,
+     DeviceState *dev;
+     MachineState *ms = MACHINE(vms);
+ 
+-    if (vms->iommu != VIRT_IOMMU_SMMUV3 || !vms->iommu_phandle) {
++    if (!virt_has_smmuv3(vms) || !vms->iommu_phandle) {
+         return;
+     }
+ 
+@@ -1578,6 +1578,7 @@ static void create_pcie(VirtMachineState *vms)
+ 
+         switch (vms->iommu) {
+         case VIRT_IOMMU_SMMUV3:
++        case VIRT_IOMMU_NESTED_SMMUV3:
+             create_smmu(vms, vms->bus);
+             qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map",
+                                    0x0, vms->iommu_phandle, 0x0, 0x10000);
+@@ -2653,6 +2654,8 @@ static char *virt_get_iommu(Object *obj, Error **errp)
+         return g_strdup("none");
+     case VIRT_IOMMU_SMMUV3:
+         return g_strdup("smmuv3");
++    case VIRT_IOMMU_NESTED_SMMUV3:
++        return g_strdup("nested-smmuv3");
+     default:
+         g_assert_not_reached();
+     }
+@@ -2664,6 +2667,8 @@ static void virt_set_iommu(Object *obj, const char *value, Error **errp)
+ 
+     if (!strcmp(value, "smmuv3")) {
+         vms->iommu = VIRT_IOMMU_SMMUV3;
++    } else if (!strcmp(value, "nested-smmuv3")) {
++        vms->iommu = VIRT_IOMMU_NESTED_SMMUV3;
+     } else if (!strcmp(value, "none")) {
+         vms->iommu = VIRT_IOMMU_NONE;
+     } else {
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index bb486d36b1..7df0813e28 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -89,6 +89,7 @@ enum {
+ typedef enum VirtIOMMUType {
+     VIRT_IOMMU_NONE,
+     VIRT_IOMMU_SMMUV3,
++    VIRT_IOMMU_NESTED_SMMUV3,
+     VIRT_IOMMU_VIRTIO,
+ } VirtIOMMUType;
+ 
+@@ -209,4 +210,10 @@ static inline int virt_gicv3_redist_region_count(VirtMachineState *vms)
+             vms->highmem_redists) ? 2 : 1;
+ }
+ 
++static inline bool virt_has_smmuv3(const VirtMachineState *vms)
++{
++    return vms->iommu == VIRT_IOMMU_SMMUV3 ||
++           vms->iommu == VIRT_IOMMU_NESTED_SMMUV3;
++}
++
+ #endif /* QEMU_ARM_VIRT_H */
+-- 
+2.43.0
 
---000000000000492ba6061bbf9379--

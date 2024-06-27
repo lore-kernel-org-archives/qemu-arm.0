@@ -1,73 +1,74 @@
-Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp147765njb;
-        Thu, 27 Jun 2024 02:08:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEcyeQh2oNTYU/pJrP/lwSfPb2Gsu8rHEJCNj4WmyHag96ugNt3ltrFZLWRtXjnvSoF2OSz
-X-Received: by 2002:a05:6602:1493:b0:7eb:7bc9:7fcb with SMTP id ca18e2360f4ac-7f3a759252amr1805830939f.3.1719479286154;
-        Thu, 27 Jun 2024 02:08:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719479286; cv=none;
+Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp147967njb;
+        Thu, 27 Jun 2024 02:08:47 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEA7oiON9TaMSV0/p8FNcT4P2RAWy/cmALpBQSOXaGfOe6FcyKN0OApIHh0AUkWMT6qFGnc
+X-Received: by 2002:a5b:651:0:b0:e03:106e:cf12 with SMTP id 3f1490d57ef6-e0345456fb7mr1422094276.10.1719479327487;
+        Thu, 27 Jun 2024 02:08:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719479327; cv=none;
         d=google.com; s=arc-20160816;
-        b=ttI4j6JyiYUwf6VtqZ5/r2uVOuDVcY20BBtoc/J0qZxroU3Y4OaHPCvJX6ivNIhnNm
-         hLi9wS9WAuds8CGrCeAiNfnInPw+NGMzA73Rfw7U1toyY+Ny5PN/OC0Xxq+L+OwEvLM7
-         t2XXzR721X5hdi/h1DUUo14e+FDyuCExtlCOZcGamYu4cqkShQEe57tN85R/4YilT2PU
-         RxGHLM8Xy3ASAeF15PaIlaOAi01Pl4rbwx7VKVhCasdHKXWE2aZkHw/xUNLWnWRw6TY9
-         xymJ5uOZ+VQ68uNC5W4kVS9cdAoxsMNk3RON66m3NAmqsKZw5mQO1DnwjeFF5aMYveSP
-         SPlw==
+        b=OPkxw9X0b3Gs+fKo/awOpup0R8OoDgOs0USHI6PrkFGDxG0E/pBrYS/Qn+KpHbTTH0
+         Kn3meUWDsDpKukzd4iuReNwRZjYr+DLNbdoBBR8ZgKPXvKGv6zPngDzMIROvSlc+9mUt
+         8zuCvM14umvX8DUz0k2/ZwhB50QM+bo5IKJKBzrlxDjidQfLW0C04IvGKR29pcnMxOeN
+         Czs8jYkiQ6QSLRo3Ot0Py1oNxBUx2dqp1cqVaFEFDdhlOZwK6ODy7eoiLcA/FRIzwO98
+         XFg1julgh//6UQJmNAJ9vQHP/l+LdZUYZ1z0kR/tSkBiRe5J4u3Z+HKpIj/ibM2NxLYn
+         vn0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=SgutWFQ5xizB8FZae9vq8wbziDGllkdv1mj9mgHIz6s=;
-        fh=1bA6OPw0XY+G7cjJscSYzSlPifbCChGxOIfW5OstXnU=;
-        b=rSSv081SHZ+UVOppCalf69vYvDkTSgqeTcY/HiU0XSyt0pa++a1MjbETOq+kbZQE7X
-         d59/4cRMHrHAtu50n8GkE8lIUjlCQLROhw15cog4bcfVafzFjPs3Fmc5I9BTi0zoHo+V
-         wfK/nhHtbdPx7pYBsAwhH4XJXn/SXRH+4YMJNvds5mbkyPY+tmmZEL5ogaJDGTp3DchJ
-         LYEiK94G/HJd0t6Sv+qYGJMTZdiKUnb0Ynk+FC5lKTXyFLGY1SiQyZoCMzj5/L1jEbqq
-         7ZXh8ow2OM+tVa/QZEH9noEIsMzuYujDXgDEr4Zb+oAR60BgVFy8wTw8/tzDV984+eoi
-         UWKg==;
+        bh=WYAZCJTlNRD1YH3Teohr6tMxl7+IcOW1+PZf/Vf4C48=;
+        fh=ZYqwqfbePfbn0vstTXQWddNzQLEPAn+mQ4euUA4RD4s=;
+        b=kmYPLnoeVL9lQUQnCWdgBslQbgpGnk7oFErfpqaHlOdDMEN/zy+yzWlSEXfTxQTRUl
+         JxTQ6spcH3Ofv7STZ3wghF4Xt+x8tTJRnV4ZQGoI3d8pLc2uRgIN2CcRViPrNeyqPgjd
+         y3wex1enidBjhVgxGDRatdQ2huLoK42yWBVY9/8pyMUiigijZqAp28WMUr1ry3Cm51Hv
+         BJC9nkWlln1RWrCDQtSrdFybed6VOn5FYADCdIoMZxL/AbhJpL3T5EcVjYIiENASIRmQ
+         CaB4fEh76EsxHr1QubXpDfluUrpBOmThesaEV2J5idZ9VozuLs1L180bbqrIr2epR93a
+         4iTg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=MojdnZIf;
-       spf=pass (google.com: domain of quic_asalama@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_asalama@quicinc.com;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=pFHdE9Y8;
+       spf=pass (google.com: domain of quic_asalama@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_asalama@quicinc.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
 Return-Path: <quic_asalama@quicinc.com>
-Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com. [205.220.168.131])
-        by mx.google.com with ESMTPS id ca18e2360f4ac-7f45444163esi40304439f.127.2024.06.27.02.08.05
+Received: from mx0b-0031df01.pphosted.com (mx0b-0031df01.pphosted.com. [205.220.180.131])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e0345c8195asi443010276.677.2024.06.27.02.08.47
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 27 Jun 2024 02:08:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of quic_asalama@quicinc.com designates 205.220.168.131 as permitted sender) client-ip=205.220.168.131;
+        Thu, 27 Jun 2024 02:08:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of quic_asalama@quicinc.com designates 205.220.180.131 as permitted sender) client-ip=205.220.180.131;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=MojdnZIf;
-       spf=pass (google.com: domain of quic_asalama@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_asalama@quicinc.com;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=pFHdE9Y8;
+       spf=pass (google.com: domain of quic_asalama@quicinc.com designates 205.220.180.131 as permitted sender) smtp.mailfrom=quic_asalama@quicinc.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 45R0OMKm015158;
-	Thu, 27 Jun 2024 09:07:52 GMT
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 45R1AYe2019664;
+	Thu, 27 Jun 2024 09:08:33 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	SgutWFQ5xizB8FZae9vq8wbziDGllkdv1mj9mgHIz6s=; b=MojdnZIf3drhoKXy
-	8OzzMwK9TczGTIE55vT57qjdP1bQxQyORfPZ2F+QHCN9o3/XSI78RodW/kZapxUL
-	xSm45rKvDSccmiwcC11WYhU2D5/4GsosaIp/cK0oahRxI/khcLJ9qE38DujQUuP5
-	rDwYAl8bEnWMweqmlF6dxRWasptvV8R/lNfEReQ9WuLML7zphgf+CsL3oR6K1sr0
-	3MzCBHW3OCXTVdntbiug6jFp1f828tUy9p6xY5pE3w++I/Li9FfBrFxNkkvzkhRg
-	Y56i2q5W7rJftw5woPTbStYCReDzTRMl/LYuPr1OUV+3rzACS7Gi9yIAIdIHWgc3
-	GADP0A==
+	WYAZCJTlNRD1YH3Teohr6tMxl7+IcOW1+PZf/Vf4C48=; b=pFHdE9Y8ZKviNaX9
+	t5yyH28iNieUxGBGGtjmQDtEi75xFIFey61FDSdMzIoIw59f/vMZtrxID5+hmpN0
+	kYNQF+tB1x2Pui6nzrq5/wLEAzs0LRaLJgx92eAMk/ZCYM5M8LLHJRSjiCs3uoMT
+	Dgz5BY3O/Lb56n6Kjpv7e6bTzo0cfbRZLrZn4KHfDV+abWTe2NZ027+8EVXENomv
+	YxfQxJOlursBTYXDTqZ6+BRA8zVRK86VNVn66jdxkNmbONtTHU543+UY7x01D8Ek
+	mO2WAM3SViqKNZw0rA4BohpbRsYWk7MBpqr9lVqxMFKOuhevgOlOfZ0zKwVsK9ln
+	ttmGyw==
 Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ywqshv1a2-1
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 400f90k2qy-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 27 Jun 2024 09:07:52 +0000 (GMT)
+	Thu, 27 Jun 2024 09:08:33 +0000 (GMT)
 Received: from nalasex01c.na.qualcomm.com (nalasex01c.na.qualcomm.com [10.47.97.35])
-	by NALASPPMTA03.qualcomm.com (8.17.1.19/8.17.1.19) with ESMTPS id 45R97owY005528
+	by NALASPPMTA03.qualcomm.com (8.17.1.19/8.17.1.19) with ESMTPS id 45R98WI0006373
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 27 Jun 2024 09:07:50 GMT
+	Thu, 27 Jun 2024 09:08:32 GMT
 Received: from [10.251.40.202] (10.80.80.8) by nalasex01c.na.qualcomm.com
  (10.47.97.35) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Thu, 27 Jun
- 2024 02:07:45 -0700
-Message-ID: <c42e7684-048f-437d-86ec-17b9ed0ad604@quicinc.com>
-Date: Thu, 27 Jun 2024 11:07:42 +0200
+ 2024 02:08:26 -0700
+Message-ID: <9239d8b8-2b22-47a7-b3c2-0699bab603f3@quicinc.com>
+Date: Thu, 27 Jun 2024 11:08:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 11/12] plugins: fix inject_mem_cb rw masking
+Subject: Re: [PATCH v2 12/12] accel/tcg: Avoid unnecessary call overhead from
+ qemu_plugin_vcpu_mem_cb
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
         <qemu-devel@nongnu.org>
 CC: Peter Maydell <peter.maydell@linaro.org>, <kvm@vger.kernel.org>,
@@ -97,88 +98,73 @@ CC: Peter Maydell <peter.maydell@linaro.org>, <kvm@vger.kernel.org>,
         "Marcelo
  Tosatti" <mtosatti@redhat.com>,
         Mahmoud Mandour <ma.mandourr@gmail.com>,
-        =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+        =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+        Max Chou
+	<max.chou@sifive.com>, Frank Chang <frank.chang@sifive.com>
 References: <20240620152220.2192768-1-alex.bennee@linaro.org>
- <20240620152220.2192768-12-alex.bennee@linaro.org>
+ <20240620152220.2192768-13-alex.bennee@linaro.org>
 Content-Language: en-US
 From: Alwalid Salama <quic_asalama@quicinc.com>
-In-Reply-To: <20240620152220.2192768-12-alex.bennee@linaro.org>
+In-Reply-To: <20240620152220.2192768-13-alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
  nalasex01c.na.qualcomm.com (10.47.97.35)
 X-QCInternal: smtphost
 X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-ORIG-GUID: Tr3qpDV8DfKDFF0NjTBs1M5ySgj49JXq
-X-Proofpoint-GUID: Tr3qpDV8DfKDFF0NjTBs1M5ySgj49JXq
+X-Proofpoint-ORIG-GUID: fkXsrTe-vAZj3ikkYfqToUSMaguTzvi4
+X-Proofpoint-GUID: fkXsrTe-vAZj3ikkYfqToUSMaguTzvi4
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
  definitions=2024-06-27_05,2024-06-25_01,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0 clxscore=1015
- bulkscore=0 phishscore=0 suspectscore=0 lowpriorityscore=0 malwarescore=0
- mlxscore=0 impostorscore=0 mlxlogscore=933 priorityscore=1501 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2406140001
- definitions=main-2406270069
-X-TUID: mP77d31yg0sz
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1011 suspectscore=0
+ spamscore=0 malwarescore=0 mlxlogscore=806 mlxscore=0 adultscore=0
+ impostorscore=0 lowpriorityscore=0 phishscore=0 priorityscore=1501
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2406140001 definitions=main-2406270069
+X-TUID: mYnjbnXLpBgj
 
 Reviewed-by: Alwalid Salama <quic_asalama@qualcomm.com>
 
 On 6/20/2024 5:22 PM, Alex Bennée wrote:
-> From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> From: Max Chou <max.chou@sifive.com>
 > 
-> These are not booleans, but masks.
-> Issue found by Richard Henderson.
+> If there are not any QEMU plugin memory callback functions, checking
+> before calling the qemu_plugin_vcpu_mem_cb function can reduce the
+> function call overhead.
 > 
-> Fixes: f86fd4d8721 ("plugins: distinct types for callbacks")
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> Message-Id: <20240612195147.93121-3-pierrick.bouvier@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Signed-off-by: Max Chou <max.chou@sifive.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Reviewed-by: Frank Chang <frank.chang@sifive.com>
+> Message-Id: <20240613175122.1299212-2-max.chou@sifive.com>
 > ---
->   accel/tcg/plugin-gen.c | 4 ++--
->   plugins/core.c         | 4 ++--
->   2 files changed, 4 insertions(+), 4 deletions(-)
+>   accel/tcg/ldst_common.c.inc | 8 ++++++--
+>   1 file changed, 6 insertions(+), 2 deletions(-)
 > 
-> diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
-> index cc1634e7a6..b6bae32b99 100644
-> --- a/accel/tcg/plugin-gen.c
-> +++ b/accel/tcg/plugin-gen.c
-> @@ -240,13 +240,13 @@ static void inject_mem_cb(struct qemu_plugin_dyn_cb *cb,
->   {
->       switch (cb->type) {
->       case PLUGIN_CB_MEM_REGULAR:
-> -        if (rw && cb->regular.rw) {
-> +        if (rw & cb->regular.rw) {
->               gen_mem_cb(&cb->regular, meminfo, addr);
->           }
->           break;
->       case PLUGIN_CB_INLINE_ADD_U64:
->       case PLUGIN_CB_INLINE_STORE_U64:
-> -        if (rw && cb->inline_insn.rw) {
-> +        if (rw & cb->inline_insn.rw) {
->               inject_cb(cb);
->           }
->           break;
-> diff --git a/plugins/core.c b/plugins/core.c
-> index badede28cf..9d737d8278 100644
-> --- a/plugins/core.c
-> +++ b/plugins/core.c
-> @@ -589,7 +589,7 @@ void qemu_plugin_vcpu_mem_cb(CPUState *cpu, uint64_t vaddr,
+> diff --git a/accel/tcg/ldst_common.c.inc b/accel/tcg/ldst_common.c.inc
+> index c82048e377..87ceb95487 100644
+> --- a/accel/tcg/ldst_common.c.inc
+> +++ b/accel/tcg/ldst_common.c.inc
+> @@ -125,7 +125,9 @@ void helper_st_i128(CPUArchState *env, uint64_t addr, Int128 val, MemOpIdx oi)
 >   
->           switch (cb->type) {
->           case PLUGIN_CB_MEM_REGULAR:
-> -            if (rw && cb->regular.rw) {
-> +            if (rw & cb->regular.rw) {
->                   cb->regular.f.vcpu_mem(cpu->cpu_index,
->                                          make_plugin_meminfo(oi, rw),
->                                          vaddr, cb->regular.userp);
-> @@ -597,7 +597,7 @@ void qemu_plugin_vcpu_mem_cb(CPUState *cpu, uint64_t vaddr,
->               break;
->           case PLUGIN_CB_INLINE_ADD_U64:
->           case PLUGIN_CB_INLINE_STORE_U64:
-> -            if (rw && cb->inline_insn.rw) {
-> +            if (rw & cb->inline_insn.rw) {
->                   exec_inline_op(cb->type, &cb->inline_insn, cpu->cpu_index);
->               }
->               break;
+>   static void plugin_load_cb(CPUArchState *env, abi_ptr addr, MemOpIdx oi)
+>   {
+> -    qemu_plugin_vcpu_mem_cb(env_cpu(env), addr, oi, QEMU_PLUGIN_MEM_R);
+> +    if (cpu_plugin_mem_cbs_enabled(env_cpu(env))) {
+> +        qemu_plugin_vcpu_mem_cb(env_cpu(env), addr, oi, QEMU_PLUGIN_MEM_R);
+> +    }
+>   }
+>   
+>   uint8_t cpu_ldb_mmu(CPUArchState *env, abi_ptr addr, MemOpIdx oi, uintptr_t ra)
+> @@ -188,7 +190,9 @@ Int128 cpu_ld16_mmu(CPUArchState *env, abi_ptr addr,
+>   
+>   static void plugin_store_cb(CPUArchState *env, abi_ptr addr, MemOpIdx oi)
+>   {
+> -    qemu_plugin_vcpu_mem_cb(env_cpu(env), addr, oi, QEMU_PLUGIN_MEM_W);
+> +    if (cpu_plugin_mem_cbs_enabled(env_cpu(env))) {
+> +        qemu_plugin_vcpu_mem_cb(env_cpu(env), addr, oi, QEMU_PLUGIN_MEM_W);
+> +    }
+>   }
+>   
+>   void cpu_stb_mmu(CPUArchState *env, abi_ptr addr, uint8_t val,

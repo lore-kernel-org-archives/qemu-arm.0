@@ -1,139 +1,255 @@
-Received: by 2002:a17:505:2d08:b0:1be7:c013:c773 with SMTP id xy8csp1051799njc;
-        Wed, 26 Jun 2024 11:01:25 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWPZB7qJmFnb7q0YFDX/lpQWOroUxM9sp+D5UjcP927T4ZVMwlU1bfyUI8EsH0vGuMZ20MjfjWLh3lcSErPq53gD0UQpVeT
-X-Google-Smtp-Source: AGHT+IHGMaNogfeQcAux1v87CPnXZFKabzEhIu8gbC2umvnQA8A5GXcYGh9P7l5o6i2jkHq1QyBx
-X-Received: by 2002:a5d:524f:0:b0:366:dee6:a9ea with SMTP id ffacd0b85a97d-3673cca439amr360019f8f.26.1719424885605;
-        Wed, 26 Jun 2024 11:01:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719424885; cv=none;
+Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp147420njb;
+        Thu, 27 Jun 2024 02:06:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH2CNcn1KyuzmspVPdCdbP+XgaZ91CSfZvOJFfPZOwVe581ES48TG0Sw5zyVJmxT7IQj05w
+X-Received: by 2002:a05:6602:2b93:b0:7eb:b93d:4101 with SMTP id ca18e2360f4ac-7f3a4dcbc1fmr1709802239f.9.1719479200293;
+        Thu, 27 Jun 2024 02:06:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719479200; cv=none;
         d=google.com; s=arc-20160816;
-        b=OJO1lwTiBBaAOtqNR6KGiFeiF9LjCQOLzXkBjLtpclJCUKm7mcTbSU1VHFkWTpeBbJ
-         h5SK6oxqHDrOiGt+8aPZr07rD9yxVWE7XRS7ZVGQ9/1917dllEacNsQx1rezEDsk0UB0
-         2FLk7tJ8+OOUY9TANtx+WJhrXGbSuTyTF/ZYlTgb3T5HLW5b1zRTnz7lNyCfvBzEnvyw
-         TNJKwPfChRbIp7XmSL8ykBxVS5Izaq5Xm9oqMf2c7tGwzHtfP6xTBy0OYeHvf3g7Oj/H
-         jHtrWxEwfrZzrrfGkDlVN4cieZLRAyJ1bm0D/gaPSicOTYtqr54GYArrUmOzIWNwfDHC
-         cNmQ==
+        b=IGktfKygfr2Fan5zs8iK+rWQ7QbCpR2mG+T6GtqRGIQ2c46UeBaf/k6xqjkGPbA0sr
+         DETrzR1VXg3QwXoU+pxqVGKXhv5MXzqR9zs8x8GHNKkS+ZxnP43EZt3C0zhX91bnikl/
+         bJuNbsfIBquzPwXKt7Q8Ki827x6oEmtfTEflGhjSlE9PRwJkPesWk3GFcLoo48+3GeRa
+         jmL3niZ9NZ3NF8TbnZe0jeRSNab4Qk6dqmSEMiIQnSKYpXhkLDmyLYX+zcmXeqNZKo0j
+         RkdcrMF24+fmOeLA0K5FLshUrcj82m3eOQrmSH0COqOLMPVjAGGkVEGluRJt50tSZeQZ
+         3Drw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=O2+7XQPvKpruLF2QOSJW+4uTR8US558fgJa4m82x4vk=;
-        fh=OV3aMIo0Vng6dWYx4u1DBX2Lu/+rpQXTbkHiD5P80yw=;
-        b=C4cspA+RP/M/eL2NxKRNwWL1IyvQHTsB24yXm0bl9LCYbbZeJfRStaX1IOnWcUXdRW
-         tnOQ6BqeX4ociA0HJ4aHfIz9eRB/LYEwaCjGcPYU8/J3zdFTQ5mCjyMeX0Dx+PVfTNKY
-         7mEtqVOvmrTJQl1MdVQ62BdpIjrDQYBckQplcCVoq30Ez4KFACoEG646Cr/gApF2AWN3
-         perevKIhPIv2zT+pFzkRizxqr12/ijT8fenSgSCHk/ml78oNmzZLY6fmgsIPM3ylEfcl
-         I/a024zjGIJj8lNZxYCh1UybbvyS+HNgQ3BmlwvR+3h9Ad/qesWOw7G690JijMvovrcm
-         BpSQ==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=g4vvZ/upJfzVZask2zMZl2y6PmzO5N8Z7fGEUkIWy94=;
+        fh=1bA6OPw0XY+G7cjJscSYzSlPifbCChGxOIfW5OstXnU=;
+        b=i/5ncHlJajbQ+PXQpne/xYZo61oD+B8c+dp9C70zmkzTvrH56YFuzozAD5G6T2Dhkf
+         S6oNcEWm4UrFPBZtRHERrFOBl+nSyS1UBWSighSwxe5iE1QNEqMSSHQG9B7hqcALpbcC
+         aJBTKSIwMfId+H5Tp2juqPC+rNAboZ1CZAHuapgkNCzRBUn52bGyYif9oqJ8nekJPlKf
+         7ImiJPsQeUq+HvZSR+gj8dmedmmHZiH4jz5o78yFVhbvIk9EhiuOHTY8/Gj/rTkGENBt
+         02okn2eyj+6zZpCKMERt64dWjrR2P5YvwdtdDngSQ87c3hVZc9b1eDySmPHahr+h5WGh
+         INTA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3666f5ec529si7003719f8f.184.2024.06.26.11.01.25
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 26 Jun 2024 11:01:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=pM6zsNiT;
+       spf=pass (google.com: domain of quic_asalama@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_asalama@quicinc.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Return-Path: <quic_asalama@quicinc.com>
+Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com. [205.220.168.131])
+        by mx.google.com with ESMTPS id 8926c6da1cb9f-4bb6659fbc3si419114173.94.2024.06.27.02.06.39
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 27 Jun 2024 02:06:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of quic_asalama@quicinc.com designates 205.220.168.131 as permitted sender) client-ip=205.220.168.131;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4W8TxB0ZSdz6K9LZ;
-	Thu, 27 Jun 2024 01:59:42 +0800 (CST)
-Received: from lhrpeml500003.china.huawei.com (unknown [7.191.162.67])
-	by mail.maildlp.com (Postfix) with ESMTPS id C5C4E140A87;
-	Thu, 27 Jun 2024 02:01:24 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500003.china.huawei.com (7.191.162.67) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 26 Jun 2024 19:01:24 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
- Wed, 26 Jun 2024 19:01:24 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Vishnu Pajjuri <vishnu@amperemail.onmicrosoft.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>
-CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
-	<will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
-	<pbonzini@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
-	"rafael@kernel.org" <rafael@kernel.org>, "borntraeger@linux.ibm.com"
-	<borntraeger@linux.ibm.com>, "alex.bennee@linaro.org"
-	<alex.bennee@linaro.org>, "npiggin@gmail.com" <npiggin@gmail.com>,
-	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, "linux@armlinux.org.uk"
-	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
-	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
-	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
-	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
-	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
-	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian
-	<zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
-	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com"
-	<jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>,
-	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, "shahuang@redhat.com"
-	<shahuang@redhat.com>, "zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm
-	<linuxarm@huawei.com>
-Subject: RE: [PATCH RFC V3 00/29] Support of Virtual CPU Hotplug for ARMv8
- Arch
-Thread-Topic: [PATCH RFC V3 00/29] Support of Virtual CPU Hotplug for ARMv8
- Arch
-Thread-Index: AQHaveq2F6TAeAWelEWGVYAetyN5RLHZ0LIAgACXIUA=
-Date: Wed, 26 Jun 2024 18:01:24 +0000
-Message-ID: <e3668ef162b5428ba2422bb7607d20b4@huawei.com>
-References: <20240613233639.202896-1-salil.mehta@huawei.com>
- <3d4692d4-b802-4367-87f8-411a8a7b6b3f@amperemail.onmicrosoft.com>
-In-Reply-To: <3d4692d4-b802-4367-87f8-411a8a7b6b3f@amperemail.onmicrosoft.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.195.33.18]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=pM6zsNiT;
+       spf=pass (google.com: domain of quic_asalama@quicinc.com designates 205.220.168.131 as permitted sender) smtp.mailfrom=quic_asalama@quicinc.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=quicinc.com
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 45R25NO7025879;
+	Thu, 27 Jun 2024 09:06:07 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	g4vvZ/upJfzVZask2zMZl2y6PmzO5N8Z7fGEUkIWy94=; b=pM6zsNiTSlozFRtJ
+	OGByLRAV9AqwTXjmxwmcN9qHXqhoxV44BdqHigMq9iRiPOvCy2hn54szq0+t2pdj
+	erdND3ZJMrWZWeOxWJpz+jaPm+tZL56NtIyG9dcOUHFeZDEGBLbRVbQLziNLYctf
+	SYg/qsZ8xLgptTdQSssSKVskfKflxkSrWk/F2YLUZ2RGOTrQRO9Ce/1AXpk/ABUl
+	r10canhZRpUSic1srIdq5Hhhp6la6HUbXMNvlVc8RkOLLxhFWFyrxnaTqybInTIC
+	PNVq1QIXzWPSfNuF12tpK5QNQxPbiwd5+oEguMUCs1vfJwTU8mzTRjgTTfcm1fU3
+	qpbI/g==
+Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3ywnjs3ddc-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 27 Jun 2024 09:06:07 +0000 (GMT)
+Received: from nalasex01c.na.qualcomm.com (nalasex01c.na.qualcomm.com [10.47.97.35])
+	by NALASPPMTA02.qualcomm.com (8.17.1.19/8.17.1.19) with ESMTPS id 45R9663a012972
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 27 Jun 2024 09:06:06 GMT
+Received: from [10.251.40.202] (10.80.80.8) by nalasex01c.na.qualcomm.com
+ (10.47.97.35) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Thu, 27 Jun
+ 2024 02:06:00 -0700
+Message-ID: <db8cee6c-319f-416d-bf72-072d0f52bab6@quicinc.com>
+Date: Thu, 27 Jun 2024 11:05:54 +0200
 MIME-Version: 1.0
-X-TUID: myJkHwtEz7fe
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 08/12] plugins: add time control API
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        <qemu-devel@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, <kvm@vger.kernel.org>,
+        <qemu-ppc@nongnu.org>,
+        Christian Borntraeger <borntraeger@linux.ibm.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Jamie Iles <quic_jiles@quicinc.com>,
+        David Hildenbrand <david@redhat.com>,
+        Pierrick Bouvier
+	<pierrick.bouvier@linaro.org>,
+        Mark Burton <mburton@qti.qualcomm.com>,
+        "Daniel Henrique Barboza" <danielhb413@gmail.com>,
+        <qemu-arm@nongnu.org>, "Laurent Vivier" <lvivier@redhat.com>,
+        Alexander Graf <agraf@csgraf.de>,
+        "Ilya Leoshkevich" <iii@linux.ibm.com>,
+        Richard Henderson
+	<richard.henderson@linaro.org>,
+        Marco Liebel <mliebel@qti.qualcomm.com>,
+        Halil Pasic <pasic@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+        <qemu-s390x@nongnu.org>, Cameron Esfahani <dirty@apple.com>,
+        Alexandre Iooss
+	<erdnaxe@crans.org>,
+        Nicholas Piggin <npiggin@gmail.com>,
+        Roman Bolshakov
+	<rbolshakov@ddn.com>,
+        "Dr. David Alan Gilbert" <dave@treblig.org>,
+        "Marcelo
+ Tosatti" <mtosatti@redhat.com>,
+        Mahmoud Mandour <ma.mandourr@gmail.com>,
+        =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+References: <20240620152220.2192768-1-alex.bennee@linaro.org>
+ <20240620152220.2192768-9-alex.bennee@linaro.org>
+Content-Language: en-US
+From: Alwalid Salama <quic_asalama@quicinc.com>
+In-Reply-To: <20240620152220.2192768-9-alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nalasex01c.na.qualcomm.com (10.47.97.35)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
+X-Proofpoint-GUID: 5Qkt0HKQLvqvOis08rbwoyG0n0a4iuZl
+X-Proofpoint-ORIG-GUID: 5Qkt0HKQLvqvOis08rbwoyG0n0a4iuZl
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-06-27_05,2024-06-25_01,2024-05-17_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
+ clxscore=1011 mlxscore=0 suspectscore=0 adultscore=0 mlxlogscore=999
+ impostorscore=0 bulkscore=0 malwarescore=0 spamscore=0 phishscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2406140001 definitions=main-2406270069
+X-TUID: tN6TnLA37Jd+
 
-SGkgVmlzaG51LA0KIA0KPiBGcm9tOiBWaXNobnUgUGFqanVyaSA8dmlzaG51QGFtcGVyZW1haWwu
-b25taWNyb3NvZnQuY29tPiANCj4gU2VudDogV2VkbmVzZGF5LCBKdW5lIDI2LCAyMDI0IDEwOjUz
-IEFNDQo+IFRvOiBTYWxpbCBNZWh0YSA8c2FsaWwubWVodGFAaHVhd2VpLmNvbT47IHFlbXUtZGV2
-ZWxAbm9uZ251Lm9yZzsgcWVtdS1hcm1Abm9uZ251Lm9yZzsgbXN0QHJlZGhhdC5jb20NCj4gDQo+
-IEhpIFNhbGlsLA0KPiBPbiAxNC0wNi0yMDI0IDA1OjA2LCBTYWxpbCBNZWh0YSB3cm90ZToNCj4g
-UFJPTE9HVUUNCj4gPT09PT09PT0NCj4gDQo+IFRvIGFzc2lzdCBpbiByZXZpZXcgYW5kIHNldCB0
-aGUgcmlnaHQgZXhwZWN0YXRpb25zIGZyb20gdGhpcyBSRkMsIHBsZWFzZSBmaXJzdA0KPiByZWFk
-IHRoZSBzZWN0aW9ucyAqQVBQRU5ERUQgQVQgVEhFIEVORCogb2YgdGhpcyBjb3ZlciBsZXR0ZXI6
-DQo+IA0KPiAxLiBJbXBvcnRhbnQgKkRJU0NMQUlNRVIqIFtTZWN0aW9uIChYKV0NCj4gMi4gV29y
-ayBwcmVzZW50ZWQgYXQgS1ZNRm9ydW0gQ29uZmVyZW5jZSAoc2xpZGVzIGF2YWlsYWJsZSkgW1Nl
-Y3Rpb24gKFYpRl0NCj4gMy4gT3JnYW5pemF0aW9uIG9mIHBhdGNoZXMgW1NlY3Rpb24gKFhJKV0N
-Cj4gNC4gUmVmZXJlbmNlcyBbU2VjdGlvbiAoWElJKV0NCj4gNS4gRGV0YWlsZWQgVE9ETyBsaXN0
-IG9mIGxlZnRvdmVyIHdvcmsgb3Igd29yay1pbi1wcm9ncmVzcyBbU2VjdGlvbiAoSVgpXQ0KPiAN
-Cj4gVGhlcmUgaGFzIGJlZW4gaW50ZXJlc3Qgc2hvd24gYnkgb3RoZXIgb3JnYW5pemF0aW9ucyBp
-biBhZGFwdGluZyB0aGlzIHNlcmllcw0KPiBmb3IgdGhlaXIgYXJjaGl0ZWN0dXJlLiBIZW5jZSwg
-UkZDIFYyIFsyMV0gaGFzIGJlZW4gc3BsaXQgaW50byBhcmNoaXRlY3R1cmUNCj4gKmFnbm9zdGlj
-KiBbMjJdIGFuZCAqc3BlY2lmaWMqIHBhdGNoIHNldHMuDQo+IA0KPiBUaGlzIGlzIGFuIEFSTSBh
-cmNoaXRlY3R1cmUtc3BlY2lmaWMgcGF0Y2ggc2V0IGNhcnZlZCBvdXQgb2YgUkZDIFYyLiBQbGVh
-c2UNCj4gY2hlY2sgc2VjdGlvbiAoWEkpQiBmb3IgZGV0YWlscyBvZiBhcmNoaXRlY3R1cmUgYWdu
-b3N0aWMgcGF0Y2hlcy4NCj4gDQo+IFNFQ1RJT05TIFtJIC0gWElJSV0gYXJlIGFzIGZvbGxvd3M6
-DQo+IA0KPiAoSSkgS2V5IENoYW5nZXMgW2RldGFpbHMgaW4gbGFzdCBzZWN0aW9uIChYSVYpXQ0K
-PiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09DQo+IA0KPiBS
-RkMgVjIgLT4gUkZDIFYzDQo+IA0KPiAxLiBTcGxpdCBpbnRvIEFyY2hpdGVjdHVyZSAqYWdub3N0
-aWMqIChWMTMpIFsyMl0gYW5kICpzcGVjaWZpYyogKFJGQyBWMykgcGF0Y2ggc2V0cy4NCj4gMi4g
-QWRkcmVzc2VkIGNvbW1lbnRzIGJ5IEdhdmluIFNoYW4gKFJlZEhhdCksIFNoYW9xaW4gSHVhbmcg
-KFJlZEhhdCksIFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOpIChMaW5hcm8pLA0KPiA+IEpvbmF0aGFu
-IENhbWVyb24gKEh1YXdlaSksIFpoYW8gTGl1IChJbnRlbCkuDQo+IEkgdHJpZWQgZm9sbG93aW5n
-IHRlc3QgY2FzZXMgd2l0aCByZmMtdjMgYW5kIGtlcm5lbCBwYXRjaGVzIHYxMCwgYW5kIGl0J3Mg
-bG9va2luZyBnb29kIG9uIEFtcGVyZSBwbGF0Zm9ybXMuDQo+IOKAoiBSZWd1bGFyIGhvdHBsdWcg
-YW5kIGhvdCB1bnBsdWcgdGVzdHMNCj4g4oCiIExpdmUgbWlncmF0aW9uIHdpdGggYW5kIHdpdGgg
-b3V0IGhvdC1wbHVnZ2luZyB2Y3B1cyB0ZXN0cw0KPiBQbGVhc2UgZmVlbCBmcmVlIHRvIGFkZCwN
-Cj4gVGVzdGVkLWJ5OiBWaXNobnUgUGFqanVyaSBtYWlsdG86dmlzaG51QG9zLmFtcGVyZWNvbXB1
-dGluZy5jb20NCg0KDQpNYW55IHRoYW5rcyBmb3IgdGVzdGluZyBhbmQgY29uZmlybWluZyB0aGUg
-ZnVuY3Rpb25hbGl0eS4gUmVhbGx5IGFwcHJlY2lhdGUgdGhpcyENCg0KQmVzdA0KU2FsaWwuDQoN
-Cg0KPiANCj4gUmVnYXJkcywNCj4gLVZpc2hudS4NCj4gDQo+IFJGQyBWMSAtPiBSRkMgVjINCj4g
-DQo=
+Reviewed-by: Alwalid Salama <quic_asalama@qualcomm.com>
+
+On 6/20/2024 5:22 PM, Alex Bennée wrote:
+> Expose the ability to control time through the plugin API. Only one
+> plugin can control time so it has to request control when loaded.
+> There are probably more corner cases to catch here.
+> 
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> [AJB: tweaked user-mode handling, merged QEMU_PLUGIN_API fix]
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Message-Id: <20240530220610.1245424-6-pierrick.bouvier@linaro.org>
+> 
+> ---
+> plugins/next
+>    - make qemu_plugin_update_ns a NOP in user-mode
+> v2
+>    - remove From: header
+>    - merged in plugins: missing QEMU_PLUGIN_API for time control
+> ---
+>   include/qemu/qemu-plugin.h   | 27 +++++++++++++++++++++++++++
+>   plugins/api.c                | 35 +++++++++++++++++++++++++++++++++++
+>   plugins/qemu-plugins.symbols |  2 ++
+>   3 files changed, 64 insertions(+)
+> 
+> diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+> index 95703d8fec..c71c705b69 100644
+> --- a/include/qemu/qemu-plugin.h
+> +++ b/include/qemu/qemu-plugin.h
+> @@ -661,6 +661,33 @@ void qemu_plugin_register_vcpu_mem_inline_per_vcpu(
+>       qemu_plugin_u64 entry,
+>       uint64_t imm);
+>   
+> +/**
+> + * qemu_plugin_request_time_control() - request the ability to control time
+> + *
+> + * This grants the plugin the ability to control system time. Only one
+> + * plugin can control time so if multiple plugins request the ability
+> + * all but the first will fail.
+> + *
+> + * Returns an opaque handle or NULL if fails
+> + */
+> +QEMU_PLUGIN_API
+> +const void *qemu_plugin_request_time_control(void);
+> +
+> +/**
+> + * qemu_plugin_update_ns() - update system emulation time
+> + * @handle: opaque handle returned by qemu_plugin_request_time_control()
+> + * @time: time in nanoseconds
+> + *
+> + * This allows an appropriately authorised plugin (i.e. holding the
+> + * time control handle) to move system time forward to @time. For
+> + * user-mode emulation the time is not changed by this as all reported
+> + * time comes from the host kernel.
+> + *
+> + * Start time is 0.
+> + */
+> +QEMU_PLUGIN_API
+> +void qemu_plugin_update_ns(const void *handle, int64_t time);
+> +
+>   typedef void
+>   (*qemu_plugin_vcpu_syscall_cb_t)(qemu_plugin_id_t id, unsigned int vcpu_index,
+>                                    int64_t num, uint64_t a1, uint64_t a2,
+> diff --git a/plugins/api.c b/plugins/api.c
+> index 6bdb26bbe3..4431a0ea7e 100644
+> --- a/plugins/api.c
+> +++ b/plugins/api.c
+> @@ -39,6 +39,7 @@
+>   #include "qemu/main-loop.h"
+>   #include "qemu/plugin.h"
+>   #include "qemu/log.h"
+> +#include "qemu/timer.h"
+>   #include "tcg/tcg.h"
+>   #include "exec/exec-all.h"
+>   #include "exec/gdbstub.h"
+> @@ -583,3 +584,37 @@ uint64_t qemu_plugin_u64_sum(qemu_plugin_u64 entry)
+>       }
+>       return total;
+>   }
+> +
+> +/*
+> + * Time control
+> + */
+> +static bool has_control;
+> +
+> +const void *qemu_plugin_request_time_control(void)
+> +{
+> +    if (!has_control) {
+> +        has_control = true;
+> +        return &has_control;
+> +    }
+> +    return NULL;
+> +}
+> +
+> +#ifdef CONFIG_SOFTMMU
+> +static void advance_virtual_time__async(CPUState *cpu, run_on_cpu_data data)
+> +{
+> +    int64_t new_time = data.host_ulong;
+> +    qemu_clock_advance_virtual_time(new_time);
+> +}
+> +#endif
+> +
+> +void qemu_plugin_update_ns(const void *handle, int64_t new_time)
+> +{
+> +#ifdef CONFIG_SOFTMMU
+> +    if (handle == &has_control) {
+> +        /* Need to execute out of cpu_exec, so bql can be locked. */
+> +        async_run_on_cpu(current_cpu,
+> +                         advance_virtual_time__async,
+> +                         RUN_ON_CPU_HOST_ULONG(new_time));
+> +    }
+> +#endif
+> +}
+> diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
+> index aa0a77a319..ca773d8d9f 100644
+> --- a/plugins/qemu-plugins.symbols
+> +++ b/plugins/qemu-plugins.symbols
+> @@ -38,6 +38,7 @@
+>     qemu_plugin_register_vcpu_tb_exec_cond_cb;
+>     qemu_plugin_register_vcpu_tb_exec_inline_per_vcpu;
+>     qemu_plugin_register_vcpu_tb_trans_cb;
+> +  qemu_plugin_request_time_control;
+>     qemu_plugin_reset;
+>     qemu_plugin_scoreboard_free;
+>     qemu_plugin_scoreboard_find;
+> @@ -51,5 +52,6 @@
+>     qemu_plugin_u64_set;
+>     qemu_plugin_u64_sum;
+>     qemu_plugin_uninstall;
+> +  qemu_plugin_update_ns;
+>     qemu_plugin_vcpu_for_each;
+>   };

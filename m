@@ -1,313 +1,179 @@
-Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp248527njb;
-        Thu, 27 Jun 2024 06:58:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXgglCHak6tdjMO06pFgC7SdiSg+461jSOsUl+t7I5F3KCOQ18mvuTZJd67Ee2RWNtPTZvBD2SQVTX7aTTv75ZLO80BYYfT
-X-Google-Smtp-Source: AGHT+IEQtymfbHxeVKbyhFP4lsxLsD7TIhDyqemQ/2hjBkBVi3j7xevs5PMaIkjTyd5VGQEJ/J1i
-X-Received: by 2002:a05:6808:1a0b:b0:3d5:2ab4:8dc2 with SMTP id 5614622812f47-3d5459de8dfmr17134075b6e.26.1719496716559;
-        Thu, 27 Jun 2024 06:58:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719496716; cv=none;
+Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp309323njb;
+        Thu, 27 Jun 2024 09:23:16 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXh0xWtmw6B+V0eO5SFQBImVjht0R1vzBXmDNNVsC5lKbCE9slPxYjB/f9K0HH0vgO49MpuPr37wYWlGbNgoMQdSwS3OnB+
+X-Google-Smtp-Source: AGHT+IHmcfRnmk+QAhnrdgnXz888CZeaUu6Px5dFjkchiBnmxEke304CSRZvGc24tY7ynuuGkgd6
+X-Received: by 2002:a25:b07:0:b0:e02:bc69:5665 with SMTP id 3f1490d57ef6-e0345571cb0mr2603171276.60.1719505396079;
+        Thu, 27 Jun 2024 09:23:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719505396; cv=none;
         d=google.com; s=arc-20160816;
-        b=z26CSFbPwa2ygWLORVvLS2mSPPBw7DrtgYTOYam0qBYiMKHo8IfHKHlkAXAH5eEACc
-         4giKzo/+33zG3mmkWGw/kWu1vwKqAqCgxYNleGhRaDMgX85f7zTn2BhbeCD+EUIiO4KX
-         8CYp9uvnAYvO5lMp10KuiEBhIvcdROGLQRP7ReqbMMJcm899W5MQRfflyFP8gfgYlQJi
-         f0/M4w2zX0MwGsms5g7vZA+k/G3BRxg8Znan/d8U7BQk7rx5w9od6OXXdXaOmK7HFZZc
-         KblHDj3WynxfG5vqf9wb76fgyMjvN/bIMlp8wyhMN1vpZGWUKLM59q7Vg4GBjwlTKnQj
-         8TRQ==
+        b=N69Q0Y/Lhd5/P6BrDHYJbTXHQ3SVwuYmGuJFdlHpSHnrSIbQHHVzUaFRwEfHmGufqd
+         RsN7bF76/u2/4cSKEZLhO/RGx8oH5nRBgkoKtOnujzNXA6oivFanHReDCi7FV+E7yehW
+         ijb0H/tTSnR5i73ThDcXB3rkSJQ0o4RduSgX+tWaodlZDT2zN6u6rHfIlJKMC1EFAlBp
+         qwzQHkadjgMYi+aljJ2+BvrxrKHsOBIN6Ag92EGOw5ZpS70nSINF4KoK/Fwbm9UUXNbX
+         dyoPUwH2iUIrE9pXOoP6zr/sdLObZxyUsP3blvMsI0tXlksFMDF0mVA2uopRd5vHdJFw
+         srCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Dl99MVknD9w18cJTVaORJY5ZJ9vPE4cAgTvZIaGWhTM=;
-        fh=dNoBnW7JZ/7nrXA71OSULhVLfc5p+AN8JugkUum7Ibk=;
-        b=NZ99xzLY9EjjokfmJE2MqJ+1qeLasawwyrxSPUKLDWvpFGOIiWStcl2fXJmxmttQH3
-         1yOqQnNWC2X9pvCFxuoOQWagYsYPZOUdBODohk84J902rpVo25qew6wngLIH1ZlOeT3P
-         LlI3Zvgz3ZHZ38xZB/tx7CqSwyneAO2aEn7OnlQOo6Htp2rg/Ol7/p4tdSPP432y0ypg
-         7pkZknF4iiPNeo+JZep2Mf7CaCKvi1GaDVthvUDNINbbQ931ApqqDZ3ef34U5AvjkZWU
-         LdbAgDML4vYL6TO4/tvsMawt+Oe/Q2Zxh4++W+VXhdCzOV6JRCphkE1QsofV2sbeovRk
-         s8Xw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=4gNEJ7+L3PN7xtgjGNFEWvLx/YiUkhV8z3R5GUXOwXM=;
+        fh=DqIIoYGV4y15eQNFznI154lpGOvtB0zeKEnnOP//DR8=;
+        b=VyQ4ysI7/WqRuOtDkDm++9/Bw95jijQ+O/46TrkXuj2rNdQtELI5VpXWlQal2QuTW4
+         GmR5MprrwnAkwTaKcYJ9oJGpYFnjdTYRza8kZ/JZBA6e5QpmgTPPCw7UQheppVIMy0FC
+         5CWLwvvtcKxRuNCQm8EwL5978g97c/Wixd5BcUsbJklQKYqt9TTUUfBBihhVhM3hUse1
+         56rZus2jnq/XL7+Y7wcf1zzeU33IAFo2r3KrTza7++A9BsrfpOJpmh1FCIu9vLvX8p9M
+         Wv2a7pxpeSLpvDncsHBmxFnIBOTwPvCkhc+rgat6MnGDNJeQVxI89Wq0JiSXqYooI4bX
+         59JQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LdhFOOpd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=SnbK82K2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4464221bc2asi13152221cf.698.2024.06.27.06.58.36
+        by mx.google.com with ESMTPS id d75a77b69052e-446439e5c48si13363281cf.693.2024.06.27.09.23.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Jun 2024 06:58:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Jun 2024 09:23:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LdhFOOpd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=SnbK82K2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sMpdM-00024T-Pv; Thu, 27 Jun 2024 09:57:56 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sMrti-0003Ry-6G; Thu, 27 Jun 2024 12:22:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sMpdL-00023e-LN
- for qemu-devel@nongnu.org; Thu, 27 Jun 2024 09:57:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sMpdJ-0007gA-L9
- for qemu-devel@nongnu.org; Thu, 27 Jun 2024 09:57:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1719496672;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Dl99MVknD9w18cJTVaORJY5ZJ9vPE4cAgTvZIaGWhTM=;
- b=LdhFOOpdcuyKq3aQi20OxqX8SXrrr3gJe4p5urKop4s3IqPja+ExNU4aNHmeOsbpRLwyfp
- 5qFYoYVL8zsPGUJymx3S9kxJ5M8N62M6NZTUaQh85n4I5LTqDs6x1in6eGijUOns8e049X
- seP3gcU3v6ndj6Tm36EQbU0qZpws3x0=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-440-iIz0_iMSOYas3s3rjbP0GQ-1; Thu, 27 Jun 2024 09:57:48 -0400
-X-MC-Unique: iIz0_iMSOYas3s3rjbP0GQ-1
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-79d5bdc12c7so137615785a.1
- for <qemu-devel@nongnu.org>; Thu, 27 Jun 2024 06:57:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sMrtY-0003PY-3T
+ for qemu-arm@nongnu.org; Thu, 27 Jun 2024 12:22:48 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sMrtU-00074p-S0
+ for qemu-arm@nongnu.org; Thu, 27 Jun 2024 12:22:47 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-36742cc9c12so715698f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 27 Jun 2024 09:22:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1719505363; x=1720110163; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=4gNEJ7+L3PN7xtgjGNFEWvLx/YiUkhV8z3R5GUXOwXM=;
+ b=SnbK82K2aU4YjlPKHZpoJogl7szfENiVUa3yzQe+gkB5qnvfbRMj1wDKHGFQmVPh63
+ BIUeBLJwvdq4tIva0Ry8lziaZhP3iiQxjuikRRm9qTsHZrTbu7t2LBfsWIFzCIi7uiGW
+ /4Ubcp9iiwhZCzxF21OyBd05fe33RVX1MOmDQqyp6pZJ5cavHYhhgEuoR5d0dQ9CdC4t
+ 3EugSBi+p3D6gTsCNnfrb4N1x2JdPjfrFs4mmUhW1pBIrEzRqqo/Sq23InRkjN9Ojuwh
+ v5G5yDOOTbeOKjunTn4CHJyphBdfxyIgpNQSu0RBljU/U4RtDtMUVVwP3t7S7YTYFl+8
+ Klmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719496668; x=1720101468;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1719505363; x=1720110163;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Dl99MVknD9w18cJTVaORJY5ZJ9vPE4cAgTvZIaGWhTM=;
- b=AJH1qsUE+xoxfx2nB9Lbx6CAPqwoBTgTzuIwY9ypKlQgmh3BCjgjWJ99GltU+BEbnL
- gOltz83vF7AkUWXd1h5wYIh+mP/yqeEIe1rpS/MlfPAMosLgVae9BJQ+3gj7VuYTLDyb
- H6xmiL22fkAwI/Bihc3LulcbZubc8UssKehgwyBChLoUZtjYFoZfIheD86raV04Se6GE
- qpu7i/xnTMw4XwgbBaxk8DqfpD1xwou2TsibIN+Xja62eeVHyRoNNCr/t1VXPVd638Pp
- Yt07eZ+dC76Pl6p1V/ePjzRWYpQrpw3zsRdtLw3Jx2BqpCHhD4VAPZKbjeK9avLERfWK
- OReg==
+ bh=4gNEJ7+L3PN7xtgjGNFEWvLx/YiUkhV8z3R5GUXOwXM=;
+ b=ru54QU2SiV+fRaXTo328zNrwSF0zDOYVK+A+0dv62OPmjs2baXgWGnvbtHEoSrhbhS
+ 8nrZzD+T7LD/rnmfEiXJLQYKhVrFEMwJVCAtV1uJzHOXpWeKX7V1h9dKWLzVbjCHjQWO
+ gw3CBlZB4zr72Gi41BJGfh3if2SyIl/vbBud49H46ldBrYPMuzgf0iCNa/CPllf+BUZR
+ kK9s4j6Fvcl8ts3lCVCcQMQtWRQzowh9+bTmg7JiDG95RBi80SK3wUpg7qdBPDp3wVPh
+ sFLEExT31naPWC7Jd772gjDnjHkqxByuGdZudY4Q532kg37dlxBi8uPqMhZxWdW8qpA0
+ ljTQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW0w0G3UOs7+W9w0OXRZMVjKpJNX2/ecrGdcp8rNMt51uJiYwfUkf8KIGcuL8MdoHJw4WgI4gtaNbUXcxqugETEsTj2FXU=
-X-Gm-Message-State: AOJu0YzqhlYwHyJvZbcwbsBUI7Gc6khgqr5sPcGIrgqUBkgtsDNpxdTS
- QuOhZ+R5qPVKBHa2/MwknHAmlbSeKetT16YhIzHFeD16PtqVIKLmAHzLUYld1D8qSBPE++64ZN/
- FjHJnmkHiG0FFxrGynj/ik9i+1uQRG2RhOUVMHbWydp/fHmM56dRV
-X-Received: by 2002:a05:620a:4442:b0:79b:f10e:118b with SMTP id
- af79cd13be357-79bf10e13efmr1378739985a.0.1719496667921; 
- Thu, 27 Jun 2024 06:57:47 -0700 (PDT)
-X-Received: by 2002:a05:620a:4442:b0:79b:f10e:118b with SMTP id
- af79cd13be357-79bf10e13efmr1378738085a.0.1719496667602; 
- Thu, 27 Jun 2024 06:57:47 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- af79cd13be357-79d5c7af05asm57295985a.14.2024.06.27.06.57.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Jun 2024 06:57:47 -0700 (PDT)
-Message-ID: <8b0b5ba0-ce28-4756-9792-761a4aabdc6d@redhat.com>
-Date: Thu, 27 Jun 2024 15:57:43 +0200
+ AJvYcCVIDt9JtXK43KWZIw9irBwTtxc4ZTRfnAtnXg62tmlyu0zdCxYqGaYrBZcYj+1G79FkBO8tTWYLjXc3BtK2U2GTyAUl
+X-Gm-Message-State: AOJu0Yz6epJW6cBCWEk8QkEivUsX9E5ZDYsWlonTagiHEF0dzdChNLP9
+ +gMX9X/KILsru1pfKb5wfMHLp4IjKWgXVz/DrNA0ZV0PyUYwEhWagYM1A99spXo=
+X-Received: by 2002:a5d:5f54:0:b0:367:47e6:c7ce with SMTP id
+ ffacd0b85a97d-36747e6cab8mr2190647f8f.6.1719505362779; 
+ Thu, 27 Jun 2024 09:22:42 -0700 (PDT)
+Received: from localhost.localdomain (33.red-95-127-46.staticip.rima-tde.net.
+ [95.127.46.33]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3674357fdcasm2360704f8f.36.2024.06.27.09.22.36
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 27 Jun 2024 09:22:42 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ Tyrone Ting <kfting@nuvoton.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Bin Meng <bmeng.cn@gmail.com>, Hao Wu <wuhaotsh@google.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+ devel@lists.libvirt.org, Luc Michel <luc.michel@amd.com>
+Subject: [PATCH v3 00/17] hw/sd/sdcard: Accumulation of cleanups and fixes
+Date: Thu, 27 Jun 2024 18:22:15 +0200
+Message-ID: <20240627162232.80428-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/7] virtio-iommu : Retrieve page size mask on
- virtio_iommu_set_iommu_device()
-Content-Language: en-US
-To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "mst@redhat.com"
- <mst@redhat.com>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "clg@redhat.com" <clg@redhat.com>, "yanghliu@redhat.com"
- <yanghliu@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>
-References: <20240626082727.1278530-1-eric.auger@redhat.com>
- <20240626082727.1278530-6-eric.auger@redhat.com>
- <SJ0PR11MB67447467D606CD472F155D4492D72@SJ0PR11MB6744.namprd11.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <SJ0PR11MB67447467D606CD472F155D4492D72@SJ0PR11MB6744.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.212,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SQ1LuZkpuD34
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MCWw6IhAhQ9v
 
-Hi Zhenhong,
+Since v2:
+- Tested-by from Cédric recorded
+- more patches added :S
+Since v1:
+- various patches merged, few more added
 
-On 6/27/24 13:32, Duan, Zhenzhong wrote:
-> Hi Eric,
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Subject: [PATCH 5/7] virtio-iommu : Retrieve page size mask on
->> virtio_iommu_set_iommu_device()
->>
->> Retrieve the Host IOMMU Device page size mask when this latter is set.
->> This allows to get the information much sooner than when relying on
->> IOMMU MR set_page_size_mask() call, whcih happens when the IOMMU
->> MR
->> gets enabled. We introduce check_page_size_mask() helper whose code
->> is inherited from current virtio_iommu_set_page_size_mask()
->> implementation. This callback will be removed in a subsequent patch.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->> hw/virtio/virtio-iommu.c | 55
->> ++++++++++++++++++++++++++++++++++++++--
->> hw/virtio/trace-events   |  1 +
->> 2 files changed, 54 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
->> index b8f75d2b1a..631589735a 100644
->> --- a/hw/virtio/virtio-iommu.c
->> +++ b/hw/virtio/virtio-iommu.c
->> @@ -598,9 +598,39 @@ out:
->>     return ret;
->> }
->>
->> +static bool check_page_size_mask(VirtIOIOMMU *viommu, uint64_t
->> new_mask,
->> +                                 Error **errp)
->> +{
->> +    uint64_t cur_mask = viommu->config.page_size_mask;
->> +
->> +    if ((cur_mask & new_mask) == 0) {
->> +        error_setg(errp, "virtio-iommu reports a page size mask 0x%"PRIx64
->> +                   " incompatible with currently supported mask 0x%"PRIx64,
->> +                   new_mask, cur_mask);
->> +        return false;
->> +    }
->> +    /*
->> +     * Once the granule is frozen we can't change the mask anymore. If by
->> +     * chance the hotplugged device supports the same granule, we can still
->> +     * accept it.
->> +     */
->> +    if (viommu->granule_frozen) {
->> +        int cur_granule = ctz64(cur_mask);
->> +
->> +        if (!(BIT_ULL(cur_granule) & new_mask)) {
->> +            error_setg(errp,
->> +                       "virtio-iommu does not support frozen granule 0x%llx",
->> +                       BIT_ULL(cur_granule));
->> +            return false;
->> +        }
->> +    }
->> +    return true;
->> +}
->> +
->> static bool virtio_iommu_set_iommu_device(PCIBus *bus, void *opaque,
->> int devfn,
->>                                           HostIOMMUDevice *hiod, Error **errp)
->> {
->> +    ERRP_GUARD();
->>     VirtIOIOMMU *viommu = opaque;
->>     HostIOMMUDeviceClass *hiodc =
->> HOST_IOMMU_DEVICE_GET_CLASS(hiod);
->>     struct hiod_key *new_key;
->> @@ -623,8 +653,26 @@ static bool
->> virtio_iommu_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
->>                                                 hiod->aliased_devfn,
->>                                                 host_iova_ranges, errp);
->>         if (ret) {
->> -            g_list_free_full(host_iova_ranges, g_free);
->> -            return false;
->> +            goto error;
->> +        }
->> +    }
->> +    if (hiodc->get_page_size_mask) {
->> +        uint64_t new_mask = hiodc->get_page_size_mask(hiod);
->> +
->> +        if (check_page_size_mask(viommu, new_mask, errp)) {
->> +            /*
->> +             * The default mask depends on the "granule" property. For example,
->> +             * with 4k granule, it is -(4 * KiB). When an assigned device has
->> +             * page size restrictions due to the hardware IOMMU configuration,
->> +             * apply this restriction to the mask.
->> +             */
->> +            trace_virtio_iommu_update_page_size_mask(hiod->name,
->> +                                                     viommu->config.page_size_mask,
->> +                                                     new_mask);
->> +            viommu->config.page_size_mask &= new_mask;
-> This is a bit different from original logic, it may update page_size_mask after frozen.
-> Will that make issue?
-You're fully right. I need to replace
+Various SD card cleanups and fixes accumulated over
+the years. Various have been useful to help integrating
+eMMC support (which will come later).
 
-viommu->config.page_size_mask &= new_mask;
-by
-if (s->granule_frozen) {
-    viommu->config.page_size_mask &= new_mask;
-}    
+Full series for testing:
+https://gitlab.com/philmd/qemu/-/tags/emmc-v4
 
-> Except this question, for all other patches,
->
-> Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
-Thanks!
+Cédric Le Goater (1):
+  hw/sd/sdcard: Introduce definitions for EXT_CSD register
 
-Eric
->
-> Thanks
-> Zhenzhong
->
->> +        } else {
->> +            error_prepend(errp, "%s: ", hiod->name);
->> +            goto error;
->>         }
->>     }
->>
->> @@ -637,6 +685,9 @@ static bool
->> virtio_iommu_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
->>     g_list_free_full(host_iova_ranges, g_free);
->>
->>     return true;
->> +error:
->> +    g_list_free_full(host_iova_ranges, g_free);
->> +    return false;
->> }
->>
->> static void
->> diff --git a/hw/virtio/trace-events b/hw/virtio/trace-events
->> index 3cf84e04a7..599d855ff6 100644
->> --- a/hw/virtio/trace-events
->> +++ b/hw/virtio/trace-events
->> @@ -132,6 +132,7 @@ virtio_iommu_notify_map(const char *name,
->> uint64_t virt_start, uint64_t virt_end
->> virtio_iommu_notify_unmap(const char *name, uint64_t virt_start,
->> uint64_t virt_end) "mr=%s virt_start=0x%"PRIx64" virt_end=0x%"PRIx64
->> virtio_iommu_remap(const char *name, uint64_t virt_start, uint64_t
->> virt_end, uint64_t phys_start) "mr=%s virt_start=0x%"PRIx64"
->> virt_end=0x%"PRIx64" phys_start=0x%"PRIx64
->> virtio_iommu_set_page_size_mask(const char *name, uint64_t old,
->> uint64_t new) "mr=%s old_mask=0x%"PRIx64" new_mask=0x%"PRIx64
->> +virtio_iommu_update_page_size_mask(const char *name, uint64_t old,
->> uint64_t new) "host iommu device=%s old_mask=0x%"PRIx64"
->> new_mask=0x%"PRIx64
->> virtio_iommu_notify_flag_add(const char *name) "add notifier to mr %s"
->> virtio_iommu_notify_flag_del(const char *name) "del notifier from mr %s"
->> virtio_iommu_switch_address_space(uint8_t bus, uint8_t slot, uint8_t fn,
->> bool on) "Device %02x:%02x.%x switching address space (iommu
->> enabled=%d)"
->> --
->> 2.41.0
+Philippe Mathieu-Daudé (16):
+  hw/sd/sdcard: Deprecate support for spec v1.10
+  hw/sd/sdcard: Use spec v3.01 by default
+  hw/sd/sdcard: Track last command used to help logging
+  hw/sd/sdcard: Trace block offset in READ/WRITE data accesses
+  hw/sd/sdcard: Trace requested address computed by sd_req_get_address()
+  hw/sd/sdcard: Do not store vendor data on block drive (CMD56)
+  hw/sd/sdcard: Send WRITE_PROT bits MSB first (CMD30)
+  hw/sd/sdcard: Send NUM_WR_BLOCKS bits MSB first (ACMD22)
+  hw/sd/sdcard: Use READY_FOR_DATA definition instead of magic value
+  hw/sd/sdcard: Assign SDCardStates enum values
+  hw/sd/sdcard: Simplify sd_inactive_state handling
+  hw/sd/sdcard: Restrict SWITCH_FUNCTION to sd_transfer_state (CMD6)
+  hw/sd/sdcard: Add direct reference to SDProto in SDState
+  hw/sd/sdcard: Extract sd_blk_len() helper
+  tests/qtest: Disable npcm7xx_sdhci tests using hardcoded RCA
+  hw/sd/sdcard: Generate random RCA value
+
+ docs/about/deprecated.rst        |   6 ++
+ hw/sd/sdmmc-internal.h           |  97 +++++++++++++++++++++
+ hw/sd/sd.c                       | 145 ++++++++++++++++++-------------
+ tests/qtest/npcm7xx_sdhci-test.c |   7 ++
+ hw/sd/trace-events               |   6 +-
+ 5 files changed, 199 insertions(+), 62 deletions(-)
+
+-- 
+2.41.0
 

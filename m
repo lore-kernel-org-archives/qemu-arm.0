@@ -1,101 +1,125 @@
-Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp233917njb;
-        Thu, 27 Jun 2024 06:28:04 -0700 (PDT)
-X-Received: by 2002:a05:6a21:6da9:b0:1b8:4287:d55d with SMTP id adf61e73a8af0-1bece653e88mr2683647637.10.1719494884188;
-        Thu, 27 Jun 2024 06:28:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719494884; cv=none;
+Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp248382njb;
+        Thu, 27 Jun 2024 06:58:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUaiMHvPozTn0CJ/IwZXb05HWr9cY5ZclcvmbQhjr288r5QwMMCGQ+uiYcgDA43cDB6Q6ahBZ23ErAx/Fy0gKsG+hFibEPH
+X-Received: by 2002:a05:6e02:1a6b:b0:375:a3a9:db49 with SMTP id e9e14a558f8ab-3763f5bc3e8mr186788335ab.9.1719496694037;
+        Thu, 27 Jun 2024 06:58:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719496694; cv=none;
         d=google.com; s=arc-20160816;
-        b=R/rWqaJMUYpYLbabNMOrQ82lrg3G5Wika3AlU8/O5hu2g3tqO4D6it7bVcx/Bodw8i
-         VGbMhCIpNgNHv5MCuwK+GMF6PnKtUX1B/WlBFxXXJ9tMh22Ij5qzcMNbUWDMnxnnln7v
-         DE7w2JepsZjh1dbBNQ1ZPiIWe+AImYYiNk5VCvqxEdSUOJq142nfHsH8cWy+syCLIbrG
-         dhvtMlRRklVD1JZ4nqD4oFNmB6b9dgZrwfpGw4vQRE0KnhAebTj0nVACuWPmBYId/ciS
-         +VVBhVgYkO9Xw9RgeuS+4n2AQoY/qR2/1UYV6bPX227/4M1P1IlRvYFrvl5rLVzzJ7yg
-         370g==
+        b=YyzJ4m52yIIjQLCfQ6PfLqSX7rfqPM47n4it1t+FZ8eVgfeWacCIL9iobWxfxkkt24
+         i7xVkhYX2meb0fGyoLfajG9iivFvNTpMMnIta0479btI1G1hOoNqa7tH6pwEA04nb5ks
+         Yxx59zbGtGw6yiQaIdKI/usu/OQULUlXf6xF+PIcxCtpYkXGR1dfOyeNBRJJJ9aQb5nd
+         lBhfyrYNaN4olxe4sPG+0aX188jbZ0dWFnwMgDPPu0eHwnFebab9JCSsBh9wM8iyjC2O
+         FI31UvBy8T/gLfo/cXNPkv8/GlxDTweJBr57qTSCDsgEa1SXpyZF3bY3dbk+pDWddzBT
+         9jKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=l0M/V+6MN1TB5i2xeWsRvtc78YlFuIst6Zh1syeTNyQ=;
-        fh=8SOdx/KLKsk8yBbKCzxfgHZbeB1Urxpyl6MSzarSf88=;
-        b=sft4qMpZCMgogDIwkD9REWh048zQlSojllqnZqakTOq6IZy0tgaWHB9ZfwE2+5ZVCw
-         8oPLsNRjNT0ReapKF2kqEtKe+22PXKonWMyn4hlqkiTp+0mGu3loGTJerjjL7chdVRBo
-         GfMmEQUa9qBlDWJPu7Gth76yhZLyVndxJWZTXWEGO0h9EZlcswhtaVb16ZzE/FshK1C0
-         AvX8h6WsRsVmo4Aoy1OzjJVbOGEmkX2FojvKIVEeVcYkZcLCD9AuGYyQQ3s4N9gyWU1u
-         XSzrJZPV2SgbanRPn9l+LhfjeyCK6TCw8kMAMsN3UJDgjRr957xoLIextcnMoZSMpAoD
-         SnnA==;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:dkim-signature;
+        bh=krQKuKxY8isoEphRQtni7oJK0QyOsCIS1H46MdJLkac=;
+        fh=JtTD9ZVkUO7E9ZegzfdJERbEcv6DePmuVXZURAZSRoY=;
+        b=QaHBiC6rEF2w9lliYAm8u4mwd4S9+JXhBRfYMT7TVuFgNUe8Z7i7fb7txyVYYp8czG
+         65TFNjGJEVgQMxWDVvUxDcOfPeUmrVymhwWqp5iYPTBR9GJgsqJ6IGHdP/XtWQZdOYkj
+         U6c+iRaaLMpqJoQLc4yNT+u2jOmkQKj4L1104DiPSFyfnlNONg74+4jZJssekF/aku/4
+         FL5hmA+vj4YjQqwwlhpaQPp86SyGU10BrgijIfLk6p+rFgtzcNOtPIo64zwmJWSiWc6+
+         s5a2HMacYW5q8ltzE33BSzMgqhm5+p6qaUtu9b9jmglou+BejH7LgUyQZepRWJI1/YU5
+         Xd/w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=QM97yzp0;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=tMhKvaNa;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-706a78ba59esor2024095b3a.3.2024.06.27.06.28.04
+        by mx.google.com with SMTPS id 41be03b00d2f7-72745092e1fsor514199a12.1.2024.06.27.06.58.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 27 Jun 2024 06:28:04 -0700 (PDT)
+        Thu, 27 Jun 2024 06:58:13 -0700 (PDT)
 Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=QM97yzp0;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=tMhKvaNa;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719494883; x=1720099683; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=l0M/V+6MN1TB5i2xeWsRvtc78YlFuIst6Zh1syeTNyQ=;
-        b=QM97yzp0oM/6ewLwhB3sU+8tBtjCF7yD+JCdQo38lz09meLQS8/vIbDYmG8dPURF09
-         /hePFcb1ZXssHk9zoW+0KtBIXSlR152p6vqVnNo9xwoxjrC17U/Pf4XfHake5O6YTPhM
-         J7u6J9sX9EIiz8514FwQnv5A3ihqVFArWRZ95YbUwA6Z1hD/AcVUR9sUukwBgP/dDPJE
-         9fyleobI+iXmqLTUMSihjgMCoJbcjSFzJZdVN7eoCT85kVIyPoMEASN7YV130KaRowOo
-         7C1HFeigK+MS2RA4PzmGAv2n+i4rWKyxrcuz/2ekkQvS7iCh/Chn0IGFB2cM9JBI4sp/
-         SB2w==
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719496693; x=1720101493; darn=linaro.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=krQKuKxY8isoEphRQtni7oJK0QyOsCIS1H46MdJLkac=;
+        b=tMhKvaNauQaRgX8VNgfJv6kn4Gqot/xcVeU6D/AZSfDpv+E18Cn7CSI9b+5GW17tN7
+         JvexKnxOJv5ZKPbAWcGX+4an9OXkTkuMf9GvRbCyUvR8cl6bj5gWVZpdF2Xw+6BO1AFp
+         pzfxL7f43iQMlM4ThEOStXbAN8ZtsL33IKtAbqzbdZ+YXGS8qJ9IoO3ggxtgusBpzMkF
+         6giYJVQqu03a+dqcFxhHny/EaAhucJRMAXzfSTJMd6/dJJM4Jdc3mvxy1IsQlsiLOdPW
+         Myi/veQ01dfBsBE+097Bw0u4k+MD72fFIoq7wYk3FkYAukKdCs48KxkZZ4QQG64o1HpS
+         JsTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719494883; x=1720099683;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=l0M/V+6MN1TB5i2xeWsRvtc78YlFuIst6Zh1syeTNyQ=;
-        b=SiwNMhnPthzwyKR+q5fRAZgmax8WLkxBV/FBp+ses/NtTSWGYvophgfPjXXjwtxAMJ
-         uE9GV7G9Fbaq6fFzKgzbrZyo6SQFb9c5kJm6bw23XLeEwCNvRmLcWJ2jOMXuvQjIq6Nf
-         xmtzfWCsUvcZy5HXWSVCqqAZ0pQkIyzvHAE7avyMgwgFLAf6YyURW74nf7l+KJ29mRzd
-         mlCoYxvxkYYPgYte24+GvYt7M5t1BclnVDl18fDu1KX5eCtFTGkEFrQGWECVb+Ka7Ky3
-         HoRDc4aZzgzroZuK+k8APv+J5llACaxnRPRX9AbC02M74JQ80nzVdK5kFHtXJMwcAMjK
-         Z06Q==
-X-Gm-Message-State: AOJu0YyB0iie6quy9WIVb29QdpT2tGtAyEiVPjQ+BUQ23ycupsizuyrq
-	OLhRMq1fwTganrHqSOWzBgSXXAE7WEkj5fdTN2fjaQKtWZE/BGocNs158xh0wB6mlHgdxWgZR0f
-	P5Gk=
-X-Google-Smtp-Source: AGHT+IGkESvHeW0+wsDr+Oqk/vtZiUzjfNANomyo8gi46PVb7QEP0a+RYbqMK9Q6QrLe1PvTHXIbFQ==
-X-Received: by 2002:a05:6a20:4f95:b0:1bd:a03f:21f6 with SMTP id adf61e73a8af0-1bda03f248cmr5248410637.20.1719494883549;
-        Thu, 27 Jun 2024 06:28:03 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1719496693; x=1720101493;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=krQKuKxY8isoEphRQtni7oJK0QyOsCIS1H46MdJLkac=;
+        b=hMCWe1nhnGRczMxiGSja/2TFqo/ZNhCejUyXtwqFfxVt04aUOUTn/WfLClZbjqsvFs
+         sp5BWHcpB8a5/gr4O7z01/7gHvt4LAimpe2SexLA+mPbM/47ut04RFrjI9luuq1sSpvn
+         V9MLVMryS/zhAcjKbiK7NHfBIb9IPNaLwQeAT41QDve/jHtYHTr61lCQ9cX9WSY0j+eg
+         ojqUbOAAJSOAhPaMuoz2MxJSWt0Cxv8eQjgPrV4drP9Vm8aFIMnTK8b94TmMDGCyx5i7
+         0BNYf84Qquhlnkn5XT1M/oyuybWA+4w8h+5TulwtADec2MVSFkGc+yZCp3t56K0gMV8O
+         bjoA==
+X-Forwarded-Encrypted: i=1; AJvYcCUM3VK5xgEwdqzP32ahqfO+GTc79X+KRZVYuPy7ICAX2sTOr13pUGo7nMTPLxoZ58GKWh/v5okgxAMBfp19Fo9jdDdYLSYK
+X-Gm-Message-State: AOJu0YyzzEfwbtzipnvgiqQshZbLYNiEjBU/kuYp05tyzZKiqtvYikSn
+	14CcMwv8Rnnj4xXsM2FUlReawgqzA08LbSIh8+DtQ0GINgM2tRW/HtVoSIWgSPY=
+X-Google-Smtp-Source: AGHT+IG77dzeSA1z0lafJxK8ebTqJPJUAjJweHti/NL1FQrYFMhih3j9X2eKx5sO8u2Goy1S/R01jg==
+X-Received: by 2002:a05:6a20:7346:b0:1be:d321:7e09 with SMTP id adf61e73a8af0-1bed321a4e6mr1809950637.28.1719496693493;
+        Thu, 27 Jun 2024 06:58:13 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
-Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932? ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-706b4a072e5sm1313246b3a.105.2024.06.27.06.28.02
+Received: from localhost ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
+        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-1faac8fcd45sm13518985ad.116.2024.06.27.06.58.11
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Jun 2024 06:28:03 -0700 (PDT)
-Message-ID: <d30df7ac-62c7-44cd-ba88-a7f757f034d8@daynix.com>
-Date: Thu, 27 Jun 2024 22:28:01 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/6] tests/tcg/aarch64: Fix inline assemblies for clang
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20240626-tcg-v1-0-0bad656307d8@daynix.com>
- <878qyrpzgw.fsf@draig.linaro.org>
-Content-Language: en-US
+        Thu, 27 Jun 2024 06:58:13 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <878qyrpzgw.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: rHwqMYKqxV+t
+Subject: [PATCH v2 0/6] tests/tcg/aarch64: Fix inline assemblies for clang
+Date: Thu, 27 Jun 2024 22:58:01 +0900
+Message-Id: <20240627-tcg-v2-0-1690a813348e@daynix.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAOlvfWYC/zWMwQ7CIBAFf6XZsxjAisRT/8P0QGFp9yA10JA2D
+ f8ukniclzdzQsJImODZnRAxU6I1VJCXDuxiwoyMXGWQXPZcyZ5tdmaT10Io1Nx4A/X5iehpb5X
+ XWHmhtK3xaNEsfuvfV83PgnHGJ+PUXd34w+nBmSPQfrXrG8ZSyhci74CulwAAAA==
+To: Peter Maydell <peter.maydell@linaro.org>, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Akihiko Odaki <akihiko.odaki@daynix.com>
+X-Mailer: b4 0.14-dev-fd6e3
+X-TUID: Z4bk0Wbj58qN
 
-On 2024/06/26 23:09, Alex Bennée wrote:
-> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
-> 
->> Unlike GCC, clang checks if the operands in assembly matches with the
->> type in C. It also does not support "x" constraint for AArch64 and
->> complains about them.
-> 
-> When are the test cases ever built with clang? Is this for Arm on Arm
-> testing only?
+Unlike GCC, clang checks if the operands in assembly matches with the
+type in C. It also does not support "x" constraint for AArch64 and
+complains about them.
 
-I ran test QEMU built with clang on Asahi Linux.
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+---
+Changes in v2:
+- Removed spurious a compiler flag change for normal SME tests.
+- Fixed sme-i16i64 detection.
+- Link to v1: https://lore.kernel.org/r/20240626-tcg-v1-0-0bad656307d8@daynix.com
+
+---
+Akihiko Odaki (6):
+      tests/tcg/arm: Fix fcvt result messages
+      tests/tcg/aarch64: Fix test architecture specification
+      tests/tcg/aarch64: Explicitly specify register width
+      tests/tcg/aarch64: Fix irg operand type
+      tests/tcg/aarch64: Do not use x constraint
+      tests/tcg/arm: Manually bit-cast half-precision numbers
+
+ tests/tcg/aarch64/bti-1.c         |   6 +-
+ tests/tcg/aarch64/bti-3.c         |   6 +-
+ tests/tcg/aarch64/mte-1.c         |   2 +-
+ tests/tcg/aarch64/sme-smopa-2.c   |   2 +-
+ tests/tcg/arm/fcvt.c              |  20 +-
+ tests/tcg/aarch64/Makefile.target |  11 +-
+ tests/tcg/aarch64/fcvt.ref        | 604 +++++++++++++++++++-------------------
+ 7 files changed, 330 insertions(+), 321 deletions(-)
+---
+base-commit: 046a64b9801343e2e89eef10c7a48eec8d8c0d4f
+change-id: 20240624-tcg-bf8116e80afa
+
+Best regards,
+-- 
+Akihiko Odaki <akihiko.odaki@daynix.com>

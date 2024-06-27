@@ -1,133 +1,101 @@
-Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp182122njb;
-        Thu, 27 Jun 2024 04:08:36 -0700 (PDT)
-X-Received: by 2002:a2e:a442:0:b0:2ec:5019:8fa4 with SMTP id 38308e7fff4ca-2ec7278a341mr44327451fa.49.1719486516242;
-        Thu, 27 Jun 2024 04:08:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719486516; cv=none;
+Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp233917njb;
+        Thu, 27 Jun 2024 06:28:04 -0700 (PDT)
+X-Received: by 2002:a05:6a21:6da9:b0:1b8:4287:d55d with SMTP id adf61e73a8af0-1bece653e88mr2683647637.10.1719494884188;
+        Thu, 27 Jun 2024 06:28:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719494884; cv=none;
         d=google.com; s=arc-20160816;
-        b=YkaoU0MsBYdnR4U4A6CmllSdLN+TDpMgwsdJShuwe6BDm/HJM5MxFY5TRg7dNcmMYb
-         0EKAclYCP5w4VQ+Cs3JmUpdUEdlJ4G+btMiFlcwAv/FzMRziy0QacV1O5exSX0RhZUhj
-         rQqA3lZcMMYUZ3frIB1JCthK57mMQpDag3xES72gYi6pTJLzSD7o+Etxf3MBYodpD/A+
-         njnR3cbYjD/t58qlihc6cKVFZyghS50qT2R8iKza56n4bNp9DN+nqJZ6AK3WlITGQxv9
-         bSoqRAQJPimItNIuzm6v/9uGUlr9HCI45GiYN20XnTy8TWgOgUQlWyE+VYQLoffV6swo
-         2bBQ==
+        b=R/rWqaJMUYpYLbabNMOrQ82lrg3G5Wika3AlU8/O5hu2g3tqO4D6it7bVcx/Bodw8i
+         VGbMhCIpNgNHv5MCuwK+GMF6PnKtUX1B/WlBFxXXJ9tMh22Ij5qzcMNbUWDMnxnnln7v
+         DE7w2JepsZjh1dbBNQ1ZPiIWe+AImYYiNk5VCvqxEdSUOJq142nfHsH8cWy+syCLIbrG
+         dhvtMlRRklVD1JZ4nqD4oFNmB6b9dgZrwfpGw4vQRE0KnhAebTj0nVACuWPmBYId/ciS
+         +VVBhVgYkO9Xw9RgeuS+4n2AQoY/qR2/1UYV6bPX227/4M1P1IlRvYFrvl5rLVzzJ7yg
+         370g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=o2XCYxT40DbL9y2Narcb3mT+cwq7XXW09HIX9xIHGkM=;
-        fh=CJZyn28tRklxSuGppnCCvG/9EUyJQSpmR+9DeKrBjrA=;
-        b=O7HDtMgJio9ojYjciAQjs9X/1qxTzKeXxWzEq+IZq4nxqLA0y6LVEyGrLZtrRI6mbP
-         U+W7IXrYDNdC4Ge5KBfyrOdbb5N1bEiIyK4HCwefI8hR/aualkprgsrByADtzBbdjjL5
-         y3RYbN8i3NJPDUBBQ94hRdZI7oFeXCz1R5HkvQ8Wsq8yKm/0WkbSWA4t/yUnAv4y0Pvh
-         7DkJM54HuFHEJPgrvWRt7BLeax0YIkzDZGWhOuQAU5zGIcYidbQyQQO8EsWcgBMikRKT
-         SJ/j0tgee3JQVlyKk1DNNldH5+4F8sJDLdKF9XfjTLpAKZ39fKLppi8i7qcYBPZSM4pu
-         a5iA==;
+        bh=l0M/V+6MN1TB5i2xeWsRvtc78YlFuIst6Zh1syeTNyQ=;
+        fh=8SOdx/KLKsk8yBbKCzxfgHZbeB1Urxpyl6MSzarSf88=;
+        b=sft4qMpZCMgogDIwkD9REWh048zQlSojllqnZqakTOq6IZy0tgaWHB9ZfwE2+5ZVCw
+         8oPLsNRjNT0ReapKF2kqEtKe+22PXKonWMyn4hlqkiTp+0mGu3loGTJerjjL7chdVRBo
+         GfMmEQUa9qBlDWJPu7Gth76yhZLyVndxJWZTXWEGO0h9EZlcswhtaVb16ZzE/FshK1C0
+         AvX8h6WsRsVmo4Aoy1OzjJVbOGEmkX2FojvKIVEeVcYkZcLCD9AuGYyQQ3s4N9gyWU1u
+         XSzrJZPV2SgbanRPn9l+LhfjeyCK6TCw8kMAMsN3UJDgjRr957xoLIextcnMoZSMpAoD
+         SnnA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WVrIVskC;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=QM97yzp0;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 38308e7fff4ca-2ee4a4eb86csor2894351fa.12.2024.06.27.04.08.36
+        by mx.google.com with SMTPS id d2e1a72fcca58-706a78ba59esor2024095b3a.3.2024.06.27.06.28.04
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 27 Jun 2024 04:08:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Thu, 27 Jun 2024 06:28:04 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WVrIVskC;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=QM97yzp0;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1719486515; x=1720091315; darn=linaro.org;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719494883; x=1720099683; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=o2XCYxT40DbL9y2Narcb3mT+cwq7XXW09HIX9xIHGkM=;
-        b=WVrIVskCGt+dGVvjGD/9x3jY1f29GU5XMlIyzHUhGh0m8p0XtQPXVrL/NdTMjVE8JZ
-         4XBE8X4ub9Tr3fgiAnzBLDMzunh9IsZ4YMuy3I0ydWPpWSflfLDnhT1MPd9M9LtkRLoS
-         r4WTyK2ZWbLPyjjA+k+csGpT2eaJIlEK1rNv+HlY2S6NpFuR1yIRVLe8W3O8WdC2tNMG
-         lxl3pvzQXs1fU9NNyFBq9Rf8U+tZC2TjRUND5oZ94zjB71FcVm6goH5yPk+/EiR67ufi
-         9lGFiAKMWZUvzRblywUtqDn22fWXtpFQ8czV8uN4Lym8+V6T4n5GEZppFn9eJRt/SGsu
-         EuEw==
+        bh=l0M/V+6MN1TB5i2xeWsRvtc78YlFuIst6Zh1syeTNyQ=;
+        b=QM97yzp0oM/6ewLwhB3sU+8tBtjCF7yD+JCdQo38lz09meLQS8/vIbDYmG8dPURF09
+         /hePFcb1ZXssHk9zoW+0KtBIXSlR152p6vqVnNo9xwoxjrC17U/Pf4XfHake5O6YTPhM
+         J7u6J9sX9EIiz8514FwQnv5A3ihqVFArWRZ95YbUwA6Z1hD/AcVUR9sUukwBgP/dDPJE
+         9fyleobI+iXmqLTUMSihjgMCoJbcjSFzJZdVN7eoCT85kVIyPoMEASN7YV130KaRowOo
+         7C1HFeigK+MS2RA4PzmGAv2n+i4rWKyxrcuz/2ekkQvS7iCh/Chn0IGFB2cM9JBI4sp/
+         SB2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719486515; x=1720091315;
+        d=1e100.net; s=20230601; t=1719494883; x=1720099683;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=o2XCYxT40DbL9y2Narcb3mT+cwq7XXW09HIX9xIHGkM=;
-        b=kn6j/GxwKtEpY7jfqw3sOErkNXE5v4wVf5/IP0inNBLJQtpSd0FJEWUf7UtubgEiJW
-         9wsWekvr020Ua2nVE0Dxrr7NmjJ/JCL9wxataqaRAM4/pgDuLAhbzNKX+SuQlHwjEV/o
-         Or7V1Ty8f3DtQCZ5HbkR18srh0gpj6YdhgbJSjDrAqC0lwLpDpmjCsS9MwelZ7PSrthW
-         Uz2HFrZlDfuYbVBr+CXIu6n41ZdvXyBjGbIIomgbdd0NPZqJ5cIyASl5Lpv6xxniwm6/
-         V+cn5Fy1G5a/7ARTEOv8DSwWHpL2+p5lCEGp1FcEN3BQGSZnKG5t0Kx2jpkj/z4jb0EC
-         VTkQ==
-X-Gm-Message-State: AOJu0YwefwEe0PV3ZWTdp5yI0GSVb51wFDAnYXyXfB/YJCLC8vWi/wG7
-	49q5G1+hdCVE9+1tpNO4Arm1PXl81NekgBm3geeF6AU1P+4fVGzKbsj0CXx8/bsbWKGgLXYx9r/
-	8lGQTWA==
-X-Google-Smtp-Source: AGHT+IFcbK8snw1UpZCkkK/fbYRXItddDuleNKKncMy49sWuS783EwY8WSMh1pgnqOSBF3yKu88L8A==
-X-Received: by 2002:a2e:a442:0:b0:2ec:5019:8fa4 with SMTP id 38308e7fff4ca-2ec7278a341mr44327031fa.49.1719486514989;
-        Thu, 27 Jun 2024 04:08:34 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.236.175] (72.red-95-127-32.staticip.rima-tde.net. [95.127.32.72])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-424c8245da9sm61189205e9.1.2024.06.27.04.08.30
+        bh=l0M/V+6MN1TB5i2xeWsRvtc78YlFuIst6Zh1syeTNyQ=;
+        b=SiwNMhnPthzwyKR+q5fRAZgmax8WLkxBV/FBp+ses/NtTSWGYvophgfPjXXjwtxAMJ
+         uE9GV7G9Fbaq6fFzKgzbrZyo6SQFb9c5kJm6bw23XLeEwCNvRmLcWJ2jOMXuvQjIq6Nf
+         xmtzfWCsUvcZy5HXWSVCqqAZ0pQkIyzvHAE7avyMgwgFLAf6YyURW74nf7l+KJ29mRzd
+         mlCoYxvxkYYPgYte24+GvYt7M5t1BclnVDl18fDu1KX5eCtFTGkEFrQGWECVb+Ka7Ky3
+         HoRDc4aZzgzroZuK+k8APv+J5llACaxnRPRX9AbC02M74JQ80nzVdK5kFHtXJMwcAMjK
+         Z06Q==
+X-Gm-Message-State: AOJu0YyB0iie6quy9WIVb29QdpT2tGtAyEiVPjQ+BUQ23ycupsizuyrq
+	OLhRMq1fwTganrHqSOWzBgSXXAE7WEkj5fdTN2fjaQKtWZE/BGocNs158xh0wB6mlHgdxWgZR0f
+	P5Gk=
+X-Google-Smtp-Source: AGHT+IGkESvHeW0+wsDr+Oqk/vtZiUzjfNANomyo8gi46PVb7QEP0a+RYbqMK9Q6QrLe1PvTHXIbFQ==
+X-Received: by 2002:a05:6a20:4f95:b0:1bd:a03f:21f6 with SMTP id adf61e73a8af0-1bda03f248cmr5248410637.20.1719494883549;
+        Thu, 27 Jun 2024 06:28:03 -0700 (PDT)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932? ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-706b4a072e5sm1313246b3a.105.2024.06.27.06.28.02
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Jun 2024 04:08:34 -0700 (PDT)
-Message-ID: <43547a69-1caa-474b-96b9-e76b65100f9b@linaro.org>
-Date: Thu, 27 Jun 2024 13:08:28 +0200
+        Thu, 27 Jun 2024 06:28:03 -0700 (PDT)
+Message-ID: <d30df7ac-62c7-44cd-ba88-a7f757f034d8@daynix.com>
+Date: Thu, 27 Jun 2024 22:28:01 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 06/12] sysemu: generalise qtest_warp_clock as
- qemu_clock_advance_virtual_time
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+Subject: Re: [PATCH 0/6] tests/tcg/aarch64: Fix inline assemblies for clang
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- qemu-ppc@nongnu.org, Christian Borntraeger <borntraeger@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Jamie Iles <quic_jiles@quicinc.com>,
- David Hildenbrand <david@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Mark Burton <mburton@qti.qualcomm.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>, qemu-arm@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Marco Liebel <mliebel@qti.qualcomm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org,
- Cameron Esfahani <dirty@apple.com>, Alexandre Iooss <erdnaxe@crans.org>,
- Nicholas Piggin <npiggin@gmail.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- "Dr. David Alan Gilbert" <dave@treblig.org>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>
-References: <20240620152220.2192768-1-alex.bennee@linaro.org>
- <20240620152220.2192768-7-alex.bennee@linaro.org>
+References: <20240626-tcg-v1-0-0bad656307d8@daynix.com>
+ <878qyrpzgw.fsf@draig.linaro.org>
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240620152220.2192768-7-alex.bennee@linaro.org>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <878qyrpzgw.fsf@draig.linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: WMKbM6gYFcZ7
+X-TUID: rHwqMYKqxV+t
 
-On 20/6/24 17:22, Alex Bennée wrote:
-> Move the key functionality of moving time forward into the clock
-> sub-system itself. This will allow us to plumb in time control into
-> plugins.
+On 2024/06/26 23:09, Alex Bennée wrote:
+> Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 > 
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Message-Id: <20240530220610.1245424-4-pierrick.bouvier@linaro.org>
+>> Unlike GCC, clang checks if the operands in assembly matches with the
+>> type in C. It also does not support "x" constraint for AArch64 and
+>> complains about them.
 > 
-> --
+> When are the test cases ever built with clang? Is this for Arm on Arm
+> testing only?
 
-@Pierrick:
-
-Use 3 '-' if you want the changelog to be stripped:
-
----
-
-> v2
->    - use target_ns in docs and signature
-> ---
->   include/qemu/timer.h | 15 +++++++++++++++
->   system/qtest.c       | 25 +++----------------------
->   util/qemu-timer.c    | 26 ++++++++++++++++++++++++++
->   3 files changed, 44 insertions(+), 22 deletions(-)
+I ran test QEMU built with clang on Asahi Linux.

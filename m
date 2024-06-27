@@ -1,1127 +1,226 @@
-Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp248416njb;
-        Thu, 27 Jun 2024 06:58:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXbnjGwXy1zaMoPTLi4iRdn6Ip9v+BaZV4wSqdoFlGSFye6uZy9ScPZ9xNK1L6BjA2HhbCHZDNRs4Wju0L/8Ri9o5BujwKm
-X-Received: by 2002:a17:90a:b014:b0:2c2:c149:ca4 with SMTP id 98e67ed59e1d1-2c861434ea9mr10712931a91.43.1719496698588;
-        Thu, 27 Jun 2024 06:58:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719496698; cv=none;
+Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp309779njb;
+        Thu, 27 Jun 2024 09:24:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUsXrSRciB3GraH1XfD1G67anCkDN8DV4rsEymxpnVX4ByXzeWSC7AJpOLNMPdRfR6GFsAGjYVEKfDvCT3KA0GPZlx3Uia9
+X-Google-Smtp-Source: AGHT+IHEvA273xyXACEXHZj2GTzrDkhYOHnM8XDcy4I1SDz8gPZz2GMJta2FzIIIsjPhAmB4kV4G
+X-Received: by 2002:a0c:e08f:0:b0:6b5:613:5acd with SMTP id 6a1803df08f44-6b5409e013bmr150018516d6.31.1719505467385;
+        Thu, 27 Jun 2024 09:24:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719505467; cv=none;
         d=google.com; s=arc-20160816;
-        b=1IiCyFme7HjPEnUJGapycf3ijYgITS9S1dNE8L/gO9jTjXnwqoX8VOrDamKT9fcHB4
-         r4Kj5v9n3T4fAR4Ynxv0MI3Jeu6naT394wmluQm914B7QuFPiwgi536IrhRvfDsaLOUT
-         mbRUVdWpWCUQzjfe/S/RZEoChC0V9waOa8f/yUYE1UfznwRRdtfw6t2GPVN9jIG5F1EX
-         MElhaLoo4h4lmcI21LJgLoBddnY71sexxzAFIe23O+RCycRYya6NklMobp34nCQw52bj
-         vLopl9EuoWmytx8RIMqmO5M4N3cL36ZQgR3RFdHaRvc1XdlEEflDmR0l/ZwPcs3R77c8
-         w+hg==
+        b=Kx+dUIPnYLIpMXBTjzyNe8WMaxzNZkUbvJtRvk7R+qEA5+DZoKnmFGYpfZiO6TZ7f7
+         uItzD6g6Q+KFx0yBGpS0ZnTTLarQ2sdMlahXkdiSHILZnLS0FPrZm1z/eJuFTIOpAxX3
+         t9c7DXmChJV3nw17Q3Y4fuw6zEPiB8mjmxF4h+AnkRnObJsW94/SJgQYipEbjrMGsQ8F
+         x7QaSJAkBqaDo+f/yr4lKWbanog7fXVwBIq6PIbSwIDvwtXJis22hZqyKzTtBq974mCB
+         xamoOD+YmugbD+Ll1P0huol50/Dr6jVRab5IhpsiZlf7+XjMXkf1rYn9wvoRUfUkgCX/
+         udVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:dkim-signature;
-        bh=MhiUaDdJSMOmjl3vDBocvu23IjJvYZPiykTiqCH6Byo=;
-        fh=GCV6RcywNmyXrJYHUiqkD1GfyDfQPRo6FbDARS3cC3I=;
-        b=NRJxsjwV3ji/jpCV5GDOQbhBEuIjfYFvmKtZxzlnxTRe8r3Crtw0Yy9pbAqpSUhJtj
-         qrKn0XvigmmxY08+iEgtYrzABYq42Lxtpr5eTGDxqX8YDpz262bjZuLKg9jfMq+KWF2H
-         TpSNGbOoxL5hMppqOY3X3PJuIDBB+fuasKQJNKJLnR5PHweWjVajJJBIq/B4oVeO2Bmn
-         ldF/IyRdBGuaGPg3QwGxhw1aWUkUCDLkUdgYZibwhzJNZkza6aVawZpTRA7OJMJEjD9R
-         yzH+KuT6TD2iYXyeougfiblEEdCjbCDWT2KE9lmEFeeXSh0QtAS8j4S/6C5zbOaWhlkp
-         yP4A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=8X6AtOCpBUXAQ/1xHubY59Be7qdcbmyzPDPReyo42Nc=;
+        fh=MS7+CsthrGX+7O+OZ1po6GQYA2KoTIDjvX87spD+pxw=;
+        b=z4G1M7805Kwv4OGJFv2SEi0MFWW+oeJb+d3ikJNj97036UiHrndKH45creySLsKDPn
+         Ml0tXfn/zPu6mMlN3fXMZTmAiyK2C5QNCYIvHwU/+PPJeuKikDIXRPaD30YOCeQnCibs
+         L6ml6a7IFzT++aeBKLu79Nyz1Uf1rqw9OiznRgUlSvDRTrx9Z09dY2qceAsncbRKvrAI
+         yZtoQitImJr7sx0T1r6kKYBUGzRCVI30lfkHr/hRyWq8yB0zeQ8OE8ItVhOFOaEBfoG3
+         iaiPCLg6Xa17J5BREGotxtJvrNN1jKWiXSOpKACr1vA2veHQF5lirK0wZYuNPqXNM0H7
+         6vUg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=FQ9p3NYj;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-2c8fee06b81sor525618a91.0.2024.06.27.06.58.18
+       dkim=pass header.i=@linaro.org header.s=google header.b=lDZhQmln;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b592654083si16080746d6.193.2024.06.27.09.24.27
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 27 Jun 2024 06:58:18 -0700 (PDT)
-Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 27 Jun 2024 09:24:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=FQ9p3NYj;
-       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=lDZhQmln;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sMruq-00052U-HK; Thu, 27 Jun 2024 12:24:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sMrun-0004oi-WA
+ for qemu-arm@nongnu.org; Thu, 27 Jun 2024 12:24:06 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sMruk-0008Ng-BJ
+ for qemu-arm@nongnu.org; Thu, 27 Jun 2024 12:24:05 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-424acfff613so25428435e9.0
+ for <qemu-arm@nongnu.org>; Thu, 27 Jun 2024 09:24:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719496698; x=1720101498; darn=linaro.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=MhiUaDdJSMOmjl3vDBocvu23IjJvYZPiykTiqCH6Byo=;
-        b=FQ9p3NYjEEshUFCvJNhri2KK06JBy3Dqwv8n45J+ur0p+e6IUECSfkoH50crqo6bAR
-         h6qxWfYXhi4jGq5XHI6Cwwbw/atHNtxFj8xga46UXlHGwNdFW3yc4DNOaiDMm2IDG1V4
-         9g9syfzy26U3B48lBSMIFdNVL6nk6NfSbOypOhwKDfJKWPCi16zj4aLNMLSnysfzFv8m
-         xaskR4twVEgolxOI4fiBHruudnnQkH8/RS3CeKxwp6v2f1omSv89BLxZBzJ/sZu6o6/A
-         PDmjL8GqGyzSHZ+mzEqR0NIHsQieWsZNSKfUzBXO9THydI1kF0UUob74yrDOKk7KGuoQ
-         p1pg==
+ d=linaro.org; s=google; t=1719505441; x=1720110241; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=8X6AtOCpBUXAQ/1xHubY59Be7qdcbmyzPDPReyo42Nc=;
+ b=lDZhQmlnBgasyBcj7jL/oMVauEXD9X2Y2rsmp+UadHuV97/s1Eh3FHwyp3hgCMuCej
+ SsAALmXkLtX4DC7I5wDGyE5b7PMMbH94WFnUoRFmVudWkw8Ka8FYQ3LiUToVlgLleG2j
+ xgCZww43gkC3dK8tL1sOMOz8qBy7BE//cGvFgGFzOB7CJa03h7G2q8+dCHNy7mIOatHd
+ jrKxlaXiejTZ2C3G+8EMFKQvTyPVkVFENEb1h+lfhnHaDPAre49mEd0nzxdGEFqqVAlu
+ ZXe0N1ZQ7u6FSxW6TyFiFa6zft6vfHILVUA3C8aOSP4KoIkZbCz/RI27oUhOrKUda4Nc
+ DaoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719496698; x=1720101498;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MhiUaDdJSMOmjl3vDBocvu23IjJvYZPiykTiqCH6Byo=;
-        b=VDylqCiLleJyLgDhkrPlm66bccS5FjV2wn1qJHP28qbkh77PXMV6+kNnnT9y35s1zk
-         lDpgHULLimSDQSXRLPlpS+iMET+gp7/VZGEpmETKzLLBruckADjVGybs4xfNqVmd5OhN
-         fByALu2B7+Cp5PgIm7XywTXOglI/g6u00LMSf8pCBhNSp8ZKkMK/wc27kIxGkUg+vV9t
-         JQpiVwCz7z0BTCQgcUVqul+NV32COCvHb3n1LOmP+dp8mviXRuICkNdEXShaGEYSTX3E
-         c2A2vuCWFjgtXHXpus6fV9OX8/HjejC6CGuhMcw3na3D8n2rTWtP6+FL3O5lIXuIpZiw
-         uoHg==
-X-Forwarded-Encrypted: i=1; AJvYcCXO3r2ftbfD6kSwCHdsWiEEn8SWrFSDy84ajUXbtHBoduDGn5O34Yfd9HZ5D/9UQ2l1WHS4nwjeWDKGgN6exM4sv+/edoBH
-X-Gm-Message-State: AOJu0Ywvo8lL/jdPnbeH+6CZAart1lGSudf4s2TL/jHHgOLTkkiPf8Qf
-	VerxWd8r87QDqvcDzfbd/cplN5Rcomju8aabSWU3eGFr4jglWKdz/Ng0u/TN414=
-X-Google-Smtp-Source: AGHT+IFC8sRzi9rGqTE40TKTxRBpvX3ta6+A+mHEHA4IxZgrt6Jf/EYZ0gp8UJxLqrJ34GJce73v+w==
-X-Received: by 2002:a17:90b:4c89:b0:2c5:249d:67be with SMTP id 98e67ed59e1d1-2c86126b700mr11265589a91.22.1719496697571;
-        Thu, 27 Jun 2024 06:58:17 -0700 (PDT)
-Return-Path: <akihiko.odaki@daynix.com>
-Received: from localhost ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
-        by smtp.gmail.com with UTF8SMTPSA id 98e67ed59e1d1-2c8fe8acd09sm1471816a91.10.2024.06.27.06.58.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Jun 2024 06:58:17 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Date: Thu, 27 Jun 2024 22:58:02 +0900
-Subject: [PATCH v2 1/6] tests/tcg/arm: Fix fcvt result messages
+ d=1e100.net; s=20230601; t=1719505441; x=1720110241;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=8X6AtOCpBUXAQ/1xHubY59Be7qdcbmyzPDPReyo42Nc=;
+ b=TZUHllct+UNRczzLjASriHN0I6A6oxpKHHG+AUAvKeQfh2cXEHSyttOJu8Ah1DzIqQ
+ XnG/pFd/f3Mo9hsybHd116WQ8NbS4H0lr4/+CujoPgBFpzmoBWHLzs5R9Ps+OowdkEGj
+ NxgooVzefNidWLA0mXyMkNGj8oNlC0cj8I78lCv1r4fU07jRbWqES4uI10DWooO0Td36
+ S9tt6SzD0RyNTxO3PWzubdcu63NeGVGTgtlXqI1qCJocUVFjDxIn0bpJJO/ZpYDHucls
+ lqsfJmdeq4H9ynUl7LcPv4QZMvAaStZGXQqCii0+iI0TuFJ/aHS8kDcK0UYNvgFB8ssE
+ uRMg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXs+bZvkOmCee6zv5LVH65j3bOzBnLw14C4YuyZVsm0k/meHmJtxb/VjG+Zaab7JWbRpTjCL+ZtzK0Mzldw6vIPND/p
+X-Gm-Message-State: AOJu0YzPrrq2ySzfmodtKDXZiWmswdBE1t05ahevoWexpTFIOOxFWVEd
+ HfSXcpqSOW7vJ3uKn6o046Fi4FUTt6GwW01Cs4xUbFPgxpQBkUwXR9SF2ftq+W4=
+X-Received: by 2002:a05:600c:4f07:b0:421:dd8c:35a3 with SMTP id
+ 5b1f17b1804b1-4248cc586d0mr116166515e9.26.1719505440758; 
+ Thu, 27 Jun 2024 09:24:00 -0700 (PDT)
+Received: from localhost.localdomain (33.red-95-127-46.staticip.rima-tde.net.
+ [95.127.46.33]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-424c8246b1dsm76798185e9.6.2024.06.27.09.23.53
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 27 Jun 2024 09:24:00 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ Tyrone Ting <kfting@nuvoton.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Bin Meng <bmeng.cn@gmail.com>, Hao Wu <wuhaotsh@google.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+ devel@lists.libvirt.org, Luc Michel <luc.michel@amd.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>
+Subject: [PATCH v3 06/17] hw/sd/sdcard: Do not store vendor data on block
+ drive (CMD56)
+Date: Thu, 27 Jun 2024 18:22:21 +0200
+Message-ID: <20240627162232.80428-7-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240627162232.80428-1-philmd@linaro.org>
+References: <20240627162232.80428-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240627-tcg-v2-1-1690a813348e@daynix.com>
-References: <20240627-tcg-v2-0-1690a813348e@daynix.com>
-In-Reply-To: <20240627-tcg-v2-0-1690a813348e@daynix.com>
-To: Peter Maydell <peter.maydell@linaro.org>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Akihiko Odaki <akihiko.odaki@daynix.com>
-X-Mailer: b4 0.14-dev-fd6e3
-X-TUID: A1fHrp/q76LK
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: nZpeiFYwX8R3
 
-The test cases for "converting double-precision to single-precision"
-emits float but the result variable was typed as uint32_t and corrupted
-the printed values. Propertly type it as float.
+"General command" (GEN_CMD, CMD56) is described as:
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Fixes: 8ec8a55e3fc9 ("tests/tcg/arm: add fcvt test cases for AArch32/64")
+  GEN_CMD is the same as the single block read or write
+  commands (CMD24 or CMD17). The difference is that [...]
+  the data block is not a memory payload data but has a
+  vendor specific format and meaning.
+
+Thus this block must not be stored overwriting data block
+on underlying storage drive. Keep it in a dedicated
+'vendor_data[]' array.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/tcg/arm/fcvt.c       |   2 +-
- tests/tcg/aarch64/fcvt.ref | 604 ++++++++++++++++++++++-----------------------
- 2 files changed, 303 insertions(+), 303 deletions(-)
+RFC: Is it safe to reuse VMSTATE_UNUSED_V() (which happens
+to be the same size)?
 
-diff --git a/tests/tcg/arm/fcvt.c b/tests/tcg/arm/fcvt.c
-index 7ac47b564e24..05a27b2d0710 100644
---- a/tests/tcg/arm/fcvt.c
-+++ b/tests/tcg/arm/fcvt.c
-@@ -258,7 +258,7 @@ static void convert_double_to_single(void)
- 
-     for (i = 0; i < ARRAY_SIZE(double_numbers); ++i) {
-         double input = double_numbers[i].d;
--        uint32_t output;
-+        float output;
- 
-         feclearexcept(FE_ALL_EXCEPT);
- 
-diff --git a/tests/tcg/aarch64/fcvt.ref b/tests/tcg/aarch64/fcvt.ref
-index e7af24dc58a8..2726b41063f4 100644
---- a/tests/tcg/aarch64/fcvt.ref
-+++ b/tests/tcg/aarch64/fcvt.ref
-@@ -211,45 +211,45 @@ Converting double-precision to half-precision
- 40   HALF: 0x7f00  (0x1 =>     INVALID)
- Converting double-precision to single-precision
- 00 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--00 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+00 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- 01 DOUBLE: -nan / 0x00fff8000000000000 (0 => OK)
--01 SINGLE: 4.29077299200000000000e+09 / 0x4f7fc000  (0 => OK)
-+01 SINGLE: -nan / 0xffc00000  (0 => OK)
- 02 DOUBLE: -inf / 0x00fff0000000000000 (0 => OK)
--02 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0 => OK)
-+02 SINGLE: -inf / 0xff800000  (0 => OK)
- 03 DOUBLE: -1.79769313486231570815e+308 / 0x00ffefffffffffffff (0 => OK)
--03 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x14 => OVERFLOW   INEXACT )
-+03 SINGLE: -inf / 0xff800000  (0x14 => OVERFLOW   INEXACT )
- 04 DOUBLE: -3.40282346638528859812e+38 / 0x00c7efffffe0000000 (0 => OK)
--04 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x10 =>    INEXACT )
-+04 SINGLE: -3.40282346638528859812e+38 / 0xff7fffff  (0 => OK)
- 05 DOUBLE: -3.40282346638528859812e+38 / 0x00c7efffffe0000000 (0 => OK)
--05 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x10 =>    INEXACT )
-+05 SINGLE: -3.40282346638528859812e+38 / 0xff7fffff  (0 => OK)
- 06 DOUBLE: -1.11100000000000007529e+31 / 0x00c661874b135ff654 (0 => OK)
--06 SINGLE: 4.07766476800000000000e+09 / 0x4f730c3a  (0x10 =>    INEXACT )
-+06 SINGLE: -1.11100004769645909791e+31 / 0xf30c3a59  (0x10 =>    INEXACT )
- 07 DOUBLE: -1.11099999999999999085e+30 / 0x00c62c0bab523323b9 (0 => OK)
--07 SINGLE: 4.04962432000000000000e+09 / 0x4f71605d  (0x10 =>    INEXACT )
-+07 SINGLE: -1.11100003258488635273e+30 / 0xf1605d5b  (0x10 =>    INEXACT )
- 08 DOUBLE: -2.00000000000000000000e+00 / 0x00c000000000000000 (0 => OK)
--08 SINGLE: 3.22122547200000000000e+09 / 0x4f400000  (0 => OK)
-+08 SINGLE: -2.00000000000000000000e+00 / 0xc0000000  (0 => OK)
- 09 DOUBLE: -1.00000000000000000000e+00 / 0x00bff0000000000000 (0 => OK)
--09 SINGLE: 3.21283686400000000000e+09 / 0x4f3f8000  (0 => OK)
-+09 SINGLE: -1.00000000000000000000e+00 / 0xbf800000  (0 => OK)
- 10 DOUBLE: -2.22507385850720138309e-308 / 0x008010000000000000 (0 => OK)
--10 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x18 =>  UNDERFLOW  INEXACT )
-+10 SINGLE: -0.00000000000000000000e+00 / 0x80000000  (0x18 =>  UNDERFLOW  INEXACT )
- 11 DOUBLE: -1.17549435082228750797e-38 / 0x00b810000000000000 (0 => OK)
--11 SINGLE: 2.15587225600000000000e+09 / 0x4f008000  (0 => OK)
-+11 SINGLE: -1.17549435082228750797e-38 / 0x80800000  (0 => OK)
- 12 DOUBLE: 0.00000000000000000000e+00 / 00000000000000000000 (0 => OK)
- 12 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0 => OK)
- 13 DOUBLE: 1.17549435082228750797e-38 / 0x003810000000000000 (0 => OK)
--13 SINGLE: 8.38860800000000000000e+06 / 0x4b000000  (0 => OK)
-+13 SINGLE: 1.17549435082228750797e-38 / 0x00800000  (0 => OK)
- 14 DOUBLE: 2.98023224000000013061e-08 / 0x003e600000001c5f68 (0 => OK)
--14 SINGLE: 8.55638016000000000000e+08 / 0x4e4c0000  (0x10 =>    INEXACT )
-+14 SINGLE: 2.98023223876953125000e-08 / 0x33000000  (0x10 =>    INEXACT )
- 15 DOUBLE: 5.96046000000000015661e-08 / 0x003e6ffffe6cb2fa82 (0 => OK)
--15 SINGLE: 8.64026624000000000000e+08 / 0x4e4e0000  (0x10 =>    INEXACT )
-+15 SINGLE: 5.96045985901128005935e-08 / 0x337ffff3  (0x10 =>    INEXACT )
- 16 DOUBLE: 6.09755999999999994299e-05 / 0x003f0ff801a9af58a1 (0 => OK)
--16 SINGLE: 9.47896320000000000000e+08 / 0x4e61ff00  (0x10 =>    INEXACT )
-+16 SINGLE: 6.09755988989491015673e-05 / 0x387fc00d  (0x10 =>    INEXACT )
- 17 DOUBLE: 6.10352000000000013665e-05 / 0x003f100000c06a1ef5 (0 => OK)
--17 SINGLE: 9.47912704000000000000e+08 / 0x4e620000  (0x10 =>    INEXACT )
-+17 SINGLE: 6.10351999057456851006e-05 / 0x38800006  (0x10 =>    INEXACT )
- 18 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--18 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+18 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 19 DOUBLE: 1.00097656250000000000e+00 / 0x003ff0040000000000 (0 => OK)
--19 SINGLE: 1.06536140800000000000e+09 / 0x4e7e0080  (0 => OK)
-+19 SINGLE: 1.00097656250000000000e+00 / 0x3f802000  (0 => OK)
- 20 DOUBLE: 2.22507385850720138309e-308 / 0x000010000000000000 (0 => OK)
- 20 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 21 DOUBLE: 1.37899728486072282843e-308 / 0x000009ea82a2287680 (0 => OK)
-@@ -257,41 +257,41 @@ Converting double-precision to single-precision
- 22 DOUBLE: 1.49147387366816238763e-308 / 0x00000ab98fba843210 (0 => OK)
- 22 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 23 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--23 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+23 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 24 DOUBLE: 2.00000000000000000000e+00 / 0x004000000000000000 (0 => OK)
--24 SINGLE: 1.07374182400000000000e+09 / 0x4e800000  (0 => OK)
-+24 SINGLE: 2.00000000000000000000e+00 / 0x40000000  (0 => OK)
- 25 DOUBLE: 2.71828182845904509080e+00 / 0x004005bf0a8b145769 (0 => OK)
--25 SINGLE: 1.07675456000000000000e+09 / 0x4e805bf1  (0x10 =>    INEXACT )
-+25 SINGLE: 2.71828174591064453125e+00 / 0x402df854  (0x10 =>    INEXACT )
- 26 DOUBLE: 3.14159265358979311600e+00 / 0x00400921fb54442d18 (0 => OK)
--26 SINGLE: 1.07853004800000000000e+09 / 0x4e809220  (0x10 =>    INEXACT )
-+26 SINGLE: 3.14159274101257324219e+00 / 0x40490fdb  (0x10 =>    INEXACT )
- 27 DOUBLE: 6.55030000000000000000e+04 / 0x0040effbe000000000 (0 => OK)
--27 SINGLE: 1.19956249600000000000e+09 / 0x4e8effbe  (0 => OK)
-+27 SINGLE: 6.55030000000000000000e+04 / 0x477fdf00  (0 => OK)
- 28 DOUBLE: 6.55040000000000000000e+04 / 0x0040effc0000000000 (0 => OK)
--28 SINGLE: 1.19956275200000000000e+09 / 0x4e8effc0  (0 => OK)
-+28 SINGLE: 6.55040000000000000000e+04 / 0x477fe000  (0 => OK)
- 29 DOUBLE: 6.55050000000000000000e+04 / 0x0040effc2000000000 (0 => OK)
--29 SINGLE: 1.19956300800000000000e+09 / 0x4e8effc2  (0 => OK)
-+29 SINGLE: 6.55050000000000000000e+04 / 0x477fe100  (0 => OK)
- 30 DOUBLE: 1.31007000000000000000e+05 / 0x0040fffbf000000000 (0 => OK)
--30 SINGLE: 1.20795123200000000000e+09 / 0x4e8fffbf  (0 => OK)
-+30 SINGLE: 1.31007000000000000000e+05 / 0x47ffdf80  (0 => OK)
- 31 DOUBLE: 1.31008000000000000000e+05 / 0x0040fffc0000000000 (0 => OK)
--31 SINGLE: 1.20795136000000000000e+09 / 0x4e8fffc0  (0 => OK)
-+31 SINGLE: 1.31008000000000000000e+05 / 0x47ffe000  (0 => OK)
- 32 DOUBLE: 1.31009000000000000000e+05 / 0x0040fffc1000000000 (0 => OK)
--32 SINGLE: 1.20795148800000000000e+09 / 0x4e8fffc1  (0 => OK)
-+32 SINGLE: 1.31009000000000000000e+05 / 0x47ffe080  (0 => OK)
- 33 DOUBLE: 2.14748364700000000000e+09 / 0x0041dfffffffc00000 (0 => OK)
--33 SINGLE: 1.32540006400000000000e+09 / 0x4e9e0000  (0x10 =>    INEXACT )
-+33 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x10 =>    INEXACT )
- 34 DOUBLE: 3.40282346638528859812e+38 / 0x0047efffffe0000000 (0 => OK)
--34 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x10 =>    INEXACT )
-+34 SINGLE: 3.40282346638528859812e+38 / 0x7f7fffff  (0 => OK)
- 35 DOUBLE: 3.40282346638528859812e+38 / 0x0047efffffe0000000 (0 => OK)
--35 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x10 =>    INEXACT )
-+35 SINGLE: 3.40282346638528859812e+38 / 0x7f7fffff  (0 => OK)
- 36 DOUBLE: 1.79769313486231570815e+308 / 0x007fefffffffffffff (0 => OK)
--36 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x14 => OVERFLOW   INEXACT )
-+36 SINGLE: inf / 0x7f800000  (0x14 => OVERFLOW   INEXACT )
- 37 DOUBLE: inf / 0x007ff0000000000000 (0 => OK)
--37 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0 => OK)
-+37 SINGLE: inf / 0x7f800000  (0 => OK)
- 38 DOUBLE: nan / 0x007ff8000000000000 (0 => OK)
--38 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0 => OK)
-+38 SINGLE: nan / 0x7fc00000  (0 => OK)
- 39 DOUBLE: nan / 0x007ff0000000000001 (0 => OK)
--39 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0x1 =>     INVALID)
-+39 SINGLE: nan / 0x7fc00000  (0x1 =>     INVALID)
- 40 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--40 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+40 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- Converting half-precision to single-precision
- 00   HALF: 0xffff  (0 => OK)
- 00 SINGLE: -nan / 0xffffe000  (0 => OK)
-@@ -574,87 +574,87 @@ Converting double-precision to half-precision
- 40   HALF: 0x7f00  (0x1 =>     INVALID)
- Converting double-precision to single-precision
- 00 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--00 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+00 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- 01 DOUBLE: -nan / 0x00fff8000000000000 (0 => OK)
--01 SINGLE: 4.29077299200000000000e+09 / 0x4f7fc000  (0 => OK)
-+01 SINGLE: -nan / 0xffc00000  (0 => OK)
- 02 DOUBLE: -inf / 0x00fff0000000000000 (0 => OK)
--02 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0 => OK)
-+02 SINGLE: -inf / 0xff800000  (0 => OK)
- 03 DOUBLE: -1.79769313486231570814e+308 / 0x00ffefffffffffffff (0 => OK)
--03 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x14 => OVERFLOW   INEXACT )
-+03 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0x14 => OVERFLOW   INEXACT )
- 04 DOUBLE: -3.40282346638528859811e+38 / 0x00c7efffffe0000000 (0 => OK)
--04 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x10 =>    INEXACT )
-+04 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0 => OK)
- 05 DOUBLE: -3.40282346638528859811e+38 / 0x00c7efffffe0000000 (0 => OK)
--05 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x10 =>    INEXACT )
-+05 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0 => OK)
- 06 DOUBLE: -1.11100000000000007529e+31 / 0x00c661874b135ff654 (0 => OK)
--06 SINGLE: 4.07766502400000000000e+09 / 0x4f730c3b  (0x10 =>    INEXACT )
-+06 SINGLE: -1.11099992680387713644e+31 / 0xf30c3a58  (0x10 =>    INEXACT )
- 07 DOUBLE: -1.11099999999999999084e+30 / 0x00c62c0bab523323b9 (0 => OK)
--07 SINGLE: 4.04962457600000000000e+09 / 0x4f71605e  (0x10 =>    INEXACT )
-+07 SINGLE: -1.11099995702702262681e+30 / 0xf1605d5a  (0x10 =>    INEXACT )
- 08 DOUBLE: -2.00000000000000000000e+00 / 0x00c000000000000000 (0 => OK)
--08 SINGLE: 3.22122547200000000000e+09 / 0x4f400000  (0 => OK)
-+08 SINGLE: -2.00000000000000000000e+00 / 0xc0000000  (0 => OK)
- 09 DOUBLE: -1.00000000000000000000e+00 / 0x00bff0000000000000 (0 => OK)
--09 SINGLE: 3.21283686400000000000e+09 / 0x4f3f8000  (0 => OK)
-+09 SINGLE: -1.00000000000000000000e+00 / 0xbf800000  (0 => OK)
- 10 DOUBLE: -2.22507385850720138309e-308 / 0x008010000000000000 (0 => OK)
--10 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x18 =>  UNDERFLOW  INEXACT )
-+10 SINGLE: -0.00000000000000000000e+00 / 0x80000000  (0x18 =>  UNDERFLOW  INEXACT )
- 11 DOUBLE: -1.17549435082228750796e-38 / 0x00b810000000000000 (0 => OK)
--11 SINGLE: 2.15587225600000000000e+09 / 0x4f008000  (0 => OK)
-+11 SINGLE: -1.17549435082228750796e-38 / 0x80800000  (0 => OK)
- 12 DOUBLE: 0.00000000000000000000e+00 / 00000000000000000000 (0 => OK)
- 12 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0 => OK)
- 13 DOUBLE: 1.17549435082228750797e-38 / 0x003810000000000000 (0 => OK)
--13 SINGLE: 8.38860800000000000000e+06 / 0x4b000000  (0 => OK)
-+13 SINGLE: 1.17549435082228750797e-38 / 0x00800000  (0 => OK)
- 14 DOUBLE: 2.98023224000000013061e-08 / 0x003e600000001c5f68 (0 => OK)
--14 SINGLE: 8.55638080000000000000e+08 / 0x4e4c0001  (0x10 =>    INEXACT )
-+14 SINGLE: 2.98023259404089913006e-08 / 0x33000001  (0x10 =>    INEXACT )
- 15 DOUBLE: 5.96046000000000015662e-08 / 0x003e6ffffe6cb2fa82 (0 => OK)
--15 SINGLE: 8.64026624000000000000e+08 / 0x4e4e0000  (0x10 =>    INEXACT )
-+15 SINGLE: 5.96046021428264793940e-08 / 0x337ffff4  (0x10 =>    INEXACT )
- 16 DOUBLE: 6.09755999999999994299e-05 / 0x003f0ff801a9af58a1 (0 => OK)
--16 SINGLE: 9.47896384000000000000e+08 / 0x4e61ff01  (0x10 =>    INEXACT )
-+16 SINGLE: 6.09756025369279086590e-05 / 0x387fc00e  (0x10 =>    INEXACT )
- 17 DOUBLE: 6.10352000000000013665e-05 / 0x003f100000c06a1ef5 (0 => OK)
--17 SINGLE: 9.47912768000000000000e+08 / 0x4e620001  (0x10 =>    INEXACT )
-+17 SINGLE: 6.10352071817032992840e-05 / 0x38800007  (0x10 =>    INEXACT )
- 18 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--18 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+18 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 19 DOUBLE: 1.00097656250000000000e+00 / 0x003ff0040000000000 (0 => OK)
--19 SINGLE: 1.06536140800000000000e+09 / 0x4e7e0080  (0 => OK)
-+19 SINGLE: 1.00097656250000000000e+00 / 0x3f802000  (0 => OK)
- 20 DOUBLE: 2.22507385850720138310e-308 / 0x000010000000000000 (0 => OK)
--20 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0x18 =>  UNDERFLOW  INEXACT )
-+20 SINGLE: 1.40129846432481707093e-45 / 0x00000001  (0x18 =>  UNDERFLOW  INEXACT )
- 21 DOUBLE: 1.37899728486072282844e-308 / 0x000009ea82a2287680 (0 => OK)
--21 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0x18 =>  UNDERFLOW  INEXACT )
-+21 SINGLE: 1.40129846432481707093e-45 / 0x00000001  (0x18 =>  UNDERFLOW  INEXACT )
- 22 DOUBLE: 1.49147387366816238764e-308 / 0x00000ab98fba843210 (0 => OK)
--22 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0x18 =>  UNDERFLOW  INEXACT )
-+22 SINGLE: 1.40129846432481707093e-45 / 0x00000001  (0x18 =>  UNDERFLOW  INEXACT )
- 23 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--23 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+23 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 24 DOUBLE: 2.00000000000000000000e+00 / 0x004000000000000000 (0 => OK)
--24 SINGLE: 1.07374182400000000000e+09 / 0x4e800000  (0 => OK)
-+24 SINGLE: 2.00000000000000000000e+00 / 0x40000000  (0 => OK)
- 25 DOUBLE: 2.71828182845904509080e+00 / 0x004005bf0a8b145769 (0 => OK)
--25 SINGLE: 1.07675456000000000000e+09 / 0x4e805bf1  (0x10 =>    INEXACT )
-+25 SINGLE: 2.71828198432922363282e+00 / 0x402df855  (0x10 =>    INEXACT )
- 26 DOUBLE: 3.14159265358979311600e+00 / 0x00400921fb54442d18 (0 => OK)
--26 SINGLE: 1.07853004800000000000e+09 / 0x4e809220  (0x10 =>    INEXACT )
-+26 SINGLE: 3.14159274101257324219e+00 / 0x40490fdb  (0x10 =>    INEXACT )
- 27 DOUBLE: 6.55030000000000000000e+04 / 0x0040effbe000000000 (0 => OK)
--27 SINGLE: 1.19956249600000000000e+09 / 0x4e8effbe  (0 => OK)
-+27 SINGLE: 6.55030000000000000000e+04 / 0x477fdf00  (0 => OK)
- 28 DOUBLE: 6.55040000000000000000e+04 / 0x0040effc0000000000 (0 => OK)
--28 SINGLE: 1.19956275200000000000e+09 / 0x4e8effc0  (0 => OK)
-+28 SINGLE: 6.55040000000000000000e+04 / 0x477fe000  (0 => OK)
- 29 DOUBLE: 6.55050000000000000000e+04 / 0x0040effc2000000000 (0 => OK)
--29 SINGLE: 1.19956300800000000000e+09 / 0x4e8effc2  (0 => OK)
-+29 SINGLE: 6.55050000000000000000e+04 / 0x477fe100  (0 => OK)
- 30 DOUBLE: 1.31007000000000000000e+05 / 0x0040fffbf000000000 (0 => OK)
--30 SINGLE: 1.20795123200000000000e+09 / 0x4e8fffbf  (0 => OK)
-+30 SINGLE: 1.31007000000000000000e+05 / 0x47ffdf80  (0 => OK)
- 31 DOUBLE: 1.31008000000000000000e+05 / 0x0040fffc0000000000 (0 => OK)
--31 SINGLE: 1.20795136000000000000e+09 / 0x4e8fffc0  (0 => OK)
-+31 SINGLE: 1.31008000000000000000e+05 / 0x47ffe000  (0 => OK)
- 32 DOUBLE: 1.31009000000000000000e+05 / 0x0040fffc1000000000 (0 => OK)
--32 SINGLE: 1.20795148800000000000e+09 / 0x4e8fffc1  (0 => OK)
-+32 SINGLE: 1.31009000000000000000e+05 / 0x47ffe080  (0 => OK)
- 33 DOUBLE: 2.14748364700000000000e+09 / 0x0041dfffffffc00000 (0 => OK)
--33 SINGLE: 1.32540006400000000000e+09 / 0x4e9e0000  (0x10 =>    INEXACT )
-+33 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x10 =>    INEXACT )
- 34 DOUBLE: 3.40282346638528859812e+38 / 0x0047efffffe0000000 (0 => OK)
--34 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x10 =>    INEXACT )
-+34 SINGLE: 3.40282346638528859812e+38 / 0x7f7fffff  (0 => OK)
- 35 DOUBLE: 3.40282346638528859812e+38 / 0x0047efffffe0000000 (0 => OK)
--35 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x10 =>    INEXACT )
-+35 SINGLE: 3.40282346638528859812e+38 / 0x7f7fffff  (0 => OK)
- 36 DOUBLE: 1.79769313486231570815e+308 / 0x007fefffffffffffff (0 => OK)
--36 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x14 => OVERFLOW   INEXACT )
-+36 SINGLE: inf / 0x7f800000  (0x14 => OVERFLOW   INEXACT )
- 37 DOUBLE: inf / 0x007ff0000000000000 (0 => OK)
--37 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0 => OK)
-+37 SINGLE: inf / 0x7f800000  (0 => OK)
- 38 DOUBLE: nan / 0x007ff8000000000000 (0 => OK)
--38 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0 => OK)
-+38 SINGLE: nan / 0x7fc00000  (0 => OK)
- 39 DOUBLE: nan / 0x007ff0000000000001 (0 => OK)
--39 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0x1 =>     INVALID)
-+39 SINGLE: nan / 0x7fc00000  (0x1 =>     INVALID)
- 40 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--40 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+40 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- Converting half-precision to single-precision
- 00   HALF: 0xffff  (0 => OK)
- 00 SINGLE: -nan / 0xffffe000  (0 => OK)
-@@ -937,45 +937,45 @@ Converting double-precision to half-precision
- 40   HALF: 0x7f00  (0x1 =>     INVALID)
- Converting double-precision to single-precision
- 00 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--00 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+00 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- 01 DOUBLE: -nan / 0x00fff8000000000000 (0 => OK)
--01 SINGLE: 4.29077299200000000000e+09 / 0x4f7fc000  (0 => OK)
-+01 SINGLE: -nan / 0xffc00000  (0 => OK)
- 02 DOUBLE: -inf / 0x00fff0000000000000 (0 => OK)
--02 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0 => OK)
-+02 SINGLE: -inf / 0xff800000  (0 => OK)
- 03 DOUBLE: -1.79769313486231570815e+308 / 0x00ffefffffffffffff (0 => OK)
--03 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x14 => OVERFLOW   INEXACT )
-+03 SINGLE: -inf / 0xff800000  (0x14 => OVERFLOW   INEXACT )
- 04 DOUBLE: -3.40282346638528859812e+38 / 0x00c7efffffe0000000 (0 => OK)
--04 SINGLE: 4.28657843200000000000e+09 / 0x4f7f7fff  (0x10 =>    INEXACT )
-+04 SINGLE: -3.40282346638528859812e+38 / 0xff7fffff  (0 => OK)
- 05 DOUBLE: -3.40282346638528859812e+38 / 0x00c7efffffe0000000 (0 => OK)
--05 SINGLE: 4.28657843200000000000e+09 / 0x4f7f7fff  (0x10 =>    INEXACT )
-+05 SINGLE: -3.40282346638528859812e+38 / 0xff7fffff  (0 => OK)
- 06 DOUBLE: -1.11100000000000007530e+31 / 0x00c661874b135ff654 (0 => OK)
--06 SINGLE: 4.07766476800000000000e+09 / 0x4f730c3a  (0x10 =>    INEXACT )
-+06 SINGLE: -1.11100004769645909791e+31 / 0xf30c3a59  (0x10 =>    INEXACT )
- 07 DOUBLE: -1.11099999999999999085e+30 / 0x00c62c0bab523323b9 (0 => OK)
--07 SINGLE: 4.04962432000000000000e+09 / 0x4f71605d  (0x10 =>    INEXACT )
-+07 SINGLE: -1.11100003258488635273e+30 / 0xf1605d5b  (0x10 =>    INEXACT )
- 08 DOUBLE: -2.00000000000000000000e+00 / 0x00c000000000000000 (0 => OK)
--08 SINGLE: 3.22122547200000000000e+09 / 0x4f400000  (0 => OK)
-+08 SINGLE: -2.00000000000000000000e+00 / 0xc0000000  (0 => OK)
- 09 DOUBLE: -1.00000000000000000000e+00 / 0x00bff0000000000000 (0 => OK)
--09 SINGLE: 3.21283686400000000000e+09 / 0x4f3f8000  (0 => OK)
-+09 SINGLE: -1.00000000000000000000e+00 / 0xbf800000  (0 => OK)
- 10 DOUBLE: -2.22507385850720138310e-308 / 0x008010000000000000 (0 => OK)
--10 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x18 =>  UNDERFLOW  INEXACT )
-+10 SINGLE: -1.40129846432481707093e-45 / 0x80000001  (0x18 =>  UNDERFLOW  INEXACT )
- 11 DOUBLE: -1.17549435082228750797e-38 / 0x00b810000000000000 (0 => OK)
--11 SINGLE: 2.15587225600000000000e+09 / 0x4f008000  (0 => OK)
-+11 SINGLE: -1.17549435082228750797e-38 / 0x80800000  (0 => OK)
- 12 DOUBLE: 0.00000000000000000000e+00 / 00000000000000000000 (0 => OK)
- 12 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0 => OK)
- 13 DOUBLE: 1.17549435082228750796e-38 / 0x003810000000000000 (0 => OK)
--13 SINGLE: 8.38860800000000000000e+06 / 0x4b000000  (0 => OK)
-+13 SINGLE: 1.17549435082228750796e-38 / 0x00800000  (0 => OK)
- 14 DOUBLE: 2.98023224000000013060e-08 / 0x003e600000001c5f68 (0 => OK)
--14 SINGLE: 8.55638016000000000000e+08 / 0x4e4c0000  (0x10 =>    INEXACT )
-+14 SINGLE: 2.98023223876953125000e-08 / 0x33000000  (0x10 =>    INEXACT )
- 15 DOUBLE: 5.96046000000000015661e-08 / 0x003e6ffffe6cb2fa82 (0 => OK)
--15 SINGLE: 8.64026560000000000000e+08 / 0x4e4dffff  (0x10 =>    INEXACT )
-+15 SINGLE: 5.96045985901128005934e-08 / 0x337ffff3  (0x10 =>    INEXACT )
- 16 DOUBLE: 6.09755999999999994298e-05 / 0x003f0ff801a9af58a1 (0 => OK)
--16 SINGLE: 9.47896320000000000000e+08 / 0x4e61ff00  (0x10 =>    INEXACT )
-+16 SINGLE: 6.09755988989491015672e-05 / 0x387fc00d  (0x10 =>    INEXACT )
- 17 DOUBLE: 6.10352000000000013664e-05 / 0x003f100000c06a1ef5 (0 => OK)
--17 SINGLE: 9.47912704000000000000e+08 / 0x4e620000  (0x10 =>    INEXACT )
-+17 SINGLE: 6.10351999057456851005e-05 / 0x38800006  (0x10 =>    INEXACT )
- 18 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--18 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+18 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 19 DOUBLE: 1.00097656250000000000e+00 / 0x003ff0040000000000 (0 => OK)
--19 SINGLE: 1.06536140800000000000e+09 / 0x4e7e0080  (0 => OK)
-+19 SINGLE: 1.00097656250000000000e+00 / 0x3f802000  (0 => OK)
- 20 DOUBLE: 2.22507385850720138309e-308 / 0x000010000000000000 (0 => OK)
- 20 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 21 DOUBLE: 1.37899728486072282843e-308 / 0x000009ea82a2287680 (0 => OK)
-@@ -983,41 +983,41 @@ Converting double-precision to single-precision
- 22 DOUBLE: 1.49147387366816238763e-308 / 0x00000ab98fba843210 (0 => OK)
- 22 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 23 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--23 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+23 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 24 DOUBLE: 2.00000000000000000000e+00 / 0x004000000000000000 (0 => OK)
--24 SINGLE: 1.07374182400000000000e+09 / 0x4e800000  (0 => OK)
-+24 SINGLE: 2.00000000000000000000e+00 / 0x40000000  (0 => OK)
- 25 DOUBLE: 2.71828182845904509079e+00 / 0x004005bf0a8b145769 (0 => OK)
--25 SINGLE: 1.07675443200000000000e+09 / 0x4e805bf0  (0x10 =>    INEXACT )
-+25 SINGLE: 2.71828174591064453125e+00 / 0x402df854  (0x10 =>    INEXACT )
- 26 DOUBLE: 3.14159265358979311599e+00 / 0x00400921fb54442d18 (0 => OK)
--26 SINGLE: 1.07852992000000000000e+09 / 0x4e80921f  (0x10 =>    INEXACT )
-+26 SINGLE: 3.14159250259399414062e+00 / 0x40490fda  (0x10 =>    INEXACT )
- 27 DOUBLE: 6.55030000000000000000e+04 / 0x0040effbe000000000 (0 => OK)
--27 SINGLE: 1.19956249600000000000e+09 / 0x4e8effbe  (0 => OK)
-+27 SINGLE: 6.55030000000000000000e+04 / 0x477fdf00  (0 => OK)
- 28 DOUBLE: 6.55040000000000000000e+04 / 0x0040effc0000000000 (0 => OK)
--28 SINGLE: 1.19956275200000000000e+09 / 0x4e8effc0  (0 => OK)
-+28 SINGLE: 6.55040000000000000000e+04 / 0x477fe000  (0 => OK)
- 29 DOUBLE: 6.55050000000000000000e+04 / 0x0040effc2000000000 (0 => OK)
--29 SINGLE: 1.19956300800000000000e+09 / 0x4e8effc2  (0 => OK)
-+29 SINGLE: 6.55050000000000000000e+04 / 0x477fe100  (0 => OK)
- 30 DOUBLE: 1.31007000000000000000e+05 / 0x0040fffbf000000000 (0 => OK)
--30 SINGLE: 1.20795123200000000000e+09 / 0x4e8fffbf  (0 => OK)
-+30 SINGLE: 1.31007000000000000000e+05 / 0x47ffdf80  (0 => OK)
- 31 DOUBLE: 1.31008000000000000000e+05 / 0x0040fffc0000000000 (0 => OK)
--31 SINGLE: 1.20795136000000000000e+09 / 0x4e8fffc0  (0 => OK)
-+31 SINGLE: 1.31008000000000000000e+05 / 0x47ffe000  (0 => OK)
- 32 DOUBLE: 1.31009000000000000000e+05 / 0x0040fffc1000000000 (0 => OK)
--32 SINGLE: 1.20795148800000000000e+09 / 0x4e8fffc1  (0 => OK)
-+32 SINGLE: 1.31009000000000000000e+05 / 0x47ffe080  (0 => OK)
- 33 DOUBLE: 2.14748364700000000000e+09 / 0x0041dfffffffc00000 (0 => OK)
--33 SINGLE: 1.32539993600000000000e+09 / 0x4e9dffff  (0x10 =>    INEXACT )
-+33 SINGLE: 2.14748352000000000000e+09 / 0x4effffff  (0x10 =>    INEXACT )
- 34 DOUBLE: 3.40282346638528859811e+38 / 0x0047efffffe0000000 (0 => OK)
--34 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x10 =>    INEXACT )
-+34 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0 => OK)
- 35 DOUBLE: 3.40282346638528859811e+38 / 0x0047efffffe0000000 (0 => OK)
--35 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x10 =>    INEXACT )
-+35 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0 => OK)
- 36 DOUBLE: 1.79769313486231570814e+308 / 0x007fefffffffffffff (0 => OK)
--36 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x14 => OVERFLOW   INEXACT )
-+36 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0x14 => OVERFLOW   INEXACT )
- 37 DOUBLE: inf / 0x007ff0000000000000 (0 => OK)
--37 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0 => OK)
-+37 SINGLE: inf / 0x7f800000  (0 => OK)
- 38 DOUBLE: nan / 0x007ff8000000000000 (0 => OK)
--38 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0 => OK)
-+38 SINGLE: nan / 0x7fc00000  (0 => OK)
- 39 DOUBLE: nan / 0x007ff0000000000001 (0 => OK)
--39 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0x1 =>     INVALID)
-+39 SINGLE: nan / 0x7fc00000  (0x1 =>     INVALID)
- 40 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--40 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+40 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- Converting half-precision to single-precision
- 00   HALF: 0xffff  (0 => OK)
- 00 SINGLE: -nan / 0xffffe000  (0 => OK)
-@@ -1300,45 +1300,45 @@ Converting double-precision to half-precision
- 40   HALF: 0x7f00  (0x1 =>     INVALID)
- Converting double-precision to single-precision
- 00 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--00 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+00 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- 01 DOUBLE: -nan / 0x00fff8000000000000 (0 => OK)
--01 SINGLE: 4.29077299200000000000e+09 / 0x4f7fc000  (0 => OK)
-+01 SINGLE: -nan / 0xffc00000  (0 => OK)
- 02 DOUBLE: -inf / 0x00fff0000000000000 (0 => OK)
--02 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0 => OK)
-+02 SINGLE: -inf / 0xff800000  (0 => OK)
- 03 DOUBLE: -1.79769313486231570814e+308 / 0x00ffefffffffffffff (0 => OK)
--03 SINGLE: 4.28657843200000000000e+09 / 0x4f7f7fff  (0x14 => OVERFLOW   INEXACT )
-+03 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0x14 => OVERFLOW   INEXACT )
- 04 DOUBLE: -3.40282346638528859811e+38 / 0x00c7efffffe0000000 (0 => OK)
--04 SINGLE: 4.28657843200000000000e+09 / 0x4f7f7fff  (0x10 =>    INEXACT )
-+04 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0 => OK)
- 05 DOUBLE: -3.40282346638528859811e+38 / 0x00c7efffffe0000000 (0 => OK)
--05 SINGLE: 4.28657843200000000000e+09 / 0x4f7f7fff  (0x10 =>    INEXACT )
-+05 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0 => OK)
- 06 DOUBLE: -1.11100000000000007529e+31 / 0x00c661874b135ff654 (0 => OK)
--06 SINGLE: 4.07766476800000000000e+09 / 0x4f730c3a  (0x10 =>    INEXACT )
-+06 SINGLE: -1.11099992680387713644e+31 / 0xf30c3a58  (0x10 =>    INEXACT )
- 07 DOUBLE: -1.11099999999999999084e+30 / 0x00c62c0bab523323b9 (0 => OK)
--07 SINGLE: 4.04962432000000000000e+09 / 0x4f71605d  (0x10 =>    INEXACT )
-+07 SINGLE: -1.11099995702702262681e+30 / 0xf1605d5a  (0x10 =>    INEXACT )
- 08 DOUBLE: -2.00000000000000000000e+00 / 0x00c000000000000000 (0 => OK)
--08 SINGLE: 3.22122547200000000000e+09 / 0x4f400000  (0 => OK)
-+08 SINGLE: -2.00000000000000000000e+00 / 0xc0000000  (0 => OK)
- 09 DOUBLE: -1.00000000000000000000e+00 / 0x00bff0000000000000 (0 => OK)
--09 SINGLE: 3.21283686400000000000e+09 / 0x4f3f8000  (0 => OK)
-+09 SINGLE: -1.00000000000000000000e+00 / 0xbf800000  (0 => OK)
- 10 DOUBLE: -2.22507385850720138309e-308 / 0x008010000000000000 (0 => OK)
--10 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x18 =>  UNDERFLOW  INEXACT )
-+10 SINGLE: -0.00000000000000000000e+00 / 0x80000000  (0x18 =>  UNDERFLOW  INEXACT )
- 11 DOUBLE: -1.17549435082228750796e-38 / 0x00b810000000000000 (0 => OK)
--11 SINGLE: 2.15587225600000000000e+09 / 0x4f008000  (0 => OK)
-+11 SINGLE: -1.17549435082228750796e-38 / 0x80800000  (0 => OK)
- 12 DOUBLE: 0.00000000000000000000e+00 / 00000000000000000000 (0 => OK)
- 12 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0 => OK)
- 13 DOUBLE: 1.17549435082228750796e-38 / 0x003810000000000000 (0 => OK)
--13 SINGLE: 8.38860800000000000000e+06 / 0x4b000000  (0 => OK)
-+13 SINGLE: 1.17549435082228750796e-38 / 0x00800000  (0 => OK)
- 14 DOUBLE: 2.98023224000000013060e-08 / 0x003e600000001c5f68 (0 => OK)
--14 SINGLE: 8.55638016000000000000e+08 / 0x4e4c0000  (0x10 =>    INEXACT )
-+14 SINGLE: 2.98023223876953125000e-08 / 0x33000000  (0x10 =>    INEXACT )
- 15 DOUBLE: 5.96046000000000015661e-08 / 0x003e6ffffe6cb2fa82 (0 => OK)
--15 SINGLE: 8.64026560000000000000e+08 / 0x4e4dffff  (0x10 =>    INEXACT )
-+15 SINGLE: 5.96045985901128005934e-08 / 0x337ffff3  (0x10 =>    INEXACT )
- 16 DOUBLE: 6.09755999999999994298e-05 / 0x003f0ff801a9af58a1 (0 => OK)
--16 SINGLE: 9.47896320000000000000e+08 / 0x4e61ff00  (0x10 =>    INEXACT )
-+16 SINGLE: 6.09755988989491015672e-05 / 0x387fc00d  (0x10 =>    INEXACT )
- 17 DOUBLE: 6.10352000000000013664e-05 / 0x003f100000c06a1ef5 (0 => OK)
--17 SINGLE: 9.47912704000000000000e+08 / 0x4e620000  (0x10 =>    INEXACT )
-+17 SINGLE: 6.10351999057456851005e-05 / 0x38800006  (0x10 =>    INEXACT )
- 18 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--18 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+18 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 19 DOUBLE: 1.00097656250000000000e+00 / 0x003ff0040000000000 (0 => OK)
--19 SINGLE: 1.06536140800000000000e+09 / 0x4e7e0080  (0 => OK)
-+19 SINGLE: 1.00097656250000000000e+00 / 0x3f802000  (0 => OK)
- 20 DOUBLE: 2.22507385850720138309e-308 / 0x000010000000000000 (0 => OK)
- 20 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 21 DOUBLE: 1.37899728486072282843e-308 / 0x000009ea82a2287680 (0 => OK)
-@@ -1346,41 +1346,41 @@ Converting double-precision to single-precision
- 22 DOUBLE: 1.49147387366816238763e-308 / 0x00000ab98fba843210 (0 => OK)
- 22 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 23 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--23 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+23 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 24 DOUBLE: 2.00000000000000000000e+00 / 0x004000000000000000 (0 => OK)
--24 SINGLE: 1.07374182400000000000e+09 / 0x4e800000  (0 => OK)
-+24 SINGLE: 2.00000000000000000000e+00 / 0x40000000  (0 => OK)
- 25 DOUBLE: 2.71828182845904509079e+00 / 0x004005bf0a8b145769 (0 => OK)
--25 SINGLE: 1.07675443200000000000e+09 / 0x4e805bf0  (0x10 =>    INEXACT )
-+25 SINGLE: 2.71828174591064453125e+00 / 0x402df854  (0x10 =>    INEXACT )
- 26 DOUBLE: 3.14159265358979311599e+00 / 0x00400921fb54442d18 (0 => OK)
--26 SINGLE: 1.07852992000000000000e+09 / 0x4e80921f  (0x10 =>    INEXACT )
-+26 SINGLE: 3.14159250259399414062e+00 / 0x40490fda  (0x10 =>    INEXACT )
- 27 DOUBLE: 6.55030000000000000000e+04 / 0x0040effbe000000000 (0 => OK)
--27 SINGLE: 1.19956249600000000000e+09 / 0x4e8effbe  (0 => OK)
-+27 SINGLE: 6.55030000000000000000e+04 / 0x477fdf00  (0 => OK)
- 28 DOUBLE: 6.55040000000000000000e+04 / 0x0040effc0000000000 (0 => OK)
--28 SINGLE: 1.19956275200000000000e+09 / 0x4e8effc0  (0 => OK)
-+28 SINGLE: 6.55040000000000000000e+04 / 0x477fe000  (0 => OK)
- 29 DOUBLE: 6.55050000000000000000e+04 / 0x0040effc2000000000 (0 => OK)
--29 SINGLE: 1.19956300800000000000e+09 / 0x4e8effc2  (0 => OK)
-+29 SINGLE: 6.55050000000000000000e+04 / 0x477fe100  (0 => OK)
- 30 DOUBLE: 1.31007000000000000000e+05 / 0x0040fffbf000000000 (0 => OK)
--30 SINGLE: 1.20795123200000000000e+09 / 0x4e8fffbf  (0 => OK)
-+30 SINGLE: 1.31007000000000000000e+05 / 0x47ffdf80  (0 => OK)
- 31 DOUBLE: 1.31008000000000000000e+05 / 0x0040fffc0000000000 (0 => OK)
--31 SINGLE: 1.20795136000000000000e+09 / 0x4e8fffc0  (0 => OK)
-+31 SINGLE: 1.31008000000000000000e+05 / 0x47ffe000  (0 => OK)
- 32 DOUBLE: 1.31009000000000000000e+05 / 0x0040fffc1000000000 (0 => OK)
--32 SINGLE: 1.20795148800000000000e+09 / 0x4e8fffc1  (0 => OK)
-+32 SINGLE: 1.31009000000000000000e+05 / 0x47ffe080  (0 => OK)
- 33 DOUBLE: 2.14748364700000000000e+09 / 0x0041dfffffffc00000 (0 => OK)
--33 SINGLE: 1.32539993600000000000e+09 / 0x4e9dffff  (0x10 =>    INEXACT )
-+33 SINGLE: 2.14748352000000000000e+09 / 0x4effffff  (0x10 =>    INEXACT )
- 34 DOUBLE: 3.40282346638528859811e+38 / 0x0047efffffe0000000 (0 => OK)
--34 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x10 =>    INEXACT )
-+34 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0 => OK)
- 35 DOUBLE: 3.40282346638528859811e+38 / 0x0047efffffe0000000 (0 => OK)
--35 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x10 =>    INEXACT )
-+35 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0 => OK)
- 36 DOUBLE: 1.79769313486231570814e+308 / 0x007fefffffffffffff (0 => OK)
--36 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x14 => OVERFLOW   INEXACT )
-+36 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0x14 => OVERFLOW   INEXACT )
- 37 DOUBLE: inf / 0x007ff0000000000000 (0 => OK)
--37 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0 => OK)
-+37 SINGLE: inf / 0x7f800000  (0 => OK)
- 38 DOUBLE: nan / 0x007ff8000000000000 (0 => OK)
--38 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0 => OK)
-+38 SINGLE: nan / 0x7fc00000  (0 => OK)
- 39 DOUBLE: nan / 0x007ff0000000000001 (0 => OK)
--39 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0x1 =>     INVALID)
-+39 SINGLE: nan / 0x7fc00000  (0x1 =>     INVALID)
- 40 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--40 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+40 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- Converting half-precision to single-precision
- 00   HALF: 0xffff  (0 => OK)
- 00 SINGLE: -nan / 0xffffe000  (0 => OK)
-@@ -1845,45 +1845,45 @@ Converting double-precision to half-precision
- 40   HALF: 0000  (0x1 =>     INVALID)
- Converting double-precision to single-precision
- 00 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--00 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+00 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- 01 DOUBLE: -nan / 0x00fff8000000000000 (0 => OK)
--01 SINGLE: 4.29077299200000000000e+09 / 0x4f7fc000  (0 => OK)
-+01 SINGLE: -nan / 0xffc00000  (0 => OK)
- 02 DOUBLE: -inf / 0x00fff0000000000000 (0 => OK)
--02 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0 => OK)
-+02 SINGLE: -inf / 0xff800000  (0 => OK)
- 03 DOUBLE: -1.79769313486231570815e+308 / 0x00ffefffffffffffff (0 => OK)
--03 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x14 => OVERFLOW   INEXACT )
-+03 SINGLE: -inf / 0xff800000  (0x14 => OVERFLOW   INEXACT )
- 04 DOUBLE: -3.40282346638528859812e+38 / 0x00c7efffffe0000000 (0 => OK)
--04 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x10 =>    INEXACT )
-+04 SINGLE: -3.40282346638528859812e+38 / 0xff7fffff  (0 => OK)
- 05 DOUBLE: -3.40282346638528859812e+38 / 0x00c7efffffe0000000 (0 => OK)
--05 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x10 =>    INEXACT )
-+05 SINGLE: -3.40282346638528859812e+38 / 0xff7fffff  (0 => OK)
- 06 DOUBLE: -1.11100000000000007529e+31 / 0x00c661874b135ff654 (0 => OK)
--06 SINGLE: 4.07766476800000000000e+09 / 0x4f730c3a  (0x10 =>    INEXACT )
-+06 SINGLE: -1.11100004769645909791e+31 / 0xf30c3a59  (0x10 =>    INEXACT )
- 07 DOUBLE: -1.11099999999999999085e+30 / 0x00c62c0bab523323b9 (0 => OK)
--07 SINGLE: 4.04962432000000000000e+09 / 0x4f71605d  (0x10 =>    INEXACT )
-+07 SINGLE: -1.11100003258488635273e+30 / 0xf1605d5b  (0x10 =>    INEXACT )
- 08 DOUBLE: -2.00000000000000000000e+00 / 0x00c000000000000000 (0 => OK)
--08 SINGLE: 3.22122547200000000000e+09 / 0x4f400000  (0 => OK)
-+08 SINGLE: -2.00000000000000000000e+00 / 0xc0000000  (0 => OK)
- 09 DOUBLE: -1.00000000000000000000e+00 / 0x00bff0000000000000 (0 => OK)
--09 SINGLE: 3.21283686400000000000e+09 / 0x4f3f8000  (0 => OK)
-+09 SINGLE: -1.00000000000000000000e+00 / 0xbf800000  (0 => OK)
- 10 DOUBLE: -2.22507385850720138309e-308 / 0x008010000000000000 (0 => OK)
--10 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x18 =>  UNDERFLOW  INEXACT )
-+10 SINGLE: -0.00000000000000000000e+00 / 0x80000000  (0x18 =>  UNDERFLOW  INEXACT )
- 11 DOUBLE: -1.17549435082228750797e-38 / 0x00b810000000000000 (0 => OK)
--11 SINGLE: 2.15587225600000000000e+09 / 0x4f008000  (0 => OK)
-+11 SINGLE: -1.17549435082228750797e-38 / 0x80800000  (0 => OK)
- 12 DOUBLE: 0.00000000000000000000e+00 / 00000000000000000000 (0 => OK)
- 12 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0 => OK)
- 13 DOUBLE: 1.17549435082228750797e-38 / 0x003810000000000000 (0 => OK)
--13 SINGLE: 8.38860800000000000000e+06 / 0x4b000000  (0 => OK)
-+13 SINGLE: 1.17549435082228750797e-38 / 0x00800000  (0 => OK)
- 14 DOUBLE: 2.98023224000000013061e-08 / 0x003e600000001c5f68 (0 => OK)
--14 SINGLE: 8.55638016000000000000e+08 / 0x4e4c0000  (0x10 =>    INEXACT )
-+14 SINGLE: 2.98023223876953125000e-08 / 0x33000000  (0x10 =>    INEXACT )
- 15 DOUBLE: 5.96046000000000015661e-08 / 0x003e6ffffe6cb2fa82 (0 => OK)
--15 SINGLE: 8.64026624000000000000e+08 / 0x4e4e0000  (0x10 =>    INEXACT )
-+15 SINGLE: 5.96045985901128005935e-08 / 0x337ffff3  (0x10 =>    INEXACT )
- 16 DOUBLE: 6.09755999999999994299e-05 / 0x003f0ff801a9af58a1 (0 => OK)
--16 SINGLE: 9.47896320000000000000e+08 / 0x4e61ff00  (0x10 =>    INEXACT )
-+16 SINGLE: 6.09755988989491015673e-05 / 0x387fc00d  (0x10 =>    INEXACT )
- 17 DOUBLE: 6.10352000000000013665e-05 / 0x003f100000c06a1ef5 (0 => OK)
--17 SINGLE: 9.47912704000000000000e+08 / 0x4e620000  (0x10 =>    INEXACT )
-+17 SINGLE: 6.10351999057456851006e-05 / 0x38800006  (0x10 =>    INEXACT )
- 18 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--18 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+18 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 19 DOUBLE: 1.00097656250000000000e+00 / 0x003ff0040000000000 (0 => OK)
--19 SINGLE: 1.06536140800000000000e+09 / 0x4e7e0080  (0 => OK)
-+19 SINGLE: 1.00097656250000000000e+00 / 0x3f802000  (0 => OK)
- 20 DOUBLE: 2.22507385850720138309e-308 / 0x000010000000000000 (0 => OK)
- 20 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 21 DOUBLE: 1.37899728486072282843e-308 / 0x000009ea82a2287680 (0 => OK)
-@@ -1891,41 +1891,41 @@ Converting double-precision to single-precision
- 22 DOUBLE: 1.49147387366816238763e-308 / 0x00000ab98fba843210 (0 => OK)
- 22 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 23 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--23 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+23 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 24 DOUBLE: 2.00000000000000000000e+00 / 0x004000000000000000 (0 => OK)
--24 SINGLE: 1.07374182400000000000e+09 / 0x4e800000  (0 => OK)
-+24 SINGLE: 2.00000000000000000000e+00 / 0x40000000  (0 => OK)
- 25 DOUBLE: 2.71828182845904509080e+00 / 0x004005bf0a8b145769 (0 => OK)
--25 SINGLE: 1.07675456000000000000e+09 / 0x4e805bf1  (0x10 =>    INEXACT )
-+25 SINGLE: 2.71828174591064453125e+00 / 0x402df854  (0x10 =>    INEXACT )
- 26 DOUBLE: 3.14159265358979311600e+00 / 0x00400921fb54442d18 (0 => OK)
--26 SINGLE: 1.07853004800000000000e+09 / 0x4e809220  (0x10 =>    INEXACT )
-+26 SINGLE: 3.14159274101257324219e+00 / 0x40490fdb  (0x10 =>    INEXACT )
- 27 DOUBLE: 6.55030000000000000000e+04 / 0x0040effbe000000000 (0 => OK)
--27 SINGLE: 1.19956249600000000000e+09 / 0x4e8effbe  (0 => OK)
-+27 SINGLE: 6.55030000000000000000e+04 / 0x477fdf00  (0 => OK)
- 28 DOUBLE: 6.55040000000000000000e+04 / 0x0040effc0000000000 (0 => OK)
--28 SINGLE: 1.19956275200000000000e+09 / 0x4e8effc0  (0 => OK)
-+28 SINGLE: 6.55040000000000000000e+04 / 0x477fe000  (0 => OK)
- 29 DOUBLE: 6.55050000000000000000e+04 / 0x0040effc2000000000 (0 => OK)
--29 SINGLE: 1.19956300800000000000e+09 / 0x4e8effc2  (0 => OK)
-+29 SINGLE: 6.55050000000000000000e+04 / 0x477fe100  (0 => OK)
- 30 DOUBLE: 1.31007000000000000000e+05 / 0x0040fffbf000000000 (0 => OK)
--30 SINGLE: 1.20795123200000000000e+09 / 0x4e8fffbf  (0 => OK)
-+30 SINGLE: 1.31007000000000000000e+05 / 0x47ffdf80  (0 => OK)
- 31 DOUBLE: 1.31008000000000000000e+05 / 0x0040fffc0000000000 (0 => OK)
--31 SINGLE: 1.20795136000000000000e+09 / 0x4e8fffc0  (0 => OK)
-+31 SINGLE: 1.31008000000000000000e+05 / 0x47ffe000  (0 => OK)
- 32 DOUBLE: 1.31009000000000000000e+05 / 0x0040fffc1000000000 (0 => OK)
--32 SINGLE: 1.20795148800000000000e+09 / 0x4e8fffc1  (0 => OK)
-+32 SINGLE: 1.31009000000000000000e+05 / 0x47ffe080  (0 => OK)
- 33 DOUBLE: 2.14748364700000000000e+09 / 0x0041dfffffffc00000 (0 => OK)
--33 SINGLE: 1.32540006400000000000e+09 / 0x4e9e0000  (0x10 =>    INEXACT )
-+33 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x10 =>    INEXACT )
- 34 DOUBLE: 3.40282346638528859812e+38 / 0x0047efffffe0000000 (0 => OK)
--34 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x10 =>    INEXACT )
-+34 SINGLE: 3.40282346638528859812e+38 / 0x7f7fffff  (0 => OK)
- 35 DOUBLE: 3.40282346638528859812e+38 / 0x0047efffffe0000000 (0 => OK)
--35 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x10 =>    INEXACT )
-+35 SINGLE: 3.40282346638528859812e+38 / 0x7f7fffff  (0 => OK)
- 36 DOUBLE: 1.79769313486231570815e+308 / 0x007fefffffffffffff (0 => OK)
--36 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x14 => OVERFLOW   INEXACT )
-+36 SINGLE: inf / 0x7f800000  (0x14 => OVERFLOW   INEXACT )
- 37 DOUBLE: inf / 0x007ff0000000000000 (0 => OK)
--37 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0 => OK)
-+37 SINGLE: inf / 0x7f800000  (0 => OK)
- 38 DOUBLE: nan / 0x007ff8000000000000 (0 => OK)
--38 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0 => OK)
-+38 SINGLE: nan / 0x7fc00000  (0 => OK)
- 39 DOUBLE: nan / 0x007ff0000000000001 (0 => OK)
--39 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0x1 =>     INVALID)
-+39 SINGLE: nan / 0x7fc00000  (0x1 =>     INVALID)
- 40 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--40 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+40 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- Converting half-precision to single-precision
- 00   HALF: 0xffff  (0 => OK)
- 00 SINGLE: -1.31008000000000000000e+05 / 0xc7ffe000  (0 => OK)
-@@ -2208,87 +2208,87 @@ Converting double-precision to half-precision
- 40   HALF: 0000  (0x1 =>     INVALID)
- Converting double-precision to single-precision
- 00 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--00 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+00 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- 01 DOUBLE: -nan / 0x00fff8000000000000 (0 => OK)
--01 SINGLE: 4.29077299200000000000e+09 / 0x4f7fc000  (0 => OK)
-+01 SINGLE: -nan / 0xffc00000  (0 => OK)
- 02 DOUBLE: -inf / 0x00fff0000000000000 (0 => OK)
--02 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0 => OK)
-+02 SINGLE: -inf / 0xff800000  (0 => OK)
- 03 DOUBLE: -1.79769313486231570814e+308 / 0x00ffefffffffffffff (0 => OK)
--03 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x14 => OVERFLOW   INEXACT )
-+03 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0x14 => OVERFLOW   INEXACT )
- 04 DOUBLE: -3.40282346638528859811e+38 / 0x00c7efffffe0000000 (0 => OK)
--04 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x10 =>    INEXACT )
-+04 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0 => OK)
- 05 DOUBLE: -3.40282346638528859811e+38 / 0x00c7efffffe0000000 (0 => OK)
--05 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x10 =>    INEXACT )
-+05 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0 => OK)
- 06 DOUBLE: -1.11100000000000007529e+31 / 0x00c661874b135ff654 (0 => OK)
--06 SINGLE: 4.07766502400000000000e+09 / 0x4f730c3b  (0x10 =>    INEXACT )
-+06 SINGLE: -1.11099992680387713644e+31 / 0xf30c3a58  (0x10 =>    INEXACT )
- 07 DOUBLE: -1.11099999999999999084e+30 / 0x00c62c0bab523323b9 (0 => OK)
--07 SINGLE: 4.04962457600000000000e+09 / 0x4f71605e  (0x10 =>    INEXACT )
-+07 SINGLE: -1.11099995702702262681e+30 / 0xf1605d5a  (0x10 =>    INEXACT )
- 08 DOUBLE: -2.00000000000000000000e+00 / 0x00c000000000000000 (0 => OK)
--08 SINGLE: 3.22122547200000000000e+09 / 0x4f400000  (0 => OK)
-+08 SINGLE: -2.00000000000000000000e+00 / 0xc0000000  (0 => OK)
- 09 DOUBLE: -1.00000000000000000000e+00 / 0x00bff0000000000000 (0 => OK)
--09 SINGLE: 3.21283686400000000000e+09 / 0x4f3f8000  (0 => OK)
-+09 SINGLE: -1.00000000000000000000e+00 / 0xbf800000  (0 => OK)
- 10 DOUBLE: -2.22507385850720138309e-308 / 0x008010000000000000 (0 => OK)
--10 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x18 =>  UNDERFLOW  INEXACT )
-+10 SINGLE: -0.00000000000000000000e+00 / 0x80000000  (0x18 =>  UNDERFLOW  INEXACT )
- 11 DOUBLE: -1.17549435082228750796e-38 / 0x00b810000000000000 (0 => OK)
--11 SINGLE: 2.15587225600000000000e+09 / 0x4f008000  (0 => OK)
-+11 SINGLE: -1.17549435082228750796e-38 / 0x80800000  (0 => OK)
- 12 DOUBLE: 0.00000000000000000000e+00 / 00000000000000000000 (0 => OK)
- 12 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0 => OK)
- 13 DOUBLE: 1.17549435082228750797e-38 / 0x003810000000000000 (0 => OK)
--13 SINGLE: 8.38860800000000000000e+06 / 0x4b000000  (0 => OK)
-+13 SINGLE: 1.17549435082228750797e-38 / 0x00800000  (0 => OK)
- 14 DOUBLE: 2.98023224000000013061e-08 / 0x003e600000001c5f68 (0 => OK)
--14 SINGLE: 8.55638080000000000000e+08 / 0x4e4c0001  (0x10 =>    INEXACT )
-+14 SINGLE: 2.98023259404089913006e-08 / 0x33000001  (0x10 =>    INEXACT )
- 15 DOUBLE: 5.96046000000000015662e-08 / 0x003e6ffffe6cb2fa82 (0 => OK)
--15 SINGLE: 8.64026624000000000000e+08 / 0x4e4e0000  (0x10 =>    INEXACT )
-+15 SINGLE: 5.96046021428264793940e-08 / 0x337ffff4  (0x10 =>    INEXACT )
- 16 DOUBLE: 6.09755999999999994299e-05 / 0x003f0ff801a9af58a1 (0 => OK)
--16 SINGLE: 9.47896384000000000000e+08 / 0x4e61ff01  (0x10 =>    INEXACT )
-+16 SINGLE: 6.09756025369279086590e-05 / 0x387fc00e  (0x10 =>    INEXACT )
- 17 DOUBLE: 6.10352000000000013665e-05 / 0x003f100000c06a1ef5 (0 => OK)
--17 SINGLE: 9.47912768000000000000e+08 / 0x4e620001  (0x10 =>    INEXACT )
-+17 SINGLE: 6.10352071817032992840e-05 / 0x38800007  (0x10 =>    INEXACT )
- 18 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--18 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+18 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 19 DOUBLE: 1.00097656250000000000e+00 / 0x003ff0040000000000 (0 => OK)
--19 SINGLE: 1.06536140800000000000e+09 / 0x4e7e0080  (0 => OK)
-+19 SINGLE: 1.00097656250000000000e+00 / 0x3f802000  (0 => OK)
- 20 DOUBLE: 2.22507385850720138310e-308 / 0x000010000000000000 (0 => OK)
--20 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0x18 =>  UNDERFLOW  INEXACT )
-+20 SINGLE: 1.40129846432481707093e-45 / 0x00000001  (0x18 =>  UNDERFLOW  INEXACT )
- 21 DOUBLE: 1.37899728486072282844e-308 / 0x000009ea82a2287680 (0 => OK)
--21 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0x18 =>  UNDERFLOW  INEXACT )
-+21 SINGLE: 1.40129846432481707093e-45 / 0x00000001  (0x18 =>  UNDERFLOW  INEXACT )
- 22 DOUBLE: 1.49147387366816238764e-308 / 0x00000ab98fba843210 (0 => OK)
--22 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0x18 =>  UNDERFLOW  INEXACT )
-+22 SINGLE: 1.40129846432481707093e-45 / 0x00000001  (0x18 =>  UNDERFLOW  INEXACT )
- 23 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--23 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+23 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 24 DOUBLE: 2.00000000000000000000e+00 / 0x004000000000000000 (0 => OK)
--24 SINGLE: 1.07374182400000000000e+09 / 0x4e800000  (0 => OK)
-+24 SINGLE: 2.00000000000000000000e+00 / 0x40000000  (0 => OK)
- 25 DOUBLE: 2.71828182845904509080e+00 / 0x004005bf0a8b145769 (0 => OK)
--25 SINGLE: 1.07675456000000000000e+09 / 0x4e805bf1  (0x10 =>    INEXACT )
-+25 SINGLE: 2.71828198432922363282e+00 / 0x402df855  (0x10 =>    INEXACT )
- 26 DOUBLE: 3.14159265358979311600e+00 / 0x00400921fb54442d18 (0 => OK)
--26 SINGLE: 1.07853004800000000000e+09 / 0x4e809220  (0x10 =>    INEXACT )
-+26 SINGLE: 3.14159274101257324219e+00 / 0x40490fdb  (0x10 =>    INEXACT )
- 27 DOUBLE: 6.55030000000000000000e+04 / 0x0040effbe000000000 (0 => OK)
--27 SINGLE: 1.19956249600000000000e+09 / 0x4e8effbe  (0 => OK)
-+27 SINGLE: 6.55030000000000000000e+04 / 0x477fdf00  (0 => OK)
- 28 DOUBLE: 6.55040000000000000000e+04 / 0x0040effc0000000000 (0 => OK)
--28 SINGLE: 1.19956275200000000000e+09 / 0x4e8effc0  (0 => OK)
-+28 SINGLE: 6.55040000000000000000e+04 / 0x477fe000  (0 => OK)
- 29 DOUBLE: 6.55050000000000000000e+04 / 0x0040effc2000000000 (0 => OK)
--29 SINGLE: 1.19956300800000000000e+09 / 0x4e8effc2  (0 => OK)
-+29 SINGLE: 6.55050000000000000000e+04 / 0x477fe100  (0 => OK)
- 30 DOUBLE: 1.31007000000000000000e+05 / 0x0040fffbf000000000 (0 => OK)
--30 SINGLE: 1.20795123200000000000e+09 / 0x4e8fffbf  (0 => OK)
-+30 SINGLE: 1.31007000000000000000e+05 / 0x47ffdf80  (0 => OK)
- 31 DOUBLE: 1.31008000000000000000e+05 / 0x0040fffc0000000000 (0 => OK)
--31 SINGLE: 1.20795136000000000000e+09 / 0x4e8fffc0  (0 => OK)
-+31 SINGLE: 1.31008000000000000000e+05 / 0x47ffe000  (0 => OK)
- 32 DOUBLE: 1.31009000000000000000e+05 / 0x0040fffc1000000000 (0 => OK)
--32 SINGLE: 1.20795148800000000000e+09 / 0x4e8fffc1  (0 => OK)
-+32 SINGLE: 1.31009000000000000000e+05 / 0x47ffe080  (0 => OK)
- 33 DOUBLE: 2.14748364700000000000e+09 / 0x0041dfffffffc00000 (0 => OK)
--33 SINGLE: 1.32540006400000000000e+09 / 0x4e9e0000  (0x10 =>    INEXACT )
-+33 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x10 =>    INEXACT )
- 34 DOUBLE: 3.40282346638528859812e+38 / 0x0047efffffe0000000 (0 => OK)
--34 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x10 =>    INEXACT )
-+34 SINGLE: 3.40282346638528859812e+38 / 0x7f7fffff  (0 => OK)
- 35 DOUBLE: 3.40282346638528859812e+38 / 0x0047efffffe0000000 (0 => OK)
--35 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x10 =>    INEXACT )
-+35 SINGLE: 3.40282346638528859812e+38 / 0x7f7fffff  (0 => OK)
- 36 DOUBLE: 1.79769313486231570815e+308 / 0x007fefffffffffffff (0 => OK)
--36 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0x14 => OVERFLOW   INEXACT )
-+36 SINGLE: inf / 0x7f800000  (0x14 => OVERFLOW   INEXACT )
- 37 DOUBLE: inf / 0x007ff0000000000000 (0 => OK)
--37 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0 => OK)
-+37 SINGLE: inf / 0x7f800000  (0 => OK)
- 38 DOUBLE: nan / 0x007ff8000000000000 (0 => OK)
--38 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0 => OK)
-+38 SINGLE: nan / 0x7fc00000  (0 => OK)
- 39 DOUBLE: nan / 0x007ff0000000000001 (0 => OK)
--39 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0x1 =>     INVALID)
-+39 SINGLE: nan / 0x7fc00000  (0x1 =>     INVALID)
- 40 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--40 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+40 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- Converting half-precision to single-precision
- 00   HALF: 0xffff  (0 => OK)
- 00 SINGLE: -1.31008000000000000000e+05 / 0xc7ffe000  (0 => OK)
-@@ -2571,45 +2571,45 @@ Converting double-precision to half-precision
- 40   HALF: 0000  (0x1 =>     INVALID)
- Converting double-precision to single-precision
- 00 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--00 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+00 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- 01 DOUBLE: -nan / 0x00fff8000000000000 (0 => OK)
--01 SINGLE: 4.29077299200000000000e+09 / 0x4f7fc000  (0 => OK)
-+01 SINGLE: -nan / 0xffc00000  (0 => OK)
- 02 DOUBLE: -inf / 0x00fff0000000000000 (0 => OK)
--02 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0 => OK)
-+02 SINGLE: -inf / 0xff800000  (0 => OK)
- 03 DOUBLE: -1.79769313486231570815e+308 / 0x00ffefffffffffffff (0 => OK)
--03 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0x14 => OVERFLOW   INEXACT )
-+03 SINGLE: -inf / 0xff800000  (0x14 => OVERFLOW   INEXACT )
- 04 DOUBLE: -3.40282346638528859812e+38 / 0x00c7efffffe0000000 (0 => OK)
--04 SINGLE: 4.28657843200000000000e+09 / 0x4f7f7fff  (0x10 =>    INEXACT )
-+04 SINGLE: -3.40282346638528859812e+38 / 0xff7fffff  (0 => OK)
- 05 DOUBLE: -3.40282346638528859812e+38 / 0x00c7efffffe0000000 (0 => OK)
--05 SINGLE: 4.28657843200000000000e+09 / 0x4f7f7fff  (0x10 =>    INEXACT )
-+05 SINGLE: -3.40282346638528859812e+38 / 0xff7fffff  (0 => OK)
- 06 DOUBLE: -1.11100000000000007530e+31 / 0x00c661874b135ff654 (0 => OK)
--06 SINGLE: 4.07766476800000000000e+09 / 0x4f730c3a  (0x10 =>    INEXACT )
-+06 SINGLE: -1.11100004769645909791e+31 / 0xf30c3a59  (0x10 =>    INEXACT )
- 07 DOUBLE: -1.11099999999999999085e+30 / 0x00c62c0bab523323b9 (0 => OK)
--07 SINGLE: 4.04962432000000000000e+09 / 0x4f71605d  (0x10 =>    INEXACT )
-+07 SINGLE: -1.11100003258488635273e+30 / 0xf1605d5b  (0x10 =>    INEXACT )
- 08 DOUBLE: -2.00000000000000000000e+00 / 0x00c000000000000000 (0 => OK)
--08 SINGLE: 3.22122547200000000000e+09 / 0x4f400000  (0 => OK)
-+08 SINGLE: -2.00000000000000000000e+00 / 0xc0000000  (0 => OK)
- 09 DOUBLE: -1.00000000000000000000e+00 / 0x00bff0000000000000 (0 => OK)
--09 SINGLE: 3.21283686400000000000e+09 / 0x4f3f8000  (0 => OK)
-+09 SINGLE: -1.00000000000000000000e+00 / 0xbf800000  (0 => OK)
- 10 DOUBLE: -2.22507385850720138310e-308 / 0x008010000000000000 (0 => OK)
--10 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x18 =>  UNDERFLOW  INEXACT )
-+10 SINGLE: -1.40129846432481707093e-45 / 0x80000001  (0x18 =>  UNDERFLOW  INEXACT )
- 11 DOUBLE: -1.17549435082228750797e-38 / 0x00b810000000000000 (0 => OK)
--11 SINGLE: 2.15587225600000000000e+09 / 0x4f008000  (0 => OK)
-+11 SINGLE: -1.17549435082228750797e-38 / 0x80800000  (0 => OK)
- 12 DOUBLE: 0.00000000000000000000e+00 / 00000000000000000000 (0 => OK)
- 12 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0 => OK)
- 13 DOUBLE: 1.17549435082228750796e-38 / 0x003810000000000000 (0 => OK)
--13 SINGLE: 8.38860800000000000000e+06 / 0x4b000000  (0 => OK)
-+13 SINGLE: 1.17549435082228750796e-38 / 0x00800000  (0 => OK)
- 14 DOUBLE: 2.98023224000000013060e-08 / 0x003e600000001c5f68 (0 => OK)
--14 SINGLE: 8.55638016000000000000e+08 / 0x4e4c0000  (0x10 =>    INEXACT )
-+14 SINGLE: 2.98023223876953125000e-08 / 0x33000000  (0x10 =>    INEXACT )
- 15 DOUBLE: 5.96046000000000015661e-08 / 0x003e6ffffe6cb2fa82 (0 => OK)
--15 SINGLE: 8.64026560000000000000e+08 / 0x4e4dffff  (0x10 =>    INEXACT )
-+15 SINGLE: 5.96045985901128005934e-08 / 0x337ffff3  (0x10 =>    INEXACT )
- 16 DOUBLE: 6.09755999999999994298e-05 / 0x003f0ff801a9af58a1 (0 => OK)
--16 SINGLE: 9.47896320000000000000e+08 / 0x4e61ff00  (0x10 =>    INEXACT )
-+16 SINGLE: 6.09755988989491015672e-05 / 0x387fc00d  (0x10 =>    INEXACT )
- 17 DOUBLE: 6.10352000000000013664e-05 / 0x003f100000c06a1ef5 (0 => OK)
--17 SINGLE: 9.47912704000000000000e+08 / 0x4e620000  (0x10 =>    INEXACT )
-+17 SINGLE: 6.10351999057456851005e-05 / 0x38800006  (0x10 =>    INEXACT )
- 18 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--18 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+18 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 19 DOUBLE: 1.00097656250000000000e+00 / 0x003ff0040000000000 (0 => OK)
--19 SINGLE: 1.06536140800000000000e+09 / 0x4e7e0080  (0 => OK)
-+19 SINGLE: 1.00097656250000000000e+00 / 0x3f802000  (0 => OK)
- 20 DOUBLE: 2.22507385850720138309e-308 / 0x000010000000000000 (0 => OK)
- 20 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 21 DOUBLE: 1.37899728486072282843e-308 / 0x000009ea82a2287680 (0 => OK)
-@@ -2617,41 +2617,41 @@ Converting double-precision to single-precision
- 22 DOUBLE: 1.49147387366816238763e-308 / 0x00000ab98fba843210 (0 => OK)
- 22 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 23 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--23 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+23 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 24 DOUBLE: 2.00000000000000000000e+00 / 0x004000000000000000 (0 => OK)
--24 SINGLE: 1.07374182400000000000e+09 / 0x4e800000  (0 => OK)
-+24 SINGLE: 2.00000000000000000000e+00 / 0x40000000  (0 => OK)
- 25 DOUBLE: 2.71828182845904509079e+00 / 0x004005bf0a8b145769 (0 => OK)
--25 SINGLE: 1.07675443200000000000e+09 / 0x4e805bf0  (0x10 =>    INEXACT )
-+25 SINGLE: 2.71828174591064453125e+00 / 0x402df854  (0x10 =>    INEXACT )
- 26 DOUBLE: 3.14159265358979311599e+00 / 0x00400921fb54442d18 (0 => OK)
--26 SINGLE: 1.07852992000000000000e+09 / 0x4e80921f  (0x10 =>    INEXACT )
-+26 SINGLE: 3.14159250259399414062e+00 / 0x40490fda  (0x10 =>    INEXACT )
- 27 DOUBLE: 6.55030000000000000000e+04 / 0x0040effbe000000000 (0 => OK)
--27 SINGLE: 1.19956249600000000000e+09 / 0x4e8effbe  (0 => OK)
-+27 SINGLE: 6.55030000000000000000e+04 / 0x477fdf00  (0 => OK)
- 28 DOUBLE: 6.55040000000000000000e+04 / 0x0040effc0000000000 (0 => OK)
--28 SINGLE: 1.19956275200000000000e+09 / 0x4e8effc0  (0 => OK)
-+28 SINGLE: 6.55040000000000000000e+04 / 0x477fe000  (0 => OK)
- 29 DOUBLE: 6.55050000000000000000e+04 / 0x0040effc2000000000 (0 => OK)
--29 SINGLE: 1.19956300800000000000e+09 / 0x4e8effc2  (0 => OK)
-+29 SINGLE: 6.55050000000000000000e+04 / 0x477fe100  (0 => OK)
- 30 DOUBLE: 1.31007000000000000000e+05 / 0x0040fffbf000000000 (0 => OK)
--30 SINGLE: 1.20795123200000000000e+09 / 0x4e8fffbf  (0 => OK)
-+30 SINGLE: 1.31007000000000000000e+05 / 0x47ffdf80  (0 => OK)
- 31 DOUBLE: 1.31008000000000000000e+05 / 0x0040fffc0000000000 (0 => OK)
--31 SINGLE: 1.20795136000000000000e+09 / 0x4e8fffc0  (0 => OK)
-+31 SINGLE: 1.31008000000000000000e+05 / 0x47ffe000  (0 => OK)
- 32 DOUBLE: 1.31009000000000000000e+05 / 0x0040fffc1000000000 (0 => OK)
--32 SINGLE: 1.20795148800000000000e+09 / 0x4e8fffc1  (0 => OK)
-+32 SINGLE: 1.31009000000000000000e+05 / 0x47ffe080  (0 => OK)
- 33 DOUBLE: 2.14748364700000000000e+09 / 0x0041dfffffffc00000 (0 => OK)
--33 SINGLE: 1.32539993600000000000e+09 / 0x4e9dffff  (0x10 =>    INEXACT )
-+33 SINGLE: 2.14748352000000000000e+09 / 0x4effffff  (0x10 =>    INEXACT )
- 34 DOUBLE: 3.40282346638528859811e+38 / 0x0047efffffe0000000 (0 => OK)
--34 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x10 =>    INEXACT )
-+34 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0 => OK)
- 35 DOUBLE: 3.40282346638528859811e+38 / 0x0047efffffe0000000 (0 => OK)
--35 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x10 =>    INEXACT )
-+35 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0 => OK)
- 36 DOUBLE: 1.79769313486231570814e+308 / 0x007fefffffffffffff (0 => OK)
--36 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x14 => OVERFLOW   INEXACT )
-+36 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0x14 => OVERFLOW   INEXACT )
- 37 DOUBLE: inf / 0x007ff0000000000000 (0 => OK)
--37 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0 => OK)
-+37 SINGLE: inf / 0x7f800000  (0 => OK)
- 38 DOUBLE: nan / 0x007ff8000000000000 (0 => OK)
--38 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0 => OK)
-+38 SINGLE: nan / 0x7fc00000  (0 => OK)
- 39 DOUBLE: nan / 0x007ff0000000000001 (0 => OK)
--39 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0x1 =>     INVALID)
-+39 SINGLE: nan / 0x7fc00000  (0x1 =>     INVALID)
- 40 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--40 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+40 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- Converting half-precision to single-precision
- 00   HALF: 0xffff  (0 => OK)
- 00 SINGLE: -1.31008000000000000000e+05 / 0xc7ffe000  (0 => OK)
-@@ -2934,45 +2934,45 @@ Converting double-precision to half-precision
- 40   HALF: 0000  (0x1 =>     INVALID)
- Converting double-precision to single-precision
- 00 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--00 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+00 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- 01 DOUBLE: -nan / 0x00fff8000000000000 (0 => OK)
--01 SINGLE: 4.29077299200000000000e+09 / 0x4f7fc000  (0 => OK)
-+01 SINGLE: -nan / 0xffc00000  (0 => OK)
- 02 DOUBLE: -inf / 0x00fff0000000000000 (0 => OK)
--02 SINGLE: 4.28657868800000000000e+09 / 0x4f7f8000  (0 => OK)
-+02 SINGLE: -inf / 0xff800000  (0 => OK)
- 03 DOUBLE: -1.79769313486231570814e+308 / 0x00ffefffffffffffff (0 => OK)
--03 SINGLE: 4.28657843200000000000e+09 / 0x4f7f7fff  (0x14 => OVERFLOW   INEXACT )
-+03 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0x14 => OVERFLOW   INEXACT )
- 04 DOUBLE: -3.40282346638528859811e+38 / 0x00c7efffffe0000000 (0 => OK)
--04 SINGLE: 4.28657843200000000000e+09 / 0x4f7f7fff  (0x10 =>    INEXACT )
-+04 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0 => OK)
- 05 DOUBLE: -3.40282346638528859811e+38 / 0x00c7efffffe0000000 (0 => OK)
--05 SINGLE: 4.28657843200000000000e+09 / 0x4f7f7fff  (0x10 =>    INEXACT )
-+05 SINGLE: -3.40282346638528859811e+38 / 0xff7fffff  (0 => OK)
- 06 DOUBLE: -1.11100000000000007529e+31 / 0x00c661874b135ff654 (0 => OK)
--06 SINGLE: 4.07766476800000000000e+09 / 0x4f730c3a  (0x10 =>    INEXACT )
-+06 SINGLE: -1.11099992680387713644e+31 / 0xf30c3a58  (0x10 =>    INEXACT )
- 07 DOUBLE: -1.11099999999999999084e+30 / 0x00c62c0bab523323b9 (0 => OK)
--07 SINGLE: 4.04962432000000000000e+09 / 0x4f71605d  (0x10 =>    INEXACT )
-+07 SINGLE: -1.11099995702702262681e+30 / 0xf1605d5a  (0x10 =>    INEXACT )
- 08 DOUBLE: -2.00000000000000000000e+00 / 0x00c000000000000000 (0 => OK)
--08 SINGLE: 3.22122547200000000000e+09 / 0x4f400000  (0 => OK)
-+08 SINGLE: -2.00000000000000000000e+00 / 0xc0000000  (0 => OK)
- 09 DOUBLE: -1.00000000000000000000e+00 / 0x00bff0000000000000 (0 => OK)
--09 SINGLE: 3.21283686400000000000e+09 / 0x4f3f8000  (0 => OK)
-+09 SINGLE: -1.00000000000000000000e+00 / 0xbf800000  (0 => OK)
- 10 DOUBLE: -2.22507385850720138309e-308 / 0x008010000000000000 (0 => OK)
--10 SINGLE: 2.14748364800000000000e+09 / 0x4f000000  (0x18 =>  UNDERFLOW  INEXACT )
-+10 SINGLE: -0.00000000000000000000e+00 / 0x80000000  (0x18 =>  UNDERFLOW  INEXACT )
- 11 DOUBLE: -1.17549435082228750796e-38 / 0x00b810000000000000 (0 => OK)
--11 SINGLE: 2.15587225600000000000e+09 / 0x4f008000  (0 => OK)
-+11 SINGLE: -1.17549435082228750796e-38 / 0x80800000  (0 => OK)
- 12 DOUBLE: 0.00000000000000000000e+00 / 00000000000000000000 (0 => OK)
- 12 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0 => OK)
- 13 DOUBLE: 1.17549435082228750796e-38 / 0x003810000000000000 (0 => OK)
--13 SINGLE: 8.38860800000000000000e+06 / 0x4b000000  (0 => OK)
-+13 SINGLE: 1.17549435082228750796e-38 / 0x00800000  (0 => OK)
- 14 DOUBLE: 2.98023224000000013060e-08 / 0x003e600000001c5f68 (0 => OK)
--14 SINGLE: 8.55638016000000000000e+08 / 0x4e4c0000  (0x10 =>    INEXACT )
-+14 SINGLE: 2.98023223876953125000e-08 / 0x33000000  (0x10 =>    INEXACT )
- 15 DOUBLE: 5.96046000000000015661e-08 / 0x003e6ffffe6cb2fa82 (0 => OK)
--15 SINGLE: 8.64026560000000000000e+08 / 0x4e4dffff  (0x10 =>    INEXACT )
-+15 SINGLE: 5.96045985901128005934e-08 / 0x337ffff3  (0x10 =>    INEXACT )
- 16 DOUBLE: 6.09755999999999994298e-05 / 0x003f0ff801a9af58a1 (0 => OK)
--16 SINGLE: 9.47896320000000000000e+08 / 0x4e61ff00  (0x10 =>    INEXACT )
-+16 SINGLE: 6.09755988989491015672e-05 / 0x387fc00d  (0x10 =>    INEXACT )
- 17 DOUBLE: 6.10352000000000013664e-05 / 0x003f100000c06a1ef5 (0 => OK)
--17 SINGLE: 9.47912704000000000000e+08 / 0x4e620000  (0x10 =>    INEXACT )
-+17 SINGLE: 6.10351999057456851005e-05 / 0x38800006  (0x10 =>    INEXACT )
- 18 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--18 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+18 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 19 DOUBLE: 1.00097656250000000000e+00 / 0x003ff0040000000000 (0 => OK)
--19 SINGLE: 1.06536140800000000000e+09 / 0x4e7e0080  (0 => OK)
-+19 SINGLE: 1.00097656250000000000e+00 / 0x3f802000  (0 => OK)
- 20 DOUBLE: 2.22507385850720138309e-308 / 0x000010000000000000 (0 => OK)
- 20 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 21 DOUBLE: 1.37899728486072282843e-308 / 0x000009ea82a2287680 (0 => OK)
-@@ -2980,41 +2980,41 @@ Converting double-precision to single-precision
- 22 DOUBLE: 1.49147387366816238763e-308 / 0x00000ab98fba843210 (0 => OK)
- 22 SINGLE: 0.00000000000000000000e+00 / 0000000000  (0x18 =>  UNDERFLOW  INEXACT )
- 23 DOUBLE: 1.00000000000000000000e+00 / 0x003ff0000000000000 (0 => OK)
--23 SINGLE: 1.06535321600000000000e+09 / 0x4e7e0000  (0 => OK)
-+23 SINGLE: 1.00000000000000000000e+00 / 0x3f800000  (0 => OK)
- 24 DOUBLE: 2.00000000000000000000e+00 / 0x004000000000000000 (0 => OK)
--24 SINGLE: 1.07374182400000000000e+09 / 0x4e800000  (0 => OK)
-+24 SINGLE: 2.00000000000000000000e+00 / 0x40000000  (0 => OK)
- 25 DOUBLE: 2.71828182845904509079e+00 / 0x004005bf0a8b145769 (0 => OK)
--25 SINGLE: 1.07675443200000000000e+09 / 0x4e805bf0  (0x10 =>    INEXACT )
-+25 SINGLE: 2.71828174591064453125e+00 / 0x402df854  (0x10 =>    INEXACT )
- 26 DOUBLE: 3.14159265358979311599e+00 / 0x00400921fb54442d18 (0 => OK)
--26 SINGLE: 1.07852992000000000000e+09 / 0x4e80921f  (0x10 =>    INEXACT )
-+26 SINGLE: 3.14159250259399414062e+00 / 0x40490fda  (0x10 =>    INEXACT )
- 27 DOUBLE: 6.55030000000000000000e+04 / 0x0040effbe000000000 (0 => OK)
--27 SINGLE: 1.19956249600000000000e+09 / 0x4e8effbe  (0 => OK)
-+27 SINGLE: 6.55030000000000000000e+04 / 0x477fdf00  (0 => OK)
- 28 DOUBLE: 6.55040000000000000000e+04 / 0x0040effc0000000000 (0 => OK)
--28 SINGLE: 1.19956275200000000000e+09 / 0x4e8effc0  (0 => OK)
-+28 SINGLE: 6.55040000000000000000e+04 / 0x477fe000  (0 => OK)
- 29 DOUBLE: 6.55050000000000000000e+04 / 0x0040effc2000000000 (0 => OK)
--29 SINGLE: 1.19956300800000000000e+09 / 0x4e8effc2  (0 => OK)
-+29 SINGLE: 6.55050000000000000000e+04 / 0x477fe100  (0 => OK)
- 30 DOUBLE: 1.31007000000000000000e+05 / 0x0040fffbf000000000 (0 => OK)
--30 SINGLE: 1.20795123200000000000e+09 / 0x4e8fffbf  (0 => OK)
-+30 SINGLE: 1.31007000000000000000e+05 / 0x47ffdf80  (0 => OK)
- 31 DOUBLE: 1.31008000000000000000e+05 / 0x0040fffc0000000000 (0 => OK)
--31 SINGLE: 1.20795136000000000000e+09 / 0x4e8fffc0  (0 => OK)
-+31 SINGLE: 1.31008000000000000000e+05 / 0x47ffe000  (0 => OK)
- 32 DOUBLE: 1.31009000000000000000e+05 / 0x0040fffc1000000000 (0 => OK)
--32 SINGLE: 1.20795148800000000000e+09 / 0x4e8fffc1  (0 => OK)
-+32 SINGLE: 1.31009000000000000000e+05 / 0x47ffe080  (0 => OK)
- 33 DOUBLE: 2.14748364700000000000e+09 / 0x0041dfffffffc00000 (0 => OK)
--33 SINGLE: 1.32539993600000000000e+09 / 0x4e9dffff  (0x10 =>    INEXACT )
-+33 SINGLE: 2.14748352000000000000e+09 / 0x4effffff  (0x10 =>    INEXACT )
- 34 DOUBLE: 3.40282346638528859811e+38 / 0x0047efffffe0000000 (0 => OK)
--34 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x10 =>    INEXACT )
-+34 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0 => OK)
- 35 DOUBLE: 3.40282346638528859811e+38 / 0x0047efffffe0000000 (0 => OK)
--35 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x10 =>    INEXACT )
-+35 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0 => OK)
- 36 DOUBLE: 1.79769313486231570814e+308 / 0x007fefffffffffffff (0 => OK)
--36 SINGLE: 2.13909491200000000000e+09 / 0x4efeffff  (0x14 => OVERFLOW   INEXACT )
-+36 SINGLE: 3.40282346638528859811e+38 / 0x7f7fffff  (0x14 => OVERFLOW   INEXACT )
- 37 DOUBLE: inf / 0x007ff0000000000000 (0 => OK)
--37 SINGLE: 2.13909504000000000000e+09 / 0x4eff0000  (0 => OK)
-+37 SINGLE: inf / 0x7f800000  (0 => OK)
- 38 DOUBLE: nan / 0x007ff8000000000000 (0 => OK)
--38 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0 => OK)
-+38 SINGLE: nan / 0x7fc00000  (0 => OK)
- 39 DOUBLE: nan / 0x007ff0000000000001 (0 => OK)
--39 SINGLE: 2.14328934400000000000e+09 / 0x4eff8000  (0x1 =>     INVALID)
-+39 SINGLE: nan / 0x7fc00000  (0x1 =>     INVALID)
- 40 DOUBLE: nan / 0x007ff4000000000000 (0 => OK)
--40 SINGLE: 2.14538649600000000000e+09 / 0x4effc000  (0x1 =>     INVALID)
-+40 SINGLE: nan / 0x7fe00000  (0x1 =>     INVALID)
- Converting half-precision to single-precision
- 00   HALF: 0xffff  (0 => OK)
- 00 SINGLE: -1.31008000000000000000e+05 / 0xc7ffe000  (0 => OK)
+Cc: Peter Xu <peterx@redhat.com>
+Cc: Fabiano Rosas <farosas@suse.de>
+---
+ hw/sd/sd.c | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
 
+diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+index 464576751a..1f3eea6e84 100644
+--- a/hw/sd/sd.c
++++ b/hw/sd/sd.c
+@@ -142,6 +142,8 @@ struct SDState {
+     uint64_t data_start;
+     uint32_t data_offset;
+     uint8_t data[512];
++    uint8_t vendor_data[512];
++
+     qemu_irq readonly_cb;
+     qemu_irq inserted_cb;
+     QEMUTimer *ocr_power_timer;
+@@ -656,6 +658,7 @@ static void sd_reset(DeviceState *dev)
+     sd->wp_switch = sd->blk ? !blk_is_writable(sd->blk) : false;
+     sd->wp_group_bits = sect;
+     sd->wp_group_bmap = bitmap_new(sd->wp_group_bits);
++    memset(sd->vendor_data, 0xec, sizeof(sd->vendor_data));
+     memset(sd->function_group, 0, sizeof(sd->function_group));
+     sd->erase_start = INVALID_ADDRESS;
+     sd->erase_end = INVALID_ADDRESS;
+@@ -771,7 +774,7 @@ static const VMStateDescription sd_vmstate = {
+         VMSTATE_UINT64(data_start, SDState),
+         VMSTATE_UINT32(data_offset, SDState),
+         VMSTATE_UINT8_ARRAY(data, SDState, 512),
+-        VMSTATE_UNUSED_V(1, 512),
++        VMSTATE_UINT8_ARRAY(vendor_data, SDState, 512),
+         VMSTATE_BOOL(enable, SDState),
+         VMSTATE_END_OF_LIST()
+     },
+@@ -2029,9 +2032,8 @@ void sd_write_byte(SDState *sd, uint8_t value)
+         break;
+ 
+     case 56:  /* CMD56:  GEN_CMD */
+-        sd->data[sd->data_offset ++] = value;
+-        if (sd->data_offset >= sd->blk_len) {
+-            APP_WRITE_BLOCK(sd->data_start, sd->data_offset);
++        sd->vendor_data[sd->data_offset ++] = value;
++        if (sd->data_offset >= sizeof(sd->vendor_data)) {
+             sd->state = sd_transfer_state;
+         }
+         break;
+@@ -2165,12 +2167,11 @@ uint8_t sd_read_byte(SDState *sd)
+         break;
+ 
+     case 56:  /* CMD56:  GEN_CMD */
+-        if (sd->data_offset == 0)
+-            APP_READ_BLOCK(sd->data_start, sd->blk_len);
+-        ret = sd->data[sd->data_offset ++];
++        ret = sd->vendor_data[sd->data_offset ++];
+ 
+-        if (sd->data_offset >= sd->blk_len)
++        if (sd->data_offset >= sizeof(sd->vendor_data)) {
+             sd->state = sd_transfer_state;
++        }
+         break;
+ 
+     default:
 -- 
-2.45.2
+2.41.0
+

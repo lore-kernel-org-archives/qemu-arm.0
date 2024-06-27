@@ -1,220 +1,281 @@
-Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp194655njb;
-        Thu, 27 Jun 2024 04:50:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWT6+2NYfDM0FnGx79kodZwk8QnM1TzrNiamMiJ17wrvasZlNAcff0L9jsOSS5atViEcqYx8oN5CSsIfGAeaBlA/yGRT4D8
-X-Received: by 2002:ac2:5617:0:b0:52c:b606:2b2 with SMTP id 2adb3069b0e04-52ce0673b84mr7741629e87.46.1719489022819;
-        Thu, 27 Jun 2024 04:50:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719489022; cv=none;
+Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp205773njb;
+        Thu, 27 Jun 2024 05:18:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXWjrObFpWsH6W1jPXTjCGLF+BrA5dJUluNo92WfMgZy/HeQBQ2F4Il1L3pF3RrXTjKi8Ji7BaIAd7Sp2w5wuocE397i5/L
+X-Google-Smtp-Source: AGHT+IHKsHjQmMW3mkGk1aGqxJWzvy7jB/HC8MbiX/98TSHPOuiCIWswgbUIAx/z4UfFrOCyTlkr
+X-Received: by 2002:a05:622a:291:b0:446:4a66:bf3f with SMTP id d75a77b69052e-4464a66cd52mr2266651cf.15.1719490717465;
+        Thu, 27 Jun 2024 05:18:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719490717; cv=none;
         d=google.com; s=arc-20160816;
-        b=CbMbSDIp1E4ws/iCMcStRTy/gpr8jVMDupwOc8K2hPlXAsxwkI1HtZrUAR0iLvgR0O
-         ZTMUuKgu0xZuxALEbFS3X3TKT6vLWLRZKdto8OR4uB8XYfK8nAHpP9JBSt7ycihNVmYD
-         TqB0NLFAuQuxFefrPSIn/XjjucQl1myTK0XNPOxde7rEd9mwQroz5Jksdh5T5ZApgF06
-         k6O2v9jwoxCpdmw9eUhcGSsi3E5ZJ15UuwXySctIRSX+FFmk5baclvrMOMKPms7mAlsg
-         nG5cn/Abtmv2CgM93BwG/ms2u9ybprvPcjlxUuIUitkTTeM36CyMZKW6prjBIz/RUVbp
-         VMOA==
+        b=EywXs9hbyYBttdFq8JjtYBJdifz0DWpYwZIdNTXdkKM0mb2JCk5UUx/mlrLOHstoKW
+         w0fUsuQQJoSKgeVtYE2FUluvJw6cr/ZZRaK6lx6ss+8rcaywBHXZtBlENoGYo83m/lh8
+         US0p+sO3AeOotBqIfDt+j1VUV/MzAwMWIzzFCBhT246qC+dJfZThNSpenlFk0DyH2XvI
+         R1HoWUiO+Lj3xf4VWAURLtN46z2kUJ/XNqThH5XsJ4Ka+GZLLwCueuIys+Hh/P0CnyRq
+         cdliIwckcy3+jj9dT3OUUyyg1oMXR9uGE06G4VFApeg+wt6+aZM5DiPnGB7b8hPt+2OO
+         om7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=e9P6rSk8vf64hp/l6OI3SI/PjxibwZs4WejYppaOX6Q=;
-        fh=DdAMrGz071RmbXj6FkUBJ7bRSmX7G9XHhimsKS0s9Ig=;
-        b=zmJWHexzzEsBLkSwitu5ROkJ4VAhXsgXfzLWNuiRvwaoefNBUpMJAyONiaPTrhh+rR
-         Ylfrfh12fzt8aqAZSSJsSrzAJXOswDUYYcnbBMH0gNLDwE0T++9OmnO4rtX7xogqo4oD
-         Q0nvrdV5tQDxyeeR2mNnl7K/b57TfCQS5dpyY8s/R656cyclCAKnAUa6OOHaDSgbv8q1
-         fC8/Q0F7vTRAzGej1M4glMVwCR5rcOjfTj10dbgZ4ZhINE52FQ02ShGjwGzLG4HwX1X/
-         P4hBPIgMTJ1ZGBSUbXHm3+oI0rg4eNAQF7T6op9axbTKGndLZ/P5QRrE/2UAuP317+Y+
-         Ymrg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=DOfBuSXECtx0UP9l63YBv/eJ7RzU+OwpeKGre3jkOBc=;
+        fh=Fvx24k9vyeOm4CzUcSx1uPGEfX7q0QuIj7h2uhkj4cg=;
+        b=Kz2Z8BUDi+YYCQrIhQMKgecRg/Odry2IP7gx8wYp6jBh5kLlnSanvfDxNAgGLdjLWR
+         hhCa7myVMDPia7Gshelmpx0aOrWB/TqitQt4K+IQuGqr4cp1C+NELUeyoYJONrqFu0P+
+         HDdckm5yI0X42cwbevm9hzQW5MY2tIdlJ1EOPUWWL9q0mbfpy69bFLR1+IlFofz9TuII
+         A9IZuo0KmcSbieA9AeYBKc+RyNqlpEubkumCUx/x5iHMj9jWqO8yKau44/XfrIELUzk5
+         cNH8X/6hx7iKkGxq4mWFlk/eE6O0YdWRqw0EZPADwY4cumQkhrHR9ilsJnmSrTPkYUKu
+         KA7A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=2CjVroAA;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <smostafa@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-424aa87ef40sor1937415e9.2.2024.06.27.04.50.22
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dWbrT1Gq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-4464221ca4dsi11130091cf.663.2024.06.27.05.18.37
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 27 Jun 2024 04:50:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 27 Jun 2024 05:18:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=2CjVroAA;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1719489022; x=1720093822; darn=linaro.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=e9P6rSk8vf64hp/l6OI3SI/PjxibwZs4WejYppaOX6Q=;
-        b=2CjVroAAS8g9HEUPINzs3IXvc3iAMxszaZGkIllPVLbcwtJZwY35kd0+fs9Ed2jAPa
-         uu2/s/vLzfTGeOoCc6DDyBCvBrq2qck8V6tLKJhKvDq1w+rD0YmDIysXnyCQSKqGwWj5
-         BOnLkPhzPlaZ0ANCZQMAO8fC+4bcw4s9qWp3bp2P1AvCsBYv4vxaVOebfmhI65vHHhW8
-         MArldEHcXAU41aqONYOf2KFS8TCPrtdxo35gQs8FiGfwyDtOQki5NGcBYquisYe5qiAA
-         uam8e0pv+ClVO9H64FkazdZCh4E9sYuXkdkwbS0VxWXeJfUgllc7dT+G4cjmFejj09oe
-         L88A==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dWbrT1Gq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sMo4u-0005Rb-Ab; Thu, 27 Jun 2024 08:18:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sMo4s-0005R5-8c
+ for qemu-arm@nongnu.org; Thu, 27 Jun 2024 08:18:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sMo4q-0007u6-47
+ for qemu-arm@nongnu.org; Thu, 27 Jun 2024 08:18:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1719490691;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DOfBuSXECtx0UP9l63YBv/eJ7RzU+OwpeKGre3jkOBc=;
+ b=dWbrT1GqEU7SOiRWn3fZnXlB84i/z75G5EEvkyZfyF+fOVG2GleVQJwLC4qEh+KsiOlOq/
+ LG+eAWlSsZIjtluG2R1M6tDOfxxb9UlJ6PXiijqTSNdvCQ5mopq267h5+0l3IgYoeIP2NF
+ pevmjuBKVWe6S2IX8aGA/OuHMprrnEQ=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-346-2_bBtOf7Pu-cwMjGTS8gTg-1; Thu, 27 Jun 2024 08:18:07 -0400
+X-MC-Unique: 2_bBtOf7Pu-cwMjGTS8gTg-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-363edcf12a3so4023227f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 27 Jun 2024 05:18:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719489022; x=1720093822;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=e9P6rSk8vf64hp/l6OI3SI/PjxibwZs4WejYppaOX6Q=;
-        b=hcD/ltoxjsJS+bSzlSoTzrvLpCjbKZylzQ9d2tv1kOGKIKPgaXOYHAHVFVbWCx5frn
-         KhsTgK3Y5jbk6Ipt3X0WrWgdGPSxA01TvPp8AsZiSKeHUgTxEbvYzOpHONiwQREvEcMR
-         9tO9O6SvB8BO5x5Vsx7OHWx5Eyat31gmU0rrdD6GObdenjbTDOU296hxTkH1mu8zfi55
-         ydbG6SXTCZ7WEDuUTRL6F7skkAxtBL1K8zqvvdKLdMi68JwjCpX0rNZjHf2scEST2Fg5
-         5y9135io+fHnaJ0UolG1td25JOXCgz2//pEsQyxR9V3Mlpci1UMln/47uXjY08KgO4Qr
-         d54g==
-X-Forwarded-Encrypted: i=1; AJvYcCU5pcWzIy5t95w3v3Vyf6QNiiUCktlcAWfsT88iaimzBwrQl/UF1Z8uZ0Aw/JKk4VXSZTIHkSmpqK3cVcalJvYRIJrjdtQd
-X-Gm-Message-State: AOJu0YwtgjURnxnRq8GEmXMQAMuFHnNTKWLRXTXqviL1+pcf/oG/xW0L
-	G9iC7J3Btjflcu20/BiKmtwLlgu0t9V520k2W6ueSAi8TtBUE08/ptD7SceU/Q==
-X-Google-Smtp-Source: AGHT+IHF2+OWLkDVOlVs+eamxkFdARYG2bMOTEh+jiXREdWWJJJgTOLPwU4rS5i1HLRx+QKS9xzVFw==
-X-Received: by 2002:a05:600c:3ba9:b0:424:891e:a9fe with SMTP id 5b1f17b1804b1-425641c24c3mr1459555e9.1.1719489021028;
-        Thu, 27 Jun 2024 04:50:21 -0700 (PDT)
-Return-Path: <smostafa@google.com>
-Received: from google.com (205.215.190.35.bc.googleusercontent.com. [35.190.215.205])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-424c82462a2sm63024555e9.2.2024.06.27.04.50.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 27 Jun 2024 04:50:20 -0700 (PDT)
-Date: Thu, 27 Jun 2024 11:50:16 +0000
-From: Mostafa Saleh <smostafa@google.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
-	jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
-	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
-	marcin.juszkiewicz@linaro.org
-Subject: Re: [RFC PATCH v3 17/18] hw/arm/smmuv3: Add property for OAS
-Message-ID: <Zn1R-BwOnSRpstw2@google.com>
-References: <20240429032403.74910-1-smostafa@google.com>
- <20240429032403.74910-18-smostafa@google.com>
- <689f6ac7-86ce-482f-a59a-fd17f8a5216d@redhat.com>
+ d=1e100.net; s=20230601; t=1719490687; x=1720095487;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=DOfBuSXECtx0UP9l63YBv/eJ7RzU+OwpeKGre3jkOBc=;
+ b=gLGHE9Ebu/COoEZwCm/f1nVlNzaTQRHZ4X+XSqyOw1gXc8vGmTO2ithrgd8KWUDHOs
+ cbhggeofkBbblAV17khoxi+TKhFbBVVbHSOwyG5NHLzuM7vwpwEQWHVzxIXzhY3VssBV
+ y6IcTMaeADdhpUSpgBjoemcQ5VPFNjXuoUXVZOMiVjpKsjPb8K/6xnzn+oxvcB5Yy2Xq
+ te1aCXmA7OYMrqt0K7y6VurwlmGdSCg6Ye5i7AgOrHJoLqUkhDQ8+1ZvVcuQolOAB+MS
+ 4ZMxQ0AsvtJGyhMMP8uCQyoBX5bTsN2ayjQkXAqZJinZ1C24i+YXzQEXiANuwoDsPdul
+ HtCw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWPyp2oCah+xQq0c4OdmXqgImL8jfEzeY0cndPlhpZXG2mahfxowU6Vnw1563IdrcKsc7BJTsA3Obiqm4G34fRcHTEQ
+X-Gm-Message-State: AOJu0YzZVGDavI0u4SLJfSpVsATbxIoM9w9yIYtY4/YVBqKL1GnyXjNp
+ nNrF0T0XM8NuU6P6fXVFZeu58uDaGm5KyWI64aFczputAOWMQqVEMqvXeELqHylphNNiXwk11Hl
+ UJHa8UikYtIQ+JsfJ5iE8qb5t6oxW2kGw33g85ez1b4rVXrUHRw==
+X-Received: by 2002:a5d:5f49:0:b0:367:4dfe:3e8d with SMTP id
+ ffacd0b85a97d-3674dfe4007mr1032473f8f.13.1719490686837; 
+ Thu, 27 Jun 2024 05:18:06 -0700 (PDT)
+X-Received: by 2002:a5d:5f49:0:b0:367:4dfe:3e8d with SMTP id
+ ffacd0b85a97d-3674dfe4007mr1032454f8f.13.1719490686487; 
+ Thu, 27 Jun 2024 05:18:06 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3674357c1e3sm1710255f8f.2.2024.06.27.05.18.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 27 Jun 2024 05:18:06 -0700 (PDT)
+Date: Thu, 27 Jun 2024 14:18:03 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Sunil V L <sunilvl@ventanamicro.com>, "Michael S . Tsirkin"
+ <mst@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org, Paolo
+ Bonzini <pbonzini@redhat.com>, =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau
+ <marcandre.lureau@redhat.com>, "Daniel P . =?UTF-8?B?QmVycmFuZ8Op?="
+ <berrange@redhat.com>, Thomas Huth <thuth@redhat.com>, Philippe
+ =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Gerd Hoffmann
+ <kraxel@redhat.com>, Sia Jee Heng <jeeheng.sia@starfivetech.com>, Alistair
+ Francis <alistair23@gmail.com>, Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>, Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng
+ <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>, Alistair Francis <alistair.francis@wdc.com>
+Subject: Re: [PATCH v4 16/16] tests/qtest/bios-tables-test: Add expected
+ ACPI data files for RISC-V
+Message-ID: <20240627141803.42cd46c1@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240625150839.1358279-17-sunilvl@ventanamicro.com>
+References: <20240625150839.1358279-1-sunilvl@ventanamicro.com>
+ <20240625150839.1358279-17-sunilvl@ventanamicro.com>
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <689f6ac7-86ce-482f-a59a-fd17f8a5216d@redhat.com>
-X-TUID: Ly5lhKHmJ1he
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.212,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 23BFSIkMF/7Q
 
-Hi Eric,
+On Tue, 25 Jun 2024 20:38:39 +0530
+Sunil V L <sunilvl@ventanamicro.com> wrote:
 
-On Tue, May 21, 2024 at 11:32:48AM +0200, Eric Auger wrote:
-> Hi Mostafa,
+> As per the step 5 in the process documented in bios-tables-test.c,
+> generate the expected ACPI AML data files for RISC-V using the
+> rebuild-expected-aml.sh script and update the
+> bios-tables-test-allowed-diff.h.
 > 
-> On 4/29/24 05:24, Mostafa Saleh wrote:
-> > Add property that sets the OAS of the SMMU, this in not used in this
-> > patch.
-> >
-> > Signed-off-by: Mostafa Saleh <smostafa@google.com>
-> > ---
-> >  hw/arm/smmuv3-internal.h |  3 ++-
-> >  hw/arm/smmuv3.c          | 29 ++++++++++++++++++++++++++++-
-> >  include/hw/arm/smmuv3.h  |  1 +
-> >  3 files changed, 31 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> > index 0ebf2eebcf..dd91807624 100644
-> > --- a/hw/arm/smmuv3-internal.h
-> > +++ b/hw/arm/smmuv3-internal.h
-> > @@ -111,7 +111,8 @@ REG32(IDR5,                0x14)
-> >       FIELD(IDR5, VAX,        10, 2);
-> >       FIELD(IDR5, STALL_MAX,  16, 16);
-> >  
-> > -#define SMMU_IDR5_OAS 4
-> > +#define SMMU_IDR5_OAS_DEF 4 /* 44 bits. */
-> > +#define SMMU_IDR5_OAS_MAX 5 /* 48 bits. */
-> >  
-> >  REG32(IIDR,                0x18)
-> >  REG32(AIDR,                0x1c)
-> > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> > index 4ac818cf7a..39d03e7e24 100644
-> > --- a/hw/arm/smmuv3.c
-> > +++ b/hw/arm/smmuv3.c
-> > @@ -299,7 +299,9 @@ static void smmuv3_init_regs(SMMUv3State *s)
-> >      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
-> >      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, BBML, 2);
-> >  
-> > -    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS); /* 44 bits */
-> > +    /* PTW doesn't support 52 bits. */
-> remove the point
-> > +    s->oas = MIN(s->oas, SMMU_IDR5_OAS_MAX);
-> > +    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, s->oas);
-> >      /* 4K, 16K and 64K granule support */
-> >      s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
-> >      s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN16K, 1);
-> > @@ -1901,11 +1903,34 @@ static const VMStateDescription vmstate_gbpa = {
-> >      }
-> >  };
-> >  
-> > +static const VMStateDescription vmstate_oas = {
-> > +    .name = "smmuv3/oas",
-> > +    .version_id = 1,
-> > +    .minimum_version_id = 1,
-> don't you need a .needed function?
+> These are all new files being added for the first time. Hence, iASL diff
+> output is not added.
 > 
-> I tested backward migration and this fails
-> qemu-system-aarch64: error while loading state for instance 0x0 of
-> device 'smmuv3'
-> qemu-system-aarch64: load of migration failed: No such file or directory
-> post-processing ...
+> Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
+> Acked-by: Alistair Francis <alistair.francis@wdc.com>
+> Acked-by: Igor Mammedov <imammedo@redhat.com>
 
-Yes, I think we need a .needed which returns if oas is not as default,
-that should be backward compatiable (at least for this patch) and would
-break when oas changes.
+Michael,
+can it go via risc-v tree or
+do you plan to merge it via your tree?
 
-Thanks,
-Mostafa
+> ---
+>  tests/data/acpi/riscv64/virt/APIC           | Bin 0 -> 116 bytes
+>  tests/data/acpi/riscv64/virt/DSDT           | Bin 0 -> 3518 bytes
+>  tests/data/acpi/riscv64/virt/FACP           | Bin 0 -> 276 bytes
+>  tests/data/acpi/riscv64/virt/MCFG           | Bin 0 -> 60 bytes
+>  tests/data/acpi/riscv64/virt/RHCT           | Bin 0 -> 314 bytes
+>  tests/data/acpi/riscv64/virt/SPCR           | Bin 0 -> 80 bytes
+>  tests/qtest/bios-tables-test-allowed-diff.h |   6 ------
+>  7 files changed, 6 deletions(-)
 > 
-> Thanks
+> diff --git a/tests/data/acpi/riscv64/virt/APIC b/tests/data/acpi/riscv64/virt/APIC
+> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..66a25dfd2d6ea2b607c024722b2eab95873a01e9 100644
+> GIT binary patch
+> literal 116
+> zcmZ<^@N_O=U|?X|;^gn_5v<@85#X!<1dKp25F13pfP@Mo12P{Zj?R|`s)2!c7=s}J
+> I#NvT*0o0BN0RR91
 > 
-> Eric
-> > +    .fields = (const VMStateField[]) {
-> > +        VMSTATE_INT32(oas, SMMUv3State),
-> > +        VMSTATE_END_OF_LIST()
-> > +    }
-> > +};
-> > +
-> > +static int smmuv3_preload(void *opaque)
-> > +{
-> > +    SMMUv3State *s = opaque;
-> > +
-> > +    /*
-> > +     * In case it wasn't migrated, use the value used
-> > +     * by older QEMU.
-> > +     */
-> > +    s->oas = SMMU_IDR5_OAS_DEF;
-> > +    return 0;
-> > +}
-> > +
-> >  static const VMStateDescription vmstate_smmuv3 = {
-> >      .name = "smmuv3",
-> >      .version_id = 1,
-> >      .minimum_version_id = 1,
-> >      .priority = MIG_PRI_IOMMU,
-> > +    .pre_load = smmuv3_preload,
-> >      .fields = (const VMStateField[]) {
-> >          VMSTATE_UINT32(features, SMMUv3State),
-> >          VMSTATE_UINT8(sid_size, SMMUv3State),
-> > @@ -1933,6 +1958,7 @@ static const VMStateDescription vmstate_smmuv3 = {
-> >      },
-> >      .subsections = (const VMStateDescription * const []) {
-> >          &vmstate_gbpa,
-> > +        &vmstate_oas,
-> >          NULL
-> >      }
-> >  };
-> > @@ -1945,6 +1971,7 @@ static Property smmuv3_properties[] = {
-> >       * Defaults to stage 1
-> >       */
-> >      DEFINE_PROP_STRING("stage", SMMUv3State, stage),
-> > +    DEFINE_PROP_INT32("oas", SMMUv3State, oas, SMMU_IDR5_OAS_DEF),
-> >      DEFINE_PROP_END_OF_LIST()
-> >  };
-> >  
-> > diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> > index d183a62766..00a9eb4467 100644
-> > --- a/include/hw/arm/smmuv3.h
-> > +++ b/include/hw/arm/smmuv3.h
-> > @@ -63,6 +63,7 @@ struct SMMUv3State {
-> >      qemu_irq     irq[4];
-> >      QemuMutex mutex;
-> >      char *stage;
-> > +    int32_t oas;
-> >  };
-> >  
-> >  typedef enum {
+> literal 0
+> HcmV?d00001
 > 
+> diff --git a/tests/data/acpi/riscv64/virt/DSDT b/tests/data/acpi/riscv64/virt/DSDT
+> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..0fb2d5e0e389541209b765d5092d0706f40298f6 100644
+> GIT binary patch
+> literal 3518
+> zcmZvf%WvaU6vnR;w@IBxlQexl(t(j!ppl%0(ryq<oOYV3X-%9`q=14{b;M9K6c~^O
+> zgcx<fqhd2ti4B_~D)B!c1W2sdvE#L7!#}_>eCJ*}oI`D?w!iChKA+$9t$orAn%(bn
+> zN+n)t?0eh6a^of6TgGN7rRbcFh1Tyc_k%{iceZVNuIr}z+pT7<?)fc<HI?okw3^tr
+> z>)qm0&dr&dmZB`a{a^Ra*0&D5Eo1b;X8Qm}E3gQ<btjYVdtTkbz7rISPX6ODvMUs3
+> zVE91w&KfCiza7@#@A>YkTOF1_DRa)WNl^t#{A^TNmZNji{btZCtt5&QPNDqU;E!+b  
+> zecnEQ^xc;~?0jvN=B?69B6sx0n@1<N?!0~c*1N~|jvlD2+E~Xu>-LMCh<kUhvyXCD
+> z|GVk1+UV8=+`16nn$W3iZBaGE(t=R0Su8V)L_|(iti)M3i8v3Jc_g_<E!HC$=dr;&
+> zZ0_+)tcM-v;WLjB?y(x{F%swTD)SiS9?!;ljK+DKGLIDZSc~;Y#d$nr9_i3y=NsQ^
+> zu@zZ&*ReP}{EyK3th+T@*_*eqZ#4FX%O>b{iWO(USDtFAW3{YY{55g*p1P}!a8zWX
+> z7lz;IPVBzpJS=7G%wV8y2Q62ba|`EHRm#%1lYm%>L=vK=N;x|_7+?*WxKL3R0`umY
+> z&O>M<DHHxW7E8~>hKe$y(1g;N2-TU8l!<C|EEb%J4HacZp-Gd8P@M@$nW#v|VwsuP  
+> zP=$;-)Haz>@sOMoiwl`i1tW@cj+o4-cu3BPCB-VhD+4MD9hIDroD&Pl#Oi8OIy2%-
+> zNlr-4iRFXLXr|LTGn$gL<b>p$V}cX!M^n3=p)tt`$vN>NG_kr`M{qil6Owag1ZPHY
+> zW+W#h=gbPutl-Q_PDsv)?-Htwo@Y*Q<|HR1=gbSvyx`1BPDsu<E;z>p=eXpA<eYfp
+> zv*(GAkEvZhm4f7i<eWvpSrnW_$qC6hOM<f`I7^Zfl5<W7&I!ReAvqyAXIXHT1!q}u
+> zLUPVY!8s{7CnYB&=bRFpQ-X6!azb*>X~8)yIHx5iB<DoK!Jg-g;GB`1keqW?aLx+O
+> zS;+~>Ip+lDoZy_3oRFMzUU1F}&UwiR$vGDU=Yrr|kera5b5U?E3eH8z3CTH^1m}|A  
+> zT#}rSoU<Z0D}u8kIUx;a@2q9hqcop+`Y3zu*6>5@qiM`L8Qmx@>rXnqyVu6bqy3;0
+> zSfN$e$O$X-aop-gjFlN1TJ2C(VM8aZsGs9rPsDhcG3gaHcG3%d9rt=N#><R_Ugd1x
+> zYt+>h-rEXOMpLn!a_)bcQwbVUYCt>d6Z~go(OKwiV=x$e6rJOWm8FJLZ)jL(gSOQ9  
+> z(=101Q%{N90rg{iGreXyIPiUy_PU*2Ro)uw?+2cJexkhQVfAu5b@3W?^1b$-wSOuL
+> z8($pWumAYmuXoN*92)^EIHqx|osu9QI;oM>2efl4w7)DozPM|Bh$~ecUA>%od=bT&  
+> z;R0PerC=JrI{7MZ#_1;2tCR9A{Hkc%mp4o`zpVZISFrki`_c5@?b)Ba_T|{c>*}hQ  
+> pv@F`;cR<_jYzAT_(hnb+<eKANn;)0v1k>|8pBtRxTSGr9{slF`>K_0A
+> 
+> literal 0
+> HcmV?d00001
+> 
+> diff --git a/tests/data/acpi/riscv64/virt/FACP b/tests/data/acpi/riscv64/virt/FACP
+> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..a5276b65ea8ce46cc9b40d96d98f0669c9089ed4 100644
+> GIT binary patch
+> literal 276
+> zcmZ>BbPf<<WME(ucJg=j2v%^42yj*a0-z8Bhz+8t3k1-OV?`GjD1M-;Zz#xa0OIBc  
+> A0RR91
+> 
+> literal 0
+> HcmV?d00001
+> 
+> diff --git a/tests/data/acpi/riscv64/virt/MCFG b/tests/data/acpi/riscv64/virt/MCFG
+> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..37eb923a9320f5573c0c2cdb90bd98409cc7eb6f 100644
+> GIT binary patch
+> literal 60
+> rcmeZuc5}C3U|?Y6aq@Te2v%^42yj*a0!E-1hz+8VfB}^KA4CHH3`GY4
+> 
+> literal 0
+> HcmV?d00001
+> 
+> diff --git a/tests/data/acpi/riscv64/virt/RHCT b/tests/data/acpi/riscv64/virt/RHCT
+> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..beaa961bbf0f0486c0dee25f543377c928354f84 100644
+> GIT binary patch
+> literal 314
+> zcmXAlu}%Xq42FGxD#XNyI`tt=C&buWx`A2-wkXNvbP-K1O46&8iKjrk6)SI3ey5h~
+> z@3-SPa`wCa{iPvl)b_RC9X8vKw|)adiC8n)zP^7d?+~A>`lE(^DK1@Wog4=(iq&1K
+> z7;1J`gewX|OE=3Z>{xM3wM)ljIQKa+635YaZ7jrOeGc+eJEnks*|jl=GEUBVQ8WhX  
+> zK@<flJgso_nMF!k2aE&flg}m^e@2oQd6bm~m(n5!gJ?a<U{EgOALs#2D_Y&qJuA9g
+> Pp1|9>GjINg;u`)Bd);9H  
+> 
+> literal 0
+> HcmV?d00001
+> 
+> diff --git a/tests/data/acpi/riscv64/virt/SPCR b/tests/data/acpi/riscv64/virt/SPCR
+> index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..4da9daf65f71a13ac2b488d4e9728f194b569a43 100644
+> GIT binary patch
+> literal 80
+> zcmWFza1IJ!U|?X{>E!S15v<@85#X!<1dKp25F12;fdT`FDF9*%FmM4$c8~z`e;@#f  
+> G!2kgKJqrN<
+> 
+> literal 0
+> HcmV?d00001
+> 
+> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+> index 70474a097f..dfb8523c8b 100644
+> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> @@ -1,7 +1 @@
+>  /* List of comma-separated changed AML files to ignore */
+> -"tests/data/acpi/riscv64/virt/APIC",
+> -"tests/data/acpi/riscv64/virt/DSDT",
+> -"tests/data/acpi/riscv64/virt/FACP",
+> -"tests/data/acpi/riscv64/virt/MCFG",
+> -"tests/data/acpi/riscv64/virt/RHCT",
+> -"tests/data/acpi/riscv64/virt/SPCR",
+

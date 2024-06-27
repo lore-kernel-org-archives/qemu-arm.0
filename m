@@ -1,83 +1,83 @@
-Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp248467njb;
-        Thu, 27 Jun 2024 06:58:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUEwdVt06TKvA6huVU+X8QwwN68D/sKcfVfjs1QIK2+SOMSuKUZ9/cD2PvfzdB6o6V3N0ptGTp5xpjwSC9sPpBDEi5xqlMt
-X-Received: by 2002:a05:6a21:99a2:b0:1be:caf6:66d7 with SMTP id adf61e73a8af0-1becaf66cb1mr3262846637.13.1719496707812;
-        Thu, 27 Jun 2024 06:58:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719496707; cv=none;
+Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp248492njb;
+        Thu, 27 Jun 2024 06:58:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUVOBDG65Erb3uNPS+US4vqSU9RlCeRJwwxer0jWRbt80Z3YDZcf5qp2i/8/p9PjTFAR++ty3hbCt7iLDJJjjEnnWy9zwDG
+X-Received: by 2002:a17:903:2302:b0:1f9:f83c:8b6f with SMTP id d9443c01a7336-1fa23f15ba8mr141537805ad.51.1719496710864;
+        Thu, 27 Jun 2024 06:58:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719496710; cv=none;
         d=google.com; s=arc-20160816;
-        b=Za8qDyPUcRredo/xRFGyZHHIdHf2RZB0uO3thCCW2sVvJbj6GrzhjSnmTbiCUKy100
-         rpUpEeZYE6TaPJybxOS1B5jq301y+OhDQZNX2eWOJURrIKnW9psCKeQFdBqU0E9gctbb
-         BWDiI5n3CiAjksrZcgPAnzFjpEuMYjJKT6I5vJkcZq8YuzSQ9C9LMTvewOMw2Esy7N+H
-         GVnIUAlaUuCBMZLYhAy18eQdTl3NL8BUqovXDinZVrSsMpI3W1qqo935DAuJCG18Ak/S
-         kaeKXieBeCbI0UOlsFXYiMBDcBrmuAT8v60Ez5ulhEb3/F2DiZXPRany/ARysfDrq/ly
-         hACw==
+        b=QCrES6znDa6j+F3r8KaO5MtQ4NorRzcy3A4m3hzSbMPxJlGxhtLXnqVv8JHgWAnJNf
+         69gd5DM5wcYD5JRRkr32Uharm8H8pbAKTqVgsRn97mi0laB+8ETJg/ScchNqV6YWBAQ2
+         s+MwnIeZK3Z663do5ffTtrU+mnZ8RXGUSL3R3hZUUBCvC3Js+JWYSa3hE2p5GLvCcFsx
+         R2S76rMZTb9X4SgumNfZ8fobvKBRmElA1gKAvHTgUpygfT8DN6JfeXTwqeLsz1h3C7oN
+         9N4C1c+E81Ty+faOPMxVEObm6ao55CP2jOHbuXpPUdN+AqowpxjsdjzrvX8GrmN/9NPQ
+         Fplw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:dkim-signature;
-        bh=heud5oPL9PguF+0Dl89or/td6O7yLCDZcvUAaJnUzns=;
-        fh=080ygu0qjGx2JbwcuKY2iHfwhOzZoY/cSvTF8VT+P5U=;
-        b=zsJP63XoAohSI51Q6NDcvpKIR+m49QnI3ckjA/B6JBaCVdJlnHxtxnxHv6Cloo2lDJ
-         0U1/XYegaJJpfV4IMozVSUpqzKK5h3On0Phaa3IC9viyhrJgBHL562LOHH6XKG/8Qg8p
-         ewoVpifZvHWvT6METL5rg2JgW9t8O1fsY8ZgZ/qhF6onvVmP8DoZ//haEFiCJb39uZva
-         /0YX5SxpkjKU759sYHkWcEpH9sZsphooEKWL8pSir5Tx1XpRxjPP78IjRJq+KR8JH5fq
-         OFCgbbv24duBGT+qKLdAi9Bdla4HIX1gRkHcfUnxMNYSCJTuIJ0iZTXuoj/wrfqi/dBH
-         T4Xg==;
+        bh=xfjEm1QZECbrFVCphMYb79ZHnIFQxwHobg0g4KA/LWs=;
+        fh=LWHneGzz5vIP9U5dX1s7/4zNPE0CPXETKs5hVMmgeFc=;
+        b=qweTtUwF70hW7WaniFMDXcpeRu850Bxki+9sXm6wLFl/g1+6fucqNGU4QkH29DUEk1
+         aa+9kXpw1+fCJbPYNvg4+LXABo64cj+nxPnzqY8348MqMkgXEbS6bdAxUfvMWEJPi1yM
+         tRpmcn9ofYOYTgShET6s/A9BsBHm2Vl9XMDnnyKt2Oko611EhMEIuLMfuY0FObMwHzhB
+         zZ7GlzN6Z+iJfc0Hh97EVjZcVx+ZFU16Go1HqPLMyrynH4guOSHSWrJY2B4qp45TdJgb
+         n9LbCjJ8iXCCyEdFBfpw47YxQ3tACFmEgT4TbFE+nDKE9zP/RmO1egqcbaQ3i9PDndz7
+         wJMQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Ay5B2SOn;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=FRDZAugr;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-1faac902394sor6721095ad.9.2024.06.27.06.58.27
+        by mx.google.com with SMTPS id d9443c01a7336-1faac90406esor6556015ad.12.2024.06.27.06.58.30
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 27 Jun 2024 06:58:27 -0700 (PDT)
+        Thu, 27 Jun 2024 06:58:30 -0700 (PDT)
 Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Ay5B2SOn;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=FRDZAugr;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719496707; x=1720101507; darn=linaro.org;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719496710; x=1720101510; darn=linaro.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=heud5oPL9PguF+0Dl89or/td6O7yLCDZcvUAaJnUzns=;
-        b=Ay5B2SOn93nkcsRImDkwqI9l2+c2zhkrRkMoXdt1X1XC+UBiVAeE2aiKapfazYdreB
-         0nYcMxS6cOEpdvkUdVbybcgbopDFKo470A0u9Op9WL/C0YzFczyS200bWOPbcPPudIOr
-         b+SaYgQjkrGrqx+wneAryqcU/h0UhWykvGX+Kd1rsrPXMwFwUy+1mXQNNPn4o7QgATap
-         4obFh1t2yD4HkxsdSNEQa5Rmiyuir9DLJBG34BJHhhH1h6LlVO2cfDJrbaO5AJXlM0ve
-         pW9jnhij/db1ZfkOjuyV8F6kKMm8SZP5yvZMhk8sCAi4KIeBykWNPt0PDJSGgRIc3H6G
-         YXCg==
+        bh=xfjEm1QZECbrFVCphMYb79ZHnIFQxwHobg0g4KA/LWs=;
+        b=FRDZAugrvYJcbqw1HlBQwcbvbJQwyymBAAGaGT/B2xfhYp0k12VeyDeh9he95RHMaP
+         XR0jeiHDfoLxjCQzULrgdh0UebhTW8OcvSZ/TAv5f1b688c/4G57RrGxIh34StM1w4Vd
+         5ys0hqcZYueyKjnvo07Nbu5VsjZTEb/SvOnEU7jCjK3Ga6f3EFwZ1jzj45YybHfTmoGJ
+         b02Ojo7tLrq2gWXSDXvMl1iSUkS7BLeL72LVlxicRvWeg9ifycY9s76bl4IuygaSzxBv
+         KrS3FLq1ZryxXVPUJqYOVuuJGm7yuwbQVwofltie1VYVZZNeGewMgoiPGGe2yl3yWpqg
+         plgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719496707; x=1720101507;
+        d=1e100.net; s=20230601; t=1719496710; x=1720101510;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=heud5oPL9PguF+0Dl89or/td6O7yLCDZcvUAaJnUzns=;
-        b=GB3v9M4OwPcj50ry4fHoXmNOz2Qgj6S7V374PLRpMf5rKrdedng+kv6hhJkxxy8S9x
-         S+E0uJasbkOB1SJsu/kQvetd2zffEqxg6DpK+6pW1xCAhISrN3utjAzdpNtjiSaTSccJ
-         Wl4BRw7Tuev4e91/9zGYZFHYWbMho1CRbPKw5jVlrhaO0J8cxM+4gLUsnlaVpy8f0TqK
-         37Gq/atX1m9HAgqpRgRlekUBnqrD3pUjL+gmfGBmEHPSzautKe7tXwaejKf10w+lIRYI
-         nFej7jkcdBJeFIPizzV/As5JbJ9+K1IEnLmq4pSYOISoWgkxaD9SEFztRUYIWa6C/SGW
-         KBrA==
-X-Forwarded-Encrypted: i=1; AJvYcCV4pLePRP+wDYMtSKtTs2rKnhVTzFo5ILUmVbu/eppOyoLL0+rkYxcJys8je4QHb4FE443UQkp9BpO3cxtXCBkbhflpuiWO
-X-Gm-Message-State: AOJu0YwgnZM5pHX3SGOqqcgSRqDUUZrS7z72u04MdLsswzs+7pv78T4f
-	KpaQ7KZaBMr4h7ep3jtHyfLb7hEWfrmUZJp2lVK4kMwprCCj1JtAE7FlxNjpPIA=
-X-Google-Smtp-Source: AGHT+IGon+Kh3oEuD1ex29QX/ojEPrLpLRJrh9wy0wfsAUnKEz9YFU2FzV3on1LO4wXqU1vRQAiMJQ==
-X-Received: by 2002:a17:902:d505:b0:1fa:ac73:ca2d with SMTP id d9443c01a7336-1faac73cb78mr15108605ad.11.1719496707334;
-        Thu, 27 Jun 2024 06:58:27 -0700 (PDT)
+        bh=xfjEm1QZECbrFVCphMYb79ZHnIFQxwHobg0g4KA/LWs=;
+        b=DzUSU9SGONS67pTOo9Ur7LZr7I1onWCSs+iQJqDNkULf/kPtNPH7ijD5sorL+YP1Ji
+         PWNsPpxWgyhWYP+6clUufIBFmzENmQGG8qEeNtodsQMGdoYeyk+6t+T2tqLoMXRhWp6d
+         umF22t268oqfWD9JCLy63oHcSLGOjbY4TuIaIhAYEdMcsV/0cAvgmTA8M8sWr4NzLh97
+         t9uyrFepnFj1fZ08GQ4Y6FKt7PzjKrzwD8IHcYzHv8YRFGnlY56oV7afu9X9NxL1ohcT
+         BVQUjP9YKY+1yIe7bW+xswVL6QvImyxV6zJpKzaDsUhBFVWyR7kKW3DkGW/GfaTJ/z83
+         tU9g==
+X-Forwarded-Encrypted: i=1; AJvYcCWf+Odj08B8H2nqeUQ/zIw6azeYeO0p/oXDXdM8jweOzJK8dOtfiuKGOdFCHp2bBI2rkzHRQ94b9eZDK751MrQr53mQVJQ0
+X-Gm-Message-State: AOJu0Yy07faK61iyQwdu8aX3dHv3m0aT3p/ZKb6qQmdDZDHiQfX/E0Rn
+	5RBemELVQ389niWJ3BaSuLezL0u50IhSfLFafYOBfHqY+t/rA1Gh5NLgFNsuh0U=
+X-Google-Smtp-Source: AGHT+IFqsrJNhhU+ItZ1RtuSfKHh3Oqhi7BuzNUGYuUMcdRiFhYGaJCECMYQ9rOAyZURrOQKDlKCiw==
+X-Received: by 2002:a17:903:2342:b0:1fa:7e0:d69a with SMTP id d9443c01a7336-1fa23f15bf5mr149519925ad.46.1719496710476;
+        Thu, 27 Jun 2024 06:58:30 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from localhost ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
-        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-1faac8f25a1sm13532155ad.73.2024.06.27.06.58.25
+        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-1faac8f5a71sm13506705ad.109.2024.06.27.06.58.28
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Jun 2024 06:58:27 -0700 (PDT)
+        Thu, 27 Jun 2024 06:58:30 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Date: Thu, 27 Jun 2024 22:58:05 +0900
-Subject: [PATCH v2 4/6] tests/tcg/aarch64: Fix irg operand type
+Date: Thu, 27 Jun 2024 22:58:06 +0900
+Subject: [PATCH v2 5/6] tests/tcg/aarch64: Do not use x constraint
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240627-tcg-v2-4-1690a813348e@daynix.com>
+Message-Id: <20240627-tcg-v2-5-1690a813348e@daynix.com>
 References: <20240627-tcg-v2-0-1690a813348e@daynix.com>
 In-Reply-To: <20240627-tcg-v2-0-1690a813348e@daynix.com>
 To: Peter Maydell <peter.maydell@linaro.org>, 
@@ -86,29 +86,83 @@ To: Peter Maydell <peter.maydell@linaro.org>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Akihiko Odaki <akihiko.odaki@daynix.com>
 X-Mailer: b4 0.14-dev-fd6e3
-X-TUID: Aw8IVgJ9rGC2
+X-TUID: //f7/igv8VGj
 
-irg expects 64-bit integers. Passing a 32-bit integer results in
-compilation failure with clang version 18.1.6.
+clang version 18.1.6 does not support x constraint for AArch64.
+Use w instead.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- tests/tcg/aarch64/mte-1.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/tcg/arm/fcvt.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/tests/tcg/aarch64/mte-1.c b/tests/tcg/aarch64/mte-1.c
-index 88dcd617addc..146cad4a0499 100644
---- a/tests/tcg/aarch64/mte-1.c
-+++ b/tests/tcg/aarch64/mte-1.c
-@@ -15,7 +15,7 @@ int main(int ac, char **av)
-     enable_mte(PR_MTE_TCF_NONE);
-     p0 = alloc_mte_mem(sizeof(*p0));
+diff --git a/tests/tcg/arm/fcvt.c b/tests/tcg/arm/fcvt.c
+index 05a27b2d0710..157790e67961 100644
+--- a/tests/tcg/arm/fcvt.c
++++ b/tests/tcg/arm/fcvt.c
+@@ -126,7 +126,7 @@ static void convert_single_to_half(void)
+         asm("vcvtb.f16.f32 %0, %1" : "=t" (output) : "x" (input));
+ #else
+         uint16_t output;
+-        asm("fcvt %h0, %s1" : "=w" (output) : "x" (input));
++        asm("fcvt %h0, %s1" : "=w" (output) : "w" (input));
+ #endif
+         print_half_number(i, output);
+     }
+@@ -149,7 +149,7 @@ static void convert_single_to_double(void)
+ #if defined(__arm__)
+         asm("vcvt.f64.f32 %P0, %1" : "=w" (output) : "t" (input));
+ #else
+-        asm("fcvt %d0, %s1" : "=w" (output) : "x" (input));
++        asm("fcvt %d0, %s1" : "=w" (output) : "w" (input));
+ #endif
+         print_double_number(i, output);
+     }
+@@ -244,7 +244,7 @@ static void convert_double_to_half(void)
+         /* asm("vcvtb.f16.f64 %0, %P1" : "=t" (output) : "x" (input)); */
+         output = input;
+ #else
+-        asm("fcvt %h0, %d1" : "=w" (output) : "x" (input));
++        asm("fcvt %h0, %d1" : "=w" (output) : "w" (input));
+ #endif
+         print_half_number(i, output);
+     }
+@@ -267,7 +267,7 @@ static void convert_double_to_single(void)
+ #if defined(__arm__)
+         asm("vcvt.f32.f64 %0, %P1" : "=w" (output) : "x" (input));
+ #else
+-        asm("fcvt %s0, %d1" : "=w" (output) : "x" (input));
++        asm("fcvt %s0, %d1" : "=w" (output) : "w" (input));
+ #endif
  
--    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(1));
-+    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(1l));
-     assert(p1 != p0);
-     asm("subp %0,%1,%2" : "=r"(c) : "r"(p0), "r"(p1));
-     assert(c == 0);
+         print_single_number(i, output);
+@@ -335,7 +335,7 @@ static void convert_half_to_double(void)
+         /* asm("vcvtb.f64.f16 %P0, %1" : "=w" (output) : "t" (input)); */
+         output = input;
+ #else
+-        asm("fcvt %d0, %h1" : "=w" (output) : "x" (input));
++        asm("fcvt %d0, %h1" : "=w" (output) : "w" (input));
+ #endif
+         print_double_number(i, output);
+     }
+@@ -357,7 +357,7 @@ static void convert_half_to_single(void)
+ #if defined(__arm__)
+         asm("vcvtb.f32.f16 %0, %1" : "=w" (output) : "x" ((uint32_t)input));
+ #else
+-        asm("fcvt %s0, %h1" : "=w" (output) : "x" (input));
++        asm("fcvt %s0, %h1" : "=w" (output) : "w" (input));
+ #endif
+         print_single_number(i, output);
+     }
+@@ -380,7 +380,7 @@ static void convert_half_to_integer(void)
+         /* asm("vcvt.s32.f16 %0, %1" : "=t" (output) : "t" (input)); v8.2*/
+         output = input;
+ #else
+-        asm("fcvt %s0, %h1" : "=w" (output) : "x" (input));
++        asm("fcvt %s0, %h1" : "=w" (output) : "w" (input));
+ #endif
+         print_int64(i, output);
+     }
 
 -- 
 2.45.2

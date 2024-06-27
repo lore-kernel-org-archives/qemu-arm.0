@@ -1,85 +1,83 @@
-Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp248448njb;
-        Thu, 27 Jun 2024 06:58:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXi1XLNfMyZEVeQVFB/aUCFn7FTzO2+jLvSI+1Y1cVzyuKv1dO7fNFowBatz2MYfptSs9fkcLJMk3/iM/O0z7Cy0GBxC++s
-X-Received: by 2002:a17:903:18d:b0:1fa:1d37:700b with SMTP id d9443c01a7336-1fa23f155damr179790495ad.45.1719496704580;
-        Thu, 27 Jun 2024 06:58:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719496704; cv=none;
+Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp248467njb;
+        Thu, 27 Jun 2024 06:58:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUEwdVt06TKvA6huVU+X8QwwN68D/sKcfVfjs1QIK2+SOMSuKUZ9/cD2PvfzdB6o6V3N0ptGTp5xpjwSC9sPpBDEi5xqlMt
+X-Received: by 2002:a05:6a21:99a2:b0:1be:caf6:66d7 with SMTP id adf61e73a8af0-1becaf66cb1mr3262846637.13.1719496707812;
+        Thu, 27 Jun 2024 06:58:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719496707; cv=none;
         d=google.com; s=arc-20160816;
-        b=bwacfVuoIvOhWl1gGNT/+8I8nwGjDNdpOp3e/QDZ5Vwp5Au4VJdLgjcDKSFMLArTg+
-         OUuGsEJChhSgg3naVp6BeKQ9vFBAbQql2z/PlwUdQ6xwKt2pr+//1k8InU6PUi5vhT1x
-         VeF9CCPz8Fr0VPibdxTz4GYLipkt26JM9NyGL1depglmn+P4D5iBcchw1LYpTB82p3pn
-         WlTY42xxIXej4W+v5KxRgEfrBsOfaDWneBfp4rf5CcagC59bYodURa6/y79hmI/GlIa1
-         SutwkOOHSoL04YSSWxXKHGKvEZr5/VRKVSdbjbakFMNO0EwyBU//gk5cxUeuTOFflyI2
-         9MYA==
+        b=Za8qDyPUcRredo/xRFGyZHHIdHf2RZB0uO3thCCW2sVvJbj6GrzhjSnmTbiCUKy100
+         rpUpEeZYE6TaPJybxOS1B5jq301y+OhDQZNX2eWOJURrIKnW9psCKeQFdBqU0E9gctbb
+         BWDiI5n3CiAjksrZcgPAnzFjpEuMYjJKT6I5vJkcZq8YuzSQ9C9LMTvewOMw2Esy7N+H
+         GVnIUAlaUuCBMZLYhAy18eQdTl3NL8BUqovXDinZVrSsMpI3W1qqo935DAuJCG18Ak/S
+         kaeKXieBeCbI0UOlsFXYiMBDcBrmuAT8v60Ez5ulhEb3/F2DiZXPRany/ARysfDrq/ly
+         hACw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:dkim-signature;
-        bh=051823EgtBzstuD764vOjuzK26tAgdAGeHklAVfjV2g=;
-        fh=sNItI2GiFQIg5egUD3ufa0LdsTJR6o0A0Dp9sXtBZ+c=;
-        b=pPJke9zUK1zPmLDYm3ILsSDq+ylP6LZO9qfzJeiLX1EBv1GyxlrxPE2nYR4HY8QW26
-         NFstfUra3G8o2stJjrA6PN8VKqZRxAYCiB0IQiQjPOAV8fFkNLnkL13VTdnqokN9tlgE
-         CY2vqmJrCgPDu7E7yVWyOj7oYpfrm/NQ+LknWkrrEZ4L3aF9tr701ryl2gxfQmmISXdE
-         8qVpiGb0D3ZP5Xmi+4a3r5ijuq31Nfpa0iV7FFXf2BRhT14hRA/bKiY80W8QceC4FlWp
-         0NcwFYK1gEwbI2cZdrJnjIkTQLiqQtgfkaEYqlrM3b6WD9yqBrOuiy0teLAJW13iItUT
-         8wXQ==;
+        bh=heud5oPL9PguF+0Dl89or/td6O7yLCDZcvUAaJnUzns=;
+        fh=080ygu0qjGx2JbwcuKY2iHfwhOzZoY/cSvTF8VT+P5U=;
+        b=zsJP63XoAohSI51Q6NDcvpKIR+m49QnI3ckjA/B6JBaCVdJlnHxtxnxHv6Cloo2lDJ
+         0U1/XYegaJJpfV4IMozVSUpqzKK5h3On0Phaa3IC9viyhrJgBHL562LOHH6XKG/8Qg8p
+         ewoVpifZvHWvT6METL5rg2JgW9t8O1fsY8ZgZ/qhF6onvVmP8DoZ//haEFiCJb39uZva
+         /0YX5SxpkjKU759sYHkWcEpH9sZsphooEKWL8pSir5Tx1XpRxjPP78IjRJq+KR8JH5fq
+         OFCgbbv24duBGT+qKLdAi9Bdla4HIX1gRkHcfUnxMNYSCJTuIJ0iZTXuoj/wrfqi/dBH
+         T4Xg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=JQ3NANpk;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Ay5B2SOn;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-1faac8d4f05sor7634315ad.1.2024.06.27.06.58.24
+        by mx.google.com with SMTPS id d9443c01a7336-1faac902394sor6721095ad.9.2024.06.27.06.58.27
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 27 Jun 2024 06:58:24 -0700 (PDT)
+        Thu, 27 Jun 2024 06:58:27 -0700 (PDT)
 Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=JQ3NANpk;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Ay5B2SOn;
        spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719496704; x=1720101504; darn=linaro.org;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719496707; x=1720101507; darn=linaro.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=051823EgtBzstuD764vOjuzK26tAgdAGeHklAVfjV2g=;
-        b=JQ3NANpklQtNLJKyYTUVIBe9Au4wuu8cjR0V/o09QO4VPCnfW+/RBcq+qwywR9xKPY
-         9tKHlLvNso/p5CcIlvV27B0SHAR6G8BGJdzMJVtVWEueGotsfBAedUKIsVPyJ0xRpvlQ
-         vSvq+rzVUZG2MTDeXXQhB691bTBg/jENGWrKevJs477jQGCPzmnnWe/WsYlw/EK0Usre
-         xG0SQghNgHLFYcQO8GYiN7F1gzDqzGUpsJ6NRLncbqrDKHrxHQ3/swEIy3/XyUHxQ2Zd
-         v6SWzx9CPv9ymUzRPkMgv9Vw+2TWFqdI+6BHY+eq3yFdnkFGL0DoJ+R+Y97SaWYtiuFq
-         tG5Q==
+        bh=heud5oPL9PguF+0Dl89or/td6O7yLCDZcvUAaJnUzns=;
+        b=Ay5B2SOn93nkcsRImDkwqI9l2+c2zhkrRkMoXdt1X1XC+UBiVAeE2aiKapfazYdreB
+         0nYcMxS6cOEpdvkUdVbybcgbopDFKo470A0u9Op9WL/C0YzFczyS200bWOPbcPPudIOr
+         b+SaYgQjkrGrqx+wneAryqcU/h0UhWykvGX+Kd1rsrPXMwFwUy+1mXQNNPn4o7QgATap
+         4obFh1t2yD4HkxsdSNEQa5Rmiyuir9DLJBG34BJHhhH1h6LlVO2cfDJrbaO5AJXlM0ve
+         pW9jnhij/db1ZfkOjuyV8F6kKMm8SZP5yvZMhk8sCAi4KIeBykWNPt0PDJSGgRIc3H6G
+         YXCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719496704; x=1720101504;
+        d=1e100.net; s=20230601; t=1719496707; x=1720101507;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=051823EgtBzstuD764vOjuzK26tAgdAGeHklAVfjV2g=;
-        b=oJSNSC0bKRDksIY+Lm2dZWqb6CU18dPD9jqtQgGp8DMGbU3RKGFon8odgIhjzL/6BG
-         A2VA0UJsp6SqFFDwm7CJhrwhSciyjWsIaYCHb5wHuTIrr88l4lqvOWbAFx/C/jV44dJN
-         ukCvIRQGtwvrCZJnEzdSWg6lDvR0QU06Jvm8g5sU54YXLFcOUNGTGtZ4MallXPaUotvi
-         WCKOYmSrt6MyFlqT+ygFtx/lQdnnYZOd+BxadEumfQFlmzwWbNNZmOFcVFOVPTS6/K3i
-         dVGfUGcLQ8PQ012Sis9EjSOI9goLeS7WsYaiPuHfbFWgjf9+5/IV76xGFJ6kNiZ3mqDH
-         kg+g==
-X-Forwarded-Encrypted: i=1; AJvYcCW+NWfrHMV0/vYu0Rz3lxPuS0HosB2BMIu1ugb1/cMfTCW+Nxgn2TPllGtzUSD1QzC+RmQd48fH22VxKPHPwHrYDq8F1wDo
-X-Gm-Message-State: AOJu0YxkALkViLXwnuc44A21cn9/Ub26h4lR9/A9N6bJJORWH2ptpST8
-	wr685NCEXOU2xeK/iGuez60pU/ugRkVlYrQg6Lv8yDXFyRRkYSXuCUtn2c7FPg1kSUzJZc5zIIL
-	qkxk=
-X-Google-Smtp-Source: AGHT+IGKtG2fWmDbLIN8gcv2F0slGqWgLtvmlKC3nv1h0XIdevBGkCeHMFkiB0A3o7EiLJ9nDf8XYg==
-X-Received: by 2002:a17:902:6847:b0:1f7:123e:2c6f with SMTP id d9443c01a7336-1fa23ee5b60mr114181745ad.37.1719496703973;
-        Thu, 27 Jun 2024 06:58:23 -0700 (PDT)
+        bh=heud5oPL9PguF+0Dl89or/td6O7yLCDZcvUAaJnUzns=;
+        b=GB3v9M4OwPcj50ry4fHoXmNOz2Qgj6S7V374PLRpMf5rKrdedng+kv6hhJkxxy8S9x
+         S+E0uJasbkOB1SJsu/kQvetd2zffEqxg6DpK+6pW1xCAhISrN3utjAzdpNtjiSaTSccJ
+         Wl4BRw7Tuev4e91/9zGYZFHYWbMho1CRbPKw5jVlrhaO0J8cxM+4gLUsnlaVpy8f0TqK
+         37Gq/atX1m9HAgqpRgRlekUBnqrD3pUjL+gmfGBmEHPSzautKe7tXwaejKf10w+lIRYI
+         nFej7jkcdBJeFIPizzV/As5JbJ9+K1IEnLmq4pSYOISoWgkxaD9SEFztRUYIWa6C/SGW
+         KBrA==
+X-Forwarded-Encrypted: i=1; AJvYcCV4pLePRP+wDYMtSKtTs2rKnhVTzFo5ILUmVbu/eppOyoLL0+rkYxcJys8je4QHb4FE443UQkp9BpO3cxtXCBkbhflpuiWO
+X-Gm-Message-State: AOJu0YwgnZM5pHX3SGOqqcgSRqDUUZrS7z72u04MdLsswzs+7pv78T4f
+	KpaQ7KZaBMr4h7ep3jtHyfLb7hEWfrmUZJp2lVK4kMwprCCj1JtAE7FlxNjpPIA=
+X-Google-Smtp-Source: AGHT+IGon+Kh3oEuD1ex29QX/ojEPrLpLRJrh9wy0wfsAUnKEz9YFU2FzV3on1LO4wXqU1vRQAiMJQ==
+X-Received: by 2002:a17:902:d505:b0:1fa:ac73:ca2d with SMTP id d9443c01a7336-1faac73cb78mr15108605ad.11.1719496707334;
+        Thu, 27 Jun 2024 06:58:27 -0700 (PDT)
 Return-Path: <akihiko.odaki@daynix.com>
 Received: from localhost ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
-        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-1faac99525bsm13437755ad.192.2024.06.27.06.58.22
+        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-1faac8f25a1sm13532155ad.73.2024.06.27.06.58.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Jun 2024 06:58:23 -0700 (PDT)
+        Thu, 27 Jun 2024 06:58:27 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Date: Thu, 27 Jun 2024 22:58:04 +0900
-Subject: [PATCH v2 3/6] tests/tcg/aarch64: Explicitly specify register
- width
+Date: Thu, 27 Jun 2024 22:58:05 +0900
+Subject: [PATCH v2 4/6] tests/tcg/aarch64: Fix irg operand type
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20240627-tcg-v2-3-1690a813348e@daynix.com>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240627-tcg-v2-4-1690a813348e@daynix.com>
 References: <20240627-tcg-v2-0-1690a813348e@daynix.com>
 In-Reply-To: <20240627-tcg-v2-0-1690a813348e@daynix.com>
 To: Peter Maydell <peter.maydell@linaro.org>, 
@@ -88,65 +86,29 @@ To: Peter Maydell <peter.maydell@linaro.org>,
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Akihiko Odaki <akihiko.odaki@daynix.com>
 X-Mailer: b4 0.14-dev-fd6e3
-X-TUID: CqNpQ2KHTNol
+X-TUID: Aw8IVgJ9rGC2
 
-clang version 18.1.6 assumes a register is 64-bit by default and
-complains if a 32-bit value is given. Explicitly specify register width
-when passing a 32-bit value.
+irg expects 64-bit integers. Passing a 32-bit integer results in
+compilation failure with clang version 18.1.6.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/tcg/aarch64/bti-1.c | 6 +++---
- tests/tcg/aarch64/bti-3.c | 6 +++---
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ tests/tcg/aarch64/mte-1.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/tcg/aarch64/bti-1.c b/tests/tcg/aarch64/bti-1.c
-index 99a879af23d4..1fada8108d22 100644
---- a/tests/tcg/aarch64/bti-1.c
-+++ b/tests/tcg/aarch64/bti-1.c
-@@ -17,15 +17,15 @@ static void skip2_sigill(int sig, siginfo_t *info, ucontext_t *uc)
- #define BTI_JC    "hint #38"
+diff --git a/tests/tcg/aarch64/mte-1.c b/tests/tcg/aarch64/mte-1.c
+index 88dcd617addc..146cad4a0499 100644
+--- a/tests/tcg/aarch64/mte-1.c
++++ b/tests/tcg/aarch64/mte-1.c
+@@ -15,7 +15,7 @@ int main(int ac, char **av)
+     enable_mte(PR_MTE_TCF_NONE);
+     p0 = alloc_mte_mem(sizeof(*p0));
  
- #define BTYPE_1(DEST) \
--    asm("mov %0,#1; adr x16, 1f; br x16; 1: " DEST "; mov %0,#0" \
-+    asm("mov %w0,#1; adr x16, 1f; br x16; 1: " DEST "; mov %w0,#0" \
-         : "=r"(skipped) : : "x16")
- 
- #define BTYPE_2(DEST) \
--    asm("mov %0,#1; adr x16, 1f; blr x16; 1: " DEST "; mov %0,#0" \
-+    asm("mov %w0,#1; adr x16, 1f; blr x16; 1: " DEST "; mov %w0,#0" \
-         : "=r"(skipped) : : "x16", "x30")
- 
- #define BTYPE_3(DEST) \
--    asm("mov %0,#1; adr x15, 1f; br x15; 1: " DEST "; mov %0,#0" \
-+    asm("mov %w0,#1; adr x15, 1f; br x15; 1: " DEST "; mov %w0,#0" \
-         : "=r"(skipped) : : "x15")
- 
- #define TEST(WHICH, DEST, EXPECT) \
-diff --git a/tests/tcg/aarch64/bti-3.c b/tests/tcg/aarch64/bti-3.c
-index 8c534c09d784..6a3bd037bcd6 100644
---- a/tests/tcg/aarch64/bti-3.c
-+++ b/tests/tcg/aarch64/bti-3.c
-@@ -11,15 +11,15 @@ static void skip2_sigill(int sig, siginfo_t *info, ucontext_t *uc)
- }
- 
- #define BTYPE_1() \
--    asm("mov %0,#1; adr x16, 1f; br x16; 1: hint #25; mov %0,#0" \
-+    asm("mov %w0,#1; adr x16, 1f; br x16; 1: hint #25; mov %w0,#0" \
-         : "=r"(skipped) : : "x16", "x30")
- 
- #define BTYPE_2() \
--    asm("mov %0,#1; adr x16, 1f; blr x16; 1: hint #25; mov %0,#0" \
-+    asm("mov %w0,#1; adr x16, 1f; blr x16; 1: hint #25; mov %w0,#0" \
-         : "=r"(skipped) : : "x16", "x30")
- 
- #define BTYPE_3() \
--    asm("mov %0,#1; adr x15, 1f; br x15; 1: hint #25; mov %0,#0" \
-+    asm("mov %w0,#1; adr x15, 1f; br x15; 1: hint #25; mov %w0,#0" \
-         : "=r"(skipped) : : "x15", "x30")
- 
- #define TEST(WHICH, EXPECT) \
+-    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(1));
++    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(1l));
+     assert(p1 != p0);
+     asm("subp %0,%1,%2" : "=r"(c) : "r"(p0), "r"(p1));
+     assert(c == 0);
 
 -- 
 2.45.2

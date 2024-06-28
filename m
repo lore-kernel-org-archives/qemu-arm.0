@@ -1,113 +1,105 @@
-Received: by 2002:a17:504:c7cb:b0:1be7:c013:c773 with SMTP id cj11csp514151njb;
-        Thu, 27 Jun 2024 23:19:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWNa+uLQeYAJSwZkKVg6phq2SzR0zVfxkGvHYMc0qTosT+grrS/Xk+QQzEK9fwrgr5kDwUYHxl2fVhODIxVFCchTuA2BrXg
-X-Received: by 2002:a2e:9e18:0:b0:2ec:5488:cc9e with SMTP id 38308e7fff4ca-2ec5b2e5a63mr118005941fa.26.1719555557419;
-        Thu, 27 Jun 2024 23:19:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719555557; cv=none;
-        d=google.com; s=arc-20160816;
-        b=PQ3SzxXTf6i6XqDug3hZmRFt362fqMnqevXAZHl/s3VldtS7tBr+irid7L+W/OdybZ
-         L4x15l0WHgDGz2tbS8OYUNpJRp1BnYPixtafHCriOPXEsiPFxMSCc6i3KNECGexQzHkQ
-         8BLTlNQ75dur0HP+b6Uw6C4rVt1b5ARem2tZGgbLkTe2NPyU2P0TbsnLLVJ78Ftulmzf
-         OX1RfrSsy5PmZJTu7tuM42Db8UGrWppEliFyfpkha1ki9gdi+f8eOneHdA4uYtuLCMkL
-         68lVWMFVNDqG0gd5/qcwSMwigSPbb7F09sSWlkTBj2e1Myx0V815G6IZXYwjvk0/iR5q
-         yO+w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=nac15weJy2n70ADaWLadboiJpUDMd0DFCULHo4IUwtY=;
-        fh=ltJVVyOicsSVuIFIsWtVlZBmFcccoQwO0fgRKDwZym0=;
-        b=USRLTMJ6pUDmDzyQ4LXY+u0kKsYeODxIjBuJ4thvy6c7obDi2+StpjdvtFFe/Olku7
-         ztvvXfoZylngTFURaWubYo3a7kOOg5Ry9joklaJhtq+EenixgBRxKZQpM9S63+7OqktS
-         PoaUhwCRToy3ZmH9juYMXvRW+V5onu3AIxQfioO53ZERDNL1MPWb9a7IeF1//9RB3gbL
-         cMe96E74/qGN4/4Dsv9yviCLlbyn3AO/0heuxUxXyTHg5zFi86JVuDMzNOWPwVwt1zq8
-         2lB0r4gmNOWRKGldGBnJvw4S2vOlGoFCoQPjeM12poAvPR+KzpkYFeuni2GErYmQ6sVT
-         qw+w==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XBlTDKyU;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 38308e7fff4ca-2ee511fad44sor2701371fa.1.2024.06.27.23.19.17
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 27 Jun 2024 23:19:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XBlTDKyU;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1719555557; x=1720160357; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=nac15weJy2n70ADaWLadboiJpUDMd0DFCULHo4IUwtY=;
-        b=XBlTDKyUji6DdExgSyCQaGDqAF6m1b8dhc/au90zc8ZMN0YvWZduFbU7Iz7rocwdzB
-         U4iuYoAA4MbGVnUevK+4H/mt9iskfkd6w2+nBcV1QxYvzxBpwGWMh17pLXDQvVoSvdH0
-         TRYshtdew21gkiiJIBnELGUCFc93ymBRgRDuv9f9yswH3ezmKZxFnMjFy0DFWn5fbvM/
-         n+wNm61dP130r4h9gS02PLLLwUczERMOhwYrL6yeZJD7GGJSnhy8AkBBhpOAMc69KnvQ
-         WealhQ9v9lTUs0+DFsSVo1eV7NFyyR6s3BMILuJlXV5fFMHEF5rE3xfshXuNrta+kV9y
-         haqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719555557; x=1720160357;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=nac15weJy2n70ADaWLadboiJpUDMd0DFCULHo4IUwtY=;
-        b=BAmVLMCMgWSOPw2AF3UY81ubBVouRrBwuEoTC+mA2iknxfzhHtgJGsMYUeDLk0ovMv
-         9HLUwa8viDUfu7AhWgWLRbmYh9yTivJmtB2w2rlyJuLYfEGGLda3N5Upyat85CB6wZgg
-         xNOEvofnwtGE4Phv7FNOnK51BQ6P32wTPHAUZYKd6HcqqAxLPiG9swQxQN2QGHGidh+3
-         gwX/2h011LGv1I2fR+j3wqBe9g4cyAxpNEWaELAk6N0ljeK3BBn5Er/MoQFIzROyDEfj
-         sejvPR8rRnXarNOS74RoOKksz9brQjaIw+kofpjGGmLDxdxXdWA0D2nhfxQsDt7ezxPH
-         o41g==
-X-Forwarded-Encrypted: i=1; AJvYcCUpc0P0NsZYDRPILOoT0UlQsIaN4/wq/5mxSowACziTedYQik7tAU/IiEsA50H45iZ+7qe/vRm4Q5Q2zDMCJzHkPATAxDJu
-X-Gm-Message-State: AOJu0YzL6VlS4TFN/KL2R8VZvnMqOmIxMd+vDadtgSZmjdXkOwa+xIrh
-	WSh1icF2XuRkQAS9L1ZWhSec8OFRo2Wuqd2FRIyZuRa7zGSrrbqaYmWaWyIDFCfwQA==
-X-Google-Smtp-Source: AGHT+IHxI7vYp/W95VNs2Nsrxirhsuqtph4rJzieiWISuhOGqN5Qzcxn5gitUdQB9TCRn9FNj1FmKA==
-X-Received: by 2002:a2e:8242:0:b0:2ec:597f:664 with SMTP id 38308e7fff4ca-2ec5b2c4fa1mr111251491fa.2.1719555556846;
-        Thu, 27 Jun 2024 23:19:16 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] (cho94-h02-176-184-4-239.dsl.sta.abo.bbox.fr. [176.184.4.239])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3675a0fbbd4sm1228880f8f.84.2024.06.27.23.19.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 27 Jun 2024 23:19:16 -0700 (PDT)
-Message-ID: <ce55f409-a343-4cdd-8a34-ba8a87b95c9b@linaro.org>
-Date: Fri, 28 Jun 2024 08:19:13 +0200
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72aaf61f4dsm75794566b.71.2024.06.28.05.30.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 28 Jun 2024 05:30:50 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 7DA815F7A1;
+	Fri, 28 Jun 2024 13:30:49 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,  Philippe =?utf-8?Q?Mathieu-?=
+ =?utf-8?Q?Daud=C3=A9?=
+ <philmd@linaro.org>,  qemu-arm@nongnu.org,  qemu-devel@nongnu.org
+Subject: Re: [PATCH v2 0/6] tests/tcg/aarch64: Fix inline assemblies for clang
+In-Reply-To: <20240627-tcg-v2-0-1690a813348e@daynix.com> (Akihiko Odaki's
+	message of "Thu, 27 Jun 2024 22:58:01 +0900")
+References: <20240627-tcg-v2-0-1690a813348e@daynix.com>
+Date: Fri, 28 Jun 2024 13:30:49 +0100
+Message-ID: <87v81tntae.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] target/arm: Always build Aarch64 gdbstub helpers
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
- Anton Johansson <anjo@rev.ng>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>
-References: <20240619124903.56898-1-philmd@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240619124903.56898-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: VlARKIqcyZ+e
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: jwoXu33VFreJ
 
-ping?
+Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
-On 19/6/24 14:49, Philippe Mathieu-Daudé wrote:
-> Merge gdbstub64.c in gdbstub.c and remove uses of
-> target specific TARGET_AARCH64 definition.
-> Small step toward single ARM/Aarch64 binary.
-> 
-> Philippe Mathieu-Daudé (2):
->    target/arm: Merge gdbstub64.c within gdbstub.c
->    target/arm: Always build Aarch64 gdbstub helpers
-> 
->   target/arm/cpu.h       |   8 +-
->   target/arm/internals.h |   2 -
->   target/arm/gdbstub.c   | 363 +++++++++++++++++++++++++++++++++++++-
->   target/arm/gdbstub64.c | 383 -----------------------------------------
->   target/arm/meson.build |   1 -
->   5 files changed, 364 insertions(+), 393 deletions(-)
->   delete mode 100644 target/arm/gdbstub64.c
-> 
+> Unlike GCC, clang checks if the operands in assembly matches with the
+> type in C. It also does not support "x" constraint for AArch64 and
+> complains about them.
+
+I guess there are more needed:
+
+  ninja: no work to do.
+  /home/alex/lsrc/qemu.git/builds/all.clang/pyvenv/bin/meson introspect --t=
+argets --tests --benchmarks | /home/alex/lsrc/qemu.git/builds/all.clang/pyv=
+env/bin/python3 -B scripts/mtest2make.py > Makefile.mtest
+    BUILD   aarch64-linux-user guest-tests
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.1-a+sve detected
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.1-a+sve2 detected
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.2-a detected
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.3-a detected
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.5-a detected
+  tests/tcg/aarch64-linux-user: -mbranch-protection=3Dstandard detected
+  tests/tcg/aarch64-linux-user: -march=3Darmv8.5-a+memtag detected
+  tests/tcg/aarch64-linux-user: -Wa,-march=3Darmv9-a+sme detected
+  tests/tcg/aarch64-linux-user: -march=3Darmv9-a+sme-i16i64 not detected
+  <inline asm>:11:2: error: instruction requires: sve or sme
+          ptrue p0.s, vl4
+          ^
+  <inline asm>:12:2: error: instruction requires: sve or sme
+          fmov z0.s, #1.0
+          ^
+  <inline asm>:20:2: error: instruction requires: sve or sme
+          st1w {z0.s}, p0, [x0]
+          ^
+  <inline asm>:22:2: error: instruction requires: sve or sme
+          st1w {z1.s}, p0, [x0]
+          ^
+  <inline asm>:24:2: error: instruction requires: sve or sme
+          st1w {z2.s}, p0, [x0]
+          ^
+  <inline asm>:26:2: error: instruction requires: sve or sme
+          st1w {z3.s}, p0, [x0]
+          ^
+  6 errors generated.
+  make[1]: *** [Makefile:116: sme-outprod1] Error 1
+  make: *** [/home/alex/lsrc/qemu.git/tests/Makefile.include:50: build-tcg-=
+tests-aarch64-linux-user] Error 2
+
+>
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> ---
+> Changes in v2:
+> - Removed spurious a compiler flag change for normal SME tests.
+> - Fixed sme-i16i64 detection.
+> - Link to v1: https://lore.kernel.org/r/20240626-tcg-v1-0-0bad656307d8@da=
+ynix.com
+>
+> ---
+> Akihiko Odaki (6):
+>       tests/tcg/arm: Fix fcvt result messages
+>       tests/tcg/aarch64: Fix test architecture specification
+>       tests/tcg/aarch64: Explicitly specify register width
+>       tests/tcg/aarch64: Fix irg operand type
+>       tests/tcg/aarch64: Do not use x constraint
+>       tests/tcg/arm: Manually bit-cast half-precision numbers
+>
+>  tests/tcg/aarch64/bti-1.c         |   6 +-
+>  tests/tcg/aarch64/bti-3.c         |   6 +-
+>  tests/tcg/aarch64/mte-1.c         |   2 +-
+>  tests/tcg/aarch64/sme-smopa-2.c   |   2 +-
+>  tests/tcg/arm/fcvt.c              |  20 +-
+>  tests/tcg/aarch64/Makefile.target |  11 +-
+>  tests/tcg/aarch64/fcvt.ref        | 604 +++++++++++++++++++-------------=
+------
+>  7 files changed, 330 insertions(+), 321 deletions(-)
+> ---
+> base-commit: 046a64b9801343e2e89eef10c7a48eec8d8c0d4f
+> change-id: 20240624-tcg-bf8116e80afa
+>
+> Best regards,
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

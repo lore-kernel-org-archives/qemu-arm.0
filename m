@@ -1,117 +1,117 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp210174njm;
-        Fri, 28 Jun 2024 09:07:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWZuGvRg6k33lumebsmUONlueZFf5pT4vE3MU9pa7rLh8E3vcATQbliYWkM3vFNwvV+0/5aDXFlB4BLQ8cFw+lzASlx6N43
-X-Google-Smtp-Source: AGHT+IE26ZwILxuSdgaa1PmFefnCqZkx0pcrH1Z/P8Wv33PvqomjiOLi8z92VVgNMz7HGal9VzFz
-X-Received: by 2002:a9d:684f:0:b0:700:cc82:4a6a with SMTP id 46e09a7af769-700cc824c5amr11021274a34.21.1719590835611;
-        Fri, 28 Jun 2024 09:07:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719590835; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp210501njm;
+        Fri, 28 Jun 2024 09:07:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUgJzzD0dQdoMerDDwvRByd9yuP0XBSr7phmpfV3VFIwXP2JGp/9GLVqm91Ky4SPAH8+tDxtD6V6Ey2AZkghE4GjaNjDRyI
+X-Google-Smtp-Source: AGHT+IG0CfNrG9hsEVWzvUEZjCb0yQKkbZWlPEIt6ST720+NFFd7rqufF6B0HcrLsVS3XE7DWpg3
+X-Received: by 2002:a05:6808:1288:b0:3d6:324b:ddcc with SMTP id 5614622812f47-3d6324bea96mr2160945b6e.14.1719590868703;
+        Fri, 28 Jun 2024 09:07:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719590868; cv=none;
         d=google.com; s=arc-20160816;
-        b=yQcbZ9GLI1V2sb0Wgfw0lVLkCvaFEwdenyTLPsEmPstdEmfwNBNnpwww16bK3ccjGO
-         V/vWs9U/PXmA/Dyqk4yJOR9exN0+cKzcCnYJ6EQbBufLi+AZ/sU0/Ut2Wy7Ifd7bUEtx
-         ARmngDw6fWWmkaqOfGUwRx+4wFnKnBEFEssYGIp3dKX3t6aLn3inZQxkTV1V5IVCRs0X
-         120o3xcJeqFhQXnetdpPc+xPWf4/s5Ktn2Jpiv6bOFyfJnH75eG3Um2JnYrtbsnDavFi
-         D/IaMDnqM5LEJBdU0o088VrBNKjTFsRBFEJBCJHRj883fG2019fQwKuwXS0aQ1Mx35hW
-         0FOg==
+        b=Vp+CW1UaBeaDbq2Zsypmn4cXtsB5n1wDd0Wh7DbhZVIqtKbv1sQoN+U8dMvpQio7KD
+         4LwfPA8sOzG2rNCunyu2kj/k22AkBpDKhzLHdv51FKdMYX06SY6WQ8FyNEE/lded+iJk
+         5R5BBTp4EoKd11RBa3R74eO3QBfC780Gi8eYpnprwerQsAOdHfP9F28f+2I4pM76DbYx
+         ExVE9sFz7quiJGknl2iVkt2rNQ693UQRZzniWUt98aQBDxeQYu2e4fJ0GTfuDSfL9DRX
+         kWpxmlIlr/iUhj/Rs5pkzWeXbnkguNQ/cfaKXp2IIZ9NwBdsV/oddGCYRBdNeAWj+b89
+         RLIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:to:subject:user-agent
          :mime-version:date:message-id:dkim-signature;
-        bh=HklQvYOQqBccF+QXOx59MrZwyVotJY12tRs5aXYMGfg=;
-        fh=6AmXpoQBtb4ZusbSHcar8G9kkGQFnBKdn5YcUHIDyQQ=;
-        b=cGVscOcPrqLgP8/Hz874bq99YzFXI71JBSkE8yFyOCSEnKjdRb7ds1EN2ZP6lATnlU
-         iu86h0ipHLeZu+J7Wgr5gh6kEQZGo37wRM9h/0D0Q5C4S7ngqmc4cja7Le3yWs1oBl58
-         B6M1NjNoQT64xq9WqZMmufCuRl3AOQolNKoRQ1hDfQSX7tyjkju5LLcIN4sl1nR9R++/
-         h4kHiJk0pangrYOtybXQIwX5LVwEZHEntmCoMnk7eBL2luZwlpss3Np231vFOsc6zKx3
-         4b2G9LXXLMT9kclAmEhnI5i0zHLrw89P0O7d4JYQr2rd13ZAjRaYUW+NTYhLjARw8z8O
-         XIYg==;
+        bh=ujDxA/RukhAIPc4v54vTeVTjoZ5pFSlafjqAMJ1sNJU=;
+        fh=UTAYnh+6j1KhrO5M6ogVN4OJArO8xzZjL3Ht2hzgHDA=;
+        b=i1IKsyN+amFTRfKAhTR3/sGk84pRcTfM8QuL7nA1/83d8Ib8ALhfJpfva9P3KJOfF8
+         vLX4UN+5qjTIjaZ8lB8NNeKi1ZbsBWoD0lfCVgND+/nPwuQ7dyTz2vxOsuF/0+qenBEU
+         oTpaehf/j9OZwAIBdKpVYPXteII0at8kW3Ags+3BCe8BpZf2NTlFSy5zC9F0EWf8iP8v
+         Y/WtPz2hvkiPK0MIFx+uS9Wh4hhFkaRpDJII7WSps9V2s5iiriAQrPcEXLbeFhyNaKLM
+         ODnp21fn+rG+fK3zaQKTKLzPDZFt40FWCKz1WSRl9nfOk8V+lDX+mLW5PZp3TQ7N3VKW
+         V1rA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="JCZ3zP/W";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=TpLNjU91;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-48f9b2624bcsi305179137.448.2024.06.28.09.07.15
+        by mx.google.com with ESMTPS id ada2fe7eead31-48f9b29e7d5si371101137.807.2024.06.28.09.07.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Jun 2024 09:07:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 28 Jun 2024 09:07:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="JCZ3zP/W";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=TpLNjU91;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sNE7X-0001Dg-Do; Fri, 28 Jun 2024 12:06:43 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sNE8H-0001u7-UP; Fri, 28 Jun 2024 12:07:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sNE7V-0001Cy-19
- for qemu-devel@nongnu.org; Fri, 28 Jun 2024 12:06:41 -0400
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+ id 1sNE8F-0001qT-GV
+ for qemu-arm@nongnu.org; Fri, 28 Jun 2024 12:07:27 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sNE7R-00068P-FH
- for qemu-devel@nongnu.org; Fri, 28 Jun 2024 12:06:39 -0400
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-70671ecd334so644028b3a.0
- for <qemu-devel@nongnu.org>; Fri, 28 Jun 2024 09:06:36 -0700 (PDT)
+ id 1sNE8D-0007P0-Ae
+ for qemu-arm@nongnu.org; Fri, 28 Jun 2024 12:07:26 -0400
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-7163489149eso577674a12.1
+ for <qemu-arm@nongnu.org>; Fri, 28 Jun 2024 09:07:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719590796; x=1720195596; darn=nongnu.org;
+ d=linaro.org; s=google; t=1719590843; x=1720195643; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id:from
  :to:cc:subject:date:message-id:reply-to;
- bh=HklQvYOQqBccF+QXOx59MrZwyVotJY12tRs5aXYMGfg=;
- b=JCZ3zP/WJ18efrfOXVsn9BIbLbDrMq0hc/Lt+L2PnH1vmDd/Axkfwkgqk0kUOtZIf4
- Pr8mBBy0NQT9fHg/aU11g+y7z2GMq//QZi3fC5Zi+jDv2MMI/hESgCKK/eo9ow3H1Cj/
- cylHHQXmAqb8kWjg5tHUvIMv9mOL0nMbiRj9lQqukaprV1vlBpJod4dQf2+ZFlwvTN8E
- H2GIebGtquc1pZpOD04dokKCZ7igZBPbyP/L6sx+82uGm8CdDp7iMc5mh0fvKgVZHche
- Pm4TV4MtZFoRQC66dV35JJxepN9bSKxN3NO6exPxK697OlB3Ihj25SLCdsFLaFePQEFF
- 8UxQ==
+ bh=ujDxA/RukhAIPc4v54vTeVTjoZ5pFSlafjqAMJ1sNJU=;
+ b=TpLNjU91eboBjrLf/lBS6hr/oZhcbkYhfrigsVdq4svomO1SGHdO5Xz9KzpIfHEUZ6
+ yXsl5Q53ZERxMXqfI0ly8YEf3Ii0sEPOS3YdNOy7aI1YjNv6wIqdDPqZfrCBWBpOCEfp
+ t8pRATDaQXvqgPhXJ3nVTGBfR0DtlB8sGLzc7LlrbzWkGTCyXO377NLSGLMDku9vU6qf
+ 5VwAxYFor2mRw+6tyDTT7ZX/lWO1bVPNaEUljseKVZPl2QakiL7UEABFRh3U9tr6Px46
+ sXyZ+k5xZX9uE9AtS/2c8n9q3c/xy72lLXMJzqc1gewDlA8WoGc6lRVQkPKEPX0Lsc/A
+ vBTw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719590796; x=1720195596;
+ d=1e100.net; s=20230601; t=1719590843; x=1720195643;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=HklQvYOQqBccF+QXOx59MrZwyVotJY12tRs5aXYMGfg=;
- b=sgISouNYTKXw2smuiK26Su0/hs5sy0oSKJuIEwq+fm8hf+Jr9xTBsGSoaQ4j2f5N2k
- SloJ7e+w37oVH6fQSQc9FrtivyeV6xrUefk97ZUodLgfMVoYEtzKdCGKw4fh1FLBjHCN
- efPBiYcJ/M8HH3vhRoV4mayULQWetaUw2eKQyyyACzqoWCN4CioFpFUu/z3IpLvW45U2
- z6jsa5EkQESEq2Wznoo5dAiCm9dkTpt35qDTrBvh+NGifzgoc6YiLHiocGikmZUkQsN0
- q1YMJXv2d2kl5QPMjISL2Z3FElUZwUCuQzdFX+MOkFVb9Jlzke17uX4ybFDMwO0hyLGE
- EMgg==
+ bh=ujDxA/RukhAIPc4v54vTeVTjoZ5pFSlafjqAMJ1sNJU=;
+ b=OWs9oULgxN+FsGaA7DBmPNDav7Yzg6GXUuReKndqOEcY0y0lWk5GztJpubfEgfHs3N
+ MCjztMqJLfDzQgKIcKAe4kumgxmdo4lcjY+N2TITfrbS8Ruol0ZXj2ogfgq+o6j88DfP
+ 6V75MQ3GdpBqbtc2MXE9k3vlzuM/mHHD2X9ygX/gvP2gZPznoquy/hKGm4Kdf+9hmcCd
+ 9tAOn3CcVI3G8JX10JjFh9V6pBh/INnpnORAL1smT5Ei8/qAk0jgaTQdtfwX4VJTp0ZN
+ 5D2+X9unxQdNxLTUcpnP7wXbQ2DbtrCuTX1pj8j3GuZtiF5J3YOfXr1Ol/i1XwWpugWg
+ 9Ftw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX5RRErEXU0iEezswmg541PbncKMVBEz/PQXbxtn5sGkYQ6pes8+O5rbC6ZjBdjtMT8Sbnn4iYVibWYxF+q1o1s1Bhbq3U=
-X-Gm-Message-State: AOJu0Yz30NTOwEgdsWtrtgdQA72rgdf9fVfR/u1G5cJFiHNiAlOs5p9z
- strPHOj0as1NsdTPXNi2c1VfgakUAORxo2XJGGJP3bHRWYh8YwwwrVXaz1x3hTOum02jkuWd7AT
- f
-X-Received: by 2002:a05:6a20:8420:b0:1bc:e5b4:8972 with SMTP id
- adf61e73a8af0-1bcf44391e5mr23402521637.12.1719590795502; 
- Fri, 28 Jun 2024 09:06:35 -0700 (PDT)
+ AJvYcCXtb60rvhqYcalti1do/DaqMnxVrcd0w7WC3M5X1yuhjG83z9UNYWGJeyr5GXlSIFzpHO0Bf3M+RfjZBEALTcxZbSxc
+X-Gm-Message-State: AOJu0Yx9gH0KBdmLzRbonXxGEwA/EcJ2NLzr3+H2f1OMJKwTjMLM67L7
+ Cj7pwHbnStQ51FIqSQcVpzIO1CMUSSHcBrUZ2J0qpGx426Xbl4ECAob+B36oawg=
+X-Received: by 2002:a05:6a21:3282:b0:1be:d7b1:2869 with SMTP id
+ adf61e73a8af0-1bed7b12b8emr5815742637.56.1719590842660; 
+ Fri, 28 Jun 2024 09:07:22 -0700 (PDT)
 Received: from [192.168.0.4] (174-21-76-141.tukw.qwest.net. [174.21.76.141])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-70803ecf878sm1770250b3a.135.2024.06.28.09.06.34
+ d2e1a72fcca58-7080246a92asm1782563b3a.47.2024.06.28.09.07.20
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 28 Jun 2024 09:06:34 -0700 (PDT)
-Message-ID: <851098d0-4183-468c-b5a5-458baa3892d6@linaro.org>
-Date: Fri, 28 Jun 2024 09:06:32 -0700
+ Fri, 28 Jun 2024 09:07:21 -0700 (PDT)
+Message-ID: <3384e8a4-bd60-4d66-9c45-bd04de45af2c@linaro.org>
+Date: Fri, 28 Jun 2024 09:07:18 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 6/9] target/arm: Store FPSR and FPCR in separate CPU state
- fields
+Subject: Re: [PATCH 7/9] target/arm: Rename FPCR_ QC, NZCV macros to FPSR_
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20240628142347.1283015-1-peter.maydell@linaro.org>
- <20240628142347.1283015-7-peter.maydell@linaro.org>
+ <20240628142347.1283015-8-peter.maydell@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240628142347.1283015-7-peter.maydell@linaro.org>
+In-Reply-To: <20240628142347.1283015-8-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,50 +120,35 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DhWxBHy38rGS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5ZHdF7vqRUDJ
 
 On 6/28/24 07:23, Peter Maydell wrote:
-> Now that we have refactored the set/get functions so that the FPSCR
-> format is no longer the authoritative one, we can keep FPSR and FPCR
-> in separate CPU state fields.
-> 
-> As well as the get and set functions, we also have a scattering of
-> places in the code which directly access vfp.xregs[ARM_VFP_FPSCR] to
-> extract single fields which are stored there.  These all change to
-> directly access either vfp.fpsr or vfp.fpcr, depending on the
-> location of the field.  (Most commonly, this is the NZCV flags.)
-> 
-> We make the field in the CPU state struct 64 bits, because
-> architecturally FPSR and FPCR are 64 bits.  However we leave the
-> types of the arguments and return values of the get/set functions as
-> 32 bits, since we don't need to make that change with the current
-> architecture and various callsites would be unable to handle
-> set bits in the high half (for instance the gdbstub protocol
-> assumes they're only 32 bit registers).
+> The QC, N, Z, C, V bits live in the FPSR, not the FPCR. Rename the
+> macros that define these bits accordingly.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/cpu.h                  |  7 +++++++
->   target/arm/tcg/translate.h        |  3 +--
->   target/arm/tcg/mve_helper.c       | 12 ++++++------
->   target/arm/tcg/translate-m-nocp.c |  6 +++---
+>   target/arm/cpu.h                  | 17 ++++++++++-------
+>   target/arm/tcg/mve_helper.c       |  8 ++++----
+>   target/arm/tcg/translate-m-nocp.c | 16 ++++++++--------
 >   target/arm/tcg/translate-vfp.c    |  2 +-
->   target/arm/vfp_helper.c           | 25 ++++++++++---------------
->   6 files changed, 28 insertions(+), 27 deletions(-)
+>   target/arm/vfp_helper.c           |  8 ++++----
+>   5 files changed, 27 insertions(+), 24 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
 
 r~

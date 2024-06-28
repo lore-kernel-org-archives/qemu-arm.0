@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-58612c834ecsm984261a12.12.2024.06.28.05.42.59
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5861381756esm988562a12.56.2024.06.28.05.43.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Jun 2024 05:43:00 -0700 (PDT)
+        Fri, 28 Jun 2024 05:43:03 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 577735F9F9;
+	by draig.lan (Postfix) with ESMTP id A04135FA12;
 	Fri, 28 Jun 2024 13:42:59 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -26,91 +26,94 @@ Cc: David Hildenbrand <david@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Thomas Huth <thuth@redhat.com>
-Subject: [PATCH 04/23] tracepoints: move physmem trace points
-Date: Fri, 28 Jun 2024 13:42:39 +0100
-Message-Id: <20240628124258.832466-5-alex.bennee@linaro.org>
+Subject: [PATCH 07/23] test/plugin: make insn plugin less noisy by default
+Date: Fri, 28 Jun 2024 13:42:42 +0100
+Message-Id: <20240628124258.832466-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240628124258.832466-1-alex.bennee@linaro.org>
 References: <20240628124258.832466-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: E/WqBanrq/gn
+X-TUID: bDhrn9Hianfs
 
-They don't need to be in the global trace-events file and can have a
-local trace header. Also add address_space_map tracepoint for tracking
-mapping behaviour.
+While the match functionality is useful lets make the verbosity
+optional while we are actually running.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- system/physmem.c    | 6 ++++--
- system/trace-events | 6 ++++++
- trace-events        | 5 -----
- 3 files changed, 10 insertions(+), 7 deletions(-)
+ tests/plugin/insn.c | 36 +++++++++++++++++++++---------------
+ 1 file changed, 21 insertions(+), 15 deletions(-)
 
-diff --git a/system/physmem.c b/system/physmem.c
-index 33d09f7571..17c9c70f97 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -53,7 +53,7 @@
- #include "sysemu/hostmem.h"
- #include "sysemu/hw_accel.h"
- #include "sysemu/xen-mapcache.h"
--#include "trace/trace-root.h"
-+#include "trace.h"
+diff --git a/tests/plugin/insn.c b/tests/plugin/insn.c
+index 5e0aa03223..524f9ddde8 100644
+--- a/tests/plugin/insn.c
++++ b/tests/plugin/insn.c
+@@ -20,6 +20,7 @@ static qemu_plugin_u64 insn_count;
  
- #ifdef CONFIG_FALLOCATE_PUNCH_HOLE
- #include <linux/falloc.h>
-@@ -1885,7 +1885,7 @@ static void ram_block_add(RAMBlock *new_block, Error **errp)
-     } else { /* list is empty */
-         QLIST_INSERT_HEAD_RCU(&ram_list.blocks, new_block, next);
-     }
--    ram_list.mru_block = NULL;
-+    qatomic_rcu_set(&ram_list.mru_block, NULL);
+ static bool do_inline;
+ static bool do_size;
++static bool do_trace;
+ static GArray *sizes;
  
-     /* Write list before version */
-     smp_wmb();
-@@ -3193,6 +3193,8 @@ void *address_space_map(AddressSpace *as,
-     MemoryRegion *mr;
-     FlatView *fv;
+ typedef struct {
+@@ -73,30 +74,30 @@ static void vcpu_insn_matched_exec_before(unsigned int cpu_index, void *udata)
+     MatchCount *match = qemu_plugin_scoreboard_find(insn_match->counts,
+                                                     cpu_index);
  
-+    trace_address_space_map(as, addr, len, is_write, *(uint32_t *) &attrs);
-+
-     if (len == 0) {
-         return NULL;
-     }
-diff --git a/system/trace-events b/system/trace-events
-index 69c9044151..2ed1d59b1f 100644
---- a/system/trace-events
-+++ b/system/trace-events
-@@ -21,6 +21,12 @@ flatview_destroy(void *view, void *root) "%p (root %p)"
- flatview_destroy_rcu(void *view, void *root) "%p (root %p)"
- global_dirty_changed(unsigned int bitmask) "bitmask 0x%"PRIx32
- 
-+# physmem.c
-+address_space_map(void *as, uint64_t addr, uint64_t len, bool is_write, uint32_t attrs) "as:%p addr 0x%"PRIx64":%"PRIx64" write:%d attrs:0x%x"
-+find_ram_offset(uint64_t size, uint64_t offset) "size: 0x%" PRIx64 " @ 0x%" PRIx64
-+find_ram_offset_loop(uint64_t size, uint64_t candidate, uint64_t offset, uint64_t next, uint64_t mingap) "trying size: 0x%" PRIx64 " @ 0x%" PRIx64 ", offset: 0x%" PRIx64" next: 0x%" PRIx64 " mingap: 0x%" PRIx64
-+ram_block_discard_range(const char *rbname, void *hva, size_t length, bool need_madvise, bool need_fallocate, int ret) "%s@%p + 0x%zx: madvise: %d fallocate: %d ret: %d"
-+
- # cpus.c
- vm_stop_flush_all(int ret) "ret %d"
- 
-diff --git a/trace-events b/trace-events
-index dd318ed1af..9cb96f64c4 100644
---- a/trace-events
-+++ b/trace-events
-@@ -37,11 +37,6 @@ dma_complete(void *dbs, int ret, void *cb) "dbs=%p ret=%d cb=%p"
- dma_blk_cb(void *dbs, int ret) "dbs=%p ret=%d"
- dma_map_wait(void *dbs) "dbs=%p"
- 
--# exec.c
--find_ram_offset(uint64_t size, uint64_t offset) "size: 0x%" PRIx64 " @ 0x%" PRIx64
--find_ram_offset_loop(uint64_t size, uint64_t candidate, uint64_t offset, uint64_t next, uint64_t mingap) "trying size: 0x%" PRIx64 " @ 0x%" PRIx64 ", offset: 0x%" PRIx64" next: 0x%" PRIx64 " mingap: 0x%" PRIx64
--ram_block_discard_range(const char *rbname, void *hva, size_t length, bool need_madvise, bool need_fallocate, int ret) "%s@%p + 0x%zx: madvise: %d fallocate: %d ret: %d"
+-    g_autoptr(GString) ts = g_string_new("");
 -
- # job.c
- job_state_transition(void *job,  int ret, const char *legal, const char *s0, const char *s1) "job %p (ret: %d) attempting %s transition (%s-->%s)"
- job_apply_verb(void *job, const char *state, const char *verb, const char *legal) "job %p in state %s; applying verb %s (%s)"
+     insn->hits++;
+-    g_string_append_printf(ts, "0x%" PRIx64 ", '%s', %"PRId64 " hits",
+-                           insn->vaddr, insn->disas, insn->hits);
+ 
+     uint64_t icount = qemu_plugin_u64_get(insn_count, cpu_index);
+     uint64_t delta = icount - match->last_hit;
+ 
+     match->hits++;
+     match->total_delta += delta;
+-
+-    g_string_append_printf(ts,
+-                           " , cpu %u,"
+-                           " %"PRId64" match hits,"
+-                           " Δ+%"PRId64 " since last match,"
+-                           " %"PRId64 " avg insns/match\n",
+-                           cpu_index,
+-                           match->hits, delta,
+-                           match->total_delta / match->hits);
+-
+     match->last_hit = icount;
+ 
+-    qemu_plugin_outs(ts->str);
++    if (do_trace) {
++        g_autoptr(GString) ts = g_string_new("");
++        g_string_append_printf(ts, "0x%" PRIx64 ", '%s', %"PRId64 " hits",
++                               insn->vaddr, insn->disas, insn->hits);
++        g_string_append_printf(ts,
++                               " , cpu %u,"
++                               " %"PRId64" match hits,"
++                               " Δ+%"PRId64 " since last match,"
++                               " %"PRId64 " avg insns/match\n",
++                               cpu_index,
++                               match->hits, delta,
++                               match->total_delta / match->hits);
++
++        qemu_plugin_outs(ts->str);
++    }
+ }
+ 
+ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+@@ -216,6 +217,11 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
+             }
+         } else if (g_strcmp0(tokens[0], "match") == 0) {
+             parse_match(tokens[1]);
++        } else if (g_strcmp0(tokens[0], "trace") == 0) {
++            if (!qemu_plugin_bool_parse(tokens[0], tokens[1], &do_trace)) {
++                fprintf(stderr, "boolean argument parsing failed: %s\n", opt);
++                return -1;
++            }
+         } else {
+             fprintf(stderr, "option parsing failed: %s\n", opt);
+             return -1;
 -- 
 2.39.2

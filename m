@@ -1,112 +1,106 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp163793njm;
-        Fri, 28 Jun 2024 07:26:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU4tEZe3k+MzC2ArO3ZUQFtye7wyaRTJNic7joL2D6MV09mruKAASoLwfJ88giubQ9FoaU/+fZl2uEyMgRIBbCEEwNjFnw4
-X-Google-Smtp-Source: AGHT+IEp9zxRS2OW+BCl2nUQFYbhDJu/Ny7SsiRyt+hi2fi9VzJ1x7lzZjR3r10QlkW+w3AqulAQ
-X-Received: by 2002:a05:600c:3b1d:b0:424:a401:f012 with SMTP id 5b1f17b1804b1-4256d4c3f4bmr15512715e9.3.1719584801253;
-        Fri, 28 Jun 2024 07:26:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719584801; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp176978njm;
+        Fri, 28 Jun 2024 07:55:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUOuyJhv3X8KBqkSqf/qd+M5QXmSWDxyhTZAwiU00dehWaoRazlrN/l5Jti1qEbmXtbvJfqjSPO8lyvTxfkkOwR/u0RP4Ow
+X-Google-Smtp-Source: AGHT+IHlEc9/9kao8uA605+lSib9v5enSNjuo9/eqYJKhMCT0SiqYvUla0WrBMABZ9xaPPcEzVWY
+X-Received: by 2002:a05:622a:649:b0:446:4bda:5e00 with SMTP id d75a77b69052e-4464bda6257mr46621661cf.19.1719586522235;
+        Fri, 28 Jun 2024 07:55:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719586522; cv=none;
         d=google.com; s=arc-20160816;
-        b=bYQcg0rS/mCX7hXNlTsZYVLTN5cqmVk+wyBttJRGQWRexP/m3DTVF5tuZRNWo8YHVA
-         4yK4ZQQUV9U/dwkjtXmxy7NcFEgYaUd59te/NNYgu5I+xWfOUq69IeZlKxq0u5lg2j7U
-         uIaXZA+aV2EDFbtDtPgaz1+ajHX6RzVkK61A8ZVpumzG/hx+L3OLurDOWzR4DTXkvvw/
-         btpvOTO5/sWsr3ykrErjynFAg8IfElLysQObctKerDLFxOhAf4ouKVqF/8SDWWLTrLJK
-         Xw5CQhD1YlRdhKe29+dQMq2SjFrYooLRLZd0cyjHSEjLb6jh+2H78L05lRJvzte2GMOt
-         pDXQ==
+        b=xsZ5L0MpyrbdAjndOksETTMxFh3DkChqNcg5p215GWPdwEd/bGip2U8HGwDJ9Hs2sq
+         8k8Iu4hAxtxxe4aIYq7PcMjdxri4TcIVT4Jw+TTcsBC7bSE6dO3WJ3zPvxDYUdzz/jM4
+         fJaWI0uhgEXUbhnGpWy+gDmJ2p2aF+NBPDOr7GYge2DQkPmDyCAajGSHlyLD9jF0C9H5
+         nehQIWi6f2++rMROQH8MTJSkGoA8dWrEFy53qHebFMUs1CW7Rjt76G/Z3KM/LXH7WJL8
+         yxMfRup2LsXWZoRBVrr5oSH08CWAaydzGKILLVJ1zO4JIEflfegHaRoj4fIsHxeqyajz
+         4abg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=T+eh+yGRfL9FJjfMdrxTEBsyJCPJ6c76a74QdscnKzw=;
-        fh=6pwJylfLOD2s0Ax0mrYlVKqqphUqnO2moh7SaJT5xRs=;
-        b=Dd0hv65mN6E5kJjIyupnOPsuYaCZIdQ7z8DU4KebGs8ifjjwAl3wkfZ/3gWjOXvAB7
-         G71ccDsd9KBiAJabf8zHemMClZidyxyXUmFI2MjhxMjnJxsLeL6aazHv1yTSZW3J+8Qc
-         DMNdVu0uZ4OkB5ZvQCKaB/d571fZ65f/s7wHwGHcAH9pnSweJqnH1hYHy3UAl5gpys30
-         K/MXZt/QdfmtTfqXNGt5NhbNs9UYTGqCg0+eOdBd7DJDSlm/jFCVh6SFIhcpyTf5aLOg
-         /Za7kCr3+i3SASmK1/YfZ0DB7gQc/fe5hEgJF0nqGDul5E0/LloKSQylEiOkBOoLiMxN
-         hABg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=97DAXS2tfG8ccBKooFzNy0yi9pdqTX24aMCecatGfio=;
+        fh=sPNB+wMByEmOmv0NA5LZ0sZcEjWhHctCq8XojzuPPiI=;
+        b=H2w0wwx3eXY4Y/RHYZz4leyfFmlcITiAZMY9RyDl8EFTmt8VHNBV8OiLIwLa9PfD4j
+         GgcBAxZGbHihZE5aUJ2t4s9oqm84invkWDolZV+FdpzV8GHqXqOTJ42qnZJ1vr48flUr
+         kq8htgyXMsggR4dIcCxBDcVaniwwfyqh15xcNbFzRyh12+kcTUZ+fP810i5AMstKps6u
+         fnmOzD1TGL43iiTNN6SY9RPo/qjiBN3go1ABrHmOTShksKmw1dTCyDMCz/mwr7IxdzGi
+         q5ZdP5VkywcMwWov3/OKdB0RTipPL62umKwybRX9zOXhiSVGYolMADtx75av7m1rzEHY
+         i8Aw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LSnra88G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=vVXnyGjg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3675a0f9351si1131472f8f.566.2024.06.28.07.26.41
+        by mx.google.com with ESMTPS id d75a77b69052e-446514e2324si20597481cf.711.2024.06.28.07.55.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Jun 2024 07:26:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 28 Jun 2024 07:55:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LSnra88G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=vVXnyGjg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sNCWo-0002kO-Gc; Fri, 28 Jun 2024 10:24:42 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sNCuV-0004EN-T7; Fri, 28 Jun 2024 10:49:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sNCWW-0002al-Fa
- for qemu-devel@nongnu.org; Fri, 28 Jun 2024 10:24:28 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1sNCuS-0004DR-Tk
+ for qemu-arm@nongnu.org; Fri, 28 Jun 2024 10:49:09 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sNCWC-0004VZ-25
- for qemu-devel@nongnu.org; Fri, 28 Jun 2024 10:24:21 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-42565697036so11179555e9.1
- for <qemu-devel@nongnu.org>; Fri, 28 Jun 2024 07:23:57 -0700 (PDT)
+ id 1sNCuR-0000Ht-G0
+ for qemu-arm@nongnu.org; Fri, 28 Jun 2024 10:49:08 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-57d280e2d5dso922639a12.1
+ for <qemu-arm@nongnu.org>; Fri, 28 Jun 2024 07:49:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719584635; x=1720189435; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=T+eh+yGRfL9FJjfMdrxTEBsyJCPJ6c76a74QdscnKzw=;
- b=LSnra88GVpyA9smemR43nDSbSh5iiRLlet16FYlIJd6Qm9ToOPm6iX9OLkx+hcefCF
- wYfrMDk/Aj9anRivpXPG6Ttnom4szNNSRoiSjQUsfL28zTj3/DN0y94wOONtaM/4SGn0
- 0HWW9Ww0QRF/kb194ypaejoJG88AirsFz1SFkEyj90dP5PK9EL+WIrjI/f1qwUD4utve
- 36te+UBGhVXeBqMLTEKVBYxGmp82YXAnBfVHew4H8ma9DHj/6nBVX6Zj3Jr1M3iGKXx1
- 5ZQmMQitmpfFpAGnqwliZgr9IhwTkWiq7wyeNEvtz+V4QBPtTDGs2QcxbBVCcwQV8hae
- BX8g==
+ d=linaro.org; s=google; t=1719586146; x=1720190946; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=97DAXS2tfG8ccBKooFzNy0yi9pdqTX24aMCecatGfio=;
+ b=vVXnyGjgiEY+s4wKQfnWaK6bAMYNE4kFyx5zLs2zKjhQ/ejwcbd+nB/YsZEfJj6mwk
+ wD1cJssvSW7Ks2KoMqwEPuZ5FSZqF2QIi+kcAzaKjdI1cVa2kr8Gx6NAZiuGWhKfZ5Zq
+ /W+YU8FrocRLmMiL+aOLu+8kkpFHhY4kWYlWBbbH7STgTP/DeEVWYSO9UMpxGDDkLVkY
+ X/S7B5x+3/mRVKsnl+7gZqA3JIhrHZU2tUwkG/OG/lq+Vn9gNL/ASA9nTVYKz4g3Trbc
+ SU2WcQLVntGwLfA3fUqEY96GHM3TtQ3RkGLbFiXSANiq6AN0VXKPCt1MoJllD/BOgXua
+ pZRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719584635; x=1720189435;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=T+eh+yGRfL9FJjfMdrxTEBsyJCPJ6c76a74QdscnKzw=;
- b=QNJAHusS4o+E8AfSLbDV6bK+3yuEFWcJBAFgykLkCLFQ00s+GPdHLqrEZLUjJlEVBw
- ymMKyeEtxxDtML1aqfIjs/MtVwpFsMIAZGr240tJv2K3P1KYCwMBwCVCfyfCY7EBdVx1
- K038mDfdGJRdCrq+Mj1AqhisX7kqcTEjymYMom6r8P0PxBNxEUvMtFNsCpm/tjpqRZLc
- 3FH21KB71lwCPiAV7dtDOzZ9Osr+rBHPY3rGtJunbThkaR29ApyalguFPweu2Qwk4qRj
- nNcTYJi7FvH+Rtfjrv4fCA5PsKkoAkZZbPASTY03duP5WA/3umz/Nq3IOu/Kt/YhS1IV
- fcYw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUfSRqituvJ9XqtcmrYkuxUmmZWu+KGbf8lwMgldeBe6f+JJV6jyO+g2mEfSzVntZ/Od/imZTsBM7K6xBTmJHRtla8fHbM=
-X-Gm-Message-State: AOJu0YzTEtqaPenxT/Mm7g6tVV3s+RntuPNhPzKUt/WWF/ujLuFk3ffp
- i7O5YVqR3Ck95H8Ob7V7kloeyL5QFhq9WfX84NWzwlp3Gu1iSIICm2ONRYMqn7g=
-X-Received: by 2002:a05:6000:154e:b0:367:42ce:f004 with SMTP id
- ffacd0b85a97d-36760aa2ec0mr1998473f8f.23.1719584634821; 
- Fri, 28 Jun 2024 07:23:54 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4256af55c0asm37180945e9.15.2024.06.28.07.23.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Jun 2024 07:23:54 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 4/9] target/arm: Support migration when FPSR/FPCR won't fit in
- the FPSCR
-Date: Fri, 28 Jun 2024 15:23:42 +0100
-Message-Id: <20240628142347.1283015-5-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240628142347.1283015-1-peter.maydell@linaro.org>
-References: <20240628142347.1283015-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20230601; t=1719586146; x=1720190946;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=97DAXS2tfG8ccBKooFzNy0yi9pdqTX24aMCecatGfio=;
+ b=vfROBJMfbbgeF7XzI58cK9+Zu7WkOD+ZSB1iAnZczekj8vbmQlz1mxS7k93ethhYeA
+ kOsCT8HMVQghWxQ1FRyPcuv+rvUt3trrbu1jG+dMfxS6ypCBWIvO3TS8CyWUtcOt+sb+
+ fjpf8Y1bt93tbaEb09pj970R1CyDE/qQAT0Rnf/cBAnQjRh/mzFHaAFJhxWptw5E5KIY
+ T7Ii3fkp7yYIE671KqoUud69qSNn+mnwEnBWPQAAiwIJFypJuuWK5RCkpqQzngjeMjkv
+ Njp5JMSQ/QRRYUfaOYQbdERP+2xfQpGnruuJ1RKaFpG0uaV3ZdLWyTguwoKeYOAPZ1dR
+ HFtw==
+X-Gm-Message-State: AOJu0YyxTlVznN4FMIK+Cy/W7g3zirwT4IchmVmAGPLmfmU4RbRQUm9p
+ G6h4lE55ADWKePfKL1HUIYxKOMOOtU/ZHLMlGDf8ITFza2V2j9VxMz9Ev2CaLIn+KTpobQz0jjt
+ QBe+BN4vxaZX7QZsYaZ/HIfVl/X7Qz2haFGGymQ==
+X-Received: by 2002:a05:6402:34ce:b0:586:1517:872c with SMTP id
+ 4fb4d7f45d1cf-58615178745mr2011348a12.15.1719586145812; Fri, 28 Jun 2024
+ 07:49:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+References: <20240621125906.1300995-1-sai.pavan.boddu@amd.com>
+In-Reply-To: <20240621125906.1300995-1-sai.pavan.boddu@amd.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 28 Jun 2024 15:48:55 +0100
+Message-ID: <CAFEAcA9tMf5oQGtX51NvX04abyfNJCpaEbvSjYtfg-FdprjieQ@mail.gmail.com>
+Subject: Re: [PATCH v4 0/3] Add boot-mode property for zynq
+To: Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, francisco.iglesias@amd.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,241 +109,45 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: upDqzlyxXM98
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7qO6b7sJ/LpG
 
-To support FPSR and FPCR bits that don't exist in the AArch32 FPSCR
-view of floating point control and status (such as the FEAT_AFP ones),
-we need to make sure those bits can be migrated. This commit allows
-that, whilst maintaining backwards and forwards migration compatibility
-for CPUs where there are no such bits:
+On Fri, 21 Jun 2024 at 13:59, Sai Pavan Boddu <sai.pavan.boddu@amd.com> wrote:
+>
+> Add a way to update the boot-mode via machine properties.
+>
+> Changes for V2:
+>     Make boot-mode property work with string,
+>     Fixed few code style issues,
+>     Added zynq board doc.
+> Changes for V3:
+>     Mentioned about zynq doc in MAINTAINERS file,
+>     Stick to small case for mentioning boot modes in doc,
+>     fixed commit message to mention right property name.
+> Changes for V4:
+>     Use strncasecmp,
+>     Fix boot mode names to use small case in few other places,
+>     Fix code indentation.
+>
+> Sai Pavan Boddu (3):
+>   hw/misc/zynq_slcr: Add boot-mode property
+>   hw/arm/xilinx_zynq: Add boot-mode property
+>   docs/system/arm: Add a doc for zynq board
 
-On sending:
- * If either the FPCR or the FPSR include set bits that are not
-   visible in the AArch32 FPSCR view of floating point control/status
-   then we send the FPCR and FPSR as two separate fields in a new
-   cpu/vfp/fpcr_fpsr subsection, and we send a 0 for the old
-   FPSCR field in cpu/vfp
- * Otherwise, we don't send the fpcr_fpsr subsection, and we send
-   an FPSCR-format value in cpu/vfp as we did previously
 
-On receiving:
- * if we see a non-zero FPSCR field, that is the right information
- * if we see a fpcr_fpsr subsection then that has the information
- * if we see neither, then FPSCR/FPCR/FPSR are all zero on the source;
-   cpu_pre_load() ensures the CPU state defaults to that
- * if we see both, then the migration source is buggy or malicious;
-   either the fpcr_fpsr or the FPSCR will "win" depending which
-   is first in the migration stream; we don't care which that is
 
-We make the new FPCR and FPSR on-the-wire data be 64 bits, because
-architecturally these registers are that wide, and this avoids the
-need to engage in further migration-compatibility contortions in
-future if some new architecture revision defines bits in the high
-half of either register.
+Applied to target-arm.next, thanks.
 
-(We won't ever send the new migration subsection until we add support
-for a CPU feature which enables setting overlapping FPCR bits, like
-FEAT_AFP.)
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/machine.c | 134 ++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 132 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 0a722ca7e75..8c820955d95 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -18,6 +18,34 @@ static bool vfp_needed(void *opaque)
-             : cpu_isar_feature(aa32_vfp_simd, cpu));
- }
- 
-+static bool vfp_fpcr_fpsr_needed(void *opaque)
-+{
-+    /*
-+     * If either the FPCR or the FPSR include set bits that are not
-+     * visible in the AArch32 FPSCR view of floating point control/status
-+     * then we must send the FPCR and FPSR as two separate fields in the
-+     * cpu/vfp/fpcr_fpsr subsection, and we will send a 0 for the old
-+     * FPSCR field in cpu/vfp.
-+     *
-+     * If all the set bits are representable in an AArch32 FPSCR then we
-+     * send that value as the cpu/vfp FPSCR field, and don't send the
-+     * cpu/vfp/fpcr_fpsr subsection.
-+     *
-+     * On incoming migration, if the cpu/vfp FPSCR field is non-zero we
-+     * use it, and if the fpcr_fpsr subsection is present we use that.
-+     * (The subsection will never be present with a non-zero FPSCR field,
-+     * and if FPSCR is zero and the subsection is not present that means
-+     * that FPSCR/FPSR/FPCR are zero.)
-+     *
-+     * This preserves migration compatibility with older QEMU versions,
-+     * in both directions.
-+     */
-+    ARMCPU *cpu = opaque;
-+    CPUARMState *env = &cpu->env;
-+
-+    return (vfp_get_fpcr(env) & ~FPCR_MASK) || (vfp_get_fpsr(env) & ~FPSR_MASK);
-+}
-+
- static int get_fpscr(QEMUFile *f, void *opaque, size_t size,
-                      const VMStateField *field)
- {
-@@ -25,7 +53,10 @@ static int get_fpscr(QEMUFile *f, void *opaque, size_t size,
-     CPUARMState *env = &cpu->env;
-     uint32_t val = qemu_get_be32(f);
- 
--    vfp_set_fpscr(env, val);
-+    if (val) {
-+        /* 0 means we might have the data in the fpcr_fpsr subsection */
-+        vfp_set_fpscr(env, val);
-+    }
-     return 0;
- }
- 
-@@ -34,8 +65,9 @@ static int put_fpscr(QEMUFile *f, void *opaque, size_t size,
- {
-     ARMCPU *cpu = opaque;
-     CPUARMState *env = &cpu->env;
-+    uint32_t fpscr = vfp_fpcr_fpsr_needed(opaque) ? 0 : vfp_get_fpscr(env);
- 
--    qemu_put_be32(f, vfp_get_fpscr(env));
-+    qemu_put_be32(f, fpscr);
-     return 0;
- }
- 
-@@ -45,6 +77,86 @@ static const VMStateInfo vmstate_fpscr = {
-     .put = put_fpscr,
- };
- 
-+static int get_fpcr(QEMUFile *f, void *opaque, size_t size,
-+                     const VMStateField *field)
-+{
-+    ARMCPU *cpu = opaque;
-+    CPUARMState *env = &cpu->env;
-+    uint64_t val = qemu_get_be64(f);
-+
-+    vfp_set_fpcr(env, val);
-+    return 0;
-+}
-+
-+static int put_fpcr(QEMUFile *f, void *opaque, size_t size,
-+                     const VMStateField *field, JSONWriter *vmdesc)
-+{
-+    ARMCPU *cpu = opaque;
-+    CPUARMState *env = &cpu->env;
-+
-+    qemu_put_be64(f, vfp_get_fpcr(env));
-+    return 0;
-+}
-+
-+static const VMStateInfo vmstate_fpcr = {
-+    .name = "fpcr",
-+    .get = get_fpcr,
-+    .put = put_fpcr,
-+};
-+
-+static int get_fpsr(QEMUFile *f, void *opaque, size_t size,
-+                     const VMStateField *field)
-+{
-+    ARMCPU *cpu = opaque;
-+    CPUARMState *env = &cpu->env;
-+    uint64_t val = qemu_get_be64(f);
-+
-+    vfp_set_fpsr(env, val);
-+    return 0;
-+}
-+
-+static int put_fpsr(QEMUFile *f, void *opaque, size_t size,
-+                     const VMStateField *field, JSONWriter *vmdesc)
-+{
-+    ARMCPU *cpu = opaque;
-+    CPUARMState *env = &cpu->env;
-+
-+    qemu_put_be64(f, vfp_get_fpsr(env));
-+    return 0;
-+}
-+
-+static const VMStateInfo vmstate_fpsr = {
-+    .name = "fpsr",
-+    .get = get_fpsr,
-+    .put = put_fpsr,
-+};
-+
-+static const VMStateDescription vmstate_vfp_fpcr_fpsr = {
-+    .name = "cpu/vfp/fpcr_fpsr",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = vfp_fpcr_fpsr_needed,
-+    .fields = (const VMStateField[]) {
-+        {
-+            .name = "fpcr",
-+            .version_id = 0,
-+            .size = sizeof(uint64_t),
-+            .info = &vmstate_fpcr,
-+            .flags = VMS_SINGLE,
-+            .offset = 0,
-+        },
-+        {
-+            .name = "fpsr",
-+            .version_id = 0,
-+            .size = sizeof(uint64_t),
-+            .info = &vmstate_fpsr,
-+            .flags = VMS_SINGLE,
-+            .offset = 0,
-+        },
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
- static const VMStateDescription vmstate_vfp = {
-     .name = "cpu/vfp",
-     .version_id = 3,
-@@ -100,6 +212,10 @@ static const VMStateDescription vmstate_vfp = {
-             .offset = 0,
-         },
-         VMSTATE_END_OF_LIST()
-+    },
-+    .subsections = (const VMStateDescription * const []) {
-+        &vmstate_vfp_fpcr_fpsr,
-+        NULL
-     }
- };
- 
-@@ -784,6 +900,20 @@ static int cpu_pre_load(void *opaque)
-     ARMCPU *cpu = opaque;
-     CPUARMState *env = &cpu->env;
- 
-+    /*
-+     * In an inbound migration where on the source FPSCR/FPSR/FPCR are 0,
-+     * there will be no fpcr_fpsr subsection so we won't call vfp_set_fpcr()
-+     * and vfp_set_fpsr() from get_fpcr() and get_fpsr(); also the get_fpscr()
-+     * function will not call vfp_set_fpscr() because it will see a 0 in the
-+     * inbound data. Ensure that in this case we have a correctly set up
-+     * zero FPSCR/FPCR/FPSR.
-+     *
-+     * This is not strictly needed because FPSCR is zero out of reset, but
-+     * it avoids the possibility of future confusing migration bugs if some
-+     * future architecture change makes the reset value non-zero.
-+     */
-+    vfp_set_fpscr(env, 0);
-+
-     /*
-      * Pre-initialize irq_line_state to a value that's never valid as
-      * real data, so cpu_post_load() can tell whether we've seen the
--- 
-2.34.1
-
+-- PMM

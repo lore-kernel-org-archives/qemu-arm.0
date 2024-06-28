@@ -1,76 +1,151 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72aaf62058sm85144466b.56.2024.06.28.07.34.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 28 Jun 2024 07:34:59 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 8909A5F7A1;
-	Fri, 28 Jun 2024 15:34:58 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: David Hildenbrand <david@redhat.com>,  Beraldo Leal <bleal@redhat.com>,
-  Eduardo Habkost <eduardo@habkost.net>,  Wainer dos Santos Moschetta
- <wainersm@redhat.com>,  qemu-arm@nongnu.org,  Peter Xu
- <peterx@redhat.com>,  Mads Ynddal <mads@ynddal.dk>,  Mahmoud Mandour
- <ma.mandourr@gmail.com>,  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-  Laurent Vivier <laurent@vivier.eu>,  Paolo Bonzini <pbonzini@redhat.com>,
-  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Alexandre
- Iooss
- <erdnaxe@crans.org>,  Stefan Hajnoczi <stefanha@redhat.com>,  Peter
- Maydell <peter.maydell@linaro.org>,  Richard Henderson
- <richard.henderson@linaro.org>,  Thomas Huth <thuth@redhat.com>,  Mark
- Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Michael S. Tsirkin
- <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Peter Xu <peterx@redhat.com>, Fabiano Rosas
- <farosas@suse.de>
-Subject: Re: [PATCH 02/23] target/i386: fix gen_prepare_size_nz condition
-In-Reply-To: <20240628124258.832466-3-alex.bennee@linaro.org> ("Alex
- =?utf-8?Q?Benn=C3=A9e=22's?=
-	message of "Fri, 28 Jun 2024 13:42:37 +0100")
-References: <20240628124258.832466-1-alex.bennee@linaro.org>
-	<20240628124258.832466-3-alex.bennee@linaro.org>
-Date: Fri, 28 Jun 2024 15:34:58 +0100
-Message-ID: <87ikxtnnjh.fsf@draig.linaro.org>
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp178192njm;
+        Fri, 28 Jun 2024 07:58:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXP5RSZTo6Kp2TLBjGE+PDUcci4Xm2K8OFZOlvwYegadreoYYMF58rsv/ObtJYgGCgbL0aFO2HBxWQmCVL/V9e7JkLnMwRE
+X-Google-Smtp-Source: AGHT+IEgZizso2o7Pf70PkQSKwlCGCQLGBG5w2S40Fura4vKmWxQZjf1BM54grCpQv2/r+qMgM+U
+X-Received: by 2002:a05:6808:1994:b0:3d5:633b:3d8d with SMTP id 5614622812f47-3d5633b3ffdmr8905430b6e.53.1719586712748;
+        Fri, 28 Jun 2024 07:58:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719586712; cv=none;
+        d=google.com; s=arc-20160816;
+        b=KtDveRYqXgBesvxDtSatVhEv2cLvJKAV8otHvuQEsJ18eSykdoEQjJj75PxEjqIiVm
+         E9CVrWT9ZYxShjkgOYxORCP/uu3S1p0e4eTqdH/p77ZY4WxT3mGe2ar70nUv7/bKwfXx
+         0Fpn2qFRx0TpBUHCqbwESaxu7DekM3RuGzM+NcEmVK3P0VR7DblH6Q8obcVQU01P+UVS
+         VlptXqsGJEjGmmk66xNjWrz3oukQ0ZSAxbveGhqzMFW2PdyeAE1jKCbLe/VczsRvxaXB
+         28lbTYnUJ+w9pEqiEPAgGkccN+Nar7dS/hJQVCjtiNcCxJjPciwKxI89RTt2wbF+wRaQ
+         m+2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=p/6/mO9+cDFjd2Lwn6Pdfpyts2msKL/kmbIlYJPWFCo=;
+        fh=Tj4NNwh+CTMRbk5loEOuFReTnHC3k33Z2qaWJITvkxg=;
+        b=ELEQiOx6loFA3jrPEfAU7LApdt4N6tN398LvRz/rSqf2W41ng3eYE6DEujyspoIGIB
+         3Skl8ADKx6t8PTwq5NpiVYprwsGFFYfS/Jp1FNha6DKxKj4oDDhb8mtCSWBKRzsDfhXd
+         IJaHqWS1CkldkxDS1GJZnUdpZSjgDKQF0SVWyIz1AoI4GMvWtaFaI7CiWnAzr8bMW0qU
+         /EajFEogG39aZn0YQYbmMXJ0lOgavGnU9k6CswX2EuwTrVPVgu859VWeubYfDcFCT4WJ
+         FjqmFSGRPxmzPZayAKGZ4yXFbkFoOB+/ksQh/vxBmkbVElc6jE5Rlz3o1q/nzeJrXmhu
+         1HNQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rNSrAQdO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-446512cc32bsi23628711cf.60.2024.06.28.07.58.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 28 Jun 2024 07:58:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rNSrAQdO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sND2z-0007Hk-TI; Fri, 28 Jun 2024 10:57:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1sND2y-0007Fq-Oc
+ for qemu-devel@nongnu.org; Fri, 28 Jun 2024 10:57:56 -0400
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1sND2s-0003Af-5X
+ for qemu-devel@nongnu.org; Fri, 28 Jun 2024 10:57:55 -0400
+Received: by mail-pg1-x52f.google.com with SMTP id
+ 41be03b00d2f7-7163489149eso516227a12.1
+ for <qemu-devel@nongnu.org>; Fri, 28 Jun 2024 07:57:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1719586667; x=1720191467; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=p/6/mO9+cDFjd2Lwn6Pdfpyts2msKL/kmbIlYJPWFCo=;
+ b=rNSrAQdOXFnj43IrFAQLkknKbN9MaA1kwia28f1pbsjlhv28tCPqXghBmW1JDUsq+Y
+ uIjIMIEUkv2QPvmpEvaf+hiOFkWvZmqMW5zLaP1YDea5JDmIbCFTd/6zNbsyHxn+yM7h
+ 3hf+FP25eWENEe641ZfKWQaNqPtWjEKlv2L8ktdg0VOOHv1DO9EBjOEqF0nMS4NwbPn3
+ eNOW3WOkVqsiqiU7VfwRFhtfU/7AyhYVXHKeMivBIpKwRR1uzweWUS3pnsmh+4s3iqma
+ hzi2CnPuUqpPOGa48Pmz3gzGLpm1pXIYtJNzWtnF4FeNCCkDpakv/YhMZb8mHKMqnKiC
+ dSbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1719586667; x=1720191467;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=p/6/mO9+cDFjd2Lwn6Pdfpyts2msKL/kmbIlYJPWFCo=;
+ b=FA92Ct4Ub4n8sG0iWHgKIgqtbWGxs0HInf6AT8TYRhoRblLEFIx28g+1UltF1N4QdG
+ cIQmmrvKm1bL/R8Bt9np6vzwgrPQrVxb460WyzPU2UeszHDSvLhbPhuXMzHD8zz3hFcW
+ WtUx869oA9JEhdy2JlxoONHBrxoPBHyNbdf2tER4fL1mkYXpJGt5cKGmiLOJ+V3cTbMC
+ ppH2zLgH5Hjj4T/dFwWzcq3/9m4sTomFRHJaLXfYbAKDVyuRzQjU4GNuJ14e8MVSkx62
+ W0oP9RnSkIgTIPhHNN2zcb+/a41FflZYE2u0se6boMfJUfGktdZFHWcw5PaljfX47Aut
+ eMYQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVF3ZO6Xllt4nAGx6gCeBUqfFU8fbrmT07HLpMA4Ty/masHpaGJJR6G/CHiF9ZiWkwW2y/wLOG5v1/8BjGVqHaNAkHgcKY=
+X-Gm-Message-State: AOJu0YyD/zoTI86V92H8bJ58rTf3g3eeFPM2mm5+wVZ3kN1UQPioe1a7
+ XoObf1Eos9kyn8tP9zAadsZZNqyENbRZSi1Bo3c3DmUvC6UDG0JcTLtPBN+zIX8=
+X-Received: by 2002:a05:6a20:2d98:b0:1be:c2df:3ecf with SMTP id
+ adf61e73a8af0-1bec2df4073mr7115941637.48.1719586666880; 
+ Fri, 28 Jun 2024 07:57:46 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-76-141.tukw.qwest.net. [174.21.76.141])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2c91ce17c54sm1729115a91.12.2024.06.28.07.57.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 28 Jun 2024 07:57:46 -0700 (PDT)
+Message-ID: <96c33d5a-aa19-4402-b5ad-d195c5139398@linaro.org>
+Date: Fri, 28 Jun 2024 07:57:44 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 2Zk+iKhpSvUV
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/9] target/arm: Correct comments about M-profile FPSCR
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20240628142347.1283015-1-peter.maydell@linaro.org>
+ <20240628142347.1283015-2-peter.maydell@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20240628142347.1283015-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ABIJ6Bhc8S/X
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
-
-> Incorrect brace positions causes an unintended overflow on 32 bit
-> builds and shenanigans result.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2413
-> Suggested-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-This seems to trigger regressions in:
-
-  qtest-x86_64/bios-tables-test
-  qtest-x86_64/pxe-test
-  qtest-x86_64/vmgenid-test
-
-Could that be down to generated test data?
-
+On 6/28/24 07:23, Peter Maydell wrote:
+> The M-profile FPSCR LTPSIZE is bits [18:16]; this is the same
+> field as A-profile FPSCR Len, not Stride. Correct the comment
+> in vfp_get_fpscr().
+> 
+> We also implemented M-profile FPSCR.QC, but forgot to delete
+> a TODO comment from vfp_set_fpscr(); remove it now.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->  target/i386/tcg/translate.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/i386/tcg/translate.c b/target/i386/tcg/translate.c
-> index ad1819815a..94f13541c3 100644
-> --- a/target/i386/tcg/translate.c
-> +++ b/target/i386/tcg/translate.c
-> @@ -877,7 +877,7 @@ static CCPrepare gen_prepare_sign_nz(TCGv src, MemOp =
-size)
->          return (CCPrepare) { .cond =3D TCG_COND_LT, .reg =3D src };
->      } else {
->          return (CCPrepare) { .cond =3D TCG_COND_TSTNE, .reg =3D src,
-> -                             .imm =3D 1ull << ((8 << size) - 1) };
-> +                             .imm =3D (1ull << (8 << size)) - 1 };
->      }
->  }
+>   target/arm/vfp_helper.c | 5 ++---
+>   1 file changed, 2 insertions(+), 3 deletions(-)
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~

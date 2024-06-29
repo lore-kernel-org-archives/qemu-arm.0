@@ -1,228 +1,150 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp499371njm;
-        Sat, 29 Jun 2024 04:08:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXC+n4wCIS2dLDh+yypvzbn7CoSC73Rkh1PMrxhdiuNKwCHPL1W5mW17D/nzxPckcGp7ELBXowXa4EftGPCMvfPN8D6S1yW
-X-Google-Smtp-Source: AGHT+IGjleC3LfrtmJ7tAJ/cYCplIVUyUAURjAWTltKojBiVI36wdUIpUTSE3NwHDpXm0DGbXxGO
-X-Received: by 2002:a05:6214:3015:b0:6b2:b060:c7d3 with SMTP id 6a1803df08f44-6b5b717b28fmr9383106d6.52.1719659339081;
-        Sat, 29 Jun 2024 04:08:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719659339; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp535314njm;
+        Sat, 29 Jun 2024 05:51:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVSReUUaCxBp15pbNleOvnctlX5sK8BOzsIImb+6cRZn/vLtZA5FR9+Uuihk2M8yuL/mnwnADzkVzRwqVRM9TUPDOkLy8Vx
+X-Google-Smtp-Source: AGHT+IEnXlBLQJksDUiSScEyTB+3xDkApKBO5XppmCsbdz8DXQvZqSr8PW7nNBj+1YEtDYZzrwrt
+X-Received: by 2002:a17:90a:d18f:b0:2c8:63af:6e12 with SMTP id 98e67ed59e1d1-2c93d76b0f1mr519665a91.36.1719665463770;
+        Sat, 29 Jun 2024 05:51:03 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1719665463; cv=pass;
         d=google.com; s=arc-20160816;
-        b=l09jndEMRqsAhJE21yYkfSLC32VLkRG7aj1XnBFCq2fVeD2+dHwg/TnNqMimUDxccD
-         LYEWLcGf4eukHYcr/IppUexrHiWiDgh4XO0ilvLBTpSdE+GGiJYqtVq6FvSeV9l6OKFe
-         YRmkbpsPOmMEzE4mzC1lAa9EiBFBBL+OER1z5RoHu9AChQtU29szVOpVVRhavpjgAXnE
-         KCoCuFLN5GjJnke7exq49+iX+46825ZroB/xiQMBcE44Eu39HZ5Y3Yu3Tnwh4+mWnHsr
-         PK6+ll5rC+Iuj4MAFrAx9oKK+JrHm43MWopksZUig6BGwW1Y71rRv5LqnNQN4AcvIno2
-         ib8A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=78UrQkIpOPMy4cM7L4jmyk+OfMW54+86uRenx/u5CHs=;
-        fh=mWYFfzpVzlRUS/lcgYmCqBe2YGCJoEkjzBsreeH424U=;
-        b=ptn4SEx9lTrCp0sh1uqcl9PcN0PnLBie4X86s+cKtbkG+7Pgeltgp4etVaatgCt/fV
-         KoBRZNpvZk8iixItYGnhLBZtda5YaAOBOsxAkhX1tsSRUuh9Xc9fJG43hC4r8gbg7qA3
-         jcgXxodu/5rAYaAMo5h/JXloKex0YZPi7NDk0gNFfExpg3W5EiAHkGZNKNFFbXl1bfzm
-         LEBJsTPxzhumphBf+J6JDXJ3ZmUGzrHHRQSvC3shJmi99PL1rJlaRgmZ1En/l3qPtr5r
-         tNylXHMLPm5GXX4pmAIaTTjFj7B7l7dTeItXC+xULxHdF0dodcclc2MQmz+vylno2dDF
-         MYDw==;
+        b=wML7CM1lZLrV2/FCNFgEb9wrQacXffDezhOioATwgNbgVAU6JilyVABAAkB+av4rnL
+         6voxDDcjKtDyRKm+NorYklXZPX92YnBC/Br1crPlJhvlaaPnQe9u8yQh+mEMHjUtHF4w
+         7WR6qHssiyellDLxUK837UQh41DC4dCAZ++xNJc9bmIUF23wx+SQ3CX7joppHRAruJjY
+         4FTAMjdE8V9kVvfh3uSULWSb6c0VOWW3qO6wa/Wq4zv/pIioOW7Q6cD+DkA3Ev8VnDr3
+         kJa2s95/SZZilqhpTjDcfCiOkoagWgU5TFMhr8tKppdboD/ROHi2rjHlocqmKeOy6o10
+         6kDg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:message-id:date:subject:from
+         :dkim-signature;
+        bh=NEVh6tc/8MCebyDPaGT8PrbTdB4/CVWgELlCvYthHz8=;
+        fh=SoTIOgOqKcaPx2Zd0yhV1STe/Orbbem6r9Kv0OnNoUI=;
+        b=ym+twyydE+qF4i5DBnS89uLT0ZrhdfKKJrGTumqDQYtKxfSXvfN+g11qDbwQ8ZnLX1
+         YEWlkHAwCNQ8sGvX2r+IoUm+ygV5DmLx6UPQQdPBaaGZ3fq+ug0e03w6tVZW7afwlFXF
+         OUgkvlP9aO6g7cui82CuML4aDg+tonsvOrft1Ppvap2YHHvks5AqLklfridkymf1YCRt
+         wLf3hXpDp9zXuVdCQFMWRQgzjXgoviQpXEoT8seM8v/lVnvEYDXRm3ACAtZok8ksQMce
+         BvDniifV/WaE/E84B4O9oVBWKu/ILxUdCazh7mBZiXYI0Icic0TyQB1EN30oH1ebxYus
+         7iMQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=OLnCD0i3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b59e5f2705si39290176d6.409.2024.06.29.04.08.58
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="pQkvQ//N";
+       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
+       spf=pass (google.com: domain of kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org"
+Return-Path: <kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2c91d413651si4076083a91.137.2024.06.29.05.51.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 29 Jun 2024 04:08:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 29 Jun 2024 05:51:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=OLnCD0i3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sNVwN-0004QL-M0; Sat, 29 Jun 2024 07:08:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1sNVwG-0004Nw-Iw; Sat, 29 Jun 2024 07:08:16 -0400
-Received: from zproxy2.enst.fr ([137.194.2.221])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1sNVwB-0002pD-En; Sat, 29 Jun 2024 07:08:14 -0400
-Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id 25D3C8084D;
- Sat, 29 Jun 2024 13:08:09 +0200 (CEST)
-Received: from zproxy2.enst.fr ([IPv6:::1])
- by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id Ydn0V0BetW6T; Sat, 29 Jun 2024 13:08:08 +0200 (CEST)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id B067580840;
- Sat, 29 Jun 2024 13:08:08 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy2.enst.fr B067580840
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1719659288;
- bh=78UrQkIpOPMy4cM7L4jmyk+OfMW54+86uRenx/u5CHs=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=OLnCD0i3qBtw2+JRDWGlKwynIP+4aWL3zYOhnyW2tIld8bMMaXKTRMP423t8cxhiq
- zpcl/s7SXIul14f0314y/Ahj9PccsmNlqWbmDMV5lBFrCB9tjbe0AzGgpWjPc8AYpJ
- 3Q9Smva3pvcUe/OGFanv2lrKlBU4EV0eSosYsVfc=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy2.enst.fr ([IPv6:::1])
- by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id ReavuA0wQ5Ea; Sat, 29 Jun 2024 13:08:08 +0200 (CEST)
-Received: from inesv-Inspiron-3501.. (unknown
- [IPv6:2a02:1808:284:73f9:f191:56:9ba9:96d9])
- by zproxy2.enst.fr (Postfix) with ESMTPSA id 9E50B8084D;
- Sat, 29 Jun 2024 13:08:07 +0200 (CEST)
-From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 1/2] hw/misc: In STM32L4x5 EXTI,
- correct configurable interrupts
-Date: Sat, 29 Jun 2024 13:07:08 +0200
-Message-ID: <20240629110800.539969-2-ines.varhol@telecom-paris.fr>
-X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240629110800.539969-1-ines.varhol@telecom-paris.fr>
-References: <20240629110800.539969-1-ines.varhol@telecom-paris.fr>
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="pQkvQ//N";
+       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
+       spf=pass (google.com: domain of kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org"
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 43424282F0E
+	for <alex.bennee@linaro.org>; Sat, 29 Jun 2024 12:51:03 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 464A444C64;
+	Sat, 29 Jun 2024 12:50:59 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b="pQkvQ//N"
+Received: from mail-pl1-f176.google.com (mail-pl1-f176.google.com [209.85.214.176])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB0312B9BE
+	for <kvm@vger.kernel.org>; Sat, 29 Jun 2024 12:50:57 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.176
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1719665459; cv=none; b=SZhcVw4sWxPwWO59xZpSrdbibIDYd6eSzbCrMr8rqeF2rb729JfzKyvonWcne3Z01IQCejDJFPB9aVDIbsI8TX+IIptU7RKQZqVgraQTSWf2zLTQamzv03yNmjHefhhcguXP71f4om3nhZJLZCjAKj+6OoVbMaJue3uKCCS25bo=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1719665459; c=relaxed/simple;
+	bh=0JftJwynNXoE7cxj1nzGwhaqltsjHy8QApYB9XdHZSQ=;
+	h=From:Subject:Date:Message-Id:MIME-Version:Content-Type:To:Cc; b=L/6MAO8SGHUurqEAhDxTY0HqBmrllgFGCCNfy8DCSoEKX8F/16s499JSz60giz48Pk1l2o0xHI5WPPIPdOskCv139EPS1p1RRClqSPvTK1dY0+OvmMh0w34GzSAd3bjPHMMPN+MhzfMSnRa18WBFdL3x4wu2tELAcjphBCTlQxU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com; spf=none smtp.mailfrom=daynix.com; dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b=pQkvQ//N; arc=none smtp.client-ip=209.85.214.176
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=daynix.com
+Received: by mail-pl1-f176.google.com with SMTP id d9443c01a7336-1f480624d0fso9680095ad.1
+        for <kvm@vger.kernel.org>; Sat, 29 Jun 2024 05:50:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719665457; x=1720270257; darn=vger.kernel.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=NEVh6tc/8MCebyDPaGT8PrbTdB4/CVWgELlCvYthHz8=;
+        b=pQkvQ//NBfKN/Op1CDBndvm+RQ6CnC+tNbU5+BkBc72cDbCJllhIaPJ115CLsbkvoz
+         lg8V3u/rTE3lrfG+Z/qRH8klbqn8sKp4aVxc/9Ns3dKlJP9DHF08j0dEW2a1YJ4kPImZ
+         kFYtC290ELt6VKIOSaz7U+z0RVyPtR1hgaionsM9nsW+QHQFUg0nDOxnc7y82LpVthwv
+         +zBpD9v0q8Cp1zIk9IfiVtZkT6w0VSmONEA5xWm94iFNgVRc8hbMRrfabwLDLPQDfDTf
+         qTPj2joX0/emXnPqFchUL1OjRQdVwrR1FgIF+q+3OPzWqvTEzKqsG1EEeAROAUrJWgas
+         DCHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719665457; x=1720270257;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=NEVh6tc/8MCebyDPaGT8PrbTdB4/CVWgELlCvYthHz8=;
+        b=YcZPt/wkz79eqz/oZdaGC1fHz3wzhpw80qRNRiZhiei/Unfsf39Sd5am4yxp8ggHdp
+         b+Ep1oG71Ai1GL74fSXQKlB36M97bd+AUVWzqvJWO9ytcV5vlfH/UdXGkh16Jko+3W8w
+         LsHn8Nzs1HPCrHYmdDhk6EFEBhfqWfeZpMxc01ahshAJXsh0ULOXrv59l4REYI4xdcaP
+         OYipE66JuYJU5NcqukrNohHwLVWyWf2pYMKIZZ4TwkZ+3j3vRx/fLmplMdUM1Vy9RDAj
+         hymNDg/gcU9R/pn3z/zaiL37vEMxJ7hqnNReApXpFYNFv8fyooUaEzWyMbLBfYafof4V
+         Q7tw==
+X-Forwarded-Encrypted: i=1; AJvYcCXJg+eFsZBwN9KWfSfgr1MoV94Xyk7nWLeGImOfviq9wPaBTn9IHSEgRoC1aCF1wMKFBt5+fJ5fuehuV9c2n4rATRNi
+X-Gm-Message-State: AOJu0YxBsiImGhqX/pjkUFuXxlc+rEzg3m7eu1qVHnzdRYQL2EdqsZBa
+	XBb8QhrZAJsVxPsl8U41MSZZ7U4Rf9MukdcwBLgZbmnvSyihp27a3Q/CqoqA8Xc=
+X-Received: by 2002:a17:903:1104:b0:1f7:3fd5:9267 with SMTP id d9443c01a7336-1fadbc7503fmr5271805ad.19.1719665456855;
+        Sat, 29 Jun 2024 05:50:56 -0700 (PDT)
+Received: from localhost ([157.82.204.135])
+        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-1fac1599c23sm31376085ad.280.2024.06.29.05.50.54
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 29 Jun 2024 05:50:56 -0700 (PDT)
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 0/3] target/arm/kvm: Report PMU unavailability
+Date: Sat, 29 Jun 2024 21:50:31 +0900
+Message-Id: <20240629-pmu-v1-0-7269123b88a4@daynix.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.221;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy2.enst.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 9nAbaEZ9+aJD
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIABcDgGYC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIxMDMyNL3YLcUt3EFNM0M/NUo2TTFAMloMqCotS0zAqwKdGxtbUA5VjPjFU
+ AAAA=
+To: Peter Maydell <peter.maydell@linaro.org>, 
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, 
+ Akihiko Odaki <akihiko.odaki@daynix.com>
+X-Mailer: b4 0.14-dev-fd6e3
+X-TUID: qRhi4JlLAJPz
 
-The implementation of configurable interrupts (interrupts supporting
-edge selection) was incorrectly expecting alternating input levels :
-this commits adds a new status field `irq_levels` to actually detect
-edges.
+target/arm/kvm.c checked PMU availability but claimed PMU is
+available even if it is not. In fact, Asahi Linux supports KVM but lacks
+PMU support. Only advertise PMU availability only when it is really
+available.
 
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+Fixes: dc40d45ebd8e ("target/arm/kvm: Move kvm_arm_get_host_cpu_features and unexport")
+
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- include/hw/misc/stm32l4x5_exti.h |  2 ++
- hw/misc/stm32l4x5_exti.c         | 28 +++++++++++++---------------
- 2 files changed, 15 insertions(+), 15 deletions(-)
+Akihiko Odaki (3):
+      tests/arm-cpu-features: Do not assume PMU availability
+      target/arm: Always add pmu property
+      target/arm/kvm: Report PMU unavailability
 
-diff --git a/include/hw/misc/stm32l4x5_exti.h b/include/hw/misc/stm32l4x5=
-_exti.h
-index be961d2f01..55f763fa37 100644
---- a/include/hw/misc/stm32l4x5_exti.h
-+++ b/include/hw/misc/stm32l4x5_exti.h
-@@ -45,6 +45,8 @@ struct Stm32l4x5ExtiState {
-     uint32_t swier[EXTI_NUM_REGISTER];
-     uint32_t pr[EXTI_NUM_REGISTER];
-=20
-+    /* used for edge detection */
-+    uint32_t irq_levels[EXTI_NUM_REGISTER];
-     qemu_irq irq[EXTI_NUM_INTERRUPT_OUT_LINES];
- };
-=20
-diff --git a/hw/misc/stm32l4x5_exti.c b/hw/misc/stm32l4x5_exti.c
-index 495a0004ab..6a2ec62d78 100644
---- a/hw/misc/stm32l4x5_exti.c
-+++ b/hw/misc/stm32l4x5_exti.c
-@@ -88,6 +88,7 @@ static void stm32l4x5_exti_reset_hold(Object *obj, Rese=
-tType type)
-         s->ftsr[bank] =3D 0x00000000;
-         s->swier[bank] =3D 0x00000000;
-         s->pr[bank] =3D 0x00000000;
-+        s->irq_levels[bank] =3D 0x00000000;
-     }
- }
-=20
-@@ -102,27 +103,23 @@ static void stm32l4x5_exti_set_irq(void *opaque, in=
-t irq, int level)
-     /* Shift the value to enable access in x2 registers. */
-     irq %=3D EXTI_MAX_IRQ_PER_BANK;
-=20
-+    if (level =3D=3D extract32(s->irq_levels[bank], irq, 1)) {
-+        /* No change in IRQ line state: do nothing */
-+        return;
-+    }
-+    s->irq_levels[bank] =3D deposit32(s->irq_levels[bank], irq, 1, level=
-);
-+
-     /* If the interrupt is masked, pr won't be raised */
-     if (!extract32(s->imr[bank], irq, 1)) {
-         return;
-     }
-=20
--    if (((1 << irq) & s->rtsr[bank]) && level) {
--        /* Rising Edge */
--        s->pr[bank] |=3D 1 << irq;
--        qemu_irq_pulse(s->irq[oirq]);
--    } else if (((1 << irq) & s->ftsr[bank]) && !level) {
--        /* Falling Edge */
-+    if ((level && extract32(s->rtsr[bank], irq, 1)) ||
-+        (!level && extract32(s->ftsr[bank], irq, 1))) {
-+
-         s->pr[bank] |=3D 1 << irq;
-         qemu_irq_pulse(s->irq[oirq]);
-     }
--    /*
--     * In the following situations :
--     * - falling edge but rising trigger selected
--     * - rising edge but falling trigger selected
--     * - no trigger selected
--     * No action is required
--     */
- }
-=20
- static uint64_t stm32l4x5_exti_read(void *opaque, hwaddr addr,
-@@ -255,8 +252,8 @@ static void stm32l4x5_exti_init(Object *obj)
-=20
- static const VMStateDescription vmstate_stm32l4x5_exti =3D {
-     .name =3D TYPE_STM32L4X5_EXTI,
--    .version_id =3D 1,
--    .minimum_version_id =3D 1,
-+    .version_id =3D 2,
-+    .minimum_version_id =3D 2,
-     .fields =3D (VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(imr, Stm32l4x5ExtiState, EXTI_NUM_REGISTER)=
-,
-         VMSTATE_UINT32_ARRAY(emr, Stm32l4x5ExtiState, EXTI_NUM_REGISTER)=
-,
-@@ -264,6 +261,7 @@ static const VMStateDescription vmstate_stm32l4x5_ext=
-i =3D {
-         VMSTATE_UINT32_ARRAY(ftsr, Stm32l4x5ExtiState, EXTI_NUM_REGISTER=
-),
-         VMSTATE_UINT32_ARRAY(swier, Stm32l4x5ExtiState, EXTI_NUM_REGISTE=
-R),
-         VMSTATE_UINT32_ARRAY(pr, Stm32l4x5ExtiState, EXTI_NUM_REGISTER),
-+        VMSTATE_UINT32_ARRAY(irq_levels, Stm32l4x5ExtiState, EXTI_NUM_RE=
-GISTER),
-         VMSTATE_END_OF_LIST()
-     }
- };
---=20
-2.43.2
+ target/arm/cpu.c               |  3 ++-
+ target/arm/kvm.c               |  2 +-
+ tests/qtest/arm-cpu-features.c | 13 ++++++++-----
+ 3 files changed, 11 insertions(+), 7 deletions(-)
+---
+base-commit: 046a64b9801343e2e89eef10c7a48eec8d8c0d4f
+change-id: 20240629-pmu-ad5f67e2c5d0
+
+Best regards,
+-- 
+Akihiko Odaki <akihiko.odaki@daynix.com>
 

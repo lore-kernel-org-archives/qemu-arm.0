@@ -1,83 +1,83 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp499146njm;
-        Sat, 29 Jun 2024 04:08:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVIz4205eSqbKboMRCRpy0P3V4R+NfpyYqPFltAyMkxavG/uCr/yGP+jfZNm8gUzyPtKaVPNuJTX0z3uO1pRJaYEJgHawFp
-X-Google-Smtp-Source: AGHT+IHw04B5mNCV3JCLsvYUjPWLE0t3IgIzFYcO5lTmoOgbDe+A2zCn7eBWNtnAWlv6IiMikeC/
-X-Received: by 2002:a05:6214:501c:b0:6b5:4435:fe50 with SMTP id 6a1803df08f44-6b5b70f1f91mr9845036d6.37.1719659302541;
-        Sat, 29 Jun 2024 04:08:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719659302; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp499308njm;
+        Sat, 29 Jun 2024 04:08:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVmFSNnJvPq5TI+ssJi8YaG5HE0LRY1SK6WHspHukYlLqaRfbn4iadw93Wis8M/uQ5Kh5v68bhC/gFF55vuJ6sRWHqyk/y9
+X-Google-Smtp-Source: AGHT+IEOlT37WSvOjtTvLvPAErGCe7ERN+Ja7KXdwambktBUTejGM+251vMwfIlUG5k+23Seu8LV
+X-Received: by 2002:a05:6214:2586:b0:6b2:df44:3fa4 with SMTP id 6a1803df08f44-6b5b70c9bfbmr10441656d6.30.1719659329737;
+        Sat, 29 Jun 2024 04:08:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719659329; cv=none;
         d=google.com; s=arc-20160816;
-        b=QCXkqurA2v0JeZ3Ng3UnoHbjPVPJ4tHsQViU1jhqQKeyq2MrDGlvs8Sax3yUwmws4u
-         6M2EPtg7xs9zJc/aYmujlNDFvAW4pI01Oe+punpfndvcVueFMx7uNHCNGRlHig7/CIV6
-         ZSIRSn2FRW6B8Z9ej7Nxa68WnbaEnDh/m5bPF3FgtX+c5HVWTz4VJxpbc5RsbZHA7v/K
-         6GJlEvLNVadGlad06zy1UsP1JNCWoqsvu2bUK05OACvZdhekY+g/0ldG3u+xHDA01fbY
-         mgD1cwYNZoB+lMb+Fcl3DNKFmSoqPL8pOgueslblkePWOWqOyOXZBhw/hnUKopCabmCC
-         cELQ==
+        b=jUhrPLuqIwiG+ra/zF+IGvghNyiaRxddzbVXmFqZApBRVoqqmzOcAVpRbfXy/io1kU
+         IkHJzGOEoPIF04vPzAgzURKm6SSb69zge7pqq7Ipd+C9sZ0wjaONKS9PAoYmRulu6Mt+
+         pWw2aNQjwhYhb2JBj9mT38dw1MLB4+JK5zXs4NRxyG5dtaOWozo/JU2Qk0Pcuqc6Y76O
+         e6gWuAh1ENMAlLFOrx/OJNGqpA8QBy4BJSbVZbCXUeL9tLyh7KqRu/OWSnwTuayq2PIZ
+         FB9nRydFBtMz+P4N+VpQGVmiud3+dTfFc+QxIPaZKN15meqNPJGNY0Mia07QX3xbSNQY
+         A89w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
-         :dkim-filter;
-        bh=NoGIA+QH14p3U8EC14WujZvLi7NaMTSA4QkQhjA5IfQ=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature:dkim-filter;
+        bh=a4lyEnz8S5Ks+qhrfm0yaPbBY/U7UZNaNG1eZqCWQHU=;
         fh=mWYFfzpVzlRUS/lcgYmCqBe2YGCJoEkjzBsreeH424U=;
-        b=T59h7lr5pCuUNm46CGSro4kUzrRJUfAR0aV1g2+7UFhB5QAAd+IeM06WbUak6PoeIC
-         4H73Qp245F+9t3eSKL44tquOPrRv6/Gh9lTAXoIQOj841YWhWepDzT0KEPTerHfgfc/P
-         kdzyIFtO5Ibxdgmr6ghTs5kMgBcnKIKBDzITSLSUYfFY6cdYyGmurb1+Ro6Jvs7GjoMM
-         ulKH+yzoV19teFMa9ECcaLHvHg0wTFAGeK/lsrt8CjGTQohDuA3QL1LOErNfUbja80YQ
-         /vPFG2Z1qQR9hS93OyUp25I+vj9HpygQV7uTHcgtek1dpKRsH2sn9mzH1kYdu3QId37b
-         P3bw==;
+        b=Y1l0gU2Qn0k6y7at0MpBH9BZcDKL3v03XU9VXT8tnSzIF7bGW+YP8kOuLUM4A9MTXB
+         PUkYfTrmfi9uUCjM3m7cJs4DTxeH8OKsOFRe89dfUkjSMSEh8go6bnzk5GAlpnn4/jvW
+         0Y1wA0/jbeIXL3YXO2AAKpVsJzQnDjtfpA/MEnz7K/DQxSPwoHbkhuzLkHOEDkptQAUy
+         2nN92AxKjQ7Vw6I5+2NsAQeBefmkuNbrU9GtLs2gsA6zOrxILOGU+kB2KXMRKEJdTY7a
+         q3j+77+oh8VbOo3c2GAJDBQ/OcLl1Ur8GOiLldr5J07W7Yo32zPAnPNlLhAf0+2oSxDa
+         3DRw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=tuamVQ42;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Som4UKXo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b59e5ae09fsi41403486d6.204.2024.06.29.04.08.22
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b59e3637dasi38857916d6.94.2024.06.29.04.08.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 29 Jun 2024 04:08:22 -0700 (PDT)
+        Sat, 29 Jun 2024 04:08:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=tuamVQ42;
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=Som4UKXo;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sNVwH-0004O7-4I; Sat, 29 Jun 2024 07:08:17 -0400
+	id 1sNVwJ-0004Ox-RC; Sat, 29 Jun 2024 07:08:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1sNVwD-0004M4-HX; Sat, 29 Jun 2024 07:08:14 -0400
-Received: from zproxy2.enst.fr ([137.194.2.221])
+ id 1sNVwG-0004Nu-IO; Sat, 29 Jun 2024 07:08:16 -0400
+Received: from zproxy2.enst.fr ([2001:660:330f:2::dd])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1sNVwB-0002p9-Em; Sat, 29 Jun 2024 07:08:13 -0400
+ id 1sNVwC-0002pJ-Ow; Sat, 29 Jun 2024 07:08:15 -0400
 Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id 217008086B;
- Sat, 29 Jun 2024 13:08:08 +0200 (CEST)
+ by zproxy2.enst.fr (Postfix) with ESMTP id 3B4408081A;
+ Sat, 29 Jun 2024 13:08:10 +0200 (CEST)
 Received: from zproxy2.enst.fr ([IPv6:::1])
  by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id e3PP30qfhFP0; Sat, 29 Jun 2024 13:08:07 +0200 (CEST)
+ id F6RQNX61oObN; Sat, 29 Jun 2024 13:08:09 +0200 (CEST)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy2.enst.fr (Postfix) with ESMTP id B022280873;
- Sat, 29 Jun 2024 13:08:07 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy2.enst.fr B022280873
+ by zproxy2.enst.fr (Postfix) with ESMTP id AD7A580772;
+ Sat, 29 Jun 2024 13:08:09 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy2.enst.fr AD7A580772
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1719659287;
- bh=NoGIA+QH14p3U8EC14WujZvLi7NaMTSA4QkQhjA5IfQ=;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1719659289;
+ bh=a4lyEnz8S5Ks+qhrfm0yaPbBY/U7UZNaNG1eZqCWQHU=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=tuamVQ42IJf3iHotnkrN4JIGA6ZQr+GLwKGwRl4v3LuPpqkRHwjTbAK8+LGIdhocR
- mRRYczC80lnCMhD9PHXDSaJrzxyRECjsVi++16K16bdwypZCh3VxhG1hunY6cI/sqg
- g8O27XUJn2wTUiVql51AeXgv1E6S48XfZ0Gibcg0=
+ b=Som4UKXoEHW2FPBlgJtwi2q3CKJjQqmF7Rvm73Sb8hWOb9/NpPIY/AZRHEDJrufra
+ RQK8jxEcqU8r8emeBpUXyThRpLXNgHGm1EKQn/cQh972gjSgqvgYIunAnJHlxLe8Uk
+ wYWNpA8+U0w5V7A2Mz8myWLzZmyWmhy2gb+22364=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy2.enst.fr ([IPv6:::1])
  by localhost (zproxy2.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id LyqsnLqfoI1j; Sat, 29 Jun 2024 13:08:07 +0200 (CEST)
+ id 8Up9xm3hiUYH; Sat, 29 Jun 2024 13:08:09 +0200 (CEST)
 Received: from inesv-Inspiron-3501.. (unknown
  [IPv6:2a02:1808:284:73f9:f191:56:9ba9:96d9])
- by zproxy2.enst.fr (Postfix) with ESMTPSA id 87AA380840;
- Sat, 29 Jun 2024 13:08:06 +0200 (CEST)
+ by zproxy2.enst.fr (Postfix) with ESMTPSA id B7EEB80878;
+ Sat, 29 Jun 2024 13:08:08 +0200 (CEST)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
@@ -87,14 +87,17 @@ Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 0/2] hw/misc: Fix STM32L4x5 EXTI interrupts
-Date: Sat, 29 Jun 2024 13:07:07 +0200
-Message-ID: <20240629110800.539969-1-ines.varhol@telecom-paris.fr>
+Subject: [PATCH 2/2] tests/qtest: Ensure STM32L4x5 EXTI state is correct at
+ the end of QTests
+Date: Sat, 29 Jun 2024 13:07:09 +0200
+Message-ID: <20240629110800.539969-3-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.2
+In-Reply-To: <20240629110800.539969-1-ines.varhol@telecom-paris.fr>
+References: <20240629110800.539969-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.221;
+Received-SPF: pass client-ip=2001:660:330f:2::dd;
  envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy2.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -116,27 +119,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uNVvjdckfPJO
+X-TUID: cDD+gfIY/DL3
 
-STM32L4x5 EXTI was incorrectly expecting alternating interrupts.
-This patch adds a new field to track IRQ levels to actually
-*detect* edges.
-It also corrects existing QTests which were modifying the IRQ lines'
-levels.
+EXTI's new field `irq_levels` tracks irq levels between tests when using
+`global_qtest`.
+This happens in `stm32l4x5_exti-test.c`, `stm32l4x5_syscfg-test.c` and
+`stm32l4x5_gpio-test.c` (`dm163.c` doesn't use `global_qtest`).
+
+To ensure that `irq_levels` has the same value before and after each
+QTest, this commit toggles back the irq lines that were changed at the
+end of each problematic test. Most QTests were already doing this.
 
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
+---
+ tests/qtest/stm32l4x5_exti-test.c   | 8 ++++++++
+ tests/qtest/stm32l4x5_syscfg-test.c | 2 +-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
-In=C3=A8s Varhol (2):
-  hw/misc: In STM32L4x5 EXTI, correct configurable interrupts
-  tests/qtest: Ensure STM32L4x5 EXTI state is correct at the end of
-    QTests
-
- include/hw/misc/stm32l4x5_exti.h    |  2 ++
- hw/misc/stm32l4x5_exti.c            | 28 +++++++++++++---------------
- tests/qtest/stm32l4x5_exti-test.c   |  8 ++++++++
- tests/qtest/stm32l4x5_syscfg-test.c |  2 +-
- 4 files changed, 24 insertions(+), 16 deletions(-)
-
+diff --git a/tests/qtest/stm32l4x5_exti-test.c b/tests/qtest/stm32l4x5_ex=
+ti-test.c
+index 7092860b9b..7e39c992fd 100644
+--- a/tests/qtest/stm32l4x5_exti-test.c
++++ b/tests/qtest/stm32l4x5_exti-test.c
+@@ -448,6 +448,9 @@ static void test_masked_interrupt(void)
+     g_assert_cmphex(exti_readl(EXTI_PR1), =3D=3D, 0x00000000);
+     /* Check that the interrupt isn't pending in NVIC */
+     g_assert_false(check_nvic_pending(EXTI1_IRQ));
++
++    /* Clean EXTI */
++    exti_set_irq(1, 0);
+ }
+=20
+ static void test_interrupt(void)
+@@ -498,6 +501,9 @@ static void test_interrupt(void)
+     /* Clean NVIC */
+     unpend_nvic_irq(EXTI1_IRQ);
+     g_assert_false(check_nvic_pending(EXTI1_IRQ));
++
++    /* Clean EXTI */
++    exti_set_irq(1, 0);
+ }
+=20
+ static void test_orred_interrupts(void)
+@@ -531,6 +537,8 @@ static void test_orred_interrupts(void)
+=20
+         unpend_nvic_irq(EXTI5_9_IRQ);
+         g_assert_false(check_nvic_pending(EXTI5_9_IRQ));
++
++        exti_set_irq(i, 0);
+     }
+ }
+=20
+diff --git a/tests/qtest/stm32l4x5_syscfg-test.c b/tests/qtest/stm32l4x5_=
+syscfg-test.c
+index 506ca08bc2..4416959b4a 100644
+--- a/tests/qtest/stm32l4x5_syscfg-test.c
++++ b/tests/qtest/stm32l4x5_syscfg-test.c
+@@ -221,10 +221,10 @@ static void test_interrupt(void)
+     g_assert_true(get_irq(1));
+=20
+     /* Clean the test */
+-    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
+     syscfg_set_irq(0, 0);
+     syscfg_set_irq(15, 0);
+     syscfg_set_irq(17, 0);
++    syscfg_writel(SYSCFG_EXTICR1, 0x00000000);
+ }
+=20
+ static void test_irq_pin_multiplexer(void)
 --=20
 2.43.2
 

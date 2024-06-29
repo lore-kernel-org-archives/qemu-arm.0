@@ -1,108 +1,109 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp535314njm;
-        Sat, 29 Jun 2024 05:51:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVSReUUaCxBp15pbNleOvnctlX5sK8BOzsIImb+6cRZn/vLtZA5FR9+Uuihk2M8yuL/mnwnADzkVzRwqVRM9TUPDOkLy8Vx
-X-Google-Smtp-Source: AGHT+IEnXlBLQJksDUiSScEyTB+3xDkApKBO5XppmCsbdz8DXQvZqSr8PW7nNBj+1YEtDYZzrwrt
-X-Received: by 2002:a17:90a:d18f:b0:2c8:63af:6e12 with SMTP id 98e67ed59e1d1-2c93d76b0f1mr519665a91.36.1719665463770;
-        Sat, 29 Jun 2024 05:51:03 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1719665463; cv=pass;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp535374njm;
+        Sat, 29 Jun 2024 05:51:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXMBbsl79viU3io1t20iMzyAM+y6kzbi5kQqgUGXm4Ii3hJL1Mv0XGk5ak+rS6hWN+GnaxTU3OtC4m9hp408XaHFaFzLe6d
+X-Google-Smtp-Source: AGHT+IFEM1KpSieVR/VQRwwcWEibf9R8tqbec8bAmaXpMAaTRX5wYp77rrg6MEp/SL26MBaDGMXY
+X-Received: by 2002:a9d:6e09:0:b0:702:81:db0d with SMTP id 46e09a7af769-702075cb17cmr1062713a34.6.1719665471872;
+        Sat, 29 Jun 2024 05:51:11 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1719665471; cv=pass;
         d=google.com; s=arc-20160816;
-        b=wML7CM1lZLrV2/FCNFgEb9wrQacXffDezhOioATwgNbgVAU6JilyVABAAkB+av4rnL
-         6voxDDcjKtDyRKm+NorYklXZPX92YnBC/Br1crPlJhvlaaPnQe9u8yQh+mEMHjUtHF4w
-         7WR6qHssiyellDLxUK837UQh41DC4dCAZ++xNJc9bmIUF23wx+SQ3CX7joppHRAruJjY
-         4FTAMjdE8V9kVvfh3uSULWSb6c0VOWW3qO6wa/Wq4zv/pIioOW7Q6cD+DkA3Ev8VnDr3
-         kJa2s95/SZZilqhpTjDcfCiOkoagWgU5TFMhr8tKppdboD/ROHi2rjHlocqmKeOy6o10
-         6kDg==
+        b=CfaKUMk7ze2sXczUtuWJr1iuAedtuo7SuD4Dgv6icTgodSTiJzWBxtXfVSeI/5SFVb
+         zwamqrKdNk4960E+lZOosuhpKdCI/t/J8NHZmDRgNr+7oTJxCaSVzIHAKc3KkXbQPuqJ
+         sTpXTP84N4ptG2FzX79jQfCA54Y3wC8on8gf5Zp0wiw9jz8j7XkUQtq0qvcAW/YZm8eS
+         ut5h5+6uUfwxaPTsJXKv71MRKEVNquXWjHf6eQfCNvcj6uUj9UDkw34rwz2yTYbpbVvh
+         O0atX/eyQdzndVB84FtyG4Yd2NieI1HA3RqUsbWdKzWDoO14TvHRPQuu+DKuOPgTfSOL
+         MzKQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:message-id:date:subject:from
-         :dkim-signature;
-        bh=NEVh6tc/8MCebyDPaGT8PrbTdB4/CVWgELlCvYthHz8=;
-        fh=SoTIOgOqKcaPx2Zd0yhV1STe/Orbbem6r9Kv0OnNoUI=;
-        b=ym+twyydE+qF4i5DBnS89uLT0ZrhdfKKJrGTumqDQYtKxfSXvfN+g11qDbwQ8ZnLX1
-         YEWlkHAwCNQ8sGvX2r+IoUm+ygV5DmLx6UPQQdPBaaGZ3fq+ug0e03w6tVZW7afwlFXF
-         OUgkvlP9aO6g7cui82CuML4aDg+tonsvOrft1Ppvap2YHHvks5AqLklfridkymf1YCRt
-         wLf3hXpDp9zXuVdCQFMWRQgzjXgoviQpXEoT8seM8v/lVnvEYDXRm3ACAtZok8ksQMce
-         BvDniifV/WaE/E84B4O9oVBWKu/ILxUdCazh7mBZiXYI0Icic0TyQB1EN30oH1ebxYus
-         7iMQ==;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :subject:date:from:dkim-signature;
+        bh=DvpsKqJKseTB8512E3EM/mcg58HxToRdE8EyOPRZHqA=;
+        fh=Xyn9EoGOnQgj1pB13mszecIlJC2JuAb8E4Z15rCUnzE=;
+        b=pp5vss+WsK+4iEx5UNGvYYdBLxhSLOMokAF+ZzioZK2Fio9fBd31LOwTxG4Z+6TOcv
+         zy40zBW9KcmOVq9Kgt04PHE7KuHX561BneX6G2c2QssD1cCgIhECZXPW3D5Jt1OVy8Vu
+         TjYfBdGViOGcNN0ZJ533SPw4uR6OgKxXGpAXcCmJDh9Xa4Tw+Z9TFOGoyEVZi7EiejYH
+         kGBMaYAM9xZXMJ9kaCfqONJh3auiSofx48Eomn4o4vnn+KaEr+wF5o5kz+qJsVwmrY9q
+         +WJ65Bw+xPn4/xyq0ITvxFDtVKmvs42/T9WEq/XLfBq93t2Dt6NMuj1UUxl8m/QoU8L9
+         eaZg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="pQkvQ//N";
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="vEi/5Lfd";
        arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
-       spf=pass (google.com: domain of kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org"
-Return-Path: <kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-2c91d413651si4076083a91.137.2024.06.29.05.51.03
+       spf=pass (google.com: domain of kvm+bounces-20725-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-20725-alex.bennee=linaro.org@vger.kernel.org"
+Return-Path: <kvm+bounces-20725-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-72c6e07f071si4026354a12.571.2024.06.29.05.51.11
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 29 Jun 2024 05:51:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        Sat, 29 Jun 2024 05:51:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-20725-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="pQkvQ//N";
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="vEi/5Lfd";
        arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
-       spf=pass (google.com: domain of kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-20724-alex.bennee=linaro.org@vger.kernel.org"
+       spf=pass (google.com: domain of kvm+bounces-20725-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-20725-alex.bennee=linaro.org@vger.kernel.org"
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 43424282F0E
-	for <alex.bennee@linaro.org>; Sat, 29 Jun 2024 12:51:03 +0000 (UTC)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id BC30EB21D8F
+	for <alex.bennee@linaro.org>; Sat, 29 Jun 2024 12:51:09 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 464A444C64;
-	Sat, 29 Jun 2024 12:50:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 05BB07D09D;
+	Sat, 29 Jun 2024 12:51:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b="pQkvQ//N"
-Received: from mail-pl1-f176.google.com (mail-pl1-f176.google.com [209.85.214.176])
+	dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b="vEi/5Lfd"
+Received: from mail-oi1-f172.google.com (mail-oi1-f172.google.com [209.85.167.172])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB0312B9BE
-	for <kvm@vger.kernel.org>; Sat, 29 Jun 2024 12:50:57 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.176
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 950422B9BE
+	for <kvm@vger.kernel.org>; Sat, 29 Jun 2024 12:51:01 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.167.172
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1719665459; cv=none; b=SZhcVw4sWxPwWO59xZpSrdbibIDYd6eSzbCrMr8rqeF2rb729JfzKyvonWcne3Z01IQCejDJFPB9aVDIbsI8TX+IIptU7RKQZqVgraQTSWf2zLTQamzv03yNmjHefhhcguXP71f4om3nhZJLZCjAKj+6OoVbMaJue3uKCCS25bo=
+	t=1719665463; cv=none; b=J/ezfau3Nc9LLLGZp8GDNsmj+8d0Qu4wI2R5K3hoVDPl1snnj7aoG2R5dQzCPcO1u/W7i5+jyiDCY2cog7e5QxmTzhffhWxYF+T7LVN1byZlwEqJKMq2dwje2laLZX0hyll8yhGHkcRcOx1ZsGVI8zOI7bdQq3LeqZZv3ombITQ=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1719665459; c=relaxed/simple;
-	bh=0JftJwynNXoE7cxj1nzGwhaqltsjHy8QApYB9XdHZSQ=;
-	h=From:Subject:Date:Message-Id:MIME-Version:Content-Type:To:Cc; b=L/6MAO8SGHUurqEAhDxTY0HqBmrllgFGCCNfy8DCSoEKX8F/16s499JSz60giz48Pk1l2o0xHI5WPPIPdOskCv139EPS1p1RRClqSPvTK1dY0+OvmMh0w34GzSAd3bjPHMMPN+MhzfMSnRa18WBFdL3x4wu2tELAcjphBCTlQxU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com; spf=none smtp.mailfrom=daynix.com; dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b=pQkvQ//N; arc=none smtp.client-ip=209.85.214.176
+	s=arc-20240116; t=1719665463; c=relaxed/simple;
+	bh=hH0C+hMRrQebClCKrwJVUyAUbkOPif1mOqS4Fo/9xAg=;
+	h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:References:
+	 In-Reply-To:To:Cc; b=bq19xn2xwtm5ux1a/Scm47t3Rfd40XUfPjaO5N3R3LRTkXJFNIiaCs0UDRH6TsD+knm63UyYKtfI9y7f3XShfY3uxxE6C5Z2T/lOmqCzxOqXalvDdjmGRfVzLeD25Ke8ACQ+cwHVLlyMd7SyPBrhgHnvxCAc2X+47DRfA8by0ZU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com; spf=none smtp.mailfrom=daynix.com; dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b=vEi/5Lfd; arc=none smtp.client-ip=209.85.167.172
 Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com
 Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=daynix.com
-Received: by mail-pl1-f176.google.com with SMTP id d9443c01a7336-1f480624d0fso9680095ad.1
-        for <kvm@vger.kernel.org>; Sat, 29 Jun 2024 05:50:57 -0700 (PDT)
+Received: by mail-oi1-f172.google.com with SMTP id 5614622812f47-3d561d685e7so1026461b6e.1
+        for <kvm@vger.kernel.org>; Sat, 29 Jun 2024 05:51:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719665457; x=1720270257; darn=vger.kernel.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=NEVh6tc/8MCebyDPaGT8PrbTdB4/CVWgELlCvYthHz8=;
-        b=pQkvQ//NBfKN/Op1CDBndvm+RQ6CnC+tNbU5+BkBc72cDbCJllhIaPJ115CLsbkvoz
-         lg8V3u/rTE3lrfG+Z/qRH8klbqn8sKp4aVxc/9Ns3dKlJP9DHF08j0dEW2a1YJ4kPImZ
-         kFYtC290ELt6VKIOSaz7U+z0RVyPtR1hgaionsM9nsW+QHQFUg0nDOxnc7y82LpVthwv
-         +zBpD9v0q8Cp1zIk9IfiVtZkT6w0VSmONEA5xWm94iFNgVRc8hbMRrfabwLDLPQDfDTf
-         qTPj2joX0/emXnPqFchUL1OjRQdVwrR1FgIF+q+3OPzWqvTEzKqsG1EEeAROAUrJWgas
-         DCHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719665457; x=1720270257;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719665460; x=1720270260; darn=vger.kernel.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=NEVh6tc/8MCebyDPaGT8PrbTdB4/CVWgELlCvYthHz8=;
-        b=YcZPt/wkz79eqz/oZdaGC1fHz3wzhpw80qRNRiZhiei/Unfsf39Sd5am4yxp8ggHdp
-         b+Ep1oG71Ai1GL74fSXQKlB36M97bd+AUVWzqvJWO9ytcV5vlfH/UdXGkh16Jko+3W8w
-         LsHn8Nzs1HPCrHYmdDhk6EFEBhfqWfeZpMxc01ahshAJXsh0ULOXrv59l4REYI4xdcaP
-         OYipE66JuYJU5NcqukrNohHwLVWyWf2pYMKIZZ4TwkZ+3j3vRx/fLmplMdUM1Vy9RDAj
-         hymNDg/gcU9R/pn3z/zaiL37vEMxJ7hqnNReApXpFYNFv8fyooUaEzWyMbLBfYafof4V
-         Q7tw==
-X-Forwarded-Encrypted: i=1; AJvYcCXJg+eFsZBwN9KWfSfgr1MoV94Xyk7nWLeGImOfviq9wPaBTn9IHSEgRoC1aCF1wMKFBt5+fJ5fuehuV9c2n4rATRNi
-X-Gm-Message-State: AOJu0YxBsiImGhqX/pjkUFuXxlc+rEzg3m7eu1qVHnzdRYQL2EdqsZBa
-	XBb8QhrZAJsVxPsl8U41MSZZ7U4Rf9MukdcwBLgZbmnvSyihp27a3Q/CqoqA8Xc=
-X-Received: by 2002:a17:903:1104:b0:1f7:3fd5:9267 with SMTP id d9443c01a7336-1fadbc7503fmr5271805ad.19.1719665456855;
-        Sat, 29 Jun 2024 05:50:56 -0700 (PDT)
+        bh=DvpsKqJKseTB8512E3EM/mcg58HxToRdE8EyOPRZHqA=;
+        b=vEi/5LfdoVG/qRwmualVJan0xlUsUECTPAeOXzDY/OKW4516YZLQnjtJsKjE3ofFom
+         D8RXCGgyJwuaEIJyWZha3SJo2kEPSn2ARosjPeDOUDwq8j/Fks09NawlT+rLyGeVp78O
+         U9MzLkGFkPjAUz0jGCfy5JBinqMwaljgQPvDROVSi4PIkAk2jQumdoEm7vQNT0C0voIm
+         ftpTZHQlbNe2YoGs2nFO8phsFyYev9vNruFcXIvishE5C5zl80enhSwXHPFU/QcqYWFX
+         mq0PChEk03PMhAiUAA4qWwnmignDwXm9iNpWv3g6b/AsB0DrtHOPg8CN4g6A6jFdBp9C
+         KPIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1719665460; x=1720270260;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=DvpsKqJKseTB8512E3EM/mcg58HxToRdE8EyOPRZHqA=;
+        b=lRCyf0McRtDKdqEx+/ILlj5KCm6QeUrl0FHPpuoYCYmF+DRbhSb2Apbg0MX9cl+OWj
+         DWHHnmdSXKvRhlZwOuoyY77YzUUyMqXonew1r9Dg1WNfwe8VeRyI3FuWu/fYXzvO42gj
+         QYl60Q4tFKWP5LqfrElkHJC58CF9TUFCwACWozGrqzuavIfEXJ3YAWnVUs4M/AAhUWJe
+         WlW9yg3f415kfNz8GKWIud0Tpmtu/K70UHQujQjgVfBqxKui8AcKZnxmr5QvhuL8CrWz
+         BBLLgLgXBW2rPp/0FFuvfwYZpWhxH1AGYTxbvtI5QszYNZGQ+iRrcZuMnbIRxxBjpKU/
+         +vYw==
+X-Forwarded-Encrypted: i=1; AJvYcCV/Mc4R6qcoxl8q6ToDvE0EBtG2I79ynZsERlzHqdUiyanwwnRTj+ctX5qeAGeiho3CtAdYR8eQheyfsjaDdsMIyMod
+X-Gm-Message-State: AOJu0Yx/g2YRoQYpJ8bY5h7dbI7rc6AkurDVjKxjcNbIXMN8RSlKQEfP
+	rfKX8TimsNCdm9sT7s4CWYBbGqBY7eoajb4mC9X8RCjEzR+VwFoxtSPktZM+jjU=
+X-Received: by 2002:a05:6808:2204:b0:3d1:fc50:1aae with SMTP id 5614622812f47-3d6b2a2f0d4mr1188382b6e.7.1719665460603;
+        Sat, 29 Jun 2024 05:51:00 -0700 (PDT)
 Received: from localhost ([157.82.204.135])
-        by smtp.gmail.com with UTF8SMTPSA id d9443c01a7336-1fac1599c23sm31376085ad.280.2024.06.29.05.50.54
+        by smtp.gmail.com with UTF8SMTPSA id d2e1a72fcca58-708043b7145sm3322714b3a.148.2024.06.29.05.50.58
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 29 Jun 2024 05:50:56 -0700 (PDT)
+        Sat, 29 Jun 2024 05:51:00 -0700 (PDT)
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 0/3] target/arm/kvm: Report PMU unavailability
-Date: Sat, 29 Jun 2024 21:50:31 +0900
-Message-Id: <20240629-pmu-v1-0-7269123b88a4@daynix.com>
+Date: Sat, 29 Jun 2024 21:50:32 +0900
+Subject: [PATCH 1/3] tests/arm-cpu-features: Do not assume PMU availability
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
@@ -111,40 +112,68 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIABcDgGYC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxMDMyNL3YLcUt3EFNM0M/NUo2TTFAMloMqCotS0zAqwKdGxtbUA5VjPjFU
- AAAA=
+Message-Id: <20240629-pmu-v1-1-7269123b88a4@daynix.com>
+References: <20240629-pmu-v1-0-7269123b88a4@daynix.com>
+In-Reply-To: <20240629-pmu-v1-0-7269123b88a4@daynix.com>
 To: Peter Maydell <peter.maydell@linaro.org>, 
  Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
  Paolo Bonzini <pbonzini@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, 
  Akihiko Odaki <akihiko.odaki@daynix.com>
 X-Mailer: b4 0.14-dev-fd6e3
-X-TUID: qRhi4JlLAJPz
+X-TUID: 2ycB1WACxNF/
 
-target/arm/kvm.c checked PMU availability but claimed PMU is
-available even if it is not. In fact, Asahi Linux supports KVM but lacks
-PMU support. Only advertise PMU availability only when it is really
-available.
-
-Fixes: dc40d45ebd8e ("target/arm/kvm: Move kvm_arm_get_host_cpu_features and unexport")
+Asahi Linux supports KVM but lacks PMU support.
 
 Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
-Akihiko Odaki (3):
-      tests/arm-cpu-features: Do not assume PMU availability
-      target/arm: Always add pmu property
-      target/arm/kvm: Report PMU unavailability
-
- target/arm/cpu.c               |  3 ++-
- target/arm/kvm.c               |  2 +-
  tests/qtest/arm-cpu-features.c | 13 ++++++++-----
- 3 files changed, 11 insertions(+), 7 deletions(-)
----
-base-commit: 046a64b9801343e2e89eef10c7a48eec8d8c0d4f
-change-id: 20240629-pmu-ad5f67e2c5d0
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
-Best regards,
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 966c65d5c3e4..cfd6f7735354 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -509,6 +509,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+     assert_set_feature(qts, "host", "kvm-no-adjvtime", false);
+ 
+     if (g_str_equal(qtest_get_arch(), "aarch64")) {
++        bool kvm_supports_pmu;
+         bool kvm_supports_steal_time;
+         bool kvm_supports_sve;
+         char max_name[8], name[8];
+@@ -537,11 +538,6 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+ 
+         assert_has_feature_enabled(qts, "host", "aarch64");
+ 
+-        /* Enabling and disabling pmu should always work. */
+-        assert_has_feature_enabled(qts, "host", "pmu");
+-        assert_set_feature(qts, "host", "pmu", false);
+-        assert_set_feature(qts, "host", "pmu", true);
+-
+         /*
+          * Some features would be enabled by default, but they're disabled
+          * because this instance of KVM doesn't support them. Test that the
+@@ -551,11 +547,18 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+         assert_has_feature(qts, "host", "sve");
+ 
+         resp = do_query_no_props(qts, "host");
++        kvm_supports_pmu = resp_get_feature(resp, "pmu");
+         kvm_supports_steal_time = resp_get_feature(resp, "kvm-steal-time");
+         kvm_supports_sve = resp_get_feature(resp, "sve");
+         vls = resp_get_sve_vls(resp);
+         qobject_unref(resp);
+ 
++        if (kvm_supports_pmu) {
++            /* If we have pmu then we should be able to toggle it. */
++            assert_set_feature(qts, "host", "pmu", false);
++            assert_set_feature(qts, "host", "pmu", true);
++        }
++
+         if (kvm_supports_steal_time) {
+             /* If we have steal-time then we should be able to toggle it. */
+             assert_set_feature(qts, "host", "kvm-steal-time", false);
+
 -- 
-Akihiko Odaki <akihiko.odaki@daynix.com>
+2.45.2
 

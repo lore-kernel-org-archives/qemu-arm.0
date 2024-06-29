@@ -1,110 +1,120 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp244751njm;
-        Fri, 28 Jun 2024 10:20:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXy0sp0qOl/iG//7YrsE/GtUMcCbDD/puVnrVa70kMVxmYWJzQvGFioTw1s1vcfm8TKXmXtaDSh6GHPdqyQVQVnqdNdu0cg
-X-Received: by 2002:a05:6808:1a0b:b0:3d5:2ab4:8dc2 with SMTP id 5614622812f47-3d5459de8dfmr21627582b6e.26.1719595232191;
-        Fri, 28 Jun 2024 10:20:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719595232; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp463573njm;
+        Sat, 29 Jun 2024 01:54:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXjJ2BoF1PGliMYesVqYKJsIT5TbxYuHiEoYvxaEAXo+bkdKvtko96765drRbfm1yMDvJ8er3fXTRepvN/B3lndHU7zr3B4
+X-Received: by 2002:a05:6e02:1fe8:b0:374:aa60:a5c3 with SMTP id e9e14a558f8ab-37cd2bee935mr4770535ab.28.1719651296245;
+        Sat, 29 Jun 2024 01:54:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719651296; cv=none;
         d=google.com; s=arc-20160816;
-        b=vBIHgFZ/tGGcp2jb1dqoYwb5U4xTtWO0d3pTKJHqfn6tEH12pHljiSW0iGiTxhO3yw
-         K2nXoj2NlGeEfXYPD74gNcCmrK4NmBQfv0NIF2lrMffPavjB77ClVacPUf27hIHCZ53P
-         IqrCvR6EPSOBTJ0xDKCtpGklsccaYZ3iCttOSU1Saz6KGE7VIkGiuD4dBllBqESovrg8
-         yogxz+zFudaYZr/mSlRIbmtLQsIX48t8zBK6PpKQE5WwpoAEaIG9qoSKCfA3kL9hOacW
-         BDJ8p+HLJ8XJWMWLXTeqs9UW4uL694IaidoVr1lr/CcSzS7Tv12RyvJ0cGVmuYLcu5L5
-         c0Mw==
+        b=FsSLk9kNxB3PgFPxNcnsBRhy4rVjiabA/SPHacqsAqtVLdlWLxjeGgvHgmLfQbwrjA
+         cPMWBjCe3cBPWUthq0OjyFY+9dxjCFkcuNaDq8OdLWLAQ7r6CcdR/5AsnOw2GJGIur2H
+         dn3P7AfdWX09jUDg06XBThMREl7ejHxj4BJZ4mqyvrQnuPo986yc4EHaVrARvDnD5Fvy
+         Z63oiMBeahaidjBm1t0u+r+DELEwIWL3SItC+9V2RTBschVAewD/pxlxJlfq60LhjiwQ
+         hN4TMhPE9VEQGnN/FFEeFT1Ty2AlJLNzOogB4HUZxW6YdSPlLYEGFN8P/y9JKbxOn7qV
+         zTBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=VgdEKm7+1QNNWK1/ZXdA7xtdJBKvNqs1BAkxK9w6SZk=;
-        fh=D2vt1DGUClwEVEhnsD5nqPfSibXH1gaZiPwguzoHMas=;
-        b=hQRoADWbcR4Aoy6NqH1kjSpBFvjDl2R2TlXpusohVvA7cMcLN6EwpplcmeahFG4T0+
-         hiUAeUDFVe/Q3GeVApe89kDjIAEoikvfG/iNA8989IgY7Ovp12yOHy8dk11osCV0A9ym
-         EFHEr2m/dIBFbudxzqnUt+dKA4lseRSTykQncXH8M1mLCZGfbCeT76rThog+Wd/0ECWH
-         TI+i1O5AEwvYEsNfb6Xh2NUuZrQamKaj5omC1TNqbFfH2MU9K9D0Stde0qtxvpZpErgz
-         ovaY29uFbvDHa+2vKZfA7guO2WAtRU+wct7XM2j9g6PMpRdd0aLFtZav39l6tc68nEMU
-         iaXg==;
+        bh=ujM5NeqxIU+FF+Llp0SkjKhIDMNdKBIzCQWyIWYrJIA=;
+        fh=+4RsosjBxXRZxnkULBoA4rzySZvP/ZBGsmOm6a6RpYs=;
+        b=gI9WNvoOg7HblVCsQLoa6adF8O48DEIp9DUzPwlgL69w6uXmdJ0WDvayb/v3ArTA1E
+         kUeKcDjZe/wB986hW2KhE2FkN4cK0z7G6mj/lrPch5fuGXOL9Px7Imkwxqe2QKTsmWzN
+         hhr+052jCOpPejVMzR0si5CUR2lgv06Rzfv7oi5N5dRrwqnFmk1ePdr2a9n7S6tv/dCQ
+         QdPhD2XbY8zcB91Q8FxFD8MudqRiMy4kKoELyyklq+OB30Z6+5eBEJgcoNclpfUuwvi+
+         IF/aF1mbtV5TYsJ6PDBc7pidv0fiz3Rcuq/xVubI+ZHeNd6r8UM9QqN4SAFX0OLUJ7YR
+         IGAw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mRm+KZHP;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=AD51O1Es;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
+Return-Path: <akihiko.odaki@daynix.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-706b4a0267esor3438398b3a.9.2024.06.28.10.20.32
+        by mx.google.com with SMTPS id e9e14a558f8ab-379a5e9caf5sor12132855ab.7.2024.06.29.01.54.56
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 28 Jun 2024 10:20:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sat, 29 Jun 2024 01:54:56 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mRm+KZHP;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=AD51O1Es;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by best guess record for domain of akihiko.odaki@daynix.com) smtp.mailfrom=akihiko.odaki@daynix.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1719595232; x=1720200032; darn=linaro.org;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1719651296; x=1720256096; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=VgdEKm7+1QNNWK1/ZXdA7xtdJBKvNqs1BAkxK9w6SZk=;
-        b=mRm+KZHPZg3EgjRlLDwUOoxw3rHiEDp46QAXjWJjfwDAY7Kv85eXZu0vKhS33PPalN
-         S7GOsa8H31g+juewTky4E9507gJWqWHXm6rv8xncJAR2Gm2vbRgJgwhWzRGkrJHU2WR5
-         vjVnc+Uu7/uXFE/NlEGc7LSyg71WPAR8ERqsE700b7RwVR7DdXxYheuBzdy+8K7sw/6b
-         GEGGrnxkN0boHXoW6BN7GUPcR4dRmYD+ubVOdMrGQ2+SN+80wsA+5f7K9aiiX3hauc+z
-         qbWyXUnU3+qcDWK8WiXhq4RgjVA5bQd0qTCy0dtiAb5GrDfS1f6d0WaY0HjG0QVY7lU3
-         xNvg==
+        bh=ujM5NeqxIU+FF+Llp0SkjKhIDMNdKBIzCQWyIWYrJIA=;
+        b=AD51O1EsZ+Gn9gJgV/oNrW31H6pU9yS3ugIBEjBJeGykidCrdyyv4S+/ws4pkJTtel
+         v9n8sxBa6X0uoVnMFVrzIo+nm4IRMgX67+x/1S3Xow8SWLeTX+kTk658K1EHTk7Hg9P1
+         XjrpTSRimK8eel9YW42rJ1q1rdLNyKpdO6WL25kNSHvQ63BmGIIW4ysKT68OeRPKhbCJ
+         7wAQU2PHvg4oCoZyttEPXUVUichxf7+ZcioTNxwmCu3mc52Oe4hxG/I7TWGyPchpLGh5
+         24sjEYz56lwECFOslBh/XBmSEd6GIBTR4hrDh/xvMHCy4CbCR/4SFeBjgr/SPHgQrBjS
+         X21w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719595232; x=1720200032;
+        d=1e100.net; s=20230601; t=1719651296; x=1720256096;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VgdEKm7+1QNNWK1/ZXdA7xtdJBKvNqs1BAkxK9w6SZk=;
-        b=s0VUR7TzovSFd3cNVH20KNA04E+d7EgEOsAMAdtAVd57TACZJRmJtCFp5k69+l50b1
-         XF4L45JU8u+xIxUfSN+7Abu2hN1PLW4FD42SbNJS/5hnFuXuJpozr+AOOOdMfOEf6Q+P
-         WRazY05HfcXZjAespejP/lUQts9rIlGjG6TNBG+Q5NUS1P0kpZKZ2LSwm99D+y9jbLf+
-         SvPQ1tFn1gD/zqd912UTr4w6y3uakETrs5EuXMhzyR8WCSi81LVk0GmKUFRfJHCn57Ud
-         bYLp5T4l21/J8Z8u1LsWOHNKOX+TtG/v/Sowm7aFivRAh4r/dVCwoKgpt4hVLcT5HB8u
-         M7OA==
-X-Forwarded-Encrypted: i=1; AJvYcCXVDl5MM5caFpbcCZEGUUT0qtX7nc6dXi8oZ1E0olmx22RMLclxvBWw4ajXxY/Izvs6nTqPyXvpJEgTVjbxO7Itu3/6QA3W
-X-Gm-Message-State: AOJu0Yy/QOQ6cBK95wRduz4I83RiXLhSxkirqDNdroq/MeQsutM5G9jF
-	U8q8jUPF0EcRFVd4JsS79Lv3wR3t7ZXTVqXdOiALUjj85k91uneYRy4Io0pR2mZu6A==
-X-Google-Smtp-Source: AGHT+IE631yBFAaMhq+LllV6RzOy1Z/TtFwJDzY3Y+I/Y73tXxFPjueEUu5zdYbrh4y1+drVhYmD8g==
-X-Received: by 2002:a62:e905:0:b0:706:2bd4:a68a with SMTP id d2e1a72fcca58-706745bcc7bmr15708455b3a.10.1719595231550;
-        Fri, 28 Jun 2024 10:20:31 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.0.4] (174-21-76-141.tukw.qwest.net. [174.21.76.141])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70802466aedsm1875140b3a.46.2024.06.28.10.20.30
+        bh=ujM5NeqxIU+FF+Llp0SkjKhIDMNdKBIzCQWyIWYrJIA=;
+        b=JGjA89+4RMcVcEa2vvVfuZdU3tNlw7BkzdjYdV3seW37JuanjvS0IN7YTjglhX+Dd2
+         MmsENSG5uDlkL7mPs7kDDaqBIWQoYF1Lv99nwPRRBVDpg94ep7Hi5z/z4Dvu0owsIs/P
+         StFemm2WAIxvou9Qn5l4KdsNKaXBLcz0yfv0KJDknLCsO9+zYWc5gsY7iMNQxY0dXauH
+         mtvB05gS4WUprBg3hAgJuEyQ31Hk/7Jep5IXR7TkMto31hjwgGfSFK69di6cRu2Cr8+V
+         Z95QfU9Trg+FNnGy4Hdf5sEMA6R/VF3uLRpNz8Ix6Fj7/jKrti/0RRE0Rn0+V3vbCiwF
+         8j0A==
+X-Forwarded-Encrypted: i=1; AJvYcCVili0uEjCVLKhoN8MneehIkN5D4Ky+cuK8liHr6hNooZHVnjGqRi0awap5ReIttZQup082Gs4p7IlhhsaaYhFEaulOxdcV
+X-Gm-Message-State: AOJu0Yzz8KatCYE191zK8pTwwQZtDTSBk2bme4/sS1eam1VQ93UJQg7y
+	ASjLmCGDuKkWRQMI+CjaHHg0W/d6/R1MzxcSQg0n0dT66Jtqq5B3TeFJFSiL8DA=
+X-Google-Smtp-Source: AGHT+IFEtOJ9Iio5NGLvHctjKhp7kJwDIdlO0qtG0Vz93bm0oNGM99zS44ydQIEXmJPVKOTWEMAZQw==
+X-Received: by 2002:a05:6e02:152d:b0:374:ada1:296b with SMTP id e9e14a558f8ab-37cd0cea1d9mr4803075ab.8.1719651295810;
+        Sat, 29 Jun 2024 01:54:55 -0700 (PDT)
+Return-Path: <akihiko.odaki@daynix.com>
+Received: from [157.82.204.135] ([157.82.204.135])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-72c6c7f76fbsm2287731a12.73.2024.06.29.01.54.53
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 28 Jun 2024 10:20:31 -0700 (PDT)
-Message-ID: <31d2954d-0749-434b-8eaa-cf85f7035a09@linaro.org>
-Date: Fri, 28 Jun 2024 10:20:29 -0700
+        Sat, 29 Jun 2024 01:54:55 -0700 (PDT)
+Message-ID: <02efb133-d288-4bbb-8950-48438c929c9d@daynix.com>
+Date: Sat, 29 Jun 2024 17:54:52 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/6] tests/tcg/aarch64: Do not use x constraint
-To: Akihiko Odaki <akihiko.odaki@daynix.com>,
+Subject: Re: [PATCH v2 3/6] tests/tcg/aarch64: Explicitly specify register
+ width
+To: Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20240627-tcg-v2-0-1690a813348e@daynix.com>
- <20240627-tcg-v2-5-1690a813348e@daynix.com>
+ <20240627-tcg-v2-3-1690a813348e@daynix.com>
+ <2438d654-dd76-4555-98a8-52d0fa006d08@linaro.org>
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240627-tcg-v2-5-1690a813348e@daynix.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <2438d654-dd76-4555-98a8-52d0fa006d08@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: IURChBigMgE6
+Content-Transfer-Encoding: 8bit
+X-TUID: bzMRWDvqCqj4
 
-On 6/27/24 06:58, Akihiko Odaki wrote:
-> clang version 18.1.6 does not support x constraint for AArch64.
-> Use w instead.
+On 2024/06/29 2:19, Richard Henderson wrote:
+> On 6/27/24 06:58, Akihiko Odaki wrote:
+>> clang version 18.1.6 assumes a register is 64-bit by default and
+>> complains if a 32-bit value is given. Explicitly specify register width
+>> when passing a 32-bit value.
+>>
+>> Signed-off-by: Akihiko Odaki<akihiko.odaki@daynix.com>
+>> Reviewed-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+>> ---
+>>   tests/tcg/aarch64/bti-1.c | 6 +++---
+>>   tests/tcg/aarch64/bti-3.c | 6 +++---
+>>   2 files changed, 6 insertions(+), 6 deletions(-)
 > 
-> Signed-off-by: Akihiko Odaki<akihiko.odaki@daynix.com>
-> ---
->   tests/tcg/arm/fcvt.c | 14 +++++++-------
->   1 file changed, 7 insertions(+), 7 deletions(-)
+> This is true of clang 14 as well, so perhaps remove the version 
+> statement entirely.
 
-Oops, this was an error from the beginning.
+I noted the version because I think it is totally fine for clang to 
+choose an appropriate register width instead of complaining about it and 
+a future version may do so.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-
-r~
+Thanks for reviewing this series,
+Akihiko Odaki

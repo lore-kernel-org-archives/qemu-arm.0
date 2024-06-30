@@ -1,195 +1,113 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1004266njm;
-        Sun, 30 Jun 2024 12:00:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXpUOKpFY1fV3+R5cGv3neI7iKzYiRJ+LqEunkzWGfkEAWnVLM5lWYyRfxfvYHlXaplR7FowMw27NrYKiWxNx4tNTYdEd1C
-X-Received: by 2002:a6b:ce01:0:b0:7eb:7887:a496 with SMTP id ca18e2360f4ac-7f62ee118a2mr450996739f.4.1719774055112;
-        Sun, 30 Jun 2024 12:00:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719774055; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1004274njm;
+        Sun, 30 Jun 2024 12:00:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXuBlNOJisS9GrvgLEPxe85cdz8InDMSyzDFjGihOxBGfqnW1eXvhg2n6Jse4yQinmnZRPHhcxtgwjhda59nIpP11xgpITU
+X-Received: by 2002:a17:90a:12c7:b0:2c8:e99d:441b with SMTP id 98e67ed59e1d1-2c93d72fb5emr2972459a91.27.1719774056037;
+        Sun, 30 Jun 2024 12:00:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719774056; cv=none;
         d=google.com; s=arc-20160816;
-        b=dwLfOWxrUWyHU0Al/VmTSdLR8kolSc5XMtuNmfsZynO3DpPZH2P0zd617+yiWNDPRb
-         9EX9rp72PR0iYs6S8mh8bsgt6zdA6hzconaQdg/NDAHJJSRKmaXGJaAWZlZ7+/opAWB9
-         1hE6I2aaOfHQS7FEwGubF9peK47iYiKSIK8mqP0a+jZMyO7CY5b0xH22jaALtWeHSeps
-         EiXD6wz9KbuqaYllqpQ706ktoU2gptrb/aZAbSv0dPojbs0Nbsd8GnMGRIfZEGvUo3CQ
-         ZF32bw+LxaG0/Wz0NexRG65LtGP+bbv3wvFD0deRuOBNF42ILvxsOuExojY/YhgGSgQS
-         lDxQ==
+        b=v/my1uKMUxhy/SaHe6j4G93sb+dB+iI0GJ1OSARt7m9DpansdV8YUczbAQAdkENkLx
+         hLwAl8bAUo1EXf4HmQkBi53CLbQIkZlaOip4EVCbOpIAjZKVMIqpsj8mJT/sMO2OkR0O
+         Fzy2Ju82fhd6TO3E9jG4EJQSCMi50rIiQWsS3iuafn9cKKDdsSAU8POKd1QtcUGCoYUG
+         fjZ/RpfTlcFCa3vtbTh5vBB/GKYmEy0Ur38nL9niDB+9ijnwSviho9PNw7OliFBwiWsD
+         T8LHL0eA/+jAwUF3+uY776GWsAWxAzHuWII8rbbSvWxX56s53s5C8kbkY0+Rsf8XY7Lv
+         HMLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=FTAXIrXnB/PD2XabsVpOCoLz7F3reaebPtysv0EnFvo=;
-        fh=72IGH6KR0FwGuHz77GMLUhkLFbskHpE6XnvYTnmyK24=;
-        b=PPhPSi5jquJhncjxLWnfVvoYrWbCWyn0JuoHnLJjH8xuawZzpa5OckR03UaXOpsTZ+
-         GTMOxizMgAvrJ1D3k/dZu4NFS9Dr29qeIjWvuErIxcTSgnFV3MOcmLNWyTjYh60696XC
-         hWuIhRt6VzOmu648OSAaoeJqWiydOmvx7WcvJSq7qjLHq5Fdr3pJw4agfolFcaGeLoP3
-         znrpaRYvZu5gPC9PG7zohEqUlFyI1d7RZlV5h4/yuqIUtj8+2sw/V5AsfMk7XRC0O5Vk
-         IH9sDiegoDmANVGoOGI37JYf3YeplQi1DDzKMO9FpwC7GeiZLhbKboGOxOZtoeL3hqAq
-         umKw==;
+        bh=M+1cYfmSMutOrFAkzzUKLrm39z58ASnq++T0AOOpk6g=;
+        fh=1Al7Z4J1FQ+zpWFzUtJzbemXH3MBgMbJc+KbrqkJfzo=;
+        b=f7tuABRKTYHXwR9g6o+6vBFiXs9Zs9cLflumFbwa+WUcEK8ft3psPy1WNvkBRYLauV
+         roihzTQaKlJsqUn6VgPWaJYyNOQVweNL1nVo/Z93ff26nAgUJm2F1tc5/YKgmGL4f3KL
+         +B+RBtn2Gqoeb7UL99SWh0EAHbcgUv9GCMwslbapxnrpS3Ih2VJUe6OgmUKk38DEi6Te
+         DM64zYWd91B1V8gynt/zNPdgsdWxt1eeuGontCB0bR0iEWtJM36Fxhk+modEGc/UsFYe
+         /Nyw7NSAc1jKw2EXb5vkH3/cnVqMKRt/pqGxrCmyOqISM7wEv3cWqPxQffzTu4DeCtqr
+         fd2w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BbzNKBMu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=S1I+La7G;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ca18e2360f4ac-7f454425ffesor368446339f.4.2024.06.30.12.00.54
+        by mx.google.com with SMTPS id 98e67ed59e1d1-2c92d075f2esor2346854a91.0.2024.06.30.12.00.55
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 30 Jun 2024 12:00:55 -0700 (PDT)
+        Sun, 30 Jun 2024 12:00:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BbzNKBMu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=S1I+La7G;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1719774054; x=1720378854; darn=linaro.org;
+        d=linaro.org; s=google; t=1719774055; x=1720378855; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=FTAXIrXnB/PD2XabsVpOCoLz7F3reaebPtysv0EnFvo=;
-        b=BbzNKBMuLDmXCErca4ktk4PWkr5qojMD5sPpKk/a0WfyqUHfgk+lhqYP7mobJhss7l
-         PlHiz7dL4Vf6npr86EvwaAS8naF14zF1h9MLq5UYRnib5XTgm8J9R/4QxrP0eIpADYs0
-         ywv/eFEHRkwB9Ak0D1jJTzlM8Zf95TeNSTc9HnU0m7J4zTiktsP8j810Hfx1gsQ27RmF
-         wqmTLHwHWmjrMx9gBy7fuXTb3CPhq1y3mtxdOdUDTaeWojjANRYRdMDDFUC9mL/S1Nxm
-         4hrWf+owM5fVDXkV30eIWz1EQwg2lRsO3DK7t0uTVbKIdxzlL8gTmx5OHXWWVPHqzO/Q
-         XFUA==
+        bh=M+1cYfmSMutOrFAkzzUKLrm39z58ASnq++T0AOOpk6g=;
+        b=S1I+La7GsPOVxGSO7FIhSd3sAQ0YCsm5IO9BI+/1iOnsK3wnkvgTeQzTKZwVEYG0IT
+         T4Cv/bKJ1m85ehyu4gwQqlJG4dcOLYKiFhYnWXtSJpxPKfbpcefMN4XgR8pzMKMSfkIB
+         eUJ2S8d3Dgs6/Dk2TaQqGvKNA+vSPgkoQbCH52cV4TN+vzyh+BWUp23KnAq8uCz9rksB
+         wuJ5Wx2EoeZtJXT+0dIwQY2c3YPHJ1L8PltKrN4rgipaze+s/SokpblRTgLy3KiZw614
+         nJKv2nISdJ8iOjr4f9wFx3JjyXsnhnsu6w2OCFAIsflKoe6LNpxcstWLo+yU1tQMcvKU
+         Zrhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719774054; x=1720378854;
+        d=1e100.net; s=20230601; t=1719774055; x=1720378855;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=FTAXIrXnB/PD2XabsVpOCoLz7F3reaebPtysv0EnFvo=;
-        b=CNLeO+O4s5IWdEQ1RhE5O0/IbfW3+3ChA/J6U2BPg/MhxAJktOSph0pDUX2IMAbUui
-         hzb0Q4hEC9UdjnwSpBuii6t4Un50zDVnClAG5N1qgTcxGugJ7m0bQBv+zw8KH325ysvK
-         06xT9MN05Z2aIWlWPB28cFJ7Vt3FQp73Lg7LYlFIdKMQmOApVd0Pac7o3zeKGLHrBfe3
-         MpCPerQflO7pa6SW0bNeSFHcuMhI72jErLbNohbiNO7z4UIiVsxJ2GJZHAs8HNzv1gwM
-         3tC/1bscUG6G7AQnVTh3qrIxJ2C4cOFmGw3HU6+BCsBr2GJXBhB7AYeu8hZneqfux0XE
-         2/GA==
-X-Forwarded-Encrypted: i=1; AJvYcCWynOe+udMv4cocn3KsmmfVX3niaTj8qOsXZ2ejp+HeskLD/RKrGWGzAcAZEtoLsFPF0Wfn8Z8HHXt48DDGlger7dwewJWn
-X-Gm-Message-State: AOJu0YyqXgdJOPfH0g9YAdLrdxDpeXbJx3GAFebZa3At5AnUSNwGT1NE
-	aqnTa9l/Vatua+/akeUj7x2E7Oz8FKXOydoIwjHSfhA2TbON4CfD7e7DIkm755Nw4g==
-X-Google-Smtp-Source: AGHT+IGeyG1uFDyEn4u8ALv9U6tD54FmsB7XnO/jbeP+xinE/zkVpczxZMsm3jzcIvwVlpbV2A1akg==
-X-Received: by 2002:a6b:ce01:0:b0:7eb:7887:a496 with SMTP id ca18e2360f4ac-7f62ee118a2mr450992939f.4.1719774054553;
-        Sun, 30 Jun 2024 12:00:54 -0700 (PDT)
+        bh=M+1cYfmSMutOrFAkzzUKLrm39z58ASnq++T0AOOpk6g=;
+        b=mj0uSyHGsdpuBLb1vptXR7OdHbb1gbj8MnXV1guZP/WqPvVvVdY1Ee1ZamjUmskiAk
+         Xp07SUgdfsL6X6NtovkKX0wEizDgiuQ+fOq2y/Bt8lKMyCOifghss0BQMPJi8DBjDcS3
+         jAvFlwlCXRixLvMrql8gWe/XcRahsbKqYjJfMZEin84AEB0t6TbLv1ZemHWpbxZvbyb7
+         QrZf4jmYd/rg4/G59cHc/TG12EQIBCDuZ5bRmCPdgSlslJuVCiLp17jesUqYry8Kfe0D
+         fOhaegDp7GnXsJ6/FfAbICkZ+vHWWkhX7H94ky4bMocYo/lycALqhFiC2rJw3p8Nm1XS
+         5zPg==
+X-Forwarded-Encrypted: i=1; AJvYcCU91LkEg+7BFSSl6ykicwdeNI5cyU+qga8oD8wBvulTCorGeet4+Wgbe6a0QY1jnGVUmo/XR4KybZH+/ERaF+HXVfdSivwW
+X-Gm-Message-State: AOJu0YzqXI55d5sTFwuV8lDWlWMnKGXSrTZvYU2nY3eDwXrV8HSIeg2D
+	G5YvnXl2jhsWTYd8z37C4JvHNb5+1JhasSbTBWK8bocjNYW7nM9bk07xU7MOaFMnYg==
+X-Google-Smtp-Source: AGHT+IG2B4Je/WhspfUwDslB/opXv1xJ49qrKfJXLO5CtdGqAD+mtkJz5qsM7LVb9pZmHN0VcDgv8Q==
+X-Received: by 2002:a17:90a:7185:b0:2c8:1f30:4e04 with SMTP id 98e67ed59e1d1-2c93d775c0cmr3473732a91.36.1719774055501;
+        Sun, 30 Jun 2024 12:00:55 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from stoup.. (174-21-76-141.tukw.qwest.net. [174.21.76.141])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2c91d3e7e4bsm5115641a91.52.2024.06.30.12.00.53
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2c91d3e7e4bsm5115641a91.52.2024.06.30.12.00.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 30 Jun 2024 12:00:54 -0700 (PDT)
+        Sun, 30 Jun 2024 12:00:55 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: akihiko.odaki@daynix.com,
 	alex.bennee@linaro.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH v4 02/14] tests/tcg: Adjust variable defintion from cc-option
-Date: Sun, 30 Jun 2024 12:00:38 -0700
-Message-Id: <20240630190050.160642-3-richard.henderson@linaro.org>
+Subject: [PATCH v4 03/14] tests/tcg/aarch64: Drop -fno-tree-loop-distribute-patterns
+Date: Sun, 30 Jun 2024 12:00:39 -0700
+Message-Id: <20240630190050.160642-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240630190050.160642-1-richard.henderson@linaro.org>
 References: <20240630190050.160642-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: KjeaxMldQK/A
+X-TUID: ZI0oJhkr2y4v
 
-Define the variable to the compiler flag used, not "y".
-This avoids replication of the compiler flag itself.
+This option is not supported by clang, and is not required
+in order to get sve code generation with gcc 12.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/tcg/Makefile.target                 |  2 +-
- tests/tcg/aarch64/Makefile.softmmu-target |  2 +-
- tests/tcg/aarch64/Makefile.target         | 15 ++++++++-------
- 3 files changed, 10 insertions(+), 9 deletions(-)
+ tests/tcg/aarch64/Makefile.softmmu-target | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index f21be50d3b..cb8cfeb6da 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -49,7 +49,7 @@ quiet-command = $(call quiet-@,$2,$3)$1
- 
- cc-test = $(CC) -Werror $1 -c -o /dev/null -xc /dev/null >/dev/null 2>&1
- cc-option = if $(call cc-test, $1); then \
--    echo "$(TARGET_PREFIX)$1 detected" && echo "$(strip $2)=y" >&3; else \
-+    echo "$(TARGET_PREFIX)$1 detected" && echo "$(strip $2)=$(strip $1)" >&3; else \
-     echo "$(TARGET_PREFIX)$1 not detected"; fi
- 
- # $1 = test name, $2 = cmd, $3 = desc
 diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index 4b03ef602e..39d3f961c5 100644
+index 39d3f961c5..dd6d595830 100644
 --- a/tests/tcg/aarch64/Makefile.softmmu-target
 +++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -81,7 +81,7 @@ run-memory-replay: memory-replay run-memory-record
- EXTRA_RUNS+=run-memory-replay
+@@ -39,7 +39,7 @@ memory: CFLAGS+=-DCHECK_UNALIGNED=1
+ memory-sve: memory.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
+ 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
  
- ifneq ($(CROSS_CC_HAS_ARMV8_3),)
--pauth-3: CFLAGS += -march=armv8.3-a
-+pauth-3: CFLAGS += $(CROSS_CC_HAS_ARMV8_3)
- else
- pauth-3:
- 	$(call skip-test, "BUILD of $@", "missing compiler support")
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 70d728ae9a..e6d5e008a8 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -32,17 +32,17 @@ config-cc.mak: Makefile
+-memory-sve: CFLAGS+=-DCHECK_UNALIGNED=1 -march=armv8.1-a+sve -O3 -fno-tree-loop-distribute-patterns
++memory-sve: CFLAGS+=-DCHECK_UNALIGNED=1 -march=armv8.1-a+sve -O3
  
- ifneq ($(CROSS_CC_HAS_ARMV8_2),)
- AARCH64_TESTS += dcpop
--dcpop: CFLAGS += -march=armv8.2-a
-+dcpop: CFLAGS += $(CROSS_CC_HAS_ARMV8_2)
- endif
- ifneq ($(CROSS_CC_HAS_ARMV8_5),)
- AARCH64_TESTS += dcpodp
--dcpodp: CFLAGS += -march=armv8.5-a
-+dcpodp: CFLAGS += $(CROSS_CC_HAS_ARMV8_5)
- endif
+ TESTS+=memory-sve
  
- # Pauth Tests
- ifneq ($(CROSS_CC_HAS_ARMV8_3),)
- AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5
--pauth-%: CFLAGS += -march=armv8.3-a
-+pauth-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_3)
- run-pauth-1: QEMU_OPTS += -cpu max
- run-pauth-2: QEMU_OPTS += -cpu max
- # Choose a cpu with FEAT_Pauth but without FEAT_FPAC for pauth-[45].
-@@ -54,7 +54,7 @@ endif
- # bti-1 tests the elf notes, so we require special compiler support.
- ifneq ($(CROSS_CC_HAS_ARMV8_BTI),)
- AARCH64_TESTS += bti-1 bti-3
--bti-1 bti-3: CFLAGS += -fno-stack-protector -mbranch-protection=standard
-+bti-1 bti-3: CFLAGS += -fno-stack-protector $(CROSS_CC_HAS_ARMV8_BTI)
- bti-1 bti-3: LDFLAGS += -nostdlib
- endif
- # bti-2 tests PROT_BTI, so no special compiler support required.
-@@ -63,12 +63,13 @@ AARCH64_TESTS += bti-2
- # MTE Tests
- ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
- AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7
--mte-%: CFLAGS += -march=armv8.5-a+memtag
-+mte-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_MTE)
- endif
- 
- # SME Tests
- ifneq ($(CROSS_AS_HAS_ARMV9_SME),)
- AARCH64_TESTS += sme-outprod1 sme-smopa-1 sme-smopa-2
-+sme-outprod1 sme-smopa-1 sme-smopa-2: CFLAGS += $(CROSS_AS_HAS_ARMV9_SME)
- endif
- 
- # System Registers Tests
-@@ -98,7 +99,7 @@ TESTS += sha512-vector
- ifneq ($(CROSS_CC_HAS_SVE),)
- # SVE ioctl test
- AARCH64_TESTS += sve-ioctls
--sve-ioctls: CFLAGS+=-march=armv8.1-a+sve
-+sve-ioctls: CFLAGS += $(CROSS_CC_HAS_SVE)
- 
- sha512-sve: CFLAGS=-O3 -march=armv8.1-a+sve
- sha512-sve: sha512.c
-@@ -133,7 +134,7 @@ endif
- 
- ifneq ($(CROSS_CC_HAS_SVE2),)
- AARCH64_TESTS += test-826
--test-826: CFLAGS+=-march=armv8.1-a+sve2
-+test-826: CFLAGS += $(CROSS_CC_HAS_SVE2)
- endif
- 
- TESTS += $(AARCH64_TESTS)
 -- 
 2.34.1

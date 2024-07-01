@@ -1,156 +1,225 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1470323njm;
-        Mon, 1 Jul 2024 09:33:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWjp0g5DA9g7y7+iu0j92dWFTbzDzBgd9Zru1UX27FyVh0BMNGZRHCHjlDxz0xsNSlLhfafvzmdJPFFu96edwFRp2IjWZUJ
-X-Google-Smtp-Source: AGHT+IEK86ycABBjlLwVX4DrpPMmfwQ4gS4wZHtFojWKcvVs6uoc8ivSQLXxaftnHlx0yPVWHok6
-X-Received: by 2002:a5d:525c:0:b0:35f:1d40:82fa with SMTP id ffacd0b85a97d-367756ad6f5mr3223088f8f.18.1719851639295;
-        Mon, 01 Jul 2024 09:33:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719851639; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1483799njm;
+        Mon, 1 Jul 2024 10:01:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWFDF+ZLkyNdrLF2tajmoRc5yNsEgNRw2vm7Re9yPcqqNE8ThOTvCYaKaDjDtC3BzmJkeYhaEzksxM2Cume8paeZngBNnLd
+X-Google-Smtp-Source: AGHT+IHbaOwqdCM1XhVG0AbJORYFCJG4ZUPwXAANWsCDyLcEy3tc7nXI3Zh4nnHG/OF78HkA9RmG
+X-Received: by 2002:a05:6102:162a:b0:48f:46db:7a11 with SMTP id ada2fe7eead31-48faf062676mr4499549137.6.1719853272203;
+        Mon, 01 Jul 2024 10:01:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719853272; cv=none;
         d=google.com; s=arc-20160816;
-        b=yYTBtJkQH4+v77qD3wPZTee/kA1yeub5iM3Xh9+wSyxddHrHLriqa1cGtnfz4yyV4C
-         nrggh79YMo/rt+cPOCVxsVwxgW6wn4Wb3ZWkYZ7VRIgrqqsHFnlMDU8C/YPzYzQn2b3y
-         JcheBy0zI2w3dKrtSsV1nX1APbD9x829rGi4IQwlWOlmQ0MXm5fKldvLtGjkrcQ9bw0o
-         uD9VnF9CxrLUrBBHclu5q2Ne6FSBrQpNEY6crmWfki1N6sy8bTlp/Ylrsj6rDtPj9dfl
-         m/wrdizN0HX4QKDhJzOaqD5rfomBR5jzuCfjyEZQDqIety0psmZ9UUmRwIB79/hWiVMl
-         UH+w==
+        b=zdS7FysSDMue68UaS9zfvTn7v2gRddoCdnF67My5d9nZ3T/AIhmz4yxhpeOwdEYrmF
+         6XguEczbBQtUmYk6B78f+L2Ge6avnp3I9KIs4IWKr2mB1u+dSD/TXJllZclYKnyjYbVg
+         EzU8CCyv1gapIGx272Xui0lzu1ZIfhusooCx4K8xvbsXn7PcPgbg1cJlLUx/fM/v08CO
+         BV5Y8fwh2DuASzcydzrT6c9X2Oyp1oVD0+uM2R7JUFc1n0Y815dVzLei2jdTxaOiBWbV
+         HXUlw5PVamVd71+qk5uDJHZC90e0LeGDRw7Y9UevLWXmpRycKzQp6I2bMJOKuh+QAIS+
+         bpJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=EmW9OGJF165n/pO3wz/pdda2MpXvg3h0FDzmvvkZnAI=;
-        fh=twugZi/8eMHaEodAvBogB4hBe3eo3utLiQpA9nNg33Y=;
-        b=0+ZAyLp9SK0Zty/JJzrv/QQSqbGiEvI97AHdJg1/4121ETFHydxYnkCzvDqpmVt0ps
-         TTMa/DPq6urB/VDS2DU9JH/2kgfKrtaR1KrnLTrbSWmgREPPqXw4iNzJGS1oMYpWUz9t
-         027SydFjV1r1OnRSi3kMtk0g9lbazdjzh/fjOfX3TVM/RAFFnxTpUaqDxJsTgmxdJOHr
-         TFVEoop+cA/G1WQV/u/9myGimAaRpYQOL1g++jT40cdYYKeuQ1Dz1b/qVzyoyFkdNBtB
-         QBWimmog3sZxDIRfDKhJS9PoNFOicOYt91CkqOx76PUwF3tc/ZN9bNbWST9gkzDUjBhI
-         5t6A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=mEsogqTUaDgWi+GkfAb+mJ2jGR4tDWYaiJVWVpgtbWQ=;
+        fh=Vb7cbQ70HGIjnjCTLsvICfog+g03xm76vSpUneajyfs=;
+        b=Pyh1Ectd/MfJHjN0yX6bXZ0kA4tNOcmuSYojuB6qfI2sIRUe2WcnUzRap1N7yA+Pw4
+         Pc4yQW4enoSleb1n1ytzMK9K/sBb1g0ZTaeAml9739mp3Pg/LqZZ1gr3oRufhIxlh1Ju
+         oqYn8F9/kRUGu/CIn3CPEbAFsX4a3DBnhjxK+hA/iQYPTGjfbBW/SQtP4jp4p/VPP+xm
+         UP/8ZYarsJBVR4YswoatTOHf08qIpdbkTMTHtD2M3KJSp1aCt8gHzrKXHO0Cuf1jutRV
+         xu2ePwroPDcv2oo6t/STXoeeu50Zs4VTxzGx1WdQRtG3auFrB1HxNUJA80FjLgGL+nTU
+         96ww==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3675a0f920bsi4614763f8f.542.2024.07.01.09.33.59
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Jul 2024 09:33:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=McybVgVf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-48f9b293f7csi1167116137.707.2024.07.01.10.01.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Jul 2024 10:01:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WCWnJ6148z6JB16;
-	Tue,  2 Jul 2024 00:33:24 +0800 (CST)
-Received: from lhrpeml500002.china.huawei.com (unknown [7.191.160.78])
-	by mail.maildlp.com (Postfix) with ESMTPS id 1FDBA140680;
-	Tue,  2 Jul 2024 00:33:58 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500002.china.huawei.com (7.191.160.78) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 1 Jul 2024 17:33:57 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
- Mon, 1 Jul 2024 17:33:57 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-CC: Gavin Shan <gshan@redhat.com>, Salil Mehta <salil.mehta@opnsrc.net>,
-	"Michael S. Tsirkin" <mst@redhat.com>, "qemu-devel@nongnu.org"
-	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
-	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
-	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "andrew.jones@linux.dev"
-	<andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>,
-	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com"
-	<eric.auger@redhat.com>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
-	"pbonzini@redhat.com" <pbonzini@redhat.com>, "will@kernel.org"
-	<will@kernel.org>, "rafael@kernel.org" <rafael@kernel.org>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "linux@armlinux.org.uk"
-	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
-	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
-	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
-	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
-	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	"npiggin@gmail.com" <npiggin@gmail.com>, "harshpb@linux.ibm.com"
-	<harshpb@linux.ibm.com>, Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V12 0/8] Add architecture agnostic code to support vCPU
- Hotplug
-Thread-Topic: [PATCH V12 0/8] Add architecture agnostic code to support vCPU
- Hotplug
-Thread-Index: AQHasiICqFrRyvmDr0+9IflX7gIe/7G0/EKAgAQw/ICAIBLYAIAASTeAgAD1fFCABzMkAIAAkbgA
-Date: Mon, 1 Jul 2024 16:33:57 +0000
-Message-ID: <308d3c98e30244daa3538bb898bee6b6@huawei.com>
-References: <20240529234241.205053-1-salil.mehta@huawei.com>
-	<20240602180241-mutt-send-email-mst@kernel.org>
-	<20240605160327.3c71f4ab@imammedo.users.ipa.redhat.com>
-	<CAJ7pxeYehVhPWfbEqRMMSCVHk31JQhtQhRSM_4e1WqBhqv0UHQ@mail.gmail.com>
-	<b36e0d64-9653-4d48-b72a-00a1aee86629@redhat.com>
-	<eb5880984ddf41aabca9d036e7ad445f@huawei.com>
- <20240701104844.32e0207b@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240701104844.32e0207b@imammedo.users.ipa.redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.195.32.244]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@linaro.org header.s=google header.b=McybVgVf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sOKOQ-0007Nk-Dz; Mon, 01 Jul 2024 13:00:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOKOH-0007MF-6g
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2024 13:00:33 -0400
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOKOD-0005Lq-Hk
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2024 13:00:32 -0400
+Received: by mail-lf1-x130.google.com with SMTP id
+ 2adb3069b0e04-52cd87277d8so3294261e87.2
+ for <qemu-arm@nongnu.org>; Mon, 01 Jul 2024 10:00:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1719853226; x=1720458026; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mEsogqTUaDgWi+GkfAb+mJ2jGR4tDWYaiJVWVpgtbWQ=;
+ b=McybVgVfGuSww4cU6RTKMcVUmOxhA+uJeGV8YTQYKa8rmNu6wk8pSzURcgu9WQi1BP
+ Ptzt7FYF3Q96ijMFJgpGoZTHi3uGMEFCfC//gNxEDRrjUNmWefC6C9cEusRazh2XBmQH
+ Boxqk3tIVazWJ8zpREMFhsl9bPyytUX0QXMT/8zn7lJikLJTDedPyjR7GSlOy/KKi+9Y
+ qhexn7Kim10mRlk03O80GJZRzQ7shwWY0hA1CSSp9J/QRkustNfbxaG4gyoeXMPD1Hf1
+ eKmG5wqomzXTXPuFQEu9Rf1/oeKsspmnmtwjvANp0c30XGF5QtgR1x13iXUHUYwypV5b
+ S/sA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1719853226; x=1720458026;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mEsogqTUaDgWi+GkfAb+mJ2jGR4tDWYaiJVWVpgtbWQ=;
+ b=H54rqxyXM+LhFnyDE7iTOeYPWFvvEnR48IfozWIzUomSwwImsSLZuRYo+a3Ja578po
+ CXJxwKrL3HTGhu7hrN8h8iBUc2sIDpqVH0KHEJORl08MpRkF/Fysh2T1enATyJmaWvma
+ SMv8JZ0idOoG8aX8j4yZOSkgFc8fP+9vQunAjWwvJjH5sfbTdcg9u9fUza7ZglWNOCkX
+ TGjUNP8qpfiivIcnhm4bhm57qg0yR5r1k87XWI3UT3Mogao1iuKoXZjSvn0YzadsiHvn
+ QmSkhr9tgccYw+rlERsC3D6RspwxHXpXsa9TsYVdTRpmVam9KERBEVJeBfNls9mG3LoA
+ QLmA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU4sbR6HOrkrcQ9r4cniKqi+v4fBFdrbVWB073cfIJpsgvHNl3qETj/Ll8oRYLdYZxQ6xMCx7Lrd5klmTumsx1LfYax
+X-Gm-Message-State: AOJu0Yz5TkifzNsSOP1JTe8O1EwXB15r5fvH2shJvcDvV+onhq5ESoKO
+ zU159FlUoqRIC3Fpm8aETScURHaQsz7rjeexfU5qyAHhxXc0t88pLvADmTJ/u4zPh1BRUiOqfqO
+ a
+X-Received: by 2002:a05:6512:1151:b0:52c:df4d:bb9e with SMTP id
+ 2adb3069b0e04-52e826932fbmr4733608e87.41.1719853220764; 
+ Mon, 01 Jul 2024 10:00:20 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.177.159])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4256b09a32asm163254745e9.31.2024.07.01.10.00.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 01 Jul 2024 10:00:20 -0700 (PDT)
+Message-ID: <07ad2b0a-8d4f-4104-8343-3b28c181d705@linaro.org>
+Date: Mon, 1 Jul 2024 19:00:18 +0200
 MIME-Version: 1.0
-X-TUID: TwhMfHRXOeNH
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] tests/avocado: sbsa-ref: add FreeBSD tests
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Radoslaw Biernacki <rad@semihalf.com>, Cleber Rosa <crosa@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>
+References: <20240624-b4-move-to-freebsd-v3-0-71496bf119d4@linaro.org>
+ <20240624-b4-move-to-freebsd-v3-1-71496bf119d4@linaro.org>
+ <CAFEAcA-suKn9LAB8qrNaRu9NeG8DyT_ae0va7uSHuiL3VSk+BQ@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA-suKn9LAB8qrNaRu9NeG8DyT_ae0va7uSHuiL3VSk+BQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3WkFyKuk4bYT
 
-SGkgSWdvciwNCg0KPiAgRnJvbTogSWdvciBNYW1tZWRvdiA8aW1hbW1lZG9AcmVkaGF0LmNvbT4N
-Cj4gIFNlbnQ6IE1vbmRheSwgSnVseSAxLCAyMDI0IDk6NDkgQU0NCj4gIFRvOiBTYWxpbCBNZWh0
-YSA8c2FsaWwubWVodGFAaHVhd2VpLmNvbT4NCj4gIA0KPiAgT24gV2VkLCAyNiBKdW4gMjAyNCAx
-Nzo1Mzo1MiArMDAwMA0KPiAgU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+IHdy
-b3RlOg0KPiAgDQo+ICA+IEhpIEdhdmluLA0KPiAgPg0KPiAgPiA+ICBGcm9tOiBHYXZpbiBTaGFu
-IDxnc2hhbkByZWRoYXQuY29tPg0KPiAgPiA+ICBTZW50OiBXZWRuZXNkYXksIEp1bmUgMjYsIDIw
-MjQgNToxMyBBTQ0KPiAgPiA+ICBUbzogU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQG9wbnNyYy5u
-ZXQ+OyBJZ29yIE1hbW1lZG92DQo+ICA+ID4gPGltYW1tZWRvQHJlZGhhdC5jb20+DQo+ICA+ID4N
-Cj4gID4gPiAgSGkgU2FsaWwgYW5kIElnb3IsDQo+ICA+ID4NCj4gID4gPiAgT24gNi8yNi8yNCA5
-OjUxIEFNLCBTYWxpbCBNZWh0YSB3cm90ZToNCj4gID4gPiAgPiBPbiBXZWQsIEp1biA1LCAyMDI0
-IGF0IDM6MDPigK9QTSBJZ29yIE1hbW1lZG92DQo+ICA+ID4gPGltYW1tZWRvQHJlZGhhdC5jb20g
-PG1haWx0bzppbWFtbWVkb0ByZWRoYXQuY29tPj4gd3JvdGU6DQo+ICA+ID4gID4gICAgIE9uIFN1
-biwgMiBKdW4gMjAyNCAxODowMzowNSAtMDQwMA0KPiAgPiA+ICA+ICAgICAiTWljaGFlbCBTLiBU
-c2lya2luIiA8bXN0QHJlZGhhdC5jb20gPG1haWx0bzptc3RAcmVkaGF0LmNvbT4+IHdyb3RlOg0K
-PiAgPiA+ICA+DQo+ICA+ID4gID4gICAgICA+IE9uIFRodSwgTWF5IDMwLCAyMDI0IGF0IDEyOjQy
-OjMzQU0gKzAxMDAsIFNhbGlsIE1laHRhIHdyb3RlOg0KPiAgPiA+ICA+ICAgICAgPiA+IFZpcnR1
-YWwgQ1BVIGhvdHBsdWcgc3VwcG9ydCBpcyBiZWluZyBhZGRlZCBhY3Jvc3MgdmFyaW91cyBhcmNo
-aXRlY3R1cmVzWzFdWzNdLg0KPiAgPiA+ICA+ICAgICAgPiA+IFRoaXMgc2VyaWVzIGFkZHMgdmFy
-aW91cyBjb2RlIGJpdHMgY29tbW9uIGFjcm9zcyBhbGwgIGFyY2hpdGVjdHVyZXM6DQo+ICA+ID4g
-ID4gICAgICA+ID4NCj4gID4gPiAgPiAgICAgID4gPiAxLiB2Q1BVIGNyZWF0aW9uIGFuZCBQYXJr
-aW5nIGNvZGUgcmVmYWN0b3IgW1BhdGNoIDFdDQo+ICA+ID4gID4gICAgICA+ID4gMi4gVXBkYXRl
-IEFDUEkgR0VEIGZyYW1ld29yayB0byBzdXBwb3J0IHZDUFUgSG90cGx1ZyBbUGF0Y2ggMiwzXQ0K
-PiAgPiA+ICA+ICAgICAgPiA+IDMuIEFDUEkgQ1BVcyBBTUwgY29kZSBjaGFuZ2UgW1BhdGNoIDQs
-NV0NCj4gID4gPiAgPiAgICAgID4gPiA0LiBIZWxwZXIgZnVuY3Rpb25zIHRvIHN1cHBvcnQgdW5y
-ZWFsaXphdGlvbiBvZiBDUFUgb2JqZWN0cyAgW1BhdGNoICA2LDddDQo+ICA+ID4gID4gICAgICA+
-ID4gNS4gRG9jcyBbUGF0Y2ggOF0NCj4gID4gPiAgPiAgICAgID4gPg0KPiAgPiA+ICA+ICAgICAg
-PiA+DQo+ICA+ID4gID4gICAgICA+ID4gUmVwb3NpdG9yeToNCj4gID4gPiAgPiAgICAgID4gPg0K
-PiAgPiA+ICA+ICAgICAgPiA+IFsqXSBodHRwczovL2dpdGh1Yi5jb20vc2FsaWwtbWVodGEvcWVt
-dS5naXQgICA8aHR0cHM6Ly9naXRodWIuY29tL3NhbGlsLW1laHRhL3FlbXUuZ2l0PiB2aXJ0LWNw
-dWhwLWFybXY4L3JmYy12My5hcmNoLmFnbm9zdGljLnYxMg0KPiAgPiA+ICA+ICAgICAgPiA+DQo+
-ICA+ID4gID4gICAgICA+ID4gTk9URTogVGhpcyBzZXJpZXMgaXMgbWVhbnQgdG8gd29yayBpbiBj
-b25qdW5jdGlvbiB3aXRoIEFyY2hpdGVjdHVyZSBzcGVjaWZpYyBwYXRjaC1zZXQuDQo+ICA+ID4g
-ID4gICAgICA+ID4gRm9yIEFSTSwgdGhpcyB3aWxsIHdvcmsgaW4gY29tYmluYXRpb24gb2YgdGhl
-IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBwYXJ0IGJhc2VkIG9uDQo+ICA+ID4gID4gICAgICA+ID4g
-UkZDIFYyIFsxXS4gVGhpcyBhcmNoaXRlY3R1cmUgc3BlY2lmaWMgcGF0Y2gtc2V0IFJGQyBWMyBz
-aGFsbCBiZSBmbG9hdGVkIHNvb24gYW5kIGlzDQo+ICA+ID4gID4gICAgICA+ID4gcHJlc2VudCBh
-dCBiZWxvdyBsb2NhdGlvbg0KPiAgPiA+ICA+ICAgICAgPiA+DQo+ICA+ID4gID4gICAgICA+ID4g
-WypdIGh0dHBzOi8vZ2l0aHViLmNvbS9zYWxpbC1tZWh0YS9xZW11L3RyZWUvdmlydC1jcHVocC1h
-cm12OC9yZmMtdjMtcmMxIDxodHRwczovL2dpdGh1Yi5jb20vc2FsaWwtbWVodGEvcWVtdS90cmVl
-L3ZpcnQtY3B1aHAtDQo+ICBhcm12OC9yZmMtdjMtcmMxPg0KPiAgPiA+ICA+ICAgICAgPiA+DQo+
-ICA+ID4gID4gICAgICA+DQo+ICA+ID4gID4gICAgICA+DQo+ICA+ID4gID4gICAgICA+IElnb3Ig
-cGxhbiB0byB0YWtlIGEgbG9vaz8NCj4gID4gPiAgPg0KPiAgPiA+ICA+ICAgICBZZXAsIEkgcGxh
-biB0byByZXZpZXcgaXQNCj4gID4gPiAgPg0KPiAgPiA+ICA+DQo+ICA+ID4gID4gQSBnZW50bGUg
-cmVtaW5kZXIgb24gdGhpcy4NCj4gID4gPiAgPg0KPiAgPiA+DQo+ICA+ID4gIFNpbmNlIHRoZSBs
-YXRlc3QgcmV2aXNpb24gZm9yIHRoaXMgc2VyaWVzIGlzIHYxMywgc28gSSBndWVzcyBJZ29yDQo+
-ICA+ID4gbmVlZHMgdG8gZG8gdGhlICBmaW5hbCBzY3JlZW5pbmcgb24gdjEzIGluc3RlYWQ/DQo+
-ICA+ID4NCj4gID4gPiAgdjEzOg0KPiAgPiA+IGh0dHBzOi8vbGlzdHMubm9uZ251Lm9yZy9hcmNo
-aXZlL2h0bWwvcWVtdS1hcm0vMjAyNC0wNi9tc2cwMDEyOS5odG1sDQo+ICA+DQo+ICA+DQo+ICA+
-IFllcywgdGhhbmtzIGZvciBwb2ludGluZyB0aGlzLiDwn5iKDQo+ICANCj4gIEkgaGF2ZSB2MTMg
-dGFnZ2VkLA0KPiAgU29ycnkgZm9yIGRlbGF5LCBJJ2xsIHRyeSB0byByZXZpZXcgaXQgdGhpcyB3
-ZWVrDQoNClN1cmUuIE5vIHByb2JsZW0uIA0KDQpUaGFua3MNClNhbGlsLg0KDQo+ICA+ID4gIFRo
-YW5rcywNCj4gID4gPiAgR2F2aW4NCg0K
+On 1/7/24 15:37, Peter Maydell wrote:
+> On Mon, 24 Jun 2024 at 17:20, Marcin Juszkiewicz
+> <marcin.juszkiewicz@linaro.org> wrote:
+>>
+>> FreeBSD has longer support cycle for stable release (14.x EoL in 2028)
+>> than OpenBSD (7.3 we used is already EoL). Also bugfixes are backported
+>> so we can stay on 14.x for longer. Tests done on OpenBSD will now be
+>> done using FreeBSD.
+>>
+>> OpenBSD 7.3 stays with Cortex-A57 test for local runs only.
+>>
+>> Moved from Neoverse-N1 to Neoverse-N2 as sbsa-ref defaults were changed.
+>>
+>> Timeout messages expanded to mention being affected by PAuth emulation.
+>>
+>> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+>> ---
+>>   tests/avocado/machine_aarch64_sbsaref.py | 75 ++++++++++++++++++++++++--------
+>>   1 file changed, 56 insertions(+), 19 deletions(-)
+>>
+>> diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+>> index 6bb82f2a03..bb2c098aac 100644
+>> --- a/tests/avocado/machine_aarch64_sbsaref.py
+>> +++ b/tests/avocado/machine_aarch64_sbsaref.py
+>> @@ -1,4 +1,4 @@
+>> -# Functional test that boots a Linux kernel and checks the console
+>> +# Functional test that boots a kernel and checks the console
+>>   #
+>>   # SPDX-FileCopyrightText: 2023-2024 Linaro Ltd.
+>>   # SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> @@ -8,7 +8,7 @@
+>>
+>>   import os
+>>
+>> -from avocado import skipUnless
+>> +from avocado import skipIf, skipUnless
+>>   from avocado.utils import archive
+>>
+>>   from avocado_qemu import QemuSystemTest
+>> @@ -165,7 +165,8 @@ def test_sbsaref_alpine_linux_max_pauth_impdef(self):
+>>           """
+>>           self.boot_alpine_linux("max,pauth-impdef=on")
+>>
+>> -    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+>> +    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'),
+>> +                'Test might timeout due to PAuth emulation')
+>>       def test_sbsaref_alpine_linux_max(self):
+>>           """
+>>           :avocado: tags=cpu:max
+>> @@ -173,7 +174,6 @@ def test_sbsaref_alpine_linux_max(self):
+>>           """
+>>           self.boot_alpine_linux("max")
+>>
+>> -
+>>       # This tests the whole boot chain from EFI to Userspace
+>>       # We only boot a whole OS for the current top level CPU and GIC
+>>       # Other test profiles should use more minimal boots
+>> @@ -200,6 +200,9 @@ def boot_openbsd73(self, cpu):
+>>                                    "Welcome to the OpenBSD/arm64"
+>>                                    " 7.3 installation program.")
+>>
+>> +
+>> +    # we keep OpenBSD 7.3 on Cortex-A57 by request
+>> +    @skipIf(os.getenv('GITLAB_CI'), 'Running on GitLab')
+> 
+> Don't skip stuff if GITLAB_CI, please. If we don't want to
+> run it on the CI then we shouldn't be running it by default
+> when a local user runs check-avocado either.
+
+I did request that.
+
+> Any skip should have a clear description of the reason why
+> we're skipping it.
+
+Right. Maybe replace by:
+
+   @skipUnless(os.getenv('AVOCADO_TEST_LEGACY_OS'), 'OpenBSD 7.3 is EoL')
+
+Or AVOCADO_TEST_LEGACY_OPENBSD... Naming is hard.
+
+Regards,
+
+Phil.

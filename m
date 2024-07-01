@@ -1,212 +1,182 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1228305njm;
-        Mon, 1 Jul 2024 01:48:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUXYxkVXd+LPyhklJFUKgmqYdCBBQFL7/6mZyoYl0N6wWD84rjavpW0lR3mcRfIddivJz4q0bv4+Z92JuqY59Doqxn5l1iE
-X-Google-Smtp-Source: AGHT+IHq0J+zH3vYh6lkR5JK30/A4YCxuZdkYsAtv7Llsz/JSQle0OBKe3z97GH5p1zF45Od7gfj
-X-Received: by 2002:ac8:7f51:0:b0:446:5368:cce4 with SMTP id d75a77b69052e-44662e6a372mr73673801cf.48.1719823730974;
-        Mon, 01 Jul 2024 01:48:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719823730; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1229169njm;
+        Mon, 1 Jul 2024 01:51:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVKUIw8iW7TX+wj/TjLQdOoqNuJ2+r/EshOxfFGWRkioiRotdMW98yCFUbNHBUz2c34ExrVB7eWdeBq3agY1m5yb17n6eXZ
+X-Google-Smtp-Source: AGHT+IH+bU17YyY5IArJ5fbo1o6aqyys1I+UOFC8AzHtZOXpqpif1Trf849AdMmtk21tf/JTDmrl
+X-Received: by 2002:a81:4415:0:b0:643:c2bf:c156 with SMTP id 00721157ae682-64c718f83d6mr46622527b3.19.1719823862793;
+        Mon, 01 Jul 2024 01:51:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719823862; cv=none;
         d=google.com; s=arc-20160816;
-        b=FZIz72x9uAGn+UAGmNbWwfN+gt1htBuJJsgat/PENXo/3ulNuVZbISHzw7i4dw6als
-         QYgM6BA3YOByWO9RHuzujZggt6HeNapvTc0uDwMVChFUGsOCanYu3utiSTMjHRyan5+x
-         0440/rzwvEMc8IqhDmMw+429zjb1hv3cqSbiR4YHoDEDcjafHox31wrVxD1SFT5ibij/
-         T2fwjYH5J3FTcpwTldOb5YxQL+0J4w1tlkLb8rMKPsdp4leoX1jl5aSadnNDClGZpBrP
-         Lo1SyXto+LSbkcf7W1kSWvGEpG+XN3m+4VjWUvoOjxo8U5Tc/WvybHX8dJrjASv5Ijnw
-         EbZg==
+        b=SS+l3j0g6VuLQEWsqHsyGNwz5Sdq/poXWwP0b2BFDTU9XkCy9rXEQQvntbCqEzUAX6
+         lLWj9m0uFAOOJDCsK46OodGIzpF+9h1aRcAOSVybM9Y10QymsIGBB/ZeCIjM0qvTlf5B
+         zavTQUJ1Loknc/BN8fwh665mjw7j+GgoNEfj5Wrm3qifhMK9IPkRUjAHWC7OQEezzyWc
+         k2cr6ZNee+FQOfkkNSeetMRHxqU5IpQUppuA3ITJjYbne8zezexyM+LOAXKx7LfLRopb
+         WPtIpX+8atGwHNBHwJ60fFVrbpmzp07qcQXGxWVUV+Rhz3CEiDqVajaJHcYTIoV8ITs+
+         05iA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=H833kYXzoMIHWuDdONhAoenWOEXps9SFHFxpxaDLJJw=;
-        fh=e1hMVu9AHPqMYEsS5s9YUf5u6H9XQ85v6am62OkU9T0=;
-        b=L+xRUKLpUaeeDLyjFWhLCY7vaDPLLsq57J2mvcto3/qXiZ08g2Hvy2UrL4fFbbWKOU
-         6PK00XL8kC/LPvqCZdb+wX/SQakQbYRNa9uYbFJHxsz0iAZ6Yzp/JAFfcf1gb//yuBbv
-         9JzN0EUy40AQWvyydsO/FxwjcRjx1iixeWz4JhHsrsypW96NgRSoksSzbe5mYRQtPmO2
-         SdTnkgaOD8R9q3x2iFg5ltxpQj2XD81Q+DM4A3p9dY2HhQG45YcTChhfGMnUzKNoetdJ
-         UZvAeJuwIh3ZoG0Xou9fei1MNdpTNB1wY5CJvyCw9l5Fw45xPYum2j20L0+HSfxB+HFW
-         XyNA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=cgJfWjCJSsqWY8stLMqK0V9ndyG+mMup/arO83wAq2o=;
+        fh=7BmF12x8JIX7i2ysPViD3oS3tFYG9mZ+u60lEXguOKc=;
+        b=Z7XXAUCE8oyFnl+16PXBDAvoDGf/wwKYIM5kmTzrKu4GpKsnPbHvNW1l/E2b/vK3uR
+         6HRGPyUSVe1ZWWWax+FvgfMcWnZAcMtFe9J3yIJlnNrb3Rae2WmmqIeoD8ABqEvmlUOk
+         TXkwQ1JBVN6TZbbrT0Iq+l4ypJiF2SDHxC4/MNI7SfMNpZr5F70vzxfJeguQ1xr153WR
+         or/yLhq5P8sFLtgqp2c6JjPifyMBcEIRMqLKkqCdJIIh94OtWp/nC1lWUW+9xv8ZEdHy
+         ECQabwO0bIOXPUJ9LUaEK7AAEeKcOruGS71iwbRvoMyRzQqB7tmPrPU+NhN+xLBnsWsm
+         cDeQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zg8Zg3Gb;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="c8V/DD+u";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-446514e3ed2si75928521cf.744.2024.07.01.01.48.50
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-446514c830esi75039371cf.608.2024.07.01.01.51.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Jul 2024 01:48:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Jul 2024 01:51:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zg8Zg3Gb;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="c8V/DD+u";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sOCkI-0003or-E3; Mon, 01 Jul 2024 04:50:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1sOCjk-00033q-So
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2024 04:50:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1sOCji-0005K0-2p
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2024 04:50:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1719823730;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=H833kYXzoMIHWuDdONhAoenWOEXps9SFHFxpxaDLJJw=;
-	b=Zg8Zg3GbMXYRG8w8c624LB0pVTgrZVaX/8zp7qJ9jELHoeHhaqXt2yojGdP/hFfLdpoG9D
-	bmQZxU+53EOFVac37FCIR8PPCFPtdveRARf2REP5u08wm8NMej3XPvxpAj7XBHD7dCImGL
-	m84eObrZLPTILmp53Qz4s2WrsGBQmpM=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-626-aVw_rL1HPD-_SVWTHdxB7Q-1; Mon, 01 Jul 2024 04:48:49 -0400
-X-MC-Unique: aVw_rL1HPD-_SVWTHdxB7Q-1
-Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-3673ce44f3eso1914386f8f.2
-        for <alex.bennee@linaro.org>; Mon, 01 Jul 2024 01:48:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719823728; x=1720428528;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=tGULnVzcpI8jzaIWqxlHtEMGdelK1jaDjxgMatjjCug=;
-        b=sFP0a+Y71kI2uET8ukfnwzeakLFL4xubnuJikkRAo8k7FwoUFo7vIjt/FW1KQ/Dt8c
-         eVmoUAGPwf2GFAT+TK902OZlz/eM+jDs070kC/23XesGSuiymykKUu6v4btGpJh6C6ju
-         386EnpDMjBRXj/qjbZf1JkSoCJvveZ7bnKvSrs24kJDYHhfe2ihAA9+Up6tlL1sxkx9f
-         aqvwtD0CYLKm//dCm0yYU+47kcxgTFPxkC8BvQJf2Sdt+4ANlIH4NNECuncsHwz8reKk
-         DNYJY5r7O3BFfwfLqAmOr38CqJkGIoixOotVF9CaxJddfBnBBCnvY58oQR3blxpBe7kH
-         bP+g==
-X-Forwarded-Encrypted: i=1; AJvYcCWgUWL4q1CSISvQSIr1Jvb9cPp5AuHY6f7ml2xoRcsQ3RUyML7zymO7A+bX6rZkLz5gd45TntT3RFUePgpprstHZ1EtRn1X
-X-Gm-Message-State: AOJu0YzRYhRog+60vIC7hxuqpwrFwxkTLqWwYPDBLIYxYQ6YAVmhYHlB
-	pZn7K9sgocVvQMGNyTecJ8EyN5Txm1bba4TT+6qiMkD6Y3gomLP3u7Z4ccJjv1OI1uzjy2UEUAe
-	ezMJStohPjGEC9Pc7LBEwhs4eFK71zoNG4WDIFd0OmwlxcjX57Ipsew==
-X-Received: by 2002:adf:ea4d:0:b0:362:ed39:c1e6 with SMTP id ffacd0b85a97d-36775730a4amr3370348f8f.62.1719823728423;
-        Mon, 01 Jul 2024 01:48:48 -0700 (PDT)
-X-Received: by 2002:adf:ea4d:0:b0:362:ed39:c1e6 with SMTP id ffacd0b85a97d-36775730a4amr3370333f8f.62.1719823728038;
-        Mon, 01 Jul 2024 01:48:48 -0700 (PDT)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3675a0d90casm9318235f8f.32.2024.07.01.01.48.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Jul 2024 01:48:47 -0700 (PDT)
-Date: Mon, 1 Jul 2024 10:48:44 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: Gavin Shan <gshan@redhat.com>, Salil Mehta <salil.mehta@opnsrc.net>,
- "Michael S. Tsirkin" <mst@redhat.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
- <jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
- "lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, "andrew.jones@linux.dev"
- <andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>,
- "philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com"
- <eric.auger@redhat.com>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, "will@kernel.org"
- <will@kernel.org>, "rafael@kernel.org" <rafael@kernel.org>,
- "alex.bennee@linaro.org" <alex.bennee@linaro.org>, "linux@armlinux.org.uk"
- <linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
- <darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
- <ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
- <vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
- <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
- <miguel.luis@oracle.com>, zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng
- (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
- "jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
- <maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
- "npiggin@gmail.com" <npiggin@gmail.com>, "harshpb@linux.ibm.com"
- <harshpb@linux.ibm.com>, Linuxarm <linuxarm@huawei.com>
-Subject: Re: [PATCH V12 0/8] Add architecture agnostic code to support vCPU
- Hotplug
-Message-ID: <20240701104844.32e0207b@imammedo.users.ipa.redhat.com>
-In-Reply-To: <eb5880984ddf41aabca9d036e7ad445f@huawei.com>
-References: <20240529234241.205053-1-salil.mehta@huawei.com>
-	<20240602180241-mutt-send-email-mst@kernel.org>
-	<20240605160327.3c71f4ab@imammedo.users.ipa.redhat.com>
-	<CAJ7pxeYehVhPWfbEqRMMSCVHk31JQhtQhRSM_4e1WqBhqv0UHQ@mail.gmail.com>
-	<b36e0d64-9653-4d48-b72a-00a1aee86629@redhat.com>
-	<eb5880984ddf41aabca9d036e7ad445f@huawei.com>
-X-Mailer: Claws Mail 4.2.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
+ s=mimecast20190719; t=1719823808;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=cgJfWjCJSsqWY8stLMqK0V9ndyG+mMup/arO83wAq2o=;
+ b=c8V/DD+uTV/bQNFhSWbcS8fB2/YZclm6yHKDz6ak6eYzrTAXBCtCM7e9NW7kY+ASyYum/l
+ sc4llWFZ/yR54OXhFqsZcyfqzeCLJMRE3F6rqpo6PUHpnFihx+n0nEHwFSssFBrTxOXwKA
+ sT4Co/8ud7BEizJTxpwK7St5URDjomI=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-669-DKkEpFk_N-OclL7wr9YSkQ-1; Mon,
+ 01 Jul 2024 04:50:06 -0400
+X-MC-Unique: DKkEpFk_N-OclL7wr9YSkQ-1
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4F05619560B1; Mon,  1 Jul 2024 08:50:05 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.22.9.3])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 45D781956089; Mon,  1 Jul 2024 08:50:00 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
+ peter.maydell@linaro.org, clg@redhat.com, yanghliu@redhat.com,
+ zhenzhong.duan@intel.com, alex.williamson@redhat.com
+Subject: [PATCH v2 0/7] VIRTIO-IOMMU/HostIOMMUDevice: Fixes and page size mask
+ rework
+Date: Mon,  1 Jul 2024 10:48:52 +0200
+Message-ID: <20240701084957.1567641-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: m92Ru6mlCwrm
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: brZyWDvuLHOk
 
-On Wed, 26 Jun 2024 17:53:52 +0000
-Salil Mehta <salil.mehta@huawei.com> wrote:
+The 2 first patches are fixes of
+cf2647a76e ("virtio-iommu: Compute host reserved regions")
+They can be taken separately of the rest.
 
-> Hi Gavin,
->=20
-> >  From: Gavin Shan <gshan@redhat.com>
-> >  Sent: Wednesday, June 26, 2024 5:13 AM
-> >  To: Salil Mehta <salil.mehta@opnsrc.net>; Igor Mammedov
-> >  <imammedo@redhat.com>
-> > =20
-> >  Hi Salil and Igor,
-> > =20
-> >  On 6/26/24 9:51 AM, Salil Mehta wrote: =20
-> >  > On Wed, Jun 5, 2024 at 3:03=E2=80=AFPM Igor Mammedov =20
-> >  <imammedo@redhat.com <mailto:imammedo@redhat.com>> wrote: =20
-> >  >     On Sun, 2 Jun 2024 18:03:05 -0400
-> >  >     "Michael S. Tsirkin" <mst@redhat.com <mailto:mst@redhat.com>> =
-=20
-> >  wrote: =20
-> >  > =20
-> >  >      > On Thu, May 30, 2024 at 12:42:33AM +0100, Salil Mehta wrote: =
-=20
-> >  >      > > Virtual CPU hotplug support is being added across various a=
-rchitectures[1][3].
-> >  >      > > This series adds various code bits common across all archit=
-ectures:
-> >  >      > >
-> >  >      > > 1. vCPU creation and Parking code refactor [Patch 1]
-> >  >      > > 2. Update ACPI GED framework to support vCPU Hotplug [Patch=
- 2,3]
-> >  >      > > 3. ACPI CPUs AML code change [Patch 4,5]
-> >  >      > > 4. Helper functions to support unrealization of CPU objects=
- [Patch  6,7]
-> >  >      > > 5. Docs [Patch 8]
-> >  >      > >
-> >  >      > >
-> >  >      > > Repository:
-> >  >      > >
-> >  >      > > [*] https://github.com/salil-mehta/qemu.git   <https://gith=
-ub.com/salil-mehta/qemu.git> virt-cpuhp-armv8/rfc- v3.arch.agnostic.v12
-> >  >      > >
-> >  >      > > NOTE: This series is meant to work in conjunction with Arch=
-itecture specific patch-set.
-> >  >      > > For ARM, this will work in combination of the architecture =
-specific part based on
-> >  >      > > RFC V2 [1]. This architecture specific patch-set RFC V3 sha=
-ll be floated soon and is
-> >  >      > > present at below location
-> >  >      > >
-> >  >      > > [*] https://github.com/salil-mehta/qemu/tree/virt-cpuhp-arm=
-v8/rfc-v3-rc1 <https://github.com/salil-mehta/qemu/tree/virt-cpuhp-armv8/rf=
-c-v3-rc1>
-> >  >      > > =20
-> >  >      >
-> >  >      >
-> >  >      > Igor plan to take a look? =20
-> >  >
-> >  >     Yep, I plan to review it
-> >  >
-> >  >
-> >  > A gentle reminder on this.
-> >  > =20
-> > =20
-> >  Since the latest revision for this series is v13, so I guess Igor need=
-s to do the
-> >  final screening on v13 instead?
-> > =20
-> >  v13: https://lists.nongnu.org/archive/html/qemu-arm/2024-06/msg00129.h=
-tml =20
->=20
->=20
-> Yes, thanks for pointing this. =F0=9F=98=8A
+Then the series uses the HostIOMMUDevice interface to fetch
+information about the page size mask supported along the assigned
+device and propagate it to the virtio-iommu. This is a similar
+work as what was done in
 
-I have v13 tagged,
-Sorry for delay, I'll try to review it this week
+VIRTIO-IOMMU/VFIO: Fix host iommu geometry handling series
 
->=20
->=20
-> > =20
-> >  Thanks,
-> >  Gavin
-> >   =20
->=20
+but this time for the page size mask. Using this new
+infrastructure allows to handle page size mask conflicts
+earlier on device hotplug as opposed to current QEMU
+abort:
+
+qemu-system-aarch64: virtio-iommu virtio-iommu-memory-region-8-0
+does not support frozen granule 0x10000
+qemu: hardware error: vfio: DMA mapping failed, unable to continue
+
+With this series the hotplug nicely fails.
+
+Also this allows to remove hacks consisting in transiently enabling
+IOMMU MRs to collect coldplugged device page size mask before machine
+init. Those hacks were introduced by
+
+94df5b2180d6 ("virtio-iommu: Fix 64kB host page size VFIO device
+assignment")
+
+The series can be found at:
+https://github.com/eauger/qemu/tree/virtio-iommu-psmask-rework-v2
+
+---
+v1 -> v2:
+- Don't update mask if the granule is frozen (Zhenzhong)
+- Collected Zhenzhong's and Cédric's R-bs
+
+Eric Auger (7):
+  virtio-iommu: Fix error handling in
+    virtio_iommu_set_host_iova_ranges()
+  vfio-container-base: Introduce vfio_container_get_iova_ranges() helper
+  HostIOMMUDevice : remove Error handle from get_iova_ranges callback
+  HostIOMMUDevice: Introduce get_page_size_mask() callback
+  virtio-iommu : Retrieve page size mask on
+    virtio_iommu_set_iommu_device()
+  memory: remove IOMMU MR iommu_set_page_size_mask() callback
+  virtio-iommu: Revert transient enablement of IOMMU MR in bypass mode
+
+ include/exec/memory.h                 |  38 --------
+ include/hw/vfio/vfio-container-base.h |   9 ++
+ include/sysemu/host_iommu_device.h    |  11 ++-
+ hw/vfio/common.c                      |   8 --
+ hw/vfio/container-base.c              |  15 ++++
+ hw/vfio/container.c                   |  16 ++--
+ hw/vfio/iommufd.c                     |  21 +++--
+ hw/virtio/virtio-iommu.c              | 123 +++++++++++++-------------
+ system/memory.c                       |  13 ---
+ hw/virtio/trace-events                |   2 +-
+ 10 files changed, 119 insertions(+), 137 deletions(-)
+
+-- 
+2.41.0
+

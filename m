@@ -1,170 +1,156 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1440539njm;
-        Mon, 1 Jul 2024 08:41:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWkW4QCgVk8J4qOVgwPN9YK1ol/vAOLCm9P7vCl1Xx3V/Wzv1n1fAGpvrKVpKsj+nhAuEmcavRUTTjS7gfW2dekGmGHA3op
-X-Google-Smtp-Source: AGHT+IFwDXx50f9XFLmrOChg5ppQJ2xdqQfcyJdLXtcNHi7iSg19jroka17JzpurWCjgUrnYD9L2
-X-Received: by 2002:a05:690c:d82:b0:62f:2553:d3b3 with SMTP id 00721157ae682-64c72c4b3a3mr66217737b3.29.1719848513961;
-        Mon, 01 Jul 2024 08:41:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719848513; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1470323njm;
+        Mon, 1 Jul 2024 09:33:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWjp0g5DA9g7y7+iu0j92dWFTbzDzBgd9Zru1UX27FyVh0BMNGZRHCHjlDxz0xsNSlLhfafvzmdJPFFu96edwFRp2IjWZUJ
+X-Google-Smtp-Source: AGHT+IEK86ycABBjlLwVX4DrpPMmfwQ4gS4wZHtFojWKcvVs6uoc8ivSQLXxaftnHlx0yPVWHok6
+X-Received: by 2002:a5d:525c:0:b0:35f:1d40:82fa with SMTP id ffacd0b85a97d-367756ad6f5mr3223088f8f.18.1719851639295;
+        Mon, 01 Jul 2024 09:33:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719851639; cv=none;
         d=google.com; s=arc-20160816;
-        b=vS9cbNxsrb1Q7/T+JSiX4KhUB1FzhZLFosQkEtjs/1dLpDSN0NMyZaSfWcpNvkYEAU
-         205bMHONX0XYCpDbKR8pzTslujbfuE5sD34XRFvkKE/Mw4aGZEvFj6CTRaCW+c4/zUaD
-         HS7poDiZfDA3D+bcqYNwmzbqZyMUZLCKoSUahqZzdjsqMlB0Y0d8r2Jj3nL+ZjY7aeNC
-         +yRQfFxNscfpsf6A/EPDGlnf9Q+etTUE4Da7OieVB1Dp0VlP5ZA+mzpqKekprhzPupRh
-         za09MHw/L5hqbwOcZX6WNQVfn56g8jyfIoVD9bDka2OZl57bxbw21ZtmOhDjsTj7GF/y
-         CDlg==
+        b=yYTBtJkQH4+v77qD3wPZTee/kA1yeub5iM3Xh9+wSyxddHrHLriqa1cGtnfz4yyV4C
+         nrggh79YMo/rt+cPOCVxsVwxgW6wn4Wb3ZWkYZ7VRIgrqqsHFnlMDU8C/YPzYzQn2b3y
+         JcheBy0zI2w3dKrtSsV1nX1APbD9x829rGi4IQwlWOlmQ0MXm5fKldvLtGjkrcQ9bw0o
+         uD9VnF9CxrLUrBBHclu5q2Ne6FSBrQpNEY6crmWfki1N6sy8bTlp/Ylrsj6rDtPj9dfl
+         m/wrdizN0HX4QKDhJzOaqD5rfomBR5jzuCfjyEZQDqIety0psmZ9UUmRwIB79/hWiVMl
+         UH+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=9kTQuvoIZa1mgjjqs6UtPeKi9vZn2qkQVlR2uigkLyY=;
-        fh=J30XeHM1Lnm1b/ZPvSDl7XKBDywrj+0HDMixXRVx2GM=;
-        b=UP9bcHvbBf5a1ngbr5jEB4VzTQQ8msLxFCeFm+7uGuxecmto5k2O3FMW42l4n46svG
-         d3f+LxVx3VjxuPZDbc1rN6OA3Kg2td3NrQWRekxt5TOGktsVzEJzVKco1lJEB859aq7X
-         c8Bs/7qlBdzonk7v6oMTxxJhHTUgrI3tmydWLa8dab+j+1myaamYW79uSSRaAGgVTNGG
-         Vcds3U7P59fmh1s1+7OFsw3zq7lB4Lzc1hD3GY19i+VMl25hcd4zOC0IOCZTUk6v4vsd
-         pOQGAz4XgopllFSFBzgOnuzjmWMA82RE1DrqirgXkyOyyFHPTOUMJvAh8/CXlXTLGCre
-         jbaQ==;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=EmW9OGJF165n/pO3wz/pdda2MpXvg3h0FDzmvvkZnAI=;
+        fh=twugZi/8eMHaEodAvBogB4hBe3eo3utLiQpA9nNg33Y=;
+        b=0+ZAyLp9SK0Zty/JJzrv/QQSqbGiEvI97AHdJg1/4121ETFHydxYnkCzvDqpmVt0ps
+         TTMa/DPq6urB/VDS2DU9JH/2kgfKrtaR1KrnLTrbSWmgREPPqXw4iNzJGS1oMYpWUz9t
+         027SydFjV1r1OnRSi3kMtk0g9lbazdjzh/fjOfX3TVM/RAFFnxTpUaqDxJsTgmxdJOHr
+         TFVEoop+cA/G1WQV/u/9myGimAaRpYQOL1g++jT40cdYYKeuQ1Dz1b/qVzyoyFkdNBtB
+         QBWimmog3sZxDIRfDKhJS9PoNFOicOYt91CkqOx76PUwF3tc/ZN9bNbWST9gkzDUjBhI
+         5t6A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=r836cz4n;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4465cbb1375si66066521cf.492.2024.07.01.08.41.53
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2024 08:41:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3675a0f920bsi4614763f8f.542.2024.07.01.09.33.59
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 01 Jul 2024 09:33:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=r836cz4n;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sOJ9m-0002yc-Sn; Mon, 01 Jul 2024 11:41:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOJ9k-0002xZ-Ra
- for qemu-devel@nongnu.org; Mon, 01 Jul 2024 11:41:28 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOJ9j-00043b-6P
- for qemu-devel@nongnu.org; Mon, 01 Jul 2024 11:41:28 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-425680b1d3aso22005775e9.2
- for <qemu-devel@nongnu.org>; Mon, 01 Jul 2024 08:41:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719848485; x=1720453285; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=9kTQuvoIZa1mgjjqs6UtPeKi9vZn2qkQVlR2uigkLyY=;
- b=r836cz4nr20pU9wjDTiqYa0E2G29Z5T/2cBNCVBE4qNaX058/deBl1yID7acC3FZPS
- JQHwwgTE5Xd2nfwz59P/YwJDLKUNd9wbkBfAg7yQvxVUEm0x/35kq7v7uWXOYBgzpwbf
- nGURD1r5Ojp9sh0o9sbRpD2kiPunSfZAxzzK20t0iwGBNm2fw+etFz/PIEouCdw7DpYC
- ftl3ImcUtLh6NnzYbk3E+3lh0b8S3XwmJU230+E9kZs08Nds0o6cGH6/JYBCkabMeoHy
- 5CG/1jRXUTUud/yq7mLBq0DrBsbXtPwb+P+tY2a3tfLHWoO4Xx9rLywIbQT954cddKu3
- nG6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719848485; x=1720453285;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9kTQuvoIZa1mgjjqs6UtPeKi9vZn2qkQVlR2uigkLyY=;
- b=tlDC4GFxxgMjJxkVMRvxPNLOkElkCzkwd8sp5Cc0OyLvCdIP64eFCF/Sx8wQvKQWLr
- /DE6b1m9mvnT/3bBNwB4K3eaBkdNDnCtDR4MhgyKm4ZOF36ChFvHoIhoBKokzzbf4aE4
- 6jxmeZ1omrhHbPSl8Yw7NUBfRfotzSd437ZT9bZ8uBdc7r1o7stTGVSIPn46pZhPVYBp
- 6D3NgFefmIXhFkGGAotv0HAEXD/LKr/Jh2tKJTXeK09YDI606NhDm6zaPIqjsS/TD5ny
- AjMQO21e4JAzKz0E7m1iFBoUAUFoSCEDzZPMdNLpaqacPEEwy2bsVbwJCqgrA70e5114
- yCvQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWTch4Eu0OcVIQdccLYQjpbrwGNQ9K+g/clXz46m16tuDsGa5dsz+AxXGqw+smGs/3BHCmf65EEHdZD3rN7kpy8gRBQgfM=
-X-Gm-Message-State: AOJu0Yytk3/izKbnIoGmtq9sNmnBlnyRAZg59V+ETNIGeV4aUfoIExTa
- 5Zin5rlfQcgfZN+6G33OHOzgMYMzfLBaFeW5meQzO0a/J09pmsLixncjt2pi760=
-X-Received: by 2002:a05:600c:4f52:b0:424:ad14:6b87 with SMTP id
- 5b1f17b1804b1-4257a02d548mr40466625e9.4.1719848485556; 
- Mon, 01 Jul 2024 08:41:25 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.177.159])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4256af55e61sm157499465e9.20.2024.07.01.08.41.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jul 2024 08:41:25 -0700 (PDT)
-Message-ID: <078a21d4-0025-4545-a9e2-f945eafe57ae@linaro.org>
-Date: Mon, 1 Jul 2024 17:41:21 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/14] hw: define and enforce a standard lifecycle for
- versioned machines
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Halil Pasic <pasic@linux.ibm.com>, devel@lists.libvirt.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, David Hildenbrand <david@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clegoate@redhat.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Yanan Wang <wangyanan55@huawei.com>, Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org
-References: <20240620165742.1711389-1-berrange@redhat.com>
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WCWnJ6148z6JB16;
+	Tue,  2 Jul 2024 00:33:24 +0800 (CST)
+Received: from lhrpeml500002.china.huawei.com (unknown [7.191.160.78])
+	by mail.maildlp.com (Postfix) with ESMTPS id 1FDBA140680;
+	Tue,  2 Jul 2024 00:33:58 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
+ lhrpeml500002.china.huawei.com (7.191.160.78) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 1 Jul 2024 17:33:57 +0100
+Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
+ lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
+ Mon, 1 Jul 2024 17:33:57 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Igor Mammedov <imammedo@redhat.com>
+CC: Gavin Shan <gshan@redhat.com>, Salil Mehta <salil.mehta@opnsrc.net>,
+	"Michael S. Tsirkin" <mst@redhat.com>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
+	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>, "andrew.jones@linux.dev"
+	<andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>,
+	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com"
+	<eric.auger@redhat.com>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>, "will@kernel.org"
+	<will@kernel.org>, "rafael@kernel.org" <rafael@kernel.org>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "linux@armlinux.org.uk"
+	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
+	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
+	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
+	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
+	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
+	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
+	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
+	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+	"npiggin@gmail.com" <npiggin@gmail.com>, "harshpb@linux.ibm.com"
+	<harshpb@linux.ibm.com>, Linuxarm <linuxarm@huawei.com>
+Subject: RE: [PATCH V12 0/8] Add architecture agnostic code to support vCPU
+ Hotplug
+Thread-Topic: [PATCH V12 0/8] Add architecture agnostic code to support vCPU
+ Hotplug
+Thread-Index: AQHasiICqFrRyvmDr0+9IflX7gIe/7G0/EKAgAQw/ICAIBLYAIAASTeAgAD1fFCABzMkAIAAkbgA
+Date: Mon, 1 Jul 2024 16:33:57 +0000
+Message-ID: <308d3c98e30244daa3538bb898bee6b6@huawei.com>
+References: <20240529234241.205053-1-salil.mehta@huawei.com>
+	<20240602180241-mutt-send-email-mst@kernel.org>
+	<20240605160327.3c71f4ab@imammedo.users.ipa.redhat.com>
+	<CAJ7pxeYehVhPWfbEqRMMSCVHk31JQhtQhRSM_4e1WqBhqv0UHQ@mail.gmail.com>
+	<b36e0d64-9653-4d48-b72a-00a1aee86629@redhat.com>
+	<eb5880984ddf41aabca9d036e7ad445f@huawei.com>
+ <20240701104844.32e0207b@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240701104844.32e0207b@imammedo.users.ipa.redhat.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240620165742.1711389-1-berrange@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dUzdwr/hVw+w
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.195.32.244]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-TUID: TwhMfHRXOeNH
 
-On 20/6/24 18:57, Daniel P. Berrangé wrote:
-
-> Daniel P. Berrangé (14):
->    include/hw: add helpers for defining versioned machine types
->    hw/arm: convert 'virt' machine definitions to use new macros
->    hw/s390x: convert 'ccw' machine definitions to use new macros
->    hw/ppc: convert 'spapr' machine definitions to use new macros
->    hw/m68k: convert 'virt' machine definitions to use new macros
->    hw/i386: convert 'i440fx' machine definitions to use new macros
->    hw/i386: convert 'q35' machine definitions to use new macros
->    include/hw: add macros for deprecation & removal of versioned machines
->    include/hw: temporarily disable deletion of versioned machine types
->    hw: set deprecation info for all versioned machine types
->    hw: skip registration of outdated versioned machine types
->    hw/ppc: remove obsolete manual deprecation reason string of spapr
->      machines
->    hw/i386: remove obsolete manual deprecation reason string of i440fx
->      machines
->    docs: document special exception for machine type deprecation &
->      removal
-
-Series queued, thanks!
+SGkgSWdvciwNCg0KPiAgRnJvbTogSWdvciBNYW1tZWRvdiA8aW1hbW1lZG9AcmVkaGF0LmNvbT4N
+Cj4gIFNlbnQ6IE1vbmRheSwgSnVseSAxLCAyMDI0IDk6NDkgQU0NCj4gIFRvOiBTYWxpbCBNZWh0
+YSA8c2FsaWwubWVodGFAaHVhd2VpLmNvbT4NCj4gIA0KPiAgT24gV2VkLCAyNiBKdW4gMjAyNCAx
+Nzo1Mzo1MiArMDAwMA0KPiAgU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+IHdy
+b3RlOg0KPiAgDQo+ICA+IEhpIEdhdmluLA0KPiAgPg0KPiAgPiA+ICBGcm9tOiBHYXZpbiBTaGFu
+IDxnc2hhbkByZWRoYXQuY29tPg0KPiAgPiA+ICBTZW50OiBXZWRuZXNkYXksIEp1bmUgMjYsIDIw
+MjQgNToxMyBBTQ0KPiAgPiA+ICBUbzogU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQG9wbnNyYy5u
+ZXQ+OyBJZ29yIE1hbW1lZG92DQo+ICA+ID4gPGltYW1tZWRvQHJlZGhhdC5jb20+DQo+ICA+ID4N
+Cj4gID4gPiAgSGkgU2FsaWwgYW5kIElnb3IsDQo+ICA+ID4NCj4gID4gPiAgT24gNi8yNi8yNCA5
+OjUxIEFNLCBTYWxpbCBNZWh0YSB3cm90ZToNCj4gID4gPiAgPiBPbiBXZWQsIEp1biA1LCAyMDI0
+IGF0IDM6MDPigK9QTSBJZ29yIE1hbW1lZG92DQo+ICA+ID4gPGltYW1tZWRvQHJlZGhhdC5jb20g
+PG1haWx0bzppbWFtbWVkb0ByZWRoYXQuY29tPj4gd3JvdGU6DQo+ICA+ID4gID4gICAgIE9uIFN1
+biwgMiBKdW4gMjAyNCAxODowMzowNSAtMDQwMA0KPiAgPiA+ICA+ICAgICAiTWljaGFlbCBTLiBU
+c2lya2luIiA8bXN0QHJlZGhhdC5jb20gPG1haWx0bzptc3RAcmVkaGF0LmNvbT4+IHdyb3RlOg0K
+PiAgPiA+ICA+DQo+ICA+ID4gID4gICAgICA+IE9uIFRodSwgTWF5IDMwLCAyMDI0IGF0IDEyOjQy
+OjMzQU0gKzAxMDAsIFNhbGlsIE1laHRhIHdyb3RlOg0KPiAgPiA+ICA+ICAgICAgPiA+IFZpcnR1
+YWwgQ1BVIGhvdHBsdWcgc3VwcG9ydCBpcyBiZWluZyBhZGRlZCBhY3Jvc3MgdmFyaW91cyBhcmNo
+aXRlY3R1cmVzWzFdWzNdLg0KPiAgPiA+ICA+ICAgICAgPiA+IFRoaXMgc2VyaWVzIGFkZHMgdmFy
+aW91cyBjb2RlIGJpdHMgY29tbW9uIGFjcm9zcyBhbGwgIGFyY2hpdGVjdHVyZXM6DQo+ICA+ID4g
+ID4gICAgICA+ID4NCj4gID4gPiAgPiAgICAgID4gPiAxLiB2Q1BVIGNyZWF0aW9uIGFuZCBQYXJr
+aW5nIGNvZGUgcmVmYWN0b3IgW1BhdGNoIDFdDQo+ICA+ID4gID4gICAgICA+ID4gMi4gVXBkYXRl
+IEFDUEkgR0VEIGZyYW1ld29yayB0byBzdXBwb3J0IHZDUFUgSG90cGx1ZyBbUGF0Y2ggMiwzXQ0K
+PiAgPiA+ICA+ICAgICAgPiA+IDMuIEFDUEkgQ1BVcyBBTUwgY29kZSBjaGFuZ2UgW1BhdGNoIDQs
+NV0NCj4gID4gPiAgPiAgICAgID4gPiA0LiBIZWxwZXIgZnVuY3Rpb25zIHRvIHN1cHBvcnQgdW5y
+ZWFsaXphdGlvbiBvZiBDUFUgb2JqZWN0cyAgW1BhdGNoICA2LDddDQo+ICA+ID4gID4gICAgICA+
+ID4gNS4gRG9jcyBbUGF0Y2ggOF0NCj4gID4gPiAgPiAgICAgID4gPg0KPiAgPiA+ICA+ICAgICAg
+PiA+DQo+ICA+ID4gID4gICAgICA+ID4gUmVwb3NpdG9yeToNCj4gID4gPiAgPiAgICAgID4gPg0K
+PiAgPiA+ICA+ICAgICAgPiA+IFsqXSBodHRwczovL2dpdGh1Yi5jb20vc2FsaWwtbWVodGEvcWVt
+dS5naXQgICA8aHR0cHM6Ly9naXRodWIuY29tL3NhbGlsLW1laHRhL3FlbXUuZ2l0PiB2aXJ0LWNw
+dWhwLWFybXY4L3JmYy12My5hcmNoLmFnbm9zdGljLnYxMg0KPiAgPiA+ICA+ICAgICAgPiA+DQo+
+ICA+ID4gID4gICAgICA+ID4gTk9URTogVGhpcyBzZXJpZXMgaXMgbWVhbnQgdG8gd29yayBpbiBj
+b25qdW5jdGlvbiB3aXRoIEFyY2hpdGVjdHVyZSBzcGVjaWZpYyBwYXRjaC1zZXQuDQo+ICA+ID4g
+ID4gICAgICA+ID4gRm9yIEFSTSwgdGhpcyB3aWxsIHdvcmsgaW4gY29tYmluYXRpb24gb2YgdGhl
+IGFyY2hpdGVjdHVyZSBzcGVjaWZpYyBwYXJ0IGJhc2VkIG9uDQo+ICA+ID4gID4gICAgICA+ID4g
+UkZDIFYyIFsxXS4gVGhpcyBhcmNoaXRlY3R1cmUgc3BlY2lmaWMgcGF0Y2gtc2V0IFJGQyBWMyBz
+aGFsbCBiZSBmbG9hdGVkIHNvb24gYW5kIGlzDQo+ICA+ID4gID4gICAgICA+ID4gcHJlc2VudCBh
+dCBiZWxvdyBsb2NhdGlvbg0KPiAgPiA+ICA+ICAgICAgPiA+DQo+ICA+ID4gID4gICAgICA+ID4g
+WypdIGh0dHBzOi8vZ2l0aHViLmNvbS9zYWxpbC1tZWh0YS9xZW11L3RyZWUvdmlydC1jcHVocC1h
+cm12OC9yZmMtdjMtcmMxIDxodHRwczovL2dpdGh1Yi5jb20vc2FsaWwtbWVodGEvcWVtdS90cmVl
+L3ZpcnQtY3B1aHAtDQo+ICBhcm12OC9yZmMtdjMtcmMxPg0KPiAgPiA+ICA+ICAgICAgPiA+DQo+
+ICA+ID4gID4gICAgICA+DQo+ICA+ID4gID4gICAgICA+DQo+ICA+ID4gID4gICAgICA+IElnb3Ig
+cGxhbiB0byB0YWtlIGEgbG9vaz8NCj4gID4gPiAgPg0KPiAgPiA+ICA+ICAgICBZZXAsIEkgcGxh
+biB0byByZXZpZXcgaXQNCj4gID4gPiAgPg0KPiAgPiA+ICA+DQo+ICA+ID4gID4gQSBnZW50bGUg
+cmVtaW5kZXIgb24gdGhpcy4NCj4gID4gPiAgPg0KPiAgPiA+DQo+ICA+ID4gIFNpbmNlIHRoZSBs
+YXRlc3QgcmV2aXNpb24gZm9yIHRoaXMgc2VyaWVzIGlzIHYxMywgc28gSSBndWVzcyBJZ29yDQo+
+ICA+ID4gbmVlZHMgdG8gZG8gdGhlICBmaW5hbCBzY3JlZW5pbmcgb24gdjEzIGluc3RlYWQ/DQo+
+ICA+ID4NCj4gID4gPiAgdjEzOg0KPiAgPiA+IGh0dHBzOi8vbGlzdHMubm9uZ251Lm9yZy9hcmNo
+aXZlL2h0bWwvcWVtdS1hcm0vMjAyNC0wNi9tc2cwMDEyOS5odG1sDQo+ICA+DQo+ICA+DQo+ICA+
+IFllcywgdGhhbmtzIGZvciBwb2ludGluZyB0aGlzLiDwn5iKDQo+ICANCj4gIEkgaGF2ZSB2MTMg
+dGFnZ2VkLA0KPiAgU29ycnkgZm9yIGRlbGF5LCBJJ2xsIHRyeSB0byByZXZpZXcgaXQgdGhpcyB3
+ZWVrDQoNClN1cmUuIE5vIHByb2JsZW0uIA0KDQpUaGFua3MNClNhbGlsLg0KDQo+ICA+ID4gIFRo
+YW5rcywNCj4gID4gPiAgR2F2aW4NCg0K

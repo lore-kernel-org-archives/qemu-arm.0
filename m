@@ -1,163 +1,189 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1363643njm;
-        Mon, 1 Jul 2024 06:32:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWfykXYiQWJTAaPAp5hNp3youa2RRUkaFD/qtHdpJTMhkzUE2NTmI0YMyo2OHr7vFo5LpXRBOa7jvb6kQwbtbrKAcXwGkcl
-X-Google-Smtp-Source: AGHT+IHk6MSiGLRIFIbntKOsR/6uL+Ww6mr3bd14r7crMMlQ0FHE57yY3eMDJ9PXHJixfy8JxPrw
-X-Received: by 2002:a17:906:6d49:b0:a6f:dffc:54b6 with SMTP id a640c23a62f3a-a7514498f17mr365491666b.73.1719840771426;
-        Mon, 01 Jul 2024 06:32:51 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1719840771; cv=pass;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1426064njm;
+        Mon, 1 Jul 2024 08:13:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVM1KE45JIqcsWGA5k2ZopLLDLuZOxFhYeSP4DaKbFU8NHoETyC2QeYkYkngix2FmoRdiuQc7R6qpp40lgwX0mRtM21H3Wx
+X-Google-Smtp-Source: AGHT+IEk5SI1CmpuwiIm6z16WeiYBg7tksaFWPSijwlC7AbGMpnGByp3G6j3DKEdLEQ1i0n0fsYz
+X-Received: by 2002:adf:fa51:0:b0:363:7816:7567 with SMTP id ffacd0b85a97d-367756a9da3mr4793191f8f.26.1719846807415;
+        Mon, 01 Jul 2024 08:13:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719846807; cv=none;
         d=google.com; s=arc-20160816;
-        b=HQRT9Ss7VjPfJeILZIvn8R5LGx5NkTIHDvISWhcreEhH0YlKjS8KnRr8RUOQof8HLM
-         BmN5DOemgATp4rOarpl1kmZ35UZNHEzbhgNZR3IlcfIIjZXc4mX5RTJSZ8TZ5WUc8WpC
-         lScJt5E0n4eW0ymTwajYKgzuzMj4l2pvz2ERrKmt5fLccmD/9H3iDMnQ2csxoeihaIub
-         rkosx6bTjThi1G7vdzpoemqFMIz6Ec3DOXDcpFwM99echmDohJdvNhhXmZuntiAb174z
-         JA1ouDNgXKKFD6ISWEWb3MLDh9lR6IVcZhuWUyTsdAuornJ1GzVKxLY2VtRHIG9du3x7
-         sFcQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :dkim-signature;
-        bh=8e1CaWsVPtKpH+k7gT0yv3OQ/WjO4R1smXp48iZjANs=;
-        fh=UYcrtWKoBIolL2+vLNoFkjVOpgOONHp34Hv0eJAPiSc=;
-        b=Kevjoog/SkNvhYwiVwv4B3W0qeyh4MIyl+neZWphKIsb8wTR5UHxnvo5hdSbjHOCB/
-         U79yVZ9mwbdkTA93Vhh5XGBUZS+evk+2e7j0jkJ/vCY7V5Uub9Za22eURrjYH1LNlUeV
-         SqbMrM1IJmDluzbfhXCrT+FcfvynWNZgGZ35UGPFLjRO/+FqwdYMGzO4j4KqezKmfkV0
-         UHbg2gksU18x1ezBoGaXEU10nIOyM5VGc7jWAnTnhY/LCoFPUdVYDaTU8iqUDDLajGtH
-         mNu6QqxLa2H9m9JHMRb5lsauMXxwzwugT9CStzXYjW8Rza/eL2UYCNVkzS8U/Q7/Im1A
-         huSw==;
+        b=LB3D8mz2BWgGqqJN6jfEGls3pOdIuoGnOKmMaa5ncy4X8paVHfjQYI52vwxNHuTDgm
+         cgIGxuxGmN71QfPX2gSw3TnAPJtAvQNLiwgcwP5ziR68Afz08NX4E3Alp8pYnUgCwbEo
+         gs/37OQRqvbR15DltInaOehKBdC9wzLSnhlJvibCuO0eOZJdHQ9vKdXd1fDtQpcssZx8
+         g0J247hKbNsF7bHgebqXQgMu9hno7ROuW1mlyXEKuBwv1+qF4fLFvL5Rmxtb9mKmsb8+
+         W0Dl9CvYq4/dpaOMzJ00jnhzVsggosafGsr3uCwNMV7LoQJu2rJuyCzekMPbqtPGItVD
+         QzLQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=N9FEHlPTNxswtINWYqFC+mMBpTrdhlMygvNvTt8YoNg=;
+        fh=iVHYZVeyfwdeY1Vna13RB42F7ctYtXnuTXKsvm6rSrY=;
+        b=Hs4RQ5WQWTbl3MsoQmO5SMVH2Xktm9mGXCys75PwLSuRtJlP0QkGqWTSiw0q7S3XxF
+         GjIKQ8V3bIumXagPdiOngFNfS/6eiOXm2bgLMSt1XolQ+D1v89EM6MowAvG9ltEI5a9K
+         JTOS/e2BB9xrGFQHPXlFKXCqXglYFAnO6BOvDLvV4K0jyZuW6upTlm12M7RK/5oY/bfj
+         4SKpgQuSdsp2r1jwpKQUzQQsMjuXX7+PmEOV1sjPf2UYgEaYvq6c4T5TPylMXrdY9z2Q
+         QJ1dsQq+jnFCia3EBeSeEfQvpsfCREoS/iNQrggj0+secB63MnurWtFlXf2PQddUXDxj
+         wPzg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BsC9rQnP;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-20799-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-20799-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-20799-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a72aaf242e8si345998766b.247.2024.07.01.06.32.51
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="KFjq/X2+";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3675a10df17si4533854f8f.1046.2024.07.01.08.13.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Jul 2024 06:32:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-20799-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Jul 2024 08:13:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BsC9rQnP;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-20799-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-20799-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 09B2D1F22928
-	for <alex.bennee@linaro.org>; Mon,  1 Jul 2024 13:32:51 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1A00C6EB4C;
-	Mon,  1 Jul 2024 13:32:46 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="BsC9rQnP"
-Received: from mail-ed1-f54.google.com (mail-ed1-f54.google.com [209.85.208.54])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1FCE682C8E
-	for <kvm@vger.kernel.org>; Mon,  1 Jul 2024 13:32:43 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.54
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1719840765; cv=none; b=erMDHYWZzAQEggAeD2rDi2PfkljLpgVPuwxbJTk/GAPkqu+7R3G6Kx7fe4MOvZ8WmgY/dodNL0caXfkqOzQG076WKSvpZKneKzXRgYugc8+HQ64DIxRZsUdsXlJ9Q+zaHOTOLT4thYoPv+5W5noKHPCjK1n7Rg0UXNbS5wnDAzw=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1719840765; c=relaxed/simple;
-	bh=RT1vX1kVMu21EOiFApSc+1M3ClO+ZeDeFAo9ZWSPdyk=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=NUVGfFJNjhz7Q0c8ryHcoc6M5EbstsxTKFoUHU3L9P5kIItvkPVxfMUprp0bqOTLtYldMEKMbfAL/ANQUeeUNOUtibI4avd4C4eM/UwabiZkE+kU9gHqTjdQ9r7l5wLpsYCBoaxJ1aBMYT/5VhvhiLAEWw6DRVArPxh8K7MG1PU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=BsC9rQnP; arc=none smtp.client-ip=209.85.208.54
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-ed1-f54.google.com with SMTP id 4fb4d7f45d1cf-57d06101d76so273203a12.3
-        for <kvm@vger.kernel.org>; Mon, 01 Jul 2024 06:32:43 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b="KFjq/X2+";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sOIiU-0005ag-KZ; Mon, 01 Jul 2024 11:13:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOIiT-0005aV-U0
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2024 11:13:17 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOIiS-0006G9-1v
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2024 11:13:17 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4257d5fc9b7so12344615e9.2
+ for <qemu-arm@nongnu.org>; Mon, 01 Jul 2024 08:13:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1719840762; x=1720445562; darn=vger.kernel.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=8e1CaWsVPtKpH+k7gT0yv3OQ/WjO4R1smXp48iZjANs=;
-        b=BsC9rQnPP+NtB1FrIeG3sv+MavRkeiKl/WNWUdvcgX+cFbLtYrlBZCyeErYRb+0cob
-         WXbncnX1aYcUmVS3G7Z1tfoIZ4dvyri87zXVIB+n64F4Y4ip0bC6uo+a2iyJKRWum+U6
-         qqdB9+EkZXkY2+EgNpZEZI4I0NHuMbBDv+WvlSQAnCk6z3899bhfnD/UI26P+fdmxqnu
-         5BzOTQAkGWgX80+vNzH1xABXP+J09Cvpa7XRcdgnU8tjd2xSAimvYo4LrWZUedoaIa/j
-         kN80n9GBxt58mrmk9X71q/VybLGUNFCcs3QzGrR7PmykQdXRbhooGbdKNHShQeD8aIzN
-         4xdQ==
+ d=linaro.org; s=google; t=1719846794; x=1720451594; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=N9FEHlPTNxswtINWYqFC+mMBpTrdhlMygvNvTt8YoNg=;
+ b=KFjq/X2+QeQnghncEUfLnAnDlCESXHBCf327mhskz+m2HQCTAYg88osWnQm0p6BRO5
+ BoLatwNzmxu8vrWXuMhiq+tN80RBTwf07NjBpPgBCg6rvezDxKCYOY6uE5/JGVeQ8KPk
+ AlPnSvXnOlKqWEHhKrTK/VkOmUj5fTs8IFghliAF4V9J60Xhxs2hQmO6T2g5s4FDr29n
+ DvrTmmu7U/pr2phoZbNb0g3Rd/J05pgCXAAtGnS1ZNvLnoEXrOEOY/vb7dqg0KtVz+6o
+ 52pdPf7l82NpMtHNy5gvZs8omtUxfuJ0QsN9ZEOlkIynTlayL7dZrnFz66o7nQzxYPzl
+ 7Z+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719840762; x=1720445562;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=8e1CaWsVPtKpH+k7gT0yv3OQ/WjO4R1smXp48iZjANs=;
-        b=SKrjRbjmo96oz5o5okeMe2Tm8JHx5i5QHOEU5hdycPH2WFw67GZwZut+cPLvvmvER+
-         ekgKvSWZQrx1Mll58GvFPLDOF8z5j2T+/Hmv18YYH4Oq3B+X01RYYF/dZsjYJW7M9yMw
-         tpHLLYvC64pBxWxVUf9kzWedg7S0Txkxmbc91oAYaYF2piix9QgxIFVrmHcNoqAliBri
-         XAx6+V0netcSQJ+ymQrjj2zktqejpMssHh9fmWKU9ujc1CKB2T/oYJz3g3ki5TKbYUk6
-         /z4ZPd+gkaHDsb9UvMyQ+iLNGY5Ey3qDUHqs9ey5ZQjyierNmTa0ObbbHHnk0VL4t3w4
-         DsiQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWc0Ptlg+806sdpzNrZzguU/cDc9KL3wd4FaTfKxL7qe7hqJS6XvKuy9AVuQ2xPKNgdItZs+mUkKet8xMO2LBgkJ1Gy
-X-Gm-Message-State: AOJu0YxzVIVElYm7iugHN9no1oiRdIJycR3ACQ0e/0Qe/v6C9Qd9ZBvS
-	WQrHGLJrdEewKAOyRLFM4gpFH2iNvHE1JnqvogpMbfioqX0r1+7tHZKCuy0eFtJh1OqF9iuwCI+
-	eD8qCJtUqVdG4+9sLK3rBriwHIvRZWbILbwKv/g==
-X-Received: by 2002:a05:6402:26d4:b0:57c:6a71:e62e with SMTP id
- 4fb4d7f45d1cf-5879f9843cdmr3350165a12.23.1719840762361; Mon, 01 Jul 2024
- 06:32:42 -0700 (PDT)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1719846794; x=1720451594;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=N9FEHlPTNxswtINWYqFC+mMBpTrdhlMygvNvTt8YoNg=;
+ b=QcKjUS5x56nRnV+Gz7yDsKObTO733Mq6Gt0lZctvwK2tkUf19TigaDUxtReycFWqzd
+ O/iPXabB5DiiKPaR6ier8n7kbXLnqVjEezpkmVP8qIW4r2ZkoCS6mtvYfv5U3bKXTa8U
+ OWqeTR7wk2ck06Yt/nRy+//fAr9J5psfR2QumL2Ah5bZ87ZlcaaNDm4SU/FAgSfQTy2Z
+ Y8Dx2H7JNNsZwfl6X5eEO+/C26pxUJT1y1xwfTgdbnf3Dx2YI/OKTgrZCl5latHbryhx
+ oHPkMiBfIB+V000I30GCJkEkJy0UgZ/5gX+hVollsR01wS30HvYc7+71JDOi/foLQ0aj
+ 1cfQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUxgckpPKxHn0HORK8tg2+hgyNSl+0CmTERmYF9ZtuFZ3Sc/ZocOVGZWnSgB27W4Yis65YkdKY0j4Km+znNSEZWadDj
+X-Gm-Message-State: AOJu0YwJvQGRTyr0WmTXT3iE1tzr5hXoonESXnfMYk2fTl38iGSbqdU1
+ toI3yVgRouyL3J60DxJI8JnfHf7EHR6bJ8oHhv/oUFwGKov7Ui4k6zC4FQfdiio=
+X-Received: by 2002:a05:600c:47c7:b0:425:5f73:e2e1 with SMTP id
+ 5b1f17b1804b1-4257a00c088mr51672315e9.22.1719846794419; 
+ Mon, 01 Jul 2024 08:13:14 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.177.159])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4256af37828sm161811305e9.9.2024.07.01.08.13.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 01 Jul 2024 08:13:13 -0700 (PDT)
+Message-ID: <609600ee-f77a-46b7-9692-f47eba3087fd@linaro.org>
+Date: Mon, 1 Jul 2024 17:13:10 +0200
 MIME-Version: 1.0
-References: <20240629-pmu-v1-0-7269123b88a4@daynix.com> <20240629-pmu-v1-2-7269123b88a4@daynix.com>
- <CAFEAcA8FQLQF69XZmbooBThA=LeeRPDZq+WYGUCS7cEBiQ+Bsg@mail.gmail.com> <1b5608aa-5cd5-48b1-bc7c-e356afdc9865@daynix.com>
-In-Reply-To: <1b5608aa-5cd5-48b1-bc7c-e356afdc9865@daynix.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Jul 2024 14:32:30 +0100
-Message-ID: <CAFEAcA8+BzYOv4aO9QWHNBYFoCy0hnx+NSn+YH0gA4akCYE+Jg@mail.gmail.com>
-Subject: Re: [PATCH 2/3] target/arm: Always add pmu property
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
-	kvm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: pagHCxF60a2s
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 08/14] include/hw: add macros for deprecation & removal
+ of versioned machines
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Halil Pasic <pasic@linux.ibm.com>, devel@lists.libvirt.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Eric Farman <farman@linux.ibm.com>,
+ qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>, David Hildenbrand <david@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clegoate@redhat.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org
+References: <20240620165742.1711389-1-berrange@redhat.com>
+ <20240620165742.1711389-9-berrange@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240620165742.1711389-9-berrange@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: aRltZMpQwe1R
 
-On Mon, 1 Jul 2024 at 13:17, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
->
-> On 2024/07/01 20:54, Peter Maydell wrote:
-> > On Sat, 29 Jun 2024 at 13:51, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
-> >>
-> >> kvm-steal-time and sve properties are added for KVM even if the
-> >> corresponding features are not available. Always add pmu property too.
-> >>
-> >> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> >> ---
-> >>   target/arm/cpu.c | 3 ++-
-> >>   1 file changed, 2 insertions(+), 1 deletion(-)
-> >>
-> >> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> >> index 35fa281f1b98..0da72c12a5bd 100644
-> >> --- a/target/arm/cpu.c
-> >> +++ b/target/arm/cpu.c
-> >> @@ -1770,9 +1770,10 @@ void arm_cpu_post_init(Object *obj)
-> >>
-> >>       if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
-> >>           cpu->has_pmu = true;
-> >> -        object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
-> >>       }
-> >>
-> >> +    object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
-> >
-> > This will allow the user to set the ARM_FEATURE_PMU feature
-> > bit on TCG CPUs where that doesn't make sense. If we want to
-> > make the property visible on all CPUs, we need to make it
-> > be an error to set it when it's not valid to set it (probably
-> > by adding some TCG/hvf equivalent to the "raise an error
-> > in arm_set_pmu()" code branch we already have for KVM).
->
-> Doesn't TCG support PMU though?
+On 20/6/24 18:57, Daniel P. Berrangé wrote:
+> Versioned machines live for a long time to provide back compat for
+> incoming migration and restore of saved images. To guide users away from
+> usage of old machines, however, we want to deprecate any older than 3
+> years (equiv of 9 releases), and delete any older than 6 years (equiva
+> of 18 releases).
+> 
+> To get a standardized deprecation message and avoid having to remember
+> to manually add it after three years, this introduces two macros to be
+> used by targets when defining versioned machines.
+> 
+> * MACHINE_VER_DEPRECATION(major, minor)
+> 
+>    Automates the task of setting the 'deprecation_reason' field on the
+>    machine, if-and-only-if the major/minor version is older than 3 years.
+> 
+> * MACHINE_VER_DELETION(major, minor)
+> 
+>    Simulates the deletion of by skipping registration of the QOM type
+>    for a versioned machine, if-and-only-if the major/minor version is
+>    older than 6 years.
+> 
+> By using these two macros there is no longer any manual work required
+> per-release to deprecate old machines. By preventing the use of machines
+> that have reached their deletion date, it is also not necessary to
+> manually delete machines per-release. Deletion can be batched up once a
+> year or whenever makes most sense.
+> 
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>   include/hw/boards.h | 96 +++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 96 insertions(+)
 
-Not for every CPU. If the CPU is, say, an ARM1176, then it's
-too old to have the PMUv3 that our TCG code emulates. And
-that kind of PMU doesn't exist on the M-profile CPUs either.
+Nice again.
 
-thanks
--- PMM
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+

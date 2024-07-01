@@ -1,83 +1,83 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1286182njm;
-        Mon, 1 Jul 2024 04:03:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXvuYsvp6SZx4qWaNsNxPa4kszx0D5/A4JraxbdWB8n15jFN/4bkJgtKQgnHIc61dVZDkWj5GPvJlfMtX+oraxTSaZIazdA
-X-Received: by 2002:a05:600c:4f13:b0:425:6290:b11b with SMTP id 5b1f17b1804b1-4256d58dc93mr74649715e9.18.1719831788840;
-        Mon, 01 Jul 2024 04:03:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719831788; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1286222njm;
+        Mon, 1 Jul 2024 04:03:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVU55Aa1sdO4LsxF/xAqjzsidYZTzA66A4KQJ5h3O3QfRKlnuah3fphUwBEol0cLXlXZG/8wsdD+0dgPP6RH+dAH5nSWrA+
+X-Received: by 2002:adf:e784:0:b0:363:1b67:9e0f with SMTP id ffacd0b85a97d-367756ce3c0mr3411153f8f.41.1719831791677;
+        Mon, 01 Jul 2024 04:03:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719831791; cv=none;
         d=google.com; s=arc-20160816;
-        b=GT1tMbbpZNJtfEt/BFSbprvTLj1cYQSpfLF+mF4cYFtIAHrJtr1wJcJ6DFMW/BGdb5
-         Pc2s3CY+VkdnUmH0OzuBV9l/QdnvCpbgXngElLhGzNeXZ5JIO8vN2IEfQ16pKIho9iB6
-         eVcEhgVGVVeqPVNl3Iw2jVDH3aMTNlyx5yIALhgbJvv/Am0+ERv0FkXpKvhlUmjGgKx4
-         yT4wWcOOOGYmFZoObbc4SGe/W16idf7Bn0Aw4oFtPhyxMwXC95SDmuhxJTcg9D34PHRN
-         +odVp3F1J2sG/IwTa4sC0aPoh5DsbY8bV9ReTEEgApI7S7QrOTmUJbkZuQYnMXeA9vhY
-         LMKQ==
+        b=deuHLP0PLPbl4BuBwisqKdPaQs7vjtA6t+RYmesaW3bP2/f/fhpYJtkr+Pj9w/2Eg1
+         I12W2mg8u0LTdPx5JxnyLJ3nXNAuk5hpUd2obxM2KDyKbXBEvVwobvlXF9EgZnRP+KYq
+         KqG2ZXwOKoQmS3Q8g/hFZxEHdx/Jg/0njo8l1n6zfPtBa3EFhb+x07ZNVdqQFLy+lcCV
+         EFiRfoUTrYSVoRmAdDLAjJUx7d6x4QRKXcfIHdSH83/yB11To7EY95cdUa1Z0xOl82Gv
+         xwXuIDRjzyrZGnMeu9l0pUODO71zjFJuM2EfPpfQkxAgPm6I5/+Ni9AFUDv4Zjju0v2v
+         qVxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:from:subject:message-id:references
          :mime-version:in-reply-to:date:dkim-signature;
-        bh=qxpHwQ7ZLe0+eKBQXYl3PeRw1kiPzmlmXkdnv1EDlyk=;
-        fh=qKmJp9eCKKRLBlemFoCZ6LF0sHvk47/if5gMHw7o2ks=;
-        b=CYWOAa9nfQvlLY9Ro3PeKD12rEVLZ/5ZHiYvj6hH7UgEr8+O2jz21Yrf/vuPO4tUHF
-         4BSR9e6jRBIa9bgH3GZuwMOls0lRWmLCOXqFvi7J/VPGMEbvZlmbdI7G9PVtxvc39La6
-         IGmY2jSAn0+fUvMNJRfDeCZOhiWL8Z12xfzQ8NmBSI3pAli99awbC7y60el6beBWGUyW
-         WR95W/+Bg0OQlJFwaxE2RLo1KhqAhWNQccfHxwUjsQXWlVrUVls3xyvk7BjoOEeZpkZG
-         4Se55EMXRDwuUhSzjhszcXHnzAEJrOLlYBvRGyWrwuEl135+g5HU8aiI1bWvo3fWo0rq
-         VUbg==;
+        bh=buei2TcPsrlo5yYQSY3rD7Mr3fqYf/EFvEpA8OSpk10=;
+        fh=PwmbIDdtxroxJzB+WFkqoQhWmtPwv6tfWMq9faVoUL8=;
+        b=RMwNQRkw4i28KuJrgrQXLxo6xX7hYTLu1/LY+vxJ+rQWamOfq/wuyJ5PvIqNZu3C/x
+         Yz1xVjSVBgSxQzJ6WOw8JSXhFY/vnVn7zpyR1xmcjiD4JV30lWDcImq9opZFrV+0gj+2
+         8EoZYHiemMsCzRZ0D+VN6zpa7BuMZBsGswcQb3TrgobrqSjYImvlpXREfvtJrhjQFFbC
+         hxN8q1wyl/jbDlYK29ONXUICMEBqWQ7qZOAYZM19ECNa2AM0tx2kp0Z7Cb/ATFuOYDqu
+         7lf9MgxBjos9nHGZLp36IYPw86VI1cihs8omdZmzWinyIzdZRtoIRLZEG/npIzVqzN5K
+         lC9A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=dRdtjKf6;
-       spf=pass (google.com: domain of 37iyczggkc0s5z156nsnt11tyr.p1znyra.or00rryv0n41.14t@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=37IyCZggKC0s5z156nsnt11tyr.p1znyrA.or00rryv0n41.14t@flex--smostafa.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=dHKP6gJu;
+       spf=pass (google.com: domain of 37oyczggkc0071378pupv33v0t.r31p0tc.qt22tt0x2p63.36v@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=37oyCZggKC0071378pupv33v0t.r31p0tC.qt22tt0x2p63.36v@flex--smostafa.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <37IyCZggKC0s5z156nsnt11tyr.p1znyrA.or00rryv0n41.14t@flex--smostafa.bounces.google.com>
+Return-Path: <37oyCZggKC0071378pupv33v0t.r31p0tC.qt22tt0x2p63.36v@flex--smostafa.bounces.google.com>
 Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4257b77f974sor8548095e9.2.2024.07.01.04.03.08
+        by mx.google.com with SMTPS id ffacd0b85a97d-3674369dd13sor2373337f8f.10.2024.07.01.04.03.11
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 01 Jul 2024 04:03:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of 37iyczggkc0s5z156nsnt11tyr.p1znyra.or00rryv0n41.14t@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+        Mon, 01 Jul 2024 04:03:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 37oyczggkc0071378pupv33v0t.r31p0tc.qt22tt0x2p63.36v@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=dRdtjKf6;
-       spf=pass (google.com: domain of 37iyczggkc0s5z156nsnt11tyr.p1znyra.or00rryv0n41.14t@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=37IyCZggKC0s5z156nsnt11tyr.p1znyrA.or00rryv0n41.14t@flex--smostafa.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=dHKP6gJu;
+       spf=pass (google.com: domain of 37oyczggkc0071378pupv33v0t.r31p0tc.qt22tt0x2p63.36v@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=37oyCZggKC0071378pupv33v0t.r31p0tC.qt22tt0x2p63.36v@flex--smostafa.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1719831788; x=1720436588; darn=linaro.org;
+        d=google.com; s=20230601; t=1719831791; x=1720436591; darn=linaro.org;
         h=content-transfer-encoding:cc:to:from:subject:message-id:references
          :mime-version:in-reply-to:date:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=qxpHwQ7ZLe0+eKBQXYl3PeRw1kiPzmlmXkdnv1EDlyk=;
-        b=dRdtjKf6xzH8A0TQrTD75rrqobKOpLve+cXRYh6/5BFUSyxXh85ZZqHP3GWfjMuiw8
-         yYmoE8yLEqAVNk5dqQ53yRiQ65AmHdWb9LNLwAxlW0CHrUjVhBsUSc8TH9N6ghbm5P5f
-         qmTmQJ10fOmjUSAzj/z/qOtXpL9zfdKo9Cf9Z2GC0p4IGb7lTGTXtmsuTF0BTHOUlRTM
-         s9xNB1JtBvPUoPlrGEEbf8nDF1aaOTwBKQnGR3rF95jwRUaTyb72vqpUt3Ex15S9Xwqd
-         L/Ev6DpDbsLkza/Y5qWzUe1PUWbpRa0pEEFzPAWSbOwQ4ChFNsU321QOQx9LoSmIVZKF
-         /Oig==
+        bh=buei2TcPsrlo5yYQSY3rD7Mr3fqYf/EFvEpA8OSpk10=;
+        b=dHKP6gJu6yGIwArzxCZAl4gJJJODPPd1QC6Og3ekcRD7e/XLfsN9CkrJk7C6ayvVLJ
+         iF+fVtSXhulOAa6m18nI2EfFicY0CxvvGYDztoArGGbFG3b+BtqRG2JijnL8f6An117P
+         DhWZo2LxdOoCgh0GslWURbfYE+C4tZXZFVVBl+gg8+iTWECr+qA1MfIW1wbTeX0ZwhvM
+         mGeKtiX6WZCvGtlbXmi96dW+WjzotID/ZbsdaC0SIpR5nIEEJAzTuuDUzIyvVXixepCx
+         +/rA4xnbtlEkI8ci3j6vwdmZRnxABrkkdDktpn6wUMkLgMPvpD2iLXGXpmEBDLznD8yD
+         aYhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719831788; x=1720436588;
+        d=1e100.net; s=20230601; t=1719831791; x=1720436591;
         h=content-transfer-encoding:cc:to:from:subject:message-id:references
          :mime-version:in-reply-to:date:x-gm-message-state:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=qxpHwQ7ZLe0+eKBQXYl3PeRw1kiPzmlmXkdnv1EDlyk=;
-        b=P+kDBYsQv6RhxMKJM7FNGLLMZ+874EKdgM6YEXLBaSLMHhf3j61GQYGCMIxRpHLKTC
-         yUwxMgil8PTooJY+gUxhVJ6WN1I08Bn+jatwH5y06XBAvACH8uwt5CpNXcwY1klFzv/x
-         vfr1Aqs1zeBzwMISMIKot82vqNxC2EKNJwlczX5ZtQgls3FFMDSmY6h7eZ7cBPDgl6de
-         M1lwR1+H722yRsf+K2SdEjJgeO0VYmYUWtmRWknQ7gPqMj44fH1+BxMg4KS11g07cO6S
-         xkWsAaT3GZQ4/mP96SubyoZnRijtdUTfzO8nLORuCqw+c6RIwNHo15blHBJwKPUM910m
-         N57g==
-X-Forwarded-Encrypted: i=1; AJvYcCU+9ok6cskXeeqVTgNHI9wuGIa0V3NBTkc/ma2GSvlRo5POyasjUdqCG8y5eqzAqnGEuTODk9fCuBRoGDvay4KQF/NOqTfL
-X-Gm-Message-State: AOJu0Yyj1ubuOTGSjlWYA9Abpv1R0j2R6Oyyiy2S8AS/RBHGd596Z4MK
-	EV/LKUbKpuT8qPD14zuW5kI9qZaY9+sEoGH+g6r1sLTICzj/m0GH7BtJiFtOQ6mpxMHryrAPjY2
-	rDk1Y1p/A0w==
-X-Google-Smtp-Source: AGHT+IF8cxj1aSXEUWa68rT0Cuu9AhGmCho3GCpbqZvCZuxtG5rXVQ/+ZoV0t+qybSSVhA28kmzbKU77w3buAg==
+        bh=buei2TcPsrlo5yYQSY3rD7Mr3fqYf/EFvEpA8OSpk10=;
+        b=uBpIDh23hVwtnzAc14oZTjWw7nRliJezhC8NrYnphtOCELus5OkIdK9Y4PDubQ71x8
+         d119Yts6b0n42iXYHOIQj2aieW2Zu1ofRvWzHG9fVkVw34IPEJBG3Yvn8zvq/ok9ra8g
+         4RvnUZtvEdQoEdSXUEv23GctxfegaK9ucs6nudsa3GM/hjwBpmeON3kGGv99qvMEJ9QM
+         iuq5eEJ1P7j8UXsjfIMQBiLoin647ggdYmOCaYkCy+NQZq429vo1Sa7ZJVKruK8npYic
+         m7mWXW1Y7ZFQrGT4d+6L/WrIZjkQrMq1LnGsXJx8VqoBlm8TU74rF8zCoWx/53YffoH+
+         d7sw==
+X-Forwarded-Encrypted: i=1; AJvYcCWoiGnn9tDQ36PIn7ucWo/9thOeY7fSD3//Uw85V4GW2N2Am8volR0BRZ6uEOgIaD6ly5vyawfQKgG2RWOipioWUJGHcyAE
+X-Gm-Message-State: AOJu0YzJexi8dZZoGwUjISA5xamf7q9GnmxjDhGmsbPmUqAhPU78selT
+	hFVCm5+v3OZSfJgoPWy3sklUpXzEd/lRPtmErokaMhrYpu+p1ry9Og1U6trrEcATyoYtfALcDF1
+	AXj49cECl/w==
+X-Google-Smtp-Source: AGHT+IGWi1LibK1nZw0q6Q4tqmmWYS4B+FgwA8ZzIABQd+wHsGEliel9TjUnDDHBjOACDBJOhFUG3Xb2cqVxCw==
 X-Received: from mostafa.c.googlers.com ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
- (user=smostafa job=sendgmr) by 2002:a05:600c:1d0f:b0:425:7ac6:96f8 with SMTP
- id 5b1f17b1804b1-4257ac6994amr138575e9.0.1719831788201; Mon, 01 Jul 2024
- 04:03:08 -0700 (PDT)
-Date: Mon,  1 Jul 2024 11:02:23 +0000
+ (user=smostafa job=sendgmr) by 2002:a5d:43c5:0:b0:360:91c2:5708 with SMTP id
+ ffacd0b85a97d-3677572997dmr8230f8f.13.1719831790599; Mon, 01 Jul 2024
+ 04:03:10 -0700 (PDT)
+Date: Mon,  1 Jul 2024 11:02:24 +0000
 In-Reply-To: <20240701110241.2005222-1-smostafa@google.com>
 Mime-Version: 1.0
 References: <20240701110241.2005222-1-smostafa@google.com>
 X-Mailer: git-send-email 2.45.2.803.g4e1b14247a-goog
-Message-ID: <20240701110241.2005222-2-smostafa@google.com>
-Subject: [PATCH v4 01/19] hw/arm/smmu-common: Add missing size check for stage-1
+Message-ID: <20240701110241.2005222-3-smostafa@google.com>
+Subject: [PATCH v4 02/19] hw/arm/smmu: Fix IPA for stage-2 events
 From: Mostafa Saleh <smostafa@google.com>
 To: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
 	qemu-devel@nongnu.org
@@ -86,46 +86,132 @@ Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
 	marcin.juszkiewicz@linaro.org, Mostafa Saleh <smostafa@google.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 4QtdWTgNmsgI
+X-TUID: tOO7xIST9plo
 
-According to the SMMU architecture specification (ARM IHI 0070 F.b),
-in =E2=80=9C3.4 Address sizes=E2=80=9D
-    The address output from the translation causes a stage 1 Address Size
-    fault if it exceeds the range of the effective IPA size for the given C=
-D.
+For the following events (ARM IHI 0070 F.b - 7.3 Event records):
+- F_TRANSLATION
+- F_ACCESS
+- F_PERMISSION
+- F_ADDR_SIZE
 
-However, this check was missing.
+If fault occurs at stage 2, S2 =3D=3D 1 and:
+  - If translating an IPA for a transaction (whether by input to
+    stage 2-only configuration, or after successful stage 1 translation),
+    CLASS =3D=3D IN, and IPA is provided.
 
-There is already a similar check for stage-2 against effective PA.
+At the moment only CLASS =3D=3D IN is used which indicates input
+translation.
 
+However, this was not implemented correctly, as for stage 2, the code
+only sets the  S2 bit but not the IPA.
+
+This field has the same bits as FetchAddr in F_WALK_EABT which is
+populated correctly, so we don=E2=80=99t change that.
+The setting of this field should be done from the walker as the IPA address
+wouldn't be known in case of nesting.
+
+For stage 1, the spec says:
+  If fault occurs at stage 1, S2 =3D=3D 0 and:
+  CLASS =3D=3D IN, IPA is UNKNOWN.
+
+So, no need to set it to for stage 1, as ptw_info is initialised by zero in
+smmuv3_translate().
+
+Fixes: e703f7076a =E2=80=9Chw/arm/smmuv3: Add page table walk for stage-2=
+=E2=80=9D
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Mostafa Saleh <smostafa@google.com>
 ---
- hw/arm/smmu-common.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ hw/arm/smmu-common.c | 10 ++++++----
+ hw/arm/smmuv3.c      |  4 ++++
+ 2 files changed, 10 insertions(+), 4 deletions(-)
 
 diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 1ce706bf94..eb2356bc35 100644
+index eb2356bc35..8a8c718e6b 100644
 --- a/hw/arm/smmu-common.c
 +++ b/hw/arm/smmu-common.c
-@@ -381,6 +381,16 @@ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
-             goto error;
+@@ -448,7 +448,7 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
+      */
+     if (ipa >=3D (1ULL << inputsize)) {
+         info->type =3D SMMU_PTW_ERR_TRANSLATION;
+-        goto error;
++        goto error_ipa;
+     }
+=20
+     while (level < VMSA_LEVELS) {
+@@ -494,13 +494,13 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
+          */
+         if (!PTE_AF(pte) && !cfg->s2cfg.affd) {
+             info->type =3D SMMU_PTW_ERR_ACCESS;
+-            goto error;
++            goto error_ipa;
          }
 =20
-+        /*
-+         * The address output from the translation causes a stage 1 Addres=
-s
-+         * Size fault if it exceeds the range of the effective IPA size fo=
-r
-+         * the given CD.
-+         */
-+        if (gpa >=3D (1ULL << cfg->oas)) {
-+            info->type =3D SMMU_PTW_ERR_ADDR_SIZE;
-+            goto error;
-+        }
-+
+         s2ap =3D PTE_AP(pte);
+         if (is_permission_fault_s2(s2ap, perm)) {
+             info->type =3D SMMU_PTW_ERR_PERMISSION;
+-            goto error;
++            goto error_ipa;
+         }
+=20
+         /*
+@@ -509,7 +509,7 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
+          */
+         if (gpa >=3D (1ULL << cfg->s2cfg.eff_ps)) {
+             info->type =3D SMMU_PTW_ERR_ADDR_SIZE;
+-            goto error;
++            goto error_ipa;
+         }
+=20
          tlbe->entry.translated_addr =3D gpa;
-         tlbe->entry.iova =3D iova & ~mask;
-         tlbe->entry.addr_mask =3D mask;
+@@ -522,6 +522,8 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
+     }
+     info->type =3D SMMU_PTW_ERR_TRANSLATION;
+=20
++error_ipa:
++    info->addr =3D ipa;
+ error:
+     info->stage =3D 2;
+     tlbe->entry.perm =3D IOMMU_NONE;
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 2d1e0d55ec..9dd3ea48e4 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -949,6 +949,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion=
+ *mr, hwaddr addr,
+             if (PTW_RECORD_FAULT(cfg)) {
+                 event.type =3D SMMU_EVT_F_TRANSLATION;
+                 event.u.f_translation.addr =3D addr;
++                event.u.f_translation.addr2 =3D ptw_info.addr;
+                 event.u.f_translation.rnw =3D flag & 0x1;
+             }
+             break;
+@@ -956,6 +957,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion=
+ *mr, hwaddr addr,
+             if (PTW_RECORD_FAULT(cfg)) {
+                 event.type =3D SMMU_EVT_F_ADDR_SIZE;
+                 event.u.f_addr_size.addr =3D addr;
++                event.u.f_addr_size.addr2 =3D ptw_info.addr;
+                 event.u.f_addr_size.rnw =3D flag & 0x1;
+             }
+             break;
+@@ -963,6 +965,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion=
+ *mr, hwaddr addr,
+             if (PTW_RECORD_FAULT(cfg)) {
+                 event.type =3D SMMU_EVT_F_ACCESS;
+                 event.u.f_access.addr =3D addr;
++                event.u.f_access.addr2 =3D ptw_info.addr;
+                 event.u.f_access.rnw =3D flag & 0x1;
+             }
+             break;
+@@ -970,6 +973,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion=
+ *mr, hwaddr addr,
+             if (PTW_RECORD_FAULT(cfg)) {
+                 event.type =3D SMMU_EVT_F_PERMISSION;
+                 event.u.f_permission.addr =3D addr;
++                event.u.f_permission.addr2 =3D ptw_info.addr;
+                 event.u.f_permission.rnw =3D flag & 0x1;
+             }
+             break;
 --=20
 2.45.2.803.g4e1b14247a-goog

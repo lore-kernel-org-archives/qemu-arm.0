@@ -1,103 +1,103 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1427432njm;
-        Mon, 1 Jul 2024 08:15:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXPf4VXz6zxF3t05SkvQXl/MM2lJ1uW+QiL+sruMPxjfu/vprx+wYMz/VvUHjIN5oKWc+EZLzOHubU9HwxZD0yxn1XIyUm3
-X-Google-Smtp-Source: AGHT+IGMAafZSryVblkQCbknB6DeqChyJwCmmEDVCbOYNmfu4C437gTi/EeTVQl92PoZj8A8FF7D
-X-Received: by 2002:a05:6512:318e:b0:52e:6ff9:1957 with SMTP id 2adb3069b0e04-52e8273f50amr3984661e87.60.1719846956710;
-        Mon, 01 Jul 2024 08:15:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719846956; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1440539njm;
+        Mon, 1 Jul 2024 08:41:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWkW4QCgVk8J4qOVgwPN9YK1ol/vAOLCm9P7vCl1Xx3V/Wzv1n1fAGpvrKVpKsj+nhAuEmcavRUTTjS7gfW2dekGmGHA3op
+X-Google-Smtp-Source: AGHT+IFwDXx50f9XFLmrOChg5ppQJ2xdqQfcyJdLXtcNHi7iSg19jroka17JzpurWCjgUrnYD9L2
+X-Received: by 2002:a05:690c:d82:b0:62f:2553:d3b3 with SMTP id 00721157ae682-64c72c4b3a3mr66217737b3.29.1719848513961;
+        Mon, 01 Jul 2024 08:41:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719848513; cv=none;
         d=google.com; s=arc-20160816;
-        b=KNpHD+kMLGtnBMp0raz/cZjl+sXquXJEiBAQPAnc8QNj9GP9oU7b0Owdow+90RxgCE
-         IgnHX54HFJYnK3KRyWEaalHTs7DXY2b4f90S61UKxzVcs6FLF4I9gGTe/oJs/4o7lNQR
-         nBej3Ggz4UAJb2yK5GNu+1wKevemH2UuouN+wRa/KdFejyokAM8E7sxX8THMR0f7lV00
-         TeFON/utdGfbTZIWhdsEd1nSvZA3dC05PSPOnNqKuocxjiHTrWIxzLm5J0iuPOBE2/lt
-         jVcFGfDHY+ouwSNsyGZc6wO+j1rhwekvoBXRsfsCw10raVE2wzawniXM6YoItcXL982B
-         mlOg==
+        b=vS9cbNxsrb1Q7/T+JSiX4KhUB1FzhZLFosQkEtjs/1dLpDSN0NMyZaSfWcpNvkYEAU
+         205bMHONX0XYCpDbKR8pzTslujbfuE5sD34XRFvkKE/Mw4aGZEvFj6CTRaCW+c4/zUaD
+         HS7poDiZfDA3D+bcqYNwmzbqZyMUZLCKoSUahqZzdjsqMlB0Y0d8r2Jj3nL+ZjY7aeNC
+         +yRQfFxNscfpsf6A/EPDGlnf9Q+etTUE4Da7OieVB1Dp0VlP5ZA+mzpqKekprhzPupRh
+         za09MHw/L5hqbwOcZX6WNQVfn56g8jyfIoVD9bDka2OZl57bxbw21ZtmOhDjsTj7GF/y
+         CDlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=8Lnkl6kmtvAckHZq5GeTFigb3gwTP1kFw3VWYGdb+Ec=;
-        fh=dF6k51LaNlHwHQOXhrxic6J8xHIn9Da9ThREkIcfCQ8=;
-        b=gtTdDw//urUv6GIdg1fpWcYPBdX3mbeViGO+vdSPglJ0ERGKv1M39sVSoII9MlrTH1
-         km9DtZj0b5Sp44tmO3nAR0Xp+G/7DirTK2a4WN8VbXp3n0cy0epaOMT0tS7RhEtiQ9Sx
-         dVJeNTlEwjY95Hg0BSCXYQKzCgj8IdxsLAqTtsnL5hdpCzHDMnPfSTyFe3FIyLCbUPxc
-         T/2ZX+p8rUXMKVvtDPydeDs/5VjWLZb4rBJFY7d2MeqW0SkEY7D0zEMa6P5W2MqpPVUq
-         JfLhjhi+7FehkwTjnrnBEpG9JrXppzMWV3uN/tIRqmokiCNz1J8oZ9dj8TYPcv5FkXd9
-         P+Vg==;
+        bh=9kTQuvoIZa1mgjjqs6UtPeKi9vZn2qkQVlR2uigkLyY=;
+        fh=J30XeHM1Lnm1b/ZPvSDl7XKBDywrj+0HDMixXRVx2GM=;
+        b=UP9bcHvbBf5a1ngbr5jEB4VzTQQ8msLxFCeFm+7uGuxecmto5k2O3FMW42l4n46svG
+         d3f+LxVx3VjxuPZDbc1rN6OA3Kg2td3NrQWRekxt5TOGktsVzEJzVKco1lJEB859aq7X
+         c8Bs/7qlBdzonk7v6oMTxxJhHTUgrI3tmydWLa8dab+j+1myaamYW79uSSRaAGgVTNGG
+         Vcds3U7P59fmh1s1+7OFsw3zq7lB4Lzc1hD3GY19i+VMl25hcd4zOC0IOCZTUk6v4vsd
+         pOQGAz4XgopllFSFBzgOnuzjmWMA82RE1DrqirgXkyOyyFHPTOUMJvAh8/CXlXTLGCre
+         jbaQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mGvhjJ3p;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r836cz4n;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-4256b0efd8bsi45994375e9.180.2024.07.01.08.15.56
+        by mx.google.com with ESMTPS id d75a77b69052e-4465cbb1375si66066521cf.492.2024.07.01.08.41.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2024 08:15:56 -0700 (PDT)
+        Mon, 01 Jul 2024 08:41:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mGvhjJ3p;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r836cz4n;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sOIkg-0008PV-Sp; Mon, 01 Jul 2024 11:15:35 -0400
+	id 1sOJ9m-0002yc-Sn; Mon, 01 Jul 2024 11:41:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOIkY-0008HD-R5
- for qemu-devel@nongnu.org; Mon, 01 Jul 2024 11:15:26 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOJ9k-0002xZ-Ra
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2024 11:41:28 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOIkW-0008BW-Re
- for qemu-devel@nongnu.org; Mon, 01 Jul 2024 11:15:26 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-364cdfdaf91so1797080f8f.1
- for <qemu-devel@nongnu.org>; Mon, 01 Jul 2024 08:15:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOJ9j-00043b-6P
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2024 11:41:28 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-425680b1d3aso22005775e9.2
+ for <qemu-devel@nongnu.org>; Mon, 01 Jul 2024 08:41:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719846922; x=1720451722; darn=nongnu.org;
+ d=linaro.org; s=google; t=1719848485; x=1720453285; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=8Lnkl6kmtvAckHZq5GeTFigb3gwTP1kFw3VWYGdb+Ec=;
- b=mGvhjJ3pZXORlV3Yygq6C+9s0loUT3yZPTV9na7mFpeYfIHzMmoC72kSB7Cs5moJ9K
- CA4e78/+Cngu0oBImnmioYQ6XRc5zZqs/V2Q72ov/ign8t5nH4Rtzx5WFwD4D+RbtV4v
- Wn0lrMKAQwuh5G2lkMVkSHgaz0rNjHyB3lfM+eN/ZewMVIWqWJBQOYUHmeLTviiiwjAE
- 4ML14Ofy0pr8noHZJsZxi1eMrGZvq3e1B1RHwl5XE/kvN0WfyRgYaLdgnxgYbQv3T661
- /Br5s646eG82XqlMJoE51PeJpUJY1w5Mr3yzzbn2tda8lncvV5duSp2IAyRK0YtTMwbY
- keIQ==
+ bh=9kTQuvoIZa1mgjjqs6UtPeKi9vZn2qkQVlR2uigkLyY=;
+ b=r836cz4nr20pU9wjDTiqYa0E2G29Z5T/2cBNCVBE4qNaX058/deBl1yID7acC3FZPS
+ JQHwwgTE5Xd2nfwz59P/YwJDLKUNd9wbkBfAg7yQvxVUEm0x/35kq7v7uWXOYBgzpwbf
+ nGURD1r5Ojp9sh0o9sbRpD2kiPunSfZAxzzK20t0iwGBNm2fw+etFz/PIEouCdw7DpYC
+ ftl3ImcUtLh6NnzYbk3E+3lh0b8S3XwmJU230+E9kZs08Nds0o6cGH6/JYBCkabMeoHy
+ 5CG/1jRXUTUud/yq7mLBq0DrBsbXtPwb+P+tY2a3tfLHWoO4Xx9rLywIbQT954cddKu3
+ nG6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719846922; x=1720451722;
+ d=1e100.net; s=20230601; t=1719848485; x=1720453285;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=8Lnkl6kmtvAckHZq5GeTFigb3gwTP1kFw3VWYGdb+Ec=;
- b=QP6CDYngEbY5NCUvbNoTPQouNaFPaTZVbZ89FhaZTs0ueL6rvVYkrkmktxr+wccU+e
- HGPIk4rPYArhAan9LJG5z4p8efKWv/ifls0Y2vfQIdxGgV3mTPFxVgCiGgXLvFxMzB9L
- ATANve8WQDS4TcL7Lo2LIxCKyI6MKWmSM5VDqCEJRUFOLUYOt8srnjFoyxVjtFQLaVnC
- pUZkOdEXYeA/AbUbEo+4kvBcK4bIHHi6+PVeRDMEDK+CNVEj3Tux6VouFzHDQrY2iNL8
- 7H6dxmNz0nB06QTdrdEr57t2ZZkIfJqdEeoEfBydxOoM4Ddw3sWeN+shq/e2lS8rQ65M
- /BMA==
+ bh=9kTQuvoIZa1mgjjqs6UtPeKi9vZn2qkQVlR2uigkLyY=;
+ b=tlDC4GFxxgMjJxkVMRvxPNLOkElkCzkwd8sp5Cc0OyLvCdIP64eFCF/Sx8wQvKQWLr
+ /DE6b1m9mvnT/3bBNwB4K3eaBkdNDnCtDR4MhgyKm4ZOF36ChFvHoIhoBKokzzbf4aE4
+ 6jxmeZ1omrhHbPSl8Yw7NUBfRfotzSd437ZT9bZ8uBdc7r1o7stTGVSIPn46pZhPVYBp
+ 6D3NgFefmIXhFkGGAotv0HAEXD/LKr/Jh2tKJTXeK09YDI606NhDm6zaPIqjsS/TD5ny
+ AjMQO21e4JAzKz0E7m1iFBoUAUFoSCEDzZPMdNLpaqacPEEwy2bsVbwJCqgrA70e5114
+ yCvQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXJ6AyiwqVzL4A8UQWqIWUs8IlkR9t92t6wxA1EPfHlLFNedEKLlvGMgZC97fEnZLh/WZS4dlCnzV2YH6Vn+qjVFRV/T8A=
-X-Gm-Message-State: AOJu0Yw6A4kMlzxAA7dEMFr6trQ7s0zvDwJe39bkOVam2NtaOj4unTiy
- u13c3UCJcio0sgrd03Skzs3iGz14/3UTX58xna2/nJyZsTOg6ZdXREMONuW5L/k=
-X-Received: by 2002:a5d:6483:0:b0:366:ebd2:662f with SMTP id
- ffacd0b85a97d-367756c6f0fmr4178268f8f.30.1719846922232; 
- Mon, 01 Jul 2024 08:15:22 -0700 (PDT)
+ AJvYcCWTch4Eu0OcVIQdccLYQjpbrwGNQ9K+g/clXz46m16tuDsGa5dsz+AxXGqw+smGs/3BHCmf65EEHdZD3rN7kpy8gRBQgfM=
+X-Gm-Message-State: AOJu0Yytk3/izKbnIoGmtq9sNmnBlnyRAZg59V+ETNIGeV4aUfoIExTa
+ 5Zin5rlfQcgfZN+6G33OHOzgMYMzfLBaFeW5meQzO0a/J09pmsLixncjt2pi760=
+X-Received: by 2002:a05:600c:4f52:b0:424:ad14:6b87 with SMTP id
+ 5b1f17b1804b1-4257a02d548mr40466625e9.4.1719848485556; 
+ Mon, 01 Jul 2024 08:41:25 -0700 (PDT)
 Received: from [192.168.69.100] ([176.176.177.159])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3675a0e146bsm10276862f8f.57.2024.07.01.08.15.19
+ 5b1f17b1804b1-4256af55e61sm157499465e9.20.2024.07.01.08.41.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jul 2024 08:15:21 -0700 (PDT)
-Message-ID: <53558d9c-2f0d-4c5f-ba5b-06ba8b49b626@linaro.org>
-Date: Mon, 1 Jul 2024 17:15:18 +0200
+ Mon, 01 Jul 2024 08:41:25 -0700 (PDT)
+Message-ID: <078a21d4-0025-4545-a9e2-f945eafe57ae@linaro.org>
+Date: Mon, 1 Jul 2024 17:41:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 14/14] docs: document special exception for machine
- type deprecation & removal
+Subject: Re: [PATCH v2 00/14] hw: define and enforce a standard lifecycle for
+ versioned machines
 To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>, devel@lists.libvirt.org,
@@ -116,14 +116,13 @@ Cc: Halil Pasic <pasic@linux.ibm.com>, devel@lists.libvirt.org,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  Laurent Vivier <laurent@vivier.eu>, qemu-ppc@nongnu.org
 References: <20240620165742.1711389-1-berrange@redhat.com>
- <20240620165742.1711389-15-berrange@redhat.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240620165742.1711389-15-berrange@redhat.com>
+In-Reply-To: <20240620165742.1711389-1-berrange@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -145,18 +144,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2+DR+CAI+Ka+
+X-TUID: dUzdwr/hVw+w
 
 On 20/6/24 18:57, Daniel P. Berrangé wrote:
-> This extends the deprecation policy to indicate that versioned machine
-> types will be marked deprecated after 3 years, and then subject to
-> removal after a further 3 years has passed.
-> 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> ---
->   docs/about/deprecated.rst | 13 +++++++++++++
->   1 file changed, 13 insertions(+)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Daniel P. Berrangé (14):
+>    include/hw: add helpers for defining versioned machine types
+>    hw/arm: convert 'virt' machine definitions to use new macros
+>    hw/s390x: convert 'ccw' machine definitions to use new macros
+>    hw/ppc: convert 'spapr' machine definitions to use new macros
+>    hw/m68k: convert 'virt' machine definitions to use new macros
+>    hw/i386: convert 'i440fx' machine definitions to use new macros
+>    hw/i386: convert 'q35' machine definitions to use new macros
+>    include/hw: add macros for deprecation & removal of versioned machines
+>    include/hw: temporarily disable deletion of versioned machine types
+>    hw: set deprecation info for all versioned machine types
+>    hw: skip registration of outdated versioned machine types
+>    hw/ppc: remove obsolete manual deprecation reason string of spapr
+>      machines
+>    hw/i386: remove obsolete manual deprecation reason string of i440fx
+>      machines
+>    docs: document special exception for machine type deprecation &
+>      removal
 
+Series queued, thanks!

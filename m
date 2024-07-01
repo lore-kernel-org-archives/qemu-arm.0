@@ -1,83 +1,81 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1286428njm;
-        Mon, 1 Jul 2024 04:03:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVVOlqSlZx5OfQ0o9MS4m42q4idgQDAyL8rUOwbZlRyL6bb0eCIYGWcG3o6wpRrmtgV3bj0xS1Vl6gu3/XKbk8FAEl7Bh1O
-X-Received: by 2002:a05:600c:1508:b0:425:5a26:a12c with SMTP id 5b1f17b1804b1-4257a02f915mr37743605e9.13.1719831810473;
-        Mon, 01 Jul 2024 04:03:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719831810; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1286456njm;
+        Mon, 1 Jul 2024 04:03:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXgmd2yERlhde9BAuA0Dfx+KN06zsu7ZTVMGVGSHwlNF2cKXtcWnJA+vEcD43gscJ7dHxQ8Q1OJWo+6wdw9u9X1i+IgIj5D
+X-Received: by 2002:a05:6512:3da5:b0:52c:e5ae:87e1 with SMTP id 2adb3069b0e04-52e82643c4cmr3873320e87.9.1719831812929;
+        Mon, 01 Jul 2024 04:03:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719831812; cv=none;
         d=google.com; s=arc-20160816;
-        b=XvLP06AR5k9TCNF/g68n3onSwV+vUHZ0ISc1a2WjnDKFM3gS4AcbDbbTgocuJCGo8i
-         A49yJIoUtW2BdL/jKF0im1OxIAXBYHtbqVOoaLsPhzgfYfZmrNnATuxqsJjCyYF+uXLz
-         ULVSvnknrmgfq8fazhXsRimTnbKCW2IgNRv2vJQcRE+TbRTdm2KO6oOwDjZzGT7yedC7
-         xL22El+vwdQ0YWP2p6x0E/ECLaJgap/Ov7L3ke7X1hrLEex2xB5gVQq/itdefpv/KxgB
-         21gzZejQTRG9rS182IvE09GtZgfWdW4CmbcB9JMO74uDZzND2ptC637MjL3UZVGGtzEC
-         GsTw==
+        b=JRQU64XAdxb13X+XHlw+iNcn9/l5Z4EuBIp17Of9xJhk+WUQP6n2Zrt0le9KnAO5Ga
+         7jjk7JA6g5xO2c4v4seZSoiWs20S+KUslzIMTHPLlmbJ+TEl3vBHh6XKki6H1mrGHNe3
+         8lc1QKkZCEo36ERVK8muwiY3yoBdq99R39e6hVvovCNJ1wW4KQ/zEt1rbLKNM1HhnicA
+         0dSP9iKw8U90DK9oaXdS8zP8GriYkA/kT53aE+fX8XVgakCmWqRzrvS45wYuDJv2yEhy
+         WR6xYRh6hP28sDBdaXDA0hs6UwqgwEy07ynr5W4BGJO2OTCtuzNzKOUVSL+RrFJijoOn
+         Dsvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:from:subject:message-id:references
-         :mime-version:in-reply-to:date:dkim-signature;
-        bh=Fv7BS8g4xDe926Dlz2fnWNVQmTCy2c0vTs9ZGBz2UIg=;
-        fh=HZIdEmvFwK6Zny28PUOoMn+X7lLcnYDf0FJEkbYBV+Q=;
-        b=qo+afcDhC6lcAnetjJDQff3h7K4QvLHasNaVoxb3bg+el//pqqn9REiim8EmpxTn6y
-         /QbYSgb0kQBX/HbmG/+qpu3bFGSwUTkag6XBaN5Xkw9Tx1qkb+Z3ekXZMhdpUe0spHdE
-         xOYqpe1vN2R7SkoBXkvgl4PXDj2dxKub5ZKMIaRubJdUl0tQAg1YIeT6fzjXIUuVI09n
-         YEd1mmioQXrsw5GltZHvM8X80eepqFwInaZ8S4Pfu0BhDETB+1QEwQ+6+CfrxtBIqJmL
-         NUtq16bURytPIxs6q6H4e7lvjvzoDCk9Wq9Wd8KTFOBDHKsyLrGtxKeAK6/YoO5QjHL8
-         ve/w==;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:dkim-signature;
+        bh=pLiLD9Y6hPJK630FI36/76GCsbQcYnRJXZm5rXlVToQ=;
+        fh=QIsR6+HYz9CS2aMb6dclqcW1AF47UM8V3rc1EZ/Qwtg=;
+        b=fnEHxTdvAtWZK8N0xdmASdvXyNCVAXEPFg7fhsjVUqLf/3+QlNICRfNm5QTm82iTUk
+         c/sVmwj2M1iL9o2NhUfNMBuExjHFjMdVuZwC+s9yQLn+AzG4H56AIsris0po+DH8yZWT
+         lRbopfty6xtoncf495JKXoo/91o9NpBFyJ5b5jzJDjyTVelXyy/cQPtEuPAL5F6dLF26
+         dd3F/GLBLrXHTnHzLyQBuBwMWVRXrVqdzWfB0pnM+1pCFmLzaLFi2SduErtITaKSjITr
+         jCRNnS8acoY8HFxQXgTw4Sh4rZsXl7cesfsjeVGzKmv5gY662wCbsTP033y5eoleQLUo
+         0z2w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=thhY4WZL;
-       spf=pass (google.com: domain of 3ay2czggkc2aqkmqr8d8emmejc.amk8jcv.9cllccjgl8pm.mpe@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3AY2CZggKC2AQKMQR8D8EMMEJC.AMK8JCV.9CLLCCJGL8PM.MPE@flex--smostafa.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=qXBKOOT0;
+       spf=pass (google.com: domain of 3bi2czggkc2mtnptubgbhpphmf.dpnbmfy.cfooffmjobsp.psh@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3BI2CZggKC2MTNPTUBGBHPPHMF.DPNBMFY.CFOOFFMJOBSP.PSH@flex--smostafa.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <3AY2CZggKC2AQKMQR8D8EMMEJC.AMK8JCV.9CLLCCJGL8PM.MPE@flex--smostafa.bounces.google.com>
+Return-Path: <3BI2CZggKC2MTNPTUBGBHPPHMF.DPNBMFY.CFOOFFMJOBSP.PSH@flex--smostafa.bounces.google.com>
 Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-425655afb20sor24455085e9.5.2024.07.01.04.03.30
+        by mx.google.com with SMTPS id 5b1f17b1804b1-425655b013esor24454605e9.6.2024.07.01.04.03.32
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 01 Jul 2024 04:03:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of 3ay2czggkc2aqkmqr8d8emmejc.amk8jcv.9cllccjgl8pm.mpe@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
+        Mon, 01 Jul 2024 04:03:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 3bi2czggkc2mtnptubgbhpphmf.dpnbmfy.cfooffmjobsp.psh@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=thhY4WZL;
-       spf=pass (google.com: domain of 3ay2czggkc2aqkmqr8d8emmejc.amk8jcv.9cllccjgl8pm.mpe@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3AY2CZggKC2AQKMQR8D8EMMEJC.AMK8JCV.9CLLCCJGL8PM.MPE@flex--smostafa.bounces.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=qXBKOOT0;
+       spf=pass (google.com: domain of 3bi2czggkc2mtnptubgbhpphmf.dpnbmfy.cfooffmjobsp.psh@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3BI2CZggKC2MTNPTUBGBHPPHMF.DPNBMFY.CFOOFFMJOBSP.PSH@flex--smostafa.bounces.google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1719831810; x=1720436610; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:from:subject:message-id:references
-         :mime-version:in-reply-to:date:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Fv7BS8g4xDe926Dlz2fnWNVQmTCy2c0vTs9ZGBz2UIg=;
-        b=thhY4WZLxdOvw5mpuKgF6GsUvsADB9sk6pPvfyXvWDd16k4i9GDwH/Z2KGvQTk+q6Y
-         2ReLPOFYFCA0FgNurILrCbpm1KAv9/AGN5Yzx5ygHFkw05YNM6yq/w64Egl29k9Id4yy
-         hXVg1ks21Fvk1apP+aaOtMz0I7cvUGEbXcrh9gZW8/kldszRS1XuhSf+SoFCQGGnokjB
-         PncSmruJXMGcQGKPx9MxM8X1SjoiLnHggWvcHIcQFjfeHpNVMgQpdH0I+LPY80rsXg+L
-         5ylZB/P+W1F4FG7Y5WkjX9W6gUmUDywC5+QdDtqeMF2AzRGba5lhvjaTdgP7OED+1ukW
-         VzUg==
+        d=google.com; s=20230601; t=1719831812; x=1720436612; darn=linaro.org;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=pLiLD9Y6hPJK630FI36/76GCsbQcYnRJXZm5rXlVToQ=;
+        b=qXBKOOT0KeuXMmMKCyPUe/p8RsC50NcW2XDBG8ITzpLwES8pDL2FYl91M4/oB8mNPg
+         Ifxy67xYCkeaduRgqZL6WI2CxY0KiFjzUImD+5Dxelvo3pBgLRhSpRj2sav8e+r/8115
+         61yFTjBx9uFLKpCR0EerRhadasqvSltMA0h/vQdfS1SIN1OAGLieYWPBBMd4px+vxTxT
+         mNxMYpeKZ4AmtmNdpig/6P7CXSKBCW9ImL3XSIKqpnjLZRHwpEphX3RcmvrkxrmYb+Bn
+         9tWeHx+e+Lt3IBD++WycmUYZj/zEhX5ssCOIwYCG8AzBphS2qT8l54GZjir9Aka6Lsst
+         1fWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1719831810; x=1720436610;
-        h=content-transfer-encoding:cc:to:from:subject:message-id:references
-         :mime-version:in-reply-to:date:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=Fv7BS8g4xDe926Dlz2fnWNVQmTCy2c0vTs9ZGBz2UIg=;
-        b=gyjgzQAWgNRKtLrisIr3pF1FQ+6dAv3CmdPw7Ipie8ePlBhK2SK7NmrtBmQV4dtI71
-         Qt6ajD1a69iAOYHcDJq8XEyyWp+8Argp9k2vKwvIWDA5se8a2fPAPwMiyQ2VsGWipszN
-         7bxf6bEKSJXObA7LnWjGf+vDjE3TBxp6ZSM5ocSw+JcuDlzVjUrZQs2iBzX9CYmNjuzr
-         uOpYZULHM8+Ce3XdwjT7CxIZu7OtOoH1J6oQO6L8ESdfBjE878/rUZlP8CaP9yX1qcfy
-         +zUnVjyTaK+5iXKgo+7i077MsWCtawsCkz0Cm0zDgHEOVbm25FowRzBjKN0s7mMWAW+h
-         9TNA==
-X-Forwarded-Encrypted: i=1; AJvYcCV1G3odCdMdkvXEfHD3Syh/WyaOtR7KHoAK2Vls/J+DlDb55GH+tXCl0w7OAzIAs0O5+KpBBOa2S7lWbCrYcScW8aS2a+cC
-X-Gm-Message-State: AOJu0YwsqiZ3WiWXDMZ1DVuDzlGi+uu6GAikZrtAIrXQvjRNxHkwBugm
-	/Jca9DakO44jSwoJXlU6j0cqizoCHBKfPnnHn1DUhWK8e2mxwGi2jkOx4Ob/nunvQxo8VuPwVFk
-	BAeO+jSoPQQ==
-X-Google-Smtp-Source: AGHT+IHwm67bAhBHv7dJZUN8mCt5SQ4ipmxn5RP6+ZSGDsNtAPHR5mMXCnUqaTODAsL9//V8EkKSbx487kpj0Q==
+        d=1e100.net; s=20230601; t=1719831812; x=1720436612;
+        h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=pLiLD9Y6hPJK630FI36/76GCsbQcYnRJXZm5rXlVToQ=;
+        b=EFzwrpT5JiUxvUvR0uEgTwHlxWIN4bE5tFrMHdoS9ipUYfMHU+J+MtTSss8vG0bboi
+         LTmoN8z5g7UXGnrb6dLwuzdndLdZiLKRTKjohXpADXZQhTAQ2hgkNOtErnnvbh6vAoRa
+         380hLY6Ly8MlJTQrWSSzNSSBN1b9ZFMPjJmlb3P39p+Xp1Y2spSWstX0CkM3l7rn4yc6
+         8ZxihGi562kYpsXXQnf5lh9cKLzM6KTkB9x33GOvXaS15haDhsOrHBe1wuWMNFZEcVxV
+         840CIaC+pY/ewwjJCDCfzTM+MYcyoA0h/BhIaeuO5NmrMg3R0Tq3o+tNQCNIWU44/g0z
+         z3/g==
+X-Forwarded-Encrypted: i=1; AJvYcCWQIrNtHc8Yz7IPjT7TeDU3QnEOmDfhmvooOlOWF9iyrsZzrvbWVESXHtyIwtU0aUct/vpLlL6sjH2jm0FolYOEPXxuAHtk
+X-Gm-Message-State: AOJu0YwWFr6NcHoNVUGGo3xtWb2t8I+Ylh7MxPdtEIH28+bslH6Q2Feh
+	HFwV+mi2YuTmttLi8+c0PPXwzwde6P9Y0LNl8naaYjLN9yhmKJzk9PSdn/pnnhpO3UXXe7cpQAq
+	dxD4QIrlQhQ==
+X-Google-Smtp-Source: AGHT+IE4M0AH42DOJTFwqeKXn9/m3zipf6JPuJXv8nEERd3pFQpf4gLR85Sf9TFoqxGMP/qmIIN/R/SHi/kXyQ==
 X-Received: from mostafa.c.googlers.com ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
- (user=smostafa job=sendgmr) by 2002:a05:600c:19c9:b0:424:9c77:4dfd with SMTP
- id 5b1f17b1804b1-4257a06c738mr538705e9.7.1719831809978; Mon, 01 Jul 2024
- 04:03:29 -0700 (PDT)
-Date: Mon,  1 Jul 2024 11:02:32 +0000
+ (user=smostafa job=sendgmr) by 2002:a05:6000:1445:b0:366:ebf5:c6cb with SMTP
+ id ffacd0b85a97d-3677571b760mr8352f8f.11.1719831812129; Mon, 01 Jul 2024
+ 04:03:32 -0700 (PDT)
+Date: Mon,  1 Jul 2024 11:02:33 +0000
 In-Reply-To: <20240701110241.2005222-1-smostafa@google.com>
 Mime-Version: 1.0
 References: <20240701110241.2005222-1-smostafa@google.com>
 X-Mailer: git-send-email 2.45.2.803.g4e1b14247a-goog
-Message-ID: <20240701110241.2005222-11-smostafa@google.com>
-Subject: [PATCH v4 10/19] hw/arm/smmu-common: Add support for nested TLB
+Message-ID: <20240701110241.2005222-12-smostafa@google.com>
+Subject: [PATCH v4 11/19] hw/arm/smmu-common: Support nested translation
 From: Mostafa Saleh <smostafa@google.com>
 To: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
 	qemu-devel@nongnu.org
@@ -85,123 +83,176 @@ Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
 	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org, 
 	marcin.juszkiewicz@linaro.org, Mostafa Saleh <smostafa@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 6jce84MJ2jWL
+X-TUID: bla76W4nWQI/
 
-This patch adds support for nested (combined) TLB entries.
-The main function combine_tlb() is not used here but in the next
-patches, but to simplify the patches it is introduced first.
+When nested translation is requested, do the following:
 
-Main changes:
-1) New field added in the SMMUTLBEntry struct: parent_perm, for
-   nested TLB, holds the stage-2 permission, this can be used to know
-   the origin of a permission fault from a cached entry as caching
-   the =E2=80=9Cand=E2=80=9D of the permissions loses this information.
+- Translate stage-1 table address IPA into PA through stage-2.
+- Translate stage-1 table walk output (IPA) through stage-2.
+- Create a single TLB entry from stage-1 and stage-2 translations
+  using logic introduced before.
 
-   SMMUPTWEventInfo is used to hold information about PTW faults so
-   the event can be populated, the value of stage used to be set
-   based on the current stage for TLB permission faults, however
-   with the parent_perm, it is now set based on which perm has
-   the missing permission
+For stage-1 table translation, the spec (ARM IHI 0070 F.b) says in:
+    7.3.12 F_WALK_EABT:
+        Translation of an IPA for Stage 1 descriptor fetch:
+	S2 == 1 (stage 2), CLASS == T
+So, F_WALK_EABT is used which propagtes to CLASS == TT.
 
-   When nesting is not enabled it has the same value as perm which
-   doesn't change the logic.
+smmu_ptw() has a new argument SMMUState which include the TLB as
+stage-1 table address can be cached in there.
 
-2) As combined TLB implementation is used, the combination logic
-   chooses:
-   - tg and level from the entry which has the smallest addr_mask.
-   - Based on that the iova that would be cached is recalculated.
-   - Translated_addr is chosen from stage-2.
+Also in smmu_ptw() a separate path used for nesting to simplify the
+code, although some logic can be combined.
 
 Signed-off-by: Mostafa Saleh <smostafa@google.com>
 ---
- hw/arm/smmu-common.c         | 37 ++++++++++++++++++++++++++++++++----
- include/hw/arm/smmu-common.h |  1 +
- 2 files changed, 34 insertions(+), 4 deletions(-)
+ hw/arm/smmu-common.c         | 72 +++++++++++++++++++++++++++++++-----
+ include/hw/arm/smmu-common.h |  2 +-
+ 2 files changed, 64 insertions(+), 10 deletions(-)
 
 diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 0840b5cffd..24b7d09e2b 100644
+index 24b7d09e2b..71afd486ba 100644
 --- a/hw/arm/smmu-common.c
 +++ b/hw/arm/smmu-common.c
-@@ -426,7 +426,8 @@ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
-         tlbe->entry.translated_addr =3D gpa;
-         tlbe->entry.iova =3D iova & ~mask;
-         tlbe->entry.addr_mask =3D mask;
--        tlbe->entry.perm =3D PTE_AP_TO_PERM(ap);
-+        tlbe->parent_perm =3D PTE_AP_TO_PERM(ap);
-+        tlbe->entry.perm =3D tlbe->parent_perm;
-         tlbe->level =3D level;
-         tlbe->granule =3D granule_sz;
-         return 0;
-@@ -547,7 +548,8 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
-         tlbe->entry.translated_addr =3D gpa;
-         tlbe->entry.iova =3D ipa & ~mask;
-         tlbe->entry.addr_mask =3D mask;
--        tlbe->entry.perm =3D s2ap;
-+        tlbe->parent_perm =3D s2ap;
-+        tlbe->entry.perm =3D tlbe->parent_perm;
-         tlbe->level =3D level;
-         tlbe->granule =3D granule_sz;
-         return 0;
-@@ -562,6 +564,30 @@ error:
-     return -EINVAL;
+@@ -318,6 +318,38 @@ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova)
+     return NULL;
  }
-=20
-+/*
-+ * combine S1 and S2 TLB entries into a single entry.
-+ * As a result the S1 entry is overriden with combined data.
-+ */
-+static void __attribute__((unused)) combine_tlb(SMMUTLBEntry *tlbe,
-+                                                SMMUTLBEntry *tlbe_s2,
-+                                                dma_addr_t iova,
-+                                                SMMUTransCfg *cfg)
+ 
++/* Translate stage-1 table address using stage-2 page table. */
++static inline int translate_table_addr_ipa(dma_addr_t *table_addr,
++                                           SMMUTransCfg *cfg,
++                                           SMMUPTWEventInfo *info,
++                                           SMMUState *bs)
 +{
-+    if (tlbe_s2->entry.addr_mask < tlbe->entry.addr_mask) {
-+        tlbe->entry.addr_mask =3D tlbe_s2->entry.addr_mask;
-+        tlbe->granule =3D tlbe_s2->granule;
-+        tlbe->level =3D tlbe_s2->level;
++    dma_addr_t addr = *table_addr;
++    SMMUTLBEntry *cached_entry;
++    int asid;
++
++    /*
++     * The translation table walks performed from TTB0 or TTB1 are always
++     * performed in IPA space if stage 2 translations are enabled.
++     */
++    asid = cfg->asid;
++    cfg->stage = SMMU_STAGE_2;
++    cfg->asid = -1;
++    cached_entry = smmu_translate(bs, cfg, addr, IOMMU_RO, info);
++    cfg->asid = asid;
++    cfg->stage = SMMU_NESTED;
++
++    if (cached_entry) {
++        *table_addr = CACHED_ENTRY_TO_ADDR(cached_entry, addr);
++        return 0;
 +    }
 +
-+    tlbe->entry.translated_addr =3D CACHED_ENTRY_TO_ADDR(tlbe_s2,
-+                                    tlbe->entry.translated_addr);
-+
-+    tlbe->entry.iova =3D iova & ~tlbe->entry.addr_mask;
-+    /* parent_perm has s2 perm while perm keeps s1 perm. */
-+    tlbe->parent_perm =3D tlbe_s2->entry.perm;
-+    return;
++    info->stage = SMMU_STAGE_2;
++    info->type = SMMU_PTW_ERR_WALK_EABT;
++    info->addr = addr;
++    return -EINVAL;
 +}
 +
  /**
-  * smmu_ptw - Walk the page tables for an IOVA, according to @cfg
+  * smmu_ptw_64_s1 - VMSAv8-64 Walk of the page tables for a given IOVA
+  * @cfg: translation config
+@@ -333,7 +365,8 @@ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova)
+  */
+ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
+                           dma_addr_t iova, IOMMUAccessFlags perm,
+-                          SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
++                          SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info,
++                          SMMUState *bs)
+ {
+     dma_addr_t baseaddr, indexmask;
+     SMMUStage stage = cfg->stage;
+@@ -381,6 +414,11 @@ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
+                 goto error;
+             }
+             baseaddr = get_table_pte_address(pte, granule_sz);
++            if (cfg->stage == SMMU_NESTED) {
++                if (translate_table_addr_ipa(&baseaddr, cfg, info, bs)) {
++                    goto error;
++                }
++            }
+             level++;
+             continue;
+         } else if (is_page_pte(pte, level)) {
+@@ -568,10 +606,8 @@ error:
+  * combine S1 and S2 TLB entries into a single entry.
+  * As a result the S1 entry is overriden with combined data.
+  */
+-static void __attribute__((unused)) combine_tlb(SMMUTLBEntry *tlbe,
+-                                                SMMUTLBEntry *tlbe_s2,
+-                                                dma_addr_t iova,
+-                                                SMMUTransCfg *cfg)
++static void combine_tlb(SMMUTLBEntry *tlbe, SMMUTLBEntry *tlbe_s2,
++                        dma_addr_t iova, SMMUTransCfg *cfg)
+ {
+     if (tlbe_s2->entry.addr_mask < tlbe->entry.addr_mask) {
+         tlbe->entry.addr_mask = tlbe_s2->entry.addr_mask;
+@@ -596,14 +632,19 @@ static void __attribute__((unused)) combine_tlb(SMMUTLBEntry *tlbe,
+  * @perm: tentative access type
+  * @tlbe: returned entry
+  * @info: ptw event handle
++ * @bs: smmu state which includes TLB instance
   *
-@@ -639,9 +665,12 @@ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransC=
-fg *cfg, dma_addr_t addr,
-=20
-     cached_entry =3D smmu_iotlb_lookup(bs, cfg, &tt_combined, aligned_addr=
-);
-     if (cached_entry) {
--        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm & IOMMU_WO)) {
-+        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm &
-+            cached_entry->parent_perm & IOMMU_WO)) {
-             info->type =3D SMMU_PTW_ERR_PERMISSION;
--            info->stage =3D cfg->stage;
-+            info->stage =3D !(cached_entry->entry.perm & IOMMU_WO) ?
-+                          SMMU_STAGE_1 :
-+                          SMMU_STAGE_2;
+  * return 0 on success
+  */
+ int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+-             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
++             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info, SMMUState *bs)
+ {
++    int ret;
++    SMMUTLBEntry tlbe_s2;
++    dma_addr_t ipa;
++
+     if (cfg->stage == SMMU_STAGE_1) {
+-        return smmu_ptw_64_s1(cfg, iova, perm, tlbe, info);
++        return smmu_ptw_64_s1(cfg, iova, perm, tlbe, info, bs);
+     } else if (cfg->stage == SMMU_STAGE_2) {
+         /*
+          * If bypassing stage 1(or unimplemented), the input address is passed
+@@ -621,7 +662,20 @@ int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+         return smmu_ptw_64_s2(cfg, iova, perm, tlbe, info);
+     }
+ 
+-    g_assert_not_reached();
++    /* SMMU_NESTED. */
++    ret = smmu_ptw_64_s1(cfg, iova, perm, tlbe, info, bs);
++    if (ret) {
++        return ret;
++    }
++
++    ipa = CACHED_ENTRY_TO_ADDR(tlbe, iova);
++    ret = smmu_ptw_64_s2(cfg, ipa, perm, &tlbe_s2, info);
++    if (ret) {
++        return ret;
++    }
++
++    combine_tlb(tlbe, &tlbe_s2, iova, cfg);
++    return 0;
+ }
+ 
+ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t addr,
+@@ -677,7 +731,7 @@ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t addr,
+     }
+ 
+     cached_entry = g_new0(SMMUTLBEntry, 1);
+-    status = smmu_ptw(cfg, aligned_addr, flag, cached_entry, info);
++    status = smmu_ptw(cfg, aligned_addr, flag, cached_entry, info, bs);
+     if (status) {
+             g_free(cached_entry);
              return NULL;
-         }
-         return cached_entry;
 diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 09d3b9e734..1db566d451 100644
+index 1db566d451..cf0fd3ec74 100644
 --- a/include/hw/arm/smmu-common.h
 +++ b/include/hw/arm/smmu-common.h
-@@ -77,6 +77,7 @@ typedef struct SMMUTLBEntry {
-     IOMMUTLBEntry entry;
-     uint8_t level;
-     uint8_t granule;
-+    IOMMUAccessFlags parent_perm;
- } SMMUTLBEntry;
-=20
- /* Stage-2 configuration. */
---=20
+@@ -185,7 +185,7 @@ static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
+  * pair, according to @cfg translation config
+  */
+ int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+-             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info);
++             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info, SMMUState *bs);
+ 
+ 
+ /*
+-- 
 2.45.2.803.g4e1b14247a-goog

@@ -1,260 +1,158 @@
-Received: by 2002:a05:7022:ef0e:b0:81:d0c2:543b with SMTP id qy14csp2366853dlb;
-        Tue, 2 Jul 2024 07:03:17 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVpV1JG0ehsn4Kfd8BZDPIYwtkKm+fhP66bz78V5ZX4JTBfv1xFIaTd3uMwsj4cpMBbvUlM/V6Pdhap8KTJUFGA1j/zw1Yk
-X-Google-Smtp-Source: AGHT+IFpc8KfX4nDWdMy86ORx9L4kXrVYdPajX/PYbZGHUgmYxJv3Tz3/fr3w8MBzzh/8xwLgqOT
-X-Received: by 2002:a05:620a:4093:b0:79d:9b4b:c619 with SMTP id af79cd13be357-79d9b4bcd95mr213214785a.69.1719928996690;
-        Tue, 02 Jul 2024 07:03:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719928996; cv=none;
+Received: by 2002:a05:7022:ef0e:b0:81:d0c2:543b with SMTP id qy14csp2372487dlb;
+        Tue, 2 Jul 2024 07:09:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUlmFyjvrFOQ9aO1lSRTCeud0JLZSwFvstwsnrdcKHPF+pGCbDKjKlHHH3TrDM0hAmmB9XNEHRcPM6o8bKOWJHM1XECMLwC
+X-Google-Smtp-Source: AGHT+IEhow4YLSGnmheXMWTFF/1EhTCmv7O51X5TFfYtEHQTy8J8xBUBW7W9sM14KDAGd1Slrltk
+X-Received: by 2002:a05:622a:10e:b0:444:ed2c:7ad with SMTP id d75a77b69052e-44662dc9f45mr119690041cf.28.1719929385146;
+        Tue, 02 Jul 2024 07:09:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719929385; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ev22/VcTGmUjMSGS/46j6gTc5lN+VmAA0PlgiC0wSJ8OP8oFN0kHVihWP4lyfcVwmB
-         ImdZ97t6OU9J/3tmbpexOWRhfWtULUnXT67dvTDaOH39S2f0C1o/pI9+0G7/DcuUuLZH
-         byv458uUuDHYNuQQAW314HQQvbkhxXxgwuKfIrVexErgNRgs+OfeDVskyEp8ostsBbUO
-         O9wcejsIeT1QPbaKxcpZDLj9hKC2JqeTCesWRvCmQAVUTSHJJoFO4dDaxulrkFP1ZVK8
-         J7GJkBJLvO/M5iqMlY4tmuLPA4nQrPKD/qV8z+OF7XPN/cwvGy3kdSEBufcMmJC0E5Bv
-         f0Uw==
+        b=PNgtEPyDGytx7hU7XZJk91MD7+ktU+xXjfCCQgoYJoWwjQ4r1N+xltCjglOgpNR+Gh
+         YD4q2y5I2kp8AGBhJF+sDabQaUts/XsK+ojDA7qS2yGuFKRMT7eB3oC/rgQ1PLmK5cb9
+         Go3f6yw+U9qA9UI72IF8au3b/RB48I2lOkYtP4agMXr1fDmRoLKdY0P3V91u/hEe7iEc
+         sQDQSIplBvvqkXNSFP0Y/jg1jCJo1wIYcwEZMoB1fdFOTWoRVsuMCCUM2FfvgFb9TCe+
+         Nc6geavztmXxWT8iG245RO5ViPC82VEf/4FJfz1Zwqap0JqhQPUXptw03sphEMQl50pL
+         4Zyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=zmUCPMiTD6vXlrbEd2EvxWseyKoG12RuuIrl7VfaSFM=;
-        fh=2PzxbRURmCOfsgejp12IjZdy6XwiSIWaNb2grpty9n4=;
-        b=HT+9m+XxzWjrUjXyjA9rUtYSsGrZM7/xh/KvmC2vgG3XGg9ZQe9ugyJfJg37sV6fDy
-         ANhfGV2a7c6ZdQb26KDii50ac4d+Tm/qHVvvD4URxWQbqfCK98zcO6w/nvwcdDH1iW4r
-         uyee94DAoqpJ0CG4m3fMESkt42gjFT8zUtYw3I7H+96JPfGHRu8LDwq/qI9S2hXmFJ3P
-         npgVG3Ks19Z5zDe6GE1NoT+QXM8D+ZXjmGh2YaTuO4AIpQGafijEfTe2ACVo353DDIL+
-         hGgCqGm9ybYbdvSr2nwf0o/aARrxR0Rtwcbu5K5QA6qms2Q95uoSal2/YDBSSRhN/9kh
-         t7Ow==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=uvjGohX9jpqU4S0vaNGN/OLaq0Blh/PgFGJDO8c8dTs=;
+        fh=zitQEwJJWEJuUD9eaWhmfHlCkffqVj0+D1PsWRlDQM4=;
+        b=LIfCpPYWGqTY9g8hF+t+AjCUCoIqZVP98Avnc8dXTGgERZtwtm3B649MmpOACKhW2I
+         HlwPORvFeIF3fC5s1LxxJ6BjxS0e1AKyrz6vhre5KXFy4QuySzMsl+w0hiyfrPs0ZVN1
+         SDdEMC8xisaPEwSZ5QURwP9ICrryuX4V1fIa9cR/+BBKlJ2GIqhRUpIx5Rm7D1r0ACCz
+         BFygLUqKvNVDkifl6+JD1hT8gyDCW+G6PUbtAozVlQ8jZY6oA28EC3g1tms9fTE2ZcDa
+         RMlIlcdXZM4XVMWnqTjPs09F6yU2heiPoDlvaYqTUWA9EvPEGTQBDRUphKmtpfeEraTu
+         UXGA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=QSz5sBDG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79d693081bcsi1021444785a.412.2024.07.02.07.03.16
+        by mx.google.com with ESMTPS id d75a77b69052e-4465148a7d9si104344181cf.325.2024.07.02.07.09.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2024 07:03:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Jul 2024 07:09:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=QSz5sBDG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sOe5p-0007sG-Qn; Tue, 02 Jul 2024 10:02:49 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sOeBq-0005M8-1R; Tue, 02 Jul 2024 10:09:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1sOe5n-0007rQ-PW; Tue, 02 Jul 2024 10:02:47 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1sOe5k-0003HE-KU; Tue, 02 Jul 2024 10:02:47 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WD4Lk1Hn8z67k9Y;
- Tue,  2 Jul 2024 22:00:46 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id 75B93140A70;
- Tue,  2 Jul 2024 22:02:37 +0800 (CST)
-Received: from localhost (10.203.174.77) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 2 Jul
- 2024 15:02:36 +0100
-Date: Tue, 2 Jul 2024 15:02:36 +0100
-To: "Michael S. Tsirkin" <mst@redhat.com>
-CC: Igor Mammedov <imammedo@redhat.com>, Sunil V L <sunilvl@ventanamicro.com>, 
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <qemu-riscv@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau
- <marcandre.lureau@redhat.com>, "Daniel P . =?ISO-8859-1?Q?Berrang=E9?="
- <berrange@redhat.com>, Thomas Huth <thuth@redhat.com>, Philippe
- =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Ani Sinha
- <anisinha@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Gerd Hoffmann
- <kraxel@redhat.com>, Sia Jee Heng <jeeheng.sia@starfivetech.com>, Alistair
- Francis <alistair23@gmail.com>, Daniel Henrique Barboza
- <dbarboza@ventanamicro.com>, Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng
- <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei
- <zhiwei_liu@linux.alibaba.com>, "Alistair Francis" <alistair.francis@wdc.com>
-Subject: Re: [PATCH v4 16/16] tests/qtest/bios-tables-test: Add expected
- ACPI data files for RISC-V
-Message-ID: <20240702150236.000042eb@Huawei.com>
-In-Reply-To: <20240701170330-mutt-send-email-mst@kernel.org>
-References: <20240625150839.1358279-1-sunilvl@ventanamicro.com>
- <20240625150839.1358279-17-sunilvl@ventanamicro.com>
- <20240627141803.42cd46c1@imammedo.users.ipa.redhat.com>
- <20240701170330-mutt-send-email-mst@kernel.org>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOeBi-0005Ao-Rb
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2024 10:08:56 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOeBd-0008EN-2s
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2024 10:08:54 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-42562a984d3so29883135e9.3
+ for <qemu-arm@nongnu.org>; Tue, 02 Jul 2024 07:08:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1719929327; x=1720534127; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=uvjGohX9jpqU4S0vaNGN/OLaq0Blh/PgFGJDO8c8dTs=;
+ b=QSz5sBDGjTzLMQhDBf7pxGa0X0wmLFkpobBO0ac9ko0Bml/gWdmobFQa4IhO1G1lvM
+ yM6j8Ayy+g4Kiskc3NODIJ9Mj0ieQAlcOk2gUmuKbyYsTt7+0W/USb8i9ZvXABfRRzZ7
+ MwdtF1HgszTAUDhYZxgPppqfHCOcMgraaZUKFohvPi9d0yuzuNfxX98I/jy58fdiwa5i
+ CVKISAo+ghDRunov+Tez/eOsNi9srsREGhLBZZ6HNMjHoGmARewD96JIcXLdm0rI6DgR
+ /ooCybvO9BRJwH1yfMG0UakUj8z6vsHrrow1SiqIuZ7FNi/WtruaK5Vn4Xw86lKa0MkY
+ mIeg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1719929327; x=1720534127;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=uvjGohX9jpqU4S0vaNGN/OLaq0Blh/PgFGJDO8c8dTs=;
+ b=C0M4LKiWegCILSDoPxD8Sqlp8EGNtGPWYAwaLEk27MzN96fXF0n43bjW/xKlFW7R1R
+ 3CflH9jZSVjIP9jEyyqvAzq+2JfWcUVxb8KAO9Ylw8O/YuOTMfWC9EUUrHAiMfh2tUJv
+ HXcVRohhDIlEgA3gJIyGPLS7PpWIqYZ/3YeRvYzp4EPIOY+mXfc8V4v6w6ff6GuSCi0O
+ 2cUaBjbNeLarTWBUJbyrVTcHTcevAxDqB5cacNvmvLExWyqzeIFrl4Oo2trorq2CLxAO
+ Gz2fKE8AqDwdmpc7nFjtK4fOOEbC5p1h3puEqvaaE4Uj5YfbhcRQCu/dKiH12wuX42vL
+ BIIA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVWYKOSDnwYSLlLqUPOPuTOJca3inLYR3K+KUqqm9z8/MXHekxonCvbdyJ20sYq13a/02UCm/tU4LJ144+wh7zvMWF6
+X-Gm-Message-State: AOJu0Yx6/b8gBpZquoYw91pmaH5Fv6Cc/GmOwSjmT02DCfNq17aUHSgr
+ SExo24G12y5B/VAO+mmpy3jgJzIVMvsLytPqVb9N8ABbw3LrT2vzBImk/YBWYls=
+X-Received: by 2002:a05:600c:35c3:b0:425:65c5:79b4 with SMTP id
+ 5b1f17b1804b1-4257a02b6c5mr65427185e9.26.1719929326704; 
+ Tue, 02 Jul 2024 07:08:46 -0700 (PDT)
+Received: from m1x-phil.lan ([176.187.209.58])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4257fb4fabdsm106739375e9.46.2024.07.02.07.08.44
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 02 Jul 2024 07:08:46 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Tyrone Ting <kfting@nuvoton.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Hao Wu <wuhaotsh@google.com>, Thomas Huth <thuth@redhat.com>,
+ Shengtan Mao <stmao@google.com>, Chris Rauer <crauer@google.com>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+ Laurent Vivier <lvivier@redhat.com>, Luc Michel <luc.michel@amd.com>,
+ Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Patrick Venture <venture@google.com>
+Subject: [PATCH 0/4] qtest/npcm7xx_sdhci: Use card-provided address (RCA)
+Date: Tue,  2 Jul 2024 16:08:38 +0200
+Message-ID: <20240702140842.54242-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.174.77]
-X-ClientProxiedBy: lhrpeml100003.china.huawei.com (7.191.160.210) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /kGkFP47Zq5b
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: H2gjViEQen7u
 
-On Mon, 1 Jul 2024 17:03:43 -0400
-"Michael S. Tsirkin" <mst@redhat.com> wrote:
+Avoid to use the SDCard hardcoded 0x4567 RCA in npcm7xx
+SDHCI qtest, so we can generate one in the card model.
 
-> On Thu, Jun 27, 2024 at 02:18:03PM +0200, Igor Mammedov wrote:
-> > On Tue, 25 Jun 2024 20:38:39 +0530
-> > Sunil V L <sunilvl@ventanamicro.com> wrote:
-> >   
-> > > As per the step 5 in the process documented in bios-tables-test.c,
-> > > generate the expected ACPI AML data files for RISC-V using the
-> > > rebuild-expected-aml.sh script and update the
-> > > bios-tables-test-allowed-diff.h.
-> > > 
-> > > These are all new files being added for the first time. Hence, iASL diff
-> > > output is not added.
-> > > 
-> > > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> > > Acked-by: Alistair Francis <alistair.francis@wdc.com>
-> > > Acked-by: Igor Mammedov <imammedo@redhat.com>  
-> > 
-> > Michael,
-> > can it go via risc-v tree or
-> > do you plan to merge it via your tree?  
-> 
-> given patch 1 is merged, I took the rest.
+Philippe Mathieu-Daudé (4):
+  hw/sd/npcm7xx_sdhci: Use TYPE_SYSBUS_SDHCI definition
+  hw/sd/sdhci: Log non-sequencial access as GUEST_ERROR
+  tests/qtest/npcm7xx_sdhci: Access the card using its published address
+  hw/sd/sdcard: Generate random RCA value
 
-Looks like your CI runs are catching this as well but
-RHCT here is failing.  I rebased the GI/GP set on top of this
-and ignored that failure by skipping riscv64 tests.
+ tests/qtest/libqos/sdhci-cmd.h   |  2 ++
+ hw/sd/npcm7xx_sdhci.c            |  3 ++-
+ hw/sd/sd.c                       | 11 ++++++++---
+ hw/sd/sdhci.c                    |  5 +++--
+ tests/qtest/npcm7xx_sdhci-test.c |  8 ++++++--
+ hw/sd/trace-events               |  1 +
+ 6 files changed, 22 insertions(+), 8 deletions(-)
 
-Jonathan
-
-> 
-> > > ---
-> > >  tests/data/acpi/riscv64/virt/APIC           | Bin 0 -> 116 bytes
-> > >  tests/data/acpi/riscv64/virt/DSDT           | Bin 0 -> 3518 bytes
-> > >  tests/data/acpi/riscv64/virt/FACP           | Bin 0 -> 276 bytes
-> > >  tests/data/acpi/riscv64/virt/MCFG           | Bin 0 -> 60 bytes
-> > >  tests/data/acpi/riscv64/virt/RHCT           | Bin 0 -> 314 bytes
-> > >  tests/data/acpi/riscv64/virt/SPCR           | Bin 0 -> 80 bytes
-> > >  tests/qtest/bios-tables-test-allowed-diff.h |   6 ------
-> > >  7 files changed, 6 deletions(-)
-> > > 
-> > > diff --git a/tests/data/acpi/riscv64/virt/APIC b/tests/data/acpi/riscv64/virt/APIC
-> > > index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..66a25dfd2d6ea2b607c024722b2eab95873a01e9 100644
-> > > GIT binary patch
-> > > literal 116
-> > > zcmZ<^@N_O=U|?X|;^gn_5v<@85#X!<1dKp25F13pfP@Mo12P{Zj?R|`s)2!c7=s}J
-> > > I#NvT*0o0BN0RR91
-> > > 
-> > > literal 0
-> > > HcmV?d00001
-> > > 
-> > > diff --git a/tests/data/acpi/riscv64/virt/DSDT b/tests/data/acpi/riscv64/virt/DSDT
-> > > index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..0fb2d5e0e389541209b765d5092d0706f40298f6 100644
-> > > GIT binary patch
-> > > literal 3518
-> > > zcmZvf%WvaU6vnR;w@IBxlQexl(t(j!ppl%0(ryq<oOYV3X-%9`q=14{b;M9K6c~^O
-> > > zgcx<fqhd2ti4B_~D)B!c1W2sdvE#L7!#}_>eCJ*}oI`D?w!iChKA+$9t$orAn%(bn
-> > > zN+n)t?0eh6a^of6TgGN7rRbcFh1Tyc_k%{iceZVNuIr}z+pT7<?)fc<HI?okw3^tr  
-> > > z>)qm0&dr&dmZB`a{a^Ra*0&D5Eo1b;X8Qm}E3gQ<btjYVdtTkbz7rISPX6ODvMUs3
-> > > zVE91w&KfCiza7@#@A>YkTOF1_DRa)WNl^t#{A^TNmZNji{btZCtt5&QPNDqU;E!+b    
-> > > zecnEQ^xc;~?0jvN=B?69B6sx0n@1<N?!0~c*1N~|jvlD2+E~Xu>-LMCh<kUhvyXCD
-> > > z|GVk1+UV8=+`16nn$W3iZBaGE(t=R0Su8V)L_|(iti)M3i8v3Jc_g_<E!HC$=dr;&
-> > > zZ0_+)tcM-v;WLjB?y(x{F%swTD)SiS9?!;ljK+DKGLIDZSc~;Y#d$nr9_i3y=NsQ^  
-> > > zu@zZ&*ReP}{EyK3th+T@*_*eqZ#4FX%O>b{iWO(USDtFAW3{YY{55g*p1P}!a8zWX
-> > > z7lz;IPVBzpJS=7G%wV8y2Q62ba|`EHRm#%1lYm%>L=vK=N;x|_7+?*WxKL3R0`umY
-> > > z&O>M<DHHxW7E8~>hKe$y(1g;N2-TU8l!<C|EEb%J4HacZp-Gd8P@M@$nW#v|VwsuP    
-> > > zP=$;-)Haz>@sOMoiwl`i1tW@cj+o4-cu3BPCB-VhD+4MD9hIDroD&Pl#Oi8OIy2%-
-> > > zNlr-4iRFXLXr|LTGn$gL<b>p$V}cX!M^n3=p)tt`$vN>NG_kr`M{qil6Owag1ZPHY
-> > > zW+W#h=gbPutl-Q_PDsv)?-Htwo@Y*Q<|HR1=gbSvyx`1BPDsu<E;z>p=eXpA<eYfp
-> > > zv*(GAkEvZhm4f7i<eWvpSrnW_$qC6hOM<f`I7^Zfl5<W7&I!ReAvqyAXIXHT1!q}u
-> > > zLUPVY!8s{7CnYB&=bRFpQ-X6!azb*>X~8)yIHx5iB<DoK!Jg-g;GB`1keqW?aLx+O  
-> > > zS;+~>Ip+lDoZy_3oRFMzUU1F}&UwiR$vGDU=Yrr|kera5b5U?E3eH8z3CTH^1m}|A    
-> > > zT#}rSoU<Z0D}u8kIUx;a@2q9hqcop+`Y3zu*6>5@qiM`L8Qmx@>rXnqyVu6bqy3;0
-> > > zSfN$e$O$X-aop-gjFlN1TJ2C(VM8aZsGs9rPsDhcG3gaHcG3%d9rt=N#><R_Ugd1x  
-> > > zYt+>h-rEXOMpLn!a_)bcQwbVUYCt>d6Z~go(OKwiV=x$e6rJOWm8FJLZ)jL(gSOQ9    
-> > > z(=101Q%{N90rg{iGreXyIPiUy_PU*2Ro)uw?+2cJexkhQVfAu5b@3W?^1b$-wSOuL  
-> > > z8($pWumAYmuXoN*92)^EIHqx|osu9QI;oM>2efl4w7)DozPM|Bh$~ecUA>%od=bT&    
-> > > z;R0PerC=JrI{7MZ#_1;2tCR9A{Hkc%mp4o`zpVZISFrki`_c5@?b)Ba_T|{c>*}hQ    
-> > > pv@F`;cR<_jYzAT_(hnb+<eKANn;)0v1k>|8pBtRxTSGr9{slF`>K_0A
-> > > 
-> > > literal 0
-> > > HcmV?d00001
-> > > 
-> > > diff --git a/tests/data/acpi/riscv64/virt/FACP b/tests/data/acpi/riscv64/virt/FACP
-> > > index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..a5276b65ea8ce46cc9b40d96d98f0669c9089ed4 100644
-> > > GIT binary patch
-> > > literal 276  
-> > > zcmZ>BbPf<<WME(ucJg=j2v%^42yj*a0-z8Bhz+8t3k1-OV?`GjD1M-;Zz#xa0OIBc    
-> > > A0RR91
-> > > 
-> > > literal 0
-> > > HcmV?d00001
-> > > 
-> > > diff --git a/tests/data/acpi/riscv64/virt/MCFG b/tests/data/acpi/riscv64/virt/MCFG
-> > > index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..37eb923a9320f5573c0c2cdb90bd98409cc7eb6f 100644
-> > > GIT binary patch
-> > > literal 60
-> > > rcmeZuc5}C3U|?Y6aq@Te2v%^42yj*a0!E-1hz+8VfB}^KA4CHH3`GY4
-> > > 
-> > > literal 0
-> > > HcmV?d00001
-> > > 
-> > > diff --git a/tests/data/acpi/riscv64/virt/RHCT b/tests/data/acpi/riscv64/virt/RHCT
-> > > index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..beaa961bbf0f0486c0dee25f543377c928354f84 100644
-> > > GIT binary patch
-> > > literal 314
-> > > zcmXAlu}%Xq42FGxD#XNyI`tt=C&buWx`A2-wkXNvbP-K1O46&8iKjrk6)SI3ey5h~
-> > > z@3-SPa`wCa{iPvl)b_RC9X8vKw|)adiC8n)zP^7d?+~A>`lE(^DK1@Wog4=(iq&1K  
-> > > z7;1J`gewX|OE=3Z>{xM3wM)ljIQKa+635YaZ7jrOeGc+eJEnks*|jl=GEUBVQ8WhX    
-> > > zK@<flJgso_nMF!k2aE&flg}m^e@2oQd6bm~m(n5!gJ?a<U{EgOALs#2D_Y&qJuA9g  
-> > > Pp1|9>GjINg;u`)Bd);9H    
-> > > 
-> > > literal 0
-> > > HcmV?d00001
-> > > 
-> > > diff --git a/tests/data/acpi/riscv64/virt/SPCR b/tests/data/acpi/riscv64/virt/SPCR
-> > > index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..4da9daf65f71a13ac2b488d4e9728f194b569a43 100644
-> > > GIT binary patch
-> > > literal 80  
-> > > zcmWFza1IJ!U|?X{>E!S15v<@85#X!<1dKp25F12;fdT`FDF9*%FmM4$c8~z`e;@#f    
-> > > G!2kgKJqrN<
-> > > 
-> > > literal 0
-> > > HcmV?d00001
-> > > 
-> > > diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-> > > index 70474a097f..dfb8523c8b 100644
-> > > --- a/tests/qtest/bios-tables-test-allowed-diff.h
-> > > +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-> > > @@ -1,7 +1 @@
-> > >  /* List of comma-separated changed AML files to ignore */
-> > > -"tests/data/acpi/riscv64/virt/APIC",
-> > > -"tests/data/acpi/riscv64/virt/DSDT",
-> > > -"tests/data/acpi/riscv64/virt/FACP",
-> > > -"tests/data/acpi/riscv64/virt/MCFG",
-> > > -"tests/data/acpi/riscv64/virt/RHCT",
-> > > -"tests/data/acpi/riscv64/virt/SPCR",  
-> 
-> 
+-- 
+2.41.0
 

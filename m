@@ -1,123 +1,120 @@
-Received: by 2002:a05:7022:ef0e:b0:81:d0c2:543b with SMTP id qy14csp2375504dlb;
-        Tue, 2 Jul 2024 07:13:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXuOoVCymSWwB35wDqqhkN0zTjdXcxn6ui0+YahekXqpjrnBgyb68N53TU/oLX06ACpUomPLDsEVN7MxeqqZaCJqUUB7AxK
-X-Google-Smtp-Source: AGHT+IF8WMi2l4YULyYAFeyAd4/QEJunSKJP1/86fAriZuGrnUh62/ipbN1cTrai24YQJbLesrWS
-X-Received: by 2002:a05:6808:13c8:b0:3d6:40fe:d538 with SMTP id 5614622812f47-3d6b4de2075mr12471355b6e.37.1719929607864;
-        Tue, 02 Jul 2024 07:13:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719929607; cv=none;
+Received: by 2002:a05:7022:ef0e:b0:81:d0c2:543b with SMTP id qy14csp2376601dlb;
+        Tue, 2 Jul 2024 07:14:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV4wjG/7wSu7/Bx34xcdFAvRnGn30R+ajRKkv6p8/haDHzzIyPMPKOwCvfOZH/YLDeZLUV+ZLCXoiAEo8Pyxa9iAAsxw0ir
+X-Google-Smtp-Source: AGHT+IEs2ju1XijxVSIsPl32O17XTxek5t0zFaDR/HKJrvA7vcq+m1N0iQ2ojnfRRxNF04nG3YwH
+X-Received: by 2002:a05:6122:2807:b0:4ef:5829:f4e2 with SMTP id 71dfb90a1353d-4f2a5650f8bmr6695083e0c.6.1719929688251;
+        Tue, 02 Jul 2024 07:14:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719929688; cv=none;
         d=google.com; s=arc-20160816;
-        b=NE01L1yeh99MFj/y+LfIkucdqOIE/gZr7491GD33+c/BxyjS1lgWtdZMd67FuSnnvq
-         mrsE4IcPcWIh2VKFVQgkLBUBiA4iMRUhvxiyaFOrbRtLB2xkuTGz43Jap+y5QHTbti32
-         5YTRTHuNDSmuDkdpzDjwy670nVMsp4RBG1LlNG/1SHyGr2dkqZ4OfqKKev4OpGyjSr3a
-         9dpIZzBTmb9adlVVTthpJJAydilkcPuKZyQo7q0WLDo/73xWaezxdyABiPsAOyYBPJa+
-         HvXRD7RgLCDlBzn4O3oMKd5O5eAmyd9/mGrRn/foW5/z0EYCUL/QXAmQwDtHFNYhFfs7
-         G6xA==
+        b=TOeakwfuak/BF8PF15SPSE/ga2nfTDmjQsyd9LwehKPikNTD7c31EOqQl6nHFX2PkM
+         GtYmgn53JmX05RqZI2DiOLgo14200rmv6rLp0D/cu+XunMLcYHeKi3yTfErDZVhW7gvT
+         3y6Ai/hp3s3hCnEFyiI9qnus2RWgSC0vpW638of4GdjVyi0YwFWzwXz+y2U4pe5FY9+/
+         PoUoY7FqXakfQXE+WPxXTqokXd6oixcUZ5jQw1zYUrzBH4HJfYVumiH9/zJ1wSye4lfN
+         kJoSpvJ85Ph4FVSr5nnLtndk81+v2uLxMkhdbOZh/JkR/dO4j7i6pI1Pka3C7639XPye
+         RYcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=SUxXXLDnAjmmN0Yi+4nhd+mhBCkrJEwNWiEK8gau7L4=;
-        fh=Y6OlZAOK4jiLjNtMJ9yraI+FFvJY3j5B3PSa8/rtbNE=;
-        b=XjsH8C86vNJpAqhdixAoOfY/rBRxphDAjAwXAJaQycmlIuiNvpByaVaBZRnbmO7M43
-         UeZPqVpDIh/Ps9Lklg7dkoX3x0GuWKJzvdE30uxDgWEi7J6GhsKG7KRXmSINfr155uGH
-         5tOp4u1c1fyCeY9cdxgohbw/F9GPqE8SUVYE+HkfMC3o2V5+Zy5jb3GgXVfV1HgzjlrA
-         bIDtcltCp7FgsV1PNSnIucCpZyyEyq4YvF0N0e0YChl2HuKOPD2LuinDw5mqd5AdnxUl
-         suYoJ6pYe1gqbC7KX0VjICXr2scC8sW3e4xjxNU5tEZJTahQTJMeCnO72iX8UUa6te/I
-         vJng==;
+        bh=FXwifnBJIBh3zju1O5LT6q/8nalot/g3k4ePiwaH62E=;
+        fh=TvKUC/kP2UA/xAunlAeEjTcGRdW/mZCm75dycXPkSF4=;
+        b=iDJFuGDUHyXsFms+0qsYwX1Nsvh6wU5u/kaSxnfVTrSXHEsGzBkohhHR3YQ4sO6lba
+         m1OmEX3K4t8qKIrzFapGKcI23c0ififSrx9vcjkcT7L6PtiH1+IgwqT2wzlQk0vZoS4j
+         8WxoBcpOQohpkUZ30AwsH5VVNTjdZxdpCtVVB10DUDJFDoC48bTigxnr7UZBd2uyyHAV
+         2Kzh1+oajzcvYccuiyR9MXvmx86iC60rU4dELjgn0WnKRTtLyTn9sku2rHW18JbXSsz3
+         YjH9MoisZWO2PcXn8txjfdWfaNeK+IyLHzj4N2h5m/RKLN65vA3PJ1n9wWB9Lr4j2edN
+         E28A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=guH4XUgr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F2YtbeKt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4f292265794si1136860e0c.209.2024.07.02.07.13.27
+        by mx.google.com with ESMTPS id 71dfb90a1353d-4f29224e119si1137143e0c.139.2024.07.02.07.14.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2024 07:13:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Jul 2024 07:14:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=guH4XUgr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F2YtbeKt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sOeDA-0003xo-5L; Tue, 02 Jul 2024 10:10:25 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sOeDG-0004Rq-UA; Tue, 02 Jul 2024 10:10:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sOeD5-0003a1-HU
- for qemu-arm@nongnu.org; Tue, 02 Jul 2024 10:10:20 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sOeD8-0003rd-Ls
+ for qemu-devel@nongnu.org; Tue, 02 Jul 2024 10:10:23 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sOeCw-0000Gz-DM
- for qemu-arm@nongnu.org; Tue, 02 Jul 2024 10:10:19 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sOeD5-0000Ii-FB
+ for qemu-devel@nongnu.org; Tue, 02 Jul 2024 10:10:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1719929409;
+ s=mimecast20190719; t=1719929418;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=SUxXXLDnAjmmN0Yi+4nhd+mhBCkrJEwNWiEK8gau7L4=;
- b=guH4XUgrJHZf19YLy3KJ6Jhs4Jjim4mmGhZL7HgmsdCcgnmnvPy1LcpuIxaEmMRPsFJzHp
- zViCeaaw3JJvhGqYKK8K4bVbYGVhyYPt8x+ufxbwVhE0JyI1yHS/mAI6rAMubWB+cdmhSb
- NSglgrT3QvB6gj0ujhZaPHsEznR442c=
-Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
- [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=FXwifnBJIBh3zju1O5LT6q/8nalot/g3k4ePiwaH62E=;
+ b=F2YtbeKtlfbvVH+Rhm3sVZhEFHJD8GYAPiQyZOFHQ2x49BzX6yZIRCzlyKKw30uf9tsis7
+ ANBVJoV0R4+VKZdLk3btlU6hu2uPdQiUHg6qlcTEoeU1hXrddSckK7VZn5Y2leGZOBgEjc
+ FyvuYW0OA4dlYiEmfcuLnRxeW8LaVcQ=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-490-QZys86FgNz6RrgbbmOrRTw-1; Tue, 02 Jul 2024 10:10:08 -0400
-X-MC-Unique: QZys86FgNz6RrgbbmOrRTw-1
-Received: by mail-lj1-f200.google.com with SMTP id
- 38308e7fff4ca-2ee4ce81697so45237731fa.1
- for <qemu-arm@nongnu.org>; Tue, 02 Jul 2024 07:10:08 -0700 (PDT)
+ us-mta-184-D2-eDGZOPKiRW9xgmHuuCA-1; Tue, 02 Jul 2024 10:10:15 -0400
+X-MC-Unique: D2-eDGZOPKiRW9xgmHuuCA-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-3678e549a1eso196164f8f.0
+ for <qemu-devel@nongnu.org>; Tue, 02 Jul 2024 07:10:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719929407; x=1720534207;
+ d=1e100.net; s=20230601; t=1719929414; x=1720534214;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SUxXXLDnAjmmN0Yi+4nhd+mhBCkrJEwNWiEK8gau7L4=;
- b=eEGwgjLC4w+fl/VT6690ZcuK4kyVh/lJ8CVzwV2WIBlYuuLfXz9RdtzxxomEuzzOow
- /QLA7EWDkBqTcl2/Iwplz2HG1dbP8uM2oHNQQm/i57AoNPXSbAbnGAgyTmdB/RYvECUZ
- c5f/7j2yB56TvVd2ps2SJMmtoxa9/yFoy6gF8MXHefhXjL8J+agxtpDP4sPNIF7tVcLd
- U9kaNyhENNcDleIHkAqsn/Q3uQuXS+SqYmDQB0DAD/DLgl2WoPXs7ZGgDa+YXir0LklP
- BEAvVXvt5Ww0Evork5w+MY1zhHzykuOCjSd9YNSjBjeMBk8gPVXHACsrsUTw4r56iLbe
- qfdQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUGCuL3osm0ZV4hNqDzMAfQf/9zDe4agN2UCKTD5UVWTYh67j3xlzxAcAIGH8N1+kqF4DModRFolk+q769k2rxQh99O
-X-Gm-Message-State: AOJu0YwbPVL1wu2X0MDLIA24GreE8jN9zVe5vRsoEU2kGog0rBEFAAxX
- +JIqwWV550JPlSLdBbPu1QA7UD4bfluFtv87U3O1qfi+6wfhDAYsoOntivnYRghr2Egt9vWIs70
- uN/jUGHIHdQEwbmL1r6hrL1XprbfmLaAwGWWDwACw9BjaV0F6OA==
-X-Received: by 2002:a05:6512:33cd:b0:52c:e1e1:ae91 with SMTP id
- 2adb3069b0e04-52e8264be16mr6461249e87.11.1719929406968; 
- Tue, 02 Jul 2024 07:10:06 -0700 (PDT)
-X-Received: by 2002:a05:6512:33cd:b0:52c:e1e1:ae91 with SMTP id
- 2adb3069b0e04-52e8264be16mr6461215e87.11.1719929405946; 
- Tue, 02 Jul 2024 07:10:05 -0700 (PDT)
+ bh=FXwifnBJIBh3zju1O5LT6q/8nalot/g3k4ePiwaH62E=;
+ b=J/yx5TK6e8+dRn4tuEbyuYjL0ByLswJvTpAEO6B8RB1rK/G54IP8MHE384hRj49e/3
+ rXddElMaMTXcyI01z7QHLLny7wwhJ6dmpPAttEcIIjLGa5GC37Y8nFoGAbsnpLQimoDW
+ g7O0OXhszH7uCO8WrYQdJjt477JJ2g9w7h8sJ+jWWfCii8KEeOZOi4KWCvwgWNjG1Mm+
+ 796UFGTLA0tUdUW7yuZ+pZwXqGPDhxhp1VDH0K+f9y5KrOrI8MWv24Iclc4dBEWAKeCl
+ yI+NlaXejIlsk1rOws0G4UQUhQA4F3ybdtJRF8zJjUiIMGIj7I63E8V10YBjFwgBHlPC
+ /F4g==
+X-Gm-Message-State: AOJu0YzYkO3zF0beSPdrcJ48avk3ovJUNstgyBxBs0vbH91p/V+WOhw9
+ YI8QUpbpizy7nNhtJKlp1ivbBIw3ZbnNYNfWqlLji3r2ZvIw7p7q62WigdyiAJQdMgVKgv6OYRH
+ AiYwNg5FTYR7itNsDtRZSe8S+pkV/fC6xhgpd9uVhkrDZY9950febjYmuUKti648I+q3W2h7mL4
+ pnIfRPFXE95fj01Iw+2P0Sjtm4oqmHgw==
+X-Received: by 2002:adf:ec03:0:b0:367:8e63:4da4 with SMTP id
+ ffacd0b85a97d-3678e634fa5mr750890f8f.14.1719929413934; 
+ Tue, 02 Jul 2024 07:10:13 -0700 (PDT)
+X-Received: by 2002:adf:ec03:0:b0:367:8e63:4da4 with SMTP id
+ ffacd0b85a97d-3678e634fa5mr750849f8f.14.1719929413359; 
+ Tue, 02 Jul 2024 07:10:13 -0700 (PDT)
 Received: from redhat.com ([2a02:14f:1f5:eadd:8c31:db01:9d01:7604])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3675a0fba0bsm13305331f8f.69.2024.07.02.07.10.04
+ 5b1f17b1804b1-4256b099c72sm198300495e9.37.2024.07.02.07.10.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Jul 2024 07:10:05 -0700 (PDT)
-Date: Tue, 2 Jul 2024 10:10:02 -0400
+ Tue, 02 Jul 2024 07:10:12 -0700 (PDT)
+Date: Tue, 2 Jul 2024 10:10:10 -0400
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Nicolin Chen <nicolinc@nvidia.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eric Auger <eric.auger@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org
-Subject: [PULL 60/91] hw/arm/virt-acpi-build: Drop local iort_node_offset
-Message-ID: <f5b7c97cbf3562a2d52337c6ccba8a73e9dc0c11.1719929191.git.mst@redhat.com>
+ Nicolin Chen <nicolinc@nvidia.com>, Eric Auger <eric.auger@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org
+Subject: [PULL 62/91] hw/arm/virt-acpi-build: Fix id_count in
+ build_iort_id_mapping
+Message-ID: <9bad72efc04a87e595aec1e9ac0c43ae3c0ad695.1719929191.git.mst@redhat.com>
 References: <cover.1719929191.git.mst@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <cover.1719929191.git.mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -126,64 +123,107 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /IPsnwWcieK7
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: CmUwOMH80EOS
 
 From: Nicolin Chen <nicolinc@nvidia.com>
 
-Both the other two callers of build_iort_id_mapping() just directly pass
-in the IORT_NODE_OFFSET macro. Keeping a "const uint32_t" local variable
-storing the same value doesn't have any gain.
+It's observed that Linux kernel booting with the VM reports a "conflicting
+mapping for input ID" FW_BUG.
 
-Simplify this by replacing the only place using this local variable with
-the macro directly.
+The IORT doc defines "Number of IDs" to be "the number of IDs in the range
+minus one", while virt-acpi-build.c simply stores the number of IDs in the
+id_count without the "minus one". Meanwhile, some of the callers pass in a
+0xFFFF following the spec. So, this is a mismatch between the function and
+its callers.
 
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-Message-Id: <20240619001708.926511-1-nicolinc@nvidia.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Fix build_iort_id_mapping() by internally subtracting one from the pass-in
+@id_count. Accordingly make sure that all existing callers pass in a value
+without the "minus one", i.e. change all 0xFFFFs to 0x10000s.
+
+Also, add a few lines of comments to highlight this change along with the
+referencing document for this build_iort_id_mapping().
+
+Fixes: 42e0f050e3a5 ("hw/arm/virt-acpi-build: Add IORT support to bypass SMMUv3")
+Suggested-by: Michael S. Tsirkin <mst@redhat.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+Message-Id: <20240619201243.936819-1-nicolinc@nvidia.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/arm/virt-acpi-build.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ hw/arm/virt-acpi-build.c | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
 
 diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index b2366f24f9..102e2da934 100644
+index 102e2da934..e10cad86dd 100644
 --- a/hw/arm/virt-acpi-build.c
 +++ b/hw/arm/virt-acpi-build.c
-@@ -269,7 +269,6 @@ static void
- build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+@@ -209,12 +209,19 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
+ #define ROOT_COMPLEX_ENTRY_SIZE 36
+ #define IORT_NODE_OFFSET 48
+ 
++/*
++ * Append an ID mapping entry as described by "Table 4 ID mapping format" in
++ * "IO Remapping Table System Software on ARM Platforms", Chapter 3.
++ * Document number: ARM DEN 0049E.f, Apr 2024
++ *
++ * Note that @id_count gets internally subtracted by one, following the spec.
++ */
+ static void build_iort_id_mapping(GArray *table_data, uint32_t input_base,
+                                   uint32_t id_count, uint32_t out_ref)
  {
-     int i, nb_nodes, rc_mapping_count;
--    const uint32_t iort_node_offset = IORT_NODE_OFFSET;
-     size_t node_size, smmu_offset = 0;
-     AcpiIortIdMapping *idmap;
-     uint32_t id = 0;
-@@ -415,7 +414,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-             range = &g_array_index(its_idmaps, AcpiIortIdMapping, i);
-             /* output IORT node is the ITS group node (the first node) */
-             build_iort_id_mapping(table_data, range->input_base,
--                                  range->id_count, iort_node_offset);
-+                                  range->id_count, IORT_NODE_OFFSET);
+-    /* Table 4 ID mapping format */
+     build_append_int_noprefix(table_data, input_base, 4); /* Input base */
+-    build_append_int_noprefix(table_data, id_count, 4); /* Number of IDs */
++    /* Number of IDs - The number of IDs in the range minus one */
++    build_append_int_noprefix(table_data, id_count - 1, 4);
+     build_append_int_noprefix(table_data, input_base, 4); /* Output base */
+     build_append_int_noprefix(table_data, out_ref, 4); /* Output Reference */
+     /* Flags */
+@@ -305,8 +312,8 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         }
+ 
+         /* Append the last RC -> ITS ID mapping */
+-        if (next_range.input_base < 0xFFFF) {
+-            next_range.id_count = 0xFFFF - next_range.input_base;
++        if (next_range.input_base < 0x10000) {
++            next_range.id_count = 0x10000 - next_range.input_base;
+             g_array_append_val(its_idmaps, next_range);
+         }
+ 
+@@ -365,7 +372,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         build_append_int_noprefix(table_data, 0, 4);
+ 
+         /* output IORT node is the ITS group node (the first node) */
+-        build_iort_id_mapping(table_data, 0, 0xFFFF, IORT_NODE_OFFSET);
++        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET);
+     }
+ 
+     /* Table 17 Root Complex Node */
+@@ -418,7 +425,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
          }
      } else {
          /* output IORT node is the ITS group node (the first node) */
+-        build_iort_id_mapping(table_data, 0, 0xFFFF, IORT_NODE_OFFSET);
++        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET);
+     }
+ 
+     acpi_table_end(linker, &table);
 -- 
 MST
 

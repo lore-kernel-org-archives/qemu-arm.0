@@ -1,87 +1,106 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1757552njm;
-        Mon, 1 Jul 2024 22:57:09 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXc6LMjWsLbkZMc+3qm2RbuF4PZD0jzRzWN6YhlDyJh7Yg4OKMc/TqQtgPPumjADZ9lAFbE0NPfcqYDMVOm6ENDrw12Y1Zc
-X-Google-Smtp-Source: AGHT+IEtnx38hhfIqPFsg2b1z/R1jinV8mrvBm0w6JOdnssNFHg7i8gO6AJYHMsItgkPiPJlgqyd
-X-Received: by 2002:a05:620a:20d8:b0:79d:81be:4c85 with SMTP id af79cd13be357-79d81be564emr713065985a.6.1719899829827;
-        Mon, 01 Jul 2024 22:57:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719899829; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1775360njm;
+        Mon, 1 Jul 2024 23:49:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWlsRWfwPIUnfSx4JNvuyE4XhjpmWlhIjwHJutkRcyqOZGdZyUoqJNTxq36N1QQ47haRkxpysdGcPCP/lTHJMYRVdvgX6Ry
+X-Google-Smtp-Source: AGHT+IGsk9wlywALtSXv/jdBpWS0ja4ly2PJJJpKSumLgBlWVDZ4S4yPGw2d6HRMw7+VRAFyY+hD
+X-Received: by 2002:a05:620a:2101:b0:79d:7a40:1bea with SMTP id af79cd13be357-79d7b978c03mr835797285a.7.1719902950416;
+        Mon, 01 Jul 2024 23:49:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719902950; cv=none;
         d=google.com; s=arc-20160816;
-        b=SI9UWGR23O/F50qV4ZT7xocAR6pzooH8IN2E8nMgBgHW8f2vpADegh2qOMPRLY8W3d
-         /GCtkpRcYmV1yCroMb63jceSs2zeRSxWl9/ML6nJYAWgdEWT6cfVm1MjKaBTUh9A8cWe
-         pg+owr1iKg7e2o7uIeVVtnXIZRolYCUEwTmPoTugRdDa1P1YA/niEnhNeyg6bm1i0jk/
-         IcUFScLpIV/+6443P4VwPcUZmfrvR+d1qMSBnm9gYnaA8MYIFDgJD2lNYZ1Lyxp9DIzg
-         cNQacOtC69n0peRx9aHbOoWjBTJhOFnmn+ktUYxJiE52BjOdgohHcMPH4VCo8f6A1BB4
-         6Y0A==
+        b=c7FsgaYPrqUFIbZllKULMwfo3vHiU+bptni1FUD6AEt0wdPlEXWsuGHrB3yJf1mBP/
+         O9+MzK6LvPxSQmDMLgs85cUkI8sVdSlnku15YxvevPaiR/IYt7+AKmGg6C+XP4a+xsow
+         aUzbh8x5WS3HLpGXLKhmKNDUrh5uJjW5SCulIx1efPsvVtebdkIjxE+cqOxXuntHu4F5
+         aFHzMPTz7rfwMqhsAsyulRLFcQ7K4ECp2Zvq1zEMPLbDdHnClqpQU3pK2yrTvmdu33iB
+         WDKw9dVJgO6t2eppKcZOXjHM6j3rX+UDFQ6iM8cehET22YJSAtytQUqA+bygl+A6s91/
+         mBnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=bvtemdnPGuKzj6c4qwgZiLscV6UzHMa+WEeA9sTspnQ=;
-        fh=GyRCLZ+FHPHbrsiXEBSHGryq1Ew36XyJ1Dr4ER/UGoM=;
-        b=z9HA/B7u+MBNqRV7hBpLOZIUO+nHVWYr/IXkkcGek42YQZCHoV7oArCu2zq6x/dT53
-         EEAGndR5wDbU3zOgkfIJdqzMHCj0cxjznQ9IxInwM85xWr3/rFRvwNpUFdi5i0ZpEdra
-         ZQWRh3oIE+ckB/TFrLqygUYrJKUVpjp0IWd6xyt1uPxCbn4iGxfci0hMmvuU7FX9knO2
-         qXKRjswaFGwZdwFg+zt0GJDLxbNj426As8y4ve7gLVPNDgC/kj2aYfeaKevloMy3zt4Q
-         YEpMDFXUkqObWYmXQMOHSRo8mz29BJh2fadd0aE9OFZpSsI+0LfOrPch8R/lKF3UK3CX
-         Ma9A==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=Jnmy+S37iGQp58XhqokaoPh5CIRxqo22H/5bPEGFGjM=;
+        fh=eWdPzHs3VmBiPw1CExNovQSzF1nx2HjyYueC+bYkZqU=;
+        b=KyCxlpPMc07JO5kWScIQ9+dK8/NxOqhdpJcojNTKjZ1POnKb+7YOh3/eJcc4rdgVKc
+         UX6cRxLB4RZ+YPEjNuvI3gPeGj2agv6ZAOhtbDf7YE2FvCAXhk25Nim3HoQaVD5+xROk
+         uxY9P4aFEHcbn08UqbuSvlyABAKmib9yR4nJdHwLJEOqERWJwU+v8TnX0kcLxj//OMHi
+         ZdderoaNHzckYUR2yHYKo6uFsCe9oHx/64Mde7oBm2i09OAFyaSBsUBopFIY6089+xX6
+         irNsU+tQS5u6UwOVfGWAMVPkkVrulc1VWV/mYwJrz+vmAtYr3wfc1+A/fXKU8WQxOUVB
+         tUMw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79d6934d146si944696385a.726.2024.07.01.22.57.09
+        by mx.google.com with ESMTPS id af79cd13be357-79d69260c4esi952120685a.126.2024.07.01.23.49.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2024 22:57:09 -0700 (PDT)
+        Mon, 01 Jul 2024 23:49:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sOWVe-0005WM-Hg; Tue, 02 Jul 2024 01:56:58 -0400
+	id 1sOXJe-0007PT-NK; Tue, 02 Jul 2024 02:48:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=fXIt=OC=kaod.org=clg@ozlabs.org>)
- id 1sOWVd-0005RJ-VQ; Tue, 02 Jul 2024 01:56:57 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sOXJd-0007P9-Aq; Tue, 02 Jul 2024 02:48:37 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=fXIt=OC=kaod.org=clg@ozlabs.org>)
- id 1sOWVc-0007Ot-5y; Tue, 02 Jul 2024 01:56:57 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WCscN6Vkdz4x0C;
- Tue,  2 Jul 2024 15:56:52 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WCscL1CKfz4wnr;
- Tue,  2 Jul 2024 15:56:49 +1000 (AEST)
-Message-ID: <ebc70620-1793-472d-8d37-c9f0225cdd1e@kaod.org>
-Date: Tue, 2 Jul 2024 07:56:47 +0200
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sOXJZ-0007R1-Qb; Tue, 02 Jul 2024 02:48:36 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 1E57976094;
+ Tue,  2 Jul 2024 09:48:13 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 44B53FBB4C;
+ Tue,  2 Jul 2024 09:48:22 +0300 (MSK)
+Message-ID: <f65e6448-cfd2-425c-853a-5a4ae5cf2a8c@tls.msk.ru>
+Date: Tue, 2 Jul 2024 09:48:22 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] aspeed: Deprecate the tacoma-bmc machine
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20240625070830.492251-1-clg@redhat.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240625070830.492251-1-clg@redhat.com>
+Subject: Re: [PATCH v2 02/13] target/arm: Fix SQDMULH (by element) with Q=0
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-stable@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20240625183536.1672454-1-richard.henderson@linaro.org>
+ <20240625183536.1672454-3-richard.henderson@linaro.org>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20240625183536.1672454-3-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=fXIt=OC=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,64 +115,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NlwyeYm6Mgz2
+X-TUID: D19+wmDzOBho
 
-On 6/25/24 9:08 AM, Cédric Le Goater wrote:
-> The tacoma-bmc machine was a board including an AST2600 SoC based BMC
-> and a witherspoon like OpenPOWER system. It was used for bring up of
-> the AST2600 SoC in labs. It can be easily replaced by the rainier-bmc
-> machine which is part of a real product offering.
+25.06.2024 21:35, Richard Henderson wrote:
+> The inner loop, bounded by eltspersegment, must not be
+> larger than the outer loop, bounded by elements.
 > 
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> Cc: qemu-stable@nongnu.org
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/arm/tcg/vec_helper.c | 24 ++++++++++++++++--------
+>   1 file changed, 16 insertions(+), 8 deletions(-)
 
+If my understanding is correct, this one
 
-Applied to aspeed-next.
+Fixes: f80701cb44d3 ("target/arm: Convert SQDMULH, SQRDMULH to decodetree")
+
+and before this commit, there was no issue.
+
+Is my understanding correct?
 
 Thanks,
 
-C.
+/mjt
 
+> diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
+> index 7b34cc98af..d477479bb1 100644
+> --- a/target/arm/tcg/vec_helper.c
+> +++ b/target/arm/tcg/vec_helper.c
+> @@ -317,10 +317,12 @@ void HELPER(neon_sqdmulh_idx_h)(void *vd, void *vn, void *vm,
+>       intptr_t i, j, opr_sz = simd_oprsz(desc);
+>       int idx = simd_data(desc);
+>       int16_t *d = vd, *n = vn, *m = (int16_t *)vm + H2(idx);
+> +    intptr_t elements = opr_sz / 2;
+> +    intptr_t eltspersegment = MIN(16 / 2, elements);
+>   
+> -    for (i = 0; i < opr_sz / 2; i += 16 / 2) {
+> +    for (i = 0; i < elements; i += 16 / 2) {
+>           int16_t mm = m[i];
+> -        for (j = 0; j < 16 / 2; ++j) {
+> +        for (j = 0; j < eltspersegment; ++j) {
+>               d[i + j] = do_sqrdmlah_h(n[i + j], mm, 0, false, false, vq);
+>           }
+>       }
+> @@ -333,10 +335,12 @@ void HELPER(neon_sqrdmulh_idx_h)(void *vd, void *vn, void *vm,
+>       intptr_t i, j, opr_sz = simd_oprsz(desc);
+>       int idx = simd_data(desc);
+>       int16_t *d = vd, *n = vn, *m = (int16_t *)vm + H2(idx);
+> +    intptr_t elements = opr_sz / 2;
+> +    intptr_t eltspersegment = MIN(16 / 2, elements);
+>   
+> -    for (i = 0; i < opr_sz / 2; i += 16 / 2) {
+> +    for (i = 0; i < elements; i += 16 / 2) {
+>           int16_t mm = m[i];
+> -        for (j = 0; j < 16 / 2; ++j) {
+> +        for (j = 0; j < eltspersegment; ++j) {
+>               d[i + j] = do_sqrdmlah_h(n[i + j], mm, 0, false, true, vq);
+>           }
+>       }
+> @@ -512,10 +516,12 @@ void HELPER(neon_sqdmulh_idx_s)(void *vd, void *vn, void *vm,
+>       intptr_t i, j, opr_sz = simd_oprsz(desc);
+>       int idx = simd_data(desc);
+>       int32_t *d = vd, *n = vn, *m = (int32_t *)vm + H4(idx);
+> +    intptr_t elements = opr_sz / 4;
+> +    intptr_t eltspersegment = MIN(16 / 4, elements);
+>   
+> -    for (i = 0; i < opr_sz / 4; i += 16 / 4) {
+> +    for (i = 0; i < elements; i += 16 / 4) {
+>           int32_t mm = m[i];
+> -        for (j = 0; j < 16 / 4; ++j) {
+> +        for (j = 0; j < eltspersegment; ++j) {
+>               d[i + j] = do_sqrdmlah_s(n[i + j], mm, 0, false, false, vq);
+>           }
+>       }
+> @@ -528,10 +534,12 @@ void HELPER(neon_sqrdmulh_idx_s)(void *vd, void *vn, void *vm,
+>       intptr_t i, j, opr_sz = simd_oprsz(desc);
+>       int idx = simd_data(desc);
+>       int32_t *d = vd, *n = vn, *m = (int32_t *)vm + H4(idx);
+> +    intptr_t elements = opr_sz / 4;
+> +    intptr_t eltspersegment = MIN(16 / 4, elements);
+>   
+> -    for (i = 0; i < opr_sz / 4; i += 16 / 4) {
+> +    for (i = 0; i < elements; i += 16 / 4) {
+>           int32_t mm = m[i];
+> -        for (j = 0; j < 16 / 4; ++j) {
+> +        for (j = 0; j < eltspersegment; ++j) {
+>               d[i + j] = do_sqrdmlah_s(n[i + j], mm, 0, false, true, vq);
+>           }
+>       }
 
-> ---
-> 
->   Changes since v2:
->   - rephrased deprecation reason
->   - remove extra line in docs
->   
->   docs/about/deprecated.rst | 8 ++++++++
->   hw/arm/aspeed.c           | 2 ++
->   2 files changed, 10 insertions(+)
-> 
-> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-> index ff3da68208ac..5d9e4d8de725 100644
-> --- a/docs/about/deprecated.rst
-> +++ b/docs/about/deprecated.rst
-> @@ -256,6 +256,14 @@ images are not available, OpenWRT dropped support in 2019, U-Boot in
->   2017, Linux also is dropping support in 2024. It is time to let go of
->   this ancient hardware and focus on newer CPUs and platforms.
->   
-> +Arm ``tacoma-bmc`` machine (since 9.1)
-> +''''''''''''''''''''''''''''''''''''''''
-> +
-> +The ``tacoma-bmc`` machine was a board including an AST2600 SoC based
-> +BMC and a witherspoon like OpenPOWER system. It was used for bring up
-> +of the AST2600 SoC in labs.  It can be easily replaced by the
-> +``rainier-bmc`` machine which is a real product.
-> +
->   Backend options
->   ---------------
->   
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 40dc0e4c76db..53a4f665d0d0 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -1379,6 +1379,8 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
->       amc->i2c_init  = witherspoon_bmc_i2c_init; /* Same board layout */
->       mc->default_ram_size = 1 * GiB;
->       aspeed_machine_class_init_cpus_defaults(mc);
-> +
-> +    mc->deprecation_reason = "Please use the similar 'rainier-bmc' machine";
->   };
->   
->   static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
+-- 
+GPG Key transition (from rsa2048 to rsa4096) since 2024-04-24.
+New key: rsa4096/61AD3D98ECDF2C8E  9D8B E14E 3F2A 9DD7 9199  28F1 61AD 3D98 ECDF 2C8E
+Old key: rsa2048/457CE0A0804465C5  6EE1 95D1 886E 8FFB 810D  4324 457C E0A0 8044 65C5
+Transition statement: http://www.corpit.ru/mjt/gpg-transition-2024.txt
 

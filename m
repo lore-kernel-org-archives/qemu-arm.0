@@ -1,125 +1,117 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2005518njm;
-        Tue, 2 Jul 2024 07:37:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWZIK4qXpj1/GTqey9vfNXhUvcA11vHZbllfu4gHXV2XS4rgrP3uqItQ5jnBtBr9GsmKLeoX3ZaF5lYZx8RhFqXfUJPGu6G
-X-Google-Smtp-Source: AGHT+IF4FsY14QaFHpIKx26yMKViGHwr5NEQndaAjCedfPFOv7xoDhqxuPM5+glBCjB5mEjIwXpq
-X-Received: by 2002:a05:6102:5120:b0:48f:9584:bdc0 with SMTP id ada2fe7eead31-48f9ea0ed23mr10002762137.11.1719931076937;
-        Tue, 02 Jul 2024 07:37:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719931076; cv=none;
+Received: by 2002:a05:7022:ef0e:b0:81:d0c2:543b with SMTP id qy14csp2421251dlb;
+        Tue, 2 Jul 2024 08:28:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVKlni6yJg4KTtNnvh3w7X0aqH0/6mmsbS4IJLwsfEWnxC9wF06gM9E2I4oZp7ZUMgGamULRyNfoCkWBWjBzXyO0fg2Lzyx
+X-Google-Smtp-Source: AGHT+IFs4wvyLFk+tyAXW/OaxECkwXMRiWJUaHneb3BZ1j2MoQBHvCDa0YWZ4YJWmZt6kaX0MqB+
+X-Received: by 2002:a05:622a:648:b0:446:4ff1:e040 with SMTP id d75a77b69052e-44662e3eb49mr130795871cf.37.1719934113932;
+        Tue, 02 Jul 2024 08:28:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719934113; cv=none;
         d=google.com; s=arc-20160816;
-        b=ffOXHC8pKeCuTPlN3FzlMFFf5DP0dDRCN4T8QQD5o62Wkk6XRx4YH0EKD0/hM3ZcM4
-         RK8Zkw9GyaYp+aUY8vNBE2FDlt0UrsBXSXeO+hc8flM5g7uJBCWFVZ4qyl35WtPXHhZc
-         zIIz4kg7LQ/w/uo+LUIMVA5H9uu/qDKrIi1qRihyWi64MGN4ST9laUVtndVCs+l3XlAM
-         zEMTCV08+L1dfxj0sjMb3qdeA3cZIzvXfIRjpLFzaeXb9hkL2nngKbpIyNLoLAtIIjsu
-         AVdb4ybNCfCjHshPvxM3BtLCZ+h7HOB5s0G2K5LghLdoYT2VcODChjDBWtK9QFKHdhv/
-         PxdA==
+        b=oL7HaLdtdjabago0nrJoDnPj0GtNCRoqsX+Wij1wEnIpQwpKjYAB1GktkDyTuaA/UA
+         UILhObX9KgmkliHxTS95m3uUZYzr9bS7rQ1z+ucw+I1f0zPOtHyhb00Zu/8U4h31DcQF
+         hQG6+wyLF7+e1Tm7AvsCLkDgbOW6g19KVYq/UOptWZRYcQmh5PDpSBKRlS5th+hkYYWV
+         +Yj9RkFl1epGrbmK+G1jB+k3g6+AolDnWTZJ42oYLAQAiqDqhiN31fJRyvTgVxh0buBC
+         j7UL/56AmT+JiStoANqJZrT2bJ7Qt3saz9SDuVt8Xp+AfqUsNbRzhcCPsgDIbn3fJZ/l
+         taXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=SWtwqGaaAU9znATjDZLEHjLHq+ubVWP9uIPlnYfZH40=;
-        fh=q/L5koE2lLl+T7Q+ojg5M7LAuAy/9Upf0lxTTMtTLdo=;
-        b=y3aXCIekEcFBBhGCITK2NtoU7tlWn3eRTgivIbdB1MI5jOrxa6L6Br1GjpLYZdxAyn
-         v8giVREn3wO0Du+7IHAD3Hz+pfu+YnPhO0YwWBbf7M4eTLma5WyUk07KqJmOafIM634K
-         eUCDKy3LtzgkEzlJ4+DYYsaEUP1VxQc0qA+ixZQUOhwN1kEoyO9wUsHNeVqOrPF7Tszj
-         qoLsseJelEzoeGr1zL5VuLRz3q+WudMhDT03CrTBsyp6bZLSnTDLbfepC7MwkRH3/BZU
-         p0LHMsFcxnpt2undPzI8/0q1AJ9t8zG9QF0C0ldmeR0GVuw5D4RYUZZPbOgw3wihJTEn
-         /n2g==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=+gT6JHgN0sAyJsyLWXnk43TCFTRRU21Xv8R1X9fzSkY=;
+        fh=Ks2zSHYmc9bZIF+wtsrWQ57SmQeLGR9t5iO7hhulBN8=;
+        b=Ns2lG9lgvo2THxj+CyP6zFW/WsFg3wNh2qySvHH0UHwjfAb8zVsFxVJd4OFfvM9qV7
+         1nLKqQoqTL56MBCGTcB7UaOwJ51otDntcBGKE5rCn/N/SwmLz3rca5453fZguz54N3Dw
+         ZFd+QByf+8hPBVL1VoB5KMAESsRtXay00hns4o0lGi2ZWlTWGapDzBjSXcTfE5Zj2gRm
+         l69fn+YpBqMXw5zKdhnJugEa6Da3jJz4uXchm6W1yU6oiCyg8ykbw1Z8BVsLewmSzuGU
+         +DYA8778HnKU2Q/UVr1oLH2BXZpf4sjqtHhgI2efZlBMYpF/S+dybTA3gglOS1AvjZXG
+         ecyQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TBDsNSe6;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="Noka3Lf/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-48f9b264606si1554269137.508.2024.07.02.07.37.56
+        by mx.google.com with ESMTPS id d75a77b69052e-446514c2206si105533861cf.593.2024.07.02.08.28.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2024 07:37:56 -0700 (PDT)
+        Tue, 02 Jul 2024 08:28:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TBDsNSe6;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="Noka3Lf/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sOede-00018c-3v; Tue, 02 Jul 2024 10:37:46 -0400
+	id 1sOfQV-00045K-5O; Tue, 02 Jul 2024 11:28:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sOedc-00017q-RH
- for qemu-devel@nongnu.org; Tue, 02 Jul 2024 10:37:44 -0400
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <zheyuma97@gmail.com>)
+ id 1sOfQM-000422-Ui; Tue, 02 Jul 2024 11:28:07 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sOeda-0000al-5z
- for qemu-devel@nongnu.org; Tue, 02 Jul 2024 10:37:44 -0400
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-70a078edb8aso2342124b3a.1
- for <qemu-devel@nongnu.org>; Tue, 02 Jul 2024 07:37:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <zheyuma97@gmail.com>)
+ id 1sOfQK-0001lf-2E; Tue, 02 Jul 2024 11:28:05 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-5295eb47b48so5323784e87.1; 
+ Tue, 02 Jul 2024 08:28:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719931060; x=1720535860; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=SWtwqGaaAU9znATjDZLEHjLHq+ubVWP9uIPlnYfZH40=;
- b=TBDsNSe6l8Q9PJmP0t4xOI/+oPNuzI8oRrQhlxHp3aMwCnYg4NH2vpaa2IfPzlsSZK
- 8ioCKGhDCCegMhA+Io8zPThMKNmrmJYKPL5xlFmUZcs2UVjX55HHPJ0D7l8TRkxDZEYH
- 0uICkzcfJRQqtVZYMBwBNzdfpI9DzLe/n2GWHQyCxatPbbWcrGAi+UOULlJBc8tKfBkm
- 1F/15ZNrE+Hey7DCVl9Wukc87gcWiIimL3A95V/hXStRfS8/jOG2XQh/7Tk582GERmoK
- tyUpQH8MMpKwYk7PyPAXhBXtIxuba6L5MAuEjrHxrMPUvYZ9cS+WbacGKZuk/1fW6PfK
- yzSg==
+ d=gmail.com; s=20230601; t=1719934080; x=1720538880; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=+gT6JHgN0sAyJsyLWXnk43TCFTRRU21Xv8R1X9fzSkY=;
+ b=Noka3Lf/yKDxUVfKVf3RwgEebidwj5dBtZYcq22Xvohrtb7xzBiNEFs3d+17cuYSO4
+ FaZRX8s0yRgiRTkpbdNTVYTZ02H/5tP3RzAD8XSqAPZ7wGCNKjl4YwIJdsFPuWcIKbsL
+ SxXJs6Oc9tQkHsuOVT3EUuj4ERxY6qE1wT5gbORgtm6ljrysN/i8LLGr2uXgg8Jj9wtT
+ 4YU3IiDRNJl95EIikXdaNO5EU/GC819aLoqX0e/L9BJeSXxjbZa0f7D4XWzmwl/L4L+Y
+ ScVpq+bmhPNphFFO+IVkeRXqcq0zF3K/Yl0M/KiL+v6vCEsYhQveP0gsu8zjFzUD3NtG
+ xT9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719931060; x=1720535860;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=SWtwqGaaAU9znATjDZLEHjLHq+ubVWP9uIPlnYfZH40=;
- b=mJId2K46KiBjej7YnCc4BjVLmRF6eqeyBtv6pdSpAmwNVJrU+ehx7XeCcHnhiCRtFa
- D8YBoDvLvzYhifaAmPLCWtCA7n9l0XoxEZGkGXVh1GTLFgHVdz3zGMla/WqlHTk1o6O7
- 86ZjdMJfEK4MCZeW1uAGqDqUf3gxjvEnj/3Z9iTGG89ASwczf0GF7hs2+AyDGM7nI/23
- yqdtAFlKBjqyP3swce2WoRB7YRZAhEcZQUMgwKWIHgPOEjp9GdoHKAihUk7r1CVxWWaF
- DUAConjJctMoOFTmM4QLLA6NgjkhggWzatOzMDO1p8aXC2jIBgXcPK+uO8TqvaPesDKR
- LqKA==
+ d=1e100.net; s=20230601; t=1719934080; x=1720538880;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+gT6JHgN0sAyJsyLWXnk43TCFTRRU21Xv8R1X9fzSkY=;
+ b=sPxggacY5vs1+hB8HyApEUH6XyPgjlc5B8Vcnz+GeYZAmsibt7d/NNCutIpKK0oZYz
+ ZhMM9PjY9JdEJSBh9V/Mt61JyTnYp9rvY0KVtSmc85Ms7YoMwNOpZueJGxJYgFf9Y33F
+ L634A5fSRqwFKR/jd/fa2bHzX4ynhYoZYDC6d/YTkd3alZkwysKJ3v682WaSRk5AxCa8
+ ZLTTIPpfsfPkpwY+yOuFxSscgfEizLEsM6FmU0jHwo8zDCRv/qYvUoG2E+hiaC1jA3F8
+ CgX/T87/UvFQhpd3AH0+jYJLBQd7Sa2Ct0l5pfHkUvNhhb+2AqKMek6FTwpg9XXpg9ls
+ ZTlQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWpmjca8Nak8iCA4ubKgv7QWFK3FEFHLwf09uSrZ9dpeEu1zHvy7vdloOp0+DeLV6MdNwwwa5NZnP7fQ3svMQxczxmJE4s=
-X-Gm-Message-State: AOJu0Yw0JTPUne07EzKFsFblPJejq8TqCPIsXIHKyO1eBczyWLg0UX/v
- +4k3a5C0aNHL1NLW7tzkeOhFL3EO8ylgZ4Ezty+WWAPlglpncHecs62irsBBKJwXO5vzR3QN2Od
- 4
-X-Received: by 2002:a05:6a00:98f:b0:706:3f17:ca2 with SMTP id
- d2e1a72fcca58-70aaa95bfd8mr14003745b3a.0.1719931059940; 
- Tue, 02 Jul 2024 07:37:39 -0700 (PDT)
-Received: from [192.168.0.4] (174-21-76-141.tukw.qwest.net. [174.21.76.141])
+ AJvYcCUG97mImpqh3N0/w9UoEQ14wvCmsxZ2uswE089dXLAwPG7waFg9gCJ7fgtg1bHluHsvGJTYi0aOc/eoE7yE/7mVtbM4/kzZWDrwVGb3nAfIeJ6My8oRjMIKDWU=
+X-Gm-Message-State: AOJu0Yw07aQ14vW3JZzMRQf6ZTUY51Fv8hHN53DKRnbPVOW+LEMkWZM0
+ 5aberUfQL0yqG21PgGeoUQW65CvUpDMknSmrlTNOUb5Mkjm+0NU=
+X-Received: by 2002:a2e:a910:0:b0:2ee:7b88:7f3 with SMTP id
+ 38308e7fff4ca-2ee7b880869mr1758911fa.12.1719934080072; 
+ Tue, 02 Jul 2024 08:28:00 -0700 (PDT)
+Received: from wing.epfl.ch (dhcp-122-dist-b-021.epfl.ch. [128.178.122.21])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-708044b1112sm8577697b3a.182.2024.07.02.07.37.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Jul 2024 07:37:39 -0700 (PDT)
-Message-ID: <02506c92-df4e-4616-9fd7-02e9d2a204a4@linaro.org>
-Date: Tue, 2 Jul 2024 07:37:37 -0700
+ 5b1f17b1804b1-4256af3f14csm204464925e9.6.2024.07.02.08.27.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Jul 2024 08:27:59 -0700 (PDT)
+From: Zheyu Ma <zheyuma97@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: Zheyu Ma <zheyuma97@gmail.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH v2] hw/char/pl011: Avoid division-by-zero in
+ pl011_get_baudrate()
+Date: Tue,  2 Jul 2024 17:27:50 +0200
+Message-Id: <20240702152750.3017426-1-zheyuma97@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 02/13] target/arm: Fix SQDMULH (by element) with Q=0
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-stable@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20240625183536.1672454-1-richard.henderson@linaro.org>
- <20240625183536.1672454-3-richard.henderson@linaro.org>
- <f65e6448-cfd2-425c-853a-5a4ae5cf2a8c@tls.msk.ru>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <f65e6448-cfd2-425c-853a-5a4ae5cf2a8c@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=zheyuma97@gmail.com; helo=mail-lf1-x12a.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,29 +126,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Xwl365CAGVCM
+X-TUID: HSlbAIi9X0nu
 
-On 7/1/24 23:48, Michael Tokarev wrote:
-> 25.06.2024 21:35, Richard Henderson wrote:
->> The inner loop, bounded by eltspersegment, must not be
->> larger than the outer loop, bounded by elements.
->>
->> Cc: qemu-stable@nongnu.org
->> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   target/arm/tcg/vec_helper.c | 24 ++++++++++++++++--------
->>   1 file changed, 16 insertions(+), 8 deletions(-)
-> 
-> If my understanding is correct, this one
-> 
-> Fixes: f80701cb44d3 ("target/arm: Convert SQDMULH, SQRDMULH to decodetree")
-> 
-> and before this commit, there was no issue.
-> 
-> Is my understanding correct?
+In pl011_get_baudrate(), when we calculate the baudrate we can
+accidentally divide by zero. This happens because although (as the
+specification requires) we treat UARTIBRD = 0 as invalid, we aren't
+correctly limiting UARTIBRD and UARTFBRD values to the 16-bit and 6-bit
+ranges the hardware allows, and so some non-zero values of UARTIBRD can
+result in a zero divisor.
 
-Yes.  So, not as old a bug as I thought.
+Enforce the correct register field widths on guest writes and on inbound
+migration to avoid the division by zero.
 
+ASAN log:
+==2973125==ERROR: AddressSanitizer: FPE on unknown address 0x55f72629b348
+(pc 0x55f72629b348 bp 0x7fffa24d0e00 sp 0x7fffa24d0d60 T0)
+    #0 0x55f72629b348 in pl011_get_baudrate hw/char/pl011.c:255:17
+    #1 0x55f726298d94 in pl011_trace_baudrate_change hw/char/pl011.c:260:33
+    #2 0x55f726296fc8 in pl011_write hw/char/pl011.c:378:9
 
-r~
+Reproducer:
+cat << EOF | qemu-system-aarch64 -display \
+none -machine accel=qtest, -m 512M -machine realview-pb-a8 -qtest stdio
+writeq 0x1000b024 0xf8000000
+EOF
+
+Signed-off-by: Zheyu Ma <zheyuma97@gmail.com>
+---
+Changes in v2:
+- Enforce the correct register field widths on writes to both UARTIBRD
+  and UARTFBRD registers.
+- Mask UARTIBRD to 16 bits and UARTFBRD to 6 bits in the pl011_post_load
+  function to prevent division by zero during inbound migration.
+---
+ hw/char/pl011.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index 8753b84a84..ba5f7cfbda 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -374,11 +374,11 @@ static void pl011_write(void *opaque, hwaddr offset,
+         s->ilpr = value;
+         break;
+     case 9: /* UARTIBRD */
+-        s->ibrd = value;
++        s->ibrd = value & 0xffff;
+         pl011_trace_baudrate_change(s);
+         break;
+     case 10: /* UARTFBRD */
+-        s->fbrd = value;
++        s->fbrd = value & 0x3f;
+         pl011_trace_baudrate_change(s);
+         break;
+     case 11: /* UARTLCR_H */
+@@ -531,6 +531,9 @@ static int pl011_post_load(void *opaque, int version_id)
+         s->read_pos = 0;
+     }
+ 
++    s->ibrd &= 0xffff;
++    s->fbrd &= 0x3f;
++
+     return 0;
+ }
+ 
+-- 
+2.34.1
+

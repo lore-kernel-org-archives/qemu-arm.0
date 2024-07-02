@@ -1,130 +1,91 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1596279njm;
-        Mon, 1 Jul 2024 14:15:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXD6aIgyB5GqkhDxqcoB3dAToTjVi8xZ+lK37ZsvcEfXH0zCLk7jB00t99gpCslW3zjkcsQiUwXL7Z+6gELnstkTnY+GAMr
-X-Google-Smtp-Source: AGHT+IFbtq7fizQ3v97bKR6Nau1Xlh3TqpsNM1e8fkzK/E2IdR0IsNMNaKQ8TGkUXHOcFJyMkWIu
-X-Received: by 2002:a05:6214:21ab:b0:6b5:8f40:a18c with SMTP id 6a1803df08f44-6b5b71d2292mr71437286d6.63.1719868539719;
-        Mon, 01 Jul 2024 14:15:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719868539; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp1757472njm;
+        Mon, 1 Jul 2024 22:56:50 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVCxQFxDM/8XgvpKHT+BkzWQp5EY1QF4N7I05hKuqk7QVSqUqc6ynpYbOFT/7UAgjV8jMMxRLIFYyxkpbhsqj+8a4Zu9Z7W
+X-Google-Smtp-Source: AGHT+IGg7UE86+BaUAlcUwiIIZZbzAIGLzW3+aHrSRvrvUbFsQTEUenS1sUnb8Xnd/8VSsQNw5DU
+X-Received: by 2002:ad4:5ce5:0:b0:6b5:d9ef:d55b with SMTP id 6a1803df08f44-6b5d9efd7fbmr1843086d6.0.1719899810574;
+        Mon, 01 Jul 2024 22:56:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719899810; cv=none;
         d=google.com; s=arc-20160816;
-        b=xypT2P90Ev+N1kATyHSCYmPf53i7+KLcpRe+RNSvdoonRCPZygCTua5XvNUZiYIUgH
-         qtV+Fe8UEyIAc6Le29ti6Ngtv2abbqGE+Qi6jCeSmqzmDMAeYI66tLetri3XgJmtSeHC
-         j/CbdgXVOUnSZcwOriBYIDToTHTA+L+g7UXiXQJ6w0msQ+Rq9+S39JEHfj3CvQHEFsxW
-         2xRW47rDpxHhT8b1iqy7+J8pmzhL/ugqdOXYw6vrhu6eKOBXM6F6MKRGBhxJEDeu8DKK
-         hbk0EquxZgcwhkY554SyYq32Y9YAfJccRYEs/71XaVxuWu+VlfG1THtJ6f2dMVfeiaus
-         o1Nw==
+        b=VEi2oXLxczbyXvjQ/9una5bM7m8YxEOJu3/6zSwauyWAEa67rv0RRfbxH/1mxsr0tA
+         0vvtpC/OTI3WbN+2jrnvG1EOWcq5X05FdEvfE8Qy7qdifw/vChH/aWD+Ak9qlZ5Cv48H
+         Z+c4KycSvWujRHMJvKSSTBowCzpzTA901tLfzqS0R/e+QZldY6HO+SMW94C9JTJVGtO+
+         t8Rx78zvOsN4KPaweuecGFoi3m+u5nJ7NqCgOzhuyBF2UvvCFmKtwr9i5/iRxcxNJX+N
+         GQOIsttBHm4F2jB2HGhLWndS9BnfovKm+hJvkAHHyViAJxMsHWlC4XUQarNLSbVBbrFw
+         iuCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=tO7j13VWjFaBpcr4aWZs5ErUrepl2gPxfFFabPaQ2PQ=;
-        fh=Ct1mK/A7KUv/lFt6qSOeh7lT9npvkv2iarkj+ZTwPCE=;
-        b=ckhPDvSV6CbG/gHgfOvRDCjCcpXx7q3fCagE2ma9POx/QkNZEgy20W31Mb0la5/cTN
-         CwjTuQhBHt3vOuFeBkzwIKOa4w4COO4sMRIdxWnASvql3LOsn7u41lzkZHs0LJ4lW7J+
-         /C/GGJyhi1r6CXNNAXK1wjR1f3IzjoEqOSklowpGCAlXk/OkzcP6pS2PEfg9TuKT7QMI
-         rTQ2EgFnfPErM1f1WVSD/EMN13DSs8GzjQSjDX4qFRMDeWW7mgX6PWUNg/7rK4uuQKMH
-         mOMU/qgjz2tknAS/OIKvhuH254h9JUiSObR/tpZSVt/snLmaXT1X1qzwHk/8Txeg+gz2
-         7Gpg==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=L3zM58kCjyQF+K8pg4ybJoyd2SvslcMkpL7ouOa9+6Q=;
+        fh=fNM2c6Md8egRT875ckR32/0m9IXdMkrafPYkFdQPgl0=;
+        b=Khz0sbiXm1IbV6ywXOrphn/6VlT/bnY1UdkGqte00cqBRPP3iU5EEVHpsMYQc7kGhq
+         dGtZP24dTNeW8yetZKoZhoTmahYxVpZ1SyVML+icxkOando1GdYfYcqt9hXlDioLIO32
+         sDcvR4yyc2tFoaA+Fl3zbCJvZD3XpXzrlgTty6rNz+uORdA02zqyX9F9TCkIwjz8p4L2
+         fOqeWbm4hw9LMaNAPagysiyyFXZSsTIcIw8ykd8zqQWTWy7upWyl3Fbih+mLGHahYJEU
+         Kd0WFFmjCGF/oXN0WCW8v4YO/K6Ha45WmLzbFTCOQ3T8rb4UYxfN6w6vG7BCyKyet35d
+         13XQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HcRTthx3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b59e36c197si90308756d6.152.2024.07.01.14.15.39
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b59e3640b0si99224116d6.99.2024.07.01.22.56.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2024 14:15:39 -0700 (PDT)
+        Mon, 01 Jul 2024 22:56:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HcRTthx3;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sOOMp-0007Nr-0H; Mon, 01 Jul 2024 17:15:20 -0400
+	id 1sOWVN-000572-In; Tue, 02 Jul 2024 01:56:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sOOMm-0007NX-BZ
- for qemu-devel@nongnu.org; Mon, 01 Jul 2024 17:15:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <SRS0=fXIt=OC=kaod.org=clg@ozlabs.org>)
+ id 1sOWVL-00056W-Mn; Tue, 02 Jul 2024 01:56:39 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sOOMd-000823-L4
- for qemu-devel@nongnu.org; Mon, 01 Jul 2024 17:15:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1719868505;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tO7j13VWjFaBpcr4aWZs5ErUrepl2gPxfFFabPaQ2PQ=;
- b=HcRTthx31tKMCL9PyLieC1D07FR6ySpsdWj6SuJcCDebewu8SLsO6W9nzL5v51VUDfxMKL
- //NXI+9XJVbKURgonfjDmUCDygOLNGq2rNjXxzM4ru4LNSM2U+F6UX+Nd3dUfLK3C0frxD
- bcKckDB+PjvCXVRoziY4DmyIj7+iF+I=
-Received: from mail-vk1-f198.google.com (mail-vk1-f198.google.com
- [209.85.221.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-324-DYH1tdzYMwaxH_m2MnerqA-1; Mon, 01 Jul 2024 17:15:04 -0400
-X-MC-Unique: DYH1tdzYMwaxH_m2MnerqA-1
-Received: by mail-vk1-f198.google.com with SMTP id
- 71dfb90a1353d-4ef63cc7451so1252752e0c.1
- for <qemu-devel@nongnu.org>; Mon, 01 Jul 2024 14:15:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719868504; x=1720473304;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tO7j13VWjFaBpcr4aWZs5ErUrepl2gPxfFFabPaQ2PQ=;
- b=IZeG/VW5H4o0p+Zi1P2axM3jqzmZkeaXM8DdIWWD9Xaks8nJ+cV5lmTTuejeTP08Hd
- KIomLTsrlQ4cuxCc51e63rUpvfy0fd3IE4BcIoWjiItGcQu6vJz9+oK3/hredqYmd604
- ZX44/c2Bqg3Ip+xj0iacu0Eh+HRVfaH/q5K1IOoYaVNPqLXGf6XHsDg8nOCEKTvcrl4h
- VnwlwZWsL+ZfEhwN/UhdWWaQarTXoWjACzPkHQlYXeO+bWAtnhlEUoOISlbRb9aOMpnp
- +l1eZwwKdUfzOFhlGRa+AvOzkyJG9ebpdlC8uqfo2koxAooFd7D4mWN4aKlzfsbEi/Vb
- I0WQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW9pIy/AiZpyRrJ/tI6v4QbbX6tjWRuih4GhiTEIYup2v+23ID/P0iA2bvmURpe527QfGp0JiRgZlmG20hdsYfXh48Gzzg=
-X-Gm-Message-State: AOJu0YwWIAGWikwP69gjTIRTItMiVnudH/0eVuENsZwVs5DVKehdiYyD
- 5aea67vQaQqT/qObGtbCbHgNIzwuqgM2tYRlAFUXQwbJtwcI623i8KJRXgvPwOIv8arzflNQ95d
- zk2MNqxYrdAm8h/8YPVRARSZ3wSC1ygRvkgtP2g3KEasW0/l8Ng/4
-X-Received: by 2002:a05:6122:608a:b0:4ef:668f:2438 with SMTP id
- 71dfb90a1353d-4f2a5511b8fmr8830872e0c.0.1719868503838; 
- Mon, 01 Jul 2024 14:15:03 -0700 (PDT)
-X-Received: by 2002:a05:6122:608a:b0:4ef:668f:2438 with SMTP id
- 71dfb90a1353d-4f2a5511b8fmr8830856e0c.0.1719868503535; 
- Mon, 01 Jul 2024 14:15:03 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- af79cd13be357-79d692f24e6sm386377985a.73.2024.07.01.14.15.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jul 2024 14:15:03 -0700 (PDT)
-Message-ID: <86060667-4f53-4d92-a4d6-25d9bfb6f457@redhat.com>
-Date: Mon, 1 Jul 2024 23:14:58 +0200
+ (Exim 4.90_1) (envelope-from <SRS0=fXIt=OC=kaod.org=clg@ozlabs.org>)
+ id 1sOWVI-0007Jb-He; Tue, 02 Jul 2024 01:56:39 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4WCsbt2KBsz4wny;
+ Tue,  2 Jul 2024 15:56:26 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4WCsbn5sjnz4wcr;
+ Tue,  2 Jul 2024 15:56:21 +1000 (AEST)
+Message-ID: <11cbc79b-d2a8-4c04-b5ea-cb612124d493@kaod.org>
+Date: Tue, 2 Jul 2024 07:56:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/7] VIRTIO-IOMMU/HostIOMMUDevice: Fixes and page size
- mask rework
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com,
- jean-philippe@linaro.org, peter.maydell@linaro.org, yanghliu@redhat.com,
- zhenzhong.duan@intel.com, alex.williamson@redhat.com
-References: <20240701084957.1567641-1-eric.auger@redhat.com>
+Subject: Re: [PATCH v1 1/2] hw/net:ftgmac100: fix coding style
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Jason Wang <jasowang@redhat.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20240619100102.3137941-1-jamin_lin@aspeedtech.com>
+ <20240619100102.3137941-2-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-In-Reply-To: <20240701084957.1567641-1-eric.auger@redhat.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240619100102.3137941-2-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=fXIt=OC=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,75 +100,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MRBByQGWEdCk
+X-TUID: LZdz3fKvzyaV
 
-On 7/1/24 10:48 AM, Eric Auger wrote:
-> The 2 first patches are fixes of
-> cf2647a76e ("virtio-iommu: Compute host reserved regions")
-> They can be taken separately of the rest.
+On 6/19/24 12:01 PM, Jamin Lin wrote:
+> Fix coding style issues from checkpatch.pl
 > 
-> Then the series uses the HostIOMMUDevice interface to fetch
-> information about the page size mask supported along the assigned
-> device and propagate it to the virtio-iommu. This is a similar
-> work as what was done in
+> Test command:
+> ./scripts/checkpatch.pl --no-tree -f hw/net/ftgmac100.c
 > 
-> VIRTIO-IOMMU/VFIO: Fix host iommu geometry handling series
-> 
-> but this time for the page size mask. Using this new
-> infrastructure allows to handle page size mask conflicts
-> earlier on device hotplug as opposed to current QEMU
-> abort:
-> 
-> qemu-system-aarch64: virtio-iommu virtio-iommu-memory-region-8-0
-> does not support frozen granule 0x10000
-> qemu: hardware error: vfio: DMA mapping failed, unable to continue
-> 
-> With this series the hotplug nicely fails.
-> 
-> Also this allows to remove hacks consisting in transiently enabling
-> IOMMU MRs to collect coldplugged device page size mask before machine
-> init. Those hacks were introduced by
-> 
-> 94df5b2180d6 ("virtio-iommu: Fix 64kB host page size VFIO device
-> assignment")
-> 
-> The series can be found at:
-> https://github.com/eauger/qemu/tree/virtio-iommu-psmask-rework-v2
-> 
-> ---
-> v1 -> v2:
-> - Don't update mask if the granule is frozen (Zhenzhong)
-> - Collected Zhenzhong's and Cédric's R-bs
-> 
-> Eric Auger (7):
->    virtio-iommu: Fix error handling in
->      virtio_iommu_set_host_iova_ranges()
->    vfio-container-base: Introduce vfio_container_get_iova_ranges() helper
->    HostIOMMUDevice : remove Error handle from get_iova_ranges callback
->    HostIOMMUDevice: Introduce get_page_size_mask() callback
->    virtio-iommu : Retrieve page size mask on
->      virtio_iommu_set_iommu_device()
->    memory: remove IOMMU MR iommu_set_page_size_mask() callback
->    virtio-iommu: Revert transient enablement of IOMMU MR in bypass mode
-> 
->   include/exec/memory.h                 |  38 --------
->   include/hw/vfio/vfio-container-base.h |   9 ++
->   include/sysemu/host_iommu_device.h    |  11 ++-
->   hw/vfio/common.c                      |   8 --
->   hw/vfio/container-base.c              |  15 ++++
->   hw/vfio/container.c                   |  16 ++--
->   hw/vfio/iommufd.c                     |  21 +++--
->   hw/virtio/virtio-iommu.c              | 123 +++++++++++++-------------
->   system/memory.c                       |  13 ---
->   hw/virtio/trace-events                |   2 +-
->   10 files changed, 119 insertions(+), 137 deletions(-)
-> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
 
-Applied to vfio-next.
+Applied to aspeed-next.
 
 Thanks,
 
 C.
 
+
+
+
+> ---
+>   hw/net/ftgmac100.c | 12 ++++++++----
+>   1 file changed, 8 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+> index 74b6c3d9a7..25e4c0cd5b 100644
+> --- a/hw/net/ftgmac100.c
+> +++ b/hw/net/ftgmac100.c
+> @@ -238,7 +238,8 @@ typedef struct {
+>    */
+>   #define FTGMAC100_MAX_FRAME_SIZE    9220
+>   
+> -/* Limits depending on the type of the frame
+> +/*
+> + * Limits depending on the type of the frame
+>    *
+>    *   9216 for Jumbo frames (+ 4 for VLAN)
+>    *   1518 for other frames (+ 4 for VLAN)
+> @@ -533,8 +534,10 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
+>               break;
+>           }
+>   
+> -        /* record transmit flags as they are valid only on the first
+> -         * segment */
+> +        /*
+> +         * record transmit flags as they are valid only on the first
+> +         * segment
+> +         */
+>           if (bd.des0 & FTGMAC100_TXDES0_FTS) {
+>               flags = bd.des1;
+>           }
+> @@ -639,7 +642,8 @@ static bool ftgmac100_can_receive(NetClientState *nc)
+>    */
+>   static uint32_t ftgmac100_rxpoll(FTGMAC100State *s)
+>   {
+> -    /* Polling times :
+> +    /*
+> +     * Polling times :
+>        *
+>        * Speed      TIME_SEL=0    TIME_SEL=1
+>        *
 

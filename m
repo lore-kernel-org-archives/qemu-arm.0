@@ -1,77 +1,75 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2618831njm;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2618839njm;
         Wed, 3 Jul 2024 07:07:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVbp7IspH9kBDeT9pC+XrOJRSMTqrfaxoNSFmBhZil+KXLu8hCSIqrqaiZEoR6F9kHbYFK7Or7ErisW4hTTQzi7M7LyhnoG
-X-Google-Smtp-Source: AGHT+IFVYkmpsPmaA/bi0KhE7jzUfTVjuRzSquMPdVkOUgsyZN4xy7ErAfmxwOQUQveRFOxJhCTl
-X-Received: by 2002:a05:6808:1408:b0:3d5:633b:3d8d with SMTP id 5614622812f47-3d6b549a3fdmr11918127b6e.53.1720015638805;
-        Wed, 03 Jul 2024 07:07:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720015638; cv=none;
+X-Forwarded-Encrypted: i=2; AJvYcCUeL+W1cKC4NEMfNUGXj8s806MRFQZI7hVzm1jjz0fFSdM3LZWpHiQIKne2j0Kucgv/+1W9Y8nhVcCLuHEQWn1893XHl9Fr
+X-Google-Smtp-Source: AGHT+IEjNnrhmREDRaCHOnuA9ub8/MC7fdbxca5Wc9gIAEhaCjAvBshyyfIzdqzkRWpMt2zM/hbP
+X-Received: by 2002:a05:6808:bd1:b0:3d2:1b1b:ec1 with SMTP id 5614622812f47-3d6b4de1fb0mr18194671b6e.45.1720015639352;
+        Wed, 03 Jul 2024 07:07:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720015639; cv=none;
         d=google.com; s=arc-20160816;
-        b=zaIyIajv6JezY5pA5SjK7oxKw5Yqeg8t8E6WeBjpyz5GA6kmvJuL2sOV3Ibhy8375U
-         H5ObdrwY/7o7ry4gZ3NNkIE+ztAjTZUygS2bFXSUQyAOV4HT6G9DkorXRKXypJqoHMnS
-         Ymk5so9GckbwObJ+R0RnhXMzuKBh4twwm9/ehWaiZAQPrDJg+gwjwzWe0ZesBLmIAvq+
-         73zHcidRTEzlSfgK+wV9D9XPAGhFC7gaBJrJAkA/DIeJmqaJRYaQTGvs4xDXJDD2mkF/
-         4aI3RrkaRN/8pPL0He1GAJg389ram2TTqNeCAhUBt/yusJCWMRplCuXBSZjnnu09Yx8l
-         tt9g==
+        b=ByXdLQZo+scZs59dHJs9ODSp5HdFfO6ELXHR8XtowO4tz0JW6ce6W2WoectNHVNJ9l
+         aTTxtBjaHtUhb31oWs+okaRIvSU78v2F38qxOx/btFJBFVC5B/+193BBqoseEDkqmX/z
+         cXCTfPEJGg2JcZ66GQRiO8+FMrUpyRnzc8ZVlYDKUvwAQvzgkoPROyg6jqJ/vsdgosWP
+         yG+hcPSSkDDgQR7ScQMeXmapuQx6U2ieIAZGw/MLa5UBQzS07pOKTbTEjiIJIl4eDcQI
+         9vWSY4jhvxCU2uK7EruxR8DeNXdO46ScXDlL23xVUMGbjXUXEPOKJGis7AaT+WUW14jZ
+         zPhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:content-transfer-encoding
-         :mime-version:message-id:date:subject:from;
-        bh=uD7Q+B5Aq2UpGf+Fnm9AmbSP5tkMVN3PIFu6/5ZDhMQ=;
+         :list-unsubscribe:list-id:precedence:cc:to:in-reply-to:references
+         :message-id:content-transfer-encoding:mime-version:subject:date:from;
+        bh=Epafd523H6nwF29O5HOR5UsybbxJabCYq/lYj4pgOng=;
         fh=2XNni5tFqqNsYuVOJGxzVTMSzHzZnaSMOOPrr5cXMU4=;
-        b=H0nYtp7S0xGT/HswZJ668eMphHImYUcQJJEm8QjQNiVLpwkHFP8wWbY8EYCX0SDLoa
-         VpX0hbxg4s4/ghRdezPrAAODBwCvqd2XGv4ThAMqynyFAXVi/yA4Xho0h9NPJTZdR9CE
-         Qkos+QRo5xf4afmdpbv44VBkPJhKCLXkXBgWdLpNxFR+5ppOReaLND9gN5Q4dOHuI9VQ
-         aO9Lx4vXugzhg2nZX4Ag0ZPVq7BCKHQJQdVHfpnwPJdccfioBB1SvkuaaTXM4Z2EZLBk
-         qJM5v5L+nBLGw8Jl7aZs5teG27XuDCpMYZtajk7S3v50Y8vKlOJLk54z9CKYshknOuVr
-         QanQ==;
+        b=ar1vDSuwF1j3yBSAIHc9zk7ZC5aPGpoDVStAzMOBMsgEIgJvAYEfqQCiqUMQPp5/JI
+         X9ab8cXS0y+NaEfE5fCOI99w3OMKg6obzSsZn6Q9icVHXyZWOcTwVPEdJBGfh2toUhRE
+         +G+tLiHZBsDVCmbZWGWU/ooYExRZyo+vG8taK6uCGHz0/8mXjweaIoTcIALUfurXwJ2h
+         b1256+A3fbliAFsDpr+H+WZmIdMgvYFmZEifalzGr9/+mpgfSy5BH3IvSj1he5gINhMz
+         oI3PXt1Xib0eqIrDzaFVdwlFFznK4IYu6+eA5Eu2DBgz5/fwuCiYtuigL4Xb5Gd/ABSO
+         TdFw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4f292284edfsi1616091e0c.258.2024.07.03.07.07.18
+        by mx.google.com with ESMTPS id ada2fe7eead31-48f9b2626e4si1846214137.502.2024.07.03.07.07.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jul 2024 07:07:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 03 Jul 2024 07:07:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sP0dJ-0001kh-9n; Wed, 03 Jul 2024 10:06:55 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sP0dS-0001oA-Ro; Wed, 03 Jul 2024 10:07:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sP0dE-0001kB-0e; Wed, 03 Jul 2024 10:06:48 -0400
+ id 1sP0dK-0001lb-52; Wed, 03 Jul 2024 10:06:56 -0400
 Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sP0d1-0008Qg-1Y; Wed, 03 Jul 2024 10:06:46 -0400
+ id 1sP0d1-0008Qr-1j; Wed, 03 Jul 2024 10:06:52 -0400
 Received: from localhost (localhost [127.0.0.1])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 89709260A6B;
- Wed,  3 Jul 2024 16:06:28 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id 602F926018B;
+ Wed,  3 Jul 2024 16:06:29 +0200 (CEST)
 X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
 Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
  by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
- with ESMTP id KBWMOC915zEu; Wed,  3 Jul 2024 16:06:26 +0200 (CEST)
+ with ESMTP id PtAvdz8Fchpr; Wed,  3 Jul 2024 16:06:27 +0200 (CEST)
 Received: from applejack.lan (83.8.74.165.ipv4.supernova.orange.pl
  [83.8.74.165])
- by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 9311826018B;
- Wed,  3 Jul 2024 16:06:25 +0200 (CEST)
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 85BDB260757;
+ Wed,  3 Jul 2024 16:06:26 +0200 (CEST)
 From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Subject: [PATCH v4 0/2] tests/avocado: updates for sbsa-ref testing
-Date: Wed, 03 Jul 2024 16:06:10 +0200
-Message-Id: <20240703-b4-move-to-freebsd-v4-0-07191f958530@linaro.org>
+Date: Wed, 03 Jul 2024 16:06:11 +0200
+Subject: [PATCH v4 1/2] tests/avocado: sbsa-ref: add FreeBSD tests
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIANJahWYC/4XNQQ6CMBCF4auYrh1TygjUlfcwLlo7hSZKzZQ0G
- sLdLezc6PJ/yXwzi0QcKInTbhZMOaQQxxK434nbYMaeILjSQkmFslEIFuERM8EUwTORTQ6M8Y5
- seyRfd6IcPpl8eG3o5Vp6CGmK/N5+ZLWuP7msQEKDZForUevOn+9hNBwPkXuxern+b9TFaCvUj
- fVVpR1+GcuyfADJibrQ+QAAAA==
+Content-Transfer-Encoding: 8bit
+Message-Id: <20240703-b4-move-to-freebsd-v4-1-07191f958530@linaro.org>
+References: <20240703-b4-move-to-freebsd-v4-0-07191f958530@linaro.org>
+In-Reply-To: <20240703-b4-move-to-freebsd-v4-0-07191f958530@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
  Radoslaw Biernacki <rad@semihalf.com>, 
@@ -89,55 +87,158 @@ X-Spam_bar: -
 X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kP8hXJWrEUbW
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Sf1bdMtKaLw9
 
-We want to have some non-Linux OS in testing in case one of changes keep
-Linux booting but crash elsewhere. So far OpenBSD was used for it but we
-move to FreeBSD 14.x due to longer support cycles.
+FreeBSD has longer support cycle for stable release (14.x EoL in 2028)
+than OpenBSD (7.3 we used is already EoL). Also bugfixes are backported
+so we can stay on 14.x for longer. Tests done on OpenBSD will now be
+done using FreeBSD.
 
-One OpenBSD stays - will be run on Cortex-A57 only. And only on local
-runs hidden behind AVOCADO_TEST_LEGACY_OS variable.
+OpenBSD 7.3 stays with Cortex-A57 test for local runs only.
 
-At same time we add test to run on default cpu settings. For now it is
-plain Neoverse-N2 but we are considering either disabling PAuth or going
-with 'impdef' way.
+Moved from Neoverse-N1 to Neoverse-N2 as sbsa-ref defaults were changed.
+
+Timeout messages expanded to mention being affected by PAuth emulation.
 
 Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-
 ---
-Changes in v4:
-- hide OpenBSD test behind AVOCADO_TEST_LEGACY_OS switch
-- Link to v3: https://lore.kernel.org/r/20240624-b4-move-to-freebsd-v3-0-71496bf119d4@linaro.org
+ tests/avocado/machine_aarch64_sbsaref.py | 73 ++++++++++++++++++++++++--------
+ 1 file changed, 55 insertions(+), 18 deletions(-)
 
-Changes in v3:
-- kept OpenBSD/Cortex-A57 test for local runs (by request of Philippe)
-- Link to v2: https://lore.kernel.org/r/20240624-b4-move-to-freebsd-v2-0-64ea7b04998f@linaro.org
+diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+index e920bbf08c..2e27d37cb8 100644
+--- a/tests/avocado/machine_aarch64_sbsaref.py
++++ b/tests/avocado/machine_aarch64_sbsaref.py
+@@ -1,4 +1,4 @@
+-# Functional test that boots a Linux kernel and checks the console
++# Functional test that boots a kernel and checks the console
+ #
+ # SPDX-FileCopyrightText: 2023-2024 Linaro Ltd.
+ # SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
+@@ -163,7 +163,8 @@ def test_sbsaref_alpine_linux_max_pauth_impdef(self):
+         """
+         self.boot_alpine_linux("max,pauth-impdef=on")
+ 
+-    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
++    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'),
++                'Test might timeout due to PAuth emulation')
+     def test_sbsaref_alpine_linux_max(self):
+         """
+         :avocado: tags=cpu:max
+@@ -171,7 +172,6 @@ def test_sbsaref_alpine_linux_max(self):
+         """
+         self.boot_alpine_linux("max")
+ 
+-
+     # This tests the whole boot chain from EFI to Userspace
+     # We only boot a whole OS for the current top level CPU and GIC
+     # Other test profiles should use more minimal boots
+@@ -198,6 +198,9 @@ def boot_openbsd73(self, cpu):
+                                  "Welcome to the OpenBSD/arm64"
+                                  " 7.3 installation program.")
+ 
++
++    # we keep OpenBSD 7.3 on Cortex-A57 by request
++    @skipUnless(os.getenv('AVOCADO_TEST_LEGACY_OS'), 'OpenBSD 7.3 is EOL')
+     def test_sbsaref_openbsd73_cortex_a57(self):
+         """
+         :avocado: tags=cpu:cortex-a57
+@@ -205,32 +208,66 @@ def test_sbsaref_openbsd73_cortex_a57(self):
+         """
+         self.boot_openbsd73("cortex-a57")
+ 
+-    def test_sbsaref_openbsd73_neoverse_n1(self):
++
++    # This tests the whole boot chain from EFI to Userspace
++    # We only boot a whole OS for the current top level CPU and GIC
++    # Other test profiles should use more minimal boots
++    def boot_freebsd(self, cpu):
++        self.fetch_firmware()
++
++        img_url = (
++            "https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES/"
++            "14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bootonly.iso"
++        )
++
++        img_hash = "44cdbae275ef1bb6dab1d5fbb59473d4f741e1c8ea8a80fd9e906b531d6ad461"
++        img_path = self.fetch_asset(img_url, algorithm="sha256", asset_hash=img_hash)
++
++        self.vm.set_console()
++        self.vm.add_args(
++            "-cpu",
++            cpu,
++            "-drive",
++            f"file={img_path},format=raw",
++        )
++
++        self.vm.launch()
++        wait_for_console_pattern(self, "Welcome to FreeBSD!")
++
++    def test_sbsaref_freebsd_cortex_a57(self):
+         """
+-        :avocado: tags=cpu:neoverse-n1
+-        :avocado: tags=os:openbsd
++        :avocado: tags=cpu:cortex-a57
++        :avocado: tags=os:freebsd
++        """
++        self.boot_freebsd("cortex-a57")
++
++    # We use Neoverse-N2 as default cpu
++    def test_sbsaref_freebsd_neoverse_n2(self):
+         """
+-        self.boot_openbsd73("neoverse-n1")
++        :avocado: tags=cpu:neoverse-n2
++        :avocado: tags=os:freebsd
++        """
++        self.boot_freebsd("neoverse-n2")
+ 
+-    def test_sbsaref_openbsd73_max_pauth_off(self):
++    def test_sbsaref_freebsd_max_pauth_off(self):
+         """
+         :avocado: tags=cpu:max
+-        :avocado: tags=os:openbsd
++        :avocado: tags=os:freebsd
+         """
+-        self.boot_openbsd73("max,pauth=off")
++        self.boot_freebsd("max,pauth=off")
+ 
+-    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+-    def test_sbsaref_openbsd73_max_pauth_impdef(self):
++    def test_sbsaref_freebsd_max_pauth_impdef(self):
+         """
+         :avocado: tags=cpu:max
+-        :avocado: tags=os:openbsd
++        :avocado: tags=os:freebsd
+         """
+-        self.boot_openbsd73("max,pauth-impdef=on")
++        self.boot_freebsd("max,pauth-impdef=on")
+ 
+-    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
+-    def test_sbsaref_openbsd73_max(self):
++    @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'),
++                'Test might timeout due to PAuth emulation')
++    def test_sbsaref_freebsd_max(self):
+         """
+         :avocado: tags=cpu:max
+-        :avocado: tags=os:openbsd
++        :avocado: tags=os:freebsd
+         """
+-        self.boot_openbsd73("max")
++        self.boot_freebsd("max")
 
----
-Marcin Juszkiewicz (2):
-      tests/avocado: sbsa-ref: add FreeBSD tests
-      tests/avocado: add test for default sbsa-ref cpu
-
- tests/avocado/machine_aarch64_sbsaref.py | 88 +++++++++++++++++++++++---------
- 1 file changed, 64 insertions(+), 24 deletions(-)
----
-base-commit: 1a2d52c7fcaeaaf4f2fe8d4d5183dccaeab67768
-change-id: 20240624-b4-move-to-freebsd-aafdeb75ef38
-
-Best regards,
 -- 
-Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+2.45.2
 

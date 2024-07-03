@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2440665njm;
-        Wed, 3 Jul 2024 01:18:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXkZMtKOmdzrln5J7qzzaMBT5pzb7y+tlWP5wvfrKBgWIJY6FIVfBYwfvWoSADzVBfZCw7VyppCv6PwcbKAWIcP36uEveCt
-X-Google-Smtp-Source: AGHT+IEGNdmOShnNZcADpTFzsRzYEmu5vDeFhHvePWBt8WtqhgHWqrG/aVlaVyyH59WohxXsuo8E
-X-Received: by 2002:a0d:e84d:0:b0:62f:b282:9f02 with SMTP id 00721157ae682-64c716196abmr136326787b3.21.1719994679721;
-        Wed, 03 Jul 2024 01:17:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719994679; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2440925njm;
+        Wed, 3 Jul 2024 01:18:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX49FWxS9LSdPtGpcHW8gNmWRzPgw3jPEtKoVDaHBHYQy0Piq/DQOhUwU9SKyi1E1xZUvruH7CsXQ82VLQ0aiCRIa4N90gZ
+X-Google-Smtp-Source: AGHT+IGeeJVhHSFJS2putv6Pgk61RVyWvikdYJOePhV6SpgVIjA+KaBu5CtyH3X8bsY+C7EH8lfx
+X-Received: by 2002:a05:622a:88:b0:444:ff0b:ada7 with SMTP id d75a77b69052e-44662e5a352mr134373881cf.49.1719994714390;
+        Wed, 03 Jul 2024 01:18:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719994714; cv=none;
         d=google.com; s=arc-20160816;
-        b=hx3iokD3U3fDPab2Nkz5ePA+9CaInsEWdtHdZIpl08jDZh7daNrDfB1V9jYNeXe0BS
-         DWmfz2pRCQIj2V0B3GbjBLdauI1DEVAWicdfSGGHs9j8xu8loFpP8/mGTpU8iWHkyrn6
-         NkNeAkdjoLpOld5Llf6X8cqZtKLqESNc5WVE57PkAE3nQYJvWQ2R2Z7ghrQ6oKiyXdvI
-         Kp3H3aRlN8zQh/0XqkGEpJxhvoKfmarHq96OARKXnD27zE1ZYocaC7N3fx04N+e1XzFk
-         WTENRglbij3ZlaJajruDYRRtNqRXXKEFuV2KKzQVnVuw33tAcL+zqlzGN4jm94ZSWdgG
-         wCcQ==
+        b=ilOgC1MyfiG0bPqvRbJnoKRu/8HSDhyFSxYaQZ/YyeG/H513YxGi2x5B88UyTez02U
+         GWdcaIo7a6/5g6yfAZhzmwSx29ifXuDx9r6MFRQCSOe/vmGMkX38MA0MII9BJoEoQAU8
+         qhK8Taw67iUifJ5dmHCt94VLkU8d1FWgX/cRfxW+fSnXn7Ghy8sBa9dz46FjgYBE59LU
+         dNe9lRB1ibHSVqq3wIxAaLmKEbYXO7gd//WycDVar9Tl6gRDHvuHr3TfENvL2oegAd19
+         B2wnpzxagqksHvmn7KvS17eosmefFdRrZN7G36D9NP6bUVgMQcY7Nwt45koqUVuunBav
+         pOIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=u/OgqHtzguGTYj3JunW541UYTQVAy/aLoIWqqzLTxrY=;
+        bh=t+oWEIIbtrDWkPJ8pJmkqIF1ll4jxwFCMxYrpoxD5/w=;
         fh=Vva0SnTfFpZ62XWQNW5X4TL2jFj5cBikmg9Gp1PrOrY=;
-        b=lNVrwvYdwMWMNXuRorZzXHaDf1W0Z23kfghLld6LjkXUdTYdKaoFZpgYuhrXMvRvJp
-         fh5eOIXVaF1bJgjNA13NfYn57BdyC6aWBGzbaZYMU1gr2dJgDLw0sd5Rct1NkiuCDGcT
-         NaBv+XhWSIcZhKXmRduerWrdsBIGyWrf/m6kdT6qlAcaKWE+rrCWFO8ZOaA82s/Ew8fp
-         u819DIirjMg/faw8Nd+ji+bhJuyG1yR0zhKQCfWMcbLxYhGMIvO+S2V9AHsJJ2FVqM01
-         9zGhkue3gbkMQ5XxW9EunuImOWUuMSIEpFtIaOoWaeZjNt/aN+tDRFpUK31unhYGXeHY
-         HuAA==;
+        b=tZk5vEbflp04nXpqyYPsDG6if7Mb/Y+zIEqn0anki0Ykxe4t7Tkr/GmpfD225B1Dqb
+         356ytEM3D9WykpUiQ4a3uQPnRX9JokIdyCA1JhFvdw5iTeUir48Q/DDfOfWdRbg8GF54
+         iJWxxeqvP5aOFW/g3+gejrTrQ+OESb46g1LBI4Qwh/8fl3Ix9PCtwzM/SGHYdrgpxHmp
+         7lzsy4HzID9tIYUsUldjMbcoGl2EVbxoK7Buj0ZKSgGora7VAlYReiXVEzSUOrSUG8n0
+         9KIsZuWcryM7171EsZJVTyTHfqTH7zYnlDXdOg+STgoX6cGWveunefj2RM5rMGhlUVvY
+         UvVA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b59e36c692si122436256d6.174.2024.07.03.01.17.59
+        by mx.google.com with ESMTPS id d75a77b69052e-446514c1b1esi117635131cf.554.2024.07.03.01.18.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jul 2024 01:17:59 -0700 (PDT)
+        Wed, 03 Jul 2024 01:18:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,18 +42,21 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sOvAi-0003ID-Ma; Wed, 03 Jul 2024 04:17:00 -0400
+	id 1sOvAq-0003Lo-C6; Wed, 03 Jul 2024 04:17:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sOvAg-0003HX-Va; Wed, 03 Jul 2024 04:16:59 -0400
+ id 1sOvAp-0003LG-DW; Wed, 03 Jul 2024 04:17:07 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sOvAf-00014r-FS; Wed, 03 Jul 2024 04:16:58 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ id 1sOvAo-00014r-0X; Wed, 03 Jul 2024 04:17:07 -0400
+Received: from TWMBX02.aspeed.com (192.168.0.24) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 3 Jul
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.1258.12; Wed, 3 Jul
+ 2024 16:16:25 +0800
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX02.aspeed.com
+ (192.168.0.25) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Wed, 3 Jul
  2024 16:16:25 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
@@ -71,15 +74,19 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-block@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v2 3/5] aspeed/soc: update to ftgmac100_high model for AST2700
-Date: Wed, 3 Jul 2024 16:16:21 +0800
-Message-ID: <20240703081623.2740862-4-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 1/5] hw/net:ftgmac100: update memory region size to 0x200
+Date: Wed, 3 Jul 2024 16:16:19 +0800
+Message-ID: <20240703081623.2740862-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240703081623.2740862-1-jamin_lin@aspeedtech.com>
 References: <20240703081623.2740862-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
+Received-SPF: Fail (TWMBX02.aspeed.com: domain of jamin_lin@aspeedtech.com
+ does not designate 192.168.10.10 as permitted sender)
+ receiver=TWMBX02.aspeed.com; client-ip=192.168.10.10;
+ helo=localhost.localdomain;
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -103,41 +110,58 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xpryQZvgEfTk
+X-TUID: 9vEaaLaFMiIm
 
-ASPEED AST2700 SOC is a 64 bits quad core CPUs (Cortex-a35)
-And the base address of dram is "0x4 00000000" which
-is 64bits address.
+According to the datasheet of ASPEED SOCs,
+one MAC controller owns 128KB of register space for AST2500.
 
-Update its network model to ftgmac100_high to support
-64bits dram address DMA.
+However, one MAC controller only owns 64KB of register space for AST2600
+and AST2700.
+
+It set the memory region size 128KB and it occupied another
+controllers Address Spaces.
+
+Currently, the ftgmac100 model use 0x100 register space.
+To support DMA 64 bits dram address and new future mode(ftgmac100_high) which
+have "Normal Priority Transmit Ring Base Address Register High(0x17C)",
+"High Priority Transmit Ring Base Address Register High(0x184)" and
+"Receive Ring Base Address Register High(0x18C)" to save the high part physical
+address of descriptor manager.
+
+Update memory region size to 0x200.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed_ast27x0.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/net/ftgmac100.c         | 2 +-
+ include/hw/net/ftgmac100.h | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 18e6a8b10c..04604a4bef 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -332,7 +332,7 @@ static void aspeed_soc_ast2700_init(Object *obj)
- 
-     for (i = 0; i < sc->macs_num; i++) {
-         object_initialize_child(obj, "ftgmac100[*]", &s->ftgmac100[i],
--                                TYPE_FTGMAC100);
-+                                TYPE_FTGMAC100_HIGH);
- 
-         object_initialize_child(obj, "mii[*]", &s->mii[i], TYPE_ASPEED_MII);
-     }
-@@ -552,6 +552,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-         return;
+diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+index 25e4c0cd5b..4e88430b2f 100644
+--- a/hw/net/ftgmac100.c
++++ b/hw/net/ftgmac100.c
+@@ -1108,7 +1108,7 @@ static void ftgmac100_realize(DeviceState *dev, Error **errp)
      }
  
-+    /* Net */
-     for (i = 0; i < sc->macs_num; i++) {
-         object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", true,
-                                  &error_abort);
+     memory_region_init_io(&s->iomem, OBJECT(dev), &ftgmac100_ops, s,
+-                          TYPE_FTGMAC100, 0x2000);
++                          TYPE_FTGMAC100, FTGMAC100_NR_REGS);
+     sysbus_init_mmio(sbd, &s->iomem);
+     sysbus_init_irq(sbd, &s->irq);
+     qemu_macaddr_default_if_unset(&s->conf.macaddr);
+diff --git a/include/hw/net/ftgmac100.h b/include/hw/net/ftgmac100.h
+index 765d1538a4..5a970676da 100644
+--- a/include/hw/net/ftgmac100.h
++++ b/include/hw/net/ftgmac100.h
+@@ -14,6 +14,8 @@
+ #define TYPE_FTGMAC100 "ftgmac100"
+ OBJECT_DECLARE_SIMPLE_TYPE(FTGMAC100State, FTGMAC100)
+ 
++#define FTGMAC100_NR_REGS   0x200
++
+ #include "hw/sysbus.h"
+ #include "net/net.h"
+ 
 -- 
 2.34.1
 

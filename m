@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2440515njm;
-        Wed, 3 Jul 2024 01:17:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXF78stDZUovq1BYq2WhdBHsJESVJSca9TByi/d9Crk3DfKIwD9q4VbpE6ZBB0FddaCsBD7oQnPduR/0GQk33d3C2uZn5Li
-X-Google-Smtp-Source: AGHT+IGM2SLZxV+JPJVaAFP3pBeoptgoXpareFe724UQeb8OxKiZ6jbJnHRE+QhUcSX3UcSaLGYr
-X-Received: by 2002:a05:6214:4015:b0:6b4:7910:2b60 with SMTP id 6a1803df08f44-6b5b704f2d7mr115890686d6.6.1719994660005;
-        Wed, 03 Jul 2024 01:17:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719994659; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2440554njm;
+        Wed, 3 Jul 2024 01:17:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVtFLkSRdPzcRZ6waqZeDOAN/cYaa3MRDXrYZX94M+Re8kRbf1K9kfIqHLQA6MdTxkMw0y5+oftlVQcSbbGv7jUNWJ7uBWB
+X-Google-Smtp-Source: AGHT+IGKMamq+LgT+Sn5rpuqKx42NdWgM2jz1QsWr8Dobn+WY6y5+P4EU8rSaa4T4EKv6WAuoAAc
+X-Received: by 2002:a05:622a:18a1:b0:43b:173e:ce1b with SMTP id d75a77b69052e-447bf955d72mr12428361cf.32.1719994664565;
+        Wed, 03 Jul 2024 01:17:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719994664; cv=none;
         d=google.com; s=arc-20160816;
-        b=znmiPcySjS/BEio4ief1Z1OdjPKOJ1tFEIBMrfYlO8JOs/IL0SpFQCNb1uUiZ8L4hE
-         mUF0X5JFJ18bptwW/MYzgB1A4X9iD1o+fQb6lnUIw/Tba/2lgiGecDN90u0VX7Aq81E+
-         f2JPjpel+4e2F6B2Izb/cERbhG1VXkbUm7DYadhuF5vIAGZGD2/FGaNBLXnIMt/Dkss2
-         gMXLuRK/ob/CvZirUaUFE/ikuAr8C9LuDS4XjOBknjBCnh5XXiXO0D7B0+LoztSfJkH7
-         550LsEat0ZnY9zoSTtbv6OvF6U0awREXSdIrekF0BWN8a+EayZJQWtLkjmD98pT+mOBH
-         DeAw==
+        b=tlOVi+cfG/YOJM4rKmSqpPSNeQ9CcRt5cu1kiAxXV7VmYytdffGueoczAwbc5AmOdO
+         sUNXjWkg6u23fUDinS3Se0kING8PqTmf1Ujg2wzr/NJJu1DL/jq4pJUWiKdqLY5xZtla
+         ukXpONh17r0lcPgSPcYowHVIyZk6X9tEcNzPqdgKWeQl3v53tYeXQGKaesWXQRom1Jlh
+         LP4FjKOLrSjC2/5QBYPVdbRB62Weg2Alnw9bMDXhLu9Y67ucSwH3yxWk5EjwAbNF3Ozc
+         KNjxelkq7WsyA5A9j0WPTHIm/d8UqtwXoxeSYp3X+ph/TaTETm1/7oHbbxAAhx3SoCzZ
+         s7pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=qKGYwsTaROH09PBP02IJEcw6k1/sl2IEJ1elPo6SqA8=;
+        bh=o5InGcdOCObDX0sYn84XC3stgyuiWkwWl5UkNKSFfzY=;
         fh=Vva0SnTfFpZ62XWQNW5X4TL2jFj5cBikmg9Gp1PrOrY=;
-        b=M6C0+3HgTQmk7nVRhyhxBHoAiogJGYbCr6nHezmAlPPLu0LJoHSEZ4ldXMS/rvNGaw
-         lCDQi70bzbtbWVB+Lv1Tfnh05Q8DxC5F7jErBJ935WPN+UGPGHaI/q4DS9RHNWeGILn4
-         1slnP91ssdj0m32cozpLYaLBaSiJOBJbmzo/cS0TUDMaKTUWO4Hgk7xplWqaOYo96PB6
-         OZkJFm0zCnPy1+SDVxPZegOFwecimcCPgmogLly7HwStlniFhigQOjaHz6WtNYjEXNOx
-         W3t7TGgPP6pykGYNnuTz8sl6oVE4paqnAkSB+FoxGrdJxgfWguvJBv4UG4SpxoUbNEIB
-         wAdg==;
+        b=j8xaQV7JOivuXsrVmg0qVrI2OXo3lQLGoJnzpEcMZt4Zkg1cTbNo4113OL3zboNSrg
+         vZ+EKNkNyVuvzMG+hJrmIQ7QhGAjLJODFbGMuezCI9syj75vCG3EOyPEEpJ7+8W0yJMe
+         E4GWTBvZzob89KDhcq/fr56UAUDPFJ/ud+k9SSwO6W5eymUoELD3zkMyrXTPR6hXSTBM
+         7KBEZJnbndTtHGmtGs8iKAD0Y39AAhULwkkKmS4YLTDv/PD58NA134YH+e+RVjTHGTiM
+         uzopQ1n3XxJmsc3YKa4dSRxF0S51hKAjdRQcKmswZ3GGAMasJ3zqdNH+Jht9aiJ6ZEgU
+         0m+Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b59e6190ebsi122096576d6.589.2024.07.03.01.17.39
+        by mx.google.com with ESMTPS id d75a77b69052e-446514c62basi117267061cf.620.2024.07.03.01.17.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jul 2024 01:17:39 -0700 (PDT)
+        Wed, 03 Jul 2024 01:17:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sOvAl-0003JK-Ik; Wed, 03 Jul 2024 04:17:03 -0400
+	id 1sOvAp-0003L0-3w; Wed, 03 Jul 2024 04:17:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sOvAk-0003Iy-Mr; Wed, 03 Jul 2024 04:17:02 -0400
+ id 1sOvAm-0003Js-MV; Wed, 03 Jul 2024 04:17:05 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sOvAi-00014r-5c; Wed, 03 Jul 2024 04:17:01 -0400
+ id 1sOvAk-00014r-VI; Wed, 03 Jul 2024 04:17:04 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 3 Jul
@@ -71,9 +71,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-block@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v2 4/5] hw/block: m25p80: support quad mode for w25q01jvq
-Date: Wed, 3 Jul 2024 16:16:22 +0800
-Message-ID: <20240703081623.2740862-5-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 5/5] test/avocado/machine_aspeed.py: update to test network
+ for AST2700
+Date: Wed, 3 Jul 2024 16:16:23 +0800
+Message-ID: <20240703081623.2740862-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240703081623.2740862-1-jamin_lin@aspeedtech.com>
 References: <20240703081623.2740862-1-jamin_lin@aspeedtech.com>
@@ -103,76 +104,77 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1VbFkFY23/TP
+X-TUID: MIUD5bvDdOIe
 
-According to the w25q01jv datasheet at page 16,
-it is required to set QE bit in "Status Register 2".
-Besides, users are able to utilize "Write Status Register 1(0x01)"
-command to set QE bit in "Status Register 2" and
-utilize "Read Status Register 2(0x35)" command to get the QE bit status.
+Update a test case to test network connection via ssh and
+changes to test Aspeed OpenBMC SDK v09.02 for AST2700.
 
-To support quad mode for w25q01jvq, update collecting data needed
-2 bytes for WRSR command in decode_new_cmd function and
-verify QE bit at the second byte of collecting data bit 2
-in complete_collecting_data.
+ASPEED fixed TX mask issue from linux/drivers/ftgmac100.c.
+It is required to use ASPEED SDK image since v09.02
+for AST2700 QEMU network testing.
 
-Update RDCR_EQIO command to set bit 2 of return data
-if quad mode enable in decode_new_cmd.
+A test image is downloaded from the ASPEED Forked OpenBMC GitHub
+release repository :
+https://github.com/AspeedTech-BMC/openbmc/releases/
 
-Signed-off-by: Troy Lee <troy_lee@aspeedtech.com>
+Test command:
+```
+cd build
+pyvenv/bin/avocado run ../qemu/tests/avocado/machine_aspeed.py:AST2x00MachineSDK.test_aarch64_ast2700_evb_sdk_v09_02
+```
+
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/block/m25p80.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ tests/avocado/machine_aspeed.py | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 8dec134832..9e99107b42 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -416,6 +416,7 @@ typedef enum {
-     /*
-      * Micron: 0x35 - enable QPI
-      * Spansion: 0x35 - read control register
-+     * Winbond: 0x35 - quad enable
-      */
-     RDCR_EQIO = 0x35,
-     RSTQIO = 0xf5,
-@@ -798,6 +799,11 @@ static void complete_collecting_data(Flash *s)
-                 s->four_bytes_address_mode = extract32(s->data[1], 5, 1);
-             }
-             break;
-+        case MAN_WINBOND:
-+            if (s->len > 1) {
-+                s->quad_enable = !!(s->data[1] & 0x02);
-+            }
-+            break;
-         default:
-             break;
-         }
-@@ -1254,6 +1260,10 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-             s->needed_bytes = 2;
-             s->state = STATE_COLLECTING_VAR_LEN_DATA;
-             break;
-+        case MAN_WINBOND:
-+            s->needed_bytes = 2;
-+            s->state = STATE_COLLECTING_VAR_LEN_DATA;
-+            break;
-         default:
-             s->needed_bytes = 1;
-             s->state = STATE_COLLECTING_DATA;
-@@ -1431,6 +1441,12 @@ static void decode_new_cmd(Flash *s, uint32_t value)
-         case MAN_MACRONIX:
-             s->quad_enable = true;
-             break;
-+        case MAN_WINBOND:
-+            s->data[0] = (!!s->quad_enable) << 1;
-+            s->pos = 0;
-+            s->len = 1;
-+            s->state = STATE_READING_DATA;
-+            break;
-         default:
-             break;
-         }
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 3a20644fb2..855da805ae 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -313,14 +313,14 @@ def do_test_arm_aspeed_sdk_start(self, image):
+ 
+     def do_test_aarch64_aspeed_sdk_start(self, image):
+         self.vm.set_console()
+-        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw')
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
++                         '-net', 'nic', '-net', 'user,hostfwd=:127.0.0.1:0-:22')
+ 
+         self.vm.launch()
+ 
+         self.wait_for_console_pattern('U-Boot 2023.10')
+         self.wait_for_console_pattern('## Loading kernel from FIT Image')
+         self.wait_for_console_pattern('Starting kernel ...')
+-        self.wait_for_console_pattern("systemd[1]: Hostname set to")
+ 
+     @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
+ 
+@@ -387,15 +387,15 @@ def test_arm_ast2600_evb_sdk(self):
+         year = time.strftime("%Y")
+         self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
+ 
+-    def test_aarch64_ast2700_evb_sdk_v09_01(self):
++    def test_aarch64_ast2700_evb_sdk_v09_02(self):
+         """
+         :avocado: tags=arch:aarch64
+         :avocado: tags=machine:ast2700-evb
+         """
+ 
+         image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+-                     'download/v09.01/ast2700-default-obmc.tar.gz')
+-        image_hash = 'b1cc0fd73c7650d34c9c8459a243f52a91e9e27144b8608b2645ab19461d1e07'
++                     'download/v09.02/ast2700-default-obmc.tar.gz')
++        image_hash = 'ac969c2602f4e6bdb69562ff466b89ae3fe1d86e1f6797bb7969d787f82116a7'
+         image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+                                       algorithm='sha256')
+         archive.extract(image_path, self.workdir)
+@@ -436,4 +436,5 @@ def test_aarch64_ast2700_evb_sdk_v09_01(self):
+ 
+         self.vm.add_args('-smp', str(num_cpu))
+         self.do_test_aarch64_aspeed_sdk_start(image_dir + 'image-bmc')
+-
++        self.wait_for_console_pattern('nodistro.0 ast2700-default ttyS12')
++        self.ssh_connect('root', '0penBmc', False)
 -- 
 2.34.1
 

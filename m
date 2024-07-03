@@ -1,128 +1,124 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2418237njm;
-        Wed, 3 Jul 2024 00:23:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGdqhjC33UFoKRANFyWzJvbtAoHvoffsfUibosgcU8WG4phzjL4nAeUAbqkaW8N9PRMpjS1
-X-Received: by 2002:a05:6a20:4388:b0:1bd:2a05:5f24 with SMTP id adf61e73a8af0-1c0bffaa87bmr1529602637.27.1719991421473;
-        Wed, 03 Jul 2024 00:23:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719991421; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2598963njm;
+        Wed, 3 Jul 2024 06:34:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGuUmvGIQdSbevd2Fn6nAXExMPtl7iBwE8uDnLFvVOUUeswZWlViyPe5gAGfryjf9Jh5EIN
+X-Received: by 2002:a05:600c:35c6:b0:425:641c:5f46 with SMTP id 5b1f17b1804b1-4257a02cde0mr68243235e9.30.1720013673275;
+        Wed, 03 Jul 2024 06:34:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720013673; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZNYCwWLxFjno9boaLQZs8bHFmPMhF5vlfnsPOYkTji/9T75DarRPDaNmqxyAKsPZdT
-         YLmMeDeZM8O+UUqVveRiAoX1d5l9oO5oAZq57VDYOd2b38pBQexjYNgmvOCBWq3MvttD
-         0xREwX2WFE18gS4CGbs9tsO/QC7fxLHnZDqlRFNHtRQfo2xuBaIxQ+xnfm7G8pfucZpk
-         I2C6AutlBOAcLlS9Ga3yIEkQ3ZPw3mQ4vHdyECMeC19rC3mY3YLYbl7kmXwkGNwvfCO3
-         dNfE2ui3gkFDcgvbrv1VZp+rD8zO0kfX1JtYaxqkXscV0EZZghKYduw/Lth7b16GhoOK
-         jGMQ==
+        b=g5FX6ljQsEiwG2hwwm9Se+wMAZr8hfVcEw1dnVnVg3PR9tUrL5niW+Gw4fi+OLc7xs
+         UZ6pDoCgpwfh3trgygmj23uk/ZRLdIM3N3mhpQ//XwCK32y/bFNv3tAyJc95kPx1H739
+         SHlC5MOwgDEuiYD/t6INpwfgYdBkYzR3+aODvWp3bOaUa/CL+aYUTZ+pEnTIPNidFSvz
+         pPD6OvrJ0QtVglkdKkDCe5MQz2lB3n+ZafQVqNCkxl4XwaNPzf7SfwEMVnd+MeEi6s+E
+         FkicqSOoFiWDg7fImXtiXeMrrWl8jAHRbEqKGW80SaJBs5Z5ZMPBBBhRA0B+WOwvzLFR
+         oS9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:message-id:user-agent:references
-         :in-reply-to:subject:cc:to:from:date:mime-version:dkim-signature;
-        bh=PNR21walsmmPlKx+EEnlCN9q2DuGCXQodYRLsZHa6hg=;
-        fh=rd9djB/sHdHBXbpG7HqS3Z5XSt5MYkQLbnLvHMfSZcs=;
-        b=BXu9yJ4/v2tjyt1+iVNYj+dRBMbJwh5oZsb3f/TFShHlBp5c/OXWavTMOY+EYQDwz1
-         diTndkPhLQR0YSMKC7XKGVPvCLiRWo4rnjXekxTXZn0Cf3MFJwe7nj4s6c8ZTThTpLJY
-         huiZyQEgWxtCto8XMCWb2fhSZ8BRWJJiTJocegpeISX4IFl1HcBGDUXc/sx/gJ3vy4BS
-         P6FVVBXXmTogL025ANht6Gcv4qzomrSEeFc/hlJkmJ2PM9CigzlSJnQrRhQb1VtA5zG3
-         FNRq2cfQ/jZo+4E+Scrw+23RQSsgrcskgzSo9YPwmwjytR/Xv+b+9Nvze/eI3wmwAN0p
-         4jog==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=mfZjrBnjQAc2g3737Msklio3dXfCX7+a7lHHtBciKYY=;
+        fh=XpqZTunMhNMbz/ycRN9sGGztuo/sgJDoB/7fDNd23MI=;
+        b=rPF4mquBlPL21/2YT7JvpZC/qT0AgBxqc0zFzhLQOAH6mIgeY6r6JmbED8f5TENhLo
+         67wjvnUkeXkwIPkIOAVKvutuBPKcdgj+UhdCvuFRelDwidOdxKLXG9g/634QFC5L9yOW
+         f8H185OiMnIz88Swz+dtAvFKMR12IfyB44xi09fylc/xNbeueUNm6WxYiSaK4xw5qkOi
+         hp/O/WbFD9aDOuESc4d2DU1t3tZGs0tP7tPrSWxDNnUjy6RPfusnw3h4zxoXyU67/AzS
+         EKSoU6jhHCJ430PiCOUPeLMf0rDjxb55Wv5rJP0bTiQiEh4VXZESsBXuF4ci6ESm7AHH
+         MG+A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=nmY77SKa;
-       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:40e1:4800::1 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <maz@kernel.org>
-Received: from sin.source.kernel.org (sin.source.kernel.org. [2604:1380:40e1:4800::1])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-72c69d3e540si12400387a12.174.2024.07.03.00.23.41
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=kXOm1Kdc;
+       spf=pass (google.com: domain of andrew.jones@linux.dev designates 2001:41d0:1004:224b::ab as permitted sender) smtp.mailfrom=andrew.jones@linux.dev;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+Return-Path: <andrew.jones@linux.dev>
+Received: from out-171.mta0.migadu.com (out-171.mta0.migadu.com. [2001:41d0:1004:224b::ab])
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-4256b0c0f79si70508645e9.133.2024.07.03.06.34.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jul 2024 00:23:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of maz@kernel.org designates 2604:1380:40e1:4800::1 as permitted sender) client-ip=2604:1380:40e1:4800::1;
+        Wed, 03 Jul 2024 06:34:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of andrew.jones@linux.dev designates 2001:41d0:1004:224b::ab as permitted sender) client-ip=2001:41d0:1004:224b::ab;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=nmY77SKa;
-       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:40e1:4800::1 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 3E24CCE1FB7;
-	Wed,  3 Jul 2024 07:23:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78E01C2BD10;
-	Wed,  3 Jul 2024 07:23:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1719991419;
-	bh=bU/2YsOmK16v0fOdsJ38br5N/4af3GRgBNGqmZiO8vI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=nmY77SKan33oVV7BCDgh9UdHHeEJg95y4e4aq46WP/By1OUdh7ymaLPuAOzwyeFcI
-	 Azyn1U4InRUI9MjEX5g/LTA0xXPJkqXiVDiOpGz8dHwi/xbKzJnx4gIle3yrlH93Kt
-	 jiyWwpSA3KLs0M7+Gwkh7zGQhSD8KRVVp4LMbjhjJF9VgZR5TYA3x+nSZC8Ri41siP
-	 Rdp3GQGCbzd1d0/ZM8Hw0WjEIcO60VqN7IJySppYsew1BFzWGKCP67U5plxEY/RfRw
-	 ZBpiFTblyfea6k0wvlxGPNNMkOSSCu+rWQXSuwSmJZsDHaB4z+R5rceCeJQO1ZRER5
-	 QI+MaDADhNu8A==
-Received: from disco-boy.misterjones.org ([217.182.43.188] helo=www.loen.fr)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1sOuL3-009LsO-75;
-	Wed, 03 Jul 2024 08:23:37 +0100
-MIME-Version: 1.0
-Date: Wed, 03 Jul 2024 08:23:37 +0100
-From: Marc Zyngier <maz@kernel.org>
+       dkim=pass header.i=@linux.dev header.s=key1 header.b=kXOm1Kdc;
+       spf=pass (google.com: domain of andrew.jones@linux.dev designates 2001:41d0:1004:224b::ab as permitted sender) smtp.mailfrom=andrew.jones@linux.dev;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linux.dev
+X-Envelope-To: yuzenghui@huawei.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+	t=1720013672;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=mfZjrBnjQAc2g3737Msklio3dXfCX7+a7lHHtBciKYY=;
+	b=kXOm1Kdck0wb6gfJ1SjCEZ99lovuT69IkQG6pCczWL/ENrNSQ21LTZhSou5Uq+5XxmqCPY
+	haa/1oM3ox334IEZe67f7Azug9Bg9i0pEFqIxcTIdplzTrl800C/p9bZrI7EOTNS+KgFCj
+	+YokTjQm0wIG/0vkpcSzuZ6llQwIg64=
+X-Envelope-To: alex.bennee@linaro.org
+X-Envelope-To: pbonzini@redhat.com
+X-Envelope-To: drjones@redhat.com
+X-Envelope-To: thuth@redhat.com
+X-Envelope-To: kvm@vger.kernel.org
+X-Envelope-To: qemu-arm@nongnu.org
+X-Envelope-To: linux-arm-kernel@lists.infradead.org
+X-Envelope-To: christoffer.dall@arm.com
+X-Envelope-To: maz@kernel.org
+X-Envelope-To: anders.roxell@linaro.org
+X-Envelope-To: alexandru.elisei@arm.com
+X-Envelope-To: eric.auger@redhat.com
+X-Envelope-To: kvmarm@lists.linux.dev
+Date: Wed, 3 Jul 2024 08:34:27 -0500
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: Andrew Jones <andrew.jones@linux.dev>
 To: Zenghui Yu <yuzenghui@huawei.com>
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- pbonzini@redhat.com, thuth@redhat.com, kvm@vger.kernel.org,
- qemu-arm@nongnu.org, linux-arm-kernel@lists.infradead.org,
- christoffer.dall@arm.com, Anders Roxell <anders.roxell@linaro.org>, Andrew
- Jones <andrew.jones@linux.dev>, Alexandru Elisei <alexandru.elisei@arm.com>,
- Eric Auger <eric.auger@redhat.com>, "open list:ARM" <kvmarm@lists.linux.dev>
-Subject: Re: [kvm-unit-tests PATCH v1 1/2] arm/pmu: skip the PMU introspection
- test if missing
-In-Reply-To: <8c11996c-b36d-e560-cdeb-e543ee478a54@huawei.com>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+	pbonzini@redhat.com, drjones@redhat.com, thuth@redhat.com, kvm@vger.kernel.org, 
+	qemu-arm@nongnu.org, linux-arm-kernel@lists.infradead.org, christoffer.dall@arm.com, 
+	maz@kernel.org, Anders Roxell <anders.roxell@linaro.org>, 
+	Alexandru Elisei <alexandru.elisei@arm.com>, Eric Auger <eric.auger@redhat.com>, 
+	"open list:ARM" <kvmarm@lists.linux.dev>
+Subject: Re: [kvm-unit-tests PATCH v1 2/2] arm/mmu: widen the page size check
+ to account for LPA2
+Message-ID: <20240703-09f98f39f0aa78a0beb48696@orel>
 References: <20240702163515.1964784-1-alex.bennee@linaro.org>
- <20240702163515.1964784-2-alex.bennee@linaro.org>
- <8c11996c-b36d-e560-cdeb-e543ee478a54@huawei.com>
-User-Agent: Roundcube Webmail/1.4.15
-Message-ID: <74e184afbc4b58fba984b91964915a9e@kernel.org>
-X-Sender: maz@kernel.org
-Content-Type: text/plain; charset=UTF-8;
- format=flowed
+ <20240702163515.1964784-3-alex.bennee@linaro.org>
+ <28936f0c-5745-14b3-1ecf-ae1e01c5b28f@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 217.182.43.188
-X-SA-Exim-Rcpt-To: yuzenghui@huawei.com, alex.bennee@linaro.org, pbonzini@redhat.com, thuth@redhat.com, kvm@vger.kernel.org, qemu-arm@nongnu.org, linux-arm-kernel@lists.infradead.org, christoffer.dall@arm.com, anders.roxell@linaro.org, andrew.jones@linux.dev, alexandru.elisei@arm.com, eric.auger@redhat.com, kvmarm@lists.linux.dev
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
-X-TUID: /TGOuaac5nxm
+In-Reply-To: <28936f0c-5745-14b3-1ecf-ae1e01c5b28f@huawei.com>
+X-Migadu-Flow: FLOW_OUT
+X-TUID: LHdGmiKzIcWQ
 
-On 2024-07-03 08:09, Zenghui Yu wrote:
-> On 2024/7/3 0:35, Alex BennÃ©e wrote:
->> The test for number of events is not a substitute for properly
->> checking the feature register. Fix the define and skip if PMUv3 is not
->> available on the system. This includes emulator such as QEMU which
->> don't implement PMU counters as a matter of policy.
->> 
->> Signed-off-by: Alex BennÃ©e <alex.bennee@linaro.org>
->> Cc: Anders Roxell <anders.roxell@linaro.org>
->> ---
->>  arm/pmu.c | 7 ++++++-
->>  1 file changed, 6 insertions(+), 1 deletion(-)
->> 
->> diff --git a/arm/pmu.c b/arm/pmu.c
->> index 9ff7a301..66163a40 100644
->> --- a/arm/pmu.c
->> +++ b/arm/pmu.c
->> @@ -200,7 +200,7 @@ static void test_overflow_interrupt(bool 
->> overflow_at_64bits) {}
->>  #define ID_AA64DFR0_PERFMON_MASK  0xf
->>   #define ID_DFR0_PMU_NOTIMPL	0b0000
->> -#define ID_DFR0_PMU_V3		0b0001
->> +#define ID_DFR0_PMU_V3		0b0011
+On Wed, Jul 03, 2024 at 11:52:05AM GMT, Zenghui Yu wrote:
+> Hi Alex,
 > 
-> Why? This is a macro used for AArch64 and DDI0487J.a (D19.2.59, the
-> description of the PMUVer field) says that
+> [ Please don't send patches to the old kvmarm@lists.cs.columbia.edu as
+> it had been dropped since early 2023. [1] ]
 > 
-> "0b0001	Performance Monitors Extension, PMUv3 implemented."
+> On 2024/7/3 0:35, Alex Bennée wrote:
+> > If FEAT_LPA2 is enabled there are different valid TGran values
+> > possible to indicate the granule is supported for 52 bit addressing.
+> > This will cause most tests to abort on QEMU's -cpu max with the error:
+> > 
+> >   lib/arm/mmu.c:216: assert failed: system_supports_granule(PAGE_SIZE): Unsupported translation granule 4096
+> > 
+> > Expand the test to tale this into account.
+> > 
+> > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> > Cc: Anders Roxell <anders.roxell@linaro.org>
 > 
-> while 0b0011 is a reserved value.
+> There's a similar patch on the list [2], haven't been merged in master
+> though.
 
-I think this is a mix of 32bit and 64bit views (ID_DFR0_EL1.PerfMon
-instead of ID_AA64DFR0_EL1.PMUVer), and the whole thing is a mess
-(ID_AA64DFR0_PERFMON_MASK is clearly confused...).
+Drat, I queued that, and several other patches, and then, for whatever
+reason, I delayed the merge (I was probably just waiting for the gitlab
+pipeline to finish...) and then forgot to actually merge... I've merged
+now.
 
-I haven't looked at how this patch fits in the rest of the code though.
+Please don't hesitate to ping me on patches that linger too long. I
+sometimes need that interrupt to trigger my context switch!
 
-         M.
--- 
-Jazz is not dead. It just smells funny...
+Thanks,
+drew
+
+> 
+> [1] https://git.kernel.org/torvalds/c/960c3028a1d5
+> [2]
+> https://lore.kernel.org/all/20240402132739.201939-6-andrew.jones@linux.dev

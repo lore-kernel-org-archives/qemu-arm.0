@@ -1,161 +1,128 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2262197njm;
-        Tue, 2 Jul 2024 16:43:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVqG7aLaB85bBq2/43ieF80xxepK/o6eO4Yo/XAx+CARLW5tZQXhhQTuZRby6/DiWDkoL4XLHolMWeFEiehbq6XtBlzsjT1
-X-Google-Smtp-Source: AGHT+IEXfKMfVAl0vynCEkHE3HuUh5kyraNFYGf1zj9nl6r/bo/d9q1LqJnxb1aZo7xBMbBc650W
-X-Received: by 2002:a05:6214:194a:b0:6b5:9c9c:a736 with SMTP id 6a1803df08f44-6b5b704f0f6mr139812376d6.6.1719963799466;
-        Tue, 02 Jul 2024 16:43:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719963799; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2344457njm;
+        Tue, 2 Jul 2024 20:52:20 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGWPuUNLpqhzGNw1DXmp9hpynfUnn00WtEFc4ywVNCQyWftjPvekmLHQwW7YT8DiYKLLKRe
+X-Received: by 2002:a17:902:d2d0:b0:1fa:3a30:dc8b with SMTP id d9443c01a7336-1fb1a038484mr7331005ad.3.1719978740087;
+        Tue, 02 Jul 2024 20:52:20 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1719978740; cv=pass;
         d=google.com; s=arc-20160816;
-        b=GuoeoeVxqoaQ+4YBdIjm3OYzeWE66r7ZWXFM6BqAZLSA5lQwtYXMu77809WxKBzmKJ
-         brE/CuMJLbsLwSGEgAj5KdCx7pvWUukzVinsL5kEx5g5i1mOcopHJnTIkhuy/60ATSVg
-         nxAiIoCDyAFNvmOaXVI08Bla4ez0XoW/ydr13xXVqINpZ69qdHUtatRkaLgyV3h8pPBJ
-         /r3yW9S4CC4nef5iVGh0XDhKETRhXrDSJJ7kUWK5IVBV3nr4Xv63lBetdqQvgxbS5W39
-         34B/2YWZ3eSAGMcYlf5XHdJJO2oT5KQZFh5fwIxGB5h2zbWi8H85KowNGLYHgqsMzMSi
-         e62g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=mZ5AdtoXeBWo04SqXtXVV3bVy8fFh+q0Y63ABmnLjpU=;
-        fh=Fz3OM3AGXo6S/XDNq12jK+U+cl8IKdGchX/2GB3YVy0=;
-        b=gi0AkG7x6Ota35mgSj4jGg3e/IbcMXa4MYnNXag1b8FPcD5FuUUMIveXMnpOsXMRez
-         dxsoK6ihELoz26EbTbIzvScaltBobrLhIU6RciOoOcacjrNfFfvfkyfwt9WxRnozuuRV
-         pPnyQhzBptRhIkkVn39vLnEAcLJqqFML7RZbxJFXUZz41w58H0kQC3MxnUbiNbEWL08r
-         OPCbWguSAsPe8Yl68sbmcY8O5p0DE5dA3YgLRnetjMjcXv8DVVWIhfi5Niz/2dJMreQt
-         sQuZqn+wj2KL74NWqQC0Pvb123aAkT+3LczJrDU1Egxmn+qklVt+/kDmk0DndgrAQdwf
-         hNjQ==;
+        b=WIClRTv5oCqEyl+LapWCDNRmLf3NN1Ozpwxie2iYYA8zbzSgn4YItQu8ZJOEBnsSbh
+         X6q+MQKCYOTfSFBFz+RUJzmwcbBD6l8qLg2KQfe1ltXSNNESkwkznZxP8S6qwAoJvT7S
+         jlif6fSPTOglqYMU6qMM4rLyZvPx6dFTkARg3PpeESiWKc6InaHfSt0Oz5ptY+O9bmVl
+         hEkJW/uIXCdf4xOImauAWZcuOOCA1UQSG/yPdcBXXwRBhmgeHo7f2hFOHKaU4a38QaPC
+         6dpb2GG3aycH+ZldyksJR/Hc2pL//I0NwAHF0pKcI64dur0UkD04he7k59RgifW+KiLq
+         gUPQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :list-unsubscribe:list-subscribe:list-id:precedence:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=xJmsqUthCTkyaPKz82QRUzMYASvzTQwc7ASm5k5Nbvo=;
+        fh=kfLF3d0iai8XFct1HIv+nl149vtNYBdk0naRjMcZaVc=;
+        b=JBlu/tuBzjuiNJb492+R0pM7jfFqITtq9/CTuaaEv9rpfaUqKIxd9ruV9cLCOKiU2k
+         L+ockGWBc8/jyZdi1qvjf/8iC6SYCY13jxsLySZZGKzleh4tyNBJaFtaQX4PCY/IdjBE
+         RK02NidNnKRIlpvGJvSAkG4YBYc6m1i3qZUTMEoMPkEJb/UU0tNrD7/hzuRadaPIsf5x
+         dTfkDnSx/XUdpEuE5bFuLi7+Cmkx91MF96tN9o9vd1e+L96xm8rPX6tkiUwXE77hjRM2
+         Pu2PkxExIdoVDNMX56ZWbTuzXlVaWI1nMihYgmQ4Su7Y9ijkKIceBwUnIOHUsvCAMewR
+         AnHA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HS2CvEqS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b59e5ae973si116120446d6.237.2024.07.02.16.43.19
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of kvm+bounces-20884-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-20884-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
+Return-Path: <kvm+bounces-20884-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id d9443c01a7336-1fb1c67a457si355515ad.126.2024.07.02.20.52.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2024 16:43:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 Jul 2024 20:52:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-20884-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HS2CvEqS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sOn8c-0007nz-VZ; Tue, 02 Jul 2024 19:42:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sOn8N-0007lC-Bu
- for qemu-arm@nongnu.org; Tue, 02 Jul 2024 19:42:05 -0400
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sOn8J-0006Mi-C2
- for qemu-arm@nongnu.org; Tue, 02 Jul 2024 19:42:02 -0400
-Received: by mail-pg1-x532.google.com with SMTP id
- 41be03b00d2f7-70df2135426so2723558a12.2
- for <qemu-arm@nongnu.org>; Tue, 02 Jul 2024 16:41:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719963718; x=1720568518; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=mZ5AdtoXeBWo04SqXtXVV3bVy8fFh+q0Y63ABmnLjpU=;
- b=HS2CvEqSFlkzP8SzQLvpFM9t7L1geY47WOyZJI4LHQc9CPSNsSWCEEP1sLAMxfjQsD
- qawWm93eZZLFMKTK9ytjzja5XGPr5VMszhg6yODKE4EirqYtFjTzw8llUAx7Hl/U5FKK
- mP+65et3CAGNfFoq6V9CKbAO5I3HDIjAjNC3/CK7VLX7SiYy3zSfXqHQHcgvcBSDequd
- p11ChWRe9Qexgbp+QpWDjH7uUWfQfbIeitTW6YGPEiTpJo7gd8oBFmH/mMqNJnRJXF3q
- bc8njGPsDd9cA8ng2PqTSsIPJSZHSEwOlheUKkGXqbhN6TR/szQ0e6vFLzQz8iMt6GxJ
- LbJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719963718; x=1720568518;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=mZ5AdtoXeBWo04SqXtXVV3bVy8fFh+q0Y63ABmnLjpU=;
- b=U224NFEGCQwfiG4GBRzxYhUx4IzTRnZtrv1ih92Vbb51TJhdOcusPmAxM6LUF2Y8Zr
- co8l/on+xmj5bpBfYXJ+DqkfUSU4/iRaOoNW9sPKGOw2ZX36HgIeWk3UIaCscyhfzX5m
- k1iAlmztGM/XZyF+pmF6NLLFV58na/phwLwKu/zOE+n+BItr54KoEiP3B+YhlT33MJ4f
- j82BUiEpOb5Q0uPcRn78uMFF73Y0j0s8224UH8Hg4072nxD0T6gjJ1tsIaClLmol5VKN
- 18I8ZuSixE3DWLEDviO9f6thVa2F0eIpSV8iiQsA+QNAxpxRvsGw+6/G91MVlAAYP9Am
- fpdg==
-X-Gm-Message-State: AOJu0YzP6I7f4xgenPtuu0ByVEA6js+EUaNU8W31w0b0rHFWUTww1IGq
- qS39UwzTRxoN7V4unyBJ/PkgXQJSQqrIMOUc2D2j+jvU+wsNutGUP9AJAa3A59U=
-X-Received: by 2002:a05:6a21:999e:b0:1be:c42f:be42 with SMTP id
- adf61e73a8af0-1bef61019f4mr11018847637.19.1719963717603; 
- Tue, 02 Jul 2024 16:41:57 -0700 (PDT)
-Received: from stoup.. (174-21-76-141.tukw.qwest.net. [174.21.76.141])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1fac15993c5sm90403755ad.244.2024.07.02.16.41.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Jul 2024 16:41:56 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, iii@linux.ibm.com,
- david@redhat.com, balaton@eik.bme.hu
-Subject: [PATCH 0/2] target/arm: Fix unwind from dc zva and FEAT_MOPS
-Date: Tue,  2 Jul 2024 16:41:53 -0700
-Message-Id: <20240702234155.2106399-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.34.1
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of kvm+bounces-20884-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-20884-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id A2912B210A4
+	for <alex.bennee@linaro.org>; Wed,  3 Jul 2024 03:52:17 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4EA1E17BA2;
+	Wed,  3 Jul 2024 03:52:13 +0000 (UTC)
+Received: from szxga02-in.huawei.com (szxga02-in.huawei.com [45.249.212.188])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7CBF524C
+	for <kvm@vger.kernel.org>; Wed,  3 Jul 2024 03:52:10 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=45.249.212.188
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1719978733; cv=none; b=KdAWOeJIaif28NZaaPauj6zRh1G19A95FP20RCB/r3cIp+vsSW0Y+HPRi8KMjXmUymXXtRATfDQ0V/Qmliv4GZxMyRQT3n7Yg0xEghWq+02AEwHi6xrCluR8UZtIqy4c7eHHA/BmYuBG2PMpOvAZb1L/+GA/0F7Rln5eTNGOOT8=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1719978733; c=relaxed/simple;
+	bh=a1S8CeAk/2o6s5YwxLfhQi8giPnvxapLai7bGOVjZeo=;
+	h=Subject:To:CC:References:From:Message-ID:Date:MIME-Version:
+	 In-Reply-To:Content-Type; b=HFVeY424iTbcRJ1Zlya6pwldnqCErfVpjFujdX0HguSnhl9xytJVnItz21b83+NairUjWfJLUW8ySFAl6o+g22FcNFMhOAtHTSoR5knNEm/M2y0UvaKOr86RBi3NRKkUaOaoGzhLtmjinoiPU1YioWc9VjCGQh8bsbttxgDxg9Q=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=45.249.212.188
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
+Received: from mail.maildlp.com (unknown [172.19.163.174])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4WDQm63WvWzdg6V;
+	Wed,  3 Jul 2024 11:50:30 +0800 (CST)
+Received: from kwepemm600007.china.huawei.com (unknown [7.193.23.208])
+	by mail.maildlp.com (Postfix) with ESMTPS id 7B56F140417;
+	Wed,  3 Jul 2024 11:52:07 +0800 (CST)
+Received: from [10.174.185.179] (10.174.185.179) by
+ kwepemm600007.china.huawei.com (7.193.23.208) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 3 Jul 2024 11:52:06 +0800
+Subject: Re: [kvm-unit-tests PATCH v1 2/2] arm/mmu: widen the page size check
+ to account for LPA2
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+CC: <pbonzini@redhat.com>, <drjones@redhat.com>, <thuth@redhat.com>,
+	<kvm@vger.kernel.org>, <qemu-arm@nongnu.org>,
+	<linux-arm-kernel@lists.infradead.org>, <christoffer.dall@arm.com>,
+	<maz@kernel.org>, Anders Roxell <anders.roxell@linaro.org>, Andrew Jones
+	<andrew.jones@linux.dev>, Alexandru Elisei <alexandru.elisei@arm.com>, Eric
+ Auger <eric.auger@redhat.com>, "open list:ARM" <kvmarm@lists.linux.dev>
+References: <20240702163515.1964784-1-alex.bennee@linaro.org>
+ <20240702163515.1964784-3-alex.bennee@linaro.org>
+From: Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <28936f0c-5745-14b3-1ecf-ae1e01c5b28f@huawei.com>
+Date: Wed, 3 Jul 2024 11:52:05 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
+In-Reply-To: <20240702163515.1964784-3-alex.bennee@linaro.org>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KLNQDhJdba4d
+X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
+ kwepemm600007.china.huawei.com (7.193.23.208)
+X-TUID: zR0KrJ8GzeMy
 
-While looking into Zoltan's attempt to speed up ppc64 DCBZ
-(data cache block set to zero), I wondered what AArch64 was
-doing differently.  It turned out that Arm is the only user
-of tlb_vaddr_to_host.
+Hi Alex,
 
-None of the code sequences in use between AArch64, Power64 and S390X
-are 100% safe, with race conditions vs mmap et al, however, AArch64
-is the only one that will fail this single threaded test case.  Use
-of these new functions fixes the race condition as well, though I
-have not yet touched the other guests.
+[ Please don't send patches to the old kvmarm@lists.cs.columbia.edu as
+it had been dropped since early 2023. [1] ]
 
-I thought about exposing accel/tcg/user-retaddr.h for direct use
-from the targets, but perhaps these wrappers are cleaner.  RFC?
+On 2024/7/3 0:35, Alex Bennée wrote:
+> If FEAT_LPA2 is enabled there are different valid TGran values
+> possible to indicate the granule is supported for 52 bit addressing.
+> This will cause most tests to abort on QEMU's -cpu max with the error:
+> 
+>   lib/arm/mmu.c:216: assert failed: system_supports_granule(PAGE_SIZE): Unsupported translation granule 4096
+> 
+> Expand the test to tale this into account.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Anders Roxell <anders.roxell@linaro.org>
 
+There's a similar patch on the list [2], haven't been merged in master
+though.
 
-r~
-
-
-Richard Henderson (2):
-  accel/tcg: Introduce memset_ra, memmove_ra
-  target/arm: Use memset_ra, memmove_ra in helper-a64.c
-
- include/exec/cpu_ldst.h            | 40 ++++++++++++++++
- accel/tcg/user-exec.c              | 22 +++++++++
- target/arm/tcg/helper-a64.c        | 10 ++--
- tests/tcg/multiarch/memset-fault.c | 77 ++++++++++++++++++++++++++++++
- 4 files changed, 144 insertions(+), 5 deletions(-)
- create mode 100644 tests/tcg/multiarch/memset-fault.c
-
--- 
-2.34.1
-
+[1] https://git.kernel.org/torvalds/c/960c3028a1d5
+[2] 
+https://lore.kernel.org/all/20240402132739.201939-6-andrew.jones@linux.dev

@@ -1,105 +1,128 @@
-Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2412255njm;
-        Wed, 3 Jul 2024 00:09:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFel9WZ3sRO1zxbDZdLYhuwDvFIaXLWDKEgP1y1YwW4WiL/i2uZNiff9s7XuT2n4cCKWjWf
-X-Received: by 2002:a05:6358:9392:b0:19f:5a42:d2bd with SMTP id e5c5f4694b2df-1a6ace9a783mr1171123255d.22.1719990548765;
-        Wed, 03 Jul 2024 00:09:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1719990548; cv=none;
+Received: by 2002:a17:504:7599:b0:1be7:c013:c773 with SMTP id j25csp2418237njm;
+        Wed, 3 Jul 2024 00:23:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGdqhjC33UFoKRANFyWzJvbtAoHvoffsfUibosgcU8WG4phzjL4nAeUAbqkaW8N9PRMpjS1
+X-Received: by 2002:a05:6a20:4388:b0:1bd:2a05:5f24 with SMTP id adf61e73a8af0-1c0bffaa87bmr1529602637.27.1719991421473;
+        Wed, 03 Jul 2024 00:23:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1719991421; cv=none;
         d=google.com; s=arc-20160816;
-        b=x2sfaX7GIbb+oq63LrUro3yK0TCQfnfnlrQbuxt7z0XQUzMs4Q2200xsWBi35ujTvT
-         2l24w57o1dNNmcLnqmHFizjujA62Bv0GPlam5htFXD+A1USmEKIGd1klchz+j6+Cd7vM
-         mNd+9qt8wkM2PRhyHaOeIdiJRXERNXCrLs7RJkPDf+8bOrqWwc0czd3tJyMB1nJ4Co8d
-         iRMKP7JYdJjtvbwKXYLNq7lWaQ3LCdJfsC3Lz9ygfBckirSV3PadibilE8BDRIt577yB
-         R9GIG8YbbfFh+DAR9DvC+OwStGDnXfzPfsMAYry9infh3NZrWQOW+jllttT+hnf4XCYS
-         3Kuw==
+        b=ZNYCwWLxFjno9boaLQZs8bHFmPMhF5vlfnsPOYkTji/9T75DarRPDaNmqxyAKsPZdT
+         YLmMeDeZM8O+UUqVveRiAoX1d5l9oO5oAZq57VDYOd2b38pBQexjYNgmvOCBWq3MvttD
+         0xREwX2WFE18gS4CGbs9tsO/QC7fxLHnZDqlRFNHtRQfo2xuBaIxQ+xnfm7G8pfucZpk
+         I2C6AutlBOAcLlS9Ga3yIEkQ3ZPw3mQ4vHdyECMeC19rC3mY3YLYbl7kmXwkGNwvfCO3
+         dNfE2ui3gkFDcgvbrv1VZp+rD8zO0kfX1JtYaxqkXscV0EZZghKYduw/Lth7b16GhoOK
+         jGMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=CWNkbWcXoxyNn/UtVSDDGY2VdNw9NgTw1ymoLQO/QjU=;
-        fh=uxDmzs7ATx5Fkyweo4GPuDuXVd3pEvbw+mh8hZ67x9s=;
-        b=W4JA/9+ntdC0kNmdYPRYHbKMVMenzcciLwUeqcmmMMeY42APX59yTiPtOQB9Plvk1J
-         xH7ZTP8RRtGsVVi4OllgJ6yvcxoWSwU5G4OCQigty8V/4hczeStBHhY1WP+cuxoxMz2b
-         P1PQJIEvOSCQTHMctxc538EF1wCaToMrbx8YdWgZk9z9Wxp0clLZED7RooJ8k4WPKJzi
-         rEzIXykIQJs6FrcJwvMbruwAffDlAGTZ7+lyrwxJLASWvoV1b0nQi+oUJ/evOzImlfZ0
-         Wqz8Gs683pAavbdaz9W8jxtZfZjf8ZvPKxzJ/nvnxftyjx3JYnXVV6g/AeM8eMcOGUqr
-         xysQ==;
+        h=content-transfer-encoding:message-id:user-agent:references
+         :in-reply-to:subject:cc:to:from:date:mime-version:dkim-signature;
+        bh=PNR21walsmmPlKx+EEnlCN9q2DuGCXQodYRLsZHa6hg=;
+        fh=rd9djB/sHdHBXbpG7HqS3Z5XSt5MYkQLbnLvHMfSZcs=;
+        b=BXu9yJ4/v2tjyt1+iVNYj+dRBMbJwh5oZsb3f/TFShHlBp5c/OXWavTMOY+EYQDwz1
+         diTndkPhLQR0YSMKC7XKGVPvCLiRWo4rnjXekxTXZn0Cf3MFJwe7nj4s6c8ZTThTpLJY
+         huiZyQEgWxtCto8XMCWb2fhSZ8BRWJJiTJocegpeISX4IFl1HcBGDUXc/sx/gJ3vy4BS
+         P6FVVBXXmTogL025ANht6Gcv4qzomrSEeFc/hlJkmJ2PM9CigzlSJnQrRhQb1VtA5zG3
+         FNRq2cfQ/jZo+4E+Scrw+23RQSsgrcskgzSo9YPwmwjytR/Xv+b+9Nvze/eI3wmwAN0p
+         4jog==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of yuzenghui@huawei.com designates 45.249.212.35 as permitted sender) smtp.mailfrom=yuzenghui@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <yuzenghui@huawei.com>
-Received: from szxga07-in.huawei.com (szxga07-in.huawei.com. [45.249.212.35])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-72c6d41615fsi13063476a12.462.2024.07.03.00.09.08
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 03 Jul 2024 00:09:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of yuzenghui@huawei.com designates 45.249.212.35 as permitted sender) client-ip=45.249.212.35;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=nmY77SKa;
+       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:40e1:4800::1 as permitted sender) smtp.mailfrom=maz@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <maz@kernel.org>
+Received: from sin.source.kernel.org (sin.source.kernel.org. [2604:1380:40e1:4800::1])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-72c69d3e540si12400387a12.174.2024.07.03.00.23.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 03 Jul 2024 00:23:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of maz@kernel.org designates 2604:1380:40e1:4800::1 as permitted sender) client-ip=2604:1380:40e1:4800::1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of yuzenghui@huawei.com designates 45.249.212.35 as permitted sender) smtp.mailfrom=yuzenghui@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.19.162.112])
-	by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4WDW4X5hdXz1X4RM;
-	Wed,  3 Jul 2024 15:05:00 +0800 (CST)
-Received: from kwepemm600007.china.huawei.com (unknown [7.193.23.208])
-	by mail.maildlp.com (Postfix) with ESMTPS id 3736114037E;
-	Wed,  3 Jul 2024 15:09:07 +0800 (CST)
-Received: from [10.174.185.179] (10.174.185.179) by
- kwepemm600007.china.huawei.com (7.193.23.208) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 3 Jul 2024 15:09:05 +0800
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=nmY77SKa;
+       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:40e1:4800::1 as permitted sender) smtp.mailfrom=maz@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sin.source.kernel.org (Postfix) with ESMTP id 3E24CCE1FB7;
+	Wed,  3 Jul 2024 07:23:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78E01C2BD10;
+	Wed,  3 Jul 2024 07:23:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1719991419;
+	bh=bU/2YsOmK16v0fOdsJ38br5N/4af3GRgBNGqmZiO8vI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=nmY77SKan33oVV7BCDgh9UdHHeEJg95y4e4aq46WP/By1OUdh7ymaLPuAOzwyeFcI
+	 Azyn1U4InRUI9MjEX5g/LTA0xXPJkqXiVDiOpGz8dHwi/xbKzJnx4gIle3yrlH93Kt
+	 jiyWwpSA3KLs0M7+Gwkh7zGQhSD8KRVVp4LMbjhjJF9VgZR5TYA3x+nSZC8Ri41siP
+	 Rdp3GQGCbzd1d0/ZM8Hw0WjEIcO60VqN7IJySppYsew1BFzWGKCP67U5plxEY/RfRw
+	 ZBpiFTblyfea6k0wvlxGPNNMkOSSCu+rWQXSuwSmJZsDHaB4z+R5rceCeJQO1ZRER5
+	 QI+MaDADhNu8A==
+Received: from disco-boy.misterjones.org ([217.182.43.188] helo=www.loen.fr)
+	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.95)
+	(envelope-from <maz@kernel.org>)
+	id 1sOuL3-009LsO-75;
+	Wed, 03 Jul 2024 08:23:37 +0100
+MIME-Version: 1.0
+Date: Wed, 03 Jul 2024 08:23:37 +0100
+From: Marc Zyngier <maz@kernel.org>
+To: Zenghui Yu <yuzenghui@huawei.com>
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ pbonzini@redhat.com, thuth@redhat.com, kvm@vger.kernel.org,
+ qemu-arm@nongnu.org, linux-arm-kernel@lists.infradead.org,
+ christoffer.dall@arm.com, Anders Roxell <anders.roxell@linaro.org>, Andrew
+ Jones <andrew.jones@linux.dev>, Alexandru Elisei <alexandru.elisei@arm.com>,
+ Eric Auger <eric.auger@redhat.com>, "open list:ARM" <kvmarm@lists.linux.dev>
 Subject: Re: [kvm-unit-tests PATCH v1 1/2] arm/pmu: skip the PMU introspection
  test if missing
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-CC: <pbonzini@redhat.com>, <thuth@redhat.com>, <kvm@vger.kernel.org>,
-	<qemu-arm@nongnu.org>, <linux-arm-kernel@lists.infradead.org>,
-	<christoffer.dall@arm.com>, <maz@kernel.org>, Anders Roxell
-	<anders.roxell@linaro.org>, Andrew Jones <andrew.jones@linux.dev>, Alexandru
- Elisei <alexandru.elisei@arm.com>, Eric Auger <eric.auger@redhat.com>, "open
- list:ARM" <kvmarm@lists.linux.dev>
+In-Reply-To: <8c11996c-b36d-e560-cdeb-e543ee478a54@huawei.com>
 References: <20240702163515.1964784-1-alex.bennee@linaro.org>
  <20240702163515.1964784-2-alex.bennee@linaro.org>
-From: Zenghui Yu <yuzenghui@huawei.com>
-Message-ID: <8c11996c-b36d-e560-cdeb-e543ee478a54@huawei.com>
-Date: Wed, 3 Jul 2024 15:09:05 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
-MIME-Version: 1.0
-In-Reply-To: <20240702163515.1964784-2-alex.bennee@linaro.org>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
+ <8c11996c-b36d-e560-cdeb-e543ee478a54@huawei.com>
+User-Agent: Roundcube Webmail/1.4.15
+Message-ID: <74e184afbc4b58fba984b91964915a9e@kernel.org>
+X-Sender: maz@kernel.org
+Content-Type: text/plain; charset=UTF-8;
+ format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.174.185.179]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- kwepemm600007.china.huawei.com (7.193.23.208)
-X-TUID: QzkmbCnHIZkZ
+X-SA-Exim-Connect-IP: 217.182.43.188
+X-SA-Exim-Rcpt-To: yuzenghui@huawei.com, alex.bennee@linaro.org, pbonzini@redhat.com, thuth@redhat.com, kvm@vger.kernel.org, qemu-arm@nongnu.org, linux-arm-kernel@lists.infradead.org, christoffer.dall@arm.com, anders.roxell@linaro.org, andrew.jones@linux.dev, alexandru.elisei@arm.com, eric.auger@redhat.com, kvmarm@lists.linux.dev
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
+X-TUID: /TGOuaac5nxm
 
-On 2024/7/3 0:35, Alex Bennée wrote:
-> The test for number of events is not a substitute for properly
-> checking the feature register. Fix the define and skip if PMUv3 is not
-> available on the system. This includes emulator such as QEMU which
-> don't implement PMU counters as a matter of policy.
+On 2024-07-03 08:09, Zenghui Yu wrote:
+> On 2024/7/3 0:35, Alex Bennée wrote:
+>> The test for number of events is not a substitute for properly
+>> checking the feature register. Fix the define and skip if PMUv3 is not
+>> available on the system. This includes emulator such as QEMU which
+>> don't implement PMU counters as a matter of policy.
+>> 
+>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>> Cc: Anders Roxell <anders.roxell@linaro.org>
+>> ---
+>>  arm/pmu.c | 7 ++++++-
+>>  1 file changed, 6 insertions(+), 1 deletion(-)
+>> 
+>> diff --git a/arm/pmu.c b/arm/pmu.c
+>> index 9ff7a301..66163a40 100644
+>> --- a/arm/pmu.c
+>> +++ b/arm/pmu.c
+>> @@ -200,7 +200,7 @@ static void test_overflow_interrupt(bool 
+>> overflow_at_64bits) {}
+>>  #define ID_AA64DFR0_PERFMON_MASK  0xf
+>>   #define ID_DFR0_PMU_NOTIMPL	0b0000
+>> -#define ID_DFR0_PMU_V3		0b0001
+>> +#define ID_DFR0_PMU_V3		0b0011
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: Anders Roxell <anders.roxell@linaro.org>
-> ---
->  arm/pmu.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
+> Why? This is a macro used for AArch64 and DDI0487J.a (D19.2.59, the
+> description of the PMUVer field) says that
 > 
-> diff --git a/arm/pmu.c b/arm/pmu.c
-> index 9ff7a301..66163a40 100644
-> --- a/arm/pmu.c
-> +++ b/arm/pmu.c
-> @@ -200,7 +200,7 @@ static void test_overflow_interrupt(bool overflow_at_64bits) {}
->  #define ID_AA64DFR0_PERFMON_MASK  0xf
->  
->  #define ID_DFR0_PMU_NOTIMPL	0b0000
-> -#define ID_DFR0_PMU_V3		0b0001
-> +#define ID_DFR0_PMU_V3		0b0011
+> "0b0001	Performance Monitors Extension, PMUv3 implemented."
+> 
+> while 0b0011 is a reserved value.
 
-Why? This is a macro used for AArch64 and DDI0487J.a (D19.2.59, the
-description of the PMUVer field) says that
+I think this is a mix of 32bit and 64bit views (ID_DFR0_EL1.PerfMon
+instead of ID_AA64DFR0_EL1.PMUVer), and the whole thing is a mess
+(ID_AA64DFR0_PERFMON_MASK is clearly confused...).
 
-"0b0001	Performance Monitors Extension, PMUv3 implemented."
+I haven't looked at how this patch fits in the rest of the code though.
 
-while 0b0011 is a reserved value.
-
-Thanks,
-Zenghui
+         M.
+-- 
+Jazz is not dead. It just smells funny...

@@ -1,193 +1,280 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp781286njb;
-        Thu, 4 Jul 2024 11:25:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXaZ5j621gun7c62FjIe0skurrZqvLulgWWxH1xnqOGVzy7SYcxxTGnhjWmYHa3vGYMNWyVYliYp4qz+Y/fQJ3HHcJddtae
-X-Google-Smtp-Source: AGHT+IFcjtyb/130klEOioIeei+6+DpJe6S9pS5jt1BzZH5k3p9yX8QVQxMSe98YP/sBwflx0568
-X-Received: by 2002:a9d:62d7:0:b0:700:d11d:6805 with SMTP id 46e09a7af769-7034a73a513mr3030828a34.5.1720117524332;
-        Thu, 04 Jul 2024 11:25:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720117524; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp783956njb;
+        Thu, 4 Jul 2024 11:30:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWrDF8a0A1A4e9Y+9NRuGvOBg9uyi4HsQVgr8f99BnCepkv2R1e7THXWEGhnIU2LtAhYDedHUK0Y4bsZcLKtSgqcpUuSiZZ
+X-Received: by 2002:a05:600c:6d5:b0:424:a5df:b998 with SMTP id 5b1f17b1804b1-4264a3d1d2bmr17718685e9.9.1720117858258;
+        Thu, 04 Jul 2024 11:30:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720117858; cv=none;
         d=google.com; s=arc-20160816;
-        b=xDZkc84X5Z1aJE5ADxPMDg2OulnoWt//PIr+RO96CBp8LgtSbjelZVFEM68ynAqEhK
-         JTsbeIBLu0jW523p4w+wyswq2AmnGuo1kQJH1qK9yJlXqtHBmEW9FUWau6JjTf4eMXSC
-         IgFurbGn8UrQKIhPdujMF8/fExLCWihForDYX6thrzQWt6pR8s5r5Jcd0/CF1iNU1JJ4
-         KTOY/wDlqtoaA4PJUnASPCOVLk+vyS7IEr5nqJKutXXE8r4xjC390a+VmJsZ2ZKRiJU9
-         HfUdvjsmTXFGa1fVW6wFyd6krdVd5hHKLSjkwl4NkL5nohZbYlrL63cZUxqGkuo4/nEZ
-         B6zw==
+        b=ypcv0uDaTc1/MZgq82z8rs5dtPcrPR1TfSVmTkz/nJw3nsPb3Lfz1+pyBtLNFDKDXY
+         bC40rPw1YjbLqMC2AEp1aRZhPIywSvAwiLKQINU1OVdqjs4qqrddXwFeOqMz5N6gTtEw
+         BKC8zStSUFbNBPf6c7D+hn47oFDkO5RvZFEt1WbGlib8Xg3ZWdCycFfzULeswDdMCnKR
+         AqnYMB0W+4Ojcz9pZoniACibYvvAj44Clg6BnkxUcGZNQ6EhzChTQVnAE0KsBxAdZqsO
+         aioC9nMSt8dvyCpR8Yml6gV1jwhDAP3Y6mCTgfC5STLRHh/ECMibsc6eReIQXvidMj8N
+         06zQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=O9HMrFcVZDenmphTehp9py7axRg9tQZVyNoIrqkiERM=;
-        fh=EBIJu/+LE3TayWv6pHtT0Wmmsa/CxgrWRjDLn4h0Ho4=;
-        b=F2xuYLHo36h0kVeyyWCIw64t8RlFx8cAAEModlKHgQAth/pDMp9JapgZEyRjScv1qO
-         jjz/jnpIK/bTBxZ2FBAONFoytKicqdnXycbCzYRAd/fu1wqxarkwYp8cnc5xeRUc4g07
-         rVEUa9mMWJ0fqbC5kmhZI1K5brJa9eWOd9SNfA/GMV7FilyiisKW3qsQj3ZVC1iNnzsr
-         gQJQXVp5apTAsYwp7ti2/n70zBmpZHY4yTfl7KZGPoroNwSiWpKzZksvD8h/MzyYVgbK
-         8iCwa3FEo8k2Ucb8AYdbIrZPjEUScAvi4DINYTWYIUWA6rXRcFRtfmgoELXuMVmcXxJ4
-         Bqzg==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=kBz6wkB7tMJYy0wPftLZ4Ulgjae0KVvXGdcfYoc+8Eg=;
+        fh=QA0ezY7L2eSxjeVvcYWGvSSqx7rgyT+BOEEZbIGk6eI=;
+        b=hv8qXhD7G794b7ChLqpYjdQVbtfXP3ilKDZZXwb6NubuG6T1+BvZ8IMZFDZXP0On3D
+         pQoATvJ2TPAL2zWSOUXk68hjsd11CUgzivOLlBVNzh7eSbLprS/ajTydUiBuSvqPgAGr
+         eWffiDY5MNUG6r2f1XMCUTvYRjbF9Dz7HA4rpWy+75KiCjBRMoCKHf9qYUEcakd/zbMq
+         F18XaN8hVICSstjlajAeb4Qyaq/EW6O5jmLQbCHAUx56ziiV/+voYviA6R9aptpwsJAO
+         vLZ+WmT1SG/3GGCGGuPrbtMiHfJsb7apilf1GoRE75zrgsDFyZ+m52/cxiyzqUHUtwq3
+         FdhQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WLPfAzVt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79d692f13aasi1658154985a.251.2024.07.04.11.25.24
+       dkim=pass header.i=@linaro.org header.s=google header.b=KiZfV+HR;
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <jean-philippe@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-367a1bef3d6sor427066f8f.4.2024.07.04.11.30.58
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jul 2024 11:25:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 04 Jul 2024 11:30:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WLPfAzVt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sPR8Y-0001dm-Jp; Thu, 04 Jul 2024 14:24:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sPR8P-0001Xe-2c
- for qemu-arm@nongnu.org; Thu, 04 Jul 2024 14:24:45 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sPR8N-00007g-AX
- for qemu-arm@nongnu.org; Thu, 04 Jul 2024 14:24:44 -0400
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-1fb457b53c8so987825ad.0
- for <qemu-arm@nongnu.org>; Thu, 04 Jul 2024 11:24:42 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=KiZfV+HR;
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1720117481; x=1720722281; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=O9HMrFcVZDenmphTehp9py7axRg9tQZVyNoIrqkiERM=;
- b=WLPfAzVtiGyfjhcSfVXkkpkTPaYAzn9g6zYhaVnhRt+ivw+qy8+Zmcd17ZfGu9qA7y
- /mnMB/B8U1JEeTjzGOoXCb/Np7GCNcPRaCt0cpu7ol8NdmDWGS9tyElmXDvxbzKnHYx7
- 17KiBhvlAZKBffAOctM/OyAck3c0x5VK0r1X5qAy0cLSb149zRgHKlZh9WVH96ioQP1F
- x52ahZY2SJnG8/6U9zHrTsYq7rjqlJ9pqGf/O4uFp54lX33+1C5wHer2FxX4fI3yKX1p
- gC1X9Wd8hFYXujDHlwvvx4jz/rQ1XWikMxvSQuOqfBIuIpOzJL8MQddO/fp0R4Onr7Nv
- xZeA==
+        d=linaro.org; s=google; t=1720117858; x=1720722658; darn=linaro.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=kBz6wkB7tMJYy0wPftLZ4Ulgjae0KVvXGdcfYoc+8Eg=;
+        b=KiZfV+HRAWeAmwj2NzOcSuJ6adTVUuAI5pmJXwgoTTPYlDVxSK9rz9mVCPvbhYH9Gk
+         x0rFDaA/JPU4ss1VwQUqP0b1OATGPEDK9RNdsBTEH46FckCWCyI4qrvhERbvN7UUW00l
+         eyhQNmttb7qs4Qz62UVTuOgskOz91OEM0UZX9RQOItlYq/JyjjyJj3SXXHvNXhVJU6qo
+         tn1pjI9hnZLklc5no07GEujt6JEO/blG4wIcQoQLXIYDRfQe1tBM6GRzO3L5YKVyb5tz
+         D1bwVzzf3Ual5I+/ST7gsj5CuTnmgyIJERJOrRz+rJ+nPLwx/QJR79QGnkjYWvymglBz
+         sv5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720117481; x=1720722281;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=O9HMrFcVZDenmphTehp9py7axRg9tQZVyNoIrqkiERM=;
- b=FkmLE+NuqruJXOGFxJFxOyjfkMRGBeiVwbIoxNmKT/GsbJVM8eIcVo9yAxfg7dG7cU
- 57Hs1RVQZr6Xrwxcf883FelMvaHStFQpb9qp9c7RoWwCalFf+182GSMwqulfImmjAdNs
- v1gsGs+px5tXmBnBvv6bln4imqZmEGB/JIMMRMNDoLrw4/IAGhrkIgdEwaaDXxLH44x/
- oUjib8MBE1X8r+rb5djJ65m/9hGH2PrY2bq9B/WYDJ9qmftH/UclT/giDyNRfz6A8G1A
- w/58vtDFRGKi1nEQ2W39/Ko90oBwJqd+bXdwC8lrM9rFTnnhyW6esvl7mjwDM+rUXu+v
- CK7w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVBDFY8gDr6Vt6e89/T0Amh2eiSG4Cymm/8GtzT7hakSxB89nx03bokj2x5940JzV1bRMXoWHUyA0yvvW69KqIk5M+k
-X-Gm-Message-State: AOJu0Yyx2Yn50hRdyQSrAOpgqqvCqdVWxcsvPXlGCEyLYaw4QN1Gj4wG
- uXOLy50H/IeVw4iZEhgX26jSGRh0LuPLs2Xn/WDVR9GUcUqN5vndsJ9qLl4Ikzo=
-X-Received: by 2002:a17:902:f693:b0:1f7:1706:25ba with SMTP id
- d9443c01a7336-1fb33e17bf7mr18111975ad.15.1720117481167; 
- Thu, 04 Jul 2024 11:24:41 -0700 (PDT)
-Received: from [192.168.0.4] (174-21-76-141.tukw.qwest.net. [174.21.76.141])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1fac0ba60a2sm129029805ad.0.2024.07.04.11.24.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Jul 2024 11:24:40 -0700 (PDT)
-Message-ID: <c69acef3-aba9-4171-8b9b-167025827b4e@linaro.org>
-Date: Thu, 4 Jul 2024 11:24:38 -0700
+        d=1e100.net; s=20230601; t=1720117858; x=1720722658;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=kBz6wkB7tMJYy0wPftLZ4Ulgjae0KVvXGdcfYoc+8Eg=;
+        b=dsx3WfZIK1oVjEhPKwr7Yu+/WE0pWcEI/yueOyeq2Vir5RiNrDskMIetsWK3nyWb5A
+         ERRmS3FdWtOfRtqf8WhU0ZccYMU547pJz3EUjDCNkt1Gs+pv9O4GBp5Wv1vVjuHtH29J
+         D4rSVNH0SqydhM/Q5jjq7nZuYTGG2fFLj4LJCcQjuV+W1R1gvqhFFWNzq3/Yo35JXTXl
+         fJs80OrpXDnEfxIBmcRIEnqrfdycGZbTE7BDnoXOm8sfw5i5KvjIAuqnbRAMa9i+bOUF
+         RKGRFdyFK1jBZ86Sc3LRrZx2F3gYngTj2A0VJdyzwaLHYs0dhFlyTd4HTliH/Ro3WCOM
+         un8w==
+X-Forwarded-Encrypted: i=1; AJvYcCWsU7mt/UIaYFEFLErDrzLJz+YQ5ZMUavIaeNgwCeiOlAyEeFsYWK+kaAO/vZ33cHZom7/F61rD0bdcdFI/nqrKSGKPFajy
+X-Gm-Message-State: AOJu0YwBiZnZSv7lqGWk0qLvwDkG9ztjkPpSk8ZHjuhxIpz5QkTNQtT7
+	6i+7W7bqxkbflNkt2JDq6OS3s10fyDtE1Rg9o9rOgS3jwJKKmhK9jhoxzoMFoWIxZA==
+X-Google-Smtp-Source: AGHT+IGk1rcRfobvCyz8ROSlgmGUT3lBfb91NhA3zH7UjjfwAbcYNb5Br5rKmV8SKHwTnTjqWRlm+w==
+X-Received: by 2002:a05:6000:124d:b0:362:fc59:1ff5 with SMTP id ffacd0b85a97d-3679dd73891mr2021105f8f.59.1720117857623;
+        Thu, 04 Jul 2024 11:30:57 -0700 (PDT)
+Return-Path: <jean-philippe@linaro.org>
+Received: from myrica ([2.221.137.100])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-367a3b1e523sm853610f8f.53.2024.07.04.11.30.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 Jul 2024 11:30:57 -0700 (PDT)
+Date: Thu, 4 Jul 2024 19:31:10 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Mostafa Saleh <smostafa@google.com>
+Cc: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
+	qemu-devel@nongnu.org, alex.bennee@linaro.org, maz@kernel.org,
+	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
+	marcin.juszkiewicz@linaro.org
+Subject: Re: [PATCH v4 11/19] hw/arm/smmu-common: Support nested translation
+Message-ID: <20240704183110.GH1693268@myrica>
+References: <20240701110241.2005222-1-smostafa@google.com>
+ <20240701110241.2005222-12-smostafa@google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] target/arm: Always build Aarch64 gdbstub helpers
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>,
- qemu-arm@nongnu.org, Anton Johansson <anjo@rev.ng>
-References: <20240619124903.56898-1-philmd@linaro.org>
- <42de8f25-3624-4e7c-b38c-ad8e3b8e61a4@linaro.org>
- <83667101-daba-43ea-ba33-1df547020cd9@linaro.org>
- <ebfa6ca6-d93e-45b3-8786-cb52505e2d7c@linaro.org>
- <CAFEAcA9bqgFwxsbvKFLUiGu=ThzF0zAy7-rD+7Yo4yNEoi4Pbg@mail.gmail.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CAFEAcA9bqgFwxsbvKFLUiGu=ThzF0zAy7-rD+7Yo4yNEoi4Pbg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EIGO7Z6ww4c/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240701110241.2005222-12-smostafa@google.com>
+X-TUID: Ti64iZbUT7nG
 
-On 7/4/24 08:01, Peter Maydell wrote:
-> On Fri, 28 Jun 2024 at 17:50, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> On 6/28/24 09:37, Philippe Mathieu-Daudé wrote:
->>> On 28/6/24 16:31, Richard Henderson wrote:
->>>> On 6/19/24 05:49, Philippe Mathieu-Daudé wrote:
->>>>> Merge gdbstub64.c in gdbstub.c and remove uses of
->>>>> target specific TARGET_AARCH64 definition.
->>>>> Small step toward single ARM/Aarch64 binary.
->>>>>
->>>>> Philippe Mathieu-Daudé (2):
->>>>>     target/arm: Merge gdbstub64.c within gdbstub.c
->>>>>     target/arm: Always build Aarch64 gdbstub helpers
->>>>>
->>>>>    target/arm/cpu.h       |   8 +-
->>>>>    target/arm/internals.h |   2 -
->>>>>    target/arm/gdbstub.c   | 363 +++++++++++++++++++++++++++++++++++++-
->>>>>    target/arm/gdbstub64.c | 383 -----------------------------------------
->>>>>    target/arm/meson.build |   1 -
->>>>>    5 files changed, 364 insertions(+), 393 deletions(-)
->>>>>    delete mode 100644 target/arm/gdbstub64.c
->>>>>
->>>>
->>>> Are we attempting a single binary for user-only as well?
->>>
->>> No, due to ABI constraints, right? I did a user-emulation
->>> smoke build, no failure, did I miss something?
->>
->> Well, no.  But qemu-arm does not need gdbstub64.c.
->> Given TARGET_AARCH64 will be set on a combined build, I'm not sure what is the fix?
+On Mon, Jul 01, 2024 at 11:02:33AM +0000, Mostafa Saleh wrote:
+> When nested translation is requested, do the following:
 > 
-> Richard: I'm a bit confused about where we are with this
-> patchset. Do your comments mean:
->   * this patchset is OK for system emulation but we
->     should (later) think also about user-mode ?
->   * this patchset has a problem with user-mode so it
->     needs rethinking ?
->   * something else ?
+> - Translate stage-1 table address IPA into PA through stage-2.
+> - Translate stage-1 table walk output (IPA) through stage-2.
+> - Create a single TLB entry from stage-1 and stage-2 translations
+>   using logic introduced before.
+> 
+> For stage-1 table translation, the spec (ARM IHI 0070 F.b) says in:
+>     7.3.12 F_WALK_EABT:
+>         Translation of an IPA for Stage 1 descriptor fetch:
+> 	S2 == 1 (stage 2), CLASS == T
+> So, F_WALK_EABT is used which propagtes to CLASS == TT.
 
-I'm confused about what this patch set improves.
+I don't think the text applies to this case, the context is:
 
-It doesn't remove ifdefs; they're still there in gdbstub.c.  The code that handles aarch64 
-is now in gdbstub instead of segregated into gdbstub64.c, so we have one larger file for 
-no obvious benefit.
+	A stage 2 table walk can encounter EABT accessing the physical
+	address of a stage 2 descriptor, because of a:
+	[...]
+	* Translation of an IPA for Stage 1 descriptor fetch
 
-Was there some other build problem that I missed?  Because I don't see how it advances the 
-stated goal of "a single ARM/AArch64 binary".
+So EABT is when failing to load the stage 2 descriptor. I can't find
+exact text for this case but looking at the flowchart 15.5, I think
+this should be F_TRANSLATION/F_ADDR_SIZE/F_PERMISSION/F_ACCESS with
+CLASS=TT and S2.
 
+Thanks,
+Jean
 
-r~
+> 
+> smmu_ptw() has a new argument SMMUState which include the TLB as
+> stage-1 table address can be cached in there.
+> 
+> Also in smmu_ptw() a separate path used for nesting to simplify the
+> code, although some logic can be combined.
+> 
+> Signed-off-by: Mostafa Saleh <smostafa@google.com>
+> ---
+>  hw/arm/smmu-common.c         | 72 +++++++++++++++++++++++++++++++-----
+>  include/hw/arm/smmu-common.h |  2 +-
+>  2 files changed, 64 insertions(+), 10 deletions(-)
+> 
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 24b7d09e2b..71afd486ba 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -318,6 +318,38 @@ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova)
+>      return NULL;
+>  }
+>  
+> +/* Translate stage-1 table address using stage-2 page table. */
+> +static inline int translate_table_addr_ipa(dma_addr_t *table_addr,
+> +                                           SMMUTransCfg *cfg,
+> +                                           SMMUPTWEventInfo *info,
+> +                                           SMMUState *bs)
+> +{
+> +    dma_addr_t addr = *table_addr;
+> +    SMMUTLBEntry *cached_entry;
+> +    int asid;
+> +
+> +    /*
+> +     * The translation table walks performed from TTB0 or TTB1 are always
+> +     * performed in IPA space if stage 2 translations are enabled.
+> +     */
+> +    asid = cfg->asid;
+> +    cfg->stage = SMMU_STAGE_2;
+> +    cfg->asid = -1;
+> +    cached_entry = smmu_translate(bs, cfg, addr, IOMMU_RO, info);
+> +    cfg->asid = asid;
+> +    cfg->stage = SMMU_NESTED;
+> +
+> +    if (cached_entry) {
+> +        *table_addr = CACHED_ENTRY_TO_ADDR(cached_entry, addr);
+> +        return 0;
+> +    }
+> +
+> +    info->stage = SMMU_STAGE_2;
+> +    info->type = SMMU_PTW_ERR_WALK_EABT;
+> +    info->addr = addr;
+> +    return -EINVAL;
+> +}
+> +
+>  /**
+>   * smmu_ptw_64_s1 - VMSAv8-64 Walk of the page tables for a given IOVA
+>   * @cfg: translation config
+> @@ -333,7 +365,8 @@ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova)
+>   */
+>  static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
+>                            dma_addr_t iova, IOMMUAccessFlags perm,
+> -                          SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
+> +                          SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info,
+> +                          SMMUState *bs)
+>  {
+>      dma_addr_t baseaddr, indexmask;
+>      SMMUStage stage = cfg->stage;
+> @@ -381,6 +414,11 @@ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
+>                  goto error;
+>              }
+>              baseaddr = get_table_pte_address(pte, granule_sz);
+> +            if (cfg->stage == SMMU_NESTED) {
+> +                if (translate_table_addr_ipa(&baseaddr, cfg, info, bs)) {
+> +                    goto error;
+> +                }
+> +            }
+>              level++;
+>              continue;
+>          } else if (is_page_pte(pte, level)) {
+> @@ -568,10 +606,8 @@ error:
+>   * combine S1 and S2 TLB entries into a single entry.
+>   * As a result the S1 entry is overriden with combined data.
+>   */
+> -static void __attribute__((unused)) combine_tlb(SMMUTLBEntry *tlbe,
+> -                                                SMMUTLBEntry *tlbe_s2,
+> -                                                dma_addr_t iova,
+> -                                                SMMUTransCfg *cfg)
+> +static void combine_tlb(SMMUTLBEntry *tlbe, SMMUTLBEntry *tlbe_s2,
+> +                        dma_addr_t iova, SMMUTransCfg *cfg)
+>  {
+>      if (tlbe_s2->entry.addr_mask < tlbe->entry.addr_mask) {
+>          tlbe->entry.addr_mask = tlbe_s2->entry.addr_mask;
+> @@ -596,14 +632,19 @@ static void __attribute__((unused)) combine_tlb(SMMUTLBEntry *tlbe,
+>   * @perm: tentative access type
+>   * @tlbe: returned entry
+>   * @info: ptw event handle
+> + * @bs: smmu state which includes TLB instance
+>   *
+>   * return 0 on success
+>   */
+>  int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+> -             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
+> +             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info, SMMUState *bs)
+>  {
+> +    int ret;
+> +    SMMUTLBEntry tlbe_s2;
+> +    dma_addr_t ipa;
+> +
+>      if (cfg->stage == SMMU_STAGE_1) {
+> -        return smmu_ptw_64_s1(cfg, iova, perm, tlbe, info);
+> +        return smmu_ptw_64_s1(cfg, iova, perm, tlbe, info, bs);
+>      } else if (cfg->stage == SMMU_STAGE_2) {
+>          /*
+>           * If bypassing stage 1(or unimplemented), the input address is passed
+> @@ -621,7 +662,20 @@ int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+>          return smmu_ptw_64_s2(cfg, iova, perm, tlbe, info);
+>      }
+>  
+> -    g_assert_not_reached();
+> +    /* SMMU_NESTED. */
+> +    ret = smmu_ptw_64_s1(cfg, iova, perm, tlbe, info, bs);
+> +    if (ret) {
+> +        return ret;
+> +    }
+> +
+> +    ipa = CACHED_ENTRY_TO_ADDR(tlbe, iova);
+> +    ret = smmu_ptw_64_s2(cfg, ipa, perm, &tlbe_s2, info);
+> +    if (ret) {
+> +        return ret;
+> +    }
+> +
+> +    combine_tlb(tlbe, &tlbe_s2, iova, cfg);
+> +    return 0;
+>  }
+>  
+>  SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t addr,
+> @@ -677,7 +731,7 @@ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t addr,
+>      }
+>  
+>      cached_entry = g_new0(SMMUTLBEntry, 1);
+> -    status = smmu_ptw(cfg, aligned_addr, flag, cached_entry, info);
+> +    status = smmu_ptw(cfg, aligned_addr, flag, cached_entry, info, bs);
+>      if (status) {
+>              g_free(cached_entry);
+>              return NULL;
+> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+> index 1db566d451..cf0fd3ec74 100644
+> --- a/include/hw/arm/smmu-common.h
+> +++ b/include/hw/arm/smmu-common.h
+> @@ -185,7 +185,7 @@ static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
+>   * pair, according to @cfg translation config
+>   */
+>  int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+> -             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info);
+> +             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info, SMMUState *bs);
+>  
+>  
+>  /*
+> -- 
+> 2.45.2.803.g4e1b14247a-goog
+> 

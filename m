@@ -1,69 +1,69 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp461251njb;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp461250njb;
         Thu, 4 Jul 2024 01:55:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVCef7aAdzh7eyZ/dz6jr3TCM1sMnEE4t0iaLzX7dxCL0TPyTOdDnPOVvFCze2m+0Oq1fIJPJ/xvXTq8ovIhppkvGiNoYSP
-X-Google-Smtp-Source: AGHT+IGauLJMtFk5Oq38zdgyMmBNpDVITcv9DjDxiQWC7tLKvzfvPvVw04O5ZCBXieLNwnJsxrEe
-X-Received: by 2002:a05:620a:2982:b0:795:5224:6a75 with SMTP id af79cd13be357-79eee1b0726mr121281785a.10.1720083306473;
+X-Forwarded-Encrypted: i=2; AJvYcCXGrDAhAlMFGeWFyNVWCyZnnc6YFc2zUevkrg4n43ktrh0kITEPDYuI47qMusHqxsa/vvR8QR1F+yJLSSXvD81iv04WIQvc
+X-Google-Smtp-Source: AGHT+IGL5NxR+hNrLuKL25OR1ywgJiXxJ/1mTi7bg7dx6z3gOOujEVlF8d2rF5vv/iKERVzGKMD5
+X-Received: by 2002:a67:be12:0:b0:48f:e9d9:3ad5 with SMTP id ada2fe7eead31-48fee6c39edmr921705137.1.1720083306146;
         Thu, 04 Jul 2024 01:55:06 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1720083306; cv=none;
         d=google.com; s=arc-20160816;
-        b=UhJbGgkR4lTa9p9UFngrAXDlY15Vk1rw9VjwzJcsZKO4dJw/Zp4ZDx48Zj+NM3LnHD
-         rqo85Ikwo9P8DS4+9EHuqm8TovKZzUEzrE3pFQ/6p+mr/+yLXrolIOnoCNL5GXJlg1NZ
-         Rx9BPrt+1XbuxmG+gCOOx0j23b9yECqTy0FtQfCx2Y0GKZE5MzxkO0TkwLX1Or+suqob
-         WqeDDyQFRfQ3j39cFqPPF4RPweB8Vz7ooeDr+/Xhr6KsiCPnkRpXXMSvtV/z9ATststj
-         p8GSDYq5cuAGYy5p5cv3dqprMs5X+DY4zL6fKpGaPVYekdzrFxcasQtwtN84DEEcyZ/l
-         I6sw==
+        b=MYvEYEGiBCadoTA2XfbftIti/JNkOWUOktU3CV5vpfT3L0qhC1ORRTvc81wLeIp6B1
+         X77jWMHKG8gJAAByv9v+c1JenCRDORRMLAZrrPLRzA0ai4xxd1VR+Gx5GohRa8N7mDB5
+         6Tfyx/RkPdKtrj3HO5X9MBUqXi/evlDmwS54erTGmg1SbNpuM9TEs7L1XaxAnO+bAayF
+         u0T8KL9imS1mjA5xG4W2Y031wMEKwd3izzP4VePwtAPbjEAdj0s5gBZKZG3ye8NEhvLa
+         uYhDXCkwg4DzWoWuNLdX20glZYRA9Zt9ICl7Z2CQQ5ubvjk+vU9yacYZ2BlfbwbxN1dR
+         ajUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=QNtcG4m7eF+5Pn45QDWLrFQIlRyCSmS3VAwTHNnaM44=;
+        bh=QYxj/7dwjgWmKltvkajXv2hmFUOZyZdZlk2ZELo7rcQ=;
         fh=99LDCLNDIGyo70K5tizYz4Wx+QKxBdnC4BaKqLN7Z0w=;
-        b=qbgXQ18spAteLarAveaJ7+5H95v/jUlW+5v2Og0jZPHmc9fqpOExQh8mwq4gnfBuYT
-         QoQ0+CkW1j4AMGh5Kn6f3dVvd99WMd8F8Wd9ZLcARtoARsp0oE9x5gpM6YChbyAgiQdm
-         lCpXPpznuZwsWbOPRU6iF5QDfW66Gjjx9W2B96scHf15WQh9/Aj6sYXx+F68HYNgtoHE
-         13USS1v1nIKB5lH3HKqULXrUJ/3OZTXnm3wYsivW4HfGzIyRlIzwHd463JaZp/FvBeGE
-         KPsh2c7hRi9tjFH0dFZ2JkuA2//F6oOrysFi/mVAehho5bKPWilUPbHGRwGzZRR3tUke
-         vjVw==;
+        b=wALODeg5dNJm/Q/JhLJfrgW+ZhvNJHdOive0Dwo0YsC55hFlMMcTUnnVgkbceG/Kfp
+         yAS7Z/knRREyGPyVhjpxgJ8rA8HxCpqc+ET2J7Y6yZkwHtQqCJJ9qW+CdiVX6nB6ZfoX
+         olZoImE1XDRmlVZftDrTh3OdJG/XFuiMq1Ui6BOviyoJP/n+ltBoCfZ3vyK9sDlwN5di
+         L4lQg0pBUKO37HlbhFDbuK/6WSo8qJYNYAyPyBDbVXMmVkvFni8bBGqUwkDTdeFf1Zto
+         UHJQKTDpH6xVSF+qSNy/R34q/S+cbty+gp4GvHMlEv0eP6NvNXcGWlcXrtWi/f48CY5L
+         Rqvg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79d6933ac67si1376654385a.674.2024.07.04.01.55.06
+        by mx.google.com with ESMTPS id d75a77b69052e-446512cc94asi143099041cf.79.2024.07.04.01.55.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Thu, 04 Jul 2024 01:55:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sPIF2-000266-Tm; Thu, 04 Jul 2024 04:55:00 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sPIEW-0001UA-Am; Thu, 04 Jul 2024 04:54:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=mgHy=OE=kaod.org=clg@ozlabs.org>)
- id 1sPIEt-0001qJ-4u; Thu, 04 Jul 2024 04:54:52 -0400
+ id 1sPIEU-0001OW-6L; Thu, 04 Jul 2024 04:54:26 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=mgHy=OE=kaod.org=clg@ozlabs.org>)
- id 1sPIEn-0003cc-Cu; Thu, 04 Jul 2024 04:54:50 -0400
+ id 1sPIEP-0003XO-R8; Thu, 04 Jul 2024 04:54:23 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WF9Sf3qjgz4x1y;
- Thu,  4 Jul 2024 18:54:42 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4WF9S75nr9z4x0C;
+ Thu,  4 Jul 2024 18:54:15 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WF9SW6dryz4wny;
- Thu,  4 Jul 2024 18:54:35 +1000 (AEST)
-Message-ID: <8c1ebe5a-20fb-4f03-9534-70fdefd6d771@kaod.org>
-Date: Thu, 4 Jul 2024 10:54:33 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4WF9S11Cb1z4wny;
+ Thu,  4 Jul 2024 18:54:08 +1000 (AEST)
+Message-ID: <5f67cefc-c819-4532-b2f0-9044e2d13a4d@kaod.org>
+Date: Thu, 4 Jul 2024 10:54:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 7/8] machine_aspeed.py: update to test ASPEED OpenBMC
- SDK v09.02 for AST2700
+Subject: Re: [PATCH v3 3/8] hw/net:ftgmac100: introduce TX and RX ring base
+ address high registers to support 64 bits
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -77,10 +77,10 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20240704082922.1464317-1-jamin_lin@aspeedtech.com>
- <20240704082922.1464317-8-jamin_lin@aspeedtech.com>
+ <20240704082922.1464317-4-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240704082922.1464317-8-jamin_lin@aspeedtech.com>
+In-Reply-To: <20240704082922.1464317-4-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=150.107.74.76;
@@ -92,31 +92,44 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PkKvvqNWyCFb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tokNvvuopE5l
 
 On 7/4/24 10:29 AM, Jamin Lin wrote:
-> Update test case to test ASPEED OpenBMC SDK v09.02 for AST2700.
+> ASPEED AST2700 SOC is a 64 bits quad core CPUs (Cortex-a35)
+> And the base address of dram is "0x4 00000000" which
+> is 64bits address.
 > 
-> ASPEED fixed TX mask issue from linux/drivers/ftgmac100.c.
-> It is required to use ASPEED OpenBMC SDK since v09.02
-> for AST2700 QEMU network testing.
+> It have "Normal Priority Transmit Ring Base Address Register High(0x17C)",
+> "High Priority Transmit Ring Base Address Register High(0x184)" and
+> "Receive Ring Base Address Register High(0x18C)" to save the high part physical
+> address of descriptor manager.
+> Ex: TX descriptor manager address [34:0]
+> The "Normal Priority Transmit Ring Base Address Register High(0x17C)"
+> bits [2:0] which corresponds the bits [34:32] of the 64 bits address of
+> the TX ring buffer address.
+> The "Normal Priority Transmit Ring Base Address Register(0x20)" bits [31:0]
+> which corresponds the bits [31:0] of the 64 bits address
+> of the TX ring buffer address.
 > 
-> A test image is downloaded from the ASPEED Forked OpenBMC GitHub
-> release repository :
-> https://github.com/AspeedTech-BMC/openbmc/releases/
+> Introduce a new sub region which size is 0x100 for the set of new registers
+> and map it at 0x100 in the container region.
+> This sub region range is from 0x100 to 0x1ff.
+> 
+> Introduce a new property and object attribute to activate the region for new registers.
+> Introduce a new memop handlers for the new register read and write.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
@@ -129,30 +142,158 @@ C.
 
 
 > ---
->   tests/avocado/machine_aspeed.py | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
+>   hw/net/ftgmac100.c         | 82 ++++++++++++++++++++++++++++++++++++++
+>   include/hw/net/ftgmac100.h |  4 ++
+>   2 files changed, 86 insertions(+)
 > 
-> diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
-> index 3a20644fb2..13fe128fc9 100644
-> --- a/tests/avocado/machine_aspeed.py
-> +++ b/tests/avocado/machine_aspeed.py
-> @@ -387,15 +387,15 @@ def test_arm_ast2600_evb_sdk(self):
->           year = time.strftime("%Y")
->           self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
+> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+> index d026242e2b..68956aeb94 100644
+> --- a/hw/net/ftgmac100.c
+> +++ b/hw/net/ftgmac100.c
+> @@ -56,6 +56,16 @@
+>   #define FTGMAC100_PHYDATA         0x64
+>   #define FTGMAC100_FCR             0x68
 >   
-> -    def test_aarch64_ast2700_evb_sdk_v09_01(self):
-> +    def test_aarch64_ast2700_evb_sdk_v09_02(self):
->           """
->           :avocado: tags=arch:aarch64
->           :avocado: tags=machine:ast2700-evb
->           """
+> +/*
+> + * FTGMAC100 registers high
+> + *
+> + * values below are offset by - FTGMAC100_REG_HIGH_OFFSET from datasheet
+> + * because its memory region is start at FTGMAC100_REG_HIGH_OFFSET
+> + */
+> +#define FTGMAC100_NPTXR_BADR_HIGH   (0x17C - FTGMAC100_REG_HIGH_OFFSET)
+> +#define FTGMAC100_HPTXR_BADR_HIGH   (0x184 - FTGMAC100_REG_HIGH_OFFSET)
+> +#define FTGMAC100_RXR_BADR_HIGH     (0x18C - FTGMAC100_REG_HIGH_OFFSET)
+> +
+>   /*
+>    * Interrupt status register & interrupt enable register
+>    */
+> @@ -913,6 +923,60 @@ static void ftgmac100_write(void *opaque, hwaddr addr,
+>       ftgmac100_update_irq(s);
+>   }
 >   
->           image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
-> -                     'download/v09.01/ast2700-default-obmc.tar.gz')
-> -        image_hash = 'b1cc0fd73c7650d34c9c8459a243f52a91e9e27144b8608b2645ab19461d1e07'
-> +                     'download/v09.02/ast2700-default-obmc.tar.gz')
-> +        image_hash = 'ac969c2602f4e6bdb69562ff466b89ae3fe1d86e1f6797bb7969d787f82116a7'
->           image_path = self.fetch_asset(image_url, asset_hash=image_hash,
->                                         algorithm='sha256')
->           archive.extract(image_path, self.workdir)
+> +static uint64_t ftgmac100_high_read(void *opaque, hwaddr addr, unsigned size)
+> +{
+> +    FTGMAC100State *s = FTGMAC100(opaque);
+> +    uint64_t val = 0;
+> +
+> +    switch (addr) {
+> +    case FTGMAC100_NPTXR_BADR_HIGH:
+> +        val = extract64(s->tx_ring, 32, 32);
+> +        break;
+> +    case FTGMAC100_HPTXR_BADR_HIGH:
+> +        /* High Priority Transmit Ring Base High Address */
+> +        qemu_log_mask(LOG_UNIMP, "%s: read to unimplemented register 0x%"
+> +                      HWADDR_PRIx "\n", __func__, addr);
+> +        break;
+> +    case FTGMAC100_RXR_BADR_HIGH:
+> +        val = extract64(s->rx_ring, 32, 32);
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad address at offset 0x%"
+> +                      HWADDR_PRIx "\n", __func__, addr);
+> +        break;
+> +    }
+> +
+> +    return val;
+> +}
+> +
+> +static void ftgmac100_high_write(void *opaque, hwaddr addr,
+> +                          uint64_t value, unsigned size)
+> +{
+> +    FTGMAC100State *s = FTGMAC100(opaque);
+> +
+> +    switch (addr) {
+> +    case FTGMAC100_NPTXR_BADR_HIGH:
+> +        s->tx_ring = deposit64(s->tx_ring, 32, 32, value);
+> +        s->tx_descriptor = deposit64(s->tx_descriptor, 32, 32, value);
+> +        break;
+> +    case FTGMAC100_HPTXR_BADR_HIGH:
+> +        /* High Priority Transmit Ring Base High Address */
+> +        qemu_log_mask(LOG_UNIMP, "%s: write to unimplemented register 0x%"
+> +                      HWADDR_PRIx "\n", __func__, addr);
+> +        break;
+> +    case FTGMAC100_RXR_BADR_HIGH:
+> +        s->rx_ring = deposit64(s->rx_ring, 32, 32, value);
+> +        s->rx_descriptor = deposit64(s->rx_descriptor, 32, 32, value);
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad address at offset 0x%"
+> +                      HWADDR_PRIx "\n", __func__, addr);
+> +        break;
+> +    }
+> +
+> +    ftgmac100_update_irq(s);
+> +}
+> +
+>   static int ftgmac100_filter(FTGMAC100State *s, const uint8_t *buf, size_t len)
+>   {
+>       unsigned mcast_idx;
+> @@ -1077,6 +1141,14 @@ static const MemoryRegionOps ftgmac100_ops = {
+>       .endianness = DEVICE_LITTLE_ENDIAN,
+>   };
+>   
+> +static const MemoryRegionOps ftgmac100_high_ops = {
+> +    .read = ftgmac100_high_read,
+> +    .write = ftgmac100_high_write,
+> +    .valid.min_access_size = 4,
+> +    .valid.max_access_size = 4,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> +};
+> +
+>   static void ftgmac100_cleanup(NetClientState *nc)
+>   {
+>       FTGMAC100State *s = FTGMAC100(qemu_get_nic_opaque(nc));
+> @@ -1114,6 +1186,15 @@ static void ftgmac100_realize(DeviceState *dev, Error **errp)
+>                             TYPE_FTGMAC100 ".regs", FTGMAC100_REG_MEM_SIZE);
+>       memory_region_add_subregion(&s->iomem_container, 0x0, &s->iomem);
+>   
+> +    if (s->dma64) {
+> +        memory_region_init_io(&s->iomem_high, OBJECT(s), &ftgmac100_high_ops,
+> +                              s, TYPE_FTGMAC100 ".regs.high",
+> +                              FTGMAC100_REG_HIGH_MEM_SIZE);
+> +        memory_region_add_subregion(&s->iomem_container,
+> +                                    FTGMAC100_REG_HIGH_OFFSET,
+> +                                    &s->iomem_high);
+> +    }
+> +
+>       sysbus_init_irq(sbd, &s->irq);
+>       qemu_macaddr_default_if_unset(&s->conf.macaddr);
+>   
+> @@ -1162,6 +1243,7 @@ static const VMStateDescription vmstate_ftgmac100 = {
+>   static Property ftgmac100_properties[] = {
+>       DEFINE_PROP_BOOL("aspeed", FTGMAC100State, aspeed, false),
+>       DEFINE_NIC_PROPERTIES(FTGMAC100State, conf),
+> +    DEFINE_PROP_BOOL("dma64", FTGMAC100State, dma64, false),
+>       DEFINE_PROP_END_OF_LIST(),
+>   };
+>   
+> diff --git a/include/hw/net/ftgmac100.h b/include/hw/net/ftgmac100.h
+> index aae57ae8cb..24ccdf0260 100644
+> --- a/include/hw/net/ftgmac100.h
+> +++ b/include/hw/net/ftgmac100.h
+> @@ -16,6 +16,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(FTGMAC100State, FTGMAC100)
+>   
+>   #define FTGMAC100_MEM_SIZE 0x1000
+>   #define FTGMAC100_REG_MEM_SIZE 0x100
+> +#define FTGMAC100_REG_HIGH_MEM_SIZE 0x100
+> +#define FTGMAC100_REG_HIGH_OFFSET 0x100
+>   
+>   #include "hw/sysbus.h"
+>   #include "net/net.h"
+> @@ -35,6 +37,7 @@ struct FTGMAC100State {
+>       qemu_irq irq;
+>       MemoryRegion iomem_container;
+>       MemoryRegion iomem;
+> +    MemoryRegion iomem_high;
+>   
+>       uint8_t frame[FTGMAC100_MAX_FRAME_SIZE];
+>   
+> @@ -68,6 +71,7 @@ struct FTGMAC100State {
+>       bool aspeed;
+>       uint32_t txdes0_edotr;
+>       uint32_t rxdes0_edorr;
+> +    bool dma64;
+>   };
+>   
+>   #define TYPE_ASPEED_MII "aspeed-mmi"
 

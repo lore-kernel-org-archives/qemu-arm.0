@@ -1,191 +1,125 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp333500njb;
-        Wed, 3 Jul 2024 20:01:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXmGU3q8HOPFBhcQWRpVZCflZdkZI8iJrgRXOYn/g3OvhHF58IMSZWt1P+q0NwDu0P+Ux/9jMBdJyXFIwRkwAbTfkipVG1e
-X-Google-Smtp-Source: AGHT+IEckRzRCyooP7qbb6dmBkwnWAi78PwIcbRsPei4Z96BxTaKmBujQqw6m5MiERY10PVejAEU
-X-Received: by 2002:a05:622a:1441:b0:446:5a62:ea71 with SMTP id d75a77b69052e-447cbf5e61fmr5010571cf.49.1720062074799;
-        Wed, 03 Jul 2024 20:01:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720062074; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp334464njb;
+        Wed, 3 Jul 2024 20:03:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCViEuX0BJ25KQGkam2aOYkAdap0kSRhxBZatXuvBoEHB+e1uFWm50EU+9j6/bvCPNqvAGGFb22TAQMI43cBjCwmwPExKy/A
+X-Received: by 2002:a05:6a21:6816:b0:1c0:c7ac:d1b6 with SMTP id adf61e73a8af0-1c0cc8bab57mr270081637.48.1720062206387;
+        Wed, 03 Jul 2024 20:03:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720062206; cv=none;
         d=google.com; s=arc-20160816;
-        b=YmLn6ZpTsnwfG6kfklzKpsoOk/4QVGzvYrb0ggexQkaulwXl4ECfecCXFpbkxasr/5
-         WvQNDF7J6+Bta1jiv41y14He07UrzGIFLcb1EbvgS1MdC3q6dnHtzkA47fOCvqLvBr+K
-         H7itnFX5DH0oFgzq9gHyk1pNeCTGjBnOplK8L0yGy1UwgWaKvjXy0IY34S2R5qxtmibQ
-         YwbZfz2qsltott8hxJAUC7YHIL91/NbfnGBqNZocCw0PlgznJ9EPNUENH4zDFPaAUkAl
-         oroBOBmopOlhXhFyLxXuDBd1Yo92AiTVqlo7XL5cTy8RPDxGZ7hBb6On3QDVZx31v3xS
-         CUcg==
+        b=Upeyza1MDJ+KhVAL/5BeECL1lkKcaAy76xTzpmr9djT9qHmchPLZ1EkL2eSMFLoqXJ
+         071R6zwxQGA5XHlp6dNyTLzsetgzv2MdnZKzlRRI/sr/djWEaynw3h1bxfhR8gsR7pNb
+         6+C+yztfEsCPN3P/o0tKMH5nk4jA/9JP/gWE+LFrSWqKr+I69/CcSA9NyZpUtRPi+wLz
+         cb1/6km3TAlocxJXbzPafEwWLOnKlxRBKkc6xsmR9nuQnCXp2iHNDT7thCn5P8nN5zRz
+         narAyNi26lDHAEuhSk64y8OIJbRoIgkQqFGzqUgVD9iXZKS6e5qFJBBzb1y8+hO87p0L
+         dzhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=g+DT31eyVlKnq2UUJ/bydDk9uyJTHJn3Y8jlBLnkT/Q=;
-        fh=y/QRFpE0iuVKIel+vmNXxcobwLojV9zTrUXcyY9wJvQ=;
-        b=wSObkcR2jKrNpv/Z9nNEoOsPqKW2NCOrYbd2P+n1UdXSQrh7aUQCF00KFGZ81XD3Tp
-         f43nOTgrKZeozVleM/NbhL/YqER94Vm7koOKQc40rE1gmqmCOH6K1lnJ4jHBpP5Y1Yaf
-         HOu5eo9d+WpGeeGKt/ZA9IDmnzkBrHYkk047CCclQMA/cfUzRWSpYtv8I/jrVi5nQGyT
-         xYKkIXZVkntIOwFddxMdt5sRVKc2ICVYdzCIoLxLNBlrO/aiSYMogE0c8I54oXJZsGET
-         YHy5J0k1ITVH8rRRzHJ1E6j7Bu0V2ykxfP9kEHxJnPAb2LkO5d9cLfznCKODg/YviGrv
-         Qx0Q==;
+        h=in-reply-to:references:to:from:subject:cc:message-id:date
+         :content-transfer-encoding:mime-version:dkim-signature;
+        bh=0L4DTuwrRPNNcVaHsMvS0IOC/2oVL/yrsV/EJOufk5g=;
+        fh=LwAZv7FOoYunPFFksWt+RgZfYj/bH32NbSlrfxpK9Mk=;
+        b=fb8EnWwc/lJ4fS7RJgSiKG/7QHWNfvmQhY68ZeypITVw/sYxUH4RT2tQce+eGvtGBs
+         nZ0EhCOuHlaW9aBp6HdowUK1RF8CczgmLzHVoD9aNt7DIgz+D9mkzO5/ErqOTHRkTz05
+         DAIFy78IvmE9imW/BLjhkY9DMCK6Lw1oKJO0DusTKKsJtHliPolraDjjnhpKPCzON+dG
+         uUp6WH2U7GyaC/aZXpPfriKJKBkWlOCudwA88bYJuPP8wYsFsTtN4u9xpVPuZrJphkLY
+         tzZtFBYoSfoLJSA9C/aQDHWYE2xqppcJSUB1eK9EGbPxYaBXMy5CIpkVdn5mloXr61TE
+         gnVQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=gDNXJcOX;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.9 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.9])
-        by mx.google.com with ESMTPS id d75a77b69052e-446513c1f7bsi141580431cf.89.2024.07.03.20.01.13
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jul 2024 20:01:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.9 as permitted sender) client-ip=198.175.65.9;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=B7YmZZOc;
+       spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <npiggin@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 98e67ed59e1d1-2c8ffb14f27sor5677455a91.7.2024.07.03.20.03.26
+        (Google Transport Security);
+        Wed, 03 Jul 2024 20:03:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=gDNXJcOX;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.9 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1720062075; x=1751598075;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=7xazZwz0EnajiB5Y3BpYOkdjmqrqDIqJeO1R5Tf6FMU=;
-  b=gDNXJcOXBOlqJKQ+bZ2X0cORPwvbXtvZItGOzBQlHABryeCmq3mtnCsO
-   E8JQD/d1oxtW04nXKOFqlrCJEvr3KYbq+mpp14kKUQcx/Aw5XpphXQkyJ
-   djwbWFXq4sqDpy+FR/Q7BluGsO/pBDbHfLe0Jfz3857KvCY8yf7vhwFLP
-   jNDvD5PZK6hyBt1SPyuH6LYyQaE3IHj73sUUuBZAJ0nsqEEwF2tTSJ1UV
-   0fMi3PBZEobxrobE+HIWPPv/JAGPqXm44IKJA7igMggnwYr0HdiofSpEe
-   XpAPscunJpOcwVSc4fQEKDZQe49DxAZvf+30P18s8SM6N4zbiMAO+Eh4A
-   w==;
-X-CSE-ConnectionGUID: NhKAVraOQEK/oewI1fLUdQ==
-X-CSE-MsgGUID: BidaqBACQqeo33LMKJQ0kA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11122"; a="39838166"
-X-IronPort-AV: E=Sophos;i="6.09,183,1716274800"; 
-   d="scan'208";a="39838166"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Jul 2024 20:01:13 -0700
-X-CSE-ConnectionGUID: uK+DmRjmRO6RTIeeRo8L0Q==
-X-CSE-MsgGUID: PAO0ufSFQueLjRECY+D3Cg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,183,1716274800"; 
-   d="scan'208";a="51052503"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
-  by fmviesa004.fm.intel.com with ESMTP; 03 Jul 2024 20:01:08 -0700
-From: Zhao Liu <zhao1.liu@intel.com>
-To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>
-Cc: qemu-devel@nongnu.org,
-	kvm@vger.kernel.org,
-	qemu-riscv@nongnu.org,
-	qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>,
-	Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH 8/8] qemu-options: Add the description of smp-cache object
-Date: Thu,  4 Jul 2024 11:16:03 +0800
-Message-Id: <20240704031603.1744546-9-zhao1.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240704031603.1744546-1-zhao1.liu@intel.com>
-References: <20240704031603.1744546-1-zhao1.liu@intel.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: NvrPBrnkh6rY
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=B7YmZZOc;
+       spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1720062206; x=1720667006; darn=linaro.org;
+        h=in-reply-to:references:to:from:subject:cc:message-id:date
+         :content-transfer-encoding:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0L4DTuwrRPNNcVaHsMvS0IOC/2oVL/yrsV/EJOufk5g=;
+        b=B7YmZZOcRkQ2sPfOeeyOw6vcFcDZWSipLKU3BV5zhUnVR7R6SJ41FSmpfaLOvyHZsC
+         iuYCKon73+EH+qyg1TItSLw0srlcFFsm7Fkzyit2Hrb1e9aw1cSoM6RU2jbo5HF1zaHx
+         yRmByBXF2/LBiHXLwbMNxfHx8YM1XQd4q402hy9so8CjiIrEg4EW0bs0/E5eUqWHpafx
+         ri757YfUKxXJ1eMXlP1TFTObgSK0q4gppZZNUog689+Hoz7OiLHGPWiOPE3svtsZ5c3J
+         npfDe8+KWp8MmDrkSnN5vWgonZFPsPJHsgN88uz4WynrUGbl81Yr6zlDkOcpM965vpCp
+         ssWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720062206; x=1720667006;
+        h=in-reply-to:references:to:from:subject:cc:message-id:date
+         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=0L4DTuwrRPNNcVaHsMvS0IOC/2oVL/yrsV/EJOufk5g=;
+        b=MAfQqi7927ozFaNwSj6MEKdCYUnn1clEXACznJzqWGu6VZxf8X9P4vtD83P5KYm+y1
+         b5tcEiuj/2U6jeYWEHkNfxD5BLndtBMX1eAimEHvD0l9nilQjTxL/2vyJ/iW0dA0D93Z
+         o6yPi6Cg1wgpTUtvqiMaMVZjX6bs1vkHBMP0HOYoaQtjJcxJeP4HAMOdiINIEbuSk1hi
+         SV2zXRY6hP1z9tbEaYYNPz9HQQ1lhQTQXUcUJTPwcGiE0XGNOkm/Ip4CX+YHoamqJpKS
+         0n0GInXmKzKxE7VQ5ygXFKvN5KafDOYMFA+npJclDZBr+Mj1Nqp52780PO8eYJzHoKvW
+         dzsg==
+X-Forwarded-Encrypted: i=1; AJvYcCXQfvnfyG/IYxy8OD1kp/F5nnADq2/ZwU/F1f/3w6KbLj6U+iYZ/LNRouPblLVqRwnbys8siSKu/bjP8VFRHzB1JEHBILqt3ItW/xcIdwHD26oA1p/SV1FIePb0NIhIT3NI0lm/ymqOjwC/2AkbmcL7nfzI+WF+EVKc6SoVkwayjTx+UIqIBJKaAiBWrtRbMVn+iECvKPh/RjMFjCbWKnitWBu49OUFTM32pVw=
+X-Gm-Message-State: AOJu0YxWDka+rfRCH/j5ZPNDtoKPqawbLR3EbVT4jqk4To/MsFgnGJD7
+	CWm3XxNN0z2lsL4kP3SOca/1LMTDdofZK4WR7LG6ETyichQTSvQA
+X-Google-Smtp-Source: AGHT+IFmipRhJvngOTgwJS6aikwhR7/qCPUyk5CyGHIhEqWOSVtFTiSBsbIzKZ7FQyDFbiMg7JV7EQ==
+X-Received: by 2002:a17:90a:f184:b0:2c9:75c6:32dc with SMTP id 98e67ed59e1d1-2c99c52aab3mr289097a91.1.1720062205745;
+        Wed, 03 Jul 2024 20:03:25 -0700 (PDT)
+Return-Path: <npiggin@gmail.com>
+Received: from localhost ([1.146.95.80])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2c999e22c50sm175174a91.1.2024.07.03.20.03.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 03 Jul 2024 20:03:25 -0700 (PDT)
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 04 Jul 2024 13:03:07 +1000
+Message-Id: <D2GF5O8SP4Q8.38I35G35K74OG@gmail.com>
+Cc: <maz@kernel.org>, <jean-philippe@linaro.org>,
+ <jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+ <peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+ <imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+ <philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
+ <pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
+ <gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
+ <linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+ <ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+ <karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+ <salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+ <wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+ <jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+ <harshpb@linux.ibm.com>, <linuxarm@huawei.com>, "Jonathan Cameron"
+ <Jonathan.Cameron@huawei.com>, "Shaoqin Huang" <shahuang@redhat.com>, "Zhao
+ Liu" <zhao1.liu@intel.com>
+Subject: Re: [PATCH V13 3/8] hw/acpi: Update ACPI GED framework to support
+ vCPU Hotplug
+From: "Nicholas Piggin" <npiggin@gmail.com>
+To: "Salil Mehta" <salil.mehta@huawei.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>
+X-Mailer: aerc 0.17.0
+References: <20240607115649.214622-1-salil.mehta@huawei.com>
+ <20240607115649.214622-4-salil.mehta@huawei.com>
+In-Reply-To: <20240607115649.214622-4-salil.mehta@huawei.com>
+X-TUID: LAWuPyOpUXm8
 
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
----
-Changes since RFC v2:
- * Rewrote the document of smp-cache object.
+On Fri Jun 7, 2024 at 9:56 PM AEST, Salil Mehta wrote:
+> @@ -400,6 +411,12 @@ static void acpi_ged_initfn(Object *obj)
+>      memory_region_init_io(&ged_st->regs, obj, &ged_regs_ops, ged_st,
+>                            TYPE_ACPI_GED "-regs", ACPI_GED_REG_COUNT);
+>      sysbus_init_mmio(sbd, &ged_st->regs);
+> +
+> +    memory_region_init(&s->container_cpuhp, OBJECT(dev), "cpuhp containe=
+r",
+> +                       ACPI_CPU_HOTPLUG_REG_LEN);
+> +    sysbus_init_mmio(sbd, &s->container_cpuhp);
+> +    cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
+> +                        &s->cpuhp_state, 0);
+>  }
 
-Changes since RFC v1:
- * Use "*_cache=topo_level" as -smp example as the original "level"
-   term for a cache has a totally different meaning. (Jonathan)
----
- qemu-options.hx | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 58 insertions(+)
+Could the ACPI persistent presence ARM requires be a property of
+the ACPI device?
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 8ca7f34ef0c8..4b84f4508a6e 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -159,6 +159,15 @@ SRST
-         ::
- 
-             -machine cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=128G,cxl-fmw.0.interleave-granularity=512
-+
-+    ``smp-cache='id'``
-+        Allows to configure cache property (now only the cache topology level).
-+
-+        For example:
-+        ::
-+
-+            -object '{"qom-type":"smp-cache","id":"cache","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"},{"name":"l2","topo":"module"},{"name":"l3","topo":"die"}]}'
-+            -machine smp-cache=cache
- ERST
- 
- DEF("M", HAS_ARG, QEMU_OPTION_M,
-@@ -5871,6 +5880,55 @@ SRST
-         ::
- 
-             (qemu) qom-set /objects/iothread1 poll-max-ns 100000
-+
-+    ``-object '{"qom-type":"smp-cache","id":id,"caches":[{"name":cache_name,"topo":cache_topo}]}'``
-+        Create an smp-cache object that configures machine's cache
-+        property. Currently, cache property only include cache topology
-+        level.
-+
-+        This option must be written in JSON format to support JSON list.
-+
-+        The ``caches`` parameter accepts a list of cache property in JSON
-+        format.
-+
-+        A list element requires the cache name to be specified in the
-+        ``name`` parameter (currently ``l1d``, ``l1i``, ``l2`` and ``l3``
-+        are supported). ``topo`` parameter accepts CPU topology levels
-+        including ``thread``, ``core``, ``module``, ``cluster``, ``die``,
-+        ``socket``, ``book``, ``drawer`` and ``default``. The ``topo``
-+        parameter indicates CPUs winthin the same CPU topology container
-+        are sharing the same cache.
-+
-+        Some machines may have their own cache topology model, and this
-+        object may override the machine-specific cache topology setting
-+        by specifying smp-cache object in the -machine. When specifying
-+        the cache topology level of ``default``, it will honor the default
-+        machine-specific cache topology setting. For other topology levels,
-+        they will override the default setting.
-+
-+        An example list of caches to configure the cache model (l1d cache
-+        per core, l1i cache per core, l2 cache per module and l3 cache per
-+        socket) supported by PC machine might look like:
-+
-+        ::
-+
-+              {
-+                "caches": [
-+                   { "name": "l1d", "topo": "core" },
-+                   { "name": "l1i", "topo": "core" },
-+                   { "name": "l2", "topo": "module" },
-+                   { "name": "l3", "topo": "socket" },
-+                ]
-+              }
-+
-+        An example smp-cache object would look like:()
-+
-+        .. parsed-literal::
-+
-+             # |qemu_system| \\
-+                 ... \\
-+                 -object '{"qom-type":"smp-cache","id":id,"caches":[{"name":cache_name,"topo":cache_topo}]}' \\
-+                 ...
- ERST
- 
- 
--- 
-2.34.1
+Thanks,
+Nick

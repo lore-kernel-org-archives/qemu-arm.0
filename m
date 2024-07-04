@@ -1,261 +1,128 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp468395njb;
-        Thu, 4 Jul 2024 02:09:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXZTSJMWcQRcjU5klySJ1hgUHTWwCAF6O0ybvrU7c5PV8Jsw2jcmyHoXe4+lWy9SqLr+NiZt5NKsCrueCNOuI6bezjybP4X
-X-Google-Smtp-Source: AGHT+IF4WrjPSfyessauC91HYABJ3NQr12Zz0e2K496KCGaJdPC5FVUOH8XqbBnZKepCFr7f0xYn
-X-Received: by 2002:a05:620a:2492:b0:79d:535f:b799 with SMTP id af79cd13be357-79eee27403fmr132127785a.50.1720084159371;
-        Thu, 04 Jul 2024 02:09:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720084159; cv=none;
+Received: by 2002:a05:7022:ef0e:b0:81:d0c2:543b with SMTP id qy14csp3564611dlb;
+        Thu, 4 Jul 2024 05:16:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVWTf2nV6iZZ0xQp3DhZ98WJ7vQD75lNGVHD3vJS6jMB8ZEHj3IqzdMk9ulZrkTDdhSnwUqVwnpSzp8hW6kaA6wCzVhJdAY
+X-Received: by 2002:a7b:cb4e:0:b0:423:6957:89bd with SMTP id 5b1f17b1804b1-4264a3e3508mr11149635e9.12.1720095372509;
+        Thu, 04 Jul 2024 05:16:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720095372; cv=none;
         d=google.com; s=arc-20160816;
-        b=N+ZLfkHBBIKGh56/SDWb6lQSoJp2e95VMR7rLLKJEAPW0k+BcBlMc8UkJPMsGMaDpt
-         hM08f0tValDm9q3emugKniO1D/n+8i15GDET/B8N35hbhZQnvo/054x8zNwY+Dkyhm6C
-         WD5kXZO93vC4RFPPFWpxAOrPIwK1yqNZS69CQuIg52whgiqRBv0WSDC9sQBEv24cVugf
-         kNCrHFK/BuyRfQ9poSDWHIhBBen43DAkAdBgNk/gy6sEZ4o0sWbfG47RjqizOPgxeLLD
-         CrF3704f8jT663hSFyZXBJpVR/fN8IVLIw+PajnC8zMCw2ObQnI+VUpKyd6+ZVKYpAa9
-         l23g==
+        b=ECH8eylykdO9moIWZLv8aP8C1otYPiDbMXl83TvHelj+vXlkMF4Rt0z2+Sis/e8Gwh
+         GVKaDnGC8rHvIMjVOlNppA7Vr6tjDU/lvmNV6DkHtiDLSBxCjy0bSYyViE7FXE2PoOZB
+         JnWG2OVxgyK/9Pe6406VnrivU0klj40hq8tQkhqYw6euWVGmC5rd3RM/VLPXa00hciBW
+         aa03sXpK9Ob+q3lQND7kmQpHXhRsZlUkPE16T00U5E896PQ6xM+ICWwK01Nv9tvwjprv
+         JCJFmN5ayzBFD1N5xL5t5daANHPq6BppzsmLlGNy0KxCBYUNlGKhdMiMzXbNiN/SDzRZ
+         ll1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=TlrXkB1uzEPOcyagWZl28vekHQFaozh+OLZpBRuevWA=;
-        fh=99LDCLNDIGyo70K5tizYz4Wx+QKxBdnC4BaKqLN7Z0w=;
-        b=cjpTzKGjSyZ3coQjHKvN7yLyqzHYvBWfaqBoJ+b4fpeL3Hb1fkcxgGq/IHE03zTBVX
-         jU4xPI2rI4XA74qvOl80axIyExrL1MmY/p8DUXF01QB39qaXqS672CDhWBg5X1EWC1f3
-         IseRrL5Uczh5LPpSPFqQU+6wgkHr/6etwZqJEICtgL53v1uxy3rc/XEwYXMmXNfU2jpz
-         kdPgxn+1JQM8Dk/jJtuNTB/X/B3HfSxjptlTs8u3xrl+aS11jwSEO5FZIX7J9E/UagAV
-         rgO9iR9wujenbaFiY9j2gcFVis77tqusmmGbAavLjwBzmtubE4NOSbR34GwhTGAU7cmI
-         K6Tg==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=sebo8kp7DAxDc5R9inOIScJcgh+uRNdHOYeHTAuds3E=;
+        fh=P4w+ZDFIOJQq3m2C779jyd8od//d7o29hFOME4JV57I=;
+        b=ZxY9AwF8cA8q4/0wQ/1bm6qnYTrYumbUwY/NJ+WW8UL+SiDXRdTWG+QFq85yMBvvqs
+         4WH3IFhBbClhgkaU6a3YRe9OpHYRj9wg7CV4agSMdyaTz1W0qDowrNaM+X1Gie9DRdRT
+         Bj0+tEsVji05L/oNuwSurh0AaE/ohqZ5+KRixg0Gr5H052m/bc/dwEAEUIhghZajOyQB
+         TvWNRyHdZKNm4OF+HRkyd9F6rOfPQKWrkP9hNlCN8N2MMDWoxxQklQC/SedE5Xv6EqJE
+         cbfdil9QLocVR4Pn5YdKs9pWwhwi5/fJMu9/Ff1IhNoyTh1GHfJYCT+ifS1jVZHE0Nur
+         TyuQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79ddb84a73csi419752785a.464.2024.07.04.02.09.18
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q7WGhcAF;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4257a1207e1sor29496605e9.11.2024.07.04.05.16.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jul 2024 02:09:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 04 Jul 2024 05:16:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sPISL-0002DF-8P; Thu, 04 Jul 2024 05:08:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=mgHy=OE=kaod.org=clg@ozlabs.org>)
- id 1sPISJ-0002BC-Cq; Thu, 04 Jul 2024 05:08:43 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=mgHy=OE=kaod.org=clg@ozlabs.org>)
- id 1sPISG-0003Rn-KZ; Thu, 04 Jul 2024 05:08:42 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WF9mc5Y1rz4x0C;
- Thu,  4 Jul 2024 19:08:32 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WF9mT2QJdz4wny;
- Thu,  4 Jul 2024 19:08:25 +1000 (AEST)
-Message-ID: <1ff8caa0-3f65-415f-953b-f7dd66717e9a@kaod.org>
-Date: Thu, 4 Jul 2024 11:08:22 +0200
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q7WGhcAF;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1720095372; x=1720700172; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sebo8kp7DAxDc5R9inOIScJcgh+uRNdHOYeHTAuds3E=;
+        b=Q7WGhcAF9FC46sr0xgriT5SS5LJCnmqEjK2Ol2l1qBL7GrGU3is/ceJ284+QA9hjPf
+         jul63meoBXLPGkxMdjEUmEKNEtQGAKaULqwp0Xw8PBkhhhOCBxvSBI+/3DTtbboDzWDc
+         dHdqsf1in2fRtkh7cyRAwDibC53KBtBVsfIao7OUvIbkVh6b31BJ4OOkiuHY6/NOuCxX
+         GggyfZoEHQLbpQz0KyCGedGR/2amR3SjPmHvXKEqh7P1pOH8O1Ei2Zx/hDQSjgiNYZQ2
+         /J119duB0JXeNfSGwZk8aX1CQeO5w1ezaUTSxFueCuPBFg6LLzVmdgNym2cR14Wwr/+1
+         wxEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720095372; x=1720700172;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=sebo8kp7DAxDc5R9inOIScJcgh+uRNdHOYeHTAuds3E=;
+        b=j+z79xd1Svy8ZxeV3KjVh2HOxwC1h9OzTDKj/yf4ZPr1JrE09/E+KfYLcUs1RDxkjh
+         EHowlWLePA6vlp4fg4HyUW8hGZ4EBV8Nhrga6ixpQsc+aoFbSk+OqcHrTF0CmfoI5kZW
+         wuv5JbqIkiylkPZosw/obDRBbpT2mldX/r15fNT/lxz+AAD4DFOfD/FLiaFkUY67FgRv
+         4S6MSRhdyTJfojY6+XbcaEH3D+75y9ldlk5YOtkyMRi+kvWz+g/1WczMRtsEla0a0un2
+         3ohYuIbRc3wF/FNuywT38urCjGSK5R2rS6Nrr5aIFx1yV0MAc2mkrpjBUDi5gzPhVcwY
+         OOxA==
+X-Forwarded-Encrypted: i=1; AJvYcCXVSlSWmzYjGugrsfIoG5U8P36kfi5OI0784guhK7Oicor+SanJlo+m9YEv5yh06LoMQ4upuO/RRoa9O9H3Ikizf+ThP6uQ
+X-Gm-Message-State: AOJu0Yw+AALZBH2l0u8N/PsT7BRpKfS78XWI/+FBD+dWhmUH0tFRcqKr
+	/Uk4hgVBDCQTwgoPNzUItpDaAdFx5dOOUsGh1f8/wlLG0fGcrEmiwSoP6fuOhgT3Tg==
+X-Google-Smtp-Source: AGHT+IGWtIyHVdRRDQf6UCO/aG+PUwZ52bIwCYcWjqtTvhy4DkR8vJ0g+c0CIxrJtgmEO3DIoK5/HA==
+X-Received: by 2002:a05:600c:158b:b0:422:62db:5a02 with SMTP id 5b1f17b1804b1-4264a4561d7mr10600945e9.32.1720095372023;
+        Thu, 04 Jul 2024 05:16:12 -0700 (PDT)
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from localhost.localdomain (adsl-241.37.6.160.tellas.gr. [37.6.160.241])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4264a2ca5casm22471015e9.32.2024.07.04.05.16.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 Jul 2024 05:16:11 -0700 (PDT)
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Stefan Hajnoczi <stefanha@redhat.com>,
+	Mads Ynddal <mads@ynddal.dk>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Zhao Liu <zhao1.liu@intel.com>,
+	Gustavo Romero <gustavo.romero@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	rowan.hart@intel.com,
+	Richard Henderson <richard.henderson@linaro.org>,
+	qemu-arm@nongnu.org
+Subject: [RFC PATCH v4 7/7] DO NOT MERGE: replace TYPE_PL011 with x-pl011-rust in arm virt machine
+Date: Thu,  4 Jul 2024 15:15:43 +0300
+Message-ID: <99604de6015556c4dc57bef0fa89e53b1c42b4c6.1720094395.git.manos.pitsidianakis@linaro.org>
+X-Mailer: git-send-email 2.44.0
+In-Reply-To: <rust-pl011-rfc-v4.git.manos.pitsidianakis@linaro.org>
+References: <rust-pl011-rfc-v4.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/8] hw/net:ftgmac100: update ring base address to 64
- bits
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20240704082922.1464317-1-jamin_lin@aspeedtech.com>
- <20240704082922.1464317-3-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240704082922.1464317-3-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=mgHy=OE=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TO2frdAANlCM
+X-TUID: qgXyX0UzowhU
 
-On 7/4/24 10:29 AM, Jamin Lin wrote:
-> Update TX and RX ring base address data type to uint64_t for
-> 64 bits dram address DMA support.
-> 
-> Both "Normal Priority Transmit Ring Base Address Register(0x20)" and
-> "Receive Ring Base Address Register (0x24)" are used for saving the
-> low part physical address of descriptor manager.
-> 
-> Therefore, changes to set TX and RX descriptor manager address bits [31:0]
-> in ftgmac100_read and ftgmac100_write functions.
-> 
-> Incrementing the version of vmstate to 2.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Convenience patch for testing the rust device.
 
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+---
+ hw/arm/virt.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
-
-> ---
->   hw/net/ftgmac100.c         | 33 ++++++++++++++++-----------------
->   include/hw/net/ftgmac100.h |  9 ++++-----
->   2 files changed, 20 insertions(+), 22 deletions(-)
-> 
-> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-> index 9e1f12cd33..d026242e2b 100644
-> --- a/hw/net/ftgmac100.c
-> +++ b/hw/net/ftgmac100.c
-> @@ -515,12 +515,12 @@ out:
->       return frame_size;
->   }
->   
-> -static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
-> -                            uint32_t tx_descriptor)
-> +static void ftgmac100_do_tx(FTGMAC100State *s, uint64_t tx_ring,
-> +                            uint64_t tx_descriptor)
->   {
->       int frame_size = 0;
->       uint8_t *ptr = s->frame;
-> -    uint32_t addr = tx_descriptor;
-> +    uint64_t addr = tx_descriptor;
->       uint32_t flags = 0;
->   
->       while (1) {
-> @@ -726,9 +726,9 @@ static uint64_t ftgmac100_read(void *opaque, hwaddr addr, unsigned size)
->       case FTGMAC100_MATH1:
->           return s->math[1];
->       case FTGMAC100_RXR_BADR:
-> -        return s->rx_ring;
-> +        return extract64(s->rx_ring, 0, 32);
->       case FTGMAC100_NPTXR_BADR:
-> -        return s->tx_ring;
-> +        return extract64(s->tx_ring, 0, 32);
->       case FTGMAC100_ITC:
->           return s->itc;
->       case FTGMAC100_DBLAC:
-> @@ -799,9 +799,8 @@ static void ftgmac100_write(void *opaque, hwaddr addr,
->                             HWADDR_PRIx "\n", __func__, value);
->               return;
->           }
-> -
-> -        s->rx_ring = value;
-> -        s->rx_descriptor = s->rx_ring;
-> +        s->rx_ring = deposit64(s->rx_ring, 0, 32, value);
-> +        s->rx_descriptor = deposit64(s->rx_descriptor, 0, 32, value);
->           break;
->   
->       case FTGMAC100_RBSR: /* DMA buffer size */
-> @@ -814,8 +813,8 @@ static void ftgmac100_write(void *opaque, hwaddr addr,
->                             HWADDR_PRIx "\n", __func__, value);
->               return;
->           }
-> -        s->tx_ring = value;
-> -        s->tx_descriptor = s->tx_ring;
-> +        s->tx_ring = deposit64(s->tx_ring, 0, 32, value);
-> +        s->tx_descriptor = deposit64(s->tx_descriptor, 0, 32, value);
->           break;
->   
->       case FTGMAC100_NPTXPD: /* Trigger transmit */
-> @@ -957,7 +956,7 @@ static ssize_t ftgmac100_receive(NetClientState *nc, const uint8_t *buf,
->       FTGMAC100State *s = FTGMAC100(qemu_get_nic_opaque(nc));
->       FTGMAC100Desc bd;
->       uint32_t flags = 0;
-> -    uint32_t addr;
-> +    uint64_t addr;
->       uint32_t crc;
->       uint32_t buf_addr;
->       uint8_t *crc_ptr;
-> @@ -1126,18 +1125,14 @@ static void ftgmac100_realize(DeviceState *dev, Error **errp)
->   
->   static const VMStateDescription vmstate_ftgmac100 = {
->       .name = TYPE_FTGMAC100,
-> -    .version_id = 1,
-> -    .minimum_version_id = 1,
-> +    .version_id = 2,
-> +    .minimum_version_id = 2,
->       .fields = (const VMStateField[]) {
->           VMSTATE_UINT32(irq_state, FTGMAC100State),
->           VMSTATE_UINT32(isr, FTGMAC100State),
->           VMSTATE_UINT32(ier, FTGMAC100State),
->           VMSTATE_UINT32(rx_enabled, FTGMAC100State),
-> -        VMSTATE_UINT32(rx_ring, FTGMAC100State),
->           VMSTATE_UINT32(rbsr, FTGMAC100State),
-> -        VMSTATE_UINT32(tx_ring, FTGMAC100State),
-> -        VMSTATE_UINT32(rx_descriptor, FTGMAC100State),
-> -        VMSTATE_UINT32(tx_descriptor, FTGMAC100State),
->           VMSTATE_UINT32_ARRAY(math, FTGMAC100State, 2),
->           VMSTATE_UINT32(itc, FTGMAC100State),
->           VMSTATE_UINT32(aptcr, FTGMAC100State),
-> @@ -1156,6 +1151,10 @@ static const VMStateDescription vmstate_ftgmac100 = {
->           VMSTATE_UINT32(phy_int_mask, FTGMAC100State),
->           VMSTATE_UINT32(txdes0_edotr, FTGMAC100State),
->           VMSTATE_UINT32(rxdes0_edorr, FTGMAC100State),
-> +        VMSTATE_UINT64(rx_ring, FTGMAC100State),
-> +        VMSTATE_UINT64(tx_ring, FTGMAC100State),
-> +        VMSTATE_UINT64(rx_descriptor, FTGMAC100State),
-> +        VMSTATE_UINT64(tx_descriptor, FTGMAC100State),
->           VMSTATE_END_OF_LIST()
->       }
->   };
-> diff --git a/include/hw/net/ftgmac100.h b/include/hw/net/ftgmac100.h
-> index 269446e858..aae57ae8cb 100644
-> --- a/include/hw/net/ftgmac100.h
-> +++ b/include/hw/net/ftgmac100.h
-> @@ -42,10 +42,6 @@ struct FTGMAC100State {
->       uint32_t isr;
->       uint32_t ier;
->       uint32_t rx_enabled;
-> -    uint32_t rx_ring;
-> -    uint32_t rx_descriptor;
-> -    uint32_t tx_ring;
-> -    uint32_t tx_descriptor;
->       uint32_t math[2];
->       uint32_t rbsr;
->       uint32_t itc;
-> @@ -58,7 +54,10 @@ struct FTGMAC100State {
->       uint32_t phycr;
->       uint32_t phydata;
->       uint32_t fcr;
-> -
-> +    uint64_t rx_ring;
-> +    uint64_t rx_descriptor;
-> +    uint64_t tx_ring;
-> +    uint64_t tx_descriptor;
->   
->       uint32_t phy_status;
->       uint32_t phy_control;
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b0c68d66a3..49dd0b815e 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -929,7 +929,11 @@ static void create_uart(const VirtMachineState *vms, int uart,
+     int irq = vms->irqmap[uart];
+     const char compat[] = "arm,pl011\0arm,primecell";
+     const char clocknames[] = "uartclk\0apb_pclk";
++#ifdef CONFIG_WITH_RUST
++    DeviceState *dev = qdev_new("x-pl011-rust");
++#else
+     DeviceState *dev = qdev_new(TYPE_PL011);
++#endif
+     SysBusDevice *s = SYS_BUS_DEVICE(dev);
+     MachineState *ms = MACHINE(vms);
+ 
+-- 
+γαῖα πυρί μιχθήτω

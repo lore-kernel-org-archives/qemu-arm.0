@@ -1,99 +1,111 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp373422njb;
-        Wed, 3 Jul 2024 22:10:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXUUG/HwR4JPGBuYptTLdKBm/gJMAfm+FsKe/ULuuOT9u2HOEbrHpfj9m5zFh9HIMza7saQrGepTzb8LfKpfw+My26Hh9st
-X-Google-Smtp-Source: AGHT+IH1O4YkP0GRSC1eRs2+ViDgCq4TOQqsQaAzDapbcFNq4eyLKafdYeIjhH7oJYvKEetM2FRy
-X-Received: by 2002:a05:6214:3d8f:b0:6b0:4201:3840 with SMTP id 6a1803df08f44-6b5ed08b2aemr8756226d6.40.1720069822567;
-        Wed, 03 Jul 2024 22:10:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720069822; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp382225njb;
+        Wed, 3 Jul 2024 22:38:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWY+Py4Z5yxpwbW0tD3Hz/fkzbsatLY7ivrE25xcYAu0hP+7RZn19eUflaHG48UaHJoNsprkemTxnYTRqcIsw8eOdHj4vfZ
+X-Google-Smtp-Source: AGHT+IH4mjLuKPUKwb+XOCmMaHea1VSiU7jzg2gt14CnOICQAbhhjFtcS+F8PH/423j8OxiEDsck
+X-Received: by 2002:a05:620a:4552:b0:79d:78c2:1bfd with SMTP id af79cd13be357-79eee29a891mr99665385a.63.1720071493066;
+        Wed, 03 Jul 2024 22:38:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720071493; cv=none;
         d=google.com; s=arc-20160816;
-        b=iqX6O2kG2xfYWPLgDPKGLLbQ17wBu4YLyJpIGr3enc2vpv+I68qDN7a8k5Njl7wkM8
-         aaH8EW1F7VlQ4adGDj7rbeSVIeuiGH4yQfc2hB1uqXiz5crMNHWskCPyfV8sO7DSe2Fn
-         KMxwUajZfgUoC52DGrJ4933RbjjyKoCaFZYEXXGzfN/sEfuQczIPRBUcH9aIdo1xm5Cx
-         GwivLgWkX8RxqiMD+dv7YYTHHWW7dcIliYj7I/r8Cy9nvFxjA6+rTxZLkRrbRH2xTrk8
-         m8XRUrzld+09tm5uaFvmaZF9dbIyzXG24vKiJKjjty3QpLXJKbhVzWY4a1BiKut75kAi
-         lLgw==
+        b=X1Iai4oq3XpL/nht7PJsxbAUUQv+zwOy4O2mFNcY+2RC2rOKYOekUaJdlkuoGOuAi4
+         5jucbYhMr7r1n/njTQRVu9xvcAGh32gAY8PRAItWQZUPNL72WxqU/aKw680Qwg+wThb7
+         q2KA+F18ZFy/8QTWd4gkWYrv3x/byCNGBQtEf9zNcnX6yDUkxEzOWd3dhuLS4OxZP8ee
+         2apGxKTyo4tq9664MljgVDWT/yV92fIEkgeRC51uvzjbzEezqRihUOrfyiTkBOk4kS7J
+         vZn7qQY3x52hu5ppb9sSDq6Bqv1UyHJAIh5NBK15havkb5E5V13yy40djtnjQ+bULUPC
+         luQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=9t2YZSjwqsQTqyDSKrTdUKQHAyUMIgFEyhah+Hc5V0A=;
-        fh=dULG+W9mPAD4ToyC5LE4Frz6+WRZJZC4AfB6HFgfldo=;
-        b=yO+OBTqeFZq12JPmkqbVWpZMMICNb74SZAgiq7Ox4XUgte+YIPj2RZYaPPlh5QsuVa
-         3hM1Fv6hELviw9DHtncvRKO91Sy15sCZ2Btv3pcK9nmnlK7bp5mKK5whc9ZLrLeeSO7F
-         V5VHu6BuNQZlykdFlz8YKquSXKe3RUGlwuTu7yTM3YjBcSUpkUd2N+AeGb/rs/G2QoHC
-         hdRkOUjyCgYyDku2Jdg0TGNApfsQXhHy0Kfarw6nhrX5lUdDytczgkU9msN0EYqN5zyY
-         CD078VhtW4v/r9ZrqwsNpwf9OUcZy/i2SFoKASXqJbWTX0k3YRiiv7qCGruK8Smh1l4F
-         u2UA==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=iu6CNvU65NpCZg75wAglcNvd8YEs0L710xhfxPzGxjw=;
+        fh=pmKRfOPFN0ULs83IIygI07LSKzxt8irZuLBhP9+6oM8=;
+        b=WkkQ35i+je6Kdu3Ca5lq0ZVdN+JAPO7jx2c3r+Bmnk6tgpEHVTLPIiW2JHrvZvF7DR
+         /1voRHQ9dmBAvCDFa3Uo2xULBejW9KC4cG1860UZ7/r727f1J2NrfG0FX/NprfH4FtdW
+         yIn+RBbQ6Akx5BrE4iw/qLAVWWhsUy4iAbswTYAelpLQnamVdO0YOHNrd3dw+BqIs4Dc
+         tityq/wzIQN7rymjvZkihvJA8IilCLjOigKqNZnp+qh1ChMk/qke45/81buQF/svXups
+         f1U1Q1YRVmUJsgLRfIfLPHBBTSUX19ozJlEu1P8QpGK2IIiENs2EsI6CMw1HbScMmP0v
+         4OkQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J3bxOT3H;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b59e60a867si146755256d6.473.2024.07.03.22.10.22
+        by mx.google.com with ESMTPS id d75a77b69052e-446513c2071si139518851cf.117.2024.07.03.22.38.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jul 2024 22:10:22 -0700 (PDT)
+        Wed, 03 Jul 2024 22:38:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J3bxOT3H;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sPEj7-00027Y-D2; Thu, 04 Jul 2024 01:09:49 -0400
+	id 1sPFA5-0002FC-T5; Thu, 04 Jul 2024 01:37:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=mgHy=OE=kaod.org=clg@ozlabs.org>)
- id 1sPEj5-000270-Kl; Thu, 04 Jul 2024 01:09:47 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sPFA4-0002Aw-4m
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2024 01:37:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=mgHy=OE=kaod.org=clg@ozlabs.org>)
- id 1sPEj3-0007l0-G6; Thu, 04 Jul 2024 01:09:47 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WF4Sq1Mrcz4wny;
- Thu,  4 Jul 2024 15:09:31 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sPFA0-00027t-MT
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2024 01:37:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1720071453;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=iu6CNvU65NpCZg75wAglcNvd8YEs0L710xhfxPzGxjw=;
+ b=J3bxOT3HCUr//J6r1T3BmzOdb9x5cnDQyZUS9TpJSTD+JUXvJfgmTWzpl17mHA3p69prwC
+ yv7O5TGLRDXR3JlpJcfYqMkXD2oLU6XQE09zH241bQTgUolByBhHFyJancRzujWP1I5vBK
+ j1fv8Fo+dPPHjEGZQrgo8Q5BNENodsw=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-287-CODLcr5SNE-ev5a_QwqBeg-1; Thu,
+ 04 Jul 2024 01:37:27 -0400
+X-MC-Unique: CODLcr5SNE-ev5a_QwqBeg-1
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WF4Sg5qGwz4w2D;
- Thu,  4 Jul 2024 15:09:20 +1000 (AEST)
-Message-ID: <05905b9a-f405-4f63-ba97-a20927b2248b@kaod.org>
-Date: Thu, 4 Jul 2024 07:09:16 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/5] hw/net:ftgmac100: support 64 bits dma dram address
- for AST2700
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 95C471955BC2; Thu,  4 Jul 2024 05:37:25 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.39.192.90])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 90086195607C; Thu,  4 Jul 2024 05:37:22 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Steven Lee <steven_lee@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20240703081623.2740862-1-jamin_lin@aspeedtech.com>
- <20240703081623.2740862-3-jamin_lin@aspeedtech.com>
- <cf451844-7b47-46be-baa8-af6544f00a81@kaod.org>
- <SI2PR06MB504128C0DB00382329694820FCDE2@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <SI2PR06MB504128C0DB00382329694820FCDE2@SI2PR06MB5041.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=mgHy=OE=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Subject: [PATCH 7/8] aspeed: Introduce a 'hw_strap1' machine attribute
+Date: Thu,  4 Jul 2024 07:36:50 +0200
+Message-ID: <20240704053651.1100732-8-clg@redhat.com>
+In-Reply-To: <20240704053651.1100732-1-clg@redhat.com>
+References: <20240704053651.1100732-1-clg@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,72 +120,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: s1T1tw6by6P6
+X-TUID: K03GPvWsH2v8
 
-Hello Jamin,
+From: Cédric Le Goater <clg@kaod.org>
 
->> I think that, first, we should introduce a container region. In this container
->> region would be mapped a sub region for the current set of registers. This
->> container region would be the one that the SoC maps as it is done today.
->>
->> Then, in a second patch, we should introduce a extra sub region for the set of
->> new registers and map it at 0x100 in the container region.
->>
->> It is close to what you did but it lacks an overall container region.
->> This container region should be sized as specified in the datasheet.
->>
-> Do you mean to change as following?
-> 
-> ftgmac100.h
-> #define FTGMAC100_MEM_SIZE 0x200
+To change default behavior of a machine and boot from eMMC, future
+changes will add a machine option to let the user configure the
+boot-from-eMMC HW strapping bit. Add a new machine attribute first.
 
-I would use the total size of the MMIO aperture, 0x1000, because
-this region is reserved for the MAC unit logic, which means it
-could grow. That's minor.
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/arm/aspeed.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-> #define FTGMAC100_NR_REGS 0x100
-
-Value is fine.
-
-However, the NR_REGS suffix is confusing. It is not a number of
-registers but a MMIO aperture width. I would use a _MEM_SIZE suffix
-instead. Could be FTGMAC100_REG_MEM_SIZE.
-
-
-> #define FTGMAC100_REGS_HIGH_OFFSET 0x100
-> #define FTGMAC100_NR_REGS_HIGH 0x100
-
-Same here.
-
-> 
-> struct FTGMAC100State {
->      MemoryRegion iomem_container;
->      MemoryRegion iomem;
->      MemoryRegion iomem_high;
-> }
-> 
-> Ftgmac100.c
-> static void ftgmac100_realize(DeviceState *dev, Error **errp)
-> {
->      memory_region_init(&s->iomem_container, OBJECT(s),
->                       TYPE_FTGMAC100 ".container", FTGMAC100_MEM_SIZE);  --> container size 0x200
->      sysbus_init_mmio(sbd, &s->iomem_container);
-> 
->      memory_region_init_io(&s->iomem, OBJECT(s), &ftgmac100_ops, s,
->                            TYPE_FTGMAC100 ".regs", FTGMAC100_NR_REGS); --> current register 0x0-0xff
->      memory_region_add_subregion(&s->iomem_container, 0x0, &s->iomem);
-> 
->      if (s-> dma64) {
->          memory_region_init_io(&s->iomem_high, OBJECT(s), &ftgmac100_high_ops,
->                                s, TYPE_FTGMAC100 ".regs.high", FTGMAC100_NR_REGS_HIGH); --> high register 0x100-0x1ff
->          memory_region_add_subregion(&s->iomem_container, FTGMAC100_REGS_HIGH_OFFSET,
->                                      &s->iomem_high);
->      }
-> }
-
-Looks good.
-
-Thanks,
-
-C.
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index abd2412ad8b9..4ce995e875da 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -46,6 +46,7 @@ struct AspeedMachineState {
+     uint32_t uart_chosen;
+     char *fmc_model;
+     char *spi_model;
++    uint32_t hw_strap1;
+ };
+ 
+ /* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
+@@ -391,7 +392,7 @@ static void aspeed_machine_init(MachineState *machine)
+         }
+     }
+ 
+-    object_property_set_int(OBJECT(bmc->soc), "hw-strap1", amc->hw_strap1,
++    object_property_set_int(OBJECT(bmc->soc), "hw-strap1", bmc->hw_strap1,
+                             &error_abort);
+     object_property_set_int(OBJECT(bmc->soc), "hw-strap2", amc->hw_strap2,
+                             &error_abort);
+@@ -1075,7 +1076,10 @@ static void aspeed_set_mmio_exec(Object *obj, bool value, Error **errp)
+ 
+ static void aspeed_machine_instance_init(Object *obj)
+ {
++    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(obj);
++
+     ASPEED_MACHINE(obj)->mmio_exec = false;
++    ASPEED_MACHINE(obj)->hw_strap1 = amc->hw_strap1;
+ }
+ 
+ static char *aspeed_get_fmc_model(Object *obj, Error **errp)
+-- 
+2.45.2
 

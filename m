@@ -1,84 +1,84 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp382274njb;
-        Wed, 3 Jul 2024 22:38:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXjRHH7WEbXVlKOUSAlLgeM0JMzq5poCOosrlyBgpKtmSllH+wWyL6uAbvuysWKb+DQtQWGsj5OBjqx1D+wng8ZsYHyJRCc
-X-Google-Smtp-Source: AGHT+IHO9mCDQEcs/TioSAH4/2P2cI1EZKZokFxXdqZlBr0mSWwG+yVXaLtTngMxRl/sgKFUILzC
-X-Received: by 2002:a05:622a:a:b0:446:5cb3:c313 with SMTP id d75a77b69052e-447cbd16fe5mr8417901cf.0.1720071501848;
-        Wed, 03 Jul 2024 22:38:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720071501; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp382342njb;
+        Wed, 3 Jul 2024 22:38:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX6yi52z0DxUaL4Nedjw4+5HsfRS/5p18DMzyv2mOs7cppdLT0n6YG+/89XVCKuz1A8uSJw3JMmt/sFdiaXEgskprpLqJfP
+X-Google-Smtp-Source: AGHT+IG3PulrzbvvIx6Aq+8dauIAxE6hNTSLdYR13/LggwsQVHmy61iJTWMoiJJr7LFXbALjSUfk
+X-Received: by 2002:a05:6102:22d6:b0:48f:a76a:7d with SMTP id ada2fe7eead31-48fee88d8b2mr592107137.18.1720071512905;
+        Wed, 03 Jul 2024 22:38:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720071512; cv=none;
         d=google.com; s=arc-20160816;
-        b=aecOFx5DNSMcb9t1/8jAlcg7Zf7IG/Y+xptWSZ7R+kVkoBTlgsnPKWd/+ZD1ggk9XH
-         pBAe1OnGjf7gKKgyb8wEJdIIe5aF78qT9uT1IB/ZMsFN2bPzqP/9rPcYc0tQkykytoFw
-         4JSeqF5oAWGKBZUHmGW50wHB8Adq2a1J4S6CCFkvJGqdjsY/x0suz65aKZ81kqVhHoN0
-         uSghMWIo6PDnEWHrxCyYJgj7L2mbmZ+evur5Sn6rST6beOeLlXlQro77Sf/pWKzBWXFu
-         E2I3XRkWriv1D0lV1CN1zFvn+nSyRmSFoy0Vjz95l0fu9GUIUkxaIGcCaJ3830K/H9E2
-         YVWg==
+        b=Yas1M1PxcYcygjtqlsYqNpXJN89HcALkfKEUrqyFZKqrOdAcB55Xsd8F1NLoMud7Sw
+         VW26O4bCf8cYk5wmfmqZNlDAHGTSkAddtBFCGOUX3CQ1a1z9KzCWQFqwSj+w48DUgCb8
+         6wO4vkFrDICmGOGfHy2CrTWfzZoJaG/AB6s/24kSR/GxKDDOBq2R+IgVPv94XDjygECy
+         YUgfFDU755u70TPSlUJQtARWasRy85O/bhvlY72nxlgK/N17g+WTMJcNigVHML9bd8Qm
+         RCgLTQ/Px8VONufmmRwK7MfxLZJpDHxLVYoyzdKmw6YzcrUDslRAZmX34TY09+qu+f8O
+         2hPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jAd08S4leZm+bx2Dv0vqRuA8lclulq6U0frAhcMKHqU=;
+        bh=M9EkA4lsBVIe7nvwfiaVBV6Hg3nJetX6HwtMgX/C+DM=;
         fh=pmKRfOPFN0ULs83IIygI07LSKzxt8irZuLBhP9+6oM8=;
-        b=EF8ucc8nvHvpBNCFGbgmNka6XbBgN7vgXOJ7L8m0PVYw7lHYUzOaChhjWS6mu6APY3
-         KtuAw7K9w3CQv4jOtEMfv5F/k69cqG7fmTsVHaq5wW+OWYqFFQhBt7OzgMnMQu9n71Au
-         cmzVcDoDWy9p7MNl8N3g4InXrgZtuox09hSYw3/3HIjpxO7jjJ9LlHjkyNWvIhpYSkUF
-         eWVSz9sqGAGBvjjoG321GU+c95rTUzrOjrzi/Tfyfoww+Soyowf3Z5Y15IkjV0zUh8A0
-         rWQ8yk/uYfNROK33p7D0AJO7Ma+FDYZm6oocXfq494ppAuWwId7OkIZJyewMVk10At1u
-         fKEw==;
+        b=hnYLtfVOlpn/rlSyX0gWxWI1aatljdHYEaxrP2Z4pD16b/tyLjHiCgLCZcsk1EwMj8
+         74TiLIssMbCPfu7UOkLrP8JPITBH0nMTniVC/1FYcjsLZ43TD8gOyr8jva+8zDhq/fbg
+         6Cd0KqObVIvvUaXOOrRT/x/QTgchF1at8T3qmkeQayKpclcUD/qSmAz7+bZL16Iou54l
+         LIVXDbdGzb8IF55hOoBjT9s7rJTDMHFk6PbaT4VGJT+jKb7sRUCZ17aZpg+TaSudlTYp
+         +F3+3u03vPyjb9RQAs7vGIjW4Rlwz/nU+6bQ2LqFQu6FlNV1scQ9Uc4jNmPBkhxjhPmT
+         ZTig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sf+qV8wa;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ILm5p3MV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-446514c28casi154212691cf.579.2024.07.03.22.38.21
+        by mx.google.com with ESMTPS id af79cd13be357-79ddb81ba55si372602485a.309.2024.07.03.22.38.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jul 2024 22:38:21 -0700 (PDT)
+        Wed, 03 Jul 2024 22:38:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Sf+qV8wa;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ILm5p3MV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sPFA5-0002E7-DP; Thu, 04 Jul 2024 01:37:41 -0400
+	id 1sPFA1-00026d-UO; Thu, 04 Jul 2024 01:37:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sPFA3-00027H-Av
- for qemu-arm@nongnu.org; Thu, 04 Jul 2024 01:37:39 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sPFA0-00025N-SC
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2024 01:37:36 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sPFA0-00027w-MY
- for qemu-arm@nongnu.org; Thu, 04 Jul 2024 01:37:38 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sPF9w-00027i-Aq
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2024 01:37:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1720071454;
+ s=mimecast20190719; t=1720071451;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jAd08S4leZm+bx2Dv0vqRuA8lclulq6U0frAhcMKHqU=;
- b=Sf+qV8wah20k1xWRFnG9LTB+sxN7OnqetCvasX1qxNm1teSLPzrAcGQyW6N4pPJjz/gh6W
- TIjD/zWXA99n1nFQO1tZ4Cae9Pg28UT5WOQKFT2CrCEbGbrT/3RdVpJtjxtSXUdmq24f+M
- RWi5u1pQXhGq9w8HBOhMutczhZ8SCPI=
+ bh=M9EkA4lsBVIe7nvwfiaVBV6Hg3nJetX6HwtMgX/C+DM=;
+ b=ILm5p3MVMOhvVHIeuBZ6ISs0BmgUdljYVXnOR+OYouElGKhehF7Tr6ZFaj0rS4J3UVPn32
+ 99d5ALL2uiDUvDM6SAwz+X3A10rZHajiV1A6JGFgxNWg8HjRwxIy/b2zKnZH4t2EDOkd2m
+ UEODj+Y5eXpv7zKu1nuKBMbyrZH6zrc=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-480-2KLAVVLfPOmb16muBEnqQQ-1; Thu,
- 04 Jul 2024 01:37:30 -0400
-X-MC-Unique: 2KLAVVLfPOmb16muBEnqQQ-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-232-8u3gCQc9Me6ehF0uUx5gUw-1; Thu,
+ 04 Jul 2024 01:37:24 -0400
+X-MC-Unique: 8u3gCQc9Me6ehF0uUx5gUw-1
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8CAFA1956095; Thu,  4 Jul 2024 05:37:28 +0000 (UTC)
+ id 6B629195609E; Thu,  4 Jul 2024 05:37:22 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.90])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BD580195607C; Thu,  4 Jul 2024 05:37:25 +0000 (UTC)
+ id 583D5195607C; Thu,  4 Jul 2024 05:37:19 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -88,9 +88,10 @@ Cc: Andrew Jeffery <andrew@codeconstruct.com.au>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 8/8] aspeed: Introduce a 'boot-emmc' machine option
-Date: Thu,  4 Jul 2024 07:36:51 +0200
-Message-ID: <20240704053651.1100732-9-clg@redhat.com>
+Subject: [PATCH 6/8] aspeed: Add boot-from-eMMC HW strapping bit to
+ rainier-bmc machine
+Date: Thu,  4 Jul 2024 07:36:49 +0200
+Message-ID: <20240704053651.1100732-7-clg@redhat.com>
 In-Reply-To: <20240704053651.1100732-1-clg@redhat.com>
 References: <20240704053651.1100732-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -120,92 +121,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7OBWacxK8Qj+
+X-TUID: gewri4bzLMB9
 
 From: Cédric Le Goater <clg@kaod.org>
 
-The default behavior of some Aspeed machines is to boot from the eMMC
-device, like the rainier-bmc. Others like ast2600-evb could also boot
-from eMMC if the HW strapping boot-from-eMMC bit was set. Add a
-property to set or unset this bit. This is useful to test boot images.
-
-For now, only activate this property on the ast2600-evb and rainier-bmc
-machines for which eMMC images are available or can be built.
+This value is taken from a running Rainier machine.
 
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- docs/system/arm/aspeed.rst |  2 ++
- hw/arm/aspeed.c            | 30 ++++++++++++++++++++++++++++++
- 2 files changed, 32 insertions(+)
+ hw/arm/aspeed.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index cd9559e3e291..6733ffd2b941 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -123,6 +123,8 @@ To boot the machine from the flash image, use an MTD drive :
- 
- Options specific to Aspeed machines are :
- 
-+ * ``boot-emmc`` to set or unset boot from eMMC (AST2600).
-+
-  * ``execute-in-place`` which emulates the boot from the CE0 flash
-    device by using the FMC controller to load the instructions, and
-    not simply from RAM. This takes a little longer.
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 4ce995e875da..e7cfd0c5fbcd 100644
+index 135f4eb72215..abd2412ad8b9 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -1176,6 +1176,34 @@ static void aspeed_machine_class_init_cpus_defaults(MachineClass *mc)
-     mc->valid_cpu_types = sc->valid_cpu_types;
- }
+@@ -189,7 +189,7 @@ struct AspeedMachineState {
+ #define TACOMA_BMC_HW_STRAP2  0x00000040
  
-+static bool aspeed_machine_ast2600_get_boot_from_emmc(Object *obj, Error **errp)
-+{
-+    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
-+
-+    return !!(bmc->hw_strap1 & AST2600_HW_STRAP_BOOT_SRC_EMMC);
-+}
-+
-+static void aspeed_machine_ast2600_set_boot_from_emmc(Object *obj, bool value,
-+                                                      Error **errp)
-+{
-+    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
-+
-+    if (value) {
-+        bmc->hw_strap1 |= AST2600_HW_STRAP_BOOT_SRC_EMMC;
-+    } else {
-+        bmc->hw_strap1 &= ~AST2600_HW_STRAP_BOOT_SRC_EMMC;
-+    }
-+}
-+
-+static void aspeed_machine_ast2600_class_emmc_init(ObjectClass *oc)
-+{
-+    object_class_property_add_bool(oc, "boot-emmc",
-+                                   aspeed_machine_ast2600_get_boot_from_emmc,
-+                                   aspeed_machine_ast2600_set_boot_from_emmc);
-+    object_class_property_set_description(oc, "boot-emmc",
-+                                          "Set or unset boot from EMMC");
-+}
-+
- static void aspeed_machine_class_init(ObjectClass *oc, void *data)
- {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -1375,6 +1403,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
-     amc->i2c_init  = ast2600_evb_i2c_init;
-     mc->default_ram_size = 1 * GiB;
-     aspeed_machine_class_init_cpus_defaults(mc);
-+    aspeed_machine_ast2600_class_emmc_init(oc);
- };
+ /* Rainier hardware value: (QEMU prototype) */
+-#define RAINIER_BMC_HW_STRAP1 0x00422016
++#define RAINIER_BMC_HW_STRAP1 (0x00422016 | AST2600_HW_STRAP_BOOT_SRC_EMMC)
+ #define RAINIER_BMC_HW_STRAP2 0x80000848
  
- static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
-@@ -1447,6 +1476,7 @@ static void aspeed_machine_rainier_class_init(ObjectClass *oc, void *data)
-     amc->i2c_init  = rainier_bmc_i2c_init;
-     mc->default_ram_size = 1 * GiB;
-     aspeed_machine_class_init_cpus_defaults(mc);
-+    aspeed_machine_ast2600_class_emmc_init(oc);
- };
- 
- #define FUJI_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+ /* Fuji hardware value */
 -- 
 2.45.2
 

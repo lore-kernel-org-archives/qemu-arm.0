@@ -1,195 +1,140 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp769278njb;
-        Thu, 4 Jul 2024 11:01:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXBmpzloZRM0sYu0HXnAM3UzX5BjM4ZOhmmBitUtiPNMLoxfOpTgkB4OKmFrGgbYEA6BKDdgHmUNDU+U2gHtlQACMgRifA6
-X-Received: by 2002:a2e:be0e:0:b0:2ec:500c:b2e1 with SMTP id 38308e7fff4ca-2ee8ed3d2dbmr20403391fa.5.1720116108961;
-        Thu, 04 Jul 2024 11:01:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720116108; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp771062njb;
+        Thu, 4 Jul 2024 11:04:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWQ0s5w2Cjw2bMryeQD1qbJZ4nba8hvLDBAcwZaEX8oRsUkaVb3E1EPDpvFORbCNMl6n6/T82oiOomFZZ1B0v6dLv7YZn9G
+X-Received: by 2002:a2e:a544:0:b0:2ee:8c8e:b6e7 with SMTP id 38308e7fff4ca-2ee8ed69e1amr21979981fa.2.1720116266176;
+        Thu, 04 Jul 2024 11:04:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720116266; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tmqje7pY6tOloJL8jZNYO2sCF24Iy+QLWSgMMlzaM/r80vQe7iZEdacoji4A9LAMSZ
-         DhjDj8kcxDTbARKTbXFalKwl6QYZnzj339MdiqFmtd807J6djRf5YSsGXNgvOSxfdF0I
-         ducmFYcDmU6GzIVkWotYAEMYMFkCGOvD3XIMk4TmkxgPc/U6QxG9fUIoHR98o9YsubDM
-         MAKCYm+auJ53zug6mgCxSlBm2mOW4vJF+hjyI6ShKCfflAhHEuhNUT2egyH3IvfhyPh/
-         rxvnjI9acMLCWCldzXgtNbTiWStvl+AfHohPUku9pk+bdgY1D4UFEqUd2/ZuL4wZB6Rd
-         Tw0g==
+        b=hFIcAMa8e7Cz0QItXEcSIvirD7saVPxfP222pUFiWqoDEsvQ7+oapG124FUT+EAuFM
+         Kd+qKbJ/ssLGwuVzgcZAgMEJZaikTX6L/M+JdHBqh0uyHBTBkWsfon4+D0EkymRFU/70
+         6hSsHTwa3Vg3NcoyXJ1HXyG+Rey+/JOUGGFgzJyEThUL3Rb6nI462nnQLGmyrgy1GuA4
+         42tOsS+Rr0IWhlLSB8O2cWz8hKFTA9m3c8OgQi+dEk85XmZW+Td2QGpiucFouvPWILnt
+         ypf0nNtQzecyBPDayI+hcr73cYr3ys7SlL9HETmWCeZkUieov6WIIcMYjE9McAsd5GaI
+         jRyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=MzoctlUTiSFA9iUoFOMhm1Km2jWzaVUvPlzy/f/ntRQ=;
-        fh=gjv6RG5nRbH0I1B199jetnUK6usfi228yb9QkUWFIZ0=;
-        b=SFrsYgBcC8guWmVaAF1KQdDExfKFFf5IpDBPsoqwzFYoaNHW1Vo96u2s9u+SAmyPOx
-         mCa2EiIccjinwbmWIIA5X0vN+1PClX/92fz19ghNBpGTuNMQcFeuTUxYUztH3zlSonRp
-         AZtIVDNiaqBZE9WwowaMMRSC0nekVVHY/PHiPXP0RXNng1RMTWk7OSdOpO6O3tAwZCZV
-         mvULhW1IwagvEb4tuR+coifOMOOfUXbfIP2eRJMU6IAPPWTslVPzuUT3/5i4exKTNB6u
-         0lYKvl6DXkaW78zOKsH4244c2KJeSgiWRdMKJxNyBEL238D9/zClvue6Q7HzNfp4mKdE
-         6+Hw==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=Es/jxLkK50VhJEf17n9Xpm/bjPPab2SRedAoqRTJxiU=;
+        fh=HBi4loY4DWe3Whu0fJ9mJwu/VoH6wnQyvDA6/UO3ky8=;
+        b=XZYu6CKdGtVKlfp3F3ruP6W9V02oKRrLjDQN9CQMJ68mu8cf5iApOq5dKs9MpTiUdD
+         11gvg2b436dbLzipQKXPAvBccvp2Q7PRwdTlOAtKnX1BuGCnfOshxktMAwkpWbZf0A9B
+         6I5VLJJOvOTF3drOFZz/wB/yGqE/fC4aKjL88181ZuJ39v7Tsk8RzGepdv2U6cvMjS5w
+         kT7XtxDXOThLJzSR8Q2QlcvmaH579uC1wfA3otsukN8WuKwoq26gteJVWtOe8ovg6sDz
+         /7Cg/CQSUAtyEfoDPgU5JNVvxy4EN47Y2Mh5nSQWR/c3ytaFAAW0/+MyfhO4lW7lpCvU
+         AErw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pNCny14n;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F92uROBQ;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 38308e7fff4ca-2ee91034316sor3523321fa.9.2024.07.04.11.01.48
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4264f50d16asor912505e9.2.2024.07.04.11.04.25
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 04 Jul 2024 11:01:48 -0700 (PDT)
+        Thu, 04 Jul 2024 11:04:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pNCny14n;
+       dkim=pass header.i=@linaro.org header.s=google header.b=F92uROBQ;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720116108; x=1720720908; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=MzoctlUTiSFA9iUoFOMhm1Km2jWzaVUvPlzy/f/ntRQ=;
-        b=pNCny14n9UPEsvMrugDmBYH3pCHG3vCtozed1SSkIqEjUcFVIVaH3IVbT0+pG/bbgk
-         OQd1W1fMFdNTyxOMj7Sw+azD0+yu91XJhOsoja3e2g0I2wDetrii3Xw+oyNoyn+6MGC+
-         YHb5yXybTofcSb5xE6YUSBvmPqrbhQPKLEeUc5ZfXwZP6e3/LoiYVpaeFFYPlEv7WrX5
-         MgN0eoU7psiC+CuBb73GYKXsGyP3IFBKxhOfoRHVo6U2ldXj6S4lLD8+RbaMMAPYouPI
-         m8OwcBCH+uEXXU6JiUz6FXoaP/EY7wgqvwI6isDnmMhERgkmRFfOlr3ufwoQGy3n4HWj
-         CmqQ==
+        d=linaro.org; s=google; t=1720116265; x=1720721065; darn=linaro.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=Es/jxLkK50VhJEf17n9Xpm/bjPPab2SRedAoqRTJxiU=;
+        b=F92uROBQR9mXGV9uALGK2Nt0mSu0DL1wuX8svzmGiK1o5WA4gGiGS3s7KJG4LP4lhj
+         tKiVtCwz6Wal01LZOVCtTZhMj5ZumrOJzdXNChUhhKgnIFuZhYXiauiV5ubnb01VTSmD
+         wWBxgTkkn3ZdW9kuCXNjrHm76RJeHFEZDz5+5NXNzNDoK4i7Tvn7oZAssl/oVWOJooqW
+         f0bephqp6F1Lxsxe8dYHbI8O2hf7NfuYEA2vJ7pttTiq/e7YvA/cpA25nek9hGR2dq1M
+         cCGiFABZo+LaOgS5COBQzCqp0kCDaaI3/U2BLr92d+8fPkWklaNSwhrE0IfBZSPYqYtR
+         T8mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720116108; x=1720720908;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MzoctlUTiSFA9iUoFOMhm1Km2jWzaVUvPlzy/f/ntRQ=;
-        b=Joj1XcpuqJIgdnGtc9DUiAkrIIWfifQHNSrWHIeGar1NeF/He+pkrR/DUlsjdxb7ae
-         tR3hVTyGwWeGY9uVHZT6wiR5Qrne92+/9vbkUnGLxwC8ckVRYspO+WzpkVdZ8DpSqN/L
-         NIpqCgncW1Kl5TitTxROhe/Oz94vVmpfsxVQJxUOolp+p9+cyNRkj0pIZr50j+EgX2Xo
-         zjdTGRfnD6hXUaC1u4mrY5xZRuuEog20PCMFHQ6/NpE2h3i+CBPAEFViLac2hO02pPD3
-         UR0pU2pk3NWxmVEeXgJAcULv7I528GSiiETSdE7vnU8IT3h81Z1arepyaSSvmERpW9nk
-         5UGg==
-X-Forwarded-Encrypted: i=1; AJvYcCUbFtmJ0tJjS7ICRIPkKiBoyqs3+FasCzFeJYUdGx8dbrBkP/iuyEeIPzKKXBV4kcQeU+bcsbezsHJDuuv+JTCQ/bWIO13P
-X-Gm-Message-State: AOJu0Yxq2LzeMxactxEJkxmeDsr3ZC2Lp3ANyOlW+52FxywcCL8WSb1s
-	3pR9wfy5rL3lXmruox5Uz3+0QEi3+kfHaDBHeLvdlRQyrce4ppr/+2UyqVIplwqwdg==
-X-Google-Smtp-Source: AGHT+IGWlUZflrOohLJm9FWDJ2ZIwkpKWiMbT6ZmSab8MO7lnu3U8gyuyVMB8rG/qS8O7YCf6JkYHg==
-X-Received: by 2002:a2e:9953:0:b0:2ec:3e02:972a with SMTP id 38308e7fff4ca-2ee8ed3df76mr16794871fa.11.1720116108203;
-        Thu, 04 Jul 2024 11:01:48 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1720116265; x=1720721065;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Es/jxLkK50VhJEf17n9Xpm/bjPPab2SRedAoqRTJxiU=;
+        b=ZHp72nT3flwfiMCF5E58YRa30ppVV6CAI2br1pI8nGUaOP+MOa565kWQ1RKgwOSPjx
+         Zekro1nFhRmhLpjEkZ6kRJx9VisPCbkpc2jzhd+QXHjs/FQ98OecHjPTiNdK3RSR6VvB
+         ZjnhfGmfWrflCUCENEEiVG8j5hHys8jEpyROPgtBqipzVEAlPPxfm0sl/mswRsHC3+id
+         0gLgW5HQpC1bisjPSvvT16V9eeRYe41CpIPAHu8GjzeTf+n2xuECKpq0cXbWSEezq9eg
+         i/ycr4zLyaw07j6NhXqyKNP804Sdx7pjVkpxt9+9OAY+RoxGZgAY1WoOtHvyAR6UvB8r
+         9s3g==
+X-Forwarded-Encrypted: i=1; AJvYcCXaXm/oH1Ca2wLhcBmtaGros74nA35gK8FZ7GP/g2OG3NhS0/Lmhyd58D+mZjsu/fOZmTRQ65E5fsvu/276GyNYYzjWn9ZU
+X-Gm-Message-State: AOJu0YxXZaW5Nh7bbGWeBhv39is+kgEFsrhy+qSvbRhnNdm2LMalma4X
+	kKrqivDehLfCmP5zafp8Pl+5kH53Id+8MR25KnySoKtp5N1Qv+nS6uKovUYWWlQWlg==
+X-Google-Smtp-Source: AGHT+IEJfBPphRVIbf3+hLY41G+08KWfKuKv2n9DJX+keY2Gh5gdkJRrCtstpqEOun2CUE1kWXx8mg==
+X-Received: by 2002:a5d:4589:0:b0:367:418d:d4d with SMTP id ffacd0b85a97d-3679dd71faamr1979169f8f.60.1720116265607;
+        Thu, 04 Jul 2024 11:04:25 -0700 (PDT)
 Return-Path: <jean-philippe@linaro.org>
 Received: from myrica ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-367a494e7a1sm613421f8f.112.2024.07.04.11.01.47
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3679224d11dsm5008808f8f.12.2024.07.04.11.04.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 Jul 2024 11:01:47 -0700 (PDT)
-Date: Thu, 4 Jul 2024 19:02:00 +0100
+        Thu, 04 Jul 2024 11:04:25 -0700 (PDT)
+Date: Thu, 4 Jul 2024 19:04:38 +0100
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: Mostafa Saleh <smostafa@google.com>
 Cc: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
 	qemu-devel@nongnu.org, alex.bennee@linaro.org, maz@kernel.org,
 	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
 	marcin.juszkiewicz@linaro.org
-Subject: Re: [PATCH v4 03/19] hw/arm/smmuv3: Fix encoding of CLASS in events
-Message-ID: <20240704180200.GC1693268@myrica>
+Subject: Re: [PATCH v4 07/19] hw/arm/smmu: Introduce CACHED_ENTRY_TO_ADDR
+Message-ID: <20240704180438.GD1693268@myrica>
 References: <20240701110241.2005222-1-smostafa@google.com>
- <20240701110241.2005222-4-smostafa@google.com>
+ <20240701110241.2005222-8-smostafa@google.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240701110241.2005222-4-smostafa@google.com>
-X-TUID: is7trPUBNFAh
+In-Reply-To: <20240701110241.2005222-8-smostafa@google.com>
+X-TUID: w8q7DVg+ZSAU
 
-On Mon, Jul 01, 2024 at 11:02:25AM +0000, Mostafa Saleh wrote:
-> The SMMUv3 spec (ARM IHI 0070 F.b - 7.3 Event records) defines the
-> class of events faults as:
+On Mon, Jul 01, 2024 at 11:02:29AM +0000, Mostafa Saleh wrote:
+> Soon, smmuv3_do_translate() will be used to translate the CD and the
+> TTBx, instead of re-writting the same logic to convert the returned
+> cached entry to an address, add a new macro CACHED_ENTRY_TO_ADDR.
 > 
-> CLASS: The class of the operation that caused the fault:
-> - 0b00: CD, CD fetch.
-> - 0b01: TTD, Stage 1 translation table fetch.
-> - 0b10: IN, Input address
-> 
-> However, this value was not set and left as 0 which means CD and not
-> IN (0b10).
-> While at it, add an enum for class as it would be used for nesting.
-> However, at the moment stage-1 and stage-2 use the same class values.
-> 
-> Fixes: 9bde7f0674 “hw/arm/smmuv3: Implement translate callback”
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
 > Signed-off-by: Mostafa Saleh <smostafa@google.com>
 > ---
->  hw/arm/smmuv3-internal.h | 6 ++++++
->  hw/arm/smmuv3.c          | 6 +++++-
->  2 files changed, 11 insertions(+), 1 deletion(-)
+>  hw/arm/smmuv3.c              | 3 +--
+>  include/hw/arm/smmu-common.h | 3 +++
+>  2 files changed, 4 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> index e4dd11e1e6..0f3ecec804 100644
-> --- a/hw/arm/smmuv3-internal.h
-> +++ b/hw/arm/smmuv3-internal.h
-> @@ -32,6 +32,12 @@ typedef enum SMMUTranslationStatus {
->      SMMU_TRANS_SUCCESS,
->  } SMMUTranslationStatus;
->  
-> +typedef enum SMMUTranslationClass {
-> +    SMMU_CLASS_CD,
-> +    SMMU_CLASS_TT,
-> +    SMMU_CLASS_IN,
-> +} SMMUTranslationClass;
-> +
->  /* MMIO Registers */
->  
->  REG32(IDR0,                0x0)
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 9dd3ea48e4..1eb5b160d2 100644
+> index cc61708160..229b3c388c 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -942,7 +942,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->              event.type = SMMU_EVT_F_WALK_EABT;
->              event.u.f_walk_eabt.addr = addr;
->              event.u.f_walk_eabt.rnw = flag & 0x1;
-> -            event.u.f_walk_eabt.class = 0x1;
-> +            event.u.f_walk_eabt.class = SMMU_CLASS_TT;
+> @@ -950,8 +950,7 @@ epilogue:
+>      switch (status) {
+>      case SMMU_TRANS_SUCCESS:
+>          entry.perm = cached_entry->entry.perm;
+> -        entry.translated_addr = cached_entry->entry.translated_addr +
+> -                                    (addr & cached_entry->entry.addr_mask);
+> +        entry.translated_addr = CACHED_ENTRY_TO_ADDR(cached_entry, addr);
+>          entry.addr_mask = cached_entry->entry.addr_mask;
+>          trace_smmuv3_translate_success(mr->parent_obj.name, sid, addr,
+>                                         entry.translated_addr, entry.perm,
+> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+> index 96eb017e50..09d3b9e734 100644
+> --- a/include/hw/arm/smmu-common.h
+> +++ b/include/hw/arm/smmu-common.h
+> @@ -37,6 +37,9 @@
+>  #define VMSA_IDXMSK(isz, strd, lvl)         ((1ULL << \
+>                                               VMSA_BIT_LVL(isz, strd, lvl)) - 1)
+>  
+> +#define CACHED_ENTRY_TO_ADDR(ent, addr)      (ent)->entry.translated_addr + \
+> +                                             ((addr) & (ent)->entry.addr_mask);
 
-For EABT I think we have to differentiate S1/S2:
-
-* s1-only walk that encounters EABT on S1 descriptor access is reported as
-  class=TT, 
-* s2 walk that encounters EABT on S2 descriptor while translating
-  non-descriptor IPA is reported as class=IN, even when doing s2-only.
-
-Maybe it can be done in the later patch where you propagate the different
-classes, because it's a minor detail.
+nit: maybe wrap this in parenthesis to avoid future usage mistakes and
+drop the semicolon 
 
 Thanks,
 Jean
 
->              event.u.f_walk_eabt.addr2 = ptw_info.addr;
->              break;
->          case SMMU_PTW_ERR_TRANSLATION:
-> @@ -950,6 +950,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->                  event.type = SMMU_EVT_F_TRANSLATION;
->                  event.u.f_translation.addr = addr;
->                  event.u.f_translation.addr2 = ptw_info.addr;
-> +                event.u.f_translation.class = SMMU_CLASS_IN;
->                  event.u.f_translation.rnw = flag & 0x1;
->              }
->              break;
-> @@ -958,6 +959,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->                  event.type = SMMU_EVT_F_ADDR_SIZE;
->                  event.u.f_addr_size.addr = addr;
->                  event.u.f_addr_size.addr2 = ptw_info.addr;
-> +                event.u.f_translation.class = SMMU_CLASS_IN;
->                  event.u.f_addr_size.rnw = flag & 0x1;
->              }
->              break;
-> @@ -966,6 +968,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->                  event.type = SMMU_EVT_F_ACCESS;
->                  event.u.f_access.addr = addr;
->                  event.u.f_access.addr2 = ptw_info.addr;
-> +                event.u.f_translation.class = SMMU_CLASS_IN;
->                  event.u.f_access.rnw = flag & 0x1;
->              }
->              break;
-> @@ -974,6 +977,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->                  event.type = SMMU_EVT_F_PERMISSION;
->                  event.u.f_permission.addr = addr;
->                  event.u.f_permission.addr2 = ptw_info.addr;
-> +                event.u.f_translation.class = SMMU_CLASS_IN;
->                  event.u.f_permission.rnw = flag & 0x1;
->              }
->              break;
+> +
+>  /*
+>   * Page table walk error types
+>   */
 > -- 
 > 2.45.2.803.g4e1b14247a-goog
 > 

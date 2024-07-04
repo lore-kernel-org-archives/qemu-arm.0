@@ -1,84 +1,84 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp382225njb;
-        Wed, 3 Jul 2024 22:38:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWY+Py4Z5yxpwbW0tD3Hz/fkzbsatLY7ivrE25xcYAu0hP+7RZn19eUflaHG48UaHJoNsprkemTxnYTRqcIsw8eOdHj4vfZ
-X-Google-Smtp-Source: AGHT+IH4mjLuKPUKwb+XOCmMaHea1VSiU7jzg2gt14CnOICQAbhhjFtcS+F8PH/423j8OxiEDsck
-X-Received: by 2002:a05:620a:4552:b0:79d:78c2:1bfd with SMTP id af79cd13be357-79eee29a891mr99665385a.63.1720071493066;
-        Wed, 03 Jul 2024 22:38:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720071493; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp382261njb;
+        Wed, 3 Jul 2024 22:38:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXzqnKCfW8lE1huAiFp2NtRv7tPDgcBz8Kn3aUR3PjM7y6MLXDRTR9RWyJTex/OkRZ4Pk8d8TjqVN0lFCBuLaAVkqGgvxpK
+X-Google-Smtp-Source: AGHT+IGRHr3hm9B2siiHxH6RF775TBQ0RDK1MJWnUm8gamFJKAMTzdH5SGVGOF6V4sLypgAdBSXS
+X-Received: by 2002:a05:620a:4623:b0:79c:ad5:cd6d with SMTP id af79cd13be357-79eee19e9a0mr95280285a.1.1720071498894;
+        Wed, 03 Jul 2024 22:38:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720071498; cv=none;
         d=google.com; s=arc-20160816;
-        b=X1Iai4oq3XpL/nht7PJsxbAUUQv+zwOy4O2mFNcY+2RC2rOKYOekUaJdlkuoGOuAi4
-         5jucbYhMr7r1n/njTQRVu9xvcAGh32gAY8PRAItWQZUPNL72WxqU/aKw680Qwg+wThb7
-         q2KA+F18ZFy/8QTWd4gkWYrv3x/byCNGBQtEf9zNcnX6yDUkxEzOWd3dhuLS4OxZP8ee
-         2apGxKTyo4tq9664MljgVDWT/yV92fIEkgeRC51uvzjbzEezqRihUOrfyiTkBOk4kS7J
-         vZn7qQY3x52hu5ppb9sSDq6Bqv1UyHJAIh5NBK15havkb5E5V13yy40djtnjQ+bULUPC
-         luQw==
+        b=QeRLUT4sG8OC30088bkxMLtxmvlAuffqyl8R+qM/xb1tkPPEIMKHoFpr6oH4tDGjqf
+         wXQmjXysehKbdPcoCumZKxQCDbMeaPkwDfJ21X5FS1fdRpovzRdWpfS/uJGVmDI0KY5O
+         +/tE6aCflhzTYVzeNWADbAfqZS9IAcICSy9EeXsjG1Vn6zfksQKU5H4bYBloJeh+3qVA
+         GzVB7fFBx/ysLPksjL6nlLfZdNFcNiZ6wINsWxQLQxowykXU/i2d5jwduBWGxW5uhaUU
+         Kj6xxTxsebLJrwYsN+EKNha93mwVRzBHSzbSPLCRcCzr540JFv5OKy7J4Fy9am7PWhM6
+         btyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=iu6CNvU65NpCZg75wAglcNvd8YEs0L710xhfxPzGxjw=;
+        bh=4YCGx52Uc4ZhHfEFlPk6dFzYeHoVJnh2BMxzS1mjrVs=;
         fh=pmKRfOPFN0ULs83IIygI07LSKzxt8irZuLBhP9+6oM8=;
-        b=WkkQ35i+je6Kdu3Ca5lq0ZVdN+JAPO7jx2c3r+Bmnk6tgpEHVTLPIiW2JHrvZvF7DR
-         /1voRHQ9dmBAvCDFa3Uo2xULBejW9KC4cG1860UZ7/r727f1J2NrfG0FX/NprfH4FtdW
-         yIn+RBbQ6Akx5BrE4iw/qLAVWWhsUy4iAbswTYAelpLQnamVdO0YOHNrd3dw+BqIs4Dc
-         tityq/wzIQN7rymjvZkihvJA8IilCLjOigKqNZnp+qh1ChMk/qke45/81buQF/svXups
-         f1U1Q1YRVmUJsgLRfIfLPHBBTSUX19ozJlEu1P8QpGK2IIiENs2EsI6CMw1HbScMmP0v
-         4OkQ==;
+        b=1D2b1Wkr6dRoXT3ynnABzM/A3HIkI8kAaEuszVq2gGjwdnAVmwAkaICo5KYrKD/kky
+         RsC/Pc0HYvXzhFUBlH5joYGLFgE4Sv6mUDVwrmakkAhwSp05xps9Xf5MsqpWTb8ZYbE/
+         3vfeQOr1KzVOSAHqj+NYfEoQOs73zALuOrK7tmWlpwrgIVkCRB9UzxxcB+22Vyod9ulq
+         PRfss+aeERu7fF2t0XpAGG22q1IDwDZYjb8vwkyvr7KHSRBkreHE9xLqmoYkDELWRS/1
+         eiY4LnRCDzLRmmvyLvN6IxbVwYxNR77uog0+YzCzbOTVDey8MYk7mG009913m5i63uWc
+         vM0Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J3bxOT3H;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f2X5T+RC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-446513c2071si139518851cf.117.2024.07.03.22.38.12
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b5d3ce417asi47911306d6.172.2024.07.03.22.38.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jul 2024 22:38:13 -0700 (PDT)
+        Wed, 03 Jul 2024 22:38:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=J3bxOT3H;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f2X5T+RC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sPFA5-0002FC-T5; Thu, 04 Jul 2024 01:37:41 -0400
+	id 1sPF9n-0001sN-Jn; Thu, 04 Jul 2024 01:37:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sPFA4-0002Aw-4m
- for qemu-arm@nongnu.org; Thu, 04 Jul 2024 01:37:40 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sPF9l-0001r7-UX
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2024 01:37:21 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sPFA0-00027t-MT
- for qemu-arm@nongnu.org; Thu, 04 Jul 2024 01:37:39 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sPF9k-00025L-Cy
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2024 01:37:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1720071453;
+ s=mimecast20190719; t=1720071438;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=iu6CNvU65NpCZg75wAglcNvd8YEs0L710xhfxPzGxjw=;
- b=J3bxOT3HCUr//J6r1T3BmzOdb9x5cnDQyZUS9TpJSTD+JUXvJfgmTWzpl17mHA3p69prwC
- yv7O5TGLRDXR3JlpJcfYqMkXD2oLU6XQE09zH241bQTgUolByBhHFyJancRzujWP1I5vBK
- j1fv8Fo+dPPHjEGZQrgo8Q5BNENodsw=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=4YCGx52Uc4ZhHfEFlPk6dFzYeHoVJnh2BMxzS1mjrVs=;
+ b=f2X5T+RCnbIZv03pxValOsZ7AHtLz4qLxFBVHP/J0yJCgzlO2nMLWiWKhfcWCi3/2e1Kg8
+ wfU6MzBiBNe9q1X5oDpBd2zHQki2xdVjS61gxTOL5RMxGIcrU81/UBSziesn8AWR2/BVPj
+ t/HDg19QdGDGFVLtpp2e6gl9wKhZ4K4=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-287-CODLcr5SNE-ev5a_QwqBeg-1; Thu,
- 04 Jul 2024 01:37:27 -0400
-X-MC-Unique: CODLcr5SNE-ev5a_QwqBeg-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-641-nF1nslsKNYyPUn2OTP0HzQ-1; Thu,
+ 04 Jul 2024 01:37:12 -0400
+X-MC-Unique: nF1nslsKNYyPUn2OTP0HzQ-1
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 95C471955BC2; Thu,  4 Jul 2024 05:37:25 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E1BE11955BC7; Thu,  4 Jul 2024 05:37:10 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.90])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 90086195607C; Thu,  4 Jul 2024 05:37:22 +0000 (UTC)
+ id C26A91955F4B; Thu,  4 Jul 2024 05:37:07 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -88,9 +88,10 @@ Cc: Andrew Jeffery <andrew@codeconstruct.com.au>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 7/8] aspeed: Introduce a 'hw_strap1' machine attribute
-Date: Thu,  4 Jul 2024 07:36:50 +0200
-Message-ID: <20240704053651.1100732-8-clg@redhat.com>
+Subject: [PATCH 3/8] aspeed/scu: Add boot-from-eMMC HW strapping bit for
+ AST2600 SoC
+Date: Thu,  4 Jul 2024 07:36:46 +0200
+Message-ID: <20240704053651.1100732-4-clg@redhat.com>
 In-Reply-To: <20240704053651.1100732-1-clg@redhat.com>
 References: <20240704053651.1100732-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -120,51 +121,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: K03GPvWsH2v8
+X-TUID: WWudB7UNlTm9
 
 From: Cédric Le Goater <clg@kaod.org>
 
-To change default behavior of a machine and boot from eMMC, future
-changes will add a machine option to let the user configure the
-boot-from-eMMC HW strapping bit. Add a new machine attribute first.
+Bit SCU500[2] of the AST2600 controls the boot device of the SoC.
 
+Future changes will configure this bit to boot from eMMC disk images
+specially built for this purpose.
+
+Signed-off-by: Joel Stanley <joel@jms.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/arm/aspeed.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ include/hw/misc/aspeed_scu.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index abd2412ad8b9..4ce995e875da 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -46,6 +46,7 @@ struct AspeedMachineState {
-     uint32_t uart_chosen;
-     char *fmc_model;
-     char *spi_model;
-+    uint32_t hw_strap1;
- };
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index 58db28db45aa..c9f98c20ffd9 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -349,6 +349,10 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
+ #define SCU_AST2600_H_PLL_BYPASS_EN                        (0x1 << 24)
+ #define SCU_AST2600_H_PLL_OFF                              (0x1 << 23)
  
- /* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
-@@ -391,7 +392,7 @@ static void aspeed_machine_init(MachineState *machine)
-         }
-     }
- 
--    object_property_set_int(OBJECT(bmc->soc), "hw-strap1", amc->hw_strap1,
-+    object_property_set_int(OBJECT(bmc->soc), "hw-strap1", bmc->hw_strap1,
-                             &error_abort);
-     object_property_set_int(OBJECT(bmc->soc), "hw-strap2", amc->hw_strap2,
-                             &error_abort);
-@@ -1075,7 +1076,10 @@ static void aspeed_set_mmio_exec(Object *obj, bool value, Error **errp)
- 
- static void aspeed_machine_instance_init(Object *obj)
- {
-+    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(obj);
++/* STRAP1 SCU500 */
++#define AST2600_HW_STRAP_BOOT_SRC_EMMC            (0x1 << 2)
++#define AST2600_HW_STRAP_BOOT_SRC_SPI             (0x0 << 2)
 +
-     ASPEED_MACHINE(obj)->mmio_exec = false;
-+    ASPEED_MACHINE(obj)->hw_strap1 = amc->hw_strap1;
- }
- 
- static char *aspeed_get_fmc_model(Object *obj, Error **errp)
+ /*
+  * SCU310   Clock Selection Register Set 4 (for Aspeed AST1030 SOC)
+  *
 -- 
 2.45.2
 

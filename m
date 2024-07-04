@@ -1,288 +1,226 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp252673njb;
-        Wed, 3 Jul 2024 15:58:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWZl8Hpxm0nH3m0Ko7Kxt1tKKQKU7lH2D1NsdZ2vZ+rHYT/Q41JN1sjFrojXE37lDS7cawB1bzQdb0uD2jFPqJxcWOnG2uc
-X-Google-Smtp-Source: AGHT+IHnnsy1drrwJXGpHuqr3zNoMvuD/d9GgC01WCDZjk7kZ8VO14h+A4IVZKJ4TZTzMl05OAWI
-X-Received: by 2002:ae9:e40a:0:b0:795:4fdd:6760 with SMTP id af79cd13be357-79eee246ad9mr1029285a.17.1720047538817;
-        Wed, 03 Jul 2024 15:58:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720047538; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp329976njb;
+        Wed, 3 Jul 2024 19:49:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUIACNmF/fiLR8lAvPVkgLwd5SGTpZETEPoESxV94XcF69Debp2r+1MIEEES63FZv53j7Vvn634+9wZ/Owy3llyPlqCY0GM
+X-Received: by 2002:a05:6808:5d2:b0:3d6:2b99:2e14 with SMTP id 5614622812f47-3d914c63da3mr373948b6e.21.1720061388033;
+        Wed, 03 Jul 2024 19:49:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720061388; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zh7E1NF0xO/bkQemiysDH3IwdHUylY3Od/vpyJhu8LlQNFHNggFFkoLZ+b60kk4GQf
-         ORIT4wwxZB7A6hcmcPjQZDD04+Xehifo53HbzctVmyXc5pfwKgvQ/+kvCii2AOF4p/De
-         ZLBi3LImYhZrXhSox47YPozmoN9VkaDXfRYsz4eyaTL0L5uy8c87rmD6WgLInPl0JQx2
-         Vm4U1SDWvPcsD5jUL3uEiS7E3a82N6FkEJbiXtP8yWt8kRqGAzYRtheQSYuiSiRv/HI+
-         sk8USBJKMdJTafYeDn4VfX/MUKX6U6Lj3d7rUDGdlOAdIeLFlJ+Vypeu2e9+zRHKdupx
-         yoPQ==
+        b=GW4sHCBAbZT9GlZ/dE/+WSAulEfY0mGobC+2zsP77qViFsPtqGwaP9cyWXOjZZmZu5
+         Yk3lNrxiFxSwoTQBACRhTsAYdUidiDR2TIcDrMRGV2zaBBq/p1XoWIUjXmuhq46pdnXl
+         FDlmaX8Dz4kIDJDWHh4+enV7us38ZaNxtcR9pJpju9OmVh06uErrW+uVUaEghMFlg8JS
+         sLNPONywXdaGAvnY6e4S+bCb6A/kDVsDj/AHPRj54uYcNMsXscBfcD1mjmMxuJF3gh72
+         JGPRf1yIop7nNenLdS3EzSOZM6kHhKykXtY5MaECJG9lkYLBb5E45mlmdcQBdHJ0uQ5n
+         LyVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=brHSGsqrcLMqSJxNNitPv2WvhUun9R7fdVCQLQot1KY=;
-        fh=yET2C/T6mW0MhWHRF5v6rRZ9Q663SvRpT7ovbDI5XyY=;
-        b=QOIM7dgMl8HV13o35SB9+m3YPKkcNDkA1sxApF1+C0DAKfUA/QTryB17MAv0K1yfmW
-         dMy3IR2OFupKhcVQuVfh+bJ4hujvomen+fb0cAPnnJSb8ivWP4XU7wZeVN2Z7HldI10I
-         43XuQ1QtyQvO1ZqTFpK7lcM9gBdvSQDLlyV1q1tArMIVBJvDsCND0GmUg1nXylWYNU0y
-         TpoEBah2Aq9x1zFl5wo7rDslw1gB1NhLJqgxKziVtCWaYVNt3f1kL4K7CLujyEQfKajN
-         i8+4p5F77jnG47BLkaAbTd/pqtlDl3h8XYEMl6tnpzAVvkX+XU+d0PrtJ1LdaBkvDrgU
-         8H+Q==;
+        h=in-reply-to:references:subject:cc:to:from:message-id:date
+         :content-transfer-encoding:mime-version:dkim-signature;
+        bh=faVAZXn9bsK4fGeINzwAK3yajvwzHgOzvX/M33g9KJE=;
+        fh=MN7qvEFmxxOFCGdmTZARN8W7olBTBx8i5MjDl6DZCoo=;
+        b=W7HAt1jR8sQGXgB/5IPzAyD+UVdXco+nbfHDcwxa5rW7zgTfnZ31CLYTC7BCTnhx9N
+         605qy73a6HJedQzAMKf+tad4VBZp/hCTpXRSgfUe2vsCSe2GopVYMKrjCOc8Gnr/bYkO
+         FdofJ1z0Q5x8xJTAz2hUq29i3esbhmvlkEZxKo6y5x8cTMbgsw6eFwyH6G6Mejc+/dM1
+         HTRJ/z/cmBROrdRlgDYYFoIufY57hAboKfmTtiqgYm0DlYMnlo4HwCiWKL/SfwAUaTcu
+         wWf78QeZN3ImC25JBK6v1UAa6iAq0AJE59JB+2jTzA8GJzwd80f6bwKCFtHaB7H/UP+Y
+         rzLg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ljbj+0Ny;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <mst@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-79ee34e836asi211882685a.363.2024.07.03.15.58.58
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jul 2024 15:58:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OxJKkTop;
+       spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <npiggin@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5614622812f47-3d56778ee6fsor7303649b6e.15.2024.07.03.19.49.47
+        (Google Transport Security);
+        Wed, 03 Jul 2024 19:49:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ljbj+0Ny;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1720047538;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=brHSGsqrcLMqSJxNNitPv2WvhUun9R7fdVCQLQot1KY=;
-	b=Ljbj+0Ny3SWT3XVXsAIJL8TMzZ/yf6Vh0M9hfFTKaOoW2Ewv0cM4jM2QWpKBF1OZVntdie
-	7UdlhVnjuf7JZ5jz6YpGBel8Mv2JweakJrvnD41wuS+eeiL5YicVLqTBlOfZC34G5N7LCF
-	HX7uhwb6WOR2X4nC/R5knVxNp/UfEH4=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-683-j5om1DdqMYSCvuAMxJSLZA-1; Wed, 03 Jul 2024 18:58:57 -0400
-X-MC-Unique: j5om1DdqMYSCvuAMxJSLZA-1
-Received: by mail-ed1-f71.google.com with SMTP id 4fb4d7f45d1cf-58d24cad85aso4291a12.2
-        for <alex.bennee@linaro.org>; Wed, 03 Jul 2024 15:58:57 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OxJKkTop;
+       spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1720061387; x=1720666187; darn=linaro.org;
+        h=in-reply-to:references:subject:cc:to:from:message-id:date
+         :content-transfer-encoding:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=faVAZXn9bsK4fGeINzwAK3yajvwzHgOzvX/M33g9KJE=;
+        b=OxJKkTopnc6XllTadt0p5bK5k0logjxPFa06fo1HPWpcqhp2g2l3PeIyetC+Z9+aRc
+         NlqONBx3MPtbsxsAs4U/Nr2So73UsUkqSORQYPUTmove+7AxwMSKrPlpHHaUGfLCif2P
+         c23xcjaSf/3PTLrijXhHT1t7boQqPwWN5YlqZCL8TV9qJNSDoillE4rOBfvzi2pbsr07
+         1TG7fjhesp4IOSPIi08qthQ1vY8B/2CjozPGUwgMAwvieqA73f9+cZfBMeDt7ZSAeezF
+         w7AyZrwevAOUXO3wYi0sWxNcBHnC4I8HAgFLyHxF6TKzZcjn77zBhiGipVJKXjLIpSo0
+         9AgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720047536; x=1720652336;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=brHSGsqrcLMqSJxNNitPv2WvhUun9R7fdVCQLQot1KY=;
-        b=o9lgYGdVgTH6PI79uUtJOqTzDKBtX9lfAPkufME11XPpJpCDBDzJR6lwc9nlnu6MFA
-         38SZ0lDwRksSqQPRqZs1+qUYUO0IOTx3yZyjOoiFsPzUTYQ1SudqcKWKKO+MgOcHklCP
-         cRQLgpJtWTgeCP7qjjYP+E9avTIWUgJFxKRtHCyBpyHLuIlsWt52nJ8I2MdLp4agtlS6
-         axE9Q066lxoVCgl0AbBB0RsOow0Tla2t6cg8tRC/t7sPfrPLKj7eEcG8bUVqC7rZ89+I
-         uv3fbGN+utIOg4mLVFUPswkTZWel5MkxK518QqNNESLILSLUuq0vjPG0ODMLEZpneGxE
-         EdUg==
-X-Forwarded-Encrypted: i=1; AJvYcCUfOCXtieKbJp1lspdG2LHSq6zl1mBc6+6t9ku5MwgwOnBqkNGkBeAD1KvyDiOY66nX6Vi4B5dr9ShuFgWPBGOOOn2VuPzZ
-X-Gm-Message-State: AOJu0Yx+JO+Gzj1VwlsofQj7hvM0GCVNtZ6CPsSqfEnwezSyhdbsjfsE
-	iRgH0QLtTdzQ0G+NtRco14HGX+oCu/xc7IZi3AQabHYAWXcunGUwVSraWBvy6nsv1NaUcbzj5pa
-	JiKIx84DZqHriJJ9KpM5+orf0LFp6i4YvpjaI1Lt5sddODR00M54tpw==
-X-Received: by 2002:a05:6402:354c:b0:579:ca97:da1b with SMTP id 4fb4d7f45d1cf-5879ece9247mr9496354a12.6.1720047536054;
-        Wed, 03 Jul 2024 15:58:56 -0700 (PDT)
-X-Received: by 2002:a05:6402:354c:b0:579:ca97:da1b with SMTP id 4fb4d7f45d1cf-5879ece9247mr9496302a12.6.1720047535251;
-        Wed, 03 Jul 2024 15:58:55 -0700 (PDT)
-Return-Path: <mst@redhat.com>
-Received: from redhat.com ([2a0d:6fc7:441:91a8:a47d:5a9:c02f:92f2])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-58613159103sm7644927a12.24.2024.07.03.15.58.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jul 2024 15:58:54 -0700 (PDT)
-Date: Wed, 3 Jul 2024 18:58:43 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org,
-	jean-philippe@linaro.org, jonathan.cameron@huawei.com,
-	lpieralisi@kernel.org, peter.maydell@linaro.org,
-	richard.henderson@linaro.org, imammedo@redhat.com,
-	andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
-	eric.auger@redhat.com, oliver.upton@linux.dev, pbonzini@redhat.com,
-	will@kernel.org, gshan@redhat.com, rafael@kernel.org,
-	alex.bennee@linaro.org, linux@armlinux.org.uk,
-	darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
-	vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
-	miguel.luis@oracle.com, salil.mehta@opnsrc.net,
-	zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
-	wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
-	lixianglai@loongson.cn, npiggin@gmail.com, harshpb@linux.ibm.com,
-	linuxarm@huawei.com
-Subject: Re: [PATCH V13 0/8] Add architecture agnostic code to support vCPU
- Hotplug
-Message-ID: <20240703185812-mutt-send-email-mst@kernel.org>
-References: <20240607115649.214622-1-salil.mehta@huawei.com>
-MIME-Version: 1.0
-In-Reply-To: <20240607115649.214622-1-salil.mehta@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-X-TUID: d9ArQGWgNWmU
+        d=1e100.net; s=20230601; t=1720061387; x=1720666187;
+        h=in-reply-to:references:subject:cc:to:from:message-id:date
+         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=faVAZXn9bsK4fGeINzwAK3yajvwzHgOzvX/M33g9KJE=;
+        b=u7/sU/ZamBplN2vSiUXDLFFcnolAwOKsFN80cKdIZkcp/nNwGhHTtz6y0s+9XgBFBI
+         j9mlel6M+R8ePTa0eY4ptV+lF7TEAOEz/jVcksxMKShTafeH4v1vd65u8nKQZ18+UEqu
+         Y9o+le9ZBs3Pf3ZH1wKKFhg1gEIWybbVzXifwlqcL0iDMsGAtrgaDULfqqg9Id6fxPWu
+         XmUzLPR6y9P1gVH8JTpSoqeNmXOegE/w+AkzvsBa+ejVzzQ2Hdgm86JmBvT4yX1TZmAm
+         bVxEWaso9c9Y552ucOVB0HLnrI9mJYtAHWWdgFlOaz9e8Wb2FUuszorjkKniIkYojtPc
+         Q7yQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV/wce12G6Wdb0C/7Mg7H9JQAk3lM04y1RAu1bUDdwJeEpv+O1nyYwkFLi80KgO2Vlp3zel/4t6MTdOrPbayO2kQNNtIeHtx+0LIhzofmrtmW72VoojJA5IlX2/IoNjL9aNNU6wlzKGqmCEIbPDyv8lL5rnatbtOoNydQimosOnkPm/hhOp/4J/tit8m9qnKi+xdOQy4mep5bK3C+SvdlcPLdiWdDdpWL3yQHU=
+X-Gm-Message-State: AOJu0YwF3wFfbrjV+IqxmNY4JbaOt+EjK+Oman9IQfG56AjEZSVid0OX
+	Mv0a4se0vweiqcGXN/VEEJuxYtyvzEwfCWGpf9H8GD/PZsPx9fUp
+X-Google-Smtp-Source: AGHT+IEUtrGurlX1HtjaYCvPArOnmH69qkJ09MiCg5xXoxVF+wfQjl5oZlGGffxlfav7LhRHYvfhhg==
+X-Received: by 2002:a05:6808:907:b0:3d6:30e5:ef06 with SMTP id 5614622812f47-3d914c63b4fmr342690b6e.17.1720061387262;
+        Wed, 03 Jul 2024 19:49:47 -0700 (PDT)
+Return-Path: <npiggin@gmail.com>
+Received: from localhost ([1.146.95.80])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70803fc8b84sm11148870b3a.103.2024.07.03.19.49.31
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 03 Jul 2024 19:49:46 -0700 (PDT)
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Thu, 04 Jul 2024 12:49:29 +1000
+Message-Id: <D2GEV8KD5L3F.FRD8UH16X3GU@gmail.com>
+From: "Nicholas Piggin" <npiggin@gmail.com>
+To: "Salil Mehta" <salil.mehta@huawei.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <mst@redhat.com>
+Cc: <maz@kernel.org>, <jean-philippe@linaro.org>,
+ <jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+ <peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+ <imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+ <philmd@linaro.org>, <eric.auger@redhat.com>, <will@kernel.org>,
+ <ardb@kernel.org>, <oliver.upton@linux.dev>, <pbonzini@redhat.com>,
+ <gshan@redhat.com>, <rafael@kernel.org>, <borntraeger@linux.ibm.com>,
+ <alex.bennee@linaro.org>, <harshpb@linux.ibm.com>, <linux@armlinux.org.uk>,
+ <darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
+ <vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
+ <miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>,
+ <zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
+ <wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
+ <lixianglai@loongson.cn>, <shahuang@redhat.com>, <zhao1.liu@intel.com>,
+ <linuxarm@huawei.com>
+Subject: Re: [PATCH RFC V3 13/29] arm/virt: Make ARM vCPU *present* status
+ ACPI *persistent*
+X-Mailer: aerc 0.17.0
+References: <20240613233639.202896-1-salil.mehta@huawei.com>
+ <20240613233639.202896-14-salil.mehta@huawei.com>
+In-Reply-To: <20240613233639.202896-14-salil.mehta@huawei.com>
+X-TUID: BIbKzc57W90a
 
-On Fri, Jun 07, 2024 at 12:56:41PM +0100, Salil Mehta wrote:
-> Virtual CPU hotplug support is being added across various architectures[1][3].
-> This series adds various code bits common across all architectures:
-> 
-> 1. vCPU creation and Parking code refactor [Patch 1]
-> 2. Update ACPI GED framework to support vCPU Hotplug [Patch 2,3]
-> 3. ACPI CPUs AML code change [Patch 4,5]
-> 4. Helper functions to support unrealization of CPU objects [Patch 6,7]
-> 5. Docs [Patch 8]
+On Fri Jun 14, 2024 at 9:36 AM AEST, Salil Mehta wrote:
+> ARM arch does not allow CPUs presence to be changed [1] after kernel has =
+booted.
+> Hence, firmware/ACPI/Qemu must ensure persistent view of the vCPUs to the=
+ Guest
+> kernel even when they are not present in the QoM i.e. are unplugged or ar=
+e
+> yet-to-be-plugged
 
-Igor - it's been a while. Looks ok to me superficially. Do you plan to review?
+Do you need arch-independent state for this? If ARM always requires
+it then can it be implemented between arm and acpi interface?
 
-> 
-> Repository:
-> 
-> [*] https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v3.arch.agnostic.v13
-> 
-> NOTE: This series is meant to work in conjunction with Architecture specific patch-set.
-> For ARM, a combined patch-set (arch agnostic + specific) was earlier pushed as RFC V2[1].
-> A ARM architecture specific patch-set (subset of RFC V2) is being finalized and shall
-> be floated soon as RFC-V3. Please find a version of it compatible with this patch-set at
-> the below location. (TCG support is broken in below and is being fixed)
-> 
-> [*] https://github.com/salil-mehta/qemu/tree/virt-cpuhp-armv8/rfc-v3-rc2
-> 
-> 
-> Revision History:
-> 
-> Patch-set  V12 -> V13
-> 1. Added Reviewed-by Tag of Harsh Prateek Bora's (IBM) [PATCH V12 1/8]
-> 2. Moved the kvm_{create,park,unpark}_vcpu prototypes from accel/kvm/kvm-cpus.h
->    to include/sysemu/kvm.h. These can later be exported through AccelOps.
-> Link: https://lore.kernel.org/qemu-devel/62f55169-1796-4d8e-a35d-7f003a172750@linux.ibm.com/
-> 
-> Patch-set  V11 -> V12
-> 1. Addressed Harsh Prateek Bora's (IBM) comment
->    - Changed @cpu to @vcpu_id in the kvm_unpark_vcpu protoype header/
-> 2. Added Zhao Liu's (Intel) Tested-by for whole series
->    - Qtest does not breaks on Intel platforms now.
-> 3. Added Zhao Liu's (Intel) Reviewed-by for [PATCH V11 {1/8 - 3/8}]
-> Link: https://lore.kernel.org/qemu-devel/ZlRSPuJGBgyEUW6w@intel.com/
-> Link: https://lore.kernel.org/qemu-devel/a5f3d78e-cfed-441f-9c56-e3e78fa5edee@linux.ibm.com/
-> 
-> Patch-set  V10 -> V11
-> 1. Addressed Nicholas Piggin's (IBM) comment
->    - moved the traces in kvm_unpark_vcpu and kvm_create_vcpu at the end
->    - Added the Reviewed-by Tag for [PATCH V10 1/8]
-> 2.  Addressed Alex Bennée's (Linaro) comments
->    - Added a note explaining dependency of the [PATCH V10 7/8] on Arch specific patch-set
-> Link: https://lore.kernel.org/qemu-devel/D1FS5GOOFWWK.2PNRIVL0V6DBL@gmail.com/ 
-> Link: https://lore.kernel.org/qemu-devel/87frubi402.fsf@draig.linaro.org/
-> 
-> Patch-set  V9 -> V10
-> 1. Addressed Nicholas Piggin's (IBM) & Philippe Mathieu-Daudé (Linaro) comments
->    - carved out kvm_unpark_vcpu and added its trace
->    - Widened the scope of the kvm_unpark_vcpu so that it can be used by generic framework
->      being thought out
-> Link: https://lore.kernel.org/qemu-devel/20240519210620.228342-1-salil.mehta@huawei.com/
-> Link: https://lore.kernel.org/qemu-devel/e94b0e14-efee-4050-9c9f-08382a36b63a@linaro.org/
-> 
-> Patch-set  V8 -> V9
-> 1. Addressed Vishnu Pajjuri's (Ampere) comments
->    - Added kvm_fd to trace in kvm_create_vcpu
->    - Some clean ups: arch vcpu-id and sbd variable
->    - Added the missed initialization of cpu->gdb_num_regs
-> 2. Addressed the commnet from Zhao Liu (Intel)
->    - Make initialization of CPU Hotplug state conditional (possible_cpu_arch_ids!=NULL)
-> Link: https://lore.kernel.org/qemu-devel/20240312020000.12992-1-salil.mehta@huawei.com/
-> 
-> Patch-set V7 -> V8
-> 1. Rebased and Fixed the conflicts
-> 
-> Patch-set  V6 -> V7
-> 1. Addressed Alex Bennée's comments
->    - Updated the docs
-> 2. Addressed Igor Mammedov's comments
->    - Merged patches [Patch V6 3/9] & [Patch V6 7/9] with [Patch V6 4/9]
->    - Updated commit-log of [Patch V6 1/9] and [Patch V6 5/9]     
-> 3. Added Shaoqin Huang's Reviewed-by tags for whole series.
-> Link: https://lore.kernel.org/qemu-devel/20231013105129.25648-1-salil.mehta@huawei.com/
-> 
-> Patch-set  V5 -> V6
-> 1. Addressed Gavin Shan's comments
->    - Fixed the assert() ranges of address spaces
->    - Rebased the patch-set to latest changes in the qemu.git
->    - Added Reviewed-by tags for patches {8,9}
-> 2. Addressed Jonathan Cameron's comments
->    - Updated commit-log for [Patch V5 1/9] with mention of trace events
->    - Added Reviewed-by tags for patches {1,5}
-> 3. Added Tested-by tags from Xianglai Li
-> 4. Fixed checkpatch.pl error "Qemu -> QEMU" in [Patch V5 1/9] 
-> Link: https://lore.kernel.org/qemu-devel/20231011194355.15628-1-salil.mehta@huawei.com/
-> 
-> Patch-set  V4 -> V5
-> 1. Addressed Gavin Shan's comments
->    - Fixed the trace events print string for kvm_{create,get,park,destroy}_vcpu
->    - Added Reviewed-by tag for patch {1}
-> 2. Added Shaoqin Huang's Reviewed-by tags for Patches {2,3}
-> 3. Added Tested-by Tag from Vishnu Pajjuri to the patch-set
-> 4. Dropped the ARM specific [Patch V4 10/10]
-> Link: https://lore.kernel.org/qemu-devel/20231009203601.17584-1-salil.mehta@huawei.com/
-> 
-> Patch-set  V3 -> V4
-> 1. Addressed David Hilderbrand's comments
->    - Fixed the wrong doc comment of kvm_park_vcpu API prototype
->    - Added Reviewed-by tags for patches {2,4}
-> Link: https://lore.kernel.org/qemu-devel/20231009112812.10612-1-salil.mehta@huawei.com/
-> 
-> Patch-set  V2 -> V3
-> 1. Addressed Jonathan Cameron's comments
->    - Fixed 'vcpu-id' type wrongly changed from 'unsigned long' to 'integer'
->    - Removed unnecessary use of variable 'vcpu_id' in kvm_park_vcpu
->    - Updated [Patch V2 3/10] commit-log with details of ACPI_CPU_SCAN_METHOD macro
->    - Updated [Patch V2 5/10] commit-log with details of conditional event handler method
->    - Added Reviewed-by tags for patches {2,3,4,6,7}
-> 2. Addressed Gavin Shan's comments
->    - Remove unnecessary use of variable 'vcpu_id' in kvm_par_vcpu
->    - Fixed return value in kvm_get_vcpu from -1 to -ENOENT
->    - Reset the value of 'gdb_num_g_regs' in gdb_unregister_coprocessor_all
->    - Fixed the kvm_{create,park}_vcpu prototypes docs
->    - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,10}
-> 3. Addressed one earlier missed comment by Alex Bennée in RFC V1
->    - Added traces instead of DPRINTF in the newly added and some existing functions
-> Link: https://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.mehta@huawei.com/
-> 
-> Patch-set V1 -> V2
-> 1. Addressed Alex Bennée's comments
->    - Refactored the kvm_create_vcpu logic to get rid of goto
->    - Added the docs for kvm_{create,park}_vcpu prototypes
->    - Splitted the gdbstub and AddressSpace destruction change into separate patches
->    - Added Reviewed-by tags for patches {2,10}
-> Link: https://lore.kernel.org/qemu-devel/20230929124304.13672-1-salil.mehta@huawei.com/
-> 
+If not, then perhaps could it be done in the patch that introduces
+all the other state?
+
 > References:
-> 
-> [1] https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@huawei.com/
-> [2] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
-> [3] https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongson.cn/
-> 
-> 
-> 
-> Salil Mehta (8):
->   accel/kvm: Extract common KVM vCPU {creation,parking} code
->   hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
->   hw/acpi: Update ACPI GED framework to support vCPU Hotplug
->   hw/acpi: Update GED _EVT method AML with CPU scan
->   hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
->   physmem: Add helper function to destroy CPU AddressSpace
->   gdbstub: Add helper function to unregister GDB register space
->   docs/specs/acpi_hw_reduced_hotplug: Add the CPU Hotplug Event Bit
-> 
->  accel/kvm/kvm-all.c                    | 95 +++++++++++++++++---------
->  accel/kvm/kvm-cpus.h                   |  1 -
->  accel/kvm/trace-events                 |  5 +-
->  docs/specs/acpi_hw_reduced_hotplug.rst |  3 +-
->  gdbstub/gdbstub.c                      | 13 ++++
->  hw/acpi/acpi-cpu-hotplug-stub.c        |  6 ++
->  hw/acpi/cpu.c                          | 33 ++++++---
->  hw/acpi/generic_event_device.c         | 21 ++++++
->  hw/core/cpu-common.c                   |  1 -
->  hw/i386/acpi-build.c                   |  3 +-
->  include/exec/cpu-common.h              |  8 +++
->  include/exec/gdbstub.h                 |  6 ++
->  include/hw/acpi/cpu.h                  |  5 +-
->  include/hw/acpi/cpu_hotplug.h          |  4 ++
->  include/hw/acpi/generic_event_device.h |  4 ++
->  include/hw/core/cpu.h                  |  1 +
->  include/sysemu/kvm.h                   | 25 +++++++
->  system/physmem.c                       | 29 ++++++++
->  18 files changed, 214 insertions(+), 49 deletions(-)
-> 
-> -- 
-> 2.34.1
+> [1] Check comment 5 in the bugzilla entry
+>    Link: https://bugzilla.tianocore.org/show_bug.cgi?id=3D4481#c5
+
+If I understand correctly (and I don't know ACPI, so it's likely
+I don't), that is and update to ACPI spec to say some bit in ACPI
+table must remain set regardless of CPU hotplug state.
+
+Reference links are good, I think it would be nice to add a small
+summary in the changelog too.
+
+Thanks,
+Nick
+
+>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> ---
+>  cpu-common.c          |  6 ++++++
+>  hw/arm/virt.c         |  7 +++++++
+>  include/hw/core/cpu.h | 21 +++++++++++++++++++++
+>  3 files changed, 34 insertions(+)
+>
+> diff --git a/cpu-common.c b/cpu-common.c
+> index 49d2a50835..e4b4dee99a 100644
+> --- a/cpu-common.c
+> +++ b/cpu-common.c
+> @@ -128,6 +128,12 @@ bool qemu_enabled_cpu(CPUState *cpu)
+>      return cpu && !cpu->disabled;
+>  }
+> =20
+> +bool qemu_persistent_cpu(CPUState *cpu)
+> +{
+> +    /* cpu state can be faked to the guest via acpi */
+> +    return cpu && cpu->acpi_persistent;
+> +}
+> +
+>  uint64_t qemu_get_cpu_archid(int cpu_index)
+>  {
+>      MachineState *ms =3D MACHINE(qdev_get_machine());
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 5f98162587..9d33f30a6a 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -3016,6 +3016,13 @@ static void virt_cpu_pre_plug(HotplugHandler *hotp=
+lug_dev, DeviceState *dev,
+>          return;
+>      }
+>      virt_cpu_set_properties(OBJECT(cs), cpu_slot, errp);
+> +
+> +    /*
+> +     * To give persistent presence view of vCPUs to the guest, ACPI migh=
+t need
+> +     * to fake the presence of the vCPUs to the guest but keep them disa=
+bled.
+> +     * This shall be used during the init of ACPI Hotplug state and hot-=
+unplug
+> +     */
+> +     cs->acpi_persistent =3D true;
+>  }
+> =20
+>  static void virt_cpu_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index 62e68611c0..e13e542177 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -540,6 +540,14 @@ struct CPUState {
+>       * every CPUState is enabled across all architectures.
+>       */
+>      bool disabled;
+> +    /*
+> +     * On certain architectures, to provide a persistent view of the 'pr=
+esence'
+> +     * of vCPUs to the guest, ACPI might need to fake the 'presence' of =
+the
+> +     * vCPUs but keep them ACPI-disabled for the guest. This is achieved=
+ by
+> +     * returning `_STA.PRES=3DTrue` and `_STA.Ena=3DFalse` for the unplu=
+gged vCPUs
+> +     * in QEMU QoM.
+> +     */
+> +    bool acpi_persistent;
+> =20
+>      /* TODO Move common fields from CPUArchState here. */
+>      int cpu_index;
+> @@ -959,6 +967,19 @@ bool qemu_present_cpu(CPUState *cpu);
+>   */
+>  bool qemu_enabled_cpu(CPUState *cpu);
+> =20
+> +/**
+> + * qemu_persistent_cpu:
+> + * @cpu: The vCPU to check
+> + *
+> + * Checks if the vCPU state should always be reflected as *present* via =
+ACPI
+> + * to the Guest. By default, this is False on all architectures and has =
+to be
+> + * explicity set during initialization.
+> + *
+> + * Returns: True if it is ACPI 'persistent' CPU
+> + *
+> + */
+> +bool qemu_persistent_cpu(CPUState *cpu);
+> +
+>  /**
+>   * qemu_get_cpu_archid:
+>   * @cpu_index: possible vCPU for which arch-id needs to be retreived

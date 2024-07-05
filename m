@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-58fb3ee74f6sm493139a12.68.2024.07.05.01.47.12
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72b033f3a3sm636125966b.187.2024.07.05.01.47.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 05 Jul 2024 01:47:16 -0700 (PDT)
+        Fri, 05 Jul 2024 01:47:14 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 37EA062152;
-	Fri,  5 Jul 2024 09:40:50 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 1ADC662107;
+	Fri,  5 Jul 2024 09:40:49 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -29,68 +29,53 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Paul Burton <paulburton@kernel.org>,
 	Stefan Hajnoczi <stefanha@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v2 26/40] plugins/lockstep: clean-up output
-Date: Fri,  5 Jul 2024 09:40:33 +0100
-Message-Id: <20240705084047.857176-27-alex.bennee@linaro.org>
+	Laurent Vivier <laurent@vivier.eu>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH v2 14/40] tests/tcg/arm: Drop -N from LDFLAGS
+Date: Fri,  5 Jul 2024 09:40:21 +0100
+Message-Id: <20240705084047.857176-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240705084047.857176-1-alex.bennee@linaro.org>
 References: <20240705084047.857176-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 6KM8n3huty9d
+X-TUID: W8JdYyJL1+JL
 
-We were repeating information which wasn't super clear. As we already
-will have dumped the last failing PC just note the divergence and dump
-the previous instruction log.
+From: Richard Henderson <richard.henderson@linaro.org>
 
+This is redudant with a linker script, and is not
+supported by clang.
+
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Message-Id: <20240630190050.160642-10-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- contrib/plugins/lockstep.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ tests/tcg/arm/Makefile.softmmu-target | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-index 353bf12dfb..5b7dfc9c06 100644
---- a/contrib/plugins/lockstep.c
-+++ b/contrib/plugins/lockstep.c
-@@ -135,10 +135,13 @@ static void report_divergance(ExecState *us, ExecState *them)
+diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
+index 39e01ce49d..547063c08c 100644
+--- a/tests/tcg/arm/Makefile.softmmu-target
++++ b/tests/tcg/arm/Makefile.softmmu-target
+@@ -13,7 +13,7 @@ VPATH 		+= $(ARM_SRC)
+ test-armv6m-undef: test-armv6m-undef.S
+ 	$(CC) -mcpu=cortex-m0 -mfloat-abi=soft \
+ 		-Wl,--build-id=none -x assembler-with-cpp \
+-		$< -o $@ -nostdlib -N -static \
++		$< -o $@ -nostdlib -static \
+ 		-T $(ARM_SRC)/$@.ld
  
-     /* Output short log entry of going out of sync... */
-     if (verbose || divrec.distance == 1 || diverged) {
--        g_string_printf(out,
--                        "@ 0x%016" PRIx64 " vs 0x%016" PRIx64
-+        g_string_printf(out, "@ "
-+                        "0x%016" PRIx64 " (%" PRId64 ") vs "
-+                        "0x%016" PRIx64 " (%" PRId64 ")"
-                         " (%d/%d since last)\n",
--                        us->pc, them->pc, g_slist_length(divergence_log),
-+                        us->pc, us->insn_count,
-+                        them->pc, them->insn_count,
-+                        g_slist_length(divergence_log),
-                         divrec.distance);
-         qemu_plugin_outs(out->str);
-     }
-@@ -147,10 +150,7 @@ static void report_divergance(ExecState *us, ExecState *them)
-         int i;
-         GSList *entry;
+ run-test-armv6m-undef: QEMU_OPTS=-semihosting-config enable=on,target=native,chardev=output -M microbit -kernel
+@@ -30,7 +30,7 @@ CRT_PATH=$(ARM_SRC)
+ LINK_SCRIPT=$(ARM_SRC)/kernel.ld
+ LDFLAGS=-Wl,-T$(LINK_SCRIPT)
+ CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
+-LDFLAGS+=-static -nostdlib -N $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
++LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
  
--        g_string_printf(out,
--                        "Δ insn_count @ 0x%016" PRIx64
--                        " (%"PRId64") vs 0x%016" PRIx64 " (%"PRId64")\n",
--                        us->pc, us->insn_count, them->pc, them->insn_count);
-+        g_string_printf(out, "Δ too high, we have diverged, previous insns\n");
- 
-         for (entry = log, i = 0;
-              g_slist_next(entry) && i < 5;
-@@ -163,7 +163,7 @@ static void report_divergance(ExecState *us, ExecState *them)
-                                    prev->insn_count);
-         }
-         qemu_plugin_outs(out->str);
--        qemu_plugin_outs("too much divergence... giving up.");
-+        qemu_plugin_outs("giving up\n");
-         qemu_plugin_uninstall(our_id, plugin_cleanup);
-     }
- }
+ # building head blobs
+ .PRECIOUS: $(CRT_OBJS)
 -- 
 2.39.2

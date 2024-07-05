@@ -1,225 +1,147 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp1363532njb;
-        Fri, 5 Jul 2024 10:24:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV0gOhEaz2nfeZfi1JQHQaho/oP1JTaRs+sva9a19y7LBalkaP2s91RPercWolMuonlUpceZkFk5bn9R0OdijzRyMkDN4PZ
-X-Google-Smtp-Source: AGHT+IEMgFlVvc8PzQhtIAdHocQJ4jlpjNpZ9gEZzCsyGL8kNv0Q8KFcHvN/lXAfkxLxumzat96E
-X-Received: by 2002:a05:6808:2116:b0:3d2:1c37:25ca with SMTP id 5614622812f47-3d914ea9d88mr5818821b6e.53.1720200299761;
-        Fri, 05 Jul 2024 10:24:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720200299; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp1469390njb;
+        Fri, 5 Jul 2024 14:44:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWhDnvfTy77BzNavPyd00zRYcqMWBQkE7IEyMphjX6CIB7G/lQBNEf3/zlWg1w9fdMPEReHRW+ajmbhAY9kjYUuhzpUfD0W
+X-Received: by 2002:a05:600c:3509:b0:425:7ac6:970d with SMTP id 5b1f17b1804b1-4264a3f3ddfmr39251795e9.28.1720215880583;
+        Fri, 05 Jul 2024 14:44:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720215880; cv=none;
         d=google.com; s=arc-20160816;
-        b=MgQGVEvtBBJ5ceyt9BN2L//mazMKbIg4cjnDNGqxfq2q1vIHjaTQgjeBG7JQpIeAEN
-         23XioSvtoETqe4IPbGR0Rtcf01lpjNXxek/2FaukTAS4RrLL/omNArZDH9ANH+vx7Rbd
-         Lza8ljQp6Ik4F8yNdmW57AK0d0hkKuUgxAuZYhTXT8fK56gqt6SoKYIjq7Z7xs4hCsD+
-         wiQ18QyjclUYEQfcIGRKmQ/wvJidhV489XllDigkDZlWgOZDIpAOU82rNjG25MlEWccJ
-         I0HeKP8oW4Ugl4DsyT0krVO9IPnhynIvgZresUUTlkfbvs2+/A/uACf82w4n93KugfxJ
-         c5sw==
+        b=e3AJ+gGcqvlbTt74qLZ87riqNh1sp5X99AK1hs+SFv3Xkn4U8oEy8meFUNkOcZKxty
+         R5+6wAqvYnYIG+MQR/SPJJHXOSLat325eGJYZ6N9o80crWITuMkwGiilSXdan8u1r0gW
+         LoE1d40r7b+DYaNl2NOdZZ5vc5lV4sAOId0Wh7zGdhZYXzFa+qNfraF0mQll6ST7SGSJ
+         o7TdTh536+ZJlonaQefZbINxO7g4XPmnFBoQwQmQLHBvrwzUBeRPHipoTOpw+VzzMH0J
+         VCVay54U0BfP7WWcAOqp62lYk1ddTIrh39XqWRwSjned9DT4xb05AOfRwWp5O5YtnSLC
+         QKmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id:dkim-signature;
-        bh=BuYZ8Ses1IWixZbo4FE/LJUTnb87qx79OuGVEcweAHY=;
-        fh=nR1PoS0NFYu87LthRCKHU/2fUNsT4yxgqIpw+B7bCgo=;
-        b=eJAZcpTUicD+GIuSSI9zVHa4TvOZKBMDCRsUfCvhGnVEqxmrbmz8mbrpxgUR7ZoYyr
-         i5GPu9JWKgQcEPRJj5hui2futn0CB1JHQO3AD8+SAVcewDwo3rOQR0rR2vVDX2Kli8ih
-         oMnxJh9rllvq7rtxTV7l+G+L5+JPvI2AmALr7WWaHh8uDYT/zoATd1AMmZ23q01wdyz7
-         yzzYI8BHrZFc2C0QTHEZs1KRCu+YOQ+hpeGCmSiQLEZ4cVyZNj98i7fyReHa3IYyu44X
-         NesvE+vrQ93chPVJOLVnmvjkYVy0vKmB4r/oGcCAZnYHc0tlkOiZ5jo/Mu9K/RIWFf8C
-         D/pw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=YmMguUuvinPCPU7WQXG5jWn/+aZ22Fyg2tEU+UTesOs=;
+        fh=6T2IEchkQps5Jp4tLbSA4nYf46rBDwQp7FStl5zwxYs=;
+        b=TRL9+i8lGYvQoEOsGUxYzVG7FqNNvmOnpgixD8aeC1+FemeC8Uqr7EsqTfvIp+cd7z
+         iNYBYJC9qPgzKwcCww9sJccxmDneUZRZ//5k7zE9TB8jvmdyNyIcO6kbJeBztTegsSwf
+         r5Pc849/+IEan00XtS9mDj9gHjvJpGLTbxr/c6jPDWyEmZfFBN4jdR5E6bcRrDaEtTlq
+         XB3XMzL1juZ6WwkqJHC8sQOrJy8YqYlJLfHg5WXnOcP86b6iQmXaZ2gaPVqOqILIjkMB
+         G7LEwJx5mJGqQjBF0C/LNde6za5q2EOBpuIvmgxxRiqHyDw7F/VmTP15OIRGSzJeilQh
+         GEIA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=I2htMkbp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-446514e3685si169447731cf.737.2024.07.05.10.24.59
+       dkim=pass header.i=@linaro.org header.s=google header.b=HkOiPFxX;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-42577bb5776sor39327855e9.12.2024.07.05.14.44.40
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jul 2024 10:24:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 05 Jul 2024 14:44:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=I2htMkbp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sPmft-0002jo-DO; Fri, 05 Jul 2024 13:24:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1sPmfs-0002jT-OJ; Fri, 05 Jul 2024 13:24:44 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1sPmfq-00068n-41; Fri, 05 Jul 2024 13:24:43 -0400
-Received: from pps.filterd (m0353726.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 465ExWeU017854;
- Fri, 5 Jul 2024 17:24:27 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=
- message-id:subject:from:to:cc:date:in-reply-to:references
- :content-type:content-transfer-encoding:mime-version; s=pp1; bh=
- BuYZ8Ses1IWixZbo4FE/LJUTnb87qx79OuGVEcweAHY=; b=I2htMkbpcEljUdN9
- iFpBfE9DV0sOcazIKhljkf5fXZQ9a+8hSRIcGAhDfacyc2vWlZlXHSqwpMgZG20b
- SEl4oh7/JSGglusIy6PDii3DcXnWlTqAbUoqMXGCO3suXp/bcVNof9o+o7nnv8nS
- raScihToxG3TTC68YgflA8cOC1lFbkStcqhev1dDDHOYUV8ypFOUJVsiLRtCpGo8
- GL+/vcWz5kfqy0g8q/6WvZelEsqv16d/4ZFnlfi38AmqoQUgjZZpBbT4F+8RFAD3
- D9cTjS6uSQL+Y3rCBUVavEY/1csHioRBqcLOauo98fsfS2Nh7uGEdLoSP9avpsZx
- b54Zlg==
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 406k2e8cv0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 05 Jul 2024 17:24:27 +0000 (GMT)
-Received: from m0353726.ppops.net (m0353726.ppops.net [127.0.0.1])
- by pps.reinject (8.18.0.8/8.18.0.8) with ESMTP id 465HOQxU015296;
- Fri, 5 Jul 2024 17:24:26 GMT
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 406k2e8cup-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 05 Jul 2024 17:24:26 +0000 (GMT)
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 465F31RF009477; Fri, 5 Jul 2024 17:24:25 GMT
-Received: from smtprelay03.fra02v.mail.ibm.com ([9.218.2.224])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 402xtn6dmm-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 05 Jul 2024 17:24:25 +0000
-Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com
- [10.20.54.103])
- by smtprelay03.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 465HOMjH31523282
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 5 Jul 2024 17:24:24 GMT
-Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 047492004D;
- Fri,  5 Jul 2024 17:24:22 +0000 (GMT)
-Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 939BB20063;
- Fri,  5 Jul 2024 17:24:21 +0000 (GMT)
-Received: from [127.0.0.1] (unknown [9.152.108.100])
- by smtpav04.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Fri,  5 Jul 2024 17:24:21 +0000 (GMT)
-Message-ID: <e78b2024e22769c4d2cc3203ccfe5748d2e409e5.camel@linux.ibm.com>
-Subject: Re: [PATCH 0/2] target/arm: Fix unwind from dc zva and FEAT_MOPS
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, david@redhat.com,
- balaton@eik.bme.hu
-Date: Fri, 05 Jul 2024 19:24:21 +0200
-In-Reply-To: <426dbf1d-cfa8-4fd4-b857-8b8a283dd55e@linaro.org>
-References: <20240702234155.2106399-1-richard.henderson@linaro.org>
- <13b19a4859e25274d05663bc0ca05621c56af985.camel@linux.ibm.com>
- <9fe81eeb-473a-4ffb-ad6f-f93e40283e8a@linaro.org>
- <426dbf1d-cfa8-4fd4-b857-8b8a283dd55e@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.50.4 (3.50.4-1.fc39) 
+       dkim=pass header.i=@linaro.org header.s=google header.b=HkOiPFxX;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1720215880; x=1720820680; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=YmMguUuvinPCPU7WQXG5jWn/+aZ22Fyg2tEU+UTesOs=;
+        b=HkOiPFxXHX1xM0Ed91T5tJS3HYBdCQPc/cXUFE6aFajWE6jjvLyWtFmE+UEDh5E2m9
+         5EmicjYiFL0pAlRMWndQP6H7jauLrte+2Ug/YRWE9MBxxxLE09SAJIuOriqWxIL+f0hR
+         46LZpc+fyWLtYmHGO48OPKDp+8dBORxXqow9Qu63tunqmWTruaYLotpNM9QSfWpw/zJ0
+         henisREVT8a5CWDGjZHtNlVRSNZUgtGIx0g7ycEFvoPD5fHgGFK/5SH67p5hHzVTC8Qa
+         8T7h1PUluvA+Fy5SClHcYH5TOX9qL5Cj9aYBuzkIld94j1NQM3DdZoHMGzKsAXBtQisv
+         PTjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720215880; x=1720820680;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=YmMguUuvinPCPU7WQXG5jWn/+aZ22Fyg2tEU+UTesOs=;
+        b=XQBRtb/N7Aanozxlccb7Vfc2lI7svjs4phpjIs1DDVRgQc+SYoXNRfVz+vPiRgrXPr
+         oOpwI2dtcbvEjogQeyDnSO9UcyxVfDf3PY1yqHT+VqJNDhg3iagiWdXUImbdLk8ksP5Z
+         a2Yr/nEbztAO4hO5pkfeRiBc8lusuhdA3RFrJI7raV7BVxaxkqGJ3DsKURUrvCsU/pQH
+         Jw6Y2k8bOtoaRStHwefqJjZWTQIzyEpd/aT7dJTBG0YyY0fxqXkYdW0+6CdJDxyHTK96
+         C6GBgf8j0sgfMHIkC+6QjkC3vhDzadfukxoATunFrCW0p+VKhGo7leG3q7n9m3uY2Pxm
+         5g9A==
+X-Forwarded-Encrypted: i=1; AJvYcCX7QPAh5PJS4S2T6gkGEZw0Br9FJtZtIfvBFHY5c8e207uyD1akYBoF40KhUD7rTgb8eHKj8Zd30cZpEBwnuMI5g+ov7Aad
+X-Gm-Message-State: AOJu0YyDKnN/zD08yMNhfUySg3ROBwK+gg0Ytma7QS2IqThe8aDuU2MB
+	rr0cVUnAv+20rC/6ad1IMXAv0h3OfziflJKOxlYQnRWfbi9GLXwVeNscPeSwpAbuNA==
+X-Google-Smtp-Source: AGHT+IHDzAb6ryJHXJeNFQWFcHSZbnDG/ppl4K+087u4JJX6oM5L5km14hJfgv3Whd8D5BeGIhP4/g==
+X-Received: by 2002:a05:600c:331b:b0:426:5fbc:f319 with SMTP id 5b1f17b1804b1-4265fbcf850mr75635e9.33.1720215879384;
+        Fri, 05 Jul 2024 14:44:39 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] ([176.176.163.129])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3678eb6593bsm9034405f8f.93.2024.07.05.14.44.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 05 Jul 2024 14:44:38 -0700 (PDT)
+Message-ID: <15191eac-49f4-47bc-b450-1385b3d7fe18@linaro.org>
+Date: Fri, 5 Jul 2024 23:44:36 +0200
 MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: lmB3YdtX8sjyw7UWJ0ORmn6p-FmGa1df
-X-Proofpoint-ORIG-GUID: rY7gIb9dMK3djrKamF-xVAnxrs_zR2YV
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-07-05_12,2024-07-05_01,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 bulkscore=0
- suspectscore=0 adultscore=0 mlxlogscore=659 impostorscore=0 malwarescore=0
- phishscore=0 priorityscore=1501 spamscore=0 lowpriorityscore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2406140001 definitions=main-2407050122
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FsSEQiT/tugC
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 20/40] gitlab: don't bother with KVM for TCI builds
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, qemu-devel@nongnu.org
+Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
+ <ma.mandourr@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Aleksandar Rikalo <arikalo@gmail.com>,
+ Mads Ynddal <mads@ynddal.dk>, Yanan Wang <wangyanan55@huawei.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paul Burton <paulburton@kernel.org>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>
+References: <20240705084047.857176-1-alex.bennee@linaro.org>
+ <20240705084047.857176-21-alex.bennee@linaro.org>
+ <07195265-2a54-4396-9724-2a63c98e45fb@linaro.org>
+ <5d3be228-1dbb-4e4a-8e20-fb76e4c90134@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <5d3be228-1dbb-4e4a-8e20-fb76e4c90134@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: JrnuCzogSCqs
 
-On Thu, 2024-07-04 at 14:48 -0700, Richard Henderson wrote:
-> On 7/4/24 08:18, Richard Henderson wrote:
-> > On 7/4/24 07:50, Ilya Leoshkevich wrote:
-> > > On Tue, 2024-07-02 at 16:41 -0700, Richard Henderson wrote:
-> > > > While looking into Zoltan's attempt to speed up ppc64 DCBZ
-> > > > (data cache block set to zero), I wondered what AArch64 was
-> > > > doing differently.=C2=A0 It turned out that Arm is the only user
-> > > > of tlb_vaddr_to_host.
-> > > >=20
-> > > > None of the code sequences in use between AArch64, Power64 and
-> > > > S390X
-> > > > are 100% safe, with race conditions vs mmap et al, however,
-> > > > AArch64
-> > > > is the only one that will fail this single threaded test case.=C2=
-=A0
-> > > > Use
-> > > > of these new functions fixes the race condition as well, though
-> > > > I
-> > > > have not yet touched the other guests.
-> > > >=20
-> > > > I thought about exposing accel/tcg/user-retaddr.h for direct
-> > > > use
-> > > > from the targets, but perhaps these wrappers are cleaner.=C2=A0 RFC=
-?
-> > > >=20
-> > > >=20
-> > > > r~
-> > > >=20
-> > > >=20
-> > > > Richard Henderson (2):
-> > > > =C2=A0=C2=A0 accel/tcg: Introduce memset_ra, memmove_ra
-> > > > =C2=A0=C2=A0 target/arm: Use memset_ra, memmove_ra in helper-a64.c
-> > > >=20
-> > > > =C2=A0=C2=A0include/exec/cpu_ldst.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 40 ++++++++++++++++
-> > > > =C2=A0=C2=A0accel/tcg/user-exec.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 22 +++++++++
-> > > > =C2=A0=C2=A0target/arm/tcg/helper-a64.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 | 10 ++--
-> > > > =C2=A0=C2=A0tests/tcg/multiarch/memset-fault.c | 77
-> > > > ++++++++++++++++++++++++++++++
-> > > > =C2=A0=C2=A04 files changed, 144 insertions(+), 5 deletions(-)
-> > > > =C2=A0=C2=A0create mode 100644 tests/tcg/multiarch/memset-fault.c
-> > >=20
-> > > This sounds good to me.
-> > >=20
-> > > I haven't debugged it, but I wonder why doesn't s390x fail here.
-> > > For XC with src =3D=3D dst, it does access_memset() ->
-> > > do_access_memset()
-> > > -> memset() without setting the RA. And I don't think that
-> > > anything
-> > > around it sets the RA either.
-> >=20
-> > s390x uses probe_access_flags, which verifies the page is mapped
-> > and writable, and raises=20
-> > the exception when it isn't.=C2=A0 In contrast, for user-only,
-> > tlb_vaddr_to_host *only*=20
-> > performs the guest -> host address mapping, i.e. (addr +
-> > guest_base).
->=20
-> I should clarify: probe_access_flags verifies that the page is mapped
-> *at that moment*,=20
-> but does not take the mmap_lock.=C2=A0 So the race is that the page can b=
-e
-> unmapped by another=20
-> thread after probe_access_flags and before the memset completes.
+On 5/7/24 18:49, Thomas Huth wrote:
+> On 05/07/2024 18.34, Philippe Mathieu-Daudé wrote:
+>> On 5/7/24 10:40, Alex Bennée wrote:
+>>> In fact any other accelerator would be pointless as the point is to
+>>> exercise the TCI accelerator anyway.
+>>>
+>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>> ---
+>>>   .gitlab-ci.d/buildtest.yml   | 2 +-
+>>>   .gitlab-ci.d/crossbuilds.yml | 2 +-
+>>>   2 files changed, 2 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+>>> index 425fc6479b..e3a0758bd9 100644
+>>> --- a/.gitlab-ci.d/buildtest.yml
+>>> +++ b/.gitlab-ci.d/buildtest.yml
+>>> @@ -635,7 +635,7 @@ build-tci:
+>>>       - TARGETS="aarch64 arm hppa m68k microblaze ppc64 s390x x86_64"
+>>>       - mkdir build
+>>>       - cd build
+>>> -    - ../configure --enable-tcg-interpreter --disable-docs 
+>>> --disable-gtk --disable-vnc
+>>> +    - ../configure --enable-tcg-interpreter --disable-kvm 
+>>> --disable-docs --disable-gtk --disable-vnc
+>>
+>> Shouldn't we also disable the other accelerators for completeness?
+> 
+> No, this is a Linux machine, and there's only TCG and KVM available for 
+> Linux. No need to bother with the other accelerators here.
 
-I see, thanks. I completely overlooked the access_prepare() calls.
+I noticed this is Linux. If for some reason the Xen libs get installed,
+Xen accel will be enabled. Explicit would be:
 
-Acked-by: Ilya Leoshkevich <iii@linux.ibm.com>
+--enable-tcg --enable-tcg-interpreter --disable-kvm --disable-xen
+
+But I won't insist. Anyhow Alex sent his pull request.
+
+Regards,
+
+Phil.

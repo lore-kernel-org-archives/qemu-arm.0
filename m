@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72aaf61f69sm662766266b.67.2024.07.05.01.40.58
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a73e52c2cb5sm578758266b.16.2024.07.05.01.40.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 05 Jul 2024 01:41:00 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 4CA5E5F92B;
-	Fri,  5 Jul 2024 09:40:50 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id A390462139;
+	Fri,  5 Jul 2024 09:40:49 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -30,49 +30,51 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Stefan Hajnoczi <stefanha@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v2 27/40] plugins: Ensure vCPU index is assigned in init/exit hooks
-Date: Fri,  5 Jul 2024 09:40:34 +0100
-Message-Id: <20240705084047.857176-28-alex.bennee@linaro.org>
+Subject: [PATCH v2 20/40] gitlab: don't bother with KVM for TCI builds
+Date: Fri,  5 Jul 2024 09:40:27 +0100
+Message-Id: <20240705084047.857176-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240705084047.857176-1-alex.bennee@linaro.org>
 References: <20240705084047.857176-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: cKYgzPevRWLc
+X-TUID: kISaT6SgEr2A
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+In fact any other accelerator would be pointless as the point is to
+exercise the TCI accelerator anyway.
 
-Since vCPUs are hashed by their index, this index can't
-be uninitialized (UNASSIGNED_CPU_INDEX).
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20240606124010.2460-2-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- plugins/core.c | 2 ++
- 1 file changed, 2 insertions(+)
+ .gitlab-ci.d/buildtest.yml   | 2 +-
+ .gitlab-ci.d/crossbuilds.yml | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/plugins/core.c b/plugins/core.c
-index 9d737d8278..a864275ae7 100644
---- a/plugins/core.c
-+++ b/plugins/core.c
-@@ -245,6 +245,7 @@ void qemu_plugin_vcpu_init_hook(CPUState *cpu)
- {
-     bool success;
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index 425fc6479b..e3a0758bd9 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -635,7 +635,7 @@ build-tci:
+     - TARGETS="aarch64 arm hppa m68k microblaze ppc64 s390x x86_64"
+     - mkdir build
+     - cd build
+-    - ../configure --enable-tcg-interpreter --disable-docs --disable-gtk --disable-vnc
++    - ../configure --enable-tcg-interpreter --disable-kvm --disable-docs --disable-gtk --disable-vnc
+         --target-list="$(for tg in $TARGETS; do echo -n ${tg}'-softmmu '; done)"
+         || { cat config.log meson-logs/meson-log.txt && exit 1; }
+     - make -j"$JOBS"
+diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
+index 3de0341afe..cb499e4ee0 100644
+--- a/.gitlab-ci.d/crossbuilds.yml
++++ b/.gitlab-ci.d/crossbuilds.yml
+@@ -68,7 +68,7 @@ cross-i686-tci:
+   variables:
+     IMAGE: debian-i686-cross
+     ACCEL: tcg-interpreter
+-    EXTRA_CONFIGURE_OPTS: --target-list=i386-softmmu,i386-linux-user,aarch64-softmmu,aarch64-linux-user,ppc-softmmu,ppc-linux-user --disable-plugins
++    EXTRA_CONFIGURE_OPTS: --target-list=i386-softmmu,i386-linux-user,aarch64-softmmu,aarch64-linux-user,ppc-softmmu,ppc-linux-user --disable-plugins --disable-kvm
+     MAKE_CHECK_ARGS: check check-tcg
  
-+    assert(cpu->cpu_index != UNASSIGNED_CPU_INDEX);
-     qemu_rec_mutex_lock(&plugin.lock);
-     plugin.num_vcpus = MAX(plugin.num_vcpus, cpu->cpu_index + 1);
-     plugin_cpu_update__locked(&cpu->cpu_index, NULL, NULL);
-@@ -263,6 +264,7 @@ void qemu_plugin_vcpu_exit_hook(CPUState *cpu)
- 
-     plugin_vcpu_cb__simple(cpu, QEMU_PLUGIN_EV_VCPU_EXIT);
- 
-+    assert(cpu->cpu_index != UNASSIGNED_CPU_INDEX);
-     qemu_rec_mutex_lock(&plugin.lock);
-     success = g_hash_table_remove(plugin.cpu_ht, &cpu->cpu_index);
-     g_assert(success);
+ cross-mipsel-system:
 -- 
 2.39.2

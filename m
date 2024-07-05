@@ -1,61 +1,133 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72aaf6039asm688913266b.54.2024.07.05.08.30.56
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a77cd9cb2f7sm56529166b.29.2024.07.05.08.30.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 05 Jul 2024 08:30:57 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 61CE262107;
-	Fri,  5 Jul 2024 16:30:54 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id A793F5F9EB;
+	Fri,  5 Jul 2024 16:30:53 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PULL 14/40] tests/tcg/arm: Drop -N from LDFLAGS
-Date: Fri,  5 Jul 2024 16:30:26 +0100
-Message-Id: <20240705153052.1219696-15-alex.bennee@linaro.org>
+Subject: [PULL 07/40] tests/tcg: Adjust variable defintion from cc-option
+Date: Fri,  5 Jul 2024 16:30:19 +0100
+Message-Id: <20240705153052.1219696-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240705153052.1219696-1-alex.bennee@linaro.org>
 References: <20240705153052.1219696-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /u9Qntp0ykfb
+X-TUID: ODzjhRtyENWv
 
 From: Richard Henderson <richard.henderson@linaro.org>
 
-This is redudant with a linker script, and is not
-supported by clang.
+Define the variable to the compiler flag used, not "y".
+This avoids replication of the compiler flag itself.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20240630190050.160642-10-richard.henderson@linaro.org>
+Message-Id: <20240630190050.160642-3-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20240705084047.857176-15-alex.bennee@linaro.org>
+Message-Id: <20240705084047.857176-8-alex.bennee@linaro.org>
 
-diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
-index 39e01ce49d..547063c08c 100644
---- a/tests/tcg/arm/Makefile.softmmu-target
-+++ b/tests/tcg/arm/Makefile.softmmu-target
-@@ -13,7 +13,7 @@ VPATH 		+= $(ARM_SRC)
- test-armv6m-undef: test-armv6m-undef.S
- 	$(CC) -mcpu=cortex-m0 -mfloat-abi=soft \
- 		-Wl,--build-id=none -x assembler-with-cpp \
--		$< -o $@ -nostdlib -N -static \
-+		$< -o $@ -nostdlib -static \
- 		-T $(ARM_SRC)/$@.ld
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index f21be50d3b..cb8cfeb6da 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -49,7 +49,7 @@ quiet-command = $(call quiet-@,$2,$3)$1
  
- run-test-armv6m-undef: QEMU_OPTS=-semihosting-config enable=on,target=native,chardev=output -M microbit -kernel
-@@ -30,7 +30,7 @@ CRT_PATH=$(ARM_SRC)
- LINK_SCRIPT=$(ARM_SRC)/kernel.ld
- LDFLAGS=-Wl,-T$(LINK_SCRIPT)
- CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
--LDFLAGS+=-static -nostdlib -N $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
-+LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
+ cc-test = $(CC) -Werror $1 -c -o /dev/null -xc /dev/null >/dev/null 2>&1
+ cc-option = if $(call cc-test, $1); then \
+-    echo "$(TARGET_PREFIX)$1 detected" && echo "$(strip $2)=y" >&3; else \
++    echo "$(TARGET_PREFIX)$1 detected" && echo "$(strip $2)=$(strip $1)" >&3; else \
+     echo "$(TARGET_PREFIX)$1 not detected"; fi
  
- # building head blobs
- .PRECIOUS: $(CRT_OBJS)
+ # $1 = test name, $2 = cmd, $3 = desc
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index 4b03ef602e..39d3f961c5 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -81,7 +81,7 @@ run-memory-replay: memory-replay run-memory-record
+ EXTRA_RUNS+=run-memory-replay
+ 
+ ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+-pauth-3: CFLAGS += -march=armv8.3-a
++pauth-3: CFLAGS += $(CROSS_CC_HAS_ARMV8_3)
+ else
+ pauth-3:
+ 	$(call skip-test, "BUILD of $@", "missing compiler support")
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 4ecbca6a41..11ccde5579 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -32,17 +32,17 @@ config-cc.mak: Makefile
+ 
+ ifneq ($(CROSS_CC_HAS_ARMV8_2),)
+ AARCH64_TESTS += dcpop
+-dcpop: CFLAGS += -march=armv8.2-a
++dcpop: CFLAGS += $(CROSS_CC_HAS_ARMV8_2)
+ endif
+ ifneq ($(CROSS_CC_HAS_ARMV8_5),)
+ AARCH64_TESTS += dcpodp
+-dcpodp: CFLAGS += -march=armv8.5-a
++dcpodp: CFLAGS += $(CROSS_CC_HAS_ARMV8_5)
+ endif
+ 
+ # Pauth Tests
+ ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+ AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5 test-2375
+-pauth-%: CFLAGS += -march=armv8.3-a
++pauth-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_3)
+ test-2375: CFLAGS += -march=armv8.3-a
+ run-pauth-1: QEMU_OPTS += -cpu max
+ run-pauth-2: QEMU_OPTS += -cpu max
+@@ -55,7 +55,7 @@ endif
+ # bti-1 tests the elf notes, so we require special compiler support.
+ ifneq ($(CROSS_CC_HAS_ARMV8_BTI),)
+ AARCH64_TESTS += bti-1 bti-3
+-bti-1 bti-3: CFLAGS += -fno-stack-protector -mbranch-protection=standard
++bti-1 bti-3: CFLAGS += -fno-stack-protector $(CROSS_CC_HAS_ARMV8_BTI)
+ bti-1 bti-3: LDFLAGS += -nostdlib
+ endif
+ # bti-2 tests PROT_BTI, so no special compiler support required.
+@@ -64,12 +64,13 @@ AARCH64_TESTS += bti-2
+ # MTE Tests
+ ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
+ AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7
+-mte-%: CFLAGS += -march=armv8.5-a+memtag
++mte-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_MTE)
+ endif
+ 
+ # SME Tests
+ ifneq ($(CROSS_AS_HAS_ARMV9_SME),)
+ AARCH64_TESTS += sme-outprod1 sme-smopa-1 sme-smopa-2
++sme-outprod1 sme-smopa-1 sme-smopa-2: CFLAGS += $(CROSS_AS_HAS_ARMV9_SME)
+ endif
+ 
+ # System Registers Tests
+@@ -99,7 +100,7 @@ TESTS += sha512-vector
+ ifneq ($(CROSS_CC_HAS_SVE),)
+ # SVE ioctl test
+ AARCH64_TESTS += sve-ioctls
+-sve-ioctls: CFLAGS+=-march=armv8.1-a+sve
++sve-ioctls: CFLAGS += $(CROSS_CC_HAS_SVE)
+ 
+ sha512-sve: CFLAGS=-O3 -march=armv8.1-a+sve
+ sha512-sve: sha512.c
+@@ -134,7 +135,7 @@ endif
+ 
+ ifneq ($(CROSS_CC_HAS_SVE2),)
+ AARCH64_TESTS += test-826
+-test-826: CFLAGS+=-march=armv8.1-a+sve2
++test-826: CFLAGS += $(CROSS_CC_HAS_SVE2)
+ endif
+ 
+ TESTS += $(AARCH64_TESTS)
 -- 
 2.39.2

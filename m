@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5903c7ac61csm58765a12.4.2024.07.05.01.40.53
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-58d0bfeec43sm3091667a12.48.2024.07.05.01.40.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 05 Jul 2024 01:40:58 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 487E76211A;
+	by draig.lan (Postfix) with ESMTP id 609A76211C;
 	Fri,  5 Jul 2024 09:40:49 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -31,49 +31,44 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Laurent Vivier <laurent@vivier.eu>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 16/40] tests/tcg/arm: Manually register allocate half-precision numbers
-Date: Fri,  5 Jul 2024 09:40:23 +0100
-Message-Id: <20240705084047.857176-17-alex.bennee@linaro.org>
+Subject: [PATCH v2 17/40] tests/tcg/arm: Use -march and -mfpu for fcvt
+Date: Fri,  5 Jul 2024 09:40:24 +0100
+Message-Id: <20240705084047.857176-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240705084047.857176-1-alex.bennee@linaro.org>
 References: <20240705084047.857176-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: YSuQA6Xt3tJg
+X-TUID: 5mwEwVW+pINW
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 
-Clang does not allow specifying an integer as the value of a single
-precision register.  Explicitly move value from a general register.
+Clang requires the architecture to be set properly
+in order to assemble the half-precision instructions.
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-[rth: Use one single inline asm block.]
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20240630190050.160642-12-richard.henderson@linaro.org>
+Message-Id: <20240630190050.160642-13-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/arm/fcvt.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ tests/tcg/arm/Makefile.target | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/tcg/arm/fcvt.c b/tests/tcg/arm/fcvt.c
-index 157790e679..d8c61cd29f 100644
---- a/tests/tcg/arm/fcvt.c
-+++ b/tests/tcg/arm/fcvt.c
-@@ -355,7 +355,12 @@ static void convert_half_to_single(void)
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index 95f891bf8c..8e287191af 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -29,8 +29,8 @@ test-arm-iwmmxt: test-arm-iwmmxt.S
  
-         print_half_number(i, input);
- #if defined(__arm__)
--        asm("vcvtb.f32.f16 %0, %1" : "=w" (output) : "x" ((uint32_t)input));
-+        /*
-+         * Clang refuses to allocate an integer to a fp register.
-+         * Perform the move from a general register by hand.
-+         */
-+        asm("vmov %0, %1\n\t"
-+            "vcvtb.f32.f16 %0, %0" : "=w" (output) : "r" (input));
- #else
-         asm("fcvt %s0, %h1" : "=w" (output) : "w" (input));
- #endif
+ # Float-convert Tests
+ ARM_TESTS += fcvt
+-fcvt: LDFLAGS+=-lm
+-# fcvt: CFLAGS+=-march=armv8.2-a+fp16 -mfpu=neon-fp-armv8
++fcvt: LDFLAGS += -lm
++fcvt: CFLAGS += -march=armv8.2-a+fp16 -mfpu=neon-fp-armv8
+ run-fcvt: fcvt
+ 	$(call run-test,fcvt,$(QEMU) $<)
+ 	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
 -- 
 2.39.2

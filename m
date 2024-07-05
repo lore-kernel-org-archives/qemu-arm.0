@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a77c3ef218bsm76340466b.71.2024.07.05.01.40.58
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-58fbfccf0f9sm444538a12.75.2024.07.05.01.40.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 05 Jul 2024 01:41:01 -0700 (PDT)
+        Fri, 05 Jul 2024 01:41:04 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6572862155;
+	by draig.lan (Postfix) with ESMTP id 7D4CF62156;
 	Fri,  5 Jul 2024 09:40:50 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -30,61 +30,84 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Stefan Hajnoczi <stefanha@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v2 28/40] plugins: Free CPUPluginState before destroying vCPU state
-Date: Fri,  5 Jul 2024 09:40:35 +0100
-Message-Id: <20240705084047.857176-29-alex.bennee@linaro.org>
+Subject: [PATCH v2 29/40] accel/tcg: Move qemu_plugin_vcpu_init__async() to plugins/
+Date: Fri,  5 Jul 2024 09:40:36 +0100
+Message-Id: <20240705084047.857176-30-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240705084047.857176-1-alex.bennee@linaro.org>
 References: <20240705084047.857176-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: VXDFzU2R533F
+X-TUID: mTj8Q1CHngdF
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-cpu::plugin_state is allocated in cpu_common_initfn() when
-the vCPU state is created. Release it in cpu_common_finalize()
-when we are done.
+Calling qemu_plugin_vcpu_init__async() on the vCPU thread
+is a detail of plugins, not relevant to TCG vCPU management.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20240606124010.2460-3-philmd@linaro.org>
+Message-Id: <20240606124010.2460-4-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/qemu/plugin.h | 3 +++
- hw/core/cpu-common.c  | 5 +++++
- 2 files changed, 8 insertions(+)
+ hw/core/cpu-common.c | 9 +--------
+ plugins/core.c       | 8 +++++++-
+ 2 files changed, 8 insertions(+), 9 deletions(-)
 
-diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
-index bc5aef979e..af5f9db469 100644
---- a/include/qemu/plugin.h
-+++ b/include/qemu/plugin.h
-@@ -149,6 +149,9 @@ struct CPUPluginState {
- 
- /**
-  * qemu_plugin_create_vcpu_state: allocate plugin state
-+ *
-+ * The returned data must be released with g_free()
-+ * when no longer required.
-  */
- CPUPluginState *qemu_plugin_create_vcpu_state(void);
- 
 diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index f131cde2c0..8f6cb64da3 100644
+index 8f6cb64da3..b19e1fdacf 100644
 --- a/hw/core/cpu-common.c
 +++ b/hw/core/cpu-common.c
-@@ -283,6 +283,11 @@ static void cpu_common_finalize(Object *obj)
- {
-     CPUState *cpu = CPU(obj);
+@@ -192,13 +192,6 @@ static void cpu_common_parse_features(const char *typename, char *features,
+     }
+ }
  
-+#ifdef CONFIG_PLUGIN
-+    if (tcg_enabled()) {
-+        g_free(cpu->plugin_state);
-+    }
-+#endif
-     g_array_free(cpu->gdb_regs, TRUE);
-     qemu_lockcnt_destroy(&cpu->in_ioctl_lock);
-     qemu_mutex_destroy(&cpu->work_mutex);
+-#ifdef CONFIG_PLUGIN
+-static void qemu_plugin_vcpu_init__async(CPUState *cpu, run_on_cpu_data unused)
+-{
+-    qemu_plugin_vcpu_init_hook(cpu);
+-}
+-#endif
+-
+ static void cpu_common_realizefn(DeviceState *dev, Error **errp)
+ {
+     CPUState *cpu = CPU(dev);
+@@ -274,7 +267,7 @@ static void cpu_common_initfn(Object *obj)
+ #ifdef CONFIG_PLUGIN
+     if (tcg_enabled()) {
+         cpu->plugin_state = qemu_plugin_create_vcpu_state();
+-        async_run_on_cpu(cpu, qemu_plugin_vcpu_init__async, RUN_ON_CPU_NULL);
++        qemu_plugin_vcpu_init_hook(cpu);
+     }
+ #endif
+ }
+diff --git a/plugins/core.c b/plugins/core.c
+index a864275ae7..12c67b4b4e 100644
+--- a/plugins/core.c
++++ b/plugins/core.c
+@@ -241,7 +241,7 @@ static void plugin_grow_scoreboards__locked(CPUState *cpu)
+     end_exclusive();
+ }
+ 
+-void qemu_plugin_vcpu_init_hook(CPUState *cpu)
++static void qemu_plugin_vcpu_init__async(CPUState *cpu, run_on_cpu_data unused)
+ {
+     bool success;
+ 
+@@ -258,6 +258,12 @@ void qemu_plugin_vcpu_init_hook(CPUState *cpu)
+     plugin_vcpu_cb__simple(cpu, QEMU_PLUGIN_EV_VCPU_INIT);
+ }
+ 
++void qemu_plugin_vcpu_init_hook(CPUState *cpu)
++{
++    /* Plugin initialization must wait until the cpu start executing code */
++    async_run_on_cpu(cpu, qemu_plugin_vcpu_init__async, RUN_ON_CPU_NULL);
++}
++
+ void qemu_plugin_vcpu_exit_hook(CPUState *cpu)
+ {
+     bool success;
 -- 
 2.39.2

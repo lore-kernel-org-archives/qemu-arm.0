@@ -1,194 +1,171 @@
-Received: by 2002:a05:7022:ef0e:b0:81:d0c2:543b with SMTP id qy14csp3900846dlb;
-        Thu, 4 Jul 2024 17:09:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWEPvoDnatP0k54QTc2wMOQkkvAzHOTDKyDHGMR8sKxmGOTURDHhlA8fJKAjNb5/gzgRV6zMyPl5pW1FZkRz8z/fKNEzKen
-X-Received: by 2002:a05:6808:2114:b0:3d5:6754:7f5 with SMTP id 5614622812f47-3d914b76173mr3494526b6e.0.1720138146527;
-        Thu, 04 Jul 2024 17:09:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720138146; cv=none;
-        d=google.com; s=arc-20160816;
-        b=jr9tqZEZtYL54hYUAtBF5hkoaiFVixTrXtTCMU1OoUAMrRURLAgwy71XxtYYx6B/Dl
-         emUVhXDQ8s1tNMJjx15FG2F7oPPDpRpnfUdVHHxFuZRkboYw9pYBK+umui+ip+kOfco3
-         xeto9hM7VDHKCA7QGTMrZVtFvPJFmPm0T/FOFFBIkTpSMfXVsPpws+Vrz/Hf1INLBbwH
-         s2tylj5AFMTJSzbgTKlBaNTJbrfElRD8BzOyuKxrckfnVDFT+goUyTUXXnkZWOw+EhTe
-         xhuv+LUfQKjSbcTNP+Dg9ibyhGd8hsx6aUKKnTbtPqONMjg5ZPCUmO17b7QdGZKU8Vae
-         HRCg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:references:cc:to:from:subject:message-id:date
-         :content-transfer-encoding:mime-version:dkim-signature;
-        bh=J8c4Rfno6JWt6kSJcMhwkFgcGjBQpKGVlBEZqrrKONs=;
-        fh=kwPy0mz6lgYwxOl7U0wxfNXijbxx0iJPxkD3hl78qIM=;
-        b=hB1hNwHBginD9qQ81lD+EEwAScR3Sb3sqaDdKoQoR20CYSPLOf0TXFX/Cam9ul+qwf
-         0/275IRFtUgV8d3AZvYIumdoA9t6l3G3OmAO83XdxmUCpN0eDlyX7MT+zPQ5BO+ljGCH
-         lXN0HeAteG5zaPZrwKJ/+C9AUUjj5CyzaLvp8Ws0H5QKdQSxQsjPiaxbOVKWfYOd75kp
-         Mvp8FXMs8cwhjFWPDYslr/K74rrD4QmHj7fNykzXbQFeCfSS9SvYSj5xsIzaa33KfcAx
-         vtgbwbxNPHPc5TF9Bbhb63vi4Q/R/bu3ATyUOarrCs5qGLT9R9SALfn3K0pVeIxWJxkI
-         Gmbw==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NIphUIRe;
-       spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <npiggin@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 41be03b00d2f7-7274a9faec4sor5754109a12.9.2024.07.04.17.09.06
-        (Google Transport Security);
-        Thu, 04 Jul 2024 17:09:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NIphUIRe;
-       spf=pass (google.com: domain of npiggin@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=npiggin@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1720138146; x=1720742946; darn=linaro.org;
-        h=in-reply-to:references:cc:to:from:subject:message-id:date
-         :content-transfer-encoding:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=J8c4Rfno6JWt6kSJcMhwkFgcGjBQpKGVlBEZqrrKONs=;
-        b=NIphUIRewvFuPSFWJFrTfzGAa4AYnUlJZmFV9RAn+2+nUCzaDpGG4wvyTjW5kGKi9W
-         J8jAsJoffdY3LvOwlttmkkt8aAO6QswBIVGalpKhlTReB5VJhIQHLMsFXM7z+72IhyIa
-         s3LX7jrW0rNUhQG3teF3zCyMCGX4f6DF1lTaEX2LK9lf/M3YRsAASPlop539cn+nX+z3
-         rFWKGqHSbgmX9xTWQSRb1pgEIkvAtzSWz3KyyFZaJUfd4gcyrrWwPhSAYqwCLglzIvxr
-         ZmkZAnr+nKB3Py3naL+vC3bkAgzhvIy7O4y331D1MXnfei4xS6a9Sn/fiwbmrRfBK2OW
-         lnoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720138146; x=1720742946;
-        h=in-reply-to:references:cc:to:from:subject:message-id:date
-         :content-transfer-encoding:mime-version:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=J8c4Rfno6JWt6kSJcMhwkFgcGjBQpKGVlBEZqrrKONs=;
-        b=TvCNCYJyFSFR41EKVRHVmJIf/UjnXENG3Z1anpPFoIJj+zsEo9PCxi3o0xV6Umq1j/
-         Ah8jjHbEjxmhCF4nilf05FzKcXD44zmqQBZ3GF/OS6TRt9hGDRfRQwYJb4ynbgdXHNzc
-         A2P/sgaDEy7XZhXoQ3L9Rvn0R1OGMrEQEyhjtCTqKHclcdEU/F8qfKB5o91hIRQn1xlf
-         vz59jWtzk4i2uaquhLqOjJWAf2osxPkfi/aB7o/lySXlphAWLJLPqhrv0vW9pAm6FKKu
-         4jJ5700cy1uB1UKiiQrW//BSui/zd/KZAjAKjNTxQIOE1IqrOkvgINCxL5HxHoIxskkF
-         LucQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWkJlow9dQOdUIELl/4tYS6YGTTjj8emVNZY5f4+ur3Ud3ybUfV74igyp4dRCziT+UQpkEL5gtM5MW8QXiJzAe/n8KYW4EaGokXv0phpGETQdejDvLQSR8vvSD2chJa4ywxBsLsF5UKTfbPN/qIUeYyxEOERehhuYRsJw/tcQ3Oiu+sUj6mj3Kw+h6sP7A9VheWpYYeuTZJA/9hp1ZF4UrveQuLUfzqL+oZ/1Y=
-X-Gm-Message-State: AOJu0YwoADOF7uRL54NB8hC1sHb/KYNFKLYhJDWseER9pAMv7S23hCkg
-	fbGf9mZhf1nSGpfoLFVaILWCUjfp05pVBd6+M9vJQ9lPq1l3enD/
-X-Google-Smtp-Source: AGHT+IHmub6qh/qK2FE/TERFl+CK3kqBg5jQIkEn7YvlldKohJYfsG/VkLkzoBcHa8B0xXHQMXZrjw==
-X-Received: by 2002:a05:6a20:da84:b0:1be:d74c:dd5a with SMTP id adf61e73a8af0-1c0cc74bdaamr2805646637.23.1720138145705;
-        Thu, 04 Jul 2024 17:09:05 -0700 (PDT)
-Return-Path: <npiggin@gmail.com>
-Received: from localhost (118-211-5-80.tpgi.com.au. [118.211.5.80])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fac11d9685sm128330415ad.111.2024.07.04.17.08.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 04 Jul 2024 17:09:05 -0700 (PDT)
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Fri, 05 Jul 2024 10:08:49 +1000
-Message-Id: <D2H62RK48KT7.2BTQEZUOEGG4L@gmail.com>
-Subject: Re: [PATCH RFC V3 13/29] arm/virt: Make ARM vCPU *present* status
- ACPI *persistent*
-From: "Nicholas Piggin" <npiggin@gmail.com>
-To: "Salil Mehta" <salil.mehta@huawei.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "mst@redhat.com" <mst@redhat.com>
-Cc: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
- <jean-philippe@linaro.org>, "Jonathan Cameron"
- <jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
- <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "andrew.jones@linux.dev" <andrew.jones@linux.dev>,
- "david@redhat.com" <david@redhat.com>, "philmd@linaro.org"
- <philmd@linaro.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "will@kernel.org" <will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
- <pbonzini@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
- "rafael@kernel.org" <rafael@kernel.org>, "borntraeger@linux.ibm.com"
- <borntraeger@linux.ibm.com>, "alex.bennee@linaro.org"
- <alex.bennee@linaro.org>, "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
- "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
- "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
- "karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
- "miguel.luis@oracle.com" <miguel.luis@oracle.com>, "salil.mehta@opnsrc.net"
- <salil.mehta@opnsrc.net>, "zhukeqian" <zhukeqian1@huawei.com>,
- "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)"
- <wangyanan55@huawei.com>, "jiakernel2@gmail.com" <jiakernel2@gmail.com>,
- "maobibo@loongson.cn" <maobibo@loongson.cn>, "lixianglai@loongson.cn"
- <lixianglai@loongson.cn>, "shahuang@redhat.com" <shahuang@redhat.com>,
- "zhao1.liu@intel.com" <zhao1.liu@intel.com>, "Linuxarm"
- <linuxarm@huawei.com>
-X-Mailer: aerc 0.17.0
-References: <20240613233639.202896-1-salil.mehta@huawei.com>
- <20240613233639.202896-14-salil.mehta@huawei.com>
- <D2GEV8KD5L3F.FRD8UH16X3GU@gmail.com>
- <fd0478a51e4e445da33dadafc00b33f6@huawei.com>
-In-Reply-To: <fd0478a51e4e445da33dadafc00b33f6@huawei.com>
-X-TUID: M5CmCO7+nApt
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a77d23494a8sm23446666b.35.2024.07.05.01.40.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Jul 2024 01:40:48 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id AC8585F876;
+	Fri,  5 Jul 2024 09:40:47 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	David Hildenbrand <david@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org,
+	Aleksandar Rikalo <arikalo@gmail.com>,
+	Mads Ynddal <mads@ynddal.dk>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Peter Xu <peterx@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Paul Burton <paulburton@kernel.org>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH v2 00/40] July maintainer updates (32bit, testing, plugins, gdbstub)
+Date: Fri,  5 Jul 2024 09:40:07 +0100
+Message-Id: <20240705084047.857176-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: QQjSECSvVuCv
 
-On Thu Jul 4, 2024 at 9:23 PM AEST, Salil Mehta wrote:
-> HI Nick,
->
-> Thanks for taking time to review. Please find my replies inline.
->
-> >  From: Nicholas Piggin <npiggin@gmail.com>
-> >  Sent: Thursday, July 4, 2024 3:49 AM
-> >  To: Salil Mehta <salil.mehta@huawei.com>; qemu-devel@nongnu.org;
-> >  qemu-arm@nongnu.org; mst@redhat.com
-> > =20
-> >  On Fri Jun 14, 2024 at 9:36 AM AEST, Salil Mehta wrote:
-> >  > ARM arch does not allow CPUs presence to be changed [1] after kernel
-> >  has booted.
-> >  > Hence, firmware/ACPI/Qemu must ensure persistent view of the vCPUs  =
-to
-> >  > the Guest kernel even when they are not present in the QoM i.e. are
-> >  > unplugged or are yet-to-be-plugged
-> > =20
-> >  Do you need arch-independent state for this? If ARM always requires it
-> >  then can it be implemented between arm and acpi interface?
->
->
-> Yes, we do need as we cannot say if the same constraint applies to other
-> architectures as well. Above stated constraint affects how the architectu=
-re
-> common ACPI CPU code is initialized.
+Hi,
 
-Right, but could it be done with an ACPI property that the arch can
-change, or an argument from arch code to an ACPI init routine? Or
-even a machine property that ACPI could query.
+This is a grab bag of fixes and clean-ups as we swiftly approach the
+soft freeze deadline. The i386 TCG fix has been dropped now rth's TCG
+clean-ups have been merged. I've also taken a series from Richard that
+built on Akihiko's TCG test cleanups. There is one new fix I came
+across when doing some gcov testing.
 
-> >  If not, then perhaps could it be done in the patch that introduces all=
- the
-> >  other state?
-> > =20
-> >  > References:
-> >  > [1] Check comment 5 in the bugzilla entry
-> >  >    Link: https://bugzilla.tianocore.org/show_bug.cgi?id=3D4481#c5
-> > =20
-> >  If I understand correctly (and I don't know ACPI, so it's likely I don=
-'t), that is
-> >  and update to ACPI spec to say some bit in ACPI table must remain set
-> >  regardless of CPU hotplug state.
->
->
-> ARM does not claims anything related to CPU hotplug right now. It simply
-> does not exists. The ACPI update is simply reinforcing the existing fact =
-that
-> _STA.Present bit in the ACPI spec cannot be changed after system has boot=
-ed.=20
->
-> This is  because for ARM arch there are many other initializations which =
-depend
-> upon the exact availability of CPU count during boot and they do not expe=
-ct
-> that to change after boot. For example, there are so many per-CPU feature=
-s
-> and the GIC CPU interface etc. which all expect this to be fixed at boot =
-time.
-> This is immutable requirement from ARM.
->
->
-> > =20
-> >  Reference links are good, I think it would be nice to add a small summ=
-ary in
-> >  the changelog too.
->
-> sure. I will do.
+The following still need review:
 
-Thanks. Something like what you wrote above would work.
+  plugins/lockstep: clean-up output
+  plugins/lockstep: mention the one-insn-per-tb option
+  plugins/lockstep: preserve sock_path
+  test/plugins: preserve the instruction record over translations
+  test/plugin: make insn plugin less noisy by default
+  gitlab: don't bother with KVM for TCI builds
+  hw/core: ensure kernel_end never gets used undefined
+  testing: restore some testing for i686
 
-Thanks,
-Nick
+Akihiko Odaki (6):
+  tests/docker: Specify --userns keep-id for Podman
+  tests/tcg/aarch64: Explicitly specify register width
+  tests/tcg/aarch64: Fix irg operand type
+  tests/tcg/aarch64: Do not use x constraint
+  tests/tcg/arm: Fix fcvt result messages
+  tests/tcg/arm: Manually register allocate half-precision numbers
+
+Alex Bennée (11):
+  tests/lcitool: fix debian-i686-cross toolchain prefix
+  testing: restore some testing for i686
+  tracepoints: move physmem trace points
+  hw/core: ensure kernel_end never gets used undefined
+  gitlab: don't bother with KVM for TCI builds
+  test/plugin: make insn plugin less noisy by default
+  test/plugins: preserve the instruction record over translations
+  plugins/lockstep: preserve sock_path
+  plugins/lockstep: make mixed-mode safe
+  plugins/lockstep: mention the one-insn-per-tb option
+  plugins/lockstep: clean-up output
+
+Gustavo Romero (11):
+  gdbstub: Clean up process_string_cmd
+  gdbstub: Move GdbCmdParseEntry into a new header file
+  gdbstub: Add support for target-specific stubs
+  target/arm: Fix exception case in allocation_tag_mem_probe
+  target/arm: Make some MTE helpers widely available
+  target/arm: Factor out code for setting MTE TCF0 field
+  gdbstub: Make hex conversion function non-internal
+  gdbstub: Pass CPU context to command handler
+  gdbstub: Use true to set cmd_startswith
+  gdbstub: Add support for MTE in user mode
+  tests/tcg/aarch64: Add MTE gdbstub tests
+
+Philippe Mathieu-Daudé (3):
+  plugins: Ensure vCPU index is assigned in init/exit hooks
+  plugins: Free CPUPluginState before destroying vCPU state
+  accel/tcg: Move qemu_plugin_vcpu_init__async() to plugins/
+
+Richard Henderson (9):
+  tests/tcg/minilib: Constify digits in print_num
+  tests/tcg: Adjust variable defintion from cc-option
+  tests/tcg/aarch64: Drop -fno-tree-loop-distribute-patterns
+  tests/tcg/aarch64: Add -fno-integrated-as for sme
+  tests/tcg/arm: Drop -N from LDFLAGS
+  tests/tcg/arm: Use -fno-integrated-as for test-arm-iwmmxt
+  tests/tcg/arm: Use -march and -mfpu for fcvt
+  tests/tcg/arm: Use vmrs/vmsr instead of mcr/mrc
+  linux-user/main: Suppress out-of-range comparison warning for clang
+
+ configure                                     |   4 +
+ configs/targets/aarch64-linux-user.mak        |   2 +-
+ gdbstub/internals.h                           |  23 -
+ include/gdbstub/commands.h                    | 103 +++
+ include/qemu/plugin.h                         |   3 +
+ linux-user/aarch64/mte_user_helper.h          |  32 +
+ linux-user/aarch64/target_prctl.h             |  22 +-
+ target/arm/internals.h                        |   6 +
+ target/arm/tcg/mte_helper.h                   |  66 ++
+ contrib/plugins/lockstep.c                    |  23 +-
+ gdbstub/gdbstub.c                             | 341 ++++++----
+ gdbstub/syscalls.c                            |   7 +-
+ gdbstub/system.c                              |   7 +-
+ gdbstub/user-target.c                         |  25 +-
+ gdbstub/user.c                                |   7 +-
+ hw/core/cpu-common.c                          |  14 +-
+ hw/core/loader-fit.c                          |   2 +-
+ linux-user/aarch64/mte_user_helper.c          |  35 +
+ linux-user/main.c                             |   1 +
+ linux-user/syscall.c                          |   9 -
+ plugins/core.c                                |  10 +-
+ system/physmem.c                              |   4 +-
+ target/arm/cpu.c                              |   1 +
+ target/arm/gdbstub.c                          |  46 ++
+ target/arm/gdbstub64.c                        | 223 +++++++
+ target/arm/tcg/mte_helper.c                   |  48 +-
+ tests/plugin/insn.c                           | 112 +++-
+ tests/tcg/aarch64/bti-1.c                     |   6 +-
+ tests/tcg/aarch64/bti-3.c                     |   6 +-
+ tests/tcg/aarch64/mte-1.c                     |   2 +-
+ tests/tcg/aarch64/mte-8.c                     |  99 +++
+ tests/tcg/arm/fcvt.c                          |  28 +-
+ tests/tcg/minilib/printf.c                    |   2 +-
+ .gitlab-ci.d/buildtest.yml                    |   2 +-
+ .gitlab-ci.d/crossbuilds.yml                  |  13 +-
+ gdb-xml/aarch64-mte.xml                       |  11 +
+ linux-user/aarch64/meson.build                |   2 +
+ system/trace-events                           |   6 +
+ tests/docker/Makefile.include                 |   7 +-
+ .../dockerfiles/debian-i686-cross.docker      |   2 +-
+ tests/lcitool/refresh                         |   2 +-
+ tests/tcg/Makefile.target                     |   2 +-
+ tests/tcg/aarch64/Makefile.softmmu-target     |   4 +-
+ tests/tcg/aarch64/Makefile.target             |  32 +-
+ tests/tcg/aarch64/fcvt.ref                    | 604 +++++++++---------
+ tests/tcg/aarch64/gdbstub/test-mte.py         |  86 +++
+ tests/tcg/arm/Makefile.softmmu-target         |   4 +-
+ tests/tcg/arm/Makefile.target                 |  12 +-
+ tests/tcg/arm/fcvt.ref                        | 604 +++++++++---------
+ trace-events                                  |   5 -
+ 50 files changed, 1771 insertions(+), 946 deletions(-)
+ create mode 100644 include/gdbstub/commands.h
+ create mode 100644 linux-user/aarch64/mte_user_helper.h
+ create mode 100644 target/arm/tcg/mte_helper.h
+ create mode 100644 linux-user/aarch64/mte_user_helper.c
+ create mode 100644 tests/tcg/aarch64/mte-8.c
+ create mode 100644 gdb-xml/aarch64-mte.xml
+ create mode 100644 tests/tcg/aarch64/gdbstub/test-mte.py
+
+-- 
+2.39.2

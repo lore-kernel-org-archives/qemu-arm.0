@@ -1,124 +1,121 @@
-Received: by 2002:a05:7022:ef0e:b0:81:d0c2:543b with SMTP id qy14csp4307869dlb;
-        Fri, 5 Jul 2024 08:52:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXTY4MVcsuZAKf1SD1lVlsAN+6XTU89CmUPnu1jay9Bz/TInaysoyIdIrC//TLCrxEQY5wB2V+nSmXsR1jjYGjhNABKUA5v
-X-Google-Smtp-Source: AGHT+IEGlU5RT/aeGWNmk3JgZLgvKnqFpIT1tjcgU41gNNKGJZ06TEruVi3z0ObSc2cpIxKGzRvb
-X-Received: by 2002:a05:6214:f02:b0:6b5:df48:bc6d with SMTP id 6a1803df08f44-6b5ecfc7a7emr59887216d6.14.1720194763350;
-        Fri, 05 Jul 2024 08:52:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720194763; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp1471672njb;
+        Fri, 5 Jul 2024 14:52:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXYTD7EHBSJB/wQoI681CK1/E4AxaFG1u0M5HDKq8W1tWzvq7FeaMUIAv0iyH8gnhF7cDIu1B2GD2+kgMfuXl6n+msxg5GE
+X-Google-Smtp-Source: AGHT+IEuFNLEsVzSgmiO2lXaWRmpo8Wo/9JlzQSnTc207mYl8utzhF5Fr5DLAWD0BxUy7gcMhI4n
+X-Received: by 2002:ac8:5a0a:0:b0:444:fa36:3959 with SMTP id d75a77b69052e-447cbf5e498mr84149311cf.41.1720216347490;
+        Fri, 05 Jul 2024 14:52:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720216347; cv=none;
         d=google.com; s=arc-20160816;
-        b=UuqVPIeFA7OM6TE/tIFJTAV+MXZ3ga7QJGRFuJe7UBaoGG80Fs5K17oYzdKpPA6Fmq
-         tKphb7vK4Yv+BbKSvFA+I1AxfWk3K4HtaR9qhRh294CH5/xmU0H92N6hDXHB4sYa43yD
-         YhW2NkC8luB34dw6pz1bbGu1OhpxryMMeOGx3gxKO9TD9EIAQ3WNKVyozpIB6FSHo1M0
-         yxwOxos4kvC3gQyRuat6wtbYnNSl6ij+3yz1ypPN5BRKthugLK+Pga0NDoPNdhMkkZ6W
-         QTk0h9EUwbtmnzK49JUR/tIKGOhFP1mYNEc5uA665Lr0ZkPvzkqxQlA437BIluc9ga2h
-         4TGw==
+        b=G5abfCADoFGOHpEN6YmbUEhRYsFyUM9Al3oFUJECoIpwuQjFyZ+73+TbWyTt6efAVe
+         9635oMT4W2a5O3aL10VjdRFoBBSm34J1RTeSuR/XOsohLSYgevs/Jic+KWDJZTu58oF8
+         sVEvjUiL4lxLFaUAvaAl09nNYfloWNGb4grUHMrTXg5fJzKYxLjl8lkCv4AX4HCfvBHq
+         KFetwk0HqrGSW2N0j2ICaXr4ejepYnjYw5x6pQ42Zd/l/vD2kviZA+TedTX0kA1aj7xk
+         SclkgREhyNvYaUUpXMgI/8BSlxsks3pa1EdxcBqvy9s3eRwzsRx6sGZ8JmGcmGG+HRoM
+         lyaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:references:cc:to:from:subject
+         :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=CPgCQ2K8RN3WxfZ+0pNgNHcA71LvrnZcqWRsrJX62H8=;
-        fh=u/Fwutaw2PtyeVfujf7uA4jXvfVSTPQeqNMNZlNPzs8=;
-        b=MZP72YA3kVD1alEY2qbOJvy7oq9ZepiFgINV66XtBYMjNfsJTR2Ta53KeMbbwHEpEL
-         0CWL0SKRyjvPzw5TOunpUMSZnL942n5mjMFLEM/SfUy70CCfr1Mk2N5gOYMVE9wHaSDO
-         lkXLqGBxU1k2eKU6YCgytn0bi5vgXAEGrE5tJhdFJbn7Q58DmIIGyHPozh1dchTzjS6I
-         RtBr+tVe/D1qkoqBlO4dHji5p+AOgv73f00l1rOfHvQXEiYSyFIEdVhWS7fscV0KsfgS
-         Pwy3dS5BhGgmWEr7abnoujygQ3bBFo1qoO7r4KeBcFyDBWm7t/Dh6BaybbIUm+q8Z/lw
-         0OCQ==;
+        bh=Famnk2FKpTDwuEsdryBV8iJ8lwuFDU9utG5CZue62t4=;
+        fh=KlluoIJ0yFECQpJLkP3igQEVnQ34QCC9l2hurcc0aYY=;
+        b=bNXFKf2EKuQErKIk33ekJomFviWqKxQAyA+ngKUN7mH51+g4QnFS+Cu+V3TL9qVpAM
+         kwnXaiAD8XaNJpQVxCT69azca7gCQBW32vZQPHQmTbu1c6HEqps4dsvAbO6YOcumAQP6
+         e1LFcnk3Yhk62Qub/QIzNufW537tLFgc4+Yr2nIJMqVePTmuhtiEYWM04dwEVSW4b/cV
+         LAaP1J9c4NLMFBWsX8q02r2sfyRA7dnU33GgQ/JlLmrit7AZoZCLwR/n/9euOJ2SZlKI
+         J2wgiDUJxKMFjmzY8QsWH0IAHd/JGNb3GGtsgMlL98d/Q3jQRHESeq2d+8DSV4MdyiRb
+         d6rg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vjHFMvjP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BzUS34m+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b5e7e66e56si46822656d6.434.2024.07.05.08.52.43
+        by mx.google.com with ESMTPS id d75a77b69052e-447dd20d4cesi10028851cf.259.2024.07.05.14.52.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jul 2024 08:52:43 -0700 (PDT)
+        Fri, 05 Jul 2024 14:52:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vjHFMvjP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BzUS34m+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sPlEc-00087b-Gh; Fri, 05 Jul 2024 11:52:30 -0400
+	id 1sPqqi-0000SA-97; Fri, 05 Jul 2024 17:52:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sPlEW-00086O-1q
- for qemu-arm@nongnu.org; Fri, 05 Jul 2024 11:52:25 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sPqqh-0000RM-0J
+ for qemu-arm@nongnu.org; Fri, 05 Jul 2024 17:52:11 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sPlEU-0001LX-DA
- for qemu-arm@nongnu.org; Fri, 05 Jul 2024 11:52:23 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4265921b0f6so3699445e9.2
- for <qemu-arm@nongnu.org>; Fri, 05 Jul 2024 08:52:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sPqqe-000326-5i
+ for qemu-arm@nongnu.org; Fri, 05 Jul 2024 17:52:10 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-367940c57ddso1239490f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 05 Jul 2024 14:52:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1720194740; x=1720799540; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=CPgCQ2K8RN3WxfZ+0pNgNHcA71LvrnZcqWRsrJX62H8=;
- b=vjHFMvjPd3J4nyMa7F+nvB3XpDiLjxnuiWjuUAC2uG6YTKdohgAnZS2Kl9P8Rg6+rj
- 8UF55O7MKdDLGaW5ilFyohx33MFuMkEkdFnRI6GwgPDKtF4IC47m6PMpDw54cSnCxbpp
- Z3LJjDtEa/n1a20N5OabTWo1DwSKztDgIRewmKv7ev0sdzqfz41bCh7PUXE1aDEvCSEl
- OacH0Q8Z79N5cuXSyXdVpfoueoZjrKGSZWMkv+t1XEwtqd5woaIMUBnWglIHi77h0adw
- eBSTf84wqc1pjcRXKjNeYrXO6WROsblUpTgAcuZa8Cb/nMKK1cFUQFycQU+ijIkivTfl
- p2HA==
+ d=linaro.org; s=google; t=1720216326; x=1720821126; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Famnk2FKpTDwuEsdryBV8iJ8lwuFDU9utG5CZue62t4=;
+ b=BzUS34m+NdqmHvcTdkyfGD+sBybaSyVDdJ7E5UOxoUDpOdHST3BiSXxpRY1TsHRBDG
+ isf3FsfXLORLaTkrpeOBWvydra5KrXXRDqyKgp6qVBJA/HST8sB98GMcsay9hZ3lJREN
+ C7I8F2mwCZZNJDlfz0+HPt3oGcjmgEtvOf7qqF4eSqa5QAhgDpbkygX23ih/s4dLFlA2
+ D/Pb53Pabyqqv3Jm6K1qY2CRmfQSWgg6nZw/SPKqlglo+DR/o/n1Yzm14tVIpX0gPS0v
+ +1gTWutjA61GDbtsiURi4olG+o5r6zdUOertbC0fUI3vB1m8pblEPBTv2rPUVNV3Upf+
+ VIQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720194740; x=1720799540;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1720216326; x=1720821126;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=CPgCQ2K8RN3WxfZ+0pNgNHcA71LvrnZcqWRsrJX62H8=;
- b=Aplg9VCYUXgrPril5ekEzEChyos4d4MuHDse6F2ESs/R5LEbObnbuovA//gjIexFqy
- KNcn67AdRHsEsVyqiLtU/0BwwxIuYqg2gXH3FKrAXr1xPUHe+Sk0KcMTLIVz2XXCa7HL
- hdsqYCIwBVPvzdlRtG1swqCcXGKoMbZnNw0RQPruvRce2RM6seCnjQfD046UEB/wjY+Z
- inausRiLPcNsxqwxhgzQEwq/rqJWZy4orZ6zmfdoHl/MD9Eh/QRzk6mnOUOgRhzjUjJH
- MzEjZRGogJ0NKsQMedJusuGpL1xIjlvPSUGMVhrvvVQwrThkN7Tq/4Dtc4W1gqpK1p2O
- jcCQ==
+ bh=Famnk2FKpTDwuEsdryBV8iJ8lwuFDU9utG5CZue62t4=;
+ b=WNWBpTXngtAkG7CyqXlho/J2AbbrWXDIAZAw9SW2RZAer5yJLiyWwhgBVkC8XcDYih
+ CIAuySQ5rhSeqq9c46oXNg3vjBZ9sAp34dzQduktXdx3/xodDAQSLE7a3fptFXVenpuk
+ /wLX2tOYqpS9mQkEBO/mKT82wJ6SRSj4YRlQMR+QFF1wKk3c++0GOHj68Kgkty2m8G/e
+ FNFCWk0EQ0AQCG7/7jtR8/6/opndRHT90Yz4MYi2F4S7A+wPXMkslajNoI0Vw6lPZENa
+ kB2HHA66yb6JJgXZ7JUu11z+yYMpbtiy8Wr4pk5tNAuAghG9xPXWu1wJ8tkjGcphbaiO
+ Ii/Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUiWr5MoOonfUE6TlJ1j7V7mVbQZlF3OHNW3agkeSsenMM830XQuIn/1VvbXhgf+23odK0ekUHOmpesuLpjatrmE9c9
-X-Gm-Message-State: AOJu0YwfEBNbI1d1J8N1Jb94qxl21MWPxseNeO1xXY2wfbvi4OMZSsgy
- Fp94W2lotN3W41guyZgv8VltUg1d/IQ5pfhkz4sKNK+He0FG55Q2KGVo3QfuiZo=
-X-Received: by 2002:adf:f64f:0:b0:367:94b8:1df1 with SMTP id
- ffacd0b85a97d-3679dd63b7cmr3291376f8f.55.1720194739901; 
- Fri, 05 Jul 2024 08:52:19 -0700 (PDT)
+ AJvYcCV8n879U3CDMGVW7TaE/LmgBm6hWCrYZJasc2ijJR2wkZeqK5zS9CiLUXinDmJDu91MJQzWZxzgHaWTKiFik23WxJpW
+X-Gm-Message-State: AOJu0Yy5AmXDp+f1sePJDWKfhEx3sOBYSwvm8fuQhG2h58WBUcyF0qJZ
+ 1cB/LiuTy534GH57kNT1MarXjlHJfVl9OGJTAepQ8x7p2+yXnHb0hUq+t8A/RAU=
+X-Received: by 2002:a5d:420e:0:b0:366:ec2c:8646 with SMTP id
+ ffacd0b85a97d-3679dd63b25mr3802612f8f.43.1720216326406; 
+ Fri, 05 Jul 2024 14:52:06 -0700 (PDT)
 Received: from [192.168.69.100] ([176.176.163.129])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-367908768b4sm7729596f8f.79.2024.07.05.08.52.18
+ ffacd0b85a97d-3679ac6d60dsm5250708f8f.39.2024.07.05.14.52.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Jul 2024 08:52:19 -0700 (PDT)
-Message-ID: <b606cd09-3846-4c99-b902-b0b260d91788@linaro.org>
-Date: Fri, 5 Jul 2024 17:52:17 +0200
+ Fri, 05 Jul 2024 14:52:05 -0700 (PDT)
+Message-ID: <186b3369-3bd6-41ff-9288-5be8d295706b@linaro.org>
+Date: Fri, 5 Jul 2024 23:52:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/8] aspeed: Set eMMC 'boot-config' property to reflect HW
- strapping
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Joel Stanley <joel@jms.id.au>, Steven Lee <steven_lee@aspeedtech.com>,
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>
-References: <20240704053651.1100732-1-clg@redhat.com>
- <20240704053651.1100732-6-clg@redhat.com>
- <f50579b99ef8883dac5fcfc1606a45abfb8bf85f.camel@codeconstruct.com.au>
- <e6ca185f-3f9a-40e1-9ed2-eccfbbdf1444@redhat.com>
- <8e770030-29ab-4e30-861f-3e735b25e37b@linaro.org>
+Subject: Re: [PATCH 0/4] qtest/npcm7xx_sdhci: Use card-provided address (RCA)
+To: qemu-devel@nongnu.org
+Cc: Tyrone Ting <kfting@nuvoton.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Hao Wu <wuhaotsh@google.com>, Thomas Huth <thuth@redhat.com>,
+ Shengtan Mao <stmao@google.com>, Chris Rauer <crauer@google.com>,
+ Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+ Laurent Vivier <lvivier@redhat.com>, Luc Michel <luc.michel@amd.com>,
+ Bin Meng <bmeng.cn@gmail.com>, qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ Patrick Venture <venture@google.com>
+References: <20240702140842.54242-1-philmd@linaro.org>
 Content-Language: en-US
-In-Reply-To: <8e770030-29ab-4e30-861f-3e735b25e37b@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240702140842.54242-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -140,88 +137,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4c0cHSCSJiBa
+X-TUID: UzbIuxPd9X92
 
-On 5/7/24 15:28, Philippe Mathieu-Daudé wrote:
-> On 5/7/24 07:38, Cédric Le Goater wrote:
->> On 7/5/24 5:41 AM, Andrew Jeffery wrote:
->>> On Thu, 2024-07-04 at 07:36 +0200, Cédric Le Goater wrote:
->>>> From: Cédric Le Goater <clg@kaod.org>
->>>>
->>>> When the boot-from-eMMC HW strapping bit is set, use the 'boot-config'
->>>> property to set the boot config register to boot from the first boot
->>>> area partition of the eMMC device.
->>>>
->>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
->>>> ---
->>>>   hw/arm/aspeed.c | 15 +++++++++++----
->>>>   1 file changed, 11 insertions(+), 4 deletions(-)
->>>>
->>>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->>>> index 756deb91efd1..135f4eb72215 100644
->>>> --- a/hw/arm/aspeed.c
->>>> +++ b/hw/arm/aspeed.c
->>>> @@ -327,7 +327,8 @@ void aspeed_board_init_flashes(AspeedSMCState 
->>>> *s, const char *flashtype,
->>>>       }
->>>>   }
->>>> -static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, 
->>>> bool emmc)
->>>> +static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, 
->>>> bool emmc,
->>>> +                               bool boot_emmc)
->>>>   {
->>>>           DeviceState *card;
->>>> @@ -335,6 +336,9 @@ static void sdhci_attach_drive(SDHCIState 
->>>> *sdhci, DriveInfo *dinfo, bool emmc)
->>>>               return;
->>>>           }
->>>>           card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
->>>> +        if (emmc) {
->>>> +            qdev_prop_set_uint8(card, "boot-config", boot_emmc ? 
->>>> 0x48 : 0x0);
->>>
->>> 0x48 feels a little bit magic. I poked around a bit and there are some
->>> boot-config macros, but not the ones you need and they're all in an
->>> "internal" header anyway. I guess this is fine for now?
->>
->> You are right and we should be using these :
->>
->> hw/sd/sdmmc-internal.h:#define EXT_CSD_PART_CONFIG             179 /* 
->> R/W */
-> 
-> This field is R/W and expected to be configured by the guest.
-> 
-> Why the guest (u-boot) doesn't detect partitioning support?
-> 
-> See eMMC v4.5 section 7.4.60 PARTITIONING_SUPPORT [160] and earlier
-> 
->    For e•MMC 4.5 Devices, Bit 2-0 in PARTITIONING_SUPPORT
->    shall be set to 1.
-> 
-> We don't set it so far.
+On 2/7/24 16:08, Philippe Mathieu-Daudé wrote:
 
-Sorry, I wasn't grepping in the correct branch, we do set it:
+> Philippe Mathieu-Daudé (4):
+>    hw/sd/npcm7xx_sdhci: Use TYPE_SYSBUS_SDHCI definition
+>    hw/sd/sdhci: Log non-sequencial access as GUEST_ERROR
+>    tests/qtest/npcm7xx_sdhci: Access the card using its published address
+>    hw/sd/sdcard: Generate random RCA value
 
-      sd->ext_csd[EXT_CSD_PARTITION_SUPPORT] = 0x3;
-
-I'll investigate.
-
-> I see in u-boot mmc_startup_v4():
-> 
->      /* store the partition info of emmc */
->      mmc->part_support = ext_csd[EXT_CSD_PARTITIONING_SUPPORT];
->      if ((ext_csd[EXT_CSD_PARTITIONING_SUPPORT] & PART_SUPPORT) ||
->          ext_csd[EXT_CSD_BOOT_MULT])
->              mmc->part_config = ext_csd[EXT_CSD_PART_CONF];
->      if (part_completed &&
->          (ext_csd[EXT_CSD_PARTITIONING_SUPPORT] & ENHNCD_SUPPORT))
->              mmc->part_attr = ext_csd[EXT_CSD_PARTITIONS_ATTRIBUTE];
-> 
-> I'm still waiting for the eMMC prerequisite to be reviewed
-> before looking at the eMMC patches in detail :/
-> 
-> Regards,
-> 
-> Phil.
+Series queued, thanks.
 

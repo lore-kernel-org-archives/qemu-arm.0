@@ -1,214 +1,292 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp775800njb;
-        Thu, 4 Jul 2024 11:13:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX7xRFPHuOx/9aBTD0lR371wkQkOQyHix2a+IvezXdDbe6SYuyZSwW+k8R83N08vU8kxO6krk4ChplJwXOqU47TQtqHVBpq
-X-Received: by 2002:a7b:c84c:0:b0:424:f2b9:81f5 with SMTP id 5b1f17b1804b1-4264a3e18f6mr18020165e9.9.1720116794154;
-        Thu, 04 Jul 2024 11:13:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720116794; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp1117652njb;
+        Fri, 5 Jul 2024 03:07:34 -0700 (PDT)
+X-Received: by 2002:a17:906:f24c:b0:a77:c080:11fa with SMTP id a640c23a62f3a-a77c080126amr223635466b.48.1720174053908;
+        Fri, 05 Jul 2024 03:07:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720174053; cv=none;
         d=google.com; s=arc-20160816;
-        b=mdQlTV+4Q3jJwDSB+KJCeonjSHxHbedl5lKvxIvJRYaH3XokG4PAe3YEHKZSnTTEEe
-         xdTFB6dRxfLAlFa6x4dOTRj6kMc3aIPqgdPe3EEomkMR2UNSnjejWlucJEQ84Hkhht9h
-         EMvK16KNYiAWUKVCULKSCxfxqs1v/cTHtelgAgz7DsG2IQRs9N9zQTOg4iPmk+SzZVpi
-         fMazvhDFo4+XhNDBT76iMTAX9lVnlPkYkVbxEc18ZA2ZBRg87xtgPPzPZu2w0pKswM/+
-         eESVWrTZARqK2jaJ15fqbPBBMJF7/rHaXy5EEp+lhmPviws/H882Iwuh9aAp4VSERJIM
-         O+oA==
+        b=QULUES10HFlkV9U+TebUCNbZAaztJi7VuDBCl98ygIA+ffqFbR6Z2gzjdWn7KR0zBH
+         7+gUFqj6SjNDtOGmCa7IlKGyG6Cs1C8LdmNfoscJs3h64bD6Z+qSVwIAIymgUT4Qkf13
+         A1aFa1ZfMhhS8vSOCnzCZZDh2jcZUEaxylOErTDo078/3wxBC45fpQMHSOKkW8BGukrQ
+         vkz5CPdxUZhdis+WhysUWDxXa2Jc41UQ/8fRCjoXESz+z/O2zwFc3rt6DxgZxA0OgVHD
+         iG7dJMxFC+/Yzz2P5SxpORFF5W9Dv75eoGYUsDy9JLUvqT/Uhf4mevKHIZ5hqkpdmk6k
+         Zlgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=YW4wlSuOdKAVTH1hQaVXajuVHuYuIjCXdW92FIYm6MM=;
-        fh=mclrRvwkyrBc0tCAYYJnZ09vTAZ2c0pLv1m7tmZG78k=;
-        b=ip79b3qkm0FHwmKdRaw8vPQUxQWdOcSKBC4U2yEZn7CijkSeG+sgPyn9E+dZUgcuT3
-         1b9dRc/OBWP7MlrHcESikq8cKJeymUdIJmb6OFzSOxKkW3eYbphJ9jnRTOS2PH9h+tOv
-         Yz1VKnKz/MwFca/cBl5zG4maUhSvtwq7Lq9VdiEEhJjUdtP8sUOBQgAuvBWI9BMgL9Kk
-         5u7uCDH4DUktTOuUPJFvru5Wm0pJQw/AQneoCPD0Rx8MK0HaTNhRGm+0qWUW3OpronzD
-         DZre6X6uS97KWlgGVUQx3AQOwVkym2uywuFmYDGDoKFBVGpwkxZNSu5zmfRWounZXvsu
-         +BOQ==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=3I58MnZMXrqowhLjtFic4a7xlF9J1HaX1eNCrjEIEIw=;
+        fh=0zGuvTPwB0nSVi9p8cu2BBeBHdjbp1/cCExp+Crewlo=;
+        b=Zm664bzi3iyv1K30dXT9FGzsYNhgZsMamXGMUalwIR339ypv8UNC5D+zJwVLnDlF80
+         gpmHgtT23R7niIeUNode1yEaOYvvP8jzMezy1bnp/R4YxY+zpQFMrlEAMmwEc0g+VOmP
+         8HzPiyWUvqT7LjhZzKvwviuQ6uRwQvG3IpbjssA+JteiJpreHgWjSNwbm5BqSCsu4/+H
+         1MTcVhNCbBQ/PnDkrKkakHZBepLdCilKlXZimKwbGjUDcX0hTk6jDnFOawsqasl2b4uX
+         mRV7x7eqXM3FK3tMSFT76oWDGWkQUA0xKoFrt/dIA5Gmq6vyx7YDwcaa0itnV63MsTcS
+         ynrA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EaPuDi0j;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LXRmGd6e;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <jean-philippe@linaro.org>
+Return-Path: <manos.pitsidianakis@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-42565615a49sor8055425e9.8.2024.07.04.11.13.13
+        by mx.google.com with SMTPS id a640c23a62f3a-a754410aed3sor234668566b.6.2024.07.05.03.07.33
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 04 Jul 2024 11:13:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 05 Jul 2024 03:07:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=EaPuDi0j;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LXRmGd6e;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720116793; x=1720721593; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=YW4wlSuOdKAVTH1hQaVXajuVHuYuIjCXdW92FIYm6MM=;
-        b=EaPuDi0jcCwi9JqDSq0rMVy+oEegSMvSnaZumOuj9lUJaZ4gW2W18gtYVtVjIn2fda
-         CnRMSBOBGXSsPfsKYioyc66MMxLntSDJywvN2y4+fkX3IG6AOTbw8z7OGlRi9a4yvqf1
-         pP88n/QDf67ozS465X4xog1PoJkLtVlP4TrOKRHNSgc2veOzBjwn3BoFK3YtRVut0zgE
-         v4gqurawK4YNBi89V1a3ZlfUWJ6MAiOS1TC0nJot5UIKD6sbsbo/3x25yzHb5W3OrEoa
-         TTGwjXmxjx1P2NSZiLy/QECKJuQTxzYCO/YhqtS+IWjkKU7Qi8bQOCX6izBI7wOlQgcD
-         nfDg==
+        d=linaro.org; s=google; t=1720174053; x=1720778853; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3I58MnZMXrqowhLjtFic4a7xlF9J1HaX1eNCrjEIEIw=;
+        b=LXRmGd6emyO0aWO54NnQIalLd5UiJ1AW2oLcmxyxVCiqohqramaOYr+MYs/d5mfSrY
+         iXdD7lnEbB+dVs0Hynq44nWT+Hq6ZvricUt+FzOPJjUT+5IkCg/qz9kUV8csGQgaM/KF
+         Up3pVW5TxsiYIzUVk1NwZ1sZoOh5umbivo60NHtO9Ssm5yHEG28eCRBJ2b5iDmhg0CP7
+         aRY7HaPv9Oqs8Xa1mbgtDi3leWuB8w3JcRqzMFtpYllJP7rSqa8eRJ8NAROQ2pywuaoS
+         23r81Gm4YOYnXc5RZ5SsAMQ+Th3z5sTCWS3V08k44A83JmtjQB6dRVg8lCwx3QnC1r9W
+         UX2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720116793; x=1720721593;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YW4wlSuOdKAVTH1hQaVXajuVHuYuIjCXdW92FIYm6MM=;
-        b=Us7OVeX9cHbOeTzQItGAOdYGxpXHvAciVIvz3N3ly+Vn5BxNK3OeIevDpC4TnskRYq
-         LVKJca4WJrNEp0oAEwZ/Ii0wqLfR3rLaTK0VUsTrgH2PrfxBF5tp5in7AMwQzKA+QcB8
-         N+TZqXnGkQ3AeUNC82BbDIW12kcqbN4muwNDoxwM4TMzs4cPaCk9tGu5LcZOYTBlFpSY
-         00Y5TfB3A4s73KmbhR4kAl6TQ2CVhRL5fRU2GoMqbWyTIjAp9VesGssg+9oKDQc/GRDU
-         JxxVVRbvE3/dbou4/Jj2Rfp/j6YT+A8zk6lud/f9GGYpgk5ttMYbthmnBfSUNUUSELSi
-         q1sQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVPROK1qJTJMZMc3NMowJX/igG4KbYbelCi0W+AJz19LH8IFqLfdZJtnFj0OqnIAoWOX4m4BbtpcRMwAS2pTIRgwE2CeOiI
-X-Gm-Message-State: AOJu0YxIXTfmny9EkMzIGURMDe9hpPrWEMYoggLYH4bTnkCJVvmfU5d4
-	XQy+5EKdoYBASpt+OQvtNLZcQaoENJCObUm7OtiiU4xzdPtm8gDn6g9yHji8U7ibFw==
-X-Google-Smtp-Source: AGHT+IGnhknz3ZhTPYKEhVhVRHjuDrsZwdSjkP74rBnbaFPoSpIXQ622cWUCKEWmVeuP276irJI+/A==
-X-Received: by 2002:a5d:4f05:0:b0:366:efa2:f2f7 with SMTP id ffacd0b85a97d-3679dd15b0emr1775871f8f.1.1720116793566;
-        Thu, 04 Jul 2024 11:13:13 -0700 (PDT)
-Return-Path: <jean-philippe@linaro.org>
-Received: from myrica ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36788e37b53sm7524064f8f.45.2024.07.04.11.13.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 Jul 2024 11:13:13 -0700 (PDT)
-Date: Thu, 4 Jul 2024 19:13:26 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Mostafa Saleh <smostafa@google.com>
-Cc: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
-	qemu-devel@nongnu.org, alex.bennee@linaro.org, maz@kernel.org,
-	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
-	marcin.juszkiewicz@linaro.org
-Subject: Re: [PATCH v4 10/19] hw/arm/smmu-common: Add support for nested TLB
-Message-ID: <20240704181326.GG1693268@myrica>
-References: <20240701110241.2005222-1-smostafa@google.com>
- <20240701110241.2005222-11-smostafa@google.com>
+        d=1e100.net; s=20230601; t=1720174053; x=1720778853;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=3I58MnZMXrqowhLjtFic4a7xlF9J1HaX1eNCrjEIEIw=;
+        b=PfueL3l7oPB59fJ7Ia3t0R4orLidi9jmkzB1CGpbT/muLYL0TOtvBLCZqDjT/R+TnL
+         wZiHbyFX2SKJSpK+X/C7QzjNObBhDP7FBOkJ4WOgVcqsMhO1hEUotW0pHPYOgcxwFFtX
+         ml4Hdv0rZzYFQ0dOWWeUbAYc5YXXLuG71fXP+vqresmRFw1uvT6XMMX1b6qcTA0/rLSP
+         W50MjoU1a9kXWJrasZ/Zcifz40i6AALoRiOU0GchCH/JrNvwxzsO0COfCtTSVbmiMLix
+         IBRjnig4e6ovLnm2fRFug5ORqDrLIkporfvOiVxH03QRokVwRYBGYK+X0OJJ50gdtNWa
+         l5pg==
+X-Gm-Message-State: AOJu0YygnD0Ds7VlF/1bglFrlPddSgFr0BfRWBUeAmYdvRCtGVJVFx2v
+	NmVkeYmgtXwYNk1OkZHqNA3tX3vLzLHhZtUfDdB69pitU1fb+GEG/yxHQvehxcAFP01e/Mbc3HL
+	hgZU0YNAIBWwTItHiprDXGttXnJCWo7g5tfv98U0sdbR0V8SZbOnXHIcd
+X-Google-Smtp-Source: AGHT+IFFMaVK0V6IbB8OeY4xSmia7qYLCJR+m56rxWhxHL/6YjqYV28jjn1gLHFNpxmlE11ZdKCSttA4SfsoS3RnEno=
+X-Received: by 2002:a17:907:7843:b0:a77:c976:2987 with SMTP id
+ a640c23a62f3a-a77c97634c7mr118785466b.29.1720174052968; Fri, 05 Jul 2024
+ 03:07:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240701110241.2005222-11-smostafa@google.com>
-X-TUID: nb+VwpiP7Tfw
+References: <20240705084047.857176-1-alex.bennee@linaro.org> <20240705084047.857176-36-alex.bennee@linaro.org>
+In-Reply-To: <20240705084047.857176-36-alex.bennee@linaro.org>
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Date: Fri, 5 Jul 2024 13:07:17 +0300
+Message-ID: <CAAjaMXb5Gs_gcyxK3v+KSgFRyau=txggYX9KJorXcbKJjWU9PQ@mail.gmail.com>
+Subject: Re: [PATCH v2 35/40] target/arm: Factor out code for setting MTE TCF0 field
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>, 
+	Beraldo Leal <bleal@redhat.com>, David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>, 
+	Thomas Huth <thuth@redhat.com>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+	Aleksandar Rikalo <arikalo@gmail.com>, Mads Ynddal <mads@ynddal.dk>, Yanan Wang <wangyanan55@huawei.com>, 
+	Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, 
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Paul Burton <paulburton@kernel.org>, 
+	Stefan Hajnoczi <stefanha@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
+	Gustavo Romero <gustavo.romero@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: iuwgknvMCNXO
 
-On Mon, Jul 01, 2024 at 11:02:32AM +0000, Mostafa Saleh wrote:
-> This patch adds support for nested (combined) TLB entries.
-> The main function combine_tlb() is not used here but in the next
-> patches, but to simplify the patches it is introduced first.
-> 
-> Main changes:
-> 1) New field added in the SMMUTLBEntry struct: parent_perm, for
->    nested TLB, holds the stage-2 permission, this can be used to know
->    the origin of a permission fault from a cached entry as caching
->    the “and” of the permissions loses this information.
-> 
->    SMMUPTWEventInfo is used to hold information about PTW faults so
->    the event can be populated, the value of stage used to be set
->    based on the current stage for TLB permission faults, however
->    with the parent_perm, it is now set based on which perm has
->    the missing permission
-> 
->    When nesting is not enabled it has the same value as perm which
->    doesn't change the logic.
-> 
-> 2) As combined TLB implementation is used, the combination logic
->    chooses:
->    - tg and level from the entry which has the smallest addr_mask.
->    - Based on that the iova that would be cached is recalculated.
->    - Translated_addr is chosen from stage-2.
-> 
-> Signed-off-by: Mostafa Saleh <smostafa@google.com>
-
-Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-
+On Fri, 5 Jul 2024 at 11:47, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+>
+> From: Gustavo Romero <gustavo.romero@linaro.org>
+>
+> Factor out the code used for setting the MTE TCF0 field from the prctl
+> code into a convenient function. Other subsystems, like gdbstub, need to
+> set this field as well, so keep it as a separate function to avoid
+> duplication and ensure consistency in how this field is set across the
+> board.
+>
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> Message-Id: <20240628050850.536447-7-gustavo.romero@linaro.org>
+> [AJB: clean-up includes, move MTE defines]
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>
 > ---
->  hw/arm/smmu-common.c         | 37 ++++++++++++++++++++++++++++++++----
->  include/hw/arm/smmu-common.h |  1 +
->  2 files changed, 34 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 0840b5cffd..24b7d09e2b 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -426,7 +426,8 @@ static int smmu_ptw_64_s1(SMMUTransCfg *cfg,
->          tlbe->entry.translated_addr = gpa;
->          tlbe->entry.iova = iova & ~mask;
->          tlbe->entry.addr_mask = mask;
-> -        tlbe->entry.perm = PTE_AP_TO_PERM(ap);
-> +        tlbe->parent_perm = PTE_AP_TO_PERM(ap);
-> +        tlbe->entry.perm = tlbe->parent_perm;
->          tlbe->level = level;
->          tlbe->granule = granule_sz;
->          return 0;
-> @@ -547,7 +548,8 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
->          tlbe->entry.translated_addr = gpa;
->          tlbe->entry.iova = ipa & ~mask;
->          tlbe->entry.addr_mask = mask;
-> -        tlbe->entry.perm = s2ap;
-> +        tlbe->parent_perm = s2ap;
-> +        tlbe->entry.perm = tlbe->parent_perm;
->          tlbe->level = level;
->          tlbe->granule = granule_sz;
->          return 0;
-> @@ -562,6 +564,30 @@ error:
->      return -EINVAL;
->  }
->  
+> vAJB:
+>   - clean-up includes, move MTE defines
+> ---
+>  linux-user/aarch64/mte_user_helper.h | 32 +++++++++++++++++++++++++
+>  linux-user/aarch64/target_prctl.h    | 22 ++---------------
+>  linux-user/aarch64/mte_user_helper.c | 35 ++++++++++++++++++++++++++++
+>  linux-user/syscall.c                 |  9 -------
+>  linux-user/aarch64/meson.build       |  2 ++
+>  5 files changed, 71 insertions(+), 29 deletions(-)
+>  create mode 100644 linux-user/aarch64/mte_user_helper.h
+>  create mode 100644 linux-user/aarch64/mte_user_helper.c
+>
+> diff --git a/linux-user/aarch64/mte_user_helper.h b/linux-user/aarch64/mt=
+e_user_helper.h
+> new file mode 100644
+> index 0000000000..8685e5175a
+> --- /dev/null
+> +++ b/linux-user/aarch64/mte_user_helper.h
+> @@ -0,0 +1,32 @@
 > +/*
-> + * combine S1 and S2 TLB entries into a single entry.
-> + * As a result the S1 entry is overriden with combined data.
+> + * ARM MemTag convenience functions.
+> + *
+> + * This code is licensed under the GNU GPL v2 or later.
+> + *
+> + * SPDX-License-Identifier: LGPL-2.1-or-later
 > + */
-> +static void __attribute__((unused)) combine_tlb(SMMUTLBEntry *tlbe,
-> +                                                SMMUTLBEntry *tlbe_s2,
-> +                                                dma_addr_t iova,
-> +                                                SMMUTransCfg *cfg)
+> +
+> +#ifndef AARCH64_MTE_USER_HELPER_H
+> +#define AARCH64_MTE USER_HELPER_H
+> +
+> +#ifndef PR_MTE_TCF_SHIFT
+> +# define PR_MTE_TCF_SHIFT       1
+> +# define PR_MTE_TCF_NONE        (0UL << PR_MTE_TCF_SHIFT)
+> +# define PR_MTE_TCF_SYNC        (1UL << PR_MTE_TCF_SHIFT)
+> +# define PR_MTE_TCF_ASYNC       (2UL << PR_MTE_TCF_SHIFT)
+> +# define PR_MTE_TCF_MASK        (3UL << PR_MTE_TCF_SHIFT)
+> +# define PR_MTE_TAG_SHIFT       3
+> +# define PR_MTE_TAG_MASK        (0xffffUL << PR_MTE_TAG_SHIFT)
+> +#endif
+> +
+> +/**
+> + * arm_set_mte_tcf0 - Set TCF0 field in SCTLR_EL1 register
+> + * @env: The CPU environment
+> + * @value: The value to be set for the Tag Check Fault in EL0 field.
+> + *
+> + * Only SYNC and ASYNC modes can be selected. If ASYMM mode is given, th=
+e SYNC
+> + * mode is selected instead. So, there is no way to set the ASYMM mode.
+> + */
+> +void arm_set_mte_tcf0(CPUArchState *env, abi_long value);
+> +
+> +#endif /* AARCH64_MTE_USER_HELPER_H */
+> diff --git a/linux-user/aarch64/target_prctl.h b/linux-user/aarch64/targe=
+t_prctl.h
+> index aa8e203c15..ed75b9e4b5 100644
+> --- a/linux-user/aarch64/target_prctl.h
+> +++ b/linux-user/aarch64/target_prctl.h
+> @@ -7,6 +7,7 @@
+>  #define AARCH64_TARGET_PRCTL_H
+>
+>  #include "target/arm/cpu-features.h"
+> +#include "mte_user_helper.h"
+>
+>  static abi_long do_prctl_sve_get_vl(CPUArchState *env)
+>  {
+> @@ -173,26 +174,7 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArc=
+hState *env, abi_long arg2)
+>      env->tagged_addr_enable =3D arg2 & PR_TAGGED_ADDR_ENABLE;
+>
+>      if (cpu_isar_feature(aa64_mte, cpu)) {
+> -        /*
+> -         * Write PR_MTE_TCF to SCTLR_EL1[TCF0].
+> -         *
+> -         * The kernel has a per-cpu configuration for the sysadmin,
+> -         * /sys/devices/system/cpu/cpu<N>/mte_tcf_preferred,
+> -         * which qemu does not implement.
+> -         *
+> -         * Because there is no performance difference between the modes,=
+ and
+> -         * because SYNC is most useful for debugging MTE errors, choose =
+SYNC
+> -         * as the preferred mode.  With this preference, and the way the=
+ API
+> -         * uses only two bits, there is no way for the program to select
+> -         * ASYMM mode.
+> -         */
+> -        unsigned tcf =3D 0;
+> -        if (arg2 & PR_MTE_TCF_SYNC) {
+> -            tcf =3D 1;
+> -        } else if (arg2 & PR_MTE_TCF_ASYNC) {
+> -            tcf =3D 2;
+> -        }
+> -        env->cp15.sctlr_el[1] =3D deposit64(env->cp15.sctlr_el[1], 38, 2=
+, tcf);
+> +        arm_set_mte_tcf0(env, arg2);
+>
+>          /*
+>           * Write PR_MTE_TAG to GCR_EL1[Exclude].
+> diff --git a/linux-user/aarch64/mte_user_helper.c b/linux-user/aarch64/mt=
+e_user_helper.c
+> new file mode 100644
+> index 0000000000..a5b1c8503b
+> --- /dev/null
+> +++ b/linux-user/aarch64/mte_user_helper.c
+> @@ -0,0 +1,35 @@
+> +/*
+> + * ARM MemTag convenience functions.
+> + *
+> + * This code is licensed under the GNU GPL v2 or later.
+> + *
+> + * SPDX-License-Identifier: LGPL-2.1-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu.h"
+> +#include "mte_user_helper.h"
+> +
+> +void arm_set_mte_tcf0(CPUArchState *env, abi_long value)
 > +{
-> +    if (tlbe_s2->entry.addr_mask < tlbe->entry.addr_mask) {
-> +        tlbe->entry.addr_mask = tlbe_s2->entry.addr_mask;
-> +        tlbe->granule = tlbe_s2->granule;
-> +        tlbe->level = tlbe_s2->level;
+> +    /*
+> +     * Write PR_MTE_TCF to SCTLR_EL1[TCF0].
+> +     *
+> +     * The kernel has a per-cpu configuration for the sysadmin,
+> +     * /sys/devices/system/cpu/cpu<N>/mte_tcf_preferred,
+> +     * which qemu does not implement.
+> +     *
+> +     * Because there is no performance difference between the modes, and
+> +     * because SYNC is most useful for debugging MTE errors, choose SYNC
+> +     * as the preferred mode.  With this preference, and the way the API
+> +     * uses only two bits, there is no way for the program to select
+> +     * ASYMM mode.
+> +     */
+> +    unsigned tcf =3D 0;
+> +    if (value & PR_MTE_TCF_SYNC) {
+> +        tcf =3D 1;
+> +    } else if (value & PR_MTE_TCF_ASYNC) {
+> +        tcf =3D 2;
 > +    }
-> +
-> +    tlbe->entry.translated_addr = CACHED_ENTRY_TO_ADDR(tlbe_s2,
-> +                                    tlbe->entry.translated_addr);
-> +
-> +    tlbe->entry.iova = iova & ~tlbe->entry.addr_mask;
-> +    /* parent_perm has s2 perm while perm keeps s1 perm. */
-> +    tlbe->parent_perm = tlbe_s2->entry.perm;
-> +    return;
+> +    env->cp15.sctlr_el[1] =3D deposit64(env->cp15.sctlr_el[1], 38, 2, tc=
+f);
 > +}
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index e2804312fc..b8c278b91d 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -6281,15 +6281,6 @@ abi_long do_arch_prctl(CPUX86State *env, int code,=
+ abi_ulong addr)
+>  # define PR_GET_TAGGED_ADDR_CTRL 56
+>  # define PR_TAGGED_ADDR_ENABLE  (1UL << 0)
+>  #endif
+> -#ifndef PR_MTE_TCF_SHIFT
+> -# define PR_MTE_TCF_SHIFT       1
+> -# define PR_MTE_TCF_NONE        (0UL << PR_MTE_TCF_SHIFT)
+> -# define PR_MTE_TCF_SYNC        (1UL << PR_MTE_TCF_SHIFT)
+> -# define PR_MTE_TCF_ASYNC       (2UL << PR_MTE_TCF_SHIFT)
+> -# define PR_MTE_TCF_MASK        (3UL << PR_MTE_TCF_SHIFT)
+> -# define PR_MTE_TAG_SHIFT       3
+> -# define PR_MTE_TAG_MASK        (0xffffUL << PR_MTE_TAG_SHIFT)
+> -#endif
+>  #ifndef PR_SET_IO_FLUSHER
+>  # define PR_SET_IO_FLUSHER 57
+>  # define PR_GET_IO_FLUSHER 58
+> diff --git a/linux-user/aarch64/meson.build b/linux-user/aarch64/meson.bu=
+ild
+> index 248c578d15..f75bb3cd75 100644
+> --- a/linux-user/aarch64/meson.build
+> +++ b/linux-user/aarch64/meson.build
+> @@ -9,3 +9,5 @@ vdso_le_inc =3D gen_vdso.process('vdso-le.so',
+>                                 extra_args: ['-r', '__kernel_rt_sigreturn=
+'])
+>
+>  linux_user_ss.add(when: 'TARGET_AARCH64', if_true: [vdso_be_inc, vdso_le=
+_inc])
 > +
->  /**
->   * smmu_ptw - Walk the page tables for an IOVA, according to @cfg
->   *
-> @@ -639,9 +665,12 @@ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t addr,
->  
->      cached_entry = smmu_iotlb_lookup(bs, cfg, &tt_combined, aligned_addr);
->      if (cached_entry) {
-> -        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm & IOMMU_WO)) {
-> +        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm &
-> +            cached_entry->parent_perm & IOMMU_WO)) {
->              info->type = SMMU_PTW_ERR_PERMISSION;
-> -            info->stage = cfg->stage;
-> +            info->stage = !(cached_entry->entry.perm & IOMMU_WO) ?
-> +                          SMMU_STAGE_1 :
-> +                          SMMU_STAGE_2;
->              return NULL;
->          }
->          return cached_entry;
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index 09d3b9e734..1db566d451 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -77,6 +77,7 @@ typedef struct SMMUTLBEntry {
->      IOMMUTLBEntry entry;
->      uint8_t level;
->      uint8_t granule;
-> +    IOMMUAccessFlags parent_perm;
->  } SMMUTLBEntry;
->  
->  /* Stage-2 configuration. */
-> -- 
-> 2.45.2.803.g4e1b14247a-goog
-> 
+> +linux_user_ss.add(when: 'TARGET_AARCH64', if_true: [files('mte_user_help=
+er.c')])
+> --
+> 2.39.2
+>
+
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>

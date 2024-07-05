@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a73e52c2cb5sm578758266b.16.2024.07.05.01.40.55
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a77c3ef218bsm76340466b.71.2024.07.05.01.40.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 05 Jul 2024 01:41:00 -0700 (PDT)
+        Fri, 05 Jul 2024 01:41:01 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A390462139;
-	Fri,  5 Jul 2024 09:40:49 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 6572862155;
+	Fri,  5 Jul 2024 09:40:50 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -30,51 +30,61 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Stefan Hajnoczi <stefanha@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v2 20/40] gitlab: don't bother with KVM for TCI builds
-Date: Fri,  5 Jul 2024 09:40:27 +0100
-Message-Id: <20240705084047.857176-21-alex.bennee@linaro.org>
+Subject: [PATCH v2 28/40] plugins: Free CPUPluginState before destroying vCPU state
+Date: Fri,  5 Jul 2024 09:40:35 +0100
+Message-Id: <20240705084047.857176-29-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240705084047.857176-1-alex.bennee@linaro.org>
 References: <20240705084047.857176-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kISaT6SgEr2A
+X-TUID: VXDFzU2R533F
 
-In fact any other accelerator would be pointless as the point is to
-exercise the TCI accelerator anyway.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+cpu::plugin_state is allocated in cpu_common_initfn() when
+the vCPU state is created. Release it in cpu_common_finalize()
+when we are done.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20240606124010.2460-3-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/buildtest.yml   | 2 +-
- .gitlab-ci.d/crossbuilds.yml | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ include/qemu/plugin.h | 3 +++
+ hw/core/cpu-common.c  | 5 +++++
+ 2 files changed, 8 insertions(+)
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index 425fc6479b..e3a0758bd9 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -635,7 +635,7 @@ build-tci:
-     - TARGETS="aarch64 arm hppa m68k microblaze ppc64 s390x x86_64"
-     - mkdir build
-     - cd build
--    - ../configure --enable-tcg-interpreter --disable-docs --disable-gtk --disable-vnc
-+    - ../configure --enable-tcg-interpreter --disable-kvm --disable-docs --disable-gtk --disable-vnc
-         --target-list="$(for tg in $TARGETS; do echo -n ${tg}'-softmmu '; done)"
-         || { cat config.log meson-logs/meson-log.txt && exit 1; }
-     - make -j"$JOBS"
-diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
-index 3de0341afe..cb499e4ee0 100644
---- a/.gitlab-ci.d/crossbuilds.yml
-+++ b/.gitlab-ci.d/crossbuilds.yml
-@@ -68,7 +68,7 @@ cross-i686-tci:
-   variables:
-     IMAGE: debian-i686-cross
-     ACCEL: tcg-interpreter
--    EXTRA_CONFIGURE_OPTS: --target-list=i386-softmmu,i386-linux-user,aarch64-softmmu,aarch64-linux-user,ppc-softmmu,ppc-linux-user --disable-plugins
-+    EXTRA_CONFIGURE_OPTS: --target-list=i386-softmmu,i386-linux-user,aarch64-softmmu,aarch64-linux-user,ppc-softmmu,ppc-linux-user --disable-plugins --disable-kvm
-     MAKE_CHECK_ARGS: check check-tcg
+diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
+index bc5aef979e..af5f9db469 100644
+--- a/include/qemu/plugin.h
++++ b/include/qemu/plugin.h
+@@ -149,6 +149,9 @@ struct CPUPluginState {
  
- cross-mipsel-system:
+ /**
+  * qemu_plugin_create_vcpu_state: allocate plugin state
++ *
++ * The returned data must be released with g_free()
++ * when no longer required.
+  */
+ CPUPluginState *qemu_plugin_create_vcpu_state(void);
+ 
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index f131cde2c0..8f6cb64da3 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -283,6 +283,11 @@ static void cpu_common_finalize(Object *obj)
+ {
+     CPUState *cpu = CPU(obj);
+ 
++#ifdef CONFIG_PLUGIN
++    if (tcg_enabled()) {
++        g_free(cpu->plugin_state);
++    }
++#endif
+     g_array_free(cpu->gdb_regs, TRUE);
+     qemu_lockcnt_destroy(&cpu->in_ioctl_lock);
+     qemu_mutex_destroy(&cpu->work_mutex);
 -- 
 2.39.2

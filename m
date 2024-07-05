@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a72aaf5290dsm660596666b.48.2024.07.05.01.40.50
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a76841c4ffcsm261248866b.41.2024.07.05.01.40.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 05 Jul 2024 01:40:52 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 8CE49620ED;
+	by draig.lan (Postfix) with ESMTP id 5BE075F9EB;
 	Fri,  5 Jul 2024 09:40:48 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -31,79 +31,124 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Laurent Vivier <laurent@vivier.eu>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 09/40] tests/tcg/aarch64: Explicitly specify register width
-Date: Fri,  5 Jul 2024 09:40:16 +0100
-Message-Id: <20240705084047.857176-10-alex.bennee@linaro.org>
+Subject: [PATCH v2 07/40] tests/tcg: Adjust variable defintion from cc-option
+Date: Fri,  5 Jul 2024 09:40:14 +0100
+Message-Id: <20240705084047.857176-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240705084047.857176-1-alex.bennee@linaro.org>
 References: <20240705084047.857176-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: IGjlCWUE91q8
+X-TUID: 59PNqDLTuRtr
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 
-clang version 18.1.6 assumes a register is 64-bit by default and
-complains if a 32-bit value is given. Explicitly specify register width
-when passing a 32-bit value.
+Define the variable to the compiler flag used, not "y".
+This avoids replication of the compiler flag itself.
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20240627-tcg-v2-3-1690a813348e@daynix.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20240630190050.160642-5-richard.henderson@linaro.org>
+Message-Id: <20240630190050.160642-3-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/aarch64/bti-1.c | 6 +++---
- tests/tcg/aarch64/bti-3.c | 6 +++---
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ tests/tcg/Makefile.target                 |  2 +-
+ tests/tcg/aarch64/Makefile.softmmu-target |  2 +-
+ tests/tcg/aarch64/Makefile.target         | 15 ++++++++-------
+ 3 files changed, 10 insertions(+), 9 deletions(-)
 
-diff --git a/tests/tcg/aarch64/bti-1.c b/tests/tcg/aarch64/bti-1.c
-index 99a879af23..1fada8108d 100644
---- a/tests/tcg/aarch64/bti-1.c
-+++ b/tests/tcg/aarch64/bti-1.c
-@@ -17,15 +17,15 @@ static void skip2_sigill(int sig, siginfo_t *info, ucontext_t *uc)
- #define BTI_JC    "hint #38"
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index f21be50d3b..cb8cfeb6da 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -49,7 +49,7 @@ quiet-command = $(call quiet-@,$2,$3)$1
  
- #define BTYPE_1(DEST) \
--    asm("mov %0,#1; adr x16, 1f; br x16; 1: " DEST "; mov %0,#0" \
-+    asm("mov %w0,#1; adr x16, 1f; br x16; 1: " DEST "; mov %w0,#0" \
-         : "=r"(skipped) : : "x16")
+ cc-test = $(CC) -Werror $1 -c -o /dev/null -xc /dev/null >/dev/null 2>&1
+ cc-option = if $(call cc-test, $1); then \
+-    echo "$(TARGET_PREFIX)$1 detected" && echo "$(strip $2)=y" >&3; else \
++    echo "$(TARGET_PREFIX)$1 detected" && echo "$(strip $2)=$(strip $1)" >&3; else \
+     echo "$(TARGET_PREFIX)$1 not detected"; fi
  
- #define BTYPE_2(DEST) \
--    asm("mov %0,#1; adr x16, 1f; blr x16; 1: " DEST "; mov %0,#0" \
-+    asm("mov %w0,#1; adr x16, 1f; blr x16; 1: " DEST "; mov %w0,#0" \
-         : "=r"(skipped) : : "x16", "x30")
+ # $1 = test name, $2 = cmd, $3 = desc
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index 4b03ef602e..39d3f961c5 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -81,7 +81,7 @@ run-memory-replay: memory-replay run-memory-record
+ EXTRA_RUNS+=run-memory-replay
  
- #define BTYPE_3(DEST) \
--    asm("mov %0,#1; adr x15, 1f; br x15; 1: " DEST "; mov %0,#0" \
-+    asm("mov %w0,#1; adr x15, 1f; br x15; 1: " DEST "; mov %w0,#0" \
-         : "=r"(skipped) : : "x15")
+ ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+-pauth-3: CFLAGS += -march=armv8.3-a
++pauth-3: CFLAGS += $(CROSS_CC_HAS_ARMV8_3)
+ else
+ pauth-3:
+ 	$(call skip-test, "BUILD of $@", "missing compiler support")
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 4ecbca6a41..11ccde5579 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -32,17 +32,17 @@ config-cc.mak: Makefile
  
- #define TEST(WHICH, DEST, EXPECT) \
-diff --git a/tests/tcg/aarch64/bti-3.c b/tests/tcg/aarch64/bti-3.c
-index 8c534c09d7..6a3bd037bc 100644
---- a/tests/tcg/aarch64/bti-3.c
-+++ b/tests/tcg/aarch64/bti-3.c
-@@ -11,15 +11,15 @@ static void skip2_sigill(int sig, siginfo_t *info, ucontext_t *uc)
- }
+ ifneq ($(CROSS_CC_HAS_ARMV8_2),)
+ AARCH64_TESTS += dcpop
+-dcpop: CFLAGS += -march=armv8.2-a
++dcpop: CFLAGS += $(CROSS_CC_HAS_ARMV8_2)
+ endif
+ ifneq ($(CROSS_CC_HAS_ARMV8_5),)
+ AARCH64_TESTS += dcpodp
+-dcpodp: CFLAGS += -march=armv8.5-a
++dcpodp: CFLAGS += $(CROSS_CC_HAS_ARMV8_5)
+ endif
  
- #define BTYPE_1() \
--    asm("mov %0,#1; adr x16, 1f; br x16; 1: hint #25; mov %0,#0" \
-+    asm("mov %w0,#1; adr x16, 1f; br x16; 1: hint #25; mov %w0,#0" \
-         : "=r"(skipped) : : "x16", "x30")
+ # Pauth Tests
+ ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+ AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5 test-2375
+-pauth-%: CFLAGS += -march=armv8.3-a
++pauth-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_3)
+ test-2375: CFLAGS += -march=armv8.3-a
+ run-pauth-1: QEMU_OPTS += -cpu max
+ run-pauth-2: QEMU_OPTS += -cpu max
+@@ -55,7 +55,7 @@ endif
+ # bti-1 tests the elf notes, so we require special compiler support.
+ ifneq ($(CROSS_CC_HAS_ARMV8_BTI),)
+ AARCH64_TESTS += bti-1 bti-3
+-bti-1 bti-3: CFLAGS += -fno-stack-protector -mbranch-protection=standard
++bti-1 bti-3: CFLAGS += -fno-stack-protector $(CROSS_CC_HAS_ARMV8_BTI)
+ bti-1 bti-3: LDFLAGS += -nostdlib
+ endif
+ # bti-2 tests PROT_BTI, so no special compiler support required.
+@@ -64,12 +64,13 @@ AARCH64_TESTS += bti-2
+ # MTE Tests
+ ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
+ AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7
+-mte-%: CFLAGS += -march=armv8.5-a+memtag
++mte-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_MTE)
+ endif
  
- #define BTYPE_2() \
--    asm("mov %0,#1; adr x16, 1f; blr x16; 1: hint #25; mov %0,#0" \
-+    asm("mov %w0,#1; adr x16, 1f; blr x16; 1: hint #25; mov %w0,#0" \
-         : "=r"(skipped) : : "x16", "x30")
+ # SME Tests
+ ifneq ($(CROSS_AS_HAS_ARMV9_SME),)
+ AARCH64_TESTS += sme-outprod1 sme-smopa-1 sme-smopa-2
++sme-outprod1 sme-smopa-1 sme-smopa-2: CFLAGS += $(CROSS_AS_HAS_ARMV9_SME)
+ endif
  
- #define BTYPE_3() \
--    asm("mov %0,#1; adr x15, 1f; br x15; 1: hint #25; mov %0,#0" \
-+    asm("mov %w0,#1; adr x15, 1f; br x15; 1: hint #25; mov %w0,#0" \
-         : "=r"(skipped) : : "x15", "x30")
+ # System Registers Tests
+@@ -99,7 +100,7 @@ TESTS += sha512-vector
+ ifneq ($(CROSS_CC_HAS_SVE),)
+ # SVE ioctl test
+ AARCH64_TESTS += sve-ioctls
+-sve-ioctls: CFLAGS+=-march=armv8.1-a+sve
++sve-ioctls: CFLAGS += $(CROSS_CC_HAS_SVE)
  
- #define TEST(WHICH, EXPECT) \
+ sha512-sve: CFLAGS=-O3 -march=armv8.1-a+sve
+ sha512-sve: sha512.c
+@@ -134,7 +135,7 @@ endif
+ 
+ ifneq ($(CROSS_CC_HAS_SVE2),)
+ AARCH64_TESTS += test-826
+-test-826: CFLAGS+=-march=armv8.1-a+sve2
++test-826: CFLAGS += $(CROSS_CC_HAS_SVE2)
+ endif
+ 
+ TESTS += $(AARCH64_TESTS)
 -- 
 2.39.2

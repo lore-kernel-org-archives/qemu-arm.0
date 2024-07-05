@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-59017354272sm192488a12.95.2024.07.05.01.40.53
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5903c7ac61csm58765a12.4.2024.07.05.01.40.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 05 Jul 2024 01:40:58 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 760E95F8AF;
+	by draig.lan (Postfix) with ESMTP id 487E76211A;
 	Fri,  5 Jul 2024 09:40:49 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -31,60 +31,49 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Laurent Vivier <laurent@vivier.eu>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH v2 18/40] tests/tcg/arm: Use vmrs/vmsr instead of mcr/mrc
-Date: Fri,  5 Jul 2024 09:40:25 +0100
-Message-Id: <20240705084047.857176-19-alex.bennee@linaro.org>
+Subject: [PATCH v2 16/40] tests/tcg/arm: Manually register allocate half-precision numbers
+Date: Fri,  5 Jul 2024 09:40:23 +0100
+Message-Id: <20240705084047.857176-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240705084047.857176-1-alex.bennee@linaro.org>
 References: <20240705084047.857176-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3+Tl88F2fxJM
+X-TUID: YSuQA6Xt3tJg
 
-From: Richard Henderson <richard.henderson@linaro.org>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-Clang 14 generates
+Clang does not allow specifying an integer as the value of a single
+precision register.  Explicitly move value from a general register.
 
-/home/rth/qemu/src/tests/tcg/arm/fcvt.c:431:9: error: invalid operand for instruction
-    asm("mrc p10, 7, r1, cr1, cr0, 0\n\t"
-        ^
-<inline asm>:1:6: note: instantiated into assembly here
-        mrc p10, 7, r1, cr1, cr0, 0
-            ^
-/home/rth/qemu/src/tests/tcg/arm/fcvt.c:432:32: error: invalid operand for instruction
-        "orr r1, r1, %[flags]\n\t"
-                               ^
-<inline asm>:3:6: note: instantiated into assembly here
-        mcr p10, 7, r1, cr1, cr0, 0
-            ^
-
-This is perhaps a clang bug, but using the neon mnemonic is clearer.
-
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+[rth: Use one single inline asm block.]
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Message-Id: <20240630190050.160642-14-richard.henderson@linaro.org>
+Message-Id: <20240630190050.160642-12-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/arm/fcvt.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ tests/tcg/arm/fcvt.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/tests/tcg/arm/fcvt.c b/tests/tcg/arm/fcvt.c
-index d8c61cd29f..ecebbb0247 100644
+index 157790e679..d8c61cd29f 100644
 --- a/tests/tcg/arm/fcvt.c
 +++ b/tests/tcg/arm/fcvt.c
-@@ -427,10 +427,9 @@ int main(int argc, char *argv[argc])
+@@ -355,7 +355,12 @@ static void convert_half_to_single(void)
  
-     /* And now with ARM alternative FP16 */
+         print_half_number(i, input);
  #if defined(__arm__)
--    /* See glibc sysdeps/arm/fpu_control.h */
--    asm("mrc p10, 7, r1, cr1, cr0, 0\n\t"
-+    asm("vmrs r1, fpscr\n\t"
-         "orr r1, r1, %[flags]\n\t"
--        "mcr p10, 7, r1, cr1, cr0, 0\n\t"
-+        "vmsr fpscr, r1"
-         : /* no output */ : [flags] "n" (1 << 26) : "r1" );
+-        asm("vcvtb.f32.f16 %0, %1" : "=w" (output) : "x" ((uint32_t)input));
++        /*
++         * Clang refuses to allocate an integer to a fp register.
++         * Perform the move from a general register by hand.
++         */
++        asm("vmov %0, %1\n\t"
++            "vcvtb.f32.f16 %0, %0" : "=w" (output) : "r" (input));
  #else
-     asm("mrs x1, fpcr\n\t"
+         asm("fcvt %s0, %h1" : "=w" (output) : "w" (input));
+ #endif
 -- 
 2.39.2

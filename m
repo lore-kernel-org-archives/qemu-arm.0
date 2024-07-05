@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-58eeabbf108sm1247721a12.93.2024.07.05.01.47.10
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-58f9d3f11ffsm573363a12.67.2024.07.05.01.47.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 05 Jul 2024 01:47:10 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 085AA62142;
-	Fri,  5 Jul 2024 09:40:50 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 5527F6217D;
+	Fri,  5 Jul 2024 09:40:51 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
@@ -29,50 +29,78 @@ Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
 	Paul Burton <paulburton@kernel.org>,
 	Stefan Hajnoczi <stefanha@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v2 24/40] plugins/lockstep: make mixed-mode safe
-Date: Fri,  5 Jul 2024 09:40:31 +0100
-Message-Id: <20240705084047.857176-25-alex.bennee@linaro.org>
+	Laurent Vivier <laurent@vivier.eu>,
+	Gustavo Romero <gustavo.romero@linaro.org>
+Subject: [PATCH v2 37/40] gdbstub: Pass CPU context to command handler
+Date: Fri,  5 Jul 2024 09:40:44 +0100
+Message-Id: <20240705084047.857176-38-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240705084047.857176-1-alex.bennee@linaro.org>
 References: <20240705084047.857176-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 1NJuuDYW3pgC
+X-TUID: 5td9/D/I+5/M
 
-The ExecState is shared across the socket and if we want to compare
-say 64 bit and 32 bit binaries we need the two to use the same sizes
-for things.
+From: Gustavo Romero <gustavo.romero@linaro.org>
 
-Message-Id: <20240628124258.832466-11-alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Allow passing the current CPU context to command handlers via user_ctx
+when the handler requires it.
+
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20240628050850.536447-9-gustavo.romero@linaro.org>
 ---
- contrib/plugins/lockstep.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/gdbstub/commands.h | 3 +++
+ gdbstub/gdbstub.c          | 7 ++++++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
-index 111ec3fa27..761bcdf363 100644
---- a/contrib/plugins/lockstep.c
-+++ b/contrib/plugins/lockstep.c
-@@ -57,7 +57,7 @@ typedef struct {
- /* The execution state we compare */
- typedef struct {
-     uint64_t pc;
--    unsigned long insn_count;
-+    uint64_t insn_count;
- } ExecState;
+diff --git a/include/gdbstub/commands.h b/include/gdbstub/commands.h
+index e51f276b40..f3058f9dda 100644
+--- a/include/gdbstub/commands.h
++++ b/include/gdbstub/commands.h
+@@ -54,6 +54,8 @@ typedef union GdbCmdVariant {
+  * "stop reply" packet. The list of commands that accept such response is
+  * defined at the GDB Remote Serial Protocol documentation. See:
+  * https://sourceware.org/gdb/onlinedocs/gdb/Stop-Reply-Packets.html#Stop-Reply-Packets.
++ *
++ * @need_cpu_context: Pass current CPU context to command handler via user_ctx.
+  */
+ typedef struct GdbCmdParseEntry {
+     GdbCmdHandler handler;
+@@ -61,6 +63,7 @@ typedef struct GdbCmdParseEntry {
+     bool cmd_startswith;
+     const char *schema;
+     bool allow_stop_reply;
++    bool need_cpu_context;
+ } GdbCmdParseEntry;
  
- typedef struct {
-@@ -148,7 +148,7 @@ static void report_divergance(ExecState *us, ExecState *them)
+ /**
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index b1ca253f97..5c1612ed2a 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -938,6 +938,7 @@ static bool process_string_cmd(const char *data,
  
-         g_string_printf(out,
-                         "Δ insn_count @ 0x%016" PRIx64
--                        " (%ld) vs 0x%016" PRIx64 " (%ld)\n",
-+                        " (%"PRId64") vs 0x%016" PRIx64 " (%"PRId64")\n",
-                         us->pc, us->insn_count, them->pc, them->insn_count);
+     for (i = 0; i < num_cmds; i++) {
+         const GdbCmdParseEntry *cmd = &cmds[i];
++        void *user_ctx = NULL;
+         g_assert(cmd->handler && cmd->cmd);
  
-         for (entry = log, i = 0;
+         if ((cmd->cmd_startswith && !startswith(data, cmd->cmd)) ||
+@@ -952,8 +953,12 @@ static bool process_string_cmd(const char *data,
+             }
+         }
+ 
++        if (cmd->need_cpu_context) {
++            user_ctx = (void *)gdbserver_state.g_cpu;
++        }
++
+         gdbserver_state.allow_stop_reply = cmd->allow_stop_reply;
+-        cmd->handler(params, NULL);
++        cmd->handler(params, user_ctx);
+         return true;
+     }
+ 
 -- 
 2.39.2

@@ -1,76 +1,77 @@
-Received: by 2002:a05:7022:ef0e:b0:81:d0c2:543b with SMTP id qy14csp3967814dlb;
-        Thu, 4 Jul 2024 20:33:19 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXXOoPU5GBp9OO4Jfxj3uHuwlQygWdpM+jZ0aY+59W7he8W6cVKrkdVFmf5Imq5Ywaf0+6WBQ8hycPiVpJxR/O06KqS89XR
-X-Google-Smtp-Source: AGHT+IGXzQloGSB/N/gQkZN+LfdelIh49jZcS6MQHttCjuESibKhThsuhJE32s8bDRkTCmYO696b
-X-Received: by 2002:a05:622a:451:b0:447:c7e4:6b42 with SMTP id d75a77b69052e-447cbee2e10mr43632241cf.22.1720150398943;
-        Thu, 04 Jul 2024 20:33:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720150398; cv=none;
+Received: by 2002:a05:7022:ef0e:b0:81:d0c2:543b with SMTP id qy14csp3969090dlb;
+        Thu, 4 Jul 2024 20:37:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUBR1XgE2XJFa8/r8qPmgDn4W194s+HP3fx2kx9YbK4Be69MfPyy0oBdPx6tWJgpo54aYPm/kGLe4/Z43qQBkTeduTq2Rwf
+X-Google-Smtp-Source: AGHT+IFBvrEdxDMjD+iwLd3fh81kqJbanLbIo1s8Y5xvbOWHdVdJA54RZDbUleNfAOTlX1HSfZsW
+X-Received: by 2002:a05:690c:827:b0:648:3fb2:753b with SMTP id 00721157ae682-652d6d9a2a6mr33092337b3.24.1720150642666;
+        Thu, 04 Jul 2024 20:37:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720150642; cv=none;
         d=google.com; s=arc-20160816;
-        b=KXWxyinNaNtRLKCF+CPFt8p/8oG3jCiILjoujKq3udr7TKeGW9PC5OYJvK9JIGDoVT
-         IdejrnROmNcimlgy3xzkLH1zi8aVWmQxWjgXqm8AYQDSGOj+uZ8ZdTuKVsItXhyTReEr
-         +V95t+GG0IxNlbIPN3pQ5Ub58WqJFhAc5W9UP0cboO5kJPPibC4cgnoxDHXsru5DRvyh
-         N3j72jwVUR0CDAiZU19NZFBT5aTbOyqwi3qpT0UmaW+ses2TGI/U4Az3ArqKuW78iBI2
-         iRC7EZ/Mx3zx8LZaz/g/wADR02XpOPIR0+MUydjf5F7B7ROp8tQ1bJXMc0bitjvcmTE3
-         Mr1Q==
+        b=e8YetPdUzlC4/UOBuvRHAFXj+NLjLqjVTBR/ce2721/Zd06Xqu1Zrm2YF0pNWJ9PP2
+         xeQE2g6Ub70HaQbYzALT3J7XlV61TaulThielT9BYgnIXVZqKws61jnIdacQWXFjJG3S
+         8nH6Qs9sCZakAieatwADc8nl/Q4Oa4fMw5T4AURSHUgFW4tCJ++LjAhyw0s5fkaju6Eq
+         u069c0SAahtum5E5slCHF8Z5Ky/1UxCw+neX3bxI1jfRCjc1JJy4II6xAZP0bB2yE6tH
+         5ax78OcS4bIrlssBVct7jdFgPgMVMWfVoEZptfytZUUIHwtLShLylHR49hCJE24z987C
+         866A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:user-agent
          :content-transfer-encoding:references:in-reply-to:date:cc:to:from
          :subject:message-id:dkim-signature;
-        bh=rn2Yzaxu21Pytvb8nxB/BQME331CBEVyQ1+oolTZvXQ=;
+        bh=qrD3APwVTbEb6+UMXnlZvDWL8hR6derTmvhNktZVIG4=;
         fh=XYd3nlz1imZB8xXeQHM+01qZJ8iudtgMnw6k7asy4OQ=;
-        b=vieB45G6D2dY1ZZ7BxjqnBc32hMOqsyV5wFC2FKEBXZCdTZp8P+PkHLFv7EPq5hf/T
-         tWrUgjhww/hROqk/KxIW+4d5sO97PC8QHuTobzijVbdZBZ+X0ZpU9w4aeDQDpB2x/cyj
-         WOSCxCHfwoLzUy6hfSyjOd8WTaD+xALQixUfAQVYAAUKFxiGRe8O+53W33R13R2GoD3r
-         JzlrCNKwnhTzrqJUwAXl2LxXzWCqSOzJy7IiulCS2FS+wp/1NmJnw/fjKi26F/5DDBir
-         FoEI+a9Ue7YQuVQFhegwL1ozn10Ta8D68PzzZPN5wOcU247k2mDY7RBS245KDnXTDQ41
-         b3nQ==;
+        b=vEhAOvgLmoFLbElov5AHZPfXJoAQqvfOmi7eQW3wd6G2koHwGvF+gyyhmYDXMBHuxJ
+         SLEoejPz/EZkAT/3i8P2LFCqFDIHxxQK/DV4o43poMiT9dbEwOrSpnSR4Qzf4kLDyKBr
+         fCE9tFLo9G5EOnLpSYPgJGXF3gqBuADE2ktQLSUw6UeN6WvFtAH5kMqeYARVc6BlUdG1
+         G1PL1Mbh8pxGzSXV5SIkeaV+UWgCmi3fzCYKGPzwrEQx99KuJUHattg5nkelazPnq204
+         uilAns2Fs2se+vB/O/2brMaAEx1Qy1CC37cISaY8rCb38Mq6Ud5M0w/T0rSJijyYe1p1
+         dxIg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=dCGit+Ra;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=hloTUKUj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4466dda217csi125548761cf.102.2024.07.04.20.33.18
+        by mx.google.com with ESMTPS id af79cd13be357-79d78a29e99si1507545885a.748.2024.07.04.20.37.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jul 2024 20:33:18 -0700 (PDT)
+        Thu, 04 Jul 2024 20:37:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=dCGit+Ra;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=hloTUKUj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sPZhC-0004dp-8G; Thu, 04 Jul 2024 23:33:15 -0400
+	id 1sPZkn-0006i6-LB; Thu, 04 Jul 2024 23:36:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1sPZhA-0004Yl-2e; Thu, 04 Jul 2024 23:33:12 -0400
+ id 1sPZkm-0006hp-J9; Thu, 04 Jul 2024 23:36:56 -0400
 Received: from pi.codeconstruct.com.au ([203.29.241.158]
  helo=codeconstruct.com.au)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1sPZh8-0003jy-7W; Thu, 04 Jul 2024 23:33:11 -0400
+ id 1sPZkk-0007qi-S8; Thu, 04 Jul 2024 23:36:56 -0400
 Received: from [192.168.68.112]
  (ppp118-210-145-155.adl-adc-lon-bras33.tpg.internode.on.net
  [118.210.145.155])
- by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 661992014E;
- Fri,  5 Jul 2024 11:33:06 +0800 (AWST)
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 749522014E;
+ Fri,  5 Jul 2024 11:36:50 +0800 (AWST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1720150387;
- bh=rn2Yzaxu21Pytvb8nxB/BQME331CBEVyQ1+oolTZvXQ=;
+ d=codeconstruct.com.au; s=2022a; t=1720150611;
+ bh=qrD3APwVTbEb6+UMXnlZvDWL8hR6derTmvhNktZVIG4=;
  h=Subject:From:To:Cc:Date:In-Reply-To:References;
- b=dCGit+Raa74S1yXN4+56h/nNGy59Fw3n4A4e/iMYVe5HIP7jN2DyVH1uc4xLmvm+4
- 9aJnmcDDrBLtioMyruBkCxPjoICGb2Y/TcDw2Or5Z0NAIYszvS9E9cvPBPP5QR5qak
- wHySX8QSE9uUNW9Y4qFXHIKYi4XObPh2fhiroeA6KycIqke8A8AU/a9/OwOHK7vrkr
- HXpGmUSmJOc7WPjy/5ss9sHCsbv+x2WgF7upeNQ72Adwx9E4ngVtwlaEMtFPOvBFbA
- Vm/KFq5sswSjpmd9vw+6sKro9yHthNqeM7pa7CcqnEK83F3BSZiwIRGuU301pZgT2+
- AFKq6xRaS3mSw==
-Message-ID: <d33ddb1a32b0987193f60f82577d541cf81c1c3b.camel@codeconstruct.com.au>
-Subject: Re: [PATCH 2/8] aspeed: Load eMMC first boot area as a boot rom
+ b=hloTUKUjB1hfce45LdMBEgN3FArVjPsw+wV9r4vJk5fYS1gNAJAEXNc4hkxVsl/QO
+ cb0Dw/ETc9IjGN40nIh7LrDTFcNhShH8uFQpicSJSWlSJEtvfxiEF/LlqIUtePTcyU
+ RKFllkwycrFbDAatPlmiMXb5uHPmx+OvSZ6Q4C0L5LrK8ahskKJz4iPd7NiFuUvcxR
+ 5O4GL94ottZD63QFQhL5b+jT2QEaw2neF6OqjVgdQPuMj/zHUR7H912VdDRXq8a118
+ lJcImNOdiEVmW6JoVoJ5veB41XXFfEkpIU+RthtngBXP1sUaehm4zmaFgz7Jt4Ugd4
+ HoOOsJ6dAYtgQ==
+Message-ID: <ba8b451ff51446c114fac96daa6e81abddf952a8.camel@codeconstruct.com.au>
+Subject: Re: [PATCH 3/8] aspeed/scu: Add boot-from-eMMC HW strapping bit for
+ AST2600 SoC
 From: Andrew Jeffery <andrew@codeconstruct.com.au>
 To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
  qemu-arm@nongnu.org,  qemu-devel@nongnu.org
@@ -79,10 +80,10 @@ Cc: Joel Stanley <joel@jms.id.au>, Steven Lee <steven_lee@aspeedtech.com>,
  Maydell <peter.maydell@linaro.org>, Philippe
  =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Date: Fri, 05 Jul 2024 13:03:05 +0930
-In-Reply-To: <20240704053651.1100732-3-clg@redhat.com>
+Date: Fri, 05 Jul 2024 13:06:49 +0930
+In-Reply-To: <20240704053651.1100732-4-clg@redhat.com>
 References: <20240704053651.1100732-1-clg@redhat.com>
- <20240704053651.1100732-3-clg@redhat.com>
+ <20240704053651.1100732-4-clg@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.46.4-2 
@@ -109,16 +110,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7z6mgP+SzjjW
+X-TUID: M+lN3Ub1tyfO
 
 On Thu, 2024-07-04 at 07:36 +0200, C=C3=A9dric Le Goater wrote:
 > From: C=C3=A9dric Le Goater <clg@kaod.org>
 >=20
-> The first boot area partition (64K) of the eMMC device should contain
-> an initial boot loader (u-boot SPL). Load it as a ROM only if an eMMC
-> device is available to boot from but no flash device is.
+> Bit SCU500[2] of the AST2600 controls the boot device of the SoC.
 >=20
+> Future changes will configure this bit to boot from eMMC disk images
+> specially built for this purpose.
+>=20
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> ---
+>  include/hw/misc/aspeed_scu.h | 4 ++++
+>  1 file changed, 4 insertions(+)
+>=20
+> diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+> index 58db28db45aa..c9f98c20ffd9 100644
+> --- a/include/hw/misc/aspeed_scu.h
+> +++ b/include/hw/misc/aspeed_scu.h
+> @@ -349,6 +349,10 @@ uint32_t aspeed_scu_get_apb_freq(AspeedSCUState *s);
+>  #define SCU_AST2600_H_PLL_BYPASS_EN                        (0x1 << 24)
+>  #define SCU_AST2600_H_PLL_OFF                              (0x1 << 23)
+> =20
+> +/* STRAP1 SCU500 */
+> +#define AST2600_HW_STRAP_BOOT_SRC_EMMC            (0x1 << 2)
+> +#define AST2600_HW_STRAP_BOOT_SRC_SPI             (0x0 << 2)
+
+Maybe these should have a `SCU_` prefix for consistency?
+
+Anyway:
 
 Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-

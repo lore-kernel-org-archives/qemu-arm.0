@@ -1,87 +1,87 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp1755474njb;
-        Sat, 6 Jul 2024 06:20:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWus//kAWGDKKd+nFMO73Rq3cJu57BJ+qo5o/kEATQU5Vx6yZ7EM/qbA8BnGqinhWjHq3EtcTtWwRgDmrZyHIpJr4G3IHY2
-X-Google-Smtp-Source: AGHT+IEeHqFwqo4q0P8w5MlQGNZZ1LMpzF+0pDe2QRjBrMPtBHw/3beNS9xkO+Q700ase4BH8b49
-X-Received: by 2002:a05:620a:4453:b0:79f:776:a9f2 with SMTP id af79cd13be357-79f0776ab04mr21327585a.56.1720272056716;
-        Sat, 06 Jul 2024 06:20:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720272056; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp1792178njb;
+        Sat, 6 Jul 2024 07:41:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUkbdduMb55wSuE2AN7x4GIfZ+C5Chx4msTTxdjcn8+1oRGSJHH6Sa+tr9NUG0ulFsX2cud2pZshFUsPblpeZUycyR9VZF7
+X-Google-Smtp-Source: AGHT+IEU1KPt53Fwyk67HfXBRAwyoHrgelndyjaq+Bvntw3qDqBPUHIU2kQxj9vkq7Hd5451ATF/
+X-Received: by 2002:a05:6214:2a4c:b0:6b5:33e:b40e with SMTP id 6a1803df08f44-6b5ed262f01mr78864076d6.54.1720276869670;
+        Sat, 06 Jul 2024 07:41:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720276869; cv=none;
         d=google.com; s=arc-20160816;
-        b=bBXfkuSvRd3Dz7X4OrqkUwd2C/UCGHjQ4mPTGCFXUhCVZNCsV9dtDumuBEh0BNNdj1
-         cIRmQzJV72CO1tZpcLzzS9D3ufhiDXyc87fi2eYocHPqFbAQTU4dqi8kqiAvBszGSGRW
-         uuUTKvVlr9O3ERzTtOKQ+T2A5lB5ufBEgQqZuE6j50uKFcw5adNQ6LqWApUa18qHsj+b
-         rMveLktKmHHv62CwyEgPcf6A3pElWy8AnYqD7cFnoivo3KDGkI/WdKGSbxQG4oQyLUY6
-         m74YuuUwdJltfoyrciGr9D2KkSXoCsShbqwR+94LdkXiYxz5ASu54eJOYSN+jTKVLTtJ
-         48tw==
+        b=odJCYDNvGvIH932+aj1f2KiRetlUNRuV0R6G+m560ufIj/C1xqQ88wOgSf4FtTMVup
+         FekDERNnh01jXCmukmh6IpeokQWfK5k6G1ojNgJ30JgYx6djmGTdlO9ynsGLK6HeNJJj
+         BSrJbrVyYDg1X5Oq2v8tN2xTM6O/DHdL34gqoyiTr5dD6R+nZX+gUBAd9MOdLF4pZM/T
+         aFx/chpj8+TWqRx+bRCeBDY0odncYkuuGJZet1CA+ZnsAPPeerfrcuvZQyCIQmBWoaVZ
+         3mEfmH+13SOblDMNJNEoulcLCptldsqWOFHk21t5raQWG/GzSD6VcuuQyE1aWTcOLNpU
+         84aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=z/oYyO1PvynKToRD38TGVga9DNkeTkO/J+biDu8RAEU=;
-        fh=U7K3Yu1ALXmTCJoDJsPS9FAjKO8h9w3cfTqICrEpJSU=;
-        b=rgpOB8ceAwDIu4icH7qhJn8svGv/1ZZvTaGqyuzjvd2J5p0prV/Hl6CqB0HZ48WUfK
-         Y6UYHFVWMIsBSlgROSXGImkowVL6v4z1YT12d58Cs0RDoiBBF9tWH5EhzXCYBINlkQC9
-         aoaW/Jjq2ZW3M3/1mHoCPsztegvzj/a/wVOW+GXG17dTNd+lIXEea00gMto9Dsar6VsO
-         nLzC0mb+aEAxKvin+P7VLtB1wb+VQAR+MtqlW0PQLl6QL3ZLiC3ABcmBQVGMbX2MZ2er
-         +uh2iXDr+a7vBsPwy8OEcqg7qswjFq58ezjUPWG+cF+g9lgn3WUQPzDMn44QclIbiZV2
-         7xqg==;
+        bh=gCKQWQ5N/O7xFn9vt40NyrtyS75JScU93rfdKb9KEdM=;
+        fh=wcSQe0nA4Fd8SBhNd66f71V0lbT9ztlc7J4gDgtt5jU=;
+        b=t1sAfesbolxhZ44U5oBwdvsMc3uU0+qR7JjBK42LAgl3q+kzRCrhPviOVI1MLg2ZJH
+         aGLbYBDU7wT67LiZjA2wV7wfirzpTP0GR+inVomJ+DV4O7sIk90ZJRLOC+Tod+Fa4TuH
+         9VzjIDwPi3kdtoYJlfu5qEMb1+nEcp+kku55irlQlKn/Hj6y8551iBI+ZSH7UtMG0ebB
+         jY7q+aNo7IMRSccJ6BIBW26ys9XUNXIabGCoBQhwXsp/o0TGWdCJyTp9b74Z/1gzFt8i
+         Br7onq1cLx9HcmX7FME9Ww8NFw+LeiNDHL6E789WyPOwWd9e/Oy8JNgHVyy+MmVfNjg9
+         0w2w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jb3Sg4By;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fRLyVkzd;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-79efc96fdc7si255940785a.350.2024.07.06.06.20.56
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b609f12755si634526d6.89.2024.07.06.07.41.09
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 06 Jul 2024 06:20:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Sat, 06 Jul 2024 07:41:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jb3Sg4By;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fRLyVkzd;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1720272056;
+	s=mimecast20190719; t=1720276869;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=z/oYyO1PvynKToRD38TGVga9DNkeTkO/J+biDu8RAEU=;
-	b=Jb3Sg4ByWdk123fIsi91iphIpifPlu4aNWV75Hcry6EXfdb8P+rtwNM1eG4gCxPNXHa6gy
-	jeKNjhvhCJsm8NYCnRrb29PRNEqxg3+Z+WmjhXL3bB7m0eN4Zj3Jz104s/i2g2y/5EdI9e
-	OJ176OUA+qlZiJEluoYX9dMLUsgz7Iw=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=gCKQWQ5N/O7xFn9vt40NyrtyS75JScU93rfdKb9KEdM=;
+	b=fRLyVkzdH+1oy23K45H2D56RcvRDBWdE8ovhk2bfkJnlVSmD7i33dYoUyvEUbUXPXu7jc/
+	3zM/79b+5Nab/XmnWlwnSLk4QW0oTRQOLNQYNJQnu5HfSMS6bkTHoqfcUVm2T7GUb22zIt
+	y530IWoaihek3PiM9tKLJyLSm0+JWH8=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-523-Fq2lVQ7wN_WLp8AK1WFQQQ-1; Sat, 06 Jul 2024 09:20:54 -0400
-X-MC-Unique: Fq2lVQ7wN_WLp8AK1WFQQQ-1
-Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-3678ff75122so1862827f8f.0
-        for <alex.bennee@linaro.org>; Sat, 06 Jul 2024 06:20:54 -0700 (PDT)
+ us-mta-538-ce4ZEzG2NECOlVK-nqlYZg-1; Sat, 06 Jul 2024 10:41:08 -0400
+X-MC-Unique: ce4ZEzG2NECOlVK-nqlYZg-1
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-36710f4d5c9so1607042f8f.3
+        for <alex.bennee@linaro.org>; Sat, 06 Jul 2024 07:41:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720272053; x=1720876853;
+        d=1e100.net; s=20230601; t=1720276867; x=1720881667;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=sDkcqj2p7zjlaR6kdl0itNxFGJFmI88DVgz+HCfhMi4=;
-        b=MO3MM0LK4xfpBAWRvAHncZ+xAHDjVYnD5YcLBy5hhnept6AIrQknrYotpq9wgcTmB1
-         N+ayoOVposxTIruW0go8aZTvdl0ir+d2FWhfW5O8vUnty2uQF0DzG8xNZXrEVMjds3Fc
-         ak1iqK/49MQTF4n9UrIOp9UdYICzWOf4LJHR6N++R9K8zQG20/S+92KZi49F/00D9KUZ
-         MEFAM6g47m5sfwv24AlBNCHY7iiY0/lTRGmotrA0V1UoT0ueiBstlpgx3vi/k00VCpuL
-         3YmrYR9HtqPQrSJxbznC+fT9z8cGJSZONUGiWUFkDzQVLwwwzylyK72w33NPGgqc0mvw
-         6zsQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVb+GVH/nxsonpsL4QOg1H4l552FEmQ7SquglQHSzydgjmXxtkLvN7ZXLyMv7F/Y0/9Dh7RWo3xu5RlFU7hUGIYapPRzX3U
-X-Gm-Message-State: AOJu0YykWtBhXEtOcg0++lBXLaQ28WrxmqRHdXfs121VepNiPhA+8Yld
-	92F3hVLXMijcEFdN1fdIFHHOojAoHlCURkPi8k85/8k0MO38y4wpcD0Jo80zz9Z6O58F79t7Mr1
-	GZref576DQsi6aKc7zN4IFfAKdJ/nm6hGC4rvB/1XS1r81neDkZYU1w==
-X-Received: by 2002:adf:e9d1:0:b0:360:7971:7e2c with SMTP id ffacd0b85a97d-3679dd66b01mr5080962f8f.54.1720272053619;
-        Sat, 06 Jul 2024 06:20:53 -0700 (PDT)
-X-Received: by 2002:adf:e9d1:0:b0:360:7971:7e2c with SMTP id ffacd0b85a97d-3679dd66b01mr5080944f8f.54.1720272053208;
-        Sat, 06 Jul 2024 06:20:53 -0700 (PDT)
+        bh=gCKQWQ5N/O7xFn9vt40NyrtyS75JScU93rfdKb9KEdM=;
+        b=kC5RBEVe3ryYL5OD95f2j2oU8Ma8s2F6Yoa9c1bNrKDg5H9OcJPA8rsQj7+50/hfDY
+         AWASdrVyBs6NM6coL2Sw4HvpoHbG5RzB7EfKQ3XQwgZjXOxSUFGl61LnO6KfJS8yvsHo
+         gudtpVTD6fO5VdQ+EzthzhgQwFKU0afRGUYuuN9ITBXYRzh0Q4GyFybKgOTWuQ7yJHk8
+         cQO/f3WUgWSxHxRVy4bW8+tSGFuoXV/H2uw+wMj/8oFUlAo5cLLAoa04LDpJUTiRh96B
+         TfdNkwyg/ELsDV3MRKbfwyc/u+Z5ZfVQFVgm5BPiru60v5PyjPIY/3LYzv0UeWrko5zc
+         UQZA==
+X-Forwarded-Encrypted: i=1; AJvYcCWNPkQyvGfX1UMZJErooD7+TF4X4p7AqP2QasPh3FzBaD01WRDmErVj70KkivZSEgOjFPRQJIv5wGt6XlYHx1wao+A8yanh
+X-Gm-Message-State: AOJu0YyaDvZi8FIcGB1x42t+BIMLo+QwKFNeEthACKdetRv2KGIc9+JZ
+	uRDA/k1j8OY17MWHP9mFaHVFff/HfcadkOTFgNKjR6YA7Y3YIZ4QJ4v8DK7FrWffLR8MW6ZQGPc
+	2UFDS6+nKG5A5dNQXdWIpKtmXex8mlRuCGtfKSnBFb2qSeDT3OZb8OQ==
+X-Received: by 2002:adf:e68b:0:b0:367:4d9d:56a5 with SMTP id ffacd0b85a97d-3679dd63aa0mr5419487f8f.44.1720276866874;
+        Sat, 06 Jul 2024 07:41:06 -0700 (PDT)
+X-Received: by 2002:adf:e68b:0:b0:367:4d9d:56a5 with SMTP id ffacd0b85a97d-3679dd63aa0mr5419469f8f.44.1720276866450;
+        Sat, 06 Jul 2024 07:41:06 -0700 (PDT)
 Return-Path: <imammedo@redhat.com>
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4264a2ca4dbsm96364735e9.33.2024.07.06.06.20.50
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-367a18c2810sm5772765f8f.18.2024.07.06.07.41.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 06 Jul 2024 06:20:52 -0700 (PDT)
-Date: Sat, 6 Jul 2024 15:20:50 +0200
+        Sat, 06 Jul 2024 07:41:05 -0700 (PDT)
+Date: Sat, 6 Jul 2024 16:41:03 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Salil Mehta <salil.mehta@huawei.com>
 Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
@@ -100,80 +100,99 @@ Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
  <lixianglai@loongson.cn>, <npiggin@gmail.com>, <harshpb@linux.ibm.com>,
  <linuxarm@huawei.com>, Shaoqin Huang <shahuang@redhat.com>, Zhao Liu
  <zhao1.liu@intel.com>
-Subject: Re: [PATCH V13 2/8] hw/acpi: Move CPU ctrl-dev MMIO region len
- macro to common header file
-Message-ID: <20240706152050.4f5f8109@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240607115649.214622-3-salil.mehta@huawei.com>
+Subject: Re: [PATCH V13 7/8] gdbstub: Add helper function to unregister GDB
+ register space
+Message-ID: <20240706164103.16662dd2@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240607115649.214622-8-salil.mehta@huawei.com>
 References: <20240607115649.214622-1-salil.mehta@huawei.com>
-	<20240607115649.214622-3-salil.mehta@huawei.com>
+	<20240607115649.214622-8-salil.mehta@huawei.com>
 X-Mailer: Claws Mail 4.2.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: jPNDWMHvuzaO
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: LiiBG3wxmAsU
 
-On Fri, 7 Jun 2024 12:56:43 +0100
+On Fri, 7 Jun 2024 12:56:48 +0100
 Salil Mehta <salil.mehta@huawei.com> wrote:
 
-> CPU ctrl-dev MMIO region length could be used in ACPI GED and various oth=
-er
-> architecture specific places. Move ACPI_CPU_HOTPLUG_REG_LEN macro to more
-> appropriate common header file.
->=20
+> Add common function to help unregister the GDB register space. This shall be
+> done in context to the CPU unrealization.
+> 
+> Note: These are common functions exported to arch specific code. For example,
+> for ARM this code is being referred in associated arch specific patch-set:
+> 
+> Link: https://lore.kernel.org/qemu-devel/20230926103654.34424-1-salil.mehta@huawei.com/
+> 
 > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Reviewed-by: Gavin Shan <gshan@redhat.com>
-> Reviewed-by: David Hildenbrand <david@redhat.com>
-> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
 > Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
 > Tested-by: Xianglai Li <lixianglai@loongson.cn>
 > Tested-by: Miguel Luis <miguel.luis@oracle.com>
+> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+> Reviewed-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
 > Tested-by: Zhao Liu <zhao1.liu@intel.com>
-> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 > ---
->  hw/acpi/cpu.c                 | 2 +-
->  include/hw/acpi/cpu_hotplug.h | 2 ++
->  2 files changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-> index 2d81c1e790..69aaa563db 100644
-> --- a/hw/acpi/cpu.c
-> +++ b/hw/acpi/cpu.c
-> @@ -1,13 +1,13 @@
->  #include "qemu/osdep.h"
->  #include "migration/vmstate.h"
->  #include "hw/acpi/cpu.h"
-> +#include "hw/acpi/cpu_hotplug.h"
->  #include "hw/core/cpu.h"
->  #include "qapi/error.h"
->  #include "qapi/qapi-events-acpi.h"
->  #include "trace.h"
->  #include "sysemu/numa.h"
-> =20
-> -#define ACPI_CPU_HOTPLUG_REG_LEN 12
->  #define ACPI_CPU_SELECTOR_OFFSET_WR 0
->  #define ACPI_CPU_FLAGS_OFFSET_RW 4
->  #define ACPI_CPU_CMD_OFFSET_WR 5
-> diff --git a/include/hw/acpi/cpu_hotplug.h b/include/hw/acpi/cpu_hotplug.=
-h
-> index 3b932abbbb..48b291e45e 100644
-> --- a/include/hw/acpi/cpu_hotplug.h
-> +++ b/include/hw/acpi/cpu_hotplug.h
+>  gdbstub/gdbstub.c      | 13 +++++++++++++
+>  hw/core/cpu-common.c   |  1 -
+>  include/exec/gdbstub.h |  6 ++++++
+>  3 files changed, 19 insertions(+), 1 deletion(-)
+> 
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index b3574997ea..1949b09240 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -617,6 +617,19 @@ void gdb_register_coprocessor(CPUState *cpu,
+>      }
+>  }
+>  
+> +void gdb_unregister_coprocessor_all(CPUState *cpu)
+> +{
+> +    /*
+> +     * Safe to nuke everything. GDBRegisterState::xml is static const char so
+> +     * it won't be freed
+> +     */
+> +    g_array_free(cpu->gdb_regs, true);
+> +
+> +    cpu->gdb_regs = NULL;
+> +    cpu->gdb_num_regs = 0;
+> +    cpu->gdb_num_g_regs = 0;
+> +}
+> +
+>  static void gdb_process_breakpoint_remove_all(GDBProcess *p)
+>  {
+>      CPUState *cpu = gdb_get_first_cpu_in_process(p);
+> diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+> index 0f0a247f56..e5140b4bc1 100644
+> --- a/hw/core/cpu-common.c
+> +++ b/hw/core/cpu-common.c
+> @@ -274,7 +274,6 @@ static void cpu_common_finalize(Object *obj)
+>  {
+>      CPUState *cpu = CPU(obj);
+>  
+> -    g_array_free(cpu->gdb_regs, TRUE);
 
-this file has deps on x86 machine and contains mainly
-legacy CPU hotplug API for x86.=20
+so free() is gone but new  gdb_unregister_coprocessor_all() ain't called,
+are we staring to leak some memory here?
 
-> @@ -19,6 +19,8 @@
->  #include "hw/hotplug.h"
->  #include "hw/acpi/cpu.h"
-> =20
-> +#define ACPI_CPU_HOTPLUG_REG_LEN 12
-
-the better place for it would be include/hw/acpi/cpu.h
-
->  typedef struct AcpiCpuHotplug {
->      Object *device;
->      MemoryRegion io;
+>      qemu_lockcnt_destroy(&cpu->in_ioctl_lock);
+>      qemu_mutex_destroy(&cpu->work_mutex);
+>  }
+> diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
+> index eb14b91139..249d4d4bc8 100644
+> --- a/include/exec/gdbstub.h
+> +++ b/include/exec/gdbstub.h
+> @@ -49,6 +49,12 @@ void gdb_register_coprocessor(CPUState *cpu,
+>                                gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
+>                                const GDBFeature *feature, int g_pos);
+>  
+> +/**
+> + * gdb_unregister_coprocessor_all() - unregisters supplemental set of registers
+> + * @cpu - the CPU associated with registers
+> + */
+> +void gdb_unregister_coprocessor_all(CPUState *cpu);
+> +
+>  /**
+>   * gdbserver_start: start the gdb server
+>   * @port_or_device: connection spec for gdb

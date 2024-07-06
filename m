@@ -1,147 +1,179 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp1469390njb;
-        Fri, 5 Jul 2024 14:44:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWhDnvfTy77BzNavPyd00zRYcqMWBQkE7IEyMphjX6CIB7G/lQBNEf3/zlWg1w9fdMPEReHRW+ajmbhAY9kjYUuhzpUfD0W
-X-Received: by 2002:a05:600c:3509:b0:425:7ac6:970d with SMTP id 5b1f17b1804b1-4264a3f3ddfmr39251795e9.28.1720215880583;
-        Fri, 05 Jul 2024 14:44:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720215880; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp1755474njb;
+        Sat, 6 Jul 2024 06:20:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWus//kAWGDKKd+nFMO73Rq3cJu57BJ+qo5o/kEATQU5Vx6yZ7EM/qbA8BnGqinhWjHq3EtcTtWwRgDmrZyHIpJr4G3IHY2
+X-Google-Smtp-Source: AGHT+IEeHqFwqo4q0P8w5MlQGNZZ1LMpzF+0pDe2QRjBrMPtBHw/3beNS9xkO+Q700ase4BH8b49
+X-Received: by 2002:a05:620a:4453:b0:79f:776:a9f2 with SMTP id af79cd13be357-79f0776ab04mr21327585a.56.1720272056716;
+        Sat, 06 Jul 2024 06:20:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720272056; cv=none;
         d=google.com; s=arc-20160816;
-        b=e3AJ+gGcqvlbTt74qLZ87riqNh1sp5X99AK1hs+SFv3Xkn4U8oEy8meFUNkOcZKxty
-         R5+6wAqvYnYIG+MQR/SPJJHXOSLat325eGJYZ6N9o80crWITuMkwGiilSXdan8u1r0gW
-         LoE1d40r7b+DYaNl2NOdZZ5vc5lV4sAOId0Wh7zGdhZYXzFa+qNfraF0mQll6ST7SGSJ
-         o7TdTh536+ZJlonaQefZbINxO7g4XPmnFBoQwQmQLHBvrwzUBeRPHipoTOpw+VzzMH0J
-         VCVay54U0BfP7WWcAOqp62lYk1ddTIrh39XqWRwSjned9DT4xb05AOfRwWp5O5YtnSLC
-         QKmQ==
+        b=bBXfkuSvRd3Dz7X4OrqkUwd2C/UCGHjQ4mPTGCFXUhCVZNCsV9dtDumuBEh0BNNdj1
+         cIRmQzJV72CO1tZpcLzzS9D3ufhiDXyc87fi2eYocHPqFbAQTU4dqi8kqiAvBszGSGRW
+         uuUTKvVlr9O3ERzTtOKQ+T2A5lB5ufBEgQqZuE6j50uKFcw5adNQ6LqWApUa18qHsj+b
+         rMveLktKmHHv62CwyEgPcf6A3pElWy8AnYqD7cFnoivo3KDGkI/WdKGSbxQG4oQyLUY6
+         m74YuuUwdJltfoyrciGr9D2KkSXoCsShbqwR+94LdkXiYxz5ASu54eJOYSN+jTKVLTtJ
+         48tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=YmMguUuvinPCPU7WQXG5jWn/+aZ22Fyg2tEU+UTesOs=;
-        fh=6T2IEchkQps5Jp4tLbSA4nYf46rBDwQp7FStl5zwxYs=;
-        b=TRL9+i8lGYvQoEOsGUxYzVG7FqNNvmOnpgixD8aeC1+FemeC8Uqr7EsqTfvIp+cd7z
-         iNYBYJC9qPgzKwcCww9sJccxmDneUZRZ//5k7zE9TB8jvmdyNyIcO6kbJeBztTegsSwf
-         r5Pc849/+IEan00XtS9mDj9gHjvJpGLTbxr/c6jPDWyEmZfFBN4jdR5E6bcRrDaEtTlq
-         XB3XMzL1juZ6WwkqJHC8sQOrJy8YqYlJLfHg5WXnOcP86b6iQmXaZ2gaPVqOqILIjkMB
-         G7LEwJx5mJGqQjBF0C/LNde6za5q2EOBpuIvmgxxRiqHyDw7F/VmTP15OIRGSzJeilQh
-         GEIA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=z/oYyO1PvynKToRD38TGVga9DNkeTkO/J+biDu8RAEU=;
+        fh=U7K3Yu1ALXmTCJoDJsPS9FAjKO8h9w3cfTqICrEpJSU=;
+        b=rgpOB8ceAwDIu4icH7qhJn8svGv/1ZZvTaGqyuzjvd2J5p0prV/Hl6CqB0HZ48WUfK
+         Y6UYHFVWMIsBSlgROSXGImkowVL6v4z1YT12d58Cs0RDoiBBF9tWH5EhzXCYBINlkQC9
+         aoaW/Jjq2ZW3M3/1mHoCPsztegvzj/a/wVOW+GXG17dTNd+lIXEea00gMto9Dsar6VsO
+         nLzC0mb+aEAxKvin+P7VLtB1wb+VQAR+MtqlW0PQLl6QL3ZLiC3ABcmBQVGMbX2MZ2er
+         +uh2iXDr+a7vBsPwy8OEcqg7qswjFq58ezjUPWG+cF+g9lgn3WUQPzDMn44QclIbiZV2
+         7xqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HkOiPFxX;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-42577bb5776sor39327855e9.12.2024.07.05.14.44.40
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jb3Sg4By;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-79efc96fdc7si255940785a.350.2024.07.06.06.20.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 05 Jul 2024 14:44:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 06 Jul 2024 06:20:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HkOiPFxX;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720215880; x=1720820680; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=YmMguUuvinPCPU7WQXG5jWn/+aZ22Fyg2tEU+UTesOs=;
-        b=HkOiPFxXHX1xM0Ed91T5tJS3HYBdCQPc/cXUFE6aFajWE6jjvLyWtFmE+UEDh5E2m9
-         5EmicjYiFL0pAlRMWndQP6H7jauLrte+2Ug/YRWE9MBxxxLE09SAJIuOriqWxIL+f0hR
-         46LZpc+fyWLtYmHGO48OPKDp+8dBORxXqow9Qu63tunqmWTruaYLotpNM9QSfWpw/zJ0
-         henisREVT8a5CWDGjZHtNlVRSNZUgtGIx0g7ycEFvoPD5fHgGFK/5SH67p5hHzVTC8Qa
-         8T7h1PUluvA+Fy5SClHcYH5TOX9qL5Cj9aYBuzkIld94j1NQM3DdZoHMGzKsAXBtQisv
-         PTjg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Jb3Sg4By;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1720272056;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=z/oYyO1PvynKToRD38TGVga9DNkeTkO/J+biDu8RAEU=;
+	b=Jb3Sg4ByWdk123fIsi91iphIpifPlu4aNWV75Hcry6EXfdb8P+rtwNM1eG4gCxPNXHa6gy
+	jeKNjhvhCJsm8NYCnRrb29PRNEqxg3+Z+WmjhXL3bB7m0eN4Zj3Jz104s/i2g2y/5EdI9e
+	OJ176OUA+qlZiJEluoYX9dMLUsgz7Iw=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-523-Fq2lVQ7wN_WLp8AK1WFQQQ-1; Sat, 06 Jul 2024 09:20:54 -0400
+X-MC-Unique: Fq2lVQ7wN_WLp8AK1WFQQQ-1
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-3678ff75122so1862827f8f.0
+        for <alex.bennee@linaro.org>; Sat, 06 Jul 2024 06:20:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720215880; x=1720820680;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=YmMguUuvinPCPU7WQXG5jWn/+aZ22Fyg2tEU+UTesOs=;
-        b=XQBRtb/N7Aanozxlccb7Vfc2lI7svjs4phpjIs1DDVRgQc+SYoXNRfVz+vPiRgrXPr
-         oOpwI2dtcbvEjogQeyDnSO9UcyxVfDf3PY1yqHT+VqJNDhg3iagiWdXUImbdLk8ksP5Z
-         a2Yr/nEbztAO4hO5pkfeRiBc8lusuhdA3RFrJI7raV7BVxaxkqGJ3DsKURUrvCsU/pQH
-         Jw6Y2k8bOtoaRStHwefqJjZWTQIzyEpd/aT7dJTBG0YyY0fxqXkYdW0+6CdJDxyHTK96
-         C6GBgf8j0sgfMHIkC+6QjkC3vhDzadfukxoATunFrCW0p+VKhGo7leG3q7n9m3uY2Pxm
-         5g9A==
-X-Forwarded-Encrypted: i=1; AJvYcCX7QPAh5PJS4S2T6gkGEZw0Br9FJtZtIfvBFHY5c8e207uyD1akYBoF40KhUD7rTgb8eHKj8Zd30cZpEBwnuMI5g+ov7Aad
-X-Gm-Message-State: AOJu0YyDKnN/zD08yMNhfUySg3ROBwK+gg0Ytma7QS2IqThe8aDuU2MB
-	rr0cVUnAv+20rC/6ad1IMXAv0h3OfziflJKOxlYQnRWfbi9GLXwVeNscPeSwpAbuNA==
-X-Google-Smtp-Source: AGHT+IHDzAb6ryJHXJeNFQWFcHSZbnDG/ppl4K+087u4JJX6oM5L5km14hJfgv3Whd8D5BeGIhP4/g==
-X-Received: by 2002:a05:600c:331b:b0:426:5fbc:f319 with SMTP id 5b1f17b1804b1-4265fbcf850mr75635e9.33.1720215879384;
-        Fri, 05 Jul 2024 14:44:39 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.100] ([176.176.163.129])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3678eb6593bsm9034405f8f.93.2024.07.05.14.44.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 05 Jul 2024 14:44:38 -0700 (PDT)
-Message-ID: <15191eac-49f4-47bc-b450-1385b3d7fe18@linaro.org>
-Date: Fri, 5 Jul 2024 23:44:36 +0200
+        d=1e100.net; s=20230601; t=1720272053; x=1720876853;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=sDkcqj2p7zjlaR6kdl0itNxFGJFmI88DVgz+HCfhMi4=;
+        b=MO3MM0LK4xfpBAWRvAHncZ+xAHDjVYnD5YcLBy5hhnept6AIrQknrYotpq9wgcTmB1
+         N+ayoOVposxTIruW0go8aZTvdl0ir+d2FWhfW5O8vUnty2uQF0DzG8xNZXrEVMjds3Fc
+         ak1iqK/49MQTF4n9UrIOp9UdYICzWOf4LJHR6N++R9K8zQG20/S+92KZi49F/00D9KUZ
+         MEFAM6g47m5sfwv24AlBNCHY7iiY0/lTRGmotrA0V1UoT0ueiBstlpgx3vi/k00VCpuL
+         3YmrYR9HtqPQrSJxbznC+fT9z8cGJSZONUGiWUFkDzQVLwwwzylyK72w33NPGgqc0mvw
+         6zsQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVb+GVH/nxsonpsL4QOg1H4l552FEmQ7SquglQHSzydgjmXxtkLvN7ZXLyMv7F/Y0/9Dh7RWo3xu5RlFU7hUGIYapPRzX3U
+X-Gm-Message-State: AOJu0YykWtBhXEtOcg0++lBXLaQ28WrxmqRHdXfs121VepNiPhA+8Yld
+	92F3hVLXMijcEFdN1fdIFHHOojAoHlCURkPi8k85/8k0MO38y4wpcD0Jo80zz9Z6O58F79t7Mr1
+	GZref576DQsi6aKc7zN4IFfAKdJ/nm6hGC4rvB/1XS1r81neDkZYU1w==
+X-Received: by 2002:adf:e9d1:0:b0:360:7971:7e2c with SMTP id ffacd0b85a97d-3679dd66b01mr5080962f8f.54.1720272053619;
+        Sat, 06 Jul 2024 06:20:53 -0700 (PDT)
+X-Received: by 2002:adf:e9d1:0:b0:360:7971:7e2c with SMTP id ffacd0b85a97d-3679dd66b01mr5080944f8f.54.1720272053208;
+        Sat, 06 Jul 2024 06:20:53 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4264a2ca4dbsm96364735e9.33.2024.07.06.06.20.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 06 Jul 2024 06:20:52 -0700 (PDT)
+Date: Sat, 6 Jul 2024 15:20:50 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
+ <jean-philippe@linaro.org>, <jonathan.cameron@huawei.com>,
+ <lpieralisi@kernel.org>, <peter.maydell@linaro.org>,
+ <richard.henderson@linaro.org>, <andrew.jones@linux.dev>,
+ <david@redhat.com>, <philmd@linaro.org>, <eric.auger@redhat.com>,
+ <oliver.upton@linux.dev>, <pbonzini@redhat.com>, <mst@redhat.com>,
+ <will@kernel.org>, <gshan@redhat.com>, <rafael@kernel.org>,
+ <alex.bennee@linaro.org>, <linux@armlinux.org.uk>,
+ <darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
+ <vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
+ <miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>,
+ <zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
+ <wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
+ <lixianglai@loongson.cn>, <npiggin@gmail.com>, <harshpb@linux.ibm.com>,
+ <linuxarm@huawei.com>, Shaoqin Huang <shahuang@redhat.com>, Zhao Liu
+ <zhao1.liu@intel.com>
+Subject: Re: [PATCH V13 2/8] hw/acpi: Move CPU ctrl-dev MMIO region len
+ macro to common header file
+Message-ID: <20240706152050.4f5f8109@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240607115649.214622-3-salil.mehta@huawei.com>
+References: <20240607115649.214622-1-salil.mehta@huawei.com>
+	<20240607115649.214622-3-salil.mehta@huawei.com>
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 20/40] gitlab: don't bother with KVM for TCI builds
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, qemu-devel@nongnu.org
-Cc: Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, David Hildenbrand <david@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Aleksandar Rikalo <arikalo@gmail.com>,
- Mads Ynddal <mads@ynddal.dk>, Yanan Wang <wangyanan55@huawei.com>,
- Eduardo Habkost <eduardo@habkost.net>, Peter Xu <peterx@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paul Burton <paulburton@kernel.org>, Stefan Hajnoczi <stefanha@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>
-References: <20240705084047.857176-1-alex.bennee@linaro.org>
- <20240705084047.857176-21-alex.bennee@linaro.org>
- <07195265-2a54-4396-9724-2a63c98e45fb@linaro.org>
- <5d3be228-1dbb-4e4a-8e20-fb76e4c90134@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <5d3be228-1dbb-4e4a-8e20-fb76e4c90134@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: JrnuCzogSCqs
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: jPNDWMHvuzaO
 
-On 5/7/24 18:49, Thomas Huth wrote:
-> On 05/07/2024 18.34, Philippe Mathieu-Daudé wrote:
->> On 5/7/24 10:40, Alex Bennée wrote:
->>> In fact any other accelerator would be pointless as the point is to
->>> exercise the TCI accelerator anyway.
->>>
->>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>> ---
->>>   .gitlab-ci.d/buildtest.yml   | 2 +-
->>>   .gitlab-ci.d/crossbuilds.yml | 2 +-
->>>   2 files changed, 2 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
->>> index 425fc6479b..e3a0758bd9 100644
->>> --- a/.gitlab-ci.d/buildtest.yml
->>> +++ b/.gitlab-ci.d/buildtest.yml
->>> @@ -635,7 +635,7 @@ build-tci:
->>>       - TARGETS="aarch64 arm hppa m68k microblaze ppc64 s390x x86_64"
->>>       - mkdir build
->>>       - cd build
->>> -    - ../configure --enable-tcg-interpreter --disable-docs 
->>> --disable-gtk --disable-vnc
->>> +    - ../configure --enable-tcg-interpreter --disable-kvm 
->>> --disable-docs --disable-gtk --disable-vnc
->>
->> Shouldn't we also disable the other accelerators for completeness?
-> 
-> No, this is a Linux machine, and there's only TCG and KVM available for 
-> Linux. No need to bother with the other accelerators here.
+On Fri, 7 Jun 2024 12:56:43 +0100
+Salil Mehta <salil.mehta@huawei.com> wrote:
 
-I noticed this is Linux. If for some reason the Xen libs get installed,
-Xen accel will be enabled. Explicit would be:
+> CPU ctrl-dev MMIO region length could be used in ACPI GED and various oth=
+er
+> architecture specific places. Move ACPI_CPU_HOTPLUG_REG_LEN macro to more
+> appropriate common header file.
+>=20
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
+> Reviewed-by: David Hildenbrand <david@redhat.com>
+> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+> Tested-by: Xianglai Li <lixianglai@loongson.cn>
+> Tested-by: Miguel Luis <miguel.luis@oracle.com>
+> Tested-by: Zhao Liu <zhao1.liu@intel.com>
+> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+>  hw/acpi/cpu.c                 | 2 +-
+>  include/hw/acpi/cpu_hotplug.h | 2 ++
+>  2 files changed, 3 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+> index 2d81c1e790..69aaa563db 100644
+> --- a/hw/acpi/cpu.c
+> +++ b/hw/acpi/cpu.c
+> @@ -1,13 +1,13 @@
+>  #include "qemu/osdep.h"
+>  #include "migration/vmstate.h"
+>  #include "hw/acpi/cpu.h"
+> +#include "hw/acpi/cpu_hotplug.h"
+>  #include "hw/core/cpu.h"
+>  #include "qapi/error.h"
+>  #include "qapi/qapi-events-acpi.h"
+>  #include "trace.h"
+>  #include "sysemu/numa.h"
+> =20
+> -#define ACPI_CPU_HOTPLUG_REG_LEN 12
+>  #define ACPI_CPU_SELECTOR_OFFSET_WR 0
+>  #define ACPI_CPU_FLAGS_OFFSET_RW 4
+>  #define ACPI_CPU_CMD_OFFSET_WR 5
+> diff --git a/include/hw/acpi/cpu_hotplug.h b/include/hw/acpi/cpu_hotplug.=
+h
+> index 3b932abbbb..48b291e45e 100644
+> --- a/include/hw/acpi/cpu_hotplug.h
+> +++ b/include/hw/acpi/cpu_hotplug.h
 
---enable-tcg --enable-tcg-interpreter --disable-kvm --disable-xen
+this file has deps on x86 machine and contains mainly
+legacy CPU hotplug API for x86.=20
 
-But I won't insist. Anyhow Alex sent his pull request.
+> @@ -19,6 +19,8 @@
+>  #include "hw/hotplug.h"
+>  #include "hw/acpi/cpu.h"
+> =20
+> +#define ACPI_CPU_HOTPLUG_REG_LEN 12
 
-Regards,
+the better place for it would be include/hw/acpi/cpu.h
 
-Phil.
+>  typedef struct AcpiCpuHotplug {
+>      Object *device;
+>      MemoryRegion io;

@@ -1,83 +1,83 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp2097488njb;
-        Sun, 7 Jul 2024 02:00:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV0F+poxFuY/MQUNa+kXv9+60uG1GHG3jnPQpx9bKtjAuHIzfuFDrhMvW1Nc3qbc+HOxuXQJMhxV+G953/T7zd3VoDa4lge
-X-Google-Smtp-Source: AGHT+IG89vVH9KSD9RkB+ICZgFd2k5qcEiw2Z++0PK78NzgZ6Wd84eaKXNTgzik9CfFjwW21t0xO
-X-Received: by 2002:a05:6214:c86:b0:6b0:71c0:cbaa with SMTP id 6a1803df08f44-6b5ed1d766fmr120336666d6.33.1720342830572;
-        Sun, 07 Jul 2024 02:00:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720342830; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp2097469njb;
+        Sun, 7 Jul 2024 02:00:29 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWvt9aDqNPzJiIRzb0BGHJvmkRW8SDwNWwlY6WlBrWc6NwQI/db5vd6+c2pDzYpMESvkFVc8GNcmIL+rLzEvyQU4HTTI/Q7
+X-Google-Smtp-Source: AGHT+IECs79tuaDGMvxwLxbBA4e3NRnWlb1EiFSRw3/OfW8s3Q4ycRk98QpJm2iY66GD/toaVsen
+X-Received: by 2002:a05:620a:24d6:b0:79d:569a:6997 with SMTP id af79cd13be357-79eee29bf0amr1274750285a.70.1720342829281;
+        Sun, 07 Jul 2024 02:00:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720342829; cv=none;
         d=google.com; s=arc-20160816;
-        b=V73iGCRBY3x6iK/QKfAWq9PvDIft0qUrg1mubbJ836/bL9P69XtoM5taxG/WX3R5v+
-         zmsnR/xsVE30ctyO2M8m8SIzVJILNvhCXBOrSqwDCdQEhzuoHq3CdjVr1i/sgO078/fk
-         0DLbeGS3xyD/UhI0FDBuW7jY8KB+cf9wTwDkVKTeOKFYuMI3O026uuC3cTKpNURUF0o2
-         mohZLOBrGXIy/cfTxLOiZmma+XLZM2aMT1SQUvMk5lgfsFhTO5zTT1e6DYuttepaVLg0
-         /mRhUxFBtjiRu2g+d9LOyo/pa98hKYxyMxEXun7snQzdkwu+YDFofNy9sozn6mUsOVHR
-         IwAg==
+        b=XwD0a6ysUyTbLijkTiCQoyvVQE1tXi3uU4LB51jqYtOa0RFHK2eoojhYZjleZRXmT+
+         4V92EmPYCw4sjqnrV1kAQ6v+g9xjfKLcL1HzWrp39WoQhFcpIlxjI/jGDiLj3/UPpDyX
+         ncysNc51/b8LSeqsJBWCnIhWHZ/wtnG4lRjHY0qZMNcfHBCMHsIN/CWulnnkths9omlE
+         9LrZ+CKiPhh3K3cLIO90LvM3ZFb5DEtCKC7mtC/IZByc7P3riEeaP4WZ3Uhrp61trg9p
+         mopV6AEN/xztXr9udb1YZgB8eRoI4vbrl8aAS8vIrFILd4JgTwxa5/DgacdxqpSgLwxe
+         zTVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature:dkim-filter;
-        bh=c8ENjiff4Xy7HERVz3+urS3GGp04uSfEuEG00VB4S7E=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature
+         :dkim-filter;
+        bh=E66zwggnryHoquF6QyAhpsip2ejSzZfDpfCfiKZ4tQ4=;
         fh=EsOCAIEOYNyvmbUjxNNCZoMsKfyU91bdyLuUx2SFw3c=;
-        b=MyZ5VsOs2PssHNTFYVteXQkJA4e2X1ZJl891OXY0WSoPpnke1pfdAJCsPM8EpNH4uy
-         aha8ZVhAygZbCR8aK67PFvCodicJGc691ajr3a/uj8heaU18Bu3kqN9oXH/QfZHDgIj/
-         6gE0bz88LSjkTrtyu1PYzWwfQAT0fiaEGp2RwQLozJJZdv75+61Z5r+ngPTdGfCGN4nO
-         oE0xuG/NrgrfvasK+0oYr4VchnJuRkUwzwdmiSLK2tNORWmx2fKQaQu+d4s3P7StjlZL
-         kXo1DH9xk3b/3Th4+EM1Q09dQmcq03Xo80pXxBAbq04z+Jeo0CCDoGbXFq+Hnj1mhFw2
-         TaYA==;
+        b=HsJuUDKMFyIlHXKgQpbUQe88//p6p7rorqoOnkFtxajmF4THPO28F1CQjhVoZL7NiL
+         w6u0UD8rz2lZKUaJjxe/jLKxuhKzFxXOk1UkJqPf3ln9QGSsAhwo0Y/vQXaJHhqHe1vz
+         tNAGDz3GY6klemYZbI6J422DaH/6ms8SsljW5LVtHtN60BFFNo6f0F61kxPcfVEqsVrX
+         +z+KjziMfbXVjZrTJHf1CK6H3wXdT/6189aRiWRGu6apSZaLOt8ZFTByDbKm6rJsO8Fz
+         GkoCTARhf5S3CL1U8FduoZ3lSJKserwVqvbQ4SBdBbLeP93PL37h/C4++BL4W7y623Yv
+         3MZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b="I1R+/6Ta";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=agSNbMKG;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b608dc8e07si16733586d6.398.2024.07.07.02.00.30
+        by mx.google.com with ESMTPS id af79cd13be357-79f06aaeeccsi182486985a.635.2024.07.07.02.00.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Jul 2024 02:00:30 -0700 (PDT)
+        Sun, 07 Jul 2024 02:00:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b="I1R+/6Ta";
+       dkim=pass header.i=@telecom-paris.fr header.s=A35C7578-1106-11E5-A17F-C303FDDA8F2E header.b=agSNbMKG;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=telecom-paris.fr
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sQNkL-0002dA-46; Sun, 07 Jul 2024 04:59:49 -0400
+	id 1sQNkJ-0002bo-Dy; Sun, 07 Jul 2024 04:59:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1sQNkH-0002Zf-Jb; Sun, 07 Jul 2024 04:59:45 -0400
-Received: from zproxy4.enst.fr ([137.194.2.223])
+ id 1sQNkG-0002Yy-6T; Sun, 07 Jul 2024 04:59:44 -0400
+Received: from zproxy4.enst.fr ([2001:660:330f:2::df])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1sQNkE-0006JA-CX; Sun, 07 Jul 2024 04:59:45 -0400
+ id 1sQNkE-0006J0-A4; Sun, 07 Jul 2024 04:59:43 -0400
 Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 5209F206F0;
- Sun,  7 Jul 2024 10:59:38 +0200 (CEST)
+ by zproxy4.enst.fr (Postfix) with ESMTP id 5958E2075C;
+ Sun,  7 Jul 2024 10:59:36 +0200 (CEST)
 Received: from zproxy4.enst.fr ([IPv6:::1])
  by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id Pq4vU82PqISi; Sun,  7 Jul 2024 10:59:37 +0200 (CEST)
+ id 0yh2Mp4OkZ_z; Sun,  7 Jul 2024 10:59:35 +0200 (CEST)
 Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 9CD8520769;
- Sun,  7 Jul 2024 10:59:37 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 9CD8520769
+ by zproxy4.enst.fr (Postfix) with ESMTP id 694C120769;
+ Sun,  7 Jul 2024 10:59:35 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 694C120769
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1720342777;
- bh=c8ENjiff4Xy7HERVz3+urS3GGp04uSfEuEG00VB4S7E=;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1720342775;
+ bh=E66zwggnryHoquF6QyAhpsip2ejSzZfDpfCfiKZ4tQ4=;
  h=From:To:Date:Message-ID:MIME-Version;
- b=I1R+/6TamrhEIu+IIbNX6DRixEwzPZSiQW25fT7ErGQvhukLMOZGDBOJ4G4dkH42V
- dQR9SJZorVxou8+yY6pjEEHOdld8FsnAS2roP3paef5oMj2TOvxByk3S4H2tzjLj1J
- XEXGKiLaSWncf/qlitlugTxhnyj3+mMDxmLqJAJ8=
+ b=agSNbMKGW3JluMCFnw7A3zCMJ8yi7N4zjkiBGyTrvQqMyRoPHD+Z7Z9D5FbXFXdbx
+ B5FZl5yYN0dIayLyqmpgdJJ5oB7BFPsRbzfgkPGy8STGb1pu7UyoIYWQpv9hlhWemQ
+ fnLKr9R0nOr8gz4x46bg3NBNR6MNu+FZ9B+gqOo0=
 X-Virus-Scanned: amavis at enst.fr
 Received: from zproxy4.enst.fr ([IPv6:::1])
  by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id X26Yh8W8r6D2; Sun,  7 Jul 2024 10:59:37 +0200 (CEST)
+ id o26nu37zhBzr; Sun,  7 Jul 2024 10:59:35 +0200 (CEST)
 Received: from inesv-Inspiron-3501.enst.fr (unknown
  [IPv6:2a04:8ec0:0:124::190c])
- by zproxy4.enst.fr (Postfix) with ESMTPSA id C9A9120775;
- Sun,  7 Jul 2024 10:59:36 +0200 (CEST)
+ by zproxy4.enst.fr (Postfix) with ESMTPSA id 4FF38206F0;
+ Sun,  7 Jul 2024 10:59:34 +0200 (CEST)
 From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
@@ -85,16 +85,14 @@ Cc: qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
  Arnaud Minier <arnaud.minier@telecom-paris.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3 3/3] hw/arm: In STM32L4x5 SOC, connect USART devices to EXTI
-Date: Sun,  7 Jul 2024 10:58:55 +0200
-Message-ID: <20240707085927.122867-4-ines.varhol@telecom-paris.fr>
+Subject: [PATCH v3 0/3] Connect STM32L4x5 USART devices to the EXTI
+Date: Sun,  7 Jul 2024 10:58:52 +0200
+Message-ID: <20240707085927.122867-1-ines.varhol@telecom-paris.fr>
 X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240707085927.122867-1-ines.varhol@telecom-paris.fr>
-References: <20240707085927.122867-1-ines.varhol@telecom-paris.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.223;
+Received-SPF: pass client-ip=2001:660:330f:2::df;
  envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy4.enst.fr
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -116,106 +114,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: lESNmPX4pl1G
+X-TUID: VLQno53VDaNl
 
-The USART devices were previously connecting their outbound IRQs
-directly to the CPU because the EXTI wasn't handling direct lines
-interrupts.
-Now the USART connects to the EXTI inbound GPIOs, and the EXTI connects
-its IRQs to the CPU.
-The existing QTest for the USART (tests/qtest/stm32l4x5_usart-test.c)
-checks that USART1_IRQ in the CPU is pending when expected so it
-confirms that the connection through the EXTI still works.
+STM32L4x5 EXTI was handling only configurable interrupts
+(such as those coming from STM32L4x5 SYSCFG which was the
+only device connected to the EXTI).
+This patch adds support for direct line interrupts and
+connects the existing STM32L4x5 USART devices to the EXTI.
+The patch also corrects the handling of configurable line
+interrupts in the EXTI.
+
+Changes from v2 (2nd commit):
+- The 2nd commit was split, part of the changes went in
+another patch correcting EXTI configurable interrupts.
+Stayed in the commit only changes relevant to direct interrupts.
+
+Changes from v1 (2nd commit):
+- add STM32L4x5 EXTI status fields `irq_levels` to track
+configurable irq levels and do edge detection
+- use `qemu_set_irq` instead of qemu_irq_raise/lower
 
 Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/stm32l4x5_soc.c | 24 +++++++++++-------------
- 1 file changed, 11 insertions(+), 13 deletions(-)
 
-diff --git a/hw/arm/stm32l4x5_soc.c b/hw/arm/stm32l4x5_soc.c
-index 38f7a2d5d9..fac83d349c 100644
---- a/hw/arm/stm32l4x5_soc.c
-+++ b/hw/arm/stm32l4x5_soc.c
-@@ -81,6 +81,10 @@ static const int exti_irq[NUM_EXTI_IRQ] =3D {
- #define RCC_BASE_ADDRESS 0x40021000
- #define RCC_IRQ 5
-=20
-+#define EXTI_USART1_IRQ 26
-+#define EXTI_UART4_IRQ 29
-+#define EXTI_LPUART1_IRQ 31
-+
- static const int exti_or_gates_out[NUM_EXTI_OR_GATES] =3D {
-     23, 40, 63, 1,
- };
-@@ -129,10 +133,6 @@ static const hwaddr uart_addr[] =3D {
-=20
- #define LPUART_BASE_ADDRESS 0x40008000
-=20
--static const int usart_irq[] =3D { 37, 38, 39 };
--static const int uart_irq[] =3D { 52, 53 };
--#define LPUART_IRQ 70
--
- static void stm32l4x5_soc_initfn(Object *obj)
- {
-     Stm32l4x5SocState *s =3D STM32L4X5_SOC(obj);
-@@ -297,6 +297,7 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
-c, Error **errp)
-         }
-     }
-=20
-+    /* Connect SYSCFG to EXTI */
-     for (unsigned i =3D 0; i < GPIO_NUM_PINS; i++) {
-         qdev_connect_gpio_out(DEVICE(&s->syscfg), i,
-                               qdev_get_gpio_in(DEVICE(&s->exti), i));
-@@ -322,15 +323,10 @@ static void stm32l4x5_soc_realize(DeviceState *dev_=
-soc, Error **errp)
-             return;
-         }
-         sysbus_mmio_map(busdev, 0, usart_addr[i]);
--        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, usart_irq=
-[i]));
-+        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(DEVICE(&s->exti),
-+                                                       EXTI_USART1_IRQ +=
- i));
-     }
-=20
--    /*
--     * TODO: Connect the USARTs, UARTs and LPUART to the EXTI once the E=
-XTI
--     * can handle other gpio-in than the gpios. (e.g. Direct Lines for t=
-he
--     * usarts)
--     */
--
-     /* UART devices */
-     for (int i =3D 0; i < STM_NUM_UARTS; i++) {
-         g_autofree char *name =3D g_strdup_printf("uart%d-out", STM_NUM_=
-USARTS + i + 1);
-@@ -343,7 +339,8 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
-c, Error **errp)
-             return;
-         }
-         sysbus_mmio_map(busdev, 0, uart_addr[i]);
--        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, uart_irq[=
-i]));
-+        sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(DEVICE(&s->exti),
-+                                                       EXTI_UART4_IRQ + =
-i));
-     }
-=20
-     /* LPUART device*/
-@@ -356,7 +353,8 @@ static void stm32l4x5_soc_realize(DeviceState *dev_so=
-c, Error **errp)
-         return;
-     }
-     sysbus_mmio_map(busdev, 0, LPUART_BASE_ADDRESS);
--    sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, LPUART_IRQ));
-+    sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(DEVICE(&s->exti),
-+                                                   EXTI_LPUART1_IRQ));
-=20
-     /* APB1 BUS */
-     create_unimplemented_device("TIM2",      0x40000000, 0x400);
+In=C3=A8s Varhol (3):
+  hw/misc: In STM32L4x5 EXTI, consolidate 2 constants
+  hw/misc: In STM32L4x5 EXTI, handle direct interrupts
+  hw/arm: In STM32L4x5 SOC, connect USART devices to EXTI
+
+ include/hw/misc/stm32l4x5_exti.h |  4 ++--
+ hw/arm/stm32l4x5_soc.c           | 24 +++++++++++-------------
+ hw/misc/stm32l4x5_exti.c         | 13 +++++++++----
+ 3 files changed, 22 insertions(+), 19 deletions(-)
+
 --=20
 2.43.2
 

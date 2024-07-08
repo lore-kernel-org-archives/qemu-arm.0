@@ -1,225 +1,241 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp2472215njb;
-        Sun, 7 Jul 2024 21:27:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWeHKol6/hzqgLbZPhjYdyqOFEvHKAOrSya1hxpK/DJeyoJLw4cPFw5pcd7JHZEoE0KXCXJywjsKeFLSUkzuM2/czNB9B1s
-X-Google-Smtp-Source: AGHT+IGlpoU1QVRuXFhONVhNLBL/znnhnW7do4zGQDLjS3dsz5q3rPWUx3HZcRYnglnNTLluzRw8
-X-Received: by 2002:a05:622a:1649:b0:446:44d0:3aac with SMTP id d75a77b69052e-447cbef568fmr163545961cf.7.1720412823519;
-        Sun, 07 Jul 2024 21:27:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720412823; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp2485118njb;
+        Sun, 7 Jul 2024 22:12:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXiXZfd1Vm1jbtpciDcXEVEdoUnTX07tdbevLy/zMm4A+gfcFhrqkz7AD3jzuGvqK45/ffsT+X1quSVvBATwhj8y0H+eLr7
+X-Received: by 2002:a19:9152:0:b0:52e:9a91:bba3 with SMTP id 2adb3069b0e04-52ea064b2aamr7723638e87.15.1720415571343;
+        Sun, 07 Jul 2024 22:12:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720415571; cv=none;
         d=google.com; s=arc-20160816;
-        b=j+AUnHej+tPkCYSvmo/nSCVOVkc20XSfcC+HNCuFyb/J1nWQdFBdEXHs32JVGdTqJO
-         qmdAsjgPpKxY4ggXuPtblCVIsFEgDY+M+GzEOO66EICop48xNGyi45itM9miv5d9q7pP
-         JQHrSNrs/sYuBZFokwI8QKLmu6eFCg3ZM2Mdx6ltqqL6vM1wztBul9YWUbBvx7kdqS4W
-         sD1HpprXFUBuZMy4m6D9lv0wdPi+844e70rmlgSnKyaUZzmfyFZtDNgkteE0p80lzuVC
-         3I8vXK/t5i2qgz4dELhkl5R8N+NFrga27VJocd6NgunFmMsegj6LjmtxkKPcB3AYMdMT
-         V0Ug==
+        b=Tr/5mAFR9Qjb+2HONveMVdxDdMepTt3NLRU9ZNpP21uHrZzzQYjo9b2IXRYmmpONnV
+         SFi4JHxZVzukAEkpz4A8AhwNqTKS7D2lGgVDp0LpXCcN9bjYe568ddLZ+WA9utzzezXF
+         KsHFyLaHnAjXs143rQKT8H81XE01CjaMxO/95vRRdr0qC/JzxY6/7VIvbjBVQiMVw/QO
+         YTXB3K9Z29EW+WV8hcADKOKaOvzbnirYygL0gYkRsIKj6q+F+Ux/cNFK7tgbO7CQhfwx
+         0NF6EvGseVeBgrk3FZn5nPpgJ47rFXvBSEkdCjFQw24FWYrARWPxpYgrh32qfUIrp0Am
+         2whA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=JUUBxMzRjQBsfjECj+DhRcfMU2jw9tTIrKCKiq0P4dE=;
-        fh=WH6jTwxN+vms+novW+kmVJTh5uTidthgz5GKWFhkQI4=;
-        b=XYzQNKR966GGmPUi6e5xlOzxVh+mTlrL1qZMcifreFT3BDGsrjR+/5OGAniV4BjbSP
-         ne64SIsF1g8d9YUrFPy9sBjJDTa6Glt8SqqXOuCVOuJwVwJ7CJiEF0laYbm+sSKQdMvx
-         GlbLKC6GnmFQRG+lhyQxuYSTrTRm1Dzos7+fBf0I3A9lFYAp1QQ05F6S4OZfixSN2NvW
-         IkZJ9CYx4S2y0IIffCMhJmdetPfWbVjZU5JNRdm4eddyDW53PrE9++9i64uW/RFrEpGU
-         Apx5+Qy3aDkIe0g9OrPP+y6NbW4gcBTKQH1TYpe6Mlnyf/hjzg8DxjQ28qI54ofRpWA4
-         RucQ==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=jqxTOFeQU2iWq1/HjV4ZOhu8fpH/gfzBGj0nrZu+NQ0=;
+        fh=EM3PBx+TS4KiGir4WjPCaIms1c4hzLfRi7KIVQIdUuE=;
+        b=R0y9tVPSXkdj6nxP/VWTl8TzpdEnC4ipF46YGnKMvH9nhae+QAPY4LhY8OxGPKSkLE
+         W+gX9GZDyq+iqxwb2wpHiSn6jDs/GwzRPBf2WCUmmrtT30bsoAMsTvZA8YyE5mNm2gri
+         DCZob+UTOYBkcuA0JFDFBa2c1P0+7F/3XyFBNaIqiSqM1FRMdpgo4l+Kf4kMCzufRw9o
+         KkTbAQsWKGXtVR8KN8w4Ej5M7ob/1L7wIMj87IPU/mPrT4Y6dTtEQxuHcu+xNIWhkB6i
+         9YR638D87XHIN5DeIK84JVMJm8jSC8iiT+oN7YdfAOH7uueIvYGGZ1cFLzKMVr2I64XS
+         /k3g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=JH9Yj8ra;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-447e84d5c8esi29719351cf.54.2024.07.07.21.27.03
+       dkim=pass header.i=@opnsrc.net header.s=google header.b="TEOw+D9/";
+       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
+       dara=neutral header.i=@linaro.org
+Return-Path: <salil.mehta@opnsrc.net>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 2adb3069b0e04-52ea6ae60dbsor1942165e87.12.2024.07.07.22.12.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 07 Jul 2024 21:27:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sun, 07 Jul 2024 22:12:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=JH9Yj8ra;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sQfxS-0000v4-I5; Mon, 08 Jul 2024 00:26:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sQfxP-0000tg-TQ
- for qemu-devel@nongnu.org; Mon, 08 Jul 2024 00:26:32 -0400
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sunilvl@ventanamicro.com>)
- id 1sQfxO-0001gD-4Y
- for qemu-devel@nongnu.org; Mon, 08 Jul 2024 00:26:31 -0400
-Received: by mail-ot1-x32b.google.com with SMTP id
- 46e09a7af769-7035d9edcd9so1234406a34.1
- for <qemu-devel@nongnu.org>; Sun, 07 Jul 2024 21:26:29 -0700 (PDT)
+       dkim=pass header.i=@opnsrc.net header.s=google header.b="TEOw+D9/";
+       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
+       dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1720412788; x=1721017588; darn=nongnu.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=JUUBxMzRjQBsfjECj+DhRcfMU2jw9tTIrKCKiq0P4dE=;
- b=JH9Yj8rafKtDrnY/TDFehtxv8ftNFzhVNVM+f6dqlsL8b49LA20Wwa+iKLe707WK7r
- uJ8Hr4iT6/TxWNO8Ir/sWbskTwL/SdGO5xZmVryEIDVZtNE6wQc+PPMDXCAdn987phgX
- WeR+1XGrXTd6Z9i2/ulcEURDSMwX3abAP+53r1Bi0JZ0UPwMmupzt4/RTxwKOCLLbvpO
- dQt99qrA3OUR7LWr2l+xJy6goBD17xgc0NfAipMCIadA4XZae0l+qNN46au1LayiVXsL
- l3mo8dYoMhmo+a3oSY/VGZ9RGgCJAxpv5OEbfvl0XPcpoQ1LEBeUJj26bYzgHRtni1Xt
- 65mg==
+        d=opnsrc.net; s=google; t=1720415571; x=1721020371; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=jqxTOFeQU2iWq1/HjV4ZOhu8fpH/gfzBGj0nrZu+NQ0=;
+        b=TEOw+D9/qRc0YbnN58l9RUxoYl5u1+ZNmtYMIfGrtksSKCFvtzKuFUHvd/dzKP+mjn
+         elX8BXllIQ4vXYBKKMB8n2nDUKWa793wEktVD+PrBKVySzedCNc9kc556alRmuFgKq2x
+         MKgKRUTG4msITc3d2EStMRjhzSh1GmnJuOsQaWWwFeHwfZSpudsv2R1Td71UFd9uREGg
+         trX4lF6sCH8UkMdUX9HqK+oWHnHGFbpcKQevEE1hpnjU0muwZ9F6uC3Jpeck2OiIbdYy
+         1ldC0VtZi4LcjZoQcLnPOCCMw802zL3Y4KNBPadauGZkQVMJuXOZi4AOyfwkQ/H0s8UA
+         0cSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720412788; x=1721017588;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=JUUBxMzRjQBsfjECj+DhRcfMU2jw9tTIrKCKiq0P4dE=;
- b=e0OkUQgt9yS/u5ucfQCLLBgdf0h8xhthCv14X2MSv1hbJsXrHteH1l9SW+qt0ZRZj2
- DYNveAamzdu+hUwh2/l+xa417EasihgK5tUxkqH2jPdvvzKleTxll+lha0A7NxKnRiTf
- ITHMqLx1SIv9IHPDBbu7u/jgaJpsDm5uA8J9XzgoKn/VkCd25rwSl36kG+23V87/U4yk
- K0OJyy6xdtpuMtRuK6UP5KrtEJ6HIeY/LpPHb6xfq0H4LehaXNFkl/7ZP7ADzgYY0ZHL
- UFMG96vGaFxVh656arRSUvbEjXWhVfUeushwwxVziJ1/0O0gFrsXX5U2hehzfuqx7Yov
- Cfow==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUXCZYOl3zpMcfsxIbDuhSv24J5lK3Ow6boIOUIMpQd9TqeLOXxnylvDFNVNWej0XuDI+D0W0TsHeMILJHc0nKXTNa9NlE=
-X-Gm-Message-State: AOJu0Yz9pLnu/pVcHTMOV8SoY8l91ZRyZ64vAsyx5otVde0eP6H6M77T
- t7D+Gk5FroMYPYbpqf+5Bk8akMsahtBMAb4gelSs0mE289jZ0vgbWcV11zx9tzk=
-X-Received: by 2002:a9d:6d19:0:b0:703:64d4:8e0f with SMTP id
- 46e09a7af769-70364d48fc1mr4812669a34.6.1720412788521; 
- Sun, 07 Jul 2024 21:26:28 -0700 (PDT)
-Received: from sunil-laptop ([106.51.187.237])
- by smtp.gmail.com with ESMTPSA id
- 46e09a7af769-701f7b35531sm3653472a34.65.2024.07.07.21.26.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 07 Jul 2024 21:26:27 -0700 (PDT)
-Date: Mon, 8 Jul 2024 09:56:14 +0530
-From: Sunil V L <sunilvl@ventanamicro.com>
-To: Alistair Francis <alistair23@gmail.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Ani Sinha <anisinha@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Sia Jee Heng <jeeheng.sia@starfivetech.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: Re: [PATCH v4 16/16] tests/qtest/bios-tables-test: Add expected ACPI
- data files for RISC-V
-Message-ID: <ZotqZsO2QdPG4tsg@sunil-laptop>
-References: <20240625150839.1358279-1-sunilvl@ventanamicro.com>
- <20240625150839.1358279-17-sunilvl@ventanamicro.com>
- <20240627141803.42cd46c1@imammedo.users.ipa.redhat.com>
- <20240701170330-mutt-send-email-mst@kernel.org>
- <20240702150236.000042eb@Huawei.com>
- <ZoUmf2zn51RWU0o0@sunil-laptop> <ZoVmwFgIRlziF/v4@sunil-laptop>
- <CAKmqyKPMW0WMJQn7=2ebuqf0c=ow87LCtPd1bOdiWVP_xjoTJA@mail.gmail.com>
+        d=1e100.net; s=20230601; t=1720415571; x=1721020371;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=jqxTOFeQU2iWq1/HjV4ZOhu8fpH/gfzBGj0nrZu+NQ0=;
+        b=RCnbEGlGfvQySoyv1Zj7kFju43XaE9a1YDVA1rPF7Od/V/Obl3ewnN2knGT45iUj/a
+         fkj6nXNULGaS7DK+COu9s6NGiBVNnrZeJPK6BLR1DOuQM0OmNpxpYHXwRmfPdotCJ366
+         asEf73jIXBoLX17dEQ8zXODe/+u2FdQOdE+Wg4cpDz2EH+dq20MeM6/F5b0zTWEcycTO
+         P6M58WLEIVAv56DP0zwXTcMS1nItqj7myzaJdnpSwwrJVi8nEdpA8an9/mSwPl6E5LLB
+         Kut2IKQLKvcJ9NFghb8kDQ0NUwP8HgwAmDAQirhO9H3nwQp+haz+XkJ2pCeKDNEowfbO
+         luDQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXtM0E4Lnw8+8FXioh2obO3aGDLPbyadE9FnApAN7L9T1IQiipXsyVN/rhCS5k7Zz37MFUVksTAGdgM4LWPQSBmHZ3JPvVW
+X-Gm-Message-State: AOJu0YyFLsbXxvMOsERnwVhTQhq1JOobbFmiUxr3KpgsbN0saAquqe11
+	oB0IPphz5YnpefTMEjhD212QEGMQeDMZhuMeosVWz03YmXBAQtKdxkzZ+Tshbqc=
+X-Google-Smtp-Source: AGHT+IGXInKd71qlZaOrrT33sRSJ3LwomIsUbQoWs4hd29kncEf36qVRpQzmAIZ4hNmYtAjTa0zd8g==
+X-Received: by 2002:a19:434a:0:b0:52e:9f17:8418 with SMTP id 2adb3069b0e04-52ea06368eemr7085022e87.12.1720415570505;
+        Sun, 07 Jul 2024 22:12:50 -0700 (PDT)
+Return-Path: <salil.mehta@opnsrc.net>
+Received: from [10.11.12.72] ([90.220.10.255])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4266c3650f4sm8846945e9.1.2024.07.07.22.12.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 07 Jul 2024 22:12:50 -0700 (PDT)
+Message-ID: <c74b6d5e-1939-48df-ae21-9cdd4158a683@opnsrc.net>
+Date: Mon, 8 Jul 2024 05:12:48 +0000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAKmqyKPMW0WMJQn7=2ebuqf0c=ow87LCtPd1bOdiWVP_xjoTJA@mail.gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
- envelope-from=sunilvl@ventanamicro.com; helo=mail-ot1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3YiIvFstRePZ
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V13 3/8] hw/acpi: Update ACPI GED framework to support
+ vCPU Hotplug
+To: Igor Mammedov <imammedo@redhat.com>, Salil Mehta <salil.mehta@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org,
+ jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, andrew.jones@linux.dev, david@redhat.com,
+ philmd@linaro.org, eric.auger@redhat.com, oliver.upton@linux.dev,
+ pbonzini@redhat.com, mst@redhat.com, will@kernel.org, gshan@redhat.com,
+ rafael@kernel.org, alex.bennee@linaro.org, linux@armlinux.org.uk,
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
+ wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
+ lixianglai@loongson.cn, npiggin@gmail.com, harshpb@linux.ibm.com,
+ linuxarm@huawei.com, Shaoqin Huang <shahuang@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>
+References: <20240607115649.214622-1-salil.mehta@huawei.com>
+ <20240607115649.214622-4-salil.mehta@huawei.com>
+ <20240706154640.0a45c5d6@imammedo.users.ipa.redhat.com>
+Content-Language: en-GB
+From: Salil Mehta <salil.mehta@opnsrc.net>
+In-Reply-To: <20240706154640.0a45c5d6@imammedo.users.ipa.redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: 5N9+8oT6QfCC
 
-On Mon, Jul 08, 2024 at 01:16:49PM +1000, Alistair Francis wrote:
-> On Thu, Jul 4, 2024 at 12:57 AM Sunil V L <sunilvl@ventanamicro.com> wrote:
-> >
-> > On Wed, Jul 03, 2024 at 03:53:08PM +0530, Sunil V L wrote:
-> > > On Tue, Jul 02, 2024 at 03:02:36PM +0100, Jonathan Cameron wrote:
-> > > > On Mon, 1 Jul 2024 17:03:43 -0400
-> > > > "Michael S. Tsirkin" <mst@redhat.com> wrote:
-> > > >
-> > > > > On Thu, Jun 27, 2024 at 02:18:03PM +0200, Igor Mammedov wrote:
-> > > > > > On Tue, 25 Jun 2024 20:38:39 +0530
-> > > > > > Sunil V L <sunilvl@ventanamicro.com> wrote:
-> > > > > >
-> > > > > > > As per the step 5 in the process documented in bios-tables-test.c,
-> > > > > > > generate the expected ACPI AML data files for RISC-V using the
-> > > > > > > rebuild-expected-aml.sh script and update the
-> > > > > > > bios-tables-test-allowed-diff.h.
-> > > > > > >
-> > > > > > > These are all new files being added for the first time. Hence, iASL diff
-> > > > > > > output is not added.
-> > > > > > >
-> > > > > > > Signed-off-by: Sunil V L <sunilvl@ventanamicro.com>
-> > > > > > > Acked-by: Alistair Francis <alistair.francis@wdc.com>
-> > > > > > > Acked-by: Igor Mammedov <imammedo@redhat.com>
-> > > > > >
-> > > > > > Michael,
-> > > > > > can it go via risc-v tree or
-> > > > > > do you plan to merge it via your tree?
-> > > > >
-> > > > > given patch 1 is merged, I took the rest.
-> > > >
-> > > > Looks like your CI runs are catching this as well but
-> > > > RHCT here is failing.  I rebased the GI/GP set on top of this
-> > > > and ignored that failure by skipping riscv64 tests.
-> > > >
-> > > > Jonathan
-> > > >
-> > > Hi Jonathan, Michael,
-> > >
-> > > Looks like a recent RISC-V PR updated the rva22s64 ISA string affecting
-> > > the RHCT I had in my series. I see that Michael dropped those 3 RISC-V
-> > > patches from the PR. So, let me update the expected RHCT AML file in a
-> > > new series. I will also include Igor's feedback to remove fallback path
-> > > in that series.
-> > >
-> > Hi Alistair,
-> >
-> > This issue is because, below 3 extensions are present in the ISA string
-> > for rva22s64 profile cpu after recent RISC-V PR.
-> >
-> > zmmul_zaamo_zalrsc
-> 
-> zmmul (multiply) is implied by M (multiply and divide). The other two
-> are similar.
-> 
-> >
-> > However, IIUC, they are not mentioned in the RVA22S64 profile spec. Because of
-> > this change, my AML files are having a difference and failing CI. The
-> > question is, is this correct behavior? If so, I can update the AML files
-> > and resubmit the patches. Let me know.
-> 
-> This does feel correct. Is software only needed zmmul for multiplying
-> then reporting zmmul when we support M feels like the right thing to
-> do.
-> 
-> I can't find a spec that says either way though. So unless anyone else
-> knows of one I think this current approach is correct
-> 
-Thanks a lot, Alistair. I had a discussion with Daniel as well and we
-concluded the same. I will update the AML files.
 
-Thanks,
-Sunil
+On 06/07/2024 13:46, Igor Mammedov wrote:
+> On Fri, 7 Jun 2024 12:56:44 +0100
+> Salil Mehta <salil.mehta@huawei.com> wrote:
+>
+>> ACPI GED (as described in the ACPI 6.4 spec) uses an interrupt listed in the
+>> _CRS object of GED to intimate OSPM about an event. Later then demultiplexes the
+>> notified event by evaluating ACPI _EVT method to know the type of event. Use
+>> ACPI GED to also notify the guest kernel about any CPU hot(un)plug events.
+>>
+>> ACPI CPU hotplug related initialization should only happen if ACPI_CPU_HOTPLUG
+>> support has been enabled for particular architecture. Add cpu_hotplug_hw_init()
+>> stub to avoid compilation break.
+>>
+>> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+>> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+>> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+>> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+>> Reviewed-by: Gavin Shan <gshan@redhat.com>
+>> Reviewed-by: David Hildenbrand <david@redhat.com>
+>> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+>> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+>> Tested-by: Xianglai Li <lixianglai@loongson.cn>
+>> Tested-by: Miguel Luis <miguel.luis@oracle.com>
+>> Reviewed-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+>> Tested-by: Zhao Liu <zhao1.liu@intel.com>
+>> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+>> ---
+>>   hw/acpi/acpi-cpu-hotplug-stub.c        |  6 ++++++
+>>   hw/acpi/cpu.c                          |  6 +++++-
+>>   hw/acpi/generic_event_device.c         | 17 +++++++++++++++++
+>>   include/hw/acpi/generic_event_device.h |  4 ++++
+>>   4 files changed, 32 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/acpi/acpi-cpu-hotplug-stub.c b/hw/acpi/acpi-cpu-hotplug-stub.c
+>> index 3fc4b14c26..c6c61bb9cd 100644
+>> --- a/hw/acpi/acpi-cpu-hotplug-stub.c
+>> +++ b/hw/acpi/acpi-cpu-hotplug-stub.c
+>> @@ -19,6 +19,12 @@ void legacy_acpi_cpu_hotplug_init(MemoryRegion *parent, Object *owner,
+>>       return;
+>>   }
+>>   
+>> +void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+>> +                         CPUHotplugState *state, hwaddr base_addr)
+>> +{
+>> +    return;
+>> +}
+>> +
+>>   void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list)
+>>   {
+>>       return;
+>> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+>> index 69aaa563db..473b37ba88 100644
+>> --- a/hw/acpi/cpu.c
+>> +++ b/hw/acpi/cpu.c
+>> @@ -221,7 +221,11 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+>>       const CPUArchIdList *id_list;
+>>       int i;
+>>   
+>> -    assert(mc->possible_cpu_arch_ids);
+>> +    /* hotplug might not be available for all types like x86/microvm etc. */
+>> +    if (!mc->possible_cpu_arch_ids) {
+>> +        return;
+>> +    }
+> if hotplug is not supported, this function shouldn't be called at all.
+
+True. But none the less this gets called for Intel/microvm and causes 
+qtest to fail.
+
+I think, we've had this discussion before last year as well. Please 
+check below:
+
+https://lore.kernel.org/qemu-devel/15e70616-6abb-63a4-17d0-820f4a254607@opnsrc.net/
+
+>
+> [...]
+>> @@ -400,6 +411,12 @@ static void acpi_ged_initfn(Object *obj)
+>>       memory_region_init_io(&ged_st->regs, obj, &ged_regs_ops, ged_st,
+>>                             TYPE_ACPI_GED "-regs", ACPI_GED_REG_COUNT);
+>>       sysbus_init_mmio(sbd, &ged_st->regs);
+>> +
+>> +    memory_region_init(&s->container_cpuhp, OBJECT(dev), "cpuhp container",
+>> +                       ACPI_CPU_HOTPLUG_REG_LEN);
+>> +    sysbus_init_mmio(sbd, &s->container_cpuhp);
+>> +    cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
+>> +                        &s->cpuhp_state, 0);
+> suggest to move this call to realize time, and gate it on
+> ACPI_GED_CPU_HOTPLUG_EVT being set.
+> Platform that supports cpu hotplug must optin, setting ACPI_GED_CPU_HOTPLUG_EVT,
+> while for the rest it will be ignored.
+>
+> for example: create_acpi_ged() : event |= ACPI_GED_NVDIMM_HOTPLUG_EVT;
+
+Similar case applies to the Memory hotplug as well and any cleaning here
+
+will mean going beyond the realms of this patch-set. But I can definitely
+
+take this activity in a separate patch-set if you wish?
+
+Thanks
+
+>
+>>   }
+>>   
+>>   static void acpi_ged_class_init(ObjectClass *class, void *data)
+>> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+>> index ba84ce0214..90fc41cbb8 100644
+>> --- a/include/hw/acpi/generic_event_device.h
+>> +++ b/include/hw/acpi/generic_event_device.h
+>> @@ -60,6 +60,7 @@
+>>   #define HW_ACPI_GENERIC_EVENT_DEVICE_H
+>>   
+>>   #include "hw/sysbus.h"
+>> +#include "hw/acpi/cpu_hotplug.h"
+>>   #include "hw/acpi/memory_hotplug.h"
+>>   #include "hw/acpi/ghes.h"
+>>   #include "qom/object.h"
+>> @@ -95,6 +96,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
+>>   #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
+>>   #define ACPI_GED_PWR_DOWN_EVT      0x2
+>>   #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
+>> +#define ACPI_GED_CPU_HOTPLUG_EVT    0x8
+>>   
+>>   typedef struct GEDState {
+>>       MemoryRegion evt;
+>> @@ -106,6 +108,8 @@ struct AcpiGedState {
+>>       SysBusDevice parent_obj;
+>>       MemHotplugState memhp_state;
+>>       MemoryRegion container_memhp;
+>> +    CPUHotplugState cpuhp_state;
+>> +    MemoryRegion container_cpuhp;
+>>       GEDState ged_state;
+>>       uint32_t ged_event_bitmap;
+>>       qemu_irq irq;

@@ -1,201 +1,295 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp2728186njb;
-        Mon, 8 Jul 2024 07:32:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX3YPussvS+bOU37lYAxn52m6spXKGuq6h2HlEoWBvpLkdAtTo7QPtkeSDnbX/HhmgZMemBiNOgPj78QPYg1uMMPMdxtTAv
-X-Google-Smtp-Source: AGHT+IFuyTadoCiwEISITVJqtwStIao6TnYjX9k1RNMXIjjat4+ePhIQ6Tr4e746vdv08UpYCEQl
-X-Received: by 2002:a05:6102:58ce:b0:48f:5a6b:190 with SMTP id ada2fe7eead31-48fee7f49acmr11267483137.34.1720449121371;
-        Mon, 08 Jul 2024 07:32:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720449121; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp2729440njb;
+        Mon, 8 Jul 2024 07:34:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWuaEph+HM7Iec4Rx7S8YOUF/wTX9fX5ghBv+aiLi21z89RAyOO6Nq2IS0uN29Znb/+p8Ht3Z3p5sHArP4DYH3e4WTrv4Df
+X-Google-Smtp-Source: AGHT+IEeU8zqlLDApCKS0buZKOnIAKQLTAttCd4BA+gdURoi3DHuEqEL/p76pHmhLnr8IFG7kw2p
+X-Received: by 2002:ac8:7f83:0:b0:447:c051:cb40 with SMTP id d75a77b69052e-447cbf94f4bmr112157381cf.58.1720449243407;
+        Mon, 08 Jul 2024 07:34:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720449243; cv=none;
         d=google.com; s=arc-20160816;
-        b=IDZomQ75Gu34M9ND6xKMBe5Hip7OLzvRI4pw/BW6KZKxxDI7CbTVF9uVQAwJNG1X/x
-         irj3f/vfqmNLxd370HsLLV3dpElRBZJyBIxfjvnST7UgCVFHJvDMiD/8P8STWkdfzhEH
-         opKryU50ZDkUFtX6+ckfVFlXorYhrFsxKHreiMEi+RqBh+nG1hG2oHjZmcum+ZCciabt
-         j0ufM9jh61adLulb3ixAkoQejpfpdhaPTgpyBTU5WnnPo/ZtApXF4yYVGnDex2DjlqTx
-         vcNriDZQwtwfJ865rG5O9s3kgtiEgm6JzgRIus2cjOc4vZkb0PZ7Fg0K5+7XagwbvwpD
-         DNJQ==
+        b=ExPUaHTNPDqFJOGVeam4cKvXa0Kxdzs5HxoCjf6GVksOJ5uadVn+niok5f40IxCFo9
+         Y8EqkkX0e5hrPbgqE4Fry97KavfLXZpypnbeyGjcsiqoBup+EgChJWeXZzox0T9nYjjs
+         42cSnOyOaHgGTokbwY5MKrwhZJlCG9uGxUNyQusH9sv+Br2D5mI8eGIg9VCaloRrWhcQ
+         qvwoHih9QkDqFj4++rn9syCi5LX7pu1qZx4lZ1hT1l4kwmhYT7sbMfZSBBmmY0Koq9AI
+         zMKZz17S1yJWHCAxS6N85gQZnL98cREpduKc237jMueGpznvPLvTRUhaE8VdcvLwhSMW
+         hnYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=1OKlewebdRdEbxTmajT78KBQ6FSBdR09yAPN/qa7eUc=;
-        fh=MZs7aA3qKbGRD8mmhxa1ytd/ZTkPxUGuePMYI7dBcdo=;
-        b=CNmmaVYfniWq4KKSDOxoeklEWSxuX2WXMpzGYkoyUVaY0iKo2O6AblbA0w9zx0zqye
-         Mo+Pcr2Tx845KrfH0Xey+yE/29c8yFNUqxOF79n8EZo31zl10BzJm5WXLK1d7ueVKdd8
-         59WiDeGDwVVQ/EhdyaqR4ihSgjlPqpTkk9gAID6hw7A7uKq15RP8WgF8Qen3OPUhe+R2
-         ZtGnNPyCm5vah/2ymeAQxZ1XoN/WJoHH/CMoPl8SWR5Cnljuiz4dvdV8QAL1X7qa7/L+
-         MtTBqVGx6YSmE7GZ/Tw6rsx2xb/KWErop9xT9rstOEutchgaa32aXaxLqzAToSCU3KxN
-         4bjw==;
+        bh=pufEBI35LmA84qV8HraObFf9paHS9J8Az/AcBoA2O0E=;
+        fh=ZXk4or2MwbxB+63GuVStddEOHQgoER9fDVlwDg7zUJg=;
+        b=Xz1l3gyYKGCDIu47UHQBhzIamor+WHppZAAJQGo+KGxB61EQw2z/JzTZnCFQRfGQGk
+         QxIG4QMu/nQ3G8NhUNvGV+2CCGZWGIm/jazN6W+8TXGKN5JhUwMuhA9hkb1L0Ks+BPvh
+         TLNiXb0P4nlr/N6Y4Bwzv/I1gca5LgNdIzbPA2Niq/ZVT05LvzGlM8tyekWs53wCPVsi
+         m2R8Ev2c+8CQ/8w80GRfTybwnzIFZJ7B4siq0DCrDlsf7AacCx2boWnd4ONdma2G9Qw3
+         U6PwMzacpYSw/MTQHOMFdbMsQqhs+PawxxNERpBOw/ug7dhL1HbA5KiuxCtmfjq8wFP4
+         sh8w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YIchKu0V;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vil+OPrf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-48ff3dcbef8si1249481137.414.2024.07.08.07.32.01
+        by mx.google.com with ESMTPS id d75a77b69052e-447f9af5bb5si314641cf.105.2024.07.08.07.34.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jul 2024 07:32:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 Jul 2024 07:34:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YIchKu0V;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=Vil+OPrf;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sQpOp-0008UG-9e; Mon, 08 Jul 2024 10:31:27 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sQpRE-0001NV-Rc; Mon, 08 Jul 2024 10:33:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sQpOe-0008F2-LU
- for qemu-arm@nongnu.org; Mon, 08 Jul 2024 10:31:25 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1sQpRD-0001J6-0m
+ for qemu-devel@nongnu.org; Mon, 08 Jul 2024 10:33:55 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sQpOc-0001sx-Fk
- for qemu-arm@nongnu.org; Mon, 08 Jul 2024 10:31:16 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-58e76294858so6545204a12.0
- for <qemu-arm@nongnu.org>; Mon, 08 Jul 2024 07:31:12 -0700 (PDT)
+ id 1sQpR6-0002JX-Lz
+ for qemu-devel@nongnu.org; Mon, 08 Jul 2024 10:33:54 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-58b0dddab8cso5913583a12.0
+ for <qemu-devel@nongnu.org>; Mon, 08 Jul 2024 07:33:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1720449071; x=1721053871; darn=nongnu.org;
+ d=linaro.org; s=google; t=1720449226; x=1721054026; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=1OKlewebdRdEbxTmajT78KBQ6FSBdR09yAPN/qa7eUc=;
- b=YIchKu0VayJqdHgYwlaA7n5faG2+tBNXQp/qC3xObLYOgI1Jd3JS/LWCYro5RK1d1s
- ySUqFPkG5eBiuZSQ0XvQ+X42OgaEVzbDu4YH5wu6yLTbPb5SenNgsSmkYC1WFljWPln7
- JVk/HuGLjEHiulwIlOf6ST+JZAgQNYdRawEQEDGkvk8OT101O7DJ4LMh2pBaZWCNOcAu
- OFZFHIUPjmNMVuR0kFWO6npm6AK+HuIuHuS+DIEfZDu2pQ5xpDDdALzVKjtbOIp7kBUY
- 7LT10p97hVJuLNXl2WjsrZoOG9zRC6M382976m2DmW7Ysu2uAJaTj7GBdrFG1I2r1LLW
- ignA==
+ bh=pufEBI35LmA84qV8HraObFf9paHS9J8Az/AcBoA2O0E=;
+ b=Vil+OPrffkmnP9JitCCy5YeKh3ebeoP2igWWmvUtAjhyT/LHe6v66bKzOhPCyGtFRp
+ vszQq4SaKfNMXd+kjXGiH6mKKThZ3Fqn/+HSJbRv1ySQqwyARFX9XVJnYTySkvt9Ruek
+ A8YcLFa8mNpw7R8Qz9witKb+bU6dwQPsX5r/bDKTOxu5O1jljnKsDNCJ0sqwo8dcZPAm
+ bo7SEnvxC6anCsND0au+PISpT4v3X7But6xw/t37goN4uj11PYsmT2nB6otx1QLuF/yK
+ cNONhXjPDzrMAfmOquBoIggc4vzAKwQ7giNwgN4jlbrBdn5QJhI8Mmb2gcVXOGYghzti
+ nRIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720449071; x=1721053871;
+ d=1e100.net; s=20230601; t=1720449226; x=1721054026;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=1OKlewebdRdEbxTmajT78KBQ6FSBdR09yAPN/qa7eUc=;
- b=O6RpSUBjg4MgkRJySHY4C9xjRlV1uzRJEp6qK2gLPoOavwlgSMD/zryn8l8B5/6zdd
- 9KKj6RU+F5qCZP9/ekblB2pe20NqOfqj03K5sLXaGdMnmSHDOo09MKS2s8dy6wROlQLD
- 8f1ROatCDfqo5xMce9JZGlZW9JBTv3ujBH1tPnZNa8CkNaLYczin7MfVYBqHKr7hSW4E
- 8Y/9Z4x9QYmQ9S9YiphH2IvYinNMlmDS3x5z0va2Si56kqP6PjlyM0SocDPgvKL3Xs2x
- zlQuiHE6MVe8dSVwhpOzMjMOKLCuF350hzdlRmExFtXc93tutV6M89sLq9sPucEPKUNV
- MFAg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUWnth5gbhzt4mL1/QQr8GFvRgLHwR7753kQR3RIvX7I3TVkAA6O5bCJgys1MEYmXCclYVHEXn78BoKLCsX78ESkyau
-X-Gm-Message-State: AOJu0YzYjV7EpiKpweVTbuqtRFsIigmFSksNxcZhxINaKVMZH2hZ7TAs
- KdtW/Fj4HcHkXuaszjz2TuBC7LZQ6pwWlLlcPHp6rIiTmn2PD+dLvC5Lj0cNEfZLzn2CRiey7+i
- vJVr/cLdEWcMQn3OvokNorblvxPfr/YuUJ8qUQQ==
-X-Received: by 2002:aa7:d149:0:b0:57d:40e3:2a71 with SMTP id
- 4fb4d7f45d1cf-58e7a94b244mr8128547a12.6.1720449070910; Mon, 08 Jul 2024
- 07:31:10 -0700 (PDT)
+ bh=pufEBI35LmA84qV8HraObFf9paHS9J8Az/AcBoA2O0E=;
+ b=elUrE/A0T+qmta4xJKAPMGXi9DHasm2LXlmLbY2nLz53NbMKD7jnzcqYG0s4+Mx6h8
+ nCdCDEmrqshJsF08BqQyrGrk4Kf4TNUFwytRO5kusq8KpTu4wWD3hAIz0+7gqGoCJ2N2
+ DUnnz8mFF2b6jMR09Hu4KWynGv73gT8SFpjmX/pOr6UUa/uu5+cDN8WC3ZOK4pKfTH/4
+ kYseU8S4ZwNXYypfVwBeggJOqbMzOD4Domm/h8Q55tTAwRDL14BwdK9Im+fWSIhUcM7E
+ 1Ul0PRcJNAsHxxqLS3iS6WLdwnXSutSqHH4tl0S7LmaNqPyxbL1TvdWHDCCebVWMrUFj
+ UN9Q==
+X-Gm-Message-State: AOJu0YxQDMyUCO5jRVaGfH+mdkGzpe5V93ewys/BDlYRaAoy0jYYQstH
+ N1ir4qW7gegSxWTdkvD08Lq+Q6MMkSFFlzXRKsc4WcaO/RkgWO9FnOxFhQ9uWYSts5lsZeWrL3O
+ wac6PINKgvAgfg4BxtT5GoYjuC57dSqNQFsSBDQWv0dbqA4R6
+X-Received: by 2002:a05:6402:13d5:b0:58b:73f4:2ed with SMTP id
+ 4fb4d7f45d1cf-58e5b4aede0mr7711256a12.35.1720449225571; Mon, 08 Jul 2024
+ 07:33:45 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240702234155.2106399-1-richard.henderson@linaro.org>
- <20240702234155.2106399-2-richard.henderson@linaro.org>
-In-Reply-To: <20240702234155.2106399-2-richard.henderson@linaro.org>
+ <20240702234155.2106399-3-richard.henderson@linaro.org>
+In-Reply-To: <20240702234155.2106399-3-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Jul 2024 15:31:00 +0100
-Message-ID: <CAFEAcA_3Ayf-Eo4OHisewA+qgCWSF1S0Tn5aLrYy_3rF0ytStA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] accel/tcg: Introduce memset_ra, memmove_ra
+Date: Mon, 8 Jul 2024 15:33:34 +0100
+Message-ID: <CAFEAcA_n4r_h==JK1bPi9dNpP_pLCUOx1d1Mx+H85RshuBrPNA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] target/arm: Use memset_ra, memmove_ra in helper-a64.c
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org, 
  iii@linux.ibm.com, david@redhat.com, balaton@eik.bme.hu
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Zp8Z9mFiNSlQ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: AOzXMFkCDPG2
 
-On Wed, 3 Jul 2024 at 00:43, Richard Henderson
+On Wed, 3 Jul 2024 at 00:42, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Add wrappers that set and clear helper_retaddr around the
-> host memory operation.  This cannot fail for system mode,
-> but might raise SIGSEGV for user mode.
+> Without this, qemu user will not unwind from the SIGSEGV
+> properly and die with
+>
+>   qemu-aarch64: QEMU internal SIGSEGV {code=ACCERR, addr=0x7d1b36ec2000}
+>   Segmentation fault
+>
+> Fill in the test case for ppc and s390x, which also use memset
+> from within a helper (but don't currently crash fwiw).
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  include/exec/cpu_ldst.h | 40 ++++++++++++++++++++++++++++++++++++++++
->  accel/tcg/user-exec.c   | 22 ++++++++++++++++++++++
->  2 files changed, 62 insertions(+)
+>  target/arm/tcg/helper-a64.c        | 10 ++--
+>  tests/tcg/multiarch/memset-fault.c | 77 ++++++++++++++++++++++++++++++
+>  2 files changed, 82 insertions(+), 5 deletions(-)
+>  create mode 100644 tests/tcg/multiarch/memset-fault.c
 >
-> diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
-> index 71009f84f5..baf4f9367d 100644
-> --- a/include/exec/cpu_ldst.h
-> +++ b/include/exec/cpu_ldst.h
-> @@ -379,4 +379,44 @@ void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
->                          MMUAccessType access_type, int mmu_idx);
+> diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+> index 0ea8668ab4..666bdb7c1a 100644
+> --- a/target/arm/tcg/helper-a64.c
+> +++ b/target/arm/tcg/helper-a64.c
+> @@ -971,7 +971,7 @@ void HELPER(dc_zva)(CPUARMState *env, uint64_t vaddr_in)
+>      }
 >  #endif
 >
-> +/**
-> + * memset_ra:
-> + * @p: host pointer
-> + * @c: data
-> + * @n: length
-> + * @ra: unwind return address
-> + *
-> + * Like system memset(p,c,n), except manages @ra for the calling
-> + * helper in the event of a signal.  To be used with the result
-> + * of tlb_vaddr_to_host to resolve the host pointer.
-> + */
-> +#ifdef CONFIG_USER_ONLY
-> +void *memset_ra(void *p, int c, size_t n, uintptr_t ra);
-> +#else
-> +static inline void *memset_ra(void *p, int c, size_t n, uintptr_t ra)
-> +{
-> +    return memset(p, c, n);
-> +}
+> -    memset(mem, 0, blocklen);
+> +    memset_ra(mem, 0, blocklen, GETPC());
+>  }
+>
+>  void HELPER(unaligned_access)(CPUARMState *env, uint64_t addr,
+> @@ -1120,7 +1120,7 @@ static uint64_t set_step(CPUARMState *env, uint64_t toaddr,
+>      }
+>  #endif
+>      /* Easy case: just memset the host memory */
+> -    memset(mem, data, setsize);
+> +    memset_ra(mem, data, setsize, ra);
+>      return setsize;
+>  }
+
+I think strictly speaking since page_limit() and page_limit_rev()
+only look at the target page size and not the host page size,
+this will not quite behave correctly in the case where the
+host page size is smaller than the target page size, but that
+case doesn't work properly in any number of other situations
+already, so I don't really care about it.
+
+> @@ -1163,7 +1163,7 @@ static uint64_t set_step_tags(CPUARMState *env, uint64_t toaddr,
+>      }
+>  #endif
+>      /* Easy case: just memset the host memory */
+> -    memset(mem, data, setsize);
+> +    memset_ra(mem, data, setsize, ra);
+>      mte_mops_set_tags(env, toaddr, setsize, *mtedesc);
+>      return setsize;
+>  }
+> @@ -1497,7 +1497,7 @@ static uint64_t copy_step(CPUARMState *env, uint64_t toaddr, uint64_t fromaddr,
+>      }
+>  #endif
+>      /* Easy case: just memmove the host memory */
+> -    memmove(wmem, rmem, copysize);
+> +    memmove_ra(wmem, rmem, copysize, ra);
+>      return copysize;
+>  }
+>
+> @@ -1572,7 +1572,7 @@ static uint64_t copy_step_rev(CPUARMState *env, uint64_t toaddr,
+>       * Easy case: just memmove the host memory. Note that wmem and
+>       * rmem here point to the *last* byte to copy.
+>       */
+> -    memmove(wmem - (copysize - 1), rmem - (copysize - 1), copysize);
+> +    memmove_ra(wmem - (copysize - 1), rmem - (copysize - 1), copysize, ra);
+>      return copysize;
+>  }
+>
+> diff --git a/tests/tcg/multiarch/memset-fault.c b/tests/tcg/multiarch/memset-fault.c
+> new file mode 100644
+> index 0000000000..0e8258a88f
+> --- /dev/null
+> +++ b/tests/tcg/multiarch/memset-fault.c
+> @@ -0,0 +1,77 @@
+> +#include <stdlib.h>
+> +#include <signal.h>
+> +#include <unistd.h>
+> +#include <sys/mman.h>
+> +#include <assert.h>
+
+Can we have a copyright-and-license header comment for all new
+files, please?
+
+> +
+> +#if defined(__powerpc64__)
+> +/* Needed for PT_* constants */
+> +#include <asm/ptrace.h>
 > +#endif
 > +
-> +/**
-> + * memmove_ra:
-> + * @d: host destination pointer
-> + * @s: host source pointer
-> + * @n: length
-> + * @ra: unwind return address
-> + *
-> + * Like system memmove(d,s,n), except manages @ra for the calling
-> + * helper in the event of a signal.  To be used with the result of
-> + * tlb_vaddr_to_host to resolve the host pointer.
-> + */
-> +#ifdef CONFIG_USER_ONLY
-> +void *memmove_ra(void *d, const void *s, size_t n, uintptr_t ra);
-> +#else
-> +static inline void *memmove_ra(void *d, const void *s, size_t n, uintptr_t ra)
+> +static void *ptr;
+> +static void *pc;
+> +
+> +static void test(void)
 > +{
-> +    return memmove(d, s, n);
-> +}
+> +#ifdef __aarch64__
+> +    void *t;
+> +    asm("adr %0,1f; str %0,%1; 1: dc zva,%2"
+> +        : "=&r"(t), "=m"(pc) : "r"(ptr));
+> +#elif defined(__powerpc64__)
+> +    void *t;
+> +    asm("bl 0f; 0: mflr %0; addi %0,%0,1f-0b; std %0,%1; 1: dcbz 0,%2"
+> +        : "=&r"(t), "=m"(pc) : "r"(ptr) : "lr");
+> +#elif defined(__s390x__)
+> +    void *t;
+> +    asm("larl %0,1f; stg %0,%1; 1: xc 0(256,%2),0(%2)"
+> +        : "=&r"(t), "=m"(pc) : "r"(ptr));
+> +#else
+> +    *(int *)ptr = 0;
 > +#endif
+> +}
+> +
+> +static void *host_signal_pc(ucontext_t *uc)
+> +{
+> +#ifdef __aarch64__
+> +    return (void *)uc->uc_mcontext.pc;
+> +#elif defined(__powerpc64__)
+> +    return (void *)uc->uc_mcontext.gp_regs[PT_NIP];
+> +#elif defined(__s390x__)
+> +    return (void *)uc->uc_mcontext.psw.addr;
+> +#else
+> +    return NULL;
+> +#endif
+> +}
+> +
+> +static void sigsegv(int sig, siginfo_t *info, void *uc)
+> +{
+> +    assert(info->si_addr == ptr);
+> +    assert(host_signal_pc(uc) == pc);
+> +    exit(0);
+> +}
+> +
+> +int main(void)
+> +{
+> +    static const struct sigaction sa = {
+> +        .sa_flags = SA_SIGINFO,
+> +        .sa_sigaction = sigsegv
+> +    };
+> +    size_t size;
+> +    int r;
+> +
+> +    size = getpagesize();
+> +    ptr = mmap(NULL, size, PROT_READ | PROT_WRITE,
+> +               MAP_ANON | MAP_PRIVATE, -1, 0);
+> +    assert(ptr != MAP_FAILED);
+> +
+> +    test();
+> +
+> +    r = sigaction(SIGSEGV, &sa, NULL);
+> +    assert(r == 0);
+> +    r = mprotect(ptr, size, PROT_NONE);
+> +    assert(r == 0);
+> +
+> +    test();
+> +    abort();
+> +}
 
-I guess these make sense. I feel like they're a function where
-the caller needs to be quite careful about what they're doing
-(e.g. not to use them in a way that the memmove or memset
-would cross a page boundary if other guest register state needs
-to be kept in sync with the reported fault address), but I
-can't think of a useful non-architecture-specific warning that
-would be worth putting in the doc comments.
+A few comments in this test program to explain what it's
+doing would be helpful.
 
+Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

@@ -1,144 +1,164 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp2490398njb;
-        Sun, 7 Jul 2024 22:32:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVFtiwvGILvjhdldlBpMGFtoHROtWFpat7Cqo2a9zD6i1QSo7FA8sUFT6yDDHT1afYzHf99U90MAai2EOhyom2dsq/gyvQM
-X-Received: by 2002:a19:6a10:0:b0:52c:dc25:d706 with SMTP id 2adb3069b0e04-52ea06bad79mr7262928e87.52.1720416751661;
-        Sun, 07 Jul 2024 22:32:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720416751; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp2690903njb;
+        Mon, 8 Jul 2024 06:27:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWk9Ydfrez2IvZvqP/CZrUjh+4hcHWXvDnkj7f0egit4kE2g3xgv/uiNsydJ8HkEAcY1D8T0k01TtTQq07Ex15tqvYrPfDN
+X-Google-Smtp-Source: AGHT+IGeB4GBZ+a6EKQl5+HSTg6QOI5SHu4BWf4hoPXFg0cQ0Dk3HLgQKrAz6PEh9pAYFdeTx7PV
+X-Received: by 2002:a05:6122:1e0c:b0:4f3:207a:c664 with SMTP id 71dfb90a1353d-4f3207ac86amr3583051e0c.14.1720445265435;
+        Mon, 08 Jul 2024 06:27:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720445265; cv=none;
         d=google.com; s=arc-20160816;
-        b=JaD6ZqTXFh9YlU8ZI+xN/VY2BqqlKTxxwEajkLfmFvUWrMv3jVxG/LkEaVsPZ4dWcY
-         T4qtW58hra+SiHLWI8UP3xPhaTNySEvS39iQP2tzUOdf1HueHx7h4d/TPCJNB/g5EfyC
-         1bzb22jWp0EGFSL1CG5oI2v9wd/2AKAfWrEq6ElORdtZtHk1AfnkrVT8XCn7F6AnqpVr
-         Y78FGguRYRijpv7+rZV4kJuJJ5ptnTmfzMHDvPyKnPzrZoa9AklLPJCvtuB+vCWNC4TC
-         9QQQkqNLegLyn1onTUU4HnqaaWX7124ATotM4IUUQvMLmVXenLvlSB9bq/Aq9Ue96JI3
-         qy/w==
+        b=rKFkCB7XqsPleMgb40Edl3eJpRvvzDE8UBmYmVhxhbPvnYl3Q6yftE0nVeFtRw1sIn
+         40nMm3pQTCG9RdVZTE0mYgfvO4sHfbdHnx2xyceshgKjAE7Bx3mPxJUgDfd5DwkM6+Ix
+         OV0YwD/lxsOlY1tmbOfc3SGd4fZl+0Ol9CGrRLjzlVltFpgfVhxI+LcrAIM6qHNC6a7o
+         FU8tEIaYEiu5zlfmrFPWAJMRNFzr1jV8qAA9N6ZdTQSF5wCouXFh0YFXatS0z4bfIwWI
+         MyNdH4Iv893PRlsgOW8jIZY6sW6DpnDkbiE3o+HBqzixwoMOVA4T4kbfWDNCaq0tdVQz
+         CGiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=dm929TgKAN98lOusto7ZMWWlCh02WcjqKU7UMCwZV0A=;
-        fh=Rx0uzYOt65FkvC/j/SJCeTf85zBgePnAIXfvFzvs3Q0=;
-        b=UJRvcGp/am/qkJ55r8HtKpDIu3qI04orapbg8UNHOfm6FNcDUfqkDrUsvQnwACiLgt
-         tD1L7v7cxcjYvuSKJ/lCjC+OahanAHrqrXY3FKOGUxxJ+Dw1J8cncrFgpzJb2xDvngVP
-         Ea7pG2E7gXoEoVIqnyU69tgB6G5UOrVz+IBxeDGl2LIn6mNX9ZIu/4t2aM7e9gU4OzJV
-         vgKeLEEAwHD/Zn7Z5QOPuAOHsQ752PHnDym3uk5m72dQqCkgOaCab5D39iG5W6ebZx36
-         HwW7412cM/rMNSId9egq3OlXJ5QHXv2EnLfCqFMwsWTWx2UIWdkTay79AzhYfv/yCsxV
-         HyGg==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=GBg8DTmpRCRORQjVbZrwngCucqavvFsZaznshBr/qow=;
+        fh=pb5oL122UYvFV/Za+dLWugsKQsEhDYmleTRL9WCPedI=;
+        b=XzzORV1ElX8OisYjcH1NzgathDxyfbqJ2/lHzsGrEnI1FEvV2qORGeuiika6CpnwnY
+         7d0Y408GyH5cj5BwGddY8qxyCy8q6NmuTo2Qb1sM21dpW7viSotiSx41/dwKtpsOmYKH
+         mx3zBEkiLBZ+zTPSIiQ1YOHTRi7HblFKCaNRITCd3/lNhALoxQ0VoEjxMra7YO4ynxaP
+         3900W0MF4sWTee3QdgQ0o8zK3h/a/T82CQXx42P1FfMU4+Mqkz1u2/wWEevTHFAtt6gR
+         PBozTvMG75xM3epBf3SzksF5oQioHOIl0/jSlid9vWFuqYoGyqSOwSDDftVnauad2gxy
+         b6Rw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@opnsrc.net header.s=google header.b=P13m4qoT;
-       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
-       dara=neutral header.i=@linaro.org
-Return-Path: <salil.mehta@opnsrc.net>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4265c04d0f1sor11430225e9.4.2024.07.07.22.32.31
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HdqPnQVY;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-447d558e58csi70473311cf.180.2024.07.08.06.27.45
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 07 Jul 2024 22:32:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 08 Jul 2024 06:27:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@opnsrc.net header.s=google header.b=P13m4qoT;
-       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=opnsrc.net; s=google; t=1720416751; x=1721021551; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=dm929TgKAN98lOusto7ZMWWlCh02WcjqKU7UMCwZV0A=;
-        b=P13m4qoTCvAeeXbOwMTJ3zmSdtRJPoYkG6TZjITNphQm2Z2ssOeNRBHykJTDe/xQzZ
-         jb+ERQyx6N1oDl8RKzzunyHPfxjshvOzoWhI5WIA9JpzUkuxpexBZccxLrYCHps5DAFb
-         yugEo4GUNT0YvUDqyytRQQtf+ifwbnE7XaNGbWnrr/l4oQY+5XmtXMw8yUqXvMB+onji
-         u35lKNIBZD0gJET8IYQLMMbmxlzCWQCNUX7rWbE1zpO1VWDZYJ3q33DgCqEHk03K7rKN
-         SkgZpXb2RWb/KP8sqEHfUpvSCIVFAWNkwCuuuRlhpSJCFEWOHBola9loS2w9MIbipuhs
-         LE9Q==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HdqPnQVY;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1720445265;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=GBg8DTmpRCRORQjVbZrwngCucqavvFsZaznshBr/qow=;
+	b=HdqPnQVY19vOaCD7dPkYnv3CvK8uJx653u8Sy30LFXwkmZ+CiwdnaOAm8mOlwYEfQZMW7W
+	apSektmF66rNUcZ45d5uo51DsUq5/pWsnhJIKcqAW/j2xf3YsNiCIae9PIJiefZkRrfUBD
+	P5kkBbXqiAWcCOENxjJGU71trtnwoa8=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-145-srF62t5_PdiIhuGj1-6TvQ-1; Mon, 08 Jul 2024 09:27:43 -0400
+X-MC-Unique: srF62t5_PdiIhuGj1-6TvQ-1
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-42666785d74so6815185e9.0
+        for <alex.bennee@linaro.org>; Mon, 08 Jul 2024 06:27:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720416751; x=1721021551;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=dm929TgKAN98lOusto7ZMWWlCh02WcjqKU7UMCwZV0A=;
-        b=WBYmDvSlM36ulU1r9KzkWZaPVoVADvq06vCymB3SpF9BwA6a/BjTGb7mZAyiuHfk2u
-         zTLjoG7R0g4Q8hBOHZyvwYJad8cI2pyvCrlr17ZYilF5SIrQM/HL6ADBKCgZZ1FYeeap
-         bA3ZbVc6NBxikW61lV5ipSbDMWZFZG2uXF9XSUfoPa9ITd5gwNwPh+K7NvoOC/QBzwdI
-         T5Gt7VFE58MqMyInsVrPI/INSQsGEBoG0cSyIb7LtPWfuQMy41CnHbQ47youVm4Hxklz
-         Ami2j6RsvvoRTs3jiTRIKjsI8fLf1E+xrEma0BfFK731suurk+U3iAIwVAp+mo2SWvuA
-         wbmQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWPL034KPXoLSR+fYs6/yBmvaFKIihVODwIZumIQVfdIt1X3F6FJ29U2KqbGptW7d4pEdas/HeSw2p22NeZsewwoxI5nMZa
-X-Gm-Message-State: AOJu0YzJR5/CWshoskdYhQdbXGkfeSuShOF6F9lcn46cP9uRArMQptei
-	CSv6FXBClVw8BZ3c9IzNTLwCNvuH60x5TmVRI1+ppWoh2akNaG0T07qUz8ND5mA=
-X-Google-Smtp-Source: AGHT+IHVJ5VTeuWPCIJDC1Yp7HLKmAtjpWs2Xqm00Rj6FPGTR4xCYYJsOMz/8s58VQKn8Lg+aPBgTw==
-X-Received: by 2002:a05:600c:8a7:b0:426:605b:8c53 with SMTP id 5b1f17b1804b1-426605b8e0fmr27511665e9.19.1720416751108;
-        Sun, 07 Jul 2024 22:32:31 -0700 (PDT)
-Return-Path: <salil.mehta@opnsrc.net>
-Received: from [10.11.12.72] ([90.220.10.255])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4264a2fc8bcsm149719465e9.44.2024.07.07.22.32.29
+        d=1e100.net; s=20230601; t=1720445262; x=1721050062;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=GBg8DTmpRCRORQjVbZrwngCucqavvFsZaznshBr/qow=;
+        b=jw4hHgnXysKpCUHPDI/ACbZP87r/yVx6cGisuDJxT71zD+rl3Il6AIHBLEnmT1SuNi
+         YkFCfQTW1qIBVp4/PQkS0T69Bo5l56RdPbK4T1i1oWIidH+C3zs7b0W7wTLfCvfyx2BI
+         RJtCg6ANfuOlGgugLpMH9NvuD6pqAA+YHZBU1LItkoxnEsfKCxSIn18diTBHIAmTwZwE
+         M6ejJw7oXoz2Ypb3rGHakjFiyF7HEdajqzKniPnto8Xl/XuPnm2GcPdsv8qxPa9HzPXS
+         UjMM/gdDITN8bCHDmHA4VIPZ5G/NJE0hKIGi/nGDCTC+TlAKB+w3YgJMqJPe+R+vPDsg
+         y/kw==
+X-Forwarded-Encrypted: i=1; AJvYcCX63w9uRyz8TkuXBMiltt9z6TbHe+38bT8cN1JoSgEVSBleH35UmncKn33ZjmKg61pK6pONN2LWqVGchyuguR53VPKJ+asj
+X-Gm-Message-State: AOJu0YyZUJ4dtZy5wdWP6zfdEbyfJhSjk5Wl4Y8Ncs03jw/9ONQMHMBl
+	lE3qjkf3ZT0UErV60Hu6EB0ZAxyF7WhSBdZlumPFZ2aJV9czwhUrvytUIwefkrS3vJsx2ktyli1
+	fpSz7Jj4oyknTI9HnXMC0BxBkzyZTjQt7Rq71SBYEgrQKuCNirDMZyQ==
+X-Received: by 2002:a05:600c:18a6:b0:426:5e32:4857 with SMTP id 5b1f17b1804b1-4265e324bf4mr57943495e9.0.1720445262529;
+        Mon, 08 Jul 2024 06:27:42 -0700 (PDT)
+X-Received: by 2002:a05:600c:18a6:b0:426:5e32:4857 with SMTP id 5b1f17b1804b1-4265e324bf4mr57943215e9.0.1720445262194;
+        Mon, 08 Jul 2024 06:27:42 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4264a1d169dsm167318375e9.5.2024.07.08.06.27.41
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 07 Jul 2024 22:32:30 -0700 (PDT)
-Message-ID: <db8c2a7c-cc40-4fed-98fc-171f70e239ea@opnsrc.net>
-Date: Mon, 8 Jul 2024 05:32:28 +0000
+        Mon, 08 Jul 2024 06:27:41 -0700 (PDT)
+Message-ID: <2e9dd97d-6e67-41f1-a8a2-71c90b163c56@redhat.com>
+Date: Mon, 8 Jul 2024 15:27:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V13 8/8] docs/specs/acpi_hw_reduced_hotplug: Add the CPU
- Hotplug Event Bit
-To: Igor Mammedov <imammedo@redhat.com>, Salil Mehta <salil.mehta@huawei.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org,
- jean-philippe@linaro.org, jonathan.cameron@huawei.com,
- lpieralisi@kernel.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, andrew.jones@linux.dev, david@redhat.com,
- philmd@linaro.org, eric.auger@redhat.com, oliver.upton@linux.dev,
- pbonzini@redhat.com, mst@redhat.com, will@kernel.org, gshan@redhat.com,
- rafael@kernel.org, alex.bennee@linaro.org, linux@armlinux.org.uk,
- darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
- vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
- miguel.luis@oracle.com, zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
- wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
- lixianglai@loongson.cn, npiggin@gmail.com, harshpb@linux.ibm.com,
- linuxarm@huawei.com, Zhao Liu <zhao1.liu@intel.com>
-References: <20240607115649.214622-1-salil.mehta@huawei.com>
- <20240607115649.214622-9-salil.mehta@huawei.com>
- <20240706164519.06c53d77@imammedo.users.ipa.redhat.com>
-Content-Language: en-GB
-From: Salil Mehta <salil.mehta@opnsrc.net>
-In-Reply-To: <20240706164519.06c53d77@imammedo.users.ipa.redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Reply-To: eric.auger@redhat.com
+Subject: Re: [PATCH v4 07/19] hw/arm/smmu: Introduce CACHED_ENTRY_TO_ADDR
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ alex.bennee@linaro.org, maz@kernel.org, nicolinc@nvidia.com, julien@xen.org,
+ richard.henderson@linaro.org, marcin.juszkiewicz@linaro.org
+References: <20240701110241.2005222-1-smostafa@google.com>
+ <20240701110241.2005222-8-smostafa@google.com>
+ <20240704180438.GD1693268@myrica>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20240704180438.GD1693268@myrica>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-TUID: vG8+bSwWqSmE
+X-TUID: 8G1ZPx8o3Xsh
 
-On 06/07/2024 14:45, Igor Mammedov wrote:
-> On Fri, 7 Jun 2024 12:56:49 +0100
-> Salil Mehta <salil.mehta@huawei.com> wrote:
->
->> GED interface is used by many hotplug events like memory hotplug, NVDIMM hotplug
->> and non-hotplug events like system power down event. Each of these can be
->> selected using a bit in the 32 bit GED IO interface. A bit has been reserved for
->> the CPU hotplug event.
+Hi Mostafa,
+
+On 7/4/24 20:04, Jean-Philippe Brucker wrote:
+> On Mon, Jul 01, 2024 at 11:02:29AM +0000, Mostafa Saleh wrote:
+>> Soon, smmuv3_do_translate() will be used to translate the CD and the
+>> TTBx, instead of re-writting the same logic to convert the returned
+>> cached entry to an address, add a new macro CACHED_ENTRY_TO_ADDR.
 >>
->> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
->> Reviewed-by: Gavin Shan <gshan@redhat.com>
->> Tested-by: Zhao Liu <zhao1.liu@intel.com>
-> suggest to squash this into the patch that introduces this bit [3/8]
-
-I thought, we are introducing a change common to all architectures?
-
-Best, Salil.
-
+>> Signed-off-by: Mostafa Saleh <smostafa@google.com>
 >> ---
->>   docs/specs/acpi_hw_reduced_hotplug.rst | 3 ++-
->>   1 file changed, 2 insertions(+), 1 deletion(-)
+>>  hw/arm/smmuv3.c              | 3 +--
+>>  include/hw/arm/smmu-common.h | 3 +++
+>>  2 files changed, 4 insertions(+), 2 deletions(-)
 >>
->> diff --git a/docs/specs/acpi_hw_reduced_hotplug.rst b/docs/specs/acpi_hw_reduced_hotplug.rst
->> index 0bd3f9399f..3acd6fcd8b 100644
->> --- a/docs/specs/acpi_hw_reduced_hotplug.rst
->> +++ b/docs/specs/acpi_hw_reduced_hotplug.rst
->> @@ -64,7 +64,8 @@ GED IO interface (4 byte access)
->>          0: Memory hotplug event
->>          1: System power down event
->>          2: NVDIMM hotplug event
->> -    3-31: Reserved
->> +       3: CPU hotplug event
->> +    4-31: Reserved
->>   
->>   **write_access:**
->>   
-> :
+>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+>> index cc61708160..229b3c388c 100644
+>> --- a/hw/arm/smmuv3.c
+>> +++ b/hw/arm/smmuv3.c
+>> @@ -950,8 +950,7 @@ epilogue:
+>>      switch (status) {
+>>      case SMMU_TRANS_SUCCESS:
+>>          entry.perm = cached_entry->entry.perm;
+>> -        entry.translated_addr = cached_entry->entry.translated_addr +
+>> -                                    (addr & cached_entry->entry.addr_mask);
+>> +        entry.translated_addr = CACHED_ENTRY_TO_ADDR(cached_entry, addr);
+>>          entry.addr_mask = cached_entry->entry.addr_mask;
+>>          trace_smmuv3_translate_success(mr->parent_obj.name, sid, addr,
+>>                                         entry.translated_addr, entry.perm,
+>> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+>> index 96eb017e50..09d3b9e734 100644
+>> --- a/include/hw/arm/smmu-common.h
+>> +++ b/include/hw/arm/smmu-common.h
+>> @@ -37,6 +37,9 @@
+>>  #define VMSA_IDXMSK(isz, strd, lvl)         ((1ULL << \
+>>                                               VMSA_BIT_LVL(isz, strd, lvl)) - 1)
+>>  
+>> +#define CACHED_ENTRY_TO_ADDR(ent, addr)      (ent)->entry.translated_addr + \
+>> +                                             ((addr) & (ent)->entry.addr_mask);
+> nit: maybe wrap this in parenthesis to avoid future usage mistakes and
+> drop the semicolon 
+With Jean's comments taken into account,
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Eric
 >
+> Thanks,
+> Jean
+>
+>> +
+>>  /*
+>>   * Page table walk error types
+>>   */
+>> -- 
+>> 2.45.2.803.g4e1b14247a-goog
+>>

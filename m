@@ -1,228 +1,147 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3121041njb;
-        Tue, 9 Jul 2024 00:20:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX7ziRO4Vy3L129waQVUErE2w1GL8zo5E+Qc4d2PIIiuJqzwMOlzrzktowk8R5YVSGsSgLQvr85hUEqIobvaBaR7KT5ubAJ
-X-Received: by 2002:a2e:9f12:0:b0:2ee:96e9:769a with SMTP id 38308e7fff4ca-2eeb31890dfmr13818411fa.52.1720509622162;
-        Tue, 09 Jul 2024 00:20:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720509622; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3121366njb;
+        Tue, 9 Jul 2024 00:21:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVMUuYB3F+q+mGibL3JeGy8DeULrBPRJra1iNf3PRLEQShyzKcnrFsqYLeqH/ZGce1ZqkEPOIQ3qAArE2rtD+Ne3ch84won
+X-Received: by 2002:a05:6402:17d4:b0:582:9fb8:11a1 with SMTP id 4fb4d7f45d1cf-594bcaaf426mr1045353a12.35.1720509682069;
+        Tue, 09 Jul 2024 00:21:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720509682; cv=none;
         d=google.com; s=arc-20160816;
-        b=P1cp3f+J4TH+8vh0ewKgEk+R+8OH9hNW6q0Y8lWEtMm/AyRdFfelqJpOhPq/7pP9iF
-         +fSRxL8xu4mwCN1ljRnpff3mOWDEY6+5gezTu2sC7yF8dz6zhi3o8kWsni9rP4TlocP/
-         zZX9Yz3KMSjD3c2v+xiFdNakLbfANGeWWwp+ZgYLr6IvuYkhaUhUPP5QczhoC48tv4Fc
-         2FeBByGUYm4Q9LplxwECclyAuq252n7VeAU+d1UXHONUjdaIIzCNb61uaarDCJdbASgR
-         /BBoYnkZXs8f6czQPz1jiSvsCDrH/j1EYdYfKZnHCYsUYMwDh7fgx9x0wrrPFDM/QB4D
-         71Jg==
+        b=U1DRAgEqFJzehtxEFm6ljIj2w78u2Xf+ZGg7sW9ZzciTiVc80mCsdZhSNVthQ5to+q
+         iQq/AB6ByQcGh1SI9MsacV/fj4153tRJC3la9Jlr+Eisy79e4efxcjWG0qJSvLbPsPuo
+         3EaG1znzaxHevNnZ3WDVuXg6W/uy09m8nasE1OQaj1fJXv0Vxib4Rg/hQQ4Bvheslus9
+         C+8IXD0XnZIVb2U+39Gb/a9yTreNuZZs6UphO9PA2y1aquaJFB7FTXdzgtIODWQ2IXYW
+         R2rzottCTYtytnKQv7aThUWp+8N/uImrEL0oKPzitenC9/6ZrBzZEJw6uZOZgY4TpRMt
+         qBRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=lQgiBgX82Mz62yDzj8fxlZaDlaODGH4QZ7AVoQBDUrw=;
-        fh=wZ0Qa5VGJ8hFWUlrb3OGCpzCoHZAb38r304b7mpl0LM=;
-        b=cAnIGhLdGGEHEbkE9dvmEhwzFY/VyxMwIIeejPQKYsbsJ7b2HXmmaaWejwsusNpPFC
-         rBz3qHFbdNIN0G/6OUr2SxY3HmxA6ZqkNC5CPlU4LlYr8ayvnQ5iRDCPMOtqa1ITGFiM
-         DIi/hCWmVMuP/GqzSWJVoONDUcuUrmLZwNnItn4xhKeVBb3MWoF6OjvcT8FGhlA65XJT
-         sXT3wVhZM1sGK2e9VMSgxsWDDD/AQY6yIeCo/dzEMPk4NXFLAzl9cmEvkab7bKiEOvCR
-         hwEpwuLAVAf8xZiKeL3RyJ8DMVwesnoMa45GWus3tzb3fnPYmXOo3n3YbM9Dbixn3XqA
-         pDgg==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=gIkOsfO4MWR8FV0BxCpeB1qOa5jyLB5kgFJtPbMATAo=;
+        fh=p7VVDoLQL79rtp14GEiBQ7hPsRzF0p7QddijW58x7RU=;
+        b=BN+zjPNYAoyocoDq//pqmT8yu30nHno9JLmCNBmmje+hFkQ2Mg7ijNg24MJmiDoYq6
+         gLrJqsuer1ovFX2rGgm859j2856/UnrOUuM0kwpYNu6vVchx9PCJw/76anrDfJ2fIXmu
+         nLi//vjCCCYbzjykx7EoF2lfyZeelVGEsBtGyEMOqTtzEnVF0Ue8PJZ54HR0gL1dr4PD
+         GBdtIqE4+Hz3beX6SnobvAZTFG4beaONlzymvo91ht8iPGyDL371fz44ACm0nLZWVe52
+         w4XaOAea0uGQrmGxsxn3UQwHRYu5xkU0NVwVTrJgHqNfp+UPIkr8spHwHYgTXap27HVc
+         WhJw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="NbQ8/Jpa";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=I7EPgmIV;
        spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <smostafa@google.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-426740d9c47sor306105e9.5.2024.07.09.00.20.21
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-594eb0909dfsor62103a12.8.2024.07.09.00.21.21
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Jul 2024 00:20:22 -0700 (PDT)
+        Tue, 09 Jul 2024 00:21:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="NbQ8/Jpa";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=I7EPgmIV;
        spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1720509621; x=1721114421; darn=linaro.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=lQgiBgX82Mz62yDzj8fxlZaDlaODGH4QZ7AVoQBDUrw=;
-        b=NbQ8/JpavxnFp351hbjzWydR2TvDlDCMtiok/rc2zAtmsLGqFFKYzZ14qSyzTOrh9q
-         6tuds8hARNb3L70tYVee112DaAsQsuodTooczM3J/OCAJ9y1MNTyr34+CQ6T6OkruXKT
-         QPj9IIQCmRPu4WAm6zvTE4OcBfGcOganr0qyGwWyZnp7m6hugmIgHfko2tKgFf5qfZSY
-         tztxaqY8iaoxNrvm1A+2Wowt3HwJLA17fEWBYHu/1RCxJLQ80M7AreRazcm8gvZLkEaA
-         Ex50P0zRzq2Ua7rh/P6NkgxhDWgkRrNL0st5TmHIiEonQ5ipOF4n3QJLOjJv9RDm4JI3
-         X9Xw==
+        d=google.com; s=20230601; t=1720509681; x=1721114481; darn=linaro.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=gIkOsfO4MWR8FV0BxCpeB1qOa5jyLB5kgFJtPbMATAo=;
+        b=I7EPgmIVSLuiHoHgb5VXmXxS7Imc7i1fQt/9GG5kGhNEK9dPmZHJE/dzvQ1Gh+cghI
+         /h9YEEdNku71FPae+DrkATnbWNdKqtlppRlBBBZbpfOiS6BccVbrvKmhi8IejqILCWUn
+         oM+JkKPxPa/0NVB/4yLSD2Tmx4qEIv4ufYDjcCrKxnWiyTZto7Xo+ew/eQbFmNn7CizY
+         sIDGCcr1OTmGaan9gr6KKFR8FJib0tjUOcS/kyd6iuGRPTLYg1qpJYzSWgoomvThPnp7
+         Zp/ARBHAmsr+bd1yJn0QlEPZVez9wW3KN/4tC3+bmvHiXVuYCriRref9RatoztLKj5q8
+         I+Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720509621; x=1721114421;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lQgiBgX82Mz62yDzj8fxlZaDlaODGH4QZ7AVoQBDUrw=;
-        b=Vtq8uGHzIUC4REMcK/KiT5lNT7OetxdbURo3g2//Qr7CUlaiFQ6q8qYoIsVPMOkrXW
-         AgnjTaCfsq73M+g8q+baeSIgBLzf0qBXEJgq/JiB0pSn/cNCsrzhX5/MMA+cQKkI+RmN
-         arxwaKRVjlON4Es0G9Rk/xsdssFnd6Cqc0LzVa8l2LIWinGJk1rIkgc/J1etS2DEX6mk
-         xFfAJM/Otc1PYssdRPg1YLCRHhuqFTIBjieXSk8hRVPPVmbSnTzDtsHRvM98pdidrYwM
-         0V2G6Pd7JybCG5W9H28jyj/xBvjst+8u6GuCKUdLHgXFkdg28SYAVRB0OshnGjfdWf1z
-         TKwg==
-X-Forwarded-Encrypted: i=1; AJvYcCVK74gAsz1p5f6+Fo2sKy2VO80tFkLfjv4h2Wz6gsvd/YEG0Ccv1vItBDdZZBUL6s9je6z9ZV0WAB7QRD55jvyAmg9IReOU
-X-Gm-Message-State: AOJu0YxvtvzuF82nXwbrgdfa0rVGU9QbnlE8nONc/f5EkcGyWVfRTdXW
-	VG7f9NVfgzQL0f5fu8Escu35zbykjyYxvO8JOrSYPDQy9vcvydwhaLLvMXv1pQ==
-X-Google-Smtp-Source: AGHT+IGWOp6Az8LkeXXK0q3XxDyA/GZltzdSTffj12UYrjUwn9bCtjU4H9cKRv+lm6ht2YzN01dYhQ==
-X-Received: by 2002:a05:600c:3b16:b0:426:5ef2:cd97 with SMTP id 5b1f17b1804b1-42671a88f7dmr1441715e9.2.1720509621423;
-        Tue, 09 Jul 2024 00:20:21 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1720509681; x=1721114481;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=gIkOsfO4MWR8FV0BxCpeB1qOa5jyLB5kgFJtPbMATAo=;
+        b=ebdXf1p4kwqHo6wu4AZo0hCP3TlmzbYtYraD+UfgK6E3Xn1lI08BiguufjUqCDtHT7
+         JCXK1BnkKPYR0d6Y1oBRU/cFF+K/RXCZN4KQVr4SG4DKwjjlQXlxXZyd51cSmfP+J4Rm
+         89/QsYjm+hzMSD9AFKmvh5zoq1Z5wr0rgkO9CSHCygaZt1BY4nQGc6Jw5URRWU+bKDRx
+         lDzMa7SVImlCd0UFEiKcQ9uICsuVRWbFVy8UvztNEXMKSHv20wsoGCMQc221Ykb0JJ8I
+         DcydTVmx3NQ+CNcihJZnfn61l1d1cT0Ja+rKHjzRI0CNNWybPZ6p7HAy5ZzxpayZgCI0
+         W8pw==
+X-Forwarded-Encrypted: i=1; AJvYcCUglb6vP2++/sALu4chnBWBHFxV6EyJ0GkY/1k3raJVUUltBCc8gWRh1x1Tn48pE1kIVNZXf7IeZIZum/uF6h2PNgR888XW
+X-Gm-Message-State: AOJu0YzvdlCOPTGHrG8Dgj2OatYKsprm1lEOzgIIaQCx9NT0GBOVYVuT
+	PSgvzP1G0kijI0qEMDvra7Aod+GlEudH9A6r84s+9hINgBtZcFJOQV+w9SbKBg==
+X-Google-Smtp-Source: AGHT+IEL04bxd3EFQJudI33ZxQSuRGB1U2za770AoRhm3DAxGO2Wj86zA/oZ6KC3BaDfHBl5U248ag==
+X-Received: by 2002:a05:600c:4f53:b0:426:6e95:6ea7 with SMTP id 5b1f17b1804b1-426717a3a54mr1371955e9.0.1720509681160;
+        Tue, 09 Jul 2024 00:21:21 -0700 (PDT)
 Return-Path: <smostafa@google.com>
 Received: from google.com (205.215.190.35.bc.googleusercontent.com. [35.190.215.205])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-367cde89198sm1662607f8f.60.2024.07.09.00.20.20
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-367cdfab7d4sm1654148f8f.113.2024.07.09.00.21.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Jul 2024 00:20:20 -0700 (PDT)
-Date: Tue, 9 Jul 2024 07:20:17 +0000
+        Tue, 09 Jul 2024 00:21:20 -0700 (PDT)
+Date: Tue, 9 Jul 2024 07:21:16 +0000
 From: Mostafa Saleh <smostafa@google.com>
 To: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Cc: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
 	qemu-devel@nongnu.org, alex.bennee@linaro.org, maz@kernel.org,
 	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
 	marcin.juszkiewicz@linaro.org
-Subject: Re: [PATCH v4 15/19] hw/arm/smmuv3: Support nested SMMUs in
- smmuv3_notify_iova()
-Message-ID: <ZozksXro6STwOPA1@google.com>
+Subject: Re: [PATCH v4 18/19] hw/arm/smmuv3: Advertise S2FWB
+Message-ID: <Zozk7IdpbYqtGMiN@google.com>
 References: <20240701110241.2005222-1-smostafa@google.com>
- <20240701110241.2005222-16-smostafa@google.com>
- <20240704183503.GL1693268@myrica>
+ <20240701110241.2005222-19-smostafa@google.com>
+ <20240704183658.GO1693268@myrica>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240704183503.GL1693268@myrica>
-X-TUID: CW85C+uj2qbe
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240704183658.GO1693268@myrica>
+X-TUID: NhHbvdyVY+h5
 
 Hi Jean,
 
-On Thu, Jul 04, 2024 at 07:35:03PM +0100, Jean-Philippe Brucker wrote:
-> On Mon, Jul 01, 2024 at 11:02:37AM +0000, Mostafa Saleh wrote:
-> > IOMMUTLBEvent only understands IOVA, for stage-1 or stage-2
-> > SMMU instances we consider the input address as the IOVA, but when
-> > nesting is used, we can't mix stage-1 and stage-2 addresses, so for
-> > nesting only stage-1 is considered the IOVA and would be notified.
+On Thu, Jul 04, 2024 at 07:36:58PM +0100, Jean-Philippe Brucker wrote:
+> On Mon, Jul 01, 2024 at 11:02:40AM +0000, Mostafa Saleh wrote:
+> > QEMU doesn's support memory attributes, so FWB is NOP, this
+> > might change in the future if memory attributre would be supported.
 > > 
 > > Signed-off-by: Mostafa Saleh <smostafa@google.com>
 > > ---
-> >  hw/arm/smmuv3.c     | 28 +++++++++++++++++++---------
-> >  hw/arm/trace-events |  2 +-
-> >  2 files changed, 20 insertions(+), 10 deletions(-)
+> >  hw/arm/smmuv3.c | 8 ++++++++
+> >  1 file changed, 8 insertions(+)
 > > 
 > > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> > index e9007af3cd..36eb6f514a 100644
+> > index 807f26f2da..88378e83dd 100644
 > > --- a/hw/arm/smmuv3.c
 > > +++ b/hw/arm/smmuv3.c
-> > @@ -1064,17 +1064,17 @@ epilogue:
-> >   * @iova: iova
-> >   * @tg: translation granule (if communicated through range invalidation)
-> >   * @num_pages: number of @granule sized pages (if tg != 0), otherwise 1
-> > + * @stage: Which stage(1 or 2) is used
-> >   */
-> >  static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
-> >                                 IOMMUNotifier *n,
-> >                                 int asid, int vmid,
-> >                                 dma_addr_t iova, uint8_t tg,
-> > -                               uint64_t num_pages)
-> > +                               uint64_t num_pages, int stage)
-> >  {
-> >      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-> >      IOMMUTLBEvent event;
-> >      uint8_t granule;
-> > -    SMMUv3State *s = sdev->smmu;
-> >  
-> >      if (!tg) {
+> > @@ -287,6 +287,14 @@ static void smmuv3_init_regs(SMMUv3State *s)
+> >      if (FIELD_EX32(s->idr[0], IDR0, S2P)) {
+> >          /* XNX is a stage-2-specific feature */
+> >          s->idr[3] = FIELD_DP32(s->idr[3], IDR3, XNX, 1);
+> > +        if (FIELD_EX32(s->idr[0], IDR0, S1P)) {
 > 
-> Should the stage check be outside of the TG test?  I think CMD_TLBI_S2_IPA
-> with TG != 0 and nesting enabled would still go through.
+> Why is this check needed?
+>
 
-Ah yes, I will fix it.
+I thought that only made sense only for nested SMMUs, but I guess in
+practice it’s not important for qemu and Linux doesn’t use it, I can
+just drop this patch.
 
 Thanks,
 Mostafa
 
 > 
+> > +            /*
+> > +             * QEMU doesn's support memory attributes, so FWB is NOP, this
+> 
+> doesn't
+> 
 > Thanks,
 > Jean
 > 
-> >          SMMUEventInfo eventinfo = {.inval_ste_allowed = true};
-> > @@ -1093,14 +1093,24 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
-> >              return;
-> >          }
-> >  
-> > -        if (STAGE1_SUPPORTED(s)) {
-> > +        /*
-> > +         * stage is passed from TLB invalidation commands which can be either
-> > +         * stage-1 or stage-2.
-> > +         * However, IOMMUTLBEvent only understands IOVA, for stage-1 or stage-2
-> > +         * SMMU instances we consider the input address as the IOVA, but when
-> > +         * nesting is used, we can't mix stage-1 and stage-2 addresses, so for
-> > +         * nesting only stage-1 is considered the IOVA and would be notified.
-> > +         */
-> > +        if (stage == SMMU_STAGE_1) {
-> >              tt = select_tt(cfg, iova);
-> >              if (!tt) {
-> >                  return;
-> >              }
-> >              granule = tt->granule_sz;
-> > -        } else {
-> > +        } else if ((stage == SMMU_STAGE_2) && (cfg->stage != SMMU_NESTED)) {
-> >              granule = cfg->s2cfg.granule_sz;
-> > +        } else {
-> > +            return;
-> >          }
-> >  
-> >      } else {
-> > @@ -1119,7 +1129,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
-> >  /* invalidate an asid/vmid/iova range tuple in all mr's */
-> >  static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
-> >                                        dma_addr_t iova, uint8_t tg,
-> > -                                      uint64_t num_pages)
-> > +                                      uint64_t num_pages, int stage)
-> >  {
-> >      SMMUDevice *sdev;
-> >  
-> > @@ -1128,10 +1138,10 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
-> >          IOMMUNotifier *n;
-> >  
-> >          trace_smmuv3_inv_notifiers_iova(mr->parent_obj.name, asid, vmid,
-> > -                                        iova, tg, num_pages);
-> > +                                        iova, tg, num_pages, stage);
-> >  
-> >          IOMMU_NOTIFIER_FOREACH(n, mr) {
-> > -            smmuv3_notify_iova(mr, n, asid, vmid, iova, tg, num_pages);
-> > +            smmuv3_notify_iova(mr, n, asid, vmid, iova, tg, num_pages, stage);
-> >          }
+> > +             * might change in the future if memory attributre would be
+> > +             * supported.
+> > +             */
+> > +           s->idr[3] = FIELD_DP32(s->idr[3], IDR3, FWB, 1);
+> > +        }
 > >      }
-> >  }
-> > @@ -1162,7 +1172,7 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
-> >  
-> >      if (!tg) {
-> >          trace_smmuv3_range_inval(vmid, asid, addr, tg, 1, ttl, leaf, stage);
-> > -        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1);
-> > +        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1, stage);
-> >          if (stage == SMMU_STAGE_1) {
-> >              smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1, ttl);
-> >          } else {
-> > @@ -1185,7 +1195,7 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
-> >          num_pages = (mask + 1) >> granule;
-> >          trace_smmuv3_range_inval(vmid, asid, addr, tg, num_pages,
-> >                                   ttl, leaf, stage);
-> > -        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, num_pages);
-> > +        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, num_pages, stage);
-> >          if (stage == SMMU_STAGE_1) {
-> >              smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, num_pages, ttl);
-> >          } else {
-> > diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> > index 593cc571da..be6c8f720b 100644
-> > --- a/hw/arm/trace-events
-> > +++ b/hw/arm/trace-events
-> > @@ -55,7 +55,7 @@ smmuv3_cmdq_tlbi_s12_vmid(int vmid) "vmid=%d"
-> >  smmuv3_config_cache_inv(uint32_t sid) "Config cache INV for sid=0x%x"
-> >  smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
-> >  smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
-> > -smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64
-> > +smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
-> >  
-> >  # strongarm.c
-> >  strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
+> >      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
+> >      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, BBML, 2);
 > > -- 
 > > 2.45.2.803.g4e1b14247a-goog
 > > 

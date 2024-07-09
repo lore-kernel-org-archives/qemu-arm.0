@@ -1,68 +1,69 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3372705njb;
-        Tue, 9 Jul 2024 08:46:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVY/krF9IdyVmO+wE4GR7amSMKRWBGrMLu56OR7i0t6QkIke0pUpXvof5QBhcMXGo4JeyMTfl8PCD7hJ79TfJxkcKbF9AlG
-X-Google-Smtp-Source: AGHT+IFTp+VD6BUqDYqYE0jq6ImneT7HI8OaZUmaIqT4NvrTJaFq+fyihrUYfeuiDQ2RsJR9bUu4
-X-Received: by 2002:a05:6102:cc8:b0:48f:a75a:278c with SMTP id ada2fe7eead31-490321e77femr3632846137.27.1720539961398;
-        Tue, 09 Jul 2024 08:46:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720539961; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3375737njb;
+        Tue, 9 Jul 2024 08:52:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVpDXgWmYbCSBjElR0BMeRiPEo5MAeXUgbknEUSLTPON6BwH1oZib3WhjQq4ayEnOXF1T4xaDchBGohi/B94w7jCrqlfR2F
+X-Google-Smtp-Source: AGHT+IECXYEtxJdm8WteiQLZpbJM6JjObcQc+r5uw6Fzu1gfU4j1AV1lKAqn4wT8+hcO2W2Dqy0a
+X-Received: by 2002:a05:6214:518b:b0:6b5:dca9:6748 with SMTP id 6a1803df08f44-6b61bce1b8fmr29545736d6.26.1720540320190;
+        Tue, 09 Jul 2024 08:52:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720540320; cv=none;
         d=google.com; s=arc-20160816;
-        b=bVN0feeFQNqhMFCKmg+Nnm2y56gWEVmJzATMX8AzXYQJO3UfkwWMPGorjP5bUFVXXX
-         pY0Y/HPp7NsaLUD4ls0Wen4OXWCZ0N4Le4z7Bl7HwUzynBKb1O3m92YjIQwxVb5uXzpR
-         RIUiRk2lcxOE1GXkET6VrXxrVsWq1x4EjQrlO17dE+FFS5snhxAWE5zUYxD7nOpcn954
-         mRX7fQZUECrGMathXV17iNRs7aKcHg54YD0QUfxSB5HWOdfc1SwVlb+UoIQuHns89v9C
-         JXz3itCIfWDdobUQ1w1Ojizq5benJqvXzdjixBH+YCdcUZYlFs9e+/oqOVTEO6LFI/AG
-         GaJA==
+        b=kn5SDJBy4Ue6FQwjoyJ8qHrGZQTtqR3lDSry/UjL7n5+7GKt7Y/pQQOvqIXtiUsOjg
+         eb1bTld20e1YYAScKDxyVtLKyaFfX0gz0zy8m/UYpimFyvgensaxjN9SlVRTyk9GcoiD
+         kSHE9qT6kKQOIx7fiPAr8V5ByOFJ572tCWduksAzywq7Fctok1RrrbZc97SdnUTh7JoZ
+         QIqIvWSycVAuDhSY4JTlWT58HJdAv3Tsw0uZz9j7k605ObSnqSIM30ao2fBtZsVixLNW
+         9KOJbGfz6e7E17nFhz8yRF6FG913cA1LaWGcebrOjUU+rRkR7PsUQ1rvt/SlotQd4ptS
+         9wOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=VfKEPrrv1ndASgd+2mUDsxgPGy4th/QC/d5aPFEzQIA=;
+        bh=OQOJpA0wFLE7De9miEn4P4ZElkg60I3Goskhz6F7Q7A=;
         fh=pXQCCfdofZB5e4ZqzVRXiVuRGYeJnl2WhJnhDCL9qiQ=;
-        b=qRzp/amupbRHm1plrMaPvhNhEeri3uHVf4JbHPIZmH8iXlCOQJeUs1GKPlHvxcj0Rv
-         r4Tclj6YQdAcHY173MPpD6BrBbhZFsL6LLLzRyJ1pRRUBFAjj4YcTo8pshqj8G8mujq7
-         PrjKIZkuTYHG47Cvds5kHiE5CbGF+Glh5N9vTqD4cN5VCR42SADe9p98ooyx4B39Agj4
-         zCvV+D2kOcNvloGmT4dq1p/2RZxgA/8lXcmQ9lD6PiOcCKC1r1ujLKB7rWIcTbLJE8xo
-         eSfWe/EvcVQTiXQExczJhydwMLmNdz2L+BNSmwrUNCImHjb5j2Oey5+oP1nrdqnzwkf/
-         6Y1A==;
+        b=IwlFlx7xPD5c5EilXoAOfbmr0HjrViCWp6iT5whPKcOkFYqAcJXp1vZ8ia2hCCyFpS
+         o0K3DlduaK1QCVWSr8Ew7aZKizeg6C5kvBPXUqnkjz360fH1GajF788lAss56LUIAcL9
+         Z4sr2dKOr44CgVdBSXagGmgeLBf1eLapAjze2fp11CF/NsiC0uzEdvbKxJe1yX5emKp7
+         hPIJnMjW4rBn6ideXRtprOK9nfUzRHBUKCVsYJra7tfZ4V9Ut4boktAcXlojXOLsXmO5
+         O/fnvC20a3RoV6GbZWKCLEgY3xfF+DMJmgbf5z9Ud9Yx7X36Wy47z0t4FY2N3j4gFchr
+         lFEA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-49031539415si314609137.218.2024.07.09.08.46.01
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b61ba900d1si24720596d6.310.2024.07.09.08.52.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2024 08:46:01 -0700 (PDT)
+        Tue, 09 Jul 2024 08:52:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRD2I-0007FI-17; Tue, 09 Jul 2024 11:45:46 -0400
+	id 1sRD86-00072m-OS; Tue, 09 Jul 2024 11:51:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=H1KF=OJ=kaod.org=clg@ozlabs.org>)
- id 1sRD2H-0007Bq-CG; Tue, 09 Jul 2024 11:45:45 -0400
+ id 1sRD84-0006rH-98; Tue, 09 Jul 2024 11:51:44 -0400
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=H1KF=OJ=kaod.org=clg@ozlabs.org>)
- id 1sRD2E-0002KN-Ow; Tue, 09 Jul 2024 11:45:45 -0400
+ id 1sRD81-0003Ix-Bc; Tue, 09 Jul 2024 11:51:43 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WJQLW5dh1z4x1P;
- Wed, 10 Jul 2024 01:45:39 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4WJQTP21q9z4wny;
+ Wed, 10 Jul 2024 01:51:37 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WJQLR3Cncz4w2M;
- Wed, 10 Jul 2024 01:45:35 +1000 (AEST)
-Message-ID: <fd66f8ad-3dc9-4558-80c6-babf308dc90a@kaod.org>
-Date: Tue, 9 Jul 2024 17:45:20 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4WJQTH5zRLz4w2M;
+ Wed, 10 Jul 2024 01:51:31 +1000 (AEST)
+Message-ID: <ec4ab51b-6c9e-410f-a2a1-1fa65f6ebb02@kaod.org>
+Date: Tue, 9 Jul 2024 17:51:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v47 11/19] hw/sd/sdcard: Add eMMC 'boot-size' property
+Subject: Re: [Aspeed PATCH v47 16/19] hw/sd/sdcard: Support boot area in emmc
+ image
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -71,10 +72,10 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
  <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>
 References: <20240709152556.52896-1-philmd@linaro.org>
- <20240709152556.52896-12-philmd@linaro.org>
+ <20240709152556.52896-17-philmd@linaro.org>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240709152556.52896-12-philmd@linaro.org>
+In-Reply-To: <20240709152556.52896-17-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
@@ -99,19 +100,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HsDeFaUk7mEO
+X-TUID: a1JNugRs4e1F
 
 On 7/9/24 5:25 PM, Philippe Mathieu-Daudé wrote:
-> Avoid hardcoding 1MiB boot size in EXT_CSD_BOOT_MULT,
-> expose it as QOM property.
+> From: Joel Stanley <joel@jms.id.au>
 > 
-> By default, do not use any size. Board is responsible
-> to set the boot size property.
+> This assumes a specially constructed image:
 > 
+>    dd if=/dev/zero of=mmc-bootarea.img count=2 bs=1M
+>    dd if=u-boot-spl.bin of=mmc-bootarea.img conv=notrunc
+>    dd if=u-boot.bin of=mmc-bootarea.img conv=notrunc count=64 bs=1K
+>    cat mmc-bootarea.img obmc-phosphor-image.wic > mmc.img
+>    truncate --size 16GB mmc.img
+>    truncate --size 128MB mmc-bootarea.img
+> 
+> For now this still requires a mtd image to load the SPL:
+> 
+>    qemu-system-arm -M tacoma-bmc -nographic \
+>     -global driver=sd-card,property=emmc,value=true \
+>     -drive file=mmc.img,if=sd,index=2 \
+>     -drive file=mmc-bootarea.img,if=mtd,format=raw
+> 
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+> TODO: Update QEMU command in description
 
-I would move this patch at the end with the other patches adding
-boot support.
+hmm, this patch was also modified since last sent.
 
 
 Thanks,
@@ -120,38 +136,90 @@ C.
 
 
 
+
 > ---
->   hw/sd/sd.c | 5 ++++-
->   1 file changed, 4 insertions(+), 1 deletion(-)
+>   include/hw/sd/sd.h |  1 +
+>   hw/sd/sd.c         | 33 +++++++++++++++++++++++++++++++++
+>   2 files changed, 34 insertions(+)
 > 
+> diff --git a/include/hw/sd/sd.h b/include/hw/sd/sd.h
+> index d35a839f5e..07435d2e17 100644
+> --- a/include/hw/sd/sd.h
+> +++ b/include/hw/sd/sd.h
+> @@ -132,6 +132,7 @@ struct SDCardClass {
+>       bool (*get_readonly)(SDState *sd);
+>       void (*set_cid)(SDState *sd);
+>       void (*set_csd)(SDState *sd, uint64_t size);
+> +    uint32_t (*bootpart_offset)(SDState *sd);
+>   
+>       const struct SDProto *proto;
+>   };
 > diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> index c809961418..df0e2345c0 100644
+> index c7f8ea11c1..5830725629 100644
 > --- a/hw/sd/sd.c
 > +++ b/hw/sd/sd.c
-> @@ -129,6 +129,7 @@ struct SDState {
->       /* Static properties */
+> @@ -774,6 +774,13 @@ static uint32_t sd_blk_len(SDState *sd)
+>       return sd->blk_len;
+>   }
 >   
->       uint8_t spec_version;
-> +    uint64_t boot_part_size;
->       BlockBackend *blk;
+> +static uint32_t sd_bootpart_offset(SDState *sd)
+> +{
+> +    SDCardClass *sc = SDMMC_COMMON_GET_CLASS(sd);
+> +
+> +    return sc->bootpart_offset ? sc->bootpart_offset(sd) : 0;
+> +}
+> +
+>   static uint64_t sd_req_get_address(SDState *sd, SDRequest req)
+>   {
+>       uint64_t addr;
+> @@ -1026,9 +1033,33 @@ void sd_set_cb(SDState *sd, qemu_irq readonly, qemu_irq insert)
+>       qemu_set_irq(insert, sd->blk ? blk_is_inserted(sd->blk) : 0);
+>   }
 >   
->       const SDProto *proto;
-> @@ -490,7 +491,8 @@ static void mmc_set_ext_csd(SDState *sd, uint64_t size)
->       sd->ext_csd[EXT_CSD_TRIM_MULT] = 0x1; /* Trim multiplier */
->       sd->ext_csd[EXT_CSD_SEC_FEATURE_SUPPORT] = 0x15; /* Secure feature */
->       sd->ext_csd[EXT_CSD_BOOT_INFO] = 0x7; /* Boot information */
-> -    sd->ext_csd[EXT_CSD_BOOT_MULT] = 0x8; /* Boot partition size. 128KB unit */
-> +                                     /* Boot partition size. 128KB unit */
-> +    sd->ext_csd[EXT_CSD_BOOT_MULT] = sd->boot_part_size / (128 * KiB);
->       sd->ext_csd[EXT_CSD_ACC_SIZE] = 0x6; /* Access size */
->       sd->ext_csd[EXT_CSD_HC_ERASE_GRP_SIZE] = 0x4; /* HC Erase unit size */
->       sd->ext_csd[EXT_CSD_ERASE_TIMEOUT_MULT] = 0x01; /* HC erase timeout */
-> @@ -2693,6 +2695,7 @@ static Property sd_properties[] = {
->   };
+> +/*
+> + * This requires a disk image that has two boot partitions inserted at the
+> + * beginning of it. The size of the boot partitions are configured in the
+> + * ext_csd structure, which is hardcoded in qemu. They are currently set to
+> + * 1MB each.
+> + */
+> +static uint32_t emmc_bootpart_offset(SDState *sd)
+> +{
+> +    unsigned int access = sd->ext_csd[EXT_CSD_PART_CONFIG]
+> +                          & EXT_CSD_PART_CONFIG_ACC_MASK;
+> +
+> +    switch (access) {
+> +    case EXT_CSD_PART_CONFIG_ACC_DEFAULT:
+> +        return sd->boot_part_size * 2;
+> +    case EXT_CSD_PART_CONFIG_ACC_BOOT0:
+> +        return 0;
+> +    case EXT_CSD_PART_CONFIG_ACC_BOOT0 + 1:
+> +        return sd->boot_part_size * 1;
+> +    default:
+> +         g_assert_not_reached();
+> +    }
+> +}
+> +
+>   static void sd_blk_read(SDState *sd, uint64_t addr, uint32_t len)
+>   {
+>       trace_sdcard_read_block(addr, len);
+> +    addr += sd_bootpart_offset(sd);
+>       if (!sd->blk || blk_pread(sd->blk, addr, len, sd->data, 0) < 0) {
+>           fprintf(stderr, "sd_blk_read: read error on host side\n");
+>       }
+> @@ -1037,6 +1068,7 @@ static void sd_blk_read(SDState *sd, uint64_t addr, uint32_t len)
+>   static void sd_blk_write(SDState *sd, uint64_t addr, uint32_t len)
+>   {
+>       trace_sdcard_write_block(addr, len);
+> +    addr += sd_bootpart_offset(sd);
+>       if (!sd->blk || blk_pwrite(sd->blk, addr, len, sd->data, 0) < 0) {
+>           fprintf(stderr, "sd_blk_write: write error on host side\n");
+>       }
+> @@ -2871,6 +2903,7 @@ static void emmc_class_init(ObjectClass *klass, void *data)
 >   
->   static Property emmc_properties[] = {
-> +    DEFINE_PROP_UINT64("boot-size", SDState, boot_part_size, 0),
->       DEFINE_PROP_END_OF_LIST()
->   };
+>       sc->set_cid = emmc_set_cid;
+>       sc->set_csd = emmc_set_csd;
+> +    sc->bootpart_offset = emmc_bootpart_offset;
+>   }
 >   
+>   static const TypeInfo sd_types[] = {
 

@@ -1,147 +1,126 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3119385njb;
-        Tue, 9 Jul 2024 00:15:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVFDZB7W/ifxKSJA0KufmgqkeC0y5YQ3YaiYqMsLIgHkiDZdaKt3nz1hr+E7JfnaGvxQ8tnIzg8jT56dOr0CsD7uNq30Tct
-X-Received: by 2002:a05:600c:4baa:b0:426:5e1c:1ac2 with SMTP id 5b1f17b1804b1-426706c656bmr14476365e9.8.1720509343135;
-        Tue, 09 Jul 2024 00:15:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720509343; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3120272njb;
+        Tue, 9 Jul 2024 00:18:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX9YAJEYjzz5UkkN1OjZ1CjUDOrvH9CtDHX0ePY7jA7lTEKaYIUABwzRQo6we4kD4YvSokorg5gZxhugYqttQAyS+SCVhB2
+X-Received: by 2002:a2e:9693:0:b0:2ec:eee:f197 with SMTP id 38308e7fff4ca-2eeb30b9a8bmr13711581fa.9.1720509494246;
+        Tue, 09 Jul 2024 00:18:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720509494; cv=none;
         d=google.com; s=arc-20160816;
-        b=eCvU0lYVLXk6Xa/Ayt1VSuUfcn2ZfDN26I1yycSViq5p+jBLVq2vgjaX6A91Q8Sxby
-         i8RXsZ48lKUF+omoR6gsUv8PL2vOm5EdRYPihAUfv8J2DzMTl8PBzam7px1sUT8fpkoN
-         FxPe23pPMdPDntzw/y42Fl+fXhuBbM6Sp0KVdZmM4o1KGXQ1o0ET5iUWz27yqU3bpLtw
-         4cKCzZRV8ZnXCMvwtauI62o1NqMkf09nlB0fZ/DTwcsWC0/7G6Rw4bUvsO7LaiVHCFLv
-         sgOOUXQn9c9MilNEngiDvaq6hbF7r/esXpCIRw7SGT2x8I07FHPHcWN3cF3SMWFNi4IJ
-         i+5g==
+        b=gkHaNQzbUel71BtjLHfFBIff6vFWhl+HRRdj5MtcTRwrvKfC8/aZptWO6pNnO3fpe9
+         9QNyjmgoIAviVhJBSsfkXnmN55Q1vLvtSwGiKZFI6ULzbX+ByEKOeDx8dbs2D/zPFLDn
+         rHu4gZeMAfIk5wI+pFaG9g4BI4A7wj4cibHicFTsEfYkg+Id97cvoROzVMXtYonLGy8R
+         FMgxWKSOkDXlzreiN7R+zaAiVcjKHcVovgNsfsLHpbXSztVYpGQ3KrLK6dsEDXn0v2pZ
+         7Y6zEbCKkhNq74haSoUZ7DHF1T3Nu9uNnlt7ThH+Xd8mgTcxY0nm0UfhEJPmoiithmtw
+         3QEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=ceKsXZzQxORr8UWHBarU6dV06z8zBsqvjsSzDv+Qvk4=;
-        fh=zcG2nuVVHqEN9/bsmul6gbe6dmtymTFP4+MjZAOg+84=;
-        b=jMa4ulnjaD1VqAFcmt4ZnI+S3CoMttTCAmFscy68o3QHJuRsf7kCNwwxLxFxGHfwFk
-         hFAo8iQ6KTL0EKjesrHYuybS9T2v8538kslSsgjh2e0h6Na4rOS+MdNV2aKTaFYej8K+
-         k9Ad7AdZsgS3JOpluSJmdPNlD9+wmfxWoEb2OYiMG/YBh1oIwz+gssw7BEdSXSm9uTOW
-         SueqU0UApGxu5Ct2z3hI3FRxx9ZRJAl8s8jyJKFNwnxeDkwKpQbfbvtw9bCM89GW74rt
-         kPP07aqtqENidtr/zQw7+cSc++F+Jpnw62BxR32dZcBSL03CghDOr5u9v/enLGVqJCuQ
-         8hNQ==;
+        bh=Musi4DnUVQiysf3Si/fZahewrumXdr82z0dzErgcTnM=;
+        fh=t0zrkCgi7TozAFX7sa30vUN5CwBcTK8YjyrATD+Sp5g=;
+        b=OCJCRo3SEZM2nDxWrZZwnL55ouulrgXOmrRR6atWdMwP1/rw5qkacj2CfW0/1vWlI6
+         RtPbQOBBqFWVZDB8xyV23Rs1GDCwiAJHF4ZM9ieenwRGHC8uCg7tH7tEQlYPsE+AW89q
+         uOTz/O0MxqJe664jDLNndEzYjwxIKA8gIVRC0cFtBIYKwCtjxQEa61Trrw8TQLt7GP51
+         j+uQU5JYIYRiGcuakQaH7bUyru0RC1icgSLhjbKv1iCxBxlkAHG59mx2XXlpqpTNHs2u
+         UpRoxO8BFNVUa2FHxpXG68y5il+LBQP2OKJ47w/rFTQv6Kx9sev2YAnnDxIFkfMhz1fG
+         hFaQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=LqcTE2qA;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=tUfLVJ31;
        spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <smostafa@google.com>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-426725e9775sor429115e9.2.2024.07.09.00.15.42
+        by mx.google.com with SMTPS id 5b1f17b1804b1-426740ef542sor303825e9.11.2024.07.09.00.18.14
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Jul 2024 00:15:43 -0700 (PDT)
+        Tue, 09 Jul 2024 00:18:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=LqcTE2qA;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=tUfLVJ31;
        spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1720509342; x=1721114142; darn=linaro.org;
+        d=google.com; s=20230601; t=1720509494; x=1721114294; darn=linaro.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ceKsXZzQxORr8UWHBarU6dV06z8zBsqvjsSzDv+Qvk4=;
-        b=LqcTE2qAokX5BUtFaQ/UjzVy3eXsjpL3G1dvjyS8aRJfT1R8GGKNpUBpSziOakXLXP
-         BQgdtKQZ5Y6qWgBfUfEw+rC4Za3nElkABFbLj64PNSGK61STiMiZxsNeR6pIURLGBaCT
-         VXho6ApT39/h4x1YCcfkPlBFZAKcmknZXNBTYwvIE+y45rMGcb2uU2QHdJwOLeDWn7JS
-         UVUZ9gt7fCqp3qCI28MHVyO4JjRf2iiigmQC3r4GcKWKVtbj1tz2jjHyMClpbgYs0kWe
-         T/JhzWXwwuaXZvr0BtvbWJhFOtj5BYPpJaSNzIhwGDZqcHl1i4Xia9gr2QEGvUbmERoN
-         Fqdg==
+        bh=Musi4DnUVQiysf3Si/fZahewrumXdr82z0dzErgcTnM=;
+        b=tUfLVJ31qFYSadA23TZuOpA8JBO4Eafnz4dnzNWs6y9i8eXf3e0K0+3YAwZZ0chM/y
+         tNNoIQxQ1W12uJa6nwJ40vbcwytt2e4wy9imVVXzZ0zycVeUbHUzsVjS6wmi7AWOo2wm
+         Y3wojs0phWl6Tft8zAHIXwxtCK9p6ZsNm8SnRcOi7yPSQw5OyRuh1Vq+qAF0ACSUQPDv
+         tSCTLmw1pjWLJOgwKSX9RlywwA3VELQtOktlGJm1FI6VgATX9+IEZZc2e5VRE4NnUhwF
+         ycWo6TkwpCKGlQjhSl/1xaNKzmwO7vmrK/OQR4PGiFNKZAcMthfG5duvDqY/7YyaV8VM
+         MOKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720509342; x=1721114142;
+        d=1e100.net; s=20230601; t=1720509494; x=1721114294;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ceKsXZzQxORr8UWHBarU6dV06z8zBsqvjsSzDv+Qvk4=;
-        b=mYWB/nl5ZIsEalTBhyOsVisZ1yLT46QzqVFOm7GHEsbSlohTB0XM/tP5/g3ZoK2HPY
-         a+Eem4BxsG+VccofV1x4kQNn+lK7rIw7r6CoNpJznOuLoacFJc87H44cT4Y2XDylDT2X
-         3oy4OpUiX30QWmNePeN6xVWPiKZ55XnU5XpD1J310aSV7oXAYd2YSBnzRjqr9Ys9cyxZ
-         +4GU+1PZdmT3GJoFf9bX/VGF00JoMRpbtza9Ro0jqzn9kcLAZmjCDxsT3f1+iOIIDorc
-         zx0NC5NNHeNNM3tHHX2Cba+MvaLzpB0CRrOESGImFG2o5Vys8x4jdLy0nPCBidBlqgf/
-         H6zw==
-X-Forwarded-Encrypted: i=1; AJvYcCUEXEkxr0j+CDCyPGdNDjLUoAuObHxR8EOEZSaXAAnrkcNIAzb59tUECwfivqCOYshXDhiLA2SlrwnetncVMu1Y9YBPucbl
-X-Gm-Message-State: AOJu0YxdUsP6dk2+aBSyQuKYOEiuEZe+mRdYE7XtyUmIKvk2GvrbsxE1
-	Up26CJv8pDVQlxTPPfO9oGFTWhhm1OzQjFyEFdgZ7RJnIdPFCIqvI0W7I/2yyg==
-X-Google-Smtp-Source: AGHT+IG3DMnFJjtxqkCBLCVbSVQFXZsMDyPt+vTKtslQwi5FyD2Km3SczSl5xVdz+eD5SuNGtxPNWQ==
-X-Received: by 2002:a05:600c:1d1f:b0:41a:444b:e1d9 with SMTP id 5b1f17b1804b1-42671c0a692mr1287645e9.4.1720509342294;
-        Tue, 09 Jul 2024 00:15:42 -0700 (PDT)
+        bh=Musi4DnUVQiysf3Si/fZahewrumXdr82z0dzErgcTnM=;
+        b=l2/yPRSWyMnLfxaHO4e5QRvql5itUZyZhkklhT1cE5ek58ARKmWWtA1K3xe5uZAsLd
+         P7Iw163JyfgL5wvo3Og+pm8umiXPcl5wj9TsMITwhFce/9ebDE7kzHsjO75w3O8bmoTG
+         DWqOW9KOD8iC7PwCcd92gg9WeYU3g+Y2SesqMOsax1y675BITzgYsCCfPmmRK8u+5egy
+         tGqNhNrau7dJkqfNmADnTKGfIH8B3N91Ktq3kptfTDXOO7669mZQB5zwbOLE/zaPMCGU
+         QlyBL4GgC5+FeQ/HnpZ7CUIPO8u+rUa0DhpjFvvzyH2ooepLdA0ZzXSvfhoUg51me88E
+         5HpA==
+X-Forwarded-Encrypted: i=1; AJvYcCX9NZLMIO+kDwMCr7C2ujmAAIcArJnSnaPHU1/Gyx6zg+Vh/aCTt6GqkJWsgWYLj704HtG7ax8xAPShDEDEG/4Isxnk7lhq
+X-Gm-Message-State: AOJu0YwFAyQEA2F8GSRx8fVHZfzTzethae6iqI6nULDqUhh0PVqoxXUB
+	Y36YQ7jh2fTmhEBOfRvjL1W0zLILgoQXI01d3YWgTXUFWR49yyIjvAr7KMZ+QA==
+X-Google-Smtp-Source: AGHT+IGp4At/VP2RpsC7Be5pUQN3L8Rl28VlLihB9a4ZAUkZ/jUVIwlwvTTLYSqlz59kJ8ALA2PiEw==
+X-Received: by 2002:a05:600c:1d1f:b0:424:898b:522b with SMTP id 5b1f17b1804b1-42673175a65mr945905e9.1.1720509493343;
+        Tue, 09 Jul 2024 00:18:13 -0700 (PDT)
 Return-Path: <smostafa@google.com>
 Received: from google.com (205.215.190.35.bc.googleusercontent.com. [35.190.215.205])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4266f7416dbsm26508955e9.39.2024.07.09.00.15.41
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4266f74159csm26491475e9.42.2024.07.09.00.18.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Jul 2024 00:15:41 -0700 (PDT)
-Date: Tue, 9 Jul 2024 07:15:37 +0000
+        Tue, 09 Jul 2024 00:18:12 -0700 (PDT)
+Date: Tue, 9 Jul 2024 07:18:08 +0000
 From: Mostafa Saleh <smostafa@google.com>
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
-	qemu-devel@nongnu.org, alex.bennee@linaro.org, maz@kernel.org,
+To: Eric Auger <eric.auger@redhat.com>
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+	jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
 	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
 	marcin.juszkiewicz@linaro.org
 Subject: Re: [PATCH v4 11/19] hw/arm/smmu-common: Support nested translation
-Message-ID: <ZozjmZ1ZodrUBT5s@google.com>
+Message-ID: <ZozkMGIq9VHE3HXS@google.com>
 References: <20240701110241.2005222-1-smostafa@google.com>
  <20240701110241.2005222-12-smostafa@google.com>
- <20240704183110.GH1693268@myrica>
+ <86fc9221-f24e-4a7f-8a0d-b19102f981f0@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240704183110.GH1693268@myrica>
-X-TUID: 04ZZ8G/MKJ9n
+In-Reply-To: <86fc9221-f24e-4a7f-8a0d-b19102f981f0@redhat.com>
+X-TUID: FTOCPj/Iqf4V
 
-Hi Jean,
+Hi Eric,
 
-On Thu, Jul 04, 2024 at 07:31:10PM +0100, Jean-Philippe Brucker wrote:
-> On Mon, Jul 01, 2024 at 11:02:33AM +0000, Mostafa Saleh wrote:
+On Mon, Jul 08, 2024 at 05:19:59PM +0200, Eric Auger wrote:
+> Hi Mostafa,
+> 
+> On 7/1/24 13:02, Mostafa Saleh wrote:
 > > When nested translation is requested, do the following:
-> > 
+> >
 > > - Translate stage-1 table address IPA into PA through stage-2.
 > > - Translate stage-1 table walk output (IPA) through stage-2.
 > > - Create a single TLB entry from stage-1 and stage-2 translations
 > >   using logic introduced before.
-> > 
+> >
 > > For stage-1 table translation, the spec (ARM IHI 0070 F.b) says in:
 > >     7.3.12 F_WALK_EABT:
 > >         Translation of an IPA for Stage 1 descriptor fetch:
 > > 	S2 == 1 (stage 2), CLASS == T
 > > So, F_WALK_EABT is used which propagtes to CLASS == TT.
-> 
-> I don't think the text applies to this case, the context is:
-> 
-> 	A stage 2 table walk can encounter EABT accessing the physical
-> 	address of a stage 2 descriptor, because of a:
-> 	[...]
-> 	* Translation of an IPA for Stage 1 descriptor fetch
-> 
-> So EABT is when failing to load the stage 2 descriptor. I can't find
-> exact text for this case but looking at the flowchart 15.5, I think
-> this should be F_TRANSLATION/F_ADDR_SIZE/F_PERMISSION/F_ACCESS with
-> CLASS=TT and S2.
-
-I see, thanks for clarifying, I guess that would be another argument that
-we propagate more info in SMMUPTWEventInfo so we can set the fault CLASS.
-
-Thanks,
-Mostafa
-
-> 
-> Thanks,
-> Jean
-> 
-> > 
+> >
 > > smmu_ptw() has a new argument SMMUState which include the TLB as
 > > stage-1 table address can be cached in there.
-> > 
+> >
 > > Also in smmu_ptw() a separate path used for nesting to simplify the
 > > code, although some logic can be combined.
-> > 
+> >
 > > Signed-off-by: Mostafa Saleh <smostafa@google.com>
 > > ---
 > >  hw/arm/smmu-common.c         | 72 +++++++++++++++++++++++++++++++-----
 > >  include/hw/arm/smmu-common.h |  2 +-
 > >  2 files changed, 64 insertions(+), 10 deletions(-)
-> > 
+> >
 > > diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
 > > index 24b7d09e2b..71afd486ba 100644
 > > --- a/hw/arm/smmu-common.c
@@ -155,6 +134,7 @@ Mostafa
 > > +                                           SMMUTransCfg *cfg,
 > > +                                           SMMUPTWEventInfo *info,
 > > +                                           SMMUState *bs)
+> Nit: in general the SMMUState if the 1st arg, as the most global state.
 > > +{
 > > +    dma_addr_t addr = *table_addr;
 > > +    SMMUTLBEntry *cached_entry;
@@ -179,6 +159,18 @@ Mostafa
 > > +    info->stage = SMMU_STAGE_2;
 > > +    info->type = SMMU_PTW_ERR_WALK_EABT;
 > > +    info->addr = addr;
+> so I guess also here the recorded address should be the IOVA (Jean's
+> previous comment)?
+
+This address maps to FetchAddr and not InputAddr, which is set from the
+calling function, so that should be correct. (besides event type as Jean
+mentioned it needs be fixed).
+
+Thanks,
+Mostafa
+
+> 
+> Eric
 > > +    return -EINVAL;
 > > +}
 > > +
@@ -286,6 +278,4 @@ Mostafa
 > >  
 > >  
 > >  /*
-> > -- 
-> > 2.45.2.803.g4e1b14247a-goog
-> > 
+> 

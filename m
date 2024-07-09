@@ -1,138 +1,116 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3293866njb;
-        Tue, 9 Jul 2024 06:33:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW4xcLLqYYHaBPO0+8iLvOkC0M9i7Y4hAADSXtfRQrDefvafNo2tWmVn8BcOxvcZ9JQeOV9mxmX0T5jf2f/bHcBWwAkY8gf
-X-Google-Smtp-Source: AGHT+IEMYgTdrzVDeRcga7XqK6IvkmcpL3JAG1SLDx/hkAj7JuIJUcEFo3CwefkMwxQi9l0dAl5C
-X-Received: by 2002:a05:622a:3:b0:447:c051:cb40 with SMTP id d75a77b69052e-447faa5be08mr28419761cf.58.1720532017277;
-        Tue, 09 Jul 2024 06:33:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720532017; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3322301njb;
+        Tue, 9 Jul 2024 07:21:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXPlfmmSnjT3F6Zon40Zyl1ypJmu0e4R3NmUlZPdODXJkAzYXTKoeHybLNUDvMhl2TKDnFPasgTV9vnVW9HDDvMhmYHe92Q
+X-Google-Smtp-Source: AGHT+IEuomrZxBGTcRmgIQwycXf1A9ugUWckmllwauPwy3HGCAQrIjsvD7q8+dXmR/q/Pu9WJxzp
+X-Received: by 2002:a05:620a:1123:b0:79f:16df:a69f with SMTP id af79cd13be357-79f19a51dd6mr315726785a.2.1720534886350;
+        Tue, 09 Jul 2024 07:21:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720534886; cv=none;
         d=google.com; s=arc-20160816;
-        b=z6fmPKV35CKohr9dkT5ou0YFQ5z9ncbev45JVgtJZRjHafJUsQFm5kuVb4WU6al3JZ
-         cD8dWqS6liImVFnLALzaTwB43b5aNKJyQbzi1gRYwdPxIOHRczN8rJI7b9PbY5aA5mHp
-         1Iv6Qnbh96AgxTdI4WNwgHECRbBY5Cg+hCbu+OYF1m/A45TtTlAJhMvHZy2//0fqtEda
-         4nandcIjVRoTx9jccDCNH7Gdp48LoODFNoHLKd0WzhM1bU1zwxpTLoDns4z55lUa1Nsa
-         0D4u4RuAEJxeLkDgazVxmoxvagOIX7hp1fClz8xQEL+Y53NMOqMFFyMFoXwrr1w1iTsE
-         W8Mw==
+        b=sVOelFipjvba/bEVv4rhpLf1UdxDADQV8teG+tjFXSeJxbVlUKnZaTB/UZ8gsYYL5j
+         SQq4q2Cfm0Zwx7iH1wUqGYmdSinXx+TeygF/72XY2yvBsqLOQtfjHal6w6cKN0573Z7T
+         u7O+PZc2Sj8AU8fbRleL7n4vWyDBcDMvEjUEcQK5sRevRcAD5sf7GiXQicSiGZbCoJX3
+         0zUteSZAN8fGLwq7HmPVWStvVnWxcQNCpw+rTnUm6+n/JMR22mgpIJdYPshrBfm3ynUf
+         VAtgXuXF3Bq03KjcZEDQiYJ5tgab6iY2XhTzEGxLTHsh1T0Of5jBQE2ZzN5WD2N5h2WZ
+         dueQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=hcYNPiAxxZiFlbDUPTi8jag3xNX3lLeMyqZc5BZbBs4=;
-        fh=+YM4KGCiyJ4tFP3cTVMGnasPgrFMaPT8/hVYokrMVk8=;
-        b=E6PEmh61OMMMd5OSRuVwJvO3TIf/keQxPOt6Kp0SFqVqgXsvQqLqrfowra0v4Rj5NU
-         +jnVg6ekS0TZwS1ADJ+CPTsxYzncftpLEzRXuDymJ7N2X1gWCJHSvE5Xv2NrFtoSbFNh
-         iJK2Lr+TSftyzQf/cZ8x1lOvuqlugZ7FeXX/92NeCrsEy/V5xQ4KswFRsO3L7hTZ2tEX
-         p5MdKw8JOgfglplelq4n39nbDXEAidHDc+JBrCQa3sDuXb/b1B2t9sFAFOVguBOKr7U5
-         8KrQM9GIFt7BcuJJGUVtSVvDI/r13phg17hN7mrhKAaDISTUkfximNqevG5pkil0a7Hf
-         Gk9A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=8nvEN43i8s8OHgYCcHuQ5agVs7nVCZH4nZVhTyQm1lk=;
+        fh=9yLtqrJ/OI/58fMgBwxpDlXa/WK8GeQWtUbhQXTyJjo=;
+        b=HUxlVvIt1yyCYugy5jaK6VdFLrqL0vdz9+GoVTkUJKKWPXDP8j1P9MVQuUTzg5Du9U
+         Lx2tquwqEkEk3XleZ4hEmBME0n5oSK3Zvfw9uioPfAycO7yxHPlAtk1qYyjFTL51mQ3p
+         dDlQhxUwYtPxi6mVkxO+R1rDts8TmbVWoMUyhAW5XY90eB8kZjX8Zm6jO+kBodCWZvRH
+         hTaiakPEUBHvQ8c5NqIPTILaUlH4MpBPOtr34EI7teKlCHTjiy961+dOLWfA4jCNZz2N
+         BIrwdwrGEHdVQSb806ay6PMC9NfqiDXelX8qwjJddTiEFXXG9WEweVpG41MzgiKnDGXw
+         7klg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZKzdDxIb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uYpMHgkk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-447f9bdaccbsi21544961cf.532.2024.07.09.06.33.37
+        by mx.google.com with ESMTPS id af79cd13be357-79f190d74ffsi218723785a.603.2024.07.09.07.21.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2024 06:33:37 -0700 (PDT)
+        Tue, 09 Jul 2024 07:21:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZKzdDxIb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=uYpMHgkk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRAy3-0002nk-61; Tue, 09 Jul 2024 09:33:15 -0400
+	id 1sRBiJ-0007ZS-1A; Tue, 09 Jul 2024 10:21:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sRAxu-0002an-2L
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 09:33:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sRAxi-0008NK-HI
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 09:33:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1720531972;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hcYNPiAxxZiFlbDUPTi8jag3xNX3lLeMyqZc5BZbBs4=;
- b=ZKzdDxIb0Tp6SOj+SK8la1MX4YqmXxYNRFyyd5LTB9n25196DbCgoPFNBHWpqFqBydxBSu
- Cf+m3ZaL4wC8tflKhloOcI7RhtjDCD7IHw4Li9y0dnNkC1oyMvUuZQYtrioHj5zxwHUm24
- MIhyXEHFhdSLGxtXgGbW0PCevuJcQpk=
-Received: from mail-oi1-f197.google.com (mail-oi1-f197.google.com
- [209.85.167.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-76-0rlry41XPYCCQ9bVnLlRWA-1; Tue, 09 Jul 2024 09:32:50 -0400
-X-MC-Unique: 0rlry41XPYCCQ9bVnLlRWA-1
-Received: by mail-oi1-f197.google.com with SMTP id
- 5614622812f47-3d92b366160so2511226b6e.3
- for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 06:32:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sRBiH-0007WU-R2
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 10:21:01 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sRBiG-0001j6-9I
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 10:21:01 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-58ef19aa6b3so2819377a12.1
+ for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 07:20:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1720534858; x=1721139658; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=8nvEN43i8s8OHgYCcHuQ5agVs7nVCZH4nZVhTyQm1lk=;
+ b=uYpMHgkkZ3v/m/C/9vl2FTr9xROPRrhFNvTkWqGo06m/yqkKnMr+gzaRVTZZ9+HDXe
+ cc7kAm+acWHGEbIUsj88DhQJDBqgiHjlDrlCwsv1tiDsOGg/jOWk62paLGyukfpyYNk8
+ ljDBV7KUm9VJteaC3GjwtuYORjONloII0VzxjpsHfBMbQfnqOLMtYzr9IlzKe9lAiW/+
+ 6a3J74JDAETUyWcFSSrym83F6Y86N5EHOcIFzzVDRfasBHHECcIDoQiTpYhyExPBvQ2z
+ Ajp/S4UhHLiGqx6FHdoVdlp/7jowlQzHmWzZ52ElPhnLaBjyN3/uhm4OALsB+VuavYkI
+ sjkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720531970; x=1721136770;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1720534858; x=1721139658;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=hcYNPiAxxZiFlbDUPTi8jag3xNX3lLeMyqZc5BZbBs4=;
- b=n14yWiGjHcgilicKk6F/8+vxJGi89aIxWsVVF+EocCzJ/BPCWFVJ3LtDFnrs2j+1L0
- 1F21veWOLSCmI+z+r/ecYwFQKvHr3yR5qbn0BxAUfWQzmtvOr6w4lXJMeEnEnfvVoocr
- zuTHGjrADtMgN2HhdDL5pdaSklohKCE+rpb2hDfSwOYdGNTjP/nxSglOBLxQN1jJM2kY
- IqU1k+GPiuK7WiRTLZVUXrIxXIm5YRocyoPhJ9kpVm3HkvPT3vIikqpREWkzQHoBFmlB
- U1NEkW4heIiLEzweEN90wpQDstDSLWCie9oRFQf8KDeV0NFgshdKM3740GIkw5Vr87E3
- 7RTA==
-X-Gm-Message-State: AOJu0Yzts+xFZrTXE+XFRBzAPd4ZvHc4t19w6aN3AUwSVaJUBGFsXmwn
- dbQZiejYUAYcGd9xA2xdh9+HZdMaNBC4/LFrrTnIxrdyXL/TQuRkLwuOmajeDRQ5TwNX0GJ8twh
- /4LQTTR99Al/Y1xHu7X7WEoxgQJEIqdbjjf1DEJ69OdcuTzciXQ==
-X-Received: by 2002:a05:6808:17a5:b0:3d2:23e0:d7aa with SMTP id
- 5614622812f47-3d93bef8b38mr3153318b6e.13.1720531969847; 
- Tue, 09 Jul 2024 06:32:49 -0700 (PDT)
-X-Received: by 2002:a05:6808:17a5:b0:3d2:23e0:d7aa with SMTP id
- 5614622812f47-3d93bef8b38mr3153287b6e.13.1720531969386; 
- Tue, 09 Jul 2024 06:32:49 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-447fa56d88csm9767081cf.27.2024.07.09.06.32.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Jul 2024 06:32:48 -0700 (PDT)
-Message-ID: <d59d2d2a-e6b7-4dde-9be7-56986f3fdf91@redhat.com>
-Date: Tue, 9 Jul 2024 15:32:41 +0200
+ bh=8nvEN43i8s8OHgYCcHuQ5agVs7nVCZH4nZVhTyQm1lk=;
+ b=vfwt1FUnWDEQJFNTJOl7B5HlZktAAhIJopzQRk34dE77OI1u5+El3iFdSM6/tUd76w
+ aaCMURpxkPp1CVgC8qwJDTmxcj+vYp/sFy5L03jEfgGmuqAEslrr56wKdwWRLcVvyG/g
+ ZtvYAdNeo69m14pYd66fhL8DxAunQx1uh39xBd5eVIfeEhJrkqRgqjBAyPp5WyWofEG0
+ EBBLZpXoPFTpkmiIrtgcG15psVXp2LOKvrbBPRpJIfveo0//SFuwrSf1sivEdOzuikS1
+ mrdIjJBQw/ZBykVNmATGUqGxectg1cEmiRfUQztIRwVAPk2IiigUVWA+TYyilDzc/6cB
+ Q8Lg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW/QSOIi3rTfMhwcM259i1xPfCGgCFjpCW2phuT708zarTXlU7t9AwCsjcfbizm+CgXRgQqjzDkvMK0CXHk/OO805Wv
+X-Gm-Message-State: AOJu0YzeqfsFGgxBux3zyQJCizNiPR5sYlO/MYhtykVLtsjxJTtPGmkW
+ IZ/XXhdublEVsuN948J84RP8dBnvmJP088X/AeR9sMHWm8wmGV75F8ruvjIRRTMmlr4vKzeGvzL
+ pnKw56QXxthe/zTPfQT4akvD52aFISROVvmCcuw==
+X-Received: by 2002:a05:6402:510c:b0:58c:15a5:3e12 with SMTP id
+ 4fb4d7f45d1cf-594bcba84c9mr2474401a12.38.1720534858581; Tue, 09 Jul 2024
+ 07:20:58 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFCv1 06/10] hw/arm/virt: Assign vfio-pci devices to
- nested SMMUs
-To: Nicolin Chen <nicolinc@nvidia.com>, peter.maydell@linaro.org,
- shannon.zhaosl@gmail.com, mst@redhat.com, imammedo@redhat.com,
- anisinha@redhat.com, peterx@redhat.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, jgg@nvidia.com,
- shameerali.kolothum.thodi@huawei.com, jasowang@redhat.com,
- Andrea Bolognani <abologna@redhat.com>
-References: <cover.1719361174.git.nicolinc@nvidia.com>
- <67c6311756de2a6e827e3dd0563f939dcf334418.1719361174.git.nicolinc@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <67c6311756de2a6e827e3dd0563f939dcf334418.1719361174.git.nicolinc@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+References: <20240709000610.382391-1-richard.henderson@linaro.org>
+ <20240709000610.382391-2-richard.henderson@linaro.org>
+In-Reply-To: <20240709000610.382391-2-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 9 Jul 2024 15:20:47 +0100
+Message-ID: <CAFEAcA-6C4uykQM6J+rXTAqfhTCYGZBKR75k3ZNcVPFq_BwBkw@mail.gmail.com>
+Subject: Re: [PATCH 1/6] target/arm: Convert SMULL, UMULL, SMLAL, UMLAL,
+ SMLSL, UMLSL to decodetree
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,190 +123,20 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ShhUhdLXI0GB
+X-TUID: K+gbfFPWVKU0
 
-
-
-On 6/26/24 02:28, Nicolin Chen wrote:
-> With iommu=nested-smmuv3, there could be multiple nested SMMU instances in
-> the vms. A passthrough device must to look up for its iommu handler in its
-> sysfs node, and then link to the nested SMMU instance created for the same
-> iommu handler. This isn't easy to do.
+On Tue, 9 Jul 2024 at 01:07, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
-> Add an auto-assign piece after all vSMMU backed pxb buses are created. It
-> loops the existing input devices, and sets/replaces their pci bus numbers
-> with a newly created pcie-root-port to the pxb bus.
-Here again I don't think it is acceptable to create such topology under
-the hood. Libvirt shall master the whole PCIe topology.
-
-Eric
->
-> Note that this is not an ideal solution to handle hot plug device.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  hw/arm/virt.c         | 110 ++++++++++++++++++++++++++++++++++++++++++
->  include/hw/arm/virt.h |  13 +++++
->  2 files changed, 123 insertions(+)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index a54332fca8..3610f53304 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -38,6 +38,7 @@
->  #include "hw/arm/primecell.h"
->  #include "hw/arm/virt.h"
->  #include "hw/block/flash.h"
-> +#include "hw/vfio/pci.h"
->  #include "hw/vfio/vfio-calxeda-xgmac.h"
->  #include "hw/vfio/vfio-amd-xgbe.h"
->  #include "hw/display/ramfb.h"
-> @@ -1491,6 +1492,112 @@ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
->                             bdf + 1, vms->iommu_phandle, bdf + 1, 0xffff - bdf);
->  }
->  
-> +static char *create_new_pcie_port(VirtNestedSmmu *nested_smmu, Error **errp)
-> +{
-> +    uint32_t port_nr = nested_smmu->pci_bus->qbus.num_children;
-> +    uint32_t chassis_nr = UINT8_MAX - nested_smmu->index;
-> +    uint32_t bus_nr = pci_bus_num(nested_smmu->pci_bus);
-> +    DeviceState *dev;
-> +    char *name_port;
-> +
-> +    /* Create a root port */
-> +    dev = qdev_new("pcie-root-port");
-> +    name_port = g_strdup_printf("smmu_bus0x%x_port%d", bus_nr, port_nr);
-> +
-> +    if (!qdev_set_id(dev, name_port, &error_fatal)) {
-> +        /* FIXME retry with a different port num? */
-> +        error_setg(errp, "Could not set pcie-root-port ID %s", name_port);
-> +        g_free(name_port);
-> +        g_free(dev);
-> +        return NULL;
-> +    }
-> +    qdev_prop_set_uint32(dev, "chassis", chassis_nr);
-> +    qdev_prop_set_uint32(dev, "slot", port_nr);
-> +    qdev_prop_set_uint64(dev, "io-reserve", 0);
-> +    qdev_realize_and_unref(dev, BUS(nested_smmu->pci_bus), &error_fatal);
-> +    return name_port;
-> +}
-> +
-> +static int assign_nested_smmu(void *opaque, QemuOpts *opts, Error **errp)
-> +{
-> +    VirtMachineState *vms = (VirtMachineState *)opaque;
-> +    const char *sysfsdev = qemu_opt_get(opts, "sysfsdev");
-> +    const char *iommufd = qemu_opt_get(opts, "iommufd");
-> +    const char *driver = qemu_opt_get(opts, "driver");
-> +    const char *host = qemu_opt_get(opts, "host");
-> +    const char *bus = qemu_opt_get(opts, "bus");
-> +    VirtNestedSmmu *nested_smmu;
-> +    char *link_iommu;
-> +    char *dir_iommu;
-> +    char *smmu_node;
-> +    char *name_port;
-> +    int ret = 0;
-> +
-> +    if (!iommufd || !driver) {
-> +        return 0;
-> +    }
-> +    if (!sysfsdev && !host) {
-> +        return 0;
-> +    }
-> +    if (strncmp(driver, TYPE_VFIO_PCI, strlen(TYPE_VFIO_PCI))) {
-> +        return 0;
-> +    }
-> +    /* If the device wants to attach to the default bus, do not reassign it */
-> +    if (bus && !strncmp(bus, "pcie.0", strlen(bus))) {
-> +        return 0;
-> +    }
-> +
-> +    if (sysfsdev) {
-> +        link_iommu = g_strdup_printf("%s/iommu", sysfsdev);
-> +    } else {
-> +        link_iommu = g_strdup_printf("/sys/bus/pci/devices/%s/iommu", host);
-> +    }
-> +
-> +    dir_iommu = realpath(link_iommu, NULL);
-> +    if (!dir_iommu) {
-> +        error_setg(errp, "Could not get the real path for iommu link: %s",
-> +                   link_iommu);
-> +        ret = -EINVAL;
-> +        goto free_link;
-> +    }
-> +
-> +    smmu_node = g_path_get_basename(dir_iommu);
-> +    if (!smmu_node) {
-> +        error_setg(errp, "Could not get SMMU node name for iommu at: %s",
-> +                   dir_iommu);
-> +        ret = -EINVAL;
-> +        goto free_dir;
-> +    }
-> +
-> +    nested_smmu = find_nested_smmu_by_sysfs(vms, smmu_node);
-> +    if (!nested_smmu) {
-> +        error_setg(errp, "Could not find any detected SMMU matching node: %s",
-> +                   smmu_node);
-> +        ret = -EINVAL;
-> +        goto free_node;
-> +    }
-> +
-> +    name_port = create_new_pcie_port(nested_smmu, errp);
-> +    if (!name_port) {
-> +        ret = -EBUSY;
-> +        goto free_node;
-> +    }
-> +
-> +    qemu_opt_set(opts, "bus", name_port, &error_fatal);
-> +    if (bus) {
-> +        error_report("overriding PCI bus %s to %s for device %s [%s]",
-> +                     bus, name_port, host, sysfsdev);
-> +    }
-> +
-> +free_node:
-> +    free(smmu_node);
-> +free_dir:
-> +    free(dir_iommu);
-> +free_link:
-> +    free(link_iommu);
-> +    return ret;
-> +}
-> +
->  /*
->   * FIXME this is used to reverse for hotplug devices, yet it could result in a
->   * big waste of PCI bus numbners.
-> @@ -1669,6 +1776,9 @@ static void create_pcie(VirtMachineState *vms)
->              qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map", 0x0,
->                                     vms->nested_smmu_phandle[i], 0x0, 0x10000);
->          }
-> +
-> +        qemu_opts_foreach(qemu_find_opts("device"),
-> +                          assign_nested_smmu, vms, &error_fatal);
->      } else if (vms->iommu) {
->          vms->iommu_phandle = qemu_fdt_alloc_phandle(ms->fdt);
->  
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 0a3f1ab8b5..dfbc4bba3c 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -246,4 +246,17 @@ find_nested_smmu_by_index(VirtMachineState *vms, int index)
->      return NULL;
->  }
->  
-> +static inline VirtNestedSmmu *
-> +find_nested_smmu_by_sysfs(VirtMachineState *vms, char *node)
-> +{
-> +    VirtNestedSmmu *nested_smmu;
-> +
-> +    QLIST_FOREACH(nested_smmu, &vms->nested_smmu_list, next) {
-> +        if (!strncmp(nested_smmu->smmu_node, node, strlen(node))) {
-> +            return nested_smmu;
-> +        }
-> +    }
-> +    return NULL;
-> +}
-> +
->  #endif /* QEMU_ARM_VIRT_H */
+>  target/arm/tcg/translate-a64.c | 184 ++++++++++++++++++++++++---------
+>  target/arm/tcg/a64.decode      |  22 ++++
+>  2 files changed, 156 insertions(+), 50 deletions(-)
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

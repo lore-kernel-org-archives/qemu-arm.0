@@ -1,241 +1,243 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3427526njb;
-        Tue, 9 Jul 2024 10:13:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVTTppgpIDSzGAPF9bh6gsJ++kQ+fFtS22rxbwVeIekBud54oJle09+v/EiVytIJJy3TArj2usEMIrQU4hhRVIbqQl4nR6U
-X-Received: by 2002:ac2:58d9:0:b0:52e:9481:eaa1 with SMTP id 2adb3069b0e04-52eb9994c3emr1826757e87.23.1720545216533;
-        Tue, 09 Jul 2024 10:13:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720545216; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3431027njb;
+        Tue, 9 Jul 2024 10:20:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUZrxnuT3XTk4+BfCBVogpRB/LIJKha0u6dzgHlVm/ndBWRqYnnH0PYdPJZ9G4mRCBqhQILwVoC50IblIK4mcGXXpuOwVGn
+X-Google-Smtp-Source: AGHT+IFtXUyR7jjVd5bhn+K+xwMC+xVz0tHcIu4Iuy9prJuck4Ddc25bXlPm81elLh4aT7MbEJcQ
+X-Received: by 2002:a05:620a:4ee:b0:79e:e990:baf9 with SMTP id af79cd13be357-79f19a52243mr332785485a.38.1720545607657;
+        Tue, 09 Jul 2024 10:20:07 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1720545607; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Zly5JCikk52qFFZ+DO/Fowt06K3wIp38IK+zSQZVWSnkQDZC0u71r/rAe+GFfzSrHr
-         PfLv/w4rVUSkGNlxG+oS++NCH7/2qSD/gjPy6jOEkuW8eCX9tf5D8gVYktPVHfsxiaY/
-         vS8dHWW83T/ERWCEOqLfPNbp6C3yEblFSctlgldBC4Kq34muP3V9rcF4fG9jU1f237gH
-         ADHVrTTf4RzkbyQqFFMXyIV6tBJ87aMI/xNDSgMwvhJULEQBkMe/2p47Gz4S05q+12B1
-         QcX71G0w1TRNy97GVXnYg27ZydJPwUKFXbMmy3ahiTfAWyTJsDa98vg3BazshWebQqef
-         4Z/Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
+        b=ipLg5buAffUFrYScTU0yhgtUq4RhSceP8crQf+A4K+ekqBFHUr2pEPuPnzfkEac2rC
+         PZVQ0gQw8iDk4LVr2LUw0NmT0TDGskkvMEG4Viu0PDcbm0u6O0aOVn+sPDABZCxZuSFI
+         /0pZMfIIiHMgp39TVp8hLTpFP4fw461Z27Xv9MktnNdo31PwclkcFnQ3DLQ36Lk43gs/
+         bWzrawLCZt43fo19PzaysYGC28ee2TA2fOSGrApeR7Nkp3NReuQG58uSGwTMyL2iEoro
+         5QtNedg/+Vg9oFJERYLmghOj3Gj7WOmqRsf3z2jj7U+XXRMsoAmG1oN2havLa4hiB8+n
+         Gjnw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=M21kN0hAmUgoAhZACpNGCGJZUGoSABCOK98rI/RbKg0=;
-        fh=1w1V2MaFb4NtA8rQtgK02p0R1lMzpGzroUqH564OiWE=;
-        b=C5itiZKKwDzPKmu8CYDyZ9R8bYXRmWXyxO//aqHXwQeOurqyz5fIwiWmIEt6mUyqep
-         fcmDF3giBAAVfpAf3XBBQ16TxlB5t/ey1jc+YxkE6hF9+7rZpCkMRAmT14Fm8FgQONN7
-         scBPUfKje0ZkWAf8WfUI6pvEbppv/cOYGrOy4JXVfmrDuveMs+Rc10QwyiEjJEzckIS6
-         eY3jd7UDtj0odPOzOIjT8HdJvP6pFgBltpsbCG9hohW2TCNEX3B41g2S8kgdyLtN02RM
-         5n8KRtSAsNk7mTAtGsIINNBHhS5i4lqHby24n8v6Qc5DaUPtQZ5YBV1XhQXMUI+otvNX
-         bwRA==;
+        bh=qBZXQAUefubBhnfLzMOOjjWGKZj1+iUT6Gpqg/a6bP4=;
+        fh=zmiKcTA0jZyrHIacb7GBl8Bjq4p8DiCi3ICYdIprMH0=;
+        b=YAOVxLU4pmNnMU82IeC5NJLDeJu3+WaSJnnfttSmIUr6CQHVGAyLLx3l1hYWtYU5xf
+         1NL9dvlfeNiW+zgnNTdae9HwrNPHzV/tPuCg6vS3nlORmMQrjykvtNrqHPQlkX8E62VI
+         BrKvmb64C92elAWoOcejqC1MIqMPravjxHhubqZSq6XfiI6LkddaDS+fYkXmvFemKfHd
+         K97NnsdiwEXuQA606Ou1zdaIPGMr4zKFVcALHKt0OoKoPFiT9BhO2cM+2PRVcNGs0Hr7
+         QqSgZvPn0LKKgpBA8X4jy4pqXIwEtZN30SFBox53p1uJcCIBxcR2VUWaJO2y5Zc++jp0
+         xjvQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RInDD19J;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <jean-philippe@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4266fb0f9b9sor6128235e9.0.2024.07.09.10.13.36
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=aVMyFwQ9;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-79f1900ff1csi244373485a.119.2024.07.09.10.20.07
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 09 Jul 2024 10:13:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 09 Jul 2024 10:20:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RInDD19J;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720545216; x=1721150016; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=M21kN0hAmUgoAhZACpNGCGJZUGoSABCOK98rI/RbKg0=;
-        b=RInDD19J6TtL4j8fP3WTzfwcm3sN6B/FCkJyIjV4XG0Mx4RAmHAJBHiDKabtl3ZXRR
-         GCQMfxxzqWMSNBEEFyCF+FqGyJEBigacMzN9Y/kCoRt0hHCPTqTeKlwvhoMqoNVcWo07
-         hyJ5iijTnRp6ouQcuMPsRqAqb0OK7XgRAuU1INsyNeWqq36wx6xf3r6R2jeI5MjKE0yU
-         JchuYGX51LOjWDC88X9lcw5GJf1bnSyihKj6Z0keaQY80RtrdOcXt32ck550WOYNsRRZ
-         J+0WUEFYK1C9PuvILlutBzvi2bqSQrQBFBhOeLHIqehdChbKXqMOYvGDA2zJdvchJvOr
-         sE2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720545216; x=1721150016;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=M21kN0hAmUgoAhZACpNGCGJZUGoSABCOK98rI/RbKg0=;
-        b=umpXMEHP/z+tW/q5h3Dz9ym6lOHSEy5wUeTDCgCP8CnwaH889sVuZdLHiZ1nD1lF4d
-         /bIiSUTCmOZztm23ShTZRnJ6/EH5z9jdFiWjXng8Vu1Wk3rRkOt5axm+fNPN+DVh4Gmk
-         YKyOHhMAqq8ETqJo67SouXDr0AnTP2pNzxu52/8TTI8VXCwq5SeHr4b5SOkAWtkSKf7J
-         vUQVlIvzDxufNe0M8fr909/zIGCtDi7+2P4auPECGDzneLo73bErmP8CoU48NLBQQou4
-         TXBW1JffZUSY/c9Z+0+/36+0x9tagUmOK+puQll4+a9VdQJ1Ktb+EX0hOFXTHVd46Q7+
-         ZgsA==
-X-Forwarded-Encrypted: i=1; AJvYcCVEmWOByfigMe39N4M9MTCMKCsHSwKOZG+dBICxF/2EDXE8RTz4z1yAz/mmhLSOHPb4QoNWpMgmE/tz2INDJ5Eug6ePMz3m
-X-Gm-Message-State: AOJu0YwebNW7bQPIytdjKzRmZ+H/FVJnhgTpkwAKd+MQDQvQXKt0BpET
-	SMLpS2CT4U40NaC/oykIVOTPoFolqzY7augT3T04rIR5bx2QetnTHF5q/k56Oyn35w==
-X-Google-Smtp-Source: AGHT+IHBLw+TeFdnyPk0Q7oqWqKZJfnh1XGhmKfCEzfaPnBMQMNDxiF6KWHVFkKs9zHK1vjVPHTCdw==
-X-Received: by 2002:a05:600c:41c4:b0:426:5ee5:3129 with SMTP id 5b1f17b1804b1-426707ce948mr25035605e9.2.1720545215941;
-        Tue, 09 Jul 2024 10:13:35 -0700 (PDT)
-Return-Path: <jean-philippe@linaro.org>
-Received: from myrica ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4266e6478d7sm67474995e9.31.2024.07.09.10.13.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 09 Jul 2024 10:13:35 -0700 (PDT)
-Date: Tue, 9 Jul 2024 18:13:45 +0100
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Mostafa Saleh <smostafa@google.com>
-Cc: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
-	qemu-devel@nongnu.org, alex.bennee@linaro.org, maz@kernel.org,
-	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
-	marcin.juszkiewicz@linaro.org
-Subject: Re: [PATCH v4 09/19] hw/arm/smmu-common: Rework TLB lookup for
- nesting
-Message-ID: <20240709171345.GC2189727@myrica>
-References: <20240701110241.2005222-1-smostafa@google.com>
- <20240701110241.2005222-10-smostafa@google.com>
- <20240704181235.GF1693268@myrica>
- <ZozjS59a4aluqUju@google.com>
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=aVMyFwQ9;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sREV9-0002kI-H7; Tue, 09 Jul 2024 13:19:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1sREV7-0002jF-Ec; Tue, 09 Jul 2024 13:19:37 -0400
+Received: from mail-sn1nam02on2061c.outbound.protection.outlook.com
+ ([2a01:111:f400:7ea9::61c]
+ helo=NAM02-SN1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1sREV5-0001yy-92; Tue, 09 Jul 2024 13:19:37 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=RTlO+Da0VjW7AAsxklt3HeRQUNgXygvRcbAE/W/JpgvdXolbe9JJET/znAe4iOzZ3LWJPjZgzzy36S6OmNaVM4FLaT3EmstUBHal+1aBjmA1XYyAUk2H2qy7d5em7JeDZ/2ztt/x5Qt13Ps2czXVXnz5dcCwPtabQhpSLmmoyla3idZJq/rqFp/tP3/T8TPiZPNvrbH778Pvjke8/JKokVVyQLHTOXRChd1DXrWTdEYc2ULc1cIsotYzqeyJ47GXP0ZaIaze75tv1WtybgcPIG8NJzGA/rqkc500oS669fxZ4R2m3LlLTnmBOwPxB+3fk3six72+c2Ltyl4YpTFkzA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qBZXQAUefubBhnfLzMOOjjWGKZj1+iUT6Gpqg/a6bP4=;
+ b=akRPR6Knd9WpywUECw3RbqmCL108hlyzsPyrwHc/7m5L8vx64kROmBhRi/JaVwHIZvuVajr3aUZhpq8AFuA8HYZLGghhaG/H1nAsVTdnc2uXFut+QBVPvgfVXueaf+tWdmV/uKm8i4wN5jk2sGI/7eBcHKqfyVDbRnCOWaTblBEyj6CZ6xwgpM1TtC7T53A3aKaZJ5wQ0bdZYaR5atL8JF8r3FPNN8eXRXmBofslbMt5iSLic13MzsdBG6U1SdtQJscRjeNAU97B++Qmj4EDyQBwC/j8RiOMDEj04Dl2hz+c1c31J1Q/RttDP7+GrDeK8nIj84BJfttOjIrW2jRDtQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qBZXQAUefubBhnfLzMOOjjWGKZj1+iUT6Gpqg/a6bP4=;
+ b=aVMyFwQ9Bl4TA853+NV68nOqZ8rgStBWeUOXmlSn2fwtW/WoaM6UYhFdOSStdNlymJlI8ErMd6iCBdEUa9BbnXWNjGExXeZckZ1bRbnXQxMX8Z/4o+cPEFfsFlstwh3yBfMrnKq+uBAA6QFs8i4YRW6klkqb1sEYdy+x3DP6wK9jESGuZWnxhuNO4rEEiAgLlcrpRyKbcLz2zpyNpPx5WjLJ1v2Oc8PXTTOC4g5tz48weUSlrslHH6SSjIym+bTBg4nwBxtz3Ev+iAc7hCiw1VR2296+e/i3MK/pU+71OEcBjswArlw7EeCSiznvhLFiSk/ApPqP0lCkAvaocbfF/w==
+Received: from BY3PR05CA0027.namprd05.prod.outlook.com (2603:10b6:a03:254::32)
+ by PH7PR12MB6738.namprd12.prod.outlook.com (2603:10b6:510:1a9::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.34; Tue, 9 Jul
+ 2024 17:19:27 +0000
+Received: from SJ1PEPF000023D4.namprd21.prod.outlook.com
+ (2603:10b6:a03:254:cafe::70) by BY3PR05CA0027.outlook.office365.com
+ (2603:10b6:a03:254::32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7762.19 via Frontend
+ Transport; Tue, 9 Jul 2024 17:19:27 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ SJ1PEPF000023D4.mail.protection.outlook.com (10.167.244.69) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7762.1 via Frontend Transport; Tue, 9 Jul 2024 17:19:27 +0000
+Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Tue, 9 Jul 2024
+ 10:19:02 -0700
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail202.nvidia.com
+ (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Tue, 9 Jul 2024
+ 10:19:02 -0700
+Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com (10.129.68.6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4 via Frontend
+ Transport; Tue, 9 Jul 2024 10:19:01 -0700
+Date: Tue, 9 Jul 2024 10:18:59 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Eric Auger <eric.auger@redhat.com>, Zhenzhong Duan
+ <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>
+CC: <peter.maydell@linaro.org>, <shannon.zhaosl@gmail.com>, <mst@redhat.com>, 
+ <imammedo@redhat.com>, <anisinha@redhat.com>, <peterx@redhat.com>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <jgg@nvidia.com>,
+ <shameerali.kolothum.thodi@huawei.com>, <jasowang@redhat.com>
+Subject: Re: [PATCH RFCv1 02/10] hw/arm/virt: Add iommufd link to virt-machine
+Message-ID: <Zo1xA9B8L3qLyGQO@Asurada-Nvidia>
+References: <cover.1719361174.git.nicolinc@nvidia.com>
+ <df22fcd43e201fea97da8862b61614a2986ffa5e.1719361174.git.nicolinc@nvidia.com>
+ <efec2974-ce96-4cb1-a00c-30fe93c5fa7b@redhat.com>
+ <Zo1sblmS9+xlWObT@Asurada-Nvidia>
+ <af440fe7-faf7-43a4-9f04-9d0059ef7e90@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZozjS59a4aluqUju@google.com>
-X-TUID: 7+WEcjBLbzE4
+In-Reply-To: <af440fe7-faf7-43a4-9f04-9d0059ef7e90@redhat.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ1PEPF000023D4:EE_|PH7PR12MB6738:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7bfcd287-79f0-47c6-ea0b-08dca03b494e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|36860700013|1800799024|7416014|82310400026|376014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?XytSNy34TOYHLv7LgVjfnCwtiqmAbyDqwwDhoq9dbl5BblUivKqyI4rMWAkv?=
+ =?us-ascii?Q?HWMBnRgv51TGLSR1polDhkhCL2778cWfhAXEoDTMqyZCyYyYY2d+kyP82yS8?=
+ =?us-ascii?Q?OLUigxhEA/1QK0z8PQ8s9eHSuHUc557ry3hl7ob5g0/Zchsc5sJIr31HyppI?=
+ =?us-ascii?Q?8U+5U4Jm20T0u4Ph0dLl5Flq4gflFbi2cSTEj1mCzZZYDoiDdceQYLEvvD6U?=
+ =?us-ascii?Q?sS1D1eKIH5StCBvHfXuk61h05sVIaddVIdAFYL3QVTzGTvGTE17+zq/bE3yn?=
+ =?us-ascii?Q?J/Mip6lN5jKXt2i+C7X1XbGGU4gZzKL/iFaNghuqwTpgCeArTGva/lJaI+Hb?=
+ =?us-ascii?Q?j8CgFH3v4n8RTglNrMKIt9xbecGW5Ok+UBT5oqp1okd9jy1u0Cwb1w3m+u7/?=
+ =?us-ascii?Q?qCeqi/BJz4HQCbwUfbXJ8wtwfmGspCEMGRkKCgz1FKDT4FdBVOR3v5KHdYrx?=
+ =?us-ascii?Q?avEXU6zU000lqkEgvGAlJU37AvF50Xp1A5xGG5w8ll/tnfK0Su5S3dqwaLk5?=
+ =?us-ascii?Q?9yJXCZ6vpKN+K73qCQV5DX+YSU5UIHfD2aWMzAzHDikD0Zdki5ktOEcFRl+J?=
+ =?us-ascii?Q?4mJT5D8hOp84W8bfDGRrtVX7MKuJc3Rsz3wQpdYtdpvajYIfb1t5VzG9mdJ8?=
+ =?us-ascii?Q?K2Q1u8IkvBNPSuWAMOD0BnFB18cv2sZef7qZS9VhTGwYSRPDZsAo+8h/FbZg?=
+ =?us-ascii?Q?iNfbMwXIfAuQc4yC7ffVRIvry39uLg80e1U5604QK9Bg6f1TtgX9fMYyuT07?=
+ =?us-ascii?Q?zWbsDHgo0Pm0qSlRa6oFVAD1ct86jrpkwPIJEPeRXp/DjBqO/vPmJj9s5F1B?=
+ =?us-ascii?Q?BbwwdywWmLJAaZ0gRq0em4mjk40bN9/spJ+1fnvqA3CvqMGdWlgmpQW86A4V?=
+ =?us-ascii?Q?IL1qVD4fV099F699kf8MwnvgBDBaddWZqFbhmMY6BZHtSCJzSkVFtVN4uKys?=
+ =?us-ascii?Q?ar/kD1fimTZtvW8lIkib2HoqDSbm7nNmbr670bLfsVHl/p/ICqpTa0qosk0y?=
+ =?us-ascii?Q?6AkwX9HGbrJ9mAKUUedoAhEhZsTgBTGo7Na+9JTs+9zpflSUhEHnwEdJ5vhu?=
+ =?us-ascii?Q?Jt4DR5vekKXFmlXxU6cEQFCL8gxZqyN7MkfGpmv4rlJ+BCXMIpsFsgJLFmx5?=
+ =?us-ascii?Q?bi5dxPnPVoZT2ezUUMRjd+GlO1SN1lzyKBxGf5ahwrnCIGgv5MxV29uAhYx9?=
+ =?us-ascii?Q?FE+5XcCsE2aTN0tI/7dnM4sK/0bkKg9iwt2LGEZgqiHKXCZbsFIWjJIKX+8d?=
+ =?us-ascii?Q?HhtgkQJOtgZ4PGa1pJrMHtREe73Z+neIPLBtxV3wAUNKvP3eOdC6S127Bxjk?=
+ =?us-ascii?Q?wSHtu7MjtRrvZ9IdHcTrzQH7YdLxwHnZIEQ57EeQbgN0QnbzOaj8Nkb59azf?=
+ =?us-ascii?Q?SGnQrL5yTm7XXVtV+DZIXzJhRRp9aZFtR2Hac5xnUN3LVCoaHVF3flx6ZOfG?=
+ =?us-ascii?Q?L3cy6ktMFYaI/2cNvG1ew/A0s4xo1Enh?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(36860700013)(1800799024)(7416014)(82310400026)(376014); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2024 17:19:27.1940 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7bfcd287-79f0-47c6-ea0b-08dca03b494e
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF000023D4.namprd21.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB6738
+Received-SPF: softfail client-ip=2a01:111:f400:7ea9::61c;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM02-SN1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: lFu28L9dV45W
 
-On Tue, Jul 09, 2024 at 07:14:19AM +0000, Mostafa Saleh wrote:
-> Hi Jean,
-> 
-> On Thu, Jul 04, 2024 at 07:12:35PM +0100, Jean-Philippe Brucker wrote:
-> > On Mon, Jul 01, 2024 at 11:02:31AM +0000, Mostafa Saleh wrote:
-> > > In the next patch, combine_tlb() will be added which combines 2 TLB
-> > > entries into one for nested translations, which chooses the granule
-> > > and level from the smallest entry.
-> > > 
-> > > This means that with nested translation, an entry can be cached with
-> > > the granule of stage-2 and not stage-1.
-> > > 
-> > > However, currently, the lookup for an IOVA is done with input stage
-> > > granule, which is stage-1 for nested configuration, which will not
-> > > work with the above logic.
-> > > This patch reworks lookup in that case, so it falls back to stage-2
-> > > granule if no entry is found using stage-1 granule.
-> > 
-> > Why not initialize tt_combined to the minimum granule of stages 1 and 2?
-> > It looks like you introduced it for this. I'm wondering if we lookup the
-> > wrong IOVA if changing the granule size after the address is masked in
-> > smmu_translate()
-> 
-> I am not sure I fully understand, but I don’t think that would work as it is
-> not guaranteed that the minimum granule is the one that would be cached,
-> as we might hit block mappings.
-> 
-> The IOVA at first is masked with the first stage mask for the expected page
-> address, and the lookup logic would mask the address for each level look up,
-> so It should match the alignment of the cached page of that granule and level,
-> and as the combine logic is done with the aligned_addr it is guaranteed by
-> construction that it has to be aligned with stage-1.
+On Tue, Jul 09, 2024 at 07:06:50PM +0200, Eric Auger wrote:
+> On 7/9/24 18:59, Nicolin Chen wrote:
+> > Hi Eric,
+> >
+> > Thanks for the comments!
+> >
+> > On Tue, Jul 09, 2024 at 11:11:56AM +0200, Eric Auger wrote:
+> >> On 6/26/24 02:28, Nicolin Chen wrote:
+> >>> A nested SMMU must use iommufd ioctls to communicate with the host-level
+> >>> SMMU instance for 2-stage translation support. Add an iommufd link to the
+> >>> ARM virt-machine, allowing QEMU command to pass in an iommufd object.
+> >> If I am not wrong vfio devices are allowed to use different iommufd's
+> >> (although there is no real benefice). So this command line wouldn't
+> >> match with that option.
+> > I think Jason's remarks highlighted that FD should be one per VM:
+> > https://lore.kernel.org/qemu-devel/20240503141024.GE3341011@nvidia.com/
+> OK I thought this was still envisionned althought not really meaningful.
+> By the way, please add Yi and Zhenzhong in cc since thre problematics
+> are connected I think.
 
-I missed something, this is what I had in mind initially:
+Yea.
 
-* s1 granule is 64k, s2 granule is 4k
-* the tlb already contains a translations for IOVA 0x30000, tg=4k
-* now we lookup IOVA 0x31000. Masked with the s1 granule, aligned_addr is
-  0x30000. Not found at first because lookup is with tg=64k, but then we
-  call smmu_iotlb_lookup_all_levels() again with the s2 granule and the
-  same IOVA, which returns the wrong translation
+Yi/Zhenzhong, would you please shed some light on forwarding an
+iommufd handler to the intel_iommu code? IIRC, we did that at the
+beginning but removed it later?
 
-But it's not actually possible, because if cfg->stage == SMMU_NESTED, then
-in smmu_translate() we end up with
+> >> Also while reading the commit msg it is not clear with the iommufd is
+> >> needed in the machine whereas the vfio iommufd BE generally calls those
+> >> ioctls.
+> > I think I forgot to revisit it. Both intel_iommu and smmu-common
+> > used to call iommufd_backend_connect() for counting, so there was
+> > a need to pass in the same iommufd handler to the viommu driver.
+> > For SMMU, since it is created in the virt code, we had to pass in
+> > with this patch.
+> >
+> > That being said, it looks like intel_iommu had removed that. So,
+> > likely we don't need an extra user counting for SMMU too.
+> OK at least it deserves some explanation about the "why"
 
-    } else {
-        /* Stage2. */
-        tt_combined.granule_sz = cfg->s2cfg.granule_sz;
+Yes, I agree that the commit message isn't good enough.
 
-So I think the condition
-
-	(cfg->stage == SMMU_NESTED) && (cfg->s2cfg.granule_sz != tt->granule_sz)
-
-in this patch is never true?
-
-
-Then the following scenario:
-
-* s1 granule is 4k, s2 granule is 64k
-* we lookup IOVA A, miss. The translation gets cached with granule 4k
-* we lookup IOVA A again, but with tt->granule_sz = 64k so we'll
-  never find the entry?
-
-
-I guess we want to start the lookup with the smallest granule, and then if
-the s1 and s2 granules differ, retry with the other one. Or with
-SMMU_NESTED, start with the s1 granule and keep this patch to fallback to
-s2 granule, but without masking the IOVA in smmu_translate() (it will be
-masked correctly by smmu_iotlb_lookup_all_levels()).
-
-Thanks,
-Jean
-
-> 
-> Thanks,
-> Mostafa
-> 
-> > 
-> > Thanks,
-> > Jean
-> > 
-> > > 
-> > > Signed-off-by: Mostafa Saleh <smostafa@google.com>
-> > > ---
-> > >  hw/arm/smmu-common.c | 36 ++++++++++++++++++++++++++++++++++--
-> > >  1 file changed, 34 insertions(+), 2 deletions(-)
-> > > 
-> > > diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> > > index 21982621c0..0840b5cffd 100644
-> > > --- a/hw/arm/smmu-common.c
-> > > +++ b/hw/arm/smmu-common.c
-> > > @@ -66,8 +66,10 @@ SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
-> > >      return key;
-> > >  }
-> > >  
-> > > -SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
-> > > -                                SMMUTransTableInfo *tt, hwaddr iova)
-> > > +static SMMUTLBEntry *smmu_iotlb_lookup_all_levels(SMMUState *bs,
-> > > +                                                  SMMUTransCfg *cfg,
-> > > +                                                  SMMUTransTableInfo *tt,
-> > > +                                                  hwaddr iova)
-> > >  {
-> > >      uint8_t tg = (tt->granule_sz - 10) / 2;
-> > >      uint8_t inputsize = 64 - tt->tsz;
-> > > @@ -88,6 +90,36 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
-> > >          }
-> > >          level++;
-> > >      }
-> > > +    return entry;
-> > > +}
-> > > +
-> > > +/**
-> > > + * smmu_iotlb_lookup - Look up for a TLB entry.
-> > > + * @bs: SMMU state which includes the TLB instance
-> > > + * @cfg: Configuration of the translation
-> > > + * @tt: Translation table info (granule and tsz)
-> > > + * @iova: IOVA address to lookup
-> > > + *
-> > > + * returns a valid entry on success, otherwise NULL.
-> > > + * In case of nested translation, tt can be updated to include
-> > > + * the granule of the found entry as it might different from
-> > > + * the IOVA granule.
-> > > + */
-> > > +SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
-> > > +                                SMMUTransTableInfo *tt, hwaddr iova)
-> > > +{
-> > > +    SMMUTLBEntry *entry = NULL;
-> > > +
-> > > +    entry = smmu_iotlb_lookup_all_levels(bs, cfg, tt, iova);
-> > > +    /*
-> > > +     * For nested translation also try the s2 granule, as the TLB will insert
-> > > +     * it if the size of s2 tlb entry was smaller.
-> > > +     */
-> > > +    if (!entry && (cfg->stage == SMMU_NESTED) &&
-> > > +        (cfg->s2cfg.granule_sz != tt->granule_sz)) {
-> > > +        tt->granule_sz = cfg->s2cfg.granule_sz;
-> > > +        entry = smmu_iotlb_lookup_all_levels(bs, cfg, tt, iova);
-> > > +    }
-> > >  
-> > >      if (entry) {
-> > >          cfg->iotlb_hits++;
-> > > -- 
-> > > 2.45.2.803.g4e1b14247a-goog
-> > > 
+Thanks
+Nicolin

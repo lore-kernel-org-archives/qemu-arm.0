@@ -1,140 +1,133 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3527793njb;
-        Tue, 9 Jul 2024 14:02:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX+KO/IYQxocW1WXN82+zUM1/nVT0njRpSzgcgIw5Fx3j/lNzIQl+se8Lp802R50uEKIRHwIXg4G7m3dhOPxR6TuMaQETo9
-X-Google-Smtp-Source: AGHT+IEZCawVkj2MuXLY5bXCks5vxbHMRHMavVhL/vDMGvuJvEJ4xlbXJFioVgRFXcvBDXGEDUSV
-X-Received: by 2002:a05:620a:5a5b:b0:79d:5cd6:9f60 with SMTP id af79cd13be357-79f19bf8542mr353999285a.67.1720558926101;
-        Tue, 09 Jul 2024 14:02:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720558926; cv=none;
+Received: by 2002:a05:7022:1005:b0:83:cb6b:1575 with SMTP id em5csp1740932dlb;
+        Tue, 9 Jul 2024 14:33:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVth5I1SD2Q/8KDWtsEMAYwN5RQ9V8zdc6k+yodxeY89y0pCwqt/duvOxaN+C7odaUFm7Fd04G/gVFhf6Kb0v1CdPfG9qxW
+X-Google-Smtp-Source: AGHT+IEUqXJFWSXNmGAqxPb8GbOlaDnI7lmHPZdqOQKV+9s2f94ATK+fFJ8Gra7Xx6s8iJEMtdbI
+X-Received: by 2002:a05:6102:f10:b0:48f:9dea:bec6 with SMTP id ada2fe7eead31-4903215451bmr4692382137.18.1720560793725;
+        Tue, 09 Jul 2024 14:33:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720560793; cv=none;
         d=google.com; s=arc-20160816;
-        b=P+3bObcpDFyrsQuhK9lTX1+1qZQs6nck1+fokBGxyhh5hvuml4Vl11o/UEx36+CQf4
-         tC6yNd5Yed8IhePyy2CItTMYABxJXH+JYAX65djjitZTivHU9hVJS4/gZcCV2N5loK1C
-         TG2BPQJm1BB+gM53hrVy6pT11hDDiIz5xftiTa7UfCGHdtuuLEAC22FHUNrhRndqyLyw
-         /qBa/fsl5o0zFdFTo/hR5GDMn6E/tSOX+ZeSG2q6MyTaVaNNaZdC97Qn7neEQJWlXZbQ
-         0FJB+Xr0Y+/oLGPp2YwXCftQdWUXEwMztt6ie+Cpk4p1JGJ2KPbkxM/cIswJM9c/Emfh
-         ABCQ==
+        b=jbcFIMan2guj3v+wq0uEtxIRMiALfB4aqApLwgq9bwtm7ZEUkmnQl+tkThJWgGS6L/
+         Xg7q7Nce2eCR8z1cf/Cbzp2F0UDWXZbdKHgQpHIgPbCoW4laSR/lZwNI0R23EJZ2ZzwA
+         JamLn6wNMQvmR9VPXXSgNZb9+3SN6YaVDb4axU0nBqNMmfEAnXBOS79HJrlVlhoaj5oG
+         3WlCPCtMp3N1rOXkpIyRqX9VMVAkbQy1DOIjZlSD7dhdzGiNUlmu80tIL8nQ/Ed8POQz
+         sWImgpBitzzFZUN22F94P5Sr4ksH5wV9sq44XOCrpzAUWl35AalhigdeA29oHK4eOIX+
+         tybg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=TsxXBMowcezJEDRjoUPV7HFIcgDlWTQTz4rGgv9pKho=;
-        fh=OdG38iNvVAMh1JkPfnAV3uJWLj6ED6bQVIOuaRWoIJU=;
-        b=QZs9AsTnbXwhBYCxJBj3qd9OZcOtJ7/hanzaRkJoXWgosaod5bRbWfd1j0rabF/iiH
-         ArDMNf1AcLnsEWH2VzZ0CCBqp/4e++SLshllBsRsyQicVzifc+zmSNhLHXfKbu4MC/YE
-         uaplcSvFE9XFAYpdQMq5IeQ+RyyjD75Vx3YZMpb7saClKjNJ78gcUCYbvMeuGEyz0oeN
-         YA0nW2LMhw3CHeiR5QvatHdGkA5+0Bzsb/DjlwyTNCwVOthQe65CRPkaa1a9VfG7zAat
-         2TKYoECVPVjAtWjoNg3C1/xnxSwQQ7D7z8ptk8zSUYVO04/01QUI83Khjja3cAgTfJlx
-         mo2Q==;
+         :in-reply-to:content-language:references:cc:to:from:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=bbcpro0o+I3cTdZ1oGJyuIMJSzDBADoMwzQyQ181dsU=;
+        fh=B+30RdE1Y5aSb9qWmtmjA/1rN5JZcSY5KA9Gb2H1kPg=;
+        b=b63PEtVpX7eHY6mTJzR1xS2uTAjyDiEpZMF2qp9DTh+qZpzX85OsZg36o6pX+MBy4y
+         d6HMwND41GWql1TmmCP70Izz415+6MNcaXVLW9ep4F080PMuepZ98KVEP32/taplc8Kd
+         mstLsYWNOVe1ZN/xRDPggldqUxgNvZleqwUVsSsTKCAtMrRc5tLeJYyVnj8Y+yIXNaeC
+         ObaU5c4cJMoY39OELXjguoLJEA8S5vpNF32aUenQcvOkxeQfSyVhpargmslo70dP/A3V
+         leay3B+K3E1yc8dUElel7bTMw8s1Vg1SDPJL2YM1bo4zsBBNM8pUmiskQT0RrBb3YhkT
+         w+KA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CqjhBCwC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JmtVfR2P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79f190d7ceesi289747685a.650.2024.07.09.14.02.06
+        by mx.google.com with ESMTPS id d75a77b69052e-447f9c23a15si29385761cf.768.2024.07.09.14.33.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2024 14:02:06 -0700 (PDT)
+        Tue, 09 Jul 2024 14:33:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CqjhBCwC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JmtVfR2P;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRHyF-0002Vx-B4; Tue, 09 Jul 2024 17:01:55 -0400
+	id 1sRISP-0007d3-VF; Tue, 09 Jul 2024 17:33:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1sRHyA-00028k-Pr
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 17:01:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1sRHy5-0006Cf-OR
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 17:01:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1720558900;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TsxXBMowcezJEDRjoUPV7HFIcgDlWTQTz4rGgv9pKho=;
- b=CqjhBCwCG+uega1m2XsLHmwf3CBwWmVOUkW2B+HVfTnDeb7gNv2+ui881CwGcd47wm4rj3
- OowjOBIuxX0hnA/uE1ldLMYawNhp99s4S2SfkmnJQyklNb2e+fKRVeuUJS5RYbFNro9Qdh
- Nx5ADEe+mLyN3GS2crVvsEiNelbVQ4A=
-Received: from mail-oo1-f71.google.com (mail-oo1-f71.google.com
- [209.85.161.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-635-0rvCwnxnMG-LygwZmIeh0A-1; Tue, 09 Jul 2024 17:01:37 -0400
-X-MC-Unique: 0rvCwnxnMG-LygwZmIeh0A-1
-Received: by mail-oo1-f71.google.com with SMTP id
- 006d021491bc7-5c696b8e759so61998eaf.0
- for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 14:01:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRISP-0007c6-22
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 17:33:05 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRISN-00036B-4k
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 17:33:04 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4266ea6a412so14015485e9.1
+ for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 14:33:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1720560781; x=1721165581; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=bbcpro0o+I3cTdZ1oGJyuIMJSzDBADoMwzQyQ181dsU=;
+ b=JmtVfR2PpTTQ2VyfXf7+J5eHyu4A5ELE/BJvEDmiJVVgmemU7H56hKDkL3D8UQrf4u
+ BpesS2ekW89xqD3OD2V3nl8LJU0pp0X9Wj6rZg4J9b/MoOt4CddoPdd21eBF5ZyRxapy
+ Ci5tY/JoXPClwhj+9NAvbax2rgoxoGknvxC+VSXtViGsVbI+2UfFJDu9qT1xkG/uCrwO
+ JNBH1+sFsQOVyIhX+BHYkIavqE+LncQKere3JZTH6Hre1HL1zWzYlrI/vEpCDK01Rvn9
+ 1CXnC3i2b9EB5Tr4miJZhhSSAgcjA1nNInBoLMGqb0viF97IHbFlGgq4k53KfqHKhnZG
+ tKAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720558896; x=1721163696;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
+ d=1e100.net; s=20230601; t=1720560781; x=1721165581;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=TsxXBMowcezJEDRjoUPV7HFIcgDlWTQTz4rGgv9pKho=;
- b=IVEOb8YuTgNHK/dBRq3Q4Q6wl2rLHne9HICEMB9b2ONtW46C1TK3+jvnfrtsZCgO1X
- O1y3g5ry25Evkw4Ei0D3OqcCt+2UJiLvZ2/W8AXE3m3XG8EFgcjZhYhAMUHsl39jfd8S
- czP1Gez0DJiX8j1lfn9IeoUaZO1TQ0baSUuzTeYDwHTGpdYtMc6qdvW7FjXyaF7X23dc
- j9BqOpv5zOISiCOQjONaJl+YVEBYt+SunuouA6IAIaz601s4HU36c4mMPj2CiqNGF0ps
- PWSSSNmyXgBHR6gTlqdCIN90OI04ZG4yY2dFlL9s/foCe4X9hfC2cg9SktWT1ztCludu
- AyfQ==
+ bh=bbcpro0o+I3cTdZ1oGJyuIMJSzDBADoMwzQyQ181dsU=;
+ b=J7vxMQ4myAdMqtJXj5AOH+XH1h7gok8hAROoES01X3r0akh2eobdc2QtiAu8nOQZ8c
+ TyLlEOHMfpoeBRuS4orTAZ+C1R2pz+vCXAuxlUZVwsFnxkOVNOgpsanC5+02rHZacySE
+ YAkBjHL+bxubXUs7Cbf1J8VT9VlrZrn6Cx9t+QE1mGhLsfFRiN+CP/oNj5KH/Hcedqat
+ kKFZMhVzkwDipPcO7QT+Hy1He4hiO4lFBLw29YhlN6mQoVHVus9cqyhAfKghIYur4OP3
+ Xjmx/13Sqyi//c/TuJflz1QWkZxn80pTM/U+Fs1ZQSJhUty93iohLbZy+AOubBCDT8s0
+ HWPg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUmjR6A7f28lPqHWVbRrhaxrcbmIxXtUCnfy+l+Cwx/ndDjqI/LeEkUe1wK0eW9wf49ivQSmr7lXUjdqi7cplivsf3M
-X-Gm-Message-State: AOJu0YzAwJ7fA/CMgdMukRqbi3Qmt5KTIa0tT6ruXpRiiB7b1WTkU75c
- gPJapkKFm/3j//3RGbx2hGXHa5f9zIhe4UG5nn7YIEy3P+jvHu+byIX7qmLXUdGtRy8tawJ7Dx7
- wdKLgoQJWNByb+2zBO0+V1o69fOQ5v2AsuWqF4vjnnAzTSJ2FjQ==
-X-Received: by 2002:a05:6359:4ca1:b0:1ac:2b8b:a185 with SMTP id
- e5c5f4694b2df-1ac2b8ba310mr161877155d.2.1720558896625; 
- Tue, 09 Jul 2024 14:01:36 -0700 (PDT)
-X-Received: by 2002:a05:6359:4ca1:b0:1ac:2b8b:a185 with SMTP id
- e5c5f4694b2df-1ac2b8ba310mr161874255d.2.1720558896104; 
- Tue, 09 Jul 2024 14:01:36 -0700 (PDT)
-Received: from x1n (pool-99-254-121-117.cpe.net.cable.rogers.com.
- [99.254.121.117]) by smtp.gmail.com with ESMTPSA id
- af79cd13be357-79f19012068sm133098185a.31.2024.07.09.14.01.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Jul 2024 14:01:35 -0700 (PDT)
-Date: Tue, 9 Jul 2024 17:01:32 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Fabiano Rosas <farosas@suse.de>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-block@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>,
- Tyrone Ting <kfting@nuvoton.com>, Bin Meng <bmeng.cn@gmail.com>,
- Hao Wu <wuhaotsh@google.com>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>, devel@lists.libvirt.org,
- Luc Michel <luc.michel@amd.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>
-Subject: Re: [PATCH v3 06/17] hw/sd/sdcard: Do not store vendor data on block
- drive (CMD56)
-Message-ID: <Zo2lLLAwcZ8bBvO2@x1n>
-References: <20240627162232.80428-1-philmd@linaro.org>
- <20240627162232.80428-7-philmd@linaro.org> <87cynmfggx.fsf@suse.de>
+ AJvYcCXDZu11bJQzzHmzZOrpR7oRQqpYpv5uQExsxKKMQGzOX3us8cjtmX0sYQwKzHlxDrmgM9IsivS/QbtpS9NW2RMiaKmp
+X-Gm-Message-State: AOJu0YwwfNFPsi+gIQ9R8gAMO8B+MMqFNEOdVV2fbpCa1XHZ3QPnWR/7
+ KFsUUj/OAp2y24rZs1wqQeD9bWpqZvnydggcvZHJH2J4U9SScrbUHE9njVPS8hMAPx468SpfDLw
+ +
+X-Received: by 2002:a5d:6da9:0:b0:367:95e8:3af0 with SMTP id
+ ffacd0b85a97d-367cea46c41mr3212617f8f.9.1720560781212; 
+ Tue, 09 Jul 2024 14:33:01 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.167.117])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4264a1d16b0sm218993975e9.7.2024.07.09.14.32.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Jul 2024 14:33:00 -0700 (PDT)
+Message-ID: <6099fc9c-c7ab-46c8-86e7-bf1e37c2cd83@linaro.org>
+Date: Tue, 9 Jul 2024 23:32:58 +0200
 MIME-Version: 1.0
-In-Reply-To: <87cynmfggx.fsf@suse.de>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 5/8] aspeed: Set eMMC 'boot-config' property to reflect HW
+ strapping
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>, Steven Lee <steven_lee@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>
+References: <20240704053651.1100732-1-clg@redhat.com>
+ <20240704053651.1100732-6-clg@redhat.com>
+ <f50579b99ef8883dac5fcfc1606a45abfb8bf85f.camel@codeconstruct.com.au>
+ <e6ca185f-3f9a-40e1-9ed2-eccfbbdf1444@redhat.com>
+ <8e770030-29ab-4e30-861f-3e735b25e37b@linaro.org>
+ <b606cd09-3846-4c99-b902-b0b260d91788@linaro.org>
+Content-Language: en-US
+In-Reply-To: <b606cd09-3846-4c99-b902-b0b260d91788@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,60 +142,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oapUBhySxfIM
+X-TUID: jqnSnYA53DkJ
 
-On Tue, Jul 09, 2024 at 05:38:54PM -0300, Fabiano Rosas wrote:
-> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
+On 5/7/24 17:52, Philippe Mathieu-Daudé wrote:
+> On 5/7/24 15:28, Philippe Mathieu-Daudé wrote:
+>> On 5/7/24 07:38, Cédric Le Goater wrote:
+>>> On 7/5/24 5:41 AM, Andrew Jeffery wrote:
+>>>> On Thu, 2024-07-04 at 07:36 +0200, Cédric Le Goater wrote:
+>>>>> From: Cédric Le Goater <clg@kaod.org>
+>>>>>
+>>>>> When the boot-from-eMMC HW strapping bit is set, use the 'boot-config'
+>>>>> property to set the boot config register to boot from the first boot
+>>>>> area partition of the eMMC device.
+>>>>>
+>>>>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>>>>> ---
+>>>>>   hw/arm/aspeed.c | 15 +++++++++++----
+>>>>>   1 file changed, 11 insertions(+), 4 deletions(-)
+>>>>>
+>>>>> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+>>>>> index 756deb91efd1..135f4eb72215 100644
+>>>>> --- a/hw/arm/aspeed.c
+>>>>> +++ b/hw/arm/aspeed.c
+>>>>> @@ -327,7 +327,8 @@ void aspeed_board_init_flashes(AspeedSMCState 
+>>>>> *s, const char *flashtype,
+>>>>>       }
+>>>>>   }
+>>>>> -static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo 
+>>>>> *dinfo, bool emmc)
+>>>>> +static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo 
+>>>>> *dinfo, bool emmc,
+>>>>> +                               bool boot_emmc)
+>>>>>   {
+>>>>>           DeviceState *card;
+>>>>> @@ -335,6 +336,9 @@ static void sdhci_attach_drive(SDHCIState 
+>>>>> *sdhci, DriveInfo *dinfo, bool emmc)
+>>>>>               return;
+>>>>>           }
+>>>>>           card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
+>>>>> +        if (emmc) {
+>>>>> +            qdev_prop_set_uint8(card, "boot-config", boot_emmc ? 
+>>>>> 0x48 : 0x0);
+>>>>
+>>>> 0x48 feels a little bit magic. I poked around a bit and there are some
+>>>> boot-config macros, but not the ones you need and they're all in an
+>>>> "internal" header anyway. I guess this is fine for now?
+>>>
+>>> You are right and we should be using these :
+>>>
+>>> hw/sd/sdmmc-internal.h:#define EXT_CSD_PART_CONFIG             179 /* 
+>>> R/W */
+>>
+>> This field is R/W and expected to be configured by the guest.
+>>
+>> Why the guest (u-boot) doesn't detect partitioning support?
+>>
+>> See eMMC v4.5 section 7.4.60 PARTITIONING_SUPPORT [160] and earlier
+>>
+>>    For e•MMC 4.5 Devices, Bit 2-0 in PARTITIONING_SUPPORT
+>>    shall be set to 1.
+>>
+>> We don't set it so far.
 > 
-> > "General command" (GEN_CMD, CMD56) is described as:
-> >
-> >   GEN_CMD is the same as the single block read or write
-> >   commands (CMD24 or CMD17). The difference is that [...]
-> >   the data block is not a memory payload data but has a
-> >   vendor specific format and meaning.
-> >
-> > Thus this block must not be stored overwriting data block
-> > on underlying storage drive. Keep it in a dedicated
-> > 'vendor_data[]' array.
-> >
-> > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> > Tested-by: Cédric Le Goater <clg@redhat.com>
-> > ---
-> > RFC: Is it safe to reuse VMSTATE_UNUSED_V() (which happens
-> > to be the same size)?
+> Sorry, I wasn't grepping in the correct branch, we do set it:
 > 
-> Hi, sorry it took some time to get to this, I had just left for vacation
-> when you first posted.
+>       sd->ext_csd[EXT_CSD_PARTITION_SUPPORT] = 0x3;
+> 
+> I'll investigate.
 
-And I totally overlooked there's the email.. until you replied.  Welcome
-back.
+Correct behavior implemented (I hope) here:
+https://lore.kernel.org/qemu-devel/20240709152556.52896-16-philmd@linaro.org/
 
-> 
-> I think it's ok:
-> 
-> {
->   "field": "unused",
->   "version_id": 1,
->   "field_exists": false,
->   "size": 512
-> },
-> 
-> vs.
-> 
-> {
->   "field": "vendor_data",
->   "version_id": 0,
->   "field_exists": false,
->   "num": 512,
->   "size": 1
-> },
-> 
-> The unused field was introduced in 2016 so there's no chance of
-> migrating a QEMU that old to/from 9.1.
+Using it also simplifies this patch, we can squash:
+-- >8 --
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 5a22e66ff5..27fea3003a 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -331,4 +331,3 @@ void aspeed_board_init_flashes(AspeedSMCState *s, 
+const char *flashtype,
 
-What happens if an old qemu 9.0 sends rubbish here to a new QEMU, while the
-new QEMU would consider it meaningful data?
+-static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, 
+bool emmc,
+-                               bool boot_emmc)
++static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, 
+bool emmc)
+  {
+@@ -341,4 +340,3 @@ static void sdhci_attach_drive(SDHCIState *sdhci, 
+DriveInfo *dinfo, bool emmc,
+          if (emmc) {
+-            qdev_prop_set_uint8(card, "boot-config",
+-                                boot_emmc ? 
+EXT_CSD_PART_CONFIG_EN_BOOT0 : 0x0);
++            qdev_prop_set_uint64(card, "boot-size", 1 * MiB);
+          }
+@@ -374,3 +372,2 @@ static void aspeed_machine_init(MachineState *machine)
+      DriveInfo *emmc0 = NULL;
+-    bool boot_emmc;
 
--- 
-Peter Xu
+@@ -447,10 +444,8 @@ static void aspeed_machine_init(MachineState *machine)
+          sdhci_attach_drive(&bmc->soc->sdhci.slots[i],
+-                           drive_get(IF_SD, 0, i), false, false);
++                           drive_get(IF_SD, 0, i), false);
+      }
 
+-    boot_emmc = sc->boot_from_emmc(bmc->soc);
+-
+      if (bmc->soc->emmc.num_slots) {
+          emmc0 = drive_get(IF_SD, 0, bmc->soc->sdhci.num_slots);
+-        sdhci_attach_drive(&bmc->soc->emmc.slots[0], emmc0, true, 
+boot_emmc);
++        sdhci_attach_drive(&bmc->soc->emmc.slots[0], emmc0, true);
+      }
+@@ -461,3 +456,3 @@ static void aspeed_machine_init(MachineState *machine)
+
+-        if (fmc0 && !boot_emmc) {
++        if (fmc0 && !sc->boot_from_emmc(bmc->soc)) {
+              uint64_t rom_size = memory_region_size(&bmc->soc->spi_boot);
+---
+
+IOW where we boot only affects the FMC, not (directly) the eMMC.
+
+Regards,
+
+Phil.

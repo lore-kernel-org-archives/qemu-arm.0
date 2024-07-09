@@ -1,449 +1,395 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3093792njb;
-        Mon, 8 Jul 2024 23:05:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWKdFtobRLUQ+7KRK2zGwe1EftWKNYXFtXxlrphtzVjZR4cWXNlUQhMCeB1CTJPFTl3bnVUQZ8ukfaYRwG2gVVTPu2cYHjh
-X-Google-Smtp-Source: AGHT+IEh/DT+bgqrIVPTJFDoagivAl8qEnp3UFJU1DGfwdOol3XhxlFNCdp+G7FQkjtmS8z37za5
-X-Received: by 2002:a05:6214:1c8f:b0:6b0:63ab:b7ba with SMTP id 6a1803df08f44-6b61bca197dmr20161486d6.15.1720505144440;
-        Mon, 08 Jul 2024 23:05:44 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1720505144; cv=pass;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3118455njb;
+        Tue, 9 Jul 2024 00:13:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUjh0V6aMKbftVZn69X++960uFewmvFBuoUpiAvDy/FvgYNcfikTFF0XEYbFGqCWWMjnRQxdDeL0M95+p/c4j1AmY/762iD
+X-Received: by 2002:a05:600c:4487:b0:426:5cc7:82f with SMTP id 5b1f17b1804b1-42672305c06mr9932685e9.13.1720509185078;
+        Tue, 09 Jul 2024 00:13:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720509185; cv=none;
         d=google.com; s=arc-20160816;
-        b=rpbOxOKnztNV/cY60ws+6ShV+1W3H2bDNOT9UqjOdFeFOBBDPRGvWVZ8h+wnQrzAWC
-         eeKZgJtpP7HJlQ12+VeDEAZcGnk/ZxsBi32TirKeElk3tchJNA4CMiJKmOqicyoehKyO
-         mcaTrS64QDnsePBl/SL433pplm8CvMPuPrPBqz9GKiaX6SMOwZ2HkYzQ5QwVfzMEbYeQ
-         /Nmj9CdKCJJuxE6+JK3xGGdlV2VJhdEh1c657c1E6Xrb8i1j30Rw+fLJDiE8SVoV85eF
-         ehsRNaiWaKDJK8qt1YraRJMfpl5zQ0mvMwBDq5v5htSkWq2CzZck5VlOklF3Qnd1Z/Xm
-         yh5Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=c2cRKcukKCWVNpDlp67KfDkVO2TwoI5+vukjMLxJhCM=;
-        fh=YhWKwn7uBGn82gqdsl4BNdOsF2XmZgXyKz4gLh7OVk4=;
-        b=Y7F/lc7qYOpePeT9b0r0fi6Y0JAqyUTAQSV8EaqGj1Pz+0/3v8RUjf/APITxKDyEwn
-         8fJWcPv6a2IBaC1ON6vLMRtigfVqjO5dpst32NeeU7O3lZ9ZPqcuOuzoLkYmMEFzI/Hd
-         OCR8eK1nwlZ4Rw8CgxvsJonrYpEBWxa/vsaJgczZPpwKbNPu/0uslppiussqdV0OVAjo
-         KJvEW5yHLu595fIyQF1aHXpwhpN2FiFP1Nz3QtCTFhu2HyULjCG7qYQuhrCsV93SAr0Y
-         FMv4hBMQb7Xn8FofWDGvs5cW0EkLq/kVjTkE5WgMeGJ3QLu5asx5SLlFKroIqUF5kRai
-         Ug6g==;
+        b=bWIlhkNctp/uiQavMQGMnFNRqSlmuYwyTG0GtpzIjjiHKYENrRpLO+PDAdxJ7n/hH2
+         F4erEVcRe+Yats/H5yDWo1Mb6dzx6T+Fgjy+1LqfviGCUf3VCWKuebb2L8O6KT3MZEDI
+         +ifWyoxoc1d+7AAs9XVl9qC5GJ977JLIS+1w1FJ5RYZ5eR8KLmcIJWrGhSGF44c0+oFv
+         LMThMH/+eZ1EeNIM977+Q6MAgGc6szisSCzfE9LJ3+69aLu5khFVutwt8uXn3A6UqTie
+         Z1VrB3IvK6j+TljYP5TNg16my0g27ldar1W08eiyP8FqE27Fc/v8/pkKiVSZpXChH6z7
+         zSdw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=oFXoVYF97gkK4z0tIrcIPhzZWtS9yIZ3RjPleT5nSI0=;
+        fh=1zE6YRmsqD7Kw6rHwwjolZ4RjjqHrQgJgv0lf5eBY68=;
+        b=Zdol2sBwWhZEvePXCwygCM/qGS40Uole0iCUV/ZF3hjI3VBW0050i1hquKVdV+t8g/
+         vUisIwskDsKaGrQVhYFJV8Tg5QUvikiGi87bmb5NGM4h5Zk7px3aQ1jacZYra/hYJqLc
+         NOJc34rZcEvgUSpOsOjdaEaz8pX/3O1sHbSka5Zez1jDBK+74NWI5u6TeqHkBcfw3Z1I
+         gqZpmxH5fHHxCaqduZjEFKumR1VuFIiRscg1m6ps+qpq6+Xq6LWlmRUn1eD2AQSCuFQl
+         E2ZDAQoW7S3SrMXkmbCSmfX1lUEwwNaxzPYmLY98UPLpUdCuzc22dnOzRfIm4PPydWPh
+         1Tag==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=gy0tzwUj;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b61bafd89asi15593026d6.567.2024.07.08.23.05.44
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=pbJLo6p4;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <smostafa@google.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-426740f011fsor272045e9.9.2024.07.09.00.13.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jul 2024 23:05:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 09 Jul 2024 00:13:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=gy0tzwUj;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sR3yl-0003l5-1A; Tue, 09 Jul 2024 02:05:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gankulkarni@os.amperecomputing.com>)
- id 1sR3yj-0003kI-1k; Tue, 09 Jul 2024 02:05:29 -0400
-Received: from mail-eastusazlp170110003.outbound.protection.outlook.com
- ([2a01:111:f403:c101::3] helo=BL0PR05CU006.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gankulkarni@os.amperecomputing.com>)
- id 1sR3ye-0005De-HO; Tue, 09 Jul 2024 02:05:26 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NScMd8ah/0r66jWno0u2TPdyv7s40uf0/rFfMjhh+edLeQMcWbRL0bUC/VNcFW+5xwq2oCMGUg8klEFhYWlMInLNthOq6ytwqAZoGLFjcM3EiEsZ+GWxNLeVA49Dr38GzoS1j0oF5357BCJCn0iWXzvwLLaXCKMmL0n+EIahd2G4jsC9DJlRqyYvTP7nQ/EBVRNHySi9ykcItQxNaK83K2wmGfCOUrmfLLggazd4ZxeCTmqDwfOXOEbDaJ0Oos3AKJL3/yiT1ukHoyRwUs2dlnyDwYBog1OdNunbN7luZUa+8s3RnBq7YRGysQwPX++zVXJWDQUx3BCl5sAB+QNdtA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=c2cRKcukKCWVNpDlp67KfDkVO2TwoI5+vukjMLxJhCM=;
- b=S60u1AfKpe9bW+jGHtaZQu1kuB/IXO8MWlN+LTeW2VVYVWx8llVpn3C2iArIBsu3YZd9Ry7U6tUGTpOZKTiA1nIHS6zCB3NKopZwnMoUbwjOn8j0gng9Z3H2wL5UL5w19UypsG4U7mj0YkMIbCqaqWa7wfvX3WVLuEQzenHEdWPH7Z4R/24jHedhS5sFeA8g/YVnQTlP9jMihPeou+Qi5iinMy07wNfFdTs+H91YCojJA97JN/kMmhquWD1tCO+6OpgFv5TIEvB/v144Lt2X9rVb/+2BAe6E1t5kjQY1mZt5QrPuR6dq99Sy1WmXVcdhOZ/Y8dm/Q9LBVkJylbQGIg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=os.amperecomputing.com; dkim=pass
- header.d=os.amperecomputing.com; arc=none
+       dkim=pass header.i=@google.com header.s=20230601 header.b=pbJLo6p4;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=os.amperecomputing.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=c2cRKcukKCWVNpDlp67KfDkVO2TwoI5+vukjMLxJhCM=;
- b=gy0tzwUja4EyYKzZTMEhHHyEoQH6PjZceasMZw3uC7mICkz5vuZWpJfIoPxdXOCnCva+B+RRdPxgSgo/0NE+49Sk4/YVtZJkcc8pln57+SSZ9QObRGf0rZsiPquX3LCpiioVVvf7BhizUDsnz6si2Mog1tFjt445FR6ONzr9BnA=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
-Received: from SJ2PR01MB8101.prod.exchangelabs.com (2603:10b6:a03:4f6::10) by
- SJ0PR01MB6477.prod.exchangelabs.com (2603:10b6:a03:29b::15) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7741.36; Tue, 9 Jul 2024 06:05:17 +0000
-Received: from SJ2PR01MB8101.prod.exchangelabs.com
- ([fe80::292:6d9c:eb9a:95c9]) by SJ2PR01MB8101.prod.exchangelabs.com
- ([fe80::292:6d9c:eb9a:95c9%3]) with mapi id 15.20.7741.033; Tue, 9 Jul 2024
- 06:05:17 +0000
-From: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- darren@os.amperecomputing.com, gankulkarni@os.amperecomputing.com
-Subject: [PATCH] arm/kvm: add support for MTE
-Date: Mon,  8 Jul 2024 23:04:48 -0700
-Message-Id: <20240709060448.251881-1-gankulkarni@os.amperecomputing.com>
-X-Mailer: git-send-email 2.40.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: CH0PR04CA0022.namprd04.prod.outlook.com
- (2603:10b6:610:76::27) To SJ2PR01MB8101.prod.exchangelabs.com
- (2603:10b6:a03:4f6::10)
+        d=google.com; s=20230601; t=1720509184; x=1721113984; darn=linaro.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=oFXoVYF97gkK4z0tIrcIPhzZWtS9yIZ3RjPleT5nSI0=;
+        b=pbJLo6p4w+igcHtN65LK6XP1eb/M8C+eya6UoAUBGTFeJHWdlIH0cbsX5NL+r0Id3G
+         Cvcp3SxWncRKARWjUpbGVnPMFneXXXmrNgaYS5sDiti3QQSHxdS+GsZjABUk3b5qdbue
+         o0OpjwX1uxDnjNMrS0rmY+y1UDDTwwi0N9Ez27TGsbEAMs0PPJ4ApYCuT9MPElTSLJO9
+         9tTv50lA+rlKwNZ4axiVly/+jrufQmv0S457Kr3LVaZf2CPnpGjzzKB8nb2UR2cVrVti
+         wc8QM9qXxmDhBIY0sdr7BdKmLUofthOnT9pgEyHWgGqrRGCqwofW1ph2HpZDTI2r5mEo
+         76Dg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720509184; x=1721113984;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oFXoVYF97gkK4z0tIrcIPhzZWtS9yIZ3RjPleT5nSI0=;
+        b=HCkaHNBMaBYhu7CLpWB2SZOppClgA82tZzuhe3ifuTbp3tHNYHAxeyYMgBwgJDp3s/
+         K6WUGw1kxQecpLGI9/H/nbFafgf+3rO2w7xTEDwlzOJkH7u75JmYvFRECzOYCs/uAfvS
+         atx60kj12x6CAXXdXRXp2TJqwjn7+vnuZXyZ6KqpzD4P6Gj1u6AJbrhes/hOkJBRb82o
+         PQ+MxBirmZ/MbGPImgIQzn9HBEA4nCYzK1rwf494QJwlsaKVlTeevNzNLbFvIa2kIz7l
+         ialXkjB8stCSSYGmDk4//AhOOH4NsKm/1UyXEWBQxUpzf+4xhjr7HZNrSZHK6x3kDiV0
+         2pRQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUUfHNLCbs22xcr6/ByxNl28IBbblmtEf7tHJI44+RbIxfEhhxeDNhWtnkkP8sGiOe/4V1wp8Ny9neMudaE3yo6iuhVSn3+
+X-Gm-Message-State: AOJu0YyaCJIkBC5dKKLu4idywGSGFq8y8O9AEn2R27YZ6CSq1l/7VtDy
+	G5qYtFUxYB+6xl8Enf2KaZZDNhFRIV2NoZcW4bQHFE4UgxTbRThsighw73nC2g==
+X-Google-Smtp-Source: AGHT+IGSP43LpO2H9B2whYs4eTaqbJY0ejS6Zaaax4RaWahW1pZX+v0UA3SFFtmHZscG37h7Mv+rIA==
+X-Received: by 2002:a7b:c84d:0:b0:426:66fd:5fac with SMTP id 5b1f17b1804b1-42671a81595mr1323005e9.2.1720509184200;
+        Tue, 09 Jul 2024 00:13:04 -0700 (PDT)
+Return-Path: <smostafa@google.com>
+Received: from google.com (205.215.190.35.bc.googleusercontent.com. [35.190.215.205])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-367cdfab199sm1640939f8f.106.2024.07.09.00.13.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Jul 2024 00:13:03 -0700 (PDT)
+Date: Tue, 9 Jul 2024 07:12:59 +0000
+From: Mostafa Saleh <smostafa@google.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
+	qemu-devel@nongnu.org, alex.bennee@linaro.org, maz@kernel.org,
+	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
+	marcin.juszkiewicz@linaro.org
+Subject: Re: [PATCH v4 08/19] hw/arm/smmuv3: Translate CD and TT using
+ stage-2 table
+Message-ID: <Zozi-87pVHOdwJGN@google.com>
+References: <20240701110241.2005222-1-smostafa@google.com>
+ <20240701110241.2005222-9-smostafa@google.com>
+ <20240704180843.GE1693268@myrica>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ2PR01MB8101:EE_|SJ0PR01MB6477:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1c3d3979-3db1-43a5-7fc1-08dc9fdd1b11
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|376014|52116014|1800799024|38350700014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?5WzqLEcSDmKAXmeT6sP5sCrmIYfKr87lyloRL/OX/tGTU+q7ngkyRhYwz7Fx?=
- =?us-ascii?Q?liYc4+fvMV9rdXhqCcQ7MQNG2PXnIiHXJoAa6yPVip1VW66kezSIWfKxvgT3?=
- =?us-ascii?Q?yyKewJZh2+c1AbXPLXifloVhAySHmdzMKp9Hc1WjHvj8Tjw005dde9ILYomH?=
- =?us-ascii?Q?6Vfy9AgOWrcHY8XJlpMg+czyt5Qb6TSDZ01It1LoZQ2In9HD1o5IlOxgn4+/?=
- =?us-ascii?Q?4fgN3Nwwks8GAfd9JtaBY5bjuuNaixy6KoybY/wKoRFdRrffaKSlm4Obqs5R?=
- =?us-ascii?Q?tPoyT+7s3Ch9V2AVnxYY4JU5dTCDMm2yPQDcwk9rseTl2DNgEWlko5OXuUHG?=
- =?us-ascii?Q?uhGAlweJVQspvYP6wDoZOyklOyfrXa1Js+plJsrCocotWBBe55ushW5grEzU?=
- =?us-ascii?Q?9E1mwqnJ+tXov12bPB5pB63EKMnn5iwxnZvODG/P5XS+MyYOqT5HxEQAaVaL?=
- =?us-ascii?Q?TfTHKmHqJ8F+U2GOnqlfId7oWCKPBOkCibOC7P7zB3eWixUZaKStSBeud2oV?=
- =?us-ascii?Q?uPuZysZRBz93NsAA+RqpWtek2yLUMUC0X9n/82nWTlNMTdV8vXI8Z9+lfqxx?=
- =?us-ascii?Q?5p9K8XAVfIGDMR1BTWNH9agdEGQHZyEBmSH9TMeqkAMBnWmhge4xRkqWKZPs?=
- =?us-ascii?Q?NiDACZ10HCGlTbb5JgJsCJqRyaGEiIHuan50rFPtwtiq9u0E7PiIvZqCJ+a6?=
- =?us-ascii?Q?7KCwP8Kxzzx8symIIW541PY70XWnkgRkRaDxieJ86PLtphlZpPK4IK5HOMKR?=
- =?us-ascii?Q?c/jRG3La+bVISig8dDiNf8s+uMVQWo310a1h42sgLHsRAyxHdDVdwOItTy8x?=
- =?us-ascii?Q?yN+1uxMdop04NpHOrE29jJdGB+LLO1fL0eX9dM+WoDSnFtzdBhxDPSlA8lw9?=
- =?us-ascii?Q?AtIGwxjI6+GhnVb86NGmg4w6Yg/q7EdaMtqpm7fkRCgaNtdNQvQQAC8ECWBi?=
- =?us-ascii?Q?XAFkxAoMaWslClTil/AHiCaJRhImSxBtqK2OQHS+QFmFsu1FkmNXmukTh0jj?=
- =?us-ascii?Q?ilbvxKs4aOQ9IVWtILgsKcYS6Y5FAT4nEnDfFMvyQ+Wxgm/cz8Xhrxb9TAiG?=
- =?us-ascii?Q?MNHxRGyyAho4n8EFXCkHqhIynd5DRy8XGO1QdKgiYsqZdPUySWwBchcdRbJW?=
- =?us-ascii?Q?pgw1BIgee+9eVqmtTZre0AkRIdSSWcQ3RkxGxhFX2Qe6BN7srsMM/VKy5qyt?=
- =?us-ascii?Q?6amMH6WFwjujChPxQCtI3axs/LjMtowOcgdK1ij2sSnp0+Gv6REbAlI4NyBb?=
- =?us-ascii?Q?tGDw4lJYCSLao6tvNjJC9Bp0G4onZidwzs9trgYZ+Anwa9K9gIHG68IdtQ1f?=
- =?us-ascii?Q?A3t3C8SCq8cPZx5wWOaiunbffyqCYm6V9/dT3rjJFGmU9L86aape+dzI9qD1?=
- =?us-ascii?Q?G95J71QoZeM3T0E/mDaMsDxiQbuvWkLVjHBc34H/cCiaG+Z4MA=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ2PR01MB8101.prod.exchangelabs.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(52116014)(1800799024)(38350700014); DIR:OUT;
- SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?izBBkWLXYc2vsWyJJfWiEbVLbhX5TR7TU/4cjL/7165vR0I0sEDJ2v5f5eNt?=
- =?us-ascii?Q?arsl1G730lx/4qiUPhlP8JWdDOlCw0PG9RC/cu/r3si09XmFACHgxdBCDv1F?=
- =?us-ascii?Q?YWVZBwkTTjuVNFVBXOUMB2SCnthFUXHDe7YLBq4Ev9UCk14dnJM95xL9oXR5?=
- =?us-ascii?Q?FYNM1HGNo9YR8PMJheGUvUaQUwlzhE8e0gvzzcYb2Gw0xo5XwYe7hEWeTI48?=
- =?us-ascii?Q?ZUOKzWIPHntegX9aLvdGhZ0oGDdVOxe0EAAESysx8zWo6AIVbwAVvGX0RZR1?=
- =?us-ascii?Q?TICyMIV31U1Z2kR2adGG6LifM7mz9+Nr79meAvS/4HRrCTztGrExaQuplfMz?=
- =?us-ascii?Q?HyOU92QPA6pzGrG63fmWa+nFkHT021DVpFB4RGuGgFF+otv5eic8664Q/xGg?=
- =?us-ascii?Q?7z5XFEu4MGOtVDwCH5B/XEidMejMJOgKiCoc4fp+2XAld80bxFKUAtKV94Ol?=
- =?us-ascii?Q?ZrFXEmxEngCxRfgDGt7oIqBImWl3G5hQHXK4u+tLZlSEOkwGIcT/WWDD2RZV?=
- =?us-ascii?Q?umsQfwys7SapBFbtKAf7RA4ecuvSdVfXWD7CZdnR+IwvJecFAddogbzs5H71?=
- =?us-ascii?Q?XgpPIP82Er7xsmLwV3PVldcLT2DWYqJeA8p4cLr1Txru/ToVzWQTZtUCTuex?=
- =?us-ascii?Q?sodvgyGLYwYofHrDqdiQCRC6IPhnvf0Isi4wfWRFrmDpGPMk22fJtalY4mAZ?=
- =?us-ascii?Q?jF8vmofvPugP+WgERTjN/lvVAFllxlAvci7fG4DGNVDRy6BHPuA5NQNM7Kvw?=
- =?us-ascii?Q?AP3vYAhUrwTuiTuUESek/5lNStrB89z/Wvy4Y3FJOsaMndrk4CEoW64hI6qT?=
- =?us-ascii?Q?AlGeNBWLtRuVCC4Al5QjjwEAn6bGK6j7owAms2hZt5G36Q7ql4eMTAUJsBkk?=
- =?us-ascii?Q?Au+EjE4nOXFEBAK2PIgGDUh7QqMvcUDzEqBWvS8H1RP8q3gh5u+2NNM4Wbea?=
- =?us-ascii?Q?cFhsaxnKNrCs8O4fb7v0XFg1spy7Mtd7nBnZMfo9hPUgVhzdNquEFS39KJ/P?=
- =?us-ascii?Q?EvUaWhQFeX9xb0M31tnb9bo+04NBQyTm49sPnfGx+s0LKo1nNNYsGTKXLv9j?=
- =?us-ascii?Q?CL0zN2TDG5lD/wnAYb3OXUPKfJcz0G8cuebR1L78c0AI1AmjBP+MFfp8TmvT?=
- =?us-ascii?Q?xd/kgrvEvKJz5D6cIDZacmqH8tbrkZ3H4xpBkPwiWH98O3NFxE9PGXuTL70Z?=
- =?us-ascii?Q?ObXxmGYeL5i6ufy3FuBcpsqO92j/BGar4f59e8XI+Xko5hvIcaI7ZCwbdrB3?=
- =?us-ascii?Q?NkjUd3hvEZI3QEgbQSCGfHMR3z9B04yA392svTkSHlGd7JrI06ra/bZE+eSR?=
- =?us-ascii?Q?/JicnoC6kxnlBxuxsSKhExr3/HkjV/NEvwPaQKFExG6eU8c33Xn3OCGuqe15?=
- =?us-ascii?Q?o+Wr0uJoR4j8N5/Py2ckWTIfVXtm5dXr9ee5tFzWoKQTRbRUmuXl9IHNOR+6?=
- =?us-ascii?Q?mmAoXzW8SQ4qOXP3oybJ1IBYh/kRrllpw/xzq8Vr+gKXNKxDh/0Hbzyb81pQ?=
- =?us-ascii?Q?wdq2plxRFSeUTpdl7IMJJvJ8Xx+3BTK7nvT7N3tZH9bIfw719YmuMvRtovRG?=
- =?us-ascii?Q?M9C1+J9jdlngwT8Q/WeUZEJbJrHKraqW5YIDddjfile3FUM+uilKM4kxcm0E?=
- =?us-ascii?Q?WVoHiibgNw/jZltkXeFbKQ8=3D?=
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1c3d3979-3db1-43a5-7fc1-08dc9fdd1b11
-X-MS-Exchange-CrossTenant-AuthSource: SJ2PR01MB8101.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2024 06:05:17.1702 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 4qu6BDH5taWH9yN31LoSSH3TEQFdnf1DVM6KPTiIKJZNzqZZSGLmkKKDQxu+m9o7DtJQU2RhyLdSwotrj+s87oANfh4ScSjkoCwkanqg50pRPvH17zv0/gJMBX5lKnnQ
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR01MB6477
-Received-SPF: pass client-ip=2a01:111:f403:c101::3;
- envelope-from=gankulkarni@os.amperecomputing.com;
- helo=BL0PR05CU006.outbound.protection.outlook.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TbNMmd6ny4bD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240704180843.GE1693268@myrica>
+X-TUID: hQKpCnqcnQQd
 
-Extend the 'mte' property for the virt machine to cover KVM as
-well. For KVM, we don't allocate tag memory, but instead enable
-the capability.
+Hi Jean,
 
-If MTE has been enabled, we need to disable migration, as we do not
-yet have a way to migrate the tags as well. Therefore, MTE will stay
-off with KVM unless requested explicitly.
+On Thu, Jul 04, 2024 at 07:08:43PM +0100, Jean-Philippe Brucker wrote:
+> On Mon, Jul 01, 2024 at 11:02:30AM +0000, Mostafa Saleh wrote:
+> > According to ARM SMMU architecture specification (ARM IHI 0070 F.b),
+> > In "5.2 Stream Table Entry":
+> >  [51:6] S1ContextPtr
+> >  If Config[1] == 1 (stage 2 enabled), this pointer is an IPA translated by
+> >  stage 2 and the programmed value must be within the range of the IAS.
+> > 
+> > In "5.4.1 CD notes":
+> >  The translation table walks performed from TTB0 or TTB1 are always performed
+> >  in IPA space if stage 2 translations are enabled.
+> > 
+> > This patch implements translation of the S1 context descriptor pointer and
+> > TTBx base addresses through the S2 stage (IPA -> PA)
+> > 
+> > smmuv3_do_translate() is updated to have one arg which is translation
+> > class, this is useful to:
+> >  - Decide wether a translation is stage-2 only or use the STE config.
+> >  - Populate the class in case of faults, WALK_EABT is left unchanged,
+> >    as it is always triggered from TT access so no need to use the
+> >    input class.
+> > 
+> > In case for stage-2 only translation, used in the context of nested
+> > translation, the stage and asid are saved and restored before and
+> > after calling smmu_translate().
+> > 
+> > Translating CD or TTBx can fail for the following reasons:
+> > 1) Large address size: This is described in
+> >    (3.4.3 Address sizes of SMMU-originated accesses)
+> >    - For CD ptr larger than IAS, for SMMUv3.1, it can trigger either
+> >      C_BAD_STE or Translation fault, we implement the latter as it
+> >      requires no extra code.
+> >    - For TTBx, if larger than the effective stage 1 output address size, it
+> >      triggers C_BAD_CD.
+> > 
+> > 2) Faults from PTWs (7.3 Event records)
+> >    - F_ADDR_SIZE: large address size after first level causes stage 2 Address
+> >      Size fault (Also in 3.4.3 Address sizes of SMMU-originated accesses)
+> >    - F_PERMISSION: Same as an address translation. However, when
+> >      CLASS == CD, the access is implicitly Data and a read.
+> >    - F_ACCESS: Same as an address translation.
+> >    - F_TRANSLATION: Same as an address translation.
+> >    - F_WALK_EABT: Same as an address translation.
+> >   These are already implemented in the PTW logic, so no extra handling
+> >   required.
+> > 
+> > Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> > Signed-off-by: Mostafa Saleh <smostafa@google.com>
+> > ---
+> >  hw/arm/smmuv3.c | 91 +++++++++++++++++++++++++++++++++++++++++++------
+> >  1 file changed, 80 insertions(+), 11 deletions(-)
+> > 
+> > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> > index 229b3c388c..86f95c1e40 100644
+> > --- a/hw/arm/smmuv3.c
+> > +++ b/hw/arm/smmuv3.c
+> > @@ -337,14 +337,35 @@ static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
+> >  
+> >  }
+> >  
+> > +static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
+> > +                                                 SMMUTransCfg *cfg,
+> > +                                                 SMMUEventInfo *event,
+> > +                                                 IOMMUAccessFlags flag,
+> > +                                                 SMMUTLBEntry **out_entry,
+> > +                                                 SMMUTranslationClass class);
+> >  /* @ssid > 0 not supported yet */
+> > -static int smmu_get_cd(SMMUv3State *s, STE *ste, uint32_t ssid,
+> > -                       CD *buf, SMMUEventInfo *event)
+> > +static int smmu_get_cd(SMMUv3State *s, STE *ste, SMMUTransCfg *cfg,
+> > +                       uint32_t ssid, CD *buf, SMMUEventInfo *event)
+> >  {
+> >      dma_addr_t addr = STE_CTXPTR(ste);
+> >      int ret, i;
+> > +    SMMUTranslationStatus status;
+> > +    SMMUTLBEntry *entry;
+> >  
+> >      trace_smmuv3_get_cd(addr);
+> > +
+> > +    if (cfg->stage == SMMU_NESTED) {
+> > +        status = smmuv3_do_translate(s, addr, cfg, event,
+> > +                                     IOMMU_RO, &entry, SMMU_CLASS_CD);
+> > +
+> > +        /* Same PTW faults are reported but with CLASS = CD. */
+> > +        if (status != SMMU_TRANS_SUCCESS) {
+> 
+> In this case I think we're reporting InputAddr as the CD address, but it
+> should be the IOVA
 
-This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
-which broke TCG since it made the TCG -cpu max
-report the presence of MTE to the guest even if the board hadn't
-enabled MTE by wiring up the tag RAM. This meant that if the guest
-then tried to use MTE QEMU would segfault accessing the
-non-existent tag RAM.
+As Eric mentioned this would require some rework to propagate the iova,
+but what I am more worried about is the readability in that case, may be we
+can just fixup the event after smmuv3_get_config() in case of errors,
+something like:
 
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
----
+/*
+ * smmuv3_get_config() Only return translation faults in case of
+ * nested translation, otherwise it can only return C_BAD_CD,
+ * C_BAD_STE, C_BAD_STREAMID or F_STE_FETCH.
+ * But in case of translation fault, we need to fixup the
+ * InputAddr to be the IOVA of the translation as the decode
+ * functions don't know about it.
+ */
+static void smmuv3_config_fixup_event(SMMUEventInfo *event, hwaddr iova)
+{
+   switch (event->type) {
+   case SMMU_EVT_F_WALK_EABT:
+   case SMMU_EVT_F_TRANSLATION:
+   case SMMU_EVT_F_ADDR_SIZE:
+   case SMMU_EVT_F_ACCESS:
+   case SMMU_EVT_F_PERMISSION:
+       event->u.f_walk_eabt.addr = iova;
+       break;
+   default:
+       break;
+   }
+}
 
-This patch is boot tested on ARM64 with KVM and on X86 with TCG for mte=on
-and default case(no mte).
+What do you think?
 
- hw/arm/virt.c        | 72 ++++++++++++++++++++++++++------------------
- target/arm/cpu.h     |  1 +
- target/arm/kvm.c     | 40 ++++++++++++++++++++++++
- target/arm/kvm_arm.h | 19 ++++++++++++
- 4 files changed, 102 insertions(+), 30 deletions(-)
+Thanks,
+Mostafa
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b0c68d66a3..cc9db79ec3 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2206,7 +2206,7 @@ static void machvirt_init(MachineState *machine)
-         exit(1);
-     }
- 
--    if (vms->mte && (kvm_enabled() || hvf_enabled())) {
-+    if (vms->mte && hvf_enabled()) {
-         error_report("mach-virt: %s does not support providing "
-                      "MTE to the guest CPU",
-                      current_accel_name());
-@@ -2276,39 +2276,51 @@ static void machvirt_init(MachineState *machine)
-         }
- 
-         if (vms->mte) {
--            /* Create the memory region only once, but link to all cpus. */
--            if (!tag_sysmem) {
--                /*
--                 * The property exists only if MemTag is supported.
--                 * If it is, we must allocate the ram to back that up.
--                 */
--                if (!object_property_find(cpuobj, "tag-memory")) {
--                    error_report("MTE requested, but not supported "
--                                 "by the guest CPU");
--                    exit(1);
-+            if (tcg_enabled()) {
-+                /* Create the memory region only once, but link to all cpus. */
-+                if (!tag_sysmem) {
-+                    /*
-+                     * The property exists only if MemTag is supported.
-+                     * If it is, we must allocate the ram to back that up.
-+                     */
-+                    if (!object_property_find(cpuobj, "tag-memory")) {
-+                        error_report("MTE requested, but not supported "
-+                                     "by the guest CPU");
-+                        exit(1);
-+                    }
-+
-+                    tag_sysmem = g_new(MemoryRegion, 1);
-+                    memory_region_init(tag_sysmem, OBJECT(machine),
-+                                       "tag-memory", UINT64_MAX / 32);
-+
-+                    if (vms->secure) {
-+                        secure_tag_sysmem = g_new(MemoryRegion, 1);
-+                        memory_region_init(secure_tag_sysmem, OBJECT(machine),
-+                                           "secure-tag-memory",
-+                                           UINT64_MAX / 32);
-+
-+                        /* As with ram, secure-tag takes precedence over tag. */
-+                        memory_region_add_subregion_overlap(secure_tag_sysmem,
-+                                                            0, tag_sysmem, -1);
-+                    }
-                 }
- 
--                tag_sysmem = g_new(MemoryRegion, 1);
--                memory_region_init(tag_sysmem, OBJECT(machine),
--                                   "tag-memory", UINT64_MAX / 32);
--
-+                object_property_set_link(cpuobj, "tag-memory",
-+                                         OBJECT(tag_sysmem), &error_abort);
-                 if (vms->secure) {
--                    secure_tag_sysmem = g_new(MemoryRegion, 1);
--                    memory_region_init(secure_tag_sysmem, OBJECT(machine),
--                                       "secure-tag-memory", UINT64_MAX / 32);
--
--                    /* As with ram, secure-tag takes precedence over tag.  */
--                    memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
--                                                        tag_sysmem, -1);
-+                    object_property_set_link(cpuobj, "secure-tag-memory",
-+                                             OBJECT(secure_tag_sysmem),
-+                                             &error_abort);
-                 }
--            }
--
--            object_property_set_link(cpuobj, "tag-memory", OBJECT(tag_sysmem),
--                                     &error_abort);
--            if (vms->secure) {
--                object_property_set_link(cpuobj, "secure-tag-memory",
--                                         OBJECT(secure_tag_sysmem),
--                                         &error_abort);
-+            } else if (kvm_enabled()) {
-+                if (!kvm_arm_mte_supported()) {
-+                    error_report("MTE requested, but not supported by KVM");
-+                    exit(1);
-+                }
-+                kvm_arm_enable_mte(cpuobj, &error_abort);
-+            } else {
-+                    error_report("MTE requested, but not supported ");
-+                    exit(1);
-             }
-         }
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index d8eb986a04..661d35d8d8 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1054,6 +1054,7 @@ struct ArchCPU {
-     bool prop_pauth_impdef;
-     bool prop_pauth_qarma3;
-     bool prop_lpa2;
-+    OnOffAuto prop_mte;
- 
-     /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
-     uint8_t dcz_blocksize;
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 70f79eda33..0267a013e4 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -39,6 +39,7 @@
- #include "hw/acpi/acpi.h"
- #include "hw/acpi/ghes.h"
- #include "target/arm/gtimer.h"
-+#include "migration/blocker.h"
- 
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_LAST_INFO
-@@ -1793,6 +1794,11 @@ bool kvm_arm_sve_supported(void)
-     return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
- }
- 
-+bool kvm_arm_mte_supported(void)
-+{
-+    return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
-+}
-+
- QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
- 
- uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
-@@ -2422,3 +2428,37 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
-     }
-     return 0;
- }
-+
-+void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
-+{
-+    static bool tried_to_enable;
-+    static bool succeeded_to_enable;
-+    Error *mte_migration_blocker = NULL;
-+    int ret;
-+
-+    if (!tried_to_enable) {
-+        /*
-+         * MTE on KVM is enabled on a per-VM basis (and retrying doesn't make
-+         * sense), and we only want a single migration blocker as well.
-+         */
-+        tried_to_enable = true;
-+
-+        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0);
-+        if (ret) {
-+            error_setg_errno(errp, -ret, "Failed to enable KVM_CAP_ARM_MTE");
-+            return;
-+        }
-+
-+        /* TODO: Migration is not supported with MTE enabled */
-+        error_setg(&mte_migration_blocker,
-+                   "Live migration disabled due to MTE enabled");
-+        if (migrate_add_blocker(&mte_migration_blocker, errp)) {
-+            error_free(mte_migration_blocker);
-+            return;
-+        }
-+        succeeded_to_enable = true;
-+    }
-+    if (succeeded_to_enable) {
-+        object_property_set_bool(cpuobj, "has_mte", true, NULL);
-+    }
-+}
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index cfaa0d9bc7..4d293618a7 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -188,6 +188,13 @@ bool kvm_arm_pmu_supported(void);
-  */
- bool kvm_arm_sve_supported(void);
- 
-+/**
-+ * kvm_arm_mte_supported:
-+ *
-+ * Returns: true if KVM can enable MTE, and false otherwise.
-+ */
-+bool kvm_arm_mte_supported(void);
-+
- /**
-  * kvm_arm_get_max_vm_ipa_size:
-  * @ms: Machine state handle
-@@ -214,6 +221,8 @@ void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa);
- 
- int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
- 
-+void kvm_arm_enable_mte(Object *cpuobj, Error **errp);
-+
- #else
- 
- /*
-@@ -235,6 +244,11 @@ static inline bool kvm_arm_sve_supported(void)
-     return false;
- }
- 
-+static inline bool kvm_arm_mte_supported(void)
-+{
-+    return false;
-+}
-+
- /*
-  * These functions should never actually be called without KVM support.
-  */
-@@ -283,6 +297,11 @@ static inline uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
-     g_assert_not_reached();
- }
- 
-+static inline void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
-+{
-+    g_assert_not_reached();
-+}
-+
- #endif
- 
- #endif
--- 
-2.44.0
-
+> 
+> > +            return -EINVAL;
+> > +        }
+> > +
+> > +        addr = CACHED_ENTRY_TO_ADDR(entry, addr);
+> > +    }
+> > +
+> >      /* TODO: guarantee 64-bit single-copy atomicity */
+> >      ret = dma_memory_read(&address_space_memory, addr, buf, sizeof(*buf),
+> >                            MEMTXATTRS_UNSPECIFIED);
+> > @@ -659,10 +680,13 @@ static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
+> >      return 0;
+> >  }
+> >  
+> > -static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
+> > +static int decode_cd(SMMUv3State *s, SMMUTransCfg *cfg,
+> > +                     CD *cd, SMMUEventInfo *event)
+> >  {
+> >      int ret = -EINVAL;
+> >      int i;
+> > +    SMMUTranslationStatus status;
+> > +    SMMUTLBEntry *entry;
+> >  
+> >      if (!CD_VALID(cd) || !CD_AARCH64(cd)) {
+> >          goto bad_cd;
+> > @@ -713,9 +737,26 @@ static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
+> >  
+> >          tt->tsz = tsz;
+> >          tt->ttb = CD_TTB(cd, i);
+> > +
+> >          if (tt->ttb & ~(MAKE_64BIT_MASK(0, cfg->oas))) {
+> >              goto bad_cd;
+> >          }
+> > +
+> > +        /* Translate the TTBx, from IPA to PA if nesting is enabled. */
+> > +        if (cfg->stage == SMMU_NESTED) {
+> > +            status = smmuv3_do_translate(s, tt->ttb, cfg, event, IOMMU_RO,
+> > +                                         &entry, SMMU_CLASS_TT);
+> > +            /*
+> > +             * Same PTW faults are reported but with CLASS = TT.
+> > +             * If TTBx is larger than the effective stage 1 output addres
+> > +             * size, it reports C_BAD_CD, which is handled by the above case.
+> > +             */
+> > +            if (status != SMMU_TRANS_SUCCESS) {
+> 
+> Here too, we should report InputAddr as the IOVA
+> 
+> > +                return -EINVAL;
+> > +            }
+> > +            tt->ttb = CACHED_ENTRY_TO_ADDR(entry, tt->ttb);
+> > +        }
+> > +
+> >          tt->had = CD_HAD(cd, i);
+> >          trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb, tt->granule_sz, tt->had);
+> >      }
+> > @@ -767,12 +808,12 @@ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
+> >          return 0;
+> >      }
+> >  
+> > -    ret = smmu_get_cd(s, &ste, 0 /* ssid */, &cd, event);
+> > +    ret = smmu_get_cd(s, &ste, cfg, 0 /* ssid */, &cd, event);
+> >      if (ret) {
+> >          return ret;
+> >      }
+> >  
+> > -    return decode_cd(cfg, &cd, event);
+> > +    return decode_cd(s, cfg, &cd, event);
+> >  }
+> >  
+> >  /**
+> > @@ -832,13 +873,40 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
+> >                                                   SMMUTransCfg *cfg,
+> >                                                   SMMUEventInfo *event,
+> >                                                   IOMMUAccessFlags flag,
+> > -                                                 SMMUTLBEntry **out_entry)
+> > +                                                 SMMUTLBEntry **out_entry,
+> > +                                                 SMMUTranslationClass class)
+> >  {
+> >      SMMUPTWEventInfo ptw_info = {};
+> >      SMMUState *bs = ARM_SMMU(s);
+> >      SMMUTLBEntry *cached_entry = NULL;
+> > +    int asid, stage;
+> > +    bool S2_only = class != SMMU_CLASS_IN;
+> > +
+> > +    /*
+> > +     * The function uses the argument class to indentify which stage is used:
+> 
+> identify
+> 
+> > +     * - CLASS = IN: Means an input translation, determine the stage from STE.
+> > +     * - CLASS = CD: Means the addr is an IPA of the CD, and it would be
+> > +     *   tranlsated using the stage-2.
+> 
+> translated
+> 
+> > +     * - CLASS = TT: Means the addr is an IPA of the stage-1 translation table
+> > +     *   and it would be tranlsated using the stage-2.
+> 
+> translated
+> 
+> > +     * For the last 2 cases instead of having intrusive changes in the common
+> > +     * logic, we modify the cfg to be a stage-2 translation only in case of
+> > +     * nested, and then restore it after.
+> > +     */
+> > +    if (S2_only) {
+> 
+> "S2_only" seems a bit confusing because in the spec "stage 2-only" means
+> absence of nesting, which is the opposite of what we're handling here.
+> I don't have a good alternative though, maybe "desc_s2_translation"
+> 
+> Thanks,
+> Jean
+> 
+> > +        asid = cfg->asid;
+> > +        stage = cfg->stage;
+> > +        cfg->asid = -1;
+> > +        cfg->stage = SMMU_STAGE_2;
+> > +    }
+> >  
+> >      cached_entry = smmu_translate(bs, cfg, addr, flag, &ptw_info);
+> > +
+> > +    if (S2_only) {
+> > +        cfg->asid = asid;
+> > +        cfg->stage = stage;
+> > +    }
+> > +
+> >      if (!cached_entry) {
+> >          /* All faults from PTW has S2 field. */
+> >          event->u.f_walk_eabt.s2 = (ptw_info.stage == SMMU_STAGE_2);
+> > @@ -855,7 +923,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
+> >                  event->type = SMMU_EVT_F_TRANSLATION;
+> >                  event->u.f_translation.addr = addr;
+> >                  event->u.f_translation.addr2 = ptw_info.addr;
+> > -                event->u.f_translation.class = SMMU_CLASS_IN;
+> > +                event->u.f_translation.class = class;
+> >                  event->u.f_translation.rnw = flag & 0x1;
+> >              }
+> >              break;
+> > @@ -864,7 +932,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
+> >                  event->type = SMMU_EVT_F_ADDR_SIZE;
+> >                  event->u.f_addr_size.addr = addr;
+> >                  event->u.f_addr_size.addr2 = ptw_info.addr;
+> > -                event->u.f_addr_size.class = SMMU_CLASS_IN;
+> > +                event->u.f_addr_size.class = class;
+> >                  event->u.f_addr_size.rnw = flag & 0x1;
+> >              }
+> >              break;
+> > @@ -873,7 +941,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
+> >                  event->type = SMMU_EVT_F_ACCESS;
+> >                  event->u.f_access.addr = addr;
+> >                  event->u.f_access.addr2 = ptw_info.addr;
+> > -                event->u.f_access.class = SMMU_CLASS_IN;
+> > +                event->u.f_access.class = class;
+> >                  event->u.f_access.rnw = flag & 0x1;
+> >              }
+> >              break;
+> > @@ -882,7 +950,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
+> >                  event->type = SMMU_EVT_F_PERMISSION;
+> >                  event->u.f_permission.addr = addr;
+> >                  event->u.f_permission.addr2 = ptw_info.addr;
+> > -                event->u.f_permission.class = SMMU_CLASS_IN;
+> > +                event->u.f_permission.class = class;
+> >                  event->u.f_permission.rnw = flag & 0x1;
+> >              }
+> >              break;
+> > @@ -943,7 +1011,8 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+> >          goto epilogue;
+> >      }
+> >  
+> > -    status = smmuv3_do_translate(s, addr, cfg, &event, flag, &cached_entry);
+> > +    status = smmuv3_do_translate(s, addr, cfg, &event, flag,
+> > +                                 &cached_entry, SMMU_CLASS_IN);
+> >  
+> >  epilogue:
+> >      qemu_mutex_unlock(&s->mutex);
+> > -- 
+> > 2.45.2.803.g4e1b14247a-goog
+> > 

@@ -1,68 +1,68 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3376234njb;
-        Tue, 9 Jul 2024 08:53:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVSRNylfBO6j6zsl3prKUXMYEVc2jV/+k6IJYpNUM9yvKQ/NYwncHb9uYJ7vsncIOC6awYDQy8mO1C9a5yDU9Ge8l4Wdy2e
-X-Google-Smtp-Source: AGHT+IHy7Or94CBuJXyvFIqKROrshQJtAfuPGjEbG8vmhazyZHvOwMAr1364T/nEGM7bEHktlaDW
-X-Received: by 2002:a05:6102:c91:b0:48f:dfb3:f26a with SMTP id ada2fe7eead31-49032142f92mr3653720137.15.1720540386518;
-        Tue, 09 Jul 2024 08:53:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720540386; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3379003njb;
+        Tue, 9 Jul 2024 08:59:21 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWJPIkvikEEpDqhf/V1RBkVfAPI2WjTplfD+QWkS5lWRGgMCPV9lc2YAmuUN31GOOJDNppDAnR3dL92LCIFjY4yKR5u14wy
+X-Google-Smtp-Source: AGHT+IGJ6NiH/AHvkwEaWEW+MyXplSMmm0Onw9hqbI/r4+hUkLKaVLnomojPNyhEA0GUPwsijJSx
+X-Received: by 2002:a05:6214:5016:b0:6b2:ccb5:8b7b with SMTP id 6a1803df08f44-6b61da1bd6dmr41115946d6.31.1720540761111;
+        Tue, 09 Jul 2024 08:59:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720540761; cv=none;
         d=google.com; s=arc-20160816;
-        b=LvZc5Swfh5Cxg/ObCMcYHeIVOdvr/8kHD1xRBzzWIcRIPXAhoRrFbmm4fEhOOJga27
-         9TOz8stZpdu6mhYqPrGcv7iif/c/htGLTlY4/Bo9I1LUGLHLNJQO7epIelyibJK1nGkN
-         unjcRfDYhtJEOMaitrOLbtAxMR9k8QMGZcPAI7RWrXUSlWr54vVEGZXQyvoN//Wi1uYl
-         rwHV2hBStgrprRAVybJdo7jZOU/qL5JaOQESZGC6MEPpF9fANPNeZ5FfgjM88yvfKzKz
-         pkXVSkum52QVMqa8wm6nP0IbLCHdlGu7cGSA+FOW/8oQijboh/dfIM89HaSmDE5MjYpl
-         B6DQ==
+        b=LUqmhZWf37eHONY5XVG5RkzihWIyTMvhwq2JJpIWoJlMzS8T0R95qb0FydMwz9Hwmw
+         ReBVPORZUl4vGfVEbA2bA3CdVxOoIj6XAsi2WKVJ09q1P9IWjeJRK6/bS2PF7ehi765A
+         lsWwzkKmtk7zjyoDg4oeWaSBzfUzHBVEb39ljEEVj9dUwXoT55KeGCYKshmV0Uzh9iF1
+         X+qoKB4WCMuYrLwVESE/0vYdJFO7u1dUrZXb2eADwa2cDel7uql5MRbqC3iFFx11MC7y
+         h1oINOhBhoT5M1Ny00KVhJqOROsvV6lQD40wY9R1tdRlFS5YEh3IzAwaq95wQRXOuU17
+         PIuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=yZ52/FV4iKd6fZ3Tiy6t6RCz0FCBFH8GVabkDlZFmEA=;
+        bh=Un7CxtJiA3pjI23GGb8Lc/DjT+zkmi4I7Ayxrp9iHEc=;
         fh=pXQCCfdofZB5e4ZqzVRXiVuRGYeJnl2WhJnhDCL9qiQ=;
-        b=suWfEiEge1gkuLhV8qjPDZ+sMCtZ0JcGkpPZ//LJwu3DKGI5K9c/fTMgL9YvpazPxb
-         7k+QljdzV4vqjoeUDBdNacEAK62C4/88I8bxrQ1CxSX0A9Ef8q7nvq9FpU6XypH8SgC0
-         aQe2msue0eEsw5xe7vJCyxu0jI/VA4oYn8dalS01LBYyY7zYB+3MCc04ilUV6LHXmJPD
-         Fv2SJFLWTb0Hiz/iDhUGYVgjmD6nRKbjj3wIxA/iGxN2FeRysUQYZKn7HO2kJI1xFZDo
-         YbnDngOyPlJswGrW8OBTazA+l3JTO3Zpl80xKuIod1/5jcuKdOGCD7hWOyxhSjsMmIGx
-         rr2A==;
+        b=tNlwrnDaeI3MvvAwIXmG0MvZbHf7bSpM/HaAMHme6CA0ihv4tUQgLBv/yunSwMS48N
+         Ir6UW7Q/TMnDYzWcqlRErQvVcd+d058gn7fR0U3+BAGLwzZrC2E9odMb1OoJD+ZuUaAx
+         ykit1rh+fSXPVR+Z0/0FKGFTjKh7pMngJWmJzHkYgLF8sUBU0xuALd1HeHys6NlYmqH4
+         oB5F9MR+eadXxzB4gL6h1dqqP9ruPs6Ea2pm/EurgFuCYmo+412+l3raveKCz+OfD6HL
+         zXlamW2hrtzFu1mSsSZGzQ+rH49fdoVUJk92KccfJRSODBKSYIbuIIHE3ktViMk7EH7k
+         Dpww==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-447f9beeb08si23743161cf.625.2024.07.09.08.53.06
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b61b9f78bcsi25248486d6.48.2024.07.09.08.59.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2024 08:53:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Jul 2024 08:59:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRD9L-0004h5-AO; Tue, 09 Jul 2024 11:53:03 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sRDF9-0003N4-KR; Tue, 09 Jul 2024 11:59:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=H1KF=OJ=kaod.org=clg@ozlabs.org>)
- id 1sRD9K-0004ay-7O; Tue, 09 Jul 2024 11:53:02 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1sRDF3-000301-Uy; Tue, 09 Jul 2024 11:58:59 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=H1KF=OJ=kaod.org=clg@ozlabs.org>)
- id 1sRD9H-0003OX-Ms; Tue, 09 Jul 2024 11:53:01 -0400
+ id 1sRDF0-0004II-Ja; Tue, 09 Jul 2024 11:58:57 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WJQVt6ykqz4wny;
- Wed, 10 Jul 2024 01:52:54 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4WJQdd5VYrz4x0w;
+ Wed, 10 Jul 2024 01:58:45 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WJQVp3VPhz4w2M;
- Wed, 10 Jul 2024 01:52:50 +1000 (AEST)
-Message-ID: <77788eda-ee5c-4db0-a890-034dc4995502@kaod.org>
-Date: Tue, 9 Jul 2024 17:52:46 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4WJQdY5YM8z4wny;
+ Wed, 10 Jul 2024 01:58:40 +1000 (AEST)
+Message-ID: <e9c273ff-32bd-40fc-8f50-cb47784cf741@kaod.org>
+Date: Tue, 9 Jul 2024 17:58:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [Aspeed PATCH v47 18/19] hw/sd/sdcard: Add boot config support
+Subject: Re: [PATCH v47 00/19] hw/sd/sdcard: Add eMMC support
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -71,13 +71,12 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
  <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>
 References: <20240709152556.52896-1-philmd@linaro.org>
- <20240709152556.52896-19-philmd@linaro.org>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240709152556.52896-19-philmd@linaro.org>
+In-Reply-To: <20240709152556.52896-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=H1KF=OJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -86,60 +85,88 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: j4JVxkT7v6eO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HD7sPcDuauYR
 
 On 7/9/24 5:25 PM, Philippe Mathieu-Daudé wrote:
-> From: Joel Stanley <joel@jms.id.au>
+> Since v42:
+> - Stick to spec v4.3 (re-simplified EXT_CSD register & migrate)
+> - Fill CID register
+> - Few changes to CSD register
+> - Implement 'boot-mode' reset timing
+> - Add 'boot-size' property
 > 
-> With this correctly set we can use the enable bit to detect if
-> partition support is enabled.
-> 
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-> Also squash?
+> Change required for aspeed branch:
+> -- >8 --
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 8c0e36badd..563816b710 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -344,3 +344,3 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
+>           if (emmc) {
+> -            qdev_prop_set_uint8(card, "boot-config", boot_emmc ? 0x48 : 0x0);
+> +            qdev_prop_set_uint64(card, "boot-size", 1 * MiB);
+>           }
+> (I'm still reluctant to merge patches 16-18)...
 
-where is the "boot-config" property gone ?
-
+Then, please drop all changes related to the boot partitions. I will keep
+the original patches in my tree and address the feature when I have time.
+TYPE_EMMC is already great to have.
 
 Thanks,
 
 C.
 
 
+
 > ---
->   hw/sd/sd.c | 6 ++++++
->   1 file changed, 6 insertions(+)
 > 
-> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> index 291497468f..6aa83251f7 100644
-> --- a/hw/sd/sd.c
-> +++ b/hw/sd/sd.c
-> @@ -1047,6 +1047,12 @@ static uint32_t emmc_bootpart_offset(SDState *sd)
->   {
->       unsigned int access = sd->ext_csd[EXT_CSD_PART_CONFIG]
->                             & EXT_CSD_PART_CONFIG_ACC_MASK;
-> +    unsigned int enable = sd->ext_csd[EXT_CSD_PART_CONFIG]
-> +                          & EXT_CSD_PART_CONFIG_EN_MASK;
-> +
-> +    if (!enable) {
-> +        return 0;
-> +    }
->   
->       switch (access) {
->       case EXT_CSD_PART_CONFIG_ACC_DEFAULT:
+> Cédric Le Goater (2):
+>    hw/sd/sdcard: Add emmc_cmd_SET_RELATIVE_ADDR handler (CMD3)
+>    hw/sd/sdcard: Fix SET_BLOCK_COUNT command argument on eMMC (CMD23)
+> 
+> Joel Stanley (3):
+>    hw/sd/sdcard: Support boot area in emmc image
+>    hw/sd/sdcard: Subtract bootarea size from blk
+>    hw/sd/sdcard: Add boot config support
+> 
+> Luc Michel (1):
+>    hw/sd/sdcard: Implement eMMC sleep state (CMD5)
+> 
+> Philippe Mathieu-Daudé (11):
+>    hw/sd/sdcard: Basis for eMMC support
+>    hw/sd/sdcard: Register generic command handlers
+>    hw/sd/sdcard: Register unimplemented command handlers
+>    hw/sd/sdcard: Implement emmc_set_cid()
+>    hw/sd/sdcard: Implement emmc_set_csd()
+>    hw/sd/sdcard: Add mmc_cmd_PROGRAM_CID handler (CMD26)
+>    hw/sd/sdcard: Add eMMC 'boot-size' property
+>    hw/sd/sdcard: Simplify EXT_CSD values for spec v4.3
+>    hw/sd/sdcard: Migrate ExtCSD 'modes' register
+>    hw/sd/sdcard: Implement eMMC 'boot-mode'
+>    hw/sd/sdcard: Enable TYPE_EMMC card model
+> 
+> Sai Pavan Boddu (1):
+>    hw/sd/sdcard: Add mmc SWITCH function support (CMD6)
+> 
+> Vincent Palatin (1):
+>    hw/sd/sdcard: Add emmc_cmd_SEND_EXT_CSD handler (CMD8)
+> 
+>   include/hw/sd/sd.h |   4 +
+>   hw/sd/sd.c         | 424 ++++++++++++++++++++++++++++++++++++++++++++-
+>   hw/sd/trace-events |   3 +
+>   3 files changed, 425 insertions(+), 6 deletions(-)
+> 
 

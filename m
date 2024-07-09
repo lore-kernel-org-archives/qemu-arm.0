@@ -1,306 +1,448 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3234433njb;
-        Tue, 9 Jul 2024 04:54:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUB/9gUOnRIRZgQALjDwkg9KvM0ymdseN5dfwsPX3HgC6ocGcyjh/wATNPhU7T5+/W2uX2WAhqjjFYTQQkIYqzwogO+wx8K
-X-Google-Smtp-Source: AGHT+IHc5bkXY1R0mHuowr8K2NDla7U12YmOxw6lp/GL2bjTftNx5NXl9bSYurDKsB+4l0pKG3Pw
-X-Received: by 2002:ac8:59cc:0:b0:446:56d4:4d6c with SMTP id d75a77b69052e-447fa93ca63mr23512841cf.40.1720526093506;
-        Tue, 09 Jul 2024 04:54:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720526093; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3290043njb;
+        Tue, 9 Jul 2024 06:27:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUiQ0IWy/ksR4eS3i3E/9she5SEkUMwDsuC4qwStAN8lXojE5GI453ULF4iuoMzZiCLCtbsiNFk8dF2wcCTsE+uevbZyvAa
+X-Google-Smtp-Source: AGHT+IHfl52T1SAc59glWnEPIK2cGLH3UW/bSwxCoNGQQ/u9BU2tuXhoWnuUclNOYvaW4UHV+Ac5
+X-Received: by 2002:ac8:5fc4:0:b0:446:641d:d0ec with SMTP id d75a77b69052e-447faa36c72mr29185551cf.57.1720531670603;
+        Tue, 09 Jul 2024 06:27:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720531670; cv=none;
         d=google.com; s=arc-20160816;
-        b=XR+7nFxF00zgQ1bbcpYwigp+PpJOUV9KEm7XgtN07mMvVvwonv0XY+TTAlSRWQoKtK
-         KxkP/HQzYQeZgqNnZN9kH37jhwfVcn6D/yLZ+4dtD+DDIhu5p9aDsKiU698MBnN5B9+9
-         1voZW/cQ4H36ew5rGZQ+Sh5cY2yeRreTKKvqlP9mgqAmf2QQcpLTgwLKi7mS3NZ0R/18
-         mwEmr5Al2jgFv4FZxdoTqz2z8/K3ZMqWahHOelOPo7gUlhOJxMCOtkNuO5CHcAgUL5G1
-         KqWJQbK04U1GjRuMWQp8CHvQjUX53SuaPysw26H4Lod7hVuVH3VnfQpAERRB9R/TKWGp
-         DBWg==
+        b=fPOG2G9VazExMFzaXfdVc99QdPWPF2Cc8NiIZJFXc4mtYCLblUzCYFJqIVdzm+tSGw
+         InxU3zrd8Eb6pSekFwJzW0pJkZnrZS6P3nVQuf3rlGfLo3DMwvQipphxKO2OqVcdKhyS
+         qGGhzJSsSlOq5Mhtn04/oCuzqJ3RN8VCIMLHK/GKhT5SSP+rTDtOzn8WY0LjymBY2Sc8
+         L591IwlpZwLcMM2rP3b0NQgkYmgFEogy90JZ4sEtiPDPIF6yyQs4RvG2dxzEbUpwopb9
+         70k/Fs+xCbKUa5Kh8P08JSrGQSPqkZWR286eN6iw6CHaYUfsObtDaBK5o0cw7t5IZAnk
+         OGyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=3biFDdRU1immrFwaBbGrdEUhaLDtCr2UB++Ns4nktOw=;
-        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=uQUVq6Ut2XbPzjWQjNmzKpkduwIfiozL0va8QFBXCwdGAEav4iX3e64MdbXaeTi3D9
-         KBLNALEQ6dvJqoGjByGM1YfmLyLZGqcjGQGVngmq0XLHJU7+c87zo6EYLw+aJB32f54F
-         0hpXdpzhJQ3BO5EubHO0dOX8ky6N7ECdDkgZB7lpdX0qcEY/nnBfp9gzyDD2qkZY1+Pf
-         3Hn0HOoBpVgsaz1EH76ojcILJZWQuCewocyBYrckjBDRzMOPY0jaDcuseT58oo0y8Hmh
-         99FL1gIyeoYzfi3o340igE4DBcMf1TgfwwaUbeSsDpdBp026zlz3SN7nHuoJNpWbBZ2g
-         nWaA==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=jbI1WDKjUJrWfKnr+awdNz8FbJ/HSPUffNOcZEvJ9gQ=;
+        fh=+YM4KGCiyJ4tFP3cTVMGnasPgrFMaPT8/hVYokrMVk8=;
+        b=pAaFGWoGj69IJT7xnqee1KCEXOQ3Nq5VHRGD4vfo6tEfy1rTP5u9BDZqbPGv6iWcVR
+         WvRT9vxKsU3foaY4wavo7CK2uOtRhMzPvfEwxnIbCeq+e1oNhD+E7ERIsKxhCR/FXz/h
+         IXUKu8byux6uBltejGyF0cslZBUMRYL5bZr24REMViqYkxGyCZshexNKzZjFtJKUrcbC
+         BKrT3o9v30iMSHufuZ0/3oOVY13YNOYdY6+zecMbeBfE4wb6zcYHbpPk09PIGr8I8pKu
+         On2lkQIHsddnNyORFjGwDdvPqzHhMesnD2cyTA84Q18CGQaiwPUfn2OzRUA3p5kYzPnM
+         pwrQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jWSY6rgU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="dc/D5f5u";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-447f9bd7a24si22208921cf.527.2024.07.09.04.54.53
+        by mx.google.com with ESMTPS id d75a77b69052e-447f9bc6a79si21733021cf.487.2024.07.09.06.27.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2024 04:54:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Jul 2024 06:27:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jWSY6rgU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="dc/D5f5u";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sR9P0-0001aQ-Mn; Tue, 09 Jul 2024 07:52:58 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sRAsB-0004ds-Ch; Tue, 09 Jul 2024 09:27:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sR9Oz-0001Pl-4S
- for qemu-devel@nongnu.org; Tue, 09 Jul 2024 07:52:57 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1sRAs9-0004Zj-4S
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 09:27:09 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sR9Oo-0006WS-EU
- for qemu-devel@nongnu.org; Tue, 09 Jul 2024 07:52:56 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1sRAs7-0007NH-1I
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 09:27:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1720525962;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1720531625;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3biFDdRU1immrFwaBbGrdEUhaLDtCr2UB++Ns4nktOw=;
- b=jWSY6rgUm4tSIGE5iszGQQLFwzG57HEgJcQm/Ckzo7bNLhLxn7oj8Exn7EXQkvqlfn0/g9
- fad7G+xCNaAhtZ5Vz+7DGTaTHpYXQtyPKpncnbWB0z1KvET7ZNuOIMWrIY6ggUeV0FP1Yx
- v8WJvxboF7QEKU7izwwAWGcReSP7MCI=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-528-9mQ6sEmVO0inK5e6obToJg-1; Tue,
- 09 Jul 2024 07:52:40 -0400
-X-MC-Unique: 9mQ6sEmVO0inK5e6obToJg-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id ADC3A195419C; Tue,  9 Jul 2024 11:52:39 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.39.193.243])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 40E1D3000184; Tue,  9 Jul 2024 11:52:37 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 3/8] hw/net:ftgmac100: introduce TX and RX ring base address
- high registers to support 64 bits
-Date: Tue,  9 Jul 2024 13:52:23 +0200
-Message-ID: <20240709115228.798904-4-clg@redhat.com>
-In-Reply-To: <20240709115228.798904-1-clg@redhat.com>
-References: <20240709115228.798904-1-clg@redhat.com>
+ bh=jbI1WDKjUJrWfKnr+awdNz8FbJ/HSPUffNOcZEvJ9gQ=;
+ b=dc/D5f5u2U5AIs7V4i0eQMEGc10TYsKKQJ063sU8zK0M5r9NDSofomBCn7mlu+5xNSNShn
+ 04sBNtzXZl3jcrctmOVRV633KJu1mVuQ9HM5KqQYT0efq+Dw82tCYiC/ASktK9BXnxjPrx
+ n3o45rIFGoLk2PAeL9mmRCVYiNqUHPo=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-80-_ebhAEI3NK-vGA6OghQjdg-1; Tue, 09 Jul 2024 09:27:04 -0400
+X-MC-Unique: _ebhAEI3NK-vGA6OghQjdg-1
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-79f08294f35so281727785a.2
+ for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 06:27:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1720531623; x=1721136423;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=jbI1WDKjUJrWfKnr+awdNz8FbJ/HSPUffNOcZEvJ9gQ=;
+ b=vmoVhhFmUPx9lmoFYF9vidlvo5gEFiaClNRvrg55l2HDMDOG3vL8O9xzKnicrFmVZa
+ RTwbWFue8beuATrpwurJFbZDlXje30g6WwyExR3Z4DprCsW+BMKYlrkgBee+s2beQRoM
+ gB47ufVB8qTiEcklpA5+YCHyZ38acbujTYyCkl/iXqxoR3pl0aXuYXcKdH3RqDhcC+Qr
+ 5vaWzOBnMR7b4bXun/+D9mK5//I0Eo/Bxb7Kk10HSpb4U9ymb+OdK9uQLN7fe6APQjxd
+ 9x8HtUzdMlilcBA3jXAQiobXlaZZ1GpkU4UyZ7lTA8UmbMaMxvX4JIzv8xbLtEQZDq79
+ nn1g==
+X-Gm-Message-State: AOJu0YwnyYrvdOkdcXq7/DF+yHyExAadwjchHMEEwpZDe1kF4NVIr3LD
+ SyCdFCgOldIxQrVsSOBma5qCq45oYY/f/2W5g591CxQz86MGhRbGifq3f4OoJ3FdlmvmbLNCG2t
+ RG47Pt83qTgRsKxoW+MkCoLGd1QDGGJXzVKKgADHGzCEIMhGzKQ==
+X-Received: by 2002:a05:620a:4111:b0:79d:77b8:d2e4 with SMTP id
+ af79cd13be357-79f19bee298mr250590085a.65.1720531623326; 
+ Tue, 09 Jul 2024 06:27:03 -0700 (PDT)
+X-Received: by 2002:a05:620a:4111:b0:79d:77b8:d2e4 with SMTP id
+ af79cd13be357-79f19bee298mr250586985a.65.1720531622937; 
+ Tue, 09 Jul 2024 06:27:02 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-79f18ff691bsm97238185a.21.2024.07.09.06.27.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 09 Jul 2024 06:27:02 -0700 (PDT)
+Message-ID: <9c3e95c2-1035-4a55-89a3-97165ef32f18@redhat.com>
+Date: Tue, 9 Jul 2024 15:26:58 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RFCv1 05/10] hw/arm/virt: Add VIRT_NESTED_SMMU
+To: Nicolin Chen <nicolinc@nvidia.com>, peter.maydell@linaro.org,
+ shannon.zhaosl@gmail.com, mst@redhat.com, imammedo@redhat.com,
+ anisinha@redhat.com, peterx@redhat.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, jgg@nvidia.com,
+ shameerali.kolothum.thodi@huawei.com, jasowang@redhat.com,
+ Andrea Bolognani <abologna@redhat.com>
+References: <cover.1719361174.git.nicolinc@nvidia.com>
+ <bc7a57311ac4976699789ceca329edfdfe823c2d.1719361174.git.nicolinc@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <bc7a57311ac4976699789ceca329edfdfe823c2d.1719361174.git.nicolinc@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: S4kzs2QCnVJM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /W2cajXlHk2Y
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+Hi Nicolin,
 
-ASPEED AST2700 SOC is a 64 bits quad core CPUs (Cortex-a35)
-And the base address of dram is "0x4 00000000" which
-is 64bits address.
+On 6/26/24 02:28, Nicolin Chen wrote:
+> VIRT_SMMU can be used as an emulated SMMU, i.e. iommu=smmuv3. However, the
+> MMIO space for VIRT_SMMU isn't large enough to accommodate multiple nested
+> SMMUv3 instances. Add a new VIRT_NESTED_SMMU to separate MMIO space.
+>
+> Meanwhile, a nested SMMUv3 could only work with a vfio-pci device that is
+> physically associated to a host-level SMMUv3 instance, meaning that such a
+> passthrough deivce must be linked to a nesteed SMMU corresponding to the
+> underlying host-level SMMUv3 instance:
+>       HW SMMU0 <-----------------> vSMMU0 (nested)
+>           ^                             ^
+> 	  |                             |
+> 	  ----> PCI dev0 & PCI dev1 <----
+>       HW SMMU1 <-----------------> vSMMU1 (nested)
+>           ^                             ^
+> 	  |                             |
+> 	  ----> PCI dev2 & PCI dev3 <----
+>
+> Note that, on the other hand, an emulated deivce should not be associated
+> to a nested SMMU.
+>
+> To prepare for that, create a PCIe Expander Bridge per nested SMMU as a
+> docker for pci-vfio devices. It eases the QEMU code to build ID mappings
+> in the IORT.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> ---
+>  hw/arm/virt.c         | 110 +++++++++++++++++++++++++++++++++++++-----
+>  include/hw/arm/virt.h |  17 +++++++
+>  2 files changed, 116 insertions(+), 11 deletions(-)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index ef59c79ca3..a54332fca8 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -55,6 +55,7 @@
+>  #include "qemu/bitops.h"
+>  #include "qemu/error-report.h"
+>  #include "qemu/module.h"
+> +#include "hw/pci/pci_bus.h"
+>  #include "hw/pci-host/gpex.h"
+>  #include "hw/virtio/virtio-pci.h"
+>  #include "hw/core/sysbus-fdt.h"
+> @@ -83,6 +84,7 @@
+>  #include "hw/virtio/virtio-md-pci.h"
+>  #include "hw/virtio/virtio-iommu.h"
+>  #include "hw/char/pl011.h"
+> +#include "qemu/config-file.h"
+>  #include "qemu/guest-random.h"
+>  
+>  static GlobalProperty arm_virt_compat[] = {
+> @@ -177,6 +179,7 @@ static const MemMapEntry base_memmap[] = {
+>      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+>      [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
+>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+> +    [VIRT_NESTED_SMMU] =        { 0x0b000000, 0x01000000 },
+>      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+>      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+>      [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
+> @@ -221,7 +224,8 @@ static const int a15irqmap[] = {
+>      [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
+>      [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+>      [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+> -    [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+> +    [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 (179) */
+> +    [VIRT_NESTED_SMMU] = 200, /* Keep it at the end of list */
+>  };
+>  
+>  static void create_randomness(MachineState *ms, const char *node)
+> @@ -1383,21 +1387,19 @@ static void create_pcie_irq_map(const MachineState *ms,
+>                             0x7           /* PCI irq */);
+>  }
+>  
+> -static void create_smmu(const VirtMachineState *vms,
+> -                        PCIBus *bus)
+> +static DeviceState *_create_smmu(const VirtMachineState *vms, PCIBus *bus,
+> +                                 hwaddr base, hwaddr size, int irq,
+> +                                 uint32_t smmu_phandle)
+>  {
+>      char *node;
+>      const char compat[] = "arm,smmu-v3";
+> -    int irq =  vms->irqmap[VIRT_SMMU];
+>      int i;
+> -    hwaddr base = vms->memmap[VIRT_SMMU].base;
+> -    hwaddr size = vms->memmap[VIRT_SMMU].size;
+>      const char irq_names[] = "eventq\0priq\0cmdq-sync\0gerror";
+>      DeviceState *dev;
+>      MachineState *ms = MACHINE(vms);
+>  
+> -    if (!virt_has_smmuv3(vms) || !vms->iommu_phandle) {
+> -        return;
+> +    if (!virt_has_smmuv3(vms) || !smmu_phandle) {
+> +        return NULL;
+>      }
+>  
+>      dev = qdev_new(TYPE_ARM_SMMUV3);
+> @@ -1436,8 +1438,31 @@ static void create_smmu(const VirtMachineState *vms,
+>  
+>      qemu_fdt_setprop_cell(ms->fdt, node, "#iommu-cells", 1);
+>  
+> -    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", vms->iommu_phandle);
+> +    qemu_fdt_setprop_cell(ms->fdt, node, "phandle", smmu_phandle);
+>      g_free(node);
+> +
+> +    return dev;
+> +}
+> +
+> +static DeviceState *create_smmu(const VirtMachineState *vms, PCIBus *bus)
+> +{
+> +    hwaddr base = vms->memmap[VIRT_SMMU].base;
+> +    hwaddr size = vms->memmap[VIRT_SMMU].size;
+> +    int irq = vms->irqmap[VIRT_SMMU];
+> +
+> +    return _create_smmu(vms, bus, base, size, irq, vms->iommu_phandle);
+> +}
+> +
+> +static DeviceState *create_nested_smmu(const VirtMachineState *vms, PCIBus *bus,
+> +                                       int i)
+> +{
+> +    hwaddr base = vms->memmap[VIRT_NESTED_SMMU].base + i * SMMU_IO_LEN;
+> +    int irq = vms->irqmap[VIRT_SMMU] + i * NUM_SMMU_IRQS;
+> +    hwaddr size = SMMU_IO_LEN;
+> +    DeviceState *dev;
+> +
+> +    dev = _create_smmu(vms, bus, base, size, irq, vms->nested_smmu_phandle[i]);
+> +    return dev;
+>  }
+>  
+>  static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
+> @@ -1466,6 +1491,48 @@ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
+>                             bdf + 1, vms->iommu_phandle, bdf + 1, 0xffff - bdf);
+>  }
+>  
+> +/*
+> + * FIXME this is used to reverse for hotplug devices, yet it could result in a
+> + * big waste of PCI bus numbners.
+> + */
+> +#define MAX_DEV_PER_NESTED_SMMU (4)
+> +
+> +static PCIBus *create_pcie_expander_bridge(VirtMachineState *vms, uint8_t idx)
+> +{
+> +    /* Total = PXB + MAX_DEV_PER_NESTED_SMMU x (Rootport + device) */
+> +    const uint8_t total_bus_nums = 1 + MAX_DEV_PER_NESTED_SMMU * 2;
+> +    uint8_t bus_nr = PCI_BUS_MAX -
+> +                     (vms->num_nested_smmus - idx) * total_bus_nums;
+> +
+> +    VirtNestedSmmu *nested_smmu = find_nested_smmu_by_index(vms, idx);
+> +    char *name_pxb = g_strdup_printf("pxb_for_smmu.%d", idx);
+> +    PCIBus *bus = vms->bus;
+> +    DeviceState *dev;
+> +
+> +    /* Create an expander bridge */
+> +    dev = qdev_new("pxb-pcie");
+> +    if (!qdev_set_id(dev, name_pxb, &error_fatal)) {
+> +        return NULL;
+> +    }
+> +
+> +    qdev_prop_set_uint8(dev, "bus_nr", bus_nr);
+> +    qdev_prop_set_uint16(dev, "numa_node", idx);
+> +    qdev_realize_and_unref(dev, BUS(bus), &error_fatal);
+> +
+> +    /* Get the pxb bus */
+> +    QLIST_FOREACH(bus, &bus->child, sibling) {
+> +        if (pci_bus_num(bus) == bus_nr) {
+> +            break;
+> +        }
+> +    }
+> +    g_assert(bus && pci_bus_num(bus) == bus_nr);
+> +    nested_smmu->pci_bus = bus;
+> +    nested_smmu->reserved_bus_nums = total_bus_nums;
+> +
+> +    /* Return the pxb bus */
+> +    return bus;
+> +}
+> +
+>  static void create_pcie(VirtMachineState *vms)
+>  {
+>      hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
+> @@ -1580,12 +1647,33 @@ static void create_pcie(VirtMachineState *vms)
+>      qemu_fdt_setprop_cell(ms->fdt, nodename, "#interrupt-cells", 1);
+>      create_pcie_irq_map(ms, vms->gic_phandle, irq, nodename);
+>  
+> -    if (vms->iommu) {
+> +    /* Build PCI Expander Bridge + Root Port from the top of PCI_BUS_MAX */
+> +    if (vms->num_nested_smmus) {
+> +        /* VIRT_NESTED_SMMU must hold all vSMMUs */
+> +        g_assert(vms->num_nested_smmus <=
+> +                 vms->memmap[VIRT_NESTED_SMMU].size / SMMU_IO_LEN);
+> +
+> +        vms->nested_smmu_phandle = g_new0(uint32_t, vms->num_nested_smmus);
+> +
+> +        for (i = 0; i < vms->num_nested_smmus; i++) {
+> +            DeviceState *smmu_dev;
+> +            PCIBus *pxb_bus;
+> +
+> +            pxb_bus = create_pcie_expander_bridge(vms, i);
+> +            g_assert(pxb_bus);
+> +
+> +            vms->nested_smmu_phandle[i] = qemu_fdt_alloc_phandle(ms->fdt);
+> +            smmu_dev = create_nested_smmu(vms, pxb_bus, i);
+> +            g_assert(smmu_dev);
+> +
+> +            qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map", 0x0,
+> +                                   vms->nested_smmu_phandle[i], 0x0, 0x10000);
+I think libvirt is supposed to create the pcie bus topology instead and
+it shall not be created by qemu behind the scene.
+The pcie elements you create here are not visible to libvirt and I guess
+they may collide with elements explicitly created by libvirt at a given
+pci bdf.
 
-It have "Normal Priority Transmit Ring Base Address Register High(0x17C)",
-"High Priority Transmit Ring Base Address Register High(0x184)" and
-"Receive Ring Base Address Register High(0x18C)" to save the high part physical
-address of descriptor manager.
-Ex: TX descriptor manager address [34:0]
-The "Normal Priority Transmit Ring Base Address Register High(0x17C)"
-bits [2:0] which corresponds the bits [34:32] of the 64 bits address of
-the TX ring buffer address.
-The "Normal Priority Transmit Ring Base Address Register(0x20)" bits [31:0]
-which corresponds the bits [31:0] of the 64 bits address
-of the TX ring buffer address.
+I think it would make more sense to be able to attach an smmu instance
+to a given pci root or pxb either by adding an iommu id to a given
+pxb-pcie option
 
-Introduce a new sub region which size is 0x100 for the set of new registers
-and map it at 0x100 in the container region.
-This sub region range is from 0x100 to 0x1ff.
+-device
+pxb-pcie,bus_nr=100,id=pci.12,numa_node=0,bus=pcie.0,addr=0x3,iommu=<id>
+or
+adding a list of pxb ids to the iommu option. It is unfortunate the
+iommu option is a machine option. the smmu being a sysbus device the
+platform bus framework could be considered to dynamically allocate them
+using the -device option. This has been used along with dt generation
+but with ACPI this would need to be studied. However at the time the
+smmu was integrated the machine option was prefered.
 
-Introduce a new property and object attribute to activate the region for new registers.
-Introduce a new memop handlers for the new register read and write.
+Maybe using the 1st option would allow to infer that if there are
+different iommu ids this implies that several IOMMU instances need to be
+created.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
----
- include/hw/net/ftgmac100.h |  4 ++
- hw/net/ftgmac100.c         | 82 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 86 insertions(+)
+ 
+Adding Andrea in cc
 
-diff --git a/include/hw/net/ftgmac100.h b/include/hw/net/ftgmac100.h
-index aae57ae8cbed..24ccdf0260a9 100644
---- a/include/hw/net/ftgmac100.h
-+++ b/include/hw/net/ftgmac100.h
-@@ -16,6 +16,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(FTGMAC100State, FTGMAC100)
- 
- #define FTGMAC100_MEM_SIZE 0x1000
- #define FTGMAC100_REG_MEM_SIZE 0x100
-+#define FTGMAC100_REG_HIGH_MEM_SIZE 0x100
-+#define FTGMAC100_REG_HIGH_OFFSET 0x100
- 
- #include "hw/sysbus.h"
- #include "net/net.h"
-@@ -35,6 +37,7 @@ struct FTGMAC100State {
-     qemu_irq irq;
-     MemoryRegion iomem_container;
-     MemoryRegion iomem;
-+    MemoryRegion iomem_high;
- 
-     uint8_t frame[FTGMAC100_MAX_FRAME_SIZE];
- 
-@@ -68,6 +71,7 @@ struct FTGMAC100State {
-     bool aspeed;
-     uint32_t txdes0_edotr;
-     uint32_t rxdes0_edorr;
-+    bool dma64;
- };
- 
- #define TYPE_ASPEED_MII "aspeed-mmi"
-diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-index d026242e2b54..68956aeb94ae 100644
---- a/hw/net/ftgmac100.c
-+++ b/hw/net/ftgmac100.c
-@@ -56,6 +56,16 @@
- #define FTGMAC100_PHYDATA         0x64
- #define FTGMAC100_FCR             0x68
- 
-+/*
-+ * FTGMAC100 registers high
-+ *
-+ * values below are offset by - FTGMAC100_REG_HIGH_OFFSET from datasheet
-+ * because its memory region is start at FTGMAC100_REG_HIGH_OFFSET
-+ */
-+#define FTGMAC100_NPTXR_BADR_HIGH   (0x17C - FTGMAC100_REG_HIGH_OFFSET)
-+#define FTGMAC100_HPTXR_BADR_HIGH   (0x184 - FTGMAC100_REG_HIGH_OFFSET)
-+#define FTGMAC100_RXR_BADR_HIGH     (0x18C - FTGMAC100_REG_HIGH_OFFSET)
-+
- /*
-  * Interrupt status register & interrupt enable register
-  */
-@@ -913,6 +923,60 @@ static void ftgmac100_write(void *opaque, hwaddr addr,
-     ftgmac100_update_irq(s);
- }
- 
-+static uint64_t ftgmac100_high_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    FTGMAC100State *s = FTGMAC100(opaque);
-+    uint64_t val = 0;
-+
-+    switch (addr) {
-+    case FTGMAC100_NPTXR_BADR_HIGH:
-+        val = extract64(s->tx_ring, 32, 32);
-+        break;
-+    case FTGMAC100_HPTXR_BADR_HIGH:
-+        /* High Priority Transmit Ring Base High Address */
-+        qemu_log_mask(LOG_UNIMP, "%s: read to unimplemented register 0x%"
-+                      HWADDR_PRIx "\n", __func__, addr);
-+        break;
-+    case FTGMAC100_RXR_BADR_HIGH:
-+        val = extract64(s->rx_ring, 32, 32);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad address at offset 0x%"
-+                      HWADDR_PRIx "\n", __func__, addr);
-+        break;
-+    }
-+
-+    return val;
-+}
-+
-+static void ftgmac100_high_write(void *opaque, hwaddr addr,
-+                          uint64_t value, unsigned size)
-+{
-+    FTGMAC100State *s = FTGMAC100(opaque);
-+
-+    switch (addr) {
-+    case FTGMAC100_NPTXR_BADR_HIGH:
-+        s->tx_ring = deposit64(s->tx_ring, 32, 32, value);
-+        s->tx_descriptor = deposit64(s->tx_descriptor, 32, 32, value);
-+        break;
-+    case FTGMAC100_HPTXR_BADR_HIGH:
-+        /* High Priority Transmit Ring Base High Address */
-+        qemu_log_mask(LOG_UNIMP, "%s: write to unimplemented register 0x%"
-+                      HWADDR_PRIx "\n", __func__, addr);
-+        break;
-+    case FTGMAC100_RXR_BADR_HIGH:
-+        s->rx_ring = deposit64(s->rx_ring, 32, 32, value);
-+        s->rx_descriptor = deposit64(s->rx_descriptor, 32, 32, value);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad address at offset 0x%"
-+                      HWADDR_PRIx "\n", __func__, addr);
-+        break;
-+    }
-+
-+    ftgmac100_update_irq(s);
-+}
-+
- static int ftgmac100_filter(FTGMAC100State *s, const uint8_t *buf, size_t len)
- {
-     unsigned mcast_idx;
-@@ -1077,6 +1141,14 @@ static const MemoryRegionOps ftgmac100_ops = {
-     .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
-+static const MemoryRegionOps ftgmac100_high_ops = {
-+    .read = ftgmac100_high_read,
-+    .write = ftgmac100_high_write,
-+    .valid.min_access_size = 4,
-+    .valid.max_access_size = 4,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+};
-+
- static void ftgmac100_cleanup(NetClientState *nc)
- {
-     FTGMAC100State *s = FTGMAC100(qemu_get_nic_opaque(nc));
-@@ -1114,6 +1186,15 @@ static void ftgmac100_realize(DeviceState *dev, Error **errp)
-                           TYPE_FTGMAC100 ".regs", FTGMAC100_REG_MEM_SIZE);
-     memory_region_add_subregion(&s->iomem_container, 0x0, &s->iomem);
- 
-+    if (s->dma64) {
-+        memory_region_init_io(&s->iomem_high, OBJECT(s), &ftgmac100_high_ops,
-+                              s, TYPE_FTGMAC100 ".regs.high",
-+                              FTGMAC100_REG_HIGH_MEM_SIZE);
-+        memory_region_add_subregion(&s->iomem_container,
-+                                    FTGMAC100_REG_HIGH_OFFSET,
-+                                    &s->iomem_high);
-+    }
-+
-     sysbus_init_irq(sbd, &s->irq);
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
- 
-@@ -1162,6 +1243,7 @@ static const VMStateDescription vmstate_ftgmac100 = {
- static Property ftgmac100_properties[] = {
-     DEFINE_PROP_BOOL("aspeed", FTGMAC100State, aspeed, false),
-     DEFINE_NIC_PROPERTIES(FTGMAC100State, conf),
-+    DEFINE_PROP_BOOL("dma64", FTGMAC100State, dma64, false),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
--- 
-2.45.2
+Thanks
+
+Eric
+
+
+
+> +        }
+> +    } else if (vms->iommu) {
+>          vms->iommu_phandle = qemu_fdt_alloc_phandle(ms->fdt);
+>  
+>          switch (vms->iommu) {
+>          case VIRT_IOMMU_SMMUV3:
+> -        case VIRT_IOMMU_NESTED_SMMUV3:
+>              create_smmu(vms, vms->bus);
+>              qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map",
+>                                     0x0, vms->iommu_phandle, 0x0, 0x10000);
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index b35c4f62d7..0a3f1ab8b5 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -63,6 +63,7 @@ enum {
+>      VIRT_GIC_ITS,
+>      VIRT_GIC_REDIST,
+>      VIRT_SMMU,
+> +    VIRT_NESTED_SMMU,
+>      VIRT_UART,
+>      VIRT_MMIO,
+>      VIRT_RTC,
+> @@ -141,6 +142,8 @@ struct VirtMachineClass {
+>  typedef struct VirtNestedSmmu {
+>      int index;
+>      char *smmu_node;
+> +    PCIBus *pci_bus;
+> +    int reserved_bus_nums;
+>      QLIST_ENTRY(VirtNestedSmmu) next;
+>  } VirtNestedSmmu;
+>  
+> @@ -179,6 +182,7 @@ struct VirtMachineState {
+>      uint32_t gic_phandle;
+>      uint32_t msi_phandle;
+>      uint32_t iommu_phandle;
+> +    uint32_t *nested_smmu_phandle;
+>      int psci_conduit;
+>      hwaddr highest_gpa;
+>      DeviceState *gic;
+> @@ -229,4 +233,17 @@ static inline bool virt_has_smmuv3(const VirtMachineState *vms)
+>             vms->iommu == VIRT_IOMMU_NESTED_SMMUV3;
+>  }
+>  
+> +static inline VirtNestedSmmu *
+> +find_nested_smmu_by_index(VirtMachineState *vms, int index)
+> +{
+> +    VirtNestedSmmu *nested_smmu;
+> +
+> +    QLIST_FOREACH(nested_smmu, &vms->nested_smmu_list, next) {
+> +        if (nested_smmu->index == index) {
+> +            return nested_smmu;
+> +        }
+> +    }
+> +    return NULL;
+> +}
+> +
+>  #endif /* QEMU_ARM_VIRT_H */
 

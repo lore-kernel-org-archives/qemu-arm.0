@@ -1,128 +1,129 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3163011njb;
-        Tue, 9 Jul 2024 02:12:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUqFR8Vlz9HKyRwGusHw2vDSqp0b7e0nmK2ImrO5pqd6Usf2I03UL1HUROMPyCVPmbdts2Ixi+Re1CPcYmIYZG2VPfFbj+S
-X-Google-Smtp-Source: AGHT+IHknl4EIzQGL1FCZ3rClPrMaDTOWMNkLkIyULtr1xvvFtf+T2Oh4b+HwgJiJ9LOhL4a7Rcw
-X-Received: by 2002:a25:a04:0:b0:e03:b0aa:9993 with SMTP id 3f1490d57ef6-e041b12aaa7mr2221689276.46.1720516341962;
-        Tue, 09 Jul 2024 02:12:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720516341; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3166206njb;
+        Tue, 9 Jul 2024 02:20:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUq0QKvJvOIfKXBWjZI64IfLb5j7YIDspL+KXf9hWCV90VlB7HeMu4tpfE2zlO8bORAxi87PZEs1peftZb41JtjtFKOz29y
+X-Google-Smtp-Source: AGHT+IHEDXFx8KVfFxl0NqOGx5YVUwSI/0JB6jiqssbK+Uzu9OhJWQVi/q+ctZHDzUp2oGcuJr9M
+X-Received: by 2002:a05:622a:2cc:b0:447:f361:e2e0 with SMTP id d75a77b69052e-447faa75e7bmr22174331cf.59.1720516856692;
+        Tue, 09 Jul 2024 02:20:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720516856; cv=none;
         d=google.com; s=arc-20160816;
-        b=WZzhSbSlhU0le9/RNVOjpmLzba7dwsFCBfQEZUKZJc3iCqFRnTR2avfGUfZsvrghRn
-         w0fWr0b3xsohlgJWPMAWAn9qwWF9mPf/Z04XNzAQXIJfbbLMHw8rXKtEdqBP7qcfgKmi
-         CboqLtbRX7uitfuaW+EwJpq+oiQdydPVsmNbdBkswkXCKuPyrwcX51UukhJUH55DLz9m
-         APRqMWkmq5G1OI/O/EgVMLjZuhgnb10fQu2KGvA/gG9QMnxFnIVDf33WqbYU+Ye8HIJg
-         U5AQC9RvAk3CBdLE2KzsEhbg7a+Ua7ijLj2gB0oE8isPYpTpq8xPdvuMR90sGlxA74yB
-         LNsA==
+        b=ZeRpTyK1zdQEn/FizMVlKc/OpoaR1e/8+L0Wy8AK2PNBrKgdQxXzsJenZcjQHSZjqy
+         iTtUp5nd89eHHlWfVCvPcx8/q0+i43d/sFb/ScKtoqPFESuKyL9h8dl75P/SfCZ6Pgm+
+         S/p07/WPkGSOCCXdjLUEVewZNgS3tTXs9jwVkehpexCoxPGynb113i3ncP12+yD5qutX
+         0IZA70Y7eW05ARVjZspTHs5kGMApW7cNWKqghA0m6kOpQY6Vyk7q1KnKyvaEcnCUHWZR
+         XVPoHoUkD5f/czHadkenBf0seH+pJq+pA7eYMExsx4APeXBTdVRARw3wLgnXIrATSSkL
+         6neQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=G4fMyV9ACQGNSgQFmnS/ZcEPttYfp+M7vsy7ITSsO2c=;
+        bh=SKXAddY1zFdk25Bwax5d0DzWqhh4H+kxz4lMg+F01LQ=;
         fh=Q4Vb8spkc95frJjoUYMijUN2ZUSDcnSseNUrkBKCgTk=;
-        b=WYb53ocfjCLNgWYFo4gYbQk+LOadmmYQ2CvIaobYdzMDqU4uyBNMGFnhcvXR/yDhBk
-         O+P7rRKDKZ+yt394IGptggr+vT7Sfbq1Yh7XiNlpLqu4c3b8rnpWpWCcwdDXE0ij3RdH
-         2SW1mU0r5HgajBeQhG94lGQfkqW9mf59GJyGBiJT4/Jwckm/BH7XyFznKL1Nrw3mEkn6
-         2nquXWqS/oVV2DKQ1Rn9IHsPEsKGhkh2tqZEgn7Hdh73a8iirHOjQYzJMV5w7uyYLasy
-         sxc7dCQ2a+kwUdGgPoaJUl/WANhWyVV4FuaeeafV/XP2u3Wbb6rx2H2GEN933t/pdsi0
-         0qKg==;
+        b=SkRxQBADlbiVX+VL8Ow7WU6A0suLg6RNI+8bGiiD/4XXvoxe+uvQGKLMi/vygj2dnT
+         KwavFYEHchwOAYQi8LiljE6OFENfAk5xAf6KN4q5VY0cZgzjmYqaNcUxWQSFfk9y2M1Q
+         7FNICB8QeeGu4/ptXBSmg+Iaggd4eIOUSTq+u9r7omd/3OnjJPZb6qJr9JIVU1pOOjXi
+         jedgPPOPiiARXa+Vaat10KFJ0msViHhhCcxdiLuTpnzXovXq7YVlOzgwkkZi13htsW1e
+         lGg0ALFA6D8nW5ZQB/LyVAfoKCD8DveKQr0TIXSu5eCmAnDzK4sjTo7Ia8aAALWQvGjG
+         7/7A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HepmUMaY;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VKCWixml;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79f1909f2a0si186041085a.251.2024.07.09.02.12.21
+        by mx.google.com with ESMTPS id d75a77b69052e-447f9af4f77si20317171cf.101.2024.07.09.02.20.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2024 02:12:21 -0700 (PDT)
+        Tue, 09 Jul 2024 02:20:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HepmUMaY;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VKCWixml;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sR6tR-0003Ff-O4; Tue, 09 Jul 2024 05:12:13 -0400
+	id 1sR71R-0000sl-O8; Tue, 09 Jul 2024 05:20:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sR6tO-00031t-Cr
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 05:12:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1sR71Q-0000qL-FR
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 05:20:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sR6tJ-0000Pw-Nq
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 05:12:10 -0400
+ id 1sR71N-0002Jx-O4
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 05:20:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1720516324;
+ s=mimecast20190719; t=1720516823;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=G4fMyV9ACQGNSgQFmnS/ZcEPttYfp+M7vsy7ITSsO2c=;
- b=HepmUMaYys9Dq7U/vNK3SEzQ0di84xOrsaYbJq+wAh6EZ2l7PBRLcL+Nw2Q/EnsI17kti1
- P4CWOxrBYY4e4vqdp26S35HilyORrLZ2zd3PmuJBjmKcNPpnJ3rBjP9q6qo8Bcwqw2pROQ
- gMhGbNoUKE/ZTV8e0wzbrOshm/YLgKI=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=SKXAddY1zFdk25Bwax5d0DzWqhh4H+kxz4lMg+F01LQ=;
+ b=VKCWixml6hKbtRJuZl8CO4KvCeIR3MVCrdkxlHyQaHY9UhD0XoBOu0wL/C4Yy+fkz6VSzJ
+ FaXQfWDYnBXBvuOUw2VreIVQf7Au1frcq1LTk8sVoVM/8v/MffnCGOXuS435c9VwjPLiqm
+ kQOL6B48anCUNGB1WUuzUD4tFxqoBb0=
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-137-QVRqE9kmPiKZAHVpX6mGmQ-1; Tue, 09 Jul 2024 05:12:00 -0400
-X-MC-Unique: QVRqE9kmPiKZAHVpX6mGmQ-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-426624f4ce3so15195955e9.1
- for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 02:12:00 -0700 (PDT)
+ us-mta-482-OAOTrD_oPL-K0aQyrrDf5g-1; Tue, 09 Jul 2024 05:20:21 -0400
+X-MC-Unique: OAOTrD_oPL-K0aQyrrDf5g-1
+Received: by mail-qt1-f198.google.com with SMTP id
+ d75a77b69052e-447e27e9a03so41031801cf.3
+ for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 02:20:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720516319; x=1721121119;
+ d=1e100.net; s=20230601; t=1720516821; x=1721121621;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=G4fMyV9ACQGNSgQFmnS/ZcEPttYfp+M7vsy7ITSsO2c=;
- b=V2ZRTCezDr5qDHgTPeHRYT3LXk3pjO6S5KBnzNaMl+0BmNQRHMsVLcOcLXH4UIYPZa
- SccFiXmqW9lKWX62+ZeZrbfZHo8X4Jt7kcficonzk/4O7DhvBPZrjv3i7aah3GmpeXJs
- JyFN9Ag4tQEAzC3rrcYuhID94bMHQgJDqdr1soNLB4hIc5OjKbU3NDE7DUrj2SHTodFF
- 01354rp9kXxE7maH6AZk9dD8vgMuknpQFcrxEbh7OmKESPAwNKuvkpVKkzP+ighoC09r
- gmO7d0XFL7XgHCqlFZFQ+HKTbCbwQihjlBGEjps+44egwDH0cZXeW/D1CmrUMwNUh4Ga
- /l3w==
-X-Gm-Message-State: AOJu0YwzCcMlQQ37rB5bKregcI1f+Wq1KOyDXolwcwCV25NetqRVe2fe
- WCZqoqwQh/oh819RUCRYmrPKw0h5GrzNDPCln7DU8LU2UsfBgW07wuKN37Sd+uByYDmIJIGjfJo
- OYrgxLmSDfyliku3FR8t4WEyZ51sHKoHKKBcnCBah3qDmavztJA==
-X-Received: by 2002:a05:600c:6dc5:b0:426:5b84:86d2 with SMTP id
- 5b1f17b1804b1-426707e32a0mr14183565e9.20.1720516319172; 
- Tue, 09 Jul 2024 02:11:59 -0700 (PDT)
-X-Received: by 2002:a05:600c:6dc5:b0:426:5b84:86d2 with SMTP id
- 5b1f17b1804b1-426707e32a0mr14183475e9.20.1720516318807; 
- Tue, 09 Jul 2024 02:11:58 -0700 (PDT)
+ bh=SKXAddY1zFdk25Bwax5d0DzWqhh4H+kxz4lMg+F01LQ=;
+ b=bCl3yy0aQPAorVIAhQwjB5X/NkNalGZUs/eM6puF6VTiLTR9QOU9eN8KMA3b8up1jy
+ 5wTk/6TG+Qq90yRCj2ZbxixVThVXo9pfHcxO2aIZsJll8UFjsL18/vdnVGJw2MAQ+39g
+ FfLmWQ/1FuxLmNXAiNULcAcou+vygYCW9OSC1ci8cLRQpTn79kOJ4as+Zh/xyswp0IVt
+ iYzig9Ezhrge6FCLgMYQj0TaN5hCAqtDlqgS3kKzfsDbYYIYfi5nIXz11iFpZ7rdnPY3
+ 09j4vCAB5R+i3OI2h6kV1r9uDkBOWkleAOVv1pH5IV9qTQ3DNqm0dabS/zIFEypyaBvv
+ TV0A==
+X-Gm-Message-State: AOJu0YzQckB6T8J2rvBTTotzyN/zUOWEZv/JqBbKfDml/A67dnbEtw5K
+ 7V536UI9xGql02ing3SN/CgNK6hAHxyJUequIhJiXvCwtxM1XKitsXnMhNciEUqH+nYb7Io/l5B
+ QkQnfOO4pzDJggM+rMxX1NJcf1ACRD41lYIJNuMYVOt7q6QBQhg==
+X-Received: by 2002:ac8:7c53:0:b0:447:d87e:7873 with SMTP id
+ d75a77b69052e-447faa7bab3mr17429151cf.64.1720516821162; 
+ Tue, 09 Jul 2024 02:20:21 -0700 (PDT)
+X-Received: by 2002:ac8:7c53:0:b0:447:d87e:7873 with SMTP id
+ d75a77b69052e-447faa7bab3mr17429001cf.64.1720516820844; 
+ Tue, 09 Jul 2024 02:20:20 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4266f6e0b19sm30907835e9.2.2024.07.09.02.11.57
+ d75a77b69052e-447f9b52a4dsm8476761cf.50.2024.07.09.02.20.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Jul 2024 02:11:58 -0700 (PDT)
-Message-ID: <efec2974-ce96-4cb1-a00c-30fe93c5fa7b@redhat.com>
-Date: Tue, 9 Jul 2024 11:11:56 +0200
+ Tue, 09 Jul 2024 02:20:20 -0700 (PDT)
+Message-ID: <3d151591-4cc6-4de4-8055-27d6fb7200df@redhat.com>
+Date: Tue, 9 Jul 2024 11:20:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFCv1 02/10] hw/arm/virt: Add iommufd link to virt-machine
+Subject: Re: [PATCH RFCv1 03/10] hw/arm/virt: Get the number of host-level
+ SMMUv3 instances
 To: Nicolin Chen <nicolinc@nvidia.com>, peter.maydell@linaro.org,
  shannon.zhaosl@gmail.com, mst@redhat.com, imammedo@redhat.com,
  anisinha@redhat.com, peterx@redhat.com
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, jgg@nvidia.com,
  shameerali.kolothum.thodi@huawei.com, jasowang@redhat.com
 References: <cover.1719361174.git.nicolinc@nvidia.com>
- <df22fcd43e201fea97da8862b61614a2986ffa5e.1719361174.git.nicolinc@nvidia.com>
+ <886883c4cb43117ef26e6c9434247b75cd827f31.1719361174.git.nicolinc@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <df22fcd43e201fea97da8862b61614a2986ffa5e.1719361174.git.nicolinc@nvidia.com>
+In-Reply-To: <886883c4cb43117ef26e6c9434247b75cd827f31.1719361174.git.nicolinc@nvidia.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -130,8 +131,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,20 +147,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E/GCSiRH9peP
+X-TUID: xBreDsM/MVDX
 
 Hi Nicolin,
 
 On 6/26/24 02:28, Nicolin Chen wrote:
-> A nested SMMU must use iommufd ioctls to communicate with the host-level
-> SMMU instance for 2-stage translation support. Add an iommufd link to the
-> ARM virt-machine, allowing QEMU command to pass in an iommufd object.
-If I am not wrong vfio devices are allowed to use different iommufd's
-(although there is no real benefice). So this command line wouldn't
-match with that option.
-Also while reading the commit msg it is not clear with the iommufd is
-needed in the machine whereas the vfio iommufd BE generally calls those
-ioctls.
+> Nested SMMUv3 feature requires the support/presence of host-level SMMUv3
+> instance(s). Add a helper to read the sysfs for the number of instances.
+> Log them in a vms list using a new struct VirtNestedSmmu.
+>
+> This will be used by a following patch to assign a passthrough device to
+> corresponding nested SMMUv3 instance.
+Laterly the HostIOMMUDevice has been introduced to allow, among other
+things, to pass information related to the physical IOMMU to the virtual
+IOMMU.
+I guess it would be well fitted to associate the viommu with its
+underlying piommu.
+
+I don't think we have such kind of host introspection in machine type.
+Generally in can happen in the very device or in libvirt.
 
 Thanks
 
@@ -168,61 +173,101 @@ Eric
 >
 > Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 > ---
->  hw/arm/virt.c         | 14 ++++++++++++++
->  include/hw/arm/virt.h |  2 ++
->  2 files changed, 16 insertions(+)
+>  hw/arm/virt.c         | 35 +++++++++++++++++++++++++++++++++++
+>  include/hw/arm/virt.h |  8 ++++++++
+>  2 files changed, 43 insertions(+)
 >
 > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 78af2d2195..71093d7c60 100644
+> index 71093d7c60..be3d8b0ce6 100644
 > --- a/hw/arm/virt.c
 > +++ b/hw/arm/virt.c
-> @@ -1404,6 +1404,13 @@ static void create_smmu(const VirtMachineState *vms,
+> @@ -2668,6 +2668,37 @@ static char *virt_get_iommu(Object *obj, Error **errp)
+>      }
+>  }
 >  
->      object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
->                               &error_abort);
+> +static int virt_get_num_nested_smmus(VirtMachineState *vms, Error **errp)
+> +{
+> +    VirtNestedSmmu *nested_smmu;
+> +    struct dirent *dent;
+> +    DIR *dir = NULL;
+> +    int num = 0;
 > +
-> +    if (vms->iommu == VIRT_IOMMU_NESTED_SMMUV3) {
-> +        g_assert(vms->iommufd);
-> +        object_property_set_link(OBJECT(dev), "iommufd", OBJECT(vms->iommufd),
-> +                                 &error_abort);
-> +        object_property_set_bool(OBJECT(dev), "nested", true, &error_abort);
-
+> +    dir = opendir("/sys/class/iommu");
+> +    if (!dir) {
+> +        error_setg_errno(errp, errno, "couldn't open /sys/class/iommu");
+> +        return 0;
 > +    }
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
->      for (i = 0; i < NUM_SMMU_IRQS; i++) {
-> @@ -3114,6 +3121,13 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->                                            "Set GIC version. "
->                                            "Valid values are 2, 3, 4, host and max");
->  
-> +    object_class_property_add_link(oc, "iommufd", TYPE_IOMMUFD_BACKEND,
-> +                                   offsetof(VirtMachineState, iommufd),
-> +                                   object_property_allow_set_link,
-> +                                   OBJ_PROP_LINK_STRONG);
-> +    object_class_property_set_description(oc, "iommufd",
-> +                                          "Set the IOMMUFD handler from \"-iommufd\"");
 > +
->      object_class_property_add_str(oc, "iommu", virt_get_iommu, virt_set_iommu);
->      object_class_property_set_description(oc, "iommu",
->                                            "Set the IOMMU type. "
+> +    while ((dent = readdir(dir))) {
+> +        if (!strncmp(dent->d_name, "smmu3.0x", 7)) {
+> +            nested_smmu = g_new0(VirtNestedSmmu, 1);
+> +            nested_smmu->index = num;
+> +            nested_smmu->smmu_node = g_strdup(dent->d_name);
+> +            QLIST_INSERT_HEAD(&vms->nested_smmu_list, nested_smmu, next);
+> +            num++;
+> +        }
+> +    }
+> +
+> +    if (num == 0) {
+> +        error_setg_errno(errp, errno,
+> +                         "couldn't find any SMMUv3 HW to setup nesting");
+> +    }
+> +
+> +    return num;
+> +}
+> +
+>  static void virt_set_iommu(Object *obj, const char *value, Error **errp)
+>  {
+>      VirtMachineState *vms = VIRT_MACHINE(obj);
+> @@ -2676,6 +2707,7 @@ static void virt_set_iommu(Object *obj, const char *value, Error **errp)
+>          vms->iommu = VIRT_IOMMU_SMMUV3;
+>      } else if (!strcmp(value, "nested-smmuv3")) {
+>          vms->iommu = VIRT_IOMMU_NESTED_SMMUV3;
+> +        vms->num_nested_smmus = virt_get_num_nested_smmus(vms, errp);
+>      } else if (!strcmp(value, "none")) {
+>          vms->iommu = VIRT_IOMMU_NONE;
+>      } else {
+> @@ -3232,6 +3264,9 @@ static void virt_instance_init(Object *obj)
+>      /* The default root bus is attached to iommu by default */
+>      vms->default_bus_bypass_iommu = false;
+>  
+> +    /* Default disallows nested SMMU instantiation */
+> +    vms->num_nested_smmus = 0;
+> +
+>      /* Default disallows RAS instantiation */
+>      vms->ras = false;
+>  
 > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 7df0813e28..d5cbce1a30 100644
+> index d5cbce1a30..e0c07527c4 100644
 > --- a/include/hw/arm/virt.h
 > +++ b/include/hw/arm/virt.h
-> @@ -36,6 +36,7 @@
->  #include "hw/arm/boot.h"
->  #include "hw/arm/bsa.h"
->  #include "hw/block/flash.h"
-> +#include "sysemu/iommufd.h"
->  #include "sysemu/kvm.h"
->  #include "hw/intc/arm_gicv3_common.h"
->  #include "qom/object.h"
-> @@ -154,6 +155,7 @@ struct VirtMachineState {
+> @@ -135,6 +135,12 @@ struct VirtMachineClass {
+>      bool no_ns_el2_virt_timer_irq;
+>  };
+>  
+> +typedef struct VirtNestedSmmu {
+> +    int index;
+> +    char *smmu_node;
+> +    QLIST_ENTRY(VirtNestedSmmu) next;
+> +} VirtNestedSmmu;
+> +
+>  struct VirtMachineState {
+>      MachineState parent;
+>      Notifier machine_done;
+> @@ -153,6 +159,7 @@ struct VirtMachineState {
+>      bool ras;
+>      bool mte;
 >      bool dtb_randomness;
+> +    int num_nested_smmus;
 >      OnOffAuto acpi;
 >      VirtGICType gic_version;
-> +    IOMMUFDBackend *iommufd;
->      VirtIOMMUType iommu;
->      bool default_bus_bypass_iommu;
->      VirtMSIControllerType msi_controller;
+>      IOMMUFDBackend *iommufd;
+> @@ -178,6 +185,7 @@ struct VirtMachineState {
+>      char *oem_id;
+>      char *oem_table_id;
+>      bool ns_el2_virt_timer_irq;
+> +    QLIST_HEAD(, VirtNestedSmmu) nested_smmu_list;
+>  };
+>  
+>  #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
 

@@ -1,108 +1,118 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3323149njb;
-        Tue, 9 Jul 2024 07:22:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVJlzF1wkoJTfZZzivH6n/LMEB7DTMk57pnLEsUrj4LYY0ODcEKzmJFhHy3ilF0XJxf3FgPFRhvbAYSknnefS+L/JVIDzQK
-X-Google-Smtp-Source: AGHT+IEaFsUD/QFZFsJRj9XC3tZ7SgKDppFMpcmYwEBpS3lHTqMpEajQYomt2f7md3yHJeEfXgU+
-X-Received: by 2002:ac8:5810:0:b0:445:397:e629 with SMTP id d75a77b69052e-447faa83e99mr40122871cf.45.1720534969480;
-        Tue, 09 Jul 2024 07:22:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720534969; cv=none;
+Received: by 2002:a05:7022:1005:b0:83:cb6b:1575 with SMTP id em5csp1559354dlb;
+        Tue, 9 Jul 2024 08:26:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUMhQAzvChuaCbiY6YRpC02I/T6KTCnbpOU7bJ0+oBmXl4ZCOKPfx1UBgnmgnTyarWw1BL1p+S3eMVIQdoz6b9Cxgmd9m8v
+X-Google-Smtp-Source: AGHT+IGevtZGjSg8PxnZ3RCkNml8DDQQMZAx3BwJ8CDULTgtKeCz/Qdb8crHeCAtnfvJrs5K5b7y
+X-Received: by 2002:a05:6214:2b0a:b0:6b5:a4c6:4b3b with SMTP id 6a1803df08f44-6b61c1cff6fmr36418536d6.54.1720538794860;
+        Tue, 09 Jul 2024 08:26:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720538794; cv=none;
         d=google.com; s=arc-20160816;
-        b=uUSZHQi9ohpgamMq+jpZq7gPdp8xMoFewDRq2zBVNpWOnYYdwKcwgYU2YcSmeQfNGy
-         jndMeyXyEfcg+Mf3CmjfzOdnXqrfwYaivfaA850Xp0rIhWryND/3udWBZpvf1AFW+8UL
-         UEnC6iIJXuqUYOtvz02lg4qk0sM0zx2c0EOaqendWAEI2ibleamjxBXRCiwcBBLOduE9
-         8VBnC2OqUqePTJxEC3CvfNRnD0A8V/TIz/1ETMTPSllOdNS6R5KWleME6y3vBD6Ioh6t
-         D9gGuYHd9y+b41NUvm40g58At7Z4ZDoXGYV1upD3rcczzaNz8t0JAHDuS8kNRKN3zryL
-         hMtg==
+        b=N03NJP4iWsPz1fig+SuEKnCS6/CRavUdWgiWjHeR7x2WKvLAFMzvDVVoq+jPUA5s4m
+         63xgAItNZBvy2RYRLwzvhURPTDwE2XRl9KCZpB7lhC+/gvRYy+ZN4JoQRB8BeHPpMF7+
+         V1pKVCPdQVVrTjUDngq/pPWp0WK/B6ukhn03wlBZ0pI971t/RNWEuPwW5O3IbWNeyv10
+         lt/Riu1ZnKpirp6IlUJbbVjcLMqBkNsJHkScS0zgcqja+kCkiXaR2rwBfw4HTm+MQn4u
+         2+n1B0MPHIqcV+B9EowabKOTGDcVWcm6DYfxkPOOtG+EtvWX9z1jjuKUh6SEDun4ERV2
+         s+kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=XvZkY9NN1zlzy7afgSOGV7uANiG1b06UW33WFeFf128=;
-        fh=lNHdgysKChd59r4MfAKoXqViEB99zuPQd9uZ0P1rdJc=;
-        b=saMqWUEZXgE7Qn/+btLNKu4dnFzZw3CF972/6HJVdtR5RbjvHjNRe2cH/jKhxXCNSz
-         Y2qGTLpMbAkkj17K0qouA641t6wbuHPyixVGq9LMQ6rrOS7yTZhvxRZTkJev3zViqzZk
-         W+TDoVqmhv1qKSuoOw2a9FMOcwqd1158tr38phIa+2K+aFB+1oNizoAIUDnljK/2uxom
-         Pl2bVLp3fX3p4q9iGptVDlDS6+TGrHkAmWZpsfKTgUNE/wLJzdNik1958ugivKTf3N9W
-         MB490Z8z2qlMiM7a6eznEiex6X+m55b5C3AYIvGtbBWwE0vC3fql896XTyx2MbVM/I+s
-         eORA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Qg1OvvbVnYB9NkPyvKNWOuJA/h7PKPgrnxpR3YQLVd8=;
+        fh=MYHLfIjJ6Hvx7rPuopPO2Khw7ypziP9+A2jw2XPCPDM=;
+        b=Sfbw2mPEsHjyec+RyPCy2VfWarctkEiio0pprBm4TX8K753dBAJDth8viNzCn+XGr9
+         ylCq6oHGLj55dbRMEwKxBuF39PBTGP3ZJZBUT2WuD4wQAFqVbmsQ+QrQnOJFvKykf7YR
+         llk5adnY24EzouDcdarCO8i6Wzy+x66d7jvHy3nAWVsSQCWMqC8CL+119NETFkq3hw70
+         1sVfjp6Al2YA+8AS43g+x6dixQbkzynd924AZ+h0hSdYc5osoKQekVFLPvzZ+Et5r4vc
+         NsMN1egU852gRTYTAW1lG1Ai8NdMAJUWJZ1jDMtgsn6yp7/nWWclAhsqHHlttfjXAKNa
+         vCnQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MsRAC9uA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qe79qGCD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-447f9ba9338si24749261cf.255.2024.07.09.07.22.49
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b61ba8f35esi24006866d6.214.2024.07.09.08.26.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2024 07:22:49 -0700 (PDT)
+        Tue, 09 Jul 2024 08:26:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MsRAC9uA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qe79qGCD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRBk0-00079g-28; Tue, 09 Jul 2024 10:22:48 -0400
+	id 1sRCjN-0002u5-T9; Tue, 09 Jul 2024 11:26:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sRBjx-0006ud-GD
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 10:22:45 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRCjM-0002rl-0b
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 11:26:12 -0400
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sRBjv-0001zG-Pq
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 10:22:45 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-58b0dddab8cso7716539a12.0
- for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 07:22:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRCjK-0006BX-6X
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 11:26:11 -0400
+Received: by mail-lj1-x236.google.com with SMTP id
+ 38308e7fff4ca-2ebed33cb65so66273581fa.2
+ for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 08:26:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1720534962; x=1721139762; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=XvZkY9NN1zlzy7afgSOGV7uANiG1b06UW33WFeFf128=;
- b=MsRAC9uA3KiF/hH28BjV9gBEpVYHU5YOmE9L1dBsby6pLYd/W8m+JxiW3uHMv+PzZu
- M4Fd3cDG6e/ur4AXfeZIp17Z1BpfQ7bNCWixtaTk7tXNK3+XyI7DvR/rK7Jj94Lu6vuG
- XQYoA7zOp6Mwb+QE3eiBaGjrw3YlnLEvEYyb3KgAWbFtg2co48wT3FxWhlwjGx+jsyf8
- 6udZGl93z7NrAjPTiAhpSGGZ79FiHN7K3Krgqi3QN9OFvMEPBKo6vwRfIATlU1tRocjU
- YONFUku/Igdlvw/3SOJKR38UDexITNjvfwqXoKO1pwfEvrr+zkMResISwnztJruQvDkv
- +u8g==
+ d=linaro.org; s=google; t=1720538768; x=1721143568; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Qg1OvvbVnYB9NkPyvKNWOuJA/h7PKPgrnxpR3YQLVd8=;
+ b=qe79qGCD1MrbcMPa5Gab6KXm3Nom68m4Ba/FUfPkxD7HRbaDMnBpmf71NCmQsMPoaj
+ Em3nKRdpmg4bPTlFPRbRj80Z7OfYIHDFpHlxu612pdUb3Sw1LeV2x0KkEu5VuM/Oszim
+ jycivY+2dXA4noodsz11gZrjS4gnMkGuORWQqzc1xORX7c/uf5gDmxiOYyqU3uX7H4Ls
+ 3bGHS+tcrTODHJRjROmtEts6eA+lO/ZJyiGMRn5MkiKp1JFlnNR6OziIn8f9yZmECK2u
+ ELYneF1zN0D1ZqUSlsP7BmwTFGW4UfsQ3Cnhjz5Gb4Av2vDRU6lvn0ZD20OfG3imsJ+R
+ s91g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720534962; x=1721139762;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=XvZkY9NN1zlzy7afgSOGV7uANiG1b06UW33WFeFf128=;
- b=To+fBxZ8rEzaFHAtSS1yEZyj91NYGcCj0A+9HKE/1jpSmrspAeCTj8Rluz8Cwo4OQo
- +EDw3qF7ErnX3+t8wRpprJrjv66D+qXMLEwIKMaW/ces95BdGgK0Q7N/EIGBAkKz6QH1
- QCWuTp4qEpS1xQ+fqb8tz9zyBQC5kkF1vhboAWugiLH7o6+DMugfsTHYKHzMVdjbCCaU
- 3suyV6j/qWK47QopiNswsoTtb5shyxQQ7CqPLHMImYi3cRfcXuwPZaF9abvpRo8W5WlT
- dOlrB2sHR4MgQ+NZGs2KipQBFNiNCNgPP5D9Efpwv6M+LoWRmGST+YvbM5LSNY5z1hoe
- +eaA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWtM/6RXg4EmC390udrlF0DthCDHnBxXZjUYMhz8jqiMgZQPa5rOG2LkX2tapUxVZaxnbLtJdiiHMdg8sKVaQ40x9nS
-X-Gm-Message-State: AOJu0YzVj8c8sWgroppcRVtzqwkmP+GhH3LCGvZVvjCqptH1bbgppBc4
- 3+FlhCgfTBnv/me1TaUI5Gjx78bQrVidOQPjoFdIB3Io+HOTxhk7KgY7cprD9W5YIDBLfk7nVwe
- /qm+jsfulWY27M/hH6b5OG1N5c6HiaMzFK827wA==
-X-Received: by 2002:a05:6402:b19:b0:58d:842:6272 with SMTP id
- 4fb4d7f45d1cf-594bb67e9demr1491419a12.25.1720534962490; Tue, 09 Jul 2024
- 07:22:42 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1720538768; x=1721143568;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Qg1OvvbVnYB9NkPyvKNWOuJA/h7PKPgrnxpR3YQLVd8=;
+ b=Htm+HEbhiM2aTKAMq7NAe2+2RdJCM7ikVDkCtfJG+eARGFZcAemLjIE72jkG+BmO+o
+ MAtYjspM4B4DgGSkluC1jT2Wk2iktO0L7QSCPudheBU2q/TDMug5+KMYfBCIsvQnRFn7
+ oAD9PrqXt96nbSvcool1+wMX/woTZXNji0388rEfFRxVRStMAL+8DenK/zwjmj+1M3HV
+ wo3VP8uIifjL6qqe1Z2YB/kIEtOnkro3ZZVlwnZIyDvQcNRDhp1XY//8j/HaHgSfAq11
+ uxsoZ1TJALZumAxhlHgwObDzoLjz8rnvoyXKTIbhKXPDgU/WtDzKznJzZYFcXyabvfOA
+ tABg==
+X-Gm-Message-State: AOJu0YyC63794NyJd9zUtYZJjGu0LPrbki5GnW1TQCG8qx/WJHo0p3ss
+ txT91/NP/s3y5bGOOm+hsjE3cacpsUuS0wTPxlOVt2zWhcPnmgNKBX0ibYDdsfY=
+X-Received: by 2002:a2e:3014:0:b0:2ec:543f:6013 with SMTP id
+ 38308e7fff4ca-2eeb30d9814mr18582841fa.13.1720538766585; 
+ Tue, 09 Jul 2024 08:26:06 -0700 (PDT)
+Received: from m1x-phil.lan (vau06-h02-176-184-43-20.dsl.sta.abo.bbox.fr.
+ [176.184.43.20]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4266f6f5f25sm46032035e9.26.2024.07.09.08.26.04
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 09 Jul 2024 08:26:06 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-block@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Bin Meng <bmeng.cn@gmail.com>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v47 01/19] hw/sd/sdcard: Basis for eMMC support
+Date: Tue,  9 Jul 2024 17:25:38 +0200
+Message-ID: <20240709152556.52896-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240709152556.52896-1-philmd@linaro.org>
+References: <20240709152556.52896-1-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20240709000610.382391-1-richard.henderson@linaro.org>
- <20240709000610.382391-7-richard.henderson@linaro.org>
-In-Reply-To: <20240709000610.382391-7-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Jul 2024 15:22:31 +0100
-Message-ID: <CAFEAcA_0K6awDE1KS_0=3R_PiXrxP7xjLD=bHtdSjFkDuPmXnQ@mail.gmail.com>
-Subject: Re: [PATCH 6/6] target/arm: Convert PMULL to decodetree
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::236;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x236.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,14 +134,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: S6BRdUgM6krq
+X-TUID: bwmc+9SFk32I
 
-On Tue, 9 Jul 2024 at 01:07, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Add basis for supporting eMMC.
 
-thanks
--- PMM
+Since eMMC are soldered on boards, it is not user-creatable.
+
+Currently TYPE_EMMC is just a stub, so disabled (marked abstract).
+
+RCA register is initialized to 1, per spec v4.3,
+chapter 8.5 "RCA register":
+
+  The default value of the RCA register is 0x0001.
+  The value 0x0000 is reserved to set all cards into
+  the Stand-by State with CMD7.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/sd/sd.h |  3 +++
+ hw/sd/sd.c         | 50 +++++++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 52 insertions(+), 1 deletion(-)
+
+diff --git a/include/hw/sd/sd.h b/include/hw/sd/sd.h
+index 0d6d9e452b..d35a839f5e 100644
+--- a/include/hw/sd/sd.h
++++ b/include/hw/sd/sd.h
+@@ -96,6 +96,9 @@ OBJECT_DECLARE_TYPE(SDState, SDCardClass, SD_CARD)
+ #define TYPE_SD_CARD_SPI "sd-card-spi"
+ DECLARE_INSTANCE_CHECKER(SDState, SD_CARD_SPI, TYPE_SD_CARD_SPI)
+ 
++#define TYPE_EMMC "emmc"
++DECLARE_INSTANCE_CHECKER(SDState, EMMC, TYPE_EMMC)
++
+ struct SDCardClass {
+     /*< private >*/
+     DeviceClass parent_class;
+diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+index d6a07f0ade..91a73aea8d 100644
+--- a/hw/sd/sd.c
++++ b/hw/sd/sd.c
+@@ -2,6 +2,8 @@
+  * SD Memory Card emulation as defined in the "SD Memory Card Physical
+  * layer specification, Version 2.00."
+  *
++ * eMMC emulation defined in "JEDEC Standard No. 84-A43"
++ *
+  * Copyright (c) 2006 Andrzej Zaborowski  <balrog@zabor.org>
+  * Copyright (c) 2007 CodeSourcery
+  * Copyright (c) 2018 Philippe Mathieu-Daudé <f4bug@amsat.org>
+@@ -169,12 +171,18 @@ struct SDState {
+ static void sd_realize(DeviceState *dev, Error **errp);
+ 
+ static const SDProto sd_proto_spi;
++static const SDProto sd_proto_emmc;
+ 
+ static bool sd_is_spi(SDState *sd)
+ {
+     return sd->proto == &sd_proto_spi;
+ }
+ 
++static bool sd_is_emmc(SDState *sd)
++{
++    return sd->proto == &sd_proto_emmc;
++}
++
+ static const char *sd_version_str(enum SDPhySpecificationVersion version)
+ {
+     static const char *sdphy_version[] = {
+@@ -697,7 +705,7 @@ static void sd_reset(DeviceState *dev)
+     sd->state = sd_idle_state;
+ 
+     /* card registers */
+-    sd->rca = 0x0000;
++    sd->rca = sd_is_emmc(sd) ? 0x0001 : 0x0000;
+     sd->size = size;
+     sd_set_ocr(sd);
+     sd_set_scr(sd);
+@@ -2375,6 +2383,13 @@ static const SDProto sd_proto_sd = {
+     },
+ };
+ 
++static const SDProto sd_proto_emmc = {
++    /* Only v4.3 is supported */
++    .name = "eMMC",
++    .cmd = {
++    },
++};
++
+ static void sd_instance_init(Object *obj)
+ {
+     SDState *sd = SDMMC_COMMON(obj);
+@@ -2446,6 +2461,15 @@ static void sd_realize(DeviceState *dev, Error **errp)
+     }
+ }
+ 
++static void emmc_realize(DeviceState *dev, Error **errp)
++{
++    SDState *sd = SDMMC_COMMON(dev);
++
++    sd->spec_version = SD_PHY_SPECv3_01_VERS; /* Actually v4.3 */
++
++    sd_realize(dev, errp);
++}
++
+ static Property sdmmc_common_properties[] = {
+     DEFINE_PROP_DRIVE("drive", SDState, blk),
+     DEFINE_PROP_END_OF_LIST()
+@@ -2457,6 +2481,10 @@ static Property sd_properties[] = {
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 
++static Property emmc_properties[] = {
++    DEFINE_PROP_END_OF_LIST()
++};
++
+ static void sdmmc_common_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -2509,6 +2537,20 @@ static void sd_spi_class_init(ObjectClass *klass, void *data)
+     sc->proto = &sd_proto_spi;
+ }
+ 
++static void emmc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    SDCardClass *sc = SDMMC_COMMON_CLASS(klass);
++
++    dc->desc = "eMMC";
++    dc->realize = emmc_realize;
++    device_class_set_props(dc, emmc_properties);
++    /* Reason: Soldered on board */
++    dc->user_creatable = false;
++
++    sc->proto = &sd_proto_emmc;
++}
++
+ static const TypeInfo sd_types[] = {
+     {
+         .name           = TYPE_SDMMC_COMMON,
+@@ -2530,6 +2572,12 @@ static const TypeInfo sd_types[] = {
+         .parent         = TYPE_SD_CARD,
+         .class_init     = sd_spi_class_init,
+     },
++    {
++        .name           = TYPE_EMMC,
++        .parent         = TYPE_SDMMC_COMMON,
++        .class_init     = emmc_class_init,
++        .abstract       = true, /* FIXME: Remove once model fully functional */
++    },
+ };
+ 
+ DEFINE_TYPES(sd_types)
+-- 
+2.41.0
+

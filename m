@@ -1,119 +1,186 @@
-Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3300403njb;
-        Tue, 9 Jul 2024 06:45:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVXFCA5f77wV2g6rx6Bm55n4PtC4oRakNCj/gpkclK29/lxJTJKaKRDFtjqCRXEUKzBBsGuRcZ3IVX2U4kP53/9+7mNLlXm
-X-Google-Smtp-Source: AGHT+IGbSSCvLYqGvjCSZcsCLXTOcfCKsu4Jd5gBcq1NOvpZJNxH+z+iX1NbsA0BaH0sAoLzchZI
-X-Received: by 2002:ac8:7f92:0:b0:447:d640:aabc with SMTP id d75a77b69052e-447faaa4c2fmr23615571cf.63.1720532753946;
-        Tue, 09 Jul 2024 06:45:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720532753; cv=none;
+Received: by 2002:a17:505:564d:b0:1be9:327d:8ee3 with SMTP id jl13csp3093792njb;
+        Mon, 8 Jul 2024 23:05:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWKdFtobRLUQ+7KRK2zGwe1EftWKNYXFtXxlrphtzVjZR4cWXNlUQhMCeB1CTJPFTl3bnVUQZ8ukfaYRwG2gVVTPu2cYHjh
+X-Google-Smtp-Source: AGHT+IEh/DT+bgqrIVPTJFDoagivAl8qEnp3UFJU1DGfwdOol3XhxlFNCdp+G7FQkjtmS8z37za5
+X-Received: by 2002:a05:6214:1c8f:b0:6b0:63ab:b7ba with SMTP id 6a1803df08f44-6b61bca197dmr20161486d6.15.1720505144440;
+        Mon, 08 Jul 2024 23:05:44 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1720505144; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ipb3Sxnqdlel8YcO7TX07n7A/hdTyBX7wiGNYdswiC7M4Ap/duqxarI1gA0egER+nr
-         Zs+LRDLG2XFzareXKFW+zQyfYIPlYg6xGAF6cHABbFyH/WNBnFaT8V3tQbFocinAP+ON
-         pg5nghzjN6Wlj/hTFYKujehd5+wraVfkfinz1piWHczOwPWqZkThKzeIkeegT/bls/QO
-         yKomFuG24MXFyQ4S1GvH1giyE6qThk14pcmO/H1Ydngv6//F9RxpDH3bAh8LDuFFvqHh
-         5OjNF7sgBBgdRqLwn1Y8/lUoRntm/wIybx5ze9GTNy8GIdST8sFS4+AgW7XUkwFg5rIq
-         klWw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=rpbOxOKnztNV/cY60ws+6ShV+1W3H2bDNOT9UqjOdFeFOBBDPRGvWVZ8h+wnQrzAWC
+         eeKZgJtpP7HJlQ12+VeDEAZcGnk/ZxsBi32TirKeElk3tchJNA4CMiJKmOqicyoehKyO
+         mcaTrS64QDnsePBl/SL433pplm8CvMPuPrPBqz9GKiaX6SMOwZ2HkYzQ5QwVfzMEbYeQ
+         /Nmj9CdKCJJuxE6+JK3xGGdlV2VJhdEh1c657c1E6Xrb8i1j30Rw+fLJDiE8SVoV85eF
+         ehsRNaiWaKDJK8qt1YraRJMfpl5zQ0mvMwBDq5v5htSkWq2CzZck5VlOklF3Qnd1Z/Xm
+         yh5Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=6Dy9tTmWCONrl3V4OHSFlfMTEYKzq0YJeFJJEkMNS3s=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=TwJZQwGYNAvhLgVbGVga6nk/sdY/yojDs9qMTmVUBeLJsMx0Y7aExBcto+DVRVTbRX
-         g9MXMwGcvBncItES/Yd4bHukcofzuJqeEYbU5wd6s+wXwHYPcaYOqTdOUySdrEqrs6x3
-         atOMyAykfKQO4O9Bfz9lTwSLVfb0hDqHBaKGmY2egiV8aBwLkUCS5w5yjS5br0VYI0Ch
-         GeeJ42jUELAm6a3gfk4k2d+nBg2VXpikkO7C/Zj/39SUM5FtxHm8zg6O7TbGX20DNN3m
-         reGh4/K5YmOPSz5g5ouIovzNmYjmR9mcrc+EyL/Gvil16CFQaMdBCVMlyHkswd44cYAq
-         bAXA==;
+        bh=c2cRKcukKCWVNpDlp67KfDkVO2TwoI5+vukjMLxJhCM=;
+        fh=YhWKwn7uBGn82gqdsl4BNdOsF2XmZgXyKz4gLh7OVk4=;
+        b=Y7F/lc7qYOpePeT9b0r0fi6Y0JAqyUTAQSV8EaqGj1Pz+0/3v8RUjf/APITxKDyEwn
+         8fJWcPv6a2IBaC1ON6vLMRtigfVqjO5dpst32NeeU7O3lZ9ZPqcuOuzoLkYmMEFzI/Hd
+         OCR8eK1nwlZ4Rw8CgxvsJonrYpEBWxa/vsaJgczZPpwKbNPu/0uslppiussqdV0OVAjo
+         KJvEW5yHLu595fIyQF1aHXpwhpN2FiFP1Nz3QtCTFhu2HyULjCG7qYQuhrCsV93SAr0Y
+         FMv4hBMQb7Xn8FofWDGvs5cW0EkLq/kVjTkE5WgMeGJ3QLu5asx5SLlFKroIqUF5kRai
+         Ug6g==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=alWsvwfh;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=gy0tzwUj;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79f190d7d05si208561085a.649.2024.07.09.06.45.53
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b61bafd89asi15593026d6.567.2024.07.08.23.05.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2024 06:45:53 -0700 (PDT)
+        Mon, 08 Jul 2024 23:05:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=alWsvwfh;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=gy0tzwUj;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRB9r-0001jJ-Ku; Tue, 09 Jul 2024 09:45:27 -0400
+	id 1sR3yl-0003l5-1A; Tue, 09 Jul 2024 02:05:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sRB9m-0001ga-U5
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 09:45:24 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sRB9Z-0002Ib-IH
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 09:45:21 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-42579b60af1so36534685e9.2
- for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 06:45:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <gankulkarni@os.amperecomputing.com>)
+ id 1sR3yj-0003kI-1k; Tue, 09 Jul 2024 02:05:29 -0400
+Received: from mail-eastusazlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c101::3] helo=BL0PR05CU006.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gankulkarni@os.amperecomputing.com>)
+ id 1sR3ye-0005De-HO; Tue, 09 Jul 2024 02:05:26 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NScMd8ah/0r66jWno0u2TPdyv7s40uf0/rFfMjhh+edLeQMcWbRL0bUC/VNcFW+5xwq2oCMGUg8klEFhYWlMInLNthOq6ytwqAZoGLFjcM3EiEsZ+GWxNLeVA49Dr38GzoS1j0oF5357BCJCn0iWXzvwLLaXCKMmL0n+EIahd2G4jsC9DJlRqyYvTP7nQ/EBVRNHySi9ykcItQxNaK83K2wmGfCOUrmfLLggazd4ZxeCTmqDwfOXOEbDaJ0Oos3AKJL3/yiT1ukHoyRwUs2dlnyDwYBog1OdNunbN7luZUa+8s3RnBq7YRGysQwPX++zVXJWDQUx3BCl5sAB+QNdtA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=c2cRKcukKCWVNpDlp67KfDkVO2TwoI5+vukjMLxJhCM=;
+ b=S60u1AfKpe9bW+jGHtaZQu1kuB/IXO8MWlN+LTeW2VVYVWx8llVpn3C2iArIBsu3YZd9Ry7U6tUGTpOZKTiA1nIHS6zCB3NKopZwnMoUbwjOn8j0gng9Z3H2wL5UL5w19UypsG4U7mj0YkMIbCqaqWa7wfvX3WVLuEQzenHEdWPH7Z4R/24jHedhS5sFeA8g/YVnQTlP9jMihPeou+Qi5iinMy07wNfFdTs+H91YCojJA97JN/kMmhquWD1tCO+6OpgFv5TIEvB/v144Lt2X9rVb/+2BAe6E1t5kjQY1mZt5QrPuR6dq99Sy1WmXVcdhOZ/Y8dm/Q9LBVkJylbQGIg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
+ header.from=os.amperecomputing.com; dkim=pass
+ header.d=os.amperecomputing.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1720532707; x=1721137507; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=6Dy9tTmWCONrl3V4OHSFlfMTEYKzq0YJeFJJEkMNS3s=;
- b=alWsvwfhzHnK2URrWjrt8vbIVzzFbZM9aBR8ufViCm4XnoxDUoDTBHR19/R6xIhjHd
- T/P0aaGy9r7Nt+pMGTCsdihfNQuxq0P2Kntu/XLzufb+7wta7J7LCy4ka1HFcAxHhjU6
- oKjTkUaJ8NeaylYWs7uKQbp+w/TIT6ixi7pt9Q7b3R9SpumbgHH2Jid0pH3HYA3B0tKh
- W0rtYY+1PBNL5lLk5wgZJnHX54Jyjm2F2baqBKgi8wd1e6pI4cqECHm34DXmll1W3l6c
- bKxo4ouiZUUVcOsaSTcy7fbH1l1CK3ix6DchyxXrD/sHIM5/YOikCux4+EfVs26kG58W
- eZ1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720532707; x=1721137507;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=6Dy9tTmWCONrl3V4OHSFlfMTEYKzq0YJeFJJEkMNS3s=;
- b=U6NtU7tu7zppM/CYSWNtB+TrLGlfqqZ02JxgXu3KCTAXol59LV39eaWLd0uHzUyb3w
- SQ9WVMOFyuP1dYtiD1fwMaLCuzAE4sC6dclgp9CuW5wqA511TqjFy5WwPVEckH6u/hfb
- yuUleAVQvW7w4rYqBeL8UKJs9DLcFCN+uswhtInVaOlfKcW5RptyxxibuSNNtxzuPqpN
- eDB+uspdY+kG98jlKDqbybA09FzgX34MzJrgd+kDbKTEMEwK8moojevFHIAnLr3RRNo0
- s8zrjqC4vp0VRlP8jpDtF9dKX7cEyFTFoVtVz9RnQFSzzd5wBtkrWfYvmb++iFsfME1n
- Zhsw==
-X-Gm-Message-State: AOJu0Yw2paziVTolho5dZpVXwkKdxwg451eNwLOwg3AkR2ttrbuH1sAf
- c9YUe8OMl8w071OHJmz3k3RdY7ce69iCv+Jms6EgQK8R8n0hIvbE6IdYFIJaUwtZWRvixrwRwfY
- a9ps=
-X-Received: by 2002:a05:600c:4a98:b0:426:64a2:5362 with SMTP id
- 5b1f17b1804b1-426707cf1bdmr19111725e9.8.1720532706866; 
- Tue, 09 Jul 2024 06:45:06 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4264a1f22acsm210426605e9.24.2024.07.09.06.45.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Jul 2024 06:45:06 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
+ d=os.amperecomputing.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=c2cRKcukKCWVNpDlp67KfDkVO2TwoI5+vukjMLxJhCM=;
+ b=gy0tzwUja4EyYKzZTMEhHHyEoQH6PjZceasMZw3uC7mICkz5vuZWpJfIoPxdXOCnCva+B+RRdPxgSgo/0NE+49Sk4/YVtZJkcc8pln57+SSZ9QObRGf0rZsiPquX3LCpiioVVvf7BhizUDsnz6si2Mog1tFjt445FR6ONzr9BnA=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
+Received: from SJ2PR01MB8101.prod.exchangelabs.com (2603:10b6:a03:4f6::10) by
+ SJ0PR01MB6477.prod.exchangelabs.com (2603:10b6:a03:29b::15) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7741.36; Tue, 9 Jul 2024 06:05:17 +0000
+Received: from SJ2PR01MB8101.prod.exchangelabs.com
+ ([fe80::292:6d9c:eb9a:95c9]) by SJ2PR01MB8101.prod.exchangelabs.com
+ ([fe80::292:6d9c:eb9a:95c9%3]) with mapi id 15.20.7741.033; Tue, 9 Jul 2024
+ 06:05:17 +0000
+From: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/2] target/arm: LDAPR should honour SCTLR_ELx.nAA
-Date: Tue,  9 Jul 2024 14:45:04 +0100
-Message-Id: <20240709134504.3500007-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240709134504.3500007-1-peter.maydell@linaro.org>
-References: <20240709134504.3500007-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ darren@os.amperecomputing.com, gankulkarni@os.amperecomputing.com
+Subject: [PATCH] arm/kvm: add support for MTE
+Date: Mon,  8 Jul 2024 23:04:48 -0700
+Message-Id: <20240709060448.251881-1-gankulkarni@os.amperecomputing.com>
+X-Mailer: git-send-email 2.40.1
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-ClientProxiedBy: CH0PR04CA0022.namprd04.prod.outlook.com
+ (2603:10b6:610:76::27) To SJ2PR01MB8101.prod.exchangelabs.com
+ (2603:10b6:a03:4f6::10)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ2PR01MB8101:EE_|SJ0PR01MB6477:EE_
+X-MS-Office365-Filtering-Correlation-Id: 1c3d3979-3db1-43a5-7fc1-08dc9fdd1b11
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|366016|376014|52116014|1800799024|38350700014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?5WzqLEcSDmKAXmeT6sP5sCrmIYfKr87lyloRL/OX/tGTU+q7ngkyRhYwz7Fx?=
+ =?us-ascii?Q?liYc4+fvMV9rdXhqCcQ7MQNG2PXnIiHXJoAa6yPVip1VW66kezSIWfKxvgT3?=
+ =?us-ascii?Q?yyKewJZh2+c1AbXPLXifloVhAySHmdzMKp9Hc1WjHvj8Tjw005dde9ILYomH?=
+ =?us-ascii?Q?6Vfy9AgOWrcHY8XJlpMg+czyt5Qb6TSDZ01It1LoZQ2In9HD1o5IlOxgn4+/?=
+ =?us-ascii?Q?4fgN3Nwwks8GAfd9JtaBY5bjuuNaixy6KoybY/wKoRFdRrffaKSlm4Obqs5R?=
+ =?us-ascii?Q?tPoyT+7s3Ch9V2AVnxYY4JU5dTCDMm2yPQDcwk9rseTl2DNgEWlko5OXuUHG?=
+ =?us-ascii?Q?uhGAlweJVQspvYP6wDoZOyklOyfrXa1Js+plJsrCocotWBBe55ushW5grEzU?=
+ =?us-ascii?Q?9E1mwqnJ+tXov12bPB5pB63EKMnn5iwxnZvODG/P5XS+MyYOqT5HxEQAaVaL?=
+ =?us-ascii?Q?TfTHKmHqJ8F+U2GOnqlfId7oWCKPBOkCibOC7P7zB3eWixUZaKStSBeud2oV?=
+ =?us-ascii?Q?uPuZysZRBz93NsAA+RqpWtek2yLUMUC0X9n/82nWTlNMTdV8vXI8Z9+lfqxx?=
+ =?us-ascii?Q?5p9K8XAVfIGDMR1BTWNH9agdEGQHZyEBmSH9TMeqkAMBnWmhge4xRkqWKZPs?=
+ =?us-ascii?Q?NiDACZ10HCGlTbb5JgJsCJqRyaGEiIHuan50rFPtwtiq9u0E7PiIvZqCJ+a6?=
+ =?us-ascii?Q?7KCwP8Kxzzx8symIIW541PY70XWnkgRkRaDxieJ86PLtphlZpPK4IK5HOMKR?=
+ =?us-ascii?Q?c/jRG3La+bVISig8dDiNf8s+uMVQWo310a1h42sgLHsRAyxHdDVdwOItTy8x?=
+ =?us-ascii?Q?yN+1uxMdop04NpHOrE29jJdGB+LLO1fL0eX9dM+WoDSnFtzdBhxDPSlA8lw9?=
+ =?us-ascii?Q?AtIGwxjI6+GhnVb86NGmg4w6Yg/q7EdaMtqpm7fkRCgaNtdNQvQQAC8ECWBi?=
+ =?us-ascii?Q?XAFkxAoMaWslClTil/AHiCaJRhImSxBtqK2OQHS+QFmFsu1FkmNXmukTh0jj?=
+ =?us-ascii?Q?ilbvxKs4aOQ9IVWtILgsKcYS6Y5FAT4nEnDfFMvyQ+Wxgm/cz8Xhrxb9TAiG?=
+ =?us-ascii?Q?MNHxRGyyAho4n8EFXCkHqhIynd5DRy8XGO1QdKgiYsqZdPUySWwBchcdRbJW?=
+ =?us-ascii?Q?pgw1BIgee+9eVqmtTZre0AkRIdSSWcQ3RkxGxhFX2Qe6BN7srsMM/VKy5qyt?=
+ =?us-ascii?Q?6amMH6WFwjujChPxQCtI3axs/LjMtowOcgdK1ij2sSnp0+Gv6REbAlI4NyBb?=
+ =?us-ascii?Q?tGDw4lJYCSLao6tvNjJC9Bp0G4onZidwzs9trgYZ+Anwa9K9gIHG68IdtQ1f?=
+ =?us-ascii?Q?A3t3C8SCq8cPZx5wWOaiunbffyqCYm6V9/dT3rjJFGmU9L86aape+dzI9qD1?=
+ =?us-ascii?Q?G95J71QoZeM3T0E/mDaMsDxiQbuvWkLVjHBc34H/cCiaG+Z4MA=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ2PR01MB8101.prod.exchangelabs.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(52116014)(1800799024)(38350700014); DIR:OUT;
+ SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?izBBkWLXYc2vsWyJJfWiEbVLbhX5TR7TU/4cjL/7165vR0I0sEDJ2v5f5eNt?=
+ =?us-ascii?Q?arsl1G730lx/4qiUPhlP8JWdDOlCw0PG9RC/cu/r3si09XmFACHgxdBCDv1F?=
+ =?us-ascii?Q?YWVZBwkTTjuVNFVBXOUMB2SCnthFUXHDe7YLBq4Ev9UCk14dnJM95xL9oXR5?=
+ =?us-ascii?Q?FYNM1HGNo9YR8PMJheGUvUaQUwlzhE8e0gvzzcYb2Gw0xo5XwYe7hEWeTI48?=
+ =?us-ascii?Q?ZUOKzWIPHntegX9aLvdGhZ0oGDdVOxe0EAAESysx8zWo6AIVbwAVvGX0RZR1?=
+ =?us-ascii?Q?TICyMIV31U1Z2kR2adGG6LifM7mz9+Nr79meAvS/4HRrCTztGrExaQuplfMz?=
+ =?us-ascii?Q?HyOU92QPA6pzGrG63fmWa+nFkHT021DVpFB4RGuGgFF+otv5eic8664Q/xGg?=
+ =?us-ascii?Q?7z5XFEu4MGOtVDwCH5B/XEidMejMJOgKiCoc4fp+2XAld80bxFKUAtKV94Ol?=
+ =?us-ascii?Q?ZrFXEmxEngCxRfgDGt7oIqBImWl3G5hQHXK4u+tLZlSEOkwGIcT/WWDD2RZV?=
+ =?us-ascii?Q?umsQfwys7SapBFbtKAf7RA4ecuvSdVfXWD7CZdnR+IwvJecFAddogbzs5H71?=
+ =?us-ascii?Q?XgpPIP82Er7xsmLwV3PVldcLT2DWYqJeA8p4cLr1Txru/ToVzWQTZtUCTuex?=
+ =?us-ascii?Q?sodvgyGLYwYofHrDqdiQCRC6IPhnvf0Isi4wfWRFrmDpGPMk22fJtalY4mAZ?=
+ =?us-ascii?Q?jF8vmofvPugP+WgERTjN/lvVAFllxlAvci7fG4DGNVDRy6BHPuA5NQNM7Kvw?=
+ =?us-ascii?Q?AP3vYAhUrwTuiTuUESek/5lNStrB89z/Wvy4Y3FJOsaMndrk4CEoW64hI6qT?=
+ =?us-ascii?Q?AlGeNBWLtRuVCC4Al5QjjwEAn6bGK6j7owAms2hZt5G36Q7ql4eMTAUJsBkk?=
+ =?us-ascii?Q?Au+EjE4nOXFEBAK2PIgGDUh7QqMvcUDzEqBWvS8H1RP8q3gh5u+2NNM4Wbea?=
+ =?us-ascii?Q?cFhsaxnKNrCs8O4fb7v0XFg1spy7Mtd7nBnZMfo9hPUgVhzdNquEFS39KJ/P?=
+ =?us-ascii?Q?EvUaWhQFeX9xb0M31tnb9bo+04NBQyTm49sPnfGx+s0LKo1nNNYsGTKXLv9j?=
+ =?us-ascii?Q?CL0zN2TDG5lD/wnAYb3OXUPKfJcz0G8cuebR1L78c0AI1AmjBP+MFfp8TmvT?=
+ =?us-ascii?Q?xd/kgrvEvKJz5D6cIDZacmqH8tbrkZ3H4xpBkPwiWH98O3NFxE9PGXuTL70Z?=
+ =?us-ascii?Q?ObXxmGYeL5i6ufy3FuBcpsqO92j/BGar4f59e8XI+Xko5hvIcaI7ZCwbdrB3?=
+ =?us-ascii?Q?NkjUd3hvEZI3QEgbQSCGfHMR3z9B04yA392svTkSHlGd7JrI06ra/bZE+eSR?=
+ =?us-ascii?Q?/JicnoC6kxnlBxuxsSKhExr3/HkjV/NEvwPaQKFExG6eU8c33Xn3OCGuqe15?=
+ =?us-ascii?Q?o+Wr0uJoR4j8N5/Py2ckWTIfVXtm5dXr9ee5tFzWoKQTRbRUmuXl9IHNOR+6?=
+ =?us-ascii?Q?mmAoXzW8SQ4qOXP3oybJ1IBYh/kRrllpw/xzq8Vr+gKXNKxDh/0Hbzyb81pQ?=
+ =?us-ascii?Q?wdq2plxRFSeUTpdl7IMJJvJ8Xx+3BTK7nvT7N3tZH9bIfw719YmuMvRtovRG?=
+ =?us-ascii?Q?M9C1+J9jdlngwT8Q/WeUZEJbJrHKraqW5YIDddjfile3FUM+uilKM4kxcm0E?=
+ =?us-ascii?Q?WVoHiibgNw/jZltkXeFbKQ8=3D?=
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1c3d3979-3db1-43a5-7fc1-08dc9fdd1b11
+X-MS-Exchange-CrossTenant-AuthSource: SJ2PR01MB8101.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jul 2024 06:05:17.1702 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 4qu6BDH5taWH9yN31LoSSH3TEQFdnf1DVM6KPTiIKJZNzqZZSGLmkKKDQxu+m9o7DtJQU2RhyLdSwotrj+s87oANfh4ScSjkoCwkanqg50pRPvH17zv0/gJMBX5lKnnQ
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR01MB6477
+Received-SPF: pass client-ip=2a01:111:f403:c101::3;
+ envelope-from=gankulkarni@os.amperecomputing.com;
+ helo=BL0PR05CU006.outbound.protection.outlook.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,51 +195,255 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sq7R7fX/5LZs
+X-TUID: TbNMmd6ny4bD
 
-In commit c1a1f80518d360b when we added the FEAT_LSE2 relaxations to
-the alignment requirements for atomic and ordered loads and stores,
-we didn't quite get it right for LDAPR/LDAPRH/LDAPRB with no
-immediate offset.  These instructions were handled in the old decoder
-as part of disas_ldst_atomic(), but unlike all the other insns that
-function decoded (LDADD, LDCLR, etc) these insns are "ordered", not
-"atomic", so they should be using check_ordered_align() rather than
-check_atomic_align().  Commit c1a1f80518d360b used
-check_atomic_align() regardless for everything in
-disas_ldst_atomic().  We then carried that incorrect check over in
-the decodetree conversion, where LDAPR/LDAPRH/LDAPRB are now handled
-by trans_LDAPR().
+Extend the 'mte' property for the virt machine to cover KVM as
+well. For KVM, we don't allocate tag memory, but instead enable
+the capability.
 
-The effect is that when FEAT_LSE2 is implemented, these instructions
-don't honour the SCTLR_ELx.nAA bit and will generate alignment
-faults when they should not.
+If MTE has been enabled, we need to disable migration, as we do not
+yet have a way to migrate the tags as well. Therefore, MTE will stay
+off with KVM unless requested explicitly.
 
-(The LDAPR insns with an immediate offset were in disas_ldst_ldapr_stlr()
-and then in trans_LDAPR_i() and trans_STLR_i(), and have always used
-the correct check_ordered_align().)
+This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
+which broke TCG since it made the TCG -cpu max
+report the presence of MTE to the guest even if the board hadn't
+enabled MTE by wiring up the tag RAM. This meant that if the guest
+then tried to use MTE QEMU would segfault accessing the
+non-existent tag RAM.
 
-Use check_ordered_align() in trans_LDAPR().
-
-Cc: qemu-stable@nongnu.org
-Fixes: c1a1f80518d360b ("target/arm: Relax ordered/atomic alignment checks for LSE2")
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
 ---
- target/arm/tcg/translate-a64.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 6c07aeaf3bd..5ea204d5009 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -3543,7 +3543,7 @@ static bool trans_LDAPR(DisasContext *s, arg_LDAPR *a)
-     if (a->rn == 31) {
-         gen_check_sp_alignment(s);
+This patch is boot tested on ARM64 with KVM and on X86 with TCG for mte=on
+and default case(no mte).
+
+ hw/arm/virt.c        | 72 ++++++++++++++++++++++++++------------------
+ target/arm/cpu.h     |  1 +
+ target/arm/kvm.c     | 40 ++++++++++++++++++++++++
+ target/arm/kvm_arm.h | 19 ++++++++++++
+ 4 files changed, 102 insertions(+), 30 deletions(-)
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b0c68d66a3..cc9db79ec3 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2206,7 +2206,7 @@ static void machvirt_init(MachineState *machine)
+         exit(1);
      }
--    mop = check_atomic_align(s, a->rn, a->sz);
-+    mop = check_ordered_align(s, a->rn, 0, false, a->sz);
-     clean_addr = gen_mte_check1(s, cpu_reg_sp(s, a->rn), false,
-                                 a->rn != 31, mop);
-     /*
+ 
+-    if (vms->mte && (kvm_enabled() || hvf_enabled())) {
++    if (vms->mte && hvf_enabled()) {
+         error_report("mach-virt: %s does not support providing "
+                      "MTE to the guest CPU",
+                      current_accel_name());
+@@ -2276,39 +2276,51 @@ static void machvirt_init(MachineState *machine)
+         }
+ 
+         if (vms->mte) {
+-            /* Create the memory region only once, but link to all cpus. */
+-            if (!tag_sysmem) {
+-                /*
+-                 * The property exists only if MemTag is supported.
+-                 * If it is, we must allocate the ram to back that up.
+-                 */
+-                if (!object_property_find(cpuobj, "tag-memory")) {
+-                    error_report("MTE requested, but not supported "
+-                                 "by the guest CPU");
+-                    exit(1);
++            if (tcg_enabled()) {
++                /* Create the memory region only once, but link to all cpus. */
++                if (!tag_sysmem) {
++                    /*
++                     * The property exists only if MemTag is supported.
++                     * If it is, we must allocate the ram to back that up.
++                     */
++                    if (!object_property_find(cpuobj, "tag-memory")) {
++                        error_report("MTE requested, but not supported "
++                                     "by the guest CPU");
++                        exit(1);
++                    }
++
++                    tag_sysmem = g_new(MemoryRegion, 1);
++                    memory_region_init(tag_sysmem, OBJECT(machine),
++                                       "tag-memory", UINT64_MAX / 32);
++
++                    if (vms->secure) {
++                        secure_tag_sysmem = g_new(MemoryRegion, 1);
++                        memory_region_init(secure_tag_sysmem, OBJECT(machine),
++                                           "secure-tag-memory",
++                                           UINT64_MAX / 32);
++
++                        /* As with ram, secure-tag takes precedence over tag. */
++                        memory_region_add_subregion_overlap(secure_tag_sysmem,
++                                                            0, tag_sysmem, -1);
++                    }
+                 }
+ 
+-                tag_sysmem = g_new(MemoryRegion, 1);
+-                memory_region_init(tag_sysmem, OBJECT(machine),
+-                                   "tag-memory", UINT64_MAX / 32);
+-
++                object_property_set_link(cpuobj, "tag-memory",
++                                         OBJECT(tag_sysmem), &error_abort);
+                 if (vms->secure) {
+-                    secure_tag_sysmem = g_new(MemoryRegion, 1);
+-                    memory_region_init(secure_tag_sysmem, OBJECT(machine),
+-                                       "secure-tag-memory", UINT64_MAX / 32);
+-
+-                    /* As with ram, secure-tag takes precedence over tag.  */
+-                    memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
+-                                                        tag_sysmem, -1);
++                    object_property_set_link(cpuobj, "secure-tag-memory",
++                                             OBJECT(secure_tag_sysmem),
++                                             &error_abort);
+                 }
+-            }
+-
+-            object_property_set_link(cpuobj, "tag-memory", OBJECT(tag_sysmem),
+-                                     &error_abort);
+-            if (vms->secure) {
+-                object_property_set_link(cpuobj, "secure-tag-memory",
+-                                         OBJECT(secure_tag_sysmem),
+-                                         &error_abort);
++            } else if (kvm_enabled()) {
++                if (!kvm_arm_mte_supported()) {
++                    error_report("MTE requested, but not supported by KVM");
++                    exit(1);
++                }
++                kvm_arm_enable_mte(cpuobj, &error_abort);
++            } else {
++                    error_report("MTE requested, but not supported ");
++                    exit(1);
+             }
+         }
+ 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index d8eb986a04..661d35d8d8 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1054,6 +1054,7 @@ struct ArchCPU {
+     bool prop_pauth_impdef;
+     bool prop_pauth_qarma3;
+     bool prop_lpa2;
++    OnOffAuto prop_mte;
+ 
+     /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
+     uint8_t dcz_blocksize;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 70f79eda33..0267a013e4 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -39,6 +39,7 @@
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/ghes.h"
+ #include "target/arm/gtimer.h"
++#include "migration/blocker.h"
+ 
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+     KVM_CAP_LAST_INFO
+@@ -1793,6 +1794,11 @@ bool kvm_arm_sve_supported(void)
+     return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
+ }
+ 
++bool kvm_arm_mte_supported(void)
++{
++    return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
++}
++
+ QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
+ 
+ uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
+@@ -2422,3 +2428,37 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
+     }
+     return 0;
+ }
++
++void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
++{
++    static bool tried_to_enable;
++    static bool succeeded_to_enable;
++    Error *mte_migration_blocker = NULL;
++    int ret;
++
++    if (!tried_to_enable) {
++        /*
++         * MTE on KVM is enabled on a per-VM basis (and retrying doesn't make
++         * sense), and we only want a single migration blocker as well.
++         */
++        tried_to_enable = true;
++
++        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0);
++        if (ret) {
++            error_setg_errno(errp, -ret, "Failed to enable KVM_CAP_ARM_MTE");
++            return;
++        }
++
++        /* TODO: Migration is not supported with MTE enabled */
++        error_setg(&mte_migration_blocker,
++                   "Live migration disabled due to MTE enabled");
++        if (migrate_add_blocker(&mte_migration_blocker, errp)) {
++            error_free(mte_migration_blocker);
++            return;
++        }
++        succeeded_to_enable = true;
++    }
++    if (succeeded_to_enable) {
++        object_property_set_bool(cpuobj, "has_mte", true, NULL);
++    }
++}
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index cfaa0d9bc7..4d293618a7 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -188,6 +188,13 @@ bool kvm_arm_pmu_supported(void);
+  */
+ bool kvm_arm_sve_supported(void);
+ 
++/**
++ * kvm_arm_mte_supported:
++ *
++ * Returns: true if KVM can enable MTE, and false otherwise.
++ */
++bool kvm_arm_mte_supported(void);
++
+ /**
+  * kvm_arm_get_max_vm_ipa_size:
+  * @ms: Machine state handle
+@@ -214,6 +221,8 @@ void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa);
+ 
+ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
+ 
++void kvm_arm_enable_mte(Object *cpuobj, Error **errp);
++
+ #else
+ 
+ /*
+@@ -235,6 +244,11 @@ static inline bool kvm_arm_sve_supported(void)
+     return false;
+ }
+ 
++static inline bool kvm_arm_mte_supported(void)
++{
++    return false;
++}
++
+ /*
+  * These functions should never actually be called without KVM support.
+  */
+@@ -283,6 +297,11 @@ static inline uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
+     g_assert_not_reached();
+ }
+ 
++static inline void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
++{
++    g_assert_not_reached();
++}
++
+ #endif
+ 
+ #endif
 -- 
-2.34.1
+2.44.0
 

@@ -1,129 +1,116 @@
-Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp484431njb;
-        Wed, 10 Jul 2024 09:57:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUlVQ2GsmzmGdWv1E47DTq6eDQy7aWbSVQOlO9yUbL/PwHCLg5DvlgaTBH6WCgIpUWMUq1CD4oyA69xcxDodN/OoY4aQVkL
-X-Google-Smtp-Source: AGHT+IFneBkcOoDk8zwtqPgW6W3IeT6SqUA84QAcudVisv12EUN+mOhwOxbutCJgbicRYd0yYnkn
-X-Received: by 2002:a05:620a:2f4:b0:79f:19ed:1ef with SMTP id af79cd13be357-7a1469cf45amr39285385a.21.1720630675079;
-        Wed, 10 Jul 2024 09:57:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720630675; cv=none;
+Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp117918njb;
+        Tue, 9 Jul 2024 20:30:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVFZYRP+UUoKPD/ARuJe6Ak5WnzZQejbnCt3RfhAHsgYp6JDAd7SyF368U0iqPXXfZB88mXZgx/jX6eJvy6SQMwWqYIMY8U
+X-Google-Smtp-Source: AGHT+IE6vkGGt16k7EmMGV9vugcNUBZJFDsnW6LsijP5WalKPpN8awOSmxonLkfaB+YJJDT23UcR
+X-Received: by 2002:a05:622a:164e:b0:446:5bac:fc1 with SMTP id d75a77b69052e-447fa8b515fmr47879311cf.12.1720582214925;
+        Tue, 09 Jul 2024 20:30:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720582214; cv=none;
         d=google.com; s=arc-20160816;
-        b=GHH86xjBRKTqL6t80kqHZb8RhuEJgo3P64KTZdQsXsXlfzg91XNvPGXemtone9bRmE
-         5d6Unh1lZUFmCoEV2xKG8SW59DnJ5IpP4RG93piD+v6MXgOw8MUeTYmhhRph4j3pmApZ
-         FM8gZfxBIwFcY61vmEPucNsFcfpYgPhrmqkN3bN/QgLkdMUJjRuGQ12/q1wryKV6otyN
-         Ueb0y/sdnbHUSOiGpTsa8ZZiCxtvQJfcsm2xIb7C+nj98Ln6GQDc+DqTMJSz0QqDIL4g
-         7CxfM1Nr/i8fRv1nBtBU1YBY5C5DAg8a5zy+YbgbuQ3A5ejGHKIgt8Y+jjksTnL0W/58
-         eNoQ==
+        b=ElrQ0yTgs2Esur90S3VMkG8i28Jlkh4CSytJ3j5uRl15rTeXeouJlWEnY6F2lox9/j
+         fSFspQHjxUtWl8IXm7Qh11ZDDi/Kj9B7gsJyB1QxQeE2GvZwLG4QfO8eRaaCga0nYBC3
+         B+9eXKMpWxeZFF1Lhhtz2htLWSIotMJ6BwzvfwTu24XIDkqoLeFq1Odc20QGBdy5h0XB
+         Y2i4lRu+VzcqrBBhg4dwnOaDrtNi4LAuE0c13nm6qlLa9YbYdR8MC/zmcTeRHC2FPVcy
+         CtDytYWYIPoFN9iUSReg/28xSfrVaeHZLoPRd+ay4HHpyIV3OIhuwtymzJ479HBt6cfD
+         3MUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=nXgDdt4XtA1oLIEFkh0NWVIoScezdBkIZ5hfhDsQgCo=;
-        fh=vDB/Ikrp7cqZzt9PzYLSKYBa9tjmjuGV5YebGR+4i6E=;
-        b=DCcDPdYwyxaogjzZL8yJHJcLmlho8SuMKOe4f2sUERyLkYLbOWQqNXNVgNTvwZ9nCX
-         N/anKU/7tyOh6AhrtPr63r+NqGBLO+wRiHJ2zVlU8yG1DnqFnsVyffl2X8QRciNFlbhb
-         avv6ggptvqCjSXdvEkrnSJwNuCWVF0jidcdsRhfKcsBl2DOUf4cC3omGUOCZi+mzyYMW
-         UvYP4UEWGFZ5TDvCKxhL2RVmD/wPvLGYX7em+I+7fLIcksLSTsXU3xPiKRrK0MIeEN+x
-         TPpVBSJKMpiFXJ9F82vQgcs0g41RxwxRvn/6P5zswYLBQ/GWhxMmeOker8gIYKK5Mm0A
-         qXHA==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=Jw2xHSdX8g/vw1Uzi7zPGtzp+K/GoiaBqk6O2xkkOJQ=;
+        fh=ghNV7mL7MT64gEZ5PHgzOSgxQoCZ3IZKAHIIlbKGaqE=;
+        b=XF896v8k7ahOHx3Y6CvAzk6CppymJ3P38w9gRfFe9v9X9mHGm6eNQzFAUrSCw8Fky9
+         lohhD/pAlvwhcOIujEhu6/c98Efql/vLbSC5EVWQiEUiS/PbVgvlgo2HLlQOJ0FHdZsW
+         uf/zGjiRMngBAGy7JLjlmPSbpUyHxW2eidxRJdWBoGxQbcdAVCxtLpMQu4lf5DIvuqBn
+         ZbuKO+NFgGDh1t66JBhjIvOaalx76I7UhCIh4cMOmI2ysdAOslghDepE95NptrU5ICNs
+         PbXdM1xDuyjmz9G8eau+rhG9fbIDEWJ0gRbXoi/EuMOAQczeiiTtWhE5pjvJINB49j1H
+         xjQg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ePKjgc0Q;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EcwVgpfn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79f19029c63si504915485a.207.2024.07.10.09.57.54
+        by mx.google.com with ESMTPS id d75a77b69052e-447f9c0b432si34866391cf.711.2024.07.09.20.30.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jul 2024 09:57:55 -0700 (PDT)
+        Tue, 09 Jul 2024 20:30:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ePKjgc0Q;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EcwVgpfn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRadW-0001P1-Sh; Wed, 10 Jul 2024 12:57:47 -0400
+	id 1sRO0N-0008Rq-7p; Tue, 09 Jul 2024 23:28:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRadU-0001F8-HJ
- for qemu-arm@nongnu.org; Wed, 10 Jul 2024 12:57:44 -0400
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1sRO0G-0008BR-Ra
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 23:28:24 -0400
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRadR-0000FR-OS
- for qemu-arm@nongnu.org; Wed, 10 Jul 2024 12:57:43 -0400
-Received: by mail-lj1-x22a.google.com with SMTP id
- 38308e7fff4ca-2eaafda3b5cso63980821fa.3
- for <qemu-arm@nongnu.org>; Wed, 10 Jul 2024 09:57:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1sRO0B-0003gV-RN
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2024 23:28:22 -0400
+Received: by mail-ot1-x32a.google.com with SMTP id
+ 46e09a7af769-70445bb3811so529901a34.1
+ for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 20:28:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1720630659; x=1721235459; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=nXgDdt4XtA1oLIEFkh0NWVIoScezdBkIZ5hfhDsQgCo=;
- b=ePKjgc0QXypBklJ2fENxfqQITgNdfh3eQSrjIEwZL/G3CfdjRjirQJ4Wdeb/ZjzYhL
- be5aSFcxK5youy2BQKqa67XvRIXhqK3Dh6UrZiZaHQ7CLStxCOF+ld4TckX4RPJ9710p
- EH99BR6d/85NTt16bQ+VOgt66V+plhOyvkGUDjkzgVULMSgMMtzuZILXE8v4Jpf3ro/M
- Kd5i8WKCEJQBonu/vokRM0VD+1KYchFTLGMCjox5zv2WrvbdPpmJGNysb5Y7BavrRX/N
- J0L0sAS0a/jO4doh+QmKI5iWCGJkcNvDc1UQUdkkV8Qw2QlHHpFJB0nspGntpKBfc/Ec
- Nfaw==
+ d=linaro.org; s=google; t=1720582096; x=1721186896; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Jw2xHSdX8g/vw1Uzi7zPGtzp+K/GoiaBqk6O2xkkOJQ=;
+ b=EcwVgpfnF5JGd0ngl9mrK3Qgk3lXpx9tIy4MaK+5xxb3o5M1vaWDsfG1EU8GZvTp+P
+ FJlgGhTpEJb+uJz2ExMA/7bguLA/vUWUc2SLr3SM0yUDuxNZajsOiSbYO8uxnZnjLA06
+ iIBMzQztMfohIjUiEVIYgvZfbv+vQSZ93nlnwIoAz8UubctLZOsqRh24uD8F02a/NVQT
+ jakL/2mabOlB5aMmI4W8cvue158iy8d4OGJAqdXiJisIhhvI5EOhIFk8fYaKhDd4D6d9
+ BqGMPtK/pUmvTrHhY6efnYwn+RON8zwsohCRX27eHHbjMA9GEKHSugTa+RweqOLGUEnz
+ Tuzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720630659; x=1721235459;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=nXgDdt4XtA1oLIEFkh0NWVIoScezdBkIZ5hfhDsQgCo=;
- b=INPzAcrBYT4q2sWa92b+w75ae5PLuwIKDGV9w7IlMXbZz002GftyHI2Kskz4ry34ow
- 8N6H0YJB9D1U6YggmM5Lvh+absI5RCwy+9DRt25QOKjxfvz3AuQmYNB/1kdMzZSnxngN
- pQu5QuOuAPnjdfmMvge1z9dMHr5U/s55MlzklvwElv5njpTkhzokRVXPFxpTPRUXtutt
- u+sxxfTJxTxeHi5RGPBDXE7Wic975E1kxj6GVTuy+2214rGyLYH8Tw2vY2iGyzNIpRbw
- 1iuxoL2Xw1PkhZHnL/10uvkZd3mCzCGq4Anr7ShiBm8rZfixmFTw8yT1p8eMbggSPtW8
- 2m6A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUi1dRmAs8TjUBkGakwDghWPv4QA4z1NET2F+LMD38TuvHfvgk86piY+kM2ta70/Zb8BvtZBRLMEj+X7sryhxdKJkNO
-X-Gm-Message-State: AOJu0YygissJ9Kf/Jj1vEkjQuWbCk8IOrrhEBJlm3oyVxYaCdWSWV+OU
- 9wW3GPmr6RTKKG3dSTVvUiGzq8VwzPWDwrbQGiswZR43GYjY1633MeR+Xh6OsJg=
-X-Received: by 2002:a2e:86cc:0:b0:2ed:275d:aa44 with SMTP id
- 38308e7fff4ca-2eeb30fcd17mr39340951fa.28.1720630658644; 
- Wed, 10 Jul 2024 09:57:38 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.167.117])
+ d=1e100.net; s=20230601; t=1720582096; x=1721186896;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Jw2xHSdX8g/vw1Uzi7zPGtzp+K/GoiaBqk6O2xkkOJQ=;
+ b=T1RGUCOxIICr3O9UV5BOGuSLENL7sJs40IW/vUdOC/wlcdUi3d4QUES8nnR/BsE2tb
+ LcMwV0jY4Gpha1o0WiENrmr3Km2aYxE+/5hX2+0knQ57q1HKTEFXgYeH7IqpwZCtkNFe
+ LWD1LAvvegE2Y7+18d6+GsNt86tNqWyNDvIYXHerpg4ZM9u7D6a3GFv3C4lwEE3o0FIf
+ 2Hi8FQd1TGOWemvNm/CVVIV2/VoasHISbeAX3Lhy85JeQOlFGkyHXD83V7Gh8LXFDrH1
+ 76TALwXHibmAnIHMKyPTim+wOrGi/b1PeyXp1R6II5bgERRTse8BviNQmIe2TSC56fU6
+ JNOw==
+X-Gm-Message-State: AOJu0Yz4sPJVJU4K0hFHKT1jAahue+RNsYZc6AFqvkl91qrPSMes11X5
+ 0TlPsW6uzw1O9wYgeZYSd+HAR6nzjZoB2HZcg2ZzCdymDajjsDbs6c3feIjKnOs=
+X-Received: by 2002:a05:6830:1b73:b0:703:5ba3:5806 with SMTP id
+ 46e09a7af769-70375a131d8mr4441182a34.22.1720582096380; 
+ Tue, 09 Jul 2024 20:28:16 -0700 (PDT)
+Received: from stoup.. (174-21-76-141.tukw.qwest.net. [174.21.76.141])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4264a1f22acsm257747505e9.24.2024.07.10.09.57.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 10 Jul 2024 09:57:38 -0700 (PDT)
-Message-ID: <a8af41ee-f4e5-4720-9365-9a7493a5e84f@linaro.org>
-Date: Wed, 10 Jul 2024 18:57:35 +0200
+ d2e1a72fcca58-70b438f5679sm2687280b3a.90.2024.07.09.20.28.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Jul 2024 20:28:15 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongu.org, qemu-s390x@nongnu.org,
+ qemu-riscv@nongnu.org, balaton@eik.bme.hu, max.chou@sifive.com
+Subject: [PATCH v2 00/13] Fixes for user-only munmap races
+Date: Tue,  9 Jul 2024 20:28:01 -0700
+Message-ID: <20240710032814.104643-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v48 00/12] hw/sd/sdcard: Add eMMC support
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-Cc: Bin Meng <bmeng.cn@gmail.com>, Steven Lee <steven_lee@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>, Luc Michel <luc.michel@amd.com>,
- qemu-arm@nongnu.org, qemu-block@nongnu.org, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-References: <20240710141408.69275-1-philmd@linaro.org>
- <09a1a960-5a79-4aa9-a57f-1c1efd809901@kaod.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <09a1a960-5a79-4aa9-a57f-1c1efd809901@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32a.google.com
+X-Spam_score_int: 4
+X-Spam_score: 0.4
+X-Spam_bar: /
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,48 +125,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OVjfcTbFeQu3
+X-TUID: 1Jxnx69JNKAl
 
-On 10/7/24 17:35, Cédric Le Goater wrote:
-> On 7/10/24 4:13 PM, Philippe Mathieu-Daudé wrote:
->> Tag to test Aspeed tree:
->>    https://gitlab.com/philmd/qemu/-/tags/aspeed_emmc-v8
->>
->> Since v43:
->> - Reordered and squashed commits (Cédric)
+Supercedes: 20240702234155.2106399-1-richard.henderson@linaro.org
+("[PATCH 0/2] target/arm: Fix unwind from dc zva and FEAT_MOPS")
+Supercedes: 20240702234659.2106870-1-richard.henderson@linaro.org
+("[PATCH 0/4] target/ppc: Cleanups for dcbz")
+
+After looking at the first dc zva patch set again, I can see no
+difference between the memset used by dc dva and the plain memory
+accesses used by SVE and SME.  In all cases it's a host memory
+access that might fault even after probe_access, due to a race.
+
+So I've dropped memset_ra and memmove_ra, and instead expose the
+basic set/clear_helper_retaddr interface.  This allows one set/clear
+to cover entire loops, instead of trebling the overhead of each
+individual access.
+
+I've included the ppc dcbz cleanups, so that the final improvement
+applies cleanly.
+
+I've updated s390x, though it isn't as clean as I would like.
+
+I've tidied the riscv use of tlb_vaddr_to_host, which Peter noticed.
+The usage was incorrect in general.  There is no race condition
+here because it still uses cpu_ld*_data_ra in the end and not a
+bare host memory access.  But the ongoing work to improve riscv
+vector memory instructions should take note.
 
 
->> Cédric Le Goater (2):
->>    hw/sd/sdcard: Add emmc_cmd_SET_RELATIVE_ADDR handler (CMD3)
->>    hw/sd/sdcard: Fix SET_BLOCK_COUNT command argument on eMMC (CMD23)
->>
->> Joel Stanley (1):
->>    hw/sd/sdcard: Support boot area in emmc image
->>
->> Luc Michel (1):
->>    hw/sd/sdcard: Implement eMMC sleep state (CMD5)
->>
->> Philippe Mathieu-Daudé (6):
->>    hw/sd/sdcard: Basis for eMMC support
->>    hw/sd/sdcard: Register generic command handlers
->>    hw/sd/sdcard: Register unimplemented command handlers
->>    hw/sd/sdcard: Add mmc_cmd_PROGRAM_CID handler (CMD26)
->>    hw/sd/sdcard: Add eMMC 'boot-size' property
->>    hw/sd/sdcard: Implement eMMC 'boot-mode'
->>
->> Sai Pavan Boddu (1):
->>    hw/sd/sdcard: Add mmc SWITCH function support (CMD6)
->>
->> Vincent Palatin (1):
->>    hw/sd/sdcard: Add emmc_cmd_SEND_EXT_CSD handler (CMD8)
->>
->>   include/hw/sd/sd.h |   3 +
->>   hw/sd/sd.c         | 418 ++++++++++++++++++++++++++++++++++++++++++++-
->>   hw/sd/trace-events |   3 +
->>   3 files changed, 418 insertions(+), 6 deletions(-)
-> 
-> 
-> Shall we merge now ?
+r~
 
-Are you OK with this patchset?
+
+BALATON Zoltan (1):
+  target/ppc/mem_helper.c: Remove a conditional from dcbz_common()
+
+Richard Henderson (12):
+  accel/tcg: Move {set,clear}_helper_retaddr to cpu_ldst.h
+  target/arm: Use cpu_env in cpu_untagged_addr
+  target/arm: Use set/clear_helper_retaddr in helper-a64.c
+  target/arm: Use set/clear_helper_retaddr in SVE and SME helpers
+  target/ppc: Hoist dcbz_size out of dcbz_common
+  target/ppc: Split out helper_dbczl for 970
+  target/ppc: Merge helper_{dcbz,dcbzep}
+  target/ppc: Improve helper_dcbz for user-only
+  target/s390x: Use user_or_likely in do_access_memset
+  target/s390x: Use user_or_likely in access_memmove
+  target/s390x: Use set/clear_helper_retaddr in mem_helper.c
+  target/riscv: Simplify probing in vext_ldff
+
+ accel/tcg/user-retaddr.h      |  28 ---------
+ include/exec/cpu_ldst.h       |  34 +++++++++++
+ target/arm/cpu.h              |   4 +-
+ target/ppc/helper.h           |   6 +-
+ accel/tcg/cpu-exec.c          |   3 -
+ accel/tcg/user-exec.c         |   1 -
+ target/arm/tcg/helper-a64.c   |  14 ++++-
+ target/arm/tcg/sme_helper.c   |  16 ++++++
+ target/arm/tcg/sve_helper.c   |  26 +++++++++
+ target/ppc/mem_helper.c       |  51 +++++++++--------
+ target/ppc/translate.c        |  24 ++++----
+ target/riscv/vector_helper.c  |  34 +++++------
+ target/s390x/tcg/mem_helper.c | 103 +++++++++++++++++++++-------------
+ 13 files changed, 219 insertions(+), 125 deletions(-)
+ delete mode 100644 accel/tcg/user-retaddr.h
+
+-- 
+2.43.0
 

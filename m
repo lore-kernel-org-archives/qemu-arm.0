@@ -1,175 +1,139 @@
-Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp384850njb;
-        Wed, 10 Jul 2024 07:08:35 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVzPgKcrS1L9lBKCnThtjHs4KQKfrL+cFzzeY5R5UyQDmLvOkoh5/+0rcZ1nyRkKuP0NWPj+L+vu6CZAylm8XDlxvzLxzxs
-X-Google-Smtp-Source: AGHT+IGaU5EDn7ckykMvHA0PeVgEtlFqwBCbtkwpznFaEpmQL+86zzWbdI50VJRXu5Uc9SJ6xJrQ
-X-Received: by 2002:ac8:5910:0:b0:447:ed12:77dd with SMTP id d75a77b69052e-447faa83ee8mr65137251cf.52.1720620515352;
-        Wed, 10 Jul 2024 07:08:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720620515; cv=none;
+Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp418498njb;
+        Wed, 10 Jul 2024 08:02:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUL6Vdxk3gaDqXEBbuxyFgDxC2y2D1F0q9ISsXQRX8Gq8t1pdwXURYJa8k1kLswidNKXCdNNrzTg1YGmYFFO+tHp2dAktDf
+X-Google-Smtp-Source: AGHT+IFlKeCp7mIiWlysrqY51gafHXr/cMxOxzNNPebO5x0UO7Unl2GzuZQuVJWTsB99wFb1x9SZ
+X-Received: by 2002:a05:690c:c05:b0:64a:5493:e0bd with SMTP id 00721157ae682-658f09d2b03mr82746457b3.40.1720623758510;
+        Wed, 10 Jul 2024 08:02:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720623758; cv=none;
         d=google.com; s=arc-20160816;
-        b=VIP18YuT1OQjN0Dj5fmUaDibVJ1BbnZpNmgPSmoGy/oFIN5JN9ceO9ekJ8uxXfO/ri
-         ZRajO0+bNeSTJlVQm2Ynyu9PEDjUWqdSjVZS5Legmnpd5wxrfdd94lL/bctfQ57yUVE7
-         KUTDz05VuX7cI2ImQxtJNpRUrBcPfHXXGiF2u9dYsDW4i9bx2+QrDBCyrnZU/gCoEve8
-         T8Z+HJSVOqZEmaxF36YLZwycH+DSkq6Mxze82HFKYT/HVuEi4uVyiU9/UAhZ2w1H3nNf
-         +cuANkzeJyoBXI3feytZtf+zLDeHavzhiMNoPPloTTN0lsCo7NP943WSAH+Yo5Fev7/3
-         kaGQ==
+        b=LvHgighY7e3hNhGRxQqqocuXw7XwJiV4K643Gl6njkiDFX1085YCyzutIWbmtxEZPi
+         JKG/Lp4N5Eag4MeFcCzlhmxJc6mS/DchpoKtS0eGA5mYEkXyXL6wUS1VdZTdpsab5zyL
+         P3PJ9uPeWc7LuinrFdZhK2Lh0sXdp7sB1LdQVbAYZSedz7Lq4hmXEDbVQfIMtkoXt165
+         hUiey1ZRP+iY8o0uORRohXguPpQnITgD9+gSgISGj22ak88gS4s7eeFotbch29IW9vYh
+         WTWiDrBU+lVvYr5fLXHZ1YJEZbXj/j4PV8pzUoA+Z42xjBjalBciv1CD5sr4R/wuxnPY
+         7/qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature:dkim-signature:dkim-signature;
-        bh=QxBSaZMT0BEUWVwIq7OYkllCdR6/YSjPnnCo840jolM=;
-        fh=umL8zxbWF4W2pS9nVgc4z5DWwZX8pLHcZx531lKXiRo=;
-        b=pDxH8Tw1kso70T5xA2/p6RxcSA8tukZ85v107XMbLbE9j++Jo03G/aT2WtwBoNVmsL
-         GNrRC5lF9qCUj4nQOfcMFpul0GhikRO3Q7PgoWBLH5T06acUi86K69TdMwDn/eqZMIA7
-         F7HE2U0vI0FmxDbdcR0IDOKPMK27yzw3S3ItfAR58tvKc6ykTeaMRNP6YuYyU+SaQp7f
-         /+/cxd/N2YXv92UICoS19Y2Pz22uBxns0SJn7nPceaAMEd/mADp5dmpwEXHwXNZWbgde
-         nHbq9GG2Vl696XSqwFDbLMd3kG8YQol/E7fnawmGPFwYdra52KYUeyXWF0t9/hFQh2tv
-         s1Yg==;
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=RKQSs8FWr7Zn5l+H828xnzTIT8nIZAPC2TEWmBUKCkQ=;
+        fh=4XVu7TQoKrvdONIRlvaRr/gKOMn8AdHwgrKm7lELf3k=;
+        b=zMKwZO0nCk13iklGZPxNCQdbbofQjuuRpnE5WFB08L9Il412ZOx9uQpRDn5Pkcl/K3
+         ZndmcFh07wGr+RUnnpyPag8GbkczHdMMUk868bX+gdJyYjOg6vLa68jUMXdL2Q9GIVXu
+         tWZwg67kuYv2pUUoIa1jF08lPdlGL8dcjs8W7ozD2jyrx9GeXwMK86yX9SUtKaosz1k9
+         hRr2uGrnIPoqN+c/AH/sn3bIwBg0DOThexkq24L3ISTlhf1v2SY9rDx48YWlKY9SClXj
+         u3S+KPPXXTtQti0oVOMjGYqVroNMr3R0VHnykgCxl5yEpysb+hyWMlF5ZhoBBxKHj3U8
+         UNgg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=eSaS2UjI;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=eSaS2UjI;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ItFrRK7y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-447f9ba909esi46106251cf.367.2024.07.10.07.08.35
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-81076956e6bsi678422241.97.2024.07.10.08.02.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jul 2024 07:08:35 -0700 (PDT)
+        Wed, 10 Jul 2024 08:02:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=eSaS2UjI;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=eSaS2UjI;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ItFrRK7y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRXzh-0006oF-Gs; Wed, 10 Jul 2024 10:08:29 -0400
+	id 1sRYpf-00010Y-SQ; Wed, 10 Jul 2024 11:02:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1sRXzf-0006m0-V4; Wed, 10 Jul 2024 10:08:27 -0400
-Received: from smtp-out1.suse.de ([195.135.223.130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1sRXzd-0002Yp-Mz; Wed, 10 Jul 2024 10:08:27 -0400
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
- [IPv6:2a07:de40:b281:104:10:150:64:97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id 703DF21BD4;
- Wed, 10 Jul 2024 14:08:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1720620503; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1sRYpe-0000yD-E8
+ for qemu-arm@nongnu.org; Wed, 10 Jul 2024 11:02:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1sRYpc-0004RX-H7
+ for qemu-arm@nongnu.org; Wed, 10 Jul 2024 11:02:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1720623727;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=QxBSaZMT0BEUWVwIq7OYkllCdR6/YSjPnnCo840jolM=;
- b=eSaS2UjISRAqdgslSA1Hh9oRwWLPxDx/0hrCnSnbbie5aP/Mzdf+xWFJBB0Cp50KlJ257K
- uzxSjnJ490MAiCP92oQbmZSd9o48xVhZCZYnae9LPKN6HZkC8IQ2yTqqscFhGK9EJHTRae
- 2UB9bggK0tRqJRXEmWd23mdWQWhyHqg=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1720620503;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QxBSaZMT0BEUWVwIq7OYkllCdR6/YSjPnnCo840jolM=;
- b=a2tcPPtjL+ljN+4w1wknOlefGcDwB3XCeVU7DXLFy+ppoomUYTZbpcPBfUMUzzS6cvB9Ym
- OtmoLIPSE9VGbQCg==
-Authentication-Results: smtp-out1.suse.de;
- dkim=pass header.d=suse.de header.s=susede2_rsa header.b=eSaS2UjI;
- dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=a2tcPPtj
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1720620503; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QxBSaZMT0BEUWVwIq7OYkllCdR6/YSjPnnCo840jolM=;
- b=eSaS2UjISRAqdgslSA1Hh9oRwWLPxDx/0hrCnSnbbie5aP/Mzdf+xWFJBB0Cp50KlJ257K
- uzxSjnJ490MAiCP92oQbmZSd9o48xVhZCZYnae9LPKN6HZkC8IQ2yTqqscFhGK9EJHTRae
- 2UB9bggK0tRqJRXEmWd23mdWQWhyHqg=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1720620503;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QxBSaZMT0BEUWVwIq7OYkllCdR6/YSjPnnCo840jolM=;
- b=a2tcPPtjL+ljN+4w1wknOlefGcDwB3XCeVU7DXLFy+ppoomUYTZbpcPBfUMUzzS6cvB9Ym
- OtmoLIPSE9VGbQCg==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id E5495137D2;
- Wed, 10 Jul 2024 14:08:22 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id sU+OKtaVjmaRNQAAD6G6ig
- (envelope-from <farosas@suse.de>); Wed, 10 Jul 2024 14:08:22 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Peter Xu <peterx@redhat.com>
+ bh=RKQSs8FWr7Zn5l+H828xnzTIT8nIZAPC2TEWmBUKCkQ=;
+ b=ItFrRK7yI4Rt1SsPrjo03Rt+gtPYZSeihyO3JkGYFrBUlhIA2VOMRKKNqxedCSmUlhrUv1
+ LObFqLcvvV6HC1CjvG6jcqNXerNWL5dZwk+6A0bWwz3r6DpLMfdcvA7rpcbPGcMAVGIZHT
+ Z5CwURSaY62CsyfM+rnupBLaxwvW1cg=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-10-wPB7hp57NGeZXD3h0DA91Q-1; Wed, 10 Jul 2024 11:02:03 -0400
+X-MC-Unique: wPB7hp57NGeZXD3h0DA91Q-1
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-79f1b638b6bso4632085a.1
+ for <qemu-arm@nongnu.org>; Wed, 10 Jul 2024 08:02:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1720623723; x=1721228523;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=RKQSs8FWr7Zn5l+H828xnzTIT8nIZAPC2TEWmBUKCkQ=;
+ b=M+OIVKDklRLVJaDVTjEgTFDdat7sTP5aZyi429uslnbYBQrrx8HQiqF0FI8VljYY3P
+ dDxmuUTF/9ZnSvSgteY31R8W2/NFXiyiEjPE0xMzvSV+VsY2Rnp1j3h3r15cyC3a2LPC
+ 4LeZHZ6ifVwPNE+LWP6bmU3E+YIXvyuymoja0pXuNCA9/HUySCl8Fwb9TGKxzX4yBBWR
+ X2vdJGG+rRVrKQK2m7Srtt8aVKck5XgpDQSzS1sdWgqPHY1pVtaRSjqlPAN+DlFObWTA
+ 1kVJliV/dmaERHN5n8Z4EqCsWmxzWfAZpsh6XgoK9y5iYHZ94ycooovUOB3cKhxJN/lY
+ mPlA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWCl96bBYHtoq6gHhdffLCJpwxR9aJQAfzkRB3Mz2RnkV54jSMh6YYjjx20exqHbHhG7ptXKneW7IWNp9HyMYuOSQIx
+X-Gm-Message-State: AOJu0YzINrRyLWwx5irtRw2EfVmrGPHtaMkqAFE7R2u0avPNAVHqcilu
+ 7U8zm3Yk8Dbf+n+TxS23TgcLT2JaeRUXLDVxcvEyiDCoUdybPl+BAAkymPChBV/MZmWbLH9Z/k+
+ RHCfX5VCD9xIaJ6JnECU4SkbvYGzXeHpZtLYFd9Tr+MN5pUs8ZQ==
+X-Received: by 2002:a05:620a:1a94:b0:79f:b3c:8fc3 with SMTP id
+ af79cd13be357-79f19bee0d0mr649669885a.6.1720623723051; 
+ Wed, 10 Jul 2024 08:02:03 -0700 (PDT)
+X-Received: by 2002:a05:620a:1a94:b0:79f:b3c:8fc3 with SMTP id
+ af79cd13be357-79f19bee0d0mr649666885a.6.1720623722685; 
+ Wed, 10 Jul 2024 08:02:02 -0700 (PDT)
+Received: from x1n (pool-99-254-121-117.cpe.net.cable.rogers.com.
+ [99.254.121.117]) by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-79f190103e1sm202838085a.42.2024.07.10.08.02.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 10 Jul 2024 08:02:01 -0700 (PDT)
+Date: Wed, 10 Jul 2024 11:01:58 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Fabiano Rosas <farosas@suse.de>
 Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org,
- qemu-block@nongnu.org, Laurent Vivier <lvivier@redhat.com>, Tyrone Ting
- <kfting@nuvoton.com>, Bin Meng <bmeng.cn@gmail.com>, Hao Wu
- <wuhaotsh@google.com>, Francisco Iglesias <francisco.iglesias@amd.com>,
+ qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Hao Wu <wuhaotsh@google.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, qemu-arm@nongnu.org, Joel
- Stanley <joel@jms.id.au>, Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
- devel@lists.libvirt.org, Luc Michel <luc.michel@amd.com>, =?utf-8?Q?C?=
- =?utf-8?Q?=C3=A9dric?= Le Goater <clg@redhat.com>
-Subject: Re: [PATCH v3 06/17] hw/sd/sdcard: Do not store vendor data on
- block drive (CMD56)
-In-Reply-To: <Zo2lLLAwcZ8bBvO2@x1n>
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>, devel@lists.libvirt.org,
+ Luc Michel <luc.michel@amd.com>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>
+Subject: Re: [PATCH v3 06/17] hw/sd/sdcard: Do not store vendor data on block
+ drive (CMD56)
+Message-ID: <Zo6iZjc8YpI1_9dW@x1n>
 References: <20240627162232.80428-1-philmd@linaro.org>
  <20240627162232.80428-7-philmd@linaro.org> <87cynmfggx.fsf@suse.de>
- <Zo2lLLAwcZ8bBvO2@x1n>
-Date: Wed, 10 Jul 2024 11:08:20 -0300
-Message-ID: <87a5ipfigb.fsf@suse.de>
+ <Zo2lLLAwcZ8bBvO2@x1n> <87a5ipfigb.fsf@suse.de>
 MIME-Version: 1.0
+In-Reply-To: <87a5ipfigb.fsf@suse.de>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Rspamd-Queue-Id: 703DF21BD4
-X-Spam-Score: -3.01
-X-Spamd-Result: default: False [-3.01 / 50.00]; BAYES_HAM(-3.00)[100.00%];
- SUSPICIOUS_RECIPS(1.50)[]; NEURAL_HAM_LONG(-1.00)[-1.000];
- R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
- MX_GOOD(-0.01)[]; TO_MATCH_ENVRCPT_ALL(0.00)[];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from]; 
- ARC_NA(0.00)[]; RCPT_COUNT_TWELVE(0.00)[18];
- FUZZY_BLOCKED(0.00)[rspamd.com]; MIME_TRACE(0.00)[0:+];
- SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
- FREEMAIL_ENVRCPT(0.00)[gmail.com];
- FREEMAIL_CC(0.00)[linaro.org,nongnu.org,redhat.com,nuvoton.com,gmail.com,google.com,amd.com,kaod.org,jms.id.au,lists.libvirt.org];
- RCVD_TLS_ALL(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
- MID_RHS_MATCH_FROM(0.00)[]; FROM_EQ_ENVFROM(0.00)[];
- FROM_HAS_DN(0.00)[]; TO_DN_SOME(0.00)[];
- RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
- RCVD_VIA_SMTP_AUTH(0.00)[]; TAGGED_RCPT(0.00)[];
- DKIM_TRACE(0.00)[suse.de:+]; MISSING_XM_UA(0.00)[];
- DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,
- imap1.dmz-prg2.suse.org:rdns]
-X-Rspamd-Action: no action
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
-Received-SPF: pass client-ip=195.135.223.130; envelope-from=farosas@suse.de;
- helo=smtp-out1.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -184,67 +148,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CpFy0H5JVSe8
+X-TUID: uECINygYePMO
 
-Peter Xu <peterx@redhat.com> writes:
+On Wed, Jul 10, 2024 at 11:08:20AM -0300, Fabiano Rosas wrote:
+> >> I think it's ok:
+> >> 
+> >> {
+> >>   "field": "unused",
+> >>   "version_id": 1,
+> >>   "field_exists": false,
+> >>   "size": 512
+> >> },
+> >> 
+> >> vs.
+> >> 
+> >> {
+> >>   "field": "vendor_data",
+> >>   "version_id": 0,
+> >>   "field_exists": false,
+> >>   "num": 512,
+> >>   "size": 1
+> >> },
+> >> 
+> >> The unused field was introduced in 2016 so there's no chance of
+> >> migrating a QEMU that old to/from 9.1.
+> >
+> > What happens if an old qemu 9.0 sends rubbish here to a new QEMU, while the
+> > new QEMU would consider it meaningful data?
+> 
+> It will send zeros, no? The code will have to cope with that. The
+> alternative is to put the vendor_data in a subsection and the code will
+> also have to cope with the lack of data when the old QEMU doesn't send
+> it.
 
-> On Tue, Jul 09, 2024 at 05:38:54PM -0300, Fabiano Rosas wrote:
->> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
->>=20
->> > "General command" (GEN_CMD, CMD56) is described as:
->> >
->> >   GEN_CMD is the same as the single block read or write
->> >   commands (CMD24 or CMD17). The difference is that [...]
->> >   the data block is not a memory payload data but has a
->> >   vendor specific format and meaning.
->> >
->> > Thus this block must not be stored overwriting data block
->> > on underlying storage drive. Keep it in a dedicated
->> > 'vendor_data[]' array.
->> >
->> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->> > Tested-by: C=C3=A9dric Le Goater <clg@redhat.com>
->> > ---
->> > RFC: Is it safe to reuse VMSTATE_UNUSED_V() (which happens
->> > to be the same size)?
->>=20
->> Hi, sorry it took some time to get to this, I had just left for vacation
->> when you first posted.
->
-> And I totally overlooked there's the email.. until you replied.  Welcome
-> back.
+Ah indeed, that "static const uint8_t buf[1024]" is there at least since
+2017.  So yes, probably always sending zeros.
 
-Thanks!
+Nothing I can think of otherwise indeed, if we want to trust that nothing
+will migrate before 2016.  It's just that we may want to know how that
+"2016" is justified to be safe if we would like to allow that in the
+future.
 
->
->>=20
->> I think it's ok:
->>=20
->> {
->>   "field": "unused",
->>   "version_id": 1,
->>   "field_exists": false,
->>   "size": 512
->> },
->>=20
->> vs.
->>=20
->> {
->>   "field": "vendor_data",
->>   "version_id": 0,
->>   "field_exists": false,
->>   "num": 512,
->>   "size": 1
->> },
->>=20
->> The unused field was introduced in 2016 so there's no chance of
->> migrating a QEMU that old to/from 9.1.
->
-> What happens if an old qemu 9.0 sends rubbish here to a new QEMU, while t=
-he
-> new QEMU would consider it meaningful data?
+One thing _could_ be that "rule of thumb" is we plan to obsolete machines
+with 6 years, so anything "UNUSED" older than 6 years can be over-written?
 
-It will send zeros, no? The code will have to cope with that. The
-alternative is to put the vendor_data in a subsection and the code will
-also have to cope with the lack of data when the old QEMU doesn't send
-it.
+-- 
+Peter Xu
+

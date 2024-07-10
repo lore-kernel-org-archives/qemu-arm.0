@@ -1,124 +1,233 @@
-Received: by 2002:a05:7022:1005:b0:83:cb6b:1575 with SMTP id em5csp1743157dlb;
-        Tue, 9 Jul 2024 14:39:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVrD/oGHsYNzvTHEy6NVVgsenxsoSWLQwzYjXXwjemZr7wc873sDu0TdTJWfRReIRZhJZUf2m0GPlgVJZXzPIsq3Wya8FWC
-X-Google-Smtp-Source: AGHT+IET8yowIU1kZg/QoAVwMEYQ6SShcrrVp6y65I9c8eKM1IEe8AiLzFRZ8e31U7CAPdWkNMft
-X-Received: by 2002:a05:622a:5294:b0:447:dc5c:fc73 with SMTP id d75a77b69052e-447faaa5c9dmr50020961cf.45.1720561181467;
-        Tue, 09 Jul 2024 14:39:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720561181; cv=none;
+Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp101647njb;
+        Tue, 9 Jul 2024 19:33:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCU2/xSB33zP8SbcQQgF0NCtKUClWIrrRnrXcXme4MGXC4bK4awZ0/YasPS68Quz6KYbiVAMUKvZ0gtj6i6I/sCDpHvCKWpC
+X-Google-Smtp-Source: AGHT+IEMpoFVv566T6jieVaRLwEMt0cjdixyhDIiRZgfaQABoeuknc83WWhx4qMBEYYOxjkesr23
+X-Received: by 2002:a05:690c:4481:b0:648:6733:e855 with SMTP id 00721157ae682-658eed5ded6mr56633617b3.15.1720578805165;
+        Tue, 09 Jul 2024 19:33:25 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1720578805; cv=pass;
         d=google.com; s=arc-20160816;
-        b=s+DgFaXKxdI7NqcoqjKv5N5n2J5yFr+0YwcQ1BYXvUBBEwqZOapRT3j462ZLqor6Iw
-         8PctP7bAtovIYOE/bNZ1xzigElEVR0omJWwV9dBoay2MK0ADDPdi06ZvCoyKLNQS+YH4
-         jhFvgOJlhNyFQ/TbdQMrbp1htHka/KIAVAhpVh6VUlkHUGkO1iRNxrX/KgdWwZiMJgLE
-         eH76g+yZDqt0kAIL6FdVu1RzUFbdjNN8NWs/Exp5MvuWAPJDFi+GAGIwc8O4FniuyBNf
-         6hy4eQjO/BWU0yc8cUO3wLmh9gWziOE4Xes/YMUDTvEtYAuByqly+RXrACn7mz7ZBrDH
-         79FA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=fnbUpnkgwh2A1pyXkWsicTCYPYF9fk6rrT3ldKZKyp3qm4jX3qlKJ1pNhFva0Emzn+
+         5ETRA4AFCzIIbjiuFL0iBTJ6BsH3qUL0etiNLdURqrEYj0c/Qlp+U7/s2CbBpgHxRmmv
+         A4sNOoSmQifimghJ2v979F8aAXneXSkC2EcErQloi1fjLykYgsralj5vRTnY0Nxv8Rdu
+         bKFixZjOddWfzLjBAI/DwkSGVOrHw7ctcyNmv6SHql1VgmvS8ratYdhMcspNdRNBEzUe
+         qjJ03aI8iKGtjW0gbG8/ZtB6A+TpxQg9Z8tj3pLp/9UNlaugKf7UXb1N9wI76YbBAwXg
+         oOLA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=2bMJhXP2mOiq8Y0nEa1hF7/NfI0P/ETBfTA2iJyHUDg=;
-        fh=3uYHR+caMZi55h5M7D1P+ozzaWB+prOnt9oMZ59ELKk=;
-        b=nsVGDrmqDR2PsUzpgSmsxXqT5sxYc5sDaORC/g1/9Y/ORPmfJ0ujGE8PdaPS5D0uD0
-         2qTIiasCFxyChz5UlMgMnSQQ+zJ2ml+iwdLoQEjJD3iR+purdeB4U9ExlCXSbA4MoegA
-         sRPUB4tKZGX9P0pJ3OR1YICeOtyC2zr/xafRdhN4FBmS1xF+sKnBMhU8tiYmY6bTKsE6
-         1KXWp7lCDtR+j50nPeL/73YkD2RZ4bQGqafftNfvG4++FDi58FwEqyoZ0lHqbu+XMvfa
-         O11fsYOvkYRGaNTqLcGWpT4UnUzmqiILPmwY+D4z4KWajQlbLW9+heTrE3ADUWxBPLZk
-         rOkw==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=8SzCyyITqk39Gz5HDmoyEWtDhi710KTQQdZWRJtz2Y8=;
+        fh=3Gctt0RKATiIfOxVbCWI+ggQDB8ftn7tuURTzDNF558=;
+        b=CLHlUuVok8hsfnaY0Srcz7yogirtix8R4juyafzCMILaZkraMiakO5Imt39I9aTFUM
+         4GIqEDkOrLFFLBPpSXZQ+kld4NowfhPmh3KCTFdnYVVBs+EParqUHTnU8JIP6mmeewA8
+         CiphwlUDzDJDh5flGUU9dNVZNSFby/c2yYL7jGCRx+DUgfXftWhTqo1nLLAqcTckyW9Z
+         J40ryRHC8Mu1jgx9d/3sYE+6Jj8+g7jYcI81JLpX6XF2Tx2l+adik1Vzm2yV9eCP1s83
+         M3xiZQTDe4Yh/0Aha0mqEnAMarBkX66hHoLYAkZaKikcOKHkxeHbvKMP4hadZT6jbdhT
+         uTFQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WFXWcH+4;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=O0t522e1;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-447f9be5c99si29507451cf.549.2024.07.09.14.39.41
+        by mx.google.com with ESMTPS id af79cd13be357-79f190b7b46si362677085a.431.2024.07.09.19.33.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2024 14:39:41 -0700 (PDT)
+        Tue, 09 Jul 2024 19:33:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WFXWcH+4;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=O0t522e1;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRIYV-00016M-48; Tue, 09 Jul 2024 17:39:23 -0400
+	id 1sRN8h-0002a3-ER; Tue, 09 Jul 2024 22:33:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRIYT-00012L-G0
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 17:39:21 -0400
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRIYR-0004RE-Mp
- for qemu-arm@nongnu.org; Tue, 09 Jul 2024 17:39:21 -0400
-Received: by mail-lf1-x12a.google.com with SMTP id
- 2adb3069b0e04-52ea33671ffso5169410e87.3
- for <qemu-arm@nongnu.org>; Tue, 09 Jul 2024 14:39:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1720561157; x=1721165957; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=2bMJhXP2mOiq8Y0nEa1hF7/NfI0P/ETBfTA2iJyHUDg=;
- b=WFXWcH+4D8wl01u2KtBCwS5N7zDEBMyKJB0LNj8Fx0VrnQkaP+hBZ89uWoWQAgM13v
- fUwbZIOidoVyeXxQMAoe/PU1gq1h13fuwvg6UEd0rU2nRcRRRr7Y0iQEjWJGaNgoLSIP
- B0xNF8hGnzwpyB34QZQHcRRV7/00SykeGyzbYtr7IeMD1lQQlCWC2PxE0ADp2BZ2f+d3
- oqW/vriTrvKZJR5ZhUefIwIjsJyQn4sl16ztUQcvIc3QoP/ENIjQHNqx6Q2b0Px7xIQI
- Wu2XEBeQSmeOhzxB1W/IhJbH/CuSQHlJK9/9oORecD6Ml0ug2SP9ftrwuB2wQTkgZuIQ
- HkFg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720561157; x=1721165957;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2bMJhXP2mOiq8Y0nEa1hF7/NfI0P/ETBfTA2iJyHUDg=;
- b=rZ40Q7LC5nyOtCyCY/+vBA1cD4NWLRm5jldYg/+kp+W6hiYI4TIZUNg0/xHlGMzT0y
- Y14dLG4FAiOkMdQIMTEVDClhiXi+DQsS79M2tGHFdZvR/3LKM+thq8hu5+vSrXicZAC9
- VefH2L7l+D6LikQG0F9qYCgdOtDUiNuR1o6u1zFUQ/5ncl433AtTmWRU8nmDHe94/Jwb
- PrYXixm8u3pnpmL1UJ1eO0sM5iNU8hi5IaMZiYUjiXSf6XjtQGl5aBTc/8+6ciMFTohU
- CtwgREkmoz3jEgSnIxF32AF96/jt+toQvquCQTRRqyVxCCUgkbXBSG+/WQKr0o6qTwED
- nt2A==
-X-Gm-Message-State: AOJu0YzckF4Pksx9cNIPufexe5qesMqn2Jpds8GvQ+X2p74UreQwMiGi
- EeAtflx2D0snNfrD4Y1/FfD5aUQ0yQubPNArn1A65v1R/02lX80mruReIP2q7Vo=
-X-Received: by 2002:a05:6512:3088:b0:52e:987f:cfc6 with SMTP id
- 2adb3069b0e04-52eb99d33f6mr2435240e87.51.1720561156688; 
- Tue, 09 Jul 2024 14:39:16 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.167.117])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4266e861339sm69095865e9.12.2024.07.09.14.39.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Jul 2024 14:39:16 -0700 (PDT)
-Message-ID: <fc8b71b9-e946-4161-8750-fffe37d3c925@linaro.org>
-Date: Tue, 9 Jul 2024 23:39:14 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v47 00/19] hw/sd/sdcard: Add eMMC support
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-block@nongnu.org,
- Bin Meng <bmeng.cn@gmail.com>, Joel Stanley <joel@jms.id.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>
-References: <20240709152556.52896-1-philmd@linaro.org>
- <e9c273ff-32bd-40fc-8f50-cb47784cf741@kaod.org>
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1sRN8f-0002Sl-La; Tue, 09 Jul 2024 22:33:01 -0400
+Received: from mgamail.intel.com ([192.198.163.16])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1sRN8d-0003JT-4L; Tue, 09 Jul 2024 22:33:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1720578779; x=1752114779;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=8SzCyyITqk39Gz5HDmoyEWtDhi710KTQQdZWRJtz2Y8=;
+ b=O0t522e1RENjmYTQkqGNCLKtdOXpVQLy1ftOBmCkUB7ZVEXq3+hYhMKI
+ WAd7B1G8zQ5OOLL97HhJd1fQFfur7BYGUEFVd7QFvLEr5RVw0eSMy1q8S
+ HKy2DrhYqbIoXwfVqT/qwkL/fpUDkF0wHGQUh6RkJPntvjF1tinOq+/z0
+ h5fcOGuEGAtbswG4n5Im7o8N7ZASJ1Yg0e3E11ZLzvMXTQdaqU8ADU/ir
+ Ev8vFUMc39DMp2zfNt/C9mWGKb1qH8RmgDvv+QqRv0ZyihlDLvC10hUlq
+ FEgsAWUrxIGZAwMKSMdv7GatVbF7kAgk4UZ0gmC4D5rOBIPxORR3WFaEh w==;
+X-CSE-ConnectionGUID: Oxl2D5ahSweYHYpVSIVuhQ==
+X-CSE-MsgGUID: r8laCqtDTxSRSURIxryyaA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11128"; a="12464745"
+X-IronPort-AV: E=Sophos;i="6.09,196,1716274800"; d="scan'208";a="12464745"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Jul 2024 19:32:55 -0700
+X-CSE-ConnectionGUID: VdFRpc1NS1yPMbPpCI5yzA==
+X-CSE-MsgGUID: L4G55g5aTCePCM7RYnm96A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,196,1716274800"; d="scan'208";a="48141232"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by orviesa009.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 09 Jul 2024 19:32:55 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Tue, 9 Jul 2024 19:32:54 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Tue, 9 Jul 2024 19:32:54 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.175)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 9 Jul 2024 19:32:53 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dsPLjkEbF0NIMelsbvANK/rSud3OI2Cq1vit9mdtcgQxgiNrygkS9+3io84FlH0V3bkjkAk5l7XrRjWgUu+5ndhFlYWrbfXBfpyJJMhN4m5UppGBfoln7yHyB7p5ryB7Fr0wsAARce4w0yCb/MR4D6mLO652gLE2poVOexc3Yp9dGq0dCT5rN3yitM5u0ooF4E/yAVa9f0JaSAdqAVE5W6PFvP3JC7dBBuGK8GNzEY0ZV08cSa4xBtMfEupN+SdPaRwu6joQZMRdwfk57J/21xU9tRuCzOpEaBQNHoRe9gFaf+qA2N1chKZmwAoRFfp3ZnRSoBT9MHx+xdO4vsWyaA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8SzCyyITqk39Gz5HDmoyEWtDhi710KTQQdZWRJtz2Y8=;
+ b=Dqt+SZgOWxTebQC1IUl/uNkOOwd+TzRWi/jeeHMYNMQIa8j+278SWE7/wPL0Yo1ZC46HvZi1PTJoM1gHhRmka2endkLl2Bz0SwUhjk25KWl3b4Fepe5STayMyzEDvrIa6qfGNf5zLV/qhvSnmpesE4pOtk00YwtuxYisW3VluRis9nxDh9klWqNQH5RdaOHSmwyvdxfW/daQw03irbMaow1y2u2tE1rhy19tSDq0Mb+i8H9/unpObixdTuT/6DmcyDwfxhAaeDkJqvxne+HLEBGOEgqqJZz8OIkuJwnHE2JOfCNo5AjqvfEu2w4y0iI5qs6kPP79GkP4jn1qLqh0aw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ0PR11MB6744.namprd11.prod.outlook.com (2603:10b6:a03:47d::10)
+ by DS7PR11MB5967.namprd11.prod.outlook.com (2603:10b6:8:72::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.35; Wed, 10 Jul
+ 2024 02:32:51 +0000
+Received: from SJ0PR11MB6744.namprd11.prod.outlook.com
+ ([fe80::fe49:d628:48b1:6091]) by SJ0PR11MB6744.namprd11.prod.outlook.com
+ ([fe80::fe49:d628:48b1:6091%7]) with mapi id 15.20.7741.033; Wed, 10 Jul 2024
+ 02:32:51 +0000
+From: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
+To: Nicolin Chen <nicolinc@nvidia.com>, Eric Auger <eric.auger@redhat.com>,
+ "Liu, Yi L" <yi.l.liu@intel.com>
+CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>, "mst@redhat.com"
+ <mst@redhat.com>, "imammedo@redhat.com" <imammedo@redhat.com>,
+ "anisinha@redhat.com" <anisinha@redhat.com>, "peterx@redhat.com"
+ <peterx@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "jgg@nvidia.com"
+ <jgg@nvidia.com>, "shameerali.kolothum.thodi@huawei.com"
+ <shameerali.kolothum.thodi@huawei.com>, "jasowang@redhat.com"
+ <jasowang@redhat.com>
+Subject: RE: [PATCH RFCv1 02/10] hw/arm/virt: Add iommufd link to virt-machine
+Thread-Topic: [PATCH RFCv1 02/10] hw/arm/virt: Add iommufd link to virt-machine
+Thread-Index: AQHa0iQxh3isvFZx9UClGfWE5xTntrHvOrIg
+Date: Wed, 10 Jul 2024 02:32:51 +0000
+Message-ID: <SJ0PR11MB67442C5B2A2790C1ED968FDC92A42@SJ0PR11MB6744.namprd11.prod.outlook.com>
+References: <cover.1719361174.git.nicolinc@nvidia.com>
+ <df22fcd43e201fea97da8862b61614a2986ffa5e.1719361174.git.nicolinc@nvidia.com>
+ <efec2974-ce96-4cb1-a00c-30fe93c5fa7b@redhat.com>
+ <Zo1sblmS9+xlWObT@Asurada-Nvidia>
+ <af440fe7-faf7-43a4-9f04-9d0059ef7e90@redhat.com>
+ <Zo1xA9B8L3qLyGQO@Asurada-Nvidia>
+In-Reply-To: <Zo1xA9B8L3qLyGQO@Asurada-Nvidia>
+Accept-Language: en-US
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <e9c273ff-32bd-40fc-8f50-cb47784cf741@kaod.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR11MB6744:EE_|DS7PR11MB5967:EE_
+x-ms-office365-filtering-correlation-id: e9238c85-c269-4ba0-4a09-08dca0889858
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|1800799024|7416014|366016|38070700018; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?SEn6uLcwpOIEQGToFNWlXY1eyPhDmIq4E93l1Lz46qd/kbn7PJae8KtN1ubB?=
+ =?us-ascii?Q?s7T+PUZtjt1ZiqN7sAbG5WfW0ZRP9g8RnyNSwv8lZFUY1J6IrN8Helnx0cAe?=
+ =?us-ascii?Q?mktx2DQ/9ZSxQEMGXsPWPxbfW2VJ+grpzkhZy/tq5TdaPRIdY1jRfdrK8JCs?=
+ =?us-ascii?Q?6fnIq+5mP2ply87O1xunlVkumt/yR37DEmKoX8KswXMIvMAxcnjUswUmyphB?=
+ =?us-ascii?Q?m3waKQyLAfch8bgdXq4Qres/8Rfr42GS+cNcs8PFjDd1ns+KhTL/B9LSDExp?=
+ =?us-ascii?Q?QLnsSDiNaWSRFq/LBJf1cGLzS4HpWLn3wFTVBgf3HdPyprHXlqPChNWDPZml?=
+ =?us-ascii?Q?GA+E2iti0YIoTkFUm1T7FkX9kxekRvx5GAnwpS5g9j7oZsamWgXx3t11QmJG?=
+ =?us-ascii?Q?61Fg/be87r9Tur3CEaRS8JxiLuPnIJ33rIrPCMmWql/c2FsBteqcB/HH6xaC?=
+ =?us-ascii?Q?1uvkvca2kFbu6s2Pof4O1yE2d9//S0kYBywSEHLYr3k6Vq9xVX/Hjv5f/JAi?=
+ =?us-ascii?Q?7g+AaXnJOYCuZlXKuF6rVECvQMrOBour3Fr3yFKxuJ+0nAt+tFanUCiRWDL7?=
+ =?us-ascii?Q?Acjb36XsrLjYNym6C414NW4xp5AJdQ2M3JdK5TamAPaN7aQdxaYSRHYCGGqr?=
+ =?us-ascii?Q?SgYAByw0OX5xyI2dqRgtZZL512FWQkaIROJhJbqe/eFYicxU1UovBb1G118s?=
+ =?us-ascii?Q?RW6z+6eGYDUbrkZMY/6krAR5lmEMz25szaUFyELROn3UDC6aNXoG9KW4FLDC?=
+ =?us-ascii?Q?FTyEQIwnEzY5zan7OS0P0A2ns9+lszjPYU1ZIf4wUbTDD8qkfoBPDxKFZDn5?=
+ =?us-ascii?Q?Rufawtp7+n862bv5cJL4Y7pya8I/u72HFChE4ywT2IzMGgzYBtpmTP+X3GeV?=
+ =?us-ascii?Q?tHBLwAn5yHchEKdqabZWhhAdVN/7abu3iD8Kc50wMX4qqTFKJqhoUdNl2lkB?=
+ =?us-ascii?Q?QLOCDDwOw3Np/kqilUCGKLsOcTX6eALoQ0HkyJgfRlG6Vft+f4/9GRAM1yCE?=
+ =?us-ascii?Q?SggZ909ee04mCW0TB0ZVXRIezUHYcYfYtpdc7esIeaEN2eXLi63DmDIi8AEK?=
+ =?us-ascii?Q?Xzfn70i3lbnR1cilHGm7QkLG7xdfvpN7AqfKWHZju4ApAUXLdj6tf6YNE9U1?=
+ =?us-ascii?Q?mKR513OwhuL1FKE12WWJaTl3g9wem8SAUvf3dM/0csgP6huxnIKO33KfEF4N?=
+ =?us-ascii?Q?BGyV6hqMYGV9P9AMsK+fuHOsBrMD9hwulKZryCD80RYS/8stuRiXa1pccT9+?=
+ =?us-ascii?Q?rrf3XFC3IKJttCIEycdmJVzmIPN0yo3TrG3rC+XboH57W8m62WDH1dAHhCLr?=
+ =?us-ascii?Q?knp0k9emT/8y8VXkQBSx48+xcIpiLKnwRMvwx3p/L5YnrdNzI57iAyI39BGa?=
+ =?us-ascii?Q?Upp/VpY=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB6744.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(7416014)(366016)(38070700018); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?k5huAn7IOP4DilsZvpOBGg5W7yNbDoJrz0A50BjGpCEliAHrDdL2fI2uD+fO?=
+ =?us-ascii?Q?05lYVtKhqrEeJS3oYcXayVO18ewxtdef2fJ4DhuD30pN6Gy/BdqpCWTJ1Bwu?=
+ =?us-ascii?Q?uyEsyRJGjIo0EbJMGkCH17KcWht3ks/AR2Nd4BKgHMT/ui9IVYclKI8tfGwO?=
+ =?us-ascii?Q?JebFJUYjYE0Ek96MkDgafb83hy/FjStQXOYD6dxFQUNnMU5olbGbUy7uHQVV?=
+ =?us-ascii?Q?x1USjHNX504hH7vXtIpuXKxzy7gi1BgyWMNlFF3S/hQLG+IvFMmujNf1tlRY?=
+ =?us-ascii?Q?89HeZ/EeAYnnCQngkwc4pOMSBeGYN0kNxnPGFRvjNyhO4WQuEB9C9WhxYQIS?=
+ =?us-ascii?Q?BqEOc9HmN3B7gzEVS7IjrbYLmlB97LU17xCer6Ot1Ww0o/ykfgTyZp/ezvdP?=
+ =?us-ascii?Q?E0fcwE56uXN+WKMZXgG0MMwXK1BiiKk8dwjceeDPg/R4b76zyrvxRaI2vmkd?=
+ =?us-ascii?Q?8CxwSAQfO/jarDyvxUscTBh4sH3Ws2o2Upton2EHpc21YahG6b+lASymi3rW?=
+ =?us-ascii?Q?B164K+0HfDyaS5rYJvSjmO8NL7HAceKMfG/1PYQ1cyJL8Qkyyxn7cT/rSpyP?=
+ =?us-ascii?Q?ywYDDXWV6TxE2i9mVMUyb5Swzbswidbr+Zf8RI6gqVnaJ+VFm7zkOGlZ8Wiy?=
+ =?us-ascii?Q?yznM3A+knnocq9txOMxHKKYoYCo4Vx3BeBzsvHKJAQnJciSNMxZp0/O35xUl?=
+ =?us-ascii?Q?3g+Gd65fPKNsBNaxkIznl9Z56KvpCu0XN0JTCmimA9H7dOtElAfVnKWUwSX/?=
+ =?us-ascii?Q?BmQvbLVk/UdzZRzvWdASfR6Yq51TUeieJXFeZBh7BOmqCyR+45lSIwzq1qqG?=
+ =?us-ascii?Q?bPkMm5g6R/EtS1mnpKXxG9iWnNtxKn6VUARmuIexMpTERd+WahzIcvPiv964?=
+ =?us-ascii?Q?vv+GA2PZsUmRmJ5joR1TbaL+ldzosveJWqLdxtNlV2yaj5n14CUFsDOtal6f?=
+ =?us-ascii?Q?B9h3VYLo8KY6WOwnVoGUxg7tCp2ijwl02kSiNiIeAyAC1GSEVTG5pZqw3OnP?=
+ =?us-ascii?Q?ZRHfcD7z8zuXDdEOOj9/6t4W02lbBi6Mh7iJ9V45EUm4zxhqe/NQradQ8um7?=
+ =?us-ascii?Q?41AxxmCug2LbP332SY0EK3YT+AhWEs/daIH5rTpnDlzS3kTS5QKBxAdH1CcK?=
+ =?us-ascii?Q?keNgFveo834UwlUySxPUwLjmgWb2PvUOHnqjkEy6yVSakd81kSSiNaZOv0L/?=
+ =?us-ascii?Q?bJqhFQocvUK4PIiNCFCdk83HD2ENY0mG0r37p9PZGoKgFJAge6aQNiUruqqD?=
+ =?us-ascii?Q?30s72O/+2nxDxw3U442idlLpaHDejzvnyIV2C2SHOjayVXeKUt7AfzSgBpw3?=
+ =?us-ascii?Q?hcyJHFhd+/x648/qWkn3EIWX6p24jbAZcl3Da11iCXXjNqYTKVFCJU7/1j9T?=
+ =?us-ascii?Q?gdJQiEHB5djBujUZ4DyBPXIrgrQrby80YVS6n+/buK5OYcbD+FmHofdBl0W7?=
+ =?us-ascii?Q?ia4I7+9fHguUAW6TLm8bPUmbpRloH4HrfQ7mPZvqJubhyQHgrCTbqP94aEnT?=
+ =?us-ascii?Q?Jr/v6xyo9qcu5sId3a0EJZBtVe0fJEv+OBn9nFDL1Ewz1//d53EaGdaNLajU?=
+ =?us-ascii?Q?y6Cfv1p9wUAi60aWQBKk/UBui7BF+a+PN1l2Vow0?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB6744.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e9238c85-c269-4ba0-4a09-08dca0889858
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Jul 2024 02:32:51.1505 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Nk/BpUMoedWY5iEkO5kNt+kOnHjgQjVWTjf9/n8wao2EHuKb8MSqIkRMrtsqXolt127nFOqukbhT4G8+dN0KQCM0rCAdKk/JLE9Kak+6OGo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB5967
+X-OriginatorOrg: intel.com
+Received-SPF: pass client-ip=192.198.163.16;
+ envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,44 +242,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NG7AjQRGXlqx
+X-TUID: HK4Qtk79AuHp
 
-On 9/7/24 17:58, Cédric Le Goater wrote:
-> On 7/9/24 5:25 PM, Philippe Mathieu-Daudé wrote:
->> Since v42:
->> - Stick to spec v4.3 (re-simplified EXT_CSD register & migrate)
->> - Fill CID register
->> - Few changes to CSD register
->> - Implement 'boot-mode' reset timing
->> - Add 'boot-size' property
->>
->> Change required for aspeed branch:
->> -- >8 --
->> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
->> index 8c0e36badd..563816b710 100644
->> --- a/hw/arm/aspeed.c
->> +++ b/hw/arm/aspeed.c
->> @@ -344,3 +344,3 @@ static void sdhci_attach_drive(SDHCIState *sdhci, 
->> DriveInfo *dinfo, bool emmc,
->>           if (emmc) {
->> -            qdev_prop_set_uint8(card, "boot-config", boot_emmc ? 0x48 
->> : 0x0);
->> +            qdev_prop_set_uint64(card, "boot-size", 1 * MiB);
->>           }
->> (I'm still reluctant to merge patches 16-18)...
-> 
-> Then, please drop all changes related to the boot partitions. I will keep
-> the original patches in my tree and address the feature when I have time.
-> TYPE_EMMC is already great to have.
+Hi Nicolin,
 
-As you mentioned on today's community call, eMMC is a chipset soldered
-on a board, so our boards exactly knows what size to expect on the card,
-and whether boot partitions are present or not. I find the way of
-building the drive image described in patch #16 cumbersome, but I'm OK
-to make some concession on it, since "it works" as it. If necessary
-we'll improve and deprecate the current properties. I'll repost and
-plan to merge as-is (modulo review comments).
+>-----Original Message-----
+>From: Nicolin Chen <nicolinc@nvidia.com>
+>Subject: Re: [PATCH RFCv1 02/10] hw/arm/virt: Add iommufd link to virt-
+>machine
+>
+>On Tue, Jul 09, 2024 at 07:06:50PM +0200, Eric Auger wrote:
+>> On 7/9/24 18:59, Nicolin Chen wrote:
+>> > Hi Eric,
+>> >
+>> > Thanks for the comments!
+>> >
+>> > On Tue, Jul 09, 2024 at 11:11:56AM +0200, Eric Auger wrote:
+>> >> On 6/26/24 02:28, Nicolin Chen wrote:
+>> >>> A nested SMMU must use iommufd ioctls to communicate with the
+>host-level
+>> >>> SMMU instance for 2-stage translation support. Add an iommufd link
+>to the
+>> >>> ARM virt-machine, allowing QEMU command to pass in an iommufd
+>object.
+>> >> If I am not wrong vfio devices are allowed to use different iommufd's
+>> >> (although there is no real benefice). So this command line wouldn't
+>> >> match with that option.
+>> > I think Jason's remarks highlighted that FD should be one per VM:
+>> > https://lore.kernel.org/qemu-
+>devel/20240503141024.GE3341011@nvidia.com/
+>> OK I thought this was still envisionned althought not really meaningful.
+>> By the way, please add Yi and Zhenzhong in cc since thre problematics
+>> are connected I think.
+>
+>Yea.
+>
+>Yi/Zhenzhong, would you please shed some light on forwarding an
+>iommufd handler to the intel_iommu code? IIRC, we did that at the
+>beginning but removed it later?
 
-Regards,
+IOMMUFD/devid/ioas handler is packaged in HostIOMMUDeviceIOMMUFD and passed=
+ to vIOMMU, see https://github.com/yiliu1765/qemu/commit/02892a5b452382866e=
+804c3db3bb392c8f8f500f
 
-Phil.
+The whole nesting series is at https://github.com/yiliu1765/qemu/commits/zh=
+enzhong/iommufd_nesting_rfcv2/
+
+We gave the user flexibility to use different iommufd backends in one VM in=
+ iommufd cdev series.=20
+We want to be backward compatible in nesting series, the code change to sup=
+port that is also trivial.
+
+Thanks
+Zhenzhong
+
+>
+>> >> Also while reading the commit msg it is not clear with the iommufd is
+>> >> needed in the machine whereas the vfio iommufd BE generally calls
+>those
+>> >> ioctls.
+>> > I think I forgot to revisit it. Both intel_iommu and smmu-common
+>> > used to call iommufd_backend_connect() for counting, so there was
+>> > a need to pass in the same iommufd handler to the viommu driver.
+>> > For SMMU, since it is created in the virt code, we had to pass in
+>> > with this patch.
+>> >
+>> > That being said, it looks like intel_iommu had removed that. So,
+>> > likely we don't need an extra user counting for SMMU too.
+>> OK at least it deserves some explanation about the "why"
+>
+>Yes, I agree that the commit message isn't good enough.
+>
+>Thanks
+>Nicolin

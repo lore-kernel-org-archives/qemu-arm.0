@@ -1,111 +1,83 @@
-Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp442870njb;
-        Wed, 10 Jul 2024 08:44:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUOT4gZp3NfETGAUs0Q2Rbd6lMXJY30Tn+hNcQWQmm3AwiLFlVed6RjRi9GvCu/l17lb09HGqjzkzf3r4R8HvPMnBxxv6oy
-X-Google-Smtp-Source: AGHT+IE7A3AbRYgjz/qyZmpkCcMXIj8PVsk7jFb78Hx4abaAXj7XK7zYyb1sS4Jt0+dITiC1V9Sd
-X-Received: by 2002:ac8:588f:0:b0:446:37c2:f00a with SMTP id d75a77b69052e-447faab351dmr84272491cf.45.1720626293315;
-        Wed, 10 Jul 2024 08:44:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720626293; cv=none;
+Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp506185njb;
+        Wed, 10 Jul 2024 10:35:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX1jl/c/4XuN1g4+nEwWvTIbgUTPSm7B61QwnuL75a4GBMkqjDH5gAJwCZqBxnNDQp3L4iG1wpNejU4jMfLtQFXnErVRBOf
+X-Google-Smtp-Source: AGHT+IHlSN6lFGpoEgFb/kpXLjYBa+w3rq6zE/8NWof0dgUzD7j8iATpF0+IqkJJOkELMRWnlXr7
+X-Received: by 2002:a05:620a:985:b0:79e:fd21:c352 with SMTP id af79cd13be357-7a1469cf60fmr61018485a.19.1720632940844;
+        Wed, 10 Jul 2024 10:35:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720632940; cv=none;
         d=google.com; s=arc-20160816;
-        b=YRsqcSextnKzoQtXZUmsg9k3HWfwlpxBYzOui7NngLAWYskpDYXvhbfitrw5mz3ELG
-         IBOPjmn48pPvfJ7/jspxLNCu3QdxewT4HE6UxC/kqZR2svMCx1lX/aLBy7rMX/a/XXfh
-         WcVyYTO7bBK/wC2lhnRklikjHETusH0vyEWK+R+WCaR5QzF3CrDXkk3E/GCHcQgEOHzL
-         Td20myrVbhtOipr77XJg+ddRTumnVlTaXL+Ava8EB22WWEgKLEHFuNxd9el9OR8Tk/LH
-         iNgoufUShbJ3Xy1EQcvkxmhxJJpvmDSJjTBSEdIisOSjIN6HDWhv0kj3TCp81iKuQEcN
-         29iA==
+        b=WlInT8zSJ59215kyf7+UOU1gPD6P8ZvQmfSNNaKcpmLYCOLEyhrcl/2nCB7IM8rxg5
+         NgXRCcfQrQwXYshmmynD21h9aVK2QVpVPYc95xaGksw9Kbg/kSDJBP5c66pZuRbth3Oo
+         a2pITMF1xJEF7CjCStyqPn5LpdIS8rbYmrUlK9i2/7+/c9C/g8mOnLZgypdPLaSUtHwq
+         I46kEfmZSJOXdOUaymxGwp7f/Fa+nkuEn+ZqWOEbUXkVQV/5lgUnYeP4eJIiElh0YQ53
+         YGYOUMUxcscO94me1aNgJ5RHSLo6+s/yhKA38aS4oJpY2+g0tm4NaxSgPrZtDTvW25Vf
+         csOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :user-agent:references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=NH0YphbLJIChi/3SkiNAIIFjNtwVxbllg4kSIpTdYuo=;
-        fh=QPevuNSUOBeG4G552Z8gZh1613W9HgxuNEV/1MotDjk=;
-        b=yG0MQvpKDXjDkGq17NNKx3kjZ+A4HEGNuUVJmqg39dyQOBVM1WnjZaW8UguwVIDHLM
-         4y2V3fyLOJXsqbDfwogWneAwsjoY4fG2D1QKhm/tb80IoJpWmVxrJYTt9Pav2CXedyq4
-         INcUEaFlqPsrEWJGqpe9Outdr3d9G4ghIWP7iOMKyMGG+PHnIAnmyDYO8mlx68EBpR5I
-         LYrPMG3ECK48wOZ6UzUu/ycvVqzse/DQ1W4js/lkpFHc/v5gDWilqGrtLAsO+k3zb0sd
-         0bZtGE7yongM5Le22lAVnosxk8cfzaZVcwpyDuMTRMt08jjYNPILF+tl/FrnPWrEqG13
-         E4Qw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=mwagZqSCpedYb+WqMmDTr5Fxxg7AlmwoZwYNHZ85Sr8=;
+        fh=JUheaOjOSqTLW/EiG+V3hkK3/QF0uCT5G8az9TpE/D0=;
+        b=t99GdmJyB5w6y3H8P5EJSETFL6j2tVpgsxgFovCnVh7RsAedyJC9upLB0XBsdD55ua
+         6PcjSWjwx1z8K8cPnCUBqrPLWSNfQPnAhSxcSsHWJ8YQu1AmhJdOQS6boRWPCuyQNuYb
+         bV21ib5E+PxLMBEM08FjItMcFDB9AiakMohXWTDEjeJ82SjVFVyOACA1cP9Qk5nv0hyv
+         XEEJ5kIC08vxIYE6UjKz3uS9+VuMqrO160QVMm68jg070CgaCPJErhQJOQ5ukLCEN6P0
+         EETlKF8WwBWkoshm3AoE34oMBbzcSZ/HgBcCBEGbcc4PoUPEMtI+AwfkRA2o3ymhlhQg
+         Yb+A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BN3TyjRs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-447f9bf95casi47897111cf.644.2024.07.10.08.44.53
+        by mx.google.com with ESMTPS id af79cd13be357-79f190d87f9si512423685a.563.2024.07.10.10.35.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jul 2024 08:44:53 -0700 (PDT)
+        Wed, 10 Jul 2024 10:35:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BN3TyjRs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRZUM-0002At-M6; Wed, 10 Jul 2024 11:44:14 -0400
+	id 1sRbE7-0008Iw-Vq; Wed, 10 Jul 2024 13:35:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1sRZUL-00025R-8S
- for qemu-arm@nongnu.org; Wed, 10 Jul 2024 11:44:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sRbE6-0008Hs-82; Wed, 10 Jul 2024 13:35:34 -0400
+Received: from muminek.juszkiewicz.com.pl ([213.251.184.221])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1sRZUJ-0003aL-Nc
- for qemu-arm@nongnu.org; Wed, 10 Jul 2024 11:44:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1720626250;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=NH0YphbLJIChi/3SkiNAIIFjNtwVxbllg4kSIpTdYuo=;
- b=BN3TyjRs+UMvW9oo/WfIJBxENYvaamV/w0XVrvzLakvqwaWmbYJ0WOBCXxohNrFkRnovEX
- zWk5IYag5z76/Y82sfIAUwMUfMx0EmQyuPVV9g01oUdfqA0swQvTHPURwCsTqC4oaX0AsU
- q1CKpIWwQnMEkPy8PF03QnN2dR8QdGI=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-356-X00OlGg2Ouajqc9bsQ_Q5Q-1; Wed,
- 10 Jul 2024 11:42:54 -0400
-X-MC-Unique: X00OlGg2Ouajqc9bsQ_Q5Q-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DAFF019560AB; Wed, 10 Jul 2024 15:42:50 +0000 (UTC)
-Received: from localhost (unknown [10.39.194.152])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 354363000182; Wed, 10 Jul 2024 15:42:47 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- darren@os.amperecomputing.com, gankulkarni@os.amperecomputing.com
-Subject: Re: [PATCH] arm/kvm: add support for MTE
-In-Reply-To: <20240709060448.251881-1-gankulkarni@os.amperecomputing.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy Ross"
-References: <20240709060448.251881-1-gankulkarni@os.amperecomputing.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Wed, 10 Jul 2024 17:42:45 +0200
-Message-ID: <875xtdcky2.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1sRbDy-0007FJ-Ji; Wed, 10 Jul 2024 13:35:33 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTP id EED10261989;
+ Wed, 10 Jul 2024 19:35:20 +0200 (CEST)
+X-Virus-Scanned: Debian amavis at juszkiewicz.com.pl
+Received: from muminek.juszkiewicz.com.pl ([127.0.0.1])
+ by localhost (muminek.juszkiewicz.com.pl [127.0.0.1]) (amavis, port 10024)
+ with ESMTP id qd8wG7v7voex; Wed, 10 Jul 2024 19:35:19 +0200 (CEST)
+Received: from applejack.lan (83.8.74.165.ipv4.supernova.orange.pl
+ [83.8.74.165])
+ by muminek.juszkiewicz.com.pl (Postfix) with ESMTPSA id 44644260662;
+ Wed, 10 Jul 2024 19:35:18 +0200 (CEST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH 1/1] target/arm: calculate cache sizes properly
+Date: Wed, 10 Jul 2024 19:35:12 +0200
+Message-ID: <20240710173512.424547-1-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: softfail client-ip=213.251.184.221;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=muminek.juszkiewicz.com.pl
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,72 +92,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: kaWLXwCV/pkC
+X-TUID: BXuQHEQLgbtG
 
-On Mon, Jul 08 2024, Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com> wrote:
+Neoverse-V1 TRM says that NumSets are [27:13] not :32 like in code.
 
-> Extend the 'mte' property for the virt machine to cover KVM as
-> well. For KVM, we don't allocate tag memory, but instead enable
-> the capability.
->
-> If MTE has been enabled, we need to disable migration, as we do not
-> yet have a way to migrate the tags as well. Therefore, MTE will stay
-> off with KVM unless requested explicitly.
->
-> This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
-> which broke TCG since it made the TCG -cpu max
-> report the presence of MTE to the guest even if the board hadn't
-> enabled MTE by wiring up the tag RAM. This meant that if the guest
-> then tried to use MTE QEMU would segfault accessing the
-> non-existent tag RAM.
+With this fix all cores which use make_ccsidr64() function have proper
+size of cpu caches.
 
-So, the main difference to my original patch is that we don't end up
-with MTE in the max model if we didn't configure tag memory, but the
-rest of the behaviour stays the same?
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ target/arm/tcg/cpu64.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
->
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
-
-(...)
-
-> +void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
-> +{
-> +    static bool tried_to_enable;
-> +    static bool succeeded_to_enable;
-> +    Error *mte_migration_blocker = NULL;
-> +    int ret;
-> +
-> +    if (!tried_to_enable) {
-> +        /*
-> +         * MTE on KVM is enabled on a per-VM basis (and retrying doesn't make
-> +         * sense), and we only want a single migration blocker as well.
-> +         */
-> +        tried_to_enable = true;
-> +
-> +        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0);
-> +        if (ret) {
-> +            error_setg_errno(errp, -ret, "Failed to enable KVM_CAP_ARM_MTE");
-> +            return;
-> +        }
-> +
-> +        /* TODO: Migration is not supported with MTE enabled */
-
-Do you have a plan for enabling migration in the future? From what I
-remember, pre-copy support should be doable within QEMU (with a similar
-approach to e.g. s390 skey), but post-copy would need a kernel API
-extension to support getting additional data while faulting in a page.
-
-> +        error_setg(&mte_migration_blocker,
-> +                   "Live migration disabled due to MTE enabled");
-> +        if (migrate_add_blocker(&mte_migration_blocker, errp)) {
-> +            error_free(mte_migration_blocker);
-> +            return;
-> +        }
-> +        succeeded_to_enable = true;
-> +    }
-> +    if (succeeded_to_enable) {
-> +        object_property_set_bool(cpuobj, "has_mte", true, NULL);
-> +    }
-> +}
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index fe232eb306..98144e1d20 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -50,7 +50,7 @@ static uint64_t make_ccsidr64(unsigned assoc, unsigned linesize,
+     sets = cachesize / (assoc * linesize);
+     assert(cachesize % (assoc * linesize) == 0);
+ 
+-    return ((uint64_t)(sets - 1) << 32)
++    return ((uint64_t)(sets - 1) << 13)
+          | ((assoc - 1) << 3)
+          | (lg_linesize - 4);
+ }
+-- 
+2.45.2
 

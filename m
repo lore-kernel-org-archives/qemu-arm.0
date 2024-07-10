@@ -1,77 +1,77 @@
-Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp320747njb;
-        Wed, 10 Jul 2024 05:21:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVgNlPVJQTVLkBvE5E0JIohXS2ITccKpe9buEym8gAxH+j+nHx/Vf/N44/odTyUF/1zZZGjDMpy0ALOzMGYW3oiCRGBFazp
-X-Google-Smtp-Source: AGHT+IF6+CN0XI/YV7+0K40X6tQso2ywfq4XDX42z2e7JSYhu0W2EE4FMawARadIWdp73in7KKN4
-X-Received: by 2002:a9d:7383:0:b0:703:5e9e:bab1 with SMTP id 46e09a7af769-70375a17aeemr5354632a34.20.1720614097254;
-        Wed, 10 Jul 2024 05:21:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720614097; cv=none;
+Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp319083njb;
+        Wed, 10 Jul 2024 05:18:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUu1LvTM5NN1jEg5gaqbx33L8X8lJdxdqLHQXhDmDV+8HDlPioUk8k5xsPtcw8gpDRJo5d0bU8VYynXprmjwxj7gXlQpy7m
+X-Google-Smtp-Source: AGHT+IFf+f987cYEoVMRSpq2MPqYJwVQKiDP+ksSL3M1883W7SpT2Nwu+5hpUnHkY45D8eRRGbpN
+X-Received: by 2002:a05:620a:269b:b0:79f:78a:f7b4 with SMTP id af79cd13be357-79f19a805aamr698005485a.42.1720613924233;
+        Wed, 10 Jul 2024 05:18:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720613924; cv=none;
         d=google.com; s=arc-20160816;
-        b=UrbFAeINFsrYL+iBYfqxUZkXu8ki2qRnCm1PlIH8FfmCxxdBkfC1bu16Etp32nH1We
-         1SU6tPxbbqV5VXRmYBIHeiSMkDSZn/2StoLjpmjGKEzpkAfaiRTaK/lE9BsCuCvhyhza
-         NxuI67PJbZBv+F7epGWtZJ17PpfrYKOdlgvwcKXTqvaJx+I97B2Z87/3SKZ5j6Dm3T7Y
-         W7YjPxhpIgg0tbxwQx8J96tUEfnd+11gGwh59/0OdBtGJyhRQpB3guTkcMv7o33YPQIH
-         4NnXy/YReHyQB0QKnqWcmh2TQCIVUOeIZQeG9m+hT9L/vwqioXdJDYxmTGeEHqGFptgb
-         8ktw==
+        b=o6OGXobGb06Hzp1jKWztvtE1ra0mZeuf8doTcWCA+3s4in6G9/JSXp/NNSDGAPoamW
+         7S7S3BJGK1TPXTwOROoZKl2TYdJN3/gM05qb4pMFGtNeWWV39OBuOyiKw7PoG9KcvnU3
+         GQb2WjIMqy753ZONniGpkf3OR7QTR5HfA1uJq6JrmbGcoz35Co+Mf0NjqDNlkhgscsM0
+         0z/n54lPDUtn38g/gPBLrWQBtpLFiRT52OmJ6mQj/0zyDeGY1Kb1sShkcjvUPMqEuaE2
+         LUmfZXzoV0ihZ6jgUt7Ru27qtKcTzuWTqyOeQFu7mkbnEZ6rT6P53GK8+KFi5kIyH/UX
+         45Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=P4DWcLVTg6w8/fF/ZdWvfVx7QeyjMcC3et0+FOWkTW0=;
+        bh=860wqQ7Tyhy53ZCHqsN0cdaLsoXTeIHTvFBh5Q2nRdo=;
         fh=rm/kdaPET133yykskS8xfxkdHKlgdt+Au8v/zfBGSUQ=;
-        b=XNL2mxSIJIustNdZ00JZEw2wHT4+n51pGWZmEAeDlPxdUdPhh3rKz3Qrpsk4FU1C4X
-         zXQ8SBcFuAlb87IlhEImr8T2V06QT2fR2/YHmdmaF5TNLVagdAOK0FeEO6ldI91SxXDN
-         Ea5ZseXvFDm8grcXI6e97r6Bxh9JLedySRX6N5HnjvKB5dOc8Yuh3We40sLT/h+uUkN3
-         DWE507rzmku5CoH/pLBnzyOD6xFB+FyksD+HeYh5/d/FzZGU5e9Ut4P6YC7Uyoe/e5ND
-         AhNRtTtpq4lLS7KPxoZ9PAFYKxR63YABLTHDQd/lTecHoCQb/dUWtCXVZMQ4HwIjbtJa
-         uiSw==;
+        b=YKlAoqxoFzjdPaZlt6OXBrmBWXuCj5eGP1MpvJYu7Q/nSRbqXyMToDh+F+Jtbr1+gd
+         g9QV+wsA33KNgxHXu9UfoMN74ox/qVTjiOH3HRee/7V6RKGS4SQNi5Ae9EwIaa/9rn6I
+         7zA0ljXZoHLJeMpttYHrX43bJWnd8Kx6b8wS4MBxVRV1WXYZD5IcdJTc/aJezg+aiESf
+         8G4ONX3UT3L/gJ5A4WcALk884f5sZkHRxc/nnj9FPuWMqb1bOnju3Y2Sdt9J71H8lzby
+         RlJZGuBHPHCi38vZJ2zSXjGiRro3bWOJY9iSFD2/MHJS2wyCYm+a6SZZDdoDrLbnTtSC
+         Z6qg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-447f9be60e0si44665211cf.570.2024.07.10.05.21.37
+        by mx.google.com with ESMTPS id af79cd13be357-79f1902abf6si441805185a.204.2024.07.10.05.18.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jul 2024 05:21:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 10 Jul 2024 05:18:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sRWJk-0007bX-Di; Wed, 10 Jul 2024 08:21:04 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sRWGp-0001sc-8j; Wed, 10 Jul 2024 08:18:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1sRWJi-0007Xa-4K; Wed, 10 Jul 2024 08:21:02 -0400
+ id 1sRWGn-0001qs-BK; Wed, 10 Jul 2024 08:18:01 -0400
 Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1sRWJg-0007uG-G5; Wed, 10 Jul 2024 08:21:01 -0400
+ id 1sRWGc-0007DY-Sh; Wed, 10 Jul 2024 08:17:53 -0400
 Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id E40BA4E6005;
- Wed, 10 Jul 2024 14:20:57 +0200 (CEST)
+ by zero.eik.bme.hu (Postfix) with ESMTP id 7E6BC4E601B;
+ Wed, 10 Jul 2024 14:17:47 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at eik.bme.hu
 Received: from zero.eik.bme.hu ([127.0.0.1])
  by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id pxwWvReYOXsD; Wed, 10 Jul 2024 14:20:56 +0200 (CEST)
+ with ESMTP id djzZqR-pUrO3; Wed, 10 Jul 2024 14:17:45 +0200 (CEST)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 028624E601B; Wed, 10 Jul 2024 14:20:56 +0200 (CEST)
+ id 8B4354E6005; Wed, 10 Jul 2024 14:17:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 00C79746E3B;
- Wed, 10 Jul 2024 14:20:55 +0200 (CEST)
-Date: Wed, 10 Jul 2024 14:20:55 +0200 (CEST)
+ by zero.eik.bme.hu (Postfix) with ESMTP id 8983A746E3B;
+ Wed, 10 Jul 2024 14:17:45 +0200 (CEST)
+Date: Wed, 10 Jul 2024 14:17:45 +0200 (CEST)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 To: Richard Henderson <richard.henderson@linaro.org>
 cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongu.org, 
  qemu-s390x@nongnu.org, qemu-riscv@nongnu.org, max.chou@sifive.com
-Subject: Re: [PATCH v2 08/13] target/ppc: Merge helper_{dcbz,dcbzep}
-In-Reply-To: <20240710032814.104643-9-richard.henderson@linaro.org>
-Message-ID: <e5887250-eabd-f04b-e95f-0ea27ad8876a@eik.bme.hu>
+Subject: Re: [PATCH v2 07/13] target/ppc: Split out helper_dbczl for 970
+In-Reply-To: <20240710032814.104643-8-richard.henderson@linaro.org>
+Message-ID: <66e91236-02d1-5e81-20df-5db4146b624b@eik.bme.hu>
 References: <20240710032814.104643-1-richard.henderson@linaro.org>
- <20240710032814.104643-9-richard.henderson@linaro.org>
+ <20240710032814.104643-8-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII; format=flowed
 Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
@@ -82,112 +82,168 @@ X-Spam_bar: /
 X-Spam_report: (0.6 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3G15Qb0Q9CvN
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4oEy6uP0fRAz
 
 On Tue, 9 Jul 2024, Richard Henderson wrote:
-> Merge the two and pass the mmu_idx directly from translation.
-> Swap the argument order in dcbz_common to avoid extra swaps.
+> We can determine at translation time whether the insn is or
+> is not dbczl.  We must retain a runtime check against the
+> HID5 register, but we can move that to a separate function
+> that never affects other ppc models.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
-> target/ppc/helper.h     |  3 +--
-> target/ppc/mem_helper.c | 14 ++++----------
-> target/ppc/translate.c  |  4 ++--
-> 3 files changed, 7 insertions(+), 14 deletions(-)
->
-> diff --git a/target/ppc/helper.h b/target/ppc/helper.h
-> index afc56855ff..4fa089cbf9 100644
-> --- a/target/ppc/helper.h
-> +++ b/target/ppc/helper.h
-> @@ -46,8 +46,7 @@ DEF_HELPER_FLAGS_3(stmw, TCG_CALL_NO_WG, void, env, tl, i32)
-> DEF_HELPER_4(lsw, void, env, tl, i32, i32)
-> DEF_HELPER_5(lswx, void, env, tl, i32, i32, i32)
-> DEF_HELPER_FLAGS_4(stsw, TCG_CALL_NO_WG, void, env, tl, i32, i32)
-> -DEF_HELPER_FLAGS_2(dcbz, TCG_CALL_NO_WG, void, env, tl)
-> -DEF_HELPER_FLAGS_2(dcbzep, TCG_CALL_NO_WG, void, env, tl)
-> +DEF_HELPER_FLAGS_3(dcbz, TCG_CALL_NO_WG, void, env, tl, int)
-> #ifdef TARGET_PPC64
-> DEF_HELPER_FLAGS_2(dcbzl, TCG_CALL_NO_WG, void, env, tl)
 
-Why only dcbz but not dcbzl as well to make them uniform?
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
 
 Regards,
 BALATON Zoltan
 
-> #endif
+> ---
+> target/ppc/helper.h     |  7 +++++--
+> target/ppc/mem_helper.c | 34 +++++++++++++++++++++-------------
+> target/ppc/translate.c  | 24 ++++++++++++++----------
+> 3 files changed, 40 insertions(+), 25 deletions(-)
+>
+> diff --git a/target/ppc/helper.h b/target/ppc/helper.h
+> index 76b8f25c77..afc56855ff 100644
+> --- a/target/ppc/helper.h
+> +++ b/target/ppc/helper.h
+> @@ -46,8 +46,11 @@ DEF_HELPER_FLAGS_3(stmw, TCG_CALL_NO_WG, void, env, tl, i32)
+> DEF_HELPER_4(lsw, void, env, tl, i32, i32)
+> DEF_HELPER_5(lswx, void, env, tl, i32, i32, i32)
+> DEF_HELPER_FLAGS_4(stsw, TCG_CALL_NO_WG, void, env, tl, i32, i32)
+> -DEF_HELPER_FLAGS_3(dcbz, TCG_CALL_NO_WG, void, env, tl, i32)
+> -DEF_HELPER_FLAGS_3(dcbzep, TCG_CALL_NO_WG, void, env, tl, i32)
+> +DEF_HELPER_FLAGS_2(dcbz, TCG_CALL_NO_WG, void, env, tl)
+> +DEF_HELPER_FLAGS_2(dcbzep, TCG_CALL_NO_WG, void, env, tl)
+> +#ifdef TARGET_PPC64
+> +DEF_HELPER_FLAGS_2(dcbzl, TCG_CALL_NO_WG, void, env, tl)
+> +#endif
+> DEF_HELPER_FLAGS_2(icbi, TCG_CALL_NO_WG, void, env, tl)
+> DEF_HELPER_FLAGS_2(icbiep, TCG_CALL_NO_WG, void, env, tl)
+> DEF_HELPER_5(lscbx, tl, env, tl, i32, i32, i32)
 > diff --git a/target/ppc/mem_helper.c b/target/ppc/mem_helper.c
-> index d4957efd6e..24bae3b80c 100644
+> index 5067919ff8..d4957efd6e 100644
 > --- a/target/ppc/mem_helper.c
 > +++ b/target/ppc/mem_helper.c
-> @@ -271,7 +271,7 @@ void helper_stsw(CPUPPCState *env, target_ulong addr, uint32_t nb,
-> }
->
-> static void dcbz_common(CPUPPCState *env, target_ulong addr,
-> -                        int dcbz_size, int mmu_idx, uintptr_t retaddr)
-> +                        int mmu_idx, int dcbz_size, uintptr_t retaddr)
-> {
->     target_ulong mask = ~(target_ulong)(dcbz_size - 1);
->     void *haddr;
-> @@ -296,15 +296,9 @@ static void dcbz_common(CPUPPCState *env, target_ulong addr,
+> @@ -296,26 +296,34 @@ static void dcbz_common(CPUPPCState *env, target_ulong addr,
 >     }
 > }
 >
-> -void helper_dcbz(CPUPPCState *env, target_ulong addr)
-> +void helper_dcbz(CPUPPCState *env, target_ulong addr, int mmu_idx)
+> -void helper_dcbz(CPUPPCState *env, target_ulong addr, uint32_t opcode)
+> +void helper_dcbz(CPUPPCState *env, target_ulong addr)
 > {
-> -    dcbz_common(env, addr, env->dcache_line_size,
-> -                ppc_env_mmu_index(env, false), GETPC());
-> -}
+> -    int dcbz_size = env->dcache_line_size;
 > -
-> -void helper_dcbzep(CPUPPCState *env, target_ulong addr)
-> -{
-> -    dcbz_common(env, addr, env->dcache_line_size, PPC_TLB_EPID_STORE, GETPC());
-> +    dcbz_common(env, addr, mmu_idx, env->dcache_line_size, GETPC());
-> }
->
-> #ifdef TARGET_PPC64
-> @@ -320,7 +314,7 @@ void helper_dcbzl(CPUPPCState *env, target_ulong addr)
->         dcbz_size = 32;
->     }
->
+> -#if defined(TARGET_PPC64)
+> -    /* Check for dcbz vs dcbzl on 970 */
+> -    if (env->excp_model == POWERPC_EXCP_970 &&
+> -        !(opcode & 0x00200000) && ((env->spr[SPR_970_HID5] >> 7) & 0x3) == 1) {
+> -        dcbz_size = 32;
+> -    }
+> -#endif
+> -
 > -    dcbz_common(env, addr, dcbz_size, ppc_env_mmu_index(env, false), GETPC());
-> +    dcbz_common(env, addr, ppc_env_mmu_index(env, false), dcbz_size, GETPC());
+> +    dcbz_common(env, addr, env->dcache_line_size,
+> +                ppc_env_mmu_index(env, false), GETPC());
 > }
-> #endif
 >
+> -void helper_dcbzep(CPUPPCState *env, target_ulong addr, uint32_t opcode)
+> +void helper_dcbzep(CPUPPCState *env, target_ulong addr)
+> {
+>     dcbz_common(env, addr, env->dcache_line_size, PPC_TLB_EPID_STORE, GETPC());
+> }
+>
+> +#ifdef TARGET_PPC64
+> +void helper_dcbzl(CPUPPCState *env, target_ulong addr)
+> +{
+> +    int dcbz_size = env->dcache_line_size;
+> +
+> +    /*
+> +     * The translator checked for POWERPC_EXCP_970.
+> +     * All that's left is to check HID5.
+> +     */
+> +    if (((env->spr[SPR_970_HID5] >> 7) & 0x3) == 1) {
+> +        dcbz_size = 32;
+> +    }
+> +
+> +    dcbz_common(env, addr, dcbz_size, ppc_env_mmu_index(env, false), GETPC());
+> +}
+> +#endif
+> +
+> void helper_icbi(CPUPPCState *env, target_ulong addr)
+> {
+>     addr &= ~(env->dcache_line_size - 1);
 > diff --git a/target/ppc/translate.c b/target/ppc/translate.c
-> index 2664c94522..285734065b 100644
+> index 0bc16d7251..2664c94522 100644
 > --- a/target/ppc/translate.c
 > +++ b/target/ppc/translate.c
-> @@ -4458,7 +4458,7 @@ static void gen_dcbz(DisasContext *ctx)
->     }
-> #endif
+> @@ -200,6 +200,7 @@ struct DisasContext {
+>     uint32_t flags;
+>     uint64_t insns_flags;
+>     uint64_t insns_flags2;
+> +    powerpc_excp_t excp_model;
+> };
 >
-> -    gen_helper_dcbz(tcg_env, tcgv_addr);
-> +    gen_helper_dcbz(tcg_env, tcgv_addr, tcg_constant_i32(ctx->mem_idx));
+> #define DISAS_EXIT         DISAS_TARGET_0  /* exit to main loop, pc updated */
+> @@ -4445,27 +4446,29 @@ static void gen_dcblc(DisasContext *ctx)
+> /* dcbz */
+> static void gen_dcbz(DisasContext *ctx)
+> {
+> -    TCGv tcgv_addr;
+> -    TCGv_i32 tcgv_op;
+> +    TCGv tcgv_addr = tcg_temp_new();
+>
+>     gen_set_access_type(ctx, ACCESS_CACHE);
+> -    tcgv_addr = tcg_temp_new();
+> -    tcgv_op = tcg_constant_i32(ctx->opcode & 0x03FF000);
+>     gen_addr_reg_index(ctx, tcgv_addr);
+> -    gen_helper_dcbz(tcg_env, tcgv_addr, tcgv_op);
+> +
+> +#ifdef TARGET_PPC64
+> +    if (ctx->excp_model == POWERPC_EXCP_970 && !(ctx->opcode & 0x00200000)) {
+> +        gen_helper_dcbzl(tcg_env, tcgv_addr);
+> +        return;
+> +    }
+> +#endif
+> +
+> +    gen_helper_dcbz(tcg_env, tcgv_addr);
 > }
 >
 > /* dcbzep */
-> @@ -4468,7 +4468,7 @@ static void gen_dcbzep(DisasContext *ctx)
+> static void gen_dcbzep(DisasContext *ctx)
+> {
+> -    TCGv tcgv_addr;
+> -    TCGv_i32 tcgv_op;
+> +    TCGv tcgv_addr = tcg_temp_new();
 >
 >     gen_set_access_type(ctx, ACCESS_CACHE);
+> -    tcgv_addr = tcg_temp_new();
+> -    tcgv_op = tcg_constant_i32(ctx->opcode & 0x03FF000);
 >     gen_addr_reg_index(ctx, tcgv_addr);
-> -    gen_helper_dcbzep(tcg_env, tcgv_addr);
-> +    gen_helper_dcbz(tcg_env, tcgv_addr, tcg_constant_i32(PPC_TLB_EPID_STORE));
+> -    gen_helper_dcbzep(tcg_env, tcgv_addr, tcgv_op);
+> +    gen_helper_dcbzep(tcg_env, tcgv_addr);
 > }
 >
 > /* dst / dstt */
+> @@ -6480,6 +6483,7 @@ static void ppc_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+>     ctx->hv = (hflags >> HFLAGS_HV) & 1;
+>     ctx->insns_flags = env->insns_flags;
+>     ctx->insns_flags2 = env->insns_flags2;
+> +    ctx->excp_model = env->excp_model;
+>     ctx->access_type = -1;
+>     ctx->need_access_type = !mmu_is_64bit(env->mmu_model);
+>     ctx->le_mode = (hflags >> HFLAGS_LE) & 1;
 >

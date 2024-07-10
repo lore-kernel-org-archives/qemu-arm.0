@@ -1,92 +1,111 @@
-Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp438720njb;
-        Wed, 10 Jul 2024 08:36:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXEAoamHYThy8jHMnwpQsMQgUTF+byWmkrKQisEgr3iBHa+aBkijj/NjfZpUQbXu6DSPbknOKcdZUzhAR+5QXhxh9Cqb/fQ
-X-Google-Smtp-Source: AGHT+IFgoZJr3qNuglSrOw7cmjRmGvTuzAJra7yzSGF8J7jRMe+oAT8UJVWcCtFvuFxh8rwxLOge
-X-Received: by 2002:a05:620a:14b6:b0:79f:1873:5463 with SMTP id af79cd13be357-79f19a0fd43mr597291385a.6.1720625784557;
-        Wed, 10 Jul 2024 08:36:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720625784; cv=none;
+Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp442870njb;
+        Wed, 10 Jul 2024 08:44:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUOT4gZp3NfETGAUs0Q2Rbd6lMXJY30Tn+hNcQWQmm3AwiLFlVed6RjRi9GvCu/l17lb09HGqjzkzf3r4R8HvPMnBxxv6oy
+X-Google-Smtp-Source: AGHT+IE7A3AbRYgjz/qyZmpkCcMXIj8PVsk7jFb78Hx4abaAXj7XK7zYyb1sS4Jt0+dITiC1V9Sd
+X-Received: by 2002:ac8:588f:0:b0:446:37c2:f00a with SMTP id d75a77b69052e-447faab351dmr84272491cf.45.1720626293315;
+        Wed, 10 Jul 2024 08:44:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720626293; cv=none;
         d=google.com; s=arc-20160816;
-        b=UnQPvfHr2jhyLGErY3EAAGWgk7WSAsruhlBQgpBfUBTRZGI+r+9eY8eYYV3+QFjmBl
-         gIyq0XeWZe3ZaObyNH1619RRfi+O1DFMfkhwQgtlMqO3WebPl3yXPIniKoMr4gq+yrj6
-         /BryZswcP5tywoBf+j9QrrFVavLUUXXuw7D0MnpvpJ6984TEfbKfwbBOJo9ih5nBsYn9
-         gtNG2T370oaTsoiKk9cQFWBBUXa8pirGVRO6JnXDFMDfFiSooyLFqi8k/LEx7JQ5ieyz
-         MW2UOOGt0iul4g19yp4SkUhKDOs/lOf6YzrFo/l3R9NRT4EIWhsBwjXg6/ELozTwnnl4
-         R60g==
+        b=YRsqcSextnKzoQtXZUmsg9k3HWfwlpxBYzOui7NngLAWYskpDYXvhbfitrw5mz3ELG
+         IBOPjmn48pPvfJ7/jspxLNCu3QdxewT4HE6UxC/kqZR2svMCx1lX/aLBy7rMX/a/XXfh
+         WcVyYTO7bBK/wC2lhnRklikjHETusH0vyEWK+R+WCaR5QzF3CrDXkk3E/GCHcQgEOHzL
+         Td20myrVbhtOipr77XJg+ddRTumnVlTaXL+Ava8EB22WWEgKLEHFuNxd9el9OR8Tk/LH
+         iNgoufUShbJ3Xy1EQcvkxmhxJJpvmDSJjTBSEdIisOSjIN6HDWhv0kj3TCp81iKuQEcN
+         29iA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=FqyWT/6mV7DPcmtIPeA9YGelchNl4NhzCKyNcX16fuI=;
-        fh=Y/vtxBUwx74sGQALfFIc0ra2Z4KKrqmp+Wm8rbOkX40=;
-        b=ye68RysdeLBfpdEZmGumMbMciqhM+ruDUbtz7kFUYWoP0W0ox9WWZWfOL3ZSkzEEgU
-         oqZ+4So2OXQITXKgvR0HT4geAIVQgrX/cmmhH5iZvDJCAJUdMDF0ZpjuEqxdKJytRhfY
-         zUznF8rNRbX3p7Vns9bWeYb8gJpV38rxLq7fX/5lzBGbwOpFiwjehoqo9fdGOMuOBfm4
-         Qz1rt1sLHf9rtPcdqsUHkXZiE14Pp6O8bD3ik37O7nj5zBKUe6UqInux20i66hvtivN9
-         l7ibYt06VfoLLTQlsLHSK0sEr4EdLZbN4vNE6Nq2HYzYvy+L6VaAc1GbTxGwlw7CeyTf
-         XBuQ==;
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :user-agent:references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=NH0YphbLJIChi/3SkiNAIIFjNtwVxbllg4kSIpTdYuo=;
+        fh=QPevuNSUOBeG4G552Z8gZh1613W9HgxuNEV/1MotDjk=;
+        b=yG0MQvpKDXjDkGq17NNKx3kjZ+A4HEGNuUVJmqg39dyQOBVM1WnjZaW8UguwVIDHLM
+         4y2V3fyLOJXsqbDfwogWneAwsjoY4fG2D1QKhm/tb80IoJpWmVxrJYTt9Pav2CXedyq4
+         INcUEaFlqPsrEWJGqpe9Outdr3d9G4ghIWP7iOMKyMGG+PHnIAnmyDYO8mlx68EBpR5I
+         LYrPMG3ECK48wOZ6UzUu/ycvVqzse/DQ1W4js/lkpFHc/v5gDWilqGrtLAsO+k3zb0sd
+         0bZtGE7yongM5Le22lAVnosxk8cfzaZVcwpyDuMTRMt08jjYNPILF+tl/FrnPWrEqG13
+         E4Qw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BN3TyjRs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79f19010276si481647485a.94.2024.07.10.08.36.24
+        by mx.google.com with ESMTPS id d75a77b69052e-447f9bf95casi47897111cf.644.2024.07.10.08.44.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jul 2024 08:36:24 -0700 (PDT)
+        Wed, 10 Jul 2024 08:44:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BN3TyjRs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRZMf-0003V6-Gn; Wed, 10 Jul 2024 11:36:18 -0400
+	id 1sRZUM-0002At-M6; Wed, 10 Jul 2024 11:44:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=VgH8=OK=kaod.org=clg@ozlabs.org>)
- id 1sRZMd-0003T0-Lm; Wed, 10 Jul 2024 11:36:15 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1sRZUL-00025R-8S
+ for qemu-arm@nongnu.org; Wed, 10 Jul 2024 11:44:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=VgH8=OK=kaod.org=clg@ozlabs.org>)
- id 1sRZMa-0002CN-GW; Wed, 10 Jul 2024 11:36:15 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WK2521sbQz4x3J;
- Thu, 11 Jul 2024 01:36:06 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1sRZUJ-0003aL-Nc
+ for qemu-arm@nongnu.org; Wed, 10 Jul 2024 11:44:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1720626250;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=NH0YphbLJIChi/3SkiNAIIFjNtwVxbllg4kSIpTdYuo=;
+ b=BN3TyjRs+UMvW9oo/WfIJBxENYvaamV/w0XVrvzLakvqwaWmbYJ0WOBCXxohNrFkRnovEX
+ zWk5IYag5z76/Y82sfIAUwMUfMx0EmQyuPVV9g01oUdfqA0swQvTHPURwCsTqC4oaX0AsU
+ q1CKpIWwQnMEkPy8PF03QnN2dR8QdGI=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-356-X00OlGg2Ouajqc9bsQ_Q5Q-1; Wed,
+ 10 Jul 2024 11:42:54 -0400
+X-MC-Unique: X00OlGg2Ouajqc9bsQ_Q5Q-1
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WK24w1q7mz4x3d;
- Thu, 11 Jul 2024 01:35:59 +1000 (AEST)
-Message-ID: <09a1a960-5a79-4aa9-a57f-1c1efd809901@kaod.org>
-Date: Wed, 10 Jul 2024 17:35:53 +0200
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DAFF019560AB; Wed, 10 Jul 2024 15:42:50 +0000 (UTC)
+Received: from localhost (unknown [10.39.194.152])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 354363000182; Wed, 10 Jul 2024 15:42:47 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ darren@os.amperecomputing.com, gankulkarni@os.amperecomputing.com
+Subject: Re: [PATCH] arm/kvm: add support for MTE
+In-Reply-To: <20240709060448.251881-1-gankulkarni@os.amperecomputing.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy Ross"
+References: <20240709060448.251881-1-gankulkarni@os.amperecomputing.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Wed, 10 Jul 2024 17:42:45 +0200
+Message-ID: <875xtdcky2.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v48 00/12] hw/sd/sdcard: Add eMMC support
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Bin Meng <bmeng.cn@gmail.com>, Steven Lee <steven_lee@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>, Luc Michel <luc.michel@amd.com>,
- qemu-arm@nongnu.org, qemu-block@nongnu.org, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-References: <20240710141408.69275-1-philmd@linaro.org>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240710141408.69275-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=VgH8=OK=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,57 +120,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jbBNTg01K1OR
+X-TUID: kaWLXwCV/pkC
 
-On 7/10/24 4:13 PM, Philippe Mathieu-Daudé wrote:
-> Tag to test Aspeed tree:
->    https://gitlab.com/philmd/qemu/-/tags/aspeed_emmc-v8
-> 
-> Since v43:
-> - Reordered and squashed commits (Cédric)
-> 
-> Since v42:
-> - Stick to spec v4.3 (re-simplified EXT_CSD register & migrate)
-> - Fill CID register
-> - Few changes to CSD register
-> - Implement 'boot-mode' reset timing
-> - Add 'boot-size' property
-> 
-> Cédric Le Goater (2):
->    hw/sd/sdcard: Add emmc_cmd_SET_RELATIVE_ADDR handler (CMD3)
->    hw/sd/sdcard: Fix SET_BLOCK_COUNT command argument on eMMC (CMD23)
-> 
-> Joel Stanley (1):
->    hw/sd/sdcard: Support boot area in emmc image
-> 
-> Luc Michel (1):
->    hw/sd/sdcard: Implement eMMC sleep state (CMD5)
-> 
-> Philippe Mathieu-Daudé (6):
->    hw/sd/sdcard: Basis for eMMC support
->    hw/sd/sdcard: Register generic command handlers
->    hw/sd/sdcard: Register unimplemented command handlers
->    hw/sd/sdcard: Add mmc_cmd_PROGRAM_CID handler (CMD26)
->    hw/sd/sdcard: Add eMMC 'boot-size' property
->    hw/sd/sdcard: Implement eMMC 'boot-mode'
-> 
-> Sai Pavan Boddu (1):
->    hw/sd/sdcard: Add mmc SWITCH function support (CMD6)
-> 
-> Vincent Palatin (1):
->    hw/sd/sdcard: Add emmc_cmd_SEND_EXT_CSD handler (CMD8)
-> 
->   include/hw/sd/sd.h |   3 +
->   hw/sd/sd.c         | 418 ++++++++++++++++++++++++++++++++++++++++++++-
->   hw/sd/trace-events |   3 +
->   3 files changed, 418 insertions(+), 6 deletions(-)
+On Mon, Jul 08 2024, Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com> wrote:
 
+> Extend the 'mte' property for the virt machine to cover KVM as
+> well. For KVM, we don't allocate tag memory, but instead enable
+> the capability.
+>
+> If MTE has been enabled, we need to disable migration, as we do not
+> yet have a way to migrate the tags as well. Therefore, MTE will stay
+> off with KVM unless requested explicitly.
+>
+> This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
+> which broke TCG since it made the TCG -cpu max
+> report the presence of MTE to the guest even if the board hadn't
+> enabled MTE by wiring up the tag RAM. This meant that if the guest
+> then tried to use MTE QEMU would segfault accessing the
+> non-existent tag RAM.
 
-Shall we merge now ?
+So, the main difference to my original patch is that we don't end up
+with MTE in the max model if we didn't configure tag memory, but the
+rest of the behaviour stays the same?
 
-Thanks,
+>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
 
-C.
+(...)
 
+> +void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
+> +{
+> +    static bool tried_to_enable;
+> +    static bool succeeded_to_enable;
+> +    Error *mte_migration_blocker = NULL;
+> +    int ret;
+> +
+> +    if (!tried_to_enable) {
+> +        /*
+> +         * MTE on KVM is enabled on a per-VM basis (and retrying doesn't make
+> +         * sense), and we only want a single migration blocker as well.
+> +         */
+> +        tried_to_enable = true;
+> +
+> +        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0);
+> +        if (ret) {
+> +            error_setg_errno(errp, -ret, "Failed to enable KVM_CAP_ARM_MTE");
+> +            return;
+> +        }
+> +
+> +        /* TODO: Migration is not supported with MTE enabled */
 
+Do you have a plan for enabling migration in the future? From what I
+remember, pre-copy support should be doable within QEMU (with a similar
+approach to e.g. s390 skey), but post-copy would need a kernel API
+extension to support getting additional data while faulting in a page.
+
+> +        error_setg(&mte_migration_blocker,
+> +                   "Live migration disabled due to MTE enabled");
+> +        if (migrate_add_blocker(&mte_migration_blocker, errp)) {
+> +            error_free(mte_migration_blocker);
+> +            return;
+> +        }
+> +        succeeded_to_enable = true;
+> +    }
+> +    if (succeeded_to_enable) {
+> +        object_property_set_bool(cpuobj, "has_mte", true, NULL);
+> +    }
+> +}
 

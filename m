@@ -1,193 +1,287 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp121290nji;
-        Thu, 11 Jul 2024 04:59:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUwy5fZyGvTO0+ezBhJZQaiApzIvX2HAt8zizMOtkiGHL1fQB/BTMv6YRXDwNnPMFOkjKv25hBot+s/awDerw+s76+/sTn4
-X-Google-Smtp-Source: AGHT+IGr5IUL9XO3lrUr+ax3PpwA0GNJUvC7e73TnDRVf3Fc3WqFfOFm9zP9oj2insH9jDmwAX1Y
-X-Received: by 2002:a17:90a:16cf:b0:2c9:7219:1db0 with SMTP id 98e67ed59e1d1-2ca35be1c82mr6319520a91.3.1720699179569;
-        Thu, 11 Jul 2024 04:59:39 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1720699179; cv=pass;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp183103nji;
+        Thu, 11 Jul 2024 06:34:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXH9lO5btq1jJRRsCI4UPADZKD9NkecBxlCqgAezYeNuo7EKUVj1KwjK625/R2HPlmNoR6g/RLoz3i3ly3IyH06e/s79MFD
+X-Google-Smtp-Source: AGHT+IGF7p/0B3PgZnpEVIGxrU3tnM7nWALeeFdQRastdCbOgI7YW1FPKWAyt3kvha2Xh//bX0YY
+X-Received: by 2002:a05:6808:1455:b0:3d9:324a:3c9 with SMTP id 5614622812f47-3d93c0385c1mr11451333b6e.11.1720704886632;
+        Thu, 11 Jul 2024 06:34:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720704886; cv=none;
         d=google.com; s=arc-20160816;
-        b=IyaDzki4mrFNS2JYwUHRuwTqNBLqyr9cYqC0AigVB1oPsjt1h+sXPjCFXkHyCP4IIT
-         HhV/6wxHcNrQf4GyaHebFb2V4UYrJixc/M0z5/XnYm+eNnAHFeU/GGnZwQD1Uwl/lWOE
-         wUUY0bi7ydVBwn/A9iAzdSbKNp0Tw3Z4kR/R21tGPjped8xXQ9Rt2L8JeJNpDU+R4FuQ
-         GjXP+Dq/cecYc7QrTp5Y+6nCkwe/1MEYO4ZSvGPmUjh52kHKXfL3RzmCJ0dCBv1sSj2L
-         8ZxQiFzFaUVErzEmsYH1TlPOHgAmGZfEYJ1h2AarwkLKZIA7WiEF/guGfSv9Pye/ONd2
-         rVoQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :dkim-signature;
-        bh=werTonj7QNq+ua51haeygUPcm9W0ZEoCpESBneEXr5U=;
-        fh=CrkCta05mgoGXP9mHtp/jSkRUBw+WS3oCcWYlJ6W//g=;
-        b=QzZribZ4AYCSbZqHEs3byITiRPuTJH8orUeo0wgOqm3vuUbs2wQf+6iRCvSWOfCIbG
-         toQOAIX9pb8rCfIgHQOvAygvmTj6CyWO2PrSgP3mnV2yMblDVFOcRBqm7vc6fQhKULvl
-         fbgDT7Ilnora1ct7OhFc2u4cWdgX/ZYto6rjF6ikZYLv37lgxjcSkrHU/Mdb+TlgLnOj
-         PVcB8GG87mbJA+e/3l7tpRJQlQ2sTWWnmhyDZ2VNughOPLP/yQuCpibls1POubHQfxQV
-         Q+3R3lKMBoLRR5HTJxgi/PCZ6xbqw9RexehbdP328xsmSeGU/eSC5vK5P/FWpJcieQUo
-         WJ5w==;
+        b=XiETVgRp+UfPuFtqOQZnFIxkXNpLizV89mPZlNnt2yhQTWsOyCwu16MKcCUCgtiGdL
+         /ROIN5mb+tdrm/B15tWwHL/fId1JYFS24HonoKojCsahGTrzCaaROhH4GZEBw+STFod3
+         T5Og0IKps+FBKX22iObLX4S2PWDizy5yboiiIu9on582iVZm2pS1GTSDu5bjdaCBn3UZ
+         AeUWbNkKOrO9ZZayU/lFOBa2fS5weRG3eUJu1qI2fKu+Jae/VLhlWe5A/CiWPs2hOieR
+         xaeRTosCLosaD4DiRHdW6GTD7Fa7JJXKUgLmDTgbwGwqcnnPPLBE8apwnBTWlWmR0xii
+         owqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature
+         :dkim-signature:dkim-signature:dkim-signature;
+        bh=U7SpHLWVoLqmhYWQJuF8+xa5T3BrIlA2GBMHiEMBjcI=;
+        fh=umL8zxbWF4W2pS9nVgc4z5DWwZX8pLHcZx531lKXiRo=;
+        b=gOTgmuCM0/u2onVnrLZEQjbiGuB730U2GN2LOxuSfJ5blmf1JAhB6id5hRFT5Z7a7U
+         v7bDBmr7l3f7nHVk8XQSLgHAFU+qGu10itNLAgZDqfkodqQcgpzAzqexkiyvgfmLpLF8
+         AL2bonzkSFN1l9liBasnMqfo8k+Sze7WeZ+fcWtFnIKXDYAb6oQEP38USIHrk56YJ+0S
+         cerkThCyz1dYfNz/bhnvBgYnd6iif4EQ00a01FrN4bW8Nnk2WjFg/A6fVIR/wOf4nngJ
+         sOQjsYgjLvrG4OJWm/0/WnNovHCIhE2ubGmR6N2CgErytTO3PoCpvMWw4d5ZKGMur9rt
+         VCEQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lQ5oynFP;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-249158-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-249158-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <linux-kernel+bounces-249158-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-2ca800afdeesi2965375a91.104.2024.07.11.04.59.39
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=oXXq4Ayq;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=x90lgCvr;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=oXXq4Ayq;
+       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-79f190d8702si787846185a.628.2024.07.11.06.34.46
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Jul 2024 04:59:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-249158-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 11 Jul 2024 06:34:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lQ5oynFP;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-249158-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-249158-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 115B8289550
-	for <alex.bennee@linaro.org>; Thu, 11 Jul 2024 11:59:39 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8BD04156F2D;
-	Thu, 11 Jul 2024 11:59:35 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="lQ5oynFP"
-Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com [209.85.208.42])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 715AF156993
-	for <linux-kernel@vger.kernel.org>; Thu, 11 Jul 2024 11:59:33 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.42
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1720699175; cv=none; b=aWKs5S3o7A0vJRgUkNJIEEoBebp8Prjviqusk48xm5E2qm0tZ6x+jzgeDlA6tAQz4Baht5bj7/zBzPgSa36tzo/lGpIii6N1Z5wngGV08+agYvEIU9IA7LxtmxVCFdmLEUcX5REoeXMJ0c1c2X+Zw5dCYJXPCbgZkbxk25iUbYk=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1720699175; c=relaxed/simple;
-	bh=hgVajsSMleVzgg4GLptF7/bEsjil7cS35tYtJx5AJHo=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=EhCfHUq8sqEDq+uerRPFgHwDrZDcmC/KJB+1FmiXe0/AlGWp5aO4He1KQy/hBQ0SsiYVNMpT/GrKBTVMVo6EzDQetl0JTbhgR7dJaOLnX3F1wiKlrdYaF0+wdzEctEVVNiyO+Jdww1zVra+h4V0FIeYiXZmd6cWfvoN/mrvJFIY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=lQ5oynFP; arc=none smtp.client-ip=209.85.208.42
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-ed1-f42.google.com with SMTP id 4fb4d7f45d1cf-58d24201934so1393356a12.0
-        for <linux-kernel@vger.kernel.org>; Thu, 11 Jul 2024 04:59:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720699172; x=1721303972; darn=vger.kernel.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=werTonj7QNq+ua51haeygUPcm9W0ZEoCpESBneEXr5U=;
-        b=lQ5oynFPk0e8HbFc/9rxReNX9i7FB3tiIHG8nfMyR2JPmxydCLvq6T/4U4ga5v9vaj
-         yL6lOt9cNNrIrB4qLohA29U8ErzMPnBjeyUsLrZKLQIrKPAz8vwNLTV0oi8+iXW+ywxU
-         ddOt3kAl+rI4jkuZqYoOBG/5WjEGTruINGehnW3AoAWaT3T3ymvCBi55N5Lg4MiVTgjn
-         ivih4T3UBaVmYbyt1EfX54pB1GoRa3dpg/DRv6HoV53pAWSYNEmJH9cFyKgqUsRn3SVG
-         tPbvENzbdaqg8lIFujBsw7aMBvCJ2UXRzP3xkuxoBoLJNaf1Fs1/LbmJ+E9P0vVEZJNF
-         dcgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720699172; x=1721303972;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=werTonj7QNq+ua51haeygUPcm9W0ZEoCpESBneEXr5U=;
-        b=WcdGfT4EXu9MAMJa7MjTJ2W4H65J55rgEl9UByrVBze8iO63GpbxNpBJDvQ+CaK9r/
-         M15zdosXWvQ+m8u5WVMT/IhOjQGKGI5/OmNnhDip21nnh0nkvk6qJ3zAoiKv9H0NVoQS
-         cFuUfc3gWSGi08PqxKAMpHZFi9v3z9TF+XtdJul4sKM7N8VYNKimeQg0xCzZXmpRuqUx
-         tuZ6lAzKFA6aYBA0jQyZowcOyqRQIOted4vwuAvL5omkWQSY3WW59gpbB2Ab9uBM6BtQ
-         TeuBA2YAKORHoV9ToRObQsHioUyq/Vy9YuuAP39Zqp7RfNy+EsPpwLA6+kffGyWF1I2b
-         Dr5w==
-X-Forwarded-Encrypted: i=1; AJvYcCWCCIa0eBuX+YjnKF+VfBBZHSkPebaEUGSBl/0H9CsM044hi+t0tDTqNnu49LWnZQxTYeP0cm5HY/E4Zsn3pZ+KOIyIlRptrwKPgGrI
-X-Gm-Message-State: AOJu0Ywf6hL55g1wIQ0xw5iFVEw2AIuBh+ZoEXfEegvfE0/jvxwJ0DGQ
-	R653cBpt1Cy4q0XXm9SuXuqtX8VEI+mb+KjO4tprx4nsTl+9v1BmYYYg2XITuVHS3NDX13svAGC
-	9a5K+2iQ9S/Sa00bi9nyBwqQyH/6AlDln3qKr1g==
-X-Received: by 2002:a05:6402:2813:b0:57c:603a:6b2b with SMTP id
- 4fb4d7f45d1cf-5980e547f6amr1736371a12.21.1720699171546; Thu, 11 Jul 2024
- 04:59:31 -0700 (PDT)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=oXXq4Ayq;
+       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=x90lgCvr;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=oXXq4Ayq;
+       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sRtwX-0003vf-Ve; Thu, 11 Jul 2024 09:34:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>)
+ id 1sRtwC-0002QM-Dx; Thu, 11 Jul 2024 09:34:31 -0400
+Received: from smtp-out1.suse.de ([195.135.223.130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>)
+ id 1sRtwA-0003LY-81; Thu, 11 Jul 2024 09:34:20 -0400
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
+ [IPv6:2a07:de40:b281:104:10:150:64:97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id 9C88521B59;
+ Thu, 11 Jul 2024 13:34:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1720704855; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=U7SpHLWVoLqmhYWQJuF8+xa5T3BrIlA2GBMHiEMBjcI=;
+ b=oXXq4AyqiXlEJx627PORaWEtfXPtn3XQbnvdOGqsUXmiRHC1IQonXDYbuFp0tNIokTWP5Z
+ e0fDByQk5NHtl/UwbBdTugM+6h8BXUaZGkSDIQ4nfgWfngPWxbCGSFjBJ6BLkGc0MHkS/F
+ Cg9+RUjhX77oJVpgnmwFTibOT19BDV0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1720704855;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=U7SpHLWVoLqmhYWQJuF8+xa5T3BrIlA2GBMHiEMBjcI=;
+ b=x90lgCvrNo+45VBoDkbc18N7iLM0IXg/foUn+3LuM56DzLYlGeNo88wTHkJZgDfpG5hThK
+ Bw4lm866fYht7FBw==
+Authentication-Results: smtp-out1.suse.de;
+ dkim=pass header.d=suse.de header.s=susede2_rsa header.b=oXXq4Ayq;
+ dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=x90lgCvr
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1720704855; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=U7SpHLWVoLqmhYWQJuF8+xa5T3BrIlA2GBMHiEMBjcI=;
+ b=oXXq4AyqiXlEJx627PORaWEtfXPtn3XQbnvdOGqsUXmiRHC1IQonXDYbuFp0tNIokTWP5Z
+ e0fDByQk5NHtl/UwbBdTugM+6h8BXUaZGkSDIQ4nfgWfngPWxbCGSFjBJ6BLkGc0MHkS/F
+ Cg9+RUjhX77oJVpgnmwFTibOT19BDV0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1720704855;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=U7SpHLWVoLqmhYWQJuF8+xa5T3BrIlA2GBMHiEMBjcI=;
+ b=x90lgCvrNo+45VBoDkbc18N7iLM0IXg/foUn+3LuM56DzLYlGeNo88wTHkJZgDfpG5hThK
+ Bw4lm866fYht7FBw==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 1BEC5139E0;
+ Thu, 11 Jul 2024 13:34:14 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id I2LrNFbfj2ZGfQAAD6G6ig
+ (envelope-from <farosas@suse.de>); Thu, 11 Jul 2024 13:34:14 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Peter Xu <peterx@redhat.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org,
+ qemu-block@nongnu.org, Laurent Vivier <lvivier@redhat.com>, Tyrone Ting
+ <kfting@nuvoton.com>, Bin Meng <bmeng.cn@gmail.com>, Hao Wu
+ <wuhaotsh@google.com>, Francisco Iglesias <francisco.iglesias@amd.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, qemu-arm@nongnu.org, Joel
+ Stanley <joel@jms.id.au>, Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
+ devel@lists.libvirt.org, Luc Michel <luc.michel@amd.com>, =?utf-8?Q?C?=
+ =?utf-8?Q?=C3=A9dric?= Le Goater <clg@redhat.com>
+Subject: Re: [PATCH v3 06/17] hw/sd/sdcard: Do not store vendor data on
+ block drive (CMD56)
+In-Reply-To: <Zo8F4Gq4f7SawaDc@x1n>
+References: <20240627162232.80428-7-philmd@linaro.org>
+ <87cynmfggx.fsf@suse.de> <Zo2lLLAwcZ8bBvO2@x1n> <87a5ipfigb.fsf@suse.de>
+ <Zo6iZjc8YpI1_9dW@x1n> <874j8xfc9s.fsf@suse.de> <Zo7dcF8OKfH92RlR@x1n>
+ <871q41f2pk.fsf@suse.de> <Zo7rCXtap2lWd4IB@x1n> <87ttgxdj1p.fsf@suse.de>
+ <Zo8F4Gq4f7SawaDc@x1n>
+Date: Thu, 11 Jul 2024 10:34:12 -0300
+Message-ID: <87plrkdpd7.fsf@suse.de>
 MIME-Version: 1.0
-References: <cover.1720690278.git.mchehab+huawei@kernel.org>
- <b9cd4a65d3389102def662a8bc09ffaa622265f7.1720690278.git.mchehab+huawei@kernel.org>
- <20240711075332-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20240711075332-mutt-send-email-mst@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Jul 2024 12:59:20 +0100
-Message-ID: <CAFEAcA-PYnZ-32MRX+PgvzhnoAV80zBKMYg61j2f=oHaGfwSsg@mail.gmail.com>
-Subject: Re: [PATCH 1/6] arm/virt: Wire up GPIO error source for ACPI / GHES
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Ani Sinha <anisinha@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
-	Igor Mammedov <imammedo@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
-	Shannon Zhao <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, linux-edac@kernel.org, 
-	linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: BNw7JryAAz5u
+Content-Type: text/plain
+X-Rspamd-Queue-Id: 9C88521B59
+X-Spam-Score: 0.99
+X-Rspamd-Action: no action
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Spamd-Result: default: False [0.99 / 50.00]; SUSPICIOUS_RECIPS(1.50)[];
+ R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
+ MX_GOOD(-0.01)[]; FUZZY_BLOCKED(0.00)[rspamd.com];
+ TAGGED_RCPT(0.00)[]; FREEMAIL_ENVRCPT(0.00)[gmail.com];
+ ARC_NA(0.00)[]; MISSING_XM_UA(0.00)[];
+ RCVD_VIA_SMTP_AUTH(0.00)[]; RCPT_COUNT_TWELVE(0.00)[18];
+ MIME_TRACE(0.00)[0:+]; RCVD_TLS_ALL(0.00)[];
+ MID_RHS_MATCH_FROM(0.00)[];
+ DNSWL_BLOCKED(0.00)[2a07:de40:b281:104:10:150:64:97:from,2a07:de40:b281:106:10:150:64:167:received];
+ FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
+ FREEMAIL_CC(0.00)[linaro.org,nongnu.org,redhat.com,nuvoton.com,gmail.com,google.com,amd.com,kaod.org,jms.id.au,lists.libvirt.org];
+ TO_DN_SOME(0.00)[];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,suse.de:dkim];
+ RCVD_COUNT_TWO(0.00)[2]; TO_MATCH_ENVRCPT_ALL(0.00)[];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ DKIM_TRACE(0.00)[suse.de:+]
+X-Spamd-Bar: /
+Received-SPF: pass client-ip=195.135.223.130; envelope-from=farosas@suse.de;
+ helo=smtp-out1.suse.de
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HkiGVJLx8y1d
 
-On Thu, 11 Jul 2024 at 12:54, Michael S. Tsirkin <mst@redhat.com> wrote:
+Peter Xu <peterx@redhat.com> writes:
+
+> On Wed, Jul 10, 2024 at 06:38:26PM -0300, Fabiano Rosas wrote:
+>> Peter Xu <peterx@redhat.com> writes:
+>> 
+>> > On Wed, Jul 10, 2024 at 04:48:23PM -0300, Fabiano Rosas wrote:
+>> >> Peter Xu <peterx@redhat.com> writes:
+>> >> 
+>> >> > On Wed, Jul 10, 2024 at 01:21:51PM -0300, Fabiano Rosas wrote:
+>> >> >> It's not about trust, we simply don't support migrations other than
+>> >> >> n->n+1 and (maybe) n->n-1. So QEMU from 2016 is certainly not included.
+>> >> >
+>> >> > Where does it come from?  I thought we suppport that..
+>> >> 
+>> >> I'm taking that from:
+>> >> 
+>> >> docs/devel/migration/main.rst:
+>> >>   "In general QEMU tries to maintain forward migration compatibility
+>> >>   (i.e. migrating from QEMU n->n+1) and there are users who benefit from
+>> >>   backward compatibility as well."
+>> >> 
+>> >> But of course it doesn't say whether that comes with a transitive rule
+>> >> allowing n->n+2 migrations.
+>> >
+>> > I'd say that "i.e." implies n->n+1 is not the only forward migration we
+>> > would support.
+>> >
+>> > I _think_ we should support all forward migration as long as the machine
+>> > type matches.
+>> >
+>> >> 
+>> >> >
+>> >> > The same question would be: are we requesting an OpenStack cluster to
+>> >> > always upgrade QEMU with +1 versions, otherwise migration will fail?
+>> >> 
+>> >> Will an OpenStack cluster be using upstream QEMU? If not, then that's a
+>> >
+>> > It's an example to show what I meant! :) Nothing else. Definitely not
+>> > saying that everyone should use an upstream released QEMU (but in reality,
+>> > it's not a problem, I think, and I do feel like people use them, perhaps
+>> > more with the stable releases).
+>> >
+>> >> question for the distro. In a very practical sense, we're not requesting
+>> >> anything. We barely test n->n+1/n->n-1, even if we had a strong support
+>> >> statement I wouldn't be confident saying migration from QEMU 2.7 -> QEMU
+>> >> 9.1 should succeed.
+>> >
+>> > No matter what we test in CI, I don't think we should break that for >1
+>> > versions..  I hope 2.7->9.1 keeps working, otherwise I think it's legal to
+>> > file a bug by anyone.
+>> >
+>> > For example, I randomly fetched a bug report:
+>> >
+>> > https://gitlab.com/qemu-project/qemu/-/issues/1937
+>> >
+>> > QEMU version:                6.2 and 7.2.5
+>> >
+>> > And I believe that's the common case even for upstream.  If we don't do
+>> > that right for upstream, it can be impossible tasks for downstream and for
+>> > all of us to maintain.
+>> 
+>> But do we do that right currently? I have no idea. Have we ever done
+>> it? And we're here discussing a hypothetical 2.7->9.1 ...
+>> 
+>> So we cannot reuse the UNUSED field because QEMU from 2016 might send
+>> their data and QEMU from 2024 would interpret it wrong.
+>> 
+>> How do we proceed? Add a subsection. And make the code survive when
+>> receiving 0.
+>> 
+>> @Peter is that it? What about backwards-compat? We'll need a property as
+>> well it seems.
 >
-> On Thu, Jul 11, 2024 at 11:52:03AM +0200, Mauro Carvalho Chehab wrote:
-> > From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> >
-> > Creates a GED - Generic Event Device and set a GPIO to
-> > be used or error injection.
-> >
-> > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > ---
-> >  hw/arm/virt-acpi-build.c | 29 +++++++++++++++++++++++++----
-> >  hw/arm/virt.c            | 12 +++++++++++-
-> >  include/hw/boards.h      |  1 +
-> >  3 files changed, 37 insertions(+), 5 deletions(-)
-> >
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index e10cad86dd73..b6f2e55014a2 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -63,6 +63,7 @@
-> >
-> >  #define ARM_SPI_BASE 32
-> >
-> > +#define ACPI_GENERIC_EVENT_DEVICE "GEDD"
-> >  #define ACPI_BUILD_TABLE_SIZE             0x20000
-> >
-> >  static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
-> > @@ -155,9 +156,14 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
-> >
-> >      Aml *aei = aml_resource_template();
-> >      /* Pin 3 for power button */
-> > -    const uint32_t pin_list[1] = {3};
-> > +    uint32_t pin = 3;
-> >      aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
-> > -                                 AML_EXCLUSIVE, AML_PULL_UP, 0, pin_list, 1,
-> > +                                 AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
-> > +                                 "GPO0", NULL, 0));
-> > +    pin = 6;
-> > +    /* Pin 8 for generic error */
+> Compat property is definitely one way to go, but I think it's you who more
+> or less persuaded me that reusing it seems possible! At least I can't yet
+> think of anything bad if it's ancient unused buffers.
+
+Since we're allowing any old QEMU version to migrate to the most recent
+one, we need to think of the data that was there before the introduction
+of the UNUSED field. If that QEMU version is used, then it's not going
+to be zeroes on the stream, but whatever data was there before. The new
+QEMU will be expecting the vendor_data introduced in this patch.
+
+> And that's why I was asking about a sane way to describe the "magic
+> year".. And I was very serious when I said "6 years" to follow the
+> deprecation of machine types, because it'll be something we can follow
+> to say when an unused buffer can be obsolete and it could make some
+> sense: if we will start to deprecate machine types, then it may not
+> make sense to keep any UNUSED compatible forever, after all.
 >
-> For real? Code says 6, comment says 8.
->
-> Comments must come before the code they comment, not after it,
-> then this kind of thing won't happen.
 
-It might also be nice to have a symbolic constant for the
-pin number somewhere, so we don't rely on the magic number here and...
+Is there an easy way to look at a field and tell in which machine type's
+timeframe it was introduced? If the machine type of that era has been
+removed, then the field is free to go as well. I'd prefer if we had a
+hard link instead of just counting years. Maybe we should to that
+mapping at the machine deprecation time? As in, "look at the unused
+fields introduced in that timeframe and mark them free".
 
-> > @@ -1014,6 +1021,8 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
-> >  {
-> >      gpio_key_dev = sysbus_create_simple("gpio-key", -1,
-> >                                          qdev_get_gpio_in(pl061_dev, 3));
-> > +    gpio_error_dev = sysbus_create_simple("gpio-key", -1,
-> > +                                          qdev_get_gpio_in(pl061_dev, 6));
-
-...here being the same.
-
-Then if the code says "pin = VIRT_GPIO_ERROR_PIN" or something
-similar the comment isn't required because the code is clear
-without it.
-
-(This is already a problem for the power-button pin 3, so we could
-do an initial cleanup patch to sort out pin 3 first).
-
-thanks
--- PMM
+> And we need that ruler to be as accurate as "always 6 years to follow
+> machine type deprecation procedure", in case someone else tomorrow asks us
+> something that was only UNUSED since 2018.  We need a rule of thumb if we
+> want to reuse it, and if all of you agree we can start with this one,
+> perhaps with a comment above the field (before we think all through and
+> make it a rule on deprecating UNUSED)?

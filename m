@@ -1,155 +1,348 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp161800nji;
-        Thu, 11 Jul 2024 06:03:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX7kkdG5lbs8caIxzZaldYP6zW0tRj9oLgZN74BKzC4sQ5uTPMA25IoVcEoM5Pn/h203+BCBBcn50LTtcrm50GNrzdBnL6F
-X-Received: by 2002:a05:600c:63c7:b0:426:5f0b:a49b with SMTP id 5b1f17b1804b1-426707e360fmr50145875e9.23.1720703003707;
-        Thu, 11 Jul 2024 06:03:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720703003; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp163737nji;
+        Thu, 11 Jul 2024 06:05:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV3zW1z4GHwo1e9gk977KTNRAOIIb4bNURE0Mq0zjhjJ3WKkrfvIQPU+IGzukSyjwS9r8PI+CcjUq8FPq9Pn8FaIukJWYgi
+X-Google-Smtp-Source: AGHT+IEFflu4YbpKrPOukkdR5vJvT44L60Wk9AIajfBfdlulwlMy2nXFG6SAQwViy4aXGyxFrn0m
+X-Received: by 2002:a05:690c:827:b0:64a:5f5a:b38c with SMTP id 00721157ae682-658ef24b43bmr95661697b3.26.1720703141673;
+        Thu, 11 Jul 2024 06:05:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720703141; cv=none;
         d=google.com; s=arc-20160816;
-        b=IGt4XKodmeyQ8xXxnNK6Ipz/iL0zxZAuVudp7bBCHzdmROmllq+5/JmAu+2ewnpXkq
-         BwEmk8XZjziyP8ueRC/lVmxbwXovjOGVYawD9v09uMSvdbbDNuH8fNPGdpD5tjn3a8fV
-         8WvRAKe0bO60JYp+2FRFppFXSnu9E29+UvhPP/XBSkcxiWup0h073JRXdQqSFtB03rkM
-         CA5UBAhd6Eh7k/iMl22xP+t8vk9lZEf4KGJznFHtIsptngP0LIScEurrqaylTo7bhWB5
-         ES9SPl0MndaGjc9W3aOrutTAO3n/igEsSNkY9ltaTHI1Z212XrRxNjh4U5pJHT8wAeP4
-         bGMA==
+        b=DXHiJhSTKj2QgViCv6j9N97rX81zW56DfU9fJpbYTrJLxqnXbJ/vFWl7+PyloMH5rN
+         S9fmbR4wBBC6JwOp/r7uC3EyLTX3UL+Tck+eQrVzw3LGuVXf/DJel9ZDWY8CE6Ht7NI7
+         5WAgvp8vfe+n28Ao0grDlF7xMDYcAgq8N4lEwvJy1Zy/FBQF9YRmfGIOpxBUE2nAeaW8
+         O2iaZZDDEFbJ0y7ara2wLzCg6RW6UBZs09mrbu8yJsZxer/C9wvdKxd0Z+yXp3TPnlAO
+         SbEJ2EfKPehBxcnMOeZrekIcsicpuWSfOIXbeVxWczxxhISpFZPuTIhjHeIEZ2RnwJh4
+         9xsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=T1tEsDBDWsovvb9XXtE9YS/ok36swrWeL71lNKwHwT0=;
-        fh=KEaT9gbigjWAVYjFNSJwByrKX8d4S+6bmJ373KhPcjE=;
-        b=xu1AXu3yaqw5FDFKWNiVIoGW4TkNdvtmliF+1OIvu/x/0njQBZsQAhELHVayiLxecC
-         es8SKAqSG8Dje85EhZGxorOMOlvQ43pD/oa2FtgjnpniMeqhR2dPeGoKTEIwdRKbRqO8
-         MJ1N7gGZsCN1FR3dL0C9To49G/2SlEi89ucZHDtcA6PL7QA0YvzQVTu7fUBjg0ceu1fH
-         G5C4DTdtefumAlU+RJ3hD6+4ibw5im+W/VYmAaS0+JXdp9h5cq9kwR5D7DC4oCE16DyZ
-         as+lKCsbpRDZ4j+grN3/djvNrs0RDqyVZ0m7Z5ScRQcbAy34LGiiO9tpeX9lX/klkeXb
-         GRvw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=Vx/vCSYj4TTkzQq3Fz2+jmAXsfIfaFQS/yJBqb1BA4s=;
+        fh=RzgiarZU8QxWTvjFgBZtfc3if6JMjjasYYWNv8wsTgQ=;
+        b=hL52rjtDVMOJZ/u7IxNmIp/NfDspAtUjXUnBwORzCmklHK/ilnRSrjgpJoDRtb80hh
+         7cN6zhwdiGT2Ex7GoCK+zSAcTpjwYQY1C67asyHkl/ZmIycPw2y1367JnYTInP4BwGUf
+         rkMEDyaucooRaahyugguE27NlN75Zjd6/ngbkrxf5Ow8kjfUX17g5MEulw8xD5rAM2g1
+         QiHks5X/jUt4K0YG/vyb0waExSx2HJO9JiJpQ/CWC4ZLO/jPB3Mw418hPUxDiJ71dknA
+         C2+Q2tOp3B7q2zCzAEA+3rFNvoULna2CoyR1dPdHf6J90qFaWjAZK89iNKcFlzS1Axd5
+         ih9g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=OAAfqAZ8;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <smostafa@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-42798c03ff9sor635135e9.6.2024.07.11.06.03.23
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="OR/TxCeu";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 00721157ae682-65ba2296470si20660987b3.25.2024.07.11.06.05.41
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 11 Jul 2024 06:03:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 11 Jul 2024 06:05:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=OAAfqAZ8;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1720703003; x=1721307803; darn=linaro.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=T1tEsDBDWsovvb9XXtE9YS/ok36swrWeL71lNKwHwT0=;
-        b=OAAfqAZ8x2m2fAZz689yOLw7JD8B3sPOOqYAtLEOQ7FSG4kjHhqKBHFTzcW/Np8p9k
-         tsEbuckRyhO5kb2Hv4Rbreyrn9TuwYAT24iN4SmetfLL50jewQL0uUy73d9Er6nOsnd8
-         V7GrhmAQDuZqzVnLMeNvQ3azVD5yDvfV0oXqUMEeCBsu9CLWlpT/Z16JfoKCbK3yQo3c
-         +qWdgF3YIONVmtRZO12TkqApyv790vmkOIssnmRqiErGC/iEVGABsYOrITQhSV/Jcv2Z
-         tM/ZP+rwDCQPYWt4mI/yCCKyuODGclw+LjatznbHbKZ1KTlhNJD9jwG5xCMN6hzPHVh2
-         tHRQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="OR/TxCeu";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sRtUF-0006iO-1R; Thu, 11 Jul 2024 09:05:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sRtUD-0006c9-G5
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2024 09:05:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sRtUB-0000od-IW
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2024 09:05:25 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1720703122;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Vx/vCSYj4TTkzQq3Fz2+jmAXsfIfaFQS/yJBqb1BA4s=;
+ b=OR/TxCeuwuI3mzSaxC+mTZtpwDre1HyIjocAg51CDD/UW5lM42y4NtwvXbdSgmNouPozbL
+ h/uyEDhzYzCd3SyIfhh+8xB/u/0uF7i3uJLHD3Hnh7RQ513q/cANdSU6ikjXFUArpZN4+f
+ djdxY9npU9GUVxB5CnjF2pRMIRq7CDg=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-594-bpCyJJfZPDqdHfMyhRjByg-1; Thu, 11 Jul 2024 09:05:15 -0400
+X-MC-Unique: bpCyJJfZPDqdHfMyhRjByg-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-367879e8395so446442f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 11 Jul 2024 06:05:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720703003; x=1721307803;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=T1tEsDBDWsovvb9XXtE9YS/ok36swrWeL71lNKwHwT0=;
-        b=qkjtGAGNjm7jY4W6cVoHWh80V8M5SdOZ3iV4wa6XnB5KFjc9/DXPBvl7jpq4+0SSdh
-         h3FW0njCSq+j+6URbiRL8jsRQHPVIUaQFGVsEl8ngwO5GyBi4jq1ntPb4216zYIsdvC/
-         afQzan1oO36sFe2MZj/YIrFM663S/sqVzNdXMG3MwdV3oGP8Ot8HEzmhFvaNFOkVvGoC
-         CWdPRMXHshioFiewoIswqS6YTy+O9bkN9ncFoz+KHdnFINhi9NUDlGUZLRi16MTlWKhg
-         Z2yfiuy26dAAqkF3yGzQjH5ImRIRRfTo4AbeM1NOtlPT0fBpPxYhuouOAM5Yi0gpuExM
-         o65A==
-X-Forwarded-Encrypted: i=1; AJvYcCVjsEzhDdNOv73ftVVudTag7Kj5qotmk0H/goY6N+IicyrGH2CW1dboUQiAXB0m7nVDQ1HC1XKkNVg0QeUNvgQsdwD3Z2xa
-X-Gm-Message-State: AOJu0Yw8J57iCrOZTRMfnyp7jcH2gm8XYk77RmiO7DI2Y8q1a6ygqIQ3
-	IpUyrA3YVtDzhPSoIYej4EH/lkG465M/d4D+/igeGTlVySSqXN0p5TWeaTXZkw==
-X-Google-Smtp-Source: AGHT+IFTOGfXRoqpDnrKQAF8LEdAv9irjpAvHVwnuvazB1I19VdY8/QDaMO+oN5nIgRYT0fFU+XY2w==
-X-Received: by 2002:a7b:cd95:0:b0:426:6e95:6ea7 with SMTP id 5b1f17b1804b1-427986dc130mr1787535e9.0.1720703002903;
-        Thu, 11 Jul 2024 06:03:22 -0700 (PDT)
-Return-Path: <smostafa@google.com>
-Received: from google.com (205.215.190.35.bc.googleusercontent.com. [35.190.215.205])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-427270238a6sm84986905e9.20.2024.07.11.06.03.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Jul 2024 06:03:22 -0700 (PDT)
-Date: Thu, 11 Jul 2024 13:03:18 +0000
-From: Mostafa Saleh <smostafa@google.com>
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
-	qemu-devel@nongnu.org, alex.bennee@linaro.org, maz@kernel.org,
-	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
-	marcin.juszkiewicz@linaro.org
-Subject: Re: [PATCH v4 08/19] hw/arm/smmuv3: Translate CD and TT using
- stage-2 table
-Message-ID: <Zo_YFuoldgMzJ5Pj@google.com>
-References: <20240701110241.2005222-1-smostafa@google.com>
- <20240701110241.2005222-9-smostafa@google.com>
- <20240704180843.GE1693268@myrica>
- <Zozi-87pVHOdwJGN@google.com>
- <20240709130004.GB2189727@myrica>
+ d=1e100.net; s=20230601; t=1720703114; x=1721307914;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=a2hv7wVB+poKjf0VlnbHz9P8tGP4VwBm/7gzQwhPtoU=;
+ b=MgGdDw3BqdsbdtTlzKxtviGU/8xpcVJtIP3GmcmXIFT3V4FbuzkmQLoGnajdc5XUZW
+ hjQCl2iM3Zf3aCxhMnEvLRmx8F+O7HXniF0MQ05kmViVpUKVLFfNoL4Lt4CKPwTgVcj9
+ r7lvJhK7CgM2utVs8Nfvj0gbz1Fo2dIN68+By7QGEx4ZN7I+s101d3Tum5KaGd8vBicy
+ RwMA73OArKSAwuEMXmT8pIOunjIXrGaYLB44cgZsY16Oe3HmDn+mcxyFA7tXnCtsTkni
+ 0LlDWi+PbVfWJcKKWvJrMY1ova9PEdxY1posnRZOXp+VS94FOyeltcaSCsXCdrxlhizd
+ mfJg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWMcOkRjML6SVGlgTavH8k2BLtFwtb1rAnbvNqxWoCIeSQB7UtygMaObNTZVYunBoLWteynUx/EAAJFFn37+Y6huKH5
+X-Gm-Message-State: AOJu0Yx0FT3w3t3oOyDjsCZf1OeZK/elsmrq0LdhxT8Y7LZSANI9flTy
+ 3izvfrRm9E5GziXAUfQwMcqvHZR3HmwA1XI5HTkpgnimS9Er5koy9QuHVEZTSRRa3lVTzaejTKO
+ gqOeEVmBdDNfuZ0dl9Z2q9nnPH3nBV6H1GdWP5cAkYREloffN6w==
+X-Received: by 2002:a5d:438f:0:b0:367:9765:b2ae with SMTP id
+ ffacd0b85a97d-367ceadb47bmr5562389f8f.61.1720703114478; 
+ Thu, 11 Jul 2024 06:05:14 -0700 (PDT)
+X-Received: by 2002:a5d:438f:0:b0:367:9765:b2ae with SMTP id
+ ffacd0b85a97d-367ceadb47bmr5562373f8f.61.1720703114091; 
+ Thu, 11 Jul 2024 06:05:14 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-367cdfab6d3sm7610151f8f.112.2024.07.11.06.05.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 11 Jul 2024 06:05:13 -0700 (PDT)
+Date: Thu, 11 Jul 2024 15:05:11 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, philmd@linaro.org,
+ wangyanan55@huawei.com, pbonzini@redhat.com, richard.henderson@linaro.org,
+ anisinha@redhat.com, qemu-arm@nongnu.org
+Subject: Re: [PATCH] smbios: make memory device size configurable per Machine
+Message-ID: <20240711150511.3a8f9013@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240711071054-mutt-send-email-mst@kernel.org>
+References: <20240711074822.3384344-1-imammedo@redhat.com>
+ <20240711071054-mutt-send-email-mst@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240709130004.GB2189727@myrica>
-X-TUID: sK5kv/40wJqk
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 8lvhP83+x8KZ
 
-Hi Jean,
+On Thu, 11 Jul 2024 07:13:27 -0400
+"Michael S. Tsirkin" <mst@redhat.com> wrote:
 
-On Tue, Jul 09, 2024 at 02:00:04PM +0100, Jean-Philippe Brucker wrote:
-> Hi Mostafa,
-> 
-> On Tue, Jul 09, 2024 at 07:12:59AM +0000, Mostafa Saleh wrote:
-> > > In this case I think we're reporting InputAddr as the CD address, but it
-> > > should be the IOVA
-> > 
-> > As Eric mentioned this would require some rework to propagate the iova,
-> > but what I am more worried about is the readability in that case, may be we
-> > can just fixup the event after smmuv3_get_config() in case of errors,
-> > something like:
-> > 
-> > /*
-> >  * smmuv3_get_config() Only return translation faults in case of
-> >  * nested translation, otherwise it can only return C_BAD_CD,
-> >  * C_BAD_STE, C_BAD_STREAMID or F_STE_FETCH.
-> >  * But in case of translation fault, we need to fixup the
-> >  * InputAddr to be the IOVA of the translation as the decode
-> >  * functions don't know about it.
-> >  */
-> > static void smmuv3_config_fixup_event(SMMUEventInfo *event, hwaddr iova)
-> > {
-> >    switch (event->type) {
-> >    case SMMU_EVT_F_WALK_EABT:
-> >    case SMMU_EVT_F_TRANSLATION:
-> >    case SMMU_EVT_F_ADDR_SIZE:
-> >    case SMMU_EVT_F_ACCESS:
-> >    case SMMU_EVT_F_PERMISSION:
-> >        event->u.f_walk_eabt.addr = iova;
-> >        break;
-> >    default:
-> >        break;
-> >    }
-> > }
-> > 
-> > What do you think?
-> 
-> Yes, I think that's also what I came up with. Maybe it would be simpler to
-> unconditionally do the fixup at the end of smmuv3_translate() and remove
-> .addr write from smmuv3_do_translate()?
+> On Thu, Jul 11, 2024 at 09:48:22AM +0200, Igor Mammedov wrote:
+> > Currently SMBIOS maximum memory device chunk is capped at 16Gb,
+> > which is fine for the most cases (QEMU uses it to describe initial
+> > RAM (type 17 SMBIOS table entries)).
+> > However when starting guest with terabytes of RAM this leads to
+> > too many memory device structures, which eventually upsets linux
+> > kernel as it reserves only 64K for these entries and when that
+> > border is crossed out it runs out of reserved memory.
+> >=20
+> > Instead of partitioning initial RAM on 16Gb chunks, use maximum
+> > possible chunk size that SMBIOS spec allows[1]. Which lets
+> > encode RAM in Mb units in uint32_t-1 field (upto 2047Tb).
+> > As result initial RAM will generate only one type 17 structure
+> > until host/guest reach ability to use more RAM in the future.
+> >=20
+> > Compat changes:
+> > We can't unconditionally change chunk size as it will break
+> > QEMU<->guest ABI (and migration). Thus introduce a new machine class
+> > field that would let older versioned machines to use 16Gb chunks
+> > while new machine type could use maximum possible chunk size.
+> >=20
+> > While it might seem to be risky to rise max entry size this much
+> > (much beyond of what current physical RAM modules support),
+> > I'd not expect it causing much issues, modulo uncovering bugs
+> > in software running within guest. And those should be fixed
+> > on guest side to handle SMBIOS spec properly, especially if
+> > guest is expected to support so huge RAM configs.
+> > In worst case, QEMU can reduce chunk size later if we would
+> > care enough about introducing a workaround for some 'unfixable'
+> > guest OS, either by fixing up the next machine type or
+> > giving users a CLI option to customize it.
+> >=20
+> > 1) SMBIOS 3.1.0 7.18.5 Memory Device =E2=80=94 Extended Size
+> >=20
+> > PS:
+> > * tested on 8Tb host with RHEL6 guest, which seems to parse
+> >   type 17 SMBIOS table entries correctly (according to 'dmidecode').
+> >=20
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > ---
+> >  include/hw/boards.h |  4 ++++
+> >  hw/arm/virt.c       |  1 +
+> >  hw/core/machine.c   |  1 +
+> >  hw/i386/pc_piix.c   |  1 +
+> >  hw/i386/pc_q35.c    |  1 +
+> >  hw/smbios/smbios.c  | 11 ++++++-----
+> >  6 files changed, 14 insertions(+), 5 deletions(-)
+> >=20
+> > diff --git a/include/hw/boards.h b/include/hw/boards.h
+> > index ef6f18f2c1..48ff6d8b93 100644
+> > --- a/include/hw/boards.h
+> > +++ b/include/hw/boards.h
+> > @@ -237,6 +237,9 @@ typedef struct {
+> >   *    purposes only.
+> >   *    Applies only to default memory backend, i.e., explicit memory ba=
+ckend
+> >   *    wasn't used.
+> > + * @smbios_memory_device_size:
+> > + *    Default size of memory device,
+> > + *    SMBIOS 3.1.0 "7.18 Memory Device (Type 17)" =20
+>=20
+> Maybe it would be better to just make this a boolean,
+> and put the spec related logic in smbios.c ?
+> WDYT?
 
-I wanted to make it clear what case causes the IOVA to be missing, but I
-guess if we unify the setup for the InputAddr it would be easier to
-read and just add a comment instead.
+Using bool here, seems awkward to me,
+i.e. not clear semantics and compat handling would be
+complicated as well.
 
-> 
-> A separate union field "f_common" rather than f_walk_eabt may be clearer.
-> 
+And if we have to expose it someday to users,
+it would be logical to make it machine property.
+Given it's used not only by x86, having it as value
+here lets each machine to customize if necessary
+using well established pattern (incl. compat machinery)
 
-Makes sense, but I will not do it in this patch to avoid making it larger
-and harder to review, and this can be a separate cleanup as I see in other
-places we use eabt already (smmuv3_record_event and for s2 population).
 
-Thanks,
-Mostafa
+> >   */
+> >  struct MachineClass {
+> >      /*< private >*/
+> > @@ -304,6 +307,7 @@ struct MachineClass {
+> >      const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machin=
+e);
+> >      int64_t (*get_default_cpu_node_id)(const MachineState *ms, int idx=
+);
+> >      ram_addr_t (*fixup_ram_size)(ram_addr_t size);
+> > +    uint64_t smbios_memory_device_size;
+> >  };
+> > =20
+> >  /**
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index b0c68d66a3..719e83e6a1 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -3308,6 +3308,7 @@ DEFINE_VIRT_MACHINE_AS_LATEST(9, 1)
+> >  static void virt_machine_9_0_options(MachineClass *mc)
+> >  {
+> >      virt_machine_9_1_options(mc);
+> > +    mc->smbios_memory_device_size =3D 16 * GiB;
+> >      compat_props_add(mc->compat_props, hw_compat_9_0, hw_compat_9_0_le=
+n);
+> >  }
+> >  DEFINE_VIRT_MACHINE(9, 0)
+> > diff --git a/hw/core/machine.c b/hw/core/machine.c
+> > index bc38cad7f2..3cfdaec65d 100644
+> > --- a/hw/core/machine.c
+> > +++ b/hw/core/machine.c
+> > @@ -1004,6 +1004,7 @@ static void machine_class_init(ObjectClass *oc, v=
+oid *data)
+> >      /* Default 128 MB as guest ram size */
+> >      mc->default_ram_size =3D 128 * MiB;
+> >      mc->rom_file_has_mr =3D true;
+> > +    mc->smbios_memory_device_size =3D 2047 * TiB;
+> > =20
+> >      /* numa node memory size aligned on 8MB by default.
+> >       * On Linux, each node's border has to be 8MB aligned =20
+>=20
+>=20
+>=20
+> All these values really should be documented.
+It's in commit message, but right I'll document value here
+on respin so it would be easier for reader to see where it
+comes from.
 
-> Thanks,
-> Jean
+> And I feel=20
+???
+
+>=20
+>=20
+>=20
+> > diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> > index 9445b07b4f..d9e69243b4 100644
+> > --- a/hw/i386/pc_piix.c
+> > +++ b/hw/i386/pc_piix.c
+> > @@ -495,6 +495,7 @@ static void pc_i440fx_machine_9_0_options(MachineCl=
+ass *m)
+> >      pc_i440fx_machine_9_1_options(m);
+> >      m->alias =3D NULL;
+> >      m->is_default =3D false;
+> > +    m->smbios_memory_device_size =3D 16 * GiB;
+> > =20
+> >      compat_props_add(m->compat_props, hw_compat_9_0, hw_compat_9_0_len=
+);
+> >      compat_props_add(m->compat_props, pc_compat_9_0, pc_compat_9_0_len=
+);
+> > diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> > index 71d3c6d122..9d108b194e 100644
+> > --- a/hw/i386/pc_q35.c
+> > +++ b/hw/i386/pc_q35.c
+> > @@ -374,6 +374,7 @@ static void pc_q35_machine_9_0_options(MachineClass=
+ *m)
+> >      PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+> >      pc_q35_machine_9_1_options(m);
+> >      m->alias =3D NULL;
+> > +    m->smbios_memory_device_size =3D 16 * GiB;
+> >      compat_props_add(m->compat_props, hw_compat_9_0, hw_compat_9_0_len=
+);
+> >      compat_props_add(m->compat_props, pc_compat_9_0, pc_compat_9_0_len=
+);
+> >      pcmc->isa_bios_alias =3D false;
+> > diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+> > index 3b7703489d..a394514264 100644
+> > --- a/hw/smbios/smbios.c
+> > +++ b/hw/smbios/smbios.c
+> > @@ -1093,6 +1093,7 @@ static bool smbios_get_tables_ep(MachineState *ms=
+,
+> >                         Error **errp)
+> >  {
+> >      unsigned i, dimm_cnt, offset;
+> > +    MachineClass *mc =3D MACHINE_GET_CLASS(ms);
+> >      ERRP_GUARD();
+> > =20
+> >      assert(ep_type =3D=3D SMBIOS_ENTRY_POINT_TYPE_32 ||
+> > @@ -1123,12 +1124,12 @@ static bool smbios_get_tables_ep(MachineState *=
+ms,
+> >      smbios_build_type_9_table(errp);
+> >      smbios_build_type_11_table();
+> > =20
+> > -#define MAX_DIMM_SZ (16 * GiB)
+> > -#define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
+> > -                                        : ((current_machine->ram_size =
+- 1) % MAX_DIMM_SZ) + 1)
+> > +#define GET_DIMM_SZ ((i < dimm_cnt - 1) ? mc->smbios_memory_device_siz=
+e \
+> > +    : ((current_machine->ram_size - 1) % mc->smbios_memory_device_size=
+) + 1)
+> > =20
+> > -    dimm_cnt =3D QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_SZ)=
+ /
+> > -               MAX_DIMM_SZ;
+> > +    dimm_cnt =3D QEMU_ALIGN_UP(current_machine->ram_size,
+> > +                             mc->smbios_memory_device_size) /
+> > +               mc->smbios_memory_device_size;
+> > =20
+> >      /*
+> >       * The offset determines if we need to keep additional space betwe=
+en
+> > --=20
+> > 2.43.0 =20
+>=20
+

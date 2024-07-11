@@ -1,246 +1,295 @@
-Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp626030njb;
-        Wed, 10 Jul 2024 15:07:13 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXK0OznDs0EESufW0oZQedEUe7dbsMVnTcp5eCAVwUH4c+8KtFLFTUUF9Rz7qyJbLKTvdWTl/+NbO1YWImMUsAuibTj+mO6
-X-Google-Smtp-Source: AGHT+IGue9MEQvMF1NYLnGlkEFzv1fX2/SGrmdgt9hBajgrTocQuc23H3hB4Vfjo3ya+BTRedrey
-X-Received: by 2002:a05:620a:1990:b0:795:e9cd:f5b8 with SMTP id af79cd13be357-7a1469cf44fmr196016085a.23.1720649232994;
-        Wed, 10 Jul 2024 15:07:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720649232; cv=none;
+Received: by 2002:a17:505:56a3:b0:1be9:327d:8ee3 with SMTP id ya3csp747780njb;
+        Wed, 10 Jul 2024 20:29:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWUME/KErBF9bxW4afUgkRHEYUF7omegUVgauNlEvzlnEt/QI9uNxncWFaL/pdaDCt/zaIS6C17cBPFp44ynXe5k/SthsVg
+X-Received: by 2002:a05:6000:11c2:b0:367:9625:bd05 with SMTP id ffacd0b85a97d-367cea67faemr4645925f8f.15.1720668583918;
+        Wed, 10 Jul 2024 20:29:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720668583; cv=none;
         d=google.com; s=arc-20160816;
-        b=J4MIeveVcNxJOFAJzYVBcR/pz8AdwfpSrhl/6NC3psnuipozm2i//vlepjbb1YQIdy
-         60FPlzAG417Km6jabrys+AVXHaPee4zVMyjkxW0i71x/b00qtf0PAR1hOhRIUCEYv6jn
-         s0r5+aJ214ovEuMTEBPvlnUYwmU55gRvWWBBvSONtx72pfYDUzOuUuHSaAcdeF0vPmVe
-         jYzNUUJgY7nkgJCD26reagUdgp+mQEnZH/yCqCv9aDMchXy/urScROWh2/cBMXCu9POu
-         aS6hgcr3iveurlCy/7XNhoXWgN+OwA2pPk4d/VgXzvX7/vCjAkC2m3D6g4Ge6D4V0yJr
-         iA+Q==
+        b=m1GxSnwqaajzvJSLgmlhKC7LrXZYJ+/weZWKIQELwQdcsDJWbjipEwtmEnO2CoVgPY
+         zNZV8Q3Ju2v6+PaHejnX8HAW07yX7YvSiyxwaNhTd7Ehqzt8Od6Wy2/K79HLbRQao4ov
+         WRM1GiXVZt9mnl5t+PsaPDjiHf/uFm3p2uqjPWeyvY4sn4Ssx8IfB6hgksP1UQss1JoD
+         Jswhw7T+T8nrmlMwqhN9c+MW87HAXQNSL2bCAEF5N7TvtqW49ee7LIPDjZhwilNszj+4
+         Es7c9kOjx/vEoIMGr/qzV0Ai/Tr3y+3RH53BYjgcFo4SEoPqG9iWczqt6Pi4MVQ7eUxu
+         323Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=gesSK2pD2ZFqA0jvWamwdOkabkjkA1+DeZvD13zKcyk=;
-        fh=ZiLxoeMXSWI9PlPEzJMj8ybBNKyXlqu6pU7biLKDSDs=;
-        b=V2SVbjIO9lCpBAXN+mMzGc0MAb2swh/a2BB821gZVhN4INcvGCGyPIMWGzQ7PCJnMb
-         nIOzyjjog0GvCVwd8ePhjDiwONkaVtgp1l9vngGKrL9ow6gf7WJ3IiYGrmLV1FI9uoIS
-         XIsGY1mTTmy7vXn20KRlVDC/7CaS6bWyGIdDV3ptStNdvr/Vphh9PYKdlBvmJJ379Ejx
-         Gc5ADXR+0yXJaP8SuDt24MsRkxfX28jo9lOy1FWrtkG/POrCMPyCwJo2qady9EIRNUUE
-         bwwU5+f2GLqDlmNVGOSrTO2y8AW2o80pbf5a/H2oUwIoWdXRsjqPhG0H8qjfGvSM0/Cd
-         M2gw==;
+        bh=xu5Pwo28iuFH9ZLTj66GK89uHgcEaX07Mu/Z/kn2x3A=;
+        fh=45zzADqm7AWg4nQlfR13BEygSpi+jdkyIyJhuJ6VwnY=;
+        b=lPL4gCzTFTuIpMr/ALEs6f7gMqtUxCNvbH6wkOGuDPnmIDa/oxEBROJL2hXpf9fpy6
+         QbQI3Su5Ykeu2ty9YT+GxzPlNMU0WooWPjIQg51lah9KsMQ/PrPiguWqkvyx/1dr2owZ
+         ip7ZLsI7ZQWJZ1/GRbDx9hpUkiSinnWJy9pRG99/Cujd4Hsn45bwkmn4i87RCjj8x2zP
+         /06kXz7N8BcQMELosWcS5qM0SDJsB8G7K0+GlY+nFSGCg1A3LxYNjFSIgHyh0R2uhl2n
+         kLpQSxlSdMruZbcbPoT7jtoRahaw7HuGZoEOk8isf4aGEG/A6KlnYvUZ6A8mtgGgPzVS
+         GRvw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X1YSdY0k;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79f190b6cb1si549733385a.512.2024.07.10.15.07.12
+       dkim=pass header.i=@opnsrc.net header.s=google header.b=ElPVdOmW;
+       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
+       dara=neutral header.i=@linaro.org
+Return-Path: <salil.mehta@opnsrc.net>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-367cdfb011fsor1345011f8f.7.2024.07.10.20.29.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jul 2024 15:07:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 10 Jul 2024 20:29:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X1YSdY0k;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRfSS-0008C7-Ap; Wed, 10 Jul 2024 18:06:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1sRfSQ-000889-Nb
- for qemu-arm@nongnu.org; Wed, 10 Jul 2024 18:06:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1sRfSO-0004yO-J9
- for qemu-arm@nongnu.org; Wed, 10 Jul 2024 18:06:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1720649195;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=gesSK2pD2ZFqA0jvWamwdOkabkjkA1+DeZvD13zKcyk=;
- b=X1YSdY0k67kmx91cs9WlRs8P/0hhBsJLtNsV0G/WHugEvl7wGFXov8YA6b8hHwVL7N3Fwq
- +Z/Bp5gh/Nz5N6Zauc5fk0B82pRVp5H0s8UdZ7pvhfMY7cwSqOVPg0wzDvKDVHE+KtQvmm
- LVukztdbZhSHou5mHr62Hrf6m44CZms=
-Received: from mail-oa1-f70.google.com (mail-oa1-f70.google.com
- [209.85.160.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-306-frsloIsHMyiwleXizA_oww-1; Wed, 10 Jul 2024 18:06:29 -0400
-X-MC-Unique: frsloIsHMyiwleXizA_oww-1
-Received: by mail-oa1-f70.google.com with SMTP id
- 586e51a60fabf-25df8a91b58so63685fac.2
- for <qemu-arm@nongnu.org>; Wed, 10 Jul 2024 15:06:29 -0700 (PDT)
+       dkim=pass header.i=@opnsrc.net header.s=google header.b=ElPVdOmW;
+       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=opnsrc.net; s=google; t=1720668583; x=1721273383; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=xu5Pwo28iuFH9ZLTj66GK89uHgcEaX07Mu/Z/kn2x3A=;
+        b=ElPVdOmWnqW4GFINbS7vWT9K2a9PLYMHxqUjNVFrmSaR3Ap23Y0Gc/9URBAZzZtkY1
+         IEFWFnCtYSjTUkmqmcujE7YigcS2HDkgiRzxw5yO3QFNhXIsf4p1vCeNA0lOCNddN9uV
+         TIlfapmrcOgLr+AQuMeB8s4/JzcDGmbQkt4GUFkyKYT4pFVCoOnDqou9h6a6GUgQuyw3
+         baMpsj2gAppne3gDG0FqXyR6efzt2OKshbaSfK8qrn1L2OWPMZ/B8UAeW/JrOQQklmrx
+         J1VhY2UQfq8sQPXI5mk37sRxHnQJnX+ZXe45NcKZpo5ee/68GhSmpTdXDCmZAzhTNKI7
+         iflg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720649189; x=1721253989;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=gesSK2pD2ZFqA0jvWamwdOkabkjkA1+DeZvD13zKcyk=;
- b=McnpnmJ3YfeRlTBGbyXPRZ3Ik6ZpFKsyDRSXp0GV7evySJ0CTQ8Rf90yS7kwcUKSLg
- iOuyImbdtzDqn9PDWoFPz7EL0GYlfB6Arnu4lInVSWYddzGqBcQ8XL6UmLNy61ExSlPV
- Kq2jW7TjD/sf/JwXE6fcr1PJw43QmG/afOh9AfVDtVx36znPnmNudJ2kjAMY4xsgkphj
- 8OiAUnj715wRIQkGfOJ2EV4+jOOIRuYm2/8qpz4QlBMbcZ0qWgOhJvlPLA3Q8h7r+fcp
- NULObIAPFqbxl9zQFYXgJuVBT9+p+G0ys+6fspQuZGy4r4+57JgKz2mrha+vD+lqbBs8
- w3ow==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUdErEcKsC+Ou+/I0isSzXHeWxLll/OOfpv7jtncZ2SmOU8rO4WEhPkQSkYnykl2pAYNV0jwcNErQtR+wvcx3jmYoNh
-X-Gm-Message-State: AOJu0YwZBMDpdrwZzH7nDE/DKdLGjlFCELDW28SHTa+kjXcHiMwBTghp
- DTXrc7n3SNSNLPS6SZGfM9/aOtRglbb3jhAtNIWqcD0sv27LJCkKci6E5ZcTUX5rvHb7XQcGXF8
- 6pYjYcOT+LLNIQDHdIwuTMCf+98mF6z1nJCDSeuVxF2oZKRhnsA==
-X-Received: by 2002:a05:6808:2395:b0:3d5:6338:49de with SMTP id
- 5614622812f47-3d93c1c52ddmr7259914b6e.5.1720649188783; 
- Wed, 10 Jul 2024 15:06:28 -0700 (PDT)
-X-Received: by 2002:a05:6808:2395:b0:3d5:6338:49de with SMTP id
- 5614622812f47-3d93c1c52ddmr7259901b6e.5.1720649188406; 
- Wed, 10 Jul 2024 15:06:28 -0700 (PDT)
-Received: from x1n (pool-99-254-121-117.cpe.net.cable.rogers.com.
- [99.254.121.117]) by smtp.gmail.com with ESMTPSA id
- af79cd13be357-79f1902b82fsm231258585a.70.2024.07.10.15.06.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Jul 2024 15:06:27 -0700 (PDT)
-Date: Wed, 10 Jul 2024 18:06:24 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Fabiano Rosas <farosas@suse.de>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-block@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>,
- Tyrone Ting <kfting@nuvoton.com>, Bin Meng <bmeng.cn@gmail.com>,
- Hao Wu <wuhaotsh@google.com>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Sai Pavan Boddu <sai.pavan.boddu@amd.com>, devel@lists.libvirt.org,
- Luc Michel <luc.michel@amd.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>
-Subject: Re: [PATCH v3 06/17] hw/sd/sdcard: Do not store vendor data on block
- drive (CMD56)
-Message-ID: <Zo8F4Gq4f7SawaDc@x1n>
-References: <20240627162232.80428-7-philmd@linaro.org> <87cynmfggx.fsf@suse.de>
- <Zo2lLLAwcZ8bBvO2@x1n> <87a5ipfigb.fsf@suse.de>
- <Zo6iZjc8YpI1_9dW@x1n> <874j8xfc9s.fsf@suse.de>
- <Zo7dcF8OKfH92RlR@x1n> <871q41f2pk.fsf@suse.de>
- <Zo7rCXtap2lWd4IB@x1n> <87ttgxdj1p.fsf@suse.de>
+        d=1e100.net; s=20230601; t=1720668583; x=1721273383;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xu5Pwo28iuFH9ZLTj66GK89uHgcEaX07Mu/Z/kn2x3A=;
+        b=CfyfziAti+SYi6aXBc0KAY/f9k3B0Nj4/OjfIPS30urJi9PlNOUVGElp+3Zvt2xxOf
+         dinWwlF3iMrIekifdljXu59jGsD4wy+G5LXfwvYDr6OPxf0681tDCRKWNBXM62jeP5cf
+         YQjbvw3zNfPmtpTvORx8QaawEyEA5VBDa/eZSRwKCrUSvQW3b39/dLk04q5meX7QYijw
+         Hnuc45R5SFtCOrxxbmqCVrxtjy8UkFLveXEJXxXaKGdKBmP6bJ8PCCa3dMydOs0+8lcP
+         sTW2I46qrywosizAxxTd7grZO7VDmy72I9+Covl56eDTiG2zRPqObT+0SAYJut9XSgn4
+         iEzA==
+X-Forwarded-Encrypted: i=1; AJvYcCWhOiKV10wCW2hzaIVkYzHT+EUePm80MZwcwyn55/TZoFlr9XPBL0h9tP11uqYumAAD7vuPeRTQQNi9m1VjSCGkwnO81MGf
+X-Gm-Message-State: AOJu0YwwL82DPHjX1+mcQd2MbGAk8xt0Kpko+JYEs0hnLpHtPK6dvmhQ
+	U3Qq3WcJIJjr+BFYmv+6WiN8kjQHqyWnDz+WmxCwN2N1JlFCL4I3aOV2Yz5olhY=
+X-Google-Smtp-Source: AGHT+IEsxZFgYCBkyJa7FOTUpAeQ1kVc/75VPAvKrq2BQmyUz73ZS6V5CWVXF2zNBxh4WLcQkWHcsA==
+X-Received: by 2002:a5d:4581:0:b0:366:e9fa:178 with SMTP id ffacd0b85a97d-367ce5df873mr4350223f8f.0.1720668582797;
+        Wed, 10 Jul 2024 20:29:42 -0700 (PDT)
+Return-Path: <salil.mehta@opnsrc.net>
+Received: from [10.11.12.72] ([90.220.10.255])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-367cdfb2327sm6609926f8f.116.2024.07.10.20.29.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 10 Jul 2024 20:29:42 -0700 (PDT)
+Message-ID: <27cc0420-df0b-481e-a58f-e17fa4d02367@opnsrc.net>
+Date: Thu, 11 Jul 2024 03:29:40 +0000
 MIME-Version: 1.0
-In-Reply-To: <87ttgxdj1p.fsf@suse.de>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sWXsM60NOgdL
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V13 4/8] hw/acpi: Update GED _EVT method AML with CPU scan
+To: Igor Mammedov <imammedo@redhat.com>, Salil Mehta <salil.mehta@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, maz@kernel.org,
+ jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, andrew.jones@linux.dev, david@redhat.com,
+ philmd@linaro.org, eric.auger@redhat.com, oliver.upton@linux.dev,
+ pbonzini@redhat.com, mst@redhat.com, will@kernel.org, gshan@redhat.com,
+ rafael@kernel.org, alex.bennee@linaro.org, linux@armlinux.org.uk,
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
+ wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
+ lixianglai@loongson.cn, npiggin@gmail.com, harshpb@linux.ibm.com,
+ linuxarm@huawei.com, Shaoqin Huang <shahuang@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>
+References: <20240607115649.214622-1-salil.mehta@huawei.com>
+ <20240607115649.214622-5-salil.mehta@huawei.com>
+ <20240706162845.3baf5568@imammedo.users.ipa.redhat.com>
+Content-Language: en-GB
+From: Salil Mehta <salil.mehta@opnsrc.net>
+In-Reply-To: <20240706162845.3baf5568@imammedo.users.ipa.redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 4Na3D5ofCegW
 
-On Wed, Jul 10, 2024 at 06:38:26PM -0300, Fabiano Rosas wrote:
-> Peter Xu <peterx@redhat.com> writes:
-> 
-> > On Wed, Jul 10, 2024 at 04:48:23PM -0300, Fabiano Rosas wrote:
-> >> Peter Xu <peterx@redhat.com> writes:
-> >> 
-> >> > On Wed, Jul 10, 2024 at 01:21:51PM -0300, Fabiano Rosas wrote:
-> >> >> It's not about trust, we simply don't support migrations other than
-> >> >> n->n+1 and (maybe) n->n-1. So QEMU from 2016 is certainly not included.
-> >> >
-> >> > Where does it come from?  I thought we suppport that..
-> >> 
-> >> I'm taking that from:
-> >> 
-> >> docs/devel/migration/main.rst:
-> >>   "In general QEMU tries to maintain forward migration compatibility
-> >>   (i.e. migrating from QEMU n->n+1) and there are users who benefit from
-> >>   backward compatibility as well."
-> >> 
-> >> But of course it doesn't say whether that comes with a transitive rule
-> >> allowing n->n+2 migrations.
-> >
-> > I'd say that "i.e." implies n->n+1 is not the only forward migration we
-> > would support.
-> >
-> > I _think_ we should support all forward migration as long as the machine
-> > type matches.
-> >
-> >> 
-> >> >
-> >> > The same question would be: are we requesting an OpenStack cluster to
-> >> > always upgrade QEMU with +1 versions, otherwise migration will fail?
-> >> 
-> >> Will an OpenStack cluster be using upstream QEMU? If not, then that's a
-> >
-> > It's an example to show what I meant! :) Nothing else. Definitely not
-> > saying that everyone should use an upstream released QEMU (but in reality,
-> > it's not a problem, I think, and I do feel like people use them, perhaps
-> > more with the stable releases).
-> >
-> >> question for the distro. In a very practical sense, we're not requesting
-> >> anything. We barely test n->n+1/n->n-1, even if we had a strong support
-> >> statement I wouldn't be confident saying migration from QEMU 2.7 -> QEMU
-> >> 9.1 should succeed.
-> >
-> > No matter what we test in CI, I don't think we should break that for >1
-> > versions..  I hope 2.7->9.1 keeps working, otherwise I think it's legal to
-> > file a bug by anyone.
-> >
-> > For example, I randomly fetched a bug report:
-> >
-> > https://gitlab.com/qemu-project/qemu/-/issues/1937
-> >
-> > QEMU version:                6.2 and 7.2.5
-> >
-> > And I believe that's the common case even for upstream.  If we don't do
-> > that right for upstream, it can be impossible tasks for downstream and for
-> > all of us to maintain.
-> 
-> But do we do that right currently? I have no idea. Have we ever done
-> it? And we're here discussing a hypothetical 2.7->9.1 ...
-> 
-> So we cannot reuse the UNUSED field because QEMU from 2016 might send
-> their data and QEMU from 2024 would interpret it wrong.
-> 
-> How do we proceed? Add a subsection. And make the code survive when
-> receiving 0.
-> 
-> @Peter is that it? What about backwards-compat? We'll need a property as
-> well it seems.
+Hi Igor,
 
-Compat property is definitely one way to go, but I think it's you who more
-or less persuaded me that reusing it seems possible! At least I can't yet
-think of anything bad if it's ancient unused buffers.
 
-And that's why I was asking about a sane way to describe the "magic
-year".. And I was very serious when I said "6 years" to follow the
-deprecation of machine types, because it'll be something we can follow to
-say when an unused buffer can be obsolete and it could make some sense: if
-we will start to deprecate machine types, then it may not make sense to
-keep any UNUSED compatible forever, after all.
+On 06/07/2024 14:28, Igor Mammedov wrote:
+> On Fri, 7 Jun 2024 12:56:45 +0100
+> Salil Mehta <salil.mehta@huawei.com> wrote:
+>
+>> OSPM evaluates _EVT method to map the event. The CPU hotplug event eventually
+>> results in start of the CPU scan. Scan figures out the CPU and the kind of
+>> event(plug/unplug) and notifies it back to the guest. Update the GED AML _EVT
+>> method with the call to \\_SB.CPUS.CSCN
+>>
+>> Also, macro CPU_SCAN_METHOD might be referred in other places like during GED
+>> intialization so it makes sense to have its definition placed in some common
+>> header file like cpu_hotplug.h. But doing this can cause compilation break
+>> because of the conflicting macro definitions present in cpu.c and cpu_hotplug.c
+> one of the reasons is that you reusing legacy hw/acpi/cpu_hotplug.h,
+> see below for suggestion.
+>
+>> and because both these files get compiled due to historic reasons of x86 world
+>> i.e. decision to use legacy(GPE.2)/modern(GED) CPU hotplug interface happens
+>> during runtime [1]. To mitigate above, for now, declare a new common macro
+>> ACPI_CPU_SCAN_METHOD for CPU scan method instead.
+>> (This needs a separate discussion later on for clean-up)
+>>
+>> Reference:
+>> [1] https://lore.kernel.org/qemu-devel/1463496205-251412-24-git-send-email-imammedo@redhat.com/
+>>
+>> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+>> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+>> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+>> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+>> Reviewed-by: Gavin Shan <gshan@redhat.com>
+>> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+>> Tested-by: Xianglai Li <lixianglai@loongson.cn>
+>> Tested-by: Miguel Luis <miguel.luis@oracle.com>
+>> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+>> Tested-by: Zhao Liu <zhao1.liu@intel.com>
+>> ---
+>>   hw/acpi/cpu.c                  | 2 +-
+>>   hw/acpi/generic_event_device.c | 4 ++++
+>>   include/hw/acpi/cpu_hotplug.h  | 2 ++
+>>   3 files changed, 7 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+>> index 473b37ba88..af2b6655d2 100644
+>> --- a/hw/acpi/cpu.c
+>> +++ b/hw/acpi/cpu.c
+>> @@ -327,7 +327,7 @@ const VMStateDescription vmstate_cpu_hotplug = {
+>>   #define CPUHP_RES_DEVICE  "PRES"
+>>   #define CPU_LOCK          "CPLK"
+>>   #define CPU_STS_METHOD    "CSTA"
+>> -#define CPU_SCAN_METHOD   "CSCN"
+>> +#define CPU_SCAN_METHOD   ACPI_CPU_SCAN_METHOD
+>>   #define CPU_NOTIFY_METHOD "CTFY"
+>>   #define CPU_EJECT_METHOD  "CEJ0"
+>>   #define CPU_OST_METHOD    "COST"
+>> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+>> index 54d3b4bf9d..63226b0040 100644
+>> --- a/hw/acpi/generic_event_device.c
+>> +++ b/hw/acpi/generic_event_device.c
+>> @@ -109,6 +109,10 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
+>>                   aml_append(if_ctx, aml_call0(MEMORY_DEVICES_CONTAINER "."
+>>                                                MEMORY_SLOT_SCAN_METHOD));
+>>                   break;
+>> +            case ACPI_GED_CPU_HOTPLUG_EVT:
+>> +                aml_append(if_ctx, aml_call0(ACPI_CPU_CONTAINER "."
+>> +                                             ACPI_CPU_SCAN_METHOD));
+> I don't particularly like exposing cpu hotplug internals for outside code
+> and then making that code do plumbing hoping that nothing will explode
+> in the future.
+>
+> build_cpus_aml() takes event_handler_method to create a method that
+> can be called by platform. What I suggest is to call that method here
+> instead of trying to expose CPU hotplug internals and manually building
+> call path here.
+> aka:
+>    build_cpus_aml(event_handler_method = PATH_TO_GED_DEVICE.CSCN)
+> and then call here
+>    aml_append(if_ctx, aml_call0(CSCN));
+> which will call  CSCN in GED scope, that was be populated by
+> build_cpus_aml() to do cpu scan properly without need to expose
+> cpu hotplug internal names and then trying to fixup conflicts caused by that.
+>
+> PS:
+> we should do the same for memory hotplug, we see in context above
 
-And we need that ruler to be as accurate as "always 6 years to follow
-machine type deprecation procedure", in case someone else tomorrow asks us
-something that was only UNUSED since 2018.  We need a rule of thumb if we
-want to reuse it, and if all of you agree we can start with this one,
-perhaps with a comment above the field (before we think all through and
-make it a rule on deprecating UNUSED)?
+In the x86 world and ARM, two different types of event handling 
+mechanisms are
+used: one based on GPE and the other on GED. The latter has its own 
+placeholder
+within the generic_event_device.c file, which also multiplexes other GED 
+events.
+Multiplexing AMLs for two different types of handlers into 
+build_cpus_aml() seems
+to be a fundamental mistake here. For CPU handling, this should also not 
+be done
+because x86 deals with legacy hotplug and modern hotplug differently but 
+still
+uses the same GPE-based event handling for both. Moreover, which type of 
+handler
+should be used depends upon the context from which build_cpus_aml() is 
+called
+and it would be ugly to demultiplex these inside the build_cpus_aml() code.
 
--- 
-Peter Xu
+Therefore, my suggestion is:
+1. Keep the CPU’s _EVT handling code in the generic_event_device.c as it is.
+2. Pull out the event handler method and CPU scan call-related 
+initialization entirely
+     out of the CPU’s AML code (i.e., both in build_cpus_aml() and 
+build_legacy_cpu_hotplug_aml()).
+3. Remove the input parameter of event_handler in build_cpus_aml().
+4. Create a separate function like build_gpe_aml() and use this function 
+in the
+      following places:
 
+File: hw/i386/acpi-build.c
+
+build_dsdt()
+{
+    [...]
+     scope =  aml_scope("_GPE");
+    [...]
+     aml_append(dsdt, scope);
+
+     if (pcmc->legacy_cpu_hotplug) {
+         build_legacy_cpu_hotplug_aml(dsdt, machine, pm->cpu_hp_io_base);
+     } else {
+         CPUHotplugFeatures opts = {
+             .acpi_1_compatible = true, .has_legacy_cphp = true,
+             .smi_path = pm->smi_on_cpuhp ? "\\_SB.PCI0.SMI0.SMIC" : NULL,
+             .fw_unplugs_cpu = pm->smi_on_cpu_unplug,
+         };
+         build_cpus_aml(dsdt, machine, opts, pc_madt_cpu_entry,
+-                       pm->cpu_hp_io_base, "\\_SB.PCI0", "\\_GPE._E02");
++                      pm->cpu_hp_io_base, "\\_SB.PCI0");
++      build_gpe_aml(...,, ,"\\_GPE._E02")
+
+     }
+    [...]
+}
+
+File: hw/acpi/cpu.c
+
+@@ -343,9 +343,10 @@ const VMStateDescription vmstate_cpu_hotplug = {
+  #define CPU_FW_EJECT_EVENT "CEJF"
+
+  void build_cpus_aml(Aml *table, MachineState *machine, 
+CPUHotplugFeatures opts,
+-                    build_madt_cpu_fn build_madt_cpu, hwaddr io_base,
++                    build_madt_cpu_fn build_madt_cpu, hwaddr base_addr,
+                      const char *res_root,
+-                    const char *event_handler_method)
++                    AmlRegionSpace rs)
+  {
+      Aml *ifctx;
+      Aml *field;
+
+
+That said, if you still wish you proceed with your suggestions I can go
+ahead and do it but please understand that I'll have to put a check
+to avoid adding call to CPU Scan for am/virt platform since we would
+want to add that call as part of the GED/AML code. This is unnecessary
+and would look ugly.
+
+
+Thanks
+Salil.
+
+
+>
+>
+>> +                break;
+>>               case ACPI_GED_PWR_DOWN_EVT:
+>>                   aml_append(if_ctx,
+>>                              aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
+>> diff --git a/include/hw/acpi/cpu_hotplug.h b/include/hw/acpi/cpu_hotplug.h
+>> index 48b291e45e..ef631750b4 100644
+>> --- a/include/hw/acpi/cpu_hotplug.h
+>> +++ b/include/hw/acpi/cpu_hotplug.h
+>> @@ -20,6 +20,8 @@
+>>   #include "hw/acpi/cpu.h"
+>>   
+>>   #define ACPI_CPU_HOTPLUG_REG_LEN 12
+>> +#define ACPI_CPU_SCAN_METHOD "CSCN"
+>> +#define ACPI_CPU_CONTAINER "\\_SB.CPUS"
+>>   
+>>   typedef struct AcpiCpuHotplug {
+>>       Object *device;

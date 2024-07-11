@@ -1,132 +1,129 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp163737nji;
-        Thu, 11 Jul 2024 06:05:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV3zW1z4GHwo1e9gk977KTNRAOIIb4bNURE0Mq0zjhjJ3WKkrfvIQPU+IGzukSyjwS9r8PI+CcjUq8FPq9Pn8FaIukJWYgi
-X-Google-Smtp-Source: AGHT+IEFflu4YbpKrPOukkdR5vJvT44L60Wk9AIajfBfdlulwlMy2nXFG6SAQwViy4aXGyxFrn0m
-X-Received: by 2002:a05:690c:827:b0:64a:5f5a:b38c with SMTP id 00721157ae682-658ef24b43bmr95661697b3.26.1720703141673;
-        Thu, 11 Jul 2024 06:05:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720703141; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp204925nji;
+        Thu, 11 Jul 2024 07:08:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWI2/rzxOAqM67Z8+xKTDQt+vM3PKvk2xRW/jcvH3BtVXogtLz7DjJYkVUlCGhSLoVFxhWIDY73FcHOgZBuqRz/2jhIsGW1
+X-Google-Smtp-Source: AGHT+IE9UX+NVbXOVMEQJcHA6RoglOpkTR5X4KC+dYPUuZ99E5pa7RkF5GF0onWsNlV0VR75YDRB
+X-Received: by 2002:a37:e102:0:b0:79b:ea85:9f9f with SMTP id af79cd13be357-79f199e5a0bmr903789785a.2.1720706938716;
+        Thu, 11 Jul 2024 07:08:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720706938; cv=none;
         d=google.com; s=arc-20160816;
-        b=DXHiJhSTKj2QgViCv6j9N97rX81zW56DfU9fJpbYTrJLxqnXbJ/vFWl7+PyloMH5rN
-         S9fmbR4wBBC6JwOp/r7uC3EyLTX3UL+Tck+eQrVzw3LGuVXf/DJel9ZDWY8CE6Ht7NI7
-         5WAgvp8vfe+n28Ao0grDlF7xMDYcAgq8N4lEwvJy1Zy/FBQF9YRmfGIOpxBUE2nAeaW8
-         O2iaZZDDEFbJ0y7ara2wLzCg6RW6UBZs09mrbu8yJsZxer/C9wvdKxd0Z+yXp3TPnlAO
-         SbEJ2EfKPehBxcnMOeZrekIcsicpuWSfOIXbeVxWczxxhISpFZPuTIhjHeIEZ2RnwJh4
-         9xsg==
+        b=lzni8cKLZMftidOfeBmM3VHLfYvZw9NcyUo9hlBRoJT3HWqRUQ7GAmCqsKjfyismu/
+         EI1/3bleCTtb87kfdNhneo1yJSlUi0HbXv/iMNiqp1OEPWjHTOJl7I0dCFTgjRWOSHQK
+         Tyys24z5ugPBXnD9RnYExI4E+uIS2qpBh4C43I5/sjQ3ijJrj9XMD1Oxc7yiSD9YPdpj
+         NIT1zwDOlONZaW0k4ZFh3W63/pALDUEma1foPGasyVodx363d3yimjYcAtahct/eqv7X
+         ptwSzwCbOPuWcyzx8DnxGZRHQB/rW3TeXEn5wv8kvRPSZ2TlDjZxQycHLtTwlc0S0ZyF
+         zk5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=Vx/vCSYj4TTkzQq3Fz2+jmAXsfIfaFQS/yJBqb1BA4s=;
-        fh=RzgiarZU8QxWTvjFgBZtfc3if6JMjjasYYWNv8wsTgQ=;
-        b=hL52rjtDVMOJZ/u7IxNmIp/NfDspAtUjXUnBwORzCmklHK/ilnRSrjgpJoDRtb80hh
-         7cN6zhwdiGT2Ex7GoCK+zSAcTpjwYQY1C67asyHkl/ZmIycPw2y1367JnYTInP4BwGUf
-         rkMEDyaucooRaahyugguE27NlN75Zjd6/ngbkrxf5Ow8kjfUX17g5MEulw8xD5rAM2g1
-         QiHks5X/jUt4K0YG/vyb0waExSx2HJO9JiJpQ/CWC4ZLO/jPB3Mw418hPUxDiJ71dknA
-         C2+Q2tOp3B7q2zCzAEA+3rFNvoULna2CoyR1dPdHf6J90qFaWjAZK89iNKcFlzS1Axd5
-         ih9g==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=e8bJ7MWKgdknqEJSg3JeWmibKxAGZJdlzW4ynd493gw=;
+        fh=k3BUqoAmBGJeW09TSsUTxMpDF8WeWRVpy4zCJdF191M=;
+        b=PqPxFidJkkhhLH4r6DdQEyk9MF2eOLJjpQYtYy4MMXdGzbB0UzM19O3cqdYvEVBLjc
+         hDkhI/0mlWdFGwBayrKQ8VZ6xrW+2V3xYQPUSpQHoVwvPjVOrYVL7FtdmhUG2+npce0z
+         AS1NyrckhP+dnBkQCrxLQqNH+5xn5Z2qE40cAjf3vXjgfUoH8noO/3Yyeuvhy9ZIT46u
+         8wVk8/hKgzTCIasyo+oG4YN980AGPDcCk2uO8fRS0TMXgNO2KHFYv6nb4lpWCDnIlhjN
+         CPELPFgmzRMSxP5hWFAZVqJXCAx7bYz6zxccrQW5BKhMtnXR/WzdrhyJU0evlalE7XwA
+         9Bng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="OR/TxCeu";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tFgF58Tw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 00721157ae682-65ba2296470si20660987b3.25.2024.07.11.06.05.41
+        by mx.google.com with ESMTPS id af79cd13be357-79f19028195si718701585a.160.2024.07.11.07.08.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jul 2024 06:05:41 -0700 (PDT)
+        Thu, 11 Jul 2024 07:08:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="OR/TxCeu";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tFgF58Tw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRtUF-0006iO-1R; Thu, 11 Jul 2024 09:05:27 -0400
+	id 1sRuTX-0003dq-HG; Thu, 11 Jul 2024 10:08:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sRtUD-0006c9-G5
- for qemu-arm@nongnu.org; Thu, 11 Jul 2024 09:05:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sRtUB-0000od-IW
- for qemu-arm@nongnu.org; Thu, 11 Jul 2024 09:05:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1720703122;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Vx/vCSYj4TTkzQq3Fz2+jmAXsfIfaFQS/yJBqb1BA4s=;
- b=OR/TxCeuwuI3mzSaxC+mTZtpwDre1HyIjocAg51CDD/UW5lM42y4NtwvXbdSgmNouPozbL
- h/uyEDhzYzCd3SyIfhh+8xB/u/0uF7i3uJLHD3Hnh7RQ513q/cANdSU6ikjXFUArpZN4+f
- djdxY9npU9GUVxB5CnjF2pRMIRq7CDg=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-594-bpCyJJfZPDqdHfMyhRjByg-1; Thu, 11 Jul 2024 09:05:15 -0400
-X-MC-Unique: bpCyJJfZPDqdHfMyhRjByg-1
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-367879e8395so446442f8f.0
- for <qemu-arm@nongnu.org>; Thu, 11 Jul 2024 06:05:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRuTV-0003cX-Ux
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2024 10:08:45 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRuTS-0001RA-Lf
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2024 10:08:44 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4267300145eso7101145e9.3
+ for <qemu-arm@nongnu.org>; Thu, 11 Jul 2024 07:08:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1720706920; x=1721311720; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=e8bJ7MWKgdknqEJSg3JeWmibKxAGZJdlzW4ynd493gw=;
+ b=tFgF58TwnEoN9S1jPo5Kl3YKwEL7YFyWUinFpTOv2j1rPkCZPHIonbohrZ0vUmZ868
+ VMlcMZkcTgYL2ha1nqWmCMHw6kKc8R8nd7EfT0UHMBaf1d/xrsajBOgqR8JgmMRPS7by
+ SCZ4vdyytYkJ0ymoBJUIP+k0DVV0C9p0tw+2iY9B3C2QHFsyhwfhpftXc+nG22k6hmXs
+ K/cQhnQA8PEkK8sR/JEVp89t4hHYBSOVEAms7HXdsqCVh/lp1/RTj7UBFlCnJ+wzvG3q
+ 8f7XN4+2uH4pOIyfJldbpHxq6Vm8mKqx+E55yYnYV/oB9c3IQ+pGIBGlBMQzNd4k/XZl
+ 2cAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720703114; x=1721307914;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=a2hv7wVB+poKjf0VlnbHz9P8tGP4VwBm/7gzQwhPtoU=;
- b=MgGdDw3BqdsbdtTlzKxtviGU/8xpcVJtIP3GmcmXIFT3V4FbuzkmQLoGnajdc5XUZW
- hjQCl2iM3Zf3aCxhMnEvLRmx8F+O7HXniF0MQ05kmViVpUKVLFfNoL4Lt4CKPwTgVcj9
- r7lvJhK7CgM2utVs8Nfvj0gbz1Fo2dIN68+By7QGEx4ZN7I+s101d3Tum5KaGd8vBicy
- RwMA73OArKSAwuEMXmT8pIOunjIXrGaYLB44cgZsY16Oe3HmDn+mcxyFA7tXnCtsTkni
- 0LlDWi+PbVfWJcKKWvJrMY1ova9PEdxY1posnRZOXp+VS94FOyeltcaSCsXCdrxlhizd
- mfJg==
+ d=1e100.net; s=20230601; t=1720706920; x=1721311720;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=e8bJ7MWKgdknqEJSg3JeWmibKxAGZJdlzW4ynd493gw=;
+ b=Ps8sf97NLUgV8BOyk7ZtIMOceOWIGb5V2F5bvGEDg5lqpoy1XJ9iOZZZNWWW4h9tc6
+ QZgIfcOJD+plwtJfdgJPiayWehmzBFB/s5539hu0eLB7qF+ZEeLTnRr38FCCvo9vzqfx
+ glMUyqKREPe/q33yEwKiYnEmFf5k8Lz0y+8bQ3dHH9c4MkK/43ql89y3Wx9EKPqYvbnx
+ X26Eu6cD32T/r9UC01QyAuU6GY/h/6xlXGXCoCk1D2axSviaGsOyJ8v0vW+wL2kjvI4w
+ Rtg/lzRK1xRnNjWsHYhXYovsXPDGagZFjF5LaQiY/0hCBsHzmJTdG9xJs+9uFAdF2yIR
+ wqDQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWMcOkRjML6SVGlgTavH8k2BLtFwtb1rAnbvNqxWoCIeSQB7UtygMaObNTZVYunBoLWteynUx/EAAJFFn37+Y6huKH5
-X-Gm-Message-State: AOJu0Yx0FT3w3t3oOyDjsCZf1OeZK/elsmrq0LdhxT8Y7LZSANI9flTy
- 3izvfrRm9E5GziXAUfQwMcqvHZR3HmwA1XI5HTkpgnimS9Er5koy9QuHVEZTSRRa3lVTzaejTKO
- gqOeEVmBdDNfuZ0dl9Z2q9nnPH3nBV6H1GdWP5cAkYREloffN6w==
-X-Received: by 2002:a5d:438f:0:b0:367:9765:b2ae with SMTP id
- ffacd0b85a97d-367ceadb47bmr5562389f8f.61.1720703114478; 
- Thu, 11 Jul 2024 06:05:14 -0700 (PDT)
-X-Received: by 2002:a5d:438f:0:b0:367:9765:b2ae with SMTP id
- ffacd0b85a97d-367ceadb47bmr5562373f8f.61.1720703114091; 
- Thu, 11 Jul 2024 06:05:14 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-367cdfab6d3sm7610151f8f.112.2024.07.11.06.05.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Jul 2024 06:05:13 -0700 (PDT)
-Date: Thu, 11 Jul 2024 15:05:11 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, philmd@linaro.org,
- wangyanan55@huawei.com, pbonzini@redhat.com, richard.henderson@linaro.org,
- anisinha@redhat.com, qemu-arm@nongnu.org
-Subject: Re: [PATCH] smbios: make memory device size configurable per Machine
-Message-ID: <20240711150511.3a8f9013@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240711071054-mutt-send-email-mst@kernel.org>
-References: <20240711074822.3384344-1-imammedo@redhat.com>
- <20240711071054-mutt-send-email-mst@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
+ AJvYcCUab3+QS7Hz1nksh9GZht81gvj1mKiwhSpsFzCgxGIBOx6MpcdvZzwWntvfrnPHdw6CjFjlj+02SXm4BjpnQGKwPXr6
+X-Gm-Message-State: AOJu0YzFljuobcoNijd+1BjKJ+jIxqbzIVYiqsFX05c1Rbhw5bPCmupU
+ p6kaNZwl1DVdbxWjGpw0iD+n0B7SqfZMQvooOXGU1JBoQpnaPs8914Z7radceo4=
+X-Received: by 2002:a05:600c:2152:b0:426:6f0f:2b21 with SMTP id
+ 5b1f17b1804b1-426707f892emr69040725e9.31.1720706920067; 
+ Thu, 11 Jul 2024 07:08:40 -0700 (PDT)
+Received: from [192.168.123.175] (212.red-88-29-184.dynamicip.rima-tde.net.
+ [88.29.184.212]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4279731a60dsm45896105e9.40.2024.07.11.07.08.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 11 Jul 2024 07:08:39 -0700 (PDT)
+Message-ID: <4252f0b9-8e5c-4f85-bb87-c8824e426037@linaro.org>
+Date: Thu, 11 Jul 2024 16:08:33 +0200
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v48 00/12] hw/sd/sdcard: Add eMMC support
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
+Cc: Bin Meng <bmeng.cn@gmail.com>, Steven Lee <steven_lee@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@amd.com>, Luc Michel <luc.michel@amd.com>,
+ qemu-arm@nongnu.org, qemu-block@nongnu.org, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>
+References: <20240710141408.69275-1-philmd@linaro.org>
+ <53939fdf-4361-47b1-a6a5-edd52ebf2100@kaod.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <53939fdf-4361-47b1-a6a5-edd52ebf2100@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,208 +138,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8lvhP83+x8KZ
+X-TUID: MCkJA+KL873O
 
-On Thu, 11 Jul 2024 07:13:27 -0400
-"Michael S. Tsirkin" <mst@redhat.com> wrote:
+On 11/7/24 13:03, Cédric Le Goater wrote:
+> Hello,
+> 
+> On 7/10/24 4:13 PM, Philippe Mathieu-Daudé wrote:
+>> Tag to test Aspeed tree:
+>>    https://gitlab.com/philmd/qemu/-/tags/aspeed_emmc-v8
+> 
+> I gave this branch a try and the rainier machine boots correctly with
+> a baked emmc image :
+> 
+>    Tested-by: Cédric Le Goater <clg@redhat.com>
+> 
+> However, I am seeing a *lot* of printf messages :
+> 
+>    sd_blk_read: read error on host side
+>    sd_blk_write: write error on host side
 
-> On Thu, Jul 11, 2024 at 09:48:22AM +0200, Igor Mammedov wrote:
-> > Currently SMBIOS maximum memory device chunk is capped at 16Gb,
-> > which is fine for the most cases (QEMU uses it to describe initial
-> > RAM (type 17 SMBIOS table entries)).
-> > However when starting guest with terabytes of RAM this leads to
-> > too many memory device structures, which eventually upsets linux
-> > kernel as it reserves only 64K for these entries and when that
-> > border is crossed out it runs out of reserved memory.
-> >=20
-> > Instead of partitioning initial RAM on 16Gb chunks, use maximum
-> > possible chunk size that SMBIOS spec allows[1]. Which lets
-> > encode RAM in Mb units in uint32_t-1 field (upto 2047Tb).
-> > As result initial RAM will generate only one type 17 structure
-> > until host/guest reach ability to use more RAM in the future.
-> >=20
-> > Compat changes:
-> > We can't unconditionally change chunk size as it will break
-> > QEMU<->guest ABI (and migration). Thus introduce a new machine class
-> > field that would let older versioned machines to use 16Gb chunks
-> > while new machine type could use maximum possible chunk size.
-> >=20
-> > While it might seem to be risky to rise max entry size this much
-> > (much beyond of what current physical RAM modules support),
-> > I'd not expect it causing much issues, modulo uncovering bugs
-> > in software running within guest. And those should be fixed
-> > on guest side to handle SMBIOS spec properly, especially if
-> > guest is expected to support so huge RAM configs.
-> > In worst case, QEMU can reduce chunk size later if we would
-> > care enough about introducing a workaround for some 'unfixable'
-> > guest OS, either by fixing up the next machine type or
-> > giving users a CLI option to customize it.
-> >=20
-> > 1) SMBIOS 3.1.0 7.18.5 Memory Device =E2=80=94 Extended Size
-> >=20
-> > PS:
-> > * tested on 8Tb host with RHEL6 guest, which seems to parse
-> >   type 17 SMBIOS table entries correctly (according to 'dmidecode').
-> >=20
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> >  include/hw/boards.h |  4 ++++
-> >  hw/arm/virt.c       |  1 +
-> >  hw/core/machine.c   |  1 +
-> >  hw/i386/pc_piix.c   |  1 +
-> >  hw/i386/pc_q35.c    |  1 +
-> >  hw/smbios/smbios.c  | 11 ++++++-----
-> >  6 files changed, 14 insertions(+), 5 deletions(-)
-> >=20
-> > diff --git a/include/hw/boards.h b/include/hw/boards.h
-> > index ef6f18f2c1..48ff6d8b93 100644
-> > --- a/include/hw/boards.h
-> > +++ b/include/hw/boards.h
-> > @@ -237,6 +237,9 @@ typedef struct {
-> >   *    purposes only.
-> >   *    Applies only to default memory backend, i.e., explicit memory ba=
-ckend
-> >   *    wasn't used.
-> > + * @smbios_memory_device_size:
-> > + *    Default size of memory device,
-> > + *    SMBIOS 3.1.0 "7.18 Memory Device (Type 17)" =20
->=20
-> Maybe it would be better to just make this a boolean,
-> and put the spec related logic in smbios.c ?
-> WDYT?
+Ah, I noticed that too but thought it was trace events, not
+fprintf.
 
-Using bool here, seems awkward to me,
-i.e. not clear semantics and compat handling would be
-complicated as well.
+> which were introduced by the initial implementation a1bb27b1e98a. This
+> doesn't occur with my tree though.
 
-And if we have to expose it someday to users,
-it would be logical to make it machine property.
-Given it's used not only by x86, having it as value
-here lets each machine to customize if necessary
-using well established pattern (incl. compat machinery)
+I'll have a look (my first thought was latent issue exposed).
 
+Thanks!
 
-> >   */
-> >  struct MachineClass {
-> >      /*< private >*/
-> > @@ -304,6 +307,7 @@ struct MachineClass {
-> >      const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machin=
-e);
-> >      int64_t (*get_default_cpu_node_id)(const MachineState *ms, int idx=
-);
-> >      ram_addr_t (*fixup_ram_size)(ram_addr_t size);
-> > +    uint64_t smbios_memory_device_size;
-> >  };
-> > =20
-> >  /**
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index b0c68d66a3..719e83e6a1 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -3308,6 +3308,7 @@ DEFINE_VIRT_MACHINE_AS_LATEST(9, 1)
-> >  static void virt_machine_9_0_options(MachineClass *mc)
-> >  {
-> >      virt_machine_9_1_options(mc);
-> > +    mc->smbios_memory_device_size =3D 16 * GiB;
-> >      compat_props_add(mc->compat_props, hw_compat_9_0, hw_compat_9_0_le=
-n);
-> >  }
-> >  DEFINE_VIRT_MACHINE(9, 0)
-> > diff --git a/hw/core/machine.c b/hw/core/machine.c
-> > index bc38cad7f2..3cfdaec65d 100644
-> > --- a/hw/core/machine.c
-> > +++ b/hw/core/machine.c
-> > @@ -1004,6 +1004,7 @@ static void machine_class_init(ObjectClass *oc, v=
-oid *data)
-> >      /* Default 128 MB as guest ram size */
-> >      mc->default_ram_size =3D 128 * MiB;
-> >      mc->rom_file_has_mr =3D true;
-> > +    mc->smbios_memory_device_size =3D 2047 * TiB;
-> > =20
-> >      /* numa node memory size aligned on 8MB by default.
-> >       * On Linux, each node's border has to be 8MB aligned =20
->=20
->=20
->=20
-> All these values really should be documented.
-It's in commit message, but right I'll document value here
-on respin so it would be easier for reader to see where it
-comes from.
-
-> And I feel=20
-???
-
->=20
->=20
->=20
-> > diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> > index 9445b07b4f..d9e69243b4 100644
-> > --- a/hw/i386/pc_piix.c
-> > +++ b/hw/i386/pc_piix.c
-> > @@ -495,6 +495,7 @@ static void pc_i440fx_machine_9_0_options(MachineCl=
-ass *m)
-> >      pc_i440fx_machine_9_1_options(m);
-> >      m->alias =3D NULL;
-> >      m->is_default =3D false;
-> > +    m->smbios_memory_device_size =3D 16 * GiB;
-> > =20
-> >      compat_props_add(m->compat_props, hw_compat_9_0, hw_compat_9_0_len=
-);
-> >      compat_props_add(m->compat_props, pc_compat_9_0, pc_compat_9_0_len=
-);
-> > diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> > index 71d3c6d122..9d108b194e 100644
-> > --- a/hw/i386/pc_q35.c
-> > +++ b/hw/i386/pc_q35.c
-> > @@ -374,6 +374,7 @@ static void pc_q35_machine_9_0_options(MachineClass=
- *m)
-> >      PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
-> >      pc_q35_machine_9_1_options(m);
-> >      m->alias =3D NULL;
-> > +    m->smbios_memory_device_size =3D 16 * GiB;
-> >      compat_props_add(m->compat_props, hw_compat_9_0, hw_compat_9_0_len=
-);
-> >      compat_props_add(m->compat_props, pc_compat_9_0, pc_compat_9_0_len=
-);
-> >      pcmc->isa_bios_alias =3D false;
-> > diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-> > index 3b7703489d..a394514264 100644
-> > --- a/hw/smbios/smbios.c
-> > +++ b/hw/smbios/smbios.c
-> > @@ -1093,6 +1093,7 @@ static bool smbios_get_tables_ep(MachineState *ms=
-,
-> >                         Error **errp)
-> >  {
-> >      unsigned i, dimm_cnt, offset;
-> > +    MachineClass *mc =3D MACHINE_GET_CLASS(ms);
-> >      ERRP_GUARD();
-> > =20
-> >      assert(ep_type =3D=3D SMBIOS_ENTRY_POINT_TYPE_32 ||
-> > @@ -1123,12 +1124,12 @@ static bool smbios_get_tables_ep(MachineState *=
-ms,
-> >      smbios_build_type_9_table(errp);
-> >      smbios_build_type_11_table();
-> > =20
-> > -#define MAX_DIMM_SZ (16 * GiB)
-> > -#define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
-> > -                                        : ((current_machine->ram_size =
-- 1) % MAX_DIMM_SZ) + 1)
-> > +#define GET_DIMM_SZ ((i < dimm_cnt - 1) ? mc->smbios_memory_device_siz=
-e \
-> > +    : ((current_machine->ram_size - 1) % mc->smbios_memory_device_size=
-) + 1)
-> > =20
-> > -    dimm_cnt =3D QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_SZ)=
- /
-> > -               MAX_DIMM_SZ;
-> > +    dimm_cnt =3D QEMU_ALIGN_UP(current_machine->ram_size,
-> > +                             mc->smbios_memory_device_size) /
-> > +               mc->smbios_memory_device_size;
-> > =20
-> >      /*
-> >       * The offset determines if we need to keep additional space betwe=
-en
-> > --=20
-> > 2.43.0 =20
->=20
+Phil.
 

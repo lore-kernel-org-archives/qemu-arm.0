@@ -1,287 +1,155 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp183103nji;
-        Thu, 11 Jul 2024 06:34:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXH9lO5btq1jJRRsCI4UPADZKD9NkecBxlCqgAezYeNuo7EKUVj1KwjK625/R2HPlmNoR6g/RLoz3i3ly3IyH06e/s79MFD
-X-Google-Smtp-Source: AGHT+IGF7p/0B3PgZnpEVIGxrU3tnM7nWALeeFdQRastdCbOgI7YW1FPKWAyt3kvha2Xh//bX0YY
-X-Received: by 2002:a05:6808:1455:b0:3d9:324a:3c9 with SMTP id 5614622812f47-3d93c0385c1mr11451333b6e.11.1720704886632;
-        Thu, 11 Jul 2024 06:34:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720704886; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp161800nji;
+        Thu, 11 Jul 2024 06:03:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX7kkdG5lbs8caIxzZaldYP6zW0tRj9oLgZN74BKzC4sQ5uTPMA25IoVcEoM5Pn/h203+BCBBcn50LTtcrm50GNrzdBnL6F
+X-Received: by 2002:a05:600c:63c7:b0:426:5f0b:a49b with SMTP id 5b1f17b1804b1-426707e360fmr50145875e9.23.1720703003707;
+        Thu, 11 Jul 2024 06:03:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720703003; cv=none;
         d=google.com; s=arc-20160816;
-        b=XiETVgRp+UfPuFtqOQZnFIxkXNpLizV89mPZlNnt2yhQTWsOyCwu16MKcCUCgtiGdL
-         /ROIN5mb+tdrm/B15tWwHL/fId1JYFS24HonoKojCsahGTrzCaaROhH4GZEBw+STFod3
-         T5Og0IKps+FBKX22iObLX4S2PWDizy5yboiiIu9on582iVZm2pS1GTSDu5bjdaCBn3UZ
-         AeUWbNkKOrO9ZZayU/lFOBa2fS5weRG3eUJu1qI2fKu+Jae/VLhlWe5A/CiWPs2hOieR
-         xaeRTosCLosaD4DiRHdW6GTD7Fa7JJXKUgLmDTgbwGwqcnnPPLBE8apwnBTWlWmR0xii
-         owqg==
+        b=IGt4XKodmeyQ8xXxnNK6Ipz/iL0zxZAuVudp7bBCHzdmROmllq+5/JmAu+2ewnpXkq
+         BwEmk8XZjziyP8ueRC/lVmxbwXovjOGVYawD9v09uMSvdbbDNuH8fNPGdpD5tjn3a8fV
+         8WvRAKe0bO60JYp+2FRFppFXSnu9E29+UvhPP/XBSkcxiWup0h073JRXdQqSFtB03rkM
+         CA5UBAhd6Eh7k/iMl22xP+t8vk9lZEf4KGJznFHtIsptngP0LIScEurrqaylTo7bhWB5
+         ES9SPl0MndaGjc9W3aOrutTAO3n/igEsSNkY9ltaTHI1Z212XrRxNjh4U5pJHT8wAeP4
+         bGMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :references:in-reply-to:subject:cc:to:from:dkim-signature
-         :dkim-signature:dkim-signature:dkim-signature;
-        bh=U7SpHLWVoLqmhYWQJuF8+xa5T3BrIlA2GBMHiEMBjcI=;
-        fh=umL8zxbWF4W2pS9nVgc4z5DWwZX8pLHcZx531lKXiRo=;
-        b=gOTgmuCM0/u2onVnrLZEQjbiGuB730U2GN2LOxuSfJ5blmf1JAhB6id5hRFT5Z7a7U
-         v7bDBmr7l3f7nHVk8XQSLgHAFU+qGu10itNLAgZDqfkodqQcgpzAzqexkiyvgfmLpLF8
-         AL2bonzkSFN1l9liBasnMqfo8k+Sze7WeZ+fcWtFnIKXDYAb6oQEP38USIHrk56YJ+0S
-         cerkThCyz1dYfNz/bhnvBgYnd6iif4EQ00a01FrN4bW8Nnk2WjFg/A6fVIR/wOf4nngJ
-         sOQjsYgjLvrG4OJWm/0/WnNovHCIhE2ubGmR6N2CgErytTO3PoCpvMWw4d5ZKGMur9rt
-         VCEQ==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=T1tEsDBDWsovvb9XXtE9YS/ok36swrWeL71lNKwHwT0=;
+        fh=KEaT9gbigjWAVYjFNSJwByrKX8d4S+6bmJ373KhPcjE=;
+        b=xu1AXu3yaqw5FDFKWNiVIoGW4TkNdvtmliF+1OIvu/x/0njQBZsQAhELHVayiLxecC
+         es8SKAqSG8Dje85EhZGxorOMOlvQ43pD/oa2FtgjnpniMeqhR2dPeGoKTEIwdRKbRqO8
+         MJ1N7gGZsCN1FR3dL0C9To49G/2SlEi89ucZHDtcA6PL7QA0YvzQVTu7fUBjg0ceu1fH
+         G5C4DTdtefumAlU+RJ3hD6+4ibw5im+W/VYmAaS0+JXdp9h5cq9kwR5D7DC4oCE16DyZ
+         as+lKCsbpRDZ4j+grN3/djvNrs0RDqyVZ0m7Z5ScRQcbAy34LGiiO9tpeX9lX/klkeXb
+         GRvw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=oXXq4Ayq;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=x90lgCvr;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=oXXq4Ayq;
-       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-79f190d8702si787846185a.628.2024.07.11.06.34.46
+       dkim=pass header.i=@google.com header.s=20230601 header.b=OAAfqAZ8;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <smostafa@google.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-42798c03ff9sor635135e9.6.2024.07.11.06.03.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jul 2024 06:34:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 11 Jul 2024 06:03:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=oXXq4Ayq;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519 header.b=x90lgCvr;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=oXXq4Ayq;
-       dkim=neutral (no key) header.i=@nongnu.org header.s=susede2_ed25519;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRtwX-0003vf-Ve; Thu, 11 Jul 2024 09:34:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1sRtwC-0002QM-Dx; Thu, 11 Jul 2024 09:34:31 -0400
-Received: from smtp-out1.suse.de ([195.135.223.130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1sRtwA-0003LY-81; Thu, 11 Jul 2024 09:34:20 -0400
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
- [IPv6:2a07:de40:b281:104:10:150:64:97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id 9C88521B59;
- Thu, 11 Jul 2024 13:34:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1720704855; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=U7SpHLWVoLqmhYWQJuF8+xa5T3BrIlA2GBMHiEMBjcI=;
- b=oXXq4AyqiXlEJx627PORaWEtfXPtn3XQbnvdOGqsUXmiRHC1IQonXDYbuFp0tNIokTWP5Z
- e0fDByQk5NHtl/UwbBdTugM+6h8BXUaZGkSDIQ4nfgWfngPWxbCGSFjBJ6BLkGc0MHkS/F
- Cg9+RUjhX77oJVpgnmwFTibOT19BDV0=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1720704855;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=U7SpHLWVoLqmhYWQJuF8+xa5T3BrIlA2GBMHiEMBjcI=;
- b=x90lgCvrNo+45VBoDkbc18N7iLM0IXg/foUn+3LuM56DzLYlGeNo88wTHkJZgDfpG5hThK
- Bw4lm866fYht7FBw==
-Authentication-Results: smtp-out1.suse.de;
- dkim=pass header.d=suse.de header.s=susede2_rsa header.b=oXXq4Ayq;
- dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=x90lgCvr
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1720704855; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=U7SpHLWVoLqmhYWQJuF8+xa5T3BrIlA2GBMHiEMBjcI=;
- b=oXXq4AyqiXlEJx627PORaWEtfXPtn3XQbnvdOGqsUXmiRHC1IQonXDYbuFp0tNIokTWP5Z
- e0fDByQk5NHtl/UwbBdTugM+6h8BXUaZGkSDIQ4nfgWfngPWxbCGSFjBJ6BLkGc0MHkS/F
- Cg9+RUjhX77oJVpgnmwFTibOT19BDV0=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1720704855;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=U7SpHLWVoLqmhYWQJuF8+xa5T3BrIlA2GBMHiEMBjcI=;
- b=x90lgCvrNo+45VBoDkbc18N7iLM0IXg/foUn+3LuM56DzLYlGeNo88wTHkJZgDfpG5hThK
- Bw4lm866fYht7FBw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 1BEC5139E0;
- Thu, 11 Jul 2024 13:34:14 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id I2LrNFbfj2ZGfQAAD6G6ig
- (envelope-from <farosas@suse.de>); Thu, 11 Jul 2024 13:34:14 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Peter Xu <peterx@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org,
- qemu-block@nongnu.org, Laurent Vivier <lvivier@redhat.com>, Tyrone Ting
- <kfting@nuvoton.com>, Bin Meng <bmeng.cn@gmail.com>, Hao Wu
- <wuhaotsh@google.com>, Francisco Iglesias <francisco.iglesias@amd.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, qemu-arm@nongnu.org, Joel
- Stanley <joel@jms.id.au>, Sai Pavan Boddu <sai.pavan.boddu@amd.com>,
- devel@lists.libvirt.org, Luc Michel <luc.michel@amd.com>, =?utf-8?Q?C?=
- =?utf-8?Q?=C3=A9dric?= Le Goater <clg@redhat.com>
-Subject: Re: [PATCH v3 06/17] hw/sd/sdcard: Do not store vendor data on
- block drive (CMD56)
-In-Reply-To: <Zo8F4Gq4f7SawaDc@x1n>
-References: <20240627162232.80428-7-philmd@linaro.org>
- <87cynmfggx.fsf@suse.de> <Zo2lLLAwcZ8bBvO2@x1n> <87a5ipfigb.fsf@suse.de>
- <Zo6iZjc8YpI1_9dW@x1n> <874j8xfc9s.fsf@suse.de> <Zo7dcF8OKfH92RlR@x1n>
- <871q41f2pk.fsf@suse.de> <Zo7rCXtap2lWd4IB@x1n> <87ttgxdj1p.fsf@suse.de>
- <Zo8F4Gq4f7SawaDc@x1n>
-Date: Thu, 11 Jul 2024 10:34:12 -0300
-Message-ID: <87plrkdpd7.fsf@suse.de>
+       dkim=pass header.i=@google.com header.s=20230601 header.b=OAAfqAZ8;
+       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1720703003; x=1721307803; darn=linaro.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=T1tEsDBDWsovvb9XXtE9YS/ok36swrWeL71lNKwHwT0=;
+        b=OAAfqAZ8x2m2fAZz689yOLw7JD8B3sPOOqYAtLEOQ7FSG4kjHhqKBHFTzcW/Np8p9k
+         tsEbuckRyhO5kb2Hv4Rbreyrn9TuwYAT24iN4SmetfLL50jewQL0uUy73d9Er6nOsnd8
+         V7GrhmAQDuZqzVnLMeNvQ3azVD5yDvfV0oXqUMEeCBsu9CLWlpT/Z16JfoKCbK3yQo3c
+         +qWdgF3YIONVmtRZO12TkqApyv790vmkOIssnmRqiErGC/iEVGABsYOrITQhSV/Jcv2Z
+         tM/ZP+rwDCQPYWt4mI/yCCKyuODGclw+LjatznbHbKZ1KTlhNJD9jwG5xCMN6hzPHVh2
+         tHRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1720703003; x=1721307803;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=T1tEsDBDWsovvb9XXtE9YS/ok36swrWeL71lNKwHwT0=;
+        b=qkjtGAGNjm7jY4W6cVoHWh80V8M5SdOZ3iV4wa6XnB5KFjc9/DXPBvl7jpq4+0SSdh
+         h3FW0njCSq+j+6URbiRL8jsRQHPVIUaQFGVsEl8ngwO5GyBi4jq1ntPb4216zYIsdvC/
+         afQzan1oO36sFe2MZj/YIrFM663S/sqVzNdXMG3MwdV3oGP8Ot8HEzmhFvaNFOkVvGoC
+         CWdPRMXHshioFiewoIswqS6YTy+O9bkN9ncFoz+KHdnFINhi9NUDlGUZLRi16MTlWKhg
+         Z2yfiuy26dAAqkF3yGzQjH5ImRIRRfTo4AbeM1NOtlPT0fBpPxYhuouOAM5Yi0gpuExM
+         o65A==
+X-Forwarded-Encrypted: i=1; AJvYcCVjsEzhDdNOv73ftVVudTag7Kj5qotmk0H/goY6N+IicyrGH2CW1dboUQiAXB0m7nVDQ1HC1XKkNVg0QeUNvgQsdwD3Z2xa
+X-Gm-Message-State: AOJu0Yw8J57iCrOZTRMfnyp7jcH2gm8XYk77RmiO7DI2Y8q1a6ygqIQ3
+	IpUyrA3YVtDzhPSoIYej4EH/lkG465M/d4D+/igeGTlVySSqXN0p5TWeaTXZkw==
+X-Google-Smtp-Source: AGHT+IFTOGfXRoqpDnrKQAF8LEdAv9irjpAvHVwnuvazB1I19VdY8/QDaMO+oN5nIgRYT0fFU+XY2w==
+X-Received: by 2002:a7b:cd95:0:b0:426:6e95:6ea7 with SMTP id 5b1f17b1804b1-427986dc130mr1787535e9.0.1720703002903;
+        Thu, 11 Jul 2024 06:03:22 -0700 (PDT)
+Return-Path: <smostafa@google.com>
+Received: from google.com (205.215.190.35.bc.googleusercontent.com. [35.190.215.205])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-427270238a6sm84986905e9.20.2024.07.11.06.03.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 11 Jul 2024 06:03:22 -0700 (PDT)
+Date: Thu, 11 Jul 2024 13:03:18 +0000
+From: Mostafa Saleh <smostafa@google.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org,
+	qemu-devel@nongnu.org, alex.bennee@linaro.org, maz@kernel.org,
+	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
+	marcin.juszkiewicz@linaro.org
+Subject: Re: [PATCH v4 08/19] hw/arm/smmuv3: Translate CD and TT using
+ stage-2 table
+Message-ID: <Zo_YFuoldgMzJ5Pj@google.com>
+References: <20240701110241.2005222-1-smostafa@google.com>
+ <20240701110241.2005222-9-smostafa@google.com>
+ <20240704180843.GE1693268@myrica>
+ <Zozi-87pVHOdwJGN@google.com>
+ <20240709130004.GB2189727@myrica>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Rspamd-Queue-Id: 9C88521B59
-X-Spam-Score: 0.99
-X-Rspamd-Action: no action
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Spamd-Result: default: False [0.99 / 50.00]; SUSPICIOUS_RECIPS(1.50)[];
- R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
- MX_GOOD(-0.01)[]; FUZZY_BLOCKED(0.00)[rspamd.com];
- TAGGED_RCPT(0.00)[]; FREEMAIL_ENVRCPT(0.00)[gmail.com];
- ARC_NA(0.00)[]; MISSING_XM_UA(0.00)[];
- RCVD_VIA_SMTP_AUTH(0.00)[]; RCPT_COUNT_TWELVE(0.00)[18];
- MIME_TRACE(0.00)[0:+]; RCVD_TLS_ALL(0.00)[];
- MID_RHS_MATCH_FROM(0.00)[];
- DNSWL_BLOCKED(0.00)[2a07:de40:b281:104:10:150:64:97:from,2a07:de40:b281:106:10:150:64:167:received];
- FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
- FREEMAIL_CC(0.00)[linaro.org,nongnu.org,redhat.com,nuvoton.com,gmail.com,google.com,amd.com,kaod.org,jms.id.au,lists.libvirt.org];
- TO_DN_SOME(0.00)[];
- DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,suse.de:dkim];
- RCVD_COUNT_TWO(0.00)[2]; TO_MATCH_ENVRCPT_ALL(0.00)[];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- DKIM_TRACE(0.00)[suse.de:+]
-X-Spamd-Bar: /
-Received-SPF: pass client-ip=195.135.223.130; envelope-from=farosas@suse.de;
- helo=smtp-out1.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HkiGVJLx8y1d
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240709130004.GB2189727@myrica>
+X-TUID: sK5kv/40wJqk
 
-Peter Xu <peterx@redhat.com> writes:
+Hi Jean,
 
-> On Wed, Jul 10, 2024 at 06:38:26PM -0300, Fabiano Rosas wrote:
->> Peter Xu <peterx@redhat.com> writes:
->> 
->> > On Wed, Jul 10, 2024 at 04:48:23PM -0300, Fabiano Rosas wrote:
->> >> Peter Xu <peterx@redhat.com> writes:
->> >> 
->> >> > On Wed, Jul 10, 2024 at 01:21:51PM -0300, Fabiano Rosas wrote:
->> >> >> It's not about trust, we simply don't support migrations other than
->> >> >> n->n+1 and (maybe) n->n-1. So QEMU from 2016 is certainly not included.
->> >> >
->> >> > Where does it come from?  I thought we suppport that..
->> >> 
->> >> I'm taking that from:
->> >> 
->> >> docs/devel/migration/main.rst:
->> >>   "In general QEMU tries to maintain forward migration compatibility
->> >>   (i.e. migrating from QEMU n->n+1) and there are users who benefit from
->> >>   backward compatibility as well."
->> >> 
->> >> But of course it doesn't say whether that comes with a transitive rule
->> >> allowing n->n+2 migrations.
->> >
->> > I'd say that "i.e." implies n->n+1 is not the only forward migration we
->> > would support.
->> >
->> > I _think_ we should support all forward migration as long as the machine
->> > type matches.
->> >
->> >> 
->> >> >
->> >> > The same question would be: are we requesting an OpenStack cluster to
->> >> > always upgrade QEMU with +1 versions, otherwise migration will fail?
->> >> 
->> >> Will an OpenStack cluster be using upstream QEMU? If not, then that's a
->> >
->> > It's an example to show what I meant! :) Nothing else. Definitely not
->> > saying that everyone should use an upstream released QEMU (but in reality,
->> > it's not a problem, I think, and I do feel like people use them, perhaps
->> > more with the stable releases).
->> >
->> >> question for the distro. In a very practical sense, we're not requesting
->> >> anything. We barely test n->n+1/n->n-1, even if we had a strong support
->> >> statement I wouldn't be confident saying migration from QEMU 2.7 -> QEMU
->> >> 9.1 should succeed.
->> >
->> > No matter what we test in CI, I don't think we should break that for >1
->> > versions..  I hope 2.7->9.1 keeps working, otherwise I think it's legal to
->> > file a bug by anyone.
->> >
->> > For example, I randomly fetched a bug report:
->> >
->> > https://gitlab.com/qemu-project/qemu/-/issues/1937
->> >
->> > QEMU version:                6.2 and 7.2.5
->> >
->> > And I believe that's the common case even for upstream.  If we don't do
->> > that right for upstream, it can be impossible tasks for downstream and for
->> > all of us to maintain.
->> 
->> But do we do that right currently? I have no idea. Have we ever done
->> it? And we're here discussing a hypothetical 2.7->9.1 ...
->> 
->> So we cannot reuse the UNUSED field because QEMU from 2016 might send
->> their data and QEMU from 2024 would interpret it wrong.
->> 
->> How do we proceed? Add a subsection. And make the code survive when
->> receiving 0.
->> 
->> @Peter is that it? What about backwards-compat? We'll need a property as
->> well it seems.
->
-> Compat property is definitely one way to go, but I think it's you who more
-> or less persuaded me that reusing it seems possible! At least I can't yet
-> think of anything bad if it's ancient unused buffers.
+On Tue, Jul 09, 2024 at 02:00:04PM +0100, Jean-Philippe Brucker wrote:
+> Hi Mostafa,
+> 
+> On Tue, Jul 09, 2024 at 07:12:59AM +0000, Mostafa Saleh wrote:
+> > > In this case I think we're reporting InputAddr as the CD address, but it
+> > > should be the IOVA
+> > 
+> > As Eric mentioned this would require some rework to propagate the iova,
+> > but what I am more worried about is the readability in that case, may be we
+> > can just fixup the event after smmuv3_get_config() in case of errors,
+> > something like:
+> > 
+> > /*
+> >  * smmuv3_get_config() Only return translation faults in case of
+> >  * nested translation, otherwise it can only return C_BAD_CD,
+> >  * C_BAD_STE, C_BAD_STREAMID or F_STE_FETCH.
+> >  * But in case of translation fault, we need to fixup the
+> >  * InputAddr to be the IOVA of the translation as the decode
+> >  * functions don't know about it.
+> >  */
+> > static void smmuv3_config_fixup_event(SMMUEventInfo *event, hwaddr iova)
+> > {
+> >    switch (event->type) {
+> >    case SMMU_EVT_F_WALK_EABT:
+> >    case SMMU_EVT_F_TRANSLATION:
+> >    case SMMU_EVT_F_ADDR_SIZE:
+> >    case SMMU_EVT_F_ACCESS:
+> >    case SMMU_EVT_F_PERMISSION:
+> >        event->u.f_walk_eabt.addr = iova;
+> >        break;
+> >    default:
+> >        break;
+> >    }
+> > }
+> > 
+> > What do you think?
+> 
+> Yes, I think that's also what I came up with. Maybe it would be simpler to
+> unconditionally do the fixup at the end of smmuv3_translate() and remove
+> .addr write from smmuv3_do_translate()?
 
-Since we're allowing any old QEMU version to migrate to the most recent
-one, we need to think of the data that was there before the introduction
-of the UNUSED field. If that QEMU version is used, then it's not going
-to be zeroes on the stream, but whatever data was there before. The new
-QEMU will be expecting the vendor_data introduced in this patch.
+I wanted to make it clear what case causes the IOVA to be missing, but I
+guess if we unify the setup for the InputAddr it would be easier to
+read and just add a comment instead.
 
-> And that's why I was asking about a sane way to describe the "magic
-> year".. And I was very serious when I said "6 years" to follow the
-> deprecation of machine types, because it'll be something we can follow
-> to say when an unused buffer can be obsolete and it could make some
-> sense: if we will start to deprecate machine types, then it may not
-> make sense to keep any UNUSED compatible forever, after all.
->
+> 
+> A separate union field "f_common" rather than f_walk_eabt may be clearer.
+> 
 
-Is there an easy way to look at a field and tell in which machine type's
-timeframe it was introduced? If the machine type of that era has been
-removed, then the field is free to go as well. I'd prefer if we had a
-hard link instead of just counting years. Maybe we should to that
-mapping at the machine deprecation time? As in, "look at the unused
-fields introduced in that timeframe and mark them free".
+Makes sense, but I will not do it in this patch to avoid making it larger
+and harder to review, and this can be a separate cleanup as I see in other
+places we use eabt already (smmuv3_record_event and for s2 population).
 
-> And we need that ruler to be as accurate as "always 6 years to follow
-> machine type deprecation procedure", in case someone else tomorrow asks us
-> something that was only UNUSED since 2018.  We need a rule of thumb if we
-> want to reuse it, and if all of you agree we can start with this one,
-> perhaps with a comment above the field (before we think all through and
-> make it a rule on deprecating UNUSED)?
+Thanks,
+Mostafa
+
+> Thanks,
+> Jean

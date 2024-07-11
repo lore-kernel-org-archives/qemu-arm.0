@@ -1,277 +1,266 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp57277nji;
-        Thu, 11 Jul 2024 02:52:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW+FybMlw9xJxQWkNnY5bQXSzz/0JwTEJi/AhP1mSMwpim9ffeQtnYXHT6qXjQFtwHhcUUy1otJBY1GkLpnwRquzyFctjou
-X-Google-Smtp-Source: AGHT+IEomNnoKtNIwdooPFdtJY4HDpOQQoVUplF4pbdFrmiZodU9eDeBP2RwDtvjh4khtW3cQFI2
-X-Received: by 2002:a9d:5c11:0:b0:703:5b46:1c3f with SMTP id 46e09a7af769-70375a45c66mr8187703a34.24.1720691543256;
-        Thu, 11 Jul 2024 02:52:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720691543; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp57315nji;
+        Thu, 11 Jul 2024 02:52:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWhjiL+hkqNLftNQiDui2lNbW+4L+11uwJUjUMg1jW7vYGkm4OvhCD4Z3P5zlr6D3THGPPS68V3PfQzrbWenhOKbluJHr2x
+X-Google-Smtp-Source: AGHT+IFbUuf45zYj6AEyBAZvbcwRvttDPoM75UjYnxv5YlF0WqihAnsI8pCrFdxpQI9Xwa5SrRZ4
+X-Received: by 2002:a17:902:fc86:b0:1f7:2a95:f2f8 with SMTP id d9443c01a7336-1fbb6ce5209mr70581995ad.14.1720691546709;
+        Thu, 11 Jul 2024 02:52:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1720691546; cv=pass;
         d=google.com; s=arc-20160816;
-        b=fvZLgBYHmvsonGL6Htm6+UOILaiUqL54M1yb/PdCawrGTuUCquXUchOCcWFqZBl9jj
-         08VmuJ9TgymHa4tXpIi78bggzzOxCN0IP6ZAEDXZS5ivo01LSUilfN6OFfP2dwE/g/SX
-         0Voq+Gr7FA3hgRHZ4o9pBlXrkfyZSD/i4jTNjzjE2CKzOnxGspg+hvErPl1woW1MSx7t
-         2QYzDKmfzHVzOwOyc/ACCyWoAsSF9U8S5d/Q40wQqH8uDRpU+kwrWAwxoDreaS/EnPWl
-         V1D9iVqACCNLTXaAHKTXrV/W53G86HtVKmSEewo14cYeFvETz4YGJxAhbR4JGEEViC5q
-         JGcQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:content-transfer-encoding:mime-version:message-id:date
-         :subject:cc:list-id:to:from:dkim-signature;
-        bh=8mq61Tlrac6x6q8Wk8hO0hpzS0zf+p63kwfxoI+VwgQ=;
-        fh=n1zwXdn4M2Gb7wbp8Ju5DYsePyZg6/RLxxtehCXdteA=;
-        b=PiAnRAswQ88gMLGdFjRCWQE8FEClyT+kJE8isf3CjjzfCuxy2BFSEHil954To40bA7
-         WEZBD1SwEjQAPNDRjfokfXUFw6SIBLfNf2uzVJRDm6iNcI6+73qevyZxGiod9xIAihpQ
-         8Xa50qXVLkggFZ4Pg4POjOXwtN9IGqqpL3m/mYRINj1bKG7LSGJuTXVE6EDwsA880+r0
-         kAbQBYdMlmz1aekIA/wn1rIRnsr7lbegvXv/NJ86JsFRyv/ImIFtCyxRv6KIFJTD4iQ3
-         OQCMnJnLYCHAP3BfINHVys75/Jt3bhdKfAyEI2X/0R1r5/KcO26nU4H3MKr3Krr1C0Nv
-         IJcQ==;
+        b=xmcHotHJpFqj3yCSiz2O0YtKCmmgEwB0NXWHPionW8Ob1keSG3xfF7UZomLMo2b4F+
+         PaHUgjyqeEL/BlkuaHJ7NzO5zEZ7vz3dc6FUsmHdr64MRqKr8jHw4s7SAjMa02tghONu
+         A1sxwxJDUip1Hkzo8a3QBL5nHZtuYhPC+USfDxPGeFjMPQ4O96MH9Zr24HRa80vM687p
+         xrrE9xUjrc5PeQQBCTIE6sFQ42nzSCCHXFNnfHNVLIhJBncsT3JHHxPSI3CVbQxrnVdB
+         r4XNIdxBZped7+Rhscz2mwI4XZG2n8ErItv5hnTdKfwk7QfPZMxAffY6M8RF3EhW4lDE
+         XV0w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=HeMJVo1nZ+eZGu3mtjMfFocDLIj0STfTmzxt2VgxOv4=;
+        fh=3+4ABBw59eJsk2DIcCOTrWhm6FNLn8Q9BsAaEWXrVjg=;
+        b=x2bmbS/BT4N78i3f7xgy9QQLLYm7Yrv3SDIfqdHd2i0ATWpkTOtkQ+YzOOphdAz+yV
+         NZ5nQdrtdmelVgLK8mOzgdfl6Z98OERUFY/R0rkAUqlxbL0UlIw2/CocUqb3VoZt2nt1
+         eCXJLvmlI1PtM4ZUjxyrNRhPsObL5RG0+FrjidCkfSO68GlXl5v1AmYNYAD4epMED0zJ
+         +1grouQSoKd8lqIu4PgHu/PXWelI8YQOJxWM/3BqyIkDZyaTYw2nkDB0waJm+XkNvi0B
+         3ubaf0o6JqLMfzHme7thrHiOPexPLDldB/rSlHVyAffU1QGV3NVHzzUO2be1Y8zLy7dw
+         vNAQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=lqMgy44P;
-       spf=pass (google.com: domain of mchehab@kernel.org designates 2604:1380:40e1:4800::1 as permitted sender) smtp.mailfrom=mchehab@kernel.org;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail header.i=@kernel.org header.s=k20201202 header.b=N+3mx4UN;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-248916-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-248916-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <mchehab@kernel.org>
-Received: from sin.source.kernel.org (sin.source.kernel.org. [2604:1380:40e1:4800::1])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-70b438db8f4si5736050b3a.272.2024.07.11.02.52.22
+Return-Path: <linux-kernel+bounces-248916-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id d9443c01a7336-1fbb6abf1afsi58290345ad.398.2024.07.11.02.52.26
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 11 Jul 2024 02:52:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mchehab@kernel.org designates 2604:1380:40e1:4800::1 as permitted sender) client-ip=2604:1380:40e1:4800::1;
+        Thu, 11 Jul 2024 02:52:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-248916-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=lqMgy44P;
-       spf=pass (google.com: domain of mchehab@kernel.org designates 2604:1380:40e1:4800::1 as permitted sender) smtp.mailfrom=mchehab@kernel.org;
+       dkim=fail header.i=@kernel.org header.s=k20201202 header.b=N+3mx4UN;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-248916-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-248916-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id A0446CE17FC;
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id BD5A12851D4
+	for <alex.bennee@linaro.org>; Thu, 11 Jul 2024 09:52:25 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 26F65157490;
 	Thu, 11 Jul 2024 09:52:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91A16C4AF10;
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="N+3mx4UN"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D54FD155CBA
+	for <linux-kernel@vger.kernel.org>; Thu, 11 Jul 2024 09:52:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1720691540; cv=none; b=MHt9LWsZPIqB/GfkchCg6cLBnfAvNDfShOdop4nJ2gTkH7BGj4/qFySbYAbJKxQWFm3IdSvT4vDflXipPG8bbW7LtdM45IHzPMl9xxPnAvVFMlI6dSU/NFoMI+UhB4xLqjvvlAX4hVJzC+/AsM9fpLY0+HY0NugNtOKjsks8O6I=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1720691540; c=relaxed/simple;
+	bh=8fT3iZX4Ak9UXbYdPywtW7xLXPjIWOMseP9okwfRJuM=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=jOJVWHseiq0pTEoVjnerSJkkY2A2aOPXx/TVU2v7se7OmlPDfB6FJyf5/7Ix/d07EFkDgIn9Wuwoi2LjpKStPDfnbiO5jkaBDjgWxm4VfDBkEWwa5Td+ntS8FSOPPpmUJEUuq6P7/asth11yGpjG4dJ5ChcvG9qod+4/lw75KZ8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=N+3mx4UN; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C2DFC4AF07;
 	Thu, 11 Jul 2024 09:52:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1720691540;
-	bh=+MFQegYc0MFqIbwGv1GYU+PW0bPnkvQcflKaB/drRsU=;
-	h=From:To:List-Id:Cc:Subject:Date:From;
-	b=lqMgy44PMtQX/rtYdF+SeM6VgelkmNgRURcEqawpGaB5r8ZX8i5Yn9W8obQL/K4V+
-	 gSnA4axOyUlky+nkyglo9VgXFxbBgBB/3/G2G1edvqOh/LkrPR7ZKEYq79Bp0Ueahx
-	 Y7sGOVZllCbpRWUg/9KiEzMpXY1z/0TLKNFS7NCyBRddGwmU21ljqR6umRUo/Xk0q5
-	 5IifpLBiGV8y+419qH7ryC6XsbIiXZJn4CxYkBcBbrCbVVwabFZEc7ppubTPS1Y3kT
-	 Vo+RkhBHO65T51bxPwvXskQ16OFVNmhi6rI4snSfpOFWrepuc9hZawhklE0rZ+Suln
-	 03DRvsS4b/i6Q==
+	bh=8fT3iZX4Ak9UXbYdPywtW7xLXPjIWOMseP9okwfRJuM=;
+	h=From:To:List-Id:Cc:Subject:Date:In-Reply-To:References:From;
+	b=N+3mx4UNN8dYWiUIP60+AhLYFaiOhAWuATFMyah3Xq/HI+oD1QiX00VMQFyvjdspr
+	 WwGqXqKqlNOOrvS+QJQIM2wRJ9pzmil8TXOA4LtKD1fwuwG1n6WQBd48sgg2tjHGCK
+	 XzMUyJh56sMMyO2zK6/ILApmw6UAMvJhyg8wfcXdVfsOrpuCjUpYQ+WcY160GJakgv
+	 HcFm2llcvsCuDLyi1s5JWaUg5e1GsnnP0UAjVdwSvTdHKWf4eJgd+3iyOULlElxDjY
+	 CiySy3vZDcsfDO+wPjEyNn7PrPnSbdHZ7G1w68zkToLGTKDhbQAq9/XYUQtXA36vS5
+	 uDNjCQbHgd6bQ==
 Received: from mchehab by mail.kernel.org with local (Exim 4.97.1)
 	(envelope-from <mchehab@kernel.org>)
-	id 1sRqTK-00000002jZa-2JaY;
+	id 1sRqTK-00000002jZt-2siQ;
 	Thu, 11 Jul 2024 11:52:18 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-List-Id: <linux-edac.lore.kernel.org>
 Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	linux-edac@kernel.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
 	Ani Sinha <anisinha@redhat.com>,
-	Beraldo Leal <bleal@redhat.com>,
 	Dongjiu Geng <gengdongjiu1@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	linux-edac@kernel.org,
+	linux-kernel@vger.kernel.org,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 0/6] Add ACPI CPER firmware first error injection for Arm Processor
-Date: Thu, 11 Jul 2024 11:52:02 +0200
-Message-ID: <cover.1720690278.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 5/6] acpi/ghes: update comments to point to newer ACPI specs
+Date: Thu, 11 Jul 2024 11:52:07 +0200
+Message-ID: <1ca920c8cebbb5aaac2a9f65ffccf7b4443ea666.1720690278.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <cover.1720690278.git.mchehab+huawei@kernel.org>
+References: <cover.1720690278.git.mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: Mauro Carvalho Chehab <mchehab@kernel.org>
-X-TUID: lbsmKTPx7AVB
+X-TUID: y73hnW6FFPGJ
 
-Testing OS kernel ACPI APEI CPER support is tricky, as one depends on
-having hardware with special-purpose BIOS and/or hardware.
+There is one reference to ACPI 4.0 and several references
+to ACPI 6.x versions.
 
-With QEMU, it becomes a lot easier, as it can be done via QMP.
+Update them to point to ACPI 6.5 whenever possible.
 
-This series add support for ARM Processor CPER error injection,
-according with ACPI 6.x and UEFI 2.9A/2.10 specs.
+There's one reference that was kept pointing to ACPI 6.4,
+though, with HEST revision 1.
 
-This series consists of:
+ACPI 6.5 now defines HEST revision 2, and defined a new
+way to handle source types starting from 12. According
+with ACPI 6.5 revision history:
 
-- three patches from Jonathan with basic EINJ features, already
-  submitted as RFC (but not merged yet) at:
-    https://lore.kernel.org/qemu-devel/20240628090605.529-1-shiju.jose@huawei.com/
-- three patches from me extending it to optionally allow to
-  generate all sorts of possible valid combinations for
-  ARM Processor CPER record.
+	2312 Update to the HEST table and adding new error
+	     source descriptor - Table 18.2.
 
-I've been using it to test a Linux Kernel patch series fixing
-UEFI 2.9A errata and ARM processor trace event:
-   https://lore.kernel.org/linux-edac/3853853f820a666253ca8ed6c7c724dc3d50044a.1720679234.git.mchehab+huawei@kernel.org/T/#t
+Yet, the spec doesn't define yet any new source
+descriptors. It just defines a different behavior when
+source type is above 11.
 
-I also wrote some Wiki pages for rasdaemon (a Linux daemon
-widely used to monitor and react to RAS events):
-   https://github.com/mchehab/rasdaemon/wiki/error-injection
+I also double-checked GHES implementation on an open
+source project (Linux Kernel). Currently upstream
+doesn't currently handle HEST revision, ignoring such
+field.
 
-Being really helpful to test the Linux Kernel behavior when
-firmware-first RAS events for ARM processor arrives there,
-helping to validate how CPER and GHES driver handles them
-(and further testing userspace apps like rasdaemon):
+In any case, revision 2 seems to be backward-compatible
+with revison 1 when type <= 11 and just one error is
+contained on a HEST record.
 
-Sending this command to QMP:
-    { "execute": "qmp_capabilities" } 
-    { "execute": "arm-inject-error", "arguments": {"error": [{"type": ["cache-error"]}]} }
+So, while it is probably safe to update it, there's no
+real need. So, let's keep the implementation using
+an ACPI 6.4 compatible table, e. g. HEST revision 1.
 
-Produces a simple CPER register, properly handled by the Linux
-Kernel:
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ hw/acpi/ghes.c | 48 ++++++++++++++++++++++++++++--------------------
+ 1 file changed, 28 insertions(+), 20 deletions(-)
 
-[  839.952678] {4}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-[  839.953145] {4}[Hardware Error]: event severity: recoverable
-[  839.953451] {4}[Hardware Error]:  Error 0, type: recoverable
-[  839.953763] {4}[Hardware Error]:   section_type: ARM processor error
-[  839.954094] {4}[Hardware Error]:   MIDR: 0x0000000000000000
-[  839.954383] {4}[Hardware Error]:   Multiprocessor Affinity Register (MPIDR): 0x0000000080000000
-[  839.954802] {4}[Hardware Error]:   running state: 0x0
-[  839.955066] {4}[Hardware Error]:   Power State Coordination Interface state: 0
-[  839.955424] {4}[Hardware Error]:   Error info structure 0:
-[  839.955712] {4}[Hardware Error]:   num errors: 1
-[  839.955983] {4}[Hardware Error]:    first error captured
-[  839.956260] {4}[Hardware Error]:    propagated error captured
-[  839.956561] {4}[Hardware Error]:    error_type: 0x02: cache error
-[  839.956882] {4}[Hardware Error]:    error_info: 0x000000000054007f
-[  839.957192] {4}[Hardware Error]:     transaction type: Instruction
-[  839.957495] {4}[Hardware Error]:     cache error, operation type: Instruction fetch
-[  839.957888] {4}[Hardware Error]:     cache level: 1
-[  839.958166] {4}[Hardware Error]:     processor context not corrupted
-[  839.958459] {4}[Hardware Error]:     the error has not been corrected
-[  839.958771] {4}[Hardware Error]:     PC is imprecise
-[  839.959074] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-
-rasdaemon output (rasdaemon still needs to be patched for
-UEFI 2.9A errata):
-
-           <...>-211   [002] d..1.     0.000129 arm_event 2024-07-11 09:50:45 +0000 affinity: -1 MPIDR: 0x80000000 MIDR: 0x0 running_state: 0 psci_state: 0 ARM Processor Err Info data len: 32
-<CANT FIND FIELD buf>cpu: 0; error: 2; affinity level: 255; MPIDR: 0000000080000000; MIDR: 0000000000000000; running state: 0; PSCI state: 0; ARM Processor Err Info data len: 32; ARM Processor Err Info raw data: 00 20 06 00 02 00 00 05 7f 00 54 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00; ARM Processor Err Context Info data len: 0; ARM Processor Err Context Info raw data: ; Vendor Specific Err Info data len: 0; Vendor Specific Err Info raw data: 
-
-More complex events with multiple Processor Error Information structures
-can be produced like:
-
-    { "execute": "arm-inject-error", "arguments":  {
-        "validation": ["mpidr-valid", "affinity-valid", "running-state-valid", "vendor-specific-valid"],
-        "running-state": [], "psci-state": 1229279264, 
-        "error": [{
-            "validation": ["multiple-error-valid", "flags-valid"], 
-	"type": ["tlb-error", "bus-error", "micro-arch-error"], 
-                               "multiple-error": 3, "phy-addr": 57005, "virt-addr": 48879},
-                 {"type": ["micro-arch-error"]}, 
-                 {"type": ["tlb-error"]}, 
-                 {"type": ["bus-error"]},
-                 {"type": ["cache-error"]}],
-                 "context": [{"register": [57005, 48879, 43962, 47787]}],
-                 "vendor-specific": [12, 23, 53, 52, 3, 123, 243, 255]} }
-
-[  925.340284] {5}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-[  925.340662] {5}[Hardware Error]: event severity: recoverable
-[  925.340924] {5}[Hardware Error]:  Error 0, type: recoverable
-[  925.341280] {5}[Hardware Error]:   section_type: ARM processor error
-[  925.341631] {5}[Hardware Error]:   MIDR: 0x0000000000000000
-[  925.341893] {5}[Hardware Error]:   Multiprocessor Affinity Register (MPIDR): 0x0000000080000000
-[  925.342278] {5}[Hardware Error]:   error affinity level: 0
-[  925.342571] {5}[Hardware Error]:   running state: 0x0
-[  925.342835] {5}[Hardware Error]:   Power State Coordination Interface state: 1229279264
-[  925.343157] {5}[Hardware Error]:   Error info structure 0:
-[  925.343388] {5}[Hardware Error]:   num errors: 4
-[  925.343602] {5}[Hardware Error]:    error_type: 0x1c: TLB error|bus error|micro-architectural error
-[  925.343960] {5}[Hardware Error]:    virtual fault address: 0x000000000000beef
-[  925.344241] {5}[Hardware Error]:    physical fault address: 0x000000000000dead
-[  925.344526] {5}[Hardware Error]:   Error info structure 1:
-[  925.344757] {5}[Hardware Error]:   num errors: 1
-[  925.344965] {5}[Hardware Error]:    first error captured
-[  925.345183] {5}[Hardware Error]:    propagated error captured
-[  925.345416] {5}[Hardware Error]:    error_type: 0x10: micro-architectural error
-[  925.345714] {5}[Hardware Error]:   Error info structure 2:
-[  925.345946] {5}[Hardware Error]:   num errors: 1
-[  925.346148] {5}[Hardware Error]:    first error captured
-[  925.346413] {5}[Hardware Error]:    propagated error captured
-[  925.346719] {5}[Hardware Error]:    error_type: 0x04: TLB error
-[  925.346988] {5}[Hardware Error]:    error_info: 0x00000080d6460fff
-[  925.347248] {5}[Hardware Error]:     transaction type: Generic
-[  925.347492] {5}[Hardware Error]:     TLB error, operation type: Generic read (type of instruction or data request cannot be determined)
-[  925.347945] {5}[Hardware Error]:     TLB level: 1
-[  925.348153] {5}[Hardware Error]:     processor context corrupted
-[  925.348392] {5}[Hardware Error]:     the error has been corrected
-[  925.348635] {5}[Hardware Error]:     PC is imprecise
-[  925.348848] {5}[Hardware Error]:     Program execution can be restarted reliably at the PC associated with the error.
-[  925.349232] {5}[Hardware Error]:   Error info structure 3:
-[  925.349459] {5}[Hardware Error]:   num errors: 1
-[  925.349662] {5}[Hardware Error]:    first error captured
-[  925.349884] {5}[Hardware Error]:    propagated error captured
-[  925.350115] {5}[Hardware Error]:    error_type: 0x08: bus error
-[  925.350371] {5}[Hardware Error]:    error_info: 0x0000000078da03ff
-[  925.350629] {5}[Hardware Error]:     transaction type: Generic
-[  925.350878] {5}[Hardware Error]:     bus error, operation type: Prefetch
-[  925.351144] {5}[Hardware Error]:     affinity level at which the bus error occurred: 3
-[  925.351451] {5}[Hardware Error]:     processor context not corrupted
-[  925.351702] {5}[Hardware Error]:     the error has not been corrected
-[  925.351960] {5}[Hardware Error]:     PC is precise
-[  925.352164] {5}[Hardware Error]:     Program execution can be restarted reliably at the PC associated with the error.
-[  925.352546] {5}[Hardware Error]:     participation type: Generic
-[  925.352801] {5}[Hardware Error]:     address space: External Memory Access
-[  925.353071] {5}[Hardware Error]:   Error info structure 4:
-[  925.353299] {5}[Hardware Error]:   num errors: 1
-[  925.353502] {5}[Hardware Error]:    first error captured
-[  925.353720] {5}[Hardware Error]:    propagated error captured
-[  925.353963] {5}[Hardware Error]:    error_type: 0x02: cache error
-[  925.354222] {5}[Hardware Error]:    error_info: 0x000000000054007f
-[  925.354478] {5}[Hardware Error]:     transaction type: Instruction
-[  925.354782] {5}[Hardware Error]:     cache error, operation type: Instruction fetch
-[  925.355203] {5}[Hardware Error]:     cache level: 1
-[  925.355495] {5}[Hardware Error]:     processor context not corrupted
-[  925.355848] {5}[Hardware Error]:     the error has not been corrected
-[  925.356206] {5}[Hardware Error]:     PC is imprecise
-[  925.356493] {5}[Hardware Error]:   Context info structure 0:
-[  925.356809] {5}[Hardware Error]:    register context type: AArch64 EL1 context registers
-[  925.357282] {5}[Hardware Error]:    00000000: 0000dead 00000000 0000beef 00000000
-[  925.357800] {5}[Hardware Error]:    00000010: 0000abba 00000000 0000baab 00000000
-[  925.358267] {5}[Hardware Error]:    00000020: 00000000 00000000
-[  925.358523] {5}[Hardware Error]:   Vendor specific error info has 8 bytes:
-[  925.358822] {5}[Hardware Error]:    00000000: 3435170c fff37b03                    ..54.{..
-[  925.359192] [Firmware Warn]: GHES: Unhandled processor error type 0x1c: TLB error|bus error|micro-architectural error
-[  925.359590] [Firmware Warn]: GHES: Unhandled processor error type 0x10: micro-architectural error
-[  925.359935] [Firmware Warn]: GHES: Unhandled processor error type 0x04: TLB error
-[  925.360235] [Firmware Warn]: GHES: Unhandled processor error type 0x08: bus error
-[  925.360534] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-
-
-
-Jonathan Cameron (3):
-  arm/virt: Wire up GPIO error source for ACPI / GHES
-  acpi/ghes: Support GPIO error source.
-  acpi/ghes: Add a logic to handle block addresses and FW first ARM
-    processor error injection
-
-Mauro Carvalho Chehab (3):
-  target/arm: preserve mpidr value
-  acpi/ghes: update comments to point to newer ACPI specs
-  acpi/ghes: extend arm error injection logic
-
- configs/targets/aarch64-softmmu.mak |   1 +
- hw/acpi/ghes.c                      | 324 ++++++++++++++++++---
- hw/arm/Kconfig                      |   4 +
- hw/arm/arm_error_inject.c           | 420 ++++++++++++++++++++++++++++
- hw/arm/arm_error_inject_stubs.c     |  34 +++
- hw/arm/meson.build                  |   3 +
- hw/arm/virt-acpi-build.c            |  29 +-
- hw/arm/virt.c                       |  12 +-
- include/hw/acpi/ghes.h              |  41 +++
- include/hw/boards.h                 |   1 +
- qapi/arm-error-inject.json          | 277 ++++++++++++++++++
- qapi/meson.build                    |   1 +
- qapi/qapi-schema.json               |   1 +
- target/arm/cpu.h                    |   1 +
- target/arm/helper.c                 |  10 +-
- tests/lcitool/libvirt-ci            |   2 +-
- 16 files changed, 1120 insertions(+), 41 deletions(-)
- create mode 100644 hw/arm/arm_error_inject.c
- create mode 100644 hw/arm/arm_error_inject_stubs.c
- create mode 100644 qapi/arm-error-inject.json
-
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index 6075ef5893ce..ebf1b812aaaa 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -45,9 +45,9 @@
+ #define GAS_ADDR_OFFSET 4
+ 
+ /*
+- * The total size of Generic Error Data Entry
+- * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
+- * Table 18-343 Generic Error Data Entry
++ * The total size of Generic Error Data Entry before data field
++ * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
++ * Table 18.12 Generic Error Data Entry
+  */
+ #define ACPI_GHES_DATA_LENGTH               72
+ 
+@@ -65,8 +65,8 @@
+ 
+ /*
+  * Total size for Generic Error Status Block except Generic Error Data Entries
+- * ACPI 6.2: 18.3.2.7.1 Generic Error Data,
+- * Table 18-380 Generic Error Status Block
++ * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
++ * Table 18.11 Generic Error Status Block
+  */
+ #define ACPI_GHES_GESB_SIZE                 20
+ 
+@@ -82,7 +82,8 @@ enum AcpiGenericErrorSeverity {
+ 
+ /*
+  * Hardware Error Notification
+- * ACPI 4.0: 17.3.2.7 Hardware Error Notification
++ * ACPI 6.5: 18.3.2.9 Hardware Error Notification,
++ * Table 18.14 - Hardware Error Notification Structure
+  * Composes dummy Hardware Error Notification descriptor of specified type
+  */
+ static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
+@@ -112,7 +113,8 @@ static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
+ 
+ /*
+  * Generic Error Data Entry
+- * ACPI 6.1: 18.3.2.7.1 Generic Error Data
++ * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
++ * Table 18.12 - Generic Error Data Entry
+  */
+ static void acpi_ghes_generic_error_data(GArray *table,
+                 const uint8_t *section_type, uint32_t error_severity,
+@@ -148,7 +150,8 @@ static void acpi_ghes_generic_error_data(GArray *table,
+ 
+ /*
+  * Generic Error Status Block
+- * ACPI 6.1: 18.3.2.7.1 Generic Error Data
++ * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
++ * Table 18.11 - Generic Hardware Error Source Structure
+  */
+ static void acpi_ghes_generic_error_status(GArray *table, uint32_t block_status,
+                 uint32_t raw_data_offset, uint32_t raw_data_length,
+@@ -429,15 +432,18 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
+         0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
+ }
+ 
+-/* Build Generic Hardware Error Source version 2 (GHESv2) */
++/*
++ * Build Generic Hardware Error Source version 2 (GHESv2)
++ * ACPI 6.5: 18.3.2.8 Generic Hardware Error Source version 2 (GHESv2 - Type 10),
++ * Table 18.13: Generic Hardware Error Source version 2 (GHESv2)
++ */
+ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+ {
+     uint64_t address_offset;
+-    /*
+-     * Type:
+-     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
+-     */
++    /* Type: (GHESv2 - Type 10) */
+     build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
++
++    /* ACPI 6.5: Table 18.10 - Generic Hardware Error Source Structure */
+     /* Source Id */
+     build_append_int_noprefix(table_data, source_id, 2);
+     /* Related Source Id */
+@@ -481,11 +487,8 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+     /* Error Status Block Length */
+     build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
+ 
+-    /*
+-     * Read Ack Register
+-     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
+-     * version 2 (GHESv2 - Type 10)
+-     */
++    /* ACPI 6.5: fields defined at GHESv2 table */
++    /* Read Ack Register */
+     address_offset = table_data->len;
+     build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
+                      4 /* QWord access */, 0);
+@@ -504,11 +507,16 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
+     build_append_int_noprefix(table_data, 0x1, 8);
+ }
+ 
+-/* Build Hardware Error Source Table */
++/*
++ * Build Hardware Error Source Table
++ * ACPI 6.4: 18.3.2 ACPI Error Source
++ * Table 18.2: Hardware Error Source Table (HEST)
++ */
+ void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
+                      const char *oem_id, const char *oem_table_id)
+ {
+-    AcpiTable table = { .sig = "HEST", .rev = 1,
++    AcpiTable table = { .sig = "HEST",
++                        .rev = 1,                   /* ACPI 4.0 to 6.4 */
+                         .oem_id = oem_id, .oem_table_id = oem_table_id };
+ 
+     acpi_table_begin(&table, table_data);
 -- 
 2.45.2
 

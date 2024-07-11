@@ -1,171 +1,208 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp83832nji;
-        Thu, 11 Jul 2024 03:45:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVdUk1XQNa42vd+25CHWdOKqlcDeyne/zJTAEno3mkFDwToDFr7T3SrCCEVciM/+T75QBV4COtDOROZ3IoniJbpXjATcpm5
-X-Google-Smtp-Source: AGHT+IHyHCehBp1oaT8C7mFBnu3bhr6rg/TY9CJf0ZgiJnCV+wec8bjo1BcPLbNZL5X2UOE3qXEr
-X-Received: by 2002:a05:622a:592:b0:447:d49f:f94d with SMTP id d75a77b69052e-447fa8ece49mr78708851cf.24.1720694750880;
-        Thu, 11 Jul 2024 03:45:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720694750; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp85800nji;
+        Thu, 11 Jul 2024 03:49:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCURI5l3FqOWwkYq3bCd5W4ws5KdjpNeO4F2NK2na0FH8cnVbJW8V0r0ZfONfzetJtIwfrRftmysuR53nzxgbkgnOWuuvxrr
+X-Received: by 2002:a05:6512:110c:b0:52e:943c:c637 with SMTP id 2adb3069b0e04-52eb99a1936mr5484688e87.37.1720694998354;
+        Thu, 11 Jul 2024 03:49:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720694998; cv=none;
         d=google.com; s=arc-20160816;
-        b=vDyRSKC2gaJ4zmjCBJhIqCldLmfErQ09PVh05D8E9oZvLA0nR6vyNwYcfuOMHOgfG8
-         EQJe0JfBGdY/wIDZjcqWNq0i/qjfweb4WcVMYdkNSZftYA0N743ThH4l3iPGG3s+2jeS
-         jNE7HtxkppUEdxUa4kaGPKNmHFEKpG0OUShX+bsd0vFYEyz+oOq+eJuLelnCJnUNFVz+
-         NUc731m2sAB4FHSf7H7td317d21QorkS4mg65xrlUf4QnOndLDNzS/Ykrky/YdDeTsuQ
-         iG8eC0kKLz4BJnyRNoO2NvIwvw2rJ5+E4d9zk0/sP4TNW0ftnIQ6N6xQP8wEJ+4vnSyL
-         3+Tw==
+        b=YblwrHL3sztSGuWSFnrbaQfm/jCgomd5jpKio8npc5BCikfzNWMP8CPtHlcav7nAFi
+         BrL2qCW3dT19vDZ7iQnO5BLRmLtyo4QdWtU4gvMrA3v0lUB+6ueQ6EsXYWtYQ/JNqE3Q
+         ssIi8RNLkB95tRHqyOFs/zTyfTPwhIPO3hpeiYm6kexvnV4gEI4lkxteRJmAtb/oIh9K
+         cqh9N1SQqIz96yP8ZF+HHjgVTYF5bvza78bXWR9NoLZasGeJZshKpk9e/tBt3sSpZEr9
+         O7481SgbPj9fM4QI2NrqbGg0+LG9C/IFH3MBOVTH8ZH8W+37yTiaIKMtBYXeRkODARIS
+         4idQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:organization:content-language:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=UE/NP7N7sANvA9P+/e+vpBsvbUNFhs3RSO6Z6KkMYOM=;
-        fh=FSWirE3594J4EYEQaOGOKaMQhVeyFcGO4/ubMvnfZ20=;
-        b=G3VDqEbX1+DcWpZfhA6vVUYpEAVcnepJOMyFxsxBdHCq1z+qdz/OI6gQdum72AZQJp
-         GqjcatJWTWtkp+LDNn3UWkMM3HsHTUv1EpV0eL+wRFCC+ZO+TKAK2rJ/rKTgzTvuYWhQ
-         loDRDMyLvs6tOoF9fkJMwt5WoNQwK37e8bFqWUtFjGGpC5vLQUxEZTqwHoJG4gfiUKX+
-         Aqs9b+MFJE7k7THHhWNFNg3ZgW5TQ3GTiV61wEtHMl+Ew+GfnOPjfZu+16/vvi0T7A07
-         ONt04Q/y127FCM2xvbDa557Tn/a3ek/WKFEzdWCk8wq+niGFZ+H5ru6YPVkJ6umA9lI5
-         /E9g==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=DoOydcMVbUJJ/RwXHVe5Gdr2o4qifse1CVSUD+HZfss=;
+        fh=N4hLUBa80ziwoL0sFU/qwhhG8R4bqTcxcOVmp5Rn3WY=;
+        b=Z9qpkMxkBE8T07N+7JGrQRqmDKHYAizlFgOhtRdwi9tAphtgUz6NSpGcN6OEkM0m1O
+         SZ8E+npa92EAJ4j2jbSZa3DmkiCEA7/x0pEEHaEkr7YZ+fRJL3HkAZRbBI0T3Usp8p4I
+         wAubTJqdIPxvuOfJoKE7uv857MvVRQCtt3AXvIXPG2+I3KhVRDk6C1imDxA8LyulVRKR
+         Pfpx/JbT7rmwxbRJcCPTkk37IrJs3hPm2dTrvHZ7EunVxaTaze7AXGjF2BA4qZHmxskm
+         awUfr1i9/RCqwYG5Qnw/J8J6QyF4JLCHt901MBJl96esY5qSY475JlSPdcSKSIaws4ZL
+         sACA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bwkgtAi4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@opnsrc.net header.s=google header.b="DwRVNMV/";
+       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-447f9b14811si66295041cf.171.2024.07.11.03.45.50
+Return-Path: <salil.mehta@opnsrc.net>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 2adb3069b0e04-52eb8e5e015sor2143521e87.11.2024.07.11.03.49.58
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jul 2024 03:45:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 11 Jul 2024 03:49:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bwkgtAi4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@opnsrc.net header.s=google header.b="DwRVNMV/";
+       spf=pass (google.com: domain of salil.mehta@opnsrc.net designates 209.85.220.41 as permitted sender) smtp.mailfrom=salil.mehta@opnsrc.net;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sRrIn-0002UG-Ko; Thu, 11 Jul 2024 06:45:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sRrIm-0002SM-Qz
- for qemu-arm@nongnu.org; Thu, 11 Jul 2024 06:45:28 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
- id 1sRrIX-0002Gs-9i
- for qemu-arm@nongnu.org; Thu, 11 Jul 2024 06:45:28 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-58b0dddab63so1195124a12.3
- for <qemu-arm@nongnu.org>; Thu, 11 Jul 2024 03:45:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1720694707; x=1721299507; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:organization:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=UE/NP7N7sANvA9P+/e+vpBsvbUNFhs3RSO6Z6KkMYOM=;
- b=bwkgtAi41oo8o+JGiAG02QCBbhI/iQnZbWfPvz1KGD8dCdY1JADndb41NDsQfF+tbD
- 7dRu4vRh0evjxKfl+IEoTwffkmTRMu9fnaSca4Mfpos2C3Zv1clgiXCdZWawatC1DiQ7
- ExyGirRROOmjJAoy+huZ/ZybozW6eS9uZL216He1orRyMJ6Uv8cxKDYsVJTIzDRaKhB+
- Tma3hrF8jixA+E46S+wr44jKuUSDRJoAegGNU6UW1F4Cf1NdT7Hf1A+TRmjWq9F0yqNL
- mZMp1YrO5AoNuxgwTs6/4B98L4X9bm6lDtrN9ScTBxLHxRBpKKq6qPgAkoasUvaK6bsX
- vDag==
+        d=opnsrc.net; s=google; t=1720694998; x=1721299798; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=DoOydcMVbUJJ/RwXHVe5Gdr2o4qifse1CVSUD+HZfss=;
+        b=DwRVNMV/9+XRqYc2uVg/KzBUCeMnMPlC1CM3M6ea97aIr3cNSSW3TDQvM2Y18FgQgL
+         bJF6f7bSKuzJI4cJZqnpOJ2Rm9O9V3fiaeoWWVDdiYwLV6Pik11P4MXYmXTmqENiMArL
+         Akvp+0H+YLBlhzM2ejN/ooEb1eYrPK+nC8VQftxwhH8brxNJsTn3VeBSFmAiOaMALQGa
+         /wL/noSDQQtyKMXwZEV8pKFqJLD9szGJciRdd/TknxDp5ZOSpuaJIlAbDiToHQCjCqIV
+         WQsrLRC7gh7EkHQsSb0inCS63f+BJyfJA7GuCuRBlm+QkfJPp/kMrVghcnZziHxme8zm
+         AHPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720694707; x=1721299507;
- h=content-transfer-encoding:in-reply-to:organization:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=UE/NP7N7sANvA9P+/e+vpBsvbUNFhs3RSO6Z6KkMYOM=;
- b=iZmSkXUNTaF6yZw6VBMt9ACUAlDTrK2dtTKUcSI+R4l8dIlmaHltLkFNWj1rIohIRU
- ++IQ6fD1ffaGaBqP2pkQlCazDKsWS0Qy1Uh0Knz4Cq/4vKNyOyQloCaLzR9vf3kNM6Bg
- nL519t6M48tg+BVU3o/vKHnPKSWxlIL+w/Vly5qh9jrKWVVNjGAjNpm/j4rRRBlGcGOD
- lajQaz0UPHkfJwEA5xcU6SsYsXBaNzd0dsNcuq2+0JmCFJaqFrO2dwiSQcStObDVjZWz
- X4Mh6Rc49C0FGEA7UP3ofBi8uPKZ+35tx51owBrgR4F+al/YW8jBpaPhx5qdgcMbdy9y
- /KJQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUBMBGhufuPJyRSyiH9HFL2J3RyzRJwxh5aX4B+8biXpYgedhFDuOXdXZaycRzQGVX0RIIH4ZEG7uyNgWR13dK9l6VV
-X-Gm-Message-State: AOJu0Ywu64Ha8O7ixpd/wOnhwRKgLPCpDLg72YIBk9YQjnDjIGjBPkNy
- uAHI+xNI4KJwueVwv/xXJhCNHVHedkohFBYtB62htTgsTrtItF0zG9WeeBRV17w=
-X-Received: by 2002:aa7:c307:0:b0:57d:1e27:65ea with SMTP id
- 4fb4d7f45d1cf-594bb869e59mr4914748a12.34.1720694707259; 
- Thu, 11 Jul 2024 03:45:07 -0700 (PDT)
-Received: from [192.168.200.25] (83.8.74.165.ipv4.supernova.orange.pl.
- [83.8.74.165]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-594bc3efb13sm3310266a12.42.2024.07.11.03.45.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Jul 2024 03:45:06 -0700 (PDT)
-Message-ID: <52707dcf-7f34-4573-b713-2d0f834d7f46@linaro.org>
-Date: Thu, 11 Jul 2024 12:45:05 +0200
+        d=1e100.net; s=20230601; t=1720694998; x=1721299798;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=DoOydcMVbUJJ/RwXHVe5Gdr2o4qifse1CVSUD+HZfss=;
+        b=OqyM32D8a+TWDFnUOrcRjl9G939plTF3RVPpfEecuuGcqZP8Ae6EAMLklh0BDeUDXx
+         YaAQ/c2GgxrVp6UBoz9NTdxFZ+GRMrrLBMQlyApQV3ylUwPaDbS0DEwKdIe0SwsEIHad
+         IiIUvq0A6AE8yeD3AFCo6URlIgfNSF3cOY4QebxYORdgeHQyHjiFhy0/AFTmFAOut2Kx
+         GPP/iiaSAalRu7BcU3+17gYDM0elz65ok5BO1b9t1F4PAD9YP7k9Kx46+KSrtZaIFbyo
+         +/bsqAk35c9xA886yXfM9iat0aHEgDcvV06jP42YCSlF4odQIs6kn/dKrnwwgO9eFYA/
+         XvXw==
+X-Forwarded-Encrypted: i=1; AJvYcCU1S0yFiJ/Y3x+Tgr5FhGtzEV16maB3Y94TZOSr2jnWkyAmba3VfWMpapDgJAAkKqf4xhv2LbDWtZNCpw8W8h21PyYm5jtf
+X-Gm-Message-State: AOJu0Yz/9/gxoMUyVdOKFVK+/xOw/m4gij0hZ0vQ6IZK8MBQL64it2V9
+	K5dyoESFXPEujKxhRFdt5jPOSHhDuFvgZsRZYju+IO8rnBSC0snw1VTxaYyj+fA=
+X-Google-Smtp-Source: AGHT+IHPAxEvR7swT6UVmUDs99ElJWd5uHiVOdjCrb5wHoWsmzwgBkfgSl1iIZTXjHe7Wour1tKFfA==
+X-Received: by 2002:a05:6512:114d:b0:52c:dbee:bdb0 with SMTP id 2adb3069b0e04-52eb99d4e86mr6226794e87.59.1720694997507;
+        Thu, 11 Jul 2024 03:49:57 -0700 (PDT)
+Return-Path: <salil.mehta@opnsrc.net>
+Received: from [10.11.12.72] ([90.220.10.255])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4279c933c63sm908435e9.19.2024.07.11.03.49.56
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 11 Jul 2024 03:49:57 -0700 (PDT)
+Message-ID: <86749cab-8c25-4dbf-970e-60d226c0dbf3@opnsrc.net>
+Date: Thu, 11 Jul 2024 10:49:54 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] target/arm: calculate cache sizes properly
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20240710173512.424547-1-marcin.juszkiewicz@linaro.org>
- <CAFEAcA-q8uUzHaF1KazB7uuhgpbtrTKdL153Btzwnz6pvuOPWA@mail.gmail.com>
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Content-Language: pl-PL, en-GB, en-HK
-Organization: Linaro
-In-Reply-To: <CAFEAcA-q8uUzHaF1KazB7uuhgpbtrTKdL153Btzwnz6pvuOPWA@mail.gmail.com>
+Subject: Re: [PATCH V13 4/8] hw/acpi: Update GED _EVT method AML with CPU scan
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Salil Mehta <salil.mehta@huawei.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, maz@kernel.org, jean-philippe@linaro.org,
+ jonathan.cameron@huawei.com, lpieralisi@kernel.org,
+ peter.maydell@linaro.org, richard.henderson@linaro.org,
+ andrew.jones@linux.dev, david@redhat.com, philmd@linaro.org,
+ eric.auger@redhat.com, oliver.upton@linux.dev, pbonzini@redhat.com,
+ mst@redhat.com, will@kernel.org, gshan@redhat.com, rafael@kernel.org,
+ alex.bennee@linaro.org, linux@armlinux.org.uk,
+ darren@os.amperecomputing.com, ilkka@os.amperecomputing.com,
+ vishnu@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
+ wangyanan55@huawei.com, jiakernel2@gmail.com, maobibo@loongson.cn,
+ lixianglai@loongson.cn, npiggin@gmail.com, harshpb@linux.ibm.com,
+ linuxarm@huawei.com, Shaoqin Huang <shahuang@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>
+References: <20240607115649.214622-1-salil.mehta@huawei.com>
+ <20240607115649.214622-5-salil.mehta@huawei.com>
+ <20240706162845.3baf5568@imammedo.users.ipa.redhat.com>
+ <27cc0420-df0b-481e-a58f-e17fa4d02367@opnsrc.net>
+ <20240711103403.2eadac1e@imammedo.users.ipa.redhat.com>
+Content-Language: en-GB
+From: Salil Mehta <salil.mehta@opnsrc.net>
+In-Reply-To: <20240711103403.2eadac1e@imammedo.users.ipa.redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LVCnjCJ/boUW
+X-TUID: qWwDNfTah/0e
 
-On 11.07.2024 12:19, Peter Maydell wrote:
-> On Wed, 10 Jul 2024 at 18:35, Marcin Juszkiewicz
-> <marcin.juszkiewicz@linaro.org> wrote:
+
+On 11/07/2024 08:34, Igor Mammedov wrote:
+> On Thu, 11 Jul 2024 03:29:40 +0000
+> Salil Mehta <salil.mehta@opnsrc.net> wrote:
+> 
+>> Hi Igor,
 >>
->> Neoverse-V1 TRM says that NumSets are [27:13] not :32 like in code.
-> 
-> NumSets in fields [27:13] is the 32-bit CCSIDR_EL1 format
-> (i.e. what you have when FEAT_CCIDX is not implemented).
-> The make_ccsidr64() function provides the 64-bit CCSIDR_EL1
-> format (i.e. the one when FEAT_CCIDX is implemented).
-> 
-> I would suspect this is an accidental error in the Neoverse-V1
-> TRM -- if you have access to the real hardware and can dump
-> the CCSIDR_EL1 value I would expect you'll see it matches
-> what QEMU is implementing here (and that ID_AA64MMFR2_EL1.CCIDX
-> also says that FEAT_CCIDX is implemented). See also the comment
-> "The Neoverse-V1 r1p2 TRM lists 32-bit format CCSIDR_EL1 values"
-> in aarch64_neoverse_v1_initfn() where we document that we
-> don't trust what the TRM is saying here.
-> 
-> How did you run into this? Is there some guest software
-> which is assuming the old 32-bit format and not checking
-> ID_AA64MMFR2_EL1.CCIDX to see if it needs to use the new one?
+>>
+>> On 06/07/2024 14:28, Igor Mammedov wrote:
+>>> On Fri, 7 Jun 2024 12:56:45 +0100
+>>> Salil Mehta <salil.mehta@huawei.com> wrote:
+>>>   
+>>>> OSPM evaluates _EVT method to map the event. The CPU hotplug event eventually
+>>>> results in start of the CPU scan. Scan figures out the CPU and the kind of
+>>>> event(plug/unplug) and notifies it back to the guest. Update the GED AML _EVT
+>>>> method with the call to \\_SB.CPUS.CSCN
+>>>>
+>>>> Also, macro CPU_SCAN_METHOD might be referred in other places like during GED
+>>>> intialization so it makes sense to have its definition placed in some common
+>>>> header file like cpu_hotplug.h. But doing this can cause compilation break
+>>>> because of the conflicting macro definitions present in cpu.c and cpu_hotplug.c
+>>> one of the reasons is that you reusing legacy hw/acpi/cpu_hotplug.h,
+>>> see below for suggestion.
+>>>   
+>>>> and because both these files get compiled due to historic reasons of x86 world
+>>>> i.e. decision to use legacy(GPE.2)/modern(GED) CPU hotplug interface happens
+>>>> during runtime [1]. To mitigate above, for now, declare a new common macro
+>>>> ACPI_CPU_SCAN_METHOD for CPU scan method instead.
+>>>> (This needs a separate discussion later on for clean-up)
+>>>>
+>>>> Reference:
+>>>> [1] https://lore.kernel.org/qemu-devel/1463496205-251412-24-git-send-email-imammedo@redhat.com/
+>>>>
+>>>> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+>>>> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+>>>> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+>>>> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+>>>> Reviewed-by: Gavin Shan <gshan@redhat.com>
+>>>> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+>>>> Tested-by: Xianglai Li <lixianglai@loongson.cn>
+>>>> Tested-by: Miguel Luis <miguel.luis@oracle.com>
+>>>> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+>>>> Tested-by: Zhao Liu <zhao1.liu@intel.com>
 
-I started adding cpu cache info into PPTT and so far the only code I 
-used was old 32-bit format one:
+[...]
 
-https://openfw.io/edk2-devel/20240710-acpi65-v4-6-bc32224e4be4@linaro.org/
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index 2d6e91b124..33addb6275 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -117,6 +117,9 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
+>                              aml_notify(aml_name("\\_SB.NVDR"),
+>                                         aml_int(0x80)));
+>                   break;
+> +            case ACPI_GED_CPU_HOTPLUG_EVT:
+> +                aml_append(if_ctx, aml_call0("\\_SB.GED.CPEV"));
+> +                break
+>               default:
+>                   /*
+>                    * Please make sure all the events in ged_supported_events[]
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index f4e366f64f..8b4f422652 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -1536,7 +1536,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>               .fw_unplugs_cpu = pm->smi_on_cpu_unplug,
+>           };
+>           build_cpus_aml(dsdt, machine, opts, pc_madt_cpu_entry,
+> -                       pm->cpu_hp_io_base, "\\_SB.PCI0", "\\_GPE._E02");
+> +                       pm->cpu_hp_io_base, "\\_SB.PCI0", "\\_SB.GED.CPEV");
+>       }
+>   
+> this way build_cpus_aml() will create and populate with scan
+> \\_SB.GED.CPEV method.
 
 
-Will check for CCIDX and adapt proper way. But that has to wait for 
-August due to vacation plans.
+I see. Perhaps, I failed to realise the semantics in the AML
+sense i.e. exporting a call to a method belonging to one scope
+to another (\\_SB.CPUS to \\_SB.GED). Yes, with above change
+we can avoid calling \\_SB.CPUS.CSCN method direclty from
+within GED _EVT. Sorry for the noise.
+
+I will do the change.
+
+Thanks
+
+
+> PS:
+> For legacy cphp handling acpi/cpu.c has only _INI method
+> that is created when opts.has_legacy_cphp is true.
+> we should be able to get rid of it when 2.6 machine type is removed.
+> But ARM [or anything else] don't have to be aware of it
+> if you use static initializer like it's done in hw/i386/acpi-build.c
+> and just ignore non relevant fields.
+
+ok. thanks for the clarification.
+
+Best regards
+Salil.

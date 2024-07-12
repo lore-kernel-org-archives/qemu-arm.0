@@ -1,117 +1,117 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp778625nji;
-        Fri, 12 Jul 2024 06:01:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX3nH2IoaRCgdIdhiGpTAeZjbwyx14NU8ZQUy2Mgua+KSORklSFzXS2hw/PExjCt0Cja0+MNSw786taE1vOM9fBozjYe/VG
-X-Google-Smtp-Source: AGHT+IH9ibIKs+6jqTt33m4l6Ep2qCvUNXl8ceJZZ+yfVxY1XNedLCuqMCdst25u3wtjIBVsjn2P
-X-Received: by 2002:a05:6512:3b82:b0:52c:dc0b:42cf with SMTP id 2adb3069b0e04-52eb998fcdcmr7345129e87.9.1720789284679;
-        Fri, 12 Jul 2024 06:01:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720789284; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp781305nji;
+        Fri, 12 Jul 2024 06:03:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUFYfMtX3qs/y0gGf8RqOQipgEmKntmp7gtTSq5VAb7+FWXrs0VAr0qdWwqaHoPP5wX7Ci0HKMOiT7ywEJnk+qWRg/+8rdz
+X-Google-Smtp-Source: AGHT+IFVjObmuq1bb+S3BEPkOH0Wc1KcXNvHJ3XsJNF3O4JmaBfCkCaWDO7YrZsde6kFHScdKuKJ
+X-Received: by 2002:a05:6214:4018:b0:6b5:e2da:8be1 with SMTP id 6a1803df08f44-6b61c1da297mr141537056d6.55.1720789418435;
+        Fri, 12 Jul 2024 06:03:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720789418; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ifh5qAZx1unMdR3xH8TjrfwkGAqD2ciEaHFb81PaPNTUbft/c6F0hymuBn8FOXQ0ZR
-         QPWhiSjfMbRX7Mz+ur+pIupxw/IOnyIFVL2IxP/uy8KI8gG8Z2k71wg3xtxgR/QNBOfW
-         n9z+TBGe3cc38AQTVs6K+dWIcc5XgdwfaZBxJjed2eY5ioVQxXY5rghk+MKjJVzlLAtA
-         qbac5UzsR6iaaKVlyJvETOQN45kCuhYHw4Uv5dYS8M5e0LypAxF1WulYk3V/PWJqZo3x
-         YVKMiYdsKC3+TWe8ltn9LMYxgqGK3tNsM04IXutOtenv4woy5VhKMuGyj1U7uFYyr0TY
-         eOEA==
+        b=EA+7i/GUWqu2eIUzE87vH26HPoTrec/e8tw9C0bKvw0P3smDx2/pMLde5DhPymV+ui
+         I/pCNBAcuHOmom1fnyzOq2kWzjZXWohz++ZCWq+sj+6MN+NMWq2uUIm1AWDd02JXoVuf
+         dX/Xv9u6Jx2GC4qoVqGVQcwxap9dRgLAllz2Ky0IegyFlaW1L7rb7EPcNE3g2qfDr3O7
+         YpliEHUHILD/oXaHgPA6CIE6czsuMOaPvIY6Mx95xeZu5UkmlqB1Xc++XbA7EanG1mV2
+         FnBetoghs34lqk0vTVAiswV6b2CNe9xLojRmU8yfww1DD3uCR9yo5w1iLn+Me1VlOsMt
+         Zp3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=XTGrjiuBE8ZAPhvRWlQ8HaI2d2Kh/eTTboY51XDwLU0=;
-        fh=7vYQjv0BFqKVjIadaN0BTEOvj7yGxkVjCIf0+hDfJBQ=;
-        b=RIwj5o8GpdDaUrWyt9PiXZDla8q/RAUBb7Z4RLl7N30WuFAdArY9e9EHYV9tzd1wb3
-         LKn/QEs3ZXwc3ezeEf7NOd2o5otrPa/WJaEvrIYWm0m6waJ80V6QS+E4lp1JQSCdVh9b
-         /M7/qu9XzR6FBOn1nk0WJkU9GOa+2eEfD8s9ntyQu09nvDgqcXcwIbm1eQWrLNcolgnh
-         0sfvbn8CAd++3xULSIsFWByFTkb1f7/d7uNvzQdab2HE6WlIN2dMTr6qLwrQ58wmFpHX
-         DtHX8ENCXuRKzOO0ckbku0qiOv0gkrC0yvp5I5aq0ws+3HgZeoH0NJTkqggXgs0Iclnn
-         o7+w==;
+        bh=vCFtf2iNIwx1IjbaReYl7YdD1FU8YkHtI7PLgSEDdsY=;
+        fh=JnUtpkkpVoGWaf+OwdU/Fr0t4Mkr+Vr9zepbc1qHPXs=;
+        b=oaBCmJrCFMxLzgyzB6Mv/3qytIQmqOJwvNnztkCh5tCeUL1DOoII3QBeeNKNIM9qVv
+         fQnAVQPm4rFlwBLEJeLuasjdKSqP8Fb1grKrJ0Fy8+JFcNKw2oqE1GqRXo7DVJwyuAFN
+         4j5k6rOwY4Q0+HwUvNpZGzjQSv2Qkit4qaSqGNxlvZih1wRA/ifMoVOoqUGOvbIBKRP8
+         72ACkTsTNoTvJn5BBpWOknDgY4j7UVJ2B4Th3tfdvhHuJIpWY7pPM6JLFPZVZoL31i2z
+         CR1MtQjVnPDziMsdsJxbxZBYQsdNM0986zVS8W1Nl+wrtTclSJ+mZX8Guzmoyg1/4f1P
+         AwvQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LEgBFNrB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZjnyPUBd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-367cdfb0630si5393959f8f.704.2024.07.12.06.01.23
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b61bb04ad4si98247976d6.588.2024.07.12.06.03.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Jul 2024 06:01:23 -0700 (PDT)
+        Fri, 12 Jul 2024 06:03:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LEgBFNrB;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZjnyPUBd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sSFtg-0005oC-TY; Fri, 12 Jul 2024 09:01:14 -0400
+	id 1sSFvN-0003z8-Bl; Fri, 12 Jul 2024 09:02:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sSFtY-0005K4-US
- for qemu-arm@nongnu.org; Fri, 12 Jul 2024 09:01:05 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ id 1sSFvF-0003QS-IC
+ for qemu-arm@nongnu.org; Fri, 12 Jul 2024 09:02:49 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sSFtL-00059t-Iw
- for qemu-arm@nongnu.org; Fri, 12 Jul 2024 09:01:03 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-58b447c519eso2696350a12.3
- for <qemu-arm@nongnu.org>; Fri, 12 Jul 2024 06:00:51 -0700 (PDT)
+ id 1sSFvD-0005ze-Oc
+ for qemu-arm@nongnu.org; Fri, 12 Jul 2024 09:02:49 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-58b0dddab63so3216440a12.3
+ for <qemu-arm@nongnu.org>; Fri, 12 Jul 2024 06:02:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1720789250; x=1721394050; darn=nongnu.org;
+ d=linaro.org; s=google; t=1720789366; x=1721394166; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=XTGrjiuBE8ZAPhvRWlQ8HaI2d2Kh/eTTboY51XDwLU0=;
- b=LEgBFNrB6GBqyRbTJ5Nb6atFXMTQgGAZl+c9YZFMcxFgijWD8CoyKJXS8W3DLr4fTE
- rzuWZ+CqOHNLNylku+wcvdWMV2LrWITEr+bCulo13ZIEjLo4Bbp3N2dvdfvy376mJm00
- nyEnIi/2k0HxtBgtmjFWxpa2v58z36ZNT1zgY6Ko6kz0TFcRXxBpbqYcfqriXmK6s28P
- CG5Qf6FW/AJN7hCHJb7hB1akrLHZKm0pwEaSOOii0Bzq7UfJFZuccDPYORpshDBfteUT
- apZdJvmin8mwQgsTVjx4vKPgZ/bFGaGXSzd2W8HhW+Nyq/CyRS+LgTZ9UvAtyRhAzZn6
- v9ZA==
+ bh=vCFtf2iNIwx1IjbaReYl7YdD1FU8YkHtI7PLgSEDdsY=;
+ b=ZjnyPUBd8QN4RpsNNH4u2apbW5o895NKQ75vzGo+64EWcYEkgF8iyFshr9ze4Vbtqj
+ ul+Ws0K1EO6PjGWc38eLQ4ubkJu/PR0KBW0lOZVOqtW5oWIzNk2rIrpyeONRTJ64MxgZ
+ biT3yqZl77pe1vJs8Aeb1PTTJXXELOpsK05ffG33dc0BCI5D/LvkrZRUIf7WAnJDKZ0n
+ AhAvDjLZdgJFFG29nKQS+k4H8NJ17IJYHipLNOFYJmiAO8rfSs+lAmp5U24PWKZZLrg+
+ RWRd9cS8SqzBdk+6Ogs+mNKrAVniR/nsYj9Yy5D0O/fV2kA9e2SzOOoLo/NQWYPzQ+Cx
+ hMNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720789250; x=1721394050;
+ d=1e100.net; s=20230601; t=1720789366; x=1721394166;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=XTGrjiuBE8ZAPhvRWlQ8HaI2d2Kh/eTTboY51XDwLU0=;
- b=hGEGE3d+vE5H/ozqPV50SuAyDl+5QJ6/RatQPU5Mug9g/+GNZRJAF8bjRhyBmUkudI
- 3v+bURcPn6a7/HgGcBMZoQPZP1BFuzwpeBrWM8YMCneZt0CaYbwR2/Uf8eXpl2IP0G7/
- w4t8yQeCjXUO9oUhOyWfSoOStDxpQLJouPQwj5Y7dfcmSQ6FlRbs/MCLzKzTqZ48vQYq
- PcR2AGCcvcQDk6K2ip2sK7FVeIpXfzXseEQrCOuFbrDmdQ8lI3K4c3dbk74nEfiIHbMs
- g6MFMMlql3JhmySgDCupMXTbTEI/hb3UxM5U4zi9SmO0aYzloJ/sMbreKpmjtC3QrJ12
- edow==
+ bh=vCFtf2iNIwx1IjbaReYl7YdD1FU8YkHtI7PLgSEDdsY=;
+ b=D/UvGZuQ+u/sV6zU531JP98FAOri8Za95Lr/pe7U20HFm+OsnZ0YUa+fQRONajRsAD
+ h6Fa23meL4RZDNnQkwQyBfMOg8BCUaLabN8Elnk+QEO2JkDBrbXDY5mJrqYw+P1gzYmX
+ SRijF/hrKFpwZMUmdFlf9HUGdaw9nIKzupbCAWH7xYQ2sEC9B3CQnRb32TMFmZ/Ds1Lt
+ pbPimagfpTN0KWudUCRAWI9ZwCVCVMQPuWt4NaHqy0uHweDje59KcXE9Er2x5b8lcNUp
+ 2TU1Jg3IKsWCGaMNUVzkFawkDnFxVLypIfnG/Z8E0mhOrk6vU+m3dP9P9hIkuDfqjw5+
+ XlTQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXy67JY7XAvcqtcWjxACKqCPFK00qDquenk9sCYZTQs0LMFOvXlMSffJrUXnk+TqRd8/z3kqs+uU5NiSAGjFf+OrL8t
-X-Gm-Message-State: AOJu0Yz6DJI7RhdlpR3ZLaGUV8USgCxlOG1pOhy75xY3JtxmSXlUx1dI
- 7kXr6qlS05u1ADqZuM7KcOzqdDxAqyxmQEww21iY0FjwVBGcpPGfxykQ777zmBmKqGTpqkFDdlD
- NipTBj/+p4EBNU5nZaB85YUDuA3m0HCSLD7rxTA==
-X-Received: by 2002:a05:6402:2689:b0:599:8471:be42 with SMTP id
- 4fb4d7f45d1cf-5998471beb4mr1814061a12.29.1720789249840; Fri, 12 Jul 2024
- 06:00:49 -0700 (PDT)
+ AJvYcCXyn+eLdENNYIUds0lfSiaDx1Y82gpz3pvu3TLyvHcD4Fc4MMWjMv5LVA2csnNkFeLbzjPnemgVaY0/C8iI7z4cyF6X
+X-Gm-Message-State: AOJu0YzN1c4XpRWAmDoMxPrcORAOJ8vFmLd/zdL+7P+zclqHDMbC78iO
+ sPlRcjul6R+god+Mcvre6N73EHLPFeYMfxFTUVLrITKQ9o+APIwud08J1a5uvP8/Q/EOj8rKS9R
+ NpKK4F3j9dX09wwIs698dYu66lXrD5pKC1oooMw==
+X-Received: by 2002:a05:6402:1911:b0:57c:5b7a:87e7 with SMTP id
+ 4fb4d7f45d1cf-594ba0cbecemr9114374a12.14.1720789366145; Fri, 12 Jul 2024
+ 06:02:46 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240710032814.104643-1-richard.henderson@linaro.org>
- <20240710032814.104643-5-richard.henderson@linaro.org>
-In-Reply-To: <20240710032814.104643-5-richard.henderson@linaro.org>
+ <20240710032814.104643-11-richard.henderson@linaro.org>
+In-Reply-To: <20240710032814.104643-11-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Jul 2024 14:00:39 +0100
-Message-ID: <CAFEAcA-GCKq_t24zOf_sCtQHE4svtvi67Zr0mrLpo+GV1uWeMA@mail.gmail.com>
-Subject: Re: [PATCH v2 04/13] target/arm: Use set/clear_helper_retaddr in SVE
- and SME helpers
+Date: Fri, 12 Jul 2024 14:02:35 +0100
+Message-ID: <CAFEAcA9O+3W=2EewSUDoFOF322G5UUAW5xD+wWasW19F5pO6NQ@mail.gmail.com>
+Subject: Re: [PATCH v2 10/13] target/s390x: Use user_or_likely in
+ do_access_memset
 To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongu.org, 
- qemu-s390x@nongnu.org, qemu-riscv@nongnu.org, balaton@eik.bme.hu, 
- max.chou@sifive.com
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org, 
+ qemu-riscv@nongnu.org, balaton@eik.bme.hu, max.chou@sifive.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,64 +126,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6hpyCpfufDMQ
+X-TUID: eENI2k5WVZMu
 
-On Wed, 10 Jul 2024 at 04:31, Richard Henderson
+On Wed, 10 Jul 2024 at 04:28, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Avoid a race condition with munmap in another thread.
-> Use around blocks that exclusively use "host_fn".
-> Keep the blocks as small as possible, but without setting
-> and clearing for every operation on one page.
+> Eliminate the ifdef by using a predicate that is
+> always true with CONFIG_USER_ONLY.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/tcg/sme_helper.c | 16 ++++++++++++++++
->  target/arm/tcg/sve_helper.c | 26 ++++++++++++++++++++++++++
->  2 files changed, 42 insertions(+)
-
-
-> @@ -6093,6 +6101,8 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
->      reg_last = info.reg_off_last[0];
->      host = info.page[0].host;
+>  target/s390x/tcg/mem_helper.c | 6 +-----
+>  1 file changed, 1 insertion(+), 5 deletions(-)
 >
-> +    set_helper_retaddr(retaddr);
-> +
->      do {
->          uint64_t pg = *(uint64_t *)(vg + (reg_off >> 3));
->          do {
-> @@ -6113,6 +6123,8 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
->          } while (reg_off <= reg_last && (reg_off & 63));
->      } while (reg_off <= reg_last);
->
-> +    clear_helper_retaddr();
-> +
->      /*
->       * MemSingleNF is allowed to fail for any reason.  We have special
->       * code above to handle the first element crossing a page boundary.
+> diff --git a/target/s390x/tcg/mem_helper.c b/target/s390x/tcg/mem_helper.c
+> index 6cdbc34178..5311a15a09 100644
+> --- a/target/s390x/tcg/mem_helper.c
+> +++ b/target/s390x/tcg/mem_helper.c
+> @@ -225,10 +225,7 @@ static void do_access_memset(CPUS390XState *env, vaddr vaddr, char *haddr,
+>                               uint8_t byte, uint16_t size, int mmu_idx,
+>                               uintptr_t ra)
+>  {
+> -#ifdef CONFIG_USER_ONLY
+> -    memset(haddr, byte, size);
+> -#else
+> -    if (likely(haddr)) {
+> +    if (user_or_likely(haddr)) {
+>          memset(haddr, byte, size);
+>      } else {
+>          MemOpIdx oi = make_memop_idx(MO_UB, mmu_idx);
+> @@ -236,7 +233,6 @@ static void do_access_memset(CPUS390XState *env, vaddr vaddr, char *haddr,
+>              cpu_stb_mmu(env, vaddr + i, byte, oi, ra);
+>          }
+>      }
+> -#endif
 
-There's a "goto do_fault" inside the loop that we've bracketed here with
-the set/clear_helper_retaddr() calls -- don't we need to call
-clear_helper_retaddr() on that failure path too?
-
-There's a TODO comment at the top of this file:
-
-/*
- * Load contiguous data, first-fault and no-fault.
- *
- * For user-only, one could argue that we should hold the mmap_lock during
- * the operation so that there is no race between page_check_range and the
- * load operation.  However, unmapping pages out from under a running thread
- * is extraordinarily unlikely.  This theoretical race condition also affects
- * linux-user/ in its get_user/put_user macros.
- *
- * TODO: Construct some helpers, written in assembly, that interact with
- * host_signal_handler to produce memory ops which can properly report errors
- * without racing.
- */
-
-Should we update it to note that we make at least some attempt to
-handle the pages-unmapped-from-under-a-running-thread situation now?
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

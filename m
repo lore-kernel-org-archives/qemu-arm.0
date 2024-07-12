@@ -1,100 +1,108 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp789505nji;
-        Fri, 12 Jul 2024 06:15:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVQEkkzebDIMHSAFUl4YwGaM8AxxhjzkrEa3IB+rcLga+fMJU9osI6vdprmtX1VjmAPxp15NJZFlfPHDVZW+ONX29eDLX24
-X-Google-Smtp-Source: AGHT+IHx0T593D11oiQwys/PtsTmtqfc1qDKXO45B5Ue/rLMdeGsmHcIQoB8/XXTsvBiGkclTaw3
-X-Received: by 2002:a05:6870:2010:b0:25e:19fe:f233 with SMTP id 586e51a60fabf-25eae88b58cmr9758629fac.32.1720790142073;
-        Fri, 12 Jul 2024 06:15:42 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1720790142; cv=pass;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp789575nji;
+        Fri, 12 Jul 2024 06:15:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCXWEZaase+lTX++uKa0zHn+v0RjcGYPVL7JKL6kqE0pvUoA0lGFQVhnBsUsfQTENbiQENE3wPPfnERKXzLI0Y9ZXJUmE+xI
+X-Google-Smtp-Source: AGHT+IGV54R9nUN0xckNy02h82+KNQGUE94rDFg8Sl+kBuxFf5grZ9DSYXszNNVNRGALWCF5ueai
+X-Received: by 2002:ac2:5605:0:b0:52e:97b3:42a1 with SMTP id 2adb3069b0e04-52eb9995536mr6359324e87.24.1720790147609;
+        Fri, 12 Jul 2024 06:15:47 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1720790147; cv=pass;
         d=google.com; s=arc-20160816;
-        b=dv5RKt1wzc6M+ORP+MJ4NOuYR9AUBIrZ5wt6BPq6kSETFPX2me0p6kLUqr5mUJibm0
-         qYUwtaauigOHp46UqdxcAEXxpaAQ/+pczajSP6u2/N0Zm3WbUaasq0kcsa9gQYBMryKk
-         eiOCq0ghFit90lHP5Q5FiMGcCRPulWFX9zrYuQ6FtDpGswyz1pJ9qKfwtx6PG8jp3Acp
-         hiG9q6WAW4DRz8gKf26/KT93InJbmWbza4QkJd0bDn4p/ki2O96ynK9687LUt9Y12MW1
-         5Z+Zrdm10MF/bC7lVwI65bVrDDHVKtyztvt45Qm+rlcGLYcDEw7PfvtvKWVA77EOOJnj
-         0OWw==
+        b=WTn4QXUjsbTgIdJkyr3yCZDlJOQZxNptNnrsSTDSrWXZAwhqIqqsgAsTkSQzQGqZ6y
+         daHDouptdwTGsTsBXvYabYrCNcHTI8txV/aPr3qC5gDE6B+Kx22QMOvPFILGwJ8+Y9xo
+         FbE7hLkhoQQ1s1z6RwRzwCaAawA9wf60OGIeD5NZmlYAIAkW6ED0B63x/Rnu7mfXFxjJ
+         5p9pqqxK7FuU3CIOHmX+tHXDrgW7GUF6IVbSF8ylDCvQn7bT6/4lBDWdNohbaygwUCVR
+         Sa3vvlPlqgkh6yD6l/q9OYFRgrn6ma3rYnqcmSKyErf38/Yl9F25yFRy9DVR+P7Pu51N
+         zTpQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=J1r4RQ1Lh/liVlFn3fp96U8K6fWHDlO19TLd8irv6oM=;
-        fh=51AikkyfwI2yXSLvr3cgh+COfHBXGvGR4f0J42w/8r4=;
-        b=K0xzad0rOD5hxUDkI76X43sOjoSwP8SBNoU5O09C66maxrD6bxpF+MsLVXOFhteIXS
-         fnlKbi9np07lSuJMonjovdu0YAoo6egFKVO/P+6MQ+CS2a1fai3kACiWSU83gaEbUkSK
-         MzmE3oMOkRqBQk/po2lxuD9GhQecGHcKuyblddCTaYvCGbboPRxVaMBAN8FOBCydfiC9
-         oRxkV3y6vtuYmQDIIHEdxynm8e/tCcw/wEN0fNJ6EfQ2PPfIH+YwA6aPI7CN1rLXBKWp
-         aKRNWJDNzvA0bx/i67mRBBnNWUq3YXy6oOudScbqUokawawKWb9w2Lcsvk11wgGCWaGp
-         7zHA==;
+        bh=fj81Cns/wfwlv0UO7AzJfpQ7VHRW7WKgcG2nbf3f8mE=;
+        fh=JWzwmLVocg40YHZWfnL0vU2ui/T4M+bVowLevdXyozg=;
+        b=zg4GUx3Fc3tf4ce/SqTv14bGor4O2DxAHfj5Or3gxZdtsvDDnRaFyO3sHo3D+ZeLY0
+         oKkFhK2Hf0cIiBJntwAkhaCEyalDncuooZ9xCcx4OGaPFyvmBxoytnJgA8TxHAoefBTv
+         z93Qd3p4jPnbCLKxwM2xuel4TyfhP6/t2mIVfJBLlk0HXOss2UGaK21dS4D5KaLRCLBc
+         O9lm7cEEPN/qph3jJ5rroKopF9/W5DHVxNE/RUzqLb1eM/mUvXPBYP4c1Cf0oEL3neiW
+         d6hZauwkV/Q35w/F4bTnxcFZEYqqa79nUubdEPksHohS2wY4JiHRUkKN4mmOUL6g1BjU
+         8Q1A==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=eapYYC1Y;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=shNvFlPN;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-250677-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-250677-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-250679-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-250679-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-250677-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 586e51a60fabf-25eaa31098fsi3507354fac.245.2024.07.12.06.15.41
+Return-Path: <linux-kernel+bounces-250679-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-a797de8f652si300118566b.324.2024.07.12.06.15.47
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jul 2024 06:15:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-250677-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Fri, 12 Jul 2024 06:15:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-250679-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=eapYYC1Y;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=shNvFlPN;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-250677-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-250677-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-250679-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-250679-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 84A88284B0F
-	for <alex.bennee@linaro.org>; Fri, 12 Jul 2024 13:15:41 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 05EF61F22472
+	for <alex.bennee@linaro.org>; Fri, 12 Jul 2024 13:15:47 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id C330517107D;
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id EFABE171086;
 	Fri, 12 Jul 2024 13:15:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="eapYYC1Y"
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="shNvFlPN"
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7F599170829;
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9DA3417085D;
 	Fri, 12 Jul 2024 13:15:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1720790122; cv=none; b=Zx8O92OwwlHUlhXjAY5H1H1yv5T5fnFPF0D1mkN7oPC9iyixLiLQSN9mRD5K0t5yDkoXAk9mQXZQjk2PS0frY+MzGOMEQNUkqE38jjtC5H/dGsjsLrxoxip6LbsSNDblUFb6xMFndxpBoNNe6j4LLjH7VseS6vrBASCOgNlcKCo=
+	t=1720790122; cv=none; b=V7UzUTGOf3W4LwX/13nVfm4H3vCzEe3TZ0AuIWpWkWOV/wlyTWnkh5Y4t1+JAL8kp+wbATi+LX4Fn+bBE2hpPodcIU9R779LDnnF2jEC5Y2VpImq2+BzioMJuvIY5EoK0sNVJqYvJCohCOjCzwpp1Dqk8UxcFDQLXurnP9/wVWA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
 	s=arc-20240116; t=1720790122; c=relaxed/simple;
-	bh=9YH+uN2FpTDfQsql9e3P4xbbtz8E4TbY1G0zlNhC2vc=;
+	bh=SAEGdrf246FkKPr4lSy9UNGxgkwkh9lZq9CgAdRPGs8=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=oh8hoTxFsqA1zW851iyW2QGWk9uxzOcbZj52zJUtopWhhybxFXNVmKJGolucgIdcvffroL2QgO2UydTkeEs9fXIQiknh0J6czkegtYLnWkGtqLRxZSx30QhPHh+TdWWGPKO8XXK9xMxP4Nxs7ksw+W6jEzooKpxKL0Vw3TXTovM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=eapYYC1Y; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24CAEC4AF10;
+	 MIME-Version; b=nxjWsDxRVjg6CYGfGHoxnuCb3uSh0R45Tae3pQR1QshzuGFBUBB7p3nCFwiZs4Z59G033SuQkEkPtpVHCKa2oxL929e9IEAWOdNUkI0+1pS0GtHea64cCvNCc4Hq5xoikY4jhU/95eqMWRpxETlux2t2QhqNOX4YSXHftf1Qfkk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=shNvFlPN; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1854EC32782;
 	Fri, 12 Jul 2024 13:15:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1720790122;
-	bh=9YH+uN2FpTDfQsql9e3P4xbbtz8E4TbY1G0zlNhC2vc=;
+	bh=SAEGdrf246FkKPr4lSy9UNGxgkwkh9lZq9CgAdRPGs8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eapYYC1YsFxVkG74Ij9c7WPxBrDik6Dqz5rJDE067AbX4V7pyvKO6RY/TBroOU5cb
-	 i9NYFBukMQs8CJKDCGCMSpuGTmIf7zD1x4HHEBoPVzh0viqR3CR3jRddADhVMzc7JS
-	 nwlpJuMzv4wokjqYHdC82c7TxO8JXL1HVST+t1toy0fvyEJvMR09s9E5G/pSfkDgAH
-	 hLpFOKLu4dIMADQInwO6h5sLrv6HK2ganuIdozDycsvr2CWfOg+J3AyJ9Fc20wMXEA
-	 KsBQmLZYMeB8i/t4aqRJhEosxKpNjU1Lb/E+7mNwsrgAVjqpERP0203NQMYHluXqQ3
-	 mPWoOMxPRO5jg==
+	b=shNvFlPN5cmM/QoEDMuvnWpqO5uG6Wezy2jJe0abL+dfNMqtxpZvnQeFfOR9aY9tI
+	 HthJyhey366fTKS9UJp123GgIy/w9YHrvMT01xFYptV64Rxf//37EzsNSI+9Xsfscd
+	 h+/A3SqytBIL8w67lgSzyabBALG7gs4UbSO1j3lziTNdtm3KN0+fMGg5VLfpiWY86x
+	 aYeLB98FC5Wx8EeogqIPo6TLGb4uKRRTtTpWZpKP1W3sYSpc+WEg8ZiHnqk4JONgYT
+	 R7sYhlkfQQxd1mEk1/f1IvcdnWE5DA7WvBv3MtwMFi+FjoJ1x1AZDab6FgPK08evzz
+	 vKzP1hQW0qSQA==
 Received: from mchehab by mail.kernel.org with local (Exim 4.97.1)
 	(envelope-from <mchehab@kernel.org>)
-	id 1sSG7K-00000003iED-1V73;
+	id 1sSG7K-00000003iE0-1A0n;
 	Fri, 12 Jul 2024 15:15:18 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	"Jonathan Cameron" <Jonathan.Cameron@huawei.com>,
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	"Shiju Jose" <shiju.jose@huawei.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
 	linux-edac@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 5/7] target/arm: preserve mpidr value
-Date: Fri, 12 Jul 2024 15:15:12 +0200
-Message-ID: <f0b1356f3f734446ed490911871510965d5cbd2c.1720789922.git.mchehab+huawei@kernel.org>
+	qemu-devel@nongnu.org,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: [PATCH v2 2/7] arm/virt: Wire up GPIO error source for ACPI / GHES
+Date: Fri, 12 Jul 2024 15:15:09 +0200
+Message-ID: <1306bcb4294a73525e2dbb775ec29c0e73f509e6.1720789922.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <cover.1720789921.git.mchehab+huawei@kernel.org>
 References: <cover.1720789921.git.mchehab+huawei@kernel.org>
@@ -106,72 +114,178 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: Mauro Carvalho Chehab <mchehab@kernel.org>
-X-TUID: suCtBX0g0+M1
+X-TUID: XVpvt3KW+paY
 
-There is a logic at helper to properly fill the mpidr information.
-This is needed for ARM Processor error injection, so store the
-value inside a cpu opaque value, to allow it to be used.
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
+Creates a GED - Generic Event Device and set a GPIO to
+be used or error injection.
+
+[mchehab: use a define for the generic event pin number and do some cleanups]
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- target/arm/cpu.h    |  1 +
- target/arm/helper.c | 10 ++++++++--
- 2 files changed, 9 insertions(+), 2 deletions(-)
+ hw/arm/virt-acpi-build.c | 30 ++++++++++++++++++++++++++----
+ hw/arm/virt.c            | 14 ++++++++++++--
+ include/hw/arm/virt.h    |  1 +
+ include/hw/boards.h      |  1 +
+ 4 files changed, 40 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index a12859fc5335..d2e86f0877cc 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1033,6 +1033,7 @@ struct ArchCPU {
-         uint64_t reset_pmcr_el0;
-     } isar;
-     uint64_t midr;
-+    uint64_t mpidr;
-     uint32_t revidr;
-     uint32_t reset_fpsid;
-     uint64_t ctr;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ce319572354a..2432b5b09607 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -4692,7 +4692,7 @@ static uint64_t mpidr_read_val(CPUARMState *env)
-     return mpidr;
- }
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index ad0a0bcec310..98b980e2443e 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -63,6 +63,7 @@
  
--static uint64_t mpidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+static uint64_t mpidr_read(CPUARMState *env)
+ #define ARM_SPI_BASE 32
+ 
++#define ACPI_GENERIC_EVENT_DEVICE "GEDD"
+ #define ACPI_BUILD_TABLE_SIZE             0x20000
+ 
+ static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
+@@ -142,6 +143,8 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+                                            uint32_t gpio_irq)
  {
-     unsigned int cur_el = arm_current_el(env);
++    uint32_t pin;
++
+     Aml *dev = aml_device("GPO0");
+     aml_append(dev, aml_name_decl("_HID", aml_string("ARMH0061")));
+     aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+@@ -155,7 +158,12 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
  
-@@ -4702,6 +4702,11 @@ static uint64_t mpidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     return mpidr_read_val(env);
+     Aml *aei = aml_resource_template();
+     /* Pin for power button */
+-    const uint32_t pin = GPIO_PIN_POWER_BUTTON;
++    pin = GPIO_PIN_POWER_BUTTON;
++    aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
++                                 AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
++                                 "GPO0", NULL, 0));
++    /* Pin for generic error */
++    pin = GPIO_PIN_GENERIC_ERROR;
+     aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
+                                  AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
+                                  "GPO0", NULL, 0));
+@@ -166,6 +174,11 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+     aml_append(method, aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
+                                   aml_int(0x80)));
+     aml_append(dev, method);
++    method = aml_method("_E06", 0, AML_NOTSERIALIZED);
++    aml_append(method, aml_notify(aml_name(ACPI_GENERIC_EVENT_DEVICE),
++                                  aml_int(0x80)));
++    aml_append(dev, method);
++
+     aml_append(scope, dev);
  }
  
-+static uint64_t mpidr_read_ri(CPUARMState *env, const ARMCPRegInfo *ri)
+@@ -800,6 +813,15 @@ static void build_fadt_rev6(GArray *table_data, BIOSLinker *linker,
+     build_fadt(table_data, linker, &fadt, vms->oem_id, vms->oem_table_id);
+ }
+ 
++static void acpi_dsdt_add_generic_event_device(Aml *scope)
 +{
-+    return mpidr_read(env);
++    Aml *dev = aml_device(ACPI_GENERIC_EVENT_DEVICE);
++    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C33")));
++    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
++    aml_append(dev, aml_name_decl("_STA", aml_int(0xF)));
++    aml_append(scope, dev);
 +}
 +
- static const ARMCPRegInfo lpae_cp_reginfo[] = {
-     /* NOP AMAIR0/1 */
-     { .name = "AMAIR0", .state = ARM_CP_STATE_BOTH,
-@@ -9723,7 +9728,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             { .name = "MPIDR_EL1", .state = ARM_CP_STATE_BOTH,
-               .opc0 = 3, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = 5,
-               .fgt = FGT_MPIDR_EL1,
--              .access = PL1_R, .readfn = mpidr_read, .type = ARM_CP_NO_RAW },
-+              .access = PL1_R, .readfn = mpidr_read_ri, .type = ARM_CP_NO_RAW },
-         };
- #ifdef CONFIG_USER_ONLY
-         static const ARMCPRegUserSpaceInfo mpidr_user_cp_reginfo[] = {
-@@ -9733,6 +9738,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-         modify_arm_cp_regs(mpidr_cp_reginfo, mpidr_user_cp_reginfo);
- #endif
-         define_arm_cp_regs(cpu, mpidr_cp_reginfo);
-+        cpu->mpidr = mpidr_read(env);
+ /* DSDT */
+ static void
+ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+@@ -841,10 +863,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                       HOTPLUG_HANDLER(vms->acpi_dev),
+                       irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY,
+                       memmap[VIRT_ACPI_GED].base);
+-    } else {
+-        acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+-                           (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+     }
++    acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
++                       (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+ 
+     if (vms->acpi_dev) {
+         uint32_t event = object_property_get_uint(OBJECT(vms->acpi_dev),
+@@ -858,6 +879,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
      }
  
-     if (arm_feature(env, ARM_FEATURE_AUXCR)) {
+     acpi_dsdt_add_power_button(scope);
++    acpi_dsdt_add_generic_event_device(scope);
+ #ifdef CONFIG_TPM
+     acpi_dsdt_add_tpm(scope, vms);
+ #endif
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 7b886f3477b6..e470c6c33352 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -997,6 +997,13 @@ static void create_rtc(const VirtMachineState *vms)
+ }
+ 
+ static DeviceState *gpio_key_dev;
++
++static DeviceState *gpio_error_dev;
++static void virt_set_error(void)
++{
++    qemu_set_irq(qdev_get_gpio_in(gpio_error_dev, 0), 1);
++}
++
+ static void virt_powerdown_req(Notifier *n, void *opaque)
+ {
+     VirtMachineState *s = container_of(n, VirtMachineState, powerdown_notifier);
+@@ -1015,6 +1022,9 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+     gpio_key_dev = sysbus_create_simple("gpio-key", -1,
+                                         qdev_get_gpio_in(pl061_dev,
+                                                          GPIO_PIN_POWER_BUTTON));
++    gpio_error_dev = sysbus_create_simple("gpio-key", -1,
++                                          qdev_get_gpio_in(pl061_dev,
++                                                           GPIO_PIN_GENERIC_ERROR));
+ 
+     qemu_fdt_add_subnode(fdt, "/gpio-keys");
+     qemu_fdt_setprop_string(fdt, "/gpio-keys", "compatible", "gpio-keys");
+@@ -2385,9 +2395,8 @@ static void machvirt_init(MachineState *machine)
+ 
+     if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+         vms->acpi_dev = create_acpi_ged(vms);
+-    } else {
+-        create_gpio_devices(vms, VIRT_GPIO, sysmem);
+     }
++    create_gpio_devices(vms, VIRT_GPIO, sysmem);
+ 
+     if (vms->secure && !vmc->no_secure_gpio) {
+         create_gpio_devices(vms, VIRT_SECURE_GPIO, secure_sysmem);
+@@ -3101,6 +3110,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->default_ram_id = "mach-virt.ram";
+     mc->default_nic = "virtio-net-pci";
+ 
++    mc->set_error = virt_set_error;
+     object_class_property_add(oc, "acpi", "OnOffAuto",
+         virt_get_acpi, virt_set_acpi,
+         NULL, NULL);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index a4d937ed45ac..c9769d7d4d7f 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -49,6 +49,7 @@
+ 
+ /* GPIO pins */
+ #define GPIO_PIN_POWER_BUTTON  3
++#define GPIO_PIN_GENERIC_ERROR 6
+ 
+ enum {
+     VIRT_FLASH,
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index ef6f18f2c1a7..6cf01f3934ae 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -304,6 +304,7 @@ struct MachineClass {
+     const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machine);
+     int64_t (*get_default_cpu_node_id)(const MachineState *ms, int idx);
+     ram_addr_t (*fixup_ram_size)(ram_addr_t size);
++    void (*set_error)(void);
+ };
+ 
+ /**
 -- 
 2.45.2
 

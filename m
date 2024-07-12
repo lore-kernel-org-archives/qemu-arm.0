@@ -1,268 +1,259 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp790084nji;
-        Fri, 12 Jul 2024 06:16:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXRVWA7/sl50dP6hv+M6ZHYfUGupmsImeXkVaeztvJvXvcQP8PsMPPZC+Q6rhQGhsLb+hL9u2MQpFRNBNyI7zEKfJsODmao
-X-Google-Smtp-Source: AGHT+IGjY3oyxvi/UNMUdr0RN6iUrP91zEHqYAWS0M63r5TvrDpTbOME5MbPvyEFN1DMx8HPJb8y
-X-Received: by 2002:a05:6122:a23:b0:4ec:fc9b:a0bc with SMTP id 71dfb90a1353d-4f33f1bb726mr13377620e0c.4.1720790194694;
-        Fri, 12 Jul 2024 06:16:34 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1720790194; cv=pass;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp805397nji;
+        Fri, 12 Jul 2024 06:42:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU80LO+po+ytIXo0Zsokd7cwnbJFBfcydtmw5Sqpu6lJIwY/va/4MextofFhzzNBdlwKMBu+LIWQKs31UdGdyEFzZIyEAVg
+X-Google-Smtp-Source: AGHT+IELBDt4kMHTDVfuIJ/+TPfBh6iDdVwK73Qv9Q+24HDXZOBiXBvYFxN4G/ctI4QuL2OUkvve
+X-Received: by 2002:a5d:69c2:0:b0:367:9b8b:ca42 with SMTP id ffacd0b85a97d-367cea67fe1mr7714050f8f.26.1720791764249;
+        Fri, 12 Jul 2024 06:42:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720791764; cv=none;
         d=google.com; s=arc-20160816;
-        b=GN0fbDO4tnUWUxp8YZ7Qe8o1JKY4w/Psx1ZOncynPTUDgCB55McBFrLrztM2lkN1Fz
-         DviMomM9aA6T0xL0dDTs9888LtAEMcphEEsq2Jjpluw6I6pwF8oxstfUh6Vc0+pfQgEJ
-         26S5TsbFZoEeYKyV9C3qdQvIbtxP7OlIQHf/m7RwmplbVZzCigHyZKwm4qCPRGQkp/Mg
-         llO7iQuR3QkiP1lDzHg8tjg+hsmUBvxQNWSHil0/MbOqdiXQ/OZlWzhDnT/1i7AgkpHN
-         d2FvWMoW++QSViBXHJvrLjZbbwpjmmrgUNUBXqTavo5CpvgelRqIbaHeIaYF5j29RBzA
-         D0QA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=HeMJVo1nZ+eZGu3mtjMfFocDLIj0STfTmzxt2VgxOv4=;
-        fh=kB2SKsllVR2doITz33YI7B+xueeL3hgO2Y7pD6b+yPE=;
-        b=treOVA+Uoa/biC0MypWG422seCrzyGqHaicEBLJFrkb95cnUSw7k17R9kvypVLdYR5
-         HaOA7/RJFT8sN/mbJoSb+0oo5K3dgTBqjuHZjqaVCNNFW7rAQrWFu7qnni6CuVPqZ1wP
-         fqc0nnxvTKYOLu23Pejfi3ytJCwDCh/LZSi8fyjG92WzuXJcme7quMTwyu+XO1DkwOyM
-         pHWp67j9VMJfCVHP3yPT3UuaKhwRYus5M1NgixSGDrvyHX8vwp7WNc/cHFg7KBURzVvp
-         znJrSQdaseWsV3KhGCczdUFf+undo21He8+gSxkxgPWBQdouBCEpILh/9efnaEM4odFf
-         N6Yg==;
+        b=OdF7CJJ/9qdhqXS1zU8dxn0buwDlOzWIwO9U8FLn/WVOyqDY5fC1DWYUEfWYzJHhEE
+         v9dYDme93sK3EPC7jbE0lxc7+L/nzEmvWhXoo93Hue3TunBHeDoAs2GW61unvdtAGXn8
+         CPRydPRPfdAHAyykm4Ju/4uW5JjL4ad52GaC95xHso8XqtXWi+FnK4sUid+upxDSPQIu
+         HbLTY/K6L7jJIrOJ/Tz67JZLe+mOxB2egB+gc+BMMb616dvQRsOhpITzCkQqyB5zc920
+         +2fc8wqtJ82+opx6zVvstmA0x0i93q99KSUjKTjH78EPo5/S/7RKw21etbmH91w1WUEE
+         sJOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=Psnur43gp7UbV0nHFK7Gr0NEw1Ys1mPrHzQ51esgSpc=;
+        fh=M0HTAxrI6BYZKxYd63sfeObsGy+Uhk81OO6h++LFq4Q=;
+        b=PqWKJo8Fv5OvbLRb+C5pStU8bRxVSsXk6fNbmkR1aLmpHTdXJq29aY/rWOKOz4W6JZ
+         APXpdnz9Yp/Ih9vvwDooey5+/DFMPG6Q0kAFLY/EU75Yiemsm80xvo8xaJJI8RqdzEtQ
+         EFfpLiSOP6N/RmmPLDQwlFiO5QPom4A/YZri5S3xQunpyI5AFnsVlm/p6Qwch83yXZTT
+         dyJ7fq0qFssI5iYSPbGHR9fSsa0JkKayRziwO6vkeZPl1f9EgK3NW0NS9bC4i2kufQSE
+         FvldWRn3jDOHNISRl5sS+ggKqzYLmP5/LFfHiG7uTocVVkURimEgL314i2BLu6sx/4Le
+         JOiQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=U2EqWA7C;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-250680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-250680-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-250680-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4f33da29e7csi1537509e0c.99.2024.07.12.06.16.34
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jul 2024 06:16:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-250680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-367cde807f2si5196268f8f.7.2024.07.12.06.42.44
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 12 Jul 2024 06:42:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=U2EqWA7C;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-250680-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-250680-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 34AC01C22400
-	for <alex.bennee@linaro.org>; Fri, 12 Jul 2024 13:16:34 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B8FFB172BA9;
-	Fri, 12 Jul 2024 13:15:25 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="U2EqWA7C"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C3CC171E4B;
-	Fri, 12 Jul 2024 13:15:24 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1720790124; cv=none; b=uzLAyEEhGewC5mbgoYOMm0f75Y8vpLgx9TgstwbPNRNV9qb2/grqvpgJ5c8nEVwquMZ0q+CR0cr+LBnZzMyuvRDBxEMubPBcMSqdDeTjFfpTwI3PDJZ9pc0k/UWvah6KVYUiHGx+JQMNoFnoR63YzR8qSmUWsvczf1z0qHc214Y=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1720790124; c=relaxed/simple;
-	bh=8fT3iZX4Ak9UXbYdPywtW7xLXPjIWOMseP9okwfRJuM=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=KNlJXaonX5jSLBLC5Y4j14LHnO8/QJdCTRa9uVNTD0HQpTSk8i+6MdjX1blpaSW5JjlvusxzJ3GzfiAaRrM22RF0e9l7qGYt9IOszmZEdVPXD5b/UMNPGV22hHn2ySwVg01g/i0cRYnKhUhT807Ev2pEKZdWRkabRhVAqBykAZA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=U2EqWA7C; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29EB5C4AF0E;
-	Fri, 12 Jul 2024 13:15:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720790124;
-	bh=8fT3iZX4Ak9UXbYdPywtW7xLXPjIWOMseP9okwfRJuM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=U2EqWA7CHtiDiiyTRgXZU7WHF3m0LWOjFPJPY81n2Nd11kwBzZ/GxNWTzFBGamcu1
-	 zdH8uqTMneNnuxECk5b6dEzbihDQGBlOM2XdrmIjaMoRVAKZpU7G464DS3mRzF/5hg
-	 x8yF5h2mWrJlLhyX3S7MqYhL3L3OUPg6CGeo480MhtkU3THgm3Ve67nL+1nXouIwBy
-	 eifKOq8k0Q62gnKCZTx/xRqqgY365VwIxXEnU0h7ftPTp5+GE2RvBKJ0aE9q5cjDvV
-	 EXGIR5ruwIwUi47FgnFkbrjaW1na6T3HbvHn2MVZek8t+PE9nYJPtu+aEU2QwD/185
-	 uG0mqUOV5WUZw==
-Received: from mchehab by mail.kernel.org with local (Exim 4.97.1)
-	(envelope-from <mchehab@kernel.org>)
-	id 1sSG7K-00000003iEH-1bpp;
-	Fri, 12 Jul 2024 15:15:18 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: 
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	"Jonathan Cameron" <Jonathan.Cameron@huawei.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	"Shiju Jose" <shiju.jose@huawei.com>,
-	Ani Sinha <anisinha@redhat.com>,
-	Dongjiu Geng <gengdongjiu1@gmail.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	linux-edac@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 6/7] acpi/ghes: update comments to point to newer ACPI specs
-Date: Fri, 12 Jul 2024 15:15:13 +0200
-Message-ID: <0cdc463665c98c017020d791d36659a879372c1f.1720789922.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <cover.1720789921.git.mchehab+huawei@kernel.org>
-References: <cover.1720789921.git.mchehab+huawei@kernel.org>
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WLCRV1sSTz6H7rP;
+	Fri, 12 Jul 2024 21:41:10 +0800 (CST)
+Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
+	by mail.maildlp.com (Postfix) with ESMTPS id 60DE41400D9;
+	Fri, 12 Jul 2024 21:42:42 +0800 (CST)
+Received: from 00293818-MRGF.huawei.com (10.195.244.27) by
+ lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 12 Jul 2024 14:42:21 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
+	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
+	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
+	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>
+Subject: [PATCH V14 0/7] Add architecture agnostic code to support vCPU Hotplug
+Date: Fri, 12 Jul 2024 14:41:54 +0100
+Message-ID: <20240712134201.214699-1-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Sender: Mauro Carvalho Chehab <mchehab@kernel.org>
-X-TUID: 8Q5Hv5TBVbiK
+X-Originating-IP: [10.195.244.27]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ lhrpeml500001.china.huawei.com (7.191.163.213)
+X-TUID: TCxBsCQjItoy
 
-There is one reference to ACPI 4.0 and several references
-to ACPI 6.x versions.
+[Note: References are present at the last after the revision history]
 
-Update them to point to ACPI 6.5 whenever possible.
+Virtual CPU hotplug support is being added across various architectures [1][3].
+This series adds various code bits common across all architectures:
 
-There's one reference that was kept pointing to ACPI 6.4,
-though, with HEST revision 1.
+1. vCPU creation and Parking code refactor [Patch 1]
+2. Update ACPI GED framework to support vCPU Hotplug [Patch 2,3]
+3. ACPI CPUs AML code change [Patch 4,5]
+4. Helper functions to support unrealization of CPU objects [Patch 6,7]
 
-ACPI 6.5 now defines HEST revision 2, and defined a new
-way to handle source types starting from 12. According
-with ACPI 6.5 revision history:
+Repository:
 
-	2312 Update to the HEST table and adding new error
-	     source descriptor - Table 18.2.
+[*] Architecture *Agnostic* Patch-set (This series)
+   V14: https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v3.arch.agnostic.v14
 
-Yet, the spec doesn't define yet any new source
-descriptors. It just defines a different behavior when
-source type is above 11.
+   NOTE: This series is meant to work in conjunction with the architecture-specific
+   patch-set. For ARM, a combined patch-set (architecture agnostic + specific) was
+   earlier pushed as RFC V2 [1]. Later, RFC V2 was split into the ARM Architecture
+   specific patch-set RFC V3 [4] (a subset of RFC V2) and the architecture agnostic
+   patch-set. Patch-set V14 is the latest version in that series. This series
+   works in conjunction with RFC V4-rc1, present at the following link.
 
-I also double-checked GHES implementation on an open
-source project (Linux Kernel). Currently upstream
-doesn't currently handle HEST revision, ignoring such
-field.
+[*] ARM Architecture *Specific* Patch-set
+   RFC V3 [4]: https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v3
+   RFC V4-rc1: https://github.com/salil-mehta/qemu.git virt-cpuhp-armv8/rfc-v4-rc1 (combined)
 
-In any case, revision 2 seems to be backward-compatible
-with revison 1 when type <= 11 and just one error is
-contained on a HEST record.
 
-So, while it is probably safe to update it, there's no
-real need. So, let's keep the implementation using
-an ACPI 6.4 compatible table, e. g. HEST revision 1.
+Revision History:
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- hw/acpi/ghes.c | 48 ++++++++++++++++++++++++++++--------------------
- 1 file changed, 28 insertions(+), 20 deletions(-)
+Patch-set V13 -> V14
+1. Addresses Igor Mammedov's following review comments
+  - Mentioned abput new external APIs in the header note of [PATCH 1/7]
+  - Merged Doc [PATCH V13 8/8] with [PATCH V14 3/7]
+  - Introduced GED realize function for various CPU Hotplug regions initializations
+  - Added back event handler method to indirectly expose \\_SB.CPUS.CSCN to GED
+    _EVT. Like for ARM, it would be through \\_SB.GED.CSCN event handler method
+  - Collected the Ack given for [Patch V13 6/8]
+  - Added back the gfree'ing of GDB regs in common finalize and made it conditional
+  - Updated the header notes of [PATCH V13 3/8,4/8,5/8] to reflect the changes
+Link: https://lore.kernel.org/qemu-devel/20240607115649.214622-1-salil.mehta@huawei.com/T/#rd0887eb07976bc76606a8204614ccc7d9a01c1f7
 
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index 6075ef5893ce..ebf1b812aaaa 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -45,9 +45,9 @@
- #define GAS_ADDR_OFFSET 4
- 
- /*
-- * The total size of Generic Error Data Entry
-- * ACPI 6.1/6.2: 18.3.2.7.1 Generic Error Data,
-- * Table 18-343 Generic Error Data Entry
-+ * The total size of Generic Error Data Entry before data field
-+ * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
-+ * Table 18.12 Generic Error Data Entry
-  */
- #define ACPI_GHES_DATA_LENGTH               72
- 
-@@ -65,8 +65,8 @@
- 
- /*
-  * Total size for Generic Error Status Block except Generic Error Data Entries
-- * ACPI 6.2: 18.3.2.7.1 Generic Error Data,
-- * Table 18-380 Generic Error Status Block
-+ * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
-+ * Table 18.11 Generic Error Status Block
-  */
- #define ACPI_GHES_GESB_SIZE                 20
- 
-@@ -82,7 +82,8 @@ enum AcpiGenericErrorSeverity {
- 
- /*
-  * Hardware Error Notification
-- * ACPI 4.0: 17.3.2.7 Hardware Error Notification
-+ * ACPI 6.5: 18.3.2.9 Hardware Error Notification,
-+ * Table 18.14 - Hardware Error Notification Structure
-  * Composes dummy Hardware Error Notification descriptor of specified type
-  */
- static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
-@@ -112,7 +113,8 @@ static void build_ghes_hw_error_notification(GArray *table, const uint8_t type)
- 
- /*
-  * Generic Error Data Entry
-- * ACPI 6.1: 18.3.2.7.1 Generic Error Data
-+ * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
-+ * Table 18.12 - Generic Error Data Entry
-  */
- static void acpi_ghes_generic_error_data(GArray *table,
-                 const uint8_t *section_type, uint32_t error_severity,
-@@ -148,7 +150,8 @@ static void acpi_ghes_generic_error_data(GArray *table,
- 
- /*
-  * Generic Error Status Block
-- * ACPI 6.1: 18.3.2.7.1 Generic Error Data
-+ * ACPI 6.5: 18.3.2.7.1 Generic Error Data,
-+ * Table 18.11 - Generic Hardware Error Source Structure
-  */
- static void acpi_ghes_generic_error_status(GArray *table, uint32_t block_status,
-                 uint32_t raw_data_offset, uint32_t raw_data_length,
-@@ -429,15 +432,18 @@ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
-         0, sizeof(uint64_t), ACPI_GHES_ERRORS_FW_CFG_FILE, 0);
- }
- 
--/* Build Generic Hardware Error Source version 2 (GHESv2) */
-+/*
-+ * Build Generic Hardware Error Source version 2 (GHESv2)
-+ * ACPI 6.5: 18.3.2.8 Generic Hardware Error Source version 2 (GHESv2 - Type 10),
-+ * Table 18.13: Generic Hardware Error Source version 2 (GHESv2)
-+ */
- static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
- {
-     uint64_t address_offset;
--    /*
--     * Type:
--     * Generic Hardware Error Source version 2(GHESv2 - Type 10)
--     */
-+    /* Type: (GHESv2 - Type 10) */
-     build_append_int_noprefix(table_data, ACPI_GHES_SOURCE_GENERIC_ERROR_V2, 2);
-+
-+    /* ACPI 6.5: Table 18.10 - Generic Hardware Error Source Structure */
-     /* Source Id */
-     build_append_int_noprefix(table_data, source_id, 2);
-     /* Related Source Id */
-@@ -481,11 +487,8 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-     /* Error Status Block Length */
-     build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
- 
--    /*
--     * Read Ack Register
--     * ACPI 6.1: 18.3.2.8 Generic Hardware Error Source
--     * version 2 (GHESv2 - Type 10)
--     */
-+    /* ACPI 6.5: fields defined at GHESv2 table */
-+    /* Read Ack Register */
-     address_offset = table_data->len;
-     build_append_gas(table_data, AML_AS_SYSTEM_MEMORY, 0x40, 0,
-                      4 /* QWord access */, 0);
-@@ -504,11 +507,16 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-     build_append_int_noprefix(table_data, 0x1, 8);
- }
- 
--/* Build Hardware Error Source Table */
-+/*
-+ * Build Hardware Error Source Table
-+ * ACPI 6.4: 18.3.2 ACPI Error Source
-+ * Table 18.2: Hardware Error Source Table (HEST)
-+ */
- void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
-                      const char *oem_id, const char *oem_table_id)
- {
--    AcpiTable table = { .sig = "HEST", .rev = 1,
-+    AcpiTable table = { .sig = "HEST",
-+                        .rev = 1,                   /* ACPI 4.0 to 6.4 */
-                         .oem_id = oem_id, .oem_table_id = oem_table_id };
- 
-     acpi_table_begin(&table, table_data);
+Patch-set  V12 -> V13
+1. Added Reviewed-by Tag of Harsh Prateek Bora's (IBM) [PATCH V12 1/8]
+2. Moved the kvm_{create,park,unpark}_vcpu prototypes from accel/kvm/kvm-cpus.h
+   to include/sysemu/kvm.h. These can later be exported through AccelOps.
+Link: https://lore.kernel.org/qemu-devel/62f55169-1796-4d8e-a35d-7f003a172750@linux.ibm.com/
+
+Patch-set  V11 -> V12
+1. Addressed Harsh Prateek Bora's (IBM) comment
+   - Changed @cpu to @vcpu_id in the kvm_unpark_vcpu protoype header/
+2. Added Zhao Liu's (Intel) Tested-by for whole series
+   - Qtest does not breaks on Intel platforms now.
+3. Added Zhao Liu's (Intel) Reviewed-by for [PATCH V11 {1/8 - 3/8}]
+Link: https://lore.kernel.org/qemu-devel/ZlRSPuJGBgyEUW6w@intel.com/
+Link: https://lore.kernel.org/qemu-devel/a5f3d78e-cfed-441f-9c56-e3e78fa5edee@linux.ibm.com/
+
+Patch-set  V10 -> V11
+1. Addressed Nicholas Piggin's (IBM) comment
+   - moved the traces in kvm_unpark_vcpu and kvm_create_vcpu at the end
+   - Added the Reviewed-by Tag for [PATCH V10 1/8]
+2.  Addressed Alex Bennée's (Linaro) comments
+   - Added a note explaining dependency of the [PATCH V10 7/8] on Arch specific patch-set
+Link: https://lore.kernel.org/qemu-devel/D1FS5GOOFWWK.2PNRIVL0V6DBL@gmail.com/ 
+Link: https://lore.kernel.org/qemu-devel/87frubi402.fsf@draig.linaro.org/
+
+Patch-set  V9 -> V10
+1. Addressed Nicholas Piggin's (IBM) & Philippe Mathieu-Daudé (Linaro) comments
+   - carved out kvm_unpark_vcpu and added its trace
+   - Widened the scope of the kvm_unpark_vcpu so that it can be used by generic framework
+     being thought out
+Link: https://lore.kernel.org/qemu-devel/20240519210620.228342-1-salil.mehta@huawei.com/
+Link: https://lore.kernel.org/qemu-devel/e94b0e14-efee-4050-9c9f-08382a36b63a@linaro.org/
+
+Patch-set  V8 -> V9
+1. Addressed Vishnu Pajjuri's (Ampere) comments
+   - Added kvm_fd to trace in kvm_create_vcpu
+   - Some clean ups: arch vcpu-id and sbd variable
+   - Added the missed initialization of cpu->gdb_num_regs
+2. Addressed the commnet from Zhao Liu (Intel)
+   - Make initialization of CPU Hotplug state conditional (possible_cpu_arch_ids!=NULL)
+Link: https://lore.kernel.org/qemu-devel/20240312020000.12992-1-salil.mehta@huawei.com/
+
+Patch-set V7 -> V8
+1. Rebased and Fixed the conflicts
+
+Patch-set  V6 -> V7
+1. Addressed Alex Bennée's comments
+   - Updated the docs
+2. Addressed Igor Mammedov's comments
+   - Merged patches [Patch V6 3/9] & [Patch V6 7/9] with [Patch V6 4/9]
+   - Updated commit-log of [Patch V6 1/9] and [Patch V6 5/9]     
+3. Added Shaoqin Huang's Reviewed-by tags for whole series.
+Link: https://lore.kernel.org/qemu-devel/20231013105129.25648-1-salil.mehta@huawei.com/
+
+Patch-set  V5 -> V6
+1. Addressed Gavin Shan's comments
+   - Fixed the assert() ranges of address spaces
+   - Rebased the patch-set to latest changes in the qemu.git
+   - Added Reviewed-by tags for patches {8,9}
+2. Addressed Jonathan Cameron's comments
+   - Updated commit-log for [Patch V5 1/9] with mention of trace events
+   - Added Reviewed-by tags for patches {1,5}
+3. Added Tested-by tags from Xianglai Li
+4. Fixed checkpatch.pl error "Qemu -> QEMU" in [Patch V5 1/9] 
+Link: https://lore.kernel.org/qemu-devel/20231011194355.15628-1-salil.mehta@huawei.com/
+
+Patch-set  V4 -> V5
+1. Addressed Gavin Shan's comments
+   - Fixed the trace events print string for kvm_{create,get,park,destroy}_vcpu
+   - Added Reviewed-by tag for patch {1}
+2. Added Shaoqin Huang's Reviewed-by tags for Patches {2,3}
+3. Added Tested-by Tag from Vishnu Pajjuri to the patch-set
+4. Dropped the ARM specific [Patch V4 10/10]
+Link: https://lore.kernel.org/qemu-devel/20231009203601.17584-1-salil.mehta@huawei.com/
+
+Patch-set  V3 -> V4
+1. Addressed David Hilderbrand's comments
+   - Fixed the wrong doc comment of kvm_park_vcpu API prototype
+   - Added Reviewed-by tags for patches {2,4}
+Link: https://lore.kernel.org/qemu-devel/20231009112812.10612-1-salil.mehta@huawei.com/
+
+Patch-set  V2 -> V3
+1. Addressed Jonathan Cameron's comments
+   - Fixed 'vcpu-id' type wrongly changed from 'unsigned long' to 'integer'
+   - Removed unnecessary use of variable 'vcpu_id' in kvm_park_vcpu
+   - Updated [Patch V2 3/10] commit-log with details of ACPI_CPU_SCAN_METHOD macro
+   - Updated [Patch V2 5/10] commit-log with details of conditional event handler method
+   - Added Reviewed-by tags for patches {2,3,4,6,7}
+2. Addressed Gavin Shan's comments
+   - Remove unnecessary use of variable 'vcpu_id' in kvm_par_vcpu
+   - Fixed return value in kvm_get_vcpu from -1 to -ENOENT
+   - Reset the value of 'gdb_num_g_regs' in gdb_unregister_coprocessor_all
+   - Fixed the kvm_{create,park}_vcpu prototypes docs
+   - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,10}
+3. Addressed one earlier missed comment by Alex Bennée in RFC V1
+   - Added traces instead of DPRINTF in the newly added and some existing functions
+Link: https://lore.kernel.org/qemu-devel/20230930001933.2660-1-salil.mehta@huawei.com/
+
+Patch-set V1 -> V2
+1. Addressed Alex Bennée's comments
+   - Refactored the kvm_create_vcpu logic to get rid of goto
+   - Added the docs for kvm_{create,park}_vcpu prototypes
+   - Splitted the gdbstub and AddressSpace destruction change into separate patches
+   - Added Reviewed-by tags for patches {2,10}
+Link: https://lore.kernel.org/qemu-devel/20230929124304.13672-1-salil.mehta@huawei.com/
+
+References:
+
+[1] https://lore.kernel.org/qemu-devel/20230926100436.28284-1-salil.mehta@huawei.com/
+[2] https://lore.kernel.org/all/20230913163823.7880-1-james.morse@arm.com/
+[3] https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loongson.cn/
+[4] https://lore.kernel.org/qemu-devel/20240613233639.202896-2-salil.mehta@huawei.com/
+
+Salil Mehta (7):
+  accel/kvm: Extract common KVM vCPU {creation,parking} code
+  hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header file
+  hw/acpi: Update ACPI GED framework to support vCPU Hotplug
+  hw/acpi: Update GED _EVT method AML with CPU scan
+  hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
+  physmem: Add helper function to destroy CPU AddressSpace
+  gdbstub: Add helper function to unregister GDB register space
+
+ accel/kvm/kvm-all.c                    | 95 +++++++++++++++++---------
+ accel/kvm/kvm-cpus.h                   |  1 -
+ accel/kvm/trace-events                 |  5 +-
+ docs/specs/acpi_hw_reduced_hotplug.rst |  3 +-
+ gdbstub/gdbstub.c                      | 13 ++++
+ hw/acpi/acpi-cpu-hotplug-stub.c        |  6 ++
+ hw/acpi/cpu.c                          | 23 +++++--
+ hw/acpi/generic_event_device.c         | 29 ++++++++
+ hw/core/cpu-common.c                   |  4 +-
+ hw/i386/acpi-build.c                   |  3 +-
+ include/exec/cpu-common.h              |  8 +++
+ include/exec/gdbstub.h                 |  6 ++
+ include/hw/acpi/cpu.h                  |  8 ++-
+ include/hw/acpi/generic_event_device.h |  4 ++
+ include/hw/core/cpu.h                  |  1 +
+ include/sysemu/kvm.h                   | 25 +++++++
+ system/physmem.c                       | 29 ++++++++
+ 17 files changed, 217 insertions(+), 46 deletions(-)
+
 -- 
-2.45.2
-
+2.34.1

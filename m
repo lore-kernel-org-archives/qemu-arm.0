@@ -1,287 +1,1184 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp789318nji;
-        Fri, 12 Jul 2024 06:15:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVjqi2tzByke/H39jqPVgZuaUnNe0X2d6jtJHvJhbr4cqlP9HiquZhYQqWBM0FZ7wx92lmIqR6UQbY12HmgwJDN1+jxkGGr
-X-Google-Smtp-Source: AGHT+IEclwXLCWZ0a3sjqd6IMMwG4u/bSBQHZNwWXvNTV3CjVgzshFli8UBsjUhGmagzVmRFI/aE
-X-Received: by 2002:a05:6808:2884:b0:3d9:dcbc:6b95 with SMTP id 5614622812f47-3d9dcbc7354mr7539967b6e.31.1720790124674;
-        Fri, 12 Jul 2024 06:15:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720790124; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp789325nji;
+        Fri, 12 Jul 2024 06:15:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXaawg7JxyqC33dvP8W9olNyhA3hP/vL9/g6sOgUziaT7VyuI9xLDLkDWjCEV2Dd2531xEOUXw3o8U10XwEQi0o1njkKEcI
+X-Google-Smtp-Source: AGHT+IHNyBJ+kF8xXyPeEUNdVrZLjBHXmHZcJZ0flVyeIq/GTyMgDXPA9Zpl38i/0r/l/HJYdqOb
+X-Received: by 2002:a05:6808:1703:b0:3d6:2ff3:937 with SMTP id 5614622812f47-3d93c0ab32bmr13060151b6e.40.1720790125123;
+        Fri, 12 Jul 2024 06:15:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720790125; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xbf9AGK7Dfa/5ckR1ee5B07p68jNcN8YNLeWeLAqf+biGGiOfqe5/+uNErqO4tx0re
-         UOdC8MjqtPHZUHZhD9bEmJ/nFv9zYiSafBvR15FlXPTrQZUPLUJnkePfl2oHtbOaVr0l
-         WC/SpgrwekNDM4KP1JIQ6+ZGIjB29du4suee+wc2MeqgjWFFEW9H+4TX/uHKyHcvG8OC
-         bMxhv+WGYjFZxcrChcgTMX5iM5tFAxPXgm9mjJL4oKbmvzcmsZooSF/JC2Huk7bRmW+s
-         IsC7tyrg0D6C+yiWjYSgpauzjJeBX5cUKtQyUiF8J0+YeMzpM9Ma+TOZ/vjktkUileLN
-         qGWQ==
+        b=NvTrMVKnrlsFH+T+ptfUlGShPmz/jQXzBvGkZBhBCKwEdRaKAFiI3icHej8RED9SBu
+         V9gEa5WRx7IejyWw23yAKiURBceJNBtbdEv+htH0O1HL5xpul47SbNhH2kwU/vYnL7Tk
+         NidTBFWdI2LcSYX3yroI3syu9gj9EsvIcryb+kdVpPDXWtE1Vc4Y1gsZGX5lS3XmHtpQ
+         TV647oR6pCd6hyL62nHf90LnjYpnVR/LpypsBkIzJFVaPvHyuonCMA+w/hR2Ak/6Tm2h
+         d3aOW+CF98HLKfyBNTXK0suFQPBbNiRFduBUEy4PdK56p+qKO35nH7TI3gNXOzhlN2kO
+         t8JQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:content-transfer-encoding:mime-version:message-id:date
-         :subject:cc:to:from:dkim-signature;
-        bh=GSHsXAAwT6Jvnx1P87jBSnHRfMrPxOHThhpF+5KFjZw=;
-        fh=lW7II2weFo+ZrAYOamG0NkRoZzl8dx7c3X8dUFDXyw4=;
-        b=MipOV/PasY437a4i/d2Mq+RKB2VerS1DssVQeXKNRZwaV6Zuw8OyfhKFSy9XxJQkYj
-         unbgLAjDUqvvJBDpyxWYY8EO1IzOEgPx17eE+6l4Ywon4UojPCQR4bP2rIJV46mNiKEr
-         rVg3NKiE+SNusEV4p52FhO6G7SZkm3LBXxqcRJf1FE7toohJMsga4TABe5dVA0TiMDfP
-         /EFFoT7gqI/UFHcHwAz0F5b4D379x1reRJhcLVfDfVltUv/kgIJmiDtb36z9+qHlYwhF
-         nJjED8mPHzMo67JQ1Jg02bwBS4BZOrH8NK/96QJkQaFHe5IT4FYeQJMSFr0mAw2HEjQC
-         qzBQ==;
+        h=sender:content-transfer-encoding:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=6tfq1zQQa2eewz96F83R8D77Hrp1ESNFbHgDi4giOT0=;
+        fh=XtffFQIhTxuVIYOwZOwDs+RdgyHy04oZgB0ss1aLhLE=;
+        b=hnAIJMwsv9zdkHTMzKMrq9Y2rBz1xtCQke9K30vil6pER/zsULqQQx1t9VbTp1i4lD
+         9q8y0mDEcR3fzRe2kfmTGibjNGlnyWH41uynke5l1x+rsLJKHTpjLT8sCpTsUTQ6Yskf
+         0xQVLPnlVjiRukB+/eZ3V7j2tVj8WtyCpJn9wTOcyYWw22ONX+njl6T1q6EaHWNdKlv1
+         mLLAd86KxxAIZ5NWI+85wkfAWKEvPbuDNY08GZSY1G/8FJV1sI/d47t37wGnQYKpCbYU
+         26LUKqUa1xv0TXcKwww/ctWOr7opEQ6aw/3xbs3BZyCJbyTLrxxrH0mKCntpfpSx0NkZ
+         vXYA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=RfEltek4;
-       spf=pass (google.com: domain of mchehab@kernel.org designates 145.40.73.55 as permitted sender) smtp.mailfrom=mchehab@kernel.org;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=jBmNpTdz;
+       spf=pass (google.com: domain of mchehab@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=mchehab@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <mchehab@kernel.org>
-Received: from sin.source.kernel.org (sin.source.kernel.org. [145.40.73.55])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-77d5fb4722asi8080670a12.455.2024.07.12.06.15.24
+Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
+        by mx.google.com with ESMTPS id 5614622812f47-3d9d0a6d0dfsi2808857b6e.104.2024.07.12.06.15.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 12 Jul 2024 06:15:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mchehab@kernel.org designates 145.40.73.55 as permitted sender) client-ip=145.40.73.55;
+        Fri, 12 Jul 2024 06:15:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mchehab@kernel.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=RfEltek4;
-       spf=pass (google.com: domain of mchehab@kernel.org designates 145.40.73.55 as permitted sender) smtp.mailfrom=mchehab@kernel.org;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=jBmNpTdz;
+       spf=pass (google.com: domain of mchehab@kernel.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=mchehab@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sin.source.kernel.org (Postfix) with ESMTP id 14732CE1AF8;
-	Fri, 12 Jul 2024 13:15:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21F6BC4AF07;
-	Fri, 12 Jul 2024 13:15:22 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTP id AD8E661F0F;
+	Fri, 12 Jul 2024 13:15:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 29E84C32786;
+	Fri, 12 Jul 2024 13:15:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1720790122;
-	bh=MGMlBnivAvmjZ0C8RVAOZqYx3QkANOHh0kWOJlIWGmM=;
-	h=From:To:Cc:Subject:Date:From;
-	b=RfEltek49bqcCYjB6mTEJE+4oW/aOoJlCfZwYPa1iqDdV57ET2ZxgNcM84A4n7JpU
-	 LAF5vSaz15AuKTdTkfgulC2j1TwrnpgLOEdsZr2MexZNZ/5rMnfW0FlCdGcWXPcQYk
-	 PhIpvhF6XYTbJ0QSTvjDRj+c9PdyRs02z6Zv08TM8DYObq+HQuJK4oq2eDCwxLI8d2
-	 gJ6Zzz8rJt9OS0fGp0rhvo02MFTgv+xJXiOyF3/99uVmRhDvetFHb86tZgpoY+SqID
-	 i3P4RXGpsP+FCjPCW8E6aBIi86HBiJ8lJy7qYW6uMARPtjpMBoE/i4eWdFQPEMd0T1
-	 AP4tA/GVDSDmg==
+	s=k20201202; t=1720790124;
+	bh=Ybf7OUJPfmsnLr0J4zNeX89cSaIch9LE7Gl5bnjIZWc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=jBmNpTdzZPZK0UwtFCXisX4NZTnOauztUc8vw3vmtb9eHvDgearmUahTQbpxqRKFj
+	 AtylDSLofXGo4XGZ7iJUWrSkoWGtsYZd01DxUVgMosgGa3QiDyu0gMPWsIFoL8tzh1
+	 hfVQJYeDHbbXEuQnhv5lGO5vXyAG4SpiIR7rtkEyLlcjyfdJUfHHtgdI1/lMMHDc1S
+	 RphnBMsILjCIsj6hj95/dZOxhgy3/SEF4n4xGhOoCJ3q0jrRw4WSQa9C3XH4X1NkE4
+	 02pc2QUCGbauyADL5uADVg+ID4MmIDo0M17CUvR9/EO9a7z/3/6/9/PC4cmj7U9Rn8
+	 kRKIfr6x58vsg==
 Received: from mchehab by mail.kernel.org with local (Exim 4.97.1)
 	(envelope-from <mchehab@kernel.org>)
-	id 1sSG7K-00000003iDu-0vb5;
+	id 1sSG7K-00000003iEL-1jI8;
 	Fri, 12 Jul 2024 15:15:18 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	linux-edac@vger.kernel.org,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Shiju Jose <shiju.jose@huawei.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"Jonathan Cameron" <Jonathan.Cameron@huawei.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	"Shiju Jose" <shiju.jose@huawei.com>,
 	Ani Sinha <anisinha@redhat.com>,
 	Beraldo Leal <bleal@redhat.com>,
 	Dongjiu Geng <gengdongjiu1@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
+	Eric Blake <eblake@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Shannon Zhao <shannon.zhaosl@gmail.com>,
 	Thomas Huth <thuth@redhat.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
+	linux-edac@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 0/7] Add ACPI CPER firmware first error injection for Arm Processor
-Date: Fri, 12 Jul 2024 15:15:07 +0200
-Message-ID: <cover.1720789921.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v2 7/7] acpi/ghes: extend arm error injection logic
+Date: Fri, 12 Jul 2024 15:15:14 +0200
+Message-ID: <8e054d0eb8702ec340eb77e4ccfdd4e80c24a822.1720789922.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <cover.1720789921.git.mchehab+huawei@kernel.org>
+References: <cover.1720789921.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Sender: Mauro Carvalho Chehab <mchehab@kernel.org>
-X-TUID: qu6p4dADsRX+
+X-TUID: 2DY8e+bh3Ydm
 
-Testing OS kernel ACPI APEI CPER support is tricky, as one depends on
-having hardware with special-purpose BIOS and/or hardware.
+Enrich CPER error injection logic for ARM processor to allow
+setting values to  from UEFI 2.10 tables N.16 and N.17.
 
-With QEMU, it becomes a lot easier, as it can be done via QMP.
+It should be noticed that, with such change, all arguments are
+now optional, so, once QMP is negotiated with:
 
-This series add support for ARM Processor CPER error injection,
-according with ACPI 6.x and UEFI 2.9A/2.10 specs.
+	{ "execute": "qmp_capabilities" }
 
-This series consists of:
+the simplest way to generate a cache error is to use:
 
-- one patch using a define for ARM virt GPIO power pin
-  (requested during last review);
-- three patches from Jonathan (one coauthored with Shiju) with basic
-  EINJ features, already submitted as RFC (but not merged yet) at:
-    https://lore.kernel.org/qemu-devel/20240628090605.529-1-shiju.jose@huawei.com/
-- three patches from me extending it to optionally allow to
-  generate all sorts of possible valid combinations for
-  ARM Processor CPER record.
+	{ "execute": "arm-inject-error" }
 
-I've been using it to test a Linux Kernel patch series fixing
-UEFI 2.9A errata and ARM processor trace event:
-   https://lore.kernel.org/linux-edac/3853853f820a666253ca8ed6c7c724dc3d50044a.1720679234.git.mchehab+huawei@kernel.org/T/#t
+Also, as now PEI is mapped into an array, it is possible to
+inject multiple errors at the same CPER record with:
 
-I also wrote some Wiki pages for rasdaemon (a Linux daemon
-widely used to monitor and react to RAS events):
-   https://github.com/mchehab/rasdaemon/wiki/error-injection
+	{ "execute": "arm-inject-error", "arguments": {
+	   "error": [ {"type": [ "cache-error" ]},
+		      {"type": [ "tlb-error" ]} ] } }
 
-Being really helpful to test the Linux Kernel behavior when
-firmware-first RAS events for ARM processor arrives there,
-helping to validate how CPER and GHES driver handles them
-(and further testing userspace apps like rasdaemon):
+This would generate both cache and TLB errors, using default
+values for other fields.
 
-Sending this command to QMP:
-    { "execute": "qmp_capabilities" } 
-    { "execute": "arm-inject-error", "arguments": {"error": [{"type": ["cache-error"]}]} }
+As all fields from ARM Processor CPER are now mapped, all
+types of CPER records can be generated with the new QAPI.
 
-Produces a simple CPER register, properly handled by the Linux
-Kernel:
-
-[  839.952678] {4}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-[  839.953145] {4}[Hardware Error]: event severity: recoverable
-[  839.953451] {4}[Hardware Error]:  Error 0, type: recoverable
-[  839.953763] {4}[Hardware Error]:   section_type: ARM processor error
-[  839.954094] {4}[Hardware Error]:   MIDR: 0x0000000000000000
-[  839.954383] {4}[Hardware Error]:   Multiprocessor Affinity Register (MPIDR): 0x0000000080000000
-[  839.954802] {4}[Hardware Error]:   running state: 0x0
-[  839.955066] {4}[Hardware Error]:   Power State Coordination Interface state: 0
-[  839.955424] {4}[Hardware Error]:   Error info structure 0:
-[  839.955712] {4}[Hardware Error]:   num errors: 1
-[  839.955983] {4}[Hardware Error]:    first error captured
-[  839.956260] {4}[Hardware Error]:    propagated error captured
-[  839.956561] {4}[Hardware Error]:    error_type: 0x02: cache error
-[  839.956882] {4}[Hardware Error]:    error_info: 0x000000000054007f
-[  839.957192] {4}[Hardware Error]:     transaction type: Instruction
-[  839.957495] {4}[Hardware Error]:     cache error, operation type: Instruction fetch
-[  839.957888] {4}[Hardware Error]:     cache level: 1
-[  839.958166] {4}[Hardware Error]:     processor context not corrupted
-[  839.958459] {4}[Hardware Error]:     the error has not been corrected
-[  839.958771] {4}[Hardware Error]:     PC is imprecise
-[  839.959074] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-
-rasdaemon output (rasdaemon still needs to be patched for
-UEFI 2.9A errata):
-
-           <...>-211   [002] d..1.     0.000129 arm_event 2024-07-11 09:50:45 +0000 affinity: -1 MPIDR: 0x80000000 MIDR: 0x0 running_state: 0 psci_state: 0 ARM Processor Err Info data len: 32
-<CANT FIND FIELD buf>cpu: 0; error: 2; affinity level: 255; MPIDR: 0000000080000000; MIDR: 0000000000000000; running state: 0; PSCI state: 0; ARM Processor Err Info data len: 32; ARM Processor Err Info raw data: 00 20 06 00 02 00 00 05 7f 00 54 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00; ARM Processor Err Context Info data len: 0; ARM Processor Err Context Info raw data: ; Vendor Specific Err Info data len: 0; Vendor Specific Err Info raw data: 
-
-More complex events with multiple Processor Error Information structures
-can be produced like:
-
-    { "execute": "arm-inject-error", "arguments":  {
-        "validation": ["mpidr-valid", "affinity-valid", "running-state-valid", "vendor-specific-valid"],
-        "running-state": [], "psci-state": 1229279264, 
-        "error": [{
-            "validation": ["multiple-error-valid", "flags-valid"], 
-	"type": ["tlb-error", "bus-error", "micro-arch-error"], 
-                               "multiple-error": 3, "phy-addr": 57005, "virt-addr": 48879},
-                 {"type": ["micro-arch-error"]}, 
-                 {"type": ["tlb-error"]}, 
-                 {"type": ["bus-error"]},
-                 {"type": ["cache-error"]}],
-                 "context": [{"register": [57005, 48879, 43962, 47787]}],
-                 "vendor-specific": [12, 23, 53, 52, 3, 123, 243, 255]} }
-
-[  925.340284] {5}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 1
-[  925.340662] {5}[Hardware Error]: event severity: recoverable
-[  925.340924] {5}[Hardware Error]:  Error 0, type: recoverable
-[  925.341280] {5}[Hardware Error]:   section_type: ARM processor error
-[  925.341631] {5}[Hardware Error]:   MIDR: 0x0000000000000000
-[  925.341893] {5}[Hardware Error]:   Multiprocessor Affinity Register (MPIDR): 0x0000000080000000
-[  925.342278] {5}[Hardware Error]:   error affinity level: 0
-[  925.342571] {5}[Hardware Error]:   running state: 0x0
-[  925.342835] {5}[Hardware Error]:   Power State Coordination Interface state: 1229279264
-[  925.343157] {5}[Hardware Error]:   Error info structure 0:
-[  925.343388] {5}[Hardware Error]:   num errors: 4
-[  925.343602] {5}[Hardware Error]:    error_type: 0x1c: TLB error|bus error|micro-architectural error
-[  925.343960] {5}[Hardware Error]:    virtual fault address: 0x000000000000beef
-[  925.344241] {5}[Hardware Error]:    physical fault address: 0x000000000000dead
-[  925.344526] {5}[Hardware Error]:   Error info structure 1:
-[  925.344757] {5}[Hardware Error]:   num errors: 1
-[  925.344965] {5}[Hardware Error]:    first error captured
-[  925.345183] {5}[Hardware Error]:    propagated error captured
-[  925.345416] {5}[Hardware Error]:    error_type: 0x10: micro-architectural error
-[  925.345714] {5}[Hardware Error]:   Error info structure 2:
-[  925.345946] {5}[Hardware Error]:   num errors: 1
-[  925.346148] {5}[Hardware Error]:    first error captured
-[  925.346413] {5}[Hardware Error]:    propagated error captured
-[  925.346719] {5}[Hardware Error]:    error_type: 0x04: TLB error
-[  925.346988] {5}[Hardware Error]:    error_info: 0x00000080d6460fff
-[  925.347248] {5}[Hardware Error]:     transaction type: Generic
-[  925.347492] {5}[Hardware Error]:     TLB error, operation type: Generic read (type of instruction or data request cannot be determined)
-[  925.347945] {5}[Hardware Error]:     TLB level: 1
-[  925.348153] {5}[Hardware Error]:     processor context corrupted
-[  925.348392] {5}[Hardware Error]:     the error has been corrected
-[  925.348635] {5}[Hardware Error]:     PC is imprecise
-[  925.348848] {5}[Hardware Error]:     Program execution can be restarted reliably at the PC associated with the error.
-[  925.349232] {5}[Hardware Error]:   Error info structure 3:
-[  925.349459] {5}[Hardware Error]:   num errors: 1
-[  925.349662] {5}[Hardware Error]:    first error captured
-[  925.349884] {5}[Hardware Error]:    propagated error captured
-[  925.350115] {5}[Hardware Error]:    error_type: 0x08: bus error
-[  925.350371] {5}[Hardware Error]:    error_info: 0x0000000078da03ff
-[  925.350629] {5}[Hardware Error]:     transaction type: Generic
-[  925.350878] {5}[Hardware Error]:     bus error, operation type: Prefetch
-[  925.351144] {5}[Hardware Error]:     affinity level at which the bus error occurred: 3
-[  925.351451] {5}[Hardware Error]:     processor context not corrupted
-[  925.351702] {5}[Hardware Error]:     the error has not been corrected
-[  925.351960] {5}[Hardware Error]:     PC is precise
-[  925.352164] {5}[Hardware Error]:     Program execution can be restarted reliably at the PC associated with the error.
-[  925.352546] {5}[Hardware Error]:     participation type: Generic
-[  925.352801] {5}[Hardware Error]:     address space: External Memory Access
-[  925.353071] {5}[Hardware Error]:   Error info structure 4:
-[  925.353299] {5}[Hardware Error]:   num errors: 1
-[  925.353502] {5}[Hardware Error]:    first error captured
-[  925.353720] {5}[Hardware Error]:    propagated error captured
-[  925.353963] {5}[Hardware Error]:    error_type: 0x02: cache error
-[  925.354222] {5}[Hardware Error]:    error_info: 0x000000000054007f
-[  925.354478] {5}[Hardware Error]:     transaction type: Instruction
-[  925.354782] {5}[Hardware Error]:     cache error, operation type: Instruction fetch
-[  925.355203] {5}[Hardware Error]:     cache level: 1
-[  925.355495] {5}[Hardware Error]:     processor context not corrupted
-[  925.355848] {5}[Hardware Error]:     the error has not been corrected
-[  925.356206] {5}[Hardware Error]:     PC is imprecise
-[  925.356493] {5}[Hardware Error]:   Context info structure 0:
-[  925.356809] {5}[Hardware Error]:    register context type: AArch64 EL1 context registers
-[  925.357282] {5}[Hardware Error]:    00000000: 0000dead 00000000 0000beef 00000000
-[  925.357800] {5}[Hardware Error]:    00000010: 0000abba 00000000 0000baab 00000000
-[  925.358267] {5}[Hardware Error]:    00000020: 00000000 00000000
-[  925.358523] {5}[Hardware Error]:   Vendor specific error info has 8 bytes:
-[  925.358822] {5}[Hardware Error]:    00000000: 3435170c fff37b03                    ..54.{..
-[  925.359192] [Firmware Warn]: GHES: Unhandled processor error type 0x1c: TLB error|bus error|micro-architectural error
-[  925.359590] [Firmware Warn]: GHES: Unhandled processor error type 0x10: micro-architectural error
-[  925.359935] [Firmware Warn]: GHES: Unhandled processor error type 0x04: TLB error
-[  925.360235] [Firmware Warn]: GHES: Unhandled processor error type 0x08: bus error
-[  925.360534] [Firmware Warn]: GHES: Unhandled processor error type 0x02: cache error
-
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
+ hw/acpi/ghes.c                  | 168 +++++++-------
+ hw/arm/arm_error_inject.c       | 399 +++++++++++++++++++++++++++++++-
+ hw/arm/arm_error_inject_stubs.c |  20 +-
+ include/hw/acpi/ghes.h          |  40 +++-
+ qapi/arm-error-inject.json      | 250 +++++++++++++++++++-
+ tests/lcitool/libvirt-ci        |   2 +-
+ 6 files changed, 778 insertions(+), 101 deletions(-)
 
-Changes since v1:
-- added a new patch using a define for GPIO power pin;
-- patch 2 changed to also use a define for generic error GPIO pin;
-- a couple cleanups at patch 2 removing uneeded else clauses.
-
-Jonathan Cameron (3):
-  arm/virt: Wire up GPIO error source for ACPI / GHES
-  acpi/ghes: Support GPIO error source.
-  acpi/ghes: Add a logic to handle block addresses and FW first ARM
-    processor error injection
-
-Mauro Carvalho Chehab (4):
-  arm/virt: place power button pin number on a define
-  target/arm: preserve mpidr value
-  acpi/ghes: update comments to point to newer ACPI specs
-  acpi/ghes: extend arm error injection logic
-
- configs/targets/aarch64-softmmu.mak |   1 +
- hw/acpi/ghes.c                      | 324 ++++++++++++++++++---
- hw/arm/Kconfig                      |   4 +
- hw/arm/arm_error_inject.c           | 420 ++++++++++++++++++++++++++++
- hw/arm/arm_error_inject_stubs.c     |  34 +++
- hw/arm/meson.build                  |   3 +
- hw/arm/virt-acpi-build.c            |  34 ++-
- hw/arm/virt.c                       |  17 +-
- include/hw/acpi/ghes.h              |  41 +++
- include/hw/arm/virt.h               |   4 +
- include/hw/boards.h                 |   1 +
- qapi/arm-error-inject.json          | 277 ++++++++++++++++++
- qapi/meson.build                    |   1 +
- qapi/qapi-schema.json               |   1 +
- target/arm/cpu.h                    |   1 +
- target/arm/helper.c                 |  10 +-
- tests/lcitool/libvirt-ci            |   2 +-
- 17 files changed, 1130 insertions(+), 45 deletions(-)
- create mode 100644 hw/arm/arm_error_inject.c
- create mode 100644 hw/arm/arm_error_inject_stubs.c
- create mode 100644 qapi/arm-error-inject.json
-
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index ebf1b812aaaa..afd1d098a7e3 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -55,10 +55,10 @@
+ #define ACPI_GHES_MEM_CPER_LENGTH           80
+ 
+ /*
+- * ARM Processor section CPER size, UEFI 2.10: N.2.4.4
+- * ARM Processor Error Section
++ * ARM Processor error section CPER sizes - UEFI 2.10: N.2.4.4
+  */
+-#define ACPI_GHES_ARM_CPER_LENGTH (72 + 600)
++#define ACPI_GHES_ARM_CPER_LENGTH           40
++#define ACPI_GHES_ARM_CPER_PEI_LENGTH       32
+ 
+ /* Masks for block_status flags */
+ #define ACPI_GEBS_UNCORRECTABLE         1
+@@ -242,94 +242,98 @@ static int acpi_ghes_record_mem_error(uint64_t error_block_address,
+ }
+ 
+ /* UEFI 2.9: N.2.4.4 ARM Processor Error Section */
+-static void acpi_ghes_build_append_arm_cper(uint8_t error_types, GArray *table)
++static void acpi_ghes_build_append_arm_cper(ArmError err, uint32_t cper_length,
++                                            GArray *table)
+ {
++    unsigned int i, j;
++
+     /*
+      * ARM Processor Error Record
+      */
+ 
+     /* Validation Bits */
+-    build_append_int_noprefix(table,
+-                              (1ULL << 3) | /* Vendor specific info Valid */
+-                              (1ULL << 2) | /* Running status Valid */
+-                              (1ULL << 1) | /* Error affinity level Valid */
+-                              (1ULL << 0), /* MPIDR Valid */
+-                              4);
++    build_append_int_noprefix(table, err.validation, 4);
++
+     /* Error Info Num */
+-    build_append_int_noprefix(table, 1, 2);
++    build_append_int_noprefix(table, err.err_info_num, 2);
++
+     /* Context Info Num */
+-    build_append_int_noprefix(table, 1, 2);
++    build_append_int_noprefix(table, err.context_info_num, 2);
++
+     /* Section length */
+-    build_append_int_noprefix(table, ACPI_GHES_ARM_CPER_LENGTH, 4);
++    build_append_int_noprefix(table, cper_length, 4);
++
+     /* Error affinity level */
+-    build_append_int_noprefix(table, 2, 1);
++    build_append_int_noprefix(table, err.affinity_level, 1);
++
+     /* Reserved */
+     build_append_int_noprefix(table, 0, 3);
++
+     /* MPIDR_EL1 */
+-    build_append_int_noprefix(table, 0xAB12, 8);
++    build_append_int_noprefix(table, err.mpidr_el1, 8);
++
+     /* MIDR_EL1 */
+-    build_append_int_noprefix(table, 0xCD24, 8);
++    build_append_int_noprefix(table, err.midr_el1, 8);
++
+     /* Running state */
+-    build_append_int_noprefix(table, 0x1, 4);
+-    /* PSCI state */
+-    build_append_int_noprefix(table, 0x1234, 4);
+-
+-    /* ARM Propcessor error information */
+-    /* Version */
+-    build_append_int_noprefix(table, 0, 1);
+-    /*  Length */
+-    build_append_int_noprefix(table, 32, 1);
+-    /* Validation Bits */
+-    build_append_int_noprefix(table,
+-                              (1ULL << 4) | /* Physical fault address Valid */
+-                             (1ULL << 3) | /* Virtual fault address Valid */
+-                             (1ULL << 2) | /* Error information Valid */
+-                              (1ULL << 1) | /* Flags Valid */
+-                              (1ULL << 0), /* Multiple error count Valid */
+-                              2);
+-    /* Type */
+-    if (error_types & BIT(ARM_PROCESSOR_ERROR_TYPE_CACHE_ERROR) ||
+-        error_types & BIT(ARM_PROCESSOR_ERROR_TYPE_TLB_ERROR) ||
+-        error_types & BIT(ARM_PROCESSOR_ERROR_TYPE_BUS_ERROR) ||
+-        error_types & BIT(ARM_PROCESSOR_ERROR_TYPE_MICRO_ARCH_ERROR)) {
+-        build_append_int_noprefix(table, error_types, 1);
+-    } else {
+-        return;
++    build_append_int_noprefix(table, err.running_state, 4);
++
++    /* PSCI state: only valid when running state is zero  */
++    build_append_int_noprefix(table, err.psci_state, 4);
++
++    for (i = 0; i < err.err_info_num; i++) {
++        /* ARM Propcessor error information */
++        /* Version */
++        build_append_int_noprefix(table, 0, 1);
++
++        /*  Length */
++        build_append_int_noprefix(table, ACPI_GHES_ARM_CPER_PEI_LENGTH, 1);
++
++        /* Validation Bits */
++        build_append_int_noprefix(table, err.pei[i].validation, 2);
++
++        /* Type */
++        build_append_int_noprefix(table, err.pei[i].type, 1);
++
++        /* Multiple error count */
++        build_append_int_noprefix(table, err.pei[i].multiple_error, 2);
++
++        /* Flags  */
++        build_append_int_noprefix(table, err.pei[i].flags, 1);
++
++        /* Error information  */
++        build_append_int_noprefix(table, err.pei[i].error_info, 8);
++
++        /* Virtual fault address  */
++        build_append_int_noprefix(table, err.pei[i].virt_addr, 8);
++
++        /* Physical fault address  */
++        build_append_int_noprefix(table, err.pei[i].phy_addr, 8);
++    }
++
++    for (i = 0; i < err.context_info_num; i++) {
++        /* ARM Propcessor error context information */
++        /* Version */
++        build_append_int_noprefix(table, 0, 2);
++
++        /* Validation type */
++        build_append_int_noprefix(table, err.context[i].type, 2);
++
++        /* Register array size */
++        build_append_int_noprefix(table, err.context[i].size * 8, 4);
++
++        /* Register array (byte 8 of Context info) */
++        for (j = 0; j < err.context[i].size; j++) {
++            build_append_int_noprefix(table, err.context[i].array[j], 8);
++        }
+     }
+-    /* Multiple error count */
+-    build_append_int_noprefix(table, 2, 2);
+-    /* Flags  */
+-    build_append_int_noprefix(table, 0xD, 1);
+-    /* Error information  */
+-    if (error_types & BIT(ARM_PROCESSOR_ERROR_TYPE_CACHE_ERROR)) {
+-        build_append_int_noprefix(table, 0x0091000F, 8);
+-    } else if (error_types & BIT(ARM_PROCESSOR_ERROR_TYPE_TLB_ERROR)) {
+-        build_append_int_noprefix(table, 0x0054007F, 8);
+-    } else if (error_types & BIT(ARM_PROCESSOR_ERROR_TYPE_BUS_ERROR)) {
+-        build_append_int_noprefix(table, 0x80D6460FFF, 8);
+-    } else if (error_types & BIT(ARM_PROCESSOR_ERROR_TYPE_MICRO_ARCH_ERROR)) {
+-        build_append_int_noprefix(table, 0x78DA03FF, 8);
+-    } else {
+-        return;
++
++    for (i = 0; i < err.vendor_num; i++) {
++        build_append_int_noprefix(table, err.vendor[i], 1);
+     }
+-    /* Virtual fault address  */
+-    build_append_int_noprefix(table, 0x67320230, 8);
+-    /* Physical fault address  */
+-    build_append_int_noprefix(table, 0x5CDFD492, 8);
+-
+-    /* ARM Propcessor error context information */
+-    /* Version */
+-    build_append_int_noprefix(table, 0, 2);
+-    /* Validation Bits */
+-    /* AArch64 EL1 context registers Valid */
+-    build_append_int_noprefix(table, 5, 2);
+-    /* Register array size */
+-    build_append_int_noprefix(table, 592, 4);
+-    /* Register array */
+-    build_append_int_noprefix(table, 0x12ABDE67, 8);
+ }
+ 
+-static int acpi_ghes_record_arm_error(uint8_t error_types,
++static int acpi_ghes_record_arm_error(ArmError error,
+                                       uint64_t error_block_address)
+ {
+     GArray *block;
+@@ -344,12 +348,18 @@ static int acpi_ghes_record_arm_error(uint8_t error_types,
+      * Table 17-13 Generic Error Data Entry
+      */
+     QemuUUID fru_id = {};
+-    uint32_t data_length;
++    uint32_t cper_length, data_length;
+ 
+     block = g_array_new(false, true /* clear */, 1);
+ 
+     /* This is the length if adding a new generic error data entry*/
+-    data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_ARM_CPER_LENGTH;
++    cper_length = ACPI_GHES_ARM_CPER_LENGTH;
++    cper_length += ACPI_GHES_ARM_CPER_PEI_LENGTH * error.err_info_num;
++    cper_length += error.context_length;
++    cper_length += error.vendor_num;
++
++    data_length = ACPI_GHES_DATA_LENGTH + cper_length;
++
+     /*
+      * It should not run out of the preallocated memory if adding a new generic
+      * error data entry
+@@ -363,11 +373,11 @@ static int acpi_ghes_record_arm_error(uint8_t error_types,
+ 
+     /* Build this new generic error data entry header */
+     acpi_ghes_generic_error_data(block, uefi_cper_arm_sec,
+-        ACPI_CPER_SEV_RECOVERABLE, 0, 0,
+-        ACPI_GHES_ARM_CPER_LENGTH, fru_id, 0);
++                                 ACPI_CPER_SEV_RECOVERABLE, 0, 0,
++                                 cper_length, fru_id, 0);
+ 
+     /* Build the ARM processor error section CPER */
+-    acpi_ghes_build_append_arm_cper(error_types, block);
++    acpi_ghes_build_append_arm_cper(error, cper_length, block);
+ 
+     /* Write the generic error data entry into guest memory */
+     cpu_physical_memory_write(error_block_address, block->data, block->len);
+@@ -663,7 +673,7 @@ static bool ghes_get_addr(uint32_t notify, uint64_t *error_block_addr,
+     return true;
+ }
+ 
+-bool ghes_record_arm_errors(uint8_t error_types, uint32_t notify)
++bool ghes_record_arm_errors(ArmError error, uint32_t notify)
+ {
+     int read_ack_register = 0;
+     uint64_t read_ack_register_addr = 0;
+@@ -689,7 +699,7 @@ bool ghes_record_arm_errors(uint8_t error_types, uint32_t notify)
+     read_ack_register = cpu_to_le64(0);
+     cpu_physical_memory_write(read_ack_register_addr,
+                               &read_ack_register, sizeof(uint64_t));
+-    return acpi_ghes_record_arm_error(error_types, error_block_addr);
++    return acpi_ghes_record_arm_error(error, error_block_addr);
+ }
+ 
+ bool acpi_ghes_present(void)
+diff --git a/hw/arm/arm_error_inject.c b/hw/arm/arm_error_inject.c
+index 1da97d5d4fdc..67f1c77546b9 100644
+--- a/hw/arm/arm_error_inject.c
++++ b/hw/arm/arm_error_inject.c
+@@ -10,23 +10,408 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "qapi-commands-arm-error-inject.h"
+ #include "hw/boards.h"
+ #include "hw/acpi/ghes.h"
++#include "cpu.h"
++
++#define ACPI_GHES_ARM_CPER_CTX_DEFAULT_NREGS 74
++
++/* Handle ARM Processor Error Information (PEI) */
++static const ArmProcessorErrorInformationList *default_pei = { 0 };
++
++static ArmPEI *qmp_arm_pei(uint16_t *err_info_num,
++              bool has_error,
++              ArmProcessorErrorInformationList const *error_list)
++{
++    ArmProcessorErrorInformationList const *next;
++    ArmPeiValidationBitsList const *validation_list;
++    ArmPEI *pei = NULL;
++    uint16_t i;
++
++    if (!has_error) {
++        error_list = default_pei;
++    }
++
++    *err_info_num = 0;
++
++    for (next = error_list; next; next = next->next) {
++        (*err_info_num)++;
++
++        if (*err_info_num >= 255) {
++            break;
++        }
++    }
++
++    pei = g_new0(ArmPEI, (*err_info_num));
++
++    for (next = error_list, i = 0;
++                i < *err_info_num; i++, next = next->next) {
++        ArmProcessorErrorTypeList *type_list = next->value->type;
++        uint16_t pei_validation = 0;
++        uint8_t flags = 0;
++        uint8_t type = 0;
++
++        if (next->value->has_validation) {
++            validation_list = next->value->validation;
++
++            while (validation_list) {
++                pei_validation |= BIT(next->value->validation->value);
++                validation_list = validation_list->next;
++            }
++        }
++
++        /*
++         * According with UEFI 2.9A errata, the meaning of this field is
++         * given by the following bitmap:
++         *
++         *   +-----|---------------------------+
++         *   | Bit | Meaning                   |
++         *   +=====+===========================+
++         *   |  1  | Cache Error               |
++         *   |  2  | TLB Error                 |
++         *   |  3  | Bus Error                 |
++         *   |  4  | Micro-architectural Error |
++         *   +-----|---------------------------+
++         *
++         *   All other values are reserved.
++         *
++         * As bit 0 is reserved, QAPI ArmProcessorErrorType starts from bit 1.
++         */
++        while (type_list) {
++            type |= BIT(type_list->value + 1);
++            type_list = type_list->next;
++        }
++        if (!has_error) {
++            type = BIT(ARM_PROCESSOR_ERROR_TYPE_CACHE_ERROR);
++        }
++        pei[i].type = type;
++
++        if (next->value->has_flags) {
++            ArmProcessorFlagsList *flags_list = next->value->flags;
++
++            while (flags_list) {
++                flags |= BIT(flags_list->value);
++                flags_list = flags_list->next;
++            }
++        } else {
++            flags = BIT(ARM_PROCESSOR_FLAGS_FIRST_ERROR_CAP) |
++                    BIT(ARM_PROCESSOR_FLAGS_PROPAGATED);
++        }
++        pei[i].flags = flags;
++
++        if (next->value->has_multiple_error) {
++            pei[i].multiple_error = next->value->multiple_error;
++            pei_validation |= BIT(ARM_PEI_VALIDATION_BITS_MULTIPLE_ERROR_VALID);
++        }
++
++        if (next->value->has_error_info) {
++            pei[i].error_info = next->value->error_info;
++        } else {
++            switch (type) {
++            case BIT(ARM_PROCESSOR_ERROR_TYPE_CACHE_ERROR):
++                pei[i].error_info = 0x0091000F;
++                break;
++            case BIT(ARM_PROCESSOR_ERROR_TYPE_TLB_ERROR):
++                pei[i].error_info = 0x0054007F;
++                break;
++            case BIT(ARM_PROCESSOR_ERROR_TYPE_BUS_ERROR):
++                pei[i].error_info = 0x80D6460FFF;
++                break;
++            case BIT(ARM_PROCESSOR_ERROR_TYPE_MICRO_ARCH_ERROR):
++                pei[i].error_info = 0x78DA03FF;
++                break;
++            default:
++                /*
++                 * UEFI 2.9A/2.10 doesn't define how this should be filled
++                 * when multiple types are there. So, set default to zero,
++                 * causing it to be removed from validation bits.
++                 */
++                pei[i].error_info = 0;
++            }
++        }
++
++        if (next->value->has_virt_addr) {
++            pei[i].virt_addr = next->value->virt_addr;
++            pei_validation |= BIT(ARM_PEI_VALIDATION_BITS_VIRT_ADDR_VALID);
++        }
++
++        if (next->value->has_phy_addr) {
++            pei[i].phy_addr = next->value->phy_addr;
++            pei_validation |= BIT(ARM_PEI_VALIDATION_BITS_PHY_ADDR_VALID);
++        }
++
++        if (!next->value->has_validation) {
++            if (pei[i].flags) {
++                pei_validation |= BIT(ARM_PEI_VALIDATION_BITS_FLAGS_VALID);
++            }
++            if (pei[i].error_info) {
++                pei_validation |= BIT(ARM_PEI_VALIDATION_BITS_ERROR_INFO_VALID);
++            }
++            if (next->value->has_virt_addr) {
++                pei_validation |= BIT(ARM_PEI_VALIDATION_BITS_VIRT_ADDR_VALID);
++            }
++
++            if (next->value->has_phy_addr) {
++                pei_validation |= BIT(ARM_PEI_VALIDATION_BITS_PHY_ADDR_VALID);
++            }
++        }
++
++        pei[i].validation = pei_validation;
++    }
++
++    return pei;
++}
++
++/*
++ * UEFI 2.10 default context register type (See UEFI 2.10 table N.21 for more)
++ */
++#define CONTEXT_AARCH32_EL1   1
++#define CONTEXT_AARCH64_EL1   5
++
++static int get_default_context_type(void)
++{
++    ARMCPU *cpu = ARM_CPU(qemu_get_cpu(0));
++    bool aarch64;
++
++    aarch64 = object_property_get_bool(OBJECT(cpu), "aarch64", NULL);
++
++    if (aarch64) {
++        return CONTEXT_AARCH64_EL1;
++    }
++    return CONTEXT_AARCH32_EL1;
++}
++
++/* Handle ARM Context */
++static ArmContext *qmp_arm_context(uint16_t *context_info_num,
++                                   uint32_t *context_length,
++                                   bool has_context,
++                                   ArmProcessorContextList const *context_list)
++{
++    ArmProcessorContextList const *next;
++    ArmContext *context = NULL;
++    uint16_t i, j, num, default_type;
++
++    default_type = get_default_context_type();
++
++    if (!has_context) {
++        *context_info_num = 0;
++        *context_length = 0;
++
++        return NULL;
++    }
++
++    /* Calculate sizes */
++    num = 0;
++    for (next = context_list; next; next = next->next) {
++        uint32_t n_regs = 0;
++
++        if (next->value->has_q_register) {
++            uint64List *reg = next->value->q_register;
++
++            while (reg) {
++                n_regs++;
++                reg = reg->next;
++            }
++
++            if (next->value->has_minimal_size &&
++                                        next->value->minimal_size < n_regs) {
++                n_regs = next->value->minimal_size;
++            }
++        } else if (!next->value->has_minimal_size) {
++            n_regs = ACPI_GHES_ARM_CPER_CTX_DEFAULT_NREGS;
++        }
++
++        if (!n_regs) {
++            next->value->minimal_size = 0;
++        } else {
++            next->value->minimal_size = (n_regs + 1) % 0xfffe;
++        }
++
++        num++;
++        if (num >= 65535) {
++            break;
++        }
++    }
++
++    context = g_new0(ArmContext, num);
++
++    /* Fill context data */
++
++    *context_length = 0;
++    *context_info_num = 0;
++
++    next = context_list;
++    for (i = 0; i < num; i++, next = next->next) {
++        if (!next->value->minimal_size) {
++            continue;
++        }
++
++        if (next->value->has_type) {
++            context[*context_info_num].type = next->value->type;
++        } else {
++            context[*context_info_num].type = default_type;
++        }
++        context[*context_info_num].size = next->value->minimal_size;
++        context[*context_info_num].array = g_malloc0(context[*context_info_num].size * 8);
++
++        (*context_info_num)++;
++
++        /* length = 64 bits * (size of the reg array + context type) */
++        *context_length += (context->size + 1) * 8;
++
++        if (!next->value->has_q_register) {
++            *context->array = 0xDEADBEEF;
++        } else {
++            uint64_t *pos = context->array;
++            uint64List *reg = next->value->q_register;
++
++            for (j = 0; j < context->size; j++) {
++                if (!reg) {
++                    break;
++                }
++
++                *(pos++) = reg->value;
++                reg = reg->next;
++            }
++        }
++    }
++
++    if (!*context_info_num) {
++        g_free(context);
++        return NULL;
++    }
++
++    return context;
++}
++
++static uint8_t *qmp_arm_vendor(uint32_t *vendor_num, bool has_vendor_specific,
++                               uint8List const *vendor_specific_list)
++{
++    uint8List const *next = vendor_specific_list;
++    uint8_t *vendor = NULL, *p;
++
++    if (!has_vendor_specific) {
++        return NULL;
++    }
++
++    *vendor_num = 0;
++
++    while (next) {
++        next = next->next;
++        (*vendor_num)++;
++    }
++
++    vendor = g_malloc(*vendor_num);
++
++    p = vendor;
++    next = vendor_specific_list;
++    while (next) {
++        *p = next->value;
++        next = next->next;
++        p++;
++    }
++
++    return vendor;
++}
+ 
+ /* For ARM processor errors */
+-void qmp_arm_inject_error(ArmProcessorErrorTypeList *errortypes, Error **errp)
++void qmp_arm_inject_error(bool has_validation,
++                    ArmProcessorValidationBitsList *validation_list,
++                    bool has_affinity_level,
++                    uint8_t affinity_level,
++                    bool has_mpidr_el1,
++                    uint64_t mpidr_el1,
++                    bool has_midr_el1,
++                    uint64_t midr_el1,
++                    bool has_running_state,
++                    ArmProcessorRunningStateList *running_state_list,
++                    bool has_psci_state,
++                    uint32_t psci_state,
++                    bool has_context, ArmProcessorContextList *context_list,
++                    bool has_vendor_specific, uint8List *vendor_specific_list,
++                    bool has_error,
++                    ArmProcessorErrorInformationList *error_list,
++                    Error **errp)
+ {
+     MachineState *machine = MACHINE(qdev_get_machine());
+     MachineClass *mc = MACHINE_GET_CLASS(machine);
+-    uint8_t error_types = 0;
++    ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
++    uint32_t running_state = 0;
++    uint16_t validation = 0;
++    ArmError error;
++    uint16_t i;
+ 
+-    while (errortypes) {
+-        error_types |= BIT(errortypes->value);
+-        errortypes = errortypes->next;
++    /* Handle UEFI 2.0 N.16 specific fields, setting defaults when needed */
++
++    if (!has_midr_el1) {
++        mpidr_el1 = armcpu->midr;
++    }
++
++    if (!has_mpidr_el1) {
++        mpidr_el1 = armcpu->mpidr;
++    }
++
++    if (has_running_state) {
++        while (running_state_list) {
++            running_state |= BIT(running_state_list->value);
++            running_state_list = running_state_list;
++        }
++
++        if (running_state) {
++            error.psci_state = 0;
++        }
++    }
++
++    if (has_validation) {
++        while (validation_list) {
++            validation |= BIT(validation_list->value);
++            validation_list = validation_list->next;
++        }
++    } else {
++        if (has_vendor_specific) {
++            validation |= BIT(ARM_PROCESSOR_VALIDATION_BITS_VENDOR_SPECIFIC_VALID);
++        }
++
++        if (has_affinity_level) {
++            validation |= BIT(ARM_PROCESSOR_VALIDATION_BITS_AFFINITY_VALID);
++        }
++
++        if (mpidr_el1) {
++            validation = BIT(ARM_PROCESSOR_VALIDATION_BITS_MPIDR_VALID);
++        }
++
++        if (!has_running_state) {
++            validation |= BIT(ARM_PROCESSOR_VALIDATION_BITS_RUNNING_STATE_VALID);
++        }
++    }
++
++    /* Fill an error record */
++
++    error.validation = validation;
++    error.affinity_level = affinity_level;
++    error.mpidr_el1 = mpidr_el1;
++    error.midr_el1 = midr_el1;
++    error.running_state = running_state;
++    error.psci_state = psci_state;
++
++    error.pei = qmp_arm_pei(&error.err_info_num, has_error, error_list);
++    error.context = qmp_arm_context(&error.context_info_num,
++                                    &error.context_length,
++                                    has_context, context_list);
++    error.vendor = qmp_arm_vendor(&error.vendor_num, has_vendor_specific,
++                                  vendor_specific_list);
++
++    ghes_record_arm_errors(error, ACPI_GHES_NOTIFY_GPIO);
++
++    if (error.context) {
++        for (i = 0; i < error.context_info_num; i++) {
++            g_free(error.context[i].array);
++        }
+     }
++    g_free(error.context);
++    g_free(error.pei);
++    g_free(error.vendor);
+ 
+-    ghes_record_arm_errors(error_types, ACPI_GHES_NOTIFY_GPIO);
+     if (mc->set_error) {
+         mc->set_error();
+     }
+diff --git a/hw/arm/arm_error_inject_stubs.c b/hw/arm/arm_error_inject_stubs.c
+index b51f4202fe64..7d7c00ad331b 100644
+--- a/hw/arm/arm_error_inject_stubs.c
++++ b/hw/arm/arm_error_inject_stubs.c
+@@ -10,9 +10,25 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "qapi-commands-arm-error-inject.h"
++#include "hw/acpi/ghes.h"
+ 
+-void qmp_arm_inject_error(ArmProcessorErrorTypeList *errortypes, Error **errp)
++void qmp_arm_inject_error(bool has_validation,
++                        ArmProcessorValidationBitsList *validation,
++                        bool has_affinity_level,
++                        uint8_t affinity_level,
++                        bool has_mpidr_el1,
++                        uint64_t mpidr_el1,
++                        bool has_midr_el1,
++                        uint64_t midr_el1,
++                        bool has_running_state,
++                        ArmProcessorRunningStateList *running_state,
++                        bool has_psci_state,
++                        uint32_t psci_state,
++                        bool has_context, ArmProcessorContextList *context,
++                        bool has_vendor_specific, uint8List *vendor_specific,
++                        bool has_error,
++                        ArmPeiList *error,
++                        Error **errp)
+ {
+     error_setg(errp, "ARM processor error support is not compiled in");
+ }
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index dc531ffce7ae..c591a5fb02c4 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -23,6 +23,7 @@
+ #define ACPI_GHES_H
+ 
+ #include "hw/acpi/bios-linker-loader.h"
++#include "qapi/qapi-commands-arm-error-inject.h"
+ 
+ /*
+  * Values for Hardware Error Notification Type field
+@@ -68,6 +69,43 @@ typedef struct AcpiGhesState {
+     bool present; /* True if GHES is present at all on this board */
+ } AcpiGhesState;
+ 
++typedef struct ArmPEI {
++    uint16_t validation;
++    uint8_t type;
++    uint16_t multiple_error;
++    uint8_t flags;
++    uint64_t error_info;
++    uint64_t virt_addr;
++    uint64_t phy_addr;
++} ArmPEI;
++
++typedef struct ArmContext {
++    uint16_t type;
++    uint32_t size;
++    uint64_t *array;
++} ArmContext;
++
++/* ARM processor - UEFI 2.10 table N.16 */
++typedef struct ArmError {
++    uint16_t validation;
++
++    uint8_t affinity_level;
++    uint64_t mpidr_el1;
++    uint64_t midr_el1;
++    uint32_t running_state;
++    uint32_t psci_state;
++
++    /* Those are calculated based on the input data */
++    uint16_t err_info_num;
++    uint16_t context_info_num;
++    uint32_t vendor_num;
++    uint32_t context_length;
++
++    ArmPEI *pei;
++    ArmContext *context;
++    uint8_t *vendor;
++} ArmError;
++
+ void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker);
+ void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
+                      const char *oem_id, const char *oem_table_id);
+@@ -75,7 +113,7 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+                           GArray *hardware_errors);
+ int acpi_ghes_record_errors(uint8_t notify, uint64_t error_physical_addr);
+ 
+-bool ghes_record_arm_errors(uint8_t error_types, uint32_t notify);
++bool ghes_record_arm_errors(ArmError error, uint32_t notify);
+ 
+ /**
+  * acpi_ghes_present: Report whether ACPI GHES table is present
+diff --git a/qapi/arm-error-inject.json b/qapi/arm-error-inject.json
+index 430e6cea6b60..2a314830fe60 100644
+--- a/qapi/arm-error-inject.json
++++ b/qapi/arm-error-inject.json
+@@ -2,40 +2,258 @@
+ # vim: filetype=python
+ 
+ ##
+-# = ARM Processor Errors
++# = ARM Processor Errors as defined at:
++# https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.html
++# See tables N.16, N.17 and N.21.
+ ##
+ 
++##
++# @ArmProcessorValidationBits:
++#
++# Indcates whether or not fields of ARM processor CPER record are valid.
++#
++# @mpidr-valid:  MPIDR Valid
++#
++# @affinity-valid: Error affinity level Valid
++#
++# @running-state-valid: Running State
++#
++# @vendor-specific-valid: Vendor Specific Info Valid
++#
++# Since: 9.1
++##
++{ 'enum': 'ArmProcessorValidationBits',
++  'data': ['mpidr-valid',
++           'affinity-valid',
++           'running-state-valid',
++           'vendor-specific-valid']
++}
++
++##
++# @ArmProcessorFlags:
++#
++# Indicates error attributes at the Error info section.
++#
++# @first-error-cap: First error captured
++#
++# @last-error-cap:  Last error captured
++#
++# @propagated: Propagated
++#
++# @overflow: Overflow
++#
++# Since: 9.1
++##
++{ 'enum': 'ArmProcessorFlags',
++  'data': ['first-error-cap',
++           'last-error-cap',
++           'propagated',
++           'overflow']
++}
++
++##
++# @ArmProcessorRunningState:
++#
++# Indicates if the processor is running.
++#
++# @processor-running: indicates that the processor is running
++#
++# Since: 9.1
++##
++{ 'enum': 'ArmProcessorRunningState',
++  'data': ['processor-running']
++}
++
+ ##
+ # @ArmProcessorErrorType:
+ #
+-# Type of ARM processor error to inject
+-#
+-# @unknown-error: Unknown error
++# Type of ARM processor error information to inject.
+ #
+ # @cache-error: Cache error
+ #
+ # @tlb-error: TLB error
+ #
+-# @bus-error: Bus error.
++# @bus-error: Bus error
+ #
+-# @micro-arch-error: Micro architectural error.
++# @micro-arch-error: Micro architectural error
+ #
+ # Since: 9.1
+ ##
+ { 'enum': 'ArmProcessorErrorType',
+-  'data': ['unknown-error',
+-	   'cache-error',
++  'data': ['cache-error',
+            'tlb-error',
+            'bus-error',
+            'micro-arch-error']
++ }
++
++##
++# @ArmPeiValidationBits:
++#
++# Indcates whether or not fields of Processor Error Info section are valid.
++#
++# @multiple-error-valid: Information at multiple-error field is valid
++#
++# @flags-valid: Information at flags field is valid
++#
++# @error-info-valid: Information at error-info field is valid
++#
++# @virt-addr-valid: Information at virt-addr field is valid
++#
++# @phy-addr-valid: Information at phy-addr field is valid
++#
++# Since: 9.1
++##
++{ 'enum': 'ArmPeiValidationBits',
++  'data': ['multiple-error-valid',
++           'flags-valid',
++           'error-info-valid',
++           'virt-addr-valid',
++           'phy-addr-valid']
++}
++
++##
++# @ArmProcessorErrorInformation:
++#
++# Contains ARM processor error information (PEI) data according with UEFI
++# CPER table N.17.
++#
++# @validation:
++#       Valid validation bits for error-info section.
++#       Argument is optional. If not specified, those flags will be enabled:
++#       first-error-cap and propagated.
++#
++# @type:
++#       ARM processor error types to inject. Argument is mandatory.
++#
++# @multiple-error:
++#       Indicates whether multiple errors have occurred.
++#       Argument is optional. If not specified and @validation not enforced,
++#       this field will be marked as invalid at CPER record..
++#
++# @flags:
++#       Indicates flags that describe the error attributes.
++#       Argument is optional. If not specified and defaults to
++#       first-error and propagated.
++#
++# @error-info:
++#       Error information structure is specific to each error type.
++#       Argument is optional, and its value depends on the PEI type(s).
++#       If not defined, the default depends on the type:
++#       - for cache-error: 0x0091000F;
++#       - for tlb-error: 0x0054007F;
++#       - for bus-error: 0x80D6460FFF;
++#       - for micro-arch-error: 0x78DA03FF;
++#       - if multiple types used, this bit is disabled from @validation bits.
++#
++# @virt-addr:
++#       Virtual fault address associated with the error.
++#       Argument is optional. If not specified and @validation not enforced,
++#       this field will be marked as invalid at CPER record..
++#
++# @phy-addr:
++#       Physical fault address associated with the error.
++#       Argument is optional. If not specified and @validation not enforced,
++#       this field will be marked as invalid at CPER record..
++#
++# Since: 9.1
++##
++{ 'struct': 'ArmProcessorErrorInformation',
++  'data': { '*validation': ['ArmPeiValidationBits'],
++            'type': ['ArmProcessorErrorType'],
++            '*multiple-error': 'uint16',
++            '*flags': ['ArmProcessorFlags'],
++            '*error-info': 'uint64',
++            '*virt-addr':  'uint64',
++            '*phy-addr': 'uint64'}
++}
++
++##
++# @ArmProcessorContext:
++#
++# Provide processor context state specific to the ARM processor architecture,
++# According with UEFI 2.10 CPER table N.21.
++# Argument is optional.If not specified, no context will be used.
++#
++# @type:
++#       Contains an integer value indicating the type of context state being
++#       reported.
++#       Argument is optional. If not defined, it will be set to be EL1 register
++#       for the emulation, e. g.:
++#       - on arm32: AArch32 EL1 context registers;
++#       - on arm64: AArch64 EL1 context registers.
++#
++# @register:
++#       Provides the contents of the actual registers or raw data, depending
++#       on the context type.
++#       Argument is optional. If not defined, it will fill the first register
++#       with 0xDEADBEEF, and the other ones with zero.
++#
++# @minimal-size:
++#       Argument is optional. If provided, define the minimal size of the
++#       context register array. The actual size is defined by checking the
++#       number of register values plus the content of this field (if used),
++#       ensuring that each processor context information structure array is
++#       padded with zeros if the size is not a multiple of 16 bytes.
++#
++# Since: 9.1
++##
++{ 'struct': 'ArmProcessorContext',
++  'data': { '*type': 'uint16',
++            '*minimal-size': 'uint32',
++            '*register': ['uint64']}
+ }
+ 
+ ##
+ # @arm-inject-error:
+ #
+-# Inject ARM Processor error.
++# Inject ARM Processor error with data to be filled accordign with UEFI 2.10
++# CPER table N.16.
+ #
+-# @errortypes: ARM processor error types to inject
++# @validation:
++#       Valid validation bits for ARM processor CPER.
++#       Argument is optional. If not specified, the default is
++#       calculated based on having the corresponding arguments filled.
++#
++# @affinity-level:
++#       Error affinity level for errors that can be attributed to a specific
++#       affinity level.
++#       Argument is optional. If not specified and @validation not enforced,
++#       this field will be marked as invalid at CPER record.
++#
++# @mpidr-el1:
++#       Processor’s unique ID in the system.
++#       Argument is optional. If not specified, it will use the cpu mpidr
++#       field from the emulation data. If zero and @validation is not
++#       enforced, this field will be marked as invalid at CPER record.
++#
++# @midr-el1:  Identification info of the chip
++#       Argument is optional. If not specified, it will use the cpu mpidr
++#       field from the emulation data. If zero and @validation is not
++#       enforced, this field will be marked as invalid at CPER record.
++#
++# @running-state:
++#       Indicates the running state of the processor.
++#       Argument is optional. If not specified and @validation not enforced,
++#       this field will be marked as invalid at CPER record.
++#
++# @psci-state:
++#       Provides PSCI state of the processor, as defined in ARM PSCI document.
++#       Argument is optional. If not specified, it will use the cpu power
++#       state field from the emulation data.
++#
++# @context:
++#       Contains an array of processor context registers.
++#       Argument is optional. If not specified, no context will be added.
++#
++# @vendor-specific:
++#       Contains a byte array of vendor-specific data.
++#       Argument is optional. If not specified, no vendor-specific data
++#       will be added.
++#
++# @error:
++#       Contains an array of ARM processor error information (PEI) sections.
++#       Argument is optional. If not specified, defaults to a single
++#       Program Error Information record defaulting to type=cache-error.
+ #
+ # Features:
+ #
+@@ -44,6 +262,16 @@
+ # Since: 9.1
+ ##
+ { 'command': 'arm-inject-error',
+-  'data': { 'errortypes': ['ArmProcessorErrorType'] },
++  'data': {
++    '*validation': ['ArmProcessorValidationBits'],
++    '*affinity-level': 'uint8',
++    '*mpidr-el1': 'uint64',
++    '*midr-el1': 'uint64',
++    '*running-state':  ['ArmProcessorRunningState'],
++    '*psci-state': 'uint32',
++    '*context': ['ArmProcessorContext'],
++    '*vendor-specific': ['uint8'],
++    '*error': ['ArmProcessorErrorInformation']
++  },
+   'features': [ 'unstable' ]
+ }
+diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
+index 0e9490cebc72..77c800186f34 160000
+--- a/tests/lcitool/libvirt-ci
++++ b/tests/lcitool/libvirt-ci
+@@ -1 +1 @@
+-Subproject commit 0e9490cebc726ef772b6c9e27dac32e7ae99f9b2
++Subproject commit 77c800186f34b21be7660750577cc5582a914deb
 -- 
 2.45.2
-

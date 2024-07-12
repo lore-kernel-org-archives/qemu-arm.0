@@ -1,175 +1,153 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp828429nji;
-        Fri, 12 Jul 2024 07:19:09 -0700 (PDT)
-X-Received: by 2002:a05:6402:40c6:b0:584:8feb:c3a1 with SMTP id 4fb4d7f45d1cf-594ba997626mr10368386a12.1.1720793949226;
-        Fri, 12 Jul 2024 07:19:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720793949; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp911582nji;
+        Fri, 12 Jul 2024 09:37:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWZzym3B2Oga+v8gmrhYKz0wt/f2QzMmFDI+jaOQV/isdEts4J/rTkAuqFGYQgvVTbHjHiFmqf6He5bciMQjfjXBmh8q9fS
+X-Google-Smtp-Source: AGHT+IFOxv7DKP4KgK9xqvh+VpZENQNb9lWefoehizlxUY6kojM+UZp6NkQuul0hWQqXV687vO0/
+X-Received: by 2002:a05:622a:9:b0:447:e38c:59f with SMTP id d75a77b69052e-447faa6f5b8mr126799141cf.47.1720802232982;
+        Fri, 12 Jul 2024 09:37:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720802232; cv=none;
         d=google.com; s=arc-20160816;
-        b=aGYbgqzNf0w0yeC4UPh8cF7nHVGP5pTXNbNeJ1H/Gzas2+U+lQvIHIrZM+yje/C/g5
-         SyxknkamnUa6887cVfgJl45TXmT5k9n6YFFXQdBgndkpG+6pwe5ZEUYmYdmVWqEuTGY4
-         +uQ6edSEY1Pr++aQmauqgFAEinaJhiMstqxfBIxbiUVOF0tIqSqoj0EsUe2Yo5xfsiDD
-         5qdNqxQV4HJcdQxBp8o+ab+FqrxXBeQGB8Hme4IoJTV/Wm+qnSvkAaMDz7Tjl0n6Z5l8
-         9hwQy6DusSJKTzAgQZf2UqK47zxq92gy24Pu4liPhf/sm6l9ic3rGPI4iJikGQubD7xw
-         2swA==
+        b=soI1F1SSwQNwU+fuurFYe+WNkhRDHyGvUOU0ThM5vpCm08V2KbEp6UdjhPtKJxt04k
+         HdWUvseNscuGnRwLidiOnDXMhAwqJRCHlSiVJUF/287655I/0djBwDH4xliiqwiofNPq
+         DugFjhiUxmDabMhpd1vb9QZ3TQni/Q9E7bBFmGKbTkGTkQhxticNUSZlIbNszM88OszH
+         8+imLxjxN+alCCdXR+JPmPxezFXzxVv/ggqC8jwZdoikFXeC9MErPvB04TBo0FCo64m+
+         pcUWx5RIUctj2X+UsoADeTDKiyvny25nusYVYBWpOSooSF+NJfvzojzHwsGL5fnmxZna
+         yXaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=t37aUeW9ye6rJBOVxrPwek6tZu/fTtWILNdTicrDpNI=;
-        fh=5aEE39Fi+bkj1OrrqBWVR1bOL3D+VKS2hzeCTnqwSyY=;
-        b=nHANnI2G3aPLeRqAXl3zNfR2lh0MQ/YCDFz7vEM4YVKZc3vfx7D0kKaxf7gsqnEgIm
-         RHt8wB83OEe02ap/pO3PioCl50S3XFcG5Aqd55zD58goRUFv4eKU9Mma2aJorKCXBY8P
-         Nnf27dHmhIDKKE9DeOBClXEEq8C+ysu1JzPX1gyRe3TuOgwtS1HuuZQxTCBCLam6B5/i
-         vgkqfmOB9PwuVzHzCVfqEdRBTCni317JShq3hZJYwnoVKeHBZwJI01cgxRe8t8xlWdQY
-         8LywNl2yTPVsYqL2zLLwVivgHebqOx5e1kjNxQMGI0Sh6ZAyT4VACUTk34g4oGLrico0
-         5xKA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=VYMLzjRoFjxrJBkd+e3E/awaoyFZwmUY/SMFgrOMaTE=;
+        fh=FcjDYfNwIZ7E5oGc6IqqA38lUfH3Nowv7fxvZKRWukI=;
+        b=bwshssyoTuiG/Fv27uz5RyHmbsJP9xqFpwA/1uvFJWkmAkLcewtTuJMTVyy/HZq96J
+         55HPydnGkSQRsh2+laeHzsU5BTTaB9OasOZ26ZXBKI+VtmQpSloTpTCecX+ylhbg60Ky
+         7G9Q9mQZUvZ5vW1jFnRC1MFxEsPP8P6Uclu/rbmypkl7AWRauoN/gYllV8KsRsUoWuhi
+         hD/Uu2WGFMe+xcQxO+o47a9dKHbvQYqXGB8Qbi7/lhxIrgcQegh/X8FCrlVwmfJUpCr9
+         kLG8GMV1VQxuupLzKX8/zuvxWRmPJ9asJVULMVoI1SXiUkc/TirX3EhuUbRNC2l70LuU
+         9A0Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qHRWhkou;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 4fb4d7f45d1cf-59974a938d8sor561918a12.8.2024.07.12.07.19.08
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RwB2jTXY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-447f9af5ae4si99351091cf.62.2024.07.12.09.37.12
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 12 Jul 2024 07:19:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 12 Jul 2024 09:37:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qHRWhkou;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1720793948; x=1721398748; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=t37aUeW9ye6rJBOVxrPwek6tZu/fTtWILNdTicrDpNI=;
-        b=qHRWhkouwOFqAp32Uw94oxiSjnfaiZGG0+r1DCha/dVdD1ZpfBzcFcZdOW6PVaSdfU
-         kyjcfsdZf+fPrnH0qrihdu9J0tEkRTC3vR78woIE49NdOd9C2ajY5WCypDA+gZoo+sae
-         DFNOhNNLM68+y84kKJkGz0JXEAzAN+/tJZaltKNeoLQ9q6Zjc/GXjoPcpWqav66F049x
-         QXnyDZa9sIdyYlQNPoSSAM00V91vG8nBfBUVVTsbN+3TPAuc3vTaLeyvcDzeFjOUzDPX
-         fxGt7TobVk6AfZmghd3T9vc04XXkQLUAG33hIjvJ+fbfJrPW9UmDjTmDrbUqKU+CN6fK
-         LTGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1720793948; x=1721398748;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=t37aUeW9ye6rJBOVxrPwek6tZu/fTtWILNdTicrDpNI=;
-        b=f8bLLzvF0+A6vzuwY6fTZijhiXabtnw4olCJ8kx+DJctXiTZ12iDxCUeIN7fjWkCZy
-         /7zXtRZIjILoqGU/KWxiW/OCwsQgvnDaoZyK/w5Uj34aK7YXJyPyXGxgGTzM+JIL5vlz
-         BgIc7A8fK3Kf2FHkSlLvmya4Ll0IVhrDBojmSI0RRAyvUB75ZJB0ej4xJBXeOXfaRviW
-         /2Rf51gFvwaJ3BM8XBVii506q8KD3t33BJqjoCLEDQBwN12QmMVFEdweQZP+k1bGg2jx
-         JH7V97rym8lnH4Yj9pnOuB+xj/iOFYxQ8rPKH54eHD+t+kDu0qVBaGKfF2pHgiVzWsLT
-         8SRA==
-X-Gm-Message-State: AOJu0YyFD5mhT2txqGcp/gPHnpVvDX0BwM352K3Tzar9mOZ/CwepEqCy
-	46vZgEUePg2tXTXb1IcSF9eya0iyCwMecSF5n51GxVFWYAk1qvVT8edoRw8C7BA9V8Lijtkwjlp
-	TwNIjsYRRukRAN0KQhGTFo7jihvN6moQ3S6c5LgfeQ+PURdoGAXg=
-X-Google-Smtp-Source: AGHT+IH69WrN2p+J8+7S0k91o0wclcuFL3lq9JqExLi/w2oAItOrMlgwmjFuZJ+3bD5qS02Qh0V5Vv21RRBEKMyVQmg=
-X-Received: by 2002:aa7:c548:0:b0:57a:33a5:9b71 with SMTP id
- 4fb4d7f45d1cf-594bc7c9d69mr7336462a12.33.1720793948468; Fri, 12 Jul 2024
- 07:19:08 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RwB2jTXY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sSJGS-0001CK-Lw; Fri, 12 Jul 2024 12:36:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sSJGL-00014i-Az
+ for qemu-devel@nongnu.org; Fri, 12 Jul 2024 12:36:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sSJGC-0004fT-7p
+ for qemu-devel@nongnu.org; Fri, 12 Jul 2024 12:36:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1720802198;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=VYMLzjRoFjxrJBkd+e3E/awaoyFZwmUY/SMFgrOMaTE=;
+ b=RwB2jTXYWURVYcchj9ELN0rxXn9zE2GtvoLXQB8f32Rq8cDspLtIupcegkZW74tTZZo8XY
+ r88lkd9nBh166Sv81a1yy/u/Bf5y7xa3tdcg/euCOxLSv0+lTxHjxoAxkdZULg0n10/sog
+ Pcqw12BUKN6HvD8e0eml+Zmgg2grc/Y=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-15-ZZoVSrqsNnSdakM33epaKA-1; Fri,
+ 12 Jul 2024 12:36:33 -0400
+X-MC-Unique: ZZoVSrqsNnSdakM33epaKA-1
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3283A19560B5; Fri, 12 Jul 2024 16:36:25 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.39.193.243])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B61403000181; Fri, 12 Jul 2024 16:36:21 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH] aspeed/smc: Fix possible integer overflow
+Date: Fri, 12 Jul 2024 18:36:19 +0200
+Message-ID: <20240712163619.1734214-1-clg@redhat.com>
 MIME-Version: 1.0
-References: <20240705153052.1219696-1-alex.bennee@linaro.org> <20240705153052.1219696-40-alex.bennee@linaro.org>
-In-Reply-To: <20240705153052.1219696-40-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 12 Jul 2024 15:18:57 +0100
-Message-ID: <CAFEAcA8YJwWtQxdOe2wmH7i0jvjU=UV92oeB6vUzT1GrQhRsTQ@mail.gmail.com>
-Subject: Re: [PULL 39/40] gdbstub: Add support for MTE in user mode
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Gustavo Romero <gustavo.romero@linaro.org>, 
-	Laurent Vivier <laurent@vivier.eu>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	"open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: bgLsYic+5KAD
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.138,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: H8eFAPUC2iSa
 
-On Fri, 5 Jul 2024 at 16:37, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> From: Gustavo Romero <gustavo.romero@linaro.org>
->
-> This commit implements the stubs to handle the qIsAddressTagged,
-> qMemTag, and QMemTag GDB packets, allowing all GDB 'memory-tag'
-> subcommands to work with QEMU gdbstub on aarch64 user mode. It also
-> implements the get/set functions for the special GDB MTE register
-> 'tag_ctl', used to control the MTE fault type at runtime.
->
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> Message-Id: <20240628050850.536447-11-gustavo.romero@linaro.org>
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Message-Id: <20240705084047.857176-40-alex.bennee@linaro.org>
+Coverity reports a possible integer overflow because routine
+aspeeed_smc_hclk_divisor() has a codepath returning 0, which could
+lead to an integer overflow when computing variable 'hclk_shift' in
+the caller aspeed_smc_dma_calibration().
 
-Hi; Coverity thinks there's a memory leak in this function
-(CID 1549757):
+The value passed to aspeed_smc_hclk_divisor() is always between 0 and
+15 and, in this case, there is always a matching hclk divisor. Remove
+the return 0 and use g_assert_not_reached() instead.
 
-> +void arm_cpu_register_gdb_commands(ARMCPU *cpu)
-> +{
-> +    GArray *query_table =3D
-> +        g_array_new(FALSE, FALSE, sizeof(GdbCmdParseEntry));
-> +    GArray *set_table =3D
-> +        g_array_new(FALSE, FALSE, sizeof(GdbCmdParseEntry));
-> +    GString *qsupported_features =3D g_string_new(NULL);
+Fixes: Coverity CID 1547822
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/ssi/aspeed_smc.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-We allocate memory for the qsupported_features GString here, but
-it looks like nowhere in the function either passes it to
-some other function that takes ownership of it, and we don't
-free it either.
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index b79815c2b8aa..7fd63669c10e 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -842,8 +842,7 @@ static uint8_t aspeed_smc_hclk_divisor(uint8_t hclk_mask)
+         }
+     }
+ 
+-    aspeed_smc_error("invalid HCLK mask %x", hclk_mask);
+-    return 0;
++    g_assert_not_reached();
+ }
+ 
+ /*
+-- 
+2.45.2
 
-> +    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-> +    #ifdef TARGET_AARCH64
-> +        aarch64_cpu_register_gdb_commands(cpu, qsupported_features, quer=
-y_table,
-> +                                          set_table);
-> +    #endif
-
-(PS: this ifdef/endif ought to be on the left margin, not indented.)
-
-> +    }
-> +
-> +    /* Set arch-specific handlers for 'q' commands. */
-> +    if (query_table->len) {
-> +        gdb_extend_query_table(&g_array_index(query_table,
-> +                                              GdbCmdParseEntry, 0),
-> +                                              query_table->len);
-> +    }
-> +
-> +    /* Set arch-specific handlers for 'Q' commands. */
-> +    if (set_table->len) {
-> +        gdb_extend_set_table(&g_array_index(set_table,
-> +                             GdbCmdParseEntry, 0),
-> +                             set_table->len);
-> +    }
-> +
-> +    /* Set arch-specific qSupported feature. */
-> +    if (qsupported_features->len) {
-> +        gdb_extend_qsupported_features(qsupported_features->str);
-> +    }
-> +}
-
-Something odd also seems to be happening with the query_table
-and set_table -- we allocate them in this function, and we
-rely on the memory not going away because we pass pointers
-into the actual array data into gdb_extend_query_table()
-and gdb_extend_set_table() which those functions retain copies
-of, but we don't keep hold of the pointer to the struct GArray
-itself.
-
-The functions gdb_extend_set_table() and gdb_extend_query_table()
-both seem to not quite do what their documentation says they
-do. The docs say they extend the set table and the query table,
-but the implementation appears to be setting an extended set
-table/query table (e.g. you can't extend the table twice).
-
-Perhaps a more natural API would be for these functions to
-either:
- * be passed in the entire GArray, and take ownership of
-   it and be responsible for disposing of it
- * take a copy of the entries they're passed in, so that
-   the calling function can free the GArray and its
-   contents after the call
-?
-
-thanks
--- PMM

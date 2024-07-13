@@ -1,159 +1,175 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp1458081nji;
-        Sat, 13 Jul 2024 11:28:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUqF1dIOVAvQ8SkCCNgfqRHOtdjZ8dIEtUslOOYpbyy3VqkWFSM06geLIAAyFEJ1Vhfp45kyhYmc4ni9G3NmdElIkMlYsNO
-X-Google-Smtp-Source: AGHT+IHwk9r4lpEfm6BJPVkQmZ1ISF8e/7eJQ48qkv5KXvF1L0f/PJxqpNk5Jcjhiu1Q8188icQP
-X-Received: by 2002:a54:4094:0:b0:3d9:dabc:7b76 with SMTP id 5614622812f47-3d9dabc7fe4mr11046815b6e.23.1720895301664;
-        Sat, 13 Jul 2024 11:28:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720895301; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp1503458nji;
+        Sat, 13 Jul 2024 14:09:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVm7AQEFvNQpmWKcqJn5tFmrD0f00q7/U5f311RqNRJlwToQtyTQl8KquLDyOc3UswTuPcFcvm57GvrQvYlXAVoP4hJU8PE
+X-Google-Smtp-Source: AGHT+IHj/d78jE4wzBIkOVA3vZxyMD3E6agNZmkoYbsPAQcbYV96ZaVPCZpNxz8ihpr7SD3mnI5H
+X-Received: by 2002:ad4:5dc5:0:b0:6b2:da77:9a42 with SMTP id 6a1803df08f44-6b61bca184cmr196383656d6.16.1720904947318;
+        Sat, 13 Jul 2024 14:09:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1720904947; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cmtgq+5jdFEijr/GQiDV4bG9MvKyHgoJOScBCVMzdUhK7+fAKzo9NC0ldrHeYxTUoW
-         OZc27gB0eayhHuKTRi+5urR7Nh5/hyYcTvviH52ILNXmymP+RRd4LGk9oMjwWts6+Meg
-         k/cBa1J7/RfkQsqdoIGbOal24H+lsf6y6NyjJ0nrj1B3To2GUWCypgC5WeK8oRSuRTVQ
-         hBfD9Jjmda3Baj6OTnw6kBQlcyZ6ImEs2EBHBk+nOmDZ/NAy6iG9pTJ+eDJ/0AF2s4+B
-         1bJVHUjzQXlp4mixT5a+en1Nb9fCirujw+C0J80i/rrbI/jIafvXDCkch4d3V6/BjP+D
-         FQ2g==
+        b=L0BTMb+ltz5SQR8triauxWEURnQf6jPXMFNwq5jngcfudTmt9qQQFmv5Qm1kSSSNFv
+         daTVF1hsYPJBQVNToBodvJ4WEWKY5f+snLEkHZiquvU4mR2DNN8MFE5O2wRGIvk8HyL/
+         LmEXvs9k6Q7z88M3MfMBeUTg1Ni+e7YCwtrGAh3Kp7+gS41Z2UwM53LexVQU+XAHLQZj
+         PbK/iDP9Z83MnzYJtF56IasRLtwaWuFGD66q+lrF3SMT2I/Y3mJbczfGUttNPwBWpMUc
+         jzjXASwVon/LxfhDEjmmt/iy+wOz4INctHbsrB/CbBqIp//41JRwCSog2RHLejHdtSYy
+         B0YQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=lBdXBzCJgmDUEJoCWadXYLQSyAGEz4jMthRR1IcPgE4=;
-        fh=CjFwyFzaCSmkOKy2YiKnMv5LVRyC5Im7ETbbL0XKxCE=;
-        b=LiU3si+keS0QDQqkIcIDwulca3cX82y5C5DwVPAXs/zDkCkRBME5G21IUNHFABIZqz
-         ciigLp+bCL5dl2eLGAS6g2284qKUa4jJAr9Vq1nsH5Pi9jlWcy7hwJ0tQ+p1QFKaMnar
-         V84avivqnW2wRHs8fCnRMwEkkHQ/ov+R2Yev0+qlg/BjftVNNzHBWOn3hUIiAWDZa8WE
-         kPrZ1Wn9tiXoJrrsUEkohJt3Ueg2xR0+XsLpHcy3GuZl/unmjGzgkBUdshmLwq9+ecq2
-         KyY/vMofBUFphhLwSK+iKkhPxW5tYY7W584PBP4i4U7r/dbPoZxfkzMhufUoauuBEamu
-         9QvQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Xn496lNfN+tjORBu0zJyIt7OHIqjOOBmYg4cfigffiY=;
+        fh=IAjlJC1/ez3obLpc3Iv/0lUh4sC5WpdCE1igYwr+A4c=;
+        b=vXA8xQDnx8Ysz5dRTRvOqqV8iRTmVGnwauqx9ewAtM5KGtL47clRqlN1jiBs3AQv6e
+         6RA2N9oWDiRXb0HOsHxJyB/zMyo5aSWiPDHLElymnOZdVSQCBvE+qhJZsqkraZZNAEj+
+         r3umKCLNdVPXuo1s46UALqpe8wrTDpQF1JQty6A5E37/EkDeaPdpziSEgDYfaMt1cnnG
+         y4eI01TfAtMonforjVRlHKDWGRzF5cnjGhCufNf54c3t7ZLBPW5KFQehsb13s+Ah5bPe
+         onYywnD9T1wqRvxx0codkdwO55vE8at32q/z7LpiNmMdmpx0EU6kAIIb7Pexh3FDTXQa
+         3ieg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-70b7ed0a806si1724082b3a.374.2024.07.13.11.28.20
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Jul 2024 11:28:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b="KXqDa/zy";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b761a6e984si19782976d6.566.2024.07.13.14.09.07
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 13 Jul 2024 14:09:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WLxjr61vLz67kr9;
-	Sun, 14 Jul 2024 02:26:08 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
-	by mail.maildlp.com (Postfix) with ESMTPS id 8C138140A78;
-	Sun, 14 Jul 2024 02:28:17 +0800 (CST)
-Received: from 00293818-MRGF.huawei.com (10.126.172.138) by
- lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Sat, 13 Jul 2024 19:27:59 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
-	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
-	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
-	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
-	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
-	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
-	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
-	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
-	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
-	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>, Shaoqin
- Huang <shahuang@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH V15 7/7] gdbstub: Add helper function to unregister GDB register space
-Date: Sat, 13 Jul 2024 19:25:16 +0100
-Message-ID: <20240713182516.1457-8-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240713182516.1457-1-salil.mehta@huawei.com>
-References: <20240713182516.1457-1-salil.mehta@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="KXqDa/zy";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sSjzC-0008UI-TB; Sat, 13 Jul 2024 17:08:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sSjzB-0008TF-6q
+ for qemu-arm@nongnu.org; Sat, 13 Jul 2024 17:08:53 -0400
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sSjz9-0004aa-G5
+ for qemu-arm@nongnu.org; Sat, 13 Jul 2024 17:08:52 -0400
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-1fb222a8eaeso22478335ad.3
+ for <qemu-arm@nongnu.org>; Sat, 13 Jul 2024 14:08:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1720904930; x=1721509730; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Xn496lNfN+tjORBu0zJyIt7OHIqjOOBmYg4cfigffiY=;
+ b=KXqDa/zyrMfqW6lQF6SVduSrPYyorubkcLcvL0VltdmGU5GaG+8/Bv4HZunV07IRV5
+ mwrklMRO7g6D0jOruTEqzJvSsvFP99Yixu3CzKfDIs3BvDRaAibotamDM53jfS7kDfPj
+ aW/+BeRnIiojObjwvnmZGzBC2tprInQXSN/6ymVsDq0sLKGl47Zs7+PZYbVaOtHGsz9S
+ QvBlRHR54rqcAJPGQK+G7feodzEB+9w1w0e5tJT9q+w+JLMGKcLHGduiwK0+ujyUy3RZ
+ PBKvuwePMBOw0Dou2qxPf80tTLf86P5BSWK3nTZ2I25dTXZo5rp+ksulFPLw4nFXqySr
+ szBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1720904930; x=1721509730;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Xn496lNfN+tjORBu0zJyIt7OHIqjOOBmYg4cfigffiY=;
+ b=HiVf0OIG2WQ1wB1QjSCNUVRLSk8AByup3WsM5OQi2dd8tTVGZyzuijgQ6x8SGZkcBq
+ Jzoa0V4d+wT9t0EWRaB+ztsJT0whmLxG+MFMnHlQzDpRQ6jw7BV/K95lYlQpq9W/KyGh
+ AnF1TroaELNzHONGN2vqaWplrtSPE+MohX+yNa19KHWxarRt8kiqmomfRdaMsMSFuYE8
+ BJBQnMuSzvzg4bFb9aeDh/quHYCEPbSq5wXG4D3IQfht8WDMSxQ+vMJLGCTHu5ln1PL0
+ YLnFtkXFoU2qOb7G7bw/0IKO0Nnq1CW1wOLSfjpkvgVlfDJZD1w/5xm7vy1XOFRen4Al
+ H6ZQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVmrt7vcGdYIOn1jBBiNG1pSLHA9Ro+zjhjrEoohwnKohU+tQ1xNgd8Kb0WCbFKOB+9GPphqrMCa0Ka5Qon5OZEJK3B
+X-Gm-Message-State: AOJu0Yw3gHC2BWZBGAwH3ltXJo57u7+tquEc+5oAcdZ8Usbu69sab03z
+ J3ukERXHdjp8aXz87c3Bl27XIz8x2WTwH+d24BMxuvii4Hw9cYgbgoDRIeyVzZDRziN166h+bpJ
+ B
+X-Received: by 2002:a17:902:d490:b0:1fb:4f91:6728 with SMTP id
+ d9443c01a7336-1fbb6d5fee1mr139785165ad.42.1720904929989; 
+ Sat, 13 Jul 2024 14:08:49 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.169.129])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-1fc0bc509e8sm14109325ad.284.2024.07.13.14.08.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 13 Jul 2024 14:08:49 -0700 (PDT)
+Message-ID: <bf42c103-2328-4278-98a0-0df732515aa3@linaro.org>
+Date: Sat, 13 Jul 2024 23:08:45 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/display/bcm2835_fb: fix fb_use_offsets condition
+To: SamJakob <me@samjakob.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:Raspberry Pi" <qemu-arm@nongnu.org>
+References: <20240713155656.59431-1-me@samjakob.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240713155656.59431-1-me@samjakob.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.126.172.138]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- lhrpeml500001.china.huawei.com (7.191.163.213)
-X-TUID: wAuzuMJDFZBN
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=philmd@linaro.org; helo=mail-pl1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DaATzHl5Gamq
 
-Add common function to help unregister the GDB register space. This shall be
-done in context to the CPU unrealization.
+On 13/7/24 17:56, SamJakob wrote:
+> 	It is common practice when implementing double-buffering
+> 	on VideoCore to do so by multiplying the height of the
+> 	virtual buffer by the number of virtual screens desired
+> 	(i.e., two - in the case of double-bufferring).
+> 
+> 	At present, this won't work in QEMU because the logic in
+> 	fb_use_offsets require that both the virtual width and
+> 	height exceed their physical counterparts.
+> 
+> 	This appears to be unintentional/a typo and indeed the
+> 	comment states; "Experimentally, the hardware seems to
+> 	do this only if the viewport size is larger than the
+> 	physical screen". The viewport/virtual size would be
+> 	larger than the physical size if either virtual dimension
+> 	were larger than their physical counterparts and not
+> 	necessarily both.
+> 
+> Signed-off-by: SamJakob <me@samjakob.com>
+> ---
+>   hw/display/bcm2835_fb.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
+> index e40ed2d2e1..650db3da82 100644
+> --- a/hw/display/bcm2835_fb.c
+> +++ b/hw/display/bcm2835_fb.c
+> @@ -145,7 +145,7 @@ static bool fb_use_offsets(BCM2835FBConfig *config)
+>        * viewport size is larger than the physical screen. (It doesn't
+>        * prevent the guest setting this silly viewport setting, though...)
+>        */
+> -    return config->xres_virtual > config->xres &&
+> +    return config->xres_virtual > config->xres ||
+>           config->yres_virtual > config->yres;
+>   }
+>   
 
-Note: These are common functions exported to arch specific code. For example,
-for ARM this code is being referred in associated arch specific patch-set:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Link: https://lore.kernel.org/qemu-devel/20230926103654.34424-1-salil.mehta@huawei.com/
-
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
-Tested-by: Xianglai Li <lixianglai@loongson.cn>
-Tested-by: Miguel Luis <miguel.luis@oracle.com>
-Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
-Reviewed-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-Tested-by: Zhao Liu <zhao1.liu@intel.com>
----
- gdbstub/gdbstub.c      | 13 +++++++++++++
- hw/core/cpu-common.c   |  4 +++-
- include/exec/gdbstub.h |  6 ++++++
- 3 files changed, 22 insertions(+), 1 deletion(-)
-
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index b9ad0a063e..5da17d6530 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -618,6 +618,19 @@ void gdb_register_coprocessor(CPUState *cpu,
-     }
- }
- 
-+void gdb_unregister_coprocessor_all(CPUState *cpu)
-+{
-+    /*
-+     * Safe to nuke everything. GDBRegisterState::xml is static const char so
-+     * it won't be freed
-+     */
-+    g_array_free(cpu->gdb_regs, true);
-+
-+    cpu->gdb_regs = NULL;
-+    cpu->gdb_num_regs = 0;
-+    cpu->gdb_num_g_regs = 0;
-+}
-+
- static void gdb_process_breakpoint_remove_all(GDBProcess *p)
- {
-     CPUState *cpu = gdb_get_first_cpu_in_process(p);
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index b19e1fdacf..fe5383b4f9 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -281,7 +281,9 @@ static void cpu_common_finalize(Object *obj)
-         g_free(cpu->plugin_state);
-     }
- #endif
--    g_array_free(cpu->gdb_regs, TRUE);
-+    /* If cleanup didn't happen in context to gdb_unregister_coprocessor_all */
-+    if (cpu->gdb_regs)
-+        g_array_free(cpu->gdb_regs, TRUE);
-     qemu_lockcnt_destroy(&cpu->in_ioctl_lock);
-     qemu_mutex_destroy(&cpu->work_mutex);
-     qemu_cond_destroy(cpu->halt_cond);
-diff --git a/include/exec/gdbstub.h b/include/exec/gdbstub.h
-index 1bd2c4ec2a..d73f424f56 100644
---- a/include/exec/gdbstub.h
-+++ b/include/exec/gdbstub.h
-@@ -40,6 +40,12 @@ void gdb_register_coprocessor(CPUState *cpu,
-                               gdb_get_reg_cb get_reg, gdb_set_reg_cb set_reg,
-                               const GDBFeature *feature, int g_pos);
- 
-+/**
-+ * gdb_unregister_coprocessor_all() - unregisters supplemental set of registers
-+ * @cpu - the CPU associated with registers
-+ */
-+void gdb_unregister_coprocessor_all(CPUState *cpu);
-+
- /**
-  * gdbserver_start: start the gdb server
-  * @port_or_device: connection spec for gdb
--- 
-2.34.1

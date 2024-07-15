@@ -1,409 +1,320 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp2117957nji;
-        Mon, 15 Jul 2024 01:45:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWIKxwCFqV1ewtnpyDufwMAIKmf4PHNzaUgrWCv7OFDmg/bt2WYcNp3aBlZ4Vljn8lN/H5TkxWhPefLlZRG1TE+DbnaCbyJ
-X-Google-Smtp-Source: AGHT+IGQakGECKLhW+gjLsw6rg4nVx9urjFY7+0yJ4i1L8FWW57zlaK4raFuImBv9F/1U6AM/Ut7
-X-Received: by 2002:a05:6359:7399:b0:1a6:b034:b381 with SMTP id e5c5f4694b2df-1aade08fba6mr1399368455d.3.1721033127476;
-        Mon, 15 Jul 2024 01:45:27 -0700 (PDT)
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp2117960nji;
+        Mon, 15 Jul 2024 01:45:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV50Be4wEEuNVijt3keMFBuku+K5zCmyfNrlPOAr7oOekg//vYMGKgSXC95liNEsRuCrJ4S6+vh+7Am8S1W8NP+rwDm8zeh
+X-Received: by 2002:a05:6902:201:b0:dee:6070:693f with SMTP id 3f1490d57ef6-e041b0ff476mr20378231276.37.1721033128018;
+        Mon, 15 Jul 2024 01:45:28 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1721033127; cv=none;
         d=google.com; s=arc-20160816;
-        b=YBBw9w4xAwr/F4GDlJs6L99OaNuKwZbxvEsZqbL3NfDHdofT0OQT6p8a5oyTXgYH2g
-         yvNK+Z5JcCE/N/TWakXZM312VyEOd4YM3bN9uTmlLOVb6vCAGLjh/KLPqtdUR2m7QKvk
-         6J62HSIeqMl5Fu+Yxz9EboGrB31VqYYyPC9zZJm3NI99DHtUhZx4PoENoR+ZBDXMYDu5
-         gT/xhsmj+yMYeWG/bIJVChBh+OLt+B3FvfS9a0Wdc630hi0buGOMhXe1XtpMxF9XEdSt
-         cbjH36Us9tc+blrhI8/QMkZ+YnIQmbl0ehUR6vZ3mclP2xMwzCv69K3l4vt40VmNNOdk
-         7BnA==
+        b=em6S/WJI+5ISXw1Mj5gmBWH1Cnnh+8ouPQ6WJepL/RKjZXVsLynQRzihSATLi9dm9j
+         25xHKGNPwV9I0HGkbW9UkkwaQB7T/DHnbc2z6aNE4Qc8qL+YwYxV/YsRWf+Gd40SQiJs
+         lYC9rZdrIO81foCk9sbToMCsLOroi0pwxX65+JSMF3eLUQrzmBVpweRluGO9Nwyvf/px
+         vbSLsR8LtdRV7VqrdNMRomangvibE0ornSKRiwqo6HOn8rUVCvHgArfLQHaOheIPqQ6T
+         mOLeboMwPSu/dFF2MHrDJHguDrWU+n9BdzzLtgajvFXmL5uQw1Sr0QNX5s/N+MLqFwAx
+         awew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=3Nji95cAiy65D5NNefJpsHzwX3YZoj3+MC/qOBy+nmE=;
-        fh=Upv0p+1oOR0360hqV6l/BDtYDhJeZXFzYzGBkmUuMa0=;
-        b=HmZIQ8995iCpQYcKoQuCmlpsBA27ecOAVBTETNSQns/FPtR32e0kHQ6gi31U/gnsPg
-         q94brBInPQat8V05pb2kRQxiiJEo1RhYJG2m72vPVawZ5Sx/DdalmraDgIaUCHDfjy1H
-         2sFaeL26WfR1bZ01lKlI0y3LH/RIf1foTrApQTRBWjWyMoy05w/QgFDlHsI8da866lAj
-         3y1xIh1cXQtLrek3qxNnO4B1I+88oKJ/3/SNe260AwlmMuSgvm+0QumL60QFuYQh4MoV
-         6UV1dBWfGY9yz3ERj5IhtACL5ZI00mp5ngv4Qw2MHcNi3jrKxVd0DP3nIDMBvIp7dEr6
-         660A==;
+        h=content-transfer-encoding:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=wofBN8c0yDPU+i2ZSuLFkbWE4s+WaDIZsoyqfUvchFk=;
+        fh=1mbYEq5pEpAmd0L7CzWV3inphr99CZeClAkDAczR1AI=;
+        b=hngF+mvnlQAcuPQzrOFjNr+Sb4OoC5Y9YaRTTokdN7m+H1SswTP2YYV+jkoTmFwszr
+         sl+9Jy/JQ05ibOXley3XuSxjO9qCy/VgDxO0EX9Rv4rNu3yYsi/a0gJg3DNlzvR3NBV8
+         bMPkpfRFcXqYHmPE0HoLGR/rTu5UWYRCueNU5RFbUltyo1z3P7++hsfdEZbNqwde5OcC
+         O+jL9eeI1vkFQOwsU+iorbyqB9S8Ta1rpQ0WqNch1yQs3BQjNUivMknxyP/K27Vpe4Gd
+         8noAsqbPdDkU+cKBLfvvLpHgnSV1F0Q0pXZ+POJYpgMT9nSd0XOW3D4IKkKdLdZ1/jpk
+         S0PA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-78e45136683si4393125a12.844.2024.07.15.01.45.26
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+       dkim=pass header.i=@google.com header.s=20230601 header.b="df/mPl+G";
+       spf=pass (google.com: domain of 3p-guzggkc_gxrtxyfkflttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3p-GUZggKC_gxrtxyfkflttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--smostafa.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <3p-GUZggKC_gxrtxyfkflttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--smostafa.bounces.google.com>
+Received: from mail-sor-f73.google.com (mail-sor-f73.google.com. [209.85.220.73])
+        by mx.google.com with SMTPS id 3f1490d57ef6-e05a38035bcsor1471092276.8.2024.07.15.01.45.27
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
         Mon, 15 Jul 2024 01:45:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+Received-SPF: pass (google.com: domain of 3p-guzggkc_gxrtxyfkflttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) client-ip=209.85.220.73;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WMwjR02Jjz6JBRF;
-	Mon, 15 Jul 2024 16:44:11 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id 3CDF3140A87;
-	Mon, 15 Jul 2024 16:45:23 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500005.china.huawei.com (7.191.163.240) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 15 Jul 2024 09:45:22 +0100
-Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
- lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
- Mon, 15 Jul 2024 09:45:22 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "maz@kernel.org" <maz@kernel.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron
-	<jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
-	<lpieralisi@kernel.org>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
-	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"mst@redhat.com" <mst@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	"npiggin@gmail.com" <npiggin@gmail.com>, "harshpb@linux.ibm.com"
-	<harshpb@linux.ibm.com>, Linuxarm <linuxarm@huawei.com>
-Subject: RE: [PATCH V15 0/7] Add architecture agnostic code to support vCPU
- Hotplug
-Thread-Topic: [PATCH V15 0/7] Add architecture agnostic code to support vCPU
- Hotplug
-Thread-Index: AQHa1VIYzbBqk8ub30G0ZXbYzNwFGLH3QCEAgAA7avA=
-Date: Mon, 15 Jul 2024 08:45:22 +0000
-Message-ID: <1261c2cb286545c6818242c82de3e966@huawei.com>
-References: <20240713182516.1457-1-salil.mehta@huawei.com>
- <ZpS9duIyGVWoH9NC@intel.com>
-In-Reply-To: <ZpS9duIyGVWoH9NC@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.126.170.92]
-Content-Type: text/plain; charset="iso-8859-1"
+       dkim=pass header.i=@google.com header.s=20230601 header.b="df/mPl+G";
+       spf=pass (google.com: domain of 3p-guzggkc_gxrtxyfkflttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--smostafa.bounces.google.com designates 209.85.220.73 as permitted sender) smtp.mailfrom=3p-GUZggKC_gxrtxyfkflttlqj.htrfqj2.gjssjjqnsfwt.twl@flex--smostafa.bounces.google.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1721033127; x=1721637927; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:from:subject:message-id
+         :mime-version:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=wofBN8c0yDPU+i2ZSuLFkbWE4s+WaDIZsoyqfUvchFk=;
+        b=df/mPl+GsbBfeWg7POIsnnk6bVSeIpawhRdE1MuwgFxRgdNpggkWjB1CudYzjV1dFv
+         XpYk5PI7QbY5gGBEemmtrmEfrHkMMJhi60UtZy0HzHQ4etf4HAFZYaWhnqKAwny8JRef
+         oj1y6lLcy0wROxFRPPGy4c3UdDEIQMwPl9C1++RjlhIL+JvBq3fmXY5cYUE+Zlkqc0iy
+         /UyiLaB6sE6YluYhtvp+rsNmvyBE4FdO7yKRuzp5I/whI+lrwBO/El4hJkBsdnnq+0V/
+         ptfu7qSDCDfkT5/We73tvhS+swb+VKFXoGTC9wbps9mD6byXKhoqsROF6akm5uBz9BpR
+         PS9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721033127; x=1721637927;
+        h=content-transfer-encoding:cc:to:from:subject:message-id
+         :mime-version:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=wofBN8c0yDPU+i2ZSuLFkbWE4s+WaDIZsoyqfUvchFk=;
+        b=Pg5XLFeZDwlQQTi6AE0IkHmgq1a7PWQBQLgLCqWTv2fomr9l6fTkMTKiePKod8FqqA
+         /SqBaf/XBDSMmKFNzIJ48jom/x3omOmzZHhrKjr7o/HglPNJ7SQSxogKBqvSHA5mLmLw
+         FkoHJndV61p1nnn9lHrwKtjRQBDfYNMFdWAC9DeB++K50tzkBbQWTqbBDoTxhWOZWHK8
+         B2e93qUvYf1ghbOn0LS5x+20x9Pnu9d5/92NoWdrR9QLDiWjnfVov1Cqc6frusX8oX72
+         mko5z2UlLQ47W8VxrcpnFgciMNnSFcMuX5QlWvu0gAy0FoakFzphmfjFI0bOEPlWxYtn
+         RLaQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUd4jfw3ItcTHQI5Pa7ju7nbsXCoGyBKH8GjLQpAL/9L1uwbOILQH/HcdFKZ9zwPM+Z1MbEFR0xV5EMWj+A8rYT9rcdVSVP
+X-Gm-Message-State: AOJu0YwvD+F+ezgUXjXaEdcX+ycruZRAI+S73zkZS1qxWbCDyzIrl6WF
+	HOyhrPGoCAe19jSIE1B/HPqyX4kHmRgqEzC9+C6eNfR60gZC8Rid8XeARfyP6mKjTpHYl6IWPp3
+	0n7OoN6fzlg==
+X-Google-Smtp-Source: AGHT+IHRloCQC+SXOpkvFVR3q7bQg0tteH9lD2ZQljBLHkkbxrvjS87dFdqMK/7ZNQZpNiJc0wVBfMtrtQiGBA==
+X-Received: from mostafa.c.googlers.com ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
+ (user=smostafa job=sendgmr) by 2002:a05:6902:2506:b0:e03:aded:7d25 with SMTP
+ id 3f1490d57ef6-e058a950622mr502109276.6.1721033127224; Mon, 15 Jul 2024
+ 01:45:27 -0700 (PDT)
+Date: Mon, 15 Jul 2024 08:45:00 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.45.2.993.g49e7a77208-goog
+Message-ID: <20240715084519.1189624-1-smostafa@google.com>
+Subject: [PATCH v5 00/18] SMMUv3 nested translation support
+From: Mostafa Saleh <smostafa@google.com>
+To: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
+	qemu-devel@nongnu.org
+Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org, 
+	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org, 
+	marcin.juszkiewicz@linaro.org, Mostafa Saleh <smostafa@google.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-TUID: zI+atrOKTIoi
+X-TUID: Proft9LhV7/E
 
-Hi Zhao,
+Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
+but not nested instances.
+This patch series adds support for nested translation in SMMUv3,
+this is controlled by property =E2=80=9Carm-smmuv3.stage=3Dnested=E2=80=9D,=
+ and
+advertised to guests as (IDR0.S1P =3D=3D 1 && IDR0.S2P =3D=3D 2)
 
->  From: Zhao Liu <zhao1.liu@intel.com>
->  Sent: Monday, July 15, 2024 7:11 AM
->  To: Salil Mehta <salil.mehta@huawei.com>
-> =20
->  Hi Salil,
-> =20
->  I ran the unit tests again on x86 platform, and everything looks good.
-> =20
->  Please feel free to keep my tested-by tag.
+Main changes(architecture):
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D
+1) CDs are considered IPA and translated with stage-2.
+2) TTBx and tables for stage-1 are considered IPA and translated
+   with stage-2.
+3) Translate the IPA address with stage-2.
 
+TLBs:
+=3D=3D=3D=3D=3D=3D
+TLBs are the most tricky part.
 
-Many thanks for confirming this. Appreciate this.
+1) General design
+   Unified(Combined) design is used, where entries with ASID=3D-1 are
+   IPAs(cached from stage-2 config)
 
-Best Wishes
-Salil.
+   TLBs are also modified to cache 2 permissions, a new permission added
+   "parent_perm."
 
-> =20
->  Regards,
->  Zhao
-> =20
->  On Sat, Jul 13, 2024 at 07:25:09PM +0100, Salil Mehta via wrote:
->  > Date: Sat, 13 Jul 2024 19:25:09 +0100
->  > From: Salil Mehta via <qemu-devel@nongnu.org>
->  > Subject: [PATCH V15 0/7] Add architecture agnostic code to support
->  > vCPU  Hotplug
->  > X-Mailer: git-send-email 2.34.1
->  >
->  > [Note: References are present at the last after the revision history]
->  >
->  > Virtual CPU hotplug support is being added across various architecture=
-s
->  [1][3].
->  > This series adds various code bits common across all architectures:
->  >
->  > 1. vCPU creation and Parking code refactor [Patch 1] 2. Update ACPI
->  > GED framework to support vCPU Hotplug [Patch 2,3] 3. ACPI CPUs AML
->  > code change [Patch 4,5] 4. Helper functions to support unrealization
->  > of CPU objects [Patch 6,7]
->  >
->  > Repository:
->  >
->  > [*] Architecture *Agnostic* Patch-set (This series)
->  >    V14: https://github.com/salil-mehta/qemu.git
->  > virt-cpuhp-armv8/rfc-v3.arch.agnostic.v15
->  >
->  >    NOTE: This series is meant to work in conjunction with the architec=
-ture-
->  specific
->  >    patch-set. For ARM, a combined patch-set (architecture agnostic +
->  specific) was
->  >    earlier pushed as RFC V2 [1]. Later, RFC V2 was split into the ARM
->  Architecture
->  >    specific patch-set RFC V3 [4] (a subset of RFC V2) and the architec=
-ture
->  agnostic
->  >    patch-set. Patch-set V14 is the latest version in that series. This=
- series
->  >    works in conjunction with RFC V4-rc2, present at the following link=
+   For non-nested configuration, perm =3D=3D parent_perm and nothing
+   changes. This is used to know which stage to use in case there is
+   a permission fault from a TLB entry.
+
+2) Caching in TLB
+   Stage-1 and stage-2 are inserted in the TLB as is.
+   For nested translation, both entries are combined into one TLB
+   entry. The size (level and granule) are chosen from the smallest entries=
 .
->  >
->  > [*] ARM Architecture *Specific* Patch-set
->  >    RFC V3 [4]: https://github.com/salil-mehta/qemu.git virt-cpuhp-
->  armv8/rfc-v3
->  >    RFC V4-rc2: https://github.com/salil-mehta/qemu.git
->  > virt-cpuhp-armv8/rfc-v4-rc2 (combined)
->  >
->  >
->  > Revision History:
->  >
->  > Patch-set V14 -> V15
->  > 1. Addressed commnet from Igor Mammedov's on [PATCH V14 4/7]
->  >    - Removed ACPI_CPU_SCAN_METHOD
->  >    - Introduced AML_GED_EVT_CPU_SCAN_METHOD
->  ("\\_SB.GED.CPSCN") macro
->  > 2. Fix the stray change of "assert (" in "PATCH V14 3/7"
->  > Link:
->  > https://lore.kernel.org/qemu-devel/20240712134201.214699-4-salil.mehta
->  > @huawei.com/
->  >
->  > Patch-set V13 -> V14
->  > 1. Addressed Igor Mammedov's following review comments
->  >    - Mentioned abput new external APIs in the header note of [PATCH 1/=
-7]
->  >    - Merged Doc [PATCH V13 8/8] with [PATCH V14 3/7]
->  >    - Introduced GED realize function for various CPU Hotplug regions
->  initializations
->  >    - Added back event handler method to indirectly expose
->  \\_SB.CPUS.CSCN to GED
->  >      _EVT. Like for ARM, it would be through \\_SB.GED.CSCN event hand=
-ler
->  method
->  >    - Collected the Ack given for [Patch V13 6/8]
->  >    - Added back the gfree'ing of GDB regs in common finalize and made =
-it
->  conditional
->  >    - Updated the header notes of [PATCH V13 3/8,4/8,5/8] to reflect
->  > the changes
->  >
->  > Patch-set  V12 -> V13
->  > 1. Added Reviewed-by Tag of Harsh Prateek Bora's (IBM) [PATCH V12 1/8]
->  > 2. Moved the kvm_{create,park,unpark}_vcpu prototypes from
->  accel/kvm/kvm-cpus.h
->  >    to include/sysemu/kvm.h. These can later be exported through
->  AccelOps.
->  > Link:
->  > https://lore.kernel.org/qemu-devel/62f55169-1796-4d8e-a35d-
->  7f003a17275
->  > 0@linux.ibm.com/
->  >
->  > Patch-set  V11 -> V12
->  > 1. Addressed Harsh Prateek Bora's (IBM) comment
->  >    - Changed @cpu to @vcpu_id in the kvm_unpark_vcpu protoype
->  header/
->  > 2. Added Zhao Liu's (Intel) Tested-by for whole series
->  >    - Qtest does not breaks on Intel platforms now.
->  > 3. Added Zhao Liu's (Intel) Reviewed-by for [PATCH V11 {1/8 - 3/8}]
->  > Link: https://lore.kernel.org/qemu-
->  devel/ZlRSPuJGBgyEUW6w@intel.com/
->  > Link:
->  > https://lore.kernel.org/qemu-devel/a5f3d78e-cfed-441f-9c56-
->  e3e78fa5ede
->  > e@linux.ibm.com/
->  >
->  > Patch-set  V10 -> V11
->  > 1. Addressed Nicholas Piggin's (IBM) comment
->  >    - moved the traces in kvm_unpark_vcpu and kvm_create_vcpu at the
->  end
->  >    - Added the Reviewed-by Tag for [PATCH V10 1/8] 2.  Addressed Alex
->  > Benn=E9e's (Linaro) comments
->  >    - Added a note explaining dependency of the [PATCH V10 7/8] on Arch
->  > specific patch-set
->  > Link:
->  > https://lore.kernel.org/qemu-
->  devel/D1FS5GOOFWWK.2PNRIVL0V6DBL@gmail.co
->  > m/
->  > Link:
->  > https://lore.kernel.org/qemu-devel/87frubi402.fsf@draig.linaro.org/
->  >
->  > Patch-set  V9 -> V10
->  > 1. Addressed Nicholas Piggin's (IBM) & Philippe Mathieu-Daud=E9 (Linar=
-o)
->  comments
->  >    - carved out kvm_unpark_vcpu and added its trace
->  >    - Widened the scope of the kvm_unpark_vcpu so that it can be used b=
-y
->  generic framework
->  >      being thought out
->  > Link:
->  > https://lore.kernel.org/qemu-devel/20240519210620.228342-1-salil.mehta
->  > @huawei.com/
->  > Link:
->  > https://lore.kernel.org/qemu-devel/e94b0e14-efee-4050-9c9f-
->  08382a36b63
->  > a@linaro.org/
->  >
->  > Patch-set  V8 -> V9
->  > 1. Addressed Vishnu Pajjuri's (Ampere) comments
->  >    - Added kvm_fd to trace in kvm_create_vcpu
->  >    - Some clean ups: arch vcpu-id and sbd variable
->  >    - Added the missed initialization of cpu->gdb_num_regs 2. Addressed
->  > the commnet from Zhao Liu (Intel)
->  >    - Make initialization of CPU Hotplug state conditional
->  > (possible_cpu_arch_ids!=3DNULL)
->  > Link:
->  > https://lore.kernel.org/qemu-devel/20240312020000.12992-1-
->  salil.mehta@
->  > huawei.com/
->  >
->  > Patch-set V7 -> V8
->  > 1. Rebased and Fixed the conflicts
->  >
->  > Patch-set  V6 -> V7
->  > 1. Addressed Alex Benn=E9e's comments
->  >    - Updated the docs
->  > 2. Addressed Igor Mammedov's comments
->  >    - Merged patches [Patch V6 3/9] & [Patch V6 7/9] with [Patch V6 4/9=
-]
->  >    - Updated commit-log of [Patch V6 1/9] and [Patch V6 5/9]
->  > 3. Added Shaoqin Huang's Reviewed-by tags for whole series.
->  > Link:
->  > https://lore.kernel.org/qemu-devel/20231013105129.25648-1-
->  salil.mehta@
->  > huawei.com/
->  >
->  > Patch-set  V5 -> V6
->  > 1. Addressed Gavin Shan's comments
->  >    - Fixed the assert() ranges of address spaces
->  >    - Rebased the patch-set to latest changes in the qemu.git
->  >    - Added Reviewed-by tags for patches {8,9} 2. Addressed Jonathan
->  > Cameron's comments
->  >    - Updated commit-log for [Patch V5 1/9] with mention of trace event=
-s
->  >    - Added Reviewed-by tags for patches {1,5} 3. Added Tested-by tags
->  > from Xianglai Li 4. Fixed checkpatch.pl error "Qemu -> QEMU" in [Patch
->  > V5 1/9]
->  > Link:
->  > https://lore.kernel.org/qemu-devel/20231011194355.15628-1-
->  salil.mehta@
->  > huawei.com/
->  >
->  > Patch-set  V4 -> V5
->  > 1. Addressed Gavin Shan's comments
->  >    - Fixed the trace events print string for
->  kvm_{create,get,park,destroy}_vcpu
->  >    - Added Reviewed-by tag for patch {1} 2. Added Shaoqin Huang's
->  > Reviewed-by tags for Patches {2,3} 3. Added Tested-by Tag from Vishnu
->  > Pajjuri to the patch-set 4. Dropped the ARM specific [Patch V4 10/10]
->  > Link:
->  > https://lore.kernel.org/qemu-devel/20231009203601.17584-1-
->  salil.mehta@
->  > huawei.com/
->  >
->  > Patch-set  V3 -> V4
->  > 1. Addressed David Hilderbrand's comments
->  >    - Fixed the wrong doc comment of kvm_park_vcpu API prototype
->  >    - Added Reviewed-by tags for patches {2,4}
->  > Link:
->  > https://lore.kernel.org/qemu-devel/20231009112812.10612-1-
->  salil.mehta@
->  > huawei.com/
->  >
->  > Patch-set  V2 -> V3
->  > 1. Addressed Jonathan Cameron's comments
->  >    - Fixed 'vcpu-id' type wrongly changed from 'unsigned long' to 'int=
-eger'
->  >    - Removed unnecessary use of variable 'vcpu_id' in kvm_park_vcpu
->  >    - Updated [Patch V2 3/10] commit-log with details of
->  ACPI_CPU_SCAN_METHOD macro
->  >    - Updated [Patch V2 5/10] commit-log with details of conditional ev=
-ent
->  handler method
->  >    - Added Reviewed-by tags for patches {2,3,4,6,7} 2. Addressed Gavin
->  > Shan's comments
->  >    - Remove unnecessary use of variable 'vcpu_id' in kvm_par_vcpu
->  >    - Fixed return value in kvm_get_vcpu from -1 to -ENOENT
->  >    - Reset the value of 'gdb_num_g_regs' in
->  gdb_unregister_coprocessor_all
->  >    - Fixed the kvm_{create,park}_vcpu prototypes docs
->  >    - Added Reviewed-by tags for patches {2,3,4,5,6,7,9,10} 3.
->  > Addressed one earlier missed comment by Alex Benn=E9e in RFC V1
->  >    - Added traces instead of DPRINTF in the newly added and some
->  > existing functions
->  > Link:
->  > https://lore.kernel.org/qemu-devel/20230930001933.2660-1-
->  salil.mehta@h
->  > uawei.com/
->  >
->  > Patch-set V1 -> V2
->  > 1. Addressed Alex Benn=E9e's comments
->  >    - Refactored the kvm_create_vcpu logic to get rid of goto
->  >    - Added the docs for kvm_{create,park}_vcpu prototypes
->  >    - Splitted the gdbstub and AddressSpace destruction change into
->  separate patches
->  >    - Added Reviewed-by tags for patches {2,10}
->  > Link:
->  > https://lore.kernel.org/qemu-devel/20230929124304.13672-1-
->  salil.mehta@
->  > huawei.com/
->  >
->  > References:
->  >
->  > [1]
->  > https://lore.kernel.org/qemu-devel/20230926100436.28284-1-
->  salil.mehta@
->  > huawei.com/ [2]
->  > https://lore.kernel.org/all/20230913163823.7880-1-
->  james.morse@arm.com/
->  > [3]
->  > https://lore.kernel.org/qemu-devel/cover.1695697701.git.lixianglai@loo
->  > ngson.cn/ [4]
->  > https://lore.kernel.org/qemu-devel/20240613233639.202896-2-salil.mehta
->  > @huawei.com/
->  >
->  > Salil Mehta (7):
->  >   accel/kvm: Extract common KVM vCPU {creation,parking} code
->  >   hw/acpi: Move CPU ctrl-dev MMIO region len macro to common header
->  file
->  >   hw/acpi: Update ACPI GED framework to support vCPU Hotplug
->  >   hw/acpi: Update GED _EVT method AML with CPU scan
->  >   hw/acpi: Update CPUs AML with cpu-(ctrl)dev change
->  >   physmem: Add helper function to destroy CPU AddressSpace
->  >   gdbstub: Add helper function to unregister GDB register space
->  >
->  >  accel/kvm/kvm-all.c                    | 95 +++++++++++++++++--------=
--
->  >  accel/kvm/kvm-cpus.h                   |  1 -
->  >  accel/kvm/trace-events                 |  5 +-
->  >  docs/specs/acpi_hw_reduced_hotplug.rst |  3 +-
->  >  gdbstub/gdbstub.c                      | 13 ++++
->  >  hw/acpi/acpi-cpu-hotplug-stub.c        |  6 ++
->  >  hw/acpi/cpu.c                          | 18 +++--
->  >  hw/acpi/generic_event_device.c         | 27 ++++++++
->  >  hw/core/cpu-common.c                   |  4 +-
->  >  hw/i386/acpi-build.c                   |  3 +-
->  >  include/exec/cpu-common.h              |  8 +++
->  >  include/exec/gdbstub.h                 |  6 ++
->  >  include/hw/acpi/cpu.h                  |  7 +-
->  >  include/hw/acpi/generic_event_device.h |  5 ++
->  >  include/hw/core/cpu.h                  |  1 +
->  >  include/sysemu/kvm.h                   | 25 +++++++
->  >  system/physmem.c                       | 29 ++++++++
->  >  17 files changed, 212 insertions(+), 44 deletions(-)
->  >
->  > --
->  > 2.34.1
->  >
->  >
+   That means that a stage-1 translation can be cached with sage-2
+   granule in key, this is taken into account for lookup.
+
+3) TLB Lookup
+   TLB lookup already uses ASID in key, so it can distinguish between
+   stage-1 and stage-2.
+   And as mentioned above, the granule for stage-1 can be different,
+   If stage-1 lookup failed, we try again with the stage-2 granule.
+
+4) TLB invalidation
+   - Address invalidation is split, for IOVA(CMD_TLBI_NH_VA
+     /CMD_TLBI_NH_VAA) and IPA(CMD_TLBI_S2_IPA) based on ASID value
+   - CMD_TLBI_NH_ASID/CMD_TLBI_NH_ALL: Consider VMID if stage-2 is
+     supported, and invalidate stage-1 only by VMIDs
+
+As far as I understand, this is compliant with the ARM architecture:
+- ARM ARM DDI 0487J.a: RLGSCG, RTVTYQ, RGNJPZ
+- ARM IHI 0070F.b: 16.2 Caching
+
+An alternative approach would be to instantiate 2 TLBs, one per each
+stage. I haven=E2=80=99t investigated that.
+
+Others
+=3D=3D=3D=3D=3D=3D=3D
+- OAS: A typical setup with nesting is to share CPU stage-2 with the
+  SMMU, and according to the user manual, SMMU OAS must match the
+  system physical address.
+
+  This was discussed before in
+  https://lore.kernel.org/all/20230226220650.1480786-11-smostafa@google.com=
+/
+  This series doesn=E2=80=99t implement that, but reworks OAS to make it ea=
+sier
+  to configure in the future.
+
+- For nested configuration, IOVA notifier only notifies for stage-1
+  invalidations (as far as I understand this is the intended
+  behaviour as it notifies for IOVA).
+
+- Rework class in events.
+
+- Stop ignoring VMID for stage-1 if stage-2 is also supported.
+
+Future improvements:
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+1) One small improvement, that I don=E2=80=99t think it=E2=80=99s worth the=
+ extra
+   complexity, is in case of Stage-1 TLB miss for nested translation,
+   we can do stage-1 walk and lookup for stage-2 TLBs, instead of
+   doing the full walk.
+
+Testing
+=3D=3D=3D=3D=3D=3D=3D=3D
+1) IOMMUFD + VFIO
+   Kernel: https://lore.kernel.org/all/cover.1683688960.git.nicolinc@nvidia=
+.com/
+   VMM: https://qemu-devel.nongnu.narkive.com/o815DqpI/rfc-v5-0-8-arm-smmuv=
+3-emulation-support
+
+   By assigning =E2=80=9Cvirtio-net-pci,netdev=3Dnet0,disable-legacy=3Don,i=
+ommu_platform=3Don,ats=3Don=E2=80=9D,
+   to a guest VM (on top of QEMU guest) with VIFO and IOMMUFD.
+
+2) Work in progress prototype I am hacking on for nesting on KVM
+   (this is nowhere near complete, and misses many stuff but it
+   doesn't require VMs/VFIO) also with virtio-net-pci and git
+   cloning a bunch of stuff and also observing traces.
+   https://android-kvm.googlesource.com/linux/+log/refs/heads/smostafa/andr=
+oid15-6.6-smmu-nesting-wip
+
+Overall I tested the following configurations
+(S1 =3D 4k, S2 =3D 4k):
+- S1 level =3D 1 and S2 level =3D 1
+- S1 level =3D 1 and S2 level =3D 2
+- S1 level =3D 1 and S2 level =3D 3
+- S1 level =3D 2 and S2 level =3D 1
+- S1 level =3D 2 and S2 level =3D 2
+- S1 level =3D 2 and S2 level =3D 3
+- S1 level =3D 3 and S2 level =3D 2
+- S1 level =3D 3 and S2 level =3D 3
+(S1 =3D 16k, S2 =3D 4k)
+- S1 level =3D 2 and S2 level =3D 1
+- S1 level =3D 2 and S2 level =3D 2
+- S1 level =3D 2 and S2 level =3D 3
+- S1 level =3D 3 and S2 level =3D 1
+- S1 level =3D 3 and S2 level =3D 2
+- S1 level =3D 3 and S2 level =3D 3
+(S1 =3D 64K, S2 =3D 4K)
+- S1 level =3D 2 and S2 level =3D 1
+- S1 level =3D 2 and S2 level =3D 2
+- S1 level =3D 2 and S2 level =3D 3
+- S1 level =3D 3 and S2 level =3D 1
+- S1 level =3D 3 and S2 level =3D 2
+- S1 level =3D 3 and S2 level =3D 3
+(S1 =3D 4K, S2 =3D 16k)
+- S1 level =3D 1 and S2 level =3D 2
+- S1 level =3D 1 and S2 level =3D 3
+- S1 level =3D 2 and S2 level =3D 2
+- S1 level =3D 2 and S2 level =3D 3
+- S1 level =3D 3 and S2 level =3D 2
+- S1 level =3D 3 and S2 level =3D 3
+(S1 =3D 4K, S2 =3D 64K)
+- S1 level =3D 1 and S2 level =3D 2
+- S1 level =3D 1 and S2 level =3D 3
+- S1 level =3D 2 and S2 level =3D 2
+- S1 level =3D 2 and S2 level =3D 3
+- S1 level =3D 3 and S2 level =3D 2
+- S1 level =3D 3 and S2 level =3D 3
+
+
+hw/arm/smmuv3: Split smmuv3_translate() better viewed with --color-moved
+
+The first 3 patches are fixes.
+
+Changes in v5:
+v4: https://lore.kernel.org/qemu-devel/20240701110241.2005222-1-smostafa@go=
+ogle.com/
+- Collect Eric and Jean Rbs
+- Fix a bug with nested lookup granule and iova mask
+- Fix InputAddr for events for cd and ttbx translation faults
+- Fix class in translation fault events
+- Fix smmuv3_notify_iova
+- Fix CACHED_ENTRY_TO_ADDR macro
+- Drop FWB patch
+- Fix bisectability by moving smmu_iotlb_inv_asid_vmid
+
+Changes in v4:
+v3: https://lore.kernel.org/qemu-devel/20240429032403.74910-1-smostafa@goog=
+le.com/
+- Collected Eric and Alex Rbs
+- Rebased on master
+- Dropped RFC tag
+- Dropped last 2 patches about oas changes to avoid blocking this series
+  and I will post them after as RFC
+- Split patch 7, and introduce CACHED_ENTRY_TO_ADDR in a separate patch
+- Reorder patch 8 and 9 (combine tlb and tlb lookup)
+- Split patch 12, and introduce smmu_iotlb_inv_asid_vmid in a separate patc=
+h
+- Split patch 14, to have fault changes in a separate patch
+- Update commit messages and include Fixes sha
+- Minor updates, renames and a lot of comments based on review
+
+Changes in v3
+v2: https://lore.kernel.org/qemu-devel/20240408140818.3799590-1-smostafa@go=
+ogle.com/
+- Collected Eric Rbs.
+- Rebased on master.
+- Fix an existing bug in class encoding.
+- Fix an existing bug in S2 events missing IPA.
+- Fix nesting event population (missing class and wrong events)
+- Remove CALL_FUNC_CFG_S2.
+- Rework TLB combination logic to cache the largest possible entries.
+- Refactor nested translation code to be more clear.
+- Split patch 05 to 4 patches.
+- Convert asid/vmid in trace events to int also.
+- Remove some extra traces as it was not needed.
+- Improve commit messages.
+
+Changes in v2:
+v1: https://lore.kernel.org/qemu-devel/20240325101442.1306300-1-smostafa@go=
+ogle.com/
+- Collected Eric Rbs
+- Rework TLB to rely on VMID/ASID instead of an extra key.
+- Fixed TLB issue with large stage-1 reported by Julian.
+- Cap the OAS to 48 bits as PTW doesn=E2=80=99t support 52 bits.
+- Fix ASID/VMID representation in some contexts as 16 bits while
+  they can be -1
+- Increase visibility in trace points
+
+Mostafa Saleh (18):
+  hw/arm/smmu-common: Add missing size check for stage-1
+  hw/arm/smmu: Fix IPA for stage-2 events
+  hw/arm/smmuv3: Fix encoding of CLASS in events
+  hw/arm/smmu: Use enum for SMMU stage
+  hw/arm/smmu: Split smmuv3_translate()
+  hw/arm/smmu: Consolidate ASID and VMID types
+  hw/arm/smmu: Introduce CACHED_ENTRY_TO_ADDR
+  hw/arm/smmuv3: Translate CD and TT using stage-2 table
+  hw/arm/smmu-common: Rework TLB lookup for nesting
+  hw/arm/smmu-common: Add support for nested TLB
+  hw/arm/smmu-common: Support nested translation
+  hw/arm/smmu: Support nesting in smmuv3_range_inval()
+  hw/arm/smmu: Introduce smmu_iotlb_inv_asid_vmid
+  hw/arm/smmu: Support nesting in the rest of commands
+  hw/arm/smmuv3: Support nested SMMUs in smmuv3_notify_iova()
+  hw/arm/smmuv3: Handle translation faults according to SMMUPTWEventInfo
+  hw/arm/smmuv3: Support and advertise nesting
+  hw/arm/smmu: Refactor SMMU OAS
+
+ hw/arm/smmu-common.c         | 312 ++++++++++++++++++++---
+ hw/arm/smmuv3-internal.h     |  19 +-
+ hw/arm/smmuv3.c              | 467 +++++++++++++++++++++++------------
+ hw/arm/trace-events          |  26 +-
+ include/hw/arm/smmu-common.h |  46 +++-
+ 5 files changed, 640 insertions(+), 230 deletions(-)
+
+--=20
+2.45.2.993.g49e7a77208-goog

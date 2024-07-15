@@ -1,87 +1,87 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp2249391nji;
-        Mon, 15 Jul 2024 06:28:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXlOty3BhE1lXESN0Da8U4PC00KIYR90o1+SSlxYgcH54Xh3pDTOnPTRS4mQveQiHUyyuWjBf/e/cfM/AK7WWE028+drKI6
-X-Google-Smtp-Source: AGHT+IFIiZp1DCaXPvosCfT2YaVvn9/cYbqQvjDXLKDmXXh5DGCcsEG69NpcNGdLhuIJK0PJS0yF
-X-Received: by 2002:a05:622a:20d:b0:447:f285:926a with SMTP id d75a77b69052e-447faab5c42mr244632701cf.62.1721050107594;
-        Mon, 15 Jul 2024 06:28:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721050107; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp2255852nji;
+        Mon, 15 Jul 2024 06:39:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXto+T0CuY3QV/OsnSFedu6a3llcQnnwXyeDPa9US+Or7eV3tE2aiGXpD7gYvIs0QdTIC8ZGjA4kn+KMQ7TLSuCDgFjREV8
+X-Google-Smtp-Source: AGHT+IEGyXWa+QADEpQucpT7nUjokn76B7SnpqHnrET5vDDR8eFLNZ4BNeKDPLv1omvc0yUvVaRc
+X-Received: by 2002:a05:620a:4114:b0:79f:5d5:1bc1 with SMTP id af79cd13be357-79f19bdffabmr2612652085a.58.1721050768499;
+        Mon, 15 Jul 2024 06:39:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721050768; cv=none;
         d=google.com; s=arc-20160816;
-        b=0NEq08Wvw8PH6Ao1O372DXhDdlMtuOVHAzuHhIC8E+5Hru9kFn2xOhVLEtF3hpMAeU
-         ugaHrYFa2yFsXP80xkjYK2OTSZu8yGSpNOOS19sjdi/EpbN+UkLXm/X13Lv/zwo580XS
-         rp5WDkKJGDDx0FljlLovW4Xhw7ot5oMlvRDOboDOrjOlgDcHorkV89FdBsCcVekx9iFz
-         gjLUnpWO1/jrHpFWPpAKJiMIDtVgFLqKNhbBCgZUyV2Z4oCY/cV1yKggWcAiLbnu+ZQG
-         ldp/5D1djBAjsOousD9D1usHhMyN/iRj1zBzjwPagJy15o7KUfXHgNFYspdNFMfYgmgo
-         ssWw==
+        b=yhpCr8kBipnbIkz74nJ2ZgVFDpGNMBzYadcgAlTaw2FkWfj1h2EATwdHcrSMFtoW7c
+         Q61eO1JmN9kHnAYzI/wYqiO33YkoPWJsxND1ze6Sen4T2E5Kil5MvSnH7ReK7TdPjIZB
+         geIkC6oM/QznpT5vLd0D+EtIniQbS1VxHjr/jBgS1Ms1j1g24hw058SQlhrrb/lt3qt+
+         wMf1hmGiJ3y8dlurQR39dCxSUzDbBAnSbwcAr8upJWbe62qwqPzWqce/SCqZ+QNAtv65
+         X+nCXlaSUatCQYe8rj5dhtrdAuNsL5wKCTAH+6lYga/tTyIgkCYWFjDnWNE9jQglZuIz
+         4V/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=eCgU0tXB1ZJY+zhiKRLC76QUBzDRP6VjnvnVPuwOXhY=;
-        fh=7QrSlzTQ0WjQmeJB/0v2lqG9x0mBxpbTGTwbvuUh3es=;
-        b=hoT+GTHZzWf+mwdzdgDTg78WsvFkTRtT+lv2nJpj2AYgQsMTBQQsdlGm9u6j0MusaU
-         hbBYNJtwlSXxXMJZQkxy7DnVxyyfgMepUYEqt4ogKHhtOgXWaWIJqqXspSIWlufJeC49
-         zoP5DeLjTAJr1tUdpbq4api9E8ZMEzPJAMv/y7oO5bzaofJmVp1hCKs6w/fEUHpc9Jzx
-         DIOz+bqscwp+uM97bnWawVxUMOzGmnenKp4Vh+3HtAapTmIKZIWU0SR6c7zJwooZe6hu
-         Fe5VcMaIgk8ZL5R9aKt4fS6oFfpmI9wIU64BKIIKPuae4cITx0HtVB7VpJ0jP0jU7nOU
-         cE9w==;
+        bh=EBtjuDMSwuw3nJB8kbux1qyAWsDSE9RGuyeX6JuknmI=;
+        fh=mS5M/5XZIdnkcrWVhBXUAxPgd8VKpqZ8mIHkn185HNI=;
+        b=ofvILIBEI6EEvxgDImGtmc/pbgAqIBQcbOEdjcWluoFT0zUrSiO/Ask1fako88i+6g
+         Dwsni/EMNrpR5SnoW/Fi0Coy00cQxFLR10mbkSHS6+qwx4J+AF5Mr16gQnBw/z1uErDg
+         NV3HAFMN46qIrnIxglLmMfHXRkHMMyTmCa+GYW8H6a2gVcyMJy77VDs4sCc4n/rlt00a
+         zulEqVecZG8pBWurMg0WhSHFVWmeXjywJw0GxVWScKbpB93grgm/VgmtMJ8RlAZr3DeH
+         QzePUaPXo0TlbTzWri3ItKjimFe977vzwUxI4kJ3DzEMDpXAIou8Z+mnAEz4PFv9gFI6
+         TbwA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SdFY3tOT;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c785Dx0b;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-44f5b80549dsi50784641cf.494.2024.07.15.06.28.27
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7a160c8e882si492203385a.707.2024.07.15.06.39.28
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jul 2024 06:28:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 15 Jul 2024 06:39:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SdFY3tOT;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c785Dx0b;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1721050107;
+	s=mimecast20190719; t=1721050768;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=eCgU0tXB1ZJY+zhiKRLC76QUBzDRP6VjnvnVPuwOXhY=;
-	b=SdFY3tOTKNp/0dwCe9twQUdmOSpFpxgut39iPxiqljEfnxC/fgL8e4FzQKEaEpBoBw7G3R
-	oBoLrHKWa9aKZHt1kHlJfk37nTU88ens6EcdeIcyFRGFFIqDBKpmyCM58UxAqmn1gWivE1
-	5Mf3h21+qT9/JDhvw72C4PyZcG26TE0=
-Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
- [209.85.208.197]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=EBtjuDMSwuw3nJB8kbux1qyAWsDSE9RGuyeX6JuknmI=;
+	b=c785Dx0bpM/mH94lbmPItLolnepZp3DK3pL7WLmE8UXfQyn6am106yOekXl2AWWmg1KwW0
+	2meRehNIUzYBUrG59D0zDMuyUlzyAzKoTZpER6xUb7seNRTabeYd0X1f9/ja3C3Xpc7gDc
+	f/0AN5SeeWwQUwGjJTpFrvqjPeGLN4E=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-628-xc3ZFJwkM9KdNI2dC134iQ-1; Mon, 15 Jul 2024 09:28:25 -0400
-X-MC-Unique: xc3ZFJwkM9KdNI2dC134iQ-1
-Received: by mail-lj1-f197.google.com with SMTP id 38308e7fff4ca-2ee97349a5fso44400771fa.3
-        for <alex.bennee@linaro.org>; Mon, 15 Jul 2024 06:28:25 -0700 (PDT)
+ us-mta-593-f1Gvcw_7MeeGBph0-Q6M5w-1; Mon, 15 Jul 2024 09:39:26 -0400
+X-MC-Unique: f1Gvcw_7MeeGBph0-Q6M5w-1
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-367988464ceso3874968f8f.2
+        for <alex.bennee@linaro.org>; Mon, 15 Jul 2024 06:39:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721050104; x=1721654904;
+        d=1e100.net; s=20230601; t=1721050766; x=1721655566;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=eCgU0tXB1ZJY+zhiKRLC76QUBzDRP6VjnvnVPuwOXhY=;
-        b=Pj513I0/YBXoOejUn0BTizIkkDK4L3ssfvhppPZ0o62OUVIT68vYA/+LEz0oCtDNk7
-         EB9tfHFOOIzPgYrCTgd8TPrXm0HcXd6lMM1P6tyDmJoDg49m5J8Z0yGiIvz6btSkHg+k
-         QIPraLTTIiZLN9Ws6SSqzZLEvZ2D/zZj/Of9xb+FjrK4gaFyoxOZ41XUP1Z5l+D0/a4t
-         v/ONCfVJ+PQgd2JYfD35Gml+zslKUNuxcgQL+l+KiRv/ERzsjo0OkyWM0ptlvj2rgl+W
-         DtTybdG3MAAyQI8Y5vEU0seMxk21nZCyNfzPMfxXo7IeoPHo03Bmi0FSKlhr/U4VocaC
-         OSng==
-X-Forwarded-Encrypted: i=1; AJvYcCXbXYIYjkoIqfUE4nZFI7XMVb5lJLPJJhi07yztXPtouYioyBAXEoefx1qgIxS5izZtsQFpA+LBY0+7dxbXhsyMi7jtY20X
-X-Gm-Message-State: AOJu0Yyfv2lRPsbtCekU7idhfmzUuhHvyQh/ZxuLgwuBjNDHt6O90Zh7
-	Dp+atQVYLAamKhApW/ppwiiY7ZbiO4N4TbjQsslpNn9CvJOa5QiMNo16AN3wPtzbWGXeBaKvFYH
-	nI5mJdVchM+QQS9N5/hHBTHI8v6t/g0n4wGJAPzKqtsHWL+X3iO9PYQ==
-X-Received: by 2002:a05:6512:39c9:b0:52c:def6:7c97 with SMTP id 2adb3069b0e04-52eb99d4c4fmr13509230e87.45.1721050104002;
-        Mon, 15 Jul 2024 06:28:24 -0700 (PDT)
-X-Received: by 2002:a05:6512:39c9:b0:52c:def6:7c97 with SMTP id 2adb3069b0e04-52eb99d4c4fmr13509194e87.45.1721050103481;
-        Mon, 15 Jul 2024 06:28:23 -0700 (PDT)
+        bh=EBtjuDMSwuw3nJB8kbux1qyAWsDSE9RGuyeX6JuknmI=;
+        b=MQFBd5AJT+pbTf0XrxOOgbxK3PLT5wbXWCX/HdOuKj9UhTqYqGpp8sPUUtNsm4Hal/
+         nocAFaIPt2D6fIBPWo/8xZ5N12fr3zjk87JI5M2TtqeMLyWdDShkbExPr8+ekS2Z3cI6
+         9MuwDNjVE8s6aoFDl+RLJTDDMjKbbs7V2bSFg0Qh4ugItpX+4RFrp3hxEQe/LCvjOhDI
+         aDZl+UFsA8uwBHUuk4d/+FPiLVu0bycinvEdyQD4WC7jGUEqLMq7SNSYcNbwBjSD0Hic
+         1B8rsA+Nm3+JyUVFuhsCE5yCJMWrgNLZ3UAWQBTCfksqcatPDfxZKzycRYBnaDEjsSa5
+         QOTA==
+X-Forwarded-Encrypted: i=1; AJvYcCWIRrcc/1ne3gAU30WMBMM6PscZFl4DArVCOEjkYJR/nfS/tR8Qw/SyQsvfPAvcHgT9gUeb32NRO1d0IqOcEI4vs5o2Urdm
+X-Gm-Message-State: AOJu0YyVZ+LGV0AsLh80Zou44iI8wd/wKmRSZVLWqDkIFcRSKsd71B5N
+	zNSERJRPR1haMIX8+cxS8P11IR2QCt22htJb1HBS43u/kUmwjGEdG6zNrUDzVc9g+2TM3BeMcES
+	kiWe3Au7Mrt5epBbZtAI26QRHe3ZG0LUsiqj+EjyDIey3f6arJ9qecQ==
+X-Received: by 2002:adf:e683:0:b0:367:8fc3:a25f with SMTP id ffacd0b85a97d-367cea96453mr15464593f8f.37.1721050765830;
+        Mon, 15 Jul 2024 06:39:25 -0700 (PDT)
+X-Received: by 2002:adf:e683:0:b0:367:8fc3:a25f with SMTP id ffacd0b85a97d-367cea96453mr15464550f8f.37.1721050765359;
+        Mon, 15 Jul 2024 06:39:25 -0700 (PDT)
 Return-Path: <imammedo@redhat.com>
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4279f25babbsm120248535e9.20.2024.07.15.06.28.22
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3680dafb939sm6451539f8f.89.2024.07.15.06.39.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 15 Jul 2024 06:28:23 -0700 (PDT)
-Date: Mon, 15 Jul 2024 15:28:21 +0200
+        Mon, 15 Jul 2024 06:39:24 -0700 (PDT)
+Date: Mon, 15 Jul 2024 15:39:23 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Salil Mehta <salil.mehta@huawei.com>
 Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
@@ -100,277 +100,120 @@ Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
  <lixianglai@loongson.cn>, <npiggin@gmail.com>, <harshpb@linux.ibm.com>,
  <linuxarm@huawei.com>, Shaoqin Huang <shahuang@redhat.com>, Zhao Liu
  <zhao1.liu@intel.com>
-Subject: Re: [PATCH V15 1/7] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-Message-ID: <20240715152821.7b8153e3@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240715144925.20d1cd2c@imammedo.users.ipa.redhat.com>
+Subject: Re: [PATCH V15 5/7] hw/acpi: Update CPUs AML with cpu-(ctrl)dev
+ change
+Message-ID: <20240715153923.60f9a2f1@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240713182516.1457-6-salil.mehta@huawei.com>
 References: <20240713182516.1457-1-salil.mehta@huawei.com>
-	<20240713182516.1457-2-salil.mehta@huawei.com>
-	<20240715144925.20d1cd2c@imammedo.users.ipa.redhat.com>
+	<20240713182516.1457-6-salil.mehta@huawei.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: oonjlUCNV1pm
+X-TUID: QkBmUgWdoyOC
 
-On Mon, 15 Jul 2024 14:49:25 +0200
-Igor Mammedov <imammedo@redhat.com> wrote:
+On Sat, 13 Jul 2024 19:25:14 +0100
+Salil Mehta <salil.mehta@huawei.com> wrote:
 
-> On Sat, 13 Jul 2024 19:25:10 +0100
-> Salil Mehta <salil.mehta@huawei.com> wrote:
+> CPUs Control device(\\_SB.PCI0) register interface for the x86 arch is IO port
+> based and existing CPUs AML code assumes _CRS objects would evaluate to a system
+> resource which describes IO Port address. But on ARM arch CPUs control
+> device(\\_SB.PRES) register interface is memory-mapped hence _CRS object should
+> evaluate to system resource which describes memory-mapped base address. Update
+> build CPUs AML function to accept both IO/MEMORY region spaces and accordingly
+> update the _CRS object.
 > 
-> > KVM vCPU creation is done once during the vCPU realization when Qemu vCPU thread
-> > is spawned. This is common to all the architectures as of now.
-> > 
-> > Hot-unplug of vCPU results in destruction of the vCPU object in QOM but the
-> > corresponding KVM vCPU object in the Host KVM is not destroyed as KVM doesn't
-> > support vCPU removal. Therefore, its representative KVM vCPU object/context in
-> > Qemu is parked.
-> > 
-> > Refactor architecture common logic so that some APIs could be reused by vCPU
-> > Hotplug code of some architectures likes ARM, Loongson etc. Update new/old APIs
-> > with trace events. New APIs qemu_{create,park,unpark}_vcpu() can be externally
-> > called. No functional change is intended here.
-> > 
-> > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-> > Reviewed-by: Gavin Shan <gshan@redhat.com>
-> > Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > Tested-by: Xianglai Li <lixianglai@loongson.cn>
-> > Tested-by: Miguel Luis <miguel.luis@oracle.com>
-> > Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
-> > Reviewed-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-> > Reviewed-by: Nicholas Piggin <npiggin@gmail.com>
-> > Tested-by: Zhao Liu <zhao1.liu@intel.com>
-> > Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-> > Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>  
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
+> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Tested-by: Xianglai Li <lixianglai@loongson.cn>
+> Tested-by: Miguel Luis <miguel.luis@oracle.com>
+> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+> Tested-by: Zhao Liu <zhao1.liu@intel.com>
+
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> ---
+>  hw/acpi/cpu.c         | 17 +++++++++++++----
+>  hw/i386/acpi-build.c  |  3 ++-
+>  include/hw/acpi/cpu.h |  5 +++--
+>  3 files changed, 18 insertions(+), 7 deletions(-)
 > 
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-this needs fixing, to make checkpatch happy
-
-Checking 0001-accel-kvm-Extract-common-KVM-vCPU-creation-parking-c.patch...
-WARNING: line over 80 characters
-#120: FILE: accel/kvm/kvm-all.c:368:
-+    trace_kvm_unpark_vcpu(vcpu_id, kvm_fd > 0 ? "unparked" : "not found parked");
-
-total: 0 errors, 1 warnings, 183 lines checked
-
-> 
-> > ---
-> >  accel/kvm/kvm-all.c    | 95 ++++++++++++++++++++++++++++--------------
-> >  accel/kvm/kvm-cpus.h   |  1 -
-> >  accel/kvm/trace-events |  5 ++-
-> >  include/sysemu/kvm.h   | 25 +++++++++++
-> >  4 files changed, 92 insertions(+), 34 deletions(-)
-> > 
-> > diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> > index 2b4ab89679..e446d18944 100644
-> > --- a/accel/kvm/kvm-all.c
-> > +++ b/accel/kvm/kvm-all.c
-> > @@ -340,14 +340,71 @@ err:
-> >      return ret;
-> >  }
-> >  
-> > +void kvm_park_vcpu(CPUState *cpu)
-> > +{
-> > +    struct KVMParkedVcpu *vcpu;
-> > +
-> > +    trace_kvm_park_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-> > +
-> > +    vcpu = g_malloc0(sizeof(*vcpu));
-> > +    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-> > +    vcpu->kvm_fd = cpu->kvm_fd;
-> > +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> > +}
-> > +
-> > +int kvm_unpark_vcpu(KVMState *s, unsigned long vcpu_id)
-> > +{
-> > +    struct KVMParkedVcpu *cpu;
-> > +    int kvm_fd = -ENOENT;
-> > +
-> > +    QLIST_FOREACH(cpu, &s->kvm_parked_vcpus, node) {
-> > +        if (cpu->vcpu_id == vcpu_id) {
-> > +            QLIST_REMOVE(cpu, node);
-> > +            kvm_fd = cpu->kvm_fd;
-> > +            g_free(cpu);
-> > +        }
-> > +    }
-> > +
-> > +    trace_kvm_unpark_vcpu(vcpu_id, kvm_fd > 0 ? "unparked" : "not found parked");
-> > +
-> > +    return kvm_fd;
-> > +}
-> > +
-> > +int kvm_create_vcpu(CPUState *cpu)
-> > +{
-> > +    unsigned long vcpu_id = kvm_arch_vcpu_id(cpu);
-> > +    KVMState *s = kvm_state;
-> > +    int kvm_fd;
-> > +
-> > +    /* check if the KVM vCPU already exist but is parked */
-> > +    kvm_fd = kvm_unpark_vcpu(s, vcpu_id);
-> > +    if (kvm_fd < 0) {
-> > +        /* vCPU not parked: create a new KVM vCPU */
-> > +        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
-> > +        if (kvm_fd < 0) {
-> > +            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %lu", vcpu_id);
-> > +            return kvm_fd;
-> > +        }
-> > +    }
-> > +
-> > +    cpu->kvm_fd = kvm_fd;
-> > +    cpu->kvm_state = s;
-> > +    cpu->vcpu_dirty = true;
-> > +    cpu->dirty_pages = 0;
-> > +    cpu->throttle_us_per_full = 0;
-> > +
-> > +    trace_kvm_create_vcpu(cpu->cpu_index, vcpu_id, kvm_fd);
-> > +
-> > +    return 0;
-> > +}
-> > +
-> >  static int do_kvm_destroy_vcpu(CPUState *cpu)
-> >  {
-> >      KVMState *s = kvm_state;
-> >      long mmap_size;
-> > -    struct KVMParkedVcpu *vcpu = NULL;
-> >      int ret = 0;
-> >  
-> > -    trace_kvm_destroy_vcpu();
-> > +    trace_kvm_destroy_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-> >  
-> >      ret = kvm_arch_destroy_vcpu(cpu);
-> >      if (ret < 0) {
-> > @@ -373,10 +430,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
-> >          }
-> >      }
-> >  
-> > -    vcpu = g_malloc0(sizeof(*vcpu));
-> > -    vcpu->vcpu_id = kvm_arch_vcpu_id(cpu);
-> > -    vcpu->kvm_fd = cpu->kvm_fd;
-> > -    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
-> > +    kvm_park_vcpu(cpu);
-> >  err:
-> >      return ret;
-> >  }
-> > @@ -389,24 +443,6 @@ void kvm_destroy_vcpu(CPUState *cpu)
-> >      }
-> >  }
-> >  
-> > -static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id)
-> > -{
-> > -    struct KVMParkedVcpu *cpu;
-> > -
-> > -    QLIST_FOREACH(cpu, &s->kvm_parked_vcpus, node) {
-> > -        if (cpu->vcpu_id == vcpu_id) {
-> > -            int kvm_fd;
-> > -
-> > -            QLIST_REMOVE(cpu, node);
-> > -            kvm_fd = cpu->kvm_fd;
-> > -            g_free(cpu);
-> > -            return kvm_fd;
-> > -        }
-> > -    }
-> > -
-> > -    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
-> > -}
-> > -
-> >  int kvm_init_vcpu(CPUState *cpu, Error **errp)
-> >  {
-> >      KVMState *s = kvm_state;
-> > @@ -415,19 +451,14 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
-> >  
-> >      trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
-> >  
-> > -    ret = kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
-> > +    ret = kvm_create_vcpu(cpu);
-> >      if (ret < 0) {
-> > -        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu failed (%lu)",
-> > +        error_setg_errno(errp, -ret,
-> > +                         "kvm_init_vcpu: kvm_create_vcpu failed (%lu)",
-> >                           kvm_arch_vcpu_id(cpu));
-> >          goto err;
-> >      }
-> >  
-> > -    cpu->kvm_fd = ret;
-> > -    cpu->kvm_state = s;
-> > -    cpu->vcpu_dirty = true;
-> > -    cpu->dirty_pages = 0;
-> > -    cpu->throttle_us_per_full = 0;
-> > -
-> >      mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
-> >      if (mmap_size < 0) {
-> >          ret = mmap_size;
-> > diff --git a/accel/kvm/kvm-cpus.h b/accel/kvm/kvm-cpus.h
-> > index ca40add32c..171b22fd29 100644
-> > --- a/accel/kvm/kvm-cpus.h
-> > +++ b/accel/kvm/kvm-cpus.h
-> > @@ -22,5 +22,4 @@ bool kvm_supports_guest_debug(void);
-> >  int kvm_insert_breakpoint(CPUState *cpu, int type, vaddr addr, vaddr len);
-> >  int kvm_remove_breakpoint(CPUState *cpu, int type, vaddr addr, vaddr len);
-> >  void kvm_remove_all_breakpoints(CPUState *cpu);
-> > -
-> >  #endif /* KVM_CPUS_H */
-> > diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
-> > index 681ccb667d..37626c1ac5 100644
-> > --- a/accel/kvm/trace-events
-> > +++ b/accel/kvm/trace-events
-> > @@ -9,6 +9,10 @@ kvm_device_ioctl(int fd, int type, void *arg) "dev fd %d, type 0x%x, arg %p"
-> >  kvm_failed_reg_get(uint64_t id, const char *msg) "Warning: Unable to retrieve ONEREG %" PRIu64 " from KVM: %s"
-> >  kvm_failed_reg_set(uint64_t id, const char *msg) "Warning: Unable to set ONEREG %" PRIu64 " to KVM: %s"
-> >  kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> > +kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id, int kvm_fd) "index: %d, id: %lu, kvm fd: %d"
-> > +kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> > +kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
-> > +kvm_unpark_vcpu(unsigned long arch_cpu_id, const char *msg) "id: %lu %s"
-> >  kvm_irqchip_commit_routes(void) ""
-> >  kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
-> >  kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
-> > @@ -25,7 +29,6 @@ kvm_dirty_ring_reaper(const char *s) "%s"
-> >  kvm_dirty_ring_reap(uint64_t count, int64_t t) "reaped %"PRIu64" pages (took %"PRIi64" us)"
-> >  kvm_dirty_ring_reaper_kick(const char *reason) "%s"
-> >  kvm_dirty_ring_flush(int finished) "%d"
-> > -kvm_destroy_vcpu(void) ""
-> >  kvm_failed_get_vcpu_mmap_size(void) ""
-> >  kvm_cpu_exec(void) ""
-> >  kvm_interrupt_exit_request(void) ""
-> > diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> > index c31d9c7356..c4a914b3d8 100644
-> > --- a/include/sysemu/kvm.h
-> > +++ b/include/sysemu/kvm.h
-> > @@ -313,6 +313,31 @@ int kvm_create_device(KVMState *s, uint64_t type, bool test);
-> >   */
-> >  bool kvm_device_supported(int vmfd, uint64_t type);
-> >  
-> > +/**
-> > + * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
-> > + * @cpu: QOM CPUState object for which KVM vCPU has to be fetched/created.
-> > + *
-> > + * @returns: 0 when success, errno (<0) when failed.
-> > + */
-> > +int kvm_create_vcpu(CPUState *cpu);
-> > +
-> > +/**
-> > + * kvm_park_vcpu - Park QEMU KVM vCPU context
-> > + * @cpu: QOM CPUState object for which QEMU KVM vCPU context has to be parked.
-> > + *
-> > + * @returns: none
-> > + */
-> > +void kvm_park_vcpu(CPUState *cpu);
-> > +
-> > +/**
-> > + * kvm_unpark_vcpu - unpark QEMU KVM vCPU context
-> > + * @s: KVM State
-> > + * @vcpu_id: Architecture vCPU ID of the parked vCPU
-> > + *
-> > + * @returns: KVM fd
-> > + */
-> > +int kvm_unpark_vcpu(KVMState *s, unsigned long vcpu_id);
-> > +
-> >  /* Arch specific hooks */
-> >  
-> >  extern const KVMCapabilityInfo kvm_arch_required_capabilities[];  
-> 
+> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+> index cf5e9183e4..5cb60ca8bc 100644
+> --- a/hw/acpi/cpu.c
+> +++ b/hw/acpi/cpu.c
+> @@ -338,9 +338,10 @@ const VMStateDescription vmstate_cpu_hotplug = {
+>  #define CPU_FW_EJECT_EVENT "CEJF"
+>  
+>  void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+> -                    build_madt_cpu_fn build_madt_cpu, hwaddr io_base,
+> +                    build_madt_cpu_fn build_madt_cpu, hwaddr base_addr,
+>                      const char *res_root,
+> -                    const char *event_handler_method)
+> +                    const char *event_handler_method,
+> +                    AmlRegionSpace rs)
+>  {
+>      Aml *ifctx;
+>      Aml *field;
+> @@ -364,14 +365,22 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+>              aml_name_decl("_UID", aml_string("CPU Hotplug resources")));
+>          aml_append(cpu_ctrl_dev, aml_mutex(CPU_LOCK, 0));
+>  
+> +        assert((rs == AML_SYSTEM_IO) || (rs == AML_SYSTEM_MEMORY));
+> +
+>          crs = aml_resource_template();
+> -        aml_append(crs, aml_io(AML_DECODE16, io_base, io_base, 1,
+> +        if (rs == AML_SYSTEM_IO) {
+> +            aml_append(crs, aml_io(AML_DECODE16, base_addr, base_addr, 1,
+>                                 ACPI_CPU_HOTPLUG_REG_LEN));
+> +        } else if (rs == AML_SYSTEM_MEMORY) {
+> +            aml_append(crs, aml_memory32_fixed(base_addr,
+> +                               ACPI_CPU_HOTPLUG_REG_LEN, AML_READ_WRITE));
+> +        }
+> +
+>          aml_append(cpu_ctrl_dev, aml_name_decl("_CRS", crs));
+>  
+>          /* declare CPU hotplug MMIO region with related access fields */
+>          aml_append(cpu_ctrl_dev,
+> -            aml_operation_region("PRST", AML_SYSTEM_IO, aml_int(io_base),
+> +            aml_operation_region("PRST", rs, aml_int(base_addr),
+>                                   ACPI_CPU_HOTPLUG_REG_LEN));
+>  
+>          field = aml_field("PRST", AML_BYTE_ACC, AML_NOLOCK,
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index f4e366f64f..5d4bd2b710 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -1536,7 +1536,8 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>              .fw_unplugs_cpu = pm->smi_on_cpu_unplug,
+>          };
+>          build_cpus_aml(dsdt, machine, opts, pc_madt_cpu_entry,
+> -                       pm->cpu_hp_io_base, "\\_SB.PCI0", "\\_GPE._E02");
+> +                       pm->cpu_hp_io_base, "\\_SB.PCI0", "\\_GPE._E02",
+> +                       AML_SYSTEM_IO);
+>      }
+>  
+>      if (pcms->memhp_io_base && nr_mem) {
+> diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
+> index df87b15997..32654dc274 100644
+> --- a/include/hw/acpi/cpu.h
+> +++ b/include/hw/acpi/cpu.h
+> @@ -63,9 +63,10 @@ typedef void (*build_madt_cpu_fn)(int uid, const CPUArchIdList *apic_ids,
+>                                    GArray *entry, bool force_enabled);
+>  
+>  void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+> -                    build_madt_cpu_fn build_madt_cpu, hwaddr io_base,
+> +                    build_madt_cpu_fn build_madt_cpu, hwaddr base_addr,
+>                      const char *res_root,
+> -                    const char *event_handler_method);
+> +                    const char *event_handler_method,
+> +                    AmlRegionSpace rs);
+>  
+>  void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list);
+>  

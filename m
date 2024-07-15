@@ -1,55 +1,55 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp2265389nji;
-        Mon, 15 Jul 2024 06:58:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW+Vu+WCk7JrLFin/cwGkLx9F4moK8M7lupN2RVe3d9hpWUJ16sIGN1OZMlkZGCvBeZsyJZq83NezFykh4qB4Fxcsj0QCK3
-X-Google-Smtp-Source: AGHT+IGEwoxVnKnY00kthw/2bHH4IddSUTo9ENCPTG4mcl3jyJFsozziGDivEoZGNbjBgp04weqV
-X-Received: by 2002:a05:600c:49aa:b0:425:7ac6:970d with SMTP id 5b1f17b1804b1-426707f7e06mr127405735e9.28.1721051884542;
-        Mon, 15 Jul 2024 06:58:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721051884; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp2276683nji;
+        Mon, 15 Jul 2024 07:14:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWt4hApsnWuVw4nde3FWDzkSMcEsaBtP4byDqPbllMG8jy1EMMUTJ/NCaNmDzp1y6gXICNoigBawakFCsH7IgK5Z13ytE0A
+X-Google-Smtp-Source: AGHT+IEI31zi3D0XRYCmlhTJUNdZropW3Ek2/2KnMiUXkvLD5ogr4Hbp4Gu1MkyX7mCAsVTVYJnK
+X-Received: by 2002:a05:6e02:148f:b0:375:9c7e:d04 with SMTP id e9e14a558f8ab-38a57215a42mr268686315ab.10.1721052854809;
+        Mon, 15 Jul 2024 07:14:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721052854; cv=none;
         d=google.com; s=arc-20160816;
-        b=hGWLl/kobMt1ia/tpPp6GY2D/twKJ+W4KxF+FrhtAWoape00vkU9OWosYqzhE//fCc
-         AManoyjjb7xypO5ky1IiwwGWmjx8roJLzsJyKyOUtuU60wndYxg8jmyrSyor4FEvLNX5
-         frwTcBt5tehYf8qEE8YMV6FCkITbPV5v/YFUMuXlX9LmdiX3Rz/aaB/PVYqXGWZze+ld
-         kVOYNY2Fs9cUW0pGo2hylW8enRg3JEGlL+Rhk2cjJVsbrMLCjMhxwXpR2yIIBUKNWCEp
-         l3oUhNbhfjbfBPFRXeTGjc1IMTH1dfdxMoEH+VWSv9vdfsY/t/M+rMzrnteghSHkV5u1
-         CqDA==
+        b=XvSr/8+3rD4MKIwrZGSMFp6UuozAnK+PXT2xYaDpKdE5hLvCjrUnbD6SXMlqWqupVD
+         XiJIyDpjghAFgQj7PhVIw/ydoO/yeyIlSl0+SlLlUyA4llaZU69ODJB2JjJ1zrTTbvBC
+         MJmS07U8VrIQYEoL6h6NsEX0h4O/Y2hC2JOU3whHamEjPo9BIJUoNOCDa2V9BG/pEbEW
+         iM5zewVL+pVOKiumA4gkv8jUmeO2keLh8W0kSQl8Spr9Eamp/haDyXXKajWowmA+kOAR
+         bQVNQKFHO3mkuvY2wmgh9aNQODND7KItyBsK8IRi49rVRNbUuTe5Xe4FwToMDuieuswR
+         0VXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:content-transfer-encoding:content-language
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:subject:cc:to:from;
-        bh=erEKrCLuBy8THupdmINnDZRjkaCAJPEXlRSw62OWzd0=;
-        fh=DtExAIOPRLt+BKYSUlzGTbHJwEPb3rSjaXOd9OZV96Y=;
-        b=TaDcASWRpBBN2We7qhPF5kf65j8BQwop2eQvVI/1GeuoAyQJcun4tw8K9zliRpwsOj
-         IshXY+vp5s4D5bagJYpZS11Iv9xa5m1CUkKJDtOJ52SQpy/rVL4jfrqQ/saVMCbm1npm
-         wTUofs/6UHAODHqljMSAaaLHkufRGasqbWZw44MxIH4sdGpZoV8uduQhJYgOSVaAC2lx
-         dPLoyV91j8lGsBlpLCEJGeVkBOOIEsiwnzEFWIgfYtZrjbgAASMosG9QrPs2Y0AnC1M1
-         kKx5+4/dNF/cxSNe3bHI4c8WxGE89/Z+wapz1x0r+82eUcRBTLTqqeTXzukSGwf9Hxw/
-         Z9GQ==;
+        bh=FiU9AcfjVdYgQBXU0fl8nkyYTPwKYTAjYR1m0JmKINQ=;
+        fh=JcChdmgBSfGFoP1qS5QO9uKvZt4evuYtc2ypY2xcUaY=;
+        b=pQSW+Vbg53DLd3EU+Wkk6H9fNNxgqmaaAZ/XILj5fK8nKupKBMUXN6fNDGMLrhHSdD
+         QhpWv34UKfqLd9Dv4Grvwf9S3U//wwPE9HasO0U0vX6FXNUTo+AHAWmLQhMAGtdmGQYt
+         sPHTpCqBLVQ4zMbk+z7hNb1rnhTXedpc3ZMm20/0gK0eLwo5tKuuUoRa5xItB/HtCew0
+         eyWjUrinSv7KrJ9sQI9S/DmnbhU4LaAY4UUlmZN3wdHHOmVwoCSoO93av/mHsF8ZfxjM
+         Kw3xuoaZQstdnChsa9od/NC62J8RYXHakRGg76SUR9c6NEvUJVrjZg5sgAu2dKSGIOBw
+         j0Cw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3680daf682fsi3049502f8f.404.2024.07.15.06.58.04
+        by mx.google.com with ESMTPS id 41be03b00d2f7-78e3c46495asi4843118a12.8.2024.07.15.07.14.13
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 15 Jul 2024 06:58:04 -0700 (PDT)
+        Mon, 15 Jul 2024 07:14:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WN3d330Csz6K9Wg;
-	Mon, 15 Jul 2024 21:55:51 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id C5ACD140B39;
-	Mon, 15 Jul 2024 21:58:02 +0800 (CST)
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WN3zf6rqkz6K8sW;
+	Mon, 15 Jul 2024 22:11:58 +0800 (CST)
+Received: from lhrpeml500006.china.huawei.com (unknown [7.191.161.198])
+	by mail.maildlp.com (Postfix) with ESMTPS id 477FF140CB9;
+	Mon, 15 Jul 2024 22:14:10 +0800 (CST)
 Received: from lhrpeml500001.china.huawei.com (7.191.163.213) by
- lhrpeml500005.china.huawei.com (7.191.163.240) with Microsoft SMTP Server
+ lhrpeml500006.china.huawei.com (7.191.161.198) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 15 Jul 2024 14:57:59 +0100
+ 15.1.2507.39; Mon, 15 Jul 2024 15:14:09 +0100
 Received: from lhrpeml500001.china.huawei.com ([7.191.163.213]) by
  lhrpeml500001.china.huawei.com ([7.191.163.213]) with mapi id 15.01.2507.039;
- Mon, 15 Jul 2024 14:57:59 +0100
+ Mon, 15 Jul 2024 15:14:09 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: Igor Mammedov <imammedo@redhat.com>
 CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
@@ -77,323 +77,240 @@ CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
 	<jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>,
 	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, "npiggin@gmail.com"
 	<npiggin@gmail.com>, "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
-	Linuxarm <linuxarm@huawei.com>, Shaoqin Huang <shahuang@redhat.com>, Zhao Liu
-	<zhao1.liu@intel.com>
-Subject: RE: [PATCH V15 1/7] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-Thread-Topic: [PATCH V15 1/7] accel/kvm: Extract common KVM vCPU
- {creation,parking} code
-Thread-Index: AQHa1VIj3Jw6kX4U1UOYudvO7DaVDbH3r3CAgAAK4ICAABiUUA==
-Date: Mon, 15 Jul 2024 13:57:59 +0000
-Message-ID: <cdb53ce71c4548b096651e9eac78a240@huawei.com>
+	Linuxarm <linuxarm@huawei.com>
+Subject: RE: [PATCH V15 0/7] Add architecture agnostic code to support vCPU
+ Hotplug
+Thread-Topic: [PATCH V15 0/7] Add architecture agnostic code to support vCPU
+ Hotplug
+Thread-Index: AQHa1VIYzbBqk8ub30G0ZXbYzNwFGLH3waYAgAASi1A=
+Date: Mon, 15 Jul 2024 14:14:09 +0000
+Message-ID: <b93b570158794e28bf8c00a949afa8b4@huawei.com>
 References: <20240713182516.1457-1-salil.mehta@huawei.com>
-	<20240713182516.1457-2-salil.mehta@huawei.com>
-	<20240715144925.20d1cd2c@imammedo.users.ipa.redhat.com>
- <20240715152821.7b8153e3@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240715152821.7b8153e3@imammedo.users.ipa.redhat.com>
+ <20240715155436.577d34c5@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240715155436.577d34c5@imammedo.users.ipa.redhat.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach:
 X-MS-TNEF-Correlator:
 x-originating-ip: [10.126.170.92]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-TUID: SDfWtunPzOqq
+X-TUID: MEU/zjk8Qsrs
 
->  From: Igor Mammedov <imammedo@redhat.com>
->  Sent: Monday, July 15, 2024 2:28 PM
->  To: Salil Mehta <salil.mehta@huawei.com>
-> =20
->  On Mon, 15 Jul 2024 14:49:25 +0200
->  Igor Mammedov <imammedo@redhat.com> wrote:
-> =20
->  > On Sat, 13 Jul 2024 19:25:10 +0100
->  > Salil Mehta <salil.mehta@huawei.com> wrote:
->  >
->  > > KVM vCPU creation is done once during the vCPU realization when Qemu
->  > > vCPU thread is spawned. This is common to all the architectures as o=
-f  now.
->  > >
->  > > Hot-unplug of vCPU results in destruction of the vCPU object in QOM
->  > > but the corresponding KVM vCPU object in the Host KVM is not
->  > > destroyed as KVM doesn't support vCPU removal. Therefore, its
->  > > representative KVM vCPU object/context in Qemu is parked.
->  > >
->  > > Refactor architecture common logic so that some APIs could be reused
->  > > by vCPU Hotplug code of some architectures likes ARM, Loongson etc.
->  > > Update new/old APIs with trace events. New APIs
->  > > qemu_{create,park,unpark}_vcpu() can be externally called. No
->  functional change is intended here.
->  > >
->  > > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
->  > > Reviewed-by: Gavin Shan <gshan@redhat.com>
->  > > Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
->  > > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
->  > > Tested-by: Xianglai Li <lixianglai@loongson.cn>
->  > > Tested-by: Miguel Luis <miguel.luis@oracle.com>
->  > > Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
->  > > Reviewed-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
->  > > Reviewed-by: Nicholas Piggin <npiggin@gmail.com>
->  > > Tested-by: Zhao Liu <zhao1.liu@intel.com>
->  > > Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
->  > > Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
->  >
->  > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> =20
->  this needs fixing, to make checkpatch happy
-> =20
->  Checking 0001-accel-kvm-Extract-common-KVM-vCPU-creation-parking-
->  c.patch...
->  WARNING: line over 80 characters
->  #120: FILE: accel/kvm/kvm-all.c:368:
->  +    trace_kvm_unpark_vcpu(vcpu_id, kvm_fd > 0 ? "unparked" : "not found
->  + parked");
-
-
-Thanks. I will fix this as well.
-
-
-> =20
->  total: 0 errors, 1 warnings, 183 lines checked
-> =20
->  >
->  > > ---
->  > >  accel/kvm/kvm-all.c    | 95 ++++++++++++++++++++++++++++----------
->  ----
->  > >  accel/kvm/kvm-cpus.h   |  1 -
->  > >  accel/kvm/trace-events |  5 ++-
->  > >  include/sysemu/kvm.h   | 25 +++++++++++
->  > >  4 files changed, 92 insertions(+), 34 deletions(-)
->  > >
->  > > diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c index
->  > > 2b4ab89679..e446d18944 100644
->  > > --- a/accel/kvm/kvm-all.c
->  > > +++ b/accel/kvm/kvm-all.c
->  > > @@ -340,14 +340,71 @@ err:
->  > >      return ret;
->  > >  }
->  > >
->  > > +void kvm_park_vcpu(CPUState *cpu)
->  > > +{
->  > > +    struct KVMParkedVcpu *vcpu;
->  > > +
->  > > +    trace_kvm_park_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
->  > > +
->  > > +    vcpu =3D g_malloc0(sizeof(*vcpu));
->  > > +    vcpu->vcpu_id =3D kvm_arch_vcpu_id(cpu);
->  > > +    vcpu->kvm_fd =3D cpu->kvm_fd;
->  > > +    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu,
->  node); }
->  > > +
->  > > +int kvm_unpark_vcpu(KVMState *s, unsigned long vcpu_id) {
->  > > +    struct KVMParkedVcpu *cpu;
->  > > +    int kvm_fd =3D -ENOENT;
->  > > +
->  > > +    QLIST_FOREACH(cpu, &s->kvm_parked_vcpus, node) {
->  > > +        if (cpu->vcpu_id =3D=3D vcpu_id) {
->  > > +            QLIST_REMOVE(cpu, node);
->  > > +            kvm_fd =3D cpu->kvm_fd;
->  > > +            g_free(cpu);
->  > > +        }
->  > > +    }
->  > > +
->  > > +    trace_kvm_unpark_vcpu(vcpu_id, kvm_fd > 0 ? "unparked" : "not
->  > > + found parked");
->  > > +
->  > > +    return kvm_fd;
->  > > +}
->  > > +
->  > > +int kvm_create_vcpu(CPUState *cpu)
->  > > +{
->  > > +    unsigned long vcpu_id =3D kvm_arch_vcpu_id(cpu);
->  > > +    KVMState *s =3D kvm_state;
->  > > +    int kvm_fd;
->  > > +
->  > > +    /* check if the KVM vCPU already exist but is parked */
->  > > +    kvm_fd =3D kvm_unpark_vcpu(s, vcpu_id);
->  > > +    if (kvm_fd < 0) {
->  > > +        /* vCPU not parked: create a new KVM vCPU */
->  > > +        kvm_fd =3D kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);
->  > > +        if (kvm_fd < 0) {
->  > > +            error_report("KVM_CREATE_VCPU IOCTL failed for vCPU %lu=
-",
->  vcpu_id);
->  > > +            return kvm_fd;
->  > > +        }
->  > > +    }
->  > > +
->  > > +    cpu->kvm_fd =3D kvm_fd;
->  > > +    cpu->kvm_state =3D s;
->  > > +    cpu->vcpu_dirty =3D true;
->  > > +    cpu->dirty_pages =3D 0;
->  > > +    cpu->throttle_us_per_full =3D 0;
->  > > +
->  > > +    trace_kvm_create_vcpu(cpu->cpu_index, vcpu_id, kvm_fd);
->  > > +
->  > > +    return 0;
->  > > +}
->  > > +
->  > >  static int do_kvm_destroy_vcpu(CPUState *cpu)  {
->  > >      KVMState *s =3D kvm_state;
->  > >      long mmap_size;
->  > > -    struct KVMParkedVcpu *vcpu =3D NULL;
->  > >      int ret =3D 0;
->  > >
->  > > -    trace_kvm_destroy_vcpu();
->  > > +    trace_kvm_destroy_vcpu(cpu->cpu_index,
->  kvm_arch_vcpu_id(cpu));
->  > >
->  > >      ret =3D kvm_arch_destroy_vcpu(cpu);
->  > >      if (ret < 0) {
->  > > @@ -373,10 +430,7 @@ static int do_kvm_destroy_vcpu(CPUState
->  *cpu)
->  > >          }
->  > >      }
->  > >
->  > > -    vcpu =3D g_malloc0(sizeof(*vcpu));
->  > > -    vcpu->vcpu_id =3D kvm_arch_vcpu_id(cpu);
->  > > -    vcpu->kvm_fd =3D cpu->kvm_fd;
->  > > -    QLIST_INSERT_HEAD(&kvm_state->kvm_parked_vcpus, vcpu, node);
->  > > +    kvm_park_vcpu(cpu);
->  > >  err:
->  > >      return ret;
->  > >  }
->  > > @@ -389,24 +443,6 @@ void kvm_destroy_vcpu(CPUState *cpu)
->  > >      }
->  > >  }
->  > >
->  > > -static int kvm_get_vcpu(KVMState *s, unsigned long vcpu_id) -{
->  > > -    struct KVMParkedVcpu *cpu;
->  > > -
->  > > -    QLIST_FOREACH(cpu, &s->kvm_parked_vcpus, node) {
->  > > -        if (cpu->vcpu_id =3D=3D vcpu_id) {
->  > > -            int kvm_fd;
->  > > -
->  > > -            QLIST_REMOVE(cpu, node);
->  > > -            kvm_fd =3D cpu->kvm_fd;
->  > > -            g_free(cpu);
->  > > -            return kvm_fd;
->  > > -        }
->  > > -    }
->  > > -
->  > > -    return kvm_vm_ioctl(s, KVM_CREATE_VCPU, (void *)vcpu_id);
->  > > -}
->  > > -
->  > >  int kvm_init_vcpu(CPUState *cpu, Error **errp)  {
->  > >      KVMState *s =3D kvm_state;
->  > > @@ -415,19 +451,14 @@ int kvm_init_vcpu(CPUState *cpu, Error
->  **errp)
->  > >
->  > >      trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));
->  > >
->  > > -    ret =3D kvm_get_vcpu(s, kvm_arch_vcpu_id(cpu));
->  > > +    ret =3D kvm_create_vcpu(cpu);
->  > >      if (ret < 0) {
->  > > -        error_setg_errno(errp, -ret, "kvm_init_vcpu: kvm_get_vcpu f=
-ailed
->  (%lu)",
->  > > +        error_setg_errno(errp, -ret,
->  > > +                         "kvm_init_vcpu: kvm_create_vcpu failed
->  > > + (%lu)",
->  > >                           kvm_arch_vcpu_id(cpu));
->  > >          goto err;
->  > >      }
->  > >
->  > > -    cpu->kvm_fd =3D ret;
->  > > -    cpu->kvm_state =3D s;
->  > > -    cpu->vcpu_dirty =3D true;
->  > > -    cpu->dirty_pages =3D 0;
->  > > -    cpu->throttle_us_per_full =3D 0;
->  > > -
->  > >      mmap_size =3D kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
->  > >      if (mmap_size < 0) {
->  > >          ret =3D mmap_size;
->  > > diff --git a/accel/kvm/kvm-cpus.h b/accel/kvm/kvm-cpus.h index
->  > > ca40add32c..171b22fd29 100644
->  > > --- a/accel/kvm/kvm-cpus.h
->  > > +++ b/accel/kvm/kvm-cpus.h
->  > > @@ -22,5 +22,4 @@ bool kvm_supports_guest_debug(void);  int
->  > > kvm_insert_breakpoint(CPUState *cpu, int type, vaddr addr, vaddr
->  > > len);  int kvm_remove_breakpoint(CPUState *cpu, int type, vaddr
->  > > addr, vaddr len);  void kvm_remove_all_breakpoints(CPUState *cpu);
->  > > -
->  > >  #endif /* KVM_CPUS_H */
->  > > diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events index
->  > > 681ccb667d..37626c1ac5 100644
->  > > --- a/accel/kvm/trace-events
->  > > +++ b/accel/kvm/trace-events
->  > > @@ -9,6 +9,10 @@ kvm_device_ioctl(int fd, int type, void *arg) "dev =
-fd
->  %d, type 0x%x, arg %p"
->  > >  kvm_failed_reg_get(uint64_t id, const char *msg) "Warning: Unable t=
-o
->  retrieve ONEREG %" PRIu64 " from KVM: %s"
->  > >  kvm_failed_reg_set(uint64_t id, const char *msg) "Warning: Unable t=
-o
->  set ONEREG %" PRIu64 " to KVM: %s"
->  > >  kvm_init_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d
->  id: %lu"
->  > > +kvm_create_vcpu(int cpu_index, unsigned long arch_cpu_id, int
->  kvm_fd) "index: %d, id: %lu, kvm fd: %d"
->  > > +kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "index:
->  %d id: %lu"
->  > > +kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d
->  id: %lu"
->  > > +kvm_unpark_vcpu(unsigned long arch_cpu_id, const char *msg) "id:
->  %lu %s"
->  > >  kvm_irqchip_commit_routes(void) ""
->  > >  kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s
->  vector %d virq %d"
->  > >  kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=3D%=
-d"
->  > > @@ -25,7 +29,6 @@ kvm_dirty_ring_reaper(const char *s) "%s"
->  > >  kvm_dirty_ring_reap(uint64_t count, int64_t t) "reaped %"PRIu64"
->  pages (took %"PRIi64" us)"
->  > >  kvm_dirty_ring_reaper_kick(const char *reason) "%s"
->  > >  kvm_dirty_ring_flush(int finished) "%d"
->  > > -kvm_destroy_vcpu(void) ""
->  > >  kvm_failed_get_vcpu_mmap_size(void) ""
->  > >  kvm_cpu_exec(void) ""
->  > >  kvm_interrupt_exit_request(void) ""
->  > > diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h index
->  > > c31d9c7356..c4a914b3d8 100644
->  > > --- a/include/sysemu/kvm.h
->  > > +++ b/include/sysemu/kvm.h
->  > > @@ -313,6 +313,31 @@ int kvm_create_device(KVMState *s, uint64_t
->  type, bool test);
->  > >   */
->  > >  bool kvm_device_supported(int vmfd, uint64_t type);
->  > >
->  > > +/**
->  > > + * kvm_create_vcpu - Gets a parked KVM vCPU or creates a KVM vCPU
->  > > + * @cpu: QOM CPUState object for which KVM vCPU has to be
->  fetched/created.
->  > > + *
->  > > + * @returns: 0 when success, errno (<0) when failed.
->  > > + */
->  > > +int kvm_create_vcpu(CPUState *cpu);
->  > > +
->  > > +/**
->  > > + * kvm_park_vcpu - Park QEMU KVM vCPU context
->  > > + * @cpu: QOM CPUState object for which QEMU KVM vCPU context
->  has to be parked.
->  > > + *
->  > > + * @returns: none
->  > > + */
->  > > +void kvm_park_vcpu(CPUState *cpu);
->  > > +
->  > > +/**
->  > > + * kvm_unpark_vcpu - unpark QEMU KVM vCPU context
->  > > + * @s: KVM State
->  > > + * @vcpu_id: Architecture vCPU ID of the parked vCPU
->  > > + *
->  > > + * @returns: KVM fd
->  > > + */
->  > > +int kvm_unpark_vcpu(KVMState *s, unsigned long vcpu_id);
->  > > +
->  > >  /* Arch specific hooks */
->  > >
->  > >  extern const KVMCapabilityInfo kvm_arch_required_capabilities[];
->  >
-> =20
+SGkgSWdvciwNCg0KPiAgRnJvbTogSWdvciBNYW1tZWRvdiA8aW1hbW1lZG9AcmVkaGF0LmNvbT4N
+Cj4gIFNlbnQ6IE1vbmRheSwgSnVseSAxNSwgMjAyNCAyOjU1IFBNDQo+ICBUbzogU2FsaWwgTWVo
+dGEgPHNhbGlsLm1laHRhQGh1YXdlaS5jb20+DQo+ICANCj4gIE9uIFNhdCwgMTMgSnVsIDIwMjQg
+MTk6MjU6MDkgKzAxMDANCj4gIFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPiB3
+cm90ZToNCj4gIA0KPiAgPiBbTm90ZTogUmVmZXJlbmNlcyBhcmUgcHJlc2VudCBhdCB0aGUgbGFz
+dCBhZnRlciB0aGUgcmV2aXNpb24gaGlzdG9yeV0NCj4gID4NCj4gID4gVmlydHVhbCBDUFUgaG90
+cGx1ZyBzdXBwb3J0IGlzIGJlaW5nIGFkZGVkIGFjcm9zcyB2YXJpb3VzIGFyY2hpdGVjdHVyZXMN
+Cj4gIFsxXVszXS4NCj4gID4gVGhpcyBzZXJpZXMgYWRkcyB2YXJpb3VzIGNvZGUgYml0cyBjb21t
+b24gYWNyb3NzIGFsbCBhcmNoaXRlY3R1cmVzOg0KPiAgPg0KPiAgPiAxLiB2Q1BVIGNyZWF0aW9u
+IGFuZCBQYXJraW5nIGNvZGUgcmVmYWN0b3IgW1BhdGNoIDFdIDIuIFVwZGF0ZSBBQ1BJDQo+ICA+
+IEdFRCBmcmFtZXdvcmsgdG8gc3VwcG9ydCB2Q1BVIEhvdHBsdWcgW1BhdGNoIDIsM10gMy4gQUNQ
+SSBDUFVzIEFNTA0KPiAgPiBjb2RlIGNoYW5nZSBbUGF0Y2ggNCw1XSA0LiBIZWxwZXIgZnVuY3Rp
+b25zIHRvIHN1cHBvcnQgdW5yZWFsaXphdGlvbg0KPiAgPiBvZiBDUFUgb2JqZWN0cyBbUGF0Y2gg
+Niw3XQ0KPiAgDQo+ICB3aXRoIHBhdGNoIDEgYW5kIDMgZml4ZWQgc2hvdWxkIGJlIGdvb2QgdG8g
+Z28uDQo+ICANCj4gIFNhbGlsLA0KPiAgQ2FuIHlvdSByZW1pbmQgbWUgd2hhdCBoYXBwZW5lZCB0
+byBtaWdyYXRpb24gcGFydCBvZiB0aGlzPw0KPiAgSWRlYWxseSBpdCBzaG91bGQgYmUgYSBwYXJ0
+IG9mIG9mIHRoaXMgc2VyaWVzIGFzIGl0IHNob3VsZCBiZSBjb21tb24gZm9yDQo+ICBldmVyeXRo
+aW5nIHRoYXQgdXNlcyBHRUQgYW5kIHNob3VsZCBiZSBhIGNvbmRpdGlvbmFsIHBhcnQgb2YgR0VE
+J3MNCj4gIFZNU1RBVEUuDQo+ICANCj4gIElmIHRoaXMgc2VyaWVzIGlzIGp1c3QgYSBjb21tb24g
+YmFzZSBhbmQgbm8gYWN0dWFsIGhvdHBsdWcgb24gdG9wIG9mIGl0IGlzDQo+ICBtZXJnZWQgaW4g
+dGhpcyByZWxlYXNlIChwcm92aWRlZCBwYXRjaCAxMyBpcyBmaXhlZCksIEknbSBmaW5lIHdpdGgg
+bWlncmF0aW9uDQo+ICBiaXRzIGJlaW5nIGEgc2VwYXJhdGUgc2VyaWVzIG9uIHRvcC4NCj4gIA0K
+PiAgSG93ZXZlciBpZiBzb21lIG1hY2hpbmUgd291bGQgYmUgaW50cm9kdWNpbmcgY3B1IGhvdHBs
+dWcgaW4gdGhlIHNhbWUNCj4gIHJlbGVhc2UsIHRoZW4gdGhlIG1pZ3JhdGlvbiBwYXJ0IHNob3Vs
+ZCBiZSBtZXJnZWQgYmVmb3JlIGl0IG9yIGJlIGEgcGFydA0KPiAgdGhhdCBjcHUgaG90cGx1ZyBz
+ZXJpZXMuDQoNCldlIGhhdmUgdGVzdGVkIExpdmUvUHNldWRvIE1pZ3JhdGlvbiBhbmQgaXQgc2Vl
+bSB0byB3b3JrIHdpdGggdGhlIGNoYW5nZXMNCnBhcnQgb2YgdGhlIGFyY2hpdGVjdHVyZSBzcGVj
+aWZpYyBwYXRjaC1zZXQuDQoNCkFtcGVyZTogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsL2Ux
+N2UyOGFjLTI4YzctNDk2Zi1iMjEyLTJjOWI1NTJkYmY2M0BhbXBlcmVtYWlsLm9ubWljcm9zb2Z0
+LmNvbS8NCk9yYWNsZTogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzQ2RDc0RDMwLUVFNTQt
+NEFEMi04RjBFLUJBNTYyN0ZBQTYzRUBvcmFjbGUuY29tLw0KDQoNCkZvciBBUk0sIHBsZWFzZSBj
+aGVjayBiZWxvdyBwYXRjaCBwYXJ0IG9mIFJGQyBWMyBmb3IgY2hhbmdlcyByZWxhdGVkIHRvIG1p
+Z3JhdGlvbjoNCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAyNDA2MTMyMzM2
+MzkuMjAyODk2LTE1LXNhbGlsLm1laHRhQGh1YXdlaS5jb20vDQoNCg0KVGhhbmtzDQpTYWxpbC4N
+Cg0KPiAgDQo+ICA+IFJlcG9zaXRvcnk6DQo+ICA+DQo+ICA+IFsqXSBBcmNoaXRlY3R1cmUgKkFn
+bm9zdGljKiBQYXRjaC1zZXQgKFRoaXMgc2VyaWVzKQ0KPiAgPiAgICBWMTQ6IGh0dHBzOi8vZ2l0
+aHViLmNvbS9zYWxpbC1tZWh0YS9xZW11LmdpdA0KPiAgPiB2aXJ0LWNwdWhwLWFybXY4L3JmYy12
+My5hcmNoLmFnbm9zdGljLnYxNQ0KPiAgPg0KPiAgPiAgICBOT1RFOiBUaGlzIHNlcmllcyBpcyBt
+ZWFudCB0byB3b3JrIGluIGNvbmp1bmN0aW9uIHdpdGggdGhlIGFyY2hpdGVjdHVyZS0NCj4gIHNw
+ZWNpZmljDQo+ICA+ICAgIHBhdGNoLXNldC4gRm9yIEFSTSwgYSBjb21iaW5lZCBwYXRjaC1zZXQg
+KGFyY2hpdGVjdHVyZSBhZ25vc3RpYyArDQo+ICBzcGVjaWZpYykgd2FzDQo+ICA+ICAgIGVhcmxp
+ZXIgcHVzaGVkIGFzIFJGQyBWMiBbMV0uIExhdGVyLCBSRkMgVjIgd2FzIHNwbGl0IGludG8gdGhl
+IEFSTQ0KPiAgQXJjaGl0ZWN0dXJlDQo+ICA+ICAgIHNwZWNpZmljIHBhdGNoLXNldCBSRkMgVjMg
+WzRdIChhIHN1YnNldCBvZiBSRkMgVjIpIGFuZCB0aGUgYXJjaGl0ZWN0dXJlDQo+ICBhZ25vc3Rp
+Yw0KPiAgPiAgICBwYXRjaC1zZXQuIFBhdGNoLXNldCBWMTQgaXMgdGhlIGxhdGVzdCB2ZXJzaW9u
+IGluIHRoYXQgc2VyaWVzLiBUaGlzIHNlcmllcw0KPiAgPiAgICB3b3JrcyBpbiBjb25qdW5jdGlv
+biB3aXRoIFJGQyBWNC1yYzIsIHByZXNlbnQgYXQgdGhlIGZvbGxvd2luZyBsaW5rLg0KPiAgPg0K
+PiAgPiBbKl0gQVJNIEFyY2hpdGVjdHVyZSAqU3BlY2lmaWMqIFBhdGNoLXNldA0KPiAgPiAgICBS
+RkMgVjMgWzRdOiBodHRwczovL2dpdGh1Yi5jb20vc2FsaWwtbWVodGEvcWVtdS5naXQgdmlydC1j
+cHVocC0NCj4gIGFybXY4L3JmYy12Mw0KPiAgPiAgICBSRkMgVjQtcmMyOiBodHRwczovL2dpdGh1
+Yi5jb20vc2FsaWwtbWVodGEvcWVtdS5naXQNCj4gID4gdmlydC1jcHVocC1hcm12OC9yZmMtdjQt
+cmMyIChjb21iaW5lZCkNCj4gID4NCj4gID4NCj4gID4gUmV2aXNpb24gSGlzdG9yeToNCj4gID4N
+Cj4gID4gUGF0Y2gtc2V0IFYxNCAtPiBWMTUNCj4gID4gMS4gQWRkcmVzc2VkIGNvbW1uZXQgZnJv
+bSBJZ29yIE1hbW1lZG92J3Mgb24gW1BBVENIIFYxNCA0LzddDQo+ICA+ICAgIC0gUmVtb3ZlZCBB
+Q1BJX0NQVV9TQ0FOX01FVEhPRA0KPiAgPiAgICAtIEludHJvZHVjZWQgQU1MX0dFRF9FVlRfQ1BV
+X1NDQU5fTUVUSE9EDQo+ICAoIlxcX1NCLkdFRC5DUFNDTiIpIG1hY3JvDQo+ICA+IDIuIEZpeCB0
+aGUgc3RyYXkgY2hhbmdlIG9mICJhc3NlcnQgKCIgaW4gIlBBVENIIFYxNCAzLzciDQo+ICA+IExp
+bms6DQo+ICA+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAyNDA3MTIxMzQy
+MDEuMjE0Njk5LTQtc2FsaWwubWVodGENCj4gID4gQGh1YXdlaS5jb20vDQo+ICA+DQo+ICA+IFBh
+dGNoLXNldCBWMTMgLT4gVjE0DQo+ICA+IDEuIEFkZHJlc3NlZCBJZ29yIE1hbW1lZG92J3MgZm9s
+bG93aW5nIHJldmlldyBjb21tZW50cw0KPiAgPiAgICAtIE1lbnRpb25lZCBhYnB1dCBuZXcgZXh0
+ZXJuYWwgQVBJcyBpbiB0aGUgaGVhZGVyIG5vdGUgb2YgW1BBVENIIDEvN10NCj4gID4gICAgLSBN
+ZXJnZWQgRG9jIFtQQVRDSCBWMTMgOC84XSB3aXRoIFtQQVRDSCBWMTQgMy83XQ0KPiAgPiAgICAt
+IEludHJvZHVjZWQgR0VEIHJlYWxpemUgZnVuY3Rpb24gZm9yIHZhcmlvdXMgQ1BVIEhvdHBsdWcg
+cmVnaW9ucw0KPiAgaW5pdGlhbGl6YXRpb25zDQo+ICA+ICAgIC0gQWRkZWQgYmFjayBldmVudCBo
+YW5kbGVyIG1ldGhvZCB0byBpbmRpcmVjdGx5IGV4cG9zZQ0KPiAgXFxfU0IuQ1BVUy5DU0NOIHRv
+IEdFRA0KPiAgPiAgICAgIF9FVlQuIExpa2UgZm9yIEFSTSwgaXQgd291bGQgYmUgdGhyb3VnaCBc
+XF9TQi5HRUQuQ1NDTiBldmVudCBoYW5kbGVyDQo+ICBtZXRob2QNCj4gID4gICAgLSBDb2xsZWN0
+ZWQgdGhlIEFjayBnaXZlbiBmb3IgW1BhdGNoIFYxMyA2LzhdDQo+ICA+ICAgIC0gQWRkZWQgYmFj
+ayB0aGUgZ2ZyZWUnaW5nIG9mIEdEQiByZWdzIGluIGNvbW1vbiBmaW5hbGl6ZSBhbmQgbWFkZSBp
+dA0KPiAgY29uZGl0aW9uYWwNCj4gID4gICAgLSBVcGRhdGVkIHRoZSBoZWFkZXIgbm90ZXMgb2Yg
+W1BBVENIIFYxMyAzLzgsNC84LDUvOF0gdG8gcmVmbGVjdA0KPiAgPiB0aGUgY2hhbmdlcw0KPiAg
+Pg0KPiAgPiBQYXRjaC1zZXQgIFYxMiAtPiBWMTMNCj4gID4gMS4gQWRkZWQgUmV2aWV3ZWQtYnkg
+VGFnIG9mIEhhcnNoIFByYXRlZWsgQm9yYSdzIChJQk0pIFtQQVRDSCBWMTIgMS84XQ0KPiAgPiAy
+LiBNb3ZlZCB0aGUga3ZtX3tjcmVhdGUscGFyayx1bnBhcmt9X3ZjcHUgcHJvdG90eXBlcyBmcm9t
+DQo+ICBhY2NlbC9rdm0va3ZtLWNwdXMuaA0KPiAgPiAgICB0byBpbmNsdWRlL3N5c2VtdS9rdm0u
+aC4gVGhlc2UgY2FuIGxhdGVyIGJlIGV4cG9ydGVkIHRocm91Z2gNCj4gIEFjY2VsT3BzLg0KPiAg
+PiBMaW5rOg0KPiAgPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9xZW11LWRldmVsLzYyZjU1MTY5
+LTE3OTYtNGQ4ZS1hMzVkLQ0KPiAgN2YwMDNhMTcyNzUNCj4gID4gMEBsaW51eC5pYm0uY29tLw0K
+PiAgPg0KPiAgPiBQYXRjaC1zZXQgIFYxMSAtPiBWMTINCj4gID4gMS4gQWRkcmVzc2VkIEhhcnNo
+IFByYXRlZWsgQm9yYSdzIChJQk0pIGNvbW1lbnQNCj4gID4gICAgLSBDaGFuZ2VkIEBjcHUgdG8g
+QHZjcHVfaWQgaW4gdGhlIGt2bV91bnBhcmtfdmNwdSBwcm90b3lwZQ0KPiAgaGVhZGVyLw0KPiAg
+PiAyLiBBZGRlZCBaaGFvIExpdSdzIChJbnRlbCkgVGVzdGVkLWJ5IGZvciB3aG9sZSBzZXJpZXMN
+Cj4gID4gICAgLSBRdGVzdCBkb2VzIG5vdCBicmVha3Mgb24gSW50ZWwgcGxhdGZvcm1zIG5vdy4N
+Cj4gID4gMy4gQWRkZWQgWmhhbyBMaXUncyAoSW50ZWwpIFJldmlld2VkLWJ5IGZvciBbUEFUQ0gg
+VjExIHsxLzggLSAzLzh9XQ0KPiAgPiBMaW5rOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9xZW11
+LQ0KPiAgZGV2ZWwvWmxSU1B1SkdCZ3lFVVc2d0BpbnRlbC5jb20vDQo+ICA+IExpbms6DQo+ICA+
+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvYTVmM2Q3OGUtY2ZlZC00NDFmLTlj
+NTYtDQo+ICBlM2U3OGZhNWVkZQ0KPiAgPiBlQGxpbnV4LmlibS5jb20vDQo+ICA+DQo+ICA+IFBh
+dGNoLXNldCAgVjEwIC0+IFYxMQ0KPiAgPiAxLiBBZGRyZXNzZWQgTmljaG9sYXMgUGlnZ2luJ3Mg
+KElCTSkgY29tbWVudA0KPiAgPiAgICAtIG1vdmVkIHRoZSB0cmFjZXMgaW4ga3ZtX3VucGFya192
+Y3B1IGFuZCBrdm1fY3JlYXRlX3ZjcHUgYXQgdGhlDQo+ICBlbmQNCj4gID4gICAgLSBBZGRlZCB0
+aGUgUmV2aWV3ZWQtYnkgVGFnIGZvciBbUEFUQ0ggVjEwIDEvOF0gMi4gIEFkZHJlc3NlZCBBbGV4
+DQo+ICA+IEJlbm7DqWUncyAoTGluYXJvKSBjb21tZW50cw0KPiAgPiAgICAtIEFkZGVkIGEgbm90
+ZSBleHBsYWluaW5nIGRlcGVuZGVuY3kgb2YgdGhlIFtQQVRDSCBWMTAgNy84XSBvbiBBcmNoDQo+
+ICA+IHNwZWNpZmljIHBhdGNoLXNldA0KPiAgPiBMaW5rOg0KPiAgPiBodHRwczovL2xvcmUua2Vy
+bmVsLm9yZy9xZW11LQ0KPiAgZGV2ZWwvRDFGUzVHT09GV1dLLjJQTlJJVkwwVjZEQkxAZ21haWwu
+Y28NCj4gID4gbS8NCj4gID4gTGluazoNCj4gID4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVt
+dS1kZXZlbC84N2ZydWJpNDAyLmZzZkBkcmFpZy5saW5hcm8ub3JnLw0KPiAgPg0KPiAgPiBQYXRj
+aC1zZXQgIFY5IC0+IFYxMA0KPiAgPiAxLiBBZGRyZXNzZWQgTmljaG9sYXMgUGlnZ2luJ3MgKElC
+TSkgJiBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSAoTGluYXJvKQ0KPiAgY29tbWVudHMNCj4gID4g
+ICAgLSBjYXJ2ZWQgb3V0IGt2bV91bnBhcmtfdmNwdSBhbmQgYWRkZWQgaXRzIHRyYWNlDQo+ICA+
+ICAgIC0gV2lkZW5lZCB0aGUgc2NvcGUgb2YgdGhlIGt2bV91bnBhcmtfdmNwdSBzbyB0aGF0IGl0
+IGNhbiBiZSB1c2VkIGJ5DQo+ICBnZW5lcmljIGZyYW1ld29yaw0KPiAgPiAgICAgIGJlaW5nIHRo
+b3VnaHQgb3V0DQo+ICA+IExpbms6DQo+ICA+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUt
+ZGV2ZWwvMjAyNDA1MTkyMTA2MjAuMjI4MzQyLTEtc2FsaWwubWVodGENCj4gID4gQGh1YXdlaS5j
+b20vDQo+ICA+IExpbms6DQo+ICA+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwv
+ZTk0YjBlMTQtZWZlZS00MDUwLTljOWYtDQo+ICAwODM4MmEzNmI2Mw0KPiAgPiBhQGxpbmFyby5v
+cmcvDQo+ICA+DQo+ICA+IFBhdGNoLXNldCAgVjggLT4gVjkNCj4gID4gMS4gQWRkcmVzc2VkIFZp
+c2hudSBQYWpqdXJpJ3MgKEFtcGVyZSkgY29tbWVudHMNCj4gID4gICAgLSBBZGRlZCBrdm1fZmQg
+dG8gdHJhY2UgaW4ga3ZtX2NyZWF0ZV92Y3B1DQo+ICA+ICAgIC0gU29tZSBjbGVhbiB1cHM6IGFy
+Y2ggdmNwdS1pZCBhbmQgc2JkIHZhcmlhYmxlDQo+ICA+ICAgIC0gQWRkZWQgdGhlIG1pc3NlZCBp
+bml0aWFsaXphdGlvbiBvZiBjcHUtPmdkYl9udW1fcmVncyAyLiBBZGRyZXNzZWQNCj4gID4gdGhl
+IGNvbW1uZXQgZnJvbSBaaGFvIExpdSAoSW50ZWwpDQo+ICA+ICAgIC0gTWFrZSBpbml0aWFsaXph
+dGlvbiBvZiBDUFUgSG90cGx1ZyBzdGF0ZSBjb25kaXRpb25hbA0KPiAgPiAocG9zc2libGVfY3B1
+X2FyY2hfaWRzIT1OVUxMKQ0KPiAgPiBMaW5rOg0KPiAgPiBodHRwczovL2xvcmUua2VybmVsLm9y
+Zy9xZW11LWRldmVsLzIwMjQwMzEyMDIwMDAwLjEyOTkyLTEtDQo+ICBzYWxpbC5tZWh0YUANCj4g
+ID4gaHVhd2VpLmNvbS8NCj4gID4NCj4gID4gUGF0Y2gtc2V0IFY3IC0+IFY4DQo+ICA+IDEuIFJl
+YmFzZWQgYW5kIEZpeGVkIHRoZSBjb25mbGljdHMNCj4gID4NCj4gID4gUGF0Y2gtc2V0ICBWNiAt
+PiBWNw0KPiAgPiAxLiBBZGRyZXNzZWQgQWxleCBCZW5uw6llJ3MgY29tbWVudHMNCj4gID4gICAg
+LSBVcGRhdGVkIHRoZSBkb2NzDQo+ICA+IDIuIEFkZHJlc3NlZCBJZ29yIE1hbW1lZG92J3MgY29t
+bWVudHMNCj4gID4gICAgLSBNZXJnZWQgcGF0Y2hlcyBbUGF0Y2ggVjYgMy85XSAmIFtQYXRjaCBW
+NiA3LzldIHdpdGggW1BhdGNoIFY2IDQvOV0NCj4gID4gICAgLSBVcGRhdGVkIGNvbW1pdC1sb2cg
+b2YgW1BhdGNoIFY2IDEvOV0gYW5kIFtQYXRjaCBWNiA1LzldDQo+ICA+IDMuIEFkZGVkIFNoYW9x
+aW4gSHVhbmcncyBSZXZpZXdlZC1ieSB0YWdzIGZvciB3aG9sZSBzZXJpZXMuDQo+ICA+IExpbms6
+DQo+ICA+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAyMzEwMTMxMDUxMjku
+MjU2NDgtMS0NCj4gIHNhbGlsLm1laHRhQA0KPiAgPiBodWF3ZWkuY29tLw0KPiAgPg0KPiAgPiBQ
+YXRjaC1zZXQgIFY1IC0+IFY2DQo+ICA+IDEuIEFkZHJlc3NlZCBHYXZpbiBTaGFuJ3MgY29tbWVu
+dHMNCj4gID4gICAgLSBGaXhlZCB0aGUgYXNzZXJ0KCkgcmFuZ2VzIG9mIGFkZHJlc3Mgc3BhY2Vz
+DQo+ICA+ICAgIC0gUmViYXNlZCB0aGUgcGF0Y2gtc2V0IHRvIGxhdGVzdCBjaGFuZ2VzIGluIHRo
+ZSBxZW11LmdpdA0KPiAgPiAgICAtIEFkZGVkIFJldmlld2VkLWJ5IHRhZ3MgZm9yIHBhdGNoZXMg
+ezgsOX0gMi4gQWRkcmVzc2VkIEpvbmF0aGFuDQo+ICA+IENhbWVyb24ncyBjb21tZW50cw0KPiAg
+PiAgICAtIFVwZGF0ZWQgY29tbWl0LWxvZyBmb3IgW1BhdGNoIFY1IDEvOV0gd2l0aCBtZW50aW9u
+IG9mIHRyYWNlIGV2ZW50cw0KPiAgPiAgICAtIEFkZGVkIFJldmlld2VkLWJ5IHRhZ3MgZm9yIHBh
+dGNoZXMgezEsNX0gMy4gQWRkZWQgVGVzdGVkLWJ5IHRhZ3MNCj4gID4gZnJvbSBYaWFuZ2xhaSBM
+aSA0LiBGaXhlZCBjaGVja3BhdGNoLnBsIGVycm9yICJRZW11IC0+IFFFTVUiIGluIFtQYXRjaA0K
+PiAgPiBWNSAxLzldDQo+ICA+IExpbms6DQo+ICA+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3Fl
+bXUtZGV2ZWwvMjAyMzEwMTExOTQzNTUuMTU2MjgtMS0NCj4gIHNhbGlsLm1laHRhQA0KPiAgPiBo
+dWF3ZWkuY29tLw0KPiAgPg0KPiAgPiBQYXRjaC1zZXQgIFY0IC0+IFY1DQo+ICA+IDEuIEFkZHJl
+c3NlZCBHYXZpbiBTaGFuJ3MgY29tbWVudHMNCj4gID4gICAgLSBGaXhlZCB0aGUgdHJhY2UgZXZl
+bnRzIHByaW50IHN0cmluZyBmb3INCj4gIGt2bV97Y3JlYXRlLGdldCxwYXJrLGRlc3Ryb3l9X3Zj
+cHUNCj4gID4gICAgLSBBZGRlZCBSZXZpZXdlZC1ieSB0YWcgZm9yIHBhdGNoIHsxfSAyLiBBZGRl
+ZCBTaGFvcWluIEh1YW5nJ3MNCj4gID4gUmV2aWV3ZWQtYnkgdGFncyBmb3IgUGF0Y2hlcyB7Miwz
+fSAzLiBBZGRlZCBUZXN0ZWQtYnkgVGFnIGZyb20gVmlzaG51DQo+ICA+IFBhamp1cmkgdG8gdGhl
+IHBhdGNoLXNldCA0LiBEcm9wcGVkIHRoZSBBUk0gc3BlY2lmaWMgW1BhdGNoIFY0IDEwLzEwXQ0K
+PiAgPiBMaW5rOg0KPiAgPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9xZW11LWRldmVsLzIwMjMx
+MDA5MjAzNjAxLjE3NTg0LTEtDQo+ICBzYWxpbC5tZWh0YUANCj4gID4gaHVhd2VpLmNvbS8NCj4g
+ID4NCj4gID4gUGF0Y2gtc2V0ICBWMyAtPiBWNA0KPiAgPiAxLiBBZGRyZXNzZWQgRGF2aWQgSGls
+ZGVyYnJhbmQncyBjb21tZW50cw0KPiAgPiAgICAtIEZpeGVkIHRoZSB3cm9uZyBkb2MgY29tbWVu
+dCBvZiBrdm1fcGFya192Y3B1IEFQSSBwcm90b3R5cGUNCj4gID4gICAgLSBBZGRlZCBSZXZpZXdl
+ZC1ieSB0YWdzIGZvciBwYXRjaGVzIHsyLDR9DQo+ICA+IExpbms6DQo+ICA+IGh0dHBzOi8vbG9y
+ZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAyMzEwMDkxMTI4MTIuMTA2MTItMS0NCj4gIHNhbGls
+Lm1laHRhQA0KPiAgPiBodWF3ZWkuY29tLw0KPiAgPg0KPiAgPiBQYXRjaC1zZXQgIFYyIC0+IFYz
+DQo+ICA+IDEuIEFkZHJlc3NlZCBKb25hdGhhbiBDYW1lcm9uJ3MgY29tbWVudHMNCj4gID4gICAg
+LSBGaXhlZCAndmNwdS1pZCcgdHlwZSB3cm9uZ2x5IGNoYW5nZWQgZnJvbSAndW5zaWduZWQgbG9u
+ZycgdG8gJ2ludGVnZXInDQo+ICA+ICAgIC0gUmVtb3ZlZCB1bm5lY2Vzc2FyeSB1c2Ugb2YgdmFy
+aWFibGUgJ3ZjcHVfaWQnIGluIGt2bV9wYXJrX3ZjcHUNCj4gID4gICAgLSBVcGRhdGVkIFtQYXRj
+aCBWMiAzLzEwXSBjb21taXQtbG9nIHdpdGggZGV0YWlscyBvZg0KPiAgQUNQSV9DUFVfU0NBTl9N
+RVRIT0QgbWFjcm8NCj4gID4gICAgLSBVcGRhdGVkIFtQYXRjaCBWMiA1LzEwXSBjb21taXQtbG9n
+IHdpdGggZGV0YWlscyBvZiBjb25kaXRpb25hbCBldmVudA0KPiAgaGFuZGxlciBtZXRob2QNCj4g
+ID4gICAgLSBBZGRlZCBSZXZpZXdlZC1ieSB0YWdzIGZvciBwYXRjaGVzIHsyLDMsNCw2LDd9IDIu
+IEFkZHJlc3NlZCBHYXZpbg0KPiAgPiBTaGFuJ3MgY29tbWVudHMNCj4gID4gICAgLSBSZW1vdmUg
+dW5uZWNlc3NhcnkgdXNlIG9mIHZhcmlhYmxlICd2Y3B1X2lkJyBpbiBrdm1fcGFyX3ZjcHUNCj4g
+ID4gICAgLSBGaXhlZCByZXR1cm4gdmFsdWUgaW4ga3ZtX2dldF92Y3B1IGZyb20gLTEgdG8gLUVO
+T0VOVA0KPiAgPiAgICAtIFJlc2V0IHRoZSB2YWx1ZSBvZiAnZ2RiX251bV9nX3JlZ3MnIGluDQo+
+ICBnZGJfdW5yZWdpc3Rlcl9jb3Byb2Nlc3Nvcl9hbGwNCj4gID4gICAgLSBGaXhlZCB0aGUga3Zt
+X3tjcmVhdGUscGFya31fdmNwdSBwcm90b3R5cGVzIGRvY3MNCj4gID4gICAgLSBBZGRlZCBSZXZp
+ZXdlZC1ieSB0YWdzIGZvciBwYXRjaGVzIHsyLDMsNCw1LDYsNyw5LDEwfSAzLg0KPiAgPiBBZGRy
+ZXNzZWQgb25lIGVhcmxpZXIgbWlzc2VkIGNvbW1lbnQgYnkgQWxleCBCZW5uw6llIGluIFJGQyBW
+MQ0KPiAgPiAgICAtIEFkZGVkIHRyYWNlcyBpbnN0ZWFkIG9mIERQUklOVEYgaW4gdGhlIG5ld2x5
+IGFkZGVkIGFuZCBzb21lDQo+ICA+IGV4aXN0aW5nIGZ1bmN0aW9ucw0KPiAgPiBMaW5rOg0KPiAg
+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9xZW11LWRldmVsLzIwMjMwOTMwMDAxOTMzLjI2NjAt
+MS0NCj4gIHNhbGlsLm1laHRhQGgNCj4gID4gdWF3ZWkuY29tLw0KPiAgPg0KPiAgPiBQYXRjaC1z
+ZXQgVjEgLT4gVjINCj4gID4gMS4gQWRkcmVzc2VkIEFsZXggQmVubsOpZSdzIGNvbW1lbnRzDQo+
+ICA+ICAgIC0gUmVmYWN0b3JlZCB0aGUga3ZtX2NyZWF0ZV92Y3B1IGxvZ2ljIHRvIGdldCByaWQg
+b2YgZ290bw0KPiAgPiAgICAtIEFkZGVkIHRoZSBkb2NzIGZvciBrdm1fe2NyZWF0ZSxwYXJrfV92
+Y3B1IHByb3RvdHlwZXMNCj4gID4gICAgLSBTcGxpdHRlZCB0aGUgZ2Ric3R1YiBhbmQgQWRkcmVz
+c1NwYWNlIGRlc3RydWN0aW9uIGNoYW5nZSBpbnRvDQo+ICBzZXBhcmF0ZSBwYXRjaGVzDQo+ICA+
+ICAgIC0gQWRkZWQgUmV2aWV3ZWQtYnkgdGFncyBmb3IgcGF0Y2hlcyB7MiwxMH0NCj4gID4gTGlu
+azoNCj4gID4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDIzMDkyOTEyNDMw
+NC4xMzY3Mi0xLQ0KPiAgc2FsaWwubWVodGFADQo+ICA+IGh1YXdlaS5jb20vDQo+ICA+DQo+ICA+
+IFJlZmVyZW5jZXM6DQo+ICA+DQo+ICA+IFsxXQ0KPiAgPiBodHRwczovL2xvcmUua2VybmVsLm9y
+Zy9xZW11LWRldmVsLzIwMjMwOTI2MTAwNDM2LjI4Mjg0LTEtDQo+ICBzYWxpbC5tZWh0YUANCj4g
+ID4gaHVhd2VpLmNvbS8gWzJdDQo+ICA+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDIz
+MDkxMzE2MzgyMy43ODgwLTEtDQo+ICBqYW1lcy5tb3JzZUBhcm0uY29tLw0KPiAgPiBbM10NCj4g
+ID4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC9jb3Zlci4xNjk1Njk3NzAxLmdp
+dC5saXhpYW5nbGFpQGxvbw0KPiAgPiBuZ3Nvbi5jbi8gWzRdDQo+ICA+IGh0dHBzOi8vbG9yZS5r
+ZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAyNDA2MTMyMzM2MzkuMjAyODk2LTItc2FsaWwubWVodGEN
+Cj4gID4gQGh1YXdlaS5jb20vDQo+ICA+DQo+ICA+IFNhbGlsIE1laHRhICg3KToNCj4gID4gICBh
+Y2NlbC9rdm06IEV4dHJhY3QgY29tbW9uIEtWTSB2Q1BVIHtjcmVhdGlvbixwYXJraW5nfSBjb2Rl
+DQo+ICA+ICAgaHcvYWNwaTogTW92ZSBDUFUgY3RybC1kZXYgTU1JTyByZWdpb24gbGVuIG1hY3Jv
+IHRvIGNvbW1vbiBoZWFkZXINCj4gIGZpbGUNCj4gID4gICBody9hY3BpOiBVcGRhdGUgQUNQSSBH
+RUQgZnJhbWV3b3JrIHRvIHN1cHBvcnQgdkNQVSBIb3RwbHVnDQo+ICA+ICAgaHcvYWNwaTogVXBk
+YXRlIEdFRCBfRVZUIG1ldGhvZCBBTUwgd2l0aCBDUFUgc2Nhbg0KPiAgPiAgIGh3L2FjcGk6IFVw
+ZGF0ZSBDUFVzIEFNTCB3aXRoIGNwdS0oY3RybClkZXYgY2hhbmdlDQo+ICA+ICAgcGh5c21lbTog
+QWRkIGhlbHBlciBmdW5jdGlvbiB0byBkZXN0cm95IENQVSBBZGRyZXNzU3BhY2UNCj4gID4gICBn
+ZGJzdHViOiBBZGQgaGVscGVyIGZ1bmN0aW9uIHRvIHVucmVnaXN0ZXIgR0RCIHJlZ2lzdGVyIHNw
+YWNlDQo+ICA+DQo+ICA+ICBhY2NlbC9rdm0va3ZtLWFsbC5jICAgICAgICAgICAgICAgICAgICB8
+IDk1ICsrKysrKysrKysrKysrKysrLS0tLS0tLS0tDQo+ICA+ICBhY2NlbC9rdm0va3ZtLWNwdXMu
+aCAgICAgICAgICAgICAgICAgICB8ICAxIC0NCj4gID4gIGFjY2VsL2t2bS90cmFjZS1ldmVudHMg
+ICAgICAgICAgICAgICAgIHwgIDUgKy0NCj4gID4gIGRvY3Mvc3BlY3MvYWNwaV9od19yZWR1Y2Vk
+X2hvdHBsdWcucnN0IHwgIDMgKy0NCj4gID4gIGdkYnN0dWIvZ2Ric3R1Yi5jICAgICAgICAgICAg
+ICAgICAgICAgIHwgMTMgKysrKw0KPiAgPiAgaHcvYWNwaS9hY3BpLWNwdS1ob3RwbHVnLXN0dWIu
+YyAgICAgICAgfCAgNiArKw0KPiAgPiAgaHcvYWNwaS9jcHUuYyAgICAgICAgICAgICAgICAgICAg
+ICAgICAgfCAxOCArKystLQ0KPiAgPiAgaHcvYWNwaS9nZW5lcmljX2V2ZW50X2RldmljZS5jICAg
+ICAgICAgfCAyNyArKysrKysrKw0KPiAgPiAgaHcvY29yZS9jcHUtY29tbW9uLmMgICAgICAgICAg
+ICAgICAgICAgfCAgNCArLQ0KPiAgPiAgaHcvaTM4Ni9hY3BpLWJ1aWxkLmMgICAgICAgICAgICAg
+ICAgICAgfCAgMyArLQ0KPiAgPiAgaW5jbHVkZS9leGVjL2NwdS1jb21tb24uaCAgICAgICAgICAg
+ICAgfCAgOCArKysNCj4gID4gIGluY2x1ZGUvZXhlYy9nZGJzdHViLmggICAgICAgICAgICAgICAg
+IHwgIDYgKysNCj4gID4gIGluY2x1ZGUvaHcvYWNwaS9jcHUuaCAgICAgICAgICAgICAgICAgIHwg
+IDcgKy0NCj4gID4gIGluY2x1ZGUvaHcvYWNwaS9nZW5lcmljX2V2ZW50X2RldmljZS5oIHwgIDUg
+KysNCj4gID4gIGluY2x1ZGUvaHcvY29yZS9jcHUuaCAgICAgICAgICAgICAgICAgIHwgIDEgKw0K
+PiAgPiAgaW5jbHVkZS9zeXNlbXUva3ZtLmggICAgICAgICAgICAgICAgICAgfCAyNSArKysrKysr
+DQo+ICA+ICBzeXN0ZW0vcGh5c21lbS5jICAgICAgICAgICAgICAgICAgICAgICB8IDI5ICsrKysr
+KysrDQo+ICA+ICAxNyBmaWxlcyBjaGFuZ2VkLCAyMTIgaW5zZXJ0aW9ucygrKSwgNDQgZGVsZXRp
+b25zKC0pDQo+ICA+DQo+ICANCg0K

@@ -1,119 +1,118 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp1702343nji;
-        Sun, 14 Jul 2024 03:43:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXXQTB8iIuLbyIOPoFuWtLLm9+abFeP84l6lmuZpNTj5uieNAf2S+KnDWd8yQeQrOQpcEBV0eu4enC2MmsEEk5jaMwQ0UVQ
-X-Google-Smtp-Source: AGHT+IEndMDnmDODgGu+KaMDkArwPXsl0h1wBlUzswPHsGGFOkOtAyyQqUPIhsBG2WVU9rUKRdnZ
-X-Received: by 2002:a05:620a:5e01:b0:79f:184c:fde5 with SMTP id af79cd13be357-79f19a9c442mr1863771785a.47.1720953820077;
-        Sun, 14 Jul 2024 03:43:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1720953820; cv=none;
+Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp2061617nji;
+        Sun, 14 Jul 2024 22:58:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUqEc09nHUJJS5WZQCHo+Br3MRVrMbsaqGQYdiaOzGvoOjg3OcNMUzjdNQwV7rLFkmCCl/t8/V8jytk5di8GX79dWh6rDgv
+X-Google-Smtp-Source: AGHT+IFhe3uJxIzuT+4ZMiRXQdxC9q+NTX9rY5n4iZ+YpcgDWCdQ4q1KLV8sHq7+ms7ZdocbZVbF
+X-Received: by 2002:ad4:5d63:0:b0:6b5:9f8b:dc7a with SMTP id 6a1803df08f44-6b61c1c6ec5mr255536166d6.42.1721023129691;
+        Sun, 14 Jul 2024 22:58:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721023129; cv=none;
         d=google.com; s=arc-20160816;
-        b=UyKuCL2oTJDYmMiwkV8stUJPG3mTFWwYNqkTGvPAlu2OwmP/LPrXZX15W5aLRjcTIQ
-         kqLwqSKvFrJdrk/rcSSNBiadBEDx9XWo4s8pfXeCcrj+pB3rNCoxbO4ChNmqHn1Yn3QX
-         c7UgKlD1Tr9xUQnhHnxIJzRZ0rcrQffgS5wSpLib5+CaHJScYoX6/NQpG71ScHXZBuwK
-         4vHU80FoE2dg3gwW4GGgf9MDY6/oR+Mz8HwsowhyP/SX0Cd3mEzD3KJ7olz2xA2SnuK1
-         7CLyladpmM6uv/WJCsWmparFztMyqZ5a4f2mWWZ77H0MFXiwiYSqsg3sDAQVpbN3DqmF
-         gaSQ==
+        b=vo1/JjVIxUw1pLRKEZfGNilvGAAz42U7gWuHLmbUmRzdlTXUzVYNPEPnisTq+DFp6l
+         raiN+pyjc8VkfH8waXYn8EAc+gm8ITj4q98quG4FXsFPAlavuyFnnWRyqSFahjkl+Btq
+         ik2HiDf6AvSz7pcXaVvhcuYrRltKwPV/CMDmIYBlGl5/e0vITIfji+V13VTUDZ0EVBrj
+         FEuYprzQUE6FHVgqUfRFB7KpRUw6vEXHpkOlXgA0HRx9KxVKDO9eIgrzdhCbo7KUxMD8
+         MOrj9G0xZ2DKvC4KIiPLhlBWigWOkah49qugwbA44l9FheNAELvhZBXiU0CCb7uA9r81
+         5I9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:message-id
-         :content-transfer-encoding:mime-version:subject:date:from
-         :dkim-signature;
-        bh=GUkIzlFT6MkRaKD+PIAfhCidzOldBk8nsObQwuTuyT0=;
-        fh=lSHwVAVlqwTSZRq87KSG3mW6QGc7tHB1bkbCSrJfXY8=;
-        b=e6VF7L9keYGz8Q6pvw872+idMlS1Jak+ZIrjrDpH3BPuHvr0AYQyArUZScaRECptJP
-         PjSMarPU4/eoqPhFGnarTMPoQGJoo26pgKxe+vMB2+su66HqFxr/F7u71OM8/g5Ompq3
-         DWJ3l7rM1VNhnr9wuaCFx06i8jDL18+WZ2eeFMT0B2zc2m3hKP32VEWZrpPv4P2DzNjZ
-         h+14JZFe4lM1kR1PPtsqtSu5dJKY4hE+XsOOjmj+Ge2VrGlOvEBnPrjkqHzgPMm77Qx1
-         4YkkUmM0SKMw7HMkrJrz0wYpjpjTp+kGjeoffXzlYCYb+VLNQdgDkiHsOG+koQ5g5E3W
-         U9CQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=JeM+PyZIgZuwJtOyeBwiQLcZE1Nzm+KGAI4nD2vg1aw=;
+        fh=b6mY2tz5CfKH2WDdeIpBoQpsqs2HTjYOG+Gro5qKkKI=;
+        b=1ADOkR3ArP7qDZVTnPattTOOQZAP1/tiG+QbJFYJteXLJrJg+47FT6uu/w7ZIqj5T/
+         9maF0ghIa2i7tGYMI1HQK5YkaYcEUp2Gzbp729cs1RIw3AxE59vJ/cDcj9aDfN+Ek9s6
+         l/fRTKqfmBLI4sdAy0sYDX4olm+bYkgQ66nS51StPi3W8qAYtluiFs15ml5nwSdCWL/S
+         3byEx3mXKcXund/BIwxt4RKCP+L1++XfbbX2kTK/OmmjS5ITWsJS70mdugspCvn7l/Kj
+         G9DuxcI1iwJIdamU0TDEGwSFIg/77uEmKOkwKSRkybjH92TAdCkrX0AFxDO9g2rLX8Af
+         lxUA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=krMJ0Fw7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=PIizPCKQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a160c7db38si288655085a.590.2024.07.14.03.43.39
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b76194ea5fsi45936396d6.75.2024.07.14.22.58.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 14 Jul 2024 03:43:40 -0700 (PDT)
+        Sun, 14 Jul 2024 22:58:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=krMJ0Fw7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=PIizPCKQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sSwhR-0005vc-NK; Sun, 14 Jul 2024 06:43:25 -0400
+	id 1sTEjS-0005Co-OY; Mon, 15 Jul 2024 01:58:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1sSwhP-0005pS-Rq
- for qemu-devel@nongnu.org; Sun, 14 Jul 2024 06:43:23 -0400
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1sTEjQ-00054O-Pj
+ for qemu-devel@nongnu.org; Mon, 15 Jul 2024 01:58:40 -0400
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1sSwhO-0001Xz-BX
- for qemu-devel@nongnu.org; Sun, 14 Jul 2024 06:43:23 -0400
-Received: by mail-oi1-x22a.google.com with SMTP id
- 5614622812f47-3d94293f12fso1991096b6e.3
- for <qemu-devel@nongnu.org>; Sun, 14 Jul 2024 03:43:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1sTEjO-0008VG-UJ
+ for qemu-devel@nongnu.org; Mon, 15 Jul 2024 01:58:40 -0400
+Received: by mail-pj1-x102f.google.com with SMTP id
+ 98e67ed59e1d1-2ca4649ad49so2423112a91.1
+ for <qemu-devel@nongnu.org>; Sun, 14 Jul 2024 22:58:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1720953800; x=1721558600;
- darn=nongnu.org; 
- h=cc:to:message-id:content-transfer-encoding:mime-version:subject
- :date:from:from:to:cc:subject:date:message-id:reply-to;
- bh=GUkIzlFT6MkRaKD+PIAfhCidzOldBk8nsObQwuTuyT0=;
- b=krMJ0Fw7TN0I2VnMXdU/QXwgR5BcgyHHSzzX5NCiBOGgOgYqGORAI+qliRsRrEnigQ
- 2kLFepnt16pgy+Tor20dZwl6L69kdlCbSHBJyrKvZ28xeJo8SUTP7YtL6rE0uBPhDqWh
- gijaMmoqqgIqhIhdUxvcUuUX++RXIKd5rxzbdUjP4GmJ3ruetc+kKlzjqsA/f36ozKyp
- g/Hx6NDQm2wiTuK/jsXViC+eTSufAGvaEXTbBIN9gnCX920x20A9BGmLtBjXBJfsgsxg
- W1fDDc074VRhq404jylN3P3UxQhy4sI6Qja+EDjl2fpPU1rM2OdURao7w0IQDqxyi2D6
- HeHw==
+ d=linaro.org; s=google; t=1721023117; x=1721627917; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JeM+PyZIgZuwJtOyeBwiQLcZE1Nzm+KGAI4nD2vg1aw=;
+ b=PIizPCKQmIeN0doaiFJvzde2dR5ZhX2i2Epib/lJk6xHjczJqux+drG1YoyTSQzo0R
+ tt6kY6/YWTpX4eDAmYhoXf7ojY62HqHSTDHFcokjCPCiBlg5VBX7n/cXBxaH11KSxcvX
+ Ki7Cz6mURM1j2JjSm4mEU6i6X1YYkJflnmVVlA302NyNcbaFnof9CSOrYWNdLZpQrWrI
+ 3T0iYM8Fz3RZ5rMbRu+bfszog0DcMRf/vJ/v5EjqJlCFGxXJiyo0ZU2J73vW98nBjwCj
+ uYAOLAKMEfXA+I0KmRwRimFI/YRz45xggTzqTcWkIS9/x+E4+SjO6jqVX87/37Y2zYaM
+ OrOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720953800; x=1721558600;
- h=cc:to:message-id:content-transfer-encoding:mime-version:subject
- :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GUkIzlFT6MkRaKD+PIAfhCidzOldBk8nsObQwuTuyT0=;
- b=u8XYhjeAVWDbzksb603joOXC7RqaYsoNFr1eivV4nsPKgbz+bSo55lLb4utBj09+RI
- DdGRZcCwmp6NiNTCy644D0225cWNow4/bUlsRfp6o0uDqNXodWdRuCZjIDCYDsae79OZ
- UkqjL6FLlLSq1TbeuK+jzCXVEaSPvgqu0/3TWTjOXaI/HlIwhtIiz5didmQmPgTiTeTT
- SEUQ0e0ob7Qmxj8dztnpNTQqjk2pFS8XQ6ew6VqLjsEedkcxk7WRoSqJg9MouGTpIso5
- qC5Cj1Igy0l1ds7V8SXya3SwTEFUrXEILoBuBPfc13qb6C3kkzfFDoqfwdx2LeLkLfv5
- mcIQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX0+Hl++f2WmJVKDB+cM6WhAQTSRN7KtKE4UsVoO9w8FtyXz1fYMmVl3aKpTnyeC/b6atpElr+YuDaJ/PXgmVe3FSMgEbo=
-X-Gm-Message-State: AOJu0YwoRVJQr3hUKAKYWWB4GzxOvEfcf2bgQR+iKcxSs3MCvAJDDqM8
- CRxhMibLL28NjVqwqGI4b5w0HU8bxM/QAAcVPE+oWjGEOcV+255yTej3AymoLUU=
-X-Received: by 2002:a05:6808:238a:b0:3d9:2e2e:1ace with SMTP id
- 5614622812f47-3d93c075161mr19558464b6e.42.1720953800516; 
- Sun, 14 Jul 2024 03:43:20 -0700 (PDT)
-Received: from localhost ([157.82.204.135])
- by smtp.gmail.com with UTF8SMTPSA id
- d9443c01a7336-1fc0bc3ca12sm22446795ad.219.2024.07.14.03.43.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 14 Jul 2024 03:43:20 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Date: Sun, 14 Jul 2024 19:43:12 +0900
-Subject: [PATCH] target/arm: Free GDB command data
+ d=1e100.net; s=20230601; t=1721023117; x=1721627917;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=JeM+PyZIgZuwJtOyeBwiQLcZE1Nzm+KGAI4nD2vg1aw=;
+ b=ODoTbYtKfAWC0zamLZkEQudRX72BO2knM3wdH0VpAczEmWWseZIQIEhwM80zGBEJiT
+ ZyyYKjFTEjBzOL8uCjkt8H3fzD6Xk63owSYUtvKhaLdgDnHQK0Ro9hq4EuCaAQ3dmeyD
+ uawQRlTYWICws/XHFpV5yj0wAJX403jwaQARDsKnHbxCeKhHVUTY7sjWnSYDSZGcgMkm
+ JttWfQRFXwsXh9+9sHbqOqQFYLI6Jx7968NMy+syEJYflF/mDlQJ9UaR1tbqQDEexG85
+ KXe0HvDSGfNIer075o1BegbgudzOOurs2do+jVyYrrbwDL0TzIHJjKvtZ++NlPCZu4Om
+ 6huw==
+X-Gm-Message-State: AOJu0YwYQu6cGrIbX4yiYpTwRQ1wKpK+WRdWQDAmKNwEjcl0Xlq/IQrI
+ Gkw7VJ3RkWvvEF+qOSqShKtj4dpu+k2xLIekZ5oZLLo6BAH39tWYRDHljpwdiSEWYR4MkWARTyy
+ pkHnWRg==
+X-Received: by 2002:a17:90a:c684:b0:2c9:616a:6a46 with SMTP id
+ 98e67ed59e1d1-2ca35c29460mr11836719a91.17.1721023117255; 
+ Sun, 14 Jul 2024 22:58:37 -0700 (PDT)
+Received: from stoup.. ([203.56.128.103]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2cacd419af7sm5463589a91.25.2024.07.14.22.58.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 14 Jul 2024 22:58:36 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: danikhan632@git.sr.ht, qemu-arm@nongnu.org,
+ Daniyal Khan <danikhan632@gmail.com>
+Subject: [PATCH 3/3] tests/tcg/aarch64: Add test cases for SME FMOPA (widening)
+Date: Mon, 15 Jul 2024 15:58:20 +1000
+Message-ID: <20240715055820.319035-4-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240715055820.319035-1-richard.henderson@linaro.org>
+References: <20240715055820.319035-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240714-arm-v1-1-c045bad45e48@daynix.com>
-X-B4-Tracking: v=1; b=H4sIAL+rk2YC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIxMDc0MT3cSiXF0DE1MzM9M0w2Sj1DQloMqCotS0zAqwKdGxtbUAOTGQj1U
- AAAA=
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Akihiko Odaki <akihiko.odaki@daynix.com>
-X-Mailer: b4 0.14-dev-fd6e3
-Received-SPF: none client-ip=2607:f8b0:4864:20::22a;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-oi1-x22a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,60 +127,230 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YBN7jUEUWUB8
+X-TUID: p5GqdZnKXE5k
 
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+From: Daniyal Khan <danikhan632@gmail.com>
+
+Signed-off-by: Daniyal Khan <danikhan632@gmail.com>
+Message-Id: 172090222034.13953.16888708708822922098-1@git.sr.ht
+[rth: Split test cases to separate patch, tidy assembly.]
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/gdbstub.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+ tests/tcg/aarch64/sme-fmopa-1.c   | 63 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/sme-fmopa-2.c   | 51 +++++++++++++++++++++++++
+ tests/tcg/aarch64/sme-fmopa-3.c   | 58 ++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  5 ++-
+ 4 files changed, 175 insertions(+), 2 deletions(-)
+ create mode 100644 tests/tcg/aarch64/sme-fmopa-1.c
+ create mode 100644 tests/tcg/aarch64/sme-fmopa-2.c
+ create mode 100644 tests/tcg/aarch64/sme-fmopa-3.c
 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index c3a9b5eb1ed2..03f77362efc1 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -477,11 +477,11 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs,
+diff --git a/tests/tcg/aarch64/sme-fmopa-1.c b/tests/tcg/aarch64/sme-fmopa-1.c
+new file mode 100644
+index 0000000000..652c4ea090
+--- /dev/null
++++ b/tests/tcg/aarch64/sme-fmopa-1.c
+@@ -0,0 +1,63 @@
++/*
++ * SME outer product, 1 x 1.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include <stdio.h>
++
++static void foo(float *dst)
++{
++    asm(".arch_extension sme\n\t"
++        "smstart\n\t"
++        "ptrue p0.s, vl4\n\t"
++        "fmov z0.s, #1.0\n\t"
++        /*
++         * An outer product of a vector of 1.0 by itself should be a matrix of 1.0.
++         * Note that we are using tile 1 here (za1.s) rather than tile 0.
++         */
++        "zero {za}\n\t"
++        "fmopa za1.s, p0/m, p0/m, z0.s, z0.s\n\t"
++        /*
++         * Read the first 4x4 sub-matrix of elements from tile 1:
++         * Note that za1h should be interchangeable here.
++         */
++        "mov w12, #0\n\t"
++        "mova z0.s, p0/m, za1v.s[w12, #0]\n\t"
++        "mova z1.s, p0/m, za1v.s[w12, #1]\n\t"
++        "mova z2.s, p0/m, za1v.s[w12, #2]\n\t"
++        "mova z3.s, p0/m, za1v.s[w12, #3]\n\t"
++        /*
++         * And store them to the input pointer (dst in the C code):
++         */
++        "st1w {z0.s}, p0, [%0]\n\t"
++        "add x0, x0, #16\n\t"
++        "st1w {z1.s}, p0, [x0]\n\t"
++        "add x0, x0, #16\n\t"
++        "st1w {z2.s}, p0, [x0]\n\t"
++        "add x0, x0, #16\n\t"
++        "st1w {z3.s}, p0, [x0]\n\t"
++        "smstop"
++        : : "r"(dst)
++        : "x12", "d0", "d1", "d2", "d3", "memory");
++}
++
++int main()
++{
++    float dst[16] = { };
++
++    foo(dst);
++
++    for (int i = 0; i < 16; i++) {
++        if (dst[i] != 1.0f) {
++            goto failure;
++        }
++    }
++    /* success */
++    return 0;
++
++ failure:
++    for (int i = 0; i < 16; i++) {
++        printf("%f%c", dst[i], i % 4 == 3 ? '\n' : ' ');
++    }
++    return 1;
++}
+diff --git a/tests/tcg/aarch64/sme-fmopa-2.c b/tests/tcg/aarch64/sme-fmopa-2.c
+new file mode 100644
+index 0000000000..198cc31528
+--- /dev/null
++++ b/tests/tcg/aarch64/sme-fmopa-2.c
+@@ -0,0 +1,51 @@
++#include <stdint.h>
++#include <stdio.h>
++
++static void test_fmopa(uint32_t *result)
++{
++    asm(".arch_extension sme\n\t"
++        "smstart\n\t"               /* Z*, P* and ZArray cleared */
++        "ptrue p2.b, vl16\n\t"      /* Limit vector length to 16 */
++        "ptrue p5.b, vl16\n\t"
++        "movi d0, #0x00ff\n\t"      /* fp16 denormal */
++        "movi d16, #0x00ff\n\t"
++        "mov w15, #0x0001000000\n\t" /* FZ=1, FZ16=0 */
++        "msr fpcr, x15\n\t"
++        "fmopa za3.s, p2/m, p5/m, z16.h, z0.h\n\t"
++        "mov w15, #0\n\t"
++        "st1w {za3h.s[w15, 0]}, p2, [%0]\n\t"
++        "add %0, %0, #16\n\t"
++        "st1w {za3h.s[w15, 1]}, p2, [%0]\n\t"
++        "mov w15, #2\n\t"
++        "add %0, %0, #16\n\t"
++        "st1w {za3h.s[w15, 0]}, p2, [%0]\n\t"
++        "add %0, %0, #16\n\t"
++        "st1w {za3h.s[w15, 1]}, p2, [%0]\n\t"
++        "smstop"
++        : "+r"(result) :
++        : "x15", "x16", "p2", "p5", "d0", "d16", "memory");
++}
++
++int main(void)
++{
++    uint32_t result[4 * 4] = { };
++
++    test_fmopa(result);
++
++    if (result[0] != 0x2f7e0100) {
++        printf("Test failed: Incorrect output in first 4 bytes\n"
++               "Expected: %08x\n"
++               "Got:      %08x\n",
++               0x2f7e0100, result[0]);
++        return 1;
++    }
++
++    for (int i = 1; i < 16; ++i) {
++        if (result[i] != 0) {
++            printf("Test failed: Non-zero word at position %d\n", i);
++            return 1;
++        }
++    }
++
++    return 0;
++}
+diff --git a/tests/tcg/aarch64/sme-fmopa-3.c b/tests/tcg/aarch64/sme-fmopa-3.c
+new file mode 100644
+index 0000000000..6617355c9d
+--- /dev/null
++++ b/tests/tcg/aarch64/sme-fmopa-3.c
+@@ -0,0 +1,58 @@
++#include <stdio.h>
++#include <stdint.h>
++#include <string.h>
++#include <math.h>
++
++static const float i_1234[4] = {
++    1.0f, 2.0f, 3.0f, 4.0f
++};
++
++static const float expected[4] = {
++    4.515625f, 5.750000f, 6.984375f, 8.218750f
++};
++
++static void test_fmopa(float *result)
++{
++    asm(".arch_extension sme\n\t"
++        "smstart\n\t"               /* ZArray cleared */
++        "ptrue p2.b, vl16\n\t"      /* Limit vector length to 16 */
++        "ld1w {z0.s}, p2/z, [%1]\n\t"
++        "mov w15, #0\n\t"
++        "mov za3h.s[w15, 0], p2/m, z0.s\n\t"
++        "mov za3h.s[w15, 1], p2/m, z0.s\n\t"
++        "mov w15, #2\n\t"
++        "mov za3h.s[w15, 0], p2/m, z0.s\n\t"
++        "mov za3h.s[w15, 1], p2/m, z0.s\n\t"
++        "msr fpcr, xzr\n\t"
++        "fmopa za3.s, p2/m, p2/m, z0.h, z0.h\n\t"
++        "mov w15, #0\n\t"
++        "st1w {za3h.s[w15, 0]}, p2, [%0]\n"
++        "add %0, %0, #16\n\t"
++        "st1w {za3h.s[w15, 1]}, p2, [%0]\n\t"
++        "mov w15, #2\n\t"
++        "add %0, %0, #16\n\t"
++        "st1w {za3h.s[w15, 0]}, p2, [%0]\n\t"
++        "add %0, %0, #16\n\t"
++        "st1w {za3h.s[w15, 1]}, p2, [%0]\n\t"
++        "smstop"
++        : "+r"(result) : "r"(i_1234)
++        : "x15", "x16", "p2", "d0", "memory");
++}
++
++int main(void)
++{
++    float result[4 * 4] = { };
++    int ret = 0;
++
++    test_fmopa(result);
++
++    for (int i = 0; i < 4; i++) {
++        float actual = result[i];
++        if (fabsf(actual - expected[i]) > 0.001f) {
++            printf("Test failed at element %d: Expected %f, got %f\n",
++                   i, expected[i], actual);
++            ret = 1;
++        }
++    }
++    return ret;
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index b53218e115..8cc62eb456 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -70,8 +70,9 @@ endif
  
- void arm_cpu_register_gdb_commands(ARMCPU *cpu)
- {
--    GArray *query_table =
-+    g_autoptr(GArray) query_table =
-         g_array_new(FALSE, FALSE, sizeof(GdbCmdParseEntry));
--    GArray *set_table =
-+    g_autoptr(GArray) set_table =
-         g_array_new(FALSE, FALSE, sizeof(GdbCmdParseEntry));
--    GString *qsupported_features = g_string_new(NULL);
-+    g_autoptr(GString) qsupported_features = g_string_new(NULL);
+ # SME Tests
+ ifneq ($(CROSS_AS_HAS_ARMV9_SME),)
+-AARCH64_TESTS += sme-outprod1 sme-smopa-1 sme-smopa-2
+-sme-outprod1 sme-smopa-1 sme-smopa-2: CFLAGS += $(CROSS_AS_HAS_ARMV9_SME)
++SME_TESTS = sme-outprod1 sme-smopa-1 sme-smopa-2 sme-fmopa-1 sme-fmopa-2 sme-fmopa-3
++AARCH64_TESTS += $(SME_TESTS)
++$(SME_TESTS): CFLAGS += $(CROSS_AS_HAS_ARMV9_SME)
+ endif
  
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-     #ifdef TARGET_AARCH64
-@@ -495,6 +495,7 @@ void arm_cpu_register_gdb_commands(ARMCPU *cpu)
-         gdb_extend_query_table(&g_array_index(query_table,
-                                               GdbCmdParseEntry, 0),
-                                               query_table->len);
-+        g_array_free(g_steal_pointer(&query_table), FALSE);
-     }
- 
-     /* Set arch-specific handlers for 'Q' commands. */
-@@ -502,11 +503,13 @@ void arm_cpu_register_gdb_commands(ARMCPU *cpu)
-         gdb_extend_set_table(&g_array_index(set_table,
-                              GdbCmdParseEntry, 0),
-                              set_table->len);
-+        g_array_free(g_steal_pointer(&set_table), FALSE);
-     }
- 
-     /* Set arch-specific qSupported feature. */
-     if (qsupported_features->len) {
-         gdb_extend_qsupported_features(qsupported_features->str);
-+        g_string_free(g_steal_pointer(&qsupported_features), FALSE);
-     }
- }
- 
-
----
-base-commit: f2cb4026fccfe073f84a4b440e41d3ed0c3134f6
-change-id: 20240714-arm-045665f1c2ef
-
-Best regards,
+ # System Registers Tests
 -- 
-Akihiko Odaki <akihiko.odaki@daynix.com>
+2.43.0
 

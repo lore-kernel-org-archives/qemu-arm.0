@@ -1,235 +1,158 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp2502590nji;
-        Mon, 15 Jul 2024 14:43:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVbCO+0omZpO4rrORGc1dBk/BY3I/FM4wQmNDD4Yg07dtZ928LYGwgLL10hk3MnciRMEiwtbkIJDX8F26DpX8e4EYpLrDB3
-X-Google-Smtp-Source: AGHT+IHt31rvZX7qXdgEO1tDmm8+rASmTftdruK2kFF6GYY7rzxpWFIOA2l0bCGo46ULEcRMzSs6
-X-Received: by 2002:a05:620a:4507:b0:79f:bd7:d24b with SMTP id af79cd13be357-7a17b98843bmr39070985a.7.1721079827832;
-        Mon, 15 Jul 2024 14:43:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721079827; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp27789njk;
+        Tue, 16 Jul 2024 01:28:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVel+I4cwGT69JdTWcl0W27t0e0JG7yvuMgDzvKeqOeemYBzNbUjvuVNDcKnpCRjBoH43u17Kw5oVkbO/C8FFUTt74YDwrL
+X-Google-Smtp-Source: AGHT+IHZK37hNUVaRjXBT9MKXoykZJDgVnzg3jzPmj2fD29IfSTOTJ0izCYI5+TXohziAiMFmhqj
+X-Received: by 2002:a50:d4dd:0:b0:57c:6188:875a with SMTP id 4fb4d7f45d1cf-59ef03c0792mr803436a12.26.1721118505027;
+        Tue, 16 Jul 2024 01:28:25 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1721118505; cv=pass;
         d=google.com; s=arc-20160816;
-        b=QITlupLFruEyNdoS3UFCYmKsUCKGo5MgJ2lYstHcDXiQ0eZEgKSIFl06IwkEc4ZObI
-         833Ovm5GrXbY6DCuU2cT/APgGVTPnhHC6wDemfxB3sLCGHAXhwi5Y4LxAFAuFVaM1qsF
-         FVBLq+76+NUyYMKVOIJKBBDLH9GLU3IxPVXcQykuwyjYiJLaD1FSd1l2CCKy8lJszbD9
-         EQ2ucinpTr4e9L45gUGZQGxO/2BvAMK7GmtOJkCpL+3YqFu6NuxwrAXqbFKG8Q3+U5/3
-         6zCzazzYSEK9UnBdCA+gx0XMry8GPe1BEPLtgEVsBWdzQIxUbUge5VDQxi8Ft06QcQBs
-         5AHQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=qFlJThacqRcUbiwz/H0Z0GPMFjEVS/7KcMwKMYneQwU=;
-        fh=JyBJwgE/lNv6QKVReyhTYzZcfA9WvCHjmDt2IWUz+v8=;
-        b=ufO6IajdoAPPVE1N1c4NDtyj620dkEB6jhJSrRTw6TfwnWVXTkz9sDIR5h1L91EhFT
-         zjVr9FLrC34OMc714XvGMg3TwlfqiYEJTOwobLWYcICPgYD71eCYTAt1pe7HpziAeITe
-         u8iWNERF98K+SYGNHNpip59SAj5B/6Pwa+lPz4RpQYRMOHX9yYhqW8gq3nqca6Fqaizb
-         bRqh8UuEwWI/fEkcXhm634TvW95vgQEpC4NdeddQSXsL4N2liSHGoEz+Qj7W8MuCuzjU
-         OXdIiLLN683Ez6MIlz39heVGIvXi8cky0DEaqMLbIkBTqicAU10culPQXoWZbjdK2JXd
-         rSyQ==;
+        b=j/00hFy5T3Cf1qZD3JrY3MkSd6AFB9RSYAIj0VgwZhMtfRmdf7UeuxwkdqdeHpdbBc
+         w94OXh7tgMHCmcgYqCH0xlE+8nGIiXWrUINAUDscxLjEN7hEvpEAx2DlvimNsu2Kes3b
+         cHoYx60BlukTHyMsQp9E+bQGwGX2xgJ5T4rQXhEVI/22rL271o7GGoJjVuPihIzXG4yu
+         TBl4uF/Hc2LCdEARHKPLMA6Dv9J6ciURWrfR5BE7BgzJFOIZpRwFik0c9K/MhmzgrqCQ
+         oo5RfSdSLEDrP0vmomSb6nY+cvEvzMPFzqvkuoerEbxn5gXVbxrMZiNoIPZaT4XrFckG
+         hQsQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:message-id:date:subject:from
+         :dkim-signature;
+        bh=nV9f7Z9uo7GcDlW1Lk+YDEAFR+k4t86UdCv3nK4ea5k=;
+        fh=qMueL5tP7HcVcpmg0O/pYtowiDiscOYGRCFV/xcZOrY=;
+        b=ufn6m2AxlrgoodTRMBqs9s3hvZMpLH3Py317EvxfzYbBbLkFjQjCgIQINquwZZe5v3
+         PKwNiV8hd2BHesOS7yaXkPLWYkCfTOWeqyCxn742j6mX0AXTQ0JEEXSyDZ0IhyYCEtR5
+         6PYCCOexOIsTtN/b1cBJ3ZsVnxspVwj9inbxUryCHW/jLvE8ypTXL4JVpOgAsuPjUqE/
+         xCLuQ56LQn46ZO60r4G9jlU9Qgg8Ay1VH+QGND/Z6tL7vQJBezbXfZmPGH3mQKyhP8tL
+         a6wpBmIL8mJ94e8p7UnqdoER10D6Sc8zDMS+gIGX9TafZgmPdNTuxLn4xDDyI7RkA3yr
+         VULA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HezLn9xn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a160c68b75si606674585a.387.2024.07.15.14.43.47
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=usCY5e1G;
+       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
+       spf=pass (google.com: domain of kvm+bounces-21687-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-21687-alex.bennee=linaro.org@vger.kernel.org"
+Return-Path: <kvm+bounces-21687-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-59b26a8d7dasi3597047a12.322.2024.07.16.01.28.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jul 2024 14:43:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 16 Jul 2024 01:28:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-21687-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HezLn9xn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sTTTQ-0007zb-Cm; Mon, 15 Jul 2024 17:43:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sTTTN-0007sa-Hg
- for qemu-arm@nongnu.org; Mon, 15 Jul 2024 17:43:06 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sTTTK-0000um-Oa
- for qemu-arm@nongnu.org; Mon, 15 Jul 2024 17:43:05 -0400
-Received: by mail-pg1-x533.google.com with SMTP id
- 41be03b00d2f7-7928d2abe0aso939746a12.0
- for <qemu-arm@nongnu.org>; Mon, 15 Jul 2024 14:43:01 -0700 (PDT)
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=usCY5e1G;
+       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
+       spf=pass (google.com: domain of kvm+bounces-21687-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-21687-alex.bennee=linaro.org@vger.kernel.org"
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 9410C1F21888
+	for <alex.bennee@linaro.org>; Tue, 16 Jul 2024 08:28:24 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 2B31D4D8CE;
+	Tue, 16 Jul 2024 08:28:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b="usCY5e1G"
+Received: from mail-pf1-f179.google.com (mail-pf1-f179.google.com [209.85.210.179])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A03183224
+	for <kvm@vger.kernel.org>; Tue, 16 Jul 2024 08:28:18 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.179
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1721118499; cv=none; b=dFDWdJWZwcsKh3+g9Hslqmm99Ps0KXVHEq0LPywCCZ62ki5mRpTrL6hBpO8livmXv9u2QvqrFhinl6uCN+OFoytzMe4X+JfloIExtPJ88YPPQ5sTViZnZF9oobJJmlwtZx5Vv5r2HZB+yKyb7iJvkaiAhc37BxnbRLpVvLrBNTw=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1721118499; c=relaxed/simple;
+	bh=t/qfbxpIHPcQCEXqudGMXxqHBdmRNulZnL7/7z4N4fs=;
+	h=From:Subject:Date:Message-Id:MIME-Version:Content-Type:To:Cc; b=DoScYU/2gSnYjD3Dixbobol2D9o2odX6Ock6F68GCzgHPtTceoDS+o71OllgmhVRntC8oz/rg0i/hY6isLZyWFZXnx9GWR89Y8A3jKBBJiPBmyfzG+vLeDu2GHOBQpy05yhpSFvZTuhewYcTd+uzUYVt9GBhG8PJf/3EM2O9o78=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com; spf=none smtp.mailfrom=daynix.com; dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b=usCY5e1G; arc=none smtp.client-ip=209.85.210.179
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=daynix.com
+Received: by mail-pf1-f179.google.com with SMTP id d2e1a72fcca58-70b09c2ade6so3384664b3a.3
+        for <kvm@vger.kernel.org>; Tue, 16 Jul 2024 01:28:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721079780; x=1721684580; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=qFlJThacqRcUbiwz/H0Z0GPMFjEVS/7KcMwKMYneQwU=;
- b=HezLn9xnu1Hawn9UhCN0+Ubdy4LvecBS/6KvggRxafYfSpZzEeZ/v2I1ItV/hwS1WM
- 3GngV0FTsvc2rs70rSmGG3jyqfAuTUsumGEy++rBS6k4Ht2Z0DpWhTu/s7igbpI061T/
- uYFJ7lmi+Optryha49aWAxDl/xDBliLAH0hLBUVDRQoFCXtSHtsk3LqZOQA1ELhhGTIE
- UzguNTfc4bFuVTigpjjXzG/ocj6pAa8ya+JFHgfN1coEmVeeqYNrm7GwVZrroLAipdmv
- gv4ju+WC6lCXnL4Nhs/CTlAJCY7NHY37WB9ME2dMHuADutuTITHArExPhQ9A72c7uk6f
- Bgsw==
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1721118498; x=1721723298; darn=vger.kernel.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=nV9f7Z9uo7GcDlW1Lk+YDEAFR+k4t86UdCv3nK4ea5k=;
+        b=usCY5e1GzTiQ8THwwvJQW5V/t7acfK1AzU3ZJkmslS5QRFXkBlX+j0QhM/9V8Z2T+I
+         d4aBP+Mzk+0ar9y+tbPW8NKefMFhoVusfN0UoYq4c1ETTr+aIFasi/19CBuBDLrcbwTj
+         yQJH3v9EJu9UGIgitslmiZf91cI+PvMxrxqCjVYx7XYfohCw+aDiN57BjXe9GN3YkDI3
+         eZSGCVRybppMdw46G3NS0T577B8+58J9rK+Pq3uBLeGefH1tgr2UzsUDadlmjsmdYyxY
+         i7UuOqwnods3v/JCSZB6Ab9Ft4H/ueRFCXjoRYCIZ+5kYi9p6p9qEydysYfOCFP0YZrI
+         WKww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721079780; x=1721684580;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=qFlJThacqRcUbiwz/H0Z0GPMFjEVS/7KcMwKMYneQwU=;
- b=PA9SrNWJNVKpdnJdWe47TFbS6h2bekhITrcL8gtN/tzmqJPm+1qZ5WXqut2GDVWJyF
- SdGQk67Zwz74qdIhASTgshq3jaetIoADsCqxuwU6v6ccZ8O3mb09BQtj1HuoWCip5eOf
- xr9fzEEdrQQs+1oVk5Po9UNeEErWcBo9aSHg6P4AfQ8JpLIthGivDLUHXZCPgNu6SMPm
- 8rKhms62cRTqRd3HPX3mVqv00wAw+j/70U0/2VwXWt8fmovP6LskO30l3oAwBk/D5tIl
- jG6loorxZrav8dEsuBLJl3BOD/qjwbJaWZzLkJOfFtKrtkIcf8SjN8ha0KNvHFMqEvon
- pfeA==
-X-Gm-Message-State: AOJu0YwvgTyumn77aNchftUHOpCDjr28NsUPdTjOjhIpHIY1Fq1bYiTG
- gmB5COkYXoz45ZmbFhKH7HqHCvw9vRmHegZAz7htDpQV/TTD2Iylfmv/CkBzCEY=
-X-Received: by 2002:a17:90a:6881:b0:2c8:2cd1:881b with SMTP id
- 98e67ed59e1d1-2cb373389a9mr256669a91.20.1721079780052; 
- Mon, 15 Jul 2024 14:43:00 -0700 (PDT)
-Received: from [192.168.1.113] ([203.56.128.103])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2caedc1709esm4865416a91.34.2024.07.15.14.42.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Jul 2024 14:42:59 -0700 (PDT)
-Message-ID: <3d86bfd4-e6ef-464a-a663-21e95e1f6cf6@linaro.org>
-Date: Tue, 16 Jul 2024 07:42:51 +1000
+        d=1e100.net; s=20230601; t=1721118498; x=1721723298;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=nV9f7Z9uo7GcDlW1Lk+YDEAFR+k4t86UdCv3nK4ea5k=;
+        b=qBHzeAS91ITfG69KFIt89C/5F+XMF7l9EOcqX0VYsD5tmWFcIB/bMgf51c7bWIuHFY
+         t5EAiXijHuCx6h49JNO9xypZHi3G8Q0gi4+w0r9I7b4E1y5clmuV+GuG4c+Okl2AtnhN
+         KCl7AGGuIA1NZ7mFDFqk+LNaaR3AaPtAuUj3dz64heG5puhL296a6+1gMQGowjrCYPQH
+         lX67+dZgfHyuM91bvO7zpKHXCYWIVvJZBiK715nUlycgVJTmn8RhUsQk8xVYTNsmc7/y
+         qx5PAUI4X0R9O8u3m7FnDVc3jXMntX81vcuj+4p5W/IR+s+qOnzqQJmeDsTDLzs8MEZf
+         1Ivg==
+X-Forwarded-Encrypted: i=1; AJvYcCWGr/mh5aNU5cCZYFqsZ13WJgSm7dhyp7SOQ2YnViP7qcoyyXPofkkaKWNSWgp6+87x4eUQV01GJ+5Mg+XcP1rFrlIp
+X-Gm-Message-State: AOJu0YxQp80szzpJIdAKrdsT05n2fpr6CHHD8CxePy2KWbJyoeIIAtfc
+	pMkrWjEHNaOpbi1OCiMKN43BQPQTzpwHCBhpthj4x0+DvXzfYCHmUMS/vv4T5To=
+X-Received: by 2002:a05:6a20:7487:b0:1c1:c3ff:1f43 with SMTP id adf61e73a8af0-1c3f12729f3mr1770285637.43.1721118497799;
+        Tue, 16 Jul 2024 01:28:17 -0700 (PDT)
+Received: from localhost ([157.82.128.7])
+        by smtp.gmail.com with UTF8SMTPSA id 98e67ed59e1d1-2cacd7037d6sm7693451a91.53.2024.07.16.01.28.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 16 Jul 2024 01:28:17 -0700 (PDT)
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH v2 0/5] target/arm/kvm: Report PMU unavailability
+Date: Tue, 16 Jul 2024 17:28:12 +0900
+Message-Id: <20240716-pmu-v2-0-f3e3e4b2d3d5@daynix.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 13/13] target/riscv: Simplify probing in vext_ldff
-To: Max Chou <max.chou@sifive.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongu.org, qemu-s390x@nongnu.org,
- qemu-riscv@nongnu.org, balaton@eik.bme.hu
-References: <20240710032814.104643-1-richard.henderson@linaro.org>
- <20240710032814.104643-14-richard.henderson@linaro.org>
- <5a83ce12-9a9c-4c9d-9fee-e37fb6afd19d@sifive.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <5a83ce12-9a9c-4c9d-9fee-e37fb6afd19d@sifive.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
-X-Spam_score_int: 37
-X-Spam_score: 3.7
-X-Spam_bar: +++
-X-Spam_report: (3.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZXfxzLGi+1U9
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIABwvlmYC/1WMyw6DIBBFf8XMujQwVXys+h+NCwpYZyEYaInG8
+ O+l7ro8N/ecA6INZCMM1QHBJorkXQG8VKBn5V6WkSkMyLHmEnu2Lh+mTDPJ1qJuDIfyXIOdaDs
+ rj7HwTPHtw35Gk/it/34SjLMWZS/w9uw6Vd+N2h1tV+0XGHPOXxgpFQOXAAAA
+To: Peter Maydell <peter.maydell@linaro.org>, 
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, 
+ Akihiko Odaki <akihiko.odaki@daynix.com>
+X-Mailer: b4 0.14-dev-fd6e3
+X-TUID: ytH4AjtNBl7W
 
-On 7/15/24 17:06, Max Chou wrote:
->> +                /* Probe nonfault on subsequent elements. */
->> +                flags = probe_access_flags(env, addr, offset, MMU_DATA_LOAD,
->> +                                           mmu_index, true, &host, 0);
->> +                if (flags) {
-> According to the section 7.7. Unit-stride Fault-Only-First Loads in the v spec (v1.0)
-> 
->       When the fault-only- data-watchpoint trap on an element after the      
-> implementations should not reduce vl but instead should trigger the debug trap as 
-> otherwise the event might be lost.
+target/arm/kvm.c checked PMU availability but claimed PMU is
+available even if it is not. In fact, Asahi Linux supports KVM but lacks
+PMU support. Only advertise PMU availability only when it is really
+available.
 
-Hmm, ok.  Interesting.
+Fixes: dc40d45ebd8e ("target/arm/kvm: Move kvm_arm_get_host_cpu_features and unexport")
 
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+---
+Changes in v2:
+- Restricted writes to 'pmu' to host and max.
+- Prohibited writes to 'pmu' for hvf.
+- Link to v1: https://lore.kernel.org/r/20240629-pmu-v1-0-7269123b88a4@daynix.com
 
-> And I think that there is a potential issue in the original implementation that maybe we 
-> can fix in this patch.
-> 
-> We need to assign the correct element load size to the probe_access_internal function 
-> called by tlb_vaddr_to_host in original implementation or is called directly in this patch.
-> The size parameter will be used by the pmp_hart_has_privs function to do the physical 
-> memory protection (PMP) checking.
-> If we set the size parameter to the remain page size, we may get unexpected trap caused by 
-> the PMP rules that covered the regions of masked-off elements.
-> 
-> Maybe we can replace the while loop liked below.
-> 
-> 
-> vext_ldff(void *vd, void *v0, target_ulong base,
->            ...
-> {
->      ...
->      uint32_t size = nf << log2_esz;
-> 
->      VSTART_CHECK_EARLY_EXIT(env);
-> 
->      /* probe every access */
->      for (i = env->vstart; i < env->vl; i++) {
->          if (!vm && !vext_elem_mask(v0, i)) {
->              continue;
->          }
->          addr = adjust_addr(env, base + i * size);
->          if (i == 0) {
->              probe_pages(env, addr, size, ra, MMU_DATA_LOAD);
->          } else {
->              /* if it triggers an exception, no need to check watchpoint */
->              void *host;
->              int flags;
-> 
->              /* Probe nonfault on subsequent elements. */
->              flags = probe_access_flags(env, addr, size, MMU_DATA_LOAD,
->                      mmu_index, true, &host, 0);
->              if (flags & ~TLB_WATCHPOINT) {
->                  /*
->                   * Stop any flag bit set:
->                   *   invalid (unmapped)
->                   *   mmio (transaction failed)
->                   * In all cases, handle as the first load next time.
->                   */
->                  vl = i;
->                  break;
->              }
->          }
->      }
+---
+Akihiko Odaki (5):
+      tests/arm-cpu-features: Do not assume PMU availability
+      target/arm: Allow setting 'pmu' only for host and max
+      target/arm: Do not allow setting 'pmu' for hvf
+      target/arm: Always add pmu property
+      target/arm/kvm: Report PMU unavailability
 
-No, I don't think repeated probing is a good idea.
-You'll lose everything you attempted to gain with the other improvements.
+ target/arm/cpu.c               | 14 +++++++++++++-
+ target/arm/kvm.c               |  2 +-
+ tests/qtest/arm-cpu-features.c | 13 ++++++++-----
+ 3 files changed, 22 insertions(+), 7 deletions(-)
+---
+base-commit: f2cb4026fccfe073f84a4b440e41d3ed0c3134f6
+change-id: 20240629-pmu-ad5f67e2c5d0
 
-It seems, to handle watchpoints, you need to start by probing the entire length non-fault. 
-  That will tell you if any portion of the length has any of the problem cases.  The fast 
-path will not, of course.
+Best regards,
+-- 
+Akihiko Odaki <akihiko.odaki@daynix.com>
 
-After probing, you have flags for the 1 or two pages, and you can make a choice about the 
-actual load length:
-
-   - invalid on first page: either the first element faults,
-     or you need to check PMP via some alternate mechanism.
-     Do not be afraid to add something to CPUTLBEntryFull.extra.riscv
-     during tlb_fill in order to accelerate this, if needed.
-
-   - mmio on first page: just one element, as the second might fault
-     during the transaction.
-
-     It would be possible to enhance riscv_cpu_do_transaction_failed to
-     suppress the fault and set a flag noting the fault.  This would allow
-     multiple elements to be loaded, at the expense of another check after
-     each element within the slow tlb-load path.  I don't know if this is
-     desirable, really.  Using vector operations on mmio is usually a
-     programming error.  :-)
-
-   - invalid or mmio on second page, continue to the end of the first page.
-
-Once we have the actual load length, handle watchpoints by hand.
-See sve_cont_ldst_watchpoints.
-
-Finally, the loop loading the elements, likely in ram via host pointer.
-
-
-r~

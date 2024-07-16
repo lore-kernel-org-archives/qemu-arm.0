@@ -1,159 +1,198 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp58490njk;
-        Tue, 16 Jul 2024 02:46:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWgNn55xGTFfYQjR8+5lSmCSyl4aMqp85RVKYU13EtgTmFOyK/GVwZ+IQ2TK8QxyZn4yEReNMjDFNF4zm7iYsOIyUBOza3a
-X-Google-Smtp-Source: AGHT+IERCISkKtb1qaVpRWm+FXvkMSE49W2wRb1Xx0dW63pROH+uzbnj7w1fbv6Jn2mhkyb639Ex
-X-Received: by 2002:a05:620a:17a9:b0:79f:67b:4fdc with SMTP id af79cd13be357-7a17b690ffamr208406185a.2.1721123210963;
-        Tue, 16 Jul 2024 02:46:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721123210; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp58630njk;
+        Tue, 16 Jul 2024 02:47:11 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW9y8gl54cSCTqqk16FMKaWI2g5je5sy7RPhzhipWjr/EZBl1tDHmJBjIdcQ3z1w0emDL5s9k4TAwJipoc1LoSnr2/exBUq
+X-Google-Smtp-Source: AGHT+IGrrHA8ur2tZNrzDOywqkEIs0D78x9qTjzLTfPkHthU13iYcxmbO+9hvI1jxsEGS9zuJm2o
+X-Received: by 2002:ac8:5854:0:b0:447:e4dd:ca7f with SMTP id d75a77b69052e-44f7aecfa21mr19160011cf.57.1721123231636;
+        Tue, 16 Jul 2024 02:47:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721123231; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ye4A2LdK4w2I1Cpu0ghcOqniBXsOyaU5u10hkcN6R8eE75pLPfpJ0UObZVLwjYcXir
-         XSAfmXLeh7HhaCDOWeXd/oF8DKElNSA4/KPQmeZDfpQIkmbPJsgicTgmYA9S9e6okWMW
-         RXjXbjy6eeLxDPfoFQmpUvkf3iFaQhOS/rpy+iI6HO6DIUN5g5am5LLr4u7VkvbfgB0H
-         SJOjszNvrTSCjDIY2ONW30PvlqGouLx/S3XNKF19OZhkJelltLjfBninL/bjAiF8niKd
-         JtMM8dsU/Ml15Rxh54uV9Mzm7lztCmEGQ5Fqt9h8c1VKRH6tecUDjlMoCHJ6DsR6QmUw
-         1Jrw==
+        b=IzrhSpLQhEX1VX9YyuGKkzCLBX58R8p7zefIC/fxoOqmusM6GJyMxPg1U22YNHyM0r
+         Zd4yp/8mar1wmfRzuLLZE5FddxbYiwIed+Xg2Zog6HBa+9Xsi0ZyZR+cKNcxd7siiOHw
+         pX/ij3CfUkMHjr0Ly3WQvROkrClcwaHT2nSJ9bezsKnflIMy0n+w5ePAXvmASQBicdIJ
+         hFcipPmDabwFhYajcvybtNN7x0W5eJvSx/AsNFpljny2hLoxwgWndTn4+EeZfvxxvsB/
+         7BUl1F/1A/TT8cToEzxZ6c9EY63oigAHd2koQ/Hne52CQXdcU195PbZjbBemle2FLGNQ
+         w8Sg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DSdmdXUQ3zTou+N7IQHCWEWgmRzLg47Zppv3Vq7Z7IY=;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=sFTtJtdsThEqMi7LJVZYeWhDHRsj81sqf11CY+bIUpM=;
         fh=D1TEnXH2DbXUr6sVqyo/ig9zTKSO675I5EGRzxL3ieY=;
-        b=Anfim6WcqQ9TCVnMLAR8TDHSqji8LFl8ERLclZOoicOo6z8KxKEGHq+sz33xeiW0DX
-         SrIBiYR/r7/Fu98G3oRuf/UVjBN4XaFIv+PzaipzzqjVN5udTzNV1YUfajw2EziSp2ih
-         LK+8o01wFKnMZJ1ktyJNQuYrjoELAUyaf1w+mlUMkQNZtou0NvNJnsVf5BZZp2otp4NC
-         CWs250MiSNXo1VynnmVCgGL+kut0smeD55Y9EBWTBmcecJG4Kz1M0MQi/4jBMY/6ZYHZ
-         6J6R1+8eJPW1eibTf3/rVey7Ves6duM2XtUW2c2IjajENUZ2pYrMNMrsvw3wR8wnGMAG
-         0bxA==;
+        b=tKcBK0SNM/SMQvZ1vChUokyrTKHYrMTOKThInKu/qEmFXJ80gzLILGK93Tt2mGQO9/
+         X0+OJHU6POtboBs1cgH/ZRXTW9yRjS6Ls7Cak2PYfoimUjhk6CXBNzb5a+0OscX60pp+
+         R4kE6qgwgV8wntDcNx+A5rwJQC9Kv2kQUvZy2+2/k39O1uT401NtvMnbGGRMKC+DZCBa
+         JBq696luDb156rMlVqNvjdV7Cyln1JwE8j424x0+jiTacczaHO5zLQe9lHNt7rsq8uw0
+         SFbNJxNRUIcMTS3wzGPNbUkEaPcKZcmClkANeCo7kvnBV7CGktcTSYu38i9Q9PWTcOw+
+         XvtQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=asTgJZNZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Rw6XA6/D";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a160c6a00csi711415085a.496.2024.07.16.02.46.50
+        by mx.google.com with ESMTPS id d75a77b69052e-44f5b77f234si70589811cf.96.2024.07.16.02.47.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jul 2024 02:46:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Jul 2024 02:47:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=asTgJZNZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Rw6XA6/D";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sTelb-0005fW-GT; Tue, 16 Jul 2024 05:46:39 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sTelc-0005ku-OP; Tue, 16 Jul 2024 05:46:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sTelZ-0005c5-RF
- for qemu-devel@nongnu.org; Tue, 16 Jul 2024 05:46:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1sTelb-0005gg-Ok
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2024 05:46:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sTelX-0000Ll-R7
- for qemu-devel@nongnu.org; Tue, 16 Jul 2024 05:46:37 -0400
+ id 1sTela-0000ME-7G
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2024 05:46:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1721123193;
+ s=mimecast20190719; t=1721123196;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=DSdmdXUQ3zTou+N7IQHCWEWgmRzLg47Zppv3Vq7Z7IY=;
- b=asTgJZNZb0+HbJiAES9aut3OaHuYEuuZTo6VF/fRdtqsbeaWxDEG/JltRxWWHc0pYZS8wA
- 7UcDB1nKJlaHUIk11d2OiQxzMdtUzZHXrinqdV7zYyg3EzmEJ8iV8IcL23yxBGGwoeF5OR
- kM+1MZc/i1m6+Nn1SVliswtCWVjRQWQ=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sFTtJtdsThEqMi7LJVZYeWhDHRsj81sqf11CY+bIUpM=;
+ b=Rw6XA6/DCSOyyowL8ZXofo9UAm7dBzo/I4DDdJIBDhq1GcYOh/ghairGBKz8rC06a00jKb
+ QbDbZgLPsLVxfPnK5zybO+bxd2OD02OGkv8LtJ2eDmhjLQxMTuuDL0CIAgG44MA4BFeIl8
+ dwZ+iHpwtolXWlDhpCYMiJhRiCqoes0=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-185-eJjFxVMzM6OTb5tbzNgxLg-1; Tue,
- 16 Jul 2024 05:46:29 -0400
-X-MC-Unique: eJjFxVMzM6OTb5tbzNgxLg-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-422-20GRXQARPnWqsfGkyA3HvQ-1; Tue,
+ 16 Jul 2024 05:46:34 -0400
+X-MC-Unique: 20GRXQARPnWqsfGkyA3HvQ-1
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6794919540F3; Tue, 16 Jul 2024 09:46:28 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 880651955F0B; Tue, 16 Jul 2024 09:46:33 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.192.185])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0BA87300018D; Tue, 16 Jul 2024 09:46:22 +0000 (UTC)
+ id CE5AF300018D; Tue, 16 Jul 2024 09:46:28 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
  peter.maydell@linaro.org, clg@redhat.com, zhenzhong.duan@intel.com,
  alex.williamson@redhat.com, jasowang@redhat.com
 Cc: yanghliu@redhat.com
-Subject: [PATCH 0/6] VIRTIO-IOMMU/VFIO: Revert IOMMUDevice clear and fix
- hotunplug
-Date: Tue, 16 Jul 2024 11:45:02 +0200
-Message-ID: <20240716094619.1713905-1-eric.auger@redhat.com>
+Subject: [PATCH 1/6] Revert "virtio-iommu: Clear IOMMUDevice when VFIO device
+ is unplugged"
+Date: Tue, 16 Jul 2024 11:45:03 +0200
+Message-ID: <20240716094619.1713905-2-eric.auger@redhat.com>
+In-Reply-To: <20240716094619.1713905-1-eric.auger@redhat.com>
+References: <20240716094619.1713905-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
 X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RyKMSSjyTdfP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: s71Ib/HgCAHp
 
-1b889d6e39c3 ("virtio-iommu: Clear IOMMUDevice when VFIO
-device is unplugged" fixes the VFIO hotplug/hotunplug/hotplug
-sequence by clearing the IOMMUDevice which backs the VFIO device.
-However this brings other troubles such as a memory corruption.
+This reverts commit 1b889d6e39c32d709f1114699a014b381bcf1cb1.
+There are different problems with that tentative fix:
+- Some resources are left dangling (resv_regions,
+  host_resv_ranges) and memory subregions are left attached to
+  the root MR although freed as embedded in the sdev IOMMUDevice.
+  Finally the sdev->as is not destroyed and associated listeners
+  are left.
+- Even when fixing the above we observe a memory corruption
+  associated with the deallocation of the IOMMUDevice. This can
+  be observed when a VFIO device is hotplugged, hot-unplugged
+  and a system reset is issued. At this stage we have not been
+  able to identify the root cause (IOMMU MR or as structs beeing
+  overwritten and used later on?).
+- Another issue is HostIOMMUDevice are indexed by non aliased
+  BDF whereas the IOMMUDevice is indexed by aliased BDF - yes the
+  current naming is really misleading -. Given the state of the
+  code I don't think the virtio-iommu device works in non
+  singleton group case though.
 
-Even when fixing some cleanups that were missed on the first
-attempt the memory corruption still exists if the IOMMUDevice is
-freed. Until we understand the exact cause let's make things simpler:
-let the backing IOMMUDevice survive the unplug as what is done
-on intel iommu for instance. Clean up/reset resources that would
-prevent the device from being hotplugged again (probe_done is removed,
-[host_]resv_regions are reset). By doing this we also rule out the
-use case of aliased BDFs which is known to be not functional with
-virtio-iommu (missing guest kernel support) and the virtio-iommu device
-implementation is not ready either.
+So let's revert the patch for now. This means the IOMMU MR/as survive
+the hotunplug. This is what is done in the intel_iommu for instance.
+It does not sound very logical to keep those but currently there is
+no symetric function to pci_device_iommu_address_space().
 
-This series can be found at:
-https://github.com/eauger/qemu/tree/virtio_iommu_device_clear_fixes_v1
+probe_done issue will be handled in a subsequent patch. Also
+resv_regions and host_resv_regions will be deallocated separately.
 
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/virtio/virtio-iommu.c | 21 ---------------------
+ 1 file changed, 21 deletions(-)
 
-Eric Auger (6):
-  Revert "virtio-iommu: Clear IOMMUDevice when VFIO device is unplugged"
-  virtio-iommu: Remove probe_done
-  virtio-iommu: Free [host_]resv_ranges on unset_iommu_devices
-  virtio-iommu: Remove the end point on detach
-  hw/vfio/common: Add vfio_listener_region_del_iommu trace event
-  virtio-iommu: Add trace point on
-    virtio_iommu_detach_endpoint_from_domain
-
- include/hw/virtio/virtio-iommu.h |  1 -
- hw/vfio/common.c                 |  3 +-
- hw/virtio/virtio-iommu.c         | 88 +++++++++++---------------------
- hw/vfio/trace-events             |  3 +-
- hw/virtio/trace-events           |  1 +
- 5 files changed, 35 insertions(+), 61 deletions(-)
-
+diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
+index 33ae61c4a6..4e34dacd6e 100644
+--- a/hw/virtio/virtio-iommu.c
++++ b/hw/virtio/virtio-iommu.c
+@@ -467,26 +467,6 @@ static AddressSpace *virtio_iommu_find_add_as(PCIBus *bus, void *opaque,
+     return &sdev->as;
+ }
+ 
+-static void virtio_iommu_device_clear(VirtIOIOMMU *s, PCIBus *bus, int devfn)
+-{
+-    IOMMUPciBus *sbus = g_hash_table_lookup(s->as_by_busptr, bus);
+-    IOMMUDevice *sdev;
+-
+-    if (!sbus) {
+-        return;
+-    }
+-
+-    sdev = sbus->pbdev[devfn];
+-    if (!sdev) {
+-        return;
+-    }
+-
+-    g_list_free_full(sdev->resv_regions, g_free);
+-    sdev->resv_regions = NULL;
+-    g_free(sdev);
+-    sbus->pbdev[devfn] = NULL;
+-}
+-
+ static gboolean hiod_equal(gconstpointer v1, gconstpointer v2)
+ {
+     const struct hiod_key *key1 = v1;
+@@ -728,7 +708,6 @@ virtio_iommu_unset_iommu_device(PCIBus *bus, void *opaque, int devfn)
+     }
+ 
+     g_hash_table_remove(viommu->host_iommu_devices, &key);
+-    virtio_iommu_device_clear(viommu, bus, devfn);
+ }
+ 
+ static const PCIIOMMUOps virtio_iommu_ops = {
 -- 
 2.41.0
 

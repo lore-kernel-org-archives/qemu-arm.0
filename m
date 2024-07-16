@@ -1,160 +1,174 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp108237njk;
-        Tue, 16 Jul 2024 04:32:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCU2EBX1KwXhPer3Lv6u4jcSQLF75GxhDSJDzKqYwx0vPE4pDpwyjnibycZBvMi0a+bQKlQi67T8FXT9ZZDYVeiDRwQL6GWd
-X-Google-Smtp-Source: AGHT+IFORKdBx31weiZS65zwmznodhun4SZziOarNLMIBwrPFMBb4P7FlcwTTuZA0/fLD+JxsjzX
-X-Received: by 2002:a05:6808:218f:b0:3d5:5f8b:4ff2 with SMTP id 5614622812f47-3dac7b9dcf8mr2367344b6e.24.1721129576338;
-        Tue, 16 Jul 2024 04:32:56 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1721129576; cv=pass;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp109936njk;
+        Tue, 16 Jul 2024 04:36:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUe4HEJ+0Jjlo1ovGdQ/V3jLL2c+IVaAqB82JSTtMw8ZGsh4m9zv6YILFGnVe598rEcv5LbsgqbEkH0HFcs6zJzcQzA3D8h
+X-Google-Smtp-Source: AGHT+IGVRWDXEiY0LFsQw3Aai6IbeFWHLvBtX0e4DpCRMxeOueg2z93U7k+uKdRQK6LEUrix4FwZ
+X-Received: by 2002:a17:903:230b:b0:1fb:9b91:d7be with SMTP id d9443c01a7336-1fc3d939beamr13930285ad.9.1721129791972;
+        Tue, 16 Jul 2024 04:36:31 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1721129791; cv=pass;
         d=google.com; s=arc-20160816;
-        b=n9lFSROrK9t/dwWPxDzwoUSTek3WNqHPXmtKlv/4fUWd1+LL/uYgFKU82vJfxL2WYw
-         N9GgrOIpwbYat0UvC3w+ViOx25pVhFzH8FtMsc06qJgtOfMGmPf84inT0myPPoVFcd4P
-         Gglc2EX6g9JnSAiMF8oeUpYh9QZ50JeklWO0jhu234rLobP9vUgMKtAac3n32Fei+/Ub
-         gfUD84kQN9mDumXplAzuTF2ROoL9SjkIBsOqMLLOwV/lHkaidj+vTxhSvKjgz0l0tuqu
-         HOcmwls8U4ea/Zf86LjiGxAHhgmD1lBwrP/J5a+VAoocdsLLxNMh14wTA74liv5ucnId
-         gkXw==
+        b=iwXmZEqX22HjJHvrGm0shZ7OIbdvCQkMW9lpi692MgCCcurMiP1bMeXqugNkirfDJD
+         ANPhoYvVHAVmkadNmxSLXXM+krfyFDjZtUkeDNduEV5BaoMduFDL1noRAd7KROqOof67
+         0NwdUBmV3BmrdKZo3CgrAbfSUU5jGk1MPo7w4ybSwxTEGHuI+NKsyIcLP8GdgisVK34/
+         pPwqULbUQgl1b9MMLYFBQYeto9jHd/pbgEcSFSAMeBKIQ4+QdtaPKhCXalfyl8khrD6c
+         yG8+T8qcyo7or+nK6xZrZVGkCdoNPbvWct0a0cd8lOIHc9eGFioOffudCv1vl3hQgD/B
+         Unig==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :dkim-signature;
-        bh=v+UbT74xhk+b2SVYVJW8InGMelgItyrvL9jYPz+CIMg=;
-        fh=z741h1bT+Kxwj5MXAQGGgf5pqjr8H2VcyjnEVtewBWY=;
-        b=mdInWu9IDPhJISE0/UQk8F+d574V2TFWfehlU9d+ZLiKAz9vvFl5pdlXjiCApSOQ7O
-         zqPDvIcdBsyorxtQtP2jt3BI8Cwy1QqLAv3FtQwycXE1IfoUrpH23lMgYhdIjwE6u9td
-         WYjJBcZw8YbmcjNn/Eu+hAxN9aFwAqiaf9DK4gczZQ5VZEI+ofQC8Q0C6jIZSvz7yA+7
-         /qgwZHVgusiiyQN5MuMHYq9bdWYepF9p5Jq+wXF114QY/l4oueSykj+dHhXEqMFaRH9k
-         Jp8kv9rAUtCMZOIuJVBnvTi9lWnqnuPO0m3q2PIxvADiuaMTTpF8LmRrNO7+SQD/00qA
-         akRw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=fIrjmnrcime12URGWOz+U3tVhvhx495pQrmKJbaCEkE=;
+        fh=ouMJby7Bv6djGDnPl03UVj7QlKbzoXpJ5xrHmtJHPho=;
+        b=pJjoEpJ9gZp4i5VkES+A/YawR/CrJify4ZmBlpaydzahUcC5Wcj9EAGqLiRNUEz8Iy
+         nqLcpxy8YW2eTyN4vVf6XXz4RhtgeEmiqtNyVG01d6hthzG2Ei1RIdEnR7DoFXdv+/0p
+         Yh4mb9ZB7LKcK5z6lLXDcPkqdcFEeUocsnjhJbsTbepLlwUdJUiR1oUEM5VjxcJx3cSd
+         tH0lif5doqu9g75B3UGZew9j2X7J63vHrhFani1jUXHS7AERCaJCatvlPcL8lEgvKkI+
+         DSt2+dgcAGNf2O0atLeVjlUP9KfXua7XosUOs9Dc/FYCG53TzTtXDiQ1F7+YLbsywuIm
+         4Mag==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gKeX6m7D;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-21700-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-21700-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-21700-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id af79cd13be357-7a160b7bcefsi741842185a.103.2024.07.16.04.32.56
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=eNRv0WV8;
+       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
+       spf=pass (google.com: domain of kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org"
+Return-Path: <kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id d9443c01a7336-1fc0bc90390si70560635ad.237.2024.07.16.04.36.31
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Jul 2024 04:32:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-21700-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        Tue, 16 Jul 2024 04:36:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gKeX6m7D;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-21700-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-21700-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=eNRv0WV8;
+       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
+       spf=pass (google.com: domain of kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org"
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 0B44D1C22238
-	for <alex.bennee@linaro.org>; Tue, 16 Jul 2024 11:32:56 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 84EED284640
+	for <alex.bennee@linaro.org>; Tue, 16 Jul 2024 11:36:31 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 77D99199242;
-	Tue, 16 Jul 2024 11:32:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id D75431991C5;
+	Tue, 16 Jul 2024 11:36:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="gKeX6m7D"
-Received: from mail-ed1-f43.google.com (mail-ed1-f43.google.com [209.85.208.43])
+	dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b="eNRv0WV8"
+Received: from mail-pf1-f172.google.com (mail-pf1-f172.google.com [209.85.210.172])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 790C515491
-	for <kvm@vger.kernel.org>; Tue, 16 Jul 2024 11:32:43 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.43
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E64815491
+	for <kvm@vger.kernel.org>; Tue, 16 Jul 2024 11:36:29 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.172
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1721129565; cv=none; b=QEcxQqYA6Q9iijuYAVg9yGdIKf9JPmO/lUj2KrHTTb15oIVEPmIwZz8LsXzZY2Xp5O53iDCX1+ETWjhmmigUmqbtK30lujz/NyOFL5eGysJHRwsdzxV8+2rm3z/rBh9KKy6xzLM1eG7XJGMKpmoeI538SCvFbNDOyxVDt3gcWSE=
+	t=1721129790; cv=none; b=Sv7dVxvschdGPXLSOqVt67eeb3WCu/92zPEd76ett9irzQuhkFl5mKw2Atu1d32n09CGDcuqfTkxWFSFZfh3n+xFytJjgZg7TjFjYWrtR42isrVnZxb+NOQpW52ycHATJqDaGrmB390fLkDT+II9TB4U4PKjH2w6wRkBLiE6A+A=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1721129565; c=relaxed/simple;
-	bh=7eKp7AYkI86hZTovQJ1MoDAKgtvNK5kKrmMGmO/VAnQ=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=Ytg18O9alqDOLo6ECgrVk4aorGWrPD4OPVp+rMaTU7tmLsqL1anialiGXmIVzX6wS+SHb21yY3+JaN9ZkDaQ7ELVoJX1WmFzbZcnx17kTlWg3R8bzqwQCNtJ8CX5C41c5TJh8rcz0RC3XfVyj//O8spG5pSW2g3WmecsHh6p8bA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=gKeX6m7D; arc=none smtp.client-ip=209.85.208.43
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-ed1-f43.google.com with SMTP id 4fb4d7f45d1cf-58c947a6692so6929647a12.0
-        for <kvm@vger.kernel.org>; Tue, 16 Jul 2024 04:32:43 -0700 (PDT)
+	s=arc-20240116; t=1721129790; c=relaxed/simple;
+	bh=A353yTSsiHhTcZ4mUYW/K0lGm/8fHaGdFobufPLc7Es=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=kJDrfbgF+PFg0tAdKrWwIDUFB6Cm/V+7ySFb2b0Y60ubHRmy5BaDJGLkanTUoqFRNEPM3uwKU+yqgt2spfZvVImBknZlpj8TCMJINX+qVruFyJGsl91Ft+XCd01uhVYKRLRfv851eKhMXr/iA3RkUxNHsHaBQ2vKYQScDaXC5Vk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com; spf=none smtp.mailfrom=daynix.com; dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b=eNRv0WV8; arc=none smtp.client-ip=209.85.210.172
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=daynix.com
+Received: by mail-pf1-f172.google.com with SMTP id d2e1a72fcca58-70b1207bc22so4524880b3a.3
+        for <kvm@vger.kernel.org>; Tue, 16 Jul 2024 04:36:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721129562; x=1721734362; darn=vger.kernel.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=v+UbT74xhk+b2SVYVJW8InGMelgItyrvL9jYPz+CIMg=;
-        b=gKeX6m7D0gLraRgFGsXPonB8Vqk1cF5HyRsNvgPcjaXaqwyS1Ycwze7ZvOrvsRGGhB
-         KCPOLVQUoz753Y3Er2rb3vogYKZKNDV/7dZJWkqsRyg02VU5yYamKPUod+Kft/il1Pdz
-         decCeCxnYJdUOAGOUayDFajTxIcuO6pfbTmz86GTxfi40cdzoln9cDHvOYqwqvPmkrUu
-         hbWdqfX3uFeBH41Iwbw4FqbCkA6UquxwaWSafpII5SbsNSYwUckuIPTMNWeVFWgs9lE4
-         6g2iCKYCFLye9WB+LNNhxVjhCYZaj3h1Tyn8sj9iQvQs7R1clCCTq5EWUMsnSZvT9NXt
-         zm5g==
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1721129788; x=1721734588; darn=vger.kernel.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=fIrjmnrcime12URGWOz+U3tVhvhx495pQrmKJbaCEkE=;
+        b=eNRv0WV8Oa6j6YflDlyvN+tndvoMwqpEjMO6/Gc3uM2b1DmRUalvbGVgDNvb+JaCk5
+         AiQ95IsACkbHGB/hLIw1a/7wNWwJ1dGkqaSCM5u/6V4RdN4cMu61vdwI1B6OArqsmExk
+         okToIYa1pBZvzd+yNlA6b6Af1gHJy03Nv/tbz5vL9spJCPlKuDkN/0ShCkiWzYocac40
+         MAu+saBNtM+b43p0ObZdzNEzgThfTvEvh5s9rWyMK2Xo2lQgLTYqXxtEtJ7qjkxZFQxs
+         y1u37jelUT0NLzmzBOcBwvdt5wRY+B59gT4/HfpvCKvwWPEnrz6is6bOWe32yENuK6Vs
+         6RYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721129562; x=1721734362;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=v+UbT74xhk+b2SVYVJW8InGMelgItyrvL9jYPz+CIMg=;
-        b=fv4nwyvQOnpzP3mNANTLisCZzEevKCiRJuxurtNS/+IJ9Ap+HvrYZrJa6c7+SALZje
-         vbo9TgEvpnb//mYDXAvmbZMWRXGs0VUUeKFaiUxlsPiudZG5FOWUPeQxFG20OfDUKvyD
-         p3fFxER53lIHOx1Xl4Zp2tf6IxuhACcMczMQQmlWGWwjVCUda2KcsUSRCklpKObYi5tp
-         gE3QKYnpqvzUyFDwB/aceLY2geoQTTXhSm0GQuZq5Y/AwFGSn4Z6Q4Qhw3zqpFg8+6fv
-         Ag2t+sFOstyxzK5cQH7yvP9PSMqrSQlEAc7goYDy1t0PQswM4qlJz/DaEVsCox5qDHzL
-         Fr1g==
-X-Forwarded-Encrypted: i=1; AJvYcCVnMJIDgFct/ET7UXPrs9D1w+MroC+7XGC1gC8AbVjuv6kIt5m6V30jdIFn/A73fFfq4sOvWqWYEPjUG+75tPYu00jm
-X-Gm-Message-State: AOJu0YwgR/Vq726/78ipMAhQpy07HMOMrvzzeEDjAMMGPsWT4o1MUS+D
-	ejS/VKXpTEx+qIRtC8TzAlIeL9tEyD0lbOLia7RUK8ZQ5SLvbVCzVC63vYiNbbOrjh5lBm+LZn7
-	Vu69FCsvHc1/ca/bsMx7/ZJ0m3pEvHGtYl0qRRg==
-X-Received: by 2002:a05:6402:3582:b0:58d:ebf9:4e2d with SMTP id
- 4fb4d7f45d1cf-59eee833de0mr1345309a12.2.1721129561829; Tue, 16 Jul 2024
- 04:32:41 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1721129788; x=1721734588;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=fIrjmnrcime12URGWOz+U3tVhvhx495pQrmKJbaCEkE=;
+        b=Lj938ArXnFfKCurV5Zha13Q8OIEOpU1eyaOeeqoORAlsJclYMns35O/WgE5rW4aOSp
+         dM91+W288jAiohdj0GjHbzZO4LsAEar1IocOz8d2IeEYyqO3LoLqYORlTWhzpyvyl69x
+         6xsqCwdh6f6GJIdWDA6gcQdJ9TeJ6nX2toxUYXIazAm5vOso8Y5KibwrUQk5PfSKo9Gv
+         IPtOV5olOWIbLK6SIUb9JM/1Uxd2inqBjDrOwFOlmMWjKLD6Sgd2Nq9VN6vVIkhMr2jx
+         sTrP1wZQIOyhQh+jZKAr51y4QzSfRDvNI/rWj510Lhfp0JrRUfz0FM4JpyDQpdYRA29R
+         FdAA==
+X-Forwarded-Encrypted: i=1; AJvYcCUtAerQfh3xx72MiCThLkfSsS4S6Z2xQ3GjSNWPXScV943j4zgLVjAUvPA954ypffAqwQDQWWQkODLl1Vbid0fhb1Pd
+X-Gm-Message-State: AOJu0Yy6fSz6RqQJx6UL9cYlH7pI0cjYbV1PofqnS/dwcN5+ddCbchtg
+	f+yN4XZdeiFIt7kbkcBY3tgW0C22tfvZhfosf/iYq8VOXHHBYJ2MoWKvhdJowA8=
+X-Received: by 2002:a05:6a20:2590:b0:1c2:1ed4:4f91 with SMTP id adf61e73a8af0-1c3f124ac4bmr1630429637.31.1721129788574;
+        Tue, 16 Jul 2024 04:36:28 -0700 (PDT)
+Received: from [157.82.202.230] ([157.82.202.230])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70b7ec7da24sm6056707b3a.113.2024.07.16.04.36.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 16 Jul 2024 04:36:28 -0700 (PDT)
+Message-ID: <cdd5ce60-230f-48a1-bcf3-9591b8bede95@daynix.com>
+Date: Tue, 16 Jul 2024 20:36:25 +0900
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20240716-pmu-v2-0-f3e3e4b2d3d5@daynix.com> <20240716-pmu-v2-4-f3e3e4b2d3d5@daynix.com>
-In-Reply-To: <20240716-pmu-v2-4-f3e3e4b2d3d5@daynix.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 16 Jul 2024 12:32:31 +0100
-Message-ID: <CAFEAcA9trFnYaZbVehHhxET68QF=+X6GRsEh+zcavL-1DxDB4w@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 4/5] target/arm: Always add pmu property
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
-	kvm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: ZcWhTVT8nxHv
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, kvm@vger.kernel.org
+References: <20240716-pmu-v2-0-f3e3e4b2d3d5@daynix.com>
+ <20240716-pmu-v2-4-f3e3e4b2d3d5@daynix.com>
+ <CAFEAcA9trFnYaZbVehHhxET68QF=+X6GRsEh+zcavL-1DxDB4w@mail.gmail.com>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <CAFEAcA9trFnYaZbVehHhxET68QF=+X6GRsEh+zcavL-1DxDB4w@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: r/mzEgV35PzZ
 
-On Tue, 16 Jul 2024 at 09:28, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
->
-> kvm-steal-time and sve properties are added for KVM even if the
-> corresponding features are not available. Always add pmu property too.
->
-> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> ---
->  target/arm/cpu.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 9e1d15701468..32508644aee7 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1781,9 +1781,10 @@ void arm_cpu_post_init(Object *obj)
->
->      if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
->          cpu->has_pmu = true;
-> -        object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
->      }
->
-> +    object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
-> +
->      /*
->       * Allow user to turn off VFP and Neon support, but only for TCG --
->       * KVM does not currently allow us to lie to the guest about its
+On 2024/07/16 20:32, Peter Maydell wrote:
+> On Tue, 16 Jul 2024 at 09:28, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+>>
+>> kvm-steal-time and sve properties are added for KVM even if the
+>> corresponding features are not available. Always add pmu property too.
+>>
+>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+>> ---
+>>   target/arm/cpu.c | 3 ++-
+>>   1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index 9e1d15701468..32508644aee7 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -1781,9 +1781,10 @@ void arm_cpu_post_init(Object *obj)
+>>
+>>       if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
+>>           cpu->has_pmu = true;
+>> -        object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
+>>       }
+>>
+>> +    object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
+>> +
+>>       /*
+>>        * Allow user to turn off VFP and Neon support, but only for TCG --
+>>        * KVM does not currently allow us to lie to the guest about its
+> 
+> Before we do this we need to do something to forbid setting
+> the pmu property to true on CPUs which don't have it. That is:
+> 
+>   * for CPUs which do have a PMU, we should default to present, and
+>     allow the user to turn it on and off with pmu=on/off
+>   * for CPUs which do not have a PMU, we should not let the user
+>     turn it on and off (either by not providing the property, or
+>     else by making the property-set method raise an error, or by
+>     having realize detect the discrepancy and raise an error)
 
-Before we do this we need to do something to forbid setting
-the pmu property to true on CPUs which don't have it. That is:
+I don't think there is any reason to prohibit adding a PMU to a CPU that 
+doesn't have when you allow to remove one. For example, neoverse-v1 
+should always have PMU in the real world.
 
- * for CPUs which do have a PMU, we should default to present, and
-   allow the user to turn it on and off with pmu=on/off
- * for CPUs which do not have a PMU, we should not let the user
-   turn it on and off (either by not providing the property, or
-   else by making the property-set method raise an error, or by
-   having realize detect the discrepancy and raise an error)
+Perhaps it may make sense to prohibit adding a PMU when the CPU is not 
+Armv8 as the PMU we emulate is apparently PMUv3, which is part of Armv8.
 
-thanks
--- PMM
+Regards,
+Akihiko Odaki

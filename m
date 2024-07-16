@@ -1,283 +1,151 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp100036njk;
-        Tue, 16 Jul 2024 04:16:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUVfCOJPazkSxqZNSob0jxx64SSxtkLPmL3Ggod761pRZeJ8IQS7+5xQkfYFyRvzlnGnzkwVyCnk8Fa+0/mGfPMet39lR5C
-X-Google-Smtp-Source: AGHT+IHKkraDPdHGn98zdMl4kMfZ1oHG3BD/MllnCpjaY6E44IhXOjpKl0Sa7HVooII00wcQ7FQk
-X-Received: by 2002:a05:6000:d86:b0:365:8547:90b1 with SMTP id ffacd0b85a97d-368260d91b9mr1170981f8f.39.1721128590812;
-        Tue, 16 Jul 2024 04:16:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721128590; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp109884njk;
+        Tue, 16 Jul 2024 04:36:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUlotyDIZ/pIlvhLALt3eCh8ewV8iHFGpVk06LwcT2zEENJ1yz5NZGQ1F30oHV3COs3qQZnyfSc4hc2/ITZ40ZwgMLhEnkm
+X-Google-Smtp-Source: AGHT+IH4LOo9wGFKG73LCFM3qTo/SHr0G6jC9P3Um+XP2oG+gGxuSkVbU0wHp3YdWggS5JXEPm5R
+X-Received: by 2002:a05:620a:2588:b0:79f:e22:9bfb with SMTP id af79cd13be357-7a17b637d29mr271766085a.9.1721129786630;
+        Tue, 16 Jul 2024 04:36:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721129786; cv=none;
         d=google.com; s=arc-20160816;
-        b=uQ2qZdSeaXQv2SbRqJtSRQ5kwYtfEQset6LAsOg+26KLneAKdVj/1nJ/2XtwQpytIz
-         1stXHrQVpF9Y0hJRufqIF3u6l6gqOPeZJU+Yjajgn1UmBpuNE8oGR17rgJnYEQouLOmy
-         +8g3xRxYtAABhIXa9ab/u5b7qR0K6lB8B8vdIGtI50nEKrmFpLu0ikU1+cqPj0c3JmTd
-         DSKNF80ndG4kbzHIhKM0FnojccaYrOoxcDPwoYQAJlUn28d6Y04HapkaaUx6WEjpuXNd
-         okBkweiR7OZXWNDU7uGm10EdZoMbLcdGp/xssCC/j6gC1/V+D5KBsJDRXwoKM0Pxb9VI
-         Dk+A==
+        b=erGwGud0t9TnJGVuoqarhwg98PsIBDSVMEa0/c7JpGvg6z4A5gDT0QCGz1xP/XR5c0
+         CQi8IzOoGXEhGeW6YI8QmjtH5ZMx7QF6yI20RHsaBNO+vk4VUnE+c9rwFoNt8F4JWOwe
+         4xjm/vNGOxi0Jk+3pyTlXMSyQxt/MHBtf85efS6oDRZwbROWUKiVAoI1uevZZfcDTcHT
+         Yj/xYeh5kOfndDugw44qM2bbhHAIHWPAYou8Z8BCQ6wz55OysIX7qoKTSlZ1Oe7uXB6r
+         Yx+gGHcGiVTlVmqQEFop3zmxkpwhXWgl8651+B4DHfh3naYYuaX+gwAYkpRAWX9qR9vv
+         RPSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=nQo3hyeSL6xm6zExAARbgydvzGcRXVi0FxkzJ/sTueA=;
-        fh=Xo8/EPNwP7EUrVyhHTVtanAqhhO+2buLSCvWDhoNF5E=;
-        b=apMuoBqfDcgL40hIyIJ3HElPCe7RpqAegH9jY1Dy3uvb/XeL6VznAwRTuB/Dtr/WRO
-         4itTEhldP/6zaLa0JJV+yUMqW+Gu1uBlpDjQWNqvitG4X28a4x2JERJbyhBEBawA7mq0
-         /reIunYGTnkTx1ZTyIjnlk2ZoJqtx8uN7r2CTFruLeTx/3y+fyqHj/gIivqSiPxiJBth
-         h+x79QwTeQbJnNs+ldsX0n7TRVQjoHH3KnARlkocWpp+a+fAB/9SzMA/r0RrLntl0F03
-         0DTSKDqBd4yZ9ARe/3NXsdJJIJyN/R/cF3uJ+U2b16rjFqnXzvvc3UkjYcq3S6rZ0SfJ
-         jfmA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=b8mtSeHdgs7/KzJ6E6HcTqjOuu9I5+g5tFY5GMOz27Q=;
+        fh=2iVrj1rWHYzSz+1qBHp+aXV2aCxwwIGYF0lr8xEv9/c=;
+        b=X+p884fzah5Kdygwk9vQh6JPiOlrxoK0vxejoRhOjNnjt1OVQ9mSsIzJpZAK7mHB44
+         TCF9eydUF0BsNSuJ/06arogJJJED1SaQ9qmMXZjrIO0IIibK13z5nO4eYT87ES4us/1S
+         UrNrsZZ1FR+dXxoz4uAiyuUPuUbCpX0WhaiuvLUfluflnJFyckf/WgMsfOMxwUdh0ANK
+         J1Ch1MNjmDKG1PkmA2h3NRSsUd3Y/1OVigz7NfC3vIzyWqNCg+sSzBg2dyP6Q8Aj7uqS
+         58lAd4LT0ksyUAJkRtCr68CUB7np4iiOxceLHqkljtiNArsvACv9gPLfu8pm/WWZ5rN4
+         khxQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3680db01ae4si4065061f8f.659.2024.07.16.04.16.30
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Jul 2024 04:16:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x2I6Xeja;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7a160bac072si745567485a.222.2024.07.16.04.36.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 16 Jul 2024 04:36:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WNc0j2R7bz6K6Xp;
-	Tue, 16 Jul 2024 19:14:45 +0800 (CST)
-Received: from lhrpeml500001.china.huawei.com (unknown [7.191.163.213])
-	by mail.maildlp.com (Postfix) with ESMTPS id A9BFC140136;
-	Tue, 16 Jul 2024 19:16:29 +0800 (CST)
-Received: from 00293818-MRGF.huawei.com (10.126.170.92) by
- lhrpeml500001.china.huawei.com (7.191.163.213) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 16 Jul 2024 12:16:10 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
-	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <eric.auger@redhat.com>, <oliver.upton@linux.dev>,
-	<pbonzini@redhat.com>, <mst@redhat.com>, <will@kernel.org>,
-	<gshan@redhat.com>, <rafael@kernel.org>, <alex.bennee@linaro.org>,
-	<linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
-	<ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
-	<karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
-	<salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
-	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
-	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<npiggin@gmail.com>, <harshpb@linux.ibm.com>, <linuxarm@huawei.com>, Jonathan
- Cameron <Jonathan.Cameron@huawei.com>, Shaoqin Huang <shahuang@redhat.com>,
-	Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH V16 3/7] hw/acpi: Update ACPI GED framework to support vCPU Hotplug
-Date: Tue, 16 Jul 2024 12:14:58 +0100
-Message-ID: <20240716111502.202344-4-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240716111502.202344-1-salil.mehta@huawei.com>
-References: <20240716111502.202344-1-salil.mehta@huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=x2I6Xeja;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sTgTI-0003hz-FS; Tue, 16 Jul 2024 07:35:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sTgTH-0003bl-0W
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2024 07:35:51 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sTgTF-0005M5-Eg
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2024 07:35:50 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-595712c49ebso6502143a12.0
+ for <qemu-arm@nongnu.org>; Tue, 16 Jul 2024 04:35:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1721129748; x=1721734548; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=b8mtSeHdgs7/KzJ6E6HcTqjOuu9I5+g5tFY5GMOz27Q=;
+ b=x2I6XejazEM25OBayzfCZMoiBSGEqVRrt1LNpHuCr/p0dlXBQYp7UeC/tqAmn1Kued
+ 2lHet/mdQgb48P32G5A961P757lhd8jm7anrq5QMClm8oE0CpppPoaGsknenxkezhTyg
+ CGLLHUHCs7kmL9iMSRSKhxOx1PCtHAY7jnmYhpqlZdR6OtejsDkSpELy5RNrwEyVdl/O
+ tvkVChOmKqdnFCM+fGYajOmZGdgY1XiyFWnREYMX5Pjdi/64+4yefxWGD6WxzaUej2U9
+ wxe6rtpoyO8OL0/YTOzrqYmxaM+bOmz965sypizPitinGL4Vo66G2sxdFBKY9fui42HQ
+ awGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721129748; x=1721734548;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=b8mtSeHdgs7/KzJ6E6HcTqjOuu9I5+g5tFY5GMOz27Q=;
+ b=iziUVHoquQnGZa+nQfLj3ArZUTVNrdp3xqpdyUmwsq+8GgmWAqt5j8u9C/qtQjSF4K
+ a+wBQ7k3bOMOtn/Z4NqfP8tvxbdwe6Ic6CoLDSiN1E9ntsde4z9uGoX+d7jMuLOx5ktN
+ PN8DbYEt0WxH6Ajy6M+MNK1B96+qz8QbcN4lNjS5t8MfxcTvqFO8YzSYpMm2B9q7r3HR
+ cDMCM2v1eXo0M5e1OjYq7ScBBD4GvvVahIwvCSZzfNvwzLiLKEgX0SsLH/3r2yhmhCgh
+ DcqKQZVEcwEr+qbVBSWU+5L5ddP091f6fmiydPMOY91QTSNqUdCYC7X169jsG899xzfV
+ 80Sw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUoB6LpPKmeig6Ung4u/aM5BGHdRx0D8Rr42oc5O9huvQ+clKyhYisBAJIQJntwgvYYFvb7k5r/DKqqTjYDJO+zhX5g
+X-Gm-Message-State: AOJu0YzlhNiIr5T9wvNkPjzfmhSwQRQ9c19tuRcd3p9wY1IQxee+G8CS
+ UVRGpsjWtzR+PeWE/k+hmmfIe/EaGJ61D6QFJi+JbkwipvXXg8eaPdcRt3X2cT5GBDCEH1qVQFF
+ WtJwEIMSEm/VXrvx6T0p+aEYO/AT6X+z5eozesg==
+X-Received: by 2002:a50:99dd:0:b0:57c:947c:52f6 with SMTP id
+ 4fb4d7f45d1cf-59ef00b5524mr1215922a12.26.1721129747896; Tue, 16 Jul 2024
+ 04:35:47 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.126.170.92]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- lhrpeml500001.china.huawei.com (7.191.163.213)
-X-TUID: BovtkVbxMTSZ
+References: <20240715055820.319035-1-richard.henderson@linaro.org>
+ <20240715055820.319035-4-richard.henderson@linaro.org>
+In-Reply-To: <20240715055820.319035-4-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Jul 2024 12:35:37 +0100
+Message-ID: <CAFEAcA9FnBV+9MtvHf1YkaNxjKJjaX8iYV6gAnH+pUYYaGfunA@mail.gmail.com>
+Subject: Re: [PATCH 3/3] tests/tcg/aarch64: Add test cases for SME FMOPA
+ (widening)
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, danikhan632@git.sr.ht, qemu-arm@nongnu.org, 
+ Daniyal Khan <danikhan632@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Msl95VOQkv3K
 
-ACPI GED (as described in the ACPI 6.4 spec) uses an interrupt listed in the
-_CRS object of GED to intimate OSPM about an event. Later then demultiplexes the
-notified event by evaluating ACPI _EVT method to know the type of event. Use
-ACPI GED to also notify the guest kernel about any CPU hot(un)plug events.
+On Mon, 15 Jul 2024 at 06:58, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> From: Daniyal Khan <danikhan632@gmail.com>
+>
+> Signed-off-by: Daniyal Khan <danikhan632@gmail.com>
+> Message-Id: 172090222034.13953.16888708708822922098-1@git.sr.ht
+> [rth: Split test cases to separate patch, tidy assembly.]
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-Note, GED interface is used by many hotplug events like memory hotplug, NVDIMM
-hotplug and non-hotplug events like system power down event. Each of these can
-be selected using a bit in the 32 bit GED IO interface. A bit has been reserved
-for the CPU hotplug event.
+> --- /dev/null
+> +++ b/tests/tcg/aarch64/sme-fmopa-2.c
+> @@ -0,0 +1,51 @@
+> +#include <stdint.h>
+> +#include <stdio.h>
 
-ACPI CPU hotplug related initialization should only happen if ACPI_CPU_HOTPLUG
-support has been enabled for particular architecture. Add cpu_hotplug_hw_init()
-stub to avoid compilation break.
+Can we have copyright-and-license header comments on all
+new files, please?
 
-Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: David Hildenbrand <david@redhat.com>
-Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
-Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-Tested-by: Xianglai Li <lixianglai@loongson.cn>
-Tested-by: Miguel Luis <miguel.luis@oracle.com>
-Reviewed-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
-Tested-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
----
- docs/specs/acpi_hw_reduced_hotplug.rst |  3 +-
- hw/acpi/acpi-cpu-hotplug-stub.c        |  6 ++++
- hw/acpi/generic_event_device.c         | 47 ++++++++++++++++++++++++++
- include/hw/acpi/generic_event_device.h |  4 +++
- 4 files changed, 59 insertions(+), 1 deletion(-)
-
-diff --git a/docs/specs/acpi_hw_reduced_hotplug.rst b/docs/specs/acpi_hw_reduced_hotplug.rst
-index 0bd3f9399f..3acd6fcd8b 100644
---- a/docs/specs/acpi_hw_reduced_hotplug.rst
-+++ b/docs/specs/acpi_hw_reduced_hotplug.rst
-@@ -64,7 +64,8 @@ GED IO interface (4 byte access)
-        0: Memory hotplug event
-        1: System power down event
-        2: NVDIMM hotplug event
--    3-31: Reserved
-+       3: CPU hotplug event
-+    4-31: Reserved
- 
- **write_access:**
- 
-diff --git a/hw/acpi/acpi-cpu-hotplug-stub.c b/hw/acpi/acpi-cpu-hotplug-stub.c
-index 3fc4b14c26..c6c61bb9cd 100644
---- a/hw/acpi/acpi-cpu-hotplug-stub.c
-+++ b/hw/acpi/acpi-cpu-hotplug-stub.c
-@@ -19,6 +19,12 @@ void legacy_acpi_cpu_hotplug_init(MemoryRegion *parent, Object *owner,
-     return;
- }
- 
-+void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
-+                         CPUHotplugState *state, hwaddr base_addr)
-+{
-+    return;
-+}
-+
- void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list)
- {
-     return;
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index 2d6e91b124..4641933a0f 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -25,6 +25,7 @@ static const uint32_t ged_supported_events[] = {
-     ACPI_GED_MEM_HOTPLUG_EVT,
-     ACPI_GED_PWR_DOWN_EVT,
-     ACPI_GED_NVDIMM_HOTPLUG_EVT,
-+    ACPI_GED_CPU_HOTPLUG_EVT,
- };
- 
- /*
-@@ -234,6 +235,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-         } else {
-             acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
-         }
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-     } else {
-         error_setg(errp, "virt: device plug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -248,6 +251,8 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
-     if ((object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) &&
-                        !(object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)))) {
-         acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug request for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -261,6 +266,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
- 
-     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-         acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
-+    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-+        acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
-     } else {
-         error_setg(errp, "acpi: device unplug for unsupported device"
-                    " type: %s", object_get_typename(OBJECT(dev)));
-@@ -272,6 +279,7 @@ static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
-     AcpiGedState *s = ACPI_GED(adev);
- 
-     acpi_memory_ospm_status(&s->memhp_state, list);
-+    acpi_cpu_ospm_status(&s->cpuhp_state, list);
- }
- 
- static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
-@@ -286,6 +294,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
-         sel = ACPI_GED_PWR_DOWN_EVT;
-     } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
-         sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
-+    } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
-+        sel = ACPI_GED_CPU_HOTPLUG_EVT;
-     } else {
-         /* Unknown event. Return without generating interrupt. */
-         warn_report("GED: Unsupported event %d. No irq injected", ev);
-@@ -371,6 +381,42 @@ static const VMStateDescription vmstate_acpi_ged = {
-     }
- };
- 
-+static void acpi_ged_realize(DeviceState *dev, Error **errp)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    AcpiGedState *s = ACPI_GED(dev);
-+    uint32_t ged_events;
-+    int i;
-+
-+    ged_events = ctpop32(s->ged_event_bitmap);
-+
-+    for (i = 0; i < ARRAY_SIZE(ged_supported_events) && ged_events; i++) {
-+        uint32_t event = s->ged_event_bitmap & ged_supported_events[i];
-+
-+        if (!event) {
-+            continue;
-+        }
-+
-+        switch (event) {
-+        case ACPI_GED_CPU_HOTPLUG_EVT:
-+            /* initialize CPU Hotplug related regions */
-+            memory_region_init(&s->container_cpuhp, OBJECT(dev),
-+                                "cpuhp container",
-+                                ACPI_CPU_HOTPLUG_REG_LEN);
-+            sysbus_init_mmio(sbd, &s->container_cpuhp);
-+            cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
-+                                &s->cpuhp_state, 0);
-+            break;
-+        }
-+        ged_events--;
-+    }
-+
-+    if (ged_events) {
-+        error_report("Unsupported events specified");
-+        abort();
-+    }
-+}
-+
- static void acpi_ged_initfn(Object *obj)
- {
-     DeviceState *dev = DEVICE(obj);
-@@ -411,6 +457,7 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
-     dc->desc = "ACPI Generic Event Device";
-     device_class_set_props(dc, acpi_ged_properties);
-     dc->vmsd = &vmstate_acpi_ged;
-+    dc->realize = acpi_ged_realize;
- 
-     hc->plug = acpi_ged_device_plug_cb;
-     hc->unplug_request = acpi_ged_unplug_request_cb;
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index ba84ce0214..e091ac2108 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -62,6 +62,7 @@
- #include "hw/sysbus.h"
- #include "hw/acpi/memory_hotplug.h"
- #include "hw/acpi/ghes.h"
-+#include "hw/acpi/cpu.h"
- #include "qom/object.h"
- 
- #define ACPI_POWER_BUTTON_DEVICE "PWRB"
-@@ -95,6 +96,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
- #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
- #define ACPI_GED_PWR_DOWN_EVT      0x2
- #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
-+#define ACPI_GED_CPU_HOTPLUG_EVT    0x8
- 
- typedef struct GEDState {
-     MemoryRegion evt;
-@@ -106,6 +108,8 @@ struct AcpiGedState {
-     SysBusDevice parent_obj;
-     MemHotplugState memhp_state;
-     MemoryRegion container_memhp;
-+    CPUHotplugState cpuhp_state;
-+    MemoryRegion container_cpuhp;
-     GEDState ged_state;
-     uint32_t ged_event_bitmap;
-     qemu_irq irq;
--- 
-2.34.1
+thanks
+-- PMM

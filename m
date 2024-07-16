@@ -1,209 +1,166 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp231848njk;
-        Tue, 16 Jul 2024 07:59:44 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU+zZOtYlci4SzSPc95kOs7ZhlizjynubttlBA4LKQuKsiSEhx22oF5MwxyBqa4BGNu8xhKUeSBkf22oPs6mwuRkXXM2fv0
-X-Google-Smtp-Source: AGHT+IFm4GyLBhH9cexZgj3IoJ+jpH8iCzFsxwQ3OMLvkmNvkAapeVNsQ3l+LYcJhDVq1d6KcY34
-X-Received: by 2002:ad4:5d6d:0:b0:6b5:5687:8f7a with SMTP id 6a1803df08f44-6b78104eb63mr44172676d6.21.1721141984641;
-        Tue, 16 Jul 2024 07:59:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721141984; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp279019njk;
+        Tue, 16 Jul 2024 09:11:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVVQRK0cEL+evxAEdAQGO4mw60nhFf21VCjp0JdeJ8wzhw139bvlsgkc53cqwECMAojT2E2kq/Fg7QvzZjbk7oFoM94Bw2M
+X-Google-Smtp-Source: AGHT+IGAHV2f0vQH0XQ9pHy1hHZlzh/i49CKF+4S8MVgJgbLptWKOhJHMei9TYS4McfA9wAgX+dB
+X-Received: by 2002:a05:622a:514:b0:447:f292:e4b5 with SMTP id d75a77b69052e-44f7ca1aac6mr36852231cf.9.1721146286205;
+        Tue, 16 Jul 2024 09:11:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721146286; cv=none;
         d=google.com; s=arc-20160816;
-        b=QYLgKtj8C6uWe40uiX7TVsULqclryo3yw5ZyjtQ2QhH9bgFv+GGfGj9RdiijW/t8WF
-         3w034mWeTWO4bIxDpJ/W0KIPLlsgnTT4HtrDIqvDwsQI9oLX2y40fCdChZg1HibMKOe1
-         eJNvMapI1QbPrb6200Wo6b1y2l5/OLux7k/4W4o8dQ4FHpVzTWBtNshn2ZVXPcnR2nR/
-         0cPBATR+bgZueC4rOYb6LEcYxahRV5uyG2OoPGTUWhM2pTPzBOO2xw0CUj54zeL1cr8t
-         bx4Vwcju3E9dBB4mRpxHv1VvAyBkGSrVuttQiW34hZqVv2HHh753wr6htod/hZsYLDIu
-         Jgww==
+        b=0CrH769g1YJm6qUDhrXN0zlgEWF2qmE/PE8fzY0w/bPPZOwvRpYM9z3O7IvnoJ6Hcx
+         WriV0qbemG2ga7rKu0VU+t6mGWaln+yiavICTBPPASzZVmrh6gWM0KqDC9IStcLjDCwt
+         w9CE8Ibrg72AKSFv8b/2XtGK6OwDp4OV4poHahgsf1KhicORJdwK4Xy2FJhmuQN604gm
+         ZGeqoVNIZsBMVWCO7YpfmNLtqDnhVtKzxWnPNpPYHSp1HW/NX/1t4GsnkuoBoXhnWwDG
+         RQDbBPMDgIYMRJJUdgqQNoUcDTauCVTBmIL2iIeJ3Glf+xhDvWmpxSC7JOZx9xCjLoEL
+         423g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:in-reply-to:cc:references
+         :message-id:date:subject:mime-version:from:content-transfer-encoding
          :dkim-signature;
-        bh=S1PxolepRSOrb2n2US5yhZ+v8cjPWcxydv/e3e2gsfg=;
-        fh=Ef2Ce9pLfeGc8t3v/ttpdfxZh2APwgi9IxLJ77XHAWo=;
-        b=OIIRwOvlvh40ID4hHGwSzRZys6W+T0LDKMcnhQl8/Brk9NsIXnT4ycHpwHiqvOx5fb
-         ErG3yD+pG/a6NyEnjS1/7aEDLULi+3k22oextUNppIAuW2ElviK4t0ClLqEXm5jHIONK
-         0wF8ptlOXyFIQbt5N1+tbBM6xEtm8LkdfIho4ri4UCsoxNl8hlqAyZgzF7juxtc+RdYj
-         3wLryDGxgOQJkJRPwQdTE7yQIHeuzgL/iCjjfW7nw+7VQMDqbuIbZOgNHX6/V6LHgkvC
-         FFuHUEZ80KyL4Vh/dBwF3MDflf+jqw10TNuHsyxYCyRcc+gwnaAXuqqUK0my/1Q0D1vJ
-         aS/g==;
+        bh=KjtVo/OCWQ0RNtoc5VyV2ztYRA6Jh4iaDgpmRDZu1JU=;
+        fh=l7xTBJ34GDkR0pjdk6r16noZ2Gk6ASOExGTlG80M8Oc=;
+        b=F068YE0+zD+lBS9eN1GYbC9pN+N0zovdKdD+ss7Zw7YUH/ch25oAb7qbhTc5zkzauJ
+         /XZuXedO1S6Ia2Ob4zum7MnkoAksMrU/kM77RIoiDuHgxYao8sm2jjKui/pZyncvfOzo
+         sDFBbRe0wmG7KrSIOyvvKoTunRD9TPLZ0Wlu/rmAhBvB8pn2PK6DlrayTRShG3TIcU4i
+         wTk0Xjx9Bkars+PplsbDDjy9U35TRk2ZJ1gWdTUiGNkk53kyuMkioEL+AAiE5YobX5zF
+         eGDw8BaNt6oUZkWT3oJFL/MDRcAeUD1KhWbeQKvt75LCWSgMrkr8hO2PEVqHhCSvP+YC
+         Q53Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Lgv9MTPu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@samjakob.com header.s=sig1 header.b="q4/Q+C4u";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=samjakob.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b761a41f7dsi76818096d6.485.2024.07.16.07.59.44
+        by mx.google.com with ESMTPS id d75a77b69052e-44f5b804834si74089811cf.422.2024.07.16.09.11.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jul 2024 07:59:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Jul 2024 09:11:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Lgv9MTPu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@samjakob.com header.s=sig1 header.b="q4/Q+C4u";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=samjakob.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sTjeK-00067z-Lg; Tue, 16 Jul 2024 10:59:28 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sTklZ-0002C1-KX; Tue, 16 Jul 2024 12:11:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sTjeJ-000629-FK
- for qemu-arm@nongnu.org; Tue, 16 Jul 2024 10:59:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <me@samjakob.com>) id 1sTklU-0001zL-Em
+ for qemu-devel@nongnu.org; Tue, 16 Jul 2024 12:10:56 -0400
+Received: from qs51p00im-qukt01071701.me.com ([17.57.155.6])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sTjeH-0007BO-QA
- for qemu-arm@nongnu.org; Tue, 16 Jul 2024 10:59:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1721141964;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=S1PxolepRSOrb2n2US5yhZ+v8cjPWcxydv/e3e2gsfg=;
- b=Lgv9MTPuPwObUhv+bGJPze459JPfwFTXXq7+lLcqjmVdf9aPwUAKryUYuVWjSt46XpXFO2
- SsEzwOWSm4DKAdVm5JDdYnTn7akB71rkMjJkDPGxdkYs28G2BRixGz4IevQKSC/rFtsfJm
- Y2dvf8eefMe5AkKBPUx8SNC3BnpRCOQ=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-690-APf7pSCEMPyQApwowSrL6Q-1; Tue, 16 Jul 2024 10:59:23 -0400
-X-MC-Unique: APf7pSCEMPyQApwowSrL6Q-1
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4272718b9b0so40144705e9.1
- for <qemu-arm@nongnu.org>; Tue, 16 Jul 2024 07:59:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721141957; x=1721746757;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=S1PxolepRSOrb2n2US5yhZ+v8cjPWcxydv/e3e2gsfg=;
- b=emGkeNEDxzyrqxldPwVivmaZw7IgODYInIgCR62YUfT+qisbUrkbBBCOSFtd+YEeH8
- d+yfO7tIWkAB8l6XJyMnzVeImMFlZZrcCI91P9kg8KXCvuKAMLY7gUyL+hak7XSBXHbZ
- VZrljrm939oLFepc61J+gyusoZ4QEROg6OifbbH/s/kpGc86w89vBX8QETkmk/Mji11e
- GExH2asFL39WKBsBkml0OWqzhYXyhtyxSTe8F+dsRzzJDQHGy9qKnw1L5jxaL4PbVtct
- rcR7xBJn33Y6Z4dYGPE5ivm8Hfy3x98KTDhcmwd4ReVEedGgCsMHFpQN9t8geOOwSUc1
- 4U+Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUdp3mzpJfZtPQGcIDEZoMOGTj82GupZSKwttrzOQlBWj/3dgdAE7IzvnG25YTMrNUYAuUI35KAaGBHqFPDuSrsSGIK
-X-Gm-Message-State: AOJu0Yy8lsYm5F9Lmnm62LfkkcYt5hF46X/4ehgmZVJ7QUppXGfe/Z7d
- 3Tkgd8PW/XDsngg3+PDU4RARVGKyoJ37I/qJ8VRA64iBf2pdUsOTpyq8rDZW/MXJ59yuVkwL1tv
- pCQI1C89kalgaKtjJ5qI/crVk6jPHXKoyz2PihnS0cR2mC5uVhw==
-X-Received: by 2002:a05:600c:4f4d:b0:426:6f31:a605 with SMTP id
- 5b1f17b1804b1-427ba64599fmr18891125e9.17.1721141957445; 
- Tue, 16 Jul 2024 07:59:17 -0700 (PDT)
-X-Received: by 2002:a05:600c:4f4d:b0:426:6f31:a605 with SMTP id
- 5b1f17b1804b1-427ba64599fmr18890945e9.17.1721141957087; 
- Tue, 16 Jul 2024 07:59:17 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3680dabf02csm9252330f8f.41.2024.07.16.07.59.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Jul 2024 07:59:16 -0700 (PDT)
-Message-ID: <8a642d1e-0ae1-431e-91de-654e717c6894@redhat.com>
-Date: Tue, 16 Jul 2024 16:59:15 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/6] VIRTIO-IOMMU/VFIO: Revert IOMMUDevice clear and fix
- hotunplug
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- mst@redhat.com, jean-philippe@linaro.org, peter.maydell@linaro.org,
- zhenzhong.duan@intel.com, alex.williamson@redhat.com, jasowang@redhat.com
-Cc: yanghliu@redhat.com
-References: <20240716094619.1713905-1-eric.auger@redhat.com>
- <5f64db5d-7690-4d18-8c31-cfe8e2083f5f@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <5f64db5d-7690-4d18-8c31-cfe8e2083f5f@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+ (Exim 4.90_1) (envelope-from <me@samjakob.com>) id 1sTklS-0002wc-Gn
+ for qemu-devel@nongnu.org; Tue, 16 Jul 2024 12:10:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samjakob.com;
+ s=sig1; t=1721146250;
+ bh=KjtVo/OCWQ0RNtoc5VyV2ztYRA6Jh4iaDgpmRDZu1JU=;
+ h=Content-Type:From:Mime-Version:Subject:Date:Message-Id:To;
+ b=q4/Q+C4uORALVY4z5Knema+XWUBSyoJgswV/fnr0z3ljmoU9fzCmBF+HX1e9MEK9l
+ 0d65XXt/1uhl/wyVjuyLmAS0hrNlE3AoAXQ12/3auPrBBd40wO/TM2GTA83ywAMwNI
+ SEIJzTT22fO4dTBmCWQ9K0a/sNV/j2lk/S7tgj9H0ALiG8lO5wzvEGg3vFNS4Djlx0
+ MKQRe3xImAwsfdB/EGKC8dO3lEWxYpEulRfKr6VgW7HLiTNgVWZxtkNvP27IOX4Pfl
+ TMIFYXsjIgSFGBaIdIyx5buYF3MgUWVCyBGh+sm9hRpPP0xWLf2Xa99UjugYbp3qu/
+ pQXwe7uDLGyBA==
+Received: from smtpclient.apple (qs51p00im-dlb-asmtp-mailmevip.me.com
+ [17.57.155.28])
+ by qs51p00im-qukt01071701.me.com (Postfix) with ESMTPSA id 0BA474D003C5;
+ Tue, 16 Jul 2024 16:10:47 +0000 (UTC)
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+From: "Sam M." <me@samjakob.com>
+Mime-Version: 1.0 (1.0)
+Subject: Re: [PATCH] hw/display/bcm2835_fb: fix fb_use_offsets condition
+Date: Tue, 16 Jul 2024 17:10:35 +0100
+Message-Id: <2CF81837-4459-4C1D-9CFA-3E689A9F7AB6@samjakob.com>
+References: <CAFEAcA_jA9BnBRYZK8b15ibp7SFw0PNKb7H=-xs4p=ttOesahg@mail.gmail.com>
+Cc: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org, "open list:Raspberry Pi" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+In-Reply-To: <CAFEAcA_jA9BnBRYZK8b15ibp7SFw0PNKb7H=-xs4p=ttOesahg@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: iPhone Mail (21F90)
+X-Proofpoint-ORIG-GUID: K5L0EAUgy5I-1nrINYMwqh3PZaFa305y
+X-Proofpoint-GUID: K5L0EAUgy5I-1nrINYMwqh3PZaFa305y
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-07-15_19,2024-07-16_02,2024-05-17_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ phishscore=0
+ mlxlogscore=999 suspectscore=0 malwarescore=0 spamscore=0 mlxscore=0
+ clxscore=1030 bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2308100000 definitions=main-2407160119
+Received-SPF: pass client-ip=17.57.155.6; envelope-from=me@samjakob.com;
+ helo=qs51p00im-qukt01071701.me.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bzKhq8SYBda0
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xedpVt8ZE//F
 
-Hi Cédric,
+Thank you!
 
-On 7/16/24 16:02, Cédric Le Goater wrote:
-> On 7/16/24 11:45, Eric Auger wrote:
->> 1b889d6e39c3 ("virtio-iommu: Clear IOMMUDevice when VFIO
->> device is unplugged" fixes the VFIO hotplug/hotunplug/hotplug
->> sequence by clearing the IOMMUDevice which backs the VFIO device.
->> However this brings other troubles such as a memory corruption.
->>
->> Even when fixing some cleanups that were missed on the first
->> attempt the memory corruption still exists if the IOMMUDevice is
->> freed. Until we understand the exact cause let's make things simpler:
->> let the backing IOMMUDevice survive the unplug as what is done
->> on intel iommu for instance. Clean up/reset resources that would
->> prevent the device from being hotplugged again (probe_done is removed,
->> [host_]resv_regions are reset). By doing this we also rule out the
->> use case of aliased BDFs which is known to be not functional with
->> virtio-iommu (missing guest kernel support) and the virtio-iommu device
->> implementation is not ready either.
->>
->> This series can be found at:
->> https://github.com/eauger/qemu/tree/virtio_iommu_device_clear_fixes_v1
->>
->>
->> Eric Auger (6):
->>    Revert "virtio-iommu: Clear IOMMUDevice when VFIO device is
->> unplugged"
->>    virtio-iommu: Remove probe_done
->>    virtio-iommu: Free [host_]resv_ranges on unset_iommu_devices
->>    virtio-iommu: Remove the end point on detach
->>    hw/vfio/common: Add vfio_listener_region_del_iommu trace event
->>    virtio-iommu: Add trace point on
->>      virtio_iommu_detach_endpoint_from_domain
->>
->>   include/hw/virtio/virtio-iommu.h |  1 -
->>   hw/vfio/common.c                 |  3 +-
->>   hw/virtio/virtio-iommu.c         | 88 +++++++++++---------------------
->>   hw/vfio/trace-events             |  3 +-
->>   hw/virtio/trace-events           |  1 +
->>   5 files changed, 35 insertions(+), 61 deletions(-)
->>
->
->
-> Tested-by: Cédric Le Goater <clg@redhat.com>
->
-> with a vfio-pci device (mlx5 VF) and a virtio-net-pci device.
+My apologies for the duplicates and alignment - it=E2=80=99s my first time u=
+sing a mailing list!
 
-Many Thanks!
-
-Eric
->
-> Thanks,
->
-> C.
->
-
+> On Jul 16, 2024, at 3:44=E2=80=AFPM, Peter Maydell <peter.maydell@linaro.o=
+rg> wrote:
+>=20
+> =EF=BB=BFOn Tue, 16 Jul 2024 at 15:37, Philippe Mathieu-Daud=C3=A9 <philmd=
+@linaro.org> wrote:
+>>=20
+>>> On 16/7/24 12:35, Peter Maydell wrote:
+>>> On Sat, 13 Jul 2024 at 17:04, SamJakob <me@samjakob.com> wrote:
+>>>>=20
+>>>>         It is common practice when implementing double-buffering
+>>>>         on VideoCore to do so by multiplying the height of the
+>>>>         virtual buffer by the number of virtual screens desired
+>>>>         (i.e., two - in the case of double-bufferring).
+>>>>=20
+>>>>         At present, this won't work in QEMU because the logic in
+>>>>         fb_use_offsets require that both the virtual width and
+>>>>         height exceed their physical counterparts.
+>>>>=20
+>>>>         This appears to be unintentional/a typo and indeed the
+>>>>         comment states; "Experimentally, the hardware seems to
+>>>>         do this only if the viewport size is larger than the
+>>>>         physical screen". The viewport/virtual size would be
+>>>>         larger than the physical size if either virtual dimension
+>>>>         were larger than their physical counterparts and not
+>>>>         necessarily both.
+>>>>=20
+>>>> Signed-off-by: SamJakob <me@samjakob.com>
+>>>=20
+>>> Thanks for this bugfix; I've applied it to my target-arm.next
+>>> queue and it should get upstream within a week or so.
+>>=20
+>> Since I'm seeing 2 times the same patch, adding R-b again on
+>> this one:
+>>=20
+>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>>=20
+>> (BTW Peter the commit description is mis-aligned, if you
+>> don't mind, correcting it while applying would be appreciated!)
+>=20
+> Yep, I already picked up your r-by and rewrapped the commit
+> message.
+>=20
+> -- PMM

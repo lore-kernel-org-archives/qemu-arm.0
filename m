@@ -1,383 +1,120 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-59b25526dc8sm4784467a12.46.2024.07.16.04.42.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Jul 2024 04:42:37 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 81AE75F7A0;
-	Tue, 16 Jul 2024 12:42:36 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Akihiko Odaki <akihiko.odaki@daynix.com>,
-	Gustavo Bueno Romero <gustavo.romero@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [RFC PATCH] gdbstub: Re-factor gdb command extensions
-Date: Tue, 16 Jul 2024 12:42:29 +0100
-Message-Id: <20240716114229.329355-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.2
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp145938njk;
+        Tue, 16 Jul 2024 05:42:56 -0700 (PDT)
+X-Received: by 2002:a05:6a00:3a07:b0:70a:ffa5:41dc with SMTP id d2e1a72fcca58-70c2e9bb1ddmr2570838b3a.24.1721133776502;
+        Tue, 16 Jul 2024 05:42:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721133776; cv=none;
+        d=google.com; s=arc-20160816;
+        b=gdq3p3aZ3Z/MCDYx6x+w6cJRLPrPLj9l+jkDWvokxpGpbRpChAdanrNfxEGVnqNFRB
+         EZLDTtdox47AZYx0FOkJRDfLp0iMNjYKyTKhsmQSrvKd1rIFWSmlkwpWjnv/jQNUMJY6
+         RwAv4/1dfcq+cjR21niFT7c+e+5sB8LY9iUTgbWqA9i9emXteOVxg/r1Rx7efhrJqXMQ
+         lqu6eL7O+xrqJwPSeQ/vutuBtjrYHZy0fN6LqeYgD0Fg+/RJu6A8z2PaBOyJqSsc/ERw
+         Stw62REELtf47v9WIJ/8s59vKdG/YlH7QDBmglxGUcYlmG6W1uWAfnaCKVbJ4lw2UTb9
+         EfgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=rBKhieTfpFAHTsjnbaFrzTTNSVsaLXvtM3nLXTw8r7Y=;
+        fh=cXksCEj5HT1CFazOFM2X0HVW65Vn4/QYFEPpOqUI0xA=;
+        b=PS9HEpZrIQrFFz09dktpQdC6ei7yOwDVTi/fyC8ZgjTI2YxRQNeOTFqWG+9ieY/Vzx
+         sua6iY9EdW/LTKTFnrYkXAxYjsXf99IFjX6bQfxP4RFD5hl7O56i+PXhQNkwArDBHbx5
+         H7gOQr7mKSvlEhLmY83I/Dtoku8p0A3+XI47sMZ0m1sgls8dotAwqKOi6K6wrUP412Cg
+         uTNR3KpQptz7R0/SSZ0lqXJ7Fv5KnfllDrrVMg+Uz7vITgsEMg1jTC37ltgWRyDIsh22
+         8etK2Ir+lIBiIWiGPECwqtsBNgHvF4YbsB03NCwpqRwq03sdL56f9EYJv3C4rhR8qbZu
+         sg/A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hkuyb1IV;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 41be03b00d2f7-78e3757eb30sor2032657a12.3.2024.07.16.05.42.56
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 16 Jul 2024 05:42:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hkuyb1IV;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1721133776; x=1721738576; darn=linaro.org;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rBKhieTfpFAHTsjnbaFrzTTNSVsaLXvtM3nLXTw8r7Y=;
+        b=hkuyb1IVZItq+ewRzPCs0iM1mS8W9yd9vEYjKpmk47OpJrLZBJ/enBbZHzZORAfUzv
+         xaCc1QMOVhPbuHEmK36iEsRdjQymXmyu19caHyzfdVLELelMzCFW0ZmePFeNY1vK8CBI
+         rIQxXOQHr1Jh4DyMlyKPlNa5BCNJzu//gpAmsOSmjycQcAMp8qGRk7ZGFuCXYrg78Ows
+         6o0s3ALtqJRR43Mak7LJV10uLiMZVBq798PU476tQOWcuKlGMq+m0edrms7SoHvvALqa
+         g7bqFJqRIffu/aWrNG9gmpJgUDRsUh7/lccLkyPMKmcGd8irgLGN8mJM7tMC9Gvor8nL
+         qXzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721133776; x=1721738576;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=rBKhieTfpFAHTsjnbaFrzTTNSVsaLXvtM3nLXTw8r7Y=;
+        b=i1uGdRjpc091odNl8GhZtYzFv8ygwte556RpGxh+XU0EuB43TJn+6uRFmbQLslfMi+
+         AezcQMoPzlo32aHY1VpHivL8KyhRQp5HMh+Rnovl1K6NqgWvNH60NqSj2/ORULt8unKS
+         wsXO0AtrEgWTxNMNTxpVKAu2dCF7BnXug1AJYEr3kB2t+J7bF970OPS9AMFdUIt+bL5a
+         0xZ/OHkxqTdNoRqJ3CWv3gKk7/JR7imtad7/SERfPJk7Xu92OTTS5v5TByqNhbqcZryQ
+         LKsaT356aFDY74l7jUPrffjqfsK26vXD84OCz+ft20vm3mJjxf+0iye6VuQ3uUWaxJQS
+         ZW/g==
+X-Gm-Message-State: AOJu0YxL6BjD3j1VoEs4+vh8D2M+C1dkJihiEJ9RoItcsSZ/kLBGKHbf
+	ILGsHSBPFlg+3HKK+RWl1VQSmK+dTUDUV4KFuhWyb91Ysa500YBuM21RBK4RZbAa4Q==
+X-Google-Smtp-Source: AGHT+IFNB5QEj84aXPWCUWFi+7nkU9tR4WTy8SVIIZUMRcrtlZHmDEwkNIlWWDLleO/20pChjxuDuA==
+X-Received: by 2002:a05:6a20:7286:b0:1b5:d063:339e with SMTP id adf61e73a8af0-1c3f123a5cdmr2225247637.23.1721133776047;
+        Tue, 16 Jul 2024 05:42:56 -0700 (PDT)
+Return-Path: <gustavo.romero@linaro.org>
+Received: from [192.168.0.102] (201-1-50-128.dsl.telesp.net.br. [201.1.50.128])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fc0bc2634fsm57506685ad.127.2024.07.16.05.42.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 16 Jul 2024 05:42:55 -0700 (PDT)
+Subject: Re: [RFC PATCH] gdbstub: Re-factor gdb command extensions
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Akihiko Odaki <akihiko.odaki@daynix.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20240716114229.329355-1-alex.bennee@linaro.org>
+From: Gustavo Romero <gustavo.romero@linaro.org>
+Message-ID: <b9690162-170e-1f74-f148-0642a8503002@linaro.org>
+Date: Tue, 16 Jul 2024 09:42:51 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20240716114229.329355-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: Nypni+GQIpA1
+X-TUID: evO6opedZJy0
 
-Coverity reported a memory leak (CID 1549757) in this code and its
-admittedly rather clumsy handling of extending the command table.
-Instead of handing over a full array of the commands lets use the
-lighter weight GPtrArray and simply test for the presence of each
-entry as we go. This avoids complications of transferring ownership of
-arrays and keeps the final command entries as static entries in the
-target code.
+Hi Alex,
 
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Gustavo Bueno Romero <gustavo.romero@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- include/gdbstub/commands.h |  19 ++++--
- target/arm/internals.h     |   4 +-
- gdbstub/gdbstub.c          | 127 +++++++++++++++++++++----------------
- target/arm/gdbstub.c       |  16 ++---
- target/arm/gdbstub64.c     |  11 ++--
- 5 files changed, 95 insertions(+), 82 deletions(-)
+On 7/16/24 8:42 AM, Alex Bennée wrote:
+> Coverity reported a memory leak (CID 1549757) in this code and its
+> admittedly rather clumsy handling of extending the command table.
+> Instead of handing over a full array of the commands lets use the
+> lighter weight GPtrArray and simply test for the presence of each
+> entry as we go. This avoids complications of transferring ownership of
+> arrays and keeps the final command entries as static entries in the
+> target code.
+How did you run Coverity to find the leak? I'm wondering what's the
+quickest way to check it next time.
 
-diff --git a/include/gdbstub/commands.h b/include/gdbstub/commands.h
-index f3058f9dda..40f0514fe9 100644
---- a/include/gdbstub/commands.h
-+++ b/include/gdbstub/commands.h
-@@ -74,23 +74,28 @@ int gdb_put_packet(const char *buf);
- 
- /**
-  * gdb_extend_query_table() - Extend query table.
-- * @table: The table with the additional query packet handlers.
-- * @size: The number of handlers to be added.
-+ * @table: GPtrArray of GdbCmdParseEntry entries.
-+ *
-+ * The caller should free @table afterwards
-  */
--void gdb_extend_query_table(GdbCmdParseEntry *table, int size);
-+void gdb_extend_query_table(GPtrArray *table);
- 
- /**
-  * gdb_extend_set_table() - Extend set table.
-- * @table: The table with the additional set packet handlers.
-- * @size: The number of handlers to be added.
-+ * @table: GPtrArray of GdbCmdParseEntry entries.
-+ *
-+ * The caller should free @table afterwards
-  */
--void gdb_extend_set_table(GdbCmdParseEntry *table, int size);
-+void gdb_extend_set_table(GPtrArray *table);
- 
- /**
-  * gdb_extend_qsupported_features() - Extend the qSupported features string.
-  * @qsupported_features: The additional qSupported feature(s) string. The string
-  * should start with a semicolon and, if there are more than one feature, the
-- * features should be separate by a semiocolon.
-+ * features should be separate by a semicolon.
-+ *
-+ * The caller should free @qsupported_features afterwards if
-+ * dynamically allocated.
-  */
- void gdb_extend_qsupported_features(char *qsupported_features);
- 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index da22d04121..757b1fae92 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -359,8 +359,8 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu);
- void arm_translate_init(void);
- 
- void arm_cpu_register_gdb_commands(ARMCPU *cpu);
--void aarch64_cpu_register_gdb_commands(ARMCPU *cpu, GString *, GArray *,
--                                       GArray *);
-+void aarch64_cpu_register_gdb_commands(ARMCPU *cpu, GString *,
-+                                       GPtrArray *, GPtrArray *);
- 
- void arm_restore_state_to_opc(CPUState *cs,
-                               const TranslationBlock *tb,
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index b9ad0a063e..fd7b4ecddb 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -1615,17 +1615,16 @@ static void handle_query_thread_extra(GArray *params, void *user_ctx)
- }
- 
- static char *extended_qsupported_features;
-+
- void gdb_extend_qsupported_features(char *qsupported_features)
- {
--    /*
--     * We don't support different sets of CPU gdb features on different CPUs yet
--     * so assert the feature strings are the same on all CPUs, or is set only
--     * once (1 CPU).
--     */
--    g_assert(extended_qsupported_features == NULL ||
--             g_strcmp0(extended_qsupported_features, qsupported_features) == 0);
--
--    extended_qsupported_features = qsupported_features;
-+    if (!extended_qsupported_features) {
-+        extended_qsupported_features = g_strdup(qsupported_features);
-+    } else if (!g_strrstr(extended_qsupported_features, qsupported_features)) {
-+        char *old = extended_qsupported_features;
-+        extended_qsupported_features = g_strdup_printf("%s%s", old, qsupported_features);
-+        g_free(old);
-+    }
- }
- 
- static void handle_query_supported(GArray *params, void *user_ctx)
-@@ -1753,39 +1752,59 @@ static const GdbCmdParseEntry gdb_gen_query_set_common_table[] = {
-     },
- };
- 
--/* Compares if a set of command parsers is equal to another set of parsers. */
--static bool cmp_cmds(GdbCmdParseEntry *c, GdbCmdParseEntry *d, int size)
-+/**
-+ * extend_table() - extend one of the command tables
-+ * @table: the command table to extend (or NULL)
-+ * @extensions: a list of GdbCmdParseEntry pointers
-+ *
-+ * The entries themselves should be pointers to static const
-+ * GdbCmdParseEntry entries. If the entry is already in the table we
-+ * skip adding it again.
-+ *
-+ * Returns (a potentially freshly allocated) GPtrArray of GdbCmdParseEntry
-+ */
-+static GPtrArray * extend_table(GPtrArray *table, GPtrArray *extensions)
- {
--    for (int i = 0; i < size; i++) {
--        if (!(c[i].handler == d[i].handler &&
--            g_strcmp0(c[i].cmd, d[i].cmd) == 0 &&
--            c[i].cmd_startswith == d[i].cmd_startswith &&
--            g_strcmp0(c[i].schema, d[i].schema) == 0)) {
-+    if (!table) {
-+        table = g_ptr_array_new();
-+    }
- 
--            /* Sets are different. */
--            return false;
-+
-+    for (int i = 0; i < extensions->len; i++) {
-+        gpointer entry = g_ptr_array_index(extensions, i);
-+        if (!g_ptr_array_find(table, entry, NULL)) {
-+            g_ptr_array_add(table, entry);
-         }
-     }
- 
--    /* Sets are equal, i.e. contain the same command parsers. */
--    return true;
-+    return table;
- }
- 
--static GdbCmdParseEntry *extended_query_table;
--static int extended_query_table_size;
--void gdb_extend_query_table(GdbCmdParseEntry *table, int size)
-+/**
-+ * process_extended_table() - run through an extended command table
-+ * @table: the command table to check
-+ * @data: parameters
-+ *
-+ * returns true if the command was found and executed
-+ */
-+static bool process_extended_table(GPtrArray *table, const char *data)
- {
--    /*
--     * We don't support different sets of CPU gdb features on different CPUs yet
--     * so assert query table is the same on all CPUs, or is set only once
--     * (1 CPU).
--     */
--    g_assert(extended_query_table == NULL ||
--             (extended_query_table_size == size &&
--              cmp_cmds(extended_query_table, table, size)));
-+    for (int i = 0; i < table->len; i++) {
-+        const GdbCmdParseEntry *entry = g_ptr_array_index(table, i);
-+        if (process_string_cmd(data, entry, 1)) {
-+            return true;
-+        }
-+    }
-+    return false;
-+}
- 
--    extended_query_table = table;
--    extended_query_table_size = size;
-+
-+/* Ptr to GdbCmdParseEntry */
-+static GPtrArray *extended_query_table;
-+
-+void gdb_extend_query_table(GPtrArray *new_queries)
-+{
-+    extended_query_table = extend_table(extended_query_table, new_queries);
- }
- 
- static const GdbCmdParseEntry gdb_gen_query_table[] = {
-@@ -1880,20 +1899,12 @@ static const GdbCmdParseEntry gdb_gen_query_table[] = {
- #endif
- };
- 
--static GdbCmdParseEntry *extended_set_table;
--static int extended_set_table_size;
--void gdb_extend_set_table(GdbCmdParseEntry *table, int size)
--{
--    /*
--     * We don't support different sets of CPU gdb features on different CPUs yet
--     * so assert set table is the same on all CPUs, or is set only once (1 CPU).
--     */
--    g_assert(extended_set_table == NULL ||
--             (extended_set_table_size == size &&
--              cmp_cmds(extended_set_table, table, size)));
-+/* Ptr to GdbCmdParseEntry */
-+static GPtrArray *extended_set_table;
- 
--    extended_set_table = table;
--    extended_set_table_size = size;
-+void gdb_extend_set_table(GPtrArray *new_set)
-+{
-+    extended_set_table = extend_table(extended_set_table, new_set);
- }
- 
- static const GdbCmdParseEntry gdb_gen_set_table[] = {
-@@ -1924,26 +1935,28 @@ static const GdbCmdParseEntry gdb_gen_set_table[] = {
- 
- static void handle_gen_query(GArray *params, void *user_ctx)
- {
-+    const char *data;
-+
-     if (!params->len) {
-         return;
-     }
- 
--    if (process_string_cmd(gdb_get_cmd_param(params, 0)->data,
-+    data = gdb_get_cmd_param(params, 0)->data;
-+
-+    if (process_string_cmd(data,
-                            gdb_gen_query_set_common_table,
-                            ARRAY_SIZE(gdb_gen_query_set_common_table))) {
-         return;
-     }
- 
--    if (process_string_cmd(gdb_get_cmd_param(params, 0)->data,
-+    if (process_string_cmd(data,
-                            gdb_gen_query_table,
-                            ARRAY_SIZE(gdb_gen_query_table))) {
-         return;
-     }
- 
-     if (extended_query_table &&
--        process_string_cmd(gdb_get_cmd_param(params, 0)->data,
--                           extended_query_table,
--                           extended_query_table_size)) {
-+        process_extended_table(extended_query_table, data)) {
-         return;
-     }
- 
-@@ -1953,26 +1966,28 @@ static void handle_gen_query(GArray *params, void *user_ctx)
- 
- static void handle_gen_set(GArray *params, void *user_ctx)
- {
-+    const char *data;
-+
-     if (!params->len) {
-         return;
-     }
- 
--    if (process_string_cmd(gdb_get_cmd_param(params, 0)->data,
-+    data = gdb_get_cmd_param(params, 0)->data;
-+
-+    if (process_string_cmd(data,
-                            gdb_gen_query_set_common_table,
-                            ARRAY_SIZE(gdb_gen_query_set_common_table))) {
-         return;
-     }
- 
--    if (process_string_cmd(gdb_get_cmd_param(params, 0)->data,
-+    if (process_string_cmd(data,
-                            gdb_gen_set_table,
-                            ARRAY_SIZE(gdb_gen_set_table))) {
-         return;
-     }
- 
-     if (extended_set_table &&
--        process_string_cmd(gdb_get_cmd_param(params, 0)->data,
--                           extended_set_table,
--                           extended_set_table_size)) {
-+        process_extended_table(extended_set_table, data)) {
-         return;
-     }
- 
-diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-index c3a9b5eb1e..554b8736bb 100644
---- a/target/arm/gdbstub.c
-+++ b/target/arm/gdbstub.c
-@@ -477,11 +477,9 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs,
- 
- void arm_cpu_register_gdb_commands(ARMCPU *cpu)
- {
--    GArray *query_table =
--        g_array_new(FALSE, FALSE, sizeof(GdbCmdParseEntry));
--    GArray *set_table =
--        g_array_new(FALSE, FALSE, sizeof(GdbCmdParseEntry));
--    GString *qsupported_features = g_string_new(NULL);
-+    g_autoptr(GPtrArray) query_table = g_ptr_array_new();
-+    g_autoptr(GPtrArray) set_table = g_ptr_array_new();
-+    g_autoptr(GString) qsupported_features = g_string_new(NULL);
- 
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-     #ifdef TARGET_AARCH64
-@@ -492,16 +490,12 @@ void arm_cpu_register_gdb_commands(ARMCPU *cpu)
- 
-     /* Set arch-specific handlers for 'q' commands. */
-     if (query_table->len) {
--        gdb_extend_query_table(&g_array_index(query_table,
--                                              GdbCmdParseEntry, 0),
--                                              query_table->len);
-+        gdb_extend_query_table(query_table);
-     }
- 
-     /* Set arch-specific handlers for 'Q' commands. */
-     if (set_table->len) {
--        gdb_extend_set_table(&g_array_index(set_table,
--                             GdbCmdParseEntry, 0),
--                             set_table->len);
-+        gdb_extend_set_table(set_table);
-     }
- 
-     /* Set arch-specific qSupported feature. */
-diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-index 2e2bc2700b..c8cef8cbc0 100644
---- a/target/arm/gdbstub64.c
-+++ b/target/arm/gdbstub64.c
-@@ -564,7 +564,7 @@ enum Command {
-     NUM_CMDS
- };
- 
--static GdbCmdParseEntry cmd_handler_table[NUM_CMDS] = {
-+static const GdbCmdParseEntry cmd_handler_table[NUM_CMDS] = {
-     [qMemTags] = {
-         .handler = handle_q_memtag,
-         .cmd_startswith = true,
-@@ -590,17 +590,16 @@ static GdbCmdParseEntry cmd_handler_table[NUM_CMDS] = {
- #endif /* CONFIG_USER_ONLY */
- 
- void aarch64_cpu_register_gdb_commands(ARMCPU *cpu, GString *qsupported,
--                                       GArray *qtable, GArray *stable)
-+                                       GPtrArray *qtable, GPtrArray *stable)
- {
- #ifdef CONFIG_USER_ONLY
-     /* MTE */
-     if (cpu_isar_feature(aa64_mte, cpu)) {
-         g_string_append(qsupported, ";memory-tagging+");
- 
--        g_array_append_val(qtable, cmd_handler_table[qMemTags]);
--        g_array_append_val(qtable, cmd_handler_table[qIsAddressTagged]);
--
--        g_array_append_val(stable, cmd_handler_table[QMemTags]);
-+        g_ptr_array_add(qtable, (gpointer) &cmd_handler_table[qMemTags]);
-+        g_ptr_array_add(qtable, (gpointer) &cmd_handler_table[qIsAddressTagged]);
-+        g_ptr_array_add(stable, (gpointer) &cmd_handler_table[QMemTags]);
-     }
- #endif
- }
--- 
-2.39.2
+
+> Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+> Cc: Gustavo Bueno Romero <gustavo.romero@linaro.org>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+
+Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+
+
+Cheers,
+Gustavo

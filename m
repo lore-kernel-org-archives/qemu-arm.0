@@ -1,473 +1,327 @@
-Received: by 2002:a17:504:1dd4:b0:1be9:327d:8ee3 with SMTP id b20csp2184541nji;
-        Mon, 15 Jul 2024 04:27:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUJtyqidk3yN3Rd+HV/z7B7LMurkAX+nv1CRkPVyUOp3vYTt4CAl0u9EBQm2v1ik1NHqXtdj8cvj43CDsmKErt6WW1JR6ZB
-X-Google-Smtp-Source: AGHT+IHwUcUaN1nVAR1PvsUrciB0XeiRYq32qPUK1grEpo56Eu0E/bWIaXwWw7JNMAn5VOCeRgUR
-X-Received: by 2002:a25:8804:0:b0:e03:4fbb:9c71 with SMTP id 3f1490d57ef6-e041b079f13mr20940567276.30.1721042877189;
-        Mon, 15 Jul 2024 04:27:57 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1721042877; cv=pass;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp228322njk;
+        Tue, 16 Jul 2024 07:53:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUdNr8i1TMRUeyhuy+KLv9kU1CRTb1t+EWm+C1HGSMeZgbWXaCf3K/KyZEOHL+IECUH8cCiOAGaH6hgTHX+GlgO2sg0DKov
+X-Google-Smtp-Source: AGHT+IGfEUyepmhbKoeNIKh6ECjsQINyqPMDAOmIs/3EMhZBaobOBZs6iKQC0hwCYrvAZ5JGgc1T
+X-Received: by 2002:a05:6214:19ef:b0:6b5:4e8c:1be0 with SMTP id 6a1803df08f44-6b77f3b9f33mr25756996d6.16.1721141600757;
+        Tue, 16 Jul 2024 07:53:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721141600; cv=none;
         d=google.com; s=arc-20160816;
-        b=VLQ1L3GzqA9/Q1MxrWuqMfNGOg2ENOsfrxPwCFNaVQ6Np1UOCihlgOz/vXiY/j2eV0
-         P73d4YlxaRVhQRlCnGNc/EelGg8mQKFT64LV8D5GwMPIsNNN+85Ha/sXyuHZ4qOzPkEr
-         y+I1f1ZuC+45l+W5+G6Ig9zNtSLIDtZyZvKgdcO99zSN5mxAGCV7E5CHSRp5S/xBVUdL
-         +oMi93K/ZFAwtZG4+f1lMl8x6KgAfV2eEeZ5zvx/u1CsYL/Ksfsb6mjGkEITmZ+PKN4m
-         l3L1mCUt8I82O33ZWqGCXFtqGKRSqqa9TvEg93f8TP8JIJ2+RkwgAxLTZoRoeB8evil6
-         JmbQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:date:message-id:dkim-signature;
-        bh=n06CeOzLU8y7qAnwKlKg4Copl4WgNLsWEnv7C38w3eU=;
-        fh=IAUQ0mA/FYKTfn0VL050H9tzaeglgkkmbfDK/ojfpwQ=;
-        b=LTFQsiurDICevh6yw9StIhtkEUvwzKPv3wDOZyqcBd3d+xOdKFIirWn3JayCp4Yx0S
-         itCyMVYHO9zr8u4cR1aumvGG58Ru6HIAZP3uxIR18crw4AtzigVtk621lloTlReiS3vh
-         8mrlMB0riPiuEbpc0tsIiwmVOtI4Jj2Woup4sc7u29+204rrOfU9fx6fQFNRrc8j8Ap8
-         8QLu3milIIt1FfbrfS2Ltmg/wqm8AT0kW0kqAlE+MpU+dZ8Yyv8kj/aI+DisMysB9kjK
-         PXgB5IFmB11R/resVFctcbdUnaVQGJbFL+Vum1sPEPHer5M8RAe6MhKUuHNk41/jPXIZ
-         4fmA==;
+        b=I8t11WHUx61ayGRvLUB6UgL3rXYrEaADZV+4MX7J7HoH9Spp7I8BRT7bz6mwjss4Q/
+         91vjTvb8m+XXssgaULtwxQkC9koyUD8RJ3s2bMv3w3pw0Mq88+TXf4W2rVxlEaiTKSdk
+         JMGx1qqEKINJw9wI+LAsJrj1zBdIvOT6xvypkzzH0tAeih7+YV8T9cTO0ct2o6u3sv8o
+         1K0msJu27emXiC8aIaQOkwJLnKcoKyB0D2IrF8xVXL+9jOTSIvQ+29amz5WWXa5V3yCY
+         7LzsBGRIdJdS+xllAQqGh+KSDW6PoOacRdhoKWhHHUa5NAkO7rRFK4kXBLPA1OMfH8Vt
+         5fAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=nYk17DpTXgnKJoJV13J9NrBKiIDX5Oo+kvtC/bXXRxA=;
+        fh=WxGmD0yiBccbk2SDXKJWT4qUkj7tv5QorSKdGC1LXEU=;
+        b=ogUYUbr7wduYa1d9EAUmbseJR3e2MezzNmx7VPA+Eosn784F5PpWR+N/753hlq/dQZ
+         9ru3i80k1AOAlopyYxeZbL9yP6tryMmcsfm3aaaCE461AVSFWcbI4MGFoaCwgMURMUBd
+         A9LempDQDuZLsimRyehGfIV3Rb60l4L45Ul9n0NeYbBYcRDiSb3YLrZuFBu6voCDGcWi
+         R38tMe2X5zlRlx+Dww45k6raGq44A+DW3K+jh2U64KgFnDhjdpQAyf3LLtfZ4N1vUC9s
+         zDO5v1VXWgKTN7A35HDCzsE7ydnVLr2HEL3JPK7916vqLxx8gRi8jm9fYmmjGQB7PD/j
+         GT9w==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=TVURFzDJ;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b761a3bee6si50512476d6.420.2024.07.15.04.27.57
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W02zI2DX;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b76194f328si77992326d6.37.2024.07.16.07.53.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jul 2024 04:27:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 16 Jul 2024 07:53:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@os.amperecomputing.com header.s=selector2 header.b=TVURFzDJ;
-       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sTJru-00065u-Kh; Mon, 15 Jul 2024 07:27:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gankulkarni@os.amperecomputing.com>)
- id 1sTJrq-00061X-H3; Mon, 15 Jul 2024 07:27:42 -0400
-Received: from mail-westcentralusazlp170100000.outbound.protection.outlook.com
- ([2a01:111:f403:c112::] helo=CY4PR05CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gankulkarni@os.amperecomputing.com>)
- id 1sTJrc-0001Br-QZ; Mon, 15 Jul 2024 07:27:39 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=u8A0oaciG7mvNKBwKB84cYa/7xMS4IU6klv2UsCOq++1og0LtbIzB4jIO03Wss5T7mm2lU84GHlfmF8d7GIJJAcBfX291f21AnX3MgrxeyjqxTLiOXaAdBFfNm2tIgnq5wEFYTZY6EuUyRG3+pNz/aNEsylOQfN0XYnc+IE3SUM949EbBpjiduVTJYRoK7Z950ce6nKoMSW7SmVr+jPZiv+KkWjkooWDa5V9B8yCxWu6r3TPLu5m2hVjaCPEp8u+SorEOUn8UZC6K1N0SAiMd9yCF9o7K80ioz+NqyNKT3dJqIA2hHqgxsFRtZR3xwGJPp2EhWV64QQVFHsPY1DDPw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=n06CeOzLU8y7qAnwKlKg4Copl4WgNLsWEnv7C38w3eU=;
- b=Jm7+D/6qSDg+qnpTY2/x3EzzwZWqEJPUF6ESaZ1EHxNls6/W44rA9W12I2VDmJicvrN6vKfigkrcr4twKPHpVWNhM7bItvHNZjvStoLZHUCcyS2OIctD0pNdENJbOo0/I9wpjJJUoSsli+9rUR3Z2dzgGsQCJsm97dkepl3nEwXt8U6iDHVVJuvyeIOSa+268PELSmfKFn0X86MpntbgRN6s/BTtoriVYJdzUzJ3wLAYuPPwO8WUv2bwQwUpU23sOTBvvxIkETqLoIrW5X7KY1cqJRl7PZk7AYNdZjL7OGkA/ol0GJ/wMkYdznxqbEafh/Xno80OKYzx6DEP6pAz5g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=os.amperecomputing.com; dkim=pass
- header.d=os.amperecomputing.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=os.amperecomputing.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=n06CeOzLU8y7qAnwKlKg4Copl4WgNLsWEnv7C38w3eU=;
- b=TVURFzDJCUtiFPmynCPF3UnJH5rFXwTzKx6EOJv86ncjegMRoF6rrlOYV/aHhlbzQFKtX4GhYA3XBhhEjSCho63U5e5wnfVaMKTJW+RlRl7XHjucU2hnnnUiedlqtMDw4w9QV5YalEwaucP349FAlO++/88nfT48lhtIHugPfts=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=os.amperecomputing.com;
-Received: from SJ2PR01MB8101.prod.exchangelabs.com (2603:10b6:a03:4f6::10) by
- LV8PR01MB8480.prod.exchangelabs.com (2603:10b6:408:18e::20) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7762.27; Mon, 15 Jul 2024 11:27:19 +0000
-Received: from SJ2PR01MB8101.prod.exchangelabs.com
- ([fe80::292:6d9c:eb9a:95c9]) by SJ2PR01MB8101.prod.exchangelabs.com
- ([fe80::292:6d9c:eb9a:95c9%3]) with mapi id 15.20.7762.020; Mon, 15 Jul 2024
- 11:27:19 +0000
-Message-ID: <2b4bef01-5bcc-458c-9110-d2debe3f3620@os.amperecomputing.com>
-Date: Mon, 15 Jul 2024 16:57:11 +0530
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm/kvm: add support for MTE
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org
-Cc: darren@os.amperecomputing.com, Cornelia Huck <cohuck@redhat.com>
-References: <20240709060448.251881-1-gankulkarni@os.amperecomputing.com>
-Content-Language: en-US
-From: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
-In-Reply-To: <20240709060448.251881-1-gankulkarni@os.amperecomputing.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MA0PR01CA0034.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a01:81::8) To SJ2PR01MB8101.prod.exchangelabs.com
- (2603:10b6:a03:4f6::10)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=W02zI2DX;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1721141600;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nYk17DpTXgnKJoJV13J9NrBKiIDX5Oo+kvtC/bXXRxA=;
+	b=W02zI2DX80USQIel3vaHZRcT+xGfXT0scpXUEMG7JlHRQRWQzvrRrP8UvM6Gfy3GhZbbW9
+	/C0Cfh+VfeKrxOlxBDyV812LduWHbnKWoiJsvIz9hB3KAiM8u41/rrOKwhJyU+GKTzQET/
+	Y4qj3SDluDpNsWDd424ghMz4n6GxZoU=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-310-CNtJXjOIM-CzJVeW7Vz8Vg-1; Tue, 16 Jul 2024 10:53:19 -0400
+X-MC-Unique: CNtJXjOIM-CzJVeW7Vz8Vg-1
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-4279418eb2bso37144625e9.1
+        for <alex.bennee@linaro.org>; Tue, 16 Jul 2024 07:53:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721141598; x=1721746398;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=nYk17DpTXgnKJoJV13J9NrBKiIDX5Oo+kvtC/bXXRxA=;
+        b=CwYWxw9QYL47LXZFfBkdTHVqqn8wZXbmJmtIyzU2twyQ7z1XqRCyR87FQs0YSuO3q7
+         TIS//0SpR+1oE6XkS//1ej89FdXgwV/8LH1/oDhv8MRSKx7MF3IrpVcg9zOd97qY6WiF
+         EXkLNEGQAbGsdsU0Ywebtpt2ZqlygkWm3hUFHVuu5VXhl53Drs0he6D89JKFeIA5wTtK
+         w61pbOuIknfyi7iAEHI77vFGy+pgAdrrtctECHnCWT+ew/ynXbnJH2RFlz+4TIs0Ti3Q
+         6+MhJf7y9EmgGl099TTW3RU5x1Ks3hwp9c38Qgzr0+BilyLqcPFb0ZUQ/YqYBvCyUrx2
+         Z8IQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWbqLJRWzej9FmpFxH3kiekGFeml4MzUgCb/j6BwLvH1qNkWc6kyRRwTjglzmXNglekAQKiPBBDKWrYEUzFhoPrMf/4tqNi
+X-Gm-Message-State: AOJu0YxGcj9VnUbJrjlplrv5LVSvq4BahzLCobRtyZ1aMw+HAVjk25Lr
+	UqkfVJgVMHG7IpZaMZ1ouBQTjzvckfEQXy7nhtEs0bHwwoL8TWWePdS0gXf2CsUAYUWuJ/07rCU
+	3n9YDjHRVFxBpWJIcBb4DslzbvqVlhrTMj9lUB3Uog0uhnFJSMaZZ4Q==
+X-Received: by 2002:a05:600c:4e4a:b0:426:618f:1a31 with SMTP id 5b1f17b1804b1-427ba71dae7mr17135805e9.34.1721141597746;
+        Tue, 16 Jul 2024 07:53:17 -0700 (PDT)
+X-Received: by 2002:a05:600c:4e4a:b0:426:618f:1a31 with SMTP id 5b1f17b1804b1-427ba71dae7mr17135605e9.34.1721141597279;
+        Tue, 16 Jul 2024 07:53:17 -0700 (PDT)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4279f2cc306sm167570505e9.30.2024.07.16.07.53.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 16 Jul 2024 07:53:16 -0700 (PDT)
+Date: Tue, 16 Jul 2024 16:53:15 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <maz@kernel.org>,
+ <jean-philippe@linaro.org>, <jonathan.cameron@huawei.com>,
+ <lpieralisi@kernel.org>, <peter.maydell@linaro.org>,
+ <richard.henderson@linaro.org>, <andrew.jones@linux.dev>,
+ <david@redhat.com>, <philmd@linaro.org>, <eric.auger@redhat.com>,
+ <oliver.upton@linux.dev>, <pbonzini@redhat.com>, <mst@redhat.com>,
+ <will@kernel.org>, <gshan@redhat.com>, <rafael@kernel.org>,
+ <alex.bennee@linaro.org>, <linux@armlinux.org.uk>,
+ <darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
+ <vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
+ <miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>,
+ <zhukeqian1@huawei.com>, <wangxiongfeng2@huawei.com>,
+ <wangyanan55@huawei.com>, <jiakernel2@gmail.com>, <maobibo@loongson.cn>,
+ <lixianglai@loongson.cn>, <npiggin@gmail.com>, <harshpb@linux.ibm.com>,
+ <linuxarm@huawei.com>, Shaoqin Huang <shahuang@redhat.com>, Zhao Liu
+ <zhao1.liu@intel.com>
+Subject: Re: [PATCH V16 3/7] hw/acpi: Update ACPI GED framework to support
+ vCPU Hotplug
+Message-ID: <20240716165315.4862e1a0@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240716111502.202344-4-salil.mehta@huawei.com>
+References: <20240716111502.202344-1-salil.mehta@huawei.com>
+	<20240716111502.202344-4-salil.mehta@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ2PR01MB8101:EE_|LV8PR01MB8480:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0ca7104d-d889-4fc3-ddba-08dca4c11660
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?MGpjQzN3MlJSQVlhdTJxT1Zkbnp5RjlNOEhWV0hVVFl5dFZDOUhicG9iNkVo?=
- =?utf-8?B?UndBd0lCdGF3NENicGc5dkNRSW50T0M0b2tjb3NQWTRWWWpmRk8vNkxKOSto?=
- =?utf-8?B?dFRSdm91T2xVdGROK3UxR3NaVHJkM0V4a3VBTDRBeitaL1h3amVVL2xqN1VH?=
- =?utf-8?B?eGtxMGEvZy9FblNVRmc2KzNwSDVYM0RHYzVTaUQ1YUw3aTN0N0xsaTdTSzdL?=
- =?utf-8?B?cURlMXhiNmROaHFoYzEwUm9uWDluZHFCQ0FwNjhWd21PakUyWlRCNjVLMGxr?=
- =?utf-8?B?dWt4VTJuemMxam4rRTdZbEJlcmdSZWxtSVRqWkxZdFNha1hYN1I1K3BQUGUz?=
- =?utf-8?B?SjJyd1FaUm40TVcwSGUySWZxWHpYbm9zRjB0aWNvbjJpUjhqQkMySjRIYUxW?=
- =?utf-8?B?dGRsS2RTZHNZNUVKS1g1VytrNjl0VkZUTVVQbWJPRCtObzZpYWh0Nm5EdWRY?=
- =?utf-8?B?eU5OalE2QjhXS0kzazlQdGJuNS9IUkt3d2lMNENwSjlidmlwUnFIUzlCRXhm?=
- =?utf-8?B?NG10dEpvOHd6QzhrQ3BlaHhSSkh3MHdrdFJtRi9UVGJ0ZGlBajdoMUJHUFdV?=
- =?utf-8?B?VWpjVXVXSG9JcXAwQ0E1bjI4U0ZQcmVyTFVSN3A2SjBsdlp2Tlg5RnBzS2lj?=
- =?utf-8?B?RmlocE1acktQMEZnT1l1V3dPOEU3VThNK2I3L2pKWEIxK0tpelpTRXFrdUdF?=
- =?utf-8?B?b3A2c0E5ckxHWEN6bmpSMnJPVE00dlZsNmd3bTBVcUh3V2lydms1bWtPT1lD?=
- =?utf-8?B?OFhUcVA2ZS9neDd3N2RVUFBrWXpQeUMyanFCSWpkK0tJeCt2VFB0bklmL20z?=
- =?utf-8?B?ak02MlVvb3BaUDYwQUNPeVFMVi8yUWpjWDg5SXYrZ1RWVDZaRDdVU01Gb05i?=
- =?utf-8?B?VFh4bDBMcDVrMTRNRE41TmM1cXI2elhBYlRIdG44eGlKZW4zR05ia2N3VG13?=
- =?utf-8?B?ems1QmcrTW9ZTjBxQVZvZDNsWmtTMmNSQ1ZzazEvemZHVzB5UzhTbnZnMTEx?=
- =?utf-8?B?SW5VZ2RtNXZVNDZhd2dybno3b1doOWEreFl3TmZBaThUcW9vOVE5ZjIyZ0d1?=
- =?utf-8?B?V1ZINEIvaFpGM01ROUhTbDB1NDJsb0JWQzU4L1hIa21LdWdvUDdQNWJnMXJJ?=
- =?utf-8?B?RmMzbURDeUxxZDYzRnJiTDVzekRudmZacHdtOW55MzkrdzBPNmtiQTRwWWJv?=
- =?utf-8?B?TTBKNDhuMVNaQTVhbzQ2QkxydnEzOFZqR3M2TGlhSW1RcEMxck5kVE81YVhr?=
- =?utf-8?B?dnUwNnF6Q1dLZThMN0xEVHVoNG5rM1h5bzNvWlpYSVVYVnhNWW51RlB1Nzkv?=
- =?utf-8?B?MVBReUJmTExJK1ZVYnhrVE9qSURTZW1GUDlxYkRIeXJvVk9oTUdDdkFESitX?=
- =?utf-8?B?RGF3OVN2cWdEVFN3UmxmWlFvRzV0a2RodFpFZ3I0OHhIZkdscjE1ZXFIZkR5?=
- =?utf-8?B?bkU5NWRNN1hrc1lGNDY5U1czd0dtekhJVnVWampaclpGciswblc2T01peDJJ?=
- =?utf-8?B?M3ViNW0yeGVTSWV3Mkc4YjloRk9iSXBZdUNTcnlqVHo0SXg0K0hzbmxGME5H?=
- =?utf-8?B?bXpnOGFQNFdCZCtKOFlGK1RzRVFxYnJFak4zYUZhUkwvRkZIVUQ5eENYMWtG?=
- =?utf-8?B?bk01Zm01WThpTUZkbTJzd1EzSUl4K011dW10MGJkSUlWd2dqM3VFS0I4Q2lj?=
- =?utf-8?B?ejlaTFV5NHdVWFhvNXVrZG5oTUpIKzZkVnd5YmtvYVo5RUlUbmhJTy9TbFN3?=
- =?utf-8?B?ZGdXQUNqT2dBZmF2WGJVUlZVSE16R01vT0RndHQwUzl5d2xZcUVPVWJaM1F2?=
- =?utf-8?B?MzQ4dllmR0pRYmFyTkd1Zz09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ2PR01MB8101.prod.exchangelabs.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016); DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Q0NHSVNFdHY2NGdGRzNSam9pL0x3anRjWmQ2Wnhxa3NZUXErems2Qko2ZEZl?=
- =?utf-8?B?V3R2Y3B5RndOQm1NcDZEUWpzTmN6ZWVETCs2akZqNzBXaVdDRHU5cm9Ea0xV?=
- =?utf-8?B?Q1IwMFZ6RVZ5NnRKajNObkNuR1c0QmcwWlVacHV3SDVDdmtpUnlwdHlRaDhr?=
- =?utf-8?B?RG1jdGxQOWUvTWRDMDlCM1ZoUy8vZnhwck1XTUF2VUZtQ24rQXphK0FrbVg3?=
- =?utf-8?B?L05PM210cFhxQ2lTcHU3QmZMajVNbEMvYXNiOTl5SzFncUFweVV2bjFSaWNC?=
- =?utf-8?B?c3MyTjdkTEw4ZmFIbzZSb2dieE5iaXE3a1pFeXEvek9CZFJ2eGx2OHhQbEZu?=
- =?utf-8?B?Z3ZWK04yejd6aFNLaHpoMThlWVVOTkNCQU5DSk9tbG0zd2QwbENBZ1FMc2RH?=
- =?utf-8?B?N1FKVGd3WlNxb0lucGVmb0RzTmZNdi9YQ3BqMUhDLzRTU3U2aEJVNit2R3ZI?=
- =?utf-8?B?ZDFleEtOK3VNSWN6QW9TdTJ2ejVUbWtvenJVRTNhUjN5SEdDb2t6djh2UDFD?=
- =?utf-8?B?ZldZalR3ZGxmL09VTEFaRnNoUzZSVDBPQnFQYzIya2JsSHU4MVBKSHdwOWpF?=
- =?utf-8?B?SXBPR0RHUExmeXM3ajFyeEUwNHU3NXI2RjZrWWF6K1dHcUowV1hoNWpLRUZD?=
- =?utf-8?B?U2NDTGl6SGR4UmhxbHRZdHFiZGRFa0ZYVkViTlBZSFJMNjk0b3RsNHBybVgx?=
- =?utf-8?B?RXZwZFBMOWJGU3lxQWMvRzJyZ1NQWGpzUW9PUWh4R0Nzd1dYK1ZQUWZ0QlBN?=
- =?utf-8?B?K0lYd0lOeVJRSUM5NTFlVC80ZDIwVkdvYUsza0lRWnYxSFhGQWNQN2FPRnRZ?=
- =?utf-8?B?NmQ3RERKWVhNb21zZ1R5UnYycnNlL29nK2pmZEtrWTVXUy9kRk5zVDQ2bkI3?=
- =?utf-8?B?NFNKdlRBSTlJUStTUlUwcUhjZllaR0FtUjNBWWY1ckMyb1NDdlBvSmt4TFo3?=
- =?utf-8?B?SUo1MjZOMXFOSUpaNVUrZzE0ejROSmVLZ1VwZ0MxK1hGcFJha2FJbDQ2ZlVC?=
- =?utf-8?B?ZmlMajBCYlExbXBuMzE3cGdLaXRQNmt4UWFMNlltYUZUQWwzdXdJeDJUYmc0?=
- =?utf-8?B?MmxUaUh4dzRjc1VUZHhHSXJpalFPSkFCc1dLL3Zya0VQbWlieEpxMmZBZXRt?=
- =?utf-8?B?RmJTaDdKQXdORnZyTGNRNEZwaDdhVVhLZllIYkhjcVE4d2E1VnNOQzhWdlpK?=
- =?utf-8?B?YThJbXM0TktHOXBQV0ZYb2RFaGZRNkJpQjJKU1ZCY0pkMjhONTVYclNrSUMw?=
- =?utf-8?B?Y01hV3lURVNvRVREcnFGaFlGeVhadlpJSk5NdnlkYTZjUUROQzFNbzNHRUdv?=
- =?utf-8?B?aHdUVmJXZis4ZTA2T0twUGJEbFhxWXlnMHZYOEFIKzh2UWNpbmlqQWJJL0Iw?=
- =?utf-8?B?MnlSUzRxdjBnSktDek4wWjV2cVBsaVgxd0JaZFd0dkxBN1pZMis1bWZtdXda?=
- =?utf-8?B?VGh5ZUt6RHVMWGU0VTRvbzB5RDBBSGd1cmxxNGlkK3F0YnkxY2c1UFpkTDIz?=
- =?utf-8?B?NTRPSXN5U1Z3SGU0U25Dam05SjlPOVgxa3VRQVJqOFh3b2NtRGJaYjdienV1?=
- =?utf-8?B?TmEzWmdYR1BueUtZQ2JsNEJidGF3UXY5V2w5R1RRd1BmYWFlbXhyQTFmd3dm?=
- =?utf-8?B?ZFQ4SXB6aERNZk5vOVRrbG5GckhNeWJBeEVUV2Y5TUpudEJBRG4xQjhlTE53?=
- =?utf-8?B?S3B3VXJkQ0dCQTdsWUtuS0pzUStoNDdEa0JlY3pPWU5mR2c5VnFtdmVrZFZV?=
- =?utf-8?B?TTlZM3VmRmRMRVBuTWx5aEM3WkhrdFRSSE4ydmhqMUFnRk03M3hHUVNYV0I3?=
- =?utf-8?B?S05DRjNWMnVuTDk5ZlhtcEQyMnhWMXhLUXRUZjE4bnhGTHhLdWhnRHNJbE1M?=
- =?utf-8?B?WE82SUtlU0VFNjg5SGJXVTZYS0RKNTZXRmZEbTUyMVMzNGQrcXNlT0UrYUN0?=
- =?utf-8?B?MnROTzhXUGwwZG5KRDlwMm9nUzAvV0ZKQ2lldnFpZlQzNU5BM0RuWkxYQXJr?=
- =?utf-8?B?eTVoVVNrRFliclVTTExhakJuR3BRS1gzUlgrRnZoa2wyd1hncUdLT0t1QjJ0?=
- =?utf-8?B?cTk1K0ZtbUl3bkZMNUtGTW84dUdXUk5LV1MwQ3ZnbEtNbGNYUlhHYi8rMkVn?=
- =?utf-8?B?QW5oL2FvTUVMcUpWVTVnNXhFTHhjNXh5bVhIckg0QUl0a0wyOE9qZGVxdXRn?=
- =?utf-8?Q?g8ytULu1ZK0qVTSkMuwNwaM=3D?=
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0ca7104d-d889-4fc3-ddba-08dca4c11660
-X-MS-Exchange-CrossTenant-AuthSource: SJ2PR01MB8101.prod.exchangelabs.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jul 2024 11:27:19.3951 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: GlBkHsUBDD/4H753rZfPUYI6CxUBkn6megWWwrqrHEmzdlM2KMorcZtVCqQ4iXTbYBT5rcUazoUzYp9BjWIsN9EUunDlW3iUDNnjGPtun/guC1OQ7kAYVQfPhyMhL+C6
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR01MB8480
-Received-SPF: pass client-ip=2a01:111:f403:c112::;
- envelope-from=gankulkarni@os.amperecomputing.com;
- helo=CY4PR05CU001.outbound.protection.outlook.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vNTygPXh4id9
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: 9r1mqlob0PiG
 
+On Tue, 16 Jul 2024 12:14:58 +0100
+Salil Mehta <salil.mehta@huawei.com> wrote:
 
-Hi Peter/Richard,
+> ACPI GED (as described in the ACPI 6.4 spec) uses an interrupt listed in the
+> _CRS object of GED to intimate OSPM about an event. Later then demultiplexes the
+> notified event by evaluating ACPI _EVT method to know the type of event. Use
+> ACPI GED to also notify the guest kernel about any CPU hot(un)plug events.
+> 
+> Note, GED interface is used by many hotplug events like memory hotplug, NVDIMM
+> hotplug and non-hotplug events like system power down event. Each of these can
+> be selected using a bit in the 32 bit GED IO interface. A bit has been reserved
+> for the CPU hotplug event.
+> 
+> ACPI CPU hotplug related initialization should only happen if ACPI_CPU_HOTPLUG
+> support has been enabled for particular architecture. Add cpu_hotplug_hw_init()
+> stub to avoid compilation break.
+> 
+> Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Reviewed-by: Gavin Shan <gshan@redhat.com>
+> Reviewed-by: David Hildenbrand <david@redhat.com>
+> Reviewed-by: Shaoqin Huang <shahuang@redhat.com>
+> Tested-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+> Tested-by: Xianglai Li <lixianglai@loongson.cn>
+> Tested-by: Miguel Luis <miguel.luis@oracle.com>
+> Reviewed-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+> Tested-by: Zhao Liu <zhao1.liu@intel.com>
+> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
-On 09-07-2024 11:34 am, Ganapatrao Kulkarni wrote:
-> Extend the 'mte' property for the virt machine to cover KVM as
-> well. For KVM, we don't allocate tag memory, but instead enable
-> the capability.
-> 
-> If MTE has been enabled, we need to disable migration, as we do not
-> yet have a way to migrate the tags as well. Therefore, MTE will stay
-> off with KVM unless requested explicitly.
-> 
-> This patch is rework of commit b320e21c48ce64853904bea6631c0158cc2ef227
-> which broke TCG since it made the TCG -cpu max
-> report the presence of MTE to the guest even if the board hadn't
-> enabled MTE by wiring up the tag RAM. This meant that if the guest
-> then tried to use MTE QEMU would segfault accessing the
-> non-existent tag RAM.
-> 
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> Signed-off-by: Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>
+I haven't tested it but looks fine to me,
+it missing migration bits, but as long as there is no actual users
+in this release it could be a patch on top later on.
+
+Acked-by: Igor Mammedov <imammedo@redhat.com>
+
 > ---
+>  docs/specs/acpi_hw_reduced_hotplug.rst |  3 +-
+>  hw/acpi/acpi-cpu-hotplug-stub.c        |  6 ++++
+>  hw/acpi/generic_event_device.c         | 47 ++++++++++++++++++++++++++
+>  include/hw/acpi/generic_event_device.h |  4 +++
+>  4 files changed, 59 insertions(+), 1 deletion(-)
 > 
-> This patch is boot tested on ARM64 with KVM and on X86 with TCG for mte=on
-> and default case(no mte).
-
-Any comments on this patch?
-Can this patch be merged in this merge cycle/window?
-
-> 
->   hw/arm/virt.c        | 72 ++++++++++++++++++++++++++------------------
->   target/arm/cpu.h     |  1 +
->   target/arm/kvm.c     | 40 ++++++++++++++++++++++++
->   target/arm/kvm_arm.h | 19 ++++++++++++
->   4 files changed, 102 insertions(+), 30 deletions(-)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index b0c68d66a3..cc9db79ec3 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2206,7 +2206,7 @@ static void machvirt_init(MachineState *machine)
->           exit(1);
->       }
->   
-> -    if (vms->mte && (kvm_enabled() || hvf_enabled())) {
-> +    if (vms->mte && hvf_enabled()) {
->           error_report("mach-virt: %s does not support providing "
->                        "MTE to the guest CPU",
->                        current_accel_name());
-> @@ -2276,39 +2276,51 @@ static void machvirt_init(MachineState *machine)
->           }
->   
->           if (vms->mte) {
-> -            /* Create the memory region only once, but link to all cpus. */
-> -            if (!tag_sysmem) {
-> -                /*
-> -                 * The property exists only if MemTag is supported.
-> -                 * If it is, we must allocate the ram to back that up.
-> -                 */
-> -                if (!object_property_find(cpuobj, "tag-memory")) {
-> -                    error_report("MTE requested, but not supported "
-> -                                 "by the guest CPU");
-> -                    exit(1);
-> +            if (tcg_enabled()) {
-> +                /* Create the memory region only once, but link to all cpus. */
-> +                if (!tag_sysmem) {
-> +                    /*
-> +                     * The property exists only if MemTag is supported.
-> +                     * If it is, we must allocate the ram to back that up.
-> +                     */
-> +                    if (!object_property_find(cpuobj, "tag-memory")) {
-> +                        error_report("MTE requested, but not supported "
-> +                                     "by the guest CPU");
-> +                        exit(1);
-> +                    }
-> +
-> +                    tag_sysmem = g_new(MemoryRegion, 1);
-> +                    memory_region_init(tag_sysmem, OBJECT(machine),
-> +                                       "tag-memory", UINT64_MAX / 32);
-> +
-> +                    if (vms->secure) {
-> +                        secure_tag_sysmem = g_new(MemoryRegion, 1);
-> +                        memory_region_init(secure_tag_sysmem, OBJECT(machine),
-> +                                           "secure-tag-memory",
-> +                                           UINT64_MAX / 32);
-> +
-> +                        /* As with ram, secure-tag takes precedence over tag. */
-> +                        memory_region_add_subregion_overlap(secure_tag_sysmem,
-> +                                                            0, tag_sysmem, -1);
-> +                    }
->                   }
->   
-> -                tag_sysmem = g_new(MemoryRegion, 1);
-> -                memory_region_init(tag_sysmem, OBJECT(machine),
-> -                                   "tag-memory", UINT64_MAX / 32);
-> -
-> +                object_property_set_link(cpuobj, "tag-memory",
-> +                                         OBJECT(tag_sysmem), &error_abort);
->                   if (vms->secure) {
-> -                    secure_tag_sysmem = g_new(MemoryRegion, 1);
-> -                    memory_region_init(secure_tag_sysmem, OBJECT(machine),
-> -                                       "secure-tag-memory", UINT64_MAX / 32);
-> -
-> -                    /* As with ram, secure-tag takes precedence over tag.  */
-> -                    memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
-> -                                                        tag_sysmem, -1);
-> +                    object_property_set_link(cpuobj, "secure-tag-memory",
-> +                                             OBJECT(secure_tag_sysmem),
-> +                                             &error_abort);
->                   }
-> -            }
-> -
-> -            object_property_set_link(cpuobj, "tag-memory", OBJECT(tag_sysmem),
-> -                                     &error_abort);
-> -            if (vms->secure) {
-> -                object_property_set_link(cpuobj, "secure-tag-memory",
-> -                                         OBJECT(secure_tag_sysmem),
-> -                                         &error_abort);
-> +            } else if (kvm_enabled()) {
-> +                if (!kvm_arm_mte_supported()) {
-> +                    error_report("MTE requested, but not supported by KVM");
-> +                    exit(1);
-> +                }
-> +                kvm_arm_enable_mte(cpuobj, &error_abort);
-> +            } else {
-> +                    error_report("MTE requested, but not supported ");
-> +                    exit(1);
->               }
->           }
->   
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index d8eb986a04..661d35d8d8 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1054,6 +1054,7 @@ struct ArchCPU {
->       bool prop_pauth_impdef;
->       bool prop_pauth_qarma3;
->       bool prop_lpa2;
-> +    OnOffAuto prop_mte;
->   
->       /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
->       uint8_t dcz_blocksize;
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 70f79eda33..0267a013e4 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -39,6 +39,7 @@
->   #include "hw/acpi/acpi.h"
->   #include "hw/acpi/ghes.h"
->   #include "target/arm/gtimer.h"
-> +#include "migration/blocker.h"
->   
->   const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
->       KVM_CAP_LAST_INFO
-> @@ -1793,6 +1794,11 @@ bool kvm_arm_sve_supported(void)
->       return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
->   }
->   
-> +bool kvm_arm_mte_supported(void)
+> diff --git a/docs/specs/acpi_hw_reduced_hotplug.rst b/docs/specs/acpi_hw_reduced_hotplug.rst
+> index 0bd3f9399f..3acd6fcd8b 100644
+> --- a/docs/specs/acpi_hw_reduced_hotplug.rst
+> +++ b/docs/specs/acpi_hw_reduced_hotplug.rst
+> @@ -64,7 +64,8 @@ GED IO interface (4 byte access)
+>         0: Memory hotplug event
+>         1: System power down event
+>         2: NVDIMM hotplug event
+> -    3-31: Reserved
+> +       3: CPU hotplug event
+> +    4-31: Reserved
+>  
+>  **write_access:**
+>  
+> diff --git a/hw/acpi/acpi-cpu-hotplug-stub.c b/hw/acpi/acpi-cpu-hotplug-stub.c
+> index 3fc4b14c26..c6c61bb9cd 100644
+> --- a/hw/acpi/acpi-cpu-hotplug-stub.c
+> +++ b/hw/acpi/acpi-cpu-hotplug-stub.c
+> @@ -19,6 +19,12 @@ void legacy_acpi_cpu_hotplug_init(MemoryRegion *parent, Object *owner,
+>      return;
+>  }
+>  
+> +void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+> +                         CPUHotplugState *state, hwaddr base_addr)
 > +{
-> +    return kvm_check_extension(kvm_state, KVM_CAP_ARM_MTE);
+> +    return;
 > +}
 > +
->   QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
->   
->   uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
-> @@ -2422,3 +2428,37 @@ int kvm_arch_remove_sw_breakpoint(CPUState *cs, struct kvm_sw_breakpoint *bp)
->       }
->       return 0;
->   }
-> +
-> +void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
+>  void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list)
+>  {
+>      return;
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index 2d6e91b124..4641933a0f 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -25,6 +25,7 @@ static const uint32_t ged_supported_events[] = {
+>      ACPI_GED_MEM_HOTPLUG_EVT,
+>      ACPI_GED_PWR_DOWN_EVT,
+>      ACPI_GED_NVDIMM_HOTPLUG_EVT,
+> +    ACPI_GED_CPU_HOTPLUG_EVT,
+>  };
+>  
+>  /*
+> @@ -234,6 +235,8 @@ static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
+>          } else {
+>              acpi_memory_plug_cb(hotplug_dev, &s->memhp_state, dev, errp);
+>          }
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
+>      } else {
+>          error_setg(errp, "virt: device plug request for unsupported device"
+>                     " type: %s", object_get_typename(OBJECT(dev)));
+> @@ -248,6 +251,8 @@ static void acpi_ged_unplug_request_cb(HotplugHandler *hotplug_dev,
+>      if ((object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) &&
+>                         !(object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM)))) {
+>          acpi_memory_unplug_request_cb(hotplug_dev, &s->memhp_state, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
+>      } else {
+>          error_setg(errp, "acpi: device unplug request for unsupported device"
+>                     " type: %s", object_get_typename(OBJECT(dev)));
+> @@ -261,6 +266,8 @@ static void acpi_ged_unplug_cb(HotplugHandler *hotplug_dev,
+>  
+>      if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+>          acpi_memory_unplug_cb(&s->memhp_state, dev, errp);
+> +    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
+>      } else {
+>          error_setg(errp, "acpi: device unplug for unsupported device"
+>                     " type: %s", object_get_typename(OBJECT(dev)));
+> @@ -272,6 +279,7 @@ static void acpi_ged_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
+>      AcpiGedState *s = ACPI_GED(adev);
+>  
+>      acpi_memory_ospm_status(&s->memhp_state, list);
+> +    acpi_cpu_ospm_status(&s->cpuhp_state, list);
+>  }
+>  
+>  static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+> @@ -286,6 +294,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+>          sel = ACPI_GED_PWR_DOWN_EVT;
+>      } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
+>          sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
+> +    } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
+> +        sel = ACPI_GED_CPU_HOTPLUG_EVT;
+>      } else {
+>          /* Unknown event. Return without generating interrupt. */
+>          warn_report("GED: Unsupported event %d. No irq injected", ev);
+> @@ -371,6 +381,42 @@ static const VMStateDescription vmstate_acpi_ged = {
+>      }
+>  };
+>  
+> +static void acpi_ged_realize(DeviceState *dev, Error **errp)
 > +{
-> +    static bool tried_to_enable;
-> +    static bool succeeded_to_enable;
-> +    Error *mte_migration_blocker = NULL;
-> +    int ret;
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +    AcpiGedState *s = ACPI_GED(dev);
+> +    uint32_t ged_events;
+> +    int i;
 > +
-> +    if (!tried_to_enable) {
-> +        /*
-> +         * MTE on KVM is enabled on a per-VM basis (and retrying doesn't make
-> +         * sense), and we only want a single migration blocker as well.
-> +         */
-> +        tried_to_enable = true;
+> +    ged_events = ctpop32(s->ged_event_bitmap);
 > +
-> +        ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_MTE, 0);
-> +        if (ret) {
-> +            error_setg_errno(errp, -ret, "Failed to enable KVM_CAP_ARM_MTE");
-> +            return;
+> +    for (i = 0; i < ARRAY_SIZE(ged_supported_events) && ged_events; i++) {
+> +        uint32_t event = s->ged_event_bitmap & ged_supported_events[i];
+> +
+> +        if (!event) {
+> +            continue;
 > +        }
 > +
-> +        /* TODO: Migration is not supported with MTE enabled */
-> +        error_setg(&mte_migration_blocker,
-> +                   "Live migration disabled due to MTE enabled");
-> +        if (migrate_add_blocker(&mte_migration_blocker, errp)) {
-> +            error_free(mte_migration_blocker);
-> +            return;
+> +        switch (event) {
+> +        case ACPI_GED_CPU_HOTPLUG_EVT:
+> +            /* initialize CPU Hotplug related regions */
+> +            memory_region_init(&s->container_cpuhp, OBJECT(dev),
+> +                                "cpuhp container",
+> +                                ACPI_CPU_HOTPLUG_REG_LEN);
+> +            sysbus_init_mmio(sbd, &s->container_cpuhp);
+> +            cpu_hotplug_hw_init(&s->container_cpuhp, OBJECT(dev),
+> +                                &s->cpuhp_state, 0);
+> +            break;
 > +        }
-> +        succeeded_to_enable = true;
+> +        ged_events--;
 > +    }
-> +    if (succeeded_to_enable) {
-> +        object_property_set_bool(cpuobj, "has_mte", true, NULL);
+> +
+> +    if (ged_events) {
+> +        error_report("Unsupported events specified");
+> +        abort();
 > +    }
 > +}
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index cfaa0d9bc7..4d293618a7 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -188,6 +188,13 @@ bool kvm_arm_pmu_supported(void);
->    */
->   bool kvm_arm_sve_supported(void);
->   
-> +/**
-> + * kvm_arm_mte_supported:
-> + *
-> + * Returns: true if KVM can enable MTE, and false otherwise.
-> + */
-> +bool kvm_arm_mte_supported(void);
 > +
->   /**
->    * kvm_arm_get_max_vm_ipa_size:
->    * @ms: Machine state handle
-> @@ -214,6 +221,8 @@ void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa);
->   
->   int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
->   
-> +void kvm_arm_enable_mte(Object *cpuobj, Error **errp);
-> +
->   #else
->   
->   /*
-> @@ -235,6 +244,11 @@ static inline bool kvm_arm_sve_supported(void)
->       return false;
->   }
->   
-> +static inline bool kvm_arm_mte_supported(void)
-> +{
-> +    return false;
-> +}
-> +
->   /*
->    * These functions should never actually be called without KVM support.
->    */
-> @@ -283,6 +297,11 @@ static inline uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu)
->       g_assert_not_reached();
->   }
->   
-> +static inline void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
-> +{
-> +    g_assert_not_reached();
-> +}
-> +
->   #endif
->   
->   #endif
-
-Thanks,
-Ganapat
+>  static void acpi_ged_initfn(Object *obj)
+>  {
+>      DeviceState *dev = DEVICE(obj);
+> @@ -411,6 +457,7 @@ static void acpi_ged_class_init(ObjectClass *class, void *data)
+>      dc->desc = "ACPI Generic Event Device";
+>      device_class_set_props(dc, acpi_ged_properties);
+>      dc->vmsd = &vmstate_acpi_ged;
+> +    dc->realize = acpi_ged_realize;
+>  
+>      hc->plug = acpi_ged_device_plug_cb;
+>      hc->unplug_request = acpi_ged_unplug_request_cb;
+> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+> index ba84ce0214..e091ac2108 100644
+> --- a/include/hw/acpi/generic_event_device.h
+> +++ b/include/hw/acpi/generic_event_device.h
+> @@ -62,6 +62,7 @@
+>  #include "hw/sysbus.h"
+>  #include "hw/acpi/memory_hotplug.h"
+>  #include "hw/acpi/ghes.h"
+> +#include "hw/acpi/cpu.h"
+>  #include "qom/object.h"
+>  
+>  #define ACPI_POWER_BUTTON_DEVICE "PWRB"
+> @@ -95,6 +96,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
+>  #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
+>  #define ACPI_GED_PWR_DOWN_EVT      0x2
+>  #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
+> +#define ACPI_GED_CPU_HOTPLUG_EVT    0x8
+>  
+>  typedef struct GEDState {
+>      MemoryRegion evt;
+> @@ -106,6 +108,8 @@ struct AcpiGedState {
+>      SysBusDevice parent_obj;
+>      MemHotplugState memhp_state;
+>      MemoryRegion container_memhp;
+> +    CPUHotplugState cpuhp_state;
+> +    MemoryRegion container_cpuhp;
+>      GEDState ged_state;
+>      uint32_t ged_event_bitmap;
+>      qemu_irq irq;

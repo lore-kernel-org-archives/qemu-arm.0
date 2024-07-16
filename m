@@ -1,174 +1,172 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp109936njk;
-        Tue, 16 Jul 2024 04:36:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUe4HEJ+0Jjlo1ovGdQ/V3jLL2c+IVaAqB82JSTtMw8ZGsh4m9zv6YILFGnVe598rEcv5LbsgqbEkH0HFcs6zJzcQzA3D8h
-X-Google-Smtp-Source: AGHT+IGVRWDXEiY0LFsQw3Aai6IbeFWHLvBtX0e4DpCRMxeOueg2z93U7k+uKdRQK6LEUrix4FwZ
-X-Received: by 2002:a17:903:230b:b0:1fb:9b91:d7be with SMTP id d9443c01a7336-1fc3d939beamr13930285ad.9.1721129791972;
-        Tue, 16 Jul 2024 04:36:31 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1721129791; cv=pass;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp219207njk;
+        Tue, 16 Jul 2024 07:37:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWg8NLMA/Ep4iKeHWa9gTkwrQYZVNqkUEBFPC5878cJcxxZmS8BrEAD74s4FY3L3Vz49pLwmZMJqxlk4/Lcfo0437Rte6IY
+X-Google-Smtp-Source: AGHT+IHFLW1+YlKLcN5iN/IpIsbhuQ4xdN8FaVwiaFITLkT3h3yfVvNtnYxzaqEg5FBEn1R9xphE
+X-Received: by 2002:a05:6820:3082:b0:5c7:ae9d:7894 with SMTP id 006d021491bc7-5d2898e6ed1mr2604505eaf.5.1721140669268;
+        Tue, 16 Jul 2024 07:37:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721140669; cv=none;
         d=google.com; s=arc-20160816;
-        b=iwXmZEqX22HjJHvrGm0shZ7OIbdvCQkMW9lpi692MgCCcurMiP1bMeXqugNkirfDJD
-         ANPhoYvVHAVmkadNmxSLXXM+krfyFDjZtUkeDNduEV5BaoMduFDL1noRAd7KROqOof67
-         0NwdUBmV3BmrdKZo3CgrAbfSUU5jGk1MPo7w4ybSwxTEGHuI+NKsyIcLP8GdgisVK34/
-         pPwqULbUQgl1b9MMLYFBQYeto9jHd/pbgEcSFSAMeBKIQ4+QdtaPKhCXalfyl8khrD6c
-         yG8+T8qcyo7or+nK6xZrZVGkCdoNPbvWct0a0cd8lOIHc9eGFioOffudCv1vl3hQgD/B
-         Unig==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=fIrjmnrcime12URGWOz+U3tVhvhx495pQrmKJbaCEkE=;
-        fh=ouMJby7Bv6djGDnPl03UVj7QlKbzoXpJ5xrHmtJHPho=;
-        b=pJjoEpJ9gZp4i5VkES+A/YawR/CrJify4ZmBlpaydzahUcC5Wcj9EAGqLiRNUEz8Iy
-         nqLcpxy8YW2eTyN4vVf6XXz4RhtgeEmiqtNyVG01d6hthzG2Ei1RIdEnR7DoFXdv+/0p
-         Yh4mb9ZB7LKcK5z6lLXDcPkqdcFEeUocsnjhJbsTbepLlwUdJUiR1oUEM5VjxcJx3cSd
-         tH0lif5doqu9g75B3UGZew9j2X7J63vHrhFani1jUXHS7AERCaJCatvlPcL8lEgvKkI+
-         DSt2+dgcAGNf2O0atLeVjlUP9KfXua7XosUOs9Dc/FYCG53TzTtXDiQ1F7+YLbsywuIm
-         4Mag==;
+        b=BuNg0qVHSPb1yWjkTymYl1cQhjbOxmMy9CfBSsNXSId78dm6Nad24zbiChMm0ijfdT
+         /8AM+bCq5sG6ZwUu+Uec33BA+rXp5+Ks4+J7wDZASg4i0JI9cl/4qOEYEzUEGEF6eapx
+         ZSTaeN3H/9GCfiiRIhH9CCkYI2osQExB5XlxHZipAHPXIzXHAjvQYaRlhpiTu4K0Sd+K
+         zMpujnjlrw23vWMLNJEu65oHQ4cCJ7XfL1/uf1nGTJu8PmznlzQEA/28HXRKHCChqMbr
+         4RdpTsmiax/FACoeZ761CH0UEmjNUYQRTHyOFEVzmMC5JTauxWgRc5RsWKW5IJ9g9Jji
+         Qzvg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=tOxQpWcw0LIUguDMbxcPC2388Mn3DGxme+Fp+3lkV0g=;
+        fh=4q2Bxz7A7ZDcPRKcyGhfXxcSV/2hIhU+VmnXSnrNFqU=;
+        b=RnExRiLwa4oeo1VgDBV2J1M3P8dCXztQ4l2a6nA12mmpTIUti/6QTjJ/DYPSijMkOl
+         0s1GuHywLfr6NQdcwyVfhxWkBAabwZ0tJXCrTYwqx3KouBZWJr9GO0Ljx56Rcz8Ggtyo
+         W0WCBLh1RX0uiQwo+Qx/KfI4rlJctTJOPhYpdTxsTVHE+D/gfrCfLnVqFsc1iVNaZ9MD
+         Pmf4X0YJ4uFkZ2Df/KNeap0a5ZRfUQB5ZPfg+ZaTiHhKfksrhNESE2LadzfbXqrpB5Ob
+         2YKHebUj+C2Qq6unkOaRWGrypEBMPR22KoVlr1WzcN+07kkIgjpU27S64ox5DdEfE9/9
+         vcRQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=eNRv0WV8;
-       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
-       spf=pass (google.com: domain of kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org"
-Return-Path: <kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id d9443c01a7336-1fc0bc90390si70560635ad.237.2024.07.16.04.36.31
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=T38FuQja;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4912b0efca0si1244063137.20.2024.07.16.07.37.49
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 16 Jul 2024 04:36:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 16 Jul 2024 07:37:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=eNRv0WV8;
-       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
-       spf=pass (google.com: domain of kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-21701-alex.bennee=linaro.org@vger.kernel.org"
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 84EED284640
-	for <alex.bennee@linaro.org>; Tue, 16 Jul 2024 11:36:31 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id D75431991C5;
-	Tue, 16 Jul 2024 11:36:30 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b="eNRv0WV8"
-Received: from mail-pf1-f172.google.com (mail-pf1-f172.google.com [209.85.210.172])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E64815491
-	for <kvm@vger.kernel.org>; Tue, 16 Jul 2024 11:36:29 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.172
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1721129790; cv=none; b=Sv7dVxvschdGPXLSOqVt67eeb3WCu/92zPEd76ett9irzQuhkFl5mKw2Atu1d32n09CGDcuqfTkxWFSFZfh3n+xFytJjgZg7TjFjYWrtR42isrVnZxb+NOQpW52ycHATJqDaGrmB390fLkDT+II9TB4U4PKjH2w6wRkBLiE6A+A=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1721129790; c=relaxed/simple;
-	bh=A353yTSsiHhTcZ4mUYW/K0lGm/8fHaGdFobufPLc7Es=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=kJDrfbgF+PFg0tAdKrWwIDUFB6Cm/V+7ySFb2b0Y60ubHRmy5BaDJGLkanTUoqFRNEPM3uwKU+yqgt2spfZvVImBknZlpj8TCMJINX+qVruFyJGsl91Ft+XCd01uhVYKRLRfv851eKhMXr/iA3RkUxNHsHaBQ2vKYQScDaXC5Vk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com; spf=none smtp.mailfrom=daynix.com; dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b=eNRv0WV8; arc=none smtp.client-ip=209.85.210.172
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com
-Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=daynix.com
-Received: by mail-pf1-f172.google.com with SMTP id d2e1a72fcca58-70b1207bc22so4524880b3a.3
-        for <kvm@vger.kernel.org>; Tue, 16 Jul 2024 04:36:29 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=T38FuQja;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sTjJE-0002eA-Sx; Tue, 16 Jul 2024 10:37:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sTjJD-0002co-SS
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2024 10:37:39 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sTjJA-0001i7-18
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2024 10:37:39 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-426526d30aaso39636435e9.0
+ for <qemu-arm@nongnu.org>; Tue, 16 Jul 2024 07:37:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1721129788; x=1721734588; darn=vger.kernel.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=fIrjmnrcime12URGWOz+U3tVhvhx495pQrmKJbaCEkE=;
-        b=eNRv0WV8Oa6j6YflDlyvN+tndvoMwqpEjMO6/Gc3uM2b1DmRUalvbGVgDNvb+JaCk5
-         AiQ95IsACkbHGB/hLIw1a/7wNWwJ1dGkqaSCM5u/6V4RdN4cMu61vdwI1B6OArqsmExk
-         okToIYa1pBZvzd+yNlA6b6Af1gHJy03Nv/tbz5vL9spJCPlKuDkN/0ShCkiWzYocac40
-         MAu+saBNtM+b43p0ObZdzNEzgThfTvEvh5s9rWyMK2Xo2lQgLTYqXxtEtJ7qjkxZFQxs
-         y1u37jelUT0NLzmzBOcBwvdt5wRY+B59gT4/HfpvCKvwWPEnrz6is6bOWe32yENuK6Vs
-         6RYg==
+ d=linaro.org; s=google; t=1721140654; x=1721745454; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=tOxQpWcw0LIUguDMbxcPC2388Mn3DGxme+Fp+3lkV0g=;
+ b=T38FuQjawJLyE9uFX+ugtg4HthSnpCdC/qud/p2ZVduYKvm6XU5xNp7CDUyNt43txh
+ foQeW5MjKVMIIPGKWkXfD6M398bOJdSSwEjthFH+qgRyuwQm8RYLxaMJIzvcWmSDIK//
+ BqPz1RNARiGayvsFsSaMB/5rPQzUK22A62kp/NmWPu9Z8k1vIbA4en6pwgn7qwiFqtS2
+ 8ozXKsTIq/rK14qHDNipC0hQzdymx9cZv5bj3ZaBK6JP59OdRf/zhP5TlQ9hF1hQV3KG
+ TkFKI0RiFoD594Zl1zE2bDxPnFmuH82QSNwRK+ITdxZOIp0qCK1BYNt6Sy0IYTnpLMUE
+ 8euw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721129788; x=1721734588;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fIrjmnrcime12URGWOz+U3tVhvhx495pQrmKJbaCEkE=;
-        b=Lj938ArXnFfKCurV5Zha13Q8OIEOpU1eyaOeeqoORAlsJclYMns35O/WgE5rW4aOSp
-         dM91+W288jAiohdj0GjHbzZO4LsAEar1IocOz8d2IeEYyqO3LoLqYORlTWhzpyvyl69x
-         6xsqCwdh6f6GJIdWDA6gcQdJ9TeJ6nX2toxUYXIazAm5vOso8Y5KibwrUQk5PfSKo9Gv
-         IPtOV5olOWIbLK6SIUb9JM/1Uxd2inqBjDrOwFOlmMWjKLD6Sgd2Nq9VN6vVIkhMr2jx
-         sTrP1wZQIOyhQh+jZKAr51y4QzSfRDvNI/rWj510Lhfp0JrRUfz0FM4JpyDQpdYRA29R
-         FdAA==
-X-Forwarded-Encrypted: i=1; AJvYcCUtAerQfh3xx72MiCThLkfSsS4S6Z2xQ3GjSNWPXScV943j4zgLVjAUvPA954ypffAqwQDQWWQkODLl1Vbid0fhb1Pd
-X-Gm-Message-State: AOJu0Yy6fSz6RqQJx6UL9cYlH7pI0cjYbV1PofqnS/dwcN5+ddCbchtg
-	f+yN4XZdeiFIt7kbkcBY3tgW0C22tfvZhfosf/iYq8VOXHHBYJ2MoWKvhdJowA8=
-X-Received: by 2002:a05:6a20:2590:b0:1c2:1ed4:4f91 with SMTP id adf61e73a8af0-1c3f124ac4bmr1630429637.31.1721129788574;
-        Tue, 16 Jul 2024 04:36:28 -0700 (PDT)
-Received: from [157.82.202.230] ([157.82.202.230])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70b7ec7da24sm6056707b3a.113.2024.07.16.04.36.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 16 Jul 2024 04:36:28 -0700 (PDT)
-Message-ID: <cdd5ce60-230f-48a1-bcf3-9591b8bede95@daynix.com>
-Date: Tue, 16 Jul 2024 20:36:25 +0900
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1721140654; x=1721745454;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=tOxQpWcw0LIUguDMbxcPC2388Mn3DGxme+Fp+3lkV0g=;
+ b=GMlg8KriIs/sFh3YLPGueSqQjLOwxSUtNvBGIzDgcGFCXFfoFnKC30+4FIej30lUSj
+ q0Egk/o/OCtE0WWqQbynV/C+3AjlpFgmnG/DFyLjxDbB/zqCzYdHlVnzfruNMouRRei6
+ k+33uFkgVMxJmSMO9o4rLsJHGlfmCWj1742f9mA1Nmz1ntpmGkqrtCx8PAWkgAevBnKN
+ nvpVcbgygjX5oO+5g1md0FQz++SKbk4CM+dCgid+Q05CzffmWSg/QzPNFuTuFQAIHJ2V
+ ZmDONESJQYsNn9MuiDxkxYWC1HQe/OzSo6BrtyJBtPwOTkHVqkSsXjXx/2as3pP1hhKO
+ nFdA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUtOY2Whfn2/2N1agB1DWkkPuQEqJvWSB9OeK97zBMkXEE2DDj76+4gYxxxX1kakIZ3BiCicT54lhZ/o5LXSrzz3N1T
+X-Gm-Message-State: AOJu0YxrJDxGPmkxC1c4VL4Tg9VlMDfU7WBrWiDVeJh1RR/uF2bdx2pQ
+ 00rbSA5dIr+af34gN172DXe++L0bGWGMKAGWsW9ChLZrIAeWzYcGMzZZOiBhWrc=
+X-Received: by 2002:a05:600c:4e86:b0:426:6688:2421 with SMTP id
+ 5b1f17b1804b1-427ba678739mr15165765e9.11.1721140654300; 
+ Tue, 16 Jul 2024 07:37:34 -0700 (PDT)
+Received: from [192.168.1.172] ([185.87.38.242])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4279f25a957sm163011475e9.13.2024.07.16.07.37.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 16 Jul 2024 07:37:33 -0700 (PDT)
+Message-ID: <3e35a80c-fa0f-41f5-8a63-30a873fb3bad@linaro.org>
+Date: Tue, 16 Jul 2024 16:37:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/5] target/arm: Always add pmu property
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, kvm@vger.kernel.org
-References: <20240716-pmu-v2-0-f3e3e4b2d3d5@daynix.com>
- <20240716-pmu-v2-4-f3e3e4b2d3d5@daynix.com>
- <CAFEAcA9trFnYaZbVehHhxET68QF=+X6GRsEh+zcavL-1DxDB4w@mail.gmail.com>
+Subject: Re: [PATCH] hw/display/bcm2835_fb: fix fb_use_offsets condition
+To: Peter Maydell <peter.maydell@linaro.org>, SamJakob <me@samjakob.com>
+Cc: qemu-trivial@nongnu.org, "open list:Raspberry Pi" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+References: <20240713160353.62410-1-me@samjakob.com>
+ <CAFEAcA82m+8K8rWDMBehPp=NGUezHZPn1LVoyU3DJ3LWq+ZnAw@mail.gmail.com>
 Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <CAFEAcA9trFnYaZbVehHhxET68QF=+X6GRsEh+zcavL-1DxDB4w@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA82m+8K8rWDMBehPp=NGUezHZPn1LVoyU3DJ3LWq+ZnAw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: r/mzEgV35PzZ
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JAatSBu2dSMy
 
-On 2024/07/16 20:32, Peter Maydell wrote:
-> On Tue, 16 Jul 2024 at 09:28, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+On 16/7/24 12:35, Peter Maydell wrote:
+> On Sat, 13 Jul 2024 at 17:04, SamJakob <me@samjakob.com> wrote:
 >>
->> kvm-steal-time and sve properties are added for KVM even if the
->> corresponding features are not available. Always add pmu property too.
+>>          It is common practice when implementing double-buffering
+>>          on VideoCore to do so by multiplying the height of the
+>>          virtual buffer by the number of virtual screens desired
+>>          (i.e., two - in the case of double-bufferring).
 >>
->> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->> ---
->>   target/arm/cpu.c | 3 ++-
->>   1 file changed, 2 insertions(+), 1 deletion(-)
+>>          At present, this won't work in QEMU because the logic in
+>>          fb_use_offsets require that both the virtual width and
+>>          height exceed their physical counterparts.
 >>
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index 9e1d15701468..32508644aee7 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -1781,9 +1781,10 @@ void arm_cpu_post_init(Object *obj)
+>>          This appears to be unintentional/a typo and indeed the
+>>          comment states; "Experimentally, the hardware seems to
+>>          do this only if the viewport size is larger than the
+>>          physical screen". The viewport/virtual size would be
+>>          larger than the physical size if either virtual dimension
+>>          were larger than their physical counterparts and not
+>>          necessarily both.
 >>
->>       if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
->>           cpu->has_pmu = true;
->> -        object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
->>       }
->>
->> +    object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
->> +
->>       /*
->>        * Allow user to turn off VFP and Neon support, but only for TCG --
->>        * KVM does not currently allow us to lie to the guest about its
+>> Signed-off-by: SamJakob <me@samjakob.com>
 > 
-> Before we do this we need to do something to forbid setting
-> the pmu property to true on CPUs which don't have it. That is:
-> 
->   * for CPUs which do have a PMU, we should default to present, and
->     allow the user to turn it on and off with pmu=on/off
->   * for CPUs which do not have a PMU, we should not let the user
->     turn it on and off (either by not providing the property, or
->     else by making the property-set method raise an error, or by
->     having realize detect the discrepancy and raise an error)
+> Thanks for this bugfix; I've applied it to my target-arm.next
+> queue and it should get upstream within a week or so.
 
-I don't think there is any reason to prohibit adding a PMU to a CPU that 
-doesn't have when you allow to remove one. For example, neoverse-v1 
-should always have PMU in the real world.
+Since I'm seeing 2 times the same patch, adding R-b again on
+this one:
 
-Perhaps it may make sense to prohibit adding a PMU when the CPU is not 
-Armv8 as the PMU we emulate is apparently PMUv3, which is part of Armv8.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Regards,
-Akihiko Odaki
+(BTW Peter the commit description is mis-aligned, if you
+don't mind, correcting it while applying would be appreciated!)
+
+Thanks,
+
+Phil.

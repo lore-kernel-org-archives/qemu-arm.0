@@ -1,111 +1,117 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp59023njk;
-        Tue, 16 Jul 2024 02:48:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXLlzqWKm1xWe7Rki17kpROPpayNS+dkJScbjUwHY3lTtMJrFuLrlB2dsu36v6v60p8dPJD6AxOuplzQtnCl11P6wg1PTNZ
-X-Google-Smtp-Source: AGHT+IGwr1IJC99diUH/CgK436KQlcC7XbXGVQOb4n67HIDhaN1w9d+Em8HKM3WibTCLOB4nvdlo
-X-Received: by 2002:a05:6122:1692:b0:4ef:6d02:f4a with SMTP id 71dfb90a1353d-4f4d724dd3emr123837e0c.13.1721123290205;
-        Tue, 16 Jul 2024 02:48:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721123290; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp81572njk;
+        Tue, 16 Jul 2024 03:36:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWgEexoXR+YWP3+cwC+EMflcH7FRXSvnBlMf/AEILSPG+MylnSWytm4tIkVnbeUlbxjyghwHZBO6tVec8l5cNubYJhv3w3y
+X-Google-Smtp-Source: AGHT+IGvdGM1pQ82fiFdAFCpG++7ZHck9aPsPS/5S78uBR0NlSqz0Ou2o1GOcNHzkY4z/sOnogDS
+X-Received: by 2002:a05:6902:2081:b0:e02:6e1e:209b with SMTP id 3f1490d57ef6-e05d5eb7b34mr2283643276.38.1721126187780;
+        Tue, 16 Jul 2024 03:36:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721126187; cv=none;
         d=google.com; s=arc-20160816;
-        b=fJoG3YlHwPYUSpJrD3q+oYUcK7/iPv/FsB2ER/m6TV/k2kbSCFYiJ8EUhjf2Rurgvr
-         1PkqDbEats01PNGphnIf2dgEWrgLlAqfKVXXhcUBeIv8MyfL5J8ZgqA5YUDZZOi81Qa9
-         csZz514sOe7SViu3i3XSRUz1F1wn7IB1yYOeloLl4wAMBYL1jWLbAH8hYYjUa2q0iwYe
-         pscMlutC+hQcidNIUi+srbKHNfTBCqzeLS+tYMVaWAO4Pzx2RxKAeXCgmO4atwVXC/6W
-         puE871vAdjvYrBCYVgkMPowz63lajuuJOBFENzUQ0N46OW9kC1LPGdOkpbdwDoOwyp7C
-         h4zA==
+        b=IH/xyPY/vXkxChNCnlnQsuBPtGX7Ir/UTh5J3UJPOuHNRoDpWTF6kO3PIHEjaSDhFg
+         w9igMRVakKMvu4BsCdq+3Y16E0bzHN2vLk3GD67BTHENRDgzVU8rZtDUxLe2fgIjSgjt
+         YW9EyTz1qDokl39IrafDR8Afj1pfbNcROFa1ypvMFmKDrS5Ogbv+EDDoImGKxoXC7PUC
+         DwyF6tUSN8GZTyLQQnkLMe7BTSfYav8hxRh4M1VoWl9Cz+mlKmvzhQW40K4EjwP/nIlX
+         ZZ5i1Cp0G7cPnxwm2fMSw9J7P25RllxaHL7dw2RGwuzy7e0AWGvs+qOhUpzNg2SX6u13
+         cdZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=SU1kJ0X8nNI5cBpcnHA6rq85FBjXuBZPC89l80NxH+E=;
-        fh=D1TEnXH2DbXUr6sVqyo/ig9zTKSO675I5EGRzxL3ieY=;
-        b=WXj8PMNnkioWoZRycg+vJnyAXp0H86U5PeFyATOTBYpbnWbni0ilTJrdORmndO7iJr
-         thsnx4cBwlHPikgWaQZ2ekVEjL49MPUrrbxi7CGrXun0fS4rlmwmk22vNkzVSY6giT/e
-         bZg9AmAexiH6TJ950jKKoqBCnEnR5IZSEBoUVvFChtDkD7oqJrPSbQnDKT7pI6a6oMIG
-         XdCHeZJsY5ILEEZSqDQqMpoQO3utwDzAkc8aEZNpTiYcU1e2nQ4hmUR0n8T6T1QUXGef
-         1oyb3VSgSke8zFcqoYpqB4gqKlfBCD+hNsUoS+BY/FdEAvyiKRDgG5tT2QA4Lb7FjVKW
-         8Vxg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=V56vDIqVAmmofi4MPaP03VMccsDzzQeV+azCpJzQJvU=;
+        fh=ISsprPQkCDikQxsVX/vff8ZsuRV8RLaI3HuA6yQZ228=;
+        b=CdUOqU+/PLdSX9Kusaq2dnWCQBZEzq4QZjnhOZXMAO6BAeWodHW9JatThdFRFXO8Ng
+         5P7As1k5JKD3HfNMTOLN06gPYTGM7GuF2P0svA/D9qmkg8atTzENDvsjeZu5JsIX6wbO
+         jm3sup2sEyPuVmeXcls68je/pbt0FD131unlzNWSQGM2B+Y3/kb1mYmLZg0xiRX/9Gqq
+         LHZDN1sY0j0fZ+TcN1UTzCU727uIuMCWS6QAqcM9A7qR9O2Ls0vrU68mBiTiDsJ8AGiQ
+         VTZ/E6klKwKx0+xQY6RC5rLxH9unC/EDnx7DyUIcYnnKz2G6/4Q8mkwemgMZalqPLmYJ
+         fGBQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TIj9zAJ3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lGmylZVk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b761a3c9a8si71178126d6.463.2024.07.16.02.48.10
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b761a1e278si70660416d6.402.2024.07.16.03.36.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jul 2024 02:48:10 -0700 (PDT)
+        Tue, 16 Jul 2024 03:36:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TIj9zAJ3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lGmylZVk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sTelv-0006fj-SB; Tue, 16 Jul 2024 05:46:59 -0400
+	id 1sTfXC-0006qr-NB; Tue, 16 Jul 2024 06:35:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sTelu-0006bL-Ps
- for qemu-arm@nongnu.org; Tue, 16 Jul 2024 05:46:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sTelt-0000PJ-9B
- for qemu-arm@nongnu.org; Tue, 16 Jul 2024 05:46:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1721123216;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SU1kJ0X8nNI5cBpcnHA6rq85FBjXuBZPC89l80NxH+E=;
- b=TIj9zAJ3cgstx/BPMCG25YenTPMiK8GQLSztidMjLKtBVrl8RFhdJQobYEyPbhj/sJ1/WQ
- QeMNzhkuHBdksiFb4BswPnjmgrun1pFWhGU7oTEuwmQFE2dgXtf9lnzr6sF3FxIzz79KX8
- aVg9/lyNy7cWU5Bj2+gzBKOunbg+1p0=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-520-3Jfvq2nQPN6zwA6fiN-6sA-1; Tue,
- 16 Jul 2024 05:46:53 -0400
-X-MC-Unique: 3Jfvq2nQPN6zwA6fiN-6sA-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2711A1955D50; Tue, 16 Jul 2024 09:46:52 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.39.192.185])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 62035300018E; Tue, 16 Jul 2024 09:46:48 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
- peter.maydell@linaro.org, clg@redhat.com, zhenzhong.duan@intel.com,
- alex.williamson@redhat.com, jasowang@redhat.com
-Cc: yanghliu@redhat.com
-Subject: [PATCH 5/6] hw/vfio/common: Add vfio_listener_region_del_iommu trace
- event
-Date: Tue, 16 Jul 2024 11:45:07 +0200
-Message-ID: <20240716094619.1713905-6-eric.auger@redhat.com>
-In-Reply-To: <20240716094619.1713905-1-eric.auger@redhat.com>
-References: <20240716094619.1713905-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sTfXA-0006p7-Hp
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2024 06:35:48 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sTfX7-0001ct-Uy
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2024 06:35:47 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-58bac81f419so6354698a12.0
+ for <qemu-arm@nongnu.org>; Tue, 16 Jul 2024 03:35:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1721126144; x=1721730944; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=V56vDIqVAmmofi4MPaP03VMccsDzzQeV+azCpJzQJvU=;
+ b=lGmylZVk3CaKMHaLmG1JYwQRQJqcdLkSLPkhGzZnasmgr/m/dsGNszTA2SJWxApVab
+ 5ieOfcMBzEVleviHWoF0yfDCFwXVtKniZZ5hB+brt9phFZMDZr8owSM6Y+wIIQlVFjIv
+ fV5iVJJTlGTB4VF0fElBP/y7XtrfAoZXghsCIVNxzr/y8rbdKcAYv8bC/t8UqptysXty
+ E86UrnfXxKNoIdVHZQtFFUIZis52SY7FAHYiKYSusJeZORb5f76x+nCCugzKH2g4HdsK
+ YC6nU/D6fWPpKSzCBkPr7aETp1QMLf9QItP5fc9H9KkpJlCBbQ+myBPiPDgFWm4vsK7K
+ bOwA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721126144; x=1721730944;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=V56vDIqVAmmofi4MPaP03VMccsDzzQeV+azCpJzQJvU=;
+ b=VQCKYci6XMbWBmpt5RUiG74c75FYVkHctyu/ymlaL+hvbYrthrHJK7ItyosyebwVci
+ Y1ji8kNh1pZlmVEF21JFslPWKWBrKXQPWfBsKJYmnOIKuW40TlN9FZIkb2lmEPs9lVjW
+ LfC20mfP7zZJDD0OIeWEkViO2WASi56h6F31ucuYVBQzCzYONhuA9hAWoUXv4558rr7s
+ 3ad+Z4bVxkssszvu3eqHPVj8HS9dSn1YqPPSVdH6AQvd9oBkKAbIVJ2Gc7/pOyW7idVl
+ nMXK2Wx4WaEEf3K5VQx8cNdLnviXKuGgs5s5NiaXZffvZnOtYWmCrxBSYdz1J1CLUbGu
+ E1ug==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX6GTfYwbKuQcaeS2BYdu6oLsENCBGkVDBFmnQm/TJ7JrQGOBpgPr7nf4BXXWB2Wk/RpDTOqDklH/QEmpclcNAXPzgS
+X-Gm-Message-State: AOJu0YyflNEKCFm/0dUZeSIJb5dMFFYYzDb6rLs83gA0vNXhvQ+mfEY5
+ TZDYVdSufvbsTQkY6KTGeYcAbIfL4pgy7S3KJqemdPb94SbMRa1pDdN2rI6cyw8z5oSvAO4O3Bo
+ FZMPRW8ls467pxWrwMX8zqZLqNDrmPVk9O8HHIlKZ8AyAw1Oc
+X-Received: by 2002:a05:6402:4581:b0:58b:9e7c:bcbf with SMTP id
+ 4fb4d7f45d1cf-59ef0ad1232mr1083461a12.36.1721126143538; Tue, 16 Jul 2024
+ 03:35:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20240713160353.62410-1-me@samjakob.com>
+In-Reply-To: <20240713160353.62410-1-me@samjakob.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Jul 2024 11:35:32 +0100
+Message-ID: <CAFEAcA82m+8K8rWDMBehPp=NGUezHZPn1LVoyU3DJ3LWq+ZnAw@mail.gmail.com>
+Subject: Re: [PATCH] hw/display/bcm2835_fb: fix fb_use_offsets condition
+To: SamJakob <me@samjakob.com>
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ "open list:Raspberry Pi" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,52 +126,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: h3xk4/0KFq3L
+X-TUID: jiM3ONYUBkr9
 
-Trace when VFIO gets notified about the deletion of an IOMMU MR.
-Also trace the name of the region in the add_iommu trace message.
+On Sat, 13 Jul 2024 at 17:04, SamJakob <me@samjakob.com> wrote:
+>
+>         It is common practice when implementing double-buffering
+>         on VideoCore to do so by multiplying the height of the
+>         virtual buffer by the number of virtual screens desired
+>         (i.e., two - in the case of double-bufferring).
+>
+>         At present, this won't work in QEMU because the logic in
+>         fb_use_offsets require that both the virtual width and
+>         height exceed their physical counterparts.
+>
+>         This appears to be unintentional/a typo and indeed the
+>         comment states; "Experimentally, the hardware seems to
+>         do this only if the viewport size is larger than the
+>         physical screen". The viewport/virtual size would be
+>         larger than the physical size if either virtual dimension
+>         were larger than their physical counterparts and not
+>         necessarily both.
+>
+> Signed-off-by: SamJakob <me@samjakob.com>
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/vfio/common.c     | 3 ++-
- hw/vfio/trace-events | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+Thanks for this bugfix; I've applied it to my target-arm.next
+queue and it should get upstream within a week or so.
 
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index 6d15b36e0b..cfc44a4569 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -599,7 +599,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
-         IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
-         int iommu_idx;
- 
--        trace_vfio_listener_region_add_iommu(iova, end);
-+        trace_vfio_listener_region_add_iommu(section->mr->name, iova, end);
-         /*
-          * FIXME: For VFIO iommu types which have KVM acceleration to
-          * avoid bouncing all map/unmaps through qemu this way, this
-@@ -725,6 +725,7 @@ static void vfio_listener_region_del(MemoryListener *listener,
-     if (memory_region_is_iommu(section->mr)) {
-         VFIOGuestIOMMU *giommu;
- 
-+        trace_vfio_listener_region_del_iommu(section->mr->name);
-         QLIST_FOREACH(giommu, &bcontainer->giommu_list, giommu_next) {
-             if (MEMORY_REGION(giommu->iommu_mr) == section->mr &&
-                 giommu->n.start == section->offset_within_region) {
-diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
-index e16179b507..98bd4dccea 100644
---- a/hw/vfio/trace-events
-+++ b/hw/vfio/trace-events
-@@ -95,7 +95,8 @@ vfio_region_read(char *name, int index, uint64_t addr, unsigned size, uint64_t d
- vfio_iommu_map_notify(const char *op, uint64_t iova_start, uint64_t iova_end) "iommu %s @ 0x%"PRIx64" - 0x%"PRIx64
- vfio_listener_region_skip(const char *name, uint64_t start, uint64_t end) "SKIPPING %s 0x%"PRIx64" - 0x%"PRIx64
- vfio_spapr_group_attach(int groupfd, int tablefd) "Attached groupfd %d to liobn fd %d"
--vfio_listener_region_add_iommu(uint64_t start, uint64_t end) "region_add [iommu] 0x%"PRIx64" - 0x%"PRIx64
-+vfio_listener_region_add_iommu(const char* name, uint64_t start, uint64_t end) "region_add [iommu] %s 0x%"PRIx64" - 0x%"PRIx64
-+vfio_listener_region_del_iommu(const char *name) "region_del [iommu] %s"
- vfio_listener_region_add_ram(uint64_t iova_start, uint64_t iova_end, void *vaddr) "region_add [ram] 0x%"PRIx64" - 0x%"PRIx64" [%p]"
- vfio_known_safe_misalignment(const char *name, uint64_t iova, uint64_t offset_within_region, uintptr_t page_size) "Region \"%s\" iova=0x%"PRIx64" offset_within_region=0x%"PRIx64" qemu_real_host_page_size=0x%"PRIxPTR
- vfio_listener_region_add_no_dma_map(const char *name, uint64_t iova, uint64_t size, uint64_t page_size) "Region \"%s\" 0x%"PRIx64" size=0x%"PRIx64" is not aligned to 0x%"PRIx64" and cannot be mapped for DMA"
--- 
-2.41.0
-
+-- PMM

@@ -1,95 +1,95 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp58832njk;
-        Tue, 16 Jul 2024 02:47:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVX0RC4k8D3D5FXPWzWNtP4AWa7VgdDJD7Aiw/pEb4mE7OLTC+T4om4/2y1zaQ3csOBYKK/Jb5JVtBb1Ry3M2Dbc3h4Gep4
-X-Google-Smtp-Source: AGHT+IGcaaE5YOxiuR4KdtriU2dJDnUGHRgQAYgy6jELV6iDmXaMBsi0kD+CswpCtyGtYrv6w+pZ
-X-Received: by 2002:a05:620a:1988:b0:79d:569a:6997 with SMTP id af79cd13be357-7a17b720172mr202225285a.70.1721123260723;
-        Tue, 16 Jul 2024 02:47:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721123260; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp58843njk;
+        Tue, 16 Jul 2024 02:47:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU4pOmDNALEzoxddqjWBK/mUhITVZ3qX1rWrVsH13OI97PLuCur0SNMl36j9ghzIX0ngXd3wYtS5NAGtUerY10B1eoLJbft
+X-Google-Smtp-Source: AGHT+IEj0vifUwa14dF+o3wq/HScDKBy5qHQFOyUWrAvjvcn8SvV8qBl+G1RUQ0v1Ptn0hTFBn6K
+X-Received: by 2002:a05:6214:400a:b0:6b5:ea0e:98f with SMTP id 6a1803df08f44-6b77f249d69mr22961806d6.0.1721123261587;
+        Tue, 16 Jul 2024 02:47:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721123261; cv=none;
         d=google.com; s=arc-20160816;
-        b=teoMrWmGApg0j7npK0hmz76DaGGssSpmI1V2wOC3RHoDIbuwYgH3RjBDQtc1BpjeFF
-         XFk6yyh429PUV1iJm9dhRBfDjSq1IA5cLERzMMKxntg2Z7txwshjmkYK4WV7EQT4bTCX
-         UklUmPMjOqwe7fILaT8uDCL2+JzMZa9XP3DmoKXn4RrWYQlNUEBDxpPdARhAY9tvi8Rq
-         QMN8G1m+RP0+uR10c4pmKZymcuJ7kfPyvsKff+K86vUWk9l3g3NeTp8kFg63WhD5/pe4
-         NN9am5HuJ5x5ULTcMGK5J+4hw02qnSccn+Ac34TZ4s2keVI++DFrwUviYu0TahzMsKRf
-         TCyw==
+        b=Pomj/nWC16wil3r8/eRqIh9L1emdQMh10fKX6YfYrpQMF7khSQSf6Dk2xGH5vx2rl8
+         bagd6iZDw3knoQTsQMLqHTQlF6Fx2jQkRWQ3iqeCKv6v3mYZgL+7VkkyIgk8M268wIVc
+         RKB0HUrCZM/uksEAyq8+wpVNnNvRQtveHl8085dULhv/3XTS+6vrBPxc4f2clFZP4xKF
+         cgoLwdcKEPIcXJhHjEMTp6KtZDr8teYRYPVnp8u7H4cn21TQJZNNR1Roz46RfZkaMFON
+         ctKsGkE5CkCz63P7Dl7O1P3z1zye5iN/X44/8v/FPWlrOx9cGJyT3tBpuPHYIcYB/+pF
+         xLNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=gUjckqLbDLeSWm2r/UdxZCZJsU5t10ssHlVyg/zX46Y=;
+        bh=dvRk7/vnzWK99OFXCu80rCuujpBBeYujjUCGgbqJY8E=;
         fh=D1TEnXH2DbXUr6sVqyo/ig9zTKSO675I5EGRzxL3ieY=;
-        b=PoKAXFtoWkrjnBIyUN+7/a4ZXZaco0TYawLy3VGBczRFCNi7FrHjADEzrQ+nv7iMEM
-         nVmYtoV7Ek9dAH7WSF3/l2yvsN6IGeY8PalZ88LlRAqmMQOmVeFe7zNgOTVzaNs2wbR+
-         bQMmK9HKi4T6m5ifM+RbVXZUXAVYxcdAYdTxK3zo1fqVpAFwijhYbL1kgyBFIRGESuIM
-         IJ4dqNvsRCqiRLzVwlaQAOGUGvzKI5nelxT1TXsImsbxxzfBiPKD5/VX3zdKHG6+jBXE
-         3t17sm0aLExiusfm6lq3iPHo/WgmY/9b+xZBEYDgtKaSQKTCNMAxpcsUqSLTCtqStK9/
-         FYsQ==;
+        b=jnYAE6rD0Q22KMwyQ8Tw6BvNZlVt6N97HozMX8sPz9SbhU3CA9ZAFS6N3j7UuvQeGi
+         qua3mV2+b2Qfa0QlS5BrHMgiYoeux7Dbb9lorLPycmss1uV2RNLgG5qw/647WfUI4ZFp
+         65Lm4IiIYJm2Z7h5zjC9XHz4g0T4kcM8iuZd5Z7bNFhp+HxkuiAwMjfaTc2+wntm81yx
+         aQBu4jjoTGDZnWh3//3LXBV2cRmr16JmNAeFpvrZncehpdSNjryXwaHR6VOLyPGgzgtc
+         Wvfy7N6SQrNpJGPVgNzAeeDQCK37Sq4nLWHSAlRcpYWJ+5b6moIorovWZYnocfAtfsZy
+         p/KQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VjVkqQHv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ThfoTF2a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a160c5177fsi710711185a.311.2024.07.16.02.47.40
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b761a02c68si71213776d6.307.2024.07.16.02.47.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jul 2024 02:47:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 16 Jul 2024 02:47:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=VjVkqQHv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ThfoTF2a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sTelk-0005tc-Oq; Tue, 16 Jul 2024 05:46:48 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sTelt-0006X5-L2; Tue, 16 Jul 2024 05:46:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sTelk-0005sz-0P
- for qemu-devel@nongnu.org; Tue, 16 Jul 2024 05:46:48 -0400
+ id 1sTelr-0006Nc-DZ
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2024 05:46:55 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1sTelh-0000NQ-De
- for qemu-devel@nongnu.org; Tue, 16 Jul 2024 05:46:47 -0400
+ id 1sTelq-0000Ou-2a
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2024 05:46:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1721123204;
+ s=mimecast20190719; t=1721123212;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gUjckqLbDLeSWm2r/UdxZCZJsU5t10ssHlVyg/zX46Y=;
- b=VjVkqQHv5WrpWqxVyxfrj2Q2tIzBqOev8EjTlBr/O0ga+vmVFZW/gi1sOyK2xcFnjbNAIj
- k8Dp3x9iBB8thc4W3hy8zMU3qoMgYgVWI5C1IAlARDoxRMU+QXit9LVlCfCHn7wsmHugZc
- KB8i/XaZugAuLmieX7VhzZ+xZnbRuU0=
+ bh=dvRk7/vnzWK99OFXCu80rCuujpBBeYujjUCGgbqJY8E=;
+ b=ThfoTF2aahZr+aP+RVLaSTcrODvUAGC88qmTxsD2L9AuREaGIicv82OFichN91CVm+twaE
+ bfR/DueWr55FVgZKpDHiwwwqFPyStDSqZCIRUixWtog57FwqEg1FutfhqNezNB23ZInjBS
+ wLQBIsjiBkriFZVnB1j8c7udEd3lE0o=
 Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-264-gqzJtYh8P_y9cqQfrLkWcA-1; Tue,
- 16 Jul 2024 05:46:40 -0400
-X-MC-Unique: gqzJtYh8P_y9cqQfrLkWcA-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-62-nbLm-52IOC2sG1xBSU7uLg-1; Tue,
+ 16 Jul 2024 05:46:49 -0400
+X-MC-Unique: nbLm-52IOC2sG1xBSU7uLg-1
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 913091955BFA; Tue, 16 Jul 2024 09:46:38 +0000 (UTC)
+ id 13B281955D63; Tue, 16 Jul 2024 09:46:48 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.192.185])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BCAF13000183; Tue, 16 Jul 2024 09:46:33 +0000 (UTC)
+ id 45513300018E; Tue, 16 Jul 2024 09:46:43 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, mst@redhat.com, jean-philippe@linaro.org,
  peter.maydell@linaro.org, clg@redhat.com, zhenzhong.duan@intel.com,
  alex.williamson@redhat.com, jasowang@redhat.com
 Cc: yanghliu@redhat.com
-Subject: [PATCH 2/6] virtio-iommu: Remove probe_done
-Date: Tue, 16 Jul 2024 11:45:04 +0200
-Message-ID: <20240716094619.1713905-3-eric.auger@redhat.com>
+Subject: [PATCH 4/6] virtio-iommu: Remove the end point on detach
+Date: Tue, 16 Jul 2024 11:45:06 +0200
+Message-ID: <20240716094619.1713905-5-eric.auger@redhat.com>
 In-Reply-To: <20240716094619.1713905-1-eric.auger@redhat.com>
 References: <20240716094619.1713905-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -106,78 +106,40 @@ X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bFAE70YY1ajz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vJH9JmpdsA4s
 
-Now we have switched to PCIIOMMUOps to convey host IOMMU information,
-the host reserved regions are transmitted when the PCIe topology is
-built. This happens way before the virtio-iommu driver calls the probe
-request. So let's remove the probe_done flag that allowed to check
-the probe was not done before the IOMMU MR got enabled. Besides this
-probe_done flag had a flaw wrt migration since it was not saved/restored.
-
-The only case at risk is if 2 devices were plugged to a
-PCIe to PCI bridge and thus aliased. First of all we
-discovered in the past this case was not properly supported for
-neither SMMU nor virtio-iommu on guest kernel side: see
-
-[RFC] virtio-iommu: Take into account possible aliasing in virtio_iommu_mr()
-https://lore.kernel.org/all/20230116124709.793084-1-eric.auger@redhat.com/
-
-If this were supported by the guest kernel, it is unclear what the call
-sequence would be from a virtio-iommu driver point of view.
+We currently miss the removal of the endpoint in case of detach.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/hw/virtio/virtio-iommu.h | 1 -
- hw/virtio/virtio-iommu.c         | 3 ---
- 2 files changed, 4 deletions(-)
+ hw/virtio/virtio-iommu.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
-index bdb3da72d0..7db4210b16 100644
---- a/include/hw/virtio/virtio-iommu.h
-+++ b/include/hw/virtio/virtio-iommu.h
-@@ -43,7 +43,6 @@ typedef struct IOMMUDevice {
-     MemoryRegion bypass_mr;     /* The alias of shared memory MR */
-     GList *resv_regions;
-     GList *host_resv_ranges;
--    bool probe_done;
- } IOMMUDevice;
- 
- typedef struct IOMMUPciBus {
 diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
-index 4e34dacd6e..2c54c0d976 100644
+index 2de41ab412..440dfa6e92 100644
 --- a/hw/virtio/virtio-iommu.c
 +++ b/hw/virtio/virtio-iommu.c
-@@ -555,8 +555,6 @@ static int virtio_iommu_set_host_iova_ranges(VirtIOIOMMU *s, PCIBus *bus,
- 
-     current_ranges = sdev->host_resv_ranges;
- 
--    g_assert(!sdev->probe_done);
--
-     /* check that each new resv region is included in an existing one */
-     if (sdev->host_resv_ranges) {
-         range_inverse_array(iova_ranges,
-@@ -956,7 +954,6 @@ static int virtio_iommu_probe(VirtIOIOMMU *s,
+@@ -786,6 +786,7 @@ static int virtio_iommu_detach(VirtIOIOMMU *s,
+     if (QLIST_EMPTY(&domain->endpoint_list)) {
+         g_tree_remove(s->domains, GUINT_TO_POINTER(domain->id));
      }
-     buf += count;
-     free -= count;
--    sdev->probe_done = true;
- 
++    g_tree_remove(s->endpoints, GUINT_TO_POINTER(ep_id));
      return VIRTIO_IOMMU_S_OK;
  }
+ 
 -- 
 2.41.0
 

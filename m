@@ -1,135 +1,122 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1260257njk;
-        Wed, 17 Jul 2024 23:50:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWXXQW8t7bkqD6rxxQi5RpNTyW+JeFYhjoN80WQx/0job0Ipx63+/IOfvH25MGiZ9y+OP8TgtVAPhV/UlQkaGDtQjXsfDwi
-X-Google-Smtp-Source: AGHT+IFH01VOM1Hj8sS3EheIK2ucn2nKxFS81+CmObMfW+6TNC/l5Z0C8ek6KM7CRtbpaBg2Wide
-X-Received: by 2002:ac8:5fcc:0:b0:440:4d76:a601 with SMTP id d75a77b69052e-44f865fa12amr45455941cf.38.1721285420736;
-        Wed, 17 Jul 2024 23:50:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721285420; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1003024njk;
+        Wed, 17 Jul 2024 12:06:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWaDuOYXiAUWfCUTWekH8i+Kz8DlBTCuNRUTwXBbQ/g64ks22NexT3udaguqma+B95UA7R9auHtnlf5USfpO7aT3gXy9m8Y
+X-Received: by 2002:a05:651c:1a0c:b0:2ec:529e:6522 with SMTP id 38308e7fff4ca-2ef05d289b7mr2354561fa.31.1721243211834;
+        Wed, 17 Jul 2024 12:06:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721243211; cv=none;
         d=google.com; s=arc-20160816;
-        b=i+hWkc8T8qdmdNgRrkplCb9iS+OarkSN2/of/6uXBX7dlJR8NLKb8Ymif0sBXTv666
-         96pdeWI5G63PQ2pCB16efcU0sIkljCr/oq07l4ZMP4DIE4noQ/GyeWQSA2LGFFYKyNYf
-         3yMDJ6fJiu64c6nxi/JdIJ9VcAxK7epFWSrBuoXBA4/TnUv6/7sdLvZlFEd0ixO9PuKu
-         GgOlwIR7vW1CExYtZlR7wVpymx6OwHMsqSr+5319gXJrIWZt28NzEilErdEbjuM4g0HP
-         dtir3uf4RXp98xE5JIgfNJiRLUHVSVkvNWu8SB9CbEhAbRn3lVDQj84BuON7hprK9lYG
-         Vmvw==
+        b=Pdqp2EsQjiv0nG0ket675v2WryXXNLlMipLf95eQ3SfmIvchNxSuhnXYk6sdnDtVu4
+         KkbF7OR4gTF9ICzyKKmAmM/IqMD1u49cjJsL/t3kLrr+c7RseJYV6CSsRW3fGpdVoTB8
+         DgOzbJ3gWWnVCwETfxsZrpzMD5UfSpe9cU36pAQWtjUEsYLV+sDrtLMFetov6jMDlxa4
+         s0L6RRBvB/N76yqEWbrUC88jZsTbRbTC219fo4gC76VIIDFbxI2gjPnaj8PbGPaq0V2O
+         Q7rlX1a1I8P6QX4FbjiyjCNVPeYvlDWSdHyxNE6AWGVENOdOb3v70s4Iswct1DUp5S0u
+         k3Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to;
-        bh=LkWKqisN2FS9mP32G1J1Y4ksCO9RJsVRoe0fDEUbKIE=;
-        fh=cqT0Sm0iQHqDiDEsJ3ixFD44Q88e2AVQBWE8a4yA5Ck=;
-        b=JY/OC3+uAbQaRgWwGEpiUDzaRJUz5uGBBFRS0DjYRTIYsO8kViwZR8lrMlMcVWl28v
-         Mm/H+x0JNNYrZ/oO88R8jFMZSDLVbsNJ9+MqT54ro9Wt0hD/UqiAwaYo6N/8Q1wqqtlH
-         eoVeRUPSMI/daCWWAScCYDwQhet0BGl82OJeT7Qps9Iz/N6GOy4D1uQuJQv+08fVtPwE
-         IeXZlaPhmEyw57MFrKi7f6P+aj5lrRgalKXkWqH14LgEoXFiCLrQnlygsseqnD7fLaUj
-         wEfng9t3xn9WIUUmRGl3TWfFoTQvGHA+a0lCDAXIOql+VE3e1q1Us6QU17iMdEFciAXh
-         mfvw==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=gmTyUPUh2TdjaS2kakIUu+zSdq0kzqZ8AQ2di4fhUkI=;
+        fh=y9lTshx7VKR4AAZoNPghPcJ3RkRV+rOB8zl6o03w0Tg=;
+        b=ANKLKf2rU5iwy2bEP823X2jqvptdR2w1lPFG/P1p7s0AYnwled+/awynxDgUUz8Phj
+         6ra2kIEEaRZtTHbwibVIfGZo1CH5V9BZrPIcbdJUemn42w76biHYyoJwRY4veQz9GnWU
+         l5iL8/7+TleJNGAQ4eGEvXedfH8creatoU5/0n+vphQE4Ji9JWRKYNi1I2jyWPoIDVuF
+         MBXFrTU/gJnx/B3w5EfleZ9rqXWAipFAoIRhDUEVFEohVpGScGCZmK6jc+0oXi5S+Xiz
+         zed8rdNTmKo5zCADPN7u1coyfvEQHLFYU3XEbR2ryFxZ0FeyN4BWwjZyd0ggkHglXuQP
+         BNKA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44f5b77ebf4si116653261cf.161.2024.07.17.23.50.20
+       dkim=pass header.i=@linaro.org header.s=google header.b=PvK4sLFi;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 38308e7fff4ca-2ef05c9247csor638911fa.1.2024.07.17.12.06.51
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jul 2024 23:50:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 17 Jul 2024 12:06:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sUKxp-0004hb-26; Thu, 18 Jul 2024 02:50:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sUKxn-0004fC-8S; Thu, 18 Jul 2024 02:50:03 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sUKxk-00047C-PI; Thu, 18 Jul 2024 02:50:02 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 18 Jul
- 2024 14:49:25 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Thu, 18 Jul 2024 14:49:25 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 00/15] support ADC and I2C for AST2700
-Date: Thu, 18 Jul 2024 14:49:10 +0800
-Message-ID: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
+       dkim=pass header.i=@linaro.org header.s=google header.b=PvK4sLFi;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1721243211; x=1721848011; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gmTyUPUh2TdjaS2kakIUu+zSdq0kzqZ8AQ2di4fhUkI=;
+        b=PvK4sLFioA3aK47Wa4tbMvB0lmL4bqVExIyRVWu/+W2zeWagwYsUA017bXnfBoHglu
+         GB887kFFDePRMyT502Dof8Z8q6L5w4lFc8jjX/+G1yDOekqYim12rOQ9njciIZI7/oOt
+         heO1p1S53EQPxLTw831P5nXNUXarKlvX+HPtakv4+qKF9plBusE3HbuKcwzI1q8OFQDN
+         Cg0pL1Ohl6deMZhxa6kwJGb1TaOS19Dr4koT3B8N1uLXGnuE9G9rxCP1FX8wWfpuss7t
+         rE5eNC66IgfP3201ekJgDzJ9MmTqlfpIcSZJOR3CdlKqHYEZPcoux5XBkYL+pBgWscRi
+         FKgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721243211; x=1721848011;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=gmTyUPUh2TdjaS2kakIUu+zSdq0kzqZ8AQ2di4fhUkI=;
+        b=XYjt5fgChSjGPgIXi7SFx8FshhZWM03tx67ZUgmKG6VOZBweCDTQhmzCgqXjsaRHOD
+         zKZwnGnGnhQejxEQ89laYM/6hFOwBq3j/mqJe7uJi3P5vwhwTTQWJPg9LLJyLmVp2ogW
+         VaK1pyjVG/s4VQS2eFiegYfQUc9lXwzDBjHnrO0AClzCVFn07ayWw5G+pDQ2nd3LsWGY
+         4a/1g8sxNYUglozwwM68tUlD19C7RxIjWDh2+8dDdLPPO1xsPYXg4KTpELm+AkGGxjqf
+         AchDoFyeucG+RnoJLTZ93Hebtvcyw4yd9SW8OeAvQpw5eFL1PqorITPzzBrYJabhQK3n
+         HRtw==
+X-Forwarded-Encrypted: i=1; AJvYcCU5zSr1kdkGxl+q7gWATfq8qhTR2Voe0jN6h9MB3fgsSUGWww8FhPXC5nKTsa1rD5mCciTk/hYKCib307eQzWVKcaKpYOYn
+X-Gm-Message-State: AOJu0YxWn4KmIPfeHd3sMDgko9L0oNIdf3atTwbGdYk7eYcqwWMIx6zH
+	f05MivIkURxKmmQLYI6g59Dx6VJz+DByi56Tnq7bqO2fFkfOQNSyuyW/tHsoiSlqIlnhlxOBcMF
+	3ibNDQGziuXjb4bmTB3TrNZvzuU9wXVxzIKKNIRcC
+X-Google-Smtp-Source: AGHT+IGXxq60Nbxt/VLpXBWKiQuKAR94McjSn38xqdH99XBIjQBmd2SBUsMaV2HlB23vdXxYiDos22kvDEsmQCNytgw=
+X-Received: by 2002:a2e:9e02:0:b0:2ee:6b86:b0aa with SMTP id
+ 38308e7fff4ca-2ef05c7143emr2087811fa.17.1721243211042; Wed, 17 Jul 2024
+ 12:06:51 -0700 (PDT)
 MIME-Version: 1.0
+References: <20240715084519.1189624-1-smostafa@google.com> <20240717150931.GA3988597@myrica>
+ <1e7e750b-61bd-4822-8742-124bdf66a7c4@redhat.com>
+In-Reply-To: <1e7e750b-61bd-4822-8742-124bdf66a7c4@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 17 Jul 2024 20:06:39 +0100
+Message-ID: <CAFEAcA9e+NCFZ+Zhs0C-XxD++=33FV7Tnt8GzZmvUnpzMw2Yxg@mail.gmail.com>
+Subject: Re: [PATCH v5 00/18] SMMUv3 nested translation support
+To: eric.auger@redhat.com
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>, Mostafa Saleh <smostafa@google.com>, qemu-arm@nongnu.org, 
+	qemu-devel@nongnu.org, alex.bennee@linaro.org, maz@kernel.org, 
+	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org, 
+	marcin.juszkiewicz@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: w3+X8o7B/CqZ
+Content-Transfer-Encoding: quoted-printable
+X-TUID: fmiB7WiPce3l
 
-v1: 
-1. support ADC for AST2700
-2. support I2C for AST2700
+On Wed, 17 Jul 2024 at 18:44, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> Hi Peter, Richard,
+>
+> On 7/17/24 17:09, Jean-Philippe Brucker wrote:
+> > On Mon, Jul 15, 2024 at 08:45:00AM +0000, Mostafa Saleh wrote:
+> >> Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
+> >> but not nested instances.
+> >> This patch series adds support for nested translation in SMMUv3,
+> >> this is controlled by property =E2=80=9Carm-smmuv3.stage=3Dnested=E2=
+=80=9D, and
+> >> advertised to guests as (IDR0.S1P =3D=3D 1 && IDR0.S2P =3D=3D 2)
+> > For the whole series (3-9, 11, 12, 15, 16, 18):
+> >
+> > Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> >
+> > (and I think patch 16 is missing Eric's R-b)
+>
+> Jean-Philippe and I have followed up the progress of this series,
+> Mostafa took into account all our comments and all the patches were
+> reviewed. It seems to be in a pretty decent state so if you don't have
+> any objection, please consider pulling it for 9.1.
 
-Jamin Lin (15):
-  aspeed/adc: Add AST2700 support
-  aspeed/soc: support ADC for AST2700
-  hw/i2c/aspeed: support to set the different memory size
-  hw/i2c/aspeed: support discontinuous register memory region of I2C bus
-  hw/i2c/aspeed: rename the I2C class pool attribute to share_pool
-  hw/i2c/aspeed: introduce a new bus pool buffer attribute in
-    AspeedI2Cbus
-  hw/i2c/aspeed: support discontinuous poll buffer memory region of I2C
-    bus
-  hw/i2c/aspeed: introduce a new dma_dram_offset attribute in
-    AspeedI2Cbus
-  hw/i2c/aspeed: Add AST2700 support
-  hw/i2c/aspeed: support Tx/Rx buffer 64 bits address
-  hw/i2c/aspeed: support high part dram offset for DMA 64 bits
-  aspeed/soc: introduce a new API to get the INTC orgate information
-  aspeed/soc: support I2C for AST2700
-  aspeed: fix coding style
-  aspeed: add tmp105 in i2c bus 0 for AST2700
+Yep, I've had this series on my radar since you said in a
+comment on the previous revision that it was close to
+being ready. Thanks to both you and Jean-Philippe for doing
+the heavy lifting on the code review here.
 
- hw/adc/aspeed_adc.c         |  16 ++
- hw/arm/aspeed.c             |  31 +++-
- hw/arm/aspeed_ast27x0.c     |  65 +++++++
- hw/i2c/aspeed_i2c.c         | 340 ++++++++++++++++++++++++++++++------
- include/hw/adc/aspeed_adc.h |   1 +
- include/hw/i2c/aspeed_i2c.h |  34 ++--
- 6 files changed, 418 insertions(+), 69 deletions(-)
+Applied to target-arm.next for 9.1, thanks.
 
--- 
-2.34.1
-
+-- PMM

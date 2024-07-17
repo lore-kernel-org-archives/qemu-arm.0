@@ -1,182 +1,117 @@
-Received: by 2002:a05:7022:1102:b0:84:b8cb:c71e with SMTP id ou2csp985101dlb;
-        Wed, 17 Jul 2024 08:31:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV0otWeMEjSH0109EClgHuicALlyL+P0w0L77UfjfSHtewRx1lF3UCI6IA/00zV50COBHyzqNf6+kueimDSX+THIg0JWd5p
-X-Google-Smtp-Source: AGHT+IEB+Nnztv00MnBVkvV1oGWOy1Cq/fMZ2/tPJEPugRlW2CG+Q5dcJC0AlgDMlKDDHRw6oAbc
-X-Received: by 2002:a05:622a:54e:b0:444:d08d:6202 with SMTP id d75a77b69052e-44f7ca1aabbmr86745521cf.12.1721230289416;
-        Wed, 17 Jul 2024 08:31:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721230289; cv=none;
+Received: by 2002:a05:7022:1102:b0:84:b8cb:c71e with SMTP id ou2csp987493dlb;
+        Wed, 17 Jul 2024 08:35:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCX1zmZhER4x7vAAVu83unFvVdplzypPZ5W3nC1FqpnqWmvd/ntWRZCQG19RjhEpkCp8Ih8waJE6Bg1ZRfgeRpASF0p1FcQP
+X-Google-Smtp-Source: AGHT+IFgQTr7wXC0OEp5LJ6vFv+ywuwcnGFq66Zucqmf443TsSURGOAGJgSjG/lcFaGMmfWhNjRm
+X-Received: by 2002:a17:90a:db81:b0:2c9:e24d:bbaa with SMTP id 98e67ed59e1d1-2cb527d39b0mr1574359a91.27.1721230513579;
+        Wed, 17 Jul 2024 08:35:13 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1721230513; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Obr3syPlMpQquF2KsX4IK1dvsPijbQuAvpcaArGUI4nQgPyY92TAKFyoYpNWaEX4si
-         7xsOSyqGAGYiMhJlnp9Wr8xlt5jPS1w5fCD2RYnSulMqG1Sy5U1WReDiSWf/CKudBLUv
-         G2eew7STgND4dO2vu/Rf5Wi7r6Yg6S1HqNs9t0oyKJqtdOVGBgMTpj8RK/tc5QgLkhS1
-         rCk1rTkfVG81HdVSn39lydTCLlCJcI0S2kYlo3w3KDOsjYYerp9hUuJqJOz/4DZteJ42
-         o3NQ7ooh2oCpd+kpH8pWOieDWuYVOiB194AELn8HJd0UM7Lhh2NsNQEG4cMal8+moW5n
-         1fzg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=c4ZHdx1No2slFPya5wMVWYTJpX1xJhqZkiTzk46H+D0=;
-        fh=Hpz/N+dwjYm8jR61gZocAilaKAnp2puDME2FDGUEsjQ=;
-        b=gUqXVBQH+BDeh0SlBElH+veKQ+w6GZ0r2mnITKQ0h+p7hyEopxwqFwJPzthrKeCF3n
-         0djlfFGUmqjCVfrtz7KiDzZP2oA3x+nHC1Db33++A/GZ5zfVXs0A/2yJdESBAD13UBZn
-         ROTOsa2SLSgwZ6dAOYslR67HQ57AN+Y5N45zkotzPYVSQANU3lKWyAzC/bAWVS9l5D14
-         0f7mlbHYf9ge9YU7U0jEH7aYOFJCfR82rUNWqrFRls0DLNdCAWu2lC3rUQRqz66oBkkA
-         21NDdL6ebRMBZ36ryZnE+K6Xg1VqgTG0dfDzP8Iv1IkEHEbJbRKhLK/UNMCFBYgMlbOg
-         AY6Q==;
+        b=ZXsZUqjaUX96qb93TzmvSvsIeLWXokfT6z4jIRQGZgw9l0OgK2sRtDrxfvjvrmzWLn
+         13Lgm/XZGnSsHw2ELDnQ0FknToKVZMPTr1ILGJgbIQy5kSover24M5Zg1u26VQc+InHH
+         1vfWmEb0Ql2Oa2RcyxiGH/iTjUDWxlTXug+bPxmdWgyK2AQtG7jriqRQ+Lmq1ixIgXjm
+         NnUBeI8be9mp8nE6FmGxoQg1pvdEMg7EAoCfNOk4It8Hwl4E/gAdmtHxUtlSyQDdUFfW
+         HJpVlJE7FtXZK/jdmb/XSmGX+PAhLHVGEtM20+e6NCe108UkC3QTXs8+Xsi7ba8BMbfq
+         WoCw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=TwqaIIK3h/6EZYMW1Mt7W90GhCCWU4XtsshXAmyqkj4=;
+        fh=dycWaGgdz4bYkZC9GRTcblS9ZH2yOuveZVBYhbD4tZ0=;
+        b=tX4cqFQ+8P6VzPAyi0r5WKmN/sQWaGZKFLreS7porsKjnr5XZUM8WXN39zc6dSoGBM
+         fYobS6HA7GaEG01vdeAo4ksNZzeD8umpQ7FTi3k1/VaxQ+/P5N4VRdZBvs+ExILFpcR1
+         Nf1KKjdRExNghgrigvttRvRHwAFD9lkytZDbWnvhcdLClhoShjIfVhXiR2B0DfBbG3Fi
+         AxfsX2s1T+XwKjMWuEGIA7dxAMJ4OrHfjENGvkMnvOR02Lp875bcTUvCCVHUI1n5PuT/
+         kYbvDSikUrXlYpukRb+C/SdIwI+endmI2HZN7p+k/bJR3go10lOcYYeBRHxQoOodAZNZ
+         2h0w==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xjp6W64+;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-81e68f78a36si726853241.218.2024.07.17.08.31.29
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-255368-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-255368-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
+Return-Path: <linux-kernel+bounces-255368-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2cb60238eacsi96514a91.180.2024.07.17.08.35.13
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Jul 2024 08:31:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Wed, 17 Jul 2024 08:35:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-255368-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Xjp6W64+;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1721230289;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=c4ZHdx1No2slFPya5wMVWYTJpX1xJhqZkiTzk46H+D0=;
-	b=Xjp6W64+W7raulsq3M0zhnI6eypCNvDNXqXwLBo8nD5i+PhzNUO6UWql4LV6V0o5wucIli
-	6ke0IVfgDCUiIcN/vOd78TTtqjd45ryg5dfgFtsd8ZF9u7ZuyvMVYWcZjYF30GFWtvRFVF
-	Mi87oBr9sVFQO8FOhVrNtpNCqyYZDAg=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-641-amzVjZ0TNgWDUG_79WU1ng-1; Wed, 17 Jul 2024 11:31:25 -0400
-X-MC-Unique: amzVjZ0TNgWDUG_79WU1ng-1
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-79efed0e796so199410285a.1
-        for <alex.bennee@linaro.org>; Wed, 17 Jul 2024 08:31:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721230285; x=1721835085;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=c4ZHdx1No2slFPya5wMVWYTJpX1xJhqZkiTzk46H+D0=;
-        b=kFkTwkVuVIE01K/CaEPUJUn4To8tJkp/AE5ohgGNhn5mFMoAFOuzKwpqewEYfUS2hf
-         X846eP/c6kbqYjYqGIpBp1Wb7EQa449FMtYpyRmaUHzxmaV4Zwfzit3ecYqsLUwsr+5A
-         X8Fi8D+vHW4kfxyqS3276So58ObXBzhwZEKGkZGUUIxk3mwVylapaoJbWw+KgRuwly/S
-         cnIxJp55iQBXR22gfj6qNcR3Ajjyfi87/AVpt/mID1RHIf+2x7+AzlHJoVVsVmsuexFR
-         6t/Gn2oi9o9gFIMX7wyG6X/AyW9o0nBrKYVehM0o/B/PzG7+aiAWZrMM2eSL17LZdbq4
-         CpWA==
-X-Forwarded-Encrypted: i=1; AJvYcCV+WAPfTPENt9cInqLBzeKPGQgznzk0MWxMLhTrIEjANdEfCcT4TFb5JazJ77gtNOdZuoifPVNczQ3npkh6DnNqqtfJHSam
-X-Gm-Message-State: AOJu0YzddFR6VHDRcqHu3AtvglExh+C+R8kbsoEbNl2uQSqG3YQV9JgE
-	Rm/cnuoy62UbPwtpgDVq+zVz32il8fJF9FKx/0lc6x0QrDZJhXk8SqlozDKagr9jezk6MH2C+bq
-	pKvwSi/4iSAAllouvFXQCODEXO4XQMZLpYrndrGtwoDbe40xnFWOnVQ==
-X-Received: by 2002:a05:620a:f03:b0:79d:7893:1cc with SMTP id af79cd13be357-7a18da82ce5mr2743285a.12.1721230285113;
-        Wed, 17 Jul 2024 08:31:25 -0700 (PDT)
-X-Received: by 2002:a05:620a:f03:b0:79d:7893:1cc with SMTP id af79cd13be357-7a18da82ce5mr2735185a.12.1721230284481;
-        Wed, 17 Jul 2024 08:31:24 -0700 (PDT)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7a160b92ba7sm414925685a.27.2024.07.17.08.31.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 17 Jul 2024 08:31:24 -0700 (PDT)
-Message-ID: <81699528-a000-4c0f-bd72-006bdb460f9b@redhat.com>
-Date: Wed, 17 Jul 2024 17:31:21 +0200
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-255368-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-255368-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 8523CB220F1
+	for <alex.bennee@linaro.org>; Wed, 17 Jul 2024 15:35:11 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 9D4DE181CE7;
+	Wed, 17 Jul 2024 15:34:55 +0000 (UTC)
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D47A9181BB3;
+	Wed, 17 Jul 2024 15:34:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1721230495; cv=none; b=fIMXKubVH9LFJ+GykK2OWyTiJjo0CwhlbObpGI2a9CE9kan2kq6GrDSRLgSgh/sTP77+5lvzL6Mz4qktZ8nm0lZ4+seOXnDgWRxYfH4VFhi1LZx/LtqSc9KR1Ro41rYyJO1pMp4ipga1hOFW1/6B/1Ex1Oc96Gu4UJEwzHaNJ9A=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1721230495; c=relaxed/simple;
+	bh=//A4za5JG/cce/YFg7vvCVRF/dpaPs0AXrJYD0Q+dHs=;
+	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=DkgUGaaUKB29+dVgUdoCkefxjPMIR8OAyDUx1Inlt97ChQ7Vtzh7pRshxMn7IFK2PRBPXVymK6UOH4zxUO2thmdcyROmZD7sfmpUOgONyGdPKmkr3KnFDiD/SGAMKiYA9DE4bbDaZSlZP917uJaCqoJgH04yhmma5A4I+EAjhbU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WPKhh38XYz6D8Yd;
+	Wed, 17 Jul 2024 23:33:24 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+	by mail.maildlp.com (Postfix) with ESMTPS id 8F0E2140A70;
+	Wed, 17 Jul 2024 23:34:43 +0800 (CST)
+Received: from localhost (10.203.174.77) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 17 Jul
+ 2024 16:34:43 +0100
+Date: Wed, 17 Jul 2024 16:34:42 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+CC: "Michael S. Tsirkin" <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
+	Ani Sinha <anisinha@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Peter
+ Maydell <peter.maydell@linaro.org>, "Shannon Zhao"
+	<shannon.zhaosl@gmail.com>, <linux-edac@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
+	<qemu-devel@nongnu.org>
+Subject: Re: [PATCH v2 1/7] arm/virt: place power button pin number on a
+ define
+Message-ID: <20240717163442.00002b78@Huawei.com>
+In-Reply-To: <88fcd8947095ec6dff8ea709c8ceffa72b16f686.1720789921.git.mchehab+huawei@kernel.org>
+References: <cover.1720789921.git.mchehab+huawei@kernel.org>
+	<88fcd8947095ec6dff8ea709c8ceffa72b16f686.1720789921.git.mchehab+huawei@kernel.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH v5 16/18] hw/arm/smmuv3: Handle translation faults
- according to SMMUPTWEventInfo
-To: Mostafa Saleh <smostafa@google.com>, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org,
- marcin.juszkiewicz@linaro.org
-References: <20240715084519.1189624-1-smostafa@google.com>
- <20240715084519.1189624-17-smostafa@google.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20240715084519.1189624-17-smostafa@google.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-X-TUID: KKfqs21seRg4
+X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-TUID: xdK4B5nh4oOO
 
+On Fri, 12 Jul 2024 15:15:08 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
+> Having magic numbers inside the code is not a good idea, as it
+> is error-prone. So, instead, create a macro with the number
+> definition.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-On 7/15/24 10:45, Mostafa Saleh wrote:
-> Previously, to check if faults are enabled, it was sufficient to check
-> the current stage of translation and check the corresponding
-> record_faults flag.
->
-> However, with nesting, it is possible for stage-1 (nested) translation
-> to trigger a stage-2 fault, so we check SMMUPTWEventInfo as it would
-> have the correct stage set from the page table walk.
->
-> Signed-off-by: Mostafa Saleh <smostafa@google.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Seems sensible to me.
 
-Eric
-> ---
->  hw/arm/smmuv3.c | 15 ++++++++-------
->  1 file changed, 8 insertions(+), 7 deletions(-)
->
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 84cd314b33..d052a2ba24 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -34,9 +34,10 @@
->  #include "smmuv3-internal.h"
->  #include "smmu-internal.h"
->  
-> -#define PTW_RECORD_FAULT(cfg)   (((cfg)->stage == SMMU_STAGE_1) ? \
-> -                                 (cfg)->record_faults : \
-> -                                 (cfg)->s2cfg.record_faults)
-> +#define PTW_RECORD_FAULT(ptw_info, cfg) (((ptw_info).stage == SMMU_STAGE_1 && \
-> +                                        (cfg)->record_faults) || \
-> +                                        ((ptw_info).stage == SMMU_STAGE_2 && \
-> +                                        (cfg)->s2cfg.record_faults))
->  
->  /**
->   * smmuv3_trigger_irq - pulse @irq if enabled and update
-> @@ -933,7 +934,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
->              event->u.f_walk_eabt.addr2 = ptw_info.addr;
->              break;
->          case SMMU_PTW_ERR_TRANSLATION:
-> -            if (PTW_RECORD_FAULT(cfg)) {
-> +            if (PTW_RECORD_FAULT(ptw_info, cfg)) {
->                  event->type = SMMU_EVT_F_TRANSLATION;
->                  event->u.f_translation.addr2 = ptw_info.addr;
->                  event->u.f_translation.class = class;
-> @@ -941,7 +942,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
->              }
->              break;
->          case SMMU_PTW_ERR_ADDR_SIZE:
-> -            if (PTW_RECORD_FAULT(cfg)) {
-> +            if (PTW_RECORD_FAULT(ptw_info, cfg)) {
->                  event->type = SMMU_EVT_F_ADDR_SIZE;
->                  event->u.f_addr_size.addr2 = ptw_info.addr;
->                  event->u.f_addr_size.class = class;
-> @@ -949,7 +950,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
->              }
->              break;
->          case SMMU_PTW_ERR_ACCESS:
-> -            if (PTW_RECORD_FAULT(cfg)) {
-> +            if (PTW_RECORD_FAULT(ptw_info, cfg)) {
->                  event->type = SMMU_EVT_F_ACCESS;
->                  event->u.f_access.addr2 = ptw_info.addr;
->                  event->u.f_access.class = class;
-> @@ -957,7 +958,7 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
->              }
->              break;
->          case SMMU_PTW_ERR_PERMISSION:
-> -            if (PTW_RECORD_FAULT(cfg)) {
-> +            if (PTW_RECORD_FAULT(ptw_info, cfg)) {
->                  event->type = SMMU_EVT_F_PERMISSION;
->                  event->u.f_permission.addr2 = ptw_info.addr;
->                  event->u.f_permission.class = class;
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>

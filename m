@@ -1,188 +1,265 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1349227njk;
-        Thu, 18 Jul 2024 03:34:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWFHCcYuM16MmFZSgefz5FvD/lRK/RU2XWdFEV0/kCdAdxZVjAetCN6AJcV6SJh4wLBhBHJ1W8BBEDYgYBkL6dcDLISyjOz
-X-Google-Smtp-Source: AGHT+IG/ksUUdykv+wlqfzuvLNEIuwIFn3FVDVN7afZzvIPRKP9/V3XDpCjj5ShMFgk6JFIeHT+r
-X-Received: by 2002:a17:907:7205:b0:a72:42df:cd27 with SMTP id a640c23a62f3a-a7a013c160bmr337687766b.71.1721298842507;
-        Thu, 18 Jul 2024 03:34:02 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1721298842; cv=pass;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1429948njk;
+        Thu, 18 Jul 2024 06:14:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWfmduhY3dwmiOgJuCYMRTax55T7y+fJaf7P9/Y48tWowZSmwjBkuPaBd5v/H3AFaoyRJs9MSJGOEIV1v3xWcvedV1emVNs
+X-Google-Smtp-Source: AGHT+IHL/sLfITXgZ9oRJ3BHfQntpBGwe3RZDDcYPZQq6OyvuGsMjdutzNqlr8Vn8d8H7kj4Xt16
+X-Received: by 2002:a05:6808:220b:b0:3da:b336:b2fc with SMTP id 5614622812f47-3dad1f8bd30mr5527115b6e.36.1721308467209;
+        Thu, 18 Jul 2024 06:14:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721308467; cv=none;
         d=google.com; s=arc-20160816;
-        b=rMEiefhdzD5BmRsFnxa8Tc1jsZatgbHWR5Nc14legyOCEP7bSuysScCb307uuptPZm
-         3doSjjhdF0wCsmN8DRi5uuT35U1MA2gHK1s0Bj1qCsaBl28eK/DNtbr81QMPb3gxMYq3
-         PMtTOue7rxZ8jp2mHaZM1iyD4k5DZQWPjxKwaI84mw7ae2iJ5+ekADiG8wHOsCUmkelk
-         Fd8Pf4xyAw/SCOjlVe1LDDyNFvIdqFcXpNLWiTK3kTScRV98VTl5u0NJDPL8Ts1I6bMb
-         aVcIgxpGi8ClJpBa3LS93O9f8bVkGdN0J+lQwtsOslreGp7DIjtdjGNk649fZXzUKzHq
-         Df4A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :dkim-signature;
-        bh=v+h287ifj6s+K3J0t30yGCIPmpGY1Q1ZLm5gQl9XjRo=;
-        fh=r9epc/zyUc+7Z12BB9bbqqz6IHHuFBgjhPKeflxzAf0=;
-        b=OOmMrrfEDBfxVcKjXyD6aM1d9eNSitLbHIyFqgbhV5kwuduZ6m8QnbtbrImya9YMIk
-         WnGy2IPbFsaOzYCD5UIcI91kaHaH3NmLXDZbgeVqdV3pmwIqyJEadRpml/iEKxkuxFfk
-         hCGQ0KfHzWmrTyZ7p7TIFxuFJQJvH+0uGbVic1PjTv+dR/t+B0kHScjLnRPrM84qD/TK
-         5oSiMAqUWRzTUMCayD2HTGSiyOqsIZXk/Y+gKVCbSggmuP0UnxmrSEg10xu69Empo3wr
-         5hbwCY8hBf3kfCWz9xS6OeY0EjSUdWXQt8/a5qz5c9LkM8pikMI3hM133D1THTWjaNlN
-         b2sw==;
+        b=UmB9FMrZq6VqvRnhZrG2HQdB2/zFUxW2LMGSRDV+UsEXWUYXeupVF5+R2LEsB/DowM
+         qBPSv8iOaoWS4vuzGkai21MhHwx32ul0vT/xPajdEIAmXhgQizQTwkRSZM3B2yybnrab
+         ent0qCVu3byz1ekXv0s7So70P4Xx//wPS5u3vXsYs/VnR0eXTXTtLdpBsE1WleYgJQij
+         eepTnWtrOPFR2RCX/NQj7WGuAwkoZmqFs7oC78eTkXEGcuachlr5onQc+23b9UpRSoEA
+         E8vjqw8Qn7D3mFPLpA0YLEZPRAdQZsP+fKzgG+SNqYPB09+1onfqMO+jdJNSqPHOoG35
+         umxw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=fNW0+eTYwQTfYJHifVhdqtWIxQ2WKuZ2bJY1xgh/Ars=;
+        fh=vpv4dibz543bPaX9Fq9ZvnJ9J5iREE2VOWA/tGZmS3U=;
+        b=08T8pB0enfP2iCLFVcMjWFl18FB/sQ8w2GunT2bJ9NM7pnb4yYHxNNzNGxSAlFZaO7
+         zKPm+Km6I9lPwEiwRYEtJkMs4nkINeSWBSLah6qwimQ1a/wFhNE3Kq7poqZr9RNiJjXV
+         WaAfGV3v4d1oslMS7xz8sw3U12IXVoWP1KWYV1Psl6C0r2kLX+3Is7TckIgooBi2ubMd
+         lNU7+EJXj6YmLFmHnwBanOlG5RFMOXFB4ZWmQosNdwa659GazaPAdz/9/PF5/T94YqO6
+         iWB2+dl4Wh3gNMtHqEhibwhI9JYU6CO2bbBiZjIBiWF8MCSy9KgQKAxz4INZGHayUPNh
+         YkyQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Yr4I5Tki;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-256267-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-256267-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <linux-kernel+bounces-256267-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a79bc7c1597si639844866b.414.2024.07.18.03.34.02
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-491560d03c8si801997137.227.2024.07.18.06.14.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jul 2024 03:34:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-256267-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 18 Jul 2024 06:14:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Yr4I5Tki;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-256267-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-256267-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 13F421F22C5E
-	for <alex.bennee@linaro.org>; Thu, 18 Jul 2024 10:34:02 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id C0D6A82866;
-	Thu, 18 Jul 2024 10:33:56 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Yr4I5Tki"
-Received: from mail-lj1-f169.google.com (mail-lj1-f169.google.com [209.85.208.169])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C52601EA80
-	for <linux-kernel@vger.kernel.org>; Thu, 18 Jul 2024 10:33:54 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.169
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1721298836; cv=none; b=dWWD9Lmotrzf9689PFnpUSilZf5gcejZR54fSpURTFIPfRzWJR2Jmlfp5A5XYzV6qrcCaYDLhckFO8q5NfmEldFoJpVcB7jAxYXYqL4M6i4L8sVRZoX28ewIzwMhiG4PxebkYTSmGrXk8T15/2S9h+dDijhxCmzjaKnbjFaMbAg=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1721298836; c=relaxed/simple;
-	bh=4XgBzjycGWSBBrQwFMCRtpnaaVgDS1KX0nv7LgzbKqg=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=dE3v6BhOAE3uj87SOTbrUihNsx6wRgBcepmE49Ln3ZCBQ7BdgQ1szu5bSIKANwnOyf7CfpZvZfDkGLg9xevGGLwugGbryly34FzGDRpips+/R3RQTsahd1NRFBT/LJVm2FS9xoFIxWb4nvQzNvkkFTIDPW3+JjhU7+xGAGLFMF0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=Yr4I5Tki; arc=none smtp.client-ip=209.85.208.169
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-lj1-f169.google.com with SMTP id 38308e7fff4ca-2eedebccfa4so7269981fa.1
-        for <linux-kernel@vger.kernel.org>; Thu, 18 Jul 2024 03:33:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721298833; x=1721903633; darn=vger.kernel.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=v+h287ifj6s+K3J0t30yGCIPmpGY1Q1ZLm5gQl9XjRo=;
-        b=Yr4I5TkinrXX/Hut4mSzNrJvxak9uKjNRmi1CVMb8InWhvDPJ3XL17292sVQ4k089N
-         DsdUwxemexwob5+/3BmbeAl1oqWAStOfRIvINWNncy2QOqDbO+KqXbhDCyBL5Ig30kaK
-         1pO4HAkgSKl6YiN3t3g7moYApvpIHxN6q2x2BExwqz0SzS5Ieu0nsKOkEbld/m6ETClL
-         PCB+EvclNvLKieAV/8NermPQO2hiDIcRM08+57fbYBzXNhVIUy0DEBnEojxR+8WdKI3P
-         D8RiuFmX2jhqiZGAr3kIhE/SHydZrmdsRrcdyFx36iblcjNNVkIH8k9BlV2s34nEO+x1
-         MPiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721298833; x=1721903633;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=v+h287ifj6s+K3J0t30yGCIPmpGY1Q1ZLm5gQl9XjRo=;
-        b=ke8OcS7A6my2LZheVxAbI4deU7KHcmvfIVeRCFRCk5aIX/DsrxyT27vnE41vel5Hju
-         dY5i7MleKUZ0enzq0efaehxr7PByvUimtmw4X7vpnjia2UUEpnYpstfq5RAE55XlM5KR
-         1V0hNbFzCJzkDu6qnLd9sco2+8+Au+6fh6jHQHiiKtbJ7L97W4silQap4P34iNRsWurw
-         mJv8v5qlPVUsxopn4Q9Ww9axbZL4F52lsidDxWPgu5XFmnfMCIQa9yDHrsMo77aYl6gL
-         6ULuCGjWLbfrP4NrqaK6H3lTwaFgMFKk3bEp+kS2R+tKz2Q6x1i7ix8U4jRPoVdChXvb
-         drEA==
-X-Forwarded-Encrypted: i=1; AJvYcCVcfHOKKzBrJ3BHJBlruIQICV1Jk5N+xAils84sICTfmEBtDBbb38rO5aY2FQLsXm7uVmsJqPzomy7QnDbtJG9nOUEE4vrVvdsMvY4t
-X-Gm-Message-State: AOJu0YzD4e6btkA6p6whDR3fbW2gY7hK/n27fWNY7nJEXfDqb3tLONQ+
-	vWUEab3Ax6+g2cYA306CS3fjGktFVjedeYTCphcIaCakRLPBLF9Is1vvCfHmD+9CNFbRS95zvQl
-	SRvynke3Qz/v4EEqmL2u2xQSJPQowC3mYORIbsA==
-X-Received: by 2002:a2e:3c1a:0:b0:2ee:8adb:6190 with SMTP id
- 38308e7fff4ca-2ef05d2c4e7mr16006871fa.35.1721298832782; Thu, 18 Jul 2024
- 03:33:52 -0700 (PDT)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sUQxg-0001gr-9H; Thu, 18 Jul 2024 09:14:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=3riu=OS=kaod.org=clg@ozlabs.org>)
+ id 1sUQxd-0001fE-RM; Thu, 18 Jul 2024 09:14:18 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=3riu=OS=kaod.org=clg@ozlabs.org>)
+ id 1sUQxb-00029N-5U; Thu, 18 Jul 2024 09:14:17 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4WPtYY3d52z4x0n;
+ Thu, 18 Jul 2024 23:14:09 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4WPtYS2R47z4x0C;
+ Thu, 18 Jul 2024 23:14:03 +1000 (AEST)
+Message-ID: <0a121e17-aede-4223-b8c0-91f202ff66ed@kaod.org>
+Date: Thu, 18 Jul 2024 15:14:01 +0200
 MIME-Version: 1.0
-References: <cover.1720789921.git.mchehab+huawei@kernel.org> <88fcd8947095ec6dff8ea709c8ceffa72b16f686.1720789921.git.mchehab+huawei@kernel.org>
-In-Reply-To: <88fcd8947095ec6dff8ea709c8ceffa72b16f686.1720789921.git.mchehab+huawei@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 18 Jul 2024 11:33:41 +0100
-Message-ID: <CAFEAcA_4ioaV2Rg8dFFUeAU=tBBq=_TRVpCAUftMeDxu9=gDTg@mail.gmail.com>
-Subject: Re: [PATCH v2 1/7] arm/virt: place power button pin number on a define
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
-	Shiju Jose <shiju.jose@huawei.com>, Ani Sinha <anisinha@redhat.com>, 
-	Igor Mammedov <imammedo@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>, 
-	linux-edac@vger.kernel.org, linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, 
-	qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: /vRaPIIE3L3K
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 10/15] hw/i2c/aspeed: support Tx/Rx buffer 64 bits
+ address
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
+ <20240718064925.1846074-11-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240718064925.1846074-11-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=3riu=OS=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /BtG7BiOLKXv
 
-On Fri, 12 Jul 2024 at 14:15, Mauro Carvalho Chehab
-<mchehab+huawei@kernel.org> wrote:
->
-> Having magic numbers inside the code is not a good idea, as it
-> is error-prone. So, instead, create a macro with the number
-> definition.
->
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+On 7/18/24 08:49, Jamin Lin wrote:
+> ASPEED AST2700 SOC is a 64 bits quad core CPUs (Cortex-a35)
+> And the base address of dram is "0x4 00000000" which
+> is 64bits address.
+> 
+> It have "Master DMA Mode Tx Buffer Base Address[39:32](0x60)"
+> and "Master DMA Mode Rx Buffer Base Address[39:32](0x64)"
+> to save the high part physical address of Tx/Rx buffer address
+> for master mode.
+> 
+> It have "Slave DMA Mode Tx Buffer Base Address[39:32](0x68)" and
+> "Slave DMA Mode Rx Buffer Base Address[39:32](0x6C)" to
+> save the high part physical address of Tx/Rx buffer address
+> for slave mode.
+> 
+> Ex: Tx buffer address for master mode [39:0]
+> The "Master DMA Mode Tx Buffer Base Address[39:32](0x60)"
+> bits [7:0] which corresponds the bits [39:32] of the 64 bits address of
+> the Tx buffer address.
+> The "Master DMA Mode Tx Buffer Base Address(0x30)" bits [31:0]
+> which corresponds the bits [31:0] of the 64 bits address
+> of the Tx buffer address.
+> 
+> Introduce a new has_dma64 class attribute and new registers of
+> new mode to support DMA 64 bits dram address.
+> Update new mode register number to 28.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
 > ---
->  hw/arm/virt-acpi-build.c | 6 +++---
->  hw/arm/virt.c            | 3 ++-
->  include/hw/arm/virt.h    | 3 +++
->  3 files changed, 8 insertions(+), 4 deletions(-)
+>   hw/i2c/aspeed_i2c.c         | 48 +++++++++++++++++++++++++++++++++++++
+>   include/hw/i2c/aspeed_i2c.h | 12 +++++++++-
+>   2 files changed, 59 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 29d400ac93..b48f250e08 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -140,6 +140,7 @@ static uint64_t aspeed_i2c_bus_old_read(AspeedI2CBus *bus, hwaddr offset,
+>   static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
+>                                           unsigned size)
+>   {
+> +    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
+>       uint64_t value = bus->regs[offset / sizeof(*bus->regs)];
+>   
+>       switch (offset) {
+> @@ -170,6 +171,16 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
+>       case A_I2CM_CMD:
+>           value = SHARED_FIELD_DP32(value, BUS_BUSY_STS, i2c_bus_busy(bus->bus));
+>           break;
+> +    case A_I2CM_DMA_TX_ADDR_HI:
+> +    case A_I2CM_DMA_RX_ADDR_HI:
+> +    case A_I2CS_DMA_TX_ADDR_HI:
+> +    case A_I2CS_DMA_RX_ADDR_HI:
+> +        if (!aic->has_dma64) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
+> +            __func__);
+> +            value = -1;
+> +        }
+> +        break;
+>       default:
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, offset);
+> @@ -731,6 +742,42 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+>           qemu_log_mask(LOG_UNIMP, "%s: Slave mode DMA TX is not implemented\n",
+>                         __func__);
+>           break;
+> +
+> +    case A_I2CM_DMA_TX_ADDR_HI:
+> +        if (!aic->has_dma64) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
+> +                          __func__);
+> +            break;
+> +        }
+> +        bus->regs[R_I2CM_DMA_TX_ADDR_HI] = FIELD_EX32(value,
+> +                                                      I2CM_DMA_TX_ADDR_HI,
+> +                                                      ADDR_HI);
+> +        break;
+> +    case A_I2CM_DMA_RX_ADDR_HI:
+> +        if (!aic->has_dma64) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
+> +                          __func__);
+> +            break;
+> +        }
+> +        bus->regs[R_I2CM_DMA_RX_ADDR_HI] = FIELD_EX32(value,
+> +                                                      I2CM_DMA_RX_ADDR_HI,
+> +                                                      ADDR_HI);
+> +        break;
+> +    case A_I2CS_DMA_TX_ADDR_HI:
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s: Slave mode DMA TX Addr high is not implemented\n",
+> +                      __func__);
+> +        break;
+> +    case A_I2CS_DMA_RX_ADDR_HI:
+> +        if (!aic->has_dma64) {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
+> +                          __func__);
+> +            break;
+> +        }
+> +        bus->regs[R_I2CS_DMA_RX_ADDR_HI] = FIELD_EX32(value,
+> +                                                      I2CS_DMA_RX_ADDR_HI,
+> +                                                      ADDR_HI);
+> +        break;
+>       default:
+>           qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\n",
+>                         __func__, offset);
+> @@ -1553,6 +1600,7 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, void *data)
+>       aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
+>       aic->has_dma = true;
+>       aic->mem_size = 0x10000;
+> +    aic->has_dma64 = true;
+>   }
+>   
+>   static const TypeInfo aspeed_2700_i2c_info = {
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index 4f23dc10c3..2c4c81bd20 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -38,7 +38,7 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
+>   #define ASPEED_I2C_SHARE_POOL_SIZE 0x800
+>   #define ASPEED_I2C_BUS_POOL_SIZE 0x20
+>   #define ASPEED_I2C_OLD_NUM_REG 11
+> -#define ASPEED_I2C_NEW_NUM_REG 22
+> +#define ASPEED_I2C_NEW_NUM_REG 28
+>   
+>   #define A_I2CD_M_STOP_CMD       BIT(5)
+>   #define A_I2CD_M_RX_CMD         BIT(3)
+> @@ -227,6 +227,15 @@ REG32(I2CS_DMA_LEN_STS, 0x4c)
+>       FIELD(I2CS_DMA_LEN_STS, TX_LEN, 0, 13)
+>   REG32(I2CC_DMA_ADDR, 0x50)
+>   REG32(I2CC_DMA_LEN, 0x54)
+> +/* DMA 64bits */
+> +REG32(I2CM_DMA_TX_ADDR_HI, 0x60)
+> +    FIELD(I2CM_DMA_TX_ADDR_HI, ADDR_HI, 0, 7)
+> +REG32(I2CM_DMA_RX_ADDR_HI, 0x64)
+> +    FIELD(I2CM_DMA_RX_ADDR_HI, ADDR_HI, 0, 7)
+> +REG32(I2CS_DMA_TX_ADDR_HI, 0x68)
+> +    FIELD(I2CS_DMA_TX_ADDR_HI, ADDR_HI, 0, 7)
+> +REG32(I2CS_DMA_RX_ADDR_HI, 0x6c)
+> +    FIELD(I2CS_DMA_RX_ADDR_HI, ADDR_HI, 0, 7)
+>   
+>   struct AspeedI2CState;
+>   
+> @@ -292,6 +301,7 @@ struct AspeedI2CClass {
+>       bool has_dma;
+>       bool has_share_pool;
+>       uint64_t mem_size;
+> +    bool has_dma64;
+>   };
+>   
+>   static inline bool aspeed_i2c_is_new_mode(AspeedI2CState *s)
 
-Thanks for writing this refactoring patch; I have a couple
-of nits below but otherwise it looks good.
-
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index e10cad86dd73..ad0a0bcec310 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -154,10 +154,10 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
->      aml_append(dev, aml_name_decl("_CRS", crs));
->
->      Aml *aei = aml_resource_template();
-> -    /* Pin 3 for power button */
-> -    const uint32_t pin_list[1] = {3};
-> +    /* Pin for power button */
-> +    const uint32_t pin = GPIO_PIN_POWER_BUTTON;
-
-I would say that with the constant name we could now drop that
-comment entirely.
-
->      aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
-> -                                 AML_EXCLUSIVE, AML_PULL_UP, 0, pin_list, 1,
-> +                                 AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
->                                   "GPO0", NULL, 0));
->      aml_append(dev, aml_name_decl("_AEI", aei));
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index b0c68d66a345..7b886f3477b6 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1013,7 +1013,8 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
->                               uint32_t phandle)
->  {
->      gpio_key_dev = sysbus_create_simple("gpio-key", -1,
-> -                                        qdev_get_gpio_in(pl061_dev, 3));
-> +                                        qdev_get_gpio_in(pl061_dev,
-> +                                                         GPIO_PIN_POWER_BUTTON));
->
->      qemu_fdt_add_subnode(fdt, "/gpio-keys");
->      qemu_fdt_setprop_string(fdt, "/gpio-keys", "compatible", "gpio-keys");
-
-You've missed one instance of the hardcoded 3, where we write the
-FDT information about it
-further down in this function:
-
-    qemu_fdt_setprop_cells(fdt, "/gpio-keys/poweroff",
-                           "gpios", phandle, 3, 0);
-
-This also can now be GPIO_PIN_POWER_BUTTON.
-
-thanks
--- PMM

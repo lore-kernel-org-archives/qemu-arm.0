@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-59b24a76f02sm8189084a12.2.2024.07.18.02.45.27
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a79bc5b4f87sm537915366b.48.2024.07.18.02.45.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 18 Jul 2024 02:45:28 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 15DCD5FBD9;
-	Thu, 18 Jul 2024 10:45:25 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id F1C575FA43;
+	Thu, 18 Jul 2024 10:45:24 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
@@ -33,42 +33,71 @@ Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Anton Johansson <anjo@rev.ng>
-Subject: [PATCH 11/15] target/m68k: Restrict semihosting to TCG
-Date: Thu, 18 Jul 2024 10:45:19 +0100
-Message-Id: <20240718094523.1198645-12-alex.bennee@linaro.org>
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH 10/15] target/mips: Add semihosting stub
+Date: Thu, 18 Jul 2024 10:45:18 +0100
+Message-Id: <20240718094523.1198645-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240718094523.1198645-1-alex.bennee@linaro.org>
 References: <20240718094523.1198645-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 7YmEK45jq6XG
+X-TUID: edGKb1afJEaz
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The semihosting feature depends on TCG (due to the probe_access
-API access). Although TCG is the single accelerator currently
-available for the m68k target, use the Kconfig "imply" directive
-which is more correct (if we were to support a different accel).
+Since the SEMIHOSTING feature is optional, we need
+a stub to link when it is disabled.
 
-Reported-by: Anton Johansson <anjo@rev.ng>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20240717105723.58965-5-philmd@linaro.org>
+Message-Id: <20240717105723.58965-4-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/m68k/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/mips/tcg/sysemu/semihosting-stub.c | 15 +++++++++++++++
+ target/mips/tcg/sysemu/meson.build        |  6 ++++--
+ 2 files changed, 19 insertions(+), 2 deletions(-)
+ create mode 100644 target/mips/tcg/sysemu/semihosting-stub.c
 
-diff --git a/target/m68k/Kconfig b/target/m68k/Kconfig
-index 9eae71486f..23aae24ebe 100644
---- a/target/m68k/Kconfig
-+++ b/target/m68k/Kconfig
-@@ -1,3 +1,3 @@
- config M68K
-     bool
--    select SEMIHOSTING
-+    imply SEMIHOSTING if TCG
+diff --git a/target/mips/tcg/sysemu/semihosting-stub.c b/target/mips/tcg/sysemu/semihosting-stub.c
+new file mode 100644
+index 0000000000..7ae27d746f
+--- /dev/null
++++ b/target/mips/tcg/sysemu/semihosting-stub.c
+@@ -0,0 +1,15 @@
++/*
++ *  MIPS semihosting stub
++ *
++ * SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
++ * SPDX-FileCopyrightText: 2024 Linaro Ltd.
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "internal.h"
++
++void mips_semihosting(CPUMIPSState *env)
++{
++    g_assert_not_reached();
++}
+diff --git a/target/mips/tcg/sysemu/meson.build b/target/mips/tcg/sysemu/meson.build
+index ec665a4b1e..911341ac37 100644
+--- a/target/mips/tcg/sysemu/meson.build
++++ b/target/mips/tcg/sysemu/meson.build
+@@ -1,10 +1,12 @@
+ mips_system_ss.add(files(
+   'cp0_helper.c',
+-  'mips-semi.c',
+   'special_helper.c',
+   'tlb_helper.c',
+ ))
+-
++mips_system_ss.add(when: ['CONFIG_SEMIHOSTING'],
++  if_true: files('mips-semi.c'),
++  if_false: files('semihosting-stub.c')
++)
+ mips_system_ss.add(when: 'TARGET_MIPS64', if_true: files(
+   'lcsr_helper.c',
+ ))
 -- 
 2.39.2

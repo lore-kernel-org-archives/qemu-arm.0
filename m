@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a79bc5d202fsm538844866b.78.2024.07.18.02.45.24
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a79bc5a39fasm550343266b.10.2024.07.18.02.45.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Jul 2024 02:45:26 -0700 (PDT)
+        Thu, 18 Jul 2024 02:45:28 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 13C9B5F7B4;
+	by draig.lan (Postfix) with ESMTP id 7AEE15FA15;
 	Thu, 18 Jul 2024 10:45:24 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -33,70 +33,50 @@ Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH 01/15] testing: bump to latest libvirt-ci
-Date: Thu, 18 Jul 2024 10:45:09 +0100
-Message-Id: <20240718094523.1198645-2-alex.bennee@linaro.org>
+	Laurent Vivier <laurent@vivier.eu>,
+	Xingtao Yao <yaoxt.fnst@fujitsu.com>
+Subject: [PATCH 05/15] plugins: fix mem callback array size
+Date: Thu, 18 Jul 2024 10:45:13 +0100
+Message-Id: <20240718094523.1198645-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240718094523.1198645-1-alex.bennee@linaro.org>
 References: <20240718094523.1198645-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: m9n7IwSN58KG
+X-TUID: sREV9J71dPTW
 
-This brings in the latest python mappings for the BSD updates.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+data was correctly copied, but size of array was not set
+(g_array_sized_new only reserves memory, but does not set size).
+
+As a result, callbacks were not called for code path relying on
+plugin_register_vcpu_mem_cb().
+
+Found when trying to trigger mem access callbacks for atomic
+instructions.
+
+Reviewed-by: Xingtao Yao <yaoxt.fnst@fujitsu.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20240706191335.878142-2-pierrick.bouvier@linaro.org>
 ---
- .gitlab-ci.d/cirrus/freebsd-13.vars |  2 +-
- tests/lcitool/libvirt-ci            |  2 +-
- tests/vm/generated/freebsd.json     | 14 +++++++-------
- 3 files changed, 9 insertions(+), 9 deletions(-)
+ accel/tcg/plugin-gen.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/.gitlab-ci.d/cirrus/freebsd-13.vars b/.gitlab-ci.d/cirrus/freebsd-13.vars
-index 3785afca36..29ab9645f9 100644
---- a/.gitlab-ci.d/cirrus/freebsd-13.vars
-+++ b/.gitlab-ci.d/cirrus/freebsd-13.vars
-@@ -11,6 +11,6 @@ MAKE='/usr/local/bin/gmake'
- NINJA='/usr/local/bin/ninja'
- PACKAGING_COMMAND='pkg'
- PIP3='/usr/local/bin/pip-3.8'
--PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson mtools ncurses nettle ninja opencv pixman pkgconf png py39-numpy py39-pillow py39-pip py39-sphinx py39-sphinx_rtd_theme py39-tomli py39-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio socat spice-protocol tesseract usbredir virglrenderer vte3 xorriso zstd'
-+PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson mtools ncurses nettle ninja opencv pixman pkgconf png py311-numpy py311-pillow py311-pip py311-sphinx py311-sphinx_rtd_theme py311-tomli py311-yaml python3 rpm2cpio sdl2 sdl2_image snappy sndio socat spice-protocol tesseract usbredir virglrenderer vte3 xorriso zstd'
- PYPI_PKGS=''
- PYTHON='/usr/local/bin/python3'
-diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
-index 0e9490cebc..789b4601bc 160000
---- a/tests/lcitool/libvirt-ci
-+++ b/tests/lcitool/libvirt-ci
-@@ -1 +1 @@
--Subproject commit 0e9490cebc726ef772b6c9e27dac32e7ae99f9b2
-+Subproject commit 789b4601bce4e01f43fdb6ad4ce5ab4e46674440
-diff --git a/tests/vm/generated/freebsd.json b/tests/vm/generated/freebsd.json
-index 2d5895ebed..2a361cecd0 100644
---- a/tests/vm/generated/freebsd.json
-+++ b/tests/vm/generated/freebsd.json
-@@ -51,13 +51,13 @@
-     "pixman",
-     "pkgconf",
-     "png",
--    "py39-numpy",
--    "py39-pillow",
--    "py39-pip",
--    "py39-sphinx",
--    "py39-sphinx_rtd_theme",
--    "py39-tomli",
--    "py39-yaml",
-+    "py311-numpy",
-+    "py311-pillow",
-+    "py311-pip",
-+    "py311-sphinx",
-+    "py311-sphinx_rtd_theme",
-+    "py311-tomli",
-+    "py311-yaml",
-     "python3",
-     "rpm2cpio",
-     "sdl2",
+diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
+index b6bae32b99..ec89a085b4 100644
+--- a/accel/tcg/plugin-gen.c
++++ b/accel/tcg/plugin-gen.c
+@@ -85,8 +85,7 @@ static void gen_enable_mem_helper(struct qemu_plugin_tb *ptb,
+     len = insn->mem_cbs->len;
+     arr = g_array_sized_new(false, false,
+                             sizeof(struct qemu_plugin_dyn_cb), len);
+-    memcpy(arr->data, insn->mem_cbs->data,
+-           len * sizeof(struct qemu_plugin_dyn_cb));
++    g_array_append_vals(arr, insn->mem_cbs->data, len);
+     qemu_plugin_add_dyn_cb_arr(arr);
+ 
+     tcg_gen_st_ptr(tcg_constant_ptr((intptr_t)arr), tcg_env,
 -- 
 2.39.2

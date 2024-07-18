@@ -1,401 +1,135 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1303738njk;
-        Thu, 18 Jul 2024 01:41:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUHnBmHd9FYwOGUHYILTXC3j/0s1XnduMcjqxL/kqvwBd+189Ccs1hC0jjuKixemZNrNjq1q9FC5360XCo0li/iXeoozMwC
-X-Google-Smtp-Source: AGHT+IEEbcDuoiHhb4KckQtE+dqn2IaFfvdyWXDPrYjxG63qxM+2DL5euWLRmIgHc5biTdsTucWZ
-X-Received: by 2002:a05:622a:452:b0:447:e3af:273d with SMTP id d75a77b69052e-44f96a39f28mr1242891cf.15.1721292084736;
-        Thu, 18 Jul 2024 01:41:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721292084; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1260257njk;
+        Wed, 17 Jul 2024 23:50:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWXXQW8t7bkqD6rxxQi5RpNTyW+JeFYhjoN80WQx/0job0Ipx63+/IOfvH25MGiZ9y+OP8TgtVAPhV/UlQkaGDtQjXsfDwi
+X-Google-Smtp-Source: AGHT+IFH01VOM1Hj8sS3EheIK2ucn2nKxFS81+CmObMfW+6TNC/l5Z0C8ek6KM7CRtbpaBg2Wide
+X-Received: by 2002:ac8:5fcc:0:b0:440:4d76:a601 with SMTP id d75a77b69052e-44f865fa12amr45455941cf.38.1721285420736;
+        Wed, 17 Jul 2024 23:50:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721285420; cv=none;
         d=google.com; s=arc-20160816;
-        b=C1jiqYp7iKEwOL9er3/0k5hD8fon/U6Z8H+V8ZC71QWs/tGz8SWLz2FknB+JesjYBL
-         Q1m0g419xD7T6y334yZApNYLoFmMs9YbOe00mtO0aUWydRTZXUzoU0evW+UPUSX+2/c0
-         P3qX8HpC6NhHHX+Hi51sxh1tvQU5ytwZH2EKHGUqFNDOY9XU+/aCk6A1hGL5LZRnX/bf
-         rKVOaCNjjwLxeUEvvelxf12p/Dz0awJk4OEQE252bTr7E9VzgMbrgRiYsYaVPcJtCJ8B
-         ktXDAz0fXdU7FvEjS8Xpk4vtgUhsHY371Cc3wu95bQhL7cjxJzMr/XM85X8m8mL8kVIy
-         NuJw==
+        b=i+hWkc8T8qdmdNgRrkplCb9iS+OarkSN2/of/6uXBX7dlJR8NLKb8Ymif0sBXTv666
+         96pdeWI5G63PQ2pCB16efcU0sIkljCr/oq07l4ZMP4DIE4noQ/GyeWQSA2LGFFYKyNYf
+         3yMDJ6fJiu64c6nxi/JdIJ9VcAxK7epFWSrBuoXBA4/TnUv6/7sdLvZlFEd0ixO9PuKu
+         GgOlwIR7vW1CExYtZlR7wVpymx6OwHMsqSr+5319gXJrIWZt28NzEilErdEbjuM4g0HP
+         dtir3uf4RXp98xE5JIgfNJiRLUHVSVkvNWu8SB9CbEhAbRn3lVDQj84BuON7hprK9lYG
+         Vmvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=m8kkIrbnDLJqaWYoOKN5k5LkpLHGdOeuEn+YZDPg2ok=;
-        fh=vpv4dibz543bPaX9Fq9ZvnJ9J5iREE2VOWA/tGZmS3U=;
-        b=IhlhJCjv3zWQmf+bypRqv1deSnn4MsqW9bNPJjAt0y3KcIAGHGcEEqK0ta7s4+SjvO
-         t68nv+FPXGOhuN9chuLjC607TgWajbWzxQ1w/AqSl4zJEqfr9PX3mAS4PF34YUkeyH5N
-         7+B/a0Dqe331wdhKFTBKYl8B9Ecf3Kbwm5FsciDKQpu6uI/99OmnBI5DhIQdhpvbWYZO
-         CQPXY67Al7c49ufq9RCR2BAy5zZZdCcSHTUD/Tb+5WpVexbN4JVPigSbky6LSb/N9UYe
-         WJCdkdLDOjsilzcxXY7YQ4+HnW/xpLZV2mdzRwQ+QKRbhjFxWonYlbVDYyTMtkeoBwaF
-         sfHQ==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=LkWKqisN2FS9mP32G1J1Y4ksCO9RJsVRoe0fDEUbKIE=;
+        fh=cqT0Sm0iQHqDiDEsJ3ixFD44Q88e2AVQBWE8a4yA5Ck=;
+        b=JY/OC3+uAbQaRgWwGEpiUDzaRJUz5uGBBFRS0DjYRTIYsO8kViwZR8lrMlMcVWl28v
+         Mm/H+x0JNNYrZ/oO88R8jFMZSDLVbsNJ9+MqT54ro9Wt0hD/UqiAwaYo6N/8Q1wqqtlH
+         eoVeRUPSMI/daCWWAScCYDwQhet0BGl82OJeT7Qps9Iz/N6GOy4D1uQuJQv+08fVtPwE
+         IeXZlaPhmEyw57MFrKi7f6P+aj5lrRgalKXkWqH14LgEoXFiCLrQnlygsseqnD7fLaUj
+         wEfng9t3xn9WIUUmRGl3TWfFoTQvGHA+a0lCDAXIOql+VE3e1q1Us6QU17iMdEFciAXh
+         mfvw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44f96a3adccsi795791cf.283.2024.07.18.01.41.24
+        by mx.google.com with ESMTPS id d75a77b69052e-44f5b77ebf4si116653261cf.161.2024.07.17.23.50.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jul 2024 01:41:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 17 Jul 2024 23:50:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sUMgy-0002fI-Pe; Thu, 18 Jul 2024 04:40:48 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sUKxp-0004hb-26; Thu, 18 Jul 2024 02:50:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=3riu=OS=kaod.org=clg@ozlabs.org>)
- id 1sUMgm-0001cp-7H; Thu, 18 Jul 2024 04:40:37 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1sUKxn-0004fC-8S; Thu, 18 Jul 2024 02:50:03 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=3riu=OS=kaod.org=clg@ozlabs.org>)
- id 1sUMgi-0005Gp-VE; Thu, 18 Jul 2024 04:40:35 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WPmTl5DKhz4wxk;
- Thu, 18 Jul 2024 18:40:27 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WPmTg2kjcz4w2Q;
- Thu, 18 Jul 2024 18:40:23 +1000 (AEST)
-Message-ID: <b3ef3c80-b8dc-4b7b-a311-ffa731a321b6@kaod.org>
-Date: Thu, 18 Jul 2024 10:40:20 +0200
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1sUKxk-00047C-PI; Thu, 18 Jul 2024 02:50:02 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 18 Jul
+ 2024 14:49:25 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Thu, 18 Jul 2024 14:49:25 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v1 00/15] support ADC and I2C for AST2700
+Date: Thu, 18 Jul 2024 14:49:10 +0800
+Message-ID: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 06/15] hw/i2c/aspeed: introduce a new bus pool buffer
- attribute in AspeedI2Cbus
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
- <20240718064925.1846074-7-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240718064925.1846074-7-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=3riu=OS=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cLJVqsVLh4pk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: w3+X8o7B/CqZ
 
-On 7/18/24 08:49, Jamin Lin wrote:
-> According to the datasheet of ASPEED SOCs,
-> each I2C bus has their own pool buffer since AST2500.
-> Only AST2400 utilized a pool buffer share to all I2C bus.
-> Besides, using a share pool buffer only support
-> pool buffer memory regions are continuous for all I2C bus.
-> 
-> To make this model more readable and support discontinuous
-> bus pool buffer memory regions, changes to introduce
-> a new bus pool buffer attribute in AspeedI2Cbus and
-> new memops. So, it does not need to calculate
-> the pool buffer offset for different I2C bus.
-> 
-> Introduce a new has_share_pool class attribute in AspeedI2CClass and
-> use it to create either a share pool buffer or bus pool buffers
-> in aspeed_i2c_realize. Update each pull buffer size to 0x10 for AST2500
-> and 0x20 for AST2600 and AST1030.
-> 
-> Incrementing the version of aspeed_i2c_bus_vmstate to 6.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+v1: 
+1. support ADC for AST2700
+2. support I2C for AST2700
 
+Jamin Lin (15):
+  aspeed/adc: Add AST2700 support
+  aspeed/soc: support ADC for AST2700
+  hw/i2c/aspeed: support to set the different memory size
+  hw/i2c/aspeed: support discontinuous register memory region of I2C bus
+  hw/i2c/aspeed: rename the I2C class pool attribute to share_pool
+  hw/i2c/aspeed: introduce a new bus pool buffer attribute in
+    AspeedI2Cbus
+  hw/i2c/aspeed: support discontinuous poll buffer memory region of I2C
+    bus
+  hw/i2c/aspeed: introduce a new dma_dram_offset attribute in
+    AspeedI2Cbus
+  hw/i2c/aspeed: Add AST2700 support
+  hw/i2c/aspeed: support Tx/Rx buffer 64 bits address
+  hw/i2c/aspeed: support high part dram offset for DMA 64 bits
+  aspeed/soc: introduce a new API to get the INTC orgate information
+  aspeed/soc: support I2C for AST2700
+  aspeed: fix coding style
+  aspeed: add tmp105 in i2c bus 0 for AST2700
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+ hw/adc/aspeed_adc.c         |  16 ++
+ hw/arm/aspeed.c             |  31 +++-
+ hw/arm/aspeed_ast27x0.c     |  65 +++++++
+ hw/i2c/aspeed_i2c.c         | 340 ++++++++++++++++++++++++++++++------
+ include/hw/adc/aspeed_adc.h |   1 +
+ include/hw/i2c/aspeed_i2c.h |  34 ++--
+ 6 files changed, 418 insertions(+), 69 deletions(-)
 
-Thanks,
-
-C.
-
-
-> ---
->   hw/i2c/aspeed_i2c.c         | 131 +++++++++++++++++++++++++++++++-----
->   include/hw/i2c/aspeed_i2c.h |   4 ++
->   2 files changed, 117 insertions(+), 18 deletions(-)
-> 
-> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index 9c222a02fe..d3d49340ea 100644
-> --- a/hw/i2c/aspeed_i2c.c
-> +++ b/hw/i2c/aspeed_i2c.c
-> @@ -941,12 +941,48 @@ static const MemoryRegionOps aspeed_i2c_share_pool_ops = {
->       },
->   };
->   
-> +static uint64_t aspeed_i2c_bus_pool_read(void *opaque, hwaddr offset,
-> +                                     unsigned size)
-> +{
-> +    AspeedI2CBus *s = opaque;
-> +    uint64_t ret = 0;
-> +    int i;
-> +
-> +    for (i = 0; i < size; i++) {
-> +        ret |= (uint64_t) s->pool[offset + i] << (8 * i);
-> +    }
-> +
-> +    return ret;
-> +}
-> +
-> +static void aspeed_i2c_bus_pool_write(void *opaque, hwaddr offset,
-> +                                  uint64_t value, unsigned size)
-> +{
-> +    AspeedI2CBus *s = opaque;
-> +    int i;
-> +
-> +    for (i = 0; i < size; i++) {
-> +        s->pool[offset + i] = (value >> (8 * i)) & 0xFF;
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps aspeed_i2c_bus_pool_ops = {
-> +    .read = aspeed_i2c_bus_pool_read,
-> +    .write = aspeed_i2c_bus_pool_write,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .valid = {
-> +        .min_access_size = 1,
-> +        .max_access_size = 4,
-> +    },
-> +};
-> +
->   static const VMStateDescription aspeed_i2c_bus_vmstate = {
->       .name = TYPE_ASPEED_I2C,
-> -    .version_id = 5,
-> -    .minimum_version_id = 5,
-> +    .version_id = 6,
-> +    .minimum_version_id = 6,
->       .fields = (const VMStateField[]) {
->           VMSTATE_UINT32_ARRAY(regs, AspeedI2CBus, ASPEED_I2C_NEW_NUM_REG),
-> +        VMSTATE_UINT8_ARRAY(pool, AspeedI2CBus, ASPEED_I2C_BUS_POOL_SIZE),
->           VMSTATE_END_OF_LIST()
->       }
->   };
-> @@ -996,7 +1032,21 @@ static void aspeed_i2c_instance_init(Object *obj)
->    *   0x140 ... 0x17F: Device 5
->    *   0x180 ... 0x1BF: Device 6
->    *   0x1C0 ... 0x1FF: Device 7
-> - *   0x200 ... 0x2FF: Buffer Pool (AST2500 unused in linux driver)
-> + *   0x200 ... 0x20F: Device 1 buffer (AST2500 unused in linux driver)
-> + *   0x210 ... 0x21F: Device 2 buffer
-> + *   0x220 ... 0x22F: Device 3 buffer
-> + *   0x230 ... 0x23F: Device 4 buffer
-> + *   0x240 ... 0x24F: Device 5 buffer
-> + *   0x250 ... 0x25F: Device 6 buffer
-> + *   0x260 ... 0x26F: Device 7 buffer
-> + *   0x270 ... 0x27F: Device 8 buffer
-> + *   0x280 ... 0x28F: Device 9 buffer
-> + *   0x290 ... 0x29F: Device 10 buffer
-> + *   0x2A0 ... 0x2AF: Device 11 buffer
-> + *   0x2B0 ... 0x2BF: Device 12 buffer
-> + *   0x2C0 ... 0x2CF: Device 13 buffer
-> + *   0x2D0 ... 0x2DF: Device 14 buffer
-> + *   0x2E0 ... 0x2FF: Reserved
->    *   0x300 ... 0x33F: Device 8
->    *   0x340 ... 0x37F: Device 9
->    *   0x380 ... 0x3BF: Device 10
-> @@ -1005,6 +1055,41 @@ static void aspeed_i2c_instance_init(Object *obj)
->    *   0x440 ... 0x47F: Device 13
->    *   0x480 ... 0x4BF: Device 14
->    *   0x800 ... 0xFFF: Buffer Pool (AST2400 unused in linux driver)
-> + *
-> + * Address Definitions (AST2600 and AST1030)
-> + *   0x000 ... 0x07F: Global Register
-> + *   0x080 ... 0x0FF: Device 1
-> + *   0x100 ... 0x17F: Device 2
-> + *   0x180 ... 0x1FF: Device 3
-> + *   0x200 ... 0x27F: Device 4
-> + *   0x280 ... 0x2FF: Device 5
-> + *   0x300 ... 0x37F: Device 6
-> + *   0x380 ... 0x3FF: Device 7
-> + *   0x400 ... 0x47F: Device 8
-> + *   0x480 ... 0x4FF: Device 9
-> + *   0x500 ... 0x57F: Device 10
-> + *   0x580 ... 0x5FF: Device 11
-> + *   0x600 ... 0x67F: Device 12
-> + *   0x680 ... 0x6FF: Device 13
-> + *   0x700 ... 0x77F: Device 14
-> + *   0x780 ... 0x7FF: Device 15 (15 and 16 unused in AST1030)
-> + *   0x800 ... 0x87F: Device 16
-> + *   0xC00 ... 0xC1F: Device 1 buffer
-> + *   0xC20 ... 0xC3F: Device 2 buffer
-> + *   0xC40 ... 0xC5F: Device 3 buffer
-> + *   0xC60 ... 0xC7F: Device 4 buffer
-> + *   0xC80 ... 0xC9F: Device 5 buffer
-> + *   0xCA0 ... 0xCBF: Device 6 buffer
-> + *   0xCC0 ... 0xCDF: Device 7 buffer
-> + *   0xCE0 ... 0xCFF: Device 8 buffer
-> + *   0xD00 ... 0xD1F: Device 9 buffer
-> + *   0xD20 ... 0xD3F: Device 10 buffer
-> + *   0xD40 ... 0xD5F: Device 11 buffer
-> + *   0xD60 ... 0xD7F: Device 12 buffer
-> + *   0xD80 ... 0xD9F: Device 13 buffer
-> + *   0xDA0 ... 0xDBF: Device 14 buffer
-> + *   0xDC0 ... 0xDDF: Device 15 buffer (15 and 16 unused in AST1030)
-> + *   0xDE0 ... 0xDFF: Device 16 buffer
->    */
->   static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
->   {
-> @@ -1039,10 +1124,19 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
->                                       &s->busses[i].mr);
->       }
->   
-> -    memory_region_init_io(&s->pool_iomem, OBJECT(s),
-> -                          &aspeed_i2c_share_pool_ops, s,
-> -                          "aspeed.i2c-share-pool", aic->pool_size);
-> -    memory_region_add_subregion(&s->iomem, aic->pool_base, &s->pool_iomem);
-> +    if (aic->has_share_pool) {
-> +        memory_region_init_io(&s->pool_iomem, OBJECT(s),
-> +                              &aspeed_i2c_share_pool_ops, s,
-> +                              "aspeed.i2c-share-pool", aic->pool_size);
-> +        memory_region_add_subregion(&s->iomem, aic->pool_base,
-> +                                    &s->pool_iomem);
-> +    } else {
-> +        for (i = 0; i < aic->num_busses; i++) {
-> +            memory_region_add_subregion(&s->iomem,
-> +                                        aic->pool_base + (aic->pool_size * i),
-> +                                        &s->busses[i].mr_pool);
-> +        }
-> +    }
->   
->       if (aic->has_dma) {
->           if (!s->dram_mr) {
-> @@ -1218,6 +1312,7 @@ static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
->       AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
->       AspeedI2CClass *aic;
->       g_autofree char *name = g_strdup_printf(TYPE_ASPEED_I2C_BUS ".%d", s->id);
-> +    g_autofree char *pool_name = g_strdup_printf("%s.pool", name);
->   
->       if (!s->controller) {
->           error_setg(errp, TYPE_ASPEED_I2C_BUS ": 'controller' link not set");
-> @@ -1235,6 +1330,10 @@ static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
->       memory_region_init_io(&s->mr, OBJECT(s), &aspeed_i2c_bus_ops,
->                             s, name, aic->reg_size);
->       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
-> +
-> +    memory_region_init_io(&s->mr_pool, OBJECT(s), &aspeed_i2c_bus_pool_ops,
-> +                          s, pool_name, aic->pool_size);
-> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr_pool);
->   }
->   
->   static Property aspeed_i2c_bus_properties[] = {
-> @@ -1287,6 +1386,7 @@ static void aspeed_2400_i2c_class_init(ObjectClass *klass, void *data)
->       aic->reg_size = 0x40;
->       aic->gap = 7;
->       aic->bus_get_irq = aspeed_2400_i2c_bus_get_irq;
-> +    aic->has_share_pool = true;
->       aic->pool_size = 0x800;
->       aic->pool_base = 0x800;
->       aic->bus_pool_base = aspeed_2400_i2c_bus_pool_base;
-> @@ -1306,7 +1406,7 @@ static qemu_irq aspeed_2500_i2c_bus_get_irq(AspeedI2CBus *bus)
->   
->   static uint8_t *aspeed_2500_i2c_bus_pool_base(AspeedI2CBus *bus)
->   {
-> -    return &bus->controller->share_pool[bus->id * 0x10];
-> +    return bus->pool;
->   }
->   
->   static void aspeed_2500_i2c_class_init(ObjectClass *klass, void *data)
-> @@ -1320,7 +1420,7 @@ static void aspeed_2500_i2c_class_init(ObjectClass *klass, void *data)
->       aic->reg_size = 0x40;
->       aic->gap = 7;
->       aic->bus_get_irq = aspeed_2500_i2c_bus_get_irq;
-> -    aic->pool_size = 0x100;
-> +    aic->pool_size = 0x10;
->       aic->pool_base = 0x200;
->       aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
->       aic->check_sram = true;
-> @@ -1339,11 +1439,6 @@ static qemu_irq aspeed_2600_i2c_bus_get_irq(AspeedI2CBus *bus)
->       return bus->irq;
->   }
->   
-> -static uint8_t *aspeed_2600_i2c_bus_pool_base(AspeedI2CBus *bus)
-> -{
-> -   return &bus->controller->share_pool[bus->id * 0x20];
-> -}
-> -
->   static void aspeed_2600_i2c_class_init(ObjectClass *klass, void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(klass);
-> @@ -1355,9 +1450,9 @@ static void aspeed_2600_i2c_class_init(ObjectClass *klass, void *data)
->       aic->reg_size = 0x80;
->       aic->gap = -1; /* no gap */
->       aic->bus_get_irq = aspeed_2600_i2c_bus_get_irq;
-> -    aic->pool_size = 0x200;
-> +    aic->pool_size = 0x20;
->       aic->pool_base = 0xC00;
-> -    aic->bus_pool_base = aspeed_2600_i2c_bus_pool_base;
-> +    aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
->       aic->has_dma = true;
->       aic->mem_size = 0x1000;
->   }
-> @@ -1379,9 +1474,9 @@ static void aspeed_1030_i2c_class_init(ObjectClass *klass, void *data)
->       aic->reg_size = 0x80;
->       aic->gap = -1; /* no gap */
->       aic->bus_get_irq = aspeed_2600_i2c_bus_get_irq;
-> -    aic->pool_size = 0x200;
-> +    aic->pool_size = 0x20;
->       aic->pool_base = 0xC00;
-> -    aic->bus_pool_base = aspeed_2600_i2c_bus_pool_base;
-> +    aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
->       aic->has_dma = true;
->       aic->mem_size = 0x10000;
->   }
-> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-> index 02ede85906..8e62ec64f8 100644
-> --- a/include/hw/i2c/aspeed_i2c.h
-> +++ b/include/hw/i2c/aspeed_i2c.h
-> @@ -35,6 +35,7 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
->   
->   #define ASPEED_I2C_NR_BUSSES 16
->   #define ASPEED_I2C_SHARE_POOL_SIZE 0x800
-> +#define ASPEED_I2C_BUS_POOL_SIZE 0x20
->   #define ASPEED_I2C_OLD_NUM_REG 11
->   #define ASPEED_I2C_NEW_NUM_REG 22
->   
-> @@ -239,12 +240,14 @@ struct AspeedI2CBus {
->       I2CSlave *slave;
->   
->       MemoryRegion mr;
-> +    MemoryRegion mr_pool;
->   
->       I2CBus *bus;
->       uint8_t id;
->       qemu_irq irq;
->   
->       uint32_t regs[ASPEED_I2C_NEW_NUM_REG];
-> +    uint8_t pool[ASPEED_I2C_BUS_POOL_SIZE];
->   };
->   
->   struct AspeedI2CState {
-> @@ -284,6 +287,7 @@ struct AspeedI2CClass {
->       uint8_t *(*bus_pool_base)(AspeedI2CBus *);
->       bool check_sram;
->       bool has_dma;
-> +    bool has_share_pool;
->       uint64_t mem_size;
->   };
->   
+-- 
+2.34.1
 

@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1429948njk;
-        Thu, 18 Jul 2024 06:14:27 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWfmduhY3dwmiOgJuCYMRTax55T7y+fJaf7P9/Y48tWowZSmwjBkuPaBd5v/H3AFaoyRJs9MSJGOEIV1v3xWcvedV1emVNs
-X-Google-Smtp-Source: AGHT+IHL/sLfITXgZ9oRJ3BHfQntpBGwe3RZDDcYPZQq6OyvuGsMjdutzNqlr8Vn8d8H7kj4Xt16
-X-Received: by 2002:a05:6808:220b:b0:3da:b336:b2fc with SMTP id 5614622812f47-3dad1f8bd30mr5527115b6e.36.1721308467209;
-        Thu, 18 Jul 2024 06:14:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721308467; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1445270njk;
+        Thu, 18 Jul 2024 06:41:43 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVTgnw5BxgCW+KBUcrJ/8pMxZK0PfqwIIzGD4FG/0JR4cHGNcd7akuw8zFWbsik+97f30b+WVCNy16724k/AtBPE9SknI/z
+X-Google-Smtp-Source: AGHT+IF8ghx5q3ZTzQ7mv+dCJrA0jczOG/9Cf0YKhxKxOw4CP0ADuKU4aPqc2qIKhap0C8huQNFC
+X-Received: by 2002:a05:6902:2506:b0:e08:5495:5644 with SMTP id 3f1490d57ef6-e08549562bamr1376766276.6.1721310103147;
+        Thu, 18 Jul 2024 06:41:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721310103; cv=none;
         d=google.com; s=arc-20160816;
-        b=UmB9FMrZq6VqvRnhZrG2HQdB2/zFUxW2LMGSRDV+UsEXWUYXeupVF5+R2LEsB/DowM
-         qBPSv8iOaoWS4vuzGkai21MhHwx32ul0vT/xPajdEIAmXhgQizQTwkRSZM3B2yybnrab
-         ent0qCVu3byz1ekXv0s7So70P4Xx//wPS5u3vXsYs/VnR0eXTXTtLdpBsE1WleYgJQij
-         eepTnWtrOPFR2RCX/NQj7WGuAwkoZmqFs7oC78eTkXEGcuachlr5onQc+23b9UpRSoEA
-         E8vjqw8Qn7D3mFPLpA0YLEZPRAdQZsP+fKzgG+SNqYPB09+1onfqMO+jdJNSqPHOoG35
-         umxw==
+        b=UkQisnvmZKODodjCmGGvIZG0q1zhkYtyajae0Nlce0mf4qSbbgHeOXhgVthlrjm9xh
+         8McB58WIV7m/9YtoMzsTpzuG0Rhc2Llx0mYSRRdgLkF5+JVaV22jne6a2u4Hi/q+AWWa
+         Dxl9c4O7yamr1MbwPbvzkiKaDYaNu/Ez2EdHiK+oaTgWJuc8jQ2bHDA+pNWBF+6vdJ7r
+         A6fzau6PVaLXUsy2ketl0p8UnI7hu8t67LnbHc6Q72bq5ja95B8N9kyuRZnWbI5jlCVM
+         LjavlleRmIITVzX06yBwpF40foH4FQw05kBk/rj9mTvXy6KQgTKND9Fpi6971PtgkDyO
+         40ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=fNW0+eTYwQTfYJHifVhdqtWIxQ2WKuZ2bJY1xgh/Ars=;
-        fh=vpv4dibz543bPaX9Fq9ZvnJ9J5iREE2VOWA/tGZmS3U=;
-        b=08T8pB0enfP2iCLFVcMjWFl18FB/sQ8w2GunT2bJ9NM7pnb4yYHxNNzNGxSAlFZaO7
-         zKPm+Km6I9lPwEiwRYEtJkMs4nkINeSWBSLah6qwimQ1a/wFhNE3Kq7poqZr9RNiJjXV
-         WaAfGV3v4d1oslMS7xz8sw3U12IXVoWP1KWYV1Psl6C0r2kLX+3Is7TckIgooBi2ubMd
-         lNU7+EJXj6YmLFmHnwBanOlG5RFMOXFB4ZWmQosNdwa659GazaPAdz/9/PF5/T94YqO6
-         iWB2+dl4Wh3gNMtHqEhibwhI9JYU6CO2bbBiZjIBiWF8MCSy9KgQKAxz4INZGHayUPNh
-         YkyQ==;
+        bh=4yyArhWZe4ysQ2NyBRmyTpezBUH+Jos+98yu1DHk37g=;
+        fh=tmik4N/gozUO5rkbKzUnYbzlPu/DlGgK0E+9Zox7Ooc=;
+        b=ddA4uoLkNYnLgIB10XI6PgeG+obJZRoJECrVfTsCe9sXxl8j+qlqKlW8EjBv8I7WtY
+         Z/hMlOr2p6SY6ZPv1Y/Z8QvdtxcH2B14XfHt9uRB+wxBDbE2flRxQ+88qmuF6j/1nHh1
+         fTa+/DjF+AsD4EpZtbta9M7ZJN1qxjjqyFaSgDVhdpZtJCXvN2bGACpvxbdE15pasbhg
+         IauiYgGKUsqmf3v7pGEDA0WoUyDl+augh/Fx94/eSUfJwUs6TPY/Vj1t9Df2FqPqTOsN
+         jvObOZiVtP2QUPKdJjS5PyvVubHkbdZ+FcK7F8XvGuOCOoQyNuwBD1egICnUYdJ10n71
+         cvkA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-491560d03c8si801997137.227.2024.07.18.06.14.27
+        by mx.google.com with ESMTPS id d75a77b69052e-44f9696a8d8si5786131cf.13.2024.07.18.06.41.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jul 2024 06:14:27 -0700 (PDT)
+        Thu, 18 Jul 2024 06:41:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sUQxg-0001gr-9H; Thu, 18 Jul 2024 09:14:21 -0400
+	id 1sURO4-0002VW-OI; Thu, 18 Jul 2024 09:41:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=3riu=OS=kaod.org=clg@ozlabs.org>)
- id 1sUQxd-0001fE-RM; Thu, 18 Jul 2024 09:14:18 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1sURNz-0002BR-LK; Thu, 18 Jul 2024 09:41:33 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=3riu=OS=kaod.org=clg@ozlabs.org>)
- id 1sUQxb-00029N-5U; Thu, 18 Jul 2024 09:14:17 -0400
+ id 1sURNx-0002Nq-Be; Thu, 18 Jul 2024 09:41:31 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WPtYY3d52z4x0n;
- Thu, 18 Jul 2024 23:14:09 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4WPv8y2RVgz4x04;
+ Thu, 18 Jul 2024 23:41:22 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WPtYS2R47z4x0C;
- Thu, 18 Jul 2024 23:14:03 +1000 (AEST)
-Message-ID: <0a121e17-aede-4223-b8c0-91f202ff66ed@kaod.org>
-Date: Thu, 18 Jul 2024 15:14:01 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4WPv8s4Srmz4w2Q;
+ Thu, 18 Jul 2024 23:41:17 +1000 (AEST)
+Message-ID: <c7d00701-cada-4ed8-856b-85249aa1ac0b@kaod.org>
+Date: Thu, 18 Jul 2024 15:41:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 10/15] hw/i2c/aspeed: support Tx/Rx buffer 64 bits
- address
+Subject: Re: [PATCH v1 04/15] hw/i2c/aspeed: support discontinuous register
+ memory region of I2C bus
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -71,15 +71,18 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Alistair Francis <alistair@alistair23.me>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+Cc: Troy Lee <troy_lee@aspeedtech.com>,
+ Yunlin Tang <yunlin.tang@aspeedtech.com>
 References: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
- <20240718064925.1846074-11-jamin_lin@aspeedtech.com>
+ <20240718064925.1846074-5-jamin_lin@aspeedtech.com>
+ <de851b5c-5983-44f6-955a-6ba71f966c71@kaod.org>
+ <SI2PR06MB5041E3D271FB5839B12E76D4FCAC2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240718064925.1846074-11-jamin_lin@aspeedtech.com>
+In-Reply-To: <SI2PR06MB5041E3D271FB5839B12E76D4FCAC2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=3riu=OS=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -101,165 +104,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /BtG7BiOLKXv
+X-TUID: /OfyN8mS5Rx4
 
-On 7/18/24 08:49, Jamin Lin wrote:
-> ASPEED AST2700 SOC is a 64 bits quad core CPUs (Cortex-a35)
-> And the base address of dram is "0x4 00000000" which
-> is 64bits address.
+On 7/18/24 11:44, Jamin Lin wrote:
+> Hi Cedric,
 > 
-> It have "Master DMA Mode Tx Buffer Base Address[39:32](0x60)"
-> and "Master DMA Mode Rx Buffer Base Address[39:32](0x64)"
-> to save the high part physical address of Tx/Rx buffer address
-> for master mode.
+>> Subject: Re: [PATCH v1 04/15] hw/i2c/aspeed: support discontinuous register
+>> memory region of I2C bus
+>>
+>> On 7/18/24 08:49, Jamin Lin wrote:
+>>> It only support continuous register memory region for all I2C bus.
+>>> However, the register address of all I2c bus are discontinuous for
+>>> AST2700.
+>>>
+>>> Ex: the register address of I2C bus for ast2700 as following.
+>>> 0x100 - 0x17F: Device 0
+>>> 0x200 - 0x27F: Device 1
+>>> 0x300 - 0x37F: Device 2
+>>> 0x400 - 0x47F: Device 3
+>>> 0x500 - 0x57F: Device 4
+>>> 0x600 - 0x67F: Device 5
+>>> 0x700 - 0x77F: Device 6
+>>> 0x800 - 0x87F: Device 7
+>>> 0x900 - 0x97F: Device 8
+>>> 0xA00 - 0xA7F: Device 9
+>>> 0xB00 - 0xB7F: Device 10
+>>> 0xC00 - 0xC7F: Device 11
+>>> 0xD00 - 0xD7F: Device 12
+>>> 0xE00 - 0xE7F: Device 13
+>>> 0xF00 – 0xF7F: Device 14
+>>> 0x1000 – 0x107F: Device 15
+>>>
+>>> Introduce a new class attribute to make user set each I2C bus gap size.
+>>> Update formula to create all I2C bus register memory regions.
+>>
+>> I don't think this is necessary to model. Could we simply increase tge register
+>> MMIO size for the AST2700 bus model and rely on the memops to catch
+>> invalid register offsets ?
+>>
+> Thanks for your review and suggestion.
 > 
-> It have "Slave DMA Mode Tx Buffer Base Address[39:32](0x68)" and
-> "Slave DMA Mode Rx Buffer Base Address[39:32](0x6C)" to
-> save the high part physical address of Tx/Rx buffer address
-> for slave mode.
-> 
-> Ex: Tx buffer address for master mode [39:0]
-> The "Master DMA Mode Tx Buffer Base Address[39:32](0x60)"
-> bits [7:0] which corresponds the bits [39:32] of the 64 bits address of
-> the Tx buffer address.
-> The "Master DMA Mode Tx Buffer Base Address(0x30)" bits [31:0]
-> which corresponds the bits [31:0] of the 64 bits address
-> of the Tx buffer address.
-> 
-> Introduce a new has_dma64 class attribute and new registers of
-> new mode to support DMA 64 bits dram address.
-> Update new mode register number to 28.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Sorry, I am not very clearly understand your comments.
+> Could you please describe it more detail?
+> Thanks-Jamin
 
+I don't think you need to introduce a gap size class attribute.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Setting :
+
+     aic->reg_size = 0x100; /* size + gap */
+
+in aspeed_2700_i2c_class_init() should be enough.
 
 Thanks,
 
 C.
 
-
-> ---
->   hw/i2c/aspeed_i2c.c         | 48 +++++++++++++++++++++++++++++++++++++
->   include/hw/i2c/aspeed_i2c.h | 12 +++++++++-
->   2 files changed, 59 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index 29d400ac93..b48f250e08 100644
-> --- a/hw/i2c/aspeed_i2c.c
-> +++ b/hw/i2c/aspeed_i2c.c
-> @@ -140,6 +140,7 @@ static uint64_t aspeed_i2c_bus_old_read(AspeedI2CBus *bus, hwaddr offset,
->   static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
->                                           unsigned size)
->   {
-> +    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
->       uint64_t value = bus->regs[offset / sizeof(*bus->regs)];
->   
->       switch (offset) {
-> @@ -170,6 +171,16 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
->       case A_I2CM_CMD:
->           value = SHARED_FIELD_DP32(value, BUS_BUSY_STS, i2c_bus_busy(bus->bus));
->           break;
-> +    case A_I2CM_DMA_TX_ADDR_HI:
-> +    case A_I2CM_DMA_RX_ADDR_HI:
-> +    case A_I2CS_DMA_TX_ADDR_HI:
-> +    case A_I2CS_DMA_RX_ADDR_HI:
-> +        if (!aic->has_dma64) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
-> +            __func__);
-> +            value = -1;
-> +        }
-> +        break;
->       default:
->           qemu_log_mask(LOG_GUEST_ERROR,
->                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, offset);
-> @@ -731,6 +742,42 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
->           qemu_log_mask(LOG_UNIMP, "%s: Slave mode DMA TX is not implemented\n",
->                         __func__);
->           break;
-> +
-> +    case A_I2CM_DMA_TX_ADDR_HI:
-> +        if (!aic->has_dma64) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
-> +                          __func__);
-> +            break;
-> +        }
-> +        bus->regs[R_I2CM_DMA_TX_ADDR_HI] = FIELD_EX32(value,
-> +                                                      I2CM_DMA_TX_ADDR_HI,
-> +                                                      ADDR_HI);
-> +        break;
-> +    case A_I2CM_DMA_RX_ADDR_HI:
-> +        if (!aic->has_dma64) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
-> +                          __func__);
-> +            break;
-> +        }
-> +        bus->regs[R_I2CM_DMA_RX_ADDR_HI] = FIELD_EX32(value,
-> +                                                      I2CM_DMA_RX_ADDR_HI,
-> +                                                      ADDR_HI);
-> +        break;
-> +    case A_I2CS_DMA_TX_ADDR_HI:
-> +        qemu_log_mask(LOG_UNIMP,
-> +                      "%s: Slave mode DMA TX Addr high is not implemented\n",
-> +                      __func__);
-> +        break;
-> +    case A_I2CS_DMA_RX_ADDR_HI:
-> +        if (!aic->has_dma64) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
-> +                          __func__);
-> +            break;
-> +        }
-> +        bus->regs[R_I2CS_DMA_RX_ADDR_HI] = FIELD_EX32(value,
-> +                                                      I2CS_DMA_RX_ADDR_HI,
-> +                                                      ADDR_HI);
-> +        break;
->       default:
->           qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\n",
->                         __func__, offset);
-> @@ -1553,6 +1600,7 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, void *data)
->       aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
->       aic->has_dma = true;
->       aic->mem_size = 0x10000;
-> +    aic->has_dma64 = true;
->   }
->   
->   static const TypeInfo aspeed_2700_i2c_info = {
-> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-> index 4f23dc10c3..2c4c81bd20 100644
-> --- a/include/hw/i2c/aspeed_i2c.h
-> +++ b/include/hw/i2c/aspeed_i2c.h
-> @@ -38,7 +38,7 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
->   #define ASPEED_I2C_SHARE_POOL_SIZE 0x800
->   #define ASPEED_I2C_BUS_POOL_SIZE 0x20
->   #define ASPEED_I2C_OLD_NUM_REG 11
-> -#define ASPEED_I2C_NEW_NUM_REG 22
-> +#define ASPEED_I2C_NEW_NUM_REG 28
->   
->   #define A_I2CD_M_STOP_CMD       BIT(5)
->   #define A_I2CD_M_RX_CMD         BIT(3)
-> @@ -227,6 +227,15 @@ REG32(I2CS_DMA_LEN_STS, 0x4c)
->       FIELD(I2CS_DMA_LEN_STS, TX_LEN, 0, 13)
->   REG32(I2CC_DMA_ADDR, 0x50)
->   REG32(I2CC_DMA_LEN, 0x54)
-> +/* DMA 64bits */
-> +REG32(I2CM_DMA_TX_ADDR_HI, 0x60)
-> +    FIELD(I2CM_DMA_TX_ADDR_HI, ADDR_HI, 0, 7)
-> +REG32(I2CM_DMA_RX_ADDR_HI, 0x64)
-> +    FIELD(I2CM_DMA_RX_ADDR_HI, ADDR_HI, 0, 7)
-> +REG32(I2CS_DMA_TX_ADDR_HI, 0x68)
-> +    FIELD(I2CS_DMA_TX_ADDR_HI, ADDR_HI, 0, 7)
-> +REG32(I2CS_DMA_RX_ADDR_HI, 0x6c)
-> +    FIELD(I2CS_DMA_RX_ADDR_HI, ADDR_HI, 0, 7)
->   
->   struct AspeedI2CState;
->   
-> @@ -292,6 +301,7 @@ struct AspeedI2CClass {
->       bool has_dma;
->       bool has_share_pool;
->       uint64_t mem_size;
-> +    bool has_dma64;
->   };
->   
->   static inline bool aspeed_i2c_is_new_mode(AspeedI2CState *s)
 

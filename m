@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1260396njk;
-        Wed, 17 Jul 2024 23:50:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVgBkrjzJn904ej3crfo5/2W/tsGYdubp8mWKsoZm+ouPFbJV1lyU3Oylkiim0UsVRQwxH4zndqx3cK4T1bLWwKtPbDMhsz
-X-Google-Smtp-Source: AGHT+IHhv5l2O9rd4o9JfXHDatP1VT5YMWIbSRUnPMD41FIZloOIZl2GQ/985/FR2o9pNjWiCBBZ
-X-Received: by 2002:a05:6214:580f:b0:6ad:84aa:2956 with SMTP id 6a1803df08f44-6b79cc43fa1mr28654396d6.13.1721285446191;
-        Wed, 17 Jul 2024 23:50:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721285446; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1260448njk;
+        Wed, 17 Jul 2024 23:50:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVfNcOyh1ckpIDFE9hHzOguySU/j6+AqrrXUYVWzoY5nQW4nRM97n7IfxdoUmpLGGnphUytKr7bH1QCyXZptzzudcUAA5/E
+X-Google-Smtp-Source: AGHT+IH4jDJj7kHjvjeshGAJUkGDN0+nS43BoX6okdcethFwGVq9OxmjKr3Ae0fgVoxgxyxGKPyZ
+X-Received: by 2002:a05:620a:1a18:b0:79e:fb85:5260 with SMTP id af79cd13be357-7a18751863amr338644585a.73.1721285455692;
+        Wed, 17 Jul 2024 23:50:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721285455; cv=none;
         d=google.com; s=arc-20160816;
-        b=GSY9CZGsHbZVLkWk9fVRI33LBmYElhBCZIPfDI7x2RSHYcbEVZQcIydSRUU7cIORaM
-         kIMjZp5DiMhdFmlgGNtqVv32wUkSlPaFynXXMvvDgV5of+r+c58R4AV6+b376V95lKRB
-         /eu4I1maqW261YaBiZQ5N+wbUVMDYcafwqrqyZC+FA1PQpn442Z9aoM/Tb2X554VlaR+
-         yDEyezg4SLnXOhVyYPpbG4Iz5Z5rRxDLGMUwi+qC07elzZT+b6JrAQRvEBETTC8Rcpg7
-         r21+5nxx46azin5H05x+pxiLRQdR4K/ZKcXDuzjtgxOwj806H717LiLlsD0q1tg/UCui
-         0kyw==
+        b=Vk4lpljTusoIqZA9F68T8yWf5DkPsWjPIthLaZLG10DO7qtkrwRqCRQDDAvhhqmQNk
+         kSGKLwmbmITLItL1bDv+ew4yDpELhZl7mEuVQwVpMUhc82y09m2HTwsu8XFqmhypsVDa
+         aauJkfV5TbK+uyvT+mWBDXJ6kAPEcYg0wOmTgC7mohYm5ycAPNIHurRDq0/Ok9YEWoEE
+         mJkZblwgxvy9w+j2I0VC4nYp0IatNiuoFmVf1PJuXPgFXCEdcLbNhf9MpVHQQyFldqwJ
+         cbNVWPRfjz5QdDjKLcosgWQ6Z2HxZkD6wn/NhbxSk4vTjHIJBLefQ2oNgLzBRUH7ioCT
+         tqrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=Y8tA0rkZQRHnLmkfbdUboBQekJ58j/si0K6zyg85SBo=;
-        fh=cqT0Sm0iQHqDiDEsJ3ixFD44Q88e2AVQBWE8a4yA5Ck=;
-        b=BCnfVRfeQBo1tm6GKYvQ3ZO7Ia12WLzfAxK2E9Tt8Bvcan2SlVzEGqpG7JrDfrSMzw
-         QHamxWwtV+4EGqisRz4Rl1wV+RmOrfW9KWOSoP3taa7QYG6rgp7ufj4tTO8JpbitR/ql
-         0x/6e9gSSWmyUssxKPmJLOlHkv69HuO2gD5knZwOh74O/6K2seW639KK+4zpropgvgS+
-         LFLLm7fnGICYDSDrXQQ69fX9AfiPGs911TtEr/B/XAZ44wjqB3gAS8BNYAFs2wH0hDrw
-         NAdGWUtcqGf8NvhlCoPnEZ079v3yBnkAjO9wdiJ2iz9+CcbAzvUCx9yl6P0VcTNZZkCm
-         qieA==;
+        bh=Fn27Okcfa+2nqZsUvxMQA7sfPh4A42Y8CLhemfiOMF8=;
+        fh=Ph+R0NNHAlT66tvNC78JUFsmAbXddKrwk994XbgsRkc=;
+        b=S46Wbr9Oh3F23bqv3OWPs+f7aekWc/PGBrQ+GsD0Z3Sp+kVuTp2vOetKY9kkAZPks0
+         NYAe4FtyF2gY869PNjb5M56xtzeQBKSEOazBxY3g0ECYlWVxFHKR3kVRC5EpgYctCl4r
+         DJINeSWIc3Up+qwrPQ980hRe0kizanO6/NlcLjVG9RKGRQ1sA2ev15poi2Di5uUYuUWZ
+         PR1wXa42jp3PxNBN9rj2YyeQlRMrMDbT88QlaRy3lC138vhGg2nDKnIF8gaKMB5OsPL1
+         V0bFqRWfizV8Gs/rtRi65IeThDSxEf3CoZdXLfCLQKN3xNQasWfeNlnM01f/65+e2IMn
+         SJJg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b79c7b35d2si12673336d6.240.2024.07.17.23.50.46
+        by mx.google.com with ESMTPS id af79cd13be357-7a160c499d6si1186168785a.304.2024.07.17.23.50.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jul 2024 23:50:46 -0700 (PDT)
+        Wed, 17 Jul 2024 23:50:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,33 +42,34 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sUKy5-0004yJ-WD; Thu, 18 Jul 2024 02:50:22 -0400
+	id 1sUKyA-0005Hh-Ni; Thu, 18 Jul 2024 02:50:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sUKy4-0004vG-D9; Thu, 18 Jul 2024 02:50:20 -0400
+ id 1sUKy9-0005Cr-KI; Thu, 18 Jul 2024 02:50:25 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1sUKy2-0004L5-6S; Thu, 18 Jul 2024 02:50:19 -0400
+ id 1sUKy8-0004L5-3a; Thu, 18 Jul 2024 02:50:25 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 18 Jul
  2024 14:50:15 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Thu, 18 Jul 2024 14:49:50 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ Transport; Thu, 18 Jul 2024 14:50:15 +0800
+To: Alistair Francis <alistair@alistair23.me>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@kaod.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
+ Stanley" <joel@jms.id.au>, "open list:STM32F205" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 01/15] aspeed/adc: Add AST2700 support
-Date: Thu, 18 Jul 2024 14:49:11 +0800
-Message-ID: <20240718064925.1846074-2-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 03/15] hw/i2c/aspeed: support to set the different memory
+ size
+Date: Thu, 18 Jul 2024 14:49:13 +0800
+Message-ID: <20240718064925.1846074-4-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
 References: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
@@ -98,70 +99,83 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HPRBWoWDAqri
+X-TUID: NUBbEqfPNGiM
 
-AST2700 and AST2600 ADC controllers are identical.
-Introduce ast2700 class and set 2 engines.
+According to the datasheet of ASPEED SOCs,
+an I2C controller owns 8KB of register space for AST2700,
+owns 4KB of register space for AST2600, AST2500 and AST2400,
+and owns 64KB of register space for AST1030.
+
+It set the memory region size 4KB by default and it does not compatible
+register space for AST2700.
+
+Introduce a new class attribute to set the I2C controller memory size
+for different ASPEED SOCs.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/adc/aspeed_adc.c         | 16 ++++++++++++++++
- include/hw/adc/aspeed_adc.h |  1 +
- 2 files changed, 17 insertions(+)
+ hw/i2c/aspeed_i2c.c         | 6 +++++-
+ include/hw/i2c/aspeed_i2c.h | 2 +-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/hw/adc/aspeed_adc.c b/hw/adc/aspeed_adc.c
-index 68bdbc73b0..48328ef891 100644
---- a/hw/adc/aspeed_adc.c
-+++ b/hw/adc/aspeed_adc.c
-@@ -398,6 +398,15 @@ static void aspeed_1030_adc_class_init(ObjectClass *klass, void *data)
-     aac->nr_engines = 2;
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index b43afd250d..7d5a53c4c0 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -1014,7 +1014,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+ 
+     sysbus_init_irq(sbd, &s->irq);
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops, s,
+-                          "aspeed.i2c", 0x1000);
++                          "aspeed.i2c", aic->mem_size);
+     sysbus_init_mmio(sbd, &s->iomem);
+ 
+     for (i = 0; i < aic->num_busses; i++) {
+@@ -1286,6 +1286,7 @@ static void aspeed_2400_i2c_class_init(ObjectClass *klass, void *data)
+     aic->pool_size = 0x800;
+     aic->pool_base = 0x800;
+     aic->bus_pool_base = aspeed_2400_i2c_bus_pool_base;
++    aic->mem_size = 0x1000;
  }
  
-+static void aspeed_2700_adc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedADCClass *aac = ASPEED_ADC_CLASS(klass);
-+
-+    dc->desc = "ASPEED 2700 ADC Controller";
-+    aac->nr_engines = 2;
-+}
-+
- static const TypeInfo aspeed_adc_info = {
-     .name = TYPE_ASPEED_ADC,
-     .parent = TYPE_SYS_BUS_DEVICE,
-@@ -430,6 +439,12 @@ static const TypeInfo aspeed_1030_adc_info = {
-     .class_init = aspeed_1030_adc_class_init, /* No change since AST2600 */
+ static const TypeInfo aspeed_2400_i2c_info = {
+@@ -1320,6 +1321,7 @@ static void aspeed_2500_i2c_class_init(ObjectClass *klass, void *data)
+     aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
+     aic->check_sram = true;
+     aic->has_dma = true;
++    aic->mem_size = 0x1000;
+ }
+ 
+ static const TypeInfo aspeed_2500_i2c_info = {
+@@ -1353,6 +1355,7 @@ static void aspeed_2600_i2c_class_init(ObjectClass *klass, void *data)
+     aic->pool_base = 0xC00;
+     aic->bus_pool_base = aspeed_2600_i2c_bus_pool_base;
+     aic->has_dma = true;
++    aic->mem_size = 0x1000;
+ }
+ 
+ static const TypeInfo aspeed_2600_i2c_info = {
+@@ -1376,6 +1379,7 @@ static void aspeed_1030_i2c_class_init(ObjectClass *klass, void *data)
+     aic->pool_base = 0xC00;
+     aic->bus_pool_base = aspeed_2600_i2c_bus_pool_base;
+     aic->has_dma = true;
++    aic->mem_size = 0x10000;
+ }
+ 
+ static const TypeInfo aspeed_1030_i2c_info = {
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index a064479e59..065b636d29 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -283,7 +283,7 @@ struct AspeedI2CClass {
+     uint8_t *(*bus_pool_base)(AspeedI2CBus *);
+     bool check_sram;
+     bool has_dma;
+-
++    uint64_t mem_size;
  };
  
-+static const TypeInfo aspeed_2700_adc_info = {
-+    .name = TYPE_ASPEED_2700_ADC,
-+    .parent = TYPE_ASPEED_ADC,
-+    .class_init = aspeed_2700_adc_class_init,
-+};
-+
- static void aspeed_adc_register_types(void)
- {
-     type_register_static(&aspeed_adc_engine_info);
-@@ -438,6 +453,7 @@ static void aspeed_adc_register_types(void)
-     type_register_static(&aspeed_2500_adc_info);
-     type_register_static(&aspeed_2600_adc_info);
-     type_register_static(&aspeed_1030_adc_info);
-+    type_register_static(&aspeed_2700_adc_info);
- }
- 
- type_init(aspeed_adc_register_types);
-diff --git a/include/hw/adc/aspeed_adc.h b/include/hw/adc/aspeed_adc.h
-index ff1d06ea91..f502f197ac 100644
---- a/include/hw/adc/aspeed_adc.h
-+++ b/include/hw/adc/aspeed_adc.h
-@@ -18,6 +18,7 @@
- #define TYPE_ASPEED_2500_ADC TYPE_ASPEED_ADC "-ast2500"
- #define TYPE_ASPEED_2600_ADC TYPE_ASPEED_ADC "-ast2600"
- #define TYPE_ASPEED_1030_ADC TYPE_ASPEED_ADC "-ast1030"
-+#define TYPE_ASPEED_2700_ADC TYPE_ASPEED_ADC "-ast2700"
- OBJECT_DECLARE_TYPE(AspeedADCState, AspeedADCClass, ASPEED_ADC)
- 
- #define TYPE_ASPEED_ADC_ENGINE "aspeed.adc.engine"
+ static inline bool aspeed_i2c_is_new_mode(AspeedI2CState *s)
 -- 
 2.34.1
 

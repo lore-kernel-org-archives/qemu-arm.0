@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a79bc5b7e50sm537503566b.69.2024.07.18.02.45.26
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a79bc820e32sm540039566b.204.2024.07.18.02.45.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 18 Jul 2024 02:45:28 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id AB4EC5FA3B;
+	by draig.lan (Postfix) with ESMTP id C24075FA3D;
 	Thu, 18 Jul 2024 10:45:24 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -33,44 +33,46 @@ Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
 	Max Filippov <jcmvbkbc@gmail.com>,
 	Mahmoud Mandour <ma.mandourr@gmail.com>,
 	Paolo Bonzini <pbonzini@redhat.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	=?UTF-8?q?Fr=C3=A9d=C3=A9ric=20P=C3=A9trot?= <frederic.petrot@univ-grenoble-alpes.fr>
-Subject: [PATCH 07/15] plugins/execlog.c: correct dump of registers values
-Date: Thu, 18 Jul 2024 10:45:15 +0100
-Message-Id: <20240718094523.1198645-8-alex.bennee@linaro.org>
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH 08/15] semihosting: Include missing 'gdbstub/syscalls.h' header
+Date: Thu, 18 Jul 2024 10:45:16 +0100
+Message-Id: <20240718094523.1198645-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240718094523.1198645-1-alex.bennee@linaro.org>
 References: <20240718094523.1198645-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kHcuekqgnzCz
+X-TUID: KKCdXVdEG+Q6
 
-From: Frédéric Pétrot <frederic.petrot@univ-grenoble-alpes.fr>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Register values are dumped as 'sz' chunks of two nibbles in the execlog
-plugin, sz was 1 too big.
+"semihosting/syscalls.h" requires definitions from
+"gdbstub/syscalls.h", include it in order to avoid:
 
-Signed-off-by: Frédéric Pétrot <frederic.petrot@univ-grenoble-alpes.fr>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20240620083805.73603-1-frederic.petrot@univ-grenoble-alpes.fr>
+  include/semihosting/syscalls.h:23:38: error: unknown type name 'gdb_syscall_complete_cb'
+  void semihost_sys_open(CPUState *cs, gdb_syscall_complete_cb complete,
+                                       ^
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20240717105723.58965-2-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- contrib/plugins/execlog.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/semihosting/syscalls.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/contrib/plugins/execlog.c b/contrib/plugins/execlog.c
-index 371db97eb1..1c1601cc0b 100644
---- a/contrib/plugins/execlog.c
-+++ b/contrib/plugins/execlog.c
-@@ -101,7 +101,7 @@ static void insn_check_regs(CPU *cpu)
-             GByteArray *temp = reg->last;
-             g_string_append_printf(cpu->last_exec, ", %s -> 0x", reg->name);
-             /* TODO: handle BE properly */
--            for (int i = sz; i >= 0; i--) {
-+            for (int i = sz - 1; i >= 0; i--) {
-                 g_string_append_printf(cpu->last_exec, "%02x",
-                                        reg->new->data[i]);
-             }
+diff --git a/include/semihosting/syscalls.h b/include/semihosting/syscalls.h
+index 3a5ec229eb..b5937c619a 100644
+--- a/include/semihosting/syscalls.h
++++ b/include/semihosting/syscalls.h
+@@ -9,6 +9,8 @@
+ #ifndef SEMIHOSTING_SYSCALLS_H
+ #define SEMIHOSTING_SYSCALLS_H
+ 
++#include "gdbstub/syscalls.h"
++
+ /*
+  * Argument loading from the guest is performed by the caller;
+  * results are returned via the 'complete' callback.
 -- 
 2.39.2

@@ -1,373 +1,116 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1233459njk;
-        Wed, 17 Jul 2024 22:28:41 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUvxkJZhxhy0mdNFp8mDKu13WNamJaiadPWWckqEXPVxlY090lSRusTa1QVXQy/94jVigtd3bo4oTcVcA7a7bVKYR4YsPgv
-X-Google-Smtp-Source: AGHT+IE/GGSyNj2Cm0yJkfF0riRqw3hrkIAj81scH1P2tT65xr8bYvxn0+5Sa0X52BpzrznYkqfW
-X-Received: by 2002:a05:6870:20f:b0:254:8bb9:d0bf with SMTP id 586e51a60fabf-260d921c41bmr3022385fac.32.1721280521718;
-        Wed, 17 Jul 2024 22:28:41 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1721280521; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=0Qd2Zd/iTvVSdTshxoPxg9WlfMAUr+9YIslCX4bMMwL+z54RnpLf0k8ijicfQGtV4Y
-         eNntxDkQ9nUHRGm40ktS3mRmB5IuPf4SKhXWb301UJ3jo8b6JEaGUR9OxQzx7ah8hta3
-         BGu0AFASHvIUlHIhEEL6VtkEEvuuZaJXodvJHKqy1CPYH1GgVy1xt655qeTis7j4Sqm/
-         IGy1pNPSJR6Lj5QbXJzFDLV8iX4wrWghMXFh+PCz7uYOCGaAV4qUXQa5o3SfjJ8fEw6o
-         pCS32KOlMgo3hBn4g9MRDQ64P5hzR1iRxo79lxclqm6o+qERzwQZ4rxoZhIBUXTmaggo
-         QW1w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=DJZNTFFHjKyn9P2akwtzoAYZKqqCHv4i53GA4z82ZGs=;
-        fh=eFzt1Tmf03fEn3SS/npCqHcXW5yeJatyDGFUfHa8EbQ=;
-        b=nNsAEDE+WD/9y8WY+6RKEJ/LFlXotOHhARuCP8vqRumxbBJoDtHXo+jN1z7Jre4iha
-         73YrG+ox0aL1N3RCkIKxY7jXUZUzKsckeKzezVEqD1UXyTDRWyGkBlXlDUC3OcJajv81
-         JDvN4TFzYoVbEKW0F/1PpLXTOkwjsxHhE/ynjGkTtg3xhFHXDcxaxMQ+h/Rn4yB7fwkF
-         FV4c0QPG9pXElwf5oPVuTRDmCgcsg0rWtNd8bI0WLOkQsP6zlV3wVetyB0+j6YZrOdAQ
-         eBw5HygQe638gVRyBONhEmWlzpBPrC12+4aLBii8I6oGoF4pTWXLP31uUNf80rMb4gmF
-         Xj1A==;
-        dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=UEzxCeEd;
-       arc=pass (i=1 dkim=pass dkdomain=intel.com dmarc=pass fromdomain=linux.intel.com);
-       spf=pass (google.com: domain of kvm+bounces-21814-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-21814-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-21814-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-78e41f698d8si10713915a12.291.2024.07.17.22.28.41
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a79bc5b7ebfsm534274966b.67.2024.07.18.02.45.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 17 Jul 2024 22:28:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-21814-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=UEzxCeEd;
-       arc=pass (i=1 dkim=pass dkdomain=intel.com dmarc=pass fromdomain=linux.intel.com);
-       spf=pass (google.com: domain of kvm+bounces-21814-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-21814-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 3999B282436
-	for <alex.bennee@linaro.org>; Thu, 18 Jul 2024 05:28:41 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3455E43AD5;
-	Thu, 18 Jul 2024 05:28:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="UEzxCeEd"
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1106542078
-	for <kvm@vger.kernel.org>; Thu, 18 Jul 2024 05:28:33 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.19
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1721280516; cv=none; b=prjdvH6VyFphX+bNS0RuOKr2POojyZ76J5SYBJaQAH4xmp9GdbEmyfqwpeQZmxejHy6/24fDKfWOLZOSVzli9CThxAh9AHucaOrHgkjV+osPjM2zWqHkjOHL+f3zEB+OPVsK4axs9YLiOmIYH9IjPRN3IuFOaDOuldoj33PkbDU=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1721280516; c=relaxed/simple;
-	bh=/n30pXRSaPg6/RNVS5KqTJU65apInj9L15dc5ZlOJWI=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=GvCN+c8gexONKRiKN4Nlx1IyfEmklPz3hF0cKHP9lvDeK5xvI7cV6+CYQ7Q7touXq4wPPVVqVj+Aqy2YhrFK5357S06I5j1InJfGgP2ykUxBUbL3JhLPRE+D2CTRhHdgZtNgFcIStuD8mX4HhiZxCF32ihNb80tE7iyL+xJ03Bw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com; spf=none smtp.mailfrom=linux.intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=UEzxCeEd; arc=none smtp.client-ip=198.175.65.19
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1721280514; x=1752816514;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=/n30pXRSaPg6/RNVS5KqTJU65apInj9L15dc5ZlOJWI=;
-  b=UEzxCeEdwk+zMoftk7ryKROOaslFnyjFKaHgyxafUxDdSaB0JIoOtTZS
-   pFLm31ERGKqkpZFVE5xqOOV1o/Um45GZTSmeU3QFjAdwsj5FwaOAR+1PU
-   nNOj9AT7Mwx0pvl2Kzb3E9259YXsvEgxHlKbyiI8zRMg9kHdmlIAlKTqI
-   B+Dm96zFPfK1OL1M5Z/11RgPD8KMVUwGxhdae/Ta4MWvlkt3WJ6h6nbyb
-   swjldpX8cFGIDfjXUWvTOTRpxaVk2WTbtaOkrWv/H8ZAJfqBuDfxnsBwt
-   HgO3J99+rsxp7Bua4FVUh8ulUf/tCiYzKyT0TI6UnPr2P+Cbj4q6JszT7
-   g==;
-X-CSE-ConnectionGUID: nO6n9GuAQwqEMsUajcjIBQ==
-X-CSE-MsgGUID: 2zuQRXPbST+Jqn4cG+7i2A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11136"; a="18671312"
-X-IronPort-AV: E=Sophos;i="6.09,216,1716274800"; 
-   d="scan'208";a="18671312"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jul 2024 22:28:33 -0700
-X-CSE-ConnectionGUID: 1d43GwztQwePSZ+OmH1dMg==
-X-CSE-MsgGUID: 3F6yikizQVyqX8j1PyIE4g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,216,1716274800"; 
-   d="scan'208";a="55777879"
-Received: from dapengmi-mobl1.ccr.corp.intel.com (HELO [10.124.225.1]) ([10.124.225.1])
-  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Jul 2024 22:28:29 -0700
-Message-ID: <f18ab76c-abbe-4599-9631-603853bcfa0b@linux.intel.com>
-Date: Thu, 18 Jul 2024 13:28:25 +0800
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+        Thu, 18 Jul 2024 02:45:24 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id EDBC25F762;
+	Thu, 18 Jul 2024 10:45:23 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Thomas Huth <thuth@redhat.com>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-arm@nongnu.org,
+	Bin Meng <bmeng.cn@gmail.com>,
+	qemu-riscv@nongnu.org,
+	Aleksandar Rikalo <arikalo@gmail.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Li-Wen Hsu <lwhsu@freebsd.org>,
+	Ed Maste <emaste@freebsd.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH 00/15] Final bits for 9.1-rc0 (docker, plugins, gdbstub, semihosting)
+Date: Thu, 18 Jul 2024 10:45:08 +0100
+Message-Id: <20240718094523.1198645-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 3/5] i386/kvm: Support event with select&umask format in KVM
- PMU filter
-To: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Michael Roth <michael.roth@amd.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Marcelo Tosatti
- <mtosatti@redhat.com>, Shaoqin Huang <shahuang@redhat.com>,
- Eric Auger <eauger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>
-Cc: qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Zhenyu Wang <zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@intel.com>,
- Yuan Yao <yuan.yao@intel.com>, Xiong Zhang <xiong.y.zhang@intel.com>,
- Mingwei Zhang <mizhang@google.com>, Jim Mattson <jmattson@google.com>
-References: <20240710045117.3164577-1-zhao1.liu@intel.com>
- <20240710045117.3164577-4-zhao1.liu@intel.com>
-Content-Language: en-US
-From: "Mi, Dapeng" <dapeng1.mi@linux.intel.com>
-In-Reply-To: <20240710045117.3164577-4-zhao1.liu@intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TUID: iVsA9y6B5ZfS
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: Y2JSAZ4+I5VK
 
+I'm just flushing my various maintainer queues for the up-coming 9.1
+soft freeze. Mostly this is a collection of fixes and tweaks although
+there is a new plugin in contrib. We've also bumped the libvirt-ci for
+the BSD python updates.
 
-On 7/10/2024 12:51 PM, Zhao Liu wrote:
-> The select&umask is the common way for x86 to identify the PMU event,
-> so support this way as the "x86-default" format in kvm-pmu-filter
-> object.
->
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> ---
->  accel/kvm/kvm-pmu.c      | 62 ++++++++++++++++++++++++++++++++++++++++
->  include/sysemu/kvm-pmu.h | 13 +++++++++
->  qapi/kvm.json            | 46 +++++++++++++++++++++++++++--
->  target/i386/kvm/kvm.c    |  5 ++++
->  4 files changed, 123 insertions(+), 3 deletions(-)
->
-> diff --git a/accel/kvm/kvm-pmu.c b/accel/kvm/kvm-pmu.c
-> index 483d1bdf4807..51d3fba5a72a 100644
-> --- a/accel/kvm/kvm-pmu.c
-> +++ b/accel/kvm/kvm-pmu.c
-> @@ -17,6 +17,8 @@
->  #include "qom/object_interfaces.h"
->  #include "sysemu/kvm-pmu.h"
->  
-> +#define UINT12_MAX (4095)
-> +
->  static void kvm_pmu_filter_get_event(Object *obj, Visitor *v, const char *name,
->                                       void *opaque, Error **errp)
->  {
-> @@ -38,6 +40,12 @@ static void kvm_pmu_filter_get_event(Object *obj, Visitor *v, const char *name,
->              str_event->u.raw.code = g_strdup_printf("0x%lx",
->                                                      event->u.raw.code);
->              break;
-> +        case KVM_PMU_EVENT_FMT_X86_DEFAULT:
-> +            str_event->u.x86_default.select =
-> +                g_strdup_printf("0x%x", event->u.x86_default.select);
-> +            str_event->u.x86_default.umask =
-> +                g_strdup_printf("0x%x", event->u.x86_default.umask);
-> +            break;
->          default:
->              g_assert_not_reached();
->          }
-> @@ -83,6 +91,60 @@ static void kvm_pmu_filter_set_event(Object *obj, Visitor *v, const char *name,
->                  goto fail;
->              }
->              break;
-> +        case KVM_PMU_EVENT_FMT_X86_DEFAULT: {
-> +            uint64_t select, umask;
-> +
-> +            ret = qemu_strtou64(str_event->u.x86_default.select, NULL,
-> +                                0, &select);
-> +            if (ret < 0) {
-> +                error_setg(errp,
-> +                           "Invalid %s PMU event (select: %s): %s. "
-> +                           "The select must be a "
-> +                           "12-bit unsigned number string.",
-> +                           KVMPMUEventEncodeFmt_str(str_event->format),
-> +                           str_event->u.x86_default.select,
-> +                           strerror(-ret));
-> +                g_free(event);
-> +                goto fail;
-> +            }
-> +            if (select > UINT12_MAX) {
-> +                error_setg(errp,
-> +                           "Invalid %s PMU event (select: %s): "
-> +                           "Numerical result out of range. "
-> +                           "The select must be a "
-> +                           "12-bit unsigned number string.",
-> +                           KVMPMUEventEncodeFmt_str(str_event->format),
-> +                           str_event->u.x86_default.select);
-> +                g_free(event);
-> +                goto fail;
-> +            }
-> +            event->u.x86_default.select = select;
-> +
-> +            ret = qemu_strtou64(str_event->u.x86_default.umask, NULL,
-> +                                0, &umask);
-> +            if (ret < 0) {
-> +                error_setg(errp,
-> +                           "Invalid %s PMU event (umask: %s): %s. "
-> +                           "The umask must be a uint8 string.",
-> +                           KVMPMUEventEncodeFmt_str(str_event->format),
-> +                           str_event->u.x86_default.umask,
-> +                           strerror(-ret));
-> +                g_free(event);
-> +                goto fail;
-> +            }
-> +            if (umask > UINT8_MAX) {
+The following still need review:
 
-umask is extended to 16 bits from Perfmon v6+. Please notice we need to
-upgrade this to 16 bits in the future. More details can be found here.
-[PATCH V3 00/13] Support Lunar Lake and Arrow Lake core PMU - kan.liang
-(kernel.org)
-<https://lore.kernel.org/all/20240626143545.480761-1-kan.liang@linux.intel.com/>
+  tests/plugins: use qemu_plugin_outs for inline stats
+  testing: bump to latest libvirt-ci
 
+Alex Bennée (3):
+  testing: bump to latest libvirt-ci
+  gdbstub: Re-factor gdb command extensions
+  tests/plugins: use qemu_plugin_outs for inline stats
 
-> +                error_setg(errp,
-> +                           "Invalid %s PMU event (umask: %s): "
-> +                           "Numerical result out of range. "
-> +                           "The umask must be a uint8 string.",
-> +                           KVMPMUEventEncodeFmt_str(str_event->format),
-> +                           str_event->u.x86_default.umask);
-> +                g_free(event);
-> +                goto fail;
-> +            }
-> +            event->u.x86_default.umask = umask;
-> +            break;
-> +        }
->          default:
->              g_assert_not_reached();
->          }
-> diff --git a/include/sysemu/kvm-pmu.h b/include/sysemu/kvm-pmu.h
-> index 4707759761f1..707f33d604fd 100644
-> --- a/include/sysemu/kvm-pmu.h
-> +++ b/include/sysemu/kvm-pmu.h
-> @@ -26,4 +26,17 @@ struct KVMPMUFilter {
->      KVMPMUFilterEventList *events;
->  };
->  
-> +/*
-> + * Stolen from Linux kernel (RAW_EVENT at tools/testing/selftests/kvm/include/
-> + * x86_64/pmu.h).
-> + *
-> + * Encode an eventsel+umask pair into event-select MSR format.  Note, this is
-> + * technically AMD's format, as Intel's format only supports 8 bits for the
-> + * event selector, i.e. doesn't use bits 24:16 for the selector.  But, OR-ing
-> + * in '0' is a nop and won't clobber the CMASK.
-> + */
-> +#define X86_PMU_RAW_EVENT(eventsel, umask) (((eventsel & 0xf00UL) << 24) | \
-> +                                            ((eventsel) & 0xff) | \
-> +                                            ((umask) & 0xff) << 8)
-> +
->  #endif /* KVM_PMU_H */
-> diff --git a/qapi/kvm.json b/qapi/kvm.json
-> index 0619da83c123..0d759884c229 100644
-> --- a/qapi/kvm.json
-> +++ b/qapi/kvm.json
-> @@ -27,11 +27,13 @@
->  #
->  # @raw: the encoded event code that KVM can directly consume.
->  #
-> +# @x86-default: standard x86 encoding format with select and umask.
-> +#
->  # Since 9.1
->  ##
->  { 'enum': 'KVMPMUEventEncodeFmt',
->    'prefix': 'KVM_PMU_EVENT_FMT',
-> -  'data': ['raw'] }
-> +  'data': ['raw', 'x86-default'] }
->  
->  ##
->  # @KVMPMURawEvent:
-> @@ -46,6 +48,25 @@
->  { 'struct': 'KVMPMURawEvent',
->    'data': { 'code': 'uint64' } }
->  
-> +##
-> +# @KVMPMUX86DefalutEvent:
-> +#
-> +# x86 PMU event encoding with select and umask.
-> +# raw_event = ((select & 0xf00UL) << 24) | \
-> +#              (select) & 0xff) | \
-> +#              ((umask) & 0xff) << 8)
-> +#
-> +# @select: x86 PMU event select field, which is a 12-bit unsigned
-> +#     number.
-> +#
-> +# @umask: x86 PMU event umask field.
-> +#
-> +# Since 9.1
-> +##
-> +{ 'struct': 'KVMPMUX86DefalutEvent',
-> +  'data': { 'select': 'uint16',
-> +            'umask': 'uint8' } }
-> +
->  ##
->  # @KVMPMUFilterEvent:
->  #
-> @@ -61,7 +82,8 @@
->    'base': { 'action': 'KVMPMUFilterAction',
->              'format': 'KVMPMUEventEncodeFmt' },
->    'discriminator': 'format',
-> -  'data': { 'raw': 'KVMPMURawEvent' } }
-> +  'data': { 'raw': 'KVMPMURawEvent',
-> +            'x86-default': 'KVMPMUX86DefalutEvent' } }
->  
->  ##
->  # @KVMPMUFilterProperty:
-> @@ -89,6 +111,23 @@
->  { 'struct': 'KVMPMURawEventVariant',
->    'data': { 'code': 'str' } }
->  
-> +##
-> +# @KVMPMUX86DefalutEventVariant:
-> +#
-> +# The variant of KVMPMUX86DefalutEvent with the string, rather than
-> +# the numeric value.
-> +#
-> +# @select: x86 PMU event select field.  This field is a 12-bit
-> +#     unsigned number string.
-> +#
-> +# @umask: x86 PMU event umask field. This field is a uint8 string.
-> +#
-> +# Since 9.1
-> +##
-> +{ 'struct': 'KVMPMUX86DefalutEventVariant',
-> +  'data': { 'select': 'str',
-> +            'umask': 'str' } }
-> +
->  ##
->  # @KVMPMUFilterEventVariant:
->  #
-> @@ -104,7 +143,8 @@
->    'base': { 'action': 'KVMPMUFilterAction',
->              'format': 'KVMPMUEventEncodeFmt' },
->    'discriminator': 'format',
-> -  'data': { 'raw': 'KVMPMURawEventVariant' } }
-> +  'data': { 'raw': 'KVMPMURawEventVariant',
-> +            'x86-default': 'KVMPMUX86DefalutEventVariant' } }
->  
->  ##
->  # @KVMPMUFilterPropertyVariant:
-> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-> index e9bf79782316..391531c036a6 100644
-> --- a/target/i386/kvm/kvm.c
-> +++ b/target/i386/kvm/kvm.c
-> @@ -5393,6 +5393,10 @@ kvm_config_pmu_event(KVMPMUFilter *filter,
->          case KVM_PMU_EVENT_FMT_RAW:
->              code = event->u.raw.code;
->              break;
-> +        case KVM_PMU_EVENT_FMT_X86_DEFAULT:
-> +            code = X86_PMU_RAW_EVENT(event->u.x86_default.select,
-> +                                     event->u.x86_default.umask);
-> +            break;
->          default:
->              g_assert_not_reached();
->          }
-> @@ -6073,6 +6077,7 @@ static void kvm_arch_check_pmu_filter(const Object *obj, const char *name,
->  
->          switch (event->format) {
->          case KVM_PMU_EVENT_FMT_RAW:
-> +        case KVM_PMU_EVENT_FMT_X86_DEFAULT:
->              break;
->          default:
->              error_setg(errp,
+Frédéric Pétrot (1):
+  plugins/execlog.c: correct dump of registers values
+
+Philippe Mathieu-Daudé (8):
+  semihosting: Include missing 'gdbstub/syscalls.h' header
+  target/m68k: Add semihosting stub
+  target/mips: Add semihosting stub
+  target/m68k: Restrict semihosting to TCG
+  target/mips: Restrict semihosting to TCG
+  target/riscv: Restrict semihosting to TCG
+  target/xtensa: Restrict semihosting to TCG
+  semihosting: Restrict to TCG
+
+Pierrick Bouvier (1):
+  plugins: fix mem callback array size
+
+Simon Hamelin (1):
+  plugins/stoptrigger: TCG plugin to stop execution under conditions
+
+Thomas Huth (1):
+  tests/avocado: Remove non-working sparc leon3 test
+
+ MAINTAINERS                               |   1 -
+ docs/devel/tcg-plugins.rst                |  22 ++++
+ include/gdbstub/commands.h                |  19 ++-
+ include/semihosting/syscalls.h            |   2 +
+ target/arm/internals.h                    |   4 +-
+ accel/tcg/plugin-gen.c                    |   3 +-
+ contrib/plugins/execlog.c                 |   2 +-
+ contrib/plugins/stoptrigger.c             | 151 ++++++++++++++++++++++
+ gdbstub/gdbstub.c                         | 142 +++++++++++---------
+ target/arm/gdbstub.c                      |  16 +--
+ target/arm/gdbstub64.c                    |  11 +-
+ target/m68k/semihosting-stub.c            |  15 +++
+ target/mips/tcg/sysemu/semihosting-stub.c |  15 +++
+ tests/plugin/inline.c                     |  58 +++++----
+ .gitlab-ci.d/cirrus/freebsd-13.vars       |   2 +-
+ contrib/plugins/Makefile                  |   1 +
+ semihosting/Kconfig                       |   1 +
+ target/m68k/Kconfig                       |   2 +-
+ target/m68k/meson.build                   |   5 +-
+ target/mips/Kconfig                       |   2 +-
+ target/mips/tcg/sysemu/meson.build        |   6 +-
+ target/riscv/Kconfig                      |   4 +-
+ target/xtensa/Kconfig                     |   2 +-
+ tests/avocado/machine_sparc_leon3.py      |  37 ------
+ tests/lcitool/libvirt-ci                  |   2 +-
+ tests/vm/generated/freebsd.json           |  14 +-
+ 26 files changed, 370 insertions(+), 169 deletions(-)
+ create mode 100644 contrib/plugins/stoptrigger.c
+ create mode 100644 target/m68k/semihosting-stub.c
+ create mode 100644 target/mips/tcg/sysemu/semihosting-stub.c
+ delete mode 100644 tests/avocado/machine_sparc_leon3.py
+
+-- 
+2.39.2

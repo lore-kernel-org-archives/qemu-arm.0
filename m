@@ -1,122 +1,167 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1003024njk;
-        Wed, 17 Jul 2024 12:06:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWaDuOYXiAUWfCUTWekH8i+Kz8DlBTCuNRUTwXBbQ/g64ks22NexT3udaguqma+B95UA7R9auHtnlf5USfpO7aT3gXy9m8Y
-X-Received: by 2002:a05:651c:1a0c:b0:2ec:529e:6522 with SMTP id 38308e7fff4ca-2ef05d289b7mr2354561fa.31.1721243211834;
-        Wed, 17 Jul 2024 12:06:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721243211; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1260396njk;
+        Wed, 17 Jul 2024 23:50:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVgBkrjzJn904ej3crfo5/2W/tsGYdubp8mWKsoZm+ouPFbJV1lyU3Oylkiim0UsVRQwxH4zndqx3cK4T1bLWwKtPbDMhsz
+X-Google-Smtp-Source: AGHT+IHhv5l2O9rd4o9JfXHDatP1VT5YMWIbSRUnPMD41FIZloOIZl2GQ/985/FR2o9pNjWiCBBZ
+X-Received: by 2002:a05:6214:580f:b0:6ad:84aa:2956 with SMTP id 6a1803df08f44-6b79cc43fa1mr28654396d6.13.1721285446191;
+        Wed, 17 Jul 2024 23:50:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721285446; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pdqp2EsQjiv0nG0ket675v2WryXXNLlMipLf95eQ3SfmIvchNxSuhnXYk6sdnDtVu4
-         KkbF7OR4gTF9ICzyKKmAmM/IqMD1u49cjJsL/t3kLrr+c7RseJYV6CSsRW3fGpdVoTB8
-         DgOzbJ3gWWnVCwETfxsZrpzMD5UfSpe9cU36pAQWtjUEsYLV+sDrtLMFetov6jMDlxa4
-         s0L6RRBvB/N76yqEWbrUC88jZsTbRbTC219fo4gC76VIIDFbxI2gjPnaj8PbGPaq0V2O
-         Q7rlX1a1I8P6QX4FbjiyjCNVPeYvlDWSdHyxNE6AWGVENOdOb3v70s4Iswct1DUp5S0u
-         k3Vg==
+        b=GSY9CZGsHbZVLkWk9fVRI33LBmYElhBCZIPfDI7x2RSHYcbEVZQcIydSRUU7cIORaM
+         kIMjZp5DiMhdFmlgGNtqVv32wUkSlPaFynXXMvvDgV5of+r+c58R4AV6+b376V95lKRB
+         /eu4I1maqW261YaBiZQ5N+wbUVMDYcafwqrqyZC+FA1PQpn442Z9aoM/Tb2X554VlaR+
+         yDEyezg4SLnXOhVyYPpbG4Iz5Z5rRxDLGMUwi+qC07elzZT+b6JrAQRvEBETTC8Rcpg7
+         r21+5nxx46azin5H05x+pxiLRQdR4K/ZKcXDuzjtgxOwj806H717LiLlsD0q1tg/UCui
+         0kyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=gmTyUPUh2TdjaS2kakIUu+zSdq0kzqZ8AQ2di4fhUkI=;
-        fh=y9lTshx7VKR4AAZoNPghPcJ3RkRV+rOB8zl6o03w0Tg=;
-        b=ANKLKf2rU5iwy2bEP823X2jqvptdR2w1lPFG/P1p7s0AYnwled+/awynxDgUUz8Phj
-         6ra2kIEEaRZtTHbwibVIfGZo1CH5V9BZrPIcbdJUemn42w76biHYyoJwRY4veQz9GnWU
-         l5iL8/7+TleJNGAQ4eGEvXedfH8creatoU5/0n+vphQE4Ji9JWRKYNi1I2jyWPoIDVuF
-         MBXFrTU/gJnx/B3w5EfleZ9rqXWAipFAoIRhDUEVFEohVpGScGCZmK6jc+0oXi5S+Xiz
-         zed8rdNTmKo5zCADPN7u1coyfvEQHLFYU3XEbR2ryFxZ0FeyN4BWwjZyd0ggkHglXuQP
-         BNKA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=Y8tA0rkZQRHnLmkfbdUboBQekJ58j/si0K6zyg85SBo=;
+        fh=cqT0Sm0iQHqDiDEsJ3ixFD44Q88e2AVQBWE8a4yA5Ck=;
+        b=BCnfVRfeQBo1tm6GKYvQ3ZO7Ia12WLzfAxK2E9Tt8Bvcan2SlVzEGqpG7JrDfrSMzw
+         QHamxWwtV+4EGqisRz4Rl1wV+RmOrfW9KWOSoP3taa7QYG6rgp7ufj4tTO8JpbitR/ql
+         0x/6e9gSSWmyUssxKPmJLOlHkv69HuO2gD5knZwOh74O/6K2seW639KK+4zpropgvgS+
+         LFLLm7fnGICYDSDrXQQ69fX9AfiPGs911TtEr/B/XAZ44wjqB3gAS8BNYAFs2wH0hDrw
+         NAdGWUtcqGf8NvhlCoPnEZ079v3yBnkAjO9wdiJ2iz9+CcbAzvUCx9yl6P0VcTNZZkCm
+         qieA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PvK4sLFi;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 38308e7fff4ca-2ef05c9247csor638911fa.1.2024.07.17.12.06.51
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b79c7b35d2si12673336d6.240.2024.07.17.23.50.46
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 17 Jul 2024 12:06:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 17 Jul 2024 23:50:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PvK4sLFi;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721243211; x=1721848011; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gmTyUPUh2TdjaS2kakIUu+zSdq0kzqZ8AQ2di4fhUkI=;
-        b=PvK4sLFioA3aK47Wa4tbMvB0lmL4bqVExIyRVWu/+W2zeWagwYsUA017bXnfBoHglu
-         GB887kFFDePRMyT502Dof8Z8q6L5w4lFc8jjX/+G1yDOekqYim12rOQ9njciIZI7/oOt
-         heO1p1S53EQPxLTw831P5nXNUXarKlvX+HPtakv4+qKF9plBusE3HbuKcwzI1q8OFQDN
-         Cg0pL1Ohl6deMZhxa6kwJGb1TaOS19Dr4koT3B8N1uLXGnuE9G9rxCP1FX8wWfpuss7t
-         rE5eNC66IgfP3201ekJgDzJ9MmTqlfpIcSZJOR3CdlKqHYEZPcoux5XBkYL+pBgWscRi
-         FKgA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721243211; x=1721848011;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=gmTyUPUh2TdjaS2kakIUu+zSdq0kzqZ8AQ2di4fhUkI=;
-        b=XYjt5fgChSjGPgIXi7SFx8FshhZWM03tx67ZUgmKG6VOZBweCDTQhmzCgqXjsaRHOD
-         zKZwnGnGnhQejxEQ89laYM/6hFOwBq3j/mqJe7uJi3P5vwhwTTQWJPg9LLJyLmVp2ogW
-         VaK1pyjVG/s4VQS2eFiegYfQUc9lXwzDBjHnrO0AClzCVFn07ayWw5G+pDQ2nd3LsWGY
-         4a/1g8sxNYUglozwwM68tUlD19C7RxIjWDh2+8dDdLPPO1xsPYXg4KTpELm+AkGGxjqf
-         AchDoFyeucG+RnoJLTZ93Hebtvcyw4yd9SW8OeAvQpw5eFL1PqorITPzzBrYJabhQK3n
-         HRtw==
-X-Forwarded-Encrypted: i=1; AJvYcCU5zSr1kdkGxl+q7gWATfq8qhTR2Voe0jN6h9MB3fgsSUGWww8FhPXC5nKTsa1rD5mCciTk/hYKCib307eQzWVKcaKpYOYn
-X-Gm-Message-State: AOJu0YxWn4KmIPfeHd3sMDgko9L0oNIdf3atTwbGdYk7eYcqwWMIx6zH
-	f05MivIkURxKmmQLYI6g59Dx6VJz+DByi56Tnq7bqO2fFkfOQNSyuyW/tHsoiSlqIlnhlxOBcMF
-	3ibNDQGziuXjb4bmTB3TrNZvzuU9wXVxzIKKNIRcC
-X-Google-Smtp-Source: AGHT+IGXxq60Nbxt/VLpXBWKiQuKAR94McjSn38xqdH99XBIjQBmd2SBUsMaV2HlB23vdXxYiDos22kvDEsmQCNytgw=
-X-Received: by 2002:a2e:9e02:0:b0:2ee:6b86:b0aa with SMTP id
- 38308e7fff4ca-2ef05c7143emr2087811fa.17.1721243211042; Wed, 17 Jul 2024
- 12:06:51 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sUKy5-0004yJ-WD; Thu, 18 Jul 2024 02:50:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1sUKy4-0004vG-D9; Thu, 18 Jul 2024 02:50:20 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1sUKy2-0004L5-6S; Thu, 18 Jul 2024 02:50:19 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 18 Jul
+ 2024 14:50:15 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Thu, 18 Jul 2024 14:49:50 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v1 01/15] aspeed/adc: Add AST2700 support
+Date: Thu, 18 Jul 2024 14:49:11 +0800
+Message-ID: <20240718064925.1846074-2-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
+References: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-References: <20240715084519.1189624-1-smostafa@google.com> <20240717150931.GA3988597@myrica>
- <1e7e750b-61bd-4822-8742-124bdf66a7c4@redhat.com>
-In-Reply-To: <1e7e750b-61bd-4822-8742-124bdf66a7c4@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 17 Jul 2024 20:06:39 +0100
-Message-ID: <CAFEAcA9e+NCFZ+Zhs0C-XxD++=33FV7Tnt8GzZmvUnpzMw2Yxg@mail.gmail.com>
-Subject: Re: [PATCH v5 00/18] SMMUv3 nested translation support
-To: eric.auger@redhat.com
-Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>, Mostafa Saleh <smostafa@google.com>, qemu-arm@nongnu.org, 
-	qemu-devel@nongnu.org, alex.bennee@linaro.org, maz@kernel.org, 
-	nicolinc@nvidia.com, julien@xen.org, richard.henderson@linaro.org, 
-	marcin.juszkiewicz@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: fmiB7WiPce3l
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_FAIL=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HPRBWoWDAqri
 
-On Wed, 17 Jul 2024 at 18:44, Eric Auger <eric.auger@redhat.com> wrote:
->
-> Hi Peter, Richard,
->
-> On 7/17/24 17:09, Jean-Philippe Brucker wrote:
-> > On Mon, Jul 15, 2024 at 08:45:00AM +0000, Mostafa Saleh wrote:
-> >> Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
-> >> but not nested instances.
-> >> This patch series adds support for nested translation in SMMUv3,
-> >> this is controlled by property =E2=80=9Carm-smmuv3.stage=3Dnested=E2=
-=80=9D, and
-> >> advertised to guests as (IDR0.S1P =3D=3D 1 && IDR0.S2P =3D=3D 2)
-> > For the whole series (3-9, 11, 12, 15, 16, 18):
-> >
-> > Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> >
-> > (and I think patch 16 is missing Eric's R-b)
->
-> Jean-Philippe and I have followed up the progress of this series,
-> Mostafa took into account all our comments and all the patches were
-> reviewed. It seems to be in a pretty decent state so if you don't have
-> any objection, please consider pulling it for 9.1.
+AST2700 and AST2600 ADC controllers are identical.
+Introduce ast2700 class and set 2 engines.
 
-Yep, I've had this series on my radar since you said in a
-comment on the previous revision that it was close to
-being ready. Thanks to both you and Jean-Philippe for doing
-the heavy lifting on the code review here.
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ hw/adc/aspeed_adc.c         | 16 ++++++++++++++++
+ include/hw/adc/aspeed_adc.h |  1 +
+ 2 files changed, 17 insertions(+)
 
-Applied to target-arm.next for 9.1, thanks.
+diff --git a/hw/adc/aspeed_adc.c b/hw/adc/aspeed_adc.c
+index 68bdbc73b0..48328ef891 100644
+--- a/hw/adc/aspeed_adc.c
++++ b/hw/adc/aspeed_adc.c
+@@ -398,6 +398,15 @@ static void aspeed_1030_adc_class_init(ObjectClass *klass, void *data)
+     aac->nr_engines = 2;
+ }
+ 
++static void aspeed_2700_adc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedADCClass *aac = ASPEED_ADC_CLASS(klass);
++
++    dc->desc = "ASPEED 2700 ADC Controller";
++    aac->nr_engines = 2;
++}
++
+ static const TypeInfo aspeed_adc_info = {
+     .name = TYPE_ASPEED_ADC,
+     .parent = TYPE_SYS_BUS_DEVICE,
+@@ -430,6 +439,12 @@ static const TypeInfo aspeed_1030_adc_info = {
+     .class_init = aspeed_1030_adc_class_init, /* No change since AST2600 */
+ };
+ 
++static const TypeInfo aspeed_2700_adc_info = {
++    .name = TYPE_ASPEED_2700_ADC,
++    .parent = TYPE_ASPEED_ADC,
++    .class_init = aspeed_2700_adc_class_init,
++};
++
+ static void aspeed_adc_register_types(void)
+ {
+     type_register_static(&aspeed_adc_engine_info);
+@@ -438,6 +453,7 @@ static void aspeed_adc_register_types(void)
+     type_register_static(&aspeed_2500_adc_info);
+     type_register_static(&aspeed_2600_adc_info);
+     type_register_static(&aspeed_1030_adc_info);
++    type_register_static(&aspeed_2700_adc_info);
+ }
+ 
+ type_init(aspeed_adc_register_types);
+diff --git a/include/hw/adc/aspeed_adc.h b/include/hw/adc/aspeed_adc.h
+index ff1d06ea91..f502f197ac 100644
+--- a/include/hw/adc/aspeed_adc.h
++++ b/include/hw/adc/aspeed_adc.h
+@@ -18,6 +18,7 @@
+ #define TYPE_ASPEED_2500_ADC TYPE_ASPEED_ADC "-ast2500"
+ #define TYPE_ASPEED_2600_ADC TYPE_ASPEED_ADC "-ast2600"
+ #define TYPE_ASPEED_1030_ADC TYPE_ASPEED_ADC "-ast1030"
++#define TYPE_ASPEED_2700_ADC TYPE_ASPEED_ADC "-ast2700"
+ OBJECT_DECLARE_TYPE(AspeedADCState, AspeedADCClass, ASPEED_ADC)
+ 
+ #define TYPE_ASPEED_ADC_ENGINE "aspeed.adc.engine"
+-- 
+2.34.1
 
--- PMM

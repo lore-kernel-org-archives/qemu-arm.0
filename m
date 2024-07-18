@@ -1,68 +1,69 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1308767njk;
-        Thu, 18 Jul 2024 01:56:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU1JqL1+oDuoQUzurSnABgzyIbmE/Z7sT7ryVVKWzokapchVZw3AGpRxXDsmbo4njdoOeZzDXEX/1PiOYvi/YBCPQ252KHG
-X-Google-Smtp-Source: AGHT+IGtW/qcA+WhCZYqYbPj1KkuEzFV5D45yGGDrXkrSJ74s0zf0MHs/DiHuT9DtF3+4CLCv5r9
-X-Received: by 2002:a05:6102:2c18:b0:491:e5b:72d5 with SMTP id ada2fe7eead31-491598ab71amr6353037137.10.1721292983459;
-        Thu, 18 Jul 2024 01:56:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721292983; cv=none;
+Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1305105njk;
+        Thu, 18 Jul 2024 01:45:19 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU5M84OSYc7AKxxqjl1rubT1U6uHiV8wo2njmyGIbw2SMmeWj6db96d6IKaO0uWEiJX5n9eQNziH7nJSEC1CABLmyNz4ICW
+X-Google-Smtp-Source: AGHT+IF+dnsmCJCEADaFWXbDEs8ru0/HUQGhjPIfrCfokjd8TLmMyggDWdnFz8PGWsIpse5C/tDQ
+X-Received: by 2002:a05:6102:5111:b0:48f:e09e:ef60 with SMTP id ada2fe7eead31-4915997c9f8mr4495598137.29.1721292319290;
+        Thu, 18 Jul 2024 01:45:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721292319; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZfufrrEeARV95Vev+FhVP34JRFobZQCLZa4/b2oATbyCzG1pn4qLainYcWQWFDxw6G
-         yym6PCqeoUm+RDyBPIah4uSVxt5LCpNlTR3eMWeloVZAPieI3NPP1IpioMxQecCSaVNe
-         OZHOFwp5amWbPI5QPRVUGpFTS171JZNuqyHOWW7p3dL1J7s825bj6m3J0x2An7MJf6jt
-         /KXz0ZNL33CQEtcSvFanS83NQtSHiPEXx6ga7rR04iGFw1tSdx6i+IahjVqbT0ms7k6m
-         +GqQ+gFecPuInQsAAo1PtDcO2rUJ0i/zSrzNdVPaGm4hyiZYa8PcUA8aX50oxF47wXl0
-         N8Bg==
+        b=R/VGPYG8asRke3dq7GJyylTi7VvFbpF6rCXEM3s5KrHNyeSGubfCqwTTAy/LXlB/Tw
+         UBjBQlAxcaLSABqN/uktXYsKPW4Dp5Xek6XflEteCGuQZoU18DhI1BqPDcAeYhtxg0sR
+         npkAQamQpqHVD7jPWSSbZgZKybP/1bQi70IYnSjrRTbRvS+aSQOB5m8DFB5B9r5QYCIC
+         WoBUMWf8+38iNgH3SIVafN1mCy/jT3hRhBvOvrZD8NjkXXAkoljCjUbtA1ZBhjRnD596
+         XmQBcb/wzyfDo2OwkG7wqTOb6Q1o7oP0JtDyd+obF6ik7z1gLuvf+mrwji+eYgcJ27Dj
+         1pDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=F6UOA4Y9AP/xr0VfDL57XA7cOOZ1AknsipaA66xx8dI=;
+        bh=1vLl80zrsH8Upwt1hhRE3xUVvKP/XoYVk5b5Gn+p2mg=;
         fh=vpv4dibz543bPaX9Fq9ZvnJ9J5iREE2VOWA/tGZmS3U=;
-        b=Jxz3HK7POheSDngQ0OLepxPCl+kFgFi3v/6S1BPNBOwDiMPcHYcScWhl6d3qyJXFRX
-         2NXOcQMyox38P2YGyKZ+rIpy8ZccYPgHHH7raLTSZpLQn6EWbmLRWyZ/+atMWeC1/b7L
-         xvrUth/XZHfYCglD78r12Hzca56npgcTkFXcwbseyTonBfMkS/YFklVt/qeVppvvbeIi
-         Vn4zE/Ww/x2iMrDjx2J/FZSftGONWZmAPZDM6H7Gc2HYA2isXBOClxfOyIGmIA4Ag437
-         6KjnNKhoCUGhf83VezG+HWy9p8rw+/uL8lV6FSrXFWeWqTz/+1ujmogGZVufdxp9ky0v
-         iuFQ==;
+        b=br/G8HtKUVfGdOUJLAMfAkEhoSOAlo7lMW8LpUtnpaJ8vOxZT0sEXFBoK4lT/4BV3v
+         s2EOEMNWCZ3qb6ukJmqwyk71m4/RuJJWcG5fQW5c52KS3JVWVS43FcRUC0uPSBnZxUJT
+         I09PaWF/m0pV5cKXOs3uSJSz8FBjpYK+AUy95v2zveEilL5g+iqtvWytwSGe8L4v8Vd1
+         /x5Y9QokQqpzxebOlN+ykPfDV7zF8e86FJzNiFVx0UM+LBW56y3Ju8E2ffl+8Dn84HI2
+         ljhw2A1MfNangLr6YGijmwqTzjkQRATWTgQhnEGXBuFkrqFRzHTkLmfYBrUGZrazDIKP
+         02eg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44f96a6a7besi967171cf.527.2024.07.18.01.56.23
+        by mx.google.com with ESMTPS id d75a77b69052e-44f96a3a310si897841cf.317.2024.07.18.01.45.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jul 2024 01:56:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 18 Jul 2024 01:45:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sUMvm-0002u8-6F; Thu, 18 Jul 2024 04:56:06 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sUMlC-0000hE-UD; Thu, 18 Jul 2024 04:45:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=3riu=OS=kaod.org=clg@ozlabs.org>)
- id 1sUMvk-0002nn-A7; Thu, 18 Jul 2024 04:56:04 -0400
+ id 1sUMlA-0000Zg-SM; Thu, 18 Jul 2024 04:45:08 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=3riu=OS=kaod.org=clg@ozlabs.org>)
- id 1sUMvi-0002Oc-Dq; Thu, 18 Jul 2024 04:56:04 -0400
+ id 1sUMl8-0006Mf-FU; Thu, 18 Jul 2024 04:45:08 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WPmqg0pwrz4x04;
- Thu, 18 Jul 2024 18:55:59 +1000 (AEST)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4WPmb33tplz4w2Q;
+ Thu, 18 Jul 2024 18:45:03 +1000 (AEST)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WPmqZ486Kz4w2N;
- Thu, 18 Jul 2024 18:55:54 +1000 (AEST)
-Message-ID: <25c98896-64ff-4cfc-9364-454b5a2501a5@kaod.org>
-Date: Thu, 18 Jul 2024 10:55:52 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4WPmZz30z8z4wxk;
+ Thu, 18 Jul 2024 18:44:59 +1000 (AEST)
+Message-ID: <de851b5c-5983-44f6-955a-6ba71f966c71@kaod.org>
+Date: Thu, 18 Jul 2024 10:44:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 15/15] aspeed: add tmp105 in i2c bus 0 for AST2700
+Subject: Re: [PATCH v1 04/15] hw/i2c/aspeed: support discontinuous register
+ memory region of I2C bus
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -72,10 +73,10 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
- <20240718064925.1846074-16-jamin_lin@aspeedtech.com>
+ <20240718064925.1846074-5-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240718064925.1846074-16-jamin_lin@aspeedtech.com>
+In-Reply-To: <20240718064925.1846074-5-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=150.107.74.76;
@@ -87,70 +88,96 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Q/Q+5JMPOvSE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dvvxFmdSXh4m
 
 On 7/18/24 08:49, Jamin Lin wrote:
-> ASPEED SDK add lm75 in i2c bus 0 for AST2700.
-> LM75 is compatible with TMP105 driver.
+> It only support continuous register memory region for all I2C bus.
+> However, the register address of all I2c bus are discontinuous
+> for AST2700.
 > 
-> Introduce a new i2c init function and
-> add tmp105 device model in i2c bus 0.
+> Ex: the register address of I2C bus for ast2700 as following.
+> 0x100 - 0x17F: Device 0
+> 0x200 - 0x27F: Device 1
+> 0x300 - 0x37F: Device 2
+> 0x400 - 0x47F: Device 3
+> 0x500 - 0x57F: Device 4
+> 0x600 - 0x67F: Device 5
+> 0x700 - 0x77F: Device 6
+> 0x800 - 0x87F: Device 7
+> 0x900 - 0x97F: Device 8
+> 0xA00 - 0xA7F: Device 9
+> 0xB00 - 0xB7F: Device 10
+> 0xC00 - 0xC7F: Device 11
+> 0xD00 - 0xD7F: Device 12
+> 0xE00 - 0xE7F: Device 13
+> 0xF00 – 0xF7F: Device 14
+> 0x1000 – 0x107F: Device 15
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Introduce a new class attribute to make user set each I2C bus gap size.
+> Update formula to create all I2C bus register memory regions.
 
-As a followup, you could modify test_aarch64_ast2700_evb_sdk_v09_02
-to read the sensor value.
+I don't think this is necessary to model. Could we simply increase
+tge register MMIO size for the AST2700 bus model and rely on the
+memops to catch invalid register offsets ?
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
 
 
-> ---
->   hw/arm/aspeed.c | 10 ++++++++++
->   1 file changed, 10 insertions(+)
+
 > 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index f8766ea462..ed98758708 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -1604,6 +1604,15 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
->   }
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/i2c/aspeed_i2c.c         | 3 ++-
+>   include/hw/i2c/aspeed_i2c.h | 1 +
+>   2 files changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 7d5a53c4c0..462ad78a13 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -1011,6 +1011,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>       AspeedI2CState *s = ASPEED_I2C(dev);
+>       AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
+> +    uint32_t reg_offset = aic->reg_size + aic->reg_gap_size;
 >   
->   #ifdef TARGET_AARCH64
-> +static void ast2700_evb_i2c_init(AspeedMachineState *bmc)
-> +{
-> +    AspeedSoCState *soc = bmc->soc;
-> +
-> +    /* LM75 is compatible with TMP105 driver */
-> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0),
-> +                            TYPE_TMP105, 0x4d);
-> +}
-> +
->   static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
->   {
->       MachineClass *mc = MACHINE_CLASS(oc);
-> @@ -1618,6 +1627,7 @@ static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
->       amc->num_cs    = 2;
->       amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
->       amc->uart_default = ASPEED_DEV_UART12;
-> +    amc->i2c_init  = ast2700_evb_i2c_init;
->       mc->default_ram_size = 1 * GiB;
->       aspeed_machine_class_init_cpus_defaults(mc);
->   }
+>       sysbus_init_irq(sbd, &s->irq);
+>       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops, s,
+> @@ -1033,7 +1034,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+>               return;
+>           }
+>   
+> -        memory_region_add_subregion(&s->iomem, aic->reg_size * (i + offset),
+> +        memory_region_add_subregion(&s->iomem, reg_offset * (i + offset),
+>                                       &s->busses[i].mr);
+>       }
+>   
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index 065b636d29..422ee0e298 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -275,6 +275,7 @@ struct AspeedI2CClass {
+>   
+>       uint8_t num_busses;
+>       uint8_t reg_size;
+> +    uint32_t reg_gap_size;
+>       uint8_t gap;
+>       qemu_irq (*bus_get_irq)(AspeedI2CBus *);
+>   
 

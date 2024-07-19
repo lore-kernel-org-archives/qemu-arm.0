@@ -1,147 +1,147 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp541004njc;
-        Fri, 19 Jul 2024 08:57:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWJy5szRJjaQ8Z/5FB5wGEPY/XQ4REzvkTC7l3S1XEMyie2VibdM35RZpW5uyXPp0zVFCQL3w6PtgZRfHdBqegMZxBoWaeD
-X-Received: by 2002:a17:906:408b:b0:a72:4b31:13b5 with SMTP id a640c23a62f3a-a7a0130ce00mr553636066b.54.1721404650258;
-        Fri, 19 Jul 2024 08:57:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721404650; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp573597njc;
+        Fri, 19 Jul 2024 09:50:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWb/MEmbO2c4cR3nq7VZJiFDVvHGDFr8HngM7/IV/P+C3EuHtIBfKt3d9clkqDYdrutfy+LCWvnIAAFiRsDRAwAmMuHZgDK
+X-Google-Smtp-Source: AGHT+IHMEpZc5LRVwkyZiuxiihQULPzF+LmoFS7vUpeoEznnCOSF+Yv8+iGzfRHjfA/0dMx0/n3g
+X-Received: by 2002:a05:622a:1214:b0:447:f1f9:7154 with SMTP id d75a77b69052e-44f96a3b082mr73629611cf.11.1721407857721;
+        Fri, 19 Jul 2024 09:50:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721407857; cv=none;
         d=google.com; s=arc-20160816;
-        b=tGa0/4OA29fKgnQIOqMWd44mOtYVt/ee7ALQcxOx2PfsRzjupnpQYnKPu5SCfEqh3H
-         K8oEOI/BG4hd8hTRPsYKDAdhtvsTche/mdpteszXpPYobDRp841njcok3C55h8jQ/R7y
-         JgTDhsRV+iAO8CSWqnt2nscSJy9I4O00J8gd9kFvOXSMgkW5gPqmEzJ6XN1nmp3aBb7L
-         hyrvexl3u1F6fGXYtSLBho3gTi+EKoeX5hAk7ikgUrim0J0nmxsflLRtXhelesz48wbW
-         fEyATOPcDxllIpetfhUjba8shi3iPBHY4eaQdbt+S7ygQgabTyOXrEMvJj5kgDc0NY+m
-         I7sA==
+        b=GweN78wIM0tarWrlMzELhhVA1L/nzPGWkcJCJxSioOLK06+wl/ITXEELjtMmABFnhx
+         QjsRsASG40lyKCSgLfWpLlXjXA79ifYC+y5uVxkcpHYGzIdl8hPAvb9c9DV9rVVeIRbO
+         iyrWHbG88MBWqU2Ab9yxQOW5nAtYLVNJWCoF5vJfPvhQxCVJSEKPG9Qsdg0whgPfXT92
+         4Chm+75+vCfNHdpuJgLcBlv+Flbm0Oh9bVLLqUzITqXXgveR94MympFu5JA9DQxsovg+
+         bofbxwhJ3FCNvZu6Ynml8SlzpQTGVmuAWtMBQO41RT/Kz4adrjLxNtTY1+nnY7ty0TN9
+         P4fA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=kHKYSk2rntYjXFgiuT67fk3WNMoT57UruY+ot61GLIE=;
-        fh=j1LGUZeyNY3bjq+hJrFZr/YaISJA7wE/5wS7VvQ6zIo=;
-        b=JKKPnHZ74dwJ6ZRPRbIj8whSVb5ycx6Oa7wszOmJxAojHCtQOYdu5SHTahwnVE9ulQ
-         +DEKGrdYLRHD4h9IQ7seB66cp2k9fAEn0KXxXIMDnlS1TKSQjD4Y2ayKCnNgVN1WgRDk
-         k9tAcIlLFKsDrN2B2AK8Sslh0r3o8Y56fBGkKRCZ7cuaRwHoAZqV8xB6KJ07RB4s9s22
-         wkoF44XO6ROffok/V80xWJ/eu1EQ3ziV52g2m53p8N5JR1wiREgezqN2owwfDYHc0dRl
-         sUj3xcOggIHZ0GwbyJcSL0g0Xc/BKElbQu3OGREljNHDXa+ixicqFjb+bJVBfFWX0/Pm
-         +nrQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=fDGEhgETPFGWm1mU0kUKJSfa5SsMMKk3fUWrUk/6QkM=;
+        fh=kUMkaIlncV9DxbQ+jgSmOKbZq9wtOJXnEwnwTxxnd/k=;
+        b=0+CToRBCOnd7KA677nugB2c6t9UptP1LqtNnRXOKM+gidqOCHQw6zaTpAvT1l5AW1c
+         smV8sTNt/LNIpww7CjvhV/eY9X4n5p2G8BqytYZZv8DNfk1+UxPXXpkRruWkPo1psdSv
+         q5WIue8k6Q6yPS4zVn26yL3c4Z1Wa8SzwvfsltxXr4DIYlY7cnfSo3zzw5KKP8HGxS0g
+         eE+c076s6FEoqv4J6YrKvnvfz1qZEEISMQ0ScSraGTpuOPr9hikaX2XtNfCJNHJjSnxQ
+         Z034HyYcbcg5BkoVCx8y3fu/8R8+XZFMj0xLoqN/puYy/p/UpTzbpu2IoZXmBvJ45B8h
+         JuRw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B5Gbb3sl;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-a7a3c914bfasor21230166b.18.2024.07.19.08.57.30
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UKRQ4YKY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b7ac9e8da9si20138026d6.400.2024.07.19.09.50.57
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 19 Jul 2024 08:57:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 19 Jul 2024 09:50:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B5Gbb3sl;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721404650; x=1722009450; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kHKYSk2rntYjXFgiuT67fk3WNMoT57UruY+ot61GLIE=;
-        b=B5Gbb3sleUnhFp5rTlALWW/+pQzBzMQEkoQp9n9+cIImUsjagUJt0G/+btAAbB0ps2
-         OfgkVY+yfoipWZ6KvB++2+IJWeJwUHyEFlLgoHY4UJDs3U03o43cjLX5muC/sf9fB/ai
-         c0Yu6vOxTlmCHPZ2zJ93X5Ty82Ui3/jjBaTk/3e1b5l6k2b/YrnEltqM2fDHpR8QYW52
-         bLpkzll7cTOMFhZcHTDlGBbdslkkDjMT9Wi/XGiegdxkf/WxjnJacs2iSmcONDQl3XvJ
-         g9Sl83EXv5pX4KYVzumC15UPu2dCtpAbP7Pe02ZliNF5JWrFXh81oMSc3Ne4MJGnVy11
-         u4uQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721404650; x=1722009450;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kHKYSk2rntYjXFgiuT67fk3WNMoT57UruY+ot61GLIE=;
-        b=LaSDVG+xTyMC11RJY7Mw7EIE6JM0R+teeaRIMJbLZL1XcCK1T0Cty+rAAnpd5FfDP4
-         cYnnMd6Zin0t34EzNa0eJupTKZz/mrWwBYcRECuBh8lRFN65B+Ta7NwAoU/miZn1a1bJ
-         D0IQPcjOZW2VRzNFBkqQPW9LrUemRAUoYvgtNgTohhNm+f3j5DWDpICBf8dETfvhHEQR
-         vEU/Pu6lIqRqBTqDO56ad7XPEumh5xPChtrcpJDSn4og/GHwQF+86gedcsbAtIeuN09Z
-         NqsoseGCtYui7NK/jk7pQBs/DR3L+euUx+jkLS5qMLWtElyogbxn9jfj6I3JJUBCPl1U
-         xgFw==
-X-Forwarded-Encrypted: i=1; AJvYcCUsqhftzSzAK6HPnpcKZMHB9d844ZtV0Ui50L3bq4BaI3K0yrwLhkJ8HwVEnT86hGhceXeVUhuoWP1pW4MrENKxwIs9CJ6a
-X-Gm-Message-State: AOJu0YzX2WKoKQqXLraVAm9gPuxFaTBx2SgNXHeQa8Ii59DKxe5Hq9tG
-	T7oU3klbKFOaZ8MyCQYG5PfFYb6SPW3aQfDCkc1+hbkCubfb5yhDHTqLgNmWWfJRFEivv5oHwaX
-	QzxVxgGUGlNP4spZb2oIWatrdz2LkUgjFKIFfHVTO
-X-Google-Smtp-Source: AGHT+IGteFRfnddU5H8E9FQixzUwemfNrueJflRVOGZ4o2OtmI+AUY0qpTKBPEwBryjfnAnCiiqtQbgnUL6w3tLcd3E=
-X-Received: by 2002:a05:6402:524b:b0:5a2:838a:15fa with SMTP id
- 4fb4d7f45d1cf-5a2838a16d6mr2596281a12.15.1721404649620; Fri, 19 Jul 2024
- 08:57:29 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UKRQ4YKY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sUqoT-0002LD-39; Fri, 19 Jul 2024 12:50:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1sUqoR-0002KA-Jh
+ for qemu-arm@nongnu.org; Fri, 19 Jul 2024 12:50:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1sUqoN-0007rI-J9
+ for qemu-arm@nongnu.org; Fri, 19 Jul 2024 12:50:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1721407824;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=fDGEhgETPFGWm1mU0kUKJSfa5SsMMKk3fUWrUk/6QkM=;
+ b=UKRQ4YKYo7n8TcLZO4guqtlWSRv9c3WLaYLfzXMQv2t5mEvXseLYOUJWgJg5RCPJcHTsSR
+ DqSD2UnBlFc/DOKexgGZB0u5duYymfLl0zZKSPGhxkCtz24FGs1VuIfakA8emgyAtR6+Ax
+ EljoQDroEajwZIXqmF7LCeoEQuEPC0Y=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-85-fDXLnDiLNESg4BvFu0uklA-1; Fri,
+ 19 Jul 2024 12:50:20 -0400
+X-MC-Unique: fDXLnDiLNESg4BvFu0uklA-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 85B9D1955D42; Fri, 19 Jul 2024 16:50:19 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.192.185])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 333891955F40; Fri, 19 Jul 2024 16:50:14 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, clg@redhat.com, zhenzhong.duan@intel.com,
+ alex.williamson@redhat.com
+Cc: yanghliu@redhat.com
+Subject: [PATCH] hw/vfio/container: Fix SIGSEV on
+ vfio_container_instance_finalize()
+Date: Fri, 19 Jul 2024 18:50:11 +0200
+Message-ID: <20240719165011.1751831-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20240715084519.1189624-1-smostafa@google.com> <20240717150931.GA3988597@myrica>
- <1e7e750b-61bd-4822-8742-124bdf66a7c4@redhat.com> <5684927d-d890-42be-841c-ece681502503@xen.org>
- <a0ee8ba3-174f-4d00-807f-31584cba42d4@xen.org>
-In-Reply-To: <a0ee8ba3-174f-4d00-807f-31584cba42d4@xen.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 19 Jul 2024 16:57:18 +0100
-Message-ID: <CAFEAcA8T3Yrj_R-B2oUW_Uu3u5HZs4RY1P+A7zF+8xWJnmtpQA@mail.gmail.com>
-Subject: Re: [PATCH v5 00/18] SMMUv3 nested translation support
-To: Julien Grall <julien@xen.org>
-Cc: eric.auger@redhat.com, Jean-Philippe Brucker <jean-philippe@linaro.org>, 
-	Mostafa Saleh <smostafa@google.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
-	alex.bennee@linaro.org, maz@kernel.org, nicolinc@nvidia.com, 
-	richard.henderson@linaro.org, marcin.juszkiewicz@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: +3E0yggoCjED
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sKDdym+8+4Vw
 
-On Fri, 19 Jul 2024 at 16:36, Julien Grall <julien@xen.org> wrote:
->
-> Hi,
->
-> On 18/07/2024 10:43, Julien Grall wrote:
-> > Hi Eric,
-> >
-> > On 17/07/2024 18:43, Eric Auger wrote:
-> >> Hi Peter, Richard,
-> >>
-> >> On 7/17/24 17:09, Jean-Philippe Brucker wrote:
-> >>> On Mon, Jul 15, 2024 at 08:45:00AM +0000, Mostafa Saleh wrote:
-> >>>> Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
-> >>>> but not nested instances.
-> >>>> This patch series adds support for nested translation in SMMUv3,
-> >>>> this is controlled by property =E2=80=9Carm-smmuv3.stage=3Dnested=E2=
-=80=9D, and
-> >>>> advertised to guests as (IDR0.S1P =3D=3D 1 && IDR0.S2P =3D=3D 2)
-> >>> For the whole series (3-9, 11, 12, 15, 16, 18):
-> >>>
-> >>> Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> >>>
-> >>> (and I think patch 16 is missing Eric's R-b)
-> >>
-> >> Jean-Philippe and I have followed up the progress of this series,
-> >> Mostafa took into account all our comments and all the patches were
-> >> reviewed. It seems to be in a pretty decent state so if you don't have
-> >> any objection, please consider pulling it for 9.1.
-> >>
-> >> On my end I did some testing in non nesting mode with virtio-net/vhost
-> >> and I have not noticed any regression.
-> >> Would be nice if someone could send his T-b for the nested part though
-> >> (Julien?).
-> >
-> > I haven't yet tried the latest version. I will do that in the next
-> > couple of days.
-> I see this is already merged. If this still matters:
->
-> Tested-by: Julien Grall <jgrall@amazon.com>
+In vfio_connect_container's error path, the base container is
+removed twice form the VFIOAddressSpace QLIST: first on the
+listener_release_exit label and second, on free_container_exit
+label, through object_unref(container), which calls
+vfio_container_instance_finalize().
 
-We can't retrospectively add the tag, but the testing itself
-is still important -- thanks for doing it.
+Let's remove the first instance.
 
-Q: is there any reason not to:
- (a) change the default to "nested" rather than "1"
- (b) make the virt board (for new virt machine versions) use
-     "nested"?
+Fixes: 938026053f4 ("vfio/container: Switch to QOM")
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/vfio/container.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-AIUI "nested" should be a superset of "stage-1 only", the guest
-can just ignore stage-2 if it doesn't care about it. Or is
-there a performance hit from having stage-2 around even if the
-guest doesn't enable it?
+diff --git a/hw/vfio/container.c b/hw/vfio/container.c
+index 425db1a14c..d8b7c533af 100644
+--- a/hw/vfio/container.c
++++ b/hw/vfio/container.c
+@@ -657,7 +657,6 @@ static bool vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+     return true;
+ listener_release_exit:
+     QLIST_REMOVE(group, container_next);
+-    QLIST_REMOVE(bcontainer, next);
+     vfio_kvm_device_del_group(group);
+     memory_listener_unregister(&bcontainer->listener);
+     if (vioc->release) {
+-- 
+2.41.0
 
-thanks
--- PMM

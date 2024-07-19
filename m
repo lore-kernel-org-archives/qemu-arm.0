@@ -1,174 +1,188 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp333913njc;
-        Fri, 19 Jul 2024 02:19:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU7nWr+HO4D7diatgbh9ofQRZvkXMrefTK2U3TfYtFW4+o/iJAzxs10qvxQ7Gal5O1B6vm0hhBmFQRPhhShqJXtTu2Tf4tY
-X-Google-Smtp-Source: AGHT+IGL/9ZA+kHmWs1Tcx/derR1V4TvlDhv6JCpRtKlvujPeZBY9XreqFIwywurArfuGhQliqzN
-X-Received: by 2002:a05:620a:17a5:b0:79e:f318:b7b0 with SMTP id af79cd13be357-7a193b2c34bmr566583185a.21.1721380785489;
-        Fri, 19 Jul 2024 02:19:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721380785; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp414185njc;
+        Fri, 19 Jul 2024 05:21:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCWC/QT6Zv87BxXFge2POgy3EWE9UD7swwFQkAfwTZBEFqZ21aKCLVV7GlzSDZkjecxFpGg88lVPVIggK3adrQ8iHbn3l6ZY
+X-Google-Smtp-Source: AGHT+IEAqnOBBIDNZxAIgoTHt/toaCcvd0OQq05pPGYNJrDwV1qC2+78DzrHGqj8uof7Vcv1skPZ
+X-Received: by 2002:a17:906:f341:b0:a77:abe8:88d3 with SMTP id a640c23a62f3a-a7a01192cf1mr489611466b.30.1721391680266;
+        Fri, 19 Jul 2024 05:21:20 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1721391680; cv=pass;
         d=google.com; s=arc-20160816;
-        b=LQWFcna47ZDKkPYlF9W19Cp0jLSYlQ6lTR4eJ/yAEjLqJC2LxKPkwR/xTfXjJhq+/n
-         1lKmxeGB5OC8nyf8HTSZjt8R4Uw28wiowmszgo7gihlaeYRAfZEfNZvi1qIGAxrEQ7qk
-         q4lV3o+ASc7G4gAKvQmDqFLy4LgldOJCfs43RDjv+iMdQAxkSn872IyEDiz7aMwR8VLn
-         BCVgL9+FrqIWkZRBgipAPJxyINDcBk2vFFpMTdUyG/jBvXL7ScBweeF5XZmuZE7dK4lu
-         eOet/Sw6+h1naaExfyMimCOu9DBPJwiuuHP96uaXQc8B52gwPjAKx8ZHeDY9Xblfo92a
-         rgPA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=nkqp2WaASH9LzFcdFydBDHYbYERjUvp/ZJwhwTz8+gs=;
-        fh=QMpkKS6sSWhhW4MgF48YOK0XafmsLhcO6HStbjTjrIc=;
-        b=HLQk4uEh33vGFQS//lqOQj8QQiDoUBddgWDqh8LuCey+4g9i2YagdTTtdhU70glbce
-         m32q5w07876/YqJ0VwSknPgMgho1sn5tswPdNfWPJATSx0Uayo12A11BKUScwWHs5WmO
-         FMxszuWPr68RDRCZvY7eLORl+AFexnUxi3WhEEdWiijl4yExuTL2A1Y66gfPFyrLeBpS
-         jWIIq5IGyam3YelZaJFsglBZsWb974c6xr/yrAWS6afkRMRx4ulHx8f2OcleuTuwXAb6
-         Q5Ke2ZOM8cyiRkIZ9On23H17q2rFleXSKeqKnQT5zRaphbafcgzyNqwzh6WLkZ2z2Wgz
-         Qk7Q==;
+        b=k+0K3akN7neeI6yMoEtwe54fnG+oxmPYVUdbZbnc4ss+EVPUk63pghdR5ojMiFEVmF
+         W6iWMrkAPVFKMnFVQFMiPV497j4jApcUavBCpVyCUf2W7MCaDWqP4faH+C+Qr3ISfUoX
+         gx8RotHOw1D+r7sEQ+A5X2tMApQnODt4LFu3OdjPC+Co7XMPy2MxfsFU9+Gk5FU8povK
+         WL4kKo+QAAfs1Nu7M2qLNSuPBEdCaYJAn1OmWallrolJm6rzrzhMXFG8cg99jzL/BYx8
+         PywhPPK2hY6gg88/I6fVADYVlkpFbekUahsh6vcJW0Xq9fK9jUM2TQpnJyJ0ZmYmg4qn
+         G24Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :message-id:date:user-agent:references:organization:in-reply-to
+         :subject:cc:to:from:dkim-signature;
+        bh=8wdb8H9B7dXAjwpES2ljjfqGjFTVH3+0R9NofJlGwv4=;
+        fh=QRjBITKlrtfUp0kxFMLALH7d7Nk3TERzWmTWbF30XUM=;
+        b=HMAh3MVQjBPoci5xLlw9EpQkQ/Gbpgb7imr88su41xnBpq4HhdEeLg6vOIGVEjqmzF
+         KbFVevOvlLI0JAVXpKXKbFNpujz/PE7ZwsS/WYpI4RGffZkfiDwJBNvPvH6GSrCfAQqN
+         r2VZgQo197coRpgw+KowfDQH+0tAT5gCMFVyl/O1wfBtKnnoKwJHFNT031g4lW38hXKd
+         pbHR5X3tGUMCUkWOR7Zubi5RruxRlMt29bA+5+WL/7735BTaMheP8fiXI0jFDNKn3SdP
+         1kl7XVs3d1fjVwMVMDnE6x10WL4s3Bf6ccVTI4F+WR6rLotuXYvHqTdM+Yrv9IzKVLXn
+         qLUg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a19906c7e9si116751385a.475.2024.07.19.02.19.45
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HSFage9+;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-a7a3c925585si17471866b.625.2024.07.19.05.21.20
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jul 2024 02:19:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Jul 2024 05:21:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sUjlq-0002Jt-18; Fri, 19 Jul 2024 05:19:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=vGMz=OT=kaod.org=clg@ozlabs.org>)
- id 1sUjlo-0002IQ-3o; Fri, 19 Jul 2024 05:19:20 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=vGMz=OT=kaod.org=clg@ozlabs.org>)
- id 1sUjlm-0004XJ-0W; Fri, 19 Jul 2024 05:19:19 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WQPJ03pLPz4x04;
- Fri, 19 Jul 2024 19:19:12 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WQPHw1w3Qz4w2K;
- Fri, 19 Jul 2024 19:19:07 +1000 (AEST)
-Message-ID: <f70ae091-151b-476c-a8ef-312952163fac@kaod.org>
-Date: Fri, 19 Jul 2024 11:19:05 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HSFage9+;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 8BDDA1F21F25
+	for <alex.bennee@linaro.org>; Fri, 19 Jul 2024 12:21:19 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 53B6D75808;
+	Fri, 19 Jul 2024 12:21:14 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="HSFage9+"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57CE91E871
+	for <kvm@vger.kernel.org>; Fri, 19 Jul 2024 12:21:11 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1721391674; cv=none; b=F7zQCY/+EnGacv3l+CCdE9HThuHjarreQuZq3mPbcNOzLDuTVocmqgZnVe5A1HvXVh/VU1SbePrwu/wy6l86i3A2VRwfHVisaAr4p8IpeHcCWPQhTPU/jlyZdz1mAWfGMUkcRCbZzidNX9Gorj8i0gfeuays8E1/ZLxHd18x6dg=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1721391674; c=relaxed/simple;
+	bh=+XqGlAhsuO4SAFGl1WKnrwD4H8hw+mVijkTaMpel1LA=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
+	 MIME-Version:Content-Type; b=D4jecZQNAaIJm+9pCNnMM4V92LBmuzRZPL2E+Pr1FdvgzPQSJbQK74b2FQYGRS5Qn3QKNcbnHhdgLA/YR8Ei08HFI3W6lf78NPzo8A4IcXcaPUl50L1ascy8Sj3PszkgzM+PKJLDQXrfOHoKcZ+llEwMy1qbbDfNSm8RyTrV4Bs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=HSFage9+; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1721391671;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8wdb8H9B7dXAjwpES2ljjfqGjFTVH3+0R9NofJlGwv4=;
+	b=HSFage9+7Z4Mv0Qz7de7+cLknTp7y9mxT7FOAUfPq3P9qoZq+7QFGTpR/X7Awky7+u5zDB
+	WBw2dlL4pk4EqZCAw07RYOtSYGpmKF5Fl33lzkYOnkB4iVZEmOiIVBJmS1lGdLvOb7/MmK
+	4/vssKKanlgNW6OyM8Vxy23mvaMVdgg=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-284-jEakaNN7NLKDTBuLuijVgA-1; Fri,
+ 19 Jul 2024 08:21:10 -0400
+X-MC-Unique: jEakaNN7NLKDTBuLuijVgA-1
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E4DAE1955F66;
+	Fri, 19 Jul 2024 12:21:07 +0000 (UTC)
+Received: from localhost (unknown [10.22.8.77])
+	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BDDBE1955D4D;
+	Fri, 19 Jul 2024 12:21:06 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>, Peter Maydell
+ <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, kvm@vger.kernel.org
+Subject: Re: [PATCH v3 2/5] target/arm/kvm: Fix PMU feature bit early
+In-Reply-To: <f9cf0616-34df-42c3-a753-4dec8e2d25b5@daynix.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy
+ Ross"
+References: <20240716-pmu-v3-0-8c7c1858a227@daynix.com>
+ <20240716-pmu-v3-2-8c7c1858a227@daynix.com>
+ <CAFEAcA8tFtdpCQobU9ytzxvf3_y3DiA1TwNq8fWgFUtCUYT4hQ@mail.gmail.com>
+ <f9cf0616-34df-42c3-a753-4dec8e2d25b5@daynix.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Fri, 19 Jul 2024 14:21:04 +0200
+Message-ID: <87cyn9a7yn.fsf@redhat.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 12/15] aspeed/soc: introduce a new API to get the INTC
- orgate information
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:STM32F205" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
- <20240718064925.1846074-13-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240718064925.1846074-13-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=vGMz=OT=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sMyTfTJ3GbgW
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+X-TUID: HDUodkdWM3yj
 
-On 7/18/24 08:49, Jamin Lin wrote:
-> Currently, users can set the intc mapping table with
-> enumerated device id and device irq to get the INTC orgate
-> input pins. However, some devices use the continuous bits number in the
-> same orgate. To reduce the enumerated device id definition,
-> create a new API to get the INTC orgate index and source bit number
-> if users only provide the start bus number of device.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed_ast27x0.c | 26 ++++++++++++++++++++++++++
->   1 file changed, 26 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 4257b5e8af..0bbd66110b 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -164,6 +164,11 @@ struct gic_intc_irq_info {
->       const int *ptr;
->   };
->   
-> +struct gic_intc_orgate_info {
-> +    int index;
-> +    int int_num;
-> +};
-> +
->   static const struct gic_intc_irq_info aspeed_soc_ast2700_gic_intcmap[] = {
->       {128,  aspeed_soc_ast2700_gic128_intcmap},
->       {129,  NULL},
-> @@ -193,6 +198,27 @@ static qemu_irq aspeed_soc_ast2700_get_irq(AspeedSoCState *s, int dev)
->       return qdev_get_gpio_in(DEVICE(&a->gic), sc->irqmap[dev]);
->   }
->   
-> +static void aspeed_soc_ast2700_get_intc_orgate(AspeedSoCState *s, int dev,
-> +    struct gic_intc_orgate_info *orgate_info)
-> +{
-> +    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> +    int i;
-> +
-> +    for (i = 0; i < ARRAY_SIZE(aspeed_soc_ast2700_gic_intcmap); i++) {
-> +        if (sc->irqmap[dev] == aspeed_soc_ast2700_gic_intcmap[i].irq) {
-> +            assert(aspeed_soc_ast2700_gic_intcmap[i].ptr);
-> +            orgate_info->index = i;
-> +            orgate_info->int_num = aspeed_soc_ast2700_gic_intcmap[i].ptr[dev];
-> +            return;
-> +        }
-> +    }
-> +
-> +    /*
-> +     * Invalid orgate index, device irq should be 128 to 136.
-> +     */
-> +    g_assert_not_reached();
-> +}
+On Fri, Jul 19 2024, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
 
+> On 2024/07/18 21:07, Peter Maydell wrote:
+>> On Tue, 16 Jul 2024 at 13:50, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+>>>
+>>> kvm_arm_get_host_cpu_features() used to add the PMU feature
+>>> unconditionally, and kvm_arch_init_vcpu() removed it when it is actually
+>>> not available. Conditionally add the PMU feature in
+>>> kvm_arm_get_host_cpu_features() to save code.
+>>>
+>>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>> ---
+>>>   target/arm/kvm.c | 7 +------
+>>>   1 file changed, 1 insertion(+), 6 deletions(-)
+>>>
+>>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>>> index 70f79eda33cd..849e2e21b304 100644
+>>> --- a/target/arm/kvm.c
+>>> +++ b/target/arm/kvm.c
+>>> @@ -280,6 +280,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>>>       if (kvm_arm_pmu_supported()) {
+>>>           init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
+>>>           pmu_supported = true;
+>>> +        features |= 1ULL << ARM_FEATURE_PMU;
+>>>       }
+>>>
+>>>       if (!kvm_arm_create_scratch_host_vcpu(cpus_to_try, fdarray, &init)) {
+>>> @@ -448,7 +449,6 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>>>       features |= 1ULL << ARM_FEATURE_V8;
+>>>       features |= 1ULL << ARM_FEATURE_NEON;
+>>>       features |= 1ULL << ARM_FEATURE_AARCH64;
+>>> -    features |= 1ULL << ARM_FEATURE_PMU;
+>>>       features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
+>>>
+>>>       ahcf->features = features;
+>>> @@ -1888,13 +1888,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>>>       if (!arm_feature(env, ARM_FEATURE_AARCH64)) {
+>>>           cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
+>>>       }
+>>> -    if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
+>>> -        cpu->has_pmu = false;
+>>> -    }
+>>>       if (cpu->has_pmu) {
+>>>           cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
+>>> -    } else {
+>>> -        env->features &= ~(1ULL << ARM_FEATURE_PMU);
+>>>       }
+>>>       if (cpu_isar_feature(aa64_sve, cpu)) {
+>>>           assert(kvm_arm_sve_supported());
+>> 
+>> Not every KVM CPU is necessarily the "host" CPU type.
+>> The "cortex-a57" and "cortex-a53" CPU types will work if you
+>> happen to be on a host of that CPU type, and they don't go
+>> through kvm_arm_get_host_cpu_features().
+>
+> kvm_arm_vcpu_init() will emit an error in such a situation and I think 
+> it's better than silently removing a feature that the requested CPU type 
+> has. A user can still disable the feature if desired.
 
-This looks redundant. Couldn't we extend aspeed_soc_ast2700_get_irq() with an
-index parameter instead ?
-
-Thanks,
-
-C.
-
-
-
-
->   static uint64_t aspeed_ram_capacity_read(void *opaque, hwaddr addr,
->                                                       unsigned int size)
->   {
+OTOH, if we fail for the named cpu models if the kernel does not provide
+the cap, but silently disable for the host cpu model in that case, that
+also seems inconsistent. I'd rather keep it as it is now.
 

@@ -1,121 +1,212 @@
-Received: by 2002:a17:504:3f1b:b0:1be9:327d:8ee3 with SMTP id x27csp1542968njk;
-        Thu, 18 Jul 2024 09:20:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX+UKUA7Wu0BrfQQxn3137ohoI1pFueOHd9cqbtfT725Lbk4rFv86ONdxRtd8StNCh46oa1GzludfgBuWEK+Kx7LGqSmdf1
-X-Google-Smtp-Source: AGHT+IHRDbKC6fP6eDAFNCff/eaCQh7fkgAnNtMn9Fra4Uhpzh1guW12x+8WgiEkwFYZLundkGQ8
-X-Received: by 2002:a05:622a:2:b0:447:eeed:5e9b with SMTP id d75a77b69052e-44f96a51721mr17981861cf.49.1721319615344;
-        Thu, 18 Jul 2024 09:20:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721319615; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp562190njc;
+        Fri, 19 Jul 2024 09:29:44 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVWyVQAQ0HsCVSV/IdNOV4KxMMbwkx7KEPpd4s2AM9dZ845vZnHhQZE7MBzzKoe3AlW3zSY57PTnM5hTOsCZTdRUbjxYgrt
+X-Google-Smtp-Source: AGHT+IHMBM8sAev00iiN+GVuz0uEltL8l7gMefh47gLLi/BEqIWWrlcS/V1/HsNalWEAPeb66iBL
+X-Received: by 2002:a05:6a00:2d14:b0:706:5dab:83c4 with SMTP id d2e1a72fcca58-70ce4dc896emr9947008b3a.14.1721406584033;
+        Fri, 19 Jul 2024 09:29:44 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1721406584; cv=pass;
         d=google.com; s=arc-20160816;
-        b=G53MePW1jIBDSPrf+swFghy9PbaJoEeXOuxXL5ZUHeyEX5vY1a/mwcUnAsjIDozlSW
-         6YNXa5A2LlpCV14WJ2GDXkhSlx6W/Zsqpmf1yj8AePEK17K3637yRaz5FGG0Hn7BcSQo
-         R+idzX3/jqe3c4Ax+3C5HQNoAnlSRZhpzKjhEHAHvplqHXdlB2ZfAOZqN3LGZtW9DvdD
-         amfDkTRdHp/qA7EVvyJrXnB4TOp7zOBmYcC3dP0zITknXEEeEoklHels2CgZG1glh7a2
-         kr42ID+Lxc/tgwUNL/FygTDio5rrHCB0xghY7kS2YKklP3uUV2lgh4TsycniRk0mLN5x
-         DJNg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=k0Oa6iDTdKQHUhph0+RjawDj56XmxrXNATJMJmG5IkA=;
-        fh=e8fKElCAwnjn7OXumipD+0CJsAEYvgF0r7dZWXEkaJI=;
-        b=fWB7PKX/jYcyt3wa3kJMp/oigEeKfTkQEd3OiAX2BU178GZj9xsjGRgqujGII1dBVo
-         EmdDGkU+USecpdlJItw1oSK6xI64urTemm1FdOqGHZSoYwA8UOBPTsfqtsnEvf25UXpj
-         hl/+0ifTlJpsH/elCmT/aDsH/FPjUc3+6Z/7OwoTz6Dh8R9M6TKCmm5yuhGCOZYNgqkm
-         qS36YepaK/eRqKckP03hfNuRbLQnlpf0htUkA9rnvRhUfDQ4R/AntIvIqQfYTyJCc2mu
-         MWjvUQpqadzouVsQk+zXMNB0MJ8Lqd/iWmI1pNJ7TsNPK3PgWVYf6DFOhNoYpekI+f2M
-         /H/w==;
+        b=Y8V35+aShsGPExENPmohdKr+V7lfd5UIw71qQ7cP+AblzBByHASjFaiKpg/LeCmAKF
+         Nr+eW3fMeuSnNfq802lZoJwkDFP3f/UZWGQ4OHoWx4WfQx/VifpMtkmmd8IsDua8mkpy
+         i7CZS1wyr5q4ZH92yPchk3SrXlk98nLMaghjs6Tmzt3bQH84VTp88HrM2QHMkg8M7LY0
+         rb7xEUzTumPwhk0+WkprVd6gLZ5zpBaGNVtwjB4jo14KwhiRL2aHb9dljp09jXqNyst9
+         AqddOBJCtDDwnwpJBD26dAhsp2rgPRubZJtuKgNf7nmKibtK7/yqnMCkZbv6egkyTGxQ
+         dWBQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=TWuFYjkE1q20mT6m9Gz+SjZGLVtg8tkx2StoOgf/mng=;
+        fh=QCf0CEB8nkWMZDtI3CFkZYMNk4/jgIlB6vnJ/O49mCE=;
+        b=xa5bFjtsulrcLHPrGPZogQWp89jpXqYWKKg6ZPGv5j8gHOYcEvbXpaGbdtbYXhU55J
+         mcRE5UeK7WwUrnLt/da+9X+gAzwLHtq0ILJiLqcrUP1D5fWYA81U0S8CFzERLNlxFwFW
+         Y0ogjTtatpgz8rDLvnanEZix8yb+7KmL8a6CXc5lxswbIKgioT2SKNFgXup5xqUjI0Rl
+         El/71/8Ta//klHvcBuy4/RlnSfjxRToOOjQNDBr5n1Slz+BUWIwSJQtTbnkTJfgI33zB
+         HxA00jy+Ao+825hzB7hZrwJmxQMUg/peWH6yot/sYVXooyUcJrFXHmRJ3UHqPm+h+h+x
+         3lLw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44f9696b5e1si9353491cf.68.2024.07.18.09.20.15
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="iK/xf+kD";
+       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
+       spf=pass (google.com: domain of kvm+bounces-21953-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-21953-alex.bennee=linaro.org@vger.kernel.org"
+Return-Path: <kvm+bounces-21953-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-79f0f91ea6dsi770843a12.502.2024.07.19.09.29.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jul 2024 09:20:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Jul 2024 09:29:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-21953-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sUTr4-0005cs-4J; Thu, 18 Jul 2024 12:19:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=3riu=OS=kaod.org=clg@ozlabs.org>)
- id 1sUTr3-0005aT-5F; Thu, 18 Jul 2024 12:19:41 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=3riu=OS=kaod.org=clg@ozlabs.org>)
- id 1sUTr0-00089g-HU; Thu, 18 Jul 2024 12:19:40 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4WPygW1Tpsz4x3r;
- Fri, 19 Jul 2024 02:19:35 +1000 (AEST)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4WPygR3hrTz4x3J;
- Fri, 19 Jul 2024 02:19:31 +1000 (AEST)
-Message-ID: <0969995e-fecb-447e-9f43-28e05f438bd9@kaod.org>
-Date: Thu, 18 Jul 2024 18:19:28 +0200
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b="iK/xf+kD";
+       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
+       spf=pass (google.com: domain of kvm+bounces-21953-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-21953-alex.bennee=linaro.org@vger.kernel.org"
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id BC875B2198A
+	for <alex.bennee@linaro.org>; Fri, 19 Jul 2024 16:29:41 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 27A4C145A19;
+	Fri, 19 Jul 2024 16:29:36 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b="iK/xf+kD"
+Received: from mail-pf1-f175.google.com (mail-pf1-f175.google.com [209.85.210.175])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3B378128812
+	for <kvm@vger.kernel.org>; Fri, 19 Jul 2024 16:29:33 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.175
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1721406575; cv=none; b=LyPKWVhrFeJMxDwCLFfbw97llhIjHwM0YQVJ0eAFVr9q+Am8ggTuSonLn3aMpMIDYkTAWwMDG15rGqSjZ5rtQ6lI72MZDNFHkdQ3fjjVGaOGtwI/dLNFkJsXl41QU1o08UYaj2+sRwZaVgeZDRtmOVUBThF1+uj0erGhPApnGio=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1721406575; c=relaxed/simple;
+	bh=Azpz80wMRlP8lCt8CC0IfRe1hJrR9eEvn43osrhUevI=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=P3HTiw+V43UNRj1jdOH4Czo3e1mk/EZF+whxfdc1sILz7dpPmx/fnfo9HkEJXq7wH47jlzHEyPQy4bptC1KdwH/url9eIFdvjxn1Iu95zA9YH/gkOGWdjAIrVvKj0Udiei0csJQ8KsCjazkgcpGPG9w94KDUZ0u5Zk6OKkyYvR8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com; spf=none smtp.mailfrom=daynix.com; dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b=iK/xf+kD; arc=none smtp.client-ip=209.85.210.175
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=daynix.com
+Received: by mail-pf1-f175.google.com with SMTP id d2e1a72fcca58-70b12572bd8so813032b3a.2
+        for <kvm@vger.kernel.org>; Fri, 19 Jul 2024 09:29:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1721406573; x=1722011373; darn=vger.kernel.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=TWuFYjkE1q20mT6m9Gz+SjZGLVtg8tkx2StoOgf/mng=;
+        b=iK/xf+kD1mlXCI1PD1APNrkuWqGtj5izxrdxlAwrEwsZ4VokmzPm6Wj9ZM3CCxmWJr
+         pPOmfBPmnoxlXCI6TS69Gmw4r8Y02plcc1CdCbg1R4wt+c3AUGCV6hy7ELcyA9lenKkR
+         lruzQj6PMhYG6cLL9bN+2UqPgUFhygAkjxJW2mhnUW9nb8fx+QsdMYmhktvZi0Q/gdvg
+         ugZTTVmHvjZqiaL1INngQYBJJPl9vQoLR2WOxIntDFSpF3IGQgPbwQ4QjIuMu65bphsB
+         NpGW1zU/US0Ioi0RVA59knQtS0Cm8tpD+YF5A7dhD1/GpwxUZTJg++Aenq2pXvLnTApB
+         D8kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721406573; x=1722011373;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=TWuFYjkE1q20mT6m9Gz+SjZGLVtg8tkx2StoOgf/mng=;
+        b=tvfCxwAbW5y/keTgM/zu3ZZUUDl++vAge4suYLGlPlRZ3zB8DcYrCKvhc14vKyhHXl
+         7NXCHJ0LqeGMxFtunbLPE7rK3OW6OQf3LdPIVuj7HPr1XG57kHRvcfxod67qXLeq6izM
+         eodOg7IAT0fsgFZ+ctUHHqkz6y5s6SSr2FzgqYbdJmLk4TQVglKrgNEpSiJrc3WCgQ95
+         sQKKi6PmnRFLC9pSiyOMngAkYXmmyCF0K+oTTr8Xw7XKESDho9cmC31bZrrYeh6urFfR
+         Tlk3yIv/1Kt7DRFYviqXvf84wlRm5Yhd/cwHGbFqbaOmKNYBAgOeScSQgo2Z2EfnUp9D
+         S0uw==
+X-Forwarded-Encrypted: i=1; AJvYcCVlr4jxMca99bRqDCDULIajz2/cAvjDaEC4uxC2NSkS3mlRLhglCRDdnM8MqvNzR6UV7yGpqxRB837UghRJSEDdvVep
+X-Gm-Message-State: AOJu0Ywsf7uPBRZuiSP4RmpOEcq14O+zUlgYTf8dFF28KITfu7GipbIe
+	8dm6cfsm2bl7iLZgsMp2iZjIGDnpmDuDyuyTC169fgwprdKzzmIOna1YAJpaou0=
+X-Received: by 2002:a05:6a00:2353:b0:70b:8190:d555 with SMTP id d2e1a72fcca58-70ce4f43908mr10405084b3a.32.1721406572554;
+        Fri, 19 Jul 2024 09:29:32 -0700 (PDT)
+Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932? ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70cff5587e4sm1371596b3a.135.2024.07.19.09.29.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 19 Jul 2024 09:29:32 -0700 (PDT)
+Message-ID: <414c64cb-7d01-4e63-83ea-90eca0de0942@daynix.com>
+Date: Sat, 20 Jul 2024 01:29:29 +0900
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] tests/avocado/machine_aspeed.py: Add eMMC boot tests
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Steven Lee <steven_lee@aspeedtech.com>,
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20240717130657.648701-1-clg@redhat.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20240717130657.648701-1-clg@redhat.com>
+Subject: Re: [PATCH v3 2/5] target/arm/kvm: Fix PMU feature bit early
+To: Cornelia Huck <cohuck@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, kvm@vger.kernel.org
+References: <20240716-pmu-v3-0-8c7c1858a227@daynix.com>
+ <20240716-pmu-v3-2-8c7c1858a227@daynix.com>
+ <CAFEAcA8tFtdpCQobU9ytzxvf3_y3DiA1TwNq8fWgFUtCUYT4hQ@mail.gmail.com>
+ <f9cf0616-34df-42c3-a753-4dec8e2d25b5@daynix.com> <87cyn9a7yn.fsf@redhat.com>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <87cyn9a7yn.fsf@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=3riu=OS=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eg/bwueykE45
+Content-Transfer-Encoding: 7bit
+X-TUID: Voiy18QBP6w9
 
-On 7/17/24 15:06, Cédric Le Goater wrote:
-> The image was built using the process described in commit c8cb19876d3e
-> ("hw/sd/sdcard: Support boot area in emmc image") with artefacts from
-> the latest successful build of the IBM P10 BMC platform available on:
+On 2024/07/19 21:21, Cornelia Huck wrote:
+> On Fri, Jul 19 2024, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
 > 
->    https://jenkins.openbmc.org/job/ci-openbmc/distro=ubuntu,label=docker-builder,target=p10bmc/lastSuccessfulBuild/
+>> On 2024/07/18 21:07, Peter Maydell wrote:
+>>> On Tue, 16 Jul 2024 at 13:50, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+>>>>
+>>>> kvm_arm_get_host_cpu_features() used to add the PMU feature
+>>>> unconditionally, and kvm_arch_init_vcpu() removed it when it is actually
+>>>> not available. Conditionally add the PMU feature in
+>>>> kvm_arm_get_host_cpu_features() to save code.
+>>>>
+>>>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+>>>> ---
+>>>>    target/arm/kvm.c | 7 +------
+>>>>    1 file changed, 1 insertion(+), 6 deletions(-)
+>>>>
+>>>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>>>> index 70f79eda33cd..849e2e21b304 100644
+>>>> --- a/target/arm/kvm.c
+>>>> +++ b/target/arm/kvm.c
+>>>> @@ -280,6 +280,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>>>>        if (kvm_arm_pmu_supported()) {
+>>>>            init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
+>>>>            pmu_supported = true;
+>>>> +        features |= 1ULL << ARM_FEATURE_PMU;
+>>>>        }
+>>>>
+>>>>        if (!kvm_arm_create_scratch_host_vcpu(cpus_to_try, fdarray, &init)) {
+>>>> @@ -448,7 +449,6 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>>>>        features |= 1ULL << ARM_FEATURE_V8;
+>>>>        features |= 1ULL << ARM_FEATURE_NEON;
+>>>>        features |= 1ULL << ARM_FEATURE_AARCH64;
+>>>> -    features |= 1ULL << ARM_FEATURE_PMU;
+>>>>        features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
+>>>>
+>>>>        ahcf->features = features;
+>>>> @@ -1888,13 +1888,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>>>>        if (!arm_feature(env, ARM_FEATURE_AARCH64)) {
+>>>>            cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
+>>>>        }
+>>>> -    if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
+>>>> -        cpu->has_pmu = false;
+>>>> -    }
+>>>>        if (cpu->has_pmu) {
+>>>>            cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
+>>>> -    } else {
+>>>> -        env->features &= ~(1ULL << ARM_FEATURE_PMU);
+>>>>        }
+>>>>        if (cpu_isar_feature(aa64_sve, cpu)) {
+>>>>            assert(kvm_arm_sve_supported());
+>>>
+>>> Not every KVM CPU is necessarily the "host" CPU type.
+>>> The "cortex-a57" and "cortex-a53" CPU types will work if you
+>>> happen to be on a host of that CPU type, and they don't go
+>>> through kvm_arm_get_host_cpu_features().
+>>
+>> kvm_arm_vcpu_init() will emit an error in such a situation and I think
+>> it's better than silently removing a feature that the requested CPU type
+>> has. A user can still disable the feature if desired.
 > 
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> ---
->   tests/avocado/machine_aspeed.py | 38 +++++++++++++++++++++++++++++++++
->   1 file changed, 38 insertions(+)
+> OTOH, if we fail for the named cpu models if the kernel does not provide
+> the cap, but silently disable for the host cpu model in that case, that
+> also seems inconsistent. I'd rather keep it as it is now.
 
+There are two perspectives of consistency:
+1) The initial value of pmu
+2) The behavior with the pmu value
 
+This change introduces inconsistency for 1); the host cpu model will 
+have pmu=off by default and the other cpu models will keep default 
+pmu=on value on a system that does not support PMU. It still keeps 
+consistency for 2); it fails if the user sets pmu=on for any cpu model 
+on such a system.
 
-Applied to aspeed-next.
+We should align 1) for better consistency, but I don't think such a 
+change would be useful. It is likely that something is wrong with the 
+system when the system reports a cpu model but it doesn't support its 
+feature. I think that is the reason why we assert 
+kvm_arm_sve_supported() for SVE; however I don't think such an assertion 
+would help either because kvm_arm_vcpu_init() will fail anyway.
 
-Thanks,
-
-C.
+Regards,
+Akihiko Odaki

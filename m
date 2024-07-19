@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp616885njc;
-        Fri, 19 Jul 2024 11:11:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVI1CtclirwLQ1KHpdG25tBn8uUcnRUg1J6R6RzYwHdqZ1Y9LTKco9WRJsMcSV9ftB+I6PMhTrLSTCV9mzSkaA5Py84y7n7
-X-Received: by 2002:a5d:64a1:0:b0:368:48b1:803 with SMTP id ffacd0b85a97d-36848b10da9mr6737284f8f.12.1721412663517;
-        Fri, 19 Jul 2024 11:11:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721412663; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp616949njc;
+        Fri, 19 Jul 2024 11:11:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVYna8JtIm5/DeIbtuwswvyKeKSD9rDzSfwnRa/GUm2ucxIOpqU1BSeHDmLQwKBfunQBEqmGiWmiSnk8LB74+idSIPiFA37
+X-Received: by 2002:a05:600c:1f07:b0:426:5b44:2be7 with SMTP id 5b1f17b1804b1-427c2cb865emr78394065e9.10.1721412669415;
+        Fri, 19 Jul 2024 11:11:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721412669; cv=none;
         d=google.com; s=arc-20160816;
-        b=d44N5FnCeUF8GyfSu39YqwxGQv7PytDWFXJy1Wh94t7h97dVdkNfILXGKtrRvKgcJ6
-         KYJINpfaGHWldQeFVhuHU+OQDr5QLKihkXo/gYejkm06uFQttz3b3fMiiGDOpEcGyATN
-         DRM0n5DQOkklXNatgzz26saOLx9wAR8lsUcpgyIZdAEB4VZyC6WQ6rZxiKTWBEz4DHv3
-         E2hF6oH9TAY0S2SIKne4wdEsKL3v82kBGs5fJfb9O0Q5zKuCKiBy06JxYbOyTVT1HulI
-         aPuVFW9dZ6ymnukhwSaSggWT1qGOTAgRqcedeVfGu+XHRfVrtTnvp8OM1WE3Pl7IRNt3
-         lAgg==
+        b=adrsjs9tDbluCQrXyGMjOaTtqLtajqSFUH3vGGNSwSBHWTG/758x5C6jUMon/13Pk1
+         +EnjAkPBpFYeFU7zIX9tqG0ex/+UZqXBfjVb0uKwoaorzD2JH8Zr0tImP8Wk2Ge0gOGx
+         x/pkxU6mnEijZ6S+qKrQ1zEAMylT3iAD0Xi+flbfmAE6uziGTBTJxbkEwtB+Ac2MTKpB
+         GuDiRCMXJKzRjn7VzSNvxvV6r+TBEL4kr2WvmkE3NXlMBh1JdQSZDGh0byFqRiCOiak5
+         wFJYZi9OpgNxKtSz4BF2ZybsJVPcwIrUjzwaLaP9WFdlwTgJXq/yFfV/MJudve7mewMF
+         0Mcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Pcbf3AvGHvD4fhRiEOLagM3LlfJ7dGGey9tdUSZ+O4Q=;
-        fh=1OERTRmy4Qrw4Pxh4/PuLeaPS6e7qas1K/JhkUS4n1U=;
-        b=lQ7avbiSRau0ZmeB1/Loz6HCp6Q8c1zaSox3VNuKe0+5+duZy/wygIbJfonBblqObO
-         PvXHt25sRsCicQtdfNYmwYJK52O4n096QrsrVt46K+1ju0zcZvQZKmrOdZ/m9ZBsyNd2
-         AlBhrDkXlkazszdxscQlCD0D6FpY+QDFv0WUYG2nXNcwXAOjre28GbAg1T0n2/Z0NXmG
-         e/6TUdla+Qkv3JClolGNcj4WKwi6WRVF8IFcq48+v71x98nMSTijD+vQp85/U0GPVO6x
-         rCOBsw2Sqhv7YOCHZRJ0RYF+gePhPNi99cJftwZKCRtNwaRpwbVeFyg2pGhc6bTPsWqm
-         1CTg==;
+        bh=HKEyUF5vAQXhfPoZ9bEoVMEJKlfitjNK1zaxUdDv/iQ=;
+        fh=Omy+7zm/isP8IBs8cFbL0yKSTmP0LLZKl1kstrp+D+c=;
+        b=oPc9ZmZPdqy+/qkmNCWsZ+wZHi1PdyWWFR5fUJybA1xzVNVXnpxsbXEB/hto7Ns4do
+         YiBnmm7lJKcKrX9T+9ykVt6WQ3Sg2y9PyFP4p/NzLLMMUIlBo1fhzoPJlEaGw6LCOf0y
+         v8n6xYzkGCXm17tRQHWztI9+tVruzLsVBGrV5pawidMhAiea1n5G38sVVQMFEpHSLpdG
+         Vv0SZj75qNf/TPf9oqdUnB7npx7BGGvXbPiRPXIeLvbl+MhblzZ2h2keTUtU55IYrLU5
+         jSjXhbwB4FLq6WFpMOkrJeuIEKz4fcDpfw425wi4wf27ABPEjwM7bqluvUvj9IXgsoQp
+         6m2g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rIyupLqe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AtHbj3gV;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-36878833ccdsor530949f8f.5.2024.07.19.11.11.03
+        by mx.google.com with SMTPS id 5b1f17b1804b1-427d6fccb2csor8481175e9.7.2024.07.19.11.11.09
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 19 Jul 2024 11:11:03 -0700 (PDT)
+        Fri, 19 Jul 2024 11:11:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rIyupLqe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AtHbj3gV;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721412663; x=1722017463; darn=linaro.org;
+        d=linaro.org; s=google; t=1721412669; x=1722017469; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Pcbf3AvGHvD4fhRiEOLagM3LlfJ7dGGey9tdUSZ+O4Q=;
-        b=rIyupLqetGnASHTBq9jaYhG/SiqTfb59tjLwS3PHGSus3rWeOb/NW/32RSYuo5FBxw
-         4GTmTYMRaRmaPpbmCKSTF0FawJgzSR0RWcj9/MHXr2c/LXiqRqaU0ygyQmiwExDPCEIB
-         awkkpjbFMeADE7LQmhtRc9xBFHHk1zq/07tMgUw0hGfjec69jmXceFrRslNpqeglx915
-         djVjtMAZbfX2L0OSRK/ZWC8ScOYgxpk6P/PCVgQMUh3q4sTsy5N5ERWkDhbCk8aVTK6v
-         8UTNxVXl/afg19P3OdrzENYNXLuIDklIybYTfxjuqzOusTDctGHYzTIKbC7ZfRm/StP1
-         Mo9g==
+        bh=HKEyUF5vAQXhfPoZ9bEoVMEJKlfitjNK1zaxUdDv/iQ=;
+        b=AtHbj3gVgNjrETHrL0SWc81MOvTwikxz+/KHSyJT9Yon22nj2VSckcJoHVe20OR6S1
+         kllPrBrNkMlDD0skM/CjCaxEoQyIj0s/iD4abMyJEqacu2F6DMuWkG92ZqaPp2ag45iE
+         EdjAikfG5DUJcxmQZwAv8ws0si1R5UNarY0WP/Q++MzpjbzCOxgkGlLCPSnnUmz/6b7c
+         KtX5g35v63yOUcRusPqIMeX5oemXitAp/Mx3AZ5h/Mx5jlrNyF50BvIzvQNlVEARNnGM
+         61Hg/TsARN0zbpPYuWKPV1GUhIuROu/BEqEcOcG76s6RP7IDEzt1pD/ZtScy4X0Dx7RY
+         1f2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721412663; x=1722017463;
+        d=1e100.net; s=20230601; t=1721412669; x=1722017469;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Pcbf3AvGHvD4fhRiEOLagM3LlfJ7dGGey9tdUSZ+O4Q=;
-        b=L7wwAnpedDGFx2LyNNtS+oWs5eoFyvDVcpGwE+KBY/72qKyBfw4FMngKU0dA3XFkAh
-         w26R9ecrAxd1nLKB/jD0g/XievhllV4KFtQvJ2Z4nN/YeOsu309o3SVrqBQpLhAps4V5
-         Pn0I7eEVsMhqfmZmVrlxuxeo62Xm9FjIaNosIi4fiU3Ozh3oYAtaa3iXdVHgOodUnzLn
-         eubHC00XpOxYhtNqBscC+7JZ6tpzMKxadbhtL7aOgWJsA/japWvjp3FIApxYNab9lAYS
-         Yv1qdabgZdd5cxfkxvc9NM+QRV5xIGvhqp493PbiGOWKZr3CtcO+GIoYb/3jTKipziXP
-         aryw==
-X-Forwarded-Encrypted: i=1; AJvYcCWpSv+uib/C8R4yneSPLH44GWIcFIK1d3riTZ44lRQbKFbmja0OqcfwVoMdXnGO4Hv3gJFfwjgtrrdYamYH1oVxHmaoZKmd
-X-Gm-Message-State: AOJu0Yzk1JyzfaGk6y6ngA5ut/KS9mNAB/tvlwq4hh2hvMCZS+lynsNP
-	4jpLVhiO6Imvk5Gt4No7ATwA3nA671UeIy3iffEesI1xPH0h8xJuh91q9GuGzCh5Fw==
-X-Google-Smtp-Source: AGHT+IHKGAtGplxlsw04A5Xyo5rKG4NyQ6nejAtmR2e06wwDRwmeAjWCa1URvp0UhWUd79dYwqRQjQ==
-X-Received: by 2002:a5d:4cc4:0:b0:367:f054:7aba with SMTP id ffacd0b85a97d-3683175ce54mr5619270f8f.41.1721412663012;
-        Fri, 19 Jul 2024 11:11:03 -0700 (PDT)
+        bh=HKEyUF5vAQXhfPoZ9bEoVMEJKlfitjNK1zaxUdDv/iQ=;
+        b=CZzz9bkVHro5NvXJiEh9yfAF3rzWHDUoQkS+khizq5hs7+GbOtcWbtdNU5fdUt1gGm
+         C2A1n6UyfUJGNtP0rS950lcWus/m8P8ZsLYAs35jgrJ7j27Ab4kmOZ912Bk2diopDLLG
+         V4zQv4t83/sEwVs+68Q/0oDYDzTEP8WzkzXq7FZQwozuaTRBI4nSpU+eaUiUG+J3XvUY
+         TjBPxM0VKAZpKy7gETWhg16eg07QPn3zeCq3TpDdpq7iAaDU35lVDetzcb+wh7lITkA3
+         wcSegNIiPLa2rHBgbSipZ7kQwK6eCuAU0hJbSG5vvva36W7p3L+dxbpwwx4uE8XkbbCo
+         o7BA==
+X-Forwarded-Encrypted: i=1; AJvYcCVac/m8dB4E+Oubld++mxC/DbMB8vyyOtnrvQrhKroxKNY8Cwz65ADxe+ySNoNmE7QGMpAVZKMZu9g2xGCLw55dyXdSYxjX
+X-Gm-Message-State: AOJu0YyYg5EDzF/TUVJpJhcQvrPMIZG1aGO4j7OtgSS/2+MoDV5g909Y
+	EjalknuIBdbb0v7AbUmnjC7a0BUUAzJGg6GU/nPShVEDlL9eSevGhDMt8MjggTry0w==
+X-Google-Smtp-Source: AGHT+IHyINAIOVHPFb5Xhz+3TG7BuvPnB2fxoM9BRSAld2ZTy5lvo3sJctcadYjTj6qh6JVt9fe1yw==
+X-Received: by 2002:a05:600c:3b8f:b0:426:5520:b835 with SMTP id 5b1f17b1804b1-427c2cacf1emr61880365e9.5.1721412668901;
+        Fri, 19 Jul 2024 11:11:08 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (52.170.88.92.rev.sfr.net. [92.88.170.52])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3687868420fsm2231578f8f.3.2024.07.19.11.11.01
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-427d7263687sm29524065e9.4.2024.07.19.11.11.07
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 19 Jul 2024 11:11:02 -0700 (PDT)
+        Fri, 19 Jul 2024 11:11:08 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -85,94 +85,123 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
 	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v5 03/16] hw/char/pl011: Move pl011_put_fifo() earlier
-Date: Fri, 19 Jul 2024 20:10:28 +0200
-Message-ID: <20240719181041.49545-4-philmd@linaro.org>
+Subject: [PATCH v5 04/16] hw/char/pl011: Move pl011_loopback_enabled|tx() around
+Date: Fri, 19 Jul 2024 20:10:29 +0200
+Message-ID: <20240719181041.49545-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240719181041.49545-1-philmd@linaro.org>
 References: <20240719181041.49545-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Gqlrjg8HBYzR
+X-TUID: r573H4UOsPQ8
 
-Avoid forward-declaring pl011_put_fifo() by moving it earlier.
+We'll soon use pl011_loopback_enabled() and pl011_loopback_tx()
+from functions defined before their declarations. In order to
+avoid forward-declaring them, move them around.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/char/pl011.c | 46 ++++++++++++++++++++++------------------------
- 1 file changed, 22 insertions(+), 24 deletions(-)
+ hw/char/pl011.c | 66 ++++++++++++++++++++++++-------------------------
+ 1 file changed, 33 insertions(+), 33 deletions(-)
 
 diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index 260f5fc0bc..edb5395fb8 100644
+index edb5395fb8..22195ead7b 100644
 --- a/hw/char/pl011.c
 +++ b/hw/char/pl011.c
-@@ -159,6 +159,28 @@ static inline void pl011_reset_fifo(PL011State *s)
-     s->flags |= PL011_FLAG_RXFE | PL011_FLAG_TXFE;
+@@ -138,6 +138,11 @@ static void pl011_update(PL011State *s)
+     }
  }
  
-+static void pl011_put_fifo(void *opaque, uint32_t value)
++static bool pl011_loopback_enabled(PL011State *s)
 +{
-+    PL011State *s = (PL011State *)opaque;
-+    int slot;
-+    unsigned pipe_depth;
++    return !!(s->cr & CR_LBE);
++}
 +
-+    pipe_depth = pl011_get_fifo_depth(s);
-+    slot = (s->read_pos + s->read_count) & (pipe_depth - 1);
-+    s->read_fifo[slot] = value;
-+    s->read_count++;
-+    s->flags &= ~PL011_FLAG_RXFE;
-+    trace_pl011_put_fifo(value, s->read_count);
-+    if (s->read_count == pipe_depth) {
-+        trace_pl011_put_fifo_full();
-+        s->flags |= PL011_FLAG_RXFF;
+ static bool pl011_is_fifo_enabled(PL011State *s)
+ {
+     return (s->lcr & LCR_FEN) != 0;
+@@ -181,6 +186,34 @@ static void pl011_put_fifo(void *opaque, uint32_t value)
+     }
+ }
+ 
++static void pl011_loopback_tx(PL011State *s, uint32_t value)
++{
++    if (!pl011_loopback_enabled(s)) {
++        return;
 +    }
-+    if (s->read_count == s->read_trigger) {
-+        s->int_level |= INT_RX;
-+        pl011_update(s);
-+    }
++
++    /*
++     * Caveat:
++     *
++     * In real hardware, TX loopback happens at the serial-bit level
++     * and then reassembled by the RX logics back into bytes and placed
++     * into the RX fifo. That is, loopback happens after TX fifo.
++     *
++     * Because the real hardware TX fifo is time-drained at the frame
++     * rate governed by the configured serial format, some loopback
++     * bytes in TX fifo may still be able to get into the RX fifo
++     * that could be full at times while being drained at software
++     * pace.
++     *
++     * In such scenario, the RX draining pace is the major factor
++     * deciding which loopback bytes get into the RX fifo, unless
++     * hardware flow-control is enabled.
++     *
++     * For simplicity, the above described is not emulated.
++     */
++    pl011_put_fifo(s, value);
 +}
 +
  static uint64_t pl011_read(void *opaque, hwaddr offset,
                             unsigned size)
  {
-@@ -314,8 +336,6 @@ static void pl011_loopback_mdmctrl(PL011State *s)
+@@ -290,11 +323,6 @@ static void pl011_trace_baudrate_change(const PL011State *s)
+                                 s->ibrd, s->fbrd);
+ }
+ 
+-static bool pl011_loopback_enabled(PL011State *s)
+-{
+-    return !!(s->cr & CR_LBE);
+-}
+-
+ static void pl011_loopback_mdmctrl(PL011State *s)
+ {
+     uint32_t cr, fr, il;
+@@ -336,34 +364,6 @@ static void pl011_loopback_mdmctrl(PL011State *s)
      pl011_update(s);
  }
  
--static void pl011_put_fifo(void *opaque, uint32_t value);
--
- static void pl011_loopback_tx(PL011State *s, uint32_t value)
- {
-     if (!pl011_loopback_enabled(s)) {
-@@ -440,28 +460,6 @@ static int pl011_can_receive(void *opaque)
-     return r;
- }
- 
--static void pl011_put_fifo(void *opaque, uint32_t value)
+-static void pl011_loopback_tx(PL011State *s, uint32_t value)
 -{
--    PL011State *s = (PL011State *)opaque;
--    int slot;
--    unsigned pipe_depth;
+-    if (!pl011_loopback_enabled(s)) {
+-        return;
+-    }
 -
--    pipe_depth = pl011_get_fifo_depth(s);
--    slot = (s->read_pos + s->read_count) & (pipe_depth - 1);
--    s->read_fifo[slot] = value;
--    s->read_count++;
--    s->flags &= ~PL011_FLAG_RXFE;
--    trace_pl011_put_fifo(value, s->read_count);
--    if (s->read_count == pipe_depth) {
--        trace_pl011_put_fifo_full();
--        s->flags |= PL011_FLAG_RXFF;
--    }
--    if (s->read_count == s->read_trigger) {
--        s->int_level |= INT_RX;
--        pl011_update(s);
--    }
+-    /*
+-     * Caveat:
+-     *
+-     * In real hardware, TX loopback happens at the serial-bit level
+-     * and then reassembled by the RX logics back into bytes and placed
+-     * into the RX fifo. That is, loopback happens after TX fifo.
+-     *
+-     * Because the real hardware TX fifo is time-drained at the frame
+-     * rate governed by the configured serial format, some loopback
+-     * bytes in TX fifo may still be able to get into the RX fifo
+-     * that could be full at times while being drained at software
+-     * pace.
+-     *
+-     * In such scenario, the RX draining pace is the major factor
+-     * deciding which loopback bytes get into the RX fifo, unless
+-     * hardware flow-control is enabled.
+-     *
+-     * For simplicity, the above described is not emulated.
+-     */
+-    pl011_put_fifo(s, value);
 -}
 -
- static void pl011_receive(void *opaque, const uint8_t *buf, int size)
+ static void pl011_loopback_break(PL011State *s, int brk_enable)
  {
-     /*
+     if (brk_enable) {
 -- 
 2.41.0

@@ -1,223 +1,213 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp180301njc;
-        Thu, 18 Jul 2024 18:09:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWJ9IfxyP9rFWHbjyNdC3MaZzEHVJGz8a/wnErmqcAQdL+bIhbyl+6yW0SaE5ssPtENZXedjzzV2yOBAOaCSs4kNKDmdHX2
-X-Google-Smtp-Source: AGHT+IHbYDzvBfhu2GUn0Bg7SsjzUmc9PmH37G3tGNz2nDOwneO2HyzP8DqsdWm24gCbdK5I7e/0
-X-Received: by 2002:a05:620a:44ca:b0:79f:7b8:4950 with SMTP id af79cd13be357-7a19397247dmr329358485a.51.1721351361236;
-        Thu, 18 Jul 2024 18:09:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721351361; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp314490njc;
+        Fri, 19 Jul 2024 01:25:30 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVtO8TH5D2qSrRXW2zQ3G3eVzjIr1PqbI8KybxCPMGtotwCB29EMgMoZFvChnCpOk9dcrY8XMwitYISbTk35PIRMFR6UAkl
+X-Google-Smtp-Source: AGHT+IGfOCK+8dc5xJps0V3SSP7+9wvUgHSYmDUYcxJ9j1Xk+9iKx12y4F9WomzuRGCHiN6Et2vx
+X-Received: by 2002:a17:906:b0c3:b0:a79:fb0e:55ab with SMTP id a640c23a62f3a-a7a01147953mr574840166b.23.1721377530190;
+        Fri, 19 Jul 2024 01:25:30 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1721377530; cv=pass;
         d=google.com; s=arc-20160816;
-        b=HHTvIhvg+Im7jAWVHjIMJuC3V8wBWo8gZHkCqHC96M08NBs4Q1SPS/5bZ9f8kL5lXN
-         +AtO+1elhFmLdYMhk/m1GJB6cmqwh1bMEsnBJTJ3xf1g+AWJfSVPsbaDAxAkS9i3IBO0
-         vJXbbSif+/vdSqIGjvug00gsfcMJiRtapcyeEQXIPl4NBGP6uQ/F2DsLtZXkun+c08UE
-         Y1E5aVkpIBV5wZB/K4jTp98tGAWTkYDB9G7CWGw1GCjf16AJj3pD3caj3GpFQg0pbVP3
-         LflE0xILoG6MCpdb0vMzVVck7sArjEfFhJmBSOmrsmDw3+pv0Pd8ybvQcAQgJvdOkUPW
-         3JXg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=qvZQYGxfhFbqPHPcUgtNXtbdH2OSgyvIGjZjBPS5VAI=;
-        fh=/Slz4xbUrbq3y08cw9sY58k/LHu7k+IMs9GTwVwwc7g=;
-        b=KWpp6UYROI/X4E17cWOm7lWTTBTcCMNxEeSiX1EIYJVdcU9XCRxX3PWRcAuxqmzuQv
-         fsPXz7YZR1WrnHE09jUbMqURXXzItEHKuFdfGFfCtJ9KCm4TJsNItB86GGto4S9eexhm
-         P0ILMmP2BRvBa9XQHPGtx6KmGO0LFbV9zaF457WYkijqRhHUV0GeaEdfAcuo8xXlPCGL
-         Fmzbzu92BcpFHBN8/mCsZgVZprh4UEwW3//gZsNN5wE6QdXqpeQAxPNQiRRg2Ai1Exim
-         vecAQxER92iBibho1AhXNXw4t+EtbfYGoslY5j8wWoKX+ydz0ydvV1XCgoyUqI4NgF/M
-         PTsQ==;
+        b=ONvCnT5yH+xAR/4h1UnN1OWaMyku5ziSQxv82igZFvIbvyWKazTMdKTvYu8xXL1dex
+         uPsDdzWflJA8jTQ0ATrlqoitASRmWqdD1niYryYSzaXt72/mNSoB/7vQHTc6q/ab9LLS
+         gbD1DCPUrx+mn5W5aApS/3yv0kM320BXybltenZO2/4nsmvSGw4pjJInP0ldXFbFkw3x
+         yVLdJj/Aoqwe0jbsM/MCVNL/1iaEuFSPeaJZ2rXcHZC6K0icR/bzAHumxppRDdwZQDfx
+         L61NGaMOg+6knXwUow7vLuFKjjOmBg6F2nYl/9XF/M8twLTav+RaqlZwUZVPyCY7lWjr
+         SLvQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=GpUebqG24s15mI0zmHBAhGgkeBhYDiAq+qp7z74f7oA=;
+        fh=jvChnUTwCXb1gioMXkxjtoZaudMho8z97CzM+A3uQmg=;
+        b=k6Ln8exM9X5yP2Jvcl10rc3NYYoanrJ7wKNc132brCs8Hsczohnl8M/LMpBArGR7Mf
+         JbS77MCoNIdFR1JT7l+LSzElCAnf4fQ2WH/VfSn3KDRCpjkgTxJYldIAwWtRrYXKpZ/T
+         +gvmuKWvbvkSZqep+oXG5zawuh4bzLQmiJLePseLYQOzV5WpXm4l5718mVemj8qcQ4ml
+         65yTxxoIgDJniedLRr1KqccgKPi/rnAAWPwnz1NSba8Jf84J2UJo48m+j2qZnKHFCVXg
+         oDIon3g98gwvqhYQsBWX6oCX1F0EfV6T7qme4SqvaYMxQwuSkzayzGbZ8aNyrjKZz9pF
+         I1CA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Qp/x/VGL";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a19906de42si49509085a.476.2024.07.18.18.09.21
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=fU3PsIfB;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-21922-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-21922-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <kvm+bounces-21922-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id a640c23a62f3a-a7a33d71c70si59576366b.448.2024.07.19.01.25.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jul 2024 18:09:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Jul 2024 01:25:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-21922-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Qp/x/VGL";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sUc6c-00053Q-GX; Thu, 18 Jul 2024 21:08:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sUc69-0003iK-70
- for qemu-devel@nongnu.org; Thu, 18 Jul 2024 21:07:50 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sUc62-0000q6-HH
- for qemu-devel@nongnu.org; Thu, 18 Jul 2024 21:07:45 -0400
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-1fc49c1f3e5so13757575ad.1
- for <qemu-devel@nongnu.org>; Thu, 18 Jul 2024 18:07:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721351260; x=1721956060; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=qvZQYGxfhFbqPHPcUgtNXtbdH2OSgyvIGjZjBPS5VAI=;
- b=Qp/x/VGLybP0vyIxTGb+r6mCd8Zl1fLG16iE0QcK4JmBKN5F24wtlZheYeBmIPTRjY
- v/IbZg2QjfsBMlGy0PYxigUJ6omZ7p6r63vu9fsvRNuCzkVBHHsRScu71i/pVn1OkNli
- yplbRVXDp7dogSEip9DRDUyyHsLB4MMZQnIUTngy4GT0Rj3OqoyOuegjrycyecIE6P52
- 4HKKUS7E74uTm+JdQgmGGUbvtcV8G99zjSGGXsCVaUcnsPWl8MSmDmVwBBeyos/aOvwK
- KIB2Y/tBFSixOxG1Qga/9xtck5ksgZUNkWPUPdhe216BZf7mKRS1pzdkjbBC+N7zcVUy
- PGsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721351260; x=1721956060;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=qvZQYGxfhFbqPHPcUgtNXtbdH2OSgyvIGjZjBPS5VAI=;
- b=fgl2bOEVJti3gRCY6A8BKMeymdMmOMhobLnPOrimCjabWhZHhWTSaEoTyb+mRuhduM
- +nUfhRyl3fPzPMzw33vsUblEk2MuzawYMoCptvOAGMIkjXG+4MyXk+cda3ZNATGanVCQ
- xP6nA3oLuSInvI1hHC+pjb6LsRaHkk1PuEihLDqd0LADusiB7OGuLP7Jy2CJ3Zqh//oU
- 4+GkT0/C9bb3Po4oEfDxqlbGrJ3hgBXW4BglB+GaQuy3Phxjysb0KWjigBe5gNCleQF2
- nv8Nm9X5jXySvkOO41JSHsgVChBVhhT6Wn/RGnaMTck2/T+qHR/p8QL/EOavIiDEWAag
- +wMw==
-X-Gm-Message-State: AOJu0YxiwN8ETFSPKLUCKqmcigJ1Gv3Y0vTbzPBdtLtg/tkKyO4eI4MZ
- g92WeV4NIPDwp5Ona8jbclkz4hWEBoYU+zSa0uC0+gOuXzmfYAw26+OH5cGrTX/hoP9v3g2cAEs
- MiWUxpA==
-X-Received: by 2002:a17:903:2451:b0:1fb:57e7:5bab with SMTP id
- d9443c01a7336-1fc4e16191fmr52789145ad.36.1721351259904; 
- Thu, 18 Jul 2024 18:07:39 -0700 (PDT)
-Received: from stoup.. ([203.56.128.103]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1fd64d07ad9sm2067415ad.177.2024.07.18.18.07.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Jul 2024 18:07:39 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongu.org, qemu-s390x@nongnu.org,
- qemu-riscv@nongnu.org, Nicholas Piggin <npiggin@gmail.com>
-Subject: [PATCH v3 07/12] target/ppc: Merge helper_{dcbz,dcbzep}
-Date: Fri, 19 Jul 2024 11:07:02 +1000
-Message-ID: <20240719010707.1319675-8-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240719010707.1319675-1-richard.henderson@linaro.org>
-References: <20240719010707.1319675-1-richard.henderson@linaro.org>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=fU3PsIfB;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kvm+bounces-21922-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-21922-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 7A3D41F21B95
+	for <alex.bennee@linaro.org>; Fri, 19 Jul 2024 08:25:29 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 281556FE16;
+	Fri, 19 Jul 2024 08:25:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="fU3PsIfB"
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C9FEF6F073
+	for <kvm@vger.kernel.org>; Fri, 19 Jul 2024 08:25:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.18
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1721377525; cv=none; b=rU3iY+REbB3UldiLr629W0ETs2Qa3LVllrfN6tIXgU1JAMZoDPRmGCV84i0DLMlBxpl+t+Xl70yappqA8zCmKzUA2h0wNTxUBTWmU8H5DYQqN3esDrdgwMjyPKJM45UpGEn1rf+dHlC2E6MHD3ZcZVNufsRwOgGcrZeTmvKB3hk=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1721377525; c=relaxed/simple;
+	bh=Cbq1XzEG/Z5bPHmoZpGA9EqItTHH1azGryyZCO1RmSk=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=RdnlJS03GUrdPkD2Ugvr7UMPEl56Mcs5jWIba+xk+7eWLmwuygb6QCod4QsXIExQ4v08t0e/pfyMd3HGOl50f/AppUWaVefLvOUMjvdsf5+Sh1otOo0tMstS7xhFgQiQpSXkJjlQ4drgRrnt+lu8/cgYEiQmiN0oBMOgCSnKsv4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=fU3PsIfB; arc=none smtp.client-ip=198.175.65.18
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1721377523; x=1752913523;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Cbq1XzEG/Z5bPHmoZpGA9EqItTHH1azGryyZCO1RmSk=;
+  b=fU3PsIfBCyQxlPdkiTl/jay8gw5+bNwoKy3Hm0FOVDbXRJDG+of+C4tu
+   fLHgQvbocXe2gVDTfwChDQmgxGs43sIhCGS513CYve4lQjMX071I6/c3D
+   9WJi2OwSDB6R0SGgRHAqHmlvee2PinyAl3StlfmbzUBEJhtH0KErPNVQb
+   fiI0ypks0Cla3S14u2w0n4nhKMVjJnW4/fBcA82HbgdtZgsItQlDBMJ1u
+   ccSRFyJfIpwku6fyTgE324jVs2n7fb5wY2B6zOxoieOa9KjnKxEMm4XyV
+   OJihcRs/bFeDaue7taNlQjqfUGnoTTQ3FFQh2x8NuSWEqk4STiUWtUFJ1
+   w==;
+X-CSE-ConnectionGUID: 332qnMo6Rua0Gcru27Ahiw==
+X-CSE-MsgGUID: aQILgsAnTIu4UOylw9sr0g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11137"; a="19114658"
+X-IronPort-AV: E=Sophos;i="6.09,220,1716274800"; 
+   d="scan'208";a="19114658"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jul 2024 01:25:23 -0700
+X-CSE-ConnectionGUID: FEQBshkLRX6+VaqwSaN65w==
+X-CSE-MsgGUID: c8dJjs78SHitlazWSzRUWQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,220,1716274800"; 
+   d="scan'208";a="50784003"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by fmviesa007.fm.intel.com with ESMTP; 19 Jul 2024 01:25:16 -0700
+Date: Fri, 19 Jul 2024 16:40:59 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: "Mi, Dapeng" <dapeng1.mi@linux.intel.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Shaoqin Huang <shahuang@redhat.com>, Eric Auger <eauger@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
+	qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@intel.com>, Yuan Yao <yuan.yao@intel.com>,
+	Xiong Zhang <xiong.y.zhang@intel.com>,
+	Mingwei Zhang <mizhang@google.com>,
+	Jim Mattson <jmattson@google.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [RFC 3/5] i386/kvm: Support event with select&umask format in
+ KVM PMU filter
+Message-ID: <Zpomm3hLhSM5O6em@intel.com>
+References: <20240710045117.3164577-1-zhao1.liu@intel.com>
+ <20240710045117.3164577-4-zhao1.liu@intel.com>
+ <f18ab76c-abbe-4599-9631-603853bcfa0b@linux.intel.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
-X-Spam_score_int: 37
-X-Spam_score: 3.7
-X-Spam_bar: +++
-X-Spam_report: (3.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: O5RZs9epxbb3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <f18ab76c-abbe-4599-9631-603853bcfa0b@linux.intel.com>
+X-TUID: EwRQgK1i2sxa
 
-Merge the two and pass the mmu_idx directly from translation.
-Swap the argument order in dcbz_common to avoid extra swaps.
+Hi Dapeng,
 
-Reviewed-by: Nicholas Piggin <npiggin@gmail.com>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/ppc/helper.h     |  3 +--
- target/ppc/mem_helper.c | 14 ++++----------
- target/ppc/translate.c  |  4 ++--
- 3 files changed, 7 insertions(+), 14 deletions(-)
+On Thu, Jul 18, 2024 at 01:28:25PM +0800, Mi, Dapeng wrote:
 
-diff --git a/target/ppc/helper.h b/target/ppc/helper.h
-index afc56855ff..4fa089cbf9 100644
---- a/target/ppc/helper.h
-+++ b/target/ppc/helper.h
-@@ -46,8 +46,7 @@ DEF_HELPER_FLAGS_3(stmw, TCG_CALL_NO_WG, void, env, tl, i32)
- DEF_HELPER_4(lsw, void, env, tl, i32, i32)
- DEF_HELPER_5(lswx, void, env, tl, i32, i32, i32)
- DEF_HELPER_FLAGS_4(stsw, TCG_CALL_NO_WG, void, env, tl, i32, i32)
--DEF_HELPER_FLAGS_2(dcbz, TCG_CALL_NO_WG, void, env, tl)
--DEF_HELPER_FLAGS_2(dcbzep, TCG_CALL_NO_WG, void, env, tl)
-+DEF_HELPER_FLAGS_3(dcbz, TCG_CALL_NO_WG, void, env, tl, int)
- #ifdef TARGET_PPC64
- DEF_HELPER_FLAGS_2(dcbzl, TCG_CALL_NO_WG, void, env, tl)
- #endif
-diff --git a/target/ppc/mem_helper.c b/target/ppc/mem_helper.c
-index d4957efd6e..24bae3b80c 100644
---- a/target/ppc/mem_helper.c
-+++ b/target/ppc/mem_helper.c
-@@ -271,7 +271,7 @@ void helper_stsw(CPUPPCState *env, target_ulong addr, uint32_t nb,
- }
- 
- static void dcbz_common(CPUPPCState *env, target_ulong addr,
--                        int dcbz_size, int mmu_idx, uintptr_t retaddr)
-+                        int mmu_idx, int dcbz_size, uintptr_t retaddr)
- {
-     target_ulong mask = ~(target_ulong)(dcbz_size - 1);
-     void *haddr;
-@@ -296,15 +296,9 @@ static void dcbz_common(CPUPPCState *env, target_ulong addr,
-     }
- }
- 
--void helper_dcbz(CPUPPCState *env, target_ulong addr)
-+void helper_dcbz(CPUPPCState *env, target_ulong addr, int mmu_idx)
- {
--    dcbz_common(env, addr, env->dcache_line_size,
--                ppc_env_mmu_index(env, false), GETPC());
--}
--
--void helper_dcbzep(CPUPPCState *env, target_ulong addr)
--{
--    dcbz_common(env, addr, env->dcache_line_size, PPC_TLB_EPID_STORE, GETPC());
-+    dcbz_common(env, addr, mmu_idx, env->dcache_line_size, GETPC());
- }
- 
- #ifdef TARGET_PPC64
-@@ -320,7 +314,7 @@ void helper_dcbzl(CPUPPCState *env, target_ulong addr)
-         dcbz_size = 32;
-     }
- 
--    dcbz_common(env, addr, dcbz_size, ppc_env_mmu_index(env, false), GETPC());
-+    dcbz_common(env, addr, ppc_env_mmu_index(env, false), dcbz_size, GETPC());
- }
- #endif
- 
-diff --git a/target/ppc/translate.c b/target/ppc/translate.c
-index 9e472ab7ef..cba943a49d 100644
---- a/target/ppc/translate.c
-+++ b/target/ppc/translate.c
-@@ -4458,7 +4458,7 @@ static void gen_dcbz(DisasContext *ctx)
-     }
- #endif
- 
--    gen_helper_dcbz(tcg_env, tcgv_addr);
-+    gen_helper_dcbz(tcg_env, tcgv_addr, tcg_constant_i32(ctx->mem_idx));
- }
- 
- /* dcbzep */
-@@ -4468,7 +4468,7 @@ static void gen_dcbzep(DisasContext *ctx)
- 
-     gen_set_access_type(ctx, ACCESS_CACHE);
-     gen_addr_reg_index(ctx, tcgv_addr);
--    gen_helper_dcbzep(tcg_env, tcgv_addr);
-+    gen_helper_dcbz(tcg_env, tcgv_addr, tcg_constant_i32(PPC_TLB_EPID_STORE));
- }
- 
- /* dst / dstt */
--- 
-2.43.0
+[snip]
+
+> > +        case KVM_PMU_EVENT_FMT_X86_DEFAULT: {
+> > +            uint64_t select, umask;
+> > +
+> > +            ret = qemu_strtou64(str_event->u.x86_default.select, NULL,
+> > +                                0, &select);
+> > +            if (ret < 0) {
+> > +                error_setg(errp,
+> > +                           "Invalid %s PMU event (select: %s): %s. "
+> > +                           "The select must be a "
+> > +                           "12-bit unsigned number string.",
+> > +                           KVMPMUEventEncodeFmt_str(str_event->format),
+> > +                           str_event->u.x86_default.select,
+> > +                           strerror(-ret));
+> > +                g_free(event);
+> > +                goto fail;
+> > +            }
+> > +            if (select > UINT12_MAX) {
+> > +                error_setg(errp,
+> > +                           "Invalid %s PMU event (select: %s): "
+> > +                           "Numerical result out of range. "
+> > +                           "The select must be a "
+> > +                           "12-bit unsigned number string.",
+> > +                           KVMPMUEventEncodeFmt_str(str_event->format),
+> > +                           str_event->u.x86_default.select);
+> > +                g_free(event);
+> > +                goto fail;
+> > +            }
+> > +            event->u.x86_default.select = select;
+> > +
+> > +            ret = qemu_strtou64(str_event->u.x86_default.umask, NULL,
+> > +                                0, &umask);
+> > +            if (ret < 0) {
+> > +                error_setg(errp,
+> > +                           "Invalid %s PMU event (umask: %s): %s. "
+> > +                           "The umask must be a uint8 string.",
+> > +                           KVMPMUEventEncodeFmt_str(str_event->format),
+> > +                           str_event->u.x86_default.umask,
+> > +                           strerror(-ret));
+> > +                g_free(event);
+> > +                goto fail;
+> > +            }
+> > +            if (umask > UINT8_MAX) {
+> 
+> umask is extended to 16 bits from Perfmon v6+. Please notice we need to
+> upgrade this to 16 bits in the future. More details can be found here.
+> [PATCH V3 00/13] Support Lunar Lake and Arrow Lake core PMU - kan.liang
+> (kernel.org)
+> <https://lore.kernel.org/all/20240626143545.480761-1-kan.liang@linux.intel.com/>
+
+It's tricky...now I referred the RAW_EVENT format in tools/testing/
+selftests/kvm/include/x86_64/pmu.h, which is used in KVM PMU and is
+compatible with AMD and Intel.
+
+The current KVM PMU filter for raw code doesn't define the layout in
+the standard API like masked entries (KVM_PMU_ENCODE_MASKED_ENTRY), but
+actually uses the RAW_EVENT format. So I even plan to move RAW_EVENT
+macro into arch/x86/include/uapi/asm/kvm.h...
+
+For the changes you mentioned, I think it would be better for the raw
+code layout design not to break RAW_EVENT, so that AMD and Intel can
+equally use the same macro to encode. Is it possible for a unified
+layout macro?
+
+What about extending RAW_EVENT as the following example? I understand
+the umask2 is at bit 40-47.
+
+#define X86_PMU_RAW_EVENT(eventsel, umask) (((eventsel & 0xf00UL) << 24) | \
+                                            ((eventsel) & 0xff) | \
+                                            ((umask) & 0xff) << 8) | \
+					    ((umask & 0xff00UL << 32)
+
+Thanks,
+Zhao
 

@@ -1,113 +1,113 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp179912njc;
-        Thu, 18 Jul 2024 18:08:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUaBap7VLxsMZJEcJNcVRSUPj2G2rh7qH9KdqAx10hrNKUMue31/pu9+Enz0q/pf0eRU7py5USaQ9L0joMTYo63QDqdhr65
-X-Google-Smtp-Source: AGHT+IGfz/rj3B/a/jqZw2DoanZAIrlHNgsDP0o9PPVlsJEmEI37mDBpgqSqj4HAp3i9PzLcZN0c
-X-Received: by 2002:a0d:e0c4:0:b0:648:2c60:fdee with SMTP id 00721157ae682-664ff8da734mr75789487b3.38.1721351301034;
-        Thu, 18 Jul 2024 18:08:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721351301; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp179959njc;
+        Thu, 18 Jul 2024 18:08:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVWoqvFXNEFEBRFwdDbu05WtrMI5Q7TnwUwsSUDTiPL3lKQm/y1+zvlHvYsweg/A/PqOtt9H2Ht1Y+rZG/D4kxcD3CWRcdx
+X-Google-Smtp-Source: AGHT+IF6SScngWW8XNI4eslwAM9KxEOOakmeEBSdJSjKO8aBY59rF6BwRkc9zsCu0h2Hc5i/ljbb
+X-Received: by 2002:a05:6102:5799:b0:48f:d683:f46e with SMTP id ada2fe7eead31-4915990dde7mr8075675137.22.1721351308411;
+        Thu, 18 Jul 2024 18:08:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721351308; cv=none;
         d=google.com; s=arc-20160816;
-        b=UBMRTP2iKB/7Q3MqmZ7n8BU/CilWcKRXsWB5Zn2e9FJqGDEv4/eVvoYAI30xQkneug
-         nMtRJyaUNCHeopMNNRAKJ4cSSQKwL8MmMB0zrrvdtpru9FclOs0ay8+enQQvznD93cYJ
-         TOEHTlY46stpp3CHTMJjuPwxFS4DpTxEaaGn90GFJlnlRRf9iy77ZiSnwYuoQCJKRVOA
-         NsWz4JHDzRVEcyKk5mkkdwT/obSW/DbRwLAsYiuMbIgzeFA8vayomLbp1vjDymW4uefB
-         8VWd+GCr07BKr0zLW/hFYkIBLGe5Z2TYFBBBSBD7Ck07q88WjresTwGzkFIt88pr5zxN
-         zYBw==
+        b=XMM7JkzrhvAywVcy+PjemQ35UMfn5VWhZufgWUI/01v4k0P2Hzkiq8Y42BpkEeUO9f
+         uTL5uqraZ5qG0WNJlHcBHwGWuMUJLsym1EmsS3Np9M+EUuvhNJBdrdswINwibBTLmM4T
+         mT+CuRImcLWSicpQMxKAjaErM5hsbdn0L7GLEW9DS7IqswBz0cpUNcx2BOIuYVRuly+I
+         mbmpWYq15cahn451zhZWQTC0i+dQpfuPRgFN/euOsG/Pr4FTTSHzDIXikBBzRTospPQl
+         Mu3FBQmpXhJZHVsSeaq6f/v/As1OlgTJhTrjqJGDTrPdtQy6z4fBY5FThYmu6ljB34ka
+         KGmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=jMsQ8jSa2C8xRls4TTp8Ou8tDoyMnkK5KK/Q8+Xs4/o=;
-        fh=PMD1cJf9IbYeK/VmAJgusCYc7DxmYIcIgC7fGquy+wg=;
-        b=T+rXKAZSXZVZCD1aJBcC4Q9iepHKuD/oh2GXXZ28cenDzAlhmaZ9Yqp8D2GUEb5+I8
-         V4Ws1WW/cvkDEJVdMZkFqJSO0loqnptJMes1SVN/3ZJdu584CyEkaq/Dim0cToRjV4MC
-         1y4AiXohtFWTGnTxp7RCebUY2GVpAmPW5US6oBROSJZCGh0w8Ps8I6b9p1CdFicHUaJK
-         tEcNDeTiCNVwCbn2MQBh+iCzr08cP6rAKlYDAfbY6p8qU+K9yeityP057tHqlX+uzeCZ
-         gbr+LpyTZnIfpElXiFl9r8kS91zfoDW7WDY8p6DkPCooQuqc4lFjMpIbqQoIWxIwxAQU
-         0JtA==;
+        bh=afR5Mh7AuJ+l97gjVcHTy2tuYfmOnsauTdcz7zi2zaI=;
+        fh=qjFy40K+ZQaomz0djLvfgk0/gq57yB0/W8d5nzdAVZA=;
+        b=0tRjjdyabAl4oxv+XI/mzgMoy4wJyrjFPA7O0CdgVvW+Li3B2NvQUyOeFpbnMdk75Q
+         4WebltNOzW8odgv5Bbwc71ic3J1IXLOTtmrc9+9z2jXEJz1wuROg23djlkSiQfx98bXs
+         c/VXz/FbdS4aHYAd/8Y+KWwsgD7JMpN+vgtbHXjaN7JYscRb/gnmN9rkGEslzNeYxdpn
+         LdLZbvRlD1UCyAX96fuxu0ES2lr4FJuEhTKjK59N5iEYtAFB4ETr5ve2SQNQwr2EJANl
+         cWxg9ldu1aGNgp8E0382f4sctfdLfiHlbf9McYWHSGGbfsM9grvreAi6TSXwtQz96n9l
+         aVpQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="I0/VwhUz";
+       dkim=fail header.i=@linaro.org header.s=google header.b=G3tdhOtN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=fail header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a199066e8csi49982485a.464.2024.07.18.18.08.20
+        by mx.google.com with ESMTPS id d75a77b69052e-44f9ccfc8e1si4503621cf.79.2024.07.18.18.08.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jul 2024 18:08:21 -0700 (PDT)
+        Thu, 18 Jul 2024 18:08:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="I0/VwhUz";
+       dkim=fail header.i=@linaro.org header.s=google header.b=G3tdhOtN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sUc6H-0004E4-1V; Thu, 18 Jul 2024 21:08:05 -0400
+	id 1sUc61-0003Nw-Ct; Thu, 18 Jul 2024 21:07:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sUc5u-00037p-EU
- for qemu-arm@nongnu.org; Thu, 18 Jul 2024 21:07:35 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ id 1sUc5k-0002pQ-1O
+ for qemu-arm@nongnu.org; Thu, 18 Jul 2024 21:07:25 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sUc5n-0000kp-8Z
- for qemu-arm@nongnu.org; Thu, 18 Jul 2024 21:07:30 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-1fc6ee64512so7179015ad.0
- for <qemu-arm@nongnu.org>; Thu, 18 Jul 2024 18:07:26 -0700 (PDT)
+ id 1sUc5f-0000iQ-Pa
+ for qemu-arm@nongnu.org; Thu, 18 Jul 2024 21:07:22 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-70aec66c936so377599b3a.0
+ for <qemu-arm@nongnu.org>; Thu, 18 Jul 2024 18:07:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721351245; x=1721956045; darn=nongnu.org;
+ d=linaro.org; s=google; t=1721351238; x=1721956038; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jMsQ8jSa2C8xRls4TTp8Ou8tDoyMnkK5KK/Q8+Xs4/o=;
- b=I0/VwhUzsyxWIvd0RxFcBcFTCiHJs+Zhs7yG41Ti9MUJQI9DjNn1Arh9YmolF6Geyg
- QRutRHCsqF+8gqVwEJ8/a6u0BPtM4NGyYdGGmeQIE4IOw8oIDe3Yuw8JQSCKzA0Xnbc6
- ywYkZD8wcVjx9Vpsr3UUztTWdg9AJnbdxFPCl8a4HtB3cTuTIWQI++gf2PkI/3xonm5Q
- 0yKHvobfctF+cI3LbQX+4a5ydblHdth0XhOJQabyvuiXtZucOsSfnMxjaGiFBrDEba1Z
- +OhoAGdCdPUO4e9Ut/BKm1ig9w7ogUCRLaKmUlXVoeCZh7TkfJC+zu5FjJCAcpioKMpT
- sXpw==
+ bh=afR5Mh7AuJ+l97gjVcHTy2tuYfmOnsauTdcz7zi2zaI=;
+ b=G3tdhOtNah+qVrGYaT8h6SC2Kj/UFyjRvVJbmESmHs4vtAq0uXh1OKPBUw3my3tKPn
+ gJI6OP4KBrXxcUeqdBVnyzq0LAVE3UQ0EpYf/xdfohB8EmAKGkoBWEzMYVg1nlwm1SJ4
+ MRsP43a94jhFSP5PQztMlIG17RrWAsJMMRKiwHhlDwl3BfqritYC7Uwtg1OCqU9VPVqD
+ iMDEvL1RocXmdEuk3EEtUOkVC84/nAqChzYc48AeaS4mC2+goDPlWtuYQxnOtp1tnT+X
+ DfJZ9E5s12hc810FcFP7umTaBn8dXhPPN0Kos0H74uSx2OB9MMU8uUyRnvd4pjb1zZ2p
+ rGvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721351245; x=1721956045;
+ d=1e100.net; s=20230601; t=1721351238; x=1721956038;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=jMsQ8jSa2C8xRls4TTp8Ou8tDoyMnkK5KK/Q8+Xs4/o=;
- b=INb78ECIv2wjto2PcPP2j0bZex/pyGUjqLpghy2G3O52W22vKrKIY+h5mOQEH0glHh
- D2Tw/gRQ5uO8LxGSqislpyc78XlXWWPItWElnUxZXTGnCpfhjoMmzrmcPwTnNyMNUDIN
- s6A1GI7MjEJ/qbxcehH6kymOA/UxllVB4lGc5wcESlSy6Hn/r/y44qtVTCYUl4GN7GJ+
- Wl9heQSsnxdC8MAZLsPURJ0yWLp2+z2PyjfEsyLuY0Fu3ZHGg6sBpbGyCtJlxlVsiDNK
- lGuaBIJwhl1wwfhxYHKk/FNp55UMv0p09zvpj63rKrdY5G0Qv1G0BNSxWBpL3Ws479ba
- ikFA==
-X-Gm-Message-State: AOJu0YzlLsP4XPrJE8PDdk16LJuFh1paJq/59YoBV9oWQj7Q5VG366zX
- +qCOIL0QXn913U7CSD2uCcp5hoxpWOwu/nUT3pu+hr6REH7+/d1yXxG7hbrLu/g=
-X-Received: by 2002:a17:903:1c5:b0:1fb:7e12:ee3a with SMTP id
- d9443c01a7336-1fc4e1318bbmr55951805ad.24.1721351244933; 
- Thu, 18 Jul 2024 18:07:24 -0700 (PDT)
+ bh=afR5Mh7AuJ+l97gjVcHTy2tuYfmOnsauTdcz7zi2zaI=;
+ b=WhPJDymjhGFYDQf/I+ShhT2/quR/FrXWX+R7LsUpuTSCt7vdN3WCaY3OKHxZJb+aRr
+ kYUweGaTPwfsVMEXD0Nf2AqZInqE5sJ65YXeLKx0AKN5HFMEoRVORcR5LnaaG8KDM438
+ ieQdw80Nlse/hynMcJI+vKqDMpUkJJ/SRwuRyNuGL6LrbMAtd0tWRXcY3FzOu4I69/WZ
+ CQrir6b0L6uKOA42DVGFboZ9Jpzi7fDCYwuubbQBajQxp0qxTDLEZamXj2ddt67MFqNV
+ RY7NhqQBWLFR6BK3pamaRqG0a8pvYxqMcnzcP2d5F2XLrwZ+H9kXgm/MSOaSGYKYAjsQ
+ lenQ==
+X-Gm-Message-State: AOJu0Yx3eqqHy1Sf98sHNGhLN9nDRfvdpnqYh5yPtXnHQyTl4JV2uo8H
+ I5orz0x21ftSSW9Jog4jd9rQLnH7nnH3UiX+aQholPvVpu2tjQhvHRlPkt8fmws=
+X-Received: by 2002:a05:6a21:4d8a:b0:1c3:cfc2:2b1f with SMTP id
+ adf61e73a8af0-1c3fdd4d424mr6815533637.37.1721351237977; 
+ Thu, 18 Jul 2024 18:07:17 -0700 (PDT)
 Received: from stoup.. ([203.56.128.103]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1fd64d07ad9sm2067415ad.177.2024.07.18.18.07.21
+ d9443c01a7336-1fd64d07ad9sm2067415ad.177.2024.07.18.18.07.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Jul 2024 18:07:24 -0700 (PDT)
+ Thu, 18 Jul 2024 18:07:17 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongu.org, qemu-s390x@nongnu.org,
- qemu-riscv@nongnu.org
-Subject: [PATCH v3 03/12] target/arm: Use set/clear_helper_retaddr in SVE and
- SME helpers
-Date: Fri, 19 Jul 2024 11:06:58 +1000
-Message-ID: <20240719010707.1319675-4-richard.henderson@linaro.org>
+ qemu-riscv@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3 01/12] accel/tcg: Move {set,
+ clear}_helper_retaddr to cpu_ldst.h
+Date: Fri, 19 Jul 2024 11:06:56 +1000
+Message-ID: <20240719010707.1319675-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240719010707.1319675-1-richard.henderson@linaro.org>
 References: <20240719010707.1319675-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: 37
 X-Spam_score: 3.7
 X-Spam_bar: +++
@@ -129,252 +129,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bYsq+I1DeG0W
+X-TUID: 9MC3DV55Ww33
 
-Avoid a race condition with munmap in another thread.
-Use around blocks that exclusively use "host_fn".
-Keep the blocks as small as possible, but without setting
-and clearing for every operation on one page.
+Use of these in helpers goes hand-in-hand with tlb_vaddr_to_host
+and other probing functions.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/sme_helper.c | 16 ++++++++++++++
- target/arm/tcg/sve_helper.c | 42 +++++++++++++++++++++++++++++--------
- 2 files changed, 49 insertions(+), 9 deletions(-)
+ accel/tcg/user-retaddr.h | 28 ----------------------------
+ include/exec/cpu_ldst.h  | 34 ++++++++++++++++++++++++++++++++++
+ accel/tcg/cpu-exec.c     |  3 ---
+ accel/tcg/user-exec.c    |  1 -
+ 4 files changed, 34 insertions(+), 32 deletions(-)
+ delete mode 100644 accel/tcg/user-retaddr.h
 
-diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
-index e2e0575039..ab40ced38f 100644
---- a/target/arm/tcg/sme_helper.c
-+++ b/target/arm/tcg/sme_helper.c
-@@ -517,6 +517,8 @@ void sme_ld1(CPUARMState *env, void *za, uint64_t *vg,
-         clr_fn(za, 0, reg_off);
-     }
+diff --git a/accel/tcg/user-retaddr.h b/accel/tcg/user-retaddr.h
+deleted file mode 100644
+index e0f57e1994..0000000000
+--- a/accel/tcg/user-retaddr.h
++++ /dev/null
+@@ -1,28 +0,0 @@
+-#ifndef ACCEL_TCG_USER_RETADDR_H
+-#define ACCEL_TCG_USER_RETADDR_H
+-
+-#include "qemu/atomic.h"
+-
+-extern __thread uintptr_t helper_retaddr;
+-
+-static inline void set_helper_retaddr(uintptr_t ra)
+-{
+-    helper_retaddr = ra;
+-    /*
+-     * Ensure that this write is visible to the SIGSEGV handler that
+-     * may be invoked due to a subsequent invalid memory operation.
+-     */
+-    signal_barrier();
+-}
+-
+-static inline void clear_helper_retaddr(void)
+-{
+-    /*
+-     * Ensure that previous memory operations have succeeded before
+-     * removing the data visible to the signal handler.
+-     */
+-    signal_barrier();
+-    helper_retaddr = 0;
+-}
+-
+-#endif
+diff --git a/include/exec/cpu_ldst.h b/include/exec/cpu_ldst.h
+index 71009f84f5..dac12bd8eb 100644
+--- a/include/exec/cpu_ldst.h
++++ b/include/exec/cpu_ldst.h
+@@ -379,4 +379,38 @@ void *tlb_vaddr_to_host(CPUArchState *env, abi_ptr addr,
+                         MMUAccessType access_type, int mmu_idx);
+ #endif
  
-+    set_helper_retaddr(ra);
++/*
++ * For user-only, helpers that use guest to host address translation
++ * must protect the actual host memory access by recording 'retaddr'
++ * for the signal handler.  This is required for a race condition in
++ * which another thread unmaps the page between a probe and the
++ * actual access.
++ */
++#ifdef CONFIG_USER_ONLY
++extern __thread uintptr_t helper_retaddr;
 +
-     while (reg_off <= reg_last) {
-         uint64_t pg = vg[reg_off >> 6];
-         do {
-@@ -529,6 +531,8 @@ void sme_ld1(CPUARMState *env, void *za, uint64_t *vg,
-         } while (reg_off <= reg_last && (reg_off & 63));
-     }
- 
-+    clear_helper_retaddr();
++static inline void set_helper_retaddr(uintptr_t ra)
++{
++    helper_retaddr = ra;
++    /*
++     * Ensure that this write is visible to the SIGSEGV handler that
++     * may be invoked due to a subsequent invalid memory operation.
++     */
++    signal_barrier();
++}
 +
-     /*
-      * Use the slow path to manage the cross-page misalignment.
-      * But we know this is RAM and cannot trap.
-@@ -543,6 +547,8 @@ void sme_ld1(CPUARMState *env, void *za, uint64_t *vg,
-         reg_last = info.reg_off_last[1];
-         host = info.page[1].host;
- 
-+        set_helper_retaddr(ra);
++static inline void clear_helper_retaddr(void)
++{
++    /*
++     * Ensure that previous memory operations have succeeded before
++     * removing the data visible to the signal handler.
++     */
++    signal_barrier();
++    helper_retaddr = 0;
++}
++#else
++#define set_helper_retaddr(ra)   do { } while (0)
++#define clear_helper_retaddr()   do { } while (0)
++#endif
 +
-         do {
-             uint64_t pg = vg[reg_off >> 6];
-             do {
-@@ -554,6 +560,8 @@ void sme_ld1(CPUARMState *env, void *za, uint64_t *vg,
-                 reg_off += esize;
-             } while (reg_off & 63);
-         } while (reg_off <= reg_last);
-+
-+        clear_helper_retaddr();
-     }
- }
+ #endif /* CPU_LDST_H */
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index 9010dad073..8163295f34 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -41,9 +41,6 @@
+ #include "tb-context.h"
+ #include "internal-common.h"
+ #include "internal-target.h"
+-#if defined(CONFIG_USER_ONLY)
+-#include "user-retaddr.h"
+-#endif
  
-@@ -701,6 +709,8 @@ void sme_st1(CPUARMState *env, void *za, uint64_t *vg,
-     reg_last = info.reg_off_last[0];
-     host = info.page[0].host;
+ /* -icount align implementation. */
  
-+    set_helper_retaddr(ra);
-+
-     while (reg_off <= reg_last) {
-         uint64_t pg = vg[reg_off >> 6];
-         do {
-@@ -711,6 +721,8 @@ void sme_st1(CPUARMState *env, void *za, uint64_t *vg,
-         } while (reg_off <= reg_last && (reg_off & 63));
-     }
+diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+index 80d24540ed..7ddc47b0ba 100644
+--- a/accel/tcg/user-exec.c
++++ b/accel/tcg/user-exec.c
+@@ -33,7 +33,6 @@
+ #include "tcg/tcg-ldst.h"
+ #include "internal-common.h"
+ #include "internal-target.h"
+-#include "user-retaddr.h"
  
-+    clear_helper_retaddr();
-+
-     /*
-      * Use the slow path to manage the cross-page misalignment.
-      * But we know this is RAM and cannot trap.
-@@ -725,6 +737,8 @@ void sme_st1(CPUARMState *env, void *za, uint64_t *vg,
-         reg_last = info.reg_off_last[1];
-         host = info.page[1].host;
+ __thread uintptr_t helper_retaddr;
  
-+        set_helper_retaddr(ra);
-+
-         do {
-             uint64_t pg = vg[reg_off >> 6];
-             do {
-@@ -734,6 +748,8 @@ void sme_st1(CPUARMState *env, void *za, uint64_t *vg,
-                 reg_off += 1 << esz;
-             } while (reg_off & 63);
-         } while (reg_off <= reg_last);
-+
-+        clear_helper_retaddr();
-     }
- }
- 
-diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
-index dd49e67d7a..f1ee0e060f 100644
---- a/target/arm/tcg/sve_helper.c
-+++ b/target/arm/tcg/sve_helper.c
-@@ -5738,6 +5738,8 @@ void sve_ldN_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
-     reg_last = info.reg_off_last[0];
-     host = info.page[0].host;
- 
-+    set_helper_retaddr(retaddr);
-+
-     while (reg_off <= reg_last) {
-         uint64_t pg = vg[reg_off >> 6];
-         do {
-@@ -5752,6 +5754,8 @@ void sve_ldN_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
-         } while (reg_off <= reg_last && (reg_off & 63));
-     }
- 
-+    clear_helper_retaddr();
-+
-     /*
-      * Use the slow path to manage the cross-page misalignment.
-      * But we know this is RAM and cannot trap.
-@@ -5771,6 +5775,8 @@ void sve_ldN_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
-         reg_last = info.reg_off_last[1];
-         host = info.page[1].host;
- 
-+        set_helper_retaddr(retaddr);
-+
-         do {
-             uint64_t pg = vg[reg_off >> 6];
-             do {
-@@ -5784,6 +5790,8 @@ void sve_ldN_r(CPUARMState *env, uint64_t *vg, const target_ulong addr,
-                 mem_off += N << msz;
-             } while (reg_off & 63);
-         } while (reg_off <= reg_last);
-+
-+        clear_helper_retaddr();
-     }
- }
- 
-@@ -5934,15 +5942,11 @@ DO_LDN_2(4, dd, MO_64)
- /*
-  * Load contiguous data, first-fault and no-fault.
-  *
-- * For user-only, one could argue that we should hold the mmap_lock during
-- * the operation so that there is no race between page_check_range and the
-- * load operation.  However, unmapping pages out from under a running thread
-- * is extraordinarily unlikely.  This theoretical race condition also affects
-- * linux-user/ in its get_user/put_user macros.
-- *
-- * TODO: Construct some helpers, written in assembly, that interact with
-- * host_signal_handler to produce memory ops which can properly report errors
-- * without racing.
-+ * For user-only, we control the race between page_check_range and
-+ * another thread's munmap by using set/clear_helper_retaddr.  Any
-+ * SEGV that occurs between those markers is assumed to be because
-+ * the guest page vanished.  Keep that block as small as possible
-+ * so that unrelated QEMU bugs are not blamed on the guest.
-  */
- 
- /* Fault on byte I.  All bits in FFR from I are cleared.  The vector
-@@ -6093,6 +6097,8 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
-     reg_last = info.reg_off_last[0];
-     host = info.page[0].host;
- 
-+    set_helper_retaddr(retaddr);
-+
-     do {
-         uint64_t pg = *(uint64_t *)(vg + (reg_off >> 3));
-         do {
-@@ -6101,9 +6107,11 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
-                     (cpu_watchpoint_address_matches
-                      (env_cpu(env), addr + mem_off, 1 << msz)
-                      & BP_MEM_READ)) {
-+                    clear_helper_retaddr();
-                     goto do_fault;
-                 }
-                 if (mtedesc && !mte_probe(env, mtedesc, addr + mem_off)) {
-+                    clear_helper_retaddr();
-                     goto do_fault;
-                 }
-                 host_fn(vd, reg_off, host + mem_off);
-@@ -6113,6 +6121,8 @@ void sve_ldnfff1_r(CPUARMState *env, void *vg, const target_ulong addr,
-         } while (reg_off <= reg_last && (reg_off & 63));
-     } while (reg_off <= reg_last);
- 
-+    clear_helper_retaddr();
-+
-     /*
-      * MemSingleNF is allowed to fail for any reason.  We have special
-      * code above to handle the first element crossing a page boundary.
-@@ -6348,6 +6358,8 @@ void sve_stN_r(CPUARMState *env, uint64_t *vg, target_ulong addr,
-     reg_last = info.reg_off_last[0];
-     host = info.page[0].host;
- 
-+    set_helper_retaddr(retaddr);
-+
-     while (reg_off <= reg_last) {
-         uint64_t pg = vg[reg_off >> 6];
-         do {
-@@ -6362,6 +6374,8 @@ void sve_stN_r(CPUARMState *env, uint64_t *vg, target_ulong addr,
-         } while (reg_off <= reg_last && (reg_off & 63));
-     }
- 
-+    clear_helper_retaddr();
-+
-     /*
-      * Use the slow path to manage the cross-page misalignment.
-      * But we know this is RAM and cannot trap.
-@@ -6381,6 +6395,8 @@ void sve_stN_r(CPUARMState *env, uint64_t *vg, target_ulong addr,
-         reg_last = info.reg_off_last[1];
-         host = info.page[1].host;
- 
-+        set_helper_retaddr(retaddr);
-+
-         do {
-             uint64_t pg = vg[reg_off >> 6];
-             do {
-@@ -6394,6 +6410,8 @@ void sve_stN_r(CPUARMState *env, uint64_t *vg, target_ulong addr,
-                 mem_off += N << msz;
-             } while (reg_off & 63);
-         } while (reg_off <= reg_last);
-+
-+        clear_helper_retaddr();
-     }
- }
- 
-@@ -6560,7 +6578,9 @@ void sve_ld1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-                     if (unlikely(info.flags & TLB_MMIO)) {
-                         tlb_fn(env, &scratch, reg_off, addr, retaddr);
-                     } else {
-+                        set_helper_retaddr(retaddr);
-                         host_fn(&scratch, reg_off, info.host);
-+                        clear_helper_retaddr();
-                     }
-                 } else {
-                     /* Element crosses the page boundary. */
-@@ -6782,7 +6802,9 @@ void sve_ldff1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-                     goto fault;
-                 }
- 
-+                set_helper_retaddr(retaddr);
-                 host_fn(vd, reg_off, info.host);
-+                clear_helper_retaddr();
-             }
-             reg_off += esize;
-         } while (reg_off & 63);
-@@ -6986,7 +7008,9 @@ void sve_st1_z(CPUARMState *env, void *vd, uint64_t *vg, void *vm,
-     do {
-         void *h = host[i];
-         if (likely(h != NULL)) {
-+            set_helper_retaddr(retaddr);
-             host_fn(vd, reg_off, h);
-+            clear_helper_retaddr();
-         } else if ((vg[reg_off >> 6] >> (reg_off & 63)) & 1) {
-             target_ulong addr = base + (off_fn(vm, reg_off) << scale);
-             tlb_fn(env, vd, reg_off, addr, retaddr);
 -- 
 2.43.0
 

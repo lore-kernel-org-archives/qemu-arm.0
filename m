@@ -1,135 +1,300 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp617317njc;
-        Fri, 19 Jul 2024 11:11:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXjY8QFfWsvg4cvGCXJzptEaU3RHJwMNr8a6iXbJRm86YIwE+Dntg7YL298h4sQF1FW96/8ILO2OlO4tacRHUwFARFE6URD
-X-Received: by 2002:a05:600c:138b:b0:426:5c9b:dedf with SMTP id 5b1f17b1804b1-427c2cb6112mr61276435e9.12.1721412707955;
-        Fri, 19 Jul 2024 11:11:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721412707; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp695891njc;
+        Fri, 19 Jul 2024 14:25:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUziy5ILqB9aU432HLC8pzE9to6jU4krNeqjPTfF6Quh9nEPpAbK2OHp5FkyIJitEwHmTDvJagyxoHu9xgh+7LRtbkpBY0e
+X-Google-Smtp-Source: AGHT+IFJyxTJJ1/yYA7mv8lJdHomMpBtPEOqD5ulCwB6w0mYkuum1OScmvF6idteGKp/MRsaoGHX
+X-Received: by 2002:a5d:6c6e:0:b0:368:7fac:39b9 with SMTP id ffacd0b85a97d-3687fac3a62mr1463302f8f.67.1721424337285;
+        Fri, 19 Jul 2024 14:25:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721424337; cv=none;
         d=google.com; s=arc-20160816;
-        b=CEDiYML6Rn9Vc7lPg4/7t1XUFWIzHgDcfKGo1c8wh9NvtdflxbkPjcN9/x+KzvjrMR
-         iduUYqqslFtxyNF/roSkBoXWAMSq8pjriJquk3ce3LEC07KVyJPoUtgMZL7HXudFYvws
-         JnjNcD1hC3mG2ebMGujoqBAvAHZIcygjB1Qt4DtOkVj1mFSr0mJSq97bnJR46dNpjSSo
-         jIZL1broOxTQRfcYcPjJJGE4HvzzAhZLZhvCRYuSo+Gr2I3Y2bYexLNnfT6X8mJ0F8/E
-         c7uDuBTg9GoA11ITArdBK4ZrIjaAwYwH3pg/kfWvPzQPK6uZnwy7ikHDlNYB1FqU5T3w
-         J6lw==
+        b=TQTj9/CI0VxTnoOJqJ4XWrLahkDs6X+SyQmaclACgVc5QqKgl4Dv/02B9kz0PtiB9e
+         UIKSDYAoMLP1Ku/X25CMi86pIIZ16vthgJPjcQP4vrw2V2rPtO+YsIxMUGErfGvU7Gfx
+         QBKflsA12emOqgJ+Kr8KfgQh5LhoJsz2aiauhsSjX/VnABrSa5KyTmfwoO4Q8cVpF8Iu
+         PHT+qSvTQtNgEzL9OjixG9sPrBDBNbJl3ZOzwCfEFibWmcNbeuiCVi8lOUNoVeypCgLZ
+         BJQHhoJMjbttKPYBRlr2IBYnRWblF+uFpI4VauVHgB7Mqm1BoJ+Yfs8btjTyoq8jAqVt
+         jxLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=grsGKEIQC5JMZTvNvSN/qnaW61vNteYTEI5sYVegySE=;
-        fh=OIn8WY+lH3K0EjhhJQh7yEnuIAjD6vBYkKO/1/jvR3A=;
-        b=FC3oXjTSKJ9LNTJ85PiLhWRY3lGhIjtW62ldyeNOWG9ndPA2klPQsv8OcbVbbQ5+9M
-         Fc+NmBlY5bSuIvAkSUXGGq4B6JwB39Nh/hlp0ALw+OGmbu2Nh+By7IE/py3FQZO12AnA
-         6foJsCB+pPSD3xdpkpot4JCDR0VCxBfG+yQpqAcZ/U0hQLfgkTactV4YHsZuUoIqbXUF
-         Ykr/FzpWVFE0WGxuhces2qTW49azYMMJ9akespe9QP8wWqwB8Vv1wJaqU/eVBk0SzYof
-         4fvrnkP0mLxEqoGvCnen3Cn+UKi3gXICDNWkkzzabg/7j5k5HdEXnSxdk4t+N2VAFRJz
-         PAaA==;
+        h=subject:content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=8XYBJwUoqgclEuv4hcBZLNekYaOfrq+MlZwBxidzTao=;
+        fh=mExT6eXXt4EkGzwetbbPOfQzXzMeLUh8QJ/RfIWBe9o=;
+        b=qQ0vFlxPzDwv9oFQCLosTu54P4pyqp4eqIqyDEE/sVa7q/hpspAEVKsKdbgUi5vjQ3
+         Xo3/DkNu94pShgYjk5QHl2uZ6p3EdRi857TFlDvBmCjh6wh7nyXSwFaXWs8ttYgVLftW
+         /HhR7WdqrhN/KvBNGfy4TJmR1PeIEmaQ//kqdUvnXzIpCa3fotHLIpH9RIEsA221MweL
+         cuBTFXqyDekVMkt/gTlPA4Wvrpco1ycZsRAh7DAXPTx7UVn3MDLQNwJXX58uFCybi02h
+         u6Ci1lLS+vHtWZgUldPbYDd7EQxP92rL/z2eZz60vRaoWzV1T1GFedBgYXr7CMvKhdib
+         c44w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=w932wG9L;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-427d6ed18e2sor6243975e9.5.2024.07.19.11.11.47
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 19 Jul 2024 11:11:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b=JCdiH8DM;
+       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+Return-Path: <mark.cave-ayland@ilande.co.uk>
+Received: from mail.ilande.co.uk (mail.ilande.co.uk. [2001:41c9:1:41f::167])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-368787b2422si900236f8f.764.2024.07.19.14.25.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 19 Jul 2024 14:25:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) client-ip=2001:41c9:1:41f::167;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=w932wG9L;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721412707; x=1722017507; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=grsGKEIQC5JMZTvNvSN/qnaW61vNteYTEI5sYVegySE=;
-        b=w932wG9LS6D4C/I5PlN8oShjwo8WsOcW8JmTSfpVVOCjVxOVXiX2yGDb8zQWudYLrY
-         dfoGVlIloA7VYrppopNoemWsws/MjiWgcW+Pv7DKry5W6lj2eLUcv/ZK9cAYcu6YlCvq
-         lMdAqPr2lBAtrtekVzRTBINqZKzr1WtjAqZ1oBSdsuKk3d0y5MckV79xlAoHo9NzGn/M
-         NNCMi1UTKjec72CUFVzRgFo25O4DIkC8LaEJZa6GWZZgAJ2biUMagkMuru/x7HPNwUz5
-         6fDRasbKuwAEv9E9v3ukuUpLWHQeemr2HwKLJSZoyiZ+XlbuH8rK2E/vOXXcKsPtINqc
-         YEXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721412707; x=1722017507;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=grsGKEIQC5JMZTvNvSN/qnaW61vNteYTEI5sYVegySE=;
-        b=KSx90BrTJiNjBrNMgDkNn1pODP9D08zBc5679IYk8KWnQkSLjLEmyzxNahQNsVI/T1
-         8cv+E2k3/6xG5VLQUkyA7x9tzCuBRDvPqVTsZTVgiMb5YAuiAWhxT2ixCIfuEAe+Z/WQ
-         Pj8Kr2q33NmHBaJL0CXsL2FNLNB6K40nUi1Qz69LsvVggOlWp2GL/AIoXnYCoX70PE+7
-         2/TZcW2qEkgJnGxG7v8xN7oL15m0mtAZWYVqSFCzC9kXCHSZywTGRznJMJsO3ZF+L7us
-         6urFUBxocvaPySPfegKAd3kiz3uPAwALVtcUfl4AnCOSpVZ1eQUnA2H4WBGOT/Eta43T
-         yBHQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW5Okju5/pVsnSAZrsIGgZpzLJgs1qurK/+MaRcmNbHZXwjSX4Yo/xV2QudNLpfQXwA5UCtaQMmLv8wkcb1o+/Kk6924erX
-X-Gm-Message-State: AOJu0YwwMRAW1zVUsKX2bpGLSJMXkQK2u/4IA3ZAupUOKQQeBG2hV7f7
-	Ti1jpU0D8OFbV/Pu4c8mkAIaduleaPGdeG+GFh2dj0rdoH1LBLmP4I3tguKvH4c3+A==
-X-Google-Smtp-Source: AGHT+IEAoXaf0/G2fVClsxjzD1Mv14qrcJ+tc6r5Tl38cqGiH3clJ3oMaSvWDUTbYP/j+Dred5O2Pg==
-X-Received: by 2002:a05:600c:3d9a:b0:426:6ed2:6130 with SMTP id 5b1f17b1804b1-427c2cb6a6bmr54800415e9.14.1721412707456;
-        Fri, 19 Jul 2024 11:11:47 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (52.170.88.92.rev.sfr.net. [92.88.170.52])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-427d6906a96sm34009935e9.22.2024.07.19.11.11.44
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 19 Jul 2024 11:11:47 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-arm@nongnu.org,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Tong Ho <tong.ho@amd.com>,
-	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v5 10/16] hw/char/pl011: Check if receiver is enabled
-Date: Fri, 19 Jul 2024 20:10:35 +0200
-Message-ID: <20240719181041.49545-11-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240719181041.49545-1-philmd@linaro.org>
-References: <20240719181041.49545-1-philmd@linaro.org>
+       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b=JCdiH8DM;
+       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=8XYBJwUoqgclEuv4hcBZLNekYaOfrq+MlZwBxidzTao=; b=JCdiH8DMzWFV6KzpcbG9T+xcTe
+	7ITGVFtzrtgK8n7/giGU9bsWjrnLIB8TjodwLeo8vVIz953ZSSB9t+5zwwSSmfPt2Wn0gXdPajg90
+	ENEb/ihfGcZ7vA4FuCGXFgTctl+0hY+RkFAlwCcWRDXSYmKcKpwO6immAP8TbX/xJozDyvRtoRJ1P
+	C5Da2BpuWbcqAq8C+9uKyR2pNZg8FG0eVeBSeijz9to2jynMB3W8UbpUfwuDK0C3SIEigoDLVTlt2
+	SucEl5Z3SlRuAQDd64tClJhoEPi+frTi8xxIy4dael50Ks6WpiLAqQfPuhF9YSE8lGH27Gw+L3b3L
+	ATgariPGuNtbUergHex+SzChAeFtW8Dq3kSVwYofXzuSV4C9J0Ei4Obqb5eLteRa+SPealSCUThJf
+	JkduQBJjF6nP2dEgIetFxPn/Zhk4hAG74aVdwMhxM9tVe1Ti/+4OW4G3pRXGcus3BWPQ82+tacrAa
+	hLFqFD84t3mHmk57SwDxIIYBIMZsZLhg0vtZvV2apVJLGlW9vlAY29SbivOjAWzFKQcwNuBxHGnhn
+	9XiSX5uAEvekbrtF8h7a8ZGx9YiuIHivyU6s2Utc+7zGmSauXnUOqyZgkJyS7yueJyJIOc5Tb/PAY
+	TNiLdJQUesVca00XL5n1mGy3jjwV+5FgisK1Qh2F4=;
+Received: from [2a00:23c4:8bb4:4000:502:30b7:7825:e35a]
+	by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.92)
+	(envelope-from <mark.cave-ayland@ilande.co.uk>)
+	id 1sUv53-0002yI-AW; Fri, 19 Jul 2024 22:24:01 +0100
+Message-ID: <4e6b616f-3acc-4130-9b92-1af7fed540da@ilande.co.uk>
+Date: Fri, 19 Jul 2024 22:25:25 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Tong Ho <tong.ho@amd.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mikko Rapeli <mikko.rapeli@linaro.org>
+References: <20240719181041.49545-1-philmd@linaro.org>
+ <20240719181041.49545-17-philmd@linaro.org>
+Content-Language: en-US
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <20240719181041.49545-17-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: a2MnRG10XgvI
+X-SA-Exim-Connect-IP: 2a00:23c4:8bb4:4000:502:30b7:7825:e35a
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
+	mail.default.ilande.bv.iomart.io
+X-Spam-Level: 
+X-Spam-Status: No, score=-2.8 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+	URIBL_BLOCKED,URIBL_SBL_A autolearn=no autolearn_force=no version=3.4.2
+Subject: Re: [RFC PATCH v5 16/16] hw/char/pl011: Implement TX FIFO
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+X-TUID: b481Pv8FCPRY
 
-Do not receive characters when UART or receiver are disabled.
+On 19/07/2024 19:10, Philippe Mathieu-Daudé wrote:
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- hw/char/pl011.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+> If the UART back-end chardev doesn't drain data as fast as stdout
+> does or blocks, buffer in the TX FIFO to try again later.
+> 
+> This avoids having the IO-thread busy waiting on chardev back-ends,
+> reported recently when testing the Trusted Reference Stack and
+> using the socket backend.
+> 
+> Implement registering a front-end 'watch' callback on back-end
+> events, so we can resume transmitting when the back-end is writable
+> again, not blocking the main loop.
+> 
+> Similarly to the RX FIFO path, FIFO level selection is not
+> implemented (interrupt is triggered when a single byte is available
+> in the FIFO).
+> 
+> Reported-by: Mikko Rapeli <mikko.rapeli@linaro.org>
+> Suggested-by: Alex Bennée <alex.bennee@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+> RFC: Something is still broken, some characters are emitted async...
+> ---
+>   hw/char/pl011.c      | 60 ++++++++++++++++++++++++++++++++++++--------
+>   hw/char/trace-events |  1 +
+>   2 files changed, 51 insertions(+), 10 deletions(-)
+> 
+> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+> index cfa3fd3da4..9f72b6a765 100644
+> --- a/hw/char/pl011.c
+> +++ b/hw/char/pl011.c
+> @@ -240,7 +240,9 @@ static gboolean pl011_xmit(void *do_not_use, GIOCondition cond, void *opaque)
+>   {
+>       PL011State *s = opaque;
+>       int bytes_consumed;
+> -    uint8_t data;
+> +    const uint8_t *buf;
+> +    uint32_t buflen;
+> +    uint32_t count;
+>   
+>       if (!(s->cr & CR_UARTEN)) {
+>           qemu_log_mask(LOG_GUEST_ERROR, "PL011 data written to disabled UART\n");
+> @@ -249,25 +251,40 @@ static gboolean pl011_xmit(void *do_not_use, GIOCondition cond, void *opaque)
+>           qemu_log_mask(LOG_GUEST_ERROR, "PL011 data written to disabled TX UART\n");
+>       }
+>   
+> +    count = fifo8_num_used(&s->xmit_fifo);
+> +    if (count < 1) {
+> +        /* FIFO empty */
+> +        return G_SOURCE_REMOVE;
+> +    }
+> +
+>       if (!qemu_chr_fe_backend_connected(&s->chr)) {
+>           /* Instant drain the fifo when there's no back-end. */
+>           pl011_drain_tx(s);
+>           return G_SOURCE_REMOVE;
+>       }
+>   
+> -    data = fifo8_pop(&s->xmit_fifo);
+> -    bytes_consumed = 1;
+> +    buf = fifo8_peek_buf(&s->xmit_fifo, count, &buflen);
+>   
+> -    /*
+> -     * XXX this blocks entire thread. Rewrite to use
+> -     * qemu_chr_fe_write and background I/O callbacks
+> -     */
+> -    qemu_chr_fe_write_all(&s->chr, &data, bytes_consumed);
+> +    /* Transmit as much data as we can. */
+> +    bytes_consumed = qemu_chr_fe_write(&s->chr, buf, buflen);
+>       trace_pl011_fifo_tx_xmit(bytes_consumed);
+> +    if (bytes_consumed < 0) {
+> +        /* Error in back-end: drain the fifo. */
+> +        pl011_drain_tx(s);
+> +        return G_SOURCE_REMOVE;
+> +    }
+> +
+> +    /* Pop the data we could transmit. */
+> +    fifo8_pop_buf(&s->xmit_fifo, bytes_consumed, NULL);
+>       s->int_level |= INT_TX;
+>   
+>       pl011_update(s);
 
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index c76283dccf..0ce91c13d3 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -85,6 +85,7 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
- #define CR_OUT1     (1 << 12)
- #define CR_RTS      (1 << 11)
- #define CR_DTR      (1 << 10)
-+#define CR_RXE      (1 << 9)
- #define CR_TXE      (1 << 8)
- #define CR_LBE      (1 << 7)
- #define CR_UARTEN   (1 << 0)
-@@ -481,9 +482,11 @@ static void pl011_write(void *opaque, hwaddr offset,
- static int pl011_can_receive(void *opaque)
- {
-     PL011State *s = (PL011State *)opaque;
--    int r;
-+    int r = 0;
- 
--    r = s->read_count < pl011_get_fifo_depth(s);
-+    if ((s->cr & CR_UARTEN) && (s->cr & CR_RXE)) {
-+        r = s->read_count < pl011_get_fifo_depth(s);
-+    }
-     trace_pl011_can_receive(s->lcr, s->read_count, r);
-     return r;
- }
--- 
-2.41.0
+One of the gotchas with Fifo8 is that whilst fifo8_push(), fifo8_pop() and 
+fifo8_push_all() will wrap the FIFO buffer, fifo8_{peek,pop}_buf() do not. For 
+example fifo8_num_used() could return 15, but if xmit_fifo->head is set to 15 then 
+fifo8_{peek_pop}_buf() would return 1 leaving 14 characters in the FIFO at the end of 
+pl011_xmit().
+
+Possible solutions could be to use a loop to send one character at a time similar to:
+
+     while (fifo8_num_used(&s->xmit_fifo)) {
+         uint8_t c = fifo8_pop(&s->xmit_fifo);
+
+         if (qemu_chr_fe_write(&s->chr, &c, 1) == -1) {
+             fifo8_push(&s->xmit_fifo, c);
+             break;
+         }
+     }
+
+Or else use a solution similar to the one I used for ESP at 
+https://gitlab.com/qemu-project/qemu/-/blob/master/hw/scsi/esp.c?ref_type=heads#L200. 
+I did think about whether it was worth adding a function similar to the one used for 
+ESP to the Fifo8 API, but wasn't sure it was worth it at the time.
+
+> +    if (!fifo8_is_empty(&s->xmit_fifo)) {
+> +        /* Reschedule another transmission if we couldn't transmit all. */
+> +        return G_SOURCE_CONTINUE;
+> +    }
+> +
+>       return G_SOURCE_REMOVE;
+>   }
+>   
+> @@ -290,6 +307,10 @@ static void pl011_write_txdata(PL011State *s, uint8_t data)
+>       trace_pl011_fifo_tx_put(data);
+>       pl011_loopback_tx(s, data);
+>       fifo8_push(&s->xmit_fifo, data);
+> +    if (fifo8_is_full(&s->xmit_fifo)) {
+> +        s->flags |= PL011_FLAG_TXFF;
+> +    }
+> +
+>       pl011_xmit(NULL, G_IO_OUT, s);
+>   }
+>   
+> @@ -488,10 +509,24 @@ static void pl011_write(void *opaque, hwaddr offset,
+>           pl011_trace_baudrate_change(s);
+>           break;
+>       case 11: /* UARTLCR_H */
+> -        /* Reset the FIFO state on FIFO enable or disable */
+>           if ((s->lcr ^ value) & LCR_FEN) {
+> -            pl011_reset_rx_fifo(s);
+> +            bool fifo_enabled = value & LCR_FEN;
+> +
+> +            trace_pl011_fifo_enable(fifo_enabled);
+> +            if (fifo_enabled) {
+> +                /* Transmit and receive FIFO buffers are enabled (FIFO mode). */
+> +                fifo8_change_capacity(&s->xmit_fifo, PL011_FIFO_DEPTH);
+> +            } else {
+> +                /*
+> +                 * FIFOs are disabled (character mode) that is, the FIFOs
+> +                 * become 1-byte-deep holding registers.
+> +                 */
+> +                pl011_drain_tx(s);
+> +                fifo8_change_capacity(&s->xmit_fifo, 1);
+> +            }
+
+Presumably this is the part where fifo8_change_capacity() is required: what does 
+changing the FIFO size to 1 do here? Is it possible to move the fifo_enabled check 
+into pl011_read() and pop/clear the buffer there instead of changing the FIFO size?
+
+> +            /* Reset the FIFO state on FIFO enable or disable */
+>               pl011_reset_tx_fifo(s);
+> +            pl011_reset_rx_fifo(s);
+>           }
+>           if ((s->lcr ^ value) & LCR_BRK) {
+>               int break_enable = value & LCR_BRK;
+> @@ -636,6 +671,11 @@ static int pl011_post_load(void *opaque, int version_id)
+>           s->read_pos = 0;
+>       }
+>   
+> +    if (!fifo8_is_empty(&s->xmit_fifo)) {
+> +        /* Reschedule another transmission */
+> +        qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP, pl011_xmit, s);
+> +    }
+> +
+>       s->ibrd &= IBRD_MASK;
+>       s->fbrd &= FBRD_MASK;
+>   
+> diff --git a/hw/char/trace-events b/hw/char/trace-events
+> index bf586ba664..2405819812 100644
+> --- a/hw/char/trace-events
+> +++ b/hw/char/trace-events
+> @@ -58,6 +58,7 @@ pl011_read(uint32_t addr, uint32_t value, const char *regname) "addr 0x%03x valu
+>   pl011_read_fifo(int read_count) "FIFO read, read_count now %d"
+>   pl011_write(uint32_t addr, uint32_t value, const char *regname) "addr 0x%03x value 0x%08x reg %s"
+>   pl011_can_receive(uint32_t lcr, int read_count, int r) "LCR 0x%08x read_count %d returning %d"
+> +pl011_fifo_enable(bool enable) "enable:%u"
+>   pl011_fifo_rx_put(uint32_t c, int read_count) "new char 0x%02x read_count now %d"
+>   pl011_fifo_rx_full(void) "RX FIFO now full, RXFF set"
+>   pl011_fifo_tx_put(uint8_t byte) "TX FIFO push char [0x%02x]"
+
+
+ATB,
+
+Mark.

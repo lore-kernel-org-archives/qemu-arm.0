@@ -1,186 +1,185 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp292357njc;
-        Fri, 19 Jul 2024 00:21:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWYMXBmDudfy58TNyP2AVfq1isHAJ7C8cS/A3K7BWJMx4P+uMVTPRsZj54pA+NA7iW7F2h1s/PvddEP8WfaWua7mgA0JvCR
-X-Google-Smtp-Source: AGHT+IFpvcAuIvP2QLOMM1ZlkNZx1BaYP4YQXEeGuI1jO5FZRu2ghbZebeqV3R9IJBa9DxL/daSI
-X-Received: by 2002:a17:902:dacd:b0:1f7:1655:825c with SMTP id d9443c01a7336-1fc4e175147mr57059855ad.36.1721373693771;
-        Fri, 19 Jul 2024 00:21:33 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1721373693; cv=pass;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp327814njc;
+        Fri, 19 Jul 2024 02:04:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWsJQF3ghWTPhofQTJd+H1axRsQmyAvO89p/QXip2Y+SEPL97XppkJ8QMUxNt0evug1B06MznkIlmCDUkcpMJBxjGxumDBP
+X-Google-Smtp-Source: AGHT+IFIDMo7Ta9Sn8iS1qb8wB1EgSDeLE2sv3b8sspknwyjEdZj32gi5DslOd29/vVDYu1ZE0+V
+X-Received: by 2002:a05:6214:d02:b0:6b5:e451:81d0 with SMTP id 6a1803df08f44-6b78c9f96b2mr87176796d6.3.1721379888441;
+        Fri, 19 Jul 2024 02:04:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721379888; cv=none;
         d=google.com; s=arc-20160816;
-        b=xjFcN+fHRagdN5hTw7Q2SsghLtaoHSTiWGSuaM8hkGA0Fh7JfBWy3nInpGE+x1l5vK
-         FxU5t2tFTTBdR2CntYgJjtND7Clh7Kx0CxPy8DcscDgYZWe7J8/cVL85b4ZQSs2+WPQX
-         AtYGM7m2Lshzo8fUD6byjKuyf/boZYGojsC+/JX/DgXYonM9uNla3GZ5ydIPqQJgdMm9
-         qSuanixaqRPrfMMKd/02Z1ihptv7+vmPeChxTG8lGIAoCgcPOIceNZMooalHOkHvq6kD
-         7HhMNLKBD3QxjLMmXoea4pqx010TT7okIe4oe7XLevnaB4ZuXR0/KKxgad07wkByop+n
-         Bn1g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=l+InLfvy3Wi5yP9doSp4CIHfQTGOwoe0asCqSW+LgII=;
-        fh=qWno3szyCC5AqvqHStwVUb4usDJEWI+r53GyU7f+BIg=;
-        b=VwL5I0PBw6ca5kkSEeLfe+BeLh950ZENrE8RlB7vydg7aUKd3FPOEwzW/3hoDrKCfP
-         EM2WdAxHiEujb28CmBTO7VsRsXe4hDF16yf7cQnvbnXaoMQ6R54F8z97CRc5v7BqEHZ/
-         Gy+iZiib50vMmoCw3izd9PE70/6UK96aWkFS8e2b/o6SNw38AD3nMR19BDVSWSAO/37l
-         Kn9gifJ/zIcGpKKxoXpnWroCEHYKaps1rQK5T5IX6hYyHcEN1GQZil7czobULd8DHKs2
-         MZQVdDUPxxX23ipqXxHsDzRkzjWcjuYVMrLehxkC2blWvUQPXFEqLvuYH855eJJ+hiHk
-         +tOQ==;
+        b=xg2puFDoADmILNd84SzbIT0WAX2hzYq9yLFJJmVMd4ZT5JVotgdUd1GfurNT8X/00s
+         jBpCr3d4ufEJtL2C0AMcaN0KRxx1MUtj7Taz8k9RD0pdvc7HQZ/oBCd/E5vVeT9WNkRS
+         CaV9La9ytY3Hf49yMyyGR77znkQIh030CG0V6e1g8TtsTjM69iDk+HXew8qxNxyx9dMP
+         T2gFwv+E4bP6fHNcIXBgk7WK90XUw6fxzr7MdQHO5NdOgtk8HpZOFZtsxhZ+4Ze2Bomm
+         oGUB+5MQQuMuypeUwl21RCoFnZHteBYdAD9v2Ri5sONGvGrU+Y1wulvTAt1Cow26GvtE
+         uCYA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=rRFwqynbjNlETterzIGQvShNLkJdM2GQ0+KSQDa1ueI=;
+        fh=vpv4dibz543bPaX9Fq9ZvnJ9J5iREE2VOWA/tGZmS3U=;
+        b=sthlJBBXrxutg+KgakewQcFlwXgWeWbs1yikV0di8ZNKYx7CryCSs9qm1Cf1G9jKQ8
+         GSLqMFct1L9mm9yiXyz5/8bmhHz2B9XK6R3rBp71csG4X1dcHQYy+KkyFN/w/yxxfBEk
+         MGXV7o0zlNod3JyDModxSn47fIa/KXWO6uXTlrC8mkqCzRhgXUPwauZ/mR7IeT7wbfRT
+         GhNdT7UCeDigK08dWIA+uAQbPzXF/Bh05NhUgDVxyOiwfD7hOnFZdgsJY/qPj3Mc0NeY
+         vhjwYK/5STEGkCSnl8x2qdyPn0nwd7PG7VB8LC0UQEVnrH+6D9047vPW/KFhOtcnTC4d
+         IErw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=KcylxIdU;
-       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
-       spf=pass (google.com: domain of kvm+bounces-21918-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-21918-alex.bennee=linaro.org@vger.kernel.org"
-Return-Path: <kvm+bounces-21918-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id d9443c01a7336-1fd64d41248si9850205ad.516.2024.07.19.00.21.33
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b7ac79eab7si10670566d6.86.2024.07.19.02.04.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Jul 2024 00:21:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-21918-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 19 Jul 2024 02:04:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=KcylxIdU;
-       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
-       spf=pass (google.com: domain of kvm+bounces-21918-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-21918-alex.bennee=linaro.org@vger.kernel.org"
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id C6134282B80
-	for <alex.bennee@linaro.org>; Fri, 19 Jul 2024 07:21:32 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4B7A647A66;
-	Fri, 19 Jul 2024 07:21:29 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b="KcylxIdU"
-Received: from mail-pl1-f176.google.com (mail-pl1-f176.google.com [209.85.214.176])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B0FC446CF
-	for <kvm@vger.kernel.org>; Fri, 19 Jul 2024 07:21:27 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.176
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1721373689; cv=none; b=K9UYVO3Nthbf42aFrhy1+ahsEi5uFnBbYHfxkENSFsiHRwtQJAtnjB9xVWnnzqeDlFGuhGnUKh5nYq4vatgJLpONmBeP3FowGZf8XHYz9VDGRHvx2a6fPGdxjXt3p5m3u+uuufjMskQ7RR1hQI7D+Knzi63D17E6iOfsn7NLrk0=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1721373689; c=relaxed/simple;
-	bh=sRDEOXFKzogPYOcgzywO9xR6dXngsPveQJ7tZepmb7U=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=eoftRnfMEMqrdQEIICnY6/phQZz4MX59di3RUn/UwtlfA6QrJ1ye9DEnLJdZbwLwM6SoSEVqQMZF+ks3yOPjwglR64vQPXfr3i0/Qv2qkVRrgExkjFzPLNjZxvkMZKD3Gq3jvLQ1J4/TtCx7TfAxfhAfzF39R5yIsiJc3iTUNnQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com; spf=none smtp.mailfrom=daynix.com; dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b=KcylxIdU; arc=none smtp.client-ip=209.85.214.176
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com
-Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=daynix.com
-Received: by mail-pl1-f176.google.com with SMTP id d9443c01a7336-1fc4fccdd78so11401245ad.2
-        for <kvm@vger.kernel.org>; Fri, 19 Jul 2024 00:21:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1721373687; x=1721978487; darn=vger.kernel.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=l+InLfvy3Wi5yP9doSp4CIHfQTGOwoe0asCqSW+LgII=;
-        b=KcylxIdUyNzGACUoOrq0nczAB5aQB/OZvH/b7uiEjTroXkunrx51yl2E1YAEJAxaQI
-         GtD+CP6Ozq4iDk57QjbSWh42p9IXZdDrC5beKYZneJSaKAIbTmU07FmeXP/pVViYKDq4
-         b+huY6mUFo/VDaZ2CFr4xZe6+eUW4JnQcvxCk/RCuptDHEeO8xe0+An58xqcPIKLhTdT
-         IszZ7GGhC4BAL604xKAqEukdRW3qledFobUlNwNnkjwua2rm1bfvggLdLrJ/Z9VK7w9J
-         rthKggJaOcO0hTHILeo28wqSruDAL88YMFnwAIxp9b+z8MLCfPmB6MD0xSXxxFEUpstv
-         yhdg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721373687; x=1721978487;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=l+InLfvy3Wi5yP9doSp4CIHfQTGOwoe0asCqSW+LgII=;
-        b=VJAWqXJYWLijAvh7FP+pwrZOZpAqUNv0LS9c25ptH9RI3SUiraBx7wlEPM3RJ+zkvx
-         I7GEuU4L9gg/1z+xszAF+MMOL6pm7GlUJiDxaHm3yvAu1tXQm1AizemI1qYDTYplJjBU
-         Lo07ykU/yYlYOzE8sBg91glTYREWZ2qiUQHs/8HgZoEgrG31JjFmJmrRPGyEi5R4vePy
-         OKfMTVQV1oH/c5e0znCnqomR0FWB/pYLUUbM9Yq1IDxPwsetGerasag20N+qJ/duDJav
-         J4GgIcO86UYdmKd58RRjFYfH9LryK3RFhPKP3S91gDvO4PibpGqQYi1gOgKfYjS7dYZJ
-         ouHg==
-X-Forwarded-Encrypted: i=1; AJvYcCXuLMp+Z/38u1E0cAhsE3hQxMUyqs/GH+QK4yyrAcRVXmiUcJRUbei3GvboHxJ2pFWDiifXSOKKlqT0hp0VjPWP5imf
-X-Gm-Message-State: AOJu0Yw+mzsr1lqWxracieVw+8t9EVOweX6oGbVccs8g4pbsXJsf2bUo
-	SpleNvWDqElSvTWSTXtYx/k4IigZjNWC585J03E6u2ArBL5mAoe4pDsvAiAprZk=
-X-Received: by 2002:a17:902:c948:b0:1fb:8a0e:76f9 with SMTP id d9443c01a7336-1fc4e17ec73mr57478355ad.39.1721373686807;
-        Fri, 19 Jul 2024 00:21:26 -0700 (PDT)
-Received: from [133.11.54.222] (h222.csg.ci.i.u-tokyo.ac.jp. [133.11.54.222])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fd64d0703bsm7344875ad.155.2024.07.19.00.21.24
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 19 Jul 2024 00:21:26 -0700 (PDT)
-Message-ID: <f9cf0616-34df-42c3-a753-4dec8e2d25b5@daynix.com>
-Date: Fri, 19 Jul 2024 16:21:22 +0900
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sUjXZ-0007Cp-NB; Fri, 19 Jul 2024 05:04:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=vGMz=OT=kaod.org=clg@ozlabs.org>)
+ id 1sUjXT-00076r-Hg; Fri, 19 Jul 2024 05:04:31 -0400
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=vGMz=OT=kaod.org=clg@ozlabs.org>)
+ id 1sUjXR-0001NF-Cj; Fri, 19 Jul 2024 05:04:31 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4WQNyz0bZyz4x3p;
+ Fri, 19 Jul 2024 19:04:27 +1000 (AEST)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4WQNyv0kX9z4wym;
+ Fri, 19 Jul 2024 19:04:22 +1000 (AEST)
+Message-ID: <04be07a0-286b-4189-99f9-a74eff075fae@kaod.org>
+Date: Fri, 19 Jul 2024 11:04:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/5] target/arm/kvm: Fix PMU feature bit early
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, kvm@vger.kernel.org
-References: <20240716-pmu-v3-0-8c7c1858a227@daynix.com>
- <20240716-pmu-v3-2-8c7c1858a227@daynix.com>
- <CAFEAcA8tFtdpCQobU9ytzxvf3_y3DiA1TwNq8fWgFUtCUYT4hQ@mail.gmail.com>
-Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <CAFEAcA8tFtdpCQobU9ytzxvf3_y3DiA1TwNq8fWgFUtCUYT4hQ@mail.gmail.com>
+Subject: Re: [PATCH v1 11/15] hw/i2c/aspeed: support high part dram offset for
+ DMA 64 bits
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20240718064925.1846074-1-jamin_lin@aspeedtech.com>
+ <20240718064925.1846074-12-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20240718064925.1846074-12-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: +gzK6h2MEmOt
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=vGMz=OT=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bUSYIap83TEC
 
-On 2024/07/18 21:07, Peter Maydell wrote:
-> On Tue, 16 Jul 2024 at 13:50, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
->>
->> kvm_arm_get_host_cpu_features() used to add the PMU feature
->> unconditionally, and kvm_arch_init_vcpu() removed it when it is actually
->> not available. Conditionally add the PMU feature in
->> kvm_arm_get_host_cpu_features() to save code.
->>
->> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->> ---
->>   target/arm/kvm.c | 7 +------
->>   1 file changed, 1 insertion(+), 6 deletions(-)
->>
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index 70f79eda33cd..849e2e21b304 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -280,6 +280,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->>       if (kvm_arm_pmu_supported()) {
->>           init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
->>           pmu_supported = true;
->> +        features |= 1ULL << ARM_FEATURE_PMU;
->>       }
->>
->>       if (!kvm_arm_create_scratch_host_vcpu(cpus_to_try, fdarray, &init)) {
->> @@ -448,7 +449,6 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->>       features |= 1ULL << ARM_FEATURE_V8;
->>       features |= 1ULL << ARM_FEATURE_NEON;
->>       features |= 1ULL << ARM_FEATURE_AARCH64;
->> -    features |= 1ULL << ARM_FEATURE_PMU;
->>       features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
->>
->>       ahcf->features = features;
->> @@ -1888,13 +1888,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
->>       if (!arm_feature(env, ARM_FEATURE_AARCH64)) {
->>           cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
->>       }
->> -    if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
->> -        cpu->has_pmu = false;
->> -    }
->>       if (cpu->has_pmu) {
->>           cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
->> -    } else {
->> -        env->features &= ~(1ULL << ARM_FEATURE_PMU);
->>       }
->>       if (cpu_isar_feature(aa64_sve, cpu)) {
->>           assert(kvm_arm_sve_supported());
+On 7/18/24 08:49, Jamin Lin wrote:
+> ASPEED AST2700 SOC is a 64 bits quad core CPUs (Cortex-a35)
+> And the base address of dram is "0x4 00000000" which
+> is 64bits address.
 > 
-> Not every KVM CPU is necessarily the "host" CPU type.
-> The "cortex-a57" and "cortex-a53" CPU types will work if you
-> happen to be on a host of that CPU type, and they don't go
-> through kvm_arm_get_host_cpu_features().
+> The AST2700 support the maximum DRAM size is 8 GB.
+> The DRAM physical address range is from "0x4_0000_0000" to
+> "0x5_FFFF_FFFF".
+> 
+> The DRAM offset range is from "0x0_0000_0000" to
+> "0x1_FFFF_FFFF" and it is enough to use bits [33:0]
+> saving the dram offset.
+> 
+> Therefore, save the high part physical address bit[1:0]
+> of Tx/Rx buffer address as dma_dram_offset bit[33:32].
+> It does not need to decrease the dram physical
+> high part address for DMA operation.
+> (high part physical address bit[7:0] – 4)
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
-kvm_arm_vcpu_init() will emit an error in such a situation and I think 
-it's better than silently removing a feature that the requested CPU type 
-has. A user can still disable the feature if desired.
 
-Regards,
-Akihiko Odaki
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
+> ---
+>   hw/i2c/aspeed_i2c.c | 14 ++++++++++++++
+>   1 file changed, 14 insertions(+)
+> 
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index b48f250e08..e28deadcfc 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -743,6 +743,14 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+>                         __func__);
+>           break;
+>   
+> +    /*
+> +     * The AST2700 support the maximum DRAM size is 8 GB.
+> +     * The DRAM offset range is from 0x0_0000_0000 to
+> +     * 0x1_FFFF_FFFF and it is enough to use bits [33:0]
+> +     * saving the dram offset.
+> +     * Therefore, save the high part physical address bit[1:0]
+> +     * of Tx/Rx buffer address as dma_dram_offset bit[33:32].
+> +     */
+>       case A_I2CM_DMA_TX_ADDR_HI:
+>           if (!aic->has_dma64) {
+>               qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
+> @@ -752,6 +760,8 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+>           bus->regs[R_I2CM_DMA_TX_ADDR_HI] = FIELD_EX32(value,
+>                                                         I2CM_DMA_TX_ADDR_HI,
+>                                                         ADDR_HI);
+> +        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 32, 32,
+> +                                         extract32(value, 0, 2));
+>           break;
+>       case A_I2CM_DMA_RX_ADDR_HI:
+>           if (!aic->has_dma64) {
+> @@ -762,6 +772,8 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+>           bus->regs[R_I2CM_DMA_RX_ADDR_HI] = FIELD_EX32(value,
+>                                                         I2CM_DMA_RX_ADDR_HI,
+>                                                         ADDR_HI);
+> +        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 32, 32,
+> +                                         extract32(value, 0, 2));
+>           break;
+>       case A_I2CS_DMA_TX_ADDR_HI:
+>           qemu_log_mask(LOG_UNIMP,
+> @@ -777,6 +789,8 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+>           bus->regs[R_I2CS_DMA_RX_ADDR_HI] = FIELD_EX32(value,
+>                                                         I2CS_DMA_RX_ADDR_HI,
+>                                                         ADDR_HI);
+> +        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 32, 32,
+> +                                         extract32(value, 0, 2));
+>           break;
+>       default:
+>           qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\n",
+

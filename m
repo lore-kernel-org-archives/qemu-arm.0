@@ -1,300 +1,157 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp695891njc;
-        Fri, 19 Jul 2024 14:25:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUziy5ILqB9aU432HLC8pzE9to6jU4krNeqjPTfF6Quh9nEPpAbK2OHp5FkyIJitEwHmTDvJagyxoHu9xgh+7LRtbkpBY0e
-X-Google-Smtp-Source: AGHT+IFJyxTJJ1/yYA7mv8lJdHomMpBtPEOqD5ulCwB6w0mYkuum1OScmvF6idteGKp/MRsaoGHX
-X-Received: by 2002:a5d:6c6e:0:b0:368:7fac:39b9 with SMTP id ffacd0b85a97d-3687fac3a62mr1463302f8f.67.1721424337285;
-        Fri, 19 Jul 2024 14:25:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721424337; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp899737njc;
+        Sat, 20 Jul 2024 02:32:10 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCU7IKbjEY8FOEehNRQ3f4ULcudXaipbzXXhUya3idoz3SkHf9KcWFNH7CSY9dTGPTQxsOSYO+qr83rRVM+iVFLQ3mVsQVnl
+X-Google-Smtp-Source: AGHT+IFKHBYV2Eq5NQB48ujCf9rSg2RHkotgukzPiHqMuDg53IVcRoqfHyBHD8cHQwZ7DNIoImL0
+X-Received: by 2002:a05:6a00:2d13:b0:705:c0a1:61c9 with SMTP id d2e1a72fcca58-70d0efa8cd1mr706748b3a.9.1721467930604;
+        Sat, 20 Jul 2024 02:32:10 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1721467930; cv=pass;
         d=google.com; s=arc-20160816;
-        b=TQTj9/CI0VxTnoOJqJ4XWrLahkDs6X+SyQmaclACgVc5QqKgl4Dv/02B9kz0PtiB9e
-         UIKSDYAoMLP1Ku/X25CMi86pIIZ16vthgJPjcQP4vrw2V2rPtO+YsIxMUGErfGvU7Gfx
-         QBKflsA12emOqgJ+Kr8KfgQh5LhoJsz2aiauhsSjX/VnABrSa5KyTmfwoO4Q8cVpF8Iu
-         PHT+qSvTQtNgEzL9OjixG9sPrBDBNbJl3ZOzwCfEFibWmcNbeuiCVi8lOUNoVeypCgLZ
-         BJQHhoJMjbttKPYBRlr2IBYnRWblF+uFpI4VauVHgB7Mqm1BoJ+Yfs8btjTyoq8jAqVt
-         jxLw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=subject:content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=8XYBJwUoqgclEuv4hcBZLNekYaOfrq+MlZwBxidzTao=;
-        fh=mExT6eXXt4EkGzwetbbPOfQzXzMeLUh8QJ/RfIWBe9o=;
-        b=qQ0vFlxPzDwv9oFQCLosTu54P4pyqp4eqIqyDEE/sVa7q/hpspAEVKsKdbgUi5vjQ3
-         Xo3/DkNu94pShgYjk5QHl2uZ6p3EdRi857TFlDvBmCjh6wh7nyXSwFaXWs8ttYgVLftW
-         /HhR7WdqrhN/KvBNGfy4TJmR1PeIEmaQ//kqdUvnXzIpCa3fotHLIpH9RIEsA221MweL
-         cuBTFXqyDekVMkt/gTlPA4Wvrpco1ycZsRAh7DAXPTx7UVn3MDLQNwJXX58uFCybi02h
-         u6Ci1lLS+vHtWZgUldPbYDd7EQxP92rL/z2eZz60vRaoWzV1T1GFedBgYXr7CMvKhdib
-         c44w==;
+        b=ASLP0anf3WTaNAyYg2Qri+z6aWPQDN6YUkrtm25KFVlQKJeo5QhckQF0rJbh3gFnXh
+         SOrPGp3LQ66i2Y8BpHV+QXCq55d+iGDOA2AQ2Jy+uoB1bbVdfNfEIMSQ+VfVmk+EvEM4
+         dtc8SLUNYjgUWWm0G7csMIR1nkUkN6OzGGuj0APGfXWKfK5ued2RWolFr6ovnN9rqra2
+         B9bZQgvrjMyXvg6GdDVhfhGL0fEriu1clsjjRRHsX1VwIQtePRM+cYH/IQUjVF7h0F8h
+         WZ0cc58S1L2FSUHnVh2yRMeA/buDB49cAAb4VbOggo+Y1U/LLEMpdpcGJjGu94JjtQWz
+         iKtw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :subject:date:from:dkim-signature;
+        bh=wrhfxyQiCKIug187Kcca0q3LwAZ1kZXZGPDwQT1UwgA=;
+        fh=Z9CnaQfKHsWioDkD7VllJeoWYfbnlbUVv/JIpn5z7H8=;
+        b=wVLyfthc75Je4AuEavp4LAUFTYM4eUVCy8En5gLuBTmJ/GyUPP3Nzwad2NhnOPsnVc
+         D3yfWDEjxulcluVFNay706MyBOy9tZ6LZo8aC0y5KTwCOPcbKB2g9hJe2uQib+m3/Giq
+         d8mkdF5Y2f4vOrF3KVYJYCq27qEvNwGWe3AEbFc2WSAEJLei74lhSb+WistGq3fRxVpr
+         mFU+IOj5XnmD5UzfK89gK3yMD873RT0Ion8hayOxi6ovv/j78ZK5mGTolSzfwmeDrVD2
+         Z2kuo6qmKmg74r9+GX2S+DiU5/ssUgJPwoYHArXtLf70gfHrEKhDG4U4eN4M2bpacm7X
+         S9VQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b=JCdiH8DM;
-       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-Return-Path: <mark.cave-ayland@ilande.co.uk>
-Received: from mail.ilande.co.uk (mail.ilande.co.uk. [2001:41c9:1:41f::167])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-368787b2422si900236f8f.764.2024.07.19.14.25.36
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=TTbgd7+1;
+       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
+       spf=pass (google.com: domain of kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org"
+Return-Path: <kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id d2e1a72fcca58-70cff498dd5si3287285b3a.5.2024.07.20.02.32.10
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Jul 2024 14:25:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) client-ip=2001:41c9:1:41f::167;
+        Sat, 20 Jul 2024 02:32:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b=JCdiH8DM;
-       spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
-	In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=8XYBJwUoqgclEuv4hcBZLNekYaOfrq+MlZwBxidzTao=; b=JCdiH8DMzWFV6KzpcbG9T+xcTe
-	7ITGVFtzrtgK8n7/giGU9bsWjrnLIB8TjodwLeo8vVIz953ZSSB9t+5zwwSSmfPt2Wn0gXdPajg90
-	ENEb/ihfGcZ7vA4FuCGXFgTctl+0hY+RkFAlwCcWRDXSYmKcKpwO6immAP8TbX/xJozDyvRtoRJ1P
-	C5Da2BpuWbcqAq8C+9uKyR2pNZg8FG0eVeBSeijz9to2jynMB3W8UbpUfwuDK0C3SIEigoDLVTlt2
-	SucEl5Z3SlRuAQDd64tClJhoEPi+frTi8xxIy4dael50Ks6WpiLAqQfPuhF9YSE8lGH27Gw+L3b3L
-	ATgariPGuNtbUergHex+SzChAeFtW8Dq3kSVwYofXzuSV4C9J0Ei4Obqb5eLteRa+SPealSCUThJf
-	JkduQBJjF6nP2dEgIetFxPn/Zhk4hAG74aVdwMhxM9tVe1Ti/+4OW4G3pRXGcus3BWPQ82+tacrAa
-	hLFqFD84t3mHmk57SwDxIIYBIMZsZLhg0vtZvV2apVJLGlW9vlAY29SbivOjAWzFKQcwNuBxHGnhn
-	9XiSX5uAEvekbrtF8h7a8ZGx9YiuIHivyU6s2Utc+7zGmSauXnUOqyZgkJyS7yueJyJIOc5Tb/PAY
-	TNiLdJQUesVca00XL5n1mGy3jjwV+5FgisK1Qh2F4=;
-Received: from [2a00:23c4:8bb4:4000:502:30b7:7825:e35a]
-	by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.92)
-	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1sUv53-0002yI-AW; Fri, 19 Jul 2024 22:24:01 +0100
-Message-ID: <4e6b616f-3acc-4130-9b92-1af7fed540da@ilande.co.uk>
-Date: Fri, 19 Jul 2024 22:25:25 +0100
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=TTbgd7+1;
+       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
+       spf=pass (google.com: domain of kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org"
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 2B185283CA9
+	for <alex.bennee@linaro.org>; Sat, 20 Jul 2024 09:32:10 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 92D9B2913;
+	Sat, 20 Jul 2024 09:31:36 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b="TTbgd7+1"
+Received: from mail-pf1-f169.google.com (mail-pf1-f169.google.com [209.85.210.169])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D961347C2
+	for <kvm@vger.kernel.org>; Sat, 20 Jul 2024 09:31:34 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.169
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1721467896; cv=none; b=W8IeMX8vZioNp2QpLPcVVjLRHMW/SxC0rewfCb7BdJEw56opSH9n4UO7BKcYVttnUcM82WXDjAg4ZE9Q2psHUCUGGJ9kRteRwfqoFdsagOrrkGBapyN8PLVBsxJE0yCD6ZjnA6E2x6OM3r25wZkvVzYSH8TJT84TsFJXxJOA6sk=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1721467896; c=relaxed/simple;
+	bh=DYnqaWjAQ5Swa7SOrX13jfrs0jdvTL9wDFwzo29zQ9U=;
+	h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:References:
+	 In-Reply-To:To:Cc; b=MqINVxP3+VMDfcvKBs0aHOMEmSsg4Ze08pSv+yQNY6hXtV85e17DyvJoCQkU5d9tS8IhwbzBLFqLippLgQReayLfu+TiwIGT9wtAAcaT56KL2etYL7FaTQWEkM3kRPHk8an1hPM79ej7Rknpwm4AaIg1soeP4moB4BZaq1Jr6g0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com; spf=none smtp.mailfrom=daynix.com; dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b=TTbgd7+1; arc=none smtp.client-ip=209.85.210.169
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=daynix.com
+Received: by mail-pf1-f169.google.com with SMTP id d2e1a72fcca58-70d01e4f7fcso829442b3a.1
+        for <kvm@vger.kernel.org>; Sat, 20 Jul 2024 02:31:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1721467894; x=1722072694; darn=vger.kernel.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=wrhfxyQiCKIug187Kcca0q3LwAZ1kZXZGPDwQT1UwgA=;
+        b=TTbgd7+1e9cfH7smSr5Qsu0a1xhcQcKYwvP8XwTyK4EaLHNi/G5K/V9UZIGj0WU8rg
+         Kw6zyp2HXSj1+rUVMcE/NsqeOodlDmGe5A9EyfI2O7cNpXOdaRA7aQGT4c+Dj3Zkc5hj
+         zYKbxP+WjhcN1OB6Mr2W7nGvTUSEHEfhcUOtrk1Sgm6NyrOC1dwnsZQXLSPMg0zoyYH5
+         kuw+MFBIpdJnnuopQjF0c+7fAcJcfS4jhrVDmqSn/uxHfRLvBnfutieSg5IO5g10iPwz
+         m3lq5HaKbJU1ZANUGfcnEPQux1WU57tUMWIHY0Z9pJUGFkoYxlwizkrpEsh5yAEftxjx
+         G5ww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1721467894; x=1722072694;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=wrhfxyQiCKIug187Kcca0q3LwAZ1kZXZGPDwQT1UwgA=;
+        b=VLwcGhns+VplRfxML3pZ+GP+/ofRDZVTofmYMxmMRWMIaIzQ963EA6NS0YURpj0BPM
+         rMxU4nAZ3Xdc2T79ekjVRWhV4LqvOv6cyIJVD4YiFFX9PP3TJxLwVk9inVgv8EsJj3Z4
+         yHV0KepFDMC5OWuOueoFGxWYnW77NtfXUpARm0tVpqQaMZz0bFtZDgo+RIfWvspfo/CC
+         EiTfTN9h+yq6c7g5rIDIpybckIBP08qioAw+Z+5IRcTlQt/rTPZ7IoKKFsBEOSukOK50
+         +B+xQh3MnDpWpd6SJlYDXzQEadbfnbAGLhXA7B5RIwS6O6fmxB1lurPtVGQXsNj1yKdj
+         gDpA==
+X-Forwarded-Encrypted: i=1; AJvYcCVlVMPO6LSXiG2WdcjQDQSBpyiLY3t8FFZMmS5HVTBbq9c4MDRyEC2MqMXX95174gZaOCb0VwZ3xT0FFwJAr8VGVgGe
+X-Gm-Message-State: AOJu0YwGRNcBFY+ort0qgfJUlnf1oZrxTsXLhd/CtbUqHCQ61vCSRj5Q
+	BoYJcHWGYaBZZtwzXWhdP4HgV2jDRKU16in+s/LB3IlqV0E2Ronr/5TvfyoJpxM=
+X-Received: by 2002:a05:6a00:1887:b0:70a:fa5d:ad97 with SMTP id d2e1a72fcca58-70d0ef82323mr719873b3a.1.1721467894392;
+        Sat, 20 Jul 2024 02:31:34 -0700 (PDT)
+Received: from localhost ([157.82.204.122])
+        by smtp.gmail.com with UTF8SMTPSA id d2e1a72fcca58-70cff552c39sm2341661b3a.136.2024.07.20.02.31.32
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 20 Jul 2024 02:31:34 -0700 (PDT)
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+Date: Sat, 20 Jul 2024 18:30:54 +0900
+Subject: [PATCH v4 6/6] hvf: arm: Do not advance PC when raising an
+ exception
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
- Tong Ho <tong.ho@amd.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Mikko Rapeli <mikko.rapeli@linaro.org>
-References: <20240719181041.49545-1-philmd@linaro.org>
- <20240719181041.49545-17-philmd@linaro.org>
-Content-Language: en-US
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
- eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-In-Reply-To: <20240719181041.49545-17-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bb4:4000:502:30b7:7825:e35a
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
-	mail.default.ilande.bv.iomart.io
-X-Spam-Level: 
-X-Spam-Status: No, score=-2.8 required=5.0 tests=ALL_TRUSTED,BAYES_00,
-	URIBL_BLOCKED,URIBL_SBL_A autolearn=no autolearn_force=no version=3.4.2
-Subject: Re: [RFC PATCH v5 16/16] hw/char/pl011: Implement TX FIFO
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-X-TUID: b481Pv8FCPRY
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240720-pmu-v4-6-2a2b28f6b08f@daynix.com>
+References: <20240720-pmu-v4-0-2a2b28f6b08f@daynix.com>
+In-Reply-To: <20240720-pmu-v4-0-2a2b28f6b08f@daynix.com>
+To: Peter Maydell <peter.maydell@linaro.org>, 
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Cornelia Huck <cohuck@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, 
+ Akihiko Odaki <akihiko.odaki@daynix.com>
+X-Mailer: b4 0.14-dev-fd6e3
+X-TUID: bdachUdCSbB3
 
-On 19/07/2024 19:10, Philippe Mathieu-Daudé wrote:
+This is identical with commit 30a1690f2402 ("hvf: arm: Do not advance
+PC when raising an exception") but for writes instead of reads.
 
-> If the UART back-end chardev doesn't drain data as fast as stdout
-> does or blocks, buffer in the TX FIFO to try again later.
-> 
-> This avoids having the IO-thread busy waiting on chardev back-ends,
-> reported recently when testing the Trusted Reference Stack and
-> using the socket backend.
-> 
-> Implement registering a front-end 'watch' callback on back-end
-> events, so we can resume transmitting when the back-end is writable
-> again, not blocking the main loop.
-> 
-> Similarly to the RX FIFO path, FIFO level selection is not
-> implemented (interrupt is triggered when a single byte is available
-> in the FIFO).
-> 
-> Reported-by: Mikko Rapeli <mikko.rapeli@linaro.org>
-> Suggested-by: Alex Bennée <alex.bennee@linaro.org>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-> RFC: Something is still broken, some characters are emitted async...
-> ---
->   hw/char/pl011.c      | 60 ++++++++++++++++++++++++++++++++++++--------
->   hw/char/trace-events |  1 +
->   2 files changed, 51 insertions(+), 10 deletions(-)
-> 
-> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-> index cfa3fd3da4..9f72b6a765 100644
-> --- a/hw/char/pl011.c
-> +++ b/hw/char/pl011.c
-> @@ -240,7 +240,9 @@ static gboolean pl011_xmit(void *do_not_use, GIOCondition cond, void *opaque)
->   {
->       PL011State *s = opaque;
->       int bytes_consumed;
-> -    uint8_t data;
-> +    const uint8_t *buf;
-> +    uint32_t buflen;
-> +    uint32_t count;
->   
->       if (!(s->cr & CR_UARTEN)) {
->           qemu_log_mask(LOG_GUEST_ERROR, "PL011 data written to disabled UART\n");
-> @@ -249,25 +251,40 @@ static gboolean pl011_xmit(void *do_not_use, GIOCondition cond, void *opaque)
->           qemu_log_mask(LOG_GUEST_ERROR, "PL011 data written to disabled TX UART\n");
->       }
->   
-> +    count = fifo8_num_used(&s->xmit_fifo);
-> +    if (count < 1) {
-> +        /* FIFO empty */
-> +        return G_SOURCE_REMOVE;
-> +    }
-> +
->       if (!qemu_chr_fe_backend_connected(&s->chr)) {
->           /* Instant drain the fifo when there's no back-end. */
->           pl011_drain_tx(s);
->           return G_SOURCE_REMOVE;
->       }
->   
-> -    data = fifo8_pop(&s->xmit_fifo);
-> -    bytes_consumed = 1;
-> +    buf = fifo8_peek_buf(&s->xmit_fifo, count, &buflen);
->   
-> -    /*
-> -     * XXX this blocks entire thread. Rewrite to use
-> -     * qemu_chr_fe_write and background I/O callbacks
-> -     */
-> -    qemu_chr_fe_write_all(&s->chr, &data, bytes_consumed);
-> +    /* Transmit as much data as we can. */
-> +    bytes_consumed = qemu_chr_fe_write(&s->chr, buf, buflen);
->       trace_pl011_fifo_tx_xmit(bytes_consumed);
-> +    if (bytes_consumed < 0) {
-> +        /* Error in back-end: drain the fifo. */
-> +        pl011_drain_tx(s);
-> +        return G_SOURCE_REMOVE;
-> +    }
-> +
-> +    /* Pop the data we could transmit. */
-> +    fifo8_pop_buf(&s->xmit_fifo, bytes_consumed, NULL);
->       s->int_level |= INT_TX;
->   
->       pl011_update(s);
+Fixes: a2260983c655 ("hvf: arm: Add support for GICv3")
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+---
+ target/arm/hvf/hvf.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-One of the gotchas with Fifo8 is that whilst fifo8_push(), fifo8_pop() and 
-fifo8_push_all() will wrap the FIFO buffer, fifo8_{peek,pop}_buf() do not. For 
-example fifo8_num_used() could return 15, but if xmit_fifo->head is set to 15 then 
-fifo8_{peek_pop}_buf() would return 1 leaving 14 characters in the FIFO at the end of 
-pl011_xmit().
-
-Possible solutions could be to use a loop to send one character at a time similar to:
-
-     while (fifo8_num_used(&s->xmit_fifo)) {
-         uint8_t c = fifo8_pop(&s->xmit_fifo);
-
-         if (qemu_chr_fe_write(&s->chr, &c, 1) == -1) {
-             fifo8_push(&s->xmit_fifo, c);
-             break;
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index adcdfae0b17f..c1496ad5be9b 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1586,10 +1586,10 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     case SYSREG_ICC_SGI1R_EL1:
+     case SYSREG_ICC_SRE_EL1:
+         /* Call the TCG sysreg handler. This is only safe for GICv3 regs. */
+-        if (!hvf_sysreg_write_cp(cpu, reg, val)) {
+-            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
++        if (hvf_sysreg_write_cp(cpu, reg, val)) {
++            return 0;
          }
-     }
+-        return 0;
++        break;
+     case SYSREG_MDSCR_EL1:
+         env->cp15.mdscr_el1 = val;
+         return 0;
 
-Or else use a solution similar to the one I used for ESP at 
-https://gitlab.com/qemu-project/qemu/-/blob/master/hw/scsi/esp.c?ref_type=heads#L200. 
-I did think about whether it was worth adding a function similar to the one used for 
-ESP to the Fifo8 API, but wasn't sure it was worth it at the time.
+-- 
+2.45.2
 
-> +    if (!fifo8_is_empty(&s->xmit_fifo)) {
-> +        /* Reschedule another transmission if we couldn't transmit all. */
-> +        return G_SOURCE_CONTINUE;
-> +    }
-> +
->       return G_SOURCE_REMOVE;
->   }
->   
-> @@ -290,6 +307,10 @@ static void pl011_write_txdata(PL011State *s, uint8_t data)
->       trace_pl011_fifo_tx_put(data);
->       pl011_loopback_tx(s, data);
->       fifo8_push(&s->xmit_fifo, data);
-> +    if (fifo8_is_full(&s->xmit_fifo)) {
-> +        s->flags |= PL011_FLAG_TXFF;
-> +    }
-> +
->       pl011_xmit(NULL, G_IO_OUT, s);
->   }
->   
-> @@ -488,10 +509,24 @@ static void pl011_write(void *opaque, hwaddr offset,
->           pl011_trace_baudrate_change(s);
->           break;
->       case 11: /* UARTLCR_H */
-> -        /* Reset the FIFO state on FIFO enable or disable */
->           if ((s->lcr ^ value) & LCR_FEN) {
-> -            pl011_reset_rx_fifo(s);
-> +            bool fifo_enabled = value & LCR_FEN;
-> +
-> +            trace_pl011_fifo_enable(fifo_enabled);
-> +            if (fifo_enabled) {
-> +                /* Transmit and receive FIFO buffers are enabled (FIFO mode). */
-> +                fifo8_change_capacity(&s->xmit_fifo, PL011_FIFO_DEPTH);
-> +            } else {
-> +                /*
-> +                 * FIFOs are disabled (character mode) that is, the FIFOs
-> +                 * become 1-byte-deep holding registers.
-> +                 */
-> +                pl011_drain_tx(s);
-> +                fifo8_change_capacity(&s->xmit_fifo, 1);
-> +            }
-
-Presumably this is the part where fifo8_change_capacity() is required: what does 
-changing the FIFO size to 1 do here? Is it possible to move the fifo_enabled check 
-into pl011_read() and pop/clear the buffer there instead of changing the FIFO size?
-
-> +            /* Reset the FIFO state on FIFO enable or disable */
->               pl011_reset_tx_fifo(s);
-> +            pl011_reset_rx_fifo(s);
->           }
->           if ((s->lcr ^ value) & LCR_BRK) {
->               int break_enable = value & LCR_BRK;
-> @@ -636,6 +671,11 @@ static int pl011_post_load(void *opaque, int version_id)
->           s->read_pos = 0;
->       }
->   
-> +    if (!fifo8_is_empty(&s->xmit_fifo)) {
-> +        /* Reschedule another transmission */
-> +        qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HUP, pl011_xmit, s);
-> +    }
-> +
->       s->ibrd &= IBRD_MASK;
->       s->fbrd &= FBRD_MASK;
->   
-> diff --git a/hw/char/trace-events b/hw/char/trace-events
-> index bf586ba664..2405819812 100644
-> --- a/hw/char/trace-events
-> +++ b/hw/char/trace-events
-> @@ -58,6 +58,7 @@ pl011_read(uint32_t addr, uint32_t value, const char *regname) "addr 0x%03x valu
->   pl011_read_fifo(int read_count) "FIFO read, read_count now %d"
->   pl011_write(uint32_t addr, uint32_t value, const char *regname) "addr 0x%03x value 0x%08x reg %s"
->   pl011_can_receive(uint32_t lcr, int read_count, int r) "LCR 0x%08x read_count %d returning %d"
-> +pl011_fifo_enable(bool enable) "enable:%u"
->   pl011_fifo_rx_put(uint32_t c, int read_count) "new char 0x%02x read_count now %d"
->   pl011_fifo_rx_full(void) "RX FIFO now full, RXFF set"
->   pl011_fifo_tx_put(uint8_t byte) "TX FIFO push char [0x%02x]"
-
-
-ATB,
-
-Mark.

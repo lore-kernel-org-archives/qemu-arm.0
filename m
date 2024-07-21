@@ -1,93 +1,92 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1307908njc;
-        Sun, 21 Jul 2024 01:16:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXHxI2buCaQ8wRUFex1i/c2zml7P2Px9xuVN6oEV5ZEtLOuz7uU6tRC9mYF4W9VhPgLE5MRHxyKQOA2UFdFDMAkLBBd6Jkd
-X-Google-Smtp-Source: AGHT+IE0zLnGz4I5FtKpf7WDR+t9xHJ8dxfCzJrTfU96dcIjVtRZ+M9PNdzkHPGc4qnxWO3+qoIR
-X-Received: by 2002:a05:6102:158e:b0:48f:e7ee:8ea6 with SMTP id ada2fe7eead31-4928ba72b1fmr4320045137.24.1721549812023;
-        Sun, 21 Jul 2024 01:16:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721549812; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1308005njc;
+        Sun, 21 Jul 2024 01:17:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWosx/ZW4f58d/STHrLltOB7mYNY33VPhIywLW1lmfk4l44MZHR+ABQM8C2JAhqmg+vgUISBrfNq6+SNvHoZdlmiiFadhdE
+X-Google-Smtp-Source: AGHT+IEPV9oFsTkMVyKppmXVf+y+ABR69+b65ZWiQvQIDMACNz+0bwUnHW7+JLHCxNkEF4ne3jxb
+X-Received: by 2002:a05:6808:21a1:b0:3d9:41fa:3f42 with SMTP id 5614622812f47-3dae5fb8d43mr5874942b6e.22.1721549831931;
+        Sun, 21 Jul 2024 01:17:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721549831; cv=none;
         d=google.com; s=arc-20160816;
-        b=cY1a1wT9NtUYvnpOOJzZ82zLMCtWq1LLSzeTb+qVDU3azosRicrCjXvE9n7FHLOemT
-         SnT4T2v1pdeuG+1ocfDQCPgU14Om3UBEVvlbvpwtnzYRjpfbvB/ryn4vHzI7Fl+Sohno
-         9hsa965BtVktMqjNcYp+GoOSc+jIRamuFMmSXdjZB7Rg/c9NHan12gZySxuE9EIb3CAF
-         /egN7sUiMrJQcx973t42XqHssfioKSYK6UNdcW5pTnrREoTCY++ntZaEWMxghO5QG8Kf
-         Jp36pz28PCnOJdMiA8HGiEqNDKG8gskQmfn4oHQTfBtO7iC40f7AwXDNLcZUo3izo1uV
-         9wow==
+        b=HGmSFdD9/achDwNRlGVvDOADNHWXB2POC6QbtQa3r+N1iculkpLgPCSLvD17WjLhDJ
+         uGcLG7WIR4j/hLJWdGQ99FSOfFOegki9z0E6gmBbnnnsEGKZt6438VPeKzGra7S1crE6
+         9bJj/+T1zmVR/6Y6EA0d0bVKsB+woBMU46spXzMR4T+1LPi7ORQsH5QxTrdrObuyIBIO
+         HuWBdcGFItPR7d5jNTpi8LPzR7YSGtAnr7lWOraS8w6njxkUZmX9Yc28jvukuu/y1JYb
+         YGcrm2cBS9gcRuJJYUkOLE83OTDip650PVXTF0TpD6TpDWCT/LqKCq3VSUv8jo7p2iH/
+         xkZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=NBczWv8OU+Ht6azEoj1D6vXUlchhp2XhO4LmUdx+/5Y=;
-        fh=LlOmBw4GbUlDF52fQ9hCMPVPTJOoo92XRnaOjjrcWE0=;
-        b=bZqF2sHGMHv6flPTNxRt/zCORku8WEjL4iC2L19gKbdtPNa/XHLXjx3nQyBCCULBSG
-         YalKdFQDd4q+Wd3I0H6BiO+u6oTgvBvNXT5a9xXXhmrnz893Lypmc8uVJT/B5T4Q8TiG
-         WRsDSxq0HXR8LPKqEKr7SxjAPPSNPu7mBWWOuK89WtmGO0rn0hBzsgk8akezilZ4VtnJ
-         Q+9aRe303wBsP2wkWPBtf2LTnY+GztZcbnzillevG3rs3x9lW7iOWCSs3LEoakcz9Etl
-         UzY50DGKD7ecu1VxTcXcFMZaQ7xFHA121x5twfZXhLdpHcQMVd0rKB4PGZ5KJdREi1Kx
-         bMGA==;
+        bh=+LN/ynhD2DkbOUWD0h0IzbPLzWCaTcoqsrKtlRC4XCI=;
+        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
+        b=qb7wjpMRnEIihgc44rNMVsEVk4CxluE1TC7rwT35hXf1QksiXV+wuhGbonoQs0p8EZ
+         7owUTOtWxSVGQkp9rgPIcLwx45u2u8qBwXX1GnwhXg1iE7SRnJTOwy9moY4qC6Ra1bO6
+         42Gjg2aCBRGWRAeuFwnuJs88+6pvJ0Bpof5BrXiNBBgBXxRpfE5YJM+ABayC/6EkVSlp
+         jgTkCU+Acc+5Zg06y0V2AAJKN0J276CA3vQuhonjY6rg03kZNUtkMqf0gOsU3TTQeIK3
+         U3ryrKsr7nHILnwAIcxUJ6GSQ9mS/JpkSbQIWvkqV41M+g2JK+5Xra0UtBmHxn7/ksSY
+         FgKw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E50OgMED;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O7wFGLfj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44f9cf0ed20si54042871cf.705.2024.07.21.01.16.51
+        by mx.google.com with ESMTPS id af79cd13be357-7a198f9773dsi542144885a.36.2024.07.21.01.17.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Jul 2024 01:16:52 -0700 (PDT)
+        Sun, 21 Jul 2024 01:17:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E50OgMED;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O7wFGLfj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sVRiW-0001MM-49; Sun, 21 Jul 2024 04:14:52 -0400
+	id 1sVRiX-0001SC-Ir; Sun, 21 Jul 2024 04:14:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiC-0000pN-0V
- for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:35 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiN-0000xi-Uj
+ for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:45 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiA-0001Q5-J9
- for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:31 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiL-0001W4-KT
+ for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1721549670;
+ s=mimecast20190719; t=1721549681;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=NBczWv8OU+Ht6azEoj1D6vXUlchhp2XhO4LmUdx+/5Y=;
- b=E50OgMEDiYcBUcTOK7PS+n3B4QyJu/XvW+rwqZvInNE/vXAHsNEIf+egEGkaD2rkNIEKK+
- ldCWR5T8F0JQculmEAWOci6hKEfw/NrNc1ESjmFTkA79fP6rPn8EiHtTys8qo1en5PHB5W
- +t18FhExVzJlAuhCPD1awHVk9C9vZQM=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=+LN/ynhD2DkbOUWD0h0IzbPLzWCaTcoqsrKtlRC4XCI=;
+ b=O7wFGLfjPtCGg/3q4JHJ6IBpyOjY7juooy3Rw1Y8K9pW+vrhjjreJ/hG22QaJkLkLPZzep
+ +UlCYo7IY+ivakwqkC2XKKVbmlBaStQhFOyNbP49vsgB8V7nC7+aNX+awsh2Zcb/e5G+V3
+ P1aP+a/+2Squ6uY6ilMNL+XAeQv+L0s=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-658-iTADQesoNJm-0MeaNuIXKg-1; Sun,
- 21 Jul 2024 04:14:26 -0400
-X-MC-Unique: iTADQesoNJm-0MeaNuIXKg-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-540-fOBNBiPyNv6Ym_sLT3sWKg-1; Sun,
+ 21 Jul 2024 04:14:38 -0400
+X-MC-Unique: fOBNBiPyNv6Ym_sLT3sWKg-1
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C926919560AA; Sun, 21 Jul 2024 08:14:24 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id EE34219560B0; Sun, 21 Jul 2024 08:14:36 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.37])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0163B1955D47; Sun, 21 Jul 2024 08:14:22 +0000 (UTC)
+ id 406CA1955D4F; Sun, 21 Jul 2024 08:14:29 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 08/15] aspeed: Introduce a 'hw_strap1' machine attribute
-Date: Sun, 21 Jul 2024 10:13:54 +0200
-Message-ID: <20240721081401.425588-9-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 11/15] aspeed/adc: Add AST2700 support
+Date: Sun, 21 Jul 2024 10:13:57 +0200
+Message-ID: <20240721081401.425588-12-clg@redhat.com>
 In-Reply-To: <20240721081401.425588-1-clg@redhat.com>
 References: <20240721081401.425588-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -102,7 +101,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,54 +116,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IVw/rJcu9x3a
+X-TUID: LMGKrCxXJbnB
 
-From: Cédric Le Goater <clg@kaod.org>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-To change default behavior of a machine and boot from eMMC, future
-changes will add a machine option to let the user configure the
-boot-from-eMMC HW strapping bit. Add a new machine attribute first.
+AST2700 and AST2600 ADC controllers are identical.
+Introduce ast2700 class and set 2 engines.
 
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-Tested-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ include/hw/adc/aspeed_adc.h |  1 +
+ hw/adc/aspeed_adc.c         | 16 ++++++++++++++++
+ 2 files changed, 17 insertions(+)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index a8f5c14ae535..9939559f6dd0 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -46,6 +46,7 @@ struct AspeedMachineState {
-     uint32_t uart_chosen;
-     char *fmc_model;
-     char *spi_model;
-+    uint32_t hw_strap1;
- };
+diff --git a/include/hw/adc/aspeed_adc.h b/include/hw/adc/aspeed_adc.h
+index ff1d06ea91de..f502f197ac00 100644
+--- a/include/hw/adc/aspeed_adc.h
++++ b/include/hw/adc/aspeed_adc.h
+@@ -18,6 +18,7 @@
+ #define TYPE_ASPEED_2500_ADC TYPE_ASPEED_ADC "-ast2500"
+ #define TYPE_ASPEED_2600_ADC TYPE_ASPEED_ADC "-ast2600"
+ #define TYPE_ASPEED_1030_ADC TYPE_ASPEED_ADC "-ast1030"
++#define TYPE_ASPEED_2700_ADC TYPE_ASPEED_ADC "-ast2700"
+ OBJECT_DECLARE_TYPE(AspeedADCState, AspeedADCClass, ASPEED_ADC)
  
- /* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
-@@ -393,7 +394,7 @@ static void aspeed_machine_init(MachineState *machine)
-         }
-     }
- 
--    object_property_set_int(OBJECT(bmc->soc), "hw-strap1", amc->hw_strap1,
-+    object_property_set_int(OBJECT(bmc->soc), "hw-strap1", bmc->hw_strap1,
-                             &error_abort);
-     object_property_set_int(OBJECT(bmc->soc), "hw-strap2", amc->hw_strap2,
-                             &error_abort);
-@@ -1077,7 +1078,10 @@ static void aspeed_set_mmio_exec(Object *obj, bool value, Error **errp)
- 
- static void aspeed_machine_instance_init(Object *obj)
- {
-+    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(obj);
-+
-     ASPEED_MACHINE(obj)->mmio_exec = false;
-+    ASPEED_MACHINE(obj)->hw_strap1 = amc->hw_strap1;
+ #define TYPE_ASPEED_ADC_ENGINE "aspeed.adc.engine"
+diff --git a/hw/adc/aspeed_adc.c b/hw/adc/aspeed_adc.c
+index 68bdbc73b0e6..48328ef89194 100644
+--- a/hw/adc/aspeed_adc.c
++++ b/hw/adc/aspeed_adc.c
+@@ -398,6 +398,15 @@ static void aspeed_1030_adc_class_init(ObjectClass *klass, void *data)
+     aac->nr_engines = 2;
  }
  
- static char *aspeed_get_fmc_model(Object *obj, Error **errp)
++static void aspeed_2700_adc_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedADCClass *aac = ASPEED_ADC_CLASS(klass);
++
++    dc->desc = "ASPEED 2700 ADC Controller";
++    aac->nr_engines = 2;
++}
++
+ static const TypeInfo aspeed_adc_info = {
+     .name = TYPE_ASPEED_ADC,
+     .parent = TYPE_SYS_BUS_DEVICE,
+@@ -430,6 +439,12 @@ static const TypeInfo aspeed_1030_adc_info = {
+     .class_init = aspeed_1030_adc_class_init, /* No change since AST2600 */
+ };
+ 
++static const TypeInfo aspeed_2700_adc_info = {
++    .name = TYPE_ASPEED_2700_ADC,
++    .parent = TYPE_ASPEED_ADC,
++    .class_init = aspeed_2700_adc_class_init,
++};
++
+ static void aspeed_adc_register_types(void)
+ {
+     type_register_static(&aspeed_adc_engine_info);
+@@ -438,6 +453,7 @@ static void aspeed_adc_register_types(void)
+     type_register_static(&aspeed_2500_adc_info);
+     type_register_static(&aspeed_2600_adc_info);
+     type_register_static(&aspeed_1030_adc_info);
++    type_register_static(&aspeed_2700_adc_info);
+ }
+ 
+ type_init(aspeed_adc_register_types);
 -- 
 2.45.2
 

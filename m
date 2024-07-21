@@ -1,92 +1,92 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1307567njc;
-        Sun, 21 Jul 2024 01:15:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWZf+0kOT+jXAWnJ6YVLCZYPfSwV+IvTkitmaJ+4cq2XrIG7+IMlUVxM7JBKDfe6wPPSfLQebAnsT3q2YrTY8qpdmSMlta4
-X-Google-Smtp-Source: AGHT+IEBfcjwLzp5Xfy1UkRXprDuVRx70fh9vI05UNqYQLaJlvyUuBoF/7jVJVVvELcWgYrzkcQG
-X-Received: by 2002:a05:620a:1a28:b0:79e:fc9c:4bcb with SMTP id af79cd13be357-7a1a653828bmr417781385a.11.1721549757059;
-        Sun, 21 Jul 2024 01:15:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721549757; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1307762njc;
+        Sun, 21 Jul 2024 01:16:25 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWxJxaFAFj7iE0s/ptytwF4hwonyPA5xJt4qUC2w1czEAIZ5G2ZPBUwx1rD++adTdBVo0bthgJ5n6yWcYqm59nGL26QkYKd
+X-Google-Smtp-Source: AGHT+IEsOU3KWSwrIzDY/jmRg7d/NPVziN78Y+YB5vo87mU/mRR8FDmfxl3w89OyEFDZV4+v9vqa
+X-Received: by 2002:a05:6214:492:b0:6b5:6a1:f89a with SMTP id 6a1803df08f44-6b96106e04bmr48028576d6.2.1721549785586;
+        Sun, 21 Jul 2024 01:16:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721549785; cv=none;
         d=google.com; s=arc-20160816;
-        b=p0+F7sty3PEUws4Ao40Ew5V1JSMG6st42pVrTC+HINBVgBq4NMo/Lzw9vg2oc+K3HV
-         vww+YHF4GO7m7Xdms+i5D1RuW4Cg+mYGOXrv+79qKejrAA/xlYvgPdXjkeBlvbvuQ+/L
-         5WR+vD/gMm6fzm+SEg1CfKJpjMuhnX4d/fGF71lQ3kJWZHTpnF9hkNOsa28nEZI06q/z
-         1MbS2st1tq4tHgiBxIHTyttFl2fBgsKR5zyRf/h0sMvxnWV8+Gh5x1rJpayXmxeIXSwq
-         nyg0SY1IuCdVNh/wh5V4USjIQgj42MCspYnMh1Y4VcsiTKXwG60nqLYfI6xB6A8a8GuE
-         HmDA==
+        b=UF0k3CXC51d/NtDkVe/ZkUHj8tdDCzaSKJDl61TFbV8leFn9sCGE6imdQ9ju62oG3W
+         HglloDaVkJr8fWNKi1MYTY2XeMAA1IStQ4/HJyEYW7JcuZGFbfNWX9LliyHhZZWYPONe
+         z7zQDisLYjnv83tSURZPVGWehVt/pA40rxLvkZoEBanPphz2ohBX3ei/pbiK6FfBY/3f
+         B2j46iEX6qyvEA85yqf9hN8cQEzscbhSDJVO1jeZcOzWRd9zDHfKh3TnemoyOMb9wb0L
+         h8PYN1vj/vthsLswO/WZvrHHm3oRMGabwx3uQE6DdI3IDp1wns1RWoaUHVIpcMmDfIzv
+         dkcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ZFJk6N4bnlLhuN7xHBbX28ecMO0lvE2LS6iTIcHWdX8=;
+        bh=Uor5WvEZ67SeAvZ4lUWJ+fLutkmIqAXpvxCnI1QP5r4=;
         fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=BqFHVro+Lagd6GU41JWepcppmuD4cl+i+RYimQygfznV2NNLHVrQVYSSaUTg/Zufyn
-         4s8LY2M3hzFXnAhVqrxhmjWa/TL5Twty78aZZQOeGYMbWKywkXhggk59l9jy0gpg2YRC
-         5iHvJmXv6iIdVUJx9J0KUiI72sdjY0UjxmOVb4DDX2dWzIgvFp5GBwVIPbqJNl6PCgAX
-         QVu0FdDnZRDe5SOSyVfJfVfo6NR1HGWTOcYOf1libriY9pG/q2uj8FvR013tL8i4CrjG
-         3Xip1vmddA3RYOCqDrvB2xQxlUnX+rmsCCvem/FVCZzahGmNpn8AMrH6z4gHd/ICkbBQ
-         81yg==;
+        b=aD58r42ePJhK5Nc+EQysqe8XD5ZATUYJ/m7rJWVz7L86xzo2TQoyJyb6aI/iRzzqTy
+         zl4IbRoJZPJUAX2VvqBd5/0jabw3PcEftAjfhq0ssl25IKkx62PGNJi0t1T1zKHCMiHE
+         No0n/NaFmO0d7LxX4LWSndNXGx1mkJ2p+AVoZksijyoUHaQryeFlHB+5Z0CB+Z1+2gsP
+         wS5UeIRi74FzkkZUvlJA82hthG3A4KGeuhPnsFsNMjzYCPhzrDeF8BWRwCpmm4V7u8VY
+         oHKtwY53dP1O3hoaIbssQwjL5L4rZ9K1wY8XOb9As49z01Crk+vuFXisbmK+NBUqgJHQ
+         AeVQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MoaMipXj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LuAi2tVI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1990942b9si506725585a.633.2024.07.21.01.15.56
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b7acaf102dsi53449266d6.448.2024.07.21.01.16.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Jul 2024 01:15:57 -0700 (PDT)
+        Sun, 21 Jul 2024 01:16:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MoaMipXj;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LuAi2tVI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sVRiY-0001X5-In; Sun, 21 Jul 2024 04:14:54 -0400
+	id 1sVRiY-0001Vr-AU; Sun, 21 Jul 2024 04:14:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiV-0001IT-6P
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiV-0001JE-Bd
  for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:51 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiT-0001XQ-AQ
- for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:50 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiT-0001ZI-Ma
+ for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1721549686;
+ s=mimecast20190719; t=1721549689;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZFJk6N4bnlLhuN7xHBbX28ecMO0lvE2LS6iTIcHWdX8=;
- b=MoaMipXjZQUFzc4qlCpUncAD/SqLLvbnJ6HA+mPMkA39ybbrx7/xVKOCSc213X+bOxN6eM
- sOwZwL3AvN1PjyUPHT2Awxxg/spiFY2bvkEC7H7+lg0s4ixZs6ZHBaZVc+B8AbMD4QNbl5
- +yaoIy1Rfm/1QHLZdDmMDRtO6wGvBAk=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=Uor5WvEZ67SeAvZ4lUWJ+fLutkmIqAXpvxCnI1QP5r4=;
+ b=LuAi2tVI8V2E+H1Ww2mPJtxJ9ijPfxZvAWe1qelxPd2AUN58Wt+7ev3DW02USOsefsWF4l
+ qx/5Nc1USlHaxkFgHKVrm50BGkuZ8MZv7XdduhbZMN2RJfGCRjVjpFenRWoU2nEeWc1rDv
+ LVRK5++3g+yV2KaUJcP9mec/ffexCPc=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-139-CvNePszeP8e0jDzSSl8nMw-1; Sun,
- 21 Jul 2024 04:14:42 -0400
-X-MC-Unique: CvNePszeP8e0jDzSSl8nMw-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-97-m10z_3ilODiJp8QgKUDtVw-1; Sun,
+ 21 Jul 2024 04:14:45 -0400
+X-MC-Unique: m10z_3ilODiJp8QgKUDtVw-1
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B4A8019560AB; Sun, 21 Jul 2024 08:14:40 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0002719560AD; Sun, 21 Jul 2024 08:14:44 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.37])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4586C1955D47; Sun, 21 Jul 2024 08:14:39 +0000 (UTC)
+ id F23741955D47; Sun, 21 Jul 2024 08:14:42 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 13/15] hw/i2c/aspeed: support to set the different memory size
-Date: Sun, 21 Jul 2024 10:13:59 +0200
-Message-ID: <20240721081401.425588-14-clg@redhat.com>
+Subject: [PULL 15/15] aspeed: fix coding style
+Date: Sun, 21 Jul 2024 10:14:01 +0200
+Message-ID: <20240721081401.425588-16-clg@redhat.com>
 In-Reply-To: <20240721081401.425588-1-clg@redhat.com>
 References: <20240721081401.425588-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -101,7 +101,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,86 +116,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EeUbNjVu72G4
+X-TUID: 7uB2XB/5+iDk
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-According to the datasheet of ASPEED SOCs,
-an I2C controller owns 8KB of register space for AST2700,
-owns 4KB of register space for AST2600, AST2500 and AST2400,
-and owns 64KB of register space for AST1030.
+Fix coding style issues from checkpatch.pl
 
-It set the memory region size 4KB by default and it does not compatible
-register space for AST2700.
-
-Introduce a new class attribute to set the I2C controller memory size
-for different ASPEED SOCs.
+Test command:
+./scripts/checkpatch.pl --no-tree -f hw/arm/aspeed.c
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/i2c/aspeed_i2c.h | 2 +-
- hw/i2c/aspeed_i2c.c         | 6 +++++-
- 2 files changed, 6 insertions(+), 2 deletions(-)
+ hw/arm/aspeed.c | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index a064479e599c..065b636d2999 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -283,7 +283,7 @@ struct AspeedI2CClass {
-     uint8_t *(*bus_pool_base)(AspeedI2CBus *);
-     bool check_sram;
-     bool has_dma;
--
-+    uint64_t mem_size;
- };
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 5cdef873a5fc..fd5603f7aa23 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -266,7 +266,8 @@ static void write_boot_rom(BlockBackend *blk, hwaddr addr, size_t rom_size,
+     g_autofree void *storage = NULL;
+     int64_t size;
  
- static inline bool aspeed_i2c_is_new_mode(AspeedI2CState *s)
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index b43afd250de4..7d5a53c4c015 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -1014,7 +1014,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+-    /* The block backend size should have already been 'validated' by
++    /*
++     * The block backend size should have already been 'validated' by
+      * the creation of the m25p80 object.
+      */
+     size = blk_getlength(blk);
+@@ -476,8 +477,10 @@ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
+     DeviceState *dev;
+     uint8_t *eeprom_buf = g_malloc0(32 * 1024);
  
-     sysbus_init_irq(sbd, &s->irq);
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops, s,
--                          "aspeed.i2c", 0x1000);
-+                          "aspeed.i2c", aic->mem_size);
-     sysbus_init_mmio(sbd, &s->iomem);
+-    /* The palmetto platform expects a ds3231 RTC but a ds1338 is
+-     * enough to provide basic RTC features. Alarms will be missing */
++    /*
++     * The palmetto platform expects a ds3231 RTC but a ds1338 is
++     * enough to provide basic RTC features. Alarms will be missing
++     */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
  
-     for (i = 0; i < aic->num_busses; i++) {
-@@ -1286,6 +1286,7 @@ static void aspeed_2400_i2c_class_init(ObjectClass *klass, void *data)
-     aic->pool_size = 0x800;
-     aic->pool_base = 0x800;
-     aic->bus_pool_base = aspeed_2400_i2c_bus_pool_base;
-+    aic->mem_size = 0x1000;
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+@@ -568,8 +571,10 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = bmc->soc;
+ 
+-    /* The romulus board expects Epson RX8900 I2C RTC but a ds1338 is
+-     * good enough */
++    /*
++     * The romulus board expects Epson RX8900 I2C RTC but a ds1338 is
++     * good enough
++     */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
  }
  
- static const TypeInfo aspeed_2400_i2c_info = {
-@@ -1320,6 +1321,7 @@ static void aspeed_2500_i2c_class_init(ObjectClass *klass, void *data)
-     aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
-     aic->check_sram = true;
-     aic->has_dma = true;
-+    aic->mem_size = 0x1000;
- }
+@@ -677,8 +682,10 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), TYPE_TMP105,
+                      0x4a);
  
- static const TypeInfo aspeed_2500_i2c_info = {
-@@ -1353,6 +1355,7 @@ static void aspeed_2600_i2c_class_init(ObjectClass *klass, void *data)
-     aic->pool_base = 0xC00;
-     aic->bus_pool_base = aspeed_2600_i2c_bus_pool_base;
-     aic->has_dma = true;
-+    aic->mem_size = 0x1000;
- }
+-    /* The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 is
+-     * good enough */
++    /*
++     * The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 is
++     * good enough
++     */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
  
- static const TypeInfo aspeed_2600_i2c_info = {
-@@ -1376,6 +1379,7 @@ static void aspeed_1030_i2c_class_init(ObjectClass *klass, void *data)
-     aic->pool_base = 0xC00;
-     aic->bus_pool_base = aspeed_2600_i2c_bus_pool_base;
-     aic->has_dma = true;
-+    aic->mem_size = 0x10000;
- }
- 
- static const TypeInfo aspeed_1030_i2c_info = {
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 11), 0x51,
 -- 
 2.45.2
 

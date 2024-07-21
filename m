@@ -1,108 +1,107 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1307560njc;
-        Sun, 21 Jul 2024 01:15:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVF8U13LxDZw2JE175zJNeT8LrA0ZfAfsoTNaUEvC/V9bsb7O1sbYamBCmQ9P8IxLVfrjbiNe9J5gysxD1AFHfQLW01M5M/
-X-Google-Smtp-Source: AGHT+IEiQEwBl+90KHlOFnzT4MeQXkHk9rlBLN6yCfqnAANLPAhwm4/0YvDI0gEdbNGmppb7Xezg
-X-Received: by 2002:a05:6214:da8:b0:6b5:4e70:5a19 with SMTP id 6a1803df08f44-6b95a700a7bmr71937096d6.50.1721549754295;
-        Sun, 21 Jul 2024 01:15:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721549754; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1307567njc;
+        Sun, 21 Jul 2024 01:15:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWZf+0kOT+jXAWnJ6YVLCZYPfSwV+IvTkitmaJ+4cq2XrIG7+IMlUVxM7JBKDfe6wPPSfLQebAnsT3q2YrTY8qpdmSMlta4
+X-Google-Smtp-Source: AGHT+IEBfcjwLzp5Xfy1UkRXprDuVRx70fh9vI05UNqYQLaJlvyUuBoF/7jVJVVvELcWgYrzkcQG
+X-Received: by 2002:a05:620a:1a28:b0:79e:fc9c:4bcb with SMTP id af79cd13be357-7a1a653828bmr417781385a.11.1721549757059;
+        Sun, 21 Jul 2024 01:15:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721549757; cv=none;
         d=google.com; s=arc-20160816;
-        b=JDRXNRxqNqFisZDA4v7WzGVNk6arC2NGy71i/NdkOTiqDTJLIX8OIon81/FhaRQ+mg
-         v6EsfYICfnHH19GkF52NTUsGEst3PT1SPM+iLBdr3Nn+fG9HIxzoUdMjmxXbtniE8lFF
-         MRtan2NPBZOzmQSaWoZhwh6MS0EGVgN1uuCS7RFiNHu4LnVGWdxNPowYNO9qlF7HrYSc
-         QckQfUK2wBZnEckdjZkY+EXGLy8KA4EDNetLLfA0rrTLqjRgjykvfifECHClpEe5UtPn
-         d8EOWwq6qP4K6JXV8qmmykO8gG2ty+lxXx0j2d4dgO3v0Ezj3BTzlnYhuyEzh7kma+ds
-         A+4g==
+        b=p0+F7sty3PEUws4Ao40Ew5V1JSMG6st42pVrTC+HINBVgBq4NMo/Lzw9vg2oc+K3HV
+         vww+YHF4GO7m7Xdms+i5D1RuW4Cg+mYGOXrv+79qKejrAA/xlYvgPdXjkeBlvbvuQ+/L
+         5WR+vD/gMm6fzm+SEg1CfKJpjMuhnX4d/fGF71lQ3kJWZHTpnF9hkNOsa28nEZI06q/z
+         1MbS2st1tq4tHgiBxIHTyttFl2fBgsKR5zyRf/h0sMvxnWV8+Gh5x1rJpayXmxeIXSwq
+         nyg0SY1IuCdVNh/wh5V4USjIQgj42MCspYnMh1Y4VcsiTKXwG60nqLYfI6xB6A8a8GuE
+         HmDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=lLbJP9DyMkfUAWEbUwWogewSltKiRPYyZpr9P1AUXeY=;
-        fh=LlOmBw4GbUlDF52fQ9hCMPVPTJOoo92XRnaOjjrcWE0=;
-        b=vKQKkuG6NCh+IYJ+021xnXqtwh7vFL3+42N0gHnTa18aHy+y/Ys+tZ0BmsJXLiXflt
-         GBMvQdmfWkXhIMY93nEwrwJcBv/AijCEQiMFgMgaaALyxCbkjafuE1p8nCRR2Mu8r6RR
-         hpbhelJdbBdfGPKUUF1RkXN2wkHRZ9ROq2ELOqkTmhnvL2i9AtOpq0jpOpoPVp600tOK
-         IK6QLbRLhjD0OJ4FxOQr5UGcIX6CFP4mMBbQboIxsEY6VM8Fs1o4eImeKeXpx4usDxNv
-         z/MXLD8dyDCrLxFZhTvhcLZ4Kdwv2YpGGWhYkHQMJXCBVyjX3iajXDlb5KB3tRu5Np+i
-         R3Tg==;
+        bh=ZFJk6N4bnlLhuN7xHBbX28ecMO0lvE2LS6iTIcHWdX8=;
+        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
+        b=BqFHVro+Lagd6GU41JWepcppmuD4cl+i+RYimQygfznV2NNLHVrQVYSSaUTg/Zufyn
+         4s8LY2M3hzFXnAhVqrxhmjWa/TL5Twty78aZZQOeGYMbWKywkXhggk59l9jy0gpg2YRC
+         5iHvJmXv6iIdVUJx9J0KUiI72sdjY0UjxmOVb4DDX2dWzIgvFp5GBwVIPbqJNl6PCgAX
+         QVu0FdDnZRDe5SOSyVfJfVfo6NR1HGWTOcYOf1libriY9pG/q2uj8FvR013tL8i4CrjG
+         3Xip1vmddA3RYOCqDrvB2xQxlUnX+rmsCCvem/FVCZzahGmNpn8AMrH6z4gHd/ICkbBQ
+         81yg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K0oDbcMB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MoaMipXj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b7ac9993c5si51449006d6.309.2024.07.21.01.15.54
+        by mx.google.com with ESMTPS id af79cd13be357-7a1990942b9si506725585a.633.2024.07.21.01.15.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Jul 2024 01:15:54 -0700 (PDT)
+        Sun, 21 Jul 2024 01:15:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K0oDbcMB;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MoaMipXj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sVRiS-000167-1J; Sun, 21 Jul 2024 04:14:48 -0400
+	id 1sVRiY-0001X5-In; Sun, 21 Jul 2024 04:14:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRi2-0000jr-OV
- for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiV-0001IT-6P
+ for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRi1-0001Ny-22
- for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:22 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiT-0001XQ-AQ
+ for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1721549660;
+ s=mimecast20190719; t=1721549686;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=lLbJP9DyMkfUAWEbUwWogewSltKiRPYyZpr9P1AUXeY=;
- b=K0oDbcMB3sgK6QXrZ4928JdvetfW8O8dYzkQHiZcGvqxD8Xc+lX1Wrroqcqh1lmyMtirZ6
- eTgdcGYIiS3eFl0Tj2yuVtw/ACRPnAOgGkomP7oIFYUA5KBnk2YPXoevZ74rg1iV2vZ/Ci
- ue0Hcy6TeSYTzEQO7LzTEoZDSAvHdVg=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=ZFJk6N4bnlLhuN7xHBbX28ecMO0lvE2LS6iTIcHWdX8=;
+ b=MoaMipXjZQUFzc4qlCpUncAD/SqLLvbnJ6HA+mPMkA39ybbrx7/xVKOCSc213X+bOxN6eM
+ sOwZwL3AvN1PjyUPHT2Awxxg/spiFY2bvkEC7H7+lg0s4ixZs6ZHBaZVc+B8AbMD4QNbl5
+ +yaoIy1Rfm/1QHLZdDmMDRtO6wGvBAk=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-522-Q518qlsLPmSP4jxVwF4HnA-1; Sun,
- 21 Jul 2024 04:14:14 -0400
-X-MC-Unique: Q518qlsLPmSP4jxVwF4HnA-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-139-CvNePszeP8e0jDzSSl8nMw-1; Sun,
+ 21 Jul 2024 04:14:42 -0400
+X-MC-Unique: CvNePszeP8e0jDzSSl8nMw-1
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CC4441955D45; Sun, 21 Jul 2024 08:14:12 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B4A8019560AB; Sun, 21 Jul 2024 08:14:40 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.37])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C5D3D1955D4D; Sun, 21 Jul 2024 08:14:10 +0000 (UTC)
+ id 4586C1955D47; Sun, 21 Jul 2024 08:14:39 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 03/15] aspeed: Load eMMC first boot area as a boot rom
-Date: Sun, 21 Jul 2024 10:13:49 +0200
-Message-ID: <20240721081401.425588-4-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 13/15] hw/i2c/aspeed: support to set the different memory size
+Date: Sun, 21 Jul 2024 10:13:59 +0200
+Message-ID: <20240721081401.425588-14-clg@redhat.com>
 In-Reply-To: <20240721081401.425588-1-clg@redhat.com>
 References: <20240721081401.425588-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,56 +116,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Txhv6Kb03lIm
+X-TUID: EeUbNjVu72G4
 
-From: Cédric Le Goater <clg@kaod.org>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The first boot area partition (64K) of the eMMC device should contain
-an initial boot loader (u-boot SPL). Load it as a ROM only if an eMMC
-device is available to boot from but no flash device is.
+According to the datasheet of ASPEED SOCs,
+an I2C controller owns 8KB of register space for AST2700,
+owns 4KB of register space for AST2600, AST2500 and AST2400,
+and owns 64KB of register space for AST1030.
 
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-Tested-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+It set the memory region size 4KB by default and it does not compatible
+register space for AST2700.
+
+Introduce a new class attribute to set the I2C controller memory size
+for different ASPEED SOCs.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ include/hw/i2c/aspeed_i2c.h | 2 +-
+ hw/i2c/aspeed_i2c.c         | 6 +++++-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 105b990233fa..756deb91efd1 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -364,6 +364,7 @@ static void aspeed_machine_init(MachineState *machine)
-     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
-     AspeedSoCClass *sc;
-     int i;
-+    DriveInfo *emmc0 = NULL;
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index a064479e599c..065b636d2999 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -283,7 +283,7 @@ struct AspeedI2CClass {
+     uint8_t *(*bus_pool_base)(AspeedI2CBus *);
+     bool check_sram;
+     bool has_dma;
+-
++    uint64_t mem_size;
+ };
  
-     bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
-     object_property_add_child(OBJECT(machine), "soc", OBJECT(bmc->soc));
-@@ -440,9 +441,8 @@ static void aspeed_machine_init(MachineState *machine)
-     }
+ static inline bool aspeed_i2c_is_new_mode(AspeedI2CState *s)
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index b43afd250de4..7d5a53c4c015 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -1014,7 +1014,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
  
-     if (bmc->soc->emmc.num_slots) {
--        sdhci_attach_drive(&bmc->soc->emmc.slots[0],
--                           drive_get(IF_SD, 0, bmc->soc->sdhci.num_slots),
--                           true);
-+        emmc0 = drive_get(IF_SD, 0, bmc->soc->sdhci.num_slots);
-+        sdhci_attach_drive(&bmc->soc->emmc.slots[0], emmc0, true);
-     }
+     sysbus_init_irq(sbd, &s->irq);
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops, s,
+-                          "aspeed.i2c", 0x1000);
++                          "aspeed.i2c", aic->mem_size);
+     sysbus_init_mmio(sbd, &s->iomem);
  
-     if (!bmc->mmio_exec) {
-@@ -452,6 +452,8 @@ static void aspeed_machine_init(MachineState *machine)
-         if (fmc0) {
-             uint64_t rom_size = memory_region_size(&bmc->soc->spi_boot);
-             aspeed_install_boot_rom(bmc, fmc0, rom_size);
-+        } else if (emmc0) {
-+            aspeed_install_boot_rom(bmc, blk_by_legacy_dinfo(emmc0), 64 * KiB);
-         }
-     }
+     for (i = 0; i < aic->num_busses; i++) {
+@@ -1286,6 +1286,7 @@ static void aspeed_2400_i2c_class_init(ObjectClass *klass, void *data)
+     aic->pool_size = 0x800;
+     aic->pool_base = 0x800;
+     aic->bus_pool_base = aspeed_2400_i2c_bus_pool_base;
++    aic->mem_size = 0x1000;
+ }
  
+ static const TypeInfo aspeed_2400_i2c_info = {
+@@ -1320,6 +1321,7 @@ static void aspeed_2500_i2c_class_init(ObjectClass *klass, void *data)
+     aic->bus_pool_base = aspeed_2500_i2c_bus_pool_base;
+     aic->check_sram = true;
+     aic->has_dma = true;
++    aic->mem_size = 0x1000;
+ }
+ 
+ static const TypeInfo aspeed_2500_i2c_info = {
+@@ -1353,6 +1355,7 @@ static void aspeed_2600_i2c_class_init(ObjectClass *klass, void *data)
+     aic->pool_base = 0xC00;
+     aic->bus_pool_base = aspeed_2600_i2c_bus_pool_base;
+     aic->has_dma = true;
++    aic->mem_size = 0x1000;
+ }
+ 
+ static const TypeInfo aspeed_2600_i2c_info = {
+@@ -1376,6 +1379,7 @@ static void aspeed_1030_i2c_class_init(ObjectClass *klass, void *data)
+     aic->pool_base = 0xC00;
+     aic->bus_pool_base = aspeed_2600_i2c_bus_pool_base;
+     aic->has_dma = true;
++    aic->mem_size = 0x10000;
+ }
+ 
+ static const TypeInfo aspeed_1030_i2c_info = {
 -- 
 2.45.2
 

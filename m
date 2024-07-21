@@ -1,172 +1,154 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1168622njc;
-        Sat, 20 Jul 2024 15:11:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUKQ6BxvwdX82MNKt1/LaTHFV9qtKOedHX27DI8PiK55mosZTcXa3QJNGKde+WylcBRyc936CdrXHdWUY0htiE4kKNXX3yY
-X-Received: by 2002:a5d:4e41:0:b0:366:e09c:56be with SMTP id ffacd0b85a97d-36873dc24admr4430462f8f.6.1721513512628;
-        Sat, 20 Jul 2024 15:11:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721513512; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1307264njc;
+        Sun, 21 Jul 2024 01:14:55 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUljgL+TM3yiAon/cL6+VpfjkCKUiMfKITGAwJVyMtovrV6mMR+PJnEgwbE5HDOBNLGgreMasn6K2nigoY5Ud0rdDcVJ9/K
+X-Google-Smtp-Source: AGHT+IEB1xc82+HHTyIVUylFG62br8iAc3BPa162HkTJsNPl4nJ6z4N/RlwhuNrIXszM8ubZi9xf
+X-Received: by 2002:ac8:5703:0:b0:444:fe2a:da5 with SMTP id d75a77b69052e-44fa53818b2mr46315861cf.59.1721549695300;
+        Sun, 21 Jul 2024 01:14:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721549695; cv=none;
         d=google.com; s=arc-20160816;
-        b=dSCy2SH5albyXY4STSvDIVVnSszgD2TpVd002ORnfSN4WO68uFjkdUlxlP/Q/qtKdf
-         LLNJDK4yASHCUl/9S4tAfDuSCGXlJE2pbccYRAugfQcxBQXRnm5+LvRv5lN84zoNF0JY
-         w3yXkWA2yhHHNndZOrCX4HWrKn9f52N5yDvgA378yfRNflYKHQDBIyH5cWrvl7e3a9CN
-         Rs+E3VMvI/FR05wOwEf35ueKRh9d7tPRgm4fMwZsjKoVml4XkZ8M5nVb3KGOX8vOdPca
-         dqp9VTXGN+RWDjeiEjRsRrrcjrp1nCzNTMsJsjeQ+9A4cwTjZNADYn5ieQZpCV+nnBzW
-         MLQQ==
+        b=PMc8/jksHck7PNSJ4BBdjMPlkGNAIOPCA1gL0CjYZ0ufW7Avf+YZom4bFHOb45ctj5
+         PL4JS8JV8R0wLHySOD3hMj4ZR4Hq25Wj1blg+6v31eU7R5ixxfa8AVJNEzboKHF6cXdN
+         is5aDHjMX9AVPOXrBMADwQjX21a9Ew23lDzHzKZfUfYGeW2q1+akAG5Wgo/nSCn9Sxmf
+         DKqeQMHsk1WtzZgOwDnHWplCd0E2w7TUrnT7k+YzgOPqX+DxJgehS2903xEjBMDTQ6BR
+         I7j3haViBvW6dP7sZjsNjA0O1p65h0bOFya34F+VL+Z7DIu7CpRwyIBGrLuqwvGaCcDh
+         ljnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=FDH9b/hMRvMUcJMBkMcovYtJEAbv1WVdTz2/dbvxC1k=;
-        fh=0L2FAfwUkDo3d6mOEavVb3yVAgnqJ2sSAi+ltPRX0IE=;
-        b=TtBqm4f5lCiIdjEAz6PZEvoxsMw8oR/9duKPHICOFP0+Q3Xmz9pRKg4TzROc+Md8Hp
-         C1OG+vUCX868LwuSBuFuZE1oSe9wBivB4QaFJU1eP8FyPyDP3yPuffvGyNHoBNjuVTph
-         6uuTa8fiE3M7m4QqsbH/q3HN8VlpXDf85iivruKBvKfqWKcPNJvst8Dac+SX7hCW9eiG
-         C9QmXx27WH9ty0r3RO+r+U+J2LIQmoBuKCTtNrVnkcCHs0D5auJxAmCEPf0OIQ0TZ14e
-         BvMuizAVfygIH7TgzSVyT+C5XI1yQdu7keBrrj6t7nBJ26wu9f7NF55erni9ZzZi/ir7
-         YWPQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=ZY1yFMZpxDed399Qr48TOhVB82T6ImNnvzW360N3de4=;
+        fh=vGQXpJ5E1KqRT7z3XgxV+a4vkBV8GgQh3HWVaysubJI=;
+        b=QiiL0BByECIf1CugvUvSmp0nzg47rVAQEPYy+HlsxCapARvj4GPoxF0AQ0Y8UFZLVu
+         /6wapjLRvzelyBZafe0Oa0ZG1Pn4hH/GSRGWrHGNp/TEUrRms2aEbdmsHup/vayQPjyw
+         yGpB/KEmBuskcIDBmqJDxoitipKh8GiuEUmUQepNnneYDq/2wfrUyXmYSYcf0eNC7PQB
+         3JV7Y7Z+3GSCVypdCryy6C1BVo5OBxSFF95Adk4ftpQj4N53aMo1u6jge4Xwdrb/8pKO
+         6qTzTvx4F9KBJMooLYSI7dBzPBX6GWV3w2sHVFuEuQttYqVbeHxFcPGggSVrf4+oXHOG
+         3GdQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=uH0D7Ecc;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <smostafa@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-427d2a11237sor1446635e9.1.2024.07.20.15.11.52
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Amc6tD2V;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-44f9ccf835asi50205041cf.140.2024.07.21.01.14.55
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 20 Jul 2024 15:11:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 21 Jul 2024 01:14:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=uH0D7Ecc;
-       spf=pass (google.com: domain of smostafa@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=smostafa@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1721513512; x=1722118312; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=FDH9b/hMRvMUcJMBkMcovYtJEAbv1WVdTz2/dbvxC1k=;
-        b=uH0D7Eccx66eNI65IcSN+HtujeLgpOBLyTQGujK2kIjnTFQqTZBXvx8wBnyjq3ZmsI
-         lgFladIGrlZcYqyznBnaTI9Q8GXCm0QkeqHo4mBG1zMGJbcY3eXpmTDVugIOlkLFQ/tA
-         U3/1oA5E6IRzxzmGpwbkcDlA1YiOGZKhQE1QETQoiqCA3pM/hFtTQBT2SURpGuorRyBG
-         W7R8qqeRA/OAyHw+dGDSclAvTI/vFes4bSklMv7zmP1yhlwDfIGPBFthqoG4QHcM597v
-         QkauiDCkn/K4zjziypYkA2fZCQTXsLS9d1GWiAx5twL383TgI1cPVtppu/TjU6gQLYAA
-         QTPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721513512; x=1722118312;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=FDH9b/hMRvMUcJMBkMcovYtJEAbv1WVdTz2/dbvxC1k=;
-        b=OGgEF+39l80S/vLgxM1JeQRsRr790TcBcS2tlnyO64eKO+2Fa5c/mRlQ5CT9+otGdM
-         kA8rfmP/MZPE0Nyj2Q0Kuv6omWXIIj+Ou6f+fuFCMwlEVcyNe9zxF9z3JNmA7iLEDWvS
-         JY52dPuGD2viHWYw+Qt9hFXQACx3aongzbHiT1gF333wGN/+n2sKXgDZACLse6RYuMnQ
-         5cQ9/eZdPsUaL83gmp0KrA86Ad9Z/rvDs6mH+FG0TfqNpu7mygxHgyteneBsb3ZoQA2L
-         R8X5C7DSQ1brSm9GSecupJPy42gbiowo9tejeWonQ2q43Wvq6uvHgNCvyhyM+9+A6660
-         mriw==
-X-Forwarded-Encrypted: i=1; AJvYcCXCUWEF2edWSYJII8eNR6M1UtNQGVC/h32ymmHzfbVla7lugkg6BOYZD1/qL/mmzT61bneNyCiuuqMoh67rOZnL421QkKAi
-X-Gm-Message-State: AOJu0YztLrABzuQ+WQKq0wH1rCNR7kxZB3fjKp3BJ0njlz7A7hlsh4MA
-	V31UkRdPeqWGedFv/irK+tOIcmNKHBK2dGOc22RRZ0Y4++meL9tWSgAnAl9bMg==
-X-Google-Smtp-Source: AGHT+IFzrZC0RbZzhipr9RyQZLh69/YXpKDOqNrWXbGdRhb9dEzhJG87B3tL4aEpSQKGpCN6Iy+84A==
-X-Received: by 2002:a05:600c:1d0a:b0:421:7caf:eb69 with SMTP id 5b1f17b1804b1-427dbb48583mr1086455e9.4.1721513511668;
-        Sat, 20 Jul 2024 15:11:51 -0700 (PDT)
-Return-Path: <smostafa@google.com>
-Received: from google.com (180.232.140.34.bc.googleusercontent.com. [34.140.232.180])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-36878695a52sm4670208f8f.64.2024.07.20.15.11.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 20 Jul 2024 15:11:51 -0700 (PDT)
-Date: Sat, 20 Jul 2024 22:11:47 +0000
-From: Mostafa Saleh <smostafa@google.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Julien Grall <julien@xen.org>, eric.auger@redhat.com,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.bennee@linaro.org,
-	maz@kernel.org, nicolinc@nvidia.com, richard.henderson@linaro.org,
-	marcin.juszkiewicz@linaro.org
-Subject: Re: [PATCH v5 00/18] SMMUv3 nested translation support
-Message-ID: <Zpw2I2ATUqDt19qv@google.com>
-References: <20240715084519.1189624-1-smostafa@google.com>
- <20240717150931.GA3988597@myrica>
- <1e7e750b-61bd-4822-8742-124bdf66a7c4@redhat.com>
- <5684927d-d890-42be-841c-ece681502503@xen.org>
- <a0ee8ba3-174f-4d00-807f-31584cba42d4@xen.org>
- <CAFEAcA8T3Yrj_R-B2oUW_Uu3u5HZs4RY1P+A7zF+8xWJnmtpQA@mail.gmail.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Amc6tD2V;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sVRi4-0000mI-OJ; Sun, 21 Jul 2024 04:14:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRhx-0000hx-K0
+ for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRhv-0001Mn-Ft
+ for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1721549653;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ZY1yFMZpxDed399Qr48TOhVB82T6ImNnvzW360N3de4=;
+ b=Amc6tD2VImDDhGzX/DGnthrciOvCbuf9gmIbA3EwM+e0sb40OyVDs6yeUDNgth3wsqTOzO
+ wSr1aDO1M849u69vJtKpFNkJJUNTFwo5uQbKHs1mIJi4EZzcZUXAZKexfrIt80uPApxRMO
+ E0DNRiYMjfQ+fwXi3Kq+ZOrAAdqK5EU=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-41-2SVm6Eu9MaKlmZLti_He8w-1; Sun,
+ 21 Jul 2024 04:14:09 -0400
+X-MC-Unique: 2SVm6Eu9MaKlmZLti_He8w-1
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CF1A51956080; Sun, 21 Jul 2024 08:14:07 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.39.192.37])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 40B761955D47; Sun, 21 Jul 2024 08:14:05 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PULL 01/15] aspeed/smc: Fix possible integer overflow
+Date: Sun, 21 Jul 2024 10:13:47 +0200
+Message-ID: <20240721081401.425588-2-clg@redhat.com>
+In-Reply-To: <20240721081401.425588-1-clg@redhat.com>
+References: <20240721081401.425588-1-clg@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAFEAcA8T3Yrj_R-B2oUW_Uu3u5HZs4RY1P+A7zF+8xWJnmtpQA@mail.gmail.com>
-X-TUID: B5co7gertM0l
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tW9yl1uCe6fM
 
-Hi Peter,
+Coverity reports a possible integer overflow because routine
+aspeeed_smc_hclk_divisor() has a codepath returning 0, which could
+lead to an integer overflow when computing variable 'hclk_shift' in
+the caller aspeed_smc_dma_calibration().
 
-On Fri, Jul 19, 2024 at 04:57:18PM +0100, Peter Maydell wrote:
-> On Fri, 19 Jul 2024 at 16:36, Julien Grall <julien@xen.org> wrote:
-> >
-> > Hi,
-> >
-> > On 18/07/2024 10:43, Julien Grall wrote:
-> > > Hi Eric,
-> > >
-> > > On 17/07/2024 18:43, Eric Auger wrote:
-> > >> Hi Peter, Richard,
-> > >>
-> > >> On 7/17/24 17:09, Jean-Philippe Brucker wrote:
-> > >>> On Mon, Jul 15, 2024 at 08:45:00AM +0000, Mostafa Saleh wrote:
-> > >>>> Currently, QEMU supports emulating either stage-1 or stage-2 SMMUs
-> > >>>> but not nested instances.
-> > >>>> This patch series adds support for nested translation in SMMUv3,
-> > >>>> this is controlled by property “arm-smmuv3.stage=nested”, and
-> > >>>> advertised to guests as (IDR0.S1P == 1 && IDR0.S2P == 2)
-> > >>> For the whole series (3-9, 11, 12, 15, 16, 18):
-> > >>>
-> > >>> Reviewed-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > >>>
-> > >>> (and I think patch 16 is missing Eric's R-b)
-> > >>
-> > >> Jean-Philippe and I have followed up the progress of this series,
-> > >> Mostafa took into account all our comments and all the patches were
-> > >> reviewed. It seems to be in a pretty decent state so if you don't have
-> > >> any objection, please consider pulling it for 9.1.
-> > >>
-> > >> On my end I did some testing in non nesting mode with virtio-net/vhost
-> > >> and I have not noticed any regression.
-> > >> Would be nice if someone could send his T-b for the nested part though
-> > >> (Julien?).
-> > >
-> > > I haven't yet tried the latest version. I will do that in the next
-> > > couple of days.
-> > I see this is already merged. If this still matters:
-> >
-> > Tested-by: Julien Grall <jgrall@amazon.com>
-> 
-> We can't retrospectively add the tag, but the testing itself
-> is still important -- thanks for doing it.
-> 
-> Q: is there any reason not to:
->  (a) change the default to "nested" rather than "1"
->  (b) make the virt board (for new virt machine versions) use
->      "nested"?
-> 
-> AIUI "nested" should be a superset of "stage-1 only", the guest
-> can just ignore stage-2 if it doesn't care about it. Or is
-> there a performance hit from having stage-2 around even if the
-> guest doesn't enable it?
+The value passed to aspeed_smc_hclk_divisor() is always between 0 and
+15 and, in this case, there is always a matching hclk divisor. Remove
+the return 0 and use g_assert_not_reached() instead.
 
-I didn’t do benchmarks, but from the code, I don’t think there
-would be a difference from using stage-1 only or nested stages
-with stage-1 config.
-I didn’t make “nested” the default stage or used it for the virt
-board, as I was worried about compatibility issues (I think that
-breaks backward migration), but otherwise I don’t see issues.
+Fixes: Coverity CID 1547822
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/ssi/aspeed_smc.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-But if I understand correctly, setting that for virt board 9.1
-(virt_machine_9_1_options) would be fine?
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 49205ab76d38..f39fb85a35e9 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -789,8 +789,7 @@ static uint8_t aspeed_smc_hclk_divisor(uint8_t hclk_mask)
+         }
+     }
+ 
+-    aspeed_smc_error("invalid HCLK mask %x", hclk_mask);
+-    return 0;
++    g_assert_not_reached();
+ }
+ 
+ /*
+-- 
+2.45.2
 
-Thanks,
-Mostafa
-
-> 
-> thanks
-> -- PMM

@@ -1,161 +1,400 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1825599njc;
-        Mon, 22 Jul 2024 03:36:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXD8Ij3ZgOLtE8FKAZejNZ1JqzquWjmBTx3xiC2fNrzwRruFYFRYf3nlNwDj/+15Sxkm7wDSuvoW5lm3lIEy3VdzId9cbq2
-X-Google-Smtp-Source: AGHT+IGCkEGapoh15EsO5hNKmvt/FGuPzay8M0diwzPZEV1mZWErPq15ALHut6oKSL3Q7B+BST4s
-X-Received: by 2002:a05:6902:228d:b0:e08:899e:e926 with SMTP id 3f1490d57ef6-e08899ef67amr5308358276.15.1721644563252;
-        Mon, 22 Jul 2024 03:36:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721644563; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Lhyu3r9jQK0gDYu8f7nBcIhD0ks1Wq0wtqMjl+IJLRpiaCuBSH9cSn84pp3GCkqQEO
-         DPXrc7lWnjBwF0j0vk3y/JAEhFRoIvi7o9mVgspzQpRGIb6S3lflz0F73hH39dQwe9S+
-         4jJ8c1TdvwcyiIDkhcb+YvDV/JuHO4u5mgErhsI1+pulqf053vEMjSneLu67UoIRcwsX
-         q2Q30/HalqRFVNmXLbbZOUzU4VDJtQeJyjbV2wA7PajW86U7HJ6BeDJKGipJ4WtVMRuf
-         2HBrEuqcIw+ftkcg2qzuqkgB8X7t2J/CyRyEd9BZAs3s9RoOUaV3aapED6dzM97i/0+j
-         jrkA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :mime-version:date:dkim-signature;
-        bh=FaQCOP+IWpEVPIVvBuJpa+7D6aB2VEzvLHq1vpTRfXs=;
-        fh=XMENupKldtkierl5LsuHGulRsRmvU3e3CB/+bVXJ0bQ=;
-        b=AtqzeOdZZzJnf54lFyARVSUJzlRj7unJQ8DscHQ7qgi7Nj/P3M43FCL0cUwsl3nNNn
-         fPIXBTkRy4wh+ACsuMSm9Av6MSpFoyrOJmqM0EpcbHVW0Jouw51r4rUCqWVIB/jdiVA7
-         OQHOtgMKEFps2txBsf9dOXwYLyOkR9GfMNWgV1XGfL7DVZXIp98Ip+D8uNY+pPxL6LP/
-         YwcuifRgolimqA/mIJgNwmVYBBkr+JUjRMYAMbmvTnObm11bzGomAQGDqUdMwYvoquoX
-         TgEUphZtUYlVnuCTKt9zZcfIBfq8vAA5SI2sTp/g+j1Hi8JKO4bMy0PdC4vNNnE0Rimh
-         eonw==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=qvav7wZB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b7acaf01b9si71397416d6.428.2024.07.22.03.36.03
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jul 2024 03:36:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=qvav7wZB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sVqOU-00042F-RT; Mon, 22 Jul 2024 06:35:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3ADaeZggKCCEPJLPQ7C7DLLDIB.9LJNBJR-7OJKLKDKR.LOD@flex--smostafa.bounces.google.com>)
- id 1sVqOT-00040v-Dx
- for qemu-arm@nongnu.org; Mon, 22 Jul 2024 06:35:49 -0400
-Received: from mail-ej1-x649.google.com ([2a00:1450:4864:20::649])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3ADaeZggKCCEPJLPQ7C7DLLDIB.9LJNBJR-7OJKLKDKR.LOD@flex--smostafa.bounces.google.com>)
- id 1sVqOR-0005AT-Pc
- for qemu-arm@nongnu.org; Mon, 22 Jul 2024 06:35:49 -0400
-Received: by mail-ej1-x649.google.com with SMTP id
- a640c23a62f3a-a77e59a53c4so334048466b.1
- for <qemu-arm@nongnu.org>; Mon, 22 Jul 2024 03:35:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1721644545; x=1722249345; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=FaQCOP+IWpEVPIVvBuJpa+7D6aB2VEzvLHq1vpTRfXs=;
- b=qvav7wZBaNGuq4YvPij8WHlQh3r5k4FsWJi4vRvWUcIo7fdhCIgjdpGldqgmD9Avjg
- SJuGOZGirxBqxxRVfP3idW73sflN6roSMLwq7c4m8PwAaFqGwvcHjTPVNurEn548UVes
- d0ZCEj82nnl8YDRrLQXr54bnkRqRXxRcNRyRr3kO1X9upOpZoxzH3Kn2zdpWAkujnCk6
- q0rIBYcLo1lmT7mVvn3fCWpjJ+FXjrvP5JtTnkaGY39uJEN9p2oHuCdh8qaF20mCdzt6
- NqcrmrACAxbdNCMcscWCys+RKh7a9uDB82a64GPOYoyHxj7xA6soHnEsWO/+cI/rDsuH
- kAZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721644545; x=1722249345;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=FaQCOP+IWpEVPIVvBuJpa+7D6aB2VEzvLHq1vpTRfXs=;
- b=huZs10SyIeCvf9VsxdnPeGF9A8s8rSmf3A4R3bK1iTtW/NXVWeunxcBALC/j1FndZB
- 2zrsZHNCN6Up3wCrmzTwBMPrne9BXiBIuO/JUPNu4unin04M5C8PB7/0g764am1JjlFy
- a2UdrQ8jQai0iE0Wwh8wxQqenB9F9PHhV/PTTXBbxmycJXOYkZgOrQjX/yhhCHj6TP6u
- 6idvXOn7Kbs6Ek38zqwBzy2AsokN9nBygLPgKw5w6Lmdrit9/2+GTYRwxKWp6KfHepIs
- d0qtiPUxr7wrDW1hYS3/RmT8VSZzB5E6pErg6FyepKKlz1hGefEum8yQHgHff7VdeNT2
- vi2Q==
-X-Gm-Message-State: AOJu0YyGZU0URWj/FoldCgsI57OtrVvtDt2BbLQtFGA9vQV71dodTbK9
- UYNH7y4ydJZp8rdIstlxDUqW8s3OsvRrK4GxBUbQBqvOWTWuLgcYs2F7yHwlZ+Unjn4wG6D5JP4
- dGJx6Ccuux+oIWFFbFZOmENgy7cOwQkwm3TW2ghmq76hkgp3lw5rzhIRnBKJcgPGXzmW49QjM8J
- KZFxanx1D93JzSmUXwxpWWR4VORb0oISdH1W4JOkI=
-X-Received: from mostafa.c.googlers.com
- ([fda3:e722:ac3:cc00:28:9cb1:c0a8:333c])
- (user=smostafa job=sendgmr) by 2002:a17:906:5fc6:b0:a77:fadc:6815 with SMTP
- id a640c23a62f3a-a7a41c1d96emr484366b.0.1721644544900; Mon, 22 Jul 2024
- 03:35:44 -0700 (PDT)
-Date: Mon, 22 Jul 2024 10:35:30 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.45.2.1089.g2a221341d9-goog
-Message-ID: <20240722103531.2377348-1-smostafa@google.com>
-Subject: [PATCH] hw/arm/smmuv3: Assert input to oas2bits() is valid
-From: Mostafa Saleh <smostafa@google.com>
-To: qemu-arm@nongnu.org, eric.auger@redhat.com, peter.maydell@linaro.org, 
- qemu-devel@nongnu.org
-Cc: jean-philippe@linaro.org, Mostafa Saleh <smostafa@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::649;
- envelope-from=3ADaeZggKCCEPJLPQ7C7DLLDIB.9LJNBJR-7OJKLKDKR.LOD@flex--smostafa.bounces.google.com;
- helo=mail-ej1-x649.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: i1g6DhKidWOE
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a7a3c922d15sm412555266b.168.2024.07.22.04.04.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 22 Jul 2024 04:04:14 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id D9CDF5F948;
+	Mon, 22 Jul 2024 12:04:13 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Gustavo Bueno Romero <gustavo.romero@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PULL 03/16] gdbstub: Re-factor gdb command extensions
+Date: Mon, 22 Jul 2024 12:04:00 +0100
+Message-Id: <20240722110413.118418-4-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240722110413.118418-1-alex.bennee@linaro.org>
+References: <20240722110413.118418-1-alex.bennee@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: edy+SvoNVccq
 
-Coverity has spotted a possible problem with the OAS handling
-(CID 1558464), where the error return of oas2bits() -1 is not
-checked, which can cause an overflow in oas value.
+Coverity reported a memory leak (CID 1549757) in this code and its
+admittedly rather clumsy handling of extending the command table.
+Instead of handing over a full array of the commands lets use the
+lighter weight GPtrArray and simply test for the presence of each
+entry as we go. This avoids complications of transferring ownership of
+arrays and keeps the final command entries as static entries in the
+target code.
 
-oas2bits() is only called with valid inputs, harden the function
-to assert that.
+Cc: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Gustavo Bueno Romero <gustavo.romero@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20240718094523.1198645-4-alex.bennee@linaro.org>
 
-Reported-By: Peter Maydell <peter.maydell@linaro.org>
-Link: https://lore.kernel.org/qemu-devel/CAFEAcA-H=n-3mHC+eL6YjfL1m+x+b+Fk3mkgZbN74WNxifFVow@mail.gmail.com/
-Signed-off-by: Mostafa Saleh <smostafa@google.com>
----
- hw/arm/smmuv3-internal.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index 0ebf2eebcf..b6b7399347 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -599,7 +599,8 @@ static inline int oas2bits(int oas_field)
-     case 5:
-         return 48;
-     }
--    return -1;
-+
-+    g_assert_not_reached();
+diff --git a/include/gdbstub/commands.h b/include/gdbstub/commands.h
+index f3058f9dda..40f0514fe9 100644
+--- a/include/gdbstub/commands.h
++++ b/include/gdbstub/commands.h
+@@ -74,23 +74,28 @@ int gdb_put_packet(const char *buf);
+ 
+ /**
+  * gdb_extend_query_table() - Extend query table.
+- * @table: The table with the additional query packet handlers.
+- * @size: The number of handlers to be added.
++ * @table: GPtrArray of GdbCmdParseEntry entries.
++ *
++ * The caller should free @table afterwards
+  */
+-void gdb_extend_query_table(GdbCmdParseEntry *table, int size);
++void gdb_extend_query_table(GPtrArray *table);
+ 
+ /**
+  * gdb_extend_set_table() - Extend set table.
+- * @table: The table with the additional set packet handlers.
+- * @size: The number of handlers to be added.
++ * @table: GPtrArray of GdbCmdParseEntry entries.
++ *
++ * The caller should free @table afterwards
+  */
+-void gdb_extend_set_table(GdbCmdParseEntry *table, int size);
++void gdb_extend_set_table(GPtrArray *table);
+ 
+ /**
+  * gdb_extend_qsupported_features() - Extend the qSupported features string.
+  * @qsupported_features: The additional qSupported feature(s) string. The string
+  * should start with a semicolon and, if there are more than one feature, the
+- * features should be separate by a semiocolon.
++ * features should be separate by a semicolon.
++ *
++ * The caller should free @qsupported_features afterwards if
++ * dynamically allocated.
+  */
+ void gdb_extend_qsupported_features(char *qsupported_features);
+ 
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index da22d04121..757b1fae92 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -359,8 +359,8 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu);
+ void arm_translate_init(void);
+ 
+ void arm_cpu_register_gdb_commands(ARMCPU *cpu);
+-void aarch64_cpu_register_gdb_commands(ARMCPU *cpu, GString *, GArray *,
+-                                       GArray *);
++void aarch64_cpu_register_gdb_commands(ARMCPU *cpu, GString *,
++                                       GPtrArray *, GPtrArray *);
+ 
+ void arm_restore_state_to_opc(CPUState *cs,
+                               const TranslationBlock *tb,
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index b9ad0a063e..b7be8e5a44 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -1614,18 +1614,21 @@ static void handle_query_thread_extra(GArray *params, void *user_ctx)
+     gdb_put_strbuf();
  }
  
- /* CD fields */
+-static char *extended_qsupported_features;
+-void gdb_extend_qsupported_features(char *qsupported_features)
+-{
+-    /*
+-     * We don't support different sets of CPU gdb features on different CPUs yet
+-     * so assert the feature strings are the same on all CPUs, or is set only
+-     * once (1 CPU).
+-     */
+-    g_assert(extended_qsupported_features == NULL ||
+-             g_strcmp0(extended_qsupported_features, qsupported_features) == 0);
+ 
+-    extended_qsupported_features = qsupported_features;
++static char **extra_query_flags;
++
++void gdb_extend_qsupported_features(char *qflags)
++{
++    if (!extra_query_flags) {
++        extra_query_flags = g_new0(char *, 2);
++        extra_query_flags[0] = g_strdup(qflags);
++    } else if (!g_strv_contains((const gchar * const *) extra_query_flags,
++                                qflags)) {
++        int len = g_strv_length(extra_query_flags);
++        extra_query_flags = g_realloc_n(extra_query_flags, len + 2,
++                                        sizeof(char *));
++        extra_query_flags[len] = g_strdup(qflags);
++    }
+ }
+ 
+ static void handle_query_supported(GArray *params, void *user_ctx)
+@@ -1668,8 +1671,11 @@ static void handle_query_supported(GArray *params, void *user_ctx)
+ 
+     g_string_append(gdbserver_state.str_buf, ";vContSupported+;multiprocess+");
+ 
+-    if (extended_qsupported_features) {
+-        g_string_append(gdbserver_state.str_buf, extended_qsupported_features);
++    if (extra_query_flags) {
++        int extras = g_strv_length(extra_query_flags);
++        for (int i = 0; i < extras; i++) {
++            g_string_append(gdbserver_state.str_buf, extra_query_flags[i]);
++        }
+     }
+ 
+     gdb_put_strbuf();
+@@ -1753,39 +1759,58 @@ static const GdbCmdParseEntry gdb_gen_query_set_common_table[] = {
+     },
+ };
+ 
+-/* Compares if a set of command parsers is equal to another set of parsers. */
+-static bool cmp_cmds(GdbCmdParseEntry *c, GdbCmdParseEntry *d, int size)
++/**
++ * extend_table() - extend one of the command tables
++ * @table: the command table to extend (or NULL)
++ * @extensions: a list of GdbCmdParseEntry pointers
++ *
++ * The entries themselves should be pointers to static const
++ * GdbCmdParseEntry entries. If the entry is already in the table we
++ * skip adding it again.
++ *
++ * Returns (a potentially freshly allocated) GPtrArray of GdbCmdParseEntry
++ */
++static GPtrArray *extend_table(GPtrArray *table, GPtrArray *extensions)
+ {
+-    for (int i = 0; i < size; i++) {
+-        if (!(c[i].handler == d[i].handler &&
+-            g_strcmp0(c[i].cmd, d[i].cmd) == 0 &&
+-            c[i].cmd_startswith == d[i].cmd_startswith &&
+-            g_strcmp0(c[i].schema, d[i].schema) == 0)) {
++    if (!table) {
++        table = g_ptr_array_new();
++    }
+ 
+-            /* Sets are different. */
+-            return false;
++    for (int i = 0; i < extensions->len; i++) {
++        gpointer entry = g_ptr_array_index(extensions, i);
++        if (!g_ptr_array_find(table, entry, NULL)) {
++            g_ptr_array_add(table, entry);
+         }
+     }
+ 
+-    /* Sets are equal, i.e. contain the same command parsers. */
+-    return true;
++    return table;
+ }
+ 
+-static GdbCmdParseEntry *extended_query_table;
+-static int extended_query_table_size;
+-void gdb_extend_query_table(GdbCmdParseEntry *table, int size)
++/**
++ * process_extended_table() - run through an extended command table
++ * @table: the command table to check
++ * @data: parameters
++ *
++ * returns true if the command was found and executed
++ */
++static bool process_extended_table(GPtrArray *table, const char *data)
+ {
+-    /*
+-     * We don't support different sets of CPU gdb features on different CPUs yet
+-     * so assert query table is the same on all CPUs, or is set only once
+-     * (1 CPU).
+-     */
+-    g_assert(extended_query_table == NULL ||
+-             (extended_query_table_size == size &&
+-              cmp_cmds(extended_query_table, table, size)));
++    for (int i = 0; i < table->len; i++) {
++        const GdbCmdParseEntry *entry = g_ptr_array_index(table, i);
++        if (process_string_cmd(data, entry, 1)) {
++            return true;
++        }
++    }
++    return false;
++}
++
+ 
+-    extended_query_table = table;
+-    extended_query_table_size = size;
++/* Ptr to GdbCmdParseEntry */
++static GPtrArray *extended_query_table;
++
++void gdb_extend_query_table(GPtrArray *new_queries)
++{
++    extended_query_table = extend_table(extended_query_table, new_queries);
+ }
+ 
+ static const GdbCmdParseEntry gdb_gen_query_table[] = {
+@@ -1880,20 +1905,12 @@ static const GdbCmdParseEntry gdb_gen_query_table[] = {
+ #endif
+ };
+ 
+-static GdbCmdParseEntry *extended_set_table;
+-static int extended_set_table_size;
+-void gdb_extend_set_table(GdbCmdParseEntry *table, int size)
+-{
+-    /*
+-     * We don't support different sets of CPU gdb features on different CPUs yet
+-     * so assert set table is the same on all CPUs, or is set only once (1 CPU).
+-     */
+-    g_assert(extended_set_table == NULL ||
+-             (extended_set_table_size == size &&
+-              cmp_cmds(extended_set_table, table, size)));
++/* Ptr to GdbCmdParseEntry */
++static GPtrArray *extended_set_table;
+ 
+-    extended_set_table = table;
+-    extended_set_table_size = size;
++void gdb_extend_set_table(GPtrArray *new_set)
++{
++    extended_set_table = extend_table(extended_set_table, new_set);
+ }
+ 
+ static const GdbCmdParseEntry gdb_gen_set_table[] = {
+@@ -1924,26 +1941,28 @@ static const GdbCmdParseEntry gdb_gen_set_table[] = {
+ 
+ static void handle_gen_query(GArray *params, void *user_ctx)
+ {
++    const char *data;
++
+     if (!params->len) {
+         return;
+     }
+ 
+-    if (process_string_cmd(gdb_get_cmd_param(params, 0)->data,
++    data = gdb_get_cmd_param(params, 0)->data;
++
++    if (process_string_cmd(data,
+                            gdb_gen_query_set_common_table,
+                            ARRAY_SIZE(gdb_gen_query_set_common_table))) {
+         return;
+     }
+ 
+-    if (process_string_cmd(gdb_get_cmd_param(params, 0)->data,
++    if (process_string_cmd(data,
+                            gdb_gen_query_table,
+                            ARRAY_SIZE(gdb_gen_query_table))) {
+         return;
+     }
+ 
+     if (extended_query_table &&
+-        process_string_cmd(gdb_get_cmd_param(params, 0)->data,
+-                           extended_query_table,
+-                           extended_query_table_size)) {
++        process_extended_table(extended_query_table, data)) {
+         return;
+     }
+ 
+@@ -1953,26 +1972,28 @@ static void handle_gen_query(GArray *params, void *user_ctx)
+ 
+ static void handle_gen_set(GArray *params, void *user_ctx)
+ {
++    const char *data;
++
+     if (!params->len) {
+         return;
+     }
+ 
+-    if (process_string_cmd(gdb_get_cmd_param(params, 0)->data,
++    data = gdb_get_cmd_param(params, 0)->data;
++
++    if (process_string_cmd(data,
+                            gdb_gen_query_set_common_table,
+                            ARRAY_SIZE(gdb_gen_query_set_common_table))) {
+         return;
+     }
+ 
+-    if (process_string_cmd(gdb_get_cmd_param(params, 0)->data,
++    if (process_string_cmd(data,
+                            gdb_gen_set_table,
+                            ARRAY_SIZE(gdb_gen_set_table))) {
+         return;
+     }
+ 
+     if (extended_set_table &&
+-        process_string_cmd(gdb_get_cmd_param(params, 0)->data,
+-                           extended_set_table,
+-                           extended_set_table_size)) {
++        process_extended_table(extended_set_table, data)) {
+         return;
+     }
+ 
+diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
+index c3a9b5eb1e..554b8736bb 100644
+--- a/target/arm/gdbstub.c
++++ b/target/arm/gdbstub.c
+@@ -477,11 +477,9 @@ static GDBFeature *arm_gen_dynamic_m_secextreg_feature(CPUState *cs,
+ 
+ void arm_cpu_register_gdb_commands(ARMCPU *cpu)
+ {
+-    GArray *query_table =
+-        g_array_new(FALSE, FALSE, sizeof(GdbCmdParseEntry));
+-    GArray *set_table =
+-        g_array_new(FALSE, FALSE, sizeof(GdbCmdParseEntry));
+-    GString *qsupported_features = g_string_new(NULL);
++    g_autoptr(GPtrArray) query_table = g_ptr_array_new();
++    g_autoptr(GPtrArray) set_table = g_ptr_array_new();
++    g_autoptr(GString) qsupported_features = g_string_new(NULL);
+ 
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+     #ifdef TARGET_AARCH64
+@@ -492,16 +490,12 @@ void arm_cpu_register_gdb_commands(ARMCPU *cpu)
+ 
+     /* Set arch-specific handlers for 'q' commands. */
+     if (query_table->len) {
+-        gdb_extend_query_table(&g_array_index(query_table,
+-                                              GdbCmdParseEntry, 0),
+-                                              query_table->len);
++        gdb_extend_query_table(query_table);
+     }
+ 
+     /* Set arch-specific handlers for 'Q' commands. */
+     if (set_table->len) {
+-        gdb_extend_set_table(&g_array_index(set_table,
+-                             GdbCmdParseEntry, 0),
+-                             set_table->len);
++        gdb_extend_set_table(set_table);
+     }
+ 
+     /* Set arch-specific qSupported feature. */
+diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+index 2e2bc2700b..c8cef8cbc0 100644
+--- a/target/arm/gdbstub64.c
++++ b/target/arm/gdbstub64.c
+@@ -564,7 +564,7 @@ enum Command {
+     NUM_CMDS
+ };
+ 
+-static GdbCmdParseEntry cmd_handler_table[NUM_CMDS] = {
++static const GdbCmdParseEntry cmd_handler_table[NUM_CMDS] = {
+     [qMemTags] = {
+         .handler = handle_q_memtag,
+         .cmd_startswith = true,
+@@ -590,17 +590,16 @@ static GdbCmdParseEntry cmd_handler_table[NUM_CMDS] = {
+ #endif /* CONFIG_USER_ONLY */
+ 
+ void aarch64_cpu_register_gdb_commands(ARMCPU *cpu, GString *qsupported,
+-                                       GArray *qtable, GArray *stable)
++                                       GPtrArray *qtable, GPtrArray *stable)
+ {
+ #ifdef CONFIG_USER_ONLY
+     /* MTE */
+     if (cpu_isar_feature(aa64_mte, cpu)) {
+         g_string_append(qsupported, ";memory-tagging+");
+ 
+-        g_array_append_val(qtable, cmd_handler_table[qMemTags]);
+-        g_array_append_val(qtable, cmd_handler_table[qIsAddressTagged]);
+-
+-        g_array_append_val(stable, cmd_handler_table[QMemTags]);
++        g_ptr_array_add(qtable, (gpointer) &cmd_handler_table[qMemTags]);
++        g_ptr_array_add(qtable, (gpointer) &cmd_handler_table[qIsAddressTagged]);
++        g_ptr_array_add(stable, (gpointer) &cmd_handler_table[QMemTags]);
+     }
+ #endif
+ }
 -- 
-2.45.2.1089.g2a221341d9-goog
-
+2.39.2

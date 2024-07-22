@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2006326njc;
-        Mon, 22 Jul 2024 09:08:22 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWbNEj9wXBEVMgHu7qQ4Ow+MPmmoTnnvPF4sJ8KuswzZVRj/P5f0TdYv1EyIFGpecH4eK8bRjBE0wUSh+UrDCA9KnB7qfwa
-X-Received: by 2002:a05:600c:1c9e:b0:423:791:f446 with SMTP id 5b1f17b1804b1-427dc51a01emr45871665e9.7.1721664502503;
-        Mon, 22 Jul 2024 09:08:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721664502; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2006397njc;
+        Mon, 22 Jul 2024 09:08:28 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXDVj4KtriUOxnSKGhiJSPur3NgfcnTwfDFAgUxdmwj+6O/Y8XIju/eA7JbAzTcS5LlOcFr98vEw5xP1SMl8Gxbj6DYoLb2
+X-Received: by 2002:a05:600c:4f50:b0:426:616e:db8d with SMTP id 5b1f17b1804b1-427dc52128fmr45259085e9.15.1721664508621;
+        Mon, 22 Jul 2024 09:08:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721664508; cv=none;
         d=google.com; s=arc-20160816;
-        b=wnRv2m5JWdLb3KmAZNdULbPhGFfjc5RZ8xNzo9T2tr1V3HTK3OHI2fOVcYF5ZGBMgJ
-         JXXgSZWrsFTeAbqxfT8SpoBSZItf2UmQzqplSFWXFbCqSc0XqrmRaasHPyerq669YW4z
-         KiZHKPjl4E8Q8VU2EijTc99woXkyT5LF2Yc9dvU2wCSGI6xReHYWOZ6ufRuumEAY9/iT
-         l+p1+I3McThGn1zskQNOnpzFz/lo3m2tO50ziEU5TjF6NoYac/RCp+A5Jl7cFEKIAqJ/
-         SLb5G6Fb2/iyHByePF2STpPLs13lXnPPw0wuAtZO32amhUyZ4XNs9ECKuKAuEAH7FBD7
-         qa5Q==
+        b=cbY3eOkOfsSNz9PplX0oKr843J7jvl6A4X7zszX8ByEPdKliwAeTIDLy5PmsMSkH+t
+         Asy2qiVPbrGLULMj2Yh3hJux+Vh+cGCnNtVTyTeu4sJijOLqhPpm5QF/b0dnnEqKiQV+
+         QysXA4u/8yJ25Y93uWiWk9Hx4hrTCTgCyH0RqgHjEotfhDS89nMbjcjzJqUnkhfaD/hC
+         9EDdt6NundLOSTkBq1Jra3uBHhiluD+tkHK+JwdF3OiM4fP7l7+V2pmG8ii1BIeMetc+
+         gWQEAe8f/GKpsyZk30nGTHngTcEEGJnQfxmXqkWTZ11aS4Lo8lLmldsbEMSEB8zMcnOK
+         vlMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=g5IVJQKs0mRewT92ekkS2OE3V+7eufImd7ZnhLfAtiw=;
-        fh=bgC3MEJekt4UG4CDObmaM+kjCJ4txe8OFykgujEnCKg=;
-        b=qhPsTj+RxkYJwVe+JBtB2Lt6bign5FSDnsgvBmXU61phGbYP5zel1tO2t2mVyyhGIm
-         b3Gd4989W+vraYYnW0lC6Io0cnK4ePsFU97h5Lu0vjv4BrD0rcbJBPVlhWKowRPtW6zT
-         J/h/b2pXH+gXLAre4NZ8uHvQTcubg/5K8fJoj1kfCYooRD07eFOKEAMHCPkeLjKPI1Q0
-         2g7kotT+CIVrxqu86vWbGQoqEYev3ASZYNa/KWfJH8EdUQohzd6uCErFzXaSuBjsE6UY
-         jMXJMMe6cS/EbiqpkK4vbtNwvgaBL7Ati3sTivI1tj248mrXOnHvXuI9tRGxwOVs5nSp
-         IMOQ==;
+        bh=D13SsLbTdb+rPn3f2Roi8BU4ul1b5GgWpSQvaH/PkW0=;
+        fh=fUw1m0M9ixVL7b1XdPZOOxc50UGHWyUF+lh7CXBoSSc=;
+        b=0wolDtesl1ARwOYgtB3z2KoPzol9D1P2RqblxFdVfMFVdL8WwYJT3dxceNyU5vuo2G
+         Ln8fuWuuCqicQAxvQN54P4XO41PFmvvKu+EhDTXRq7iAYLL7rYE37nbbKl2vPsjByHuL
+         SIBsMHJG2XibDnsDv8kTx+9ey1KJPzDKqokai46ltNV5OIXLMuCuSoqh6KwtQQY7z8Mm
+         yLY3m4GZKrwHtj5n5O1wD7gh02gpvJahQ7jq5bgPEjxiAogDNJqChPCEOeFTV+/UHCKK
+         0zqu5PPZWbIr5uUj760DzYZaS1AwR40ksnwH8ILWqHntuHsjHNCBL+4MLbqa3HjCgQDx
+         nn7A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jj4jDej4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eQ9uu9AQ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-427d6fffd20sor20629775e9.12.2024.07.22.09.08.22
+        by mx.google.com with SMTPS id 5b1f17b1804b1-427d6fedf56sor20160425e9.13.2024.07.22.09.08.28
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 22 Jul 2024 09:08:22 -0700 (PDT)
+        Mon, 22 Jul 2024 09:08:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Jj4jDej4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eQ9uu9AQ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721664502; x=1722269302; darn=linaro.org;
+        d=linaro.org; s=google; t=1721664508; x=1722269308; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=g5IVJQKs0mRewT92ekkS2OE3V+7eufImd7ZnhLfAtiw=;
-        b=Jj4jDej4bDI0VBawJs4WbCBAEXOvVRVqDz6kk4N+UbPsAvud98vAv5UxELOool086B
-         2y/3lEWI8UQeLEz1UdrNtCrwFRZGRafXSlCLHrcMwNdjLeNFqjU0ye4lnBL9Hxb+lrnl
-         JTwuVgFcduX24gaLp1iXJNuWqSGjnAn6hlk5rRIvNicYrU9o8K6Nz1ID59j9wuW3Ml6o
-         LjcPv7DEyOV0s7QR8ffsiF6xmcYQnWsGhlN78wVt0utZ4xRrvEaQfM9RsOrThXBAIMmV
-         jw4++Ky6MsYj5BtD0lQQX92nJeAOlsdpcblQ8WcY8LVPwhTdOCJW/FGJzaU4mTGXiUm2
-         7nFQ==
+        bh=D13SsLbTdb+rPn3f2Roi8BU4ul1b5GgWpSQvaH/PkW0=;
+        b=eQ9uu9AQ7jHmRNnofFsRoLDbdxEpGbHUkQ6ZrW7wCtJYDsT6CJTrrTeQuBj6Es5fwK
+         DhMcFinX2avlXEGFtMbciEGGc0y57QJewxHmpHs/1MysevVnBc98mZGD/02pr3BIQWvV
+         sks8lxPWsl50FN2vxr+aV0d8ZnYK/JvGuJjaDkqBtMVixTvqy+9soGVvzus8a1oW8hfP
+         QYxedQJoN0zBX+muPWeTynxmSCiBXRmDZ71etblsvwK1NNCBOl6ifmvd2oiM0/Thuk6v
+         Et2RRSaG+eg4m8nYbEDM58/5WVz3dx8cA8MBAZS4e9pSkjWFjbMnWXhfRyPoAJCDxltY
+         besQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721664502; x=1722269302;
+        d=1e100.net; s=20230601; t=1721664508; x=1722269308;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=g5IVJQKs0mRewT92ekkS2OE3V+7eufImd7ZnhLfAtiw=;
-        b=DPoNpcFkVUNLki6gZ3yJPCR+ryKmGiCbAwcpjH7p8RP4jet45oR3RT5sp1TkBKQSRb
-         u0IIa7C+LGPjG+prtTsG7+wktMpC3PcF5gzeog54zSV6HsoZYfWWdv0T/qHSPnxDfc6G
-         17APIXTprzc/mTxCTlXZ/Mm5cMA3Q/w1sleS+nSYJGapZcvqhZZ+hCm3lYbBjP+ZQn+j
-         316vAICa2T7abNybgiNhcAwS/9cxtm9g5nDEC/EJrIznlJfT1Ipb4spk6IMjBnWGfwMI
-         43Gxz8dubnap0HEePcvdF/fJXtp8FpZ5bUZCmUYoQhR5s7b8ksVzagPOs7h+VdumD7XS
-         c0vA==
-X-Forwarded-Encrypted: i=1; AJvYcCXX1oes925WVOzVynhzmZH4P7ioNnSzPMDi+5Bs89p7SOmsByvVOb6Fl7reKQXH5va9Wf4ByYhKNG3BVr70FALioAuTrlIn
-X-Gm-Message-State: AOJu0YwHoB7bUR/Dj/zrrxSjTF5Ri2ZqaxN7dFdbXY5uSRnUSJ1JIB/L
-	OCt2Umzmc9u+F0/FmBYnO8X2a2zBDOPjGrlvuEgyXVUotrkpHiypaUPhFN2mWwn68g==
-X-Google-Smtp-Source: AGHT+IES0/0Gp6R84KpnzozIZodYH7Kb9siP7ixWABhurMCjoRnsqoUxlHz7lH8/H+pAi3dKtB6eWg==
-X-Received: by 2002:a05:600c:1c9e:b0:423:791:f446 with SMTP id 5b1f17b1804b1-427dc51a01emr45867695e9.7.1721664491827;
-        Mon, 22 Jul 2024 09:08:11 -0700 (PDT)
+        bh=D13SsLbTdb+rPn3f2Roi8BU4ul1b5GgWpSQvaH/PkW0=;
+        b=X+ystW4BbB9IDym06LrZjtSDT9xsp899FeUzQ+8pNdi+PqDDZUlUncZXG7ZRH81OH2
+         Jz4d0Q/P+FvUZTv1Dwifeira6Q0WS5S7Nz3n6lLLmbPQhLx3WSo9EVxrflF4PAv9dVcH
+         0zlzt1Mq0lVbcVWMrdfvXQqijmx7lBwTBGgif3pZH7dm8WfC4labOdxgqr+S0YhzplW3
+         Ni0fEaOc0yfWoyGNaoTdKKaF7bFtWVY8SgcQ7e2FZUQNx0fJb4eZ0gB2mn4ldcwRdLMf
+         O5xDTT1sVIUvavyw5wukwkkCngomRXW+VHDcyT3vpf+MOYSOYojYtK+Esw0ffbXk3/fh
+         GMnw==
+X-Forwarded-Encrypted: i=1; AJvYcCUgWweF2i0zVszXXMwCsyg8Y1p5+xsd1kelPkeMWaazFo9Obk7iQtdCP8NZHticG7wlIaBZNClcfpw9Km5LCJRI8eziPB5m
+X-Gm-Message-State: AOJu0Yy5HE8ibiOViSS1rPmCAzkC7mrwHNqnPHzy17tuhVVnWXiusmSP
+	2IjVUq7XgrKTWkk4PDQxk3nYKcE36EVKM2u706HABoyNr2/q6e/58Wh1QGIAa7bpMA==
+X-Google-Smtp-Source: AGHT+IHRr2Hse5CaEmOALI6VDv3D1w/NDKzUvtjoPzuh1A/PDTLZOczZbBtc36qmY7CP1Trc0EdJ8g==
+X-Received: by 2002:a05:600c:1d8f:b0:426:51dc:f6cd with SMTP id 5b1f17b1804b1-427dc529057mr55262845e9.18.1721664508179;
+        Mon, 22 Jul 2024 09:08:28 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (gen92-h02-176-184-20-254.dsl.sta.abo.bbox.fr. [176.184.20.254])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-427d2a7257esm158849065e9.28.2024.07.22.09.08.10
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-368787ced33sm8964748f8f.86.2024.07.22.09.08.26
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 22 Jul 2024 09:08:11 -0700 (PDT)
+        Mon, 22 Jul 2024 09:08:27 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
@@ -84,76 +84,164 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 4/7] util/fifo8: Rename fifo8_peek_buf() -> fifo8_peek_constbuf()
-Date: Mon, 22 Jul 2024 18:07:42 +0200
-Message-ID: <20240722160745.67904-5-philmd@linaro.org>
+Subject: [PATCH v2 5/7] util/fifo8: Rename fifo8_pop_buf() -> fifo8_pop_constbuf()
+Date: Mon, 22 Jul 2024 18:07:43 +0200
+Message-ID: <20240722160745.67904-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240722160745.67904-1-philmd@linaro.org>
 References: <20240722160745.67904-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: yKNHA82b2PVd
+X-TUID: /qQfw7g7dx2O
 
-Since fifo8_peek_buf() return a const buffer (which points
+Since fifo8_pop_buf() return a const buffer (which points
 directly into the FIFO backing store), rename it using the
 'constbuf' suffix. This will help differentiate with methods
 *copying* the FIFO data.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/qemu/fifo8.h | 4 ++--
- hw/scsi/esp.c        | 2 +-
- util/fifo8.c         | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ include/qemu/fifo8.h    | 4 ++--
+ chardev/msmouse.c       | 2 +-
+ hw/char/goldfish_tty.c  | 4 ++--
+ hw/net/allwinner_emac.c | 2 +-
+ hw/scsi/esp.c           | 4 ++--
+ ui/console-vc.c         | 2 +-
+ ui/gtk.c                | 2 +-
+ util/fifo8.c            | 2 +-
+ 8 files changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/include/qemu/fifo8.h b/include/qemu/fifo8.h
-index 2692d6bfda..79450f4583 100644
+index 79450f4583..686918a3a4 100644
 --- a/include/qemu/fifo8.h
 +++ b/include/qemu/fifo8.h
-@@ -89,7 +89,7 @@ uint8_t fifo8_pop(Fifo8 *fifo);
- const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
+@@ -63,7 +63,7 @@ void fifo8_push_all(Fifo8 *fifo, const uint8_t *data, uint32_t num);
+ uint8_t fifo8_pop(Fifo8 *fifo);
  
  /**
-- * fifo8_peek_buf: read upto max bytes from the fifo
-+ * fifo8_peek_constbuf: read upto max bytes from the fifo
-  * @fifo: FIFO to read from
-  * @max: maximum number of bytes to peek
+- * fifo8_pop_buf:
++ * fifo8_pop_constbuf:
+  * @fifo: FIFO to pop from
+  * @max: maximum number of bytes to pop
   * @numptr: pointer filled with number of bytes returned (can be NULL)
-@@ -113,7 +113,7 @@ const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
+@@ -86,7 +86,7 @@ uint8_t fifo8_pop(Fifo8 *fifo);
   *
-  * Returns: A pointer to peekable data.
+  * Returns: A pointer to popped data.
   */
--const uint8_t *fifo8_peek_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
-+const uint8_t *fifo8_peek_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
+-const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
++const uint8_t *fifo8_pop_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
  
  /**
-  * fifo8_reset:
+  * fifo8_peek_constbuf: read upto max bytes from the fifo
+diff --git a/chardev/msmouse.c b/chardev/msmouse.c
+index a774c397b4..08836d92e8 100644
+--- a/chardev/msmouse.c
++++ b/chardev/msmouse.c
+@@ -81,7 +81,7 @@ static void msmouse_chr_accept_input(Chardev *chr)
+         const uint8_t *buf;
+         uint32_t size;
+ 
+-        buf = fifo8_pop_buf(&mouse->outbuf, MIN(len, avail), &size);
++        buf = fifo8_pop_constbuf(&mouse->outbuf, MIN(len, avail), &size);
+         qemu_chr_be_write(chr, buf, size);
+         len = qemu_chr_be_can_write(chr);
+         avail -= size;
+diff --git a/hw/char/goldfish_tty.c b/hw/char/goldfish_tty.c
+index f8ff043c39..2c5004851d 100644
+--- a/hw/char/goldfish_tty.c
++++ b/hw/char/goldfish_tty.c
+@@ -69,7 +69,7 @@ static uint64_t goldfish_tty_read(void *opaque, hwaddr addr,
+ static void goldfish_tty_cmd(GoldfishTTYState *s, uint32_t cmd)
+ {
+     uint32_t to_copy;
+-    uint8_t *buf;
++    const uint8_t *buf;
+     uint8_t data_out[GOLFISH_TTY_BUFFER_SIZE];
+     int len;
+     uint64_t ptr;
+@@ -109,7 +109,7 @@ static void goldfish_tty_cmd(GoldfishTTYState *s, uint32_t cmd)
+         len = s->data_len;
+         ptr = s->data_ptr;
+         while (len && !fifo8_is_empty(&s->rx_fifo)) {
+-            buf = (uint8_t *)fifo8_pop_buf(&s->rx_fifo, len, &to_copy);
++            buf = fifo8_pop_constbuf(&s->rx_fifo, len, &to_copy);
+             address_space_rw(&address_space_memory, ptr,
+                             MEMTXATTRS_UNSPECIFIED, buf, to_copy, 1);
+ 
+diff --git a/hw/net/allwinner_emac.c b/hw/net/allwinner_emac.c
+index 989839784a..3b0a2ee07e 100644
+--- a/hw/net/allwinner_emac.c
++++ b/hw/net/allwinner_emac.c
+@@ -349,7 +349,7 @@ static void aw_emac_write(void *opaque, hwaddr offset, uint64_t value,
+                               "allwinner_emac: TX length > fifo data length\n");
+             }
+             if (len > 0) {
+-                data = fifo8_pop_buf(fifo, len, &ret);
++                data = fifo8_pop_constbuf(fifo, len, &ret);
+                 qemu_send_packet(nc, data, ret);
+                 aw_emac_tx_reset(s, chan);
+                 /* Raise TX interrupt */
 diff --git a/hw/scsi/esp.c b/hw/scsi/esp.c
-index 8504dd30a0..526ed91bef 100644
+index 526ed91bef..64384f9b0e 100644
 --- a/hw/scsi/esp.c
 +++ b/hw/scsi/esp.c
-@@ -486,7 +486,7 @@ static bool esp_cdb_ready(ESPState *s)
-         return false;
+@@ -208,7 +208,7 @@ static uint32_t esp_fifo8_pop_buf(Fifo8 *fifo, uint8_t *dest, int maxlen)
      }
  
--    pbuf = fifo8_peek_buf(&s->cmdfifo, len, &n);
-+    pbuf = fifo8_peek_constbuf(&s->cmdfifo, len, &n);
-     if (n < len) {
-         /*
-          * In normal use the cmdfifo should never wrap, but include this check
+     len = maxlen;
+-    buf = fifo8_pop_buf(fifo, len, &n);
++    buf = fifo8_pop_constbuf(fifo, len, &n);
+     if (dest) {
+         memcpy(dest, buf, n);
+     }
+@@ -217,7 +217,7 @@ static uint32_t esp_fifo8_pop_buf(Fifo8 *fifo, uint8_t *dest, int maxlen)
+     len -= n;
+     len = MIN(len, fifo8_num_used(fifo));
+     if (len) {
+-        buf = fifo8_pop_buf(fifo, len, &n2);
++        buf = fifo8_pop_constbuf(fifo, len, &n2);
+         if (dest) {
+             memcpy(&dest[n], buf, n2);
+         }
+diff --git a/ui/console-vc.c b/ui/console-vc.c
+index 899fa11c94..e9906aae59 100644
+--- a/ui/console-vc.c
++++ b/ui/console-vc.c
+@@ -287,7 +287,7 @@ static void kbd_send_chars(QemuTextConsole *s)
+         const uint8_t *buf;
+         uint32_t size;
+ 
+-        buf = fifo8_pop_buf(&s->out_fifo, MIN(len, avail), &size);
++        buf = fifo8_pop_constbuf(&s->out_fifo, MIN(len, avail), &size);
+         qemu_chr_be_write(s->chr, buf, size);
+         len = qemu_chr_be_can_write(s->chr);
+         avail -= size;
+diff --git a/ui/gtk.c b/ui/gtk.c
+index bc29f7a1b4..a4db90e8cb 100644
+--- a/ui/gtk.c
++++ b/ui/gtk.c
+@@ -1820,7 +1820,7 @@ static void gd_vc_send_chars(VirtualConsole *vc)
+         const uint8_t *buf;
+         uint32_t size;
+ 
+-        buf = fifo8_pop_buf(&vc->vte.out_fifo, MIN(len, avail), &size);
++        buf = fifo8_pop_constbuf(&vc->vte.out_fifo, MIN(len, avail), &size);
+         qemu_chr_be_write(vc->vte.chr, buf, size);
+         len = qemu_chr_be_can_write(vc->vte.chr);
+         avail -= size;
 diff --git a/util/fifo8.c b/util/fifo8.c
-index 2925fe5611..21943c6032 100644
+index 21943c6032..31f0d34c0c 100644
 --- a/util/fifo8.c
 +++ b/util/fifo8.c
-@@ -92,7 +92,7 @@ static const uint8_t *fifo8_peekpop_buf(Fifo8 *fifo, uint32_t max,
-     return ret;
+@@ -97,7 +97,7 @@ const uint8_t *fifo8_peek_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
+     return fifo8_peekpop_buf(fifo, max, numptr, false);
  }
  
--const uint8_t *fifo8_peek_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
-+const uint8_t *fifo8_peek_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
+-const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
++const uint8_t *fifo8_pop_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
  {
-     return fifo8_peekpop_buf(fifo, max, numptr, false);
+     return fifo8_peekpop_buf(fifo, max, numptr, true);
  }
 -- 
 2.41.0

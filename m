@@ -1,188 +1,184 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp414185njc;
-        Fri, 19 Jul 2024 05:21:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWC/QT6Zv87BxXFge2POgy3EWE9UD7swwFQkAfwTZBEFqZ21aKCLVV7GlzSDZkjecxFpGg88lVPVIggK3adrQ8iHbn3l6ZY
-X-Google-Smtp-Source: AGHT+IEAqnOBBIDNZxAIgoTHt/toaCcvd0OQq05pPGYNJrDwV1qC2+78DzrHGqj8uof7Vcv1skPZ
-X-Received: by 2002:a17:906:f341:b0:a77:abe8:88d3 with SMTP id a640c23a62f3a-a7a01192cf1mr489611466b.30.1721391680266;
-        Fri, 19 Jul 2024 05:21:20 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1721391680; cv=pass;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1834248njc;
+        Mon, 22 Jul 2024 03:59:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUCgSs/Ylsc1Zofi86n5M099WlKBbwhC/6kxKHFC9JUXY3FfEdWZR0J/5bLIsaUTXNu3NIq60TmLpmibwWv3Xov5Ei/qbR+
+X-Google-Smtp-Source: AGHT+IEJa+sgKlXm5vBaalrWVkDBvKXDyjTeaZZ/k3Mp7HaG+YeS43GIX4pUZJVbmIl0R/KWP5Yo
+X-Received: by 2002:a05:622a:54d:b0:447:f361:e2d7 with SMTP id d75a77b69052e-44fa531d965mr88311481cf.47.1721645946458;
+        Mon, 22 Jul 2024 03:59:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721645946; cv=none;
         d=google.com; s=arc-20160816;
-        b=k+0K3akN7neeI6yMoEtwe54fnG+oxmPYVUdbZbnc4ss+EVPUk63pghdR5ojMiFEVmF
-         W6iWMrkAPVFKMnFVQFMiPV497j4jApcUavBCpVyCUf2W7MCaDWqP4faH+C+Qr3ISfUoX
-         gx8RotHOw1D+r7sEQ+A5X2tMApQnODt4LFu3OdjPC+Co7XMPy2MxfsFU9+Gk5FU8povK
-         WL4kKo+QAAfs1Nu7M2qLNSuPBEdCaYJAn1OmWallrolJm6rzrzhMXFG8cg99jzL/BYx8
-         PywhPPK2hY6gg88/I6fVADYVlkpFbekUahsh6vcJW0Xq9fK9jUM2TQpnJyJ0ZmYmg4qn
-         G24Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :message-id:date:user-agent:references:organization:in-reply-to
-         :subject:cc:to:from:dkim-signature;
-        bh=8wdb8H9B7dXAjwpES2ljjfqGjFTVH3+0R9NofJlGwv4=;
-        fh=QRjBITKlrtfUp0kxFMLALH7d7Nk3TERzWmTWbF30XUM=;
-        b=HMAh3MVQjBPoci5xLlw9EpQkQ/Gbpgb7imr88su41xnBpq4HhdEeLg6vOIGVEjqmzF
-         KbFVevOvlLI0JAVXpKXKbFNpujz/PE7ZwsS/WYpI4RGffZkfiDwJBNvPvH6GSrCfAQqN
-         r2VZgQo197coRpgw+KowfDQH+0tAT5gCMFVyl/O1wfBtKnnoKwJHFNT031g4lW38hXKd
-         pbHR5X3tGUMCUkWOR7Zubi5RruxRlMt29bA+5+WL/7735BTaMheP8fiXI0jFDNKn3SdP
-         1kl7XVs3d1fjVwMVMDnE6x10WL4s3Bf6ccVTI4F+WR6rLotuXYvHqTdM+Yrv9IzKVLXn
-         qLUg==;
+        b=bHxlrDIQo3omh3ifqsViEBpNYByuD0pykIi1nNwwqPpRlQni5nGa8ZQo3RnyhwQI2N
+         tkSBTRDJWEBLs5/YzVQs/fYeIurmOXYWR8fMya4lb/2YFB7Erc/r/VjvKvuGY3OgWEnO
+         n+BlLXptUgJbKNi7DCgUvIYM1/prq1MuU8JOSpThw2YyjkfeSPw8iPad0Cx8xDlov/ei
+         ToiKRCl+Hl3z4HRSyd1JTJXmQD3OfC25WnOTo9KSJovsylK0PRRGuNhKlEfmm5VaU8Pq
+         66pYyZCh1b5jvNOo7/eyQItL/MWRWYDNLMSLBoy9WNDRqz26ovb9ICScRYbABnZjVQrv
+         CUcQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=7Cpy42h4QR0dQi4xrDY4msMCkizRDfkPfMeN4kHHSHY=;
+        fh=Jj7Bk11u+1xAKs5Vj4psg48h4BZTj0DEAFuwDx6b4+0=;
+        b=Lfmj+O7s6qj9A5xK3dt6aynsL+A1UmrCRXQePqr/Xpj8CyHsDkVH7Xe8vKCcTyQ1Z8
+         kiVZMzol1LOf3EhoGyIvmmRNYOm+3I19h4ikiZnAj7UUDwW5SWykDVpCmLdLF+jwPvCt
+         4nqWKlbMAeVpm/ynA53Z6oZmtp5rYWrQrrU10HwvjZXk+f0IrrUM6MJD3pRNb1jxWjwl
+         a54Ubj1Ec3Y3Oi+PFHsb5FpiVCglNcN7ktLPIe/cO0emLlGtm+1C/augsy49pOOX2BxX
+         7Cf7EaqYeWu9qO4S/O7SFSOLHWem100/4IVbUmxOAjqPXPYyTkC23krw6meK7a8WAauw
+         7Ffw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HSFage9+;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="NAsa/plu";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a640c23a62f3a-a7a3c925585si17471866b.625.2024.07.19.05.21.20
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-44f9ccfb68asi74780041cf.93.2024.07.22.03.59.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 19 Jul 2024 05:21:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Jul 2024 03:59:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HSFage9+;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-21927-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="NAsa/plu";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 8BDDA1F21F25
-	for <alex.bennee@linaro.org>; Fri, 19 Jul 2024 12:21:19 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 53B6D75808;
-	Fri, 19 Jul 2024 12:21:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="HSFage9+"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57CE91E871
-	for <kvm@vger.kernel.org>; Fri, 19 Jul 2024 12:21:11 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1721391674; cv=none; b=F7zQCY/+EnGacv3l+CCdE9HThuHjarreQuZq3mPbcNOzLDuTVocmqgZnVe5A1HvXVh/VU1SbePrwu/wy6l86i3A2VRwfHVisaAr4p8IpeHcCWPQhTPU/jlyZdz1mAWfGMUkcRCbZzidNX9Gorj8i0gfeuays8E1/ZLxHd18x6dg=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1721391674; c=relaxed/simple;
-	bh=+XqGlAhsuO4SAFGl1WKnrwD4H8hw+mVijkTaMpel1LA=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=D4jecZQNAaIJm+9pCNnMM4V92LBmuzRZPL2E+Pr1FdvgzPQSJbQK74b2FQYGRS5Qn3QKNcbnHhdgLA/YR8Ei08HFI3W6lf78NPzo8A4IcXcaPUl50L1ascy8Sj3PszkgzM+PKJLDQXrfOHoKcZ+llEwMy1qbbDfNSm8RyTrV4Bs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=HSFage9+; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sVqkS-0008TT-HL; Mon, 22 Jul 2024 06:58:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1sVqkQ-0008Ro-SA
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2024 06:58:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1sVqkO-00014e-RC
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2024 06:58:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1721391671;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=8wdb8H9B7dXAjwpES2ljjfqGjFTVH3+0R9NofJlGwv4=;
-	b=HSFage9+7Z4Mv0Qz7de7+cLknTp7y9mxT7FOAUfPq3P9qoZq+7QFGTpR/X7Awky7+u5zDB
-	WBw2dlL4pk4EqZCAw07RYOtSYGpmKF5Fl33lzkYOnkB4iVZEmOiIVBJmS1lGdLvOb7/MmK
-	4/vssKKanlgNW6OyM8Vxy23mvaMVdgg=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-284-jEakaNN7NLKDTBuLuijVgA-1; Fri,
- 19 Jul 2024 08:21:10 -0400
-X-MC-Unique: jEakaNN7NLKDTBuLuijVgA-1
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E4DAE1955F66;
-	Fri, 19 Jul 2024 12:21:07 +0000 (UTC)
-Received: from localhost (unknown [10.22.8.77])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BDDBE1955D4D;
-	Fri, 19 Jul 2024 12:21:06 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Akihiko Odaki <akihiko.odaki@daynix.com>, Peter Maydell
- <peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [PATCH v3 2/5] target/arm/kvm: Fix PMU feature bit early
-In-Reply-To: <f9cf0616-34df-42c3-a753-4dec8e2d25b5@daynix.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
-References: <20240716-pmu-v3-0-8c7c1858a227@daynix.com>
- <20240716-pmu-v3-2-8c7c1858a227@daynix.com>
- <CAFEAcA8tFtdpCQobU9ytzxvf3_y3DiA1TwNq8fWgFUtCUYT4hQ@mail.gmail.com>
- <f9cf0616-34df-42c3-a753-4dec8e2d25b5@daynix.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Fri, 19 Jul 2024 14:21:04 +0200
-Message-ID: <87cyn9a7yn.fsf@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ s=mimecast20190719; t=1721645907;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7Cpy42h4QR0dQi4xrDY4msMCkizRDfkPfMeN4kHHSHY=;
+ b=NAsa/plupVYVLJkw/z2OtQWq6BCg27GAM7jB4YP8nc3kA35t+5HWNhsEdqgVWXBi3eEk7X
+ 2Hs1YFPsB/gi8kppmlC+Z12ELiT1V7z9/ApKdzIH6aA9483oV8JNv6Qmvp+MA0JAkE2UDH
+ 1gn7X8Oj4lF4/ga2QdYNjeka+inwVRw=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-166-kdWIZRMXMha21Sb4Ov4LUQ-1; Mon, 22 Jul 2024 06:58:26 -0400
+X-MC-Unique: kdWIZRMXMha21Sb4Ov4LUQ-1
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-6b7a185175bso73771866d6.1
+ for <qemu-arm@nongnu.org>; Mon, 22 Jul 2024 03:58:24 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721645904; x=1722250704;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=7Cpy42h4QR0dQi4xrDY4msMCkizRDfkPfMeN4kHHSHY=;
+ b=CiN0kgq+rL+iopPMwdRE0URud+JMipfYk3y8T2x3VyDjvRjXc1hPSVinosLC7E631E
+ FtbSTRy0CdzQnmkbnwTG/CzymfsScEjyoOeY4x9kT2pmYaGubYml8YgXBIpq0Mg5xMYj
+ /WvhgInHx+3yrlv+m/WlTsn4OD+JZ/nYqVGSLDI2ftnZo0bl/wINBkCyt1IOkcLH7Bb2
+ C8bQGFoXKUCMu12Wqu6sCcreRaAod2v4RGowvuKMGzsU/PDZReCx9W02R7q1OUwrNpJM
+ NjUKcNLU0VkhQ4HcMHmmyhMQHu0EPTOifglWi3iEIgbVrVV3dm6X5aGQ9OlvdvJoO0UO
+ MUuA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUaxnTH9D3ymqaf1DsgtIGDiyWe4h+kYmzKCxQttb5gq7XzrVl2H67UT0iZRMZwDbgiXVP3qqoA8WegT1TvQkWXEBhY
+X-Gm-Message-State: AOJu0Yw+21eVzecyqiIiAZUVJXbM9yh4pMskX2bvhiNsYgfmqYUmg+Jc
+ zAfFgO2y3d7yh/42th+m78a+vIlpRmcclAgjMrU86ZeELaR9SF+abp4FyqmFFgch77ZVh6FF6qg
+ 0RGLBt9CyAXzOJQ2liuCz5CycMF+O7vG2MPMqMhweLbIIhm1M5g==
+X-Received: by 2002:a05:6214:e67:b0:6b7:a248:3949 with SMTP id
+ 6a1803df08f44-6b95a6e872cmr97192536d6.38.1721645904542; 
+ Mon, 22 Jul 2024 03:58:24 -0700 (PDT)
+X-Received: by 2002:a05:6214:e67:b0:6b7:a248:3949 with SMTP id
+ 6a1803df08f44-6b95a6e872cmr97192346d6.38.1721645904115; 
+ Mon, 22 Jul 2024 03:58:24 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-6b96a49d2aesm14917726d6.84.2024.07.22.03.58.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Jul 2024 03:58:23 -0700 (PDT)
+Message-ID: <24401da3-596f-4ded-a367-4048d0565582@redhat.com>
+Date: Mon, 22 Jul 2024 12:58:20 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: HDUodkdWM3yj
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/arm/smmuv3: Assert input to oas2bits() is valid
+To: Mostafa Saleh <smostafa@google.com>, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, qemu-devel@nongnu.org
+Cc: jean-philippe@linaro.org
+References: <20240722103531.2377348-1-smostafa@google.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20240722103531.2377348-1-smostafa@google.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.133,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JEQ0s8PQdhSg
 
-On Fri, Jul 19 2024, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
 
-> On 2024/07/18 21:07, Peter Maydell wrote:
->> On Tue, 16 Jul 2024 at 13:50, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
->>>
->>> kvm_arm_get_host_cpu_features() used to add the PMU feature
->>> unconditionally, and kvm_arch_init_vcpu() removed it when it is actually
->>> not available. Conditionally add the PMU feature in
->>> kvm_arm_get_host_cpu_features() to save code.
->>>
->>> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
->>> ---
->>>   target/arm/kvm.c | 7 +------
->>>   1 file changed, 1 insertion(+), 6 deletions(-)
->>>
->>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->>> index 70f79eda33cd..849e2e21b304 100644
->>> --- a/target/arm/kvm.c
->>> +++ b/target/arm/kvm.c
->>> @@ -280,6 +280,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->>>       if (kvm_arm_pmu_supported()) {
->>>           init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
->>>           pmu_supported = true;
->>> +        features |= 1ULL << ARM_FEATURE_PMU;
->>>       }
->>>
->>>       if (!kvm_arm_create_scratch_host_vcpu(cpus_to_try, fdarray, &init)) {
->>> @@ -448,7 +449,6 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->>>       features |= 1ULL << ARM_FEATURE_V8;
->>>       features |= 1ULL << ARM_FEATURE_NEON;
->>>       features |= 1ULL << ARM_FEATURE_AARCH64;
->>> -    features |= 1ULL << ARM_FEATURE_PMU;
->>>       features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
->>>
->>>       ahcf->features = features;
->>> @@ -1888,13 +1888,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
->>>       if (!arm_feature(env, ARM_FEATURE_AARCH64)) {
->>>           cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_EL1_32BIT;
->>>       }
->>> -    if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PMU_V3)) {
->>> -        cpu->has_pmu = false;
->>> -    }
->>>       if (cpu->has_pmu) {
->>>           cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
->>> -    } else {
->>> -        env->features &= ~(1ULL << ARM_FEATURE_PMU);
->>>       }
->>>       if (cpu_isar_feature(aa64_sve, cpu)) {
->>>           assert(kvm_arm_sve_supported());
->> 
->> Not every KVM CPU is necessarily the "host" CPU type.
->> The "cortex-a57" and "cortex-a53" CPU types will work if you
->> happen to be on a host of that CPU type, and they don't go
->> through kvm_arm_get_host_cpu_features().
+
+On 7/22/24 12:35, Mostafa Saleh wrote:
+> Coverity has spotted a possible problem with the OAS handling
+> (CID 1558464), where the error return of oas2bits() -1 is not
+> checked, which can cause an overflow in oas value.
 >
-> kvm_arm_vcpu_init() will emit an error in such a situation and I think 
-> it's better than silently removing a feature that the requested CPU type 
-> has. A user can still disable the feature if desired.
+> oas2bits() is only called with valid inputs, harden the function
+> to assert that.
+>
+> Reported-By: Peter Maydell <peter.maydell@linaro.org>
+> Link: https://lore.kernel.org/qemu-devel/CAFEAcA-H=n-3mHC+eL6YjfL1m+x+b+Fk3mkgZbN74WNxifFVow@mail.gmail.com/
+> Signed-off-by: Mostafa Saleh <smostafa@google.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-OTOH, if we fail for the named cpu models if the kernel does not provide
-the cap, but silently disable for the host cpu model in that case, that
-also seems inconsistent. I'd rather keep it as it is now.
+Eric
+> ---
+>  hw/arm/smmuv3-internal.h | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index 0ebf2eebcf..b6b7399347 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -599,7 +599,8 @@ static inline int oas2bits(int oas_field)
+>      case 5:
+>          return 48;
+>      }
+> -    return -1;
+> +
+> +    g_assert_not_reached();
+>  }
+>  
+>  /* CD fields */
 

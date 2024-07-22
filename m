@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2006151njc;
-        Mon, 22 Jul 2024 09:08:06 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVgD5HsgxhXmU6fkeyrhA6O4pODFMVJ2pkLR/W/H81hVASnRtrx0k9LIbWjJXSuYM9eGv60Dk1M17jO6Txd32A9PLVMEgXc
-X-Received: by 2002:a05:600c:34d6:b0:426:6688:2421 with SMTP id 5b1f17b1804b1-427dc52303emr40056435e9.11.1721664486426;
-        Mon, 22 Jul 2024 09:08:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721664486; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2006326njc;
+        Mon, 22 Jul 2024 09:08:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWbNEj9wXBEVMgHu7qQ4Ow+MPmmoTnnvPF4sJ8KuswzZVRj/P5f0TdYv1EyIFGpecH4eK8bRjBE0wUSh+UrDCA9KnB7qfwa
+X-Received: by 2002:a05:600c:1c9e:b0:423:791:f446 with SMTP id 5b1f17b1804b1-427dc51a01emr45871665e9.7.1721664502503;
+        Mon, 22 Jul 2024 09:08:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721664502; cv=none;
         d=google.com; s=arc-20160816;
-        b=iKLl9nllEIXoiw1i4SYhqLIe99xwgptwttzKZj+ZLSh6R4idPmGlNsoSlcXnz7Jn8/
-         5Xw6BsMGQAq7t7aoWjQBTw7g6c19to1DPRZMxJq86dHKDaY0UUdC+icULPXzLQRufT5B
-         Dl97CTWeaw5U+4zBgAC2aUexRiPqeLpu6m6lpn4w/9kGIIYl+6B49Pf4KUmeKhsqs5xp
-         d9+si2H5Or08br5YM9k59yQMAJ5tU5NU/1+Ovg1w4P3Oi/FJUD83j2Un3Jv8vuytTD51
-         Ms3bNh3Zoqmjj6UOhpnSwFwBedcBMHBjUFF2Fn5nVeghYRN2Pl8Sa85pMurA0fc9frQB
-         t8xw==
+        b=wnRv2m5JWdLb3KmAZNdULbPhGFfjc5RZ8xNzo9T2tr1V3HTK3OHI2fOVcYF5ZGBMgJ
+         JXXgSZWrsFTeAbqxfT8SpoBSZItf2UmQzqplSFWXFbCqSc0XqrmRaasHPyerq669YW4z
+         KiZHKPjl4E8Q8VU2EijTc99woXkyT5LF2Yc9dvU2wCSGI6xReHYWOZ6ufRuumEAY9/iT
+         l+p1+I3McThGn1zskQNOnpzFz/lo3m2tO50ziEU5TjF6NoYac/RCp+A5Jl7cFEKIAqJ/
+         SLb5G6Fb2/iyHByePF2STpPLs13lXnPPw0wuAtZO32amhUyZ4XNs9ECKuKAuEAH7FBD7
+         qa5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=dS9AnThSzSBrSy+tonVpTP7pqJETnOM97XqDCYC+F+8=;
-        fh=9ksKhW2xHTnc0yXmmYlIvPpH+1AAaLEAqTjl64kk7qg=;
-        b=nFkjK+X+VtGC70DsU29Nib9HlOD5IijSieQBUKxRPD3BsVw3FRDu4jHlrCCPGW6lhs
-         nR8fK61te+BJLdg27MDdw9KZU79D1DIoQz0w0RtG4hBo6r3Yi0pguaPUIjk1W/jAgDxD
-         V8ru2PX80Tt/JNgALpBqPLune0QBRMxkefZteHGw1B93TITppKB06HwOhgS0QTPhStrW
-         7lnfCtHr2op6X9gkAnmEL0HCNu+S/E0qwYQPsekLJUSZvDVE7uxoAvWWevKK/qlfN4i5
-         64ya4mFCQAZi4rFCOkMeFRVZm0VGI96mgY8kkuZZAWEGYmaBl7+qwGuTRnb2gsxx3+S0
-         aKOA==;
+        bh=g5IVJQKs0mRewT92ekkS2OE3V+7eufImd7ZnhLfAtiw=;
+        fh=bgC3MEJekt4UG4CDObmaM+kjCJ4txe8OFykgujEnCKg=;
+        b=qhPsTj+RxkYJwVe+JBtB2Lt6bign5FSDnsgvBmXU61phGbYP5zel1tO2t2mVyyhGIm
+         b3Gd4989W+vraYYnW0lC6Io0cnK4ePsFU97h5Lu0vjv4BrD0rcbJBPVlhWKowRPtW6zT
+         J/h/b2pXH+gXLAre4NZ8uHvQTcubg/5K8fJoj1kfCYooRD07eFOKEAMHCPkeLjKPI1Q0
+         2g7kotT+CIVrxqu86vWbGQoqEYev3ASZYNa/KWfJH8EdUQohzd6uCErFzXaSuBjsE6UY
+         jMXJMMe6cS/EbiqpkK4vbtNwvgaBL7Ati3sTivI1tj248mrXOnHvXuI9tRGxwOVs5nSp
+         IMOQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ilhokOPT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jj4jDej4;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-427d6d7b65asor20784435e9.0.2024.07.22.09.08.06
+        by mx.google.com with SMTPS id 5b1f17b1804b1-427d6fffd20sor20629775e9.12.2024.07.22.09.08.22
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 22 Jul 2024 09:08:06 -0700 (PDT)
+        Mon, 22 Jul 2024 09:08:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ilhokOPT;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jj4jDej4;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1721664486; x=1722269286; darn=linaro.org;
+        d=linaro.org; s=google; t=1721664502; x=1722269302; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=dS9AnThSzSBrSy+tonVpTP7pqJETnOM97XqDCYC+F+8=;
-        b=ilhokOPTNAD/amdLtUSReNEL7v8IwaJkFRytggjYymhBSv2MGjL7q8H1dv7t3HTI4w
-         GEXOSiExwVGedzXmieLhuy2YxLagIneDs/PQkEurdL9wBDJD73BspWfgZTpgI8gZIMEj
-         KTrrjt2kQeemLA0T1sEN3zo5EDBAIbQ8FXHz840p6RfewRoKpgGszWwWV9NefB9RgHQP
-         NECxkhBNpYAk8bmIIHcAfG6Jz6PAFIrMBYS+iH67XOON1h5yLEAbFi7yHtQ4N4xuQDiV
-         evwLp2cctpHkwWYAQoKj6AQYNlfrxuUQCLdV/meKVNdBO0XzPOeaqki2vt1LNMrgTHyJ
-         er9Q==
+        bh=g5IVJQKs0mRewT92ekkS2OE3V+7eufImd7ZnhLfAtiw=;
+        b=Jj4jDej4bDI0VBawJs4WbCBAEXOvVRVqDz6kk4N+UbPsAvud98vAv5UxELOool086B
+         2y/3lEWI8UQeLEz1UdrNtCrwFRZGRafXSlCLHrcMwNdjLeNFqjU0ye4lnBL9Hxb+lrnl
+         JTwuVgFcduX24gaLp1iXJNuWqSGjnAn6hlk5rRIvNicYrU9o8K6Nz1ID59j9wuW3Ml6o
+         LjcPv7DEyOV0s7QR8ffsiF6xmcYQnWsGhlN78wVt0utZ4xRrvEaQfM9RsOrThXBAIMmV
+         jw4++Ky6MsYj5BtD0lQQX92nJeAOlsdpcblQ8WcY8LVPwhTdOCJW/FGJzaU4mTGXiUm2
+         7nFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721664486; x=1722269286;
+        d=1e100.net; s=20230601; t=1721664502; x=1722269302;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=dS9AnThSzSBrSy+tonVpTP7pqJETnOM97XqDCYC+F+8=;
-        b=rBEAwuQtMB60gqHYq3WMeyfxNbMNKKIzpNOiNA2gYO3S4lqh59nZrYQbRqGbybp//H
-         G0UwCPSrZGH79+meWpikl0Q3LjG1DikwAFloehy+sOGbU3BdnXfP0D0uTXXvxLMKzRDm
-         3Y3gnKPeNiCjA1r1BCnieo06UL7KRZAP6brEAz/gM5HHACoNaMbVdb5tNmY9+sYIdUh3
-         X2lI6S3mYU5ORDSpoPTOZRCcuIWZ1sU84hhekQSYJoy5dlREC6nyiph6aiD2QKw3UW8S
-         nSKb2oijmbH6Q9t855ta/jYF1Pr1uONDY2poeFwvtqRpqGy18w8zdU7x33qxfsBZ+sZX
-         SM8Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWUzMMCQj5T7PQSiIFDWoEpyQxsr01esZNJDlIYt7wGVIqFZ6H+l6uKy3T8pYQrDiJBTHT+4FEwYrUW/JXKm4pKq7rCXj37
-X-Gm-Message-State: AOJu0YxjdIke8YG15JvW8yONWfj6iQr4w/j7chuVZCvsn56duYARuEgw
-	bGoS/JeH11SHFezr4cgAogMusbBadrpCXY6iKEnGgFpPbCUSRnBSdYx1nhBBElMKZA==
-X-Google-Smtp-Source: AGHT+IF//xZooh6F8wrQlhQGx3PPEaFSRd5iEOX4H6OK6eNunLO3B/Y4GiT1cQNAmy+3XU07ENp6ww==
-X-Received: by 2002:a05:600c:45d3:b0:425:649b:60e8 with SMTP id 5b1f17b1804b1-427df7b6d07mr45973825e9.18.1721664485987;
-        Mon, 22 Jul 2024 09:08:05 -0700 (PDT)
+        bh=g5IVJQKs0mRewT92ekkS2OE3V+7eufImd7ZnhLfAtiw=;
+        b=DPoNpcFkVUNLki6gZ3yJPCR+ryKmGiCbAwcpjH7p8RP4jet45oR3RT5sp1TkBKQSRb
+         u0IIa7C+LGPjG+prtTsG7+wktMpC3PcF5gzeog54zSV6HsoZYfWWdv0T/qHSPnxDfc6G
+         17APIXTprzc/mTxCTlXZ/Mm5cMA3Q/w1sleS+nSYJGapZcvqhZZ+hCm3lYbBjP+ZQn+j
+         316vAICa2T7abNybgiNhcAwS/9cxtm9g5nDEC/EJrIznlJfT1Ipb4spk6IMjBnWGfwMI
+         43Gxz8dubnap0HEePcvdF/fJXtp8FpZ5bUZCmUYoQhR5s7b8ksVzagPOs7h+VdumD7XS
+         c0vA==
+X-Forwarded-Encrypted: i=1; AJvYcCXX1oes925WVOzVynhzmZH4P7ioNnSzPMDi+5Bs89p7SOmsByvVOb6Fl7reKQXH5va9Wf4ByYhKNG3BVr70FALioAuTrlIn
+X-Gm-Message-State: AOJu0YwHoB7bUR/Dj/zrrxSjTF5Ri2ZqaxN7dFdbXY5uSRnUSJ1JIB/L
+	OCt2Umzmc9u+F0/FmBYnO8X2a2zBDOPjGrlvuEgyXVUotrkpHiypaUPhFN2mWwn68g==
+X-Google-Smtp-Source: AGHT+IES0/0Gp6R84KpnzozIZodYH7Kb9siP7ixWABhurMCjoRnsqoUxlHz7lH8/H+pAi3dKtB6eWg==
+X-Received: by 2002:a05:600c:1c9e:b0:423:791:f446 with SMTP id 5b1f17b1804b1-427dc51a01emr45867695e9.7.1721664491827;
+        Mon, 22 Jul 2024 09:08:11 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (gen92-h02-176-184-20-254.dsl.sta.abo.bbox.fr. [176.184.20.254])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-427d2a8e2a1sm159685935e9.31.2024.07.22.09.08.04
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-427d2a7257esm158849065e9.28.2024.07.22.09.08.10
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 22 Jul 2024 09:08:05 -0700 (PDT)
+        Mon, 22 Jul 2024 09:08:11 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
@@ -84,61 +84,76 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 3/7] util/fifo8: Use fifo8_reset() in fifo8_create()
-Date: Mon, 22 Jul 2024 18:07:41 +0200
-Message-ID: <20240722160745.67904-4-philmd@linaro.org>
+Subject: [PATCH v2 4/7] util/fifo8: Rename fifo8_peek_buf() -> fifo8_peek_constbuf()
+Date: Mon, 22 Jul 2024 18:07:42 +0200
+Message-ID: <20240722160745.67904-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240722160745.67904-1-philmd@linaro.org>
 References: <20240722160745.67904-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: GCZtl081ERYD
+X-TUID: yKNHA82b2PVd
 
-Avoid open-coding fifo8_reset() in fifo8_create().
+Since fifo8_peek_buf() return a const buffer (which points
+directly into the FIFO backing store), rename it using the
+'constbuf' suffix. This will help differentiate with methods
+*copying* the FIFO data.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 ---
- util/fifo8.c | 15 +++++++--------
- 1 file changed, 7 insertions(+), 8 deletions(-)
+ include/qemu/fifo8.h | 4 ++--
+ hw/scsi/esp.c        | 2 +-
+ util/fifo8.c         | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
+diff --git a/include/qemu/fifo8.h b/include/qemu/fifo8.h
+index 2692d6bfda..79450f4583 100644
+--- a/include/qemu/fifo8.h
++++ b/include/qemu/fifo8.h
+@@ -89,7 +89,7 @@ uint8_t fifo8_pop(Fifo8 *fifo);
+ const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
+ 
+ /**
+- * fifo8_peek_buf: read upto max bytes from the fifo
++ * fifo8_peek_constbuf: read upto max bytes from the fifo
+  * @fifo: FIFO to read from
+  * @max: maximum number of bytes to peek
+  * @numptr: pointer filled with number of bytes returned (can be NULL)
+@@ -113,7 +113,7 @@ const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
+  *
+  * Returns: A pointer to peekable data.
+  */
+-const uint8_t *fifo8_peek_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
++const uint8_t *fifo8_peek_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
+ 
+ /**
+  * fifo8_reset:
+diff --git a/hw/scsi/esp.c b/hw/scsi/esp.c
+index 8504dd30a0..526ed91bef 100644
+--- a/hw/scsi/esp.c
++++ b/hw/scsi/esp.c
+@@ -486,7 +486,7 @@ static bool esp_cdb_ready(ESPState *s)
+         return false;
+     }
+ 
+-    pbuf = fifo8_peek_buf(&s->cmdfifo, len, &n);
++    pbuf = fifo8_peek_constbuf(&s->cmdfifo, len, &n);
+     if (n < len) {
+         /*
+          * In normal use the cmdfifo should never wrap, but include this check
 diff --git a/util/fifo8.c b/util/fifo8.c
-index 4e01b532d9..2925fe5611 100644
+index 2925fe5611..21943c6032 100644
 --- a/util/fifo8.c
 +++ b/util/fifo8.c
-@@ -16,12 +16,17 @@
- #include "migration/vmstate.h"
- #include "qemu/fifo8.h"
- 
-+void fifo8_reset(Fifo8 *fifo)
-+{
-+    fifo->num = 0;
-+    fifo->head = 0;
-+}
-+
- void fifo8_create(Fifo8 *fifo, uint32_t capacity)
- {
-     fifo->data = g_new(uint8_t, capacity);
-     fifo->capacity = capacity;
--    fifo->head = 0;
--    fifo->num = 0;
-+    fifo8_reset(fifo);
+@@ -92,7 +92,7 @@ static const uint8_t *fifo8_peekpop_buf(Fifo8 *fifo, uint32_t max,
+     return ret;
  }
  
- void fifo8_destroy(Fifo8 *fifo)
-@@ -97,12 +102,6 @@ const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
-     return fifo8_peekpop_buf(fifo, max, numptr, true);
- }
- 
--void fifo8_reset(Fifo8 *fifo)
--{
--    fifo->num = 0;
--    fifo->head = 0;
--}
--
- bool fifo8_is_empty(Fifo8 *fifo)
+-const uint8_t *fifo8_peek_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
++const uint8_t *fifo8_peek_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
  {
-     return (fifo->num == 0);
+     return fifo8_peekpop_buf(fifo, max, numptr, false);
+ }
 -- 
 2.41.0

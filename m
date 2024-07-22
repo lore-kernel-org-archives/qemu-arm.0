@@ -1,42 +1,42 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2148123njc;
-        Mon, 22 Jul 2024 14:22:39 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWXbgv4D8uriLtXOzpyP2VSC7C6r5k0Rgldw9MUuj2rvpaPpiHsTr/w14+hC1Bd7pi6deFMcS9E/7A8Nvk6iKFKx0HQchm6
-X-Google-Smtp-Source: AGHT+IHSOfT74KpCzmqh/aVNgrWoWA8c8N4y0uuEfx6Y5g904gQxzgOxt7SNh3f0bL4pBAmSCBUo
-X-Received: by 2002:a5d:630d:0:b0:368:4da3:a3ac with SMTP id ffacd0b85a97d-369dec1e7d9mr765812f8f.40.1721683359110;
-        Mon, 22 Jul 2024 14:22:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721683359; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2148690njc;
+        Mon, 22 Jul 2024 14:24:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWdKInFlaihFIgnrGOECYB8L4vHYbSTtskw7+4dvu2mzUM6ko7bSpbEFdbnnlLaK60XITqCKS/856BEUPm3j2e2YHMrb3+V
+X-Google-Smtp-Source: AGHT+IFbRNf3W8CLQ0GaqK9UaSQmz7Je79X/f5IRSSc2X02jjZHkW4V/kQKOS8iaRecUaab7pNRL
+X-Received: by 2002:adf:e583:0:b0:367:9d2c:9602 with SMTP id ffacd0b85a97d-369dee57ab6mr646326f8f.49.1721683467410;
+        Mon, 22 Jul 2024 14:24:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721683467; cv=none;
         d=google.com; s=arc-20160816;
-        b=X7umLUIFqYTcLksMEMEAuWu1sssYCph9nB03G4K1Do6ImnRLDvs4tSEZfcpGhPvgBg
-         zXENA3byb3Xgl8PbxjavMMXShvWE+VMSWko10FQm3D5JdX8u906jm//ZEbBqo08QvqSm
-         PZxO//b089yG9k4CsOOHbQytkt8BpxzGeiX6cVGsJrWOTGRcpgnHq2jJpGyTYO9RtCIq
-         46goq321y8kIHgAOOUMfMyVYuxtsfwHqvvjRsLEb61FMxWdExTsQtd89B//enkiJT3VC
-         0+73EcXq7gLylb+g2UmdduUPDHaO62EzsnHV/e173s9r+lSa89OGwesgwPZQ1yYOw27U
-         4GCw==
+        b=xom27mc242SECtehE0s/Rr5AkN4gGR1KqJ7QyQCQPlVC4dXFntFbd7m8nIbgOEariw
+         nn+zoUcQiVU6mNWqJIXTk8C4uz6KtyZg/JcQAiHkAA/UNOp+tcdkJ91CGb4opj9A0HcF
+         78APT36qpAPsGJT1+IxrmtC7n6hlKP7epZaS94jTTJyIO+V/FkOL3u8Whsut2AYsIqVE
+         LCySmNM6iEW7kQ5VSWvyLDRa1aV6qE8dA6wRVMJ7W78g3zb0pHQ17JauyLEGY8OGjqsr
+         DRgN2TQrDT+NanOC824z76strDfjaJNq04rPeawEBH3V3jlvWl23ybGMnhkkhxpZv0AV
+         luFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=subject:content-transfer-encoding:in-reply-to:autocrypt:from
          :content-language:references:cc:to:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=15zjVRzzQM4RNGMD7kZW2TgrPbMVnxGbZNw8r8ckHcE=;
+        bh=NKqTZKbxY0DRlQy87302mXYMYJxfvGIWK2T3dznCNv0=;
         fh=68S9+Kdsh8o88VoK6xqmpRIkDdLleQOpmgVVrH8ervI=;
-        b=T9zWLpuEpGx99Szipi4m6Y8Ohsk4AmoJyi4sPpC4ykpwbh3NMmjxgjzBRjcqtfVNII
-         qeoOAjH0A/JBQy6kF8MoKikr5bynwe4DhzxEaDOdhBreO9JyvqfueskMyQ21zanRR/y+
-         xdv7SqFaoam2/vfmWEORV073SvFajZL0EWNr/JvMl1nxaeyykRspnH4VUX99dddUq0Qz
-         nIERAHnEeusLwtu2MjrXbdLTpJJf4LgoKu38wq7lcZwP28oi2miRs4wai26tQjwC/ne5
-         YDviCDeTGQ7lDZzL7wQ1a97ATAVJADdNAl5AyWku2mr8dIhZqj2eOrykbE6CI7W3G1DP
-         Fv0w==;
+        b=efX6u1rZ6DvlOeF+utTaHywTkqE4ehPx8VZg/jwaeiiR4wELL4sZJxE23iinKy357W
+         +A6wkuUZI6nRHjHPH2tgyta8qdU6Q86bvakxOKJ4mZ0h9xC7hwSI3yJMBm4JDLF9SgnF
+         Cn2VUU/4R2XllyqUXdlCY9MlAhegX4xxHb5J5iPnJKx9BKQaDJyzqyC03RquXZnwXdME
+         8eAdq2Q2oK2dg8835j1d/aF/I7elY70cusMKNaPsONdc32oR69+zb9N/KWbsapblxQVQ
+         aPvwDfKSwNn8kMJf2tz7aolaw2TX5hKtntMQmn+WvLq7K1+ORQfAE+Eh5uqxRCbRpQQc
+         QOaw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b=IUa3hbTM;
+       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b=AXGqyKhh;
        spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 Return-Path: <mark.cave-ayland@ilande.co.uk>
 Received: from mail.ilande.co.uk (mail.ilande.co.uk. [2001:41c9:1:41f::167])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-369e3819b6asi67393f8f.633.2024.07.22.14.22.38
+        by mx.google.com with ESMTPS id ffacd0b85a97d-369e38329f5si68372f8f.736.2024.07.22.14.24.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Jul 2024 14:22:39 -0700 (PDT)
+        Mon, 22 Jul 2024 14:24:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) client-ip=2001:41c9:1:41f::167;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b=IUa3hbTM;
+       dkim=pass header.i=@ilande.co.uk header.s=20220518 header.b=AXGqyKhh;
        spf=pass (google.com: domain of mark.cave-ayland@ilande.co.uk designates 2001:41c9:1:41f::167 as permitted sender) smtp.mailfrom=mark.cave-ayland@ilande.co.uk;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ilande.co.uk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -44,23 +44,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID;
-	bh=15zjVRzzQM4RNGMD7kZW2TgrPbMVnxGbZNw8r8ckHcE=; b=IUa3hbTMP46Ew23WXPHH+QNrtu
-	sbTAG1lz2w4V5+7rynSWpwDV8Pvwnlu2fITgXd04AD3SRwo01jFRIxjv7T/JllD+1no2EYfHX+Zs+
-	Ww4C1jGkU6Z8hBPrw4lsqq4vCrcIBu1tbUKaqwU5mkwdiXn0749lAn7/TF2+5q77in255IQ7jVJA5
-	bBoAzdAXhE9apaYPPRlpETKkb4Eul+/WINzJOMV3Qsf0VrYeLF7YyMde6jDO11RqjZt6i0R+m+RI2
-	TlT5aOzpU+t1gKR1Pw6/S1SD3kNU+nde/vn4Lta9XwVafnyzhrhzPgxDosKrst4TMcAv1kPn3Oq/R
-	HGdwJvvMrH4msTjqLnIbutWhcbzHIt6naSN6GcfcrXqHFPY0olEF0peLbSMc/4MobqC6XuCLfLH8J
-	uwZulqcTqh+rGp0fSOO0kClxWhGatVNdBr+9Iays0z0y70OXHiagE9C7XMERz+DWTwqu+o8JunAtk
-	UDqxaGe2vVa2JPEvL9WvSF+8RW8uVdrMXgM88OzwjoAqjlgajDqDWChHDqWr+MMp49bCrwiMRdzS6
-	LP69dN7/EcpLiGucGDnC3tMIWi7rzuz7hyFD1VimNuE/jFKml+m3lC6FIgkjQGs0T4I9QU3JtrlC0
-	fqUjuqS82XGF4E9br2vZrPb2nsMp9tJ8lZ1Ex9S4k=;
+	bh=NKqTZKbxY0DRlQy87302mXYMYJxfvGIWK2T3dznCNv0=; b=AXGqyKhh3ssOrmVcd1BJ2z8OwC
+	IzrdrO+uKke1/g9BKEeK4l0nrtIPHONu0BYu1I3BBWvnQYte3Tyx0Ep7Wv3XJyb4U1z1NKSw3DU1s
+	LDRBv63I9ZbPRjPn2KiBBWo9S44H87vpRcLsltPJzBygIX9NpKLeuAK7QyzoJK7z+sSEK8/6MNldi
+	Tshexb2H7kcXtrMm2yD0viTMU/twPs0ycEDN5MpGzUVcIkgOB8nhciJfxMHPsotanPvRpEDQD3zCo
+	QrCnOmKB1nzcpWf7Wq7oQsd1cW44dy0Zcg46Rr1CQPTg0oUfdRFyHkP5lmydzWIj7+qRPbKqO7ZJl
+	D9CXeFqRzPtKZxMakD0hhIX0E9aSD1ebMyyprIxmv//XLMFSKxAHgAJtqdCpzOwUWDnMMt1N6b1aI
+	PzU5eKNCeMf82vcpQTxftVTSoEPIfkPrlPlvyzedFJa8tDi4xRrK0f+paUkHEyY+I4KGJ43pPCfMv
+	+ECOo9E+P+9YH9qWyb8J/HK2tf3fpQZpzpoAo8W9GfQDvHZno2vfUjf4lDD2+puFfId3U0u7KXK1n
+	5FOFM6YWVd6bpVRhIJCAbKlZvUTJsy4pa6QISfaJ4RELRaX9IwQLPJ5iTKLKvGj9IW6q1REMjYuP4
+	d8EYBOUmjkpzwtS4Lq1uMXi6WyL9dBwnfbZ9MGhTo=;
 Received: from [2a00:23c4:8bb4:4000:c7ab:2566:bad6:7dfd]
 	by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
 	(Exim 4.92)
 	(envelope-from <mark.cave-ayland@ilande.co.uk>)
-	id 1sW0St-0003Mk-4K; Mon, 22 Jul 2024 22:21:07 +0100
-Message-ID: <6775bf69-c6e9-445b-b2b2-da4e4ef789b3@ilande.co.uk>
-Date: Mon, 22 Jul 2024 22:22:31 +0100
+	id 1sW0Ud-0003NV-9I; Mon, 22 Jul 2024 22:22:55 +0100
+Message-ID: <21d354aa-b0ed-424e-8453-eae493693d61@ilande.co.uk>
+Date: Mon, 22 Jul 2024 22:24:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -70,7 +70,7 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 References: <20240722160745.67904-1-philmd@linaro.org>
- <20240722160745.67904-5-philmd@linaro.org>
+ <20240722160745.67904-6-philmd@linaro.org>
 Content-Language: en-US
 From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
@@ -97,7 +97,7 @@ Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
  Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
  KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
  imgcU9TTGC5qd9g=
-In-Reply-To: <20240722160745.67904-5-philmd@linaro.org>
+In-Reply-To: <20240722160745.67904-6-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-SA-Exim-Connect-IP: 2a00:23c4:8bb4:4000:c7ab:2566:bad6:7dfd
@@ -107,23 +107,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-2.8 required=5.0 tests=ALL_TRUSTED,BAYES_00,
 	URIBL_BLOCKED,URIBL_SBL_A autolearn=no autolearn_force=no version=3.4.2
-Subject: Re: [PATCH v2 4/7] util/fifo8: Rename fifo8_peek_buf() ->
- fifo8_peek_constbuf()
+Subject: Re: [PATCH v2 5/7] util/fifo8: Rename fifo8_pop_buf() ->
+ fifo8_pop_constbuf()
 X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
 X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-X-TUID: eHJ694anwArN
+X-TUID: eyErD/l/k+4p
 
 On 22/07/2024 17:07, Philippe Mathieu-Daudé wrote:
 
-> Since fifo8_peek_buf() return a const buffer (which points
+> Since fifo8_pop_buf() return a const buffer (which points
 > directly into the FIFO backing store), rename it using the
 > 'constbuf' suffix. This will help differentiate with methods
 > *copying* the FIFO data.
 
-Perhaps fifo8_peek_bufptr() is a better reflection that it is a pointer to the 
-internal buffer that is being returned here?
-
-Still:
+Similar comment re: fifo8_pop_bufptr() as before, but still:
 
 Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 
@@ -134,56 +131,144 @@ Mark.
 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   include/qemu/fifo8.h | 4 ++--
->   hw/scsi/esp.c        | 2 +-
->   util/fifo8.c         | 2 +-
->   3 files changed, 4 insertions(+), 4 deletions(-)
+>   include/qemu/fifo8.h    | 4 ++--
+>   chardev/msmouse.c       | 2 +-
+>   hw/char/goldfish_tty.c  | 4 ++--
+>   hw/net/allwinner_emac.c | 2 +-
+>   hw/scsi/esp.c           | 4 ++--
+>   ui/console-vc.c         | 2 +-
+>   ui/gtk.c                | 2 +-
+>   util/fifo8.c            | 2 +-
+>   8 files changed, 11 insertions(+), 11 deletions(-)
 > 
 > diff --git a/include/qemu/fifo8.h b/include/qemu/fifo8.h
-> index 2692d6bfda..79450f4583 100644
+> index 79450f4583..686918a3a4 100644
 > --- a/include/qemu/fifo8.h
 > +++ b/include/qemu/fifo8.h
-> @@ -89,7 +89,7 @@ uint8_t fifo8_pop(Fifo8 *fifo);
->   const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
+> @@ -63,7 +63,7 @@ void fifo8_push_all(Fifo8 *fifo, const uint8_t *data, uint32_t num);
+>   uint8_t fifo8_pop(Fifo8 *fifo);
 >   
 >   /**
-> - * fifo8_peek_buf: read upto max bytes from the fifo
-> + * fifo8_peek_constbuf: read upto max bytes from the fifo
->    * @fifo: FIFO to read from
->    * @max: maximum number of bytes to peek
+> - * fifo8_pop_buf:
+> + * fifo8_pop_constbuf:
+>    * @fifo: FIFO to pop from
+>    * @max: maximum number of bytes to pop
 >    * @numptr: pointer filled with number of bytes returned (can be NULL)
-> @@ -113,7 +113,7 @@ const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
+> @@ -86,7 +86,7 @@ uint8_t fifo8_pop(Fifo8 *fifo);
 >    *
->    * Returns: A pointer to peekable data.
+>    * Returns: A pointer to popped data.
 >    */
-> -const uint8_t *fifo8_peek_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
-> +const uint8_t *fifo8_peek_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
+> -const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
+> +const uint8_t *fifo8_pop_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr);
 >   
 >   /**
->    * fifo8_reset:
+>    * fifo8_peek_constbuf: read upto max bytes from the fifo
+> diff --git a/chardev/msmouse.c b/chardev/msmouse.c
+> index a774c397b4..08836d92e8 100644
+> --- a/chardev/msmouse.c
+> +++ b/chardev/msmouse.c
+> @@ -81,7 +81,7 @@ static void msmouse_chr_accept_input(Chardev *chr)
+>           const uint8_t *buf;
+>           uint32_t size;
+>   
+> -        buf = fifo8_pop_buf(&mouse->outbuf, MIN(len, avail), &size);
+> +        buf = fifo8_pop_constbuf(&mouse->outbuf, MIN(len, avail), &size);
+>           qemu_chr_be_write(chr, buf, size);
+>           len = qemu_chr_be_can_write(chr);
+>           avail -= size;
+> diff --git a/hw/char/goldfish_tty.c b/hw/char/goldfish_tty.c
+> index f8ff043c39..2c5004851d 100644
+> --- a/hw/char/goldfish_tty.c
+> +++ b/hw/char/goldfish_tty.c
+> @@ -69,7 +69,7 @@ static uint64_t goldfish_tty_read(void *opaque, hwaddr addr,
+>   static void goldfish_tty_cmd(GoldfishTTYState *s, uint32_t cmd)
+>   {
+>       uint32_t to_copy;
+> -    uint8_t *buf;
+> +    const uint8_t *buf;
+>       uint8_t data_out[GOLFISH_TTY_BUFFER_SIZE];
+>       int len;
+>       uint64_t ptr;
+> @@ -109,7 +109,7 @@ static void goldfish_tty_cmd(GoldfishTTYState *s, uint32_t cmd)
+>           len = s->data_len;
+>           ptr = s->data_ptr;
+>           while (len && !fifo8_is_empty(&s->rx_fifo)) {
+> -            buf = (uint8_t *)fifo8_pop_buf(&s->rx_fifo, len, &to_copy);
+> +            buf = fifo8_pop_constbuf(&s->rx_fifo, len, &to_copy);
+>               address_space_rw(&address_space_memory, ptr,
+>                               MEMTXATTRS_UNSPECIFIED, buf, to_copy, 1);
+>   
+> diff --git a/hw/net/allwinner_emac.c b/hw/net/allwinner_emac.c
+> index 989839784a..3b0a2ee07e 100644
+> --- a/hw/net/allwinner_emac.c
+> +++ b/hw/net/allwinner_emac.c
+> @@ -349,7 +349,7 @@ static void aw_emac_write(void *opaque, hwaddr offset, uint64_t value,
+>                                 "allwinner_emac: TX length > fifo data length\n");
+>               }
+>               if (len > 0) {
+> -                data = fifo8_pop_buf(fifo, len, &ret);
+> +                data = fifo8_pop_constbuf(fifo, len, &ret);
+>                   qemu_send_packet(nc, data, ret);
+>                   aw_emac_tx_reset(s, chan);
+>                   /* Raise TX interrupt */
 > diff --git a/hw/scsi/esp.c b/hw/scsi/esp.c
-> index 8504dd30a0..526ed91bef 100644
+> index 526ed91bef..64384f9b0e 100644
 > --- a/hw/scsi/esp.c
 > +++ b/hw/scsi/esp.c
-> @@ -486,7 +486,7 @@ static bool esp_cdb_ready(ESPState *s)
->           return false;
+> @@ -208,7 +208,7 @@ static uint32_t esp_fifo8_pop_buf(Fifo8 *fifo, uint8_t *dest, int maxlen)
 >       }
 >   
-> -    pbuf = fifo8_peek_buf(&s->cmdfifo, len, &n);
-> +    pbuf = fifo8_peek_constbuf(&s->cmdfifo, len, &n);
->       if (n < len) {
->           /*
->            * In normal use the cmdfifo should never wrap, but include this check
+>       len = maxlen;
+> -    buf = fifo8_pop_buf(fifo, len, &n);
+> +    buf = fifo8_pop_constbuf(fifo, len, &n);
+>       if (dest) {
+>           memcpy(dest, buf, n);
+>       }
+> @@ -217,7 +217,7 @@ static uint32_t esp_fifo8_pop_buf(Fifo8 *fifo, uint8_t *dest, int maxlen)
+>       len -= n;
+>       len = MIN(len, fifo8_num_used(fifo));
+>       if (len) {
+> -        buf = fifo8_pop_buf(fifo, len, &n2);
+> +        buf = fifo8_pop_constbuf(fifo, len, &n2);
+>           if (dest) {
+>               memcpy(&dest[n], buf, n2);
+>           }
+> diff --git a/ui/console-vc.c b/ui/console-vc.c
+> index 899fa11c94..e9906aae59 100644
+> --- a/ui/console-vc.c
+> +++ b/ui/console-vc.c
+> @@ -287,7 +287,7 @@ static void kbd_send_chars(QemuTextConsole *s)
+>           const uint8_t *buf;
+>           uint32_t size;
+>   
+> -        buf = fifo8_pop_buf(&s->out_fifo, MIN(len, avail), &size);
+> +        buf = fifo8_pop_constbuf(&s->out_fifo, MIN(len, avail), &size);
+>           qemu_chr_be_write(s->chr, buf, size);
+>           len = qemu_chr_be_can_write(s->chr);
+>           avail -= size;
+> diff --git a/ui/gtk.c b/ui/gtk.c
+> index bc29f7a1b4..a4db90e8cb 100644
+> --- a/ui/gtk.c
+> +++ b/ui/gtk.c
+> @@ -1820,7 +1820,7 @@ static void gd_vc_send_chars(VirtualConsole *vc)
+>           const uint8_t *buf;
+>           uint32_t size;
+>   
+> -        buf = fifo8_pop_buf(&vc->vte.out_fifo, MIN(len, avail), &size);
+> +        buf = fifo8_pop_constbuf(&vc->vte.out_fifo, MIN(len, avail), &size);
+>           qemu_chr_be_write(vc->vte.chr, buf, size);
+>           len = qemu_chr_be_can_write(vc->vte.chr);
+>           avail -= size;
 > diff --git a/util/fifo8.c b/util/fifo8.c
-> index 2925fe5611..21943c6032 100644
+> index 21943c6032..31f0d34c0c 100644
 > --- a/util/fifo8.c
 > +++ b/util/fifo8.c
-> @@ -92,7 +92,7 @@ static const uint8_t *fifo8_peekpop_buf(Fifo8 *fifo, uint32_t max,
->       return ret;
+> @@ -97,7 +97,7 @@ const uint8_t *fifo8_peek_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
+>       return fifo8_peekpop_buf(fifo, max, numptr, false);
 >   }
 >   
-> -const uint8_t *fifo8_peek_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
-> +const uint8_t *fifo8_peek_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
+> -const uint8_t *fifo8_pop_buf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
+> +const uint8_t *fifo8_pop_constbuf(Fifo8 *fifo, uint32_t max, uint32_t *numptr)
 >   {
->       return fifo8_peekpop_buf(fifo, max, numptr, false);
+>       return fifo8_peekpop_buf(fifo, max, numptr, true);
 >   }

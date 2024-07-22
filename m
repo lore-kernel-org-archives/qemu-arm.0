@@ -1,124 +1,125 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2028441njc;
-        Mon, 22 Jul 2024 09:49:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX11xKoSIHO2qxC51o8Q+puvcbrEIFiABnM4+7DgVAuYeobTohCtYtJ/3WJkAADsRVPpyajiYpQsz/yguxl7U5fN9gRGcdO
-X-Google-Smtp-Source: AGHT+IGiS8/Gu4y0cbB0yc4r5XCEwlZvcmLAVQINUOvjtHITPVzn68gV4ZhwhedD9qFNfZKwR+wp
-X-Received: by 2002:ad4:574b:0:b0:6b5:e886:d8a9 with SMTP id 6a1803df08f44-6b9610a1bcamr118661126d6.29.1721666987672;
-        Mon, 22 Jul 2024 09:49:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721666987; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2161282njc;
+        Mon, 22 Jul 2024 15:01:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV1jUmNDho8ou5Uv3ht5y0gRTsS6c3hUlbWB/d6hETckGoIPsdQqAe4IqYidKWyuYbA9+ZDMCfFy6eOcfQyvSwTc+t5EMvy
+X-Google-Smtp-Source: AGHT+IFEwLPqhVqtw2PDkeLTEXNrMlN4z4DJtIxr15nY7z57zHs5Fkk2oOPYto8Gs+MaFx3biUcE
+X-Received: by 2002:a05:6214:300f:b0:6b0:8b6b:2074 with SMTP id 6a1803df08f44-6b95a5dab52mr85163326d6.13.1721685693966;
+        Mon, 22 Jul 2024 15:01:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721685693; cv=none;
         d=google.com; s=arc-20160816;
-        b=PcCPcJH/2x6dtqIrpV4o9ynhm24UxcdggY7d2JjaKRczEmWE+hl262CY0/6QFaMq0t
-         Jnct4gDhTt7bkm51sWYqQH5axej9koopoeyw/PPlNx8KqVuJO8LPi1aUjE+xmiTi7Yvl
-         d3kb64J93joxkGiTxvh7PI3UCNvJR34yhQDOTWlENKPX6levbY7VKL8+V0IsiOmcXasW
-         yWMl1nwk/gFZerZfkA6e+pKylEwB96jFD3ezNCmUHlvLcM3R3nuyAEUFmqQ+Q9Pks8DJ
-         AhtndMjGoT+BOQwQwv2LcS+lUnZB2+VNu4mttMTCiOhF2tq7mUN11NQRUcSriVgzgLuO
-         wnQA==
+        b=JcER2fjjd0BEQq98g84D/dtsj4MMakCEG29Kn8rZ8UJI9lEp1JonXyc1wvKPLk2aVV
+         /ZzJrLrd1S2APzOrXOeZviSojxlf+C908m0RLAihWSw9DhBFVnfRqFE03zrpZSWwAfMs
+         9hbfoviMFyFipxrZTXdg/OomKiwbPul/GzgQ9yZ1YfzSAV9Uut+2P/w7XVpI2uV5JJdQ
+         PsdnlOX/lKCiFH3qPf6Y0gMDIVxz/4nx5n9DAlc92T3uBpka64CSJLCOfG2PXFS8tsWt
+         LxzbtYRn4ncV0GQcFam1tGaT4r4f5FgCYMF2/72NLLWVxv1yscMWVXJTVDKUQ40zi/ud
+         DSiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ojd67kYJwQNwCJ7C4DJs/GgdGhSFvQnplRWu/lP131A=;
-        fh=abZcUwVgzePw57mMwypls+4XqKGQ8/AhtAYEbpPtMrE=;
-        b=hk3+ZPbNjOjR+u7MSNJsgMo+UVKVoRohdbDwLhP01/js0vZtHW601M2xm0aFbeUup/
-         N4dXuVQPnsIdJwafmUF6arWG6UeP9yPmk6WCa2l8Cq6zkUFoMhIh9KGyDJ48EvKYpC28
-         MErY9LbKaWhgEMQ1f0/0LzStYeFvAwiEbwtauTJhffxzPwbqW8jyHF4LNs7u9HqGf6HZ
-         9YRsOcchIqTlKbC1cIEflTACu3CKls/sHEmVAWDNnkcsT9tVxdl/Xp6S+7VsnxrfAfOS
-         S3SQUOBysVGxSZikyLSoOBRITHD2T5Jv47d7EjBmlIceBZyXyegukVXP90zLVc9TZAXF
-         3aHw==;
+        bh=0LAhdNu9e+7XBMJ1h9ByXqlJY0xiouNYvjQirplFstA=;
+        fh=jv+nX6AkmoOfmpfy1IdxSd7UWa5Su0cEEG3wbuhvBX0=;
+        b=LAULi/H2YfDiIB5BeFNUnnMxyb1m+BSVYYSbtLRCgB314z2FPMgUDlOjN/ymWjEtct
+         ODyv3LdoAD8T5PdWMyBsZOvNKZ6bTuVdnHjQ5FHKuCzVlT4c6jaM6kCOhFeuNbxkqhLS
+         e7TZ64PYCeSPYce96qdcKPJGqR2Wl40UBfW5B+zzmn3AREXEpsKfRbQC7Nvkf6usXdQt
+         IUaz/fe6suXW5Qt4yqloGSTSFHpfVM4nzN7oafTR7+rRbqGJzU58Z+2JcrWYr4BsnGcK
+         l5gSLaSjuth4P7kLHEnL92JAdw0OYATKsh+eKD65pxn6UhOtBtE0Xz3YLmvhw4m2CYr9
+         tS+w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=MB1YZUnE;
+       dkim=pass header.i=@linaro.org header.s=google header.b="eeUltH/i";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44f9cd267c1si81344421cf.179.2024.07.22.09.49.47
+        by mx.google.com with ESMTPS id d75a77b69052e-44f9cdba08fsi87792121cf.269.2024.07.22.15.01.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jul 2024 09:49:47 -0700 (PDT)
+        Mon, 22 Jul 2024 15:01:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=MB1YZUnE;
+       dkim=pass header.i=@linaro.org header.s=google header.b="eeUltH/i";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sVwE2-0005CX-0x; Mon, 22 Jul 2024 12:49:26 -0400
+	id 1sW15y-00029v-Hw; Mon, 22 Jul 2024 18:01:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <max.chou@sifive.com>)
- id 1sVwE0-000566-Mn
- for qemu-arm@nongnu.org; Mon, 22 Jul 2024 12:49:24 -0400
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sW15u-0001sB-7Q
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2024 18:01:25 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <max.chou@sifive.com>)
- id 1sVwDx-0007LB-Jk
- for qemu-arm@nongnu.org; Mon, 22 Jul 2024 12:49:24 -0400
-Received: by mail-pf1-x42d.google.com with SMTP id
- d2e1a72fcca58-70d1fb6c108so854795b3a.3
- for <qemu-arm@nongnu.org>; Mon, 22 Jul 2024 09:49:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sW15r-00083q-B4
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2024 18:01:21 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-4266fcb311cso35968115e9.1
+ for <qemu-arm@nongnu.org>; Mon, 22 Jul 2024 15:01:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1721666958; x=1722271758; darn=nongnu.org;
+ d=linaro.org; s=google; t=1721685676; x=1722290476; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ojd67kYJwQNwCJ7C4DJs/GgdGhSFvQnplRWu/lP131A=;
- b=MB1YZUnEBw/nasA+5UHIddjm3KtLCyswmXdLOPmEi5LuZsqvYhLjeJgyHC2bisfRxT
- n1PqaoFNXlpfXkRE/keVcJDs2tCOm75aMl6y3RfbitO9NxzIUI7zPVFBfG8mMoZFmmy3
- 7IN/xBxRSvEjRbaBnRfUbKst3+fqB+Qj8hEMGdBTScmp23I2en8VdQrgORRx4TadS+I1
- 4n+9sTqCsYU0wujm4y4bbZjXLwwB+apveEHEMMsfgTsM73rUP94/o2H/TumT+0eFaTti
- udFDg0X1io2vmGcDG4KDEEzK2Rwno5HzBawS/ycqJp/omKhsr+NXbMMj94IfKN8eHsf/
- ElnQ==
+ bh=0LAhdNu9e+7XBMJ1h9ByXqlJY0xiouNYvjQirplFstA=;
+ b=eeUltH/iABupljZ80iRaENy1AKQcE1Kapsjw3j/8AaER+sMl8jiFX2RBVDl+j6JNyy
+ AWEJVhXyiJPL3qSYWqadJlBWzaNDSTnDHqQTHLYOFPemukkqX9QdinK+4lIUb3QbJV+C
+ 9jqkGY/NwuXShbIsNuL4RATIhTunjgJbSPU1MMrfoDXeeLzf0sexvqI3QD/yFqJZBmql
+ foMQHXT6wqEqFxcX6E4VFQSwdq0kik7Mqtr4p5y0KGL4euNwGXXqy4aZDk5CFpHX+MLR
+ ZJgVho4j1nP/0y/sLpLanzTh7uuTrxTukBNZ/56lB1aqIND5x09kO9GGx5pJCkib89JS
+ rRDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721666958; x=1722271758;
+ d=1e100.net; s=20230601; t=1721685676; x=1722290476;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ojd67kYJwQNwCJ7C4DJs/GgdGhSFvQnplRWu/lP131A=;
- b=TtfqSyQXVQyDJVh44gNN+qRZJGqU7Athu1PDmTGrPRcEGZMjsp34wADWOxwcB13HKS
- g2zH4jX/dI8qSHqtispV3PjGop3yEc66uGhxT0TDGSg58cCdpppMtbwoqj2BDvbqnsPN
- O2nVw3N8oe7VvfsLmRuLJA0M4FEyzrpAlzTwuBtR/TqBIjP8jr+fCZbIvO8VGKVCtLj7
- gWIqq4rdYQBC9XD7WMiUpRJWB3JhgReNODU9RLDl2qDURpCk9LaMw2R0hkIZpaDVcOjk
- ZrkzTcOS8UMry3QVIFpe7iFTk1LSSFiwZFUghPH5/k7NBjYl11lHa75AVKfva6MH1PSc
- A4sw==
-X-Gm-Message-State: AOJu0Yz0B5aTsNnlJZepAeI3/aqcCiWv10dHRLzMyAgvSs/2dvQ5HB37
- u27UaX5M1aWlnaJlR+eDC/c/lD878liu9c2bV1otMN8FvxdCwFxLkXCP7znk+muA0qSE7H9GNXv
- PYCg=
-X-Received: by 2002:a05:6a20:430e:b0:1c2:8bcc:bb09 with SMTP id
- adf61e73a8af0-1c42857336cmr6308503637.8.1721666957556; 
- Mon, 22 Jul 2024 09:49:17 -0700 (PDT)
-Received: from [100.64.0.1] (114-35-142-126.hinet-ip.hinet.net.
- [114.35.142.126]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1fd6f28e87esm56848115ad.66.2024.07.22.09.49.15
+ bh=0LAhdNu9e+7XBMJ1h9ByXqlJY0xiouNYvjQirplFstA=;
+ b=ZSXqePJxPflJRJ6jPsy4AReTcATikzPjFbP5SBrThtQwRzfq9RgGDITYtJMQTCjUPx
+ sA1VUf8RSN90B47ahFsXtAsloIUY36qyA7qMggnynCmfsAo8L0VOB9/jB+jC/gCvzPbJ
+ tmEUPn85phdT4Pb80msWfUmJCrm/W8YX2JSojoUexUZZyhcNIISoA6r8e74l9uWXocUF
+ 6viUDW5Dcu6INlzQG+T9MlMP9EnIPh0UzXhTp5VbDYUakKaJ//+eIKUWjRQDTrQZJ3Jn
+ sWXELkrBofC6ifmyQsQURDQpMXWl3R1qz4414MgpeW6ZBL6gs806krZKxXY7yD1bpVVe
+ xVTA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX6hoYzZYFd0ovGKFuVFLDUTF53nyYOJOEpQ/VkW25vXuJ4HJCVG9pNjWJPEd+F+3gQp7d+IrSVQEvE3OhqCOIbT8sH
+X-Gm-Message-State: AOJu0YxFHlzXTZZp/SBhltE/rqndUljFTtzI9+BF5L/INPWnYcg5zYoP
+ JYQ30GoZAaeC0SQ4eEdVZANu+i7oiJHM5E82H/LvrpoOHZGRSEp8Y0K5KyHHW/U=
+X-Received: by 2002:a05:600c:1d18:b0:426:67f0:b4fa with SMTP id
+ 5b1f17b1804b1-427dc51a013mr50523355e9.1.1721685676167; 
+ Mon, 22 Jul 2024 15:01:16 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.208.14])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-427d69019a5sm142440515e9.18.2024.07.22.15.01.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 22 Jul 2024 09:49:17 -0700 (PDT)
-Message-ID: <c96ad0e8-bb2b-4af3-b706-57cd93653f9d@sifive.com>
-Date: Tue, 23 Jul 2024 00:49:14 +0800
+ Mon, 22 Jul 2024 15:01:15 -0700 (PDT)
+Message-ID: <97219e8c-e210-4108-9873-abe2a933a3f1@linaro.org>
+Date: Tue, 23 Jul 2024 00:01:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 12/12] target/riscv: Simplify probing in vext_ldff
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongu.org, qemu-s390x@nongnu.org,
- qemu-riscv@nongnu.org, Alistair Francis <alistair.francis@wdc.com>
-References: <20240719010707.1319675-1-richard.henderson@linaro.org>
- <20240719010707.1319675-13-richard.henderson@linaro.org>
+Subject: Re: [PATCH 13/14] bsd-user: Make compile for non-linux user-mode stuff
+To: Gustavo Romero <gustavo.romero@linaro.org>, Warner Losh <imp@bsdimp.com>, 
+ qemu-devel@nongnu.org
+Cc: Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20240722214313.89503-1-imp@bsdimp.com>
+ <20240722214313.89503-14-imp@bsdimp.com>
 Content-Language: en-US
-From: Max Chou <max.chou@sifive.com>
-In-Reply-To: <20240719010707.1319675-13-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240722214313.89503-14-imp@bsdimp.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=max.chou@sifive.com; helo=mail-pf1-x42d.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,79 +134,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ARDF7ts4JRWj
+X-TUID: q+oZ7T+eSKfo
 
-Reviewed-by: Max Chou <max.chou@sifive.com>
+Hi Warner,
 
-On 2024/7/19 9:07 AM, Richard Henderson wrote:
-> The current pairing of tlb_vaddr_to_host with extra is either
-> inefficient (user-only, with page_check_range) or incorrect
-> (system, with probe_pages).
->
-> For proper non-fault behaviour, use probe_access_flags with
-> its nonfault parameter set to true.
->
-> Acked-by: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 22/7/24 23:43, Warner Losh wrote:
+> We include the files that define PR_MTE_TCF_SHIFT only on Linux, but use
+> them unconditionally. Restrict its use to Linux-only.
+
+We should check that in meson, i.e.:
+
+config_host_data.set('CONFIG_PRCTL_PR_MTE_TCF_SHIFT',
+                      cc.has_header_symbol('sys/prctl.h', 
+'PR_MTE_TCF_SHIFT'))
+
+(like we do for CONFIG_PRCTL_PR_SET_TIMERSLACK), then rework
+linux-user/aarch64/mte_user_helper.h (and possibly
+tests/tcg/aarch64/mte.h), moving in a common directory.
+
+That said, your patch matches this file header:
+
+   #if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
+   #include <sys/prctl.h>
+   #include "mte_user_helper.h"
+   #endif
+
+Even if this #ifdef'ry is ugly, it isn't wrong, so:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+¯\_(ツ)_/¯
+
+> Signed-off-by: Warner Losh <imp@bsdimp.com>
 > ---
->   target/riscv/vector_helper.c | 31 +++++++++++++++++--------------
->   1 file changed, 17 insertions(+), 14 deletions(-)
->
-> diff --git a/target/riscv/vector_helper.c b/target/riscv/vector_helper.c
-> index 1b4d5a8e37..10a52ceb5b 100644
-> --- a/target/riscv/vector_helper.c
-> +++ b/target/riscv/vector_helper.c
-> @@ -474,7 +474,6 @@ vext_ldff(void *vd, void *v0, target_ulong base,
->             vext_ldst_elem_fn *ldst_elem,
->             uint32_t log2_esz, uintptr_t ra)
+>   target/arm/gdbstub64.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+> index 2e2bc2700b8..6dc81aecb2a 100644
+> --- a/target/arm/gdbstub64.c
+> +++ b/target/arm/gdbstub64.c
+> @@ -404,6 +404,7 @@ int aarch64_gdb_get_tag_ctl_reg(CPUState *cs, GByteArray *buf, int reg)
+>   
+>   int aarch64_gdb_set_tag_ctl_reg(CPUState *cs, uint8_t *buf, int reg)
 >   {
-> -    void *host;
->       uint32_t i, k, vl = 0;
->       uint32_t nf = vext_nf(desc);
->       uint32_t vm = vext_vm(desc);
-> @@ -493,27 +492,31 @@ vext_ldff(void *vd, void *v0, target_ulong base,
->           }
->           addr = adjust_addr(env, base + i * (nf << log2_esz));
->           if (i == 0) {
-> +            /* Allow fault on first element. */
->               probe_pages(env, addr, nf << log2_esz, ra, MMU_DATA_LOAD);
->           } else {
-> -            /* if it triggers an exception, no need to check watchpoint */
->               remain = nf << log2_esz;
->               while (remain > 0) {
-> +                void *host;
-> +                int flags;
-> +
->                   offset = -(addr | TARGET_PAGE_MASK);
-> -                host = tlb_vaddr_to_host(env, addr, MMU_DATA_LOAD, mmu_index);
-> -                if (host) {
-> -#ifdef CONFIG_USER_ONLY
-> -                    if (!page_check_range(addr, offset, PAGE_READ)) {
-> -                        vl = i;
-> -                        goto ProbeSuccess;
-> -                    }
-> -#else
-> -                    probe_pages(env, addr, offset, ra, MMU_DATA_LOAD);
-> -#endif
-> -                } else {
-> +
-> +                /* Probe nonfault on subsequent elements. */
-> +                flags = probe_access_flags(env, addr, offset, MMU_DATA_LOAD,
-> +                                           mmu_index, true, &host, 0);
-> +
-> +                /*
-> +                 * Stop if invalid (unmapped) or mmio (transaction may fail).
-> +                 * Do not stop if watchpoint, as the spec says that
-> +                 * first-fault should continue to access the same
-> +                 * elements regardless of any watchpoint.
-> +                 */
-> +                if (flags & ~TLB_WATCHPOINT) {
->                       vl = i;
->                       goto ProbeSuccess;
->                   }
-> -                if (remain <=  offset) {
-> +                if (remain <= offset) {
->                       break;
->                   }
->                   remain -= offset;
+> +#if defined(CONFIG_LINUX)
+>       ARMCPU *cpu = ARM_CPU(cs);
+>       CPUARMState *env = &cpu->env;
+>   
+> @@ -425,6 +426,9 @@ int aarch64_gdb_set_tag_ctl_reg(CPUState *cs, uint8_t *buf, int reg)
+>       arm_set_mte_tcf0(env, tcf);
+>   
+>       return 1;
+> +#else
+> +    return 0;
+> +#endif
+>   }
+>   
+>   static void handle_q_memtag(GArray *params, void *user_ctx)
 

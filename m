@@ -1,160 +1,156 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2156485njc;
-        Mon, 22 Jul 2024 14:46:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV1YUnfoIEzrdFlzzbvZ4rLjDA9gQTtfPDPv5VT3X+zRjZCQYcNvCz5v7wChT8SkPv6uW/EM5GDjHvtJdis7K/WiaBuqpvP
-X-Google-Smtp-Source: AGHT+IFfqIBQEKQHfnbOOau3dJIttovch8PTAgW8z7w+fJ5EOVNj2fxkBmU9SrE7APw4EOjOKc5Q
-X-Received: by 2002:a05:690c:dc2:b0:61b:e645:3e94 with SMTP id 00721157ae682-66a684c2bb8mr139591717b3.5.1721684818495;
-        Mon, 22 Jul 2024 14:46:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721684818; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2158938njc;
+        Mon, 22 Jul 2024 14:54:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUd4yoa333xVBJcYhsSZF+YLnFQI11/3XEbeemvvM0TKLtSSB5cd5b5321i0U8/cjxgdJvrrZA2ubUx1tJpgIkZGLvIz8YP
+X-Google-Smtp-Source: AGHT+IFoPYWRR/p5RgagB+3OaWMxORFtvWUJOIG/zsGUskUKuy1ZhHTZt9vUj9lO8Xxl5UpUzEO1
+X-Received: by 2002:a05:620a:371e:b0:79f:1eb:d76c with SMTP id af79cd13be357-7a1a659f8c1mr1103404485a.43.1721685274516;
+        Mon, 22 Jul 2024 14:54:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721685274; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y8RnNy88m71Q0PdlROFg/kGZOzR8+2+zm2hbij6dfy3kpyKR9cQe0O9RmWyVNh61z8
-         LUIm9A6R8CZfUvwfpAF5C4/lZ3L02lHUmW2DjuB00/cxXHNUXfvr6o9NwtBAXtQb9l1l
-         BH7nJRxriVIpZx+esRewsl7/RyILI6g/7JJmNV81LVMM+ydTJOJkCzO85ZNxxxqraLyF
-         DMhjeDcB0VZ6hJed0FDFwyoJ0U4VFksVjRkALQQOEtLxB9fnQH7aeYxFs3E2tQvrFo3p
-         8tvezrPLVGkYo5dYAz70Hiv30TQCsBgWhLK031oDjukpQCjwnRXcxW1iJKwitA4+BjKZ
-         d3og==
+        b=SogwAiKIIEp4+Y5swobRciZ3wdz9yo9kBbAb2M63Atyq2tOKK9Unu+rKA2Kx6mvePo
+         brjavl4fvuhRMYHnWS2n03umnIUHv3Eu/yJCFYHWALMrN56CtkGvL1NJv4LK7iM9Lpl8
+         RhaucIzQtz0fP7kNkN8M8SgxZOSC4toEtbqwdwyEGvVXeqYLHkRfYsKJc343mRz/6JI9
+         ynBjmjwLmvqvQ0htMB6ldG5/uCd/QRJn09uIK1cKaH05DBuotEgZJxt8LN+yIPp6a0Dg
+         mGDZPZft0qxexme/5L0KSNW91gc6QoKtcYwlU47l7nWv+6btEFA9AhyveJAB2I/RYuEN
+         a4XA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=VTuJWAM1/9aYMqyRTEKTG2Hu5YYuT8G1Kl37sm47X4c=;
-        fh=XV7jQqf6dGABObaHUEox/VkMf59FlwDUAUcMCSNg+a0=;
-        b=vNPV1bjHtDdEETGYsRsn/K/Re7MJxh8qs3L4AnmV4+NPrmiYC7cmxDSyKSSSMvWSo1
-         QeqCqlKWZkHIL4WxZjmoJw5+fnPlnJ1qLaH6myqCYxIwKPzCXVlN8nfUoaBjfVJ9I4WZ
-         JQenblXJI4BxYkIU9twWEFQBVucTRB0fhfsPZlSPAQfPfvdxJJna0WpQFW5senfBsghd
-         jKJV5qbWV5mJ1KWiqDz36SDTFk18zXdlyA7y5MwBSu04IowaaoFzINYOlhyyQpGQ4Wp1
-         XBOloTHGHNwUwaKBmd9j4T4Bwr9d6tO3XQGO7up48xfjK+xO8N5qAJM5xaz3DKYUVntY
-         oNxA==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=M/iTTKXzDIaEIagjYDsG6FTWs9ak/8rwN6KBnSlAIEI=;
+        fh=qrrsiAPEudD3/5ftsz/nvVcekCVoSg/misswN0Bk4SM=;
+        b=E5XiS6vQBZNf2cVw08UJ0/mWi/cccjWFhzpyj7XXdYsioTa028AS770DGd0NVO2Qrx
+         TOYjmuLcWsrHAYEeRzmTo4p9buEs0/ueE+qBUDaERcg+cexWw5lFTKhMF1MvQlRKIePr
+         s/7rkb9ZNy50l2Bac3lEZ9Zipmvgy0Rg7Fo2vCXZ4878Bns3qwEJNd6C3CXbVBoiGxPn
+         kbYycZznNU8qEm4xjGngb/5o70b753BjC4Z2aNS2OAK7ixupM0ANoelW9WhQJBzfyIQN
+         YvDYRMxBAXGqJKTgVom5B+/+7UF+rBH7Bc7DfGYsKoeO1/5nQkrbNZPUJqFDy2TZTeqz
+         Ql6A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=3NxBcAqA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=YX47j+v8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b7ac7c4615si82639056d6.131.2024.07.22.14.46.58
+        by mx.google.com with ESMTPS id d75a77b69052e-44f9cf191d4si90109161cf.762.2024.07.22.14.54.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jul 2024 14:46:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Jul 2024 14:54:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=3NxBcAqA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=YX47j+v8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sW0qU-0006xc-3O; Mon, 22 Jul 2024 17:45:26 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sW0yx-00079y-4x; Mon, 22 Jul 2024 17:54:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sW0q3-00059c-0R
- for qemu-devel@nongnu.org; Mon, 22 Jul 2024 17:44:59 -0400
-Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sW0yu-0006xI-4w
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2024 17:54:08 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sW0pz-0004Lm-N2
- for qemu-devel@nongnu.org; Mon, 22 Jul 2024 17:44:57 -0400
-Received: by mail-io1-xd33.google.com with SMTP id
- ca18e2360f4ac-8063553b837so202065939f.1
- for <qemu-devel@nongnu.org>; Mon, 22 Jul 2024 14:44:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sW0yr-00066L-DT
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2024 17:54:06 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4266182a9d7so31985205e9.0
+ for <qemu-arm@nongnu.org>; Mon, 22 Jul 2024 14:54:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721684694; x=1722289494;
- darn=nongnu.org; 
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=VTuJWAM1/9aYMqyRTEKTG2Hu5YYuT8G1Kl37sm47X4c=;
- b=3NxBcAqAjFsobLQ9SNIZE5tSm2TyNu7ZE92K1qSljfxvq6ToZS2sMSInOiiNR8YG9G
- VLWxUgXyAcH2/cf7CcZiPnhPGrhDRWN1i+F3CtIbvLerjrjC3iOp32F95ZnrWlBWZPuR
- oyW0OsM99+4/q4+ZvqDnpHufSKK4fu+Ll6vvzTwA9tf7PG2o2KHFPChGmJ1uyr3EZhvh
- bzu78DJFVXsTyB/pHPBz7NMgdljpUFQYT+AsPSqm4EsdRg92s9JG2Q2DseLCFBi/iOls
- 6QXxsmzq9Hw7d0uGiU1VJGzlNuC80wywlZBZXMugYLc+gQWemG3F2UXUx9AWL4mNVVdr
- tjBg==
+ d=linaro.org; s=google; t=1721685244; x=1722290044; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=M/iTTKXzDIaEIagjYDsG6FTWs9ak/8rwN6KBnSlAIEI=;
+ b=YX47j+v8ciobVNDunHU3PyU3pCd0PF3SavARUMHNBA67Kl1qyvPeEymCGfy4LboSIn
+ KYexzqtTJEd7lPrwoycaAoI0c5XHE6InuBnyIkO2i/urGPnaTezaLtm4pIJp1ejjogvo
+ wcRGId0Q/IMWWLDVd4Y7OuC2ZzLTv+AmOBqNMN0ka00eHLtT5pzzz+qmFt2tnEaGBx6y
+ pQe+DfSzfeIPe3H5xmxDPlYhLNTAzk5Ya5Kp/F0ZioNyop0tFWWywld0lxej9xSzUua/
+ VA13cBh2+Cv9t5hCfHnstc6YaoW9E4F+WDfb0QaT5nJ3I/8TJj+3Fyv7RHI+mfYwyqCo
+ adLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721684694; x=1722289494;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=VTuJWAM1/9aYMqyRTEKTG2Hu5YYuT8G1Kl37sm47X4c=;
- b=Ph93g58uPWybYwGioHD5kO7wz8vPAmpULkoAT9VUOmD0WzOr6QCbboa0AyaR74y3nW
- Pfy0tWf+ejpDNMsTGBfTwKkB5PxGb5Vj2bNFnTopKi7mmNDHqNXXvDwNaTC8Ymeuo8hY
- pE/lQADajM1xE/xXxJd6D6LY+4eC67UnxaMW5i8CcfjeYNlV7GolV2/lA5MFnB+ZZYNP
- DpbganJ2R24LwRHXBAkUi/HaKyk8cGJc3bn9uGNFGcUyyqAAQwYwah3v4+f/mEwD2WF9
- Q1DEanhdB5qakaoZVznSLdNlMHOWEY2rZ/aHzwxI8gRY5z5/zccM1RI5G/HyX+Pb4k1m
- wikg==
-X-Gm-Message-State: AOJu0Yy96ZS1xY1bX84LN4gtQeo6GWphyvPnDS6JIYq0+WMBiaoDSQZu
- 8uAiEOxKnLnhltZusmOXWyqlfEROoYeg3QN1xT2H7uXszIUWZWIELVWk6gu8zM5z/RK5AFOm1Wc
- m5O8=
-X-Received: by 2002:a05:6602:6196:b0:81e:23c9:3f69 with SMTP id
- ca18e2360f4ac-81e23c94004mr286704839f.7.1721684693926; 
- Mon, 22 Jul 2024 14:44:53 -0700 (PDT)
-Received: from dune.bsdimp.com ([50.253.99.174])
+ d=1e100.net; s=20230601; t=1721685244; x=1722290044;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=M/iTTKXzDIaEIagjYDsG6FTWs9ak/8rwN6KBnSlAIEI=;
+ b=XoCWKwJrA2nQH1s0u28JyAoMzYiqEBC6G2sh+3jWZHwC9KLW3/5uAn8HKy3jgzImLE
+ kgvxHdh5+K73YzDAVpqh0RZX0eeG+rYwW9+kM8IeW1S2InDIWujPGJ3Lt8nvUGqwgP62
+ kUhqJaEW/yWSOz3UG7Tecf2b2/JsYS1rNEM05ufXS9DACiA1nZpSvwiCKvJhKheodSXA
+ r86Lsr1BQNyDJWN7HpsnXAMm6+uTpstcJ9BaQJajyjrE5v8FuWXFulNKxEG9j9yogeU8
+ LImVDtu6NAHJw+fePpLXJEmR3Y7H9SD8Hre1GPX8DjfWyqDJkMikFhbEO7G9c7JKMs2U
+ PraQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWC12LgkjnQCCrSsjyvBEAbSiilF72B9eUMuWQhdcUa8MKxrF4dvppwHLAzcT0PdeI/ESj32fThEkuJa+8J4A+Z9p/L
+X-Gm-Message-State: AOJu0YxqNx3HPRlojvldJirh7790ZC8kP70sjSJpyEE8tl+vqifOC4kv
+ 3VnayJrZ3bgtPl4N2SBHiojzSsYsRpdx5e367mFL/ipr0G5S1MJ973NIBf8kDWA=
+X-Received: by 2002:adf:ee41:0:b0:368:7883:d14a with SMTP id
+ ffacd0b85a97d-369bae51e87mr4401659f8f.33.1721685243648; 
+ Mon, 22 Jul 2024 14:54:03 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.208.14])
  by smtp.gmail.com with ESMTPSA id
- 8926c6da1cb9f-4c2343d2ff3sm1816830173.128.2024.07.22.14.44.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Jul 2024 14:44:53 -0700 (PDT)
-From: Warner Losh <imp@bsdimp.com>
-To: qemu-devel@nongnu.org
-Cc: Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org,
- Warner Losh <imp@bsdimp.com>, Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 10/14] bsd-user: Hard wire aarch64 to be 4k pages only
-Date: Mon, 22 Jul 2024 15:43:09 -0600
-Message-ID: <20240722214313.89503-11-imp@bsdimp.com>
-X-Mailer: git-send-email 2.45.1
-In-Reply-To: <20240722214313.89503-1-imp@bsdimp.com>
-References: <20240722214313.89503-1-imp@bsdimp.com>
+ ffacd0b85a97d-368787ced78sm9677669f8f.74.2024.07.22.14.54.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Jul 2024 14:54:03 -0700 (PDT)
+Message-ID: <f3c9d0c0-1cfd-46c8-8524-cffbe5180d3f@linaro.org>
+Date: Mon, 22 Jul 2024 23:54:00 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d33;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd33.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 14/14] bsd-user: Add aarch64 build to tree
+To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
+Cc: Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+References: <20240722214313.89503-1-imp@bsdimp.com>
+ <20240722214313.89503-15-imp@bsdimp.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240722214313.89503-15-imp@bsdimp.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: W1b+aYyeOfsc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ee7uOfceGdh4
 
-Only support 4k pages for aarch64 binaries. The variable page size stuff
-isn't working just yet, so put in this lessor-of-evils kludge until that
-is complete.
+Hi Warner,
 
-Signed-off-by: Warner Losh <imp@bsdimp.com>
----
- target/arm/cpu-param.h | 4 ++++
- 1 file changed, 4 insertions(+)
+On 22/7/24 23:43, Warner Losh wrote:
+> Add the aarch64 bsd-user fragments needed to build the new aarch64 code.
+> 
+> Signed-off-by: Warner Losh <imp@bsdimp.com>
+> ---
+>   configs/targets/aarch64-bsd-user.mak | 3 +++
+>   1 file changed, 3 insertions(+)
+>   create mode 100644 configs/targets/aarch64-bsd-user.mak
 
-diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-index 2d5f3aa312c..fa6cae0e3aa 100644
---- a/target/arm/cpu-param.h
-+++ b/target/arm/cpu-param.h
-@@ -21,9 +21,13 @@
- #ifdef CONFIG_USER_ONLY
- # ifdef TARGET_AARCH64
- #  define TARGET_TAGGED_ADDRESSES
-+# ifdef __FreeBSD__
-+#  define TARGET_PAGE_BITS 12
-+# else
- /* Allow user-only to vary page size from 4k */
- #  define TARGET_PAGE_BITS_VARY
- #  define TARGET_PAGE_BITS_MIN  12
-+# endif
- # else
- #  define TARGET_PAGE_BITS 12
- # endif
--- 
-2.45.1
+Can we build aarch64 on Cirrus-CI? (not clear on
+https://cirrus-ci.org/guide/FreeBSD/). If so, could you add
+a follow-up patch to build that on our CI, patching
+.gitlab-ci.d/cirrus.yml?
 
+Regards,
+
+Phil.

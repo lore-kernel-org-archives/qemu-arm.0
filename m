@@ -1,157 +1,313 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp899737njc;
-        Sat, 20 Jul 2024 02:32:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCU7IKbjEY8FOEehNRQ3f4ULcudXaipbzXXhUya3idoz3SkHf9KcWFNH7CSY9dTGPTQxsOSYO+qr83rRVM+iVFLQ3mVsQVnl
-X-Google-Smtp-Source: AGHT+IFKHBYV2Eq5NQB48ujCf9rSg2RHkotgukzPiHqMuDg53IVcRoqfHyBHD8cHQwZ7DNIoImL0
-X-Received: by 2002:a05:6a00:2d13:b0:705:c0a1:61c9 with SMTP id d2e1a72fcca58-70d0efa8cd1mr706748b3a.9.1721467930604;
-        Sat, 20 Jul 2024 02:32:10 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1721467930; cv=pass;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1628646njc;
+        Sun, 21 Jul 2024 17:21:56 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUyv8iY3LQYUwg3//Mj+EFFKzEUc0fc1ZW0l2nqQa5aGmGnMCyeLnqlFwjLwuSqWlfW34q/iBGShacUNkI6DcZSMkL74bpL
+X-Google-Smtp-Source: AGHT+IHmAQWozrwNK6unwcv44nChVgYB6pB17gmQ4kFEKdufcY9wasRT5Flr5AYGwPuLJhQ6aBYn
+X-Received: by 2002:a05:622a:164a:b0:447:f518:283c with SMTP id d75a77b69052e-44fa537acfemr81605051cf.54.1721607715973;
+        Sun, 21 Jul 2024 17:21:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721607715; cv=none;
         d=google.com; s=arc-20160816;
-        b=ASLP0anf3WTaNAyYg2Qri+z6aWPQDN6YUkrtm25KFVlQKJeo5QhckQF0rJbh3gFnXh
-         SOrPGp3LQ66i2Y8BpHV+QXCq55d+iGDOA2AQ2Jy+uoB1bbVdfNfEIMSQ+VfVmk+EvEM4
-         dtc8SLUNYjgUWWm0G7csMIR1nkUkN6OzGGuj0APGfXWKfK5ued2RWolFr6ovnN9rqra2
-         B9bZQgvrjMyXvg6GdDVhfhGL0fEriu1clsjjRRHsX1VwIQtePRM+cYH/IQUjVF7h0F8h
-         WZ0cc58S1L2FSUHnVh2yRMeA/buDB49cAAb4VbOggo+Y1U/LLEMpdpcGJjGu94JjtQWz
-         iKtw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :subject:date:from:dkim-signature;
-        bh=wrhfxyQiCKIug187Kcca0q3LwAZ1kZXZGPDwQT1UwgA=;
-        fh=Z9CnaQfKHsWioDkD7VllJeoWYfbnlbUVv/JIpn5z7H8=;
-        b=wVLyfthc75Je4AuEavp4LAUFTYM4eUVCy8En5gLuBTmJ/GyUPP3Nzwad2NhnOPsnVc
-         D3yfWDEjxulcluVFNay706MyBOy9tZ6LZo8aC0y5KTwCOPcbKB2g9hJe2uQib+m3/Giq
-         d8mkdF5Y2f4vOrF3KVYJYCq27qEvNwGWe3AEbFc2WSAEJLei74lhSb+WistGq3fRxVpr
-         mFU+IOj5XnmD5UzfK89gK3yMD873RT0Ion8hayOxi6ovv/j78ZK5mGTolSzfwmeDrVD2
-         Z2kuo6qmKmg74r9+GX2S+DiU5/ssUgJPwoYHArXtLf70gfHrEKhDG4U4eN4M2bpacm7X
-         S9VQ==;
+        b=qZjseY0eTxbMAK3aFknUimMVbC6qkJNzsuEYG6//KSL+GHx5nmykycSIGUxW57z7wA
+         UBVE56h1b7KpKKNNUurrPdeBnjK0gUZg5Ym3g2PhUEZcFw9PoJ4WZiHDwWnVxoeOhPEv
+         PaPhHKXOKVvGtyUOhlyh0ZTvnpDcBuEkvCpShMggs33rR57RZWd3JhByUECAIqhsXYMJ
+         ubDd2W9j2mRJn9MYZ032GT0IJguqtkTRwdYd7EdukOpHEexMwq1hFTOasdGvm+xGhDlo
+         xRftSlDzdo1eNrfFYCzz1dxh7LYtQiKskdfaFtUZ0mouJDjdXbI9eRHAv82WLRJPX9HW
+         rHlw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=wmqhjtW3VVd/s0tK/0z/W3SbHoTTKsvguEWbJfZllQs=;
+        fh=A3Bm1Q30NnvgY5uh0v8KGISLG1JxHSGfGB2A40oiXRc=;
+        b=QhS5vDi3G3MN3QIsafjsbuJpwqUFyDG/8SY7mHDyxUyQu0WLT5Q1dtb17EopIjUgav
+         mYsXBIYLtDNZk/EEWJ9uxPw0w1KffgPoYZdAfQb4szhgA/lsSHDTtyON/fiPIS/xbkbm
+         CHvTXiwuNZLP0PeQIxSzxKDbwm3VJONQdZZ6OIePX1azt1tlJqvg0dpK+mnNdArYXSk2
+         2ORX79v/2yUrlArHnMx+EFWsFGsM006A0rqfElbkWaiIrldapl1isv2o4Tfm+2AMMURZ
+         Jl63Z4p7klVE6COTjri8zNTrgkmJ2EPb/RUzLVwoMGXnjGDIR0r02meorzaaSnyBcIFu
+         Z6Jg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=TTbgd7+1;
-       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
-       spf=pass (google.com: domain of kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org"
-Return-Path: <kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-70cff498dd5si3287285b3a.5.2024.07.20.02.32.10
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HZtJdit3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-44f9cdb8bf7si64145171cf.391.2024.07.21.17.21.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 20 Jul 2024 02:32:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 21 Jul 2024 17:21:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=TTbgd7+1;
-       arc=pass (i=1 dkim=pass dkdomain=daynix-com.20230601.gappssmtp.com);
-       spf=pass (google.com: domain of kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-22011-alex.bennee=linaro.org@vger.kernel.org"
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 2B185283CA9
-	for <alex.bennee@linaro.org>; Sat, 20 Jul 2024 09:32:10 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 92D9B2913;
-	Sat, 20 Jul 2024 09:31:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b="TTbgd7+1"
-Received: from mail-pf1-f169.google.com (mail-pf1-f169.google.com [209.85.210.169])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D961347C2
-	for <kvm@vger.kernel.org>; Sat, 20 Jul 2024 09:31:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.169
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1721467896; cv=none; b=W8IeMX8vZioNp2QpLPcVVjLRHMW/SxC0rewfCb7BdJEw56opSH9n4UO7BKcYVttnUcM82WXDjAg4ZE9Q2psHUCUGGJ9kRteRwfqoFdsagOrrkGBapyN8PLVBsxJE0yCD6ZjnA6E2x6OM3r25wZkvVzYSH8TJT84TsFJXxJOA6sk=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1721467896; c=relaxed/simple;
-	bh=DYnqaWjAQ5Swa7SOrX13jfrs0jdvTL9wDFwzo29zQ9U=;
-	h=From:Date:Subject:MIME-Version:Content-Type:Message-Id:References:
-	 In-Reply-To:To:Cc; b=MqINVxP3+VMDfcvKBs0aHOMEmSsg4Ze08pSv+yQNY6hXtV85e17DyvJoCQkU5d9tS8IhwbzBLFqLippLgQReayLfu+TiwIGT9wtAAcaT56KL2etYL7FaTQWEkM3kRPHk8an1hPM79ej7Rknpwm4AaIg1soeP4moB4BZaq1Jr6g0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com; spf=none smtp.mailfrom=daynix.com; dkim=pass (2048-bit key) header.d=daynix-com.20230601.gappssmtp.com header.i=@daynix-com.20230601.gappssmtp.com header.b=TTbgd7+1; arc=none smtp.client-ip=209.85.210.169
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=daynix.com
-Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=daynix.com
-Received: by mail-pf1-f169.google.com with SMTP id d2e1a72fcca58-70d01e4f7fcso829442b3a.1
-        for <kvm@vger.kernel.org>; Sat, 20 Jul 2024 02:31:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1721467894; x=1722072694; darn=vger.kernel.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=wrhfxyQiCKIug187Kcca0q3LwAZ1kZXZGPDwQT1UwgA=;
-        b=TTbgd7+1e9cfH7smSr5Qsu0a1xhcQcKYwvP8XwTyK4EaLHNi/G5K/V9UZIGj0WU8rg
-         Kw6zyp2HXSj1+rUVMcE/NsqeOodlDmGe5A9EyfI2O7cNpXOdaRA7aQGT4c+Dj3Zkc5hj
-         zYKbxP+WjhcN1OB6Mr2W7nGvTUSEHEfhcUOtrk1Sgm6NyrOC1dwnsZQXLSPMg0zoyYH5
-         kuw+MFBIpdJnnuopQjF0c+7fAcJcfS4jhrVDmqSn/uxHfRLvBnfutieSg5IO5g10iPwz
-         m3lq5HaKbJU1ZANUGfcnEPQux1WU57tUMWIHY0Z9pJUGFkoYxlwizkrpEsh5yAEftxjx
-         G5ww==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HZtJdit3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sVgkq-0007z0-Kl; Sun, 21 Jul 2024 20:18:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sVgkp-0007sr-CP
+ for qemu-devel@nongnu.org; Sun, 21 Jul 2024 20:18:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sVgkn-0005sR-IE
+ for qemu-devel@nongnu.org; Sun, 21 Jul 2024 20:18:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1721607492;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=wmqhjtW3VVd/s0tK/0z/W3SbHoTTKsvguEWbJfZllQs=;
+ b=HZtJdit3TYKrjLs3HxJGgmq7jLwn2AVhFU3228L1eqgo3qCu/w0G50dFmBAlP9XN7fItNZ
+ iV6fgFmL4h25y3pvJFXn9BJIlgfAYkosjtmWFRfBdDFiGjmJFb7zMqK2gUE+LZzx4ZZr7m
+ SDvKy3QxjCl/mJ4Gr8Tc/67G9rSmfBw=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-607-o7Bs_ihRNtONSFKEscfEmg-1; Sun, 21 Jul 2024 20:18:10 -0400
+X-MC-Unique: o7Bs_ihRNtONSFKEscfEmg-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4272718b9b0so28091815e9.1
+ for <qemu-devel@nongnu.org>; Sun, 21 Jul 2024 17:18:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721467894; x=1722072694;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=wrhfxyQiCKIug187Kcca0q3LwAZ1kZXZGPDwQT1UwgA=;
-        b=VLwcGhns+VplRfxML3pZ+GP+/ofRDZVTofmYMxmMRWMIaIzQ963EA6NS0YURpj0BPM
-         rMxU4nAZ3Xdc2T79ekjVRWhV4LqvOv6cyIJVD4YiFFX9PP3TJxLwVk9inVgv8EsJj3Z4
-         yHV0KepFDMC5OWuOueoFGxWYnW77NtfXUpARm0tVpqQaMZz0bFtZDgo+RIfWvspfo/CC
-         EiTfTN9h+yq6c7g5rIDIpybckIBP08qioAw+Z+5IRcTlQt/rTPZ7IoKKFsBEOSukOK50
-         +B+xQh3MnDpWpd6SJlYDXzQEadbfnbAGLhXA7B5RIwS6O6fmxB1lurPtVGQXsNj1yKdj
-         gDpA==
-X-Forwarded-Encrypted: i=1; AJvYcCVlVMPO6LSXiG2WdcjQDQSBpyiLY3t8FFZMmS5HVTBbq9c4MDRyEC2MqMXX95174gZaOCb0VwZ3xT0FFwJAr8VGVgGe
-X-Gm-Message-State: AOJu0YwGRNcBFY+ort0qgfJUlnf1oZrxTsXLhd/CtbUqHCQ61vCSRj5Q
-	BoYJcHWGYaBZZtwzXWhdP4HgV2jDRKU16in+s/LB3IlqV0E2Ronr/5TvfyoJpxM=
-X-Received: by 2002:a05:6a00:1887:b0:70a:fa5d:ad97 with SMTP id d2e1a72fcca58-70d0ef82323mr719873b3a.1.1721467894392;
-        Sat, 20 Jul 2024 02:31:34 -0700 (PDT)
-Received: from localhost ([157.82.204.122])
-        by smtp.gmail.com with UTF8SMTPSA id d2e1a72fcca58-70cff552c39sm2341661b3a.136.2024.07.20.02.31.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 20 Jul 2024 02:31:34 -0700 (PDT)
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Date: Sat, 20 Jul 2024 18:30:54 +0900
-Subject: [PATCH v4 6/6] hvf: arm: Do not advance PC when raising an
- exception
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1721607489; x=1722212289;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=wmqhjtW3VVd/s0tK/0z/W3SbHoTTKsvguEWbJfZllQs=;
+ b=V4/vOmXPPAHDIWCr9XTBrEyzAgLJ0jyOs63fJfkBsUBj7TaLgEI8M3OigDuSGUOwzs
+ ff+iZE9UbEdd9QRr0MzIBgdCYU28kAAZuAH5303stb6zwJa3BISmBN2EoNGsZH/911R4
+ p3orgISBEnd+rLtExjPPZPeCUP9LQlmKZzoiwItcZ2D2/i57JmrFkm+acs0Z0p/X2CfH
+ hiB/FpYNEkco5geqnLS3pSBR5620YM9gUDJCYK5tOIXIHparhOikNvaNVIUCvRdfQwcD
+ CVDE9ml1++UFWUMD6CDUzQ0iBDO0KxiF7+3AMA3fyayIsgKsKRZd3b+Kk17WeeSP5QDa
+ gnOQ==
+X-Gm-Message-State: AOJu0YyIOnpiqoe4rcXbpQMb2T+59cgtCAh6sG+QcwDm/odRRaOYfZG2
+ PCfFGoPM/oVZz9vR2qJBld4ZD4Nzlh3vOxM41jzxhDK6fqZDQGw3qzvlAXrLxVmFsNfcc08Z8n3
+ Gqv37BBl7PqJ/aMHbitfWe1eZHG/3B5ZqPO7vdG85xCZckvxhjQ8tG2yk6yYzumtFKIf47QUN0o
+ ebLoVcgl0peP45rwi6t0cCuimypj1JOA==
+X-Received: by 2002:a05:600c:3acb:b0:427:9dad:e6ac with SMTP id
+ 5b1f17b1804b1-427dc586456mr34493735e9.34.1721607489039; 
+ Sun, 21 Jul 2024 17:18:09 -0700 (PDT)
+X-Received: by 2002:a05:600c:3acb:b0:427:9dad:e6ac with SMTP id
+ 5b1f17b1804b1-427dc586456mr34493535e9.34.1721607488551; 
+ Sun, 21 Jul 2024 17:18:08 -0700 (PDT)
+Received: from redhat.com (mob-5-90-113-158.net.vodafone.it. [5.90.113.158])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-427d6934ec6sm106853125e9.41.2024.07.21.17.18.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 21 Jul 2024 17:18:08 -0700 (PDT)
+Date: Sun, 21 Jul 2024 20:18:06 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org
+Subject: [PULL 37/63] smbios: make memory device size configurable per Machine
+Message-ID: <0dd7f4777d1d44fe67f3323b462bc0f0a2f686a2.1721607331.git.mst@redhat.com>
+References: <cover.1721607331.git.mst@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240720-pmu-v4-6-2a2b28f6b08f@daynix.com>
-References: <20240720-pmu-v4-0-2a2b28f6b08f@daynix.com>
-In-Reply-To: <20240720-pmu-v4-0-2a2b28f6b08f@daynix.com>
-To: Peter Maydell <peter.maydell@linaro.org>, 
- Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Cornelia Huck <cohuck@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, 
- Akihiko Odaki <akihiko.odaki@daynix.com>
-X-Mailer: b4 0.14-dev-fd6e3
-X-TUID: bdachUdCSbB3
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <cover.1721607331.git.mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Fagr6So9UaTD
 
-This is identical with commit 30a1690f2402 ("hvf: arm: Do not advance
-PC when raising an exception") but for writes instead of reads.
+From: Igor Mammedov <imammedo@redhat.com>
 
-Fixes: a2260983c655 ("hvf: arm: Add support for GICv3")
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Currently QEMU describes initial[1] RAM* in SMBIOS as a series of
+virtual DIMMs (capped at 16Gb max) using type 17 structure entries.
+
+Which is fine for the most cases.  However when starting guest
+with terabytes of RAM this leads to too many memory device
+structures, which eventually upsets linux kernel as it reserves
+only 64K for these entries and when that border is crossed out
+it runs out of reserved memory.
+
+Instead of partitioning initial RAM on 16Gb DIMMs, use maximum
+possible chunk size that SMBIOS spec allows[2]. Which lets
+encode RAM in lower 31 bits of 32bit field (which amounts upto
+2047Tb per DIMM).
+As result initial RAM will generate only one type 17 structure
+until host/guest reach ability to use more RAM in the future.
+
+Compat changes:
+We can't unconditionally change chunk size as it will break
+QEMU<->guest ABI (and migration). Thus introduce a new machine
+class field that would let older versioned machines to use
+legacy 16Gb chunks, while new(er) machine type[s] use maximum
+possible chunk size.
+
+PS:
+While it might seem to be risky to rise max entry size this large
+(much beyond of what current physical RAM modules support),
+I'd not expect it causing much issues, modulo uncovering bugs
+in software running within guest. And those should be fixed
+on guest side to handle SMBIOS spec properly, especially if
+guest is expected to support so huge RAM configs.
+
+In worst case, QEMU can reduce chunk size later if we would
+care enough about introducing a workaround for some 'unfixable'
+guest OS, either by fixing up the next machine type or
+giving users a CLI option to customize it.
+
+1) Initial RAM - is RAM configured with help '-m SIZE' CLI option/
+   implicitly defined by machine. It doesn't include memory
+   configured with help of '-device' option[s] (pcdimm,nvdimm,...)
+2) SMBIOS 3.1.0 7.18.5 Memory Device — Extended Size
+
+PS:
+* tested on 8Tb host with RHEL6 guest, which seems to parse
+  type 17 SMBIOS table entries correctly (according to 'dmidecode').
+
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Message-Id: <20240715122417.4059293-1-imammedo@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- target/arm/hvf/hvf.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ include/hw/boards.h |  4 ++++
+ hw/arm/virt.c       |  1 +
+ hw/core/machine.c   |  6 ++++++
+ hw/i386/pc_piix.c   |  1 +
+ hw/i386/pc_q35.c    |  1 +
+ hw/smbios/smbios.c  | 11 ++++++-----
+ 6 files changed, 19 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index adcdfae0b17f..c1496ad5be9b 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1586,10 +1586,10 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-     case SYSREG_ICC_SGI1R_EL1:
-     case SYSREG_ICC_SRE_EL1:
-         /* Call the TCG sysreg handler. This is only safe for GICv3 regs. */
--        if (!hvf_sysreg_write_cp(cpu, reg, val)) {
--            hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized());
-+        if (hvf_sysreg_write_cp(cpu, reg, val)) {
-+            return 0;
-         }
--        return 0;
-+        break;
-     case SYSREG_MDSCR_EL1:
-         env->cp15.mdscr_el1 = val;
-         return 0;
-
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index ef6f18f2c1..48ff6d8b93 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -237,6 +237,9 @@ typedef struct {
+  *    purposes only.
+  *    Applies only to default memory backend, i.e., explicit memory backend
+  *    wasn't used.
++ * @smbios_memory_device_size:
++ *    Default size of memory device,
++ *    SMBIOS 3.1.0 "7.18 Memory Device (Type 17)"
+  */
+ struct MachineClass {
+     /*< private >*/
+@@ -304,6 +307,7 @@ struct MachineClass {
+     const CPUArchIdList *(*possible_cpu_arch_ids)(MachineState *machine);
+     int64_t (*get_default_cpu_node_id)(const MachineState *ms, int idx);
+     ram_addr_t (*fixup_ram_size)(ram_addr_t size);
++    uint64_t smbios_memory_device_size;
+ };
+ 
+ /**
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b0c68d66a3..719e83e6a1 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3308,6 +3308,7 @@ DEFINE_VIRT_MACHINE_AS_LATEST(9, 1)
+ static void virt_machine_9_0_options(MachineClass *mc)
+ {
+     virt_machine_9_1_options(mc);
++    mc->smbios_memory_device_size = 16 * GiB;
+     compat_props_add(mc->compat_props, hw_compat_9_0, hw_compat_9_0_len);
+ }
+ DEFINE_VIRT_MACHINE(9, 0)
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index bc38cad7f2..ac30544e7f 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -1004,6 +1004,12 @@ static void machine_class_init(ObjectClass *oc, void *data)
+     /* Default 128 MB as guest ram size */
+     mc->default_ram_size = 128 * MiB;
+     mc->rom_file_has_mr = true;
++    /*
++     * SMBIOS 3.1.0 7.18.5 Memory Device — Extended Size
++     * use max possible value that could be encoded into
++     * 'Extended Size' field (2047Tb).
++     */
++    mc->smbios_memory_device_size = 2047 * TiB;
+ 
+     /* numa node memory size aligned on 8MB by default.
+      * On Linux, each node's border has to be 8MB aligned
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 9445b07b4f..d9e69243b4 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -495,6 +495,7 @@ static void pc_i440fx_machine_9_0_options(MachineClass *m)
+     pc_i440fx_machine_9_1_options(m);
+     m->alias = NULL;
+     m->is_default = false;
++    m->smbios_memory_device_size = 16 * GiB;
+ 
+     compat_props_add(m->compat_props, hw_compat_9_0, hw_compat_9_0_len);
+     compat_props_add(m->compat_props, pc_compat_9_0, pc_compat_9_0_len);
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 71d3c6d122..9d108b194e 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -374,6 +374,7 @@ static void pc_q35_machine_9_0_options(MachineClass *m)
+     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+     pc_q35_machine_9_1_options(m);
+     m->alias = NULL;
++    m->smbios_memory_device_size = 16 * GiB;
+     compat_props_add(m->compat_props, hw_compat_9_0, hw_compat_9_0_len);
+     compat_props_add(m->compat_props, pc_compat_9_0, pc_compat_9_0_len);
+     pcmc->isa_bios_alias = false;
+diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+index 3b7703489d..a394514264 100644
+--- a/hw/smbios/smbios.c
++++ b/hw/smbios/smbios.c
+@@ -1093,6 +1093,7 @@ static bool smbios_get_tables_ep(MachineState *ms,
+                        Error **errp)
+ {
+     unsigned i, dimm_cnt, offset;
++    MachineClass *mc = MACHINE_GET_CLASS(ms);
+     ERRP_GUARD();
+ 
+     assert(ep_type == SMBIOS_ENTRY_POINT_TYPE_32 ||
+@@ -1123,12 +1124,12 @@ static bool smbios_get_tables_ep(MachineState *ms,
+     smbios_build_type_9_table(errp);
+     smbios_build_type_11_table();
+ 
+-#define MAX_DIMM_SZ (16 * GiB)
+-#define GET_DIMM_SZ ((i < dimm_cnt - 1) ? MAX_DIMM_SZ \
+-                                        : ((current_machine->ram_size - 1) % MAX_DIMM_SZ) + 1)
++#define GET_DIMM_SZ ((i < dimm_cnt - 1) ? mc->smbios_memory_device_size \
++    : ((current_machine->ram_size - 1) % mc->smbios_memory_device_size) + 1)
+ 
+-    dimm_cnt = QEMU_ALIGN_UP(current_machine->ram_size, MAX_DIMM_SZ) /
+-               MAX_DIMM_SZ;
++    dimm_cnt = QEMU_ALIGN_UP(current_machine->ram_size,
++                             mc->smbios_memory_device_size) /
++               mc->smbios_memory_device_size;
+ 
+     /*
+      * The offset determines if we need to keep additional space between
 -- 
-2.45.2
+MST
 

@@ -1,107 +1,121 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1308005njc;
-        Sun, 21 Jul 2024 01:17:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWosx/ZW4f58d/STHrLltOB7mYNY33VPhIywLW1lmfk4l44MZHR+ABQM8C2JAhqmg+vgUISBrfNq6+SNvHoZdlmiiFadhdE
-X-Google-Smtp-Source: AGHT+IEPV9oFsTkMVyKppmXVf+y+ABR69+b65ZWiQvQIDMACNz+0bwUnHW7+JLHCxNkEF4ne3jxb
-X-Received: by 2002:a05:6808:21a1:b0:3d9:41fa:3f42 with SMTP id 5614622812f47-3dae5fb8d43mr5874942b6e.22.1721549831931;
-        Sun, 21 Jul 2024 01:17:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721549831; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1693812njc;
+        Sun, 21 Jul 2024 21:09:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXpLH9SDYjnw4tOrS2OXPaN1wVvk3YJd1q+AQ4VndQqPuyX7cnDFlGKiX1zfSv3dUhUeLRGbLLY7ret81/k4JDZ1/Mn/HEC
+X-Google-Smtp-Source: AGHT+IG6pyjTFgIT4O+7MaspTHJ2qshRHYI7ZzsBhnmbKEtEPp3SmVkbNvSucVjF5PWbmKVL2OaV
+X-Received: by 2002:a05:6102:3ca7:b0:492:aa42:e0cd with SMTP id ada2fe7eead31-492aa42e373mr869954137.29.1721621378011;
+        Sun, 21 Jul 2024 21:09:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721621377; cv=none;
         d=google.com; s=arc-20160816;
-        b=HGmSFdD9/achDwNRlGVvDOADNHWXB2POC6QbtQa3r+N1iculkpLgPCSLvD17WjLhDJ
-         uGcLG7WIR4j/hLJWdGQ99FSOfFOegki9z0E6gmBbnnnsEGKZt6438VPeKzGra7S1crE6
-         9bJj/+T1zmVR/6Y6EA0d0bVKsB+woBMU46spXzMR4T+1LPi7ORQsH5QxTrdrObuyIBIO
-         HuWBdcGFItPR7d5jNTpi8LPzR7YSGtAnr7lWOraS8w6njxkUZmX9Yc28jvukuu/y1JYb
-         YGcrm2cBS9gcRuJJYUkOLE83OTDip650PVXTF0TpD6TpDWCT/LqKCq3VSUv8jo7p2iH/
-         xkZg==
+        b=pFXvC7RHQjxwRLKOYCtxcsZ805VQxEYSQcd4FTC325db8B1iq0x3s/GaaSHPK5uCW6
+         xEm09xZP2mtfRPkDvyVODR9LGI/QwXHs2qtR6leQgv/lUnBoLhsOUAYsnx6bSiCdHUIg
+         w6ncq35uMIE8nGuyZN1yzeiCCDQSpGsyuS46my+JudL+4ZKS+yXXHxJP3r6C9wgoMZOD
+         oZWlmLjplaeHhDNl3ZTZLKYIHnbPNd+0BVuni6OWpe2YTo3uM4Kkav9Xo/XQLVn02gcm
+         fJUkkKAgPSv+tkTXiOXLY83cBpsd0iVWQFccwfZj8aOBRaFmv2IBNvxhjLiuXVUvxG3c
+         lbEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=+LN/ynhD2DkbOUWD0h0IzbPLzWCaTcoqsrKtlRC4XCI=;
-        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=qb7wjpMRnEIihgc44rNMVsEVk4CxluE1TC7rwT35hXf1QksiXV+wuhGbonoQs0p8EZ
-         7owUTOtWxSVGQkp9rgPIcLwx45u2u8qBwXX1GnwhXg1iE7SRnJTOwy9moY4qC6Ra1bO6
-         42Gjg2aCBRGWRAeuFwnuJs88+6pvJ0Bpof5BrXiNBBgBXxRpfE5YJM+ABayC/6EkVSlp
-         jgTkCU+Acc+5Zg06y0V2AAJKN0J276CA3vQuhonjY6rg03kZNUtkMqf0gOsU3TTQeIK3
-         U3ryrKsr7nHILnwAIcxUJ6GSQ9mS/JpkSbQIWvkqV41M+g2JK+5Xra0UtBmHxn7/ksSY
-         FgKw==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:dkim-signature;
+        bh=eZt8Re+uyTaHJd1gcnGv8QFPVbWpAkokS4nKz5EchhA=;
+        fh=0gDri4NsaXKtzSaq/W4Vs9OuT7ksSDoR/xtxxHQxK3c=;
+        b=Qx48+wWHHRFLHyyxnNhI2jh/x8H+HYa0jps6kGXppCWzV5M6wpWWUIUefs5X3fTFQ+
+         +vKiZuQ/+aPGfg0mWvMVDuIjmjQtmIb/BvsEKp3POGI2mGK4SOu21yGEd+I2GUGdgRa9
+         qK5EOsCPZVw4oWOuwGYmfov/rgYPMPRSh4cvkYhWm2mTPJidTdVUzpYvwvWBvhdc1QQj
+         CF77ARCYRNJ5ewokMvBxU4npZrDqaftw1w+vEGdowp/nxXH5IN5wS3Yx7ee+F6q6GtAc
+         Uo1Dh/aodQGw3GjjQtKr70ckAGrbyWHH8JR50ecdoNJ97Czb+Xc9dOGkAIdyztVQHcIy
+         0Wrw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O7wFGLfj;
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj2 header.b=ipnpYfD+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a198f9773dsi542144885a.36.2024.07.21.01.17.11
+        by mx.google.com with ESMTPS id af79cd13be357-7a19909242esi710346385a.586.2024.07.21.21.09.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 21 Jul 2024 01:17:11 -0700 (PDT)
+        Sun, 21 Jul 2024 21:09:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O7wFGLfj;
+       dkim=fail (test mode) header.i=@fujitsu.com header.s=fj2 header.b=ipnpYfD+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sVRiX-0001SC-Ir; Sun, 21 Jul 2024 04:14:53 -0400
+	id 1sVkMS-0002oY-Cn; Mon, 22 Jul 2024 00:09:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiN-0000xi-Uj
- for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <yaoxt.fnst@fujitsu.com>)
+ id 1sVkML-0002X6-Jw; Mon, 22 Jul 2024 00:09:14 -0400
+Received: from esa6.hc1455-7.c3s2.iphmx.com ([68.232.139.139])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sVRiL-0001W4-KT
- for qemu-arm@nongnu.org; Sun, 21 Jul 2024 04:14:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1721549681;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+LN/ynhD2DkbOUWD0h0IzbPLzWCaTcoqsrKtlRC4XCI=;
- b=O7wFGLfjPtCGg/3q4JHJ6IBpyOjY7juooy3Rw1Y8K9pW+vrhjjreJ/hG22QaJkLkLPZzep
- +UlCYo7IY+ivakwqkC2XKKVbmlBaStQhFOyNbP49vsgB8V7nC7+aNX+awsh2Zcb/e5G+V3
- P1aP+a/+2Squ6uY6ilMNL+XAeQv+L0s=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-540-fOBNBiPyNv6Ym_sLT3sWKg-1; Sun,
- 21 Jul 2024 04:14:38 -0400
-X-MC-Unique: fOBNBiPyNv6Ym_sLT3sWKg-1
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EE34219560B0; Sun, 21 Jul 2024 08:14:36 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.39.192.37])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 406CA1955D4F; Sun, 21 Jul 2024 08:14:29 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 11/15] aspeed/adc: Add AST2700 support
-Date: Sun, 21 Jul 2024 10:13:57 +0200
-Message-ID: <20240721081401.425588-12-clg@redhat.com>
-In-Reply-To: <20240721081401.425588-1-clg@redhat.com>
-References: <20240721081401.425588-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <yaoxt.fnst@fujitsu.com>)
+ id 1sVkMK-0001tO-0R; Mon, 22 Jul 2024 00:09:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj2;
+ t=1721621352; x=1753157352;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=ThRdQS8GfgTXHrFzjsZjoCSjLl0BRfNH9DOAJNL1M4g=;
+ b=ipnpYfD+Cvq0ZnWGxy8uNNWFuf/DsBcSxHbuveNK2X7APWiDNhbFOXzg
+ uyr3VobUmANzwC/smE7wXhrGe/BwsgFlqhnuiHvrZ/fxBbh3ICLYGpqN6
+ sxyqaN0pUCExhVPpG/QkL9lrLyztYUS5lJg04cZycByFz6TnOEdE7ZPiA
+ +GLsKZPveg1Bt7VfTlH9JIdcVrR/pB5ERNXUjd7fq0VYqbnG9tph3IzUl
+ c7PGBk+ckCHodZDyTf6jTl9KMY3ZGtXl3B6eC+wKhNg7A3mS/kuLSlcCG
+ DBhMZmZ46Ek1AOyV7PS3qO5b0hMmVjIwe4xFvChP2K7RkpYxrrQpXbEBi w==;
+X-IronPort-AV: E=McAfee;i="6700,10204,11140"; a="169998063"
+X-IronPort-AV: E=Sophos;i="6.09,227,1716217200"; d="scan'208";a="169998063"
+Received: from unknown (HELO oym-r1.gw.nic.fujitsu.com) ([210.162.30.89])
+ by esa6.hc1455-7.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jul 2024 13:09:09 +0900
+Received: from oym-m3.gw.nic.fujitsu.com (oym-nat-oym-m3.gw.nic.fujitsu.com
+ [192.168.87.60])
+ by oym-r1.gw.nic.fujitsu.com (Postfix) with ESMTP id 81FC6C13CD;
+ Mon, 22 Jul 2024 13:09:06 +0900 (JST)
+Received: from kws-ab4.gw.nic.fujitsu.com (kws-ab4.gw.nic.fujitsu.com
+ [192.51.206.22])
+ by oym-m3.gw.nic.fujitsu.com (Postfix) with ESMTP id 49B1ED7494;
+ Mon, 22 Jul 2024 13:09:03 +0900 (JST)
+Received: from edo.cn.fujitsu.com (edo.cn.fujitsu.com [10.167.33.5])
+ by kws-ab4.gw.nic.fujitsu.com (Postfix) with ESMTP id D9A966BEE3;
+ Mon, 22 Jul 2024 13:09:02 +0900 (JST)
+Received: from localhost.localdomain (unknown [10.167.225.88])
+ by edo.cn.fujitsu.com (Postfix) with ESMTP id 5AFDF1A000A;
+ Mon, 22 Jul 2024 12:09:02 +0800 (CST)
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: Yao Xingtao <yaoxt.fnst@fujitsu.com>,
+	qemu-arm@nongnu.org
+Subject: [PATCH 02/13] arm/boot: make range overlap check more readable
+Date: Mon, 22 Jul 2024 00:07:31 -0400
+Message-ID: <20240722040742.11513-3-yaoxt.fnst@fujitsu.com>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240722040742.11513-1-yaoxt.fnst@fujitsu.com>
+References: <20240722040742.11513-1-yaoxt.fnst@fujitsu.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-TM-AS-GCONF: 00
+X-TM-AS-Product-Ver: IMSS-9.1.0.1417-9.0.0.1002-28544.004
+X-TM-AS-User-Approved-Sender: Yes
+X-TMASE-Version: IMSS-9.1.0.1417-9.0.1002-28544.004
+X-TMASE-Result: 10-2.602800-10.000000
+X-TMASE-MatchedRID: 79qQreYAxVdrFdvBEmTnvKekGZXOwUBuwTlc9CcHMZerwqxtE531VNnf
+ JrUSEbFDcfrBpTCbnFHQ1eGkfrkoDhNSYeRE3U64ueYB1mSXzr/QxDD776KHL3O+fW3rC5pr4nP
+ T8jZv1NHi8zVgXoAltuJ5hXsnxp7jC24oEZ6SpSmcfuxsiY4QFEefxKz+lqKeRBH8Txz8pnTjZH
+ 4udmlbmJ1nGLbWF2Mf/I2DASliqu9RQEieGkuV+JuQqgIFLrgWXoVg+nWV3m2MQipNdyIFc5sNE
+ GpLafrrLM/nEDLP056e+TDiyH/49wxfkLAfkNNSaAZk0sEcY14=
+X-TMASE-SNAP-Result: 1.821001.0001-0-1-22:0,33:0,34:0-0
+Received-SPF: pass client-ip=68.232.139.139;
+ envelope-from=yaoxt.fnst@fujitsu.com; helo=esa6.hc1455-7.c3s2.iphmx.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,75 +128,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Yao Xingtao <yaoxt.fnst@fujitsu.com>
+From:  Yao Xingtao via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LMGKrCxXJbnB
+X-TUID: saXcmSZQJw5p
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+use ranges_overlap() instead of open-coding the overlap check to improve
+the readability of the code.
 
-AST2700 and AST2600 ADC controllers are identical.
-Introduce ast2700 class and set 2 engines.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Signed-off-by: Yao Xingtao <yaoxt.fnst@fujitsu.com>
 ---
- include/hw/adc/aspeed_adc.h |  1 +
- hw/adc/aspeed_adc.c         | 16 ++++++++++++++++
- 2 files changed, 17 insertions(+)
+ hw/arm/boot.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/adc/aspeed_adc.h b/include/hw/adc/aspeed_adc.h
-index ff1d06ea91de..f502f197ac00 100644
---- a/include/hw/adc/aspeed_adc.h
-+++ b/include/hw/adc/aspeed_adc.h
-@@ -18,6 +18,7 @@
- #define TYPE_ASPEED_2500_ADC TYPE_ASPEED_ADC "-ast2500"
- #define TYPE_ASPEED_2600_ADC TYPE_ASPEED_ADC "-ast2600"
- #define TYPE_ASPEED_1030_ADC TYPE_ASPEED_ADC "-ast1030"
-+#define TYPE_ASPEED_2700_ADC TYPE_ASPEED_ADC "-ast2700"
- OBJECT_DECLARE_TYPE(AspeedADCState, AspeedADCClass, ASPEED_ADC)
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index d480a7da02cf..a004a90e87be 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -26,6 +26,7 @@
+ #include "qemu/config-file.h"
+ #include "qemu/option.h"
+ #include "qemu/units.h"
++#include "qemu/range.h"
  
- #define TYPE_ASPEED_ADC_ENGINE "aspeed.adc.engine"
-diff --git a/hw/adc/aspeed_adc.c b/hw/adc/aspeed_adc.c
-index 68bdbc73b0e6..48328ef89194 100644
---- a/hw/adc/aspeed_adc.c
-+++ b/hw/adc/aspeed_adc.c
-@@ -398,6 +398,15 @@ static void aspeed_1030_adc_class_init(ObjectClass *klass, void *data)
-     aac->nr_engines = 2;
- }
+ /* Kernel boot protocol is specified in the kernel docs
+  * Documentation/arm/Booting and Documentation/arm64/booting.txt
+@@ -238,8 +239,8 @@ void arm_write_secure_board_setup_dummy_smc(ARMCPU *cpu,
+     assert((mvbar_addr & 0x1f) == 0 && (mvbar_addr >> 4) < 0x100);
  
-+static void aspeed_2700_adc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedADCClass *aac = ASPEED_ADC_CLASS(klass);
-+
-+    dc->desc = "ASPEED 2700 ADC Controller";
-+    aac->nr_engines = 2;
-+}
-+
- static const TypeInfo aspeed_adc_info = {
-     .name = TYPE_ASPEED_ADC,
-     .parent = TYPE_SYS_BUS_DEVICE,
-@@ -430,6 +439,12 @@ static const TypeInfo aspeed_1030_adc_info = {
-     .class_init = aspeed_1030_adc_class_init, /* No change since AST2600 */
- };
+     /* check that these blobs don't overlap */
+-    assert((mvbar_addr + sizeof(mvbar_blob) <= info->board_setup_addr)
+-          || (info->board_setup_addr + sizeof(board_setup_blob) <= mvbar_addr));
++    assert(!ranges_overlap(mvbar_addr, sizeof(mvbar_blob),
++           info->board_setup_addr, sizeof(board_setup_blob)));
  
-+static const TypeInfo aspeed_2700_adc_info = {
-+    .name = TYPE_ASPEED_2700_ADC,
-+    .parent = TYPE_ASPEED_ADC,
-+    .class_init = aspeed_2700_adc_class_init,
-+};
-+
- static void aspeed_adc_register_types(void)
- {
-     type_register_static(&aspeed_adc_engine_info);
-@@ -438,6 +453,7 @@ static void aspeed_adc_register_types(void)
-     type_register_static(&aspeed_2500_adc_info);
-     type_register_static(&aspeed_2600_adc_info);
-     type_register_static(&aspeed_1030_adc_info);
-+    type_register_static(&aspeed_2700_adc_info);
- }
- 
- type_init(aspeed_adc_register_types);
+     for (n = 0; n < ARRAY_SIZE(mvbar_blob); n++) {
+         mvbar_blob[n] = tswap32(mvbar_blob[n]);
 -- 
-2.45.2
+2.41.0
 

@@ -1,98 +1,211 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp1894465njc;
-        Mon, 22 Jul 2024 05:54:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXC1FMSiaDC9dNm49BXtXBYEvVv9WtYROUTcJmZ9cFmRi415bRHNrUQV0FlMDfIJigsTHwP5G9KckTS/imP3hRe5uADW8zu
-X-Google-Smtp-Source: AGHT+IH+V03Pl3buNLDb2IqMO9jXfbVE0gIHbna4/YbK+RTEn8QZPMBQF1rpn9EUFBj4ymvnvHWA
-X-Received: by 2002:a05:6830:6004:b0:703:63d3:9ef7 with SMTP id 46e09a7af769-70900929a0bmr9584163a34.14.1721652888034;
-        Mon, 22 Jul 2024 05:54:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721652887; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2028441njc;
+        Mon, 22 Jul 2024 09:49:47 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX11xKoSIHO2qxC51o8Q+puvcbrEIFiABnM4+7DgVAuYeobTohCtYtJ/3WJkAADsRVPpyajiYpQsz/yguxl7U5fN9gRGcdO
+X-Google-Smtp-Source: AGHT+IGiS8/Gu4y0cbB0yc4r5XCEwlZvcmLAVQINUOvjtHITPVzn68gV4ZhwhedD9qFNfZKwR+wp
+X-Received: by 2002:ad4:574b:0:b0:6b5:e886:d8a9 with SMTP id 6a1803df08f44-6b9610a1bcamr118661126d6.29.1721666987672;
+        Mon, 22 Jul 2024 09:49:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721666987; cv=none;
         d=google.com; s=arc-20160816;
-        b=SynK9+U2Mj1BMjKTWOSFGOfqGjBBGgGuuS1VZp1rCUCHh+nx8MvDqJn8Q2j5HZVo7m
-         4X+W/57EVxeVoMvQyzUMhkG1NKOuzeoFl9coeq7HXUqf8zi7kOOlFATzkSqRYf949WJw
-         8b2b9I892ZfSdQmgZNhkgZppO2L4e3uj4t7hF7iRhB3jxAzIPuvcfrf28wGtmHD6OZJ4
-         +qtIO8ROapeevmTryrvDyCRzwBJgfjFKIxzloD7axNJARAobd3Gkqd24jJexq3Dp6cbL
-         ryri7GkAZn+LWEsylVN0oLTyFiXRZ1kJiXfSbLtXS3QK5CTqN68g2DlmZBpB/ANLEuuc
-         xvXQ==
+        b=PcCPcJH/2x6dtqIrpV4o9ynhm24UxcdggY7d2JjaKRczEmWE+hl262CY0/6QFaMq0t
+         Jnct4gDhTt7bkm51sWYqQH5axej9koopoeyw/PPlNx8KqVuJO8LPi1aUjE+xmiTi7Yvl
+         d3kb64J93joxkGiTxvh7PI3UCNvJR34yhQDOTWlENKPX6levbY7VKL8+V0IsiOmcXasW
+         yWMl1nwk/gFZerZfkA6e+pKylEwB96jFD3ezNCmUHlvLcM3R3nuyAEUFmqQ+Q9Pks8DJ
+         AhtndMjGoT+BOQwQwv2LcS+lUnZB2+VNu4mttMTCiOhF2tq7mUN11NQRUcSriVgzgLuO
+         wnQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=RKyyz3DsoO81TcNXCjEd3nhdD3vy3jemnF6h5QjOSVs=;
-        fh=jt4Zy3NzMmUgST0sEyRdQDVF0OT2XWa8Qtc4C5tGS+A=;
-        b=pepo5OJVNlPZt9FRSwVXFLgB4mLrat1+x+5TzawxVYoSKvp9A+NRl+sqzMRPASq9w3
-         UzD76x0yeGgPhBP/kWWa7s7BwiOTic6NsbDtYtrrcKW36Egkkv1gcwhgc6HzolxDSubZ
-         QqHSoSV1BWHBs9WaFhfpNwhtvO5r6n+hZvXviLYubVbfSFeLaWSRSAwUAH8EEAgTwFx+
-         86sjyOE5VmSr1Hjehp/qzc3S+uAHlHj2mqprQwtvQp8OYy0Pg/FhATDTSYvxqcnrck6F
-         5zBLu9++zUTEDA0GKHUL2ZVB2Bx5ajpqZ1SPEDmwRc7hkgY21TPRyMDXsKdjKU4EoTal
-         8mYQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ojd67kYJwQNwCJ7C4DJs/GgdGhSFvQnplRWu/lP131A=;
+        fh=abZcUwVgzePw57mMwypls+4XqKGQ8/AhtAYEbpPtMrE=;
+        b=hk3+ZPbNjOjR+u7MSNJsgMo+UVKVoRohdbDwLhP01/js0vZtHW601M2xm0aFbeUup/
+         N4dXuVQPnsIdJwafmUF6arWG6UeP9yPmk6WCa2l8Cq6zkUFoMhIh9KGyDJ48EvKYpC28
+         MErY9LbKaWhgEMQ1f0/0LzStYeFvAwiEbwtauTJhffxzPwbqW8jyHF4LNs7u9HqGf6HZ
+         9YRsOcchIqTlKbC1cIEflTACu3CKls/sHEmVAWDNnkcsT9tVxdl/Xp6S+7VsnxrfAfOS
+         S3SQUOBysVGxSZikyLSoOBRITHD2T5Jv47d7EjBmlIceBZyXyegukVXP90zLVc9TZAXF
+         3aHw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-7a1de0ea145si3016847a12.808.2024.07.22.05.54.47
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 22 Jul 2024 05:54:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@sifive.com header.s=google header.b=MB1YZUnE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-44f9cd267c1si81344421cf.179.2024.07.22.09.49.47
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Jul 2024 09:49:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WSKtv6yHtz6K61X;
-	Mon, 22 Jul 2024 20:52:39 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id 798FC140D1A;
-	Mon, 22 Jul 2024 20:54:43 +0800 (CST)
-Received: from localhost (10.203.174.77) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 22 Jul
- 2024 13:54:42 +0100
-Date: Mon, 22 Jul 2024 13:54:42 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-CC: "Daniel P .\" =?ISO-8859-1?Q?Berrang=E9?= <berrange@redhat.com>, Eduardo  Habkost <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Yanan Wang  <wangyanan55@huawei.com>,  Michael S.Tsirkin  <mst@redhat.com>, Paolo Bonzini  <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, Eric  Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Marcelo  Tosatti <mtosatti@redhat.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=  <alex.bennee@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, Sia Jee  Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,  kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org, Zhenyu Wang  <zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@linux.intel.com>, Yongwei Ma  <yongwei.ma@intel.com>"@domain.invalid
-Subject: Re: [PATCH 0/8] Introduce SMP Cache Topology
-Message-ID: <20240722135442.000003de@Huawei.com>
-In-Reply-To: <20240704031603.1744546-1-zhao1.liu@intel.com>
-References: <20240704031603.1744546-1-zhao1.liu@intel.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+       dkim=pass header.i=@sifive.com header.s=google header.b=MB1YZUnE;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sVwE2-0005CX-0x; Mon, 22 Jul 2024 12:49:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <max.chou@sifive.com>)
+ id 1sVwE0-000566-Mn
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2024 12:49:24 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <max.chou@sifive.com>)
+ id 1sVwDx-0007LB-Jk
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2024 12:49:24 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-70d1fb6c108so854795b3a.3
+ for <qemu-arm@nongnu.org>; Mon, 22 Jul 2024 09:49:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sifive.com; s=google; t=1721666958; x=1722271758; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ojd67kYJwQNwCJ7C4DJs/GgdGhSFvQnplRWu/lP131A=;
+ b=MB1YZUnEBw/nasA+5UHIddjm3KtLCyswmXdLOPmEi5LuZsqvYhLjeJgyHC2bisfRxT
+ n1PqaoFNXlpfXkRE/keVcJDs2tCOm75aMl6y3RfbitO9NxzIUI7zPVFBfG8mMoZFmmy3
+ 7IN/xBxRSvEjRbaBnRfUbKst3+fqB+Qj8hEMGdBTScmp23I2en8VdQrgORRx4TadS+I1
+ 4n+9sTqCsYU0wujm4y4bbZjXLwwB+apveEHEMMsfgTsM73rUP94/o2H/TumT+0eFaTti
+ udFDg0X1io2vmGcDG4KDEEzK2Rwno5HzBawS/ycqJp/omKhsr+NXbMMj94IfKN8eHsf/
+ ElnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721666958; x=1722271758;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ojd67kYJwQNwCJ7C4DJs/GgdGhSFvQnplRWu/lP131A=;
+ b=TtfqSyQXVQyDJVh44gNN+qRZJGqU7Athu1PDmTGrPRcEGZMjsp34wADWOxwcB13HKS
+ g2zH4jX/dI8qSHqtispV3PjGop3yEc66uGhxT0TDGSg58cCdpppMtbwoqj2BDvbqnsPN
+ O2nVw3N8oe7VvfsLmRuLJA0M4FEyzrpAlzTwuBtR/TqBIjP8jr+fCZbIvO8VGKVCtLj7
+ gWIqq4rdYQBC9XD7WMiUpRJWB3JhgReNODU9RLDl2qDURpCk9LaMw2R0hkIZpaDVcOjk
+ ZrkzTcOS8UMry3QVIFpe7iFTk1LSSFiwZFUghPH5/k7NBjYl11lHa75AVKfva6MH1PSc
+ A4sw==
+X-Gm-Message-State: AOJu0Yz0B5aTsNnlJZepAeI3/aqcCiWv10dHRLzMyAgvSs/2dvQ5HB37
+ u27UaX5M1aWlnaJlR+eDC/c/lD878liu9c2bV1otMN8FvxdCwFxLkXCP7znk+muA0qSE7H9GNXv
+ PYCg=
+X-Received: by 2002:a05:6a20:430e:b0:1c2:8bcc:bb09 with SMTP id
+ adf61e73a8af0-1c42857336cmr6308503637.8.1721666957556; 
+ Mon, 22 Jul 2024 09:49:17 -0700 (PDT)
+Received: from [100.64.0.1] (114-35-142-126.hinet-ip.hinet.net.
+ [114.35.142.126]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-1fd6f28e87esm56848115ad.66.2024.07.22.09.49.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Jul 2024 09:49:17 -0700 (PDT)
+Message-ID: <c96ad0e8-bb2b-4af3-b706-57cd93653f9d@sifive.com>
+Date: Tue, 23 Jul 2024 00:49:14 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 12/12] target/riscv: Simplify probing in vext_ldff
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongu.org, qemu-s390x@nongnu.org,
+ qemu-riscv@nongnu.org, Alistair Francis <alistair.francis@wdc.com>
+References: <20240719010707.1319675-1-richard.henderson@linaro.org>
+ <20240719010707.1319675-13-richard.henderson@linaro.org>
+Content-Language: en-US
+From: Max Chou <max.chou@sifive.com>
+In-Reply-To: <20240719010707.1319675-13-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.174.77]
-X-ClientProxiedBy: lhrpeml500002.china.huawei.com (7.191.160.78) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-TUID: kH9VjGLafxsp
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=max.chou@sifive.com; helo=mail-pf1-x42d.google.com
+X-Spam_score_int: 4
+X-Spam_score: 0.4
+X-Spam_bar: /
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ARDF7ts4JRWj
 
-On Thu,  4 Jul 2024 11:15:55 +0800
-Zhao Liu <zhao1.liu@intel.com> wrote:
+Reviewed-by: Max Chou <max.chou@sifive.com>
 
-> Hi all,
-> 
-> Since the previous RFC v2, I've reimplemented smp-cache object based on
-> Daniel's comment (thanks Daniel!), which is both flexible to support
-> current cache topology requirements and extensible.
-> 
-> So, I officially convert the RFC to PATCH.
-> 
-> Background on smp cache topology can be found in the previous RFC v2
-> cover letter:
-> 
-> https://lore.kernel.org/qemu-devel/20240530101539.768484-1-zhao1.liu@intel.com/
-> 
-> The following content focuses on this series implementation of the
-> smp-cache object.
+On 2024/7/19 9:07 AM, Richard Henderson wrote:
+> The current pairing of tlb_vaddr_to_host with extra is either
+> inefficient (user-only, with page_check_range) or incorrect
+> (system, with probe_pages).
 >
-Hi Zhao Liu
-
-I've not commented on most of the x86 specific corners, but we are
-working on arm64 / PPTT support combining the info form CPU registers with
-the 'where' description this provides.  Should have a series on top of
-your work to post soon. 
-
-To me the interface looks fairly clean so I hope this object approach works
-for everyone!
-
-Jonathan
-
+> For proper non-fault behaviour, use probe_access_flags with
+> its nonfault parameter set to true.
+>
+> Acked-by: Alistair Francis <alistair.francis@wdc.com>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/riscv/vector_helper.c | 31 +++++++++++++++++--------------
+>   1 file changed, 17 insertions(+), 14 deletions(-)
+>
+> diff --git a/target/riscv/vector_helper.c b/target/riscv/vector_helper.c
+> index 1b4d5a8e37..10a52ceb5b 100644
+> --- a/target/riscv/vector_helper.c
+> +++ b/target/riscv/vector_helper.c
+> @@ -474,7 +474,6 @@ vext_ldff(void *vd, void *v0, target_ulong base,
+>             vext_ldst_elem_fn *ldst_elem,
+>             uint32_t log2_esz, uintptr_t ra)
+>   {
+> -    void *host;
+>       uint32_t i, k, vl = 0;
+>       uint32_t nf = vext_nf(desc);
+>       uint32_t vm = vext_vm(desc);
+> @@ -493,27 +492,31 @@ vext_ldff(void *vd, void *v0, target_ulong base,
+>           }
+>           addr = adjust_addr(env, base + i * (nf << log2_esz));
+>           if (i == 0) {
+> +            /* Allow fault on first element. */
+>               probe_pages(env, addr, nf << log2_esz, ra, MMU_DATA_LOAD);
+>           } else {
+> -            /* if it triggers an exception, no need to check watchpoint */
+>               remain = nf << log2_esz;
+>               while (remain > 0) {
+> +                void *host;
+> +                int flags;
+> +
+>                   offset = -(addr | TARGET_PAGE_MASK);
+> -                host = tlb_vaddr_to_host(env, addr, MMU_DATA_LOAD, mmu_index);
+> -                if (host) {
+> -#ifdef CONFIG_USER_ONLY
+> -                    if (!page_check_range(addr, offset, PAGE_READ)) {
+> -                        vl = i;
+> -                        goto ProbeSuccess;
+> -                    }
+> -#else
+> -                    probe_pages(env, addr, offset, ra, MMU_DATA_LOAD);
+> -#endif
+> -                } else {
+> +
+> +                /* Probe nonfault on subsequent elements. */
+> +                flags = probe_access_flags(env, addr, offset, MMU_DATA_LOAD,
+> +                                           mmu_index, true, &host, 0);
+> +
+> +                /*
+> +                 * Stop if invalid (unmapped) or mmio (transaction may fail).
+> +                 * Do not stop if watchpoint, as the spec says that
+> +                 * first-fault should continue to access the same
+> +                 * elements regardless of any watchpoint.
+> +                 */
+> +                if (flags & ~TLB_WATCHPOINT) {
+>                       vl = i;
+>                       goto ProbeSuccess;
+>                   }
+> -                if (remain <=  offset) {
+> +                if (remain <= offset) {
+>                       break;
+>                   }
+>                   remain -= offset;
 

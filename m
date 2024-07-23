@@ -1,110 +1,110 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2498551njc;
-        Tue, 23 Jul 2024 06:11:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUZPsHCKjZUeSldvDeB46Fdq1ItLkIoLYHOTPsR18HsaEeH86LS45Os3Wa6t1J6cexULkmnIdV6RBVI7PbxKpcKozD6soj+
-X-Google-Smtp-Source: AGHT+IFvheC5kJ1VmzYtcsymNyaVaiWVVYCZczsUPS7tpi6fMsVMKdb41yAczlGJV+M31y1zDJXz
-X-Received: by 2002:a05:6122:4685:b0:4ec:f8b1:a34b with SMTP id 71dfb90a1353d-4f50d25ba48mr9291595e0c.8.1721740297731;
-        Tue, 23 Jul 2024 06:11:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721740297; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2498830njc;
+        Tue, 23 Jul 2024 06:12:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU6v52THdHxqL6xPA00YlbND02SW8Gwojgw4fNnAH4y4TokuNVWoGWdKaKqD35AKGa7DLsMmhR0JCDBPFbIQzrg80tJ3poB
+X-Google-Smtp-Source: AGHT+IEg5unNy4vqn8d2+oRm5d5WP1gkO5LmB4tXvcNh5KMLaSGTI59V8ry6I6B6ENfpMq6nPFvx
+X-Received: by 2002:a05:6830:3708:b0:704:4995:3733 with SMTP id 46e09a7af769-708fdbd6c6bmr14547883a34.31.1721740324740;
+        Tue, 23 Jul 2024 06:12:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721740324; cv=none;
         d=google.com; s=arc-20160816;
-        b=fb1N9YXO/+BGTMcYgCSqSBRNDpl19CltCf9jOpYS2IKyVOUNMfElw1Z94d7roFbnJG
-         dxvQUraaHrd3Bkmnu8f2Nl4sI1TsqILEyndR1MXq/VdMXC3hk/YYNCBF/hoSVreqiB0O
-         vZQc7xbTk3bNqNvlAi+tUfbIZoXD5d1uCNPkSw46P80IEYF3rzBOiivforG1z/Ef4hh9
-         0pL/0R38TZJ++/UYwweFawz71cyAME/T0nK5Wg96EE7bNJUZMXvs2GbQhUIX+j3hkM7k
-         4yBD4xZ0kQ+EI5BWOWx4+VVQlg8Tnx7937hnzcNs9Ul4dU3RcOomk2d05HxQWrlB+zJe
-         8hSw==
+        b=LqRT2/HmMD57NIC5fr04SbDRLYtsqm2nhm113n9IF9j5jIFPnpDkfX7wUFj/YGvFXA
+         yyCScjkwNCEg0k2hNNe/ve00W/leZOFiUKk8hYGpGn/7Nx1J/5snK/g0yZplOvEGdr8M
+         tYyNvuZpWE1t26j2BggoaxovZ0GjV9GRH8YBEPBl79sNrxUfEV6YjDmmQWRwTJkNUKHw
+         aX44s6nfgBzaIgePJSWIteeFijctwOsR3H1/U+S3MOjGZUNB+yYm6782EqjvLOlyRDPa
+         bHS8deinaySTTE7AFUx0Y3tg7nhVnnNwWcxiARJPpC8Hf1sTK0usYAHc2z0v/lILTzHr
+         tzuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=W5/2nCZDxS1NroX7MRC4z7mOFdk6Q7iI8dAfdB9mODo=;
-        fh=o90OUZEJHpOpJiY5kWpSPa194X2ePXPpQLYbBWQjYIs=;
-        b=uqDY286mMEITx9/I64m1VMV2tzAdJDxftqCfltNTqhd0UT/KK/Sdbh4Pw/FaiypOob
-         yJuoN2DqvGfMj2EbPGt3CBwVRziPuZzp+HQoWd+RMWU2/XJsACKp1vAywvrn52NQ1RJ5
-         s16A3TuJCveJsDSbu4GXf755/9AN8sFEs+NeBoFTch262jS9Mqb0LuWnSUmJSPEvEfcn
-         lFQmbpopbcbh847KNRKw8hWCoUqhS9K2ECduY1J1Ys2HazLWv3kCsgjnek4QagL2UdgU
-         9FDGEkcPJFy6JuPt1OQQPnb7/EQT79XYldT2qiEnmGhnJBgOlSTtdDw/5FHoTwUOCn6K
-         LpDA==;
+        bh=+9KvsvCHEGhZpad6dixP1T8PrskYUM3EAVWT0geUExQ=;
+        fh=d6ISh+UXHKtgTEzAYzbaDgFEyq325M5bFfnAh5XfUso=;
+        b=lzkcXRFjdhYOVCkk8Qw4R21hMMPdTA/1fDCsnLe1yePM9uP74tCU1n7TaEz607sj+3
+         u207du31gSlyV8tsZHjU+zEXxyi0I4c7CTL5kS/ognQu99QeTJU1VO0PKs9dLgwcHDpA
+         2oH2q4bpWYPYXtQFA3ADqcjkqHmjcOlBETW+yxPkVqVdL7Eb6d8+AFux0GUUCIiUQsbN
+         a0S03jfkyRBGcBF6NR24crlDgyG6TQPeqdym1KxQiWvLKjdDuS2N5NnCtDzCAXaW0yw6
+         LZAGS2CckMAhDWKcARhstaVYQZV8jQ3R95RwjKKHp4cA3Oag8z07XbgVL393D9kc2/pc
+         4xfg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="P/WUR4qm";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ug0xCqAt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4f6abd25732si133461e0c.188.2024.07.23.06.11.37
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-826dcc1997csi1158944241.75.2024.07.23.06.12.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jul 2024 06:11:37 -0700 (PDT)
+        Tue, 23 Jul 2024 06:12:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="P/WUR4qm";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ug0xCqAt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sWFHt-0006Ai-Ss; Tue, 23 Jul 2024 09:10:41 -0400
+	id 1sWFHv-0006H1-B2; Tue, 23 Jul 2024 09:10:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sWFHr-00062I-Up
- for qemu-devel@nongnu.org; Tue, 23 Jul 2024 09:10:39 -0400
+ id 1sWFHt-000680-7T
+ for qemu-devel@nongnu.org; Tue, 23 Jul 2024 09:10:41 -0400
 Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sWFHn-0000I1-8p
- for qemu-devel@nongnu.org; Tue, 23 Jul 2024 09:10:39 -0400
+ id 1sWFHp-0000JM-9F
+ for qemu-devel@nongnu.org; Tue, 23 Jul 2024 09:10:40 -0400
 Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-367940c57ddso2873350f8f.3
- for <qemu-devel@nongnu.org>; Tue, 23 Jul 2024 06:10:33 -0700 (PDT)
+ ffacd0b85a97d-3685afd0c56so1241480f8f.1
+ for <qemu-devel@nongnu.org>; Tue, 23 Jul 2024 06:10:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721740232; x=1722345032; darn=nongnu.org;
+ d=linaro.org; s=google; t=1721740235; x=1722345035; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=W5/2nCZDxS1NroX7MRC4z7mOFdk6Q7iI8dAfdB9mODo=;
- b=P/WUR4qm+m0EkC+N6rdpGohoCRsrOlnsKZKNYm0rudJ7NemCMtVEnnvcvSEyzHLqYt
- nv4slL99TDft0Qf2bexkuDepajoB4kFIc8wbqjDZVv88+lMVke43RXxD2BtHQoeNPgXb
- Ph7bYBz79QYwddQ1S9jtDnKhqa1AfBHFnumUX976Ik772u8iwEMhj8lvnjyy66FCntEq
- ETNjGCWd6ef4R2S3cr/LehcJlgBFbvUbgtglOQqjgXsjvdTP6TJNXK9O2WuTji+vNipz
- ge5aYPyBdc9e+R4/qJZ8zbjLdabsLUUNKoTudF4jFOjhhske8KQxJ7guuTw6oTmrAebR
- 0t+g==
+ bh=+9KvsvCHEGhZpad6dixP1T8PrskYUM3EAVWT0geUExQ=;
+ b=ug0xCqAt8eSQNeZWAGoHnUNtpN68RNML7fAaZlCxHHxT7q+6n0Jhe+VsDV6IaYVgFf
+ dHyNhy44zO5XMzYPYA7S9lWZTXFXk5OXxCcv+74aikdgknQfJ5FpNP/pWHb5qJQAwtri
+ +soepWP7W5n3YS9gnM5vlB6xlCUP9MTPtTa4magj6kSzz1DTqEspe6Toy/vunxlGl1R5
+ qn0rlXWanCzFLdRgQkVPMevYl5QClWItq/8FcEQAJTSkRRyycsQfA4De7QApn3+VJ1NP
+ tJqfVAs5WqaIWZYFVFSyhs6cMJzh5SsF7tE0L73ZdTXxGBghiQ8rii9/x5ST9DtGc80q
+ cCww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721740232; x=1722345032;
+ d=1e100.net; s=20230601; t=1721740235; x=1722345035;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=W5/2nCZDxS1NroX7MRC4z7mOFdk6Q7iI8dAfdB9mODo=;
- b=A5Z+jNBOpBigLnfu5V28YWkeuAEXYNh5f0HvAQfzE33zJ7ktaHv2x8sROSt7woRGyH
- rDHswr8mb8IgmNdon08LGJA2VRIRKmmQlCAWVgMDKg6NRXQarXIgNZvhs0uxwiPq8eyh
- smVLtpZmpVKHFoAHFBNFE7nN1U+69781ZJnQHw0THZwApQIwyN7fp0gOFWOaIVlwB+yV
- ruEzJkHQcRIPafX4sFmV3oAzmnzAJF7aRJcE4cIxYMB2uAq0/zSt1Kw8HBMc59V65IEl
- a4M9iHUDh4pFcqdiFkWHfioyc3HM0rVWJ4uh3ww3vPWlSxMU6bDQ3rWWCOwDTFzsGWRf
- E3tw==
+ bh=+9KvsvCHEGhZpad6dixP1T8PrskYUM3EAVWT0geUExQ=;
+ b=ORrZPxE/rmXFVkxYBhW5yz8M73dC60ZJfLbot/duI10NfZKW8BEB9FXgex241wxK29
+ Taq6//bjzFd8r33gQhBm4oRz/OVvCoyx57Lm0gdtdine9WL+/8OwwFpbPGqiLecoOPbp
+ fRi5cYDkqzzeSGwu008zey8AWwXj6e8UcooqS+Zldtjp75xg5Yx05v/RUCp2qTJbe8dC
+ yX86LWeriZ6E2K+lq2nSOjDiooteZb85YWCAw19MfMhtETa4/CzBwaQW76B41RNouwuG
+ Rwwj1CqGPr2PzD/Zd0tCudDTTIenvhf+ksassVO6EF0bCM1g5ZUGNdv2WRh/NHdlbUoH
+ Fr4A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXrEicnbdq2wYQ9g/PdALZq9IFCx19inQs76sCYX0TJPvXRsY+aEyveBHQmZejOPjrIN0KWSFFKe1MMJDZd1T9Y/kvVyE0=
-X-Gm-Message-State: AOJu0YzE9vvJKZ1f4M17u4P9nclxo4Smpl8oSWK0OWO+kiuGjyKC2N8F
- 1gTraKtDCWeEQub59wKS7KkO9WuZGR2FLe0CWHRd0KdO76US+dNSM7Cpu3mLNVo=
-X-Received: by 2002:a05:6000:114f:b0:368:6911:6758 with SMTP id
- ffacd0b85a97d-369bae25123mr6857565f8f.40.1721740231928; 
- Tue, 23 Jul 2024 06:10:31 -0700 (PDT)
+ AJvYcCX8XfzRoFDaTxyo5N7LzZDYGjEkKpzfZWswwQoUjQ5BSeFHqU8mRJPqpx4smb0Ul+NfjX3/JHP5K6ij/7is2H7PXNTvypc=
+X-Gm-Message-State: AOJu0YwEd0DEeFWwsBGROR9wQya9PjUwH9/RNtBfyl0hB3PvhYGBaiV+
+ /uQs41nmPTI6xc3SoOgJYqIZUypoX4i+N/445y0diQvohButZeGQC7i+amxCInA=
+X-Received: by 2002:a05:6000:1b08:b0:367:4e1a:240e with SMTP id
+ ffacd0b85a97d-369bb2a1bc4mr5642881f8f.50.1721740234887; 
+ Tue, 23 Jul 2024 06:10:34 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-36878684773sm11560157f8f.7.2024.07.23.06.10.31
+ ffacd0b85a97d-36878684773sm11560157f8f.7.2024.07.23.06.10.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jul 2024 06:10:31 -0700 (PDT)
+ Tue, 23 Jul 2024 06:10:34 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-stable@nongnu.org
-Subject: [PATCH 1/4] hw/misc/bcm2835_property: Fix handling of
- FRAMEBUFFER_SET_PALETTE
-Date: Tue, 23 Jul 2024 14:10:26 +0100
-Message-Id: <20240723131029.1159908-2-peter.maydell@linaro.org>
+Subject: [PATCH 4/4] hw/misc/bcm2835_property: Reduce scope of variables in
+ mbox push function
+Date: Tue, 23 Jul 2024 14:10:29 +0100
+Message-Id: <20240723131029.1159908-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240723131029.1159908-1-peter.maydell@linaro.org>
 References: <20240723131029.1159908-1-peter.maydell@linaro.org>
@@ -133,83 +133,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: od7O6Cr67Qhq
+X-TUID: 4RixrhY2trLa
 
-The documentation of the "Set palette" mailbox property at
-https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface#set-palette
-says it has the form:
+In bcm2835_property_mbox_push(), some variables are defined at function scope
+but used only in a smaller scope of the function:
+ * tag, bufsize, resplen are used only in the body of the while() loop
+ * tmp is used only for RPI_FWREQ_SET_POWER_STATE (and is badly named)
 
-    Length: 24..1032
-    Value:
-        u32: offset: first palette index to set (0-255)
-        u32: length: number of palette entries to set (1-256)
-        u32...: RGBA palette values (offset to offset+length-1)
+Declare these variables in the scope where they're needed, so the code
+is easier to read.
 
-We get this wrong in a couple of ways:
- * we aren't checking the offset and length are in range, so the guest
-   can make us spin for a long time by providing a large length
- * the bounds check on our loop is wrong: we should iterate through
-   'length' palette entries, not 'length - offset' entries
-
-Fix the loop to implement the bounds checks and get the loop
-condition right. In the process, make the variables local to
-this switch case, rather than function-global, so it's clearer
-what type they are when reading the code.
-
-Cc: qemu-stable@nongnu.org
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/misc/bcm2835_property.c | 27 ++++++++++++++++-----------
- 1 file changed, 16 insertions(+), 11 deletions(-)
+ hw/misc/bcm2835_property.c | 21 ++++++++++-----------
+ 1 file changed, 10 insertions(+), 11 deletions(-)
 
 diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index 63de3db6215..e28fdca9846 100644
+index 443d42a1824..8ca3128f29b 100644
 --- a/hw/misc/bcm2835_property.c
 +++ b/hw/misc/bcm2835_property.c
-@@ -31,7 +31,6 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-     size_t resplen;
-     uint32_t tmp;
-     int n;
--    uint32_t offset, length, color;
-     uint32_t start_num, number, otp_row;
+@@ -25,11 +25,7 @@
+ 
+ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+ {
+-    uint32_t tag;
+-    uint32_t bufsize;
+     uint32_t tot_len;
+-    size_t resplen;
+-    uint32_t tmp;
  
      /*
-@@ -274,19 +273,25 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-             resplen = 16;
+      * Copy the current state of the framebuffer config; we will update
+@@ -48,10 +44,10 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+     /* @(addr + 4) : Buffer response code */
+     value = s->addr + 8;
+     while (value + 8 <= s->addr + tot_len) {
+-        tag = ldl_le_phys(&s->dma_as, value);
+-        bufsize = ldl_le_phys(&s->dma_as, value + 4);
++        uint32_t tag = ldl_le_phys(&s->dma_as, value);
++        uint32_t bufsize = ldl_le_phys(&s->dma_as, value + 4);
+         /* @(value + 8) : Request/response indicator */
+-        resplen = 0;
++        size_t resplen = 0;
+         switch (tag) {
+         case RPI_FWREQ_PROPERTY_END:
              break;
-         case RPI_FWREQ_FRAMEBUFFER_SET_PALETTE:
--            offset = ldl_le_phys(&s->dma_as, value + 12);
--            length = ldl_le_phys(&s->dma_as, value + 16);
--            n = 0;
--            while (n < length - offset) {
--                color = ldl_le_phys(&s->dma_as, value + 20 + (n << 2));
--                stl_le_phys(&s->dma_as,
--                            s->fbdev->vcram_base + ((offset + n) << 2), color);
--                n++;
+@@ -95,13 +91,16 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+             resplen = 8;
+             break;
+         case RPI_FWREQ_SET_POWER_STATE:
+-            /* Assume that whatever device they asked for exists,
+-             * and we'll just claim we set it to the desired state
 +        {
-+            uint32_t offset = ldl_le_phys(&s->dma_as, value + 12);
-+            uint32_t length = ldl_le_phys(&s->dma_as, value + 16);
-+            int resp;
-+
-+            if (offset > 255 || length < 1 || length > 256) {
-+                resp = 1; /* invalid request */
-+            } else {
-+                for (uint32_t e = 0; e < length; e++) {
-+                    uint32_t color = ldl_le_phys(&s->dma_as, value + 20 + (e << 2));
-+                    stl_le_phys(&s->dma_as,
-+                                s->fbdev->vcram_base + ((offset + e) << 2), color);
-+                }
-+                resp = 0;
-             }
--            stl_le_phys(&s->dma_as, value + 12, 0);
-+            stl_le_phys(&s->dma_as, value + 12, resp);
-             resplen = 4;
++            /*
++             * Assume that whatever device they asked for exists,
++             * and we'll just claim we set it to the desired state.
+              */
+-            tmp = ldl_le_phys(&s->dma_as, value + 16);
+-            stl_le_phys(&s->dma_as, value + 16, (tmp & 1));
++            uint32_t state = ldl_le_phys(&s->dma_as, value + 16);
++            stl_le_phys(&s->dma_as, value + 16, (state & 1));
+             resplen = 8;
              break;
--
 +        }
-         case RPI_FWREQ_FRAMEBUFFER_GET_NUM_DISPLAYS:
-             stl_le_phys(&s->dma_as, value + 12, 1);
-             resplen = 4;
+ 
+         /* Clocks */
+ 
 -- 
 2.34.1
 

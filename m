@@ -1,114 +1,113 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2670402njc;
-        Tue, 23 Jul 2024 11:09:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW9l588TtG2vxLO7c3KGHJ/HCe6PRRqtyG6iyVC/yHdahCH8Q6WU4c0r2W+YcjBCxkdZ5IzU12u8DlWVTFoyqaKypaEefvo
-X-Google-Smtp-Source: AGHT+IHRXtDikJ1si8qjh/4XDveelhhcUnkskRbQZhKApBFt9rze/QrE0cQSl4aCSCHNFbswwPOb
-X-Received: by 2002:a05:620a:2886:b0:79f:197d:fe92 with SMTP id af79cd13be357-7a1c06ad1cdmr469028285a.2.1721758174627;
-        Tue, 23 Jul 2024 11:09:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721758174; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2670619njc;
+        Tue, 23 Jul 2024 11:10:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW5isEOxlu6LQbFK5E9R1wfBArWITkFDF+IGX+wQmHJlpeXel/IBA/tpKeZR8bXc42hZAJGXBubmnuR2OVR2errRnSOTDj2
+X-Google-Smtp-Source: AGHT+IEotnU5aPHf4FvK2Rk5g5DODEo7QZk1Qypb4eweAhdrMftihiBxWqn007oGGHVHY/XELYsR
+X-Received: by 2002:a05:620a:424d:b0:79f:16b0:df8f with SMTP id af79cd13be357-7a1ca193adamr80484185a.48.1721758202538;
+        Tue, 23 Jul 2024 11:10:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721758202; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ba81aGBkQy/8joP8nAzWaUAH+ahSif9ihCgP81fR0lfg8isuRYYLMOJDuPmmvz7yS9
-         TGGwNWWwYJUm7RYE6zavz/3u/zXoh2VGuPgw4JqT6zQjoT4zfI8Ak9hPe7jOHq2JKBWH
-         Ims21A9X7ld1wqaTPcik41nS2vn1q9TGqFDNLJ2+1QWuJfsPlh/5kCcjXe7epcq4PLtz
-         QdZZukcZQbPuYKTv1rSGS/92n+E/ZT1RLyMZO5uUgdCsZT9VoKVupmZN3C4k0y5RFSk5
-         tcfIkEEwuUdfCkV2clwmh1zrS/Yy8jSP0gKUb5T2oKxsR1ZVfL3ZmiYic6LcQO4Jxa2V
-         OK6w==
+        b=c9gGQWIlwgI7rhr0XfV0guwvPee6njXPQYy4RDhIGkM/uXveGBwuaxhyHctAtAaRtu
+         bL14VsTqy+MhhtNO6FmoR2dpBOFfJ0P57VxuzosaKq9ekhI/stjEHFgo2cPg2Q7HxSw5
+         CZ4jCoYZwuMwbSFdn4rv4kBE04Ojl1nxPgXjA2uB0p5GAwiWXcCa6E1BhwV3KLh/JM/B
+         m+xhxKcNXbpQnX5gC4lGW7FRkpavRJ7LUNG6JMfFxu1jO+UzIh0engTOovVaHgAl2k5B
+         89BqDC7yEiTjYdBaoq7nEry0KX3Ve65zlIW2pLdhA9LtbVi3ASFSfNVv7NbHtnuBY3VQ
+         gy4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=9RgA/sQrSqu0rivwfkVX+vpcUdtyuMUfMJ/jiDAmIes=;
-        fh=y8ui7RxG3S/v+c62bmwZD+bQxHUG0Y9sI314BSLIpR8=;
-        b=h/q5ojS9L2KWkEJa46RRzv9mp1SYkwEKu3cQjPeZxVZCXm/W7grnquIahrdrwVwlqK
-         pRub9+NtlydiFCsAB1BlkPttciQ/lLt+evLVkVpvG+awlbrIRYoF9zk8krulg9r3i7k1
-         HZaLo1kBsEpndQxplGKhoA9EZ9aO1UoFSUvBxrwDjSGZiDk4JJJbYDzYtTEpk25FsTHS
-         6Gs3RD4uDaXvwrsjwTfWTFN4troGXbUREL7tYk5X8HwdRClcHrJ8UuaEc2742vv2nDOh
-         ueql3vy8uJTmdt5z1dWfeidTBrRH3AVzlfeQTfzXSvXRGogCyKDlluIRifi+wUA2TiFy
-         qgBA==;
+        bh=TXCw0+RJXjXO156yoRFr2t5+0iBs33zwi5q8sWmsNWs=;
+        fh=b+hr073bRML9iaiA8dyYC7bQLllQsKmavjxXKuQICAM=;
+        b=mQMrAJnC9wMHcE8qQS+uAxMMemmHXDbTVQdcM0/zZWNX/CbBVAKy9ZR04WKKa2/t2U
+         7U07DhbFjEm+ak2cHMzR0UWTTrSnmVCx51U0Di/HPKS8mtGiJX+/vhHhKA+9w0SvCrLj
+         Qun+e8zg2u9uso9T6G1ifv1E9ScFNIP+DZ0AajAk/TIksrArklNHZFYTUNVm3CVULusO
+         UGHBA5+FaIeZ3DQ2o3dXwRdeKjR7NxE+y1wUzLmbATWqw+Ln00cgQ6Ql5v8GHc3s6yDt
+         XePOJFegfpOcry4Ook71MOdUhdr9LxaVvzzOC0mEVFkFhpdUQGiwEnTIjVW7xYKxqgQe
+         mKbA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=qfVTitw8;
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=Tol5Pfzt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1990b3221si1092011485a.745.2024.07.23.11.09.34
+        by mx.google.com with ESMTPS id af79cd13be357-7a198f9770fsi1085911885a.75.2024.07.23.11.10.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jul 2024 11:09:34 -0700 (PDT)
+        Tue, 23 Jul 2024 11:10:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=qfVTitw8;
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=Tol5Pfzt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sWJwm-00017o-ST; Tue, 23 Jul 2024 14:09:12 -0400
+	id 1sWJx8-0001r7-DF; Tue, 23 Jul 2024 14:09:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWJwa-000133-BH
- for qemu-devel@nongnu.org; Tue, 23 Jul 2024 14:09:00 -0400
-Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b])
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWJws-0001Bf-35
+ for qemu-devel@nongnu.org; Tue, 23 Jul 2024 14:09:19 -0400
+Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWJwX-0001BA-8m
- for qemu-devel@nongnu.org; Tue, 23 Jul 2024 14:09:00 -0400
-Received: by mail-il1-x12b.google.com with SMTP id
- e9e14a558f8ab-396e2d21812so22352665ab.2
- for <qemu-devel@nongnu.org>; Tue, 23 Jul 2024 11:08:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWJwo-0001Cj-EY
+ for qemu-devel@nongnu.org; Tue, 23 Jul 2024 14:09:17 -0400
+Received: by mail-il1-x135.google.com with SMTP id
+ e9e14a558f8ab-37636c3872bso25955565ab.3
+ for <qemu-devel@nongnu.org>; Tue, 23 Jul 2024 11:09:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721758136; x=1722362936;
+ d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721758143; x=1722362943;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9RgA/sQrSqu0rivwfkVX+vpcUdtyuMUfMJ/jiDAmIes=;
- b=qfVTitw8NrE77Fz02CQD1gVcsnOFXWJpljrlOXJ2IQ0GWMvRmtf9RGSHP+STibhWVI
- PIBhFioUGt9uNtXn8eiDBeTbDrfLTnX8ybSVnLqhu9DSDDfCuhF5Wbx0Xa/DWqttQt03
- B0UuJNC8jPzg4bG46DdXl2E2TABKZvcFcx1SR7M1i7Dyt+93TZYxPiXd6+S1vAb8GsiT
- udHx2vfywsm9ae3PJbcVPWk6UGy5DJ1RhFtGjJ+eVs2XS8R2ZqAYbAryd1CW/3C3MFEZ
- 3hJMzVvhwPcs9DEe6ErIVJKQHsM0Z30341P4K+xH3wc4DXooBRLsoYWJfiOnfoBWWHoM
- nUDQ==
+ bh=TXCw0+RJXjXO156yoRFr2t5+0iBs33zwi5q8sWmsNWs=;
+ b=Tol5Pfzt00N2MoDzPVr/9jf2A4IedplMBTNxr74fLgXg00FTuB+6GJZpKdwWAZFQiP
+ kvhlp8HpsFJQqebUUfktA7eAUmfzKqfbHYvxVUdOnDDCKnAGTyfqN6Us3H5oa08MbkDb
+ G7gcwEZH9LQX1IZP2b6yCYo5o8BzvZtLm1brrC9mibivzBc5AlN6hLLOT6cm8+edbdxL
+ g3VhB6NU8xjsbbHYln38o0hkX2sGKAXkAFDg5rt0QE2YVmQwJxGgvMVLzs42WKwDKVoE
+ Q78Fo/zcizQOtCBe0FJCXti94Q9LVp+vphjJqFEO13Ao78CvS8c6IaVRM5hfkm63kpGH
+ GO2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721758136; x=1722362936;
+ d=1e100.net; s=20230601; t=1721758143; x=1722362943;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=9RgA/sQrSqu0rivwfkVX+vpcUdtyuMUfMJ/jiDAmIes=;
- b=bWsrbNrkyMGcZgUbB8Eyua887UZhu6m+mxCtQO2/Vpw6+tkHmXuSbXNH+O5LsGxTPB
- boN4lKqfPE9J7/7hpt9JHnIDT2/shSZ1omyPjXBqn3VJtEGrFFOfOk/Pqx8lW8yoeNQY
- unElNsj3nTyvhiqqwJVSORMrmLZAAPdQCsydXGAVg8m1rlHQEqONppvO5DW//p3OJ693
- UlADKX3vVVn3DFAw1RyjB1u04q5snRczsBnVIcJ+y5ljAgSnjA63kMWawXMIZY+j3sPh
- y6VCUugDmoCOB9LfNsH5XcGUXAaeEf6LU/FeH8Xp7BcKikQnRxP9mC3hEOCj90yTlxrE
- qHSQ==
-X-Gm-Message-State: AOJu0YyogpH+XRRdkT/QVMIkVaB0w/guxY7SpbgjEP8S/D2786UVWQ9e
- 7VJjEhy6RjonhzvvNWJzGn8bJNGK6tTF2k3w+my7xVdItJE0SrE8vuwajRud724TcSiKh+Ki30m
- F3e8=
-X-Received: by 2002:a05:6e02:1c4d:b0:375:9ff9:7cf4 with SMTP id
- e9e14a558f8ab-39a0c87f01cmr46473905ab.4.1721758135777; 
- Tue, 23 Jul 2024 11:08:55 -0700 (PDT)
+ bh=TXCw0+RJXjXO156yoRFr2t5+0iBs33zwi5q8sWmsNWs=;
+ b=q1mN6oxdZpatRWcEDRW589WydHLgxn0qIOlWwjM0SB1Uq7FiEdQtyb1txuNfGaGBpX
+ 9nNs879ot4adeHsO/M61OqaccGGVR0E2rclRkuHj7nYenrQuWLNjKt8RXx+Ljwcveq//
+ FiibI98plySx0X4KfmOHP7V+7CSePicvEPmsLsqx8hkK4e0Pqv2//r3oL8z0OinigdX1
+ 9/UWyGXn6qWuIWccAgmk3a+hgYLV8HNHb1qmtsbf4gvdTOejUeaYUrCNYRtUw3PvxFwB
+ YLWm565BrD8jC6ESwC79FjFq2VX4gZMtDEy4iVjjqkywpJTgLoIx1zcDVNKiTv8FePaa
+ nnyA==
+X-Gm-Message-State: AOJu0YzGfWUvA1iV4I36jX9tNp2lvbNaJWkyMBVhudRxZ5arHxGk527t
+ WKwkLegEsMxY3i6T5HMzWxXbgZfTdrJQQ1wqUeLtZoxVBoZbQsqeIhYYcnGocnl82ZWfLjWgX5r
+ aGjw=
+X-Received: by 2002:a05:6e02:1a83:b0:381:d74f:b2f4 with SMTP id
+ e9e14a558f8ab-39a16d5a102mr9503785ab.24.1721758141350; 
+ Tue, 23 Jul 2024 11:09:01 -0700 (PDT)
 Received: from dune.bsdimp.com ([50.253.99.174])
  by smtp.gmail.com with ESMTPSA id
- e9e14a558f8ab-397f7a2827csm33361775ab.53.2024.07.23.11.08.54
+ e9e14a558f8ab-397f7a2827csm33361775ab.53.2024.07.23.11.09.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jul 2024 11:08:54 -0700 (PDT)
+ Tue, 23 Jul 2024 11:09:00 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Peter Maydell <peter.maydell@linaro.org>,
  Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org,
- Stacey Son <sson@FreeBSD.org>, Ajeet Singh <itachis@FreeBSD.org>,
- Sean Bruno <sbruno@freebsd.org>, Jessica Clarke <jrtc27@jrtc27.com>,
+ Ajeet Singh <itachis@FreeBSD.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 01/14] bsd-user:Add CPU initialization and management functions
-Date: Tue, 23 Jul 2024 12:07:12 -0600
-Message-ID: <20240723180725.99114-2-imp@bsdimp.com>
+Subject: [PULL 06/14] bsd-user:Add setup_sigframe_arch function for ARM AArch64
+Date: Tue, 23 Jul 2024 12:07:17 -0600
+Message-ID: <20240723180725.99114-7-imp@bsdimp.com>
 X-Mailer: git-send-email 2.45.1
 In-Reply-To: <20240723180725.99114-1-imp@bsdimp.com>
 References: <20240723180725.99114-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::12b;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x12b.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::135;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x135.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -129,327 +128,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: n9/03m7FXA5I
+X-TUID: laxk7YgdifQX
 
-From: Stacey Son <sson@FreeBSD.org>
+The function utilizes the `get_mcontext` function to retrieve the machine
+context for the current CPUARMState
 
-Added function to initialize ARM CPU and check if it supports 64-bit mode.
-Implemented CPU loop function to handle exceptions and emulate execution of instructions.
-Added function to clone CPU state to create a new thread.
-Included AArch64 specific CPU functions for bsd-user to set and receive thread-local-storage
-value from the tpidr_el0 register.
-Introduced structure for storing CPU register states for BSD-USER.
-
-Signed-off-by: Stacey Son <sson@FreeBSD.org>
+Signed-off-by: Warner Losh <imp@bsdimp.com>
 Signed-off-by: Ajeet Singh <itachis@FreeBSD.org>
-Co-authored-by: Kyle Evans <kevans@freebsd.org>
-Co-authored-by: Sean Bruno <sbruno@freebsd.org>
-Co-authored-by: Jessica Clarke <jrtc27@jrtc27.com>
-Reviewed-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20240707191128.10509-2-itachis@FreeBSD.org>
+Message-Id: <20240707191128.10509-7-itachis@FreeBSD.org>
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 ---
- bsd-user/aarch64/target_arch_cpu.c |  31 +++++
- bsd-user/aarch64/target_arch_cpu.h | 192 +++++++++++++++++++++++++++++
- bsd-user/aarch64/target_syscall.h  |  51 ++++++++
- 3 files changed, 274 insertions(+)
- create mode 100644 bsd-user/aarch64/target_arch_cpu.c
- create mode 100644 bsd-user/aarch64/target_arch_cpu.h
- create mode 100644 bsd-user/aarch64/target_syscall.h
+ bsd-user/aarch64/signal.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/bsd-user/aarch64/target_arch_cpu.c b/bsd-user/aarch64/target_arch_cpu.c
-new file mode 100644
-index 00000000000..b2fa59efaf6
---- /dev/null
-+++ b/bsd-user/aarch64/target_arch_cpu.c
-@@ -0,0 +1,31 @@
-+/*
-+ * ARM AArch64 specific CPU for bsd-user
-+ *
-+ * Copyright (c) 2015 Stacey Son
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+#include "qemu/osdep.h"
-+#include "target_arch.h"
-+
-+/* See cpu_set_user_tls() in arm64/arm64/vm_machdep.c */
-+void target_cpu_set_tls(CPUARMState *env, target_ulong newtls)
-+{
-+    env->cp15.tpidr_el[0] = newtls;
-+}
-+
-+target_ulong target_cpu_get_tls(CPUARMState *env)
-+{
-+    return env->cp15.tpidr_el[0];
-+}
-diff --git a/bsd-user/aarch64/target_arch_cpu.h b/bsd-user/aarch64/target_arch_cpu.h
-new file mode 100644
-index 00000000000..5c150bb7e9c
---- /dev/null
-+++ b/bsd-user/aarch64/target_arch_cpu.h
-@@ -0,0 +1,192 @@
-+/*
-+ *  ARM AArch64 cpu init and loop
-+ *
-+ * Copyright (c) 2015 Stacey Son
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef TARGET_ARCH_CPU_H
-+#define TARGET_ARCH_CPU_H
-+
-+#include "target_arch.h"
-+#include "signal-common.h"
-+#include "target/arm/syndrome.h"
-+
-+#define TARGET_DEFAULT_CPU_MODEL "any"
-+
-+static inline void target_cpu_init(CPUARMState *env,
-+    struct target_pt_regs *regs)
-+{
-+    int i;
-+
-+    if (!(arm_feature(env, ARM_FEATURE_AARCH64))) {
-+        fprintf(stderr, "The selected ARM CPU does not support 64 bit mode\n");
-+        exit(1);
-+    }
-+    for (i = 0; i < 31; i++) {
-+        env->xregs[i] = regs->regs[i];
-+    }
-+    env->pc = regs->pc;
-+    env->xregs[31] = regs->sp;
-+}
-+
-+
-+static inline void target_cpu_loop(CPUARMState *env)
-+{
-+    CPUState *cs = env_cpu(env);
-+    int trapnr, ec, fsc, si_code, si_signo;
-+    uint64_t code, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8;
-+    uint32_t pstate;
-+    abi_long ret;
-+
-+    for (;;) {
-+        cpu_exec_start(cs);
-+        trapnr = cpu_exec(cs);
-+        cpu_exec_end(cs);
-+        process_queued_cpu_work(cs);
-+
-+        switch (trapnr) {
-+        case EXCP_SWI:
-+            /* See arm64/arm64/trap.c cpu_fetch_syscall_args() */
-+            code = env->xregs[8];
-+            if (code == TARGET_FREEBSD_NR_syscall ||
-+                code == TARGET_FREEBSD_NR___syscall) {
-+                code = env->xregs[0];
-+                arg1 = env->xregs[1];
-+                arg2 = env->xregs[2];
-+                arg3 = env->xregs[3];
-+                arg4 = env->xregs[4];
-+                arg5 = env->xregs[5];
-+                arg6 = env->xregs[6];
-+                arg7 = env->xregs[7];
-+                arg8 = 0;
-+            } else {
-+                arg1 = env->xregs[0];
-+                arg2 = env->xregs[1];
-+                arg3 = env->xregs[2];
-+                arg4 = env->xregs[3];
-+                arg5 = env->xregs[4];
-+                arg6 = env->xregs[5];
-+                arg7 = env->xregs[6];
-+                arg8 = env->xregs[7];
-+            }
-+            ret = do_freebsd_syscall(env, code, arg1, arg2, arg3,
-+                    arg4, arg5, arg6, arg7, arg8);
-+            /*
-+             * The carry bit is cleared for no error; set for error.
-+             * See arm64/arm64/vm_machdep.c cpu_set_syscall_retval()
-+             */
-+            pstate = pstate_read(env);
-+            if (ret >= 0) {
-+                pstate &= ~PSTATE_C;
-+                env->xregs[0] = ret;
-+            } else if (ret == -TARGET_ERESTART) {
-+                env->pc -= 4;
-+                break;
-+            } else if (ret != -TARGET_EJUSTRETURN) {
-+                pstate |= PSTATE_C;
-+                env->xregs[0] = -ret;
-+            }
-+            pstate_write(env, pstate);
-+            break;
-+
-+        case EXCP_INTERRUPT:
-+            /* Just indicate that signals should be handle ASAP. */
-+            break;
-+
-+        case EXCP_UDEF:
-+            force_sig_fault(TARGET_SIGILL, TARGET_ILL_ILLOPN, env->pc);
-+            break;
-+
-+
-+        case EXCP_PREFETCH_ABORT:
-+        case EXCP_DATA_ABORT:
-+            /* We should only arrive here with EC in {DATAABORT, INSNABORT}. */
-+            ec = syn_get_ec(env->exception.syndrome);
-+            assert(ec == EC_DATAABORT || ec == EC_INSNABORT);
-+
-+            /* Both EC have the same format for FSC, or close enough. */
-+            fsc = extract32(env->exception.syndrome, 0, 6);
-+            switch (fsc) {
-+            case 0x04 ... 0x07: /* Translation fault, level {0-3} */
-+                si_signo = TARGET_SIGSEGV;
-+                si_code = TARGET_SEGV_MAPERR;
-+                break;
-+            case 0x09 ... 0x0b: /* Access flag fault, level {1-3} */
-+            case 0x0d ... 0x0f: /* Permission fault, level {1-3} */
-+                si_signo = TARGET_SIGSEGV;
-+                si_code = TARGET_SEGV_ACCERR;
-+                break;
-+            case 0x11: /* Synchronous Tag Check Fault */
-+                si_signo = TARGET_SIGSEGV;
-+                si_code = /* TARGET_SEGV_MTESERR; */ TARGET_SEGV_ACCERR;
-+                break;
-+            case 0x21: /* Alignment fault */
-+                si_signo = TARGET_SIGBUS;
-+                si_code = TARGET_BUS_ADRALN;
-+                break;
-+            default:
-+                g_assert_not_reached();
-+            }
-+            force_sig_fault(si_signo, si_code, env->exception.vaddress);
-+            break;
-+
-+        case EXCP_DEBUG:
-+        case EXCP_BKPT:
-+            force_sig_fault(TARGET_SIGTRAP, TARGET_TRAP_BRKPT, env->pc);
-+            break;
-+
-+        case EXCP_ATOMIC:
-+            cpu_exec_step_atomic(cs);
-+            break;
-+
-+        case EXCP_YIELD:
-+            /* nothing to do here for user-mode, just resume guest code */
-+            break;
-+        default:
-+            fprintf(stderr, "qemu: unhandled CPU exception 0x%x - aborting\n",
-+                    trapnr);
-+            cpu_dump_state(cs, stderr, 0);
-+            abort();
-+        } /* switch() */
-+        process_pending_signals(env);
-+        /*
-+         * Exception return on AArch64 always clears the exclusive
-+         * monitor, so any return to running guest code implies this.
-+         * A strex (successful or otherwise) also clears the monitor, so
-+         * we don't need to specialcase EXCP_STREX.
-+         */
-+        env->exclusive_addr = -1;
-+    } /* for (;;) */
-+}
-+
-+
-+/* See arm64/arm64/vm_machdep.c cpu_fork() */
-+static inline void target_cpu_clone_regs(CPUARMState *env, target_ulong newsp)
-+{
-+    if (newsp) {
-+        env->xregs[31] = newsp;
-+    }
-+    env->regs[0] = 0;
-+    env->regs[1] = 0;
-+    pstate_write(env, 0);
-+}
-+
-+static inline void target_cpu_reset(CPUArchState *env)
-+{
-+}
-+
-+
-+#endif /* TARGET_ARCH_CPU_H */
-diff --git a/bsd-user/aarch64/target_syscall.h b/bsd-user/aarch64/target_syscall.h
-new file mode 100644
-index 00000000000..08ae913c42e
---- /dev/null
-+++ b/bsd-user/aarch64/target_syscall.h
-@@ -0,0 +1,51 @@
-+/*
-+ * ARM AArch64 specific CPU for bsd-user
-+ *
-+ * Copyright (c) 2015 Stacey D. Son <sson at Freebsd>
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef BSD_USER_AARCH64_TARGET_SYSCALL_H
-+#define BSD_USER_AARCH64_TARGET_SYSCALL_H
+diff --git a/bsd-user/aarch64/signal.c b/bsd-user/aarch64/signal.c
+index ab3bf8558ab..43c886e6036 100644
+--- a/bsd-user/aarch64/signal.c
++++ b/bsd-user/aarch64/signal.c
+@@ -81,3 +81,17 @@ abi_long get_mcontext(CPUARMState *regs, target_mcontext_t *mcp, int flags)
+ 
+     return err;
+ }
 +
 +/*
-+ * The aarch64 registers are named:
-+ *
-+ * x0 through x30 - for 64-bit-wide access (same registers)
-+ * Register '31' is one of two registers depending on the instruction context:
-+ *  For instructions dealing with the stack, it is the stack pointer, named rsp
-+ *  For all other instructions, it is a "zero" register, which returns 0 when
-+ *  read and discards data when written - named rzr (xzr, wzr)
-+ *
-+ * Usage during syscall/function call:
-+ * r0-r7 are used for arguments and return values
-+ * For syscalls, the syscall number is in r8
-+ * r9-r15 are for temporary values (may get trampled)
-+ * r16-r18 are used for intra-procedure-call and platform values (avoid)
-+ * The called routine is expected to preserve r19-r28
-+ * r29 and r30 are used as the frame register and link register (avoid)
-+ * See the ARM Procedure Call Reference for details.
++ * Compare to arm64/arm64/exec_machdep.c sendsig()
++ * Assumes that the memory is locked if frame points to user memory.
 + */
-+struct target_pt_regs {
-+    uint64_t    regs[31];
-+    uint64_t    sp;
-+    uint64_t    pc;
-+    uint64_t    pstate;
-+};
++abi_long setup_sigframe_arch(CPUARMState *env, abi_ulong frame_addr,
++                             struct target_sigframe *frame, int flags)
++{
++    target_mcontext_t *mcp = &frame->sf_uc.uc_mcontext;
 +
-+#define TARGET_HW_MACHINE       "arm64"
-+#define TARGET_HW_MACHINE_ARCH  "aarch64"
++    get_mcontext(env, mcp, flags);
++    return 0;
++}
 +
-+#endif /* BSD_USER_AARCH64_TARGET_SYSCALL_H */
 -- 
 2.45.1
 

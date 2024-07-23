@@ -1,119 +1,121 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2629718njc;
-        Tue, 23 Jul 2024 09:55:12 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUnbvhbtfZkqkE+HiUAmzV+Vo3xbgWUyoeE7pQIyDYIEGm8V8zda+iwtI48VBnQF7OwvIxpwdKUAW6oxPuyk7rL94fAB3p3
-X-Google-Smtp-Source: AGHT+IH51InGzZgH08a8z8i61C4yKZWGefmghWiZub+DeSemIuNL+HD9/ujNhZBWEO80PgNZg/En
-X-Received: by 2002:ac8:5f4e:0:b0:447:e996:e60d with SMTP id d75a77b69052e-44fc5514d8dmr44028101cf.19.1721753712727;
-        Tue, 23 Jul 2024 09:55:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721753712; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2672218njc;
+        Tue, 23 Jul 2024 11:13:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX1wqd3EHSPwxBwPVOcsxGHGsCuo9KYCMWJgKc2G6Pre+RbcvKqL1teN06fClNJE0B0a/5ZTXA8F6TV73YFWdESgcZ0dyqP
+X-Google-Smtp-Source: AGHT+IGWr9mhCPSBsy34uDknz1Moz0sFwYojd0Ny1e/2MdQAcswULpEmGaiGW67wE22eHQSArXsY
+X-Received: by 2002:a05:622a:448:b0:447:def8:bc8b with SMTP id d75a77b69052e-44fa5285b6amr162484271cf.20.1721758382422;
+        Tue, 23 Jul 2024 11:13:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721758382; cv=none;
         d=google.com; s=arc-20160816;
-        b=se4fEjkkF3ub4nHGAjooo9I1GqYS/jhXjL6Kc+VX/mGl/PqPtS4AMOCORLcJNbUXkQ
-         OXk05h4cSAXejtxcUitq8P1BCzC/zypFvLO0tHWMImKLFNPPilD4lp89SQr2fUhRVdbp
-         i22ydSXpd++cuSO8Cg7jvmMv+ldJrRRhI2Q2qUb225bomxr6SMItSq30Wm/vk3JT7mZo
-         CMaq/N5ZgH+smjQIN1ZrmM31PQqoCkDCLdYnrD7El+ltZs2xwkAw2REqxHlwsurt5BKJ
-         uCK41zXZIYES6BJpetNcmiuPeIfcf/j2b/H5zhpa9AS7lCaY/cHiZ1wnqBDsou8ExOEr
-         35yg==
+        b=ST53BcmJ0QYW59Nc5gLEqAIDho2tK4kf8px04+UEDcg7LBBLnSn3ZfIXBbs8/5uVdm
+         edmcR47etSyUTFqJqARXsp2Iqt7OPSGUdWZMdaef++WswXlrFlCFwX/EoygVDSANcjE+
+         IIVn1/4YDTAzQngvcqBk8FZ/8+8OlFTvSKH7TWDD6Kgs2BcxtrBn6PhneMzJdpuGVamv
+         GDNneWZ/8j7bgY9zOXXxMk+uUl2FjxITJf1huLNRSDkI4pjyakcucYo4FItGf4ZRUbOw
+         TDwBB7Y0l0O0uqCBVIg4l0j8qjuNZ8UxiuXnNGlmd2CkwrqMl9lCMaO0ZxZScVI+LsCD
+         Ucvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=1hb9BOcBTqfHVfcj46hxxqLO6V6CosuvZFQr83C4NBc=;
-        fh=e25FaNGHnyQuoUMc2cad4S4zsYA9r/VM4giTSNm1BAA=;
-        b=CWF1Rd8ubbzm44LtkaPmJvupD6tS/MM50HX7PgAPlNJU7FTXG2+woPBWosgi8k6kok
-         +ydcw82T0Vqd16yrk9bzAm6Oy8L5uaRS/7wPFQnAkTwbhgp6EFcwCcsvcDwS8j7rDZB+
-         690oGwDDzFOF7EWmJ5gfhMHiDHjNqAyghYSI2QQpSwgVId4gAB570j2dd/a/1LVWrQuL
-         dU5U6udXKLLSmyZLF8sCptmetiPloCMvei3YFSSK363f/+MWIYZ71poScIyqTv73X/+X
-         uDcu8tiKY5t34OZeyn5jLxEekZwWnlX0kwvv82ZtCu9dEpIpdQNzNZeW9LEU5EZiHRJB
-         3Z/Q==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=7Whe4XPbca7lrsBGH9KDOzbYV/caOsn/K1GjqT+CBVQ=;
+        fh=l262GoLAQ2M1w9YWs1hgVhKodUHtUK+zt51P82utu4c=;
+        b=pPMdGaoTUWpDtTwZCy0F7j8TrYQiVyHQIN5VvzkE8DOC4XtHHPL9yxAXmHHcRTtR/p
+         80BQ0Qc4pRCMuOa0l4ysBvdQwuN7780+0Jxrtw2H1PS1jSk0b5KRpepZJOcpAjIgykYt
+         vxEHNgoxKXWbiADZyE3YnpqADv5WYR3X200MTd1xknxv8vgYjO/a6ADRkcep7T31NTOx
+         dsEA7hWQkeoPR8sQj6mf11ucfEMjhudoSXnuPv5h13icjdASKP/a4aVyIwNWf5+UVO/r
+         3QmOqeD0yCmmRHNzA+aA+F28T0bcteK4n6c8VjE/WquWOPZ26kY6jkHGqDbAKT5AbO+W
+         wFNQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=gl79ooI3;
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=AHm70aKq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44f9cd2c78fsi108458561cf.212.2024.07.23.09.55.12
+        by mx.google.com with ESMTPS id d75a77b69052e-44f9ccfbdccsi108935561cf.106.2024.07.23.11.13.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jul 2024 09:55:12 -0700 (PDT)
+        Tue, 23 Jul 2024 11:13:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=gl79ooI3;
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=AHm70aKq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sWImx-0005JT-OJ; Tue, 23 Jul 2024 12:55:00 -0400
+	id 1sWJxa-0003HV-15; Tue, 23 Jul 2024 14:10:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1sWImx-0005Ii-7K
- for qemu-arm@nongnu.org; Tue, 23 Jul 2024 12:54:59 -0400
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWJwx-0001JK-Hr
+ for qemu-arm@nongnu.org; Tue, 23 Jul 2024 14:09:25 -0400
+Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1sWImu-0004IZ-Tr
- for qemu-arm@nongnu.org; Tue, 23 Jul 2024 12:54:58 -0400
-Received: by mail-pg1-x532.google.com with SMTP id
- 41be03b00d2f7-75ee39f1ffbso718289a12.2
- for <qemu-arm@nongnu.org>; Tue, 23 Jul 2024 09:54:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWJwr-0001D6-PG
+ for qemu-arm@nongnu.org; Tue, 23 Jul 2024 14:09:22 -0400
+Received: by mail-il1-x12a.google.com with SMTP id
+ e9e14a558f8ab-39834949e42so18089165ab.1
+ for <qemu-arm@nongnu.org>; Tue, 23 Jul 2024 11:09:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721753695; x=1722358495;
+ d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721758146; x=1722362946;
  darn=nongnu.org; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=1hb9BOcBTqfHVfcj46hxxqLO6V6CosuvZFQr83C4NBc=;
- b=gl79ooI3FhzcEyTfcpJtj905g0DPS+utlMdJOFK8zbZE+PyPDaWalzLalS1rJ/4GhZ
- YXY72VKaUyXTNOn+EH4MC5ucj20ocg4t5eJQSqpEXyIFfQIrAcXtzwHW8cL4Auz6CPFk
- lSk0jnxrverDHxJ+KEALPvH/ZZXQX8bJC2L1FRTLBrIM94b9ytdyZcFR5oQacVO7tqp1
- iPXL7c2LrUc2SldreqH4riQVCL43amdettbq8T0EQpId8Y8RvZrqgtFWAMVfsNxievrB
- HVJsVcjL6qCC/26AAkR5eJwl4xLrnm5s2ZIZTUGIlXKvUV9wvjf8NNPBG6M6OvNqcU6a
- ld5A==
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=7Whe4XPbca7lrsBGH9KDOzbYV/caOsn/K1GjqT+CBVQ=;
+ b=AHm70aKqq9olJXcLfcOzSXgVjD/0QCrFL7zES63TZof2USPSNiP1VtvfmfzYnKtedu
+ TkY5u/0yPYCfL1mxqcGp2mObP3oMddhA08JTZKr8SoS/DVJvXTBNPe2u51aax0eX+5uo
+ Him/vIxHNFvyfYYWKa4Pyfsajh/qYaor6+rUJ9nAajfPGR/FOljtmLt+9kWZCtqGu5K+
+ /VuStATNh/yjCBDQ2IAaPqLiWLGNDPAwtP/uWRLe62NjLnyvyKPgYrx5sFN8OUjsR8WU
+ eOu+Bx+3qJilgWeUyVDc6UBZUGkXb3Jq/a/cU0Z2Jx3MzhBolc2jqdyJsAYo/Aj1eK0J
+ tNOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721753695; x=1722358495;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=1hb9BOcBTqfHVfcj46hxxqLO6V6CosuvZFQr83C4NBc=;
- b=UDeFSP0BbjIV9jHMvQndbqp5xjUn5D+gkmQCd8Cg6J8OXiOArZo6nhfieFn4ZH3M+9
- u4dbGh4nQmyH48zPynnsRO4AF0zFZuZF6rGM7GyRAj87FMOlb8UrUeu5Fipb2MGmeMut
- H1W1pEY1NxGm0xwGtNy0VdiMs2m1wLfZiWpcftwVEqOTlnPIKlN1fWJW+TF4KSwhjWdB
- aYsYyxE4zj1j1eONuloeVBpDeGltWwDmDgJERhVnlwWEacN/ZZci1VtwLh6IzR3Wt2I7
- HEG8aLTENFpoXKKbqV/iXEvm4LfTiT0GXHxMGk9vHZQxw7rWfNKEjkLBcKZh8ea6q7Ry
- RIpg==
+ d=1e100.net; s=20230601; t=1721758146; x=1722362946;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=7Whe4XPbca7lrsBGH9KDOzbYV/caOsn/K1GjqT+CBVQ=;
+ b=fHkU12ThyEzI8gvKYyWq7LazcXHEY1OBxE9plB00309AnsNGIqSHxgHxvaG+sf/D1r
+ 0mNZrztFz5l89+TdpdzA9BQOgQPJc9jDO10nY5VQix6JHZIoHHCmkpyhcIyKSq/hjpVh
+ tv/z0ZIs/2mIc9UMR6CM0fdVN+iVTLYucSn6I9f5RAovtj/+JZoQMnQCwwxH3HiVE6WF
+ BDWuGkzCDtkK43nCT5kPoNabntr5x2l8Dh9KOHGNKqM4rwAbbKaAjiBcV6aUIDiADIh3
+ 8zkGUZH/9aDQQcIZ4PVIBGZv3jbG+BIcrM77f+gKjYORXerAGX2SPRUEU2EetRMHrQ98
+ 9cgA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXsJvOFToMGs07gyvIF8Gqomsa0fDytn4kr+mqmwQI2hRx2yycfSM1OKQ63maG4I29tLbA/LSxtfIdNLbmmG4zmnkzA
-X-Gm-Message-State: AOJu0YyHB4EjX1pAe6z8uzswHB3V3p5CtypyWXY8lT+UdS7+HhTBEwUm
- JuwOP/ik1YfRdB6Mo9wuAu0tNaHHIp+QIG6C/2r5YZ2TYtzsUsTg/liE5ZJ+leM9xKtlJEKy/dK
- fuzJmguL56u56ufy4HlpSsmGoSYOd7fKCt8Qcww==
-X-Received: by 2002:a05:6a20:3942:b0:1c0:f288:4903 with SMTP id
- adf61e73a8af0-1c44f84ddbdmr5067352637.17.1721753695083; Tue, 23 Jul 2024
- 09:54:55 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240722214313.89503-1-imp@bsdimp.com>
- <20240722214313.89503-15-imp@bsdimp.com>
- <f3c9d0c0-1cfd-46c8-8524-cffbe5180d3f@linaro.org>
- <CANCZdfpPrjt8G5WWRPdMNWyb=hskk7ZCVS3HEAcway=XO=K3ng@mail.gmail.com>
- <f2f6c27e-7625-471f-b888-0f3a870bb0c4@linaro.org>
- <0b7514dc-f9ed-4c48-be37-5a5de7b26229@linaro.org>
- <2bfad60f-6484-4716-95be-7b847bcdb6e6@linaro.org>
-In-Reply-To: <2bfad60f-6484-4716-95be-7b847bcdb6e6@linaro.org>
+ AJvYcCX7tvQba2lfQwuNOmBwawejdO3txwFH6YJyvxnczumCrZ5s3iyF/Cf0dVsuNSDhv4DNDemxovqjldnljzeSX26C6kIM
+X-Gm-Message-State: AOJu0Ywf9w0ESeTiEMq4g7qKkZ5I3i1LlLF8z6HFVj14KrLapi6Di3Bh
+ 2nHD0H3tCCAbJEetUsTk3yW7Udi+pd3AM2fZ6w0uo9LYRr/4aNTSgsCMvMmBSfhgxlTUyRSxe8u
+ k2x4=
+X-Received: by 2002:a05:6e02:18c7:b0:383:4a12:b77c with SMTP id
+ e9e14a558f8ab-3993ff8615bmr127566505ab.8.1721758146426; 
+ Tue, 23 Jul 2024 11:09:06 -0700 (PDT)
+Received: from dune.bsdimp.com ([50.253.99.174])
+ by smtp.gmail.com with ESMTPSA id
+ e9e14a558f8ab-397f7a2827csm33361775ab.53.2024.07.23.11.09.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 23 Jul 2024 11:09:05 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
-Date: Tue, 23 Jul 2024 10:54:44 -0600
-Message-ID: <CANCZdfovJD5rMyUeW1PbYZ6y=SKLtKiaUeA8UAX3oJ0EcqVSww@mail.gmail.com>
-Subject: Re: [PATCH 14/14] bsd-user: Add aarch64 build to tree
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
- Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Content-Type: multipart/alternative; boundary="00000000000063029e061ded05fd"
-Received-SPF: none client-ip=2607:f8b0:4864:20::532;
- envelope-from=wlosh@bsdimp.com; helo=mail-pg1-x532.google.com
+To: qemu-devel@nongnu.org
+Cc: Warner Losh <imp@bsdimp.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org,
+ Doug Rabson <dfr@rabson.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 09/14] bsd-user: Simplify the implementation of execve
+Date: Tue, 23 Jul 2024 12:07:20 -0600
+Message-ID: <20240723180725.99114-10-imp@bsdimp.com>
+X-Mailer: git-send-email 2.45.1
+In-Reply-To: <20240723180725.99114-1-imp@bsdimp.com>
+References: <20240723180725.99114-1-imp@bsdimp.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::12a;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x12a.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,165 +130,230 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P1T9s63kXaJI
+X-TUID: oTGM1WVur5Rx
 
---00000000000063029e061ded05fd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: Doug Rabson <dfr@rabson.org>
 
-On Tue, Jul 23, 2024 at 12:38=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philm=
-d@linaro.org>
-wrote:
+This removes the logic which prepends the emulator to each call to
+execve and fexecve. This is not necessary with the existing
+imgact_binmisc support and it avoids the need to install the emulator
+binary into jail environments when using 'binmiscctl --pre-open'.
 
-> On 23/7/24 03:17, Richard Henderson wrote:
-> > On 7/23/24 08:11, Philippe Mathieu-Daud=C3=A9 wrote:
-> >> On 23/7/24 00:06, Warner Losh wrote:
-> >>>
-> >>>
-> >>> On Mon, Jul 22, 2024 at 3:54=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-> >>> <philmd@linaro.org <mailto:philmd@linaro.org>> wrote:
-> >>>
-> >>>     Hi Warner,
-> >>>
-> >>>     On 22/7/24 23:43, Warner Losh wrote:
-> >>>      > Add the aarch64 bsd-user fragments needed to build the new
-> >>>     aarch64 code.
-> >>>      >
-> >>>      > Signed-off-by: Warner Losh <imp@bsdimp.com
-> >>> <mailto:imp@bsdimp.com>>
-> >>>      > ---
-> >>>      >   configs/targets/aarch64-bsd-user.mak | 3 +++
-> >>>      >   1 file changed, 3 insertions(+)
-> >>>      >   create mode 100644 configs/targets/aarch64-bsd-user.mak
-> >>>
-> >>>     Can we build aarch64 on Cirrus-CI? (not clear on
-> >>>     https://cirrus-ci.org/guide/FreeBSD/
-> >>>     <https://cirrus-ci.org/guide/FreeBSD/>). If so, could you add
-> >>>     a follow-up patch to build that on our CI, patching
-> >>>     .gitlab-ci.d/cirrus.yml?
-> >>>
-> >>>
-> >>> We can build aarch64 host for bsd-user for sure. I'll see if we can
-> >>> do it in cirrus CI.
-> >>> If so, I'll try to add it to cirrus.yml.
-> >>>
-> >>> This patch series adds aarch64 guest...
-> >>
-> >> Yes, we want to use a aarch64 FreeBSD host to build your FreeBSD
-> >> aarch64 bsd-user guest and test it. Am I wrong?
-> >>
-> >
-> > This is adding guest support, so your suggestion is orthogonal.
->
-> Ah, got it I guess, this series adds support for aarch64 user-mode
-> emulation on any FreeBSD kernels, so IIUC we can test it on the current
-> FreeBSD x86 job we have. Currently the x64-freebsd-13-build job uses:
->
->    CONFIGURE_ARGS:
->
-> --target-list-exclude=3Darm-softmmu,i386-softmmu,microblaze-softmmu,mips6=
-4el-softmmu,mipsel-softmmu,mips-softmmu,ppc-softmmu,sh4eb-softmmu,xtensa-so=
-ftmmu
->    TEST_TARGETS: check
->
-> So the aarch64-bsd-user target should be selected automatically,
-> is that correct?
->
+Signed-off-by: Doug Rabson <dfr@rabson.org>
+Reviewed-by: Warner Losh <imp@bsdimp.com>
+Signed-off-by: Warner Losh <imp@bsdimp.com>
+Acked-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ bsd-user/freebsd/os-proc.c | 118 +------------------------------------
+ bsd-user/main.c            |  18 ------
+ 2 files changed, 3 insertions(+), 133 deletions(-)
 
-Yes. It's automatically added to the build just by this file existing.
+diff --git a/bsd-user/freebsd/os-proc.c b/bsd-user/freebsd/os-proc.c
+index e0203e259b0..bf993f1b662 100644
+--- a/bsd-user/freebsd/os-proc.c
++++ b/bsd-user/freebsd/os-proc.c
+@@ -26,65 +26,13 @@ struct kinfo_proc;
+ 
+ #include "qemu.h"
+ 
+-/*
+- * Get the filename for the given file descriptor.
+- * Note that this may return NULL (fail) if no longer cached in the kernel.
+- */
+-static char *
+-get_filename_from_fd(pid_t pid, int fd, char *filename, size_t len)
+-{
+-    char *ret = NULL;
+-    unsigned int cnt;
+-    struct procstat *procstat = NULL;
+-    struct kinfo_proc *kp = NULL;
+-    struct filestat_list *head = NULL;
+-    struct filestat *fst;
+-
+-    procstat = procstat_open_sysctl();
+-    if (procstat == NULL) {
+-        goto out;
+-    }
+-
+-    kp = procstat_getprocs(procstat, KERN_PROC_PID, pid, &cnt);
+-    if (kp == NULL) {
+-        goto out;
+-    }
+-
+-    head = procstat_getfiles(procstat, kp, 0);
+-    if (head == NULL) {
+-        goto out;
+-    }
+-
+-    STAILQ_FOREACH(fst, head, next) {
+-        if (fd == fst->fs_fd) {
+-            if (fst->fs_path != NULL) {
+-                (void)strlcpy(filename, fst->fs_path, len);
+-                ret = filename;
+-            }
+-            break;
+-        }
+-    }
+-
+-out:
+-    if (head != NULL) {
+-        procstat_freefiles(procstat, head);
+-    }
+-    if (kp != NULL) {
+-        procstat_freeprocs(procstat, kp);
+-    }
+-    if (procstat != NULL) {
+-        procstat_close(procstat);
+-    }
+-    return ret;
+-}
+-
+ /*
+  * execve/fexecve
+  */
+ abi_long freebsd_exec_common(abi_ulong path_or_fd, abi_ulong guest_argp,
+         abi_ulong guest_envp, int do_fexec)
+ {
+-    char **argp, **envp, **qargp, **qarg1, **qarg0, **qargend;
++    char **argp, **envp, **qarg0;
+     int argc, envc;
+     abi_ulong gp;
+     abi_ulong addr;
+@@ -117,9 +65,7 @@ abi_long freebsd_exec_common(abi_ulong path_or_fd, abi_ulong guest_argp,
+     qarg0 = argp = g_new0(char *, argc + 9);
+     /* save the first argument for the emulator */
+     *argp++ = (char *)getprogname();
+-    qargp = argp;
+     *argp++ = (char *)getprogname();
+-    qarg1 = argp;
+     envp = g_new0(char *, envc + 1);
+     for (gp = guest_argp, q = argp; gp; gp += sizeof(abi_ulong), q++) {
+         if (get_user_ual(addr, gp)) {
+@@ -137,7 +83,6 @@ abi_long freebsd_exec_common(abi_ulong path_or_fd, abi_ulong guest_argp,
+         total_size += strlen(*q) + 1;
+     }
+     *q++ = NULL;
+-    qargend = q;
+ 
+     for (gp = guest_envp, q = envp; gp; gp += sizeof(abi_ulong), q++) {
+         if (get_user_ual(addr, gp)) {
+@@ -166,71 +111,14 @@ abi_long freebsd_exec_common(abi_ulong path_or_fd, abi_ulong guest_argp,
+     }
+ 
+     if (do_fexec) {
+-        if (((int)path_or_fd > 0 &&
+-            is_target_elf_binary((int)path_or_fd)) == 1) {
+-            char execpath[PATH_MAX];
+-
+-            /*
+-             * The executable is an elf binary for the target
+-             * arch.  execve() it using the emulator if we can
+-             * determine the filename path from the fd.
+-             */
+-            if (get_filename_from_fd(getpid(), (int)path_or_fd, execpath,
+-                        sizeof(execpath)) != NULL) {
+-                memmove(qarg1 + 2, qarg1, (qargend - qarg1) * sizeof(*qarg1));
+-                qarg1[1] = qarg1[0];
+-                qarg1[0] = (char *)"-0";
+-                qarg1 += 2;
+-                qargend += 2;
+-                *qarg1 = execpath;
+-#ifndef DONT_INHERIT_INTERP_PREFIX
+-                memmove(qarg1 + 2, qarg1, (qargend - qarg1) * sizeof(*qarg1));
+-                *qarg1++ = (char *)"-L";
+-                *qarg1++ = (char *)interp_prefix;
+-#endif
+-                ret = get_errno(execve(qemu_proc_pathname, qargp, envp));
+-            } else {
+-                /* Getting the filename path failed. */
+-                ret = -TARGET_EBADF;
+-                goto execve_end;
+-            }
+-        } else {
+-            ret = get_errno(fexecve((int)path_or_fd, argp, envp));
+-        }
++        ret = get_errno(fexecve((int)path_or_fd, argp, envp));
+     } else {
+-        int fd;
+-
+         p = lock_user_string(path_or_fd);
+         if (p == NULL) {
+             ret = -TARGET_EFAULT;
+             goto execve_end;
+         }
+-
+-        /*
+-         * Check the header and see if it a target elf binary.  If so
+-         * then execute using qemu user mode emulator.
+-         */
+-        fd = open(p, O_RDONLY | O_CLOEXEC);
+-        if (fd > 0 && is_target_elf_binary(fd) == 1) {
+-            close(fd);
+-            /* execve() as a target binary using emulator. */
+-            memmove(qarg1 + 2, qarg1, (qargend - qarg1) * sizeof(*qarg1));
+-            qarg1[1] = qarg1[0];
+-            qarg1[0] = (char *)"-0";
+-            qarg1 += 2;
+-            qargend += 2;
+-            *qarg1 = (char *)p;
+-#ifndef DONT_INHERIT_INTERP_PREFIX
+-            memmove(qarg1 + 2, qarg1, (qargend - qarg1) * sizeof(*qarg1));
+-            *qarg1++ = (char *)"-L";
+-            *qarg1++ = (char *)interp_prefix;
+-#endif
+-            ret = get_errno(execve(qemu_proc_pathname, qargp, envp));
+-        } else {
+-            close(fd);
+-            /* Execve() as a host native binary. */
+-            ret = get_errno(execve(p, argp, envp));
+-        }
++        ret = get_errno(execve(p, argp, envp));
+         unlock_user(p, path_or_fd, 0);
+     }
+ 
+diff --git a/bsd-user/main.c b/bsd-user/main.c
+index dcad266c2c9..82e94a03160 100644
+--- a/bsd-user/main.c
++++ b/bsd-user/main.c
+@@ -90,7 +90,6 @@ unsigned long reserved_va;
+ 
+ const char *interp_prefix = CONFIG_QEMU_INTERP_PREFIX;
+ const char *qemu_uname_release;
+-char qemu_proc_pathname[PATH_MAX];  /* full path to exeutable */
+ 
+ unsigned long target_maxtsiz = TARGET_MAXTSIZ;   /* max text size */
+ unsigned long target_dfldsiz = TARGET_DFLDSIZ;   /* initial data size limit */
+@@ -247,22 +246,6 @@ adjust_ssize(void)
+     setrlimit(RLIMIT_STACK, &rl);
+ }
+ 
+-static void save_proc_pathname(char *argv0)
+-{
+-    int mib[4];
+-    size_t len;
+-
+-    mib[0] = CTL_KERN;
+-    mib[1] = KERN_PROC;
+-    mib[2] = KERN_PROC_PATHNAME;
+-    mib[3] = -1;
+-
+-    len = sizeof(qemu_proc_pathname);
+-    if (sysctl(mib, 4, qemu_proc_pathname, &len, NULL, 0)) {
+-        perror("sysctl");
+-    }
+-}
+-
+ int main(int argc, char **argv)
+ {
+     const char *filename;
+@@ -292,7 +275,6 @@ int main(int argc, char **argv)
+         usage();
+     }
+ 
+-    save_proc_pathname(argv[0]);
+ 
+     error_init(argv[0]);
+     module_call_init(MODULE_INIT_TRACE);
+-- 
+2.45.1
 
-So it should at least be compile tested by everything.
-
-Warner
-
-
-> (got it, my request to test aarch64 FreeBSD *host* is orthogonal).
->
-
---00000000000063029e061ded05fd
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jul 23, 2024 at 12:38=E2=80=
-=AFAM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org">=
-philmd@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
- style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
-adding-left:1ex">On 23/7/24 03:17, Richard Henderson wrote:<br>
-&gt; On 7/23/24 08:11, Philippe Mathieu-Daud=C3=A9 wrote:<br>
-&gt;&gt; On 23/7/24 00:06, Warner Losh wrote:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; On Mon, Jul 22, 2024 at 3:54=E2=80=AFPM Philippe Mathieu-Daud=
-=C3=A9 <br>
-&gt;&gt;&gt; &lt;<a href=3D"mailto:philmd@linaro.org" target=3D"_blank">phi=
-lmd@linaro.org</a> &lt;mailto:<a href=3D"mailto:philmd@linaro.org" target=
-=3D"_blank">philmd@linaro.org</a>&gt;&gt; wrote:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0 Hi Warner,<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0 On 22/7/24 23:43, Warner Losh wrote:<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0 &gt; Add the aarch64 bsd-user fragmen=
-ts needed to build the new<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0 aarch64 code.<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0 &gt;<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0 &gt; Signed-off-by: Warner Losh &lt;<=
-a href=3D"mailto:imp@bsdimp.com" target=3D"_blank">imp@bsdimp.com</a> <br>
-&gt;&gt;&gt; &lt;mailto:<a href=3D"mailto:imp@bsdimp.com" target=3D"_blank"=
->imp@bsdimp.com</a>&gt;&gt;<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0 &gt; ---<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0 &gt;=C2=A0 =C2=A0configs/targets/aarc=
-h64-bsd-user.mak | 3 +++<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0 &gt;=C2=A0 =C2=A01 file changed, 3 in=
-sertions(+)<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0 &gt;=C2=A0 =C2=A0create mode 100644 c=
-onfigs/targets/aarch64-bsd-user.mak<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0 Can we build aarch64 on Cirrus-CI? (not cle=
-ar on<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0 <a href=3D"https://cirrus-ci.org/guide/Free=
-BSD/" rel=3D"noreferrer" target=3D"_blank">https://cirrus-ci.org/guide/Free=
-BSD/</a><br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0 &lt;<a href=3D"https://cirrus-ci.org/guide/=
-FreeBSD/" rel=3D"noreferrer" target=3D"_blank">https://cirrus-ci.org/guide/=
-FreeBSD/</a>&gt;). If so, could you add<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0 a follow-up patch to build that on our CI, =
-patching<br>
-&gt;&gt;&gt; =C2=A0=C2=A0=C2=A0 .gitlab-ci.d/cirrus.yml?<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; We can build aarch64 host for bsd-user for sure. I&#39;ll see =
-if we can <br>
-&gt;&gt;&gt; do it in cirrus CI.<br>
-&gt;&gt;&gt; If so, I&#39;ll try to add it to cirrus.yml.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; This patch series adds aarch64 guest...<br>
-&gt;&gt;<br>
-&gt;&gt; Yes, we want to use a aarch64 FreeBSD host to build your FreeBSD<b=
-r>
-&gt;&gt; aarch64 bsd-user guest and test it. Am I wrong?<br>
-&gt;&gt;<br>
-&gt; <br>
-&gt; This is adding guest support, so your suggestion is orthogonal.<br>
-<br>
-Ah, got it I guess, this series adds support for aarch64 user-mode<br>
-emulation on any FreeBSD kernels, so IIUC we can test it on the current<br>
-FreeBSD x86 job we have. Currently the x64-freebsd-13-build job uses:<br>
-<br>
-=C2=A0 =C2=A0CONFIGURE_ARGS: <br>
---target-list-exclude=3Darm-softmmu,i386-softmmu,microblaze-softmmu,mips64e=
-l-softmmu,mipsel-softmmu,mips-softmmu,ppc-softmmu,sh4eb-softmmu,xtensa-soft=
-mmu<br>
-=C2=A0 =C2=A0TEST_TARGETS: check<br>
-<br>
-So the aarch64-bsd-user target should be selected automatically,<br>
-is that correct?<br></blockquote><div><br></div><div>Yes. It&#39;s automati=
-cally added to the build just by this file existing.</div><div><br></div><d=
-iv>So it should at least be compile tested by everything.</div><div><br></d=
-iv><div>Warner</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" styl=
-e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
-g-left:1ex">
-(got it, my request to test aarch64 FreeBSD *host* is orthogonal).<br>
-</blockquote></div></div>
-
---00000000000063029e061ded05fd--

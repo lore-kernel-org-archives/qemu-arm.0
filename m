@@ -1,223 +1,155 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2542227njc;
-        Tue, 23 Jul 2024 07:24:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXOfgG1W4x/C1rM8LjiCv14EO/dk58PPqIwbn3kv5ZZnN97Vc+5C+HaW0EyE+7VWVIP/283+S+tEirv+ADN538rUzOb6bVy
-X-Google-Smtp-Source: AGHT+IFa29PRLUZL6Gfq9VUDk/OoOYMak8HLHFrrxIW5DI+HrgHJEDBGBD16gmDUtx/0a17Wtsu5
-X-Received: by 2002:a05:622a:489:b0:446:5b1a:da8c with SMTP id d75a77b69052e-44fa52ab457mr172874801cf.30.1721744687516;
-        Tue, 23 Jul 2024 07:24:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721744687; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2512918njc;
+        Tue, 23 Jul 2024 06:36:14 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXQ7A0WaVTPIf8J7gF4pjZOAXO4/HF1BsBv2XISOtlF6/LI1KFcg2GAJfNKz7lbJAWMBPfAvMNEbXR4/XvPBm9SIDf36zjV
+X-Google-Smtp-Source: AGHT+IELmz/P9ygDYxYGC5TY1YvHiQR08wcYhf5gtF0veYY/pUTkxFEAiu8vsIr2yiOz0B3Up/HS
+X-Received: by 2002:a05:6902:2188:b0:e06:3823:fa6a with SMTP id 3f1490d57ef6-e087b345dd7mr10988229276.3.1721741774269;
+        Tue, 23 Jul 2024 06:36:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721741774; cv=none;
         d=google.com; s=arc-20160816;
-        b=W4Wofx5RSHWA+Obhf5HKv6U5VaJzJRbLJOXAOKhXXvrKvvSunjMGSsxh+ds1QFoLG8
-         mb3a/jcM/HHkWea+NzbY0W38tvt9PJ10TlTofindPiYSdrmeUT6sy5ASQ6u3fYBEmp6C
-         Bh+vZRg5QX3204y0o7KXJupps+3u2v5d0Eqv53P2KOdyqMhp7IUuIJFtE1rB7Pfu9RXz
-         pOllJ2hadSvYd7vaQ5qFnVujEOhRRMkFrOJTU7BK26z8ETi1kc5ABLfkpo/MrqMRUOT/
-         3V1JNSLDXgccXB0OT4GwFBCZxjqdb3Np0GYwqjJ/sd8eosO9FG31f6ysLC9FOF17Sztp
-         RZSg==
+        b=P5v9ItE3uApRLopQGh4GoP0El6dFISWlYtxwZUGJ75QJ9NoJhRbJj/CoDQcy1SpJ3v
+         iLQkj7u3sMIVS08ftNA4brd/+Gj7QHiAVY18/1/F77dz9c6IOAn7ZGSiu3resxPKQn8D
+         xf8hBU38vehHekgVMF93vsuS5yOCIEtqjJH7nVHYR1Q2EFBF0/8/NImJ65HS/w1CHIDj
+         qzkgQlpDuMr6sCE5GTuTXmBzBg/uwZ5mXqOOXiHBMOhCCP6RDWssyRdRNczozCzWiHdt
+         +7l80zaAgoRVFyHT+6ph1qGmtGlUYUv96ayIKNlW1dM+JgTErV/MQjlhRE842MCb9ouU
+         dsqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=FFu5TaTb9h/h13Vxmh1VzR5t8/KGPSmmOaNiQ/XBEJA=;
-        fh=QsxuhUBNyq2F7/1UitCRN/j+l2ZGR7FJ1BwILMh3mGA=;
-        b=sscTDnD4pYR7CUXpWmXcJTYnxeYcQxGo/ki1bSJn2h3PATlpoWhD/QQvyMy0OBMwl4
-         oJgPH5hx8EkXlUB2gvb9piiRftgoKyeS9L9irWdlugWxIU5Cx1ZaNrZd5vO2ZmlfDFco
-         orqFuN5AzQraT6eEEMPY8Z4jPFva1FdKC/EMH7By3I9rEzcm8jW7CL3mhxHVNUu8vVpa
-         bMceCRtHHGgYQcjGl6RdBb06UnFwUFZJK201sDEN58H0DsWXpk8I5UOmhCRKX+j1G8Uw
-         Lup1AGkCvdr0DArnByjucLIo2HYeb3qj57oilS/NFu6vjtwYvWFMBWe4o4TwfKiC6Mqf
-         JdqA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=azOBo8n7PTI1z8TaVTvpugK+dx9lsNzTIbJJ+xk/hOc=;
+        fh=ahwL2Isy++Da3w4Yu8B/VRlnfz1YBmtysu4rA6WlSdQ=;
+        b=y97aNKlb62cNiJ68o5ibHx2XC2PDavvlH7prLTaem2ghB6yDu6mtBMuP/avnV1N8Vi
+         KQxusdj0hNh3cdZPoRDJ374CvaUB2liyoLrrtucw8wAH2fHTBgwCvzAUvpN87MSUlVrQ
+         xgeNW37v21JJb0bmu2vSuzJ7gSyFEITNpzB8VlUNFuUn2ssGkzxnir8SAOgxNZsWlDZD
+         CZNlJh7GJmcTmxIDmo+Fu+64Qqk1mYwpRACHuoJwZ390ktbfIL/oQUAHjnGYXMHmUBAT
+         1jYhzkunC5DHM3KBujT7/zzUZN0Co1I2nHaVOqZ5DzTw5zSUY8tCzQzDdE08b8UcUbJE
+         AXRw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="A5/IU6d/";
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.9 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.9])
-        by mx.google.com with ESMTPS id d75a77b69052e-44f9ccfb5ecsi99752731cf.28.2024.07.23.07.24.46
+       dkim=pass header.i=@linaro.org header.s=google header.b=BKveFRRg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b7ac99cda8si104054466d6.238.2024.07.23.06.36.14
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jul 2024 07:24:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.9 as permitted sender) client-ip=198.175.65.9;
+        Tue, 23 Jul 2024 06:36:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="A5/IU6d/";
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.9 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1721744688; x=1753280688;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=596BeOYL/C3YYG4gWapj0nT35ULqFklo7XcRsaU+a60=;
-  b=A5/IU6d/GT+/j5USyT6YpePFySatM2eRRL3sOIVMSjJiFRkiOlnGCoba
-   FhGfXDGKzdSr31Pv2k7OF4XdcMklQaefB7xL53UKZK/Epwcx/A9SBGu1p
-   0gqaJoXx7u3rdYjB4bg5DOTvumohFz+0Lh+CtRacgB1LW63hO7MQvqmEP
-   q0UaW8+7Ozf/9o6VQFLO+d55JuNh4q3QqyDg3QMK5Z2IVqT80C3ThGtTl
-   79mv4e8h5XN6RTc3jqzyTjvLj61rvUMSkMmDs1GsfXP9eb1Hg4rZGsIoe
-   WGX4eLNJIqPLa0FWbIGm4WcQ2rnBb5OFahh7/FXx7iXGi+TTfxci4hBEw
-   g==;
-X-CSE-ConnectionGUID: +FrkmiXuSTyqSOlcdBrWYA==
-X-CSE-MsgGUID: /SQqEVkaR2KVSn1INv/fjw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11142"; a="41900223"
-X-IronPort-AV: E=Sophos;i="6.09,230,1716274800"; 
-   d="scan'208";a="41900223"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Jul 2024 07:24:47 -0700
-X-CSE-ConnectionGUID: hXBJ3rbPRQalpxStCGyFjw==
-X-CSE-MsgGUID: 4ge7qOlyTr2QSQ3s+KE7WA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,230,1716274800"; 
-   d="scan'208";a="52188455"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by fmviesa009.fm.intel.com with ESMTP; 23 Jul 2024 07:24:41 -0700
-Date: Tue, 23 Jul 2024 22:40:25 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>
-Subject: Re: [PATCH 1/8] hw/core: Make CPU topology enumeration arch-agnostic
-Message-ID: <Zp/A2W5A0BqjRjR2@intel.com>
-References: <20240704031603.1744546-1-zhao1.liu@intel.com>
- <20240704031603.1744546-2-zhao1.liu@intel.com>
- <875xsx4l13.fsf@pond.sub.org>
- <Zp5mRrjuZWnE+9gz@intel.com>
- <87ed7kwh2x.fsf@pond.sub.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=BKveFRRg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sWFgV-0002q7-QL; Tue, 23 Jul 2024 09:36:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sWFgT-0002lp-TQ
+ for qemu-arm@nongnu.org; Tue, 23 Jul 2024 09:36:05 -0400
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sWFgS-0006jT-9b
+ for qemu-arm@nongnu.org; Tue, 23 Jul 2024 09:36:05 -0400
+Received: by mail-lj1-x22f.google.com with SMTP id
+ 38308e7fff4ca-2ef1c12ae23so34218661fa.0
+ for <qemu-arm@nongnu.org>; Tue, 23 Jul 2024 06:36:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1721741762; x=1722346562; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=azOBo8n7PTI1z8TaVTvpugK+dx9lsNzTIbJJ+xk/hOc=;
+ b=BKveFRRgXA5nOM4Ayok8cVE7e1kKr6bxmmR0096RwL2MgGMchWE4BbFXM3z8Qch6eH
+ DKJBNw4q/xueZ0ia0cxalZ7mUcLvY7xdx1NnCnyreYQleoERNMmxPrfb9xkvQfLEX4Z0
+ giyk1pZyTjy/3l5Wqcq4JMOnOPEWUiyoe2RskWqyrqG1U1ADEQ3oHZJSzSihTZiNp79i
+ 1mt/I2iErcV62mMVsqA/X48B6dxyPnDIbNLykQVu1nfL9eAr/EVtnAq6QG5gv5OZ2myt
+ LWNuVnf3uQF9b0vvH8cdB/BE1SANYvzCoc3foBcAkfMOG7RlLUKjHb9TKeEdBcPMjfLp
+ TsWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721741762; x=1722346562;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=azOBo8n7PTI1z8TaVTvpugK+dx9lsNzTIbJJ+xk/hOc=;
+ b=sjis7SPMwMYu5jovfcrmbfOhwPevnTsqVCUhbph3YHOeJdE8yL9WbuzjQTmncSMA7n
+ 0ymQdYnSQWIO6SgIyk/exA00f194g5Od0K98HtiaiKP4/Yzm//TpKfjTdCrdQxzF0sK0
+ UDrEtbR1/2SJNPvr9P9wUNt8kvDD+WOn/O2+OIi5Ljo+peStN5GchRXadsppV9T491Nx
+ qCF1modNXahJkQpAC3JR6nXcqQckQQOSNnGXIiEMvgJe/A4MOxHuezh1fBbobYX2faDU
+ +jKiMM7UrGmefADgpoXiBzJ5Dhvj4SOZYFkfvNwcdU9F3mO3SrxyRC2ljs1hvv97RyWQ
+ jQ0Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXddRtnNB1uAfN/fdOdHH1ckDuxNthtW9NbKGY2MVCBnwcDrbXK/KZw3KDpMgCOCqRwfvLNUzdYwg5Vvh1E04mphyk6
+X-Gm-Message-State: AOJu0YynvbUDXSs26lNj7eDB7tT4KqFHqSGw9Fotf+qz0UzGTD0xpMeC
+ PRUy+II0kXCpmxsVYKhqG4bhgVNHeuwVXhzAIZNKHVkv1k3Cqq88RcRF2Ni6iWRV8Li/5YtsdOw
+ ieaU=
+X-Received: by 2002:a2e:bc26:0:b0:2ef:316e:8930 with SMTP id
+ 38308e7fff4ca-2f01eacebe2mr26197591fa.42.1721741762348; 
+ Tue, 23 Jul 2024 06:36:02 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.208.14])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-427d2a94380sm202242665e9.39.2024.07.23.06.36.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 23 Jul 2024 06:36:01 -0700 (PDT)
+Message-ID: <16970204-0835-4747-a8f1-798d77a74f42@linaro.org>
+Date: Tue, 23 Jul 2024 15:36:00 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87ed7kwh2x.fsf@pond.sub.org>
-X-TUID: zAyb1YzlVtnK
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/4] hw/misc/bcm2835_property: Restrict scope of
+ start_num, number, otp_row
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org
+References: <20240723131029.1159908-1-peter.maydell@linaro.org>
+ <20240723131029.1159908-4-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240723131029.1159908-4-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::22f;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x22f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OLK6534h7kaM
 
-On Tue, Jul 23, 2024 at 12:14:30PM +0200, Markus Armbruster wrote:
-> Date: Tue, 23 Jul 2024 12:14:30 +0200
-> From: Markus Armbruster <armbru@redhat.com>
-> Subject: Re: [PATCH 1/8] hw/core: Make CPU topology enumeration
->  arch-agnostic
+On 23/7/24 15:10, Peter Maydell wrote:
+> In the long function bcm2835_property_mbox_push(), the variables
+> start_num, number and otp_row are used only in the four cases which
+> access OTP data, and their uses don't overlap with each other.
 > 
-> Zhao Liu <zhao1.liu@intel.com> writes:
+> Make these variables have scope restricted to the cases where they're
+> used, so it's easier to read each individual case without having to
+> cross-refer up to the variable declaration at the top of the function
+> and check whether the variable is also used later in the loop.
 > 
-> > Hi Markus,
-> >
-> > On Mon, Jul 22, 2024 at 03:24:24PM +0200, Markus Armbruster wrote:
-> >> Date: Mon, 22 Jul 2024 15:24:24 +0200
-> >> From: Markus Armbruster <armbru@redhat.com>
-> >> Subject: Re: [PATCH 1/8] hw/core: Make CPU topology enumeration
-> >>  arch-agnostic
-> >> 
-> >> One little thing...
-> >> 
-> >> Zhao Liu <zhao1.liu@intel.com> writes:
-> >> 
-> >> > Cache topology needs to be defined based on CPU topology levels. Thus,
-> >> > define CPU topology enumeration in qapi/machine.json to make it generic
-> >> > for all architectures.
-> >> >
-> >> > To match the general topology naming style, rename CPU_TOPO_LEVEL_SMT
-> >> > and CPU_TOPO_LEVEL_PACKAGE to CPU_TOPO_LEVEL_THREAD and
-> >> > CPU_TOPO_LEVEL_SOCKET.
-> >> >
-> >> > Also, enumerate additional topology levels for non-i386 arches, and add
-> >> > a CPU_TOPO_LEVEL_DEFAULT to help future smp-cache object de-compatibilize
-> >> > arch-specific cache topology settings.
-> >> >
-> >> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> >> 
-> >> [...]
-> >> 
-> >> > diff --git a/qapi/machine-common.json b/qapi/machine-common.json
-> >> > index fa6bd71d1280..82413c668bdb 100644
-> >> > --- a/qapi/machine-common.json
-> >> > +++ b/qapi/machine-common.json
-> >> > @@ -5,7 +5,7 @@
-> >> >  # See the COPYING file in the top-level directory.
-> >> >  
-> >> >  ##
-> >> > -# = Machines S390 data types
-> >> > +# = Common machine types
-> >> >  ##
-> >> >  
-> >> >  ##
-> >> > @@ -19,3 +19,48 @@
-> >> >  { 'enum': 'CpuS390Entitlement',
-> >> >    'prefix': 'S390_CPU_ENTITLEMENT',
-> >> >    'data': [ 'auto', 'low', 'medium', 'high' ] }
-> >> > +
-> >> > +##
-> >> > +# @CpuTopologyLevel:
-> >> > +#
-> >> > +# An enumeration of CPU topology levels.
-> >> > +#
-> >> > +# @invalid: Invalid topology level.
-> >> > +#
-> >> > +# @thread: thread level, which would also be called SMT level or
-> >> > +#     logical processor level.  The @threads option in
-> >> > +#     SMPConfiguration is used to configure the topology of this
-> >> > +#     level.
-> >> > +#
-> >> > +# @core: core level.  The @cores option in SMPConfiguration is used
-> >> > +#     to configure the topology of this level.
-> >> > +#
-> >> > +# @module: module level.  The @modules option in SMPConfiguration is
-> >> > +#     used to configure the topology of this level.
-> >> > +#
-> >> > +# @cluster: cluster level.  The @clusters option in SMPConfiguration
-> >> > +#     is used to configure the topology of this level.
-> >> > +#
-> >> > +# @die: die level.  The @dies option in SMPConfiguration is used to
-> >> > +#     configure the topology of this level.
-> >> > +#
-> >> > +# @socket: socket level, which would also be called package level.
-> >> > +#     The @sockets option in SMPConfiguration is used to configure
-> >> > +#     the topology of this level.
-> >> > +#
-> >> > +# @book: book level.  The @books option in SMPConfiguration is used
-> >> > +#     to configure the topology of this level.
-> >> > +#
-> >> > +# @drawer: drawer level.  The @drawers option in SMPConfiguration is
-> >> > +#     used to configure the topology of this level.
-> >> > +#
-> >> > +# @default: default level.  Some architectures will have default
-> >> > +#     topology settings (e.g., cache topology), and this special
-> >> > +#     level means following the architecture-specific settings.
-> >> > +#
-> >> > +# Since: 9.1
-> >> > +##
-> >> > +{ 'enum': 'CpuTopologyLevel',
-> >> > +  'prefix': 'CPU_TOPO_LEVEL',
-> >> 
-> >> Why set a 'prefix'?
-> >> 
-> >
-> > Because my previous i386 commit 6ddeb0ec8c29 ("i386/cpu: Introduce bitmap
-> > to cache available CPU topology levels") introduced the level
-> > enumeration with such prefix. For naming consistency, and to shorten the
-> > length of the name, I've used the same prefix here as well.
-> >
-> > I've sensed that you don't like the TOPO abbreviation and I'll remove the
-> > prefix :-).
-> 
-> Consistency is good, but I'd rather achieve it by consistently using
-> "topology".
-> 
-> I never liked the 'prefix' feature much.  We have it because the mapping
-> from camel case to upper case with underscores is heuristical, and can
-> result in something undesirable.  See commit 351d36e454c (qapi: allow
-> override of default enum prefix naming).  Using it just to shorten
-> generated identifiers is a bad idea.
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/misc/bcm2835_property.c | 34 ++++++++++++++++++++--------------
+>   1 file changed, 20 insertions(+), 14 deletions(-)
 
-Thanks for your clarification! I see, I will drop the prefix.
-
-Regards,
-Zhao
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

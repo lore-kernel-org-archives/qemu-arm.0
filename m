@@ -1,222 +1,290 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2308310njc;
-        Mon, 22 Jul 2024 22:36:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCWEiPKUT6BNXubLST6xziWnLx5NtQocO1pBO2KIQmYLK77+zzyOSO4Lw9FfMAl4vCVleKiJuUh8t7v269Q3y/9Id/0mmDuD
-X-Google-Smtp-Source: AGHT+IEf4bd5fzC3neDSKgEP0q2IaC2Yh3M1iRbZysKo9BhZYHlHJWTzIu5sDkwOiE2jnkSc9t+P
-X-Received: by 2002:a05:622a:3c7:b0:44f:c9ad:9cc2 with SMTP id d75a77b69052e-44fc9ada0edmr7945611cf.50.1721712991522;
-        Mon, 22 Jul 2024 22:36:31 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1721712991; cv=pass;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2301338njc;
+        Mon, 22 Jul 2024 22:13:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX5h1LbH1O8zWmHxat2JHw0AjtX3Of3NRjkAakICVHaer53YGgM3xNCgQr71hX5ufzxmCS68eUe6PkefJDhmYNQCfv3t0Pj
+X-Google-Smtp-Source: AGHT+IEdynGrwH+nghF/qrvNVgU4qG2fM8nkLzJvtXTNw7fEw9i1/bY9Pi5aCKUUMc1sZuoH8ST3
+X-Received: by 2002:a05:620a:4627:b0:79f:197d:fe6e with SMTP id af79cd13be357-7a1a13ae14emr1227772385a.45.1721711607611;
+        Mon, 22 Jul 2024 22:13:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721711607; cv=none;
         d=google.com; s=arc-20160816;
-        b=iAFGGspUQEm1P7ImGZtVecydU3pbtxn4pWe7k87iVHQ/tBG3H2sQGuIoymAYdV5od2
-         MZ5p4755nlqxTSaPPPfn8zurtrXUgc9fQYSZhx4wrg8W7th1KLhHwcy0Vl+AZIom3I5Y
-         +joqDw1iSNAbf/nVtKrN2K1B1h4O17bTvFjExmKqLs2YelgXxgag2NatCz/Zeqa0X0dH
-         Ic4nc7xMP44eqsQoGpnWbgHGpU9B04hPd0CJd9l5f91K84FZf0OseQ3ohR8tkcQnxJXj
-         /k2iAWbI6gXv6PebdxIl7iN2VxOqWo5xGt4kLxvNRdujqyGZSgX7G0HqUZlcHlJVdFGI
-         c/mQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
-        bh=Snir8r59+S2RFOB3Y3aVLQ5+ESPenDQcFoPcuNWXQS8=;
-        fh=B/NwQoW2qN1MJS28jYSUPXswVsy1oBZk5rgKXo4wchw=;
-        b=WqXZeLZFPzvlpQjNo9Pak6mFqAt7dAeOfy1HSapZIcF7Kl/kIjiXww9y3Fp4Qh5pAy
-         xIcF0GoiQxanC/RH9d44fKUp+c0rd50xITYKTnotgbU/jd8OMHvTwxHAReRhhGrujydT
-         rDD40fa9qv0SvLAg5byUU0JcPfjCwgM9JuUyXotnKY6Ikt6lPGB7J5YO4PMy+onOAgIX
-         quffuMjGlRO3evCQEYlyPpCFIWnioZwg9Fxl6BJCX+9hIi2dl+ktjSOTy+B0jgFMfGCp
-         pOpQ2nA/QTyX42IObqLRvWCDpzAz+7n805Zj04muqfBKqU9MUdgI1oPAzyEsBhQU5NAu
-         tyNg==;
+        b=vF39b4z6d6IWNEueHZuteRyT7p4BVxUA49iZ+salN1RMA67NKgLIS/5BufTqqmAiNd
+         JxJoEFIBjboaFi+orXJ2KvUJgD6hOKx5gFgh6RZQJ9CjqYNsa/t+Mva+9AGd0HdYeD2+
+         jzNP42fTOUFNd+Y/AbGx5wih8mRAYTSED4LWkvGRB2M0L6I0aVNk0MZsnvN+Wxydwik/
+         ERR4220gEovXlJGEfiOBSrt3FJNDdqRu4rw1z0BsaZSkB1/bSK9+mRxnkoeIDoE7XWmU
+         5TFy6FKiLClVVUpAdCaA1zgaRaMA9VgKS2rBVqkvoUQwW0FqM6iFHiW3fFJ7aGgP7HaW
+         qCdA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=FkwhzbcBiCteunZEGThYznqB1ZEnc4Uh9p7jCAFXF9c=;
+        fh=C/9xg1o3zYS98RHMMApRqFYvKZ6VvxOO1S8o+/2dTxo=;
+        b=yK9T6460kpMJoAs+ShRXIzr+j60XG1QVkMqfU9sfPvFHTemU1h1IWeFZi8OzbpRrXW
+         hPJOLTnZcDP5oN2ECIUzAT6rnezoOgvUJO1zjWdT/B8hN8RZX4cCQkpA86cozV9x15By
+         CJ0uQOdkf1BayTzaRdVLEo9n+1OxsDWM6TxeITPUg/CDzzj38WGzZE4H4xbW5Zcok3kJ
+         DgkdX7tCyQ+BoWZvv3RCFEwfXoXWLI6DJvJmLEUjd21Qw1L5ie8MIXTZdwcgmAt/lbko
+         yAHcPXoMRAAZLRHPSGS+7S7i37F/PXJgCUdCqYeOVabjT4ItAqSbjCrhf++DBuYKDPdy
+         UBSg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Mzdza595;
-       arc=pass (i=1 dkim=pass dkdomain=intel.com dmarc=pass fromdomain=linux.intel.com);
-       spf=pass (google.com: domain of kvm+bounces-22087-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-22087-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-22087-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id d75a77b69052e-44f9cf08af2si96213381cf.673.2024.07.22.22.36.31
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=G7IjoIrl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7a199093b66si993811085a.665.2024.07.22.22.13.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Jul 2024 22:36:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-22087-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Jul 2024 22:13:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=Mzdza595;
-       arc=pass (i=1 dkim=pass dkdomain=intel.com dmarc=pass fromdomain=linux.intel.com);
-       spf=pass (google.com: domain of kvm+bounces-22087-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-22087-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 2B08B1C21A4B
-	for <alex.bennee@linaro.org>; Tue, 23 Jul 2024 05:36:31 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id EDDFB13B5AF;
-	Tue, 23 Jul 2024 05:36:27 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="Mzdza595"
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1FA16134B6
-	for <kvm@vger.kernel.org>; Tue, 23 Jul 2024 05:36:23 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.10
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1721712987; cv=none; b=WJ/PHedg2ou802M0kQkzn0ODRpIiw/DktT+B7apQqGCrEaAMgi8wL9ka5YU7iVWRGyWY094F+4gua9R3XAaZSl0lm/hMc6b8JpC0khc3md6CpuVqMVbAmKPbPKOuoCiDYRDl5IV3gspd3VeGcieM4kJckaAjRksX03kCvDGGG8w=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1721712987; c=relaxed/simple;
-	bh=Yv7QWl5KiOQ2ytrvPTyxY+6rm8poKp2aySleLBGCXC0=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=kmG+qmVfnNhBPtSF7Q7B6oFPfVd+HeZ5fOmaPeJ11jkmsLzrfc508zKsB8P0X5ppASsvEOwqaEGETP1mP50OTbhzLLadEPvf0NhBYrWB5i4MtjcKw5h9ez9ecg80WaWW7ovOWFn0seMhgi/tN0gZ5H1gKwNpJ0t59FxbSFCS5Vk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com; spf=none smtp.mailfrom=linux.intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=Mzdza595; arc=none smtp.client-ip=192.198.163.10
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1721712986; x=1753248986;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=Yv7QWl5KiOQ2ytrvPTyxY+6rm8poKp2aySleLBGCXC0=;
-  b=Mzdza5952n9eNzoF9/ICoUhmWU/kfSCxMSNukIrXoiBnmu1y19lZt1mW
-   Bb1vS1zhN67sGyyYu8ortdXUcNUSbmdMGNPYXn6cvHVZ1FNPt5xG72Yet
-   lJZ/C9d2DC6M9qycX9Jr9++bfSu64TuQSxG2S36RXeS8AMVXqS7zD9V1s
-   5Vb0OlO/8jQfE/kJY1i/CpxpKHo4/Zp+ouruG9KUeG76cKFiiGkfU0Yqo
-   vJgL2GLzZSWt1IO5veur0Foxs60zdXEqgVp2+7re1m60oewjbQgtmWKu0
-   rPLg18mqM0SW8E9RcFbDcYb20ANxNmZY/fXoQ0qXFiSQNcEhZkK90/b72
-   A==;
-X-CSE-ConnectionGUID: IJaFiE20RWuOvL4WlI48QQ==
-X-CSE-MsgGUID: YMYG5imsQ7CHljdK47/Vfg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11141"; a="30738601"
-X-IronPort-AV: E=Sophos;i="6.09,229,1716274800"; 
-   d="scan'208";a="30738601"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Jul 2024 22:36:23 -0700
-X-CSE-ConnectionGUID: x5bM7NWzTXelasgvt55Ckg==
-X-CSE-MsgGUID: dK+RGnoiQFKQycIih7GbgQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,229,1716274800"; 
-   d="scan'208";a="89575997"
-Received: from unknown (HELO [10.238.3.39]) ([10.238.3.39])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Jul 2024 22:36:17 -0700
-Message-ID: <38231df8-81d7-4dd6-9ef9-a72fda228176@linux.intel.com>
-Date: Tue, 23 Jul 2024 13:36:14 +0800
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=G7IjoIrl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sW7pr-0001r2-Dr; Tue, 23 Jul 2024 01:13:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1sW7pn-0001Zw-Pj
+ for qemu-devel@nongnu.org; Tue, 23 Jul 2024 01:13:13 -0400
+Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1sW7pi-00025F-N9
+ for qemu-devel@nongnu.org; Tue, 23 Jul 2024 01:13:11 -0400
+Received: by mail-oa1-x2f.google.com with SMTP id
+ 586e51a60fabf-2642cfb2f6aso1603476fac.2
+ for <qemu-devel@nongnu.org>; Mon, 22 Jul 2024 22:13:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721711584; x=1722316384;
+ darn=nongnu.org; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=FkwhzbcBiCteunZEGThYznqB1ZEnc4Uh9p7jCAFXF9c=;
+ b=G7IjoIrlUgS9iUnZ9fAIpHky3zWkqzcKq0AUr8lwn92nDrsDhkzLARuyGI80/B/yM3
+ bDTHjyXmnCCHRMnv4SL9vIG53UTPDz/ttXZ70dHp9iv267EWf47npmLMY4aRmjObheXs
+ Nqyeqq9W+ZAX5u2Jun9ZJXF6LGOUpMlXKEG2CKkvfMxLDXpgrikxOm3OwpHDVPuzUKTr
+ nHvUtdeVS5p/RqY+ukEZ2bRMLSajTDfmQu3ATKSv29nGJ70SI0XIr0m3Rk+E6k/ltVNe
+ fcvaW+p7pBTGZu09rRSc2g4/FC9TiOyTOPQ3qDiCGb8MB7JwN+g0tZKtUvMDUx2M42ri
+ fsPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721711584; x=1722316384;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FkwhzbcBiCteunZEGThYznqB1ZEnc4Uh9p7jCAFXF9c=;
+ b=bQn3KSu+lc/BnY3L4Dc13drXq5eHmCPtJP9Ax6g5RoEyq6ek+93a1th55NcQ+I2k0s
+ 5N1ITvvHXpSU4a5eOD2rx1mXmMA3hoDeqIHB3v6+Xkl1AnkJtHptoRb3Oq4oiYELkpIH
+ lz9CTHICqr0sEkCdoq6eajhFPGi6S7jNdjIkH9snr+d3i0zt4T/uiIP8dufa414PqiZZ
+ 73+u57j+LLzjUQs6FGcYsIktbcNE7LEvb+QUhcEp6rurL9tMY53yL3Aoj43DGoy8h9fk
+ XaqW0HInhgjajwpgResOSYv8VCrkqkrE4nxmvEaoQRbGhQc4ZTK59CSfTyvXMtum8Cfs
+ UwNw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWqxO16goKxnLmCWE5aCPXVUeqjcC/OXfP7MC4lJhiB7XoMOcONhxxTsIMMfz2o4u/+3OxpFS1KshVHWFOEB82JZ+mpSNU=
+X-Gm-Message-State: AOJu0Yw4nIHBEdWEmsx0qX1UrGUsobJr1OzpyipTXdcxzoXX0C+/0kOI
+ QHXdmFwtFv/LR85WjOyMlQ9xQRV3NPVEAP09mDGKidEmORCIVmH/uG4c08AP+gp27Omnq1PzgbK
+ T7ceucJrZXHH0jF45GNHORmRnqp663Vlhh7RGrg==
+X-Received: by 2002:a05:6870:4714:b0:260:e453:5368 with SMTP id
+ 586e51a60fabf-261216b476amr9253788fac.46.1721711583953; Mon, 22 Jul 2024
+ 22:13:03 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 3/5] i386/kvm: Support event with select&umask format in KVM
- PMU filter
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Marcelo Tosatti
- <mtosatti@redhat.com>, Shaoqin Huang <shahuang@redhat.com>,
- Eric Auger <eauger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
- qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Zhenyu Wang <zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@intel.com>,
- Yuan Yao <yuan.yao@intel.com>, Xiong Zhang <xiong.y.zhang@intel.com>,
- Mingwei Zhang <mizhang@google.com>, Jim Mattson <jmattson@google.com>
-References: <20240710045117.3164577-1-zhao1.liu@intel.com>
- <20240710045117.3164577-4-zhao1.liu@intel.com>
- <f18ab76c-abbe-4599-9631-603853bcfa0b@linux.intel.com>
- <Zpomm3hLhSM5O6em@intel.com>
-Content-Language: en-US
-From: "Mi, Dapeng" <dapeng1.mi@linux.intel.com>
-In-Reply-To: <Zpomm3hLhSM5O6em@intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TUID: bVtnKFxXs091
+References: <20240722214313.89503-1-imp@bsdimp.com>
+ <20240722214313.89503-14-imp@bsdimp.com>
+ <97219e8c-e210-4108-9873-abe2a933a3f1@linaro.org>
+In-Reply-To: <97219e8c-e210-4108-9873-abe2a933a3f1@linaro.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Mon, 22 Jul 2024 23:12:53 -0600
+Message-ID: <CANCZdfqAqPRPuRE3=ha4hWwNajXT5sGc-A4DuTCt_ufvRzxOSA@mail.gmail.com>
+Subject: Re: [PATCH 13/14] bsd-user: Make compile for non-linux user-mode stuff
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org, 
+ Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: multipart/alternative; boundary="0000000000005e203d061de33789"
+Received-SPF: none client-ip=2001:4860:4864:20::2f;
+ envelope-from=wlosh@bsdimp.com; helo=mail-oa1-x2f.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: IIbprht/Gytm
+
+--0000000000005e203d061de33789
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Jul 22, 2024 at 4:01=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <philmd=
+@linaro.org>
+wrote:
+
+> Hi Warner,
+>
+> On 22/7/24 23:43, Warner Losh wrote:
+> > We include the files that define PR_MTE_TCF_SHIFT only on Linux, but us=
+e
+> > them unconditionally. Restrict its use to Linux-only.
+>
+> We should check that in meson, i.e.:
+>
+> config_host_data.set('CONFIG_PRCTL_PR_MTE_TCF_SHIFT',
+>                       cc.has_header_symbol('sys/prctl.h',
+> 'PR_MTE_TCF_SHIFT'))
+>
+> (like we do for CONFIG_PRCTL_PR_SET_TIMERSLACK), then rework
+> linux-user/aarch64/mte_user_helper.h (and possibly
+> tests/tcg/aarch64/mte.h), moving in a common directory.
+>
+
+Hmmm... I'll have to check, but since I didn't add the incompatibility, it
+will likely be on my backlog for a while...
 
 
-On 7/19/2024 4:40 PM, Zhao Liu wrote:
-> Hi Dapeng,
+> That said, your patch matches this file header:
 >
-> On Thu, Jul 18, 2024 at 01:28:25PM +0800, Mi, Dapeng wrote:
+>    #if defined(CONFIG_USER_ONLY) && defined(CONFIG_LINUX)
+>    #include <sys/prctl.h>
+>    #include "mte_user_helper.h"
+>    #endif
 >
-> [snip]
+> Even if this #ifdef'ry is ugly, it isn't wrong, so:
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 >
->>> +        case KVM_PMU_EVENT_FMT_X86_DEFAULT: {
->>> +            uint64_t select, umask;
->>> +
->>> +            ret = qemu_strtou64(str_event->u.x86_default.select, NULL,
->>> +                                0, &select);
->>> +            if (ret < 0) {
->>> +                error_setg(errp,
->>> +                           "Invalid %s PMU event (select: %s): %s. "
->>> +                           "The select must be a "
->>> +                           "12-bit unsigned number string.",
->>> +                           KVMPMUEventEncodeFmt_str(str_event->format),
->>> +                           str_event->u.x86_default.select,
->>> +                           strerror(-ret));
->>> +                g_free(event);
->>> +                goto fail;
->>> +            }
->>> +            if (select > UINT12_MAX) {
->>> +                error_setg(errp,
->>> +                           "Invalid %s PMU event (select: %s): "
->>> +                           "Numerical result out of range. "
->>> +                           "The select must be a "
->>> +                           "12-bit unsigned number string.",
->>> +                           KVMPMUEventEncodeFmt_str(str_event->format),
->>> +                           str_event->u.x86_default.select);
->>> +                g_free(event);
->>> +                goto fail;
->>> +            }
->>> +            event->u.x86_default.select = select;
->>> +
->>> +            ret = qemu_strtou64(str_event->u.x86_default.umask, NULL,
->>> +                                0, &umask);
->>> +            if (ret < 0) {
->>> +                error_setg(errp,
->>> +                           "Invalid %s PMU event (umask: %s): %s. "
->>> +                           "The umask must be a uint8 string.",
->>> +                           KVMPMUEventEncodeFmt_str(str_event->format),
->>> +                           str_event->u.x86_default.umask,
->>> +                           strerror(-ret));
->>> +                g_free(event);
->>> +                goto fail;
->>> +            }
->>> +            if (umask > UINT8_MAX) {
->> umask is extended to 16 bits from Perfmon v6+. Please notice we need to
->> upgrade this to 16 bits in the future. More details can be found here.
->> [PATCH V3 00/13] Support Lunar Lake and Arrow Lake core PMU - kan.liang
->> (kernel.org)
->> <https://lore.kernel.org/all/20240626143545.480761-1-kan.liang@linux.intel.com/>
-> It's tricky...now I referred the RAW_EVENT format in tools/testing/
-> selftests/kvm/include/x86_64/pmu.h, which is used in KVM PMU and is
-> compatible with AMD and Intel.
+> =C2=AF\_(=E3=83=84)_/=C2=AF
 >
-> The current KVM PMU filter for raw code doesn't define the layout in
-> the standard API like masked entries (KVM_PMU_ENCODE_MASKED_ENTRY), but
-> actually uses the RAW_EVENT format. So I even plan to move RAW_EVENT
-> macro into arch/x86/include/uapi/asm/kvm.h...
-For the raw event format, I suppose user should know the event layout and
-would directly input the raw event code, qemu may not concern this.
+
+Thanks!
+
+Warner
 
 
+> > Signed-off-by: Warner Losh <imp@bsdimp.com>
+> > ---
+> >   target/arm/gdbstub64.c | 4 ++++
+> >   1 file changed, 4 insertions(+)
+> >
+> > diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
+> > index 2e2bc2700b8..6dc81aecb2a 100644
+> > --- a/target/arm/gdbstub64.c
+> > +++ b/target/arm/gdbstub64.c
+> > @@ -404,6 +404,7 @@ int aarch64_gdb_get_tag_ctl_reg(CPUState *cs,
+> GByteArray *buf, int reg)
+> >
+> >   int aarch64_gdb_set_tag_ctl_reg(CPUState *cs, uint8_t *buf, int reg)
+> >   {
+> > +#if defined(CONFIG_LINUX)
+> >       ARMCPU *cpu =3D ARM_CPU(cs);
+> >       CPUARMState *env =3D &cpu->env;
+> >
+> > @@ -425,6 +426,9 @@ int aarch64_gdb_set_tag_ctl_reg(CPUState *cs,
+> uint8_t *buf, int reg)
+> >       arm_set_mte_tcf0(env, tcf);
+> >
+> >       return 1;
+> > +#else
+> > +    return 0;
+> > +#endif
+> >   }
+> >
+> >   static void handle_q_memtag(GArray *params, void *user_ctx)
 >
-> For the changes you mentioned, I think it would be better for the raw
-> code layout design not to break RAW_EVENT, so that AMD and Intel can
-> equally use the same macro to encode. Is it possible for a unified
-> layout macro?
 >
-> What about extending RAW_EVENT as the following example? I understand
-> the umask2 is at bit 40-47.
->
-> #define X86_PMU_RAW_EVENT(eventsel, umask) (((eventsel & 0xf00UL) << 24) | \
->                                             ((eventsel) & 0xff) | \
->                                             ((umask) & 0xff) << 8) | \
-> 					    ((umask & 0xff00UL << 32)
 
-It's always good if Intel and AMD can share same event layout, the extended
-umask field occupies bits [40:47]. So I think we'd better follow this for
-the RAW_EVENT as well.
+--0000000000005e203d061de33789
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Jul 22, 2024 at 4:01=E2=80=AF=
+PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org">phi=
+lmd@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex">Hi Warner,<br>
+<br>
+On 22/7/24 23:43, Warner Losh wrote:<br>
+&gt; We include the files that define PR_MTE_TCF_SHIFT only on Linux, but u=
+se<br>
+&gt; them unconditionally. Restrict its use to Linux-only.<br>
+<br>
+We should check that in meson, i.e.:<br>
+<br>
+config_host_data.set(&#39;CONFIG_PRCTL_PR_MTE_TCF_SHIFT&#39;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 cc.has_header_symbol(&#39;sys/prctl.h&#39;, <br>
+&#39;PR_MTE_TCF_SHIFT&#39;))<br>
+<br>
+(like we do for CONFIG_PRCTL_PR_SET_TIMERSLACK), then rework<br>
+linux-user/aarch64/mte_user_helper.h (and possibly<br>
+tests/tcg/aarch64/mte.h), moving in a common directory.<br></blockquote><di=
+v><br></div><div>Hmmm... I&#39;ll have to check, but since I didn&#39;t add=
+ the incompatibility, it will likely be on my backlog for a while...<br></d=
+iv><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
+px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+That said, your patch matches this file header:<br>
+<br>
+=C2=A0 =C2=A0#if defined(CONFIG_USER_ONLY) &amp;&amp; defined(CONFIG_LINUX)=
+<br>
+=C2=A0 =C2=A0#include &lt;sys/prctl.h&gt;<br>
+=C2=A0 =C2=A0#include &quot;mte_user_helper.h&quot;<br>
+=C2=A0 =C2=A0#endif<br>
+<br>
+Even if this #ifdef&#39;ry is ugly, it isn&#39;t wrong, so:<br>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linar=
+o.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br>
+<br>
+=C2=AF\_(=E3=83=84)_/=C2=AF<br></blockquote><div><br></div><div>Thanks!</di=
+v><div><br></div><div>Warner<br></div><div>=C2=A0</div><blockquote class=3D=
+"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(2=
+04,204,204);padding-left:1ex">
+&gt; Signed-off-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com" targe=
+t=3D"_blank">imp@bsdimp.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0target/arm/gdbstub64.c | 4 ++++<br>
+&gt;=C2=A0 =C2=A01 file changed, 4 insertions(+)<br>
+&gt; <br>
+&gt; diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c<br>
+&gt; index 2e2bc2700b8..6dc81aecb2a 100644<br>
+&gt; --- a/target/arm/gdbstub64.c<br>
+&gt; +++ b/target/arm/gdbstub64.c<br>
+&gt; @@ -404,6 +404,7 @@ int aarch64_gdb_get_tag_ctl_reg(CPUState *cs, GByt=
+eArray *buf, int reg)<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0int aarch64_gdb_set_tag_ctl_reg(CPUState *cs, uint8_t *buf=
+, int reg)<br>
+&gt;=C2=A0 =C2=A0{<br>
+&gt; +#if defined(CONFIG_LINUX)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0ARMCPU *cpu =3D ARM_CPU(cs);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0CPUARMState *env =3D &amp;cpu-&gt;env;<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; @@ -425,6 +426,9 @@ int aarch64_gdb_set_tag_ctl_reg(CPUState *cs, uint=
+8_t *buf, int reg)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0arm_set_mte_tcf0(env, tcf);<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return 1;<br>
+&gt; +#else<br>
+&gt; +=C2=A0 =C2=A0 return 0;<br>
+&gt; +#endif<br>
+&gt;=C2=A0 =C2=A0}<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0static void handle_q_memtag(GArray *params, void *user_ctx=
+)<br>
+<br>
+</blockquote></div></div>
 
->
-> Thanks,
-> Zhao
->
+--0000000000005e203d061de33789--

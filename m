@@ -1,115 +1,108 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2672218njc;
-        Tue, 23 Jul 2024 11:13:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX1wqd3EHSPwxBwPVOcsxGHGsCuo9KYCMWJgKc2G6Pre+RbcvKqL1teN06fClNJE0B0a/5ZTXA8F6TV73YFWdESgcZ0dyqP
-X-Google-Smtp-Source: AGHT+IGWr9mhCPSBsy34uDknz1Moz0sFwYojd0Ny1e/2MdQAcswULpEmGaiGW67wE22eHQSArXsY
-X-Received: by 2002:a05:622a:448:b0:447:def8:bc8b with SMTP id d75a77b69052e-44fa5285b6amr162484271cf.20.1721758382422;
-        Tue, 23 Jul 2024 11:13:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721758382; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2670405njc;
+        Tue, 23 Jul 2024 11:09:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWXtI3BJjH9fOHtbVY5XYhC/kHSrjn7/m50ItBRj7Y208uTLQBsptQ6Gn7lGRBofK4pnbIEadl8Fh3Wbu0a4iM2ucjr/U7z
+X-Google-Smtp-Source: AGHT+IHakpcrYlcvHKs8ACQPdhjwDVT9XDQy/jBPNNiBUJ7JJSZtJdbunu/dHtMnCA3GN47ZEnBe
+X-Received: by 2002:a05:620a:4049:b0:79d:59bb:639f with SMTP id af79cd13be357-7a1ca1a7c5fmr63356385a.65.1721758174271;
+        Tue, 23 Jul 2024 11:09:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721758174; cv=none;
         d=google.com; s=arc-20160816;
-        b=ST53BcmJ0QYW59Nc5gLEqAIDho2tK4kf8px04+UEDcg7LBBLnSn3ZfIXBbs8/5uVdm
-         edmcR47etSyUTFqJqARXsp2Iqt7OPSGUdWZMdaef++WswXlrFlCFwX/EoygVDSANcjE+
-         IIVn1/4YDTAzQngvcqBk8FZ/8+8OlFTvSKH7TWDD6Kgs2BcxtrBn6PhneMzJdpuGVamv
-         GDNneWZ/8j7bgY9zOXXxMk+uUl2FjxITJf1huLNRSDkI4pjyakcucYo4FItGf4ZRUbOw
-         TDwBB7Y0l0O0uqCBVIg4l0j8qjuNZ8UxiuXnNGlmd2CkwrqMl9lCMaO0ZxZScVI+LsCD
-         Ucvg==
+        b=Fh2R68IH3ExR2taV3B1rTPNXhe4K1pxAiD+PCil13RFadDVu1hEfl8FF9ZSJdkaBxw
+         7XAVqhNu36clC3kdE+qA89jwTGj5WFKb+EgRKb+x8lGvyKklrGXQYiL+EBu6JZElleMP
+         quGIRtbpI7FFzeRIVXt518w9LvHCPhQuhh9sdjpV8fVB0huwn1yQmhOy4vp+utHYMVP5
+         YshzYbAc9CmPtEsprx8DEHEh3DRKnaM2S4N6GA3FtAs7SKC/BIn8AQxknfOV6fni3HBJ
+         xcuM8Ziq/VS5RBdhUIJxnvgiTFOFCetujMu8XD9oaayh/ZKuO+i0wuLXhlxxJ3m9egM8
+         cUqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=7Whe4XPbca7lrsBGH9KDOzbYV/caOsn/K1GjqT+CBVQ=;
-        fh=l262GoLAQ2M1w9YWs1hgVhKodUHtUK+zt51P82utu4c=;
-        b=pPMdGaoTUWpDtTwZCy0F7j8TrYQiVyHQIN5VvzkE8DOC4XtHHPL9yxAXmHHcRTtR/p
-         80BQ0Qc4pRCMuOa0l4ysBvdQwuN7780+0Jxrtw2H1PS1jSk0b5KRpepZJOcpAjIgykYt
-         vxEHNgoxKXWbiADZyE3YnpqADv5WYR3X200MTd1xknxv8vgYjO/a6ADRkcep7T31NTOx
-         dsEA7hWQkeoPR8sQj6mf11ucfEMjhudoSXnuPv5h13icjdASKP/a4aVyIwNWf5+UVO/r
-         3QmOqeD0yCmmRHNzA+aA+F28T0bcteK4n6c8VjE/WquWOPZ26kY6jkHGqDbAKT5AbO+W
-         wFNQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=/rRuBYD6EDQKCK7AkPTJnkZIiqeHYwg0IQiC71/6mmw=;
+        fh=2uZUkozyrWmZOyJtMmUJ4kf+ZyMyU2M7YVs2WEa+ybw=;
+        b=fWv8lBCe0YddGF9lXLCi6Oc42K5cgKw5ndOyD1P3Oi+u1+YqrgGGwB9reAF8E/kuxX
+         CVbnpRzeS6c/u+ys2Bz48kHBMBco1I+UxQbuWswm8o7Ez+QXQ5Glb9jYypmbMEhyBIhL
+         ttS4mB6coJcbRQS7gs8z6kw1hlCt3ajlEkQSK9Ule6FiDJnItY8dQjqiBlGXGS4aQXhC
+         SpKUhLY4us3/3oPPqJ0JGvktZb3pT/0eHn5fvqFA782OlBdtWftR+O6NLaLxW9tb0C3m
+         svPoKe2H6WXNIt7WPPR69CRzEtb+23R16/f5HG928P6i55oQYpOCDSTMEcPL9iOPsTRm
+         +amA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=AHm70aKq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=BFTjIoaE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44f9ccfbdccsi108935561cf.106.2024.07.23.11.13.02
+        by mx.google.com with ESMTPS id af79cd13be357-7a19906d61fsi1083954485a.457.2024.07.23.11.09.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jul 2024 11:13:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 23 Jul 2024 11:09:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=AHm70aKq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=BFTjIoaE;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sWJxa-0003HV-15; Tue, 23 Jul 2024 14:10:02 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sWJwj-00015Z-SW; Tue, 23 Jul 2024 14:09:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWJwx-0001JK-Hr
- for qemu-arm@nongnu.org; Tue, 23 Jul 2024 14:09:25 -0400
-Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a])
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWJwY-00012M-D9
+ for qemu-devel@nongnu.org; Tue, 23 Jul 2024 14:08:59 -0400
+Received: from mail-il1-x12e.google.com ([2607:f8b0:4864:20::12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWJwr-0001D6-PG
- for qemu-arm@nongnu.org; Tue, 23 Jul 2024 14:09:22 -0400
-Received: by mail-il1-x12a.google.com with SMTP id
- e9e14a558f8ab-39834949e42so18089165ab.1
- for <qemu-arm@nongnu.org>; Tue, 23 Jul 2024 11:09:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWJwW-0001Ax-7n
+ for qemu-devel@nongnu.org; Tue, 23 Jul 2024 14:08:58 -0400
+Received: by mail-il1-x12e.google.com with SMTP id
+ e9e14a558f8ab-37636c3872bso25954745ab.3
+ for <qemu-devel@nongnu.org>; Tue, 23 Jul 2024 11:08:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721758146; x=1722362946;
+ d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721758134; x=1722362934;
  darn=nongnu.org; 
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7Whe4XPbca7lrsBGH9KDOzbYV/caOsn/K1GjqT+CBVQ=;
- b=AHm70aKqq9olJXcLfcOzSXgVjD/0QCrFL7zES63TZof2USPSNiP1VtvfmfzYnKtedu
- TkY5u/0yPYCfL1mxqcGp2mObP3oMddhA08JTZKr8SoS/DVJvXTBNPe2u51aax0eX+5uo
- Him/vIxHNFvyfYYWKa4Pyfsajh/qYaor6+rUJ9nAajfPGR/FOljtmLt+9kWZCtqGu5K+
- /VuStATNh/yjCBDQ2IAaPqLiWLGNDPAwtP/uWRLe62NjLnyvyKPgYrx5sFN8OUjsR8WU
- eOu+Bx+3qJilgWeUyVDc6UBZUGkXb3Jq/a/cU0Z2Jx3MzhBolc2jqdyJsAYo/Aj1eK0J
- tNOQ==
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=/rRuBYD6EDQKCK7AkPTJnkZIiqeHYwg0IQiC71/6mmw=;
+ b=BFTjIoaE7HNXpltjEcx+HNQFc9XuyvJtSFUTEMJBktPcEJKS19Q9Elu5yCEk7nqepd
+ 3Xtc8G+4A18zB7DJ57nP3riL2VjiaRcHMGBneVbDhKjxwHcyaqwM9MaYw0QRb8YrYdKd
+ MkpxSBN1c6hZPPjEz1KByVtDxpsQhy4zIjLuhkB3w6tTVENELWJmXO5H1TAXM5EBhqt9
+ rKzVQdD91PNkoYPWSNJ4bldn3XUfLZe3IaZ5rgHi/Hy+2LF7qdfGt/knhZXhMHtZr/sz
+ LE3pV0baJtWrFDbHTYetcxLonT5Eg1qlrN57fjkZbcb2+fu3n8Z7HFVe8DBdferet9Wv
+ bONg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721758146; x=1722362946;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7Whe4XPbca7lrsBGH9KDOzbYV/caOsn/K1GjqT+CBVQ=;
- b=fHkU12ThyEzI8gvKYyWq7LazcXHEY1OBxE9plB00309AnsNGIqSHxgHxvaG+sf/D1r
- 0mNZrztFz5l89+TdpdzA9BQOgQPJc9jDO10nY5VQix6JHZIoHHCmkpyhcIyKSq/hjpVh
- tv/z0ZIs/2mIc9UMR6CM0fdVN+iVTLYucSn6I9f5RAovtj/+JZoQMnQCwwxH3HiVE6WF
- BDWuGkzCDtkK43nCT5kPoNabntr5x2l8Dh9KOHGNKqM4rwAbbKaAjiBcV6aUIDiADIh3
- 8zkGUZH/9aDQQcIZ4PVIBGZv3jbG+BIcrM77f+gKjYORXerAGX2SPRUEU2EetRMHrQ98
- 9cgA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX7tvQba2lfQwuNOmBwawejdO3txwFH6YJyvxnczumCrZ5s3iyF/Cf0dVsuNSDhv4DNDemxovqjldnljzeSX26C6kIM
-X-Gm-Message-State: AOJu0Ywf9w0ESeTiEMq4g7qKkZ5I3i1LlLF8z6HFVj14KrLapi6Di3Bh
- 2nHD0H3tCCAbJEetUsTk3yW7Udi+pd3AM2fZ6w0uo9LYRr/4aNTSgsCMvMmBSfhgxlTUyRSxe8u
- k2x4=
-X-Received: by 2002:a05:6e02:18c7:b0:383:4a12:b77c with SMTP id
- e9e14a558f8ab-3993ff8615bmr127566505ab.8.1721758146426; 
- Tue, 23 Jul 2024 11:09:06 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1721758134; x=1722362934;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/rRuBYD6EDQKCK7AkPTJnkZIiqeHYwg0IQiC71/6mmw=;
+ b=O1oht0FL+BZYbq2tpl7NnGPOGVx3G6zFhIOo1m4J1HHgGwuf8hkABCK/2ZPNCHT0nG
+ ad5aM7soqiqH8z0ZJg4U1CWn91Y71UiO/hfg0gQsJHCQ+HP8k9udP7A+5RyV12yIANHM
+ qXC4QZCOwSSXRxiCEsjJFAbKZ0GsCZU4e85pKbXcP6zzLLRd1DFUs+LBBB9A19FuGZB4
+ 2Vy9fSyeZBFY0+Wam90Y/jMniVPnmuNe1YcoMTG/GtfM4M6DJYqccdbTokc4+cgTO48B
+ SADt+yJBm//+lA0Ol6qNqGyozqJh9nsKqPmFfnncJYQWgptSXaDvQbR+0a5vEQoqmY0D
+ B3Mg==
+X-Gm-Message-State: AOJu0YxykWBFb5avANyeLOU9SAfZrYW+x+h5SKXPMB5VKyxkTsmEldG7
+ H8mN0J07ViDEpIav6HxhYbxBQ+JpKg/6vo9YtlQuFaFeq8hwesy+9VelTRwSj62txzY4lw90PnU
+ Xf0w=
+X-Received: by 2002:a05:6e02:15c8:b0:375:e93b:7c8c with SMTP id
+ e9e14a558f8ab-39a16c536f8mr9409185ab.12.1721758134126; 
+ Tue, 23 Jul 2024 11:08:54 -0700 (PDT)
 Received: from dune.bsdimp.com ([50.253.99.174])
  by smtp.gmail.com with ESMTPSA id
- e9e14a558f8ab-397f7a2827csm33361775ab.53.2024.07.23.11.09.05
+ e9e14a558f8ab-397f7a2827csm33361775ab.53.2024.07.23.11.08.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Jul 2024 11:09:05 -0700 (PDT)
+ Tue, 23 Jul 2024 11:08:53 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Warner Losh <imp@bsdimp.com>, Peter Maydell <peter.maydell@linaro.org>,
- Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org,
- Doug Rabson <dfr@rabson.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 09/14] bsd-user: Simplify the implementation of execve
-Date: Tue, 23 Jul 2024 12:07:20 -0600
-Message-ID: <20240723180725.99114-10-imp@bsdimp.com>
+ Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org
+Subject: [PULL 00/14] Bsd user for 9.1 patches
+Date: Tue, 23 Jul 2024 12:07:11 -0600
+Message-ID: <20240723180725.99114-1-imp@bsdimp.com>
 X-Mailer: git-send-email 2.45.1
-In-Reply-To: <20240723180725.99114-1-imp@bsdimp.com>
-References: <20240723180725.99114-1-imp@bsdimp.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::12a;
- envelope-from=imp@bsdimp.com; helo=mail-il1-x12a.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::12e;
+ envelope-from=imp@bsdimp.com; helo=mail-il1-x12e.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -117,243 +110,127 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oTGM1WVur5Rx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0Fj57JiF02Hp
 
-From: Doug Rabson <dfr@rabson.org>
+The following changes since commit 3cce8bd4d737f2ca688bbdcb92cd5cc683245bbd:
 
-This removes the logic which prepends the emulator to each call to
-execve and fexecve. This is not necessary with the existing
-imgact_binmisc support and it avoids the need to install the emulator
-binary into jail environments when using 'binmiscctl --pre-open'.
+  Merge tag 'ui-pull-request' of https://gitlab.com/marcandre.lureau/qemu into staging (2024-07-23 15:23:05 +1000)
 
-Signed-off-by: Doug Rabson <dfr@rabson.org>
-Reviewed-by: Warner Losh <imp@bsdimp.com>
-Signed-off-by: Warner Losh <imp@bsdimp.com>
-Acked-by: Richard Henderson <richard.henderson@linaro.org>
----
- bsd-user/freebsd/os-proc.c | 118 +------------------------------------
- bsd-user/main.c            |  18 ------
- 2 files changed, 3 insertions(+), 133 deletions(-)
+are available in the Git repository at:
 
-diff --git a/bsd-user/freebsd/os-proc.c b/bsd-user/freebsd/os-proc.c
-index e0203e259b0..bf993f1b662 100644
---- a/bsd-user/freebsd/os-proc.c
-+++ b/bsd-user/freebsd/os-proc.c
-@@ -26,65 +26,13 @@ struct kinfo_proc;
- 
- #include "qemu.h"
- 
--/*
-- * Get the filename for the given file descriptor.
-- * Note that this may return NULL (fail) if no longer cached in the kernel.
-- */
--static char *
--get_filename_from_fd(pid_t pid, int fd, char *filename, size_t len)
--{
--    char *ret = NULL;
--    unsigned int cnt;
--    struct procstat *procstat = NULL;
--    struct kinfo_proc *kp = NULL;
--    struct filestat_list *head = NULL;
--    struct filestat *fst;
--
--    procstat = procstat_open_sysctl();
--    if (procstat == NULL) {
--        goto out;
--    }
--
--    kp = procstat_getprocs(procstat, KERN_PROC_PID, pid, &cnt);
--    if (kp == NULL) {
--        goto out;
--    }
--
--    head = procstat_getfiles(procstat, kp, 0);
--    if (head == NULL) {
--        goto out;
--    }
--
--    STAILQ_FOREACH(fst, head, next) {
--        if (fd == fst->fs_fd) {
--            if (fst->fs_path != NULL) {
--                (void)strlcpy(filename, fst->fs_path, len);
--                ret = filename;
--            }
--            break;
--        }
--    }
--
--out:
--    if (head != NULL) {
--        procstat_freefiles(procstat, head);
--    }
--    if (kp != NULL) {
--        procstat_freeprocs(procstat, kp);
--    }
--    if (procstat != NULL) {
--        procstat_close(procstat);
--    }
--    return ret;
--}
--
- /*
-  * execve/fexecve
-  */
- abi_long freebsd_exec_common(abi_ulong path_or_fd, abi_ulong guest_argp,
-         abi_ulong guest_envp, int do_fexec)
- {
--    char **argp, **envp, **qargp, **qarg1, **qarg0, **qargend;
-+    char **argp, **envp, **qarg0;
-     int argc, envc;
-     abi_ulong gp;
-     abi_ulong addr;
-@@ -117,9 +65,7 @@ abi_long freebsd_exec_common(abi_ulong path_or_fd, abi_ulong guest_argp,
-     qarg0 = argp = g_new0(char *, argc + 9);
-     /* save the first argument for the emulator */
-     *argp++ = (char *)getprogname();
--    qargp = argp;
-     *argp++ = (char *)getprogname();
--    qarg1 = argp;
-     envp = g_new0(char *, envc + 1);
-     for (gp = guest_argp, q = argp; gp; gp += sizeof(abi_ulong), q++) {
-         if (get_user_ual(addr, gp)) {
-@@ -137,7 +83,6 @@ abi_long freebsd_exec_common(abi_ulong path_or_fd, abi_ulong guest_argp,
-         total_size += strlen(*q) + 1;
-     }
-     *q++ = NULL;
--    qargend = q;
- 
-     for (gp = guest_envp, q = envp; gp; gp += sizeof(abi_ulong), q++) {
-         if (get_user_ual(addr, gp)) {
-@@ -166,71 +111,14 @@ abi_long freebsd_exec_common(abi_ulong path_or_fd, abi_ulong guest_argp,
-     }
- 
-     if (do_fexec) {
--        if (((int)path_or_fd > 0 &&
--            is_target_elf_binary((int)path_or_fd)) == 1) {
--            char execpath[PATH_MAX];
--
--            /*
--             * The executable is an elf binary for the target
--             * arch.  execve() it using the emulator if we can
--             * determine the filename path from the fd.
--             */
--            if (get_filename_from_fd(getpid(), (int)path_or_fd, execpath,
--                        sizeof(execpath)) != NULL) {
--                memmove(qarg1 + 2, qarg1, (qargend - qarg1) * sizeof(*qarg1));
--                qarg1[1] = qarg1[0];
--                qarg1[0] = (char *)"-0";
--                qarg1 += 2;
--                qargend += 2;
--                *qarg1 = execpath;
--#ifndef DONT_INHERIT_INTERP_PREFIX
--                memmove(qarg1 + 2, qarg1, (qargend - qarg1) * sizeof(*qarg1));
--                *qarg1++ = (char *)"-L";
--                *qarg1++ = (char *)interp_prefix;
--#endif
--                ret = get_errno(execve(qemu_proc_pathname, qargp, envp));
--            } else {
--                /* Getting the filename path failed. */
--                ret = -TARGET_EBADF;
--                goto execve_end;
--            }
--        } else {
--            ret = get_errno(fexecve((int)path_or_fd, argp, envp));
--        }
-+        ret = get_errno(fexecve((int)path_or_fd, argp, envp));
-     } else {
--        int fd;
--
-         p = lock_user_string(path_or_fd);
-         if (p == NULL) {
-             ret = -TARGET_EFAULT;
-             goto execve_end;
-         }
--
--        /*
--         * Check the header and see if it a target elf binary.  If so
--         * then execute using qemu user mode emulator.
--         */
--        fd = open(p, O_RDONLY | O_CLOEXEC);
--        if (fd > 0 && is_target_elf_binary(fd) == 1) {
--            close(fd);
--            /* execve() as a target binary using emulator. */
--            memmove(qarg1 + 2, qarg1, (qargend - qarg1) * sizeof(*qarg1));
--            qarg1[1] = qarg1[0];
--            qarg1[0] = (char *)"-0";
--            qarg1 += 2;
--            qargend += 2;
--            *qarg1 = (char *)p;
--#ifndef DONT_INHERIT_INTERP_PREFIX
--            memmove(qarg1 + 2, qarg1, (qargend - qarg1) * sizeof(*qarg1));
--            *qarg1++ = (char *)"-L";
--            *qarg1++ = (char *)interp_prefix;
--#endif
--            ret = get_errno(execve(qemu_proc_pathname, qargp, envp));
--        } else {
--            close(fd);
--            /* Execve() as a host native binary. */
--            ret = get_errno(execve(p, argp, envp));
--        }
-+        ret = get_errno(execve(p, argp, envp));
-         unlock_user(p, path_or_fd, 0);
-     }
- 
-diff --git a/bsd-user/main.c b/bsd-user/main.c
-index dcad266c2c9..82e94a03160 100644
---- a/bsd-user/main.c
-+++ b/bsd-user/main.c
-@@ -90,7 +90,6 @@ unsigned long reserved_va;
- 
- const char *interp_prefix = CONFIG_QEMU_INTERP_PREFIX;
- const char *qemu_uname_release;
--char qemu_proc_pathname[PATH_MAX];  /* full path to exeutable */
- 
- unsigned long target_maxtsiz = TARGET_MAXTSIZ;   /* max text size */
- unsigned long target_dfldsiz = TARGET_DFLDSIZ;   /* initial data size limit */
-@@ -247,22 +246,6 @@ adjust_ssize(void)
-     setrlimit(RLIMIT_STACK, &rl);
- }
- 
--static void save_proc_pathname(char *argv0)
--{
--    int mib[4];
--    size_t len;
--
--    mib[0] = CTL_KERN;
--    mib[1] = KERN_PROC;
--    mib[2] = KERN_PROC_PATHNAME;
--    mib[3] = -1;
--
--    len = sizeof(qemu_proc_pathname);
--    if (sysctl(mib, 4, qemu_proc_pathname, &len, NULL, 0)) {
--        perror("sysctl");
--    }
--}
--
- int main(int argc, char **argv)
- {
-     const char *filename;
-@@ -292,7 +275,6 @@ int main(int argc, char **argv)
-         usage();
-     }
- 
--    save_proc_pathname(argv[0]);
- 
-     error_init(argv[0]);
-     module_call_init(MODULE_INIT_TRACE);
+  git@gitlab.com:bsdimp/qemu.git tags/bsd-user-for-9.1-pull-request
+
+for you to fetch changes up to afdb6be1bd8528395af65a087bd668bf7a42ab99:
+
+  bsd-user: Add aarch64 build to tree (2024-07-23 10:56:30 -0600)
+
+----------------------------------------------------------------
+bsd-user: Misc changes for 9.1 (I hope)
+
+This patch series includes two main sets of patches. To make it simple to
+review, I've included the changes from my student which the later changes depend
+on. I've included a change from Jessica and Doug as well. I've reviewed them,
+but more eyes never hurt.
+
+I've also included a number of 'touch up' patches needed either to get the
+aarch64 building, or to implmement suggestions from prior review cycles. The
+main one is what's charitably described as a kludge: force aarch64 to use 4k
+pages. The qemu-project (and blitz branch) hasn't had the necessary changes to
+bsd-user needed to support variable page size.
+
+Sorry this is so late... Live has conspired to delay me.
+-----BEGIN PGP SIGNATURE-----
+Comment: GPGTools - https://gpgtools.org
+
+iQIzBAABCgAdFiEEIDX4lLAKo898zeG3bBzRKH2wEQAFAmaf8RUACgkQbBzRKH2w
+EQAnYA/9F6NbHwV8C6c5zxiKR2PIXvER21khu+c3wwCMgm+Sy4yEIJxtX+L0St1I
+7L4MkgSByeOJmAmw1h0xbWY4IGmTC0ylnyPLq4WIKHP2XnGgs2zYx/CWpEs20QWH
+bORg7KXpmTsK3Ag0ilQHTH7HspW3xhZGia4C0uaxYU+E3nns04Mp/TFzbLxq1VfP
+xJ8DKjVS39StoBjaWlkKN4TnmD1eXPl4WC+9aElVZJX5DicJHN2Cz3sjIZppJOFg
+AXBdeKUXBh5o2oxxRxIv5P/wUROl5NuOpEzE80Ed3B4okbzXdIbsYA07t+UlcoXk
+2YMEWfzPmH8nveD5w8T3YtVAlzEJMjWgVeFZg43lT+aHktX3ixstQUkumzAm3A1Z
+1TsXtP4D4ZRgeH991V+ZbA/2D0mxg03Z5kldw+jcoYUkjQNOMEy/i0ewNPhX4V/d
+l+YIeoxXEu06/v+ibjzL3/WMEvSofYw9nK3/BNGE9rfsNh8tKTFh8Ro+i6wQgKBB
+XOgQeuv+X1nwQ1xeZvl8uunFxN5yJqTyw2O6JN6z+3xnPMnBGz8yvkipdQPv5yRg
+GJEau8H0C9xesaCtURwNX0AC9BrZpoZ8/5zuLE9MGyyXuoN6jBkt/k6z+e4EL1j5
+x7Ezp+srEhlG+g+yozgeDIk3W0YdCPDwBNKDvzwSuNS5prLMrg8=
+=Bdnq
+-----END PGP SIGNATURE-----
+
+----------------------------------------------------------------
+
+Doug Rabson (1):
+  bsd-user: Simplify the implementation of execve
+
+Jessica Clarke (1):
+  bsd-user: Sync fork_start/fork_end with linux-user
+
+Stacey Son (6):
+  bsd-user:Add CPU initialization and management functions
+  bsd-user:Add AArch64 register handling and related functions
+  bsd-user:Add ARM AArch64 signal handling support
+  bsd-user:Add get_mcontext function for ARM AArch64
+  bsd-user:Add set_mcontext function for ARM AArch64
+  bsd-user:Add AArch64 improvements and signal handling functions
+
+Warner Losh (6):
+  bsd-user:Add ARM AArch64 support and capabilities
+  bsd-user:Add setup_sigframe_arch function for ARM AArch64
+  bsd-user: Hard wire aarch64 to be 4k pages only
+  bsd-user: Define TARGET_SIGSTACK_ALIGN and use it to round stack
+  bsd-user: Make compile for non-linux user-mode stuff
+  bsd-user: Add aarch64 build to tree
+
+ bsd-user/aarch64/signal.c               | 137 +++++++++++++++++
+ bsd-user/aarch64/target_arch.h          |  29 ++++
+ bsd-user/aarch64/target_arch_cpu.c      |  31 ++++
+ bsd-user/aarch64/target_arch_cpu.h      | 189 ++++++++++++++++++++++++
+ bsd-user/aarch64/target_arch_elf.h      | 163 ++++++++++++++++++++
+ bsd-user/aarch64/target_arch_reg.h      |  56 +++++++
+ bsd-user/aarch64/target_arch_signal.h   |  82 ++++++++++
+ bsd-user/aarch64/target_arch_sigtramp.h |  48 ++++++
+ bsd-user/aarch64/target_arch_sysarch.h  |  42 ++++++
+ bsd-user/aarch64/target_arch_thread.h   |  61 ++++++++
+ bsd-user/aarch64/target_arch_vmparam.h  |  74 ++++++++++
+ bsd-user/aarch64/target_syscall.h       |  51 +++++++
+ bsd-user/arm/target_arch_signal.h       |   2 +
+ bsd-user/freebsd/os-proc.c              | 118 +--------------
+ bsd-user/i386/target_arch_signal.h      |   2 +
+ bsd-user/main.c                         |  44 ++----
+ bsd-user/qemu.h                         |   3 +
+ bsd-user/signal.c                       |   9 +-
+ bsd-user/x86_64/target_arch_signal.h    |   2 +
+ configs/targets/aarch64-bsd-user.mak    |   3 +
+ target/arm/cpu-param.h                  |   4 +
+ target/arm/gdbstub64.c                  |   4 +
+ 22 files changed, 1001 insertions(+), 153 deletions(-)
+ create mode 100644 bsd-user/aarch64/signal.c
+ create mode 100644 bsd-user/aarch64/target_arch.h
+ create mode 100644 bsd-user/aarch64/target_arch_cpu.c
+ create mode 100644 bsd-user/aarch64/target_arch_cpu.h
+ create mode 100644 bsd-user/aarch64/target_arch_elf.h
+ create mode 100644 bsd-user/aarch64/target_arch_reg.h
+ create mode 100644 bsd-user/aarch64/target_arch_signal.h
+ create mode 100644 bsd-user/aarch64/target_arch_sigtramp.h
+ create mode 100644 bsd-user/aarch64/target_arch_sysarch.h
+ create mode 100644 bsd-user/aarch64/target_arch_thread.h
+ create mode 100644 bsd-user/aarch64/target_arch_vmparam.h
+ create mode 100644 bsd-user/aarch64/target_syscall.h
+ create mode 100644 configs/targets/aarch64-bsd-user.mak
+
 -- 
 2.45.1
 

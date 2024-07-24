@@ -1,71 +1,71 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3106280njc;
-        Wed, 24 Jul 2024 07:05:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVm1eV3VLdJqayd+8ToHWOYR1ln0LChtRI6VECkU4Y5HrhDmTAH5W5cbClXzcUM5DDnZ/uS3z/yacbyZ3FPOAS+vTg68MEQ
-X-Google-Smtp-Source: AGHT+IHkBGZzTYmaLMhr10HfkbT7YLdvUcdSR+tH81ANSpu9iOr3NxbnLDPJGt/dYHlXQKlFD7ck
-X-Received: by 2002:a05:6359:a3a3:b0:1ac:62e5:7648 with SMTP id e5c5f4694b2df-1acec5e0e7amr248002655d.20.1721829933805;
-        Wed, 24 Jul 2024 07:05:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721829933; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3128553njc;
+        Wed, 24 Jul 2024 07:40:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUS6Bzn5MSKFL/xc4TgZSGj8DzrHMWNN3bMTQfdupMFwqDMoYwq+PulpQHEaExpxUHzPXtQkkIKiOW5EAfwqxpzNyQ7yytX
+X-Google-Smtp-Source: AGHT+IHbHIT723fRbeE6we7slVkBKZm3Z1soPFhme8qtvGE+k8a7H559blJYlF9i2JiA8RrTjAR5
+X-Received: by 2002:a05:6102:3e08:b0:48f:b5c1:7269 with SMTP id ada2fe7eead31-493c5750a44mr1408133137.0.1721832009041;
+        Wed, 24 Jul 2024 07:40:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721832009; cv=none;
         d=google.com; s=arc-20160816;
-        b=sdu99wyhMKet0azVnhuqn2UO3j2FocdY2lPCbR1uMizLj2V75vGEdF9Uu7dV8rIWiB
-         BM8Al9iFogbFdNJSfzr2lVpuJ1BBCON9GuRbkvyJy4Y230GMrM2hsZChH80c3BRtiM6a
-         IlBEE3fbmoENxWgac5dN7675pyoMZLnOSizM0ZqUPAhY86eIGWM5omtHFJNPbrYGgfat
-         CMyB+XPPAIrijRC7xI3OTpFpgXTw6qBucPC6xSidXk/M6yELBNAp7x6NwQCVy6EAohyF
-         qtD74IQahE+Jw8mW7ZMAbV9YsidNHOtIggSKVkbJ45tVt+v6krKvWbhIn+tMFV4vnNHz
-         acQg==
+        b=FAhVPGmJywVgY5S1q3lq/yWZXaMK8hhHRkaQhm5oPVF4WxymgQ7vlZIZY/LOcA+UDu
+         VbjftT5k0ErUX0P1e6Sas3BsiSXXwJuNJhrC9+cTIaBaJZ54Svw3NObZ4TvjTWktkLcC
+         Zy3nDwJT6pyi8Nt+eC4p3UrSn0OOShjCq41vZu+0Q8IOHWjlAcqyy9A0+yugfKt2zhun
+         E4a35yqeEkf6eJRPUVvuWzXidVE+MYRFotlHFzduRPsQNc8lKBfiP2RDuloR51FZv5P8
+         3H4DbP5loJFgQQWtwEiostm1lnqf6oKAakUXXhS6u2V62y6bjtSymZ/h050sChkndNWb
+         IDag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=7WXDyumFOc1bAMu88LXC5pY5/X17oRVJbbOhEeby1P0=;
+        bh=7ODGL5ZUpj8pN5NLBvt1UfLxC0+NEUse5R1tznKH1L0=;
         fh=QsxuhUBNyq2F7/1UitCRN/j+l2ZGR7FJ1BwILMh3mGA=;
-        b=DCeErpMnASW1VEItMVwXczg9eu1iZQiovVwOXVlQAra2pWUxdlan7/TztTDTWOVrBR
-         fE3mS2KUs+7I+TvfT3+3O8o2V+C1nEIHYJIXWA3ahN3Hgs8jZ333rq1e5cb1MNlXZyIS
-         PIk5cU9fnd7Oq/r0EuP+vw92laCj+gC8LrvBmMAaFchH372HSgXGmn7B9c3OBXZiDOw1
-         3x0tD+tVxDIj3FhTi2dcXmyqvMDtkaZrvsxug91c+FikFi39jOWYhiep2aaG9gGUD08/
-         bL5i7WaUbiz+SggW38et5SW3yBhdPLnbH6clU8JovLRs8n95SmWfnXkmWZOvaq/bHndT
-         0LJA==;
+        b=bYzNeJTXbnV3fwXv2v+Ob7VLMq8FVuaCnWswg6Ovl0MzC5f1Kw97AgCnfliOd2b735
+         hD5v2We3Ul7LciO0GFCYLFuf3IW8m8PtvmIXp0gOyrxk5LciP9k8OkyOylW2unibSvsX
+         aJSEsibK3me9QoyAmb3wPd8P7ikNiGo15FeQZIoBox+/n3B6jBti7XlnJ8/NEwIl3p8V
+         CSQ7QkHLNotAdDi8PUIENzq4ScJub7GWVy87yQ2E7vWJo33HZoCXkTHa+opZs5Nr4uqR
+         LVGqG8MmIv212I/Fjr8TNyyj9nhGVUqJlnTZqARFm0k+aPzLGwHBZZ/ly1lzyAyDdoQw
+         CYOg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=bqCgQvVg;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=ExMC5vQf;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [198.175.65.15])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-4f6a891b0bfsi622505e0c.89.2024.07.24.07.05.32
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.16])
+        by mx.google.com with ESMTPS id ada2fe7eead31-493c33bda1esi344814137.495.2024.07.24.07.40.07
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jul 2024 07:05:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.15 as permitted sender) client-ip=198.175.65.15;
+        Wed, 24 Jul 2024 07:40:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) client-ip=192.198.163.16;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=bqCgQvVg;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 198.175.65.15 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=ExMC5vQf;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1721829933; x=1753365933;
+  t=1721832009; x=1753368009;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=nHiDPbIFPaMJ6FYvivlu7Y0409aOZMDmB6P2KkiCJoM=;
-  b=bqCgQvVgc0xxBtOBUzO4UGrQW8zYTZRLPOE6MCd5gYK98DX8AJQgTOlj
-   JDFxl+ejLNfRkcZXl0VNEWFQTGP/NiLCrqz8r2IwDn8Rtvzy/TRh3pnxt
-   pSxoOP7Fut2wRHgOkQbxrLpOaUxORcYDDs0dcQoEsbYsEJrrInuu56aKK
-   IExaZq4aIxbwnSBnGOpB4u43Y2yn1id8IjAHnNJriEPyjbK82Cy3ZitOa
-   spMqF0oAR6COZjtgYayOadsqGATHMZCrJ7yDfrtoeUcBa/PWggxVmpw7j
-   dKMWFkhoi3/FZez07xAtEvs3SwwBEFX+MzR1zm0VFGH+jIp9NGCPCU6AZ
-   Q==;
-X-CSE-ConnectionGUID: RmYDUwmFQLKWU2d9UO3mqQ==
-X-CSE-MsgGUID: pirVYnCrSzWCbPPiOCOoFQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11143"; a="23270112"
+  bh=wA5+ox4GtwSVQ1m25C8rgzKbI2kA9MhB8gChFIdvyzA=;
+  b=ExMC5vQf6lc6I3EjB1YaCZWQeVGHKBVl7e+hW4pz8HAsSPhKWsZF/IgK
+   pMty67uXOKzGX2VFttpvrijvgfHh12ggXfImCGatXdhWFGIHKTGn0kEh8
+   kb4i8pexpKSzkO+uhYytRI8bhgF81347Q1MZAWuRynutJwCgv39r8yzdp
+   GpfjYeUFKUxbWVG2nFr8QMd/4OjF+9h1mpBUGuhCOo5m/YrDFq3x0Yxck
+   4nEDzgarTblC/j4HJ20QGZG4+RW9oxuCsjK05WVFrBzjdLAtjVfhtmOG6
+   er0ZknQXc5dd3vkH3wtlxJ+nJ3oHCEASYANnlDgBeGePN3qVNoHv6FhYJ
+   w==;
+X-CSE-ConnectionGUID: vvqdGTGpQx+Lw7cPwlEP2g==
+X-CSE-MsgGUID: mbp706/KQ62udqqquUVanQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11143"; a="12692006"
 X-IronPort-AV: E=Sophos;i="6.09,233,1716274800"; 
-   d="scan'208";a="23270112"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jul 2024 07:05:31 -0700
-X-CSE-ConnectionGUID: +ugYcPMiQx6y3EvboMm6nw==
-X-CSE-MsgGUID: y6FeXgEjQiKv6wybWSsJSA==
+   d="scan'208";a="12692006"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jul 2024 07:40:07 -0700
+X-CSE-ConnectionGUID: jrk1Qh8tTY2wMt8QdoK3wA==
+X-CSE-MsgGUID: U8qNAMugQUyKShDiIekrEw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.09,233,1716274800"; 
-   d="scan'208";a="56914510"
+   d="scan'208";a="52298777"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by fmviesa005.fm.intel.com with ESMTP; 24 Jul 2024 07:05:26 -0700
-Date: Wed, 24 Jul 2024 22:21:10 +0800
+  by fmviesa007.fm.intel.com with ESMTP; 24 Jul 2024 07:40:02 -0700
+Date: Wed, 24 Jul 2024 22:55:46 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Markus Armbruster <armbru@redhat.com>
 Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
@@ -86,148 +86,339 @@ Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
 	Zhenyu Wang <zhenyu.z.wang@intel.com>,
 	Dapeng Mi <dapeng1.mi@linux.intel.com>,
 	Yongwei Ma <yongwei.ma@intel.com>
-Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache object
-Message-ID: <ZqEN1kZaQcuY4UPG@intel.com>
+Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
+Message-ID: <ZqEV8uErCn+QkOw8@intel.com>
 References: <20240704031603.1744546-1-zhao1.liu@intel.com>
- <20240704031603.1744546-9-zhao1.liu@intel.com>
- <87r0bl35ug.fsf@pond.sub.org>
- <Zp5vxtXWDeHAdPok@intel.com>
- <87bk2nnev2.fsf@pond.sub.org>
+ <20240704031603.1744546-3-zhao1.liu@intel.com>
+ <87wmld361y.fsf@pond.sub.org>
+ <Zp5tBHBoeXZy44ys@intel.com>
+ <87h6cfowei.fsf@pond.sub.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <87bk2nnev2.fsf@pond.sub.org>
-X-TUID: PRc1PFdBxGvG
+In-Reply-To: <87h6cfowei.fsf@pond.sub.org>
+X-TUID: Si7BgI8XbHsY
 
-Hi Markus and Daniel,
+Hi Markus,
 
-I have the questions about the -object per cache implementation:
+I realized I should reply this mail first...
 
-On Wed, Jul 24, 2024 at 02:39:29PM +0200, Markus Armbruster wrote:
-> Date: Wed, 24 Jul 2024 14:39:29 +0200
+On Wed, Jul 24, 2024 at 01:35:17PM +0200, Markus Armbruster wrote:
+> Date: Wed, 24 Jul 2024 13:35:17 +0200
 > From: Markus Armbruster <armbru@redhat.com>
-> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
->  object
+> Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
 > 
 > Zhao Liu <zhao1.liu@intel.com> writes:
 > 
 > > Hi Markus,
 > >
-> > On Mon, Jul 22, 2024 at 03:37:43PM +0200, Markus Armbruster wrote:
-> >> Date: Mon, 22 Jul 2024 15:37:43 +0200
+> > On Mon, Jul 22, 2024 at 03:33:13PM +0200, Markus Armbruster wrote:
+> >> Date: Mon, 22 Jul 2024 15:33:13 +0200
 > >> From: Markus Armbruster <armbru@redhat.com>
-> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
-> >>  object
+> >> Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
 > >> 
 > >> Zhao Liu <zhao1.liu@intel.com> writes:
 > >> 
+> >> > Introduce smp-cache object so that user could define cache properties.
+> >> >
+> >> > In smp-cache object, define cache topology based on CPU topology level
+> >> > with two reasons:
+> >> >
+> >> > 1. In practice, a cache will always be bound to the CPU container
+> >> >    (either private in the CPU container or shared among multiple
+> >> >    containers), and CPU container is often expressed in terms of CPU
+> >> >    topology level.
+> >> > 2. The x86's cache-related CPUIDs encode cache topology based on APIC
+> >> >    ID's CPU topology layout. And the ACPI PPTT table that ARM/RISCV
+> >> >    relies on also requires CPU containers to help indicate the private
+> >> >    shared hierarchy of the cache. Therefore, for SMP systems, it is
+> >> >    natural to use the CPU topology hierarchy directly in QEMU to define
+> >> >    the cache topology.
+> >> >
+> >> > Currently, separated L1 cache (L1 data cache and L1 instruction cache)
+> >> > with unified higher-level cache (e.g., unified L2 and L3 caches), is the
+> >> > most common cache architectures.
+> >> >
+> >> > Therefore, enumerate the L1 D-cache, L1 I-cache, L2 cache and L3 cache
+> >> > with smp-cache object to add the basic cache topology support.
+> >> >
+> >> > Suggested-by: Daniel P. Berrange <berrange@redhat.com>
 > >> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 > >> 
-> >> This patch is just documentation.  The code got added in some previous
-> >> patch.  Would it make sense to squash this patch into that previous
-> >> patch?
-> >
-> > OK, I'll merge them.
-> >
-> >> > ---
-> >> > Changes since RFC v2:
-> >> >  * Rewrote the document of smp-cache object.
-> >> >
-> >> > Changes since RFC v1:
-> >> >  * Use "*_cache=topo_level" as -smp example as the original "level"
-> >> >    term for a cache has a totally different meaning. (Jonathan)
-> >> > ---
-> >> >  qemu-options.hx | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
-> >> >  1 file changed, 58 insertions(+)
-> >> >
-> >> > diff --git a/qemu-options.hx b/qemu-options.hx
-> >> > index 8ca7f34ef0c8..4b84f4508a6e 100644
-> >> > --- a/qemu-options.hx
-> >> > +++ b/qemu-options.hx
-> >> > @@ -159,6 +159,15 @@ SRST
-> >> >          ::
-> >> >  
-> >> >              -machine cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=128G,cxl-fmw.0.interleave-granularity=512
-> >> > +
-> >> > +    ``smp-cache='id'``
-> >> > +        Allows to configure cache property (now only the cache topology level).
-> >> > +
-> >> > +        For example:
-> >> > +        ::
-> >> > +
-> >> > +            -object '{"qom-type":"smp-cache","id":"cache","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"},{"name":"l2","topo":"module"},{"name":"l3","topo":"die"}]}'
-> >> > +            -machine smp-cache=cache
-> >> >  ERST
-> >> >  
-> >> >  DEF("M", HAS_ARG, QEMU_OPTION_M,
-> >> > @@ -5871,6 +5880,55 @@ SRST
-> >> >          ::
-> >> >  
-> >> >              (qemu) qom-set /objects/iothread1 poll-max-ns 100000
-> >> > +
-> >> > +    ``-object '{"qom-type":"smp-cache","id":id,"caches":[{"name":cache_name,"topo":cache_topo}]}'``
-> >> > +        Create an smp-cache object that configures machine's cache
-> >> > +        property. Currently, cache property only include cache topology
-> >> > +        level.
-> >> > +
-> >> > +        This option must be written in JSON format to support JSON list.
+> >> [...]
 > >> 
-> >> Why?
+> >> > diff --git a/qapi/machine-common.json b/qapi/machine-common.json
+> >> > index 82413c668bdb..8b8c0e9eeb86 100644
+> >> > --- a/qapi/machine-common.json
+> >> > +++ b/qapi/machine-common.json
+> >> > @@ -64,3 +64,53 @@
+> >> >    'prefix': 'CPU_TOPO_LEVEL',
+> >> >    'data': [ 'invalid', 'thread', 'core', 'module', 'cluster',
+> >> >              'die', 'socket', 'book', 'drawer', 'default' ] }
+> >> > +
+> >> > +##
+> >> > +# @SMPCacheName:
+> >> 
+> >> Why the SMP in this name?  Because it's currently only used by SMP
+> >> stuff?  Or is there another reason I'm missing?
 > >
-> > I'm not familiar with this, so I hope you could educate me if I'm wrong.
+> > Yes, I suppose it can only be used in SMP case.
 > >
-> > All I know so far is for -object that defining a list can only be done in
-> > JSON format and not with a numeric index like a keyval based option, like:
+> > Because Intel's heterogeneous CPUs have different topologies for cache,
+> > for example, Alderlake's L2, for P core, L2 is per P-core, but for E
+> > core, L2 is per module (4 E cores per module). Thus I would like to keep
+> > the topology semantics of this object and -smp as consistent as possible.
 > >
-> > -object smp-cache,id=cache0,caches.0.name=l1i,caches.0.topo=core: Parameter 'caches' is missing
+> > Do you agree?
+> 
+> I don't know enough to meaningfully agree or disagree.  I know just
+> enough to annoy you with questions :)
+
+Welcome and no problem!
+
+> This series adds a way to configure caches.
+> 
+> Structure of the configuration data: a list
+> 
+>     [{"name": N, "topo": T}, ...]
+> 
+> where N can be "l1d", "l1i", "l2", or "l3",
+>   and T can be "invalid", "thread", "core", "module", "cluster",
+>                "die", "socket", "book", "drawer", or "default".
+> 
+> What's the use case?  The commit messages don't tell.
+
+i386 has the default cache topology model: l1 per core/l2 per core/l3
+per die.
+
+Cache topology affects scheduler performance, e.g., kernel's cluster
+scheduling.
+
+Of course I can hardcode some cache topology model in the specific cpu
+model that corresponds to the actual hardware, but for -cpu host/max,
+the default i386 cache topology model has no flexibility, and the
+host-cpu-cache option doesn't have enough fine-grained control over the
+cache topology.
+
+So I want to provide a way to allow user create more fleasible cache
+topology. Just like cpu topology.
+
+> Why does that use case make no sense without SMP?
+
+As the example I mentioned, for Intel hyrbid architecture, P cores has
+l2 per core and E cores has l2 per module. Then either setting the l2
+topology level as core nor module, can emulate the real case.
+
+Even considering the more extreme case of Intel 14th MTL CPU, where
+some E cores have L3 and some don't even have L3. As well as the last
+time you and Daniel mentioned that in the future we could consider
+covering more cache properties such as cache size. But the l3 size can
+be different in the same system, like AMD's x3D technology. So
+generally configuring properties for @name in a list can't take into
+account the differences of heterogeneous caches with the same @name.
+
+Hope my poor english explains the problem well. :-)
+
+> Can the same @name occur multiple times?  Documentation doesn't tell.
+> If yes, what does that mean?
+
+Yes, this means the later one will override the previous one with the same
+name.
+
+> Say we later add value "l1" for unified level 1 cache.  Would "l1" then
+> conflict with "l1d" and "l1u"?
+
+Yes, we should check in smp/machine code and ban l1 and l1i/l1d at the
+same time. This check I suppose is easy to add.
+
+> May @topo be "invalid"?  Documentation doesn't tell.  If yes, what does
+> that mean?
+
+Yes, just follow the intel's spec, invalid means the current topology
+information is invalid, which is used to encode x86 CPUIDs. So when I
+move this level to qapi, I just keeped this. Otherwise, I need to
+re-implement the i386 specific invalid level.
+
+> >> The more idiomatic QAPI name would be SmpCacheName.  Likewise for the
+> >> other type names below.
 > >
-> > the above doesn't work.
+> > I hesitated here as well, but considering that SMPConfiguration is "SMP"
+> > and not "Smp", it has that name. I'll change to SmpCacheName for strict
+> > initial capitalization.
 > >
-> > Is there any other way to specify a list in command line?
+> >> > +#
+> >> > +# An enumeration of cache for SMP systems.  The cache name here is
+> >> > +# a combination of cache level and cache type.
+> >> 
+> >> The first sentence feels awkward.  Maybe
+> >> 
+> >>    # Caches an SMP system may have.
+> >> 
+> >> > +#
+> >> > +# @l1d: L1 data cache.
+> >> > +#
+> >> > +# @l1i: L1 instruction cache.
+> >> > +#
+> >> > +# @l2: L2 (unified) cache.
+> >> > +#
+> >> > +# @l3: L3 (unified) cache
+> >> > +#
+> >> > +# Since: 9.1
+> >> > +##
+> >> 
+> >> This assumes the L1 cache is split, and L2 and L3 are unified.
+> >> 
+> >> If we model a system with say a unified L1 cache, we'd simply extend
+> >> this enum.  No real difference to extending it for additional levels.
+> >> Correct?
+> >
+> > Yes. For unified L1, we just need add a "l1" which is opposed to l1i/l1d.
+> >
+> >> > +{ 'enum': 'SMPCacheName',
+> >> > +  'prefix': 'SMP_CACHE',
+> >> 
+> >> Why not call it SmpCache, and ditch 'prefix'?
+> >
+> > Because the SMPCache structure in smp_cache.h uses the similar name:
+> >
+> > +#define TYPE_SMP_CACHE "smp-cache"
+> > +OBJECT_DECLARE_SIMPLE_TYPE(SMPCache, SMP_CACHE)
+> > +
+> > +struct SMPCache {
+> > +    Object parent_obj;
+> > +
+> > +    SMPCacheProperty props[SMP_CACHE__MAX];
+> > +};
+> >
+> > Naming is always difficult,
 > 
-> The command line is a big, sprawling mess :)
+> Oh yes.
 > 
-> -object supports either a JSON or a QemuOpts argument.  *Not* keyval!
+> >                             so I would use Smpcache here if you feel that
+> > SmpCache is sufficient to distinguish it from SMPCache, or I would also
+> > rename the SMPCache structure to SMPCacheState in smp_cache.h.
+> >
+> > Which way do you prefer?
 > 
-> Both QemuOpts and keyval parse something like KEY=VALUE,...  Keyval
-> supports arrays and objects via dotted keys.  QemuOpts doesn't natively
-> support arrays and objects, but its users can hack around that
-> limitation in various ways.  -object doesn't.  So you're right, it's
-> JSON or bust here.
+> Having both QAPI enum SmpCache and handwritten type SMPCache is clearly
+> undesirable.
 > 
-> However, if we used one object per cache instead, we could get something
-> like
+> I retract my suggestion to name the enum SmpCache.  The thing clearly is
+> not a cache.  SmpCacheName is better.
 > 
->     -object smp-cache,name=l1d,...
->     -object smp-cache,name=l1u,...
->     -object smp-cache,name=l2,...
->     ...
+> If you drop 'prefix', the generated C enum values look like
+> SMP_CACHE_NAME_FOO.  Would that work for you?
 
-Current, I use -object to create a smp_cache object, and link it to
-MachineState by -machine,smp-cache=obj_id.
+I think the SmpCacheName is ok, since there's no other better names.
 
-Then for the objects per cache, how could I link them to machine?
+> The "name" part bothers me a bit.  A name doesn't define what something
+> is.  A type does.  SmpCacheType?
 
-Is it possible that I create something static in smp_cache.c and expose
-all the cache information to machine through some interface?
+Ah, I also considerred this. I didn't use "type" because people usually
+uses cache type to indicate INSTRUCTION/DATA/UNIFIED and cache level to
+indicate LEVEL 1/LEVEL 2/LEVEL 3. The enumeration here is a combination of
+type+level. So I think it's better to avoid the type term.
 
-Additionally, I would like to consider for the long term heterogeneous
-cache, as asked before in [1], does the object per cache conflict with
-the cache device I'm considering? Considering cache device is further
-because I want to create CPU/cache topology via -device and build a
-topology tree.
+> >> > +  'data': [ 'l1d', 'l1i', 'l2', 'l3' ] }
+> >> 
+> >> > +
+> >> > +##
+> >> > +# @SMPCacheProperty:
+> >> 
+> >> Sure we want to call this "property" (singular) and not "properties"?
+> >> What if we add members to this type?
+> >> 
+> >> > +#
+> >> > +# Cache information for SMP systems.
+> >> > +#
+> >> > +# @name: Cache name.
+> >> > +#
+> >> > +# @topo: Cache topology level.  It accepts the CPU topology
+> >> > +#     enumeration as the parameter, i.e., CPUs in the same
+> >> > +#     topology container share the same cache.
+> >> > +#
+> >> > +# Since: 9.1
+> >> > +##
+> >> > +{ 'struct': 'SMPCacheProperty',
+> >> > +  'data': {
+> >> > +  'name': 'SMPCacheName',
+> >> > +  'topo': 'CpuTopologyLevel' } }
+> >> 
+> >> We tend to avoid abbreviations in the QAPI schema.  Please consider
+> >> naming this 'topology'.
+> >
+> > Sure!
+> >
+> >> > +
+> >> > +##
+> >> > +# @SMPCacheProperties:
+> >> > +#
+> >> > +# List wrapper of SMPCacheProperty.
+> >> > +#
+> >> > +# @caches: the SMPCacheProperty list.
+> >> > +#
+> >> > +# Since 9.1
+> >> > +##
+> >> > +{ 'struct': 'SMPCacheProperties',
+> >> > +  'data': { 'caches': ['SMPCacheProperty'] } }
+> >> 
+> >> Ah, now I see why you used the singular above!
+> >> 
+> >> However, this type holds the properties of call caches.  It is a list
+> 
+> "of all caches" (can't type).
 
-[1]: https://lore.kernel.org/qemu-devel/Zl88DYwLE3ScDF5F@intel.com/
+Sorry I didn't get your point?
 
-I think this is becoming a nightmare I can't get around. Naming is
-difficult, and sorting out interface design I think is also a difficult
-task.
+> >> where each element holds the properties of a single cache.  Calling the
+> >> former "cache property" and the latter "cache properties" is confusing.
+> >
+> > Yes...
+> >
+> >> SmpCachesProperties and SmpCacheProperties would put the singular
+> >> vs. plural where it belongs.  Sounds a bit awkward to me, though.
+> >> Naming is hard.
+> >
+> > For SmpCachesProperties, it's easy to overlook the first "s".
+> >
+> >> Other ideas, anybody?
+> >
+> > Maybe SmpCacheOptions or SmpCachesPropertyWrapper?
+> 
+> I wonder why we have a single QOM object to configure all caches, and
+> not one QOM object per cache.
 
-If you feel that there is indeed a conflict, then I'm also willing
-to fall back to -smp again and do it based on keyval's list, as originally
-suggested by Daniel. Sorry for the repetition on thoughts/design, I hope
-that discussion with you I can make sense of the current and subsequent
-paths without getting out of hand!
+I have the thoughts and questions here:
 
-Best Regards,
-Zhao
+https://lore.kernel.org/qemu-devel/20240704031603.1744546-1-zhao1.liu@intel.com/T/#m8adba8ba14ebac0c9935fbf45983cc71e53ccf45
+
+We could discuss this issue in that thread :-).
+
+> >> > diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
+> >> > index b1581988e4eb..25394f2cda50 100644
+> >> > --- a/qapi/qapi-schema.json
+> >> > +++ b/qapi/qapi-schema.json
+> >> > @@ -64,11 +64,11 @@
+> >> >  { 'include': 'compat.json' }
+> >> >  { 'include': 'control.json' }
+> >> >  { 'include': 'introspect.json' }
+> >> > -{ 'include': 'qom.json' }
+> >> > -{ 'include': 'qdev.json' }
+> >> >  { 'include': 'machine-common.json' }
+> >> >  { 'include': 'machine.json' }
+> >> >  { 'include': 'machine-target.json' }
+> >> > +{ 'include': 'qom.json' }
+> >> > +{ 'include': 'qdev.json' }
+> >> >  { 'include': 'replay.json' }
+> >> >  { 'include': 'yank.json' }
+> >> >  { 'include': 'misc.json' }
+> >> 
+> >> Worth explaining in the commit message, I think.
+> >
+> > Because of the include relationship between the json files, I need to
+> > change the order. I had a "crazy" proposal to clean up this:
+> > https://lore.kernel.org/qemu-devel/20240517062748.782366-1-zhao1.liu@intel.com/
+> >
+> > Thanks,
+> > Zhao
+> 

@@ -1,112 +1,113 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3360902njc;
-        Wed, 24 Jul 2024 15:07:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVCph6BhEGGWA/nvrRW0/8iPhaDtkX7E7uACnPG6pkKK6a7QGr3BCvxwAzmT5F+N5NaWol0vRl/EXuNO0ACTZPwlsf5PJK0
-X-Google-Smtp-Source: AGHT+IGSFjoo4hhkcuxndSXf77GrNE6/+QychstBlc3/Kib1pUh18ZHe1VuITKeDpHz9mf4x6ruy
-X-Received: by 2002:a05:6808:f16:b0:3d9:dc70:1119 with SMTP id 5614622812f47-3db11041c33mr1062814b6e.46.1721858873232;
-        Wed, 24 Jul 2024 15:07:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721858873; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3360961njc;
+        Wed, 24 Jul 2024 15:08:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUo8TjVe255VJiG4LqMtPPJVvyIzAokpG3rdqHlWB7048bbczwod003ZcDXhgZDwGVwhFZOfyoJfcltOXvAgvwUVHknDaZ+
+X-Google-Smtp-Source: AGHT+IF8MRxcKiEpSKNZ+Jc8t8Jzc5P3XOkgkdA+82Dk3PPJj1ciNN2nzbu+nLwybvzE34bRBTn3
+X-Received: by 2002:a05:620a:290d:b0:79f:c9e:6269 with SMTP id af79cd13be357-7a1d44fe01dmr106883585a.37.1721858882426;
+        Wed, 24 Jul 2024 15:08:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721858882; cv=none;
         d=google.com; s=arc-20160816;
-        b=mcL63AgpTxU3e1G7EDb6fE+fRRfzoybJvg7wVJ2UV4GQo1TwqvOuxU6GQiQFBAAvQw
-         NSvg+oW3dJ3g9z3d5KFjEm/dGxFv15JGq2twOmNcaSi0hgU0vSRgksS0/NChN5DTWvtw
-         UlXEAwk4jQArYhzzjggYRWmMpgQhSJcMs/aFpR8t6y4PPJwSVJWck+UXNq2q8ZesLPis
-         JbDkzk4ng/LmZ0FQ3wekz+Jw6YxadQnW8VBKnbdM5LmvoZ5YiHf4cGMqPfKKJqBX1pzC
-         PtMyLmNUfj1hMsqEQWXnIagAy9vQHfJlRv25orCQ0PxWqlvoNs4H4Fo51D6CDjTm2VgT
-         crBA==
+        b=jLUwPK0om58Jx6LqMHVe2kt1QsYb3ixv+JjgxRaVrl8uLlAuMMkGGw+yI5jya96+jP
+         XjT7iz0CHg1ddAIW3RyTsm8FNxQwFG4ikTcjM+/LnR8426Xzw3AjyQT6EiRI/OTKJZjT
+         tYExRZLkbJu9AVYUEpBbuJDrwhA0lOiL310tnYHrSyegR6fMoDU8VOC/1UukPnv6I5ep
+         CV9U9KaemZ1qp1VRo/sRQkPog+yRquAHWPmVqY/vIxAJEB/gbnEE7zg7I/03QQiScRXg
+         MqB2EcKyt+d4i7zSIX5cjPel292PWtaBW0hRN5E42d+Th8r15WUCoVX3GYsZl5Y3Ek3q
+         JgPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=3HfMaHOOWW7MVPgIcUVzJcmEX/Y4bX1rEzWv+B3ibeI=;
+        bh=6NVVykiWpqYjvD45AibIwwzA8pM6gZ3sTQWN+WDs9eM=;
         fh=yyYZuL223+Vv0ZhsVZLfOumTvg5lZxdjmI1YeubsR6o=;
-        b=NiSdKfW0TIZ4kLqESefbmHIymKzPhld+vaduhbpr0o7i7zE2acwSltjEnX7xZVZJ4y
-         0nRW2wg24MT2nwENK1SV/ioU77m4HM4cDwnrFeCtHY5fvG4UfLxqQh+1/pZzOaSln7NH
-         yueI3qv9MJdCgKjfTwkcK1c8LdXkBiMrM2iAiBTfuf5KO/KgW3+C01wnW5qWbSVD3WGA
-         O24TogZwineTsHuqaaSLyAQwDhZh4grNfRO3RsiWnSqSoDgNteFvVbGfKcFaE5HFpak4
-         CiE5LVprj5Pjm8ZsGGyEGb68RHMWva01L8V8YMMXrJVJxsi0kEf5RWYRJh2e0PVBZik1
-         7hlQ==;
+        b=e/Jxb2l+t8r2ulE8FQg0OGVk9iqlfpfu5HAGTvdFJbQYK851nfGDnoDLXlKWPa+EjT
+         2VSTuiVweC6JLjbEF2e9Ijc3yZB5c512xuelZtL3MLaKntknzX7t2FpfMle0BWn49OgT
+         t9j+QbruEE+YfogVpuCVm++Xr4Wd9uCZ0OcAijXKUZjRxcUZe6E7fyMA5jaFe9CDVRkp
+         0XXXTp6hJQKI//higMMDbm7osafCuALIhzLUYG30l6r0P1wU6afzaeomb4Et/pucErY8
+         IVliYpQbuqvdPKQLncmpUA85Xi5gMgxXueK/zfa3WhC/rA+FjKo+LsGd8+sEXDs1thHd
+         oMZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b="1FdLU/J3";
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=UgaBxm7x;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe81fd2fcsi1047041cf.230.2024.07.24.15.07.53
+        by mx.google.com with ESMTPS id af79cd13be357-7a1d7475c72si16484685a.634.2024.07.24.15.08.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jul 2024 15:07:53 -0700 (PDT)
+        Wed, 24 Jul 2024 15:08:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b="1FdLU/J3";
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=UgaBxm7x;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sWk8B-0001Go-4g; Wed, 24 Jul 2024 18:06:43 -0400
+	id 1sWk8F-0001aJ-Cb; Wed, 24 Jul 2024 18:06:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk81-0000dl-C8
- for qemu-devel@nongnu.org; Wed, 24 Jul 2024 18:06:34 -0400
-Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk8D-0001SW-O5
+ for qemu-devel@nongnu.org; Wed, 24 Jul 2024 18:06:45 -0400
+Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk7x-0006cj-Vv
- for qemu-devel@nongnu.org; Wed, 24 Jul 2024 18:06:31 -0400
-Received: by mail-io1-xd33.google.com with SMTP id
- ca18e2360f4ac-819c1f53617so11155539f.2
- for <qemu-devel@nongnu.org>; Wed, 24 Jul 2024 15:06:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk8C-0006eZ-3o
+ for qemu-devel@nongnu.org; Wed, 24 Jul 2024 18:06:45 -0400
+Received: by mail-io1-xd34.google.com with SMTP id
+ ca18e2360f4ac-7fd3dbc01deso9752639f.0
+ for <qemu-devel@nongnu.org>; Wed, 24 Jul 2024 15:06:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721858788; x=1722463588;
+ d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721858802; x=1722463602;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3HfMaHOOWW7MVPgIcUVzJcmEX/Y4bX1rEzWv+B3ibeI=;
- b=1FdLU/J38OAIL/tfOChYrJnC2Oks3YNRUHOHMZV0fpqmLDk5/i/zYvOOKlKJbdKEIB
- anAF+Ri5x2e7wyH6WSerykYLFL9YxC9iaPP4I4OsNWSYPSkK3OT0uyHJDOGlYrsIBILs
- rprkol1OmiPU/KycdkuRCEBxo/UZwIwqf22oeffF0xJlgtP5QXJZ0wBEnilFmC4hw849
- PkqKegtRbwSO87QJ6Yn+S+7iIEFcARUPJm80GLnLT421cUKoGtFUOZNzu1ihJemYGW58
- J4FhgOBUr+R/U9cRhRRTBPn5EQGsLohLcsNnLbCnx4pSQitswdAXEGss4mQFXez9H8V2
- dACQ==
+ bh=6NVVykiWpqYjvD45AibIwwzA8pM6gZ3sTQWN+WDs9eM=;
+ b=UgaBxm7xfBrT9rLRsodW5s4wENgQq3hnN0FaR+DxkLnOxvdIT7GwcCqBFiNXHKVrQr
+ 0TXvQyIE44Y0MxCA1KM00KlF4jKVoBtR2+DPqAa4my+vPiArl6wGdmpGYofNIuBTd78v
+ GG756b4BmYF/2dppfQyzdJKOlZxt0M3Sgm4WmProaGpq5U6WpoLUiZPNCPW2uO4BEfYK
+ OCV1duMBkCMdR1TE+BTC2HZ8OKXuvk/dkRTyL3+WSNlHXoigCXprPmewJr8GMTgtge4z
+ saDetJmB1N0+e0uq1+yzeyFxHDVsQnZCg85goxbNgFDPo6ELYHNrINPAWV2SgAfKDRQj
+ VkMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721858788; x=1722463588;
+ d=1e100.net; s=20230601; t=1721858802; x=1722463602;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=3HfMaHOOWW7MVPgIcUVzJcmEX/Y4bX1rEzWv+B3ibeI=;
- b=rd3B3+35Ufuxyb5A2rf4tkiSCdpvS/PucsMfhYU2M/GxnROxFk5bqQmYLsedtOVAs2
- gj1M8nE6iHRd9svgtI9L2t9bR0E8mrhxErqvMeG3kXNFkIfCPIDPE6JFfUtmLICLC2x3
- /WXtsRpgMQ1FaV+eg/vbzitBhwK/nbenvSP5Jq1jS9tgM8xG1yg2anUB5elf//U7blbM
- l9dkOxu9HccuJF3NG2NeMwHFPJx6nKTK8YgUt1SjRn1DVVTEHE2NSEhPyZh0Dj3l8qqD
- zC+Gxo2wuXmjgjzJKKYnCQxe+kwldmjH3REHy3jiZ5o54kn+aDfz7vMbZ9ak7RL8ajxS
- vyMw==
-X-Gm-Message-State: AOJu0YySUTw2K6gy5cyFZefcKujtUzhN7iKkxbTxZTwyo3npYjbxe58+
- R6s9drFpo4qgsGdH4EZc/y/CPKhfQzMclnCTPqKAMG21iU7aIJbKKes0mkgEhDrD3NMamnNdLai
- AzzA=
-X-Received: by 2002:a05:6602:2ccf:b0:806:f495:3b34 with SMTP id
- ca18e2360f4ac-81f7bcf7d6cmr139694139f.2.1721858788497; 
- Wed, 24 Jul 2024 15:06:28 -0700 (PDT)
+ bh=6NVVykiWpqYjvD45AibIwwzA8pM6gZ3sTQWN+WDs9eM=;
+ b=mY0T/pTs2XQtl0diyXvuxi2JAIZVc2zPVIuJyts2XJMo2WSXHzERPODtgA22s3/NFa
+ BAQAKYR6gD6NiNB3RSn9CopUbZ77DkW2XyMco5s8lnqeDIo06+JJ7Ol7w0uYDOUy4qWO
+ u7AMee0HO2ZHYpw/83c4VXCk+eboXNCdP64CZsEzViZiCWUXvKl5yMl2NgEyDD+yP056
+ xEPDy6X8CxF4SdC3SnjOtwg1gl3GcBCCP6rlLMDX4ciPxHixrVu0/uhFynyffAtD/Yx5
+ ICZGvknc29XWkQobWmHMhfvswwNWrmiTiDdxQT5KI0j3XwvWCYStxSp+KUb/aeXk8wKm
+ XZWg==
+X-Gm-Message-State: AOJu0Yzs/xgptLtEQhWICSRQO0k9ds7osgI+cLdExX7gNQgxHJLJvmPs
+ juhF7gq3rkaJL3liDsiNSO8EFOY1GlSK37UI1aRIOKixH8vjP1lr6/Sfh66DACgTOvSb0mJi2v1
+ htxc=
+X-Received: by 2002:a05:6602:1349:b0:7f9:b435:4f5 with SMTP id
+ ca18e2360f4ac-81f7e49b051mr14971039f.11.1721858790321; 
+ Wed, 24 Jul 2024 15:06:30 -0700 (PDT)
 Received: from dune.bsdimp.com ([50.253.99.174])
  by smtp.gmail.com with ESMTPSA id
- 8926c6da1cb9f-4c29fa983f8sm10086173.47.2024.07.24.15.06.27
+ 8926c6da1cb9f-4c29fa983f8sm10086173.47.2024.07.24.15.06.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jul 2024 15:06:27 -0700 (PDT)
+ Wed, 24 Jul 2024 15:06:29 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, Warner Losh <imp@bsdimp.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 10/15] bsd-user: Hard wire aarch64 to be 4k pages only
-Date: Wed, 24 Jul 2024 16:04:43 -0600
-Message-ID: <20240724220449.10398-11-imp@bsdimp.com>
+Subject: [PULL 12/15] bsd-user: Define TARGET_SIGSTACK_ALIGN and use it to
+ round stack
+Date: Wed, 24 Jul 2024 16:04:45 -0600
+Message-ID: <20240724220449.10398-13-imp@bsdimp.com>
 X-Mailer: git-send-email 2.45.1
 In-Reply-To: <20240724220449.10398-1-imp@bsdimp.com>
 References: <20240724220449.10398-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d33;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd33.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d34;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd34.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -127,36 +128,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d8OTSpd8f5OF
+X-TUID: Aay2I0PbSjwR
 
-Only support 4k pages for aarch64 binaries. The variable page size stuff
-isn't working just yet, so put in this lessor-of-evils kludge until that
-is complete.
+Most (all?) targets require stacks to be properly aligned. Rather than a
+series of ifdefs in bsd-user/signal.h, instead use a manditory #define
+for all architectures.
 
 Signed-off-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu-param.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ bsd-user/aarch64/target_arch_signal.h | 2 ++
+ bsd-user/arm/target_arch_signal.h     | 2 ++
+ bsd-user/i386/target_arch_signal.h    | 2 ++
+ bsd-user/signal.c                     | 9 +--------
+ bsd-user/x86_64/target_arch_signal.h  | 2 ++
+ 5 files changed, 9 insertions(+), 8 deletions(-)
 
-diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-index 2d5f3aa312c..fa6cae0e3aa 100644
---- a/target/arm/cpu-param.h
-+++ b/target/arm/cpu-param.h
-@@ -21,9 +21,13 @@
- #ifdef CONFIG_USER_ONLY
- # ifdef TARGET_AARCH64
- #  define TARGET_TAGGED_ADDRESSES
-+# ifdef __FreeBSD__
-+#  define TARGET_PAGE_BITS 12
-+# else
- /* Allow user-only to vary page size from 4k */
- #  define TARGET_PAGE_BITS_VARY
- #  define TARGET_PAGE_BITS_MIN  12
-+# endif
- # else
- #  define TARGET_PAGE_BITS 12
- # endif
+diff --git a/bsd-user/aarch64/target_arch_signal.h b/bsd-user/aarch64/target_arch_signal.h
+index bff752a67ab..b72ba7aa504 100644
+--- a/bsd-user/aarch64/target_arch_signal.h
++++ b/bsd-user/aarch64/target_arch_signal.h
+@@ -77,4 +77,6 @@ struct target_sigframe {
+     target_ucontext_t   sf_uc;  /* saved ucontext */
+ };
+ 
++#define TARGET_SIGSTACK_ALIGN 16
++
+ #endif /* TARGET_ARCH_SIGNAL_H */
+diff --git a/bsd-user/arm/target_arch_signal.h b/bsd-user/arm/target_arch_signal.h
+index 02b2b33e07a..10f96b8bfc9 100644
+--- a/bsd-user/arm/target_arch_signal.h
++++ b/bsd-user/arm/target_arch_signal.h
+@@ -86,4 +86,6 @@ struct target_sigframe {
+     target_mcontext_vfp_t sf_vfp; /* actual saved VFP context */
+ };
+ 
++#define TARGET_SIGSTACK_ALIGN 8
++
+ #endif /* TARGET_ARCH_SIGNAL_H */
+diff --git a/bsd-user/i386/target_arch_signal.h b/bsd-user/i386/target_arch_signal.h
+index 279dadc22c7..2c14153ab6b 100644
+--- a/bsd-user/i386/target_arch_signal.h
++++ b/bsd-user/i386/target_arch_signal.h
+@@ -88,4 +88,6 @@ struct target_sigframe {
+     uint32_t    __spare__[2];
+ };
+ 
++#define TARGET_SIGSTACK_ALIGN 8
++
+ #endif /* TARGET_ARCH_SIGNAL_H */
+diff --git a/bsd-user/signal.c b/bsd-user/signal.c
+index 8b6654b91da..da49b9bffc1 100644
+--- a/bsd-user/signal.c
++++ b/bsd-user/signal.c
+@@ -728,14 +728,7 @@ static inline abi_ulong get_sigframe(struct target_sigaction *ka,
+         sp = ts->sigaltstack_used.ss_sp + ts->sigaltstack_used.ss_size;
+     }
+ 
+-/* TODO: make this a target_arch function / define */
+-#if defined(TARGET_ARM)
+-    return (sp - frame_size) & ~7;
+-#elif defined(TARGET_AARCH64)
+-    return (sp - frame_size) & ~15;
+-#else
+-    return sp - frame_size;
+-#endif
++    return ROUND_DOWN(sp - frame_size, TARGET_SIGSTACK_ALIGN);
+ }
+ 
+ /* compare to $M/$M/exec_machdep.c sendsig and sys/kern/kern_sig.c sigexit */
+diff --git a/bsd-user/x86_64/target_arch_signal.h b/bsd-user/x86_64/target_arch_signal.h
+index ca24bf1e7f7..f833ee66cef 100644
+--- a/bsd-user/x86_64/target_arch_signal.h
++++ b/bsd-user/x86_64/target_arch_signal.h
+@@ -97,4 +97,6 @@ struct target_sigframe {
+     uint32_t    __spare__[2];
+ };
+ 
++#define TARGET_SIGSTACK_ALIGN 16
++
+ #endif /* TARGET_ARCH_SIGNAL_H */
 -- 
 2.45.1
 

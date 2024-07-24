@@ -1,152 +1,170 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3136441njc;
-        Wed, 24 Jul 2024 07:54:47 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWCypk0whAWvLW2PxN5ntyFjEnZERxb+F60YB3pr8bZbx4LPNihwWpGmrxsOEgQ0vbQmUX1DxeBEjx5SG0XTmt2If4Q3Qmj
-X-Google-Smtp-Source: AGHT+IHT4+5aAnKDgS9BowZeUDrr/m91HJBdQshrrtZUlEvea8b6JLICjeRiFtrNIKlPuKrQg4ga
-X-Received: by 2002:a05:620a:1924:b0:79f:176f:747a with SMTP id af79cd13be357-7a1ca19c5ddmr389342485a.66.1721832886978;
-        Wed, 24 Jul 2024 07:54:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721832886; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3360415njc;
+        Wed, 24 Jul 2024 15:06:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXlqhrM/dkoxTB7y8o6lPS/JAFAlj2owsj4hdRrZQrdPVR9QFOaETKDdevti01T9kztjUQ6bx8hUokcblHk4MtS4WzS2cz4
+X-Google-Smtp-Source: AGHT+IHN/gMhefWpaBmJVDdwcFe1D+/h04lZAGqTPCMMU/bWjCLfhsKEB6XWZO23z7MK/PKVDiII
+X-Received: by 2002:ac8:58c9:0:b0:447:e60c:61f with SMTP id d75a77b69052e-44fe48b6a4fmr14673271cf.45.1721858806439;
+        Wed, 24 Jul 2024 15:06:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721858806; cv=none;
         d=google.com; s=arc-20160816;
-        b=K/Ks64JOCbk7uQYNfx+Vs0OoIsmsL0DpAOGjbq8OQ8NbNaKM/DpSiW4+ufI76TTnxV
-         Tkr+9cOSqHMbFAflwZEm9hL3V0R9xTAGKsMdCflEjOfQ6T00pEeLS05P5f65Bt6+dan8
-         QKSVTND9b8aIOy2p8A1wiRSTxdoB3v7Dd62wDVnT6aMpNoHExVs44/8qjaEmKI5zwMUK
-         ZeJBd3lrVG0AASsAuxWUzl2E/SjO9TiMS2e3WiSaiiEsv53zSfK5QrbJQZztMETPSA2e
-         tOLrBWLUSDO+1wdp7mYZwtJt9FQ7h3X84FCPo3OEfnv4aHuLq6rOfw2/4T3JgSRV1d8a
-         TvZQ==
+        b=mvhnVL1lhESTLddMui6fdeqcZgqhX3Y/aTYQ9jYGwrJ328WhOPkMvSty5RwGxuipSO
+         WNjaUrw0A2V9MfXoMXFPb006TNGPxEuEyDql45V4EjFvhfBhHFvGRw9I1aqrB+CvXQU3
+         VKP2vvq/B11nytdhTZzvNdcPXDROuUU2UOGRL0S3HdrhWtsPU5iXmEJCsWdKGDhSIiGg
+         UMcNzAFysSOvOIBEVZuPB2awLgZ7HmTlntP2BlFlnJRyiykz+lJ2SgAK5cUu35mGqqhr
+         /qr6jlNIcCajza5BHKbScGyi+u7xqhouTibLEloYJQPNRoj9SJEk6LGRlKuvYvhA9pWP
+         +jgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=sGUY2IfMcOrTXEnsuGo6JTeh5PYEYDjedJjOLy55JC0=;
-        fh=EetEWCg/4Cn2RTvRRuBOciIpm7ywCMP350zgLqn++Nw=;
-        b=HvM/42EE6CGguuktolXwuvhY8ALTqiBAcEMntNbEAtizo0XH1MSTAFjzyOCHgKa+Mk
-         n3w4TjfbZ/NFfzDNnORlpD9Fh9uJ0QdxwPzRf0AX2Sq8AwoFlHWFFQiqwD2mvYScmknB
-         FXKcSSGTHZLBTHpALfSquh70vDVdVZEyBnGqqofqrQ1r6C6QlOfnTXpvjx0FM0wVXq0k
-         YlCoOxqEH10GMM6hhZXabDBhAwA+PvmCYu6zsKMCgR3zLaGQfx5yyob19kwKF55BOHbx
-         //ZaIuXejkTyO1Uv/rjxbvSO1tyVdUdxk6Uu4pQIbyZVgk9HNviPcTv2Z/io9Jwr608D
-         dI+w==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=TXCw0+RJXjXO156yoRFr2t5+0iBs33zwi5q8sWmsNWs=;
+        fh=mfZ5I7WmgjhrpNn+LbpCZEcP2CpBuj0KaDpd9JG/+ho=;
+        b=En6F7+b5pTC6PgKPBpzwNEGP2BdWLHXpgQM7XsUZa2EoZPe11dpJxo7L4WQWrRzaKV
+         JFj0BmukfBjnrMXvP5UiEeZjUbS7IFd3t7zrXL2F5TEV0AmO7WwMfip+BS8xm5Sfgt4U
+         HfIQAqFMmd/8sSs2i2DYdw5Q5GK7WAaDgIDm5w3fIdCycQLV6QCAbYTUwziaxsCU/tK2
+         iQhBf90N72AWkgmE5zGvJqAPN86t5k4hkDe9M92Bk8tCuThbUBqDaZy3nRkg3HrW0vA7
+         2l3T3mSQQBMVwdkUpik5ipA3a/DnRUri1LE708floz5d59rTfi8JUQIIsvOEYB5WR3iP
+         MalQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=DPhqDZcL;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.7 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.7])
-        by mx.google.com with ESMTPS id af79cd13be357-7a199066cb7si1251384785a.390.2024.07.24.07.54.45
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=r6iMvlOG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe851ae2fsi1027211cf.669.2024.07.24.15.06.46
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jul 2024 07:54:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.7 as permitted sender) client-ip=192.198.163.7;
+        Wed, 24 Jul 2024 15:06:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=DPhqDZcL;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.7 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1721832887; x=1753368887;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=nhEKDuTNwPMDwruusMMbK1Dm5j0cygvuqJe3rM266dI=;
-  b=DPhqDZcL7XtqzVRH4cUKpXffYfb1ObwvAMtrQSuANBFIaN2XUbwx2gXI
-   myMKyFVs8B7O8qS5ATApwokrPY4XjW9ElRr+m/lgiGs4pFFB60aDoKG0J
-   6LYw+te7safNen6Wf5Rna/GJP9/KtDVWuo0VFvNqMjMtarUUiSmyFPOu8
-   NVZxvxx/lx6r0VV0xI+a+ppzVDua8jdhaUkWp1ltkgWm7Q1Icibs5RN6U
-   ZPM/oDqVkA+uRuMrA/odkdTEiOLY5y+l8BIMKYeddMPtUr3yXhqZQrNpi
-   QVnC0QrU/W+Sru1O+yG7qdSKjKETzqrXDMYr/moGt4cByXjZMSOj/y0tp
-   g==;
-X-CSE-ConnectionGUID: Vk9EW7v3TfCYFI8fXpabZA==
-X-CSE-MsgGUID: TCXTCnLYT3ekHTG3xrtlPg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11143"; a="44941942"
-X-IronPort-AV: E=Sophos;i="6.09,233,1716274800"; 
-   d="scan'208";a="44941942"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jul 2024 07:54:45 -0700
-X-CSE-ConnectionGUID: SQlBHtnfSNazf+k8B1Ve8g==
-X-CSE-MsgGUID: gsHTaE3GT0aVEU/MKedVwA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,233,1716274800"; 
-   d="scan'208";a="57749094"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by orviesa004.jf.intel.com with ESMTP; 24 Jul 2024 07:54:40 -0700
-Date: Wed, 24 Jul 2024 23:10:24 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Daniel =?utf-8?B?UC4gQmVycmFuZ++/vQ==?= <berrange@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Philippe =?utf-8?B?TWF0aGlldS1EYXVk77+9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S . Tsirkin" <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Alex =?utf-8?B?QmVubu+/vWU=?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>
-Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
-Message-ID: <ZqEZYEAkMhqBRtbx@intel.com>
-References: <20240704031603.1744546-1-zhao1.liu@intel.com>
- <20240704031603.1744546-3-zhao1.liu@intel.com>
- <87wmld361y.fsf@pond.sub.org>
- <Zp5tBHBoeXZy44ys@intel.com>
- <87h6cfowei.fsf@pond.sub.org>
- <ZqD31Oj5P0uDMs-I@redhat.com>
- <ZqEJlmR3U6g8zq0z@intel.com>
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=r6iMvlOG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sWk88-00016Z-J9; Wed, 24 Jul 2024 18:06:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk7w-0000MT-Vu
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2024 18:06:29 -0400
+Received: from mail-io1-xd35.google.com ([2607:f8b0:4864:20::d35])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk7t-0006Z6-Gc
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2024 18:06:28 -0400
+Received: by mail-io1-xd35.google.com with SMTP id
+ ca18e2360f4ac-8138e2f2f69so12023739f.0
+ for <qemu-arm@nongnu.org>; Wed, 24 Jul 2024 15:06:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721858784; x=1722463584;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=TXCw0+RJXjXO156yoRFr2t5+0iBs33zwi5q8sWmsNWs=;
+ b=r6iMvlOGayIczFJ0h0RFOFJu9yyAVL9GAM1/mQY05q+fM9S5RZwHHp9dWGm5srJRCl
+ PzS61jrbipx52EU0+jtZzdz9kfsk09eKQb/yJniUUNHxv1adNPG8w1CV007jk5wFZxas
+ 9pfmu2h9UiRctsAJ/e3G9+Xi3249TTjvhbyjl44QYeWXjIsF1QbW7UILcPidl8f/TVBY
+ 0TgKOlk130MKtl4WlrRiD0VqfD/q3k71cemT/Qo+8VphrbygYYZ3VYw6mm8TbTuGwyNy
+ U4wvniB0GgiHzpjAHMfUj6aaWCkNkuMgBcW+QA9UvD0Y5Tqv5Jwk6YuvQQvInUf37mx7
+ cgoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721858784; x=1722463584;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=TXCw0+RJXjXO156yoRFr2t5+0iBs33zwi5q8sWmsNWs=;
+ b=lrwOD0RK1sCEqywTvMv/pmOxtg0s2FXaJuooqelc4Bfv8fb/xKxnc5dF2+l1UFzzNe
+ 0On62kfq5SYyv+KvhXL7KqZSvU7di4V64eVE5N/bReAsXE4uSDgSDJvOzG04/I1z8nfX
+ pjZSjl5ZfXfSYWflLSU0IA+JNNzpIXXZPooNf8ifztwI6wgQ+xPW8dlJ/brau7LxbXS4
+ SW623oxnnos3V3kmwISTESb5+L+lcdq4VbrBHCynNuRunDao9FV1Zz1X6JHYPa9lCUYq
+ TZWhLUiCK7vBaNp0OtYX6LpuPoUq0N8nN6JlnyppSRj7KHHXBqK//+1ATg/KFFCj9inS
+ GZ0A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUm7qaPbd0F4HcwBN7Uq8bGTel25UarTzbhtN7xG8Ux9BEOwlUjPW9lu0YIQC5j0O//ctd+T6yxvAoVKszrkXlZjcjU
+X-Gm-Message-State: AOJu0YzCcJAbXLpGR9Rmaer9XF8FB/OXYpJ1BZ+EQmfNgIeBwoWiNCDa
+ h6OOO/d9faomlSgKHDUPTfDdST7aGmcfN4JZVSxBoNK3FhbmfbZA47Qcx+9jmVg=
+X-Received: by 2002:a05:6602:6c14:b0:7fe:3c5a:c7bd with SMTP id
+ ca18e2360f4ac-81f7e3e2e37mr22559039f.1.1721858783843; 
+ Wed, 24 Jul 2024 15:06:23 -0700 (PDT)
+Received: from dune.bsdimp.com ([50.253.99.174])
+ by smtp.gmail.com with ESMTPSA id
+ 8926c6da1cb9f-4c29fa983f8sm10086173.47.2024.07.24.15.06.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 24 Jul 2024 15:06:22 -0700 (PDT)
+From: Warner Losh <imp@bsdimp.com>
+To: qemu-devel@nongnu.org
+Cc: Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Warner Losh <imp@bsdimp.com>,
+ Ajeet Singh <itachis@FreeBSD.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 06/15] bsd-user:Add setup_sigframe_arch function for ARM AArch64
+Date: Wed, 24 Jul 2024 16:04:39 -0600
+Message-ID: <20240724220449.10398-7-imp@bsdimp.com>
+X-Mailer: git-send-email 2.45.1
+In-Reply-To: <20240724220449.10398-1-imp@bsdimp.com>
+References: <20240724220449.10398-1-imp@bsdimp.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZqEJlmR3U6g8zq0z@intel.com>
-X-TUID: b50Czt9IRYc+
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::d35;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd35.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: W5ThtzyDUdJl
 
-Hi Daniel,
+The function utilizes the `get_mcontext` function to retrieve the machine
+context for the current CPUARMState
 
-On Wed, Jul 24, 2024 at 10:03:02PM +0800, Zhao Liu wrote:
-> Date: Wed, 24 Jul 2024 22:03:02 +0800
-> From: Zhao Liu <zhao1.liu@intel.com>
-> Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
-> 
-> On Wed, Jul 24, 2024 at 01:47:16PM +0100, Daniel P. Berrang? wrote:
-> > Date: Wed, 24 Jul 2024 13:47:16 +0100
-> > From: "Daniel P. Berrang?" <berrange@redhat.com>
-> > Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
-> > 
-> > On Wed, Jul 24, 2024 at 01:35:17PM +0200, Markus Armbruster wrote:
-> > > Zhao Liu <zhao1.liu@intel.com> writes:
-> > > 
-> > > > Hi Markus,
-> > > >> SmpCachesProperties and SmpCacheProperties would put the singular
-> > > >> vs. plural where it belongs.  Sounds a bit awkward to me, though.
-> > > >> Naming is hard.
-> > > >
-> > > > For SmpCachesProperties, it's easy to overlook the first "s".
-> > > >
-> > > >> Other ideas, anybody?
-> > > >
-> > > > Maybe SmpCacheOptions or SmpCachesPropertyWrapper?
-> > > 
-> > > I wonder why we have a single QOM object to configure all caches, and
-> > > not one QOM object per cache.
-> > 
-> > Previous versions of this series were augmenting the existing
-> > -smp command line.
-> 
-> Ah, yes, since -smp, as a sugar option of -machine, doesn't support
-> JSON. In -smp, we need to use keyval's style to configure as:
-> 
-> -smp caches.0.name=l1i,caches.0.topo=core
-> 
-> I think JSON is the more elegant way to go, so I chose -object.
+Signed-off-by: Warner Losh <imp@bsdimp.com>
+Signed-off-by: Ajeet Singh <itachis@FreeBSD.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240707191128.10509-7-itachis@FreeBSD.org>
+Signed-off-by: Warner Losh <imp@bsdimp.com>
+---
+ bsd-user/aarch64/signal.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-I may have to retract this assertion considering more issues, I could
-fall back to -smp and support it in keyval format, I think it's also ok
-for me if you also like keyval format, sorry for my repetition, we can
-discuss this in this thread:
-
-https://lore.kernel.org/qemu-devel/20240704031603.1744546-1-zhao1.liu@intel.com/T/#m8adba8ba14ebac0c9935fbf45983cc71e53ccf45
-
-Thanks,
-Zhao
+diff --git a/bsd-user/aarch64/signal.c b/bsd-user/aarch64/signal.c
+index ab3bf8558ab..43c886e6036 100644
+--- a/bsd-user/aarch64/signal.c
++++ b/bsd-user/aarch64/signal.c
+@@ -81,3 +81,17 @@ abi_long get_mcontext(CPUARMState *regs, target_mcontext_t *mcp, int flags)
+ 
+     return err;
+ }
++
++/*
++ * Compare to arm64/arm64/exec_machdep.c sendsig()
++ * Assumes that the memory is locked if frame points to user memory.
++ */
++abi_long setup_sigframe_arch(CPUARMState *env, abi_ulong frame_addr,
++                             struct target_sigframe *frame, int flags)
++{
++    target_mcontext_t *mcp = &frame->sf_uc.uc_mcontext;
++
++    get_mcontext(env, mcp, flags);
++    return 0;
++}
++
+-- 
+2.45.1
 

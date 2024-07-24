@@ -1,354 +1,200 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3020813njc;
-        Wed, 24 Jul 2024 04:35:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUDs/OWbYIVeSPnnWJ+9XFSdvhYyqlurRgieJNfR/72WCSbCDZ/64TuDJiOzvnXreU0gAGQ1YWAN6gOwWv036VNCTR3OYLZ
-X-Google-Smtp-Source: AGHT+IGx5GZQ8SD5jU8X8ioSNzXcfLmSmZxGgfbDRBtm4Fbh3nSW9V11cEJt4RFgRmAwo/WX2HsM
-X-Received: by 2002:a05:690c:2e0f:b0:63b:b3b8:e834 with SMTP id 00721157ae682-66a6a60b384mr161114117b3.32.1721820928338;
-        Wed, 24 Jul 2024 04:35:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721820928; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3051496njc;
+        Wed, 24 Jul 2024 05:32:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWRHGqwLH+TB1UYlYbrcFPp9P0chh2WWTXzDK3ctV3SGJ7fAgrusRQwm6WLW1rEue2vALZUo/eNGgCGfsImeg8wZLotaVUV
+X-Google-Smtp-Source: AGHT+IFoOycbgXwdg8hf+5cA7jzCb63pG7XFvVKEh2VWJCFyzLY6BlOXbgVMOrMt6lokrOP2Entn
+X-Received: by 2002:a05:6902:c08:b0:e08:80ca:c3dd with SMTP id 3f1490d57ef6-e0b0e664e60mr2805594276.49.1721824369080;
+        Wed, 24 Jul 2024 05:32:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721824369; cv=none;
         d=google.com; s=arc-20160816;
-        b=X7a6giZCZHeK7Fv4KaRUkb79PAppPn0ha5W9jSkFxEru5ZI7FkAYr8EzhWX0KfuNge
-         qzSFVjb0334zk2HGpWZ/9UD8SwSOvA0WsfB5AaCGEEoX+H9BQ+hF6FlnL4Qc5D7KxHkl
-         3dd05jfdvaNemVNvRPdOfaeCkXtt41CsiUJN5ypKoFWqLcQ0mjtKdQxUtcAb5nQ8lqDe
-         vk7YXP3nvZ0+2q6TXebFNM38G5KQK8tM8/7+2ioOBKrix0TZ6RbqoT9Ft2fLaL7myrPb
-         ctsfN0xT3fYtTxOROXI4bVb5z/TNjl69BQlCkV95xm3NegtAO8rOIr1t16GSRdyd53dG
-         eDFw==
+        b=SQegcyQwtE8Bx5XdiQ0JkPTmlZ7WBB21OV8o/3ESWAxkOc8ABXF2wIsx+fTa3P0FLg
+         84KapRSigEvuMIy1CV9vt5VtFB8AIVaFP9zO4BdvZXJVZ5bdd+BVVB2Yzb2DGaiuaz6c
+         q5YfMFZLKHE0e/I3NukmzAPlBg8JjLDoonjUEpT5YOq7lV/cQj2XeqQ5+udyVHhBVnJK
+         Sq4cls+/HKgiUQsWCm61CL7e1azfZrnkK/Oi3P5s8S20wW5MIGD66Rk7A780t3b7I7W6
+         ZT+JMtGYu5mUMS5FvDjmT8tFb0nVsS6EG7jFxS/fBw9rx+R4nr2Xc/dwujgJ7P6yIwkS
+         7szw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:date:references:in-reply-to
-         :subject:cc:to:from:dkim-signature;
-        bh=gt7oiq2zOPx1WuxF9YFCkLZSWSfZxFkV5gZ9VyQnc1s=;
-        fh=YtMdrrrL4AdjARoXd5Fxw8LjXJzXSJRO9dQYlO5BjO8=;
-        b=xncTO39ivKrbFTipEg1PvxbDVokaGb+27EKbXOyldn6M/uLhmFx14CWaouARZ7r1+g
-         FgVnWjYv0rcy+C9FvLL830oF26dib/YtiACViSY/Ua0wH6SVLTuXNQqQHOby+y/gW6y4
-         xdb/I9KCVBFMZ9ESFfV3RnQG2xCWvFllsbdL5N2Plv0vdjxiNgJRlfMUhPlR/9zp//5y
-         EvF6LzuTKTlAOxIvAIxp8Y47cTGnBk3t+UIEW8m/TiDTagEewrJCXKBtDR2eAtms5XP4
-         6w0mx2BN3DkjehOsksE5SDH2QCUHSATGZmnvQfiIFME+F+TOfhK8WO0LwfdhUs2kdmOQ
-         4w5g==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=pPAMhbit1B/V9vaKOQX1Yb2zF6e6S3tju5TN0jGrNiU=;
+        fh=5YFPQIrakCYiTcuIb79Kp5KFQm8HA/3roVGPMQaS888=;
+        b=KUMXmhLTruGnQqOPY9kQYXcG+WVbqc/AVUamavoaWK9SaSup4kICt0AY/9QHGiV59w
+         b/S3fE9mhrIqGK8BCbn6b4mZgjLIJszfLOJMOPejNwTEsI9ntwQaCzB3a+daFMQswxnZ
+         2A+IjFd1X9ptxn2houVXKrtYTEJpkheTtHdtvPqj8pc3C0BdgDYcbrZjS2KUhUXvloVT
+         IPB7PcsKBidOFI/72DPoa+mKQhsHUh9J5EPvmga+aS1rpuNJUjxIQf9u4z+P5NuvfKwd
+         mSBAhRZey+OG6kjeugZYwm26y2V0jXtZcj3O+6gzXghvJWRb6EsEvrxgZjyY88mOAeQc
+         nyyQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JevaaGJX;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <armbru@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6b7ac9b80fcsi117635506d6.339.2024.07.24.04.35.28
+       dkim=pass header.i=@linaro.org header.s=google header.b=dPO4hYH5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6b7ac9b8e8fsi125287846d6.340.2024.07.24.05.32.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 24 Jul 2024 04:35:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 24 Jul 2024 05:32:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JevaaGJX;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1721820928;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=gt7oiq2zOPx1WuxF9YFCkLZSWSfZxFkV5gZ9VyQnc1s=;
-	b=JevaaGJXvRx7GGdoy42SdCjbUjwYx8Z9q/NSiGfu9Zl8ltFBAH48KZejmpmO1A1Y9sPjKg
-	PkJt6bjTDeTatbnOUUqKjbkrZ0uBLee5nM1NRvJDctscuEP+yw6clis6ftIhac3XWX9mzB
-	Fkj/f91RggCOQutQ2qaMlaOvdGWUv2k=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-516-hYveDVixMB6AwlyQEuIL6A-1; Wed,
- 24 Jul 2024 07:35:25 -0400
-X-MC-Unique: hYveDVixMB6AwlyQEuIL6A-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id EEE841955D44;
-	Wed, 24 Jul 2024 11:35:22 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 2B24519560AE;
-	Wed, 24 Jul 2024 11:35:20 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 53C4321E668A; Wed, 24 Jul 2024 13:35:17 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Daniel P . =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Eduardo
- Habkost
- <eduardo@habkost.net>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Yanan Wang
- <wangyanan55@huawei.com>,  "Michael S . Tsirkin" <mst@redhat.com>,  Paolo
- Bonzini <pbonzini@redhat.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Eric Blake <eblake@redhat.com>,  Marcelo
- Tosatti <mtosatti@redhat.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
-  Peter Maydell <peter.maydell@linaro.org>,  Jonathan Cameron
- <Jonathan.Cameron@huawei.com>,  Sia Jee Heng
- <jeeheng.sia@starfivetech.com>,  qemu-devel@nongnu.org,
-  kvm@vger.kernel.org,  qemu-riscv@nongnu.org,  qemu-arm@nongnu.org,
-  Zhenyu Wang <zhenyu.z.wang@intel.com>,  Dapeng Mi
- <dapeng1.mi@linux.intel.com>,  Yongwei Ma <yongwei.ma@intel.com>
-Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
-In-Reply-To: <Zp5tBHBoeXZy44ys@intel.com> (Zhao Liu's message of "Mon, 22 Jul
-	2024 22:30:28 +0800")
-References: <20240704031603.1744546-1-zhao1.liu@intel.com>
-	<20240704031603.1744546-3-zhao1.liu@intel.com>
-	<87wmld361y.fsf@pond.sub.org> <Zp5tBHBoeXZy44ys@intel.com>
-Date: Wed, 24 Jul 2024 13:35:17 +0200
-Message-ID: <87h6cfowei.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+       dkim=pass header.i=@linaro.org header.s=google header.b=dPO4hYH5;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sWbAJ-0006Il-3X; Wed, 24 Jul 2024 08:32:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sWbA6-0005Xw-Gk
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2024 08:32:06 -0400
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sWbA4-0002sH-Cm
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2024 08:32:05 -0400
+Received: by mail-lj1-x22b.google.com with SMTP id
+ 38308e7fff4ca-2eefeab807dso77621791fa.3
+ for <qemu-arm@nongnu.org>; Wed, 24 Jul 2024 05:32:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1721824322; x=1722429122; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=pPAMhbit1B/V9vaKOQX1Yb2zF6e6S3tju5TN0jGrNiU=;
+ b=dPO4hYH5OaPWCJQ+OZ5NLmogO5ahVpcukytEjwB4lhyghjerKR2yuJN2CJRnQSwtFM
+ IxYCqVjuUCWF6NaGkqb/9IveAErlfbLCWpiO5rLcpN3/yKiPmkLT+PsLfpKjdSGvFfiB
+ nuZz5UfWQMSsxTOXOlSK12DGrUmAZHVQN/9UhDJiox7hjkpWT6mLmFfJbecYZmzAl1GA
+ AvMV/SSEmUrVYUd5A3JR3nX5TEoGIieU6s3KbqbUv6JbSf59RVZr9L3odhZob/XdZ1Ti
+ OiK14addCd7NW0N363VY8BdXVEOsE+zDjYkdeAbgsgZxyGtqi9HcuCz4PVomj0AuXUV/
+ A20w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721824322; x=1722429122;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=pPAMhbit1B/V9vaKOQX1Yb2zF6e6S3tju5TN0jGrNiU=;
+ b=XHyotfHPS7PlGhPNX+9eFvJHLH7Lat9uzxPkhokhPfwAAoxvcAwtKDPGrh04Cls4VC
+ E9hfeaClxTw3xGQ6VklxmjFdETy2WmSszbzaN0F1s1QzzGZUuxwYEhmaTn77g4c8IS/D
+ 2yVM6k0Ts/5vzwOsrV6Kt7ZX9VAJ30hgRgQk6GIXyakasJSB+xCnlhlUiT3JQ2dYR245
+ dA422coiD1IuKCG9lllGJpWwuc0vaAvBIeK4vRtTvKbOCLSViWj8Xy8s89RUmqM0Ga/G
+ Py6l7qFaOOANKF0tDwHzFwTsdUi7Eaa94aQCIKM+uTwMfsP5gopSkYlC8qaj3MDkekCD
+ 4RqA==
+X-Gm-Message-State: AOJu0Yzllko45+svpjqt3Tyi1/x4uSPfRZ4GSQ0bpEYLYhbt5Dw3+tAg
+ kb1hOCU1tEFEDq5o8NAcO79oRKINCY+CM+8rhziP9A3G6Tku7eBJt65w7FEuvmLAkHZjUQ4FhQ8
+ nzCdznagXqW8QJsWsZs93e0K3gHHu53larkIe6w==
+X-Received: by 2002:a05:651c:11d1:b0:2ef:2b36:933f with SMTP id
+ 38308e7fff4ca-2f0324ec08dmr12495901fa.14.1721824321907; Wed, 24 Jul 2024
+ 05:32:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: 3I79F/2ivccd
+References: <20240723131029.1159908-1-peter.maydell@linaro.org>
+ <20240723131029.1159908-3-peter.maydell@linaro.org>
+ <a8291990-e161-4a43-a1c9-69040f1f6f93@linaro.org>
+In-Reply-To: <a8291990-e161-4a43-a1c9-69040f1f6f93@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 24 Jul 2024 13:31:50 +0100
+Message-ID: <CAFEAcA8GPPy4P330P8kgbCxf=S+f8WGmB6tnAHN5bXxxyN9U=A@mail.gmail.com>
+Subject: Re: [PATCH 2/4] hw/misc/bcm2835_property: Avoid overflow in OTP
+ access properties
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x22b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xKR+JhIxR20g
 
-Zhao Liu <zhao1.liu@intel.com> writes:
-
-> Hi Markus,
+On Wed, 24 Jul 2024 at 08:06, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
 >
-> On Mon, Jul 22, 2024 at 03:33:13PM +0200, Markus Armbruster wrote:
->> Date: Mon, 22 Jul 2024 15:33:13 +0200
->> From: Markus Armbruster <armbru@redhat.com>
->> Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
->> 
->> Zhao Liu <zhao1.liu@intel.com> writes:
->> 
->> > Introduce smp-cache object so that user could define cache properties.
->> >
->> > In smp-cache object, define cache topology based on CPU topology level
->> > with two reasons:
->> >
->> > 1. In practice, a cache will always be bound to the CPU container
->> >    (either private in the CPU container or shared among multiple
->> >    containers), and CPU container is often expressed in terms of CPU
->> >    topology level.
->> > 2. The x86's cache-related CPUIDs encode cache topology based on APIC
->> >    ID's CPU topology layout. And the ACPI PPTT table that ARM/RISCV
->> >    relies on also requires CPU containers to help indicate the private
->> >    shared hierarchy of the cache. Therefore, for SMP systems, it is
->> >    natural to use the CPU topology hierarchy directly in QEMU to define
->> >    the cache topology.
->> >
->> > Currently, separated L1 cache (L1 data cache and L1 instruction cache)
->> > with unified higher-level cache (e.g., unified L2 and L3 caches), is the
->> > most common cache architectures.
->> >
->> > Therefore, enumerate the L1 D-cache, L1 I-cache, L2 cache and L3 cache
->> > with smp-cache object to add the basic cache topology support.
->> >
->> > Suggested-by: Daniel P. Berrange <berrange@redhat.com>
->> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
->> 
->> [...]
->> 
->> > diff --git a/qapi/machine-common.json b/qapi/machine-common.json
->> > index 82413c668bdb..8b8c0e9eeb86 100644
->> > --- a/qapi/machine-common.json
->> > +++ b/qapi/machine-common.json
->> > @@ -64,3 +64,53 @@
->> >    'prefix': 'CPU_TOPO_LEVEL',
->> >    'data': [ 'invalid', 'thread', 'core', 'module', 'cluster',
->> >              'die', 'socket', 'book', 'drawer', 'default' ] }
->> > +
->> > +##
->> > +# @SMPCacheName:
->> 
->> Why the SMP in this name?  Because it's currently only used by SMP
->> stuff?  Or is there another reason I'm missing?
+> Hi Peter,
 >
-> Yes, I suppose it can only be used in SMP case.
+> On 23/7/24 15:10, Peter Maydell wrote:
+> > Coverity points out that in our handling of the property
+> > RPI_FWREQ_SET_CUSTOMER_OTP we have a potential overflow.  This
+> > happens because we read start_num and number from the guest as
+> > unsigned 32 bit integers, but then the variable 'n' we use as a loop
+> > counter as we iterate from start_num to start_num + number is only an
+> > "int".  That means that if the guest passes us a very large start_num
+> > we will interpret it as negative.  This will result in an assertion
+> > failure inside bcm2835_otp_set_row(), which checks that we didn't
+> > pass it an invalid row number.
+> >
+> > A similar issue applies to all the properties for accessing OTP rows
+> > where we are iterating through with a start and length read from the
+> > guest.
+> >
+> > Use uint32_t for the loop counter to avoid this problem. Because in
+> > all cases 'n' is only used as a loop counter, we can do this as
+> > part of the for(), restricting its scope to exactly where we need it.
+> >
+> > Resolves: Coverity CID 1549401
+> > Cc: qemu-stable@nongnu.org
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >
-> Because Intel's heterogeneous CPUs have different topologies for cache,
-> for example, Alderlake's L2, for P core, L2 is per P-core, but for E
-> core, L2 is per module (4 E cores per module). Thus I would like to keep
-> the topology semantics of this object and -smp as consistent as possible.
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 >
-> Do you agree?
-
-I don't know enough to meaningfully agree or disagree.  I know just
-enough to annoy you with questions :)
-
-This series adds a way to configure caches.
-
-Structure of the configuration data: a list
-
-    [{"name": N, "topo": T}, ...]
-
-where N can be "l1d", "l1i", "l2", or "l3",
-  and T can be "invalid", "thread", "core", "module", "cluster",
-               "die", "socket", "book", "drawer", or "default".
-
-What's the use case?  The commit messages don't tell.
-
-Why does that use case make no sense without SMP?
-
-Can the same @name occur multiple times?  Documentation doesn't tell.
-If yes, what does that mean?
-
-Say we later add value "l1" for unified level 1 cache.  Would "l1" then
-conflict with "l1d" and "l1u"?
-
-May @topo be "invalid"?  Documentation doesn't tell.  If yes, what does
-that mean?
-
->> The more idiomatic QAPI name would be SmpCacheName.  Likewise for the
->> other type names below.
+> > ---
+> >   hw/misc/bcm2835_property.c | 9 ++++-----
+> >   1 file changed, 4 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+> > index e28fdca9846..7eb623b4e90 100644
+> > --- a/hw/misc/bcm2835_property.c
+> > +++ b/hw/misc/bcm2835_property.c
+> > @@ -30,7 +30,6 @@ static void bcm2835_property_mbox_push(BCM2835Propert=
+yState *s, uint32_t value)
+> >       uint32_t tot_len;
+> >       size_t resplen;
+> >       uint32_t tmp;
+> > -    int n;
+> >       uint32_t start_num, number, otp_row;
+> >
+> >       /*
+> > @@ -337,7 +336,7 @@ static void bcm2835_property_mbox_push(BCM2835Prope=
+rtyState *s, uint32_t value)
+> >
+> >               resplen =3D 8 + 4 * number;
+> >
+> > -            for (n =3D start_num; n < start_num + number &&
+> > +            for (uint32_t n =3D start_num; n < start_num + number &&
+> >                    n < BCM2835_OTP_CUSTOMER_OTP_LEN; n++) {
 >
-> I hesitated here as well, but considering that SMPConfiguration is "SMP"
-> and not "Smp", it has that name. I'll change to SmpCacheName for strict
-> initial capitalization.
->
->> > +#
->> > +# An enumeration of cache for SMP systems.  The cache name here is
->> > +# a combination of cache level and cache type.
->> 
->> The first sentence feels awkward.  Maybe
->> 
->>    # Caches an SMP system may have.
->> 
->> > +#
->> > +# @l1d: L1 data cache.
->> > +#
->> > +# @l1i: L1 instruction cache.
->> > +#
->> > +# @l2: L2 (unified) cache.
->> > +#
->> > +# @l3: L3 (unified) cache
->> > +#
->> > +# Since: 9.1
->> > +##
->> 
->> This assumes the L1 cache is split, and L2 and L3 are unified.
->> 
->> If we model a system with say a unified L1 cache, we'd simply extend
->> this enum.  No real difference to extending it for additional levels.
->> Correct?
->
-> Yes. For unified L1, we just need add a "l1" which is opposed to l1i/l1d.
->
->> > +{ 'enum': 'SMPCacheName',
->> > +  'prefix': 'SMP_CACHE',
->> 
->> Why not call it SmpCache, and ditch 'prefix'?
->
-> Because the SMPCache structure in smp_cache.h uses the similar name:
->
-> +#define TYPE_SMP_CACHE "smp-cache"
-> +OBJECT_DECLARE_SIMPLE_TYPE(SMPCache, SMP_CACHE)
-> +
-> +struct SMPCache {
-> +    Object parent_obj;
-> +
-> +    SMPCacheProperty props[SMP_CACHE__MAX];
-> +};
->
-> Naming is always difficult,
+> I find not making the counter size explicit and use 'unsigned'
+> simpler, since using 32-bit in particular doesn't bring much here.
+> Is there a reason I'm missing?
 
-Oh yes.
+I just wanted to match the types between n and start_num and
+number (where the latter two should be uint32_t because we load
+them from the guest as 32-bit values). Otherwise we're relying
+on "unsigned" being at least 32 bit -- it is, but if we need
+it to be 32 bit then why not use the type that is guaranteed
+and says specifically that it's 32 bits ?
 
->                             so I would use Smpcache here if you feel that
-> SmpCache is sufficient to distinguish it from SMPCache, or I would also
-> rename the SMPCache structure to SMPCacheState in smp_cache.h.
->
-> Which way do you prefer?
-
-Having both QAPI enum SmpCache and handwritten type SMPCache is clearly
-undesirable.
-
-I retract my suggestion to name the enum SmpCache.  The thing clearly is
-not a cache.  SmpCacheName is better.
-
-If you drop 'prefix', the generated C enum values look like
-SMP_CACHE_NAME_FOO.  Would that work for you?
-
-The "name" part bothers me a bit.  A name doesn't define what something
-is.  A type does.  SmpCacheType?
-
->> > +  'data': [ 'l1d', 'l1i', 'l2', 'l3' ] }
->> 
->> > +
->> > +##
->> > +# @SMPCacheProperty:
->> 
->> Sure we want to call this "property" (singular) and not "properties"?
->> What if we add members to this type?
->> 
->> > +#
->> > +# Cache information for SMP systems.
->> > +#
->> > +# @name: Cache name.
->> > +#
->> > +# @topo: Cache topology level.  It accepts the CPU topology
->> > +#     enumeration as the parameter, i.e., CPUs in the same
->> > +#     topology container share the same cache.
->> > +#
->> > +# Since: 9.1
->> > +##
->> > +{ 'struct': 'SMPCacheProperty',
->> > +  'data': {
->> > +  'name': 'SMPCacheName',
->> > +  'topo': 'CpuTopologyLevel' } }
->> 
->> We tend to avoid abbreviations in the QAPI schema.  Please consider
->> naming this 'topology'.
->
-> Sure!
->
->> > +
->> > +##
->> > +# @SMPCacheProperties:
->> > +#
->> > +# List wrapper of SMPCacheProperty.
->> > +#
->> > +# @caches: the SMPCacheProperty list.
->> > +#
->> > +# Since 9.1
->> > +##
->> > +{ 'struct': 'SMPCacheProperties',
->> > +  'data': { 'caches': ['SMPCacheProperty'] } }
->> 
->> Ah, now I see why you used the singular above!
->> 
->> However, this type holds the properties of call caches.  It is a list
-
-"of all caches" (can't type).
-
->> where each element holds the properties of a single cache.  Calling the
->> former "cache property" and the latter "cache properties" is confusing.
->
-> Yes...
->
->> SmpCachesProperties and SmpCacheProperties would put the singular
->> vs. plural where it belongs.  Sounds a bit awkward to me, though.
->> Naming is hard.
->
-> For SmpCachesProperties, it's easy to overlook the first "s".
->
->> Other ideas, anybody?
->
-> Maybe SmpCacheOptions or SmpCachesPropertyWrapper?
-
-I wonder why we have a single QOM object to configure all caches, and
-not one QOM object per cache.
-
->> > diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
->> > index b1581988e4eb..25394f2cda50 100644
->> > --- a/qapi/qapi-schema.json
->> > +++ b/qapi/qapi-schema.json
->> > @@ -64,11 +64,11 @@
->> >  { 'include': 'compat.json' }
->> >  { 'include': 'control.json' }
->> >  { 'include': 'introspect.json' }
->> > -{ 'include': 'qom.json' }
->> > -{ 'include': 'qdev.json' }
->> >  { 'include': 'machine-common.json' }
->> >  { 'include': 'machine.json' }
->> >  { 'include': 'machine-target.json' }
->> > +{ 'include': 'qom.json' }
->> > +{ 'include': 'qdev.json' }
->> >  { 'include': 'replay.json' }
->> >  { 'include': 'yank.json' }
->> >  { 'include': 'misc.json' }
->> 
->> Worth explaining in the commit message, I think.
->
-> Because of the include relationship between the json files, I need to
-> change the order. I had a "crazy" proposal to clean up this:
-> https://lore.kernel.org/qemu-devel/20240517062748.782366-1-zhao1.liu@intel.com/
->
-> Thanks,
-> Zhao
+thanks
+-- PMM

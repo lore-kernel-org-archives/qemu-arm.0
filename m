@@ -1,483 +1,456 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3625725njc;
-        Thu, 25 Jul 2024 03:03:54 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXXxUknDusN4Oab0P8Ycc8R5Jsp3G2OHEvE4vVFoeoqsH57prKNv29Fnp0dNKAF4r2Xg7Ht24X+2FtXVryd2Ja5R6XzNTyp
-X-Google-Smtp-Source: AGHT+IFEXU8vP51ZUKv+HcYubyt8nqmJvBvI0c+zehXy/Q8rfUPFHi/YQQ4KwNJ7Me3TNEvsxiZh
-X-Received: by 2002:a05:6214:dad:b0:6b5:9c9c:a736 with SMTP id 6a1803df08f44-6bb3c9cdeddmr29826216d6.6.1721901834193;
-        Thu, 25 Jul 2024 03:03:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721901834; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3360537njc;
+        Wed, 24 Jul 2024 15:07:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUSyAULhj42W8ozyqTd1iaWeZDMiuxYtg1QW6YADkKs/SkYQIGuF9Ncet4ItkQrXfNd8JpUhNrWra3Wg0r/YXxLw6ZoI/Ih
+X-Google-Smtp-Source: AGHT+IErAXaQjUaFcRwziv87hBrPeP3P1UM96N0y9JDxgOxXoL4hwNm3YliE46eXTQT60req9Mgq
+X-Received: by 2002:a05:6214:1c07:b0:6b5:80de:987f with SMTP id 6a1803df08f44-6bb3c887f1emr20944956d6.3.1721858820566;
+        Wed, 24 Jul 2024 15:07:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721858820; cv=none;
         d=google.com; s=arc-20160816;
-        b=VS0PPKkGg4WHAdqXgEb8PPGa8PBP8JkSJa7QGwel03gQqzgU4i496UwEiCyqY15XUz
-         w5LyhWhg2IHTePW5Cjxxvqnk70LnqdgK8oBo2+UGc+eCmErwZPZmGx+qkQx7ucVQ34mo
-         Tn7RYx6a7oq95POYCLBpebRHkZfXS2V/eiDkiAscENMCPa+DGg4goY+DBUwD/1KjGP9z
-         luAr8ofk3icQ2Z96A9Cvf5REn6hs1iYcV1INJRYjVQgTBCjH9pbYyK9uM0Q3U8Q4zLeC
-         cwdYG3xZFRGTSAhVXFPJJgESv8dvZGwbgdV5tLxNGDpHY79AeXQkSa/I+cvsgdKdtq74
-         BXQA==
+        b=B7IVGb4YKXCzmLdQC4Dn1mwmvT+P9GEG4cAGTxZ5HtDLJij3vo55MBC7Ea/rqtG9/3
+         E1FDUHQexmvdb1CnCh/ZCM8eNi56CD8EJ7OYn399Yy1Ty3IXjPWWfdMnmfnq6z2s9Hj6
+         RR1MDupOy1T00u3Kl7agreYghzkKqXRv4uhauFBAtZPLEYuqeTZYfG+Ec0BJvGlXSL7b
+         nkRx7+xJrCAM15DF0TSoscdGarDL41TPwgimblDwr4E7WwEXu/0v11wMHGzlNdXj/VuP
+         MIKKzIa3eJ1+qJpb1EQEXzorlbEJkuy+CbVHwWk5B5t2uWPE30aIXtrbOR9asGuJT50U
+         Ybkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:message-id:date
-         :references:in-reply-to:subject:cc:to:from:dkim-signature;
-        bh=uKggOuMzjkGZbvdSJoNF8Z4O9COB+FBjLMBo6UrDOV8=;
-        fh=ifBacIEt8jTdiGkyZbUiu1L7+zRusNfbE1KbUf7yopY=;
-        b=JHASEWzaRRfaASQ45olNoy5mWTOuLfFsAjQZoyNWt7ZD7SnZF3e0MPrKCQakWPyzDE
-         ejfQO6XTe/RQYlIg/WgqBYZo6ACyjozAig+NMXSsi3lccVy1/AOcifhvOS0RQCtZHlka
-         2g6/Ux6Nuhodn9yTBjZmjBD8iiFGYk8mY6mmUZp0zzyb17Lk7kCAFjZZy2c6dPaclXB7
-         Iv0z7sEIpYf57spGC4Vgxzblvg+KADz2pCD+lt+iNYfU7C7kmFRSXAUApXI5Lr15w11h
-         TBTD6HgFFaZmQuj9W92kcjg/ligRQqc0dUTqLDDueVmms0gTwfifOMLNX2Aww6BPAYwc
-         CR6A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=9RgA/sQrSqu0rivwfkVX+vpcUdtyuMUfMJ/jiDAmIes=;
+        fh=K5kqaJTZccB/9znrH9pXDnPNLuyiHHXKOURL7vodvgE=;
+        b=qWuHBImAcGYSimPUh7/BmU83r1+G6In/+vtkHJm6hnvscca27Lp2MdWdNXkimeGbV7
+         85qGRSV3K8d/wTKZGvOD9HZjfn1j9kjOSDYBRoQQZBJRmNQrVG3/FFnoJLCb1C7lDs7X
+         pdnIcedUQfFREzPCyd1qr1UVQUsdDk+m+fGwPSyIOJBHYfdBBHaEyya8BDLhlIx+qfJF
+         /8jeoHwMT4b773gB+uHA9yBg1K1BRhoS1br8Pl1asvbuyuEfNt/MBbdktS1TBXG0M369
+         8LC1SBIAoPteklshlj2SS32LvBT63i8srolEUvw7eWLKm1WYjnF74ph8vy1hbhwdBNZ0
+         B3iw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jQptlmUt;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <armbru@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3faf0d1fsi11321756d6.491.2024.07.25.03.03.54
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=PjL1+Jto;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3fa86ed0si1024876d6.262.2024.07.24.15.07.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 Jul 2024 03:03:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 24 Jul 2024 15:07:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jQptlmUt;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1721901833;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=uKggOuMzjkGZbvdSJoNF8Z4O9COB+FBjLMBo6UrDOV8=;
-	b=jQptlmUtlcWOhrBPsKDZV+qQBVFTfJU7QnLYKtn77MaTSXeLuMkTzhjlPerRJdFombSyLV
-	ksWqXn0rihkxvKQ0ZIP+RvzI4MMpurQPeE8fQ0Xxx+3IU8hD8JGdBu7g4Tq8a3GB/C6lJz
-	jkUEKH1HrFjHTLKm2FngYbNVHKEKAdo=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-615-mbOY8YfjN92hA4HC5AzWaQ-1; Thu,
- 25 Jul 2024 06:03:52 -0400
-X-MC-Unique: mbOY8YfjN92hA4HC5AzWaQ-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 3ADA41955D47;
-	Thu, 25 Jul 2024 10:03:50 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 244811955E7D;
-	Thu, 25 Jul 2024 10:03:49 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id D272D21E668A; Thu, 25 Jul 2024 12:03:46 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,  Shiju Jose
- <shiju.jose@huawei.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,  "Michael
- S. Tsirkin" <mst@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,
-  Ani Sinha <anisinha@redhat.com>,  Beraldo Leal <bleal@redhat.com>,
-  Dongjiu Geng <gengdongjiu1@gmail.com>,  Eric Blake <eblake@redhat.com>,
-  Igor Mammedov <imammedo@redhat.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  Thomas Huth <thuth@redhat.com>,  Wainer dos
- Santos Moschetta <wainersm@redhat.com>,  linux-kernel@vger.kernel.org,
-  qemu-arm@nongnu.org,  qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 7/7] acpi/ghes: extend arm error injection logic
-In-Reply-To: <89e8a63b5e54409dd9bc4e7f4f4c12290838371b.1721630625.git.mchehab+huawei@kernel.org>
-	(Mauro Carvalho Chehab's message of "Mon, 22 Jul 2024 08:45:59 +0200")
-References: <cover.1721630625.git.mchehab+huawei@kernel.org>
-	<89e8a63b5e54409dd9bc4e7f4f4c12290838371b.1721630625.git.mchehab+huawei@kernel.org>
-Date: Thu, 25 Jul 2024 12:03:46 +0200
-Message-ID: <87y15ppz3x.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=PjL1+Jto;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sWk7t-00008E-1g; Wed, 24 Jul 2024 18:06:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk7r-00007B-HJ
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2024 18:06:23 -0400
+Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk7n-0006Ql-Me
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2024 18:06:23 -0400
+Received: by mail-io1-xd34.google.com with SMTP id
+ ca18e2360f4ac-81477e9fd89so10703139f.0
+ for <qemu-arm@nongnu.org>; Wed, 24 Jul 2024 15:06:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721858777; x=1722463577;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=9RgA/sQrSqu0rivwfkVX+vpcUdtyuMUfMJ/jiDAmIes=;
+ b=PjL1+JtoOqmWBg4bOQLNtGvS9kFOZRCqd6ApWkleJf0+Gw8AP9t09GIlpm3HwmAhzE
+ FB9nnNgba9OqXT0nBZq3O0Jqy7Y5cmwPLhb5REP/OoQA15fiBioJnrk5dTt2Mm6XpxjE
+ CP2JMArQYnmsNCq/y0f7i1ZtL4xyWB84LpvYhVhimBrw2vUxxAm+PmXjhAKLX1di9FIy
+ nYHK/r3AesDdfAllrWnf5YZXC5oGXOIbPPBjfBDVdBmm8nPTTtErjDRY+DW8Inrab0jo
+ JBVRKxU6ozygfl+33jYMa8+4OoJVax//AjAye6n5LcKaVEF515A6/QdU63gq0qePLPuG
+ T/nQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721858777; x=1722463577;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=9RgA/sQrSqu0rivwfkVX+vpcUdtyuMUfMJ/jiDAmIes=;
+ b=QeWk3OlHLjuIFyDitipsNMdyFbxXKk6yVUSszCazzDL6x7mPcMMaKVt33KWiQQXYfH
+ PmZsZijUrINkDQg09HddySMN3x7biV302mnVjJHUfGVaZNzBM4++LL6yftQeQ2UFGX5e
+ fjknpMnbE8iNCsBEeO6u2tBq0CVIC1bXpgqmouJ5Hx7/+zVUF08DLlbXuTpZAexhKYwq
+ /cqnP8vXQgzh/lHmjF4zurwVLZzSwpJTVyMeagQDdL8S69TEULVxLCTOZY17U936+PfS
+ Ls/W4lyDQMfd3/Y5/OHsZDlmyjTdozpPSkVHv+V6tkdJVmqpaUUJwyjcaLnni9Ng77N4
+ V6gA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVvF+9zpp/w0ViLJC0ZCrrE/KuLojBlWPIKIS3vUwr8bfKY2Z6M4p2/0v62996v23o2j1Kymf6VVIZW9LSaFOjJGDXV
+X-Gm-Message-State: AOJu0YyPwok+AqxVsKEGZkvm9n8cI8DAT18K7Dp2PAgJkCKx6ROgQzCl
+ ejzm94VRNO04v0VT6FQ0co6ynbX2Auicd5gtVv5g7LzXefEUbSDz/nKLINBsiD4=
+X-Received: by 2002:a05:6602:6395:b0:7f8:c131:3bde with SMTP id
+ ca18e2360f4ac-81f72f47f01mr239482839f.5.1721858777134; 
+ Wed, 24 Jul 2024 15:06:17 -0700 (PDT)
+Received: from dune.bsdimp.com ([50.253.99.174])
+ by smtp.gmail.com with ESMTPSA id
+ 8926c6da1cb9f-4c29fa983f8sm10086173.47.2024.07.24.15.06.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 24 Jul 2024 15:06:16 -0700 (PDT)
+From: Warner Losh <imp@bsdimp.com>
+To: qemu-devel@nongnu.org
+Cc: Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Warner Losh <imp@bsdimp.com>,
+ Stacey Son <sson@FreeBSD.org>, Ajeet Singh <itachis@FreeBSD.org>,
+ Sean Bruno <sbruno@freebsd.org>, Jessica Clarke <jrtc27@jrtc27.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PULL 01/15] bsd-user:Add CPU initialization and management functions
+Date: Wed, 24 Jul 2024 16:04:34 -0600
+Message-ID: <20240724220449.10398-2-imp@bsdimp.com>
+X-Mailer: git-send-email 2.45.1
+In-Reply-To: <20240724220449.10398-1-imp@bsdimp.com>
+References: <20240724220449.10398-1-imp@bsdimp.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-TUID: /nAr/hhONUOm
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::d34;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd34.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Sce0Tvg5oHlj
 
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:
+From: Stacey Son <sson@FreeBSD.org>
 
-> Enrich CPER error injection logic for ARM processor to allow
-> setting values to  from UEFI 2.10 tables N.16 and N.17.
->
-> It should be noticed that, with such change, all arguments are
-> now optional, so, once QMP is negotiated with:
->
-> 	{ "execute": "qmp_capabilities" }
->
-> the simplest way to generate a cache error is to use:
->
-> 	{ "execute": "arm-inject-error" }
->
-> Also, as now PEI is mapped into an array, it is possible to
-> inject multiple errors at the same CPER record with:
->
-> 	{ "execute": "arm-inject-error", "arguments": {
-> 	   "error": [ {"type": [ "cache-error" ]},
-> 		      {"type": [ "tlb-error" ]} ] } }
->
-> This would generate both cache and TLB errors, using default
-> values for other fields.
->
-> As all fields from ARM Processor CPER are now mapped, all
-> types of CPER records can be generated with the new QAPI.
->
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Added function to initialize ARM CPU and check if it supports 64-bit mode.
+Implemented CPU loop function to handle exceptions and emulate execution of instructions.
+Added function to clone CPU state to create a new thread.
+Included AArch64 specific CPU functions for bsd-user to set and receive thread-local-storage
+value from the tpidr_el0 register.
+Introduced structure for storing CPU register states for BSD-USER.
 
-[...]
+Signed-off-by: Stacey Son <sson@FreeBSD.org>
+Signed-off-by: Ajeet Singh <itachis@FreeBSD.org>
+Co-authored-by: Kyle Evans <kevans@freebsd.org>
+Co-authored-by: Sean Bruno <sbruno@freebsd.org>
+Co-authored-by: Jessica Clarke <jrtc27@jrtc27.com>
+Reviewed-by: Warner Losh <imp@bsdimp.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240707191128.10509-2-itachis@FreeBSD.org>
+Signed-off-by: Warner Losh <imp@bsdimp.com>
+---
+ bsd-user/aarch64/target_arch_cpu.c |  31 +++++
+ bsd-user/aarch64/target_arch_cpu.h | 192 +++++++++++++++++++++++++++++
+ bsd-user/aarch64/target_syscall.h  |  51 ++++++++
+ 3 files changed, 274 insertions(+)
+ create mode 100644 bsd-user/aarch64/target_arch_cpu.c
+ create mode 100644 bsd-user/aarch64/target_arch_cpu.h
+ create mode 100644 bsd-user/aarch64/target_syscall.h
 
-> diff --git a/qapi/arm-error-inject.json b/qapi/arm-error-inject.json
-> index 430e6cea6b60..2a314830fe60 100644
-> --- a/qapi/arm-error-inject.json
-> +++ b/qapi/arm-error-inject.json
-> @@ -2,40 +2,258 @@
->  # vim: filetype=3Dpython
->=20=20
->  ##
-> -# =3D ARM Processor Errors
-> +# =3D ARM Processor Errors as defined at:
-> +# https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.ht=
-ml
-> +# See tables N.16, N.17 and N.21.
->  ##
+diff --git a/bsd-user/aarch64/target_arch_cpu.c b/bsd-user/aarch64/target_arch_cpu.c
+new file mode 100644
+index 00000000000..b2fa59efaf6
+--- /dev/null
++++ b/bsd-user/aarch64/target_arch_cpu.c
+@@ -0,0 +1,31 @@
++/*
++ * ARM AArch64 specific CPU for bsd-user
++ *
++ * Copyright (c) 2015 Stacey Son
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++#include "qemu/osdep.h"
++#include "target_arch.h"
++
++/* See cpu_set_user_tls() in arm64/arm64/vm_machdep.c */
++void target_cpu_set_tls(CPUARMState *env, target_ulong newtls)
++{
++    env->cp15.tpidr_el[0] = newtls;
++}
++
++target_ulong target_cpu_get_tls(CPUARMState *env)
++{
++    return env->cp15.tpidr_el[0];
++}
+diff --git a/bsd-user/aarch64/target_arch_cpu.h b/bsd-user/aarch64/target_arch_cpu.h
+new file mode 100644
+index 00000000000..5c150bb7e9c
+--- /dev/null
++++ b/bsd-user/aarch64/target_arch_cpu.h
+@@ -0,0 +1,192 @@
++/*
++ *  ARM AArch64 cpu init and loop
++ *
++ * Copyright (c) 2015 Stacey Son
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef TARGET_ARCH_CPU_H
++#define TARGET_ARCH_CPU_H
++
++#include "target_arch.h"
++#include "signal-common.h"
++#include "target/arm/syndrome.h"
++
++#define TARGET_DEFAULT_CPU_MODEL "any"
++
++static inline void target_cpu_init(CPUARMState *env,
++    struct target_pt_regs *regs)
++{
++    int i;
++
++    if (!(arm_feature(env, ARM_FEATURE_AARCH64))) {
++        fprintf(stderr, "The selected ARM CPU does not support 64 bit mode\n");
++        exit(1);
++    }
++    for (i = 0; i < 31; i++) {
++        env->xregs[i] = regs->regs[i];
++    }
++    env->pc = regs->pc;
++    env->xregs[31] = regs->sp;
++}
++
++
++static inline void target_cpu_loop(CPUARMState *env)
++{
++    CPUState *cs = env_cpu(env);
++    int trapnr, ec, fsc, si_code, si_signo;
++    uint64_t code, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8;
++    uint32_t pstate;
++    abi_long ret;
++
++    for (;;) {
++        cpu_exec_start(cs);
++        trapnr = cpu_exec(cs);
++        cpu_exec_end(cs);
++        process_queued_cpu_work(cs);
++
++        switch (trapnr) {
++        case EXCP_SWI:
++            /* See arm64/arm64/trap.c cpu_fetch_syscall_args() */
++            code = env->xregs[8];
++            if (code == TARGET_FREEBSD_NR_syscall ||
++                code == TARGET_FREEBSD_NR___syscall) {
++                code = env->xregs[0];
++                arg1 = env->xregs[1];
++                arg2 = env->xregs[2];
++                arg3 = env->xregs[3];
++                arg4 = env->xregs[4];
++                arg5 = env->xregs[5];
++                arg6 = env->xregs[6];
++                arg7 = env->xregs[7];
++                arg8 = 0;
++            } else {
++                arg1 = env->xregs[0];
++                arg2 = env->xregs[1];
++                arg3 = env->xregs[2];
++                arg4 = env->xregs[3];
++                arg5 = env->xregs[4];
++                arg6 = env->xregs[5];
++                arg7 = env->xregs[6];
++                arg8 = env->xregs[7];
++            }
++            ret = do_freebsd_syscall(env, code, arg1, arg2, arg3,
++                    arg4, arg5, arg6, arg7, arg8);
++            /*
++             * The carry bit is cleared for no error; set for error.
++             * See arm64/arm64/vm_machdep.c cpu_set_syscall_retval()
++             */
++            pstate = pstate_read(env);
++            if (ret >= 0) {
++                pstate &= ~PSTATE_C;
++                env->xregs[0] = ret;
++            } else if (ret == -TARGET_ERESTART) {
++                env->pc -= 4;
++                break;
++            } else if (ret != -TARGET_EJUSTRETURN) {
++                pstate |= PSTATE_C;
++                env->xregs[0] = -ret;
++            }
++            pstate_write(env, pstate);
++            break;
++
++        case EXCP_INTERRUPT:
++            /* Just indicate that signals should be handle ASAP. */
++            break;
++
++        case EXCP_UDEF:
++            force_sig_fault(TARGET_SIGILL, TARGET_ILL_ILLOPN, env->pc);
++            break;
++
++
++        case EXCP_PREFETCH_ABORT:
++        case EXCP_DATA_ABORT:
++            /* We should only arrive here with EC in {DATAABORT, INSNABORT}. */
++            ec = syn_get_ec(env->exception.syndrome);
++            assert(ec == EC_DATAABORT || ec == EC_INSNABORT);
++
++            /* Both EC have the same format for FSC, or close enough. */
++            fsc = extract32(env->exception.syndrome, 0, 6);
++            switch (fsc) {
++            case 0x04 ... 0x07: /* Translation fault, level {0-3} */
++                si_signo = TARGET_SIGSEGV;
++                si_code = TARGET_SEGV_MAPERR;
++                break;
++            case 0x09 ... 0x0b: /* Access flag fault, level {1-3} */
++            case 0x0d ... 0x0f: /* Permission fault, level {1-3} */
++                si_signo = TARGET_SIGSEGV;
++                si_code = TARGET_SEGV_ACCERR;
++                break;
++            case 0x11: /* Synchronous Tag Check Fault */
++                si_signo = TARGET_SIGSEGV;
++                si_code = /* TARGET_SEGV_MTESERR; */ TARGET_SEGV_ACCERR;
++                break;
++            case 0x21: /* Alignment fault */
++                si_signo = TARGET_SIGBUS;
++                si_code = TARGET_BUS_ADRALN;
++                break;
++            default:
++                g_assert_not_reached();
++            }
++            force_sig_fault(si_signo, si_code, env->exception.vaddress);
++            break;
++
++        case EXCP_DEBUG:
++        case EXCP_BKPT:
++            force_sig_fault(TARGET_SIGTRAP, TARGET_TRAP_BRKPT, env->pc);
++            break;
++
++        case EXCP_ATOMIC:
++            cpu_exec_step_atomic(cs);
++            break;
++
++        case EXCP_YIELD:
++            /* nothing to do here for user-mode, just resume guest code */
++            break;
++        default:
++            fprintf(stderr, "qemu: unhandled CPU exception 0x%x - aborting\n",
++                    trapnr);
++            cpu_dump_state(cs, stderr, 0);
++            abort();
++        } /* switch() */
++        process_pending_signals(env);
++        /*
++         * Exception return on AArch64 always clears the exclusive
++         * monitor, so any return to running guest code implies this.
++         * A strex (successful or otherwise) also clears the monitor, so
++         * we don't need to specialcase EXCP_STREX.
++         */
++        env->exclusive_addr = -1;
++    } /* for (;;) */
++}
++
++
++/* See arm64/arm64/vm_machdep.c cpu_fork() */
++static inline void target_cpu_clone_regs(CPUARMState *env, target_ulong newsp)
++{
++    if (newsp) {
++        env->xregs[31] = newsp;
++    }
++    env->regs[0] = 0;
++    env->regs[1] = 0;
++    pstate_write(env, 0);
++}
++
++static inline void target_cpu_reset(CPUArchState *env)
++{
++}
++
++
++#endif /* TARGET_ARCH_CPU_H */
+diff --git a/bsd-user/aarch64/target_syscall.h b/bsd-user/aarch64/target_syscall.h
+new file mode 100644
+index 00000000000..08ae913c42e
+--- /dev/null
++++ b/bsd-user/aarch64/target_syscall.h
+@@ -0,0 +1,51 @@
++/*
++ * ARM AArch64 specific CPU for bsd-user
++ *
++ * Copyright (c) 2015 Stacey D. Son <sson at Freebsd>
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef BSD_USER_AARCH64_TARGET_SYSCALL_H
++#define BSD_USER_AARCH64_TARGET_SYSCALL_H
++
++/*
++ * The aarch64 registers are named:
++ *
++ * x0 through x30 - for 64-bit-wide access (same registers)
++ * Register '31' is one of two registers depending on the instruction context:
++ *  For instructions dealing with the stack, it is the stack pointer, named rsp
++ *  For all other instructions, it is a "zero" register, which returns 0 when
++ *  read and discards data when written - named rzr (xzr, wzr)
++ *
++ * Usage during syscall/function call:
++ * r0-r7 are used for arguments and return values
++ * For syscalls, the syscall number is in r8
++ * r9-r15 are for temporary values (may get trampled)
++ * r16-r18 are used for intra-procedure-call and platform values (avoid)
++ * The called routine is expected to preserve r19-r28
++ * r29 and r30 are used as the frame register and link register (avoid)
++ * See the ARM Procedure Call Reference for details.
++ */
++struct target_pt_regs {
++    uint64_t    regs[31];
++    uint64_t    sp;
++    uint64_t    pc;
++    uint64_t    pstate;
++};
++
++#define TARGET_HW_MACHINE       "arm64"
++#define TARGET_HW_MACHINE_ARCH  "aarch64"
++
++#endif /* BSD_USER_AARCH64_TARGET_SYSCALL_H */
+-- 
+2.45.1
 
-This comes out badly in HTML.
-
-Try something like
-
-   # =3D ARM Processor Errors
-   #
-   # These are defined at
-   # https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.ht=
-ml
-   # See tables N.16, N.17 and N.21.
-
-If any part of this is relevant in PATCH 4 already, squash the relevant
-parts into that patch please.
-
->=20=20
-> +##
-> +# @ArmProcessorValidationBits:
-> +#
-> +# Indcates whether or not fields of ARM processor CPER record are valid.
-
-docs/devel/qapi-code-gen.rst section "Documentation markup":
-
-    For legibility, wrap text paragraphs so every line is at most 70
-    characters long.
-
-> +#
-> +# @mpidr-valid:  MPIDR Valid
-> +#
-> +# @affinity-valid: Error affinity level Valid
-> +#
-> +# @running-state-valid: Running State
-> +#
-> +# @vendor-specific-valid: Vendor Specific Info Valid
-> +#
-> +# Since: 9.1
-> +##
-> +{ 'enum': 'ArmProcessorValidationBits',
-> +  'data': ['mpidr-valid',
-> +           'affinity-valid',
-> +           'running-state-valid',
-> +           'vendor-specific-valid']
-> +}
-> +
-> +##
-> +# @ArmProcessorFlags:
-> +#
-> +# Indicates error attributes at the Error info section.
-> +#
-> +# @first-error-cap: First error captured
-> +#
-> +# @last-error-cap:  Last error captured
-> +#
-> +# @propagated: Propagated
-> +#
-> +# @overflow: Overflow
-> +#
-> +# Since: 9.1
-> +##
-> +{ 'enum': 'ArmProcessorFlags',
-> +  'data': ['first-error-cap',
-> +           'last-error-cap',
-> +           'propagated',
-> +           'overflow']
-> +}
-> +
-> +##
-> +# @ArmProcessorRunningState:
-> +#
-> +# Indicates if the processor is running.
-> +#
-> +# @processor-running: indicates that the processor is running
-> +#
-> +# Since: 9.1
-> +##
-> +{ 'enum': 'ArmProcessorRunningState',
-> +  'data': ['processor-running']
-> +}
-> +
->  ##
->  # @ArmProcessorErrorType:
->  #
-> -# Type of ARM processor error to inject
-> -#
-> -# @unknown-error: Unknown error
-> +# Type of ARM processor error information to inject.
->  #
->  # @cache-error: Cache error
->  #
->  # @tlb-error: TLB error
->  #
-> -# @bus-error: Bus error.
-> +# @bus-error: Bus error
->  #
-> -# @micro-arch-error: Micro architectural error.
-> +# @micro-arch-error: Micro architectural error
->  #
->  # Since: 9.1
->  ##
->  { 'enum': 'ArmProcessorErrorType',
-> -  'data': ['unknown-error',
-> -	   'cache-error',
-> +  'data': ['cache-error',
->             'tlb-error',
->             'bus-error',
->             'micro-arch-error']
-> + }
-
-Squash the changes to this type into PATCH 4, please.
-
-> +
-> +##
-> +# @ArmPeiValidationBits:
-> +#
-> +# Indcates whether or not fields of Processor Error Info section are val=
-id.
-> +#
-> +# @multiple-error-valid: Information at multiple-error field is valid
-> +#
-> +# @flags-valid: Information at flags field is valid
-> +#
-> +# @error-info-valid: Information at error-info field is valid
-> +#
-> +# @virt-addr-valid: Information at virt-addr field is valid
-> +#
-> +# @phy-addr-valid: Information at phy-addr field is valid
-> +#
-> +# Since: 9.1
-> +##
-> +{ 'enum': 'ArmPeiValidationBits',
-> +  'data': ['multiple-error-valid',
-> +           'flags-valid',
-> +           'error-info-valid',
-> +           'virt-addr-valid',
-> +           'phy-addr-valid']
-> +}
-> +
-> +##
-> +# @ArmProcessorErrorInformation:
-> +#
-> +# Contains ARM processor error information (PEI) data according with UEFI
-> +# CPER table N.17.
-> +#
-> +# @validation:
-> +#       Valid validation bits for error-info section.
-> +#       Argument is optional. If not specified, those flags will be enab=
-led:
-> +#       first-error-cap and propagated.
-
-Please format like this for consistency:
-
-   # @validation: Valid validation bits for error-info section.
-   #     Argument is optional.  If not specified, those flags will be
-   #     enabled: first-error-cap and propagated.
-
-> +#
-> +# @type:
-> +#       ARM processor error types to inject. Argument is mandatory.
-> +#
-> +# @multiple-error:
-> +#       Indicates whether multiple errors have occurred.
-> +#       Argument is optional. If not specified and @validation not enfor=
-ced,
-> +#       this field will be marked as invalid at CPER record..
-> +#
-> +# @flags:
-> +#       Indicates flags that describe the error attributes.
-> +#       Argument is optional. If not specified and defaults to
-> +#       first-error and propagated.
-> +#
-> +# @error-info:
-> +#       Error information structure is specific to each error type.
-> +#       Argument is optional, and its value depends on the PEI type(s).
-> +#       If not defined, the default depends on the type:
-> +#       - for cache-error: 0x0091000F;
-> +#       - for tlb-error: 0x0054007F;
-> +#       - for bus-error: 0x80D6460FFF;
-> +#       - for micro-arch-error: 0x78DA03FF;
-> +#       - if multiple types used, this bit is disabled from @validation =
-bits.
-> +#
-> +# @virt-addr:
-> +#       Virtual fault address associated with the error.
-> +#       Argument is optional. If not specified and @validation not enfor=
-ced,
-> +#       this field will be marked as invalid at CPER record..
-> +#
-> +# @phy-addr:
-> +#       Physical fault address associated with the error.
-> +#       Argument is optional. If not specified and @validation not enfor=
-ced,
-> +#       this field will be marked as invalid at CPER record..
-> +#
-> +# Since: 9.1
-> +##
-> +{ 'struct': 'ArmProcessorErrorInformation',
-> +  'data': { '*validation': ['ArmPeiValidationBits'],
-> +            'type': ['ArmProcessorErrorType'],
-> +            '*multiple-error': 'uint16',
-> +            '*flags': ['ArmProcessorFlags'],
-> +            '*error-info': 'uint64',
-> +            '*virt-addr':  'uint64',
-> +            '*phy-addr': 'uint64'}
-> +}
-> +
-> +##
-> +# @ArmProcessorContext:
-> +#
-> +# Provide processor context state specific to the ARM processor architec=
-ture,
-> +# According with UEFI 2.10 CPER table N.21.
-> +# Argument is optional.If not specified, no context will be used.
-> +#
-> +# @type:
-> +#       Contains an integer value indicating the type of context state b=
-eing
-> +#       reported.
-> +#       Argument is optional. If not defined, it will be set to be EL1 r=
-egister
-> +#       for the emulation, e. g.:
-> +#       - on arm32: AArch32 EL1 context registers;
-> +#       - on arm64: AArch64 EL1 context registers.
-> +#
-> +# @register:
-> +#       Provides the contents of the actual registers or raw data, depen=
-ding
-> +#       on the context type.
-> +#       Argument is optional. If not defined, it will fill the first reg=
-ister
-> +#       with 0xDEADBEEF, and the other ones with zero.
-> +#
-> +# @minimal-size:
-> +#       Argument is optional. If provided, define the minimal size of the
-> +#       context register array. The actual size is defined by checking t=
-he
-> +#       number of register values plus the content of this field (if use=
-d),
-> +#       ensuring that each processor context information structure array=
- is
-> +#       padded with zeros if the size is not a multiple of 16 bytes.
-> +#
-> +# Since: 9.1
-> +##
-> +{ 'struct': 'ArmProcessorContext',
-> +  'data': { '*type': 'uint16',
-> +            '*minimal-size': 'uint32',
-> +            '*register': ['uint64']}
->  }
->=20=20
->  ##
->  # @arm-inject-error:
->  #
-> -# Inject ARM Processor error.
-> +# Inject ARM Processor error with data to be filled accordign with UEFI =
-2.10
-> +# CPER table N.16.
->  #
-> -# @errortypes: ARM processor error types to inject
-> +# @validation:
-> +#       Valid validation bits for ARM processor CPER.
-> +#       Argument is optional. If not specified, the default is
-> +#       calculated based on having the corresponding arguments filled.
-> +#
-> +# @affinity-level:
-> +#       Error affinity level for errors that can be attributed to a spec=
-ific
-> +#       affinity level.
-> +#       Argument is optional. If not specified and @validation not enfor=
-ced,
-> +#       this field will be marked as invalid at CPER record.
-> +#
-> +# @mpidr-el1:
-> +#       Processor=E2=80=99s unique ID in the system.
-> +#       Argument is optional. If not specified, it will use the cpu mpidr
-> +#       field from the emulation data. If zero and @validation is not
-> +#       enforced, this field will be marked as invalid at CPER record.
-> +#
-> +# @midr-el1:  Identification info of the chip
-> +#       Argument is optional. If not specified, it will use the cpu mpidr
-> +#       field from the emulation data. If zero and @validation is not
-> +#       enforced, this field will be marked as invalid at CPER record.
-> +#
-> +# @running-state:
-> +#       Indicates the running state of the processor.
-> +#       Argument is optional. If not specified and @validation not enfor=
-ced,
-> +#       this field will be marked as invalid at CPER record.
-> +#
-> +# @psci-state:
-> +#       Provides PSCI state of the processor, as defined in ARM PSCI doc=
-ument.
-> +#       Argument is optional. If not specified, it will use the cpu power
-> +#       state field from the emulation data.
-> +#
-> +# @context:
-> +#       Contains an array of processor context registers.
-> +#       Argument is optional. If not specified, no context will be added.
-> +#
-> +# @vendor-specific:
-> +#       Contains a byte array of vendor-specific data.
-> +#       Argument is optional. If not specified, no vendor-specific data
-> +#       will be added.
-> +#
-> +# @error:
-> +#       Contains an array of ARM processor error information (PEI) secti=
-ons.
-> +#       Argument is optional. If not specified, defaults to a single
-> +#       Program Error Information record defaulting to type=3Dcache-erro=
-r.
->  #
->  # Features:
->  #
-> @@ -44,6 +262,16 @@
->  # Since: 9.1
->  ##
->  { 'command': 'arm-inject-error',
-> -  'data': { 'errortypes': ['ArmProcessorErrorType'] },
-> +  'data': {
-> +    '*validation': ['ArmProcessorValidationBits'],
-> +    '*affinity-level': 'uint8',
-> +    '*mpidr-el1': 'uint64',
-> +    '*midr-el1': 'uint64',
-> +    '*running-state':  ['ArmProcessorRunningState'],
-> +    '*psci-state': 'uint32',
-> +    '*context': ['ArmProcessorContext'],
-> +    '*vendor-specific': ['uint8'],
-> +    '*error': ['ArmProcessorErrorInformation']
-> +  },
->    'features': [ 'unstable' ]
->  }
-
-This changes the command pretty much completely.  Why is the previous
-state worth capturing in git?
-
-> diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
-> index 0e9490cebc72..77c800186f34 160000
-> --- a/tests/lcitool/libvirt-ci
-> +++ b/tests/lcitool/libvirt-ci
-> @@ -1 +1 @@
-> -Subproject commit 0e9490cebc726ef772b6c9e27dac32e7ae99f9b2
-> +Subproject commit 77c800186f34b21be7660750577cc5582a914deb
-
-Accident?

@@ -1,124 +1,112 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp2953178njc;
-        Wed, 24 Jul 2024 01:56:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVlwXITA/Qh4Jz4eSbDGmb7USbIWsVIui/n9Oz9CKf98pzGDGQknl04VgdkLZDldkG45s3vLTdXwUHa29W3RkU7fHR2z+vN
-X-Google-Smtp-Source: AGHT+IE1FPIzBM3PRh4EXDs4aPCGgAJYUMNYqug8QaDN5hNnOV3ZNFIIbwGS4X/8gHOk1EP9xgNB
-X-Received: by 2002:a05:6102:5682:b0:48f:eb7f:24ab with SMTP id ada2fe7eead31-49283faea83mr8199923137.30.1721811391717;
-        Wed, 24 Jul 2024 01:56:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721811391; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3319490njc;
+        Wed, 24 Jul 2024 13:26:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUE6UnP7mQ8XPIy4DzMXyHwnk6t7FuzjDVHxsc1RU2WoRhv0+8AAUVX9WpNpfU+HWifpvizV9awz49uW5v+KNHse7LRhUM9
+X-Google-Smtp-Source: AGHT+IF9n6PYwsbQem0jIqmj8gmr12Zed4NdrS/asFXvZXDpTlkBtIgy8fqx8k9t0FbbsIf/3nOZ
+X-Received: by 2002:a05:6358:418f:b0:1a6:7e01:e4f4 with SMTP id e5c5f4694b2df-1acf8ae2503mr127142055d.28.1721852765426;
+        Wed, 24 Jul 2024 13:26:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721852765; cv=none;
         d=google.com; s=arc-20160816;
-        b=H21GuYt6V9OyFMHVOvNgpch01QDjui1s7srRki/iXUmEJ2yMVzf1Y4/GIqSErOE5Ul
-         kNfh9C9l4IPZ/Y+19nlzJUrgrDYHORWMkydrxopfzLQwsU/c3WvIXlOHGChiFn28ol37
-         YM8hgXOMVtIcAQqJMfZE1zCOaaQGAIvVlsVDmiv0s+F5YfH/a8lO3h1G+G7/jptkc5Zk
-         kNWAah+ZJza2taRU3+b9cCHfiTGodugboUjzc/6MIo/8NE0uuy9zIIbg5RGgObuCE5Hj
-         yaq3GuCXzCOGc7aiGGPCk7LA4dugTVYb4q7PqBqCNctQbmk5OoqY8+s4ijgLF3QPoL67
-         PbOw==
+        b=bx1pUZ9KrXqbFrP4InlL1hHux50fWmWl1CsYpWSNUIzfN11QYwOUQRrMJ8cRxioqu9
+         nSjffmz15EcJWnm38uKcVNZEOO4D2r8eStaPUqP9IDhRT0HcONhgcZqSiiE8TlBtDmPb
+         JJe/8DD2ncrHeEI5SjBO0XhEu3aPQieurvF1cSzAnr/GSPUIVeL1sHzfxbhq16nYQhgZ
+         WG+HWoontvhMyJGDzkDg48Dp0tI1XcNJUFYGmJ/uXUZgpKn8FJSOctymrS9haU7U2E77
+         jZYsYF/GgWCZW0YpkmOZA0yTEFQx+sF/L0yctlXL4wsSWgYn79GmiV0AViJZKnX9B2ez
+         kysw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=akgZQgA7uUR9t3bj6RrulV+rKA+8OE70vYfcmBymVA0=;
-        fh=kleuIYwpJ+4ea0owIDYY0LN7C7eepvKPNX4qrfsJFLg=;
-        b=uy9WBlATXJfAaMO3Oz9mKaS+pIZy25+5dh6qETnZrgZHrbrmGRpXkKyt5YHryrvUiV
-         JTC73THVMY3puE7JC1J6uwE25XQOHf85Y7Ih/nLzdIwwf8SNnHqF0N9XmdDY3BC6zVz/
-         FWt3rgWUPYu15iey8EEjUycmtocneuuHJ9mRnJA13lufcwUs4B6L8JZQDqwgjiMECzAS
-         QPZaoaFGD57T2u5orwhJT0hQSLOHH6hVoU86pg3NGfusaCtmNIYyAWVyn/YCiS/cYbup
-         Xr0chNfZzYuRGCHafzScpRCbAlN6b4BngD5KsJ5LYtilJkduxxFPC5mqSLCeugXNWErM
-         MYdA==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=s4YPCnDOIa8NUGfAr2gZ4GzcVNlDcSYa3Xe5483kA78=;
+        fh=AX0dIIDzbS035WxcCMncLEmP98v13vE5lA1ux9WwhIs=;
+        b=PJay6DmakGS017yoWNaEA3LDz4NgKplGRR1nDl30Px3sI69ys+U7YpZSrVwrIbFb0s
+         6V0PXQXpI8YFtteMmOrbMgCuJAQC8A54xoQfbII5C0KVl9YqtEt+fv3QcB1iFpRYNZD3
+         Az8aAJrUfvid7O9+HT2ukkjcBV5+HJKC/EM1TBeBkJpH5ByXXI5EcAJ66EaXR8m4J2Ie
+         gpLSnxIEoV782fg0RFZjDHs4yF4hipic+uRHkdYlmjxlIGj5KsSMG9Ju8RRwA34WQ5SY
+         Nj4J2gQCHpq1tnldyFWihwRR7rrnbK2zb8KvBo296QyEshEHIvQQOVdrNe+sfvO060d0
+         NZxw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VlfUIIsw;
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b="B/2+a1i3";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1990925d1si1200956985a.569.2024.07.24.01.56.31
+        by mx.google.com with ESMTPS id af79cd13be357-7a19904aabfsi1330589085a.325.2024.07.24.13.26.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jul 2024 01:56:31 -0700 (PDT)
+        Wed, 24 Jul 2024 13:26:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VlfUIIsw;
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b="B/2+a1i3";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sWXmv-0004hc-8I; Wed, 24 Jul 2024 04:55:57 -0400
+	id 1sWiYN-0003fT-LM; Wed, 24 Jul 2024 16:25:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sWXmt-0004dw-T0
- for qemu-arm@nongnu.org; Wed, 24 Jul 2024 04:55:55 -0400
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1sWiYK-0003bd-Aq
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2024 16:25:36 -0400
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sWXmr-00049R-Ty
- for qemu-arm@nongnu.org; Wed, 24 Jul 2024 04:55:55 -0400
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-70d2e68f5a8so2010374b3a.3
- for <qemu-arm@nongnu.org>; Wed, 24 Jul 2024 01:55:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1sWiYF-0001Dv-Ll
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2024 16:25:34 -0400
+Received: by mail-pj1-x102b.google.com with SMTP id
+ 98e67ed59e1d1-2cd2f89825fso172530a91.1
+ for <qemu-arm@nongnu.org>; Wed, 24 Jul 2024 13:25:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721811352; x=1722416152; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=akgZQgA7uUR9t3bj6RrulV+rKA+8OE70vYfcmBymVA0=;
- b=VlfUIIswE0HPyEZC90KkC2ztoiVfmmXNhfGbWrNZ11UtRb8g4phQNUdZVC0ORXZNKY
- Q4fJs9wX01mNBn+zVWIVHX4mXz8y6lpqfLuKIwebTfRDqG78JgubmkhFRxaFpG+8Yhow
- dmK2h28chqOqlpEt3oJsDF4itvcCOKbK52uhr+SBhLteeIcovnhqABdkIlIDcjomD2Su
- 1pAjeljM0xX1qAJt8IhOmkX4DBSMM2N4l/2+j6tKCQtvwleCVQHwNZXrvac0QszHsMPG
- D9NivVyATjU8hF2KqHXsGkqKn37oAtL74BfNaE+5ybq2BplSoFLeBVzoyKecU/5BB/9Q
- De/A==
+ d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721852729; x=1722457529;
+ darn=nongnu.org; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=s4YPCnDOIa8NUGfAr2gZ4GzcVNlDcSYa3Xe5483kA78=;
+ b=B/2+a1i3re1v4t/0FYrDcWobeIwyA4wU2B7I/dLjSAYtcgCK6topOJbUJeWoiBqTlR
+ iY/yrPlHPichTa9BJQw/XRJ7l/VRpbNaiDXc+yT5v1SkXFgbKnj9PXOsUTS7NLIy5JHo
+ gO0MmQ/+4A8HA2xbHbxQ6wdi9hcRohOJ7i2ls2U5xouH4YtbDxiflEwdJIhfxYvriV70
+ HSjFKd4T17EoOW2M6O2Z6tIAkLjm4/W4BC4r2SbYneDSHsdRD+6zF8q20QxlTAVLq192
+ 32yXJlgnKmy0kqfflUpbFoaFUhfv5co0PJpycUZFBmlo/Gv4sihb6jNSFoqq0zlNVIge
+ 3jhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721811352; x=1722416152;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=akgZQgA7uUR9t3bj6RrulV+rKA+8OE70vYfcmBymVA0=;
- b=jUcwPFLa2/tSqgEXLXjmIQ8K2OrrDlQ2zVS/j1VEIJP22pNchUW4St0yxaO1JWYcr2
- k1wfotfQd+ojiDV674v0HMsa2JPgzMTjTlWdYPX2M0gS+mnO+r+6yHJb/9Iw2vFDqepP
- EqW6ZEgbVMPxXAwDA9blrO3itXyt9wnhWBf27FcKuepJttOoWZ4YVdQjprVQYwx9/9iG
- Bo0OIS+sUDoHIu+QloQ40lVqJ+UifGkqdWTzruXWomYkm8jb+NSWr/8GvRNqwmJxYWSG
- 4oPVGuBS5cf9VoehNqfyOG6mISpWx9h/z3I52trqGO1204c/QS68ISnGohgKJO+UFqUs
- k0ag==
+ d=1e100.net; s=20230601; t=1721852729; x=1722457529;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=s4YPCnDOIa8NUGfAr2gZ4GzcVNlDcSYa3Xe5483kA78=;
+ b=q/GGic2hcSVcW/CFkuFfS9adiIP1L6qbPCp8szzRFOTsyCkTOO2XZt8erUfVfNg13E
+ SaxQGinYqRKqG57xq2d8noBseGOkElvGlGJV1aGlyC5u6kwdNqUZsFLK/H4k4plb/W9P
+ zBmnD/lPUtekFOn4xBPYnPgl0VuGg3+aQ/LuEIyap7Rh8uc0WbANHohBUXw+InjdjpDh
+ ogPq7+eBy1h4GaPoz5qqZD4tfvYnP1UiZdwReNMIJAXG+Mu+ZENL0+ZF4TTSQKANtMVF
+ E4gCCuzY1i+74xkLwRz6MrOtOs1nDI93btdSdeiZDTpuzPdn7MrVPH8pT+QWj88b2w0k
+ /B9A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVRgnvUKgMQlRc8y2I7G+28kqUgVW8CqkHkgtt4tsYmZjbDUZoUr60E2ZNgpma8bG9TakFww91gEvL6Hy90BXvPr4xJ
-X-Gm-Message-State: AOJu0YySeiaUKgZpotrVMXtSdBtU2Jty0l9PtXmD07tImb7OwsicLHmq
- sV4l0ryWNph+pEi+TEJoOoiyXeuyfYRuQdkZAlBk5kd+ZqiUQZa0fpbZswbDmjk=
-X-Received: by 2002:a05:6a00:1885:b0:70d:1dcf:e2a5 with SMTP id
- d2e1a72fcca58-70d1dcff066mr14222851b3a.3.1721811351847; 
- Wed, 24 Jul 2024 01:55:51 -0700 (PDT)
-Received: from [192.168.1.113] ([203.56.128.103])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-70d270cab28sm4719985b3a.115.2024.07.24.01.55.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 Jul 2024 01:55:51 -0700 (PDT)
-Message-ID: <d76f7003-e36e-4b9f-a7db-7e8e962b446d@linaro.org>
-Date: Wed, 24 Jul 2024 18:55:43 +1000
+ AJvYcCWSJt+nIpz57kzS7SjKGFEFvFuMXoAZVCjykbejSGh/fE/5WFATSz2Nfk9QUoEQF2HrbvwrWpAyyyqUuH2OL55Uq0Mt
+X-Gm-Message-State: AOJu0Yz1HSWXbfeQ0iPO6iB5MIcpBroPGoOVB39XediGmpwOSOCoIvle
+ 7KR6cayN4Kv8wYiUMRO8Put8jJUuJLHMGuFSoHSZ6/BJBlGZpNmV8Td5DgZIy4KfgshHuGwvXVz
+ hUyHX0JXYcK4HjQDpuRBEVmNQgZmbN/zz8cWLwQ==
+X-Received: by 2002:a17:90a:8407:b0:2c9:3370:56e3 with SMTP id
+ 98e67ed59e1d1-2cf238fab75mr704541a91.34.1721852728871; Wed, 24 Jul 2024
+ 13:25:28 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 00/14] Bsd user for 9.1 patches
-To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Kyle Evans
- <kevans@freebsd.org>, qemu-arm@nongnu.org
 References: <20240723180725.99114-1-imp@bsdimp.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240723180725.99114-1-imp@bsdimp.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <d76f7003-e36e-4b9f-a7db-7e8e962b446d@linaro.org>
+In-Reply-To: <d76f7003-e36e-4b9f-a7db-7e8e962b446d@linaro.org>
+From: Warner Losh <imp@bsdimp.com>
+Date: Wed, 24 Jul 2024 14:25:17 -0600
+Message-ID: <CANCZdfpx=tvtpXkV0AMc7+d2cOPC7c5RDvWJZuWW1cJq+VBjrA@mail.gmail.com>
+Subject: Re: [PULL 00/14] Bsd user for 9.1 patches
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="00000000000042ac9e061e04142e"
+Received-SPF: none client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=wlosh@bsdimp.com; helo=mail-pj1-x102b.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,73 +121,232 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PLdRcJZ9niGp
+X-TUID: ATIzErFLN1oG
 
-On 7/24/24 04:07, Warner Losh wrote:
-> The following changes since commit 3cce8bd4d737f2ca688bbdcb92cd5cc683245bbd:
-> 
->    Merge tag 'ui-pull-request' ofhttps://gitlab.com/marcandre.lureau/qemu into staging (2024-07-23 15:23:05 +1000)
-> 
-> are available in the Git repository at:
-> 
->    git@gitlab.com:bsdimp/qemu.git tags/bsd-user-for-9.1-pull-request
-> 
-> for you to fetch changes up to afdb6be1bd8528395af65a087bd668bf7a42ab99:
-> 
->    bsd-user: Add aarch64 build to tree (2024-07-23 10:56:30 -0600)
-> 
-> ----------------------------------------------------------------
-> bsd-user: Misc changes for 9.1 (I hope)
-> 
-> This patch series includes two main sets of patches. To make it simple to
-> review, I've included the changes from my student which the later changes depend
-> on. I've included a change from Jessica and Doug as well. I've reviewed them,
-> but more eyes never hurt.
-> 
-> I've also included a number of 'touch up' patches needed either to get the
-> aarch64 building, or to implmement suggestions from prior review cycles. The
-> main one is what's charitably described as a kludge: force aarch64 to use 4k
-> pages. The qemu-project (and blitz branch) hasn't had the necessary changes to
-> bsd-user needed to support variable page size.
-> 
-> Sorry this is so late... Live has conspired to delay me.
+--00000000000042ac9e061e04142e
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Something didn't get committed properly, as it doesn't build:
+On Wed, Jul 24, 2024 at 2:55=E2=80=AFAM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
-$ ninja
-[343/1144] Compiling C object 
-libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o
-FAILED: libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o
-cc -m64 -Ilibqemu-aarch64-bsd-user.a.p -I. -I../src -Itarget/arm -I../src/target/arm 
--I../src/common-user/host/x86_64 -I../src/bsd-user/include -Ibsd-user/freebsd 
--I../src/bsd-user/freebsd -I../src/bsd-user/host/x86_64 -Ibsd-user -I../src/bsd-user 
--I../src/bsd-user/aarch64 -Iqapi -Itrace -Iui/shader -I/usr/local/include/capstone 
--I/usr/local/include/glib-2.0 -I/usr/local/lib/glib-2.0/include -I/usr/local/include 
--fdiagnostics-color=auto -Wall -Winvalid-pch -std=gnu11 -O2 -g -fstack-protector-strong 
--Wempty-body -Wendif-labels -Wexpansion-to-defined -Wformat-security -Wformat-y2k 
--Wignored-qualifiers -Winit-self -Wmissing-format-attribute -Wmissing-prototypes 
--Wnested-externs -Wold-style-definition -Wredundant-decls -Wstrict-prototypes 
--Wtype-limits -Wundef -Wvla -Wwrite-strings -Wno-gnu-variable-sized-type-not-at-end 
--Wno-initializer-overrides -Wno-missing-include-dirs -Wno-psabi -Wno-shift-negative-value 
--Wno-string-plus-int -Wno-tautological-type-limit-compare -Wno-typedef-redefinition 
--Wthread-safety -iquote . -iquote /home/rth/qemu/src -iquote /home/rth/qemu/src/include 
--iquote /home/rth/qemu/src/host/include/x86_64 -iquote 
-/home/rth/qemu/src/host/include/generic -iquote /home/rth/qemu/src/tcg/i386 -pthread 
--msse2 -mcx16 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE 
--fno-strict-aliasing -fno-common -fwrapv -ftrivial-auto-var-init=zero 
--fzero-call-used-regs=used-gpr -fPIE -DCOMPILING_PER_TARGET 
-'-DCONFIG_TARGET="aarch64-bsd-user-config-target.h"' 
-'-DCONFIG_DEVICES="aarch64-bsd-user-config-devices.h"' -MD -MQ 
-libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o -MF 
-libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o.d -o 
-libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o -c 
-../src/bsd-user/aarch64/target_arch_cpu.c
-In file included from ../src/bsd-user/aarch64/target_arch_cpu.c:20:
-In file included from ../src/bsd-user/aarch64/target_arch.h:23:
-../src/bsd-user/qemu.h:38:10: fatal error: 'target.h' file not found
-    38 | #include "target.h"
-       |          ^~~~~~~~~~
-1 error generated.
+> On 7/24/24 04:07, Warner Losh wrote:
+> > The following changes since commit
+> 3cce8bd4d737f2ca688bbdcb92cd5cc683245bbd:
+> >
+> >    Merge tag 'ui-pull-request' ofhttps://
+> gitlab.com/marcandre.lureau/qemu into staging (2024-07-23 15:23:05 +1000)
+> >
+> > are available in the Git repository at:
+> >
+> >    git@gitlab.com:bsdimp/qemu.git tags/bsd-user-for-9.1-pull-request
+> >
+> > for you to fetch changes up to afdb6be1bd8528395af65a087bd668bf7a42ab99=
+:
+> >
+> >    bsd-user: Add aarch64 build to tree (2024-07-23 10:56:30 -0600)
+> >
+> > ----------------------------------------------------------------
+> > bsd-user: Misc changes for 9.1 (I hope)
+> >
+> > This patch series includes two main sets of patches. To make it simple =
+to
+> > review, I've included the changes from my student which the later
+> changes depend
+> > on. I've included a change from Jessica and Doug as well. I've reviewed
+> them,
+> > but more eyes never hurt.
+> >
+> > I've also included a number of 'touch up' patches needed either to get
+> the
+> > aarch64 building, or to implmement suggestions from prior review cycles=
+.
+> The
+> > main one is what's charitably described as a kludge: force aarch64 to
+> use 4k
+> > pages. The qemu-project (and blitz branch) hasn't had the necessary
+> changes to
+> > bsd-user needed to support variable page size.
+> >
+> > Sorry this is so late... Live has conspired to delay me.
+>
+> Something didn't get committed properly, as it doesn't build:
+>
+> $ ninja
+> [343/1144] Compiling C object
+> libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o
+> FAILED: libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o
+> cc -m64 -Ilibqemu-aarch64-bsd-user.a.p -I. -I../src -Itarget/arm
+> -I../src/target/arm
+> -I../src/common-user/host/x86_64 -I../src/bsd-user/include
+> -Ibsd-user/freebsd
+> -I../src/bsd-user/freebsd -I../src/bsd-user/host/x86_64 -Ibsd-user
+> -I../src/bsd-user
+> -I../src/bsd-user/aarch64 -Iqapi -Itrace -Iui/shader
+> -I/usr/local/include/capstone
+> -I/usr/local/include/glib-2.0 -I/usr/local/lib/glib-2.0/include
+> -I/usr/local/include
+> -fdiagnostics-color=3Dauto -Wall -Winvalid-pch -std=3Dgnu11 -O2 -g
+> -fstack-protector-strong
+> -Wempty-body -Wendif-labels -Wexpansion-to-defined -Wformat-security
+> -Wformat-y2k
+> -Wignored-qualifiers -Winit-self -Wmissing-format-attribute
+> -Wmissing-prototypes
+> -Wnested-externs -Wold-style-definition -Wredundant-decls
+> -Wstrict-prototypes
+> -Wtype-limits -Wundef -Wvla -Wwrite-strings
+> -Wno-gnu-variable-sized-type-not-at-end
+> -Wno-initializer-overrides -Wno-missing-include-dirs -Wno-psabi
+> -Wno-shift-negative-value
+> -Wno-string-plus-int -Wno-tautological-type-limit-compare
+> -Wno-typedef-redefinition
+> -Wthread-safety -iquote . -iquote /home/rth/qemu/src -iquote
+> /home/rth/qemu/src/include
+> -iquote /home/rth/qemu/src/host/include/x86_64 -iquote
+> /home/rth/qemu/src/host/include/generic -iquote
+> /home/rth/qemu/src/tcg/i386 -pthread
+> -msse2 -mcx16 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=3D64 -D_LARGEFILE_SOURCE
+> -fno-strict-aliasing -fno-common -fwrapv -ftrivial-auto-var-init=3Dzero
+> -fzero-call-used-regs=3Dused-gpr -fPIE -DCOMPILING_PER_TARGET
+> '-DCONFIG_TARGET=3D"aarch64-bsd-user-config-target.h"'
+> '-DCONFIG_DEVICES=3D"aarch64-bsd-user-config-devices.h"' -MD -MQ
+> libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o -MF
+> libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o.d -o
+> libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o -c
+> ../src/bsd-user/aarch64/target_arch_cpu.c
+> In file included from ../src/bsd-user/aarch64/target_arch_cpu.c:20:
+> In file included from ../src/bsd-user/aarch64/target_arch.h:23:
+> ../src/bsd-user/qemu.h:38:10: fatal error: 'target.h' file not found
+>     38 | #include "target.h"
+>        |          ^~~~~~~~~~
+> 1 error generated.
+>
 
+Doh! A missing git add indeed. That change didn't cherry-pick from blitz
+(since
+it was something I'd invented for an upstream review that didn't fold back
+into
+blitz properly and I didn't notice until I started prepping this series and
+fixed it
+in blitz)... I goofed up doing it by hand. Will send v2 out shortly.  Sorry
+for the noise.
 
-r~
+Warner
+
+--00000000000042ac9e061e04142e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jul 24, 2024 at 2:55=E2=80=AF=
+AM Richard Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">ri=
+chard.henderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex">On 7/24/24 04:07, Warner Losh wrote:<br>
+&gt; The following changes since commit 3cce8bd4d737f2ca688bbdcb92cd5cc6832=
+45bbd:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 Merge tag &#39;ui-pull-request&#39; ofhttps://<a href=3D"=
+http://gitlab.com/marcandre.lureau/qemu" rel=3D"noreferrer" target=3D"_blan=
+k">gitlab.com/marcandre.lureau/qemu</a> into staging (2024-07-23 15:23:05 +=
+1000)<br>
+&gt; <br>
+&gt; are available in the Git repository at:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 git@gitlab.com:bsdimp/qemu.git tags/bsd-user-for-9.1-pull=
+-request<br>
+&gt; <br>
+&gt; for you to fetch changes up to afdb6be1bd8528395af65a087bd668bf7a42ab9=
+9:<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 bsd-user: Add aarch64 build to tree (2024-07-23 10:56:30 =
+-0600)<br>
+&gt; <br>
+&gt; ----------------------------------------------------------------<br>
+&gt; bsd-user: Misc changes for 9.1 (I hope)<br>
+&gt; <br>
+&gt; This patch series includes two main sets of patches. To make it simple=
+ to<br>
+&gt; review, I&#39;ve included the changes from my student which the later =
+changes depend<br>
+&gt; on. I&#39;ve included a change from Jessica and Doug as well. I&#39;ve=
+ reviewed them,<br>
+&gt; but more eyes never hurt.<br>
+&gt; <br>
+&gt; I&#39;ve also included a number of &#39;touch up&#39; patches needed e=
+ither to get the<br>
+&gt; aarch64 building, or to implmement suggestions from prior review cycle=
+s. The<br>
+&gt; main one is what&#39;s charitably described as a kludge: force aarch64=
+ to use 4k<br>
+&gt; pages. The qemu-project (and blitz branch) hasn&#39;t had the necessar=
+y changes to<br>
+&gt; bsd-user needed to support variable page size.<br>
+&gt; <br>
+&gt; Sorry this is so late... Live has conspired to delay me.<br>
+<br>
+Something didn&#39;t get committed properly, as it doesn&#39;t build:<br>
+<br>
+$ ninja<br>
+[343/1144] Compiling C object <br>
+libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o<br>
+FAILED: libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o<b=
+r>
+cc -m64 -Ilibqemu-aarch64-bsd-user.a.p -I. -I../src -Itarget/arm -I../src/t=
+arget/arm <br>
+-I../src/common-user/host/x86_64 -I../src/bsd-user/include -Ibsd-user/freeb=
+sd <br>
+-I../src/bsd-user/freebsd -I../src/bsd-user/host/x86_64 -Ibsd-user -I../src=
+/bsd-user <br>
+-I../src/bsd-user/aarch64 -Iqapi -Itrace -Iui/shader -I/usr/local/include/c=
+apstone <br>
+-I/usr/local/include/glib-2.0 -I/usr/local/lib/glib-2.0/include -I/usr/loca=
+l/include <br>
+-fdiagnostics-color=3Dauto -Wall -Winvalid-pch -std=3Dgnu11 -O2 -g -fstack-=
+protector-strong <br>
+-Wempty-body -Wendif-labels -Wexpansion-to-defined -Wformat-security -Wform=
+at-y2k <br>
+-Wignored-qualifiers -Winit-self -Wmissing-format-attribute -Wmissing-proto=
+types <br>
+-Wnested-externs -Wold-style-definition -Wredundant-decls -Wstrict-prototyp=
+es <br>
+-Wtype-limits -Wundef -Wvla -Wwrite-strings -Wno-gnu-variable-sized-type-no=
+t-at-end <br>
+-Wno-initializer-overrides -Wno-missing-include-dirs -Wno-psabi -Wno-shift-=
+negative-value <br>
+-Wno-string-plus-int -Wno-tautological-type-limit-compare -Wno-typedef-rede=
+finition <br>
+-Wthread-safety -iquote . -iquote /home/rth/qemu/src -iquote /home/rth/qemu=
+/src/include <br>
+-iquote /home/rth/qemu/src/host/include/x86_64 -iquote <br>
+/home/rth/qemu/src/host/include/generic -iquote /home/rth/qemu/src/tcg/i386=
+ -pthread <br>
+-msse2 -mcx16 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=3D64 -D_LARGEFILE_SOURCE <b=
+r>
+-fno-strict-aliasing -fno-common -fwrapv -ftrivial-auto-var-init=3Dzero <br=
+>
+-fzero-call-used-regs=3Dused-gpr -fPIE -DCOMPILING_PER_TARGET <br>
+&#39;-DCONFIG_TARGET=3D&quot;aarch64-bsd-user-config-target.h&quot;&#39; <b=
+r>
+&#39;-DCONFIG_DEVICES=3D&quot;aarch64-bsd-user-config-devices.h&quot;&#39; =
+-MD -MQ <br>
+libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o -MF <br>
+libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o.d -o <br>
+libqemu-aarch64-bsd-user.a.p/bsd-user_aarch64_target_arch_cpu.c.o -c <br>
+../src/bsd-user/aarch64/target_arch_cpu.c<br>
+In file included from ../src/bsd-user/aarch64/target_arch_cpu.c:20:<br>
+In file included from ../src/bsd-user/aarch64/target_arch.h:23:<br>
+../src/bsd-user/qemu.h:38:10: fatal error: &#39;target.h&#39; file not foun=
+d<br>
+=C2=A0 =C2=A0 38 | #include &quot;target.h&quot;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 ^~~~~~~~~~<b=
+r>
+1 error generated.<br></blockquote><div><br></div><div>Doh! A missing git a=
+dd indeed. That change didn&#39;t cherry-pick from blitz (since</div><div>i=
+t was something I&#39;d invented for an upstream review that didn&#39;t fol=
+d back into</div><div>blitz properly and I didn&#39;t notice until I starte=
+d prepping this series and fixed it</div><div>in blitz)... I goofed up doin=
+g it by hand. Will send v2 out shortly.=C2=A0 Sorry for the noise.</div><di=
+v><br></div><div>Warner</div></div></div>
+
+--00000000000042ac9e061e04142e--

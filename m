@@ -1,113 +1,113 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3360961njc;
-        Wed, 24 Jul 2024 15:08:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUo8TjVe255VJiG4LqMtPPJVvyIzAokpG3rdqHlWB7048bbczwod003ZcDXhgZDwGVwhFZOfyoJfcltOXvAgvwUVHknDaZ+
-X-Google-Smtp-Source: AGHT+IF8MRxcKiEpSKNZ+Jc8t8Jzc5P3XOkgkdA+82Dk3PPJj1ciNN2nzbu+nLwybvzE34bRBTn3
-X-Received: by 2002:a05:620a:290d:b0:79f:c9e:6269 with SMTP id af79cd13be357-7a1d44fe01dmr106883585a.37.1721858882426;
-        Wed, 24 Jul 2024 15:08:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721858882; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3360997njc;
+        Wed, 24 Jul 2024 15:08:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWq+ilEdQ+5r/YPems5LgVZhPQ6eiBDTifrGQYt1cyIah69rvAB1rAI9D2eFR86d+9llXkLcNHwClLedwJPecHEQafcBqUI
+X-Google-Smtp-Source: AGHT+IHKI7zkC4xW5VT957ZJ+5tBhQB4vIyPSKwcvCzBBQbMBwFSi8XBkpOXshuOeEqcUhqtDdCd
+X-Received: by 2002:ac8:5a0b:0:b0:447:dc38:6942 with SMTP id d75a77b69052e-44fe335c180mr16029111cf.36.1721858888629;
+        Wed, 24 Jul 2024 15:08:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721858888; cv=none;
         d=google.com; s=arc-20160816;
-        b=jLUwPK0om58Jx6LqMHVe2kt1QsYb3ixv+JjgxRaVrl8uLlAuMMkGGw+yI5jya96+jP
-         XjT7iz0CHg1ddAIW3RyTsm8FNxQwFG4ikTcjM+/LnR8426Xzw3AjyQT6EiRI/OTKJZjT
-         tYExRZLkbJu9AVYUEpBbuJDrwhA0lOiL310tnYHrSyegR6fMoDU8VOC/1UukPnv6I5ep
-         CV9U9KaemZ1qp1VRo/sRQkPog+yRquAHWPmVqY/vIxAJEB/gbnEE7zg7I/03QQiScRXg
-         MqB2EcKyt+d4i7zSIX5cjPel292PWtaBW0hRN5E42d+Th8r15WUCoVX3GYsZl5Y3Ek3q
-         JgPg==
+        b=b/41Rv4S7HulV97j680r1QhK6l4Sw7RSyXW1iFq3B8a+3bRE6aBMW3VHJPudV+6t0j
+         p5NAtWIzvz/gLkM1+ofxRVmPr8oA8//SL7ZDvMuXX1r7sru+5Ds82sf5R0UYbzqbZvMy
+         aOFdbHUMnmhJedaNmMWnZYcB1IeKa673skcp+mofpN/DYeqiZd14YBxhplTbZIXXmlUr
+         JHaI7gFKsAJFlpBHqsBW6SLxGeqC6lucCZlAdASU2Q909AZYXzqyWnnkdskpvl6trD7n
+         jUOCkmEdBmpLkbk86kHl/52hgFM9ZQ7AkkkPNg7mMKQFY61/2i2CMsvsNIPYmIxYwd3E
+         qABw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=6NVVykiWpqYjvD45AibIwwzA8pM6gZ3sTQWN+WDs9eM=;
-        fh=yyYZuL223+Vv0ZhsVZLfOumTvg5lZxdjmI1YeubsR6o=;
-        b=e/Jxb2l+t8r2ulE8FQg0OGVk9iqlfpfu5HAGTvdFJbQYK851nfGDnoDLXlKWPa+EjT
-         2VSTuiVweC6JLjbEF2e9Ijc3yZB5c512xuelZtL3MLaKntknzX7t2FpfMle0BWn49OgT
-         t9j+QbruEE+YfogVpuCVm++Xr4Wd9uCZ0OcAijXKUZjRxcUZe6E7fyMA5jaFe9CDVRkp
-         0XXXTp6hJQKI//higMMDbm7osafCuALIhzLUYG30l6r0P1wU6afzaeomb4Et/pucErY8
-         IVliYpQbuqvdPKQLncmpUA85Xi5gMgxXueK/zfa3WhC/rA+FjKo+LsGd8+sEXDs1thHd
-         oMZA==;
+        bh=htzmk2/K+pRyHcINVlqMN9Cf2KcnbziuOXxz3Bx5eFI=;
+        fh=klxt6AO4XnwHKiearGhcvSVNzz84zoiwSqW4MRfsvoA=;
+        b=cDcKwzXwKG40jyp98JdSYSxc++N+pW590Y2VnGBZKNck2QXvko8EEiE5YCA5wpIbNw
+         cth85iE2ZFWBbwGDpNeUnFVdnXo0KNor7m/rj3s7331LM/vKfkoppCHwbAeVxi+xjBxM
+         S9uUipdY1JddynFirtvyzP4pNuub5HDGUdDFC4mPvuwkiGFQl2v3ccOUakrv+wB1Fxya
+         rFazJDDwgWZhvAy5Z/70HkXES34VmdofEsBAhhIDW7GGJP2/7xQV5fOYOEw1xz6EJ7tD
+         aUahZ84wXb795j4qSNqkBHOxWvP3Q86+sQboh+bIkNTMN9jCdAwaseOe5NLkHBwvB/iy
+         5kdA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=UgaBxm7x;
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=sVSj2NKd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1d7475c72si16484685a.634.2024.07.24.15.08.02
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe8137028si1289421cf.11.2024.07.24.15.08.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jul 2024 15:08:02 -0700 (PDT)
+        Wed, 24 Jul 2024 15:08:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=UgaBxm7x;
+       dkim=pass header.i=@bsdimp-com.20230601.gappssmtp.com header.s=20230601 header.b=sVSj2NKd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1sWk8F-0001aJ-Cb; Wed, 24 Jul 2024 18:06:47 -0400
+	id 1sWk87-0000zO-1U; Wed, 24 Jul 2024 18:06:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk8D-0001SW-O5
- for qemu-devel@nongnu.org; Wed, 24 Jul 2024 18:06:45 -0400
-Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34])
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk7x-0000NB-6t
+ for qemu-devel@nongnu.org; Wed, 24 Jul 2024 18:06:29 -0400
+Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk8C-0006eZ-3o
- for qemu-devel@nongnu.org; Wed, 24 Jul 2024 18:06:45 -0400
-Received: by mail-io1-xd34.google.com with SMTP id
- ca18e2360f4ac-7fd3dbc01deso9752639f.0
- for <qemu-devel@nongnu.org>; Wed, 24 Jul 2024 15:06:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imp@bsdimp.com>) id 1sWk7u-0006Ze-KR
+ for qemu-devel@nongnu.org; Wed, 24 Jul 2024 18:06:28 -0400
+Received: by mail-io1-xd2f.google.com with SMTP id
+ ca18e2360f4ac-816d9285ebdso12579139f.0
+ for <qemu-devel@nongnu.org>; Wed, 24 Jul 2024 15:06:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721858802; x=1722463602;
+ d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1721858785; x=1722463585;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=6NVVykiWpqYjvD45AibIwwzA8pM6gZ3sTQWN+WDs9eM=;
- b=UgaBxm7xfBrT9rLRsodW5s4wENgQq3hnN0FaR+DxkLnOxvdIT7GwcCqBFiNXHKVrQr
- 0TXvQyIE44Y0MxCA1KM00KlF4jKVoBtR2+DPqAa4my+vPiArl6wGdmpGYofNIuBTd78v
- GG756b4BmYF/2dppfQyzdJKOlZxt0M3Sgm4WmProaGpq5U6WpoLUiZPNCPW2uO4BEfYK
- OCV1duMBkCMdR1TE+BTC2HZ8OKXuvk/dkRTyL3+WSNlHXoigCXprPmewJr8GMTgtge4z
- saDetJmB1N0+e0uq1+yzeyFxHDVsQnZCg85goxbNgFDPo6ELYHNrINPAWV2SgAfKDRQj
- VkMQ==
+ bh=htzmk2/K+pRyHcINVlqMN9Cf2KcnbziuOXxz3Bx5eFI=;
+ b=sVSj2NKdXv9oNWuA0h79Odtj8V87Q2dLB/bFiqUS8o+emkCcC5eagtbBmDS7k8lCMi
+ gdI9DmyFZdvB9Jcnp/j4RwAJPfNhjYAM61GpQoMUu/MD39Rzdqm1HMU19VHGHswNtz+4
+ llLCP+8ItHnONs4u3WJfH4fVc+pQ79Zlsfco+ViRhCWcB+jqEmyREd5gsV6ZO0+h38q5
+ bYUx4qPlOf9Dw1zABj88lTEjEuQ0eZduOs08vY6LX6BtLCVhoOhyNT3KOyFtM/OYgKn/
+ kEcmmqanFwDc+epKSJdUY7mws5xNDKYdEw9OEnAIR6rwaCQV+JBkqX3rXRgM+MIWw9OM
+ +XRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721858802; x=1722463602;
+ d=1e100.net; s=20230601; t=1721858785; x=1722463585;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=6NVVykiWpqYjvD45AibIwwzA8pM6gZ3sTQWN+WDs9eM=;
- b=mY0T/pTs2XQtl0diyXvuxi2JAIZVc2zPVIuJyts2XJMo2WSXHzERPODtgA22s3/NFa
- BAQAKYR6gD6NiNB3RSn9CopUbZ77DkW2XyMco5s8lnqeDIo06+JJ7Ol7w0uYDOUy4qWO
- u7AMee0HO2ZHYpw/83c4VXCk+eboXNCdP64CZsEzViZiCWUXvKl5yMl2NgEyDD+yP056
- xEPDy6X8CxF4SdC3SnjOtwg1gl3GcBCCP6rlLMDX4ciPxHixrVu0/uhFynyffAtD/Yx5
- ICZGvknc29XWkQobWmHMhfvswwNWrmiTiDdxQT5KI0j3XwvWCYStxSp+KUb/aeXk8wKm
- XZWg==
-X-Gm-Message-State: AOJu0Yzs/xgptLtEQhWICSRQO0k9ds7osgI+cLdExX7gNQgxHJLJvmPs
- juhF7gq3rkaJL3liDsiNSO8EFOY1GlSK37UI1aRIOKixH8vjP1lr6/Sfh66DACgTOvSb0mJi2v1
- htxc=
-X-Received: by 2002:a05:6602:1349:b0:7f9:b435:4f5 with SMTP id
- ca18e2360f4ac-81f7e49b051mr14971039f.11.1721858790321; 
- Wed, 24 Jul 2024 15:06:30 -0700 (PDT)
+ bh=htzmk2/K+pRyHcINVlqMN9Cf2KcnbziuOXxz3Bx5eFI=;
+ b=Gq9El+s01N9JccrQmm6sElvqUwj3FgBou+fmJjfMVBg+AwZOoWKtSB944QBSb/j/wa
+ PJ/YpEE0tA/M/juOzE2sUXoWOSBOXdib2ubttGdLlAsvUlqctzZu8w4vEi5JmefNTKYH
+ D9sFeXRkbZhT97BolBeuK7QyiEzZMUX9JG1g/GrY3rp9t+UNMVDXNVY78+KQjE+yzPOK
+ 1K5O5+gu/Uwx//vXBp+G3kTteiGxWhqIkUIEQH/sZKJRCjJ43dAPCc/djL/D3kD9RQIc
+ TAHiJegHhPbUUV3LoHDFSM+cNXsfQSYyQf6IV7td4aKlCiOS2qHLZqbmjJy4gNuWNLtP
+ C9QA==
+X-Gm-Message-State: AOJu0YyIB6IHc+eNcb/p52AlgmK4jvYiV2/meD0lILY7RochL80AEDf5
+ 5coixmJO6IN2e2tXjyXkJlbIPwYk1g0csYf1YGqthk4IM7pe562A48Tmq5KhrY1WpLdGyb4JKEw
+ B1Hk=
+X-Received: by 2002:a05:6602:2c12:b0:806:2e60:d169 with SMTP id
+ ca18e2360f4ac-81f7be798d1mr170640639f.17.1721858784861; 
+ Wed, 24 Jul 2024 15:06:24 -0700 (PDT)
 Received: from dune.bsdimp.com ([50.253.99.174])
  by smtp.gmail.com with ESMTPSA id
- 8926c6da1cb9f-4c29fa983f8sm10086173.47.2024.07.24.15.06.29
+ 8926c6da1cb9f-4c29fa983f8sm10086173.47.2024.07.24.15.06.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Jul 2024 15:06:29 -0700 (PDT)
+ Wed, 24 Jul 2024 15:06:24 -0700 (PDT)
 From: Warner Losh <imp@bsdimp.com>
 To: qemu-devel@nongnu.org
 Cc: Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, Warner Losh <imp@bsdimp.com>,
+ Stacey Son <sson@FreeBSD.org>, Ajeet Singh <itachis@FreeBSD.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PULL 12/15] bsd-user: Define TARGET_SIGSTACK_ALIGN and use it to
- round stack
-Date: Wed, 24 Jul 2024 16:04:45 -0600
-Message-ID: <20240724220449.10398-13-imp@bsdimp.com>
+Subject: [PULL 07/15] bsd-user:Add set_mcontext function for ARM AArch64
+Date: Wed, 24 Jul 2024 16:04:40 -0600
+Message-ID: <20240724220449.10398-8-imp@bsdimp.com>
 X-Mailer: git-send-email 2.45.1
 In-Reply-To: <20240724220449.10398-1-imp@bsdimp.com>
 References: <20240724220449.10398-1-imp@bsdimp.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::d34;
- envelope-from=imp@bsdimp.com; helo=mail-io1-xd34.google.com
+Received-SPF: none client-ip=2607:f8b0:4864:20::d2f;
+ envelope-from=imp@bsdimp.com; helo=mail-io1-xd2f.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -128,86 +128,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Aay2I0PbSjwR
+X-TUID: TClAtMA7Xk7B
 
-Most (all?) targets require stacks to be properly aligned. Rather than a
-series of ifdefs in bsd-user/signal.h, instead use a manditory #define
-for all architectures.
+From: Stacey Son <sson@FreeBSD.org>
 
-Signed-off-by: Warner Losh <imp@bsdimp.com>
+The function copies register values from the provided target_mcontext_t
+structure to the CPUARMState registers.
+Note:FP is unfinished upstream but will be a separate commit coming soon.
+
+Signed-off-by: Stacey Son <sson@FreeBSD.org>
+Signed-off-by: Ajeet Singh <itachis@FreeBSD.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20240707191128.10509-8-itachis@FreeBSD.org>
+Signed-off-by: Warner Losh <imp@bsdimp.com>
 ---
- bsd-user/aarch64/target_arch_signal.h | 2 ++
- bsd-user/arm/target_arch_signal.h     | 2 ++
- bsd-user/i386/target_arch_signal.h    | 2 ++
- bsd-user/signal.c                     | 9 +--------
- bsd-user/x86_64/target_arch_signal.h  | 2 ++
- 5 files changed, 9 insertions(+), 8 deletions(-)
+ bsd-user/aarch64/signal.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/bsd-user/aarch64/target_arch_signal.h b/bsd-user/aarch64/target_arch_signal.h
-index bff752a67ab..b72ba7aa504 100644
---- a/bsd-user/aarch64/target_arch_signal.h
-+++ b/bsd-user/aarch64/target_arch_signal.h
-@@ -77,4 +77,6 @@ struct target_sigframe {
-     target_ucontext_t   sf_uc;  /* saved ucontext */
- };
- 
-+#define TARGET_SIGSTACK_ALIGN 16
-+
- #endif /* TARGET_ARCH_SIGNAL_H */
-diff --git a/bsd-user/arm/target_arch_signal.h b/bsd-user/arm/target_arch_signal.h
-index 02b2b33e07a..10f96b8bfc9 100644
---- a/bsd-user/arm/target_arch_signal.h
-+++ b/bsd-user/arm/target_arch_signal.h
-@@ -86,4 +86,6 @@ struct target_sigframe {
-     target_mcontext_vfp_t sf_vfp; /* actual saved VFP context */
- };
- 
-+#define TARGET_SIGSTACK_ALIGN 8
-+
- #endif /* TARGET_ARCH_SIGNAL_H */
-diff --git a/bsd-user/i386/target_arch_signal.h b/bsd-user/i386/target_arch_signal.h
-index 279dadc22c7..2c14153ab6b 100644
---- a/bsd-user/i386/target_arch_signal.h
-+++ b/bsd-user/i386/target_arch_signal.h
-@@ -88,4 +88,6 @@ struct target_sigframe {
-     uint32_t    __spare__[2];
- };
- 
-+#define TARGET_SIGSTACK_ALIGN 8
-+
- #endif /* TARGET_ARCH_SIGNAL_H */
-diff --git a/bsd-user/signal.c b/bsd-user/signal.c
-index 8b6654b91da..da49b9bffc1 100644
---- a/bsd-user/signal.c
-+++ b/bsd-user/signal.c
-@@ -728,14 +728,7 @@ static inline abi_ulong get_sigframe(struct target_sigaction *ka,
-         sp = ts->sigaltstack_used.ss_sp + ts->sigaltstack_used.ss_size;
-     }
- 
--/* TODO: make this a target_arch function / define */
--#if defined(TARGET_ARM)
--    return (sp - frame_size) & ~7;
--#elif defined(TARGET_AARCH64)
--    return (sp - frame_size) & ~15;
--#else
--    return sp - frame_size;
--#endif
-+    return ROUND_DOWN(sp - frame_size, TARGET_SIGSTACK_ALIGN);
+diff --git a/bsd-user/aarch64/signal.c b/bsd-user/aarch64/signal.c
+index 43c886e6036..13faac8ce60 100644
+--- a/bsd-user/aarch64/signal.c
++++ b/bsd-user/aarch64/signal.c
+@@ -95,3 +95,25 @@ abi_long setup_sigframe_arch(CPUARMState *env, abi_ulong frame_addr,
+     return 0;
  }
  
- /* compare to $M/$M/exec_machdep.c sendsig and sys/kern/kern_sig.c sigexit */
-diff --git a/bsd-user/x86_64/target_arch_signal.h b/bsd-user/x86_64/target_arch_signal.h
-index ca24bf1e7f7..f833ee66cef 100644
---- a/bsd-user/x86_64/target_arch_signal.h
-+++ b/bsd-user/x86_64/target_arch_signal.h
-@@ -97,4 +97,6 @@ struct target_sigframe {
-     uint32_t    __spare__[2];
- };
- 
-+#define TARGET_SIGSTACK_ALIGN 16
++/*
++ * Compare to set_mcontext() in arm64/arm64/machdep.c
++ * Assumes that the memory is locked if frame points to user memory.
++ */
++abi_long set_mcontext(CPUARMState *regs, target_mcontext_t *mcp, int srflag)
++{
++    int err = 0, i;
++    const uint64_t *gr = mcp->mc_gpregs.gp_x;
 +
- #endif /* TARGET_ARCH_SIGNAL_H */
++    for (i = 0; i < 30; i++) {
++        regs->xregs[i] = tswap64(gr[i]);
++    }
++
++    regs->xregs[TARGET_REG_SP] = tswap64(mcp->mc_gpregs.gp_sp);
++    regs->xregs[TARGET_REG_LR] = tswap64(mcp->mc_gpregs.gp_lr);
++    regs->pc = mcp->mc_gpregs.gp_elr;
++    pstate_write(regs, mcp->mc_gpregs.gp_spsr);
++
++    /* XXX FP? */
++
++    return err;
++}
 -- 
 2.45.1
 

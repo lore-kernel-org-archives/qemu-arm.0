@@ -1,202 +1,220 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3551633njc;
-        Wed, 24 Jul 2024 23:58:31 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVHpNk02OBkbyHIz+Eys0DeLE+9fV36R3N/kVwg6RTqeMR7E5tpzKWJzwxwSVhj+01JFtaNPwCX2UAljf4g2sWlpiQMngid
-X-Google-Smtp-Source: AGHT+IGtCBxGYp5fuhMxgyZSCtPegg5UP7NXwJ72KnGNGrRjZ11apzjE9I2r+MTvXzrgOgyRaVlM
-X-Received: by 2002:a05:6214:da3:b0:6b7:a6eb:c343 with SMTP id 6a1803df08f44-6bb4087082dmr12526696d6.51.1721890711620;
-        Wed, 24 Jul 2024 23:58:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721890711; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3604048njc;
+        Thu, 25 Jul 2024 02:07:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWoJMHSZqSnBPh0eOCoV/a9m7/qHJO2xCki9mgw7+xOLuyNwunEyam9qzt3HL/GmO2IRb5h2PTnW2F3N28WShffcOYxSyGL
+X-Google-Smtp-Source: AGHT+IF0CTPdKhEQ8RSLe3oZtSySLIUMcCYr2kRK1QakT8YmlhZlaSoBc3baxVc41GwZOlhEUWhH
+X-Received: by 2002:a05:620a:3901:b0:79e:fd19:e2e0 with SMTP id af79cd13be357-7a1d7e6ca7cmr146752885a.28.1721898444449;
+        Thu, 25 Jul 2024 02:07:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721898444; cv=none;
         d=google.com; s=arc-20160816;
-        b=TcLP35C481FtFu/wvFinzhGyPaVxTOLkrI9T5lS5NEP4Hjq/fRgMiQzWw5FTgEc/oV
-         /KNnwAa8nH5tS5vNE7OAsvscu1CXqPSheewEpPbQg2kL4DpOEDcaSc5c+TorB3rLiqiF
-         2XehIe+lZb2vDRFdrdEqt97Z+52Pg9d77tcpnp9TqeFDygeUHfUsapzf+sIAu2XJ/YMD
-         KKg0WHbNB0WMKCNsK6WGEJlEi3VqxICHT2GLDtQy3o0x51pzXdBkkqoZjtPsxf2UH6b3
-         fjP0gZI6mU14Oi1qaBL4DSzKuW9jgq3EOpYtxSJF+XQKAYeT3mY9IvQdp54SvGfL7gff
-         cOQw==
+        b=C4n/RGDu6odKZN+0SqR9hfOMSPuGGb9LKFQ80kqx4gG971+XzMnPvYt1pYxqL+e4QV
+         TpME2FYzSNOBEeaPSl7HvAgzPc53SV27q84Hlz2pdPB1T8Z7of2uDb2ufpB45mRl3Vop
+         pvoUr/j/H9D93+WLFpTQ0/xFc2tSRw2SQr/6zLgqJLto2Fn4O6N9pbzSgE06+GYhFyaR
+         y43aobJE9Dp/22eL+59Z8spfqUWecwHTwII4Evm1w7vKfK3F/ka/i7a3yVfjRztI3xOL
+         m3zrBIjYrFZQIeukH56GEk7RWzc0i0fjA5NRl8708v4/FZQfVhU4bIelH7dMe07sLC3j
+         6LBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=PeGEmRBAOhT/xkRbn6ISbWil2tWD4PNocyMx9/v0nys=;
-        fh=nVkAIXuVa0oMjWg8LRGh1shL1aR3DvIcz/kGIZU/Gfg=;
-        b=pNM09M5IllVFQdYWPR59WLnWuaAZU0WgUb/ZBcNv6BFz2q6f82piUV7y9wnfidnFz9
-         sdOxqpPrkd5xZs46mYo5G3ZNL/am11HM2DxkwfoT8ZTOnA9FgCgbczds6gmpODXZ9KNA
-         PSyiqghvuUx7R2QKwQ/HGzeLP5dW2/5d7W9ThvKqy63g37gztc9T4xcHdK9jXhGHaDrc
-         d0W7HEwDEL7fvJ7pEp+jXPr6T7OzGj2FRBmhNZf/bAL5XcGqXk5TnJx/Y2Vayhno/hfx
-         g5DuiMLg6Za2rTDVZ4MyHjPo5GMPsCfeNGTjhTMocUf2hrsCrUa+k8qMNpri8DkRaS9J
-         iOxQ==;
+        h=mime-version:user-agent:message-id:date:references:in-reply-to
+         :subject:cc:to:from:dkim-signature;
+        bh=Odg2VfpZQzItX8XVDoBrE1SWurkxPgm1LLiGA3X9lMQ=;
+        fh=YtMdrrrL4AdjARoXd5Fxw8LjXJzXSJRO9dQYlO5BjO8=;
+        b=DtVNpMTq3Q+1y4vBbHn8tgBeJDjcEcauHugfGfTz0RkV5lBxtO5wo7ZNvRz3fcHnsh
+         Tio8smpNdRnPRU/fttDXm6ajkOM5PWT2wmqHsq16WV1D7KT8uEU1kdKgPnTflcX97hPT
+         RRxhSXF9ndcfSi4Baz7ss6FxLjupiS+3bWEtAKG4rXlDJQYm5jZiaKbx4qxVM88gph70
+         +7jvCJxEBi3VuZkXpc11r4efi/He5xDNmj+/1RgoDsXMDI7P5+pnXNnDUn7OfUMemjCN
+         gqw7W4xmlEWQ2Y0XXWwb8Lj9JaL2banhXOV7jcWMKRljU/VxKFHhlSf8yzfnNes89BM8
+         /COQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W5aJsVMS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3f8eb698si8588336d6.157.2024.07.24.23.58.31
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hD1PNaCZ;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <armbru@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe853a42bsi10814811cf.752.2024.07.25.02.07.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jul 2024 23:58:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 25 Jul 2024 02:07:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W5aJsVMS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sWsQP-00050k-Ek; Thu, 25 Jul 2024 02:58:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sWsQN-0004yo-U3
- for qemu-arm@nongnu.org; Thu, 25 Jul 2024 02:58:03 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sWsQM-0000tJ-78
- for qemu-arm@nongnu.org; Thu, 25 Jul 2024 02:58:03 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4267345e746so4212835e9.0
- for <qemu-arm@nongnu.org>; Wed, 24 Jul 2024 23:58:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721890680; x=1722495480; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=PeGEmRBAOhT/xkRbn6ISbWil2tWD4PNocyMx9/v0nys=;
- b=W5aJsVMStgMHgh9fwRa/EP8kSG8YlVBqtaXZUYtF44h5er/f97FMLl9pfe8B700pOy
- Uv5x8MM9CJadiHVQMCPYVnmJxIXZPtBZFoaGoFg6SrruUr6wcN2vSjJBiPgS4Ho8StBL
- LbCG6z6qYDjQY0GrNCPbN/2lpAI5TBPHpConCL/x5AS687X28tkSUgP27n0T6f3R2xz8
- LNGRRjbwmiu90UoEf9A3ZqB8GuCjT4dV6gJS6cI5Kozu5+TB0IiB60Ytm15hoUHMqcRK
- qK7FjzgdTTvSD0gsTCoFhbcDRwO0cKJ01jAn/S4S5mTjZLubfj7TapH3JAn2lXWQGI8p
- jPKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721890680; x=1722495480;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=PeGEmRBAOhT/xkRbn6ISbWil2tWD4PNocyMx9/v0nys=;
- b=sqOMoat/km+keGEWpLi4A74AOCw/rzbJ50tVp1J+h4t8C956zA6Tlu97XL6aJFayzQ
- aw87wF4Y/NmibYO9joZtDOc+xz4Mm1MOIUXlqtzrlTAc7U5appsQdfUz/hk6NbKCoIsm
- 9MB9/Hn3mdUWfvB5SucQgycXE/EVGCGWjH/IvRH748I1BCZXDi1XQ6bjRc8uCOWftZhw
- kxtXNRG8X7w/p3A5LX+6zxuftuEb5kYZiHFLPifYb1kntRj20uSv3oIfM2B8uxCPkXZx
- m1VmWLAN0HGgnprBd1vSS23PbOGuOoO2VzauwYhuEUiciBzblL4DR6tuJfTnGvYv7GXF
- 07AA==
-X-Gm-Message-State: AOJu0YyUXq5TEmANXpHSwPK3YEcknjr9AWfBG9U7I/Ml4Wt/hDD1iCSR
- wra/X4U4PrcPlHE/H2V6mFhUlR14KDokfsqHaKVFW5IT5hCAfIAyg0Cnxqc4q5w=
-X-Received: by 2002:adf:f281:0:b0:367:9851:4f22 with SMTP id
- ffacd0b85a97d-36b36443da6mr555218f8f.58.1721890680067; 
- Wed, 24 Jul 2024 23:58:00 -0700 (PDT)
-Received: from [192.168.114.175] (164.170.88.92.rev.sfr.net. [92.88.170.164])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-36b367c0aa1sm1070972f8f.21.2024.07.24.23.57.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 Jul 2024 23:57:59 -0700 (PDT)
-Message-ID: <0fb1abd0-5031-4098-8e76-7f65fcbbddcb@linaro.org>
-Date: Thu, 25 Jul 2024 08:57:57 +0200
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hD1PNaCZ;
+       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1721898444;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Odg2VfpZQzItX8XVDoBrE1SWurkxPgm1LLiGA3X9lMQ=;
+	b=hD1PNaCZ4cboKJfZvrZ4fMIDMF7ngP+MnqBwqmeJG3x32m1p+MhImyz8OcAKgv3teb653x
+	1vgPwj04fOKV9Wy2T/s5Jfcyq4hbE3EDr4UrZER4jFTUkkXg43ezVruawKhsEiXJZVKmvD
+	rK+cnce2QYJO/86gJ9nfvTuwkAXYr4k=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-604-fqqc_YYzOjK9_6D4psav9Q-1; Thu,
+ 25 Jul 2024 05:07:20 -0400
+X-MC-Unique: fqqc_YYzOjK9_6D4psav9Q-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B19FC1955D48;
+	Thu, 25 Jul 2024 09:07:16 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 37AD41955D42;
+	Thu, 25 Jul 2024 09:07:15 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+	id DFD0C21F4B8B; Thu, 25 Jul 2024 11:07:12 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: Daniel P . =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Eduardo
+ Habkost
+ <eduardo@habkost.net>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Yanan Wang
+ <wangyanan55@huawei.com>,  "Michael S . Tsirkin" <mst@redhat.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Eric Blake <eblake@redhat.com>,  Marcelo
+ Tosatti <mtosatti@redhat.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+  Peter Maydell <peter.maydell@linaro.org>,  Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>,  Sia Jee Heng
+ <jeeheng.sia@starfivetech.com>,  qemu-devel@nongnu.org,
+  kvm@vger.kernel.org,  qemu-riscv@nongnu.org,  qemu-arm@nongnu.org,
+  Zhenyu Wang <zhenyu.z.wang@intel.com>,  Dapeng Mi
+ <dapeng1.mi@linux.intel.com>,  Yongwei Ma <yongwei.ma@intel.com>
+Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache object
+In-Reply-To: <ZqEN1kZaQcuY4UPG@intel.com> (Zhao Liu's message of "Wed, 24 Jul
+	2024 22:21:10 +0800")
+References: <20240704031603.1744546-1-zhao1.liu@intel.com>
+	<20240704031603.1744546-9-zhao1.liu@intel.com>
+	<87r0bl35ug.fsf@pond.sub.org> <Zp5vxtXWDeHAdPok@intel.com>
+	<87bk2nnev2.fsf@pond.sub.org> <ZqEN1kZaQcuY4UPG@intel.com>
+Date: Thu, 25 Jul 2024 11:07:12 +0200
+Message-ID: <87le1psuv3.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] hw/misc/bcm2835_property: Avoid overflow in OTP
- access properties
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org
-References: <20240723131029.1159908-1-peter.maydell@linaro.org>
- <20240723131029.1159908-3-peter.maydell@linaro.org>
- <a8291990-e161-4a43-a1c9-69040f1f6f93@linaro.org>
- <CAFEAcA8GPPy4P330P8kgbCxf=S+f8WGmB6tnAHN5bXxxyN9U=A@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA8GPPy4P330P8kgbCxf=S+f8WGmB6tnAHN5bXxxyN9U=A@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e7/WPV7yBmP/
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-TUID: IIu9VkPQgUN0
 
-On 24/7/24 14:31, Peter Maydell wrote:
-> On Wed, 24 Jul 2024 at 08:06, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Hi Peter,
->>
->> On 23/7/24 15:10, Peter Maydell wrote:
->>> Coverity points out that in our handling of the property
->>> RPI_FWREQ_SET_CUSTOMER_OTP we have a potential overflow.  This
->>> happens because we read start_num and number from the guest as
->>> unsigned 32 bit integers, but then the variable 'n' we use as a loop
->>> counter as we iterate from start_num to start_num + number is only an
->>> "int".  That means that if the guest passes us a very large start_num
->>> we will interpret it as negative.  This will result in an assertion
->>> failure inside bcm2835_otp_set_row(), which checks that we didn't
->>> pass it an invalid row number.
->>>
->>> A similar issue applies to all the properties for accessing OTP rows
->>> where we are iterating through with a start and length read from the
->>> guest.
->>>
->>> Use uint32_t for the loop counter to avoid this problem. Because in
->>> all cases 'n' is only used as a loop counter, we can do this as
->>> part of the for(), restricting its scope to exactly where we need it.
->>>
->>> Resolves: Coverity CID 1549401
->>> Cc: qemu-stable@nongnu.org
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>
->>> ---
->>>    hw/misc/bcm2835_property.c | 9 ++++-----
->>>    1 file changed, 4 insertions(+), 5 deletions(-)
->>>
->>> diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
->>> index e28fdca9846..7eb623b4e90 100644
->>> --- a/hw/misc/bcm2835_property.c
->>> +++ b/hw/misc/bcm2835_property.c
->>> @@ -30,7 +30,6 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
->>>        uint32_t tot_len;
->>>        size_t resplen;
->>>        uint32_t tmp;
->>> -    int n;
->>>        uint32_t start_num, number, otp_row;
->>>
->>>        /*
->>> @@ -337,7 +336,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
->>>
->>>                resplen = 8 + 4 * number;
->>>
->>> -            for (n = start_num; n < start_num + number &&
->>> +            for (uint32_t n = start_num; n < start_num + number &&
->>>                     n < BCM2835_OTP_CUSTOMER_OTP_LEN; n++) {
->>
->> I find not making the counter size explicit and use 'unsigned'
->> simpler, since using 32-bit in particular doesn't bring much here.
->> Is there a reason I'm missing?
-> 
-> I just wanted to match the types between n and start_num and
-> number (where the latter two should be uint32_t because we load
-> them from the guest as 32-bit values). Otherwise we're relying
-> on "unsigned" being at least 32 bit -- it is, but if we need
-> it to be 32 bit then why not use the type that is guaranteed
-> and says specifically that it's 32 bits ?
+Zhao Liu <zhao1.liu@intel.com> writes:
 
-Yes OK no problem.
+> Hi Markus and Daniel,
+>
+> I have the questions about the -object per cache implementation:
+>
+> On Wed, Jul 24, 2024 at 02:39:29PM +0200, Markus Armbruster wrote:
+>> Date: Wed, 24 Jul 2024 14:39:29 +0200
+>> From: Markus Armbruster <armbru@redhat.com>
+>> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
+>>  object
+>> 
+>> Zhao Liu <zhao1.liu@intel.com> writes:
+>> 
+>> > Hi Markus,
+>> >
+>> > On Mon, Jul 22, 2024 at 03:37:43PM +0200, Markus Armbruster wrote:
+>> >> Date: Mon, 22 Jul 2024 15:37:43 +0200
+>> >> From: Markus Armbruster <armbru@redhat.com>
+>> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
+>> >>  object
+>> >> 
+>> >> Zhao Liu <zhao1.liu@intel.com> writes:
+>> >> 
+>> >> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+>> >> 
+>> >> This patch is just documentation.  The code got added in some previous
+>> >> patch.  Would it make sense to squash this patch into that previous
+>> >> patch?
+>> >
+>> > OK, I'll merge them.
+>> >
+>> >> > ---
+>> >> > Changes since RFC v2:
+>> >> >  * Rewrote the document of smp-cache object.
+>> >> >
+>> >> > Changes since RFC v1:
+>> >> >  * Use "*_cache=topo_level" as -smp example as the original "level"
+>> >> >    term for a cache has a totally different meaning. (Jonathan)
+>> >> > ---
+>> >> >  qemu-options.hx | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
+>> >> >  1 file changed, 58 insertions(+)
+>> >> >
+>> >> > diff --git a/qemu-options.hx b/qemu-options.hx
+>> >> > index 8ca7f34ef0c8..4b84f4508a6e 100644
+>> >> > --- a/qemu-options.hx
+>> >> > +++ b/qemu-options.hx
+>> >> > @@ -159,6 +159,15 @@ SRST
+>> >> >          ::
+>> >> >  
+>> >> >              -machine cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=128G,cxl-fmw.0.interleave-granularity=512
+>> >> > +
+>> >> > +    ``smp-cache='id'``
+>> >> > +        Allows to configure cache property (now only the cache topology level).
+>> >> > +
+>> >> > +        For example:
+>> >> > +        ::
+>> >> > +
+>> >> > +            -object '{"qom-type":"smp-cache","id":"cache","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"},{"name":"l2","topo":"module"},{"name":"l3","topo":"die"}]}'
+>> >> > +            -machine smp-cache=cache
+>> >> >  ERST
+>> >> >  
+>> >> >  DEF("M", HAS_ARG, QEMU_OPTION_M,
+>> >> > @@ -5871,6 +5880,55 @@ SRST
+>> >> >          ::
+>> >> >  
+>> >> >              (qemu) qom-set /objects/iothread1 poll-max-ns 100000
+>> >> > +
+>> >> > +    ``-object '{"qom-type":"smp-cache","id":id,"caches":[{"name":cache_name,"topo":cache_topo}]}'``
+>> >> > +        Create an smp-cache object that configures machine's cache
+>> >> > +        property. Currently, cache property only include cache topology
+>> >> > +        level.
+>> >> > +
+>> >> > +        This option must be written in JSON format to support JSON list.
+>> >> 
+>> >> Why?
+>> >
+>> > I'm not familiar with this, so I hope you could educate me if I'm wrong.
+>> >
+>> > All I know so far is for -object that defining a list can only be done in
+>> > JSON format and not with a numeric index like a keyval based option, like:
+>> >
+>> > -object smp-cache,id=cache0,caches.0.name=l1i,caches.0.topo=core: Parameter 'caches' is missing
+>> >
+>> > the above doesn't work.
+>> >
+>> > Is there any other way to specify a list in command line?
+>> 
+>> The command line is a big, sprawling mess :)
+>> 
+>> -object supports either a JSON or a QemuOpts argument.  *Not* keyval!
+>> 
+>> Both QemuOpts and keyval parse something like KEY=VALUE,...  Keyval
+>> supports arrays and objects via dotted keys.  QemuOpts doesn't natively
+>> support arrays and objects, but its users can hack around that
+>> limitation in various ways.  -object doesn't.  So you're right, it's
+>> JSON or bust here.
+>> 
+>> However, if we used one object per cache instead, we could get something
+>> like
+>> 
+>>     -object smp-cache,name=l1d,...
+>>     -object smp-cache,name=l1u,...
+>>     -object smp-cache,name=l2,...
+>>     ...
+>
+> Current, I use -object to create a smp_cache object, and link it to
+> MachineState by -machine,smp-cache=obj_id.
+>
+> Then for the objects per cache, how could I link them to machine?
+>
+> Is it possible that I create something static in smp_cache.c and expose
+> all the cache information to machine through some interface?
+
+Good questions.  However, before we head deeper into the weeds here, I
+feel we should discuss the things below.  And before we do that, I need
+a clear understanding of the use case.  Elsewhere in this thread, I just
+described the use case as I understand it.  Please reply there.  I'll
+then come back to this message.
+
+[...]

@@ -1,124 +1,123 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3407965njc;
-        Wed, 24 Jul 2024 17:08:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUVQI+kyyNetWHbsXpT1Ajud8fXvcwmB80CAt7IhoGIgGN7i/z4OScSjWBob+pAHUhzVztV1Ro/U7xdoA9wzBE7MH97/Hr7
-X-Google-Smtp-Source: AGHT+IEruGi3JBjVMlMR62aam0ai82pDIvGBRNMMqhEQ80aS5EaDfe8U78G624QaNNH4Pugh2RSC
-X-Received: by 2002:ac8:5f92:0:b0:44f:e852:19cc with SMTP id d75a77b69052e-44fe91da572mr3082011cf.29.1721866097831;
-        Wed, 24 Jul 2024 17:08:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721866097; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3551633njc;
+        Wed, 24 Jul 2024 23:58:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVHpNk02OBkbyHIz+Eys0DeLE+9fV36R3N/kVwg6RTqeMR7E5tpzKWJzwxwSVhj+01JFtaNPwCX2UAljf4g2sWlpiQMngid
+X-Google-Smtp-Source: AGHT+IGtCBxGYp5fuhMxgyZSCtPegg5UP7NXwJ72KnGNGrRjZ11apzjE9I2r+MTvXzrgOgyRaVlM
+X-Received: by 2002:a05:6214:da3:b0:6b7:a6eb:c343 with SMTP id 6a1803df08f44-6bb4087082dmr12526696d6.51.1721890711620;
+        Wed, 24 Jul 2024 23:58:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721890711; cv=none;
         d=google.com; s=arc-20160816;
-        b=J0KNjf+M9WzZ/xJVYnph8e+smONk5hkrHcEwTpEIW6LmR+Clv0uWwAzXOrXQHQaD8k
-         xuIUND7GMV121lnJ3vdELsGKRhGNqL+60a6lSdDXow2FNxdHliZnf44m8FKn+tQtDK8Q
-         CjDHr4/FTR4pZiKVW8LNoNICZqiTedH0xp/fWyamxkUStDol/c0o2nLpUEjlkBs1Ht6T
-         g+PRVal++Q+Bnn1KgF8kiUbhqphHPW9fsimnCB82Ojwwq+Bn/nVCPDMSFzwLUTSBvmC0
-         fWObd0gsEwWqWGCvN9tDEBLTHGu6Q0MGrni54IZRa4ezVewi+j/lfCuWgoDmjlFyDFk/
-         yxyA==
+        b=TcLP35C481FtFu/wvFinzhGyPaVxTOLkrI9T5lS5NEP4Hjq/fRgMiQzWw5FTgEc/oV
+         /KNnwAa8nH5tS5vNE7OAsvscu1CXqPSheewEpPbQg2kL4DpOEDcaSc5c+TorB3rLiqiF
+         2XehIe+lZb2vDRFdrdEqt97Z+52Pg9d77tcpnp9TqeFDygeUHfUsapzf+sIAu2XJ/YMD
+         KKg0WHbNB0WMKCNsK6WGEJlEi3VqxICHT2GLDtQy3o0x51pzXdBkkqoZjtPsxf2UH6b3
+         fjP0gZI6mU14Oi1qaBL4DSzKuW9jgq3EOpYtxSJF+XQKAYeT3mY9IvQdp54SvGfL7gff
+         cOQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=q29X9Kk5wA0BKFvBR2hSL6jPiMLoZWNF1zPAoTNlJPE=;
-        fh=Jm9ZwwFsGmfwuU7iuvHGLiRD7eAduG+AQmUQpkx19Qg=;
-        b=lW25Q+mJnXWxI/MzMxC9Iscc67dmmoFqggNDRDk7wrIgRGfH0E9/1DMmR3gKzszlWL
-         Ez68OgAjzsWFqMoM5fYC2lmUtHN+QcD2D+k1LnmPZGHGAeuujRWSOzpsIT8BLSTkVgXD
-         rbuOaJOhbIa83ACav7nOIwxFxqVs00a/k6n1aO/3G1VLiShYxl0s64YDrnvjsuevF5HY
-         iChtec+6bpuNU/CfzM6DXQz4AeNxiICCx0YGVbO4njU1qufTzDxFDYnoAysxub+oZE8e
-         JzKMSIzZ3/e+SpM+i27knnRqImqJqa5qk+B+zHlzrTdwZsjWFHyyx5utDobVZmBCUORM
-         yQEw==;
+        bh=PeGEmRBAOhT/xkRbn6ISbWil2tWD4PNocyMx9/v0nys=;
+        fh=nVkAIXuVa0oMjWg8LRGh1shL1aR3DvIcz/kGIZU/Gfg=;
+        b=pNM09M5IllVFQdYWPR59WLnWuaAZU0WgUb/ZBcNv6BFz2q6f82piUV7y9wnfidnFz9
+         sdOxqpPrkd5xZs46mYo5G3ZNL/am11HM2DxkwfoT8ZTOnA9FgCgbczds6gmpODXZ9KNA
+         PSyiqghvuUx7R2QKwQ/HGzeLP5dW2/5d7W9ThvKqy63g37gztc9T4xcHdK9jXhGHaDrc
+         d0W7HEwDEL7fvJ7pEp+jXPr6T7OzGj2FRBmhNZf/bAL5XcGqXk5TnJx/Y2Vayhno/hfx
+         g5DuiMLg6Za2rTDVZ4MyHjPo5GMPsCfeNGTjhTMocUf2hrsCrUa+k8qMNpri8DkRaS9J
+         iOxQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zUAorRqE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=W5aJsVMS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe81fb4afsi3332681cf.289.2024.07.24.17.08.17
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3f8eb698si8588336d6.157.2024.07.24.23.58.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jul 2024 17:08:17 -0700 (PDT)
+        Wed, 24 Jul 2024 23:58:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zUAorRqE;
+       dkim=pass header.i=@linaro.org header.s=google header.b=W5aJsVMS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sWm1X-0002e5-0W; Wed, 24 Jul 2024 20:07:59 -0400
+	id 1sWsQP-00050k-Ek; Thu, 25 Jul 2024 02:58:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sWm1V-0002Xu-KF
- for qemu-arm@nongnu.org; Wed, 24 Jul 2024 20:07:57 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sWsQN-0004yo-U3
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2024 02:58:03 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1sWm1T-0001GY-Sp
- for qemu-arm@nongnu.org; Wed, 24 Jul 2024 20:07:57 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-1fc611a0f8cso2698705ad.2
- for <qemu-arm@nongnu.org>; Wed, 24 Jul 2024 17:07:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sWsQM-0000tJ-78
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2024 02:58:03 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4267345e746so4212835e9.0
+ for <qemu-arm@nongnu.org>; Wed, 24 Jul 2024 23:58:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721866074; x=1722470874; darn=nongnu.org;
+ d=linaro.org; s=google; t=1721890680; x=1722495480; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=q29X9Kk5wA0BKFvBR2hSL6jPiMLoZWNF1zPAoTNlJPE=;
- b=zUAorRqEY9EVRo+2q9ZXUGNn9n57375t46ufqWCTzWkK4W/oMk5UnTABrDcnrVz/+r
- O9796Y8sevd8sMUc18oedwHya3mx79R6QplWBue0VMAFSztdXckEvO8lQ2uAphYtgyeF
- +PCHuUChLTKmmMiWi+xKBvHARK5gPJ8m7wJ6gEzgEfX+rcdZpvHEs8/jsCzDG/6Qcqy/
- TmEQhSPDG7TckhjDFhUOpyiUd466qJ1uBUdVCHmtCETQZoJDNhMt9Lca/pbLdpbmCirh
- YsktqytwMxdE1p5toZ/JIkWZ/gl5tgBOrdufCm4WZoW6ZMWQhvoPkH7dJTzikXJVo/V5
- /Z+Q==
+ bh=PeGEmRBAOhT/xkRbn6ISbWil2tWD4PNocyMx9/v0nys=;
+ b=W5aJsVMStgMHgh9fwRa/EP8kSG8YlVBqtaXZUYtF44h5er/f97FMLl9pfe8B700pOy
+ Uv5x8MM9CJadiHVQMCPYVnmJxIXZPtBZFoaGoFg6SrruUr6wcN2vSjJBiPgS4Ho8StBL
+ LbCG6z6qYDjQY0GrNCPbN/2lpAI5TBPHpConCL/x5AS687X28tkSUgP27n0T6f3R2xz8
+ LNGRRjbwmiu90UoEf9A3ZqB8GuCjT4dV6gJS6cI5Kozu5+TB0IiB60Ytm15hoUHMqcRK
+ qK7FjzgdTTvSD0gsTCoFhbcDRwO0cKJ01jAn/S4S5mTjZLubfj7TapH3JAn2lXWQGI8p
+ jPKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721866074; x=1722470874;
+ d=1e100.net; s=20230601; t=1721890680; x=1722495480;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=q29X9Kk5wA0BKFvBR2hSL6jPiMLoZWNF1zPAoTNlJPE=;
- b=MIXLjtGWyy9BG+NYveLPbyGWXYS8b8uY6fZ7HlCN3fFaZS7mzshMaHt1fS9R04AkIX
- qtE15b7Yor3BrWwtxTaij960EC/6DENzc1wyCCMsrcFkPpaocf1Ra7S6eq7oZP9EPyNP
- 3lq0Iogv/uysi/+V7SPj9ZOkiOySdOruFfLhZMTPRvzkno3Mu85VHVEgezKay+P7wJkq
- JVIUYoN+wGuWJrEKJQsuFSRLVM4U6kb0/6sa9IMofDJiB7cBdVzrBx+f1HX88JX15fNY
- HsOn2imEXh3CRE0v6Ar4yaWGddEAnFGinf00bsmHD0VcgraPgN84LBRwjV0HonesbA4r
- SBog==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUQGlF23wqYQCKch9jP3fjJKQjsbl8bXliC8/xjZmKymcokY3+XQ4VAzYC7BhbDSKSoPzPByUom7AVwnJaO3dZ68hE8
-X-Gm-Message-State: AOJu0YwLYPyh98xGeMPgWeYw4XsDRkla7Lk5q9Z+2nbjc5eqSBKAG7dC
- DCneJEOc0lT/F/I3M8aowesr3LCVSdfN/Huo3reOvXHoL+gAsKMASFqJi4DB4Yo=
-X-Received: by 2002:a17:903:244a:b0:1fd:64d2:62da with SMTP id
- d9443c01a7336-1fed92739d2mr2448595ad.29.1721866073736; 
- Wed, 24 Jul 2024 17:07:53 -0700 (PDT)
-Received: from [192.168.1.113] ([203.56.128.103])
+ bh=PeGEmRBAOhT/xkRbn6ISbWil2tWD4PNocyMx9/v0nys=;
+ b=sqOMoat/km+keGEWpLi4A74AOCw/rzbJ50tVp1J+h4t8C956zA6Tlu97XL6aJFayzQ
+ aw87wF4Y/NmibYO9joZtDOc+xz4Mm1MOIUXlqtzrlTAc7U5appsQdfUz/hk6NbKCoIsm
+ 9MB9/Hn3mdUWfvB5SucQgycXE/EVGCGWjH/IvRH748I1BCZXDi1XQ6bjRc8uCOWftZhw
+ kxtXNRG8X7w/p3A5LX+6zxuftuEb5kYZiHFLPifYb1kntRj20uSv3oIfM2B8uxCPkXZx
+ m1VmWLAN0HGgnprBd1vSS23PbOGuOoO2VzauwYhuEUiciBzblL4DR6tuJfTnGvYv7GXF
+ 07AA==
+X-Gm-Message-State: AOJu0YyUXq5TEmANXpHSwPK3YEcknjr9AWfBG9U7I/Ml4Wt/hDD1iCSR
+ wra/X4U4PrcPlHE/H2V6mFhUlR14KDokfsqHaKVFW5IT5hCAfIAyg0Cnxqc4q5w=
+X-Received: by 2002:adf:f281:0:b0:367:9851:4f22 with SMTP id
+ ffacd0b85a97d-36b36443da6mr555218f8f.58.1721890680067; 
+ Wed, 24 Jul 2024 23:58:00 -0700 (PDT)
+Received: from [192.168.114.175] (164.170.88.92.rev.sfr.net. [92.88.170.164])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-1fed7fe1a26sm1548265ad.288.2024.07.24.17.07.50
+ ffacd0b85a97d-36b367c0aa1sm1070972f8f.21.2024.07.24.23.57.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 Jul 2024 17:07:53 -0700 (PDT)
-Message-ID: <0679a991-a8bc-4406-8e9f-5ee134136666@linaro.org>
-Date: Thu, 25 Jul 2024 10:07:46 +1000
+ Wed, 24 Jul 2024 23:57:59 -0700 (PDT)
+Message-ID: <0fb1abd0-5031-4098-8e76-7f65fcbbddcb@linaro.org>
+Date: Thu, 25 Jul 2024 08:57:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 00/15] Bsd user for 9.1 patches
-To: Warner Losh <imp@bsdimp.com>, qemu-devel@nongnu.org
-Cc: Kyle Evans <kevans@freebsd.org>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20240724220449.10398-1-imp@bsdimp.com>
+Subject: Re: [PATCH 2/4] hw/misc/bcm2835_property: Avoid overflow in OTP
+ access properties
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org
+References: <20240723131029.1159908-1-peter.maydell@linaro.org>
+ <20240723131029.1159908-3-peter.maydell@linaro.org>
+ <a8291990-e161-4a43-a1c9-69040f1f6f93@linaro.org>
+ <CAFEAcA8GPPy4P330P8kgbCxf=S+f8WGmB6tnAHN5bXxxyN9U=A@mail.gmail.com>
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240724220449.10398-1-imp@bsdimp.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA8GPPy4P330P8kgbCxf=S+f8WGmB6tnAHN5bXxxyN9U=A@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,37 +132,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pGeArVRTuCOL
+X-TUID: e7/WPV7yBmP/
 
-On 7/25/24 08:04, Warner Losh wrote:
-> The following changes since commit 3cce8bd4d737f2ca688bbdcb92cd5cc683245bbd:
+On 24/7/24 14:31, Peter Maydell wrote:
+> On Wed, 24 Jul 2024 at 08:06, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> Hi Peter,
+>>
+>> On 23/7/24 15:10, Peter Maydell wrote:
+>>> Coverity points out that in our handling of the property
+>>> RPI_FWREQ_SET_CUSTOMER_OTP we have a potential overflow.  This
+>>> happens because we read start_num and number from the guest as
+>>> unsigned 32 bit integers, but then the variable 'n' we use as a loop
+>>> counter as we iterate from start_num to start_num + number is only an
+>>> "int".  That means that if the guest passes us a very large start_num
+>>> we will interpret it as negative.  This will result in an assertion
+>>> failure inside bcm2835_otp_set_row(), which checks that we didn't
+>>> pass it an invalid row number.
+>>>
+>>> A similar issue applies to all the properties for accessing OTP rows
+>>> where we are iterating through with a start and length read from the
+>>> guest.
+>>>
+>>> Use uint32_t for the loop counter to avoid this problem. Because in
+>>> all cases 'n' is only used as a loop counter, we can do this as
+>>> part of the for(), restricting its scope to exactly where we need it.
+>>>
+>>> Resolves: Coverity CID 1549401
+>>> Cc: qemu-stable@nongnu.org
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>
+>>> ---
+>>>    hw/misc/bcm2835_property.c | 9 ++++-----
+>>>    1 file changed, 4 insertions(+), 5 deletions(-)
+>>>
+>>> diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+>>> index e28fdca9846..7eb623b4e90 100644
+>>> --- a/hw/misc/bcm2835_property.c
+>>> +++ b/hw/misc/bcm2835_property.c
+>>> @@ -30,7 +30,6 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+>>>        uint32_t tot_len;
+>>>        size_t resplen;
+>>>        uint32_t tmp;
+>>> -    int n;
+>>>        uint32_t start_num, number, otp_row;
+>>>
+>>>        /*
+>>> @@ -337,7 +336,7 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+>>>
+>>>                resplen = 8 + 4 * number;
+>>>
+>>> -            for (n = start_num; n < start_num + number &&
+>>> +            for (uint32_t n = start_num; n < start_num + number &&
+>>>                     n < BCM2835_OTP_CUSTOMER_OTP_LEN; n++) {
+>>
+>> I find not making the counter size explicit and use 'unsigned'
+>> simpler, since using 32-bit in particular doesn't bring much here.
+>> Is there a reason I'm missing?
 > 
->    Merge tag 'ui-pull-request' ofhttps://gitlab.com/marcandre.lureau/qemu into staging (2024-07-23 15:23:05 +1000)
-> 
-> are available in the Git repository at:
-> 
->    git@gitlab.com:bsdimp/qemu.git tags/bsd-user-for-9.1-pull-request
-> 
-> for you to fetch changes up to ec018b76798e1196882ebcbf3df15e6d86ac9d7c:
-> 
->    bsd-user: Add target.h for aarch64. (2024-07-24 16:02:07 -0600)
-> 
-> ----------------------------------------------------------------
-> bsd-user: Misc changes for 9.1 (I hope)
-> 
-> V2: Add missing bsd-user/aarch64/target.h
-> 
-> This patch series includes two main sets of patches. To make it simple to
-> review, I've included the changes from my student which the later changes depend
-> on. I've included a change from Jessica and Doug as well. I've reviewed them,
-> but more eyes never hurt.
-> 
-> I've also included a number of 'touch up' patches needed either to get the
-> aarch64 building, or to implmement suggestions from prior review cycles. The
-> main one is what's charitably described as a kludge: force aarch64 to use 4k
-> pages. The qemu-project (and blitz branch) hasn't had the necessary changes to
-> bsd-user needed to support variable page size.
+> I just wanted to match the types between n and start_num and
+> number (where the latter two should be uint32_t because we load
+> them from the guest as 32-bit values). Otherwise we're relying
+> on "unsigned" being at least 32 bit -- it is, but if we need
+> it to be 32 bit then why not use the type that is guaranteed
+> and says specifically that it's 32 bits ?
 
-Applied, thanks.  Please update https://wiki.qemu.org/ChangeLog/9.1 as appropriate.
-
-r~
+Yes OK no problem.

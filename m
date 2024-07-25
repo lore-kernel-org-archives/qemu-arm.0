@@ -1,424 +1,483 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3597492njc;
-        Thu, 25 Jul 2024 01:52:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU2Fsg0slXrfEEWnakTx3iYMgkl4BonMXjZ53ph+gAKEl/q2K/ioRX5wzmruXHtcyOcFYQmSa/QadjLEl6xK2z4+m0aKYXH
-X-Google-Smtp-Source: AGHT+IG5Dv8i4ff6TXbSXRE7XXNP03+YRWGWDsn20KgpBgNrYy9kLhyMBSazn6TE8REOpyjPwPzn
-X-Received: by 2002:ac8:5f48:0:b0:447:e76e:d8de with SMTP id d75a77b69052e-44fd7ad61bamr76656371cf.1.1721897521851;
-        Thu, 25 Jul 2024 01:52:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721897521; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3625725njc;
+        Thu, 25 Jul 2024 03:03:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXXxUknDusN4Oab0P8Ycc8R5Jsp3G2OHEvE4vVFoeoqsH57prKNv29Fnp0dNKAF4r2Xg7Ht24X+2FtXVryd2Ja5R6XzNTyp
+X-Google-Smtp-Source: AGHT+IFEXU8vP51ZUKv+HcYubyt8nqmJvBvI0c+zehXy/Q8rfUPFHi/YQQ4KwNJ7Me3TNEvsxiZh
+X-Received: by 2002:a05:6214:dad:b0:6b5:9c9c:a736 with SMTP id 6a1803df08f44-6bb3c9cdeddmr29826216d6.6.1721901834193;
+        Thu, 25 Jul 2024 03:03:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721901834; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ko5512V/BFcb4jQgORcA0AP+gfk8sh0RsSiQzorzzxrNtRv2b+oc5X4aS8kWTWP6AK
-         4WR3H5LlUFW5zbWyhBl0dszxVB6fP7BKafOUMLRj0PbV0PzS1kB3Rnzu6ET8WlTVFryi
-         MKc7o10kGFgd0niJDf0rKX0rXJ4K9CxcsVYl1T1Y5ZzONEL8u2xQxvRlPvYlHl+G1Kt3
-         5BEWhL/iBkQVSQbB/F7MexwhF1O7Fm6vi/hHkoH2JXSZNrsJgZKf6oJLQtHkOx7B3hC0
-         ide9XUDrvnvvpjkpSNhfXGeag+eanUvCG86CtbWgVcQ556u/23RDUMqxHfrbDx8yTnN8
-         R2EA==
+        b=VS0PPKkGg4WHAdqXgEb8PPGa8PBP8JkSJa7QGwel03gQqzgU4i496UwEiCyqY15XUz
+         w5LyhWhg2IHTePW5Cjxxvqnk70LnqdgK8oBo2+UGc+eCmErwZPZmGx+qkQx7ucVQ34mo
+         Tn7RYx6a7oq95POYCLBpebRHkZfXS2V/eiDkiAscENMCPa+DGg4goY+DBUwD/1KjGP9z
+         luAr8ofk3icQ2Z96A9Cvf5REn6hs1iYcV1INJRYjVQgTBCjH9pbYyK9uM0Q3U8Q4zLeC
+         cwdYG3xZFRGTSAhVXFPJJgESv8dvZGwbgdV5tLxNGDpHY79AeXQkSa/I+cvsgdKdtq74
+         BXQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:date:references:in-reply-to
-         :subject:cc:to:from:dkim-signature;
-        bh=kIWQG2s2Y9IC1jF+WOWlZetNltMGQVtEeBR8leMZ5QU=;
-        fh=YtMdrrrL4AdjARoXd5Fxw8LjXJzXSJRO9dQYlO5BjO8=;
-        b=TyJTeYpUVx4HXd6RviXHkfRl2ATzr64HO95t9I1N0pBYi8KAXCbFSzv12lxd+FcMJb
-         piYwvTar+GeKmGXq+WFFe72ZOEVzmBZg/hhPGu1BuNeR3WOd6qu+LYzak/oRk8V64BHR
-         7pj/zYIjA2kPMr883Hn3epIyvDTIgxOFN8aqDhIbGBUeNqxwtquwy2c2gZaWXJd0rtkC
-         tSF2aivV196VTWwF9AVaiOrk2wwLxeTmcwYP+sxTx/vZaXx1Zod36IR5U4TxuAe5LnvH
-         G3mlmT36MkV9xf9z2pynrOi5J9UI+jb+W+tAD50MDJC3vS3rPKuXP299zclmxauCwUcD
-         YMUw==;
+        h=content-transfer-encoding:mime-version:user-agent:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=uKggOuMzjkGZbvdSJoNF8Z4O9COB+FBjLMBo6UrDOV8=;
+        fh=ifBacIEt8jTdiGkyZbUiu1L7+zRusNfbE1KbUf7yopY=;
+        b=JHASEWzaRRfaASQ45olNoy5mWTOuLfFsAjQZoyNWt7ZD7SnZF3e0MPrKCQakWPyzDE
+         ejfQO6XTe/RQYlIg/WgqBYZo6ACyjozAig+NMXSsi3lccVy1/AOcifhvOS0RQCtZHlka
+         2g6/Ux6Nuhodn9yTBjZmjBD8iiFGYk8mY6mmUZp0zzyb17Lk7kCAFjZZy2c6dPaclXB7
+         Iv0z7sEIpYf57spGC4Vgxzblvg+KADz2pCD+lt+iNYfU7C7kmFRSXAUApXI5Lr15w11h
+         TBTD6HgFFaZmQuj9W92kcjg/ligRQqc0dUTqLDDueVmms0gTwfifOMLNX2Aww6BPAYwc
+         CR6A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CFqgoxDd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jQptlmUt;
        spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <armbru@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1d749ea00si109771485a.751.2024.07.25.01.52.01
+        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3faf0d1fsi11321756d6.491.2024.07.25.03.03.54
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 Jul 2024 01:52:01 -0700 (PDT)
+        Thu, 25 Jul 2024 03:03:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CFqgoxDd;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jQptlmUt;
        spf=pass (google.com: domain of armbru@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1721897521;
+	s=mimecast20190719; t=1721901833;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=kIWQG2s2Y9IC1jF+WOWlZetNltMGQVtEeBR8leMZ5QU=;
-	b=CFqgoxDdaLQcJrh6kBK7Cizw4KVXXYcs4tdEuJDe93G29W7ZsHSBW+eH0FgFz2cbqkKG0E
-	li/IMkS7D2fztjQov2T9YtRmX9bUUL2ddYzK+rSIro/5jbjbMrw2zJK9tGAVcPW7Rj42Yn
-	406F4dFvLbdcB/7h+2+PY1iPsqPT+6I=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+	bh=uKggOuMzjkGZbvdSJoNF8Z4O9COB+FBjLMBo6UrDOV8=;
+	b=jQptlmUtlcWOhrBPsKDZV+qQBVFTfJU7QnLYKtn77MaTSXeLuMkTzhjlPerRJdFombSyLV
+	ksWqXn0rihkxvKQ0ZIP+RvzI4MMpurQPeE8fQ0Xxx+3IU8hD8JGdBu7g4Tq8a3GB/C6lJz
+	jkUEKH1HrFjHTLKm2FngYbNVHKEKAdo=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-601-NJbgD60MNe2yUOdaelNiaw-1; Thu,
- 25 Jul 2024 04:51:58 -0400
-X-MC-Unique: NJbgD60MNe2yUOdaelNiaw-1
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-615-mbOY8YfjN92hA4HC5AzWaQ-1; Thu,
+ 25 Jul 2024 06:03:52 -0400
+X-MC-Unique: mbOY8YfjN92hA4HC5AzWaQ-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B81081956046;
-	Thu, 25 Jul 2024 08:51:54 +0000 (UTC)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 3ADA41955D47;
+	Thu, 25 Jul 2024 10:03:50 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 9D4211955D50;
-	Thu, 25 Jul 2024 08:51:51 +0000 (UTC)
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 244811955E7D;
+	Thu, 25 Jul 2024 10:03:49 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id 18CF421E668F; Thu, 25 Jul 2024 10:51:49 +0200 (CEST)
+	id D272D21E668A; Thu, 25 Jul 2024 12:03:46 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Daniel P . =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Eduardo
- Habkost
- <eduardo@habkost.net>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Yanan Wang
- <wangyanan55@huawei.com>,  "Michael S . Tsirkin" <mst@redhat.com>,  Paolo
- Bonzini <pbonzini@redhat.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Eric Blake <eblake@redhat.com>,  Marcelo
- Tosatti <mtosatti@redhat.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
-  Peter Maydell <peter.maydell@linaro.org>,  Jonathan Cameron
- <Jonathan.Cameron@huawei.com>,  Sia Jee Heng
- <jeeheng.sia@starfivetech.com>,  qemu-devel@nongnu.org,
-  kvm@vger.kernel.org,  qemu-riscv@nongnu.org,  qemu-arm@nongnu.org,
-  Zhenyu Wang <zhenyu.z.wang@intel.com>,  Dapeng Mi
- <dapeng1.mi@linux.intel.com>,  Yongwei Ma <yongwei.ma@intel.com>
-Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
-In-Reply-To: <ZqEV8uErCn+QkOw8@intel.com> (Zhao Liu's message of "Wed, 24 Jul
-	2024 22:55:46 +0800")
-References: <20240704031603.1744546-1-zhao1.liu@intel.com>
-	<20240704031603.1744546-3-zhao1.liu@intel.com>
-	<87wmld361y.fsf@pond.sub.org> <Zp5tBHBoeXZy44ys@intel.com>
-	<87h6cfowei.fsf@pond.sub.org> <ZqEV8uErCn+QkOw8@intel.com>
-Date: Thu, 25 Jul 2024 10:51:49 +0200
-Message-ID: <871q3hua56.fsf@pond.sub.org>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,  Shiju Jose
+ <shiju.jose@huawei.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  "Michael
+ S. Tsirkin" <mst@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+  Ani Sinha <anisinha@redhat.com>,  Beraldo Leal <bleal@redhat.com>,
+  Dongjiu Geng <gengdongjiu1@gmail.com>,  Eric Blake <eblake@redhat.com>,
+  Igor Mammedov <imammedo@redhat.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Thomas Huth <thuth@redhat.com>,  Wainer dos
+ Santos Moschetta <wainersm@redhat.com>,  linux-kernel@vger.kernel.org,
+  qemu-arm@nongnu.org,  qemu-devel@nongnu.org
+Subject: Re: [PATCH v3 7/7] acpi/ghes: extend arm error injection logic
+In-Reply-To: <89e8a63b5e54409dd9bc4e7f4f4c12290838371b.1721630625.git.mchehab+huawei@kernel.org>
+	(Mauro Carvalho Chehab's message of "Mon, 22 Jul 2024 08:45:59 +0200")
+References: <cover.1721630625.git.mchehab+huawei@kernel.org>
+	<89e8a63b5e54409dd9bc4e7f4f4c12290838371b.1721630625.git.mchehab+huawei@kernel.org>
+Date: Thu, 25 Jul 2024 12:03:46 +0200
+Message-ID: <87y15ppz3x.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: 9ex516j3quqh
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-TUID: /nAr/hhONUOm
 
-Zhao Liu <zhao1.liu@intel.com> writes:
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:
 
-> Hi Markus,
+> Enrich CPER error injection logic for ARM processor to allow
+> setting values to  from UEFI 2.10 tables N.16 and N.17.
 >
-> I realized I should reply this mail first...
+> It should be noticed that, with such change, all arguments are
+> now optional, so, once QMP is negotiated with:
 >
-> On Wed, Jul 24, 2024 at 01:35:17PM +0200, Markus Armbruster wrote:
->> Date: Wed, 24 Jul 2024 13:35:17 +0200
->> From: Markus Armbruster <armbru@redhat.com>
->> Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
->> 
->> Zhao Liu <zhao1.liu@intel.com> writes:
->> 
->> > Hi Markus,
->> >
->> > On Mon, Jul 22, 2024 at 03:33:13PM +0200, Markus Armbruster wrote:
->> >> Date: Mon, 22 Jul 2024 15:33:13 +0200
->> >> From: Markus Armbruster <armbru@redhat.com>
->> >> Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
->> >> 
->> >> Zhao Liu <zhao1.liu@intel.com> writes:
->> >> 
->> >> > Introduce smp-cache object so that user could define cache properties.
->> >> >
->> >> > In smp-cache object, define cache topology based on CPU topology level
->> >> > with two reasons:
->> >> >
->> >> > 1. In practice, a cache will always be bound to the CPU container
->> >> >    (either private in the CPU container or shared among multiple
->> >> >    containers), and CPU container is often expressed in terms of CPU
->> >> >    topology level.
->> >> > 2. The x86's cache-related CPUIDs encode cache topology based on APIC
->> >> >    ID's CPU topology layout. And the ACPI PPTT table that ARM/RISCV
->> >> >    relies on also requires CPU containers to help indicate the private
->> >> >    shared hierarchy of the cache. Therefore, for SMP systems, it is
->> >> >    natural to use the CPU topology hierarchy directly in QEMU to define
->> >> >    the cache topology.
->> >> >
->> >> > Currently, separated L1 cache (L1 data cache and L1 instruction cache)
->> >> > with unified higher-level cache (e.g., unified L2 and L3 caches), is the
->> >> > most common cache architectures.
->> >> >
->> >> > Therefore, enumerate the L1 D-cache, L1 I-cache, L2 cache and L3 cache
->> >> > with smp-cache object to add the basic cache topology support.
->> >> >
->> >> > Suggested-by: Daniel P. Berrange <berrange@redhat.com>
->> >> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
->> >> 
->> >> [...]
->> >> 
->> >> > diff --git a/qapi/machine-common.json b/qapi/machine-common.json
->> >> > index 82413c668bdb..8b8c0e9eeb86 100644
->> >> > --- a/qapi/machine-common.json
->> >> > +++ b/qapi/machine-common.json
->> >> > @@ -64,3 +64,53 @@
->> >> >    'prefix': 'CPU_TOPO_LEVEL',
->> >> >    'data': [ 'invalid', 'thread', 'core', 'module', 'cluster',
->> >> >              'die', 'socket', 'book', 'drawer', 'default' ] }
->> >> > +
->> >> > +##
->> >> > +# @SMPCacheName:
->> >> 
->> >> Why the SMP in this name?  Because it's currently only used by SMP
->> >> stuff?  Or is there another reason I'm missing?
->> >
->> > Yes, I suppose it can only be used in SMP case.
->> >
->> > Because Intel's heterogeneous CPUs have different topologies for cache,
->> > for example, Alderlake's L2, for P core, L2 is per P-core, but for E
->> > core, L2 is per module (4 E cores per module). Thus I would like to keep
->> > the topology semantics of this object and -smp as consistent as possible.
->> >
->> > Do you agree?
->> 
->> I don't know enough to meaningfully agree or disagree.  I know just
->> enough to annoy you with questions :)
+> 	{ "execute": "qmp_capabilities" }
 >
-> Welcome and no problem!
+> the simplest way to generate a cache error is to use:
 >
->> This series adds a way to configure caches.
->> 
->> Structure of the configuration data: a list
->> 
->>     [{"name": N, "topo": T}, ...]
->> 
->> where N can be "l1d", "l1i", "l2", or "l3",
->>   and T can be "invalid", "thread", "core", "module", "cluster",
->>                "die", "socket", "book", "drawer", or "default".
->> 
->> What's the use case?  The commit messages don't tell.
+> 	{ "execute": "arm-inject-error" }
 >
-> i386 has the default cache topology model: l1 per core/l2 per core/l3
-> per die.
+> Also, as now PEI is mapped into an array, it is possible to
+> inject multiple errors at the same CPER record with:
 >
-> Cache topology affects scheduler performance, e.g., kernel's cluster
-> scheduling.
+> 	{ "execute": "arm-inject-error", "arguments": {
+> 	   "error": [ {"type": [ "cache-error" ]},
+> 		      {"type": [ "tlb-error" ]} ] } }
 >
-> Of course I can hardcode some cache topology model in the specific cpu
-> model that corresponds to the actual hardware, but for -cpu host/max,
-> the default i386 cache topology model has no flexibility, and the
-> host-cpu-cache option doesn't have enough fine-grained control over the
-> cache topology.
+> This would generate both cache and TLB errors, using default
+> values for other fields.
 >
-> So I want to provide a way to allow user create more fleasible cache
-> topology. Just like cpu topology.
-
-
-So the use case is exposing a configurable cache topology to the guest
-in order to increase performance.  Performance can increase when the
-configured virtual topology is closer to the physical topology than a
-default topology would be.  This can be the case with CPU host or max.
-
-Correct?
-
->> Why does that use case make no sense without SMP?
+> As all fields from ARM Processor CPER are now mapped, all
+> types of CPER records can be generated with the new QAPI.
 >
-> As the example I mentioned, for Intel hyrbid architecture, P cores has
-> l2 per core and E cores has l2 per module. Then either setting the l2
-> topology level as core nor module, can emulate the real case.
->
-> Even considering the more extreme case of Intel 14th MTL CPU, where
-> some E cores have L3 and some don't even have L3. As well as the last
-> time you and Daniel mentioned that in the future we could consider
-> covering more cache properties such as cache size. But the l3 size can
-> be different in the same system, like AMD's x3D technology. So
-> generally configuring properties for @name in a list can't take into
-> account the differences of heterogeneous caches with the same @name.
->
-> Hope my poor english explains the problem well. :-)
-
-I think I understand why you want to configure caches.  My question was
-about the connection to SMP.
-
-Say we run a guest with a single core, no SMP.  Could configuring caches
-still be useful then?
-
->> Can the same @name occur multiple times?  Documentation doesn't tell.
->> If yes, what does that mean?
->
-> Yes, this means the later one will override the previous one with the same
-> name.
-
-Needs documenting.
-
-If you make it an error, you don't have to document it :)
-
->> Say we later add value "l1" for unified level 1 cache.  Would "l1" then
->> conflict with "l1d" and "l1u"?
->
-> Yes, we should check in smp/machine code and ban l1 and l1i/l1d at the
-> same time. This check I suppose is easy to add.
->
->> May @topo be "invalid"?  Documentation doesn't tell.  If yes, what does
->> that mean?
->
-> Yes, just follow the intel's spec, invalid means the current topology
-> information is invalid, which is used to encode x86 CPUIDs. So when I
-> move this level to qapi, I just keeped this. Otherwise, I need to
-> re-implement the i386 specific invalid level.
-
-I'm afraid I don't understand what is supposed to happen when I tell
-QEMU to make a cache's topology invalid.
-
->> >> The more idiomatic QAPI name would be SmpCacheName.  Likewise for the
->> >> other type names below.
->> >
->> > I hesitated here as well, but considering that SMPConfiguration is "SMP"
->> > and not "Smp", it has that name. I'll change to SmpCacheName for strict
->> > initial capitalization.
->> >
->> >> > +#
->> >> > +# An enumeration of cache for SMP systems.  The cache name here is
->> >> > +# a combination of cache level and cache type.
->> >> 
->> >> The first sentence feels awkward.  Maybe
->> >> 
->> >>    # Caches an SMP system may have.
->> >> 
->> >> > +#
->> >> > +# @l1d: L1 data cache.
->> >> > +#
->> >> > +# @l1i: L1 instruction cache.
->> >> > +#
->> >> > +# @l2: L2 (unified) cache.
->> >> > +#
->> >> > +# @l3: L3 (unified) cache
->> >> > +#
->> >> > +# Since: 9.1
->> >> > +##
->> >> 
->> >> This assumes the L1 cache is split, and L2 and L3 are unified.
->> >> 
->> >> If we model a system with say a unified L1 cache, we'd simply extend
->> >> this enum.  No real difference to extending it for additional levels.
->> >> Correct?
->> >
->> > Yes. For unified L1, we just need add a "l1" which is opposed to l1i/l1d.
->> >
->> >> > +{ 'enum': 'SMPCacheName',
->> >> > +  'prefix': 'SMP_CACHE',
->> >> 
->> >> Why not call it SmpCache, and ditch 'prefix'?
->> >
->> > Because the SMPCache structure in smp_cache.h uses the similar name:
->> >
->> > +#define TYPE_SMP_CACHE "smp-cache"
->> > +OBJECT_DECLARE_SIMPLE_TYPE(SMPCache, SMP_CACHE)
->> > +
->> > +struct SMPCache {
->> > +    Object parent_obj;
->> > +
->> > +    SMPCacheProperty props[SMP_CACHE__MAX];
->> > +};
->> >
->> > Naming is always difficult,
->> 
->> Oh yes.
->> 
->> >                             so I would use Smpcache here if you feel that
->> > SmpCache is sufficient to distinguish it from SMPCache, or I would also
->> > rename the SMPCache structure to SMPCacheState in smp_cache.h.
->> >
->> > Which way do you prefer?
->> 
->> Having both QAPI enum SmpCache and handwritten type SMPCache is clearly
->> undesirable.
->> 
->> I retract my suggestion to name the enum SmpCache.  The thing clearly is
->> not a cache.  SmpCacheName is better.
->> 
->> If you drop 'prefix', the generated C enum values look like
->> SMP_CACHE_NAME_FOO.  Would that work for you?
->
-> I think the SmpCacheName is ok, since there's no other better names.
->
->> The "name" part bothers me a bit.  A name doesn't define what something
->> is.  A type does.  SmpCacheType?
->
-> Ah, I also considerred this. I didn't use "type" because people usually
-> uses cache type to indicate INSTRUCTION/DATA/UNIFIED and cache level to
-> indicate LEVEL 1/LEVEL 2/LEVEL 3. The enumeration here is a combination of
-> type+level. So I think it's better to avoid the type term.
-
-SmpCacheLevelAndType is quite a mouthful.
-
->> >> > +  'data': [ 'l1d', 'l1i', 'l2', 'l3' ] }
->> >> 
->> >> > +
->> >> > +##
->> >> > +# @SMPCacheProperty:
->> >> 
->> >> Sure we want to call this "property" (singular) and not "properties"?
->> >> What if we add members to this type?
->> >> 
->> >> > +#
->> >> > +# Cache information for SMP systems.
->> >> > +#
->> >> > +# @name: Cache name.
->> >> > +#
->> >> > +# @topo: Cache topology level.  It accepts the CPU topology
->> >> > +#     enumeration as the parameter, i.e., CPUs in the same
->> >> > +#     topology container share the same cache.
->> >> > +#
->> >> > +# Since: 9.1
->> >> > +##
->> >> > +{ 'struct': 'SMPCacheProperty',
->> >> > +  'data': {
->> >> > +  'name': 'SMPCacheName',
->> >> > +  'topo': 'CpuTopologyLevel' } }
->> >> 
->> >> We tend to avoid abbreviations in the QAPI schema.  Please consider
->> >> naming this 'topology'.
->> >
->> > Sure!
->> >
->> >> > +
->> >> > +##
->> >> > +# @SMPCacheProperties:
->> >> > +#
->> >> > +# List wrapper of SMPCacheProperty.
->> >> > +#
->> >> > +# @caches: the SMPCacheProperty list.
->> >> > +#
->> >> > +# Since 9.1
->> >> > +##
->> >> > +{ 'struct': 'SMPCacheProperties',
->> >> > +  'data': { 'caches': ['SMPCacheProperty'] } }
->> >> 
->> >> Ah, now I see why you used the singular above!
->> >> 
->> >> However, this type holds the properties of call caches.  It is a list
->> 
->> "of all caches" (can't type).
->
-> Sorry I didn't get your point?
-
-I had typoed "of call caches", which makes no sense, so I corrected it.
-
->> >> where each element holds the properties of a single cache.  Calling the
->> >> former "cache property" and the latter "cache properties" is confusing.
->> >
->> > Yes...
->> >
->> >> SmpCachesProperties and SmpCacheProperties would put the singular
->> >> vs. plural where it belongs.  Sounds a bit awkward to me, though.
->> >> Naming is hard.
->> >
->> > For SmpCachesProperties, it's easy to overlook the first "s".
->> >
->> >> Other ideas, anybody?
->> >
->> > Maybe SmpCacheOptions or SmpCachesPropertyWrapper?
->> 
->> I wonder why we have a single QOM object to configure all caches, and
->> not one QOM object per cache.
->
-> I have the thoughts and questions here:
->
-> https://lore.kernel.org/qemu-devel/20240704031603.1744546-1-zhao1.liu@intel.com/T/#m8adba8ba14ebac0c9935fbf45983cc71e53ccf45
->
-> We could discuss this issue in that thread :-).
-
-Okay.
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
 [...]
+
+> diff --git a/qapi/arm-error-inject.json b/qapi/arm-error-inject.json
+> index 430e6cea6b60..2a314830fe60 100644
+> --- a/qapi/arm-error-inject.json
+> +++ b/qapi/arm-error-inject.json
+> @@ -2,40 +2,258 @@
+>  # vim: filetype=3Dpython
+>=20=20
+>  ##
+> -# =3D ARM Processor Errors
+> +# =3D ARM Processor Errors as defined at:
+> +# https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.ht=
+ml
+> +# See tables N.16, N.17 and N.21.
+>  ##
+
+This comes out badly in HTML.
+
+Try something like
+
+   # =3D ARM Processor Errors
+   #
+   # These are defined at
+   # https://uefi.org/specs/UEFI/2.10/Apx_N_Common_Platform_Error_Record.ht=
+ml
+   # See tables N.16, N.17 and N.21.
+
+If any part of this is relevant in PATCH 4 already, squash the relevant
+parts into that patch please.
+
+>=20=20
+> +##
+> +# @ArmProcessorValidationBits:
+> +#
+> +# Indcates whether or not fields of ARM processor CPER record are valid.
+
+docs/devel/qapi-code-gen.rst section "Documentation markup":
+
+    For legibility, wrap text paragraphs so every line is at most 70
+    characters long.
+
+> +#
+> +# @mpidr-valid:  MPIDR Valid
+> +#
+> +# @affinity-valid: Error affinity level Valid
+> +#
+> +# @running-state-valid: Running State
+> +#
+> +# @vendor-specific-valid: Vendor Specific Info Valid
+> +#
+> +# Since: 9.1
+> +##
+> +{ 'enum': 'ArmProcessorValidationBits',
+> +  'data': ['mpidr-valid',
+> +           'affinity-valid',
+> +           'running-state-valid',
+> +           'vendor-specific-valid']
+> +}
+> +
+> +##
+> +# @ArmProcessorFlags:
+> +#
+> +# Indicates error attributes at the Error info section.
+> +#
+> +# @first-error-cap: First error captured
+> +#
+> +# @last-error-cap:  Last error captured
+> +#
+> +# @propagated: Propagated
+> +#
+> +# @overflow: Overflow
+> +#
+> +# Since: 9.1
+> +##
+> +{ 'enum': 'ArmProcessorFlags',
+> +  'data': ['first-error-cap',
+> +           'last-error-cap',
+> +           'propagated',
+> +           'overflow']
+> +}
+> +
+> +##
+> +# @ArmProcessorRunningState:
+> +#
+> +# Indicates if the processor is running.
+> +#
+> +# @processor-running: indicates that the processor is running
+> +#
+> +# Since: 9.1
+> +##
+> +{ 'enum': 'ArmProcessorRunningState',
+> +  'data': ['processor-running']
+> +}
+> +
+>  ##
+>  # @ArmProcessorErrorType:
+>  #
+> -# Type of ARM processor error to inject
+> -#
+> -# @unknown-error: Unknown error
+> +# Type of ARM processor error information to inject.
+>  #
+>  # @cache-error: Cache error
+>  #
+>  # @tlb-error: TLB error
+>  #
+> -# @bus-error: Bus error.
+> +# @bus-error: Bus error
+>  #
+> -# @micro-arch-error: Micro architectural error.
+> +# @micro-arch-error: Micro architectural error
+>  #
+>  # Since: 9.1
+>  ##
+>  { 'enum': 'ArmProcessorErrorType',
+> -  'data': ['unknown-error',
+> -	   'cache-error',
+> +  'data': ['cache-error',
+>             'tlb-error',
+>             'bus-error',
+>             'micro-arch-error']
+> + }
+
+Squash the changes to this type into PATCH 4, please.
+
+> +
+> +##
+> +# @ArmPeiValidationBits:
+> +#
+> +# Indcates whether or not fields of Processor Error Info section are val=
+id.
+> +#
+> +# @multiple-error-valid: Information at multiple-error field is valid
+> +#
+> +# @flags-valid: Information at flags field is valid
+> +#
+> +# @error-info-valid: Information at error-info field is valid
+> +#
+> +# @virt-addr-valid: Information at virt-addr field is valid
+> +#
+> +# @phy-addr-valid: Information at phy-addr field is valid
+> +#
+> +# Since: 9.1
+> +##
+> +{ 'enum': 'ArmPeiValidationBits',
+> +  'data': ['multiple-error-valid',
+> +           'flags-valid',
+> +           'error-info-valid',
+> +           'virt-addr-valid',
+> +           'phy-addr-valid']
+> +}
+> +
+> +##
+> +# @ArmProcessorErrorInformation:
+> +#
+> +# Contains ARM processor error information (PEI) data according with UEFI
+> +# CPER table N.17.
+> +#
+> +# @validation:
+> +#       Valid validation bits for error-info section.
+> +#       Argument is optional. If not specified, those flags will be enab=
+led:
+> +#       first-error-cap and propagated.
+
+Please format like this for consistency:
+
+   # @validation: Valid validation bits for error-info section.
+   #     Argument is optional.  If not specified, those flags will be
+   #     enabled: first-error-cap and propagated.
+
+> +#
+> +# @type:
+> +#       ARM processor error types to inject. Argument is mandatory.
+> +#
+> +# @multiple-error:
+> +#       Indicates whether multiple errors have occurred.
+> +#       Argument is optional. If not specified and @validation not enfor=
+ced,
+> +#       this field will be marked as invalid at CPER record..
+> +#
+> +# @flags:
+> +#       Indicates flags that describe the error attributes.
+> +#       Argument is optional. If not specified and defaults to
+> +#       first-error and propagated.
+> +#
+> +# @error-info:
+> +#       Error information structure is specific to each error type.
+> +#       Argument is optional, and its value depends on the PEI type(s).
+> +#       If not defined, the default depends on the type:
+> +#       - for cache-error: 0x0091000F;
+> +#       - for tlb-error: 0x0054007F;
+> +#       - for bus-error: 0x80D6460FFF;
+> +#       - for micro-arch-error: 0x78DA03FF;
+> +#       - if multiple types used, this bit is disabled from @validation =
+bits.
+> +#
+> +# @virt-addr:
+> +#       Virtual fault address associated with the error.
+> +#       Argument is optional. If not specified and @validation not enfor=
+ced,
+> +#       this field will be marked as invalid at CPER record..
+> +#
+> +# @phy-addr:
+> +#       Physical fault address associated with the error.
+> +#       Argument is optional. If not specified and @validation not enfor=
+ced,
+> +#       this field will be marked as invalid at CPER record..
+> +#
+> +# Since: 9.1
+> +##
+> +{ 'struct': 'ArmProcessorErrorInformation',
+> +  'data': { '*validation': ['ArmPeiValidationBits'],
+> +            'type': ['ArmProcessorErrorType'],
+> +            '*multiple-error': 'uint16',
+> +            '*flags': ['ArmProcessorFlags'],
+> +            '*error-info': 'uint64',
+> +            '*virt-addr':  'uint64',
+> +            '*phy-addr': 'uint64'}
+> +}
+> +
+> +##
+> +# @ArmProcessorContext:
+> +#
+> +# Provide processor context state specific to the ARM processor architec=
+ture,
+> +# According with UEFI 2.10 CPER table N.21.
+> +# Argument is optional.If not specified, no context will be used.
+> +#
+> +# @type:
+> +#       Contains an integer value indicating the type of context state b=
+eing
+> +#       reported.
+> +#       Argument is optional. If not defined, it will be set to be EL1 r=
+egister
+> +#       for the emulation, e. g.:
+> +#       - on arm32: AArch32 EL1 context registers;
+> +#       - on arm64: AArch64 EL1 context registers.
+> +#
+> +# @register:
+> +#       Provides the contents of the actual registers or raw data, depen=
+ding
+> +#       on the context type.
+> +#       Argument is optional. If not defined, it will fill the first reg=
+ister
+> +#       with 0xDEADBEEF, and the other ones with zero.
+> +#
+> +# @minimal-size:
+> +#       Argument is optional. If provided, define the minimal size of the
+> +#       context register array. The actual size is defined by checking t=
+he
+> +#       number of register values plus the content of this field (if use=
+d),
+> +#       ensuring that each processor context information structure array=
+ is
+> +#       padded with zeros if the size is not a multiple of 16 bytes.
+> +#
+> +# Since: 9.1
+> +##
+> +{ 'struct': 'ArmProcessorContext',
+> +  'data': { '*type': 'uint16',
+> +            '*minimal-size': 'uint32',
+> +            '*register': ['uint64']}
+>  }
+>=20=20
+>  ##
+>  # @arm-inject-error:
+>  #
+> -# Inject ARM Processor error.
+> +# Inject ARM Processor error with data to be filled accordign with UEFI =
+2.10
+> +# CPER table N.16.
+>  #
+> -# @errortypes: ARM processor error types to inject
+> +# @validation:
+> +#       Valid validation bits for ARM processor CPER.
+> +#       Argument is optional. If not specified, the default is
+> +#       calculated based on having the corresponding arguments filled.
+> +#
+> +# @affinity-level:
+> +#       Error affinity level for errors that can be attributed to a spec=
+ific
+> +#       affinity level.
+> +#       Argument is optional. If not specified and @validation not enfor=
+ced,
+> +#       this field will be marked as invalid at CPER record.
+> +#
+> +# @mpidr-el1:
+> +#       Processor=E2=80=99s unique ID in the system.
+> +#       Argument is optional. If not specified, it will use the cpu mpidr
+> +#       field from the emulation data. If zero and @validation is not
+> +#       enforced, this field will be marked as invalid at CPER record.
+> +#
+> +# @midr-el1:  Identification info of the chip
+> +#       Argument is optional. If not specified, it will use the cpu mpidr
+> +#       field from the emulation data. If zero and @validation is not
+> +#       enforced, this field will be marked as invalid at CPER record.
+> +#
+> +# @running-state:
+> +#       Indicates the running state of the processor.
+> +#       Argument is optional. If not specified and @validation not enfor=
+ced,
+> +#       this field will be marked as invalid at CPER record.
+> +#
+> +# @psci-state:
+> +#       Provides PSCI state of the processor, as defined in ARM PSCI doc=
+ument.
+> +#       Argument is optional. If not specified, it will use the cpu power
+> +#       state field from the emulation data.
+> +#
+> +# @context:
+> +#       Contains an array of processor context registers.
+> +#       Argument is optional. If not specified, no context will be added.
+> +#
+> +# @vendor-specific:
+> +#       Contains a byte array of vendor-specific data.
+> +#       Argument is optional. If not specified, no vendor-specific data
+> +#       will be added.
+> +#
+> +# @error:
+> +#       Contains an array of ARM processor error information (PEI) secti=
+ons.
+> +#       Argument is optional. If not specified, defaults to a single
+> +#       Program Error Information record defaulting to type=3Dcache-erro=
+r.
+>  #
+>  # Features:
+>  #
+> @@ -44,6 +262,16 @@
+>  # Since: 9.1
+>  ##
+>  { 'command': 'arm-inject-error',
+> -  'data': { 'errortypes': ['ArmProcessorErrorType'] },
+> +  'data': {
+> +    '*validation': ['ArmProcessorValidationBits'],
+> +    '*affinity-level': 'uint8',
+> +    '*mpidr-el1': 'uint64',
+> +    '*midr-el1': 'uint64',
+> +    '*running-state':  ['ArmProcessorRunningState'],
+> +    '*psci-state': 'uint32',
+> +    '*context': ['ArmProcessorContext'],
+> +    '*vendor-specific': ['uint8'],
+> +    '*error': ['ArmProcessorErrorInformation']
+> +  },
+>    'features': [ 'unstable' ]
+>  }
+
+This changes the command pretty much completely.  Why is the previous
+state worth capturing in git?
+
+> diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
+> index 0e9490cebc72..77c800186f34 160000
+> --- a/tests/lcitool/libvirt-ci
+> +++ b/tests/lcitool/libvirt-ci
+> @@ -1 +1 @@
+> -Subproject commit 0e9490cebc726ef772b6c9e27dac32e7ae99f9b2
+> +Subproject commit 77c800186f34b21be7660750577cc5582a914deb
+
+Accident?

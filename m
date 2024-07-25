@@ -1,124 +1,167 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3672598njc;
-        Thu, 25 Jul 2024 04:42:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUTC3FBYvq/yz02I8mlg9xCBHzdAt//j2dVlb4kwCyi5y8EmwzGKE6kKlfjW6zGIMmMmRnYUVOf/QecXcBgj/mf3Vj8iQC3
-X-Google-Smtp-Source: AGHT+IGa/bLmgTp47OLYvnuoaHnPncKd6Y/78+SatzrZn5z82YOm/UcEIdBUeIyjgMxbwzrcB0yv
-X-Received: by 2002:a05:622a:5d0:b0:44f:ca27:cca7 with SMTP id d75a77b69052e-44fe92838bbmr17712861cf.49.1721907750147;
-        Thu, 25 Jul 2024 04:42:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721907750; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3676273njc;
+        Thu, 25 Jul 2024 04:50:59 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWsnxQcL4bj3Azy4QKuRGmK+eHh2lQhMjLGFYRWoeafHad5uJrIOBC9q4ol/zVH4/JHCgWgbhVKXwgEDXlJnNnbvvuKHZWC
+X-Google-Smtp-Source: AGHT+IFa4XqqMdm0XbR+3cQJW5tta29SJdJbwHpJtKsKttV7cDaNvODPHKKXLZR21TXB6NSbBKNQ
+X-Received: by 2002:a05:622a:1341:b0:447:dfe3:9e76 with SMTP id d75a77b69052e-44fe491ba19mr26892271cf.62.1721908259244;
+        Thu, 25 Jul 2024 04:50:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721908259; cv=none;
         d=google.com; s=arc-20160816;
-        b=n4A9oqtw56fiKyznNl3+IBjR+U/OmW9m4ryO1AQDzHEMT85ih92xDcjCq205N7UU+p
-         tWbcKq1c7XgRwDTiSLltHa82A7DtkvVdEYqXY0OSJKp+D32GWm5JvI+3D7R5/qEQdR6y
-         p4IE5M+QywBOJXWymDNFf9j8L6Ul3m4qz334+i4gucbXm0OfG3I9/Z9xsoWvPl8ud/Ae
-         Hppx/mgtysBrV6GS4h3vNNtLGahOCI+eZ8uWHOjVRclTIetuKVLUUutx9ufGtIZcuC1o
-         YoHvpoLKqwTww6QkxhfWspCl6HwaAb640syNOnTWcQEN/zP5b9RUXIvEGltvuG+xXexv
-         098Q==
+        b=XbcUSxVtWRM3PFIkWgBtwaFcio7B8K9S1RRW8t6FNgv/cUao+VWHRQ1/hA0LFNeuY7
+         oCRqYwHoTFraHD58nkHVqfnc/pmBA+fU1WnH5YZ8dzBD37nRAW5Nv7xRKlmbCG5CizsA
+         Bx4zl6Q/2OK9+yRfVR/xEh6NULp7EIooqITSfZORUhy4LNcMOa9zcZtL0W86203UN076
+         IOQjZtdZH5Pt300IN2XgQmRRIgHlLgWQpdW74ZksUKXIIRCTLKfUNYsvRbUWLIg+Vtoc
+         TghympFb90f9HnGRnI2Drm2If8XbrTPRq/K3kcmw1o2fIIGNQG9hQEJ+hlI0fEb6IPO/
+         I5Mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=0EY5y3z3K0vNh0o9c+x26oOWcq4JmzeFXNMAAOG3rhg=;
-        fh=KxRLUwjVy9hgF82UJRC7XxI5XwQwXWNAIlKMQLiwiZU=;
-        b=ojOi/GcTbYkEWIyZNegSUVS9tspnZ1sJURbFcWck0AYNeSc+hrfI9r43NzCbXLYDM2
-         khYsxRFQO9YE6IPKxB+8UG0RR7DwEId/z7CBChbcI+9fWd0M4zyHrjQ7NcWUwtHSc2cc
-         R+URKFPy2PDFMiJ4zh2h6OYzcYA/OE4BACvN0/x3TLrwbDNEcXyIP/tqPg9wl+VP2NKT
-         FGAvflvvdT4Xflltu0MQQPQK3QjbaQEOoxlcrd03keyWKCaL6OmsA9OJb+oOCSfMIR7A
-         ZuSe4xUvAz6s1RU0/7Ca5jP/L/LA+2LbJWDg702Py5PwqrWruEYPUaX482F+iGp9h+NB
-         /L5A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=b+NxrlB5rX7BGR0AltB7CeIZMcUIPzmHDSdUAkb1Sgk=;
+        fh=2pXjtsUsXVOqlQjWJYlcInAzlhvN+Xh27dcEMKeVv8g=;
+        b=VcqytIii8ctKccOp/Ggv4kWasT9zMrDJO5W6dydtLL4gPbeJVZHz3CBT+5UxrKDdjS
+         ymDZzQA3G7EKSjCg4tdwYc9WgBUPAnaUTzoj8K/XugzUfeduISujpsaSXxBfXHT/3Nx6
+         aP3+xwqD9umGeWBRVI2EJouvyLcX672Y9JiXu6c746YxMFsvpYp8QIInvYG6E87kUZpk
+         85hd7A0qc9LP69j7lQsd4FQz5Uhx+asePT6rVXTCYCz0Daz6UffB7/cskydf0VgJHCCu
+         8m8lm7wtzm0HPAL77KFSRulUrhojuE9wjtuO1vE0zSE8lChwaYjwXoBsrdy9EbA2a4Hd
+         DbWg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=l5NSFWu0;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.14 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <zhao1.liu@intel.com>
-Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.14])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe8159e4csi13334231cf.174.2024.07.25.04.42.28
+       dkim=pass header.i=@linaro.org header.s=google header.b=oMOz7FIb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe851b49asi13770991cf.682.2024.07.25.04.50.59
+        for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jul 2024 04:42:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.14 as permitted sender) client-ip=192.198.163.14;
+        Thu, 25 Jul 2024 04:50:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=l5NSFWu0;
-       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.14 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1721907750; x=1753443750;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=KygXsTO1/7PsKHbHPRlx3mwu6GzCfvzBN5TuN2US15g=;
-  b=l5NSFWu0a0gZDwKWAjEFXOGb9sYb0a3eTTLtdUTAEvf0pwcZiNT2uvJn
-   5dIRIsJuejPUrAY8dl7PJ3iwMPrWrTOh6VLy9wZUOqHmja36LQC17k5Yh
-   ZMyjbcm0+zIiHTxViUy5vFNNRcJCL/aDBWgWDDRLthi5Jz+Ifen7i/kY9
-   gbwlXSJr93MTtqFJX5UgvwSmJ8InqSIoaw1xmdIM3ncH9oI+fo7OnW3Pm
-   3vzJdd+cNn7eXue9V7T0WtgQuST3Z9US5fCpBRv8Bah7MnhfGuzJs66s+
-   XXkbsv0TIweIkq5l0yxRNBorIWKyoNwrmRriKHrq9+3C7op6A3cmigJjo
-   Q==;
-X-CSE-ConnectionGUID: VeWVqcg2SaWNtEBvbIhtCA==
-X-CSE-MsgGUID: FxFyrD1RTJGbNWAA9lVbzw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11143"; a="19818825"
-X-IronPort-AV: E=Sophos;i="6.09,235,1716274800"; 
-   d="scan'208";a="19818825"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Jul 2024 04:42:28 -0700
-X-CSE-ConnectionGUID: 2Wsp4k4PRGSWlLWNJZuuKw==
-X-CSE-MsgGUID: utSt5rtmS7CpNGoEk5uI9Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,235,1716274800"; 
-   d="scan'208";a="83895660"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
-  by fmviesa001.fm.intel.com with ESMTP; 25 Jul 2024 04:42:23 -0700
-Date: Thu, 25 Jul 2024 19:58:08 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Markus Armbruster <armbru@redhat.com>, berrange@redhat.com,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Philippe =?utf-8?B?TWF0aGlldS1EYXVk77+9?= <philmd@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	"Michael S.Tsirkin " <mst@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Alex =?utf-8?B?QmVubu+/vWU=?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-devel@nongnu.org,
-	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
-	Zhenyu Wang <zhenyu.z.wang@intel.com>,
-	Dapeng Mi <dapeng1.mi@linux.intel.com>,
-	Yongwei Ma <yongwei.ma@intel.com>
-Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
-Message-ID: <ZqI90B1jkfO4N5a5@intel.com>
-References: <20240704031603.1744546-1-zhao1.liu@intel.com>
- <20240704031603.1744546-3-zhao1.liu@intel.com>
- <87wmld361y.fsf@pond.sub.org>
- <Zp5tBHBoeXZy44ys@intel.com>
- <87h6cfowei.fsf@pond.sub.org>
- <ZqEV8uErCn+QkOw8@intel.com>
- <871q3hua56.fsf@pond.sub.org>
- <20240725115059.000016c5@Huawei.com>
- <20240725115902.000037e4@Huawei.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=oMOz7FIb;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sWwyz-0004s3-1y; Thu, 25 Jul 2024 07:50:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sWwyv-0004qQ-U9
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2024 07:50:02 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sWwyu-00037i-5D
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2024 07:50:01 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-368712acb8dso469693f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 25 Jul 2024 04:49:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1721908198; x=1722512998; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=b+NxrlB5rX7BGR0AltB7CeIZMcUIPzmHDSdUAkb1Sgk=;
+ b=oMOz7FIbBlVuZYPGoxnM2Y82h1MDdG+/OJfECDp0a2Ikeps8UOlHknBjj9VmfFgrAJ
+ QAA1df/GsmcaoWMR59/7NaWhCJYt8C+voNwZF7szF60a4Kq7p6N8Jn5REq8ef8Zr08+J
+ wMvr2mrCnOCb41tDtDShQe366QJ+ALrMm3tSVLGHxfjHK/H28JOvnhm1ubD2Gg57H67e
+ XgHSkBOcAKe6JwPTISv1J+NbU4se117wOGQfVkZWMMB0T6kf5Q0rIT0sPVc2ovi3ICpE
+ 3mK/lUzo8pQfbeJrgL5Hw+z+e33GOPY4cocWtThy9AWWs5RHmSDY1Xn+vTAga2eXnrUt
+ Cq5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721908198; x=1722512998;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=b+NxrlB5rX7BGR0AltB7CeIZMcUIPzmHDSdUAkb1Sgk=;
+ b=tIdVnhri3plHnoQScQ/XIaR2Lz+06UlzehmTF5OHtFK781eaaeedz7w7YktpinLzw3
+ 5/YIOFQcxZT7A4b10nH6oDknKb3DjFSaEgXUtDLCNezIYYHD0O8GxSEyAKw07rZfP+YB
+ HPnMD+v6ga5iQMTT5H7tmEm7zY1oVkq1Vgr3moKy3GHm8Qt1kMhQDbu1l6CXXGyLEltD
+ yeLpoc33ssmdBVCsb4pylhR2220PplBUjOgPfPUmSoXtZ3o6o91wVkeRIKOJVoQ3apfM
+ 0nxGEtcopXrhquxKKs6heZwOZ1rQigszqzkwTvvBjWT9rWGLAmGjuVwt6v+21TFylT5J
+ 3Dtg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWPuFqCczZatYo/eUWPirp8F6qaOuoKCgB/XZ6gbZpZLMnr3TCL7WcHp14DeYj8xgsGstHPgotLcCdNghgR90eJIxBU
+X-Gm-Message-State: AOJu0YyjayDKhOi5oAyx9NWC3tCqAy/ZfGfS2jK/zuFN2nLacAhR/1LL
+ jGprxFJkFo0NtB23XN3hc+pbawuMmd/x0llewDd3hpnwStJOBiAKjCTprpo9Rk0=
+X-Received: by 2002:adf:f38c:0:b0:367:9803:bfe7 with SMTP id
+ ffacd0b85a97d-36b367b1d98mr1381217f8f.53.1721908197912; 
+ Thu, 25 Jul 2024 04:49:57 -0700 (PDT)
+Received: from [192.168.1.102] ([176.187.216.35])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-36b36862271sm1904114f8f.98.2024.07.25.04.49.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 25 Jul 2024 04:49:56 -0700 (PDT)
+Message-ID: <916e3941-5dd6-48bd-804f-ec8f1f925843@linaro.org>
+Date: Thu, 25 Jul 2024 13:49:55 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240725115902.000037e4@Huawei.com>
-X-TUID: SebLKJihY4Sw
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/4] hw/misc/bcm2835_property: Fix handling of
+ FRAMEBUFFER_SET_PALETTE
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org
+References: <20240723131029.1159908-1-peter.maydell@linaro.org>
+ <20240723131029.1159908-2-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240723131029.1159908-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: EAFvxE2meaO+
 
-Thanks Jonathon!
+On 23/7/24 15:10, Peter Maydell wrote:
+> The documentation of the "Set palette" mailbox property at
+> https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface#set-palette
+> says it has the form:
+> 
+>      Length: 24..1032
+>      Value:
+>          u32: offset: first palette index to set (0-255)
+>          u32: length: number of palette entries to set (1-256)
+>          u32...: RGBA palette values (offset to offset+length-1)
+> 
+> We get this wrong in a couple of ways:
+>   * we aren't checking the offset and length are in range, so the guest
+>     can make us spin for a long time by providing a large length
+>   * the bounds check on our loop is wrong: we should iterate through
+>     'length' palette entries, not 'length - offset' entries
+> 
+> Fix the loop to implement the bounds checks and get the loop
+> condition right. In the process, make the variables local to
+> this switch case, rather than function-global, so it's clearer
+> what type they are when reading the code.
+> 
+> Cc: qemu-stable@nongnu.org
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/misc/bcm2835_property.c | 27 ++++++++++++++++-----------
+>   1 file changed, 16 insertions(+), 11 deletions(-)
 
-On Thu, Jul 25, 2024 at 11:59:02AM +0100, Jonathan Cameron wrote:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-[snip]
-
-> > > I think I understand why you want to configure caches.  My question was
-> > > about the connection to SMP.
-> > > 
-> > > Say we run a guest with a single core, no SMP.  Could configuring caches
-> > > still be useful then?  
-> > 
-> > Probably not useful to configure topology (sizes are a separate question)
-> > - any sensible default should be fine.
-> >
-
-Yes, I agree.
-
-Regards,
-Zhao

@@ -1,220 +1,157 @@
-Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3604048njc;
-        Thu, 25 Jul 2024 02:07:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWoJMHSZqSnBPh0eOCoV/a9m7/qHJO2xCki9mgw7+xOLuyNwunEyam9qzt3HL/GmO2IRb5h2PTnW2F3N28WShffcOYxSyGL
-X-Google-Smtp-Source: AGHT+IF0CTPdKhEQ8RSLe3oZtSySLIUMcCYr2kRK1QakT8YmlhZlaSoBc3baxVc41GwZOlhEUWhH
-X-Received: by 2002:a05:620a:3901:b0:79e:fd19:e2e0 with SMTP id af79cd13be357-7a1d7e6ca7cmr146752885a.28.1721898444449;
-        Thu, 25 Jul 2024 02:07:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721898444; cv=none;
+Received: by 2002:a17:505:8d87:b0:1be9:327d:8ee3 with SMTP id ri7csp3647093njc;
+        Thu, 25 Jul 2024 03:51:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXCBltbeZQ3roxSpt8klqDLQhjJZ0zkqhT57+oNMR1cWfCF1yWWBF9LNDvJtBCInMziUVIR41LheuGExzA29UxHl3FZiALc
+X-Google-Smtp-Source: AGHT+IHdgY08WkhH0CSG0pCm/gsnKi51n0gsQ0vzhjZzvE0Mzu1KWWaAiUc+rCCdvN7PVywtePVq
+X-Received: by 2002:a05:600c:314c:b0:426:6364:c2c4 with SMTP id 5b1f17b1804b1-42806b807dfmr12379535e9.14.1721904663326;
+        Thu, 25 Jul 2024 03:51:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721904663; cv=none;
         d=google.com; s=arc-20160816;
-        b=C4n/RGDu6odKZN+0SqR9hfOMSPuGGb9LKFQ80kqx4gG971+XzMnPvYt1pYxqL+e4QV
-         TpME2FYzSNOBEeaPSl7HvAgzPc53SV27q84Hlz2pdPB1T8Z7of2uDb2ufpB45mRl3Vop
-         pvoUr/j/H9D93+WLFpTQ0/xFc2tSRw2SQr/6zLgqJLto2Fn4O6N9pbzSgE06+GYhFyaR
-         y43aobJE9Dp/22eL+59Z8spfqUWecwHTwII4Evm1w7vKfK3F/ka/i7a3yVfjRztI3xOL
-         m3zrBIjYrFZQIeukH56GEk7RWzc0i0fjA5NRl8708v4/FZQfVhU4bIelH7dMe07sLC3j
-         6LBQ==
+        b=j/7FQqpoczbtQYebPWHkO3y+Xl3lakeniVNc5z/zULohOpYUvyKDBCl4epUcAwdqlV
+         3krUa3tcNdWy4vGXNuyYqKhIASw8jjRKFFRpEQYE0Ww6eSqcM1m50W7FVsFaZa1HZtK5
+         CVsGtVhAcft9xltFtIimN+h+fVs7KTGY2wTAQe/IvdDR5KaYyfc0XT+glC5lasX9N6C6
+         QcyeHEnDOxJCXW/t0glNa6GFw1DOjK00a7z3U2SU/0Mvl3mvtb/er2SEiiUxKthKcCbu
+         nkR/Hqm49Qf6+hf9A8IhV0iNdqV894CSQYR/S9kfOYMIprHvjpvd8a6MaAiiJnpa/Zcy
+         PKkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:date:references:in-reply-to
-         :subject:cc:to:from:dkim-signature;
-        bh=Odg2VfpZQzItX8XVDoBrE1SWurkxPgm1LLiGA3X9lMQ=;
-        fh=YtMdrrrL4AdjARoXd5Fxw8LjXJzXSJRO9dQYlO5BjO8=;
-        b=DtVNpMTq3Q+1y4vBbHn8tgBeJDjcEcauHugfGfTz0RkV5lBxtO5wo7ZNvRz3fcHnsh
-         Tio8smpNdRnPRU/fttDXm6ajkOM5PWT2wmqHsq16WV1D7KT8uEU1kdKgPnTflcX97hPT
-         RRxhSXF9ndcfSi4Baz7ss6FxLjupiS+3bWEtAKG4rXlDJQYm5jZiaKbx4qxVM88gph70
-         +7jvCJxEBi3VuZkXpc11r4efi/He5xDNmj+/1RgoDsXMDI7P5+pnXNnDUn7OfUMemjCN
-         gqw7W4xmlEWQ2Y0XXWwb8Lj9JaL2banhXOV7jcWMKRljU/VxKFHhlSf8yzfnNes89BM8
-         /COQ==;
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date;
+        bh=W4h2Egc9GVRZm3fAy6LKhC0PZTuXLRpOBI+hbqgJzVE=;
+        fh=0PkekBxlnaault1zumeIA0tbeL3wwTb78D2ynX8nhKA=;
+        b=pv8ui3//V23QdiUDrWhXXyw36rDcCMqT9xNNfADRf12lDjZ/iXjinTJ9H4AYMKSzVh
+         gt/VGzxQnzP5KCX/dagYLaXik+8I9KOE3Eybu/tcUIgv/9cQ5Ti0ZlcqyJMzByccXhCD
+         nl/ae9/VuKj3zGHUbgcCb1U2DUKUunObQxJeFlw5AuCgIMDi6I27JZbcA6GrXp8rd5gJ
+         OkvT5zH2NsqevzDjAWqcPapN7Lc/HOuIoN959Nmgu7vuz+pwJQmUlrUwciEVKVR7LRmi
+         wYkO6uJUyHtVBSfjXzanar79hsvu3Uhf/q0uhgbLNKiukzm6/HNSif2/USmNuaYZIVO7
+         cWyg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hD1PNaCZ;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <armbru@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe853a42bsi10814811cf.752.2024.07.25.02.07.24
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 25 Jul 2024 02:07:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <jonathan.cameron@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-36b36865dd4si537629f8f.608.2024.07.25.03.51.03
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 25 Jul 2024 03:51:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hD1PNaCZ;
-       spf=pass (google.com: domain of armbru@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=armbru@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1721898444;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Odg2VfpZQzItX8XVDoBrE1SWurkxPgm1LLiGA3X9lMQ=;
-	b=hD1PNaCZ4cboKJfZvrZ4fMIDMF7ngP+MnqBwqmeJG3x32m1p+MhImyz8OcAKgv3teb653x
-	1vgPwj04fOKV9Wy2T/s5Jfcyq4hbE3EDr4UrZER4jFTUkkXg43ezVruawKhsEiXJZVKmvD
-	rK+cnce2QYJO/86gJ9nfvTuwkAXYr4k=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-604-fqqc_YYzOjK9_6D4psav9Q-1; Thu,
- 25 Jul 2024 05:07:20 -0400
-X-MC-Unique: fqqc_YYzOjK9_6D4psav9Q-1
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B19FC1955D48;
-	Thu, 25 Jul 2024 09:07:16 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 37AD41955D42;
-	Thu, 25 Jul 2024 09:07:15 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
-	id DFD0C21F4B8B; Thu, 25 Jul 2024 11:07:12 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Daniel P . =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Eduardo
- Habkost
- <eduardo@habkost.net>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Yanan Wang
- <wangyanan55@huawei.com>,  "Michael S . Tsirkin" <mst@redhat.com>,  Paolo
- Bonzini <pbonzini@redhat.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Eric Blake <eblake@redhat.com>,  Marcelo
- Tosatti <mtosatti@redhat.com>,  Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
-  Peter Maydell <peter.maydell@linaro.org>,  Jonathan Cameron
- <Jonathan.Cameron@huawei.com>,  Sia Jee Heng
- <jeeheng.sia@starfivetech.com>,  qemu-devel@nongnu.org,
-  kvm@vger.kernel.org,  qemu-riscv@nongnu.org,  qemu-arm@nongnu.org,
-  Zhenyu Wang <zhenyu.z.wang@intel.com>,  Dapeng Mi
- <dapeng1.mi@linux.intel.com>,  Yongwei Ma <yongwei.ma@intel.com>
-Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache object
-In-Reply-To: <ZqEN1kZaQcuY4UPG@intel.com> (Zhao Liu's message of "Wed, 24 Jul
-	2024 22:21:10 +0800")
+       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WV70d2yxZz6K6Ys;
+	Thu, 25 Jul 2024 18:48:49 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+	by mail.maildlp.com (Postfix) with ESMTPS id 4138A140B67;
+	Thu, 25 Jul 2024 18:51:02 +0800 (CST)
+Received: from localhost (10.203.174.77) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 25 Jul
+ 2024 11:51:01 +0100
+Date: Thu, 25 Jul 2024 11:50:59 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Markus Armbruster <armbru@redhat.com>
+CC: Zhao Liu <zhao1.liu@intel.com>,
+	"Daniel P.\" =?ISO-8859-1?Q?Berrang=E9?=  <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Marcel  Apfelbaum <marcel.apfelbaum@gmail.com>, Philippe =?ISO-8859-1?Q?Mathieu-D?=  =?ISO-8859-1?Q?aud=E9?= <philmd@linaro.org>, Yanan Wang  <wangyanan55@huawei.com>,  Michael S.Tsirkin  <mst@redhat.com>, Paolo Bonzini  <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>, Eric  Blake <eblake@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>, Alex  =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>, Peter Maydell  <peter.maydell@linaro.org>, Sia Jee Heng <jeeheng.sia@starfivetech.com>,  qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org,  qemu-arm@nongnu.org, Zhenyu Wang <zhenyu.z.wang@intel.com>, Dapeng Mi  <dapeng1.mi@linux.intel.com>, Yongwei Ma <yongwei.ma@intel.com>"@domain.invalid
+Subject: Re: [PATCH 2/8] qapi/qom: Introduce smp-cache object
+Message-ID: <20240725115059.000016c5@Huawei.com>
+In-Reply-To: <871q3hua56.fsf@pond.sub.org>
 References: <20240704031603.1744546-1-zhao1.liu@intel.com>
-	<20240704031603.1744546-9-zhao1.liu@intel.com>
-	<87r0bl35ug.fsf@pond.sub.org> <Zp5vxtXWDeHAdPok@intel.com>
-	<87bk2nnev2.fsf@pond.sub.org> <ZqEN1kZaQcuY4UPG@intel.com>
-Date: Thu, 25 Jul 2024 11:07:12 +0200
-Message-ID: <87le1psuv3.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+	<20240704031603.1744546-3-zhao1.liu@intel.com>
+	<87wmld361y.fsf@pond.sub.org>
+	<Zp5tBHBoeXZy44ys@intel.com>
+	<87h6cfowei.fsf@pond.sub.org>
+	<ZqEV8uErCn+QkOw8@intel.com>
+	<871q3hua56.fsf@pond.sub.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: IIu9VkPQgUN0
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.203.174.77]
+X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-TUID: s8/bVV/XJqw3
 
-Zhao Liu <zhao1.liu@intel.com> writes:
 
-> Hi Markus and Daniel,
->
-> I have the questions about the -object per cache implementation:
->
-> On Wed, Jul 24, 2024 at 02:39:29PM +0200, Markus Armbruster wrote:
->> Date: Wed, 24 Jul 2024 14:39:29 +0200
->> From: Markus Armbruster <armbru@redhat.com>
->> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
->>  object
->> 
->> Zhao Liu <zhao1.liu@intel.com> writes:
->> 
->> > Hi Markus,
->> >
->> > On Mon, Jul 22, 2024 at 03:37:43PM +0200, Markus Armbruster wrote:
->> >> Date: Mon, 22 Jul 2024 15:37:43 +0200
->> >> From: Markus Armbruster <armbru@redhat.com>
->> >> Subject: Re: [PATCH 8/8] qemu-options: Add the description of smp-cache
->> >>  object
->> >> 
->> >> Zhao Liu <zhao1.liu@intel.com> writes:
->> >> 
->> >> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
->> >> 
->> >> This patch is just documentation.  The code got added in some previous
->> >> patch.  Would it make sense to squash this patch into that previous
->> >> patch?
->> >
->> > OK, I'll merge them.
->> >
->> >> > ---
->> >> > Changes since RFC v2:
->> >> >  * Rewrote the document of smp-cache object.
->> >> >
->> >> > Changes since RFC v1:
->> >> >  * Use "*_cache=topo_level" as -smp example as the original "level"
->> >> >    term for a cache has a totally different meaning. (Jonathan)
->> >> > ---
->> >> >  qemu-options.hx | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
->> >> >  1 file changed, 58 insertions(+)
->> >> >
->> >> > diff --git a/qemu-options.hx b/qemu-options.hx
->> >> > index 8ca7f34ef0c8..4b84f4508a6e 100644
->> >> > --- a/qemu-options.hx
->> >> > +++ b/qemu-options.hx
->> >> > @@ -159,6 +159,15 @@ SRST
->> >> >          ::
->> >> >  
->> >> >              -machine cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=128G,cxl-fmw.0.interleave-granularity=512
->> >> > +
->> >> > +    ``smp-cache='id'``
->> >> > +        Allows to configure cache property (now only the cache topology level).
->> >> > +
->> >> > +        For example:
->> >> > +        ::
->> >> > +
->> >> > +            -object '{"qom-type":"smp-cache","id":"cache","caches":[{"name":"l1d","topo":"core"},{"name":"l1i","topo":"core"},{"name":"l2","topo":"module"},{"name":"l3","topo":"die"}]}'
->> >> > +            -machine smp-cache=cache
->> >> >  ERST
->> >> >  
->> >> >  DEF("M", HAS_ARG, QEMU_OPTION_M,
->> >> > @@ -5871,6 +5880,55 @@ SRST
->> >> >          ::
->> >> >  
->> >> >              (qemu) qom-set /objects/iothread1 poll-max-ns 100000
->> >> > +
->> >> > +    ``-object '{"qom-type":"smp-cache","id":id,"caches":[{"name":cache_name,"topo":cache_topo}]}'``
->> >> > +        Create an smp-cache object that configures machine's cache
->> >> > +        property. Currently, cache property only include cache topology
->> >> > +        level.
->> >> > +
->> >> > +        This option must be written in JSON format to support JSON list.
->> >> 
->> >> Why?
->> >
->> > I'm not familiar with this, so I hope you could educate me if I'm wrong.
->> >
->> > All I know so far is for -object that defining a list can only be done in
->> > JSON format and not with a numeric index like a keyval based option, like:
->> >
->> > -object smp-cache,id=cache0,caches.0.name=l1i,caches.0.topo=core: Parameter 'caches' is missing
->> >
->> > the above doesn't work.
->> >
->> > Is there any other way to specify a list in command line?
->> 
->> The command line is a big, sprawling mess :)
->> 
->> -object supports either a JSON or a QemuOpts argument.  *Not* keyval!
->> 
->> Both QemuOpts and keyval parse something like KEY=VALUE,...  Keyval
->> supports arrays and objects via dotted keys.  QemuOpts doesn't natively
->> support arrays and objects, but its users can hack around that
->> limitation in various ways.  -object doesn't.  So you're right, it's
->> JSON or bust here.
->> 
->> However, if we used one object per cache instead, we could get something
->> like
->> 
->>     -object smp-cache,name=l1d,...
->>     -object smp-cache,name=l1u,...
->>     -object smp-cache,name=l2,...
->>     ...
->
-> Current, I use -object to create a smp_cache object, and link it to
-> MachineState by -machine,smp-cache=obj_id.
->
-> Then for the objects per cache, how could I link them to machine?
->
-> Is it possible that I create something static in smp_cache.c and expose
-> all the cache information to machine through some interface?
+Hi Markus, Zhao Liu
 
-Good questions.  However, before we head deeper into the weeds here, I
-feel we should discuss the things below.  And before we do that, I need
-a clear understanding of the use case.  Elsewhere in this thread, I just
-described the use case as I understand it.  Please reply there.  I'll
-then come back to this message.
+=46rom the ARM server side this is something I want to see as well.
+So I can comment on why we care.
 
-[...]
+> >> This series adds a way to configure caches.
+> >>=20
+> >> Structure of the configuration data: a list
+> >>=20
+> >>     [{"name": N, "topo": T}, ...]
+> >>=20
+> >> where N can be "l1d", "l1i", "l2", or "l3",
+> >>   and T can be "invalid", "thread", "core", "module", "cluster",
+> >>                "die", "socket", "book", "drawer", or "default".
+> >>=20
+> >> What's the use case?  The commit messages don't tell. =20
+> >
+> > i386 has the default cache topology model: l1 per core/l2 per core/l3
+> > per die.
+> >
+> > Cache topology affects scheduler performance, e.g., kernel's cluster
+> > scheduling.
+> >
+> > Of course I can hardcode some cache topology model in the specific cpu
+> > model that corresponds to the actual hardware, but for -cpu host/max,
+> > the default i386 cache topology model has no flexibility, and the
+> > host-cpu-cache option doesn't have enough fine-grained control over the
+> > cache topology.
+> >
+> > So I want to provide a way to allow user create more fleasible cache
+> > topology. Just like cpu topology. =20
+>=20
+>=20
+> So the use case is exposing a configurable cache topology to the guest
+> in order to increase performance.  Performance can increase when the
+> configured virtual topology is closer to the physical topology than a
+> default topology would be.  This can be the case with CPU host or max.
+>=20
+> Correct?
+
+That is definitely why we want it on arm64 where this info fills in
+the topology we can't get from the CPU registers.
+(we should have patches on top of this to send out shortly).
+
+As a side note we also need this for MPAM emulation for TCG
+(any maybe eventually paravirtualized MPAM) as this is needed
+to build the right PPTT to describe the caches which we then
+query to figure out association of MPAM controls with particularly
+caches.
+
+Size configuration is something we'll need down the line (presenting
+only part of an L3 may make sense if it's shared by multiple VMs
+or partitioned with MPAM) but that's a future question.
+
+
+>=20
+> >> Why does that use case make no sense without SMP? =20
+> >
+> > As the example I mentioned, for Intel hyrbid architecture, P cores has
+> > l2 per core and E cores has l2 per module. Then either setting the l2
+> > topology level as core nor module, can emulate the real case.
+> >
+> > Even considering the more extreme case of Intel 14th MTL CPU, where
+> > some E cores have L3 and some don't even have L3. As well as the last
+> > time you and Daniel mentioned that in the future we could consider
+> > covering more cache properties such as cache size. But the l3 size can
+> > be different in the same system, like AMD's x3D technology. So
+> > generally configuring properties for @name in a list can't take into
+> > account the differences of heterogeneous caches with the same @name.
+> >
+> > Hope my poor english explains the problem well. :-) =20
+>=20
+> I think I understand why you want to configure caches.  My question was
+> about the connection to SMP.
+>=20
+> Say we run a guest with a single core, no SMP.  Could configuring caches
+> still be useful then?
+
+Probably not useful to configure topology (sizes are a separate question)
+- any sensible default should be fine.
+
+Jonathan
+

@@ -1,114 +1,111 @@
-Received: by 2002:a05:7022:4097:b0:84:d798:3551 with SMTP id x23csp2195144dlx;
-        Thu, 25 Jul 2024 07:40:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXh9R6Pb0p0ALOhG3+7bKZ1lK8Lz+Y8B/EdAsldapi1ni333LItF/Dp4XZ5NdrINgZpN9X0JnAaGO/G6Iog1ZeRGYuFpGtb
-X-Google-Smtp-Source: AGHT+IHFYKXuCeymASnGA+rS9oEnP0UUE6901h5ee2Vvzn0ChPBgMRVObX++OECLjCw6veMmS6bB
-X-Received: by 2002:a05:6808:218a:b0:3d9:2562:7541 with SMTP id 5614622812f47-3db14117fd9mr2228114b6e.24.1721918448386;
-        Thu, 25 Jul 2024 07:40:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1721918448; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp179372njb;
+        Thu, 25 Jul 2024 18:01:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVhMVMEK1edSaLFYFH5ryseCBXixdqPE/zI4d8G+aG79mT7M/v+NWSy3T91gmZZVJl+wLH5v1MHxCjZMAsy8ss7IJCC6Pky
+X-Google-Smtp-Source: AGHT+IFZwtdsix/37LBtRY9b9JFbhFyFNQlQjc/xi2OoMN/YB1a4mTUuJnwMAVXQFHAAkul80qml
+X-Received: by 2002:a05:6102:158e:b0:48f:b592:bb2b with SMTP id ada2fe7eead31-493d640fdd6mr6063240137.10.1721955690815;
+        Thu, 25 Jul 2024 18:01:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1721955690; cv=none;
         d=google.com; s=arc-20160816;
-        b=emrRapSaQJshiYK+1+B7Ze3ok60urFmqorR3FDF0X8sxCqmILLEsERKUTsdJUciD8+
-         kNKF5qByZ7f1YmN1uy7RERcBcSmuUHLpHq52gf9tYVSsYWOtSXd1Au3y346xxiSnY5c7
-         o/ay8r6qbVWz8GZYZFuSQ2gw6snycXWxgie5sXgZK++J+/9U60SjAIA+qzUPxo/MdlFD
-         RrXxX0yIdup4PxktBJI/0YvTlLHeukitfxGdE6MKFSYSMYOC2dK4VVJ7oaEu2bFeGjak
-         rsKAmqkCO7lT1lGjRSh7kAvX+B2tRHA1hEIUbGPXQNoBTmS9F1JDmcmdIs/X7FWlj+Hv
-         lVzA==
+        b=vz/oLlfDTmWtOFB0mRHQ2Drj0qtR4n5Mkl6wT2Py4kGepEbG+cpS4mcnt7n2P4r2i0
+         mfwD1Mb/2uYTvDNkM2DRrvfEWQMCb1yT0G+KafpcHzwGZeamzNoLSUvRhnkG+xOYV86E
+         cdH9NwKc6oZCvrFXeZ7oUKe49+abTE13u+mB+i+JaV9o7qrz+RPgCoSIBtpdvqOATj1q
+         QR8D2tyvGmp9n0oA4Sg3FhRt8tXj6VaWeMQjZbADSK8h47ix1ZbgBH1RDnNutdCi85ot
+         Cw+lHBXeK8eql/l+atfGbTXdZsZEo2TG2nZ6RdhhA7S9FdwUWma7LTeGhu/0aqO331by
+         iTPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=BBxz+yrHbB28ElK3odkOn6nP//maMAIfieOQZI+uRXg=;
-        fh=Xez7PlB6B+DijJXd2Q1SwDqqt+cg7O+7aq1qjxAJhck=;
-        b=misf+QxXJTFsv1KDjcD8PPbxflvbTXxs7RNzuPe9imgzKXS7ygVcKbzoYyLlXQd3Ct
-         HeQzc/UROvPOZTZOjlu8gLwxMS9+s0c8XSTjyfRiMnH0bQI/ia7AY9EyBj8GdevPVW6T
-         05pLtEgW+av3JE/gNpzElvco+XMGRLqfjibcX1ueisnKCCiz6pKMxEyJFwk3lcg+fDkC
-         UiTFxSQaFljWtiUDq2Y0Kvo8HnlaIhTG8WYq78mcvXP9Mf+7fx/9DF8hFjy3vUowqCVh
-         5rdC0YIygZh2PaRSuJL6R1Q96xSDvzEDgMEnf4iuRt39Iv3kiy3q8MP6Bcqm1pPXnb2G
-         6JUA==;
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=aNtfCyuc/ufrl8ApLB2QmjYX5IWqYEFRKb2DRrkTMMU=;
+        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
+        b=oYn3mWCmDRELWnIvKr4GLbGusYsuotOaDQlB45eTgeaVrC4ttK92VT/k6Z0tOCrEG3
+         jJOhCCm56CX91rYFML3eXJmhL3baKBplx9bb8n8NsO6+HnoMpfFCABx5aAVM/h/Mrong
+         OrDic6wdMKSga8kkQnfL9ESP/CzfTTcBPHOkKorT5zKXbmyUjEmngrFbPf4Nc8/ev3NX
+         o9LnOc738EAhEoG5BdgkyR7Vx836hNnBouYgX3qfgWJWwvk08zKZ5Xl+CoYxzkaB+DMh
+         ACwS5uojUucHfpqf6sm/m+mJVIJ29kOk9FobvieefkrPU1IbW2lkVaiB91kY9qF3wnZc
+         jmNA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TRC2TAri;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=KkqCu5z2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe84077f6si16997951cf.396.2024.07.25.07.40.48
+        by mx.google.com with ESMTPS id ada2fe7eead31-493d991a34fsi709288137.820.2024.07.25.18.01.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jul 2024 07:40:48 -0700 (PDT)
+        Thu, 25 Jul 2024 18:01:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TRC2TAri;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=KkqCu5z2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sWze0-0005xD-GR; Thu, 25 Jul 2024 10:40:36 -0400
+	id 1sX9KW-000274-El; Thu, 25 Jul 2024 21:01:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sWzdv-0005rW-SP
- for qemu-arm@nongnu.org; Thu, 25 Jul 2024 10:40:31 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <jonas.c.noll@gmail.com>)
+ id 1sX4qO-00032g-Tj
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2024 16:13:45 -0400
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sWzds-0006pH-7d
- for qemu-arm@nongnu.org; Thu, 25 Jul 2024 10:40:31 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-3683178b226so607046f8f.1
- for <qemu-arm@nongnu.org>; Thu, 25 Jul 2024 07:40:21 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jonas.c.noll@gmail.com>)
+ id 1sX4qN-0006Nh-3q
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2024 16:13:44 -0400
+Received: by mail-yw1-x1135.google.com with SMTP id
+ 00721157ae682-664ccd158b0so11823257b3.1
+ for <qemu-arm@nongnu.org>; Thu, 25 Jul 2024 13:13:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721918420; x=1722523220; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=BBxz+yrHbB28ElK3odkOn6nP//maMAIfieOQZI+uRXg=;
- b=TRC2TArirzkDX1J6wUxZKTrcHICdeu2qRF8QP64HrHDf427cfH2Ajhudrrwy8JwJsJ
- v+1/D5bxW/JxzrhHxR+ssnwtkNLxwCG2DbVTsyt8iDT9YgEE/e/dowxf3f0DV4nN/v76
- q1HQAOtEDnT9FPxqGXr998S06WXSbEKvgSgLfu2nm+KIyOZXbrGEnrnRr9/8VWlrKc+I
- keFVGtC4ySeWtpg6X0v38fbO2V9DF9n2ziljx9Ntu02jDDghYMcYT4KyvSriKDuCYtX8
- xMvDgabS72JiNAAoE89nSuhU8ED2R5P3VGpmMgb40bW96Rx5NykFaLiVT2KyobRW2RX2
- TjsQ==
+ d=gmail.com; s=20230601; t=1721938421; x=1722543221; darn=nongnu.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=aNtfCyuc/ufrl8ApLB2QmjYX5IWqYEFRKb2DRrkTMMU=;
+ b=KkqCu5z2c/cdPlM91IS3r54gOS4Ow2SVFn/wXU1ulWeN6lQWhBlFrQzSoNxSpFtfrD
+ kE5b0gm47bDX/xYdbNVjzl0Q9bESJ4ZNrdKQlRXO+pt2aC1YsX+/wMbGI+Tzm3/5/KqG
+ v4mf8O5Nl19ZjegTOWymWIj5INkvVJ6zRTJ/IvMCgiko6ZBuBtQve9zSemU7mWDVHnBh
+ mfnXzUjyVwp2D75fyhZJ2UURVMGf4N1ZrQjx3D7aer6ktlvCD6NGxGx7F3zJJOCOVrH4
+ kG4nq5kWPmkkTBRJkMQlh43rhIyLNqCA/eQrQXQfp3hswwRolwiDKWRoqb17aYIjRWU2
+ OIyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721918420; x=1722523220;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BBxz+yrHbB28ElK3odkOn6nP//maMAIfieOQZI+uRXg=;
- b=einoYkT6TwFkgphRinF/cxmPVqdZmNe6bmD05Cmp4PVQZW4JztsMbq6dk9Ehxs8a5r
- aAS87aFzKt4uia92K0MP5cfsJtIhWH9ykKTIKmfrKdPtY8du/qGka8/HCKgWL1g7+yD6
- RFjJ04OcPozZs+IDG4Ow7BqRqxoAhOAiomq6rhiYffi2tyohiBuv9gyuDG8LJZ6IIYMC
- R4PUzsDfi+YFRuyMhEtvZxZkFUHaUg1ndQb5Z9CT3+Ws3nVCMeD1X0MBdEP5E7BxewG3
- Y8ZohB2KHdx+sWXtcuCGJX7KZhUzzsz+o8xUKrU3HpCLZ12LDs1twv7VyKHFt1sxBFtS
- du+A==
-X-Gm-Message-State: AOJu0Yzn3Tvji9DzZd6lLIYR9kquZQvvnGMrsh/sZmU6kXymxm0Hxhtp
- b1v/hSFh/baZ/E6AGnZ+zkng+4Yv8h9okrverCVX2YTwhDu8EJd9Sn5D26Y7RGJBG7rnWcr8GZ9
- yZiE59gWX8CjHpt63aHOcOMoED5suKLhQlo9kBQ==
-X-Received: by 2002:adf:e744:0:b0:368:6562:9024 with SMTP id
- ffacd0b85a97d-36b3638a0b1mr1526073f8f.18.1721918420023; Thu, 25 Jul 2024
- 07:40:20 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1721938421; x=1722543221;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=aNtfCyuc/ufrl8ApLB2QmjYX5IWqYEFRKb2DRrkTMMU=;
+ b=cCv7QOOhxzbpoqoo5hebwThiw6DZmCVhYXrejyKEhZ5R6fW3ox9NkJZmmeQEZFtWrt
+ Q7SsmrBkMd/gXcTOz2M3Jtz5w1sc0fK6fUntuNd/ZWCp/dIAPks143ezbtsEDGHGR+dT
+ KQRPPbartETCyJd3STIoFXmz/BzjhaOKWTTPpFDXX+RiufZgHiKS9j1PdizLNtIEralZ
+ l16DtrGWtBxurG3gJq7DolldGYfaNOnB9roZeloYCGIzDfoqDrz7v9VeNEngujwF9MOS
+ yyNmxiYeQT6SlvScO0Pa0oRDOhcRIqL28NpkGPP0kJKGvJlFZL778wys1KvRf0HNG8E9
+ Kitg==
+X-Gm-Message-State: AOJu0Ywws9HXjTRQH5skUiM+HHG8k6KCj+of+u5unSikiwyf3n+R3vFj
+ 1SzeZ4Ubd84R3YoQtE3EQtPICGkeLx7HqxudvBiUKugTJDtWGOO1yWy69u+UwR4b9t9txQWYXp/
+ aosY/tvBsJkAn46Oi4NnCNC2FZUMm9ZQYe3I=
+X-Received: by 2002:a0d:ea0e:0:b0:673:b39a:92f0 with SMTP id
+ 00721157ae682-6751187e8b8mr42457287b3.11.1721938421521; Thu, 25 Jul 2024
+ 13:13:41 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240722103531.2377348-1-smostafa@google.com>
-In-Reply-To: <20240722103531.2377348-1-smostafa@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Jul 2024 15:40:08 +0100
-Message-ID: <CAFEAcA8cM59E3RiUD7vXa8ca2fbQues3HqaQzwOV3_-RUXsdug@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/smmuv3: Assert input to oas2bits() is valid
-To: Mostafa Saleh <smostafa@google.com>
-Cc: qemu-arm@nongnu.org, eric.auger@redhat.com, qemu-devel@nongnu.org, 
- jean-philippe@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+From: Jonas Noll <jonas.c.noll@gmail.com>
+Date: Thu, 25 Jul 2024 16:13:30 -0400
+Message-ID: <CAETw2qO29JpKUeqAEzWEu-hNyYG4sB2wfiQA1nD6a8TC9YX7iw@mail.gmail.com>
+Subject: Running qemu-system-aarch64 with KVM support on a dual-booting
+ android device
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000f0a72d061e180702"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
+ envelope-from=jonas.c.noll@gmail.com; helo=mail-yw1-x1135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 25 Jul 2024 21:01:07 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,23 +119,153 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DYuzJ1VXUTHj
+X-TUID: Io+oE5te4JDy
 
-On Mon, 22 Jul 2024 at 11:35, Mostafa Saleh <smostafa@google.com> wrote:
+--000000000000f0a72d061e180702
+Content-Type: text/plain; charset="UTF-8"
+
+Hello.
+
+I'm running into the following issue:
+
+> $ ./run_vm_kvm.sh
+> *qemu-system-aarch64: kvm_init_vcpu: kvm_arch_init_vcpu failed (0):
+> Invalid argument*
 >
-> Coverity has spotted a possible problem with the OAS handling
-> (CID 1558464), where the error return of oas2bits() -1 is not
-> checked, which can cause an overflow in oas value.
+but sometimes this issue:
+
+> $ ./run_vm_kvm.sh
+> *qemu-system-aarch64: error creating in-kernel ITS: No such device*
+
+
+I'm currently trying to run a windows 11 for arm VM on a Cosmo Communicator
+(an android phone that allows dual booting Debian Linux)
+It runs a helios p70 with cortex-a53 small cores and cortex-a73 big cores
+and from what I can see KVM and GIC-V3 are both supported by the kernel:
+KVM:
+
+> $ zcat /proc/config.gz | grep KVM
+
+CONFIG_HAVE_KVM_IRQFD=y
+> CONFIG_HAVE_KVM_EVENTFD=y
+> CONFIG_KVM_MMIO=y
+> CONFIG_HAVE_KVM_CPU_RELAX_INTERCEPT=y
+> CONFIG_KVM_VFIO=y
+> CONFIG_HAVE_KVM_ARCH_TLB_FLUSH_ALL=y
+> CONFIG_KVM_GENERIC_DIRTYLOG_READ_PROTECT=y
+> CONFIG_KVM_COMPAT=y
+> CONFIG_KVM_ARM_VGIC_V3=y
+> CONFIG_KVM=y
+> CONFIG_KVM_ARM_HOST=y
+
+GIC:
+
+> $ zcat /proc/config.gz | grep GIC
+
+CONFIG_MTK_GIC_EXT=y
+> CONFIG_MTK_GIC_V3_EXT=y
+> # CONFIG_SERIAL_CONEXANT_DIGICOLOR is not set
+> # CONFIG_HID_UCLOGIC is not set
+> CONFIG_HID_MAGICMOUSE=y
+> CONFIG_ARM_GIC=y
+> CONFIG_ARM_GIC_V3=y
+> CONFIG_KVM_ARM_VGIC_V3=y
+> CONFIG_MAGIC_SYSRQ=y
+> CONFIG_MAGIC_SYSRQ_DEFAULT_ENABLE=0x1
+
+That being said my Kernel version is pretty old because from my
+understanding it's shared with the android installation:
+
+> $ uname -r
+
+4.4.146
+
+
+I've compiled Qemu 9.0.2 for my system in the hope it would give me better
+luck and it's definitely functioning better without KVM but KVM is still
+not working. This is my Qemu command:
+
+> cat run_vm_kvm.sh
+> ~/qemu/qemu-9.0.2/build/qemu-system-aarch64 \
+>     -machine type=virt,accel=kvm,gic-version=host \
+>     -cpu host \
+>     -m 2G \
+>     -smp 2 \
+>     -bios /home/cosmo/qemu/qemu-9.0.2/build/pc-bios/edk2-aarch64-code.fd \
+>     -device ramfb \
+>     -device qemu-xhci \
+>     -device usb-kbd \
+>     -device usb-tablet \
+>     -drive
+> file=/home/cosmo/Downloads/Win11Arm.VHDX,format=vhdx,if=none,id=boot \
+>     -device usb-storage,drive=boot,serial=boot \
+>     -drive
+> file=/home/cosmo/Downloads/virtio-win.iso,media=cdrom,if=none,id=iso \
+>     -device usb-storage,drive=iso \
+>     -nic user,model=virtio-net-pci,mac=**:**:**:**:**:** \
+>     -vnc :0 \
+>     -d int,cpu_reset,strace
 >
-> oas2bits() is only called with valid inputs, harden the function
-> to assert that.
->
-> Reported-By: Peter Maydell <peter.maydell@linaro.org>
-> Link: https://lore.kernel.org/qemu-devel/CAFEAcA-H=n-3mHC+eL6YjfL1m+x+b+Fk3mkgZbN74WNxifFVow@mail.gmail.com/
-> Signed-off-by: Mostafa Saleh <smostafa@google.com>
 
+Does anyone have any ideas?
 
+--000000000000f0a72d061e180702
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Applied to target-arm.next, thanks.
+<div dir=3D"ltr"><div><div><div><div>Hello.<br><br></div><div>I&#39;m runni=
+ng into the following issue:<br><blockquote class=3D"gmail_quote" style=3D"=
+margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
+t:1ex">$ ./run_vm_kvm.sh<br><b>qemu-system-aarch64: kvm_init_vcpu: kvm_arch=
+_init_vcpu failed (0): Invalid argument</b><br></blockquote><div>but someti=
+mes this issue:<br><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">$ ./ru=
+n_vm_kvm.sh<br><b>qemu-system-aarch64: error creating in-kernel ITS: No suc=
+h device</b></blockquote> </div></div><div><br></div>I&#39;m currently tryi=
+ng to run a windows 11 for arm VM on a Cosmo Communicator (an android phone=
+ that allows dual booting Debian Linux)<br></div>It runs a helios p70 with =
+cortex-a53 small cores and cortex-a73 big cores and from what I can see KVM=
+ and GIC-V3 are both supported by the kernel:<br><div>KVM: <br></div><block=
+quote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1=
+px solid rgb(204,204,204);padding-left:1ex">$ zcat /proc/config.gz | grep K=
+VM</blockquote><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
+x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">CONFIG_HAV=
+E_KVM_IRQFD=3Dy<br>CONFIG_HAVE_KVM_EVENTFD=3Dy<br>CONFIG_KVM_MMIO=3Dy<br>CO=
+NFIG_HAVE_KVM_CPU_RELAX_INTERCEPT=3Dy<br>CONFIG_KVM_VFIO=3Dy<br>CONFIG_HAVE=
+_KVM_ARCH_TLB_FLUSH_ALL=3Dy<br>CONFIG_KVM_GENERIC_DIRTYLOG_READ_PROTECT=3Dy=
+<br>CONFIG_KVM_COMPAT=3Dy<br>CONFIG_KVM_ARM_VGIC_V3=3Dy<br>CONFIG_KVM=3Dy<b=
+r>CONFIG_KVM_ARM_HOST=3Dy</blockquote><div>GIC: <br></div></div><div><block=
+quote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1=
+px solid rgb(204,204,204);padding-left:1ex">$ zcat /proc/config.gz | grep G=
+IC</blockquote><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0p=
+x 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">CONFIG_MTK=
+_GIC_EXT=3Dy<br>CONFIG_MTK_GIC_V3_EXT=3Dy<br># CONFIG_SERIAL_CONEXANT_DIGIC=
+OLOR is not set<br># CONFIG_HID_UCLOGIC is not set<br>CONFIG_HID_MAGICMOUSE=
+=3Dy<br>CONFIG_ARM_GIC=3Dy<br>CONFIG_ARM_GIC_V3=3Dy<br>CONFIG_KVM_ARM_VGIC_=
+V3=3Dy<br>CONFIG_MAGIC_SYSRQ=3Dy<br>CONFIG_MAGIC_SYSRQ_DEFAULT_ENABLE=3D0x1=
+</blockquote></div><div>That being said my Kernel version is pretty old bec=
+ause from my understanding it&#39;s shared with the android installation:<b=
+r><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex">$ uname -r</blockquote>=
+</div><blockquote style=3D"margin-left:40px">4.4.146<br></blockquote><br></=
+div><div>I&#39;ve compiled Qemu 9.0.2 for my system in the hope it would gi=
+ve me better luck and it&#39;s definitely functioning better without KVM bu=
+t KVM is still not working. This is my Qemu command:<br><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">cat run_vm_kvm.sh<br>~/qemu/qemu-9.0.2/bui=
+ld/qemu-system-aarch64 \<br>=C2=A0 =C2=A0 -machine type=3Dvirt,accel=3Dkvm,=
+gic-version=3Dhost \<br>=C2=A0 =C2=A0 -cpu host \<br>=C2=A0 =C2=A0 -m 2G \<=
+br>=C2=A0 =C2=A0 -smp 2 \<br>=C2=A0 =C2=A0 -bios /home/cosmo/qemu/qemu-9.0.=
+2/build/pc-bios/edk2-aarch64-code.fd \<br>=C2=A0 =C2=A0 -device ramfb \<br>=
+=C2=A0 =C2=A0 -device qemu-xhci \<br>=C2=A0 =C2=A0 -device usb-kbd \<br>=C2=
+=A0 =C2=A0 -device usb-tablet \<br>=C2=A0 =C2=A0 -drive file=3D/home/cosmo/=
+Downloads/Win11Arm.VHDX,format=3Dvhdx,if=3Dnone,id=3Dboot \<br>=C2=A0 =C2=
+=A0 -device usb-storage,drive=3Dboot,serial=3Dboot \<br>=C2=A0 =C2=A0 -driv=
+e file=3D/home/cosmo/Downloads/virtio-win.iso,media=3Dcdrom,if=3Dnone,id=3D=
+iso \<br>=C2=A0 =C2=A0 -device usb-storage,drive=3Diso \<br>=C2=A0 =C2=A0 -=
+nic user,model=3Dvirtio-net-pci,mac=3D**:**:**:**:**:** \<br>=C2=A0 =C2=A0 =
+-vnc :0 \<br>=C2=A0 =C2=A0 -d int,cpu_reset,strace<br></blockquote><div><br=
+></div><div>Does anyone have any ideas? <br></div></div><div><div><div><div=
+><div><div><br></div></div></div></div></div></div></div>
 
--- PMM
+--000000000000f0a72d061e180702--

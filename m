@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp475256njb;
-        Fri, 26 Jul 2024 06:45:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXuZjLTkf98rF9le643buczNO3eg0Bz9izl76bJ8tczARqA2dZcyg8AS5Tf+9eu+i0fKq9jA8fhabO1Mwm87osMsPZFooSR
-X-Google-Smtp-Source: AGHT+IEMO2Ri7kSpnZe+3XDcWAzT9M8jvIe0EmrT22jKAte2E8nguplW7VKxkzwe/QmEbuaaFIUn
-X-Received: by 2002:a05:6214:21e2:b0:6b5:44c:24ea with SMTP id 6a1803df08f44-6bb40720f41mr64999966d6.16.1722001549742;
-        Fri, 26 Jul 2024 06:45:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722001549; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp475375njb;
+        Fri, 26 Jul 2024 06:46:03 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVzfyXfuOoOrbaprIo7uvekRGe29LTmqem96DDsnM1ow5soqDKTGJ9SvWnWe1XI4G66sx4NhZFj9qlYbnd0D2wqZzbs6i0u
+X-Google-Smtp-Source: AGHT+IFP/IyOe0mGphUThuNVbl6nzGDYWgdj1jIpJuFUX5qaOaX0OsYX7z26xIp+6G3WBM+LSWR0
+X-Received: by 2002:ac8:594a:0:b0:44f:e9df:2a22 with SMTP id d75a77b69052e-44fe9df2bffmr92996801cf.16.1722001563666;
+        Fri, 26 Jul 2024 06:46:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722001563; cv=none;
         d=google.com; s=arc-20160816;
-        b=iUV73J3RI6qSZrhjozxXB38FHrliFggvPUvrWj0UbDJjePQ98MqGnqnDD5v1Pa4VNf
-         P/cZQkZlinoVt+CbuXu7gc+cBDxJbPSyqfigFd5elxKmc1daeGoAGy5Y+vi+CbKj5c6I
-         sSYrreiXQgtTHojzh2XNt3IedSgHEm2cHRgcjDIJtvvdRBQrOH7fSNFuLg8i5KClTQAQ
-         ETP0hH38ndXJnQT5Wp91dogwa0e1LHUd+iyUt50rbiaH66a7KGq8AT4f1yKNbhA3B/Km
-         x9IXBZqAtM5WsOE2kruk3vKF0R742fdTiEs6Kq3tXIQcU6Dv7/lltAxFQP56ZOyS/bvS
-         u/Gw==
+        b=z2M8qmoxRMeB00YDoPCVaK9PEYtXcdwvzDEvkZuMtUzajO04GFBkdDaQMkzfPGQeVh
+         Tm7GgHSJuqICydvdRyuEGj6qMHFh75pNSuTYp7upqR6PZaBelzpMXOYulLOz2SyEkdsY
+         zUeuauIoQIEfYj6UlOsfBB1UAQnpcS8PzYbLAPd+Cw6hqNlqNECUAE6XPXaWbToJ/lND
+         RHZQr6grJmVhMyV5iaUoeSFrgHscrTdbYhVbfnOzqmdRu1Fp5zEHuxsBGz0g3j667MIq
+         5hp9OJ3MnTV/Yx+PXm2qHtfjPuHFZox/WbRFSEV/TGXrRb+pV82emp+FO/rXaeQSc0su
+         WcUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=22aK5G9Gu9BLJGucdCy0aPoPQpR5xm/lyRWYWqyAjJA=;
+        bh=EIz6GUKRiMrJ4ToqmN6PNK35L1sSA8CzTEn9Mn2ZcHQ=;
         fh=+JUQlqeb+WOWoY8tr4tplfLgDiP2lWYvcRFLGxWHojE=;
-        b=ILaxd1mrfoQP2jpM4FbyN4qHX7oe8oT/4oSrYbxVUAfkrnTEZjUv/IACLIM3ixFrG9
-         8bB1BjXck3KW91OIVEBKFPtSh/MiyhF0332HxscK7tulndkXdHXw357nnczL30cIqj1Q
-         f2dgYZN9elH0Ocl2h6/PMQVRZnvwmRnE+EKd7xDUkwYZVt5mte+AhZyzoTkx1btkiJ6/
-         K/Nk+91S+w0Ccs32JI6Z8l1jm1PAGOFkADqVCfazTQl5bS93oL7rb2BZ5Yngi7Y/Tdzo
-         iFm52GM/Qqd5X2yfrG5x6ipFJzuw+H4drRqg25R1JbbZf1mNJhl3ZbwaySX5neOeg8BG
-         4i9w==;
+        b=lgINtEfLfUlpvtvy03iLQrZhPgCEhTLnf6AoterKpFc8K7WSRVZQOSFpcG1zpZxMBs
+         ektQ5rkmPcL68xIWuhAbXHPbhQhkvaeOOOgoITDs73Ac6/GHR7EshhneW+CiIE3Ol4VF
+         vP6CtLUT7Yp2CIOpSc7uoxBD+kO7XjR3ATiFF9dAxoGCIP81fmyPcJkisSwkn2EEt059
+         KYrGpV7Pk36DStMJzof61rceSb5+VaD8lS+ba/Pb5a6Xpu8/asQXhnveycDfGGM6pa1S
+         bTrLLE45nIYj0zzDNi+1uPtTsFaiBfU8GcH7YujB/z90T9UzDf8ZI/Sjnzr5rlJG961f
+         UNHA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jN1wgmon;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HlHP68dZ;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3fa87275si40986386d6.241.2024.07.26.06.45.49
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe84240c1si40678611cf.633.2024.07.26.06.46.03
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jul 2024 06:45:49 -0700 (PDT)
+        Fri, 26 Jul 2024 06:46:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jN1wgmon;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HlHP68dZ;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722001549;
+	s=mimecast20190719; t=1722001563;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=22aK5G9Gu9BLJGucdCy0aPoPQpR5xm/lyRWYWqyAjJA=;
-	b=jN1wgmon9cPb5i+f9/vzA8nlXJYIumD3eaHXFqH7s2/QPoZLD4Xmy4Kepv9W13BC1cbuLn
-	mTkayTjgV9+YfgGMh8BBVdH1UBrDNaHPzkxYhwSlt18+Rfv3pYXlwObElfRe6ksfbZ3b79
-	QJf/B7Z7U8890JqBrjvI/15gEC0bTOs=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+	bh=EIz6GUKRiMrJ4ToqmN6PNK35L1sSA8CzTEn9Mn2ZcHQ=;
+	b=HlHP68dZbfL6pybj5VGb0kahdW13tWTdVJJ9UwIK6pDpnwtasi6YHh1RwK2M1EYMMg6fxe
+	zDjJ/OpnjCczP+0dJKXTozuWKht02TZEuO2l0bw8S9w7uRofovdizLLRKyJPFgviXsKfUA
+	lemJaZxXCmK7z4M1nP1DXjVvN3nR/Ts=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-80-1NnmSBVsP8KgRivKXZD1fA-1; Fri,
- 26 Jul 2024 09:45:46 -0400
-X-MC-Unique: 1NnmSBVsP8KgRivKXZD1fA-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-192-S669IZyENCGJsElLcUAWWw-1; Fri,
+ 26 Jul 2024 09:45:57 -0400
+X-MC-Unique: S669IZyENCGJsElLcUAWWw-1
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 97E1718EB20E;
-	Fri, 26 Jul 2024 13:45:38 +0000 (UTC)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id CE5FB1918E4D;
+	Fri, 26 Jul 2024 13:45:42 +0000 (UTC)
 Received: from p1.localdomain.com (unknown [10.22.17.77])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B7C961955D42;
-	Fri, 26 Jul 2024 13:45:33 +0000 (UTC)
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 8A2331955D52;
+	Fri, 26 Jul 2024 13:45:38 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -84,47 +84,43 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Paul Durrant <paul@xen.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 11/13] tests/avocado/machine_aarch64_sbsaref.py: allow for rw usage of image
-Date: Fri, 26 Jul 2024 09:44:36 -0400
-Message-ID: <20240726134438.14720-12-crosa@redhat.com>
+Subject: [PATCH 12/13] Bump avocado to 103.0
+Date: Fri, 26 Jul 2024 09:44:37 -0400
+Message-ID: <20240726134438.14720-13-crosa@redhat.com>
 In-Reply-To: <20240726134438.14720-1-crosa@redhat.com>
 References: <20240726134438.14720-1-crosa@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: 9aFChd2dDKvb
+X-TUID: cVOSyqdOeOAO
 
-When the OpenBSD based tests are run in parallel, the previously
-single instance of the image would become corrupt.  Let's give each
-test its own copy.
+This bumps Avocado to latest the LTS release.
 
+An LTS release is one that can receive bugfixes and guarantees
+stability for a much longer period and has incremental minor releases
+made.
+
+Even though the 103.0 LTS release is pretty a rewrite of Avocado when
+compared to 88.1, the behavior of all existing tests under
+tests/avocado has been extensively tested no regression in behavior
+was found.
+
+Reference: https://avocado-framework.readthedocs.io/en/103.0/releases/lts/103_0.html
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/avocado/machine_aarch64_sbsaref.py | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ pythondeps.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
-index 1275f24532..8816308b86 100644
---- a/tests/avocado/machine_aarch64_sbsaref.py
-+++ b/tests/avocado/machine_aarch64_sbsaref.py
-@@ -7,6 +7,7 @@
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
- import os
-+import shutil
- 
- from avocado import skipUnless
- from avocado.utils import archive
-@@ -187,7 +188,9 @@ def boot_openbsd73(self, cpu):
-         )
- 
-         img_hash = "7fc2c75401d6f01fbfa25f4953f72ad7d7c18650056d30755c44b9c129b707e5"
--        img_path = self.fetch_asset(img_url, algorithm="sha256", asset_hash=img_hash)
-+        cached_img_path = self.fetch_asset(img_url, algorithm="sha256", asset_hash=img_hash)
-+        img_path = os.path.join(self.workdir, os.path.basename(cached_img_path))
-+        shutil.copy(cached_img_path, img_path)
- 
-         self.vm.set_console()
-         self.vm.add_args(
+diff --git a/pythondeps.toml b/pythondeps.toml
+index f6e590fdd8..175cf99241 100644
+--- a/pythondeps.toml
++++ b/pythondeps.toml
+@@ -30,5 +30,5 @@ sphinx_rtd_theme = { accepted = ">=0.5", installed = "1.1.1" }
+ # Note that qemu.git/python/ is always implicitly installed.
+ # Prefer an LTS version when updating the accepted versions of
+ # avocado-framework, for example right now the limit is 92.x.
+-avocado-framework = { accepted = "(>=88.1, <93.0)", installed = "88.1", canary = "avocado" }
++avocado-framework = { accepted = "(>=103.0, <104.0)", installed = "103.0", canary = "avocado" }
+ pycdlib = { accepted = ">=1.11.0" }
 -- 
 2.45.2

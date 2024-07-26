@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp475106njb;
-        Fri, 26 Jul 2024 06:45:33 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUe3Jc98E4aKSSo+nr8n2cLfVc0+6s2R7rhmjaXLQp5MWrUh4vTIdKjuo3+/LdjitznNG8Ld6AeuRquRlk6HuQtTRSL9kId
-X-Google-Smtp-Source: AGHT+IFoE5M3s+G35E5bY49U2yUbSVn09Z+zNjRw6RG6EuZ5MYNg3dBE5h/O610gUjNj37e7ZoNh
-X-Received: by 2002:a05:6122:4695:b0:4f5:23e4:b7c with SMTP id 71dfb90a1353d-4f6c9fe88edmr6486496e0c.0.1722001533219;
-        Fri, 26 Jul 2024 06:45:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722001533; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp475585njb;
+        Fri, 26 Jul 2024 06:46:22 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCW4kmMdy93dHEXu5a+3pMv+QSEHXtER55dVkVYRHs7y29MdjkSpBuyhnJWLv+T4Uam3DF/qHuTPvkVwUuqo6NvZyhAdLJOg
+X-Google-Smtp-Source: AGHT+IHZxXykfdgUlwc5FhcxFUpeu74xdrxM7gicY2AKtaOTMrZ5BghmWnb9mZFka2WFcOxlpJXZ
+X-Received: by 2002:a05:6830:6486:b0:709:3b82:7680 with SMTP id 46e09a7af769-7093b827b7bmr1773134a34.19.1722001582124;
+        Fri, 26 Jul 2024 06:46:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722001582; cv=none;
         d=google.com; s=arc-20160816;
-        b=znOLfAj0V62kWu8TnqQpKSDYAmqgrFPGVRWqiq4EXDI6o4T6+vP4W/T3wRBQEd/llj
-         uPBy1KYg+kE+WvvQI3SoobnkRU9GG125owYrSHnbA702OlvYhMWhW+aI2hCtpAyy9Msb
-         1VjvPb7nzpr38WY4jHKLSX0g+MPbqqxBWYTPoKLYpkQo3XUHPx80bcn8CcOvA3d4m2xi
-         fphMRyzh8jIyXdSov1fVMaYz3dhSp593blj0RK4VI9kaU6G0VH6IfRj0Dk0KPuhFqsyb
-         IUnPdcvPgrMsat3oqKU3iC7DEGFNtItcqPg+7XF4hlg8giStsspncizy6fGEmkyqLZ0Z
-         +UHw==
+        b=1GF/h9j1vdb/UKh9M/h4FyxSUEDao6Y3MPIswRRHp753WrqrTuPsjeK8RjUSgYYA9P
+         I+ikGgqHVBlcL8W2RmiZKnCVpPBdmQjY6huxWlWPiGTzXlaI7zqKRBd/f1VY/D+qnzIa
+         dV89ifZUVAh3BmaxrkCTlJvdi5NpY9imkFfuQU1H+ov3bbdTVFTZVirK0JBT8NNeS/E0
+         xhLElED+SfZkAzScYR11L1liuNwBGPawgoCLdMoiOEOjm0Pud75zdwN4qGAce3n84xkn
+         vfz8KZlZEU0VxMtpNQGvsv8EhJyR85igmzEhFjopPsz/RwyeMiTZQmN8RKJsmp610nHj
+         6gTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=SjcpbA2sD6CYVWhEq7nq8PpqkGiIsiq71NF+s5HMhDo=;
+        bh=Im4JjI8yzxxn9wQq5bZQLL26rZjo/9QxJ6+zUl4DQ7s=;
         fh=+JUQlqeb+WOWoY8tr4tplfLgDiP2lWYvcRFLGxWHojE=;
-        b=RCQuyBRj1dJZI41hEz9RbvDTFfTtH4MuibnsquS4nszcLaGVQZjKIok0zT6DzJPo5s
-         hiAsjt1bHMSwXm4/OFmnTMFoJQe+ZtMjgTt00uj54tA91+D5464r75smhJdKdqR+bVb6
-         FWDNFUl0klw0p26qc/Xt8xE4YrTcLLgBv9+bFmAe/nUCsx6SmhKa6Nb210eVaetb64es
-         FmHzZgpuWAZSg6UM6T1rjqznUc4kO6EelfKfjtbTWpeeqfAXy2YZRaSTkihz7q/NjTG2
-         SKPesXynhhi97s3yklD4ipnq/8o6tR7dB9mVycJ2JMQg76g2yVzKUckQTmbbwezfXoaG
-         D6rA==;
+        b=eIfIAIhco31ZzZp9gVsVve+WSMUEcg56CK+/VFuHfasV2y2WlzdLNMkHQu+I8F/r1C
+         5mXP28KfMPLnLq86PILnU/7gTyhF5xu+c4y5Wv6zc7YYgsjX6s1Ohrw9g/wZ32rPC35r
+         xXIegALCz5uaQutJOTsAXq+50EexzJBIdNQl9SVxM/b0teEyraBT6dXOdT+OhnvXHQ8Q
+         OvMFD/s7o8lw7ke8mOW1Y16ot5kRgbNDkp0beIktE7H8MyoUC2k5AtzWmcAF/wfLqQv9
+         iZ89p0D7l5VrkV5hWrQ8z17MRlMCLWe8QQpjFZJEDLVgriPZyEg4a/thkvFZc8ce1WCD
+         Rfew==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AMTozHP7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DUyWGN4r;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe851b739si40794531cf.644.2024.07.26.06.45.32
+        by mx.google.com with ESMTPS id af79cd13be357-7a1d7445555si408833985a.248.2024.07.26.06.46.21
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jul 2024 06:45:33 -0700 (PDT)
+        Fri, 26 Jul 2024 06:46:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AMTozHP7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DUyWGN4r;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722001532;
+	s=mimecast20190719; t=1722001581;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=SjcpbA2sD6CYVWhEq7nq8PpqkGiIsiq71NF+s5HMhDo=;
-	b=AMTozHP7D4xAnM6Slik4GAttBBXdsbQvgIsSDcD6tD7aGjhQ4j07E6kcDhO3Mw395oOVmk
-	P+LuCTL05K+rs4EjBPo2/xpQ00lLxff3j5Gj1XhITu31knTkV/DcLIv+ljU5+SNs+THJhw
-	Hr1Rq8URTkAT3M/u3TiU5au16y1D0Dk=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+	bh=Im4JjI8yzxxn9wQq5bZQLL26rZjo/9QxJ6+zUl4DQ7s=;
+	b=DUyWGN4r7r24U/jgytdlvtFkzY/L1XcLy++0wOGMX+BJG+/kq7xGwmCrb8PZIB1e8ht246
+	UCkRc3fOkzjmaX+FRsg6G8KDKggzY6TNbDl8OOngQ68EZhRRw86eb6uVNqg5JcAvzSSqx8
+	UIp5xxCEGA7BsoSHADAUqKZ0okawMc8=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-600-Du1ZquumO3icphIrhLcVaQ-1; Fri,
- 26 Jul 2024 09:45:31 -0400
-X-MC-Unique: Du1ZquumO3icphIrhLcVaQ-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-170-dGOgJqcsNGmzR9AyTJmYdQ-1; Fri,
+ 26 Jul 2024 09:46:17 -0400
+X-MC-Unique: dGOgJqcsNGmzR9AyTJmYdQ-1
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 33DD91944A87;
-	Fri, 26 Jul 2024 13:45:29 +0000 (UTC)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B640C19E5770;
+	Fri, 26 Jul 2024 13:46:07 +0000 (UTC)
 Received: from p1.localdomain.com (unknown [10.22.17.77])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 24ACF1955D42;
-	Fri, 26 Jul 2024 13:45:24 +0000 (UTC)
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 2A4F71955D42;
+	Fri, 26 Jul 2024 13:45:42 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -84,66 +84,86 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Paul Durrant <paul@xen.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 09/13] tests/avocado/boot_xen.py: fetch kernel during test setUp()
-Date: Fri, 26 Jul 2024 09:44:34 -0400
-Message-ID: <20240726134438.14720-10-crosa@redhat.com>
+Subject: [PATCH 13/13] Avocado tests: allow for parallel execution of tests
+Date: Fri, 26 Jul 2024 09:44:38 -0400
+Message-ID: <20240726134438.14720-14-crosa@redhat.com>
 In-Reply-To: <20240726134438.14720-1-crosa@redhat.com>
 References: <20240726134438.14720-1-crosa@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: XPc1rxGF342p
+X-TUID: iqvBZB8xpop8
 
-The kernel is a common blob used in all tests.  By moving it to the
-setUp() method, the "fetch asset" plugin will recognize the kernel and
-attempt to fetch it and cache it before the tests are started.
+The updated Avocado version allows for the execution of tests in
+parallel.
+
+While on a CI environment it may not be a good idea to increase the
+parallelization level in a single runner, developers may leverage that
+on specific CI runners or on their development environments.
+
+This also multiplies the timeout for each test accordingly.  The
+reason is that more concurrency can lead to less resources, and less
+resources can lead to some specific tests taking longer to complete
+and then time out.  The timeout factor being used here is very
+conservative (being equal to the amount of parallel tasks).  The worst
+this possibly oversized timeout value can do is making users wait a
+bit longer for the job to finish if a test hangs.
+
+Overall, users can expect a much quicker turnaround on most systems
+with a value such as 8 on a 12 core machine.
 
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/avocado/boot_xen.py | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ docs/devel/testing.rst | 12 ++++++++++++
+ tests/Makefile.include |  6 +++++-
+ 2 files changed, 17 insertions(+), 1 deletion(-)
 
-diff --git a/tests/avocado/boot_xen.py b/tests/avocado/boot_xen.py
-index f29bc58b9e..490a127a3e 100644
---- a/tests/avocado/boot_xen.py
-+++ b/tests/avocado/boot_xen.py
-@@ -30,23 +30,22 @@ class BootXen(LinuxKernelTest):
-     timeout = 90
-     XEN_COMMON_COMMAND_LINE = 'dom0_mem=128M loglvl=all guest_loglvl=all'
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index 23d3f44f52..5600123743 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -983,6 +983,18 @@ of Avocado or ``make check-avocado``, and can also be queried using:
  
--    def fetch_guest_kernel(self):
-+    def setUp(self):
-+        super(BootXen, self).setUp()
+   pyvenv/bin/avocado list tests/avocado
+ 
++To run tests in parallel, the ``AVOCADO_PARALLEL`` environment
++variable can be defined with a value different than ``1`` (its default
++value).  Example:
 +
-         # Using my own built kernel - which works
-         kernel_url = ('https://fileserver.linaro.org/'
-                       's/JSsewXGZ6mqxPr5/download?path=%2F&files='
-                       'linux-5.9.9-arm64-ajb')
-         kernel_sha1 = '4f92bc4b9f88d5ab792fa7a43a68555d344e1b83'
--        kernel_path = self.fetch_asset(kernel_url,
--                                       asset_hash=kernel_sha1)
--
--        return kernel_path
-+        self.kernel_path = self.fetch_asset(kernel_url,
-+                                            asset_hash=kernel_sha1)
++ .. code::
++
++  make check-avocado AVOCADO_PARALLEL=4
++
++Please exercise care when using parallel execution with the QEMU
++Avocado tests as a higher system load can cause time sensitive tests
++to timeout and be interrupted.
++
+ Manual Installation
+ ~~~~~~~~~~~~~~~~~~~
  
-     def launch_xen(self, xen_path):
-         """
-         Launch Xen with a dom0 guest kernel
-         """
-         self.log.info("launch with xen_path: %s", xen_path)
--        kernel_path = self.fetch_guest_kernel()
- 
-         self.vm.set_console()
- 
-@@ -56,7 +55,7 @@ def launch_xen(self, xen_path):
-                          '-append', self.XEN_COMMON_COMMAND_LINE,
-                          '-device',
-                          'guest-loader,addr=0x47000000,kernel=%s,bootargs=console=hvc0'
--                         % (kernel_path))
-+                         % (self.kernel_path))
- 
-         self.vm.launch()
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 6618bfed70..545b5155f9 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -94,6 +94,9 @@ TESTS_RESULTS_DIR=$(BUILD_DIR)/tests/results
+ ifndef AVOCADO_TESTS
+ 	AVOCADO_TESTS=tests/avocado
+ endif
++ifndef AVOCADO_PARALLEL
++	AVOCADO_PARALLEL=1
++endif
+ # Controls the output generated by Avocado when running tests.
+ # Any number of command separated loggers are accepted.  For more
+ # information please refer to "avocado --help".
+@@ -141,7 +144,8 @@ check-avocado: check-venv $(TESTS_RESULTS_DIR) get-vm-images
+             --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) \
+             $(if $(AVOCADO_TAGS),, --filter-by-tags-include-empty \
+ 			--filter-by-tags-include-empty-key) \
+-            $(AVOCADO_CMDLINE_TAGS) \
++            $(AVOCADO_CMDLINE_TAGS) --max-parallel-tasks=$(AVOCADO_PARALLEL) \
++			-p timeout_factor=$(AVOCADO_PARALLEL) \
+             $(if $(GITLAB_CI),,--failfast) $(AVOCADO_TESTS), \
+             "AVOCADO", "tests/avocado")
  
 -- 
 2.45.2

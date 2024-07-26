@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp475044njb;
-        Fri, 26 Jul 2024 06:45:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV9A5xT9kTFkLd5+2m1aQuTfiKUlWRfWUlgtfooSldn5SKPfSh6Tawe6Wbj3VbZuqyyTncwiUUZMBdjjnnXWO7nwjtaI9RF
-X-Google-Smtp-Source: AGHT+IEdMMTzkdpIv027o734vZjSKacoHz53W7tJ2gKgXRAvIx6J2WT3x3F+YrOn0Ng26l9Rm+MC
-X-Received: by 2002:a05:6102:2c8c:b0:48f:e7c2:1faf with SMTP id ada2fe7eead31-493d6542f2emr8503970137.28.1722001526594;
-        Fri, 26 Jul 2024 06:45:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722001526; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp475106njb;
+        Fri, 26 Jul 2024 06:45:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUe3Jc98E4aKSSo+nr8n2cLfVc0+6s2R7rhmjaXLQp5MWrUh4vTIdKjuo3+/LdjitznNG8Ld6AeuRquRlk6HuQtTRSL9kId
+X-Google-Smtp-Source: AGHT+IFoE5M3s+G35E5bY49U2yUbSVn09Z+zNjRw6RG6EuZ5MYNg3dBE5h/O610gUjNj37e7ZoNh
+X-Received: by 2002:a05:6122:4695:b0:4f5:23e4:b7c with SMTP id 71dfb90a1353d-4f6c9fe88edmr6486496e0c.0.1722001533219;
+        Fri, 26 Jul 2024 06:45:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722001533; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ie35Zp5MUXOVLIVjBV5OapugUzEQ4WpvWqgOqYK9+rkd4FrA3+hJG6ouuhEtOcdBkq
-         b/RQ9Vc+A3bwY+4VklDhSOVJwVSo5WfiKeYl3RxVn5wzTNpMwyN7iNEO9Ndi9ubnaOh/
-         GwyKjLFtlSnx+QTh3oEZhXCFZydrPGX8YD17RuSWkMdj0q6UoFwYxA1bxDzW6ZfRe8ip
-         XAIJ8SoOZQHZVBwkxjShxTdX9sbpGgThWEc+mLcCTNp1g+RR9XtWpkP013o9rbkp572h
-         Vo7iFIvn+ao3M3yB59H/8mHOw0XxDahA3xnoTMrQsf3grjUQPVw9XVUSyrnXxKmW6Lp9
-         slzQ==
+        b=znOLfAj0V62kWu8TnqQpKSDYAmqgrFPGVRWqiq4EXDI6o4T6+vP4W/T3wRBQEd/llj
+         uPBy1KYg+kE+WvvQI3SoobnkRU9GG125owYrSHnbA702OlvYhMWhW+aI2hCtpAyy9Msb
+         1VjvPb7nzpr38WY4jHKLSX0g+MPbqqxBWYTPoKLYpkQo3XUHPx80bcn8CcOvA3d4m2xi
+         fphMRyzh8jIyXdSov1fVMaYz3dhSp593blj0RK4VI9kaU6G0VH6IfRj0Dk0KPuhFqsyb
+         IUnPdcvPgrMsat3oqKU3iC7DEGFNtItcqPg+7XF4hlg8giStsspncizy6fGEmkyqLZ0Z
+         +UHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=iANeBO6ReZ4SXr/ZZKfmq7nYRFwkGFSuGPP72ITezII=;
+        bh=SjcpbA2sD6CYVWhEq7nq8PpqkGiIsiq71NF+s5HMhDo=;
         fh=+JUQlqeb+WOWoY8tr4tplfLgDiP2lWYvcRFLGxWHojE=;
-        b=BUtL1wJyxyocsZTB1PvGVMz0MEV9q2grVFw/27BKHKP+sw1nEzn1/kP+mwrCJPPuu3
-         t+DdglBpXjhMBnaTVPHQaxqu5ICjihxHcL3GWw50I1FQgCxZ63xN64nkIi0ffZO8aJxv
-         kW68uFYqTmtt5LVGg4pz/rJaXwReTTuLsM3XZ183V/+oJoPiWWXJT3KnXnj6BtnK+Ktc
-         nLx/NpS0PgOmxJEgVd7+2tGm2FH9fG17lwQlvQ6AQLzWce0mnEsV5Oj3UdxcqYsa02bJ
-         /rBjR10IfSSwGTUTuO5wnuICVp/PUmVfVjteaS6AhC5SIJoqdGCMPY4FwDOPg9p3CEGH
-         dR5A==;
+        b=RCQuyBRj1dJZI41hEz9RbvDTFfTtH4MuibnsquS4nszcLaGVQZjKIok0zT6DzJPo5s
+         hiAsjt1bHMSwXm4/OFmnTMFoJQe+ZtMjgTt00uj54tA91+D5464r75smhJdKdqR+bVb6
+         FWDNFUl0klw0p26qc/Xt8xE4YrTcLLgBv9+bFmAe/nUCsx6SmhKa6Nb210eVaetb64es
+         FmHzZgpuWAZSg6UM6T1rjqznUc4kO6EelfKfjtbTWpeeqfAXy2YZRaSTkihz7q/NjTG2
+         SKPesXynhhi97s3yklD4ipnq/8o6tR7dB9mVycJ2JMQg76g2yVzKUckQTmbbwezfXoaG
+         D6rA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=itpWQ+rU;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AMTozHP7;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-831b2eea833si676179241.192.2024.07.26.06.45.26
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe851b739si40794531cf.644.2024.07.26.06.45.32
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jul 2024 06:45:26 -0700 (PDT)
+        Fri, 26 Jul 2024 06:45:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=itpWQ+rU;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AMTozHP7;
        spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722001526;
+	s=mimecast20190719; t=1722001532;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=iANeBO6ReZ4SXr/ZZKfmq7nYRFwkGFSuGPP72ITezII=;
-	b=itpWQ+rUFNh53xa0WaPG1peuvnrvEOK7JwvCwbi4FkDceo1B+jjYYFwsJJOlLkazZgZ9aO
-	PyM/wsoLApelStWRUHyzUzgw1pmV86HJ1CSlz/V8oLonhkXjGQvZW/FALRaffcqyvyCRng
-	zkEU7H8V3Ny4jJHoydVar2ryXxWnB60=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+	bh=SjcpbA2sD6CYVWhEq7nq8PpqkGiIsiq71NF+s5HMhDo=;
+	b=AMTozHP7D4xAnM6Slik4GAttBBXdsbQvgIsSDcD6tD7aGjhQ4j07E6kcDhO3Mw395oOVmk
+	P+LuCTL05K+rs4EjBPo2/xpQ00lLxff3j5Gj1XhITu31knTkV/DcLIv+ljU5+SNs+THJhw
+	Hr1Rq8URTkAT3M/u3TiU5au16y1D0Dk=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-336-YaN_GngSPvyKyKgwQTcq-w-1; Fri,
- 26 Jul 2024 09:45:23 -0400
-X-MC-Unique: YaN_GngSPvyKyKgwQTcq-w-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-600-Du1ZquumO3icphIrhLcVaQ-1; Fri,
+ 26 Jul 2024 09:45:31 -0400
+X-MC-Unique: Du1ZquumO3icphIrhLcVaQ-1
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id CEAF81955BFA;
-	Fri, 26 Jul 2024 13:45:20 +0000 (UTC)
+	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 33DD91944A87;
+	Fri, 26 Jul 2024 13:45:29 +0000 (UTC)
 Received: from p1.localdomain.com (unknown [10.22.17.77])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D164F1955D45;
-	Fri, 26 Jul 2024 13:45:16 +0000 (UTC)
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 24ACF1955D42;
+	Fri, 26 Jul 2024 13:45:24 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -84,118 +84,66 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Paul Durrant <paul@xen.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 07/13] tests/avocado/kvm_xen_guest.py: cope with asset RW requirements
-Date: Fri, 26 Jul 2024 09:44:32 -0400
-Message-ID: <20240726134438.14720-8-crosa@redhat.com>
+Subject: [PATCH 09/13] tests/avocado/boot_xen.py: fetch kernel during test setUp()
+Date: Fri, 26 Jul 2024 09:44:34 -0400
+Message-ID: <20240726134438.14720-10-crosa@redhat.com>
 In-Reply-To: <20240726134438.14720-1-crosa@redhat.com>
 References: <20240726134438.14720-1-crosa@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: aF3d/Xr4Lf2t
+X-TUID: XPc1rxGF342p
 
-Some of these tests actually require the root filesystem image,
-obtained through Avocado's asset feature and kept in a common cache
-location, to be writable.
-
-This makes a distinction between the tests that actually have this
-requirement and those who don't.  The goal is to be as safe as
-possible, avoiding causing cache misses (because the assets get
-modified and thus need to be dowloaded again) while avoid copying the
-root filesystem backing file whenever possible.
-
-This also allow these tests to be run in parallel with newer Avocado
-versions.
+The kernel is a common blob used in all tests.  By moving it to the
+setUp() method, the "fetch asset" plugin will recognize the kernel and
+attempt to fetch it and cache it before the tests are started.
 
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/avocado/kvm_xen_guest.py | 27 ++++++++++++++++++---------
- 1 file changed, 18 insertions(+), 9 deletions(-)
+ tests/avocado/boot_xen.py | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
 
-diff --git a/tests/avocado/kvm_xen_guest.py b/tests/avocado/kvm_xen_guest.py
-index 318fadebc3..d73fa888ef 100644
---- a/tests/avocado/kvm_xen_guest.py
-+++ b/tests/avocado/kvm_xen_guest.py
-@@ -10,6 +10,7 @@
- # SPDX-License-Identifier: GPL-2.0-or-later
+diff --git a/tests/avocado/boot_xen.py b/tests/avocado/boot_xen.py
+index f29bc58b9e..490a127a3e 100644
+--- a/tests/avocado/boot_xen.py
++++ b/tests/avocado/boot_xen.py
+@@ -30,23 +30,22 @@ class BootXen(LinuxKernelTest):
+     timeout = 90
+     XEN_COMMON_COMMAND_LINE = 'dom0_mem=128M loglvl=all guest_loglvl=all'
  
- import os
-+import shutil
+-    def fetch_guest_kernel(self):
++    def setUp(self):
++        super(BootXen, self).setUp()
++
+         # Using my own built kernel - which works
+         kernel_url = ('https://fileserver.linaro.org/'
+                       's/JSsewXGZ6mqxPr5/download?path=%2F&files='
+                       'linux-5.9.9-arm64-ajb')
+         kernel_sha1 = '4f92bc4b9f88d5ab792fa7a43a68555d344e1b83'
+-        kernel_path = self.fetch_asset(kernel_url,
+-                                       asset_hash=kernel_sha1)
+-
+-        return kernel_path
++        self.kernel_path = self.fetch_asset(kernel_url,
++                                            asset_hash=kernel_sha1)
  
- from qemu.machine import machine
- 
-@@ -43,7 +44,7 @@ def get_asset(self, name, sha1):
-         return self.fetch_asset(name=f"qemu-kvm-xen-guest-{name}",
-                                 locations=(url), asset_hash=sha1)
- 
--    def common_vm_setup(self):
-+    def common_vm_setup(self, readwrite=False):
-         # We also catch lack of KVM_XEN support if we fail to launch
-         self.require_accelerator("kvm")
- 
-@@ -56,11 +57,19 @@ def common_vm_setup(self):
-                                           "367962983d0d32109998a70b45dcee4672d0b045")
-         self.rootfs = self.get_asset("rootfs.ext4",
-                                      "f1478401ea4b3fa2ea196396be44315bab2bb5e4")
-+        if readwrite:
-+            dest = os.path.join(self.workdir, os.path.basename(self.rootfs))
-+            shutil.copy(self.rootfs, dest)
-+            self.rootfs = dest
- 
--    def run_and_check(self):
-+    def run_and_check(self, readwrite=False):
-+        if readwrite:
-+            drive = f"file={self.rootfs},if=none,format=raw,id=drv0"
-+        else:
-+            drive = f"file={self.rootfs},if=none,readonly=on,format=raw,id=drv0"
-         self.vm.add_args('-kernel', self.kernel_path,
-                          '-append', self.kernel_params,
--                         '-drive',  f"file={self.rootfs},if=none,snapshot=on,format=raw,id=drv0",
-+                         '-drive',  drive,
-                          '-device', 'xen-disk,drive=drv0,vdev=xvda',
-                          '-device', 'virtio-net-pci,netdev=unet',
-                          '-netdev', 'user,id=unet,hostfwd=:127.0.0.1:0-:22')
-@@ -90,11 +99,11 @@ def test_kvm_xen_guest(self):
-         :avocado: tags=kvm_xen_guest
+     def launch_xen(self, xen_path):
          """
- 
--        self.common_vm_setup()
-+        self.common_vm_setup(True)
- 
-         self.kernel_params = (self.KERNEL_DEFAULT +
-                               ' xen_emul_unplug=ide-disks')
--        self.run_and_check()
-+        self.run_and_check(True)
-         self.ssh_command('grep xen-pirq.*msi /proc/interrupts')
- 
-     def test_kvm_xen_guest_nomsi(self):
-@@ -102,11 +111,11 @@ def test_kvm_xen_guest_nomsi(self):
-         :avocado: tags=kvm_xen_guest_nomsi
+         Launch Xen with a dom0 guest kernel
          """
+         self.log.info("launch with xen_path: %s", xen_path)
+-        kernel_path = self.fetch_guest_kernel()
  
--        self.common_vm_setup()
-+        self.common_vm_setup(True)
+         self.vm.set_console()
  
-         self.kernel_params = (self.KERNEL_DEFAULT +
-                               ' xen_emul_unplug=ide-disks pci=nomsi')
--        self.run_and_check()
-+        self.run_and_check(True)
-         self.ssh_command('grep xen-pirq.* /proc/interrupts')
+@@ -56,7 +55,7 @@ def launch_xen(self, xen_path):
+                          '-append', self.XEN_COMMON_COMMAND_LINE,
+                          '-device',
+                          'guest-loader,addr=0x47000000,kernel=%s,bootargs=console=hvc0'
+-                         % (kernel_path))
++                         % (self.kernel_path))
  
-     def test_kvm_xen_guest_noapic_nomsi(self):
-@@ -114,11 +123,11 @@ def test_kvm_xen_guest_noapic_nomsi(self):
-         :avocado: tags=kvm_xen_guest_noapic_nomsi
-         """
+         self.vm.launch()
  
--        self.common_vm_setup()
-+        self.common_vm_setup(True)
- 
-         self.kernel_params = (self.KERNEL_DEFAULT +
-                               ' xen_emul_unplug=ide-disks noapic pci=nomsi')
--        self.run_and_check()
-+        self.run_and_check(True)
-         self.ssh_command('grep xen-pirq /proc/interrupts')
- 
-     def test_kvm_xen_guest_vapic(self):
 -- 
 2.45.2

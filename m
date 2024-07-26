@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp475033njb;
-        Fri, 26 Jul 2024 06:45:24 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUKzf1lfKUJxyOb2CedZiQ7nIEXW0sh2bo89uo9O7ZkVAIJdua7GxYX6u6x5T4nZ+owo6w1kZkSg12K+91bgE08K/yvUR3r
-X-Google-Smtp-Source: AGHT+IFkdndrnY28784b37XjhdAm8NCWeHCodIPeFhqLDXNX/GrJ8QMgQU3w6kUKssf6LNGPwr0m
-X-Received: by 2002:a05:6102:1514:b0:492:97c1:a78a with SMTP id ada2fe7eead31-493d643cfc9mr5292344137.13.1722001524673;
-        Fri, 26 Jul 2024 06:45:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722001524; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp475091njb;
+        Fri, 26 Jul 2024 06:45:31 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVncfjVGgBh8YZUZK5LfKktlnzkS10JP1d+tjoxD3kL9XLeQMPaaWU5OrvKQC6sYeUYp/EP++2odW+pabVB6CeTuwG4jbOM
+X-Google-Smtp-Source: AGHT+IHngkGtpZ7dW99C5tyA/YkVCGbX57N33iULCjVFkqbEzWiOvNdCuFQfdhKNXgaKipBGVsQG
+X-Received: by 2002:a05:622a:614:b0:44f:f140:cec6 with SMTP id d75a77b69052e-44ff140d92emr55772191cf.43.1722001531551;
+        Fri, 26 Jul 2024 06:45:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722001531; cv=none;
         d=google.com; s=arc-20160816;
-        b=t8OglkBt15q303sotAzebPEvmXTyD68fYTJAKTjTvwLyXvRVCY3nnPgIgrRkGqkF0a
-         3Tf/EsqXnc5OgXEQ5j0MsseMdwonlQ7EKybgAr9fo9RFXRvY2G7tJsuJ/3ZVK+VQMh1Z
-         oMNg9XG/mdWHPQlkZDZgZSojhgNZYiglDtvpAqdRMzwd8/a2BNtkvuO/qrTfZSlputOt
-         BmEWhaqqOhJ4eZ2fi8i65w5QOFYFPIOdTPGijPmDkSnE9r0LGVfzwv81HEO0Q5lLwJ9q
-         HNMfuq+Ywhj4IKNPcfm5pvZrOL2kgWwj2EHZ9OfKtI4c0Rq21u3oQxSrtlU6M7CtyY+Q
-         8fUQ==
+        b=g8Xzoqak++4+wXXswtrHha54zE4/OI9m6Lc8I0acJXZrBJ0Z6X3n+2zKv1K65kFu41
+         c/IxDkQ6V4SG+Q27fCYzZiNnAlKWXWbVdMHMdgoZuMYckvCdD8aoURXk5q/+VlwncZmk
+         yDblutZ1DR3MpyTsbWz8qqHjNQIMMmtuDvendd+uviZwpDTIjdIIpH7kH8JlJY209BYH
+         3fC+0cIuvaj4Hreim0qhF/inTTwTOG9tvjN+BkfWm0kJbduepC9hqd1SY6nMmyewXCHB
+         b4baviVPxiLtXtppQJAKjDnAgVFNeB3z1qXjpCsDd7zBtqgx78QHd+5e7INB3kQmje+c
+         uPQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=1OvDLu3KIbWHiu6ZxO0CUx4o4QNDavrUPXIZjllUrVA=;
+        bh=CfbZVGkAr1tSkWl9/QjabXB/PTPT9K6rU+mi0TPjxrc=;
         fh=+JUQlqeb+WOWoY8tr4tplfLgDiP2lWYvcRFLGxWHojE=;
-        b=zTzGc/J0L0fgo3BiIUSf3j2Hp9T1AvOx3193Q8bnlAH1AROiGKtn9tZoz7+Nd3+PfO
-         +m1GgJCBLFUkqffd9gdF5prAw2Vv8fBQCbCD1D1FePrEWc6Xvjj73vCXTRUcfbM2JMOu
-         E16GTJ6wErhXjlwdnbAjhRE3W87CPHQGt+kWK2Q2w8J3b8NOGyqlWqJDIOaH5ioo9fp4
-         ifDg5WmEPNfXi3NafI0OWR+kMK6Ke93GuICwd2zcCYfAg5TmIMDWXaHyxdr/jXhXQM6z
-         QzFoEqqFRtcry1O6odJ+h2O7EXkerUZzgmTgXTtslxKQWOhpxNSDqjcwoCZ0Bb6rjV+H
-         YiyQ==;
+        b=ok0w9vO1faZP1ONdLeHuL/xgGW4Wd4FGGQhWULMnmO07EGR0rB75OAy+InNXfLqpir
+         D80+saJ0acIzCJD+Tgn+KBA4KhD5ejc02xcwRTM/dFCSUru5/7pl61JwDGIZTky7XEBJ
+         x382atYQ+b+Q9VelCz4DdWktzcaWyNJrzvKZqmeft+u8moVO5qNon1+tdD+VR2EE3NTM
+         Dlmtg3vqttwNzIlt2qTXLaPabzJTZu/nhX7KdpjxHjdCzhJHRdEOOV3LaPGLF/jURT4C
+         mB/JMD4Xj4vmFxXSFYWHS5Jp8nC4g8MeJ5F9SG/SoQorXr1Zqtt9zLnmycdCF9WxkFOV
+         B73A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UobLGc2T;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KzYEvm5f;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <crosa@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id ada2fe7eead31-493d95fb8cesi912629137.7.2024.07.26.06.45.24
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe813670esi38620741cf.155.2024.07.26.06.45.31
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Jul 2024 06:45:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Fri, 26 Jul 2024 06:45:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UobLGc2T;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KzYEvm5f;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722001524;
+	s=mimecast20190719; t=1722001531;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=1OvDLu3KIbWHiu6ZxO0CUx4o4QNDavrUPXIZjllUrVA=;
-	b=UobLGc2TxBvedzGAP+ikondnEUDtaLFRCArDP2I91hkZUbN/B9yuZAy6d0AIsIZyiqi4Ja
-	6ZXWgbbkB6e2ONVNv8iNzbB/2pbR9eBT9aKpFWiKuM8fZ1n7BOjNHi58MuHMQey2jlRWbC
-	3bXHwVVfjiH4Qgb89du8i++Yj3gYkU0=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+	bh=CfbZVGkAr1tSkWl9/QjabXB/PTPT9K6rU+mi0TPjxrc=;
+	b=KzYEvm5fIf+OUp4CaI62M/yKPjbgSnN1W5h0DdS9PyhP5nTZJjYQbsYgkS0WsovkSdXt7I
+	UxZcb0BXoiBSFzy0/ZItvfXT+gnrEUfz1mn8uE4MlR3tC9hRK5gPcetZhR/xExSVIFm43/
+	M9EXmPXZI5JBai/23vj0zEmI3+rkzt0=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-488-X4q3-WUWMgibfuwHxzfhaQ-1; Fri,
- 26 Jul 2024 09:45:19 -0400
-X-MC-Unique: X4q3-WUWMgibfuwHxzfhaQ-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-265-33CqhGQePNa5PVJ-dZS0Yg-1; Fri,
+ 26 Jul 2024 09:45:26 -0400
+X-MC-Unique: 33CqhGQePNa5PVJ-dZS0Yg-1
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 920EF1944AA6;
-	Fri, 26 Jul 2024 13:45:16 +0000 (UTC)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id C48F11944B2C;
+	Fri, 26 Jul 2024 13:45:24 +0000 (UTC)
 Received: from p1.localdomain.com (unknown [10.22.17.77])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D2BD61955D42;
-	Fri, 26 Jul 2024 13:45:12 +0000 (UTC)
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 264501955D42;
+	Fri, 26 Jul 2024 13:45:20 +0000 (UTC)
 From: Cleber Rosa <crosa@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -84,59 +84,51 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Paul Durrant <paul@xen.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH 06/13] tests/avocado: use more distinct names for assets
-Date: Fri, 26 Jul 2024 09:44:31 -0400
-Message-ID: <20240726134438.14720-7-crosa@redhat.com>
+Subject: [PATCH 08/13] testa/avocado: test_arm_emcraft_sf2: handle RW requirements for asset
+Date: Fri, 26 Jul 2024 09:44:33 -0400
+Message-ID: <20240726134438.14720-9-crosa@redhat.com>
 In-Reply-To: <20240726134438.14720-1-crosa@redhat.com>
 References: <20240726134438.14720-1-crosa@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: HDsFQ9LIKXKl
+X-TUID: BlaGVheNJFdm
 
-Avocado's asset system will deposit files in a cache organized either
-by their original location (the URI) or by their names.  Because the
-cache (and the "by_name" sub directory) is common across tests, it's a
-good idea to make these names as distinct as possible.
+The asset used in the mentioned test gets truncated before it's used
+in the test.  This means that the file gets modified, and thus the
+asset's expected hash doesn't match anymore.  This causes cache misses
+and re-downloads every time the test is re-run.
 
-This avoid name clashes, which makes future Avocado runs to attempt to
-redownload the assets with the same name, but from the different
-locations they actually are from.  This causes cache misses, extra
-downloads, and possibly canceled tests.
+Let's make a copy of the asset so that the one in the cache is
+preserved and the cache sees a hit on re-runs.
 
 Signed-off-by: Cleber Rosa <crosa@redhat.com>
 ---
- tests/avocado/kvm_xen_guest.py  | 3 ++-
- tests/avocado/netdev-ethtool.py | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+ tests/avocado/boot_linux_console.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/tests/avocado/kvm_xen_guest.py b/tests/avocado/kvm_xen_guest.py
-index f8cb458d5d..318fadebc3 100644
---- a/tests/avocado/kvm_xen_guest.py
-+++ b/tests/avocado/kvm_xen_guest.py
-@@ -40,7 +40,8 @@ def get_asset(self, name, sha1):
-         url = base_url + name
-         # use explicit name rather than failing to neatly parse the
-         # URL into a unique one
--        return self.fetch_asset(name=name, locations=(url), asset_hash=sha1)
-+        return self.fetch_asset(name=f"qemu-kvm-xen-guest-{name}",
-+                                locations=(url), asset_hash=sha1)
+diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
+index b8b0a4df10..2929aa042d 100644
+--- a/tests/avocado/boot_linux_console.py
++++ b/tests/avocado/boot_linux_console.py
+@@ -401,14 +401,16 @@ def test_arm_emcraft_sf2(self):
+                    'fe371d32e50ca682391e1e70ab98c2942aeffb01/spi.bin')
+         spi_hash = '65523a1835949b6f4553be96dec1b6a38fb05501'
+         spi_path = self.fetch_asset(spi_url, asset_hash=spi_hash)
++        spi_path_rw = os.path.join(self.workdir, os.path.basename(spi_path))
++        shutil.copy(spi_path, spi_path_rw)
  
-     def common_vm_setup(self):
-         # We also catch lack of KVM_XEN support if we fail to launch
-diff --git a/tests/avocado/netdev-ethtool.py b/tests/avocado/netdev-ethtool.py
-index 5f33288f81..462cf8de7d 100644
---- a/tests/avocado/netdev-ethtool.py
-+++ b/tests/avocado/netdev-ethtool.py
-@@ -27,7 +27,8 @@ def get_asset(self, name, sha1):
-         url = base_url + name
-         # use explicit name rather than failing to neatly parse the
-         # URL into a unique one
--        return self.fetch_asset(name=name, locations=(url), asset_hash=sha1)
-+        return self.fetch_asset(name=f"qemu-netdev-ethtool-{name}",
-+                                locations=(url), asset_hash=sha1)
+-        file_truncate(spi_path, 16 << 20) # Spansion S25FL128SDPBHICO is 16 MiB
++        file_truncate(spi_path_rw, 16 << 20) # Spansion S25FL128SDPBHICO is 16 MiB
  
-     def common_test_code(self, netdev, extra_args=None):
- 
+         self.vm.set_console()
+         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE
+         self.vm.add_args('-kernel', uboot_path,
+                          '-append', kernel_command_line,
+-                         '-drive', 'file=' + spi_path + ',if=mtd,format=raw',
++                         '-drive', 'file=' + spi_path_rw + ',if=mtd,format=raw',
+                          '-no-reboot')
+         self.vm.launch()
+         self.wait_for_console_pattern('Enter \'help\' for a list')
 -- 
 2.45.2

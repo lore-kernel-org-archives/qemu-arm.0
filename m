@@ -1,496 +1,142 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp461981njb;
-        Fri, 26 Jul 2024 06:22:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXfpOrdeccFWS+jbpDwEG8s2yedvejJLTeG6UrsPkstc3p64iXdOjQfGFjxecFW0avg+tVS4I3SBkvIHkX+V/TSkL374hBZ
-X-Google-Smtp-Source: AGHT+IGTK1SPUIFnAOnmIxMwsGps7AjOMwztgMc03zlZJ+aJt5Vr4MqOD58iu7DpiYh4EjS0WvSN
-X-Received: by 2002:a05:6e02:1cad:b0:398:ca2b:2537 with SMTP id e9e14a558f8ab-39a23fa0d1bmr51723635ab.3.1722000152278;
-        Fri, 26 Jul 2024 06:22:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722000152; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp475033njb;
+        Fri, 26 Jul 2024 06:45:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUKzf1lfKUJxyOb2CedZiQ7nIEXW0sh2bo89uo9O7ZkVAIJdua7GxYX6u6x5T4nZ+owo6w1kZkSg12K+91bgE08K/yvUR3r
+X-Google-Smtp-Source: AGHT+IFkdndrnY28784b37XjhdAm8NCWeHCodIPeFhqLDXNX/GrJ8QMgQU3w6kUKssf6LNGPwr0m
+X-Received: by 2002:a05:6102:1514:b0:492:97c1:a78a with SMTP id ada2fe7eead31-493d643cfc9mr5292344137.13.1722001524673;
+        Fri, 26 Jul 2024 06:45:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722001524; cv=none;
         d=google.com; s=arc-20160816;
-        b=BSJfR2E3TLyxU4ca0cWLwAs5XU3zzEHPVvvXAhA3xVif2zYAwJJRjOBqzgiXfrDaZf
-         xZaCJmuII+drRsBJtmm+PGSdUlNTjlvEeGVR6TgP8DrJ5kr5XrG4+eD5MdnUpj2w//Qy
-         FxL4OkOAKU/iX6H30Gdgpgow+NJtp7CLUSdT/TOwKdLQBzLLbu7l9wbYFkESEmEGneUw
-         +joKyYE34lAumUoCDyBLn7nx0PwRONcI/Z6jJ8NR2vDJna+VDchAdGRAVo1mTF3pMTfl
-         gQAM9NdWfrJZNBvetjVCafvvQTFt06hQN9JbcYm3FfDqzb15ZlhyqKrJqeUzIi52xl01
-         jKYw==
+        b=t8OglkBt15q303sotAzebPEvmXTyD68fYTJAKTjTvwLyXvRVCY3nnPgIgrRkGqkF0a
+         3Tf/EsqXnc5OgXEQ5j0MsseMdwonlQ7EKybgAr9fo9RFXRvY2G7tJsuJ/3ZVK+VQMh1Z
+         oMNg9XG/mdWHPQlkZDZgZSojhgNZYiglDtvpAqdRMzwd8/a2BNtkvuO/qrTfZSlputOt
+         BmEWhaqqOhJ4eZ2fi8i65w5QOFYFPIOdTPGijPmDkSnE9r0LGVfzwv81HEO0Q5lLwJ9q
+         HNMfuq+Ywhj4IKNPcfm5pvZrOL2kgWwj2EHZ9OfKtI4c0Rq21u3oQxSrtlU6M7CtyY+Q
+         8fUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=dYc8izLXfLRub0CqecnmjpSOGAYNfKJ8a3Iw859Hafw=;
-        fh=FvZqotIxcur38TSXPPhRP/ncE2QLBZswUG94Y2FR7z8=;
-        b=KX7HgYqdAjj5m5itpnDF6Q6KY5glkl7fto4KKxkIAbJ3ZJVz3nIDMk4G0T3HjIvozR
-         DZn2CFZRJ1KjeOmSXNbjLO62RhB8fVUCuUnUhajGWXtHPyskNynEB/8lZJ8MTe1+YGsW
-         QsKddp/dQIU099uUJx7t0izwd7VSKDFkEWR67GY0trWjxkyvZumfeNntKbzWiZwbav1A
-         NYC/KpDT5Adnt2aYFSC5ZkKSH8bRo45FpnWF1bMvQruTc43EMWiGVN8x2uyGcp+dnEE+
-         eleYY4HxDaCN0w9YWzknGrfJmAA5E5MSutcbEx8DHJQm2e4iZEk3k60YTKXsnFYQKGX0
-         pr2Q==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=1OvDLu3KIbWHiu6ZxO0CUx4o4QNDavrUPXIZjllUrVA=;
+        fh=+JUQlqeb+WOWoY8tr4tplfLgDiP2lWYvcRFLGxWHojE=;
+        b=zTzGc/J0L0fgo3BiIUSf3j2Hp9T1AvOx3193Q8bnlAH1AROiGKtn9tZoz7+Nd3+PfO
+         +m1GgJCBLFUkqffd9gdF5prAw2Vv8fBQCbCD1D1FePrEWc6Xvjj73vCXTRUcfbM2JMOu
+         E16GTJ6wErhXjlwdnbAjhRE3W87CPHQGt+kWK2Q2w8J3b8NOGyqlWqJDIOaH5ioo9fp4
+         ifDg5WmEPNfXi3NafI0OWR+kMK6Ke93GuICwd2zcCYfAg5TmIMDWXaHyxdr/jXhXQM6z
+         QzFoEqqFRtcry1O6odJ+h2O7EXkerUZzgmTgXTtslxKQWOhpxNSDqjcwoCZ0Bb6rjV+H
+         YiyQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <jonathan.cameron@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-7a9f621c4fcsi3940214a12.127.2024.07.26.06.22.31
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Jul 2024 06:22:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UobLGc2T;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <crosa@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id ada2fe7eead31-493d95fb8cesi912629137.7.2024.07.26.06.45.24
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 26 Jul 2024 06:45:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jonathan.cameron@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=jonathan.cameron@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WVpKR2Tprz6K5nk;
-	Fri, 26 Jul 2024 21:20:43 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id 699F5140A46;
-	Fri, 26 Jul 2024 21:22:27 +0800 (CST)
-Received: from localhost (10.203.174.77) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Fri, 26 Jul
- 2024 14:22:26 +0100
-Date: Fri, 26 Jul 2024 14:22:25 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-CC: Shiju Jose <shiju.jose@huawei.com>, Alex =?ISO-8859-1?Q?Benn=E9e?=
-	<alex.bennee@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>, Philippe
- =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Ani Sinha
-	<anisinha@redhat.com>, Beraldo Leal <bleal@redhat.com>, Dongjiu Geng
-	<gengdongjiu1@gmail.com>, Eric Blake <eblake@redhat.com>, Igor Mammedov
-	<imammedo@redhat.com>, Markus Armbruster <armbru@redhat.com>, Peter Maydell
-	<peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>, "Wainer dos
- Santos Moschetta" <wainersm@redhat.com>, <linux-kernel@vger.kernel.org>,
-	<qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v3 7/7] acpi/ghes: extend arm error injection logic
-Message-ID: <20240726142225.00000bdd@Huawei.com>
-In-Reply-To: <89e8a63b5e54409dd9bc4e7f4f4c12290838371b.1721630625.git.mchehab+huawei@kernel.org>
-References: <cover.1721630625.git.mchehab+huawei@kernel.org>
-	<89e8a63b5e54409dd9bc4e7f4f4c12290838371b.1721630625.git.mchehab+huawei@kernel.org>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UobLGc2T;
+       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1722001524;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=1OvDLu3KIbWHiu6ZxO0CUx4o4QNDavrUPXIZjllUrVA=;
+	b=UobLGc2TxBvedzGAP+ikondnEUDtaLFRCArDP2I91hkZUbN/B9yuZAy6d0AIsIZyiqi4Ja
+	6ZXWgbbkB6e2ONVNv8iNzbB/2pbR9eBT9aKpFWiKuM8fZ1n7BOjNHi58MuHMQey2jlRWbC
+	3bXHwVVfjiH4Qgb89du8i++Yj3gYkU0=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-488-X4q3-WUWMgibfuwHxzfhaQ-1; Fri,
+ 26 Jul 2024 09:45:19 -0400
+X-MC-Unique: X4q3-WUWMgibfuwHxzfhaQ-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 920EF1944AA6;
+	Fri, 26 Jul 2024 13:45:16 +0000 (UTC)
+Received: from p1.localdomain.com (unknown [10.22.17.77])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D2BD61955D42;
+	Fri, 26 Jul 2024 13:45:12 +0000 (UTC)
+From: Cleber Rosa <crosa@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Beraldo Leal <bleal@redhat.com>,
+	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+	David Woodhouse <dwmw2@infradead.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	kvm@vger.kernel.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	qemu-arm@nongnu.org,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Cleber Rosa <crosa@redhat.com>,
+	Paul Durrant <paul@xen.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH 06/13] tests/avocado: use more distinct names for assets
+Date: Fri, 26 Jul 2024 09:44:31 -0400
+Message-ID: <20240726134438.14720-7-crosa@redhat.com>
+In-Reply-To: <20240726134438.14720-1-crosa@redhat.com>
+References: <20240726134438.14720-1-crosa@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.203.174.77]
-X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-TUID: 1DkSdk+933jj
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-TUID: HDsFQ9LIKXKl
 
-On Mon, 22 Jul 2024 08:45:59 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+Avocado's asset system will deposit files in a cache organized either
+by their original location (the URI) or by their names.  Because the
+cache (and the "by_name" sub directory) is common across tests, it's a
+good idea to make these names as distinct as possible.
 
-> Enrich CPER error injection logic for ARM processor to allow
-> setting values to  from UEFI 2.10 tables N.16 and N.17.
->=20
-> It should be noticed that, with such change, all arguments are
-> now optional, so, once QMP is negotiated with:
->=20
-> 	{ "execute": "qmp_capabilities" }
->=20
-> the simplest way to generate a cache error is to use:
->=20
-> 	{ "execute": "arm-inject-error" }
->=20
-> Also, as now PEI is mapped into an array, it is possible to
-> inject multiple errors at the same CPER record with:
->=20
-> 	{ "execute": "arm-inject-error", "arguments": {
-> 	   "error": [ {"type": [ "cache-error" ]},
-> 		      {"type": [ "tlb-error" ]} ] } }
->=20
-> This would generate both cache and TLB errors, using default
-> values for other fields.
->=20
-> As all fields from ARM Processor CPER are now mapped, all
-> types of CPER records can be generated with the new QAPI.
->=20
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-If you are happy to smash this into patch 4 then also take ownership
-of the result and change the author as I wrote almost none of the code
-that ended up in the result as only the GHESv2 stuff was mind
-even before you joined this effort - the rest was Shiju's
+This avoid name clashes, which makes future Avocado runs to attempt to
+redownload the assets with the same name, but from the different
+locations they actually are from.  This causes cache misses, extra
+downloads, and possibly canceled tests.
 
-If you want, I'm fine with a co-developed on the result
+Signed-off-by: Cleber Rosa <crosa@redhat.com>
+---
+ tests/avocado/kvm_xen_guest.py  | 3 ++-
+ tests/avocado/netdev-ethtool.py | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-Jonathan
-
-
-
-> ---
->  hw/acpi/ghes.c                  | 168 +++++++-------
->  hw/arm/arm_error_inject.c       | 399 +++++++++++++++++++++++++++++++-
->  hw/arm/arm_error_inject_stubs.c |  20 +-
->  include/hw/acpi/ghes.h          |  40 +++-
->  qapi/arm-error-inject.json      | 250 +++++++++++++++++++-
->  tests/lcitool/libvirt-ci        |   2 +-
->  6 files changed, 778 insertions(+), 101 deletions(-)
->=20
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index ebf1b812aaaa..afd1d098a7e3 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-
-> +    build_append_int_noprefix(table, err.running_state, 4);
-> +
-> +    /* PSCI state: only valid when running state is zero  */
-> +    build_append_int_noprefix(table, err.psci_state, 4);
-> +
-> +    for (i =3D 0; i < err.err_info_num; i++) {
-> +        /* ARM Propcessor error information */
-> +        /* Version */
-> +        build_append_int_noprefix(table, 0, 1);
-> +
-> +        /*  Length */
-> +        build_append_int_noprefix(table, ACPI_GHES_ARM_CPER_PEI_LENGTH, =
-1);
-> +
-> +        /* Validation Bits */
-> +        build_append_int_noprefix(table, err.pei[i].validation, 2);
-
-Maybe drop some comments when the data being written makes it obvious?
-
-> +
-> +        /* Type */
-> +        build_append_int_noprefix(table, err.pei[i].type, 1);
-> +
-> +        /* Multiple error count */
-> +        build_append_int_noprefix(table, err.pei[i].multiple_error, 2);
-> +
-> +        /* Flags  */
-> +        build_append_int_noprefix(table, err.pei[i].flags, 1);
-> +
-> +        /* Error information  */
-> +        build_append_int_noprefix(table, err.pei[i].error_info, 8);
-> +
-> +        /* Virtual fault address  */
-> +        build_append_int_noprefix(table, err.pei[i].virt_addr, 8);
-> +
-> +        /* Physical fault address  */
-> +        build_append_int_noprefix(table, err.pei[i].phy_addr, 8);
-> +    }
-> +
-> +    for (i =3D 0; i < err.context_info_num; i++) {
-> +        /* ARM Propcessor error context information */
-> +        /* Version */
-> +        build_append_int_noprefix(table, 0, 2);
-> +
-> +        /* Validation type */
-> +        build_append_int_noprefix(table, err.context[i].type, 2);
-> +
-> +        /* Register array size */
-> +        build_append_int_noprefix(table, err.context[i].size * 8, 4);
-> +
-> +        /* Register array (byte 8 of Context info) */
-> +        for (j =3D 0; j < err.context[i].size; j++) {
-> +            build_append_int_noprefix(table, err.context[i].array[j], 8);
-> +        }
->      }
-
-> diff --git a/hw/arm/arm_error_inject.c b/hw/arm/arm_error_inject.c
-> index 1da97d5d4fdc..67f1c77546b9 100644
-> --- a/hw/arm/arm_error_inject.c
-> +++ b/hw/arm/arm_error_inject.c
-> @@ -10,23 +10,408 @@
-
-> +
-> +/* Handle ARM Context */
-> +static ArmContext *qmp_arm_context(uint16_t *context_info_num,
-> +                                   uint32_t *context_length,
-> +                                   bool has_context,
-> +                                   ArmProcessorContextList const *contex=
-t_list)
-> +{
-> +    ArmProcessorContextList const *next;
-> +    ArmContext *context =3D NULL;
-> +    uint16_t i, j, num, default_type;
-> +
-> +    default_type =3D get_default_context_type();
-> +
-> +    if (!has_context) {
-> +        *context_info_num =3D 0;
-> +        *context_length =3D 0;
-> +
-> +        return NULL;
-> +    }
-> +
-> +    /* Calculate sizes */
-> +    num =3D 0;
-> +    for (next =3D context_list; next; next =3D next->next) {
-> +        uint32_t n_regs =3D 0;
-> +
-> +        if (next->value->has_q_register) {
-> +            uint64List *reg =3D next->value->q_register;
-> +
-> +            while (reg) {
-> +                n_regs++;
-> +                reg =3D reg->next;
-> +            }
-> +
-> +            if (next->value->has_minimal_size &&
-> +                                        next->value->minimal_size < n_re=
-gs) {
-I'd align just after (
-
-> +
-> +static uint8_t *qmp_arm_vendor(uint32_t *vendor_num, bool has_vendor_spe=
-cific,
-> +                               uint8List const *vendor_specific_list)
-> +{
-> +    uint8List const *next =3D vendor_specific_list;
-> +    uint8_t *vendor =3D NULL, *p;
-
-vendor always set before use.
-
-> +
-> +    if (!has_vendor_specific) {
-> +        return NULL;
-> +    }
-> +
-> +    *vendor_num =3D 0;
-> +
-> +    while (next) {
-> +        next =3D next->next;
-> +        (*vendor_num)++;
-> +    }
-> +
-> +    vendor =3D g_malloc(*vendor_num);
-> +
-> +    p =3D vendor;
-> +    next =3D vendor_specific_list;
-> +    while (next) {
-> +        *p =3D next->value;
-> +        next =3D next->next;
-> +        p++;
-> +    }
-> +
-> +    return vendor;
-> +}
-> diff --git a/qapi/arm-error-inject.json b/qapi/arm-error-inject.json
-> index 430e6cea6b60..2a314830fe60 100644
-> --- a/qapi/arm-error-inject.json
-> +++ b/qapi/arm-error-inject.json
-
-> +
-> +##
-> +# @ArmProcessorErrorInformation:
-> +#
-> +# Contains ARM processor error information (PEI) data according with UEFI
-> +# CPER table N.17.
-> +#
-> +# @validation:
-> +#       Valid validation bits for error-info section.
-> +#       Argument is optional. If not specified, those flags will be enab=
-led:
-> +#       first-error-cap and propagated.
-> +#
-> +# @type:
-> +#       ARM processor error types to inject. Argument is mandatory.
-> +#
-> +# @multiple-error:
-> +#       Indicates whether multiple errors have occurred.
-> +#       Argument is optional. If not specified and @validation not enfor=
-ced,
-
-forced probably rather than enforced.
-
-> +#       this field will be marked as invalid at CPER record..
-. only
-
-Good to mention the odd encoding of 0 =3D single error, 1 =3D multiple (los=
-t count)
-2+ =3D actual count of errors
-
-> +#
-> +# @flags:
-> +#       Indicates flags that describe the error attributes.
-> +#       Argument is optional. If not specified and defaults to
-> +#       first-error and propagated.
-> +#
-> +# @error-info:
-> +#       Error information structure is specific to each error type.
-> +#       Argument is optional, and its value depends on the PEI type(s).
-> +#       If not defined, the default depends on the type:
-> +#       - for cache-error: 0x0091000F;
-> +#       - for tlb-error: 0x0054007F;
-> +#       - for bus-error: 0x80D6460FFF;
-> +#       - for micro-arch-error: 0x78DA03FF;
-> +#       - if multiple types used, this bit is disabled from @validation =
-bits.
-> +#
-> +# @virt-addr:
-> +#       Virtual fault address associated with the error.
-> +#       Argument is optional. If not specified and @validation not enfor=
-ced,
-> +#       this field will be marked as invalid at CPER record..
-> +#
-> +# @phy-addr:
-> +#       Physical fault address associated with the error.
-> +#       Argument is optional. If not specified and @validation not enfor=
-ced,
-> +#       this field will be marked as invalid at CPER record..
-> +#
-> +# Since: 9.1
-> +##
-> +{ 'struct': 'ArmProcessorErrorInformation',
-> +  'data': { '*validation': ['ArmPeiValidationBits'],
-> +            'type': ['ArmProcessorErrorType'],
-> +            '*multiple-error': 'uint16',
-> +            '*flags': ['ArmProcessorFlags'],
-> +            '*error-info': 'uint64',
-> +            '*virt-addr':  'uint64',
-> +            '*phy-addr': 'uint64'}
-> +}
-> +
-> +##
-> +# @ArmProcessorContext:
-> +#
-> +# Provide processor context state specific to the ARM processor architec=
-ture,
-> +# According with UEFI 2.10 CPER table N.21.
-> +# Argument is optional.If not specified, no context will be used.
-                          ^ space
-> +#
-> +# @type:
-> +#       Contains an integer value indicating the type of context state b=
-eing
-> +#       reported.
-> +#       Argument is optional. If not defined, it will be set to be EL1 r=
-egister
-> +#       for the emulation, e. g.:
-> +#       - on arm32: AArch32 EL1 context registers;
-> +#       - on arm64: AArch64 EL1 context registers.
-> +#
-> +# @register:
-> +#       Provides the contents of the actual registers or raw data, depen=
-ding
-> +#       on the context type.
-> +#       Argument is optional. If not defined, it will fill the first reg=
-ister
-> +#       with 0xDEADBEEF, and the other ones with zero.
-We could fill this in with a valid snap shot I think?  It' just a set of CP=
-U registers.
-Obviously content would be pretty random and meaningless given the
-error isn't correlated with particular activity (as we triggered it) but ma=
-ybe would
-useful for testing the parsing?
-
-Perhaps that's a job for the future as we will want to be able to override =
-it
-anyway.
-
-> +#
-> +# @minimal-size:
-> +#       Argument is optional. If provided, define the minimal size of the
-> +#       context register array. The actual size is defined by checking t=
-he
-> +#       number of register values plus the content of this field (if use=
-d),
-> +#       ensuring that each processor context information structure array=
- is
-> +#       padded with zeros if the size is not a multiple of 16 bytes.
-> +#
-> +# Since: 9.1
-> +##
-> +{ 'struct': 'ArmProcessorContext',
-> +  'data': { '*type': 'uint16',
-> +            '*minimal-size': 'uint32',
-> +            '*register': ['uint64']}
->  }
-> =20
->  ##
->  # @arm-inject-error:
->  #
-> -# Inject ARM Processor error.
-> +# Inject ARM Processor error with data to be filled accordign with UEFI =
-2.10
-> +# CPER table N.16.
->  #
-> -# @errortypes: ARM processor error types to inject
-> +# @validation:
-> +#       Valid validation bits for ARM processor CPER.
-> +#       Argument is optional. If not specified, the default is
-> +#       calculated based on having the corresponding arguments filled.
-> +#
-> +# @affinity-level:
-> +#       Error affinity level for errors that can be attributed to a spec=
-ific
-> +#       affinity level.
-> +#       Argument is optional. If not specified and @validation not enfor=
-ced,
-> +#       this field will be marked as invalid at CPER record.
-As below.
-
-> +#
-> +# @mpidr-el1:
-> +#       Processor=E2=80=99s unique ID in the system.
-> +#       Argument is optional. If not specified, it will use the cpu mpidr
-> +#       field from the emulation data. If zero and @validation is not
-> +#       enforced, this field will be marked as invalid at CPER record.
-The zero case is obscure enough I'd be tempted to say that if we want
-to test that then we will override the validation field.
-
-The logic will end up simpler and still allow the same level of corner
-case testing for no valid mpidr (which is really odd if it occurs!)
-
-> +#
-> +# @midr-el1:  Identification info of the chip
-> +#       Argument is optional. If not specified, it will use the cpu mpidr
-> +#       field from the emulation data. If zero and @validation is not
-> +#       enforced, this field will be marked as invalid at CPER record.
-
-Same as above.
-
-> +#
-> +# @running-state:
-> +#       Indicates the running state of the processor.
-> +#       Argument is optional. If not specified and @validation not enfor=
-ced,
-> +#       this field will be marked as invalid at CPER record.
-
-Fun corners of the spec.  Can't allow bit0 of this and psci-state.
-We should perhaps enforce that? I don't think we need to inject completely
-invalid states (just corners of what is valid).
-
-> +#
-> +# @psci-state:
-> +#       Provides PSCI state of the processor, as defined in ARM PSCI doc=
-ument.
-> +#       Argument is optional. If not specified, it will use the cpu power
-> +#       state field from the emulation data.
-Hmm. Do you think validation is meant to cover this? Is it under running-st=
-ate?
-
-> +#
-> +# @context:
-> +#       Contains an array of processor context registers.
-> +#       Argument is optional. If not specified, no context will be added.
-> +#
-> +# @vendor-specific:
-> +#       Contains a byte array of vendor-specific data.
-> +#       Argument is optional. If not specified, no vendor-specific data
-> +#       will be added.
-> +#
-> +# @error:
-> +#       Contains an array of ARM processor error information (PEI) secti=
-ons.
-> +#       Argument is optional. If not specified, defaults to a single
-> +#       Program Error Information record defaulting to type=3Dcache-erro=
-r.
->  #
->  # Features:
->  #
-> @@ -44,6 +262,16 @@
->  # Since: 9.1
->  ##
->  { 'command': 'arm-inject-error',
-> -  'data': { 'errortypes': ['ArmProcessorErrorType'] },
-> +  'data': {
-> +    '*validation': ['ArmProcessorValidationBits'],
-> +    '*affinity-level': 'uint8',
-> +    '*mpidr-el1': 'uint64',
-> +    '*midr-el1': 'uint64',
-> +    '*running-state':  ['ArmProcessorRunningState'],
-> +    '*psci-state': 'uint32',
-> +    '*context': ['ArmProcessorContext'],
-> +    '*vendor-specific': ['uint8'],
-> +    '*error': ['ArmProcessorErrorInformation']
-> +  },
->    'features': [ 'unstable' ]
->  }
+diff --git a/tests/avocado/kvm_xen_guest.py b/tests/avocado/kvm_xen_guest.py
+index f8cb458d5d..318fadebc3 100644
+--- a/tests/avocado/kvm_xen_guest.py
++++ b/tests/avocado/kvm_xen_guest.py
+@@ -40,7 +40,8 @@ def get_asset(self, name, sha1):
+         url = base_url + name
+         # use explicit name rather than failing to neatly parse the
+         # URL into a unique one
+-        return self.fetch_asset(name=name, locations=(url), asset_hash=sha1)
++        return self.fetch_asset(name=f"qemu-kvm-xen-guest-{name}",
++                                locations=(url), asset_hash=sha1)
+ 
+     def common_vm_setup(self):
+         # We also catch lack of KVM_XEN support if we fail to launch
+diff --git a/tests/avocado/netdev-ethtool.py b/tests/avocado/netdev-ethtool.py
+index 5f33288f81..462cf8de7d 100644
+--- a/tests/avocado/netdev-ethtool.py
++++ b/tests/avocado/netdev-ethtool.py
+@@ -27,7 +27,8 @@ def get_asset(self, name, sha1):
+         url = base_url + name
+         # use explicit name rather than failing to neatly parse the
+         # URL into a unique one
+-        return self.fetch_asset(name=name, locations=(url), asset_hash=sha1)
++        return self.fetch_asset(name=f"qemu-netdev-ethtool-{name}",
++                                locations=(url), asset_hash=sha1)
+ 
+     def common_test_code(self, netdev, extra_args=None):
+ 
+-- 
+2.45.2

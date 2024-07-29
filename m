@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5ac6359392bsm5837519a12.33.2024.07.29.07.44.19
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5ac64eb3980sm5826419a12.60.2024.07.29.07.44.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jul 2024 07:44:21 -0700 (PDT)
+        Mon, 29 Jul 2024 07:44:22 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 740E55FA14;
+	by draig.lan (Postfix) with ESMTP id 5BB2B5FA13;
 	Mon, 29 Jul 2024 15:44:16 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -33,52 +33,63 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
 	David Hildenbrand <david@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH 14/14] plugin/loader: handle basic help query
-Date: Mon, 29 Jul 2024 15:44:14 +0100
-Message-Id: <20240729144414.830369-15-alex.bennee@linaro.org>
+Subject: [PATCH 13/14] contrib/plugins: add compat for g_memdup2
+Date: Mon, 29 Jul 2024 15:44:13 +0100
+Message-Id: <20240729144414.830369-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240729144414.830369-1-alex.bennee@linaro.org>
 References: <20240729144414.830369-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: u7MbebaD07e+
+X-TUID: H6C0rfJYr4sq
 
-As the list of options isn't fixed we do all the parsing by hand.
-Without any named arguments we automatically fill the "file" option
-with the value give so check if it is requesting help and dump some
-basic usage text.
+We were premature if bumping this because some of our builds are still
+on older glibs. Just copy the compat handler for now and we can remove
+it later.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Fixes: ee293103b0 (plugins: update lockstep to use g_memdup2)
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2161
 ---
- plugins/loader.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ contrib/plugins/lockstep.c | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/plugins/loader.c b/plugins/loader.c
-index 513a429c57..ebc01da9c6 100644
---- a/plugins/loader.c
-+++ b/plugins/loader.c
-@@ -18,6 +18,7 @@
- #include "qemu/osdep.h"
- #include "qemu/error-report.h"
- #include "qemu/config-file.h"
-+#include "qemu/help_option.h"
- #include "qapi/error.h"
- #include "qemu/lockable.h"
- #include "qemu/option.h"
-@@ -98,7 +99,12 @@ static int plugin_add(void *opaque, const char *name, const char *value,
-     bool is_on;
-     char *fullarg;
+diff --git a/contrib/plugins/lockstep.c b/contrib/plugins/lockstep.c
+index 6a7e9bbb39..62981d4e09 100644
+--- a/contrib/plugins/lockstep.c
++++ b/contrib/plugins/lockstep.c
+@@ -101,6 +101,31 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
+     plugin_cleanup(id);
+ }
  
--    if (strcmp(name, "file") == 0) {
-+    if (is_help_option(value)) {
-+        printf("Plugin options\n");
-+        printf("  file=<path/to/plugin.so>\n");
-+        printf("  plugin specific arguments\n");
-+        exit(0);
-+    } else if (strcmp(name, "file") == 0) {
-         if (strcmp(value, "") == 0) {
-             error_setg(errp, "requires a non-empty argument");
-             return 1;
++/*
++ * g_memdup has been deprecated in Glib since 2.68 and
++ * will complain about it if you try to use it. However until
++ * glib_req_ver for QEMU is bumped we make a copy of the glib-compat
++ * handler.
++ */
++static inline gpointer g_memdup2_qemu(gconstpointer mem, gsize byte_size)
++{
++#if GLIB_CHECK_VERSION(2, 68, 0)
++    return g_memdup2(mem, byte_size);
++#else
++    gpointer new_mem;
++
++    if (mem && byte_size != 0) {
++        new_mem = g_malloc(byte_size);
++        memcpy(new_mem, mem, byte_size);
++    } else {
++        new_mem = NULL;
++    }
++
++    return new_mem;
++#endif
++}
++#define g_memdup2(m, s) g_memdup2_qemu(m, s)
++
+ static void report_divergance(ExecState *us, ExecState *them)
+ {
+     DivergeState divrec = { log, 0 };
 -- 
 2.39.2

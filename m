@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a7acad911a0sm510956266b.155.2024.07.29.07.44.15
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a7acad411bcsm511230266b.109.2024.07.29.07.44.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 29 Jul 2024 07:44:15 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id F29175F844;
-	Mon, 29 Jul 2024 15:44:14 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 1C0A65F8DA;
+	Mon, 29 Jul 2024 15:44:15 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Eduardo Habkost <eduardo@habkost.net>,
@@ -32,103 +32,125 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
 	Song Gao <gaosong@loongson.cn>,
 	David Hildenbrand <david@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH 00/14] Various fixes and tweaks for 9.1-rc0/1
-Date: Mon, 29 Jul 2024 15:44:00 +0100
-Message-Id: <20240729144414.830369-1-alex.bennee@linaro.org>
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 01/14] gitlab: record installed packages in /packages.txt in containers
+Date: Mon, 29 Jul 2024 15:44:01 +0100
+Message-Id: <20240729144414.830369-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240729144414.830369-1-alex.bennee@linaro.org>
+References: <20240729144414.830369-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: jywJ2xJ2eVvo
+X-TUID: C2OdHnjAL07k
 
-As usual during soft freeze I switch to cleaning up the various
-niggles and bugs which have accumulated over the years.
+From: Daniel P. Berrangé <berrange@redhat.com>
 
-Aside from some test build tweaks and some useful tools for debugging
-CI failures I've also moved tests/plugin to tests/tcg/plugins to
-better align with contrib/plugins and clearly marking what is TCG
-only. I took the opportunity to clean up some of the documentation
-while I was at it.
+The lcitool created containers save the full distro package list
+details into /packages.txt. The idea is that build jobs will 'cat'
+this file, so that the build log has a record of what packages
+were used. This is important info, because when it comes to debug
+failures, the original container is often lost.
 
-Please review:
+This extends the manually written dockerfiles to also create the
+/packages.txt file.
 
-  plugin/loader: handle basic help query
-  contrib/plugins: add compat for g_memdup2
-  contrib/plugins: be more vocal building
-  docs: split TCG plugin usage from devel section
-  tests/tcg: move test plugins into tcg subdir
-  tests/avocado: remove tcg_plugins virt_mem_icount test
-  docs/devel: document how to run individual TCG tests
-  docs/devel: update the testing introduction
-  tests/tcg: update README
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-Id: <20240724095505.33544-2-berrange@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/docker/dockerfiles/debian-all-test-cross.docker    | 3 ++-
+ tests/docker/dockerfiles/debian-hexagon-cross.docker     | 3 ++-
+ tests/docker/dockerfiles/debian-legacy-test-cross.docker | 3 ++-
+ tests/docker/dockerfiles/debian-loongarch-cross.docker   | 3 ++-
+ tests/docker/dockerfiles/debian-tricore-cross.docker     | 3 ++-
+ tests/docker/dockerfiles/debian-xtensa-cross.docker      | 3 ++-
+ 6 files changed, 12 insertions(+), 6 deletions(-)
 
-Alex Bennée (9):
-  tests/tcg: update README
-  docs/devel: update the testing introduction
-  docs/devel: document how to run individual TCG tests
-  tests/avocado: remove tcg_plugins virt_mem_icount test
-  tests/tcg: move test plugins into tcg subdir
-  docs: split TCG plugin usage from devel section
-  contrib/plugins: be more vocal building
-  contrib/plugins: add compat for g_memdup2
-  plugin/loader: handle basic help query
-
-Daniel P. Berrangé (2):
-  gitlab: record installed packages in /packages.txt in containers
-  gitlab: display /packages.txt in build jobs
-
-Peter Maydell (1):
-  contrib/plugins/cache.c: Remove redundant check of l2_access
-
-Richard Henderson (2):
-  tests/tcg: Use --noexecstack with assembler files
-  tests/tcg/loongarch64: Use --no-warn-rwx-segments to link system tests
-
- MAINTAINERS                                   |   2 +-
- docs/about/emulation.rst                      | 567 +++++++++++++++++-
- docs/devel/tcg-plugins.rst                    | 505 ----------------
- docs/devel/testing.rst                        |  34 +-
- contrib/plugins/cache.c                       |   2 +-
- contrib/plugins/lockstep.c                    |  25 +
- plugins/loader.c                              |   8 +-
- tests/{plugin => tcg/plugins}/bb.c            |   0
- tests/{plugin => tcg/plugins}/empty.c         |   0
- tests/{plugin => tcg/plugins}/inline.c        |   0
- tests/{plugin => tcg/plugins}/insn.c          |   0
- tests/{plugin => tcg/plugins}/mem.c           |   0
- tests/{plugin => tcg/plugins}/syscall.c       |   0
- .gitlab-ci.d/buildtest-template.yml           |   1 +
- .gitlab-ci.d/crossbuild-template.yml          |   2 +
- contrib/plugins/Makefile                      |  25 +-
- tests/avocado/tcg_plugins.py                  |  37 +-
- .../dockerfiles/debian-all-test-cross.docker  |   3 +-
- .../dockerfiles/debian-hexagon-cross.docker   |   3 +-
- .../debian-legacy-test-cross.docker           |   3 +-
- .../dockerfiles/debian-loongarch-cross.docker |   3 +-
- .../dockerfiles/debian-tricore-cross.docker   |   3 +-
- .../dockerfiles/debian-xtensa-cross.docker    |   3 +-
- tests/meson.build                             |   2 +-
- tests/tcg/Makefile.target                     |   6 +-
- tests/tcg/README                              |  23 +-
- tests/tcg/aarch64/Makefile.softmmu-target     |   2 +-
- tests/tcg/alpha/Makefile.softmmu-target       |   2 +-
- tests/tcg/arm/Makefile.softmmu-target         |   2 +-
- tests/tcg/arm/Makefile.target                 |   2 +-
- tests/tcg/i386/Makefile.softmmu-target        |   2 +-
- tests/tcg/loongarch64/Makefile.softmmu-target |   4 +-
- tests/{plugin => tcg/plugins}/meson.build     |   6 +-
- tests/tcg/riscv64/Makefile.softmmu-target     |   2 +-
- tests/tcg/s390x/Makefile.softmmu-target       |   2 +-
- tests/tcg/x86_64/Makefile.softmmu-target      |   2 +-
- 36 files changed, 697 insertions(+), 586 deletions(-)
- rename tests/{plugin => tcg/plugins}/bb.c (100%)
- rename tests/{plugin => tcg/plugins}/empty.c (100%)
- rename tests/{plugin => tcg/plugins}/inline.c (100%)
- rename tests/{plugin => tcg/plugins}/insn.c (100%)
- rename tests/{plugin => tcg/plugins}/mem.c (100%)
- rename tests/{plugin => tcg/plugins}/syscall.c (100%)
- rename tests/{plugin => tcg/plugins}/meson.build (70%)
-
+diff --git a/tests/docker/dockerfiles/debian-all-test-cross.docker b/tests/docker/dockerfiles/debian-all-test-cross.docker
+index 6cc38a3633..8ab244e018 100644
+--- a/tests/docker/dockerfiles/debian-all-test-cross.docker
++++ b/tests/docker/dockerfiles/debian-all-test-cross.docker
+@@ -62,7 +62,8 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
+         gcc-s390x-linux-gnu \
+         libc6-dev-s390x-cross \
+         gcc-sparc64-linux-gnu \
+-        libc6-dev-sparc64-cross
++        libc6-dev-sparc64-cross && \
++        dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --show > /packages.txt
+ 
+ 
+ ENV QEMU_CONFIGURE_OPTS --disable-system --disable-docs --disable-tools
+diff --git a/tests/docker/dockerfiles/debian-hexagon-cross.docker b/tests/docker/dockerfiles/debian-hexagon-cross.docker
+index f2d40f2dee..23152b4918 100644
+--- a/tests/docker/dockerfiles/debian-hexagon-cross.docker
++++ b/tests/docker/dockerfiles/debian-hexagon-cross.docker
+@@ -33,7 +33,8 @@ RUN apt-get update && \
+     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/c++ && \
+     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/cc && \
+     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/g++ && \
+-    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
++    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc && \
++    dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --show > /packages.txt
+ 
+ RUN /usr/bin/pip3 install tomli
+ 
+diff --git a/tests/docker/dockerfiles/debian-legacy-test-cross.docker b/tests/docker/dockerfiles/debian-legacy-test-cross.docker
+index d75e0b85e2..5a6616b7d3 100644
+--- a/tests/docker/dockerfiles/debian-legacy-test-cross.docker
++++ b/tests/docker/dockerfiles/debian-legacy-test-cross.docker
+@@ -36,7 +36,8 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
+         python3-pip \
+         python3-setuptools \
+         python3-venv \
+-        python3-wheel
++        python3-wheel && \
++        dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --show > /packages.txt
+ 
+ RUN /usr/bin/pip3 install tomli
+ 
+diff --git a/tests/docker/dockerfiles/debian-loongarch-cross.docker b/tests/docker/dockerfiles/debian-loongarch-cross.docker
+index 6a9197528b..79eab5621e 100644
+--- a/tests/docker/dockerfiles/debian-loongarch-cross.docker
++++ b/tests/docker/dockerfiles/debian-loongarch-cross.docker
+@@ -32,7 +32,8 @@ RUN apt-get update && \
+         python3-pip \
+         python3-setuptools \
+         python3-venv \
+-        python3-wheel
++        python3-wheel && \
++        dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --show > /packages.txt
+ 
+ RUN /usr/bin/pip3 install tomli
+ 
+diff --git a/tests/docker/dockerfiles/debian-tricore-cross.docker b/tests/docker/dockerfiles/debian-tricore-cross.docker
+index 16276aa21d..479b4d6eba 100644
+--- a/tests/docker/dockerfiles/debian-tricore-cross.docker
++++ b/tests/docker/dockerfiles/debian-tricore-cross.docker
+@@ -34,7 +34,8 @@ RUN apt update && \
+        python3-pip \
+        python3-setuptools \
+        python3-wheel \
+-       python3-venv
++       python3-venv && \
++       dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --show > /packages.txt
+ 
+ RUN /usr/bin/pip3 install tomli
+ 
+diff --git a/tests/docker/dockerfiles/debian-xtensa-cross.docker b/tests/docker/dockerfiles/debian-xtensa-cross.docker
+index 413881899b..d011eee2ad 100644
+--- a/tests/docker/dockerfiles/debian-xtensa-cross.docker
++++ b/tests/docker/dockerfiles/debian-xtensa-cross.docker
+@@ -16,7 +16,8 @@ RUN apt-get update && \
+         curl \
+         gettext \
+         git \
+-        python3-minimal
++        python3-minimal && \
++    dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --show > /packages.txt
+ 
+ ENV CPU_LIST dc232b dc233c de233_fpu dsp3400
+ ENV TOOLCHAIN_RELEASE 2020.07
 -- 
 2.39.2

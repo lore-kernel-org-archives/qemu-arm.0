@@ -1,188 +1,486 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1873624njb;
-        Mon, 29 Jul 2024 09:08:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCV/3MfZ3eMrPgXa92CPW3s/qA+9hLFFJLx+aMvVJUx4t6sOCVjpPJF0+kvBIo6/Qs9gmU6VCzOGPt10ADNp81CmlH2hJEYg
-X-Google-Smtp-Source: AGHT+IHji3ava88vCBgdGEZNOeKexg1+4VOtQuXbqaBgJShYwFueewImJDXu6zNSklsxX49QgqcA
-X-Received: by 2002:a05:6902:18c5:b0:e0b:42cc:b031 with SMTP id 3f1490d57ef6-e0b545e90cdmr8873767276.50.1722269331566;
-        Mon, 29 Jul 2024 09:08:51 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722269331; cv=pass;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1885815njb;
+        Mon, 29 Jul 2024 09:31:54 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV1UVn6a4/kaVawQFKXkdemQAKrg9jJKIsI0Drolqn63v4HNcP0l4qB1GtSO8e3oGujq2RoExL9PQudsnDvhrc0hT3CuilH
+X-Google-Smtp-Source: AGHT+IG9bVpkfbCHsfiIFbbpgwLiMckqeUHR0OKi7kHEsQ7KSMXVZHOI2w1jZy4JcUgsrLd2/b4I
+X-Received: by 2002:a05:620a:462c:b0:79d:6db6:c75 with SMTP id af79cd13be357-7a1e5265594mr1117139285a.34.1722270714033;
+        Mon, 29 Jul 2024 09:31:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722270714; cv=none;
         d=google.com; s=arc-20160816;
-        b=SooO85u8EaV2jCheyO153vgvKD8uwK13Kf2ihGnUX7n+UCJ6tua12YasstPfT3U5m1
-         fFW/A0ce8yyUS/DJ9qt32eEKUOijEHi0IWszaVf5uYzutj4p/dTfYddKxScyw2Zsu13G
-         4+NUb4z+pBaxvllCynQm8MN+RGMlqhFrStExSKdtueku2UD3CfHnrMfja89qKnEvFzht
-         k5JpvORh7rmKocP9PRx9wizMXf/xwCPxjjutqWcpevaUuClrskhJVM7m51H4SeKksdkh
-         spD2CkEndl7USAftdDvbfP7bFDBg5lRRt4iTXU17rq/VsqA8SB7S0kJEGcY7L2eUDOTZ
-         x6wQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=yT+iLN6Xe870OEW0cH7k73RPHBCo/adZ2eAdH1Wm7GI=;
-        fh=FWiF0r1ktELgmiysAjaytKJEyd9QOg4u7i62244Hvw4=;
-        b=iLYvia9lbOIdpsOUWwu94xnmvhohvdPSQR2mEPs9lDaRk7UHzlJrZOohRVBrtC8y7O
-         4y4CG6eqk1uEx4I0Ab9cqd+/wzopbKaFM2vfJASyvZqOnChLvz1/o+MAFSNew5uhcZPs
-         5HXWYVbjXuhyuhg8eyheffS7mCH1F09+txWCXfVKbdG288GcbxiasISqiTIuaGosFNd8
-         9Xy2yEbVs7Lxd7oqUe5C6rJxYujbXtsyBu4I4a/4DdiDPhI2OvAg+2gEv+oIjuH/jueX
-         9BSLOQpNdTa8ugajyiSQbHXiCpFA/KrIjinsLmw/trd90MFqD9nliVBzt3R9s0yg5f/e
-         cEQw==;
+        b=WtIeYFC4mnGdj4NvyAnfW7d1pIheiSV46+FMtOMQa4l21/iczQoU0jYcfpqX2VMHT5
+         BXLAGpZbj6H8STCmlGdCXbrEcKlUcsSj5hgotIzfPlKm7ApbsR4xRnykNnmTdgY4+OmP
+         98Teq398bs52vg5tnL8RjRXAXY/qUh+NTULXw7+aKhPxMNEUXo6RX0ZmEgTwKnF0Rjki
+         j9ZHCPoYpfUXxd6ryyBLcCwMjgdVXPwdAW2bTlH3imodzYCPngJGr7/E1VgxIgn5vqgZ
+         J0s0AyFPyIph2RCwDaAOPF5Zq5c4aJZ9A3q4URUF65mlO818Y58af3ZS5d3YWCT3fJw6
+         hplA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=5Kz5xRIJSBYCh6ABpKFvQGg88euQNyq7UIFu76/710U=;
+        fh=ErPUviK2DCjVwVqdFIMqzzTdbuAYPXVUrcKSm5WVsxU=;
+        b=gSRooXxNtQzWz3Wzf3L3ja8TLA5mxLml4N4FNbRlVoAD0GIv3fDVdCuNTcwW1TLsZm
+         oMOGovFkPY4TMyLogqH+B6LfatpdbmAEpQ1dq2o4M6PG57h1o25uXO3yulQHKGKFEdVU
+         TIb3YpAzULbMTNW2ULiDKlq1HXtBeLG7VMa33cJDNGDJtPB8FXDGO2IU4+7YMeBp7YRX
+         UypPUWmisvJRAbGI2gvRo4mX2EEC54ZzWtzu4+ms4Z7pc/pONkcTrc0LLE7gBsZRsS5p
+         xpdmhtLHaLKe4kHfWvzEfbSVS9ppwLvAzZVdHDk2DaQJBoVe/T40oxdZFOTUk8+SBd5u
+         jH6A==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-266066-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-266066-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
-Return-Path: <linux-kernel+bounces-266066-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id af79cd13be357-7a1d74622aesi1040246985a.477.2024.07.29.09.08.51
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7a1d7445069si1100366585a.275.2024.07.29.09.31.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jul 2024 09:08:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-266066-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 29 Jul 2024 09:31:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-266066-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-266066-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 3F4ED1C2237E
-	for <alex.bennee@linaro.org>; Mon, 29 Jul 2024 16:08:51 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 29C6F13BC3F;
-	Mon, 29 Jul 2024 16:08:47 +0000 (UTC)
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4EFCA548E0
-	for <linux-kernel@vger.kernel.org>; Mon, 29 Jul 2024 16:08:44 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722269327; cv=none; b=GXwUg1tfFX5B6GxQ8DZ+qcJRnZ+eiyXj6KPQ4TpCkP5zjgOpy0tXMFMr4DaQGKTPbgsdsHT0XRaHypRBaA67i73WcpIoy/dnsfalOLBKIuTSD9gQLcrRz+kSJPyRsBKQHr75zRUhosK7XRsWSoNzAjxY5CR7V88kT7Q/V/pdE8c=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722269327; c=relaxed/simple;
-	bh=tLrXFYOATZ1thmtPkCzHgKfw+l7XhpAACkAFRp1adUc=;
-	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=NDtlOAVgE/qO2/8cQnueT2bxIWgDcFmySWF0f/G0sULD+bXfHa3XunodKkV1JYMUX1zxQFm/E0ZHaz4OolZMofP3zjlfCNvYaaDIZ2kH/oygTH2zmdZ9JZX3jgrJji54iGG6n0PFzasWiow2+TAteZPlHIrNmbMPrDf7X4JYyWk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=Huawei.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WXjry00lKz6K9ht;
-	Tue, 30 Jul 2024 00:06:10 +0800 (CST)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1sYTHe-0003oD-Su; Mon, 29 Jul 2024 12:31:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1sYTHK-0003j6-J1; Mon, 29 Jul 2024 12:31:18 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1sYTHG-0005Q4-Hj; Mon, 29 Jul 2024 12:31:18 -0400
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4WXkM05dSpz6K5nF;
+ Tue, 30 Jul 2024 00:28:44 +0800 (CST)
 Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
-	by mail.maildlp.com (Postfix) with ESMTPS id C4DBC140B2F;
-	Tue, 30 Jul 2024 00:08:41 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 22A07140B38;
+ Tue, 30 Jul 2024 00:31:11 +0800 (CST)
 Received: from localhost (10.203.177.66) by lhrpeml500005.china.huawei.com
  (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 29 Jul
- 2024 17:08:41 +0100
-Date: Mon, 29 Jul 2024 17:08:40 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+ 2024 17:31:10 +0100
+Date: Mon, 29 Jul 2024 17:31:09 +0100
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-CC: Shiju Jose <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-	Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>, Ani Sinha
-	<anisinha@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, Igor Mammedov
-	<imammedo@redhat.com>, "Marcel Apfelbaum" <marcel.apfelbaum@gmail.com>, Peter
- Maydell <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
-	"Yanan Wang" <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
-	<linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
-	<qemu-devel@nongnu.org>
-Subject: Re: [PATCH v4 2/6] arm/virt: Wire up GPIO error source for ACPI /
- GHES
-Message-ID: <20240729170840.00004763@Huawei.com>
-In-Reply-To: <e994c3944d31775d62bbd017dec3adff50ddf269.1722259246.git.mchehab+huawei@kernel.org>
+CC: Shiju Jose <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ Eric Blake <eblake@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Markus
+ Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>, Paolo
+ Bonzini <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ <linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v4 6/6] acpi/ghes: Add a logic to inject ARM processor CPER
+Message-ID: <20240729173109.00006911@Huawei.com>
+In-Reply-To: <7e0c1ae181e9792e876ec0e7d2a9e7f32d7b60ac.1722259246.git.mchehab+huawei@kernel.org>
 References: <cover.1722259246.git.mchehab+huawei@kernel.org>
-	<e994c3944d31775d62bbd017dec3adff50ddf269.1722259246.git.mchehab+huawei@kernel.org>
+ <7e0c1ae181e9792e876ec0e7d2a9e7f32d7b60ac.1722259246.git.mchehab+huawei@kernel.org>
 Organization: Huawei Technologies Research and Development (UK) Ltd.
 X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100004.china.huawei.com (7.191.162.219) To
  lhrpeml500005.china.huawei.com (7.191.163.240)
-X-TUID: NULVJTWQZglZ
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uQKT+pwOUGqb
 
-On Mon, 29 Jul 2024 15:21:06 +0200
+On Mon, 29 Jul 2024 15:21:10 +0200
 Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Add an ACPI APEI GHES error injection logic for ARM
+> processor CPER, allowing to set fields at from
+> UEFI spec 2.10 tables N.16 and N.17 to any valid
+> value.
 > 
-> Creates a Generic Event Device (GED) as specified at
-
-I wrote this a while back and wasn't aware of the naming
-mess around GED in the ACPI spec.  This one is just
-referred to as 'error device' whereas there is also
-a Generic Event Device.
-
-Linux solved this clash by going with Hardware Error Device
-I think we should do the same here.
-
-> ACPI 6.5 specification at 18.3.2.7.2:
-> https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#event-notification-for-generic-error-sources
-> with HID PNP0C33.
+> As some GHES functions require handling addresses, add
+> a helper function to support it.
 > 
-> The PNP0C33 device is used to report hardware errors to
-> the bios via ACPI APEI Generic Hardware Error Source (GHES).
+> Before starting erorr inject, the QAPI requires to negociate
+> QMP with:
 > 
-> It is aligned with Linux Kernel patch:
-> https://lore.kernel.org/lkml/1272350481-27951-8-git-send-email-ying.huang@intel.com/
+> { "execute": "qmp_capabilities" }
 > 
-> [mchehab: use a define for the generic event pin number and do some cleanups]
+> Afterwards, errors can be injected with:
+> 
+> 	{ "execute": "arm-inject-error" }
+> 
+> The error injection events supports several optional arguments,
+> having Processor Error Information (PEI) mapped into an array.
+> 
+> So, it is possible to inject multiple errors at the same CPER record,
+> as defined at UEFI spec, with:
+> 
+> 	{ "execute": "arm-inject-error", "arguments": {
+> 	   "error": [ {"type": [ "cache-error" ]},
+> 		      {"type": [ "tlb-error" ]} ] } }
+> 
+> The above generates a single CPER record with two PEI info, one
+> reporting a cache error, and the other one a TLB error, using
+> default values for other fields.
+> 
+> As all fields from ARM Processor CPER are mapped, so, the error
+> could contain physical/virtual addresses, register dumps,
+> vendor-specific data, etc.
+> 
+> This patch is co-authored:
+> - ghes logic to inject a simple ARM record by Shiju Jose;
+> - generic logic to handle block addresses by Jonathan Cameron;
+> - logic to allow changing all fields by Mauro Carvalho Chehab;
+> 
+> Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Co-authored-by: Shiju Jose <shiju.jose@huawei.com>
+> Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Signed-off-by: Shiju Jose <shiju.jose@huawei.com>
 > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-> ---
->  hw/arm/virt-acpi-build.c | 30 ++++++++++++++++++++++++++----
->  hw/arm/virt.c            | 14 ++++++++++++--
->  include/hw/arm/virt.h    |  1 +
->  include/hw/boards.h      |  1 +
->  4 files changed, 40 insertions(+), 6 deletions(-)
+A few minor comments inline.
+This crossed (I think) with a reply from Markus though so there are
+some other bits to address from that.
+
+Jonathan
+
+> diff --git a/configs/targets/aarch64-softmmu.mak b/configs/targets/aarch64-softmmu.mak
+> index 84cb32dc2f4f..b4b3cd97934a 100644
+> --- a/configs/targets/aarch64-softmmu.mak
+> +++ b/configs/targets/aarch64-softmmu.mak
+> @@ -5,3 +5,4 @@ TARGET_KVM_HAVE_GUEST_DEBUG=y
+>  TARGET_XML_FILES= gdb-xml/aarch64-core.xml gdb-xml/aarch64-fpu.xml gdb-xml/arm-core.xml gdb-xml/arm-vfp.xml gdb-xml/arm-vfp3.xml gdb-xml/arm-vfp-sysregs.xml gdb-xml/arm-neon.xml gdb-xml/arm-m-profile.xml gdb-xml/arm-m-profile-mve.xml gdb-xml/aarch64-pauth.xml
+>  # needed by boot.c
+>  TARGET_NEED_FDT=y
+> +CONFIG_ARM_EINJ=y
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index 9346f45c59a5..e435c9aa0961 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -27,6 +27,7 @@
+>  #include "hw/acpi/generic_event_device.h"
+>  #include "hw/nvram/fw_cfg.h"
+>  #include "qemu/uuid.h"
+> +#include "qapi/qapi-types-arm-error-inject.h"
+>  
+>  #define ACPI_GHES_ERRORS_FW_CFG_FILE        "etc/hardware_errors"
+>  #define ACPI_GHES_DATA_ADDR_FW_CFG_FILE     "etc/hardware_errors_addr"
+> @@ -53,6 +54,12 @@
+>  /* The memory section CPER size, UEFI 2.6: N.2.5 Memory Error Section */
+>  #define ACPI_GHES_MEM_CPER_LENGTH           80
+>  
+> +/*
+> + * ARM Processor error section CPER sizes - UEFI 2.10: N.2.4.4
+> + */
+> +#define ACPI_GHES_ARM_CPER_LENGTH           40
+> +#define ACPI_GHES_ARM_CPER_PEI_LENGTH       32
+> +
+>  /* Masks for block_status flags */
+>  #define ACPI_GEBS_UNCORRECTABLE         1
+>  
+> @@ -234,6 +241,152 @@ static int acpi_ghes_record_mem_error(uint64_t error_block_address,
+>      return 0;
+>  }
+>  
+> +/* UEFI 2.9: N.2.4.4 ARM Processor Error Section */
+> +static void acpi_ghes_build_append_arm_cper(ArmError err, uint32_t cper_length,
+> +                                            GArray *table)
+> +{
+> +    unsigned int i, j;
+> +
+> +    /*
+> +     * ARM Processor Error Record
+> +     */
+> +
+> +    /* Validation Bits */
+
+Given nice naming, maybe drop the comments where the field
+name makes it obvious?
+
+> +    build_append_int_noprefix(table, err.validation, 4);
+> +
+> +    /* Error Info Num */
+> +    build_append_int_noprefix(table, err.err_info_num, 2);
+> +
+> +    /* Context Info Num */
+> +    build_append_int_noprefix(table, err.context_info_num, 2);
+> +
+> +    /* Section length */
+> +    build_append_int_noprefix(table, cper_length, 4);
+> +
+> +    /* Error affinity level */
+> +    build_append_int_noprefix(table, err.affinity_level, 1);
+> +
+> +    /* Reserved */
+> +    build_append_int_noprefix(table, 0, 3);
+> +
+> +    /* MPIDR_EL1 */
+> +    build_append_int_noprefix(table, err.mpidr_el1, 8);
+> +
+> +    /* MIDR_EL1 */
+> +    build_append_int_noprefix(table, err.midr_el1, 8);
+> +
+> +    /* Running state */
+> +    build_append_int_noprefix(table, err.running_state, 4);
+> +
+> +    /* PSCI state: only valid when running state is zero  */
+> +    build_append_int_noprefix(table, err.psci_state, 4);
+> +
+> +    for (i = 0; i < err.err_info_num; i++) {
+> +        /* ARM Propcessor error information */
+> +        /* Version */
+> +        build_append_int_noprefix(table, 0, 1);
+> +
+> +        /*  Length */
+> +        build_append_int_noprefix(table, ACPI_GHES_ARM_CPER_PEI_LENGTH, 1);
+> +
+> +        /* Validation Bits */
+> +        build_append_int_noprefix(table, err.pei[i].validation, 2);
+> +
+> +        /* Type */
+> +        build_append_int_noprefix(table, err.pei[i].type, 1);
+> +
+> +        /* Multiple error count */
+> +        build_append_int_noprefix(table, err.pei[i].multiple_error, 2);
+> +
+> +        /* Flags  */
+> +        build_append_int_noprefix(table, err.pei[i].flags, 1);
+> +
+> +        /* Error information  */
+> +        build_append_int_noprefix(table, err.pei[i].error_info, 8);
+> +
+> +        /* Virtual fault address  */
+> +        build_append_int_noprefix(table, err.pei[i].virt_addr, 8);
+> +
+> +        /* Physical fault address  */
+> +        build_append_int_noprefix(table, err.pei[i].phy_addr, 8);
+> +    }
+> +
+> +    for (i = 0; i < err.context_info_num; i++) {
+> +        /* ARM Propcessor error context information */
+> +        /* Version */
+> +        build_append_int_noprefix(table, 0, 2);
+> +
+> +        /* Validation type */
+> +        build_append_int_noprefix(table, err.context[i].type, 2);
+> +
+> +        /* Register array size */
+> +        build_append_int_noprefix(table, err.context[i].size * 8, 4);
+> +
+> +        /* Register array (byte 8 of Context info) */
+> +        for (j = 0; j < err.context[i].size; j++) {
+> +            build_append_int_noprefix(table, err.context[i].array[j], 8);
+> +        }
+> +    }
+> +
+> +    for (i = 0; i < err.vendor_num; i++) {
+> +        build_append_int_noprefix(table, err.vendor[i], 1);
+> +    }
+> +}
+
+
+...
+
+> diff --git a/hw/arm/arm_error_inject.c b/hw/arm/arm_error_inject.c
+> new file mode 100644
+> index 000000000000..5ebbdf2b2adc
+> --- /dev/null
+> +++ b/hw/arm/arm_error_inject.c
+> @@ -0,0 +1,420 @@
+> +/*
+> + * ARM Processor error injection
+> + *
+> + * Copyright(C) 2024 Huawei LTD.
+> + *
+> + * This code is licensed under the GPL version 2 or later. See the
+> + * COPYING file in the top-level directory.
+> + *
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "hw/boards.h"
+> +#include "hw/acpi/ghes.h"
+> +#include "cpu.h"
+> +
+> +#define ACPI_GHES_ARM_CPER_CTX_DEFAULT_NREGS 74
+> +
+> +/* Handle ARM Processor Error Information (PEI) */
+> +static const ArmProcessorErrorInformationList *default_pei = { 0 };
+> +
+> +static ArmPEI *qmp_arm_pei(uint16_t *err_info_num,
+> +              bool has_error,
+> +              ArmProcessorErrorInformationList const *error_list)
+> +{
+> +    ArmProcessorErrorInformationList const *next;
+> +    ArmPeiValidationBitsList const *validation_list;
+> +    ArmPEI *pei = NULL;
+> +    uint16_t i;
+> +
+> +    if (!has_error) {
+> +        error_list = default_pei;
+> +    }
+> +
+> +    *err_info_num = 0;
+> +
+> +    for (next = error_list; next; next = next->next) {
+> +        (*err_info_num)++;
+> +
+> +        if (*err_info_num >= 255) {
+> +            break;
+> +        }
+> +    }
+> +
+> +    pei = g_new0(ArmPEI, (*err_info_num));
+> +
+> +    for (next = error_list, i = 0;
+> +                i < *err_info_num; i++, next = next->next) {
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index f76fb117adff..c502ccf40909 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -63,6 +63,7 @@
->  
->  #define ARM_SPI_BASE 32
->  
-> +#define ACPI_GENERIC_EVENT_DEVICE "GEDD"
+Odd alignment.
 
-Ah. My mistake. This is the confusing named GENERIC_ERROR_DEVICE
-or HARDWARE_ERROR_DEVICE (which is what Linux called it because
-in the ACPI Spec it is just (all lower case) error device).
 
->  #define ACPI_BUILD_TABLE_SIZE             0x20000
+> +/* For ARM processor errors */
+> +void qmp_arm_inject_error(bool has_validation,
+> +                    ArmProcessorValidationBitsList *validation_list,
+> +                    bool has_affinity_level,
+> +                    uint8_t affinity_level,
+> +                    bool has_mpidr_el1,
+> +                    uint64_t mpidr_el1,
+> +                    bool has_midr_el1,
+> +                    uint64_t midr_el1,
+> +                    bool has_running_state,
+> +                    ArmProcessorRunningStateList *running_state_list,
+> +                    bool has_psci_state,
+> +                    uint32_t psci_state,
+> +                    bool has_context,
+> +                    ArmProcessorContextList *context_list,
+> +                    bool has_vendor_specific,
+> +                    uint8List *vendor_specific_list,
+> +                    bool has_error,
+> +                    ArmProcessorErrorInformationList *error_list,
+> +                    Error **errp)
+> +{
+...
 
->  /* DSDT */
->  static void
->  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> @@ -841,10 +863,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->                        HOTPLUG_HANDLER(vms->acpi_dev),
->                        irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY,
->                        memmap[VIRT_ACPI_GED].base);
-> -    } else {
-> -        acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
-> -                           (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
->      }
-> +    acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
-> +                       (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+> +
+> +    if (error.context) {
 
-Arguably excess brackets, but obviously this is just a code move
-so fine to keep it the same.
+No need for check. If context_info_num is zero their
+won't be a loop iteration. 
 
->  
->      if (vms->acpi_dev) {
->          uint32_t event = object_property_get_uint(OBJECT(vms->acpi_dev),
-> @@ -858,6 +879,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      }
->  
->      acpi_dsdt_add_power_button(scope);
-> +    acpi_dsdt_add_generic_event_device(scope);
->  #ifdef CONFIG_TPM
->      acpi_dsdt_add_tpm(scope, vms);
->  #endif
+> +        for (i = 0; i < error.context_info_num; i++) {
+> +            g_free(error.context[i].array);
+> +        }
+> +    }
+> +    g_free(error.context);
+> +    g_free(error.pei);
+> +    g_free(error.vendor);
+> +
+> +    return;
+> +}
+> diff --git a/hw/arm/arm_error_inject_stubs.c b/hw/arm/arm_error_inject_stubs.c
+> new file mode 100644
+> index 000000000000..be6e8be2d0d9
+> --- /dev/null
+> +++ b/hw/arm/arm_error_inject_stubs.c
+> @@ -0,0 +1,34 @@
+> +/*
+> + * QMP stub for ARM processor error injection.
+> + *
+> + * Copyright(C) 2024 Huawei LTD.
+> + *
+> + * This code is licensed under the GPL version 2 or later. See the
+> + * COPYING file in the top-level directory.
+> + *
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "hw/acpi/ghes.h"
+> +
+> +void qmp_arm_inject_error(bool has_validation,
+> +                        ArmProcessorValidationBitsList *validation,
+> +                        bool has_affinity_level,
+> +                        uint8_t affinity_level,
+> +                        bool has_mpidr_el1,
+> +                        uint64_t mpidr_el1,
+> +                        bool has_midr_el1,
+> +                        uint64_t midr_el1,
+> +                        bool has_running_state,
+> +                        ArmProcessorRunningStateList *running_state,
+> +                        bool has_psci_state,
+> +                        uint32_t psci_state,
+> +                        bool has_context, ArmProcessorContextList *context,
+> +                        bool has_vendor_specific, uint8List *vendor_specific,
+> +                        bool has_error,
+> +                        ArmProcessorErrorInformationList *error,
+> +                        Error **errp)
+> +{
+> +    error_setg(errp, "ARM processor error support is not compiled in");
+> +}
+Markus suggested:
+
+> A target-specific command like this one should be conditional.  Try
+> this:
+> 
+>     { 'command': 'arm-inject-error',
+>       'data': { 'errortypes': ['ArmProcessorErrorType'] },
+>       'features': [ 'unstable' ],
+>       'if': 'TARGET_ARM' }
+>
+> No need to provide a qmp_arm_inject_error() stub then.
+
+(I noticed because never knew you could do this.)
+
+Probably crossed with your v4 posting.
+
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index 4f1ab1a73a06..c591a5fb02c4 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+
+...
+
+> +/* ARM processor - UEFI 2.10 table N.16 */
+> +typedef struct ArmError {
+> +    uint16_t validation;
+> +
+> +    uint8_t affinity_level;
+> +    uint64_t mpidr_el1;
+> +    uint64_t midr_el1;
+> +    uint32_t running_state;
+> +    uint32_t psci_state;
+> +
+> +    /* Those are calculated based on the input data */
+    /* Calculated based on the input data */
+> +    uint16_t err_info_num;
+> +    uint16_t context_info_num;
+> +    uint32_t vendor_num;
+> +    uint32_t context_length;
+> +
+> +    ArmPEI *pei;
+> +    ArmContext *context;
+> +    uint8_t *vendor;
+> +} ArmError;
 

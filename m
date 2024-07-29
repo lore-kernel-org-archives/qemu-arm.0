@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a7acab22bfdsm516374666b.34.2024.07.29.07.44.15
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5ac6377e06fsm5901911a12.28.2024.07.29.07.44.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 29 Jul 2024 07:44:17 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6E59A5F94C;
+	by draig.lan (Postfix) with ESMTP id 9DEE25F9F3;
 	Mon, 29 Jul 2024 15:44:15 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -33,46 +33,60 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
 	David Hildenbrand <david@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	Wainer dos Santos Moschetta <wainersm@redhat.com>
-Subject: [PATCH 04/14] tests/tcg/loongarch64: Use --no-warn-rwx-segments to link system tests
-Date: Mon, 29 Jul 2024 15:44:04 +0100
-Message-Id: <20240729144414.830369-5-alex.bennee@linaro.org>
+Subject: [PATCH 06/14] docs/devel: update the testing introduction
+Date: Mon, 29 Jul 2024 15:44:06 +0100
+Message-Id: <20240729144414.830369-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240729144414.830369-1-alex.bennee@linaro.org>
 References: <20240729144414.830369-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 4vVMICU3RIi9
+X-TUID: RRw8yuB09rNw
 
-From: Richard Henderson <richard.henderson@linaro.org>
+Move the mention of "check-help" up to the intro text and also mention
+the meson test integration.
 
-Recent debian cross-linker for loongarch issues
-
-  ld: warning: hello has a LOAD segment with RWX permissions
-
-This is partially related to tests/tcg/loongarch64/system/kernel.ld,
-but is not fixed by explicitly adding a single LOAD PHDR.
-Disable the warning, since it does not apply to kernel images.
-
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20240724010733.22129-3-richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/loongarch64/Makefile.softmmu-target | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/devel/testing.rst | 21 ++++++++++++++++++---
+ 1 file changed, 18 insertions(+), 3 deletions(-)
 
-diff --git a/tests/tcg/loongarch64/Makefile.softmmu-target b/tests/tcg/loongarch64/Makefile.softmmu-target
-index d5d5c1a7f6..6d4a20fde7 100644
---- a/tests/tcg/loongarch64/Makefile.softmmu-target
-+++ b/tests/tcg/loongarch64/Makefile.softmmu-target
-@@ -16,7 +16,7 @@ LINK_SCRIPT=$(LOONGARCH64_SYSTEM_SRC)/kernel.ld
- LDFLAGS=-Wl,-T$(LINK_SCRIPT)
- TESTS+=$(LOONGARCH64_TESTS) $(MULTIARCH_TESTS)
- CFLAGS+=-nostdlib -g -O1 -march=loongarch64 -mabi=lp64d $(MINILIB_INC)
--LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
-+LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc -Wl,--no-warn-rwx-segments
+diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
+index 23d3f44f52..b984c5dd26 100644
+--- a/docs/devel/testing.rst
++++ b/docs/devel/testing.rst
+@@ -3,13 +3,28 @@
+ Testing in QEMU
+ ===============
  
- # building head blobs
- .PRECIOUS: $(CRT_OBJS)
+-This document describes the testing infrastructure in QEMU.
++QEMU's testing infrastructure is fairly complex as it covers
++everything from unit testing and exercising specific sub-systems all
++the way to full blown acceptance tests. To get an overview of the
++tests you can run ``make check-help`` from either the source or build
++tree.
++
++Most (but not all) tests are also integrated into the meson build
++system so can be run directly from the build tree, for example:
++
++.. code::
++
++  [./pyvenv/bin/]meson test --suite qemu:softfloat
++
++will run just the softfloat tests.
++
++The rest of this document will cover the details for specific test
++groups.
+ 
+ Testing with "make check"
+ -------------------------
+ 
+-The "make check" testing family includes most of the C based tests in QEMU. For
+-a quick help, run ``make check-help`` from the source tree.
++The "make check" testing family includes most of the C based tests in QEMU.
+ 
+ The usual way to run these tests is:
+ 
 -- 
 2.39.2

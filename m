@@ -1,178 +1,187 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1850496njb;
-        Mon, 29 Jul 2024 08:23:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX9+EAu6JR4E7nFCuFApvBFZezH4/SpRVF6R50ucR/URDtNoSCMrQAnZUcQ/OHyiEws4E1Xz5AozwxmVcGtiPGER7OJMGl6
-X-Google-Smtp-Source: AGHT+IHz+WoiwoJibEh+NrXaseKWO4tWPWCtK11Dp0SaCqpHW/RTxGt7Zc3lZMse2V5zd0JUgHci
-X-Received: by 2002:ac8:574a:0:b0:447:d963:ebbf with SMTP id d75a77b69052e-45005c21b00mr129749771cf.21.1722266630836;
-        Mon, 29 Jul 2024 08:23:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722266630; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1854626njb;
+        Mon, 29 Jul 2024 08:32:18 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX83JfrxkHvHjoDmesAcFXY+G7RM+0KQHxOg4fjhbuGwJ/nENtNIRjJiGVNNVBg0zkhZ2wUy0J/a6LvBu3WX/3XUISS02GW
+X-Google-Smtp-Source: AGHT+IEtmTXRjE+USCP5QTgUEehsXNHG0wG7eokLCR97cOeD4NKZkQKqi1zXxBF7xNzOp1Z4uOOt
+X-Received: by 2002:a05:6830:4908:b0:709:3c0a:ff00 with SMTP id 46e09a7af769-70940c8f082mr13560626a34.24.1722267138414;
+        Mon, 29 Jul 2024 08:32:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722267138; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ep7UmxEmcgAGIN6t0yiisk1GwUNSqeFyPxw2Jw2OfR61VMiyosX9E7jF4bTD/HY5D1
-         G5bUJFsSBnxgB6yElpOe3ssNrzjlrr5cQ1ciPNBq7yEzLW8H28LSJLOtTkmeapU9kP9F
-         NxJ8VtK6GGAlnAyOvNEQGVY443MDfioO8et/2Q02mzKbFsFDh+TvuUXeUovcZgy4Scu6
-         NEtCAYTzeqcKAuo+xje6YudBujJUuBDzNqvCbVJ6eJ/YQKn0kSnMRSXOOQWUejhI1WUh
-         /BUBCr7LU3HM3OLimw9T3a80mpUK4vvPddDbYgUq3BlUlKW+eGLwV/AkIeGZ+grpnmbX
-         ty6w==
+        b=SiTjnxDxRle46p+GJsOKTYTZ3LWX/jwIV+p+uqJ7fKxXWfJsAvWHnJD0zn/FZsAbRr
+         wh7l7Br84Q939BT+D2QaTq9heKkKe6EG4RlNEDhB4N9odJ+qh/R4ai4PVkSVWbCTgJKt
+         rGiK3orukMxIh5yI9mwEWpFP15vaolB49OZVQCJBljYSfpq5yMU1kkKbu+q/ceivISdW
+         v3B6UGDojcun5MTXNcVx3LrYZHg0gJEJluBeIumy2flPHVL9feV6yuaIBb40drNRM42c
+         9cebTFR6lD9YMAavmLgdcesAWwMW6a4+73u8qZ1rlRdlcNCiToogOY9MluXBNwQYe/Cc
+         cDUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=qzM61U8fDoolnr+6t8nBL4raAeC7Mlar50RUt9YjfR8=;
-        fh=1zfuk4YrJvoe/T+P93Pe/cyBzz5qaHYvMNktYKvqHm4=;
-        b=u/wbmS2K7BX+bKWgTQtBsMa32vhwL+iQczWeH7hJzqIHc5ynwbmbRKem6Nof8JQLng
-         M4krUWMoO+GDlpYYLUA9REUR+8wo+fQIgavXyfgEYyenMbSe1SDW/3bCPg9ES5Lr8OFF
-         LONHpid/Kk0BRKEFvA7hZ4eJR830kd5aq9GNrXMxW0iXb45/or90dCmZvtWLXr1UTA+Z
-         Hjohsd9J6rAgyq8BWgU+s20HDKfvBy5UphqLDx0RE8qnlb977nRmn29GjS6SzIy8yvrC
-         3djP0frtamRDNdHSXID8Cpc+0sueqDVk4Zomk56/j9rDhT3xXe1wlnCRy4J5zNVkP2y4
-         MSkA==;
+        bh=zhKcAf0ZWfz3qp6TykGkjQBKnlkjPN9B9/lzcKl1IwY=;
+        fh=EdsZjsQ3zNMK6YoK3SJaTUZtRr0xSk954j+Ulqr12A4=;
+        b=A8QOeIUhcXof3Xaplcj9ltjHWnh9AOUtcwlRyQ45lp3SIzEVDWQhldGRnkThvDb1Mp
+         fnQ7kNFlfKRovYnznJX+WuRYmWqWDGfPWDHI5n4qCbjLSwjjU3ZhIIJf7I6Aj+tns0KT
+         dPRl1xYIzuco1+9D2HIanZc2eJRgY/n3Z9gkFxizSIhSeWam0IXBKxGl/1Zvw+VA5+zN
+         EWprLO7V0QQkBS6/FAxUbHjLSwXJrawbz2pAUq++Fblz4XvGi2zgxuGHdm+QAP/V0eEA
+         uKt39Nsv8NjKW/+UmTlKYOUcCXmLXhgbQTcrRVZkDiVBryk1L579N7PHsg5Ggiyn8dhm
+         XuwQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uycKZzGB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=UuVAa8Jt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-44fe81376a7si101490491cf.1.2024.07.29.08.23.50
+        by mx.google.com with ESMTPS id af79cd13be357-7a1d744505esi1071718685a.226.2024.07.29.08.32.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jul 2024 08:23:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 29 Jul 2024 08:32:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uycKZzGB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=UuVAa8Jt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1sYSDs-0007Ji-0W; Mon, 29 Jul 2024 11:23:40 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1sYSLy-0008Gu-0U; Mon, 29 Jul 2024 11:32:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sYSDp-0007Iy-Ab
- for qemu-arm@nongnu.org; Mon, 29 Jul 2024 11:23:37 -0400
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+ id 1sYSLx-0008E4-8O
+ for qemu-devel@nongnu.org; Mon, 29 Jul 2024 11:32:01 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sYSDk-0007Pl-NB
- for qemu-arm@nongnu.org; Mon, 29 Jul 2024 11:23:36 -0400
-Received: by mail-lj1-x231.google.com with SMTP id
- 38308e7fff4ca-2f035ae0fe0so42068551fa.3
- for <qemu-arm@nongnu.org>; Mon, 29 Jul 2024 08:23:32 -0700 (PDT)
+ id 1sYSLu-00016r-Bb
+ for qemu-devel@nongnu.org; Mon, 29 Jul 2024 11:32:00 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-5a10835480bso5443650a12.2
+ for <qemu-devel@nongnu.org>; Mon, 29 Jul 2024 08:31:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722266611; x=1722871411; darn=nongnu.org;
+ d=linaro.org; s=google; t=1722267113; x=1722871913; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=qzM61U8fDoolnr+6t8nBL4raAeC7Mlar50RUt9YjfR8=;
- b=uycKZzGBtomJyMfCJvPtlAfyGVfyXgCPrpDJ9Zu3xmwNV5r0QWnYA3Ze4pZDDzegdJ
- QWEXR7bF509d9485qV2VTEXzYUr6DAXe2bF3DkzNUcYgZfQ9EkKqhZobMKqwyaQYvNyY
- rYwK3Yc7LIrzd6mvqd1SKDdMP4OW/bUroArEHWzPi3q/IuXP/Mlfu5O2LWc+2nkuShoA
- VXvx2xapjA4JpZt1tT8bpIN0Xa9WRtXWO1r4JcbFVLm6xqR0tSsSSvdwNnhdg3g5xj1Q
- 5Du0FYd+2T9yEduQP3ShOM1pBq2UVYCrkiVEvm0uNx5e7YapjGvkdFASP56avwKIGoFn
- Hl9A==
+ bh=zhKcAf0ZWfz3qp6TykGkjQBKnlkjPN9B9/lzcKl1IwY=;
+ b=UuVAa8JttULL0Whup4slWn3pRRX780JPHyvN2u61R06U7oyRTZSmFjrby+w5nTcZFk
+ hkQDKUCXvci7mVZ50EPDqe4VS3Xrmi5KMOz0STVLet7p2HJPgxJFLsheapRTBVlG0TTc
+ wL74+wXCuquBHNhEW5PLFkD7yEE/W4uCZzVMeX+ShE4hrAxw424sQltksa1yzYSLBZbD
+ ZR/1MhSB2xkiiKQh70N7qEthh8RLbJmVIRorqpV1rTDYvqwVQx487P7hpofo65HjBd+9
+ kZrIiPMUXESEN0Q2Y39qNVF+E9GHrjDYVMVL9hq62aKf7zVb90ZIMT4yQG4tQPVRY0Y4
+ Bl/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722266611; x=1722871411;
+ d=1e100.net; s=20230601; t=1722267113; x=1722871913;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=qzM61U8fDoolnr+6t8nBL4raAeC7Mlar50RUt9YjfR8=;
- b=tz81t1zvBKOsNeLqkE5jRGMxHeaUfE/N34NhbHOFWwedWdTRVHc0uHwPdu1hpD4JEs
- 4O3jZc+NiXuPstFZnbQdF1RaKwsGsgQZ4GNeg5+nv7oKb79mx0oIAngw6YD2Va1YyWXM
- /JAOPBKQ8q5v7qtu9JbMuHA+Hjz+mBZSLoxftEyGT1rTCigGCZo7YP/hRM3xci52jR6A
- phemWq4O699K4hx3+3QRSnqPpRekMyYVzk0v7IoV2Q983G3uP7zraXB6N7eTqATIjJQB
- 1pbrd6iBq6CEG+WkWaxTBkEzYC9OEr6qPrlnhI8c9/O9i43TyS574zpKT8ItTUSuwXo/
- SAGA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWB0HZmKyb4gGf3CgYufzN28cO7oqSD4Ur0Uii7wQ2Infog3qZWGqjao9Yz9gHDs/XY/AkLNImForfhdp7lANQ7aQVi
-X-Gm-Message-State: AOJu0YyLwAWSHEQKbHZs5ZpzmETcFPsnXVtn1BdVqfbaForxwavoCUkv
- 8hKDkSCT3Iom/HZxBd4elIUwXJgISNkcPg6HQI8q9NpK6HUQLCDmnlhVROkQ2Uv2BiYErjyffdU
- zit7pTznWLZr+pG9WuUSqmmTi7nqkI4TdvAVrg1xlOAO3h5PZ
-X-Received: by 2002:a2e:a495:0:b0:2ef:232c:6938 with SMTP id
- 38308e7fff4ca-2f12ebcae5amr53080841fa.6.1722266610591; Mon, 29 Jul 2024
- 08:23:30 -0700 (PDT)
+ bh=zhKcAf0ZWfz3qp6TykGkjQBKnlkjPN9B9/lzcKl1IwY=;
+ b=tRiDYCOrubWqGeeg7OnpBDGvIg2uNVHKx3eQ222GDAxJBbIxcbj7fVTGyVkYxzQn9i
+ CotL+FFq3F4ynkbFe+SMIY5n0LglfNmC1c/qtSaroQlTTpFAe2mhEtf5iWoLXxgXY0cH
+ CaPBZ39pwuQUpjIMVMMzy9En8qyH68qb0RY0djCcqSLA4QcoI9NNLwhbzBryeIPK/uVe
+ MccaX9bPuhnNnkSDFTiGeH8DtTW7jKzfZ41yCrjg0Paluz3CVqz2Dc3sOvloxu2uUrC2
+ u+Q3kD2zZPuFdXxKaCTOM8SmfjbGEY9F1cNvjCQ1oHQoAGZwBxukd8Ok6uK9mNrMvKjc
+ sjnA==
+X-Gm-Message-State: AOJu0YyfPVPLCkkwhf6YPUBX8EAfmS7FaM7V2wnpVDaIQb5Ys8wXTf5n
+ /tTgPaZnuCACNvRacCn/AVSVCO9W/hFt6KggpfoxwV6TOFZazfeHBaOm2YObuHEMJw5U6vrxHzr
+ MgkeqZdT347TaBAhQ9IYePWJdDUmFAhgVVD8vMg==
+X-Received: by 2002:a50:cd49:0:b0:5a0:f0c4:aa7b with SMTP id
+ 4fb4d7f45d1cf-5b022003b8bmr4626553a12.27.1722267112810; Mon, 29 Jul 2024
+ 08:31:52 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240726055933.817-1-jim.shu@sifive.com>
- <20240726055933.817-4-jim.shu@sifive.com>
-In-Reply-To: <20240726055933.817-4-jim.shu@sifive.com>
+ <20240726055933.817-5-jim.shu@sifive.com>
+In-Reply-To: <20240726055933.817-5-jim.shu@sifive.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 29 Jul 2024 16:23:19 +0100
-Message-ID: <CAFEAcA-ZkcJvFkYyHGi9bXoPvqEzvV0b_z6xaQPLMK9qNHSdCA@mail.gmail.com>
-Subject: Re: [PATCH 3/4] hw/dma: xilinx_axidma: Reset qemu_irq when DMA/Stream
- is reset
+Date: Mon, 29 Jul 2024 16:31:41 +0100
+Message-ID: <CAFEAcA_QmSdqTo4zmv=AKox2ZiJPt18vV4CwaLLp6VPLWBMcpA@mail.gmail.com>
+Subject: Re: [PATCH 4/4] hw/net: xilinx_axienet: Fix DMA RX IRQ if ethernet
+ disable RX
 To: Jim Shu <jim.shu@sifive.com>
 Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
  Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>, 
  "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::231;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x231.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vDJ2yC3HcmGe
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: T4OsPMur/COu
 
 On Fri, 26 Jul 2024 at 06:59, Jim Shu <jim.shu@sifive.com> wrote:
 >
-> Current DMA/Stream reset will clear interrupt pending bit of DMA device.
-> The qemu_irq of device should be updated at the same time.
+> When AXI ethernet RX is disabled, it shouldn't send packets to AXI DMA,
+> which may let AXI DMA to send RX full IRQs. It is aligned with real AXI
+> DMA/ethernet IP behavior in the FPGA.
+>
+> Also, now ethernet RX blocks the RX packets when it is disabled. It
+> should send and clear the remaining RX packets when enabling it.
 >
 > Signed-off-by: Jim Shu <jim.shu@sifive.com>
 > ---
->  hw/dma/xilinx_axidma.c | 25 +++++++++++++------------
->  1 file changed, 13 insertions(+), 12 deletions(-)
+>  hw/net/xilinx_axienet.c | 71 ++++++++++++++++++++++++-----------------
+>  1 file changed, 42 insertions(+), 29 deletions(-)
 >
-> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-> index 728246f925..beb3fbf1d5 100644
-> --- a/hw/dma/xilinx_axidma.c
-> +++ b/hw/dma/xilinx_axidma.c
-> @@ -177,11 +177,24 @@ static inline int stream_halted(struct Stream *s)
->      return !!(s->regs[R_DMASR] & DMASR_HALTED);
+> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> index 05d41bd548..8428f10946 100644
+> --- a/hw/net/xilinx_axienet.c
+> +++ b/hw/net/xilinx_axienet.c
+> @@ -530,6 +530,40 @@ static uint64_t enet_read(void *opaque, hwaddr addr, unsigned size)
+>      return r;
 >  }
 >
-> +static void stream_update_irq(struct Stream *s)
+> +static void axienet_eth_rx_notify(void *opaque)
 > +{
-> +    unsigned int pending, mask, irq;
+> +    XilinxAXIEnet *s = XILINX_AXI_ENET(opaque);
 > +
-> +    pending = s->regs[R_DMASR] & DMASR_IRQ_MASK;
-> +    mask = s->regs[R_DMACR] & DMASR_IRQ_MASK;
-> +
-> +    irq = pending & mask;
-> +
-> +    qemu_set_irq(s->irq, !!irq);
-> +}
-> +
->  static void stream_reset(struct Stream *s)
->  {
->      s->regs[R_DMASR] = DMASR_HALTED;  /* starts up halted.  */
->      s->regs[R_DMACR] = 1 << 16; /* Starts with one in compl threshold.  */
->      s->sof = true;
-> +    stream_update_irq(s); /* Clear interrupt */
->  }
+> +    /* If RX is disabled, don't trigger DMA to update RX desc and send IRQ */
+> +    if (!axienet_rx_enabled(s)) {
+> +        return;
+> +    }
 
-The general rule of thumb in QEMU is not to call
-qemu_set_irq() from a DeviceState::reset function,
-and xilinx_axidma_reset calls stream_reset. I think
-probably the best thing is to separate out whether
-this is a DeviceState::reset or a software-triggered
-reset, and only call qemu_set_irq() in the latter case.
+This checks s->rcw[1] & RCW1_RX, and does nothing if it's not set...
+
+>  static void enet_write(void *opaque, hwaddr addr,
+>                         uint64_t value, unsigned size)
+>  {
+> @@ -546,6 +580,14 @@ static void enet_write(void *opaque, hwaddr addr,
+>              } else {
+>                  qemu_flush_queued_packets(qemu_get_queue(s->nic));
+>              }
+> +
+> +            /*
+> +             * When RX is enabled, check if any remaining data in rxmem
+> +             * and send them.
+> +             */
+> +            if ((addr & 1) && s->rcw[addr & 1] & RCW1_RX) {
+> +                axienet_eth_rx_notify(s);
+> +            }
+
+...but at this callsite we open-code a check on RCW1_RX and
+skip the call if it's not set. We don't need to check twice.
+
+>              break;
+>
+>          case R_TC:
 
 thanks
 -- PMM

@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1703887njb;
-        Mon, 29 Jul 2024 03:30:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXl2xte5e8WVdENn9+u6M7iSV3tFbA/QYfN76cMuQhIabXV2Aw1bwCc0ZHEo5/LSBxRQBx8Gf22vnqZ2hcgM3knUk2loSsQ
-X-Google-Smtp-Source: AGHT+IGwCwe5I5chnGmJURvH1clhvlicV2SqXjV3Oqp8IZyDUT7Q2TDr3twda5TkB5mrzAxBiaUa
-X-Received: by 2002:a05:6214:300b:b0:6b7:b4b1:85ae with SMTP id 6a1803df08f44-6bb55af6226mr104478626d6.54.1722249046778;
-        Mon, 29 Jul 2024 03:30:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722249046; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1705263njb;
+        Mon, 29 Jul 2024 03:34:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV5OwG9ju+lwHbCR1cGfu+mvtUF5Q79UUDKIOBGlWPb2ED3ojZd8YLpth0lR0hzarWRNpWdHu/3J4+/6rAVFRSCSPQbO9x3
+X-Google-Smtp-Source: AGHT+IEjKismUyrqLdDUHHncBCOPN1x7ke5Bxgj4UqKUCBeSy4AwGN+dG1P/1oIRDmvWvul/buEH
+X-Received: by 2002:a05:622a:19a0:b0:447:f73b:6e2f with SMTP id d75a77b69052e-45004f2a514mr107521051cf.39.1722249272791;
+        Mon, 29 Jul 2024 03:34:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722249272; cv=none;
         d=google.com; s=arc-20160816;
-        b=WPMB7W+AN9ZkoXNlgr+6kdzMPTkb8m9TD02DYmgcFbvxxdKgK+jdDDJdWLiIOIdPFl
-         F4l3ybo0DHwpnYWCVD6GxohACIKiWAxlLgFVP5pv+wrwi4eItoa/jGWZ4cT2JsD4Ysqj
-         gHOHZ9I5/2BespWABviJBhfE7pjdD1mbNb8d4Pv/pAMi3meSObtDQ5Sr3VPKJODDfw/Y
-         pdIk+PLRrmTgHq6YTtir5MdtniTqFXo2aQnmJ7QV2alfiXlBa51y/ij9sJabXc71YMRT
-         FLk1XbB/phGkfqXDJYKjSwNIg7mo4Aq47vl7t6ovEwL+LXM9rB8GBCihNSeaxvCKRyQu
-         GCOQ==
+        b=f28YBAXAyQs2ylxv36SIvnl13dhq2VCqNF5PMmxDQ+xwUiAZztrS7bwxmleTckezbF
+         fVQQDNF50wdi2Fronm3RT3fktsq+iQsqB9OTqKxvhkXgYyb4MlmDkkSzETYOJBQbGjv6
+         3gvr7wD60Uk3V2FYakyApR7/NjPHhsKUdNZn7oyA2zjdrY7Jbvi/iGySFD8KXKK3R933
+         KEMP/nL6zlVXC0GeTXdzm2+fTX4bF/4ifN6ExQiWpQax+Peyu0TrPItEu2xl8CtCmVU8
+         CIlZoI18Yk3yzeg0nzz0KgZAt0mVNHeTe+qRpzX1DGEfNxgmrr7q2bw/LpsrTKkVh1Ah
+         H7+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=E/v307qrJPqbG9EmIQvCRmaOD0J7mX5czZH3z26/3Oo=;
+        bh=jrsIQdxPsAZhxdWinFuSjToBMhcCX2rBPI5tFjYosOQ=;
         fh=wNhxSdiHg8xiqcUd0ic1q+ay8XePjEEHF9Rtf9iA5Kw=;
-        b=Leq2X9u1BkVYvScy4saZTtF86wbHzJQJjLZb6RHAf2gkvt96mqeomzx7R48tRfyHN+
-         E5Ep/5un5ziC18/gmrJDZgQyDJY72zcmCu8VrGxUwz/F8fZAOSVL8bmeCtTQkP/MmhtR
-         QEEQUaM4a4z+QTi+dpNliF8T5CQJxz9FkRxW67EI3i98jEd1/MWkKIHxvpS3C2Lgmufa
-         SFSBTCCqj7PcyCToUHIhadLCG0GhpDAP7eW+K5NRJdk+7rH3WlFchRhYcgcWFho4H4kg
-         Sl9XPPNSIP03Bcque/3KeY4AvY8wccFOXhNR7T2jyL5GTg562qNrmFDQAioGsi5ag5Zm
-         AYnA==;
+        b=TPZW3M0LIqnWXoXN2uk2qnbCm/xpWmIneUud/1BZcM5vDrGjPl0qvbPhPaIcVK2E1n
+         BEyfNArfaCIgnUZc5FMBJircay3px4hSPM2wRHCD07m3L9VHV/+9FkQUzhvwO5erBExc
+         cw2HJxzulwKxVh/ypt8DXAj1B7CI0RrP665vq16kL3zWHcnmVFKra1DPw4NK85o82Abp
+         cqH8k13Lf2frNh6EZxX9lIC5LEzykElMqPxSLkPSal4U2qWboOgM7c1ZzVbXt0xwajMl
+         M+AqqsQFj+7cIuIwtKyAvVa4gBBU9N5Lwpk0wGSTvyDCDw+WP3dThNl2AEubXpKRSPp1
+         v/1w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a3s3yUXn;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h9szyC93;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3fb130absi103164306d6.571.2024.07.29.03.30.46
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-44fe8421ba1si95359831cf.563.2024.07.29.03.34.32
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jul 2024 03:30:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 29 Jul 2024 03:34:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a3s3yUXn;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h9szyC93;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722249046;
+	s=mimecast20190719; t=1722249272;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
 	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=E/v307qrJPqbG9EmIQvCRmaOD0J7mX5czZH3z26/3Oo=;
-	b=a3s3yUXnoXLtwFpkg1VlaVu/HCXPKQHD4qvInebK/3FhM1FN9eezANpmaG6CRWU7E+z4hl
-	jrE15SE07v602eyJzJk9PsT3e3Ms8Z7HovQPtGDRvuo5gHsmI8cS7DZUfECrObuUSGetSy
-	E+QENOX4afv9CjSGxSIdISS3esXbDP4=
+	bh=jrsIQdxPsAZhxdWinFuSjToBMhcCX2rBPI5tFjYosOQ=;
+	b=h9szyC935bBybkh26yxW48gxglK0KktjP5QAIJKOuiVY7+msPvL8OV5LJ4bYYBiwZTkXZm
+	4CDMdSmuaKaLwLAiAEi9Su2RjJwJBFTlZiDu8oGvpd+qKMYV0uuY41LncLSd4qr4O7zJ69
+	lgZdWOHDaUavNbVKxvliZHEJHSwCuas=
 Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-70-g733LZZ5PF-0JSc1Znuxmw-1; Mon,
- 29 Jul 2024 06:30:45 -0400
-X-MC-Unique: g733LZZ5PF-0JSc1Znuxmw-1
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-99-kSaR1ZIRMG6tWIK5qN8daA-1; Mon,
+ 29 Jul 2024 06:34:26 -0400
+X-MC-Unique: kSaR1ZIRMG6tWIK5qN8daA-1
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 6C2951955D4E;
-	Mon, 29 Jul 2024 10:30:41 +0000 (UTC)
+	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id A9D4F1955D4D;
+	Mon, 29 Jul 2024 10:34:23 +0000 (UTC)
 Received: from redhat.com (unknown [10.42.28.58])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 04B55195605F;
-	Mon, 29 Jul 2024 10:30:34 +0000 (UTC)
-Date: Mon, 29 Jul 2024 11:30:31 +0100
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 5160A300018D;
+	Mon, 29 Jul 2024 10:34:17 +0000 (UTC)
+Date: Mon, 29 Jul 2024 11:34:13 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Cleber Rosa <crosa@redhat.com>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -79,59 +79,87 @@ Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
 	Paul Durrant <paul@xen.org>, Paolo Bonzini <pbonzini@redhat.com>,
 	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: Re: [PATCH 03/13] tests/avocado/intel_iommu.py: increase timeout
-Message-ID: <ZqdvR3UFBCAu8wiI@redhat.com>
+Subject: Re: [PATCH 05/13] tests/avocado: machine aarch64: standardize
+ location and RO access
+Message-ID: <ZqdwJRRBjj5DsWh8@redhat.com>
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20240726134438.14720-1-crosa@redhat.com>
- <20240726134438.14720-4-crosa@redhat.com>
+ <20240726134438.14720-6-crosa@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240726134438.14720-4-crosa@redhat.com>
+In-Reply-To: <20240726134438.14720-6-crosa@redhat.com>
 User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: Le+94RInamaM
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: 9AMPe8t7MhdS
 
-On Fri, Jul 26, 2024 at 09:44:28AM -0400, Cleber Rosa wrote:
-> Based on many runs, the average run time for these 4 tests is around
-> 250 seconds, with 320 seconds being the ceiling.  In any way, the
-> default 120 seconds timeout is inappropriate in my experience.
-> Let's increase the timeout so these tests get a chance to completion.
-
-A high watermark of over 5 minutes is pretty long for a test.
-
-Looking at the test I see it runs
-
-   self.ssh_command('dnf -y install numactl-devel')
-
-but then never actually uses the installed package.
-
-I expect that most of the wallclock time here is coming from having
-dnf download all the repodata, 4 times over.
-
-If the intention was to test networking, then replace this with
-something that doesn't have to download 100's of MB of data, then
-see what kind of running time we get before increasing any timeout. 
-
-
+On Fri, Jul 26, 2024 at 09:44:30AM -0400, Cleber Rosa wrote:
+> The tests under machine_aarch64_virt.py and machine_aarch64_sbsaref.py
+> should not be writing to the ISO files.  By adding "media=cdrom" the
+> "ro" is autmatically set.
+> 
+> While at it, let's use a single code style and hash for the ISO url.
+> 
 > Signed-off-by: Cleber Rosa <crosa@redhat.com>
 > ---
->  tests/avocado/intel_iommu.py | 2 ++
->  1 file changed, 2 insertions(+)
+>  tests/avocado/machine_aarch64_sbsaref.py |  6 +++++-
+>  tests/avocado/machine_aarch64_virt.py    | 14 +++++++-------
+>  2 files changed, 12 insertions(+), 8 deletions(-)
 > 
-> diff --git a/tests/avocado/intel_iommu.py b/tests/avocado/intel_iommu.py
-> index 008f214397..9e7965c5df 100644
-> --- a/tests/avocado/intel_iommu.py
-> +++ b/tests/avocado/intel_iommu.py
-> @@ -25,6 +25,8 @@ class IntelIOMMU(LinuxTest):
->      :avocado: tags=flaky
->      """
+> diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/machine_aarch64_sbsaref.py
+> index e920bbf08c..1275f24532 100644
+> --- a/tests/avocado/machine_aarch64_sbsaref.py
+> +++ b/tests/avocado/machine_aarch64_sbsaref.py
+> @@ -129,7 +129,11 @@ def boot_alpine_linux(self, cpu):
+>              "-cpu",
+>              cpu,
+>              "-drive",
+> -            f"file={iso_path},format=raw",
+> +            f"file={iso_path},media=cdrom,format=raw",
+> +            "-device",
+> +            "virtio-rng-pci,rng=rng0",
+> +            "-object",
+> +            "rng-random,id=rng0,filename=/dev/urandom",
+>          )
+
+The commit message doesn't say anything about adding virtio-rng.
+If that's needed for some reason, do it as a separate commit
+with an explanation of the bug its fixing.
+
+
+> diff --git a/tests/avocado/machine_aarch64_virt.py b/tests/avocado/machine_aarch64_virt.py
+> index a90dc6ff4b..6831d2c0ed 100644
+> --- a/tests/avocado/machine_aarch64_virt.py
+> +++ b/tests/avocado/machine_aarch64_virt.py
+> @@ -37,13 +37,13 @@ def test_alpine_virt_tcg_gic_max(self):
+>          :avocado: tags=machine:virt
+>          :avocado: tags=accel:tcg
+>          """
+> -        iso_url = ('https://dl-cdn.alpinelinux.org/'
+> -                   'alpine/v3.17/releases/aarch64/'
+> -                   'alpine-standard-3.17.2-aarch64.iso')
+> +        iso_url = (
+> +            "https://dl-cdn.alpinelinux.org/"
+> +            "alpine/v3.17/releases/aarch64/alpine-standard-3.17.2-aarch64.iso"
+> +        )
 >  
-> +    timeout = 360
-> +
->      IOMMU_ADDON = ',iommu_platform=on,disable-modern=off,disable-legacy=on'
->      kernel_path = None
->      initrd_path = None
+> -        # Alpine use sha256 so I recalculated this myself
+> -        iso_sha1 = '76284fcd7b41fe899b0c2375ceb8470803eea839'
+> -        iso_path = self.fetch_asset(iso_url, asset_hash=iso_sha1)
+> +        iso_hash = "5a36304ecf039292082d92b48152a9ec21009d3a62f459de623e19c4bd9dc027"
+> +        iso_path = self.fetch_asset(iso_url, algorithm="sha256", asset_hash=iso_hash)
+>  
+>          self.vm.set_console()
+>          kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+> @@ -60,7 +60,7 @@ def test_alpine_virt_tcg_gic_max(self):
+>          self.vm.add_args("-smp", "2", "-m", "1024")
+>          self.vm.add_args('-bios', os.path.join(BUILD_DIR, 'pc-bios',
+>                                                 'edk2-aarch64-code.fd'))
+> -        self.vm.add_args("-drive", f"file={iso_path},format=raw")
+> +        self.vm.add_args("-drive", f"file={iso_path},media=cdrom,format=raw")
+>          self.vm.add_args('-device', 'virtio-rng-pci,rng=rng0')
+>          self.vm.add_args('-object', 'rng-random,id=rng0,filename=/dev/urandom')
+>  
 > -- 
 > 2.45.2
 > 

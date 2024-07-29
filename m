@@ -1,150 +1,137 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1738681njb;
-        Mon, 29 Jul 2024 04:54:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV7oiP0y3DbBNxhlgjDS4EkZTQXN/0UR2uOYNGqpc17tRX6Rkx96RW+axf2on0nIrb6bHBm8xCBiM63b7GMhXNWcV51eR9N
-X-Google-Smtp-Source: AGHT+IE792qxRsBm+RF0lSZrRDBlEpqHMQz7ez0hknfeYJq57fRNdw/ILoufKfmrdCDAMb1se+vW
-X-Received: by 2002:a05:6214:2024:b0:6b5:44c2:843b with SMTP id 6a1803df08f44-6bb55a83d8emr100526396d6.46.1722254098825;
-        Mon, 29 Jul 2024 04:54:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1722254098; cv=none;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1742409njb;
+        Mon, 29 Jul 2024 05:02:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWDPWTXT49incPaJ/tqoMBLON8+0XcQ19Fo5xMqT5+BwqTCGUiIgoyQ2b7K9UjCJIPa9Iv1egZgrPgP3cOXfrmAsw8UCRXr
+X-Received: by 2002:a05:600c:4708:b0:424:8743:86b4 with SMTP id 5b1f17b1804b1-42811e47830mr48620555e9.6.1722254525180;
+        Mon, 29 Jul 2024 05:02:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1722254525; cv=none;
         d=google.com; s=arc-20160816;
-        b=jDvfej2wSDXkDeZenr0sAcutDC3W4LZVV70mDkOqPKuaa4qpXnknCYpjMakg9DTt0b
-         NGwIPU1+X90B7kwlenwObmxIWE74mUy02l4Boq4l8E+py9YDY13a1FyFxUni0MWObSXh
-         agGhOJ1JVF3iti9mAHQhctovU2DxgPWQPxTbyctVxTXWaQ68zP9bvL5r7QWU/rL+yoFV
-         TWLfaqsDBnqb/f08tu51FCO5PwivbMqZ7ckA3jwrtjxUunzV6+9ZepGRSANsWzFmaKiJ
-         JCG4zML07zK196izfxGSCAfaiPVPahqqzAE7YEw72+9ZVBqolG1rEjaHV5hY8/F2zJJG
-         7TZg==
+        b=BWa7Zrksi9Z8GnA7x32BvpkEJGIZfBjAsGWDZtPUNGgFTfdXQ8FeNSrq31peTRU8Hv
+         ywDhaxABAxbSQUi72g2pinA8lcS4TCR35sXkM38W9RO2+oEuJMYjucyVlO5J3wxoeZly
+         aXNfXwhG2LrhyGnsjOjMuDs7yNYuX2QU3bCJKSgx0QAklxlUeO6gMeZ/2P90cwcLgjfq
+         KcU5PXznmWjNLTZwSdtCOTWO3o+6ejHllsbto1J/EzSEin3wLJVRt/GrkXIO/5Zr/vMZ
+         TJl5LXm3XJqvjvaxzLN+Ju92r/vgwu1l5quHsk2XJClzgqKYR4/e1f1nnSNDw8sxrdEK
+         JRhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=a4NZQE0a01E7gkys5wMB3DntjcYY2NgIlYja4WDLw5Q=;
-        fh=7NgbE2xgFh44ZGz60K7OrDIQXzACx5dbAHzqOPcgkL4=;
-        b=MuYl6ScXkmTzRBJL50TE1+0CvCMBsesjQYxD3qWSFopaumKOs2s6BqIrLOLfCDgDTi
-         loDPAyLaD9e5EsLVqHNir8HW+VoSdHQEufuutTH7LN9PHsCe9B37VHA9xN3Lo9dibTdq
-         f2jloy6qDI0xNIDqkhsSThWVhDp3UDYxL8iawyXqyBXewwcdDkDhmxG3sVspTi3K2wJo
-         kCAhni3ZegXrws5E+7FNcNMGPkqJXTNebKk5b+0y7Qzp3ASnXFXF/FsGN1iPHdEekHpl
-         SFzpvOpMqlz0V6kxT422r6Voy8VradApLkmQmUwnUDhXZiSnFiyEM0MF5QZcKXNO1QO/
-         k6UQ==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=/qvSCEYggbJA531byaEkDr9vmqqh4tVOMW6xdeku0Eo=;
+        fh=+T7if6Zhd4p0CWlCjRtIoJlwL44n+Riz013qaez6LZY=;
+        b=RhCGbeDVc7wqsk7c/CICEdaMMAcQsPh+tmSDK6Pp8ab1IqtqYx+mHzJh/6/sCUzNrB
+         mCX8GX8PmKjl7EujVtHSct2rY4C5wzw0IJFIqRbiZ7LWNvEGNJQsz4p5nJkZIHB+yHE9
+         Tgg9imuyNNSOvRm/UUPej7567ipb5YpppEMTOAISgFcoXuvD8j2ofbPqfXFWt36a8EOj
+         LiNQRvAwLz++2Zisqysdwine+x7iPLbUyBq2+b2hwYQt5pigAYlshebEjHxw/iBcGeSD
+         MRTB1dpibJha/8+I2PiY9MY09jLsaExtkU18VD0JchDb74+eoFTNkQYNK+uItXbawRX7
+         WVqw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HBMRV1H7;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <crosa@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6bb3fa87053si100954916d6.305.2024.07.29.04.54.58
+       dkim=pass header.i=@linaro.org header.s=google header.b=NTQDxZM9;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4280bca3e74sor16377625e9.0.2024.07.29.05.02.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jul 2024 04:54:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Mon, 29 Jul 2024 05:02:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HBMRV1H7;
-       spf=pass (google.com: domain of crosa@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1722254098;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=a4NZQE0a01E7gkys5wMB3DntjcYY2NgIlYja4WDLw5Q=;
-	b=HBMRV1H7K8T14Um7t+AFXffwMWTK7jvIc4zS62pBWK8HpSv4w0okKEcxgbdPGUed3dGoJA
-	9T0J5sPkpVbuCUVAFrE+T3kKts58H0lg0OTOn3vh2lPkMs01AyoMqp3A+dXSikLrdRaeNO
-	eJpqPCFZlClCHeNZ59IljsWo/qYJcR4=
-Received: from mail-yw1-f198.google.com (mail-yw1-f198.google.com
- [209.85.128.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-27-_u-zRidJOj2bN_5rqRPBLA-1; Mon, 29 Jul 2024 07:54:57 -0400
-X-MC-Unique: _u-zRidJOj2bN_5rqRPBLA-1
-Received: by mail-yw1-f198.google.com with SMTP id 00721157ae682-66a2aee82a0so47220617b3.0
-        for <alex.bennee@linaro.org>; Mon, 29 Jul 2024 04:54:56 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=NTQDxZM9;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1722254525; x=1722859325; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=/qvSCEYggbJA531byaEkDr9vmqqh4tVOMW6xdeku0Eo=;
+        b=NTQDxZM93IdHi2f4Zkq4ODIoZwJQUFN185b2x831BdhhVXdZnMe3gBk4txhO/URbue
+         qCeUJgflcwldd4J+jCFEpej/MLFgytTRIKwbBaw0Y4j51EvM5EAHQIieb8dZnAym2e+c
+         zbJDVzcLbR/EvtV/AJ9nELzm3WalEtw7QIJ165LjWTXGiI0m7ch+rCFdoVyJuI/hVrQ5
+         9O3d1VBgM7RANjh2fDYU2UVpZwrnkDoULaIkb+H2LBUXjoms0WpsjOfcQqH/s64RCv4A
+         mk5njwisGPh/2NpS9XrIKpYCAlu5ZEuRtgOqU+36zfPWpdVTv8hREVHSZcAsXDnzRfDL
+         kexg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722254095; x=1722858895;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=a4NZQE0a01E7gkys5wMB3DntjcYY2NgIlYja4WDLw5Q=;
-        b=rxTSmdVsUAYWxvUdbF0xoovqa0vaB9G5/lCNKN1WjLELBL7FFikHvi0tRe3s94kiXm
-         HkuEWHp8bOJvkdGCqJ66j5XVmqppKwLy3ZWHViqJ/E5H1qbK+/wadNn8qz1DAKC+tsdm
-         btUhtKfSfMHMv4eKTv+4YsgUZTumNKx1XutiOSXnAl2vStXMjzTBv16HeLTAFEi9JwBH
-         uO5bUHX0qflSKMgOLwVyPl0KY/UeHGEoiB85Dp2AVKLDky+Nlfpy0h+sEhBiuverS27u
-         KZuUiL50TSDt8IbRpMwjLWhIZOTxRnWyCLp1Q2ExCwXPdG++BazFB1RD3IbW6ZHA+HDR
-         /YPw==
-X-Forwarded-Encrypted: i=1; AJvYcCX4U/hx+6+r4qqxCqi09VYVw2qK+uaJkHBDhRKlOnSouNyvde4fAci9MsB3on4FocgdL5gtDsvmq1ajVFo7kVvdc3x+qZ9Z
-X-Gm-Message-State: AOJu0YyXXQPMpq5yW6XTd2qneZfeTyTvv+r1CZ257P+YtIdEbob+rNik
-	tKM8IZaigLefmkMcafcx4v48/Xc8AiMEIHm1dwBKqln/5Zs/JzTqdrtTx/vjbDe6b1KTocpnMlu
-	n6fDOIlV+xK+MpXKxzUubxODjvrpx/N5rq/yDJgW8DmEFbKTjz4/CNdb6Aswu0FMsNkzyGuuKw8
-	Hj+bd4mAoeBFPI4M/LnzptqVc9vYGd
-X-Received: by 2002:a0d:cd45:0:b0:66a:843c:4c38 with SMTP id 00721157ae682-67a09b7279cmr66399207b3.37.1722254095615;
-        Mon, 29 Jul 2024 04:54:55 -0700 (PDT)
-X-Received: by 2002:a0d:cd45:0:b0:66a:843c:4c38 with SMTP id
- 00721157ae682-67a09b7279cmr66399057b3.37.1722254095312; Mon, 29 Jul 2024
- 04:54:55 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1722254525; x=1722859325;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/qvSCEYggbJA531byaEkDr9vmqqh4tVOMW6xdeku0Eo=;
+        b=ThDL/C+5Mb5jmC8jC3LbCbapJRZ2vZmgqIH1JD/ljW93me9/kfXp7ZFk3dhqJxzZQw
+         odd4h1wBEWrhasBzAicZy3m4uL0Bsf6D7Sg0FWjLMbpH4VxyXykKQbSPwrXAwHFuRlsy
+         76U3wjnyU1UIM239UUE1qRVp72+pBv5zSY3mUXDa+uZBdziGvzqlec2v8z1vf9ehXETU
+         WTcj3tpZbktFrLyNS53LGSSIpi4NXed7WDuHE83/ZYImIVjeSHaKH7tPaBmXR+MgyW4c
+         tjqa3Y/zGLACDclzj4DnPb7bjUbAzOZaO4ZHpT+W8BrS2CyzgTGuj33w5qo77vIYy0hF
+         L6xQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVnL4MUVEvVXNpTjSATeXivBWG6RYI4/FXNIxKaI7l6OMCd9rMVD5aQy76KlYMU3xsGK1xyF8C/2ra84awKKPL4noDvUkKG
+X-Gm-Message-State: AOJu0YwvTfBamwpVgP2CpQeGubC8qlDK08rkN9Sd1Piq6DnhhhOfpWac
+	t4jfQ1MBg6X/cQoP9ZYZvMBKsLznFlfEXMm2lvCD1ci31/IoC0mE6vSBCD65DCfOpw==
+X-Google-Smtp-Source: AGHT+IFD+mPLCP16wqONM0xiaWZbeizYtEHeoTpsypYl3tjtLRKpY7ZoR1jjLZznwWE1Gxi4xvUPLQ==
+X-Received: by 2002:a05:600c:a4b:b0:424:8dbe:817d with SMTP id 5b1f17b1804b1-42811e6ab12mr51422695e9.10.1722254524621;
+        Mon, 29 Jul 2024 05:02:04 -0700 (PDT)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.100] ([176.176.173.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4280f9e3721sm108545485e9.29.2024.07.29.05.02.02
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 29 Jul 2024 05:02:04 -0700 (PDT)
+Message-ID: <2d85304c-ccec-43d1-8806-bdf7b861543d@linaro.org>
+Date: Mon, 29 Jul 2024 14:02:00 +0200
 MIME-Version: 1.0
-References: <20240726134438.14720-1-crosa@redhat.com> <20240726134438.14720-6-crosa@redhat.com>
- <ZqdwJRRBjj5DsWh8@redhat.com>
-In-Reply-To: <ZqdwJRRBjj5DsWh8@redhat.com>
-From: Cleber Rosa <crosa@redhat.com>
-Date: Mon, 29 Jul 2024 07:54:40 -0400
-Message-ID: <CA+bd_6Jj-DgpkouznuDC-ViOhi4zLu-SxnyrnyV6ceycHhEBiA@mail.gmail.com>
-Subject: Re: [PATCH 05/13] tests/avocado: machine aarch64: standardize
- location and RO access
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
-	Thomas Huth <thuth@redhat.com>, Beraldo Leal <bleal@redhat.com>, 
-	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>, David Woodhouse <dwmw2@infradead.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Leif Lindholm <quic_llindhol@quicinc.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, kvm@vger.kernel.org, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, 
-	Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org, 
-	Radoslaw Biernacki <rad@semihalf.com>, Paul Durrant <paul@xen.org>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: galZSAKewCy4
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/13] Bump avocado to 103.0
+To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ David Woodhouse <dwmw2@infradead.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, kvm@vger.kernel.org,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-arm@nongnu.org,
+ Radoslaw Biernacki <rad@semihalf.com>, Paul Durrant <paul@xen.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Akihiko Odaki <akihiko.odaki@daynix.com>
+References: <20240726134438.14720-1-crosa@redhat.com>
+ <20240726134438.14720-13-crosa@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240726134438.14720-13-crosa@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: JXxG2CzkLZxh
 
-On Mon, Jul 29, 2024 at 6:34=E2=80=AFAM Daniel P. Berrang=C3=A9 <berrange@r=
-edhat.com> wrote:
->
-> On Fri, Jul 26, 2024 at 09:44:30AM -0400, Cleber Rosa wrote:
-> > The tests under machine_aarch64_virt.py and machine_aarch64_sbsaref.py
-> > should not be writing to the ISO files.  By adding "media=3Dcdrom" the
-> > "ro" is autmatically set.
-> >
-> > While at it, let's use a single code style and hash for the ISO url.
-> >
-> > Signed-off-by: Cleber Rosa <crosa@redhat.com>
-> > ---
-> >  tests/avocado/machine_aarch64_sbsaref.py |  6 +++++-
-> >  tests/avocado/machine_aarch64_virt.py    | 14 +++++++-------
-> >  2 files changed, 12 insertions(+), 8 deletions(-)
-> >
-> > diff --git a/tests/avocado/machine_aarch64_sbsaref.py b/tests/avocado/m=
-achine_aarch64_sbsaref.py
-> > index e920bbf08c..1275f24532 100644
-> > --- a/tests/avocado/machine_aarch64_sbsaref.py
-> > +++ b/tests/avocado/machine_aarch64_sbsaref.py
-> > @@ -129,7 +129,11 @@ def boot_alpine_linux(self, cpu):
-> >              "-cpu",
-> >              cpu,
-> >              "-drive",
-> > -            f"file=3D{iso_path},format=3Draw",
-> > +            f"file=3D{iso_path},media=3Dcdrom,format=3Draw",
-> > +            "-device",
-> > +            "virtio-rng-pci,rng=3Drng0",
-> > +            "-object",
-> > +            "rng-random,id=3Drng0,filename=3D/dev/urandom",
-> >          )
->
-> The commit message doesn't say anything about adding virtio-rng.
-> If that's needed for some reason, do it as a separate commit
-> with an explanation of the bug its fixing.
->
+On 26/7/24 15:44, Cleber Rosa wrote:
+> This bumps Avocado to latest the LTS release.
+> 
+> An LTS release is one that can receive bugfixes and guarantees
+> stability for a much longer period and has incremental minor releases
+> made.
+> 
+> Even though the 103.0 LTS release is pretty a rewrite of Avocado when
+> compared to 88.1, the behavior of all existing tests under
+> tests/avocado has been extensively tested no regression in behavior
+> was found.
 
-This is actually a rebase mistake.  virtio-rng was removed in 21f123f3c.
+Does that restore feature parity for macOS developers? Because this
+community has been left behind ignored for over 2 years and already
+looked at alternatives for functional testing.
 
-I'll fix it in a v2.
-
-Thanks for spotting it,
-- Cleber.
+> Reference: https://avocado-framework.readthedocs.io/en/103.0/releases/lts/103_0.html
+> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> ---
+>   pythondeps.toml | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/pythondeps.toml b/pythondeps.toml
+> index f6e590fdd8..175cf99241 100644
+> --- a/pythondeps.toml
+> +++ b/pythondeps.toml
+> @@ -30,5 +30,5 @@ sphinx_rtd_theme = { accepted = ">=0.5", installed = "1.1.1" }
+>   # Note that qemu.git/python/ is always implicitly installed.
+>   # Prefer an LTS version when updating the accepted versions of
+>   # avocado-framework, for example right now the limit is 92.x.
+> -avocado-framework = { accepted = "(>=88.1, <93.0)", installed = "88.1", canary = "avocado" }
+> +avocado-framework = { accepted = "(>=103.0, <104.0)", installed = "103.0", canary = "avocado" }
+>   pycdlib = { accepted = ">=1.11.0" }

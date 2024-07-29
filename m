@@ -1,102 +1,103 @@
-Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1784016njb;
+Received: by 2002:a17:504:5965:b0:1be9:327d:8ee3 with SMTP id xe5csp1784020njb;
         Mon, 29 Jul 2024 06:21:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXTFYlfEXNrL2rz3fAr6ubQbvS3tDh0fOZoMBwKKRVr0jGoXkbM2KpXUSfIOJhmNEASG2OWq2lcU5qha9W7HMUZXzup/Qb/
-X-Google-Smtp-Source: AGHT+IFT8dZ3MYJ+NQxkRn7ufEo0+gz2xXN9m0e3wh9q9gpPScEnKlmMHGHT6rwauo7Uvog1/aAj
-X-Received: by 2002:a17:903:110f:b0:1fc:3dad:25ed with SMTP id d9443c01a7336-1ff04805c40mr63835445ad.9.1722259285806;
-        Mon, 29 Jul 2024 06:21:25 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1722259285; cv=pass;
+X-Forwarded-Encrypted: i=3; AJvYcCUgyY6qcQjJ4dAJyOZ7rDqfoxI5MD1KFScwbGCf7QiWl2p7pOgMNFGrZxdYFwLYokciLO89Bc//vPvSFjcTv9NJuJaTcThd
+X-Google-Smtp-Source: AGHT+IERQq15zlSsoLbmCbUTI09QwETyWlzZaZAtySvr6P1g8uggeOGfSsWpdx5zZPYyr1eP5VLF
+X-Received: by 2002:a17:90b:790:b0:2c9:8189:7b4f with SMTP id 98e67ed59e1d1-2cf7e5c143dmr5377603a91.32.1722259286614;
+        Mon, 29 Jul 2024 06:21:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1722259286; cv=pass;
         d=google.com; s=arc-20160816;
-        b=A1QJjpsFSDI5T3twrejBTD52wG+EvZTG3F1Jgv3CjPlU6wMafgZ3EYG6I5dSQTLtNE
-         B0O26xP0nxKlEKG9Va6bNi0EQphKn7TC0A6VXieTm2piZuNapqly1MQnHoMyxhD0bwVI
-         nycLSfgYMQVEUXioMqaSU+GYrS8ahnxEn1ywilvVInMA0CMq8QNxniQLmgxloKA1icJG
-         osGDeymaRAEAmIz74eWqUWvREVJv7zCbixxwcvD6WS0OELxyb8MDkWxenPKitrfEboRv
-         COor2f0Nuaj2umAHK5nAW24mfxzcYEU7RnznIwnyGNyo2jP+r1j6XASFAOsmkdwplbO7
-         i8WA==
+        b=ASv9jNnGKBk1+XOle7MoCiZc9ZrK6JFSr3mKPF+RERprtAgIzsNVZX+XEPh5c6YqeA
+         cr4RRG5S1/Ldrc35gdGN61WvzpdNZhuKW0zcknBOlWp+sp6Jrf0Mqbtugd3DWugg2szO
+         xqrs0Bc7hPqqv+4PR50UoiGQV7YDBp6zOC8ADWiqf45IKhgd2hzMkfQWYVpsXaVe2pMP
+         Gy/KPjFE9jlA/AghjxZYoT9cTwvLbLQOvZxjzptLef8z4mrnX+qKi3y8KbNn5AiXp9hx
+         9yGTwYEqxB/dYWbErKk5vrQHG1PxarlQV2Mp6Hr/Pcft/BGSL5Ne0zqkkkXiAEHNurwF
+         XnRg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=GsPOgB+ueyqVVnB/1zsn+SzG8j47j2ibaMvwsJfzUX8=;
-        fh=5gvMMhD2S7UP3QzB201JMOyteTDVwhvTYOpwAATLSYI=;
-        b=dXXE0jqbOQr8EpjoVPtAecrSch8comp8Qts/enpchMErrWYoaz5e+AfV3i39gilxx/
-         5bjGlZEAgbjaUe8TaCYOVJM5Un5qYym56/eya+AvFwYUa3r254qeqvy+10Zro30ahOjA
-         olx4pMXOVCt8FPE+lBNbEWfn8qjMkQoMgXHhFpQuPN0r+i8APqMiXlkS/5TEl8CM2U8N
-         ToG8JYkp7XVcqu1JyVIzVKz3PNhIIMSRy10ZYCBWpKErtII8A9XIskQsH+pWqw2ZgplC
-         nTFYN3eWgX2dOwdfmPycNiGdZuXhOdOygK4/gs2bkd0KSurtaP78EYNluYzEGMJwToOM
-         VGQg==;
+        bh=b0xYBI4DsCivQUfmHtAqKAIG1qelGdEfRAozfVNuSF8=;
+        fh=1+GwgeeWHpUF7FYedvbaiDfvpf5TVKFs48cbY64gPd4=;
+        b=NOo000G9LpQ21Ukr9OhZHhYNVkKBvYsQ9WLZ6XkhDTsRxcUgCySRbNZc3zBytJwc7x
+         05z/ufKvrT69iUJcjCGAvjmiffbRoZj/5Jl7i9q43UycTHZDn7LXdlz2Lw8c2LOpYL6/
+         GYiPIsCX2BHHnknJU4PobbW2p34EZp014RfT/JmWCKnLtjfLz7q8x/eQeZVbGyAd7rQc
+         iZNqr/45xHhaxdHyXZxyJ+q+1EOz6xOGANMW5e364c3Pn5JX2kJL9H/TwcxyvhxjdqeS
+         eYPAlxzc7fX1iBi2nnuV0XJ3I1wQ6DN2kxWZYK99VcGeUxFb5tzX2V+eEc3RMCu+we2H
+         Msow==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=fZ2KSe4c;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=o4PyZdBg;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-265831-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-265831-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-265832-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-265832-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-265831-alex.bennee=linaro.org@vger.kernel.org>
+Return-Path: <linux-kernel+bounces-265832-alex.bennee=linaro.org@vger.kernel.org>
 Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d9443c01a7336-1fed7ca66b9si98106495ad.89.2024.07.29.06.21.25
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2cf28fd8181si10563448a91.80.2024.07.29.06.21.26
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Jul 2024 06:21:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-265831-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        Mon, 29 Jul 2024 06:21:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-265832-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=fZ2KSe4c;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=o4PyZdBg;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-265831-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-265831-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-265832-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-265832-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 525662825E4
-	for <alex.bennee@linaro.org>; Mon, 29 Jul 2024 13:21:25 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 266EC2826B5
+	for <alex.bennee@linaro.org>; Mon, 29 Jul 2024 13:21:26 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 9B36E149C4D;
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 9D7E7149DFD;
 	Mon, 29 Jul 2024 13:21:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="fZ2KSe4c"
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="o4PyZdBg"
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C45C3C24
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C4BB148316
 	for <linux-kernel@vger.kernel.org>; Mon, 29 Jul 2024 13:21:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722259281; cv=none; b=LgWRVwXg0jmBzL2zDc2EzY1QVTQB7lH0ntQsPalZVLbpL3oZDLn8OPitNjFPLf7C9N9/9rXPqiOqrVa7YCzgYkly6CB+u99oWcQDxLcMTfrz7vnkTuNf43EgX2V5fqapBc5479e+TmBin7mgTyK5yeU6uceOYyvDBe8DuoHByIY=
+	t=1722259281; cv=none; b=c7Mt6YJI6DtR5cgX2SL083S0oZfZbPLGjCAQfvaxNtM8BgPiBe3/AqA6C4TrapnpQxBhhB0qEMIutacLEokcNBLvOHfz7ET2qwy1neqAUtKyn9fwFADY6j8/I/eCYW8AA+8mtFhLwAALIr1RRqNLI4LZ/IHIYy4aPFAHBq9yJsc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
 	s=arc-20240116; t=1722259281; c=relaxed/simple;
-	bh=gUVkPm3/Mv+8SKurFkEgfoAKMWPotqxokzq+MwLEJyA=;
+	bh=wmX5BOavDV5A0y4JGTIfwXXXDCYeYux2q4KKf6xw9vs=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=kjgdsLpCY8INtbaLkn3N1kQ4g/DMDc8eirdzsIqC3GgByQ5m+VAsxsl+noEWNB2caFlI/EaY7ZWpiyy9LfqhXhD4QC7sabZrWbTPYgAq8PXyu5nSEGm5MdOfGeIWb2I5e+WQa+oFYbXt7Ep1PA5geUxd/Hf5FwTcQHQMh0OLFqk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=fZ2KSe4c; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17CABC4AF10;
+	 MIME-Version; b=OyzpqBh9jsxj/s3CAv+2UypV3lrkuJh4+PkRtFxHqj+fJfq6PSFQDRoUhUbiuI6lqDSk92H+t6lyjT8Z2ZbVhk6Vmg0mxQuOaS2dcjT4IqO5DFDPhQJ4qyGch8hjEulKo4vdUEfergzrzu00K9oMmmWqE3OMAlwsQoovVyVAt88=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=o4PyZdBg; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1056DC4AF0C;
 	Mon, 29 Jul 2024 13:21:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1722259281;
-	bh=gUVkPm3/Mv+8SKurFkEgfoAKMWPotqxokzq+MwLEJyA=;
+	bh=wmX5BOavDV5A0y4JGTIfwXXXDCYeYux2q4KKf6xw9vs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=fZ2KSe4cruXVTBWOK1O0YOMHrzgQX03gECZal+t57opjKOKoZ7u5EsOCKOUeKM7BT
-	 CkilIfmN1kstZnEKTDk9JG0JUbodID7iHOuaJdamvsGq9zwKhwzUsBn9UQp5ZF3sMU
-	 UmS2mrphr8zBxpt7qFilogtXD+emVMCNHeu54bU0IRy/pAptfcqJHXa9EPN5RT6uap
-	 wNFgDRx0ZcZOk1iRa0xnMUqb8K4bhAAPLubESkv/SPyLxL1FuLtW48pJ7eQvnDD6wy
-	 QYbACth29A8kOc7vgkW5rINGdxGLKXWXgRdGUA8zbh6fk3UWM2FA3cKbucs/5N5KWA
-	 lG0ZXtvDMMnhw==
+	b=o4PyZdBgGpMneSb5gcEbFosIXh7r2vfuZOKvBP12tP6fSGmNrv8VgCXKCmnbPH0Yi
+	 v8NYL/xImPGCLIo4Os3iBdYEmGj8jYJVG/b/tnDh1fbtOT21HNpkhQ3ITL94P2mH8s
+	 n8Ir0fMV0jFv4dtUA+g2Aw8fibNPYnx76GTXFBslXEozcjG4Hj/IKVx1KHmJ2ojrWa
+	 Cv1ersR2w9Ld/tl8hxVRkBpG931tCqUT+WKb1nSY0d0uS5mzrPz2JlPWt1Y/kM/J+s
+	 /86vAPeB7WosmMvn/GdqFjgsEdKwwPGPb2V67YLHhHtuitprquuNJd/R5oRNOqJezm
+	 7Q88ZGwqKWBSQ==
 Received: from mchehab by mail.kernel.org with local (Exim 4.97.1)
 	(envelope-from <mchehab+huawei@kernel.org>)
-	id 1sYQJT-000000030Vj-0ikj;
+	id 1sYQJT-000000030VT-0I6f;
 	Mon, 29 Jul 2024 15:21:19 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
 	Shiju Jose <shiju.jose@huawei.com>,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Ani Sinha <anisinha@redhat.com>,
-	Dongjiu Geng <gengdongjiu1@gmail.com>,
 	Igor Mammedov <imammedo@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
 	linux-kernel@vger.kernel.org,
 	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Subject: [PATCH v4 5/6] acpi/ghes: Support GPIO error source.
-Date: Mon, 29 Jul 2024 15:21:09 +0200
-Message-ID: <9a7b1acde960ca699c85c88b3f93550e29d32c57.1722259246.git.mchehab+huawei@kernel.org>
+	qemu-devel@nongnu.org
+Subject: [PATCH v4 1/6] arm/virt: place power button pin number on a define
+Date: Mon, 29 Jul 2024 15:21:05 +0200
+Message-ID: <e5afbbaf2836ebe22b48c455285eccef86db966b.1722259246.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <cover.1722259246.git.mchehab+huawei@kernel.org>
 References: <cover.1722259246.git.mchehab+huawei@kernel.org>
@@ -108,64 +109,84 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-X-TUID: uBLq+DbHttmv
+X-TUID: 3GemTm7XW4jq
 
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Having magic numbers inside the code is not a good idea, as it
+is error-prone. So, instead, create a macro with the number
+definition.
 
-Add error notification to GHES v2 using the GPIO source.
-
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 ---
- hw/acpi/ghes.c         | 8 ++++++--
- include/hw/acpi/ghes.h | 1 +
- 2 files changed, 7 insertions(+), 2 deletions(-)
+ hw/arm/virt-acpi-build.c | 6 +++---
+ hw/arm/virt.c            | 7 ++++---
+ include/hw/arm/virt.h    | 3 +++
+ 3 files changed, 10 insertions(+), 6 deletions(-)
 
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index 8816af8280be..9346f45c59a5 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -34,8 +34,8 @@
- /* The max size in bytes for one error block */
- #define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index e10cad86dd73..f76fb117adff 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -154,10 +154,10 @@ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+     aml_append(dev, aml_name_decl("_CRS", crs));
  
--/* Now only support ARMv8 SEA notification type error source */
--#define ACPI_GHES_ERROR_SOURCE_COUNT        1
-+/* Support ARMv8 SEA notification type error source and GPIO interrupt. */
-+#define ACPI_GHES_ERROR_SOURCE_COUNT        2
+     Aml *aei = aml_resource_template();
+-    /* Pin 3 for power button */
+-    const uint32_t pin_list[1] = {3};
++
++    const uint32_t pin = GPIO_PIN_POWER_BUTTON;
+     aml_append(aei, aml_gpio_int(AML_CONSUMER, AML_EDGE, AML_ACTIVE_HIGH,
+-                                 AML_EXCLUSIVE, AML_PULL_UP, 0, pin_list, 1,
++                                 AML_EXCLUSIVE, AML_PULL_UP, 0, &pin, 1,
+                                  "GPO0", NULL, 0));
+     aml_append(dev, aml_name_decl("_AEI", aei));
  
- /* Generic Hardware Error Source version 2 */
- #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
-@@ -333,6 +333,9 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-          */
-         build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
-         break;
-+    case ACPI_HEST_SRC_ID_GPIO:
-+        build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_GPIO);
-+        break;
-     default:
-         error_report("Not support this error source");
-         abort();
-@@ -378,6 +381,7 @@ void acpi_build_hest(GArray *table_data, BIOSLinker *linker,
-     /* Error Source Count */
-     build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
-     build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
-+    build_ghes_v2(table_data, ACPI_HEST_SRC_ID_GPIO, linker);
- 
-     acpi_table_end(linker, &table);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 719e83e6a1e7..687fe0bb8bc9 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1004,7 +1004,7 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
+     if (s->acpi_dev) {
+         acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
+     } else {
+-        /* use gpio Pin 3 for power button event */
++        /* use gpio Pin for power button event */
+         qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
+     }
  }
-diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 674f6958e905..4f1ab1a73a06 100644
---- a/include/hw/acpi/ghes.h
-+++ b/include/hw/acpi/ghes.h
-@@ -58,6 +58,7 @@ enum AcpiGhesNotifyType {
+@@ -1013,7 +1013,8 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+                              uint32_t phandle)
+ {
+     gpio_key_dev = sysbus_create_simple("gpio-key", -1,
+-                                        qdev_get_gpio_in(pl061_dev, 3));
++                                        qdev_get_gpio_in(pl061_dev,
++                                                         GPIO_PIN_POWER_BUTTON));
  
+     qemu_fdt_add_subnode(fdt, "/gpio-keys");
+     qemu_fdt_setprop_string(fdt, "/gpio-keys", "compatible", "gpio-keys");
+@@ -1024,7 +1025,7 @@ static void create_gpio_keys(char *fdt, DeviceState *pl061_dev,
+     qemu_fdt_setprop_cell(fdt, "/gpio-keys/poweroff", "linux,code",
+                           KEY_POWER);
+     qemu_fdt_setprop_cells(fdt, "/gpio-keys/poweroff",
+-                           "gpios", phandle, 3, 0);
++                           "gpios", phandle, GPIO_PIN_POWER_BUTTON, 0);
+ }
+ 
+ #define SECURE_GPIO_POWEROFF 0
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index ab961bb6a9b8..a4d937ed45ac 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -47,6 +47,9 @@
+ /* See Linux kernel arch/arm64/include/asm/pvclock-abi.h */
+ #define PVTIME_SIZE_PER_CPU 64
+ 
++/* GPIO pins */
++#define GPIO_PIN_POWER_BUTTON  3
++
  enum {
-     ACPI_HEST_SRC_ID_SEA = 0,
-+    ACPI_HEST_SRC_ID_GPIO = 1,
-     /* future ids go here */
-     ACPI_HEST_SRC_ID_RESERVED,
- };
+     VIRT_FLASH,
+     VIRT_MEM,
 -- 
 2.45.2
 
